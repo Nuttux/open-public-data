@@ -102,6 +102,13 @@ body:has(.theme-fusion) > div.pb-24 { padding-bottom: 0 !important; }
   display: grid;
   grid-template-columns: auto 1fr auto auto auto;
   align-items: stretch;
+  transition: transform .22s ease;
+  will-change: transform;
+}
+.theme-fusion .fx-nav-hidden { transform: translateY(-100%); }
+@media (prefers-reduced-motion: reduce) {
+  .theme-fusion .fx-nav { transition: none; }
+  .theme-fusion .fx-nav-hidden { transform: none; }
 }
 
 .theme-fusion .fx-brand {
@@ -596,6 +603,44 @@ body:has(.theme-fusion) > div.pb-24 { padding-bottom: 0 !important; }
   font-weight: 500;
   margin-left: 3px;
 }
+/* City slim fiche — KPI cards (variant of fx-kpi-cell with hero + aside/year). */
+.theme-fusion .fx-kpi-card {
+  background: var(--bg);
+  padding: 20px 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-height: 130px;
+}
+.theme-fusion .fx-kpi-card.is-hero {
+  grid-column: 1 / -1;
+  padding: 28px 28px 24px;
+  min-height: 160px;
+}
+.theme-fusion .fx-kpi-card.is-hero .fx-kpi-value { font-size: 56px; }
+.theme-fusion .fx-kpi-aside {
+  font-family: var(--f-mono);
+  font-size: 12px;
+  color: var(--muted);
+  letter-spacing: .02em;
+  margin: 0;
+}
+.theme-fusion .fx-kpi-year {
+  font-family: var(--f-mono);
+  font-size: 10.5px;
+  letter-spacing: .08em;
+  color: var(--muted-2);
+  margin: auto 0 0;
+}
+@media (min-width: 720px) {
+  .theme-fusion .fx-kpi-grid:not([class*="fx-kpi-cols-"]) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .theme-fusion .fx-kpi-grid:not([class*="fx-kpi-cols-"]) .fx-kpi-card.is-hero {
+    grid-column: 1 / -1;
+  }
+}
+
 .theme-fusion .fx-kpi-delta {
   font-family: var(--f-mono);
   font-size: 11px;
@@ -645,6 +690,19 @@ body:has(.theme-fusion) > div.pb-24 { padding-bottom: 0 !important; }
   color: var(--ink);
   font-weight: 500;
   letter-spacing: -0.005em;
+}
+/* Sub-text listant les composants d'un bucket (missions PLF + items overlay
+   comme CAS Pensions, France Compétences, etc.). Petit, en mono. */
+.theme-fusion .fx-br-sub {
+  display: block;
+  font-family: var(--f-mono);
+  font-size: 11px;
+  font-weight: 400;
+  color: var(--muted-2, #6b7280);
+  margin-top: 4px;
+  letter-spacing: 0.01em;
+  line-height: 1.5;
+  max-width: 56ch;
 }
 .theme-fusion .fx-br-bar {
   height: 14px;
@@ -843,6 +901,295 @@ body:has(.theme-fusion) > div.pb-24 { padding-bottom: 0 !important; }
   .theme-fusion .fx-grid-tiles,
   .theme-fusion .fx-grid-tiles-2,
   .theme-fusion .fx-grid-tiles-4 { grid-template-columns: 1fr; }
+}
+
+/* ── Section recettes (panneau §02 — D'où vient l'argent) ─────────────
+   3 cartes horizontales (Sécu / État / Local) avec items empilés.
+   Couleurs institutionnelles : bleu Sécu / charbon État / rouge Local. */
+.theme-fusion .fx-recettes-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin: 32px 0 0;
+}
+@media (max-width: 1100px) {
+  .theme-fusion .fx-recettes-grid { grid-template-columns: 1fr; }
+}
+.theme-fusion .fx-recettes-card {
+  background: var(--bg);
+  padding: 22px 22px 24px;
+  border-top: 3px solid var(--ink);
+}
+.theme-fusion .fx-recettes-card-secu { border-top-color: #2a3680; }
+.theme-fusion .fx-recettes-card-etat { border-top-color: #1a1d26; }
+.theme-fusion .fx-recettes-card-local { border-top-color: #c12323; }
+.theme-fusion .fx-recettes-card-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 12px;
+  margin-bottom: 18px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--rule);
+}
+.theme-fusion .fx-recettes-card-name {
+  font-family: var(--f-disp);
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: -0.015em;
+  color: var(--ink);
+  margin: 0;
+}
+.theme-fusion .fx-recettes-card-total {
+  font-family: var(--f-disp);
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+  text-align: right;
+}
+.theme-fusion .fx-recettes-card-total-unit {
+  font-family: var(--f-disp);
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--muted);
+  margin-left: 2px;
+}
+.theme-fusion .fx-recettes-card-items {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.theme-fusion .fx-recettes-item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.theme-fusion .fx-recettes-item-link {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  text-decoration: none;
+  color: inherit;
+  padding: 4px 6px;
+  margin: -4px -6px;
+  border-radius: 2px;
+  transition: background 0.15s ease;
+}
+.theme-fusion .fx-recettes-item-link:hover {
+  background: var(--ivoire, #fbfaf5);
+}
+.theme-fusion .fx-recettes-item-link:hover .fx-recettes-item-chevron {
+  opacity: 1;
+  transform: translateX(2px);
+}
+.theme-fusion .fx-recettes-item-chevron {
+  display: inline-block;
+  margin-left: 4px;
+  font-family: var(--f-mono);
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--muted-2);
+  opacity: 0;
+  transition: opacity 0.15s ease, transform 0.15s ease;
+}
+.theme-fusion .fx-recettes-ue-row-link {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 12px;
+  text-decoration: none;
+  color: inherit;
+  padding: 4px 6px;
+  margin: 0 -6px;
+  border-radius: 2px;
+  transition: background 0.15s ease;
+}
+.theme-fusion .fx-recettes-ue-row-link:hover {
+  background: rgba(255, 255, 255, 0.6);
+}
+.theme-fusion .fx-recettes-ue-row-link:hover .fx-recettes-ue-chevron {
+  opacity: 1;
+  transform: translateX(2px);
+}
+.theme-fusion .fx-recettes-ue-chevron {
+  display: inline-block;
+  margin-left: 4px;
+  font-family: var(--f-mono);
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--muted-2);
+  opacity: 0;
+  transition: opacity 0.15s ease, transform 0.15s ease;
+}
+.theme-fusion .fx-recettes-item-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 12px;
+}
+.theme-fusion .fx-recettes-item-name {
+  font-family: var(--f-ui);
+  font-size: 13.5px;
+  color: var(--ink);
+  font-weight: 500;
+  letter-spacing: -0.005em;
+  flex: 1;
+}
+.theme-fusion .fx-recettes-item-val {
+  font-family: var(--f-disp);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--ink);
+  white-space: nowrap;
+}
+.theme-fusion .fx-recettes-item-pct {
+  font-family: var(--f-mono);
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--muted-2, #6b7280);
+  letter-spacing: 0.04em;
+}
+.theme-fusion .fx-recettes-item-bar {
+  height: 6px;
+  background: var(--rule);
+  position: relative;
+}
+.theme-fusion .fx-recettes-item-fill {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  background: var(--ink);
+}
+.theme-fusion .fx-recettes-c-secu { background: #2a3680; }
+.theme-fusion .fx-recettes-c-etat { background: #1a1d26; }
+.theme-fusion .fx-recettes-c-local { background: #c12323; }
+.theme-fusion .fx-recettes-item-nature {
+  font-family: var(--f-mono);
+  font-size: 10px;
+  font-weight: 500;
+  color: var(--muted-2, #6b7280);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin: 0;
+}
+
+/* Bloc déficit / emprunt — séparation visuelle (trait ocre subtil). */
+.theme-fusion .fx-recettes-deficit {
+  margin: 40px 0 0;
+  padding: 22px 26px;
+  border-left: 3px solid var(--accent, #a67638);
+  background: var(--ivoire, #fbfaf5);
+}
+.theme-fusion .fx-recettes-deficit-eyebrow,
+.theme-fusion .fx-recettes-ue-eyebrow {
+  font-family: var(--f-mono);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  color: var(--accent, #a67638);
+  margin: 0 0 10px;
+  text-transform: uppercase;
+}
+.theme-fusion .fx-recettes-deficit-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+.theme-fusion .fx-recettes-deficit-label {
+  font-family: var(--f-ui);
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--ink);
+}
+.theme-fusion .fx-recettes-deficit-val {
+  font-family: var(--f-disp);
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+}
+.theme-fusion .fx-recettes-deficit-pct {
+  font-family: var(--f-mono);
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--muted-2);
+  margin-left: 4px;
+  letter-spacing: 0.03em;
+}
+.theme-fusion .fx-recettes-deficit-explain,
+.theme-fusion .fx-recettes-ue-explain {
+  font-family: var(--f-mono);
+  font-size: 12px;
+  line-height: 1.6;
+  color: var(--muted);
+  margin: 8px 0 0;
+  max-width: 72ch;
+}
+
+/* Bloc UE — bilan brut/reçu/net */
+.theme-fusion .fx-recettes-ue {
+  margin: 24px 0 0;
+  padding: 22px 26px;
+  border-left: 3px solid var(--accent, #a67638);
+  background: var(--ivoire, #fbfaf5);
+}
+.theme-fusion .fx-recettes-ue-flow {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+.theme-fusion .fx-recettes-ue-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 12px;
+}
+.theme-fusion .fx-recettes-ue-row-net {
+  margin-top: 6px;
+  padding-top: 8px;
+  border-top: 1px solid var(--rule);
+  font-weight: 600;
+}
+.theme-fusion .fx-recettes-ue-label {
+  font-family: var(--f-ui);
+  font-size: 14px;
+  color: var(--ink-2);
+}
+.theme-fusion .fx-recettes-ue-val {
+  font-family: var(--f-disp);
+  font-size: 17px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+}
+.theme-fusion .fx-recettes-ue-val-plus {
+  color: #15803d;
+}
+.theme-fusion .fx-recettes-ue-yr {
+  font-family: var(--f-disp);
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--muted);
+  margin-left: 2px;
+}
+
+.theme-fusion .fx-recettes-method-note {
+  font-family: var(--f-mono);
+  font-size: 11px;
+  line-height: 1.6;
+  color: var(--muted);
+  margin: 20px 0 0;
+  max-width: 72ch;
+  padding-left: 12px;
+  border-left: 1px solid var(--rule);
 }
 
 .theme-fusion .fx-tile {
@@ -3466,6 +3813,128 @@ body:has(.theme-fusion) > div.pb-24 { padding-bottom: 0 !important; }
   background: var(--ink);
   color: var(--bg);
 }
+
+/* Global commune search modal (opened via navbar Cmd+K / scope dropdown). */
+.theme-fusion.fx-search-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  background: rgba(15, 23, 42, 0.55);
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 12vh 16px 16px;
+  overflow-y: auto;
+}
+.theme-fusion .fx-search-modal {
+  width: 100%;
+  max-width: 640px;
+  background: var(--bg);
+  border: 1px solid var(--ink);
+  box-shadow: 8px 8px 0 var(--ink);
+  display: flex;
+  flex-direction: column;
+  max-height: 70vh;
+}
+.theme-fusion .fx-search-modal .fx-search-input-wrap {
+  border: 0;
+  border-bottom: 1px solid var(--ink);
+  height: 64px;
+  padding: 0 18px;
+}
+.theme-fusion .fx-search-modal .fx-search-input-wrap:focus-within {
+  box-shadow: none;
+}
+.theme-fusion .fx-search-close {
+  font-family: var(--f-mono);
+  font-size: 11px;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--muted);
+  border: 1px solid var(--rule);
+  background: transparent;
+  padding: 4px 8px;
+  cursor: pointer;
+}
+.theme-fusion .fx-search-close:hover { border-color: var(--ink); color: var(--ink); }
+.theme-fusion .fx-search-results {
+  flex: 1;
+  overflow-y: auto;
+  padding: 6px 0;
+}
+.theme-fusion .fx-search-hint {
+  padding: 18px 20px;
+  color: var(--muted);
+  font-size: 13.5px;
+  line-height: 1.6;
+}
+.theme-fusion .fx-search-hint p { margin: 0 0 8px; color: var(--ink); }
+.theme-fusion .fx-search-hint ul { margin: 0; padding-left: 18px; }
+.theme-fusion .fx-search-empty {
+  padding: 22px 20px;
+  color: var(--muted);
+  font-size: 13.5px;
+}
+.theme-fusion .fx-search-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.theme-fusion .fx-search-result {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2px;
+  padding: 10px 20px;
+  border: 0;
+  background: transparent;
+  text-align: left;
+  cursor: pointer;
+  color: var(--ink);
+}
+.theme-fusion .fx-search-result.is-active,
+.theme-fusion .fx-search-result:hover { background: #fafaf7; }
+.theme-fusion .fx-search-result-name {
+  font-family: var(--f-disp);
+  font-weight: 500;
+  font-size: 16px;
+  letter-spacing: -0.01em;
+}
+.theme-fusion .fx-search-result-meta {
+  font-family: var(--f-mono);
+  font-size: 11px;
+  letter-spacing: .04em;
+  color: var(--muted);
+}
+.theme-fusion .fx-search-foot {
+  display: flex;
+  gap: 18px;
+  padding: 10px 18px;
+  border-top: 1px solid var(--rule);
+  font-family: var(--f-mono);
+  font-size: 10.5px;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.theme-fusion .fx-search-foot kbd {
+  font-family: var(--f-mono);
+  font-size: 10px;
+  border: 1px solid var(--rule);
+  padding: 1px 5px;
+  margin-right: 2px;
+  color: var(--ink);
+  background: var(--bg);
+}
+
+@media (max-width: 640px) {
+  .theme-fusion.fx-search-overlay { padding: 6vh 8px 8px; }
+  .theme-fusion .fx-search-modal { max-height: 86vh; box-shadow: 4px 4px 0 var(--ink); }
+  .theme-fusion .fx-search-modal .fx-search-input-wrap { height: 56px; padding: 0 14px; }
+  .theme-fusion .fx-search-foot { flex-wrap: wrap; gap: 10px; }
+}
+
 .theme-fusion .fx-results-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -8721,6 +9190,240 @@ body:has(.theme-fusion) > div.pb-24 { padding-bottom: 0 !important; }
   .theme-fusion .fx-sources-table-row .portal::before { content: "Portail · "; color: var(--ocre); font-family: var(--f-mono); font-size: 10.5px; text-transform: uppercase; letter-spacing: .1em; display: block; margin-bottom: 2px; }
 }
 
+/* ═══ Méthode — Table audit (réplique structure sources, labels audit) ════ */
+.theme-fusion .fx-audit-table {
+  margin-top: 24px;
+  border-top: 1px solid var(--ink);
+  border-left: 1px solid var(--ink);
+  font-family: var(--f-ui);
+}
+.theme-fusion .fx-audit-table-head,
+.theme-fusion .fx-audit-table-row {
+  display: grid;
+  grid-template-columns: 2.4fr 1fr 1.6fr 2fr;
+}
+.theme-fusion .fx-audit-table-head {
+  background: var(--ink);
+  color: var(--bg);
+  font-family: var(--f-mono);
+  font-size: 10.5px;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+}
+.theme-fusion .fx-audit-table-head > span {
+  padding: 12px 16px;
+  border-right: 1px solid var(--bg);
+  border-bottom: 1px solid var(--ink);
+}
+.theme-fusion .fx-audit-table-head > span:last-child { border-right: 1px solid var(--ink); }
+.theme-fusion .fx-audit-table-row { background: var(--bg); }
+.theme-fusion .fx-audit-table-row > span {
+  padding: 14px 16px;
+  border-right: 1px solid var(--ink);
+  border-bottom: 1px solid var(--ink);
+  font-size: 13.5px;
+  line-height: 1.5;
+  color: var(--ink);
+}
+.theme-fusion .fx-audit-table-row .check-label { font-weight: 600; }
+.theme-fusion .fx-audit-table-row .check-category { font-family: var(--f-mono); font-size: 12px; color: var(--muted); }
+.theme-fusion .fx-audit-table-row .check-threshold { font-size: 12.5px; color: var(--muted); }
+.theme-fusion .fx-audit-table-row .check-status { font-size: 13px; }
+@media (max-width: 900px) {
+  .theme-fusion .fx-audit-table-head { display: none; }
+  .theme-fusion .fx-audit-table-row {
+    grid-template-columns: 1fr;
+    padding: 14px 16px;
+    gap: 6px;
+  }
+  .theme-fusion .fx-audit-table-row > span { padding: 0; border: 0; }
+  .theme-fusion .fx-audit-table-row .check-label::before { content: "Contrôle · "; color: var(--ocre); font-family: var(--f-mono); font-size: 10.5px; text-transform: uppercase; letter-spacing: .1em; display: block; margin-bottom: 2px; }
+  .theme-fusion .fx-audit-table-row .check-category::before { content: "Catégorie · "; color: var(--muted); font-family: var(--f-mono); font-size: 10.5px; text-transform: uppercase; letter-spacing: .1em; display: inline-block; margin-right: 4px; }
+  .theme-fusion .fx-audit-table-row .check-threshold::before { content: "Seuil · "; color: var(--muted); font-family: var(--f-mono); font-size: 10.5px; text-transform: uppercase; letter-spacing: .1em; display: inline-block; margin-right: 4px; }
+}
+
+/* ═══ DataProvenance — Badge + modal lineage ═══════════════════════════════ */
+.theme-fusion .fx-provenance-btn,
+.fx-provenance-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 6px 10px;
+  background: transparent;
+  border: 1px solid var(--ink, #000);
+  border-radius: 3px;
+  font-family: var(--f-mono, monospace);
+  font-size: 11.5px;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  cursor: pointer;
+  color: var(--ink, #000);
+  transition: background .15s ease, color .15s ease;
+}
+.theme-fusion .fx-provenance-btn:hover,
+.fx-provenance-btn:hover {
+  background: var(--ink, #000);
+  color: var(--bg, #fff);
+}
+.fx-provenance-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  z-index: 1000;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 5vh 16px;
+  overflow-y: auto;
+}
+.fx-provenance-dialog {
+  background: var(--bg, #fff);
+  color: var(--ink, #000);
+  border: 1px solid var(--ink, #000);
+  max-width: 720px;
+  width: 100%;
+  padding: 28px 28px 24px;
+  font-family: var(--f-ui, system-ui);
+  outline: none;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+}
+.fx-provenance-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 18px;
+  border-bottom: 1px solid var(--ink, #000);
+  padding-bottom: 14px;
+}
+.fx-provenance-kicker {
+  font-family: var(--f-mono, monospace);
+  font-size: 11px;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--ocre, #b97400);
+  margin-bottom: 4px;
+}
+.fx-provenance-title {
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 1.2;
+  margin: 0;
+}
+.fx-provenance-close {
+  background: none;
+  border: none;
+  font-size: 28px;
+  line-height: 1;
+  cursor: pointer;
+  color: var(--ink, #000);
+  padding: 0 4px;
+}
+.fx-provenance-close:hover {
+  color: var(--ocre, #b97400);
+}
+.fx-provenance-empty {
+  color: var(--muted, #666);
+  font-style: italic;
+  margin: 20px 0;
+}
+.fx-provenance-what {
+  font-size: 14.5px;
+  line-height: 1.5;
+  margin-bottom: 20px;
+  color: var(--ink-2, #333);
+}
+.fx-provenance-export {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 12px 14px;
+  background: rgba(0, 0, 0, 0.03);
+  border-left: 3px solid var(--ocre, #b97400);
+  margin-bottom: 24px;
+  font-size: 12.5px;
+}
+.fx-provenance-export .fx-provenance-label {
+  font-family: var(--f-mono, monospace);
+  font-size: 10.5px;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--muted, #666);
+}
+.fx-provenance-export code {
+  font-size: 12px;
+  word-break: break-all;
+}
+.fx-provenance-export code a {
+  color: var(--ink, #000);
+  text-decoration: underline;
+}
+.fx-provenance-chain {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 24px;
+  border-top: 1px solid var(--ink, #000);
+}
+.fx-provenance-step {
+  display: grid;
+  grid-template-columns: 1.3fr 2fr;
+  gap: 14px;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--ink, #000);
+  font-size: 13.5px;
+}
+.fx-provenance-step-layer {
+  font-family: var(--f-mono, monospace);
+  font-size: 10.5px;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--ocre, #b97400);
+  align-self: start;
+}
+.fx-provenance-step-name {
+  grid-column: 2;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+.fx-provenance-step-name code {
+  font-family: var(--f-mono, monospace);
+  font-size: 12.5px;
+  word-break: break-all;
+}
+.fx-provenance-step-name a {
+  color: var(--ink, #000);
+  text-decoration: underline;
+}
+.fx-provenance-step-role {
+  grid-column: 2;
+  font-size: 13px;
+  color: var(--muted, #666);
+  line-height: 1.45;
+}
+.fx-provenance-footer {
+  display: flex;
+  gap: 16px;
+  padding-top: 16px;
+  border-top: 1px solid var(--ink, #000);
+  font-size: 13px;
+  font-family: var(--f-mono, monospace);
+  flex-wrap: wrap;
+}
+.fx-provenance-footer a {
+  color: var(--ink, #000);
+  text-decoration: underline;
+}
+@media (max-width: 640px) {
+  .fx-provenance-dialog { padding: 20px 18px; }
+  .fx-provenance-title { font-size: 18px; }
+  .fx-provenance-step {
+    grid-template-columns: 1fr;
+    gap: 4px;
+  }
+  .fx-provenance-step-name { grid-column: 1; }
+  .fx-provenance-step-role { grid-column: 1; }
+}
+
 /* ═══ Méthode — Flow simplifié (4 étapes) ══════════════════════════════════ */
 .theme-fusion .fx-flow-simple {
   margin-top: 24px;
@@ -10504,6 +11207,342 @@ body:has(.theme-db-scrolly) { background: #fafaf7 !important; color: var(--p-ink
    texte du hero, sous forme de spans cliquables (popover/sheet).
    ══════════════════════════════════════════════════════════════════════ */
 
+/* ── Onboarding intro (§00) — post user-testing fix mai 2026 ──
+   Clarifie la promesse de la page avant le formulaire éditable. */
+/* ── Galerie "À retenir" §02 (mai 2026 — remplace équivalents perso §06)
+   4 chiffres macro factuels et sourcés, présentés en grille sobre.
+   Vise la mémorabilité + partage Twitter ("did you know") sans cadrage
+   individualiste. */
+.theme-db-scrolly .db-disp-key-figures {
+  margin: 36px 0 0;
+  padding: 24px 28px;
+  background: var(--p-paper);
+  border-top: 1px solid var(--p-rule);
+}
+.theme-db-scrolly .db-disp-key-figures-title {
+  font-family: var(--pf-mono);
+  font-size: 11.5px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  color: var(--p-accent);
+  margin: 0 0 18px;
+  text-transform: uppercase;
+}
+.theme-db-scrolly .db-disp-key-figures-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 22px;
+  margin-bottom: 20px;
+}
+@media (max-width: 880px) {
+  .theme-db-scrolly .db-disp-key-figures-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 480px) {
+  .theme-db-scrolly .db-disp-key-figures-grid {
+    grid-template-columns: 1fr;
+  }
+}
+.theme-db-scrolly .db-disp-key-figure-num {
+  font-family: var(--pf-disp);
+  font-size: clamp(22px, 2.4vw, 28px);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--p-ink);
+  margin: 0 0 6px;
+  line-height: 1.1;
+}
+.theme-db-scrolly .db-disp-key-figure-label {
+  font-family: var(--pf-serif);
+  font-size: 13px;
+  line-height: 1.45;
+  color: var(--p-muted);
+  margin: 0;
+}
+.theme-db-scrolly .db-disp-key-figures-src {
+  font-family: var(--pf-mono);
+  font-size: 10.5px;
+  line-height: 1.45;
+  color: var(--p-muted-2);
+  margin: 0;
+  letter-spacing: 0.02em;
+}
+
+/* ── Synthèse §06 — cadrage neutre (refonte mai 2026)
+   Anti "contributeur vs déficitaire". Cadrage : situer la contribution
+   salariale directe dans le panorama des sources, sans soustraction
+   individualiste, avec caveat patrimoine + biens non-marchands. */
+.theme-db-scrolly .db-p-end-context {
+  margin: 28px 0 36px;
+  padding: 26px 32px;
+  background: var(--p-ivoire);
+  border-left: 3px solid var(--p-accent);
+  max-width: 820px;
+}
+.theme-db-scrolly .db-p-end-context-lead {
+  font-family: var(--pf-serif);
+  font-size: clamp(16px, 1.4vw, 19px);
+  line-height: 1.55;
+  color: var(--p-ink);
+  margin: 0 0 22px;
+}
+.theme-db-scrolly .db-p-end-context-lead b {
+  font-family: var(--pf-disp);
+  font-weight: 700;
+  color: var(--p-ink);
+  font-style: normal;
+}
+.theme-db-scrolly .db-p-end-context-sources-title {
+  font-family: var(--pf-mono);
+  font-size: 11.5px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  color: var(--p-accent);
+  margin: 0 0 12px;
+  text-transform: uppercase;
+}
+.theme-db-scrolly .db-p-end-context-sources-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.theme-db-scrolly .db-p-end-context-sources-list li {
+  font-family: var(--pf-serif);
+  font-size: 14.5px;
+  line-height: 1.55;
+  color: var(--p-ink-2);
+  padding-left: 14px;
+  position: relative;
+}
+.theme-db-scrolly .db-p-end-context-sources-list li::before {
+  content: "·";
+  position: absolute;
+  left: 0;
+  color: var(--p-accent);
+  font-weight: 700;
+}
+.theme-db-scrolly .db-p-end-context-caveat {
+  font-family: var(--pf-serif);
+  font-size: 13.5px;
+  font-style: italic;
+  line-height: 1.6;
+  color: var(--p-muted);
+  margin: 0 0 16px;
+  padding-top: 16px;
+  border-top: 1px solid var(--p-rule);
+}
+.theme-db-scrolly .db-p-end-context-cta {
+  margin: 0;
+  font-family: var(--pf-mono);
+  font-size: 12.5px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+}
+.theme-db-scrolly .db-p-end-context-cta a {
+  color: var(--p-accent);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  text-decoration-thickness: 1px;
+}
+.theme-db-scrolly .db-p-end-context-cta a:hover {
+  color: var(--p-ink);
+  text-decoration-color: var(--p-ink);
+}
+
+/* Legacy gap block (deprecated — gardé pour compat back-end pendant
+   période transition, sera supprimé après valid). */
+.theme-db-scrolly .db-p-end-gap {
+  margin: 28px 0 36px;
+  padding: 28px 32px;
+  background: var(--p-ivoire);
+  border-left: 3px solid var(--p-accent);
+}
+.theme-db-scrolly .db-p-end-gap-grid {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr auto 1fr;
+  gap: 16px;
+  align-items: center;
+  margin-bottom: 28px;
+}
+@media (max-width: 760px) {
+  .theme-db-scrolly .db-p-end-gap-grid {
+    grid-template-columns: 1fr;
+  }
+  .theme-db-scrolly .db-p-end-gap-arrow { display: none; }
+}
+.theme-db-scrolly .db-p-end-gap-cell {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.theme-db-scrolly .db-p-end-gap-cell-delta {
+  background: rgba(166, 118, 56, 0.10);
+  padding: 12px 16px;
+  border-radius: 4px;
+}
+.theme-db-scrolly .db-p-end-gap-label {
+  font-family: var(--pf-mono);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  color: var(--p-muted);
+  margin: 0;
+  text-transform: uppercase;
+}
+.theme-db-scrolly .db-p-end-gap-num {
+  font-family: var(--pf-disp);
+  font-size: clamp(28px, 3.5vw, 40px);
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  line-height: 1;
+  color: var(--p-ink);
+  margin: 0;
+}
+.theme-db-scrolly .db-p-end-gap-cell-delta .db-p-end-gap-num {
+  color: var(--p-accent);
+}
+.theme-db-scrolly .db-p-end-gap-unit {
+  font-family: var(--pf-disp);
+  font-weight: 500;
+  font-size: 14px;
+  color: var(--p-muted);
+  margin-left: 2px;
+}
+.theme-db-scrolly .db-p-end-gap-arrow {
+  font-family: var(--pf-mono);
+  font-size: 22px;
+  color: var(--p-muted-2);
+  text-align: center;
+  font-weight: 400;
+}
+.theme-db-scrolly .db-p-end-gap-explain-title {
+  font-family: var(--pf-disp);
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: -0.015em;
+  color: var(--p-ink);
+  margin: 0 0 12px;
+}
+.theme-db-scrolly .db-p-end-gap-explain-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.theme-db-scrolly .db-p-end-gap-explain-list li {
+  font-family: var(--pf-serif);
+  font-size: 15px;
+  line-height: 1.55;
+  color: var(--p-ink-2);
+  padding-left: 16px;
+  position: relative;
+}
+.theme-db-scrolly .db-p-end-gap-explain-list li::before {
+  content: "·";
+  position: absolute;
+  left: 0;
+  color: var(--p-accent);
+  font-weight: 700;
+}
+.theme-db-scrolly .db-p-end-gap-explain-cta {
+  margin: 18px 0 0;
+  font-family: var(--pf-mono);
+  font-size: 12.5px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+}
+.theme-db-scrolly .db-p-end-gap-explain-cta a {
+  color: var(--p-accent);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  text-decoration-thickness: 1px;
+}
+.theme-db-scrolly .db-p-end-gap-explain-cta a:hover {
+  color: var(--p-ink);
+  text-decoration-color: var(--p-ink);
+}
+.theme-db-scrolly .db-p-end-equivalents-note {
+  font-family: var(--pf-mono);
+  font-size: 11.5px;
+  line-height: 1.55;
+  color: var(--p-muted);
+  margin: 36px auto 24px;
+  max-width: 72ch;
+  padding: 12px 16px;
+  border-left: 2px solid var(--p-rule-strong);
+  font-style: normal;
+}
+
+/* Onboarding §00 — compact (~150px) pour laisser place au hero §01 +
+   ajustements avancés au-dessus du fold. Style éditorial sobre. */
+.theme-db-scrolly .db-p-onboarding {
+  background: var(--p-ivoire);
+  padding: 20px 0 0;
+  min-height: auto;
+}
+.theme-db-scrolly .db-p-onboarding-wrap {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 0 28px 14px;
+  border-bottom: 1px solid var(--p-rule);
+}
+.theme-db-scrolly .db-p-onboarding-kicker {
+  font-family: var(--pf-mono);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  color: var(--p-accent);
+  margin: 0 0 8px;
+  text-transform: uppercase;
+}
+.theme-db-scrolly .db-p-onboarding-title {
+  font-family: var(--pf-disp);
+  font-size: clamp(22px, 2.6vw, 32px);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+  color: var(--p-ink);
+  margin: 0 0 10px;
+  max-width: 26ch;
+}
+.theme-db-scrolly .db-p-onboarding-standfirst {
+  font-family: var(--pf-serif);
+  font-size: 15px;
+  font-style: italic;
+  line-height: 1.5;
+  color: var(--p-ink-2);
+  margin: 0 0 8px;
+  max-width: 70ch;
+  font-weight: 400;
+}
+.theme-db-scrolly .db-p-onboarding-hint {
+  font-family: var(--pf-mono);
+  font-size: 11.5px;
+  line-height: 1.5;
+  color: var(--p-muted);
+  margin: 0;
+  max-width: 70ch;
+  letter-spacing: 0.01em;
+}
+.theme-db-scrolly .db-p-onboarding-hint b {
+  font-family: var(--pf-mono);
+  font-weight: 600;
+  color: var(--p-accent);
+  font-style: normal;
+}
+/* Compact le hero §01 quand il suit l'onboarding §00 — pas de gap. */
+.theme-db-scrolly .db-p-onboarding + .db-p-hero {
+  padding-top: 12px;
+  padding-bottom: 40px;
+  min-height: auto;
+}
+
 .theme-db-scrolly .db-p-hero-edit { background: var(--p-ivoire); }
 /* Fix 10 : row-gap 40px pour respiration entre la phrase éditable et le block
    aside-droit. La row "eyebrow" a été retirée (Fix 8 : doublon avec la phrase). */
@@ -10517,7 +11556,7 @@ body:has(.theme-db-scrolly) { background: #fafaf7 !important; color: var(--p-ink
     "openfisca openfisca"
     "deck deck";
   column-gap: 56px;
-  row-gap: 40px;
+  row-gap: 24px;
 }
 .theme-db-scrolly .db-p-hero-num-top { grid-area: num; margin-bottom: 0; }
 .theme-db-scrolly .db-p-hero-cta-area {
@@ -10534,8 +11573,8 @@ body:has(.theme-db-scrolly) { background: #fafaf7 !important; color: var(--p-ink
   grid-area: text;
   font-family: var(--pf-disp);
   font-weight: 700;
-  font-size: clamp(36px, 4.4vw, 60px);
-  line-height: 1.12;
+  font-size: clamp(28px, 3.4vw, 46px);
+  line-height: 1.1;
   letter-spacing: -0.025em;
   color: var(--p-ink);
   margin: 0;
@@ -10925,26 +11964,28 @@ body:has(.theme-db-scrolly) { background: #fafaf7 !important; color: var(--p-ink
   display: inline-flex;
   align-items: baseline;
   gap: 4px;
-  /* Underline pointillée fine (look NYT, pas "lien web 2003").
-   * Default = gris discret ; ocre apparaît au hover/focus/open ci-dessous. */
-  text-decoration: underline dotted var(--p-rule-strong);
-  text-decoration-thickness: 1px;
-  text-underline-offset: 5px;
+  /* Post user-testing fix (mai 2026) : affordance d'édition beaucoup plus
+   * visible. Underline solide ocre + light tint background pour signaler
+   * clairement "ceci est cliquable / modifiable" — l'ancien underline
+   * dotted gris discret était invisible pour les premiers utilisateurs. */
+  text-decoration: underline solid var(--p-accent);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 4px;
   cursor: pointer;
-  background: transparent;
+  background: rgba(166, 118, 56, 0.06);
   border: 0;
   font: inherit;
   color: inherit;
-  padding: 0 4px;
+  padding: 0 6px;
   border-radius: 4px;
-  transition: background 0.12s ease, color 0.12s ease;
+  transition: background 0.12s ease, color 0.12s ease, text-decoration-color 0.12s ease;
   font-family: inherit;
   font-weight: inherit;
   letter-spacing: inherit;
   line-height: inherit;
 }
 .theme-db-scrolly .db-editable-span:hover {
-  background: rgba(166, 118, 56, 0.10);
+  background: rgba(166, 118, 56, 0.16);
   color: var(--p-accent);
   text-decoration-color: var(--p-accent);
 }
@@ -11576,6 +12617,8 @@ body:has(.theme-db-scrolly) { background: #fafaf7 !important; color: var(--p-ink
   margin-left: 12px;
   vertical-align: 0.55em;
   letter-spacing: 0;
+  white-space: nowrap;
+  display: inline-block;
 }
 .theme-db-scrolly .db-p-zoom-eur.c-secu { color: var(--p-secu); }
 .theme-db-scrolly .db-p-zoom-eur.c-etat { color: var(--p-etat); }
@@ -11663,21 +12706,37 @@ body:has(.theme-db-scrolly) { background: #fafaf7 !important; color: var(--p-ink
   color: var(--p-ink);
 }
 .theme-db-scrolly .db-p-zoom-bar-val {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-end;
   font-family: var(--pf-disp);
   font-weight: 700;
-  font-size: 26px;
+  font-size: 24px;
   letter-spacing: -0.025em;
   color: var(--p-ink);
   white-space: nowrap;
   line-height: 1;
+  gap: 2px;
 }
-.theme-db-scrolly .db-p-zoom-bar-val .pct {
+.theme-db-scrolly .db-p-zoom-bar-val-perso {
+  font-family: var(--pf-disp);
+  font-weight: 700;
+  font-size: 24px;
+  letter-spacing: -0.025em;
+  color: var(--p-ink);
+}
+/* Sous-ligne : montant national + part en mono petit, contexte de la
+   primaire €/mois. Header panel rappelle déjà "€/MOIS" → on évite la
+   répétition de l'unité sur chaque ligne. */
+.theme-db-scrolly .db-p-zoom-bar-natl {
   font-family: var(--pf-mono);
-  font-size: 11px;
+  font-size: 10.5px;
   font-weight: 500;
   color: var(--p-muted-2);
-  margin-left: 8px;
-  letter-spacing: .04em;
+  letter-spacing: .03em;
+}
+.theme-db-scrolly .db-p-zoom-bar-natl-pct {
+  color: var(--p-muted-2);
 }
 .theme-db-scrolly .db-p-zoom-bar-track {
   height: 32px;

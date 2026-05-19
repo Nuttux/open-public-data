@@ -210,6 +210,26 @@ type ResolveCtx = {
 };
 
 /**
+ * Pour Daily Bread (Approche A) : convertit nationalAnnualEur en per-capita
+ * monthly (€/mois/hab). Pour Budget Explorer : null (laisse le profile-based
+ * personalMonthlyEur faire son travail).
+ *
+ * Le label "Sur ton profil" devient "Par habitant" côté fiche quand on est
+ * en mode per-capita (déterminé par basePath /ville/...).
+ */
+function perCapitaMonthly(
+  nationalAnnualEur: number | null,
+  basePath: string,
+): number | null {
+  if (!basePath.startsWith("/ville/")) return null;
+  if (nationalAnnualEur == null || nationalAnnualEur <= 0) return null;
+  const db = loadDailyBread();
+  const pop = db?.apu_subsectors?.totals?.population_france ?? 68042591;
+  if (pop <= 0) return null;
+  return nationalAnnualEur / pop / 12;
+}
+
+/**
  * Helper local pour suffixer une URL avec le query string profil — répliqué
  * du composant fiche pour rester DRY côté server (pas d'import circulaire).
  */
@@ -307,14 +327,17 @@ function resolveLevel2(ctx: ResolveCtx): ResolvedRender | null {
     locale,
   );
 
-  const personalMonthlyEur = monthlies
-    ? projectLevel2Monthly(
-        monthlies,
-        bucketKey,
-        decodedL2,
-        found.entry.share_of_parent ?? 0,
-      )
-    : null;
+  // Daily Bread (Approche A) : per-capita. Budget Explorer : perso (profile).
+  const personalMonthlyEur =
+    perCapitaMonthly(nationalAnnualEur, opts.basePath) ??
+    (monthlies
+      ? projectLevel2Monthly(
+          monthlies,
+          bucketKey,
+          decodedL2,
+          found.entry.share_of_parent ?? 0,
+        )
+      : null);
   const personalMonthlyLabel =
     personalMonthlyEur != null
       ? formatMonthlyEur(personalMonthlyEur, locale)
@@ -420,15 +443,17 @@ function resolveLevel3(ctx: ResolveCtx): ResolvedRender | null {
     locale,
   );
 
-  const personalMonthlyEur = monthlies
-    ? projectLevel3Monthly(
-        monthlies,
-        bucketKey,
-        decodedL2,
-        found.parent.share_of_parent ?? 0,
-        found.entry.share_of_parent ?? 0,
-      )
-    : null;
+  const personalMonthlyEur =
+    perCapitaMonthly(nationalAnnualEur, opts.basePath) ??
+    (monthlies
+      ? projectLevel3Monthly(
+          monthlies,
+          bucketKey,
+          decodedL2,
+          found.parent.share_of_parent ?? 0,
+          found.entry.share_of_parent ?? 0,
+        )
+      : null);
   const personalMonthlyLabel =
     personalMonthlyEur != null
       ? formatMonthlyEur(personalMonthlyEur, locale)
@@ -558,16 +583,18 @@ function resolveLevel4(ctx: ResolveCtx): ResolvedRender | null {
     locale,
   );
 
-  const personalMonthlyEur = monthlies
-    ? projectLevel4Monthly(
-        monthlies,
-        bucketKey,
-        decodedL2,
-        found.parentLevel2.share_of_parent ?? 0,
-        found.parentLevel3.share_of_parent ?? 0,
-        found.entry.share_of_parent ?? 0,
-      )
-    : null;
+  const personalMonthlyEur =
+    perCapitaMonthly(nationalAnnualEur, opts.basePath) ??
+    (monthlies
+      ? projectLevel4Monthly(
+          monthlies,
+          bucketKey,
+          decodedL2,
+          found.parentLevel2.share_of_parent ?? 0,
+          found.parentLevel3.share_of_parent ?? 0,
+          found.entry.share_of_parent ?? 0,
+        )
+      : null);
   const personalMonthlyLabel =
     personalMonthlyEur != null
       ? formatMonthlyEur(personalMonthlyEur, locale)
@@ -677,13 +704,15 @@ function resolveEtatAggregation(ctx: ResolveCtx): ResolvedRender | null {
     locale,
   );
 
-  const personalMonthlyEur = monthlies
-    ? projectEtatAggregationMonthly(
-        monthlies,
-        found.share_of_parent ?? 0,
-        found.missions,
-      )
-    : null;
+  const personalMonthlyEur =
+    perCapitaMonthly(nationalAnnualEur, opts.basePath) ??
+    (monthlies
+      ? projectEtatAggregationMonthly(
+          monthlies,
+          found.share_of_parent ?? 0,
+          found.missions,
+        )
+      : null);
   const personalMonthlyLabel =
     personalMonthlyEur != null
       ? formatMonthlyEur(personalMonthlyEur, locale)
@@ -770,13 +799,15 @@ function resolveLocalDept(ctx: ResolveCtx): ResolvedRender | null {
     locale,
   );
 
-  const personalMonthlyEur = monthlies
-    ? projectLocalScopeLevel2Monthly(
-        monthlies,
-        "dept",
-        entry.share_of_parent ?? 0,
-      )
-    : null;
+  const personalMonthlyEur =
+    perCapitaMonthly(nationalAnnualEur, opts.basePath) ??
+    (monthlies
+      ? projectLocalScopeLevel2Monthly(
+          monthlies,
+          "dept",
+          entry.share_of_parent ?? 0,
+        )
+      : null);
   const personalMonthlyLabel =
     personalMonthlyEur != null
       ? formatMonthlyEur(personalMonthlyEur, locale)
@@ -997,14 +1028,15 @@ function resolveLocalScope(ctx: ResolveCtx): ResolvedRender | null {
     locale,
   );
 
-  // Personal monthly du scope = total du bloc pour le profil.
-  const personalMonthlyEur = monthlies
-    ? scope === "bloc_communal"
-      ? monthlies.blocCommunalMonthly
-      : scope === "dept"
-        ? monthlies.departementMonthly
-        : monthlies.regionMonthly
-    : null;
+  const personalMonthlyEur =
+    perCapitaMonthly(nationalAnnualEur, opts.basePath) ??
+    (monthlies
+      ? scope === "bloc_communal"
+        ? monthlies.blocCommunalMonthly
+        : scope === "dept"
+          ? monthlies.departementMonthly
+          : monthlies.regionMonthly
+      : null);
   const personalMonthlyLabel =
     personalMonthlyEur != null
       ? formatMonthlyEur(personalMonthlyEur, locale)

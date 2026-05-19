@@ -14,6 +14,7 @@ import {
   computeBreakdownCapital,
   computeBreakdownIndependant,
   computeInstitutionShares,
+  computeInstitutionSharesCausal,
   computeAssoBreakdown,
   computeStateBuckets,
   computeLocalLevels,
@@ -25,8 +26,8 @@ import {
   EditableSelect,
   EditableCommune,
 } from "@/components/fusion/EditableInlineSpan";
-import DailyBreadEquivalentCard from "@/components/fusion/DailyBreadEquivalentCard";
-import { getPictoForKey } from "@/components/fusion/DailyBreadPictograms";
+// DailyBreadEquivalentCard + getPictoForKey — supprimés avec §06 synthèse
+// (mai 2026). Conservés dans /components/fusion/ pour usage futur éventuel.
 
 // ─── Sources de revenus (cumulatif) ──────────────────────────────────────
 // L'utilisateur peut cumuler plusieurs sources simultanément (cas réel :
@@ -246,7 +247,8 @@ const ETAT_TOP_ALIAS_AGG: Record<string, string> = {
   ecologie_logement_transports: "ecologie_logement_transports",
   culture_medias_sport: "culture_medias_sport",
   dette: "dette",
-  autres: "autres",
+  autres_ministeres: "autres",
+  // contribution_ue + autres_etat_hors_plf : pas de drawer (overlay-only).
 };
 
 // (Alias LOCAL_* — supprimés en mai 2026 : ils alimentaient les rows
@@ -301,6 +303,10 @@ export default function DailyBreadClient({
         m.set(inPage, `/ville/paris/daily-bread/bucket/etat/agg/${aggKey}`);
       }
     }
+    // La ligne "Contribution UE" ouvre la fiche recette détaillée (PSR-UE
+    // décomposé en RNB/TVA/plastique/NGEU + bilan brut/reçu/net) — partage
+    // la même fiche que /france/budget/recettes/psr_ue.
+    m.set("contribution_ue", "/france/budget/recettes/psr_ue");
     return m;
   }, [drilldownIndex]);
   // (URLs alias bloc-communal-seed / fonctionnelle / dept / region —
@@ -396,9 +402,14 @@ export default function DailyBreadClient({
     setOpenFiscaError(null);
   }, [salaireMonthly, parts, commune?.insee]);
 
-  // "Autres revenus" déplié si une source non-salaire est non nulle (URL deep-link)
+  // "Autres revenus" : auparavant déplié seulement si une source non-salaire
+  // était dans l'URL. Depuis post user-testing (mai 2026), on déplie TOUJOURS
+  // par défaut pour discoverability — les utilisateurs ne réalisaient pas
+  // qu'on accepte pension/capital/indép. Variable conservée pour signature
+  // mais non utilisée — voir <details open> plus bas.
   const initialOtherIncomesOpen =
     initialPension > 0 || initialCapital > 0 || initialIndepCa > 0;
+  void initialOtherIncomesOpen;
 
   // Sync URL when inputs change. Cas par défaut salarié = URL minimale
   // (?net=2100&parts=1&c=paris) ; on omet les zéros pour rester propre.
@@ -756,42 +767,79 @@ export default function DailyBreadClient({
     return Math.abs(diff) > 1 ? diff : null;
   }, [openFiscaResult, breakdownSalaireJsLocal.total]);
 
+  // ─── Pivot Approche A (mai 2026) ────────────────────────────────────
+  // Daily Bread n'utilise PLUS de dispatch perso (ni causal ni proportionnel).
+  // À la place, les panneaux §02-05 affichent la dépense publique nationale
+  // PER-CAPITA — ce que la France dépense par habitant en moyenne sur chaque
+  // sous-secteur. La §06 synthèse compare la contribution perso (856 €/mois)
+  // à la moyenne per-capita (~2 200 €/mois/hab) et explique le gap (cotisations
+  // employeurs invisibles, IS, déficit, etc.). Promesse honnête : pas de claim
+  // que "TES euros vont précisément à X" (ce qui est conceptuellement faux).
+  //
+  // institutionShares + secuShare/etatShare/localShare gardés pour compat
+  // (notamment pour le total perso utilisé dans §06).
   const institutionShares = useMemo(
-    () => (db ? computeInstitutionShares(totalAnnuel, db) : []),
-    [db, totalAnnuel],
+    () =>
+      db
+        ? computeInstitutionSharesCausal(
+            {
+              breakdownSalaire,
+              breakdownRetraite,
+              breakdownCapital,
+              breakdownIndep,
+              tfAnnual: tfEstimated,
+            },
+            db,
+          )
+        : [],
+    [db, breakdownSalaire, breakdownRetraite, breakdownCapital, breakdownIndep, tfEstimated],
   );
+  void computeInstitutionShares;
 
-  const secuShare = institutionShares.find((i) => i.code === "S1314");
+  // secuShare/etatShare/localShare — gardés pour les conditionals des panels
+  // (étant donné que assoBranches/stateBuckets/localLevels sont per-capita,
+  // ces "shares" ne projettent plus le perso de l'utilisateur). secuShare
+  // n'est plus utilisé en post-§06-drop ; etat/local servent au conditional
+  // de rendu des panels §04/§05 (présent uniquement quand drilldown OK).
   const etatShare = institutionShares.find((i) => i.code === "S1311");
   const localShare = institutionShares.find((i) => i.code === "S1313");
 
-  const secuMonthly = secuShare ? secuShare.annual_eur / 12 : 0;
-  const etatMonthly = etatShare ? etatShare.annual_eur / 12 : 0;
-  const localMonthly = localShare ? localShare.annual_eur / 12 : 0;
+  // PER-CAPITA national constants (Approche A) — ce que la France dépense
+  // par habitant chaque mois en moyenne, par sous-secteur. Population INSEE
+  // 1er janvier 2024 (~68 M) depuis db.apu_subsectors.totals.population_france.
+  const populationFr =
+    db?.apu_subsectors?.totals?.population_france ?? 68042591;
+  const s1311Total = db?.apu_subsectors?.institutions?.S1311?.annual_eur ?? 0;
+  const s1313Total = db?.apu_subsectors?.institutions?.S1313?.annual_eur ?? 0;
+  const s1314Total = db?.apu_subsectors?.institutions?.S1314?.annual_eur ?? 0;
+  const secuMonthly = populationFr > 0 ? s1314Total / populationFr / 12 : 0;
+  const etatMonthly = populationFr > 0 ? s1311Total / populationFr / 12 : 0;
+  const localMonthly = populationFr > 0 ? s1313Total / populationFr / 12 : 0;
+  const totalPerCapitaMonthly = secuMonthly + etatMonthly + localMonthly;
 
+  // Pour les sub-rows : on utilise les TOTAUX nationaux (pas la share perso)
+  // et on divise par population × 12 pour obtenir le per-capita par branche.
   const assoBranches = useMemo(
-    () => (db && secuShare ? computeAssoBreakdown(secuShare.annual_eur, db) : []),
-    [db, secuShare],
+    () => (db ? computeAssoBreakdown(s1314Total, db) : []),
+    [db, s1314Total],
   );
 
   const stateBuckets = useMemo(
-    () => (db && etatShare ? computeStateBuckets(etatShare.annual_eur, db) : []),
-    [db, etatShare],
+    () => (db ? computeStateBuckets(s1311Total, db) : []),
+    [db, s1311Total],
   );
 
   const localLevels = useMemo(() => {
-    if (!db || !localShare) return [];
-    const nationalAvg = db.local_avg_dep_eur_hab.value_eur_hab ?? 1500;
-    const ratio = commune && commune.eur_hab > 0 && nationalAvg > 0
-      ? commune.eur_hab / nationalAvg
-      : 1;
+    if (!db) return [];
+    // Pour le local, on garde les shares OFGL nationales (55/30/15) sans
+    // pondération commune — c'est de la moyenne nationale par habitant.
     return computeLocalLevels(
-      localShare.annual_eur,
+      s1313Total,
       db,
-      ratio,
-      isCollectiviteUnique(commune?.slug),
+      1, // ratio = 1 → pas de pondération Paris pour le national per-capita
+      false, // pas de collectivité-unique merge ; vue nationale
     );
-  }, [db, localShare, commune]);
+  }, [db, s1313Total]);
 
   // ─── Deep-dives — supprimés (2026-05) ──────────────────────────────
   //   La section "À l'intérieur de…" sur la page principale était
@@ -814,6 +862,14 @@ export default function DailyBreadClient({
     const eleveJour = items.cout_eleve_jour_scolaire_public?.value ?? 52;
     const ticket = items.trajet_metro_paris?.value ?? 2.5;
 
+    // Approche A : monthly_eur dans assoBranches/stateBuckets/localLevels est
+    // désormais le NATIONAL monthly total (798 Md€ × share / 12). Pour
+    // les équivalents, on convertit en per-capita en divisant par la
+    // population française. Le label "Ta cotisation X €/mois" devient
+    // "X €/mois/habitant" pour cohérence avec le reste de Daily Bread.
+    const toPerCapita = (n: number) =>
+      populationFr > 0 ? n / populationFr : 0;
+
     // CNAM = "part_cnam_maladie"
     const cnam = assoBranches.find((b) => b.key === "part_cnam_maladie");
     const cnav = assoBranches.find((b) => b.key === "part_cnav_retraites");
@@ -821,135 +877,154 @@ export default function DailyBreadClient({
     const educ = stateBuckets.find((b) => b.key === "education_recherche");
     const dette = stateBuckets.find((b) => b.key === "dette");
     const blocCommunal = localLevels.find((l) => l.key === "bloc_communal");
+    // Per-capita monthly pour chaque équivalent
+    const cnamPC = cnam ? toPerCapita(cnam.monthly_eur) : 0;
+    const cnavPC = cnav ? toPerCapita(cnav.monthly_eur) : 0;
+    const educPC = educ ? toPerCapita(educ.monthly_eur) : 0;
+    const dettePC = dette ? toPerCapita(dette.monthly_eur) : 0;
+    const blocPC = blocCommunal ? toPerCapita(blocCommunal.monthly_eur) : 0;
 
     return [
-      cnam && {
+      cnam && cnamPC > 0 && {
         key: "sante" as const,
         institution: "secu" as const,
         tagFr: "SANTÉ · SÉCURITÉ SOCIALE",
         tagEn: "HEALTH · SOCIAL SECURITY",
-        // "5" pas "≈ 5" — le ≈ alourdit visuellement, le contexte rend l'idée
-        // d'estimation explicite via les sources.
-        number: (cnam.monthly_eur / consult).toLocaleString(
+        number: (cnamPC / consult).toLocaleString(
           locale === "en" ? "en-GB" : "fr-FR",
-          { maximumFractionDigits: 0 },
+          { maximumFractionDigits: 1 },
         ),
-        claimAFr: "consultations",
+        claimAFr: "consultations généralistes",
         claimAEn: "GP visits",
-        claimBFr: "chez le généraliste.",
-        claimBEn: "with your GP.",
-        editorialFr: "Soit presque un check-up par semaine.",
-        editorialEn: "Roughly a check-up per week.",
+        claimBFr: "(valeur équivalente / habitant / mois).",
+        claimBEn: "(equivalent value / inhabitant / month).",
+        editorialFr: "Si tout l'argent de la branche maladie allait à des consultations chez le GP, ça en paierait 15 par habitant et par mois. En réalité, la branche maladie finance aussi hôpital, médicaments, médico-social — c'est un ordre de grandeur.",
+        editorialEn: "If all health-branch spending went to GP visits, it would pay for 15 per inhabitant per month. In reality, the health branch also funds hospitals, medication, long-term care — this is an order of magnitude.",
         sourceDetailFr: "Convention médicale 2024 · 30 € la consultation.",
         sourceDetailEn: "Medical agreement 2024 · €30 per visit.",
-        viaDetailFr: `Ta cotisation à la branche maladie : ${fmtEur(cnam.monthly_eur, locale, 0)} €/mois.`,
-        viaDetailEn: `Your contribution to the health branch: €${fmtEur(cnam.monthly_eur, locale, 0)}/month.`,
-        // Fallback pour le partage social et éventuels anciens consommateurs.
-        headline: `≈ ${(cnam.monthly_eur / consult).toLocaleString(
+        viaDetailFr: `Branche maladie : ${fmtEur(cnamPC, locale, 0)} €/mois/habitant.`,
+        viaDetailEn: `Health branch: €${fmtEur(cnamPC, locale, 0)}/month/inhabitant.`,
+        headline: `≈ ${(cnamPC / consult).toLocaleString(
           locale === "en" ? "en-GB" : "fr-FR",
-          { maximumFractionDigits: 0 },
+          { maximumFractionDigits: 1 },
         )}`,
-        unitFr: "consultations généralistes / mois",
-        unitEn: "GP consultations / month",
-        amount: cnam.monthly_eur,
+        unitFr: "consultations / mois / hab",
+        unitEn: "GP visits / month / inhab",
+        amount: cnamPC,
         sub: "CNAM",
         viaFr: "via CNAM",
         viaEn: "via CNAM",
       },
-      cnav && {
+      cnav && cnavPC > 0 && {
         key: "retraite" as const,
         institution: "secu" as const,
         tagFr: "RETRAITES · CNAV",
         tagEn: "PENSIONS · CNAV",
-        number: `${((cnav.monthly_eur / pension) * 100).toLocaleString(
+        number: `${((cnavPC / pension) * 100).toLocaleString(
           locale === "en" ? "en-GB" : "fr-FR",
           { maximumFractionDigits: 0 },
         )} %`,
-        claimAFr: "d'une pension",
-        claimAEn: "of a pension",
-        editorialFr: "Tu cotises chaque mois pour les pensions actuelles.",
-        editorialEn: "You contribute each month to current pensions.",
+        claimAFr: "d'une pension moyenne",
+        claimAEn: "of an average pension",
+        claimBFr: "(valeur équivalente / habitant / mois).",
+        claimBEn: "(equivalent value / inhabitant / month).",
+        editorialFr: "La dépense retraite par habitant équivaut à 23 % d'une pension moyenne (1 626 €/mois, DREES). En réalité chaque pensionné reçoit sa pension complète — l'équivalent ramène la dépense totale à un objet du quotidien.",
+        editorialEn: "Pension spending per inhabitant equals 23 % of an average pension (€1,626/month, DREES). In reality each pensioner receives their full pension — the equivalent scales total spending to an everyday item.",
         sourceDetailFr: "DREES 2024 · pension moyenne 1 626 €/mois.",
         sourceDetailEn: "DREES 2024 · average pension €1,626/month.",
-        headline: `≈ ${((cnav.monthly_eur / pension) * 100).toLocaleString(
+        viaDetailFr: `Branche retraite : ${fmtEur(cnavPC, locale, 0)} €/mois/habitant.`,
+        viaDetailEn: `Pension branch: €${fmtEur(cnavPC, locale, 0)}/month/inhabitant.`,
+        headline: `≈ ${((cnavPC / pension) * 100).toLocaleString(
           locale === "en" ? "en-GB" : "fr-FR",
           { maximumFractionDigits: 0 },
         )} %`,
-        unitFr: "d'une pension moyenne",
-        unitEn: "of an average pension",
-        amount: cnav.monthly_eur,
+        unitFr: "d'une pension moyenne / hab",
+        unitEn: "of an average pension / inhab",
+        amount: cnavPC,
         sub: "CNAV",
         viaFr: "via CNAV",
         viaEn: "via CNAV",
       },
-      educ && {
+      educ && educPC > 0 && {
         key: "ecole" as const,
         institution: "etat" as const,
         tagFr: "ÉCOLE · ÉTAT",
         tagEn: "SCHOOL · STATE",
-        number: (educ.monthly_eur / eleveJour).toLocaleString(
+        number: (educPC / eleveJour).toLocaleString(
           locale === "en" ? "en-GB" : "fr-FR",
-          { maximumFractionDigits: 1 },
+          { maximumFractionDigits: 2 },
         ),
         claimAFr: "jours d'école",
         claimAEn: "school-days",
-        editorialFr: "Pour un élève public — sur 9 350 €/an de coût total.",
-        editorialEn: "For one student — out of €9,350/year total cost.",
+        claimBFr: "(valeur équivalente / habitant / mois).",
+        claimBEn: "(equivalent value / inhabitant / month).",
+        editorialFr: "La dépense Éducation par habitant équivaut à 3,6 jours de scolarité (52 €/jour/élève, DEPP). En réalité ~17 % des Français sont élèves — l'équivalent ramène la dépense totale à un objet du quotidien.",
+        editorialEn: "Education spending per inhabitant equals 3.6 school-days (€52/day/student, DEPP). In reality ~17 % of French residents are students — the equivalent scales total spending to an everyday item.",
         sourceDetailFr: "DEPP RERS 2023 · ~9 350 €/an par élève.",
         sourceDetailEn: "DEPP RERS 2023 · ~€9,350/year per student.",
-        headline: `≈ ${(educ.monthly_eur / eleveJour).toLocaleString(
+        viaDetailFr: `Éducation État : ${fmtEur(educPC, locale, 0)} €/mois/habitant.`,
+        viaDetailEn: `State education: €${fmtEur(educPC, locale, 0)}/month/inhab.`,
+        headline: `≈ ${(educPC / eleveJour).toLocaleString(
           locale === "en" ? "en-GB" : "fr-FR",
-          { maximumFractionDigits: 1 },
+          { maximumFractionDigits: 2 },
         )}`,
-        unitFr: "jours d'école / 1 élève",
-        unitEn: "days of school / 1 student",
-        amount: educ.monthly_eur,
+        unitFr: "jours d'école / mois / hab",
+        unitEn: "school-days / month / inhab",
+        amount: educPC,
         sub: locale === "en" ? "State" : "État",
         viaFr: "via État",
         viaEn: "via State",
       },
-      blocCommunal && {
+      blocCommunal && blocPC > 0 && {
         key: "transport" as const,
         institution: "local" as const,
         tagFr: "TRANSPORT · COLLECTIVITÉS",
         tagEn: "TRANSPORT · LOCAL",
-        number: (blocCommunal.monthly_eur / ticket).toLocaleString(
+        number: (blocPC / ticket).toLocaleString(
           locale === "en" ? "en-GB" : "fr-FR",
           { maximumFractionDigits: 0 },
         ),
-        claimAFr: "trajets en bus",
-        claimAEn: "bus trips",
-        editorialFr: "Soit ton mois de transport quasi gratuit.",
-        editorialEn: "Almost your monthly transit pass.",
+        claimAFr: "trajets urbains",
+        claimAEn: "urban transit trips",
+        claimBFr: "(valeur équivalente / habitant / mois).",
+        claimBEn: "(equivalent value / inhabitant / month).",
+        editorialFr: "La dépense bloc communal par habitant équivaut à 90 trajets bus/métro/tram (2,50 €/trajet, UTP). En réalité elle finance aussi voirie, écoles, propreté, culture — c'est un ordre de grandeur.",
+        editorialEn: "Municipal-block spending per inhabitant equals 90 transit trips (€2.50/trip, UTP). In reality it also funds roads, schools, waste, culture — this is an order of magnitude.",
         sourceDetailFr: "UTP 2024 · 2,50 € le trajet urbain.",
         sourceDetailEn: "UTP 2024 · €2.50 per urban trip.",
-        headline: `≈ ${(blocCommunal.monthly_eur / ticket).toLocaleString(
+        viaDetailFr: `Bloc communal : ${fmtEur(blocPC, locale, 0)} €/mois/habitant.`,
+        viaDetailEn: `Municipal block: €${fmtEur(blocPC, locale, 0)}/month/inhab.`,
+        headline: `≈ ${(blocPC / ticket).toLocaleString(
           locale === "en" ? "en-GB" : "fr-FR",
           { maximumFractionDigits: 0 },
         )}`,
-        unitFr: "tickets de transport / mois",
-        unitEn: "transit tickets / month",
-        amount: blocCommunal.monthly_eur,
-        sub: commune?.nom ?? (locale === "en" ? "Municipal" : "Bloc communal"),
-        viaFr: commune?.nom ? `via ${commune.nom}` : "via Bloc communal",
-        viaEn: commune?.nom ? `via ${commune.nom}` : "via municipal",
+        unitFr: "tickets transport / mois / hab",
+        unitEn: "transit tickets / month / inhab",
+        amount: blocPC,
+        sub: locale === "en" ? "Municipal" : "Bloc communal",
+        viaFr: "via collectivités",
+        viaEn: "via local authorities",
       },
-      dette && {
+      dette && dettePC > 0 && {
         key: "dette" as const,
         institution: "etat" as const,
         tagFr: "DETTE · ÉTAT",
         tagEn: "DEBT · STATE",
-        number: `${fmtEur(dette.monthly_eur, locale, 0)} €`,
-        claimAFr: "d'intérêts",
-        claimAEn: "in interest",
-        editorialFr: "Sur la dette publique — en hausse depuis 2022.",
-        editorialEn: "On public debt — rising since 2022.",
+        number: `${fmtEur(dettePC, locale, 0)} €`,
+        claimAFr: "d'intérêts par habitant",
+        claimAEn: "of interest per inhabitant",
+        claimBFr: "par mois sur la dette publique.",
+        claimBEn: "per month on public debt.",
+        editorialFr: "Charge réelle d'intérêts payés sur la dette publique, ramenée par habitant. En hausse depuis 2022 avec la remontée des taux.",
+        editorialEn: "Real interest paid on public debt, per inhabitant. Rising since 2022 with higher interest rates.",
         sourceDetailFr: "AFT 2025 · charge de la dette votée au PLF.",
         sourceDetailEn: "AFT 2025 · debt service voted in PLF.",
-        headline: `≈ ${fmtEur(dette.monthly_eur, locale, 0)} €`,
-        unitFr: "d'intérêts de la dette / mois",
-        unitEn: "in debt interest / month",
-        amount: dette.monthly_eur,
+        viaDetailFr: `Service de la dette : ${fmtEur(dettePC, locale, 0)} €/mois/habitant.`,
+        viaDetailEn: `Debt service: €${fmtEur(dettePC, locale, 0)}/month/inhab.`,
+        headline: `≈ ${fmtEur(dettePC, locale, 0)} €`,
+        unitFr: "d'intérêts dette / mois / hab",
+        unitEn: "debt interest / month / inhab",
+        amount: dettePC,
         sub: locale === "en" ? "Interest" : "Intérêts",
         viaFr: "via service de la dette",
         viaEn: "via debt service",
@@ -999,6 +1074,29 @@ export default function DailyBreadClient({
         <Navbar />
       </div>
       <main id="main-content" tabIndex={-1}>
+        {/* ── PANNEAU 0 — ONBOARDING (post user-testing fix) ── */}
+        {/* Bloc d'intro pédagogique pour clarifier ce qu'on propose dès
+            l'arrivée sur la page : profil personnalisable → contribution
+            mensuelle → drilldown des dépenses. Sans ça, l'utilisateur
+            arrivait sur §01 sans comprendre que les valeurs étaient
+            éditables ni la promesse de la page. */}
+        <section className="db-panel db-p-onboarding">
+          <div className="db-panel-wrap db-p-onboarding-wrap">
+            <p className="db-p-onboarding-kicker">
+              {t("db.hero.onboarding.kicker")}
+            </p>
+            <h1 className="db-p-onboarding-title">
+              {t("db.hero.onboarding.title")}
+            </h1>
+            <p className="db-p-onboarding-standfirst">
+              {t("db.hero.onboarding.standfirst")}
+            </p>
+            <p className="db-p-onboarding-hint">
+              {renderTagged(t("db.hero.onboarding.hint"))}
+            </p>
+          </div>
+        </section>
+
         {/* ── PANNEAU 1 — HERO ÉDITABLE (fusion §00 + §01) ── */}
         {/* Le hero fusionné NYT-style : les paramètres du calcul (salaire,
             parts, commune) sont des spans cliquables intégrés DANS la phrase
@@ -1405,9 +1503,7 @@ export default function DailyBreadClient({
                 coché propriétaire. */}
             <details
               className="db-p-hero-advanced"
-              open={
-                initialOtherIncomesOpen || isOwner || undefined
-              }
+              open
             >
               <summary className="db-p-hero-advanced-summary">
                 <span>{t("db.hero.advanced.summary")}</span>
@@ -1617,7 +1713,7 @@ export default function DailyBreadClient({
         </section>
 
         {/* ── PANNEAU 2 — DISPATCH ── */}
-        {institutionShares.length === 3 && (
+        {totalPerCapitaMonthly > 0 && (
           <section id="db-disp" className="db-panel db-p-disp">
             <div className="db-panel-wrap">
               <p className="db-panel-num">
@@ -1631,6 +1727,10 @@ export default function DailyBreadClient({
                 {renderTagged(
                   t("db.disp.deck")
                     .replace("{monthly}", fmtEur(totalMonthly, locale, 0))
+                    .replace(
+                      "{perCapita}",
+                      fmtEur(totalPerCapitaMonthly, locale, 0),
+                    )
                     .replace("{year}", String(db?.apu_subsectors.year ?? "")),
                   {
                     b1: { color: "var(--p-secu)", fontWeight: 600 },
@@ -1640,79 +1740,136 @@ export default function DailyBreadClient({
                 )}
               </p>
 
-              <div
-                ref={triStackRef}
-                className={`db-stack-tri${triStackRevealed ? " is-revealed" : ""}`}
-                style={{
-                  gridTemplateColumns: institutionShares
-                    .map((i) => `${i.share * 100}fr`)
-                    .join(" "),
-                }}
-              >
-                <div style={{ background: "var(--p-secu)" }}>
-                  <div className="db-stack-tri-pct tnum">
-                    <RevealCountNum
-                      value={(secuShare?.share ?? 0) * 100}
-                      revealed={triStackRevealed}
-                      duration={600}
-                      format={(v) => `${Math.round(v)} %`}
-                    />
+              {/* Per-capita national : shares S1314/S1311/S1313 dans S13. */}
+              {(() => {
+                const sumS13 = s1311Total + s1313Total + s1314Total;
+                const secuPctNat = sumS13 > 0 ? s1314Total / sumS13 : 0;
+                const etatPctNat = sumS13 > 0 ? s1311Total / sumS13 : 0;
+                const localPctNat = sumS13 > 0 ? s1313Total / sumS13 : 0;
+                return (
+                  <div
+                    ref={triStackRef}
+                    className={`db-stack-tri${triStackRevealed ? " is-revealed" : ""}`}
+                    style={{
+                      gridTemplateColumns: `${secuPctNat * 100}fr ${etatPctNat * 100}fr ${localPctNat * 100}fr`,
+                    }}
+                  >
+                    <div style={{ background: "var(--p-secu)" }}>
+                      <div className="db-stack-tri-pct tnum">
+                        <RevealCountNum
+                          value={secuPctNat * 100}
+                          revealed={triStackRevealed}
+                          duration={600}
+                          format={(v) => `${Math.round(v)} %`}
+                        />
+                      </div>
+                      <div className="db-stack-tri-name">
+                        {locale === "en" ? "Social security" : "Sécurité sociale"}
+                      </div>
+                      <div className="db-stack-tri-amt tnum">
+                        <RevealCountNum
+                          value={secuMonthly}
+                          revealed={triStackRevealed}
+                          duration={650}
+                          format={(v) => `${fmtEur(v, locale, 0)} €/${locale === "en" ? "mo/hab" : "mois/hab"}`}
+                        />
+                      </div>
+                    </div>
+                    <div style={{ background: "var(--p-etat)" }}>
+                      <div className="db-stack-tri-pct tnum">
+                        <RevealCountNum
+                          value={etatPctNat * 100}
+                          revealed={triStackRevealed}
+                          duration={600}
+                          format={(v) => `${Math.round(v)} %`}
+                        />
+                      </div>
+                      <div className="db-stack-tri-name">
+                        {locale === "en" ? "Central government" : "État central"}
+                      </div>
+                      <div className="db-stack-tri-amt tnum">
+                        <RevealCountNum
+                          value={etatMonthly}
+                          revealed={triStackRevealed}
+                          duration={650}
+                          format={(v) => `${fmtEur(v, locale, 0)} €/${locale === "en" ? "mo/hab" : "mois/hab"}`}
+                        />
+                      </div>
+                    </div>
+                    <div style={{ background: "var(--p-local)" }}>
+                      <div className="db-stack-tri-pct tnum">
+                        <RevealCountNum
+                          value={localPctNat * 100}
+                          revealed={triStackRevealed}
+                          duration={600}
+                          format={(v) => `${Math.round(v)} %`}
+                        />
+                      </div>
+                      <div className="db-stack-tri-name">
+                        {locale === "en" ? "Local" : "Local"}
+                      </div>
+                      <div className="db-stack-tri-amt tnum">
+                        <RevealCountNum
+                          value={localMonthly}
+                          revealed={triStackRevealed}
+                          duration={650}
+                          format={(v) => `${fmtEur(v, locale, 0)} €/${locale === "en" ? "mo/hab" : "mois/hab"}`}
+                        />
+                      </div>
+                    </div>
                   </div>
-                  <div className="db-stack-tri-name">
-                    {locale === "en" ? "Social security" : "Sécurité sociale"}
+                );
+              })()}
+
+              {/* Galerie "À retenir" — 4 chiffres macro shareable (remplace
+                  les anciens équivalents perso "valeur équivalente"). */}
+              {db && (
+                <div className="db-disp-key-figures">
+                  <p className="db-disp-key-figures-title">
+                    {t("db.disp.keyfigures.title")}
+                  </p>
+                  <div className="db-disp-key-figures-grid">
+                    <div className="db-disp-key-figure">
+                      <p className="db-disp-key-figure-num tnum">
+                        {fmtBnEur(
+                          s1311Total + s1313Total + s1314Total,
+                          locale,
+                        )}
+                      </p>
+                      <p className="db-disp-key-figure-label">
+                        {t("db.disp.keyfigures.total")}
+                      </p>
+                    </div>
+                    <div className="db-disp-key-figure">
+                      <p className="db-disp-key-figure-num tnum">
+                        ~175 Md€
+                      </p>
+                      <p className="db-disp-key-figure-label">
+                        {t("db.disp.keyfigures.deficit")}
+                      </p>
+                    </div>
+                    <div className="db-disp-key-figure">
+                      <p className="db-disp-key-figure-num tnum">
+                        ~215 Md€
+                      </p>
+                      <p className="db-disp-key-figure-label">
+                        {t("db.disp.keyfigures.cotisations_employeurs")}
+                      </p>
+                    </div>
+                    <div className="db-disp-key-figure">
+                      <p className="db-disp-key-figure-num tnum">
+                        ~23,3 Md€
+                      </p>
+                      <p className="db-disp-key-figure-label">
+                        {t("db.disp.keyfigures.psr_ue")}
+                      </p>
+                    </div>
                   </div>
-                  <div className="db-stack-tri-amt tnum">
-                    <RevealCountNum
-                      value={secuMonthly}
-                      revealed={triStackRevealed}
-                      duration={650}
-                      format={(v) => `${fmtEur(v, locale, 0)} €/${locale === "en" ? "mo" : "mois"}`}
-                    />
-                  </div>
+                  <p className="db-disp-key-figures-src">
+                    {t("db.disp.keyfigures.sources")}
+                  </p>
                 </div>
-                <div style={{ background: "var(--p-etat)" }}>
-                  <div className="db-stack-tri-pct tnum">
-                    <RevealCountNum
-                      value={(etatShare?.share ?? 0) * 100}
-                      revealed={triStackRevealed}
-                      duration={600}
-                      format={(v) => `${Math.round(v)} %`}
-                    />
-                  </div>
-                  <div className="db-stack-tri-name">
-                    {locale === "en" ? "Central government" : "État central"}
-                  </div>
-                  <div className="db-stack-tri-amt tnum">
-                    <RevealCountNum
-                      value={etatMonthly}
-                      revealed={triStackRevealed}
-                      duration={650}
-                      format={(v) => `${fmtEur(v, locale, 0)} €/${locale === "en" ? "mo" : "mois"}`}
-                    />
-                  </div>
-                </div>
-                <div style={{ background: "var(--p-local)" }}>
-                  <div className="db-stack-tri-pct tnum">
-                    <RevealCountNum
-                      value={(localShare?.share ?? 0) * 100}
-                      revealed={triStackRevealed}
-                      duration={600}
-                      format={(v) => `${Math.round(v)} %`}
-                    />
-                  </div>
-                  <div className="db-stack-tri-name">
-                    {locale === "en" ? "Local" : "Local"}
-                  </div>
-                  <div className="db-stack-tri-amt tnum">
-                    <RevealCountNum
-                      value={localMonthly}
-                      revealed={triStackRevealed}
-                      duration={650}
-                      format={(v) => `${fmtEur(v, locale, 0)} €/${locale === "en" ? "mo" : "mois"}`}
-                    />
-                  </div>
-                </div>
-              </div>
+              )}
 
               <p className="db-panel-foot-cue">{t("db.disp.foot_cue")}</p>
             </div>
@@ -1720,7 +1877,7 @@ export default function DailyBreadClient({
         )}
 
         {/* ── PANNEAU 3 — Zoom Sécu ── */}
-        {assoBranches.length > 0 && secuShare && (
+        {assoBranches.length > 0 && (
           <section
             ref={panel3Ref}
             className={`db-panel db-p-zoom db-panel-fade${panel3Revealed ? " is-revealed" : ""}`}
@@ -1742,15 +1899,15 @@ export default function DailyBreadClient({
                   <p className="db-p-zoom-eur c-secu tnum">
                     {fmtEur(secuMonthly, locale, 0)}
                     <span className="eur-unit">
-                      €/{locale === "en" ? "mo" : "mois"}
+                      €/{locale === "en" ? "mo/inhab" : "mois/hab"}
                     </span>
                   </p>
                   <p className="db-p-zoom-name">{t("db.secu.name")}</p>
                   <p className="db-p-zoom-pct-line tnum">
-                    <b>{Math.round((secuShare.share ?? 0) * 100)} %</b>{" "}
+                    <b>{Math.round(((s1311Total + s1313Total + s1314Total) > 0 ? s1314Total / (s1311Total + s1313Total + s1314Total) : 0) * 100)} %</b>{" "}
                     {locale === "en"
                       ? "of your contribution"
-                      : "de ta contribution"}
+                      : "des dépenses publiques nationales"}
                   </p>
                   <div className="db-p-zoom-deck">
                     <p>{renderTagged(t("db.secu.deck1"))}</p>
@@ -1762,13 +1919,22 @@ export default function DailyBreadClient({
                 </div>
 
                 <BarList
-                  items={assoBranches.map((b) => ({
-                    key: b.key,
-                    name: locale === "en" ? b.label_en : b.label_fr,
-                    monthly: b.monthly_eur,
-                    share: b.share,
-                    // pas de sub-label : le titre porte déjà le nom complet
-                  }))}
+                  items={assoBranches.map((b) => {
+                    // Per-capita : b.monthly_eur est le national monthly
+                    // total (S1314 × share / 12). Divisé par population pour
+                    // afficher €/mois/habitant.
+                    return {
+                      key: b.key,
+                      name: locale === "en" ? b.label_en : b.label_fr,
+                      monthly: populationFr > 0 ? b.monthly_eur / populationFr : 0,
+                      nationalAnnual: b.annual_eur,
+                      share: b.share,
+                      sub:
+                        b.key === "part_cnav_retraites"
+                          ? t("db.secu.retraite_sub")
+                          : undefined,
+                    };
+                  })}
                   color="c-secu"
                   locale={locale}
                   clickableUrls={secuTopUrls}
@@ -1801,15 +1967,15 @@ export default function DailyBreadClient({
                   <p className="db-p-zoom-eur c-etat tnum">
                     {fmtEur(etatMonthly, locale, 0)}
                     <span className="eur-unit">
-                      €/{locale === "en" ? "mo" : "mois"}
+                      €/{locale === "en" ? "mo/inhab" : "mois/hab"}
                     </span>
                   </p>
                   <p className="db-p-zoom-name">{t("db.etat.name")}</p>
                   <p className="db-p-zoom-pct-line tnum">
-                    <b>{Math.round((etatShare.share ?? 0) * 100)} %</b>{" "}
+                    <b>{Math.round(((s1311Total + s1313Total + s1314Total) > 0 ? s1311Total / (s1311Total + s1313Total + s1314Total) : 0) * 100)} %</b>{" "}
                     {locale === "en"
                       ? "of your contribution"
-                      : "de ta contribution"}
+                      : "des dépenses publiques nationales"}
                   </p>
                   <div className="db-p-zoom-deck">
                     <p>{renderTagged(t("db.etat.deck1"))}</p>
@@ -1822,39 +1988,32 @@ export default function DailyBreadClient({
 
                 <BarList
                   items={(() => {
-                    const buckets = stateBuckets.map((b) => ({
-                      key: b.key,
-                      name: locale === "en" ? b.label_en : b.label_fr,
-                      monthly: b.monthly_eur,
-                      share: b.share_of_state,
-                      sub:
-                        b.missions.length > 1
-                          ? b.missions
-                              .map((m) => m.label)
-                              .slice(0, 3)
-                              .join(" · ")
-                          : undefined,
-                    }));
-                    // Résidu S1311 hors missions PLF = ODAC + comptes spéciaux
-                    // + budgets annexes (≈ 230 Md€/an, ~34% de S1311). Sans
-                    // cette ligne, la somme des barres ne matche pas l'État
-                    // monthly (incohérence visuelle vs Sécu/Local qui somment
-                    // à 100%).
-                    const sumShares = buckets.reduce(
-                      (acc, b) => acc + (b.share ?? 0),
-                      0,
-                    );
-                    const residualShare = Math.max(0, 1 - sumShares);
-                    if (residualShare > 0.005) {
-                      buckets.push({
-                        key: "autres_etat_hors_plf",
-                        name: t("db.etat.bucket.autres.name"),
-                        monthly: etatMonthly * residualShare,
-                        share: residualShare,
-                        sub: t("db.etat.bucket.autres.sub"),
-                      });
-                    }
-                    return buckets;
+                    const s1311Total =
+                      db?.apu_subsectors?.institutions?.S1311?.annual_eur ?? 0;
+                    return stateBuckets.map((b) => {
+                      const missionLabels = b.missions
+                        .map((m) => m.label)
+                        .slice(0, 3);
+                      const overlayLabels = (b.overlay_items ?? [])
+                        .map((it) =>
+                          locale === "en" ? it.label_en : it.label_fr,
+                        )
+                        .slice(0, 4);
+                      const subParts = [...missionLabels, ...overlayLabels];
+                      // Per-capita : b.monthly_eur est le national monthly
+                      // total (S1311 × share / 12). Divisé par population.
+                      return {
+                        key: b.key,
+                        name: locale === "en" ? b.label_en : b.label_fr,
+                        monthly: populationFr > 0 ? b.monthly_eur / populationFr : 0,
+                        nationalAnnual: b.annual_eur,
+                        share: b.share_of_state,
+                        sub:
+                          subParts.length > 1
+                            ? subParts.join(" · ")
+                            : undefined,
+                      };
+                    });
                   })()}
                   color="c-etat"
                   locale={locale}
@@ -1923,24 +2082,19 @@ export default function DailyBreadClient({
                   <p className="db-p-zoom-eur c-local tnum">
                     {fmtEur(localMonthly, locale, 0)}
                     <span className="eur-unit">
-                      €/{locale === "en" ? "mo" : "mois"}
+                      €/{locale === "en" ? "mo/inhab" : "mois/hab"}
                     </span>
                   </p>
-                  <p className="db-p-zoom-name">{dynamicTitle}</p>
-                  {(isParisStatut || isLyonStatut) && (
-                    <p className="db-p-zoom-caveat">
-                      {t(
-                        isParisStatut
-                          ? "db.local.paris_statut_note"
-                          : "db.local.lyon_statut_note",
-                      )}
-                    </p>
-                  )}
+                  <p className="db-p-zoom-name">
+                    {locale === "en"
+                      ? "Local authorities (national average)"
+                      : "Collectivités locales (moyenne nationale)"}
+                  </p>
                   <p className="db-p-zoom-pct-line tnum">
-                    <b>{Math.round((localShare.share ?? 0) * 100)} %</b>{" "}
+                    <b>{Math.round(((s1311Total + s1313Total + s1314Total) > 0 ? s1313Total / (s1311Total + s1313Total + s1314Total) : 0) * 100)} %</b>{" "}
                     {locale === "en"
                       ? "of your contribution"
-                      : "de ta contribution"}
+                      : "des dépenses publiques nationales"}
                   </p>
                   <div className="db-p-zoom-deck">
                     <p>
@@ -1969,23 +2123,19 @@ export default function DailyBreadClient({
                 </div>
 
                 <BarList
-                  items={localLevels.map((l) => ({
-                    key: l.key,
-                    // Label personnalisé selon la commune (Fix 2) — fallback
-                    // sur le label OFGL générique si la map ne couvre pas
-                    // la clé (par sécurité — ne devrait pas arriver).
-                    name:
-                      personalLabelByKey[l.key] ??
-                      (locale === "en" ? l.label_en : l.label_fr),
-                    monthly: l.monthly_eur,
-                    share: l.share_of_local,
-                    sub:
-                      l.key === "bloc_communal"
-                        ? isCollUnique
-                          ? t("db.local.bloc_sub_merged")
-                          : t("db.local.bloc_sub_default")
-                        : undefined,
-                  }))}
+                  items={localLevels.map((l) => {
+                    // Per-capita national (Approche A) : utilise les shares
+                    // OFGL nationales (55/30/15) × S1313 / pop / 12. Le
+                    // ratio commune n'est PAS appliqué : on montre la
+                    // moyenne nationale par habitant, pas projection Paris.
+                    return {
+                      key: l.key,
+                      name: locale === "en" ? l.label_en : l.label_fr,
+                      monthly: populationFr > 0 ? l.monthly_eur / populationFr : 0,
+                      nationalAnnual: l.annual_eur,
+                      share: l.share_of_local,
+                    };
+                  })}
                   color="c-local"
                   locale={locale}
                   // Bloc communal reste passif (le DeepDive juste en dessous
@@ -2123,172 +2273,16 @@ export default function DailyBreadClient({
           );
         })()}
 
-        {/* ── PANNEAU 6 — Synthèse / Equivalents ──
+        {/* ── §06 Synthèse SUPPRIMÉE (refonte mai 2026) ──
          *
-         * Note 2026-05 : ancien §06 "Vue par fonction" (COFOG) RETIRÉ —
-         * redondant avec les cross-cuttings §07 du Budget Explorer
-         * (/france/budget). Le panel Synthèse devient §06, et la Méthode
-         * (anciennement §08) devient §07. */}
-        {equivalents.length > 0 && (
-          <section
-            ref={panel6Ref}
-            id="db-share-section"
-            className={`db-panel db-p-end db-panel-fade${panel6Revealed ? " is-revealed" : ""}`}
-          >
-            <div className="db-panel-wrap">
-              <p className="db-panel-num">
-                <em>06</em> · {t("db.end.num")}
-              </p>
-
-              <h2 className="db-p-end-q">
-                {t("db.end.q_a").replace(
-                  "{monthly}",
-                  fmtEur(totalMonthly, locale, 0),
-                )}{" "}
-                <em>{t("db.end.q_b")}</em>
-              </h2>
-              <p className="db-p-end-deck">{t("db.end.deck")}</p>
-
-              {(() => {
-                const sorted = equivalents
-                  .slice(0, 5)
-                  .slice()
-                  .sort((a, b) => b.amount - a.amount);
-                const heroItem = sorted[0];
-                const compactItems = sorted.slice(1);
-                const renderCard = (
-                  eq: (typeof sorted)[number],
-                  variant: "hero" | "compact",
-                  i: number,
-                ) => {
-                  const tag = locale === "en" ? eq.tagEn : eq.tagFr;
-                  const claimA = locale === "en" ? eq.claimAEn : eq.claimAFr;
-                  const claimB = locale === "en" ? eq.claimBEn : eq.claimBFr;
-                  const editorialCopy =
-                    locale === "en" ? eq.editorialEn : eq.editorialFr;
-                  const sourceDetail =
-                    locale === "en" ? eq.sourceDetailEn : eq.sourceDetailFr;
-                  const viaDetail =
-                    locale === "en" ? eq.viaDetailEn : eq.viaDetailFr;
-                  const caption = locale === "en" ? eq.unitEn : eq.unitFr;
-                  const via = locale === "en" ? eq.viaEn : eq.viaFr;
-                  const shareText = t("db.end.share_card_text")
-                    .replace("{monthly}", fmtEur(totalMonthly, locale, 0))
-                    .replace("{number}", eq.headline)
-                    .replace("{caption}", caption)
-                    .replace("{via}", via);
-                  return (
-                    <DailyBreadEquivalentCard
-                      key={eq.key}
-                      variant={variant}
-                      pictoColor={eq.institution}
-                      tag={tag}
-                      number={eq.number}
-                      claimA={claimA}
-                      claimB={claimB}
-                      editorialCopy={editorialCopy}
-                      sourceDetail={sourceDetail}
-                      viaDetail={viaDetail}
-                      shareText={shareText}
-                      revealDelayMs={i * 80}
-                    />
-                  );
-                };
-                return (
-                  <>
-                    {heroItem && (
-                      <div className="db-p-end-hero-wrap">
-                        {renderCard(heroItem, "hero", 0)}
-                      </div>
-                    )}
-                    {compactItems.length > 0 && (
-                      <div className="db-p-end-cards-grid">
-                        {compactItems.map((eq, i) =>
-                          renderCard(eq, "compact", i + 1),
-                        )}
-                      </div>
-                    )}
-                  </>
-                );
-              })()}
-
-              {/* Share global — déplacé en bottom avec label proéminent. */}
-              <div className="db-p-end-share">
-                <p className="db-p-end-share-label">
-                  {t("db.share_section.eyebrow")}
-                </p>
-                <DailyBreadShareActions locale={locale} />
-              </div>
-
-              <div className="db-p-end-foot">
-                <span>
-                  {t("db.end.sources_label")} :{" "}
-                  <a
-                    href="https://www.urssaf.fr/portail/home/taux-et-baremes/taux-de-cotisations.html"
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    URSSAF
-                  </a>{" "}
-                  ·{" "}
-                  <a
-                    href="https://www.legifrance.gouv.fr/codes/texte_lc/LEGITEXT000006069577/"
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    CGI
-                  </a>{" "}
-                  ·{" "}
-                  <a
-                    href="https://www.insee.fr/fr/statistiques/serie/010003222"
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    INSEE
-                  </a>{" "}
-                  ·{" "}
-                  <a
-                    href="https://ec.europa.eu/eurostat/databrowser/view/gov_10a_main"
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    Eurostat
-                  </a>{" "}
-                  ·{" "}
-                  <a
-                    href="https://www.securite-sociale.fr/files-sso/files/2024/10/PLFSS-2025_Annexe5.pdf"
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    PLFSS 2025
-                  </a>{" "}
-                  ·{" "}
-                  <a
-                    href="https://www.data.gouv.fr/datasets/plf-2025-depenses-2025-selon-destination/"
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    LFI 2025
-                  </a>{" "}
-                  ·{" "}
-                  <a
-                    href="https://data.ofgl.fr/explore/dataset/ofgl-base-communes-consolidee/"
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    OFGL
-                  </a>
-                </span>
-                <span>
-                  franceopendata.org ·{" "}
-                  {locale === "en"
-                    ? "open public data"
-                    : "données publiques ouvertes"}
-                </span>
-              </div>
-            </div>
-          </section>
-        )}
+         * Drop : gap block (paies vs profites), équivalents "valeur
+         * équivalente" (15 consultations/hab), context block.
+         * Raisons : cadrage individualiste "déficitaire net" trompeur,
+         * caveats philosophiques empilés qui sortent du champ d'un
+         * simulateur. Les caveats sont déplacés en §06 méthode dans un
+         * dépliant dédié "Limites éditoriales".
+         *
+         * §07 méthode devient §06 (renumérotation). */}
 
         {/* ── PANNEAU 7 — Méthode (refonte 2026-05) ──
          *
@@ -2306,7 +2300,7 @@ export default function DailyBreadClient({
         >
           <div className="db-panel-wrap">
             <p className="db-panel-num">
-              <em>07</em> · {t("db.method.num")}
+              <em>06</em> · {t("db.method.num")}
             </p>
             <h2 className="db-p-method-q" style={{ whiteSpace: "pre-line" }}>
               {renderTagged(t("db.method.title"), {
@@ -2443,6 +2437,35 @@ export default function DailyBreadClient({
                   <p>{t("db.method.body.pourquoi_perso.p1")}</p>
                   <p>{t("db.method.body.pourquoi_perso.p2")}</p>
                   <p>{t("db.method.body.pourquoi_perso.p3")}</p>
+                </div>
+              </details>
+
+              {/* 06 — Limites éditoriales (ajout mai 2026 après drop §06
+                  synthèse). Déplace ici les caveats patrimoine + biens
+                  non-marchands + collectif, plutôt que les empiler dans
+                  une synthèse forcée. */}
+              <details className="db-p-method-faq">
+                <summary className="db-p-method-faq-summary">
+                  <span className="db-p-method-faq-num">06</span>
+                  <span className="db-p-method-faq-q">
+                    {t("db.method.q.limites")}
+                  </span>
+                  <span aria-hidden className="db-p-method-faq-chevron">↓</span>
+                </summary>
+                <div className="db-p-method-faq-body">
+                  <p>{t("db.method.body.limites.intro")}</p>
+                  <p>
+                    <b>{t("db.method.body.limites.patrimoine_title")}</b>
+                  </p>
+                  <p>{t("db.method.body.limites.patrimoine_body")}</p>
+                  <p>
+                    <b>{t("db.method.body.limites.nonmarchand_title")}</b>
+                  </p>
+                  <p>{t("db.method.body.limites.nonmarchand_body")}</p>
+                  <p>
+                    <b>{t("db.method.body.limites.collectif_title")}</b>
+                  </p>
+                  <p>{t("db.method.body.limites.collectif_body")}</p>
                 </div>
               </details>
             </div>
@@ -2611,6 +2634,8 @@ function BarList({
     key?: string;
     name: string;
     monthly: number;
+    /** Montant annuel national (€) — affiché en complément du personnel. */
+    nationalAnnual?: number;
     share: number;
     sub?: string;
     color?: string;
@@ -2649,13 +2674,24 @@ function BarList({
                 )}
               </span>
               <span className="db-p-zoom-bar-val tnum">
-                {fmtEur(item.monthly, locale, 0)} €
-                <span className="pct">
-                  {(item.share * 100).toLocaleString(
-                    locale === "en" ? "en-GB" : "fr-FR",
-                    { maximumFractionDigits: 0 },
-                  )}{" "}
-                  %
+                <span className="db-p-zoom-bar-val-perso">
+                  {fmtEur(item.monthly, locale, 0)} €
+                </span>
+                <span className="db-p-zoom-bar-natl tnum">
+                  {item.nationalAnnual != null && item.nationalAnnual > 0 && (
+                    <>
+                      {fmtBnEur(item.nationalAnnual, locale)}
+                      {locale === "en" ? "/yr" : "/an"}
+                      <span className="db-p-zoom-bar-natl-pct">{" · "}</span>
+                    </>
+                  )}
+                  <span className="db-p-zoom-bar-natl-pct">
+                    {(item.share * 100).toLocaleString(
+                      locale === "en" ? "en-GB" : "fr-FR",
+                      { maximumFractionDigits: 0 },
+                    )}{" "}
+                    %
+                  </span>
                 </span>
               </span>
             </div>

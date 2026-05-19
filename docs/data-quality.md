@@ -1,9 +1,15 @@
 # DATA QUALITY — Observations, Limites et Pistes d'Amélioration
 
-> Mis à jour : 2026-02-18
+> Mis à jour : 2026-05-18
 > Ce document recense tous les problèmes, limites et observations liés à la qualité
 > des données du Paris Budget Dashboard. Il sert de tracker pour les décisions prises
 > et les améliorations futures.
+>
+> **Audit re-jouable** : le snapshot dans la section 9 est généré par
+> [`pipeline/scripts/audit/run_data_quality_audit.py`](../pipeline/scripts/audit/run_data_quality_audit.py)
+> et exporté en JSON dans [`website/public/data/data_quality_audit.json`](../website/public/data/data_quality_audit.json),
+> consommé par la page `/methode`. Pour re-jouer :
+> `python pipeline/scripts/audit/run_data_quality_audit.py`
 
 ## Table des matières
 
@@ -235,7 +241,59 @@ Les seuils de durée de désendettement (< 10 ans = sain, 10-15 = vigilance, > 1
 
 ---
 
-## 9. Test Suite — Résultats (2026-02-18)
+## 9. Audit re-jouable — Résultats (2026-05-18)
+
+### Vue d'ensemble (16 checks)
+
+| Catégorie | Total | Pass | Warn | Fail |
+|-----------|-------|------|------|------|
+| Reconciliation core ↔ staging | 3 | 3 | 0 | 0 |
+| Completeness (classification, géoloc, couverture) | 3 | 3 | 0 | 0 |
+| Schema (unicité clés techniques) | 4 | 4 | 0 | 0 |
+| Business rules (Paris Centre, CASVP) | 2 | 2 | 0 | 0 |
+| Anomaly (variation YoY) | 1 | 1 | 0 | 0 |
+| Freshness (âge dernier dbt run) | 1 | 1 | 0 | 0 |
+| Known limitations (sources dégradées) | 2 | 0 | 2 | 0 |
+| **Total** | **16** | **14** | **2** | **0** |
+
+### Détail par check
+
+| Check | Statut | Seuil | Mesure actuelle |
+|-------|--------|-------|-----------------|
+| Budget : total core = staging | ✅ | diff < 0.01% | 0.0000% |
+| Subventions : total core = staging | ✅ | diff < 0.01% | 0.0000% |
+| Row count parity core ↔ staging (3 tables) | ✅ | diff < 0.01% | 0.0000% |
+| Subventions : % montants classifiés thématique | ✅ | pass ≥ 95% | 98.05% |
+| AP Projets : % localisés (arrondissement) | ✅ | pass ≥ 40% | 87.87% (point précis : 9.64%) |
+| Budget Dépense : variation YoY max | ✅ | pass < 20% | 6.73% |
+| Unicité `cle_technique` core_budget | ✅ | doublons < 0.5% | 0.0000% (0/24 500) |
+| Unicité `cle_technique` core_subventions | ✅ | doublons < 0.5% | 0.0000% (0/38 839) |
+| Unicité `cle_technique` core_ap_projets | ✅ | doublons < 0.5% | 0.0000% (0/7 155) |
+| Unicité `cle_technique` core_logements_sociaux | ✅ | doublons < 0.5% | 0.0000% (0/4 173) |
+| Paris Centre : agrégation arr 1-4 → 0 | ✅ | centre_rows == sum(arr 1-4) | 317 = 317 |
+| CASVP : 1 entité canonique | ✅ | variants_canonique ≤ 1 | 1 |
+| core_budget_vote : couverture 2023-2026 | ✅ | toutes années + montants > 0 | 2019-2026 présentes |
+| Fraîcheur tables core | ✅ | pass < 90j | max 24j |
+| **Subventions 2020-2021 absentes** | ⚠️ | limitation source documentée | années [2020, 2021] manquantes |
+| **AP Projets 2023-2024 absentes** | ⚠️ | limitation source documentée | années [2023, 2024] manquantes |
+
+### Source du snapshot
+
+- Script : [`pipeline/scripts/audit/run_data_quality_audit.py`](../pipeline/scripts/audit/run_data_quality_audit.py)
+- JSON consommé par le frontend : [`website/public/data/data_quality_audit.json`](../website/public/data/data_quality_audit.json)
+- Re-jeu : `python pipeline/scripts/audit/run_data_quality_audit.py` (exit code 1 si fail)
+
+### Évolution vs snapshot 2026-02-05
+
+- Le précédent audit était une checklist ad-hoc, non re-jouable. Cette version est un script committé qui produit un JSON dont la page `/methode` est dérivée. Plus de mesures hardcodées dans la doc.
+- Subventions 2020-2021 sont désormais **absentes** du core (auparavant présentes avec bénéficiaires NULL).
+- AP : géoloc arrondissement = 87,87 % des montants (l'ancien chiffre de 43 % mesurait probablement le point précis, qui est aujourd'hui à 9,64 %).
+- Subv classification : 98,05 % (vs 99,51 % historique) — toujours largement au-dessus du seuil pass à 95 %.
+- 4 nouveaux checks par rapport au snapshot d'origine : couverture `core_budget_vote`, fraîcheur tables core, et les 2 *known limitations* explicites.
+
+---
+
+## 9bis. Test Suite dbt (2026-02-18)
 
 ### Vue d'ensemble
 

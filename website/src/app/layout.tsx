@@ -15,6 +15,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import AnalyticsProvider from "@/components/AnalyticsProvider";
 import { LocaleProvider } from "@/lib/localeContext";
+import SearchModal from "@/components/fusion/SearchModal";
 import { SITE_URL, SITE_NAME, organizationJsonLd, websiteJsonLd, readLocale } from "@/lib/seo";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Analytics } from "@vercel/analytics/next";
@@ -145,6 +146,7 @@ export default async function RootLayout({
         <AnalyticsProvider>
           <LocaleProvider initialLocale={initialLocale}>
             {children}
+            <SearchModal />
           </LocaleProvider>
         </AnalyticsProvider>
         {/* Vercel Speed Insights — Web Vitals (LCP, CLS, INP) en prod. */}

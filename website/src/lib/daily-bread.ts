@@ -520,6 +520,232 @@ export function computeInstitutionShares(
   return out;
 }
 
+// ─── Dispatch CAUSAL (où VONT réellement les impôts du foyer) ───────────
+//
+// Contrairement à `computeInstitutionShares` qui utilise les ratios Eurostat
+// S13 (proportions des dépenses nationales), le dispatch causal mappe CHAQUE
+// composante d'impôt à son AFFECTATAIRE LÉGAL réel :
+//
+//   - Cotisations sociales (salarié + indép)     → S1314 Sécurité sociale
+//   - CSG/CRDS (activité + retraite + capital)   → S1314 Sécurité sociale
+//   - PFU prélèvements sociaux 17,2 %             → S1314 Sécurité sociale
+//   - Impôt sur le revenu                        → S1311 État central
+//   - PFU IR 12,8 %                              → S1311 État central
+//   - TVA estimée (45 % État + 31 % Sécu + 24 % Local) — répartition PLF V&M
+//   - Taxe foncière                              → S1313 Local (bloc communal)
+//
+// Cette vue est plus pédagogique pour la promesse "où va MA contribution"
+// que la vue proportionnelle Eurostat. Les locataires verront une part Local
+// faible (DGF aux collectivités vient de l'État, pas directement d'eux) —
+// c'est la réalité causale.
+
+export type InstitutionShareCausalComponent = {
+  label_fr: string;
+  label_en: string;
+  annual_eur: number;
+};
+
+export type InstitutionShareCausal = InstitutionShare & {
+  /** Détail des impôts qui flow vers cette institution (cotisations, CSG,
+   *  IR, TVA part, etc.). Sert à expliquer le calcul dans l'UI. */
+  components: InstitutionShareCausalComponent[];
+};
+
+export type CausalDispatchInputs = {
+  breakdownSalaire?: DailyBreadBreakdown | null;
+  breakdownRetraite?: DailyBreadBreakdownRetraite | null;
+  breakdownCapital?: DailyBreadBreakdownCapital | null;
+  breakdownIndep?: DailyBreadBreakdownIndep | null;
+  /** Taxe foncière annuelle (si propriétaire). 0 sinon. */
+  tfAnnual?: number;
+};
+
+export function computeInstitutionSharesCausal(
+  inputs: CausalDispatchInputs,
+  db: DailyBreadConstants,
+): InstitutionShareCausal[] {
+  const inst = db.apu_subsectors.institutions;
+  // Coefficients TVA — fallback aux valeurs PLF V&M 2025 si pas dans le JSON.
+  const tvaEtat = db.fiscal_constants.tva.part_etat_nette ?? 0.45;
+  const tvaSecu = db.fiscal_constants.tva.part_secu_nette ?? 0.31;
+  const tvaLocal = db.fiscal_constants.tva.part_local_nette ?? 0.24;
+
+  let secu = 0;
+  let etat = 0;
+  let local = 0;
+  const cSecu: InstitutionShareCausalComponent[] = [];
+  const cEtat: InstitutionShareCausalComponent[] = [];
+  const cLocal: InstitutionShareCausalComponent[] = [];
+
+  const addTva = (
+    amount: number,
+    sourceLabelFr: string,
+    sourceLabelEn: string,
+  ) => {
+    if (amount <= 0) return;
+    const eP = amount * tvaEtat;
+    const sP = amount * tvaSecu;
+    const lP = amount * tvaLocal;
+    etat += eP;
+    secu += sP;
+    local += lP;
+    cEtat.push({
+      label_fr: `TVA → État (${sourceLabelFr})`,
+      label_en: `VAT → State (${sourceLabelEn})`,
+      annual_eur: eP,
+    });
+    cSecu.push({
+      label_fr: `TVA → Sécu (${sourceLabelFr})`,
+      label_en: `VAT → Social Security (${sourceLabelEn})`,
+      annual_eur: sP,
+    });
+    cLocal.push({
+      label_fr: `TVA → Local (${sourceLabelFr})`,
+      label_en: `VAT → Local (${sourceLabelEn})`,
+      annual_eur: lP,
+    });
+  };
+
+  // ── Salaire ──
+  if (inputs.breakdownSalaire) {
+    const b = inputs.breakdownSalaire;
+    if (b.cotisations_sal > 0) {
+      secu += b.cotisations_sal;
+      cSecu.push({
+        label_fr: "Cotisations sociales (salaire)",
+        label_en: "Social contributions (salary)",
+        annual_eur: b.cotisations_sal,
+      });
+    }
+    if (b.csg > 0) {
+      secu += b.csg;
+      cSecu.push({
+        label_fr: "CSG/CRDS sur salaire",
+        label_en: "CSG/CRDS on salary",
+        annual_eur: b.csg,
+      });
+    }
+    if (b.ir > 0) {
+      etat += b.ir;
+      cEtat.push({
+        label_fr: "Impôt sur le revenu",
+        label_en: "Personal income tax",
+        annual_eur: b.ir,
+      });
+    }
+    addTva(b.tva_estimee, "consommation", "consumption");
+  }
+
+  // ── Retraite ──
+  if (inputs.breakdownRetraite) {
+    const r = inputs.breakdownRetraite;
+    if (r.csg_crds_casa > 0) {
+      secu += r.csg_crds_casa;
+      cSecu.push({
+        label_fr: "CSG/CRDS/CASA sur retraite",
+        label_en: "CSG/CRDS/CASA on pension",
+        annual_eur: r.csg_crds_casa,
+      });
+    }
+    if (r.ir > 0) {
+      etat += r.ir;
+      cEtat.push({
+        label_fr: "Impôt sur le revenu (retraite)",
+        label_en: "Income tax (pension)",
+        annual_eur: r.ir,
+      });
+    }
+    addTva(r.tva_estimee, "consommation retraite", "pension consumption");
+  }
+
+  // ── Capital (dividendes, intérêts, plus-values via PFU) ──
+  if (inputs.breakdownCapital) {
+    const c = inputs.breakdownCapital;
+    if (c.ir > 0) {
+      etat += c.ir;
+      cEtat.push({
+        label_fr: "PFU IR (12,8 % sur capital)",
+        label_en: "Flat tax — income part (capital)",
+        annual_eur: c.ir,
+      });
+    }
+    if (c.prelevements_sociaux > 0) {
+      secu += c.prelevements_sociaux;
+      cSecu.push({
+        label_fr: "Prélèvements sociaux capital (17,2 %)",
+        label_en: "Social levies on capital (17.2 %)",
+        annual_eur: c.prelevements_sociaux,
+      });
+    }
+    addTva(c.tva_estimee, "consommation capital", "capital consumption");
+  }
+
+  // ── Indépendant ──
+  if (inputs.breakdownIndep) {
+    const i = inputs.breakdownIndep;
+    if (i.cotisations_urssaf > 0) {
+      secu += i.cotisations_urssaf;
+      cSecu.push({
+        label_fr: "Cotisations sociales (indépendant)",
+        label_en: "Social contributions (self-employed)",
+        annual_eur: i.cotisations_urssaf,
+      });
+    }
+    if (i.ir > 0) {
+      etat += i.ir;
+      cEtat.push({
+        label_fr: "Impôt sur le revenu (indépendant)",
+        label_en: "Income tax (self-employed)",
+        annual_eur: i.ir,
+      });
+    }
+    addTva(i.tva_estimee, "consommation indépendant", "self-employed cons.");
+  }
+
+  // ── Taxe foncière (si propriétaire) ──
+  if (inputs.tfAnnual && inputs.tfAnnual > 0) {
+    local += inputs.tfAnnual;
+    cLocal.push({
+      label_fr: "Taxe foncière (propriétaire)",
+      label_en: "Property tax (owner)",
+      annual_eur: inputs.tfAnnual,
+    });
+  }
+
+  const total = secu + etat + local;
+  const safeShare = (x: number) => (total > 0 ? x / total : 0);
+
+  return [
+    {
+      code: "S1314",
+      label_fr: inst.S1314?.label_fr ?? "Sécurité sociale",
+      label_en: inst.S1314?.label_en ?? "Social security",
+      share: safeShare(secu),
+      annual_eur: secu,
+      daily_eur: secu / 365,
+      components: cSecu,
+    },
+    {
+      code: "S1311",
+      label_fr: inst.S1311?.label_fr ?? "État central et ODAC",
+      label_en: inst.S1311?.label_en ?? "Central government + ODAC",
+      share: safeShare(etat),
+      annual_eur: etat,
+      daily_eur: etat / 365,
+      components: cEtat,
+    },
+    {
+      code: "S1313",
+      label_fr: inst.S1313?.label_fr ?? "Administrations publiques locales (APUL)",
+      label_en: inst.S1313?.label_en ?? "Local government (APUL)",
+      share: safeShare(local),
+      annual_eur: local,
+      daily_eur: local / 365,
+      components: cLocal,
+    },
+  ];
+}
+
 // ─── Sécu sub-branch breakdown (CNAM/CNAV/CAF/UNEDIC/AT-MP) ───────────────
 
 export type AssoBranch = {
@@ -569,6 +795,28 @@ export type StateBucket = {
   annual_eur: number;
   monthly_eur: number;
   missions: Array<{ code: string; label: string; share: number }>;
+  /**
+   * Composants overlay rattachés à ce bucket (CAS Pensions par ministère,
+   * opérateurs ODAC ressources propres, budgets annexes, etc.). Vide pour les
+   * buckets purement PLF, peuplé pour les buckets enrichis par
+   * state_overlay.items.
+   */
+  overlay_items?: Array<{
+    key: string;
+    label_fr: string;
+    label_en: string;
+    annual_eur: number;
+    monthly_eur: number;
+    type:
+      | "cas_pensions"
+      | "odac_ressources_propres"
+      | "budget_annexe"
+      | "psr_ue"
+      | "residuel";
+    source: string;
+    source_url: string;
+    notes?: string;
+  }>;
 };
 
 const STATE_BUCKET_DEFS: Array<{
@@ -632,7 +880,7 @@ const STATE_BUCKET_DEFS: Array<{
     codes: ["EB"],
   },
   {
-    key: "autres",
+    key: "autres_ministeres",
     // Label énumère les missions les plus visibles pour préserver la dignité
     // de chaque domaine (l'agriculteur ou l'ultramarin doit voir son nom).
     // Le drawer liste les 18 missions complètes avec leurs montants.
@@ -643,40 +891,80 @@ const STATE_BUCKET_DEFS: Array<{
       "IA", "MB", "SA", "PB", "DC", "CA", "TR", "PC", "PR",
     ],
   },
+  // ─── Buckets overlay-only (pas de missions PLF) ───────────────────────
+  // Construits exclusivement à partir de state_overlay.items du JSON.
+  // contribution_ue : ligne dédiée pour le PSR-UE (visibilité éditoriale).
+  // autres_etat_hors_plf : résiduel non rattaché (long tail ODAC, écarts).
+  {
+    key: "contribution_ue",
+    label_fr: "Contribution Union européenne",
+    label_en: "European Union contribution",
+    codes: [],
+  },
+  {
+    key: "autres_etat_hors_plf",
+    label_fr: "Autres dépenses (opérateurs non rattachables, flux internes)",
+    label_en: "Other spending (unallocated operators, internal flows)",
+    codes: [],
+  },
 ];
 
 export function computeStateBuckets(
   /**
    * Contribution annuelle de l'utilisateur au sous-secteur S1311 (= user_total
-   * × `apu_subsectors.S1311.share`). On la projette ici sur chacun des 9
+   * × `apu_subsectors.S1311.share`). On la projette ici sur chacun des 11
    * buckets éditoriaux pour produire le €/mois perso.
+   *
+   * Méthodo : (1) missions PLF rescalées sharePlf × (PLF_total / S1311_total)
+   * pour donner leur vraie part dans S1311 ; (2) state_overlay.items
+   * (CAS Pensions répartis, opérateurs ODAC, PSR-UE, budgets annexes,
+   * résiduel) ajoutés par `parent_bucket` — leur share = annual_eur / S1311.
+   * Résultat : Σ share_of_state = 1.0 (≈ 100 % de S1311 attribué).
    */
   etatAnnuel: number,
   db: DailyBreadConstants,
 ): StateBucket[] {
   const missions = db.state_breakdown.missions;
-  // Convention. Les `share_of_state_net` publiés dans le pipeline ont pour
-  // dénominateur `state_breakdown.total_net_cp_eur` ≈ 447 Md€/an (somme des
-  // 33 missions PLF 2025) — pas S1311 (≈ 676 Md€/an, qui inclut ODAC,
-  // transferts UE, régimes spéciaux non rattachés). Multiplier `etatAnnuel`
-  // (= S1311 × user_share) par cette part directement surestime d'un facteur
-  // 676/447 ≈ 1,51× — Défense (60 Md€) deviendrait ~91 Md€.
-  // → On rescale par `total_net_cp_eur / S1311.annual_eur` pour ré-aligner.
-  // Les ~229 Md€ S1311 hors missions PLF restent inclus dans `etatAnnuel`
-  // (le total État de l'utilisateur), simplement non attribués à un bucket.
   const s1311 = db.apu_subsectors.institutions?.S1311?.annual_eur ?? 0;
   const totalNet = db.state_breakdown?.total_net_cp_eur ?? 0;
   const scale = s1311 > 0 && totalNet > 0 ? totalNet / s1311 : 1;
+
+  // Group overlay items by parent_bucket pour ajout par bucket.
+  const overlayByBucket = new Map<
+    string,
+    DailyBreadConstants["state_overlay"] extends infer T
+      ? T extends { items: infer I }
+        ? I
+        : never
+      : never
+  >();
+  const overlayItems = db.state_overlay?.items ?? [];
+  for (const item of overlayItems) {
+    const arr = overlayByBucket.get(item.parent_bucket) ?? [];
+    arr.push(item);
+    overlayByBucket.set(item.parent_bucket, arr);
+  }
+
   const out: StateBucket[] = [];
   for (const def of STATE_BUCKET_DEFS) {
+    // 1. Part PLF (rescalée S1311) — buckets avec missions PLF.
     const matched = missions.filter((m) => def.codes.includes(m.code));
     const sharePlf = matched.reduce(
       (acc, m) => acc + m.share_of_state_net,
       0,
     );
-    // Vraie part dans S1311 (= sharePlf × scale). C'est la grandeur cohérente
-    // pour multiplier par `etatAnnuel` (qui est calé sur S1311).
-    const share = sharePlf * scale;
+    let share = sharePlf * scale;
+
+    // 2. Part overlay (CAS Pensions / ODAC / PSR-UE / budgets annexes /
+    //    résiduel rattachée à ce bucket). share = annual_eur / S1311.
+    const bucketOverlay = overlayByBucket.get(def.key) ?? [];
+    const overlayAnnualSum = bucketOverlay.reduce(
+      (acc, it) => acc + (it.annual_eur ?? 0),
+      0,
+    );
+    const overlayShare = s1311 > 0 ? overlayAnnualSum / s1311 : 0;
+    share += overlayShare;
+
     const annual = etatAnnuel * share;
     out.push({
       key: def.key,
@@ -688,13 +976,30 @@ export function computeStateBuckets(
       missions: matched.map((m) => ({
         code: m.code,
         label: m.label,
-        // Part du sous-bucket dans S1311 (cohérente avec `share_of_state`).
         share: m.share_of_state_net * scale,
       })),
+      overlay_items: bucketOverlay.map((it) => {
+        const itemShare = s1311 > 0 ? (it.annual_eur ?? 0) / s1311 : 0;
+        const itemAnnual = etatAnnuel * itemShare;
+        return {
+          key: it.key,
+          label_fr: it.label_fr,
+          label_en: it.label_en,
+          annual_eur: itemAnnual,
+          monthly_eur: itemAnnual / 12,
+          type: it.type,
+          source: it.source,
+          source_url: it.source_url,
+          notes: it.notes,
+        };
+      }),
     });
   }
-  out.sort((a, b) => b.share_of_state - a.share_of_state);
-  return out;
+  // Filtre les buckets de share 0 (cas où l'overlay est absent et le bucket
+  // est overlay-only — éviterait d'afficher une ligne vide).
+  const filtered = out.filter((b) => b.share_of_state > 0);
+  filtered.sort((a, b) => b.share_of_state - a.share_of_state);
+  return filtered;
 }
 
 // ─── Local detail (Bloc communal / Département / Région) ─────────────────

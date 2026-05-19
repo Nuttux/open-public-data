@@ -13,6 +13,9 @@ export type BarRowItem = {
   display?: ReactNode;
   /** If set, the row becomes a silent <Link> (no visible arrow; just hover styling). */
   href?: string;
+  /** Optional sub-text rendered below the bar (e.g. listing PLF missions and
+   *  ODAC operators included in this bucket). Mirror du sub de DailyBread BarList. */
+  sub?: ReactNode;
 };
 
 /**
@@ -104,7 +107,10 @@ export default function BarRow({
           const pct = Math.max(0, Math.min(100, (row.value / refValue) * 100));
           const body = (
             <>
-              <span className="fx-br-label">{row.label}</span>
+              <span className="fx-br-label">
+                {row.label}
+                {row.sub && <span className="fx-br-sub">{row.sub}</span>}
+              </span>
               <span className="fx-br-bar">
                 <span
                   className="fx-br-fill"

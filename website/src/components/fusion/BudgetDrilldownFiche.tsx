@@ -257,6 +257,13 @@ export default function BudgetDrilldownFiche(props: Props) {
   const editorialAsides = props.editorialAsides;
   const voice: Voice = inferVoice(basePath);
   const hasProfile = (amounts?.parentPersonalMonthlyEur ?? null) !== null;
+  // Daily Bread (Approche A) : la "personal monthly" est en fait per-capita
+  // (calculée comme nationalAnnual / pop / 12). Label "Par habitant" plutôt
+  // que "Sur ton profil" pour cohérence avec le reste de Daily Bread.
+  const isPerCapita = voice === "perso";
+  const personalLabelKey = isPerCapita
+    ? "db.drilldown.amount.per_capita"
+    : "db.drilldown.amount.personal";
   // Context-aware column visibility :
   //  - Voice perso → €/mois only (cache % et Md€).
   //  - Voice impersonal sans profil → Md€/an only (cache % et €/mois).
@@ -346,6 +353,7 @@ export default function BudgetDrilldownFiche(props: Props) {
             showChildAnnual,
             showChildMonthly,
             childrenVariant,
+            personalLabelKey,
           });
         }
         if (mode.kind === "aggregation") {
@@ -363,6 +371,7 @@ export default function BudgetDrilldownFiche(props: Props) {
             showChildAnnual,
             showChildMonthly,
             childrenVariant,
+            personalLabelKey,
           });
         }
 
@@ -475,7 +484,7 @@ export default function BudgetDrilldownFiche(props: Props) {
                   {personalMonthlyLabel && (
                     <div className="db-fiche-amount-row db-fiche-amount-row-personal">
                       <dt className="db-fiche-amount-key">
-                        {t("db.drilldown.amount.personal")}
+                        {t(personalLabelKey)}
                       </dt>
                       <dd className="db-fiche-amount-val tnum">
                         {personalMonthlyLabel}
@@ -637,6 +646,7 @@ function renderAggregation({
   showChildAnnual,
   showChildMonthly,
   childrenVariant,
+  personalLabelKey,
 }: {
   t: (k: string) => string;
   locale: "fr" | "en";
@@ -651,6 +661,7 @@ function renderAggregation({
   showChildAnnual: boolean;
   showChildMonthly: boolean;
   childrenVariant: string;
+  personalLabelKey: string;
 }) {
   const label =
     locale === "en" ? aggregation.label_en : aggregation.label_fr;
@@ -685,7 +696,7 @@ function renderAggregation({
             {personalMonthlyLabel && (
               <div className="db-fiche-amount-row db-fiche-amount-row-personal">
                 <dt className="db-fiche-amount-key">
-                  {t("db.drilldown.amount.personal")}
+                  {t(personalLabelKey)}
                 </dt>
                 <dd className="db-fiche-amount-val tnum">
                   {personalMonthlyLabel}
@@ -824,6 +835,7 @@ function renderScopeOverview({
   showChildAnnual,
   showChildMonthly,
   childrenVariant,
+  personalLabelKey,
 }: {
   t: (k: string) => string;
   locale: "fr" | "en";
@@ -836,6 +848,7 @@ function renderScopeOverview({
   showChildAnnual: boolean;
   showChildMonthly: boolean;
   childrenVariant: string;
+  personalLabelKey: string;
 }) {
   const personalMonthlyLabel = amounts?.personalMonthlyLabel ?? null;
   const nationalAnnualLabel = amounts?.nationalAnnualLabel ?? null;
@@ -883,7 +896,7 @@ function renderScopeOverview({
             {personalMonthlyLabel && (
               <div className="db-fiche-amount-row db-fiche-amount-row-personal">
                 <dt className="db-fiche-amount-key">
-                  {t("db.drilldown.amount.personal")}
+                  {t(personalLabelKey)}
                 </dt>
                 <dd className="db-fiche-amount-val tnum">
                   {personalMonthlyLabel}

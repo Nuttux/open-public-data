@@ -77,7 +77,53 @@ Architecture en couches : `OpenData Paris API → BigQuery (raw) → staging →
 42 tests dbt organisés en 7 catégories :
 - Intégrité référentielle, équilibres comptables, fraîcheur, complétude, cross-layer, anomalies, qualité des seeds
 
-## Quickstart
+Plus un **audit re-jouable** (19 checks réconciliation + complétude + freshness) consommé par [`/methode#audit`](https://franceopendata.org/methode#audit) — voir [`pipeline/scripts/audit/run_data_quality_audit.py`](pipeline/scripts/audit/run_data_quality_audit.py).
+
+## Setup nouvel ordi / nouveau contributeur
+
+Tout le state lourd (données BigQuery, IAM/auth, secrets CI, cron) vit dans le cloud (GCP + GitHub). Le clone local est juste un workstation jetable.
+
+```bash
+# 1. Outils
+brew install gcloud gh git python@3.11 node
+
+# 2. Auth (web sign-in, à faire 1 fois par ordi)
+gcloud auth login
+gcloud auth application-default login   # ADC pour les scripts Python
+gh auth login
+
+# 3. Clone + venv
+git clone https://github.com/Nuttux/open-public-data.git
+cd open-public-data
+python3 -m venv .venv && source .venv/bin/activate && pip install -r requirements.txt
+cd website && npm install
+```
+
+Tu retombes sur tes pieds sans rien re-configurer côté CI : BQ-CI continue de tourner tous les lundis indépendamment de ton matos.
+
+## CI / Automatisation
+
+| Workflow | Cadence | Ce que ça fait |
+|---|---|---|
+| `data-platform-audit.yml` | À chaque PR + push sur `main` | Layering audit, dbt parse, schema completeness, **dbt test (data + freshness)**, **verify_export**, **data-quality-audit (19 checks)** |
+| `enrich-pipeline.yml` | **Lundi 6h UTC** + manuel | Pipeline complète : sync OpenData → dbt → export JSON → enrichissement LLM, auto-commit si diff |
+
+**Auth GCP en CI** : Workload Identity Federation (WIF), zéro clé statique. Voir [`docs/runbooks/enable-bq-ci.md`](docs/runbooks/enable-bq-ci.md) si tu dois ré-activer ou déplacer le setup ailleurs.
+
+Activé par les variables/secrets de repo (à ne jamais commit) :
+- `vars.ENABLE_BQ_CI` (`true` = jobs BQ-dependent actifs)
+- `secrets.GCP_WORKLOAD_IDENTITY_PROVIDER` + `secrets.GCP_SERVICE_ACCOUNT`
+
+Pour déclencher un sync manuellement (sans attendre lundi) :
+
+```bash
+gh workflow run enrich-pipeline.yml -R Nuttux/open-public-data \
+  -f phases=auto -f commit=true
+```
+
+L'audit data quality est consommé par `/methode#audit` (snapshot JSON public + script re-jouable). Voir [`docs/data-quality.md`](docs/data-quality.md) pour les 19 checks.
+
+## Quickstart (local dev)
 
 ### Prérequis
 - Python 3.10+

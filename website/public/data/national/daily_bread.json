@@ -75,11 +75,14 @@
       "taux_moyen_consommation": 0.122,
       "propension_consommer": 0.85,
       "taux_effectif_sur_disponible": 0.104,
+      "part_etat_nette": 0.45,
+      "part_secu_nette": 0.31,
+      "part_local_nette": 0.24,
       "year": 2024,
-      "source": "INSEE - Comptes nationaux annuels (T_TES)",
+      "source": "INSEE - Comptes nationaux annuels (T_TES) + PLF 2025 V&M tome I (affectations)",
       "source_url": "https://www.insee.fr/fr/statistiques/serie/010003222",
       "date_reference": "2024-01-01",
-      "notes": "Taux effectif TVA sur revenu disponible = 12,2% (taux moyen pondéré consommation, INSEE T_TES) × 85% (propension à consommer moyenne, INSEE comptes ménages). Lisse les disparités par décile."
+      "notes": "Taux effectif TVA sur revenu disponible = 12,2% × 85% = 10,4%. Affectations TVA nette 2025 (PLF V&M tome I) : 45% État (102 Md€), 31% Sécu (~70 Md€ compensation exonérations), 24% Local (~52 Md€ compensation TH + CVAE supprimée). Permet l'attribution causale par sous-secteur."
     },
     "pfu": {
       "taux_total": 0.3,
@@ -209,7 +212,11 @@
       "intra_gov_transfers_pct_gdp": 3.5,
       "gdp_total_md_eur": 2979.1,
       "gdp_source": "Eurostat — nama_10_gdp (B1GQ, CP_MEUR)",
-      "gdp_source_url": "https://ec.europa.eu/eurostat/databrowser/view/nama_10_gdp/default/table"
+      "gdp_source_url": "https://ec.europa.eu/eurostat/databrowser/view/nama_10_gdp/default/table",
+      "population_france": 68042591,
+      "population_year": 2024,
+      "population_source": "INSEE — Estimation de population au 1er janvier 2024",
+      "population_source_url": "https://www.insee.fr/fr/statistiques/1893198"
     },
     "notes_fr": "Décomposition non consolidée S1311/S1313/S1314 — lecture « qui dépense quoi avant transferts intra-admin ». Les ratios sont normalisés sur leur somme (et non sur S13). `institutions.<code>.annual_eur` est en € (= value_pct_gdp/100 × PIB FR) et permet aux drawers d'afficher le national absolu sans hardcode."
   },
@@ -515,6 +522,38 @@
       }
     ],
     "notes_fr": "Décomposition du Budget Général de l'État (BG net hors R&D) par mission, exhaustive. Ratios par mission appliqués sur la part S1311 (État + ODAC) du calculateur."
+  },
+  "state_overlay": {
+    "year": 2025,
+    "description_fr": "Périmètre S1311 Eurostat (~676 Md€) — Budget Général PLF (~447 Md€) = ~230 Md€ de dépenses hors missions PLF : CAS Pensions (62 Md€), opérateurs ODAC ressources propres (~30 Md€), PSR-UE (23 Md€), budgets annexes (~2 Md€), résiduel (~113 Md€). Ces items sont attribués aux 11 buckets éditoriaux ci-dessous pour atteindre 100 % de la dépense État perçue par l'utilisateur.",
+    "description_en": "Eurostat S1311 perimeter (~676 Md€) — PLF general budget (~447 Md€) = ~230 Md€ of spending outside PLF missions: CAS Pensions (62 Md€), ODAC operators own resources (~30 Md€), EU contribution (23 Md€), annex budgets (~2 Md€), residual (~113 Md€). These items are attributed to the 11 editorial buckets to reach 100 % of the State spending visible to the user.",
+    "source": "Multi-source : Rapport CAS Pensions PLF 2025 + Jaune budgétaire Opérateurs PLF 2025 + Voies & Moyens PLF 2025 + Cour des comptes",
+    "source_url": "https://www.budget.gouv.fr/documentation/documents-budgetaires/exercice-2025/projet-de-loi-de-finances",
+    "items": [
+      { "key": "cas_pensions_educ_nat", "parent_bucket": "education_recherche", "label_fr": "Pensions des fonctionnaires de l'Éducation nationale", "label_en": "Pensions — National Education civil servants", "annual_eur": 22000000000, "type": "cas_pensions", "source": "Rapport annuel CAS Pensions PLF 2025 (section 1 civils État)", "source_url": "https://www.budget.gouv.fr/documentation/documents-budgetaires/exercice-2025/projet-de-loi-de-finances" },
+      { "key": "cas_pensions_recherche", "parent_bucket": "education_recherche", "label_fr": "Pensions des fonctionnaires Recherche & ESup", "label_en": "Pensions — Research & Higher Ed civil servants", "annual_eur": 3000000000, "type": "cas_pensions", "source": "Rapport annuel CAS Pensions PLF 2025", "source_url": "https://www.budget.gouv.fr/documentation/documents-budgetaires/exercice-2025/projet-de-loi-de-finances" },
+      { "key": "odac_universites", "parent_bucket": "education_recherche", "label_fr": "Universités (ressources propres)", "label_en": "Universities (own resources)", "annual_eur": 4000000000, "type": "odac_ressources_propres", "source": "Jaune budgétaire Opérateurs de l'État PLF 2025 — ~70 universités consolidées", "source_url": "https://www.budget.gouv.fr/documentation/documents-budgetaires/exercice-2025/jaunes-budgetaires" },
+      { "key": "odac_cnrs", "parent_bucket": "education_recherche", "label_fr": "CNRS (ressources propres)", "label_en": "CNRS (own resources)", "annual_eur": 1000000000, "type": "odac_ressources_propres", "source": "Jaune budgétaire Opérateurs de l'État PLF 2025", "source_url": "https://www.budget.gouv.fr/documentation/documents-budgetaires/exercice-2025/jaunes-budgetaires" },
+      { "key": "odac_inserm_inrae_pasteur", "parent_bucket": "education_recherche", "label_fr": "INSERM / INRAE / Institut Pasteur / IRD", "label_en": "INSERM / INRAE / Pasteur / IRD", "annual_eur": 1500000000, "type": "odac_ressources_propres", "source": "Jaune budgétaire Opérateurs de l'État PLF 2025", "source_url": "https://www.budget.gouv.fr/documentation/documents-budgetaires/exercice-2025/jaunes-budgetaires" },
+      { "key": "odac_cea_civil", "parent_bucket": "education_recherche", "label_fr": "CEA (part civile)", "label_en": "CEA (civil part)", "annual_eur": 2500000000, "type": "odac_ressources_propres", "source": "Jaune budgétaire Opérateurs de l'État PLF 2025", "source_url": "https://www.budget.gouv.fr/documentation/documents-budgetaires/exercice-2025/jaunes-budgetaires" },
+      { "key": "cas_pensions_militaires", "parent_bucket": "defense", "label_fr": "Pensions militaires (retraite + invalidité)", "label_en": "Military pensions (retirement + disability)", "annual_eur": 14000000000, "type": "cas_pensions", "source": "Rapport annuel CAS Pensions PLF 2025 (sections 2 et 3)", "source_url": "https://www.budget.gouv.fr/documentation/documents-budgetaires/exercice-2025/projet-de-loi-de-finances" },
+      { "key": "cas_pensions_interieur", "parent_bucket": "securite", "label_fr": "Pensions Intérieur (police-gendarmerie civile)", "label_en": "Pensions — Interior civil servants", "annual_eur": 6000000000, "type": "cas_pensions", "source": "Rapport annuel CAS Pensions PLF 2025", "source_url": "https://www.budget.gouv.fr/documentation/documents-budgetaires/exercice-2025/projet-de-loi-de-finances" },
+      { "key": "cas_pensions_justice", "parent_bucket": "justice", "label_fr": "Pensions des fonctionnaires Justice", "label_en": "Pensions — Justice civil servants", "annual_eur": 1500000000, "type": "cas_pensions", "source": "Rapport annuel CAS Pensions PLF 2025", "source_url": "https://www.budget.gouv.fr/documentation/documents-budgetaires/exercice-2025/projet-de-loi-de-finances" },
+      { "key": "cas_pensions_solidarite", "parent_bucket": "solidarite_insertion", "label_fr": "Pensions des fonctionnaires Affaires sociales", "label_en": "Pensions — Social Affairs civil servants", "annual_eur": 2000000000, "type": "cas_pensions", "source": "Rapport annuel CAS Pensions PLF 2025", "source_url": "https://www.budget.gouv.fr/documentation/documents-budgetaires/exercice-2025/projet-de-loi-de-finances" },
+      { "key": "cas_pensions_travail", "parent_bucket": "travail_emploi", "label_fr": "Pensions des fonctionnaires Travail", "label_en": "Pensions — Labour Ministry civil servants", "annual_eur": 1500000000, "type": "cas_pensions", "source": "Rapport annuel CAS Pensions PLF 2025", "source_url": "https://www.budget.gouv.fr/documentation/documents-budgetaires/exercice-2025/projet-de-loi-de-finances" },
+      { "key": "cas_pensions_finances_culture", "parent_bucket": "autres_ministeres", "label_fr": "Pensions Finances / Culture / autres ministères", "label_en": "Pensions — Finance / Culture / other ministries", "annual_eur": 11500000000, "type": "cas_pensions", "source": "Rapport annuel CAS Pensions PLF 2025", "source_url": "https://www.budget.gouv.fr/documentation/documents-budgetaires/exercice-2025/projet-de-loi-de-finances" },
+      { "key": "odac_france_competences", "parent_bucket": "travail_emploi", "label_fr": "France Compétences (formation pro & apprentissage)", "label_en": "France Compétences (vocational training)", "annual_eur": 10000000000, "type": "odac_ressources_propres", "source": "Jaune budgétaire Opérateurs de l'État PLF 2025", "source_url": "https://www.budget.gouv.fr/documentation/documents-budgetaires/exercice-2025/jaunes-budgetaires" },
+      { "key": "odac_france_travail", "parent_bucket": "travail_emploi", "label_fr": "France Travail (ressources propres)", "label_en": "France Travail (own resources)", "annual_eur": 2000000000, "type": "odac_ressources_propres", "source": "Jaune budgétaire Opérateurs de l'État PLF 2025", "source_url": "https://www.budget.gouv.fr/documentation/documents-budgetaires/exercice-2025/jaunes-budgetaires" },
+      { "key": "odac_afpa_apec", "parent_bucket": "travail_emploi", "label_fr": "AFPA / APEC (formation et accompagnement)", "label_en": "AFPA / APEC", "annual_eur": 500000000, "type": "odac_ressources_propres", "source": "Jaune budgétaire Opérateurs de l'État PLF 2025", "source_url": "https://www.budget.gouv.fr/documentation/documents-budgetaires/exercice-2025/jaunes-budgetaires" },
+      { "key": "odac_ademe", "parent_bucket": "ecologie_logement_transports", "label_fr": "ADEME (Agence transition écologique)", "label_en": "ADEME (Ecological Transition Agency)", "annual_eur": 1000000000, "type": "odac_ressources_propres", "source": "Jaune budgétaire Opérateurs de l'État PLF 2025", "source_url": "https://www.budget.gouv.fr/documentation/documents-budgetaires/exercice-2025/jaunes-budgetaires" },
+      { "key": "odac_ofb_vnf_anses", "parent_bucket": "ecologie_logement_transports", "label_fr": "OFB / VNF / ANSES", "label_en": "OFB / VNF / ANSES", "annual_eur": 1000000000, "type": "odac_ressources_propres", "source": "Jaune budgétaire Opérateurs de l'État PLF 2025", "source_url": "https://www.budget.gouv.fr/documentation/documents-budgetaires/exercice-2025/jaunes-budgetaires" },
+      { "key": "budget_annexe_aviation", "parent_bucket": "ecologie_logement_transports", "label_fr": "Budget annexe Contrôle aérien (DGAC)", "label_en": "Annex budget — Air traffic control (DGAC)", "annual_eur": 2200000000, "type": "budget_annexe", "source": "PLF 2025 Budget annexe Contrôle et exploitation aériens", "source_url": "https://www.budget.gouv.fr/documentation/documents-budgetaires/exercice-2025/projet-de-loi-de-finances" },
+      { "key": "odac_afd", "parent_bucket": "autres_ministeres", "label_fr": "AFD (Agence française de développement)", "label_en": "AFD (French Development Agency)", "annual_eur": 3000000000, "type": "odac_ressources_propres", "source": "Jaune budgétaire Opérateurs de l'État PLF 2025", "source_url": "https://www.budget.gouv.fr/documentation/documents-budgetaires/exercice-2025/jaunes-budgetaires" },
+      { "key": "odac_bpifrance", "parent_bucket": "autres_ministeres", "label_fr": "Bpifrance (banque publique d'investissement)", "label_en": "Bpifrance (public investment bank)", "annual_eur": 1000000000, "type": "odac_ressources_propres", "source": "Jaune budgétaire Opérateurs de l'État PLF 2025", "source_url": "https://www.budget.gouv.fr/documentation/documents-budgetaires/exercice-2025/jaunes-budgetaires" },
+      { "key": "odac_asp", "parent_bucket": "autres_ministeres", "label_fr": "ASP (Agence de services et paiement)", "label_en": "ASP (Service & payment agency)", "annual_eur": 1000000000, "type": "odac_ressources_propres", "source": "Jaune budgétaire Opérateurs de l'État PLF 2025", "source_url": "https://www.budget.gouv.fr/documentation/documents-budgetaires/exercice-2025/jaunes-budgetaires" },
+      { "key": "psr_ue", "parent_bucket": "contribution_ue", "label_fr": "Contribution Union européenne (PSR-UE brut)", "label_en": "European Union contribution (gross)", "annual_eur": 23300000000, "type": "psr_ue", "source": "PLF 2025 Voies et Moyens tome I — Prélèvement sur Recettes au profit de l'UE", "source_url": "https://www.budget.gouv.fr/documentation/documents-budgetaires/exercice-2025/projet-de-loi-de-finances", "notes": "Contribution nette ~10 Md€ après fonds européens reçus (PAC, FEDER/FSE, Horizon, NextGenerationEU)." },
+      { "key": "autres_odac_residuel", "parent_bucket": "autres_etat_hors_plf", "label_fr": "Autres opérateurs & flux non rattachables", "label_en": "Other operators & unallocated flows", "annual_eur": 113000000000, "type": "residuel", "source": "Eurostat S1311 - PLF - overlay items ci-dessus", "source_url": "https://ec.europa.eu/eurostat/databrowser/view/gov_10a_main/default/table", "notes": "~460 opérateurs ODAC long tail (~30 Md€), autres CAS hors Pensions (~10 Md€), régies financières (~10 Md€), transferts inter-administratifs et écarts consolidation Eurostat (~63 Md€). À détailler en Phase 2 avec catalogage complet du jaune budgétaire." }
+    ]
   },
   "local_avg_dep_eur_hab": {
     "value_eur_hab": 1686.6,
