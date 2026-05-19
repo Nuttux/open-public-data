@@ -54,11 +54,13 @@ gcloud projects add-iam-policy-binding "$PROJECT_ID" \
   --role="roles/bigquery.dataViewer" \
   --condition=None
 
-# Écriture sur les datasets dbt_paris_ci_* (créés par dbt --target ci)
+# Écriture sur raw (sync OpenData) + dbt_paris_* (dbt run/test/CI).
+# Élargie 2026-05-19 depuis "CI éphémère uniquement" pour permettre au
+# cron `enrich-pipeline.yml` de tirer les sources et rebuild dbt.
 gcloud projects add-iam-policy-binding "$PROJECT_ID" \
   --member="serviceAccount:${SA_EMAIL}" \
   --role="roles/bigquery.dataEditor" \
-  --condition='expression=resource.name.startsWith("projects/_/datasets/dbt_paris_ci_"),title=ci-datasets-only,description=Limite l écriture aux datasets éphémères CI'
+  --condition='expression=resource.name.startsWith("projects/_/datasets/raw") || resource.name.startsWith("projects/_/datasets/dbt_paris"),title=ci-prod-and-ephemeral,description=Ecriture pour sync OpenData (raw) et dbt run (dbt_paris_*)'
 
 # Job runner (lancer des requêtes BQ)
 gcloud projects add-iam-policy-binding "$PROJECT_ID" \
