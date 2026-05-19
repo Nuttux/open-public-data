@@ -2518,6 +2518,7 @@ const en: Record<string, string> = {
   'fx.foot.legal.confidentialite': 'Privacy',
   'fx.foot.legal.mentions': 'Legal notice',
   'fx.foot.legal.licence': 'License',
+  'fx.foot.legal.status': 'Status ↗',
   'fx.qr.search.reset': 'Reset',
   'fx.qr.search.results_for': 'Results for',
   'fx.qr.search.sorted': 'Sorted by amount · {year} fiscal year',
