@@ -37,8 +37,10 @@ const nextConfig: NextConfig = {
       { source: '/logement-social', destination: '/ville/paris/logement', permanent: true },
       { source: '/logement-social/:path*', destination: '/ville/paris/logement/:path*', permanent: true },
       { source: '/logements', destination: '/ville/paris/logement', permanent: true },
-      { source: '/daily-bread', destination: '/ville/paris/daily-bread', permanent: true },
-      { source: '/daily-bread/:path*', destination: '/ville/paris/daily-bread/:path*', permanent: true },
+      { source: '/daily-bread', destination: '/france/daily-bread', permanent: true },
+      { source: '/daily-bread/:path*', destination: '/france/daily-bread/:path*', permanent: true },
+      { source: '/ville/paris/daily-bread', destination: '/france/daily-bread', permanent: true },
+      { source: '/ville/paris/daily-bread/:path*', destination: '/france/daily-bread/:path*', permanent: true },
 
       // Paris is the showcase — keep its rich pages at the root, redirect
       // /ville/paris (canonical commune URL) to /. Other cities live at /ville/[slug].
