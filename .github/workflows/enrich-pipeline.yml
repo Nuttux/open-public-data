@@ -1,24 +1,32 @@
-name: Pipeline (sync + enrich)
+name: Pipeline (sync + dbt + export + enrich)
 
 # Appelle `pipeline/run_all.sh` qui orchestre les 4 phases sync → dbt →
 # export → enrich. Incremental par design : re-run gratuit si rien n'a
 # bougé côté sources.
 #
-# Déclenchement : Actions → "Pipeline (sync + enrich)" → Run workflow.
-# Cron désactivé par défaut (Annexe CA ne bouge qu'une fois/an).
+# Déclenchement :
+#   - Manuel : Actions → "Pipeline (sync + dbt + export + enrich)" → Run workflow
+#   - Cron   : tous les lundis à 6h UTC (refresh hebdomadaire)
+#
+# Phases (input `phases`) :
+#   - "auto" (défaut) : résolu en `sync,dbt,export,enrich` quand BQ-CI est
+#     activé (cf. docs/runbooks/enable-bq-ci.md). Sinon résolu en
+#     `sync,enrich` (uniquement les sources qui ne passent pas par BQ).
+#   - autres : phases explicites séparées par virgule.
 
 on:
   workflow_dispatch:
     inputs:
       phases:
-        description: "Phases à exécuter (séparées par virgule)"
+        description: "Phases (auto = full si BQ activé sinon sync+enrich)"
         type: choice
         options:
+          - "auto"
           - "sync,enrich"
           - "enrich"
           - "sync"
           - "sync,dbt,export,enrich"
-        default: "sync,enrich"
+        default: "auto"
       tier1:
         description: "Activer l'enrich tier1 (LLM payant ≥80k€)"
         type: boolean
@@ -28,11 +36,14 @@ on:
         type: boolean
         default: true
 
-  # schedule:
-  #   - cron: "0 6 1 * *"   # 1er du mois 6h UTC — décommenter si besoin
+  schedule:
+    # Tous les lundis 6h UTC. Cadence retenue : signal de fraîcheur < 7j
+    # vu que les datasets Ville sont mis à jour mensuellement au mieux.
+    - cron: "0 6 * * 1"
 
 permissions:
   contents: write
+  id-token: write   # Workload Identity Federation (auth GCP)
 
 jobs:
   pipeline:
@@ -55,6 +66,60 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt || pip install requests
+          # dbt installé seulement si on va vraiment l'utiliser, c'est lourd.
+
+      - name: Resolve phases
+        id: phases
+        env:
+          REQUESTED: ${{ inputs.phases || 'auto' }}
+          BQ_CI: ${{ vars.ENABLE_BQ_CI }}
+        run: |
+          if [[ "$REQUESTED" == "auto" ]]; then
+            if [[ "$BQ_CI" == "true" ]]; then
+              RESOLVED="sync,dbt,export,enrich"
+            else
+              RESOLVED="sync,enrich"
+            fi
+          else
+            RESOLVED="$REQUESTED"
+          fi
+          echo "→ phases résolues : $RESOLVED"
+          echo "resolved=$RESOLVED" >> "$GITHUB_OUTPUT"
+          # Pour les conditions des steps suivants
+          if [[ "$RESOLVED" == *"dbt"* || "$RESOLVED" == *"export"* ]]; then
+            echo "needs_bq=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "needs_bq=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Authenticate to GCP (Workload Identity Federation)
+        if: steps.phases.outputs.needs_bq == 'true'
+        uses: google-github-actions/auth@v2
+        with:
+          workload_identity_provider: ${{ secrets.GCP_WORKLOAD_IDENTITY_PROVIDER }}
+          service_account: ${{ secrets.GCP_SERVICE_ACCOUNT }}
+
+      - name: Install dbt (only if dbt phase requested)
+        if: contains(steps.phases.outputs.resolved, 'dbt')
+        run: pip install dbt-core dbt-bigquery
+
+      - name: Configure dbt profile
+        if: contains(steps.phases.outputs.resolved, 'dbt')
+        run: |
+          mkdir -p ~/.dbt
+          cat > ~/.dbt/profiles.yml <<EOF
+          paris_open_data:
+            target: prod
+            outputs:
+              prod:
+                type: bigquery
+                method: oauth
+                project: open-data-france-484717
+                dataset: dbt_paris
+                location: EU
+                threads: 4
+                timeout_seconds: 600
+          EOF
 
       - name: Run pipeline
         env:
@@ -63,11 +128,16 @@ jobs:
           PYTHON: python
         run: |
           chmod +x pipeline/run_all.sh
-          # Convertit "sync,enrich" en "--only=sync,enrich" SAUF si = all.
-          PHASES_FLAG="--only=${{ inputs.phases }}"
+          PHASES_FLAG="--only=${{ steps.phases.outputs.resolved }}"
           TIER1_FLAG=""
           if [[ "${{ inputs.tier1 }}" == "true" ]]; then TIER1_FLAG="--tier1"; fi
           bash pipeline/run_all.sh $PHASES_FLAG $TIER1_FLAG
+
+      - name: Run data quality audit
+        if: contains(steps.phases.outputs.resolved, 'dbt')
+        run: |
+          pip install google-cloud-bigquery db-dtypes
+          python pipeline/scripts/audit/run_data_quality_audit.py
 
       - name: Show diff summary
         if: always()
@@ -85,6 +155,6 @@ jobs:
             echo "Rien à committer."
             exit 0
           fi
-          git add website/public/data/
-          git commit -m "chore(pipeline): auto-refresh subventions + enrich [skip ci]"
+          git add website/public/data/ pipeline/seeds/
+          git commit -m "chore(pipeline): auto-refresh ${{ steps.phases.outputs.resolved }} [skip ci]"
           git push
