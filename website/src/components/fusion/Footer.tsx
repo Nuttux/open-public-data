@@ -110,6 +110,14 @@ export default function Footer() {
             <Link href="/mentions-legales">{t("fx.foot.legal.mentions")}</Link>
             <span aria-hidden="true">·</span>
             <Link href="/licence">{t("fx.foot.legal.licence")}</Link>
+            {process.env.NEXT_PUBLIC_STATUS_PAGE_URL ? (
+              <>
+                <span aria-hidden="true">·</span>
+                <a href={process.env.NEXT_PUBLIC_STATUS_PAGE_URL} target="_blank" rel="noopener noreferrer">
+                  {t("fx.foot.legal.status")}
+                </a>
+              </>
+            ) : null}
           </nav>
           <span className="fx-foot-license">{t("fx.foot.license").replace("{year}", String(year))}</span>
         </div>

@@ -12,6 +12,30 @@ import nextPlugin from "@next/eslint-plugin-next";
 export default [
   js.configs.recommended,
   {
+    // Global rule overrides (apply to all files including .js/.mjs).
+    // TypeScript checks identifier resolution far better than ESLint's
+    // built-in no-undef, which doesn't know about `window`, `console`,
+    // `URL`, etc. without an env config. Keep it off project-wide.
+    rules: {
+      "no-undef": "off",
+      "no-empty": ["error", { "allowEmptyCatch": true }],
+      "no-irregular-whitespace": [
+        "error",
+        { "skipStrings": true, "skipTemplates": true, "skipComments": true, "skipRegExps": true },
+      ],
+      "no-control-regex": "off",
+      "no-unused-vars": ["warn", { "argsIgnorePattern": "^_", "varsIgnorePattern": "^_", "caughtErrorsIgnorePattern": "^_" }],
+    },
+  },
+  {
+    // Dev scripts (smoke tests, audits) aren't shipped — keep ESLint
+    // lenient there so a stray unused var doesn't break CI.
+    files: ["scripts/**/*.{js,mjs,cjs}"],
+    rules: {
+      "no-unused-vars": "off",
+    },
+  },
+  {
     files: ["**/*.{ts,tsx}"],
     languageOptions: {
       parser: tsParser,
