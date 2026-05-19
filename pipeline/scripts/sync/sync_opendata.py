@@ -278,6 +278,11 @@ def upload_to_bigquery(
             if len(sample) > 0 and isinstance(sample.iloc[0], (dict, list)):
                 df[col] = df[col].apply(lambda x: json.dumps(x) if isinstance(x, (dict, list)) else x)
                 print(f"  📝 Colonne convertie en JSON string: {col}")
+
+    # Stamp la fraîcheur du sync : permet à dbt source freshness de détecter
+    # un sync cassé (cf. pipeline/models/staging/sources.yml). UTC, naive
+    # accepté par BQ comme TIMESTAMP.
+    df["_synced_at"] = pd.Timestamp.utcnow().tz_localize(None)
     
     # Afficher le mapping des colonnes modifiées
     print(f"  📝 Colonnes nettoyées:")

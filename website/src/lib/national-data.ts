@@ -280,6 +280,12 @@ export type DailyBreadConstants = {
       taux_moyen_consommation: number;
       propension_consommer: number;
       taux_effectif_sur_disponible: number;
+      /** Répartition causale de la TVA nette entre sous-secteurs APU (PLF V&M
+       *  tome I) — utilisée par computeInstitutionSharesCausal pour attribuer
+       *  la TVA des ménages aux 3 caisses. */
+      part_etat_nette?: number;
+      part_secu_nette?: number;
+      part_local_nette?: number;
     }>;
     pfu: DailyBreadSourcedBlock<{
       year: number;
@@ -356,6 +362,11 @@ export type DailyBreadConstants = {
       gdp_total_md_eur?: number | null;
       gdp_source?: string;
       gdp_source_url?: string;
+      /** Population France au 1er janvier (INSEE) — pour per-capita. */
+      population_france?: number;
+      population_year?: number;
+      population_source?: string;
+      population_source_url?: string;
     };
   };
   subsector_breakdowns: {
@@ -408,6 +419,35 @@ export type DailyBreadConstants = {
       share_of_state_net: number;
     }>;
     notes_fr: string;
+  };
+  /**
+   * Overlay S1311 hors PLF : CAS Pensions répartis par ministère, opérateurs
+   * ODAC ressources propres, PSR-UE, budgets annexes. Permet à
+   * computeStateBuckets d'atteindre 100 % de la dépense État perçue par
+   * l'utilisateur (vs 66 % avec les seules missions PLF).
+   */
+  state_overlay?: {
+    year: number;
+    description_fr: string;
+    description_en: string;
+    source: string;
+    source_url: string;
+    items: Array<{
+      key: string;
+      parent_bucket: string;
+      label_fr: string;
+      label_en: string;
+      annual_eur: number;
+      type:
+        | "cas_pensions"
+        | "odac_ressources_propres"
+        | "budget_annexe"
+        | "psr_ue"
+        | "residuel";
+      source: string;
+      source_url: string;
+      notes?: string;
+    }>;
   };
   local_avg_dep_eur_hab: {
     value_eur_hab: number | null;

@@ -606,3 +606,55 @@ models:
       - name: projet_id
         tests: [not_null]
       - name: numero_marche
+
+  # ===========================================================================
+  # MARSEILLE — Budget (M57 par nature, multi-schémas)
+  # ===========================================================================
+  - name: stg_marseille_budget
+    description: |
+      Budget primitif + Compte administratif Ville de Marseille (M57, par nature).
+      Normalise 3 schémas CSV différents (BP 2018-2024, CA legacy 2018-2019, CA modern 2020+)
+      vers un format aligné sur stg_budget_principal (Paris) avec commune_slug='marseille'.
+
+      ⚠ Marseille publie en mode VOTE PAR NATURE (chap 11/60/65 = type de charge),
+      pas en vote fonctionnel comme Paris. fonction_code/libelle = NULL.
+
+      Source : raw.marseille_{budget_primitif,compte_administratif}_{year} (12 tables annuelles)
+    columns:
+      - name: commune_slug
+        description: "Toujours 'marseille' — discriminator multi-villes"
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['marseille']
+      - name: type_budget
+        description: "'vote' (BP) ou 'execute' (CA)"
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['vote', 'execute']
+      - name: annee
+        description: "Année fiscale"
+        tests: [not_null]
+      - name: section
+        description: "'Fonctionnement' ou 'Investissement'"
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['Fonctionnement', 'Investissement']
+      - name: sens_flux
+        description: "'Dépense' ou 'Recette'"
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['Dépense', 'Recette']
+      - name: chapitre_code
+      - name: nature_code
+      - name: montant
+        description: "Montant en euros (ABS, type FLOAT64)"
+        tests: [not_null]
+      - name: cle_technique
+        description: "Clé technique unique (marseille-<type>-<year>-<sect>-<sens>-<chap>-<nat>-<hash>)"
+        tests:
+          - not_null
+          - unique

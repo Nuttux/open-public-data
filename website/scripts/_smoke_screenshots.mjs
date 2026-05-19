@@ -42,7 +42,7 @@ for (const [label, p] of ROUTES) {
     const okD = respD?.status() ?? 0;
     await pD.screenshot({ path: path.join(out, `route-${label}-desktop.png`), fullPage: false });
 
-    const respM = await pM.goto(base + p, { waitUntil: 'domcontentloaded', timeout: 25000 });
+    const _respM = await pM.goto(base + p, { waitUntil: 'domcontentloaded', timeout: 25000 });
     await pM.waitForTimeout(600);
     await pM.screenshot({ path: path.join(out, `route-${label}-mobile.png`), fullPage: false });
 

@@ -7,7 +7,6 @@ import tsPlugin from "@typescript-eslint/eslint-plugin";
 import tsParser from "@typescript-eslint/parser";
 import reactPlugin from "eslint-plugin-react";
 import reactHooksPlugin from "eslint-plugin-react-hooks";
-import nextPlugin from "@next/eslint-plugin-next";
 
 export default [
   js.configs.recommended,
@@ -24,6 +23,8 @@ export default [
         { "skipStrings": true, "skipTemplates": true, "skipComments": true, "skipRegExps": true },
       ],
       "no-control-regex": "off",
+      // Honor `_` prefix convention used in dev scripts (mjs/js) for
+      // intentionally-unused variables and caught errors.
       "no-unused-vars": ["warn", { "argsIgnorePattern": "^_", "varsIgnorePattern": "^_", "caughtErrorsIgnorePattern": "^_" }],
     },
   },
@@ -51,35 +52,33 @@ export default [
       "@typescript-eslint": tsPlugin,
       "react": reactPlugin,
       "react-hooks": reactHooksPlugin,
-      "@next/next": nextPlugin,
     },
     rules: {
       // TypeScript rules
-      "@typescript-eslint/no-unused-vars": [
-        "warn",
-        { argsIgnorePattern: "^_", varsIgnorePattern: "^_", destructuredArrayIgnorePattern: "^_" },
-      ],
+      "@typescript-eslint/no-unused-vars": ["warn", { argsIgnorePattern: "^_" }],
       "@typescript-eslint/no-explicit-any": "warn",
-
+      
       // React rules
       "react/react-in-jsx-scope": "off",
       "react-hooks/rules-of-hooks": "error",
       "react-hooks/exhaustive-deps": "warn",
-
-      // Next.js rules — registered as warnings (we still allow `<img>` where
-      // we explicitly opt-out via eslint-disable, but the rule must be known
-      // for those directives to parse).
-      "@next/next/no-img-element": "warn",
-
+      
       // General
       "no-unused-vars": "off", // Use TypeScript version instead
-      "no-undef": "off",       // TypeScript handles this
-      // Empty try/catch is used intentionally as silent fallback (stale data,
-      // SSR/private browsing, missing optional files).
-      "no-empty": ["error", { allowEmptyCatch: true }],
-      // Allow non-breaking space (U+00A0) in chart labels — used as French
-      // typographic separator between number and unit (e.g. "11 Mds €").
-      "no-irregular-whitespace": ["error", { skipStrings: true, skipTemplates: true, skipRegExps: true }],
+      "no-undef": "off", // TypeScript handles this
+      // Allow `try {} catch {}` swallow patterns (very common for optional
+      // JSON loads and Storage probes). Empty blocks elsewhere stay errors.
+      "no-empty": ["error", { "allowEmptyCatch": true }],
+      // Irregular whitespace happens in editorial FR content (NBSP, narrow
+      // NBSP for numbers). Keep the rule on for code, but skip strings/
+      // templates/comments/regexes where it's intentional.
+      "no-irregular-whitespace": [
+        "error",
+        { "skipStrings": true, "skipTemplates": true, "skipComments": true, "skipRegExps": true },
+      ],
+      // Some legacy regexes carry control chars from CSV parsing — keep
+      // them for now, codepath unchanged.
+      "no-control-regex": "off",
     },
     settings: {
       react: {
@@ -88,20 +87,6 @@ export default [
     },
   },
   {
-    // Dev-only throwaway scripts at the website/ root and a few sub-folders.
-    // Not shipped, not user-facing — keep them out of CI lint.
-    ignores: [
-      ".next/**",
-      "node_modules/**",
-      "audit-*.mjs",
-      "screenshot-*.mjs",
-      "bench_shots.mjs",
-      "shot_last.mjs",
-      "landing-screenshot.js",
-      "reveal-smoke.js",
-      "reveal-screenshots.js",
-      "scripts/_mockup_screenshot.mjs",
-      "scripts/audit-*.mjs",
-    ],
+    ignores: [".next/**", "node_modules/**"],
   },
 ];

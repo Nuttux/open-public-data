@@ -22,7 +22,9 @@
 {{ config(materialized='table', schema='marts', tags=['mart', 'budget', 'sankey', 'marseille']) }}
 
 WITH budget AS (
-    SELECT * FROM {{ ref('stg_marseille_budget') }}
+    -- Via core (passthrough) pour respecter la convention de couches
+    -- (mart → core, jamais mart → stg). Cf. core_marseille_budget.sql.
+    SELECT * FROM {{ ref('core_marseille_budget') }}
     WHERE montant > 0
 ),
 
