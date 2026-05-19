@@ -1,11 +1,11 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-05-18T13:32:58.041830+00:00",
+  "generated_at": "2026-05-19T09:53:32.615302+00:00",
   "project": "open-data-france-484717",
   "summary": {
-    "total": 16,
-    "pass": 14,
-    "warn": 2,
+    "total": 18,
+    "pass": 15,
+    "warn": 3,
     "fail": 0
   },
   "thresholds": {
@@ -296,21 +296,139 @@
       ]
     },
     {
+      "id": "source_max_year_coverage",
+      "category": "freshness",
+      "label": "Sources upstream : MAX(annee) vs année courante",
+      "status": "warn",
+      "threshold": "pass ≤ 2 ans, warn ≤ 3 ans (année courante : 2026)",
+      "actual": "gap max : 5 an(s)",
+      "details": {
+        "per_source": [
+          {
+            "table": "comptes_administratifs_budgets_principaux_a_partir_de_2019_m57_ville_departement",
+            "max_year": 2024,
+            "gap_years": 2
+          },
+          {
+            "table": "comptes_administratifs_autorisations_de_programmes_a_partir_de_2018_m57_ville_de",
+            "max_year": 2022,
+            "gap_years": 4
+          },
+          {
+            "table": "subventions_versees_annexe_compte_administratif_a_partir_de_2018",
+            "max_year": 2024,
+            "gap_years": 2
+          },
+          {
+            "table": "subventions_associations_votees",
+            "max_year": 2025,
+            "gap_years": 1
+          },
+          {
+            "table": "logements_sociaux_finances_a_paris",
+            "max_year": 2024,
+            "gap_years": 2
+          },
+          {
+            "table": "budgets_votes_principaux_a_partir_de_2019_m57_ville_departement",
+            "max_year": 2021,
+            "gap_years": 5
+          },
+          {
+            "table": "liste_des_marches_de_la_collectivite_parisienne",
+            "max_year": 2024,
+            "gap_years": 2
+          },
+          {
+            "table": "bilan_comptable",
+            "max_year": 2024,
+            "gap_years": 2
+          }
+        ],
+        "errors": []
+      },
+      "sources": [
+        "raw.comptes_administratifs_budgets_principaux_a_partir_de_2019_m57_ville_departement",
+        "raw.comptes_administratifs_autorisations_de_programmes_a_partir_de_2018_m57_ville_de",
+        "raw.subventions_versees_annexe_compte_administratif_a_partir_de_2018",
+        "raw.subventions_associations_votees",
+        "raw.logements_sociaux_finances_a_paris",
+        "raw.budgets_votes_principaux_a_partir_de_2019_m57_ville_departement",
+        "raw.liste_des_marches_de_la_collectivite_parisienne",
+        "raw.bilan_comptable"
+      ],
+      "note": "Détection d'un dataset OpenData gelé : si MAX(annee) ne progresse plus, l'upstream a cessé de publier (ex: AP gelé à 2022)."
+    },
+    {
+      "id": "raw_table_freshness",
+      "category": "freshness",
+      "label": "Tables raw : âge du dernier sync OpenData → BigQuery",
+      "status": "pass",
+      "threshold": "pass < 35j, warn < 90j",
+      "actual": "max 25j",
+      "details": [
+        {
+          "table_id": "bilan_comptable",
+          "last_mod": "2026-04-23T13:54:01.249000+00:00",
+          "age_days": 25
+        },
+        {
+          "table_id": "budgets_votes_principaux_a_partir_de_2019_m57_ville_departement",
+          "last_mod": "2026-04-23T13:43:13.846000+00:00",
+          "age_days": 25
+        },
+        {
+          "table_id": "comptes_administratifs_autorisations_de_programmes_a_partir_de_2018_m57_ville_de",
+          "last_mod": "2026-04-23T13:42:36.605000+00:00",
+          "age_days": 25
+        },
+        {
+          "table_id": "comptes_administratifs_budgets_principaux_a_partir_de_2019_m57_ville_departement",
+          "last_mod": "2026-04-23T13:42:30.304000+00:00",
+          "age_days": 25
+        },
+        {
+          "table_id": "liste_des_marches_de_la_collectivite_parisienne",
+          "last_mod": "2026-04-23T13:43:20.263000+00:00",
+          "age_days": 25
+        },
+        {
+          "table_id": "logements_sociaux_finances_a_paris",
+          "last_mod": "2026-04-23T13:43:08.511000+00:00",
+          "age_days": 25
+        },
+        {
+          "table_id": "subventions_associations_votees",
+          "last_mod": "2026-04-23T13:43:02.649000+00:00",
+          "age_days": 25
+        },
+        {
+          "table_id": "subventions_versees_annexe_compte_administratif_a_partir_de_2018",
+          "last_mod": "2026-04-23T13:42:45.849000+00:00",
+          "age_days": 25
+        }
+      ],
+      "sources": [
+        "open-data-france-484717.raw.*"
+      ],
+      "note": "Mesure quand sync_opendata.py a touché la table pour la dernière fois (≠ fraîcheur upstream OpenData)."
+    },
+    {
       "id": "core_freshness",
       "category": "freshness",
       "label": "Fraîcheur tables core (dernier dbt run)",
       "status": "pass",
       "threshold": "pass < 90j, warn < 180j",
-      "actual": "max 24j",
+      "actual": "max 25j",
       "details": [
         {
           "table": "core_budget",
-          "age_days": 24,
+          "age_days": 25,
           "last_run": "2026-04-23"
         },
         {
           "table": "core_budget_vote",
-          "age_days": 24,
+          "age_days": 25,
           "last_run": "2026-04-23"
         },
         {
@@ -325,7 +443,7 @@
         },
         {
           "table": "core_logements_sociaux",
-          "age_days": 24,
+          "age_days": 25,
           "last_run": "2026-04-23"
         }
       ],
