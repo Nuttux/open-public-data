@@ -1,10 +1,10 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-05-19T09:53:32.615302+00:00",
+  "generated_at": "2026-05-19T12:14:41.331055+00:00",
   "project": "open-data-france-484717",
   "summary": {
-    "total": 18,
-    "pass": 15,
+    "total": 19,
+    "pass": 16,
     "warn": 3,
     "fail": 0
   },
@@ -358,6 +358,52 @@
         "raw.bilan_comptable"
       ],
       "note": "Détection d'un dataset OpenData gelé : si MAX(annee) ne progresse plus, l'upstream a cessé de publier (ex: AP gelé à 2022)."
+    },
+    {
+      "id": "partial_year_detection",
+      "category": "freshness",
+      "label": "Détection année partielle (row count vs médiane historique)",
+      "status": "pass",
+      "threshold": "warn si dernière année < 60% de la médiane des 3 années précédentes",
+      "actual": "aucune année partielle détectée",
+      "details": {
+        "per_source": [
+          {
+            "table": "comptes_administratifs_budgets_principaux_a_partir_de_2019_m57_ville_departement",
+            "error": "400 Syntax error: Expected \")\" but got \",\" at [18:77]; reason: invalidQuery, location: query, message: Syntax error: Exp"
+          },
+          {
+            "table": "subventions_versees_annexe_compte_administratif_a_partir_de_2018",
+            "error": "400 Syntax error: Expected \")\" but got \",\" at [18:77]; reason: invalidQuery, location: query, message: Syntax error: Exp"
+          },
+          {
+            "table": "subventions_associations_votees",
+            "error": "400 Syntax error: Expected \")\" but got \",\" at [18:77]; reason: invalidQuery, location: query, message: Syntax error: Exp"
+          },
+          {
+            "table": "logements_sociaux_finances_a_paris",
+            "error": "400 Syntax error: Expected \")\" but got \",\" at [18:77]; reason: invalidQuery, location: query, message: Syntax error: Exp"
+          },
+          {
+            "table": "liste_des_marches_de_la_collectivite_parisienne",
+            "error": "400 Syntax error: Expected \")\" but got \",\" at [18:77]; reason: invalidQuery, location: query, message: Syntax error: Exp"
+          },
+          {
+            "table": "bilan_comptable",
+            "error": "400 Syntax error: Expected \")\" but got \",\" at [18:77]; reason: invalidQuery, location: query, message: Syntax error: Exp"
+          }
+        ],
+        "flagged": []
+      },
+      "sources": [
+        "raw.comptes_administratifs_budgets_principaux_a_partir_de_2019_m57_ville_departement",
+        "raw.subventions_versees_annexe_compte_administratif_a_partir_de_2018",
+        "raw.subventions_associations_votees",
+        "raw.logements_sociaux_finances_a_paris",
+        "raw.liste_des_marches_de_la_collectivite_parisienne",
+        "raw.bilan_comptable"
+      ],
+      "note": "Détection conservative : un drop > 40% YoY signale une publication en cours. À confirmer avant exposition publique (la dbt mart peut filtrer cette année si confirmé partiel)."
     },
     {
       "id": "raw_table_freshness",

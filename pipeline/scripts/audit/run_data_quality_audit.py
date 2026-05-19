@@ -433,6 +433,92 @@ def check_source_max_year(client: bigquery.Client) -> dict:
     }
 
 
+def check_partial_year_detection(client: bigquery.Client) -> dict:
+    """Détecte l'arrivée d'une année *partielle* dans les sources annuelles.
+
+    Concrètement : pour chaque dataset annuel, on compare le row count de
+    MAX(annee) à la médiane des 3 années précédentes complètes. Si la
+    dernière année a < 60% de la médiane → flag potentielle année partielle
+    (la Ville a probablement commencé à publier mais pas encore terminé
+    pour cette année fiscale).
+
+    Pourquoi 60% : pour le budget CA Paris, les volumes annuels sont stables
+    à ±5% YoY ; un drop > 40% n'est pas du bruit normal, c'est soit un
+    changement de périmètre soit une publication en cours.
+    """
+    sources = [
+        ("comptes_administratifs_budgets_principaux_a_partir_de_2019_m57_ville_departement", "exercice_comptable"),
+        ("subventions_versees_annexe_compte_administratif_a_partir_de_2018", "publication"),
+        ("subventions_associations_votees", "annee_budgetaire"),
+        ("logements_sociaux_finances_a_paris", "annee"),
+        ("liste_des_marches_de_la_collectivite_parisienne", "annee_de_notification"),
+        ("bilan_comptable", "exercice_comptable"),
+    ]
+    rows = []
+    flagged = []
+    for table, col in sources:
+        col_q = f"`{col}`" if " " in col else col
+        sql = f"""
+        WITH years AS (
+          SELECT
+            CAST(REGEXP_EXTRACT(CAST({col_q} AS STRING), r'(\\d{{4}})') AS INT64) AS y,
+            COUNT(*) AS n_rows
+          FROM `{PROJECT_ID}.raw.{table}`
+          WHERE {col_q} IS NOT NULL
+          GROUP BY y
+          HAVING y IS NOT NULL
+        ),
+        ranked AS (
+          SELECT y, n_rows, ROW_NUMBER() OVER (ORDER BY y DESC) AS rk
+          FROM years
+        )
+        SELECT
+          MAX(IF(rk = 1, y, NULL)) AS max_year,
+          MAX(IF(rk = 1, n_rows, NULL)) AS max_year_rows,
+          APPROX_QUANTILES(IF(rk BETWEEN 2 AND 4, n_rows, NULL) IGNORE NULLS, 2)[OFFSET(1)] AS median_prev_rows,
+          ARRAY_AGG(STRUCT(y, n_rows) ORDER BY y DESC LIMIT 5) AS recent
+        FROM ranked
+        """
+        try:
+            row = _row(client, sql)
+        except Exception as e:  # noqa: BLE001
+            rows.append({"table": table, "error": str(e)[:120]})
+            continue
+        max_year = row["max_year"]
+        cur = row["max_year_rows"] or 0
+        median_prev = row["median_prev_rows"] or 0
+        recent = [dict(r) for r in row["recent"]]
+        ratio = (cur / median_prev) if median_prev else None
+        is_partial = ratio is not None and ratio < 0.6
+        rows.append({
+            "table": table,
+            "max_year": max_year,
+            "max_year_rows": cur,
+            "median_prev_rows": median_prev,
+            "ratio_vs_median": round(ratio, 3) if ratio is not None else None,
+            "suspected_partial": is_partial,
+            "recent_years": recent,
+        })
+        if is_partial:
+            flagged.append(f"{table}: année {max_year} a {cur} lignes ({round(ratio*100)}% de la médiane des 3 années précédentes)")
+
+    if flagged:
+        status = "warn"
+    else:
+        status = "pass"
+    return {
+        "id": "partial_year_detection",
+        "category": "freshness",
+        "label": "Détection année partielle (row count vs médiane historique)",
+        "status": status,
+        "threshold": "warn si dernière année < 60% de la médiane des 3 années précédentes",
+        "actual": f"{len(flagged)} dataset(s) avec dernière année suspecte" if flagged else "aucune année partielle détectée",
+        "details": {"per_source": rows, "flagged": flagged},
+        "sources": [f"raw.{t}" for t, _ in sources],
+        "note": "Détection conservative : un drop > 40% YoY signale une publication en cours. À confirmer avant exposition publique (la dbt mart peut filtrer cette année si confirmé partiel).",
+    }
+
+
 def check_table_freshness_bq(client: bigquery.Client) -> dict:
     """INFORMATION_SCHEMA : quand nos tables raw ont-elles été touchées par sync_opendata ?
 
@@ -590,6 +676,7 @@ CHECKS = [
     check_casvp_dedup,
     check_budget_vote_coverage,
     check_source_max_year,
+    check_partial_year_detection,
     check_table_freshness_bq,
     check_freshness,
     check_subventions_2020_2021_warning,
