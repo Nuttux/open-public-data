@@ -17,6 +17,7 @@
 #   bash pipeline/run_all.sh --skip=sync,dbt    # juste export + enrich
 #   bash pipeline/run_all.sh --only=enrich      # juste l'enrichissement
 #   bash pipeline/run_all.sh --tier1            # active enrich tier1 (LLM payant)
+#   bash pipeline/run_all.sh --cron-safe        # skip enrich LLM, garde tier2 Sirene
 #   bash pipeline/run_all.sh --dry-run          # imprime ce qui serait fait
 #
 # Variables d'env reconnues :
@@ -37,6 +38,7 @@ PHASES=("sync" "dbt" "export" "enrich")
 SKIP=""
 ONLY=""
 TIER1=false
+CRON_SAFE=false
 DRY_RUN=false
 
 for arg in "$@"; do
@@ -44,6 +46,7 @@ for arg in "$@"; do
         --skip=*)    SKIP="${arg#--skip=}" ;;
         --only=*)    ONLY="${arg#--only=}" ;;
         --tier1)     TIER1=true ;;
+        --cron-safe) CRON_SAFE=true ;;
         --dry-run)   DRY_RUN=true ;;
         -h|--help)
             grep "^#" "$0" | sed 's/^# \{0,1\}//'
@@ -105,6 +108,10 @@ if should_run dbt; then
     echo "═  2/4  DBT — transformations BigQuery"
     echo "════════════════════════════════════════════════════════"
     if command -v dbt >/dev/null 2>&1; then
+        # dbt deps doit tourner avant run pour installer les packages (cf
+        # pipeline/packages.yml). C'est idempotent et rapide si déjà installé.
+        run_step "dbt deps" bash -c "cd '$PIPELINE_DIR' && dbt deps"
+        run_step "dbt seed" bash -c "cd '$PIPELINE_DIR' && dbt seed"
         run_step "dbt run" bash -c "cd '$PIPELINE_DIR' && dbt run"
     else
         echo "  ⚠ dbt non installé, phase skipped. Installer : pip install dbt-bigquery"
@@ -149,8 +156,16 @@ if should_run enrich; then
         echo "  ℹ tier1 LLM non lancé (ajoute --tier1 pour l'activer, coût ~quelques €)"
     fi
 
-    # 4c — autres enrichements (géo AP + thématique) via l'orchestrateur existant
-    if [[ -f "$PIPELINE_DIR/scripts/enrich/run_enrichment.py" ]]; then
+    # 4c — autres enrichements (géo AP + thématique) via l'orchestrateur existant.
+    # En mode --cron-safe, on skip : ces étapes sont 100% LLM (Gemini), donc
+    # coûteuses et risquées en non-interactif. Les nouvelles lignes restent
+    # sans thématique/géo jusqu'à la prochaine session manuelle.
+    if $CRON_SAFE; then
+        echo ""
+        echo "  ℹ --cron-safe : run_enrichment.py (LLM Gemini) skipped."
+        echo "    Les nouvelles lignes resteront non enrichies (thématique/géo)"
+        echo "    jusqu'à la prochaine session manuelle."
+    elif [[ -f "$PIPELINE_DIR/scripts/enrich/run_enrichment.py" ]]; then
         run_step "Autres enrichissements (géo + thématique)" \
             $PYTHON "$PIPELINE_DIR/scripts/enrich/run_enrichment.py" || \
             echo "  ⚠ run_enrichment.py a échoué — on continue"
