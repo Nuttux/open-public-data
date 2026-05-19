@@ -9242,6 +9242,188 @@ body:has(.theme-fusion) > div.pb-24 { padding-bottom: 0 !important; }
   .theme-fusion .fx-audit-table-row .check-threshold::before { content: "Seuil · "; color: var(--muted); font-family: var(--f-mono); font-size: 10.5px; text-transform: uppercase; letter-spacing: .1em; display: inline-block; margin-right: 4px; }
 }
 
+/* ═══ DataProvenance — Badge + modal lineage ═══════════════════════════════ */
+.theme-fusion .fx-provenance-btn,
+.fx-provenance-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 6px 10px;
+  background: transparent;
+  border: 1px solid var(--ink, #000);
+  border-radius: 3px;
+  font-family: var(--f-mono, monospace);
+  font-size: 11.5px;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  cursor: pointer;
+  color: var(--ink, #000);
+  transition: background .15s ease, color .15s ease;
+}
+.theme-fusion .fx-provenance-btn:hover,
+.fx-provenance-btn:hover {
+  background: var(--ink, #000);
+  color: var(--bg, #fff);
+}
+.fx-provenance-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  z-index: 1000;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 5vh 16px;
+  overflow-y: auto;
+}
+.fx-provenance-dialog {
+  background: var(--bg, #fff);
+  color: var(--ink, #000);
+  border: 1px solid var(--ink, #000);
+  max-width: 720px;
+  width: 100%;
+  padding: 28px 28px 24px;
+  font-family: var(--f-ui, system-ui);
+  outline: none;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+}
+.fx-provenance-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 18px;
+  border-bottom: 1px solid var(--ink, #000);
+  padding-bottom: 14px;
+}
+.fx-provenance-kicker {
+  font-family: var(--f-mono, monospace);
+  font-size: 11px;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--ocre, #b97400);
+  margin-bottom: 4px;
+}
+.fx-provenance-title {
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 1.2;
+  margin: 0;
+}
+.fx-provenance-close {
+  background: none;
+  border: none;
+  font-size: 28px;
+  line-height: 1;
+  cursor: pointer;
+  color: var(--ink, #000);
+  padding: 0 4px;
+}
+.fx-provenance-close:hover {
+  color: var(--ocre, #b97400);
+}
+.fx-provenance-empty {
+  color: var(--muted, #666);
+  font-style: italic;
+  margin: 20px 0;
+}
+.fx-provenance-what {
+  font-size: 14.5px;
+  line-height: 1.5;
+  margin-bottom: 20px;
+  color: var(--ink-2, #333);
+}
+.fx-provenance-export {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 12px 14px;
+  background: rgba(0, 0, 0, 0.03);
+  border-left: 3px solid var(--ocre, #b97400);
+  margin-bottom: 24px;
+  font-size: 12.5px;
+}
+.fx-provenance-export .fx-provenance-label {
+  font-family: var(--f-mono, monospace);
+  font-size: 10.5px;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--muted, #666);
+}
+.fx-provenance-export code {
+  font-size: 12px;
+  word-break: break-all;
+}
+.fx-provenance-export code a {
+  color: var(--ink, #000);
+  text-decoration: underline;
+}
+.fx-provenance-chain {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 24px;
+  border-top: 1px solid var(--ink, #000);
+}
+.fx-provenance-step {
+  display: grid;
+  grid-template-columns: 1.3fr 2fr;
+  gap: 14px;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--ink, #000);
+  font-size: 13.5px;
+}
+.fx-provenance-step-layer {
+  font-family: var(--f-mono, monospace);
+  font-size: 10.5px;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--ocre, #b97400);
+  align-self: start;
+}
+.fx-provenance-step-name {
+  grid-column: 2;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+.fx-provenance-step-name code {
+  font-family: var(--f-mono, monospace);
+  font-size: 12.5px;
+  word-break: break-all;
+}
+.fx-provenance-step-name a {
+  color: var(--ink, #000);
+  text-decoration: underline;
+}
+.fx-provenance-step-role {
+  grid-column: 2;
+  font-size: 13px;
+  color: var(--muted, #666);
+  line-height: 1.45;
+}
+.fx-provenance-footer {
+  display: flex;
+  gap: 16px;
+  padding-top: 16px;
+  border-top: 1px solid var(--ink, #000);
+  font-size: 13px;
+  font-family: var(--f-mono, monospace);
+  flex-wrap: wrap;
+}
+.fx-provenance-footer a {
+  color: var(--ink, #000);
+  text-decoration: underline;
+}
+@media (max-width: 640px) {
+  .fx-provenance-dialog { padding: 20px 18px; }
+  .fx-provenance-title { font-size: 18px; }
+  .fx-provenance-step {
+    grid-template-columns: 1fr;
+    gap: 4px;
+  }
+  .fx-provenance-step-name { grid-column: 1; }
+  .fx-provenance-step-role { grid-column: 1; }
+}
+
 /* ═══ Méthode — Flow simplifié (4 étapes) ══════════════════════════════════ */
 .theme-fusion .fx-flow-simple {
   margin-top: 24px;
