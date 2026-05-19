@@ -5,7 +5,6 @@ import { usePathname } from "next/navigation";
 import Navbar from "@/components/fusion/Navbar";
 import Footer from "@/components/fusion/Footer";
 import SectionHead from "@/components/fusion/SectionHead";
-import DataProvenance from "@/components/fusion/DataProvenance";
 import ChartSource from "@/components/fusion/ChartSource";
 import HeroNumber from "@/components/fusion/HeroNumber";
 import KPIGrid from "@/components/fusion/KPIGrid";
@@ -278,9 +277,6 @@ export default function InvestissementsClient({
                 : t("fx.inv.s05.sub")
             }
           />
-          <div style={{ marginTop: -8, marginBottom: 18 }}>
-            <DataProvenance chartId="investissements-map-paris" year={d.year} />
-          </div>
           {supportsTerritoryViews ? (
             <>
               <div className="fx-view-toggle" role="tablist" aria-label={t("fx.inv.s05.kind")}>

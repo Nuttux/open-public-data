@@ -151,13 +151,17 @@ export default function DataProvenance({ chartId, year }: { chartId: string; yea
                 <div className="fx-provenance-export">
                   <span className="fx-provenance-label">{isFr ? "Le JSON brut consommé par ce chart" : "Raw JSON consumed by this chart"}</span>
                   <code>
-                    <a
-                      href={chart.json_export.replace("{year}", String(year ?? "..."))}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      {chart.json_export.replace("{year}", year ? String(year) : "{year}")} ↗
-                    </a>
+                    {year ? (
+                      <a
+                        href={chart.json_export.replace("{year}", String(year))}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        {chart.json_export.replace("{year}", String(year))} ↗
+                      </a>
+                    ) : (
+                      <span>{chart.json_export}</span>
+                    )}
                   </code>
                 </div>
 
