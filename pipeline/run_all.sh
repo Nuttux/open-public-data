@@ -108,11 +108,24 @@ if should_run dbt; then
     echo "═  2/4  DBT — transformations BigQuery"
     echo "════════════════════════════════════════════════════════"
     if command -v dbt >/dev/null 2>&1; then
+        # En CI, on force le profil prod via DBT_PROFILES_DIR (sinon dbt
+        # prend pipeline/profiles.yml et template DBT_USER → 'local').
+        DBT_TARGET_FLAG=""
+        if [[ -n "${DBT_PROFILES_DIR:-}" ]]; then
+            DBT_TARGET_FLAG="--profiles-dir $DBT_PROFILES_DIR --target ${DBT_TARGET:-prod}"
+        fi
         # dbt deps doit tourner avant run pour installer les packages (cf
-        # pipeline/packages.yml). C'est idempotent et rapide si déjà installé.
-        run_step "dbt deps" bash -c "cd '$PIPELINE_DIR' && dbt deps"
-        run_step "dbt seed" bash -c "cd '$PIPELINE_DIR' && dbt seed"
-        run_step "dbt run" bash -c "cd '$PIPELINE_DIR' && dbt run"
+        # pipeline/packages.yml). Idempotent.
+        run_step "dbt deps" bash -c "cd '$PIPELINE_DIR' && dbt deps $DBT_TARGET_FLAG"
+        # dbt seed : skip si DBT_SKIP_SEED=1 (en CI on évite les seeds
+        # nationaux qui ont des schémas CSV cassés — bug préexistant à
+        # fix séparément).
+        if [[ "${DBT_SKIP_SEED:-0}" != "1" ]]; then
+            run_step "dbt seed" bash -c "cd '$PIPELINE_DIR' && dbt seed $DBT_TARGET_FLAG"
+        else
+            echo "  ⊘ dbt seed skipped (DBT_SKIP_SEED=1)"
+        fi
+        run_step "dbt run" bash -c "cd '$PIPELINE_DIR' && dbt run $DBT_TARGET_FLAG"
     else
         echo "  ⚠ dbt non installé, phase skipped. Installer : pip install dbt-bigquery"
     fi

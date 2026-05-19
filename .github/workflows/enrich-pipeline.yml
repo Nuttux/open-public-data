@@ -126,6 +126,12 @@ jobs:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
           GOOGLE_API_KEY:    ${{ secrets.GOOGLE_API_KEY }}
           PYTHON: python
+          # Force le profil prod (sinon pipeline/profiles.yml template DBT_USER → local)
+          DBT_PROFILES_DIR: /home/runner/.dbt
+          DBT_TARGET: prod
+          # Skip dbt seed en CI : seeds nationaux ont des bugs CSV préexistants
+          # (montant_md_eur en INT64 mais "150.0" en valeur). À fix séparément.
+          DBT_SKIP_SEED: "1"
         run: |
           chmod +x pipeline/run_all.sh
           PHASES_FLAG="--only=${{ steps.phases.outputs.resolved }}"
