@@ -72,6 +72,48 @@ export default function ContactClient() {
         </div>
       </section>
 
+      <section className="fx-section" id="signaler">
+        <div className="fx-wrap">
+          <SectionHead
+            number="02"
+            kind={t("fx.contact.s02.kind")}
+            title={
+              <>
+                {t("fx.contact.s02.title.before")}
+                <em>{t("fx.contact.s02.title.em")}</em>
+                {t("fx.contact.s02.title.after")}
+              </>
+            }
+            subtitle={t("fx.contact.s02.sub")}
+          />
+          <ol className="fx-steps">
+            <li>
+              <strong>{t("fx.contact.s02.step1.h")}</strong>
+              <span>{t("fx.contact.s02.step1.p")}</span>
+            </li>
+            <li>
+              <strong>{t("fx.contact.s02.step2.h")}</strong>
+              <span>{t("fx.contact.s02.step2.p")}</span>
+            </li>
+            <li>
+              <strong>{t("fx.contact.s02.step3.h")}</strong>
+              <span>{t("fx.contact.s02.step3.p")}</span>
+            </li>
+          </ol>
+          <div style={{ marginTop: 24, display: "flex", gap: 10, flexWrap: "wrap" }}>
+            <Button
+              variant="primary"
+              href="https://github.com/Nuttux/open-public-data/issues/new?labels=correction&template=signaler-une-erreur.md"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {t("fx.contact.s02.btn.issue")}
+            </Button>
+            <Button href="/corrections">{t("fx.contact.s02.btn.history")}</Button>
+          </div>
+        </div>
+      </section>
+
       </main>
       <Footer />
     </div>
