@@ -84,6 +84,19 @@ Architecture en couches : `OpenData Paris API → BigQuery (raw) → staging →
 - Node.js 20+
 - Accès GCP (BigQuery)
 
+### Configuration env
+
+Avant de lancer pipeline ou website, copier les fichiers `.env.example` :
+
+```bash
+cp website/.env.example website/.env.local
+cp pipeline/.env.example pipeline/.env
+```
+
+Puis remplir les vraies valeurs. Les fichiers `.env*` sont déjà en `.gitignore` — ils ne quittent jamais ta machine. Détail des variables et leur usage : commentaires dans chaque `.env.example`.
+
+Sans clés API, les enrichissements LLM et photo sont sautés (le pipeline reste fonctionnel sur le coeur). Sans `ANTHROPIC_API_KEY` côté website, le chat assistant renvoie 500.
+
 ### Pipeline
 
 ```bash
@@ -135,12 +148,14 @@ Le pipeline et les composants de visualisation sont open source dans [Nuttux/fra
 | [`docs/architecture-frontend.md`](docs/architecture-frontend.md) | Composants React, design system |
 | [`docs/data-quality.md`](docs/data-quality.md) | Limites connues, pistes d'amélioration |
 | [`pipeline/README.md`](pipeline/README.md) | Commandes dbt, enrichissement |
+| [`docs/runbooks/`](docs/runbooks/) | Runbooks ops : rollback, promotion WIP |
 
 ## Deploiement
 
 - **Hosting** : Vercel (CDG1 region)
 - **Domaine** : [franceopendata.org](https://franceopendata.org)
 - **Deploiement auto** : push sur `main` → build Vercel
+- **Rollback en cas de prod cassée** : voir [`docs/runbooks/rollback.md`](docs/runbooks/rollback.md) — procédure 1 minute via Vercel dashboard, sans toucher au code source.
 
 ## License
 
