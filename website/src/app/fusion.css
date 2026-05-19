@@ -9394,6 +9394,15 @@ body:has(.theme-fusion) > div.pb-24 { padding-bottom: 0 !important; }
   color: var(--ink, #000);
   text-decoration: underline;
 }
+.fx-provenance-step-hint {
+  display: block;
+  margin-top: 4px;
+  font-family: var(--f-sans, system-ui);
+  font-size: 11.5px;
+  font-weight: 400;
+  font-style: italic;
+  color: var(--muted, #666);
+}
 .fx-provenance-step-role {
   grid-column: 2;
   font-size: 13px;
