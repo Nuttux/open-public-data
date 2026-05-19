@@ -1,0 +1,156 @@
+{
+  "schema_version": 1,
+  "description": "Lineage cliquable pour les 3 charts pilotes. Chaque chart liste sa chaîne mart → core → staging → raw → source officielle. Le composant <DataProvenance> consomme ce fichier pour exposer l'origine de chaque chiffre, cliquable et auditable.",
+  "github_blob": "https://github.com/Nuttux/open-public-data/blob/main/pipeline/models",
+  "charts": {
+    "budget-sankey-paris": {
+      "label_fr": "Sankey budget — Ville de Paris",
+      "label_en": "Budget Sankey — City of Paris",
+      "page_fr": "/ville/paris/budget",
+      "page_en": "/ville/paris/budget",
+      "json_export": "/data/budget_sankey_{year}.json",
+      "what_it_shows_fr": "Flux des recettes et dépenses du Budget Principal, agrégés par chapitre fonctionnel.",
+      "what_it_shows_en": "Revenue and spending flows from the Main Budget, aggregated by functional chapter.",
+      "chain": [
+        {
+          "layer": "mart",
+          "name": "mart_sankey",
+          "github": "https://github.com/Nuttux/open-public-data/blob/main/pipeline/models/marts/mart_sankey.sql",
+          "role_fr": "Agrégation Sankey nodes + links par année.",
+          "role_en": "Sankey nodes + links aggregation per year."
+        },
+        {
+          "layer": "core",
+          "name": "core_budget",
+          "github": "https://github.com/Nuttux/open-public-data/blob/main/pipeline/models/core/core_budget.sql",
+          "role_fr": "OBT Budget exécuté (CA) ligne par ligne avec thématiques.",
+          "role_en": "Executed Budget (CA) OBT row-level with themes."
+        },
+        {
+          "layer": "staging",
+          "name": "stg_budget_principal",
+          "github": "https://github.com/Nuttux/open-public-data/blob/main/pipeline/models/staging/stg_budget_principal.sql",
+          "role_fr": "Typage, filtre type_operation='Réel', renommage colonnes FR.",
+          "role_en": "Typing, type_operation='Réel' filter, FR column renaming."
+        },
+        {
+          "layer": "raw",
+          "name": "raw.comptes_administratifs_budgets_principaux_a_partir_de_2019_m57_ville_departement",
+          "role_fr": "Miroir exact du CSV OpenData, aucune transformation.",
+          "role_en": "Exact mirror of OpenData CSV, no transformation."
+        },
+        {
+          "layer": "source",
+          "name": "OpenData Paris — Comptes administratifs Budget Principal M57",
+          "url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-budgets-principaux-a-partir-de-2019-m57-ville-departement/",
+          "role_fr": "Dataset officiel publié par la Ville de Paris (M57, à partir de 2019).",
+          "role_en": "Official dataset published by the City of Paris (M57, from 2019)."
+        }
+      ]
+    },
+    "subventions-treemap-paris": {
+      "label_fr": "Treemap subventions — Ville de Paris",
+      "label_en": "Grants treemap — City of Paris",
+      "page_fr": "/ville/paris/subventions",
+      "page_en": "/ville/paris/subventions",
+      "json_export": "/data/subventions/treemap_{year}.json",
+      "what_it_shows_fr": "Montants des subventions versées agrégés par thématique, avec drill-down par bénéficiaire.",
+      "what_it_shows_en": "Grants paid aggregated by theme, with beneficiary drill-down.",
+      "chain": [
+        {
+          "layer": "mart",
+          "name": "mart_subventions_treemap",
+          "github": "https://github.com/Nuttux/open-public-data/blob/main/pipeline/models/marts/mart_subventions_treemap.sql",
+          "role_fr": "Agrégation treemap par thématique + top bénéficiaires.",
+          "role_en": "Treemap aggregation by theme + top beneficiaries."
+        },
+        {
+          "layer": "core",
+          "name": "core_subventions",
+          "github": "https://github.com/Nuttux/open-public-data/blob/main/pipeline/models/core/core_subventions.sql",
+          "role_fr": "OBT subventions avec thématique, type d'organisme, dédup CASVP.",
+          "role_en": "Grants OBT with theme, organisation type, CASVP dedup."
+        },
+        {
+          "layer": "intermediate",
+          "name": "int_subventions_enrichies",
+          "github": "https://github.com/Nuttux/open-public-data/blob/main/pipeline/models/intermediate/int_subventions_enrichies.sql",
+          "role_fr": "Cascade thématique : pattern → direction → LLM → default. Voir aussi calibration LLM.",
+          "role_en": "Theme cascade: pattern → direction → LLM → default. See also LLM calibration."
+        },
+        {
+          "layer": "staging",
+          "name": "stg_subventions_all + stg_associations",
+          "github": "https://github.com/Nuttux/open-public-data/blob/main/pipeline/models/staging/stg_subventions_all.sql",
+          "role_fr": "Typage, normalisation des noms de bénéficiaires.",
+          "role_en": "Typing, beneficiary name normalisation."
+        },
+        {
+          "layer": "raw",
+          "name": "raw.subventions_versees_annexe_compte_administratif_a_partir_de_2018 + raw.subventions_associations_votees",
+          "role_fr": "Miroirs des CSVs OpenData (annexe CA + dataset SIRET associations).",
+          "role_en": "Mirrors of OpenData CSVs (CA annex + associations SIRET dataset)."
+        },
+        {
+          "layer": "source",
+          "name": "OpenData Paris — Subventions versées + Subventions associations votées",
+          "url": "https://opendata.paris.fr/explore/dataset/subventions-versees-annexe-compte-administratif-a-partir-de-2018/",
+          "role_fr": "2 datasets officiels Ville de Paris. ⚠ Années 2020-2021 absentes (bénéficiaires non publiés).",
+          "role_en": "2 official City of Paris datasets. ⚠ Years 2020-2021 missing (beneficiaries not published)."
+        }
+      ]
+    },
+    "investissements-map-paris": {
+      "label_fr": "Carte des projets d'investissement — Ville de Paris",
+      "label_en": "Investment projects map — City of Paris",
+      "page_fr": "/ville/paris/investissements",
+      "page_en": "/ville/paris/investissements",
+      "json_export": "/data/map/investissements_complet_{year}.json",
+      "what_it_shows_fr": "Projets d'investissement géolocalisés par arrondissement (et parfois adresse précise).",
+      "what_it_shows_en": "Investment projects geolocated by arrondissement (sometimes precise address).",
+      "chain": [
+        {
+          "layer": "mart",
+          "name": "mart_carte_investissements",
+          "github": "https://github.com/Nuttux/open-public-data/blob/main/pipeline/models/marts/mart_carte_investissements.sql",
+          "role_fr": "Sélection des projets géolocalisés, fusion AP OpenData + PDF Investissements Localisés.",
+          "role_en": "Geolocated projects selection, AP OpenData + PDF Localised Investments merge."
+        },
+        {
+          "layer": "core",
+          "name": "core_ap_projets",
+          "github": "https://github.com/Nuttux/open-public-data/blob/main/pipeline/models/core/core_ap_projets.sql",
+          "role_fr": "OBT projets AP avec arrondissement, lat/lng, confidence géoloc.",
+          "role_en": "AP projects OBT with arrondissement, lat/lng, geoloc confidence."
+        },
+        {
+          "layer": "intermediate",
+          "name": "int_ap_projets_enrichis",
+          "github": "https://github.com/Nuttux/open-public-data/blob/main/pipeline/models/intermediate/int_ap_projets_enrichis.sql",
+          "role_fr": "Cascade géoloc : regex CP → lieux connus → LLM. Voir aussi calibration LLM.",
+          "role_en": "Geoloc cascade: postcode regex → known places → LLM. See also LLM calibration."
+        },
+        {
+          "layer": "staging",
+          "name": "stg_ap_projets",
+          "github": "https://github.com/Nuttux/open-public-data/blob/main/pipeline/models/staging/stg_ap_projets.sql",
+          "role_fr": "Filtre Réel+Dépenses, extraction d'arrondissement par regex.",
+          "role_en": "Réel+Dépenses filter, arrondissement extraction by regex."
+        },
+        {
+          "layer": "raw",
+          "name": "raw.comptes_administratifs_autorisations_de_programmes_a_partir_de_2018_m57_ville_de",
+          "role_fr": "Miroir CSV AP OpenData. ⚠ Dataset gelé : pas de mise à jour pour 2023-2024.",
+          "role_en": "AP OpenData CSV mirror. ⚠ Dataset frozen: no update for 2023-2024."
+        },
+        {
+          "layer": "source",
+          "name": "OpenData Paris — AP Comptes administratifs + PDFs Investissements Localisés",
+          "url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-a-partir-de-2018-m57-ville-de/",
+          "role_fr": "Dataset officiel + PDFs annexe IL des Comptes Administratifs.",
+          "role_en": "Official dataset + PDF Localised Investments annexes from Administrative Accounts."
+        }
+      ]
+    }
+  }
+}

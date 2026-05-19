@@ -6,6 +6,7 @@ import { citySlugFromPathname } from "@/lib/methodology";
 import Navbar from "@/components/fusion/Navbar";
 import Footer from "@/components/fusion/Footer";
 import SectionHead from "@/components/fusion/SectionHead";
+import DataProvenance from "@/components/fusion/DataProvenance";
 import ChartSource from "@/components/fusion/ChartSource";
 import PageTOC from "@/components/fusion/PageTOC";
 import HeroNumber from "@/components/fusion/HeroNumber";
@@ -245,6 +246,9 @@ export default function QuiRecoitClient({
             }
             subtitle={t("fx.qr.s02.sub")}
           />
+          <div style={{ marginTop: -8, marginBottom: 18 }}>
+            <DataProvenance chartId="subventions-treemap-paris" year={d.year} />
+          </div>
           <StackedBarTheme
             items={d.byTheme.map((th) => ({ theme: th.theme, amount: th.amount, count: th.count }))}
             total={d.total}

@@ -10,6 +10,7 @@ import Navbar from "@/components/fusion/Navbar";
 import Footer from "@/components/fusion/Footer";
 import Button from "@/components/fusion/Button";
 import SectionHead from "@/components/fusion/SectionHead";
+import DataProvenance from "@/components/fusion/DataProvenance";
 import ChartSource from "@/components/fusion/ChartSource";
 import PageTOC from "@/components/fusion/PageTOC";
 import HeroNumber from "@/components/fusion/HeroNumber";
@@ -257,6 +258,9 @@ export default function BudgetClient({ index, d, voteExec, posts }: Props) {
             title={<><em>{t("fx.bud.s02.title.em1")}</em>{t("fx.bud.s02.title.mid")}<em>{t("fx.bud.s02.title.em2")}</em>{t("fx.bud.s02.title.after")}</>}
             subtitle={t("fx.bud.s02.sub")}
           />
+          <div style={{ marginTop: -8, marginBottom: 18 }}>
+            <DataProvenance chartId="budget-sankey-paris" year={d.year} />
+          </div>
 
           {/* Pareto + YoY top-3 movers on dépenses — story anchor above the
               symmetric DualFlowBars. */}
