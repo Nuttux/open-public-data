@@ -736,7 +736,7 @@ export default function DailyBreadClient({
   const panel5Ref = useRef<HTMLElement | null>(null);
   const panel5Revealed = useRevealOnScroll(panel5Ref, { threshold: 0.15 });
   const panel6Ref = useRef<HTMLElement | null>(null);
-  const panel6Revealed = useRevealOnScroll(panel6Ref, { threshold: 0.15 });
+  const _panel6Revealed = useRevealOnScroll(panel6Ref, { threshold: 0.15 });
   const panel7Ref = useRef<HTMLElement | null>(null);
   const panel7Revealed = useRevealOnScroll(panel7Ref, { threshold: 0.15 });
 
@@ -854,7 +854,7 @@ export default function DailyBreadClient({
   //   de réintroduction ponctuelle, mais n'est plus rendu.
 
   // ─── Equivalents (concrete units for synthèse panel) ───────────────
-  const equivalents = useMemo(() => {
+  const _equivalents = useMemo(() => {
     if (!db) return [];
     const items = db.equivalents.items;
     const consult = items.consultation_medecin_generaliste?.value ?? 30;
@@ -1053,7 +1053,7 @@ export default function DailyBreadClient({
       viaFr: string;
       viaEn: string;
     }>;
-  }, [db, assoBranches, stateBuckets, localLevels, commune, locale]);
+  }, [db, assoBranches, stateBuckets, localLevels, locale, populationFr]);
 
   // Note : l'ancien `eyebrow` (Médian · Célibataire (1 part) · Paris) a été
   // retiré du hero — redondant avec la phrase éditable principale qui contient
@@ -1988,8 +1988,6 @@ export default function DailyBreadClient({
 
                 <BarList
                   items={(() => {
-                    const s1311Total =
-                      db?.apu_subsectors?.institutions?.S1311?.annual_eur ?? 0;
                     return stateBuckets.map((b) => {
                       const missionLabels = b.missions
                         .map((m) => m.label)
@@ -2047,7 +2045,7 @@ export default function DailyBreadClient({
           const regLabel = commune?.reg_name
             ? t("db.local.reg_label").replace("{reg}", commune.reg_name)
             : t("db.local.reg_default");
-          const dynamicTitle = isCollUnique
+          const _dynamicTitle = isCollUnique
             ? t("db.local.title_dynamic_merged")
                 .replace("{reg}", regLabel)
                 .replace("{bloc}", blocLabel)
@@ -2055,10 +2053,10 @@ export default function DailyBreadClient({
                 .replace("{reg}", regLabel)
                 .replace("{dept}", deptLabel)
                 .replace("{bloc}", blocLabel);
-          const isParisStatut = commune?.insee === "75056";
-          const isLyonStatut = commune?.insee === "69123";
+          const _isParisStatut = commune?.insee === "75056";
+          const _isLyonStatut = commune?.insee === "69123";
           // Map clé OFGL → label personnalisé pour les barres BarList.
-          const personalLabelByKey: Record<string, string> = {
+          const _personalLabelByKey: Record<string, string> = {
             bloc_communal: blocLabel,
             departement: deptLabel,
             region: regLabel,
@@ -2488,137 +2486,6 @@ export default function DailyBreadClient({
     </div>
   );
 }
-
-// ─── Share actions sub-component (intégré dans le panel synthèse) ──────
-function DailyBreadShareActions({ locale }: { locale: string }) {
-  const t = useT();
-  const [copied, setCopied] = useState(false);
-
-  const onDownloadPoster = useCallback(() => {
-    if (typeof window === "undefined") return;
-    const search = window.location.search || "";
-    const sep = search ? "&" : "?";
-    const url = `/api/og-poster${search}${sep}lang=${locale}`;
-    window.open(url, "_blank", "noopener");
-  }, [locale]);
-
-  const onCopy = useCallback(() => {
-    if (typeof window === "undefined") return;
-    navigator.clipboard
-      .writeText(window.location.href)
-      .then(() => {
-        setCopied(true);
-        setTimeout(() => setCopied(false), 2200);
-      })
-      .catch(() => {});
-  }, []);
-
-  const buildShareText = useCallback(() => t("db.share_section.share_text"), [t]);
-
-  const onShareX = useCallback(() => {
-    if (typeof window === "undefined") return;
-    const url = window.location.href;
-    window.open(
-      `https://twitter.com/intent/tweet?text=${encodeURIComponent(
-        buildShareText(),
-      )}&url=${encodeURIComponent(url)}`,
-      "_blank",
-      "noopener",
-    );
-  }, [buildShareText]);
-
-  const onShareWhatsApp = useCallback(() => {
-    if (typeof window === "undefined") return;
-    const url = window.location.href;
-    window.open(
-      `https://wa.me/?text=${encodeURIComponent(buildShareText() + " " + url)}`,
-      "_blank",
-      "noopener",
-    );
-  }, [buildShareText]);
-
-  const onShareMail = useCallback(() => {
-    if (typeof window === "undefined") return;
-    const url = window.location.href;
-    const subject = t("db.share_section.mail_subject");
-    window.location.href = `mailto:?subject=${encodeURIComponent(
-      subject,
-    )}&body=${encodeURIComponent(buildShareText() + "\n\n" + url)}`;
-  }, [buildShareText, t]);
-
-  return (
-    <div className="db-p-end-share">
-      <span className="db-p-end-share-label">{t("db.share_section.eyebrow")}</span>
-      <div className="db-p-end-share-icons">
-        <button
-          type="button"
-          className="db-share-icon"
-          onClick={onShareX}
-          aria-label="X (Twitter)"
-          title="X (Twitter)"
-        >
-          <svg width="18" height="18" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
-            <path d="M9.3 7.1L13.5 2h-1L8.8 6.4 5.9 2H2.5l4.4 6.4L2.5 14h1l3.9-4.6L10.5 14h3.4L9.3 7.1z" />
-          </svg>
-        </button>
-        <button
-          type="button"
-          className="db-share-icon"
-          onClick={onShareWhatsApp}
-          aria-label="WhatsApp"
-          title="WhatsApp"
-        >
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-            <path d="M17.5 14.4c-.3-.1-1.7-.8-1.9-.9-.3-.1-.4-.1-.6.1-.2.3-.7.9-.8 1.1-.2.2-.3.2-.6.1-.3-.1-1.2-.5-2.4-1.5-.9-.8-1.5-1.8-1.6-2.1-.2-.3 0-.4.1-.6.1-.1.3-.3.4-.5.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5-.1-.1-.6-1.5-.8-2-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.3.3-1 .9-1 2.3 0 1.4 1 2.7 1.1 2.9.1.2 2 3.1 4.9 4.3.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.5-.1 1.7-.7 1.9-1.4.2-.7.2-1.2.2-1.4-.1-.1-.3-.2-.6-.4z M12 0C5.4 0 0 5.4 0 12c0 2.1.6 4.2 1.6 6L0 24l6.3-1.6c1.7.9 3.7 1.4 5.7 1.4 6.6 0 12-5.4 12-12S18.6 0 12 0zm0 21.6c-1.8 0-3.6-.5-5.1-1.4l-.4-.2-3.8 1 1-3.7-.2-.4c-1-1.6-1.5-3.4-1.5-5.3 0-5.5 4.5-10 10-10s10 4.5 10 10c0 5.5-4.5 10-10 10z" />
-          </svg>
-        </button>
-        <button
-          type="button"
-          className="db-share-icon"
-          onClick={onShareMail}
-          aria-label={t("db.share_section.mail")}
-          title={t("db.share_section.mail")}
-        >
-          <svg width="18" height="18" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true">
-            <rect x="2" y="4" width="12" height="9" />
-            <path d="M2 4l6 5 6-5" />
-          </svg>
-        </button>
-        <button
-          type="button"
-          className={`db-share-icon${copied ? " is-copied" : ""}`}
-          onClick={onCopy}
-          aria-label={copied ? t("db.share_section.copied") : t("db.share_section.copy")}
-          title={copied ? t("db.share_section.copied") : t("db.share_section.copy")}
-        >
-          {copied ? (
-            <svg width="18" height="18" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
-              <path d="M3 8.5l3 3 7-7" />
-            </svg>
-          ) : (
-            <svg width="18" height="18" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true">
-              <path d="M6 6V3.5A1.5 1.5 0 0 1 7.5 2h5A1.5 1.5 0 0 1 14 3.5v5A1.5 1.5 0 0 1 12.5 10H10" />
-              <rect x="2" y="6" width="8" height="8" rx="1" />
-            </svg>
-          )}
-        </button>
-        <span className="db-share-divider" aria-hidden="true" />
-        <button
-          type="button"
-          className="db-share-icon"
-          onClick={onDownloadPoster}
-          aria-label={t("db.share_section.download")}
-          title={t("db.share_section.download")}
-        >
-          <svg width="18" height="18" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.6" aria-hidden="true">
-            <path d="M3 11v2h10v-2M8 2v9M5 8l3 3 3-3" />
-          </svg>
-        </button>
-      </div>
-    </div>
-  );
-}
-
 // ─── DeepDive sub-component ─────────────────────────────────────────────
 
 // ─── BarList sub-component ─────────────────────────────────────────────

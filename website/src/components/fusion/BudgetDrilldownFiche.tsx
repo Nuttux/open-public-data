@@ -408,8 +408,8 @@ export default function BudgetDrilldownFiche(props: Props) {
             : null;
 
         const label = locale === "en" ? leadEntry.label_en : leadEntry.label_fr;
-        const sharePct = Math.round((leadEntry.share_of_parent ?? 0) * 100);
-        const shareParent =
+        const _sharePct = Math.round((leadEntry.share_of_parent ?? 0) * 100);
+        const _shareParent =
           mode.kind === "level4"
             ? (grandparentLabel ?? "")
             : mode.kind === "level3" || mode.kind === "scope-level3"
@@ -636,7 +636,7 @@ function renderAggregation({
   t,
   locale,
   bucketKey,
-  bucketLabel,
+  bucketLabel: _bucketLabel,
   aggregation,
   resolvedMissions,
   amounts,
@@ -665,7 +665,7 @@ function renderAggregation({
 }) {
   const label =
     locale === "en" ? aggregation.label_en : aggregation.label_fr;
-  const sharePct = Math.round((aggregation.share_of_parent ?? 0) * 100);
+  const _sharePct = Math.round((aggregation.share_of_parent ?? 0) * 100);
   const introTpl = t("db.drilldown.aggregation_intro");
   const intro = introTpl
     .replace("{count}", String(resolvedMissions.length))

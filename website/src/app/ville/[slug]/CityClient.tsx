@@ -3,7 +3,6 @@ import { useState } from "react";
 import Navbar from "@/components/fusion/Navbar";
 import Footer from "@/components/fusion/Footer";
 import SectionHead from "@/components/fusion/SectionHead";
-import HeroNumber from "@/components/fusion/HeroNumber";
 import ChartSource from "@/components/fusion/ChartSource";
 import BarRow, { type BarRowItem } from "@/components/fusion/BarRow";
 import DebtLineChart, { type DebtSeriesProp } from "@/components/fusion/DebtLineChart";
