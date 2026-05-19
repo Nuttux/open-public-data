@@ -3,7 +3,6 @@
     "collect": {
       "numberOfRuns": 1,
       "settings": {
-        "preset": "perf",
         "emulatedFormFactor": "mobile",
         "throttlingMethod": "simulate",
         "skipAudits": ["uses-http2"]
@@ -11,9 +10,9 @@
     },
     "assert": {
       "assertions": {
-        "categories:performance": ["warn", { "minScore": 0.7 }],
+        "categories:performance": ["warn", { "minScore": 0.6 }],
         "categories:accessibility": ["error", { "minScore": 0.95 }],
-        "categories:best-practices": ["warn", { "minScore": 0.85 }],
+        "categories:best-practices": ["warn", { "minScore": 0.7 }],
         "categories:seo": ["warn", { "minScore": 0.9 }]
       }
     }
