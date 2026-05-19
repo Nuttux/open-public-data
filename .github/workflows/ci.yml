@@ -67,6 +67,9 @@ jobs:
           path: website/.next
           retention-days: 1
           if-no-files-found: error
+          # .next starts with a dot → upload-artifact v4 treats it as hidden
+          # and refuses to upload unless we opt in explicitly.
+          include-hidden-files: true
 
   e2e:
     name: E2E (Playwright golden path)
