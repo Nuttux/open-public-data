@@ -37,7 +37,13 @@ OUTPUTS=("$@")
 REPO_ROOT="$(cd "$(dirname "$0")/../../.." && pwd)"
 cd "$REPO_ROOT"
 
-unset GOOGLE_APPLICATION_CREDENTIALS
+# En local : on s'appuie sur `gcloud auth application-default login` (ADC
+# user-level). Dans CI : GOOGLE_APPLICATION_CREDENTIALS est positionné par
+# google-github-actions/auth@v2 (WIF). On unset SEULEMENT si on n'est pas
+# en CI pour éviter de masquer le token WIF.
+if [[ -z "${GITHUB_ACTIONS:-}" ]]; then
+  unset GOOGLE_APPLICATION_CREDENTIALS
+fi
 echo ">> running $SCRIPT ${SCRIPT_ARGS[*]:-}"
 if [[ ${#SCRIPT_ARGS[@]} -eq 0 ]]; then
   python3 "$SCRIPT" >/dev/null
