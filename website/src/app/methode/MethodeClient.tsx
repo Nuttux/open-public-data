@@ -7,6 +7,7 @@ import Navbar from "@/components/fusion/Navbar";
 import Footer from "@/components/fusion/Footer";
 import SectionHead from "@/components/fusion/SectionHead";
 import Button from "@/components/fusion/Button";
+import DataProvenance from "@/components/fusion/DataProvenance";
 import { useLocale } from "@/lib/localeContext";
 import { TIMELINE_AXIS_START, TIMELINE_AXIS_END } from "@/lib/methodology";
 
@@ -69,6 +70,15 @@ type CoverageRow = {
 const AXIS_START = TIMELINE_AXIS_START;
 const AXIS_END = TIMELINE_AXIS_END;
 const AXIS_SPAN = AXIS_END - AXIS_START + 1;
+
+// Mapping tool.id → chartId dans data_lineage.json. Quand un outil est dans
+// ce mapping, le tab affiche le bouton "Provenance" qui ouvre la modal avec
+// la chaîne complète mart → core → staging → raw → URL OpenData.
+const TOOL_TO_LINEAGE: Record<string, string> = {
+  budget: "budget-sankey-paris",
+  subventions: "subventions-treemap-paris",
+  investissements: "investissements-map-paris",
+};
 
 function barStyle(start: number, end: number): CSSProperties {
   const left = ((start - AXIS_START) / AXIS_SPAN) * 100;
@@ -1125,7 +1135,12 @@ export default function MethodeClient() {
                   <div className="t-num">{activeTool.number} · {activeTool.kicker}</div>
                   <h3 className="t-title">{activeTool.title}</h3>
                 </div>
-                <Link href={activeTool.route} className="t-link">{activeTool.route} ↗</Link>
+                <div style={{ display: "flex", gap: 10, alignItems: "center", flexWrap: "wrap", justifyContent: "flex-end" }}>
+                  {TOOL_TO_LINEAGE[activeTool.id] && (
+                    <DataProvenance chartId={TOOL_TO_LINEAGE[activeTool.id]} />
+                  )}
+                  <Link href={activeTool.route} className="t-link">{activeTool.route} ↗</Link>
+                </div>
               </div>
 
               <div className="fx-tool-enclair">
