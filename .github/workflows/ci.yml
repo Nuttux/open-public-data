@@ -1,17 +1,15 @@
 name: CI
 
-# MVP CI gate for PRs targeting `main` and pushes to `main`.
-# Three jobs run in parallel — keep total wall time ≲ 5 min.
+# Gate CI complet pour PRs vers `main` et `test`, et pushes sur ces branches.
 #
-# Today's scope:
-#   - website: lint + typecheck + production build
-#   - pipeline: Python syntax check on all scripts (proxy for "no typo got
-#     committed"; real dbt tests need BigQuery credentials → not in MVP)
+# Architecture :
+#   - build      : lint + typecheck + Vitest + next build (avec artefact .next)
+#   - e2e        : Playwright sur build artefact (golden path 6 routes)
+#   - lighthouse : audit perf/a11y/SEO sur build artefact (gates : perf ≥ 80, a11y ≥ 95)
+#   - pipeline   : Python syntax check
 #
-# Future (cf docs/data-platform/05-tests-prio.md):
-#   - unit tests on website/src/lib (top-5 prio listed there)
-#   - dbt build on a sample DuckDB profile
-#   - Playwright e2e on /budget, /qui-recoit, /marches-publics
+# Les jobs e2e + lighthouse partagent le .next via artifact pour éviter
+# de rebuild 3 fois (économie ~6 min wall-time).
 
 on:
   pull_request:
@@ -19,16 +17,15 @@ on:
   push:
     branches: [main, test]
 
-# Cancel in-flight runs on the same ref when a new commit is pushed.
 concurrency:
   group: ci-${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
 
 jobs:
-  website:
-    name: Website (lint + typecheck + build)
+  build:
+    name: Build (lint + typecheck + Vitest + next build)
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 12
     defaults:
       run:
         working-directory: website
@@ -52,14 +49,140 @@ jobs:
       - name: Typecheck
         run: npm run typecheck
 
+      - name: Unit tests (Vitest)
+        run: npm test
+
       - name: Build
         run: npm run build
         env:
-          # next build reads .env.local in dev; in CI we have no secrets, but
-          # we still want the build to succeed without them. Pages that need
-          # runtime env (chat API, OG renderer with API keys) tolerate missing
-          # vars at build time — only fail at request time.
           NEXT_TELEMETRY_DISABLED: "1"
+
+      - name: Remove .next/cache (not needed downstream)
+        run: rm -rf .next/cache
+
+      - name: Upload .next artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: next-build
+          path: website/.next
+          retention-days: 1
+          if-no-files-found: error
+          # .next starts with a dot → upload-artifact v4 treats it as hidden
+          # and refuses to upload unless we opt in explicitly.
+          include-hidden-files: true
+
+  e2e:
+    name: E2E (Playwright golden path)
+    needs: build
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    defaults:
+      run:
+        working-directory: website
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: npm
+          cache-dependency-path: website/package-lock.json
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Download .next artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: next-build
+          path: website/.next
+
+      - name: Cache Playwright browsers
+        uses: actions/cache@v4
+        id: playwright-cache
+        with:
+          path: ~/.cache/ms-playwright
+          key: playwright-${{ runner.os }}-${{ hashFiles('website/package-lock.json') }}
+
+      - name: Install Playwright browsers
+        if: steps.playwright-cache.outputs.cache-hit != 'true'
+        run: npx playwright install --with-deps chromium
+
+      - name: Install Playwright system deps (cache hit)
+        if: steps.playwright-cache.outputs.cache-hit == 'true'
+        run: npx playwright install-deps chromium
+
+      - name: Start Next.js server
+        run: npm run start &
+        env:
+          NEXT_TELEMETRY_DISABLED: "1"
+
+      - name: Wait for server
+        run: npx --yes wait-on http://localhost:3000 -t 60000
+
+      - name: Run Playwright
+        run: PLAYWRIGHT_BASE_URL=http://localhost:3000 npx playwright test
+
+      - name: Upload Playwright report on failure
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-report
+          path: website/playwright-report
+          retention-days: 7
+
+  lighthouse:
+    name: Lighthouse ${{ matrix.profile }}
+    needs: build
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    strategy:
+      fail-fast: false
+      matrix:
+        profile: [desktop, mobile]
+    defaults:
+      run:
+        working-directory: website
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: npm
+          cache-dependency-path: website/package-lock.json
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Download .next artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: next-build
+          path: website/.next
+
+      - name: Start Next.js server
+        run: npm run start &
+        env:
+          NEXT_TELEMETRY_DISABLED: "1"
+
+      - name: Wait for server
+        run: npx --yes wait-on http://localhost:3000 -t 60000
+
+      - name: Run Lighthouse CI (${{ matrix.profile }})
+        uses: treosh/lighthouse-ci-action@v12
+        with:
+          urls: |
+            http://localhost:3000/
+            http://localhost:3000/methode
+            http://localhost:3000/ville/paris/budget
+          uploadArtifacts: true
+          temporaryPublicStorage: true
+          configPath: ./website/.lighthouserc${{ matrix.profile == 'mobile' && '.mobile' || '' }}.json
 
   pipeline-python:
     name: Pipeline (Python syntax)
@@ -74,10 +197,5 @@ jobs:
         with:
           python-version: "3.11"
 
-      # We don't install pipeline deps (BigQuery, dbt, pdfplumber, …) here —
-      # syntax check via py_compile catches the regression class we care about
-      # most for a fast PR gate (typo, broken import statement, indentation).
-      # Real test runs require BigQuery credentials and live in a separate
-      # workflow (`enrich-pipeline.yml`).
       - name: Python syntax check
         run: python -m compileall -q pipeline/scripts/
