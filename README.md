@@ -2,6 +2,7 @@
 
 > Transparence des finances publiques de Paris — [franceopendata.org](https://franceopendata.org)
 
+[![CI](https://github.com/Nuttux/open-public-data/actions/workflows/ci.yml/badge.svg)](https://github.com/Nuttux/open-public-data/actions/workflows/ci.yml)
 [![Next.js](https://img.shields.io/badge/Next.js-16-black)](https://nextjs.org/)
 [![dbt](https://img.shields.io/badge/dbt-BigQuery-orange)](https://www.getdbt.com/)
 [![License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
@@ -129,6 +130,19 @@ L'audit data quality est consommé par `/methode#audit` (snapshot JSON public + 
 - Node.js 20+
 - Accès GCP (BigQuery)
 
+### Configuration env
+
+Avant de lancer pipeline ou website, copier les fichiers `.env.example` :
+
+```bash
+cp website/.env.example website/.env.local
+cp pipeline/.env.example pipeline/.env
+```
+
+Puis remplir les vraies valeurs. Les fichiers `.env*` sont déjà en `.gitignore` — ils ne quittent jamais ta machine. Détail des variables et leur usage : commentaires dans chaque `.env.example`.
+
+Sans clés API, les enrichissements LLM et photo sont sautés (le pipeline reste fonctionnel sur le coeur). Sans `ANTHROPIC_API_KEY` côté website, le chat assistant renvoie 500.
+
 ### Pipeline
 
 ```bash
@@ -147,6 +161,23 @@ npm run dev
 # → http://localhost:3000
 ```
 
+### CI
+
+PR vers `main` déclenche [`.github/workflows/ci.yml`](.github/workflows/ci.yml) :
+
+| Job | Étapes |
+|-----|--------|
+| **website** | `npm ci` → `npm run lint` → `npm run typecheck` → `npm run build` |
+| **pipeline-python** | `python -m compileall pipeline/scripts/` (sanity check syntaxe) |
+
+À reproduire en local avant de pousser :
+```bash
+cd website && npm run lint && npm run typecheck && npm run build
+python3 -m compileall -q pipeline/scripts/
+```
+
+Tests unitaires à venir — voir [`docs/testing.md`](docs/testing.md) pour la liste priorisée.
+
 ### Sync vers le repo public
 
 Le pipeline et les composants de visualisation sont open source dans [Nuttux/france-open-data](https://github.com/Nuttux/france-open-data).
@@ -163,12 +194,14 @@ Le pipeline et les composants de visualisation sont open source dans [Nuttux/fra
 | [`docs/architecture-frontend.md`](docs/architecture-frontend.md) | Composants React, design system |
 | [`docs/data-quality.md`](docs/data-quality.md) | Limites connues, pistes d'amélioration |
 | [`pipeline/README.md`](pipeline/README.md) | Commandes dbt, enrichissement |
+| [`docs/runbooks/`](docs/runbooks/) | Runbooks ops : rollback, promotion WIP |
 
 ## Deploiement
 
 - **Hosting** : Vercel (CDG1 region)
 - **Domaine** : [franceopendata.org](https://franceopendata.org)
 - **Deploiement auto** : push sur `main` → build Vercel
+- **Rollback en cas de prod cassée** : voir [`docs/runbooks/rollback.md`](docs/runbooks/rollback.md) — procédure 1 minute via Vercel dashboard, sans toucher au code source.
 
 ## License
 
