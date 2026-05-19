@@ -4634,7 +4634,7 @@ body:has(.theme-fusion) > div.pb-24 { padding-bottom: 0 !important; }
 
 /* Scale section */
 .theme-fusion .fx-scale { padding: 112px 0; border-bottom: 1px solid var(--ink); }
-@media (max-width: 768px) { .theme-fusion .fx-scale { padding: 56px 0; } }
+@media (max-width: 768px) { .theme-fusion .fx-scale { padding: 24px 0 56px; } }
 
 /* Inside (tiles) */
 .theme-fusion .fx-inside { padding: 112px 0 104px; border-bottom: 1px solid var(--ink); }

@@ -1529,7 +1529,7 @@ const en: Record<string, string> = {
   'fx.qr.lede.b': ' paid in ',
   'fx.qr.lede.c': ' to non-profits, foundations and public bodies. Public contracts to companies are detailed on their own page.',
   'fx.qr.lede.subv': 'grants',
-  'fx.qr.lede.versees': ' paid in ',
+  'fx.qr.lede.versees': ' paid in {year} ',
   'fx.qr.lede.c.pre': ' to non-profits, foundations and ',
   'fx.qr.lede.operateurs': 'public bodies',
   'fx.qr.lede.operateurs.tip': "Bodies funded by the City but legally distinct: CASVP (social action), Paris Habitat (social housing), régies (Eau de Paris)… They receive an annual grant to carry out a delegated mission.",
