@@ -179,11 +179,14 @@ jobs:
         working-directory: pipeline
         run: |
           mkdir -p ~/.dbt
+          # On écrit un profil prod-only et on FORCE --profiles-dir pour
+          # éviter que dbt prenne le pipeline/profiles.yml (qui template
+          # DBT_USER → 'local' et pointe sur des datasets dev inexistants).
           cat > ~/.dbt/profiles.yml <<EOF
           paris_open_data:
-            target: dev
+            target: prod
             outputs:
-              dev:
+              prod:
                 type: bigquery
                 method: oauth
                 project: open-data-france-484717
@@ -191,9 +194,9 @@ jobs:
                 location: EU
                 threads: 4
           EOF
-          dbt deps
-          dbt source freshness
-          dbt test
+          dbt deps --profiles-dir ~/.dbt
+          dbt source freshness --profiles-dir ~/.dbt --target prod
+          dbt test --profiles-dir ~/.dbt --target prod
 
   verify-exports:
     name: verify_export (byte-equality of JSON outputs)
