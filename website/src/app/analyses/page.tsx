@@ -20,7 +20,7 @@ export async function generateMetadata(): Promise<Metadata> {
   });
 }
 
-const PLANNED: { title: string; description: string; tag: string }[] = [
+const _PLANNED: { title: string; description: string; tag: string }[] = [
   {
     tag: "Enquête",
     title: "Les avenants BTP : pourquoi un chantier finit en moyenne plus cher que prévu.",

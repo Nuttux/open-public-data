@@ -526,7 +526,7 @@ type SubvBen = {
   }>;
 };
 
-type SubvTreemap = {
+type _SubvTreemap = {
   year: number;
   data: Array<{ name: string; montant_total?: number; montant?: number; value?: number; nb?: number; nb_subventions?: number }>;
 };

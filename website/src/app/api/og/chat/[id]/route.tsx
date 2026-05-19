@@ -3,8 +3,6 @@ import { loadConversation } from "@/lib/chat/store";
 
 export const runtime = "nodejs";
 
-const FOLLOWUP_RE = /<followups>[\s\S]*?<\/followups>/g;
-
 export async function GET(_req: Request, { params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
   const conv = loadConversation(id);
@@ -25,7 +23,6 @@ export async function GET(_req: Request, { params }: { params: Promise<{ id: str
       .replace(/≈/g, "~")
       .replace(/→/g, ">")
       .replace(/←/g, "<")
-      // eslint-disable-next-line no-control-regex -- ASCII range \x00-\x7F is the intended whitelist
       .replace(/[^\x00-\x7Fà-ÿÀ-ŸœŒæÆ€\s\n.,;:!?()'"\-«»]/g, "");
   const question = sanitize(conv.title);
   const answer = sanitize(conv.preview).slice(0, 360);

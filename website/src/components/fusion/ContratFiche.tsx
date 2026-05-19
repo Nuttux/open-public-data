@@ -11,7 +11,7 @@ export default function ContratFiche({
   contrat,
   vulgarization,
   fournisseurSirene,
-  ranking,
+  ranking: _ranking,
 }: {
   contrat: ContratFicheType;
   vulgarization?: MarcheVulgarization | null;
