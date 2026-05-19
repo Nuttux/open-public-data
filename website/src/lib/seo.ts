@@ -63,12 +63,18 @@ function _assemble(
   input: BuildMetadataInput,
 ): Metadata {
   const canonical = input.path ?? '/';
-  const ogImage = input.image ?? DEFAULT_OG_IMAGE;
   const ogLocale = locale === 'en' ? 'en_US' : DEFAULT_LOCALE;
   const altLocale = locale === 'en' ? ['fr_FR'] : ['en_US'];
   const languages = input.alternates
     ? { 'fr-FR': input.alternates.fr, 'en-US': input.alternates.en }
     : { 'fr-FR': canonical, 'en-US': canonical };
+
+  // Only set images when an explicit override is provided. Otherwise let Next.js
+  // resolve `opengraph-image.tsx` from the route segment (closest match wins).
+  const ogImages = input.image
+    ? [{ url: input.image, width: 1200, height: 630, alt: resolvedTitle }]
+    : undefined;
+  const twitterImages = input.image ? [input.image] : undefined;
 
   return {
     title: resolvedTitle,
@@ -83,13 +89,13 @@ function _assemble(
       locale: ogLocale,
       alternateLocale: altLocale,
       type: 'website',
-      images: [{ url: ogImage, width: 1200, height: 630, alt: resolvedTitle }],
+      ...(ogImages ? { images: ogImages } : {}),
     },
     twitter: {
       card: 'summary_large_image',
       title: resolvedTitle,
       description: resolvedDescription,
-      images: [ogImage],
+      ...(twitterImages ? { images: twitterImages } : {}),
     },
     robots: input.noindex
       ? { index: false, follow: false, nocache: true }
