@@ -4,12 +4,12 @@
   "audit_promise": "Toute valeur numérique utilisée par open-public-data doit être rattachée à une source identifiable. Si ce n'est pas le cas, c'est un bug à signaler.",
   "city": {
     "paris_population": {
-      "value": 2133111,
+      "value": 2113705,
       "unit": "habitants",
-      "source": "INSEE - Recensement de la population 2021 (population municipale)",
+      "source": "INSEE - Recensement de la population 2022 (population municipale)",
       "source_url": "https://www.insee.fr/fr/statistiques/2011101?geo=COM-75056",
-      "date_reference": "2021-01-01",
-      "notes": "Population municipale officielle de Paris (commune 75056). Mise à jour INSEE annuelle vers octobre N+2."
+      "date_reference": "2022-01-01",
+      "notes": "Population municipale officielle de Paris (commune 75056). RP2022 exploitation principale, publié par l'INSEE le 5 mai 2026. Mise à jour annuelle vers début mai (millésime N-3)."
     },
     "paris_superficie_km2": {
       "value": 105.4,
