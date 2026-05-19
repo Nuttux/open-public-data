@@ -76,9 +76,14 @@ jobs:
         run: |
           if [[ "$REQUESTED" == "auto" ]]; then
             if [[ "$BQ_CI" == "true" ]]; then
-              RESOLVED="sync,dbt,export,enrich"
+              # PAS d'enrich en CI : la phase enrich lance run_enrichment.py
+              # (LLM Gemini par défaut). L'utilisateur a explicitement demandé
+              # de ne PAS dépenser de crédits LLM en cron (cf
+              # feedback_enrichment_in_session.md). Tier2 SIRENE pourrait
+              # tourner mais on isole : enrich = manuel in-session uniquement.
+              RESOLVED="sync,dbt,export"
             else
-              RESOLVED="sync,enrich"
+              RESOLVED="sync"
             fi
           else
             RESOLVED="$REQUESTED"
