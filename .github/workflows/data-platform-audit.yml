@@ -45,6 +45,7 @@ jobs:
             echo "    - dbt test (the 280+ data tests)"
             echo "    - dbt source freshness"
             echo "    - verify_export (byte-equality of JSON outputs)"
+            echo "    - data-quality-audit (réconciliation/complétude/freshness, /methode#audit)"
             echo ""
             echo "  To enable full CI, an admin must:"
             echo "    1. Set up Workload Identity Federation with a GCP service account"
@@ -247,3 +248,78 @@ jobs:
                 ;;
             esac
           done
+
+  data-quality-audit:
+    name: data quality audit (réconciliation, complétude, freshness)
+    runs-on: ubuntu-latest
+    if: ${{ vars.ENABLE_BQ_CI == 'true' }}
+    permissions:
+      id-token: write
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install deps
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install google-cloud-bigquery db-dtypes
+
+      - name: Authenticate to GCP
+        uses: google-github-actions/auth@v2
+        with:
+          workload_identity_provider: ${{ secrets.GCP_WORKLOAD_IDENTITY_PROVIDER }}
+          service_account: ${{ secrets.GCP_SERVICE_ACCOUNT }}
+
+      # Rejoue l'audit complet (réconciliation core ↔ staging, complétude
+      # classification/géoloc, unicité clés, freshness sources/raw/core,
+      # business rules Paris Centre/CASVP, anomalies YoY). Le JSON résultat
+      # est uploadé en artifact pour comparaison cross-run + diff côté PR.
+      - name: Run audit script
+        id: audit
+        continue-on-error: true
+        run: |
+          python pipeline/scripts/audit/run_data_quality_audit.py \
+            --output /tmp/data_quality_audit_ci.json
+          echo "exit_code=$?" >> "$GITHUB_OUTPUT"
+
+      - name: Upload audit JSON
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: data-quality-audit-${{ github.sha }}
+          path: /tmp/data_quality_audit_ci.json
+          retention-days: 90
+
+      - name: Diff vs committed JSON (signaler les régressions)
+        run: |
+          python3 - <<'PY'
+          import json, sys, pathlib
+          committed = json.loads(pathlib.Path("website/public/data/data_quality_audit.json").read_text())
+          fresh = json.loads(pathlib.Path("/tmp/data_quality_audit_ci.json").read_text())
+          c_by_id = {c["id"]: c for c in committed["checks"]}
+          regressions = []
+          for c in fresh["checks"]:
+              prev = c_by_id.get(c["id"])
+              if not prev:
+                  continue
+              # Régression = un check qui était pass ou warn et devient fail
+              ladder = {"pass": 0, "warn": 1, "fail": 2}
+              if ladder.get(c["status"], 0) > ladder.get(prev["status"], 0):
+                  regressions.append(f"  ✗ {c['label']}: {prev['status']} → {c['status']}")
+          if regressions:
+              print("⚠️ Régressions détectées vs JSON committé :")
+              print("\n".join(regressions))
+              sys.exit(1)
+          print("✓ Aucune régression vs JSON committé")
+          PY
+
+      - name: Fail if audit had any fail status
+        if: steps.audit.outputs.exit_code != '0'
+        run: |
+          echo "❌ Audit a remonté au moins un fail — voir le summary plus haut."
+          exit 1

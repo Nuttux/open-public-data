@@ -369,6 +369,119 @@ def check_budget_vote_coverage(client: bigquery.Client) -> dict:
     }
 
 
+def check_source_max_year(client: bigquery.Client) -> dict:
+    """MAX(annee) par dataset source annuel — détecte un dataset upstream gelé.
+
+    C'est le check qui aurait alerté sur l'AP gelé depuis 2022 si on l'avait eu.
+    Plus utile que dbt source freshness sur ce projet (les datasets OpenData
+    sont annuels et la fraîcheur table = fraîcheur de notre sync, pas de la
+    source).
+    """
+    from datetime import date
+    current_year = date.today().year
+    sources = [
+        ("comptes_administratifs_budgets_principaux_a_partir_de_2019_m57_ville_departement", "exercice_comptable"),
+        ("comptes_administratifs_autorisations_de_programmes_a_partir_de_2018_m57_ville_de", "exercice_comptable"),
+        ("subventions_versees_annexe_compte_administratif_a_partir_de_2018", "publication"),
+        ("subventions_associations_votees", "annee_budgetaire"),
+        ("logements_sociaux_finances_a_paris", "annee"),
+        ("budgets_votes_principaux_a_partir_de_2019_m57_ville_departement", "exercice_comptable"),
+        ("liste_des_marches_de_la_collectivite_parisienne", "annee_de_notification"),
+        ("bilan_comptable", "exercice_comptable"),
+    ]
+    rows = []
+    max_gap = 0
+    errors = []
+    for table, col in sources:
+        col_q = f"`{col}`" if " " in col else col
+        sql = f"""
+        SELECT MAX(CAST(REGEXP_EXTRACT(CAST({col_q} AS STRING), r'(\\d{{4}})') AS INT64)) AS max_year
+        FROM `{PROJECT_ID}.raw.{table}`
+        """
+        try:
+            max_year = _val(client, sql) or 0
+        except Exception as e:  # noqa: BLE001
+            errors.append({"table": table, "error": f"{type(e).__name__}: {e}"})
+            continue
+        gap = current_year - max_year
+        rows.append({"table": table, "max_year": max_year, "gap_years": gap})
+        max_gap = max(max_gap, gap)
+
+    # Seuils :
+    # - pass : tous les datasets ≤ 2 ans de gap (CA N publié en juin N+1, donc 1-2 normal)
+    # - warn : au moins un dataset gelé (gap ≥ 3 ans) — surface la limitation pour
+    #   transparence ; le frontend doit confirmer que l'écart est documenté
+    #   (cf. data-quality.md). C'est volontairement non-bloquant car certains
+    #   datasets gelés sont compensés par d'autres sources (PDFs).
+    # - fail : erreur SQL (config audit cassée)
+    if errors:
+        status = "fail"
+    elif max_gap <= 2:
+        status = "pass"
+    else:
+        status = "warn"
+    return {
+        "id": "source_max_year_coverage",
+        "category": "freshness",
+        "label": "Sources upstream : MAX(annee) vs année courante",
+        "status": status,
+        "threshold": f"pass ≤ 2 ans, warn ≤ 3 ans (année courante : {current_year})",
+        "actual": f"gap max : {max_gap} an(s)" + (f", {len(errors)} erreur(s)" if errors else ""),
+        "details": {"per_source": rows, "errors": errors},
+        "sources": [f"raw.{t}" for t, _ in sources],
+        "note": "Détection d'un dataset OpenData gelé : si MAX(annee) ne progresse plus, l'upstream a cessé de publier (ex: AP gelé à 2022).",
+    }
+
+
+def check_table_freshness_bq(client: bigquery.Client) -> dict:
+    """INFORMATION_SCHEMA : quand nos tables raw ont-elles été touchées par sync_opendata ?
+
+    Complémentaire à check_source_max_year : ce check détecte un sync cassé,
+    pas un upstream gelé. Les deux ensemble = couverture complète.
+    """
+    sql = f"""
+    SELECT
+      table_id,
+      TIMESTAMP_MILLIS(last_modified_time) AS last_mod,
+      TIMESTAMP_DIFF(CURRENT_TIMESTAMP(), TIMESTAMP_MILLIS(last_modified_time), DAY) AS age_days
+    FROM `{PROJECT_ID}.raw.__TABLES__`
+    WHERE table_id IN (
+      'comptes_administratifs_budgets_principaux_a_partir_de_2019_m57_ville_departement',
+      'comptes_administratifs_autorisations_de_programmes_a_partir_de_2018_m57_ville_de',
+      'subventions_versees_annexe_compte_administratif_a_partir_de_2018',
+      'subventions_associations_votees',
+      'logements_sociaux_finances_a_paris',
+      'budgets_votes_principaux_a_partir_de_2019_m57_ville_departement',
+      'liste_des_marches_de_la_collectivite_parisienne',
+      'bilan_comptable'
+    )
+    ORDER BY age_days DESC
+    """
+    rows = [dict(r) for r in client.query(sql).result()]
+    # Convert timestamp to ISO string for JSON
+    for r in rows:
+        r["last_mod"] = r["last_mod"].isoformat() if r["last_mod"] else None
+    max_age = max((r["age_days"] or 0) for r in rows) if rows else 0
+    # Seuils larges : les datasets OpenData sont annuels, un sync mensuel suffit.
+    if max_age < 35:
+        status = "pass"
+    elif max_age < 90:
+        status = "warn"
+    else:
+        status = "fail"
+    return {
+        "id": "raw_table_freshness",
+        "category": "freshness",
+        "label": "Tables raw : âge du dernier sync OpenData → BigQuery",
+        "status": status,
+        "threshold": "pass < 35j, warn < 90j",
+        "actual": f"max {max_age}j",
+        "details": rows,
+        "sources": [f"{PROJECT_ID}.raw.*"],
+        "note": "Mesure quand sync_opendata.py a touché la table pour la dernière fois (≠ fraîcheur upstream OpenData).",
+    }
+
+
 def check_freshness(client: bigquery.Client) -> dict:
     """Âge max des tables core (via _dbt_updated_at)."""
     tables = [
@@ -476,6 +589,8 @@ CHECKS = [
     check_paris_centre_aggregation,
     check_casvp_dedup,
     check_budget_vote_coverage,
+    check_source_max_year,
+    check_table_freshness_bq,
     check_freshness,
     check_subventions_2020_2021_warning,
     check_ap_2023_2024_gap,

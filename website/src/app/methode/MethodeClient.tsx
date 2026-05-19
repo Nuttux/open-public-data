@@ -1084,6 +1084,11 @@ export default function MethodeClient() {
             <p style={{ marginTop: 16 }}>{isFr
               ? <>Pour re-jouer l&apos;audit en local après avoir cloné le repo : <code>python pipeline/scripts/audit/run_data_quality_audit.py</code>. Sortie attendue : un JSON identique à celui du site, plus un exit code 1 si un contrôle échoue.</>
               : <>To replay the audit locally after cloning the repo: <code>python pipeline/scripts/audit/run_data_quality_audit.py</code>. Expected output: a JSON identical to the one on the site, plus exit code 1 if any check fails.</>}</p>
+
+            <h3 style={{ marginTop: 32, marginBottom: 12 }}>{isFr ? "Confiance LLM : auto-déclarée ou mesurée ?" : "LLM confidence: self-declared or measured?"}</h3>
+            <p>{isFr
+              ? <>Les caches d&apos;enrichissement (classification thématique des subventions, géolocalisation des projets AP) portent une colonne <code>ode_confiance</code>. C&apos;est un score <b>auto-déclaré par le LLM</b> — il dit lui-même à quel point il est sûr. Pour transformer ça en garantie externe, on tire un échantillon stratifié (60 lignes thématique + 40 géoloc) qu&apos;on annote à la main, et on compare la précision <em>mesurée</em> avec la confidence déclarée par bucket. Le script et les échantillons sont sur GitHub : <a href="https://github.com/Nuttux/open-public-data/tree/main/pipeline/scripts/audit/calibration_samples" target="_blank" rel="noopener noreferrer">calibration_samples ↗</a>. Annotation manuelle en cours — la précision mesurée sera publiée ici dès qu&apos;elle existe.</>
+              : <>Enrichment caches (grant thematic classification, AP project geolocation) carry an <code>ode_confiance</code> column. It's a score <b>self-declared by the LLM</b> — the model itself tells us how sure it is. To turn that into an external guarantee, we draw a stratified sample (60 thematic + 40 geoloc rows), label it by hand, and compare measured precision against declared confidence per bucket. Script and samples on GitHub: <a href="https://github.com/Nuttux/open-public-data/tree/main/pipeline/scripts/audit/calibration_samples" target="_blank" rel="noopener noreferrer">calibration_samples ↗</a>. Manual annotation in progress — measured precision will appear here once available.</>}</p>
           </div>
         </div>
       </section>

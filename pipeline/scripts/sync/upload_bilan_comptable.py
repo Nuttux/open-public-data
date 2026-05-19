@@ -88,6 +88,9 @@ def main():
         client.create_dataset(dataset)
         print(f"  ✓ Dataset {DATASET_ID} créé")
     
+    # Stamp la fraîcheur du sync pour dbt source freshness
+    df["_synced_at"] = pd.Timestamp.utcnow().tz_localize(None)
+
     # Upload
     table_ref = f"{PROJECT_ID}.{DATASET_ID}.{TABLE_NAME}"
     job_config = bigquery.LoadJobConfig(
