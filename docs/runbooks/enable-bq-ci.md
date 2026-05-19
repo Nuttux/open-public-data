@@ -48,28 +48,31 @@ gcloud iam service-accounts create "$SA_NAME" \
 ### 3. Donner les permissions minimales
 
 ```bash
-# Lecture des datasets de prod (dbt source freshness + tests de lecture)
+# Lecture (redondant avec dataEditor mais utile en fallback)
 gcloud projects add-iam-policy-binding "$PROJECT_ID" \
   --member="serviceAccount:${SA_EMAIL}" \
   --role="roles/bigquery.dataViewer" \
   --condition=None
 
-# Écriture sur raw (sync OpenData) + dbt_paris_* (dbt run/test/CI).
-# Élargie 2026-05-19 depuis "CI éphémère uniquement" pour permettre au
-# cron `enrich-pipeline.yml` de tirer les sources et rebuild dbt.
+# Écriture sur toutes les tables BQ du projet (sync raw + dbt run).
+# 2026-05-19 : on a essayé une condition `resource.name.startsWith("projects/_/datasets/raw")
+# || ... dbt_paris*"` mais l'évaluation IAM ne match pas comme attendu sur
+# l'upload BQ. Simplifié en grant unconditional — le scope est de toute
+# façon limité au projet GCP, et la WIF restreint déjà à org Nuttux.
 gcloud projects add-iam-policy-binding "$PROJECT_ID" \
   --member="serviceAccount:${SA_EMAIL}" \
   --role="roles/bigquery.dataEditor" \
-  --condition='expression=resource.name.startsWith("projects/_/datasets/raw") || resource.name.startsWith("projects/_/datasets/dbt_paris"),title=ci-prod-and-ephemeral,description=Ecriture pour sync OpenData (raw) et dbt run (dbt_paris_*)'
+  --condition=None
 
-# Job runner (lancer des requêtes BQ)
+# Lancer des jobs + créer des datasets (dbt en a besoin pour materialize).
+# Plus large que `jobUser` qui ne donne que jobs.create.
 gcloud projects add-iam-policy-binding "$PROJECT_ID" \
   --member="serviceAccount:${SA_EMAIL}" \
-  --role="roles/bigquery.jobUser" \
+  --role="roles/bigquery.user" \
   --condition=None
 ```
 
-> **Note** : la condition IAM sur `dataEditor` empêche le SA d'écrire ailleurs que dans les datasets CI éphémères. La prod (`dbt_paris_*`) reste read-only depuis CI.
+> **Note** : le SA est scoped au projet BQ uniquement (pas de compute, pas de storage, pas d'IAM). La WIF restreinte à `repository_owner == 'Nuttux'` empêche tout autre repo GitHub d'usurper cette identité.
 
 ### 4. Créer le Workload Identity Pool + Provider
 
