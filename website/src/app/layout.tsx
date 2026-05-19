@@ -17,6 +17,11 @@ import AnalyticsProvider from "@/components/AnalyticsProvider";
 import { LocaleProvider } from "@/lib/localeContext";
 import SearchModal from "@/components/fusion/SearchModal";
 import { SITE_URL, SITE_NAME, organizationJsonLd, websiteJsonLd, readLocale } from "@/lib/seo";
+import { SpeedInsights } from "@vercel/speed-insights/next";
+import { Analytics } from "@vercel/analytics/next";
+import Script from "next/script";
+
+const PLAUSIBLE_DOMAIN = process.env.NEXT_PUBLIC_PLAUSIBLE_DOMAIN;
 
 const inter = Inter({
   variable: "--font-inter",
@@ -113,6 +118,19 @@ export default async function RootLayout({
   const skipLabel = initialLocale === 'en' ? 'Skip to main content' : 'Aller au contenu principal';
   return (
     <html lang={initialLocale === 'en' ? 'en' : 'fr'}>
+      <head>
+        {/* Plausible Analytics — alternative privacy-friendly à PostHog,
+            CNIL-exempt par construction. Active uniquement si
+            NEXT_PUBLIC_PLAUSIBLE_DOMAIN est set. */}
+        {PLAUSIBLE_DOMAIN ? (
+          <Script
+            defer
+            data-domain={PLAUSIBLE_DOMAIN}
+            src="https://plausible.io/js/script.outbound-links.js"
+            strategy="afterInteractive"
+          />
+        ) : null}
+      </head>
       <body className={`${inter.variable} font-sans antialiased`}>
         {/* RGAA 12.7 — skip-to-content link, first focusable element */}
         <a href="#main-content" className="skip-to-content">{skipLabel}</a>
@@ -131,6 +149,10 @@ export default async function RootLayout({
             <SearchModal />
           </LocaleProvider>
         </AnalyticsProvider>
+        {/* Vercel Speed Insights — Web Vitals (LCP, CLS, INP) en prod. */}
+        <SpeedInsights />
+        {/* Vercel Analytics — page views cookieless. */}
+        <Analytics />
       </body>
     </html>
   );
