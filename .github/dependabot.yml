@@ -1,0 +1,79 @@
+version: 2
+
+# Dependabot — audit dépendances continu.
+# Crée des PRs hebdo pour les bumps de versions (mineures + patches groupées,
+# majeures séparément). À reviewer/merger comme une PR normale.
+
+updates:
+  # ── npm (Next.js website) ────────────────────────────────────────────────
+  - package-ecosystem: "npm"
+    directory: "/website"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "06:00"
+      timezone: "Europe/Paris"
+    open-pull-requests-limit: 5
+    labels: ["dependencies", "npm"]
+    # Group patches and minor updates into a single PR to reduce noise.
+    # Major updates stay separate so we review breaking changes carefully.
+    groups:
+      next-ecosystem:
+        patterns:
+          - "next"
+          - "@next/*"
+          - "react"
+          - "react-dom"
+          - "@types/react*"
+        update-types:
+          - "patch"
+          - "minor"
+      typescript-tooling:
+        patterns:
+          - "typescript"
+          - "@typescript-eslint/*"
+          - "eslint*"
+          - "@types/*"
+        update-types:
+          - "patch"
+          - "minor"
+      testing:
+        patterns:
+          - "vitest"
+          - "@vitest/*"
+          - "@playwright/*"
+          - "playwright"
+        update-types:
+          - "patch"
+          - "minor"
+      visualization:
+        patterns:
+          - "echarts*"
+          - "leaflet*"
+          - "react-leaflet*"
+          - "@turf/*"
+        update-types:
+          - "patch"
+          - "minor"
+
+  # ── pip (pipeline Python) ────────────────────────────────────────────────
+  - package-ecosystem: "pip"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "06:30"
+      timezone: "Europe/Paris"
+    open-pull-requests-limit: 3
+    labels: ["dependencies", "python"]
+
+  # ── GitHub Actions ───────────────────────────────────────────────────────
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "monthly"
+      day: "monday"
+      time: "06:00"
+      timezone: "Europe/Paris"
+    open-pull-requests-limit: 2
+    labels: ["dependencies", "ci"]
