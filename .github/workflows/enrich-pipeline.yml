@@ -132,6 +132,9 @@ jobs:
           # Skip dbt seed en CI : seeds nationaux ont des bugs CSV préexistants
           # (montant_md_eur en INT64 mais "150.0" en valeur). À fix séparément.
           DBT_SKIP_SEED: "1"
+          # Exclut les modèles marseille WIP (sources raw pas encore syncées
+          # via sync_city.py marseille). À retirer une fois marseille en prod.
+          DBT_RUN_EXCLUDE: "stg_marseille_budget core_marseille_budget mart_marseille_budget_sankey_lines"
         run: |
           chmod +x pipeline/run_all.sh
           PHASES_FLAG="--only=${{ steps.phases.outputs.resolved }}"
