@@ -1179,6 +1179,9 @@ const fr: Record<string, string> = {
   'fx.land.h1.em': "l'argent public",
   'fx.land.h1.mid': 'à ',
   'fx.land.h1.after': ' ?',
+  'fx.land.lede.vote': "Budget Paris {year} voté : {budget} Md€. {nbMarches} marchés depuis {marchesSinceYear}, {nbSubventions} subventions depuis {subventionsSinceYear}. Tout est ici, ligne par ligne, sourcé aux comptes officiels.",
+  'fx.land.lede.execute': "Budget Paris {year} exécuté : {budget} Md€. {nbMarches} marchés depuis {marchesSinceYear}, {nbSubventions} subventions depuis {subventionsSinceYear}. Tout est ici, ligne par ligne, sourcé aux comptes officiels.",
+  /** @deprecated remplacé par fx.land.lede.vote/execute (audit 2026-05-19 — mix annuel/cumul) */
   'fx.land.lede': "{budget} milliards d'euros de dépenses publiques, {nbMarches} marchés, {nbSubventions} subventions. Tout est ici, ligne par ligne, sourcé aux comptes officiels.",
   'fx.land.cta.explore': 'Ouvrir les comptes {year} →',
   // Scale section

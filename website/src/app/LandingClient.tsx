@@ -83,10 +83,13 @@ export default function LandingClient({ stats, posts }: Props) {
             {t("fx.land.h1.after")}
           </h1>
           <p className="fx-lede">
-            {fill("fx.land.lede", {
+            {fill(stats.budgetType === "vote" ? "fx.land.lede.vote" : "fx.land.lede.execute", {
               budget: fmtBillions(stats.totalDepenses),
+              year: stats.year,
               nbMarches: fmtInt(Math.floor(stats.nbMarchesCumul / 1000) * 1000),
               nbSubventions: fmtInt(Math.floor(stats.nbSubventionsCumul / 1000) * 1000),
+              marchesSinceYear: stats.marchesSinceYear,
+              subventionsSinceYear: stats.subventionsSinceYear,
             })}
           </p>
           <div className="fx-ctas">

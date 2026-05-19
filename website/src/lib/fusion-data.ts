@@ -279,6 +279,9 @@ export function loadBeneficiaireGrounded(name: string): BeneficiaireGrounded | n
 
 export type LandingStats = {
   year: number;
+  /** Type du budget de l'année hero — "vote" si latestYear est un budget primitif voté
+   *  pas encore exécuté, "execute" sinon. Sert à afficher "(voté)" sur la landing. */
+  budgetType: "vote" | "execute";
   totalDepenses: number;
   perCapitaYear: number;
   perCapitaMonth: number;
@@ -288,6 +291,10 @@ export type LandingStats = {
   breakdown: { label: string; annual: number; perMonth: number }[];
   nbMarchesCumul: number;
   nbSubventionsCumul: number;
+  /** Première année de la couverture marchés (utilisée pour le lede "depuis YYYY"). */
+  marchesSinceYear: number;
+  /** Première année de la couverture subventions. */
+  subventionsSinceYear: number;
   capaciteDesendettement: number; // années, pour teaser stress-test landing
   topBeneficiaires: { name: string; amount: number; year: number }[];
   topFournisseurs: { name: string; siret: string; amount: number; year: number }[];
@@ -337,6 +344,12 @@ export function loadLandingStats(): LandingStats {
     (s, v) => s + (v.nb_subventions ?? 0),
     0,
   );
+  // Span temporel pour le lede transparent — sinon le user croit que les
+  // nb_marches/nb_subventions sont annuels alors qu'ils sont cumulés.
+  const marchesYears = Object.keys(marchesIdx.totalsByYear).map(Number).filter((y) => Number.isFinite(y));
+  const subventionsYears = Object.keys(subventionsIdx.totalsByYear).map(Number).filter((y) => Number.isFinite(y));
+  const marchesSinceYear = marchesYears.length ? Math.min(...marchesYears) : year;
+  const subventionsSinceYear = subventionsYears.length ? Math.min(...subventionsYears) : year;
 
   // Capacité de désendettement — même formule que loadPatrimoineData, mais
   // sans recharger tout le bilan complet (on se contente du dernier exercice
@@ -425,8 +438,14 @@ export function loadLandingStats(): LandingStats {
     }
   } catch {}
 
+  // budgetType : on regarde la summary entry pour l'année hero. Si l'année
+  // est dans `latestCompleteYear`+, c'est encore voté.
+  const heroEntry = byYear[year];
+  const budgetType: "vote" | "execute" = heroEntry?.type_budget === "execute" ? "execute" : "vote";
+
   return {
     year,
+    budgetType,
     totalDepenses,
     perCapitaYear,
     perCapitaMonth,
@@ -436,6 +455,8 @@ export function loadLandingStats(): LandingStats {
     breakdown,
     nbMarchesCumul,
     nbSubventionsCumul,
+    marchesSinceYear,
+    subventionsSinceYear,
     capaciteDesendettement,
     topBeneficiaires,
     topFournisseurs,
