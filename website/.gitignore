@@ -2,3 +2,7 @@
 .env
 .env.local
 .env.*.local
+
+# Playwright (e2e tests local artifacts)
+test-results/
+playwright-report/
