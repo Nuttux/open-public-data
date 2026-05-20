@@ -2,7 +2,14 @@ import fs from "node:fs";
 import path from "node:path";
 
 export { PARIS_POPULATION } from "@/lib/methodology";
-import { PARIS_POPULATION } from "@/lib/methodology";
+import {
+  PARIS_POPULATION,
+  PARIS_SRU_RATIO,
+  PARIS_SRU_TARGET,
+  PARIS_SRU_YEAR,
+  PARIS_SRU_STOCK_TOTAL,
+  parisBailleurShare,
+} from "@/lib/methodology";
 
 type BudgetIndex = {
   availableYears: number[];
@@ -3029,13 +3036,16 @@ export function loadLogementSocialData(
   // autres entités (aménagement, EPIC, fondations) sont garanties par la
   // Ville sans gérer de parc — leur fiche existe pour expliquer la nature
   // de l'entité, pas une part de marché logement.
+  // Parts de marché (`share`) lues depuis methodology.json (sourced via
+  // seed_city_constants.csv). Le reste des champs (name/type/color/description)
+  // reste en code car ce sont des descriptions UI, pas des claims factuels.
   const bailleursAll: LogementSocialData["bailleursAll"] = [
     // ─── Cinq grands bailleurs sociaux historiques ─────────────────────
-    { name: "Paris Habitat", type: "OPH (Ville)", color: "#2a3680", share: 49, description: "Office Public de l'Habitat de la Ville — plus grand bailleur social français." },
-    { name: "RIVP", type: "SEM (Ville)", color: "#1e45e4", share: 18, description: "Régie Immobilière de la Ville de Paris — SEM axée sur l'innovation habitat." },
-    { name: "Elogie-Siemp", type: "SEM (Ville)", color: "#a67638", share: 14, description: "Issue de la fusion Elogie et Siemp — réhabilitation et mixité sociale." },
-    { name: "ICF Habitat", type: "ESH / SA HLM", color: "#5f6672", share: 7, description: "Filiale SNCF (groupe ICF) — logement des salariés et logement social." },
-    { name: "3F Résidences", type: "ESH / SA HLM", color: "#9099a6", share: 6, description: "Groupe Action Logement (Immobilière 3F) — bailleur national présent à Paris." },
+    { name: "Paris Habitat", type: "OPH (Ville)", color: "#2a3680", share: parisBailleurShare("paris_habitat"), description: "Office Public de l'Habitat de la Ville — plus grand bailleur social français." },
+    { name: "RIVP", type: "SEM (Ville)", color: "#1e45e4", share: parisBailleurShare("rivp"), description: "Régie Immobilière de la Ville de Paris — SEM axée sur l'innovation habitat." },
+    { name: "Elogie-Siemp", type: "SEM (Ville)", color: "#a67638", share: parisBailleurShare("elogie_siemp"), description: "Issue de la fusion Elogie et Siemp — réhabilitation et mixité sociale." },
+    { name: "ICF Habitat", type: "ESH / SA HLM", color: "#5f6672", share: parisBailleurShare("icf_habitat"), description: "Filiale SNCF (groupe ICF) — logement des salariés et logement social." },
+    { name: "3F Résidences", type: "ESH / SA HLM", color: "#9099a6", share: parisBailleurShare("3f_residences"), description: "Groupe Action Logement (Immobilière 3F) — bailleur national présent à Paris." },
 
     // ─── Autres bailleurs sociaux (ESH / SA HLM nationaux) ────────────
     { name: "CDC Habitat Social", type: "ESH (CDC)", color: "#7a8295", description: "Filiale logement social du groupe Caisse des Dépôts — opérations en VEFA et accession sociale." },
@@ -3058,7 +3068,7 @@ export function loadLogementSocialData(
     { name: "Fondation Rothschild (OPTH A.)", type: "Fondation hospitalière", color: "#5f6672", description: "Fondation OPTH Adolphe de Rothschild — hôpital ophtalmologique. Garantie Ville sur emprunts d'investissement médical." },
 
     // ─── Catch-all dynamique pour les bailleurs non listés ─────────────
-    { name: "Autres bailleurs", type: "Divers", color: "#e4e6ea", share: 6, description: "Dizaines de petits bailleurs sociaux et coopératifs non listés individuellement." },
+    { name: "Autres bailleurs", type: "Divers", color: "#e4e6ea", share: parisBailleurShare("autres"), description: "Dizaines de petits bailleurs sociaux et coopératifs non listés individuellement." },
   ];
 
   // Vue restreinte pour la grille principale de la page logement-social :
@@ -3069,15 +3079,15 @@ export function loadLogementSocialData(
     (b): b is typeof b & { share: number } => typeof b.share === "number",
   );
 
-  // SRU officiel : Paris à 24,5 % au 31/12/2024 (source : DDT Paris).
-  // Figé à l'inventaire le plus récent même si l'utilisateur sélectionne une
+  // SRU Paris — chiffres lus depuis methodology.json (sourced via
+  // seed_city_constants.csv → DDT Paris Inventaire SRU). Figés à
+  // l'inventaire le plus récent même si l'utilisateur sélectionne une
   // année antérieure dans le YearPicker — pas de jeu de valeurs historiques
   // dans nos sources ouvertes actuelles.
-  const sruRatio = 24.5;
-  const sruTarget = 25;
-  const sruYear = 2024;
-  // Stock SRU inventaire 2024 : 258 400 logements sociaux sur 1 055 000 résidences principales
-  const stockTotal = 258_400;
+  const sruRatio = PARIS_SRU_RATIO;
+  const sruTarget = PARIS_SRU_TARGET;
+  const sruYear = PARIS_SRU_YEAR;
+  const stockTotal = PARIS_SRU_STOCK_TOTAL;
 
   // Tension SLS — chargée depuis logement_attente_paris.json (pipeline dbt →
   // seed DRIHL XLSX annuel). Zéro hardcode, tout sourcé.

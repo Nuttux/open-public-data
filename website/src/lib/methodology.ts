@@ -59,6 +59,28 @@ export const PARIS_POPULATION = num(M.city.paris_population);
 export const PARIS_SUPERFICIE_KM2 = num(M.city.paris_superficie_km2);
 export const PARIS_NB_ARRONDISSEMENTS = num(M.city.paris_nb_arrondissements);
 
+// ─── SRU Paris (logement social) ──────────────────────────────────────────
+// Sourced depuis DDT Paris - Inventaire SRU 2024. Mise à jour annuelle.
+// Cf seed_city_constants.csv + audit doc 2026-05-19 wave 2.
+export const PARIS_SRU_RATIO = num(M.city.paris_sru_ratio);
+export const PARIS_SRU_TARGET = num(M.city.paris_sru_target);
+export const PARIS_SRU_YEAR = num(M.city.paris_sru_year);
+export const PARIS_SRU_STOCK_TOTAL = num(M.city.paris_sru_stock_total);
+
+/**
+ * Part de marché estimée d'un bailleur social parisien (parc social Paris).
+ * Renvoie 0 si la clé n'existe pas — utile pour les bailleurs sans share
+ * documentée (aménageurs, EPIC, fondations).
+ *
+ * Slugs supportés (v1) : paris_habitat, rivp, elogie_siemp, icf_habitat,
+ * 3f_residences, autres. Cf seed_city_constants.csv.
+ */
+export function parisBailleurShare(slug: string): number {
+  const key = `paris_bailleur_share_${slug}`;
+  const entry = M.city[key];
+  return entry ? num(entry) : 0;
+}
+
 // Multi-city helpers (POC v1 Marseille — preparation for full refactor P2.3
 // where seed_city_constants moves to (city_slug, key, value) shape).
 // Reads from methodology.json keys like `marseille_population`.
