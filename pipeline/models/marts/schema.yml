@@ -495,6 +495,13 @@ models:
     description: |
       Lignes budget UNION exec+vote pour le Sankey.
       Filtre: montant > 0.
+
+      Colonnes consommées par le drawer poste (PosteFiche) côté front :
+      `fonction_libelle` (sous-thématique fonctionnelle — Musées, Piscines,
+      Théâtre…) sert à grouper les sub-postes ; `ode_categorie_flux`
+      (Personnel/Subvention/Achat/Investissement…) sert à afficher le tag
+      par row. Ces deux colonnes doivent rester présentes pour ne pas
+      régresser l'UX du drawer.
     columns:
       - name: annee
         tests: [not_null]
@@ -508,6 +515,12 @@ models:
           - not_null
           - accepted_values:
               values: ['Dépense', 'Recette']
+      - name: fonction_libelle
+        description: "Sous-thématique fonctionnelle (COFOG-like). Groupe les sub-postes dans le drawer Paris."
+        tests: [not_null]
+      - name: ode_categorie_flux
+        description: "Catégorie de flux dérivée de nature_code. Tag par row dans le drawer."
+        tests: [not_null]
 
   - name: mart_hors_bilan
     description: |

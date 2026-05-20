@@ -30,7 +30,10 @@ sys.path.insert(0, str(PIPELINE_ROOT / "scripts"))
 from utils.logger import Logger  # noqa: E402
 
 PROJECT_ID = "open-data-france-484717"
-MART_TABLE = "dbt_paris_marts.mart_marseille_budget_sankey_lines"
+# Marts dataset can be overridden (e.g. for dev runs against
+# `dbt_paris_dev_<user>_marts`). Same env var as Paris export.
+_MARTS_DATASET = os.environ.get("PARIS_MARTS_DATASET", "dbt_paris_marts")
+MART_TABLE = f"{_MARTS_DATASET}.mart_marseille_budget_sankey_lines"
 OUTPUT_DIR = PIPELINE_ROOT.parent / "website" / "public" / "data" / "marseille"
 
 CITY_LABEL = "Marseille"
@@ -81,6 +84,11 @@ def build_sankey(records: list[dict], year: int, type_budget: str) -> dict:
     revenue_by_cat = defaultdict(float)
     expense_by_cat = defaultdict(float)
     revenue_drill = defaultdict(lambda: defaultdict(float))
+    # Keys: (flow_category, nature_libelle) — flow_category propagé pour rétro-
+    # compat shape avec Paris (front PosteFiche peut afficher un tag si utile).
+    # Pour Marseille la cat top-level == flow_category, donc le tag serait
+    # redondant et le front s'en abstient — mais on garde le champ pour la
+    # cohérence du contrat JSON multi-villes.
     expense_drill = defaultdict(lambda: defaultdict(float))
 
     # Track section breakdown per expense category (Fonct vs Invest)
@@ -101,10 +109,10 @@ def build_sankey(records: list[dict], year: int, type_budget: str) -> dict:
             revenue_drill[cat][detail] += montant
         elif "Dépense" in sens:
             expense_by_cat[cat] += montant
-            expense_drill[cat][detail] += montant
+            expense_drill[cat][(cat, detail)] += montant
             if section in ("Fonctionnement", "Investissement"):
                 expense_section[cat][section]["total"] += montant
-                expense_section[cat][section]["items"][detail] += montant
+                expense_section[cat][section]["items"][(cat, detail)] += montant
 
     # Disambiguate node names if same category appears on both sides
     rev_names = {n for n, v in revenue_by_cat.items() if v > 0}
@@ -140,7 +148,11 @@ def build_sankey(records: list[dict], year: int, type_budget: str) -> dict:
         )[:50]
     for cat, items in expense_drill.items():
         drilldown["expenses"][exp_disp(cat)] = sorted(
-            [{"name": n, "value": v} for n, v in items.items() if v > 0],
+            [
+                {"name": n, "value": v, "flow_category": flow}
+                for (flow, n), v in items.items()
+                if v > 0
+            ],
             key=lambda x: -x["value"],
         )[:50]
 
@@ -157,7 +169,10 @@ def build_sankey(records: list[dict], year: int, type_budget: str) -> dict:
                 )[:20]
                 by_section[disp][sec_name] = {
                     "total": sec_data["total"],
-                    "items": [{"name": n, "value": v} for n, v in items_sorted],
+                    "items": [
+                        {"name": n, "value": v, "flow_category": flow}
+                        for (flow, n), v in items_sorted
+                    ],
                 }
 
     total_recettes = sum(revenue_by_cat.values())

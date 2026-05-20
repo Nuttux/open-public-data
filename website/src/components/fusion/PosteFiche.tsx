@@ -1,6 +1,6 @@
 "use client";
 
-import type { BudgetPosteFiche } from "@/lib/fusion-data";
+import type { BudgetPosteFiche, BudgetPosteSubPoste } from "@/lib/fusion-data";
 import { useT, useLocale } from "@/lib/localeContext";
 
 type Props = { poste: BudgetPosteFiche };
@@ -19,11 +19,138 @@ const fmtDec = (n: number, d = 1, locale: "fr" | "en" = "fr") =>
   locale === "en" ? n.toFixed(d) : n.toFixed(d).replace(".", ",");
 
 /**
- * Inside-drawer (or full-page) view of a budget poste. Split raw names
- * "N2: N3" into a two-level grouped list — groups sorted by group total,
- * items within each group sorted by amount desc. Lightweight: no
- * expand/collapse, everything visible since the drawer provides the
- * scrollable container.
+ * Forme courte affichée dans le tag de chaque row. Les keys sont les labels
+ * `ode_categorie_flux` produits par `core_budget.sql` — alignés avec le mapping
+ * SQL pour éviter une dépendance fragile. Les libellés non listés sont
+ * passés tels quels.
+ */
+const FLOW_SHORT_FR: Record<string, string> = {
+  "Personnel": "Personnel",
+  "Subventions (fonctionnement)": "Subvention",
+  "Subventions (investissement)": "Subv. invest.",
+  "Transferts sociaux": "Transferts",
+  "Contributions obligatoires": "Contributions",
+  "Achats": "Achats",
+  "Services extérieurs": "Services",
+  "Autres services": "Services",
+  "Charges financières": "Charges fin.",
+  "Remboursement dette": "Dette",
+  "Reversements péréquation": "Péréquation",
+  "Dotations arrondissements": "Dotations arrt",
+  "Immobilisations corporelles": "Investissement",
+  "Immobilisations en cours": "Investissement",
+  "Études": "Études",
+  "Impôts et taxes": "Impôts",
+  "Dotations et participations": "Dotations",
+  "Autres produits gestion": "Autres produits",
+  "Produits services": "Produits",
+  "Autre": "Autre",
+};
+
+const FLOW_SHORT_EN: Record<string, string> = {
+  "Personnel": "Staff",
+  "Subventions (fonctionnement)": "Grant",
+  "Subventions (investissement)": "Capital grant",
+  "Transferts sociaux": "Transfers",
+  "Contributions obligatoires": "Contributions",
+  "Achats": "Purchases",
+  "Services extérieurs": "Services",
+  "Autres services": "Services",
+  "Charges financières": "Fin. costs",
+  "Remboursement dette": "Debt",
+  "Reversements péréquation": "Equalisation",
+  "Dotations arrondissements": "District grants",
+  "Immobilisations corporelles": "Capex",
+  "Immobilisations en cours": "Capex",
+  "Études": "Studies",
+  "Impôts et taxes": "Taxes",
+  "Dotations et participations": "State grants",
+  "Autres produits gestion": "Other income",
+  "Produits services": "Service income",
+  "Autre": "Other",
+};
+
+function shortFlow(flow: string | undefined, locale: "fr" | "en"): string | null {
+  if (!flow) return null;
+  const map = locale === "en" ? FLOW_SHORT_EN : FLOW_SHORT_FR;
+  return map[flow] || flow;
+}
+
+type GroupedRow = {
+  /** Libellé de la nature comptable, nettoyé du préfixe redondant "Thématique: ". */
+  name: string;
+  value: number;
+  /** `ode_categorie_flux` brut depuis le pipeline (traduit + raccourci au render). */
+  flow?: string;
+  rank: number;
+};
+
+type Group = { key: string; total: number; items: GroupedRow[] };
+
+/**
+ * Regroupe les sub-postes par dim primaire :
+ *  - Dépenses : par `fonction` (Musées, Piscines, Théâtre…) — la vraie
+ *    sous-thématique fonctionnelle. Tag par row = `flow_category` (Personnel,
+ *    Subvention, Investissement…).
+ *  - Recettes : pas de fonction côté pipeline, on retombe sur le split
+ *    historique sur ":" pour conserver le rendu actuel.
+ *
+ * Fallback : si aucun sub-poste n'a `fonction` (JSON pré-2026-05), on retombe
+ * aussi sur le split ":" pour rétro-compat.
+ */
+function groupSubPostes(poste: BudgetPosteFiche): { groups: Group[]; mode: "fonction" | "split" } {
+  const isExpenseWithFonction =
+    poste.kind === "depense" && poste.subPostes.some((s) => s.fonction);
+  const mode: "fonction" | "split" = isExpenseWithFonction ? "fonction" : "split";
+
+  const map = new Map<string, Group>();
+  const order: string[] = [];
+
+  poste.subPostes.forEach((it: BudgetPosteSubPoste, i) => {
+    let key: string;
+    let rowName: string;
+
+    if (mode === "fonction") {
+      key = it.fonction || "Autre";
+      // Strip leading "Thématique: " (redondant avec le header du drawer)
+      const prefix = `${poste.label}: `;
+      rowName = it.name.startsWith(prefix) ? it.name.slice(prefix.length) : it.name;
+    } else {
+      const idx = it.name.indexOf(":");
+      key = idx > 0 ? it.name.slice(0, idx).trim() : "—";
+      rowName = idx > 0 ? it.name.slice(idx + 1).trim() : it.name.trim();
+    }
+
+    let g = map.get(key);
+    if (!g) {
+      g = { key, total: 0, items: [] };
+      map.set(key, g);
+      order.push(key);
+    }
+    g.total += it.value;
+    g.items.push({
+      name: rowName,
+      value: it.value,
+      flow: mode === "fonction" ? it.flow_category : undefined,
+      rank: i + 1,
+    });
+  });
+
+  const groups = order
+    .map((k) => map.get(k)!)
+    .sort((a, b) => b.total - a.total);
+  // items within each group sorted by value desc
+  groups.forEach((g) => g.items.sort((x, y) => y.value - x.value));
+
+  return { groups, mode };
+}
+
+/**
+ * Inside-drawer (or full-page) view of a budget poste. Sections =
+ * sous-thématique fonctionnelle (Musées, Piscines, Théâtre…) ; rows = nature
+ * comptable avec un tag à droite indiquant la catégorie de flux (Personnel,
+ * Subvention, Investissement…). Pour les recettes (pas de fonction dans le
+ * pipeline), on retombe sur l'ancien split sur ":".
  */
 export default function PosteFiche({ poste }: Props) {
   const t = useT();
@@ -37,23 +164,11 @@ export default function PosteFiche({ poste }: Props) {
   const kindLabel = poste.kind === "depense" ? t("fx.poste.kind.depense") : t("fx.poste.kind.recette");
   const maxSub = poste.subPostes[0]?.value || 1;
 
-  // Group by N2 (before ":") — fallback group "—" if no separator.
-  const groups = new Map<string, { total: number; items: { n3: string; value: number; rank: number }[] }>();
-  const groupOrder: string[] = [];
-  poste.subPostes.forEach((it, i) => {
-    const idx = it.name.indexOf(":");
-    const n2 = idx > 0 ? it.name.slice(0, idx).trim() : "—";
-    const n3 = idx > 0 ? it.name.slice(idx + 1).trim() : it.name.trim();
-    if (!groups.has(n2)) {
-      groupOrder.push(n2);
-      groups.set(n2, { total: 0, items: [] });
-    }
-    const g = groups.get(n2)!;
-    g.total += it.value;
-    g.items.push({ n3, value: it.value, rank: i + 1 });
-  });
-  // Sort groups by total desc
-  groupOrder.sort((a, b) => (groups.get(b)!.total - groups.get(a)!.total));
+  const { groups } = groupSubPostes(poste);
+  // Si le grouping n'a produit qu'un seul groupe sans clé sémantique ("—",
+  // typique Marseille où les noms n'ont ni `:` ni `fonction`), on rend une
+  // liste plate sans header de section — le faux header serait du bruit.
+  const isFlat = groups.length === 1 && groups[0].key === "—";
 
   return (
     <div className="fx-poste-fiche">
@@ -77,18 +192,23 @@ export default function PosteFiche({ poste }: Props) {
       </div>
 
       <div className="fx-poste-groups">
-        {groupOrder.map((n2) => {
-          const g = groups.get(n2)!;
-          return (
-            <section key={n2} className="fx-poste-group">
+        {groups.map((g) => (
+          <section key={g.key} className="fx-poste-group">
+            {!isFlat && (
               <header>
-                <span>{n2}</span>
+                <span>{g.key}</span>
                 <span className="muted tnum">{fmtEur(g.total)}</span>
               </header>
-              <ul>
-                {g.items.map((it) => (
+            )}
+            <ul>
+              {g.items.map((it) => {
+                const flowShort = shortFlow(it.flow, locale);
+                return (
                   <li key={it.rank}>
-                    <span className="lbl">{it.n3}</span>
+                    <span className="lbl">{it.name}</span>
+                    {flowShort && (
+                      <span className="fx-poste-tag" title={it.flow}>{flowShort}</span>
+                    )}
                     <span className="bar" aria-hidden="true">
                       <span
                         className="fill"
@@ -97,12 +217,12 @@ export default function PosteFiche({ poste }: Props) {
                     </span>
                     <span className="v tnum">{fmtEur(it.value)}</span>
                   </li>
-                ))}
-              </ul>
-            </section>
-          );
-        })}
-        {groupOrder.length === 0 && (
+                );
+              })}
+            </ul>
+          </section>
+        ))}
+        {groups.length === 0 && (
           <p className="fx-note">{fill(t("fx.poste.no_subpostes"), { year: poste.year })}</p>
         )}
       </div>

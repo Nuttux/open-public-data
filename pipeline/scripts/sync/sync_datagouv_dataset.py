@@ -88,7 +88,14 @@ def load_csv_to_bigquery(
         field_delimiter=csv_separator,
         encoding="UTF-8" if csv_encoding.lower() == "utf-8" else "ISO-8859-1",
         allow_quoted_newlines=True,
-        allow_jagged_rows=False,
+        # Tolérant aux lignes avec moins de colonnes que le header (Marseille
+        # BP 2020 et CA 2019 ont des lignes "courtes" trailing → NULLs côté
+        # stg). Le stg agrège proprement, les NULL natures n'ont aucun impact.
+        allow_jagged_rows=True,
+        # V2 char map autorise les caractères non-ASCII et `/` `.` dans les
+        # noms de colonnes (Marseille publie p.ex. `s/Fonction` qui casse
+        # l'autodetect par défaut). V2 réécrit ces caractères en `_`.
+        column_name_character_map="V2",
     )
 
     job = client.load_table_from_file(
