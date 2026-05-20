@@ -50,6 +50,86 @@
       "source_url": "https://www.legifrance.gouv.fr/loi/id/JORFTEXT000000509925",
       "date_reference": "1987-07-09",
       "notes": "Marseille est divisee en 16 arrondissements regroupes en 8 secteurs (PLM). Pour le choropleth on utilise le grain arrondissement (16) plus grand public que les secteurs."
+    },
+    "paris_sru_ratio": {
+      "value": 24.5,
+      "unit": "pct",
+      "source": "DDT Paris - Inventaire SRU 2024",
+      "source_url": "https://www.statistiques.developpement-durable.gouv.fr/bilans-sru",
+      "date_reference": "2024-12-31",
+      "notes": "Ratio de logements sociaux SRU pour Paris au 31/12/2024. Calculé sur les résidences principales selon l'article L302-5 du CCH. Mise à jour annuelle vers fin avril N+1."
+    },
+    "paris_sru_target": {
+      "value": 25,
+      "unit": "pct",
+      "source": "Article L302-5 du Code de la construction et de l'habitation (loi SRU 2000 modifiée 2013)",
+      "source_url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000031715283/",
+      "date_reference": "2013-01-18",
+      "notes": "Cible légale pour les communes de plus de 3500 habitants en zone tendue (ou 1500 en IDF). Paris est concernée."
+    },
+    "paris_sru_year": {
+      "value": 2024,
+      "unit": "year",
+      "source": "DDT Paris - Inventaire SRU 2024",
+      "source_url": "https://www.statistiques.developpement-durable.gouv.fr/bilans-sru",
+      "date_reference": "2024-12-31",
+      "notes": "Année de référence de l'inventaire SRU le plus récent publié par la DDT Paris."
+    },
+    "paris_sru_stock_total": {
+      "value": 258400,
+      "unit": "logements",
+      "source": "DDT Paris - Inventaire SRU 2024",
+      "source_url": "https://www.statistiques.developpement-durable.gouv.fr/bilans-sru",
+      "date_reference": "2024-12-31",
+      "notes": "Stock total de logements sociaux SRU au 31/12/2024 (numérateur). Le dénominateur (résidences principales) est d'environ 1 055 000."
+    },
+    "paris_bailleur_share_paris_habitat": {
+      "value": 49,
+      "unit": "pct",
+      "source": "Estimation open-public-data sur rapports annuels des bailleurs sociaux parisiens",
+      "source_url": null,
+      "date_reference": "2024-12-31",
+      "notes": "Part de marché estimée du parc social parisien gérée par Paris Habitat (OPH Ville). À confirmer avec DRIHL si publication officielle disponible. Provisoire."
+    },
+    "paris_bailleur_share_rivp": {
+      "value": 18,
+      "unit": "pct",
+      "source": "Estimation open-public-data sur rapports annuels des bailleurs sociaux parisiens",
+      "source_url": null,
+      "date_reference": "2024-12-31",
+      "notes": "Part de marché estimée du parc social parisien gérée par la RIVP (SEM Ville). À confirmer avec DRIHL. Provisoire."
+    },
+    "paris_bailleur_share_elogie_siemp": {
+      "value": 14,
+      "unit": "pct",
+      "source": "Estimation open-public-data sur rapports annuels des bailleurs sociaux parisiens",
+      "source_url": null,
+      "date_reference": "2024-12-31",
+      "notes": "Part de marché estimée du parc social parisien gérée par Elogie-Siemp (SEM Ville). À confirmer avec DRIHL. Provisoire."
+    },
+    "paris_bailleur_share_icf_habitat": {
+      "value": 7,
+      "unit": "pct",
+      "source": "Estimation open-public-data sur rapports annuels des bailleurs sociaux parisiens",
+      "source_url": null,
+      "date_reference": "2024-12-31",
+      "notes": "Part de marché estimée du parc social parisien gérée par ICF Habitat (ESH SNCF). À confirmer avec DRIHL. Provisoire."
+    },
+    "paris_bailleur_share_3f_residences": {
+      "value": 6,
+      "unit": "pct",
+      "source": "Estimation open-public-data sur rapports annuels des bailleurs sociaux parisiens",
+      "source_url": null,
+      "date_reference": "2024-12-31",
+      "notes": "Part de marché estimée du parc social parisien gérée par 3F Résidences (ESH Action Logement). À confirmer avec DRIHL. Provisoire."
+    },
+    "paris_bailleur_share_autres": {
+      "value": 6,
+      "unit": "pct",
+      "source": "Estimation open-public-data sur rapports annuels des bailleurs sociaux parisiens",
+      "source_url": null,
+      "date_reference": "2024-12-31",
+      "notes": "Part de marché résiduelle (dizaines de petits bailleurs sociaux et coopératifs non listés individuellement). Calculée par résidu : 100 - somme des grands bailleurs. Provisoire."
     }
   },
   "legal_thresholds": {
