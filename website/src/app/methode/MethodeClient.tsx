@@ -1,6 +1,5 @@
 "use client";
 
-import Link from "next/link";
 import { useEffect, useState } from "react";
 import type { CSSProperties } from "react";
 import Navbar from "@/components/fusion/Navbar";
@@ -16,13 +15,6 @@ type SourceRow = {
   url: string;
   datasets: string;
   freshness: string;
-};
-
-type TraceStep = {
-  stage: string;
-  label: string;
-  value: string;
-  detail: string;
 };
 
 type AuditCheck = {
@@ -53,7 +45,7 @@ type CoverageRow = {
   segments: { start: number; end: number; text: string; kind?: "frozen" | "partial" }[];
 };
 
-type ToolChip = { id: string; kicker: string; route: string };
+type ToolChip = { chartId: string; kicker: string };
 
 const AXIS_START = TIMELINE_AXIS_START;
 const AXIS_END = TIMELINE_AXIS_END;
@@ -91,25 +83,13 @@ const COVERAGE_FR: CoverageRow[] = [
   { label: "Hors-bilan (dette garantie)", volume: "9 960 emprunts · 12,3 Md€ capital restant dû 2024", href: "https://opendata.paris.fr/explore/dataset/dette-garantie/", status: "ok", statusLabel: "À jour", segments: [{ start: 2019, end: 2024, text: "2019-2024" }] },
 ];
 
-const TRACE_FR: { claim: string; steps: TraceStep[] } = {
-  claim: "« 416 574 267 € versés au CASVP en 2024 » — affiché sur la page Qui-reçoit",
-  steps: [
-    { stage: "01 · Source", label: "opendata.paris.fr", value: "Dataset subventions-versees-annexe-compte-administratif-a-partir-de-2018", detail: "Une ligne brute du CSV : SIRET 267 500 049, montant 416 574 267 €, exercice 2024." },
-    { stage: "02 · Staging", label: "dbt · nettoyage", value: "stg_subventions.sql", detail: "Typage des colonnes, normalisation du SIRET, filtrage des montants nuls." },
-    { stage: "03 · Core", label: "dbt · table de vérité", value: "core_subventions (OBT)", detail: "Jointure SIRENE pour récupérer forme juridique = Établissement public. Pas de thématisation LLM nécessaire (top 1 par volume, revue manuelle)." },
-    { stage: "04 · Mart", label: "dbt · agrégation", value: "mart_subventions_beneficiaires.sql", detail: "Groupement par SIRET × année. Somme des lignes. Le résultat : 1 ligne CASVP 2024 avec 416 574 267 €." },
-    { stage: "05 · Export", label: "Python", value: "beneficiaires_2024.json", detail: "JSON figé servi en statique à Next.js. Aucun calcul côté site." },
-    { stage: "06 · Affichage", label: "React", value: "QuiRecoitExplorer.tsx", detail: "Le chiffre est lu tel quel et affiché." },
-  ],
-};
-
 const TOOLS_FR: ToolChip[] = [
-  { id: "budget", kicker: "Budget", route: "/ville/paris/budget" },
-  { id: "subventions", kicker: "Subventions", route: "/ville/paris/subventions" },
-  { id: "marches", kicker: "Marchés", route: "/ville/paris/marches" },
-  { id: "investissements", kicker: "Investissements", route: "/ville/paris/investissements" },
-  { id: "logement", kicker: "Logement", route: "/ville/paris/logement" },
-  { id: "dette", kicker: "Dette", route: "/ville/paris/dette" },
+  { chartId: "budget-sankey-paris", kicker: "Budget" },
+  { chartId: "subventions-treemap-paris", kicker: "Subventions" },
+  { chartId: "marches-fournisseurs-paris", kicker: "Marchés" },
+  { chartId: "investissements-map-paris", kicker: "Investissements" },
+  { chartId: "logement-map-paris", kicker: "Logement" },
+  { chartId: "dette-sankey-paris", kicker: "Dette" },
 ];
 
 // ── English data ─────────────────────────────────────────────────────────────
@@ -138,25 +118,13 @@ const COVERAGE_EN: CoverageRow[] = [
   { label: "Off-balance-sheet (guaranteed debt)", volume: "9,960 loans · €12.3bn outstanding in 2024", href: "https://opendata.paris.fr/explore/dataset/dette-garantie/", status: "ok", statusLabel: "Up to date", segments: [{ start: 2019, end: 2024, text: "2019-2024" }] },
 ];
 
-const TRACE_EN: { claim: string; steps: TraceStep[] } = {
-  claim: "'€416,574,267 paid to CASVP in 2024' — displayed on the Qui-reçoit page",
-  steps: [
-    { stage: "01 · Source", label: "opendata.paris.fr", value: "Dataset subventions-versees-annexe-compte-administratif-a-partir-de-2018", detail: "One raw CSV row: SIRET 267 500 049, amount €416,574,267, fiscal year 2024." },
-    { stage: "02 · Staging", label: "dbt · cleaning", value: "stg_subventions.sql", detail: "Column typing, SIRET normalisation, null amounts filtered." },
-    { stage: "03 · Core", label: "dbt · source of truth", value: "core_subventions (OBT)", detail: "SIRENE join to retrieve legal form = Public establishment. No LLM theming needed (top 1 by volume, manual review)." },
-    { stage: "04 · Mart", label: "dbt · aggregation", value: "mart_subventions_beneficiaires.sql", detail: "Grouped by SIRET × year. Sum of rows. Result: 1 CASVP 2024 row with €416,574,267." },
-    { stage: "05 · Export", label: "Python", value: "beneficiaires_2024.json", detail: "Static JSON served to Next.js. No computation on site." },
-    { stage: "06 · Display", label: "React", value: "QuiRecoitExplorer.tsx", detail: "The figure is read as-is and displayed." },
-  ],
-};
-
 const TOOLS_EN: ToolChip[] = [
-  { id: "budget", kicker: "Budget", route: "/ville/paris/budget" },
-  { id: "subventions", kicker: "Grants", route: "/ville/paris/subventions" },
-  { id: "marches", kicker: "Contracts", route: "/ville/paris/marches" },
-  { id: "investissements", kicker: "Investments", route: "/ville/paris/investissements" },
-  { id: "logement", kicker: "Housing", route: "/ville/paris/logement" },
-  { id: "dette", kicker: "Debt", route: "/ville/paris/dette" },
+  { chartId: "budget-sankey-paris", kicker: "Budget" },
+  { chartId: "subventions-treemap-paris", kicker: "Grants" },
+  { chartId: "marches-fournisseurs-paris", kicker: "Contracts" },
+  { chartId: "investissements-map-paris", kicker: "Investments" },
+  { chartId: "logement-map-paris", kicker: "Housing" },
+  { chartId: "dette-sankey-paris", kicker: "Debt" },
 ];
 
 // ── Component ────────────────────────────────────────────────────────────────
@@ -177,7 +145,6 @@ export default function MethodeClient() {
 
   const SOURCES = isFr ? SOURCES_FR : SOURCES_EN;
   const COVERAGE = isFr ? COVERAGE_FR : COVERAGE_EN;
-  const TRACE = isFr ? TRACE_FR : TRACE_EN;
   const TOOLS = isFr ? TOOLS_FR : TOOLS_EN;
 
   const years: number[] = [];
@@ -299,46 +266,29 @@ export default function MethodeClient() {
               : <><b>Hard rule on enrichment</b>: a language model is only used on text — to categorise, describe, summarise, find an address. <b>No amount, no financial aggregate ever goes through an LLM.</b> Numbers come from deterministic SQL run on raw data.</>}
           </p>
 
-          {/* Tools bandeau ────────────────────────────────────────────── */}
+          {/* Tools bandeau — chaque chip ouvre la modal Provenance ──── */}
           <h3 style={{ marginTop: 44, marginBottom: 10, fontFamily: "var(--f-display)", fontSize: 22 }}>
-            {isFr ? "Le pipeline alimente six outils" : "The pipeline feeds six tools"}
+            {isFr ? "La provenance, outil par outil" : "Provenance, tool by tool"}
           </h3>
           <p style={{ maxWidth: 720, marginBottom: 18, color: "var(--muted)", lineHeight: 1.55 }}>
             {isFr
-              ? "Chaque outil porte sa propre fiche méthode (source précise, choix éditoriaux, limites) sur sa page."
-              : "Each tool carries its own method panel (exact source, editorial choices, limits) on its page."}
+              ? "Cliquer ouvre la chaîne complète source → BigQuery → mart, avec un lien direct vers chaque table publique."
+              : "Click to open the full chain source → BigQuery → mart, with a direct link to each public table."}
           </p>
           <div className="fx-tool-tabs">
             {TOOLS.map((tool, i) => (
-              <Link
-                key={tool.id}
-                href={tool.route}
-                className="fx-tool-tab"
-                style={{ textDecoration: "none" }}
-              >
-                <span className="num">{String(i + 1).padStart(2, "0")}</span>
-                <span className="lbl">{tool.kicker} ↗</span>
-              </Link>
+              <DataProvenance
+                key={tool.chartId}
+                chartId={tool.chartId}
+                triggerClassName="fx-tool-tab"
+                triggerChildren={
+                  <>
+                    <span className="num">{String(i + 1).padStart(2, "0")}</span>
+                    <span className="lbl">{tool.kicker} ⓘ</span>
+                  </>
+                }
+              />
             ))}
-          </div>
-
-          {/* Provenance chart-level (BQ console) ───────────────────────── */}
-          <div style={{ marginTop: 18, display: "flex", flexWrap: "wrap", alignItems: "center", gap: 12 }}>
-            <span style={{ fontSize: 13, color: "var(--muted)", fontFamily: "var(--f-mono)" }}>
-              {isFr ? "Provenance détaillée par chart →" : "Detailed provenance per chart →"}
-            </span>
-            <span style={{ display: "inline-flex", alignItems: "center", gap: 6 }}>
-              <span style={{ fontSize: 12.5, color: "var(--muted)" }}>{isFr ? "Budget" : "Budget"}:</span>
-              <DataProvenance chartId="budget-sankey-paris" />
-            </span>
-            <span style={{ display: "inline-flex", alignItems: "center", gap: 6 }}>
-              <span style={{ fontSize: 12.5, color: "var(--muted)" }}>{isFr ? "Subventions" : "Grants"}:</span>
-              <DataProvenance chartId="subventions-treemap-paris" />
-            </span>
-            <span style={{ display: "inline-flex", alignItems: "center", gap: 6 }}>
-              <span style={{ fontSize: 12.5, color: "var(--muted)" }}>{isFr ? "Investissements" : "Investments"}:</span>
-              <DataProvenance chartId="investissements-map-paris" />
-            </span>
           </div>
 
           {/* Anti-double-counting (migrated from FAQ Q5 + Q7) ──────────── */}
@@ -353,92 +303,6 @@ export default function MethodeClient() {
             </p>
           </div>
 
-          {/* Details: BQ chain ─────────────────────────────────────────── */}
-          <details className="fx-flow-tech" style={{ marginTop: 28 }}>
-            <summary>{isFr ? "Voir le détail technique (chaîne BQ raw → mart)" : "See technical detail (BQ raw → mart chain)"}</summary>
-            <div className="fx-flow">
-              <div className="fx-flow-row">
-                <div className="fx-flow-node">
-                  <span className="k">01 · {isFr ? "Sources" : "Sources"}</span>
-                  <span className="lab">OpenData Paris + INSEE + BAN</span>
-                  <span className="sub">{isFr ? "12+ datasets & PDFs officiels" : "12+ official datasets & PDFs"}</span>
-                </div>
-                <span className="fx-flow-arrow">→</span>
-                <div className="fx-flow-node">
-                  <span className="k">02 · {isFr ? "Ingest" : "Ingest"}</span>
-                  <span className="lab">BigQuery <code>raw</code></span>
-                  <span className="sub">{isFr ? "Python, aucune transformation" : "Python, no transformation"}</span>
-                </div>
-                <span className="fx-flow-arrow">→</span>
-                <div className="fx-flow-node">
-                  <span className="k">03 · Staging (dbt)</span>
-                  <span className="lab">{isFr ? "Typage & clés" : "Typing & keys"}</span>
-                  <span className="sub">{isFr ? "Filtrage, normalisation" : "Filtering, normalisation"}</span>
-                </div>
-                <span className="fx-flow-arrow">→</span>
-                <div className="fx-flow-node">
-                  <span className="k">04 · Intermediate</span>
-                  <span className="lab">{isFr ? "Jointures + ode_*" : "Joins + ode_*"}</span>
-                  <span className="sub">{isFr ? "Enrichissements dbt" : "dbt enrichments"}</span>
-                </div>
-              </div>
-              <div className="fx-flow-row">
-                <div className="fx-flow-node alt">
-                  <span className="k">{isFr ? "Hors pipeline" : "Outside pipeline"}</span>
-                  <span className="lab">Gemini 3 Flash + Claude Opus</span>
-                  <span className="sub">{isFr ? "Thématique + géoloc top 500 (Pareto) → seeds CSV" : "Theme + geoloc top 500 (Pareto) → CSV seeds"}</span>
-                </div>
-                <span className="fx-flow-arrow">→</span>
-                <div className="fx-flow-node">
-                  <span className="k">05 · Core (OBT)</span>
-                  <span className="lab">{isFr ? "Une table par entité" : "One table per entity"}</span>
-                  <span className="sub">core_budget, core_subventions…</span>
-                </div>
-                <span className="fx-flow-arrow">→</span>
-                <div className="fx-flow-node">
-                  <span className="k">06 · Marts</span>
-                  <span className="lab">{isFr ? "Une vue par viz" : "One view per viz"}</span>
-                  <span className="sub">mart_sankey, mart_carte, …</span>
-                </div>
-                <span className="fx-flow-arrow">→</span>
-                <div className="fx-flow-node out">
-                  <span className="k">07 · {isFr ? "Sortie" : "Output"}</span>
-                  <span className="lab">{isFr ? "JSON figés" : "Static JSON"}</span>
-                  <span className="sub">{isFr ? "Consommés par Next.js, pas d'API live" : "Consumed by Next.js, no live API"}</span>
-                </div>
-              </div>
-              <div className="fx-flow-note">
-                {isFr
-                  ? <>Orchestrateur <code>pipeline/run_all.sh</code> (4 phases sync/dbt/export/enrich). Datasets BigQuery <b>publics en lecture</b> : <code>raw</code>, <code>dbt_paris_staging</code>, <code>dbt_paris_intermediate</code>, <code>dbt_paris_analytics</code>, <code>dbt_paris_marts</code> (projet <code>open-data-france-484717</code>). Détail dans <code>docs/architecture-modelling.md</code>.</>
-                  : <>Orchestrator <code>pipeline/run_all.sh</code> (4 phases sync/dbt/export/enrich). BigQuery datasets <b>publicly readable</b>: <code>raw</code>, <code>dbt_paris_staging</code>, <code>dbt_paris_intermediate</code>, <code>dbt_paris_analytics</code>, <code>dbt_paris_marts</code> (project <code>open-data-france-484717</code>). Detail in <code>docs/architecture-modelling.md</code>.</>}
-              </div>
-            </div>
-          </details>
-
-          {/* Details: traced example ───────────────────────────────────── */}
-          <details className="fx-trace-tech" style={{ marginTop: 18 }}>
-            <summary>{isFr ? "Voir un exemple bout-en-bout (CASVP 416 M€)" : "See an end-to-end example (CASVP €416M)"}</summary>
-            <div className="fx-trace-claim">
-              <span className="k">{isFr ? "Affirmation" : "Claim"}</span>
-              <p>{TRACE.claim}</p>
-            </div>
-            <div className="fx-trace-summary">
-              {isFr
-                ? <>Ce chiffre vient d&apos;<b>une seule ligne</b> du CSV publié par la Ville : SIRET 267 500 049, montant 416 574 267 €, exercice 2024. Entre ce CSV et l&apos;affichage sur le site, le pipeline fait trois choses : il type les colonnes et normalise le SIRET ; il confirme via SIRENE que le SIRET correspond bien au CASVP ; il somme les lignes du même SIRET sur l&apos;année. Puis il écrit le résultat en JSON, que le site lit tel quel. <b>Aucune étape n&apos;invente un chiffre</b> — uniquement du nettoyage, une vérification d&apos;identité, une somme.</>
-                : <>This figure comes from <b>a single row</b> of the CSV published by the City: SIRET 267 500 049, amount €416,574,267, fiscal year 2024. Between that CSV and the display on the site, the pipeline does three things: it types the columns and normalises the SIRET; it verifies via SIRENE that the SIRET does belong to CASVP; it sums all rows with that same SIRET for the year. Then it writes the result to JSON, which the site reads as-is. <b>No step invents a figure</b> — only cleaning, an identity check, a sum.</>}
-            </div>
-            <ol className="fx-trace-steps">
-              {TRACE.steps.map((step, i) => (
-                <li key={i}>
-                  <div className="fx-trace-stage">{step.stage}</div>
-                  <div className="fx-trace-body">
-                    <div className="lbl">{step.label} · <code>{step.value}</code></div>
-                    <p>{step.detail}</p>
-                  </div>
-                </li>
-              ))}
-            </ol>
-          </details>
         </div>
       </section>
 

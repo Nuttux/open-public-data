@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useId, useRef, useState } from "react";
+import { useEffect, useId, useRef, useState, type ReactNode } from "react";
 import { useLocale } from "@/lib/localeContext";
 
 type ChainStep = {
@@ -63,7 +63,17 @@ function buildBqUrl(template: string, project: string, bqTable: string): string 
     .replace("{table}", table);
 }
 
-export default function DataProvenance({ chartId, year }: { chartId: string; year?: number }) {
+export default function DataProvenance({
+  chartId,
+  year,
+  triggerClassName,
+  triggerChildren,
+}: {
+  chartId: string;
+  year?: number;
+  triggerClassName?: string;
+  triggerChildren?: ReactNode;
+}) {
   const { locale } = useLocale();
   const isFr = locale === "fr";
   const [open, setOpen] = useState(false);
@@ -105,19 +115,21 @@ export default function DataProvenance({ chartId, year }: { chartId: string; yea
       <button
         ref={triggerRef}
         type="button"
-        className="fx-provenance-btn"
+        className={triggerClassName ?? "fx-provenance-btn"}
         onClick={() => setOpen(true)}
         aria-label={isFr ? "Voir la provenance des données" : "View data provenance"}
         aria-haspopup="dialog"
       >
-        <span aria-hidden="true" style={{ display: "inline-flex", alignItems: "center", gap: 6 }}>
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-            <circle cx="12" cy="12" r="10" />
-            <path d="M12 16v-4" />
-            <path d="M12 8h.01" />
-          </svg>
-          <span>{isFr ? "Provenance" : "Provenance"}</span>
-        </span>
+        {triggerChildren ?? (
+          <span aria-hidden="true" style={{ display: "inline-flex", alignItems: "center", gap: 6 }}>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <circle cx="12" cy="12" r="10" />
+              <path d="M12 16v-4" />
+              <path d="M12 8h.01" />
+            </svg>
+            <span>{isFr ? "Provenance" : "Provenance"}</span>
+          </span>
+        )}
       </button>
 
       {open && (
