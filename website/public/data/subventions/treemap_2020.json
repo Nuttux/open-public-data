@@ -1,1 +1,136 @@
-{"year": 2020, "generated_at": "2026-05-01T20:38:41.015910+00:00", "total_montant": 1475205239.42, "nb_thematiques": 14, "data": [{"annee": 2020, "thematique": "Social - Solidarité", "nb_beneficiaires": 166, "nb_subventions": 475, "montant_total": 456069291.62, "pct_total": 30.92}, {"annee": 2020, "thematique": "Logement", "nb_beneficiaires": 90, "nb_subventions": 117, "montant_total": 230947440.3, "pct_total": 15.66}, {"annee": 2020, "thematique": "Autre", "nb_beneficiaires": 5341, "nb_subventions": 9467, "montant_total": 214197272.91, "pct_total": 14.52}, {"annee": 2020, "thematique": "Culture", "nb_beneficiaires": 639, "nb_subventions": 1209, "montant_total": 201432812.23, "pct_total": 13.65}, {"annee": 2020, "thematique": "Éducation - Jeunesse", "nb_beneficiaires": 425, "nb_subventions": 742, "montant_total": 172987437.38, "pct_total": 11.73}, {"annee": 2020, "thematique": "Transport", "nb_beneficiaires": 36, "nb_subventions": 45, "montant_total": 78613398.32, "pct_total": 5.33}, {"annee": 2020, "thematique": "Sport", "nb_beneficiaires": 601, "nb_subventions": 1021, "montant_total": 33720848.5, "pct_total": 2.29}, {"annee": 2020, "thematique": "Économie - Emploi", "nb_beneficiaires": 61, "nb_subventions": 116, "montant_total": 30750117.27, "pct_total": 2.08}, {"annee": 2020, "thematique": "Santé", "nb_beneficiaires": 68, "nb_subventions": 132, "montant_total": 25503570.44, "pct_total": 1.73}, {"annee": 2020, "thematique": "Sécurité", "nb_beneficiaires": 8, "nb_subventions": 18, "montant_total": 18028421.66, "pct_total": 1.22}, {"annee": 2020, "thematique": "Aide individuelle", "nb_beneficiaires": 1, "nb_subventions": 15251, "montant_total": 7508820.46, "pct_total": 0.51}, {"annee": 2020, "thematique": "Environnement - Climat", "nb_beneficiaires": 95, "nb_subventions": 126, "montant_total": 2786838.56, "pct_total": 0.19}, {"annee": 2020, "thematique": "International - Coopération", "nb_beneficiaires": 62, "nb_subventions": 93, "montant_total": 1809680.77, "pct_total": 0.12}, {"annee": 2020, "thematique": "Démocratie - Vie locale", "nb_beneficiaires": 26, "nb_subventions": 33, "montant_total": 849289.0, "pct_total": 0.06}]}
+{
+  "year": 2020,
+  "generated_at": "2026-05-20T14:02:12.359874",
+  "total_montant": 1343546179.42,
+  "nb_thematiques": 16,
+  "data": [
+    {
+      "annee": 2020,
+      "thematique": "Social - Solidarité",
+      "nb_beneficiaires": 414,
+      "nb_subventions": 414,
+      "montant_total": 460755114.51000005,
+      "pct_total": 34.29
+    },
+    {
+      "annee": 2020,
+      "thematique": "Culture",
+      "nb_beneficiaires": 747,
+      "nb_subventions": 747,
+      "montant_total": 204391506.76999998,
+      "pct_total": 15.21
+    },
+    {
+      "annee": 2020,
+      "thematique": "Logement",
+      "nb_beneficiaires": 66,
+      "nb_subventions": 66,
+      "montant_total": 183156989.52,
+      "pct_total": 13.63
+    },
+    {
+      "annee": 2020,
+      "thematique": "Éducation",
+      "nb_beneficiaires": 339,
+      "nb_subventions": 339,
+      "montant_total": 155570605.46999997,
+      "pct_total": 11.58
+    },
+    {
+      "annee": 2020,
+      "thematique": "Économie",
+      "nb_beneficiaires": 1215,
+      "nb_subventions": 1215,
+      "montant_total": 110216599.11,
+      "pct_total": 8.2
+    },
+    {
+      "annee": 2020,
+      "thematique": "Transport",
+      "nb_beneficiaires": 43,
+      "nb_subventions": 43,
+      "montant_total": 84095403.72,
+      "pct_total": 6.26
+    },
+    {
+      "annee": 2020,
+      "thematique": "Social - Petite enfance",
+      "nb_beneficiaires": 121,
+      "nb_subventions": 121,
+      "montant_total": 36910026.89000001,
+      "pct_total": 2.75
+    },
+    {
+      "annee": 2020,
+      "thematique": "Sport",
+      "nb_beneficiaires": 373,
+      "nb_subventions": 373,
+      "montant_total": 32257593.0,
+      "pct_total": 2.4
+    },
+    {
+      "annee": 2020,
+      "thematique": "Non classifié",
+      "nb_beneficiaires": 401,
+      "nb_subventions": 401,
+      "montant_total": 24787728.940000076,
+      "pct_total": 1.84
+    },
+    {
+      "annee": 2020,
+      "thematique": "Sécurité",
+      "nb_beneficiaires": 4,
+      "nb_subventions": 4,
+      "montant_total": 17217457.66,
+      "pct_total": 1.28
+    },
+    {
+      "annee": 2020,
+      "thematique": "Administration",
+      "nb_beneficiaires": 66,
+      "nb_subventions": 66,
+      "montant_total": 14698002.379999999,
+      "pct_total": 1.09
+    },
+    {
+      "annee": 2020,
+      "thematique": "Santé",
+      "nb_beneficiaires": 87,
+      "nb_subventions": 87,
+      "montant_total": 9177222.02,
+      "pct_total": 0.68
+    },
+    {
+      "annee": 2020,
+      "thematique": "International",
+      "nb_beneficiaires": 103,
+      "nb_subventions": 103,
+      "montant_total": 4753350.73,
+      "pct_total": 0.35
+    },
+    {
+      "annee": 2020,
+      "thematique": "Environnement",
+      "nb_beneficiaires": 84,
+      "nb_subventions": 84,
+      "montant_total": 3375809.26,
+      "pct_total": 0.25
+    },
+    {
+      "annee": 2020,
+      "thematique": "Autre",
+      "nb_beneficiaires": 152,
+      "nb_subventions": 152,
+      "montant_total": 1864105.4400000002,
+      "pct_total": 0.14
+    },
+    {
+      "annee": 2020,
+      "thematique": "Social",
+      "nb_beneficiaires": 16,
+      "nb_subventions": 16,
+      "montant_total": 318664.0,
+      "pct_total": 0.02
+    }
+  ]
+}

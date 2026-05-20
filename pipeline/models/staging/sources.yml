@@ -207,7 +207,9 @@ sources:
           Sans SIRET, mais avec catégorie et nature juridique.
           
           ~47k lignes, années 2018-2024
-          ⚠️ 2020-2021: noms bénéficiaires = NULL
+          ⚠️ 2020-2021: noms bénéficiaires = NULL à la source.
+          La donnée nommée est ré-injectée via pdf_subventions_b811_paris
+          ci-dessous (extraite de l'annexe B8.1.1 du CA en PDF).
         loaded_at_field: _synced_at
         freshness:
           warn_after: {count: 60, period: day}
@@ -227,6 +229,42 @@ sources:
             description: "Montant versé (FLOAT)"
           - name: prestations_en_nature
             description: "Prestations en nature (FLOAT)"
+
+      - name: pdf_subventions_b811_paris
+        description: |
+          Annexe B8.1.1 du Compte Administratif (PDF Tome 3) — extraction
+          locale via `parse_subv_pdf_text.py` + chargement par
+          `sync_pdf_subventions_b811.py`.
+
+          Source nommée et exhaustive des subventions versées par la Ville
+          de Paris, imposée par la nomenclature M57 (CGCT L. 2313-1).
+          Utilisée pour combler le trou OpenData sur 2020 et 2021 où le
+          nom du bénéficiaire est NULL côté portail.
+
+          ~29k lignes, années 2020 et 2021 (extensible à d'autres exercices
+          si l'OpenData régresse).
+        loaded_at_field: loaded_at
+        columns:
+          - name: annee
+            description: "Année d'exercice (INTEGER, 2020 ou 2021)"
+          - name: source_pdf
+            description: "URL du PDF source (Tome 3 du CA)"
+          - name: source_section
+            description: "Section du PDF (B8.1.1 - Liste des concours...)"
+          - name: name
+            description: "Nom du bénéficiaire tel qu'imprimé dans le PDF"
+          - name: name_normalized
+            description: "Nom normalisé (UPPER, sans accents, sans articles)"
+          - name: montant_total
+            description: "Montant numéraire annuel (FLOAT)"
+          - name: prestations_nature
+            description: "Prestations en nature (FLOAT)"
+          - name: categorie
+            description: "Catégorie (Personnes de droit privé/public)"
+          - name: nature_juridique
+            description: "Nature juridique (Associations, Entreprises, Personnes physiques...)"
+          - name: nb_subventions
+            description: "Nombre de subventions agrégées (1 par défaut)"
 
       - name: subventions_associations_votees
         description: |
