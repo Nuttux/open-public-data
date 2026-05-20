@@ -1,6 +1,6 @@
 const fr: Record<string, string> = {
   // ── Navbar ──────────────────────────────────────────────────────────────────
-  'nav.site_title': 'Données Lumières',
+  'nav.site_title': 'France Open Data',
   'nav.accueil': 'Accueil',
   'nav.accueil.short': 'Accueil',
   'nav.accueil.desc': 'Présentation du projet',
@@ -1171,7 +1171,7 @@ const fr: Record<string, string> = {
   'fx.foot.link.contact': 'Contact',
   'fx.foot.word_line1': 'France',
   'fx.foot.word_line2': 'Open Data.',
-  'fx.foot.blurb': 'Collectif indépendant. Aujourd’hui Paris — bientôt d’autres villes.',
+  'fx.foot.blurb': 'Projet indépendant. Aujourd’hui Paris — bientôt d’autres villes.',
   'fx.foot.license': '© {year} · Code AGPL-3.0 · Données Ville de Paris & data.gouv.fr (Etalab 2.0)',
 
   // ── Landing page ────────────────────────────────────────────────────────────
@@ -1191,7 +1191,7 @@ const fr: Record<string, string> = {
   'fx.land.scale.cap.soit': 'Soit ',
   'fx.land.scale.cap.per_year': '{amount} € par an et par habitant',
   'fx.land.scale.cap.budget': '. Budget voté {year} rapporté aux ',
-  'fx.land.scale.cap.pop': '2 133 111',
+  'fx.land.scale.cap.pop': '{population}',
   'fx.land.scale.cap.suffix': " Parisiens et Parisiennes (INSEE) — calcul brut, toutes sections confondues.",
   'fx.land.scale.bar.left_before': 'Répartition par thématique · ',
   'fx.land.scale.bar.left_em': '€ par habitant, par mois',
@@ -1263,8 +1263,8 @@ const fr: Record<string, string> = {
   'fx.land.meth.03.cta': 'GitHub ↗',
   // Byline
   'fx.land.byline.name': 'France Open Data',
-  'fx.land.byline.name_suffix': ' · collectif indépendant',
-  'fx.land.byline.meta': 'Toutes les analyses sont reproductibles depuis les CSV bruts · dernière revue 18 avril 2026',
+  'fx.land.byline.name_suffix': ' · projet indépendant',
+  'fx.land.byline.meta': 'Toutes les analyses sont reproductibles depuis les CSV bruts. Méthode et code ouverts.',
   'fx.land.byline.docs': 'Documentation',
   'fx.land.byline.methode': 'Méthode',
   'fx.land.byline.github': 'GitHub ↗',
@@ -2680,13 +2680,13 @@ const fr: Record<string, string> = {
   'fx.contact.title.em_prefix': 'une correction, ',
   'fx.contact.title.em': 'une piste',
   'fx.contact.title.after': ' ?',
-  'fx.contact.lede': "France Open Data est un collectif ouvert. On publie des chiffres sur les finances publiques ; si vous voyez une erreur, si vous avez une question, ou si vous voulez contribuer — écrivez-nous.",
+  'fx.contact.lede': "France Open Data est un projet indépendant, ouvert aux contributions. On publie des chiffres sur les finances publiques ; si vous voyez une erreur, si vous avez une question, ou si vous voulez contribuer — écrivez-nous.",
   'fx.contact.s01.kind': 'Écrire',
   'fx.contact.s01.title.before': 'En attendant le ',
   'fx.contact.s01.title.em': 'formulaire',
   'fx.contact.s01.sub': "La page dédiée arrive bientôt. En attendant, les chemins directs :",
   'fx.contact.c1.n': 'Courriel',
-  'fx.contact.c1.h': "Écrire à l'équipe",
+  'fx.contact.c1.h': "Écrire",
   'fx.contact.c1.p': "Pour une correction, une suggestion de jeu de données, une question sur la méthode, ou une demande presse.",
   'fx.contact.c2.n': 'GitHub',
   'fx.contact.c2.h': "Ouvrir un ticket",
@@ -2707,7 +2707,7 @@ const fr: Record<string, string> = {
   'fx.contact.s02.step2.h': "2. Référencer la source officielle",
   'fx.contact.s02.step2.p': "Si vous avez un lien vers le dataset, l'annexe comptable ou la publication qui contredit ce qu'on affiche, joignez-le. Ce n'est pas obligatoire, mais ça accélère la vérification.",
   'fx.contact.s02.step3.h': "3. Ouvrir une issue GitHub",
-  'fx.contact.s02.step3.p': "Le template pré-rempli vous guide en 30 secondes. Pas de compte GitHub ? Écrivez à contact@franceopendata.org avec les mêmes infos.",
+  'fx.contact.s02.step3.p': "Le template pré-rempli vous guide en 30 secondes. Pas de compte GitHub ? Écrivez à daniel@franceopendata.org avec les mêmes infos.",
   'fx.contact.s02.btn.issue': "Ouvrir une issue GitHub ↗",
   'fx.contact.s02.btn.history': "Voir l'historique des corrections",
 

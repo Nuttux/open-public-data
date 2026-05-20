@@ -12,7 +12,7 @@ import type { Metadata } from 'next';
 import { cookies, headers } from 'next/headers';
 
 export const SITE_URL = 'https://franceopendata.org';
-export const SITE_NAME = 'Données Lumières';
+export const SITE_NAME = 'France Open Data';
 export const DEFAULT_OG_IMAGE = '/og-default.png';
 export const DEFAULT_LOCALE = 'fr_FR';
 export const TWITTER_HANDLE = '@donneeslumieres';
@@ -134,7 +134,7 @@ export function organizationJsonLd() {
     url: SITE_URL,
     logo: `${SITE_URL}/og-default.png`,
     description:
-      "Données Lumières rend lisibles les finances publiques : budget, subventions, marchés, logements et patrimoine de la Ville de Paris et d'une vingtaine de grandes villes françaises.",
+      "France Open Data rend lisibles les finances publiques : budget, subventions, marchés, logements et patrimoine de la Ville de Paris et d'une vingtaine de grandes villes françaises.",
     sameAs: ['https://github.com/AbstractsMachine'],
   };
 }

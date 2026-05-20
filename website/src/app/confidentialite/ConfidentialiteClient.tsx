@@ -392,8 +392,8 @@ export default function ConfidentialiteClient() {
             )}
           </p>
           <div style={{ marginTop: 16 }}>
-            <Button variant="primary" href="mailto:contact@franceopendata.org?subject=Demande%20RGPD">
-              contact@franceopendata.org ↗
+            <Button variant="primary" href="mailto:daniel@franceopendata.org?subject=Demande%20RGPD">
+              daniel@franceopendata.org ↗
             </Button>
           </div>
         </div>
@@ -505,7 +505,7 @@ export default function ConfidentialiteClient() {
             <Button variant="primary" href="https://www.cnil.fr/fr/plaintes">
               {isFr ? "Saisir la CNIL ↗" : "File with the CNIL ↗"}
             </Button>
-            <Button href="mailto:contact@franceopendata.org">
+            <Button href="mailto:daniel@franceopendata.org">
               {isFr ? "Nous écrire d'abord" : "Write to us first"}
             </Button>
           </div>
