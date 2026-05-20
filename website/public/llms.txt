@@ -1,8 +1,8 @@
-# Données Lumières
+# France Open Data
 
 > Open data de la Ville de Paris et des 20 plus grandes villes françaises, rendue lisible. Budget, subventions, marchés publics, logements sociaux, investissements : visualisations interactives et données téléchargeables.
 
-Site produit par Données Lumières, une initiative citoyenne indépendante. Pipeline open source qui transforme les Comptes administratifs (Open Data Paris) et les données DGFiP / OFGL / DECP en visualisations Sankey, tableaux de bord et cartes.
+Site produit par France Open Data, une initiative citoyenne indépendante. Pipeline open source qui transforme les Comptes administratifs (Open Data Paris) et les données DGFiP / OFGL / DECP en visualisations Sankey, tableaux de bord et cartes.
 
 ## Sections principales
 

@@ -289,6 +289,9 @@ export type LandingStats = {
   /** Type du budget de l'année hero — "vote" si latestYear est un budget primitif voté
    *  pas encore exécuté, "execute" sinon. Sert à afficher "(voté)" sur la landing. */
   budgetType: "vote" | "execute";
+  /** Population utilisée pour les calculs per-capita — exposée pour
+   *  affichage dans la caption (évite hardcode en i18n). */
+  parisPopulation: number;
   totalDepenses: number;
   perCapitaYear: number;
   perCapitaMonth: number;
@@ -453,6 +456,7 @@ export function loadLandingStats(): LandingStats {
   return {
     year,
     budgetType,
+    parisPopulation: PARIS_POPULATION,
     totalDepenses,
     perCapitaYear,
     perCapitaMonth,
