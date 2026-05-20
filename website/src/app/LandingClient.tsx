@@ -123,7 +123,7 @@ export default function LandingClient({ stats, posts }: Props) {
             {t("fx.land.scale.cap.soit")}
             <b>{fill("fx.land.scale.cap.per_year", { amount: fmtInt(stats.perCapitaYear) })}</b>
             {fill("fx.land.scale.cap.budget", { year: stats.year })}
-            <b>{t("fx.land.scale.cap.pop")}</b>
+            <b>{fill("fx.land.scale.cap.pop", { population: fmtInt(stats.parisPopulation) })}</b>
             {t("fx.land.scale.cap.suffix")}
           </p>
 
@@ -429,7 +429,7 @@ export default function LandingClient({ stats, posts }: Props) {
               >
                 {t("fx.land.byline.github")}
               </a>
-              <a className="fx-btn fx-btn-small" href="mailto:contact@franceopendata.org">
+              <a className="fx-btn fx-btn-small" href="mailto:daniel@franceopendata.org">
                 {t("fx.land.byline.contact")}
               </a>
             </div>

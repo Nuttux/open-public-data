@@ -88,7 +88,7 @@ export default function MentionsLegalesClient() {
             <dd style={ddStyle}>{isFr ? "Personne physique, publication à titre indépendant et non professionnel" : "Natural person, independent and non-professional publication"}</dd>
             <dt style={dtStyle}>{isFr ? "Contact" : "Contact"}</dt>
             <dd style={ddStyle}>
-              <a href="mailto:contact@franceopendata.org">contact@franceopendata.org</a>
+              <a href="mailto:daniel@franceopendata.org">daniel@franceopendata.org</a>
             </dd>
           </DefList>
         </div>
@@ -111,7 +111,7 @@ export default function MentionsLegalesClient() {
             <dd style={ddStyle}>Daniel Shavit</dd>
             <dt style={dtStyle}>{isFr ? "Contact" : "Contact"}</dt>
             <dd style={ddStyle}>
-              <a href="mailto:contact@franceopendata.org">contact@franceopendata.org</a>
+              <a href="mailto:daniel@franceopendata.org">daniel@franceopendata.org</a>
             </dd>
           </DefList>
         </div>
@@ -218,8 +218,8 @@ export default function MentionsLegalesClient() {
             }
           />
           <div style={{ marginTop: 16, display: "flex", gap: 10, flexWrap: "wrap" }}>
-            <Button variant="primary" href="mailto:contact@franceopendata.org">
-              contact@franceopendata.org ↗
+            <Button variant="primary" href="mailto:daniel@franceopendata.org">
+              daniel@franceopendata.org ↗
             </Button>
             <Button href="/contact">{isFr ? "Formulaire de contact" : "Contact form"}</Button>
             <Button href="/accessibilite">{isFr ? "Accessibilité & recours" : "Accessibility & remedies"}</Button>

@@ -1,6 +1,6 @@
 const en: Record<string, string> = {
   // ── Navbar ──────────────────────────────────────────────────────────────────
-  'nav.site_title': 'Données Lumières',
+  'nav.site_title': 'France Open Data',
   'nav.accueil': 'Home',
   'nav.accueil.short': 'Home',
   'nav.accueil.desc': 'Project overview',
@@ -1171,7 +1171,7 @@ const en: Record<string, string> = {
   'fx.foot.link.contact': 'Contact',
   'fx.foot.word_line1': 'France',
   'fx.foot.word_line2': 'Open Data.',
-  'fx.foot.blurb': 'Independent collective. Paris today — more cities coming.',
+  'fx.foot.blurb': 'Independent project. Paris today — more cities coming.',
   'fx.foot.license': '© {year} · Code AGPL-3.0 · Data: City of Paris & data.gouv.fr (Etalab 2.0)',
 
   // ── Landing page ────────────────────────────────────────────────────────────
@@ -1191,7 +1191,7 @@ const en: Record<string, string> = {
   'fx.land.scale.cap.soit': 'That is ',
   'fx.land.scale.cap.per_year': '{amount} € per year per inhabitant',
   'fx.land.scale.cap.budget': '. {year} voted budget divided by the ',
-  'fx.land.scale.cap.pop': '2,133,111',
+  'fx.land.scale.cap.pop': '{population}',
   'fx.land.scale.cap.suffix': ' Parisians (INSEE) — raw calculation, all sections combined.',
   'fx.land.scale.bar.left_before': 'Breakdown by theme · ',
   'fx.land.scale.bar.left_em': '€ per inhabitant, per month',
@@ -1263,8 +1263,8 @@ const en: Record<string, string> = {
   'fx.land.meth.03.cta': 'GitHub ↗',
   // Byline
   'fx.land.byline.name': 'France Open Data',
-  'fx.land.byline.name_suffix': ' · independent collective',
-  'fx.land.byline.meta': 'All analyses are reproducible from the raw CSVs · last reviewed 18 April 2026',
+  'fx.land.byline.name_suffix': ' · independent project',
+  'fx.land.byline.meta': 'All analyses are reproducible from the raw CSVs. Method and code are open.',
   'fx.land.byline.docs': 'Documentation',
   'fx.land.byline.methode': 'Method',
   'fx.land.byline.github': 'GitHub ↗',
@@ -2680,13 +2680,13 @@ const en: Record<string, string> = {
   'fx.contact.title.em_prefix': 'a correction, ',
   'fx.contact.title.em': 'a lead',
   'fx.contact.title.after': '?',
-  'fx.contact.lede': "France Open Data is an open collective. We publish figures on public finances — if you spot an error, have a question, or want to contribute, write to us.",
+  'fx.contact.lede': "France Open Data is an independent project, open to contributions. We publish figures on public finances — if you spot an error, have a question, or want to contribute, write to us.",
   'fx.contact.s01.kind': 'Write',
   'fx.contact.s01.title.before': 'While the ',
   'fx.contact.s01.title.em': 'form',
   'fx.contact.s01.sub': "The dedicated page is coming soon. In the meantime, direct routes:",
   'fx.contact.c1.n': 'Email',
-  'fx.contact.c1.h': "Write to the team",
+  'fx.contact.c1.h': "Write",
   'fx.contact.c1.p': "For a correction, a dataset suggestion, a question about the methodology, or a press enquiry.",
   'fx.contact.c2.n': 'GitHub',
   'fx.contact.c2.h': "Open an issue",
@@ -2707,7 +2707,7 @@ const en: Record<string, string> = {
   'fx.contact.s02.step2.h': "2. Reference the official source",
   'fx.contact.s02.step2.p': "If you have a link to the dataset, accounting appendix, or publication that contradicts what we show, attach it. Not mandatory but speeds up verification.",
   'fx.contact.s02.step3.h': "3. Open a GitHub issue",
-  'fx.contact.s02.step3.p': "The pre-filled template guides you in 30 seconds. No GitHub account? Email contact@franceopendata.org with the same details.",
+  'fx.contact.s02.step3.p': "The pre-filled template guides you in 30 seconds. No GitHub account? Email daniel@franceopendata.org with the same details.",
   'fx.contact.s02.btn.issue': "Open a GitHub issue ↗",
   'fx.contact.s02.btn.history': "View correction history",
 
