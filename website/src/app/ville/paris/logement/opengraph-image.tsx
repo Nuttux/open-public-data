@@ -94,9 +94,7 @@ export default async function OG() {
           }}
         >
           <span>{fr(d.nouveauxParAn)} logements produits face à</span>
-          <span style={{ color: "#b8551c" }}>
-            {fr(tension.paris.demandesActives)}
-          </span>
+          <span style={{ color: "#b8551c", paddingRight: 14 }}>{fr(tension.paris.demandesActives)}</span>
           <span>demandes.</span>
         </div>
 

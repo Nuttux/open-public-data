@@ -41,8 +41,8 @@ export default async function FiscaliteOG() {
             <div style={{ display: "flex", fontSize: 18, color: "#666", marginTop: 4 }}>du PIB</div>
           </div>
           <div style={{ display: "flex", flexDirection: "column", paddingBottom: 18 }}>
-            <div style={{ display: "flex", fontSize: 13, color: "#666", letterSpacing: 2, textTransform: "uppercase" }}>≈</div>
-            <div style={{ display: "flex", fontSize: 56, fontWeight: 700, color: "#666", letterSpacing: -1.5, lineHeight: 1, marginTop: 6 }}>{fmtBn(totEur)} Mds €</div>
+            <div style={{ display: "flex", fontSize: 13, color: "#666", letterSpacing: 2, textTransform: "uppercase" }}>Soit</div>
+            <div style={{ display: "flex", fontSize: 56, fontWeight: 700, color: "#666", letterSpacing: -1.5, lineHeight: 1, marginTop: 6 }}>{fmtBn(totEur)} Md€</div>
           </div>
         </div>
 
