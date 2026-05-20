@@ -50,6 +50,14 @@ export default async function OG({ params }: { params: Promise<{ id: string }> }
   const typo = TYPO_LABELS[typoSlug] ?? p?.chapitre ?? "Projet";
   const hook = p?.vulgarization?.description_claire?.slice(0, 140) ?? "";
 
+  // Photo : photo dédiée > photo générique typologique > null.
+  // next/og charge l'image via fetch côté server, donc l'URL doit être
+  // publiquement accessible (Wikimedia, Commons, asset local /public/).
+  const photoUrl =
+    p?.photo?.photo?.photo_url ?? p?.photo?.generic?.url ?? null;
+  const photoCredit =
+    p?.photo?.photo?.credit ?? p?.photo?.generic?.credit ?? null;
+
   return new ImageResponse(
     (
       <div
@@ -57,10 +65,18 @@ export default async function OG({ params }: { params: Promise<{ id: string }> }
           width: "100%",
           height: "100%",
           display: "flex",
-          flexDirection: "column",
+          flexDirection: "row",
           background: "#faf9f5",
-          padding: "64px 72px",
           fontFamily: "sans-serif",
+        }}
+      >
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          flex: photoUrl ? "1 1 60%" : "1",
+          padding: "64px 56px",
+          minWidth: 0,
         }}
       >
         <div
@@ -181,6 +197,46 @@ export default async function OG({ params }: { params: Promise<{ id: string }> }
         >
           Source · compte administratif M57 / franceopendata.org
         </div>
+      </div>
+      {photoUrl ? (
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            flex: "0 0 40%",
+            position: "relative",
+            overflow: "hidden",
+          }}
+        >
+          <img
+            src={photoUrl}
+            alt=""
+            style={{
+              width: "100%",
+              height: "100%",
+              objectFit: "cover",
+            }}
+          />
+          {photoCredit ? (
+            <div
+              style={{
+                position: "absolute",
+                bottom: 10,
+                right: 12,
+                background: "rgba(0,0,0,0.55)",
+                color: "#faf9f5",
+                fontSize: 11,
+                padding: "4px 8px",
+                letterSpacing: 0.5,
+                display: "flex",
+                maxWidth: 380,
+              }}
+            >
+              {String(photoCredit).slice(0, 80)}
+            </div>
+          ) : null}
+        </div>
+      ) : null}
       </div>
     ),
     { ...size },
