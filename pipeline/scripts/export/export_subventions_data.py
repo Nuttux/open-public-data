@@ -20,13 +20,17 @@ Prérequis:
 
 import json
 import argparse
+import os
 from pathlib import Path
 from datetime import datetime
 from google.cloud import bigquery
 
 # Configuration
 PROJECT_ID = "open-data-france-484717"
-DATASET = "dbt_paris_marts"
+# Dataset des marts. Par défaut prod ; override possible via env DBT_MARTS_DATASET
+# ou flag --dataset pour exporter depuis un schema dev/ci (ex. validation locale
+# d'un changement de pipeline avant que prod soit reconstruit).
+DATASET = os.environ.get("DBT_MARTS_DATASET", "dbt_paris_marts")
 OUTPUT_DIR = Path(__file__).parent.parent.parent.parent / "website" / "public" / "data" / "subventions"
 
 
@@ -456,12 +460,20 @@ def main():
     import sys
     sys.path.insert(0, str(Path(__file__).parent.parent))
     from utils.logger import Logger
-    
+
+    global DATASET
+
     parser = argparse.ArgumentParser(description="Export données subventions depuis dbt")
     parser.add_argument('--year', type=int, help="Année spécifique (sinon toutes)")
     parser.add_argument('--limit', type=int, default=None,
                        help="Cap top-N par année (défaut: aucun, tous les bénéficiaires)")
+    parser.add_argument('--dataset', type=str, default=None,
+                       help=f"Dataset BQ des marts (défaut: {DATASET}). "
+                            f"Override via env DBT_MARTS_DATASET aussi.")
     args = parser.parse_args()
+
+    if args.dataset:
+        DATASET = args.dataset
     
     log = Logger("export_subventions")
     log.header("Export Subventions → JSON")

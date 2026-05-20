@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-04-23T15:59:52.632110",
+  "generated_at": "2026-05-20T14:02:39.449243",
   "source": "dbt marts (mart_subventions_beneficiaires)",
   "note_perimetre": "Tous les bénéficiaires (long tail complet, aucun cap).",
   "years": [
@@ -11,78 +11,83 @@
       "par_thematique": [
         {
           "label": "Social - Solidarité",
-          "montant": 426517707.0,
-          "count": 127
+          "montant": 430287188.0,
+          "count": 407
         },
         {
           "label": "Logement",
-          "montant": 222306786.0,
-          "count": 44
+          "montant": 222628806.0,
+          "count": 67
         },
         {
           "label": "Culture",
-          "montant": 184474038.0,
-          "count": 306
+          "montant": 189254050.0,
+          "count": 704
         },
         {
           "label": "Éducation",
-          "montant": 157199112.0,
-          "count": 270
+          "montant": 159026702.0,
+          "count": 372
         },
         {
           "label": "Transport",
-          "montant": 73732463.0,
-          "count": 6
+          "montant": 74003594.0,
+          "count": 24
         },
         {
           "label": "Social - Petite enfance",
-          "montant": 39066313.0,
-          "count": 91
+          "montant": 39393122.0,
+          "count": 108
         },
         {
           "label": "Économie",
-          "montant": 36871991.0,
-          "count": 155
+          "montant": 38148911.0,
+          "count": 237
         },
         {
           "label": "Sport",
-          "montant": 29628395.0,
-          "count": 186
-        },
-        {
-          "label": "Non classifié",
-          "montant": 28986040.0,
-          "count": 8541
+          "montant": 31235775.0,
+          "count": 367
         },
         {
           "label": "Administration",
-          "montant": 16331714.0,
-          "count": 20
+          "montant": 17256935.0,
+          "count": 141
         },
         {
           "label": "Sécurité",
-          "montant": 10433249.0,
-          "count": 3
+          "montant": 10476249.0,
+          "count": 4
         },
         {
           "label": "Santé",
-          "montant": 8117183.0,
-          "count": 36
+          "montant": 9608186.0,
+          "count": 110
+        },
+        {
+          "label": "Non classifié",
+          "montant": 7146276.0,
+          "count": 5189
         },
         {
           "label": "International",
-          "montant": 4349741.0,
-          "count": 44
-        },
-        {
-          "label": "Environnement",
-          "montant": 3029927.0,
-          "count": 33
+          "montant": 5337662.0,
+          "count": 124
         },
         {
           "label": "Autre",
-          "montant": 301750.0,
-          "count": 1
+          "montant": 3663581.0,
+          "count": 1895
+        },
+        {
+          "label": "Environnement",
+          "montant": 3518417.0,
+          "count": 94
+        },
+        {
+          "label": "Social",
+          "montant": 360955.0,
+          "count": 20
         }
       ],
       "par_direction": [
@@ -93,8 +98,8 @@
         },
         {
           "label": "DAC",
-          "montant": 36689994.0,
-          "count": 217
+          "montant": 36734994.0,
+          "count": 223
         },
         {
           "label": "DFPE",
@@ -103,13 +108,13 @@
         },
         {
           "label": "DAE",
-          "montant": 17169975.0,
-          "count": 105
+          "montant": 17260175.0,
+          "count": 107
         },
         {
           "label": "DASES",
-          "montant": 13251477.0,
-          "count": 136
+          "montant": 13265102.0,
+          "count": 135
         },
         {
           "label": "DU",
@@ -118,18 +123,18 @@
         },
         {
           "label": "DJS",
-          "montant": 2870352.0,
-          "count": 137
+          "montant": 2822388.0,
+          "count": 131
         },
         {
           "label": "DDCT",
-          "montant": 2474210.0,
-          "count": 181
+          "montant": 2505174.0,
+          "count": 184
         },
         {
           "label": "DGRI",
-          "montant": 1053175.0,
-          "count": 27
+          "montant": 1011550.0,
+          "count": 25
         },
         {
           "label": "DEVE",
@@ -148,18 +153,18 @@
         },
         {
           "label": "SG",
-          "montant": 280000.0,
-          "count": 4
-        },
-        {
-          "label": "DPE",
-          "montant": 88066.0,
+          "montant": 240000.0,
           "count": 3
         },
         {
           "label": "DLH",
           "montant": 42500.0,
           "count": 1
+        },
+        {
+          "label": "DPE",
+          "montant": 37866.0,
+          "count": 2
         },
         {
           "label": "DGOM",
@@ -208,78 +213,83 @@
       "par_thematique": [
         {
           "label": "Social - Solidarité",
-          "montant": 444645968.0,
-          "count": 139
+          "montant": 448895171.0,
+          "count": 437
         },
         {
           "label": "Logement",
-          "montant": 274501546.0,
-          "count": 39
+          "montant": 274842346.0,
+          "count": 65
         },
         {
           "label": "Culture",
-          "montant": 192233119.0,
-          "count": 366
+          "montant": 196991378.0,
+          "count": 759
         },
         {
           "label": "Éducation",
-          "montant": 140466028.0,
-          "count": 259
+          "montant": 142251849.0,
+          "count": 364
         },
         {
           "label": "Transport",
-          "montant": 77077567.0,
-          "count": 8
-        },
-        {
-          "label": "Économie",
-          "montant": 43268038.0,
-          "count": 826
+          "montant": 77723294.0,
+          "count": 49
         },
         {
           "label": "Social - Petite enfance",
-          "montant": 40954832.0,
-          "count": 98
+          "montant": 41428344.0,
+          "count": 117
         },
         {
-          "label": "Non classifié",
-          "montant": 25254089.0,
-          "count": 10023
+          "label": "Économie",
+          "montant": 39867968.0,
+          "count": 517
         },
         {
           "label": "Sport",
-          "montant": 20305606.0,
-          "count": 203
+          "montant": 21962967.0,
+          "count": 390
         },
         {
           "label": "Administration",
-          "montant": 13605753.0,
-          "count": 16
-        },
-        {
-          "label": "Sécurité",
-          "montant": 12806714.0,
-          "count": 3
+          "montant": 14284535.0,
+          "count": 118
         },
         {
           "label": "Santé",
-          "montant": 12408746.0,
-          "count": 33
+          "montant": 13518347.0,
+          "count": 103
+        },
+        {
+          "label": "Sécurité",
+          "montant": 12849714.0,
+          "count": 4
+        },
+        {
+          "label": "Non classifié",
+          "montant": 6547889.0,
+          "count": 6705
         },
         {
           "label": "International",
-          "montant": 4188165.0,
-          "count": 37
-        },
-        {
-          "label": "Environnement",
-          "montant": 2266292.0,
-          "count": 42
+          "montant": 4932722.0,
+          "count": 102
         },
         {
           "label": "Autre",
-          "montant": 55000.0,
-          "count": 1
+          "montant": 4546506.0,
+          "count": 2230
+        },
+        {
+          "label": "Environnement",
+          "montant": 3034257.0,
+          "count": 115
+        },
+        {
+          "label": "Social",
+          "montant": 360176.0,
+          "count": 18
         }
       ],
       "par_direction": [
@@ -290,8 +300,8 @@
         },
         {
           "label": "DAC",
-          "montant": 52837222.0,
-          "count": 289
+          "montant": 52955922.0,
+          "count": 297
         },
         {
           "label": "DFPE",
@@ -300,23 +310,23 @@
         },
         {
           "label": "DAE",
-          "montant": 20439216.0,
-          "count": 141
+          "montant": 20504216.0,
+          "count": 143
         },
         {
           "label": "DASES",
-          "montant": 13997711.0,
-          "count": 164
+          "montant": 14052311.0,
+          "count": 168
         },
         {
           "label": "DJS",
-          "montant": 3589328.0,
-          "count": 156
+          "montant": 3566628.0,
+          "count": 153
         },
         {
           "label": "DDCT",
-          "montant": 3176492.0,
-          "count": 222
+          "montant": 3050392.0,
+          "count": 211
         },
         {
           "label": "DGRI",
@@ -325,8 +335,8 @@
         },
         {
           "label": "DASCO",
-          "montant": 602707.0,
-          "count": 27
+          "montant": 611707.0,
+          "count": 29
         },
         {
           "label": "DPSP",
@@ -340,13 +350,13 @@
         },
         {
           "label": "DPE",
-          "montant": 229789.0,
-          "count": 8
+          "montant": 177289.0,
+          "count": 7
         },
         {
           "label": "DEVE",
-          "montant": 175194.0,
-          "count": 32
+          "montant": 129194.0,
+          "count": 31
         },
         {
           "label": "DILT",
@@ -388,6 +398,390 @@
       ]
     },
     {
+      "year": 2020,
+      "total_montant": 1343546179.42,
+      "nb_subventions": 4231,
+      "nb_beneficiaires": 4231,
+      "par_thematique": [
+        {
+          "label": "Social - Solidarité",
+          "montant": 460755114.51000005,
+          "count": 414
+        },
+        {
+          "label": "Culture",
+          "montant": 204391506.77000007,
+          "count": 747
+        },
+        {
+          "label": "Logement",
+          "montant": 183156989.52000004,
+          "count": 66
+        },
+        {
+          "label": "Éducation",
+          "montant": 155570605.47000003,
+          "count": 339
+        },
+        {
+          "label": "Économie",
+          "montant": 110216599.10999997,
+          "count": 1215
+        },
+        {
+          "label": "Transport",
+          "montant": 84095403.72000001,
+          "count": 43
+        },
+        {
+          "label": "Social - Petite enfance",
+          "montant": 36910026.89,
+          "count": 121
+        },
+        {
+          "label": "Sport",
+          "montant": 32257593.0,
+          "count": 373
+        },
+        {
+          "label": "Non classifié",
+          "montant": 24787728.940000072,
+          "count": 401
+        },
+        {
+          "label": "Sécurité",
+          "montant": 17217457.66,
+          "count": 4
+        },
+        {
+          "label": "Administration",
+          "montant": 14698002.379999999,
+          "count": 66
+        },
+        {
+          "label": "Santé",
+          "montant": 9177222.02,
+          "count": 87
+        },
+        {
+          "label": "International",
+          "montant": 4753350.73,
+          "count": 103
+        },
+        {
+          "label": "Environnement",
+          "montant": 3375809.26,
+          "count": 84
+        },
+        {
+          "label": "Autre",
+          "montant": 1864105.4400000002,
+          "count": 152
+        },
+        {
+          "label": "Social",
+          "montant": 318664.0,
+          "count": 16
+        }
+      ],
+      "par_direction": [
+        {
+          "label": "Non renseignée",
+          "montant": 1214159578.9799995,
+          "count": 3263
+        },
+        {
+          "label": "DAC",
+          "montant": 52101982.07,
+          "count": 274
+        },
+        {
+          "label": "DFPE",
+          "montant": 27344829.3,
+          "count": 50
+        },
+        {
+          "label": "DAE",
+          "montant": 21405160.97,
+          "count": 117
+        },
+        {
+          "label": "DASES",
+          "montant": 19323446.49,
+          "count": 140
+        },
+        {
+          "label": "DJS",
+          "montant": 4220572.0,
+          "count": 150
+        },
+        {
+          "label": "DDCT",
+          "montant": 2573470.61,
+          "count": 152
+        },
+        {
+          "label": "DGRI",
+          "montant": 1202000.0,
+          "count": 30
+        },
+        {
+          "label": "DASCO",
+          "montant": 483709.0,
+          "count": 19
+        },
+        {
+          "label": "DILT",
+          "montant": 250327.0,
+          "count": 1
+        },
+        {
+          "label": "DPSP",
+          "montant": 156553.0,
+          "count": 10
+        },
+        {
+          "label": "DPE",
+          "montant": 146300.0,
+          "count": 2
+        },
+        {
+          "label": "DEVE",
+          "montant": 67150.0,
+          "count": 15
+        },
+        {
+          "label": "DVD",
+          "montant": 44000.0,
+          "count": 3
+        },
+        {
+          "label": "DGOM",
+          "montant": 34500.0,
+          "count": 2
+        },
+        {
+          "label": "SG",
+          "montant": 32600.0,
+          "count": 3
+        }
+      ],
+      "par_type_organisme": [
+        {
+          "label": "Établissements publics",
+          "montant": 494547029.02,
+          "count": 10
+        },
+        {
+          "label": "Autres",
+          "montant": 379028580.4700001,
+          "count": 213
+        },
+        {
+          "label": "Associations",
+          "montant": 266473630.2,
+          "count": 2641
+        },
+        {
+          "label": "Entreprises",
+          "montant": 195986469.6800002,
+          "count": 1366
+        },
+        {
+          "label": "Personnes physiques",
+          "montant": 7510470.0500000715,
+          "count": 1
+        }
+      ]
+    },
+    {
+      "year": 2021,
+      "total_montant": 1262572237.71,
+      "nb_subventions": 3835,
+      "nb_beneficiaires": 3835,
+      "par_thematique": [
+        {
+          "label": "Social - Solidarité",
+          "montant": 433884671.9900001,
+          "count": 421
+        },
+        {
+          "label": "Logement",
+          "montant": 233686999.99,
+          "count": 52
+        },
+        {
+          "label": "Culture",
+          "montant": 166951549.72999996,
+          "count": 692
+        },
+        {
+          "label": "Éducation",
+          "montant": 140226466.65,
+          "count": 333
+        },
+        {
+          "label": "Transport",
+          "montant": 71623833.69,
+          "count": 29
+        },
+        {
+          "label": "Économie",
+          "montant": 53835760.9,
+          "count": 909
+        },
+        {
+          "label": "Social - Petite enfance",
+          "montant": 37900720.82000001,
+          "count": 121
+        },
+        {
+          "label": "Sport",
+          "montant": 33072594.5,
+          "count": 361
+        },
+        {
+          "label": "Non classifié",
+          "montant": 25818718.520000085,
+          "count": 412
+        },
+        {
+          "label": "Sécurité",
+          "montant": 22912798.56,
+          "count": 4
+        },
+        {
+          "label": "Santé",
+          "montant": 19086833.36,
+          "count": 88
+        },
+        {
+          "label": "Administration",
+          "montant": 12041324.56,
+          "count": 59
+        },
+        {
+          "label": "Environnement",
+          "montant": 4883855.63,
+          "count": 89
+        },
+        {
+          "label": "International",
+          "montant": 4449195.0,
+          "count": 97
+        },
+        {
+          "label": "Autre",
+          "montant": 1950322.37,
+          "count": 152
+        },
+        {
+          "label": "Social",
+          "montant": 246591.44,
+          "count": 16
+        }
+      ],
+      "par_direction": [
+        {
+          "label": "Non renseignée",
+          "montant": 1150100035.5200005,
+          "count": 2865
+        },
+        {
+          "label": "DAC",
+          "montant": 44408823.0,
+          "count": 231
+        },
+        {
+          "label": "DFPE",
+          "montant": 24776522.16,
+          "count": 48
+        },
+        {
+          "label": "DAE",
+          "montant": 19727063.33,
+          "count": 117
+        },
+        {
+          "label": "DASES",
+          "montant": 15355360.930000002,
+          "count": 141
+        },
+        {
+          "label": "DJS",
+          "montant": 2841871.5,
+          "count": 153
+        },
+        {
+          "label": "DDCT",
+          "montant": 2689636.47,
+          "count": 179
+        },
+        {
+          "label": "DGRI",
+          "montant": 956800.0,
+          "count": 33
+        },
+        {
+          "label": "DEVE",
+          "montant": 761678.0,
+          "count": 19
+        },
+        {
+          "label": "DASCO",
+          "montant": 552284.3,
+          "count": 27
+        },
+        {
+          "label": "DPE",
+          "montant": 170661.0,
+          "count": 4
+        },
+        {
+          "label": "DPMP",
+          "montant": 98001.5,
+          "count": 9
+        },
+        {
+          "label": "DVD",
+          "montant": 93000.0,
+          "count": 5
+        },
+        {
+          "label": "DGOM",
+          "montant": 40500.0,
+          "count": 4
+        }
+      ],
+      "par_type_organisme": [
+        {
+          "label": "Autres",
+          "montant": 658205349.4600002,
+          "count": 214
+        },
+        {
+          "label": "Entreprises",
+          "montant": 254679137.51,
+          "count": 1048
+        },
+        {
+          "label": "Associations",
+          "montant": 245649747.18999997,
+          "count": 2562
+        },
+        {
+          "label": "Établissements publics",
+          "montant": 93590776.19,
+          "count": 10
+        },
+        {
+          "label": "Personnes physiques",
+          "montant": 10447227.360000087,
+          "count": 1
+        }
+      ]
+    },
+    {
       "year": 2022,
       "total_montant": 1167565895.0,
       "nb_subventions": 5336,
@@ -395,78 +789,83 @@
       "par_thematique": [
         {
           "label": "Social - Solidarité",
-          "montant": 450127323.0,
-          "count": 261
+          "montant": 453816210.0,
+          "count": 520
         },
         {
           "label": "Logement",
-          "montant": 212540111.0,
-          "count": 40
+          "montant": 212861811.0,
+          "count": 77
         },
         {
           "label": "Culture",
-          "montant": 157447915.0,
-          "count": 347
+          "montant": 161685312.0,
+          "count": 753
         },
         {
           "label": "Éducation",
-          "montant": 126124956.0,
-          "count": 251
+          "montant": 127338480.0,
+          "count": 343
         },
         {
           "label": "Transport",
-          "montant": 45352704.0,
-          "count": 10
-        },
-        {
-          "label": "Économie",
-          "montant": 44653938.0,
-          "count": 1800
+          "montant": 46210298.0,
+          "count": 74
         },
         {
           "label": "Social - Petite enfance",
-          "montant": 40452732.0,
-          "count": 103
+          "montant": 40925241.0,
+          "count": 131
         },
         {
-          "label": "Non classifié",
-          "montant": 20934352.0,
-          "count": 2176
+          "label": "Économie",
+          "montant": 40559817.0,
+          "count": 1091
         },
         {
           "label": "Sécurité",
-          "montant": 20574716.0,
-          "count": 2
+          "montant": 20662942.0,
+          "count": 5
         },
         {
           "label": "Santé",
-          "montant": 18734434.0,
-          "count": 57
+          "montant": 19504844.0,
+          "count": 110
         },
         {
           "label": "Sport",
-          "montant": 12645221.0,
-          "count": 190
+          "montant": 14176846.0,
+          "count": 359
         },
         {
           "label": "Administration",
-          "montant": 11379681.0,
-          "count": 14
-        },
-        {
-          "label": "International",
-          "montant": 3874006.0,
-          "count": 49
-        },
-        {
-          "label": "Environnement",
-          "montant": 2663806.0,
-          "count": 35
+          "montant": 11819075.0,
+          "count": 104
         },
         {
           "label": "Autre",
-          "montant": 60000.0,
-          "count": 1
+          "montant": 4965225.0,
+          "count": 1039
+        },
+        {
+          "label": "Non classifié",
+          "montant": 4725707.0,
+          "count": 508
+        },
+        {
+          "label": "International",
+          "montant": 4491070.0,
+          "count": 107
+        },
+        {
+          "label": "Environnement",
+          "montant": 3644033.0,
+          "count": 98
+        },
+        {
+          "label": "Social",
+          "montant": 178984.0,
+          "count": 17
         }
       ],
       "par_direction": [
@@ -487,13 +886,13 @@
         },
         {
           "label": "DAE",
-          "montant": 24368479.0,
-          "count": 119
+          "montant": 24510479.0,
+          "count": 121
         },
         {
           "label": "DSOL",
-          "montant": 10178865.0,
-          "count": 130
+          "montant": 10043865.0,
+          "count": 127
         },
         {
           "label": "DSP",
@@ -502,13 +901,13 @@
         },
         {
           "label": "DJS",
-          "montant": 2970212.0,
-          "count": 151
+          "montant": 2966212.0,
+          "count": 150
         },
         {
           "label": "DDCT",
-          "montant": 2885874.0,
-          "count": 237
+          "montant": 2882124.0,
+          "count": 238
         },
         {
           "label": "DGRI",
@@ -516,28 +915,28 @@
           "count": 35
         },
         {
+          "label": "DASCO",
+          "montant": 870561.0,
+          "count": 43
+        },
+        {
           "label": "DLH",
           "montant": 863136.0,
           "count": 1
         },
         {
-          "label": "DASCO",
-          "montant": 860811.0,
-          "count": 41
-        },
-        {
           "label": "DASES",
-          "montant": 540258.0,
-          "count": 18
+          "montant": 607758.0,
+          "count": 19
         },
         {
           "label": "DPE",
-          "montant": 529900.0,
-          "count": 17
+          "montant": 520900.0,
+          "count": 16
         },
         {
           "label": "DEVE",
-          "montant": 327618.0,
+          "montant": 270118.0,
           "count": 24
         },
         {
@@ -556,14 +955,14 @@
           "count": 9
         },
         {
-          "label": "DTEC",
-          "montant": 29000.0,
-          "count": 4
-        },
-        {
           "label": "DGOM",
           "montant": 26600.0,
           "count": 2
+        },
+        {
+          "label": "DTEC",
+          "montant": 19000.0,
+          "count": 3
         }
       ],
       "par_type_organisme": [
@@ -602,78 +1001,83 @@
       "par_thematique": [
         {
           "label": "Social - Solidarité",
-          "montant": 483952379.0,
-          "count": 281
+          "montant": 487321774.0,
+          "count": 521
         },
         {
           "label": "Logement",
-          "montant": 189720228.0,
-          "count": 37
+          "montant": 189987359.0,
+          "count": 67
         },
         {
           "label": "Culture",
-          "montant": 169572042.0,
-          "count": 433
+          "montant": 173520618.0,
+          "count": 806
         },
         {
           "label": "Éducation",
-          "montant": 146766933.0,
-          "count": 225
+          "montant": 148297637.0,
+          "count": 327
         },
         {
           "label": "Social - Petite enfance",
-          "montant": 45561319.0,
-          "count": 100
+          "montant": 45903971.0,
+          "count": 126
         },
         {
           "label": "Transport",
-          "montant": 41396977.0,
-          "count": 9
+          "montant": 41496977.0,
+          "count": 18
         },
         {
           "label": "Économie",
-          "montant": 38865838.0,
-          "count": 1478
+          "montant": 33591472.0,
+          "count": 649
         },
         {
           "label": "Sécurité",
-          "montant": 19859465.0,
-          "count": 2
-        },
-        {
-          "label": "Non classifié",
-          "montant": 18351688.0,
-          "count": 2234
+          "montant": 19999821.0,
+          "count": 6
         },
         {
           "label": "Sport",
-          "montant": 15571369.0,
-          "count": 202
+          "montant": 17296003.0,
+          "count": 377
         },
         {
           "label": "Administration",
-          "montant": 12615488.0,
-          "count": 15
+          "montant": 13134605.0,
+          "count": 120
         },
         {
           "label": "Santé",
-          "montant": 8164776.0,
-          "count": 60
+          "montant": 9217389.0,
+          "count": 113
         },
         {
           "label": "Environnement",
-          "montant": 5961177.0,
-          "count": 40
+          "montant": 6986153.0,
+          "count": 112
         },
         {
           "label": "International",
-          "montant": 4348899.0,
-          "count": 50
+          "montant": 5096544.0,
+          "count": 114
         },
         {
           "label": "Autre",
-          "montant": 300000.0,
-          "count": 1
+          "montant": 4521473.0,
+          "count": 928
+        },
+        {
+          "label": "Non classifié",
+          "montant": 4430648.0,
+          "count": 862
+        },
+        {
+          "label": "Social",
+          "montant": 206134.0,
+          "count": 21
         }
       ],
       "par_direction": [
@@ -684,38 +1088,38 @@
         },
         {
           "label": "DAC",
-          "montant": 51595180.0,
-          "count": 353
+          "montant": 51676921.0,
+          "count": 360
         },
         {
           "label": "DFPE",
-          "montant": 29657998.0,
-          "count": 72
+          "montant": 29670998.0,
+          "count": 73
         },
         {
           "label": "DAE",
-          "montant": 19831395.0,
-          "count": 129
+          "montant": 19882210.0,
+          "count": 130
         },
         {
           "label": "DSOL",
-          "montant": 12973440.0,
-          "count": 170
+          "montant": 12935912.0,
+          "count": 168
         },
         {
           "label": "DDCT",
-          "montant": 3826162.0,
-          "count": 250
+          "montant": 3841449.0,
+          "count": 258
         },
         {
           "label": "DJS",
-          "montant": 3330480.0,
-          "count": 154
+          "montant": 3300980.0,
+          "count": 147
         },
         {
           "label": "DSP",
-          "montant": 1164762.0,
-          "count": 32
+          "montant": 1140762.0,
+          "count": 29
         },
         {
           "label": "DGRI",
@@ -724,8 +1128,8 @@
         },
         {
           "label": "DEVE",
-          "montant": 958996.0,
-          "count": 29
+          "montant": 952996.0,
+          "count": 28
         },
         {
           "label": "DLH",
@@ -734,12 +1138,12 @@
         },
         {
           "label": "DPE",
-          "montant": 766450.0,
-          "count": 23
+          "montant": 752450.0,
+          "count": 20
         },
         {
           "label": "DASCO",
-          "montant": 643734.0,
+          "montant": 596919.0,
           "count": 34
         },
         {
@@ -754,8 +1158,8 @@
         },
         {
           "label": "DPMP",
-          "montant": 166000.0,
-          "count": 11
+          "montant": 163000.0,
+          "count": 10
         },
         {
           "label": "DTEC",
@@ -804,78 +1208,83 @@
       "par_thematique": [
         {
           "label": "Social - Solidarité",
-          "montant": 509504435.0,
-          "count": 298
+          "montant": 513000385.0,
+          "count": 537
         },
         {
           "label": "Logement",
-          "montant": 206269366.0,
-          "count": 39
-        },
-        {
-          "label": "Éducation",
-          "montant": 177351142.0,
-          "count": 246
+          "montant": 206777432.0,
+          "count": 71
         },
         {
           "label": "Culture",
-          "montant": 175035217.0,
-          "count": 415
+          "montant": 179347570.0,
+          "count": 795
+        },
+        {
+          "label": "Éducation",
+          "montant": 179007528.0,
+          "count": 351
         },
         {
           "label": "Transport",
-          "montant": 81033775.0,
-          "count": 12
+          "montant": 81189281.0,
+          "count": 27
         },
         {
           "label": "Social - Petite enfance",
-          "montant": 47253834.0,
-          "count": 99
+          "montant": 47626927.0,
+          "count": 117
         },
         {
           "label": "Sport",
-          "montant": 39820646.0,
-          "count": 177
+          "montant": 41445850.0,
+          "count": 349
         },
         {
           "label": "Économie",
-          "montant": 38730771.0,
-          "count": 922
-        },
-        {
-          "label": "Non classifié",
-          "montant": 28337724.0,
-          "count": 3554
+          "montant": 37020958.0,
+          "count": 400
         },
         {
           "label": "Sécurité",
-          "montant": 18240824.0,
-          "count": 2
+          "montant": 18375670.0,
+          "count": 6
         },
         {
           "label": "Administration",
-          "montant": 11840704.0,
-          "count": 14
+          "montant": 12938151.0,
+          "count": 212
         },
         {
           "label": "Santé",
-          "montant": 8301247.0,
-          "count": 66
+          "montant": 9213454.0,
+          "count": 130
+        },
+        {
+          "label": "Non classifié",
+          "montant": 8668556.0,
+          "count": 1528
         },
         {
           "label": "Environnement",
-          "montant": 7258872.0,
-          "count": 48
+          "montant": 8231773.0,
+          "count": 111
         },
         {
           "label": "International",
-          "montant": 4469668.0,
-          "count": 55
+          "montant": 5190728.0,
+          "count": 108
         },
         {
           "label": "Autre",
-          "montant": 40000.0,
-          "count": 1
+          "montant": 5167716.0,
+          "count": 1190
+        },
+        {
+          "label": "Social",
+          "montant": 286246.0,
+          "count": 16
         }
       ],
       "par_direction": [
@@ -886,38 +1295,38 @@
         },
         {
           "label": "DAC",
-          "montant": 52309549.0,
-          "count": 336
+          "montant": 52390149.0,
+          "count": 344
         },
         {
           "label": "DFPE",
-          "montant": 41522640.0,
-          "count": 68
+          "montant": 41506140.0,
+          "count": 67
         },
         {
           "label": "DAE",
-          "montant": 25349524.0,
-          "count": 160
+          "montant": 25370202.0,
+          "count": 161
         },
         {
           "label": "DSOL",
-          "montant": 19988685.0,
-          "count": 171
+          "montant": 19909607.0,
+          "count": 163
         },
         {
           "label": "DSP",
-          "montant": 5593595.0,
-          "count": 39
+          "montant": 5587595.0,
+          "count": 38
         },
         {
           "label": "DDCT",
-          "montant": 5323407.0,
-          "count": 288
+          "montant": 5363707.0,
+          "count": 292
         },
         {
           "label": "DJS",
-          "montant": 3391106.0,
-          "count": 138
+          "montant": 3393106.0,
+          "count": 139
         },
         {
           "label": "DEVE",
@@ -926,8 +1335,8 @@
         },
         {
           "label": "DGRI",
-          "montant": 1224900.0,
-          "count": 41
+          "montant": 1220900.0,
+          "count": 40
         },
         {
           "label": "DASCO",
@@ -941,8 +1350,8 @@
         },
         {
           "label": "DPE",
-          "montant": 476575.0,
-          "count": 16
+          "montant": 470575.0,
+          "count": 15
         },
         {
           "label": "SG",
@@ -966,8 +1375,8 @@
         },
         {
           "label": "DPMP",
-          "montant": 159890.0,
-          "count": 12
+          "montant": 127890.0,
+          "count": 10
         },
         {
           "label": "DTEC",

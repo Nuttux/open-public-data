@@ -1,10 +1,12 @@
 {
-  "generated_at": "2026-04-23T15:59:25.851271",
+  "generated_at": "2026-05-20T14:01:56.503959",
   "source": "dbt marts (mart_subventions_treemap, mart_subventions_beneficiaires)",
   "availableYears": [
     2024,
     2023,
     2022,
+    2021,
+    2020,
     2019,
     2018
   ],
@@ -20,6 +22,14 @@
     "2022": {
       "montant_total": 1167565895.0,
       "nb_subventions": 5336
+    },
+    "2021": {
+      "montant_total": 1262572237.71,
+      "nb_subventions": 3835
+    },
+    "2020": {
+      "montant_total": 1343546179.4199998,
+      "nb_subventions": 4231
     },
     "2019": {
       "montant_total": 1304037463.0,
@@ -37,16 +47,17 @@
       "Culture",
       "Éducation",
       "Transport",
-      "Social - Petite enfance",
       "Économie",
-      "Non classifié",
+      "Social - Petite enfance",
       "Sport",
       "Sécurité",
       "Administration",
       "Santé",
+      "Non classifié",
       "International",
       "Environnement",
-      "Autre"
+      "Autre",
+      "Social"
     ],
     "natures_juridiques": [
       "Associations",
@@ -55,20 +66,23 @@
       "Autres personnes de droit public",
       "Communes",
       "Département",
+      "Départements",
       "Entreprises",
       "Etablissements publics",
       "Etat",
       "Personnes physiques",
-      "Régions"
+      "Régions",
+      "Établissements publics",
+      "État"
     ],
     "directions": [
       "DAC",
       "DDCT",
       "DJS",
       "DAE",
+      "DASES",
       "DSOL",
       "DFPE",
-      "DASES",
       "DASCO",
       "DGRI",
       "DEVE",
@@ -80,8 +94,8 @@
       "DGOM",
       "DTEC",
       "SG",
-      "DLH",
       "DILT",
+      "DLH",
       "DU",
       "DAJ"
     ]
