@@ -5,11 +5,11 @@ export async function generateMetadata(): Promise<Metadata> {
   return buildLocaleAwareMetadata({
     title: 'Politique de confidentialité',
     description:
-      "Politique de confidentialité de Données Lumières : analytics, cookies, données personnelles, conformité RGPD.",
+      "Politique de confidentialité de France Open Data : analytics, cookies, données personnelles, conformité RGPD.",
     en: {
       title: 'Privacy policy',
       description:
-        "Données Lumières privacy policy: analytics, cookies, personal data, GDPR compliance.",
+        "France Open Data privacy policy: analytics, cookies, personal data, GDPR compliance.",
     },
     path: '/confidentialite',
   });
