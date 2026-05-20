@@ -9,7 +9,7 @@
  */
 
 import type { Metadata } from 'next';
-import { cookies, headers } from 'next/headers';
+import { cookies } from 'next/headers';
 
 export const SITE_URL = 'https://franceopendata.org';
 export const SITE_NAME = 'France Open Data';
@@ -17,25 +17,20 @@ export const DEFAULT_OG_IMAGE = '/og-default.png';
 export const DEFAULT_LOCALE = 'fr_FR';
 export const TWITTER_HANDLE = '@donneeslumieres';
 
-/** Read the user's locale server-side. Order: dl_locale cookie → ?lang= query → Accept-Language → 'fr'. */
+/**
+ * Read the user's locale server-side. Cookie `dl_locale` is the only signal —
+ * fallback is FR. We deliberately don't sniff Accept-Language: the site is
+ * primarily about French public finances, many French users have EN-default
+ * browsers (OS/dev tooling), and Accept-Language was sending them to EN
+ * involuntarily — including when they shared links to other French speakers.
+ * EN is opt-in via the explicit toggle.
+ */
 export async function readLocale(): Promise<'fr' | 'en'> {
   try {
     const c = await cookies();
     const fromCookie = c.get('dl_locale')?.value;
     if (fromCookie === 'en') return 'en';
-    if (fromCookie === 'fr') return 'fr';
   } catch { /* cookies() may throw at module load — ignore */ }
-  try {
-    const h = await headers();
-    const url = h.get('x-url') ?? h.get('referer') ?? '';
-    if (/[?&]lang=en\b/.test(url)) return 'en';
-    const al = (h.get('accept-language') ?? '').toLowerCase();
-    // Prefer FR if it's listed before EN; otherwise EN.
-    const frPos = al.indexOf('fr');
-    const enPos = al.indexOf('en');
-    if (frPos >= 0 && (enPos < 0 || frPos <= enPos)) return 'fr';
-    if (enPos >= 0) return 'en';
-  } catch { /* ignore */ }
   return 'fr';
 }
 
