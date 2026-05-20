@@ -232,8 +232,11 @@ export async function GET(req: NextRequest) {
   // Education monthly: bucket "education" (Enseignement scolaire + Recherche).
   const etatAnnuel = etat?.annual_eur ?? 0;
   const stateBuckets = etatAnnuel > 0 ? computeStateBuckets(etatAnnuel, db) : [];
+  // Bucket key réel = "education_recherche" (cf computeStateBuckets dans
+  // lib/daily-bread.ts). Avant : on cherchait "education" qui n'existait pas,
+  // d'où l'équivalent affiché toujours à 0.0 jours d'école.
   const educationMonthly =
-    stateBuckets.find((b) => b.key === "education")?.monthly_eur ?? 0;
+    stateBuckets.find((b) => b.key === "education_recherche")?.monthly_eur ?? 0;
 
   // Bloc communal monthly (Local × ~60 %).
   const localMonthly = (local?.annual_eur ?? 0) / 12;

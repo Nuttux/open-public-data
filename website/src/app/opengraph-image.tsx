@@ -15,6 +15,7 @@ export default async function OG() {
   const budget = fmtBnFr(stats.totalDepenses);
   const nbMarches = fmtFr(Math.floor(stats.nbMarchesCumul / 1000) * 1000);
   const nbSubventions = fmtFr(Math.floor(stats.nbSubventionsCumul / 1000) * 1000);
+  const budgetTypeLabel = stats.budgetType === "vote" ? "voté" : "exécuté";
 
   return new ImageResponse(
     (
@@ -77,7 +78,7 @@ export default async function OG() {
         <div style={{ display: "flex", alignItems: "flex-end", gap: 64 }}>
           <div style={{ display: "flex", flexDirection: "column" }}>
             <div style={{ fontSize: 15, color: "#666", letterSpacing: 2, textTransform: "uppercase" }}>
-              {`Budget ${stats.year}`}
+              {`Budget ${stats.year} · ${budgetTypeLabel}`}
             </div>
             <div style={{ fontSize: 86, fontWeight: 800, color: "#111", letterSpacing: -2, lineHeight: 1 }}>
               {`${budget} Md€`}
@@ -85,7 +86,7 @@ export default async function OG() {
           </div>
           <div style={{ display: "flex", flexDirection: "column" }}>
             <div style={{ fontSize: 15, color: "#666", letterSpacing: 2, textTransform: "uppercase" }}>
-              Marchés
+              {`Marchés depuis ${stats.marchesSinceYear}`}
             </div>
             <div style={{ fontSize: 64, fontWeight: 800, color: "#111", letterSpacing: -1.5, lineHeight: 1 }}>
               {nbMarches}
@@ -93,7 +94,7 @@ export default async function OG() {
           </div>
           <div style={{ display: "flex", flexDirection: "column" }}>
             <div style={{ fontSize: 15, color: "#666", letterSpacing: 2, textTransform: "uppercase" }}>
-              Subventions
+              {`Subv. depuis ${stats.subventionsSinceYear}`}
             </div>
             <div style={{ fontSize: 64, fontWeight: 800, color: "#111", letterSpacing: -1.5, lineHeight: 1 }}>
               {nbSubventions}
