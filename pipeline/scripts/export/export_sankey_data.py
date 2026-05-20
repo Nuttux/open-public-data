@@ -34,6 +34,8 @@ from collections import defaultdict
 # Configuration
 PROJECT_ID = "open-data-france-484717"
 DATASET_ID = "dbt_paris"  # Base dataset (staging, intermediate, analytics)
+# Marts dataset can be overridden (e.g. for dev runs against dbt_paris_dev_<user>_marts).
+MARTS_DATASET = os.environ.get("PARIS_MARTS_DATASET", "dbt_paris_marts")
 RAW_DATASET = "raw"       # Dataset for raw OpenData Paris tables
 TABLE_ID = "ca_budget_principal"  # Main budget table in raw
 OUTPUT_DIR = Path(__file__).parent.parent.parent.parent / "website" / "public" / "data"
@@ -275,9 +277,11 @@ def query_budget_data(client, year: int) -> list[dict]:
         sens_flux AS sens,
         chapitre_code,
         chapitre_libelle,
+        fonction_libelle,
         nature_libelle,
+        ode_categorie_flux,
         montant
-    FROM `{PROJECT_ID}.dbt_paris_marts.mart_budget_sankey_lines`
+    FROM `{PROJECT_ID}.{MARTS_DATASET}.mart_budget_sankey_lines`
     WHERE annee = {year}
       AND type_budget = '{type_budget}'
     """
@@ -316,55 +320,63 @@ def build_sankey_data(records: list[dict], year: int) -> dict:
     revenue_by_chapter = defaultdict(float)
     expense_by_chapter = defaultdict(float)
     revenue_drilldown = defaultdict(lambda: defaultdict(float))
+    # Expense drilldown keyed by (fonction, flow_category, nature_libelle) so the
+    # UI can group sub-postes by sous-thème fonctionnel and tag each row with
+    # son type de dépense (Personnel / Subvention / Achat / Investissement…).
     expense_drilldown = defaultdict(lambda: defaultdict(float))
-    
+
     for record in records:
         montant = float(record.get("montant", 0))
         sens = record.get("sens", "")
         chapitre_code = record.get("chapitre_code", "")
         chapitre_libelle = record.get("chapitre_libelle", "")
         nature_libelle = record.get("nature_libelle", "") or chapitre_libelle or "Non spécifié"
-        
+        fonction_libelle = (record.get("fonction_libelle") or "").strip() or "Non spécifié"
+        flow_category = (record.get("ode_categorie_flux") or "").strip() or "Autre"
+
         if "Recette" in sens:
             category = classify_by_chapter(chapitre_code, REVENUE_CHAPTER_MAP)
             revenue_by_chapter[category] += montant
             revenue_drilldown[category][nature_libelle] += montant
-            
+
         elif "Dépense" in sens:
             category = classify_by_chapter(chapitre_code, EXPENSE_CHAPTER_MAP)
             expense_by_chapter[category] += montant
-            expense_drilldown[category][nature_libelle] += montant
+            expense_drilldown[category][(fonction_libelle, flow_category, nature_libelle)] += montant
     
     revenue_grouped = defaultdict(float)
     expense_grouped = defaultdict(float)
     revenue_group_drilldown = defaultdict(lambda: defaultdict(float))
+    # Keys: (fonction, flow_category, name) — name is "{category}: {nature_libelle}"
+    # kept for backward-compat with consumers that still split on ":".
     expense_group_drilldown = defaultdict(lambda: defaultdict(float))
-    
+
     # Track section breakdown per expense group
-    # Structure: expense_section_breakdown[group][section] = { total, items: {name: value} }
+    # Structure: expense_section_breakdown[group][section] = { total, items: {key: value} }
     expense_section_breakdown = defaultdict(lambda: {
         "Fonctionnement": {"total": 0.0, "items": defaultdict(float)},
         "Investissement": {"total": 0.0, "items": defaultdict(float)},
     })
-    
+
     for category, amount in revenue_by_chapter.items():
         group = get_group(category, REVENUE_GROUPS)
         revenue_grouped[group] += amount
         for detail, detail_amount in revenue_drilldown[category].items():
             revenue_group_drilldown[group][f"{category}: {detail}"] += detail_amount
-    
+
     for category, amount in expense_by_chapter.items():
         group = get_group(category, EXPENSE_GROUPS)
         section = get_section(category)
         expense_grouped[group] += amount
-        
-        for detail, detail_amount in expense_drilldown[category].items():
-            expense_group_drilldown[group][f"{category}: {detail}"] += detail_amount
-            
+
+        for (fonction, flow_category, nature_libelle), detail_amount in expense_drilldown[category].items():
+            row_key = (fonction, flow_category, f"{category}: {nature_libelle}")
+            expense_group_drilldown[group][row_key] += detail_amount
+
             # Track by section (only for Fonctionnement and Investissement)
             if section in ["Fonctionnement", "Investissement"]:
                 expense_section_breakdown[group][section]["total"] += detail_amount
-                expense_section_breakdown[group][section]["items"][f"{category}: {detail}"] += detail_amount
+                expense_section_breakdown[group][section]["items"][row_key] += detail_amount
     
     total_recettes = sum(revenue_grouped.values())
     total_depenses = sum(expense_grouped.values())
@@ -414,8 +426,13 @@ def build_sankey_data(records: list[dict], year: int) -> dict:
 
     for group, items in expense_group_drilldown.items():
         drilldown["expenses"][exp_display(group)] = [
-            {"name": name, "value": value}
-            for name, value in sorted(items.items(), key=lambda x: -x[1])
+            {
+                "name": name,
+                "value": value,
+                "fonction": fonction,
+                "flow_category": flow_category,
+            }
+            for (fonction, flow_category, name), value in sorted(items.items(), key=lambda x: -x[1])
             if value > 0
         ][:50]
     
@@ -439,8 +456,13 @@ def build_sankey_data(records: list[dict], year: int) -> dict:
                 by_section[display_name][section_name] = {
                     "total": section_data["total"],
                     "items": [
-                        {"name": name, "value": value}
-                        for name, value in sorted_items
+                        {
+                            "name": name,
+                            "value": value,
+                            "fonction": fonction,
+                            "flow_category": flow_category,
+                        }
+                        for (fonction, flow_category, name), value in sorted_items
                     ]
                 }
     

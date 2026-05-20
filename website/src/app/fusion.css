@@ -3546,11 +3546,24 @@ body:has(.theme-fusion) > div.pb-24 { padding-bottom: 0 !important; }
 }
 .theme-fusion .fx-poste-group li {
   display: grid;
-  grid-template-columns: minmax(180px, 1.6fr) 1fr minmax(90px, auto);
+  grid-template-columns: minmax(180px, 1.6fr) auto 1fr minmax(90px, auto);
   gap: 14px;
   align-items: center;
   padding: 8px 0;
   border-bottom: 1px solid var(--rule);
+}
+.theme-fusion .fx-poste-tag {
+  display: inline-block;
+  font-family: var(--f-ui);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: var(--muted);
+  background: var(--rule);
+  padding: 2px 8px;
+  border-radius: 999px;
+  white-space: nowrap;
 }
 .theme-fusion .fx-poste-group li:last-child { border-bottom: 0; }
 .theme-fusion .fx-poste-group li .lbl {
@@ -3579,10 +3592,11 @@ body:has(.theme-fusion) > div.pb-24 { padding-bottom: 0 !important; }
 @media (max-width: 640px) {
   .theme-fusion .fx-poste-stats { grid-template-columns: 1fr; }
   .theme-fusion .fx-poste-group li {
-    grid-template-columns: 1fr minmax(80px, auto);
+    grid-template-columns: 1fr auto minmax(80px, auto);
     gap: 10px;
   }
   .theme-fusion .fx-poste-group li .bar { display: none; }
+  .theme-fusion .fx-poste-tag { font-size: 10px; padding: 1px 6px; }
 }
 
 @media (max-width: 640px) {

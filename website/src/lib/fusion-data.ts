@@ -522,14 +522,28 @@ type BudgetSankeyFull = {
   bySection: Record<
     string,
     {
-      Fonctionnement?: { total: number; items?: { name: string; value: number }[] };
-      Investissement?: { total: number; items?: { name: string; value: number }[] };
+      Fonctionnement?: { total: number; items?: BudgetDrilldownItem[] };
+      Investissement?: { total: number; items?: BudgetDrilldownItem[] };
     }
   >;
   drilldown?: {
-    revenue?: Record<string, { name: string; value: number }[]>;
-    expenses?: Record<string, { name: string; value: number }[]>;
+    revenue?: Record<string, BudgetDrilldownItem[]>;
+    expenses?: Record<string, BudgetDrilldownItem[]>;
   };
+};
+
+/**
+ * Une ligne de drilldown budget. `fonction` (sous-thématique fonctionnelle —
+ * Musées, Piscines, Théâtre, etc.) et `flow_category` (Personnel, Subventions,
+ * Achats, Investissement…) ont été ajoutés au pipeline 2026-05-20 pour
+ * structurer les sub-postes dans le drawer. Optionnels pour rétro-compat
+ * avec d'éventuels JSON pré-export.
+ */
+type BudgetDrilldownItem = {
+  name: string;
+  value: number;
+  fonction?: string;
+  flow_category?: string;
 };
 
 // ─── Subventions ───────────────────────────────────────────────────────────
@@ -3475,6 +3489,16 @@ export function loadBudgetPageData(requestedYear?: number, city: string = "paris
 // Budget — drawer fiche par poste (recettes ou dépenses)
 // =====================================================================
 
+export type BudgetPosteSubPoste = {
+  /** Nature comptable brute (peut être préfixée "Thématique: …" pour rétro-compat). */
+  name: string;
+  value: number;
+  /** Sous-thématique fonctionnelle (Musées, Piscines, Théâtre…). Optionnel : peut être manquant pour les recettes ou JSON pré-2026-05. */
+  fonction?: string;
+  /** Catégorie de flux (Personnel, Subventions, Achats, Investissement…). Optionnel pour les mêmes raisons. */
+  flow_category?: string;
+};
+
 export type BudgetPosteFiche = {
   slug: string;
   label: string;
@@ -3487,8 +3511,8 @@ export type BudgetPosteFiche = {
   shareOfKindPct: number;
   /** Variation en % vs année précédente (null si indisponible). */
   deltaPct: number | null;
-  /** Sous-postes N2/N3 — le nom peut contenir ":" séparant N2 et N3. */
-  subPostes: { name: string; value: number }[];
+  /** Sous-postes — natures comptables avec leur fonction + categorie de flux pour l'affichage groupé. */
+  subPostes: BudgetPosteSubPoste[];
 };
 
 export function loadBudgetPoste(slug: string, requestedYear?: number, city: string = "paris"): BudgetPosteFiche | null {
@@ -3516,14 +3540,15 @@ export function loadBudgetPoste(slug: string, requestedYear?: number, city: stri
   const totalKind = kind === "depense" ? sankey.totals.depenses : sankey.totals.recettes;
   const shareOfKindPct = totalKind > 0 ? (total / totalKind) * 100 : 0;
 
-  let subPostes: { name: string; value: number }[] = [];
+  // Côté dépenses, on lit directement drilldown.expenses (top 50 incluant
+  // Fonctionnement + Investissement). bySection est moins précis (top 20 par
+  // section) et perd l'info `flow_category` qui rend la dim section
+  // redondante. Côté recettes on garde drilldown.revenue.
+  let subPostes: BudgetPosteSubPoste[] = [];
   if (kind === "depense") {
-    const cat = sankey.bySection[label];
-    const items = [
-      ...(cat?.Fonctionnement?.items ?? []),
-      ...(cat?.Investissement?.items ?? []),
-    ];
-    subPostes = items.slice().sort((a, b) => b.value - a.value);
+    subPostes = (sankey.drilldown?.expenses?.[label] ?? [])
+      .slice()
+      .sort((a, b) => b.value - a.value);
   } else {
     subPostes = (sankey.drilldown?.revenue?.[label] ?? [])
       .slice()

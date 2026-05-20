@@ -24,7 +24,9 @@ WITH executed AS (
         sens_flux,
         chapitre_code,
         chapitre_libelle,
+        fonction_libelle,
         nature_libelle,
+        ode_categorie_flux,
         montant
     FROM {{ ref('core_budget') }}
     WHERE montant > 0
@@ -37,7 +39,9 @@ voted AS (
         sens_flux,
         chapitre_code,
         chapitre_libelle,
+        fonction_libelle,
         nature_libelle,
+        ode_categorie_flux,
         montant
     FROM {{ ref('core_budget_vote') }}
     WHERE montant > 0

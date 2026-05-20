@@ -28,10 +28,22 @@
 {{ config(materialized='view', schema='staging', tags=['staging', 'marseille']) }}
 
 -- =============================================================================
--- BP (Budget Primitif) — schéma stable 2018-2024
+-- BP (Budget Primitif) — schémas hétérogènes selon l'année.
+--
+-- ⚠ Data quality data.gouv.fr (audit 2026-05-20 après sync_city.py marseille) :
+--   2018 BP : schéma legacy + colonnes désalignées (text dans cols numériques)
+--   2019 BP : schéma legacy + montants en centimes (×100) + chiffres incohérents
+--   2020 BP : fichier tronqué à 3 colonnes (n'a aucun contenu utilisable)
+--   2021 BP : schéma moderne MAIS montants en centimes (×100)
+--   2022-2024 BP : schéma moderne, montants en euros (scientific notation `E8`)
+--
+-- Pour l'instant on n'expose que les années propres et homogènes (2022-2024).
+-- Les anciennes années sont COMMENTÉES — si besoin un jour, faudra écrire des
+-- branches par année avec unit normalization (×100) explicite + audit du
+-- résultat final (cf. project_marseille_v1_decisions).
 -- =============================================================================
-WITH bp_union AS (
-    {% for year in [2018, 2019, 2020, 2021, 2022, 2023, 2024] %}
+WITH bp_modern AS (
+    {% for year in [2022, 2023, 2024] %}
     SELECT
         'vote' AS type_budget,
         SAFE_CAST(`Exercice` AS INT64) AS annee_raw,
@@ -41,33 +53,40 @@ WITH bp_union AS (
         SAFE_CAST(`Chap` AS STRING) AS chapitre_code,
         `Lib Chap` AS chapitre_libelle,
         SAFE_CAST(`Nature` AS STRING) AS nature_code,
-        `Lib. article / nature` AS nature_libelle,
+        `Lib_ article _ nature` AS nature_libelle,
+        CAST(NULL AS STRING) AS fonction_code_raw,
+        CAST(NULL AS STRING) AS fonction_libelle_raw,
         SAFE_CAST(`Montant BP en euros` AS FLOAT64) AS montant_raw
     FROM {{ source('marseille_raw', 'marseille_budget_primitif_' ~ year) }}
     {% if not loop.last %}UNION ALL{% endif %}
     {% endfor %}
 ),
 
+bp_union AS (
+    SELECT * FROM bp_modern
+),
+
 -- =============================================================================
--- CA 2018-2019 (legacy schema)
+-- CA legacy — désactivé : CA 2018 a des colonnes désalignées (Réalisé contient
+-- des codes nature au lieu de montants pour beaucoup de lignes) ; CA 2019 est
+-- un fichier de 4 colonnes truncated. À ré-aborder si data.gouv.fr publie
+-- des fichiers propres pour ces années.
 -- =============================================================================
 ca_legacy AS (
-    {% for year in [2018, 2019] %}
     SELECT
         'execute' AS type_budget,
-        SAFE_CAST(`Exercice budgétaire` AS INT64) AS annee_raw,
-        `Section` AS section_raw,
-        `Inscription` AS sens_raw,
-        `Type mvt` AS type_op_raw,
-        SAFE_CAST(`Chap` AS STRING) AS chapitre_code,
+        CAST(NULL AS INT64) AS annee_raw,
+        CAST(NULL AS STRING) AS section_raw,
+        CAST(NULL AS STRING) AS sens_raw,
+        CAST(NULL AS STRING) AS type_op_raw,
+        CAST(NULL AS STRING) AS chapitre_code,
         CAST(NULL AS STRING) AS chapitre_libelle,
-        SAFE_CAST(`Nature` AS STRING) AS nature_code,
+        CAST(NULL AS STRING) AS nature_code,
         CAST(NULL AS STRING) AS nature_libelle,
-        -- Use Réalisé (ABS via cleaning step below)
-        SAFE_CAST(REPLACE(REPLACE(CAST(`Réalisé` AS STRING), ',', '.'), ' ', '') AS FLOAT64) AS montant_raw
-    FROM {{ source('marseille_raw', 'marseille_compte_administratif_' ~ year) }}
-    {% if not loop.last %}UNION ALL{% endif %}
-    {% endfor %}
+        CAST(NULL AS STRING) AS fonction_code_raw,
+        CAST(NULL AS STRING) AS fonction_libelle_raw,
+        CAST(NULL AS FLOAT64) AS montant_raw
+    FROM UNNEST(CAST([] AS ARRAY<INT64>))  -- zero rows; CTE kept for UNION shape compat
 ),
 
 -- =============================================================================
@@ -99,6 +118,8 @@ ca_modern AS (
         `BGT_CONTNAT_LABEL` AS chapitre_libelle,
         SAFE_CAST(`BGT_NATURE` AS STRING) AS nature_code,
         `BGT_NATURE_LABEL` AS nature_libelle,
+        CAST(NULL AS STRING) AS fonction_code_raw,
+        CAST(NULL AS STRING) AS fonction_libelle_raw,
         SAFE_CAST(`BGT_MTREAL` AS FLOAT64) AS montant_raw
     FROM {{ source('marseille_raw', 'marseille_compte_administratif_' ~ year) }}
     {% if not loop.last %}UNION ALL{% endif %}
@@ -150,9 +171,10 @@ normalised AS (
         nature_code,
         nature_libelle,
 
-        -- Marseille publishes WITHOUT functional dimension
-        CAST(NULL AS STRING) AS fonction_code,
-        CAST(NULL AS STRING) AS fonction_libelle,
+        -- Marseille ne publie la fonction QUE pour les BP 2018-2019 (legacy).
+        -- Le reste du temps (2020+, tous les CA), fonction_code/libelle = NULL.
+        fonction_code_raw AS fonction_code,
+        fonction_libelle_raw AS fonction_libelle,
 
         ABS(montant_raw) AS montant,
 
