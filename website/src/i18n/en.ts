@@ -2523,6 +2523,10 @@ const en: Record<string, string> = {
   'fx.foot.legal.licence': 'License',
   'fx.foot.legal.corrections': 'Corrections',
   'fx.foot.legal.status': 'Status ↗',
+  // ── WIP banner — city pages still in v1 partial scope ────────────────────
+  'fx.wip.marseille.aria': "Status: Marseille scope still being completed",
+  'fx.wip.marseille.eyebrow': "Marseille · v1",
+  'fx.wip.marseille.text': "Scope still being completed: budget, balance sheet, contracts and grants are live; housing, investments and debt to come. The pipeline is open if you want to help.",
   'fx.qr.search.reset': 'Reset',
   'fx.qr.search.results_for': 'Results for',
   'fx.qr.search.sorted': 'Sorted by amount · {year} fiscal year',

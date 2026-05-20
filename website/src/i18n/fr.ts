@@ -2523,6 +2523,10 @@ const fr: Record<string, string> = {
   'fx.foot.legal.licence': 'Licence',
   'fx.foot.legal.corrections': 'Corrections',
   'fx.foot.legal.status': 'Statut ↗',
+  // ── WIP banner — pages de villes en v1 partielle ─────────────────────────
+  'fx.wip.marseille.aria': "Statut : périmètre Marseille en cours de complétion",
+  'fx.wip.marseille.eyebrow': "Marseille · v1",
+  'fx.wip.marseille.text': "Périmètre en cours de complétion : budget, bilan, marchés et subventions disponibles ; logement, investissements et dette à venir. Le pipeline est ouvert si vous voulez aider.",
   'fx.qr.search.reset': 'Réinitialiser',
   'fx.qr.search.results_for': 'Résultats pour',
   'fx.qr.search.sorted': 'Trié par montant · exercice {year}',

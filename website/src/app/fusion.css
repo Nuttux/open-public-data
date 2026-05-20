@@ -14419,3 +14419,36 @@ body:has(.theme-db-scrolly) { background: #fafaf7 !important; color: var(--p-ink
   line-height: 1.55;
   color: var(--fg);
 }
+
+/* ─────────────────────────────────────────────────────────────────────────
+   WIP banner — pages de villes en v1 partielle (Marseille v1)
+   ───────────────────────────────────────────────────────────────────────── */
+.theme-fusion .fx-wip-banner,
+.fx-wip-banner {
+  background: #f4efe3;
+  border-bottom: 1px solid #e7ddc8;
+  padding: 8px 0;
+  font-size: 13px;
+  line-height: 1.4;
+  color: #6d4a1f;
+}
+.fx-wip-banner .fx-wip-banner-em {
+  font-weight: 700;
+  margin-right: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  font-size: 11px;
+  color: #8c5e2a;
+}
+.fx-wip-banner .fx-wip-banner-text {
+  color: #5f4828;
+}
+@media (max-width: 640px) {
+  .fx-wip-banner {
+    font-size: 12px;
+  }
+  .fx-wip-banner .fx-wip-banner-em {
+    display: block;
+    margin-bottom: 2px;
+  }
+}
