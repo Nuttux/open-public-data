@@ -11,13 +11,11 @@ import ScopeDropdown from "@/components/fusion/ScopeDropdown";
 import HeroBg from "@/components/fusion/HeroBg";
 import HeroDeck from "@/components/fusion/HeroDeck";
 import HeroMarquee from "@/components/fusion/HeroMarquee";
-import BarRow from "@/components/fusion/BarRow";
 import CountUpOnReveal from "@/components/fusion/CountUpOnReveal";
 import { fmtInt, fmtBillions } from "@/lib/fmt";
 import type { LandingStats } from "@/lib/fusion-data";
 import type { BlogPostMeta } from "@/lib/blog";
 import { useT, useLocale } from "@/lib/localeContext";
-import { trLabel } from "@/lib/label-translate";
 
 type Props = { stats: LandingStats; posts: BlogPostMeta[] };
 
@@ -89,25 +87,16 @@ export default function LandingClient({ stats, posts }: Props) {
             <span className="fx-echelle-sep">·</span>
             {fill("fx.land.echelle.total", { amount: fmtBillions(stats.totalDepenses) })}
           </p>
-          <p className="fx-echelle-sub">{t("fx.land.echelle.sub")}</p>
-          <BarRow
-            reveal
-            items={stats.breakdown.map((b) => ({
-              label: b.label === "Autres (D)" ? t("fx.land.echelle.autres") : trLabel(b.label, locale),
-              value: b.perMonth,
-              unit: "€",
-              display: fmtInt(b.perMonth),
-              href: `/ville/paris/budget?year=${stats.year}#sec-flux`,
-            }))}
-          />
         </div>
       </section>
 
-      {/* ACTE 4 — Mini-cards "Explorer aussi" (avant analyses pour la discoverabilité)
-       *  H2 supprimé volontairement : les 6 cards parlent par elles-mêmes,
-       *  comme l'Échelle juste au-dessus (le chiffre 462 € est son propre titre). */}
+      {/* ACTE 4 — Mini-cards "Explorer par section" */}
       <section className="fx-chip-strip" id="explorer-aussi" aria-label={t("fx.land.chips.aria")}>
         <div className="fx-wrap">
+          <p className="fx-chip-strip-kicker">{t("fx.land.chips.kicker")}</p>
+          <h2 className="fx-chip-strip-h2">
+            {t("fx.land.chips.h2.before")}<em>{t("fx.land.chips.h2.em")}</em>{t("fx.land.chips.h2.dot")}
+          </h2>
           <ul className="fx-chip-strip-list">
             <li>
               <Link href="/ville/paris/budget">

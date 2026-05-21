@@ -1226,8 +1226,9 @@ const fr: Record<string, string> = {
   'fx.land.echelle.autres': "Autres",
   // Chip strip (Acte 4 — explorer toutes les sections)
   'fx.land.chips.aria': "Liens vers toutes les sections du site",
-  'fx.land.chips.h2.before': "Et il y a aussi ",
-  'fx.land.chips.h2.em': "tout ça",
+  'fx.land.chips.kicker': "— Explorer",
+  'fx.land.chips.h2.before': "Le détail, ",
+  'fx.land.chips.h2.em': "section par section",
   'fx.land.chips.h2.dot': ".",
   'fx.land.chips.budget': "Budget",
   'fx.land.chips.budget_desc': "Le flux complet des recettes aux dépenses, ventilé par fonction et par poste.",

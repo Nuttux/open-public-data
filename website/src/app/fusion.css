@@ -931,6 +931,14 @@ body:has(.theme-fusion) > div.pb-24 { padding-bottom: 0 !important; }
 @media (max-width: 768px) {
   .theme-fusion .fx-chip-strip { padding: 32px 0 40px; }
 }
+.theme-fusion .fx-chip-strip-kicker {
+  font-family: var(--f-mono);
+  font-size: 11.5px;
+  color: var(--ocre);
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  margin: 0 0 14px;
+}
 .theme-fusion .fx-chip-strip-h2 {
   font-family: var(--f-disp);
   font-weight: 700;
