@@ -11,6 +11,7 @@ import ScopeDropdown from "@/components/fusion/ScopeDropdown";
 import BrandMark from "@/components/fusion/BrandMark";
 import HeroBg from "@/components/fusion/HeroBg";
 import HeroDeck from "@/components/fusion/HeroDeck";
+import HeroMarquee from "@/components/fusion/HeroMarquee";
 import BarRow from "@/components/fusion/BarRow";
 import { fmtInt, fmtBillions } from "@/lib/fmt";
 import type { LandingStats } from "@/lib/fusion-data";
@@ -64,6 +65,9 @@ export default function LandingClient({ stats, posts }: Props) {
           </div>
         </div>
       </section>
+
+      {/* HERO MARQUEE — bande défilante d'entités cliquables (démontre la profondeur du site) */}
+      <HeroMarquee />
 
       {/* HERO DECK — remplace SCALE : 4 cards concrètes, cliquables vers fiches */}
       <HeroDeck stats={stats} />

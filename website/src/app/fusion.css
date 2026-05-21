@@ -780,6 +780,80 @@ body:has(.theme-fusion) > div.pb-24 { padding-bottom: 0 !important; }
   .theme-fusion .fx-hero-deck-body { padding: 20px 20px 20px; }
 }
 
+/* ───── HERO MARQUEE (bande défilante d'entités cliquables) ───── */
+.theme-fusion .fx-marquee {
+  border-top: 1px solid var(--ink);
+  border-bottom: 1px solid var(--ink);
+  background: #fafaf7;
+  overflow: hidden;
+  padding: 14px 0;
+  position: relative;
+  /* Fade edges pour éviter la coupure brutale à gauche/droite */
+  mask-image: linear-gradient(to right, transparent 0, #000 40px, #000 calc(100% - 40px), transparent 100%);
+  -webkit-mask-image: linear-gradient(to right, transparent 0, #000 40px, #000 calc(100% - 40px), transparent 100%);
+}
+.theme-fusion .fx-marquee-track {
+  display: flex;
+  gap: 36px;
+  width: max-content;
+  animation: fx-marquee-scroll 50s linear infinite;
+  will-change: transform;
+}
+.theme-fusion .fx-marquee:hover .fx-marquee-track,
+.theme-fusion .fx-marquee:focus-within .fx-marquee-track {
+  animation-play-state: paused;
+}
+.theme-fusion .fx-marquee-item {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 8px;
+  font-family: var(--f-ui);
+  font-size: 14px;
+  color: var(--ink);
+  text-decoration: none;
+  white-space: nowrap;
+  padding: 4px 0;
+  transition: color .15s ease;
+}
+.theme-fusion .fx-marquee-item:hover,
+.theme-fusion .fx-marquee-item:focus-visible {
+  color: var(--bleu);
+}
+.theme-fusion .fx-marquee-item:hover .fx-marquee-label,
+.theme-fusion .fx-marquee-item:focus-visible .fx-marquee-label {
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+}
+.theme-fusion .fx-marquee-label {
+  font-weight: 600;
+}
+.theme-fusion .fx-marquee-amount {
+  font-family: var(--f-mono);
+  font-size: 12px;
+  color: var(--muted);
+  letter-spacing: .02em;
+}
+.theme-fusion .fx-marquee-item:hover .fx-marquee-amount,
+.theme-fusion .fx-marquee-item:focus-visible .fx-marquee-amount {
+  color: var(--bleu);
+}
+@keyframes fx-marquee-scroll {
+  from { transform: translate3d(0, 0, 0); }
+  to { transform: translate3d(-50%, 0, 0); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .theme-fusion .fx-marquee-track {
+    animation-duration: 180s;
+  }
+}
+@media (max-width: 768px) {
+  .theme-fusion .fx-marquee { padding: 10px 0; }
+  .theme-fusion .fx-marquee-track { gap: 24px; animation-duration: 40s; }
+  .theme-fusion .fx-marquee-item { font-size: 13px; }
+  .theme-fusion .fx-marquee-amount { font-size: 11px; }
+}
+
 /* ───── ACTE 2 — ÉCHELLE (décompo 462€/mois) ────────── */
 .theme-fusion .fx-echelle {
   padding: 96px 0 88px;
