@@ -10,7 +10,7 @@
 
 Ce pipeline ingère les données ouvertes publiées par les administrations françaises (Open Data Paris, DECP, INSEE, DGFiP, OFGL…), les nettoie, les enrichit, les normalise, puis exporte des fichiers JSON consommés par le site web.
 
-Il est publié sous licence **AGPL-3.0**. Le code applicatif du site web reste fermé à ce stade — il sera publié séparément une fois stabilisé. Voir la [page licence du site](https://franceopendata.org/licence) pour les détails.
+Publié sous licence **GNU AGPL-3.0**.
 
 ## Architecture
 
@@ -26,13 +26,13 @@ Détail :
 - **marts** : agrégations pré-calculées pour le frontend
 - **export** : JSON statiques dans `website/public/data/`
 
-## 🚀 Quickstart — reproduire les chiffres du site
+## 🚀 Reproduire les chiffres affichés sur le site
 
-Si vous voulez **vérifier** un chiffre affiché sur franceopendata.org en le recalculant depuis les sources :
+Pour **vérifier** un chiffre publié sur franceopendata.org en le recalculant depuis les sources :
 
 ```bash
 # Prérequis : Python 3.11+, gcloud CLI
-git clone <repo-url> france-open-data-pipeline
+git clone https://github.com/AbstractsMachine/france-open-data-pipeline
 cd france-open-data-pipeline/pipeline
 python -m venv .venv && source .venv/bin/activate
 pip install -r ../requirements.txt
@@ -46,47 +46,17 @@ python scripts/export/export_all.py
 
 Les fichiers JSON régénérés se trouvent dans `../website/public/data/`. Vous pouvez les comparer avec ceux publiés sur le site.
 
-**Les datasets BigQuery `open-data-france-484717.dbt_paris_*` sont ouverts en lecture publique** (`allUsers` reader). Aucun projet GCP propre n'est nécessaire pour le mode reproduction.
-
-## 🍴 Forker pour une autre ville
-
-Vous voulez adapter ce pipeline à votre territoire (Marseille, Toulouse, une région, un département) ? C'est le but principal de la publication.
-
-```bash
-# 1. Cloner et configurer votre propre projet GCP
-git clone <repo-url> ma-ville-pipeline
-cd ma-ville-pipeline/pipeline
-cp .env.example .env  # éditer avec vos clés
-
-# 2. Pointer vers VOTRE projet BigQuery (au lieu du nôtre)
-export BQ_PROJECT=mon-projet-gcp
-export GOOGLE_APPLICATION_CREDENTIALS=/chemin/vers/service-account.json
-
-# 3. Adapter les sources (scripts/sync/) à votre portail open data
-#    et les seeds (seeds/) à votre périmètre
-
-# 4. Run
-dbt deps
-dbt seed
-dbt run
-```
-
-**Points d'adaptation principaux** :
-- `scripts/sync/sync_opendata.py` : pointer vers votre portail open data (Toulouse, Marseille, etc.)
-- `seeds/seed_mapping_*.csv` : adapter les mappings thématiques à vos chapitres budgétaires
-- `models/staging/stg_*.sql` : ajuster les filtres aux schémas de vos données
-
-Sous AGPL, votre fork doit être publié sous AGPL également si vous le déployez en service en ligne. Voir [la page licence](https://franceopendata.org/licence) pour le détail des obligations.
+**Les datasets BigQuery `open-data-france-484717.dbt_paris_*` sont ouverts en lecture publique** (`allUsers` reader). Aucun projet GCP propre n'est nécessaire pour la reproduction des chiffres.
 
 ## Variables d'environnement
 
-Toutes les clés sont optionnelles selon les scripts utilisés. Voir [.env.example](.env.example) pour la liste complète.
+Voir [.env.example](.env.example) pour la liste complète.
 
 | Variable | Usage |
 |---|---|
 | `BQ_PROJECT` | Projet GCP cible (défaut : `open-data-france-484717`) |
 | `GOOGLE_APPLICATION_CREDENTIALS` | Service account JSON pour écriture BQ (requis pour `dbt run`) |
-| `ANTHROPIC_API_KEY` | Enrichissement LLM tier 1 (vulgarisations) — opt-in via `--tier1` |
+| `ANTHROPIC_API_KEY` | Enrichissement LLM tier 1 (vulgarisations) |
 | `GEMINI_API_KEY` / `GOOGLE_API_KEY` | Enrichissement LLM grounded (SIRET, thématiques) |
 | `PEXELS_API_KEY` / `UNSPLASH_ACCESS_KEY` | Photos d'illustration (optionnel) |
 
@@ -108,7 +78,7 @@ python scripts/sync/fetch_decp_paris.py --year 2024     # Une année DECP spéci
 python scripts/export/export_all.py
 python scripts/export/export_marches_data.py            # Marchés seuls
 
-# Enrichissement LLM (optionnel, payant)
+# Enrichissement LLM (optionnel)
 python scripts/enrich/enrich_thematique_llm.py
 ```
 
@@ -124,7 +94,7 @@ pipeline/
 ├── seeds/              # Caches LLM et géoloc (CSV)
 ├── scripts/
 │   ├── export/         # export_sankey, export_map, etc.
-│   ├── enrich/         # LLM (Gemini, Claude) pour thématiques/géoloc
+│   ├── enrich/         # LLM pour thématiques/géoloc
 │   ├── sync/           # Sync depuis OpenData Paris + DECP
 │   └── utils/          # Logger partagé
 ├── profiles.yml        # Config dbt → BigQuery
@@ -154,16 +124,6 @@ Dédup multi-titulaires par `(objet, montant, date_notification)` dans `core_mar
 ## ⚠️ Règles métier
 
 Voir [`docs/architecture-modelling.md`](../docs/architecture-modelling.md) pour les règles anti-double comptage et le détail des choix de modélisation.
-
-## Contribuer
-
-Issues et PR bienvenues sur les sujets suivants :
-- Adapter le pipeline à une nouvelle collectivité
-- Améliorer la qualité des enrichissements (thématique, géoloc, SIREN)
-- Ajouter des sources publiques (OFGL, DGFiP, INSEE…)
-- Corriger une règle métier mal documentée
-
-Voir [CONTRIBUTING.md](../CONTRIBUTING.md) si présent, sinon ouvrir une issue pour discuter.
 
 ## Contact
 

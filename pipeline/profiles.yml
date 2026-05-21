@@ -23,9 +23,7 @@
 #
 # PROJET GCP : pilotable via la variable d'environnement BQ_PROJECT.
 # Par défaut, pointe vers `open-data-france-484717` (datasets prod publics
-# en lecture). Un fork qui veut écrire dans son propre projet GCP doit faire :
-#   export BQ_PROJECT=mon-projet-gcp
-# avant tout `dbt run`, ou ajouter la ligne à son `.envrc` / `.env`.
+# en lecture).
 # =============================================================================
 
 paris_open_data:

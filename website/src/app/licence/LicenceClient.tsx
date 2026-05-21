@@ -27,8 +27,8 @@ export default function LicenceClient() {
           </h1>
           <p className="fx-page-lede">
             {isFr
-              ? "France Open Data publie trois types de production ouverte : le code du pipeline de données, les jeux de données dérivés, et les contenus éditoriaux. Chacun est régi par la licence la mieux adaptée à son usage. Le code applicatif du site web n'est pas publié à ce stade."
-              : "France Open Data publishes three types of open output: the data pipeline code, the derived datasets, and the editorial content. Each is governed by the license best suited to its use. The web application code is not published at this stage."}
+              ? "France Open Data publie trois types de production ouverte : le code du pipeline de données, les jeux de données dérivés, et les contenus éditoriaux. Chacun est régi par la licence la mieux adaptée à son usage."
+              : "France Open Data publishes three types of open output: the data pipeline code, the derived datasets, and the editorial content. Each is governed by the license best suited to its use."}
           </p>
         </div>
       </section>
@@ -113,8 +113,8 @@ export default function LicenceClient() {
             title={isFr ? <>Pipeline <em>libre</em>, copyleft « réseau »</> : <>Free <em>pipeline</em>, network-aware copyleft</>}
             subtitle={
               isFr
-                ? "Le code du pipeline (Python + dbt + scripts d'export) est publié sous GNU Affero General Public License version 3. Le code applicatif du site web reste fermé à ce stade — il pourra être ouvert plus tard, une fois stabilisé."
-                : "The pipeline code (Python + dbt + export scripts) is published under the GNU Affero General Public License version 3. The web application code remains closed at this stage — it may be opened later, once stabilised."
+                ? "Le code du pipeline (Python + dbt + scripts d'export) est publié sous GNU Affero General Public License version 3."
+                : "The pipeline code (Python + dbt + export scripts) is published under the GNU Affero General Public License version 3."
             }
           />
           <h3>{isFr ? "Vous pouvez" : "You may"}</h3>
