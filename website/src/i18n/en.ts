@@ -1222,7 +1222,7 @@ const en: Record<string, string> = {
   'fx.land.echelle.per': "per Parisian per month",
   'fx.land.echelle.vs': "vs FY {year}",
   'fx.land.echelle.total': "{amount} Bn € total spending this year",
-  'fx.land.echelle.sub': "Here is how those 462 € break down by theme each month — click a theme to drill into the full budget.",
+  'fx.land.echelle.sub': "Click a theme to see the budget item in detail.",
   'fx.land.echelle.autres': "Other",
   // Chip strip (Act 4 — explore all sections)
   'fx.land.chips.aria': "Links to all site sections",

@@ -1222,7 +1222,7 @@ const fr: Record<string, string> = {
   'fx.land.echelle.per': "par Parisien et par mois",
   'fx.land.echelle.vs': "vs exercice {year}",
   'fx.land.echelle.total': "{amount} Md € de dépenses cumulées cette année",
-  'fx.land.echelle.sub': "Voilà comment ces 462 € se répartissent par thématique chaque mois — cliquez sur une thématique pour voir le détail dans le budget complet.",
+  'fx.land.echelle.sub': "Cliquez une thématique pour voir le détail du poste.",
   'fx.land.echelle.autres': "Autres",
   // Chip strip (Acte 4 — explorer toutes les sections)
   'fx.land.chips.aria': "Liens vers toutes les sections du site",
