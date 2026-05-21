@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { Fragment, useState } from "react";
 import type { AssociationFiche as AssociationFicheType, BeneficiaireGrounded, SubventionVulgarization } from "@/lib/fusion-data";
 import { useT, useLocale } from "@/lib/localeContext";
 import { trLabel } from "@/lib/label-translate";
@@ -225,9 +225,8 @@ export default function AssociationFiche({
                 const isOpen = openLigne === i;
                 const hasDetail = Boolean(l.objet || l.subCategory || l.secteurs);
                 return (
-                  <>
+                  <Fragment key={i}>
                     <tr
-                      key={i}
                       onClick={hasDetail ? () => setOpenLigne(isOpen ? null : i) : undefined}
                       className={hasDetail ? "fx-row-link" : undefined}
                       style={{
@@ -311,7 +310,7 @@ export default function AssociationFiche({
                         </td>
                       </tr>
                     )}
-                  </>
+                  </Fragment>
                 );
               })}
             </tbody>
