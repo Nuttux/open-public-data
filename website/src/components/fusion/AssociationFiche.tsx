@@ -169,11 +169,7 @@ export default function AssociationFiche({
                         top: 1,
                         height: 6,
                         width: `${pct}%`,
-                        background: highlight
-                          ? highlight.kind === "up"
-                            ? "var(--rouge)"
-                            : "var(--bleu)"
-                          : "var(--ink)",
+                        background: "var(--ink)",
                       }}
                     />
                   </span>
