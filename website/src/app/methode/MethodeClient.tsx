@@ -485,12 +485,12 @@ export default function MethodeClient() {
           <SectionHead
             number="05"
             kind={isFr ? "Engagements" : "Commitments"}
-            title={isFr ? <>Code MIT, <em>corrections</em> traçables</> : <>MIT code, <em>traceable</em> corrections</>}
+            title={isFr ? <>Pipeline AGPL, <em>corrections</em> traçables</> : <>AGPL pipeline, <em>traceable</em> corrections</>}
           />
           <p style={{ lineHeight: 1.6, maxWidth: 780 }}>
             {isFr
-              ? <>Les pipelines (Python + dbt) sont sous licence MIT. Chaque chiffre se recalcule depuis sa source, chaque page expose son JSON. Erreur signalée = corrigée dans le code et consignée dans le changelog avec la date et l&apos;origine du signalement. On corrige en place et on garde la trace — pour que tout ancien screenshot reste vérifiable.</>
-              : <>Pipelines (Python + dbt) are MIT-licensed. Every figure can be recalculated from its source, every page exposes its JSON. Error reported = corrected in the code and recorded in the changelog with the date and source of the report. We correct in place and keep the trace — so any old screenshot remains verifiable.</>}
+              ? <>Le pipeline (Python + dbt) est publié sous AGPL-3.0. Chaque chiffre se recalcule depuis sa source, chaque page expose son JSON. Erreur signalée = corrigée dans le code et consignée dans le changelog avec la date et l&apos;origine du signalement. On corrige en place et on garde la trace — pour que tout ancien screenshot reste vérifiable.</>
+              : <>The pipeline (Python + dbt) is published under AGPL-3.0. Every figure can be recalculated from its source, every page exposes its JSON. Error reported = corrected in the code and recorded in the changelog with the date and source of the report. We correct in place and keep the trace — so any old screenshot remains verifiable.</>}
           </p>
           <div style={{ marginTop: 24, display: "flex", gap: 10, flexWrap: "wrap" }}>
             <Button variant="primary" href="/contact">{isFr ? "Signaler une erreur" : "Report an error"}</Button>

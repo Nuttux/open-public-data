@@ -27,8 +27,8 @@ export default function LicenceClient() {
           </h1>
           <p className="fx-page-lede">
             {isFr
-              ? "France Open Data publie trois types de production : du code, des données et des textes. Chacun est régi par la licence ouverte la mieux adaptée à son usage. Tout est libre de réutilisation, sous des conditions différentes selon ce que vous reprenez."
-              : "France Open Data publishes three types of output: code, data, and text. Each is governed by the open license best suited to its use. Everything is free to reuse, under different conditions depending on what you take."}
+              ? "France Open Data publie trois types de production ouverte : le code du pipeline de données, les jeux de données dérivés, et les contenus éditoriaux. Chacun est régi par la licence la mieux adaptée à son usage. Le code applicatif du site web n'est pas publié à ce stade."
+              : "France Open Data publishes three types of open output: the data pipeline code, the derived datasets, and the editorial content. Each is governed by the license best suited to its use. The web application code is not published at this stage."}
           </p>
         </div>
       </section>
@@ -50,11 +50,11 @@ export default function LicenceClient() {
             </thead>
             <tbody>
               <tr>
-                <td>{isFr ? "Code source" : "Source code"}</td>
+                <td>{isFr ? "Code du pipeline" : "Pipeline code"}</td>
                 <td>
                   {isFr
-                    ? "Pipeline Python, site Next.js, dbt, scripts, schémas"
-                    : "Python pipeline, Next.js site, dbt, scripts, diagrams"}
+                    ? "Pipeline Python (extraction, transformation), modèles dbt, scripts d'export, configurations"
+                    : "Python pipeline (extraction, transformation), dbt models, export scripts, configurations"}
                 </td>
                 <td>
                   <a
@@ -109,12 +109,12 @@ export default function LicenceClient() {
         <div className="fx-wrap">
           <SectionHead
             number="02"
-            kind={isFr ? "Code source" : "Source code"}
-            title={isFr ? <>Code <em>libre</em>, copyleft « réseau »</> : <>Free <em>code</em>, network-aware copyleft</>}
+            kind={isFr ? "Code du pipeline" : "Pipeline code"}
+            title={isFr ? <>Pipeline <em>libre</em>, copyleft « réseau »</> : <>Free <em>pipeline</em>, network-aware copyleft</>}
             subtitle={
               isFr
-                ? "L'ensemble du code (pipeline, site, dbt, scripts) est publié sous GNU Affero General Public License version 3."
-                : "All code (pipeline, site, dbt, scripts) is published under the GNU Affero General Public License version 3."
+                ? "Le code du pipeline (Python + dbt + scripts d'export) est publié sous GNU Affero General Public License version 3. Le code applicatif du site web reste fermé à ce stade — il pourra être ouvert plus tard, une fois stabilisé."
+                : "The pipeline code (Python + dbt + export scripts) is published under the GNU Affero General Public License version 3. The web application code remains closed at this stage — it may be opened later, once stabilised."
             }
           />
           <h3>{isFr ? "Vous pouvez" : "You may"}</h3>
