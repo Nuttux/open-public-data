@@ -101,12 +101,7 @@ export default function ContactClient() {
             </li>
           </ol>
           <div style={{ marginTop: 24, display: "flex", gap: 10, flexWrap: "wrap" }}>
-            <Button
-              variant="primary"
-              href="https://github.com/Nuttux/open-public-data/issues/new?labels=correction&template=signaler-une-erreur.md"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
+            <Button variant="primary" href="/signalement">
               {t("fx.contact.s02.btn.issue")}
             </Button>
             <Button href="/corrections">{t("fx.contact.s02.btn.history")}</Button>

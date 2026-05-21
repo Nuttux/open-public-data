@@ -112,6 +112,8 @@ export default function Footer() {
             <Link href="/licence">{t("fx.foot.legal.licence")}</Link>
             <span aria-hidden="true">·</span>
             <Link href="/corrections">{t("fx.foot.legal.corrections")}</Link>
+            <span aria-hidden="true">·</span>
+            <Link href="/signalement">{t("fx.foot.legal.signaler")}</Link>
             {process.env.NEXT_PUBLIC_STATUS_PAGE_URL ? (
               <>
                 <span aria-hidden="true">·</span>
