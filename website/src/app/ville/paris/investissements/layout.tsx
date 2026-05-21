@@ -33,16 +33,10 @@ const dataset = datasetJsonLd({
   spatialCoverage: 'Paris, France',
 });
 
-/**
- * Layout with parallel `drawer` slot — filled by intercepted route under
- * `@drawer/(.)projet/[id]`. Le slot rend `null` par défaut via default.tsx.
- */
 export default function InvestissementsLayout({
   children,
-  drawer,
 }: {
   children: React.ReactNode;
-  drawer: React.ReactNode;
 }) {
   return (
     <>
@@ -51,7 +45,6 @@ export default function InvestissementsLayout({
         dangerouslySetInnerHTML={{ __html: JSON.stringify(dataset) }}
       />
       {children}
-      {drawer}
     </>
   );
 }

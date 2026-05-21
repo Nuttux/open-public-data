@@ -32,17 +32,10 @@ const dataset = datasetJsonLd({
   spatialCoverage: 'Paris, France',
 });
 
-/**
- * Layout with parallel `drawer` slot — filled by intercepted routes under
- * `@drawer/(.)contrat/[numero]` and `@drawer/(.)fournisseur/[siren]`.
- * The slot renders `null` by default (default.tsx).
- */
 export default function MarchesPublicsLayout({
   children,
-  drawer,
 }: {
   children: React.ReactNode;
-  drawer: React.ReactNode;
 }) {
   return (
     <>
@@ -51,7 +44,6 @@ export default function MarchesPublicsLayout({
         dangerouslySetInnerHTML={{ __html: JSON.stringify(dataset) }}
       />
       {children}
-      {drawer}
     </>
   );
 }

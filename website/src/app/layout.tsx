@@ -111,8 +111,10 @@ export const viewport: Viewport = {
  */
 export default async function RootLayout({
   children,
+  drawer,
 }: Readonly<{
   children: React.ReactNode;
+  drawer: React.ReactNode;
 }>) {
   const initialLocale = await readLocale();
   const skipLabel = initialLocale === 'en' ? 'Skip to main content' : 'Aller au contenu principal';
@@ -146,6 +148,7 @@ export default async function RootLayout({
         <AnalyticsProvider>
           <LocaleProvider initialLocale={initialLocale}>
             {children}
+            {drawer}
             <SearchModal />
           </LocaleProvider>
         </AnalyticsProvider>
