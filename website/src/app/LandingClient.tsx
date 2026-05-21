@@ -123,6 +123,61 @@ export default function LandingClient({ stats, posts }: Props) {
         </div>
       </section>
 
+      {/* ACTE 4 — Mini-cards "Explorer aussi" (avant analyses pour la discoverabilité) */}
+      <section className="fx-chip-strip" id="explorer-aussi" aria-label={t("fx.land.chips.aria")}>
+        <div className="fx-wrap">
+          <h2 className="fx-chip-strip-h2">
+            {t("fx.land.chips.h2.before")}
+            <em>{t("fx.land.chips.h2.em")}</em>
+            {t("fx.land.chips.h2.dot")}
+          </h2>
+          <ul className="fx-chip-strip-list">
+            <li>
+              <Link href="/ville/paris/budget">
+                <span className="fx-chip-strip-title">{t("fx.land.chips.budget")}</span>
+                <span className="fx-chip-strip-desc">{t("fx.land.chips.budget_desc")}</span>
+                <span className="fx-chip-strip-arrow" aria-hidden="true">→</span>
+              </Link>
+            </li>
+            <li>
+              <Link href="/ville/paris/investissements">
+                <span className="fx-chip-strip-title">{t("fx.land.chips.invest")}</span>
+                <span className="fx-chip-strip-desc">{t("fx.land.chips.invest_desc")}</span>
+                <span className="fx-chip-strip-arrow" aria-hidden="true">→</span>
+              </Link>
+            </li>
+            <li>
+              <Link href="/ville/paris/subventions">
+                <span className="fx-chip-strip-title">{t("fx.land.chips.subv")}</span>
+                <span className="fx-chip-strip-desc">{t("fx.land.chips.subv_desc")}</span>
+                <span className="fx-chip-strip-arrow" aria-hidden="true">→</span>
+              </Link>
+            </li>
+            <li>
+              <Link href="/ville/paris/marches">
+                <span className="fx-chip-strip-title">{t("fx.land.chips.marches")}</span>
+                <span className="fx-chip-strip-desc">{t("fx.land.chips.marches_desc")}</span>
+                <span className="fx-chip-strip-arrow" aria-hidden="true">→</span>
+              </Link>
+            </li>
+            <li>
+              <Link href="/ville/paris/dette">
+                <span className="fx-chip-strip-title">{t("fx.land.chips.dette")}</span>
+                <span className="fx-chip-strip-desc">{t("fx.land.chips.dette_desc")}</span>
+                <span className="fx-chip-strip-arrow" aria-hidden="true">→</span>
+              </Link>
+            </li>
+            <li>
+              <Link href="/ville/paris/logement">
+                <span className="fx-chip-strip-title">{t("fx.land.chips.logement")}</span>
+                <span className="fx-chip-strip-desc">{t("fx.land.chips.logement_desc")}</span>
+                <span className="fx-chip-strip-arrow" aria-hidden="true">→</span>
+              </Link>
+            </li>
+          </ul>
+        </div>
+      </section>
+
       {/* ANALYSES — teaser éditorial */}
       {posts.length > 0 && (
         <section className="fx-analyses" id="analyses">
@@ -177,23 +232,6 @@ export default function LandingClient({ stats, posts }: Props) {
           </div>
         </section>
       )}
-
-      {/* ACTE 4 — Chip strip : Explorer toutes les sections (discoverabilité mobile) */}
-      <section className="fx-chip-strip" id="explorer-aussi" aria-label={t("fx.land.chips.aria")}>
-        <div className="fx-wrap">
-          <h3 className="fx-chip-strip-h">{t("fx.land.chips.h")}</h3>
-          <ul className="fx-chip-strip-list">
-            <li><Link href="/ville/paris/budget">{t("fx.land.chips.budget")}</Link></li>
-            <li><Link href="/ville/paris/investissements">{t("fx.land.chips.invest")}</Link></li>
-            <li><Link href="/ville/paris/subventions">{t("fx.land.chips.subv")}</Link></li>
-            <li><Link href="/ville/paris/marches">{t("fx.land.chips.marches")}</Link></li>
-            <li><Link href="/ville/paris/dette">{t("fx.land.chips.dette")}</Link></li>
-            <li><Link href="/ville/paris/logement">{t("fx.land.chips.logement")}</Link></li>
-            <li><Link href="/ville/paris/dette/stress-test">{t("fx.land.chips.stress")}</Link></li>
-            <li><Link href="/comparer">{t("fx.land.chips.comparer")}</Link></li>
-          </ul>
-        </div>
-      </section>
 
       {/* MÉTHODE */}
       <section className="fx-meth" id="meth">
