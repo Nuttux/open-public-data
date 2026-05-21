@@ -5138,13 +5138,10 @@ body:has(.theme-fusion) > div.pb-24 { padding-bottom: 0 !important; }
   min-height: calc(100dvh - 56px); /* 100% viewport - navbar height */
   display: flex;
   flex-direction: column;
+  justify-content: space-between; /* répartit l'espace : Hero haut, Deck milieu, Marquee bas */
 }
 .theme-fusion .fx-hero-fold > .fx-hero { flex: 0 0 auto; }
-.theme-fusion .fx-hero-fold > .fx-hero-deck {
-  flex: 1 1 auto;
-  display: flex;
-  align-items: center;
-}
+.theme-fusion .fx-hero-fold > .fx-hero-deck { flex: 0 0 auto; }
 .theme-fusion .fx-hero-fold > .fx-marquee { flex: 0 0 auto; }
 
 /* Hero sans lede : juste le H1 (style éditorial). Pas d'overflow:hidden :
