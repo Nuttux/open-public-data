@@ -124,17 +124,16 @@ export default function ChapitreFiche({ chap }: { chap: ChapitreFicheType }) {
                   key={a.arr}
                   href={`/ville/paris/investissements/arrondissement/${a.arr}`}
                   scroll={false}
+                  className="fx-row-link"
                   style={{
                     display: "grid",
                     gridTemplateColumns: "auto 1fr auto",
                     alignItems: "baseline",
                     gap: 14,
-                    padding: "10px 0",
+                    padding: "10px 6px",
                     borderBottom: "1px solid var(--rule)",
                     fontFamily: "var(--f-ui)",
                     fontSize: 13.5,
-                    color: "var(--ink)",
-                    textDecoration: "none",
                   }}
                 >
                   <span style={{ fontFamily: "var(--f-mono)", fontSize: 12, color: "var(--ocre)", minWidth: 32 }}>

@@ -3347,6 +3347,24 @@ body:has(.theme-fusion) > div.pb-24 { padding-bottom: 0 !important; }
 }
 
 /* Inner mini-row used inside fx-expand-body (top-N sub-breakdowns) */
+/* ────────────────────────────────────────────────────────────────────
+ * UNIFIED CLICKABLE ROW — appliqué partout dans les fiches drawer
+ * pour signaler de façon cohérente "tu peux cliquer pour drill down".
+ *
+ * Pour tuner l'intensité du hover, MODIFIER UNIQUEMENT LES 3 VARIABLES
+ * ci-dessous (--fx-row-link-bg-hover / -text-hover / -padding-shift).
+ * Tout le site héritera. Aucune autre règle à toucher.
+ *
+ *   - Look actuel (dark inverted, fort) : ink-bg + white-text
+ *   - Pour adoucir : `rgba(10,10,10,0.08)` + garder color
+ * ──────────────────────────────────────────────────────────────────── */
+.theme-fusion {
+  --fx-row-link-bg-hover: var(--ink);
+  --fx-row-link-text-hover: var(--bg);
+  --fx-row-link-padding-shift: 6px;
+}
+
+/* Layout de base : grid prédéfinie pour les "mini-rows" (rank/label/...) */
 .theme-fusion .fx-mini-row {
   display: grid;
   grid-template-columns: 32px 1fr 1fr 90px;
@@ -3358,22 +3376,32 @@ body:has(.theme-fusion) > div.pb-24 { padding-bottom: 0 !important; }
   font-size: 14px;
 }
 .theme-fusion .fx-mini-row:last-child { border-bottom: 0; }
+
+/* Classe canonique cliquable — utilisable sur tout élément de liste
+ * dans les fiches (rows, table cells, blocks). Indépendante du layout. */
+.theme-fusion .fx-row-link,
 .theme-fusion .fx-mini-row-link {
   color: inherit;
   text-decoration: none;
   cursor: pointer;
-  transition: background .1s, padding .1s;
-  padding-left: 6px;
-  padding-right: 6px;
-  margin-left: -6px;
-  margin-right: -6px;
+  transition: background .1s ease, padding .1s ease, color .1s ease;
+  padding-left: var(--fx-row-link-padding-shift);
+  padding-right: var(--fx-row-link-padding-shift);
+  margin-left: calc(var(--fx-row-link-padding-shift) * -1);
+  margin-right: calc(var(--fx-row-link-padding-shift) * -1);
 }
+.theme-fusion .fx-row-link:hover,
 .theme-fusion .fx-mini-row-link:hover {
-  background: var(--ink);
-  color: var(--bg);
+  background: var(--fx-row-link-bg-hover);
+  color: var(--fx-row-link-text-hover);
 }
+.theme-fusion .fx-row-link:hover .muted,
+.theme-fusion .fx-row-link:hover .rank,
 .theme-fusion .fx-mini-row-link:hover .muted,
-.theme-fusion .fx-mini-row-link:hover .rank { color: var(--bg); opacity: 0.7; }
+.theme-fusion .fx-mini-row-link:hover .rank {
+  color: var(--fx-row-link-text-hover);
+  opacity: 0.7;
+}
 .theme-fusion .fx-mini-row .rank {
   font-family: var(--f-mono);
   font-size: 11px;
