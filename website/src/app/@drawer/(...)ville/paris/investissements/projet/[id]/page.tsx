@@ -7,12 +7,16 @@ import { readLocale } from "@/lib/seo";
 type Params = { id: string };
 
 /**
- * Intercepted route — ouvre la fiche projet en side drawer par-dessus la page
- * /investissements quand l'utilisateur clique une carte de la grille ou un
- * marker de la carte. Navigation directe (lien partagé) → page complète via
- * /investissements/projet/[id]/page.tsx.
+ * Root-level intercept — ouvre la fiche projet en drawer quand l'utilisateur
+ * navigue vers /ville/paris/investissements/projet/[id] depuis n'importe où
+ * dans l'app (home, autre section). L'intercept section-level
+ * `investissements/@drawer/(.)projet/[id]` reste prioritaire quand la nav se
+ * fait depuis l'intérieur d'investissements.
+ *
+ * Navigation directe (URL partagée) → page complète via
+ * /ville/paris/investissements/projet/[id]/page.tsx.
  */
-export default async function DrawerProjetPage({ params }: { params: Promise<Params> }) {
+export default async function RootDrawerProjetPage({ params }: { params: Promise<Params> }) {
   const { id } = await params;
   const projet = loadProjet(id);
   if (!projet) return notFound();
@@ -41,7 +45,7 @@ export default async function DrawerProjetPage({ params }: { params: Promise<Par
         title={displayName}
         shareUrl={`/ville/paris/investissements/projet/${encodeURIComponent(projet.id)}`}
         shareText={shareText}
-        backHref="/ville/paris/investissements"
+        backHref="/"
         breadcrumbLabel={displayName.slice(0, 50)}
       >
         <ProjetFiche projet={projet} photo={photo} />

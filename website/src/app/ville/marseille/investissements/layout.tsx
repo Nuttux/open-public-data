@@ -32,16 +32,10 @@ const dataset = datasetJsonLd({
   spatialCoverage: 'Marseille, France',
 });
 
-/**
- * Layout with parallel `drawer` slot — mirrors Paris convention so future
- * intercepting routes (projet/chapitre drawers) can be plugged in later.
- */
 export default function InvestissementsLayout({
   children,
-  drawer,
 }: {
   children: React.ReactNode;
-  drawer: React.ReactNode;
 }) {
   return (
     <>
@@ -50,7 +44,6 @@ export default function InvestissementsLayout({
         dangerouslySetInnerHTML={{ __html: JSON.stringify(dataset) }}
       />
       {children}
-      {drawer}
     </>
   );
 }

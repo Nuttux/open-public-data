@@ -28,10 +28,8 @@ const dataset = datasetJsonLd({
 
 export default function MarchesPublicsLayout({
   children,
-  drawer,
 }: {
   children: React.ReactNode;
-  drawer: React.ReactNode;
 }) {
   return (
     <>
@@ -40,7 +38,6 @@ export default function MarchesPublicsLayout({
         dangerouslySetInnerHTML={{ __html: JSON.stringify(dataset) }}
       />
       {children}
-      {drawer}
     </>
   );
 }

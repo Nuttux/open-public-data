@@ -33,17 +33,10 @@ const dataset = datasetJsonLd({
   spatialCoverage: 'Paris, France',
 });
 
-/**
- * Layout with parallel `drawer` slot — filled by intercepted route under
- * `@drawer/(.)poste/[slug]`. The slot renders `null` by default via
- * default.tsx, so the drawer only appears when a poste link is clicked.
- */
 export default function BudgetLayout({
   children,
-  drawer,
 }: {
   children: React.ReactNode;
-  drawer: React.ReactNode;
 }) {
   return (
     <>
@@ -52,7 +45,6 @@ export default function BudgetLayout({
         dangerouslySetInnerHTML={{ __html: JSON.stringify(dataset) }}
       />
       {children}
-      {drawer}
     </>
   );
 }

@@ -33,10 +33,8 @@ const dataset = datasetJsonLd({
 
 export default function LogementSocialMarseilleLayout({
   children,
-  drawer,
 }: {
   children: React.ReactNode;
-  drawer: React.ReactNode;
 }) {
   return (
     <>
@@ -45,7 +43,6 @@ export default function LogementSocialMarseilleLayout({
         dangerouslySetInnerHTML={{ __html: JSON.stringify(dataset) }}
       />
       {children}
-      {drawer}
     </>
   );
 }
