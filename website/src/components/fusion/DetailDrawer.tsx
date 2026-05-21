@@ -268,6 +268,33 @@ export default function DetailDrawer({
             <h2 className="fx-drawer-title">{title}</h2>
           </div>
           <div className="fx-drawer-head-actions" ref={menuRef}>
+            {(() => {
+              // Bouton « ↗ Voir tous les X » — extrait dynamiquement la
+              // section du shareUrl pour pointer vers le hub correspondant.
+              // Remplace l'ancien bouton "Page entière" (peu utile : refresh
+              // suffit). Action plus utile : explorer le listing complet de
+              // l'entité une fois qu'on a peeké un cas spécifique.
+              if (!shareUrl) return null;
+              const m = shareUrl.match(/^(\/ville\/[^/]+\/([^/]+))\//);
+              if (!m) return null;
+              const hubHref = m[1];
+              const section = m[2];
+              const labelKey: Record<string, string> = {
+                investissements: "fx.drawer.hub.invest",
+                subventions: "fx.drawer.hub.subv",
+                marches: "fx.drawer.hub.marches",
+                dette: "fx.drawer.hub.dette",
+                logement: "fx.drawer.hub.logement",
+                budget: "fx.drawer.hub.budget",
+              };
+              const key = labelKey[section];
+              if (!key) return null;
+              return (
+                <a className="fx-drawer-iconbtn fx-drawer-fullpage" href={hubHref}>
+                  ↗ {t(key)}
+                </a>
+              );
+            })()}
             {shareUrl && (
               <div style={{ position: "relative" }}>
                 <button

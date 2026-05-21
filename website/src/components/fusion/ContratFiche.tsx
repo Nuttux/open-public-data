@@ -268,7 +268,7 @@ export default function ContratFiche({
                 <dt>{t("fx.fiche.contrat.voir")}</dt>
                 <dd>
                   <Link
-                    href={`/marches-publics/fournisseur/${contrat.fournisseurSiret.replace(/\s/g, "")}`}
+                    href={`/ville/paris/marches/fournisseur/${contrat.fournisseurSiret.replace(/\s/g, "")}`}
                     style={{ fontFamily: "var(--f-mono)", fontSize: 12, color: "var(--bleu)", borderBottom: "1px solid var(--bleu)", paddingBottom: 1 }}
                     scroll={false}
                   >

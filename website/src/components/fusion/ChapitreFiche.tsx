@@ -122,19 +122,18 @@ export default function ChapitreFiche({ chap }: { chap: ChapitreFicheType }) {
               return (
                 <Link
                   key={a.arr}
-                  href={`/investissements/arrondissement/${a.arr}`}
+                  href={`/ville/paris/investissements/arrondissement/${a.arr}`}
                   scroll={false}
+                  className="fx-row-link"
                   style={{
                     display: "grid",
                     gridTemplateColumns: "auto 1fr auto",
                     alignItems: "baseline",
                     gap: 14,
-                    padding: "10px 0",
+                    padding: "10px 6px",
                     borderBottom: "1px solid var(--rule)",
                     fontFamily: "var(--f-ui)",
                     fontSize: 13.5,
-                    color: "var(--ink)",
-                    textDecoration: "none",
                   }}
                 >
                   <span style={{ fontFamily: "var(--f-mono)", fontSize: 12, color: "var(--ocre)", minWidth: 32 }}>
@@ -162,7 +161,7 @@ export default function ChapitreFiche({ chap }: { chap: ChapitreFicheType }) {
             return (
               <Link
                 key={p.id}
-                href={`/investissements/projet/${encodeURIComponent(p.id)}`}
+                href={`/ville/paris/investissements/projet/${encodeURIComponent(p.id)}`}
                 scroll={false}
                 className="fx-arr-top-item"
               >

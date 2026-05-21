@@ -8,47 +8,17 @@ import Navbar from "@/components/fusion/Navbar";
 import Footer from "@/components/fusion/Footer";
 import Button from "@/components/fusion/Button";
 import ScopeDropdown from "@/components/fusion/ScopeDropdown";
-import TileCard from "@/components/fusion/TileCard";
 import BrandMark from "@/components/fusion/BrandMark";
 import HeroBg from "@/components/fusion/HeroBg";
 import HeroDeck from "@/components/fusion/HeroDeck";
-import { fmtDec, fmtInt, fmtBillions, fmtMillions } from "@/lib/fmt";
+import BarRow from "@/components/fusion/BarRow";
+import { fmtInt, fmtBillions } from "@/lib/fmt";
 import type { LandingStats } from "@/lib/fusion-data";
 import type { BlogPostMeta } from "@/lib/blog";
 import { useT, useLocale } from "@/lib/localeContext";
+import { trLabel } from "@/lib/label-translate";
 
 type Props = { stats: LandingStats; posts: BlogPostMeta[] };
-
-function cleanTopName(n: string): string {
-  return n.replace(/\s{2,}/g, " ").trim();
-}
-
-function fmtTopAmount(n: number): { v: string; u: string } {
-  if (n >= 1e9) return { v: fmtBillions(n), u: "Md €" };
-  if (n >= 1e6) return { v: fmtMillions(n), u: "M €" };
-  return { v: fmtInt(Math.round(n / 1000)), u: "k €" };
-}
-
-function TopListPreview({
-  items,
-}: {
-  items: { name: string; amount: number }[];
-}) {
-  return (
-    <div className="fx-tile-top3">
-      {items.map((it, i) => {
-        const a = fmtTopAmount(it.amount);
-        return (
-          <div className="fx-tile-top3-row" key={`${i}-${it.name}`}>
-            <span className="fx-tile-top3-rank">{String(i + 1).padStart(2, "0")}</span>
-            <span className="fx-tile-top3-name" title={it.name}>{cleanTopName(it.name)}</span>
-            <span className="fx-tile-top3-amt tnum">{a.v} {a.u}</span>
-          </div>
-        );
-      })}
-    </div>
-  );
-}
 
 export default function LandingClient({ stats, posts }: Props) {
   const t = useT();
@@ -98,6 +68,35 @@ export default function LandingClient({ stats, posts }: Props) {
       {/* HERO DECK — remplace SCALE : 4 cards concrètes, cliquables vers fiches */}
       <HeroDeck stats={stats} />
 
+      {/* ACTE 2 — Échelle : où vont les 462€/mois (sans H2, le chiffre EST le titre) */}
+      <section className="fx-echelle" id="echelle">
+        <div className="fx-wrap">
+          <p className="fx-echelle-big tnum">
+            <span className="fx-echelle-num">{fmtInt(stats.perCapitaMonth)}</span>
+            <span className="fx-echelle-u">€</span>
+            <span className="fx-echelle-per">{t("fx.land.echelle.per")}</span>
+          </p>
+          <p className="fx-echelle-delta">
+            <span aria-hidden="true">{arrow}</span>{" "}
+            <b>{Math.abs(deltaPct).toFixed(1).replace(".", ",")} %</b>{" "}
+            {fill("fx.land.echelle.vs", { year: stats.lastExecutedYear })}
+            <span className="fx-echelle-sep">·</span>
+            {fill("fx.land.echelle.total", { amount: fmtBillions(stats.totalDepenses) })}
+          </p>
+          <p className="fx-echelle-sub">{t("fx.land.echelle.sub")}</p>
+          <BarRow
+            reveal
+            items={stats.breakdown.map((b) => ({
+              label: b.label === "Autres (D)" ? t("fx.land.echelle.autres") : trLabel(b.label, locale),
+              value: b.perMonth,
+              unit: "€",
+              display: fmtInt(b.perMonth),
+              href: `/ville/paris/budget?year=${stats.year}#sec-flux`,
+            }))}
+          />
+        </div>
+      </section>
+
       {/* MÉTHODE STRIP — prominence en haut de page */}
       <section className="fx-meth-strip" id="meth-strip">
         <div className="fx-wrap">
@@ -119,147 +118,58 @@ export default function LandingClient({ stats, posts }: Props) {
         </div>
       </section>
 
-      {/* INSIDE — tiles */}
-      <section className="fx-inside" id="inside">
+      {/* ACTE 4 — Mini-cards "Explorer aussi" (avant analyses pour la discoverabilité) */}
+      <section className="fx-chip-strip" id="explorer-aussi" aria-label={t("fx.land.chips.aria")}>
         <div className="fx-wrap">
-          <h2>
-            {t("fx.land.inside.h2.a")}
-            <br />
-            {t("fx.land.inside.h2.b.des")}<em>{t("fx.land.inside.h2.b.em")}</em>{t("fx.land.inside.h2.b.dot")}
+          <h2 className="fx-chip-strip-h2">
+            {t("fx.land.chips.h2.before")}
+            <em>{t("fx.land.chips.h2.em")}</em>
+            {t("fx.land.chips.h2.dot")}
           </h2>
-          <p className="fx-sub">{t("fx.land.inside.sub")}</p>
-
-          <div className="fx-grid-tiles">
-            {/* ROW 1 : Budget (SVG) · Évolution (SVG) · Patrimoine (SVG) */}
-            <TileCard
-              href="/ville/paris/budget"
-              kind={t("fx.land.tile.01.kind")}
-              title={t("fx.land.tile.01.title")}
-              description={t("fx.land.tile.01.desc")}
-              preview={
-                <svg viewBox="0 0 200 100">
-                  <path d="M 6 22 C 70 22 90 46 94 46" className="stroke" stroke="#0a0a0a" strokeWidth="10" fill="none" />
-                  <path d="M 6 46 C 70 46 90 50 94 50" className="stroke" stroke="#0a0a0a" strokeWidth="7" fill="none" />
-                  <path d="M 6 70 C 70 70 90 54 94 54" className="stroke" stroke="#0a0a0a" strokeWidth="5" fill="none" />
-                  <rect x="92" y="36" width="16" height="28" className="fill" fill="#0a0a0a" />
-                  <path d="M 108 44 C 140 44 160 26 194 26" className="stroke" stroke="#0a0a0a" strokeWidth="9" fill="none" />
-                  <path d="M 108 50 C 140 50 160 52 194 52" className="stroke" stroke="#0a0a0a" strokeWidth="6" fill="none" />
-                  <path d="M 108 58 C 140 58 160 82 194 82" className="stroke-sig" stroke="#5f6672" strokeWidth="7" fill="none" />
-                </svg>
-              }
-              kpi={fmtBillions(stats.totalDepenses)}
-              kpiUnit="Md €"
-              kpiDelta={
-                <>
-                  {arrow} <b>{fmtDec(Math.abs(deltaPct), 1)} %</b> {t("fx.land.tile.vs")}{stats.lastExecutedYear}
-                </>
-              }
-            />
-
-            <TileCard
-              href="/ville/paris/budget"
-              kind={t("fx.land.tile.02.kind")}
-              title={t("fx.land.tile.02.title")}
-              description={t("fx.land.tile.02.desc")}
-              preview={
-                <svg viewBox="0 0 200 100">
-                  <line x1="10" y1="85" x2="190" y2="85" className="stroke-muted" stroke="#9099a6" strokeWidth="1" />
-                  <polyline points="10,70 40,62 70,55 100,46 130,34 160,24 190,14" className="stroke" stroke="#0a0a0a" strokeWidth="2.5" fill="none" />
-                  {[[10,70],[40,62],[70,55],[100,46],[130,34],[160,24]].map(([x,y]) => (
-                    <circle key={`${x}-${y}`} cx={x} cy={y} r="3" className="fill" fill="#0a0a0a" />
-                  ))}
-                  <circle cx="190" cy="14" r="5" className="fill-sig" fill="#5f6672" />
-                </svg>
-              }
-              kpi="+ 14,2"
-              kpiUnit="%"
-              kpiDelta={<>{t("fx.land.tile.02.delta.before")}<b>{t("fx.land.tile.02.delta.em")}</b></>}
-            />
-
-            <TileCard
-              href="/ville/paris/dette"
-              kind={t("fx.land.tile.05.kind")}
-              title={t("fx.land.tile.05.title")}
-              description={t("fx.land.tile.05.desc")}
-              preview={
-                <svg viewBox="0 0 200 100">
-                  <text x="62" y="98" textAnchor="middle" fontFamily="JetBrains Mono" fontSize="9" className="fill-muted" fill="#9099a6" letterSpacing="1">ACTIF</text>
-                  <text x="138" y="98" textAnchor="middle" fontFamily="JetBrains Mono" fontSize="9" className="fill-muted" fill="#9099a6" letterSpacing="1">PASSIF</text>
-                  <rect x="32" y="6"  width="60" height="40" className="fill" fill="#0a0a0a" />
-                  <rect x="32" y="48" width="60" height="24" className="fill" fill="#0a0a0a" opacity=".75" />
-                  <rect x="32" y="74" width="60" height="12" className="fill" fill="#0a0a0a" opacity=".5" />
-                  <rect x="108" y="6"  width="60" height="46" className="fill" fill="#0a0a0a" />
-                  <rect x="108" y="54" width="60" height="32" className="fill-sig" fill="#5f6672" />
-                </svg>
-              }
-              kpi="26"
-              kpiUnit="Md €"
-              kpiDelta={
-                <>
-                  {t("fx.land.tile.05.delta.before")}
-                  <b>{t("fx.land.tile.05.delta.em")}</b>
-                  {t("fx.land.tile.05.delta.after")}
-                </>
-              }
-            />
-
-            {/* ROW 2 : Investissements (SVG) · Subventions (TEXT) · Marchés (TEXT) */}
-            <TileCard
-              href="/ville/paris/investissements"
-              kind={t("fx.land.tile.03.kind")}
-              title={t("fx.land.tile.03.title")}
-              description={t("fx.land.tile.03.desc")}
-              preview={
-                <svg viewBox="0 0 200 100">
-                  <path d="M 28 30 Q 36 14 70 12 Q 110 10 140 18 Q 172 26 184 48 Q 188 72 168 86 Q 130 94 90 92 Q 50 90 28 72 Q 18 52 28 30 Z" className="stroke" fill="none" stroke="#0a0a0a" strokeWidth="1.5" />
-                  <path d="M 22 58 Q 60 50 90 60 Q 120 70 160 58 Q 180 52 190 48" className="stroke" stroke="#0a0a0a" strokeWidth="2" fill="none" opacity=".55" />
-                  {[[60,34],[86,42],[110,30],[140,36],[72,70],[104,78],[132,72],[158,68]].map(([x,y]) => (
-                    <circle key={`${x}-${y}`} cx={x} cy={y} r="2.5" className="fill" fill="#0a0a0a" />
-                  ))}
-                  <circle cx="118" cy="54" r="4" className="fill-sig" fill="#5f6672" />
-                </svg>
-              }
-              kpi="2,6"
-              kpiUnit="Md €"
-              kpiDelta={<>↑ <b>8,4 %</b> {t("fx.land.tile.vs")}{stats.lastExecutedYear}</>}
-            />
-
-            <TileCard
-              href="/ville/paris/subventions"
-              kind={t("fx.land.tile.04.kind")}
-              title={t("fx.land.tile.04.title")}
-              description={t("fx.land.tile.04.desc")}
-              preview={<TopListPreview items={stats.topBeneficiaires} />}
-              kpi="312"
-              kpiUnit="M €"
-              kpiDelta={<>↑ <b>3,3 %</b> {t("fx.land.tile.vs")}2023</>}
-            />
-
-            <TileCard
-              href="/ville/paris/marches"
-              kind={t("fx.land.tile.08.kind")}
-              title={t("fx.land.tile.08.title")}
-              description={
-                <>
-                  {t("fx.land.tile.08.desc")}
-                  <span className="fx-tile-caveat">{t("fx.land.tile.08.caveat")}</span>
-                </>
-              }
-              preview={<TopListPreview items={stats.topFournisseurs} />}
-              kpi="2,5"
-              kpiUnit="Md €"
-              kpiDelta={
-                <>
-                  {t("fx.land.tile.08.delta.before")}
-                  <b>{t("fx.land.tile.08.delta.em")}</b>
-                </>
-              }
-            />
-          </div>
-
-          <div className="fx-grid-foot">
-            <Link href="/ville/paris/budget">{t("fx.land.inside.see_all")}</Link>
-          </div>
+          <ul className="fx-chip-strip-list">
+            <li>
+              <Link href="/ville/paris/budget">
+                <span className="fx-chip-strip-title">{t("fx.land.chips.budget")}</span>
+                <span className="fx-chip-strip-desc">{t("fx.land.chips.budget_desc")}</span>
+                <span className="fx-chip-strip-arrow" aria-hidden="true">→</span>
+              </Link>
+            </li>
+            <li>
+              <Link href="/ville/paris/investissements">
+                <span className="fx-chip-strip-title">{t("fx.land.chips.invest")}</span>
+                <span className="fx-chip-strip-desc">{t("fx.land.chips.invest_desc")}</span>
+                <span className="fx-chip-strip-arrow" aria-hidden="true">→</span>
+              </Link>
+            </li>
+            <li>
+              <Link href="/ville/paris/subventions">
+                <span className="fx-chip-strip-title">{t("fx.land.chips.subv")}</span>
+                <span className="fx-chip-strip-desc">{t("fx.land.chips.subv_desc")}</span>
+                <span className="fx-chip-strip-arrow" aria-hidden="true">→</span>
+              </Link>
+            </li>
+            <li>
+              <Link href="/ville/paris/marches">
+                <span className="fx-chip-strip-title">{t("fx.land.chips.marches")}</span>
+                <span className="fx-chip-strip-desc">{t("fx.land.chips.marches_desc")}</span>
+                <span className="fx-chip-strip-arrow" aria-hidden="true">→</span>
+              </Link>
+            </li>
+            <li>
+              <Link href="/ville/paris/dette">
+                <span className="fx-chip-strip-title">{t("fx.land.chips.dette")}</span>
+                <span className="fx-chip-strip-desc">{t("fx.land.chips.dette_desc")}</span>
+                <span className="fx-chip-strip-arrow" aria-hidden="true">→</span>
+              </Link>
+            </li>
+            <li>
+              <Link href="/ville/paris/logement">
+                <span className="fx-chip-strip-title">{t("fx.land.chips.logement")}</span>
+                <span className="fx-chip-strip-desc">{t("fx.land.chips.logement_desc")}</span>
+                <span className="fx-chip-strip-arrow" aria-hidden="true">→</span>
+              </Link>
+            </li>
+          </ul>
         </div>
       </section>
 

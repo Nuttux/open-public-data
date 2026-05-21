@@ -232,6 +232,9 @@ export default function DataProvenance({
                   <a href="/methode#audit">
                     {isFr ? "Audit data quality →" : "Data quality audit →"}
                   </a>
+                  <a href={`/signalement?cat=erreur_chiffre&page=${encodeURIComponent(typeof window !== "undefined" ? window.location.pathname : "")}`}>
+                    {isFr ? "Signaler une erreur →" : "Report an error →"}
+                  </a>
                 </div>
               </>
             )}

@@ -78,7 +78,7 @@ export default function ArrondissementFiche({ arr }: { arr: ArrondissementFicheT
             return (
               <Link
                 key={p.id}
-                href={`/investissements/projet/${encodeURIComponent(p.id)}`}
+                href={`/ville/paris/investissements/projet/${encodeURIComponent(p.id)}`}
                 scroll={false}
                 className="fx-arr-top-item"
               >
