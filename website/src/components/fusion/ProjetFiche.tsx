@@ -289,14 +289,14 @@ export default function ProjetFiche({ projet, photo }: { projet: ProjetFicheType
                 <Link
                   key={m.numero_marche}
                   href={`/ville/paris/marches/contrat/${encodeURIComponent(m.numero_marche)}`}
+                  scroll={false}
+                  className="fx-row-link"
                   style={{
                     display: "block",
-                    padding: "12px 0",
+                    padding: "12px 6px",
                     borderBottom: "1px solid var(--rule)",
                     fontFamily: "var(--f-ui)",
                     fontSize: 13.5,
-                    color: "var(--ink)",
-                    textDecoration: "none",
                   }}
                 >
                   <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", marginBottom: 4, gap: 12 }}>
@@ -337,17 +337,17 @@ export default function ProjetFiche({ projet, photo }: { projet: ProjetFicheType
                 <Link
                   key={s.id}
                   href={`/ville/paris/investissements/projet/${encodeURIComponent(s.id)}`}
+                  scroll={false}
+                  className="fx-row-link"
                   style={{
                     display: "grid",
                     gridTemplateColumns: "1fr auto",
                     alignItems: "baseline",
                     gap: 12,
-                    padding: "10px 0",
+                    padding: "10px 6px",
                     borderBottom: "1px solid var(--rule)",
                     fontFamily: "var(--f-ui)",
                     fontSize: 13.5,
-                    color: "var(--ink)",
-                    textDecoration: "none",
                   }}
                 >
                   <span style={{ fontWeight: 500, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>
