@@ -310,6 +310,12 @@ export type LandingStats = {
   topFournisseurs: { name: string; siret: string; amount: number; year: number }[];
   /** Projet vedette pour la card 1 du hero deck — référencé par ID stable. */
   featuredProjet: FeaturedProjet | null;
+  /** Subvention vedette (Paris Musées). */
+  featuredAsso: FeaturedAsso | null;
+  /** Catégorie de marché vedette (espaces verts). */
+  featuredMarcheCategorie: FeaturedMarcheCategorie | null;
+  /** Bailleur vedette (Paris Habitat). */
+  featuredBailleur: FeaturedBailleur | null;
 };
 
 export type FeaturedProjet = {
@@ -319,13 +325,54 @@ export type FeaturedProjet = {
   montant: number;
   arrondissement: number;
   direction: string | null;
-  /** Chemin local servi depuis /public, choisi pour le critical render path. */
   photoPath: string;
   credit: string | null;
 };
 
+export type FeaturedAsso = {
+  slug: string;
+  nom: string;
+  year: number;
+  montant: number;
+  theme: string | null;
+  photoPath: string;
+  photoCredit: string | null;
+};
+
+export type FeaturedMarcheCategorie = {
+  slug: string;
+  nom: string;
+  year: number;
+  total: number;
+  nbMarches: number;
+  photoPath: string;
+  photoCredit: string | null;
+};
+
+export type FeaturedBailleur = {
+  slug: string;
+  nom: string;
+  year: number;
+  capitalRestant: number;
+  nbEmprunts: number;
+  photoPath: string;
+  photoCredit: string | null;
+};
+
 const HERO_FEATURED_PROJET_ID = "2024_18_51_019";
 const HERO_FEATURED_PROJET_PHOTO = "/photos/hero/piscine-belliard.jpg";
+
+const HERO_FEATURED_ASSO_NAME = "PARIS MUSEES";
+const HERO_FEATURED_ASSO_PHOTO = "/photos/hero/petit-palais.jpg";
+const HERO_FEATURED_ASSO_PHOTO_CREDIT = "Petit Palais · Wikimedia CC";
+
+const HERO_FEATURED_CATEGORIE_LIBELLE = "entretien des espaces verts";
+const HERO_FEATURED_CATEGORIE_PHOTO = "/photos/hero/buttes-chaumont.jpg";
+const HERO_FEATURED_CATEGORIE_PHOTO_CREDIT = "Parc des Buttes-Chaumont · Wikimedia CC";
+
+const HERO_FEATURED_BAILLEUR_SLUG = "paris-habitat";
+const HERO_FEATURED_BAILLEUR_PHOTO = "/photos/hero/cite-michelet.jpg";
+const HERO_FEATURED_BAILLEUR_PHOTO_CREDIT = "Cité Michelet (19ᵉ) · Wikimedia CC";
 
 function loadFeaturedProjet(): FeaturedProjet | null {
   try {
@@ -357,6 +404,117 @@ function loadFeaturedProjet(): FeaturedProjet | null {
       direction: p.direction ?? null,
       photoPath: HERO_FEATURED_PROJET_PHOTO,
       credit,
+    };
+  } catch {
+    return null;
+  }
+}
+
+function loadFeaturedAsso(): FeaturedAsso | null {
+  try {
+    const subvIdx = readJson<{
+      totalsByYear: Record<string, unknown>;
+      previewYears?: number[];
+    }>("subventions/index.json");
+    const previewSet = new Set(subvIdx.previewYears ?? []);
+    const years = Object.keys(subvIdx.totalsByYear)
+      .map(Number)
+      .filter((y) => !previewSet.has(y))
+      .sort((a, b) => b - a);
+    const yr = years[0];
+    if (!yr) return null;
+    const file = readJson<{
+      data: Array<{ beneficiaire: string; montant_total: number; thematique?: string }>;
+    }>(`subventions/beneficiaires_${yr}.json`);
+    const match = file.data.find(
+      (b) => b.beneficiaire.trim().toUpperCase() === HERO_FEATURED_ASSO_NAME,
+    );
+    if (!match) return null;
+    return {
+      slug: encodeURIComponent(match.beneficiaire.trim()),
+      nom: match.beneficiaire.trim(),
+      year: yr,
+      montant: match.montant_total,
+      theme: match.thematique ?? null,
+      photoPath: HERO_FEATURED_ASSO_PHOTO,
+      photoCredit: HERO_FEATURED_ASSO_PHOTO_CREDIT,
+    };
+  } catch {
+    return null;
+  }
+}
+
+function loadFeaturedMarcheCategorie(): FeaturedMarcheCategorie | null {
+  try {
+    const idx = readJson<{ availableYears?: number[] }>("marches-publics/index.json");
+    // Schema changed across years: granular categories ("entretien des espaces verts")
+    // existed pre-2025; recent years coarsened to ("Travaux", "Fournitures").
+    // Scan years descending and use the most recent year where the granular
+    // category still resolves.
+    const years = (idx.availableYears ?? []).slice().sort((a, b) => b - a);
+    for (const yr of years) {
+      try {
+        const file = readJson<{
+          data?: Array<{ categorie_libelle?: string; nature?: string; montant_max?: number; montant_min?: number }>;
+          marches?: Array<{ categorie_libelle?: string; nature?: string; montant_max?: number; montant_min?: number }>;
+        }>(`marches-publics/marches_${yr}.json`);
+        const rows = file.data ?? file.marches ?? [];
+        const matching = rows.filter(
+          (r) => (r.categorie_libelle ?? r.nature ?? "").toLowerCase() === HERO_FEATURED_CATEGORIE_LIBELLE,
+        );
+        if (matching.length === 0) continue;
+        const total = matching.reduce((s, r) => s + (Number(r.montant_max ?? r.montant_min) || 0), 0);
+        return {
+          slug: HERO_FEATURED_CATEGORIE_LIBELLE.replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, ""),
+          nom: "Entretien des espaces verts",
+          year: yr,
+          total,
+          nbMarches: matching.length,
+          photoPath: HERO_FEATURED_CATEGORIE_PHOTO,
+          photoCredit: HERO_FEATURED_CATEGORIE_PHOTO_CREDIT,
+        };
+      } catch {
+        continue;
+      }
+    }
+    return null;
+  } catch {
+    return null;
+  }
+}
+
+function loadFeaturedBailleur(): FeaturedBailleur | null {
+  try {
+    const idx = readJson<{ latestYear: number }>("hors_bilan_index.json");
+    const hb = readJson<{
+      year: number;
+      top_beneficiaires: Array<{
+        name: string;
+        capital_restant: number;
+        count_emprunts: number;
+      }>;
+    }>(`hors_bilan_${idx.latestYear}.json`);
+    // Match canonical slug "paris-habitat" against entries
+    const match = hb.top_beneficiaires.find((b) => {
+      const slug = b.name
+        .toLowerCase()
+        .replace(/\s*\([^)]*\)/g, "")
+        .replace(/\s+oph\b/i, "")
+        .normalize("NFKD")
+        .replace(/[̀-ͯ]/g, "")
+        .replace(/[^a-z0-9]+/g, "-")
+        .replace(/^-+|-+$/g, "");
+      return slug === HERO_FEATURED_BAILLEUR_SLUG;
+    });
+    if (!match) return null;
+    return {
+      slug: HERO_FEATURED_BAILLEUR_SLUG,
+      nom: "Paris Habitat",
+      year: hb.year,
+      capitalRestant: match.capital_restant,
+      nbEmprunts: match.count_emprunts,
+      photoPath: HERO_FEATURED_BAILLEUR_PHOTO,
+      photoCredit: HERO_FEATURED_BAILLEUR_PHOTO_CREDIT,
     };
   } catch {
     return null;
@@ -525,6 +683,9 @@ export function loadLandingStats(): LandingStats {
     topBeneficiaires,
     topFournisseurs,
     featuredProjet: loadFeaturedProjet(),
+    featuredAsso: loadFeaturedAsso(),
+    featuredMarcheCategorie: loadFeaturedMarcheCategorie(),
+    featuredBailleur: loadFeaturedBailleur(),
   };
 }
 
