@@ -6,7 +6,6 @@ import Link from "next/link";
 // fusion-data).
 import Navbar from "@/components/fusion/Navbar";
 import Footer from "@/components/fusion/Footer";
-import Button from "@/components/fusion/Button";
 import ScopeDropdown from "@/components/fusion/ScopeDropdown";
 import HeroBg from "@/components/fusion/HeroBg";
 import HeroDeck from "@/components/fusion/HeroDeck";
@@ -54,11 +53,6 @@ export default function LandingClient({ stats, posts }: Props) {
               subventionsSinceYear: stats.subventionsSinceYear,
             })}
           </p>
-          <div className="fx-ctas">
-            <Button variant="primary" href="/ville/paris/budget">
-              {fill("fx.land.cta.explore", { year: stats.year })}
-            </Button>
-          </div>
         </div>
       </section>
 
