@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Suspense } from "react";
 import "../fusion.css";
 import { buildLocaleAwareMetadata } from "@/lib/seo";
 import SignalementClient from "./SignalementClient";
@@ -18,5 +19,11 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export default function SignalementPage() {
-  return <SignalementClient />;
+  // useSearchParams() inside SignalementClient requires a Suspense boundary
+  // for Next.js to prerender the page during build.
+  return (
+    <Suspense fallback={null}>
+      <SignalementClient />
+    </Suspense>
+  );
 }

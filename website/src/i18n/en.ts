@@ -1179,8 +1179,8 @@ const en: Record<string, string> = {
   'fx.land.h1.em': 'public money',
   'fx.land.h1.mid': 'in ',
   'fx.land.h1.after': ' go?',
-  'fx.land.lede.vote': "We document French public finances from official accounts. Prototype on Paris: budget, contracts, grants, projects, debt, housing — each with its illustrated fact sheet and source.",
-  'fx.land.lede.execute': "We document French public finances from official accounts. Prototype on Paris: budget, contracts, grants, projects, debt, housing — each with its illustrated fact sheet and source.",
+  'fx.land.lede.vote': "Understanding where public money goes in Paris, line by line. Budget, public contracts, grants, debt, housing, projects — every number comes from the City's official accounts.",
+  'fx.land.lede.execute': "Understanding where public money goes in Paris, line by line. Budget, public contracts, grants, debt, housing, projects — every number comes from the City's official accounts.",
   /** @deprecated replaced by fx.land.lede.vote/execute (audit 2026-05-19 — annual/cumul mix) */
   'fx.land.lede': "€{budget} billion in public spending, {nbMarches} contracts, {nbSubventions} grants. Everything here, line by line, sourced from official accounts.",
   'fx.land.cta.explore': 'Open the {year} accounts →',
