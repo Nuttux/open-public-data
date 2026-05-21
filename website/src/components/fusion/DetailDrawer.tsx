@@ -269,6 +269,16 @@ export default function DetailDrawer({
           </div>
           <div className="fx-drawer-head-actions" ref={menuRef}>
             {shareUrl && (
+              <a
+                className="fx-drawer-iconbtn fx-drawer-fullpage"
+                href={shareUrl}
+                aria-label={t("fx.drawer.fullpage_aria")}
+                title={t("fx.drawer.fullpage_title")}
+              >
+                ↗ {t("fx.drawer.fullpage")}
+              </a>
+            )}
+            {shareUrl && (
               <div style={{ position: "relative" }}>
                 <button
                   type="button"
