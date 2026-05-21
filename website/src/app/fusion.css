@@ -93,6 +93,7 @@ body:has(.theme-fusion) > div.pb-24 { padding-bottom: 0 !important; }
 
 /* ───── NAVBAR ────────────────────────────────────────── */
 .theme-fusion .fx-nav {
+  position: -webkit-sticky; /* fallback for older Safari + some in-app browsers */
   position: sticky;
   top: 0;
   z-index: 30;
@@ -102,13 +103,15 @@ body:has(.theme-fusion) > div.pb-24 { padding-bottom: 0 !important; }
   display: grid;
   grid-template-columns: auto 1fr auto auto auto;
   align-items: stretch;
-  transition: transform .22s ease;
-  will-change: transform;
+  /* note: pas de transition/will-change ici — ils créent un nouveau stacking
+   * context qui peut casser position:sticky sur Safari in-app browsers
+   * (Telegram, Instagram, etc.). La fonction "auto-hide on scroll" n'est
+   * pas implémentée dans le code (la classe .fx-nav-hidden plus bas est
+   * orpheline, conservée pour compat si jamais réintroduite). */
 }
-.theme-fusion .fx-nav-hidden { transform: translateY(-100%); }
+.theme-fusion .fx-nav-hidden { transform: translateY(-100%); transition: transform .22s ease; }
 @media (prefers-reduced-motion: reduce) {
-  .theme-fusion .fx-nav { transition: none; }
-  .theme-fusion .fx-nav-hidden { transform: none; }
+  .theme-fusion .fx-nav-hidden { transform: none; transition: none; }
 }
 
 .theme-fusion .fx-brand {
