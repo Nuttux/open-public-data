@@ -9,8 +9,23 @@ import { Navbar, Footer, BlogTimeBars } from "@/components/fusion";
 import { getAllPostSlugs, getPostBySlug } from "@/lib/blog";
 import { readLocale } from "@/lib/seo";
 
+/** Lien interne → Next Link (déclenche les drawer intercepts au root).
+ *  Lien externe / mailto → <a> classique avec target=_blank. */
+function MdxLink({ href, children }: { href?: string; children?: React.ReactNode }) {
+  if (!href) return <a>{children}</a>;
+  const isExternal = href.startsWith("http") || href.startsWith("mailto:");
+  if (isExternal) {
+    return (
+      <a href={href} target="_blank" rel="noopener noreferrer">
+        {children}
+      </a>
+    );
+  }
+  return <Link href={href}>{children}</Link>;
+}
+
 /** Composants exposés aux articles MDX. À étendre au fur et à mesure. */
-const mdxComponents = { BlogTimeBars };
+const mdxComponents = { BlogTimeBars, a: MdxLink };
 
 type Params = { slug: string };
 

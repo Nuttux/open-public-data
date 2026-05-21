@@ -1,4 +1,5 @@
 import type { MDXComponents } from "mdx/types";
+import Link from "next/link";
 
 /**
  * Custom MDX components for blog styling
@@ -22,17 +23,30 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     p: ({ children }) => (
       <p className="text-slate-300 leading-relaxed mb-4">{children}</p>
     ),
-    // Links
-    a: ({ href, children }) => (
-      <a
-        href={href}
-        className="text-emerald-400 hover:text-emerald-300 underline underline-offset-2 transition-colors"
-        target={href?.startsWith("http") ? "_blank" : undefined}
-        rel={href?.startsWith("http") ? "noopener noreferrer" : undefined}
-      >
-        {children}
-      </a>
-    ),
+    // Links — internal hrefs use Next Link so root drawer intercepts fire
+    a: ({ href, children }) => {
+      const isExternal = !!href && (href.startsWith("http") || href.startsWith("mailto:"));
+      if (isExternal || !href) {
+        return (
+          <a
+            href={href}
+            className="text-emerald-400 hover:text-emerald-300 underline underline-offset-2 transition-colors"
+            target={isExternal ? "_blank" : undefined}
+            rel={isExternal ? "noopener noreferrer" : undefined}
+          >
+            {children}
+          </a>
+        );
+      }
+      return (
+        <Link
+          href={href}
+          className="text-emerald-400 hover:text-emerald-300 underline underline-offset-2 transition-colors"
+        >
+          {children}
+        </Link>
+      );
+    },
     // Lists
     ul: ({ children }) => (
       <ul className="list-disc list-inside text-slate-300 mb-4 space-y-2 ml-4">
