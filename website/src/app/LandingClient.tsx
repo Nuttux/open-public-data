@@ -68,14 +68,9 @@ export default function LandingClient({ stats, posts }: Props) {
       {/* HERO DECK — remplace SCALE : 4 cards concrètes, cliquables vers fiches */}
       <HeroDeck stats={stats} />
 
-      {/* ACTE 2 — Échelle : où vont les 462€/mois */}
+      {/* ACTE 2 — Échelle : où vont les 462€/mois (sans H2, le chiffre EST le titre) */}
       <section className="fx-echelle" id="echelle">
         <div className="fx-wrap">
-          <h2 className="fx-echelle-h2">
-            {t("fx.land.echelle.h2.before")}
-            <em>{t("fx.land.echelle.h2.em")}</em>
-            {t("fx.land.echelle.h2.dot")}
-          </h2>
           <p className="fx-echelle-big tnum">
             <span className="fx-echelle-num">{fmtInt(stats.perCapitaMonth)}</span>
             <span className="fx-echelle-u">€</span>
