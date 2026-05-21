@@ -565,14 +565,13 @@ body:has(.theme-fusion) > div.pb-24 { padding-bottom: 0 !important; }
 .theme-fusion .fx-hero-num-cap b { color: var(--ink); font-weight: 600; }
 
 /* ───── HERO DECK ────────────────────────────────────── */
-/* Padding-top réduit : continuité visuelle avec le Hero (plus de border entre les deux),
- * le Deck devient le punchline du Hero — "Voilà à quoi ça ressemble". */
+/* Pas de H2 ni border-top : le deck est la continuation visuelle du Hero. */
 .theme-fusion .fx-hero-deck {
-  padding: 32px 0 56px;
+  padding: 16px 0 32px;
   border-bottom: 1px solid var(--ink);
 }
 @media (max-width: 768px) {
-  .theme-fusion .fx-hero-deck { padding: 24px 0 40px; }
+  .theme-fusion .fx-hero-deck { padding: 16px 0 32px; }
 }
 .theme-fusion .fx-hero-deck-h2 {
   font-family: var(--f-disp);
@@ -5103,10 +5102,13 @@ body:has(.theme-fusion) > div.pb-24 { padding-bottom: 0 !important; }
 }
 
 /* Hero */
+/* Hero sans lede : juste le H1 (style éditorial). Le HeroDeck + HeroMarquee
+ * suivent et tiennent dans le 1er fold avec le marquee collé au bas.
+ * Pas d'overflow:hidden ici : le menu dropdown du H1 (ScopeDropdown) doit
+ * pouvoir sortir verticalement. Le HeroBg est contraint via bottom:0. */
 .theme-fusion .fx-hero {
-  padding: 72px 0 48px;
+  padding: 24px 0 24px;
   position: relative;
-  overflow: hidden;
 }
 .theme-fusion .fx-hero .fx-wrap { position: relative; z-index: 1; }
 .theme-fusion .fx-hero h1 {
@@ -5132,8 +5134,8 @@ body:has(.theme-fusion) > div.pb-24 { padding-bottom: 0 !important; }
 
 .theme-fusion .fx-hero-bg {
   position: absolute;
-  right: -40px;
-  bottom: -30px;
+  right: 0;
+  bottom: 0;
   width: min(520px, 62%);
   height: auto;
   color: var(--ink);

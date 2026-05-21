@@ -43,24 +43,14 @@ export default function LandingClient({ stats, posts }: Props) {
             <ScopeDropdown variant="h1" />
             {t("fx.land.h1.after")}
           </h1>
-          <p className="fx-lede">
-            {fill(stats.budgetType === "vote" ? "fx.land.lede.vote" : "fx.land.lede.execute", {
-              budget: fmtBillions(stats.totalDepenses),
-              year: stats.year,
-              nbMarches: fmtInt(Math.floor(stats.nbMarchesCumul / 1000) * 1000),
-              nbSubventions: fmtInt(Math.floor(stats.nbSubventionsCumul / 1000) * 1000),
-              marchesSinceYear: stats.marchesSinceYear,
-              subventionsSinceYear: stats.subventionsSinceYear,
-            })}
-          </p>
         </div>
       </section>
 
-      {/* HERO DECK — 4 cards concrètes, cliquables vers fiches */}
+      {/* HERO DECK — 4 cards concrètes, juste après le Hero */}
       <HeroDeck stats={stats} />
 
-      {/* HERO MARQUEE — bande défilante en aval du deck : montre l'exhaustivité
-       *  ("ce n'est pas QUE ces 4 cards, c'est aussi tout ça") */}
+      {/* HERO MARQUEE — bandeau défilant après le deck (signal "ça vit, y a plein
+       *  d'entités à explorer") */}
       <HeroMarquee />
 
       {/* ACTE 2 — Échelle : où vont les 462€/mois (sans H2, le chiffre EST le titre) */}
