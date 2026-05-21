@@ -1,8 +1,8 @@
-# ARCHITECTURE DATA MODELLING - PARIS BUDGET DASHBOARD
+# Architecture & modélisation — France Open Data
 
-> Mis à jour le 2026-02-09. Pipeline complet validé (audit 12/12 OK).
-> Nouvelles entités : `core_budget_vote` (2023-2026 PDF), `mart_vote_vs_execute`.
-> Voir aussi : [`data-quality.md`](./data-quality.md) pour les limites, observations et pistes d'amélioration.
+> Dernière mise à jour : 2026-05-21
+>
+> Voir aussi : [`data-quality.md`](./data-quality.md) pour les limites, observations et règles de qualité.
 
 ## Table des matières
 
@@ -10,13 +10,11 @@
 2. [Sources de données](#2-sources-de-données)
 3. [Architecture des couches](#3-architecture-des-couches)
 4. [Conventions de nommage](#4-conventions-de-nommage)
-5. [Stratégie de jointure](#5-stratégie-de-jointure)
+5. [Stratégies de jointure et règles métier](#5-stratégies-de-jointure-et-règles-métier)
 6. [Enrichissement](#6-enrichissement)
-7. [Scripts Python](#7-scripts-python)
-8. [Export et Frontend](#8-export-et-frontend)
-9. [Qualité des données](#9-qualité-des-données)
-10. [Structure des fichiers](#11-structure-des-fichiers)
-11. [Workflow de mise à jour](#12-workflow-de-mise-à-jour)
+7. [Multi-collectivités](#7-multi-collectivités)
+8. [Export et frontend](#8-export-et-frontend)
+9. [Workflow de mise à jour](#9-workflow-de-mise-à-jour)
 
 ---
 
@@ -24,231 +22,229 @@
 
 ### 1.1 Objectif
 
-Dashboard interactif pour les Parisiens, organisé par entité de données :
-- **Budget** : Sankey, évolution, comparaison Voté/Exécuté, estimations 2025-2026
-- **Patrimoine** : Actif/Passif, dette, épargne brute
-- **Subventions** : Treemap par thématique, table filtrable bénéficiaires
-- **Investissements** : Projets AP géolocalisés par arrondissement
-- **Logements** : Logements sociaux financés, choroplèthe
+Pipeline qui ingère, normalise et enrichit les données ouvertes publiées par les administrations françaises (collectivités, État, opérateurs publics) puis exporte des JSON statiques consommés par le frontend `franceopendata.org`.
 
-> **Insight clé** : Les subventions vont à des ORGANISATIONS, pas à des LIEUX.
-> Pas de carte pour les subventions — uniquement classification thématique avec drill-down.
+Couverture actuelle :
+- **Paris** : budget M57, marchés publics (Paris + DECP nationale), subventions, investissements géolocalisés, logements sociaux, bilan comptable, dette garantie (hors-bilan), délibérations
+- **Marseille** : budget M57 (PoC v1)
+- **National** : DECP, INSEE SIRENE, OFGL, DRIHL, DGFiP
 
 ### 1.2 Principes architecturaux
 
 | Principe | Description |
 |----------|-------------|
-| **OBT (One Big Table)** | Tables finales dénormalisées, une OBT par entité |
-| **Exécuté ≠ Voté** | `core_budget` (CA) et `core_budget_vote` (BP) sont des entités séparées. Jamais UNIONés. Comparaison dans `mart_vote_vs_execute` uniquement |
-| **Static Data First** | JSON pré-calculés, pas d'API live |
-| **Enrichissement incrémental** | Seeds = cache persistant, ne traite que les nouveaux records |
+| **Layering strict** | `raw → staging → intermediate → core → marts` — pas de raccourci, mart ne lit jamais staging |
+| **OBT (One Big Table)** | Une table dénormalisée wide & flat par entité dans `core_` |
+| **Exécuté ≠ Voté** | `core_budget` (CA) et `core_budget_vote` (BP) sont **deux entités séparées**. Jamais UNIONées en core. Comparaison dans `mart_vote_vs_execute` uniquement |
+| **Static data first** | JSON pré-calculés et versionnés, pas d'API live |
+| **Enrichissement incrémental** | Seeds CSV = cache persistant, ne traite que les nouveaux records |
 | **Séparation données/enrichissement** | Préfixe `ode_` pour distinguer original vs enrichi |
-| **LLM hors pipeline** | LLM uniquement dans scripts Python, jamais dans dbt |
+| **LLM hors pipeline dbt** | LLM uniquement dans scripts Python d'enrichissement, jamais dans dbt |
+| **Multi-collectivités** | Une seed `city_constants` + des marts city-specific (Paris d'abord, Marseille en v1, autres villes par fork) |
 
 ### 1.3 Diagramme global
 
 ```
-┌─────────────────────────────────────────────────────────────────────────────────┐
-│                              OPENDATA PARIS API                                  │
-│  (7 datasets : budget CA, budget BV, AP, subventions, assoc, logements, marchés)│
-└────────────────────────────────┬────────────────────────────────────────────────┘
-                                 │
-                    scripts/sync_opendata.py
-                    (SKIP si table déjà à jour)
-                                 │
-                                 ▼
-┌─────────────────────────────────────────────────────────────────────────────────┐
-│                         BIGQUERY - raw                                           │
-│  Tables brutes, noms = dataset_id OpenData (snake_case), AUCUNE transformation  │
-└────────────────────────────────┬────────────────────────────────────────────────┘
-                                 │
-                              dbt run
-                                 │
-┌────────────────────────────────┼────────────────────────────────────────────────┐
-│  STAGING (Views)               │  Nettoyage, typage, clés standardisées        │
-├────────────────────────────────┼────────────────────────────────────────────────┤
-│  SEEDS (CSV)                   │  Mappings statiques + Caches enrichissement   │
-│  ← Scripts Python (hors dbt)   │  (incrémental, asyncio, LLM batch)            │
-├────────────────────────────────┼────────────────────────────────────────────────┤
-│  INTERMEDIATE (Tables)         │  JOIN staging + seeds → colonnes ode_*        │
-├────────────────────────────────┼────────────────────────────────────────────────┤
-│  CORE (Tables OBT)             │  1 table wide par entité                      │
-│  core_budget         (CA)      │  Budget EXÉCUTÉ (source de vérité)             │
-│  core_budget_vote    (BV)      │  Budget VOTÉ (prévisionnel)                    │
-│  core_subventions              │  (+ ap_projets, logements, bilan)              │
-│  core_ap_projets               │                                                │
-│  core_logements_sociaux        │                                                │
-├────────────────────────────────┼────────────────────────────────────────────────┤
-│  MARTS (Views)                 │  Agrégations métier (Sankey, cartes, stats)   │
-└────────────────────────────────┼────────────────────────────────────────────────┘
-                                 │
-                  scripts/export_*.py
-                                 │
-                                 ▼
-┌─────────────────────────────────────────────────────────────────────────────────┐
-│                      website/public/data/                                        │
-│            JSON statiques pour Next.js (par entité, avec type_budget)           │
-└─────────────────────────────────────────────────────────────────────────────────┘
+Sources publiques (10+)
+        │
+        ▼  scripts/sync/*.py (idempotent, WRITE_TRUNCATE)
+┌────────────────────────────────────────────────┐
+│  BIGQUERY — raw                                 │
+│  Tables = dataset_id snake_case, zéro transfo  │
+└────────────────────┬───────────────────────────┘
+                     │  dbt run
+        ┌────────────┼──────────────┐
+        ▼            ▼              ▼
+   STAGING       SEEDS         (autres staging)
+   (Views)       (CSV)
+   Nettoyage,    Mappings        ← scripts/enrich/*.py
+   typage,       statiques +     (LLM batch, asyncio)
+   clés std.     caches LLM
+        │            │
+        └────┬───────┘
+             ▼
+       INTERMEDIATE (Tables)
+       Joins + enrichissements → colonnes ode_*
+             │
+             ▼
+       CORE (Tables OBT, row-level)
+       Une table wide par entité — 14 entités actuellement
+             │
+             ▼
+       MARTS (Views)
+       Agrégations métier pour le frontend (~28 marts)
+             │
+             ▼  scripts/export/*.py
+       website/public/data/*.json
 ```
 
 ---
 
 ## 2. Sources de données
 
-### 2.1 Inventaire OpenData Paris
+### 2.1 OpenData Paris (`opendata.paris.fr`)
 
-> **Convention raw** : Nom table = dataset_id OpenData en snake_case (aucune abréviation)
+| Dataset | Table raw | Records | Usage |
+|---|---|---|---|
+| `comptes-administratifs-budgets-principaux-*` | `comptes_administratifs_budgets_principaux_*` | ~25k | Budget exécuté (CA) |
+| `comptes-administratifs-autorisations-de-programmes-*` | `comptes_administratifs_autorisations_*` | ~7k | Projets AP (dataset gelé 2022) |
+| `subventions-versees-annexe-compte-administratif-*` | `subventions_versees_*` | ~47k | Subventions versées |
+| `subventions-associations-votees-` | `subventions_associations_votees` | ~100k | Détail bénéficiaires (SIRET) |
+| `logements-sociaux-finances-a-paris` | `logements_sociaux_finances_a_paris` | ~4k | Logements déjà géolocalisés |
+| `liste-des-marches-de-la-collectivite-parisienne` | `liste_des_marches_*` | ~17k | Marchés publics Paris |
+| `budgets-votes-principaux-a-partir-de-2019-*` | `budgets_votes_principaux_*` | ~30k | Budget voté (BV) |
+| `bilan-comptable` | `bilan_comptable` | 1 ligne/an | Actif/passif consolidé |
+| `dette-garantie` | `dette_garantie` | ~10k | Hors-bilan, dette garantie aux bailleurs |
 
-| # | Dataset | Table raw | Records | Usage |
-|---|---------|-----------|---------|-------|
-| 1 | `comptes-administratifs-budgets-principaux-*` | `comptes_administratifs_budgets_principaux_*` | ~25k | Budget exécuté (CA) |
-| 2 | `comptes-administratifs-autorisations-de-programmes-*` | `comptes_administratifs_autorisations_*` | ~7k | Projets AP |
-| 3 | `subventions-versees-annexe-compte-administratif-*` | `subventions_versees_*` | ~47k | Subventions |
-| 4 | `subventions-associations-votees-` | `subventions_associations_votees` | ~100k | Détail SIRET |
-| 5 | `logements-sociaux-finances-a-paris` | `logements_sociaux_finances_a_paris` | ~4k | Déjà géolocalisé |
-| 6 | `liste-des-marches-de-la-collectivite-parisienne` | `liste_des_marches_*` | ~17k | Contexte (non sommable) |
-| 7 | `budgets-votes-principaux-a-partir-de-2019-*` | `budgets_votes_principaux_*` | ~30k | Budget voté (BV) |
+### 2.2 Sources nationales / État
 
-### 2.2 Colonnes clés
+| Source | Table raw | Apport |
+|---|---|---|
+| **DECP** (data.gouv.fr) | `decp_marches_paris_*` | Marchés consolidés (CCAG, CPV, lieu_execution, offres_recues, montant_notifie, clauses RSE) |
+| **INSEE SIRENE** | `sirene_companies` | Registre entreprises (SIRET, APE, effectifs, établissements) — enrichissement tier2 gratuit |
+| **Base Adresse Nationale** | _(via API)_ | Géocodage adresses projets investissement |
+| **DRIHL Île-de-France** | `drihl_paris_*` | Inventaire SRU, parc social, Socle demandes/attributions logement |
+| **OFGL** | seeds `seed_ofgl_*` | Référentiels finances locales (subsectors, niveaux 2/3, comparaisons inter-collectivités) |
+| **DGFiP** | `dgfip_*` | Référentiels fiscalité, tranches |
+| **DREES, CNAM, CSG** | seeds dédiés | Référentiels sécurité sociale et retraites (contexte) |
 
-**CA Budget Principal (source de vérité — exécuté)** :
-`exercice_comptable`, `section_budgetaire_i_f`, `sens_depense_recette`, `type_d_operation_r_o_i_m`, `chapitre_budgetaire_cle`, `nature_budgetaire_cle`, `fonction_cle`, `mandate_titre_apres_regul`
+### 2.3 Sources PDF (extraction in-pipeline)
 
-**BV Budget Voté (prévisionnel)** :
-Structure quasi-identique au CA. Différences :
-- `credits_votes_pmt` au lieu de `mandate_titre_apres_regul`
-- `type_du_vote` : "Budget primitif", "DM1", "DM2"...
-- Couverture : 2019-2026 (CA s'arrête à 2024)
+| Type | Contenu | Années | Source |
+|---|---|---|---|
+| **CA IL** | Investissements localisés (mandaté) | 2018-2024 | `cdn.paris.fr` annexes CA |
+| **BP IL** | Investissements localisés (voté) | 2025-2026 | `cdn.paris.fr` annexes BP |
+| **BP Budget** | Budget voté détaillé chapitre/nature/fonction | 2023-2026 | `cdn.paris.fr` annexes BP |
+| **Subventions B8.1.1** | Subventions versées 2020-2021 | 2020-2021 | `cdn.paris.fr` annexes B8.1.1 (combler trou portail) |
+| **Délibérations Conseil de Paris** | Articles de séance | 2019-2025 | `api.paris.fr/delibs` |
 
-### 2.3 Sources PDF
-
-| Type | Contenu | Années | Sémantique |
-|------|---------|--------|------------|
-| **CA IL** | Investissements réellement dépensés | 2018-2024 | Mandaté (exécuté) |
-| **BP IL** | Investissements votés/prévus | 2025-2026 | Crédits votés (prévisionnel) |
-| **BP Budget** | Budget voté par chapitre/nature/fonction | 2023-2026 | Crédits votés (prévisionnel) |
-
-> Les BP IL et BP Budget sont des données PRÉVISIONNELLES.
-> Le frontend DOIT afficher un badge "Voté" pour les années 2025-2026.
-
-**PDFs CA IL** :
-- 2024: `ca-2024-annexe-il-UtMj.PDF`
-- 2023: `ca-2023-investissements-localises-tJO3.pdf`
-- 2022: `09-ca-2022-investissements-localises-3owH.pdf`
-- 2021: `c86533a2c6f36bfe643e8dffb782c772.pdf`
-
-**PDFs BP IL** :
-- 2025: `bp-2025-editique-il-Yt2X.pdf`
-- 2026: À récupérer sur paris.fr
+> Les BP IL, BP Budget et budgets 2025-2026 sont des données **prévisionnelles**. Le frontend affiche un badge "Voté" pour les années non-clôturées.
 
 ---
 
 ## 3. Architecture des couches
 
-### 3.1 RAW Layer
+### 3.1 RAW
 
-Miroir exact d'OpenData Paris. Aucune transformation. Sync = `WRITE_TRUNCATE`.
+Miroir exact des sources. Aucune transformation. Sync = `WRITE_TRUNCATE` (idempotent).
+Convention : nom de table = `{dataset_id}` en snake_case sans abréviation.
 
-### 3.2 STAGING Layer (Views)
+### 3.2 STAGING (Views)
 
 Nettoyage, typage, renommage standardisé. Pas de logique métier. 1 staging = 1 source brute.
 
-| Modèle | Source | Transformations clés |
-|--------|--------|---------------------|
-| `stg_budget_principal` | CA budget | Filtre `type_op='Réel'`, typage montant, renommage FR |
-| `stg_budget_vote` | BV budget (OpenData CSV) | Filtre `type_op='Réel'` + `type_vote='BP'`, `credits_votes_pmt` → montant |
-| `stg_pdf_budget_vote` | Seeds PDF budget voté | UNION `seed_pdf_budget_vote_{2023..2026}`, normalise chapitre_code (retire tirets) |
-| `stg_ap_projets` | CA AP | Filtre Réel+Dépenses, extraction arrondissement regex |
-| `stg_subventions_all` | CA subventions | Parse année, normalisation nom bénéficiaire |
-| `stg_associations` | Associations votées | SIRET padding 14 chars, normalisation nom |
+Modèles clés actuels :
+
+| Modèle | Source | Transformations |
+|---|---|---|
+| `stg_budget_principal` | CA budget | Filtre `type_op='Réel'`, typage, renommage FR |
+| `stg_budget_vote` | BV budget CSV | Filtre BP initial (pas DM), `credits_votes_pmt` → montant |
+| `stg_pdf_budget_vote` | Seeds PDF BV | UNION `seed_pdf_budget_vote_{2023..2026}`, normalise codes |
+| `stg_ap_projets` | CA AP | Filtre Réel+Dépenses, extraction arrondissement par regex |
+| `stg_pdf_investissements_localises` | Seeds PDF IL | UNION CA IL + BP IL |
+| `stg_subventions_all` | CA subventions + PDF B8.1.1 | Fusion 2018-2024, normalisation nom bénéficiaire |
+| `stg_associations` | Associations votées | SIRET padding 14, normalisation nom |
 | `stg_logements_sociaux` | Logements | Parse `geo_point_2d` → lat/lng |
-| `stg_marches_publics` | Marchés | Typage dates et montants |
+| `stg_marches_publics` | Marchés Paris | Typage dates et montants |
+| `stg_decp_marches_paris` | DECP filtré SIRET 217500* | Parse JSON multi-titulaires, normalisation montants |
+| `stg_bilan_comptable` | Bilan | Pivot lignes actif/passif |
+| `stg_dette_garantie` | Hors-bilan | Capital restant dû par bailleur, par année |
+| `stg_drihl_paris` | DRIHL | Demandes/attributions par arrondissement |
+| `stg_sirene_companies` | INSEE | SIRET, APE, effectifs |
+| `stg_deliberations_*` | API Paris | Sessions, délibérations, articles |
+| `stg_marseille_budget` | OpenData Marseille | M57 Marseille (PoC) |
+| `stg_match_projet_marches` | Seed manuel | Appariements projet ↔ marché (hash objet+titulaire) |
 
-> `stg_budget_vote` filtre `type_du_vote LIKE '%budget primitif%'` pour n'avoir que le BP initial (pas les DM).
-
-### 3.3 SEEDS Layer (CSV)
-
-Fichiers CSV versionnés dans Git. Deux types :
+### 3.3 SEEDS (CSV versionnés)
 
 **Mappings statiques** :
 
-| Seed | Contenu | Records |
-|------|---------|---------|
-| `seed_mapping_thematiques` | chapitre_code + fonction_prefix → thématique | ~15 |
-| `seed_mapping_directions` | direction → thématique | ~25 |
-| `seed_mapping_beneficiaires` | pattern regex → thématique | ~72 |
-| `seed_mapping_entites` | pattern → nom_canonique (CASVP, etc.) | ~10 |
-| `seed_lieux_connus` | pattern → adresse exacte (Piscine Pontoise, Gymnase Japy...) | ~50 |
+| Seed | Contenu |
+|---|---|
+| `seed_mapping_thematiques` | chapitre + fonction → thématique dashboard |
+| `seed_mapping_directions` | direction → thématique |
+| `seed_mapping_beneficiaires` | pattern regex → thématique subvention |
+| `seed_mapping_entites` | pattern → nom canonique (CASVP, RIVP, etc.) |
+| `seed_lieux_connus` | pattern → adresse exacte (Piscine Pontoise, Gymnase Japy, etc.) |
+| `seed_city_constants` | Constantes par ville (population, surface, codes INSEE) |
+| `seed_communes_cibles` | Liste des communes à ingérer (Paris, Marseille, …) |
+| `seed_match_projet_marches` | Appariements manuels projet ↔ marché |
 
-**Caches enrichissement (générés par scripts)** :
+**Référentiels nationaux** :
 
-| Seed | Source | Records |
-|------|--------|---------|
-| `seed_cache_thematique_beneficiaires` | LLM Gemini | 1,244 |
-| `seed_cache_geo_ap` | LLM Gemini | 483 |
-| `seed_pdf_budget_vote_{2023..2026}` | `extract_pdf_budget_vote.py` | ~1600-1900/an |
-| `seed_pdf_investissements_{2022..2024}` | `extract_pdf_investments.py` | variable |
+| Seed | Source |
+|---|---|
+| `seed_apul_subsectors`, `seed_ofgl_*` | OFGL — référentiels finances locales |
+| `seed_dette_charges` | Charges financières par catégorie |
+| `seed_drees_retraites_branches`, `seed_csg_retraite_tranches` | DREES — retraites |
+| `seed_cnam_l4_medecine_ville` | CNAM |
+| `seed_etat_autres_ministeres`, `seed_education_niveaux` | État |
+| `seed_legal_thresholds`, `seed_fiscal_constants` | Seuils légaux et constantes fiscales |
+| `seed_drihl_paris_2024` | Snapshot DRIHL |
 
-### 3.4 INTERMEDIATE Layer (Tables)
+**Caches d'enrichissement (générés par scripts Python)** :
+
+| Seed | Source script | Records |
+|---|---|---|
+| `seed_cache_thematique_beneficiaires` | LLM (Claude/Gemini) | 1k+ |
+| `seed_cache_geo_ap` | LLM | 500+ |
+| `seed_cache_siret_by_name` | API recherche-entreprises | 5k+ |
+| `seed_pdf_budget_vote_{2023..2026}` | `extract_pdf_budget_vote.py` | 1500-1900/an |
+| `seed_pdf_investissements_{2022..2024}` | `extract_pdf_investments.py` | ~400/an |
+
+### 3.4 INTERMEDIATE (Tables)
 
 JOIN staging + seeds → ajout colonnes `ode_*`.
 
-> **RÈGLE** : La consolidation de sources multiples (PDF + CSV) se fait TOUJOURS en INT, jamais en staging.
+> **Règle stricte** : la consolidation de sources multiples (PDF + CSV, Paris + DECP) se fait toujours en intermediate, jamais en staging.
 
-| Modèle | Sources | Enrichissements |
-|--------|---------|-----------------|
-| `int_subventions_enrichies` | `stg_subventions_all` + `stg_associations` + seeds | Cascade thématique : Pattern → Direction → LLM → Default. Ajout `ode_thematique`, `ode_type_organisme` |
-| `int_ap_projets_enrichis` | `stg_ap_projets` + `seed_lieux_connus` + `seed_cache_geo_ap` | Cascade géoloc : Regex → Lieu connu → LLM. Ajout `ode_arrondissement`, `ode_latitude/longitude` |
+Exemples :
+- `int_subventions_enrichies` — cascade thématique (pattern → direction → LLM → default)
+- `int_ap_projets_enrichis` — cascade géoloc (regex → lieu connu → LLM)
+- `int_marches_publics_fusionnes` — JOIN Paris ⊕ DECP via `SUBSTR(numero_marche, 5) = decp_id`
 
-### 3.5 CORE Layer (Tables OBT)
+### 3.5 CORE (Tables OBT, row-level)
 
-Une table dénormalisée (wide & flat) par entité. Grain le plus fin possible.
+Une table dénormalisée wide & flat par entité. Grain le plus fin possible.
 
-| Core table | Source | Grain | Années | Colonnes ode_* |
-|------------|--------|-------|--------|----------------|
+| Core table | Source | Grain | Couverture | Colonnes ode_* clés |
+|---|---|---|---|---|
 | `core_budget` | `stg_budget_principal` | (annee, section, chapitre, nature, fonction, sens_flux) | 2019-2024 | `ode_thematique`, `ode_categorie_flux` |
-| `core_budget_vote` | `stg_pdf_budget_vote` | idem | 2023-2026 | `ode_thematique`, `ode_categorie_flux` (même logique que core_budget) |
-| `core_subventions` | `int_subventions_enrichies` | (annee, beneficiaire_normalise, collectivite) | 2018-2024 | `ode_thematique`, `ode_type_organisme`, `ode_source_thematique` |
-| `core_ap_projets` | `int_ap_projets_enrichis` | (annee, ap_code) | 2018-2022 | `ode_arrondissement`, `ode_latitude/longitude`, `ode_confiance` |
+| `core_budget_vote` | `stg_pdf_budget_vote` | idem | 2023-2026 | `ode_thematique`, `ode_categorie_flux` |
+| `core_subventions` | `int_subventions_enrichies` | (annee, beneficiaire_normalise) | 2018-2024 | `ode_thematique`, `ode_type_organisme`, `ode_source_thematique`, `ode_beneficiaire_canonique` |
+| `core_ap_projets` | `int_ap_projets_enrichis` | (annee, ap_code) | 2018-2022 (gelé) | `ode_arrondissement`, `ode_latitude/longitude`, `ode_confiance` |
+| `core_pdf_investissements_localises` | `stg_pdf_investissements_localises` | (annee, ap_code) | 2018-2026 | Géolocs IL prend le relai après gel du dataset AP |
 | `core_logements_sociaux` | `stg_logements_sociaux` | (id_livraison) | 2001-2024 | `ode_arrondissement_affichage` (Paris Centre 1-4 → 0) |
+| `core_logement_attente_arr` | `stg_drihl_paris` | (arrondissement) | 2024 | Demandes / attributions / tension |
+| `core_marches_publics` | `int_marches_publics_fusionnes` | (numero_marche, titulaire) | 2013-2026 | Fusion Paris + DECP, dédup multi-titulaires |
+| `core_bilan_comptable` | `stg_bilan_comptable` | (annee, ligne) | 2019-2024 | Actif/passif normalisé |
+| `core_dette_garantie` | `stg_dette_garantie` | (emprunt_id, annee) | 2019-2024 | Capital restant dû, bailleur, garant |
+| `core_deliberations` | `stg_deliberations_*` | (session, delib_id, article_id) | 2019-2025 | Bénéficiaires extraits par LLM |
+| `core_sirene_companies` | `stg_sirene_companies` | (siret) | snapshot | Cache SIRET enrichi |
+| `core_enrichment_caches` | meta | union des caches LLM | — | Provenance/coût enrichissement |
+| `core_marseille_budget` | `stg_marseille_budget` | (annee, section, chapitre, nature) | 2019-2024 | Marseille M57 PoC |
 
-**Principe architectural critique** :
+### 3.6 MARTS (Views)
 
-> `core_budget` (CA) et `core_budget_vote` (BV) sont deux entités distinctes.
-> Elles ne sont JAMAIS UNIONées dans la couche core.
-> La comparaison se fait uniquement dans `mart_vote_vs_execute`.
-> Les marts existants (Sankey, évolution...) continuent de lire `core_budget` sans modification.
+Agrégations métier. C'est ici qu'on JOIN/compare/aggregate les entités pour le frontend.
 
-**core_budget_vote** utilise la même logique de mapping thématique que `core_budget` (seed_mapping_thematiques + fallback CASE par chapitre_code) et la même catégorisation des flux par nature_code.
+| Catégorie | Marts | Fonction |
+|---|---|---|
+| Budget | `mart_sankey`, `mart_budget_sankey_lines`, `mart_budget_nature`, `mart_budget_recettes_par_chapitre`, `mart_evolution_budget`, `mart_vote_vs_execute` | Diagrammes, évolution, comparaison voté/exécuté |
+| Subventions | `mart_subventions_treemap`, `mart_subventions_beneficiaires`, `mart_concentration` | Treemap, table filtrable, analyse Pareto |
+| Investissements | `mart_carte_investissements`, `mart_investissements_map`, `mart_investissements_localises`, `mart_stats_arrondissements` | Cartes + statistiques |
+| Logement | `mart_logements_map`, `mart_logement_attente` | Choroplèthe + tension par arrondissement |
+| Marchés publics | `mart_marches_fournisseurs`, `mart_marches_par_nature`, `mart_projet_marches` | Fournisseurs, catégories, appariement projet ↔ marché |
+| Bilan / hors-bilan | `mart_bilan_comptable`, `mart_bilan_sankey`, `mart_hors_bilan` | Actif/passif + dette garantie |
+| Délibérations | `mart_deliberations` | Recherche par bénéficiaire / thématique |
+| Méta | `mart_enrichment_caches`, `mart_data_availability_*` | Provenance LLM, fraîcheur des sources |
+| Marseille | `mart_marseille_budget_sankey_lines` | Sankey budget Marseille |
 
-### 3.6 MARTS Layer (Views)
-
-Agrégations métier pour le dashboard. C'est ici qu'on JOIN/compare les entités.
-
-| Mart | Source(s) | Fonction | Output |
-|------|-----------|----------|--------|
-| `mart_sankey` | core_budget + core_subventions + core_ap_projets | Diagramme flux budgétaires + drill-down | ~300 liens/an |
-| `mart_subventions_treemap` | core_subventions | Treemap par thématique + top bénéficiaires | ~20 thématiques/an |
-| `mart_subventions_beneficiaires` | core_subventions | Table filtrable | ~8k lignes/an |
-| `mart_carte_investissements` | core_ap_projets | Projets géolocalisés | ~1k points/an |
-| `mart_stats_arrondissements` | core_* | Stats agrégées par arrondissement | 20 × années |
-| `mart_evolution_budget` | core_budget | Évolution temporelle YoY + variations par thématique | ~200 lignes |
-| `mart_concentration` | core_subventions, core_ap | Analyse Pareto (top 80/95/reste) | ~500 lignes |
-| **`mart_vote_vs_execute`** | **core_budget + core_budget_vote** | **Comparaison Voté/Exécuté + taux historique + estimation** | **~500 lignes** |
-
-**`mart_vote_vs_execute` — Détail** :
-
-- FULL OUTER JOIN `core_budget_vote` × `core_budget` sur (annee, section, sens_flux, chapitre_code, ode_thematique)
-- Calcule : `taux_execution_pct`, `ecart_absolu`, `ecart_relatif_pct`
-- CTE `taux_historique` : AVG/STDDEV du taux par poste (pour estimation 2025-2026)
-- Colonnes output : `montant_estime`, `montant_estime_bas`, `montant_estime_haut` (±1σ)
+**`mart_vote_vs_execute` — détail** :
+- FULL OUTER JOIN `core_budget` × `core_budget_vote` sur (annee, section, sens_flux, chapitre_code, ode_thematique)
+- Calcule `taux_execution_pct`, `ecart_absolu`, `ecart_relatif_pct`
+- CTE `taux_historique` : AVG/STDDEV du taux par poste pour estimation 2025-2026
 - Flags : `comparaison_possible` (2023-2024), `vote_seul` (2025-2026)
-
-### 3.7 Fonctionnalités transversales
-
-**Paris Centre (arrondissements 1-4)** : Agrégés via `ode_arrondissement_affichage = 0` et `ode_arrondissement_label = 'Paris Centre'` dans `core_logements_sociaux` et `core_ap_projets`.
-
-**Déduplication entités** : `seed_mapping_entites.csv` → colonne `ode_beneficiaire_canonique` dans `core_subventions` (ex: "CASVP" = 1,940 M€ total).
 
 ---
 
@@ -257,40 +253,52 @@ Agrégations métier pour le dashboard. C'est ici qu'on JOIN/compare les entité
 ### 4.1 Colonnes
 
 | Préfixe | Signification | Exemple |
-|---------|---------------|---------|
-| *(aucun)* | Donnée originale OpenData | `beneficiaire`, `montant`, `annee` |
+|---|---|---|
+| _(aucun)_ | Donnée originale | `beneficiaire`, `montant`, `annee` |
 | `ode_` | **O**pen **D**ata **E**nrichment | `ode_thematique`, `ode_latitude` |
 
 ### 4.2 Tables
 
 | Couche | Pattern | Exemple |
-|--------|---------|---------|
-| Raw | `{dataset_id_snake_case}` | `comptes_administratifs_budgets_principaux_*` |
-| Staging | `stg_{entite}` | `stg_budget_principal`, `stg_pdf_budget_vote` |
+|---|---|---|
+| Raw | `{dataset_id_snake_case}` | `comptes_administratifs_*` |
+| Staging | `stg_{entite}` | `stg_budget_principal`, `stg_decp_marches_paris` |
 | Intermediate | `int_{entite}_{action}` | `int_subventions_enrichies` |
-| Core | `core_{entite}` | `core_budget`, `core_budget_vote` |
+| Core | `core_{entite}` | `core_budget`, `core_marches_publics` |
 | Mart | `mart_{usage}` | `mart_sankey`, `mart_vote_vs_execute` |
 
 ### 4.3 Seeds
 
 | Type | Pattern | Exemple |
-|------|---------|---------|
+|---|---|---|
 | Mapping statique | `seed_mapping_{objet}` | `seed_mapping_thematiques` |
-| Cache enrichissement | `seed_cache_{source}_{objet}` | `seed_cache_geo_ap` |
+| Constantes | `seed_{domaine}_constants` | `seed_city_constants`, `seed_fiscal_constants` |
+| Référentiels externes | `seed_{source}_{objet}` | `seed_ofgl_local_commune_l2` |
+| Cache enrichissement | `seed_cache_{source}_{objet}` | `seed_cache_geo_ap`, `seed_cache_siret_by_name` |
 | Extraction PDF | `seed_pdf_{type}_{année}` | `seed_pdf_budget_vote_2025` |
 
 ---
 
-## 5. Stratégie de jointure
+## 5. Stratégies de jointure et règles métier
 
-| Source A | Source B | Clé de jointure | Qualité |
-|----------|----------|-----------------|---------|
+### 5.1 Clés principales
+
+| Source A | Source B | Clé | Qualité |
+|---|---|---|---|
 | Budget CA | AP Projets | `nature_code + fonction_code + annee` | Exacte |
 | Subventions (annexe) | Associations | `beneficiaire_normalise + annee` | Exacte |
 | Subventions | Budget | Pas de clé directe | Via thématique (approximatif) |
 | Budget CA | Budget BV | `annee + section + sens_flux + chapitre_code + ode_thematique` | Exacte (mart) |
+| Marchés Paris | DECP | `SUBSTR(numero_marche, 5) = decp_id` | Exacte |
+| AP Projets | Marchés | Hash objet+titulaire (`seed_match_projet_marches`) | Manuel + LLM |
 
-> **Limitation** : `ca_subventions` n'a PAS de codes budgétaires → classification thématique approximative.
+### 5.2 Règles anti-double-comptage
+
+- **Opérations "pour ordre"** : filtrées en staging (`type_op='Réel'`). Sinon le budget double.
+- **Multi-titulaires marchés** : un même marché peut apparaître N fois (un par titulaire). Dédup dans `core_marches_publics` par `(objet, montant, date_notification)` pour les agrégats — détail multi-titulaires conservé pour drill-down.
+- **CASVP / RIVP / Paris Habitat** : noms multiples → `seed_mapping_entites` → colonne `ode_beneficiaire_canonique`.
+- **Paris Centre (1-4)** : agrégés via `ode_arrondissement_affichage=0` dans `core_logements_sociaux` et `core_ap_projets`.
+- **Budget voté vs exécuté** : `core_budget` et `core_budget_vote` jamais UNIONés. Comparaison uniquement dans `mart_vote_vs_execute`.
 
 ---
 
@@ -298,330 +306,112 @@ Agrégations métier pour le dashboard. C'est ici qu'on JOIN/compare les entité
 
 ### 6.1 Principes
 
-| Principe | Description |
-|----------|-------------|
-| **Incrémental** | Ne traite que les records pas encore dans le cache |
-| **Seeds = Cache** | Résultats stockés dans CSV versionnés Git |
-| **LLM hors dbt** | Scripts Python séparés, jamais pendant `dbt run` |
-| **Cascade** | Regex → Mapping → LLM → Default |
+- LLM **hors dbt**, dans scripts Python (`pipeline/scripts/enrich/`)
+- Incrémental : ne traite que les records non encore cachés
+- Cache persistant en seed CSV → committé en Git
+- 3 niveaux de confiance déclarés : haut (regex/lieu connu), moyen (LLM), bas (default)
 
-### 6.2 Cascade thématique (subventions)
+### 6.2 Cascades
 
+**Thématique subventions** :
 ```
-1. Pattern matching (seed_mapping_beneficiaires) → 73.94% des montants
-2. LLM Gemini (seed_cache_thematique)            → 20.90% des montants
-3. Direction (seed_mapping_directions)            →  4.45% des montants
-4. Default ("Non classifié")                      →  0.49% des montants
-TOTAL: 99.51% classifiés
+1. seed_mapping_beneficiaires (pattern regex)
+2. seed_mapping_directions (par direction)
+3. seed_cache_thematique_beneficiaires (LLM Claude/Gemini)
+4. Fallback "Autres"
 ```
 
-### 6.3 Cascade géoloc (AP projets)
-
+**Géolocalisation projets AP** :
 ```
-1. Regex (code postal, "15E") → 16.6% montants, confiance 1.0
-2. Lieux connus (seed)        →  5.2% montants, confiance 0.95
-3. LLM (seed_cache_geo_ap)   → 21.3% montants, confiance 0.8-0.96
-4. Non localisable            → 56.9% montants (projets multi-arr)
-TOTAL: 43.08% géolocalisés
+1. Regex extraction d'adresse dans objet
+2. seed_lieux_connus (matching exact bâtiments publics)
+3. seed_cache_geo_ap (LLM Gemini avec grounding)
+4. Vérification API Adresse (Base Adresse Nationale)
 ```
 
-### 6.4 Fusion Investissements (PDF + BigQuery)
+**SIRET bénéficiaires** :
+```
+1. Champ SIRET déjà présent dans associations
+2. seed_cache_siret_by_name (recherche-entreprises.api.gouv.fr, public, no auth)
+3. enrich_beneficiaire_grounded_llm (Gemini + Google Search grounding)
+```
 
-Le PDF "Investissements Localisés" est la base, complété par BigQuery pour les gros projets manquants (>500k€, localisables, pas déjà dans PDF). Lieux iconiques toujours inclus (Philharmonie, Théâtre de la Ville...).
+### 6.3 Coût des enrichissements
 
-Résultats 2022 : 446 PDF + 13 BigQuery = 459 projets, 184.86 M€.
+Les enrichissements LLM tier 1 (vulgarisations marchés ≥ 80k€) sont **opt-in** via `--tier1` dans `run_all.sh`. Sans clé API, les scripts skip gracefully — le pipeline complète son cycle même sans LLM.
 
 ---
 
-## 7. Scripts Python
+## 7. Multi-collectivités
 
-### 7.1 Inventaire
+### 7.1 Stratégie
 
-| Script | Fonction | Status |
-|--------|----------|--------|
-| `sync_opendata.py` | Sync OpenData → BigQuery (skip si à jour) | ✅ |
-| `enrich_thematique_llm.py` | Nom bénéficiaire → Thématique (Gemini batch) | ✅ |
-| `enrich_geo_ap_llm.py` | Texte AP → Géoloc (Gemini batch) | ✅ |
-| `extract_pdf_investments.py` | Extraction IL depuis PDFs CA/BP | ✅ |
-| `extract_pdf_budget_vote.py` | Extraction Budget Voté depuis PDFs BP (pdfplumber + regex) | ✅ |
-| `export_sankey_data.py` | Export JSON Sankey (core_budget) | ✅ |
-| `export_subventions_data.py` | Export JSON treemap + bénéficiaires | ✅ |
-| `export_map_data.py` | Export JSON carte AP + logements | ✅ |
-| `export_evolution_data.py` | Export JSON évolution temporelle | ✅ |
-| `export_vote_vs_execute.py` | Export JSON comparaison Voté/Exécuté | ✅ |
-| `merge_investments.py` | Fusion PDF + BigQuery investissements | ✅ |
-| `geocode_investments.py` | Géocodage projets fusionnés | ✅ |
-| `export_all.py` | Orchestration tous exports | ✅ |
+- **Paris** = collectivité de référence (couverture la plus complète)
+- **Marseille** = PoC v1, périmètre budget M57 uniquement
+- Seeds par ville (`seed_city_constants`, `seed_communes_cibles`) pour paramétrer
+- Models city-specific préfixés (`core_marseille_budget`, `mart_marseille_budget_sankey_lines`)
+- Models génériques (multi-cities-aware) à partir de v2
 
-### 7.2 Extract PDF Budget Voté (`extract_pdf_budget_vote.py`)
+### 7.2 Ajouter une nouvelle ville
 
-- Utilise `fitz` (PyMuPDF) pour scan rapide des pages + `pdfplumber` pour extraction texte
-- Regex robustes pour lignes de nature, codes fonction, montants
-- Gère les pages de continuation (héritage contexte page précédente)
-- Filtre les "group codes" pour ne garder que les codes feuille
-- Détection heuristique de la colonne "TOTAL DU CHAPITRE" (texte + data-driven fallback)
-- Output : `seed_pdf_budget_vote_{year}.csv`
+1. Ajouter une ligne à `seed_communes_cibles` (code INSEE, nom, slug)
+2. Ajouter une ligne à `seed_city_constants` (population, surface, autres constantes)
+3. Créer `stg_{ville}_budget` (ingestion depuis le portail open data de la ville)
+4. Créer `core_{ville}_budget` (passthrough OBT)
+5. Créer `mart_{ville}_budget_sankey_lines` (agrégations)
+6. Ajouter une page frontend dédiée
 
 ---
 
-## 8. Export et Frontend
+## 8. Export et frontend
 
-### 8.1 Structure JSON (`website/public/data/`)
+Les marts BigQuery sont exportés en JSON statiques dans `website/public/data/` par les scripts `pipeline/scripts/export/*.py`. Le frontend Next.js ne fait **aucun appel à BigQuery en runtime** — tout est pré-calculé.
 
-```
-website/public/data/
-├── budget_index.json                     # Années 2019-2026 + type_par_annee
-├── budget_sankey_{2019..2026}.json       # Sankey + drilldown (2025-2026 depuis core_budget_vote)
-├── budget_nature_{2019..2026}.json       # Répartition par nature (Donut)
-├── evolution_budget.json                 # Totaux, dette, variations par thématique
-├── vote_vs_execute.json                  # Taux exécution, ranking écarts, estimations
-├── bilan_sankey_{year}.json              # Actif/Passif
-├── data_availability.json                # Warnings par dataset/année
-├── investissement_tendances.json         # Tendances invest. par chapitre (CA BP M57)
-│
-├── subventions/
-│   ├── index.json                        # Années, filtres, totaux
-│   ├── treemap_{year}.json               # Agrégé par thématique
-│   └── beneficiaires_{year}.json         # Liste complète filtrable
-│
-└── map/
-    ├── investissements_localises_index.json
-    ├── investissements_localises_{year}.json
-    ├── investissements_complet_{year}.json  # Fusionné PDF+BQ
-    ├── logements_sociaux.json
-    ├── arrondissements_stats.json
-    └── arrondissements.geojson
-```
-
-### 8.2 Métadonnée `type_budget`
-
-Tous les JSON avec des montants incluent un champ `type_budget` :
-
-| Année | `type_budget` | Source |
-|-------|---------------|--------|
-| 2019-2024 | `"execute"` | Compte Administratif (CA) |
-| 2025-2026 | `"vote"` | Budget Primitif (BP) |
-
-Le frontend utilise ce champ pour afficher `BudgetTypeBadge` et les bannières disclaimer.
-
-### 8.3 `budget_index.json`
-
+Format typique des JSON :
 ```json
 {
-  "annees": [2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026],
-  "year_types": {
-    "2019": "execute", "2020": "execute", "2021": "execute",
-    "2022": "execute", "2023": "execute", "2024": "execute",
-    "2025": "vote", "2026": "vote"
-  },
-  "covid_years": [2020, 2021],
-  "execution_rate_hors_covid": {
-    "taux_moyen": 102.5,
-    "ecart_type": 1.8
-  }
+  "schema_version": 2,
+  "generated_at": "2026-05-21T10:32:18Z",
+  "source": "core_marches_publics",
+  "source_url": "https://opendata.paris.fr/...",
+  "data": [ /* ... */ ]
 }
 ```
 
-### 8.4 `data_availability.json`
-
-```json
-{
-  "budget": {
-    "annees_disponibles": [2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026],
-    "type_par_annee": {
-      "2019": "execute", "2024": "execute", "2025": "vote", "2026": "vote"
-    },
-    "warnings": {
-      "2025": { "severity": "info", "type": "previsionnel", "message": "Budget prévisionnel (voté par le Conseil de Paris). Exécuté disponible mi-2026." },
-      "2026": { "severity": "info", "type": "previsionnel", "message": "Budget prévisionnel (voté le 16/12/2025). Exécuté disponible mi-2027." }
-    }
-  },
-  "subventions": {
-    "annees_disponibles": [2018, 2019, 2020, 2021, 2022, 2023, 2024],
-    "warnings": {
-      "2020": { "severity": "error", "message": "Données bénéficiaires absentes (source)" },
-      "2021": { "severity": "error", "message": "Données bénéficiaires absentes (source)" }
-    }
-  },
-  "investissements_localises": {
-    "annees_disponibles": [2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026],
-    "type_par_annee": { "2024": "execute", "2025": "vote", "2026": "vote" },
-    "warnings": {
-      "2025": { "severity": "info", "type": "previsionnel", "message": "Investissements prévus (BP 2025). Réels disponibles mi-2026." },
-      "2026": { "severity": "info", "type": "previsionnel", "message": "Investissements prévus (BP 2026). Réels disponibles mi-2027." }
-    }
-  },
-  "vote_vs_execute": {
-    "annees_comparables": [2023, 2024],
-    "annees_vote_seul": [2025, 2026],
-    "estimation_disponible": [2025, 2026]
-  }
-}
-```
+Les champs `source` et `source_url` sont obligatoires et servent au modal "Provenance" du frontend.
 
 ---
 
-## 9. Qualité des données
-
-### 9.1 Vue d'ensemble
-
-| Table | Lignes | Années | Qualité | Status |
-|-------|--------|--------|---------|--------|
-| `core_budget` (Exécuté) | 24,526 | 2019-2024 | Excellent | ✅ Production |
-| `core_budget_vote` (Voté PDF) | ~7,000 | 2023-2026 | Bon | ✅ Production |
-| `core_subventions` | 42,931 | 2018-2024 | Bon | ⚠️ 2020-2021 dégradés |
-| `core_ap_projets` | 7,155 | 2018-2022 | Bon | ⚠️ Manque 2023-2024 |
-| `core_logements_sociaux` | 4,174 | 2001-2024 | Excellent | ✅ Production |
-
-### 9.2 Matrice par année
-
-| Année | Budget CA | Budget BV | Subventions | AP | IL | Logements |
-|-------|-----------|-----------|-------------|----|----|-----------|
-| 2018 | ❌ | ❌ | ✅ 12k | ✅ 2.4k | ✅ PDF CA | ✅ |
-| 2019 | ✅ 5.4k | ✅ CSV | ✅ 13.8k | ✅ 2.0k | ✅ PDF CA | ✅ |
-| 2020 | ✅ 5.1k | ✅ CSV | ⚠️ benef NULL | ✅ 1.3k | ✅ PDF CA | ✅ |
-| 2021 | ✅ 5.2k | ✅ CSV | ⚠️ benef NULL | ✅ 889 | ✅ PDF CA | ✅ |
-| 2022 | ✅ 5.7k | ✅ CSV | ✅ 7.2k | ✅ 485 | ✅ PDF CA | ✅ |
-| 2023 | ✅ 5.5k | ✅ PDF | ✅ 7.2k | ❌ | ✅ PDF CA | ✅ |
-| 2024 | ✅ 5.7k | ✅ PDF | ✅ 8.3k | ❌ | ✅ PDF CA | ✅ |
-| 2025 | ❌ (~juin 2026) | ✅ PDF | ❌ | ❌ | ✅ PDF BP | ❌ |
-| 2026 | ❌ (~mi 2027) | ✅ PDF | ❌ | ❌ | ✅ PDF BP | ❌ |
-
-### 9.3 Audit complet (2026-02-05) — 12/12 checks passed
-
-| Check | Status |
-|-------|--------|
-| Budget: Total core vs staging (0.00% diff) | ✅ |
-| Subventions: Total core vs staging (0.00% diff) | ✅ |
-| Budget: Lignes core vs staging (24,526 = 24,526) | ✅ |
-| Subventions: Classifiées 99.51% | ✅ |
-| AP: Géolocalisés 43.08% | ✅ |
-| Budget: Variations YoY < 20% (max 7.8%) | ✅ |
-| Unicité clés budget (0.106% doublons) | ✅ |
-| Unicité clés subventions (0.000%) | ✅ |
-| Unicité clés AP (0.000%) | ✅ |
-| Paris Centre: Agrégation 1-4 | ✅ |
-| CASVP: Dédupliqué (1,940 M€) | ✅ |
-| Budget Voté PDF: Totaux cohérents avec chiffres officiels | ✅ |
-
-### 9.4 Contrat qualité frontend
-
-| Condition | Message | Badge |
-|-----------|---------|-------|
-| `annee >= 2025` budget | "Budget prévisionnel, pas encore exécuté" | Orange "Voté" |
-| `annee >= 2025` IL | "Investissements prévus (BP), pas réalisés" | Orange "Voté" |
-| `annee IN (2020, 2021)` subventions | "Données bénéficiaires indisponibles" | Warning |
-| `annee >= 2023` AP | "Projets AP non publiés pour cette année" | Warning |
-| `ode_confiance < 0.8` géoloc | "Localisation approximative" | Tooltip |
-| Estimation (taux historique) | Disclaimer complet + fourchette ±1σ | Gris "Estimé" |
-
-### 9.5 Règles anti-double comptage
-
-| Règle | Implémentation |
-|-------|----------------|
-| Exclure "Pour Ordre" | `WHERE type_operation = 'Réel'` en staging |
-| AP ⊂ Budget investissement | Documentation, pas d'addition |
-| Subventions ⊂ Budget | Documentation, pas d'addition |
-| Marchés = enveloppes | Non sommable, contexte uniquement |
-| Ne jamais sommer `Montant AP` | Utiliser `Mandaté après régul.` |
-
----
-
-## 10. Structure des fichiers
-
-```
-paris-budget-dashboard/
-├── docs/
-│   ├── architecture-modelling.md         # Ce document
-│   └── architecture-frontend.md          # Architecture frontend
-│
-├── pipeline/                             # Projet dbt + scripts
-│   ├── dbt_project.yml
-│   ├── profiles.yml
-│   ├── models/
-│   │   ├── staging/                      # 8 modèles stg_*
-│   │   ├── intermediate/                 # int_subventions_enrichies, int_ap_projets_enrichis
-│   │   ├── core/                         # 5 OBTs : budget, budget_vote, subventions, ap, logements
-│   │   └── marts/                        # 8 marts
-│   ├── seeds/                            # ~15 CSVs (mappings + caches)
-│   └── scripts/
-│       ├── sync/sync_opendata.py
-│       ├── tools/                        # extract_pdf_*, enrich_*
-│       └── export/                       # export_*.py, merge_*, geocode_*
-│
-├── website/                              # Next.js 16
-│   ├── public/data/                      # JSON pré-calculés
-│   └── src/
-│       ├── app/                          # Pages par entité
-│       ├── components/                   # Composants React
-│       └── lib/                          # Utils, types, API loaders
-│
-└── .venv/                                # Python virtualenv
-```
-
----
-
-## 11. Workflow de mise à jour
-
-### 11.1 Mise à jour annuelle (après publication CA)
+## 9. Workflow de mise à jour
 
 ```bash
-# 1. Sync OpenData → BigQuery
-python pipeline/scripts/sync/sync_opendata.py
+# 1. Sync sources brutes (idempotent)
+python scripts/sync/sync_opendata.py
+python scripts/sync/fetch_decp_paris.py --global
 
-# 2. Enrichissement LLM incrémental (nouveaux records seulement)
-python pipeline/scripts/tools/enrich_thematique_llm.py
-python pipeline/scripts/tools/enrich_geo_ap_llm.py
+# 2. dbt build (transformations)
+dbt deps
+dbt seed
+dbt run
+dbt test
 
-# 3. Rebuild dbt
-cd pipeline && .venv/bin/dbt seed && .venv/bin/dbt run
+# 3. Enrichissements (optionnel, payant)
+python scripts/enrich/enrich_thematique_llm.py
+python scripts/enrich/enrich_beneficiaire_grounded_llm.py
 
-# 4. Export JSON
-python pipeline/scripts/export/export_all.py
+# 4. Re-run dbt pour intégrer les enrichissements
+dbt run --select int_*+ core_*+ mart_*+
 
-# 5. Build frontend
-cd website && npm run build
+# 5. Export JSON pour le frontend
+python scripts/export/export_all.py
 ```
 
-### 11.2 Ajout Budget Voté (one-shot pour nouvelles années)
-
-```bash
-# 1. Extraire depuis PDFs Budget Primitif
-python pipeline/scripts/tools/extract_pdf_budget_vote.py --year 2027
-
-# 2. Rebuild dbt (charge nouveau seed + transforme)
-cd pipeline && .venv/bin/dbt seed && .venv/bin/dbt run
-
-# 3. Exporter Sankey pour la nouvelle année
-python pipeline/scripts/export/export_sankey_data.py
-python pipeline/scripts/export/export_vote_vs_execute.py
-
-# 4. Mettre à jour budget_index.json et data_availability.json
-```
+Voir `pipeline/run_all.sh` pour un pipeline complet automatisé.
 
 ---
 
-## Annexes
+## Voir aussi
 
-### A. APIs utilisées
-
-| API | Auth | Coût |
-|-----|------|------|
-| OpenData Paris | Non | Gratuit |
-| API Entreprises | Non | Gratuit |
-| API Adresse | Non | Gratuit |
-| Gemini 2.5 Flash | API Key | ~$0.10/1M tokens |
-
-### B. Glossaire
-
-| Terme | Définition |
-|-------|------------|
-| **AP** | Autorisation de Programme — enveloppe pluriannuelle d'investissement |
-| **BP** | Budget Primitif — budget initial voté par le Conseil de Paris |
-| **BV** | Budget Voté — ensemble BP + DM |
-| **CA** | Compte Administratif — budget réellement exécuté, publié ~juin N+1 |
-| **DM** | Décision Modificative — ajustement en cours d'année |
-| **IL** | Investissements Localisés — annexe détaillant investissements par arrondissement |
-| **M57** | Nomenclature comptable des collectivités depuis 2019 |
-| **OBT** | One Big Table — table dénormalisée finale |
-| **Taux d'exécution** | Ratio Exécuté/Voté × 100 |
+- [`data-quality.md`](./data-quality.md) — règles de qualité, limites connues, observations
+- [`methodology-changelog.md`](./methodology-changelog.md) — journal des changements méthodologiques
+- [`replicability.md`](./replicability.md) — comment reproduire les chiffres affichés sur le site

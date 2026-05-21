@@ -20,6 +20,10 @@
 # IMPORTANT : ce fichier peut être copié vers ~/.dbt/profiles.yml pour une
 # utilisation locale, ou utilisé tel quel si dbt est configuré pour lire
 # les profils depuis le répertoire du projet.
+#
+# PROJET GCP : pilotable via la variable d'environnement BQ_PROJECT.
+# Par défaut, pointe vers `open-data-france-484717` (datasets prod publics
+# en lecture).
 # =============================================================================
 
 paris_open_data:
@@ -32,7 +36,7 @@ paris_open_data:
     dev:
       type: bigquery
       method: oauth
-      project: open-data-france-484717
+      project: "{{ env_var('BQ_PROJECT', 'open-data-france-484717') }}"
       dataset: "dbt_paris_dev_{{ env_var('DBT_USER', 'local') }}"
       location: EU
       threads: 4
@@ -45,7 +49,7 @@ paris_open_data:
     ci:
       type: bigquery
       method: oauth  # via Workload Identity Federation
-      project: open-data-france-484717
+      project: "{{ env_var('BQ_PROJECT', 'open-data-france-484717') }}"
       dataset: "dbt_paris_ci_{{ env_var('GITHUB_RUN_ID', 'unknown') }}"
       location: EU
       threads: 4
@@ -60,7 +64,7 @@ paris_open_data:
     prod:
       type: bigquery
       method: oauth
-      project: open-data-france-484717
+      project: "{{ env_var('BQ_PROJECT', 'open-data-france-484717') }}"
       dataset: dbt_paris  # base ; les schemas (staging, analytics, marts) sont
                           # ajoutés en suffixe par dbt → dbt_paris_staging, etc.
       location: EU

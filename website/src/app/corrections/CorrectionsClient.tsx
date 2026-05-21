@@ -159,7 +159,7 @@ export default function CorrectionsClient({ doc }: { doc: CorrectionsDoc }) {
             <div style={{ marginTop: 24, display: "flex", gap: 10, flexWrap: "wrap" }}>
               <Button
                 variant="primary"
-                href="https://github.com/Nuttux/open-public-data/issues/new?labels=correction&template=signaler-une-erreur.md"
+                href="https://github.com/AbstractsMachine/france-open-data-pipeline/issues/new?labels=correction&template=signaler-une-erreur.md"
                 target="_blank"
                 rel="noopener noreferrer"
               >

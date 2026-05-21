@@ -49,7 +49,7 @@ export default function ContactClient() {
               <div className="n">{t("fx.contact.c2.n")}</div>
               <h3>{t("fx.contact.c2.h")}</h3>
               <p>{t("fx.contact.c2.p")}</p>
-              <a href="https://github.com/Nuttux/open-public-data/issues" target="_blank" rel="noopener noreferrer">
+              <a href="https://github.com/AbstractsMachine/france-open-data-pipeline/issues" target="_blank" rel="noopener noreferrer">
                 github.com/…/issues ↗
               </a>
             </div>

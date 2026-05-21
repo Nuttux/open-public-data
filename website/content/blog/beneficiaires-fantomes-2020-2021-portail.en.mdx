@@ -93,7 +93,7 @@ ACADEMIE D ARMES DE FRANCE                                                      
 
 ### 2. Python regex parser (~250 lines)
 
-The parser ([`parse_subv_pdf_text.py`](https://github.com/anthropics/open-public-data) in the pipeline):
+The parser ([`parse_subv_pdf_text.py`](https://github.com/AbstractsMachine/france-open-data-pipeline) in the pipeline):
 
 - detects the **real start of the section** (string "LISTE DES CONCOURS ATTRIBUES A DES TIERS EN NATURE OU EN SUBVENTIONS") and the **stop** before the next section (B8.1.2 or B8.3);
 - tracks **sub-sections** (Associations / Companies / Foundations / Municipalities / Public bodies / State / Régies / Other) to assign the correct legal nature to each beneficiary;
@@ -163,4 +163,4 @@ What it does say, in a sentence: **the data existed, in an official annex, but n
 
 ---
 
-**Sources**: [Comptes Administratifs Ville de Paris, Tome 3 — annex B8.1.1](https://www.paris.fr/pages/comptes-administratifs-de-la-ville-retrouvez-toutes-les-infos-27793) (CA 2020 and CA 2021) · Open Data Paris portal ([opendata.paris.fr](https://opendata.paris.fr)) — dataset `subventions-versees-annexe-compte-administratif-a-partir-de-2018`, queries via the [public ODSQL API](https://opendata.paris.fr/api/explore/v2.1/) · open-public-data pipeline: extraction `pipeline/scripts/tools/parse_subv_pdf_text.py`, BigQuery load `pipeline/scripts/sync/sync_pdf_subventions_b811.py`, merge with OpenData in `pipeline/models/staging/stg_subventions_all.sql`. Scope: Ville de Paris, fiscal years 2020 and 2021. Code and data open under MIT licence.
+**Sources**: [Comptes Administratifs Ville de Paris, Tome 3 — annex B8.1.1](https://www.paris.fr/pages/comptes-administratifs-de-la-ville-retrouvez-toutes-les-infos-27793) (CA 2020 and CA 2021) · Open Data Paris portal ([opendata.paris.fr](https://opendata.paris.fr)) — dataset `subventions-versees-annexe-compte-administratif-a-partir-de-2018`, queries via the [public ODSQL API](https://opendata.paris.fr/api/explore/v2.1/) · open-public-data pipeline: extraction `pipeline/scripts/tools/parse_subv_pdf_text.py`, BigQuery load `pipeline/scripts/sync/sync_pdf_subventions_b811.py`, merge with OpenData in `pipeline/models/staging/stg_subventions_all.sql`. Scope: Ville de Paris, fiscal years 2020 and 2021. Pipeline open under AGPL-3.0, derived data under Etalab Open License 2.0.

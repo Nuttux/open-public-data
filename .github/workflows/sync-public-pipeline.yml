@@ -1,0 +1,121 @@
+name: sync-public-pipeline
+
+# Auto-sync du pipeline (raw → JSON) vers le repo public AGPL-3.0
+# AbstractsMachine/france-open-data-pipeline à chaque push sur main.
+#
+# Stratégie :
+#   1. Clone full history du repo privé
+#   2. git filter-repo pour ne garder QUE pipeline/ + LICENSE + NOTICE + requirements.txt
+#      + docs/architecture-modelling.md + README.md
+#   3. Strip des Co-Authored-By Claude trailers et footers "Generated with Claude Code"
+#      des messages de commit
+#   4. Force-push vers le repo public
+#
+# Sécurité :
+#   - Le secret PUBLIC_REPO_TOKEN doit être un PAT fine-grained avec write content
+#     sur AbstractsMachine/france-open-data-pipeline UNIQUEMENT (pas d'autre repo)
+#   - filter-repo réécrit l'historique — c'est un force-push à chaque run
+#   - L'audit gitleaks en pré-step bloque le push si un secret est détecté
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'pipeline/**'
+      - 'docs/architecture-modelling.md'
+      - 'LICENSE'
+      - 'NOTICE.md'
+      - 'requirements.txt'
+      - 'README.md'
+      - '.github/workflows/sync-public-pipeline.yml'
+  workflow_dispatch:  # permet de re-lancer manuellement depuis l'UI Actions
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Checkout (full history)
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # filter-repo a besoin de toute l'histoire
+
+      - name: Install git-filter-repo and gitleaks
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y git-filter-repo
+          # gitleaks via binary release (plus rapide que apt)
+          curl -sSL https://github.com/gitleaks/gitleaks/releases/download/v8.30.1/gitleaks_8.30.1_linux_x64.tar.gz \
+            | tar -xz -C /tmp gitleaks
+          sudo mv /tmp/gitleaks /usr/local/bin/
+
+      - name: Configure git
+        run: |
+          git config --global user.name "AbstractsMachine"
+          git config --global user.email "danielshavit92@gmail.com"
+
+      - name: Filter-repo — keep only pipeline-relevant paths
+        run: |
+          git filter-repo --force \
+            --path pipeline/ \
+            --path LICENSE \
+            --path NOTICE.md \
+            --path requirements.txt \
+            --path README.md \
+            --path docs/architecture-modelling.md
+
+      - name: Filter-repo — exclude dbt artifacts
+        run: |
+          git filter-repo --force --invert-paths \
+            --path pipeline/dbt_packages/ \
+            --path pipeline/target/ \
+            --path pipeline/logs/
+
+      - name: Filter-repo — strip Claude trailers and footers
+        run: |
+          git filter-repo --force --message-callback '
+          import re
+          # Strip Co-Authored-By trailers mentioning Claude or anthropic
+          cleaned = re.sub(
+              rb"^Co-[Aa]uthored-[Bb]y:[^\n]*(?:[Cc]laude|anthropic)[^\n]*\r?\n?",
+              b"", message, flags=re.MULTILINE,
+          )
+          # Strip "🤖 Generated with [Claude Code]" footers
+          cleaned = re.sub(
+              rb"^[\s\S]?[\xf0\x9f\xa4\x96]?\s*Generated with \[Claude Code\][^\n]*\r?\n?",
+              b"", cleaned, flags=re.MULTILINE,
+          )
+          cleaned = re.sub(rb"^\xf0\x9f\xa4\x96[^\n]*\r?\n?", b"", cleaned, flags=re.MULTILINE)
+          cleaned = re.sub(rb"\n{3,}\Z", b"\n\n", cleaned)
+          cleaned = cleaned.rstrip(b"\n") + b"\n"
+          return cleaned
+          '
+
+      - name: Audit — gitleaks scan
+        run: |
+          gitleaks detect --source . --no-banner --redact --exit-code 1
+          echo "✓ No secrets detected in filtered history"
+
+      - name: Audit — file inventory and size
+        run: |
+          echo "=== Total size ==="
+          du -sh .
+          echo ""
+          echo "=== Top-level ==="
+          ls -la | grep -v "^total\|\.git$" | head -10
+          echo ""
+          echo "=== Commit count ==="
+          git log --oneline | wc -l
+
+      - name: Push to public repo
+        env:
+          PUBLIC_REPO_TOKEN: ${{ secrets.PUBLIC_REPO_TOKEN }}
+        run: |
+          if [ -z "$PUBLIC_REPO_TOKEN" ]; then
+            echo "::error::PUBLIC_REPO_TOKEN secret is not set. Configure it in repo settings."
+            exit 1
+          fi
+          git remote add public "https://x-access-token:${PUBLIC_REPO_TOKEN}@github.com/AbstractsMachine/france-open-data-pipeline.git"
+          # http.postBuffer 524288000 = 500MB, évite les erreurs 400 sur push d'historique
+          git -c http.postBuffer=524288000 push --force public main
+          echo "✓ Pushed to https://github.com/AbstractsMachine/france-open-data-pipeline"

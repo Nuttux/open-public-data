@@ -99,7 +99,7 @@ ACADEMIE D ARMES DE FRANCE                                                      
 
 ### 2. Parser regex Python (~250 lignes)
 
-Le parser ([`parse_subv_pdf_text.py`](https://github.com/anthropics/open-public-data) dans le pipeline) :
+Le parser ([`parse_subv_pdf_text.py`](https://github.com/AbstractsMachine/france-open-data-pipeline) dans le pipeline) :
 
 - détecte le **vrai début de section** (chaîne « LISTE DES CONCOURS ATTRIBUES A DES TIERS EN NATURE OU EN SUBVENTIONS ») et son **arrêt** avant la section suivante (B8.1.2 ou B8.3) ;
 - suit les **sous-sections** (Associations / Entreprises / Fondations / Communes / Établissements publics / État / Régies / Autres) pour assigner la bonne nature juridique à chaque bénéficiaire ;
@@ -169,4 +169,4 @@ Ce qu'il dit, en une phrase : **la donnée existait, dans une annexe officielle,
 
 ---
 
-**Sources** : [Comptes Administratifs Ville de Paris, Tome 3 — annexe B8.1.1](https://www.paris.fr/pages/comptes-administratifs-de-la-ville-retrouvez-toutes-les-infos-27793) (CA 2020 et CA 2021) · Portail Open Data Paris ([opendata.paris.fr](https://opendata.paris.fr)) — dataset `subventions-versees-annexe-compte-administratif-a-partir-de-2018`, requêtes via l'[API publique ODSQL](https://opendata.paris.fr/api/explore/v2.1/) · Pipeline open-public-data : extraction `pipeline/scripts/tools/parse_subv_pdf_text.py`, chargement BigQuery `pipeline/scripts/sync/sync_pdf_subventions_b811.py`, fusion avec l'OpenData dans `pipeline/models/staging/stg_subventions_all.sql`. Périmètre : Ville de Paris, exercices 2020 et 2021. Code et données ouverts sous licence MIT.
+**Sources** : [Comptes Administratifs Ville de Paris, Tome 3 — annexe B8.1.1](https://www.paris.fr/pages/comptes-administratifs-de-la-ville-retrouvez-toutes-les-infos-27793) (CA 2020 et CA 2021) · Portail Open Data Paris ([opendata.paris.fr](https://opendata.paris.fr)) — dataset `subventions-versees-annexe-compte-administratif-a-partir-de-2018`, requêtes via l'[API publique ODSQL](https://opendata.paris.fr/api/explore/v2.1/) · Pipeline open-public-data : extraction `pipeline/scripts/tools/parse_subv_pdf_text.py`, chargement BigQuery `pipeline/scripts/sync/sync_pdf_subventions_b811.py`, fusion avec l'OpenData dans `pipeline/models/staging/stg_subventions_all.sql`. Périmètre : Ville de Paris, exercices 2020 et 2021. Pipeline ouvert sous AGPL-3.0, données dérivées sous Licence Ouverte Etalab 2.0.
