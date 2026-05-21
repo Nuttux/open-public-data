@@ -76,7 +76,7 @@ const COVERAGE_FR: CoverageRow[] = [
   { label: "Concurrence (offresRecues DECP)", volume: "champ non historisé avant 2024", href: "https://www.data.gouv.fr/fr/datasets/donnees-essentielles-de-la-commande-publique-fichiers-consolides/", status: "info", statusLabel: "Partiel", segments: [{ start: 2024, end: 2025, text: "2024-2025", kind: "partial" }] },
   { label: "Investissements (dataset AP)", volume: "dataset gelé", href: "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-a-partir-de-2018-m57-ville-de/", status: "warn", statusLabel: "Gelé", segments: [{ start: 2018, end: 2022, text: "2018-2022 · gelé", kind: "frozen" }] },
   { label: "Investissements (PDF IL)", volume: "~450 projets/an", href: "https://cdn.paris.fr/paris/2025/06/25/ca-2024-annexe-il-UtMj.PDF", status: "info", statusLabel: "Partiel", segments: [{ start: 2018, end: 2024, text: "2018-2024 (CA)", kind: "partial" }, { start: 2025, end: 2026, text: "2025-2026 (BP)", kind: "partial" }] },
-  { label: "Match projets ↔ marchés", volume: "4 322 appariements (seed)", href: "https://github.com/Nuttux/open-public-data/blob/main/pipeline/seeds/seed_match_projet_marches.csv", status: "ok", statusLabel: "À jour", segments: [{ start: 2018, end: 2024, text: "2018-2024 · hash stable objet+titulaire" }] },
+  { label: "Match projets ↔ marchés", volume: "4 322 appariements (seed)", href: "https://github.com/AbstractsMachine/france-open-data-pipeline/blob/main/pipeline/seeds/seed_match_projet_marches.csv", status: "ok", statusLabel: "À jour", segments: [{ start: 2018, end: 2024, text: "2018-2024 · hash stable objet+titulaire" }] },
   { label: "Logements sociaux financés", volume: "4 174 opérations", href: "https://opendata.paris.fr/explore/dataset/logements-sociaux-finances-a-paris/", status: "ok", statusLabel: "À jour", segments: [{ start: 2013, end: 2024, text: "2001-2024 (affiché 2013+)" }] },
   { label: "Tension logement (Socle DRIHL)", volume: "20 arrondissements · 195 828 demandes / 9 098 attributions", href: "https://www.drihl.ile-de-france.developpement-durable.gouv.fr/socle-de-donnees-demandes-et-attributions-de-a1414.html", status: "info", statusLabel: "Partiel", segments: [{ start: 2024, end: 2024, text: "2024 (série démarrée)", kind: "partial" }] },
   { label: "Bilan comptable", volume: "1 bilan/an", href: "https://opendata.paris.fr/explore/dataset/bilan-comptable/", status: "ok", statusLabel: "À jour", segments: [{ start: 2019, end: 2024, text: "2019-2024" }] },
@@ -111,7 +111,7 @@ const COVERAGE_EN: CoverageRow[] = [
   { label: "Competition (DECP offresRecues)", volume: "field not historised before 2024", href: "https://www.data.gouv.fr/fr/datasets/donnees-essentielles-de-la-commande-publique-fichiers-consolides/", status: "info", statusLabel: "Partial", segments: [{ start: 2024, end: 2025, text: "2024-2025", kind: "partial" }] },
   { label: "Investments (AP dataset)", volume: "dataset frozen", href: "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-a-partir-de-2018-m57-ville-de/", status: "warn", statusLabel: "Frozen", segments: [{ start: 2018, end: 2022, text: "2018-2022 · frozen", kind: "frozen" }] },
   { label: "Investments (IL PDFs)", volume: "~450 projects/yr", href: "https://cdn.paris.fr/paris/2025/06/25/ca-2024-annexe-il-UtMj.PDF", status: "info", statusLabel: "Partial", segments: [{ start: 2018, end: 2024, text: "2018-2024 (CA)", kind: "partial" }, { start: 2025, end: 2026, text: "2025-2026 (BP)", kind: "partial" }] },
-  { label: "Project ↔ contract match", volume: "4,322 matches (seed)", href: "https://github.com/Nuttux/open-public-data/blob/main/pipeline/seeds/seed_match_projet_marches.csv", status: "ok", statusLabel: "Up to date", segments: [{ start: 2018, end: 2024, text: "2018-2024 · stable hash object+awardee" }] },
+  { label: "Project ↔ contract match", volume: "4,322 matches (seed)", href: "https://github.com/AbstractsMachine/france-open-data-pipeline/blob/main/pipeline/seeds/seed_match_projet_marches.csv", status: "ok", statusLabel: "Up to date", segments: [{ start: 2018, end: 2024, text: "2018-2024 · stable hash object+awardee" }] },
   { label: "Funded social housing", volume: "4,174 operations", href: "https://opendata.paris.fr/explore/dataset/logements-sociaux-finances-a-paris/", status: "ok", statusLabel: "Up to date", segments: [{ start: 2013, end: 2024, text: "2001-2024 (shown 2013+)" }] },
   { label: "Housing pressure (DRIHL Socle)", volume: "20 districts · 195,828 applications / 9,098 allocations", href: "https://www.drihl.ile-de-france.developpement-durable.gouv.fr/socle-de-donnees-demandes-et-attributions-de-a1414.html", status: "info", statusLabel: "Partial", segments: [{ start: 2024, end: 2024, text: "2024 (series starting)", kind: "partial" }] },
   { label: "Balance sheet", volume: "1 bs/yr", href: "https://opendata.paris.fr/explore/dataset/bilan-comptable/", status: "ok", statusLabel: "Up to date", segments: [{ start: 2019, end: 2024, text: "2019-2024" }] },
@@ -169,7 +169,7 @@ export default function MethodeClient() {
           </p>
           <div className="fx-page-actions" style={{ marginTop: 28 }}>
             <Button variant="primary" href="#sources">{isFr ? "Voir les sources" : "See the sources"}</Button>
-            <Button href="https://github.com/Nuttux/open-public-data">{isFr ? "Le code sur GitHub ↗" : "Code on GitHub ↗"}</Button>
+            <Button href="https://github.com/AbstractsMachine/france-open-data-pipeline">{isFr ? "Le code sur GitHub ↗" : "Code on GitHub ↗"}</Button>
           </div>
           <div className="fx-toc" style={{ marginTop: 32 }}>
             <a href="#sources">01 · {isFr ? "Sources" : "Sources"}</a>
@@ -452,8 +452,8 @@ export default function MethodeClient() {
             </h3>
             <p style={{ lineHeight: 1.6, maxWidth: 820 }}>
               {isFr
-                ? <>Les caches d&apos;enrichissement (thématique des subventions, géoloc des projets AP) portent une colonne <code>ode_confiance</code>. C&apos;est un score <b>auto-déclaré par le LLM</b>. Pour en faire une garantie externe, on tire un échantillon stratifié (60 lignes thématique + 40 géoloc) qu&apos;on annote à la main, et on compare la précision <em>mesurée</em> à la confidence déclarée par bucket. Le script et les échantillons : <a href="https://github.com/Nuttux/open-public-data/tree/main/pipeline/scripts/audit/calibration_samples" target="_blank" rel="noopener noreferrer">calibration_samples ↗</a>. La précision mesurée sera publiée ici dès qu&apos;elle est disponible.</>
-                : <>Enrichment caches (grant theme, AP project geoloc) carry an <code>ode_confiance</code> column. It&apos;s a score <b>self-declared by the LLM</b>. To turn it into an external guarantee, we draw a stratified sample (60 theme + 40 geoloc rows), label it by hand, and compare measured precision to declared confidence per bucket. Script and samples: <a href="https://github.com/Nuttux/open-public-data/tree/main/pipeline/scripts/audit/calibration_samples" target="_blank" rel="noopener noreferrer">calibration_samples ↗</a>. Measured precision will appear here as soon as it is available.</>}
+                ? <>Les caches d&apos;enrichissement (thématique des subventions, géoloc des projets AP) portent une colonne <code>ode_confiance</code>. C&apos;est un score <b>auto-déclaré par le LLM</b>. Pour en faire une garantie externe, on tire un échantillon stratifié (60 lignes thématique + 40 géoloc) qu&apos;on annote à la main, et on compare la précision <em>mesurée</em> à la confidence déclarée par bucket. Le script et les échantillons : <a href="https://github.com/AbstractsMachine/france-open-data-pipeline/tree/main/pipeline/scripts/audit/calibration_samples" target="_blank" rel="noopener noreferrer">calibration_samples ↗</a>. La précision mesurée sera publiée ici dès qu&apos;elle est disponible.</>
+                : <>Enrichment caches (grant theme, AP project geoloc) carry an <code>ode_confiance</code> column. It&apos;s a score <b>self-declared by the LLM</b>. To turn it into an external guarantee, we draw a stratified sample (60 theme + 40 geoloc rows), label it by hand, and compare measured precision to declared confidence per bucket. Script and samples: <a href="https://github.com/AbstractsMachine/france-open-data-pipeline/tree/main/pipeline/scripts/audit/calibration_samples" target="_blank" rel="noopener noreferrer">calibration_samples ↗</a>. Measured precision will appear here as soon as it is available.</>}
             </p>
           </div>
 
@@ -472,9 +472,9 @@ export default function MethodeClient() {
           {/* Compact cross-check footer ────────────────────────────────── */}
           <div style={{ marginTop: 32, padding: "16px 20px", background: "var(--cream)", display: "flex", gap: 18, flexWrap: "wrap", fontFamily: "var(--f-mono)", fontSize: 13 }}>
             <a href="/data/data_quality_audit.json" target="_blank" rel="noopener noreferrer">{isFr ? "JSON brut ↗" : "Raw JSON ↗"}</a>
-            <a href="https://github.com/Nuttux/open-public-data/blob/main/pipeline/scripts/audit/run_data_quality_audit.py" target="_blank" rel="noopener noreferrer">{isFr ? "Script audit ↗" : "Audit script ↗"}</a>
-            <a href="https://github.com/Nuttux/open-public-data/blob/main/docs/data-quality.md" target="_blank" rel="noopener noreferrer">{isFr ? "Doc data-quality ↗" : "Data-quality doc ↗"}</a>
-            <a href="https://github.com/Nuttux/open-public-data/blob/main/docs/architecture-modelling.md" target="_blank" rel="noopener noreferrer">{isFr ? "Doc architecture ↗" : "Architecture doc ↗"}</a>
+            <a href="https://github.com/AbstractsMachine/france-open-data-pipeline/blob/main/pipeline/scripts/audit/run_data_quality_audit.py" target="_blank" rel="noopener noreferrer">{isFr ? "Script audit ↗" : "Audit script ↗"}</a>
+            <a href="https://github.com/AbstractsMachine/france-open-data-pipeline/blob/main/docs/data-quality.md" target="_blank" rel="noopener noreferrer">{isFr ? "Doc data-quality ↗" : "Data-quality doc ↗"}</a>
+            <a href="https://github.com/AbstractsMachine/france-open-data-pipeline/blob/main/docs/architecture-modelling.md" target="_blank" rel="noopener noreferrer">{isFr ? "Doc architecture ↗" : "Architecture doc ↗"}</a>
           </div>
         </div>
       </section>
@@ -494,8 +494,8 @@ export default function MethodeClient() {
           </p>
           <div style={{ marginTop: 24, display: "flex", gap: 10, flexWrap: "wrap" }}>
             <Button variant="primary" href="/contact">{isFr ? "Signaler une erreur" : "Report an error"}</Button>
-            <Button href="https://github.com/Nuttux/open-public-data">{isFr ? "Code sur GitHub ↗" : "Code on GitHub ↗"}</Button>
-            <Button href="https://github.com/Nuttux/open-public-data/commits/main">{isFr ? "Historique des commits ↗" : "Commit history ↗"}</Button>
+            <Button href="https://github.com/AbstractsMachine/france-open-data-pipeline">{isFr ? "Code sur GitHub ↗" : "Code on GitHub ↗"}</Button>
+            <Button href="https://github.com/AbstractsMachine/france-open-data-pipeline/commits/main">{isFr ? "Historique des commits ↗" : "Commit history ↗"}</Button>
           </div>
         </div>
       </section>

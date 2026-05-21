@@ -28,7 +28,7 @@ const COLUMNS: Col[] = [
       { href: "/analyses", labelKey: "fx.foot.link.analyses" },
       { href: "/methode", labelKey: "fx.foot.link.methode" },
       {
-        href: "https://github.com/Nuttux/open-public-data",
+        href: "https://github.com/AbstractsMachine/france-open-data-pipeline",
         labelKey: "fx.foot.link.github",
         external: true,
       },

@@ -99,7 +99,7 @@ ACADEMIE D ARMES DE FRANCE                                                      
 
 ### 2. Parser regex Python (~250 lignes)
 
-Le parser ([`parse_subv_pdf_text.py`](https://github.com/anthropics/open-public-data) dans le pipeline) :
+Le parser ([`parse_subv_pdf_text.py`](https://github.com/AbstractsMachine/france-open-data-pipeline) dans le pipeline) :
 
 - détecte le **vrai début de section** (chaîne « LISTE DES CONCOURS ATTRIBUES A DES TIERS EN NATURE OU EN SUBVENTIONS ») et son **arrêt** avant la section suivante (B8.1.2 ou B8.3) ;
 - suit les **sous-sections** (Associations / Entreprises / Fondations / Communes / Établissements publics / État / Régies / Autres) pour assigner la bonne nature juridique à chaque bénéficiaire ;

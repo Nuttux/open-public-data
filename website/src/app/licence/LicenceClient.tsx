@@ -164,7 +164,7 @@ export default function LicenceClient() {
           <div style={{ marginTop: 24, display: "flex", gap: 10, flexWrap: "wrap" }}>
             <Button
               variant="primary"
-              href="https://github.com/Nuttux/open-public-data"
+              href="https://github.com/AbstractsMachine/france-open-data-pipeline"
             >
               {isFr ? "Le code sur GitHub ↗" : "Code on GitHub ↗"}
             </Button>

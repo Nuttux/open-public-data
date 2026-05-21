@@ -8,7 +8,6 @@ import Navbar from "@/components/fusion/Navbar";
 import Footer from "@/components/fusion/Footer";
 import Button from "@/components/fusion/Button";
 import ScopeDropdown from "@/components/fusion/ScopeDropdown";
-import BrandMark from "@/components/fusion/BrandMark";
 import HeroBg from "@/components/fusion/HeroBg";
 import HeroDeck from "@/components/fusion/HeroDeck";
 import HeroMarquee from "@/components/fusion/HeroMarquee";
@@ -256,41 +255,12 @@ export default function LandingClient({ stats, posts }: Props) {
               <div className="fx-meth-n">{t("fx.land.meth.03.n")}</div>
               <h3>{t("fx.land.meth.03.h")}</h3>
               <p>{t("fx.land.meth.03.p")}</p>
-              <a href="https://github.com/Nuttux/open-public-data" target="_blank" rel="noopener noreferrer">
+              <a href="https://github.com/AbstractsMachine/france-open-data-pipeline" target="_blank" rel="noopener noreferrer">
                 {t("fx.land.meth.03.cta")}
               </a>
             </div>
           </div>
 
-          <div className="fx-byline">
-            <div className="fx-byline-left">
-              <span className="fx-byline-mark">
-                <BrandMark size={54} />
-              </span>
-              <div className="fx-byline-text">
-                <div className="fx-byline-name">
-                  <b>{t("fx.land.byline.name")}</b>{t("fx.land.byline.name_suffix")}
-                </div>
-                <div className="fx-byline-meta">{t("fx.land.byline.meta")}</div>
-              </div>
-            </div>
-            <div className="fx-byline-actions">
-              <a className="fx-btn fx-btn-small" href="/methode">
-                {t("fx.land.byline.methode")}
-              </a>
-              <a
-                className="fx-btn fx-btn-small"
-                href="https://github.com/Nuttux/open-public-data"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                {t("fx.land.byline.github")}
-              </a>
-              <a className="fx-btn fx-btn-small" href="mailto:daniel@franceopendata.org">
-                {t("fx.land.byline.contact")}
-              </a>
-            </div>
-          </div>
         </div>
       </section>
 
