@@ -67,7 +67,7 @@ export default function CategorieMarcheFiche({ fiche }: { fiche: MarcheCategorie
                       <Link
                         href={`/ville/paris/marches/contrat/${encodeURIComponent(c.numero)}`}
                         scroll={false}
-                        style={{ color: "var(--ink)" }}
+
                       >
                         {objet.length > 90 ? objet.slice(0, 90) + "…" : objet}
                       </Link>
@@ -80,7 +80,7 @@ export default function CategorieMarcheFiche({ fiche }: { fiche: MarcheCategorie
                       <Link
                         href={`/ville/paris/marches/fournisseur/${encodeURIComponent(c.fournisseurSiret)}`}
                         scroll={false}
-                        style={{ color: "var(--ink-2)" }}
+
                       >
                         {c.fournisseur.slice(0, 40)}
                       </Link>

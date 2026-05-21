@@ -268,7 +268,7 @@ export default function FournisseurFiche({
                       return c.numero ? (
                         <Link
                           href={`/ville/paris/marches/contrat/${c.numero}`}
-                          style={{ color: "var(--ink)" }}
+
                           scroll={false}
                         >
                           {shown}
