@@ -571,8 +571,10 @@ body:has(.theme-fusion) > div.pb-24 { padding-bottom: 0 !important; }
  * et est centré verticalement par align-items:center du parent flex. */
 .theme-fusion .fx-hero-deck {
   padding: 24px 0;
-  border-bottom: 1px solid var(--ink);
   width: 100%;
+  /* Pas de border-bottom : le HeroMarquee qui suit a déjà sa border-top
+   * (et bottom), donc empiler les deux fait une "barre noire" épaisse
+   * disgracieuse. La séparation visuelle est rendue par les borders du marquee. */
 }
 .theme-fusion .fx-hero-deck > .fx-wrap { width: 100%; }
 @media (max-width: 768px) {
@@ -5149,7 +5151,7 @@ body:has(.theme-fusion) > div.pb-24 { padding-bottom: 0 !important; }
  * Le HeroBg est contraint via bottom:0.
  * Padding optimisé pour tenir avec Deck + Marquee dans un viewport ~900px. */
 .theme-fusion .fx-hero {
-  padding: 24px 0 24px;
+  padding: 56px 0 24px;
   position: relative;
 }
 .theme-fusion .fx-hero .fx-wrap { position: relative; z-index: 1; }
@@ -5198,7 +5200,7 @@ body:has(.theme-fusion) > div.pb-24 { padding-bottom: 0 !important; }
 @media (max-width: 768px) {
   /* Mobile : padding compact pour laisser place au Deck (carousel) + Marquee
    * collé au bas du fold via flex parent fx-hero-fold. */
-  .theme-fusion .fx-hero { padding: 32px 0 16px; }
+  .theme-fusion .fx-hero { padding: 40px 0 16px; }
   .theme-fusion .fx-hero .fx-lede { font-size: 16px; }
 }
 @media (max-width: 768px) {
