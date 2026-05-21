@@ -1179,8 +1179,8 @@ const fr: Record<string, string> = {
   'fx.land.h1.em': "l'argent public",
   'fx.land.h1.mid': 'à ',
   'fx.land.h1.after': ' ?',
-  'fx.land.lede.vote': "On documente les finances publiques françaises depuis les comptes officiels. Prototype sur Paris : budget, marchés, subventions, projets, dette, logement — chacun avec sa fiche illustrée et sa source.",
-  'fx.land.lede.execute': "On documente les finances publiques françaises depuis les comptes officiels. Prototype sur Paris : budget, marchés, subventions, projets, dette, logement — chacun avec sa fiche illustrée et sa source.",
+  'fx.land.lede.vote': "Comprendre où va l'argent public à Paris, ligne par ligne. Budget, marchés publics, subventions, dette, logement, projets — chaque chiffre vient des comptes officiels de la Ville.",
+  'fx.land.lede.execute': "Comprendre où va l'argent public à Paris, ligne par ligne. Budget, marchés publics, subventions, dette, logement, projets — chaque chiffre vient des comptes officiels de la Ville.",
   /** @deprecated remplacé par fx.land.lede.vote/execute (audit 2026-05-19 — mix annuel/cumul) */
   'fx.land.lede': "{budget} milliards d'euros de dépenses publiques, {nbMarches} marchés, {nbSubventions} subventions. Tout est ici, ligne par ligne, sourcé aux comptes officiels.",
   'fx.land.cta.explore': 'Ouvrir les comptes {year} →',
