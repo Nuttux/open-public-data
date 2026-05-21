@@ -601,13 +601,31 @@ body:has(.theme-fusion) > div.pb-24 { padding-bottom: 0 !important; }
 @media (max-width: 1100px) {
   .theme-fusion .fx-hero-deck-rail { grid-template-columns: repeat(2, 1fr); }
 }
+/* Mobile : carousel horizontal swipeable. Les cards prennent ~86% de la
+ * largeur viewport, la suivante peek pour signaler "il y en a d'autres".
+ * Le rail déborde du wrap horizontalement (margin négative + padding)
+ * pour un effet edge-to-edge avec le snap aligné sur la 1re card. */
 @media (max-width: 600px) {
-  .theme-fusion .fx-hero-deck-rail { grid-template-columns: 1fr; gap: 14px; }
+  .theme-fusion .fx-hero-deck-rail {
+    display: flex;
+    grid-template-columns: none;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    margin-inline: -20px;
+    padding-inline: 20px;
+    gap: 12px;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+  }
+  .theme-fusion .fx-hero-deck-rail::-webkit-scrollbar { display: none; }
 }
-.theme-fusion .fx-hero-deck-rail::-webkit-scrollbar { height: 6px; }
-.theme-fusion .fx-hero-deck-rail::-webkit-scrollbar-thumb {
-  background: var(--muted-2);
-  border-radius: 3px;
+@media (min-width: 601px) {
+  .theme-fusion .fx-hero-deck-rail::-webkit-scrollbar { height: 6px; }
+  .theme-fusion .fx-hero-deck-rail::-webkit-scrollbar-thumb {
+    background: var(--muted-2);
+    border-radius: 3px;
+  }
 }
 
 .theme-fusion .fx-hero-deck-card {
@@ -619,6 +637,19 @@ body:has(.theme-fusion) > div.pb-24 { padding-bottom: 0 !important; }
   color: inherit;
   transition: transform .15s ease, box-shadow .15s ease, background .15s ease;
   min-height: 340px;
+}
+/* Mobile carousel : chaque card occupe ~86% du viewport,
+ * snap aligné sur le début (1re card edge-to-edge). */
+@media (max-width: 600px) {
+  .theme-fusion .fx-hero-deck-card {
+    flex: 0 0 86%;
+    scroll-snap-align: start;
+    min-height: 360px;
+  }
+  /* Petits écrans (iPhone SE et co) : card un peu plus large pour rester lisible */
+  @media (max-width: 380px) {
+    .theme-fusion .fx-hero-deck-card { flex: 0 0 92%; }
+  }
 }
 .theme-fusion .fx-hero-deck-card:hover {
   transform: translateY(-1px);
@@ -769,18 +800,8 @@ body:has(.theme-fusion) > div.pb-24 { padding-bottom: 0 !important; }
 }
 
 @media (max-width: 768px) {
-  .theme-fusion .fx-hero-deck-rail {
-    flex-direction: column;
-    overflow: visible;
-    scroll-snap-type: none;
-    padding: 0;
-    gap: 14px;
-  }
-  .theme-fusion .fx-hero-deck-card {
-    flex: 0 0 auto;
-    width: 100%;
-    min-height: auto;
-  }
+  /* Cards mobile : ajustements typographiques (le layout horizontal est géré
+   * dans le bloc carousel ci-dessus, via @media max-width:600px). */
   .theme-fusion .fx-hero-deck-title { font-size: 20px; }
   .theme-fusion .fx-hero-deck-num { font-size: clamp(44px, 13vw, 64px); }
   .theme-fusion .fx-hero-deck-body { padding: 20px 20px 20px; }
@@ -5109,7 +5130,7 @@ body:has(.theme-fusion) > div.pb-24 { padding-bottom: 0 !important; }
 /* Hero */
 /* ─── ZONE FOLD : Hero + HeroDeck + HeroMarquee tiennent dans le 1er
  *     viewport, marquee collé au bas, peu importe la hauteur du browser.
- *     Sur mobile (≤ 768px), on revient au flow normal (le contenu défile). */
+ *     S'applique aussi à mobile (cards passent en carousel horizontal). */
 .theme-fusion .fx-hero-fold {
   min-height: calc(100dvh - 56px); /* 100% viewport - navbar height */
   display: flex;
@@ -5122,13 +5143,6 @@ body:has(.theme-fusion) > div.pb-24 { padding-bottom: 0 !important; }
   align-items: center;
 }
 .theme-fusion .fx-hero-fold > .fx-marquee { flex: 0 0 auto; }
-@media (max-width: 768px) {
-  .theme-fusion .fx-hero-fold {
-    display: block;
-    min-height: 0;
-  }
-  .theme-fusion .fx-hero-fold > .fx-hero-deck { display: block; }
-}
 
 /* Hero sans lede : juste le H1 (style éditorial). Pas d'overflow:hidden :
  * le menu dropdown du H1 (ScopeDropdown) doit pouvoir sortir verticalement.
@@ -5182,10 +5196,15 @@ body:has(.theme-fusion) > div.pb-24 { padding-bottom: 0 !important; }
 @media (max-width: 768px) { .theme-fusion .fx-hero-bg { display: none; } }
 
 @media (max-width: 768px) {
-  .theme-fusion .fx-hero { padding: 56px 0 48px; }
+  /* Mobile : padding compact pour laisser place au Deck (carousel) + Marquee
+   * collé au bas du fold via flex parent fx-hero-fold. */
+  .theme-fusion .fx-hero { padding: 32px 0 16px; }
   .theme-fusion .fx-hero .fx-lede { font-size: 16px; }
-  .theme-fusion .fx-hero .fx-ctas { flex-direction: column; align-items: stretch; }
-  .theme-fusion .fx-hero .fx-ctas .fx-btn { text-align: center; }
+}
+@media (max-width: 768px) {
+  /* Sur mobile, le Deck horizontal carousel veut son padding-bottom limité
+   * pour que le marquee remonte vers le bas du fold. */
+  .theme-fusion .fx-hero-deck { padding: 16px 0; }
 }
 
 /* Scale section */
