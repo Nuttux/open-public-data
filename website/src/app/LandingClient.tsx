@@ -33,25 +33,27 @@ export default function LandingClient({ stats, posts }: Props) {
       <Navbar />
       <main id="main-content" tabIndex={-1}>
 
-      {/* HERO */}
-      <section className="fx-hero" id="hero">
-        <HeroBg />
-        <div className="fx-wrap">
-          <h1>
-            {t("fx.land.h1.before")}<em>{t("fx.land.h1.em")}</em>
-            <br />{t("fx.land.h1.mid")}
-            <ScopeDropdown variant="h1" />
-            {t("fx.land.h1.after")}
-          </h1>
-        </div>
-      </section>
+      {/* ─── ZONE FOLD (Hero + Deck + Marquee tiennent dans le 1er viewport,
+       *      marquee collé au bas du fold, adaptatif au viewport) ─── */}
+      <div className="fx-hero-fold">
+        <section className="fx-hero" id="hero">
+          <HeroBg />
+          <div className="fx-wrap">
+            <h1>
+              {t("fx.land.h1.before")}<em>{t("fx.land.h1.em")}</em>
+              <br />{t("fx.land.h1.mid")}
+              <ScopeDropdown variant="h1" />
+              {t("fx.land.h1.after")}
+            </h1>
+          </div>
+        </section>
 
-      {/* HERO DECK — 4 cards concrètes, juste après le Hero */}
-      <HeroDeck stats={stats} />
+        {/* HERO DECK — 4 cards concrètes, juste après le Hero */}
+        <HeroDeck stats={stats} />
 
-      {/* HERO MARQUEE — bandeau défilant après le deck (signal "ça vit, y a plein
-       *  d'entités à explorer") */}
-      <HeroMarquee />
+        {/* HERO MARQUEE — bandeau défilant collé au bas du fold */}
+        <HeroMarquee />
+      </div>
 
       {/* ACTE 2 — Échelle : où vont les 462€/mois (sans H2, le chiffre EST le titre) */}
       <section className="fx-echelle" id="echelle">

@@ -565,13 +565,18 @@ body:has(.theme-fusion) > div.pb-24 { padding-bottom: 0 !important; }
 .theme-fusion .fx-hero-num-cap b { color: var(--ink); font-weight: 600; }
 
 /* ───── HERO DECK ────────────────────────────────────── */
-/* Pas de H2 ni border-top : le deck est la continuation visuelle du Hero. */
+/* Pas de H2 ni border-top : le deck est la continuation visuelle du Hero.
+ * Le padding vertical est minimal car le flex parent (fx-hero-fold) gère
+ * l'alignement vertical sur desktop. Le .fx-wrap interne tient les cards
+ * et est centré verticalement par align-items:center du parent flex. */
 .theme-fusion .fx-hero-deck {
-  padding: 16px 0 32px;
+  padding: 24px 0;
   border-bottom: 1px solid var(--ink);
+  width: 100%;
 }
+.theme-fusion .fx-hero-deck > .fx-wrap { width: 100%; }
 @media (max-width: 768px) {
-  .theme-fusion .fx-hero-deck { padding: 16px 0 32px; }
+  .theme-fusion .fx-hero-deck { padding: 24px 0 40px; }
 }
 .theme-fusion .fx-hero-deck-h2 {
   font-family: var(--f-disp);
@@ -5102,10 +5107,33 @@ body:has(.theme-fusion) > div.pb-24 { padding-bottom: 0 !important; }
 }
 
 /* Hero */
-/* Hero sans lede : juste le H1 (style éditorial). Le HeroDeck + HeroMarquee
- * suivent et tiennent dans le 1er fold avec le marquee collé au bas.
- * Pas d'overflow:hidden ici : le menu dropdown du H1 (ScopeDropdown) doit
- * pouvoir sortir verticalement. Le HeroBg est contraint via bottom:0. */
+/* ─── ZONE FOLD : Hero + HeroDeck + HeroMarquee tiennent dans le 1er
+ *     viewport, marquee collé au bas, peu importe la hauteur du browser.
+ *     Sur mobile (≤ 768px), on revient au flow normal (le contenu défile). */
+.theme-fusion .fx-hero-fold {
+  min-height: calc(100dvh - 56px); /* 100% viewport - navbar height */
+  display: flex;
+  flex-direction: column;
+}
+.theme-fusion .fx-hero-fold > .fx-hero { flex: 0 0 auto; }
+.theme-fusion .fx-hero-fold > .fx-hero-deck {
+  flex: 1 1 auto;
+  display: flex;
+  align-items: center;
+}
+.theme-fusion .fx-hero-fold > .fx-marquee { flex: 0 0 auto; }
+@media (max-width: 768px) {
+  .theme-fusion .fx-hero-fold {
+    display: block;
+    min-height: 0;
+  }
+  .theme-fusion .fx-hero-fold > .fx-hero-deck { display: block; }
+}
+
+/* Hero sans lede : juste le H1 (style éditorial). Pas d'overflow:hidden :
+ * le menu dropdown du H1 (ScopeDropdown) doit pouvoir sortir verticalement.
+ * Le HeroBg est contraint via bottom:0.
+ * Padding optimisé pour tenir avec Deck + Marquee dans un viewport ~900px. */
 .theme-fusion .fx-hero {
   padding: 24px 0 24px;
   position: relative;
