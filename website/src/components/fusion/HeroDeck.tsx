@@ -129,8 +129,6 @@ export default function HeroDeck({ stats }: Props) {
             />
           )}
         </div>
-
-        <p className="fx-hero-deck-srcline">{fill(t("fx.land.deck.srcline"), { year: stats.year })}</p>
       </div>
     </section>
   );

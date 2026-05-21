@@ -587,19 +587,16 @@ body:has(.theme-fusion) > div.pb-24 { padding-bottom: 0 !important; }
 }
 
 .theme-fusion .fx-hero-deck-rail {
-  display: flex;
-  align-items: stretch;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
   gap: 20px;
-  overflow-x: auto;
-  overflow-y: hidden;
-  scroll-snap-type: x mandatory;
-  -webkit-overflow-scrolling: touch;
-  padding: 4px 4px 28px;
-  scrollbar-width: thin;
-  scrollbar-color: var(--muted-2) transparent;
+  align-items: stretch;
 }
-@media (min-width: 769px) {
-  .theme-fusion .fx-hero-deck-rail { align-items: flex-start; }
+@media (max-width: 1100px) {
+  .theme-fusion .fx-hero-deck-rail { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 600px) {
+  .theme-fusion .fx-hero-deck-rail { grid-template-columns: 1fr; gap: 14px; }
 }
 .theme-fusion .fx-hero-deck-rail::-webkit-scrollbar { height: 6px; }
 .theme-fusion .fx-hero-deck-rail::-webkit-scrollbar-thumb {
@@ -608,8 +605,6 @@ body:has(.theme-fusion) > div.pb-24 { padding-bottom: 0 !important; }
 }
 
 .theme-fusion .fx-hero-deck-card {
-  flex: 0 0 340px;
-  scroll-snap-align: start;
   display: flex;
   flex-direction: column;
   background: #fafaf7;
@@ -617,9 +612,8 @@ body:has(.theme-fusion) > div.pb-24 { padding-bottom: 0 !important; }
   text-decoration: none;
   color: inherit;
   transition: transform .15s ease, box-shadow .15s ease, background .15s ease;
+  min-height: 340px;
 }
-.theme-fusion .fx-hero-deck-card-num { min-height: 280px; }
-.theme-fusion .fx-hero-deck-card-photo { min-height: 340px; }
 .theme-fusion .fx-hero-deck-card:hover {
   transform: translateY(-1px);
   background: #fffffe;
@@ -654,6 +648,10 @@ body:has(.theme-fusion) > div.pb-24 { padding-bottom: 0 !important; }
   background: rgba(0,0,0,0.55);
   color: #faf9f5;
   letter-spacing: 0.5px;
+  white-space: nowrap;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .theme-fusion .fx-hero-deck-body {
@@ -859,44 +857,77 @@ body:has(.theme-fusion) > div.pb-24 { padding-bottom: 0 !important; }
 @media (max-width: 768px) {
   .theme-fusion .fx-chip-strip { padding: 32px 0 40px; }
 }
-.theme-fusion .fx-chip-strip-h {
-  font-family: var(--f-mono);
-  font-size: 11px;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: var(--ink-2);
-  margin: 0 0 18px;
-  font-weight: 600;
+.theme-fusion .fx-chip-strip-h2 {
+  font-family: var(--f-disp);
+  font-weight: 700;
+  font-size: clamp(28px, 4vw, 44px);
+  letter-spacing: -0.03em;
+  line-height: 1.05;
+  margin: 0 0 28px;
+  color: var(--ink);
 }
+.theme-fusion .fx-chip-strip-h2 em { font-style: italic; font-weight: 700; color: var(--ink-2); }
 .theme-fusion .fx-chip-strip-list {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px 10px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
   list-style: none;
   padding: 0;
   margin: 0;
 }
+@media (max-width: 900px) {
+  .theme-fusion .fx-chip-strip-list { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 600px) {
+  .theme-fusion .fx-chip-strip-list { grid-template-columns: 1fr; gap: 10px; }
+}
 .theme-fusion .fx-chip-strip-list li { margin: 0; }
 .theme-fusion .fx-chip-strip-list a {
-  display: inline-block;
-  font-family: var(--f-ui);
-  font-weight: 500;
-  font-size: 14px;
-  color: var(--ink);
-  text-decoration: none;
-  padding: 8px 14px;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  grid-template-rows: auto auto;
+  align-items: baseline;
+  column-gap: 10px;
+  row-gap: 4px;
+  padding: 18px 18px 18px;
   border: 1px solid var(--ink);
   background: #fafaf7;
-  transition: background .15s ease, transform .15s ease;
+  text-decoration: none;
+  color: var(--ink);
+  transition: background .15s ease, transform .15s ease, box-shadow .15s ease;
 }
 .theme-fusion .fx-chip-strip-list a:hover {
-  background: var(--ink);
-  color: var(--bg);
+  background: #fffffe;
   transform: translateY(-1px);
+  box-shadow: 2px 2px 0 var(--ink);
 }
 .theme-fusion .fx-chip-strip-list a:focus-visible {
   outline: 2px solid var(--ink);
   outline-offset: 2px;
+}
+.theme-fusion .fx-chip-strip-title {
+  font-family: var(--f-disp);
+  font-weight: 700;
+  font-size: 18px;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+  grid-column: 1;
+  grid-row: 1;
+}
+.theme-fusion .fx-chip-strip-arrow {
+  grid-column: 2;
+  grid-row: 1;
+  font-family: var(--f-mono);
+  font-size: 16px;
+  color: var(--ink);
+}
+.theme-fusion .fx-chip-strip-desc {
+  grid-column: 1 / -1;
+  grid-row: 2;
+  font-family: var(--f-ui);
+  font-size: 13.5px;
+  line-height: 1.45;
+  color: var(--muted);
 }
 
 /* ───── KPI GRID ──────────────────────────────────────── */

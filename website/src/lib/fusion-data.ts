@@ -364,15 +364,15 @@ const HERO_FEATURED_PROJET_PHOTO = "/photos/hero/piscine-belliard.jpg";
 
 const HERO_FEATURED_ASSO_NAME = "PARIS MUSEES";
 const HERO_FEATURED_ASSO_PHOTO = "/photos/hero/petit-palais.jpg";
-const HERO_FEATURED_ASSO_PHOTO_CREDIT = "Petit Palais · Wikimedia CC";
+const HERO_FEATURED_ASSO_PHOTO_CREDIT = "Wikimedia CC";
 
 const HERO_FEATURED_CATEGORIE_LIBELLE = "entretien des espaces verts";
 const HERO_FEATURED_CATEGORIE_PHOTO = "/photos/hero/buttes-chaumont.jpg";
-const HERO_FEATURED_CATEGORIE_PHOTO_CREDIT = "Parc des Buttes-Chaumont · Wikimedia CC";
+const HERO_FEATURED_CATEGORIE_PHOTO_CREDIT = "Wikimedia CC";
 
 const HERO_FEATURED_BAILLEUR_SLUG = "paris-habitat";
 const HERO_FEATURED_BAILLEUR_PHOTO = "/photos/hero/cite-michelet.jpg";
-const HERO_FEATURED_BAILLEUR_PHOTO_CREDIT = "Cité Michelet (19ᵉ) · Wikimedia CC";
+const HERO_FEATURED_BAILLEUR_PHOTO_CREDIT = "Wikimedia CC";
 
 function loadFeaturedProjet(): FeaturedProjet | null {
   try {
@@ -3916,26 +3916,45 @@ export type MarcheCategorieFiche = {
 export function loadMarcheCategorie(slug: string, requestedYear?: number): MarcheCategorieFiche | null {
   const idx = readJson<MarchesIndexRaw>("marches-publics/index.json");
   const years = (idx.availableYears ?? []).slice().sort((a, b) => a - b);
-  const yr = requestedYear && years.includes(requestedYear) ? requestedYear : years[years.length - 1];
 
-  let file: MarchesFile;
-  try {
-    file = readJson<MarchesFile>(`marches-publics/marches_${yr}.json`);
-  } catch {
-    return null;
-  }
-  const rows = (file.data ?? file.marches ?? []) as (MarcheRow & {
-    numero_marche?: string;
-    fournisseur_siret?: string;
-    fournisseur_nom?: string;
-  })[];
+  // Le schéma des catégories DECP a changé entre 2024 et 2025/2026 : les
+  // libellés granulaires ("entretien des espaces verts") existaient pre-2025,
+  // remplacés depuis par des libellés grossiers ("Travaux", "Fournitures
+  // courantes"). Pour ne pas 404 sur des URLs encore valides, on cherche
+  // descendant depuis l'année la plus récente si on ne trouve rien dans
+  // l'année par défaut.
+  const candidateYears = requestedYear && years.includes(requestedYear)
+    ? [requestedYear]
+    : years.slice().reverse();
 
   const target = slug.toLowerCase();
-  const matching = rows.filter((r) => {
-    const cat = r.categorie_libelle || r.nature || "Autres";
-    return slugifyLabel(cat) === target;
-  });
-  if (matching.length === 0) return null;
+  let yr: number | null = null;
+  let rows: (MarcheRow & { numero_marche?: string; fournisseur_siret?: string; fournisseur_nom?: string })[] = [];
+  let matching: (MarcheRow & { numero_marche?: string; fournisseur_siret?: string; fournisseur_nom?: string })[] = [];
+  for (const candidate of candidateYears) {
+    let file: MarchesFile;
+    try {
+      file = readJson<MarchesFile>(`marches-publics/marches_${candidate}.json`);
+    } catch {
+      continue;
+    }
+    const candidateRows = (file.data ?? file.marches ?? []) as (MarcheRow & {
+      numero_marche?: string;
+      fournisseur_siret?: string;
+      fournisseur_nom?: string;
+    })[];
+    const found = candidateRows.filter((r) => {
+      const cat = r.categorie_libelle || r.nature || "Autres";
+      return slugifyLabel(cat) === target;
+    });
+    if (found.length > 0) {
+      yr = candidate;
+      rows = candidateRows;
+      matching = found;
+      break;
+    }
+  }
+  if (yr === null || matching.length === 0) return null;
 
   const firstCat = matching[0].categorie_libelle || matching[0].nature || "Autres";
   const total = matching.reduce((s, r) => s + Number(r.montant_max ?? 0), 0);
