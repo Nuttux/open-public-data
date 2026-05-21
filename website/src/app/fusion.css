@@ -592,20 +592,17 @@ body:has(.theme-fusion) > div.pb-24 { padding-bottom: 0 !important; }
   .theme-fusion .fx-hero-deck-h2 { margin: 0 0 20px; }
 }
 
+/* Desktop ≥901px : grid 4 colonnes (4 cards en 1 ligne) */
 .theme-fusion .fx-hero-deck-rail {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 20px;
   align-items: stretch;
 }
-@media (max-width: 1100px) {
-  .theme-fusion .fx-hero-deck-rail { grid-template-columns: repeat(2, 1fr); }
-}
-/* Mobile : carousel horizontal swipeable. Les cards prennent ~86% de la
- * largeur viewport, la suivante peek pour signaler "il y en a d'autres".
- * Le rail déborde du wrap horizontalement (margin négative + padding)
- * pour un effet edge-to-edge avec le snap aligné sur la 1re card. */
-@media (max-width: 600px) {
+/* Mobile + tablet portrait + petits laptops : carousel horizontal swipeable.
+ * Couvre 320-900px → un seul pattern simple, pas de grid 2x2 problématique
+ * qui débordait du fold en hauteur. */
+@media (max-width: 900px) {
   .theme-fusion .fx-hero-deck-rail {
     display: flex;
     grid-template-columns: none;
@@ -620,7 +617,7 @@ body:has(.theme-fusion) > div.pb-24 { padding-bottom: 0 !important; }
   }
   .theme-fusion .fx-hero-deck-rail::-webkit-scrollbar { display: none; }
 }
-@media (min-width: 601px) {
+@media (min-width: 901px) {
   .theme-fusion .fx-hero-deck-rail::-webkit-scrollbar { height: 6px; }
   .theme-fusion .fx-hero-deck-rail::-webkit-scrollbar-thumb {
     background: var(--muted-2);
@@ -638,18 +635,24 @@ body:has(.theme-fusion) > div.pb-24 { padding-bottom: 0 !important; }
   transition: transform .15s ease, box-shadow .15s ease, background .15s ease;
   min-height: 340px;
 }
-/* Mobile carousel : chaque card occupe ~86% du viewport,
- * snap aligné sur le début (1re card edge-to-edge). */
-@media (max-width: 600px) {
+/* Carousel mode (≤900px) : chaque card occupe une fraction du viewport,
+ * snap aligné sur le début (1re card edge-to-edge). Largeur ajustée selon
+ * la taille viewport pour préserver le peek de la suivante. */
+@media (max-width: 900px) {
   .theme-fusion .fx-hero-deck-card {
-    flex: 0 0 86%;
+    flex: 0 0 48%; /* tablet : ~2 cards par viewport + peek */
     scroll-snap-align: start;
     min-height: 360px;
   }
-  /* Petits écrans (iPhone SE et co) : card un peu plus large pour rester lisible */
-  @media (max-width: 380px) {
-    .theme-fusion .fx-hero-deck-card { flex: 0 0 92%; }
+}
+@media (max-width: 600px) {
+  .theme-fusion .fx-hero-deck-card {
+    flex: 0 0 86%; /* mobile : 1 card + peek */
   }
+}
+@media (max-width: 380px) {
+  /* Très petits écrans (iPhone SE) : card un peu plus large pour rester lisible */
+  .theme-fusion .fx-hero-deck-card { flex: 0 0 92%; }
 }
 .theme-fusion .fx-hero-deck-card:hover {
   transform: translateY(-1px);
