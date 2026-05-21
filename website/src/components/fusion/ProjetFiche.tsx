@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import type { ProjetFiche as ProjetFicheType, ProjetPhotoResolved } from "@/lib/fusion-data";
 import ProjetThumb from "./ProjetThumb";
 import { useT, useLocale } from "@/lib/localeContext";
@@ -285,9 +286,9 @@ export default function ProjetFiche({ projet, photo }: { projet: ProjetFicheType
               const confidence = m.label === "confirmed" ? t("fx.fiche.projet.confidence.confirmed") : t("fx.fiche.projet.confidence.probable");
               const badgeColor = m.label === "confirmed" ? "var(--vert)" : "var(--ocre)";
               return (
-                <a
+                <Link
                   key={m.numero_marche}
-                  href={`/marches-publics/contrat/${encodeURIComponent(m.numero_marche)}`}
+                  href={`/ville/paris/marches/contrat/${encodeURIComponent(m.numero_marche)}`}
                   style={{
                     display: "block",
                     padding: "12px 0",
@@ -319,7 +320,7 @@ export default function ProjetFiche({ projet, photo }: { projet: ProjetFicheType
                     {m.cpv_famille && <span>· {m.cpv_famille}</span>}
                     {m.lieu_execution && <span>· {m.lieu_execution}</span>}
                   </div>
-                </a>
+                </Link>
               );
             })}
           </div>
@@ -333,9 +334,9 @@ export default function ProjetFiche({ projet, photo }: { projet: ProjetFicheType
             {projet.similaires.map((s) => {
               const f = fmtEur(s.montant);
               return (
-                <a
+                <Link
                   key={s.id}
-                  href={`/investissements/projet/${encodeURIComponent(s.id)}`}
+                  href={`/ville/paris/investissements/projet/${encodeURIComponent(s.id)}`}
                   style={{
                     display: "grid",
                     gridTemplateColumns: "1fr auto",
@@ -360,7 +361,7 @@ export default function ProjetFiche({ projet, photo }: { projet: ProjetFicheType
                   <span style={{ fontFamily: "var(--f-disp)", fontWeight: 700, letterSpacing: "-0.01em" }}>
                     {f.v} <span style={{ fontSize: ".7em", color: "var(--muted)", fontWeight: 500 }}>{f.u}</span>
                   </span>
-                </a>
+                </Link>
               );
             })}
           </div>
