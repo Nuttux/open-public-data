@@ -13,6 +13,7 @@ import HeroBg from "@/components/fusion/HeroBg";
 import HeroDeck from "@/components/fusion/HeroDeck";
 import HeroMarquee from "@/components/fusion/HeroMarquee";
 import BarRow from "@/components/fusion/BarRow";
+import CountUpOnReveal from "@/components/fusion/CountUpOnReveal";
 import { fmtInt, fmtBillions } from "@/lib/fmt";
 import type { LandingStats } from "@/lib/fusion-data";
 import type { BlogPostMeta } from "@/lib/blog";
@@ -76,7 +77,9 @@ export default function LandingClient({ stats, posts }: Props) {
       <section className="fx-echelle" id="echelle">
         <div className="fx-wrap">
           <p className="fx-echelle-big tnum">
-            <span className="fx-echelle-num">{fmtInt(stats.perCapitaMonth)}</span>
+            <span className="fx-echelle-num">
+              <CountUpOnReveal value={stats.perCapitaMonth} format={(n) => fmtInt(n)} durationMs={1100} threshold={0.4} />
+            </span>
             <span className="fx-echelle-u">€</span>
             <span className="fx-echelle-per">{t("fx.land.echelle.per")}</span>
           </p>
@@ -122,14 +125,11 @@ export default function LandingClient({ stats, posts }: Props) {
         </div>
       </section>
 
-      {/* ACTE 4 — Mini-cards "Explorer aussi" (avant analyses pour la discoverabilité) */}
+      {/* ACTE 4 — Mini-cards "Explorer aussi" (avant analyses pour la discoverabilité)
+       *  H2 supprimé volontairement : les 6 cards parlent par elles-mêmes,
+       *  comme l'Échelle juste au-dessus (le chiffre 462 € est son propre titre). */}
       <section className="fx-chip-strip" id="explorer-aussi" aria-label={t("fx.land.chips.aria")}>
         <div className="fx-wrap">
-          <h2 className="fx-chip-strip-h2">
-            {t("fx.land.chips.h2.before")}
-            <em>{t("fx.land.chips.h2.em")}</em>
-            {t("fx.land.chips.h2.dot")}
-          </h2>
           <ul className="fx-chip-strip-list">
             <li>
               <Link href="/ville/paris/budget">

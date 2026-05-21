@@ -849,7 +849,7 @@ body:has(.theme-fusion) > div.pb-24 { padding-bottom: 0 !important; }
 }
 @media (max-width: 768px) {
   .theme-fusion .fx-marquee { padding: 10px 0; }
-  .theme-fusion .fx-marquee-track { gap: 24px; animation-duration: 40s; }
+  .theme-fusion .fx-marquee-track { gap: 24px; animation-duration: 90s; }
   .theme-fusion .fx-marquee-item { font-size: 13px; }
   .theme-fusion .fx-marquee-amount { font-size: 11px; }
 }
