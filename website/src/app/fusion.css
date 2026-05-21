@@ -854,13 +854,14 @@ body:has(.theme-fusion) > div.pb-24 { padding-bottom: 0 !important; }
   .theme-fusion .fx-marquee-amount { font-size: 11px; }
 }
 
-/* ───── ACTE 2 — ÉCHELLE (décompo 462€/mois) ────────── */
+/* ───── ACTE 2 — ÉCHELLE + DÉTAIL (chiffre intro → décompo en 6 sections) ────────── */
+/* Pas de border-bottom : l'échelle et le chip-strip lisent comme une seule séquence
+ * "chiffre global → décomposition". Le border est rendu par le chip-strip à la fin. */
 .theme-fusion .fx-echelle {
-  padding: 96px 0 88px;
-  border-bottom: 1px solid var(--ink);
+  padding: 96px 0 32px;
 }
 @media (max-width: 768px) {
-  .theme-fusion .fx-echelle { padding: 40px 0 48px; }
+  .theme-fusion .fx-echelle { padding: 40px 0 20px; }
 }
 .theme-fusion .fx-echelle-h2 {
   font-family: var(--f-disp);
@@ -923,13 +924,13 @@ body:has(.theme-fusion) > div.pb-24 { padding-bottom: 0 !important; }
   .theme-fusion .fx-echelle-sub { font-size: 14px; }
 }
 
-/* ───── ACTE 4 — CHIP STRIP (explorer aussi) ────────── */
+/* ───── ACTE 4 — CHIP STRIP (la décomposition du 462€ par section) ────────── */
 .theme-fusion .fx-chip-strip {
-  padding: 56px 0 64px;
+  padding: 32px 0 64px;
   border-bottom: 1px solid var(--ink);
 }
 @media (max-width: 768px) {
-  .theme-fusion .fx-chip-strip { padding: 32px 0 40px; }
+  .theme-fusion .fx-chip-strip { padding: 20px 0 40px; }
 }
 .theme-fusion .fx-chip-strip-kicker {
   font-family: var(--f-mono);

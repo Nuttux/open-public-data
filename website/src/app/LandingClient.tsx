@@ -22,8 +22,6 @@ type Props = { stats: LandingStats; posts: BlogPostMeta[] };
 export default function LandingClient({ stats, posts }: Props) {
   const t = useT();
   const { locale } = useLocale();
-  const deltaPct = stats.deltaVsLastExecutedPct;
-  const arrow = deltaPct < -0.1 ? "↓" : Math.abs(deltaPct) < 0.1 ? "→" : "↑";
 
   const fill = (key: string, vars: Record<string, string | number>) => {
     let s = t(key);
@@ -64,11 +62,12 @@ export default function LandingClient({ stats, posts }: Props) {
         </div>
       </section>
 
-      {/* HERO MARQUEE — bande défilante d'entités cliquables (démontre la profondeur du site) */}
-      <HeroMarquee />
-
-      {/* HERO DECK — remplace SCALE : 4 cards concrètes, cliquables vers fiches */}
+      {/* HERO DECK — 4 cards concrètes, cliquables vers fiches */}
       <HeroDeck stats={stats} />
+
+      {/* HERO MARQUEE — bande défilante en aval du deck : montre l'exhaustivité
+       *  ("ce n'est pas QUE ces 4 cards, c'est aussi tout ça") */}
+      <HeroMarquee />
 
       {/* ACTE 2 — Échelle : où vont les 462€/mois (sans H2, le chiffre EST le titre) */}
       <section className="fx-echelle" id="echelle">
@@ -81,10 +80,6 @@ export default function LandingClient({ stats, posts }: Props) {
             <span className="fx-echelle-per">{t("fx.land.echelle.per")}</span>
           </p>
           <p className="fx-echelle-delta">
-            <span aria-hidden="true">{arrow}</span>{" "}
-            <b>{Math.abs(deltaPct).toFixed(1).replace(".", ",")} %</b>{" "}
-            {fill("fx.land.echelle.vs", { year: stats.lastExecutedYear })}
-            <span className="fx-echelle-sep">·</span>
             {fill("fx.land.echelle.total", { amount: fmtBillions(stats.totalDepenses) })}
           </p>
         </div>
@@ -141,28 +136,6 @@ export default function LandingClient({ stats, posts }: Props) {
               </Link>
             </li>
           </ul>
-        </div>
-      </section>
-
-      {/* MÉTHODE STRIP — bridge entre mini-cards/analyses : annonce le "comment c'est fait"
-       *  juste avant que le lecteur plonge dans les articles. */}
-      <section className="fx-meth-strip" id="meth-strip">
-        <div className="fx-wrap">
-          <Link href="/methode" className="fx-meth-strip-link">
-            <span className="fx-meth-strip-label">
-              {t("fx.land.meth_strip.label")}
-            </span>
-            <span className="fx-meth-strip-tags">
-              <span>{t("fx.land.meth_strip.tag1")}</span>
-              <span>·</span>
-              <span>{t("fx.land.meth_strip.tag2")}</span>
-              <span>·</span>
-              <span>{t("fx.land.meth_strip.tag3")}</span>
-            </span>
-            <span className="fx-meth-strip-cta">
-              {t("fx.land.meth_strip.cta")} <span aria-hidden="true">→</span>
-            </span>
-          </Link>
         </div>
       </section>
 
