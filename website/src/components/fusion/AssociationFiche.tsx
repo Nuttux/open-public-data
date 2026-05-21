@@ -233,8 +233,8 @@ export default function AssociationFiche({
                     <tr
                       key={i}
                       onClick={hasDetail ? () => setOpenLigne(isOpen ? null : i) : undefined}
+                      className={hasDetail ? "fx-row-link" : undefined}
                       style={{
-                        cursor: hasDetail ? "pointer" : "default",
                         background: isOpen ? "#fafaf7" : undefined,
                       }}
                       aria-expanded={hasDetail ? isOpen : undefined}

@@ -3402,6 +3402,40 @@ body:has(.theme-fusion) > div.pb-24 { padding-bottom: 0 !important; }
   color: var(--fx-row-link-text-hover);
   opacity: 0.7;
 }
+
+/* Tables de fiche : si une row contient un <a href>, toute la row devient
+ * interactive avec le même look que .fx-row-link. Utilise :has() (Safari
+ * 15.4+, Chrome 105+, Firefox 121+ — couvre 95%+ des navigateurs 2026).
+ * Les tables sans Link (ex. BailleurFiche Organismes prêteurs) ne sont
+ * PAS affectées — elles restent en data-only sans cursor pointer. */
+/* Universal : toute row de table dans theme-fusion qui contient un <a href>
+ * devient cliquable avec le pattern fx-row-link. Couvre toutes les tables :
+ * fx-fiche-table, fx-fiche-subv-table, fx-table, etc. */
+.theme-fusion table tr:has(a[href]) {
+  cursor: pointer;
+  transition: background .1s ease, color .1s ease;
+}
+.theme-fusion table tr:has(a[href]):hover {
+  background: var(--fx-row-link-bg-hover);
+  color: var(--fx-row-link-text-hover);
+}
+.theme-fusion table tr:has(a[href]):hover a,
+.theme-fusion table tr:has(a[href]):hover td {
+  color: var(--fx-row-link-text-hover);
+}
+.theme-fusion table tr:has(a[href]):hover .muted,
+.theme-fusion table tr:has(a[href]):hover .mono,
+.theme-fusion table tr:has(a[href]):hover .rank {
+  color: var(--fx-row-link-text-hover);
+  opacity: 0.7;
+}
+
+/* Variante non-Link : pour les rows clickables via onClick (expand toggle,
+ * modal trigger, etc). À appliquer manuellement via className="fx-row-link". */
+.theme-fusion tr.fx-row-link { cursor: pointer; }
+.theme-fusion tr.fx-row-link:hover { background: var(--fx-row-link-bg-hover); }
+.theme-fusion tr.fx-row-link:hover td { color: var(--fx-row-link-text-hover); }
+.theme-fusion tr.fx-row-link:hover .muted { color: var(--fx-row-link-text-hover); opacity: 0.7; }
 .theme-fusion .fx-mini-row .rank {
   font-family: var(--f-mono);
   font-size: 11px;
