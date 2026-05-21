@@ -2968,9 +2968,12 @@ const fr: Record<string, string> = {
 
   // ── DetailDrawer ────────────────────────────────────────────────────────────
   'fx.drawer.share_aria': 'Partager',
-  'fx.drawer.fullpage': 'Page entière',
-  'fx.drawer.fullpage_aria': 'Ouvrir la page entière de cette fiche',
-  'fx.drawer.fullpage_title': 'Ouvrir la page entière (URL stable, partageable)',
+  'fx.drawer.hub.invest': 'Voir tous les projets',
+  'fx.drawer.hub.subv': 'Voir toutes les subventions',
+  'fx.drawer.hub.marches': 'Voir tous les marchés',
+  'fx.drawer.hub.dette': 'Voir la dette',
+  'fx.drawer.hub.logement': 'Voir le logement social',
+  'fx.drawer.hub.budget': 'Voir le budget',
   'fx.drawer.copied': '✓ Copié',
   'fx.drawer.share': '↗ Partager',
   'fx.drawer.copy_link': 'Copier le lien',
