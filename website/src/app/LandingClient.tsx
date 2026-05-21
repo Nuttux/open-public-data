@@ -104,27 +104,6 @@ export default function LandingClient({ stats, posts }: Props) {
         </div>
       </section>
 
-      {/* MÉTHODE STRIP — prominence en haut de page */}
-      <section className="fx-meth-strip" id="meth-strip">
-        <div className="fx-wrap">
-          <Link href="/methode" className="fx-meth-strip-link">
-            <span className="fx-meth-strip-label">
-              {t("fx.land.meth_strip.label")}
-            </span>
-            <span className="fx-meth-strip-tags">
-              <span>{t("fx.land.meth_strip.tag1")}</span>
-              <span>·</span>
-              <span>{t("fx.land.meth_strip.tag2")}</span>
-              <span>·</span>
-              <span>{t("fx.land.meth_strip.tag3")}</span>
-            </span>
-            <span className="fx-meth-strip-cta">
-              {t("fx.land.meth_strip.cta")} <span aria-hidden="true">→</span>
-            </span>
-          </Link>
-        </div>
-      </section>
-
       {/* ACTE 4 — Mini-cards "Explorer aussi" (avant analyses pour la discoverabilité)
        *  H2 supprimé volontairement : les 6 cards parlent par elles-mêmes,
        *  comme l'Échelle juste au-dessus (le chiffre 462 € est son propre titre). */}
@@ -174,6 +153,28 @@ export default function LandingClient({ stats, posts }: Props) {
               </Link>
             </li>
           </ul>
+        </div>
+      </section>
+
+      {/* MÉTHODE STRIP — bridge entre mini-cards/analyses : annonce le "comment c'est fait"
+       *  juste avant que le lecteur plonge dans les articles. */}
+      <section className="fx-meth-strip" id="meth-strip">
+        <div className="fx-wrap">
+          <Link href="/methode" className="fx-meth-strip-link">
+            <span className="fx-meth-strip-label">
+              {t("fx.land.meth_strip.label")}
+            </span>
+            <span className="fx-meth-strip-tags">
+              <span>{t("fx.land.meth_strip.tag1")}</span>
+              <span>·</span>
+              <span>{t("fx.land.meth_strip.tag2")}</span>
+              <span>·</span>
+              <span>{t("fx.land.meth_strip.tag3")}</span>
+            </span>
+            <span className="fx-meth-strip-cta">
+              {t("fx.land.meth_strip.cta")} <span aria-hidden="true">→</span>
+            </span>
+          </Link>
         </div>
       </section>
 

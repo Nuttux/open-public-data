@@ -39,6 +39,7 @@ const SOURCE: Item[] = [
   { href: "/ville/paris/investissements/projet/2024_18_51_017", type: "projet", label_fr: "Aréna 2 (porte de la Chapelle)", label_en: "Arena 2 (porte de la Chapelle)", amount_fr: "12 M€", amount_en: "€12M" },
   { href: "/ville/paris/investissements/projet/2024_16_45_010", type: "projet", label_fr: "Porte Maillot", label_en: "Porte Maillot", amount_fr: "7,1 M€", amount_en: "€7.1M" },
   { href: "/ville/paris/investissements/projet/2024_20_60_006", type: "projet", label_fr: "Porte de Montreuil", label_en: "Porte de Montreuil", amount_fr: "6,1 M€", amount_en: "€6.1M" },
+  { href: "/ville/paris/marches/fournisseur/750043937", type: "fournisseur", label_fr: "Polyreva (propreté)", label_en: "Polyreva (cleaning services)", amount_fr: "235 M€ cumulés", amount_en: "€235M cumulative" },
 
   // === ASSOS / INSTITUTIONS PUBLIQUES-PUBLIQUES ===
   { href: "/ville/paris/subventions/association/CENTRE%20ACTION%20SOCIALE%20VILLE%20PARIS", type: "asso", label_fr: "CASVP", label_en: "CASVP (city social action)", amount_fr: "416 M€/an", amount_en: "€416M/yr" },
@@ -51,6 +52,7 @@ const SOURCE: Item[] = [
   { href: "/ville/paris/subventions/association/AGOSPAP", type: "asso", label_fr: "AGOSPAP (œuvres sociales agents)", label_en: "AGOSPAP (staff welfare)", amount_fr: "7 M€/an", amount_en: "€7M/yr" },
   { href: "/ville/paris/subventions/association/ABC%20PUERICULTURE", type: "asso", label_fr: "ABC Puériculture", label_en: "ABC Childcare", amount_fr: "8,6 M€/an", amount_en: "€8.6M/yr" },
   { href: "/ville/paris/subventions/association/CRESCENDO", type: "asso", label_fr: "Crescendo (petite enfance)", label_en: "Crescendo (early childhood)", amount_fr: "6,5 M€/an", amount_en: "€6.5M/yr" },
+  { href: "/ville/paris/subventions/association/ALTERALIA", type: "asso", label_fr: "Alteralia (social)", label_en: "Alteralia (social action)", amount_fr: "7,3 M€/an", amount_en: "€7.3M/yr" },
 
   // === BAILLEURS ===
   { href: "/ville/paris/dette/bailleur/paris-habitat", type: "bailleur", label_fr: "Paris Habitat", label_en: "Paris Habitat (social housing)", amount_fr: "2,7 Md€ garanties", amount_en: "€2.7Bn guarantees" },
