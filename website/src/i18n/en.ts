@@ -2968,12 +2968,12 @@ const en: Record<string, string> = {
 
   // ── DetailDrawer ────────────────────────────────────────────────────────────
   'fx.drawer.share_aria': 'Share',
-  'fx.drawer.hub.invest': 'See all projects',
-  'fx.drawer.hub.subv': 'See all grants',
-  'fx.drawer.hub.marches': 'See all contracts',
-  'fx.drawer.hub.dette': 'See city debt',
-  'fx.drawer.hub.logement': 'See social housing',
-  'fx.drawer.hub.budget': 'See the budget',
+  'fx.drawer.hub.invest': 'Investments',
+  'fx.drawer.hub.subv': 'Grants',
+  'fx.drawer.hub.marches': 'Contracts',
+  'fx.drawer.hub.dette': 'Debt',
+  'fx.drawer.hub.logement': 'Housing',
+  'fx.drawer.hub.budget': 'Budget',
   'fx.drawer.copied': '✓ Copied',
   'fx.drawer.share': '↗ Share',
   'fx.drawer.copy_link': 'Copy link',
