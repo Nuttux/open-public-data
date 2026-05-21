@@ -60,16 +60,19 @@ jobs:
       - name: Remove .next/cache (not needed downstream)
         run: rm -rf .next/cache
 
+      # Tar .next before upload: Next.js emits chunk files containing `:`
+      # (e.g. `[externals]_node:crypto_*.js`) which actions/upload-artifact
+      # rejects. Wrapping in a tarball preserves filenames intact.
+      - name: Package .next as tarball
+        run: tar -cf next-build.tar .next
+
       - name: Upload .next artifact
         uses: actions/upload-artifact@v4
         with:
           name: next-build
-          path: website/.next
+          path: website/next-build.tar
           retention-days: 1
           if-no-files-found: error
-          # .next starts with a dot → upload-artifact v4 treats it as hidden
-          # and refuses to upload unless we opt in explicitly.
-          include-hidden-files: true
 
   e2e:
     name: E2E (Playwright golden path)
@@ -97,7 +100,10 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: next-build
-          path: website/.next
+          path: website
+
+      - name: Extract .next tarball
+        run: tar -xf next-build.tar && rm next-build.tar
 
       - name: Cache Playwright browsers
         uses: actions/cache@v4
@@ -163,7 +169,10 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: next-build
-          path: website/.next
+          path: website
+
+      - name: Extract .next tarball
+        run: tar -xf next-build.tar && rm next-build.tar
 
       - name: Start Next.js server
         run: npm run start &
