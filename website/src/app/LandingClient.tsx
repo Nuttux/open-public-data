@@ -8,16 +8,14 @@ import Navbar from "@/components/fusion/Navbar";
 import Footer from "@/components/fusion/Footer";
 import Button from "@/components/fusion/Button";
 import ScopeDropdown from "@/components/fusion/ScopeDropdown";
-import BarRow from "@/components/fusion/BarRow";
 import TileCard from "@/components/fusion/TileCard";
 import BrandMark from "@/components/fusion/BrandMark";
 import HeroBg from "@/components/fusion/HeroBg";
-import CountUpOnReveal from "@/components/fusion/CountUpOnReveal";
+import HeroDeck from "@/components/fusion/HeroDeck";
 import { fmtDec, fmtInt, fmtBillions, fmtMillions } from "@/lib/fmt";
 import type { LandingStats } from "@/lib/fusion-data";
 import type { BlogPostMeta } from "@/lib/blog";
 import { useT, useLocale } from "@/lib/localeContext";
-import { trLabel } from "@/lib/label-translate";
 
 type Props = { stats: LandingStats; posts: BlogPostMeta[] };
 
@@ -56,10 +54,7 @@ export default function LandingClient({ stats, posts }: Props) {
   const t = useT();
   const { locale } = useLocale();
   const deltaPct = stats.deltaVsLastExecutedPct;
-  const direction: "up" | "down" | "flat" =
-    deltaPct > 0.1 ? "up" : deltaPct < -0.1 ? "down" : "flat";
-  const arrow = direction === "down" ? "↓" : direction === "flat" ? "→" : "↑";
-  const deltaEurPerMonthAbs = Math.abs(stats.deltaVsLastExecutedPerMonth);
+  const arrow = deltaPct < -0.1 ? "↓" : Math.abs(deltaPct) < 0.1 ? "→" : "↑";
 
   const fill = (key: string, vars: Record<string, string | number>) => {
     let s = t(key);
@@ -100,58 +95,8 @@ export default function LandingClient({ stats, posts }: Props) {
         </div>
       </section>
 
-      {/* SCALE */}
-      <section className="fx-scale" id="scale">
-        <div className="fx-wrap">
-          <p className="fx-hero-num-line">{t("fx.land.scale.line")}</p>
-          <p className="fx-hero-num-big tnum">
-            <CountUpOnReveal value={stats.perCapitaMonth} format={(n) => fmtInt(n)} />
-            <span className="fx-hero-num-u">€</span>
-            <span className="fx-hero-num-per">{t("fx.land.scale.per_inhabitant")}</span>
-          </p>
-          <p className="fx-hero-num-delta">
-            <span className={`fx-hero-num-arrow fx-hero-num-arrow-${direction}`}>
-              {arrow} {fmtDec(Math.abs(deltaPct), 1)} %
-            </span>
-            <span className="fx-hero-num-sep">·</span>
-            <span className="fx-hero-num-base">
-              {direction === "down" ? "−" : "+"} {fmtInt(deltaEurPerMonthAbs)} €
-            </span>
-            <span>{fill("fx.land.scale.vs_fiscal", { year: stats.lastExecutedYear })}</span>
-          </p>
-          <p className="fx-hero-num-cap">
-            {t("fx.land.scale.cap.soit")}
-            <b>{fill("fx.land.scale.cap.per_year", { amount: fmtInt(stats.perCapitaYear) })}</b>
-            {fill("fx.land.scale.cap.budget", { year: stats.year })}
-            <b>{fill("fx.land.scale.cap.pop", { population: fmtInt(stats.parisPopulation) })}</b>
-            {t("fx.land.scale.cap.suffix")}
-          </p>
-
-          <BarRow
-            header={{
-              left: (
-                <>
-                  {t("fx.land.scale.bar.left_before")}
-                  <b>{t("fx.land.scale.bar.left_em")}</b>
-                </>
-              ),
-              right: (
-                <>
-                  {t("fx.land.scale.bar.right_label")}
-                  <b>{fmtInt(stats.perCapitaMonth)} €</b>
-                </>
-              ),
-            }}
-            items={stats.breakdown.map((b) => ({
-              label: b.label === "Autres (D)" ? t("fx.land.scale.autres") : trLabel(b.label, locale),
-              value: b.perMonth,
-              unit: "€",
-              display: fmtInt(b.perMonth),
-              href: `/ville/paris/budget?year=${stats.year}#sec-flux`,
-            }))}
-          />
-        </div>
-      </section>
+      {/* HERO DECK — remplace SCALE : 4 cards concrètes, cliquables vers fiches */}
+      <HeroDeck stats={stats} />
 
       {/* MÉTHODE STRIP — prominence en haut de page */}
       <section className="fx-meth-strip" id="meth-strip">

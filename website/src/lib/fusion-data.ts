@@ -308,7 +308,60 @@ export type LandingStats = {
   capaciteDesendettement: number; // années, pour teaser stress-test landing
   topBeneficiaires: { name: string; amount: number; year: number }[];
   topFournisseurs: { name: string; siret: string; amount: number; year: number }[];
+  /** Projet vedette pour la card 1 du hero deck — référencé par ID stable. */
+  featuredProjet: FeaturedProjet | null;
 };
+
+export type FeaturedProjet = {
+  id: string;
+  nom: string;
+  year: number;
+  montant: number;
+  arrondissement: number;
+  direction: string | null;
+  /** Chemin local servi depuis /public, choisi pour le critical render path. */
+  photoPath: string;
+  credit: string | null;
+};
+
+const HERO_FEATURED_PROJET_ID = "2024_18_51_019";
+const HERO_FEATURED_PROJET_PHOTO = "/photos/hero/piscine-belliard.jpg";
+
+function loadFeaturedProjet(): FeaturedProjet | null {
+  try {
+    const invest = readJson<{
+      data: Array<{
+        id: string;
+        annee: number;
+        montant: number;
+        nom_projet?: string;
+        arrondissement?: number;
+        direction?: string;
+      }>;
+    }>("map/investissements_2024.json");
+    const p = invest.data.find((x) => x.id === HERO_FEATURED_PROJET_ID);
+    if (!p) return null;
+    let credit: string | null = null;
+    try {
+      const photos = readJson<{ items: Record<string, { credit?: string | null }> }>(
+        "enrichment/projet_photos.json",
+      );
+      credit = photos.items[HERO_FEATURED_PROJET_ID]?.credit ?? null;
+    } catch {}
+    return {
+      id: p.id,
+      nom: p.nom_projet ?? "",
+      year: p.annee,
+      montant: p.montant,
+      arrondissement: p.arrondissement ?? 0,
+      direction: p.direction ?? null,
+      photoPath: HERO_FEATURED_PROJET_PHOTO,
+      credit,
+    };
+  } catch {
+    return null;
+  }
+}
 
 /**
  * Loads the figures powering the landing hero + scale section.
@@ -471,6 +524,7 @@ export function loadLandingStats(): LandingStats {
     capaciteDesendettement,
     topBeneficiaires,
     topFournisseurs,
+    featuredProjet: loadFeaturedProjet(),
   };
 }
 
