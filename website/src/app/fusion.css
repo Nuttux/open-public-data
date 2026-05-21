@@ -796,7 +796,7 @@ body:has(.theme-fusion) > div.pb-24 { padding-bottom: 0 !important; }
   display: flex;
   gap: 36px;
   width: max-content;
-  animation: fx-marquee-scroll 50s linear infinite;
+  animation: fx-marquee-scroll 65s linear infinite;
   will-change: transform;
 }
 .theme-fusion .fx-marquee:hover .fx-marquee-track,

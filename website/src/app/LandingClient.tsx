@@ -274,9 +274,6 @@ export default function LandingClient({ stats, posts }: Props) {
               </div>
             </div>
             <div className="fx-byline-actions">
-              <a className="fx-btn fx-btn-small" href="/analyses">
-                {t("fx.land.byline.docs")}
-              </a>
               <a className="fx-btn fx-btn-small" href="/methode">
                 {t("fx.land.byline.methode")}
               </a>
