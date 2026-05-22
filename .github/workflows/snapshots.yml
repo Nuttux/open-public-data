@@ -14,10 +14,11 @@ name: snapshots
 # Coût BQ estimé : <0,01€ par run (les snapshots reposent sur des hashes
 # de colonnes business, scan partiel des tables raw).
 
+# ⚠️ Schedule désactivé jusqu'au 2026-06-01 (free tier Actions épuisé).
 on:
-  schedule:
-    # Tous les lundis à 03:00 UTC (~04:00-05:00 CET selon DST)
-    - cron: "0 3 * * 1"
+  # schedule:
+  #   # Tous les lundis à 03:00 UTC (~04:00-05:00 CET selon DST)
+  #   - cron: "0 3 * * 1"
   workflow_dispatch:
     inputs:
       target_snapshot:

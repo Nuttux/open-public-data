@@ -14,18 +14,20 @@ name: data-platform-audit
 # Tant que ce setup n'est pas fait, le job `ci-status` annonce VISIBLEMENT
 # que le mode complet n'est pas actif (pas de fausse impression de couverture).
 
+# ⚠️ Auto-triggers désactivés jusqu'au 2026-06-01 (free tier Actions épuisé).
+# Réactiver les blocks `pull_request:` et `push:` après reset du quota.
 on:
-  pull_request:
-    paths:
-      - 'pipeline/**'
-      - 'website/src/**'
-      - 'website/public/**'
-      - 'docs/data-platform/**'
-      - '.github/workflows/data-platform-audit.yml'
-  push:
-    branches:
-      - main
-  workflow_dispatch:  # permet de lancer manuellement les jobs BQ sur une branche
+  # pull_request:
+  #   paths:
+  #     - 'pipeline/**'
+  #     - 'website/src/**'
+  #     - 'website/public/**'
+  #     - 'docs/data-platform/**'
+  #     - '.github/workflows/data-platform-audit.yml'
+  # push:
+  #   branches:
+  #     - main
+  workflow_dispatch:
 
 permissions:
   contents: read

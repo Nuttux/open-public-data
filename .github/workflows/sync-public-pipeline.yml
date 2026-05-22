@@ -17,18 +17,19 @@ name: sync-public-pipeline
 #   - filter-repo réécrit l'historique — c'est un force-push à chaque run
 #   - L'audit gitleaks en pré-step bloque le push si un secret est détecté
 
+# ⚠️ Auto-trigger désactivé jusqu'au 2026-06-01 (free tier Actions épuisé).
 on:
-  push:
-    branches: [main]
-    paths:
-      - 'pipeline/**'
-      - 'docs/architecture-modelling.md'
-      - 'LICENSE'
-      - 'NOTICE.md'
-      - 'requirements.txt'
-      - 'README.md'
-      - '.github/workflows/sync-public-pipeline.yml'
-  workflow_dispatch:  # permet de re-lancer manuellement depuis l'UI Actions
+  # push:
+  #   branches: [main]
+  #   paths:
+  #     - 'pipeline/**'
+  #     - 'docs/architecture-modelling.md'
+  #     - 'LICENSE'
+  #     - 'NOTICE.md'
+  #     - 'requirements.txt'
+  #     - 'README.md'
+  #     - '.github/workflows/sync-public-pipeline.yml'
+  workflow_dispatch:
 
 jobs:
   sync:

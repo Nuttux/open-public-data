@@ -12,10 +12,11 @@ name: bq-table-snapshots
 #
 # Runbook : docs/runbooks/backups.md
 
+# ⚠️ Schedule désactivé jusqu'au 2026-06-01 (free tier Actions épuisé).
 on:
-  schedule:
-    # Lundi 04:00 UTC — 1h après le dbt snapshot, pour éviter conflits
-    - cron: "0 4 * * 1"
+  # schedule:
+  #   # Lundi 04:00 UTC — 1h après le dbt snapshot, pour éviter conflits
+  #   - cron: "0 4 * * 1"
   workflow_dispatch:
     inputs:
       table:
