@@ -25,6 +25,7 @@ on:
   push:
     branches:
       - main
+  workflow_dispatch:  # permet de lancer manuellement les jobs BQ sur une branche
 
 permissions:
   contents: read
@@ -152,7 +153,10 @@ jobs:
   dbt-test:
     name: dbt test (data-quality, full BQ access)
     runs-on: ubuntu-latest
-    if: ${{ vars.ENABLE_BQ_CI == 'true' }}
+    # Jobs BQ-dependent (coût $ + minutes Actions) : tournent uniquement sur
+    # push main, pas sur chaque PR. Pour valider une PR data avant merge,
+    # déclencher le workflow manuellement via workflow_dispatch.
+    if: ${{ vars.ENABLE_BQ_CI == 'true' && (github.event_name == 'push' || github.event_name == 'workflow_dispatch') }}
     permissions:
       id-token: write   # for Workload Identity Federation
       contents: read
@@ -206,7 +210,10 @@ jobs:
   verify-exports:
     name: verify_export (byte-equality of JSON outputs)
     runs-on: ubuntu-latest
-    if: ${{ vars.ENABLE_BQ_CI == 'true' }}
+    # Jobs BQ-dependent (coût $ + minutes Actions) : tournent uniquement sur
+    # push main, pas sur chaque PR. Pour valider une PR data avant merge,
+    # déclencher le workflow manuellement via workflow_dispatch.
+    if: ${{ vars.ENABLE_BQ_CI == 'true' && (github.event_name == 'push' || github.event_name == 'workflow_dispatch') }}
     permissions:
       id-token: write
       contents: read
@@ -260,7 +267,10 @@ jobs:
   data-quality-audit:
     name: data quality audit (réconciliation, complétude, freshness)
     runs-on: ubuntu-latest
-    if: ${{ vars.ENABLE_BQ_CI == 'true' }}
+    # Jobs BQ-dependent (coût $ + minutes Actions) : tournent uniquement sur
+    # push main, pas sur chaque PR. Pour valider une PR data avant merge,
+    # déclencher le workflow manuellement via workflow_dispatch.
+    if: ${{ vars.ENABLE_BQ_CI == 'true' && (github.event_name == 'push' || github.event_name == 'workflow_dispatch') }}
     permissions:
       id-token: write
       contents: read
