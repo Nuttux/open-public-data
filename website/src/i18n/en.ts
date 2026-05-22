@@ -1235,7 +1235,7 @@ const en: Record<string, string> = {
   'fx.land.chips.invest': "Investments",
   'fx.land.chips.invest_desc': "Every municipal project geolocated by district and budget chapter.",
   'fx.land.chips.subv': "Grants",
-  'fx.land.chips.subv_desc': "Every recipient association, sorted by theme and originating department.",
+  'fx.land.chips.subv_desc': "Every grant recipient, sorted by theme and originating department.",
   'fx.land.chips.marches': "Public contracts",
   'fx.land.chips.marches_desc': "Every contract notified since 2013, with suppliers, clauses and categories.",
   'fx.land.chips.dette': "Debt & assets",

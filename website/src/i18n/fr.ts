@@ -1235,7 +1235,7 @@ const fr: Record<string, string> = {
   'fx.land.chips.invest': "Investissements",
   'fx.land.chips.invest_desc': "Tous les projets municipaux géolocalisés par arrondissement et par chapitre.",
   'fx.land.chips.subv': "Subventions",
-  'fx.land.chips.subv_desc': "Toutes les associations bénéficiaires, classées par thématique et par direction.",
+  'fx.land.chips.subv_desc': "Tous les bénéficiaires de subventions, classés par thématique et direction.",
   'fx.land.chips.marches': "Marchés publics",
   'fx.land.chips.marches_desc': "Tous les contrats notifiés depuis 2013 avec leurs fournisseurs, clauses et catégories.",
   'fx.land.chips.dette': "Dette et patrimoine",
