@@ -31,6 +31,55 @@ from pathlib import Path
 from google.cloud import bigquery
 from collections import defaultdict
 
+# ─── Fonction imputation (cf. pipeline/scripts/audit/build_fonction_imputation.py) ───
+# Pour les budgets votés (BP 2025+), le champ fonction_libelle n'est pas
+# rempli — on a "Non spécifié". On impute la fonction depuis l'historique
+# des CA exécutés (2019-2024) via seed_fonction_imputed.csv.
+#
+# La clé de matching est (category, flow_category) — les libellés `name`
+# diffèrent entre BP voté (abrégé) et CA exécuté (détaillé), mais le couple
+# (catégorie sankey, nature comptable) reste stable et permet le lookup.
+#
+# Niveaux de confiance :
+#   - high   : fonction ≥70% du montant cumulé pour ce combo sur 6 ans
+#   - medium : fonction 40-70% (variabilité notable, imputée quand même)
+_FONCTION_IMPUTATION_CACHE: dict[tuple[str, str], dict] | None = None
+
+
+def _load_fonction_imputation() -> dict[tuple[str, str], dict]:
+    """Lazy-load seed_fonction_imputed.csv into {(category, flow_category) → {fonction, confidence}}."""
+    global _FONCTION_IMPUTATION_CACHE
+    if _FONCTION_IMPUTATION_CACHE is not None:
+        return _FONCTION_IMPUTATION_CACHE
+    seed_path = Path(__file__).resolve().parents[2] / "seeds" / "seed_fonction_imputed.csv"
+    cache: dict[tuple[str, str], dict] = {}
+    if seed_path.exists():
+        with seed_path.open() as f:
+            for row in csv.DictReader(f):
+                key = (row["category"], row["flow_category"])
+                cache[key] = {
+                    "fonction": row["fonction"],
+                    "confidence": row["confidence"],
+                }
+    _FONCTION_IMPUTATION_CACHE = cache
+    return cache
+
+
+def impute_fonction(category: str, flow_category: str, current_fonction: str) -> tuple[str, str]:
+    """Return (fonction, confidence) — impute when current is 'Non spécifié'.
+
+    confidence values: "ca" (exécuté direct, pas d'imputation),
+    "high" (≥70% du montant historique), "medium" (40-70%),
+    "unknown" (combo absent du seed).
+    """
+    if current_fonction != "Non spécifié":
+        return current_fonction, "ca"
+    seed = _load_fonction_imputation()
+    entry = seed.get((category, flow_category))
+    if entry:
+        return entry["fonction"], entry["confidence"]
+    return current_fonction, "unknown"
+
 # Configuration
 PROJECT_ID = "open-data-france-484717"
 DATASET_ID = "dbt_paris"  # Base dataset (staging, intermediate, analytics)
@@ -324,6 +373,9 @@ def build_sankey_data(records: list[dict], year: int) -> dict:
     # UI can group sub-postes by sous-thème fonctionnel and tag each row with
     # son type de dépense (Personnel / Subvention / Achat / Investissement…).
     expense_drilldown = defaultdict(lambda: defaultdict(float))
+    # Track imputation confidence per drilldown key (fonction, flow_category, nature)
+    # → "ca" | "high" | "medium" | "unknown"
+    expense_confidence: dict[tuple[str, str, str], str] = {}
 
     for record in records:
         montant = float(record.get("montant", 0))
@@ -341,8 +393,18 @@ def build_sankey_data(records: list[dict], year: int) -> dict:
 
         elif "Dépense" in sens:
             category = classify_by_chapter(chapitre_code, EXPENSE_CHAPTER_MAP)
+            # Impute fonction quand absente (BP voté), via seed historique CA.
+            # Lookup par (category, flow_category) — pas par name complet,
+            # car les libellés diffèrent entre BP et CA.
+            fonction_libelle, confidence = impute_fonction(category, flow_category, fonction_libelle)
             expense_by_chapter[category] += montant
-            expense_drilldown[category][(fonction_libelle, flow_category, nature_libelle)] += montant
+            key = (fonction_libelle, flow_category, nature_libelle)
+            expense_drilldown[category][key] += montant
+            # Track the highest-confidence value seen for this key (ca > high > medium > unknown)
+            order = {"ca": 0, "high": 1, "medium": 2, "unknown": 3}
+            prev = expense_confidence.get(key)
+            if prev is None or order[confidence] < order[prev]:
+                expense_confidence[key] = confidence
     
     revenue_grouped = defaultdict(float)
     expense_grouped = defaultdict(float)
@@ -364,6 +426,10 @@ def build_sankey_data(records: list[dict], year: int) -> dict:
         for detail, detail_amount in revenue_drilldown[category].items():
             revenue_group_drilldown[group][f"{category}: {detail}"] += detail_amount
 
+    # Per-group confidence map: row_key (fonction, flow_category, "{category}: {nature}") → confidence
+    # We rebuild this in the loop below from expense_confidence.
+    expense_row_confidence: dict[tuple[str, str, str], str] = {}
+
     for category, amount in expense_by_chapter.items():
         group = get_group(category, EXPENSE_GROUPS)
         section = get_section(category)
@@ -372,6 +438,12 @@ def build_sankey_data(records: list[dict], year: int) -> dict:
         for (fonction, flow_category, nature_libelle), detail_amount in expense_drilldown[category].items():
             row_key = (fonction, flow_category, f"{category}: {nature_libelle}")
             expense_group_drilldown[group][row_key] += detail_amount
+            # Carry the confidence value of this drilldown key
+            conf = expense_confidence.get((fonction, flow_category, nature_libelle), "unknown")
+            order = {"ca": 0, "high": 1, "medium": 2, "unknown": 3}
+            prev = expense_row_confidence.get(row_key)
+            if prev is None or order[conf] < order[prev]:
+                expense_row_confidence[row_key] = conf
 
             # Track by section (only for Fonctionnement and Investissement)
             if section in ["Fonctionnement", "Investissement"]:
@@ -431,6 +503,7 @@ def build_sankey_data(records: list[dict], year: int) -> dict:
                 "value": value,
                 "fonction": fonction,
                 "flow_category": flow_category,
+                "fonction_confidence": expense_row_confidence.get((fonction, flow_category, name), "unknown"),
             }
             for (fonction, flow_category, name), value in sorted(items.items(), key=lambda x: -x[1])
             if value > 0
@@ -461,6 +534,7 @@ def build_sankey_data(records: list[dict], year: int) -> dict:
                             "value": value,
                             "fonction": fonction,
                             "flow_category": flow_category,
+                            "fonction_confidence": expense_row_confidence.get((fonction, flow_category, name), "unknown"),
                         }
                         for (fonction, flow_category, name), value in sorted_items
                     ]

@@ -85,7 +85,14 @@ type GroupedRow = {
   rank: number;
 };
 
-type Group = { key: string; total: number; items: GroupedRow[] };
+type Group = {
+  key: string;
+  total: number;
+  items: GroupedRow[];
+  /** Confiance la plus basse rencontrée parmi les items du groupe.
+   *  "ca"=exécuté, "high"=imputé stable, "medium"=imputé fallback récent, "unknown"=pas imputable. */
+  confidence: "ca" | "high" | "medium" | "unknown";
+};
 
 /**
  * Regroupe les sub-postes par dim primaire :
@@ -123,7 +130,7 @@ function groupSubPostes(poste: BudgetPosteFiche): { groups: Group[]; mode: "fonc
 
     let g = map.get(key);
     if (!g) {
-      g = { key, total: 0, items: [] };
+      g = { key, total: 0, items: [], confidence: "ca" };
       map.set(key, g);
       order.push(key);
     }
@@ -134,6 +141,12 @@ function groupSubPostes(poste: BudgetPosteFiche): { groups: Group[]; mode: "fonc
       flow: mode === "fonction" ? it.flow_category : undefined,
       rank: i + 1,
     });
+    // Propagate worst confidence to group level (ca < high < medium < unknown)
+    const order_conf = { ca: 0, high: 1, medium: 2, unknown: 3 } as const;
+    const itc = it.fonction_confidence ?? "ca";
+    if (order_conf[itc] > order_conf[g.confidence]) {
+      g.confidence = itc;
+    }
   });
 
   const groups = order
@@ -169,6 +182,9 @@ export default function PosteFiche({ poste }: Props) {
   // typique Marseille où les noms n'ont ni `:` ni `fonction`), on rend une
   // liste plate sans header de section — le faux header serait du bruit.
   const isFlat = groups.length === 1 && groups[0].key === "—";
+  // Au moins un groupe est imputé depuis l'historique CA → afficher le
+  // disclaimer global en tête de fiche.
+  const hasImputed = groups.some((g) => g.confidence === "high" || g.confidence === "medium");
 
   return (
     <div className="fx-poste-fiche">
@@ -191,12 +207,32 @@ export default function PosteFiche({ poste }: Props) {
         </div>
       </div>
 
+      {hasImputed && (
+        <p className="fx-poste-imputation-note">
+          {locale === "en"
+            ? "Functional breakdown projected from prior executed years. Final allocation will be confirmed in the Compte Administratif."
+            : "Ventilation par fonction projetée depuis l'exécution des années passées. À confirmer au Compte Administratif."}
+        </p>
+      )}
+
       <div className="fx-poste-groups">
         {groups.map((g) => (
           <section key={g.key} className="fx-poste-group">
             {!isFlat && (
               <header>
-                <span>{g.key}</span>
+                <span>
+                  {g.key}
+                  {g.confidence === "medium" && (
+                    <span
+                      className="fx-poste-conf fx-poste-conf-medium"
+                      title={locale === "en"
+                        ? "Estimated from the most recent executed year — may vary"
+                        : "Estimé depuis le dernier exercice exécuté — susceptible de varier"}
+                    >
+                      ~
+                    </span>
+                  )}
+                </span>
                 <span className="muted tnum">{fmtEur(g.total)}</span>
               </header>
             )}
