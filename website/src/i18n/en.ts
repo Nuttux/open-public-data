@@ -1177,8 +1177,8 @@ const en: Record<string, string> = {
   // ── Landing page ────────────────────────────────────────────────────────────
   'fx.land.h1.before': 'Where does ',
   'fx.land.h1.em': 'public money',
-  'fx.land.h1.mid': 'in ',
-  'fx.land.h1.after': ' go?',
+  'fx.land.h1.mid': 'go in ',
+  'fx.land.h1.after': '?',
   'fx.land.lede.vote': "Understanding where public money goes, line by line.",
   'fx.land.lede.execute': "Understanding where public money goes, line by line.",
   /** @deprecated replaced by fx.land.lede.vote/execute (audit 2026-05-19 — annual/cumul mix) */

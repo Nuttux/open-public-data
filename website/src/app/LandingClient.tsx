@@ -10,7 +10,6 @@ import ScopeDropdown from "@/components/fusion/ScopeDropdown";
 import HeroBg from "@/components/fusion/HeroBg";
 import HeroDeck from "@/components/fusion/HeroDeck";
 import HeroMarquee from "@/components/fusion/HeroMarquee";
-import CountUpOnReveal from "@/components/fusion/CountUpOnReveal";
 import { fmtInt, fmtBillions } from "@/lib/fmt";
 import type { LandingStats } from "@/lib/fusion-data";
 import type { BlogPostMeta } from "@/lib/blog";
@@ -59,9 +58,7 @@ export default function LandingClient({ stats, posts }: Props) {
       <section className="fx-echelle" id="echelle">
         <div className="fx-wrap">
           <p className="fx-echelle-big tnum">
-            <span className="fx-echelle-num">
-              <CountUpOnReveal value={stats.perCapitaMonth} format={(n) => fmtInt(n)} durationMs={1100} threshold={0.4} />
-            </span>
+            <span className="fx-echelle-num">{fmtInt(stats.perCapitaMonth)}</span>
             <span className="fx-echelle-u">€</span>
             <span className="fx-echelle-per">{t("fx.land.echelle.per")}</span>
           </p>
