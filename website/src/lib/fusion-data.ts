@@ -3712,6 +3712,12 @@ export type BudgetPosteSubPoste = {
   fonction?: string;
   /** Catégorie de flux (Personnel, Subventions, Achats, Investissement…). Optionnel pour les mêmes raisons. */
   flow_category?: string;
+  /** Confiance de la ventilation par fonction :
+   *   "ca"      → CA exécuté, ventilation directe (haute fiabilité)
+   *   "high"    → BP voté, fonction imputée depuis l'historique CA stable (≥70% sur 6 ans)
+   *   "medium"  → BP voté, fonction imputée depuis le CA le plus récent (susceptible de varier)
+   *   "unknown" → pas d'imputation possible (ligne nouvelle) */
+  fonction_confidence?: "ca" | "high" | "medium" | "unknown";
 };
 
 export type BudgetPosteFiche = {
