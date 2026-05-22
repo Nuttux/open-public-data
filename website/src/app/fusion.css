@@ -4088,7 +4088,7 @@ body:has(.theme-fusion) > div.pb-24 { padding-bottom: 0 !important; }
   line-height: 1.1;
 }
 /* Disclaimer d'imputation : visible quand au moins un groupe est ventilé
- * via le seed historique (BP voté avec fonctions imputées depuis CA passé). */
+ * via le seed historique (BP voté avec fonctions projetées depuis CA passé). */
 .theme-fusion .fx-poste-imputation-note {
   font-family: var(--f-mono);
   font-size: 11.5px;
@@ -4100,16 +4100,22 @@ body:has(.theme-fusion) > div.pb-24 { padding-bottom: 0 !important; }
   margin: 0 0 20px;
   line-height: 1.5;
 }
-/* Badge ~ à côté du nom de fonction quand la confidence est "medium"
- * (fonction prise du CA le plus récent, susceptible de varier). */
-.theme-fusion .fx-poste-conf {
+/* Tag "projeté" à côté du nom de fonction quand le groupe vient d'une
+ * répartition proportionnelle (BP voté éclaté selon les ratios historiques). */
+.theme-fusion .fx-poste-projected {
   display: inline-block;
-  margin-left: 6px;
+  margin-left: 8px;
+  padding: 1px 6px;
   font-family: var(--f-mono);
-  font-weight: 500;
+  font-size: 9.5px;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--ocre);
+  background: rgba(140, 94, 42, 0.08);
+  border-radius: 2px;
+  vertical-align: middle;
   cursor: help;
 }
-.theme-fusion .fx-poste-conf-medium { color: var(--ocre); }
 
 .theme-fusion .fx-poste-groups { display: flex; flex-direction: column; gap: 28px; }
 .theme-fusion .fx-poste-group header {

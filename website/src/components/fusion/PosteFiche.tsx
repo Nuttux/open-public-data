@@ -89,9 +89,11 @@ type Group = {
   key: string;
   total: number;
   items: GroupedRow[];
-  /** Confiance la plus basse rencontrée parmi les items du groupe.
-   *  "ca"=exécuté, "high"=imputé stable, "medium"=imputé fallback récent, "unknown"=pas imputable. */
+  /** Confiance de la ventilation. "ca"=exécuté direct, "high"/"medium"=imputé. */
   confidence: "ca" | "high" | "medium" | "unknown";
+  /** True si au moins un item du group provient d'une répartition proportionnelle
+   *  (BP voté éclaté selon les ratios historiques CA). */
+  imputed: boolean;
 };
 
 /**
@@ -130,7 +132,7 @@ function groupSubPostes(poste: BudgetPosteFiche): { groups: Group[]; mode: "fonc
 
     let g = map.get(key);
     if (!g) {
-      g = { key, total: 0, items: [], confidence: "ca" };
+      g = { key, total: 0, items: [], confidence: "ca", imputed: false };
       map.set(key, g);
       order.push(key);
     }
@@ -147,6 +149,7 @@ function groupSubPostes(poste: BudgetPosteFiche): { groups: Group[]; mode: "fonc
     if (order_conf[itc] > order_conf[g.confidence]) {
       g.confidence = itc;
     }
+    if (it.fonction_imputed) g.imputed = true;
   });
 
   const groups = order
@@ -184,7 +187,7 @@ export default function PosteFiche({ poste }: Props) {
   const isFlat = groups.length === 1 && groups[0].key === "—";
   // Au moins un groupe est imputé depuis l'historique CA → afficher le
   // disclaimer global en tête de fiche.
-  const hasImputed = groups.some((g) => g.confidence === "high" || g.confidence === "medium");
+  const hasImputed = groups.some((g) => g.imputed);
 
   return (
     <div className="fx-poste-fiche">
@@ -210,8 +213,8 @@ export default function PosteFiche({ poste }: Props) {
       {hasImputed && (
         <p className="fx-poste-imputation-note">
           {locale === "en"
-            ? "Functional breakdown projected from prior executed years. Final allocation will be confirmed in the Compte Administratif."
-            : "Ventilation par fonction projetée depuis l'exécution des années passées. À confirmer au Compte Administratif."}
+            ? "Functional breakdown projected proportionally from prior executed years (2019-2024 average shares). Total amount is exact (voted). Final allocation will be confirmed in the Compte Administratif."
+            : "Ventilation par fonction projetée selon les parts moyennes observées sur les exercices clos (2019-2024). Le montant total est voté (exact). À confirmer au Compte Administratif."}
         </p>
       )}
 
@@ -222,14 +225,14 @@ export default function PosteFiche({ poste }: Props) {
               <header>
                 <span>
                   {g.key}
-                  {g.confidence === "medium" && (
+                  {g.imputed && (
                     <span
-                      className="fx-poste-conf fx-poste-conf-medium"
+                      className="fx-poste-projected"
                       title={locale === "en"
-                        ? "Estimated from the most recent executed year — may vary"
-                        : "Estimé depuis le dernier exercice exécuté — susceptible de varier"}
+                        ? "Projected from historical average — see note above"
+                        : "Projeté depuis la moyenne historique — voir la note ci-dessus"}
                     >
-                      ~
+                      {locale === "en" ? "projected" : "projeté"}
                     </span>
                   )}
                 </span>

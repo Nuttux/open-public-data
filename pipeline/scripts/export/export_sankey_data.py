@@ -32,53 +32,85 @@ from google.cloud import bigquery
 from collections import defaultdict
 
 # ─── Fonction imputation (cf. pipeline/scripts/audit/build_fonction_imputation.py) ───
-# Pour les budgets votés (BP 2025+), le champ fonction_libelle n'est pas
-# rempli — on a "Non spécifié". On impute la fonction depuis l'historique
-# des CA exécutés (2019-2024) via seed_fonction_imputed.csv.
+# Pour les budgets votés (BP 2025+), fonction_libelle est vide → on impute
+# par RÉPARTITION PROPORTIONNELLE depuis l'historique CA (2019-2024).
 #
-# La clé de matching est (category, flow_category) — les libellés `name`
-# diffèrent entre BP voté (abrégé) et CA exécuté (détaillé), mais le couple
-# (catégorie sankey, nature comptable) reste stable et permet le lookup.
+# Chaque item BP "Non spécifié" est éclaté en N sub-items selon les ratios
+# observés sur le combo (category, flow_category) — préserve le total exact.
+# Ex : "Éducation+Personnel" 334M€ → 140M€ Écoles primaires (42%) + 117M€
+# Écoles maternelles (35%) + ...
 #
-# Niveaux de confiance :
-#   - high   : fonction ≥70% du montant cumulé pour ce combo sur 6 ans
-#   - medium : fonction 40-70% (variabilité notable, imputée quand même)
-_FONCTION_IMPUTATION_CACHE: dict[tuple[str, str], dict] | None = None
+# Confiance au niveau du COMBO :
+#   - high   : 1 fonction domine ≥70% du combo historique
+#   - medium : combo réparti (40-70% sur la dominante)
+_FONCTION_IMPUTATION_CACHE: dict[tuple[str, str], list[dict]] | None = None
 
 
-def _load_fonction_imputation() -> dict[tuple[str, str], dict]:
-    """Lazy-load seed_fonction_imputed.csv into {(category, flow_category) → {fonction, confidence}}."""
+def _load_fonction_imputation() -> dict[tuple[str, str], list[dict]]:
+    """Lazy-load seed into {(category, flow_category) → [{fonction, ratio, confidence}, ...]}."""
     global _FONCTION_IMPUTATION_CACHE
     if _FONCTION_IMPUTATION_CACHE is not None:
         return _FONCTION_IMPUTATION_CACHE
     seed_path = Path(__file__).resolve().parents[2] / "seeds" / "seed_fonction_imputed.csv"
-    cache: dict[tuple[str, str], dict] = {}
+    cache: dict[tuple[str, str], list[dict]] = {}
     if seed_path.exists():
         with seed_path.open() as f:
             for row in csv.DictReader(f):
                 key = (row["category"], row["flow_category"])
-                cache[key] = {
+                cache.setdefault(key, []).append({
                     "fonction": row["fonction"],
+                    "ratio": float(row["ratio"]),
                     "confidence": row["confidence"],
-                }
+                })
     _FONCTION_IMPUTATION_CACHE = cache
     return cache
 
 
-def impute_fonction(category: str, flow_category: str, current_fonction: str) -> tuple[str, str]:
-    """Return (fonction, confidence) — impute when current is 'Non spécifié'.
+def split_fonction(category: str, flow_category: str, current_fonction: str, montant: float) -> list[dict]:
+    """Return a list of {fonction, share, confidence, imputed, ratio} dicts.
 
-    confidence values: "ca" (exécuté direct, pas d'imputation),
-    "high" (≥70% du montant historique), "medium" (40-70%),
-    "unknown" (combo absent du seed).
+    For CA exécuté (fonction != 'Non spécifié'), returns a single entry with
+    the original fonction and the full montant.
+
+    For BP voté (fonction == 'Non spécifié'), splits the montant according to
+    historical ratios. Preserves total: last entry gets the rounding residual.
     """
     if current_fonction != "Non spécifié":
-        return current_fonction, "ca"
+        return [{
+            "fonction": current_fonction,
+            "share": montant,
+            "confidence": "ca",
+            "imputed": False,
+            "ratio": 1.0,
+        }]
     seed = _load_fonction_imputation()
-    entry = seed.get((category, flow_category))
-    if entry:
-        return entry["fonction"], entry["confidence"]
-    return current_fonction, "unknown"
+    entries = seed.get((category, flow_category))
+    if not entries:
+        return [{
+            "fonction": current_fonction,
+            "share": montant,
+            "confidence": "unknown",
+            "imputed": False,
+            "ratio": 1.0,
+        }]
+    out = []
+    accumulated = 0.0
+    for i, entry in enumerate(entries):
+        if i == len(entries) - 1:
+            share = montant - accumulated
+        else:
+            share = round(montant * entry["ratio"], 2)
+            accumulated += share
+        if share <= 0:
+            continue
+        out.append({
+            "fonction": entry["fonction"],
+            "share": share,
+            "confidence": entry["confidence"],
+            "imputed": True,
+            "ratio": entry["ratio"],
+        })
+    return out
 
 # Configuration
 PROJECT_ID = "open-data-france-484717"
@@ -369,13 +401,10 @@ def build_sankey_data(records: list[dict], year: int) -> dict:
     revenue_by_chapter = defaultdict(float)
     expense_by_chapter = defaultdict(float)
     revenue_drilldown = defaultdict(lambda: defaultdict(float))
-    # Expense drilldown keyed by (fonction, flow_category, nature_libelle) so the
-    # UI can group sub-postes by sous-thème fonctionnel and tag each row with
-    # son type de dépense (Personnel / Subvention / Achat / Investissement…).
+    # Expense drilldown keyed by (fonction, flow_category, nature_libelle).
     expense_drilldown = defaultdict(lambda: defaultdict(float))
-    # Track imputation confidence per drilldown key (fonction, flow_category, nature)
-    # → "ca" | "high" | "medium" | "unknown"
-    expense_confidence: dict[tuple[str, str, str], str] = {}
+    # Track imputation metadata per (fonction, flow_category, nature) key
+    expense_meta: dict[tuple[str, str, str], dict] = {}
 
     for record in records:
         montant = float(record.get("montant", 0))
@@ -393,18 +422,19 @@ def build_sankey_data(records: list[dict], year: int) -> dict:
 
         elif "Dépense" in sens:
             category = classify_by_chapter(chapitre_code, EXPENSE_CHAPTER_MAP)
-            # Impute fonction quand absente (BP voté), via seed historique CA.
-            # Lookup par (category, flow_category) — pas par name complet,
-            # car les libellés diffèrent entre BP et CA.
-            fonction_libelle, confidence = impute_fonction(category, flow_category, fonction_libelle)
+            # Split fonction proportionnellement quand absente (BP voté).
+            # Préserve le total : chaque sub-item reçoit sa part historique.
+            splits = split_fonction(category, flow_category, fonction_libelle, montant)
             expense_by_chapter[category] += montant
-            key = (fonction_libelle, flow_category, nature_libelle)
-            expense_drilldown[category][key] += montant
-            # Track the highest-confidence value seen for this key (ca > high > medium > unknown)
-            order = {"ca": 0, "high": 1, "medium": 2, "unknown": 3}
-            prev = expense_confidence.get(key)
-            if prev is None or order[confidence] < order[prev]:
-                expense_confidence[key] = confidence
+            for s in splits:
+                key = (s["fonction"], flow_category, nature_libelle)
+                expense_drilldown[category][key] += s["share"]
+                if key not in expense_meta:
+                    expense_meta[key] = {
+                        "confidence": s["confidence"],
+                        "imputed": s["imputed"],
+                        "ratio": s["ratio"],
+                    }
     
     revenue_grouped = defaultdict(float)
     expense_grouped = defaultdict(float)
@@ -426,9 +456,9 @@ def build_sankey_data(records: list[dict], year: int) -> dict:
         for detail, detail_amount in revenue_drilldown[category].items():
             revenue_group_drilldown[group][f"{category}: {detail}"] += detail_amount
 
-    # Per-group confidence map: row_key (fonction, flow_category, "{category}: {nature}") → confidence
-    # We rebuild this in the loop below from expense_confidence.
-    expense_row_confidence: dict[tuple[str, str, str], str] = {}
+    # Per-output-row imputation meta: row_key (fonction, flow_category,
+    # "{category}: {nature}") → {confidence, imputed, ratio}
+    expense_row_meta: dict[tuple[str, str, str], dict] = {}
 
     for category, amount in expense_by_chapter.items():
         group = get_group(category, EXPENSE_GROUPS)
@@ -438,12 +468,10 @@ def build_sankey_data(records: list[dict], year: int) -> dict:
         for (fonction, flow_category, nature_libelle), detail_amount in expense_drilldown[category].items():
             row_key = (fonction, flow_category, f"{category}: {nature_libelle}")
             expense_group_drilldown[group][row_key] += detail_amount
-            # Carry the confidence value of this drilldown key
-            conf = expense_confidence.get((fonction, flow_category, nature_libelle), "unknown")
-            order = {"ca": 0, "high": 1, "medium": 2, "unknown": 3}
-            prev = expense_row_confidence.get(row_key)
-            if prev is None or order[conf] < order[prev]:
-                expense_row_confidence[row_key] = conf
+            # Carry the imputation meta forward
+            meta = expense_meta.get((fonction, flow_category, nature_libelle))
+            if meta and row_key not in expense_row_meta:
+                expense_row_meta[row_key] = meta
 
             # Track by section (only for Fonctionnement and Investissement)
             if section in ["Fonctionnement", "Investissement"]:
@@ -497,17 +525,23 @@ def build_sankey_data(records: list[dict], year: int) -> dict:
         ][:50]
 
     for group, items in expense_group_drilldown.items():
-        drilldown["expenses"][exp_display(group)] = [
-            {
+        out_items = []
+        for (fonction, flow_category, name), value in sorted(items.items(), key=lambda x: -x[1]):
+            if value <= 0:
+                continue
+            meta = expense_row_meta.get((fonction, flow_category, name), {})
+            row = {
                 "name": name,
                 "value": value,
                 "fonction": fonction,
                 "flow_category": flow_category,
-                "fonction_confidence": expense_row_confidence.get((fonction, flow_category, name), "unknown"),
+                "fonction_confidence": meta.get("confidence", "unknown"),
             }
-            for (fonction, flow_category, name), value in sorted(items.items(), key=lambda x: -x[1])
-            if value > 0
-        ][:50]
+            if meta.get("imputed"):
+                row["fonction_imputed"] = True
+                row["fonction_ratio"] = meta.get("ratio", 1.0)
+            out_items.append(row)
+        drilldown["expenses"][exp_display(group)] = out_items[:50]
     
     # Build bySection structure for each expense group
     by_section = {}
@@ -526,18 +560,23 @@ def build_sankey_data(records: list[dict], year: int) -> dict:
                     key=lambda x: -x[1]
                 )[:20]
 
+                section_items_out = []
+                for (fonction, flow_category, name), value in sorted_items:
+                    meta = expense_row_meta.get((fonction, flow_category, name), {})
+                    row = {
+                        "name": name,
+                        "value": value,
+                        "fonction": fonction,
+                        "flow_category": flow_category,
+                        "fonction_confidence": meta.get("confidence", "unknown"),
+                    }
+                    if meta.get("imputed"):
+                        row["fonction_imputed"] = True
+                        row["fonction_ratio"] = meta.get("ratio", 1.0)
+                    section_items_out.append(row)
                 by_section[display_name][section_name] = {
                     "total": section_data["total"],
-                    "items": [
-                        {
-                            "name": name,
-                            "value": value,
-                            "fonction": fonction,
-                            "flow_category": flow_category,
-                            "fonction_confidence": expense_row_confidence.get((fonction, flow_category, name), "unknown"),
-                        }
-                        for (fonction, flow_category, name), value in sorted_items
-                    ]
+                    "items": section_items_out,
                 }
     
     # Get data availability status
