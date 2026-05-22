@@ -3714,10 +3714,15 @@ export type BudgetPosteSubPoste = {
   flow_category?: string;
   /** Confiance de la ventilation par fonction :
    *   "ca"      → CA exécuté, ventilation directe (haute fiabilité)
-   *   "high"    → BP voté, fonction imputée depuis l'historique CA stable (≥70% sur 6 ans)
-   *   "medium"  → BP voté, fonction imputée depuis le CA le plus récent (susceptible de varier)
-   *   "unknown" → pas d'imputation possible (ligne nouvelle) */
+   *   "high"    → BP voté, combo (category × flow_category) dominé ≥70% par une fonction sur 6 ans
+   *   "medium"  → BP voté, combo réparti entre plusieurs fonctions (dominante 40-70%)
+   *   "unknown" → combo absent du seed historique (pas d'imputation possible) */
   fonction_confidence?: "ca" | "high" | "medium" | "unknown";
+  /** True si l'item provient d'une répartition proportionnelle depuis l'historique CA
+   *  (montant éclaté entre plusieurs fonctions selon les ratios observés 2019-2024). */
+  fonction_imputed?: boolean;
+  /** Ratio de cette fonction dans le combo historique (0-1), ex 0.42 = 42%. */
+  fonction_ratio?: number;
 };
 
 export type BudgetPosteFiche = {

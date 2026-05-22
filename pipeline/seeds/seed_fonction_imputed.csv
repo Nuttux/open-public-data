@@ -1,105 +1,307 @@
-category,flow_category,fonction,confidence,confidence_pct,years_observed,total_value
-APA,Transferts sociaux,APA à domicile,medium,65,6,758951861
-Action Sociale,Achats,Prév et éducation santé,high,100,1,28971285
-Action Sociale,Personnel,Crèches et garderies,medium,64,6,2586607920
-Action Sociale,Services extérieurs,Crèches et garderies,high,86,6,280306510
-Action Sociale,Subventions (fonctionnement),Autre intervention social,high,84,6,2771282420
-Action Sociale,Transferts sociaux,Aide sociale à l'enfance,medium,47,6,3741957559
-Action Économique,Achats,Insertion éco sociale,high,100,1,390412
-Action Économique,Autre,"Industrie,commerce artisa",high,100,2,8690845
-Action Économique,Autres services,Rayonnement et attractivi,high,100,5,3225517
-Action Économique,Reversements péréquation,Développement touristique,high,100,2,167127165
-Action Économique,Services extérieurs,Insertion éco sociale,medium,58,6,10335315
-Administration,Achats,Adm générale collectivité,high,100,6,92129797
-Administration,Autre,Autres moyens généraux,medium,51,6,426937539
-Administration,Autres services,Adm générale collectivité,high,87,6,141805071
-Administration,Dotations arrondissements,Autres instances,high,100,6,924764411
-Administration,Personnel,Adm générale collectivité,medium,70,6,2066295992
-Administration,Services extérieurs,Adm générale collectivité,high,99,6,679911416
-Administration,Subventions (fonctionnement),Adm générale collectivité,high,95,6,122265142
-Aménagement,Achats,Éclairage public,high,88,6,113696456
-Aménagement,Autre,Parc privé collectivité,high,100,2,22522626
-Aménagement,Personnel,Espaces verts urbains,medium,66,6,819237552
-Aménagement,Services extérieurs,Éclairage public,high,74,6,169096437
-Aménagement,Subventions (fonctionnement),Autres actions d’aménagem,medium,62,6,73916574
-Autres,Autre,Opérations non ventilable,high,100,6,24511469
-Charges Fiscales,Reversements péréquation,Opérations non ventilable,high,100,6,1515048016
-Culture & Sport,Achats,Manifestations sportives,medium,51,5,35700797
-Culture & Sport,Autres services,Activité art action manif,medium,56,6,66006892
-Culture & Sport,Contributions obligatoires,Autre équip sport loisirs,high,100,3,10348634
-Culture & Sport,Services extérieurs,Piscines,medium,44,6,211309037
-Culture & Sport,Subventions (fonctionnement),Théâtre spectable vivant,medium,44,6,1010130458
-Environnement,Achats,Services communs,high,84,6,512483132
-Environnement,Autre,Réseau chaleur et froid,high,87,6,221382685
-Environnement,Contributions obligatoires,"Tri, valo et trait déchet",high,82,6,762052945
-Environnement,Personnel,Ser com collecte propreté,high,90,6,1932343526
-Environnement,Services extérieurs,Collecte des déchets,medium,58,6,973205069
-Environnement,Subventions (fonctionnement),Actions transversales,high,73,6,12999023
-Invest. Administration,Immobilisations corporelles,Adm générale collectivité,high,73,6,98493926
-Invest. Administration,Immobilisations en cours,Adm générale collectivité,medium,54,6,521713181
-Invest. Administration,Subventions (investissement),Autres instances,high,100,4,26510471
-Invest. Administration,Études,Adm générale collectivité,high,100,6,75624347
-Invest. Aménagement,Immobilisations corporelles,Réserves Foncières,high,75,6,1824882717
-Invest. Aménagement,Immobilisations en cours,Opérations d’aménagement,medium,60,6,704853285
-Invest. Aménagement,Subventions (investissement),Logement social,high,92,6,1292660100
-Invest. Aménagement,Études,Opérations d’aménagement,high,100,6,25339228
-Invest. Culture,Autre,Musées,high,100,2,50119531
-Invest. Culture,Immobilisations corporelles,Bibliothèques médiathèque,medium,50,6,26503073
-Invest. Culture,Subventions (investissement),Musées,medium,54,5,112215751
-Invest. Culture,Études,Manifestations sportives,high,89,4,26666889
-Invest. Environnement,Autre,Politique de l'air,high,100,1,1103749
-Invest. Environnement,Immobilisations en cours,Actions transversales,medium,53,6,238956126
-Invest. Environnement,Subventions (investissement),Politique de l'air,high,86,6,40526232
-Invest. Environnement,Études,Actions transversales,medium,52,4,15022538
-Invest. Social,Immobilisations en cours,Crèches et garderies,high,75,6,165569493
-Invest. Social,Subventions (investissement),Crèches et garderies,high,100,1,10465989
-Invest. Sécurité,Autre,Hygiène salubrité publiqu,high,100,6,2098147
-Invest. Sécurité,Immobilisations corporelles,"Police, sécurité, justice",medium,63,6,3785205
-Invest. Sécurité,Immobilisations en cours,Incendie et secours,medium,59,6,21603289
-Invest. Sécurité,Subventions (investissement),Autre int prot bien pers,medium,54,6,108914311
-Invest. Sécurité,Études,"Police, sécurité, justice",high,100,1,119108
-Invest. Transports,Autre,Voirie communale,high,75,6,39429852
-Invest. Transports,Immobilisations corporelles,Voirie communale,high,83,5,9891119
-Invest. Transports,Immobilisations en cours,Transport ferroviaire,medium,42,6,981471780
-Invest. Transports,Subventions (investissement),Transport ferroviaire,high,99,6,171040691
-Invest. Transports,Études,Transport ferroviaire,medium,54,6,20412315
-Invest. Économie,Autre,"Industrie,commerce artisa",high,100,1,1002879
-Invest. Économie,Immobilisations corporelles,"Industrie,commerce artisa",high,98,5,43506991
-Invest. Économie,Études,Recherche et innovation,medium,58,2,707087
-Invest. Éducation,Immobilisations corporelles,Classes regroupées,high,100,2,11543467
-Invest. Éducation,Immobilisations en cours,Classes regroupées,medium,53,6,495805985
-Invest. Éducation,Subventions (investissement),Enseignement supérieur,high,79,6,70044699
-Invest. Éducation,Études,Classes regroupées,high,100,6,24154871
-Opérations Financières,Charges financières,Opérations non ventilable,high,100,6,937946062
-Participations,Autre,Opérations non ventilable,high,100,3,6782828
-RSA,Contributions obligatoires,Insertion sociale,high,100,6,61928677
-RSA,Personnel,Dépenses de structure,high,100,1,6152367
-RSA,Services extérieurs,Insertion sociale,high,100,6,61690061
-RSA,Subventions (fonctionnement),Insertion professionnelle,high,100,5,55573414
-RSA,Transferts sociaux,RSA allocations,high,100,6,2378696561
-Remboursement Dette,Autre,Opérations non ventilable,high,100,6,438116044
-Remboursement Dette,Remboursement dette,Opérations non ventilable,high,100,6,1801470201
-Reversements Fiscaux,Reversements péréquation,Opérations non ventilable,high,100,6,8058647162
-Subventions Équipement,Dotations et participations,Opérations non ventilable,high,100,6,199087008
-Subventions Équipement,Reversements péréquation,Opérations non ventilable,high,100,6,40487670
-Sécurité,Achats,Services communs,high,100,6,4434146
-Sécurité,Autre,"Police, sécurité, justice",high,92,6,15955444
-Sécurité,Autres services,"Police, sécurité, justice",high,93,6,74859683
-Sécurité,Contributions obligatoires,Autre int prot bien pers,medium,57,6,1406513788
-Sécurité,Personnel,"Police, sécurité, justice",high,90,6,954531719
-Sécurité,Services extérieurs,Services communs,medium,65,6,29629043
-Sécurité,Subventions (fonctionnement),"Police, sécurité, justice",high,100,6,13241830
-Transports,Achats,Voirie communale,high,100,6,12544987
-Transports,Autre,Voirie communale,high,82,6,111525454
-Transports,Autres services,Voirie communale,high,100,6,36844064
-Transports,Contributions obligatoires,Autres transports,high,100,6,2483484405
-Transports,Personnel,Voirie communale,high,73,6,373767574
-Transports,Services extérieurs,Voirie communale,medium,69,6,485256605
-Transports,Subventions (fonctionnement),Transport sur route,high,98,6,178728598
-Transports,Transferts sociaux,Autres transports,high,100,6,118591582
-Éducation,Achats,Autre serv annexe enseign,medium,63,6,82016442
-Éducation,Autres services,Écoles primaires,medium,52,6,401306372
-Éducation,Contributions obligatoires,Collèges,medium,52,6,436860485
-Éducation,Personnel,Écoles primaires,medium,42,6,2426245178
-Éducation,Services extérieurs,Apprentissage,high,83,6,36617954
-Éducation,Subventions (fonctionnement),Hébergt resto scolaire,high,80,6,701935537
+category,flow_category,fonction,ratio,confidence,years_observed,total_value
+APA,Transferts sociaux,APA à domicile,0.6487,medium,6,492337871
+APA,Transferts sociaux,APA versé établissemnt,0.1844,medium,6,139973266
+APA,Transferts sociaux,APA versé bénéf établisem,0.1669,medium,6,126640724
+Action Sociale,Achats,Prév et éducation santé,1.0,high,1,28971285
+Action Sociale,Contributions obligatoires,Personnes en difficulté,0.3891,medium,6,159148089
+Action Sociale,Contributions obligatoires,Personnes handicapées,0.2982,medium,6,121962720
+Action Sociale,Contributions obligatoires,Autre action en faveur,0.2046,medium,6,83711912
+Action Sociale,Contributions obligatoires,PMI et planif familiale,0.1082,medium,6,44240991
+Action Sociale,Personnel,Crèches et garderies,0.6353,medium,6,1643246063
+Action Sociale,Personnel,Aide sociale à l'enfance,0.1524,medium,6,394079474
+Action Sociale,Personnel,Services communs,0.0926,medium,6,239582444
+Action Sociale,Personnel,PMI et planif familiale,0.0405,medium,6,104871332
+Action Sociale,Personnel,Autr action petite enfanc,0.0314,medium,6,81137440
+Action Sociale,Personnel,Prév et éducation santé,0.0285,medium,6,73602348
+Action Sociale,Personnel,Disp autre étab sanitaire,0.0194,medium,6,50088818
+Action Sociale,Services extérieurs,Crèches et garderies,0.8595,high,6,240934440
+Action Sociale,Services extérieurs,Aide sociale à l'enfance,0.1405,high,6,39372069
+Action Sociale,Subventions (fonctionnement),Autre intervention social,0.836,high,6,2316746520
+Action Sociale,Subventions (fonctionnement),Crèches et garderies,0.1302,high,6,360769753
+Action Sociale,Subventions (fonctionnement),Personnes en difficulté,0.0338,high,6,93766146
+Action Sociale,Transferts sociaux,Aide sociale à l'enfance,0.4708,medium,6,1761870030
+Action Sociale,Transferts sociaux,Personnes handicapées,0.3698,medium,6,1383947115
+Action Sociale,Transferts sociaux,Autre action en faveur,0.1149,medium,6,430028855
+Action Sociale,Transferts sociaux,Autre intervention social,0.0444,medium,6,166111560
+Action Économique,Achats,Insertion éco sociale,1.0,high,1,390412
+Action Économique,Autre,"Industrie,commerce artisa",1.0,high,2,8690845
+Action Économique,Autres services,Rayonnement et attractivi,1.0,high,5,3225517
+Action Économique,Personnel,"Industrie,commerce artisa",0.2702,medium,6,13672173
+Action Économique,Personnel,Insertion éco sociale,0.2637,medium,6,13339975
+Action Économique,Personnel,Autres actions,0.2497,medium,6,12635056
+Action Économique,Personnel,Services communs,0.1784,medium,6,9024319
+Action Économique,Personnel,Rayonnement et attractivi,0.038,medium,6,1924092
+Action Économique,Reversements péréquation,Développement touristique,1.0,high,2,167127165
+Action Économique,Services extérieurs,Insertion éco sociale,0.5844,medium,6,6040339
+Action Économique,Services extérieurs,"Industrie,commerce artisa",0.3701,medium,6,3824720
+Action Économique,Services extérieurs,Autres,0.0455,medium,6,470256
+Action Économique,Subventions (fonctionnement),Insertion éco sociale,0.3392,medium,6,67888847
+Action Économique,Subventions (fonctionnement),Recherche et innovation,0.2211,medium,6,44252598
+Action Économique,Subventions (fonctionnement),Développement touristique,0.1642,medium,6,32871144
+Action Économique,Subventions (fonctionnement),"Industrie,commerce artisa",0.0848,medium,6,16966210
+Action Économique,Subventions (fonctionnement),Autres actions,0.0846,medium,6,16936208
+Action Économique,Subventions (fonctionnement),Struct d'anim et dev éco,0.0637,medium,6,12742500
+Action Économique,Subventions (fonctionnement),Autres,0.0424,medium,6,8481390
+Administration,Achats,Adm générale collectivité,1.0,high,6,92129797
+Administration,Autre,Autres moyens généraux,0.5111,medium,6,218222032
+Administration,Autre,Adm générale collectivité,0.2699,medium,6,115235339
+Administration,Autre,Assemblée délibérante,0.219,medium,6,93480169
+Administration,Autres services,Adm générale collectivité,0.8742,high,6,123970199
+Administration,Autres services,Admin général Etat,0.1258,high,6,17834872
+Administration,Dotations arrondissements,Autres instances,1.0,high,6,924764411
+Administration,Personnel,Adm générale collectivité,0.6986,medium,6,1443596077
+Administration,Personnel,Personnel non ventilé,0.1567,medium,6,323794111
+Administration,Personnel,Assemblée délibérante,0.0679,medium,6,140283082
+Administration,Personnel,Cimetière pompe funèbre,0.0523,medium,6,107999092
+Administration,Personnel,Admin général Etat,0.0215,medium,6,44497974
+Administration,Personnel,Autres,0.003,medium,6,6125654
+Administration,Services extérieurs,Adm générale collectivité,0.9864,high,6,670630847
+Administration,Services extérieurs,Autres,0.0136,high,6,9280569
+Administration,Subventions (fonctionnement),Adm générale collectivité,0.9531,high,6,116529356
+Administration,Subventions (fonctionnement),Assemblée délibérante,0.0469,high,6,5735786
+Aménagement,Achats,Éclairage public,0.8759,high,6,99591285
+Aménagement,Achats,Espaces verts urbains,0.1241,high,6,14105170
+Aménagement,Autre,Parc privé collectivité,1.0,high,2,22522626
+Aménagement,Personnel,Espaces verts urbains,0.6586,medium,6,539529521
+Aménagement,Personnel,Services communs,0.2949,medium,6,241623999
+Aménagement,Personnel,Réserves Foncières,0.0266,medium,6,21829526
+Aménagement,Personnel,Opérations d’aménagement,0.0198,medium,6,16254505
+Aménagement,Services extérieurs,Éclairage public,0.7447,high,6,125921447
+Aménagement,Services extérieurs,Services communs,0.1639,high,6,27708376
+Aménagement,Services extérieurs,Aide au secteur locatif,0.0417,high,6,7049760
+Aménagement,Services extérieurs,Autres,0.028,high,6,4732590
+Aménagement,Services extérieurs,Espaces verts urbains,0.0218,high,6,3684264
+Aménagement,Subventions (fonctionnement),Autres actions d’aménagem,0.621,medium,6,45905621
+Aménagement,Subventions (fonctionnement),Politique de la ville,0.379,medium,6,28010952
+Autres,Autre,Opérations non ventilable,1.0,high,6,24511469
+Charges Fiscales,Reversements péréquation,Opérations non ventilable,1.0,high,6,1515048016
+Culture & Sport,Achats,Manifestations sportives,0.5127,medium,5,18302665
+Culture & Sport,Achats,Colonies de vacances,0.4873,medium,5,17398131
+Culture & Sport,Autres services,Activité art action manif,0.5635,medium,6,37192593
+Culture & Sport,Autres services,"Activités artistiques,act",0.248,medium,6,16371430
+Culture & Sport,Autres services,Piscines,0.1358,medium,6,8963796
+Culture & Sport,Autres services,Manifestations sportives,0.0527,medium,6,3479073
+Culture & Sport,Contributions obligatoires,Autre équip sport loisirs,1.0,high,3,10348634
+Culture & Sport,Personnel,"Salles de sport, gymnases",0.1979,medium,6,306554912
+Culture & Sport,Personnel,Activité art action manif,0.1532,medium,6,237262589
+Culture & Sport,Personnel,Services communs,0.1437,medium,6,222554824
+Culture & Sport,Personnel,Autres actions vie social,0.1223,medium,6,189532787
+Culture & Sport,Personnel,Piscines,0.1089,medium,6,168730740
+Culture & Sport,Personnel,"Bibliothèque, médiathèque",0.1031,medium,6,159651870
+Culture & Sport,Personnel,Bibliothèques médiathèque,0.0999,medium,6,154705624
+Culture & Sport,Personnel,"Activités artistiques,act",0.0711,medium,6,110193911
+Culture & Sport,Services extérieurs,Piscines,0.4387,medium,6,92701767
+Culture & Sport,Services extérieurs,Manifestations sportives,0.3798,medium,6,80264545
+Culture & Sport,Services extérieurs,Théâtre spectable vivant,0.1648,medium,6,34828703
+Culture & Sport,Services extérieurs,Activité art action manif,0.0166,medium,6,3514022
+Culture & Sport,Subventions (fonctionnement),Théâtre spectable vivant,0.4397,medium,6,444167426
+Culture & Sport,Subventions (fonctionnement),Musées,0.3434,medium,6,346868895
+Culture & Sport,Subventions (fonctionnement),Manifestations sportives,0.084,medium,6,84855121
+Culture & Sport,Subventions (fonctionnement),Activité art action manif,0.0807,medium,6,81506434
+Culture & Sport,Subventions (fonctionnement),"Activités artistiques,act",0.0492,medium,6,49727431
+Culture & Sport,Subventions (fonctionnement),Autres,0.003,medium,6,3005150
+Environnement,Achats,Services communs,0.8393,high,6,430108288
+Environnement,Achats,Ser com collecte propreté,0.149,high,6,76367062
+Environnement,Achats,Propreté urbaine,0.0117,high,6,6007781
+Environnement,Autre,Réseau chaleur et froid,0.8689,high,6,192370109
+Environnement,Autre,Ser com collecte propreté,0.1311,high,6,29012576
+Environnement,Contributions obligatoires,"Tri, valo et trait déchet",0.8169,high,6,622535469
+Environnement,Contributions obligatoires,Eaux pluviales,0.1503,high,6,114546600
+Environnement,Contributions obligatoires,Politique de l'eau,0.0212,high,6,16143953
+Environnement,Contributions obligatoires,Lutte contre inondation,0.0116,high,6,8826923
+Environnement,Personnel,Ser com collecte propreté,0.8996,high,6,1738395006
+Environnement,Personnel,Services communs,0.069,high,6,133412084
+Environnement,Personnel,Autres,0.0182,high,6,35244100
+Environnement,Personnel,Actions transversales,0.0131,high,6,25292337
+Environnement,Services extérieurs,Collecte des déchets,0.5824,medium,6,566767545
+Environnement,Services extérieurs,Propreté urbaine,0.3294,medium,6,320613384
+Environnement,Services extérieurs,"Tri, valo et trait déchet",0.0556,medium,6,54086776
+Environnement,Services extérieurs,Ser com collecte propreté,0.0302,medium,6,29347334
+Environnement,Services extérieurs,Autres,0.0025,medium,6,2390030
+Environnement,Subventions (fonctionnement),Actions transversales,0.7309,high,6,9500749
+Environnement,Subventions (fonctionnement),Politique de l'air,0.2691,high,6,3498274
+Invest. Administration,Immobilisations corporelles,Adm générale collectivité,0.7337,high,6,72263871
+Invest. Administration,Immobilisations corporelles,Autres instances,0.2663,high,6,26230055
+Invest. Administration,Immobilisations en cours,Adm générale collectivité,0.5362,medium,6,279718652
+Invest. Administration,Immobilisations en cours,Autres instances,0.4638,medium,6,241994529
+Invest. Administration,Subventions (investissement),Autres instances,1.0,high,4,26510471
+Invest. Administration,Études,Adm générale collectivité,1.0,high,6,75624347
+Invest. Aménagement,Immobilisations corporelles,Réserves Foncières,0.7495,high,6,1367726397
+Invest. Aménagement,Immobilisations corporelles,Logement social,0.1311,high,6,239200678
+Invest. Aménagement,Immobilisations corporelles,Opérations d’aménagement,0.0617,high,6,112645182
+Invest. Aménagement,Immobilisations corporelles,Espaces verts urbains,0.0474,high,6,86571513
+Invest. Aménagement,Immobilisations corporelles,Éclairage public,0.0103,high,6,18738946
+Invest. Aménagement,Immobilisations en cours,Opérations d’aménagement,0.5954,medium,6,419703589
+Invest. Aménagement,Immobilisations en cours,Espaces verts urbains,0.1748,medium,6,123202290
+Invest. Aménagement,Immobilisations en cours,Éclairage public,0.0998,medium,6,70376445
+Invest. Aménagement,Immobilisations en cours,Logement social,0.0675,medium,6,47579209
+Invest. Aménagement,Immobilisations en cours,Parc privé collectivité,0.0314,medium,6,22119504
+Invest. Aménagement,Immobilisations en cours,Réserves Foncières,0.0166,medium,6,11680146
+Invest. Aménagement,Immobilisations en cours,Services communs,0.0145,medium,6,10192102
+Invest. Aménagement,Subventions (investissement),Logement social,0.9168,high,6,1185054520
+Invest. Aménagement,Subventions (investissement),Aide au secteur locatif,0.0754,high,6,97417836
+Invest. Aménagement,Subventions (investissement),Autres,0.0079,high,6,10187744
+Invest. Aménagement,Études,Opérations d’aménagement,1.0,high,6,25339228
+Invest. Culture,Autre,Musées,1.0,high,2,50119531
+Invest. Culture,Immobilisations corporelles,Bibliothèques médiathèque,0.501,medium,6,13277286
+Invest. Culture,Immobilisations corporelles,"Bibliothèque, médiathèque",0.499,medium,6,13225787
+Invest. Culture,Immobilisations en cours,Manifestations sportives,0.3197,medium,6,262946536
+Invest. Culture,Immobilisations en cours,Patrimoine,0.1775,medium,6,146011765
+Invest. Culture,Immobilisations en cours,"Salles de sport, gymnases",0.1384,medium,6,113801206
+Invest. Culture,Immobilisations en cours,Piscines,0.1326,medium,6,109079198
+Invest. Culture,Immobilisations en cours,Théâtre spectable vivant,0.0785,medium,6,64548935
+Invest. Culture,Immobilisations en cours,Autres actions vie social,0.0555,medium,6,45655788
+Invest. Culture,Immobilisations en cours,"Activités artistiques,act",0.0233,medium,6,19126790
+Invest. Culture,Immobilisations en cours,"Bibliothèque, médiathèque",0.0226,medium,6,18585394
+Invest. Culture,Immobilisations en cours,Activité art action manif,0.0204,medium,6,16777041
+Invest. Culture,Immobilisations en cours,Autres,0.0188,medium,6,15492305
+Invest. Culture,Immobilisations en cours,Bibliothèques médiathèque,0.0127,medium,6,10472475
+Invest. Culture,Subventions (investissement),Musées,0.5443,medium,5,61073751
+Invest. Culture,Subventions (investissement),Manifestations sportives,0.4557,medium,5,51142000
+Invest. Culture,Études,Manifestations sportives,0.8877,high,4,23672316
+Invest. Culture,Études,Patrimoine,0.1123,high,4,2994573
+Invest. Environnement,Autre,Politique de l'air,1.0,high,1,1103749
+Invest. Environnement,Immobilisations corporelles,Propreté urbaine,0.3848,medium,6,20519875
+Invest. Environnement,Immobilisations corporelles,Ser com collecte propreté,0.2781,medium,6,14832121
+Invest. Environnement,Immobilisations corporelles,"Tri, valo et trait déchet",0.1851,medium,6,9869758
+Invest. Environnement,Immobilisations corporelles,Collecte des déchets,0.0764,medium,6,4074554
+Invest. Environnement,Immobilisations corporelles,Actions transversales,0.0756,medium,6,4034280
+Invest. Environnement,Immobilisations en cours,Actions transversales,0.5251,medium,6,125469636
+Invest. Environnement,Immobilisations en cours,Ser com collecte propreté,0.3581,medium,6,85564702
+Invest. Environnement,Immobilisations en cours,Prés patri nat gest risk,0.0389,medium,6,9305882
+Invest. Environnement,Immobilisations en cours,"Tri, valo et trait déchet",0.0353,medium,6,8444553
+Invest. Environnement,Immobilisations en cours,Autres,0.0194,medium,6,4634706
+Invest. Environnement,Immobilisations en cours,Politique de l'air,0.0131,medium,6,3126963
+Invest. Environnement,Immobilisations en cours,Autres actions,0.0101,medium,6,2409684
+Invest. Environnement,Subventions (investissement),Politique de l'air,0.8569,high,6,34726232
+Invest. Environnement,Subventions (investissement),Politique de l'eau,0.1431,high,6,5800000
+Invest. Environnement,Études,Actions transversales,0.5177,medium,4,7776862
+Invest. Environnement,Études,Propreté urbaine,0.3158,medium,4,4743689
+Invest. Environnement,Études,"Tri, valo et trait déchet",0.1665,medium,4,2501987
+Invest. Social,Immobilisations en cours,Crèches et garderies,0.7471,high,6,123688722
+Invest. Social,Immobilisations en cours,Personnes handicapées,0.2529,high,6,41880771
+Invest. Social,Subventions (investissement),Crèches et garderies,1.0,high,1,10465989
+Invest. Sécurité,Autre,Hygiène salubrité publiqu,1.0,high,6,2098147
+Invest. Sécurité,Immobilisations corporelles,"Police, sécurité, justice",0.6298,medium,6,2383746
+Invest. Sécurité,Immobilisations corporelles,Services communs,0.3702,medium,6,1401459
+Invest. Sécurité,Immobilisations en cours,Incendie et secours,0.5939,medium,6,12830062
+Invest. Sécurité,Immobilisations en cours,"Police, sécurité, justice",0.3751,medium,6,8104277
+Invest. Sécurité,Immobilisations en cours,Services communs,0.031,medium,6,668950
+Invest. Sécurité,Subventions (investissement),Autre int prot bien pers,0.5401,medium,6,58825449
+Invest. Sécurité,Subventions (investissement),Incendie et secours,0.4578,medium,6,49863371
+Invest. Sécurité,Subventions (investissement),Autres,0.0021,medium,6,225490
+Invest. Sécurité,Études,"Police, sécurité, justice",1.0,high,1,119108
+Invest. Transports,Autre,Voirie communale,0.7541,high,6,29733153
+Invest. Transports,Autre,Transport ferroviaire,0.2459,high,6,9696698
+Invest. Transports,Immobilisations corporelles,Voirie communale,0.8313,high,5,8222114
+Invest. Transports,Immobilisations corporelles,Services communs,0.0863,high,5,853617
+Invest. Transports,Immobilisations corporelles,Circulations douces,0.0824,high,5,815388
+Invest. Transports,Immobilisations en cours,Transport ferroviaire,0.4166,medium,6,408902568
+Invest. Transports,Immobilisations en cours,Voirie communale,0.3342,medium,6,328048633
+Invest. Transports,Immobilisations en cours,Circulations douces,0.2113,medium,6,207356561
+Invest. Transports,Immobilisations en cours,Halte fluv autre infra fl,0.0224,medium,6,21971723
+Invest. Transports,Immobilisations en cours,Transport sur route,0.0122,medium,6,11978523
+Invest. Transports,Immobilisations en cours,Autres,0.0033,medium,6,3213771
+Invest. Transports,Subventions (investissement),Transport ferroviaire,0.9904,high,6,169399091
+Invest. Transports,Subventions (investissement),Autres,0.0096,high,6,1641600
+Invest. Transports,Études,Transport ferroviaire,0.5377,medium,6,10976610
+Invest. Transports,Études,Voirie communale,0.3617,medium,6,7383512
+Invest. Transports,Études,Circulations douces,0.1005,medium,6,2052193
+Invest. Économie,Autre,"Industrie,commerce artisa",1.0,high,1,1002879
+Invest. Économie,Immobilisations corporelles,"Industrie,commerce artisa",0.9803,high,5,42648199
+Invest. Économie,Immobilisations corporelles,Autres,0.0197,high,5,858792
+Invest. Économie,Immobilisations en cours,Insertion éco sociale,0.3126,medium,6,7222450
+Invest. Économie,Immobilisations en cours,"Industrie,commerce artisa",0.2583,medium,6,5968506
+Invest. Économie,Immobilisations en cours,Recherche et innovation,0.2479,medium,6,5728454
+Invest. Économie,Immobilisations en cours,Autres,0.1465,medium,6,3385311
+Invest. Économie,Immobilisations en cours,Développement touristique,0.0347,medium,6,802055
+Invest. Économie,Subventions (investissement),Recherche et innovation,0.2953,medium,6,32215148
+Invest. Économie,Subventions (investissement),Struct d'anim et dev éco,0.2617,medium,6,28544927
+Invest. Économie,Subventions (investissement),Insertion éco sociale,0.1502,medium,6,16381590
+Invest. Économie,Subventions (investissement),"Industrie,commerce artisa",0.1457,medium,6,15890916
+Invest. Économie,Subventions (investissement),Autres,0.0997,medium,6,10880764
+Invest. Économie,Subventions (investissement),Développement touristique,0.0475,medium,6,5180394
+Invest. Économie,Études,Recherche et innovation,0.581,medium,2,410802
+Invest. Économie,Études,Insertion éco sociale,0.419,medium,2,296285
+Invest. Éducation,Immobilisations corporelles,Classes regroupées,1.0,high,2,11543467
+Invest. Éducation,Immobilisations en cours,Classes regroupées,0.5336,medium,6,264586677
+Invest. Éducation,Immobilisations en cours,Collèges,0.2091,medium,6,103696835
+Invest. Éducation,Immobilisations en cours,Enseignement supérieur,0.1071,medium,6,53100000
+Invest. Éducation,Immobilisations en cours,Hébergt resto scolaire,0.0844,medium,6,41866458
+Invest. Éducation,Immobilisations en cours,Écoles primaires,0.0216,medium,6,10697795
+Invest. Éducation,Immobilisations en cours,Lycées publics,0.0191,medium,6,9469079
+Invest. Éducation,Immobilisations en cours,Écoles maternelles,0.0142,medium,6,7042257
+Invest. Éducation,Immobilisations en cours,Cités scolaires,0.0108,medium,6,5346884
+Invest. Éducation,Subventions (investissement),Enseignement supérieur,0.787,high,6,55127873
+Invest. Éducation,Subventions (investissement),Collèges,0.213,high,6,14916826
+Invest. Éducation,Études,Classes regroupées,1.0,high,6,24154871
+Opérations Financières,Charges financières,Opérations non ventilable,1.0,high,6,937946062
+Participations,Autre,Opérations non ventilable,1.0,high,3,6782828
+RSA,Contributions obligatoires,Insertion sociale,1.0,high,6,61928677
+RSA,Personnel,Dépenses de structure,1.0,high,1,6152367
+RSA,Services extérieurs,Insertion sociale,1.0,high,6,61690061
+RSA,Subventions (fonctionnement),Insertion professionnelle,1.0,high,5,55573414
+RSA,Transferts sociaux,RSA allocations,1.0,high,6,2378696561
+Remboursement Dette,Autre,Opérations non ventilable,1.0,high,6,438116044
+Remboursement Dette,Remboursement dette,Opérations non ventilable,1.0,high,6,1801470201
+Reversements Fiscaux,Reversements péréquation,Opérations non ventilable,1.0,high,6,8058647162
+Subventions Équipement,Dotations et participations,Opérations non ventilable,1.0,high,6,199087008
+Subventions Équipement,Reversements péréquation,Opérations non ventilable,1.0,high,6,40487670
+Sécurité,Achats,Services communs,1.0,high,6,4434146
+Sécurité,Autre,"Police, sécurité, justice",0.9152,high,6,14602263
+Sécurité,Autre,Services communs,0.0713,high,6,1137595
+Sécurité,Autre,Hygiène salubrité publiqu,0.0135,high,6,215586
+Sécurité,Autres services,"Police, sécurité, justice",0.925,high,6,69247996
+Sécurité,Autres services,Services communs,0.075,high,6,5611687
+Sécurité,Contributions obligatoires,Autre int prot bien pers,0.5726,medium,6,805335475
+Sécurité,Contributions obligatoires,Incendie et secours,0.4274,medium,6,601178313
+Sécurité,Personnel,"Police, sécurité, justice",0.8973,high,6,856461314
+Sécurité,Personnel,Services communs,0.0718,high,6,68560145
+Sécurité,Personnel,Hygiène salubrité publiqu,0.0309,high,6,29510260
+Sécurité,Services extérieurs,Services communs,0.6455,medium,6,19124965
+Sécurité,Services extérieurs,Incendie et secours,0.3055,medium,6,9051871
+Sécurité,Services extérieurs,Hygiène salubrité publiqu,0.049,medium,6,1452208
+Sécurité,Subventions (fonctionnement),"Police, sécurité, justice",1.0,high,6,13241830
+Transports,Achats,Voirie communale,1.0,high,6,12544987
+Transports,Autre,Voirie communale,0.8194,high,6,91389122
+Transports,Autre,Services communs,0.1185,high,6,13220540
+Transports,Autre,Halte fluv autre infra fl,0.062,high,6,6915792
+Transports,Autres services,Voirie communale,1.0,high,6,36844064
+Transports,Contributions obligatoires,Autres transports,1.0,high,6,2483484405
+Transports,Personnel,Voirie communale,0.7308,high,6,273133161
+Transports,Personnel,Halte fluv autre infra fl,0.1405,high,6,52510508
+Transports,Personnel,Services communs,0.0963,high,6,35997232
+Transports,Personnel,Sécurité routière,0.0231,high,6,8627871
+Transports,Personnel,Autres,0.0094,high,6,3498802
+Transports,Services extérieurs,Voirie communale,0.6856,medium,6,332688661
+Transports,Services extérieurs,Transport sur route,0.1548,medium,6,75117106
+Transports,Services extérieurs,Équipements de voirie,0.1108,medium,6,53781229
+Transports,Services extérieurs,Services communs,0.0283,medium,6,13726847
+Transports,Services extérieurs,Halte fluv autre infra fl,0.0104,medium,6,5041956
+Transports,Services extérieurs,Circulations douces,0.0101,medium,6,4900807
+Transports,Subventions (fonctionnement),Transport sur route,0.9833,high,6,175746271
+Transports,Subventions (fonctionnement),Voirie communale,0.0167,high,6,2982328
+Transports,Transferts sociaux,Autres transports,1.0,high,6,118591582
+Éducation,Achats,Autre serv annexe enseign,0.627,medium,6,51426030
+Éducation,Achats,Classes de découverte,0.373,medium,6,30590413
+Éducation,Autre,Écoles primaires,0.3952,medium,6,23025991
+Éducation,Autre,Écoles maternelles,0.3267,medium,6,19032949
+Éducation,Autre,Cités scolaires,0.2781,medium,6,16202935
+Éducation,Autres services,Écoles primaires,0.5193,medium,6,208418382
+Éducation,Autres services,Écoles maternelles,0.3984,medium,6,159884959
+Éducation,Autres services,Classes regroupées,0.0441,medium,6,17677619
+Éducation,Autres services,Cités scolaires,0.0382,medium,6,15325411
+Éducation,Contributions obligatoires,Collèges,0.5208,medium,6,227527640
+Éducation,Contributions obligatoires,Classes regroupées,0.4664,medium,6,203754043
+Éducation,Contributions obligatoires,Hébergt resto scolaire,0.0128,medium,6,5578802
+Éducation,Personnel,Écoles primaires,0.4184,medium,6,1015152626
+Éducation,Personnel,Écoles maternelles,0.3489,medium,6,846539761
+Éducation,Personnel,Services communs,0.1404,medium,6,340634716
+Éducation,Personnel,Collèges,0.0603,medium,6,146191010
+Éducation,Personnel,Apprentissage,0.0289,medium,6,70020733
+Éducation,Personnel,Autres,0.0032,medium,6,7706333
+Éducation,Services extérieurs,Apprentissage,0.8349,high,6,30572153
+Éducation,Services extérieurs,Classes regroupées,0.1651,high,6,6045800
+Éducation,Subventions (fonctionnement),Hébergt resto scolaire,0.7987,high,6,560606287
+Éducation,Subventions (fonctionnement),Enseignement supérieur,0.1635,high,6,114773250
+Éducation,Subventions (fonctionnement),Lycées publics,0.0378,high,6,26556000
