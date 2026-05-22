@@ -3511,17 +3511,31 @@ body:has(.theme-fusion) > div.pb-24 { padding-bottom: 0 !important; }
   margin-left: calc(var(--fx-row-link-padding-shift) * -1);
   margin-right: calc(var(--fx-row-link-padding-shift) * -1);
 }
-.theme-fusion .fx-row-link:hover,
-.theme-fusion .fx-mini-row-link:hover {
-  background: var(--fx-row-link-bg-hover);
-  color: var(--fx-row-link-text-hover);
+/* Hover full-inversion réservé aux périphériques avec pointeur fin (souris).
+ * Sur mobile/touch, le tap simulait un hover persistant qui transformait la
+ * row en bloc noir (fond ink, texte bg) — surprise visuelle non voulue.
+ * Sur touch, on garde un soft hover (background hover seulement, pas
+ * d'inversion complète) pour donner un feedback discret au tap. */
+@media (hover: hover) and (pointer: fine) {
+  .theme-fusion .fx-row-link:hover,
+  .theme-fusion .fx-mini-row-link:hover {
+    background: var(--fx-row-link-bg-hover);
+    color: var(--fx-row-link-text-hover);
+  }
+  .theme-fusion .fx-row-link:hover .muted,
+  .theme-fusion .fx-row-link:hover .rank,
+  .theme-fusion .fx-mini-row-link:hover .muted,
+  .theme-fusion .fx-mini-row-link:hover .rank {
+    color: var(--fx-row-link-text-hover);
+    opacity: 0.7;
+  }
 }
-.theme-fusion .fx-row-link:hover .muted,
-.theme-fusion .fx-row-link:hover .rank,
-.theme-fusion .fx-mini-row-link:hover .muted,
-.theme-fusion .fx-mini-row-link:hover .rank {
-  color: var(--fx-row-link-text-hover);
-  opacity: 0.7;
+/* Touch / coarse pointer : soft hover seulement (pas d'inversion complète) */
+@media (hover: none), (pointer: coarse) {
+  .theme-fusion .fx-row-link:active,
+  .theme-fusion .fx-mini-row-link:active {
+    background: var(--bg-hover);
+  }
 }
 
 /* Tables de fiche : si une row contient un <a href>, toute la row devient
