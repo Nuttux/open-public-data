@@ -182,24 +182,28 @@
           "value": 2541335384.0
         },
         {
-          "name": "Fiscalité Indirecte: Taxe dpt. pub foncière, droit dpt. enreg",
-          "value": 1301250000.0
+          "name": "Fiscalité Indirecte: Taxe départementale (publicité foncière + droits d'enregistrement)",
+          "value": 1301250000.0,
+          "name_original": "Fiscalité Indirecte: Taxe dpt. pub foncière, droit dpt. enreg"
         },
         {
           "name": "Fiscalité Directe: Attribution de compensation",
           "value": 978463518.0
         },
         {
-          "name": "Fiscalité Indirecte: Fract° compens. TFPB, taxe rés. princi.",
-          "value": 776570825.0
+          "name": "Fiscalité Indirecte: Fraction compensatoire TFPB + taxe d'habitation",
+          "value": 776570825.0,
+          "name_original": "Fiscalité Indirecte: Fract° compens. TFPB, taxe rés. princi."
         },
         {
-          "name": "Fiscalité Indirecte: Fraction compensatoire de la CVAE",
-          "value": 565441578.0
+          "name": "Fiscalité Indirecte: Fraction compensatoire CVAE",
+          "value": 565441578.0,
+          "name_original": "Fiscalité Indirecte: Fraction compensatoire de la CVAE"
         },
         {
-          "name": "Fiscalité Directe: Attrib. compensation CVAE-Départ.-Région",
-          "value": 475293963.0
+          "name": "Fiscalité Directe: Attribution de compensation CVAE (Département / Région)",
+          "value": 475293963.0,
+          "name_original": "Fiscalité Directe: Attrib. compensation CVAE-Départ.-Région"
         },
         {
           "name": "Fiscalité Indirecte: Taxe com add droit mut ou pub foncière",
@@ -226,8 +230,9 @@
           "value": 15700000.0
         },
         {
-          "name": "Fiscalité Indirecte: Taxe dpt. additionnelle à droits d'enreg",
-          "value": 15500000.0
+          "name": "Fiscalité Indirecte: Taxe départementale additionnelle aux droits d'enregistrement",
+          "value": 15500000.0,
+          "name_original": "Fiscalité Indirecte: Taxe dpt. additionnelle à droits d'enreg"
         },
         {
           "name": "Fiscalité Indirecte: Impôt sur les cercles et maisons de jeux",
@@ -238,16 +243,18 @@
           "value": 11558691.0
         },
         {
-          "name": "Fiscalité Directe: Imposition forf. sur entrep. réseaux",
-          "value": 4531247.0
+          "name": "Fiscalité Directe: Imposition forfaitaire sur les entreprises de réseaux (IFER)",
+          "value": 4531247.0,
+          "name_original": "Fiscalité Directe: Imposition forf. sur entrep. réseaux"
         },
         {
           "name": "Fiscalité Indirecte: Taxe d'aménagement",
           "value": 4000000.0
         },
         {
-          "name": "Fiscalité Indirecte: Revers. prél. / jeux et paris hippiques",
-          "value": 400000.0
+          "name": "Fiscalité Indirecte: Reversement prélèvement (jeux et paris hippiques)",
+          "value": 400000.0,
+          "name_original": "Fiscalité Indirecte: Revers. prél. / jeux et paris hippiques"
         }
       ],
       "Dotations & Subventions": [
@@ -256,8 +263,9 @@
           "value": 160000000.0
         },
         {
-          "name": "Dotations État: Etat - Compensation CET (CVAE et CFE)",
-          "value": 45348875.0
+          "name": "Dotations État: Compensation État (CET — CVAE et CFE)",
+          "value": 45348875.0,
+          "name_original": "Dotations État: Etat - Compensation CET (CVAE et CFE)"
         },
         {
           "name": "Dotations État: DGD des communes et EPCI",
@@ -268,8 +276,9 @@
           "value": 26482221.0
         },
         {
-          "name": "Dotations État: Frais de gestion de la TFPB",
-          "value": 11800000.0
+          "name": "Dotations État: Frais de gestion (TFPB — taxe foncière sur les propriétés bâties)",
+          "value": 11800000.0,
+          "name_original": "Dotations État: Frais de gestion de la TFPB"
         },
         {
           "name": "Dotations État: Attrib/Vers. impôt cercles, maisons jeux",
@@ -284,8 +293,9 @@
           "value": 3000000.0
         },
         {
-          "name": "Dotations État: Compens. perte taxe add. droits enreg.",
-          "value": 1700000.0
+          "name": "Dotations État: Compensation perte taxe additionnelle (droits d'enregistrement)",
+          "value": 1700000.0,
+          "name_original": "Dotations État: Compens. perte taxe add. droits enreg."
         },
         {
           "name": "Dotations État: DGF des permanents syndicaux",
@@ -306,8 +316,9 @@
           "value": 139100000.0
         },
         {
-          "name": "Emprunts & Dette: Créances/particuliers, pers. droit privé",
-          "value": 35750000.0
+          "name": "Emprunts & Dette: Créances / particuliers et personnes de droit privé",
+          "value": 35750000.0,
+          "name_original": "Emprunts & Dette: Créances/particuliers, pers. droit privé"
         },
         {
           "name": "Opérations Financières: Produits de participations",
@@ -332,12 +343,14 @@
           "value": 26384826.0
         },
         {
-          "name": "Autres: Rec... subv inv transférées cpte résult",
-          "value": 23000000.0
+          "name": "Autres: Reprise de subventions d'investissement transférées",
+          "value": 23000000.0,
+          "name_original": "Autres: Rec... subv inv transférées cpte résult"
         },
         {
-          "name": "Autres: Rep. prov. charges fonctionnt courant",
-          "value": 15000000.0
+          "name": "Autres: Reprises de provisions (charges de fonctionnement)",
+          "value": 15000000.0,
+          "name_original": "Autres: Rep. prov. charges fonctionnt courant"
         },
         {
           "name": "Autres: Revenus des immeubles",
@@ -361,8 +374,9 @@
           "value": 600000.0
         },
         {
-          "name": "Autres: Rep. Prov. dépréc. éléments financiers",
-          "value": 360000.0
+          "name": "Autres: Reprises de provisions (éléments financiers)",
+          "value": 360000.0,
+          "name_original": "Autres: Rep. Prov. dépréc. éléments financiers"
         },
         {
           "name": "Autres: Frais d'insertion",
@@ -373,8 +387,9 @@
           "value": 100000.0
         },
         {
-          "name": "Autres: Rep. amort. immos corpo. et incorp.",
-          "value": 100000.0
+          "name": "Autres: Reprises d'amortissement (immobilisations)",
+          "value": 100000.0,
+          "name_original": "Autres: Rep. amort. immos corpo. et incorp."
         }
       ],
       "Services Publics": [
@@ -610,12 +625,14 @@
           "value": 6910873.0
         },
         {
-          "name": "Invest. Culture: Fonds affectés à l'équipement non amort.",
-          "value": 6770163.0
+          "name": "Invest. Culture: Fonds affectés à l'équipement (non amortissable)",
+          "value": 6770163.0,
+          "name_original": "Invest. Culture: Fonds affectés à l'équipement non amort."
         },
         {
-          "name": "Invest. Éducation: Fonds affectés à l'équipement amort.",
-          "value": 6464556.0
+          "name": "Invest. Éducation: Fonds affectés à l'équipement (amortissable)",
+          "value": 6464556.0,
+          "name_original": "Invest. Éducation: Fonds affectés à l'équipement amort."
         },
         {
           "name": "Invest. Culture: Subv inv rattachées aux",
@@ -642,12 +659,14 @@
           "value": 1500000.0
         },
         {
-          "name": "Invest. Transports: Fonds affectés à l'équipement amort.",
-          "value": 1231212.0
+          "name": "Invest. Transports: Fonds affectés à l'équipement (amortissable)",
+          "value": 1231212.0,
+          "name_original": "Invest. Transports: Fonds affectés à l'équipement amort."
         },
         {
-          "name": "Invest. Services: Fonds affectés à l'équipement non amort.",
-          "value": 854000.0
+          "name": "Invest. Services: Fonds affectés à l'équipement (non amortissable)",
+          "value": 854000.0,
+          "name_original": "Invest. Services: Fonds affectés à l'équipement non amort."
         },
         {
           "name": "Invest. Sécurité: Travaux effectués d'office",
@@ -658,8 +677,9 @@
           "value": 500000.0
         },
         {
-          "name": "Invest. Transports: Fonds affectés à l'équipement non amort.",
-          "value": 400483.0
+          "name": "Invest. Transports: Fonds affectés à l'équipement (non amortissable)",
+          "value": 400483.0,
+          "name_original": "Invest. Transports: Fonds affectés à l'équipement non amort."
         },
         {
           "name": "Invest. Social: Frais d'études, recherche, développement",
@@ -2569,13 +2589,14 @@
           "fonction_ratio": 1.0
         },
         {
-          "name": "Reversements Fiscaux: Fonds péréquation ress. com. et intercom",
+          "name": "Reversements Fiscaux: Fonds de péréquation des ressources communales et intercommunales",
           "value": 187000000.0,
           "fonction": "Opérations non ventilable",
           "flow_category": "Reversements péréquation",
           "fonction_confidence": "high",
           "fonction_imputed": true,
-          "fonction_ratio": 1.0
+          "fonction_ratio": 1.0,
+          "name_original": "Reversements Fiscaux: Fonds péréquation ress. com. et intercom"
         },
         {
           "name": "Administration: Autres attributions et participations",
@@ -2762,22 +2783,24 @@
           "fonction_ratio": 0.2699
         },
         {
-          "name": "Charges Fiscales: Revers., restitutions et prél. divers",
+          "name": "Charges Fiscales: Reversements",
           "value": 9000000.0,
           "fonction": "Opérations non ventilable",
           "flow_category": "Reversements péréquation",
           "fonction_confidence": "high",
           "fonction_imputed": true,
-          "fonction_ratio": 1.0
+          "fonction_ratio": 1.0,
+          "name_original": "Charges Fiscales: Revers., restitutions et prél. divers"
         },
         {
-          "name": "Reversements Fiscaux: Autres prél./revers. fisc. coll. locales",
+          "name": "Reversements Fiscaux: Autres prélèvements / reversements fiscaux (collectivités locales)",
           "value": 8604901.0,
           "fonction": "Opérations non ventilable",
           "flow_category": "Reversements péréquation",
           "fonction_confidence": "high",
           "fonction_imputed": true,
-          "fonction_ratio": 1.0
+          "fonction_ratio": 1.0,
+          "name_original": "Reversements Fiscaux: Autres prél./revers. fisc. coll. locales"
         },
         {
           "name": "Administration: Charges diverses de gestion courante",
@@ -2863,13 +2886,14 @@
           "fonction_ratio": 0.2699
         },
         {
-          "name": "Reversements Fiscaux: Autres restit. dégrèv./contrib. directes",
+          "name": "Reversements Fiscaux: Autres restitutions",
           "value": 5000000.0,
           "fonction": "Opérations non ventilable",
           "flow_category": "Reversements péréquation",
           "fonction_confidence": "high",
           "fonction_imputed": true,
-          "fonction_ratio": 1.0
+          "fonction_ratio": 1.0,
+          "name_original": "Reversements Fiscaux: Autres restit. dégrèv./contrib. directes"
         },
         {
           "name": "Administration: Autres charges de personnel",
@@ -4847,22 +4871,24 @@
       ],
       "Autres (D)": [
         {
-          "name": "Autres: Dot. amort. immos incorporelles",
+          "name": "Autres: Dotations aux amortissements (immobilisations incorporelles)",
           "value": 455000000.0,
           "fonction": "Opérations non ventilable",
           "flow_category": "Autre",
           "fonction_confidence": "high",
           "fonction_imputed": true,
-          "fonction_ratio": 1.0
+          "fonction_ratio": 1.0,
+          "name_original": "Autres: Dot. amort. immos incorporelles"
         },
         {
-          "name": "Autres: Dot. prov. pour risques fonct. courant",
+          "name": "Autres: Dotations aux provisions (risques de fonctionnement)",
           "value": 70000000.0,
           "fonction": "Opérations non ventilable",
           "flow_category": "Autre",
           "fonction_confidence": "high",
           "fonction_imputed": true,
-          "fonction_ratio": 1.0
+          "fonction_ratio": 1.0,
+          "name_original": "Autres: Dot. prov. pour risques fonct. courant"
         },
         {
           "name": "Autres: Dettes - Autres organismes, particuliers",
@@ -4889,13 +4915,14 @@
           "name_original": "Autres: Frais d'études"
         },
         {
-          "name": "Autres: Subv. transf. Etat et établ. nationaux",
+          "name": "Autres: Subventions transférées de l'État",
           "value": 16000000.0,
           "fonction": "Opérations non ventilable",
           "flow_category": "Autre",
           "fonction_confidence": "high",
           "fonction_imputed": true,
-          "fonction_ratio": 1.0
+          "fonction_ratio": 1.0,
+          "name_original": "Autres: Subv. transf. Etat et établ. nationaux"
         },
         {
           "name": "Autres: Immeubles de rapport",
@@ -4935,31 +4962,34 @@
           "fonction_confidence": "unknown"
         },
         {
-          "name": "Autres: Dotation départementale équip. collèges",
+          "name": "Autres: Dotation départementale d'équipement des collèges",
           "value": 6730000.0,
           "fonction": "Opérations non ventilable",
           "flow_category": "Autre",
           "fonction_confidence": "high",
           "fonction_imputed": true,
-          "fonction_ratio": 1.0
+          "fonction_ratio": 1.0,
+          "name_original": "Autres: Dotation départementale équip. collèges"
         },
         {
-          "name": "Autres: Dot. prov. dépréc. actifs circulants",
+          "name": "Autres: Dotations aux provisions (actifs circulants)",
           "value": 5000000.0,
           "fonction": "Opérations non ventilable",
           "flow_category": "Autre",
           "fonction_confidence": "high",
           "fonction_imputed": true,
-          "fonction_ratio": 1.0
+          "fonction_ratio": 1.0,
+          "name_original": "Autres: Dot. prov. dépréc. actifs circulants"
         },
         {
-          "name": "Autres: Dot. prov. dépréc. éléments financiers",
+          "name": "Autres: Dotations aux provisions (éléments financiers)",
           "value": 5000000.0,
           "fonction": "Opérations non ventilable",
           "flow_category": "Autre",
           "fonction_confidence": "high",
           "fonction_imputed": true,
-          "fonction_ratio": 1.0
+          "fonction_ratio": 1.0,
+          "name_original": "Autres: Dot. prov. dépréc. éléments financiers"
         },
         {
           "name": "Autres: Frais de personnel",
@@ -4971,13 +5001,14 @@
           "fonction_ratio": 1.0
         },
         {
-          "name": "Autres: Dot. amort. primes rembourst obligations",
+          "name": "Autres: Dotations aux amortissements (primes de remboursement)",
           "value": 2970000.0,
           "fonction": "Opérations non ventilable",
           "flow_category": "Autre",
           "fonction_confidence": "high",
           "fonction_imputed": true,
-          "fonction_ratio": 1.0
+          "fonction_ratio": 1.0,
+          "name_original": "Autres: Dot. amort. primes rembourst obligations"
         },
         {
           "name": "Autres: Autres agencements et aménagements",
@@ -5010,11 +5041,12 @@
           "fonction_confidence": "unknown"
         },
         {
-          "name": "Autres: Sub nat org pub - Bât. et installations",
+          "name": "Autres: Subventions nationales (organismes publics) — Bâtiments et installations",
           "value": 1500000.0,
           "fonction": "Non spécifié",
           "flow_category": "Subventions (investissement)",
-          "fonction_confidence": "unknown"
+          "fonction_confidence": "unknown",
+          "name_original": "Autres: Sub nat org pub - Bât. et installations"
         },
         {
           "name": "Autres: Autre matériel technique",
@@ -5031,11 +5063,12 @@
           "fonction_confidence": "unknown"
         },
         {
-          "name": "Autres: Autres inst.,matériel,outil. techniques",
+          "name": "Autres: Autres installations, matériel et outillage",
           "value": 502000.0,
           "fonction": "Non spécifié",
           "flow_category": "Immobilisations corporelles",
-          "fonction_confidence": "unknown"
+          "fonction_confidence": "unknown",
+          "name_original": "Autres: Autres inst.,matériel,outil. techniques"
         },
         {
           "name": "Autres: Biens sous-jacents",
@@ -5069,13 +5102,14 @@
           "name_original": "Autres: Construct° sol autrui - Installat° géné."
         },
         {
-          "name": "Autres: Autres subventions d'équipement transf.",
+          "name": "Autres: Autres subventions d'investissement transférées",
           "value": 210000.0,
           "fonction": "Opérations non ventilable",
           "flow_category": "Autre",
           "fonction_confidence": "high",
           "fonction_imputed": true,
-          "fonction_ratio": 1.0
+          "fonction_ratio": 1.0,
+          "name_original": "Autres: Autres subventions d'équipement transf."
         },
         {
           "name": "Autres: Privé - Bâtiments et installations",
@@ -5094,20 +5128,22 @@
           "fonction_confidence": "unknown"
         },
         {
-          "name": "Autres: Dot. soutien à l'invest des départements",
+          "name": "Autres: Dotation de soutien à l'investissement des départements",
           "value": 50000.0,
           "fonction": "Opérations non ventilable",
           "flow_category": "Autre",
           "fonction_confidence": "high",
           "fonction_imputed": true,
-          "fonction_ratio": 1.0
+          "fonction_ratio": 1.0,
+          "name_original": "Autres: Dot. soutien à l'invest des départements"
         },
         {
-          "name": "Autres: Sub nat privé - Bât. et installations",
+          "name": "Autres: Subventions nationales (privé) — Bâtiments et installations",
           "value": 50000.0,
           "fonction": "Non spécifié",
           "flow_category": "Subventions (investissement)",
-          "fonction_confidence": "unknown"
+          "fonction_confidence": "unknown",
+          "name_original": "Autres: Sub nat privé - Bât. et installations"
         },
         {
           "name": "Autres: Terrains aménagés autres que voirie",
@@ -5131,13 +5167,14 @@
           "fonction_confidence": "unknown"
         },
         {
-          "name": "Autres: Subv. transf. GFP de rattachement",
+          "name": "Autres: Subventions transférées du groupement",
           "value": 10000.0,
           "fonction": "Opérations non ventilable",
           "flow_category": "Autre",
           "fonction_confidence": "high",
           "fonction_imputed": true,
-          "fonction_ratio": 1.0
+          "fonction_ratio": 1.0,
+          "name_original": "Autres: Subv. transf. GFP de rattachement"
         },
         {
           "name": "Autres: Bâtiments culturels et sportifs",
@@ -5190,13 +5227,14 @@
           "fonction_ratio": 1.0
         },
         {
-          "name": "Remboursement Dette: Créances/particuliers, pers. droit privé",
+          "name": "Remboursement Dette: Créances / particuliers et personnes de droit privé",
           "value": 81561202.0,
           "fonction": "Opérations non ventilable",
           "flow_category": "Autre",
           "fonction_confidence": "high",
           "fonction_imputed": true,
-          "fonction_ratio": 1.0
+          "fonction_ratio": 1.0,
+          "name_original": "Remboursement Dette: Créances/particuliers, pers. droit privé"
         },
         {
           "name": "Remboursement Dette: Autres formes de participation",
@@ -5208,13 +5246,14 @@
           "fonction_ratio": 1.0
         },
         {
-          "name": "Opérations Financières: Intérêts - Rattachement des ICNE",
+          "name": "Opérations Financières: Intérêts — rattachement des ICNE (intérêts courus non échus)",
           "value": 26640000.0,
           "fonction": "Opérations non ventilable",
           "flow_category": "Charges financières",
           "fonction_confidence": "high",
           "fonction_imputed": true,
-          "fonction_ratio": 1.0
+          "fonction_ratio": 1.0,
+          "name_original": "Opérations Financières: Intérêts - Rattachement des ICNE"
         },
         {
           "name": "Remboursement Dette: Dépôts et cautionnements versés",
@@ -8370,22 +8409,24 @@
         "total": 710890994.0,
         "items": [
           {
-            "name": "Autres: Dot. amort. immos incorporelles",
+            "name": "Autres: Dotations aux amortissements (immobilisations incorporelles)",
             "value": 455000000.0,
             "fonction": "Opérations non ventilable",
             "flow_category": "Autre",
             "fonction_confidence": "high",
             "fonction_imputed": true,
-            "fonction_ratio": 1.0
+            "fonction_ratio": 1.0,
+            "name_original": "Autres: Dot. amort. immos incorporelles"
           },
           {
-            "name": "Autres: Dot. prov. pour risques fonct. courant",
+            "name": "Autres: Dotations aux provisions (risques de fonctionnement)",
             "value": 70000000.0,
             "fonction": "Opérations non ventilable",
             "flow_category": "Autre",
             "fonction_confidence": "high",
             "fonction_imputed": true,
-            "fonction_ratio": 1.0
+            "fonction_ratio": 1.0,
+            "name_original": "Autres: Dot. prov. pour risques fonct. courant"
           },
           {
             "name": "Autres: Dettes - Autres organismes, particuliers",
@@ -8412,13 +8453,14 @@
             "name_original": "Autres: Frais d'études"
           },
           {
-            "name": "Autres: Subv. transf. Etat et établ. nationaux",
+            "name": "Autres: Subventions transférées de l'État",
             "value": 16000000.0,
             "fonction": "Opérations non ventilable",
             "flow_category": "Autre",
             "fonction_confidence": "high",
             "fonction_imputed": true,
-            "fonction_ratio": 1.0
+            "fonction_ratio": 1.0,
+            "name_original": "Autres: Subv. transf. Etat et établ. nationaux"
           },
           {
             "name": "Autres: Immeubles de rapport",
@@ -8458,31 +8500,34 @@
             "fonction_confidence": "unknown"
           },
           {
-            "name": "Autres: Dotation départementale équip. collèges",
+            "name": "Autres: Dotation départementale d'équipement des collèges",
             "value": 6730000.0,
             "fonction": "Opérations non ventilable",
             "flow_category": "Autre",
             "fonction_confidence": "high",
             "fonction_imputed": true,
-            "fonction_ratio": 1.0
+            "fonction_ratio": 1.0,
+            "name_original": "Autres: Dotation départementale équip. collèges"
           },
           {
-            "name": "Autres: Dot. prov. dépréc. actifs circulants",
+            "name": "Autres: Dotations aux provisions (actifs circulants)",
             "value": 5000000.0,
             "fonction": "Opérations non ventilable",
             "flow_category": "Autre",
             "fonction_confidence": "high",
             "fonction_imputed": true,
-            "fonction_ratio": 1.0
+            "fonction_ratio": 1.0,
+            "name_original": "Autres: Dot. prov. dépréc. actifs circulants"
           },
           {
-            "name": "Autres: Dot. prov. dépréc. éléments financiers",
+            "name": "Autres: Dotations aux provisions (éléments financiers)",
             "value": 5000000.0,
             "fonction": "Opérations non ventilable",
             "flow_category": "Autre",
             "fonction_confidence": "high",
             "fonction_imputed": true,
-            "fonction_ratio": 1.0
+            "fonction_ratio": 1.0,
+            "name_original": "Autres: Dot. prov. dépréc. éléments financiers"
           },
           {
             "name": "Autres: Frais de personnel",
@@ -8494,13 +8539,14 @@
             "fonction_ratio": 1.0
           },
           {
-            "name": "Autres: Dot. amort. primes rembourst obligations",
+            "name": "Autres: Dotations aux amortissements (primes de remboursement)",
             "value": 2970000.0,
             "fonction": "Opérations non ventilable",
             "flow_category": "Autre",
             "fonction_confidence": "high",
             "fonction_imputed": true,
-            "fonction_ratio": 1.0
+            "fonction_ratio": 1.0,
+            "name_original": "Autres: Dot. amort. primes rembourst obligations"
           },
           {
             "name": "Autres: Autres agencements et aménagements",

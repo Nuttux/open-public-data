@@ -387,8 +387,9 @@
           "value": 503321629.0
         },
         {
-          "name": "Fiscalité Directe: Attribution de compensation CVAE – Département – Région",
-          "value": 475293963.0
+          "name": "Fiscalité Directe: Attribution de compensation CVAE (Département / Région)",
+          "value": 475293963.0,
+          "name_original": "Fiscalité Directe: Attribution de compensation CVAE – Département – Région"
         },
         {
           "name": "Fiscalité Indirecte: Taxe communale additionnelle aux droits de mutation ou à lataxe de publicité foncière",
@@ -457,8 +458,9 @@
           "value": 25065490.0
         },
         {
-          "name": "Dotations État: DGD des communes et EPCI - DGD",
-          "value": 15804226.15
+          "name": "Dotations État: DGD des communes et intercommunalités",
+          "value": 15804226.15,
+          "name_original": "Dotations État: DGD des communes et EPCI - DGD"
         },
         {
           "name": "Dotations État: FCTVA",
@@ -473,8 +475,9 @@
           "value": 9214691.0
         },
         {
-          "name": "Dotations État: État - Compensation au titre de la Contribution Économique Territoriale (CVAE et CFE)",
-          "value": 8677740.0
+          "name": "Dotations État: Compensation État (Contribution Économique Territoriale)",
+          "value": 8677740.0,
+          "name_original": "Dotations État: État - Compensation au titre de la Contribution Économique Territoriale (CVAE et CFE)"
         },
         {
           "name": "Fonds Européens: Fonds social européen",
@@ -531,8 +534,9 @@
           "value": 6239180.91
         },
         {
-          "name": "Invest. Éducation: Fonds affectés (amortissable) -  Dotation départementale d'équipement des collèges",
-          "value": 5772056.0
+          "name": "Invest. Éducation: Dotation départementale d'équipement des collèges (fonds affectés)",
+          "value": 5772056.0,
+          "name_original": "Invest. Éducation: Fonds affectés (amortissable) -  Dotation départementale d'équipement des collèges"
         },
         {
           "name": "Invest. Culture: EP Musées  - déménagement du musée de la libération",
@@ -579,8 +583,9 @@
           "value": 1295744.12
         },
         {
-          "name": "Invest. Éducation: Fonds eurpoéens - FEDER",
-          "value": 1257583.26
+          "name": "Invest. Éducation: Fonds européens (FEDER)",
+          "value": 1257583.26,
+          "name_original": "Invest. Éducation: Fonds eurpoéens - FEDER"
         },
         {
           "name": "Invest. Services: frais d'études",
@@ -2291,11 +2296,12 @@
           "fonction_confidence": "ca"
         },
         {
-          "name": "Charges Fiscales: Autres prélèvements (fonds de péréquation fondés  sur les DMTO)",
+          "name": "Charges Fiscales: Autres prélèvements (fonds de péréquation DMTO)",
           "value": 27001208.0,
           "fonction": "Opérations non ventilable",
           "flow_category": "Reversements péréquation",
-          "fonction_confidence": "ca"
+          "fonction_confidence": "ca",
+          "name_original": "Charges Fiscales: Autres prélèvements (fonds de péréquation fondés  sur les DMTO)"
         },
         {
           "name": "Administration: Rémunérations",
@@ -2769,11 +2775,12 @@
           "fonction_confidence": "ca"
         },
         {
-          "name": "Sécurité: Personnel titulaire - NBI",
+          "name": "Sécurité: NBI (Nouvelle Bonification Indiciaire)",
           "value": 729388.54,
           "fonction": "Police, sécurité, justice",
           "flow_category": "Personnel",
-          "fonction_confidence": "ca"
+          "fonction_confidence": "ca",
+          "name_original": "Sécurité: Personnel titulaire - NBI"
         },
         {
           "name": "Sécurité: Autres bâtiments",
@@ -4088,11 +4095,12 @@
           "fonction_confidence": "ca"
         },
         {
-          "name": "Opérations Financières: Intérêts - rattachement des ICNE",
+          "name": "Opérations Financières: Intérêts — rattachement des ICNE (intérêts courus non échus)",
           "value": 1780947.42,
           "fonction": "Opérations non ventilable",
           "flow_category": "Charges financières",
-          "fonction_confidence": "ca"
+          "fonction_confidence": "ca",
+          "name_original": "Opérations Financières: Intérêts - rattachement des ICNE"
         },
         {
           "name": "Opérations Financières: Intérêts des autres dettes",
@@ -4357,11 +4365,12 @@
             "fonction_confidence": "ca"
           },
           {
-            "name": "Invest. Social: Subventions aux organismes publics - CCAS - Bâtiments et installations",
+            "name": "Invest. Social: Subventions aux organismes publics — CCAS (bâtiments)",
             "value": 3150000.0,
             "fonction": "Autre intervention social",
             "flow_category": "Subventions (investissement)",
-            "fonction_confidence": "ca"
+            "fonction_confidence": "ca",
+            "name_original": "Invest. Social: Subventions aux organismes publics - CCAS - Bâtiments et installations"
           },
           {
             "name": "Invest. Social: Avances versées sur commandes d'immobilisations corporelles",

@@ -38,7 +38,12 @@ def load_mapping() -> dict[str, str]:
     m: dict[str, str] = {}
     with SEED_PATH.open() as f:
         for row in csv.DictReader(f):
-            m[row["technical"]] = row["friendly"]
+            technical = row.get("technical", "")
+            friendly = row.get("friendly", "")
+            # Skip comment lines (rows where "technical" starts with "#")
+            if not technical or technical.startswith("#") or not friendly:
+                continue
+            m[technical] = friendly
     return m
 
 

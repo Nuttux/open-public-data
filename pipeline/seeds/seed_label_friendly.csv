@@ -1,37 +1,104 @@
 technical,friendly
+# ─── Charges d'intervention (M57) ───
 Charges intervent° cpt prop. - Subvent°,Subventions d'intervention
 Charges intervent° cpt prop.,Charges d'intervention
 Charges interv. cpt propre - Aides pers.,Aides aux personnes
 Charges interv. cpt propre,Aides aux personnes
-"Installat°, matériel, outillage techniq.","Installations, matériel et outillage"
+# ─── Subventions ───
 Subventions d'équipement versées,Subventions d'investissement
 Subventions d'équipement,Subventions d'investissement
-Prélèv. fonds national péréquat° DMTO,Prélèvement national péréquation DMTO
+Subv. de fonct. aux organismes publics,Subventions de fonctionnement aux organismes publics
+Subv. de fonct. aux pers. de droit privé,Subventions de fonctionnement (privé)
+Subv. de fonct. aux pers. droit privé,Subventions de fonctionnement (privé)
+Subv. transf. Etat et établ. nationaux,Subventions transférées de l'État
+Subv. transf. GFP de rattachement,Subventions transférées du groupement
+Sub nat org pub - Bât. et installations,Subventions nationales (organismes publics) — Bâtiments et installations
+Sub nat privé - Bât. et installations,Subventions nationales (privé) — Bâtiments et installations
+Autres subventions d'équipement transf.,Autres subventions d'investissement transférées
+Autres org pub - Bât. et installations,Autres organismes publics — Bâtiments et installations
+# ─── Installations & constructions ───
+"Installat°, matériel, outillage techniq.","Installations, matériel et outillage"
+"Install., matériel et outill. technique","Installations, matériel et outillage"
+"Autres inst.,matériel,outil. techniques","Autres installations, matériel et outillage"
+"Installat°, matériel et outillage technique","Installations, matériel et outillage"
+Install. générales,Installations générales
+Install. générales agencements,Installations générales et agencements
+"Install. générales, agencements",Installations générales et agencements
 Construct° sol autrui - Installat° géné.,Construction sur sol d'autrui — Installations
-Personnel titulaire - Supplément familial de traitement et indemnité de résidence,Supplément familial + indemnité de résidence
+Construct° sol autrui - Constructions,Constructions sur sol d'autrui
+Construct° sol autrui - Installat° techniq.,Installations techniques sur sol d'autrui
+Concess° immobilières,Concessions immobilières
+# ─── Personnel ───
 Personnel titulaire - Rémunération principale,Rémunération du personnel titulaire
 Personnel non titulaire - Rémunérations,Rémunération du personnel non titulaire
 Personnel titulaire - Autres indemnités,Indemnités du personnel titulaire
 Personnel non titulaire - Primes et autres indemnités,Primes du personnel non titulaire
+Personnel titulaire - Supplément familial de traitement et indemnité de résidence,Supplément familial + indemnité de résidence
 Personnel extérieur au service,Personnel intérimaire & vacations
-"Autres revers./dotations, participations","Autres reversements et dotations"
-Construct° sol autrui - Constructions,Constructions sur sol d'autrui
-Construct° sol autrui - Installat° techniq.,Installations techniques sur sol d'autrui
-"Installat°, matériel et outillage technique","Installations, matériel et outillage"
-Concess° immobilières,Concessions immobilières
-Frais d'études,Frais d'études
+Personnel titulaire - NBI,NBI (Nouvelle Bonification Indiciaire)
 Cotisat° au CNFPT et centre gestion fonct,Cotisations CNFPT et centre de gestion
+CNFPT – Form. actifs occu,CNFPT — formation des actifs occupés
 Cotisations sociales liées à apprentissage,Cotisations sociales (apprentissage)
-Subv. de fonct. aux organismes publics,Subventions de fonctionnement aux organismes publics
-Subv. de fonct. aux pers. de droit privé,Subventions de fonctionnement (privé)
-Subv. de fonct. aux pers. droit privé,Subventions de fonctionnement (privé)
-"Autres redevances et droits, prestations","Redevances et droits divers"
 Charges de séc. sociale et de prévoyance,Charges de sécurité sociale et prévoyance
 Charges sécurité sociale et prévoyance,Charges de sécurité sociale et prévoyance
 Cotisat° ASSEDIC,Cotisations ASSEDIC
-Indemnités versées par établis., orga. ext.,Indemnités versées (extérieur)
 Versements à des organismes de format°,Versements à organismes de formation
-Versements organismes péréquat° vert.,Versements péréquation
-Reversements de fiscalité,Reversements de fiscalité
+# ─── Dotations & Provisions ───
+Dot. amort. immos incorporelles,Dotations aux amortissements (immobilisations incorporelles)
+Dot. amort. primes rembourst obligations,Dotations aux amortissements (primes de remboursement)
+Dot. prov. pour risques fonct. courant,Dotations aux provisions (risques de fonctionnement)
+Dot. prov. dépréc. actifs circulants,Dotations aux provisions (actifs circulants)
+Dot. prov. dépréc. éléments financiers,Dotations aux provisions (éléments financiers)
+Dotation départementale équip. collèges,Dotation départementale d'équipement des collèges
+Dot. soutien à l'invest des départements,Dotation de soutien à l'investissement des départements
+DGD des communes et EPCI - DGD,DGD des communes et intercommunalités
+Rep. amort. immos corpo. et incorp.,Reprises d'amortissement (immobilisations)
+Rep. prov. charges fonctionnt courant,Reprises de provisions (charges de fonctionnement)
+Rep. Prov. dépréc. éléments financiers,Reprises de provisions (éléments financiers)
+Rec... subv inv transférées cpte résult,Reprise de subventions d'investissement transférées
+Rec subv inv transférées cpte résult,Reprise de subventions d'investissement transférées
+# ─── Fiscalité (les sigles légitimes sont gardés) ───
+Attribution de compensation CVAE - Département - Région,Attribution de compensation CVAE (Département / Région)
+Attribution de compensation CVAE – Département – Région,Attribution de compensation CVAE (Département / Région)
+Attrib. compensation CVAE-Départ.-Région,Attribution de compensation CVAE (Département / Région)
+Attrib/Vers. impôt cercles et maisons jeux,Attribution / Versement impôt cercles et maisons de jeux
+Attrib/Vers. impôt cercles, maisons jeux,Attribution / Versement impôt cercles et maisons de jeux
+Compens. perte taxe add. droits enreg.,Compensation perte taxe additionnelle (droits d'enregistrement)
+Etat - Compensation CET (CVAE et CFE),Compensation État (CET — CVAE et CFE)
+État - Compensation au titre de la Contribution Économique Territoriale (CVAE et CFE),Compensation État (Contribution Économique Territoriale)
+Fraction compensatoire de la TFPB et de la taxe d’habitation sur les résidences principales,Fraction compensatoire TFPB + taxe d'habitation
+Fraction compensatoire de la CVAE,Fraction compensatoire CVAE
+"Fract° compens. TFPB, taxe rés. princi.",Fraction compensatoire TFPB + taxe d'habitation
+"Taxe dpt. pub foncière, droit dpt. enreg",Taxe départementale (publicité foncière + droits d'enregistrement)
+"Taxe dpt. additionnelle à droits d'enreg",Taxe départementale additionnelle aux droits d'enregistrement
+Taxe sur la conso. finale d'électricité,Taxe sur la consommation finale d'électricité
+Prélèv. fonds national péréquat° DMTO,Prélèvement national péréquation DMTO
+Prélèvement au titre du fonds national de         péréquation des DMTO perçus par les départements,Prélèvement national péréquation DMTO
+Autres prélèvements (fonds de péréquation fondés  sur les DMTO),Autres prélèvements (fonds de péréquation DMTO)
+Fonds péréquation ress. com. et intercom,Fonds de péréquation des ressources communales et intercommunales
+Imposition forf. sur entrep. réseaux,Imposition forfaitaire sur les entreprises de réseaux (IFER)
+Revers. prél. / jeux et paris hippiques,Reversement prélèvement (jeux et paris hippiques)
+Autres prél./revers. fisc. coll. locales,Autres prélèvements / reversements fiscaux (collectivités locales)
+"Autres restit. dégrèv./contrib. directes",Autres restitutions, dégrèvements et contributions directes
+"Revers., restitutions et prél. divers",Reversements, restitutions et prélèvements divers
+# ─── Divers & misc ───
+"Autres revers./dotations, participations",Autres reversements et dotations
+Autres redevances et droits,Autres redevances et droits
+"Autres redevances et droits, prestations",Redevances et droits divers
+Indemnités versées par établis., orga. ext.,Indemnités versées (extérieur)
 Reverst° d'excédents aux budgets annexes,Reversements aux budgets annexes
 Frais de séjour en établissemts/services,Frais de séjour en établissements
+Frais d'études,Frais d'études
+Restaur. des biens histo. et culturels,Restauration des biens historiques et culturels
+"Créances/particuliers, pers. droit privé","Créances / particuliers et personnes de droit privé"
+Prod. Immo. fin. - encaissées à échéance,Produits immobilisations financières (à échéance)
+Intérêts - rattachement des ICNE,Intérêts — rattachement des ICNE (intérêts courus non échus)
+Intérêts - Rattachement des ICNE,Intérêts — rattachement des ICNE (intérêts courus non échus)
+"Fonds affectés à l'équipement amort.",Fonds affectés à l'équipement (amortissable)
+"Fonds affectés à l'équipement non amort.",Fonds affectés à l'équipement (non amortissable)
+Fonds affectés (amortissable) -  Dotation départementale d'équipement des collèges,Dotation départementale d'équipement des collèges (fonds affectés)
+Frais de gestion de la TFPB,Frais de gestion (TFPB — taxe foncière sur les propriétés bâties)
+Fonds eurpoéens - FEDER,Fonds européens (FEDER)
+Fonds européens - FEDER,Fonds européens (FEDER)
+Subventions aux organismes publics - CCAS - Bâtiments et installations,Subventions aux organismes publics — CCAS (bâtiments)
+Autres (Dotations versées par la CNSA),Autres (dotations CNSA)

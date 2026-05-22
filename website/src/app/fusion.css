@@ -4100,6 +4100,16 @@ body:has(.theme-fusion) > div.pb-24 { padding-bottom: 0 !important; }
   margin: 0 0 20px;
   line-height: 1.5;
 }
+/* Marqueur ⓘ discret quand le libellé a été réécrit en grand public.
+ * Au hover/title, on voit le libellé d'origine (BP/CA M57). */
+.theme-fusion .fx-poste-orig-marker {
+  color: var(--muted-2);
+  font-size: .85em;
+  margin-left: 2px;
+  opacity: .55;
+  cursor: help;
+}
+
 /* Tag "projeté" à côté du nom de fonction quand le groupe vient d'une
  * répartition proportionnelle (BP voté éclaté selon les ratios historiques). */
 .theme-fusion .fx-poste-projected {
