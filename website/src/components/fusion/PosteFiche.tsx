@@ -123,7 +123,14 @@ function groupSubPostes(poste: BudgetPosteFiche): { groups: Group[]; mode: "fonc
     let rowName: string;
 
     if (mode === "fonction") {
-      key = it.fonction || "Autre";
+      // Cas "Non spécifié" (combo volatile, exclu du seed d'imputation) :
+      // on regroupe par flow_category (Personnel / Subventions / Achats…)
+      // au lieu d'un faux groupe "Non spécifié". Plus prudent et lisible.
+      if (it.fonction === "Non spécifié" && it.flow_category) {
+        key = it.flow_category;
+      } else {
+        key = it.fonction || "Autre";
+      }
       // Strip leading "Thématique: " (redondant avec le header du drawer)
       const prefix = `${poste.label}: `;
       rowName = it.name.startsWith(prefix) ? it.name.slice(prefix.length) : it.name;
