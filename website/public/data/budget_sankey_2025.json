@@ -456,8 +456,9 @@
           "value": 3880000.0
         },
         {
-          "name": "Services Généraux: Charges sécurité sociale et prévoyance",
-          "value": 3700000.0
+          "name": "Services Généraux: Charges de sécurité sociale et prévoyance",
+          "value": 3700000.0,
+          "name_original": "Services Généraux: Charges sécurité sociale et prévoyance"
         },
         {
           "name": "Services Généraux: Participations",
@@ -534,8 +535,9 @@
           "value": 60558233.0
         },
         {
-          "name": "Invest. Économie: Subventions d'équipement versées",
-          "value": 42365000.0
+          "name": "Invest. Économie: Subventions d'investissement",
+          "value": 42365000.0,
+          "name_original": "Invest. Économie: Subventions d'équipement versées"
         },
         {
           "name": "Invest. Aménagement: Subv inv rattachées aux actifs non amort",
@@ -621,7 +623,8 @@
         },
         {
           "name": "Autres: Frais d'études",
-          "value": 6536853.59
+          "value": 6536853.59,
+          "name_original": "Autres: Frais d'études"
         },
         {
           "name": "Autres: Subv. Etat : Bâtiments, installations",
@@ -665,13 +668,14 @@
           "fonction_ratio": 0.4184
         },
         {
-          "name": "Éducation: Charges intervent° cpt prop. - Subvent°",
+          "name": "Éducation: Subventions d'intervention",
           "value": 129571151.38,
           "fonction": "Hébergt resto scolaire",
           "flow_category": "Subventions (fonctionnement)",
           "fonction_confidence": "high",
           "fonction_imputed": true,
-          "fonction_ratio": 0.7987
+          "fonction_ratio": 0.7987,
+          "name_original": "Éducation: Charges intervent° cpt prop. - Subvent°"
         },
         {
           "name": "Éducation: Rémunérations du personnel",
@@ -683,22 +687,24 @@
           "fonction_ratio": 0.3489
         },
         {
-          "name": "Éducation: Charges sécurité sociale et prévoyance",
+          "name": "Éducation: Charges de sécurité sociale et prévoyance",
           "value": 60447005.309999995,
           "fonction": "Écoles primaires",
           "flow_category": "Personnel",
           "fonction_confidence": "medium",
           "fonction_imputed": true,
-          "fonction_ratio": 0.4184
+          "fonction_ratio": 0.4184,
+          "name_original": "Éducation: Charges sécurité sociale et prévoyance"
         },
         {
-          "name": "Éducation: Charges sécurité sociale et prévoyance",
+          "name": "Éducation: Charges de sécurité sociale et prévoyance",
           "value": 50406214.51,
           "fonction": "Écoles maternelles",
           "flow_category": "Personnel",
           "fonction_confidence": "medium",
           "fonction_imputed": true,
-          "fonction_ratio": 0.3489
+          "fonction_ratio": 0.3489,
+          "name_original": "Éducation: Charges sécurité sociale et prévoyance"
         },
         {
           "name": "Éducation: Rémunérations du personnel",
@@ -710,13 +716,14 @@
           "fonction_ratio": 0.1784
         },
         {
-          "name": "Éducation: Personnel extérieur au service",
+          "name": "Éducation: Personnel intérimaire & vacations",
           "value": 41880456.02,
           "fonction": "Écoles primaires",
           "flow_category": "Autres services",
           "fonction_confidence": "medium",
           "fonction_imputed": true,
-          "fonction_ratio": 0.5193
+          "fonction_ratio": 0.5193,
+          "name_original": "Éducation: Personnel extérieur au service"
         },
         {
           "name": "Invest. Éducation: Immobilisations corporelles en cours",
@@ -746,31 +753,34 @@
           "fonction_ratio": 0.4664
         },
         {
-          "name": "Éducation: Personnel extérieur au service",
+          "name": "Éducation: Personnel intérimaire & vacations",
           "value": 32130124.57,
           "fonction": "Écoles maternelles",
           "flow_category": "Autres services",
           "fonction_confidence": "medium",
           "fonction_imputed": true,
-          "fonction_ratio": 0.3984
+          "fonction_ratio": 0.3984,
+          "name_original": "Éducation: Personnel extérieur au service"
         },
         {
-          "name": "Éducation: Charges intervent° cpt prop. - Subvent°",
+          "name": "Éducation: Subventions d'intervention",
           "value": 26524205.89,
           "fonction": "Enseignement supérieur",
           "flow_category": "Subventions (fonctionnement)",
           "fonction_confidence": "high",
           "fonction_imputed": true,
-          "fonction_ratio": 0.1635
+          "fonction_ratio": 0.1635,
+          "name_original": "Éducation: Charges intervent° cpt prop. - Subvent°"
         },
         {
-          "name": "Éducation: Charges sécurité sociale et prévoyance",
+          "name": "Éducation: Charges de sécurité sociale et prévoyance",
           "value": 20283842.14,
           "fonction": "Services communs",
           "flow_category": "Personnel",
           "fonction_confidence": "medium",
           "fonction_imputed": true,
-          "fonction_ratio": 0.1784
+          "fonction_ratio": 0.1784,
+          "name_original": "Éducation: Charges sécurité sociale et prévoyance"
         },
         {
           "name": "Éducation: Rémunérations du personnel",
@@ -827,13 +837,14 @@
           "fonction_ratio": 0.0289
         },
         {
-          "name": "Éducation: Charges sécurité sociale et prévoyance",
+          "name": "Éducation: Charges de sécurité sociale et prévoyance",
           "value": 8711650.150000004,
           "fonction": "Collèges",
           "flow_category": "Personnel",
           "fonction_confidence": "medium",
           "fonction_imputed": true,
-          "fonction_ratio": 0.0603
+          "fonction_ratio": 0.0603,
+          "name_original": "Éducation: Charges sécurité sociale et prévoyance"
         },
         {
           "name": "Invest. Éducation: Immobilisations corporelles en cours",
@@ -845,13 +856,14 @@
           "fonction_ratio": 0.1071
         },
         {
-          "name": "Invest. Éducation: Subventions d'équipement versées",
+          "name": "Invest. Éducation: Subventions d'investissement",
           "value": 7751950.0,
           "fonction": "Enseignement supérieur",
           "flow_category": "Subventions (investissement)",
           "fonction_confidence": "high",
           "fonction_imputed": true,
-          "fonction_ratio": 0.787
+          "fonction_ratio": 0.787,
+          "name_original": "Invest. Éducation: Subventions d'équipement versées"
         },
         {
           "name": "Invest. Éducation: Immobilisations corporelles en cours",
@@ -863,13 +875,14 @@
           "fonction_ratio": 0.0844
         },
         {
-          "name": "Éducation: Charges intervent° cpt prop. - Subvent°",
+          "name": "Éducation: Subventions d'intervention",
           "value": 6132201.730000008,
           "fonction": "Lycées publics",
           "flow_category": "Subventions (fonctionnement)",
           "fonction_confidence": "high",
           "fonction_imputed": true,
-          "fonction_ratio": 0.0378
+          "fonction_ratio": 0.0378,
+          "name_original": "Éducation: Charges intervent° cpt prop. - Subvent°"
         },
         {
           "name": "Éducation: Achats d'études, prestations de services",
@@ -899,13 +912,14 @@
           "fonction_ratio": 0.3952
         },
         {
-          "name": "Éducation: Charges sécurité sociale et prévoyance",
+          "name": "Éducation: Charges de sécurité sociale et prévoyance",
           "value": 4175235.31,
           "fonction": "Apprentissage",
           "flow_category": "Personnel",
           "fonction_confidence": "medium",
           "fonction_imputed": true,
-          "fonction_ratio": 0.0289
+          "fonction_ratio": 0.0289,
+          "name_original": "Éducation: Charges sécurité sociale et prévoyance"
         },
         {
           "name": "Éducation: Impôts, taxes, versements (autre orga.)",
@@ -917,13 +931,14 @@
           "fonction_ratio": 0.3267
         },
         {
-          "name": "Éducation: Personnel extérieur au service",
+          "name": "Éducation: Personnel intérimaire & vacations",
           "value": 3556572.5300000003,
           "fonction": "Classes regroupées",
           "flow_category": "Autres services",
           "fonction_confidence": "medium",
           "fonction_imputed": true,
-          "fonction_ratio": 0.0441
+          "fonction_ratio": 0.0441,
+          "name_original": "Éducation: Personnel extérieur au service"
         },
         {
           "name": "Éducation: Contrats de prestations de services",
@@ -944,13 +959,14 @@
           "fonction_ratio": 0.2781
         },
         {
-          "name": "Éducation: Personnel extérieur au service",
+          "name": "Éducation: Personnel intérimaire & vacations",
           "value": 3080749.880000001,
           "fonction": "Cités scolaires",
           "flow_category": "Autres services",
           "fonction_confidence": "medium",
           "fonction_imputed": true,
-          "fonction_ratio": 0.0382
+          "fonction_ratio": 0.0382,
+          "name_original": "Éducation: Personnel extérieur au service"
         },
         {
           "name": "Éducation: Autres charges de personnel",
@@ -971,13 +987,14 @@
           "fonction_ratio": 0.3489
         },
         {
-          "name": "Invest. Éducation: Subventions d'équipement versées",
+          "name": "Invest. Éducation: Subventions d'investissement",
           "value": 2098050.0,
           "fonction": "Collèges",
           "flow_category": "Subventions (investissement)",
           "fonction_confidence": "high",
           "fonction_imputed": true,
-          "fonction_ratio": 0.213
+          "fonction_ratio": 0.213,
+          "name_original": "Invest. Éducation: Subventions d'équipement versées"
         },
         {
           "name": "Éducation: Entretien et réparations",
@@ -1108,22 +1125,24 @@
       ],
       "Culture & Sport": [
         {
-          "name": "Culture & Sport: Charges intervent° cpt prop.",
+          "name": "Culture & Sport: Charges d'intervention",
           "value": 70815089.39,
           "fonction": "Théâtre spectable vivant",
           "flow_category": "Subventions (fonctionnement)",
           "fonction_confidence": "medium",
           "fonction_imputed": true,
-          "fonction_ratio": 0.4397
+          "fonction_ratio": 0.4397,
+          "name_original": "Culture & Sport: Charges intervent° cpt prop."
         },
         {
-          "name": "Culture & Sport: Charges intervent° cpt prop.",
+          "name": "Culture & Sport: Charges d'intervention",
           "value": 55305666.82,
           "fonction": "Musées",
           "flow_category": "Subventions (fonctionnement)",
           "fonction_confidence": "medium",
           "fonction_imputed": true,
-          "fonction_ratio": 0.3434
+          "fonction_ratio": 0.3434,
+          "name_original": "Culture & Sport: Charges intervent° cpt prop."
         },
         {
           "name": "Culture & Sport: Rémunérations du personnel",
@@ -1216,13 +1235,14 @@
           "fonction_ratio": 0.3798
         },
         {
-          "name": "Culture & Sport: Charges intervent° cpt prop.",
+          "name": "Culture & Sport: Charges d'intervention",
           "value": 13528468.299999999,
           "fonction": "Manifestations sportives",
           "flow_category": "Subventions (fonctionnement)",
           "fonction_confidence": "medium",
           "fonction_imputed": true,
-          "fonction_ratio": 0.084
+          "fonction_ratio": 0.084,
+          "name_original": "Culture & Sport: Charges intervent° cpt prop."
         },
         {
           "name": "Invest. Culture: Immobilisations corporelles en cours",
@@ -1234,13 +1254,14 @@
           "fonction_ratio": 0.3197
         },
         {
-          "name": "Culture & Sport: Charges intervent° cpt prop.",
+          "name": "Culture & Sport: Charges d'intervention",
           "value": 12996992.76,
           "fonction": "Activité art action manif",
           "flow_category": "Subventions (fonctionnement)",
           "fonction_confidence": "medium",
           "fonction_imputed": true,
-          "fonction_ratio": 0.0807
+          "fonction_ratio": 0.0807,
+          "name_original": "Culture & Sport: Charges intervent° cpt prop."
         },
         {
           "name": "Invest. Culture: Immobilisations corporelles",
@@ -1279,22 +1300,24 @@
           "fonction_ratio": 0.3197
         },
         {
-          "name": "Culture & Sport: Personnel extérieur au service",
+          "name": "Culture & Sport: Personnel intérimaire & vacations",
           "value": 8585638.71,
           "fonction": "Activité art action manif",
           "flow_category": "Autres services",
           "fonction_confidence": "medium",
           "fonction_imputed": true,
-          "fonction_ratio": 0.5635
+          "fonction_ratio": 0.5635,
+          "name_original": "Culture & Sport: Personnel extérieur au service"
         },
         {
-          "name": "Culture & Sport: Charges sécurité sociale et prévoyance",
+          "name": "Culture & Sport: Charges de sécurité sociale et prévoyance",
           "value": 7953072.0,
           "fonction": "Salles de sport, gymnases",
           "flow_category": "Personnel",
           "fonction_confidence": "medium",
           "fonction_imputed": true,
-          "fonction_ratio": 0.1979
+          "fonction_ratio": 0.1979,
+          "name_original": "Culture & Sport: Charges sécurité sociale et prévoyance"
         },
         {
           "name": "Culture & Sport: Charges sécurité sociale et",
@@ -1306,22 +1329,24 @@
           "fonction_ratio": 0.1532
         },
         {
-          "name": "Culture & Sport: Charges intervent° cpt prop.",
+          "name": "Culture & Sport: Charges d'intervention",
           "value": 7923817.15,
           "fonction": "Activités artistiques,act",
           "flow_category": "Subventions (fonctionnement)",
           "fonction_confidence": "medium",
           "fonction_imputed": true,
-          "fonction_ratio": 0.0492
+          "fonction_ratio": 0.0492,
+          "name_original": "Culture & Sport: Charges intervent° cpt prop."
         },
         {
-          "name": "Invest. Culture: Subventions d'équipement",
+          "name": "Invest. Culture: Subventions d'investissement",
           "value": 7517144.42,
           "fonction": "Musées",
           "flow_category": "Subventions (investissement)",
           "fonction_confidence": "medium",
           "fonction_imputed": true,
-          "fonction_ratio": 0.5443
+          "fonction_ratio": 0.5443,
+          "name_original": "Invest. Culture: Subventions d'équipement"
         },
         {
           "name": "Culture & Sport: Charges sécurité sociale et",
@@ -1342,13 +1367,14 @@
           "fonction_ratio": 0.1775
         },
         {
-          "name": "Culture & Sport: Charges intervent° cpt prop. - Subvent°",
+          "name": "Culture & Sport: Subventions d'intervention",
           "value": 7140024.48,
           "fonction": "Théâtre spectable vivant",
           "flow_category": "Subventions (fonctionnement)",
           "fonction_confidence": "medium",
           "fonction_imputed": true,
-          "fonction_ratio": 0.4397
+          "fonction_ratio": 0.4397,
+          "name_original": "Culture & Sport: Charges intervent° cpt prop. - Subvent°"
         },
         {
           "name": "Invest. Culture: Immobilisations corporelles",
@@ -1378,22 +1404,24 @@
           "fonction_ratio": 0.1223
         },
         {
-          "name": "Invest. Culture: Subventions d'équipement",
+          "name": "Invest. Culture: Subventions d'investissement",
           "value": 6293519.58,
           "fonction": "Manifestations sportives",
           "flow_category": "Subventions (investissement)",
           "fonction_confidence": "medium",
           "fonction_imputed": true,
-          "fonction_ratio": 0.4557
+          "fonction_ratio": 0.4557,
+          "name_original": "Invest. Culture: Subventions d'équipement"
         },
         {
-          "name": "Culture & Sport: Charges sécurité sociale et prévoyance",
+          "name": "Culture & Sport: Charges de sécurité sociale et prévoyance",
           "value": 6156698.49,
           "fonction": "Activité art action manif",
           "flow_category": "Personnel",
           "fonction_confidence": "medium",
           "fonction_imputed": true,
-          "fonction_ratio": 0.1532
+          "fonction_ratio": 0.1532,
+          "name_original": "Culture & Sport: Charges sécurité sociale et prévoyance"
         },
         {
           "name": "Culture & Sport: Achats d'études, prestations de services",
@@ -1414,13 +1442,14 @@
           "fonction_ratio": 0.1384
         },
         {
-          "name": "Culture & Sport: Charges sécurité sociale et prévoyance",
+          "name": "Culture & Sport: Charges de sécurité sociale et prévoyance",
           "value": 5774918.880000001,
           "fonction": "Services communs",
           "flow_category": "Personnel",
           "fonction_confidence": "medium",
           "fonction_imputed": true,
-          "fonction_ratio": 0.1784
+          "fonction_ratio": 0.1784,
+          "name_original": "Culture & Sport: Charges sécurité sociale et prévoyance"
         },
         {
           "name": "Culture & Sport: Achats d'études, prestations de services",
@@ -1441,13 +1470,14 @@
           "fonction_ratio": 0.1089
         },
         {
-          "name": "Culture & Sport: Charges intervent° cpt prop. - Subvent°",
+          "name": "Culture & Sport: Subventions d'intervention",
           "value": 5576266.56,
           "fonction": "Musées",
           "flow_category": "Subventions (fonctionnement)",
           "fonction_confidence": "medium",
           "fonction_imputed": true,
-          "fonction_ratio": 0.3434
+          "fonction_ratio": 0.3434,
+          "name_original": "Culture & Sport: Charges intervent° cpt prop. - Subvent°"
         },
         {
           "name": "Invest. Culture: Immobilisations corporelles en cours",
@@ -1495,13 +1525,14 @@
           "fonction_ratio": 0.0999
         },
         {
-          "name": "Culture & Sport: Charges sécurité sociale et prévoyance",
+          "name": "Culture & Sport: Charges de sécurité sociale et prévoyance",
           "value": 4914910.09,
           "fonction": "Autres actions vie social",
           "flow_category": "Personnel",
           "fonction_confidence": "medium",
           "fonction_imputed": true,
-          "fonction_ratio": 0.1223
+          "fonction_ratio": 0.1223,
+          "name_original": "Culture & Sport: Charges sécurité sociale et prévoyance"
         },
         {
           "name": "Invest. Culture: Immobilisations incorporelles en cours",
@@ -1513,13 +1544,14 @@
           "fonction_ratio": 0.1775
         },
         {
-          "name": "Culture & Sport: Charges sécurité sociale et prévoyance",
+          "name": "Culture & Sport: Charges de sécurité sociale et prévoyance",
           "value": 4376399.9,
           "fonction": "Piscines",
           "flow_category": "Personnel",
           "fonction_confidence": "medium",
           "fonction_imputed": true,
-          "fonction_ratio": 0.1089
+          "fonction_ratio": 0.1089,
+          "name_original": "Culture & Sport: Charges sécurité sociale et prévoyance"
         },
         {
           "name": "Culture & Sport: Impôts, taxes, versements (autre",
@@ -1547,24 +1579,26 @@
           "fonction_ratio": 0.499
         },
         {
-          "name": "Culture & Sport: Charges sécurité sociale et prévoyance",
+          "name": "Culture & Sport: Charges de sécurité sociale et prévoyance",
           "value": 4143313.4199999995,
           "fonction": "Bibliothèque, médiathèque",
           "flow_category": "Personnel",
           "fonction_confidence": "medium",
           "fonction_imputed": true,
-          "fonction_ratio": 0.1031
+          "fonction_ratio": 0.1031,
+          "name_original": "Culture & Sport: Charges sécurité sociale et prévoyance"
         }
       ],
       "Aménagement & Logement": [
         {
-          "name": "Invest. Aménagement: Subventions d'équipement versées",
+          "name": "Invest. Aménagement: Subventions d'investissement",
           "value": 229419440.66,
           "fonction": "Logement social",
           "flow_category": "Subventions (investissement)",
           "fonction_confidence": "high",
           "fonction_imputed": true,
-          "fonction_ratio": 0.9168
+          "fonction_ratio": 0.9168,
+          "name_original": "Invest. Aménagement: Subventions d'équipement versées"
         },
         {
           "name": "Invest. Aménagement: Terrains",
@@ -1648,13 +1682,14 @@
           "fonction_ratio": 1.0
         },
         {
-          "name": "Aménagement: Charges sécurité sociale et prévoyance",
+          "name": "Aménagement: Charges de sécurité sociale et prévoyance",
           "value": 30901055.590000004,
           "fonction": "Espaces verts urbains",
           "flow_category": "Personnel",
           "fonction_confidence": "medium",
           "fonction_imputed": true,
-          "fonction_ratio": 0.6586
+          "fonction_ratio": 0.6586,
+          "name_original": "Aménagement: Charges sécurité sociale et prévoyance"
         },
         {
           "name": "Invest. Aménagement: Immobilisations corporelles en cours",
@@ -1684,13 +1719,14 @@
           "fonction_ratio": 0.7447
         },
         {
-          "name": "Invest. Aménagement: Subventions d'équipement versées",
+          "name": "Invest. Aménagement: Subventions d'investissement",
           "value": 18868047.36,
           "fonction": "Aide au secteur locatif",
           "flow_category": "Subventions (investissement)",
           "fonction_confidence": "high",
           "fonction_imputed": true,
-          "fonction_ratio": 0.0754
+          "fonction_ratio": 0.0754,
+          "name_original": "Invest. Aménagement: Subventions d'équipement versées"
         },
         {
           "name": "Invest. Aménagement: Agencements et aménagements de terrains",
@@ -1738,22 +1774,24 @@
           "fonction_ratio": 0.5362
         },
         {
-          "name": "Invest. Administration: Installat°, matériel, outillage techniq.",
+          "name": "Invest. Administration: Installations, matériel et outillage",
           "value": 13910952.0,
           "fonction": "Adm générale collectivité",
           "flow_category": "Immobilisations corporelles",
           "fonction_confidence": "high",
           "fonction_imputed": true,
-          "fonction_ratio": 0.7337
+          "fonction_ratio": 0.7337,
+          "name_original": "Invest. Administration: Installat°, matériel, outillage techniq."
         },
         {
-          "name": "Aménagement: Charges sécurité sociale et prévoyance",
+          "name": "Aménagement: Charges de sécurité sociale et prévoyance",
           "value": 13836503.629999999,
           "fonction": "Services communs",
           "flow_category": "Personnel",
           "fonction_confidence": "medium",
           "fonction_imputed": true,
-          "fonction_ratio": 0.1784
+          "fonction_ratio": 0.1784,
+          "name_original": "Aménagement: Charges sécurité sociale et prévoyance"
         },
         {
           "name": "Invest. Aménagement: Terrains",
@@ -1792,13 +1830,14 @@
           "fonction_ratio": 0.0675
         },
         {
-          "name": "Aménagement: Charges intervent° cpt prop. - Subvent°",
+          "name": "Aménagement: Subventions d'intervention",
           "value": 9935662.8,
           "fonction": "Autres actions d’aménagem",
           "flow_category": "Subventions (fonctionnement)",
           "fonction_confidence": "medium",
           "fonction_imputed": true,
-          "fonction_ratio": 0.621
+          "fonction_ratio": 0.621,
+          "name_original": "Aménagement: Charges intervent° cpt prop. - Subvent°"
         },
         {
           "name": "Invest. Administration: Autres immobilisations corporelles",
@@ -1819,13 +1858,14 @@
           "fonction_ratio": 1.0
         },
         {
-          "name": "Aménagement: Charges intervent° cpt prop. - Subvent°",
+          "name": "Aménagement: Subventions d'intervention",
           "value": 6063794.199999999,
           "fonction": "Politique de la ville",
           "flow_category": "Subventions (fonctionnement)",
           "fonction_confidence": "medium",
           "fonction_imputed": true,
-          "fonction_ratio": 0.379
+          "fonction_ratio": 0.379,
+          "name_original": "Aménagement: Charges intervent° cpt prop. - Subvent°"
         },
         {
           "name": "Aménagement: Divers",
@@ -1835,13 +1875,14 @@
           "fonction_confidence": "unknown"
         },
         {
-          "name": "Invest. Administration: Installat°, matériel, outillage techniq.",
+          "name": "Invest. Administration: Installations, matériel et outillage",
           "value": 5049048.0,
           "fonction": "Autres instances",
           "flow_category": "Immobilisations corporelles",
           "fonction_confidence": "high",
           "fonction_imputed": true,
-          "fonction_ratio": 0.2663
+          "fonction_ratio": 0.2663,
+          "name_original": "Invest. Administration: Installat°, matériel, outillage techniq."
         },
         {
           "name": "Invest. Aménagement: Immobilisations corporelles en cours",
@@ -1979,13 +2020,14 @@
           "fonction_ratio": 0.4638
         },
         {
-          "name": "Invest. Administration: Subventions d'équipement versées",
+          "name": "Invest. Administration: Subventions d'investissement",
           "value": 2578500.0,
           "fonction": "Autres instances",
           "flow_category": "Subventions (investissement)",
           "fonction_confidence": "high",
           "fonction_imputed": true,
-          "fonction_ratio": 1.0
+          "fonction_ratio": 1.0,
+          "name_original": "Invest. Administration: Subventions d'équipement versées"
         },
         {
           "name": "Invest. Aménagement: Immobilisations corporelles en cours",
@@ -2008,22 +2050,24 @@
       ],
       "Action Sociale": [
         {
-          "name": "Action Sociale: Charges intervent° cpt prop. - Subvent°",
+          "name": "Action Sociale: Subventions d'intervention",
           "value": 446703063.47999996,
           "fonction": "Autre intervention social",
           "flow_category": "Subventions (fonctionnement)",
           "fonction_confidence": "high",
           "fonction_imputed": true,
-          "fonction_ratio": 0.836
+          "fonction_ratio": 0.836,
+          "name_original": "Action Sociale: Charges intervent° cpt prop. - Subvent°"
         },
         {
-          "name": "RSA: Charges interv. cpt propre - Aides pers.",
+          "name": "RSA: Aides aux personnes",
           "value": 421017400.0,
           "fonction": "RSA allocations",
           "flow_category": "Transferts sociaux",
           "fonction_confidence": "high",
           "fonction_imputed": true,
-          "fonction_ratio": 1.0
+          "fonction_ratio": 1.0,
+          "name_original": "RSA: Charges interv. cpt propre - Aides pers."
         },
         {
           "name": "Action Sociale: Frais de séjour, héberg., inhumation",
@@ -2053,31 +2097,34 @@
           "fonction_ratio": 0.3698
         },
         {
-          "name": "APA: Charges interv. cpt propre - Aides pers.",
+          "name": "APA: Aides aux personnes",
           "value": 91370491.3,
           "fonction": "APA à domicile",
           "flow_category": "Transferts sociaux",
           "fonction_confidence": "medium",
           "fonction_imputed": true,
-          "fonction_ratio": 0.6487
+          "fonction_ratio": 0.6487,
+          "name_original": "APA: Charges interv. cpt propre - Aides pers."
         },
         {
-          "name": "Action Sociale: Charges sécurité sociale et prévoyance",
+          "name": "Action Sociale: Charges de sécurité sociale et prévoyance",
           "value": 90817039.03999998,
           "fonction": "Crèches et garderies",
           "flow_category": "Personnel",
           "fonction_confidence": "medium",
           "fonction_imputed": true,
-          "fonction_ratio": 0.6353
+          "fonction_ratio": 0.6353,
+          "name_original": "Action Sociale: Charges sécurité sociale et prévoyance"
         },
         {
-          "name": "Action Sociale: Charges intervent° cpt prop. - Subvent°",
+          "name": "Action Sociale: Subventions d'intervention",
           "value": 69570261.80999999,
           "fonction": "Crèches et garderies",
           "flow_category": "Subventions (fonctionnement)",
           "fonction_confidence": "high",
           "fonction_imputed": true,
-          "fonction_ratio": 0.1302
+          "fonction_ratio": 0.1302,
+          "name_original": "Action Sociale: Charges intervent° cpt prop. - Subvent°"
         },
         {
           "name": "Action Sociale: Frais de séjour, héberg., inhumation",
@@ -2098,13 +2145,14 @@
           "fonction_ratio": 0.1524
         },
         {
-          "name": "Action Sociale: Charges interv. cpt propre - Aides pers.",
+          "name": "Action Sociale: Aides aux personnes",
           "value": 60409935.54000001,
           "fonction": "Aide sociale à l'enfance",
           "flow_category": "Transferts sociaux",
           "fonction_confidence": "medium",
           "fonction_imputed": true,
-          "fonction_ratio": 0.4708
+          "fonction_ratio": 0.4708,
+          "name_original": "Action Sociale: Charges interv. cpt propre - Aides pers."
         },
         {
           "name": "Action Sociale: Contrats de prestations de services",
@@ -2116,13 +2164,14 @@
           "fonction_ratio": 0.8595
         },
         {
-          "name": "Action Sociale: Charges interv. cpt propre - Aides pers.",
+          "name": "Action Sociale: Aides aux personnes",
           "value": 47450284.96000001,
           "fonction": "Personnes handicapées",
           "flow_category": "Transferts sociaux",
           "fonction_confidence": "medium",
           "fonction_imputed": true,
-          "fonction_ratio": 0.3698
+          "fonction_ratio": 0.3698,
+          "name_original": "Action Sociale: Charges interv. cpt propre - Aides pers."
         },
         {
           "name": "Action Sociale: Rémunérations du personnel",
@@ -2161,31 +2210,34 @@
           "fonction_ratio": 0.3891
         },
         {
-          "name": "APA: Charges interv. cpt propre - Aides pers.",
+          "name": "APA: Aides aux personnes",
           "value": 25973051.64,
           "fonction": "APA versé établissemnt",
           "flow_category": "Transferts sociaux",
           "fonction_confidence": "medium",
           "fonction_imputed": true,
-          "fonction_ratio": 0.1844
+          "fonction_ratio": 0.1844,
+          "name_original": "APA: Charges interv. cpt propre - Aides pers."
         },
         {
-          "name": "APA: Charges interv. cpt propre - Aides pers.",
+          "name": "APA: Aides aux personnes",
           "value": 23508147.06,
           "fonction": "APA versé bénéf établisem",
           "flow_category": "Transferts sociaux",
           "fonction_confidence": "medium",
           "fonction_imputed": true,
-          "fonction_ratio": 0.1669
+          "fonction_ratio": 0.1669,
+          "name_original": "APA: Charges interv. cpt propre - Aides pers."
         },
         {
-          "name": "Action Sociale: Charges sécurité sociale et prévoyance",
+          "name": "Action Sociale: Charges de sécurité sociale et prévoyance",
           "value": 21785796.860000003,
           "fonction": "Aide sociale à l'enfance",
           "flow_category": "Personnel",
           "fonction_confidence": "medium",
           "fonction_imputed": true,
-          "fonction_ratio": 0.1524
+          "fonction_ratio": 0.1524,
+          "name_original": "Action Sociale: Charges sécurité sociale et prévoyance"
         },
         {
           "name": "Action Sociale: Participations",
@@ -2197,13 +2249,14 @@
           "fonction_ratio": 0.2982
         },
         {
-          "name": "Action Sociale: Charges intervent° cpt prop. - Subvent°",
+          "name": "Action Sociale: Subventions d'intervention",
           "value": 18060482.71000001,
           "fonction": "Personnes en difficulté",
           "flow_category": "Subventions (fonctionnement)",
           "fonction_confidence": "high",
           "fonction_imputed": true,
-          "fonction_ratio": 0.0338
+          "fonction_ratio": 0.0338,
+          "name_original": "Action Sociale: Charges intervent° cpt prop. - Subvent°"
         },
         {
           "name": "Action Sociale: Rémunérations du personnel",
@@ -2215,13 +2268,14 @@
           "fonction_ratio": 0.0405
         },
         {
-          "name": "Action Sociale: Charges interv. cpt propre - Aides pers.",
+          "name": "Action Sociale: Aides aux personnes",
           "value": 14743206.45,
           "fonction": "Autre action en faveur",
           "flow_category": "Transferts sociaux",
           "fonction_confidence": "medium",
           "fonction_imputed": true,
-          "fonction_ratio": 0.1149
+          "fonction_ratio": 0.1149,
+          "name_original": "Action Sociale: Charges interv. cpt propre - Aides pers."
         },
         {
           "name": "RSA: Participations",
@@ -2242,13 +2296,14 @@
           "fonction_ratio": 0.2046
         },
         {
-          "name": "Action Sociale: Charges sécurité sociale et prévoyance",
+          "name": "Action Sociale: Charges de sécurité sociale et prévoyance",
           "value": 13237301.770000001,
           "fonction": "Services communs",
           "flow_category": "Personnel",
           "fonction_confidence": "medium",
           "fonction_imputed": true,
-          "fonction_ratio": 0.1784
+          "fonction_ratio": 0.1784,
+          "name_original": "Action Sociale: Charges sécurité sociale et prévoyance"
         },
         {
           "name": "Action Sociale: Rémunérations du personnel",
@@ -2260,13 +2315,14 @@
           "fonction_ratio": 0.0314
         },
         {
-          "name": "RSA: Charges intervent° cpt prop. - Subvent°",
+          "name": "RSA: Subventions d'intervention",
           "value": 12914176.0,
           "fonction": "Insertion professionnelle",
           "flow_category": "Subventions (fonctionnement)",
           "fonction_confidence": "high",
           "fonction_imputed": true,
-          "fonction_ratio": 1.0
+          "fonction_ratio": 1.0,
+          "name_original": "RSA: Charges intervent° cpt prop. - Subvent°"
         },
         {
           "name": "Action Sociale: Contributions obligatoires",
@@ -2321,13 +2377,14 @@
           "fonction_ratio": 1.0
         },
         {
-          "name": "Invest. Social: Subventions d'équipement versées",
+          "name": "Invest. Social: Subventions d'investissement",
           "value": 9921840.0,
           "fonction": "Crèches et garderies",
           "flow_category": "Subventions (investissement)",
           "fonction_confidence": "high",
           "fonction_imputed": true,
-          "fonction_ratio": 1.0
+          "fonction_ratio": 1.0,
+          "name_original": "Invest. Social: Subventions d'équipement versées"
         },
         {
           "name": "Action Sociale: Contributions obligatoires",
@@ -2391,22 +2448,24 @@
           "fonction_confidence": "unknown"
         },
         {
-          "name": "Action Sociale: Charges sécurité sociale et prévoyance",
+          "name": "Action Sociale: Charges de sécurité sociale et prévoyance",
           "value": 5789532.63,
           "fonction": "PMI et planif familiale",
           "flow_category": "Personnel",
           "fonction_confidence": "medium",
           "fonction_imputed": true,
-          "fonction_ratio": 0.0405
+          "fonction_ratio": 0.0405,
+          "name_original": "Action Sociale: Charges sécurité sociale et prévoyance"
         },
         {
-          "name": "Action Sociale: Charges interv. cpt propre - Aides pers.",
+          "name": "Action Sociale: Aides aux personnes",
           "value": 5709945.049999982,
           "fonction": "Autre intervention social",
           "flow_category": "Transferts sociaux",
           "fonction_confidence": "medium",
           "fonction_imputed": true,
-          "fonction_ratio": 0.0444
+          "fonction_ratio": 0.0444,
+          "name_original": "Action Sociale: Charges interv. cpt propre - Aides pers."
         },
         {
           "name": "Invest. Social: Immobilisations incorporelles en cours",
@@ -2418,13 +2477,14 @@
           "fonction_ratio": 0.7471
         },
         {
-          "name": "Action Sociale: Charges sécurité sociale et prévoyance",
+          "name": "Action Sociale: Charges de sécurité sociale et prévoyance",
           "value": 4488674.69,
           "fonction": "Autr action petite enfanc",
           "flow_category": "Personnel",
           "fonction_confidence": "medium",
           "fonction_imputed": true,
-          "fonction_ratio": 0.0314
+          "fonction_ratio": 0.0314,
+          "name_original": "Action Sociale: Charges sécurité sociale et prévoyance"
         },
         {
           "name": "Action Sociale: Rémunérations intermédiaires, honoraires",
@@ -2434,13 +2494,14 @@
           "fonction_confidence": "unknown"
         },
         {
-          "name": "Action Sociale: Charges sécurité sociale et prévoyance",
+          "name": "Action Sociale: Charges de sécurité sociale et prévoyance",
           "value": 4074115.5599999996,
           "fonction": "Prév et éducation santé",
           "flow_category": "Personnel",
           "fonction_confidence": "medium",
           "fonction_imputed": true,
-          "fonction_ratio": 0.0285
+          "fonction_ratio": 0.0285,
+          "name_original": "Action Sociale: Charges sécurité sociale et prévoyance"
         },
         {
           "name": "Action Sociale: Autres charges de personnel",
@@ -2463,13 +2524,14 @@
           "fonction_ratio": 1.0
         },
         {
-          "name": "Charges Fiscales: Prélèv. fonds national péréquat° DMTO",
+          "name": "Charges Fiscales: Prélèvement national péréquation DMTO",
           "value": 214185271.0,
           "fonction": "Opérations non ventilable",
           "flow_category": "Reversements péréquation",
           "fonction_confidence": "high",
           "fonction_imputed": true,
-          "fonction_ratio": 1.0
+          "fonction_ratio": 1.0,
+          "name_original": "Charges Fiscales: Prélèv. fonds national péréquat° DMTO"
         },
         {
           "name": "Administration: Rémunérations du personnel",
@@ -2508,13 +2570,14 @@
           "fonction_ratio": 1.0
         },
         {
-          "name": "Administration: Charges sécurité sociale et prévoyance",
+          "name": "Administration: Charges de sécurité sociale et prévoyance",
           "value": 72164020.52,
           "fonction": "Adm générale collectivité",
           "flow_category": "Personnel",
           "fonction_confidence": "medium",
           "fonction_imputed": true,
-          "fonction_ratio": 0.6986
+          "fonction_ratio": 0.6986,
+          "name_original": "Administration: Charges sécurité sociale et prévoyance"
         },
         {
           "name": "Administration: Locations",
@@ -2562,13 +2625,14 @@
           "fonction_ratio": 0.9864
         },
         {
-          "name": "Administration: Charges intervent° cpt prop. - Subvent°",
+          "name": "Administration: Subventions d'intervention",
           "value": 25800876.39,
           "fonction": "Adm générale collectivité",
           "flow_category": "Subventions (fonctionnement)",
           "fonction_confidence": "high",
           "fonction_imputed": true,
-          "fonction_ratio": 0.9531
+          "fonction_ratio": 0.9531,
+          "name_original": "Administration: Charges intervent° cpt prop. - Subvent°"
         },
         {
           "name": "Administration: Rémunérations du personnel",
@@ -2598,13 +2662,14 @@
           "fonction_ratio": 0.5111
         },
         {
-          "name": "Administration: Charges sécurité sociale et prévoyance",
+          "name": "Administration: Charges de sécurité sociale et prévoyance",
           "value": 16186805.07,
           "fonction": "Personnel non ventilé",
           "flow_category": "Personnel",
           "fonction_confidence": "medium",
           "fonction_imputed": true,
-          "fonction_ratio": 0.1567
+          "fonction_ratio": 0.1567,
+          "name_original": "Administration: Charges sécurité sociale et prévoyance"
         },
         {
           "name": "Administration: Rémunérations du personnel",
@@ -2670,13 +2735,14 @@
           "fonction_ratio": 0.2699
         },
         {
-          "name": "Administration: Personnel extérieur au service",
+          "name": "Administration: Personnel intérimaire & vacations",
           "value": 9220191.780000001,
           "fonction": "Adm générale collectivité",
           "flow_category": "Autres services",
           "fonction_confidence": "high",
           "fonction_imputed": true,
-          "fonction_ratio": 0.8742
+          "fonction_ratio": 0.8742,
+          "name_original": "Administration: Personnel extérieur au service"
         },
         {
           "name": "Administration: Indemnités",
@@ -2715,13 +2781,14 @@
           "fonction_ratio": 0.8742
         },
         {
-          "name": "Administration: Charges sécurité sociale et prévoyance",
+          "name": "Administration: Charges de sécurité sociale et prévoyance",
           "value": 7013937.879999999,
           "fonction": "Assemblée délibérante",
           "flow_category": "Personnel",
           "fonction_confidence": "medium",
           "fonction_imputed": true,
-          "fonction_ratio": 0.0679
+          "fonction_ratio": 0.0679,
+          "name_original": "Administration: Charges sécurité sociale et prévoyance"
         },
         {
           "name": "Administration: Transports biens, transports collectifs",
@@ -2751,13 +2818,14 @@
           "fonction_ratio": 0.5111
         },
         {
-          "name": "Administration: Charges sécurité sociale et prévoyance",
+          "name": "Administration: Charges de sécurité sociale et prévoyance",
           "value": 5402488.2299999995,
           "fonction": "Cimetière pompe funèbre",
           "flow_category": "Personnel",
           "fonction_confidence": "medium",
           "fonction_imputed": true,
-          "fonction_ratio": 0.0523
+          "fonction_ratio": 0.0523,
+          "name_original": "Administration: Charges sécurité sociale et prévoyance"
         },
         {
           "name": "Reversements Fiscaux: Autres restit. dégrèv./contrib. directes",
@@ -2886,13 +2954,14 @@
           "fonction_ratio": 0.2699
         },
         {
-          "name": "Administration: Charges sécurité sociale et prévoyance",
+          "name": "Administration: Charges de sécurité sociale et prévoyance",
           "value": 2220908.17,
           "fonction": "Admin général Etat",
           "flow_category": "Personnel",
           "fonction_confidence": "medium",
           "fonction_imputed": true,
-          "fonction_ratio": 0.0215
+          "fonction_ratio": 0.0215,
+          "name_original": "Administration: Charges sécurité sociale et prévoyance"
         },
         {
           "name": "Administration: Primes d'assurances",
@@ -2906,22 +2975,24 @@
       ],
       "Économie": [
         {
-          "name": "Subventions Équipement: Autres revers./dotations, participations",
+          "name": "Subventions Équipement: Autres reversements et dotations",
           "value": 20635000.0,
           "fonction": "Opérations non ventilable",
           "flow_category": "Dotations et participations",
           "fonction_confidence": "high",
           "fonction_imputed": true,
-          "fonction_ratio": 1.0
+          "fonction_ratio": 1.0,
+          "name_original": "Subventions Équipement: Autres revers./dotations, participations"
         },
         {
-          "name": "Action Économique: Charges intervent° cpt prop. - Subvent°",
+          "name": "Action Économique: Subventions d'intervention",
           "value": 12187069.31,
           "fonction": "Insertion éco sociale",
           "flow_category": "Subventions (fonctionnement)",
           "fonction_confidence": "medium",
           "fonction_imputed": true,
-          "fonction_ratio": 0.3392
+          "fonction_ratio": 0.3392,
+          "name_original": "Action Économique: Charges intervent° cpt prop. - Subvent°"
         },
         {
           "name": "Subventions Équipement: Autres",
@@ -2933,13 +3004,14 @@
           "fonction_ratio": 1.0
         },
         {
-          "name": "Action Économique: Charges intervent° cpt prop. - Subvent°",
+          "name": "Action Économique: Subventions d'intervention",
           "value": 7943870.94,
           "fonction": "Recherche et innovation",
           "flow_category": "Subventions (fonctionnement)",
           "fonction_confidence": "medium",
           "fonction_imputed": true,
-          "fonction_ratio": 0.2211
+          "fonction_ratio": 0.2211,
+          "name_original": "Action Économique: Charges intervent° cpt prop. - Subvent°"
         },
         {
           "name": "Invest. Économie: Constructions",
@@ -2951,49 +3023,54 @@
           "fonction_ratio": 0.9803
         },
         {
-          "name": "Action Économique: Charges intervent° cpt prop. - Subvent°",
+          "name": "Action Économique: Subventions d'intervention",
           "value": 5899518.8100000005,
           "fonction": "Développement touristique",
           "flow_category": "Subventions (fonctionnement)",
           "fonction_confidence": "medium",
           "fonction_imputed": true,
-          "fonction_ratio": 0.1642
+          "fonction_ratio": 0.1642,
+          "name_original": "Action Économique: Charges intervent° cpt prop. - Subvent°"
         },
         {
-          "name": "Action Économique: Charges intervent° cpt prop. - Subvent°",
+          "name": "Action Économique: Subventions d'intervention",
           "value": 3046767.33,
           "fonction": "Industrie,commerce artisa",
           "flow_category": "Subventions (fonctionnement)",
           "fonction_confidence": "medium",
           "fonction_imputed": true,
-          "fonction_ratio": 0.0848
+          "fonction_ratio": 0.0848,
+          "name_original": "Action Économique: Charges intervent° cpt prop. - Subvent°"
         },
         {
-          "name": "Action Économique: Charges intervent° cpt prop. - Subvent°",
+          "name": "Action Économique: Subventions d'intervention",
           "value": 3039581.56,
           "fonction": "Autres actions",
           "flow_category": "Subventions (fonctionnement)",
           "fonction_confidence": "medium",
           "fonction_imputed": true,
-          "fonction_ratio": 0.0846
+          "fonction_ratio": 0.0846,
+          "name_original": "Action Économique: Charges intervent° cpt prop. - Subvent°"
         },
         {
-          "name": "Invest. Économie: Subventions d'équipement versées",
+          "name": "Invest. Économie: Subventions d'investissement",
           "value": 2825725.7,
           "fonction": "Recherche et innovation",
           "flow_category": "Subventions (investissement)",
           "fonction_confidence": "medium",
           "fonction_imputed": true,
-          "fonction_ratio": 0.2953
+          "fonction_ratio": 0.2953,
+          "name_original": "Invest. Économie: Subventions d'équipement versées"
         },
         {
-          "name": "Invest. Économie: Subventions d'équipement versées",
+          "name": "Invest. Économie: Subventions d'investissement",
           "value": 2504207.3,
           "fonction": "Struct d'anim et dev éco",
           "flow_category": "Subventions (investissement)",
           "fonction_confidence": "medium",
           "fonction_imputed": true,
-          "fonction_ratio": 0.2617
+          "fonction_ratio": 0.2617,
+          "name_original": "Invest. Économie: Subventions d'équipement versées"
         },
         {
           "name": "Action Économique: Rémunérations du personnel",
@@ -3023,13 +3100,14 @@
           "fonction_ratio": 0.2497
         },
         {
-          "name": "Action Économique: Charges intervent° cpt prop. - Subvent°",
+          "name": "Action Économique: Subventions d'intervention",
           "value": 2288668.39,
           "fonction": "Struct d'anim et dev éco",
           "flow_category": "Subventions (fonctionnement)",
           "fonction_confidence": "medium",
           "fonction_imputed": true,
-          "fonction_ratio": 0.0637
+          "fonction_ratio": 0.0637,
+          "name_original": "Action Économique: Charges intervent° cpt prop. - Subvent°"
         },
         {
           "name": "Invest. Économie: Frais d'études, recherche, développement",
@@ -3041,13 +3119,14 @@
           "fonction_ratio": 0.581
         },
         {
-          "name": "Invest. Économie: Installat°, matériel, outillage techniq.",
+          "name": "Invest. Économie: Installations, matériel et outillage",
           "value": 1764540.0,
           "fonction": "Industrie,commerce artisa",
           "flow_category": "Immobilisations corporelles",
           "fonction_confidence": "high",
           "fonction_imputed": true,
-          "fonction_ratio": 0.9803
+          "fonction_ratio": 0.9803,
+          "name_original": "Invest. Économie: Installat°, matériel, outillage techniq."
         },
         {
           "name": "Action Économique: Rémunérations du personnel",
@@ -3077,31 +3156,34 @@
           "fonction_ratio": 0.5844
         },
         {
-          "name": "Action Économique: Charges intervent° cpt prop. - Subvent°",
+          "name": "Action Économique: Subventions d'intervention",
           "value": 1523383.6600000001,
           "fonction": "Autres",
           "flow_category": "Subventions (fonctionnement)",
           "fonction_confidence": "medium",
           "fonction_imputed": true,
-          "fonction_ratio": 0.0424
+          "fonction_ratio": 0.0424,
+          "name_original": "Action Économique: Charges intervent° cpt prop. - Subvent°"
         },
         {
-          "name": "Invest. Économie: Subventions d'équipement versées",
+          "name": "Invest. Économie: Subventions d'investissement",
           "value": 1437263.8,
           "fonction": "Insertion éco sociale",
           "flow_category": "Subventions (investissement)",
           "fonction_confidence": "medium",
           "fonction_imputed": true,
-          "fonction_ratio": 0.1502
+          "fonction_ratio": 0.1502,
+          "name_original": "Invest. Économie: Subventions d'équipement versées"
         },
         {
-          "name": "Invest. Économie: Subventions d'équipement versées",
+          "name": "Invest. Économie: Subventions d'investissement",
           "value": 1394203.3,
           "fonction": "Industrie,commerce artisa",
           "flow_category": "Subventions (investissement)",
           "fonction_confidence": "medium",
           "fonction_imputed": true,
-          "fonction_ratio": 0.1457
+          "fonction_ratio": 0.1457,
+          "name_original": "Invest. Économie: Subventions d'équipement versées"
         },
         {
           "name": "Action Économique: Contrats de prestations de services",
@@ -3113,13 +3195,14 @@
           "fonction_ratio": 0.3701
         },
         {
-          "name": "Invest. Économie: Subventions d'équipement versées",
+          "name": "Invest. Économie: Subventions d'investissement",
           "value": 954029.3,
           "fonction": "Autres",
           "flow_category": "Subventions (investissement)",
           "fonction_confidence": "medium",
           "fonction_imputed": true,
-          "fonction_ratio": 0.0997
+          "fonction_ratio": 0.0997,
+          "name_original": "Invest. Économie: Subventions d'équipement versées"
         },
         {
           "name": "Action Économique: Pub., publications, relations publiques",
@@ -3131,49 +3214,54 @@
           "fonction_ratio": 1.0
         },
         {
-          "name": "Action Économique: Charges sécurité sociale et prévoyance",
+          "name": "Action Économique: Charges de sécurité sociale et prévoyance",
           "value": 809128.49,
           "fonction": "Industrie,commerce artisa",
           "flow_category": "Personnel",
           "fonction_confidence": "medium",
           "fonction_imputed": true,
-          "fonction_ratio": 0.2702
+          "fonction_ratio": 0.2702,
+          "name_original": "Action Économique: Charges sécurité sociale et prévoyance"
         },
         {
-          "name": "Action Économique: Charges sécurité sociale et prévoyance",
+          "name": "Action Économique: Charges de sécurité sociale et prévoyance",
           "value": 789663.8899999999,
           "fonction": "Insertion éco sociale",
           "flow_category": "Personnel",
           "fonction_confidence": "medium",
           "fonction_imputed": true,
-          "fonction_ratio": 0.2637
+          "fonction_ratio": 0.2637,
+          "name_original": "Action Économique: Charges sécurité sociale et prévoyance"
         },
         {
-          "name": "Action Économique: Charges sécurité sociale et prévoyance",
+          "name": "Action Économique: Charges de sécurité sociale et prévoyance",
           "value": 747740.13,
           "fonction": "Autres actions",
           "flow_category": "Personnel",
           "fonction_confidence": "medium",
           "fonction_imputed": true,
-          "fonction_ratio": 0.2497
+          "fonction_ratio": 0.2497,
+          "name_original": "Action Économique: Charges sécurité sociale et prévoyance"
         },
         {
-          "name": "Action Économique: Charges sécurité sociale et prévoyance",
+          "name": "Action Économique: Charges de sécurité sociale et prévoyance",
           "value": 534228.44,
           "fonction": "Services communs",
           "flow_category": "Personnel",
           "fonction_confidence": "medium",
           "fonction_imputed": true,
-          "fonction_ratio": 0.1784
+          "fonction_ratio": 0.1784,
+          "name_original": "Action Économique: Charges sécurité sociale et prévoyance"
         },
         {
-          "name": "Invest. Économie: Subventions d'équipement versées",
+          "name": "Invest. Économie: Subventions d'investissement",
           "value": 453570.59999999986,
           "fonction": "Développement touristique",
           "flow_category": "Subventions (investissement)",
           "fonction_confidence": "medium",
           "fonction_imputed": true,
-          "fonction_ratio": 0.0475
+          "fonction_ratio": 0.0475,
+          "name_original": "Invest. Économie: Subventions d'équipement versées"
         },
         {
           "name": "Action Économique: Rémunérations du personnel",
@@ -3311,13 +3399,14 @@
           "fonction_ratio": 0.0455
         },
         {
-          "name": "Action Économique: Charges sécurité sociale et prévoyance",
+          "name": "Action Économique: Charges de sécurité sociale et prévoyance",
           "value": 113793.04999999987,
           "fonction": "Rayonnement et attractivi",
           "flow_category": "Personnel",
           "fonction_confidence": "medium",
           "fonction_imputed": true,
-          "fonction_ratio": 0.038
+          "fonction_ratio": 0.038,
+          "name_original": "Action Économique: Charges sécurité sociale et prévoyance"
         },
         {
           "name": "Action Économique: Charges diverses de gestion courante",
@@ -3329,11 +3418,12 @@
           "fonction_ratio": 1.0
         },
         {
-          "name": "Action Économique: Charges interv. cpt propre - Aides pers.",
+          "name": "Action Économique: Aides aux personnes",
           "value": 100000.0,
           "fonction": "Non spécifié",
           "flow_category": "Transferts sociaux",
-          "fonction_confidence": "unknown"
+          "fonction_confidence": "unknown",
+          "name_original": "Action Économique: Charges interv. cpt propre - Aides pers."
         },
         {
           "name": "Participations: FCTVA",
@@ -3383,13 +3473,14 @@
           "fonction_ratio": 0.5824
         },
         {
-          "name": "Environnement: Charges sécurité sociale et prévoyance",
+          "name": "Environnement: Charges de sécurité sociale et prévoyance",
           "value": 83922854.57,
           "fonction": "Ser com collecte propreté",
           "flow_category": "Personnel",
           "fonction_confidence": "high",
           "fonction_imputed": true,
-          "fonction_ratio": 0.8996
+          "fonction_ratio": 0.8996,
+          "name_original": "Environnement: Charges sécurité sociale et prévoyance"
         },
         {
           "name": "Environnement: Achats non stockés de matières et fourni",
@@ -3464,13 +3555,14 @@
           "fonction_ratio": 0.0556
         },
         {
-          "name": "Environnement: Charges sécurité sociale et prévoyance",
+          "name": "Environnement: Charges de sécurité sociale et prévoyance",
           "value": 6436946.390000001,
           "fonction": "Services communs",
           "flow_category": "Personnel",
           "fonction_confidence": "medium",
           "fonction_imputed": true,
-          "fonction_ratio": 0.1784
+          "fonction_ratio": 0.1784,
+          "name_original": "Environnement: Charges sécurité sociale et prévoyance"
         },
         {
           "name": "Environnement: Impôts, taxes, versements (autre orga.)",
@@ -3500,13 +3592,14 @@
           "fonction_ratio": 0.0032
         },
         {
-          "name": "Invest. Environnement: Subventions d'équipement versées",
+          "name": "Invest. Environnement: Subventions d'investissement",
           "value": 3984585.0,
           "fonction": "Politique de l'air",
           "flow_category": "Subventions (investissement)",
           "fonction_confidence": "high",
           "fonction_imputed": true,
-          "fonction_ratio": 0.8569
+          "fonction_ratio": 0.8569,
+          "name_original": "Invest. Environnement: Subventions d'équipement versées"
         },
         {
           "name": "Invest. Environnement: Frais d'études, recherche, développement",
@@ -3563,13 +3656,14 @@
           "fonction_ratio": 0.0353
         },
         {
-          "name": "Invest. Environnement: Installat°, matériel, outillage techniq.",
+          "name": "Invest. Environnement: Installations, matériel et outillage",
           "value": 3011060.0,
           "fonction": "Propreté urbaine",
           "flow_category": "Immobilisations corporelles",
           "fonction_confidence": "medium",
           "fonction_imputed": true,
-          "fonction_ratio": 0.3848
+          "fonction_ratio": 0.3848,
+          "name_original": "Invest. Environnement: Installat°, matériel, outillage techniq."
         },
         {
           "name": "Environnement: Autres charges de personnel",
@@ -3590,13 +3684,14 @@
           "fonction_ratio": 0.0212
         },
         {
-          "name": "Environnement: Charges intervent° cpt prop. - Subvent°",
+          "name": "Environnement: Subventions d'intervention",
           "value": 2404661.0,
           "fonction": "Actions transversales",
           "flow_category": "Subventions (fonctionnement)",
           "fonction_confidence": "high",
           "fonction_imputed": true,
-          "fonction_ratio": 0.7309
+          "fonction_ratio": 0.7309,
+          "name_original": "Environnement: Charges intervent° cpt prop. - Subvent°"
         },
         {
           "name": "Invest. Environnement: Frais d'études, recherche, développement",
@@ -3608,13 +3703,14 @@
           "fonction_ratio": 0.3158
         },
         {
-          "name": "Invest. Environnement: Installat°, matériel, outillage techniq.",
+          "name": "Invest. Environnement: Installations, matériel et outillage",
           "value": 2176132.5,
           "fonction": "Ser com collecte propreté",
           "flow_category": "Immobilisations corporelles",
           "fonction_confidence": "medium",
           "fonction_imputed": true,
-          "fonction_ratio": 0.2781
+          "fonction_ratio": 0.2781,
+          "name_original": "Invest. Environnement: Installat°, matériel, outillage techniq."
         },
         {
           "name": "Environnement: Locations",
@@ -3635,13 +3731,14 @@
           "fonction_ratio": 0.1465
         },
         {
-          "name": "Environnement: Charges sécurité sociale et prévoyance",
+          "name": "Environnement: Charges de sécurité sociale et prévoyance",
           "value": 1697861.2200000002,
           "fonction": "Autres",
           "flow_category": "Personnel",
           "fonction_confidence": "medium",
           "fonction_imputed": true,
-          "fonction_ratio": 0.0032
+          "fonction_ratio": 0.0032,
+          "name_original": "Environnement: Charges sécurité sociale et prévoyance"
         },
         {
           "name": "Environnement: Contributions obligatoires",
@@ -3662,13 +3759,14 @@
           "fonction_ratio": 0.5824
         },
         {
-          "name": "Invest. Environnement: Installat°, matériel, outillage techniq.",
+          "name": "Invest. Environnement: Installations, matériel et outillage",
           "value": 1448407.5,
           "fonction": "Tri, valo et trait déchet",
           "flow_category": "Immobilisations corporelles",
           "fonction_confidence": "medium",
           "fonction_imputed": true,
-          "fonction_ratio": 0.1851
+          "fonction_ratio": 0.1851,
+          "name_original": "Invest. Environnement: Installat°, matériel, outillage techniq."
         },
         {
           "name": "Invest. Environnement: Frais d'études, recherche, développement",
@@ -3680,13 +3778,14 @@
           "fonction_ratio": 0.1665
         },
         {
-          "name": "Environnement: Charges sécurité sociale et prévoyance",
+          "name": "Environnement: Charges de sécurité sociale et prévoyance",
           "value": 1231415.8200000052,
           "fonction": "Actions transversales",
           "flow_category": "Personnel",
           "fonction_confidence": "high",
           "fonction_imputed": true,
-          "fonction_ratio": 0.0131
+          "fonction_ratio": 0.0131,
+          "name_original": "Environnement: Charges sécurité sociale et prévoyance"
         },
         {
           "name": "Invest. Environnement: Immobilisations corporelles en cours",
@@ -3725,13 +3824,14 @@
           "fonction_ratio": 0.0101
         },
         {
-          "name": "Environnement: Charges intervent° cpt prop. - Subvent°",
+          "name": "Environnement: Subventions d'intervention",
           "value": 885339.0,
           "fonction": "Politique de l'air",
           "flow_category": "Subventions (fonctionnement)",
           "fonction_confidence": "high",
           "fonction_imputed": true,
-          "fonction_ratio": 0.2691
+          "fonction_ratio": 0.2691,
+          "name_original": "Environnement: Charges intervent° cpt prop. - Subvent°"
         },
         {
           "name": "Environnement: Entretien et réparations",
@@ -3750,13 +3850,14 @@
           "fonction_confidence": "unknown"
         },
         {
-          "name": "Invest. Environnement: Subventions d'équipement versées",
+          "name": "Invest. Environnement: Subventions d'investissement",
           "value": 665415.0,
           "fonction": "Politique de l'eau",
           "flow_category": "Subventions (investissement)",
           "fonction_confidence": "high",
           "fonction_imputed": true,
-          "fonction_ratio": 0.1431
+          "fonction_ratio": 0.1431,
+          "name_original": "Invest. Environnement: Subventions d'équipement versées"
         },
         {
           "name": "Environnement: Participations",
@@ -3768,22 +3869,24 @@
           "fonction_ratio": 0.1503
         },
         {
-          "name": "Invest. Environnement: Installat°, matériel, outillage techniq.",
+          "name": "Invest. Environnement: Installations, matériel et outillage",
           "value": 597830.0,
           "fonction": "Collecte des déchets",
           "flow_category": "Immobilisations corporelles",
           "fonction_confidence": "medium",
           "fonction_imputed": true,
-          "fonction_ratio": 0.0764
+          "fonction_ratio": 0.0764,
+          "name_original": "Invest. Environnement: Installat°, matériel, outillage techniq."
         },
         {
-          "name": "Invest. Environnement: Installat°, matériel, outillage techniq.",
+          "name": "Invest. Environnement: Installations, matériel et outillage",
           "value": 591570.0,
           "fonction": "Actions transversales",
           "flow_category": "Immobilisations corporelles",
           "fonction_confidence": "medium",
           "fonction_imputed": true,
-          "fonction_ratio": 0.0756
+          "fonction_ratio": 0.0756,
+          "name_original": "Invest. Environnement: Installat°, matériel, outillage techniq."
         },
         {
           "name": "Environnement: Pub., publications, relations publiques",
@@ -3831,13 +3934,14 @@
           "fonction_ratio": 0.4274
         },
         {
-          "name": "Sécurité: Charges sécurité sociale et prévoyance",
+          "name": "Sécurité: Charges de sécurité sociale et prévoyance",
           "value": 41092452.0,
           "fonction": "Police, sécurité, justice",
           "flow_category": "Personnel",
           "fonction_confidence": "high",
           "fonction_imputed": true,
-          "fonction_ratio": 0.8973
+          "fonction_ratio": 0.8973,
+          "name_original": "Sécurité: Charges sécurité sociale et prévoyance"
         },
         {
           "name": "Sécurité: Divers",
@@ -3858,22 +3962,24 @@
           "fonction_ratio": 0.1784
         },
         {
-          "name": "Invest. Sécurité: Subventions d'équipement versées",
+          "name": "Invest. Sécurité: Subventions d'investissement",
           "value": 7215736.0,
           "fonction": "Autre int prot bien pers",
           "flow_category": "Subventions (investissement)",
           "fonction_confidence": "medium",
           "fonction_imputed": true,
-          "fonction_ratio": 0.5401
+          "fonction_ratio": 0.5401,
+          "name_original": "Invest. Sécurité: Subventions d'équipement versées"
         },
         {
-          "name": "Invest. Sécurité: Subventions d'équipement versées",
+          "name": "Invest. Sécurité: Subventions d'investissement",
           "value": 6116208.0,
           "fonction": "Incendie et secours",
           "flow_category": "Subventions (investissement)",
           "fonction_confidence": "medium",
           "fonction_imputed": true,
-          "fonction_ratio": 0.4578
+          "fonction_ratio": 0.4578,
+          "name_original": "Invest. Sécurité: Subventions d'équipement versées"
         },
         {
           "name": "Sécurité: Rémunérations du personnel",
@@ -3885,13 +3991,14 @@
           "fonction_ratio": 0.0309
         },
         {
-          "name": "Sécurité: Charges sécurité sociale et prévoyance",
+          "name": "Sécurité: Charges de sécurité sociale et prévoyance",
           "value": 3288128.89,
           "fonction": "Services communs",
           "flow_category": "Personnel",
           "fonction_confidence": "medium",
           "fonction_imputed": true,
-          "fonction_ratio": 0.1784
+          "fonction_ratio": 0.1784,
+          "name_original": "Sécurité: Charges sécurité sociale et prévoyance"
         },
         {
           "name": "Sécurité: Impôts, taxes, versements (autre orga.)",
@@ -3912,22 +4019,24 @@
           "fonction_ratio": 0.5939
         },
         {
-          "name": "Sécurité: Personnel extérieur au service",
+          "name": "Sécurité: Personnel intérimaire & vacations",
           "value": 2383035.8800000004,
           "fonction": "Police, sécurité, justice",
           "flow_category": "Autres services",
           "fonction_confidence": "high",
           "fonction_imputed": true,
-          "fonction_ratio": 0.925
+          "fonction_ratio": 0.925,
+          "name_original": "Sécurité: Personnel extérieur au service"
         },
         {
-          "name": "Sécurité: Charges intervent° cpt prop. - Subvent°",
+          "name": "Sécurité: Subventions d'intervention",
           "value": 2239000.0,
           "fonction": "Police, sécurité, justice",
           "flow_category": "Subventions (fonctionnement)",
           "fonction_confidence": "high",
           "fonction_imputed": true,
-          "fonction_ratio": 1.0
+          "fonction_ratio": 1.0,
+          "name_original": "Sécurité: Charges intervent° cpt prop. - Subvent°"
         },
         {
           "name": "Sécurité: Autres charges de personnel",
@@ -3957,22 +4066,24 @@
           "fonction_ratio": 0.1639
         },
         {
-          "name": "Invest. Sécurité: Installat°, matériel, outillage techniq.",
+          "name": "Invest. Sécurité: Installations, matériel et outillage",
           "value": 1618586.0,
           "fonction": "Police, sécurité, justice",
           "flow_category": "Immobilisations corporelles",
           "fonction_confidence": "medium",
           "fonction_imputed": true,
-          "fonction_ratio": 0.6298
+          "fonction_ratio": 0.6298,
+          "name_original": "Invest. Sécurité: Installat°, matériel, outillage techniq."
         },
         {
-          "name": "Sécurité: Charges sécurité sociale et prévoyance",
+          "name": "Sécurité: Charges de sécurité sociale et prévoyance",
           "value": 1415086.1099999992,
           "fonction": "Hygiène salubrité publiqu",
           "flow_category": "Personnel",
           "fonction_confidence": "high",
           "fonction_imputed": true,
-          "fonction_ratio": 0.0309
+          "fonction_ratio": 0.0309,
+          "name_original": "Sécurité: Charges sécurité sociale et prévoyance"
         },
         {
           "name": "Sécurité: Contrats de prestations de services",
@@ -4011,13 +4122,14 @@
           "fonction_ratio": 0.075
         },
         {
-          "name": "Invest. Sécurité: Installat°, matériel, outillage techniq.",
+          "name": "Invest. Sécurité: Installations, matériel et outillage",
           "value": 951414.0,
           "fonction": "Services communs",
           "flow_category": "Immobilisations corporelles",
           "fonction_confidence": "medium",
           "fonction_imputed": true,
-          "fonction_ratio": 0.3702
+          "fonction_ratio": 0.3702,
+          "name_original": "Invest. Sécurité: Installat°, matériel, outillage techniq."
         },
         {
           "name": "Sécurité: Locations",
@@ -4083,13 +4195,14 @@
           "fonction_ratio": 0.6298
         },
         {
-          "name": "Sécurité: Personnel extérieur au service",
+          "name": "Sécurité: Personnel intérimaire & vacations",
           "value": 193219.1199999999,
           "fonction": "Services communs",
           "flow_category": "Autres services",
           "fonction_confidence": "high",
           "fonction_imputed": true,
-          "fonction_ratio": 0.075
+          "fonction_ratio": 0.075,
+          "name_original": "Sécurité: Personnel extérieur au service"
         },
         {
           "name": "Invest. Sécurité: Immobilisations corporelles en cours",
@@ -4236,13 +4349,14 @@
           "fonction_ratio": 0.9152
         },
         {
-          "name": "Invest. Sécurité: Subventions d'équipement versées",
+          "name": "Invest. Sécurité: Subventions d'investissement",
           "value": 28055.99999999907,
           "fonction": "Autres",
           "flow_category": "Subventions (investissement)",
           "fonction_confidence": "medium",
           "fonction_imputed": true,
-          "fonction_ratio": 0.0997
+          "fonction_ratio": 0.0997,
+          "name_original": "Invest. Sécurité: Subventions d'équipement versées"
         },
         {
           "name": "Invest. Sécurité: Constructions",
@@ -4301,13 +4415,14 @@
           "fonction_ratio": 0.3342
         },
         {
-          "name": "Transports: Charges intervent° cpt prop. - Subvent°",
+          "name": "Transports: Subventions d'intervention",
           "value": 29292810.84,
           "fonction": "Transport sur route",
           "flow_category": "Subventions (fonctionnement)",
           "fonction_confidence": "high",
           "fonction_imputed": true,
-          "fonction_ratio": 0.9833
+          "fonction_ratio": 0.9833,
+          "name_original": "Transports: Charges intervent° cpt prop. - Subvent°"
         },
         {
           "name": "Transports: Entretien et réparations",
@@ -4319,13 +4434,14 @@
           "fonction_ratio": 0.6856
         },
         {
-          "name": "Transports: Charges interv. cpt propre - Aides pers.",
+          "name": "Transports: Aides aux personnes",
           "value": 21924187.0,
           "fonction": "Autres transports",
           "flow_category": "Transferts sociaux",
           "fonction_confidence": "high",
           "fonction_imputed": true,
-          "fonction_ratio": 1.0
+          "fonction_ratio": 1.0,
+          "name_original": "Transports: Charges interv. cpt propre - Aides pers."
         },
         {
           "name": "Invest. Transports: Immobilisations corporelles en cours",
@@ -4337,22 +4453,24 @@
           "fonction_ratio": 0.2113
         },
         {
-          "name": "Transports: Charges sécurité sociale et prévoyance",
+          "name": "Transports: Charges de sécurité sociale et prévoyance",
           "value": 13828953.249999998,
           "fonction": "Voirie communale",
           "flow_category": "Personnel",
           "fonction_confidence": "high",
           "fonction_imputed": true,
-          "fonction_ratio": 0.7308
+          "fonction_ratio": 0.7308,
+          "name_original": "Transports: Charges sécurité sociale et prévoyance"
         },
         {
-          "name": "Invest. Transports: Subventions d'équipement versées",
+          "name": "Invest. Transports: Subventions d'investissement",
           "value": 13091746.01,
           "fonction": "Transport ferroviaire",
           "flow_category": "Subventions (investissement)",
           "fonction_confidence": "high",
           "fonction_imputed": true,
-          "fonction_ratio": 0.9904
+          "fonction_ratio": 0.9904,
+          "name_original": "Invest. Transports: Subventions d'équipement versées"
         },
         {
           "name": "Transports: Autres impôts, taxes (Admin Impôts)",
@@ -4481,13 +4599,14 @@
           "fonction_ratio": 0.7541
         },
         {
-          "name": "Transports: Charges sécurité sociale et prévoyance",
+          "name": "Transports: Charges de sécurité sociale et prévoyance",
           "value": 2658686.27,
           "fonction": "Halte fluv autre infra fl",
           "flow_category": "Personnel",
           "fonction_confidence": "high",
           "fonction_imputed": true,
-          "fonction_ratio": 0.1405
+          "fonction_ratio": 0.1405,
+          "name_original": "Transports: Charges sécurité sociale et prévoyance"
         },
         {
           "name": "Invest. Transports: Immobilisations corporelles en cours",
@@ -4517,13 +4636,14 @@
           "fonction_ratio": 0.1185
         },
         {
-          "name": "Transports: Charges sécurité sociale et prévoyance",
+          "name": "Transports: Charges de sécurité sociale et prévoyance",
           "value": 1822288.1600000001,
           "fonction": "Services communs",
           "flow_category": "Personnel",
           "fonction_confidence": "medium",
           "fonction_imputed": true,
-          "fonction_ratio": 0.1784
+          "fonction_ratio": 0.1784,
+          "name_original": "Transports: Charges sécurité sociale et prévoyance"
         },
         {
           "name": "Transports: Locations",
@@ -4697,13 +4817,14 @@
           "fonction_ratio": 0.0101
         },
         {
-          "name": "Transports: Charges intervent° cpt prop. - Subvent°",
+          "name": "Transports: Subventions d'intervention",
           "value": 497498.16000000015,
           "fonction": "Voirie communale",
           "flow_category": "Subventions (fonctionnement)",
           "fonction_confidence": "high",
           "fonction_imputed": true,
-          "fonction_ratio": 0.0167
+          "fonction_ratio": 0.0167,
+          "name_original": "Transports: Charges intervent° cpt prop. - Subvent°"
         }
       ],
       "Autres (D)": [
@@ -4758,7 +4879,8 @@
           "value": 15200443.29,
           "fonction": "Non spécifié",
           "flow_category": "Études",
-          "fonction_confidence": "unknown"
+          "fonction_confidence": "unknown",
+          "name_original": "Autres: Frais d'études"
         },
         {
           "name": "Autres: Provisions pour litiges et contentieux",
@@ -5004,11 +5126,12 @@
           "fonction_confidence": "unknown"
         },
         {
-          "name": "Autres: Construct° sol autrui - Installat° géné.",
+          "name": "Autres: Construction sur sol d'autrui — Installations",
           "value": 86173.49,
           "fonction": "Non spécifié",
           "flow_category": "Immobilisations corporelles",
-          "fonction_confidence": "unknown"
+          "fonction_confidence": "unknown",
+          "name_original": "Autres: Construct° sol autrui - Installat° géné."
         },
         {
           "name": "Autres: Dépenses ultérieures immobilisées",
@@ -5221,13 +5344,14 @@
             "fonction_ratio": 0.4184
           },
           {
-            "name": "Éducation: Charges intervent° cpt prop. - Subvent°",
+            "name": "Éducation: Subventions d'intervention",
             "value": 129571151.38,
             "fonction": "Hébergt resto scolaire",
             "flow_category": "Subventions (fonctionnement)",
             "fonction_confidence": "high",
             "fonction_imputed": true,
-            "fonction_ratio": 0.7987
+            "fonction_ratio": 0.7987,
+            "name_original": "Éducation: Charges intervent° cpt prop. - Subvent°"
           },
           {
             "name": "Éducation: Rémunérations du personnel",
@@ -5239,22 +5363,24 @@
             "fonction_ratio": 0.3489
           },
           {
-            "name": "Éducation: Charges sécurité sociale et prévoyance",
+            "name": "Éducation: Charges de sécurité sociale et prévoyance",
             "value": 60447005.309999995,
             "fonction": "Écoles primaires",
             "flow_category": "Personnel",
             "fonction_confidence": "medium",
             "fonction_imputed": true,
-            "fonction_ratio": 0.4184
+            "fonction_ratio": 0.4184,
+            "name_original": "Éducation: Charges sécurité sociale et prévoyance"
           },
           {
-            "name": "Éducation: Charges sécurité sociale et prévoyance",
+            "name": "Éducation: Charges de sécurité sociale et prévoyance",
             "value": 50406214.51,
             "fonction": "Écoles maternelles",
             "flow_category": "Personnel",
             "fonction_confidence": "medium",
             "fonction_imputed": true,
-            "fonction_ratio": 0.3489
+            "fonction_ratio": 0.3489,
+            "name_original": "Éducation: Charges sécurité sociale et prévoyance"
           },
           {
             "name": "Éducation: Rémunérations du personnel",
@@ -5266,13 +5392,14 @@
             "fonction_ratio": 0.1784
           },
           {
-            "name": "Éducation: Personnel extérieur au service",
+            "name": "Éducation: Personnel intérimaire & vacations",
             "value": 41880456.02,
             "fonction": "Écoles primaires",
             "flow_category": "Autres services",
             "fonction_confidence": "medium",
             "fonction_imputed": true,
-            "fonction_ratio": 0.5193
+            "fonction_ratio": 0.5193,
+            "name_original": "Éducation: Personnel extérieur au service"
           },
           {
             "name": "Éducation: Contributions obligatoires",
@@ -5293,31 +5420,34 @@
             "fonction_ratio": 0.4664
           },
           {
-            "name": "Éducation: Personnel extérieur au service",
+            "name": "Éducation: Personnel intérimaire & vacations",
             "value": 32130124.57,
             "fonction": "Écoles maternelles",
             "flow_category": "Autres services",
             "fonction_confidence": "medium",
             "fonction_imputed": true,
-            "fonction_ratio": 0.3984
+            "fonction_ratio": 0.3984,
+            "name_original": "Éducation: Personnel extérieur au service"
           },
           {
-            "name": "Éducation: Charges intervent° cpt prop. - Subvent°",
+            "name": "Éducation: Subventions d'intervention",
             "value": 26524205.89,
             "fonction": "Enseignement supérieur",
             "flow_category": "Subventions (fonctionnement)",
             "fonction_confidence": "high",
             "fonction_imputed": true,
-            "fonction_ratio": 0.1635
+            "fonction_ratio": 0.1635,
+            "name_original": "Éducation: Charges intervent° cpt prop. - Subvent°"
           },
           {
-            "name": "Éducation: Charges sécurité sociale et prévoyance",
+            "name": "Éducation: Charges de sécurité sociale et prévoyance",
             "value": 20283842.14,
             "fonction": "Services communs",
             "flow_category": "Personnel",
             "fonction_confidence": "medium",
             "fonction_imputed": true,
-            "fonction_ratio": 0.1784
+            "fonction_ratio": 0.1784,
+            "name_original": "Éducation: Charges sécurité sociale et prévoyance"
           },
           {
             "name": "Éducation: Rémunérations du personnel",
@@ -5356,22 +5486,24 @@
             "fonction_ratio": 0.0289
           },
           {
-            "name": "Éducation: Charges sécurité sociale et prévoyance",
+            "name": "Éducation: Charges de sécurité sociale et prévoyance",
             "value": 8711650.150000004,
             "fonction": "Collèges",
             "flow_category": "Personnel",
             "fonction_confidence": "medium",
             "fonction_imputed": true,
-            "fonction_ratio": 0.0603
+            "fonction_ratio": 0.0603,
+            "name_original": "Éducation: Charges sécurité sociale et prévoyance"
           },
           {
-            "name": "Éducation: Charges intervent° cpt prop. - Subvent°",
+            "name": "Éducation: Subventions d'intervention",
             "value": 6132201.730000008,
             "fonction": "Lycées publics",
             "flow_category": "Subventions (fonctionnement)",
             "fonction_confidence": "high",
             "fonction_imputed": true,
-            "fonction_ratio": 0.0378
+            "fonction_ratio": 0.0378,
+            "name_original": "Éducation: Charges intervent° cpt prop. - Subvent°"
           },
           {
             "name": "Éducation: Achats d'études, prestations de services",
@@ -5433,13 +5565,14 @@
             "fonction_ratio": 0.1071
           },
           {
-            "name": "Invest. Éducation: Subventions d'équipement versées",
+            "name": "Invest. Éducation: Subventions d'investissement",
             "value": 7751950.0,
             "fonction": "Enseignement supérieur",
             "flow_category": "Subventions (investissement)",
             "fonction_confidence": "high",
             "fonction_imputed": true,
-            "fonction_ratio": 0.787
+            "fonction_ratio": 0.787,
+            "name_original": "Invest. Éducation: Subventions d'équipement versées"
           },
           {
             "name": "Invest. Éducation: Immobilisations corporelles en cours",
@@ -5451,13 +5584,14 @@
             "fonction_ratio": 0.0844
           },
           {
-            "name": "Invest. Éducation: Subventions d'équipement versées",
+            "name": "Invest. Éducation: Subventions d'investissement",
             "value": 2098050.0,
             "fonction": "Collèges",
             "flow_category": "Subventions (investissement)",
             "fonction_confidence": "high",
             "fonction_imputed": true,
-            "fonction_ratio": 0.213
+            "fonction_ratio": 0.213,
+            "name_original": "Invest. Éducation: Subventions d'équipement versées"
           },
           {
             "name": "Invest. Éducation: Autres immobilisations corporelles",
@@ -5505,13 +5639,14 @@
             "fonction_ratio": 0.0108
           },
           {
-            "name": "Invest. Éducation: Installat°, matériel, outillage techniq.",
+            "name": "Invest. Éducation: Installations, matériel et outillage",
             "value": 367500.0,
             "fonction": "Classes regroupées",
             "flow_category": "Immobilisations corporelles",
             "fonction_confidence": "high",
             "fonction_imputed": true,
-            "fonction_ratio": 1.0
+            "fonction_ratio": 1.0,
+            "name_original": "Invest. Éducation: Installat°, matériel, outillage techniq."
           },
           {
             "name": "Invest. Éducation: Avances commandes immo corporelles",
@@ -5584,22 +5719,24 @@
         "total": 633856924.0,
         "items": [
           {
-            "name": "Culture & Sport: Charges intervent° cpt prop.",
+            "name": "Culture & Sport: Charges d'intervention",
             "value": 70815089.39,
             "fonction": "Théâtre spectable vivant",
             "flow_category": "Subventions (fonctionnement)",
             "fonction_confidence": "medium",
             "fonction_imputed": true,
-            "fonction_ratio": 0.4397
+            "fonction_ratio": 0.4397,
+            "name_original": "Culture & Sport: Charges intervent° cpt prop."
           },
           {
-            "name": "Culture & Sport: Charges intervent° cpt prop.",
+            "name": "Culture & Sport: Charges d'intervention",
             "value": 55305666.82,
             "fonction": "Musées",
             "flow_category": "Subventions (fonctionnement)",
             "fonction_confidence": "medium",
             "fonction_imputed": true,
-            "fonction_ratio": 0.3434
+            "fonction_ratio": 0.3434,
+            "name_original": "Culture & Sport: Charges intervent° cpt prop."
           },
           {
             "name": "Culture & Sport: Rémunérations du personnel",
@@ -5692,22 +5829,24 @@
             "fonction_ratio": 0.3798
           },
           {
-            "name": "Culture & Sport: Charges intervent° cpt prop.",
+            "name": "Culture & Sport: Charges d'intervention",
             "value": 13528468.299999999,
             "fonction": "Manifestations sportives",
             "flow_category": "Subventions (fonctionnement)",
             "fonction_confidence": "medium",
             "fonction_imputed": true,
-            "fonction_ratio": 0.084
+            "fonction_ratio": 0.084,
+            "name_original": "Culture & Sport: Charges intervent° cpt prop."
           },
           {
-            "name": "Culture & Sport: Charges intervent° cpt prop.",
+            "name": "Culture & Sport: Charges d'intervention",
             "value": 12996992.76,
             "fonction": "Activité art action manif",
             "flow_category": "Subventions (fonctionnement)",
             "fonction_confidence": "medium",
             "fonction_imputed": true,
-            "fonction_ratio": 0.0807
+            "fonction_ratio": 0.0807,
+            "name_original": "Culture & Sport: Charges intervent° cpt prop."
           },
           {
             "name": "Culture & Sport: Charges sécurité sociale et",
@@ -5719,22 +5858,24 @@
             "fonction_ratio": 0.1979
           },
           {
-            "name": "Culture & Sport: Personnel extérieur au service",
+            "name": "Culture & Sport: Personnel intérimaire & vacations",
             "value": 8585638.71,
             "fonction": "Activité art action manif",
             "flow_category": "Autres services",
             "fonction_confidence": "medium",
             "fonction_imputed": true,
-            "fonction_ratio": 0.5635
+            "fonction_ratio": 0.5635,
+            "name_original": "Culture & Sport: Personnel extérieur au service"
           },
           {
-            "name": "Culture & Sport: Charges sécurité sociale et prévoyance",
+            "name": "Culture & Sport: Charges de sécurité sociale et prévoyance",
             "value": 7953072.0,
             "fonction": "Salles de sport, gymnases",
             "flow_category": "Personnel",
             "fonction_confidence": "medium",
             "fonction_imputed": true,
-            "fonction_ratio": 0.1979
+            "fonction_ratio": 0.1979,
+            "name_original": "Culture & Sport: Charges sécurité sociale et prévoyance"
           },
           {
             "name": "Culture & Sport: Charges sécurité sociale et",
@@ -5746,13 +5887,14 @@
             "fonction_ratio": 0.1532
           },
           {
-            "name": "Culture & Sport: Charges intervent° cpt prop.",
+            "name": "Culture & Sport: Charges d'intervention",
             "value": 7923817.15,
             "fonction": "Activités artistiques,act",
             "flow_category": "Subventions (fonctionnement)",
             "fonction_confidence": "medium",
             "fonction_imputed": true,
-            "fonction_ratio": 0.0492
+            "fonction_ratio": 0.0492,
+            "name_original": "Culture & Sport: Charges intervent° cpt prop."
           },
           {
             "name": "Culture & Sport: Charges sécurité sociale et",
@@ -5805,13 +5947,14 @@
             "fonction_ratio": 0.3197
           },
           {
-            "name": "Invest. Culture: Subventions d'équipement",
+            "name": "Invest. Culture: Subventions d'investissement",
             "value": 7517144.42,
             "fonction": "Musées",
             "flow_category": "Subventions (investissement)",
             "fonction_confidence": "medium",
             "fonction_imputed": true,
-            "fonction_ratio": 0.5443
+            "fonction_ratio": 0.5443,
+            "name_original": "Invest. Culture: Subventions d'équipement"
           },
           {
             "name": "Invest. Culture: Immobilisations corporelles en cours",
@@ -5832,13 +5975,14 @@
             "fonction_ratio": 0.1775
           },
           {
-            "name": "Invest. Culture: Subventions d'équipement",
+            "name": "Invest. Culture: Subventions d'investissement",
             "value": 6293519.58,
             "fonction": "Manifestations sportives",
             "flow_category": "Subventions (investissement)",
             "fonction_confidence": "medium",
             "fonction_imputed": true,
-            "fonction_ratio": 0.4557
+            "fonction_ratio": 0.4557,
+            "name_original": "Invest. Culture: Subventions d'équipement"
           },
           {
             "name": "Invest. Culture: Immobilisations corporelles en cours",
@@ -5974,13 +6118,14 @@
             "fonction_ratio": 0.1784
           },
           {
-            "name": "Aménagement: Charges sécurité sociale et prévoyance",
+            "name": "Aménagement: Charges de sécurité sociale et prévoyance",
             "value": 30901055.590000004,
             "fonction": "Espaces verts urbains",
             "flow_category": "Personnel",
             "fonction_confidence": "medium",
             "fonction_imputed": true,
-            "fonction_ratio": 0.6586
+            "fonction_ratio": 0.6586,
+            "name_original": "Aménagement: Charges sécurité sociale et prévoyance"
           },
           {
             "name": "Aménagement: Entretien et réparations",
@@ -6001,13 +6146,14 @@
             "fonction_ratio": 0.8759
           },
           {
-            "name": "Aménagement: Charges sécurité sociale et prévoyance",
+            "name": "Aménagement: Charges de sécurité sociale et prévoyance",
             "value": 13836503.629999999,
             "fonction": "Services communs",
             "flow_category": "Personnel",
             "fonction_confidence": "medium",
             "fonction_imputed": true,
-            "fonction_ratio": 0.1784
+            "fonction_ratio": 0.1784,
+            "name_original": "Aménagement: Charges sécurité sociale et prévoyance"
           },
           {
             "name": "Aménagement: Contrats de prestations de services",
@@ -6019,22 +6165,24 @@
             "fonction_ratio": 0.7447
           },
           {
-            "name": "Aménagement: Charges intervent° cpt prop. - Subvent°",
+            "name": "Aménagement: Subventions d'intervention",
             "value": 9935662.8,
             "fonction": "Autres actions d’aménagem",
             "flow_category": "Subventions (fonctionnement)",
             "fonction_confidence": "medium",
             "fonction_imputed": true,
-            "fonction_ratio": 0.621
+            "fonction_ratio": 0.621,
+            "name_original": "Aménagement: Charges intervent° cpt prop. - Subvent°"
           },
           {
-            "name": "Aménagement: Charges intervent° cpt prop. - Subvent°",
+            "name": "Aménagement: Subventions d'intervention",
             "value": 6063794.199999999,
             "fonction": "Politique de la ville",
             "flow_category": "Subventions (fonctionnement)",
             "fonction_confidence": "medium",
             "fonction_imputed": true,
-            "fonction_ratio": 0.379
+            "fonction_ratio": 0.379,
+            "name_original": "Aménagement: Charges intervent° cpt prop. - Subvent°"
           },
           {
             "name": "Aménagement: Divers",
@@ -6139,13 +6287,14 @@
         "total": 967132789.0,
         "items": [
           {
-            "name": "Invest. Aménagement: Subventions d'équipement versées",
+            "name": "Invest. Aménagement: Subventions d'investissement",
             "value": 229419440.66,
             "fonction": "Logement social",
             "flow_category": "Subventions (investissement)",
             "fonction_confidence": "high",
             "fonction_imputed": true,
-            "fonction_ratio": 0.9168
+            "fonction_ratio": 0.9168,
+            "name_original": "Invest. Aménagement: Subventions d'équipement versées"
           },
           {
             "name": "Invest. Aménagement: Terrains",
@@ -6229,13 +6378,14 @@
             "fonction_ratio": 0.7495
           },
           {
-            "name": "Invest. Aménagement: Subventions d'équipement versées",
+            "name": "Invest. Aménagement: Subventions d'investissement",
             "value": 18868047.36,
             "fonction": "Aide au secteur locatif",
             "flow_category": "Subventions (investissement)",
             "fonction_confidence": "high",
             "fonction_imputed": true,
-            "fonction_ratio": 0.0754
+            "fonction_ratio": 0.0754,
+            "name_original": "Invest. Aménagement: Subventions d'équipement versées"
           },
           {
             "name": "Invest. Aménagement: Agencements et aménagements de terrains",
@@ -6274,13 +6424,14 @@
             "fonction_ratio": 0.5362
           },
           {
-            "name": "Invest. Administration: Installat°, matériel, outillage techniq.",
+            "name": "Invest. Administration: Installations, matériel et outillage",
             "value": 13910952.0,
             "fonction": "Adm générale collectivité",
             "flow_category": "Immobilisations corporelles",
             "fonction_confidence": "high",
             "fonction_imputed": true,
-            "fonction_ratio": 0.7337
+            "fonction_ratio": 0.7337,
+            "name_original": "Invest. Administration: Installat°, matériel, outillage techniq."
           },
           {
             "name": "Invest. Aménagement: Terrains",
@@ -6326,22 +6477,24 @@
         "total": 2650748423.0,
         "items": [
           {
-            "name": "Action Sociale: Charges intervent° cpt prop. - Subvent°",
+            "name": "Action Sociale: Subventions d'intervention",
             "value": 446703063.47999996,
             "fonction": "Autre intervention social",
             "flow_category": "Subventions (fonctionnement)",
             "fonction_confidence": "high",
             "fonction_imputed": true,
-            "fonction_ratio": 0.836
+            "fonction_ratio": 0.836,
+            "name_original": "Action Sociale: Charges intervent° cpt prop. - Subvent°"
           },
           {
-            "name": "RSA: Charges interv. cpt propre - Aides pers.",
+            "name": "RSA: Aides aux personnes",
             "value": 421017400.0,
             "fonction": "RSA allocations",
             "flow_category": "Transferts sociaux",
             "fonction_confidence": "high",
             "fonction_imputed": true,
-            "fonction_ratio": 1.0
+            "fonction_ratio": 1.0,
+            "name_original": "RSA: Charges interv. cpt propre - Aides pers."
           },
           {
             "name": "Action Sociale: Frais de séjour, héberg., inhumation",
@@ -6371,31 +6524,34 @@
             "fonction_ratio": 0.3698
           },
           {
-            "name": "APA: Charges interv. cpt propre - Aides pers.",
+            "name": "APA: Aides aux personnes",
             "value": 91370491.3,
             "fonction": "APA à domicile",
             "flow_category": "Transferts sociaux",
             "fonction_confidence": "medium",
             "fonction_imputed": true,
-            "fonction_ratio": 0.6487
+            "fonction_ratio": 0.6487,
+            "name_original": "APA: Charges interv. cpt propre - Aides pers."
           },
           {
-            "name": "Action Sociale: Charges sécurité sociale et prévoyance",
+            "name": "Action Sociale: Charges de sécurité sociale et prévoyance",
             "value": 90817039.03999998,
             "fonction": "Crèches et garderies",
             "flow_category": "Personnel",
             "fonction_confidence": "medium",
             "fonction_imputed": true,
-            "fonction_ratio": 0.6353
+            "fonction_ratio": 0.6353,
+            "name_original": "Action Sociale: Charges sécurité sociale et prévoyance"
           },
           {
-            "name": "Action Sociale: Charges intervent° cpt prop. - Subvent°",
+            "name": "Action Sociale: Subventions d'intervention",
             "value": 69570261.80999999,
             "fonction": "Crèches et garderies",
             "flow_category": "Subventions (fonctionnement)",
             "fonction_confidence": "high",
             "fonction_imputed": true,
-            "fonction_ratio": 0.1302
+            "fonction_ratio": 0.1302,
+            "name_original": "Action Sociale: Charges intervent° cpt prop. - Subvent°"
           },
           {
             "name": "Action Sociale: Frais de séjour, héberg., inhumation",
@@ -6416,13 +6572,14 @@
             "fonction_ratio": 0.1524
           },
           {
-            "name": "Action Sociale: Charges interv. cpt propre - Aides pers.",
+            "name": "Action Sociale: Aides aux personnes",
             "value": 60409935.54000001,
             "fonction": "Aide sociale à l'enfance",
             "flow_category": "Transferts sociaux",
             "fonction_confidence": "medium",
             "fonction_imputed": true,
-            "fonction_ratio": 0.4708
+            "fonction_ratio": 0.4708,
+            "name_original": "Action Sociale: Charges interv. cpt propre - Aides pers."
           },
           {
             "name": "Action Sociale: Contrats de prestations de services",
@@ -6434,13 +6591,14 @@
             "fonction_ratio": 0.8595
           },
           {
-            "name": "Action Sociale: Charges interv. cpt propre - Aides pers.",
+            "name": "Action Sociale: Aides aux personnes",
             "value": 47450284.96000001,
             "fonction": "Personnes handicapées",
             "flow_category": "Transferts sociaux",
             "fonction_confidence": "medium",
             "fonction_imputed": true,
-            "fonction_ratio": 0.3698
+            "fonction_ratio": 0.3698,
+            "name_original": "Action Sociale: Charges interv. cpt propre - Aides pers."
           },
           {
             "name": "Action Sociale: Rémunérations du personnel",
@@ -6470,31 +6628,34 @@
             "fonction_ratio": 0.3891
           },
           {
-            "name": "APA: Charges interv. cpt propre - Aides pers.",
+            "name": "APA: Aides aux personnes",
             "value": 25973051.64,
             "fonction": "APA versé établissemnt",
             "flow_category": "Transferts sociaux",
             "fonction_confidence": "medium",
             "fonction_imputed": true,
-            "fonction_ratio": 0.1844
+            "fonction_ratio": 0.1844,
+            "name_original": "APA: Charges interv. cpt propre - Aides pers."
           },
           {
-            "name": "APA: Charges interv. cpt propre - Aides pers.",
+            "name": "APA: Aides aux personnes",
             "value": 23508147.06,
             "fonction": "APA versé bénéf établisem",
             "flow_category": "Transferts sociaux",
             "fonction_confidence": "medium",
             "fonction_imputed": true,
-            "fonction_ratio": 0.1669
+            "fonction_ratio": 0.1669,
+            "name_original": "APA: Charges interv. cpt propre - Aides pers."
           },
           {
-            "name": "Action Sociale: Charges sécurité sociale et prévoyance",
+            "name": "Action Sociale: Charges de sécurité sociale et prévoyance",
             "value": 21785796.860000003,
             "fonction": "Aide sociale à l'enfance",
             "flow_category": "Personnel",
             "fonction_confidence": "medium",
             "fonction_imputed": true,
-            "fonction_ratio": 0.1524
+            "fonction_ratio": 0.1524,
+            "name_original": "Action Sociale: Charges sécurité sociale et prévoyance"
           },
           {
             "name": "Action Sociale: Participations",
@@ -6529,13 +6690,14 @@
             "fonction_ratio": 0.2529
           },
           {
-            "name": "Invest. Social: Subventions d'équipement versées",
+            "name": "Invest. Social: Subventions d'investissement",
             "value": 9921840.0,
             "fonction": "Crèches et garderies",
             "flow_category": "Subventions (investissement)",
             "fonction_confidence": "high",
             "fonction_imputed": true,
-            "fonction_ratio": 1.0
+            "fonction_ratio": 1.0,
+            "name_original": "Invest. Social: Subventions d'équipement versées"
           },
           {
             "name": "Invest. Social: Frais d'études, recherche, développement",
@@ -6613,13 +6775,14 @@
             "fonction_ratio": 1.0
           },
           {
-            "name": "Administration: Charges sécurité sociale et prévoyance",
+            "name": "Administration: Charges de sécurité sociale et prévoyance",
             "value": 72164020.52,
             "fonction": "Adm générale collectivité",
             "flow_category": "Personnel",
             "fonction_confidence": "medium",
             "fonction_imputed": true,
-            "fonction_ratio": 0.6986
+            "fonction_ratio": 0.6986,
+            "name_original": "Administration: Charges sécurité sociale et prévoyance"
           },
           {
             "name": "Administration: Locations",
@@ -6658,13 +6821,14 @@
             "fonction_ratio": 0.9864
           },
           {
-            "name": "Administration: Charges intervent° cpt prop. - Subvent°",
+            "name": "Administration: Subventions d'intervention",
             "value": 25800876.39,
             "fonction": "Adm générale collectivité",
             "flow_category": "Subventions (fonctionnement)",
             "fonction_confidence": "high",
             "fonction_imputed": true,
-            "fonction_ratio": 0.9531
+            "fonction_ratio": 0.9531,
+            "name_original": "Administration: Charges intervent° cpt prop. - Subvent°"
           },
           {
             "name": "Administration: Rémunérations du personnel",
@@ -6685,13 +6849,14 @@
             "fonction_ratio": 0.5111
           },
           {
-            "name": "Administration: Charges sécurité sociale et prévoyance",
+            "name": "Administration: Charges de sécurité sociale et prévoyance",
             "value": 16186805.07,
             "fonction": "Personnel non ventilé",
             "flow_category": "Personnel",
             "fonction_confidence": "medium",
             "fonction_imputed": true,
-            "fonction_ratio": 0.1567
+            "fonction_ratio": 0.1567,
+            "name_original": "Administration: Charges sécurité sociale et prévoyance"
           },
           {
             "name": "Administration: Rémunérations du personnel",
@@ -6757,13 +6922,14 @@
             "fonction_ratio": 0.2699
           },
           {
-            "name": "Administration: Personnel extérieur au service",
+            "name": "Administration: Personnel intérimaire & vacations",
             "value": 9220191.780000001,
             "fonction": "Adm générale collectivité",
             "flow_category": "Autres services",
             "fonction_confidence": "high",
             "fonction_imputed": true,
-            "fonction_ratio": 0.8742
+            "fonction_ratio": 0.8742,
+            "name_original": "Administration: Personnel extérieur au service"
           },
           {
             "name": "Administration: Indemnités",
@@ -6782,49 +6948,54 @@
         "total": 53445293.0,
         "items": [
           {
-            "name": "Action Économique: Charges intervent° cpt prop. - Subvent°",
+            "name": "Action Économique: Subventions d'intervention",
             "value": 12187069.31,
             "fonction": "Insertion éco sociale",
             "flow_category": "Subventions (fonctionnement)",
             "fonction_confidence": "medium",
             "fonction_imputed": true,
-            "fonction_ratio": 0.3392
+            "fonction_ratio": 0.3392,
+            "name_original": "Action Économique: Charges intervent° cpt prop. - Subvent°"
           },
           {
-            "name": "Action Économique: Charges intervent° cpt prop. - Subvent°",
+            "name": "Action Économique: Subventions d'intervention",
             "value": 7943870.94,
             "fonction": "Recherche et innovation",
             "flow_category": "Subventions (fonctionnement)",
             "fonction_confidence": "medium",
             "fonction_imputed": true,
-            "fonction_ratio": 0.2211
+            "fonction_ratio": 0.2211,
+            "name_original": "Action Économique: Charges intervent° cpt prop. - Subvent°"
           },
           {
-            "name": "Action Économique: Charges intervent° cpt prop. - Subvent°",
+            "name": "Action Économique: Subventions d'intervention",
             "value": 5899518.8100000005,
             "fonction": "Développement touristique",
             "flow_category": "Subventions (fonctionnement)",
             "fonction_confidence": "medium",
             "fonction_imputed": true,
-            "fonction_ratio": 0.1642
+            "fonction_ratio": 0.1642,
+            "name_original": "Action Économique: Charges intervent° cpt prop. - Subvent°"
           },
           {
-            "name": "Action Économique: Charges intervent° cpt prop. - Subvent°",
+            "name": "Action Économique: Subventions d'intervention",
             "value": 3046767.33,
             "fonction": "Industrie,commerce artisa",
             "flow_category": "Subventions (fonctionnement)",
             "fonction_confidence": "medium",
             "fonction_imputed": true,
-            "fonction_ratio": 0.0848
+            "fonction_ratio": 0.0848,
+            "name_original": "Action Économique: Charges intervent° cpt prop. - Subvent°"
           },
           {
-            "name": "Action Économique: Charges intervent° cpt prop. - Subvent°",
+            "name": "Action Économique: Subventions d'intervention",
             "value": 3039581.56,
             "fonction": "Autres actions",
             "flow_category": "Subventions (fonctionnement)",
             "fonction_confidence": "medium",
             "fonction_imputed": true,
-            "fonction_ratio": 0.0846
+            "fonction_ratio": 0.0846,
+            "name_original": "Action Économique: Charges intervent° cpt prop. - Subvent°"
           },
           {
             "name": "Action Économique: Rémunérations du personnel",
@@ -6854,13 +7025,14 @@
             "fonction_ratio": 0.2497
           },
           {
-            "name": "Action Économique: Charges intervent° cpt prop. - Subvent°",
+            "name": "Action Économique: Subventions d'intervention",
             "value": 2288668.39,
             "fonction": "Struct d'anim et dev éco",
             "flow_category": "Subventions (fonctionnement)",
             "fonction_confidence": "medium",
             "fonction_imputed": true,
-            "fonction_ratio": 0.0637
+            "fonction_ratio": 0.0637,
+            "name_original": "Action Économique: Charges intervent° cpt prop. - Subvent°"
           },
           {
             "name": "Action Économique: Rémunérations du personnel",
@@ -6881,13 +7053,14 @@
             "fonction_ratio": 0.5844
           },
           {
-            "name": "Action Économique: Charges intervent° cpt prop. - Subvent°",
+            "name": "Action Économique: Subventions d'intervention",
             "value": 1523383.6600000001,
             "fonction": "Autres",
             "flow_category": "Subventions (fonctionnement)",
             "fonction_confidence": "medium",
             "fonction_imputed": true,
-            "fonction_ratio": 0.0424
+            "fonction_ratio": 0.0424,
+            "name_original": "Action Économique: Charges intervent° cpt prop. - Subvent°"
           },
           {
             "name": "Action Économique: Contrats de prestations de services",
@@ -6908,40 +7081,44 @@
             "fonction_ratio": 1.0
           },
           {
-            "name": "Action Économique: Charges sécurité sociale et prévoyance",
+            "name": "Action Économique: Charges de sécurité sociale et prévoyance",
             "value": 809128.49,
             "fonction": "Industrie,commerce artisa",
             "flow_category": "Personnel",
             "fonction_confidence": "medium",
             "fonction_imputed": true,
-            "fonction_ratio": 0.2702
+            "fonction_ratio": 0.2702,
+            "name_original": "Action Économique: Charges sécurité sociale et prévoyance"
           },
           {
-            "name": "Action Économique: Charges sécurité sociale et prévoyance",
+            "name": "Action Économique: Charges de sécurité sociale et prévoyance",
             "value": 789663.8899999999,
             "fonction": "Insertion éco sociale",
             "flow_category": "Personnel",
             "fonction_confidence": "medium",
             "fonction_imputed": true,
-            "fonction_ratio": 0.2637
+            "fonction_ratio": 0.2637,
+            "name_original": "Action Économique: Charges sécurité sociale et prévoyance"
           },
           {
-            "name": "Action Économique: Charges sécurité sociale et prévoyance",
+            "name": "Action Économique: Charges de sécurité sociale et prévoyance",
             "value": 747740.13,
             "fonction": "Autres actions",
             "flow_category": "Personnel",
             "fonction_confidence": "medium",
             "fonction_imputed": true,
-            "fonction_ratio": 0.2497
+            "fonction_ratio": 0.2497,
+            "name_original": "Action Économique: Charges sécurité sociale et prévoyance"
           },
           {
-            "name": "Action Économique: Charges sécurité sociale et prévoyance",
+            "name": "Action Économique: Charges de sécurité sociale et prévoyance",
             "value": 534228.44,
             "fonction": "Services communs",
             "flow_category": "Personnel",
             "fonction_confidence": "medium",
             "fonction_imputed": true,
-            "fonction_ratio": 0.1784
+            "fonction_ratio": 0.1784,
+            "name_original": "Action Économique: Charges sécurité sociale et prévoyance"
           },
           {
             "name": "Action Économique: Rémunérations du personnel",
@@ -6976,22 +7153,24 @@
             "fonction_ratio": 0.9803
           },
           {
-            "name": "Invest. Économie: Subventions d'équipement versées",
+            "name": "Invest. Économie: Subventions d'investissement",
             "value": 2825725.7,
             "fonction": "Recherche et innovation",
             "flow_category": "Subventions (investissement)",
             "fonction_confidence": "medium",
             "fonction_imputed": true,
-            "fonction_ratio": 0.2953
+            "fonction_ratio": 0.2953,
+            "name_original": "Invest. Économie: Subventions d'équipement versées"
           },
           {
-            "name": "Invest. Économie: Subventions d'équipement versées",
+            "name": "Invest. Économie: Subventions d'investissement",
             "value": 2504207.3,
             "fonction": "Struct d'anim et dev éco",
             "flow_category": "Subventions (investissement)",
             "fonction_confidence": "medium",
             "fonction_imputed": true,
-            "fonction_ratio": 0.2617
+            "fonction_ratio": 0.2617,
+            "name_original": "Invest. Économie: Subventions d'équipement versées"
           },
           {
             "name": "Invest. Économie: Frais d'études, recherche, développement",
@@ -7003,13 +7182,14 @@
             "fonction_ratio": 0.581
           },
           {
-            "name": "Invest. Économie: Installat°, matériel, outillage techniq.",
+            "name": "Invest. Économie: Installations, matériel et outillage",
             "value": 1764540.0,
             "fonction": "Industrie,commerce artisa",
             "flow_category": "Immobilisations corporelles",
             "fonction_confidence": "high",
             "fonction_imputed": true,
-            "fonction_ratio": 0.9803
+            "fonction_ratio": 0.9803,
+            "name_original": "Invest. Économie: Installat°, matériel, outillage techniq."
           },
           {
             "name": "Invest. Économie: Frais d'études, recherche, développement",
@@ -7021,40 +7201,44 @@
             "fonction_ratio": 0.419
           },
           {
-            "name": "Invest. Économie: Subventions d'équipement versées",
+            "name": "Invest. Économie: Subventions d'investissement",
             "value": 1437263.8,
             "fonction": "Insertion éco sociale",
             "flow_category": "Subventions (investissement)",
             "fonction_confidence": "medium",
             "fonction_imputed": true,
-            "fonction_ratio": 0.1502
+            "fonction_ratio": 0.1502,
+            "name_original": "Invest. Économie: Subventions d'équipement versées"
           },
           {
-            "name": "Invest. Économie: Subventions d'équipement versées",
+            "name": "Invest. Économie: Subventions d'investissement",
             "value": 1394203.3,
             "fonction": "Industrie,commerce artisa",
             "flow_category": "Subventions (investissement)",
             "fonction_confidence": "medium",
             "fonction_imputed": true,
-            "fonction_ratio": 0.1457
+            "fonction_ratio": 0.1457,
+            "name_original": "Invest. Économie: Subventions d'équipement versées"
           },
           {
-            "name": "Invest. Économie: Subventions d'équipement versées",
+            "name": "Invest. Économie: Subventions d'investissement",
             "value": 954029.3,
             "fonction": "Autres",
             "flow_category": "Subventions (investissement)",
             "fonction_confidence": "medium",
             "fonction_imputed": true,
-            "fonction_ratio": 0.0997
+            "fonction_ratio": 0.0997,
+            "name_original": "Invest. Économie: Subventions d'équipement versées"
           },
           {
-            "name": "Invest. Économie: Subventions d'équipement versées",
+            "name": "Invest. Économie: Subventions d'investissement",
             "value": 453570.59999999986,
             "fonction": "Développement touristique",
             "flow_category": "Subventions (investissement)",
             "fonction_confidence": "medium",
             "fonction_imputed": true,
-            "fonction_ratio": 0.0475
+            "fonction_ratio": 0.0475,
+            "name_original": "Invest. Économie: Subventions d'équipement versées"
           },
           {
             "name": "Invest. Économie: Immobilisations corporelles en cours",
@@ -7181,13 +7365,14 @@
             "fonction_ratio": 0.5824
           },
           {
-            "name": "Environnement: Charges sécurité sociale et prévoyance",
+            "name": "Environnement: Charges de sécurité sociale et prévoyance",
             "value": 83922854.57,
             "fonction": "Ser com collecte propreté",
             "flow_category": "Personnel",
             "fonction_confidence": "high",
             "fonction_imputed": true,
-            "fonction_ratio": 0.8996
+            "fonction_ratio": 0.8996,
+            "name_original": "Environnement: Charges sécurité sociale et prévoyance"
           },
           {
             "name": "Environnement: Achats non stockés de matières et fourni",
@@ -7244,13 +7429,14 @@
             "fonction_ratio": 0.0556
           },
           {
-            "name": "Environnement: Charges sécurité sociale et prévoyance",
+            "name": "Environnement: Charges de sécurité sociale et prévoyance",
             "value": 6436946.390000001,
             "fonction": "Services communs",
             "flow_category": "Personnel",
             "fonction_confidence": "medium",
             "fonction_imputed": true,
-            "fonction_ratio": 0.1784
+            "fonction_ratio": 0.1784,
+            "name_original": "Environnement: Charges sécurité sociale et prévoyance"
           },
           {
             "name": "Environnement: Impôts, taxes, versements (autre orga.)",
@@ -7325,13 +7511,14 @@
             "fonction_ratio": 0.0212
           },
           {
-            "name": "Environnement: Charges intervent° cpt prop. - Subvent°",
+            "name": "Environnement: Subventions d'intervention",
             "value": 2404661.0,
             "fonction": "Actions transversales",
             "flow_category": "Subventions (fonctionnement)",
             "fonction_confidence": "high",
             "fonction_imputed": true,
-            "fonction_ratio": 0.7309
+            "fonction_ratio": 0.7309,
+            "name_original": "Environnement: Charges intervent° cpt prop. - Subvent°"
           }
         ]
       },
@@ -7357,13 +7544,14 @@
             "fonction_ratio": 0.3581
           },
           {
-            "name": "Invest. Environnement: Subventions d'équipement versées",
+            "name": "Invest. Environnement: Subventions d'investissement",
             "value": 3984585.0,
             "fonction": "Politique de l'air",
             "flow_category": "Subventions (investissement)",
             "fonction_confidence": "high",
             "fonction_imputed": true,
-            "fonction_ratio": 0.8569
+            "fonction_ratio": 0.8569,
+            "name_original": "Invest. Environnement: Subventions d'équipement versées"
           },
           {
             "name": "Invest. Environnement: Frais d'études, recherche, développement",
@@ -7393,13 +7581,14 @@
             "fonction_ratio": 0.0353
           },
           {
-            "name": "Invest. Environnement: Installat°, matériel, outillage techniq.",
+            "name": "Invest. Environnement: Installations, matériel et outillage",
             "value": 3011060.0,
             "fonction": "Propreté urbaine",
             "flow_category": "Immobilisations corporelles",
             "fonction_confidence": "medium",
             "fonction_imputed": true,
-            "fonction_ratio": 0.3848
+            "fonction_ratio": 0.3848,
+            "name_original": "Invest. Environnement: Installat°, matériel, outillage techniq."
           },
           {
             "name": "Invest. Environnement: Frais d'études, recherche, développement",
@@ -7411,13 +7600,14 @@
             "fonction_ratio": 0.3158
           },
           {
-            "name": "Invest. Environnement: Installat°, matériel, outillage techniq.",
+            "name": "Invest. Environnement: Installations, matériel et outillage",
             "value": 2176132.5,
             "fonction": "Ser com collecte propreté",
             "flow_category": "Immobilisations corporelles",
             "fonction_confidence": "medium",
             "fonction_imputed": true,
-            "fonction_ratio": 0.2781
+            "fonction_ratio": 0.2781,
+            "name_original": "Invest. Environnement: Installat°, matériel, outillage techniq."
           },
           {
             "name": "Invest. Environnement: Immobilisations corporelles en cours",
@@ -7429,13 +7619,14 @@
             "fonction_ratio": 0.1465
           },
           {
-            "name": "Invest. Environnement: Installat°, matériel, outillage techniq.",
+            "name": "Invest. Environnement: Installations, matériel et outillage",
             "value": 1448407.5,
             "fonction": "Tri, valo et trait déchet",
             "flow_category": "Immobilisations corporelles",
             "fonction_confidence": "medium",
             "fonction_imputed": true,
-            "fonction_ratio": 0.1851
+            "fonction_ratio": 0.1851,
+            "name_original": "Invest. Environnement: Installat°, matériel, outillage techniq."
           },
           {
             "name": "Invest. Environnement: Frais d'études, recherche, développement",
@@ -7465,31 +7656,34 @@
             "fonction_ratio": 0.0101
           },
           {
-            "name": "Invest. Environnement: Subventions d'équipement versées",
+            "name": "Invest. Environnement: Subventions d'investissement",
             "value": 665415.0,
             "fonction": "Politique de l'eau",
             "flow_category": "Subventions (investissement)",
             "fonction_confidence": "high",
             "fonction_imputed": true,
-            "fonction_ratio": 0.1431
+            "fonction_ratio": 0.1431,
+            "name_original": "Invest. Environnement: Subventions d'équipement versées"
           },
           {
-            "name": "Invest. Environnement: Installat°, matériel, outillage techniq.",
+            "name": "Invest. Environnement: Installations, matériel et outillage",
             "value": 597830.0,
             "fonction": "Collecte des déchets",
             "flow_category": "Immobilisations corporelles",
             "fonction_confidence": "medium",
             "fonction_imputed": true,
-            "fonction_ratio": 0.0764
+            "fonction_ratio": 0.0764,
+            "name_original": "Invest. Environnement: Installat°, matériel, outillage techniq."
           },
           {
-            "name": "Invest. Environnement: Installat°, matériel, outillage techniq.",
+            "name": "Invest. Environnement: Installations, matériel et outillage",
             "value": 591570.0,
             "fonction": "Actions transversales",
             "flow_category": "Immobilisations corporelles",
             "fonction_confidence": "medium",
             "fonction_imputed": true,
-            "fonction_ratio": 0.0756
+            "fonction_ratio": 0.0756,
+            "name_original": "Invest. Environnement: Installat°, matériel, outillage techniq."
           },
           {
             "name": "Invest. Environnement: Autres immobilisations corporelles",
@@ -7553,13 +7747,14 @@
             "fonction_ratio": 0.4274
           },
           {
-            "name": "Sécurité: Charges sécurité sociale et prévoyance",
+            "name": "Sécurité: Charges de sécurité sociale et prévoyance",
             "value": 41092452.0,
             "fonction": "Police, sécurité, justice",
             "flow_category": "Personnel",
             "fonction_confidence": "high",
             "fonction_imputed": true,
-            "fonction_ratio": 0.8973
+            "fonction_ratio": 0.8973,
+            "name_original": "Sécurité: Charges sécurité sociale et prévoyance"
           },
           {
             "name": "Sécurité: Divers",
@@ -7589,13 +7784,14 @@
             "fonction_ratio": 0.0309
           },
           {
-            "name": "Sécurité: Charges sécurité sociale et prévoyance",
+            "name": "Sécurité: Charges de sécurité sociale et prévoyance",
             "value": 3288128.89,
             "fonction": "Services communs",
             "flow_category": "Personnel",
             "fonction_confidence": "medium",
             "fonction_imputed": true,
-            "fonction_ratio": 0.1784
+            "fonction_ratio": 0.1784,
+            "name_original": "Sécurité: Charges sécurité sociale et prévoyance"
           },
           {
             "name": "Sécurité: Impôts, taxes, versements (autre orga.)",
@@ -7607,22 +7803,24 @@
             "fonction_ratio": 0.9152
           },
           {
-            "name": "Sécurité: Personnel extérieur au service",
+            "name": "Sécurité: Personnel intérimaire & vacations",
             "value": 2383035.8800000004,
             "fonction": "Police, sécurité, justice",
             "flow_category": "Autres services",
             "fonction_confidence": "high",
             "fonction_imputed": true,
-            "fonction_ratio": 0.925
+            "fonction_ratio": 0.925,
+            "name_original": "Sécurité: Personnel extérieur au service"
           },
           {
-            "name": "Sécurité: Charges intervent° cpt prop. - Subvent°",
+            "name": "Sécurité: Subventions d'intervention",
             "value": 2239000.0,
             "fonction": "Police, sécurité, justice",
             "flow_category": "Subventions (fonctionnement)",
             "fonction_confidence": "high",
             "fonction_imputed": true,
-            "fonction_ratio": 1.0
+            "fonction_ratio": 1.0,
+            "name_original": "Sécurité: Charges intervent° cpt prop. - Subvent°"
           },
           {
             "name": "Sécurité: Autres charges de personnel",
@@ -7643,13 +7841,14 @@
             "fonction_ratio": 0.1639
           },
           {
-            "name": "Sécurité: Charges sécurité sociale et prévoyance",
+            "name": "Sécurité: Charges de sécurité sociale et prévoyance",
             "value": 1415086.1099999992,
             "fonction": "Hygiène salubrité publiqu",
             "flow_category": "Personnel",
             "fonction_confidence": "high",
             "fonction_imputed": true,
-            "fonction_ratio": 0.0309
+            "fonction_ratio": 0.0309,
+            "name_original": "Sécurité: Charges sécurité sociale et prévoyance"
           },
           {
             "name": "Sécurité: Contrats de prestations de services",
@@ -7711,22 +7910,24 @@
         "total": 22954000.0,
         "items": [
           {
-            "name": "Invest. Sécurité: Subventions d'équipement versées",
+            "name": "Invest. Sécurité: Subventions d'investissement",
             "value": 7215736.0,
             "fonction": "Autre int prot bien pers",
             "flow_category": "Subventions (investissement)",
             "fonction_confidence": "medium",
             "fonction_imputed": true,
-            "fonction_ratio": 0.5401
+            "fonction_ratio": 0.5401,
+            "name_original": "Invest. Sécurité: Subventions d'équipement versées"
           },
           {
-            "name": "Invest. Sécurité: Subventions d'équipement versées",
+            "name": "Invest. Sécurité: Subventions d'investissement",
             "value": 6116208.0,
             "fonction": "Incendie et secours",
             "flow_category": "Subventions (investissement)",
             "fonction_confidence": "medium",
             "fonction_imputed": true,
-            "fonction_ratio": 0.4578
+            "fonction_ratio": 0.4578,
+            "name_original": "Invest. Sécurité: Subventions d'équipement versées"
           },
           {
             "name": "Invest. Sécurité: Immobilisations corporelles en cours",
@@ -7747,13 +7948,14 @@
             "fonction_ratio": 0.3751
           },
           {
-            "name": "Invest. Sécurité: Installat°, matériel, outillage techniq.",
+            "name": "Invest. Sécurité: Installations, matériel et outillage",
             "value": 1618586.0,
             "fonction": "Police, sécurité, justice",
             "flow_category": "Immobilisations corporelles",
             "fonction_confidence": "medium",
             "fonction_imputed": true,
-            "fonction_ratio": 0.6298
+            "fonction_ratio": 0.6298,
+            "name_original": "Invest. Sécurité: Installat°, matériel, outillage techniq."
           },
           {
             "name": "Invest. Sécurité: Travaux effectués d'office",
@@ -7765,13 +7967,14 @@
             "fonction_ratio": 1.0
           },
           {
-            "name": "Invest. Sécurité: Installat°, matériel, outillage techniq.",
+            "name": "Invest. Sécurité: Installations, matériel et outillage",
             "value": 951414.0,
             "fonction": "Services communs",
             "flow_category": "Immobilisations corporelles",
             "fonction_confidence": "medium",
             "fonction_imputed": true,
-            "fonction_ratio": 0.3702
+            "fonction_ratio": 0.3702,
+            "name_original": "Invest. Sécurité: Installat°, matériel, outillage techniq."
           },
           {
             "name": "Invest. Sécurité: Frais d'études, recherche, développement",
@@ -7819,13 +8022,14 @@
             "fonction_ratio": 0.6298
           },
           {
-            "name": "Invest. Sécurité: Subventions d'équipement versées",
+            "name": "Invest. Sécurité: Subventions d'investissement",
             "value": 28055.99999999907,
             "fonction": "Autres",
             "flow_category": "Subventions (investissement)",
             "fonction_confidence": "medium",
             "fonction_imputed": true,
-            "fonction_ratio": 0.0997
+            "fonction_ratio": 0.0997,
+            "name_original": "Invest. Sécurité: Subventions d'équipement versées"
           },
           {
             "name": "Invest. Sécurité: Constructions",
@@ -7871,13 +8075,14 @@
             "fonction_ratio": 0.6856
           },
           {
-            "name": "Transports: Charges intervent° cpt prop. - Subvent°",
+            "name": "Transports: Subventions d'intervention",
             "value": 29292810.84,
             "fonction": "Transport sur route",
             "flow_category": "Subventions (fonctionnement)",
             "fonction_confidence": "high",
             "fonction_imputed": true,
-            "fonction_ratio": 0.9833
+            "fonction_ratio": 0.9833,
+            "name_original": "Transports: Charges intervent° cpt prop. - Subvent°"
           },
           {
             "name": "Transports: Entretien et réparations",
@@ -7889,22 +8094,24 @@
             "fonction_ratio": 0.6856
           },
           {
-            "name": "Transports: Charges interv. cpt propre - Aides pers.",
+            "name": "Transports: Aides aux personnes",
             "value": 21924187.0,
             "fonction": "Autres transports",
             "flow_category": "Transferts sociaux",
             "fonction_confidence": "high",
             "fonction_imputed": true,
-            "fonction_ratio": 1.0
+            "fonction_ratio": 1.0,
+            "name_original": "Transports: Charges interv. cpt propre - Aides pers."
           },
           {
-            "name": "Transports: Charges sécurité sociale et prévoyance",
+            "name": "Transports: Charges de sécurité sociale et prévoyance",
             "value": 13828953.249999998,
             "fonction": "Voirie communale",
             "flow_category": "Personnel",
             "fonction_confidence": "high",
             "fonction_imputed": true,
-            "fonction_ratio": 0.7308
+            "fonction_ratio": 0.7308,
+            "name_original": "Transports: Charges sécurité sociale et prévoyance"
           },
           {
             "name": "Transports: Autres impôts, taxes (Admin Impôts)",
@@ -7997,13 +8204,14 @@
             "fonction_ratio": 1.0
           },
           {
-            "name": "Transports: Charges sécurité sociale et prévoyance",
+            "name": "Transports: Charges de sécurité sociale et prévoyance",
             "value": 2658686.27,
             "fonction": "Halte fluv autre infra fl",
             "flow_category": "Personnel",
             "fonction_confidence": "high",
             "fonction_imputed": true,
-            "fonction_ratio": 0.1405
+            "fonction_ratio": 0.1405,
+            "name_original": "Transports: Charges sécurité sociale et prévoyance"
           },
           {
             "name": "Transports: Charges diverses de gestion courante",
@@ -8056,13 +8264,14 @@
             "fonction_ratio": 0.2113
           },
           {
-            "name": "Invest. Transports: Subventions d'équipement versées",
+            "name": "Invest. Transports: Subventions d'investissement",
             "value": 13091746.01,
             "fonction": "Transport ferroviaire",
             "flow_category": "Subventions (investissement)",
             "fonction_confidence": "high",
             "fonction_imputed": true,
-            "fonction_ratio": 0.9904
+            "fonction_ratio": 0.9904,
+            "name_original": "Invest. Transports: Subventions d'équipement versées"
           },
           {
             "name": "Invest. Transports: Immobilisations incorporelles en cours",
@@ -8164,13 +8373,14 @@
             "fonction_ratio": 0.3617
           },
           {
-            "name": "Invest. Transports: Installat°, matériel, outillage techniq.",
+            "name": "Invest. Transports: Installations, matériel et outillage",
             "value": 340833.0,
             "fonction": "Voirie communale",
             "flow_category": "Immobilisations corporelles",
             "fonction_confidence": "high",
             "fonction_imputed": true,
-            "fonction_ratio": 0.8313
+            "fonction_ratio": 0.8313,
+            "name_original": "Invest. Transports: Installat°, matériel, outillage techniq."
           },
           {
             "name": "Invest. Transports: Immobilisations incorporelles en cours",
@@ -8200,13 +8410,14 @@
             "fonction_ratio": 0.1005
           },
           {
-            "name": "Invest. Transports: Subventions d'équipement versées",
+            "name": "Invest. Transports: Subventions d'investissement",
             "value": 126898.99000000022,
             "fonction": "Autres",
             "flow_category": "Subventions (investissement)",
             "fonction_confidence": "medium",
             "fonction_imputed": true,
-            "fonction_ratio": 0.0997
+            "fonction_ratio": 0.0997,
+            "name_original": "Invest. Transports: Subventions d'équipement versées"
           }
         ]
       }
@@ -8266,7 +8477,8 @@
             "value": 15200443.29,
             "fonction": "Non spécifié",
             "flow_category": "Études",
-            "fonction_confidence": "unknown"
+            "fonction_confidence": "unknown",
+            "name_original": "Autres: Frais d'études"
           },
           {
             "name": "Autres: Provisions pour litiges et contentieux",
