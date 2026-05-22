@@ -357,8 +357,9 @@
           "value": 5519371.01
         },
         {
-          "name": "Action Sociale: Autres (Dotations versées par la CNSA)",
-          "value": 5276985.0
+          "name": "Action Sociale: Autres (dotations CNSA)",
+          "value": 5276985.0,
+          "name_original": "Action Sociale: Autres (Dotations versées par la CNSA)"
         },
         {
           "name": "APA: Recouvrements des indus d’insertion et d’aide sociale - APA",
@@ -383,16 +384,19 @@
           "value": 895035266.13
         },
         {
-          "name": "Fiscalité Indirecte: Fraction compensatoire de la TFPB et de la taxe d’habitation sur les résidences principales",
-          "value": 764774651.0
+          "name": "Fiscalité Indirecte: Fraction compensatoire TFPB + taxe d'habitation",
+          "value": 764774651.0,
+          "name_original": "Fiscalité Indirecte: Fraction compensatoire de la TFPB et de la taxe d’habitation sur les résidences principales"
         },
         {
-          "name": "Fiscalité Indirecte: Fraction compensatoire de la CVAE",
-          "value": 556863515.0
+          "name": "Fiscalité Indirecte: Fraction compensatoire CVAE",
+          "value": 556863515.0,
+          "name_original": "Fiscalité Indirecte: Fraction compensatoire de la CVAE"
         },
         {
-          "name": "Fiscalité Directe: Attribution de compensation CVAE – Département – Région",
-          "value": 475293963.0
+          "name": "Fiscalité Directe: Attribution de compensation CVAE (Département / Région)",
+          "value": 475293963.0,
+          "name_original": "Fiscalité Directe: Attribution de compensation CVAE – Département – Région"
         },
         {
           "name": "Fiscalité Indirecte: Taxe communale additionnelle aux droits de mutation ou à lataxe de publicité foncière",
@@ -449,16 +453,18 @@
           "value": 149369942.73
         },
         {
-          "name": "Dotations État: État - Compensation au titre de la Contribution Économique Territoriale (CVAE et CFE)",
-          "value": 32478494.0
+          "name": "Dotations État: Compensation État (Contribution Économique Territoriale)",
+          "value": 32478494.0,
+          "name_original": "Dotations État: État - Compensation au titre de la Contribution Économique Territoriale (CVAE et CFE)"
         },
         {
           "name": "Dotations État: État - Compensation au titre des exonérations de taxes foncières",
           "value": 21505376.0
         },
         {
-          "name": "Dotations État: DGD des communes et EPCI - DGD",
-          "value": 15808712.15
+          "name": "Dotations État: DGD des communes et intercommunalités",
+          "value": 15808712.15,
+          "name_original": "Dotations État: DGD des communes et EPCI - DGD"
         },
         {
           "name": "Dotations État: FCTVA",
@@ -523,8 +529,9 @@
           "value": 7471058.65
         },
         {
-          "name": "Invest. Éducation: Fonds affectés (amortissable) -  Dotation départementale d'équipement des collèges",
-          "value": 5772056.0
+          "name": "Invest. Éducation: Dotation départementale d'équipement des collèges (fonds affectés)",
+          "value": 5772056.0,
+          "name_original": "Invest. Éducation: Fonds affectés (amortissable) -  Dotation départementale d'équipement des collèges"
         },
         {
           "name": "Invest. Environnement: Etat et établissement nationaux",
@@ -2223,11 +2230,12 @@
           "fonction_confidence": "ca"
         },
         {
-          "name": "Charges Fiscales: Prélèvement au titre du fonds national de         péréquation des DMTO perçus par les départements",
+          "name": "Charges Fiscales: Prélèvement national péréquation DMTO",
           "value": 234701081.0,
           "fonction": "Opérations non ventilable",
           "flow_category": "Reversements péréquation",
-          "fonction_confidence": "ca"
+          "fonction_confidence": "ca",
+          "name_original": "Charges Fiscales: Prélèvement au titre du fonds national de         péréquation des DMTO perçus par les départements"
         },
         {
           "name": "Reversements Fiscaux: Communes (FSRIF)",
@@ -3864,11 +3872,12 @@
           "fonction_confidence": "ca"
         },
         {
-          "name": "Sécurité: Personnel titulaire - NBI",
+          "name": "Sécurité: NBI (Nouvelle Bonification Indiciaire)",
           "value": 916688.28,
           "fonction": "Police, sécurité, justice",
           "flow_category": "Personnel",
-          "fonction_confidence": "ca"
+          "fonction_confidence": "ca",
+          "name_original": "Sécurité: Personnel titulaire - NBI"
         },
         {
           "name": "Sécurité: Cotisations aux caisses de retraite",
@@ -4065,11 +4074,12 @@
           "fonction_confidence": "ca"
         },
         {
-          "name": "Opérations Financières: Intérêts - rattachement des ICNE",
+          "name": "Opérations Financières: Intérêts — rattachement des ICNE (intérêts courus non échus)",
           "value": 21358137.53,
           "fonction": "Opérations non ventilable",
           "flow_category": "Charges financières",
-          "fonction_confidence": "ca"
+          "fonction_confidence": "ca",
+          "name_original": "Opérations Financières: Intérêts - rattachement des ICNE"
         },
         {
           "name": "Remboursement Dette: Autres organismes particuliers",

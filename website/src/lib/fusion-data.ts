@@ -3723,6 +3723,10 @@ export type BudgetPosteSubPoste = {
   fonction_imputed?: boolean;
   /** Ratio de cette fonction dans le combo historique (0-1), ex 0.42 = 42%. */
   fonction_ratio?: number;
+  /** Libellé technique original (BP/CA officiel) si réécrit en grand-public.
+   *  Utilisé en tooltip pour la transparence : le visiteur voit le libellé clair,
+   *  l'audit/élu peut survoler pour voir l'intitulé d'origine du document budgétaire. */
+  name_original?: string;
 };
 
 export type BudgetPosteFiche = {

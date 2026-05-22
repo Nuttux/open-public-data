@@ -383,16 +383,18 @@
           "value": 978463518.0
         },
         {
-          "name": "Fiscalité Indirecte: Fraction compensatoire de la TFPB et de la taxe d’habitation sur les résidences principales",
-          "value": 675737741.0
+          "name": "Fiscalité Indirecte: Fraction compensatoire TFPB + taxe d'habitation",
+          "value": 675737741.0,
+          "name_original": "Fiscalité Indirecte: Fraction compensatoire de la TFPB et de la taxe d’habitation sur les résidences principales"
         },
         {
           "name": "Fiscalité Directe: Cotisation sur la valeur ajoutée des entreprises",
           "value": 531377228.0
         },
         {
-          "name": "Fiscalité Directe: Attribution de compensation CVAE - Département - Région",
-          "value": 475293963.0
+          "name": "Fiscalité Directe: Attribution de compensation CVAE (Département / Région)",
+          "value": 475293963.0,
+          "name_original": "Fiscalité Directe: Attribution de compensation CVAE - Département - Région"
         },
         {
           "name": "Fiscalité Indirecte: Taxe communale additionnelle aux droits de mutation ou à lataxe de publicité foncière",
@@ -457,12 +459,14 @@
           "value": 30962794.0
         },
         {
-          "name": "Dotations État: État - Compensation au titre de la Contribution Économique Territoriale (CVAE et CFE)",
-          "value": 22752069.0
+          "name": "Dotations État: Compensation État (Contribution Économique Territoriale)",
+          "value": 22752069.0,
+          "name_original": "Dotations État: État - Compensation au titre de la Contribution Économique Territoriale (CVAE et CFE)"
         },
         {
-          "name": "Dotations État: DGD des communes et EPCI - DGD",
-          "value": 15804226.15
+          "name": "Dotations État: DGD des communes et intercommunalités",
+          "value": 15804226.15,
+          "name_original": "Dotations État: DGD des communes et EPCI - DGD"
         },
         {
           "name": "Dotations État: État - Compensation au titre des exonérations de taxes foncières",
@@ -519,8 +523,9 @@
           "value": 6332815.19
         },
         {
-          "name": "Invest. Éducation: Fonds affectés (amortissable) -  Dotation départementale d'équipement des collèges",
-          "value": 5772056.0
+          "name": "Invest. Éducation: Dotation départementale d'équipement des collèges (fonds affectés)",
+          "value": 5772056.0,
+          "name_original": "Invest. Éducation: Fonds affectés (amortissable) -  Dotation départementale d'équipement des collèges"
         },
         {
           "name": "Invest. Éducation: Subventions (actifs non amortissables) - État et établissements nationaux",
@@ -583,8 +588,9 @@
           "value": 933105.47
         },
         {
-          "name": "Invest. Éducation: Fonds européens - FEDER",
-          "value": 930624.02
+          "name": "Invest. Éducation: Fonds européens (FEDER)",
+          "value": 930624.02,
+          "name_original": "Invest. Éducation: Fonds européens - FEDER"
         },
         {
           "name": "Invest. Aménagement: Dotation de soutien à l'investissement local",
@@ -2226,11 +2232,12 @@
           "fonction_confidence": "ca"
         },
         {
-          "name": "Charges Fiscales: Prélèvement au titre du fonds national de         péréquation des DMTO perçus par les départements",
+          "name": "Charges Fiscales: Prélèvement national péréquation DMTO",
           "value": 225001519.0,
           "fonction": "Opérations non ventilable",
           "flow_category": "Reversements péréquation",
-          "fonction_confidence": "ca"
+          "fonction_confidence": "ca",
+          "name_original": "Charges Fiscales: Prélèvement au titre du fonds national de         péréquation des DMTO perçus par les départements"
         },
         {
           "name": "Reversements Fiscaux: Communes (FSRIF)",
@@ -3848,11 +3855,12 @@
           "name_original": "Sécurité: Personnel non titulaire - Rémunérations"
         },
         {
-          "name": "Sécurité: Personnel titulaire - NBI",
+          "name": "Sécurité: NBI (Nouvelle Bonification Indiciaire)",
           "value": 882662.64,
           "fonction": "Police, sécurité, justice",
           "flow_category": "Personnel",
-          "fonction_confidence": "ca"
+          "fonction_confidence": "ca",
+          "name_original": "Sécurité: Personnel titulaire - NBI"
         },
         {
           "name": "Sécurité: Subventions de fonctionnement aux organismes publics - Organismes publics divers",
@@ -4021,11 +4029,12 @@
           "fonction_confidence": "ca"
         },
         {
-          "name": "Sécurité: Personnel titulaire - NBI",
+          "name": "Sécurité: NBI (Nouvelle Bonification Indiciaire)",
           "value": 59546.19,
           "fonction": "Services communs",
           "flow_category": "Personnel",
-          "fonction_confidence": "ca"
+          "fonction_confidence": "ca",
+          "name_original": "Sécurité: Personnel titulaire - NBI"
         },
         {
           "name": "Invest. Sécurité: Autres",
@@ -4128,11 +4137,12 @@
           "fonction_confidence": "ca"
         },
         {
-          "name": "Opérations Financières: Intérêts - rattachement des ICNE",
+          "name": "Opérations Financières: Intérêts — rattachement des ICNE (intérêts courus non échus)",
           "value": 1440013.59,
           "fonction": "Opérations non ventilable",
           "flow_category": "Charges financières",
-          "fonction_confidence": "ca"
+          "fonction_confidence": "ca",
+          "name_original": "Opérations Financières: Intérêts - rattachement des ICNE"
         },
         {
           "name": "Remboursement Dette: Autres établissements publics",

@@ -83,6 +83,9 @@ type GroupedRow = {
   /** `ode_categorie_flux` brut depuis le pipeline (traduit + raccourci au render). */
   flow?: string;
   rank: number;
+  /** Libellé technique original (BP/CA officiel), si différent du `name` friendly.
+   *  Affiché en tooltip pour audit / vérification source. */
+  original?: string;
 };
 
 type Group = {
@@ -137,11 +140,20 @@ function groupSubPostes(poste: BudgetPosteFiche): { groups: Group[]; mode: "fonc
       order.push(key);
     }
     g.total += it.value;
+    // Extraire le libellé original (sans préfixe section) pour le tooltip
+    let original: string | undefined;
+    if (it.name_original && it.name_original !== it.name) {
+      const prefix = `${poste.label}: `;
+      original = it.name_original.startsWith(prefix)
+        ? it.name_original.slice(prefix.length)
+        : it.name_original;
+    }
     g.items.push({
       name: rowName,
       value: it.value,
       flow: mode === "fonction" ? it.flow_category : undefined,
       rank: i + 1,
+      original,
     });
     // Propagate worst confidence to group level (ca < high < medium < unknown)
     const order_conf = { ca: 0, high: 1, medium: 2, unknown: 3 } as const;
@@ -242,9 +254,17 @@ export default function PosteFiche({ poste }: Props) {
             <ul>
               {g.items.map((it) => {
                 const flowShort = shortFlow(it.flow, locale);
+                const lblTitle = it.original
+                  ? (locale === "en"
+                      ? `Original label (M57): ${it.original}`
+                      : `Libellé d'origine (M57) : ${it.original}`)
+                  : undefined;
                 return (
                   <li key={it.rank}>
-                    <span className="lbl">{it.name}</span>
+                    <span className="lbl" title={lblTitle}>
+                      {it.name}
+                      {it.original && <span className="fx-poste-orig-marker" aria-hidden="true"> ⓘ</span>}
+                    </span>
                     {flowShort && (
                       <span className="fx-poste-tag" title={it.flow}>{flowShort}</span>
                     )}

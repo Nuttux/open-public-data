@@ -345,8 +345,9 @@
           "value": 5587453.2
         },
         {
-          "name": "Action Sociale: Autres (Dotations versées par la CNSA)",
-          "value": 4735614.19
+          "name": "Action Sociale: Autres (dotations CNSA)",
+          "value": 4735614.19,
+          "name_original": "Action Sociale: Autres (Dotations versées par la CNSA)"
         },
         {
           "name": "APA: Recouvrements des indus d’insertion et d’aide sociale - APA",
@@ -383,16 +384,19 @@
           "value": 978463518.0
         },
         {
-          "name": "Fiscalité Indirecte: Fraction compensatoire de la TFPB et de la taxe d’habitation sur les résidences principales",
-          "value": 764999182.0
+          "name": "Fiscalité Indirecte: Fraction compensatoire TFPB + taxe d'habitation",
+          "value": 764999182.0,
+          "name_original": "Fiscalité Indirecte: Fraction compensatoire de la TFPB et de la taxe d’habitation sur les résidences principales"
         },
         {
-          "name": "Fiscalité Indirecte: Fraction compensatoire de la CVAE",
-          "value": 557016140.0
+          "name": "Fiscalité Indirecte: Fraction compensatoire CVAE",
+          "value": 557016140.0,
+          "name_original": "Fiscalité Indirecte: Fraction compensatoire de la CVAE"
         },
         {
-          "name": "Fiscalité Directe: Attribution de compensation CVAE – Département – Région",
-          "value": 475293963.0
+          "name": "Fiscalité Directe: Attribution de compensation CVAE (Département / Région)",
+          "value": 475293963.0,
+          "name_original": "Fiscalité Directe: Attribution de compensation CVAE – Département – Région"
         },
         {
           "name": "Fiscalité Indirecte: Taxe communale additionnelle aux droits de mutation ou à lataxe de publicité foncière",
@@ -445,16 +449,18 @@
           "value": 98957343.09
         },
         {
-          "name": "Dotations État: État - Compensation au titre de la Contribution Économique Territoriale (CVAE et CFE)",
-          "value": 28204805.0
+          "name": "Dotations État: Compensation État (Contribution Économique Territoriale)",
+          "value": 28204805.0,
+          "name_original": "Dotations État: État - Compensation au titre de la Contribution Économique Territoriale (CVAE et CFE)"
         },
         {
           "name": "Dotations État: État - Compensation au titre des exonérations de taxes foncières",
           "value": 16731743.0
         },
         {
-          "name": "Dotations État: DGD des communes et EPCI - DGD",
-          "value": 15804226.15
+          "name": "Dotations État: DGD des communes et intercommunalités",
+          "value": 15804226.15,
+          "name_original": "Dotations État: DGD des communes et EPCI - DGD"
         },
         {
           "name": "Dotations État: FCTVA",
@@ -511,8 +517,9 @@
           "value": 9449451.559999999
         },
         {
-          "name": "Invest. Éducation: Fonds affectés (amortissable) -  Dotation départementale d'équipement des collèges",
-          "value": 5772056.0
+          "name": "Invest. Éducation: Dotation départementale d'équipement des collèges (fonds affectés)",
+          "value": 5772056.0,
+          "name_original": "Invest. Éducation: Fonds affectés (amortissable) -  Dotation départementale d'équipement des collèges"
         },
         {
           "name": "Invest. Culture: Dotation de soutien à l'investissement local",
@@ -2178,10 +2185,11 @@
         {
           "name": "Éducation: Rémunération du personnel non titulaire",
           "value": 2450037.02,
-          "fonction": "CNFPT – Form. actifs occu",
+          "fonction": "CNFPT — formation des actifs occupés",
           "flow_category": "Personnel",
           "fonction_confidence": "ca",
-          "name_original": "Éducation: Personnel non titulaire - Rémunérations"
+          "name_original": "Éducation: Personnel non titulaire - Rémunérations",
+          "fonction_original": "CNFPT – Form. actifs occu"
         },
         {
           "name": "Invest. Éducation: Subventions aux établissements scolaires publics -Biens mobiliers, matériel et études",
@@ -2214,11 +2222,12 @@
           "fonction_confidence": "ca"
         },
         {
-          "name": "Charges Fiscales: Prélèvement au titre du fonds national de         péréquation des DMTO perçus par les départements",
+          "name": "Charges Fiscales: Prélèvement national péréquation DMTO",
           "value": 266251780.0,
           "fonction": "Opérations non ventilable",
           "flow_category": "Reversements péréquation",
-          "fonction_confidence": "ca"
+          "fonction_confidence": "ca",
+          "name_original": "Charges Fiscales: Prélèvement au titre du fonds national de         péréquation des DMTO perçus par les départements"
         },
         {
           "name": "Reversements Fiscaux: Communes (FSRIF)",
@@ -3884,11 +3893,12 @@
           "fonction_confidence": "ca"
         },
         {
-          "name": "Sécurité: Personnel titulaire - NBI",
+          "name": "Sécurité: NBI (Nouvelle Bonification Indiciaire)",
           "value": 756217.73,
           "fonction": "Police, sécurité, justice",
           "flow_category": "Personnel",
-          "fonction_confidence": "ca"
+          "fonction_confidence": "ca",
+          "name_original": "Sécurité: Personnel titulaire - NBI"
         },
         {
           "name": "Sécurité: Cotisations à l'U.R.S.S.A.F.",
@@ -4099,11 +4109,12 @@
           "fonction_confidence": "ca"
         },
         {
-          "name": "Opérations Financières: Intérêts - rattachement des ICNE",
+          "name": "Opérations Financières: Intérêts — rattachement des ICNE (intérêts courus non échus)",
           "value": 4464110.83,
           "fonction": "Opérations non ventilable",
           "flow_category": "Charges financières",
-          "fonction_confidence": "ca"
+          "fonction_confidence": "ca",
+          "name_original": "Opérations Financières: Intérêts - rattachement des ICNE"
         },
         {
           "name": "Remboursement Dette: Avances remboursables",
