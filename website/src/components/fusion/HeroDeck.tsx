@@ -66,12 +66,6 @@ export default function HeroDeck({ stats }: Props) {
   return (
     <section className="fx-hero-deck" id="hero-deck" aria-label={t("fx.land.deck.aria")}>
       <div className="fx-wrap">
-        <h2 className="fx-hero-deck-h2">
-          {t("fx.land.deck.h2.before")}
-          <em>{t("fx.land.deck.h2.em")}</em>
-          {t("fx.land.deck.h2.dot")}
-        </h2>
-
         <div className="fx-hero-deck-rail" role="group">
           {fp && (
             <HeroDeckCard

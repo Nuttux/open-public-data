@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import { useLocale } from "@/lib/localeContext";
 
@@ -122,9 +123,20 @@ export default function HeroMarquee() {
   // L'animation se déplace de -50%, ce qui ramène la 2ᵉ moitié à la position de la 1ʳᵉ.
   const doubled = [...ITEMS, ...ITEMS];
 
+  // Démarrage à un point aléatoire du cycle de 65s (pour ne pas voir toujours
+  // le même item d'abord). Appliqué post-mount pour éviter un mismatch
+  // d'hydration server/client.
+  const [delaySec, setDelaySec] = useState<number | null>(null);
+  useEffect(() => {
+    setDelaySec(-Math.random() * 65);
+  }, []);
+
   return (
     <section className="fx-marquee" aria-label={isEn ? "Scrolling preview of entities documented on this site" : "Aperçu défilant des entités documentées sur le site"}>
-      <div className="fx-marquee-track">
+      <div
+        className="fx-marquee-track"
+        style={delaySec !== null ? { animationDelay: `${delaySec}s` } : undefined}
+      >
         {doubled.map((item, i) => (
           <Link
             key={i}

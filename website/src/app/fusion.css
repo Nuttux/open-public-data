@@ -93,6 +93,7 @@ body:has(.theme-fusion) > div.pb-24 { padding-bottom: 0 !important; }
 
 /* ───── NAVBAR ────────────────────────────────────────── */
 .theme-fusion .fx-nav {
+  position: -webkit-sticky; /* fallback for older Safari + some in-app browsers */
   position: sticky;
   top: 0;
   z-index: 30;
@@ -102,13 +103,15 @@ body:has(.theme-fusion) > div.pb-24 { padding-bottom: 0 !important; }
   display: grid;
   grid-template-columns: auto 1fr auto auto auto;
   align-items: stretch;
-  transition: transform .22s ease;
-  will-change: transform;
+  /* note: pas de transition/will-change ici — ils créent un nouveau stacking
+   * context qui peut casser position:sticky sur Safari in-app browsers
+   * (Telegram, Instagram, etc.). La fonction "auto-hide on scroll" n'est
+   * pas implémentée dans le code (la classe .fx-nav-hidden plus bas est
+   * orpheline, conservée pour compat si jamais réintroduite). */
 }
-.theme-fusion .fx-nav-hidden { transform: translateY(-100%); }
+.theme-fusion .fx-nav-hidden { transform: translateY(-100%); transition: transform .22s ease; }
 @media (prefers-reduced-motion: reduce) {
-  .theme-fusion .fx-nav { transition: none; }
-  .theme-fusion .fx-nav-hidden { transform: none; }
+  .theme-fusion .fx-nav-hidden { transform: none; transition: none; }
 }
 
 .theme-fusion .fx-brand {
@@ -564,21 +567,29 @@ body:has(.theme-fusion) > div.pb-24 { padding-bottom: 0 !important; }
 }
 .theme-fusion .fx-hero-num-cap b { color: var(--ink); font-weight: 600; }
 
-/* ───── HERO DECK (remplace SCALE) ────────────────────── */
+/* ───── HERO DECK ────────────────────────────────────── */
+/* Pas de H2 ni border-top : le deck est la continuation visuelle du Hero.
+ * Le padding vertical est minimal car le flex parent (fx-hero-fold) gère
+ * l'alignement vertical sur desktop. Le .fx-wrap interne tient les cards
+ * et est centré verticalement par align-items:center du parent flex. */
 .theme-fusion .fx-hero-deck {
-  padding: 80px 0 96px;
-  border-bottom: 1px solid var(--ink);
+  padding: 24px 0;
+  width: 100%;
+  /* Pas de border-bottom : le HeroMarquee qui suit a déjà sa border-top
+   * (et bottom), donc empiler les deux fait une "barre noire" épaisse
+   * disgracieuse. La séparation visuelle est rendue par les borders du marquee. */
 }
+.theme-fusion .fx-hero-deck > .fx-wrap { width: 100%; }
 @media (max-width: 768px) {
-  .theme-fusion .fx-hero-deck { padding: 32px 0 48px; }
+  .theme-fusion .fx-hero-deck { padding: 24px 0 40px; }
 }
 .theme-fusion .fx-hero-deck-h2 {
   font-family: var(--f-disp);
   font-weight: 700;
-  font-size: clamp(28px, 4vw, 44px);
-  letter-spacing: -0.03em;
-  line-height: 1.05;
-  margin: 0 0 36px;
+  font-size: clamp(22px, 2.6vw, 30px);
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  margin: 0 0 24px;
   color: var(--ink);
 }
 .theme-fusion .fx-hero-deck-h2 em { font-style: italic; font-weight: 700; color: var(--ink-2); }
@@ -586,22 +597,37 @@ body:has(.theme-fusion) > div.pb-24 { padding-bottom: 0 !important; }
   .theme-fusion .fx-hero-deck-h2 { margin: 0 0 20px; }
 }
 
+/* Desktop ≥901px : grid 4 colonnes (4 cards en 1 ligne) */
 .theme-fusion .fx-hero-deck-rail {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 20px;
   align-items: stretch;
 }
-@media (max-width: 1100px) {
-  .theme-fusion .fx-hero-deck-rail { grid-template-columns: repeat(2, 1fr); }
+/* Mobile + tablet portrait + petits laptops : carousel horizontal swipeable.
+ * Couvre 320-900px → un seul pattern simple, pas de grid 2x2 problématique
+ * qui débordait du fold en hauteur. */
+@media (max-width: 900px) {
+  .theme-fusion .fx-hero-deck-rail {
+    display: flex;
+    grid-template-columns: none;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    margin-inline: -20px;
+    padding-inline: 20px;
+    gap: 12px;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+  }
+  .theme-fusion .fx-hero-deck-rail::-webkit-scrollbar { display: none; }
 }
-@media (max-width: 600px) {
-  .theme-fusion .fx-hero-deck-rail { grid-template-columns: 1fr; gap: 14px; }
-}
-.theme-fusion .fx-hero-deck-rail::-webkit-scrollbar { height: 6px; }
-.theme-fusion .fx-hero-deck-rail::-webkit-scrollbar-thumb {
-  background: var(--muted-2);
-  border-radius: 3px;
+@media (min-width: 901px) {
+  .theme-fusion .fx-hero-deck-rail::-webkit-scrollbar { height: 6px; }
+  .theme-fusion .fx-hero-deck-rail::-webkit-scrollbar-thumb {
+    background: var(--muted-2);
+    border-radius: 3px;
+  }
 }
 
 .theme-fusion .fx-hero-deck-card {
@@ -613,6 +639,25 @@ body:has(.theme-fusion) > div.pb-24 { padding-bottom: 0 !important; }
   color: inherit;
   transition: transform .15s ease, box-shadow .15s ease, background .15s ease;
   min-height: 340px;
+}
+/* Carousel mode (≤900px) : chaque card occupe une fraction du viewport,
+ * snap aligné sur le début (1re card edge-to-edge). Largeur ajustée selon
+ * la taille viewport pour préserver le peek de la suivante. */
+@media (max-width: 900px) {
+  .theme-fusion .fx-hero-deck-card {
+    flex: 0 0 48%; /* tablet : ~2 cards par viewport + peek */
+    scroll-snap-align: start;
+    min-height: 360px;
+  }
+}
+@media (max-width: 600px) {
+  .theme-fusion .fx-hero-deck-card {
+    flex: 0 0 86%; /* mobile : 1 card + peek */
+  }
+}
+@media (max-width: 380px) {
+  /* Très petits écrans (iPhone SE) : card un peu plus large pour rester lisible */
+  .theme-fusion .fx-hero-deck-card { flex: 0 0 92%; }
 }
 .theme-fusion .fx-hero-deck-card:hover {
   transform: translateY(-1px);
@@ -763,18 +808,8 @@ body:has(.theme-fusion) > div.pb-24 { padding-bottom: 0 !important; }
 }
 
 @media (max-width: 768px) {
-  .theme-fusion .fx-hero-deck-rail {
-    flex-direction: column;
-    overflow: visible;
-    scroll-snap-type: none;
-    padding: 0;
-    gap: 14px;
-  }
-  .theme-fusion .fx-hero-deck-card {
-    flex: 0 0 auto;
-    width: 100%;
-    min-height: auto;
-  }
+  /* Cards mobile : ajustements typographiques (le layout horizontal est géré
+   * dans le bloc carousel ci-dessus, via @media max-width:600px). */
   .theme-fusion .fx-hero-deck-title { font-size: 20px; }
   .theme-fusion .fx-hero-deck-num { font-size: clamp(44px, 13vw, 64px); }
   .theme-fusion .fx-hero-deck-body { padding: 20px 20px 20px; }
@@ -854,13 +889,14 @@ body:has(.theme-fusion) > div.pb-24 { padding-bottom: 0 !important; }
   .theme-fusion .fx-marquee-amount { font-size: 11px; }
 }
 
-/* ───── ACTE 2 — ÉCHELLE (décompo 462€/mois) ────────── */
+/* ───── ACTE 2 — ÉCHELLE + DÉTAIL (chiffre intro → décompo en 6 sections) ────────── */
+/* Pas de border-bottom : l'échelle et le chip-strip lisent comme une seule séquence
+ * "chiffre global → décomposition". Le border est rendu par le chip-strip à la fin. */
 .theme-fusion .fx-echelle {
-  padding: 96px 0 88px;
-  border-bottom: 1px solid var(--ink);
+  padding: 96px 0 32px;
 }
 @media (max-width: 768px) {
-  .theme-fusion .fx-echelle { padding: 40px 0 48px; }
+  .theme-fusion .fx-echelle { padding: 40px 0 20px; }
 }
 .theme-fusion .fx-echelle-h2 {
   font-family: var(--f-disp);
@@ -923,13 +959,21 @@ body:has(.theme-fusion) > div.pb-24 { padding-bottom: 0 !important; }
   .theme-fusion .fx-echelle-sub { font-size: 14px; }
 }
 
-/* ───── ACTE 4 — CHIP STRIP (explorer aussi) ────────── */
+/* ───── ACTE 4 — CHIP STRIP (la décomposition du 462€ par section) ────────── */
 .theme-fusion .fx-chip-strip {
-  padding: 56px 0 64px;
+  padding: 32px 0 64px;
   border-bottom: 1px solid var(--ink);
 }
 @media (max-width: 768px) {
-  .theme-fusion .fx-chip-strip { padding: 32px 0 40px; }
+  .theme-fusion .fx-chip-strip { padding: 20px 0 40px; }
+}
+.theme-fusion .fx-chip-strip-kicker {
+  font-family: var(--f-mono);
+  font-size: 11.5px;
+  color: var(--ocre);
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  margin: 0 0 14px;
 }
 .theme-fusion .fx-chip-strip-h2 {
   font-family: var(--f-disp);
@@ -5092,11 +5136,26 @@ body:has(.theme-fusion) > div.pb-24 { padding-bottom: 0 !important; }
 }
 
 /* Hero */
+/* ─── ZONE FOLD : Hero + HeroDeck + HeroMarquee tiennent dans le 1er
+ *     viewport, marquee collé au bas, peu importe la hauteur du browser.
+ *     S'applique aussi à mobile (cards passent en carousel horizontal). */
+.theme-fusion .fx-hero-fold {
+  min-height: calc(100dvh - 56px); /* 100% viewport - navbar height */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* répartit l'espace : Hero haut, Deck milieu, Marquee bas */
+}
+.theme-fusion .fx-hero-fold > .fx-hero { flex: 0 0 auto; }
+.theme-fusion .fx-hero-fold > .fx-hero-deck { flex: 0 0 auto; }
+.theme-fusion .fx-hero-fold > .fx-marquee { flex: 0 0 auto; }
+
+/* Hero sans lede : juste le H1 (style éditorial). Pas d'overflow:hidden :
+ * le menu dropdown du H1 (ScopeDropdown) doit pouvoir sortir verticalement.
+ * Le HeroBg est contraint via bottom:0.
+ * Padding optimisé pour tenir avec Deck + Marquee dans un viewport ~900px. */
 .theme-fusion .fx-hero {
-  padding: 112px 0 96px;
-  border-bottom: 1px solid var(--ink);
+  padding: 56px 0 24px;
   position: relative;
-  overflow: hidden;
 }
 .theme-fusion .fx-hero .fx-wrap { position: relative; z-index: 1; }
 .theme-fusion .fx-hero h1 {
@@ -5116,14 +5175,14 @@ body:has(.theme-fusion) > div.pb-24 { padding-bottom: 0 !important; }
   line-height: 1.55;
   color: var(--ink-2);
   max-width: 640px;
-  margin: 0 0 40px;
+  margin: 0 0 24px;
 }
 .theme-fusion .fx-hero .fx-ctas { display: flex; gap: 10px; flex-wrap: wrap; }
 
 .theme-fusion .fx-hero-bg {
   position: absolute;
-  right: -40px;
-  bottom: -30px;
+  right: 0;
+  bottom: 0;
   width: min(520px, 62%);
   height: auto;
   color: var(--ink);
@@ -5142,10 +5201,15 @@ body:has(.theme-fusion) > div.pb-24 { padding-bottom: 0 !important; }
 @media (max-width: 768px) { .theme-fusion .fx-hero-bg { display: none; } }
 
 @media (max-width: 768px) {
-  .theme-fusion .fx-hero { padding: 56px 0 48px; }
+  /* Mobile : padding compact pour laisser place au Deck (carousel) + Marquee
+   * collé au bas du fold via flex parent fx-hero-fold. */
+  .theme-fusion .fx-hero { padding: 40px 0 16px; }
   .theme-fusion .fx-hero .fx-lede { font-size: 16px; }
-  .theme-fusion .fx-hero .fx-ctas { flex-direction: column; align-items: stretch; }
-  .theme-fusion .fx-hero .fx-ctas .fx-btn { text-align: center; }
+}
+@media (max-width: 768px) {
+  /* Sur mobile, le Deck horizontal carousel veut son padding-bottom limité
+   * pour que le marquee remonte vers le bas du fold. */
+  .theme-fusion .fx-hero-deck { padding: 16px 0; }
 }
 
 /* Scale section */

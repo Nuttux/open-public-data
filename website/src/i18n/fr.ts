@@ -1179,8 +1179,8 @@ const fr: Record<string, string> = {
   'fx.land.h1.em': "l'argent public",
   'fx.land.h1.mid': 'à ',
   'fx.land.h1.after': ' ?',
-  'fx.land.lede.vote': "Comprendre où va l'argent public à Paris, ligne par ligne. Budget, marchés publics, subventions, dette, logement, projets — chaque chiffre vient des comptes officiels de la Ville.",
-  'fx.land.lede.execute': "Comprendre où va l'argent public à Paris, ligne par ligne. Budget, marchés publics, subventions, dette, logement, projets — chaque chiffre vient des comptes officiels de la Ville.",
+  'fx.land.lede.vote': "Comprendre où va l'argent public, ligne par ligne.",
+  'fx.land.lede.execute': "Comprendre où va l'argent public, ligne par ligne.",
   /** @deprecated remplacé par fx.land.lede.vote/execute (audit 2026-05-19 — mix annuel/cumul) */
   'fx.land.lede': "{budget} milliards d'euros de dépenses publiques, {nbMarches} marchés, {nbSubventions} subventions. Tout est ici, ligne par ligne, sourcé aux comptes officiels.",
   'fx.land.cta.explore': 'Ouvrir les comptes {year} →',
@@ -1226,8 +1226,9 @@ const fr: Record<string, string> = {
   'fx.land.echelle.autres': "Autres",
   // Chip strip (Acte 4 — explorer toutes les sections)
   'fx.land.chips.aria': "Liens vers toutes les sections du site",
-  'fx.land.chips.h2.before': "Et il y a aussi ",
-  'fx.land.chips.h2.em': "tout ça",
+  'fx.land.chips.kicker': "— Explorer",
+  'fx.land.chips.h2.before': "Le détail, ",
+  'fx.land.chips.h2.em': "section par section",
   'fx.land.chips.h2.dot': ".",
   'fx.land.chips.budget': "Budget",
   'fx.land.chips.budget_desc': "Le flux complet des recettes aux dépenses, ventilé par fonction et par poste.",

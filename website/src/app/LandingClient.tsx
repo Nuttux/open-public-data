@@ -6,26 +6,21 @@ import Link from "next/link";
 // fusion-data).
 import Navbar from "@/components/fusion/Navbar";
 import Footer from "@/components/fusion/Footer";
-import Button from "@/components/fusion/Button";
 import ScopeDropdown from "@/components/fusion/ScopeDropdown";
 import HeroBg from "@/components/fusion/HeroBg";
 import HeroDeck from "@/components/fusion/HeroDeck";
 import HeroMarquee from "@/components/fusion/HeroMarquee";
-import BarRow from "@/components/fusion/BarRow";
 import CountUpOnReveal from "@/components/fusion/CountUpOnReveal";
 import { fmtInt, fmtBillions } from "@/lib/fmt";
 import type { LandingStats } from "@/lib/fusion-data";
 import type { BlogPostMeta } from "@/lib/blog";
 import { useT, useLocale } from "@/lib/localeContext";
-import { trLabel } from "@/lib/label-translate";
 
 type Props = { stats: LandingStats; posts: BlogPostMeta[] };
 
 export default function LandingClient({ stats, posts }: Props) {
   const t = useT();
   const { locale } = useLocale();
-  const deltaPct = stats.deltaVsLastExecutedPct;
-  const arrow = deltaPct < -0.1 ? "↓" : Math.abs(deltaPct) < 0.1 ? "→" : "↑";
 
   const fill = (key: string, vars: Record<string, string | number>) => {
     let s = t(key);
@@ -38,39 +33,27 @@ export default function LandingClient({ stats, posts }: Props) {
       <Navbar />
       <main id="main-content" tabIndex={-1}>
 
-      {/* HERO */}
-      <section className="fx-hero" id="hero">
-        <HeroBg />
-        <div className="fx-wrap">
-          <h1>
-            {t("fx.land.h1.before")}<em>{t("fx.land.h1.em")}</em>
-            <br />{t("fx.land.h1.mid")}
-            <ScopeDropdown variant="h1" />
-            {t("fx.land.h1.after")}
-          </h1>
-          <p className="fx-lede">
-            {fill(stats.budgetType === "vote" ? "fx.land.lede.vote" : "fx.land.lede.execute", {
-              budget: fmtBillions(stats.totalDepenses),
-              year: stats.year,
-              nbMarches: fmtInt(Math.floor(stats.nbMarchesCumul / 1000) * 1000),
-              nbSubventions: fmtInt(Math.floor(stats.nbSubventionsCumul / 1000) * 1000),
-              marchesSinceYear: stats.marchesSinceYear,
-              subventionsSinceYear: stats.subventionsSinceYear,
-            })}
-          </p>
-          <div className="fx-ctas">
-            <Button variant="primary" href="/ville/paris/budget">
-              {fill("fx.land.cta.explore", { year: stats.year })}
-            </Button>
+      {/* ─── ZONE FOLD (Hero + Deck + Marquee tiennent dans le 1er viewport,
+       *      marquee collé au bas du fold, adaptatif au viewport) ─── */}
+      <div className="fx-hero-fold">
+        <section className="fx-hero" id="hero">
+          <HeroBg />
+          <div className="fx-wrap">
+            <h1>
+              {t("fx.land.h1.before")}<em>{t("fx.land.h1.em")}</em>
+              <br />{t("fx.land.h1.mid")}
+              <ScopeDropdown variant="h1" />
+              {t("fx.land.h1.after")}
+            </h1>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* HERO MARQUEE — bande défilante d'entités cliquables (démontre la profondeur du site) */}
-      <HeroMarquee />
+        {/* HERO DECK — 4 cards concrètes, juste après le Hero */}
+        <HeroDeck stats={stats} />
 
-      {/* HERO DECK — remplace SCALE : 4 cards concrètes, cliquables vers fiches */}
-      <HeroDeck stats={stats} />
+        {/* HERO MARQUEE — bandeau défilant collé au bas du fold */}
+        <HeroMarquee />
+      </div>
 
       {/* ACTE 2 — Échelle : où vont les 462€/mois (sans H2, le chiffre EST le titre) */}
       <section className="fx-echelle" id="echelle">
@@ -83,31 +66,18 @@ export default function LandingClient({ stats, posts }: Props) {
             <span className="fx-echelle-per">{t("fx.land.echelle.per")}</span>
           </p>
           <p className="fx-echelle-delta">
-            <span aria-hidden="true">{arrow}</span>{" "}
-            <b>{Math.abs(deltaPct).toFixed(1).replace(".", ",")} %</b>{" "}
-            {fill("fx.land.echelle.vs", { year: stats.lastExecutedYear })}
-            <span className="fx-echelle-sep">·</span>
             {fill("fx.land.echelle.total", { amount: fmtBillions(stats.totalDepenses) })}
           </p>
-          <p className="fx-echelle-sub">{t("fx.land.echelle.sub")}</p>
-          <BarRow
-            reveal
-            items={stats.breakdown.map((b) => ({
-              label: b.label === "Autres (D)" ? t("fx.land.echelle.autres") : trLabel(b.label, locale),
-              value: b.perMonth,
-              unit: "€",
-              display: fmtInt(b.perMonth),
-              href: `/ville/paris/budget?year=${stats.year}#sec-flux`,
-            }))}
-          />
         </div>
       </section>
 
-      {/* ACTE 4 — Mini-cards "Explorer aussi" (avant analyses pour la discoverabilité)
-       *  H2 supprimé volontairement : les 6 cards parlent par elles-mêmes,
-       *  comme l'Échelle juste au-dessus (le chiffre 462 € est son propre titre). */}
+      {/* ACTE 4 — Mini-cards "Explorer par section" */}
       <section className="fx-chip-strip" id="explorer-aussi" aria-label={t("fx.land.chips.aria")}>
         <div className="fx-wrap">
+          <p className="fx-chip-strip-kicker">{t("fx.land.chips.kicker")}</p>
+          <h2 className="fx-chip-strip-h2">
+            {t("fx.land.chips.h2.before")}<em>{t("fx.land.chips.h2.em")}</em>{t("fx.land.chips.h2.dot")}
+          </h2>
           <ul className="fx-chip-strip-list">
             <li>
               <Link href="/ville/paris/budget">
@@ -152,28 +122,6 @@ export default function LandingClient({ stats, posts }: Props) {
               </Link>
             </li>
           </ul>
-        </div>
-      </section>
-
-      {/* MÉTHODE STRIP — bridge entre mini-cards/analyses : annonce le "comment c'est fait"
-       *  juste avant que le lecteur plonge dans les articles. */}
-      <section className="fx-meth-strip" id="meth-strip">
-        <div className="fx-wrap">
-          <Link href="/methode" className="fx-meth-strip-link">
-            <span className="fx-meth-strip-label">
-              {t("fx.land.meth_strip.label")}
-            </span>
-            <span className="fx-meth-strip-tags">
-              <span>{t("fx.land.meth_strip.tag1")}</span>
-              <span>·</span>
-              <span>{t("fx.land.meth_strip.tag2")}</span>
-              <span>·</span>
-              <span>{t("fx.land.meth_strip.tag3")}</span>
-            </span>
-            <span className="fx-meth-strip-cta">
-              {t("fx.land.meth_strip.cta")} <span aria-hidden="true">→</span>
-            </span>
-          </Link>
         </div>
       </section>
 
