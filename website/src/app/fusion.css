@@ -5206,8 +5206,14 @@ body:has(.theme-fusion) > div.pb-24 { padding-bottom: 0 !important; }
 @media (max-width: 768px) {
   /* Mobile : padding compact pour laisser place au Deck (carousel) + Marquee
    * collé au bas du fold via flex parent fx-hero-fold. */
-  .theme-fusion .fx-hero { padding: 40px 0 16px; }
+  .theme-fusion .fx-hero { padding: 24px 0 12px; }
   .theme-fusion .fx-hero .fx-lede { font-size: 16px; }
+  /* H1 mobile : clamp min réduit pour que "Où va l'argent public" tienne
+   * sur 1 ligne sur viewport 360-430 (au lieu de wrap en 3 lignes). */
+  .theme-fusion .fx-hero h1 {
+    font-size: clamp(28px, 8vw, 44px);
+    margin: 0 0 16px;
+  }
 }
 @media (max-width: 768px) {
   /* Sur mobile, le Deck horizontal carousel veut son padding-bottom limité
