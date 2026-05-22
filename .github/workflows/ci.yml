@@ -16,6 +16,7 @@ on:
     branches: [main, test]
   push:
     branches: [main, test]
+  workflow_dispatch:  # permet de lancer manuellement E2E/Lighthouse sur n'importe quelle branche
 
 concurrency:
   group: ci-${{ github.workflow }}-${{ github.ref }}
@@ -77,6 +78,10 @@ jobs:
   e2e:
     name: E2E (Playwright golden path)
     needs: build
+    # Ne tourne que sur push main (pas sur chaque PR) pour économiser les
+    # minutes Actions sur repos privés. Si besoin de tester E2E sur une
+    # PR spécifique, lancer manuellement via workflow_dispatch.
+    if: github.event_name == 'push' || github.event_name == 'workflow_dispatch'
     runs-on: ubuntu-latest
     timeout-minutes: 12
     defaults:
@@ -142,6 +147,11 @@ jobs:
   lighthouse:
     name: Lighthouse ${{ matrix.profile }}
     needs: build
+    # Ne tourne que sur push main pour économiser les minutes Actions
+    # (Lighthouse desktop + mobile = ~15-20 min cumulées). Pas critique
+    # de l'avoir sur chaque PR : on peut lancer manuellement si on
+    # touche à un truc perf-sensible.
+    if: github.event_name == 'push' || github.event_name == 'workflow_dispatch'
     runs-on: ubuntu-latest
     timeout-minutes: 10
     strategy:
