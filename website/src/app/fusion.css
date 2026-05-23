@@ -1049,6 +1049,9 @@ body:has(.theme-fusion) > div.pb-24 { padding-bottom: 0 !important; }
   font-size: 13.5px;
   line-height: 1.45;
   color: var(--muted);
+  /* Réserve 2 lignes de texte mini pour égaliser la hauteur des chips même
+   * quand certaines descs tiennent sur 1 ligne et d'autres wrappent sur 2. */
+  min-height: 2.9em;
 }
 
 /* ───── KPI GRID ──────────────────────────────────────── */
