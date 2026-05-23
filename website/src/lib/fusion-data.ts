@@ -301,20 +301,6 @@ export type LandingStats = {
   breakdown: { label: string; annual: number; perMonth: number }[];
   nbMarchesCumul: number;
   nbSubventionsCumul: number;
-  /** Bénéficiaires distincts (associations + structures) sur la période couverte. */
-  nbBeneficiairesDistincts: number;
-  /** Moyenne du nombre de projets d'investissement localisés par an. */
-  nbProjetsInvestPerYear: number;
-  /** Dette financière directe au dernier exercice exécuté (M€ → on stocke €). */
-  detteDirecte: number;
-  /** Dette garantie (capital restant dû — emprunts garantis par la Ville aux bailleurs). */
-  detteGarantie: number;
-  /** Demandes de logement social actives (dernière année disponible). */
-  logementDemandes: number;
-  /** Attributions de logement social (dernière année disponible). */
-  logementAttributions: number;
-  /** Année de référence des stats logement. */
-  logementYear: number;
   /** Première année de la couverture marchés (utilisée pour le lede "depuis YYYY"). */
   marchesSinceYear: number;
   /** Première année de la couverture subventions. */
@@ -579,59 +565,6 @@ export function loadLandingStats(): LandingStats {
     (s, v) => s + (v.nb_subventions ?? 0),
     0,
   );
-
-  // Bénéficiaires distincts (associations + structures) — count exposé par le
-  // search index. Utilisé pour la chip Subventions sur la landing.
-  let nbBeneficiairesDistincts = 0;
-  try {
-    const benSearch = readJson<{ count: number }>("subventions/beneficiaires_search.json");
-    nbBeneficiairesDistincts = benSearch.count ?? 0;
-  } catch {}
-
-  // Projets d'investissement localisés par an — moyenne sur les années dispo.
-  let nbProjetsInvestPerYear = 0;
-  try {
-    const invIdx = readJson<{ yearStats?: Record<string, { nb_projets?: number }> }>(
-      "map/investissements_localises_index.json",
-    );
-    const yearStats = invIdx.yearStats ?? {};
-    const counts = Object.values(yearStats).map((s) => s.nb_projets ?? 0).filter((n) => n > 0);
-    if (counts.length) nbProjetsInvestPerYear = counts.reduce((s, n) => s + n, 0) / counts.length;
-  } catch {}
-
-  // Dette directe + dette garantie — on prend l'année la plus récente du
-  // bilan, qui peut être plus à jour que le CA budget (bilan publié séparément).
-  let detteDirecte = 0;
-  let detteGarantie = 0;
-  try {
-    const bilanIdx = readJson<{ latestYear: number }>("bilan_index.json");
-    const bilanYear = bilanIdx.latestYear ?? lastExecutedYear;
-    try {
-      const bilan = readJson<{ totals: { dettes_financieres: number } }>(
-        `bilan_sankey_${bilanYear}.json`,
-      );
-      detteDirecte = bilan.totals.dettes_financieres ?? 0;
-    } catch {}
-    try {
-      const horsBilan = readJson<{ totals: { capital_restant: number } }>(
-        `hors_bilan_${bilanYear}.json`,
-      );
-      detteGarantie = horsBilan.totals.capital_restant ?? 0;
-    } catch {}
-  } catch {}
-
-  // Logement social — pression à l'attribution (dernière année DRIHL dispo).
-  let logementDemandes = 0;
-  let logementAttributions = 0;
-  let logementYear = year;
-  try {
-    const log = readJson<{ paris_total: { demandes_choix1: number; attributions: number; annee: number } }>(
-      "logement_attente_paris.json",
-    );
-    logementDemandes = log.paris_total.demandes_choix1 ?? 0;
-    logementAttributions = log.paris_total.attributions ?? 0;
-    logementYear = log.paris_total.annee ?? year;
-  } catch {}
   // Span temporel pour le lede transparent — sinon le user croit que les
   // nb_marches/nb_subventions sont annuels alors qu'ils sont cumulés.
   const marchesYears = Object.keys(marchesIdx.totalsByYear).map(Number).filter((y) => Number.isFinite(y));
@@ -744,13 +677,6 @@ export function loadLandingStats(): LandingStats {
     breakdown,
     nbMarchesCumul,
     nbSubventionsCumul,
-    nbBeneficiairesDistincts,
-    nbProjetsInvestPerYear,
-    detteDirecte,
-    detteGarantie,
-    logementDemandes,
-    logementAttributions,
-    logementYear,
     marchesSinceYear,
     subventionsSinceYear,
     capaciteDesendettement,
