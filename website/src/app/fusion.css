@@ -896,10 +896,10 @@ body:has(.theme-fusion) > div.pb-24 { padding-bottom: 0 !important; }
 /* Pas de border-bottom : l'échelle et le chip-strip lisent comme une seule séquence
  * "chiffre global → décomposition". Le border est rendu par le chip-strip à la fin. */
 .theme-fusion .fx-echelle {
-  padding: 96px 0 32px;
+  padding: 96px 0 16px;
 }
 @media (max-width: 768px) {
-  .theme-fusion .fx-echelle { padding: 40px 0 20px; }
+  .theme-fusion .fx-echelle { padding: 40px 0 8px; }
 }
 .theme-fusion .fx-echelle-h2 {
   font-family: var(--f-disp);
@@ -942,7 +942,7 @@ body:has(.theme-fusion) > div.pb-24 { padding-bottom: 0 !important; }
   font-size: 13px;
   color: var(--muted);
   letter-spacing: .02em;
-  margin: 0 0 32px;
+  margin: 0;
   display: inline-flex;
   align-items: baseline;
   gap: 10px;
@@ -964,11 +964,11 @@ body:has(.theme-fusion) > div.pb-24 { padding-bottom: 0 !important; }
 
 /* ───── ACTE 4 — CHIP STRIP (la décomposition du 462€ par section) ────────── */
 .theme-fusion .fx-chip-strip {
-  padding: 32px 0 64px;
+  padding: 16px 0 64px;
   border-bottom: 1px solid var(--ink);
 }
 @media (max-width: 768px) {
-  .theme-fusion .fx-chip-strip { padding: 20px 0 40px; }
+  .theme-fusion .fx-chip-strip { padding: 8px 0 40px; }
 }
 .theme-fusion .fx-chip-strip-kicker {
   font-family: var(--f-mono);

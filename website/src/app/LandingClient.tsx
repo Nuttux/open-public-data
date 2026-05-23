@@ -63,7 +63,12 @@ export default function LandingClient({ stats, posts }: Props) {
             <span className="fx-echelle-per">{t("fx.land.echelle.per")}</span>
           </p>
           <p className="fx-echelle-delta">
-            {fill("fx.land.echelle.total", { amount: fmtBillions(stats.totalDepenses) })}
+            {fill(
+              stats.budgetType === "execute"
+                ? "fx.land.echelle.total.executed"
+                : "fx.land.echelle.total",
+              { amount: fmtBillions(stats.totalDepenses) },
+            )}
           </p>
         </div>
       </section>
@@ -71,7 +76,6 @@ export default function LandingClient({ stats, posts }: Props) {
       {/* ACTE 4 — Mini-cards "Explorer par section" */}
       <section className="fx-chip-strip" id="explorer-aussi" aria-label={t("fx.land.chips.aria")}>
         <div className="fx-wrap">
-          <p className="fx-chip-strip-kicker">{t("fx.land.chips.kicker")}</p>
           <h2 className="fx-chip-strip-h2">
             {t("fx.land.chips.h2.before")}<em>{t("fx.land.chips.h2.em")}</em>{t("fx.land.chips.h2.dot")}
           </h2>
@@ -188,13 +192,13 @@ export default function LandingClient({ stats, posts }: Props) {
               <div className="fx-meth-n">{t("fx.land.meth.01.n")}</div>
               <h3>{t("fx.land.meth.01.h")}</h3>
               <p>{t("fx.land.meth.01.p")}</p>
-              <Link href="/methode">{t("fx.land.meth.01.cta")}</Link>
+              <Link href="/methode#sources">{t("fx.land.meth.01.cta")}</Link>
             </div>
             <div className="fx-meth-c">
               <div className="fx-meth-n">{t("fx.land.meth.02.n")}</div>
               <h3>{t("fx.land.meth.02.h")}</h3>
               <p>{t("fx.land.meth.02.p")}</p>
-              <Link href="/methode">{t("fx.land.meth.02.cta")}</Link>
+              <Link href="/methode#construction">{t("fx.land.meth.02.cta")}</Link>
             </div>
             <div className="fx-meth-c">
               <div className="fx-meth-n">{t("fx.land.meth.03.n")}</div>
