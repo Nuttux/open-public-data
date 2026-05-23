@@ -27,6 +27,40 @@ export default function LandingClient({ stats, posts }: Props) {
     return s;
   };
 
+  // Helpers d'arrondi éditorial — on n'affiche jamais "23 053", on dit
+  // "Plus de 23 000". Évite la fausse précision et le besoin de mettre à jour
+  // l'i18n à chaque rebuild du pipeline.
+  const fmtFr = (n: number) => Math.round(n).toLocaleString("fr-FR");
+  const floorTo = (n: number, step: number) => Math.floor(n / step) * step;
+  const nearestTo = (n: number, step: number) => Math.round(n / step) * step;
+
+  const chipsCtx = {
+    budget: {
+      budgetBn: Math.floor(stats.totalDepenses / 1e9),
+      year: stats.year,
+    },
+    invest: {
+      nbProjets: nearestTo(stats.nbProjetsInvestPerYear, 50) || 450,
+    },
+    subv: {
+      nbBenef: fmtFr(nearestTo(stats.nbBeneficiairesDistincts, 1000)),
+      sinceSubv: stats.subventionsSinceYear,
+    },
+    marches: {
+      nbContrats: fmtFr(floorTo(stats.nbMarchesCumul, 1000)),
+      sinceMarches: stats.marchesSinceYear,
+    },
+    dette: {
+      detteDirecteBn: (stats.detteDirecte / 1e9).toLocaleString("fr-FR", { maximumFractionDigits: 1, minimumFractionDigits: 1 }),
+      detteGarantieBn: (stats.detteGarantie / 1e9).toLocaleString("fr-FR", { maximumFractionDigits: 1, minimumFractionDigits: 1 }),
+    },
+    logement: {
+      demandes: fmtFr(nearestTo(stats.logementDemandes, 1000)),
+      attributions: fmtFr(floorTo(stats.logementAttributions, 1000)),
+      logYear: stats.logementYear,
+    },
+  };
+
   return (
     <div className="theme-fusion">
       <Navbar />
@@ -83,42 +117,42 @@ export default function LandingClient({ stats, posts }: Props) {
             <li>
               <Link href="/ville/paris/budget">
                 <span className="fx-chip-strip-title">{t("fx.land.chips.budget")}</span>
-                <span className="fx-chip-strip-desc">{t("fx.land.chips.budget_desc")}</span>
+                <span className="fx-chip-strip-desc">{fill("fx.land.chips.budget_desc", chipsCtx.budget)}</span>
                 <span className="fx-chip-strip-arrow" aria-hidden="true">→</span>
               </Link>
             </li>
             <li>
               <Link href="/ville/paris/investissements">
                 <span className="fx-chip-strip-title">{t("fx.land.chips.invest")}</span>
-                <span className="fx-chip-strip-desc">{t("fx.land.chips.invest_desc")}</span>
+                <span className="fx-chip-strip-desc">{fill("fx.land.chips.invest_desc", chipsCtx.invest)}</span>
                 <span className="fx-chip-strip-arrow" aria-hidden="true">→</span>
               </Link>
             </li>
             <li>
               <Link href="/ville/paris/subventions">
                 <span className="fx-chip-strip-title">{t("fx.land.chips.subv")}</span>
-                <span className="fx-chip-strip-desc">{t("fx.land.chips.subv_desc")}</span>
+                <span className="fx-chip-strip-desc">{fill("fx.land.chips.subv_desc", chipsCtx.subv)}</span>
                 <span className="fx-chip-strip-arrow" aria-hidden="true">→</span>
               </Link>
             </li>
             <li>
               <Link href="/ville/paris/marches">
                 <span className="fx-chip-strip-title">{t("fx.land.chips.marches")}</span>
-                <span className="fx-chip-strip-desc">{t("fx.land.chips.marches_desc")}</span>
+                <span className="fx-chip-strip-desc">{fill("fx.land.chips.marches_desc", chipsCtx.marches)}</span>
                 <span className="fx-chip-strip-arrow" aria-hidden="true">→</span>
               </Link>
             </li>
             <li>
               <Link href="/ville/paris/dette">
                 <span className="fx-chip-strip-title">{t("fx.land.chips.dette")}</span>
-                <span className="fx-chip-strip-desc">{t("fx.land.chips.dette_desc")}</span>
+                <span className="fx-chip-strip-desc">{fill("fx.land.chips.dette_desc", chipsCtx.dette)}</span>
                 <span className="fx-chip-strip-arrow" aria-hidden="true">→</span>
               </Link>
             </li>
             <li>
               <Link href="/ville/paris/logement">
                 <span className="fx-chip-strip-title">{t("fx.land.chips.logement")}</span>
-                <span className="fx-chip-strip-desc">{t("fx.land.chips.logement_desc")}</span>
+                <span className="fx-chip-strip-desc">{fill("fx.land.chips.logement_desc", chipsCtx.logement)}</span>
                 <span className="fx-chip-strip-arrow" aria-hidden="true">→</span>
               </Link>
             </li>
