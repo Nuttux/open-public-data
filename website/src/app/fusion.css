@@ -3532,6 +3532,18 @@ body:has(.theme-fusion) > div.pb-24 { padding-bottom: 0 !important; }
     color: var(--fx-row-link-text-hover);
     opacity: 0.7;
   }
+  /* Les inline `color: var(--ink-2)` ou `color: var(--muted)` à l'intérieur
+   * d'un row-link battent la règle de hover via specificity (inline > rule).
+   * On force l'override avec !important sur ces deux variables précisément —
+   * ça préserve les couleurs sémantiques (vert/ocre des badges status) qui
+   * utilisent d'autres variables. */
+  .theme-fusion .fx-row-link:hover [style*="var(--ink-2)"],
+  .theme-fusion .fx-row-link:hover [style*="var(--muted)"],
+  .theme-fusion .fx-mini-row-link:hover [style*="var(--ink-2)"],
+  .theme-fusion .fx-mini-row-link:hover [style*="var(--muted)"] {
+    color: var(--fx-row-link-text-hover) !important;
+    opacity: 0.85;
+  }
 }
 /* Touch / coarse pointer : soft hover seulement (pas d'inversion complète) */
 @media (hover: none), (pointer: coarse) {

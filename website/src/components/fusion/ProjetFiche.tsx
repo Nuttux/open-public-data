@@ -96,11 +96,14 @@ export default function ProjetFiche({ projet, photo }: { projet: ProjetFicheType
         )}
       </div>
 
-      {/* Bloc vulgarisation LLM — EN sibling fields populated when vulgarization_projets_en.json is present */}
+      {/* Bloc vulgarisation LLM — EN sibling fields populated when vulgarization_projets_en.json is present.
+       * Les sorties LLM arrivent en lowercase ; on capitalise la première lettre de chaque phrase
+       * au rendu (plus simple que de re-prompter / re-extraire). */}
       {vulg && (vulg.description_claire || vulg.quoi_concretement) && (() => {
-        const descClair = locale === "en" && vulg.description_claire_en ? vulg.description_claire_en : vulg.description_claire;
-        const quoi = locale === "en" && vulg.quoi_concretement_en ? vulg.quoi_concretement_en : vulg.quoi_concretement;
-        const pourquoi = locale === "en" && vulg.pourquoi_ca_compte_en ? vulg.pourquoi_ca_compte_en : vulg.pourquoi_ca_compte;
+        const cap = (s?: string | null) => s ? s.charAt(0).toUpperCase() + s.slice(1) : s;
+        const descClair = cap(locale === "en" && vulg.description_claire_en ? vulg.description_claire_en : vulg.description_claire);
+        const quoi = cap(locale === "en" && vulg.quoi_concretement_en ? vulg.quoi_concretement_en : vulg.quoi_concretement);
+        const pourquoi = cap(locale === "en" && vulg.pourquoi_ca_compte_en ? vulg.pourquoi_ca_compte_en : vulg.pourquoi_ca_compte);
         return (
           <div className="fx-fiche-lead">
             {descClair && <p className="fx-fiche-lead-main">{descClair}</p>}
