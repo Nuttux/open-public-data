@@ -1300,7 +1300,7 @@ const en: Record<string, string> = {
   'fx.land.meth.01.cta': 'See sources →',
   'fx.land.meth.02.n': '02 / Method',
   'fx.land.meth.02.h': 'Every figure traces back to its source',
-  'fx.land.meth.02.p': "Before a figure shows on screen, the pipeline cleans labels, cross-checks sources and runs each total through more than 170 automated checks that match it against the official document, to the cent.",
+  'fx.land.meth.02.p': "Before a figure shows on screen, the pipeline cleans labels, cross-checks sources and matches the totals against the official documents, to the cent. More than 170 automated checks run on every update.",
   'fx.land.meth.02.cta': 'Read the method →',
   'fx.land.meth.03.n': '03 / Code',
   'fx.land.meth.03.h': 'The pipeline is open',

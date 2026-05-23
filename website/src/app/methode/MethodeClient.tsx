@@ -158,43 +158,89 @@ export default function MethodeClient() {
       {/* HERO ──────────────────────────────────────────────────────────── */}
       <section className="fx-page-header">
         <div className="fx-wrap">
-          <div className="fx-page-kicker">{isFr ? "— Méthode" : "— Method"}</div>
           <h1 className="fx-page-title">
-            {isFr ? <>Tout est <em>déjà</em> public.</> : <>It&apos;s all <em>already</em> public.</>}
+            {isFr ? <>Notre méthode, <em>expliquée</em>.</> : <>Our method, <em>explained</em>.</>}
           </h1>
           <p className="fx-page-lede">
             {isFr
-              ? "Tout ce que vous lisez ici, la Ville l'a déjà publié quelque part — un dataset OpenData, une annexe comptable, un PDF du compte de gestion. Notre boulot : relier, renommer en français courant, rendre l'ensemble lisible. Le pipeline est ouvert, chaque chiffre se recalcule depuis la source."
-              : "Everything you read here, the City has already published somewhere — an OpenData dataset, an accounting appendix, a PDF from the management account. Our job: connect, rename in plain language, make it all readable. The pipeline is open, every figure can be recalculated from the source."}
+              ? "Les comptes de la Ville de Paris sont publics, mais éparpillés sur plusieurs portails et écrits dans un vocabulaire technique. Sur ce site, on les rassemble et on les présente en français courant."
+              : "The City of Paris accounts are public, but scattered across several portals and written in technical language. This site brings them together and presents them in plain French."}
           </p>
-          <div className="fx-page-actions" style={{ marginTop: 28 }}>
-            <Button variant="primary" href="#sources">{isFr ? "Voir les sources" : "See the sources"}</Button>
-            <Button href="https://github.com/AbstractsMachine/france-open-data-pipeline">{isFr ? "Le code sur GitHub ↗" : "Code on GitHub ↗"}</Button>
-          </div>
           <div className="fx-toc" style={{ marginTop: 32 }}>
-            <a href="#sources">01 · {isFr ? "Sources" : "Sources"}</a>
-            <a href="#construction">02 · {isFr ? "Construction" : "Construction"}</a>
-            <a href="#couverture">03 · {isFr ? "Couverture" : "Coverage"}</a>
-            <a href="#audit">04 · {isFr ? "Audit & limites" : "Audit & limits"}</a>
-            <a href="#engagements">05 · {isFr ? "Engagements" : "Commitments"}</a>
+            <a href="#construction">01 · {isFr ? "Construction" : "Construction"}</a>
+            <a href="#sources">02 · {isFr ? "Sources & provenance" : "Sources & provenance"}</a>
+            <a href="#audit">03 · {isFr ? "Fraîcheur & audit" : "Freshness & audit"}</a>
+            <a href="#engagements">04 · {isFr ? "Engagements" : "Commitments"}</a>
           </div>
         </div>
       </section>
 
-      {/* 01 · D'OÙ ÇA VIENT ────────────────────────────────────────────── */}
-      <section id="sources" className="fx-section">
+      {/* 01 · CONSTRUCTION ─────────────────────────────────────────────── */}
+      <section id="construction" className="fx-section">
         <div className="fx-wrap">
           <SectionHead
             number="01"
-            kind={isFr ? "Sources" : "Sources"}
-            title={isFr ? <>D&apos;où vient <em>chaque chiffre</em></> : <>Where <em>each figure</em> comes from</>}
-            subtitle={isFr ? "Six portails officiels. Aucun autre." : "Six official portals. Nothing else."}
+            kind={isFr ? "Construction" : "Construction"}
+            title={isFr ? <>De la donnée brute au <em>chiffre lisible</em></> : <>From raw data to a <em>readable figure</em></>}
+            subtitle={isFr ? "Toutes les sources passent par les mêmes quatre étapes, à chaque mise à jour." : "All sources go through the same four steps, on every update."}
+          />
+
+          <div className="fx-flow-simple">
+            <div className="fx-flow-simple-step">
+              <div className="k">01</div>
+              <h3>{isFr ? "On récupère" : "We fetch"}</h3>
+              <p>{isFr
+                ? "On commence par télécharger les jeux de données ouverts publiés par la Ville, par l'État (commande publique nationale, registre des entreprises) et par les services déconcentrés en région (logement social). Quand un poste budgétaire n'apparaît pas dans ces fichiers (c'est souvent le cas du détail des investissements localisés à l'arrondissement), on va le lire directement dans le PDF du compte administratif. Aucune transformation à ce stade : on archive la source telle qu'elle a été publiée."
+                : "We start by downloading the open datasets published by the City, by the State (national public procurement, business register) and by the regional decentralised services (social housing). When a budget item doesn't appear in those files (often the case for the detail of investments localised by arrondissement), we go read it directly in the administrative account PDF. No transformation at this stage: the source is archived as it was published."}</p>
+            </div>
+            <span className="fx-flow-simple-arrow">→</span>
+            <div className="fx-flow-simple-step">
+              <div className="k">02</div>
+              <h3>{isFr ? "On relie & traduit" : "We stitch & translate"}</h3>
+              <p>{isFr
+                ? "Les libellés comptables officiels (chapitres, fonctions, codes M57) sont d'abord traduits en français courant. Puis les sources sont reliées entre elles. On identifie une entreprise qui touche une subvention via son numéro SIRET. Pour un projet d'investissement, c'est l'adresse précise qui permet de le situer. Et pour un marché public, son numéro permet de remonter au projet qu'il finance."
+                : "The official accounting labels (chapters, functions, M57 codes) are first translated into plain language. Then sources are connected to each other. We identify the company receiving a grant by its SIRET number. For an investment project, the precise address is what locates it. And for a public contract, its number lets us trace back to the project it funds."}</p>
+            </div>
+            <span className="fx-flow-simple-arrow">→</span>
+            <div className="fx-flow-simple-step">
+              <div className="k">03</div>
+              <h3>{isFr ? "On enrichit" : "We enrich"}</h3>
+              <p>{isFr
+                ? "Certaines informations utiles manquent dans les fichiers publiés. Pour chaque bénéficiaire de subvention, on complète sa fiche depuis le registre national des entreprises tenu par l'INSEE : forme juridique, activité principale, siège social. Quand l'adresse d'un projet d'investissement est ambiguë ou qu'un marché porte un libellé trop technique, un modèle de langage propose une catégorie ou une localisation, qu'on peut toujours retrouver dans la source d'origine."
+                : "Some useful information is missing from the published files. For each grant recipient, we complete its record from the national business register kept by INSEE: legal form, main activity, registered office. When an investment project's address is ambiguous or a contract has too technical a label, a language model proposes a category or location, which can always be traced back in the source of origin."}</p>
+            </div>
+            <span className="fx-flow-simple-arrow">→</span>
+            <div className="fx-flow-simple-step">
+              <div className="k">04</div>
+              <h3>{isFr ? "On publie" : "We publish"}</h3>
+              <p>{isFr
+                ? "À l'arrivée, les chiffres sont enregistrés dans des fichiers stables. Le site les affiche tels quels, sans rien recalculer en direct, donc deux visites successives montrent exactement les mêmes valeurs. Le contenu d'une page ne change que quand le pipeline est relancé et qu'une nouvelle version du site est publiée."
+                : "Once everything is computed, the figures are saved in stable files. The site displays them as-is, without any live recalculation, so two successive visits show exactly the same values. A page's content only changes when the pipeline is re-run and a new version of the site is published."}</p>
+            </div>
+          </div>
+
+          <p className="fx-note" style={{ marginTop: 18 }}>
+            {isFr
+              ? <><b>Règle absolue.</b> Un modèle de langage n&apos;est jamais utilisé pour produire un montant. Son rôle se limite au texte : catégoriser, décrire, retrouver une adresse. Tous les agrégats financiers du site sortent de calculs reproductibles, exécutés directement sur les données brutes.</>
+              : <><b>Hard rule.</b> A language model is never used to produce an amount. Its role is limited to text: categorising, describing, finding an address. All of the site&apos;s financial aggregates come from reproducible calculations, run directly on raw data.</>}
+          </p>
+        </div>
+      </section>
+
+      {/* 02 · SOURCES & PROVENANCE ────────────────────────────────────── */}
+      <section id="sources" className="fx-section">
+        <div className="fx-wrap">
+          <SectionHead
+            number="02"
+            kind={isFr ? "Sources & provenance" : "Sources & provenance"}
+            title={isFr ? <>D&apos;où viennent <em>les chiffres</em></> : <>Where the <em>figures</em> come from</>}
+            subtitle={isFr ? "Six portails publics. Et pour chaque outil du site, le chemin complet entre la source et l'écran." : "Six public portals. And for each tool on the site, the full path from source to screen."}
           />
 
           <p style={{ maxWidth: 780, marginBottom: 28, lineHeight: 1.55 }}>
             {isFr
-              ? <><b>De la Ville, et seulement de la Ville.</b> Aucune donnée n&apos;est reconstruite, aucune n&apos;est estimée. Les ratios financiers qualitatifs non publiés en open data (taux moyen pondéré, maturité de dette) sont explicitement marqués « indicatifs » sur leur fiche.</>
-              : <><b>From the City, and only from the City.</b> No data is reconstructed or estimated. Qualitative financial ratios not published as open data (weighted average rate, debt maturity) are explicitly flagged as "indicative" on their panel.</>}
+              ? <><b>De la Ville, et seulement de la Ville</b> : aucune donnée publiée ici n&apos;a été reconstruite ou estimée à partir d&apos;ailleurs. Pour les rares ratios financiers qualitatifs que la Ville ne publie pas en données ouvertes (taux moyen pondéré, maturité de la dette par exemple), on marque explicitement les valeurs comme « indicatives » sur la fiche concernée.</>
+              : <><b>From the City, and only from the City</b>: no data published here has been reconstructed or estimated from elsewhere. For the few qualitative financial ratios the City does not publish as open data (weighted average rate, debt maturity for example), values are explicitly marked as "indicative" on the relevant panel.</>}
           </p>
 
           <div className="fx-sources-table">
@@ -213,67 +259,15 @@ export default function MethodeClient() {
               </div>
             ))}
           </div>
-        </div>
-      </section>
 
-      {/* 02 · COMMENT C'EST CONSTRUIT ──────────────────────────────────── */}
-      <section id="construction" className="fx-section">
-        <div className="fx-wrap">
-          <SectionHead
-            number="02"
-            kind={isFr ? "Construction" : "Construction"}
-            title={isFr ? <>De la source au <em>site</em>, en quatre étapes</> : <>From source to <em>site</em>, in four steps</>}
-            subtitle={isFr ? "Un seul pipeline, rejoué à chaque nouvelle donnée publiée." : "One pipeline, replayed whenever new data is published."}
-          />
-
-          <div className="fx-flow-simple">
-            <div className="fx-flow-simple-step">
-              <div className="k">01</div>
-              <h3>{isFr ? "On récupère" : "We fetch"}</h3>
-              <p>{isFr
-                ? "On télécharge les datasets publiés par la Ville, par l'État (DECP, INSEE) et par les services déconcentrés (DRIHL). On lit aussi les PDFs joints aux comptes annuels. Rien n'est transformé à cette étape : on archive la source telle quelle."
-                : "We download datasets published by the City, by the State (DECP, INSEE) and by decentralised services (DRIHL). We also read the PDFs attached to annual accounts. Nothing is transformed here: the source is archived as-is."}</p>
-            </div>
-            <span className="fx-flow-simple-arrow">→</span>
-            <div className="fx-flow-simple-step">
-              <div className="k">02</div>
-              <h3>{isFr ? "On relie & traduit" : "We stitch & translate"}</h3>
-              <p>{isFr
-                ? "On traduit les nomenclatures comptables en français courant et on joint les sources entre elles — par SIRET pour savoir qui reçoit, par adresse pour savoir où, par numéro de marché pour relier un contrat à son projet."
-                : "We translate accounting nomenclatures into plain language and stitch the sources together — by SIRET to know who receives, by address to know where, by contract number to link a contract to its project."}</p>
-            </div>
-            <span className="fx-flow-simple-arrow">→</span>
-            <div className="fx-flow-simple-step">
-              <div className="k">03</div>
-              <h3>{isFr ? "On enrichit" : "We enrich"}</h3>
-              <p>{isFr
-                ? "L'enrichissement tourne en deux niveaux. Gratuit : l'API publique SIRENE pour vérifier ~5 800 bénéficiaires (forme juridique, activité, siège). Optionnel : un modèle de langage classe les subventions par thème, géolocalise les projets d'investissement ambigus, vulgarise les intitulés techniques de marchés."
-                : "Enrichment runs in two tiers. Free: public SIRENE API to verify ~5,800 recipients (legal form, activity, registered office). Optional: a language model tags grants by theme, geolocates ambiguous investment projects, and simplifies technical contract titles."}</p>
-            </div>
-            <span className="fx-flow-simple-arrow">→</span>
-            <div className="fx-flow-simple-step">
-              <div className="k">04</div>
-              <h3>{isFr ? "On publie" : "We publish"}</h3>
-              <p>{isFr
-                ? "Le résultat est figé en fichiers JSON, versionnés avec le code. Le site lit ces fichiers directement — pas de base de données live, pas de calcul côté navigateur. Ce que vous voyez est exactement ce qui a été calculé."
-                : "The result is frozen as JSON files, versioned with the code. The site reads these files directly — no live database, no browser-side computation. What you see is exactly what was computed."}</p>
-            </div>
-          </div>
-
-          <p className="fx-note" style={{ marginTop: 18 }}>
-            {isFr
-              ? <><b>Règle absolue sur l&apos;enrichissement</b> : un modèle de langage n&apos;est utilisé que pour du texte — catégoriser, décrire, résumer, retrouver une adresse. <b>Aucun montant, aucun agrégat financier ne passe jamais par un LLM.</b> Les chiffres sortent d&apos;un calcul SQL déterministe sur les données brutes.</>
-              : <><b>Hard rule on enrichment</b>: a language model is only used on text — to categorise, describe, summarise, find an address. <b>No amount, no financial aggregate ever goes through an LLM.</b> Numbers come from deterministic SQL run on raw data.</>}
-          </p>
-
-          {/* Tools bandeau — chaque chip ouvre la modal Provenance ──── */}
+          {/* Provenance par outil — quel dataset alimente quel graphique ── */}
           <h3 style={{ marginTop: 44, marginBottom: 10, fontFamily: "var(--f-display)", fontSize: 22 }}>
-            {isFr ? "La provenance, outil par outil" : "Provenance, tool by tool"}
+            {isFr ? "Le parcours d'un chiffre, outil par outil" : "Tracing a figure, tool by tool"}
           </h3>
           <p style={{ maxWidth: 720, marginBottom: 18, color: "var(--muted)", lineHeight: 1.55 }}>
             {isFr
-              ? "Cliquer ouvre la chaîne complète source → BigQuery → mart, avec un lien direct vers chaque table publique."
-              : "Click to open the full chain source → BigQuery → mart, with a direct link to each public table."}
+              ? "Cliquez sur un outil pour voir d'où viennent ses chiffres : chaque étape du traitement, jusqu'au jeu de données public dont ils sont issus."
+              : "Click a tool to see where its figures come from: each step of processing, all the way back to the public dataset they are drawn from."}
           </p>
           <div className="fx-tool-tabs">
             {TOOLS.map((tool, i) => (
@@ -290,32 +284,25 @@ export default function MethodeClient() {
               />
             ))}
           </div>
-
-          {/* Anti-double-counting (migrated from FAQ Q5 + Q7) ──────────── */}
-          <div style={{ marginTop: 40, padding: "20px 22px", background: "var(--cream)", borderLeft: "3px solid var(--ink)" }}>
-            <h3 style={{ marginBottom: 8, fontFamily: "var(--f-display)", fontSize: 18 }}>
-              {isFr ? "Pourquoi Budget, Subventions et Marchés ne s'additionnent pas" : "Why Budget, Grants and Contracts don't add up"}
-            </h3>
-            <p style={{ marginBottom: 0, lineHeight: 1.6 }}>
-              {isFr
-                ? <>Ces trois pages sont des <b>lectures complémentaires</b>, pas trois calculs du même chiffre. Le budget contient une ligne agrégée de subventions ; notre page Subventions détaille cette même ligne côté bénéficiaires. Les marchés affichent des plafonds contractuels pluriannuels qui peuvent recouvrir plusieurs lignes budgétaires. Un même euro peut donc apparaître dans plusieurs pages sous des angles différents — on ne les additionne jamais. Côté pipeline, <code>core_budget</code>, <code>core_subventions</code>, <code>core_marches_publics</code> et <code>core_ap_projets</code> ne sont jamais UNIONés.</>
-                : <>These three pages are <b>complementary readings</b>, not three computations of the same figure. The budget contains an aggregated grants line; our Grants page details that same line by recipient. Contracts show multi-year ceiling commitments which can span several budget lines. A given euro can therefore appear on several pages from different angles — we never sum them. In the pipeline, <code>core_budget</code>, <code>core_subventions</code>, <code>core_marches_publics</code> and <code>core_ap_projets</code> are never UNIONed.</>}
-            </p>
-          </div>
-
         </div>
       </section>
 
-      {/* 03 · CE QUI EST À JOUR ────────────────────────────────────────── */}
-      <section id="couverture" className="fx-section">
+      {/* 03 · FRAÎCHEUR & AUDIT ────────────────────────────────────────── */}
+      <section id="audit" className="fx-section">
         <div className="fx-wrap">
           <SectionHead
             number="03"
-            kind={isFr ? "Couverture & fraîcheur" : "Coverage & freshness"}
-            title={isFr ? <>Ce qui est <em>à jour</em>, ce qui ne l&apos;est pas</> : <>What is <em>up to date</em>, what is not</>}
-            subtitle={isFr ? "Les données publiées par la Ville ne sont pas toutes maintenues au même rythme." : "Not all data published by the City is maintained at the same pace."}
+            kind={isFr ? "Fraîcheur & audit" : "Freshness & audit"}
+            title={isFr ? <>Ce qui est <em>à jour</em>, ce qui est <em>vérifié</em></> : <>What is <em>up to date</em>, what is <em>verified</em></>}
+            subtitle={isFr
+              ? "Toutes les sources ne sont pas maintenues au même rythme. Et un audit automatique rejoue les chiffres à chaque mise à jour."
+              : "Not all sources are maintained at the same pace. And an automated audit replays the figures on every update."}
           />
 
+          {/* Couverture par outil ─────────────────────────────────────── */}
+          <h3 style={{ marginTop: 36, marginBottom: 14, fontFamily: "var(--f-display)", fontSize: 22 }}>
+            {isFr ? "Couverture par outil" : "Coverage by tool"}
+          </h3>
           <div className="fx-timeline">
             <div className="fx-timeline-axis">
               <span className="lbl">{isFr ? "Outil" : "Tool"}</span>
@@ -356,30 +343,20 @@ export default function MethodeClient() {
               ? <><b>Règle</b> : l&apos;année en cours est toujours provisoire tant que le compte administratif définitif n&apos;est pas publié (~juin N+1). Les chiffres d&apos;une année non-close reposent sur le voté.</>
               : <><b>Rule</b>: the current year is always provisional until the final administrative account is published (~June N+1). Figures for an unclosed year are based on the voted budget.</>}
           </p>
-        </div>
-      </section>
 
-      {/* 04 · AUDIT & LIMITES ──────────────────────────────────────────── */}
-      <section id="audit" className="fx-section">
-        <div className="fx-wrap">
-          <SectionHead
-            number="04"
-            kind={isFr ? "Audit & limites" : "Audit & limits"}
-            title={isFr ? <>Comment on <em>vérifie</em> nos chiffres</> : <>How we <em>verify</em> our figures</>}
-            subtitle={isFr
-              ? "Un audit re-jouable qui tourne à chaque update. Toute personne peut le relancer."
-              : "A replayable audit that runs after every update. Anyone can re-run it."}
-          />
-
+          {/* Contrôles automatiques ───────────────────────────────────── */}
+          <h3 style={{ marginTop: 48, marginBottom: 14, fontFamily: "var(--f-display)", fontSize: 22 }}>
+            {isFr ? "Contrôles automatiques" : "Automated checks"}
+          </h3>
           <p style={{ maxWidth: 820, marginBottom: 24, lineHeight: 1.6 }}>
             {isFr
-              ? <>Trois familles de contrôles tournent sur chaque mise à jour : <b>réconciliation</b> (les totaux <code>core</code> doivent rejouer les totaux <code>staging</code>, au centime près), <b>complétude</b> (les enrichissements LLM et géoloc doivent dépasser des seuils documentés), <b>limites connues</b> (les trous de la source — années manquantes, datasets gelés — sont marqués comme tels). Le script <code>run_data_quality_audit.py</code> écrit le résultat en JSON, lu ci-dessous. <b>Aucun chiffre n&apos;est tapé à la main dans cette page.</b></>
-              : <>Three families of checks run on every update: <b>reconciliation</b> (<code>core</code> totals must replay <code>staging</code> totals to the cent), <b>completeness</b> (LLM and geoloc enrichments must clear documented thresholds), <b>known limitations</b> (gaps in the source — missing years, frozen datasets — are flagged as such). The <code>run_data_quality_audit.py</code> script writes the result to JSON, loaded below. <b>Not a single figure on this page is typed by hand.</b></>}
+              ? <>À chaque mise à jour, des contrôles automatiques rejouent les calculs et confrontent les totaux affichés aux sources brutes, au centime près. Les informations enrichies par modèle (catégories, localisations) doivent rester au-dessus de seuils de fiabilité documentés. Et les trous éventuels des sources publiques apparaissent comme tels sur la page concernée. <b>Aucun chiffre n&apos;est tapé à la main.</b></>
+              : <>On every update, automated checks replay the calculations and match the displayed totals against the raw sources, to the cent. Model-enriched information (categories, locations) must stay above documented reliability thresholds. And any gaps in the public sources are flagged as such on the relevant page. <b>No figure on this page is typed by hand.</b></>}
           </p>
 
           {audit ? (
             <>
-              <div className="fx-meth-stats" style={{ marginBottom: 24 }}>
+              <div className="fx-meth-stats" style={{ marginBottom: 16 }}>
                 <div className="fx-meth-stat">
                   <span className="n">{isFr ? "Contrôles" : "Checks"}</span>
                   <span className="v">{audit.summary.total}</span>
@@ -402,100 +379,91 @@ export default function MethodeClient() {
                 </div>
               </div>
 
-              <p className="fx-note" style={{ marginBottom: 24 }}>
+              <p className="fx-note" style={{ marginBottom: 20 }}>
                 {isFr
-                  ? <>Dernier rejeu : <b>{new Date(audit.generated_at).toLocaleString("fr-FR", { dateStyle: "long", timeStyle: "short" })}</b> · Projet BigQuery <code>{audit.project}</code></>
-                  : <>Last run: <b>{new Date(audit.generated_at).toLocaleString("en-GB", { dateStyle: "long", timeStyle: "short" })}</b> · BigQuery project <code>{audit.project}</code></>}
+                  ? <>Dernier rejeu : <b>{new Date(audit.generated_at).toLocaleString("fr-FR", { dateStyle: "long", timeStyle: "short" })}</b>.</>
+                  : <>Last run: <b>{new Date(audit.generated_at).toLocaleString("en-GB", { dateStyle: "long", timeStyle: "short" })}</b>.</>}
               </p>
 
-              <div className="fx-audit-table">
-                <div className="fx-audit-table-head">
-                  <span>{isFr ? "Contrôle" : "Check"}</span>
-                  <span>{isFr ? "Catégorie" : "Category"}</span>
-                  <span>{isFr ? "Seuil" : "Threshold"}</span>
-                  <span>{isFr ? "Statut · mesure" : "Status · value"}</span>
-                </div>
-                {audit.checks.map((c) => (
-                  <div key={c.id} className="fx-audit-table-row">
-                    <span className="check-label">{c.label}</span>
-                    <span className="check-category">{c.category}</span>
-                    <span className="check-threshold">{c.threshold ?? "—"}</span>
-                    <span className="check-status">
-                      <span
-                        aria-label={c.status}
-                        style={{
-                          display: "inline-block",
-                          padding: "2px 8px",
-                          borderRadius: 4,
-                          fontWeight: 600,
-                          marginRight: 8,
-                          color: c.status === "pass" ? "var(--fx-ok, #1e7e34)" : c.status === "warn" ? "var(--fx-warn, #b97400)" : "var(--fx-fail, #c0392b)",
-                          background: c.status === "pass" ? "rgba(30, 126, 52, 0.10)" : c.status === "warn" ? "rgba(185, 116, 0, 0.10)" : "rgba(192, 57, 43, 0.10)",
-                        }}
-                      >
-                        {c.status === "pass" ? "✓" : c.status === "warn" ? "⚠" : "✗"} {c.status.toUpperCase()}
-                      </span>
-                      {c.actual}
-                    </span>
+              <details className="fx-collapsible">
+                <summary>{isFr ? `Voir le détail des ${audit.summary.total} contrôles` : `View all ${audit.summary.total} checks`}</summary>
+                <div className="fx-audit-table" style={{ marginTop: 12 }}>
+                  <div className="fx-audit-table-head">
+                    <span>{isFr ? "Contrôle" : "Check"}</span>
+                    <span>{isFr ? "Catégorie" : "Category"}</span>
+                    <span>{isFr ? "Seuil" : "Threshold"}</span>
+                    <span>{isFr ? "Statut · mesure" : "Status · value"}</span>
                   </div>
-                ))}
-              </div>
+                  {audit.checks.map((c) => (
+                    <div key={c.id} className="fx-audit-table-row">
+                      <span className="check-label">{c.label}</span>
+                      <span className="check-category">{c.category}</span>
+                      <span className="check-threshold">{c.threshold ?? "—"}</span>
+                      <span className="check-status">
+                        <span
+                          aria-label={c.status}
+                          style={{
+                            display: "inline-block",
+                            padding: "2px 8px",
+                            borderRadius: 4,
+                            fontWeight: 600,
+                            marginRight: 8,
+                            color: c.status === "pass" ? "var(--fx-ok, #1e7e34)" : c.status === "warn" ? "var(--fx-warn, #b97400)" : "var(--fx-fail, #c0392b)",
+                            background: c.status === "pass" ? "rgba(30, 126, 52, 0.10)" : c.status === "warn" ? "rgba(185, 116, 0, 0.10)" : "rgba(192, 57, 43, 0.10)",
+                          }}
+                        >
+                          {c.status === "pass" ? "✓" : c.status === "warn" ? "⚠" : "✗"} {c.status.toUpperCase()}
+                        </span>
+                        {c.actual}
+                      </span>
+                    </div>
+                  ))}
+                </div>
+              </details>
             </>
           ) : (
             <p className="fx-note">{isFr ? "Chargement de l'audit…" : "Loading audit…"}</p>
           )}
 
-          {/* LLM confidence ────────────────────────────────────────────── */}
-          <div style={{ marginTop: 40 }}>
-            <h3 style={{ marginBottom: 10, fontFamily: "var(--f-display)", fontSize: 20 }}>
-              {isFr ? "Confiance LLM : auto-déclarée, pas encore mesurée" : "LLM confidence: self-declared, not yet measured"}
-            </h3>
-            <p style={{ lineHeight: 1.6, maxWidth: 820 }}>
-              {isFr
-                ? <>Les caches d&apos;enrichissement (thématique des subventions, géoloc des projets AP) portent une colonne <code>ode_confiance</code>. C&apos;est un score <b>auto-déclaré par le LLM</b>. Pour en faire une garantie externe, on tire un échantillon stratifié (60 lignes thématique + 40 géoloc) qu&apos;on annote à la main, et on compare la précision <em>mesurée</em> à la confidence déclarée par bucket. Le script et les échantillons : <a href="https://github.com/AbstractsMachine/france-open-data-pipeline/tree/main/pipeline/scripts/audit/calibration_samples" target="_blank" rel="noopener noreferrer">calibration_samples ↗</a>. La précision mesurée sera publiée ici dès qu&apos;elle est disponible.</>
-                : <>Enrichment caches (grant theme, AP project geoloc) carry an <code>ode_confiance</code> column. It&apos;s a score <b>self-declared by the LLM</b>. To turn it into an external guarantee, we draw a stratified sample (60 theme + 40 geoloc rows), label it by hand, and compare measured precision to declared confidence per bucket. Script and samples: <a href="https://github.com/AbstractsMachine/france-open-data-pipeline/tree/main/pipeline/scripts/audit/calibration_samples" target="_blank" rel="noopener noreferrer">calibration_samples ↗</a>. Measured precision will appear here as soon as it is available.</>}
-            </p>
-          </div>
-
-          {/* Divergence from City (migrated FAQ Q1+Q8) ─────────────────── */}
-          <div style={{ marginTop: 36 }}>
-            <h3 style={{ marginBottom: 10, fontFamily: "var(--f-display)", fontSize: 20 }}>
-              {isFr ? "Quand nos chiffres diffèrent de ceux annoncés par la Ville" : "When our figures differ from the City's"}
-            </h3>
-            <p style={{ lineHeight: 1.6, maxWidth: 820 }}>
-              {isFr
-                ? <>Sur un même dataset, nos agrégats sont identiques à ceux de la Ville : on ne change pas les montants, on regroupe et on renomme. Les écarts viennent de trois causes : <b>(1) périmètre</b> — on publie le budget principal, la Ville peut communiquer un « groupe Ville » qui inclut les satellites ; <b>(2) timing</b> — notre chiffre vient du dernier dataset ouvert, qui peut être un cran derrière la communication officielle ; <b>(3) renommage</b> — on traduit chapitres et fonctions en libellés grand public, mais les agrégats restent ceux du M57. Si l&apos;écart persiste, c&apos;est un bug — <a href="/contact">dites-le-nous</a>.</>
-                : <>On a given dataset, our aggregates match the City&apos;s: we don&apos;t change amounts, we regroup and rename. Gaps come from three causes: <b>(1) scope</b> — we publish the main budget, the City may communicate a "City group" that includes satellites; <b>(2) timing</b> — our figure comes from the latest open dataset, which can lag official communication by one step; <b>(3) renaming</b> — we translate chapters and functions to plain language, but aggregates remain those of M57. If the gap persists, it&apos;s a bug — <a href="/contact">tell us</a>.</>}
-            </p>
-          </div>
+          {/* Limites connues — fusion LLM confidence + divergences Ville ── */}
+          <h3 style={{ marginTop: 48, marginBottom: 14, fontFamily: "var(--f-display)", fontSize: 22 }}>
+            {isFr ? "Limites connues" : "Known limitations"}
+          </h3>
+          <p style={{ lineHeight: 1.6, maxWidth: 820, marginBottom: 18 }}>
+            {isFr
+              ? <><b>Le modèle se note lui-même.</b> Quand le modèle de langage propose une catégorie pour une subvention ou une localisation pour un projet, il attache à sa réponse un score de confiance. Ce score, c&apos;est le modèle qui se l&apos;auto-déclare. Pour le rendre fiable au-delà de cette auto-évaluation, il faudra le comparer à un échantillon vérifié à la main. Ce travail est en cours et sera publié ici (<a href="https://github.com/AbstractsMachine/france-open-data-pipeline/tree/main/pipeline/scripts/audit/calibration_samples" target="_blank" rel="noopener noreferrer">script et échantillons ↗</a>).</>
+              : <><b>The model rates itself.</b> When the language model proposes a category for a grant or a location for a project, it attaches a confidence score to its answer. That score is self-declared. To make it reliable beyond this self-evaluation, it will need to be compared against a hand-labelled sample. That work is underway and will be published here (<a href="https://github.com/AbstractsMachine/france-open-data-pipeline/tree/main/pipeline/scripts/audit/calibration_samples" target="_blank" rel="noopener noreferrer">script and samples ↗</a>).</>}
+          </p>
+          <p style={{ lineHeight: 1.6, maxWidth: 820 }}>
+            {isFr
+              ? <><b>Quand nos chiffres diffèrent de ceux de la Ville.</b> Sur un même jeu de données, nos totaux sont strictement identiques à ceux de la Ville : on ne retouche jamais un montant. Quand un écart apparaît, c&apos;est généralement pour une de trois raisons. Soit le périmètre diffère : on publie le budget principal seul, alors que la Ville peut communiquer un « groupe Ville » qui inclut ses structures satellites. Soit notre chiffre vient du dernier jeu de données publié, lui-même parfois en retard sur une communication officielle. Soit on a traduit un libellé sans que l&apos;agrégat correspondant ne change. Si un écart persiste sans explication évidente, c&apos;est probablement un bug. <a href="/contact">Signalez-le</a>.</>
+              : <><b>When our figures differ from the City&apos;s.</b> On a given dataset, our totals are strictly identical to the City&apos;s: we never alter an amount. When a gap shows up, it usually comes from one of three reasons. Either the scope differs: we publish the main budget alone, while the City may communicate a &quot;City group&quot; that includes its satellite entities. Or our figure comes from the latest published dataset, itself sometimes lagging an official communication. Or we have translated a label without the underlying aggregate changing. If a gap persists without an obvious explanation, it&apos;s probably a bug. <a href="/contact">Report it</a>.</>}
+          </p>
 
           {/* Compact cross-check footer ────────────────────────────────── */}
           <div style={{ marginTop: 32, padding: "16px 20px", background: "var(--cream)", display: "flex", gap: 18, flexWrap: "wrap", fontFamily: "var(--f-mono)", fontSize: 13 }}>
             <a href="/data/data_quality_audit.json" target="_blank" rel="noopener noreferrer">{isFr ? "JSON brut ↗" : "Raw JSON ↗"}</a>
             <a href="https://github.com/AbstractsMachine/france-open-data-pipeline/blob/main/pipeline/scripts/audit/run_data_quality_audit.py" target="_blank" rel="noopener noreferrer">{isFr ? "Script audit ↗" : "Audit script ↗"}</a>
-            <a href="https://github.com/AbstractsMachine/france-open-data-pipeline/blob/main/docs/data-quality.md" target="_blank" rel="noopener noreferrer">{isFr ? "Doc data-quality ↗" : "Data-quality doc ↗"}</a>
-            <a href="https://github.com/AbstractsMachine/france-open-data-pipeline/blob/main/docs/architecture-modelling.md" target="_blank" rel="noopener noreferrer">{isFr ? "Doc architecture ↗" : "Architecture doc ↗"}</a>
           </div>
         </div>
       </section>
 
-      {/* 05 · ENGAGEMENTS ─────────────────────────────────────────────── */}
+      {/* 04 · ENGAGEMENTS ─────────────────────────────────────────────── */}
       <section id="engagements" className="fx-section">
         <div className="fx-wrap">
           <SectionHead
-            number="05"
+            number="04"
             kind={isFr ? "Engagements" : "Commitments"}
             title={isFr ? <>Pipeline AGPL, <em>corrections</em> traçables</> : <>AGPL pipeline, <em>traceable</em> corrections</>}
           />
           <p style={{ lineHeight: 1.6, maxWidth: 780 }}>
             {isFr
-              ? <>Le pipeline (Python + dbt) est publié sous AGPL-3.0. Chaque chiffre se recalcule depuis sa source, chaque page expose son JSON. Erreur signalée = corrigée dans le code et consignée dans le changelog avec la date et l&apos;origine du signalement. On corrige en place et on garde la trace — pour que tout ancien screenshot reste vérifiable.</>
-              : <>The pipeline (Python + dbt) is published under AGPL-3.0. Every figure can be recalculated from its source, every page exposes its JSON. Error reported = corrected in the code and recorded in the changelog with the date and source of the report. We correct in place and keep the trace — so any old screenshot remains verifiable.</>}
+              ? <>Le code qui produit ces chiffres est publié en libre accès, sous licence AGPL-3.0. N&apos;importe qui peut le récupérer et refaire les calculs depuis les sources publiques pour obtenir exactement les mêmes résultats. Quand une erreur est signalée, elle est corrigée dans le code et inscrite dans l&apos;historique public du projet avec sa date et son origine. On ne réécrit jamais l&apos;historique : tout ancien screenshot ou citation reste rattachable à l&apos;état du calcul à l&apos;époque.</>
+              : <>The code that produces these figures is published in open access, under the AGPL-3.0 licence. Anyone can download it and re-run the calculations from the public sources to obtain exactly the same results. When an error is reported, it is fixed in the code and recorded in the project&apos;s public history with its date and source. We never rewrite history: any old screenshot or citation can still be linked to the state of the calculation at the time.</>}
           </p>
           <div style={{ marginTop: 24, display: "flex", gap: 10, flexWrap: "wrap" }}>
             <Button variant="primary" href="/contact">{isFr ? "Signaler une erreur" : "Report an error"}</Button>
             <Button href="https://github.com/AbstractsMachine/france-open-data-pipeline">{isFr ? "Code sur GitHub ↗" : "Code on GitHub ↗"}</Button>
-            <Button href="https://github.com/AbstractsMachine/france-open-data-pipeline/commits/main">{isFr ? "Historique des commits ↗" : "Commit history ↗"}</Button>
           </div>
         </div>
       </section>

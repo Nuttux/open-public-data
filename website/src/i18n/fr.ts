@@ -1300,7 +1300,7 @@ const fr: Record<string, string> = {
   'fx.land.meth.01.cta': 'Voir les sources →',
   'fx.land.meth.02.n': '02 / Méthode',
   'fx.land.meth.02.h': 'Chaque chiffre remonte à sa source',
-  'fx.land.meth.02.p': "Avant qu'un chiffre apparaisse à l'écran, le pipeline nettoie les libellés, recoupe les sources et soumet chaque total à plus de 170 contrôles automatiques qui le comparent au document officiel, au centime près.",
+  'fx.land.meth.02.p': "Avant qu'un chiffre apparaisse à l'écran, le pipeline nettoie les libellés, recoupe les sources et confronte les totaux aux documents officiels, au centime près. Plus de 170 contrôles automatiques tournent à chaque mise à jour.",
   'fx.land.meth.02.cta': 'Lire la méthode →',
   'fx.land.meth.03.n': '03 / Code',
   'fx.land.meth.03.h': 'Le pipeline est ouvert',
