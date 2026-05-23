@@ -85,55 +85,12 @@ export default function ProjetFiche({ projet, photo }: { projet: ProjetFicheType
         />
       </div>
 
-      {/* Badge typologie + statut extraction */}
-      <div style={{ display: "flex", gap: 8, flexWrap: "wrap", marginBottom: 14 }}>
-        {typoLabel && (
-          <span
-            style={{
-              fontFamily: "var(--f-mono)",
-              fontSize: 10.5,
-              letterSpacing: ".08em",
-              textTransform: "uppercase",
-              padding: "4px 10px",
-              border: "1px solid var(--ink)",
-              background: "var(--ink)",
-              color: "var(--bg)",
-              borderRadius: 2,
-            }}
-          >
-            {typoLabel}
-          </span>
-        )}
-        {projet.typeAp && (
-          <span
-            style={{
-              fontFamily: "var(--f-mono)",
-              fontSize: 10.5,
-              letterSpacing: ".08em",
-              textTransform: "uppercase",
-              padding: "4px 10px",
-              border: "1px solid var(--rule)",
-              color: "var(--muted)",
-              borderRadius: 2,
-            }}
-          >
-            {trLabel(projet.typeAp, locale)}
-          </span>
-        )}
+      {/* Tags typologie + statut — discrets (text style, pas bouton) */}
+      <div style={{ display: "flex", gap: 14, flexWrap: "wrap", marginBottom: 14, fontFamily: "var(--f-mono)", fontSize: 10.5, letterSpacing: ".08em", textTransform: "uppercase", color: "var(--muted)" }}>
+        {typoLabel && <span style={{ color: "var(--ink)", fontWeight: 600 }}>{typoLabel}</span>}
+        {projet.typeAp && <span>{trLabel(projet.typeAp, locale)}</span>}
         {projet.confidence != null && projet.confidence < 0.7 && (
-          <span
-            style={{
-              fontFamily: "var(--f-mono)",
-              fontSize: 10.5,
-              letterSpacing: ".08em",
-              textTransform: "uppercase",
-              padding: "4px 10px",
-              border: "1px solid var(--ocre)",
-              color: "var(--ocre)",
-              borderRadius: 2,
-            }}
-            title={t("fx.fiche.projet.fiabilite_title")}
-          >
+          <span style={{ color: "var(--ocre)", fontWeight: 600 }} title={t("fx.fiche.projet.fiabilite_title")}>
             {fill(t("fx.fiche.projet.fiabilite"), { n: (projet.confidence * 100).toFixed(0) })}
           </span>
         )}
@@ -182,39 +139,6 @@ export default function ProjetFiche({ projet, photo }: { projet: ProjetFicheType
       <div className="fx-fiche-note" style={{ marginTop: 0 }}>
         {t("fx.fiche.projet.note_surcout")}
       </div>
-
-      <section className="fx-fiche-section">
-        <div className="fx-fiche-h">{t("fx.fiche.projet.intitule")}</div>
-        <p style={{ fontFamily: "var(--f-ui)", fontSize: 14.5, color: "var(--ink-2)", lineHeight: 1.5, margin: 0 }}>
-          {projet.name}
-        </p>
-      </section>
-
-      {(projet.geoLabel || mapUrl) && (
-        <section className="fx-fiche-section">
-          <div className="fx-fiche-h">{t("fx.fiche.projet.localisation")}</div>
-          {projet.geoLabel && (
-            <p style={{ fontFamily: "var(--f-ui)", fontSize: 14, color: "var(--ink-2)", margin: "0 0 8px", lineHeight: 1.4 }}>
-              {projet.geoLabel}
-            </p>
-          )}
-          {projet.lat && projet.lon && (
-            <div style={{ fontFamily: "var(--f-mono)", fontSize: 11.5, color: "var(--muted)", marginBottom: 8 }}>
-              {projet.lat.toFixed(5)}, {projet.lon.toFixed(5)}
-            </div>
-          )}
-          {mapUrl && (
-            <a
-              href={mapUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              style={{ fontFamily: "var(--f-mono)", fontSize: 12.5, color: "var(--bleu)", borderBottom: "1px solid var(--bleu)", paddingBottom: 1 }}
-            >
-              {t("fx.fiche.projet.voir_osm")}
-            </a>
-          )}
-        </section>
-      )}
 
       {projet.marches.length === 0 && projet.marchesCoverage.total > 0 && (
         <section className="fx-fiche-section">
@@ -327,44 +251,25 @@ export default function ProjetFiche({ projet, photo }: { projet: ProjetFicheType
         </section>
       )}
 
-      {projet.similaires.length > 0 && typoLabel && (
+      {(projet.geoLabel || mapUrl) && (
         <section className="fx-fiche-section">
-          <div className="fx-fiche-h">{fill(t("fx.fiche.projet.similaires"), { typo: typoLabel.toLowerCase(), year: projet.year })}</div>
-          <div>
-            {projet.similaires.map((s) => {
-              const f = fmtEur(s.montant);
-              return (
-                <Link
-                  key={s.id}
-                  href={`/ville/paris/investissements/projet/${encodeURIComponent(s.id)}`}
-                  scroll={false}
-                  className="fx-row-link"
-                  style={{
-                    display: "grid",
-                    gridTemplateColumns: "1fr auto",
-                    alignItems: "baseline",
-                    gap: 12,
-                    padding: "10px 6px",
-                    borderBottom: "1px solid var(--rule)",
-                    fontFamily: "var(--f-ui)",
-                    fontSize: 13.5,
-                  }}
+          <div className="fx-fiche-h">{t("fx.fiche.projet.localisation")}</div>
+          <p style={{ fontFamily: "var(--f-ui)", fontSize: 14, color: "var(--ink-2)", margin: 0, lineHeight: 1.5 }}>
+            {projet.geoLabel}
+            {mapUrl && (
+              <>
+                {projet.geoLabel ? " · " : ""}
+                <a
+                  href={mapUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{ fontFamily: "var(--f-mono)", fontSize: 12.5, color: "var(--bleu)", borderBottom: "1px solid var(--bleu)", paddingBottom: 1 }}
                 >
-                  <span style={{ fontWeight: 500, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>
-                    {locale === "en" && s.name_en ? s.name_en : s.name}
-                    {s.arrondissement > 0 && (
-                      <span className="muted" style={{ marginLeft: 8, fontSize: 11, fontFamily: "var(--f-mono)" }}>
-                        {s.arrondissement}{suf(s.arrondissement)}
-                      </span>
-                    )}
-                  </span>
-                  <span style={{ fontFamily: "var(--f-disp)", fontWeight: 700, letterSpacing: "-0.01em" }}>
-                    {f.v} <span style={{ fontSize: ".7em", color: "var(--muted)", fontWeight: 500 }}>{f.u}</span>
-                  </span>
-                </Link>
-              );
-            })}
-          </div>
+                  {t("fx.fiche.projet.voir_osm")}
+                </a>
+              </>
+            )}
+          </p>
         </section>
       )}
 
@@ -405,6 +310,49 @@ export default function ProjetFiche({ projet, photo }: { projet: ProjetFicheType
           )}
         </dl>
       </section>
+
+      {projet.similaires.length > 0 && typoLabel && (
+        <section className="fx-fiche-section" style={{ marginTop: 36 }}>
+          <div className="fx-fiche-h" style={{ fontSize: 11, color: "var(--muted)" }}>
+            {fill(t("fx.fiche.projet.similaires"), { typo: typoLabel.toLowerCase(), year: projet.year })}
+          </div>
+          <div>
+            {projet.similaires.map((s) => {
+              const f = fmtEur(s.montant);
+              return (
+                <Link
+                  key={s.id}
+                  href={`/ville/paris/investissements/projet/${encodeURIComponent(s.id)}`}
+                  scroll={false}
+                  className="fx-row-link"
+                  style={{
+                    display: "grid",
+                    gridTemplateColumns: "1fr auto",
+                    alignItems: "baseline",
+                    gap: 12,
+                    padding: "8px 6px",
+                    borderBottom: "1px solid var(--rule)",
+                    fontFamily: "var(--f-ui)",
+                    fontSize: 13,
+                  }}
+                >
+                  <span style={{ fontWeight: 500, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>
+                    {locale === "en" && s.name_en ? s.name_en : s.name}
+                    {s.arrondissement > 0 && (
+                      <span className="muted" style={{ marginLeft: 8, fontSize: 11, fontFamily: "var(--f-mono)" }}>
+                        {s.arrondissement}{suf(s.arrondissement)}
+                      </span>
+                    )}
+                  </span>
+                  <span style={{ fontFamily: "var(--f-disp)", fontWeight: 600, letterSpacing: "-0.01em", fontSize: 13.5 }}>
+                    {f.v} <span style={{ fontSize: ".7em", color: "var(--muted)", fontWeight: 500 }}>{f.u}</span>
+                  </span>
+                </Link>
+              );
+            })}
+          </div>
+        </section>
+      )}
     </div>
   );
 }
