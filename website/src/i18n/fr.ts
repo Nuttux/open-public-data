@@ -2637,6 +2637,8 @@ const fr: Record<string, string> = {
   'fx.fiche.asso.historique': 'Historique année par année',
   'fx.fiche.asso.mouvements': 'Mouvements notables',
   'fx.fiche.asso.detail': 'Détail des subventions ({n} ligne{s})',
+  'fx.fiche.asso.voir_autres': "Voir les {n} autres lignes →",
+  'fx.fiche.asso.voir_annees_avant': "Voir les {n} années précédentes →",
   'fx.fiche.asso.col.direction': 'Direction',
   'fx.fiche.asso.col.motif': 'Motif',
   'fx.fiche.asso.col.lignes': 'Lignes',

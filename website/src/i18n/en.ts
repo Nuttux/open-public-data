@@ -2637,6 +2637,8 @@ const en: Record<string, string> = {
   'fx.fiche.asso.historique': 'Year-by-year history',
   'fx.fiche.asso.mouvements': 'Notable changes',
   'fx.fiche.asso.detail': 'Grant breakdown ({n} line{s})',
+  'fx.fiche.asso.voir_autres': "Show the {n} other line(s) →",
+  'fx.fiche.asso.voir_annees_avant': "Show the {n} earlier year(s) →",
   'fx.fiche.asso.col.direction': 'Directorate',
   'fx.fiche.asso.col.motif': 'Purpose',
   'fx.fiche.asso.col.lignes': 'Lines',

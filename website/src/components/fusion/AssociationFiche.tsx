@@ -24,6 +24,10 @@ export default function AssociationFiche({
   const { locale } = useLocale();
   const locStr = locale === "en" ? "en-GB" : "fr-FR";
   const [openLigne, setOpenLigne] = useState<number | null>(null);
+  const [showAllLignes, setShowAllLignes] = useState(false);
+  const [showAllYears, setShowAllYears] = useState(false);
+  const LIGNES_PREVIEW = 5;
+  const YEARS_PREVIEW = 5;
 
   const fmtEur = (n: number) => {
     if (n >= 1e9) return { v: new Intl.NumberFormat(locStr, { maximumFractionDigits: 2 }).format(n / 1e9), u: t("fx.s.md_eur") };
@@ -37,13 +41,25 @@ export default function AssociationFiche({
   const lastYear = asso.yearsActive[asso.yearsActive.length - 1];
   const maxByYear = Math.max(...asso.byYear.map((y) => y.amount), 1);
 
+  // Capitalise la première lettre de chaque phrase (sortie LLM en lowercase).
+  const cap = (s?: string | null) =>
+    s ? s.replace(/(^|[.!?]\s+)([a-zà-ÿ])/g, (_, sep, c) => sep + c.toUpperCase()) : s;
+
   return (
     <div>
+      {/* Tag inline : nature juridique (préserve l'info de l'ancienne section Identité droppée).
+       * Format discret, comme les tags typologie dans ProjetFiche. */}
+      {asso.natureJuridique && (
+        <div style={{ display: "flex", gap: 14, flexWrap: "wrap", marginBottom: 14, fontFamily: "var(--f-mono)", fontSize: 10.5, letterSpacing: ".08em", textTransform: "uppercase", color: "var(--muted)" }}>
+          <span style={{ color: "var(--ink)", fontWeight: 600 }}>{asso.natureJuridique}</span>
+        </div>
+      )}
+
       {grounded && (grounded.confiance ?? 0) >= 0.6 && grounded.activite_verifiee ? (
         <div className="fx-fiche-grounded">
           <div className="fx-fiche-grounded-head">{t("fx.fiche.asso.activity_h")}</div>
           <p className="fx-fiche-grounded-body">
-            {locale === "en" && grounded.activite_verifiee_en ? grounded.activite_verifiee_en : grounded.activite_verifiee}
+            {cap(locale === "en" && grounded.activite_verifiee_en ? grounded.activite_verifiee_en : grounded.activite_verifiee)}
           </p>
           <div className="fx-fiche-grounded-meta">
             {grounded.perimetre_geographique ? (
@@ -80,14 +96,13 @@ export default function AssociationFiche({
           </div>
         </div>
       ) : vulgarization ? (() => {
-        const activite = locale === "en" && vulgarization.activite_claire_en ? vulgarization.activite_claire_en : vulgarization.activite_claire;
-        const pourquoi = locale === "en" && vulgarization.pourquoi_subvention_en ? vulgarization.pourquoi_subvention_en : vulgarization.pourquoi_subvention;
-        const impact = locale === "en" && vulgarization.impact_citoyen_en ? vulgarization.impact_citoyen_en : vulgarization.impact_citoyen;
+        // Drop `impact_citoyen` (promo-y, cohérence avec ProjetFiche).
+        const activite = cap(locale === "en" && vulgarization.activite_claire_en ? vulgarization.activite_claire_en : vulgarization.activite_claire);
+        const pourquoi = cap(locale === "en" && vulgarization.pourquoi_subvention_en ? vulgarization.pourquoi_subvention_en : vulgarization.pourquoi_subvention);
         return (
           <div className="fx-fiche-lead">
             {activite && <p className="fx-fiche-lead-main">{activite}</p>}
             {pourquoi && <p className="fx-fiche-lead-sub">{pourquoi}</p>}
-            {impact && <p className="fx-fiche-lead-impact">→ {impact}</p>}
           </div>
         );
       })() : null}
@@ -114,38 +129,22 @@ export default function AssociationFiche({
         </div>
       </div>
 
-      <section className="fx-fiche-section">
-        <div className="fx-fiche-h">{t("fx.fiche.asso.identite")}</div>
-        <dl>
-          <div className="fx-fiche-prop">
-            <dt>{t("fx.fiche.shared.nom")}</dt>
-            <dd>{asso.name}</dd>
-          </div>
-          {asso.natureJuridique && (
-            <div className="fx-fiche-prop">
-              <dt>{t("fx.fiche.shared.nature")}</dt>
-              <dd>{asso.natureJuridique}</dd>
-            </div>
-          )}
-          {asso.theme && (
-            <div className="fx-fiche-prop">
-              <dt>{t("fx.fiche.asso.thematique")}</dt>
-              <dd>{trLabel(asso.theme, locale)}</dd>
-            </div>
-          )}
-        </dl>
-      </section>
-
+      {/* Historique année par année — promu juste après KPIs (différentiateur visuel).
+       * Drop des arrow markers ↑/↓ % et de la footnote "Mouvements notables" : varie
+       * trop pour être éditorialement pertinent. Toujours afficher le count de subventions.
+       *
+       * Affiche les 5 années actives les plus récentes par défaut. Bouton expand pour les
+       * années antérieures. asso.byYear ne contient que les années avec subv > 0 (gaps
+       * éventuels skippés naturellement). */}
       <section className="fx-fiche-section">
         <div className="fx-fiche-h">{t("fx.fiche.asso.historique")}</div>
         <div>
-          {asso.byYear
-            .slice()
-            .reverse()
-            .map((y) => {
+          {(() => {
+            const reversed = asso.byYear.slice().reverse();
+            const shown = showAllYears ? reversed : reversed.slice(0, YEARS_PREVIEW);
+            return shown.map((y) => {
               const { v, u } = fmtEur(y.amount);
               const pct = (y.amount / maxByYear) * 100;
-              const highlight = asso.highlights.find((h) => h.year === y.year);
               return (
                 <div
                   key={y.year}
@@ -177,30 +176,32 @@ export default function AssociationFiche({
                     {v} <span style={{ fontSize: ".7em", color: "var(--muted)", fontWeight: 500 }}>{u}</span>
                   </span>
                   <span style={{ textAlign: "right", fontFamily: "var(--f-mono)", fontSize: 11 }}>
-                    {highlight ? (
-                      <span style={{ color: highlight.kind === "up" ? "var(--rouge)" : "var(--bleu)" }}>
-                        {highlight.kind === "up" ? "↑" : "↓"}{" "}
-                        {Math.abs(highlight.pct).toFixed(0)} %
-                      </span>
-                    ) : (
-                      <span className="muted">{y.count} {t("fx.fiche.asso.sub")}</span>
-                    )}
+                    <span className="muted">{y.count} {t("fx.fiche.asso.sub")}</span>
                   </span>
                 </div>
               );
-            })}
+            });
+          })()}
         </div>
-        {asso.highlights.length > 0 && (
-          <p className="fx-fiche-note">
-            <b>{t("fx.fiche.asso.mouvements")}</b> ·{" "}
-            {asso.highlights
-              .slice(-3)
-              .reverse()
-              .map((h) =>
-                `${h.year}: ${h.kind === "up" ? "+" : "−"} ${Math.abs(h.pct).toFixed(0)} % ${t("fx.fiche.asso.vs_prev")}`,
-              )
-              .join(" · ")}
-          </p>
+        {!showAllYears && asso.byYear.length > YEARS_PREVIEW && (
+          <button
+            type="button"
+            onClick={() => setShowAllYears(true)}
+            style={{
+              marginTop: 10,
+              background: "transparent",
+              border: "none",
+              padding: "8px 0",
+              cursor: "pointer",
+              fontFamily: "var(--f-mono)",
+              fontSize: 12.5,
+              color: "var(--bleu)",
+              borderBottom: "1px solid var(--bleu)",
+              letterSpacing: "0.02em",
+            }}
+          >
+            {fill(t("fx.fiche.asso.voir_annees_avant"), { n: asso.byYear.length - YEARS_PREVIEW })}
+          </button>
         )}
       </section>
 
@@ -220,7 +221,7 @@ export default function AssociationFiche({
               </tr>
             </thead>
             <tbody>
-              {asso.lignes.map((l, i) => {
+              {(showAllLignes ? asso.lignes : asso.lignes.slice(0, LIGNES_PREVIEW)).map((l, i) => {
                 const { v, u } = fmtEur(l.amount);
                 const isOpen = openLigne === i;
                 const hasDetail = Boolean(l.objet || l.subCategory || l.secteurs);
@@ -315,6 +316,26 @@ export default function AssociationFiche({
               })}
             </tbody>
           </table>
+          {!showAllLignes && asso.lignes.length > LIGNES_PREVIEW && (
+            <button
+              type="button"
+              onClick={() => setShowAllLignes(true)}
+              style={{
+                marginTop: 10,
+                background: "transparent",
+                border: "none",
+                padding: "8px 0",
+                cursor: "pointer",
+                fontFamily: "var(--f-mono)",
+                fontSize: 12.5,
+                color: "var(--bleu)",
+                borderBottom: "1px solid var(--bleu)",
+                letterSpacing: "0.02em",
+              }}
+            >
+              {fill(t("fx.fiche.asso.voir_autres"), { n: asso.lignes.length - LIGNES_PREVIEW })}
+            </button>
+          )}
           <p className="fx-fiche-note" style={{ marginTop: 10 }}>
             {t("fx.fiche.asso.note")}{" "}
             <a
