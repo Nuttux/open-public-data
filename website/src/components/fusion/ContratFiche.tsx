@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import type { ContratFiche as ContratFicheType, ContratRanking, MarcheVulgarization, SireneCompany } from "@/lib/fusion-data";
-import { normalizeObjet, isObjetCryptic } from "@/lib/objet-normalizer";
+import { normalizeObjet } from "@/lib/objet-normalizer";
 import { useT, useLocale } from "@/lib/localeContext";
 import { trLabel } from "@/lib/label-translate";
 import Tip from "./Tip";
@@ -37,6 +37,10 @@ export default function ContratFiche({
       return iso;
     }
   };
+
+  // Capitalise la première lettre de chaque phrase (sortie LLM en lowercase).
+  const cap = (s?: string | null) =>
+    s ? s.replace(/(^|[.!?]\s+)([a-zà-ÿ])/g, (_, sep, c) => sep + c.toUpperCase()) : s;
 
   const { v: vMax, u: uMax } = fmtEur(contrat.montantMax);
   const dureeAnnees = contrat.dureeJours > 0
@@ -86,9 +90,9 @@ export default function ContratFiche({
   return (
     <div>
       {vulgarization ? (() => {
-        const objet = locale === "en" && vulgarization.objet_clair_en ? vulgarization.objet_clair_en : vulgarization.objet_clair;
-        const quoi = locale === "en" && vulgarization.quoi_concretement_en ? vulgarization.quoi_concretement_en : vulgarization.quoi_concretement;
-        const pourquoi = locale === "en" && vulgarization.pourquoi_ca_compte_en ? vulgarization.pourquoi_ca_compte_en : vulgarization.pourquoi_ca_compte;
+        // Drop `pourquoi_ca_compte` (promo-y, cohérence avec ProjetFiche/AssoFiche).
+        const objet = cap(locale === "en" && vulgarization.objet_clair_en ? vulgarization.objet_clair_en : vulgarization.objet_clair);
+        const quoi = cap(locale === "en" && vulgarization.quoi_concretement_en ? vulgarization.quoi_concretement_en : vulgarization.quoi_concretement);
         return (
           <div className="fx-fiche-lead">
             {objet && (
@@ -99,11 +103,6 @@ export default function ContratFiche({
             {quoi && (
               <p style={{ margin: "10px 0 0", fontSize: 14.5, color: "var(--ink-2)" }}>
                 {quoi}
-              </p>
-            )}
-            {pourquoi && (
-              <p style={{ margin: "10px 0 0", fontSize: 13, color: "var(--muted)", fontStyle: "italic" }}>
-                → {pourquoi}
               </p>
             )}
           </div>
@@ -170,50 +169,21 @@ export default function ContratFiche({
       </div>
 
       {decpTags.length > 0 && (
-        <div style={{ display: "flex", flexWrap: "wrap", gap: 6, margin: "12px 0 0" }}>
+        <div style={{ display: "flex", flexWrap: "wrap", gap: 14, margin: "14px 0 0", fontFamily: "var(--f-mono)", fontSize: 10.5, letterSpacing: ".08em", textTransform: "uppercase", color: "var(--muted)" }}>
           {decpTags.map((tg) => (
-            <span
-              key={tg.label}
-              title={tg.title}
-              style={{
-                fontFamily: "var(--f-mono)",
-                fontSize: 11,
-                letterSpacing: ".02em",
-                padding: "3px 8px",
-                background: "rgba(59, 99, 173, 0.06)",
-                border: "1px solid rgba(59, 99, 173, 0.25)",
-                color: "var(--ink-2)",
-                borderRadius: 2,
-                cursor: tg.title ? "help" : "default",
-              }}
-            >
+            <span key={tg.label} title={tg.title} style={{ cursor: tg.title ? "help" : "default" }}>
               {tg.label}
             </span>
           ))}
         </div>
       )}
 
-      <section className="fx-fiche-section">
-        <div className="fx-fiche-h">{t("fx.fiche.contrat.objet")}</div>
-        <p style={{ fontFamily: "var(--f-ui)", fontSize: 15, color: "var(--ink)", lineHeight: 1.55, margin: 0 }}>
-          {normalizeObjet(contrat.objet) || "—"}
-        </p>
-        {isObjetCryptic(contrat.objet) && contrat.objet && (
-          <p
-            style={{
-              fontFamily: "var(--f-mono)",
-              fontSize: 11.5,
-              color: "var(--muted)",
-              letterSpacing: ".02em",
-              marginTop: 8,
-              lineHeight: 1.45,
-            }}
-          >
-            {t("fx.fiche.contrat.libelle_brut")} : {contrat.objet}
-          </p>
-        )}
-      </section>
-
+      {/* Titulaire promu en position 1 après KPIs+tags — c'est THE différentiateur
+       * FOD (qui touche combien chez la Ville) vs simple liste DECP brute.
+       *
+       * Section Objet droppée : redondante avec le lead vulg (objet_clair) qui est
+       * déjà la version vulgarisée du libellé. Le libellé brut DECP reste dispo
+       * via le lien data.gouv.fr dans la section Sources si besoin d'audit. */}
       <section className="fx-fiche-section">
         <div className="fx-fiche-h">{t("fx.fiche.contrat.titulaire")}</div>
         {contrat.multiAttributaire ? (
@@ -335,9 +305,6 @@ export default function ContratFiche({
         </dl>
       </section>
 
-      <p style={{ fontFamily: "var(--f-mono)", fontSize: 11, color: "var(--muted)", letterSpacing: ".02em", lineHeight: 1.5 }}>
-        <b>{t("fx.fiche.coming_soon")}</b> : {t("fx.fiche.contrat.avenir")}
-      </p>
     </div>
   );
 }

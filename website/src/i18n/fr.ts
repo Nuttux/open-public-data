@@ -2655,7 +2655,7 @@ const fr: Record<string, string> = {
   'fx.fiche.contrat.duree_unit': 'ans',
   'fx.fiche.contrat.notifie': 'Notifié le',
   'fx.fiche.contrat.objet': 'Objet du marché',
-  'fx.fiche.contrat.libelle_reformat': "Libellé reformulé depuis le titre technique DECP. Retrouvez l'intitulé exact plus bas dans « Objet du marché ».",
+  'fx.fiche.contrat.libelle_reformat': "Libellé reformulé depuis le titre technique DECP pour la lisibilité.",
   'fx.fiche.contrat.libelle_brut': 'Libellé brut DECP',
   'fx.fiche.contrat.titulaire': 'Titulaire(s)',
   'fx.fiche.contrat.multi_badge': 'Marché multi-attributaire',

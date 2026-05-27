@@ -2655,7 +2655,7 @@ const en: Record<string, string> = {
   'fx.fiche.contrat.duree_unit': 'yrs',
   'fx.fiche.contrat.notifie': 'Notified on',
   'fx.fiche.contrat.objet': 'Contract subject',
-  'fx.fiche.contrat.libelle_reformat': 'Label reformulated from the DECP technical title. Find the exact wording below under "Contract subject".',
+  'fx.fiche.contrat.libelle_reformat': 'Label reformulated from the DECP technical title for readability.',
   'fx.fiche.contrat.libelle_brut': 'Raw DECP label',
   'fx.fiche.contrat.titulaire': 'Contractor(s)',
   'fx.fiche.contrat.multi_badge': 'Multi-award contract',
