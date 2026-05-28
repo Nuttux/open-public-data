@@ -1,11 +1,11 @@
 "use client";
 
+import { useState } from "react";
 import Link from "next/link";
 import type { FournisseurFiche as FournisseurFicheType, SireneCompany } from "@/lib/fusion-data";
 import { normalizeObjet } from "@/lib/objet-normalizer";
 import { useT, useLocale } from "@/lib/localeContext";
 import { trLabel } from "@/lib/label-translate";
-import Tip from "./Tip";
 
 const fill = (s: string, vars: Record<string, string | number>) => {
   let r = s;
@@ -23,6 +23,8 @@ export default function FournisseurFiche({
   const t = useT();
   const { locale } = useLocale();
   const locStr = locale === "en" ? "en-GB" : "fr-FR";
+  const [showAllYears, setShowAllYears] = useState(false);
+  const YEARS_PREVIEW = 5;
 
   const fmtEur = (n: number) => {
     if (n >= 1e9) return { v: new Intl.NumberFormat(locStr, { maximumFractionDigits: 2 }).format(n / 1e9), u: t("fx.s.md_eur") };
@@ -72,6 +74,19 @@ export default function FournisseurFiche({
               .filter(Boolean)
               .join(" · ")}
           </p>
+          {fournisseur.siren && fournisseur.siren !== "#" && (
+            <p style={{ margin: "8px 0 0", fontSize: 12, fontFamily: "var(--f-mono)", color: "var(--muted)" }}>
+              SIREN {fournisseur.siren} ·{" "}
+              <a
+                href={`https://annuaire-entreprises.data.gouv.fr/entreprise/${fournisseur.siren}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{ color: "var(--bleu)", borderBottom: "1px solid var(--bleu)" }}
+              >
+                {t("fx.fiche.fourn.annuaire_link")}
+              </a>
+            </p>
+          )}
         </div>
       ) : (
         <p style={{ margin: "8px 0 0", fontSize: 13, color: "var(--muted)" }}>
@@ -109,110 +124,135 @@ export default function FournisseurFiche({
         </div>
       </div>
 
-      {fournisseur.siret && (
-        <section className="fx-fiche-section">
-          <div className="fx-fiche-h">{t("fx.fiche.fourn.identite")}</div>
-          <dl>
-            {fournisseur.siret !== "#" && (
-              <div className="fx-fiche-prop">
-                <dt><Tip label={t("fx.fiche.siret.tip")}>SIRET</Tip></dt>
-                <dd style={{ fontFamily: "var(--f-mono)" }}>{fournisseur.siret}</dd>
-              </div>
-            )}
-            {fournisseur.siren && fournisseur.siren !== "#" && (
-              <div className="fx-fiche-prop">
-                <dt><Tip label={t("fx.fiche.siren.tip")}>SIREN</Tip></dt>
-                <dd style={{ fontFamily: "var(--f-mono)" }}>{fournisseur.siren}</dd>
-              </div>
-            )}
-            {sirene?.adresse && (
-              <div className="fx-fiche-prop">
-                <dt>{t("fx.fiche.fourn.adresse")}</dt>
-                <dd>{sirene.adresse}</dd>
-              </div>
-            )}
-            {sirene?.etat && (
-              <div className="fx-fiche-prop">
-                <dt>{t("fx.fiche.fourn.etat")}</dt>
-                <dd style={{ textTransform: "capitalize" }}>{sirene.etat.toLowerCase()}</dd>
-              </div>
-            )}
-            {sirene?.dirigeants && sirene.dirigeants.length > 0 && (
-              <div className="fx-fiche-prop">
-                <dt>{t("fx.fiche.fourn.dirigeant")}</dt>
-                <dd>
-                  {sirene.dirigeants
-                    .slice(0, 2)
-                    .map((d) => `${d.prenom} ${d.nom}`.trim())
-                    .filter(Boolean)
-                    .join(" · ")}
-                </dd>
-              </div>
-            )}
-            <div className="fx-fiche-prop">
-              <dt>{t("fx.fiche.fourn.annuaire")}</dt>
-              <dd>
-                <a
-                  href={`https://annuaire-entreprises.data.gouv.fr/entreprise/${fournisseur.siren}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  style={{ color: "var(--bleu)", borderBottom: "1px solid var(--bleu)" }}
-                >
-                  annuaire-entreprises.data.gouv.fr ↗
-                </a>
-              </dd>
-            </div>
-          </dl>
-        </section>
-      )}
-
+      {/* Contrats notifiés promu en position 1 après KPIs — c'est THE différentiateur
+       * FOD (qui touche combien chez la Ville) vs annuaire SIRENE standard.
+       * Label dynamique : "Contrats notifiés" si <= 8, "Top 8" si on tronque. */}
       <section className="fx-fiche-section">
-        <div className="fx-fiche-h">{t("fx.fiche.fourn.historique")}</div>
-        <div>
-          {fournisseur.byYear
-            .slice()
-            .reverse()
-            .map((y) => {
-              const { v, u } = fmtEur(y.amount);
-              const pct = (y.amount / maxByYear) * 100;
+        <div className="fx-fiche-h">
+          {fournisseur.contrats.length > 8
+            ? t("fx.fiche.fourn.top8")
+            : t("fx.fiche.fourn.contrats_label")}
+        </div>
+        <table className="fx-table" style={{ border: 0 }}>
+          <thead>
+            <tr>
+              <th>{t("fx.fiche.fourn.col.objet")}</th>
+              <th>{t("fx.fiche.shared.annee")}</th>
+              <th>{t("fx.fiche.fourn.col.date")}</th>
+              <th style={{ textAlign: "right" }}>{t("fx.fiche.shared.montant")}</th>
+            </tr>
+          </thead>
+          <tbody>
+            {fournisseur.contrats.slice(0, 8).map((c) => {
+              const { v, u } = fmtEur(c.montant);
               return (
-                <div
-                  key={y.year}
-                  style={{
-                    display: "grid",
-                    gridTemplateColumns: "56px 1fr 100px 80px",
-                    gap: 14,
-                    alignItems: "center",
-                    padding: "8px 0",
-                    borderBottom: "1px solid var(--rule)",
-                    fontFamily: "var(--f-ui)",
-                    fontSize: 13,
-                  }}
-                >
-                  <span style={{ fontFamily: "var(--f-mono)", color: "var(--ocre)" }}>{y.year}</span>
-                  <span style={{ position: "relative", height: 8 }}>
-                    <span
-                      style={{
-                        position: "absolute",
-                        left: 0,
-                        top: 1,
-                        height: 6,
-                        width: `${pct}%`,
-                        background: "var(--ink)",
-                      }}
-                    />
-                  </span>
-                  <span style={{ textAlign: "right", fontFamily: "var(--f-disp)", fontWeight: 700, fontSize: 14 }}>
-                    {v} <span style={{ fontSize: ".7em", color: "var(--muted)", fontWeight: 500 }}>{u}</span>
-                  </span>
-                  <span className="muted" style={{ textAlign: "right", fontFamily: "var(--f-mono)", fontSize: 11 }}>
-                    {y.count} {t("fx.fiche.fourn.contrats_row")}
-                  </span>
-                </div>
+                <tr key={c.numero}>
+                  <td style={{ fontWeight: 500, maxWidth: 280 }}>
+                    {(() => {
+                      const clean = normalizeObjet(c.objet);
+                      const shown = clean.length > 70 ? clean.slice(0, 70) + "…" : clean;
+                      return c.numero ? (
+                        <Link
+                          href={`/ville/paris/marches/contrat/${c.numero}`}
+                          scroll={false}
+                        >
+                          {shown}
+                        </Link>
+                      ) : (
+                        <span>{shown}</span>
+                      );
+                    })()}
+                  </td>
+                  <td className="rank">{c.year}</td>
+                  <td className="muted">{fmtDate(c.date)}</td>
+                  <td className="num">
+                    {v} <span className="muted">{u}</span>
+                  </td>
+                </tr>
               );
             })}
-        </div>
+          </tbody>
+        </table>
+        {fournisseur.contrats.length > 8 && (
+          <p style={{ fontFamily: "var(--f-mono)", fontSize: 11, color: "var(--muted)", marginTop: 12 }}>
+            {fill(t("fx.fiche.fourn.overflow"), { n: fournisseur.contrats.length - 8 })}
+          </p>
+        )}
       </section>
+
+      {/* Historique année par année — conditionnel sur >1 année active : pour un
+       * fournisseur avec 1 seul contrat sur 1 année, la section = 1 barre solo qui
+       * répète le KPI "Actif depuis". Skip. Preview 5 années si plus. */}
+      {fournisseur.byYear.length > 1 && (
+        <section className="fx-fiche-section">
+          <div className="fx-fiche-h">{t("fx.fiche.fourn.historique")}</div>
+          <div>
+            {(() => {
+              const reversed = fournisseur.byYear.slice().reverse();
+              const shown = showAllYears ? reversed : reversed.slice(0, YEARS_PREVIEW);
+              return shown.map((y) => {
+                const { v, u } = fmtEur(y.amount);
+                const pct = (y.amount / maxByYear) * 100;
+                return (
+                  <div
+                    key={y.year}
+                    style={{
+                      display: "grid",
+                      gridTemplateColumns: "56px 1fr 100px 80px",
+                      gap: 14,
+                      alignItems: "center",
+                      padding: "8px 0",
+                      borderBottom: "1px solid var(--rule)",
+                      fontFamily: "var(--f-ui)",
+                      fontSize: 13,
+                    }}
+                  >
+                    <span style={{ fontFamily: "var(--f-mono)", color: "var(--ocre)" }}>{y.year}</span>
+                    <span style={{ position: "relative", height: 8 }}>
+                      <span
+                        style={{
+                          position: "absolute",
+                          left: 0,
+                          top: 1,
+                          height: 6,
+                          width: `${pct}%`,
+                          background: "var(--ink)",
+                        }}
+                      />
+                    </span>
+                    <span style={{ textAlign: "right", fontFamily: "var(--f-disp)", fontWeight: 700, fontSize: 14 }}>
+                      {v} <span style={{ fontSize: ".7em", color: "var(--muted)", fontWeight: 500 }}>{u}</span>
+                    </span>
+                    <span className="muted" style={{ textAlign: "right", fontFamily: "var(--f-mono)", fontSize: 11 }}>
+                      {y.count} {t("fx.fiche.fourn.contrats_row")}
+                    </span>
+                  </div>
+                );
+              });
+            })()}
+          </div>
+          {!showAllYears && fournisseur.byYear.length > YEARS_PREVIEW && (
+            <button
+              type="button"
+              onClick={() => setShowAllYears(true)}
+              style={{
+                marginTop: 10,
+                background: "transparent",
+                border: "none",
+                padding: "8px 0",
+                cursor: "pointer",
+                fontFamily: "var(--f-mono)",
+                fontSize: 12.5,
+                color: "var(--bleu)",
+                borderBottom: "1px solid var(--bleu)",
+                letterSpacing: "0.02em",
+              }}
+            >
+              {fill(t("fx.fiche.fourn.voir_annees_avant"), { n: fournisseur.byYear.length - YEARS_PREVIEW })}
+            </button>
+          )}
+        </section>
+      )}
 
       {fournisseur.byCategory.length > 1 && (
         <section className="fx-fiche-section">
@@ -244,60 +284,6 @@ export default function FournisseurFiche({
           })}
         </section>
       )}
-
-      <section className="fx-fiche-section">
-        <div className="fx-fiche-h">{t("fx.fiche.fourn.top8")}</div>
-        <table className="fx-table" style={{ border: 0 }}>
-          <thead>
-            <tr>
-              <th>{t("fx.fiche.fourn.col.objet")}</th>
-              <th>{t("fx.fiche.shared.annee")}</th>
-              <th>{t("fx.fiche.fourn.col.date")}</th>
-              <th style={{ textAlign: "right" }}>{t("fx.fiche.shared.montant")}</th>
-            </tr>
-          </thead>
-          <tbody>
-            {fournisseur.contrats.slice(0, 8).map((c) => {
-              const { v, u } = fmtEur(c.montant);
-              return (
-                <tr key={c.numero}>
-                  <td style={{ fontWeight: 500, maxWidth: 280 }}>
-                    {(() => {
-                      const clean = normalizeObjet(c.objet);
-                      const shown = clean.length > 70 ? clean.slice(0, 70) + "…" : clean;
-                      return c.numero ? (
-                        <Link
-                          href={`/ville/paris/marches/contrat/${c.numero}`}
-
-                          scroll={false}
-                        >
-                          {shown}
-                        </Link>
-                      ) : (
-                        <span>{shown}</span>
-                      );
-                    })()}
-                  </td>
-                  <td className="rank">{c.year}</td>
-                  <td className="muted">{fmtDate(c.date)}</td>
-                  <td className="num">
-                    {v} <span className="muted">{u}</span>
-                  </td>
-                </tr>
-              );
-            })}
-          </tbody>
-        </table>
-        {fournisseur.contrats.length > 8 && (
-          <p style={{ fontFamily: "var(--f-mono)", fontSize: 11, color: "var(--muted)", marginTop: 12 }}>
-            {fill(t("fx.fiche.fourn.overflow"), { n: fournisseur.contrats.length - 8 })}
-          </p>
-        )}
-      </section>
-
-      <p style={{ fontFamily: "var(--f-mono)", fontSize: 11, color: "var(--muted)", letterSpacing: ".02em", lineHeight: 1.5 }}>
-        <b>{t("fx.fiche.coming_soon")}</b> : {t("fx.fiche.fourn.avenir")}
-      </p>
     </div>
   );
 }
