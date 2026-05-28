@@ -2250,6 +2250,7 @@ const en: Record<string, string> = {
   'fx.fiche.bg.part_fixe': 'Fixed-rate share',
   'fx.fiche.bg.preteurs': 'Lending institutions',
   'fx.fiche.bg.emprunts_title': 'Top {n} loans by outstanding',
+  'fx.fiche.bg.voir_autres_emprunts': "Show the {n} other loan(s) →",
   'fx.fiche.bg.emprunts_desc': "Heaviest loans carried by the City's guarantee. Source: appendix IV-B of the administrative account.",
   'fx.fiche.bg.col.preteur': 'Lender',
   'fx.fiche.bg.col.encours': 'Outstanding',

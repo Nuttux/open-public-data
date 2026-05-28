@@ -2250,6 +2250,7 @@ const fr: Record<string, string> = {
   'fx.fiche.bg.part_fixe': 'Part taux fixe',
   'fx.fiche.bg.preteurs': 'Organismes prêteurs',
   'fx.fiche.bg.emprunts_title': "Top {n} emprunts par capital restant",
+  'fx.fiche.bg.voir_autres_emprunts': "Voir les {n} autres emprunts →",
   'fx.fiche.bg.emprunts_desc': "Les emprunts les plus lourds pesant sur la garantie de la Ville. Source : annexe IV-B du compte administratif.",
   'fx.fiche.bg.col.preteur': 'Prêteur',
   'fx.fiche.bg.col.encours': 'Capital restant',

@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import type { BailleurFiche as BailleurFicheType } from "@/lib/fusion-data";
 import { fmtBillions, fmtDec, fmtInt, fmtMillions } from "@/lib/fmt";
 import { useT } from "@/lib/localeContext";
@@ -10,8 +11,15 @@ const fill = (s: string, vars: Record<string, string | number>) => {
   return r;
 };
 
+// Capitalise la première lettre de chaque phrase (homogène avec les autres fiches).
+const cap = (s?: string | null) =>
+  s ? s.replace(/(^|[.!?]\s+)([a-zà-ÿ])/g, (_, sep, c) => sep + c.toUpperCase()) : s;
+
+const EMPRUNTS_PREVIEW = 10;
+
 export default function BailleurFiche({ bailleur }: { bailleur: BailleurFicheType }) {
   const t = useT();
+  const [showAllEmprunts, setShowAllEmprunts] = useState(false);
 
   const mdLabel = t("fx.s.md_eur");
   const mLabel = t("fx.s.m_eur");
@@ -27,7 +35,7 @@ export default function BailleurFiche({ bailleur }: { bailleur: BailleurFicheTyp
     <div>
       {hasEditorial && bailleur.description && (
         <p className="fx-fiche-lead">
-          <b>{t("fx.fiche.bail.en_clair")}</b> — {bailleur.description}
+          {cap(bailleur.description)}
         </p>
       )}
 
@@ -53,36 +61,12 @@ export default function BailleurFiche({ bailleur }: { bailleur: BailleurFicheTyp
         </div>
       )}
 
-      {hasEditorial && (
-        <section className="fx-fiche-section">
-          <div className="fx-fiche-h">{t("fx.fiche.bail.identite")}</div>
-          <dl>
-            <div className="fx-fiche-prop">
-              <dt>{t("fx.fiche.shared.nom")}</dt>
-              <dd>{bailleur.name}</dd>
-            </div>
-            {bailleur.type && (
-              <div className="fx-fiche-prop">
-                <dt>{t("fx.fiche.bail.statut")}</dt>
-                <dd>{bailleur.type}</dd>
-              </div>
-            )}
-            {bailleur.description && (
-              <div className="fx-fiche-prop">
-                <dt>{t("fx.fiche.bail.desc_label")}</dt>
-                <dd>{bailleur.description}</dd>
-              </div>
-            )}
-            {g && (
-              <div className="fx-fiche-prop">
-                <dt>{t("fx.fiche.bail.raison_sociale")}</dt>
-                <dd className="muted">{g.name_raw}</dd>
-              </div>
-            )}
-          </dl>
-        </section>
-      )}
-
+      {/* Section Identité droppée : nom (drawer title), statut (KPI type), description
+       * (lead), raison sociale (g.name_raw = debug/source info) tous redondants.
+       *
+       * Garanties promues en position 1 après KPIs principaux — c'est le différentiateur
+       * éditorial (per-bailleur agrégé sur prêteurs + emprunts top, ce que la Ville ne
+       * publie pas en agrégat lisible). */}
       {g && (
         <section className="fx-fiche-section">
           <div className="fx-fiche-h">{t("fx.fiche.bail.garanties_title")}</div>
@@ -184,7 +168,7 @@ export default function BailleurFiche({ bailleur }: { bailleur: BailleurFicheTyp
                   </tr>
                 </thead>
                 <tbody>
-                  {g.emprunts_top.map((e, i) => {
+                  {(showAllEmprunts ? g.emprunts_top : g.emprunts_top.slice(0, EMPRUNTS_PREVIEW)).map((e, i) => {
                     const f = fmtAmount(e.capital_restant);
                     const isFixed = e.taux_type.startsWith("F");
                     return (
@@ -223,6 +207,26 @@ export default function BailleurFiche({ bailleur }: { bailleur: BailleurFicheTyp
                   })}
                 </tbody>
               </table>
+              {!showAllEmprunts && g.emprunts_top.length > EMPRUNTS_PREVIEW && (
+                <button
+                  type="button"
+                  onClick={() => setShowAllEmprunts(true)}
+                  style={{
+                    marginTop: 10,
+                    background: "transparent",
+                    border: "none",
+                    padding: "8px 0",
+                    cursor: "pointer",
+                    fontFamily: "var(--f-mono)",
+                    fontSize: 12.5,
+                    color: "var(--bleu)",
+                    borderBottom: "1px solid var(--bleu)",
+                    letterSpacing: "0.02em",
+                  }}
+                >
+                  {fill(t("fx.fiche.bg.voir_autres_emprunts"), { n: g.emprunts_top.length - EMPRUNTS_PREVIEW })}
+                </button>
+              )}
             </>
           )}
         </section>
