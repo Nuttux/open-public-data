@@ -1,3 +1,4 @@
+import type { JSX } from "react";
 import { ImageResponse } from "next/og";
 import {
   loadLandingStats,
@@ -161,7 +162,7 @@ async function resolveChart(chart: string): Promise<JSX.Element> {
       const d = loadQuiRecoitData();
       const rows = (d.byTheme ?? [])
         .slice(0, 6)
-        .map((t) => ({ label: t.theme, value: `${fmtMn(t.total)} M€`, share: t.total / d.total }));
+        .map((t) => ({ label: t.theme, value: `${fmtMn(t.amount)} M€`, share: t.amount / d.total }));
       return renderTopBars({
         slug: "/subventions · thèmes",
         kicker: `Subventions Paris ${d.year}`,
@@ -173,15 +174,15 @@ async function resolveChart(chart: string): Promise<JSX.Element> {
     }
     case "paris-subv-top-benef": {
       const d = loadQuiRecoitData();
-      const rows = d.topBeneficiaires.slice(0, 6).map((b) => ({
+      const rows = d.top10.slice(0, 6).map((b) => ({
         label: b.name,
-        value: `${fmtMn(b.totalMontant)} M€`,
-        share: b.totalMontant / d.total,
+        value: `${fmtMn(b.amount)} M€`,
+        share: b.amount / d.total,
       }));
       return renderTopBars({
         slug: "/subventions · top 10",
         kicker: `Subventions Paris ${d.year}`,
-        title: `Top bénéficiaires — ${d.topPct ?? 54}% du total`,
+        title: `Top bénéficiaires — ${Math.round(d.concentrationTop10Pct)}% du total`,
         rows,
         sourceText: "Source Paris Open Data · Annexe CA",
         urlText: "franceopendata.org/ville/paris/subventions",
@@ -189,15 +190,16 @@ async function resolveChart(chart: string): Promise<JSX.Element> {
     }
     case "paris-marches-top-fournisseurs": {
       const d = loadMarchesPageData();
-      const rows = d.topFournisseurs.slice(0, 6).map((f) => ({
-        label: f.fournisseur,
-        value: `${fmtMn(f.total)} M€`,
-        share: f.total / d.total,
+      const rows = d.top10.slice(0, 6).map((f) => ({
+        label: f.name,
+        value: `${fmtMn(f.amount)} M€`,
+        share: f.amount / d.total,
       }));
+      const top10Share = d.top10.reduce((s, x) => s + x.amount, 0) / (d.total || 1);
       return renderTopBars({
         slug: "/marchés · top fournisseurs",
         kicker: `Marchés publics Paris ${d.year}`,
-        title: `Top 10 fournisseurs — ${Math.round((d.top10Share ?? 0.34) * 100)}% des enveloppes`,
+        title: `Top 10 fournisseurs — ${Math.round(top10Share * 100)}% des enveloppes`,
         rows,
         sourceText: "Source DECP · Ville de Paris",
         urlText: "franceopendata.org/ville/paris/marches",
@@ -273,15 +275,19 @@ async function resolveChart(chart: string): Promise<JSX.Element> {
     case "fr-fiscalite-categories": {
       const d = loadEurostatFiscalite();
       if (!d) break;
-      const cats = (d.fr_breakdown ?? []).slice(0, 6).map((c) => ({
-        label: c.label_fr,
-        value: `${c.pc_gdp.toLocaleString("fr-FR", { maximumFractionDigits: 1, minimumFractionDigits: 1 })} % PIB`,
-        share: c.pc_gdp / (d.fr_total_po.pc_gdp || 1),
-      }));
+      const totalPo = d.fr_total_po.pc_gdp ?? 0;
+      const cats = (d.fr_breakdown ?? [])
+        .filter((c): c is typeof c & { pc_gdp: number } => c.pc_gdp != null)
+        .slice(0, 6)
+        .map((c) => ({
+          label: c.label_fr,
+          value: `${c.pc_gdp.toLocaleString("fr-FR", { maximumFractionDigits: 1, minimumFractionDigits: 1 })} % PIB`,
+          share: c.pc_gdp / (totalPo || 1),
+        }));
       return renderTopBars({
         slug: "/fiscalité · catégories",
         kicker: `Prélèvements obligatoires France · ${d.latest_year}`,
-        title: `${d.fr_total_po.pc_gdp.toLocaleString("fr-FR", { maximumFractionDigits: 1 })}% du PIB — qui paie quoi ?`,
+        title: `${totalPo.toLocaleString("fr-FR", { maximumFractionDigits: 1 })}% du PIB — qui paie quoi ?`,
         rows: cats,
         sourceText: "Source Eurostat · gov_10a_taxag",
         urlText: "franceopendata.org/france/fiscalite",
