@@ -105,9 +105,8 @@ export default function BudgetClient({ index, d, voteExec, posts }: Props) {
           <h1 className="fx-page-title">
             {t("fx.bud.title.before")}<em>{t("fx.bud.title.em")}</em>{t("fx.bud.title.after")}
           </h1>
-          <p className="fx-page-lede">
-            {t("fx.bud.lede.l1")}
-            <br />
+          <p className="fx-page-lede">{t("fx.bud.lede.l1")}</p>
+          <p className="fx-page-source">
             {t("fx.bud.lede.l2.prefix")}
             <Tip label={t("fx.bud.lede.l2.ca.tip")}>{t("fx.bud.lede.l2.ca")}</Tip>
             {t("fx.bud.lede.l2.sep1")}
@@ -256,49 +255,15 @@ export default function BudgetClient({ index, d, voteExec, posts }: Props) {
             subtitle={t("fx.bud.s02.sub")}
           />
 
-          {/* Pareto + YoY top-3 movers on dépenses — story anchor above the
-              symmetric DualFlowBars. */}
+          {/* Pareto line — one stat anchor above the symmetric DualFlowBars. */}
           {(() => {
             const depSum = d.topDepenses.reduce((s, x) => s + x.value, 0);
             const top3Sum = d.topDepenses.slice(0, 3).reduce((s, x) => s + x.value, 0);
             const top3Pct = depSum > 0 ? (top3Sum / depSum) * 100 : 0;
-            const movers = d.topDepenses
-              .filter((x) => x.deltaPct !== null && Math.abs(x.deltaPct) >= 2 && x.label !== "Autres (D)")
-              .sort((a, b) => Math.abs(b.deltaPct!) - Math.abs(a.deltaPct!))
-              .slice(0, 3);
             return (
-              <>
-                <p className="fx-note" style={{ marginTop: 0, marginBottom: 10 }}>
-                  {fill("fx.bud.s03.pareto_line", { year: d.year, pct: `${Math.round(top3Pct)} €` })}
-                </p>
-                {movers.length > 0 && (
-                  <div
-                    style={{
-                      fontFamily: "var(--f-mono)",
-                      fontSize: 12,
-                      color: "var(--ink-2)",
-                      letterSpacing: ".02em",
-                      marginBottom: 22,
-                      display: "flex",
-                      gap: 18,
-                      flexWrap: "wrap",
-                    }}
-                  >
-                    <span style={{ color: "var(--muted)", textTransform: "uppercase", letterSpacing: ".08em", fontSize: 11 }}>
-                      {fill("fx.bud.s03.yoy_label", { prev: d.previousYear })}
-                    </span>
-                    {movers.map((m) => (
-                      <span key={m.label} style={{ whiteSpace: "nowrap" }}>
-                        {m.label === "Autres (D)" ? t("fx.bud.autres") : m.label}{" "}
-                        <b style={{ color: "var(--ink)" }}>
-                          {m.deltaPct! >= 0 ? "+" : "−"}{" "}
-                          {fmtDec(Math.abs(m.deltaPct!), 1)} %
-                        </b>
-                      </span>
-                    ))}
-                  </div>
-                )}
-              </>
+              <p className="fx-note" style={{ marginTop: 0, marginBottom: 22 }}>
+                {fill("fx.bud.s03.pareto_line", { year: d.year, pct: `${Math.round(top3Pct)} €` })}
+              </p>
             );
           })()}
 
@@ -330,23 +295,23 @@ export default function BudgetClient({ index, d, voteExec, posts }: Props) {
             }}
             callout={
               <>
-                {t("fx.bud.s02.callout.p1_a")}
-                <b>{fill("fx.bud.s02.callout.p1_pct", { pct: Math.round((d.fonctionnement / d.depenses) * 100) })}</b>
-                {t("fx.bud.s02.callout.p1_b")}
+                {t("fx.bud.s02.callout.c1")}
                 <Tip label={t("fx.bud.s02.callout.tip.fonct")}>
                   <b>{t("fx.bud.s02.callout.word.fonct")}</b>
                 </Tip>
-                {t("fx.bud.s02.callout.p2")}
-                <b>{fill("fx.bud.s02.callout.p3_pct", { pct: Math.round((d.investissement / d.depenses) * 100) })}</b>
-                {t("fx.bud.s02.callout.p3")}
+                {t("fx.bud.s02.callout.c2")}
                 <Tip label={t("fx.bud.s02.callout.tip.invest")}>
                   <b>{t("fx.bud.s02.callout.word.invest")}</b>
                 </Tip>
-                {t("fx.bud.s02.callout.p4")}
-                <b>{t("fx.bud.s02.callout.word.emprunt")}</b>
-                {t("fx.bud.s02.callout.p5")}
-                {t("fx.bud.s02.callout.word.regle")}
-                {t("fx.bud.s02.callout.p6")}
+                {t("fx.bud.s02.callout.c3")}
+                <Tip label={t("fx.bud.s02.callout.tip.emprunt")}>
+                  <b>{t("fx.bud.s02.callout.word.emprunt")}</b>
+                </Tip>
+                {t("fx.bud.s02.callout.c4")}
+                <Tip label={t("fx.bud.s02.callout.tip.regle")}>
+                  <b>{t("fx.bud.s02.callout.word.regle")}</b>
+                </Tip>
+                {t("fx.bud.s02.callout.c5")}
               </>
             }
           />

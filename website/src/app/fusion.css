@@ -2595,7 +2595,16 @@ body:has(.theme-fusion) > div.pb-24 { padding-bottom: 0 !important; }
   line-height: 1.55;
   color: var(--ink-2);
   max-width: 720px;
-  margin: 0 0 28px;
+  margin: 0 0 12px;
+}
+.theme-fusion .fx-page-source {
+  font-family: var(--f-mono);
+  font-size: 12.5px;
+  line-height: 1.6;
+  color: var(--muted);
+  letter-spacing: .01em;
+  max-width: 720px;
+  margin: 0 0 26px;
 }
 .theme-fusion .fx-page-actions { display: flex; gap: 10px; flex-wrap: wrap; }
 @media (max-width: 768px) {
@@ -2688,17 +2697,14 @@ body:has(.theme-fusion) > div.pb-24 { padding-bottom: 0 !important; }
   border: 1px solid var(--ink);
   padding: 32px 36px 28px;
 }
-.theme-fusion .fx-dualbars-heads {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 40px;
-  margin-bottom: 20px;
+.theme-fusion .fx-dualbars-col-head {
   font-family: var(--f-mono);
   font-size: 12px;
   color: var(--muted);
   letter-spacing: .14em;
   text-transform: uppercase;
   padding-bottom: 14px;
+  margin-bottom: 6px;
   border-bottom: 1px solid var(--ink);
 }
 .theme-fusion .fx-dualbars-cols {
@@ -2803,8 +2809,9 @@ body:has(.theme-fusion) > div.pb-24 { padding-bottom: 0 !important; }
 }
 @media (max-width: 768px) {
   .theme-fusion .fx-dualbars { padding: 20px 16px; }
-  .theme-fusion .fx-dualbars-heads { grid-template-columns: 1fr; gap: 8px; }
   .theme-fusion .fx-dualbars-cols { grid-template-columns: 1fr; gap: 0; }
+  /* Stacked on mobile: clear gap so RECETTES and DÉPENSES read as two blocks. */
+  .theme-fusion .fx-dualbars-col + .fx-dualbars-col { margin-top: 30px; }
   .theme-fusion .fx-dualbars-row { grid-template-columns: 110px 1fr 70px; gap: 10px; }
 }
 
@@ -4142,12 +4149,17 @@ body:has(.theme-fusion) > div.pb-24 { padding-bottom: 0 !important; }
   cursor: help;
 }
 
-.theme-fusion .fx-poste-groups { display: flex; flex-direction: column; gap: 28px; }
-.theme-fusion .fx-poste-group header {
+.theme-fusion .fx-poste-groups { display: flex; flex-direction: column; gap: 0; }
+/* Collapsible fonction sections: each <details> stacks as a scannable row;
+   the <summary> reuses the old <header> look + a chevron. */
+.theme-fusion details.fx-poste-group { border-bottom: 1px solid var(--rule); }
+.theme-fusion details.fx-poste-group[open] { padding-bottom: 20px; }
+.theme-fusion .fx-poste-group header,
+.theme-fusion details.fx-poste-group > summary {
   display: flex;
   justify-content: space-between;
   align-items: baseline;
-  padding: 8px 0;
+  padding: 12px 0;
   border-bottom: 1px solid var(--ink);
   font-family: var(--f-mono);
   font-size: 11.5px;
@@ -4156,6 +4168,19 @@ body:has(.theme-fusion) > div.pb-24 { padding-bottom: 0 !important; }
   color: var(--ink-2);
   margin-bottom: 8px;
 }
+.theme-fusion details.fx-poste-group > summary {
+  cursor: pointer;
+  list-style: none;
+  outline: none;
+  border-bottom-color: var(--rule);
+}
+.theme-fusion details.fx-poste-group[open] > summary { border-bottom-color: var(--ink); }
+.theme-fusion details.fx-poste-group > summary::-webkit-details-marker { display: none; }
+.theme-fusion details.fx-poste-group > summary:hover { color: var(--ink); }
+.theme-fusion details.fx-poste-group > summary:focus-visible { outline: 2px solid var(--bleu); outline-offset: 2px; }
+.theme-fusion .fx-poste-group-meta { display: inline-flex; align-items: baseline; gap: 12px; }
+.theme-fusion .fx-poste-group-chev { font-style: normal; color: var(--muted); transition: transform .2s, color .2s; }
+.theme-fusion details.fx-poste-group[open] > summary .fx-poste-group-chev { transform: rotate(90deg); color: var(--bleu); }
 .theme-fusion .fx-poste-group .muted { color: var(--muted); font-weight: 500; }
 .theme-fusion .fx-poste-group ul {
   list-style: none;

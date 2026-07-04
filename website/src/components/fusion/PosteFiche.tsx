@@ -76,6 +76,200 @@ function shortFlow(flow: string | undefined, locale: "fr" | "en"): string | null
   return map[flow] || flow;
 }
 
+/**
+ * EN display for sub-poste line labels. Labels are either a leaf
+ * ("Rémunérations du personnel") or "Prefix: leaf" ("Invest. Aménagement:
+ * Subventions d'investissement", "Reversements Fiscaux: FNGIR"). We translate
+ * the prefix and the leaf separately and keep any untranslated token as-is
+ * (proper nouns / acronyms like FNGIR stay). The long tail falls back to French.
+ * Source of the FR labels is pipeline/seeds/seed_label_friendly.csv.
+ */
+const LABEL_PREFIX_EN: Record<string, string> = {
+  "Reversements Fiscaux": "Tax redistributions",
+  "Charges Fiscales": "Tax charges",
+  "Administration": "Administration",
+  "Aménagement": "Urban development",
+  "Remboursement Dette": "Debt repayment",
+  "Opérations Financières": "Financial operations",
+  "Action Économique": "Economic action",
+  "APA": "APA (elderly-care allowance)",
+  "Autres": "Other",
+  "Participations": "Equity holdings",
+  "Subventions Équipement": "Capital grants",
+  "Fonds Européens": "European funds",
+  "Invest. Aménagement": "Capex — Urban development",
+  "Invest. Administration": "Capex — Administration",
+  "Invest. Culture": "Capex — Culture",
+  "Invest. Transports": "Capex — Transport",
+  "Invest. Environnement": "Capex — Environment",
+  "Invest. Éducation": "Capex — Education",
+  "Invest. Social": "Capex — Social",
+  "Invest. Économie": "Capex — Economy",
+  "Invest. Sécurité": "Capex — Security",
+  "Invest. Logement": "Capex — Housing",
+};
+
+const LABEL_LEAF_EN: Record<string, string> = {
+  "Rémunérations du personnel": "Staff pay",
+  "Administration: Rémunérations du personnel": "Administration: Staff pay",
+  "Contributions obligatoires": "Mandatory contributions",
+  "Subventions d'intervention": "Intervention grants",
+  "Charges d'intervention": "Intervention costs",
+  "Charges de sécurité sociale et prévoyance": "Social security & welfare charges",
+  "Charges sécurité sociale et": "Social security charges",
+  "Frais de séjour, héberg., inhumation": "Residential care, housing & burial",
+  "Immobilisations corporelles en cours": "Tangible assets under construction",
+  "Immobilisations incorporelles en cours": "Intangible assets under construction",
+  "Immobilisations corporelles": "Tangible assets",
+  "Autres immobilisations corporelles": "Other tangible assets",
+  "Dotations aux amortissements (immobilisations incorporelles)": "Depreciation (intangible assets)",
+  "Dotations aux provisions (risques de fonctionnement)": "Provisions (operating risks)",
+  "Subventions d'investissement": "Capital grants",
+  "Contrats de prestations de services": "Service contracts",
+  "Aides aux personnes": "Personal assistance",
+  "Prélèvement national péréquation DMTO": "National DMTO equalisation levy",
+  "Fonds de péréquation des ressources communales et intercommunales": "Municipal & inter-municipal equalisation fund",
+  "Emprunts en euros": "Euro-denominated loans",
+  "Emprunt obligataire remboursable in fine": "Bullet-repayment bond",
+  "Intérêts réglés à l'échéance": "Interest paid at maturity",
+  "Intérêts — rattachement des ICNE (intérêts courus non échus)": "Interest — accrued, not yet due (ICNE)",
+  "Communes": "Municipalities",
+  "Départements": "Departments",
+  "Autres attributions et participations": "Other allocations & holdings",
+  "Autres formes de participation": "Other equity holdings",
+  "Participations": "Equity holdings",
+  "Terrains": "Land",
+  "Constructions": "Buildings",
+  "Constructions sur sol d'autrui": "Construction on third-party land",
+  "Locations": "Rentals",
+  "Achats non stockés de matières et fourni": "Non-stocked supplies & materials",
+  "Achats d'études, prestations de services": "Purchases of studies & services",
+  "Entretien et réparations": "Maintenance & repairs",
+  "Personnel intérimaire & vacations": "Temporary & casual staff",
+  "Autres charges de personnel": "Other staff costs",
+  "Créances / particuliers et personnes de droit privé": "Receivables / individuals & private entities",
+  "Charges diverses de gestion courante": "Miscellaneous operating charges",
+  "Frais d'études, recherche, développement": "Studies, research & development",
+  "Dettes - Autres organismes, particuliers": "Debt — other bodies & individuals",
+  "Impôts, taxes, versements (autre orga.)": "Taxes & levies (other bodies)",
+  "Autres impôts, taxes (Admin Impôts)": "Other taxes & levies",
+  "Divers": "Miscellaneous",
+  "Dotation": "Grant",
+  "Immobilisations incorporelles": "Intangible assets",
+  "Avances commandes immo corporelles": "Advances on asset orders",
+  "Pertes sur créances irrécouvrables": "Bad-debt write-offs",
+  "Services bancaires et assimilés": "Banking & similar services",
+  "Primes d'assurances": "Insurance premiums",
+  "Pub., publications, relations publiques": "Advertising, publications & PR",
+  "Etudes et recherches": "Studies & research",
+  "Études et recherches": "Studies & research",
+  "Déplacements et missions": "Travel & missions",
+  "Honoraires": "Professional fees",
+  "honoraires": "Professional fees",
+  "Fournitures administratives": "Office supplies",
+  "Fournitures d'entretien": "Maintenance supplies",
+  "Fêtes et cérémonies": "Events & ceremonies",
+  "Transports collectifs": "Public transport",
+  "Frais d'affranchissement": "Postage",
+  "Frais de télécommunications": "Telecoms costs",
+  "Prestations de services": "Services",
+  "Redevances / droits": "Fees & charges",
+  "Autres charges exceptionnelles": "Other exceptional charges",
+  "Charges exceptionnelles": "Exceptional charges",
+  "Subventions de fonctionnement": "Operating grants",
+  "Subventions exceptionnelles": "Exceptional grants",
+  "Autres subventions": "Other grants",
+};
+
+function labelEn(label: string): string {
+  if (LABEL_LEAF_EN[label]) return LABEL_LEAF_EN[label];
+  const i = label.indexOf(": ");
+  if (i > 0) {
+    const p = label.slice(0, i);
+    const rest = label.slice(i + 2);
+    return `${LABEL_PREFIX_EN[p] ?? p}: ${labelEn(rest)}`;
+  }
+  return label;
+}
+
+/** EN for fonction group headers (functional M57 nomenclature). Long tail
+ *  (smallest fonctions) falls back to French. */
+const FONCTION_EN: Record<string, string> = {
+  "Opérations non ventilable": "Non-allocable operations",
+  "Adm générale collectivité": "General administration",
+  "Non spécifié": "Unspecified",
+  "Autre intervention social": "Other social intervention",
+  "Autres transports": "Other transport",
+  "Crèches et garderies": "Nurseries & daycare",
+  "Aide sociale à l'enfance": "Child welfare",
+  "Services communs": "Shared services",
+  "Ser com collecte propreté": "Cleaning & waste collection",
+  "Logement social": "Social housing",
+  "Personnes handicapées": "People with disabilities",
+  "Écoles primaires": "Primary schools",
+  "Autres instances": "Other bodies",
+  "Réserves Foncières": "Land reserves",
+  "Écoles maternelles": "Nursery schools",
+  "Police, sécurité, justice": "Police, security & justice",
+  "Espaces verts urbains": "Urban green spaces",
+  "Voirie communale": "Municipal roads",
+  "Opérations d’aménagement": "Development operations",
+  "Autre int prot bien pers": "Other protection of persons & property",
+  "Hébergt resto scolaire": "School catering & boarding",
+  "Incendie et secours": "Fire & rescue",
+  "Tri, valo et trait déchet": "Waste sorting, recovery & treatment",
+  "Collecte des déchets": "Waste collection",
+  "Autre action en faveur": "Other support action",
+  "APA à domicile": "Home care allowance (APA)",
+  "Classes regroupées": "Combined classes",
+  "Théâtre spectable vivant": "Theatre & performing arts",
+  "Collèges": "Middle schools",
+  "Salles de sport, gymnases": "Sports halls & gymnasiums",
+  "Éclairage public": "Public lighting",
+  "Activité art action manif": "Arts & events",
+  "Personnel non ventilé": "Unallocated staff",
+  "Musées": "Museums",
+  "Propreté urbaine": "Urban cleanliness",
+  "Personnes en difficulté": "People in hardship",
+  "Transport ferroviaire": "Rail transport",
+  "Piscines": "Swimming pools",
+  "Assemblée délibérante": "Deliberative assembly",
+  "Autres actions vie social": "Other community-life action",
+  "Manifestations sportives": "Sporting events",
+  "Autres moyens généraux": "Other general resources",
+  "Transport sur route": "Road transport",
+  "Bibliothèque, médiathèque": "Libraries & media centres",
+  "Bibliothèques médiathèque": "Libraries & media centres",
+  "Parc privé collectivité": "City-owned private stock",
+  "Activités artistiques,act": "Artistic activities",
+  "Enseignement supérieur": "Higher education",
+  "PMI et planif familiale": "Maternal & child health, family planning",
+  "APA versé établissemnt": "Care allowance to facilities (APA)",
+  "Aide au secteur locatif": "Rental-sector support",
+  "APA versé bénéf établisem": "Care allowance, facility residents (APA)",
+  "Cimetière pompe funèbre": "Cemeteries & funeral services",
+  "Prév et éducation santé": "Health prevention & education",
+  "Autres": "Other",
+  "Circulations douces": "Walking & cycling",
+  "Eaux pluviales": "Stormwater",
+  "Autr action petite enfanc": "Other early-childhood action",
+  "Industrie,commerce artisa": "Industry, trade & crafts",
+  "Patrimoine": "Heritage",
+  "Insertion éco sociale": "Social & economic inclusion",
+  "Halte fluv autre infra fl": "River docks & waterway infrastructure",
+  "Admin général Etat": "General state administration",
+  "Apprentissage": "Apprenticeship",
+  "Autres actions d’aménagem": "Other development action",
+  "Disp autre étab sanitaire": "Other health facilities",
+  "Recherche et innovation": "Research & innovation",
+  "Équipements de voirie": "Road equipment",
+  "Cités scolaires": "School complexes",
+};
+
+function fonctionEn(key: string): string {
+  return FONCTION_EN[key] ?? FLOW_SHORT_EN[key] ?? key;
+}
+
 type GroupedRow = {
   /** Libellé de la nature comptable, nettoyé du préfixe redondant "Thématique: ". */
   name: string;
@@ -238,26 +432,8 @@ export default function PosteFiche({ poste }: Props) {
       )}
 
       <div className="fx-poste-groups">
-        {groups.map((g) => (
-          <section key={g.key} className="fx-poste-group">
-            {!isFlat && (
-              <header>
-                <span>
-                  {g.key}
-                  {g.imputed && (
-                    <span
-                      className="fx-poste-projected"
-                      title={locale === "en"
-                        ? "Projected from historical average — see note above"
-                        : "Projeté depuis la moyenne historique — voir la note ci-dessus"}
-                    >
-                      {locale === "en" ? "projected" : "projeté"}
-                    </span>
-                  )}
-                </span>
-                <span className="muted tnum">{fmtEur(g.total)}</span>
-              </header>
-            )}
+        {groups.map((g, gi) => {
+          const body = (
             <ul>
               {g.items.map((it) => {
                 const flowShort = shortFlow(it.flow, locale);
@@ -269,7 +445,7 @@ export default function PosteFiche({ poste }: Props) {
                 return (
                   <li key={it.rank}>
                     <span className="lbl" title={lblTitle}>
-                      {it.name}
+                      {locale === "en" ? labelEn(it.name) : it.name}
                       {it.original && <span className="fx-poste-orig-marker" aria-hidden="true"> ⓘ</span>}
                     </span>
                     {flowShort && (
@@ -286,8 +462,46 @@ export default function PosteFiche({ poste }: Props) {
                 );
               })}
             </ul>
-          </section>
-        ))}
+          );
+
+          // Flat mode (recettes / Marseille sans fonction) : liste plate, pas de
+          // header donc rien à replier — on garde le rendu actuel.
+          if (isFlat) {
+            return (
+              <section key={g.key} className="fx-poste-group">
+                {body}
+              </section>
+            );
+          }
+
+          // Sinon : chaque fonction est repliable. Replié par défaut (vue
+          // d'ensemble scannable), sauf la première (la plus grosse) ouverte
+          // pour montrer le détail d'emblée.
+          return (
+            <details key={g.key} className="fx-poste-group" open={gi === 0}>
+              <summary>
+                <span className="fx-poste-group-name">
+                  {locale === "en" ? fonctionEn(g.key) : g.key}
+                  {g.imputed && (
+                    <span
+                      className="fx-poste-projected"
+                      title={locale === "en"
+                        ? "Projected from historical average — see note above"
+                        : "Projeté depuis la moyenne historique — voir la note ci-dessus"}
+                    >
+                      {locale === "en" ? "projected" : "projeté"}
+                    </span>
+                  )}
+                </span>
+                <span className="fx-poste-group-meta">
+                  <span className="muted tnum">{fmtEur(g.total)}</span>
+                  <span className="fx-poste-group-chev" aria-hidden="true">›</span>
+                </span>
+              </summary>
+              {body}
+            </details>
+          );
+        })}
         {groups.length === 0 && (
           <p className="fx-note">{fill(t("fx.poste.no_subpostes"), { year: poste.year })}</p>
         )}

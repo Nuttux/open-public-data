@@ -33,67 +33,50 @@ const fmtBillions = (n: number) =>
  * each column. The "Total équilibré" badge sits below both columns.
  */
 export default function DualFlowBars({ left, right, center, callout }: Props) {
-  const leftMax = Math.max(...left.rows.map((r) => r.value), 1);
-  const rightMax = Math.max(...right.rows.map((r) => r.value), 1);
+  // Single shared scale across BOTH columns so a 2.5 Md bar can never visually
+  // read as long as a 7.3 Md bar — critical once the two columns stack on
+  // mobile and sit in one continuous list.
+  const globalMax = Math.max(
+    ...left.rows.map((r) => r.value),
+    ...right.rows.map((r) => r.value),
+    1,
+  );
+
+  const renderCol = (col: { title: ReactNode; rows: FlowRow[] }) => (
+    <div className="fx-dualbars-col">
+      <div className="fx-dualbars-col-head">{col.title}</div>
+      {col.rows.map((r, i) => {
+        const body = (
+          <>
+            <span className="l">{r.label}</span>
+            <span className="track">
+              <span className="fill" style={{ width: `${(r.value / globalMax) * 100}%` }} />
+            </span>
+            <span className="v tnum">{r.display ?? `${fmtBillions(r.value)} Md €`}</span>
+          </>
+        );
+        const cls = [
+          "fx-dualbars-row",
+          r.rouge ? "fx-dualbars-rouge" : "",
+          r.href ? "fx-dualbars-row-link" : "",
+        ].filter(Boolean).join(" ");
+        return r.href ? (
+          <Link key={i} href={r.href} className={cls} scroll={false}>
+            {body}
+          </Link>
+        ) : (
+          <div key={i} className={cls}>{body}</div>
+        );
+      })}
+    </div>
+  );
 
   return (
     <>
       <div className="fx-dualbars">
-        <div className="fx-dualbars-heads">
-          <span>{left.title}</span>
-          <span>{right.title}</span>
-        </div>
         <div className="fx-dualbars-cols">
-          <div>
-            {left.rows.map((r, i) => {
-              const body = (
-                <>
-                  <span className="l">{r.label}</span>
-                  <span className="track">
-                    <span className="fill" style={{ width: `${(r.value / leftMax) * 100}%` }} />
-                  </span>
-                  <span className="v tnum">{r.display ?? `${fmtBillions(r.value)} Md €`}</span>
-                </>
-              );
-              const cls = [
-                "fx-dualbars-row",
-                r.rouge ? "fx-dualbars-rouge" : "",
-                r.href ? "fx-dualbars-row-link" : "",
-              ].filter(Boolean).join(" ");
-              return r.href ? (
-                <Link key={i} href={r.href} className={cls} scroll={false}>
-                  {body}
-                </Link>
-              ) : (
-                <div key={i} className={cls}>{body}</div>
-              );
-            })}
-          </div>
-          <div>
-            {right.rows.map((r, i) => {
-              const body = (
-                <>
-                  <span className="l">{r.label}</span>
-                  <span className="track">
-                    <span className="fill" style={{ width: `${(r.value / rightMax) * 100}%` }} />
-                  </span>
-                  <span className="v tnum">{r.display ?? `${fmtBillions(r.value)} Md €`}</span>
-                </>
-              );
-              const cls = [
-                "fx-dualbars-row",
-                r.rouge ? "fx-dualbars-rouge" : "",
-                r.href ? "fx-dualbars-row-link" : "",
-              ].filter(Boolean).join(" ");
-              return r.href ? (
-                <Link key={i} href={r.href} className={cls} scroll={false}>
-                  {body}
-                </Link>
-              ) : (
-                <div key={i} className={cls}>{body}</div>
-              );
-            })}
-          </div>
+          {renderCol(left)}
+          {renderCol(right)}
         </div>
         {center && (
           <div className="fx-dualbars-center">

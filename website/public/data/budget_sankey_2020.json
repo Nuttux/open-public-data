@@ -391,8 +391,9 @@
           "value": 6030296.12
         },
         {
-          "name": "Invest. Éducation: Fonds affectés (amortissable) -  Dotation départementale d'équipement des collèges",
-          "value": 5772056.0
+          "name": "Invest. Éducation: Dotation départementale d'équipement des collèges (fonds affectés)",
+          "value": 5772056.0,
+          "name_original": "Invest. Éducation: Fonds affectés (amortissable) -  Dotation départementale d'équipement des collèges"
         },
         {
           "name": "Invest. Social: Autres",
@@ -524,7 +525,8 @@
         },
         {
           "name": "Invest. Services: Frais d'études",
-          "value": 8160.0
+          "value": 8160.0,
+          "name_original": "Invest. Services: Frais d'études"
         },
         {
           "name": "Invest. Sécurité: Salubrité publique DLH",
@@ -552,7 +554,8 @@
         },
         {
           "name": "Invest. Aménagement: Frais d'études",
-          "value": 614.46
+          "value": 614.46,
+          "name_original": "Invest. Aménagement: Frais d'études"
         },
         {
           "name": "Invest. Aménagement: Autres fonds d’investissement",
@@ -589,8 +592,9 @@
           "value": 532918716.0
         },
         {
-          "name": "Fiscalité Directe: Attribution de compensation CVAE - Département - Région",
-          "value": 475293963.0
+          "name": "Fiscalité Directe: Attribution de compensation CVAE (Département / Région)",
+          "value": 475293963.0,
+          "name_original": "Fiscalité Directe: Attribution de compensation CVAE - Département - Région"
         },
         {
           "name": "Fiscalité Indirecte: Taxe communale additionnelle aux droits de mutation ou à lataxe de publicité foncière",
@@ -659,8 +663,9 @@
           "value": 26843820.0
         },
         {
-          "name": "Dotations État: DGD des communes et EPCI - DGD",
-          "value": 15804226.15
+          "name": "Dotations État: DGD des communes et intercommunalités",
+          "value": 15804226.15,
+          "name_original": "Dotations État: DGD des communes et EPCI - DGD"
         },
         {
           "name": "Dotations État: FCTVA",
@@ -671,8 +676,9 @@
           "value": 10274026.0
         },
         {
-          "name": "Dotations État: État - Compensation au titre de la Contribution Économique Territoriale (CVAE et CFE)",
-          "value": 9734460.0
+          "name": "Dotations État: Compensation État (Contribution Économique Territoriale)",
+          "value": 9734460.0,
+          "name_original": "Dotations État: État - Compensation au titre de la Contribution Économique Territoriale (CVAE et CFE)"
         },
         {
           "name": "Dotations État: Attributions sur le versement représentatif d’impôt sur lescercles et maisons de jeux",
@@ -791,11 +797,12 @@
           "fonction_confidence": "ca"
         },
         {
-          "name": "Action Sociale: Personnel titulaire - Rémunération principale",
+          "name": "Action Sociale: Rémunération du personnel titulaire",
           "value": 151654488.83,
           "fonction": "Crèches et garderies",
           "flow_category": "Personnel",
-          "fonction_confidence": "ca"
+          "fonction_confidence": "ca",
+          "name_original": "Action Sociale: Personnel titulaire - Rémunération principale"
         },
         {
           "name": "Action Sociale: Frais de séjour en établissements et services pour adultes handicapés",
@@ -854,11 +861,12 @@
           "fonction_confidence": "ca"
         },
         {
-          "name": "Action Sociale: Personnel titulaire - Autres indemnités",
+          "name": "Action Sociale: Indemnités du personnel titulaire",
           "value": 41292997.6,
           "fonction": "Crèches et garderies",
           "flow_category": "Personnel",
-          "fonction_confidence": "ca"
+          "fonction_confidence": "ca",
+          "name_original": "Action Sociale: Personnel titulaire - Autres indemnités"
         },
         {
           "name": "APA: APA à domicile versée au service d’aide à domicile",
@@ -959,18 +967,20 @@
           "fonction_confidence": "ca"
         },
         {
-          "name": "Action Sociale: Personnel titulaire - Rémunération principale",
+          "name": "Action Sociale: Rémunération du personnel titulaire",
           "value": 18427142.46,
           "fonction": "Services communs",
           "flow_category": "Personnel",
-          "fonction_confidence": "ca"
+          "fonction_confidence": "ca",
+          "name_original": "Action Sociale: Personnel titulaire - Rémunération principale"
         },
         {
-          "name": "Action Sociale: Personnel titulaire - Rémunération principale",
+          "name": "Action Sociale: Rémunération du personnel titulaire",
           "value": 17880737.98,
           "fonction": "PMI et planif familiale",
           "flow_category": "Personnel",
-          "fonction_confidence": "ca"
+          "fonction_confidence": "ca",
+          "name_original": "Action Sociale: Personnel titulaire - Rémunération principale"
         },
         {
           "name": "Action Sociale: Autres participations",
@@ -987,11 +997,12 @@
           "fonction_confidence": "ca"
         },
         {
-          "name": "Action Sociale: Personnel titulaire - Rémunération principale",
+          "name": "Action Sociale: Rémunération du personnel titulaire",
           "value": 16109914.59,
           "fonction": "Aide sociale à l'enfance",
           "flow_category": "Personnel",
-          "fonction_confidence": "ca"
+          "fonction_confidence": "ca",
+          "name_original": "Action Sociale: Personnel titulaire - Rémunération principale"
         },
         {
           "name": "Invest. Social: Constructions",
@@ -1008,11 +1019,12 @@
           "fonction_confidence": "ca"
         },
         {
-          "name": "Action Sociale: Personnel titulaire - Rémunération principale",
+          "name": "Action Sociale: Rémunération du personnel titulaire",
           "value": 14914992.78,
           "fonction": "Prév et éducation santé",
           "flow_category": "Personnel",
-          "fonction_confidence": "ca"
+          "fonction_confidence": "ca",
+          "name_original": "Action Sociale: Personnel titulaire - Rémunération principale"
         },
         {
           "name": "Action Sociale: Autres participations",
@@ -1022,11 +1034,12 @@
           "fonction_confidence": "ca"
         },
         {
-          "name": "Action Sociale: Personnel non titulaire - Rémunérations",
+          "name": "Action Sociale: Rémunération du personnel non titulaire",
           "value": 13813721.09,
           "fonction": "Autr action petite enfanc",
           "flow_category": "Personnel",
-          "fonction_confidence": "ca"
+          "fonction_confidence": "ca",
+          "name_original": "Action Sociale: Personnel non titulaire - Rémunérations"
         },
         {
           "name": "Action Sociale: Frais de séjour en établissements pour personnes âgées",
@@ -1078,18 +1091,20 @@
           "fonction_confidence": "ca"
         },
         {
-          "name": "Action Sociale: Personnel titulaire - Autres indemnités",
+          "name": "Action Sociale: Indemnités du personnel titulaire",
           "value": 7677397.65,
           "fonction": "Services communs",
           "flow_category": "Personnel",
-          "fonction_confidence": "ca"
+          "fonction_confidence": "ca",
+          "name_original": "Action Sociale: Personnel titulaire - Autres indemnités"
         },
         {
-          "name": "Action Sociale: Personnel titulaire - Supplément familial de traitement et indemnité de résidence",
+          "name": "Action Sociale: Supplément familial + indemnité de résidence",
           "value": 7452530.9,
           "fonction": "Crèches et garderies",
           "flow_category": "Personnel",
-          "fonction_confidence": "ca"
+          "fonction_confidence": "ca",
+          "name_original": "Action Sociale: Personnel titulaire - Supplément familial de traitement et indemnité de résidence"
         },
         {
           "name": "Invest. Social: Constructions",
@@ -1106,11 +1121,12 @@
           "fonction_confidence": "ca"
         },
         {
-          "name": "Action Sociale: Personnel titulaire - Rémunération principale",
+          "name": "Action Sociale: Rémunération du personnel titulaire",
           "value": 6925851.76,
           "fonction": "Disp autre étab sanitaire",
           "flow_category": "Personnel",
-          "fonction_confidence": "ca"
+          "fonction_confidence": "ca",
+          "name_original": "Action Sociale: Personnel titulaire - Rémunération principale"
         },
         {
           "name": "Action Sociale: Cotisations aux caisses de retraite",
@@ -1157,11 +1173,12 @@
           "fonction_confidence": "ca"
         },
         {
-          "name": "Aménagement: Personnel titulaire - Rémunération principale",
+          "name": "Aménagement: Rémunération du personnel titulaire",
           "value": 45506706.7,
           "fonction": "Espaces verts urbains",
           "flow_category": "Personnel",
-          "fonction_confidence": "ca"
+          "fonction_confidence": "ca",
+          "name_original": "Aménagement: Personnel titulaire - Rémunération principale"
         },
         {
           "name": "Invest. Aménagement: Installations, matériel et outillage techniques",
@@ -1185,11 +1202,12 @@
           "fonction_confidence": "ca"
         },
         {
-          "name": "Aménagement: Personnel titulaire - Rémunération principale",
+          "name": "Aménagement: Rémunération du personnel titulaire",
           "value": 20444975.119999997,
           "fonction": "Services communs",
           "flow_category": "Personnel",
-          "fonction_confidence": "ca"
+          "fonction_confidence": "ca",
+          "name_original": "Aménagement: Personnel titulaire - Rémunération principale"
         },
         {
           "name": "Aménagement: Voiries",
@@ -1234,11 +1252,12 @@
           "fonction_confidence": "ca"
         },
         {
-          "name": "Aménagement: Personnel titulaire - Autres indemnités",
+          "name": "Aménagement: Indemnités du personnel titulaire",
           "value": 14915735.46,
           "fonction": "Espaces verts urbains",
           "flow_category": "Personnel",
-          "fonction_confidence": "ca"
+          "fonction_confidence": "ca",
+          "name_original": "Aménagement: Personnel titulaire - Autres indemnités"
         },
         {
           "name": "Aménagement: Énergie - Électricité",
@@ -1276,11 +1295,12 @@
           "fonction_confidence": "ca"
         },
         {
-          "name": "Aménagement: Personnel titulaire - Autres indemnités",
+          "name": "Aménagement: Indemnités du personnel titulaire",
           "value": 9091226.120000001,
           "fonction": "Services communs",
           "flow_category": "Personnel",
-          "fonction_confidence": "ca"
+          "fonction_confidence": "ca",
+          "name_original": "Aménagement: Personnel titulaire - Autres indemnités"
         },
         {
           "name": "Invest. Aménagement: Avances versées sur commandes d'immobilisations corporelles",
@@ -1364,7 +1384,8 @@
           "value": 5130883.44,
           "fonction": "Adm générale collectivité",
           "flow_category": "Études",
-          "fonction_confidence": "ca"
+          "fonction_confidence": "ca",
+          "name_original": "Invest. Administration: Frais d'études"
         },
         {
           "name": "Invest. Aménagement: Constructions",
@@ -1430,11 +1451,12 @@
           "fonction_confidence": "ca"
         },
         {
-          "name": "Aménagement: Personnel titulaire - Rémunération principale",
+          "name": "Aménagement: Rémunération du personnel titulaire",
           "value": 3552396.39,
           "fonction": "Réserves Foncières",
           "flow_category": "Personnel",
-          "fonction_confidence": "ca"
+          "fonction_confidence": "ca",
+          "name_original": "Aménagement: Personnel titulaire - Rémunération principale"
         },
         {
           "name": "Invest. Administration: Autres",
@@ -1455,7 +1477,8 @@
           "value": 2937604.77,
           "fonction": "Opérations d’aménagement",
           "flow_category": "Études",
-          "fonction_confidence": "ca"
+          "fonction_confidence": "ca",
+          "name_original": "Invest. Aménagement: Frais d'études"
         },
         {
           "name": "Invest. Aménagement: bâtiments culturels et sportifs",
@@ -1465,11 +1488,12 @@
           "fonction_confidence": "ca"
         },
         {
-          "name": "Aménagement: Personnel titulaire - Rémunération principale",
+          "name": "Aménagement: Rémunération du personnel titulaire",
           "value": 2791894.96,
           "fonction": "Opérations d’aménagement",
           "flow_category": "Personnel",
-          "fonction_confidence": "ca"
+          "fonction_confidence": "ca",
+          "name_original": "Aménagement: Personnel titulaire - Rémunération principale"
         },
         {
           "name": "Aménagement: Contrats de prestations de services",
@@ -1495,18 +1519,20 @@
           "fonction_confidence": "ca"
         },
         {
-          "name": "Culture & Sport: Personnel titulaire - Rémunération principale",
+          "name": "Culture & Sport: Rémunération du personnel titulaire",
           "value": 28409091.52,
           "fonction": "Bibliothèques médiathèque",
           "flow_category": "Personnel",
-          "fonction_confidence": "ca"
+          "fonction_confidence": "ca",
+          "name_original": "Culture & Sport: Personnel titulaire - Rémunération principale"
         },
         {
-          "name": "Culture & Sport: Personnel titulaire - Rémunération principale",
+          "name": "Culture & Sport: Rémunération du personnel titulaire",
           "value": 26247710.8,
           "fonction": "Salles de sport, gymnases",
           "flow_category": "Personnel",
-          "fonction_confidence": "ca"
+          "fonction_confidence": "ca",
+          "name_original": "Culture & Sport: Personnel titulaire - Rémunération principale"
         },
         {
           "name": "Culture & Sport: Subventions de fonctionnement aux personnes, aux associations et aux autres organismes de droit privé - Autres personnes de droit privé",
@@ -1516,11 +1542,12 @@
           "fonction_confidence": "ca"
         },
         {
-          "name": "Culture & Sport: Personnel titulaire - Rémunération principale",
+          "name": "Culture & Sport: Rémunération du personnel titulaire",
           "value": 24147167.81,
           "fonction": "Activités artistiques,act",
           "flow_category": "Personnel",
-          "fonction_confidence": "ca"
+          "fonction_confidence": "ca",
+          "name_original": "Culture & Sport: Personnel titulaire - Rémunération principale"
         },
         {
           "name": "Invest. Culture: Subventions aux organismes publics - Organismes publics divers - Bâtiments et installations",
@@ -1537,11 +1564,12 @@
           "fonction_confidence": "ca"
         },
         {
-          "name": "Culture & Sport: Personnel titulaire - Rémunération principale",
+          "name": "Culture & Sport: Rémunération du personnel titulaire",
           "value": 17318354.75,
           "fonction": "Services communs",
           "flow_category": "Personnel",
-          "fonction_confidence": "ca"
+          "fonction_confidence": "ca",
+          "name_original": "Culture & Sport: Personnel titulaire - Rémunération principale"
         },
         {
           "name": "Invest. Culture: Constructions",
@@ -1558,11 +1586,12 @@
           "fonction_confidence": "ca"
         },
         {
-          "name": "Culture & Sport: Personnel titulaire - Rémunération principale",
+          "name": "Culture & Sport: Rémunération du personnel titulaire",
           "value": 16597667.39,
           "fonction": "Autres actions vie social",
           "flow_category": "Personnel",
-          "fonction_confidence": "ca"
+          "fonction_confidence": "ca",
+          "name_original": "Culture & Sport: Personnel titulaire - Rémunération principale"
         },
         {
           "name": "Culture & Sport: Contrats de prestations de services",
@@ -1572,11 +1601,12 @@
           "fonction_confidence": "ca"
         },
         {
-          "name": "Culture & Sport: Personnel titulaire - Rémunération principale",
+          "name": "Culture & Sport: Rémunération du personnel titulaire",
           "value": 15629164.9,
           "fonction": "Piscines",
           "flow_category": "Personnel",
-          "fonction_confidence": "ca"
+          "fonction_confidence": "ca",
+          "name_original": "Culture & Sport: Personnel titulaire - Rémunération principale"
         },
         {
           "name": "Invest. Culture: EP Musées - Musée Carnavalet",
@@ -1614,18 +1644,20 @@
           "fonction_confidence": "ca"
         },
         {
-          "name": "Culture & Sport: Personnel titulaire - Autres indemnités",
+          "name": "Culture & Sport: Indemnités du personnel titulaire",
           "value": 9538422.38,
           "fonction": "Salles de sport, gymnases",
           "flow_category": "Personnel",
-          "fonction_confidence": "ca"
+          "fonction_confidence": "ca",
+          "name_original": "Culture & Sport: Personnel titulaire - Autres indemnités"
         },
         {
-          "name": "Culture & Sport: Personnel non titulaire - Rémunérations",
+          "name": "Culture & Sport: Rémunération du personnel non titulaire",
           "value": 9488488.75,
           "fonction": "Activités artistiques,act",
           "flow_category": "Personnel",
-          "fonction_confidence": "ca"
+          "fonction_confidence": "ca",
+          "name_original": "Culture & Sport: Personnel non titulaire - Rémunérations"
         },
         {
           "name": "Culture & Sport: Cotisations aux caisses de retraite",
@@ -1660,14 +1692,16 @@
           "value": 8113985.85,
           "fonction": "Manifestations sportives",
           "flow_category": "Études",
-          "fonction_confidence": "ca"
+          "fonction_confidence": "ca",
+          "name_original": "Invest. Culture: Frais d'études"
         },
         {
-          "name": "Culture & Sport: Personnel titulaire - Autres indemnités",
+          "name": "Culture & Sport: Indemnités du personnel titulaire",
           "value": 8106262.92,
           "fonction": "Services communs",
           "flow_category": "Personnel",
-          "fonction_confidence": "ca"
+          "fonction_confidence": "ca",
+          "name_original": "Culture & Sport: Personnel titulaire - Autres indemnités"
         },
         {
           "name": "Culture & Sport: Autre personnel extérieur",
@@ -1677,11 +1711,12 @@
           "fonction_confidence": "ca"
         },
         {
-          "name": "Culture & Sport: Personnel titulaire - Autres indemnités",
+          "name": "Culture & Sport: Indemnités du personnel titulaire",
           "value": 7172361.24,
           "fonction": "Bibliothèques médiathèque",
           "flow_category": "Personnel",
-          "fonction_confidence": "ca"
+          "fonction_confidence": "ca",
+          "name_original": "Culture & Sport: Personnel titulaire - Autres indemnités"
         },
         {
           "name": "Invest. Culture: Constructions",
@@ -1698,11 +1733,12 @@
           "fonction_confidence": "ca"
         },
         {
-          "name": "Culture & Sport: Personnel titulaire - Autres indemnités",
+          "name": "Culture & Sport: Indemnités du personnel titulaire",
           "value": 6542767.82,
           "fonction": "Autres actions vie social",
           "flow_category": "Personnel",
-          "fonction_confidence": "ca"
+          "fonction_confidence": "ca",
+          "name_original": "Culture & Sport: Personnel titulaire - Autres indemnités"
         },
         {
           "name": "Culture & Sport: Contrats de prestations de services",
@@ -1712,11 +1748,12 @@
           "fonction_confidence": "ca"
         },
         {
-          "name": "Culture & Sport: Personnel titulaire - Autres indemnités",
+          "name": "Culture & Sport: Indemnités du personnel titulaire",
           "value": 5967911.38,
           "fonction": "Piscines",
           "flow_category": "Personnel",
-          "fonction_confidence": "ca"
+          "fonction_confidence": "ca",
+          "name_original": "Culture & Sport: Personnel titulaire - Autres indemnités"
         },
         {
           "name": "Culture & Sport: Cotisations aux caisses de retraite",
@@ -1733,11 +1770,12 @@
           "fonction_confidence": "ca"
         },
         {
-          "name": "Culture & Sport: Personnel titulaire - Autres indemnités",
+          "name": "Culture & Sport: Indemnités du personnel titulaire",
           "value": 5213127.77,
           "fonction": "Activités artistiques,act",
           "flow_category": "Personnel",
-          "fonction_confidence": "ca"
+          "fonction_confidence": "ca",
+          "name_original": "Culture & Sport: Personnel titulaire - Autres indemnités"
         },
         {
           "name": "Culture & Sport: Cotisations aux caisses de retraite",
@@ -1840,18 +1878,20 @@
           "fonction_confidence": "ca"
         },
         {
-          "name": "Éducation: Personnel titulaire - Rémunération principale",
+          "name": "Éducation: Rémunération du personnel titulaire",
           "value": 78022518.8,
           "fonction": "Écoles primaires",
           "flow_category": "Personnel",
-          "fonction_confidence": "ca"
+          "fonction_confidence": "ca",
+          "name_original": "Éducation: Personnel titulaire - Rémunération principale"
         },
         {
-          "name": "Éducation: Personnel titulaire - Rémunération principale",
+          "name": "Éducation: Rémunération du personnel titulaire",
           "value": 56671031.79,
           "fonction": "Écoles maternelles",
           "flow_category": "Personnel",
-          "fonction_confidence": "ca"
+          "fonction_confidence": "ca",
+          "name_original": "Éducation: Personnel titulaire - Rémunération principale"
         },
         {
           "name": "Invest. Éducation: Constructions",
@@ -1896,11 +1936,12 @@
           "fonction_confidence": "ca"
         },
         {
-          "name": "Éducation: Personnel titulaire - Rémunération principale",
+          "name": "Éducation: Rémunération du personnel titulaire",
           "value": 23184767.03,
           "fonction": "Services communs",
           "flow_category": "Personnel",
-          "fonction_confidence": "ca"
+          "fonction_confidence": "ca",
+          "name_original": "Éducation: Personnel titulaire - Rémunération principale"
         },
         {
           "name": "Éducation: Cotisations à l'U.R.S.S.A.F.",
@@ -1938,18 +1979,20 @@
           "fonction_confidence": "ca"
         },
         {
-          "name": "Éducation: Personnel non titulaire - Rémunérations",
+          "name": "Éducation: Rémunération du personnel non titulaire",
           "value": 17168547.6,
           "fonction": "Écoles maternelles",
           "flow_category": "Personnel",
-          "fonction_confidence": "ca"
+          "fonction_confidence": "ca",
+          "name_original": "Éducation: Personnel non titulaire - Rémunérations"
         },
         {
-          "name": "Éducation: Personnel titulaire - Autres indemnités",
+          "name": "Éducation: Indemnités du personnel titulaire",
           "value": 15329279.92,
           "fonction": "Écoles primaires",
           "flow_category": "Personnel",
-          "fonction_confidence": "ca"
+          "fonction_confidence": "ca",
+          "name_original": "Éducation: Personnel titulaire - Autres indemnités"
         },
         {
           "name": "Éducation: Dotation de fonctionnement des collèges - Établissements publics",
@@ -1959,25 +2002,28 @@
           "fonction_confidence": "ca"
         },
         {
-          "name": "Éducation: Personnel titulaire - Autres indemnités",
+          "name": "Éducation: Indemnités du personnel titulaire",
           "value": 15269743.43,
           "fonction": "Écoles maternelles",
           "flow_category": "Personnel",
-          "fonction_confidence": "ca"
+          "fonction_confidence": "ca",
+          "name_original": "Éducation: Personnel titulaire - Autres indemnités"
         },
         {
-          "name": "Éducation: Personnel titulaire - Rémunération principale",
+          "name": "Éducation: Rémunération du personnel titulaire",
           "value": 14334240.35,
           "fonction": "Collèges",
           "flow_category": "Personnel",
-          "fonction_confidence": "ca"
+          "fonction_confidence": "ca",
+          "name_original": "Éducation: Personnel titulaire - Rémunération principale"
         },
         {
-          "name": "Éducation: Personnel non titulaire - Rémunérations",
+          "name": "Éducation: Rémunération du personnel non titulaire",
           "value": 11056311.96,
           "fonction": "Écoles primaires",
           "flow_category": "Personnel",
-          "fonction_confidence": "ca"
+          "fonction_confidence": "ca",
+          "name_original": "Éducation: Personnel non titulaire - Rémunérations"
         },
         {
           "name": "Éducation: Achats de prestations de services (autres que terrains à aménager)",
@@ -2001,11 +2047,12 @@
           "fonction_confidence": "ca"
         },
         {
-          "name": "Éducation: Personnel titulaire - Autres indemnités",
+          "name": "Éducation: Indemnités du personnel titulaire",
           "value": 9157783.53,
           "fonction": "Services communs",
           "flow_category": "Personnel",
-          "fonction_confidence": "ca"
+          "fonction_confidence": "ca",
+          "name_original": "Éducation: Personnel titulaire - Autres indemnités"
         },
         {
           "name": "Éducation: Cotisations aux caisses de retraite",
@@ -2022,11 +2069,12 @@
           "fonction_confidence": "ca"
         },
         {
-          "name": "Éducation: Personnel non titulaire - Rémunérations",
+          "name": "Éducation: Rémunération du personnel non titulaire",
           "value": 6942336.83,
           "fonction": "Services communs",
           "flow_category": "Personnel",
-          "fonction_confidence": "ca"
+          "fonction_confidence": "ca",
+          "name_original": "Éducation: Personnel non titulaire - Rémunérations"
         },
         {
           "name": "Invest. Éducation: Subventions aux organismes publics - Organismes publics divers - Biens mobiliers, matériel et études",
@@ -2050,11 +2098,12 @@
           "fonction_confidence": "ca"
         },
         {
-          "name": "Éducation: Personnel non titulaire - Primes et autres indemnités",
+          "name": "Éducation: Primes du personnel non titulaire",
           "value": 4726030.24,
           "fonction": "Écoles maternelles",
           "flow_category": "Personnel",
-          "fonction_confidence": "ca"
+          "fonction_confidence": "ca",
+          "name_original": "Éducation: Personnel non titulaire - Primes et autres indemnités"
         },
         {
           "name": "Éducation: Versements à des organismes de formation",
@@ -2089,7 +2138,8 @@
           "value": 3712417.75,
           "fonction": "Classes regroupées",
           "flow_category": "Études",
-          "fonction_confidence": "ca"
+          "fonction_confidence": "ca",
+          "name_original": "Invest. Éducation: Frais d'études"
         },
         {
           "name": "Invest. Éducation: Constructions",
@@ -2106,11 +2156,12 @@
           "fonction_confidence": "ca"
         },
         {
-          "name": "Éducation: Personnel titulaire - Supplément familial de traitement et indemnité de résidence",
+          "name": "Éducation: Supplément familial + indemnité de résidence",
           "value": 3293713.39,
           "fonction": "Écoles primaires",
           "flow_category": "Personnel",
-          "fonction_confidence": "ca"
+          "fonction_confidence": "ca",
+          "name_original": "Éducation: Personnel titulaire - Supplément familial de traitement et indemnité de résidence"
         },
         {
           "name": "Invest. Éducation: Constructions",
@@ -2127,18 +2178,20 @@
           "fonction_confidence": "ca"
         },
         {
-          "name": "Éducation: Personnel titulaire - Autres indemnités",
+          "name": "Éducation: Indemnités du personnel titulaire",
           "value": 3146815.37,
           "fonction": "Collèges",
           "flow_category": "Personnel",
-          "fonction_confidence": "ca"
+          "fonction_confidence": "ca",
+          "name_original": "Éducation: Personnel titulaire - Autres indemnités"
         },
         {
-          "name": "Éducation: Personnel non titulaire - Primes et autres indemnités",
+          "name": "Éducation: Primes du personnel non titulaire",
           "value": 3063805.82,
           "fonction": "Écoles primaires",
           "flow_category": "Personnel",
-          "fonction_confidence": "ca"
+          "fonction_confidence": "ca",
+          "name_original": "Éducation: Personnel non titulaire - Primes et autres indemnités"
         },
         {
           "name": "Invest. Éducation: Subventions aux personnes de droit privé - Bâtiments et installations",
@@ -2192,11 +2245,12 @@
           "fonction_confidence": "ca"
         },
         {
-          "name": "Charges Fiscales: Prélèvement au titre du fonds national de         péréquation des DMTO perçus par les départements",
+          "name": "Charges Fiscales: Prélèvement national péréquation DMTO",
           "value": 244889137.0,
           "fonction": "Opérations non ventilable",
           "flow_category": "Reversements péréquation",
-          "fonction_confidence": "ca"
+          "fonction_confidence": "ca",
+          "name_original": "Charges Fiscales: Prélèvement au titre du fonds national de         péréquation des DMTO perçus par les départements"
         },
         {
           "name": "Reversements Fiscaux: Communes (FSRIF)",
@@ -2220,11 +2274,12 @@
           "fonction_confidence": "ca"
         },
         {
-          "name": "Administration: Personnel titulaire - Rémunération principale",
+          "name": "Administration: Rémunération du personnel titulaire",
           "value": 98656775.27,
           "fonction": "Adm générale collectivité",
           "flow_category": "Personnel",
-          "fonction_confidence": "ca"
+          "fonction_confidence": "ca",
+          "name_original": "Administration: Personnel titulaire - Rémunération principale"
         },
         {
           "name": "Administration: Locations immobilières",
@@ -2234,11 +2289,12 @@
           "fonction_confidence": "ca"
         },
         {
-          "name": "Administration: Personnel titulaire - Autres indemnités",
+          "name": "Administration: Indemnités du personnel titulaire",
           "value": 44316614.02,
           "fonction": "Adm générale collectivité",
           "flow_category": "Personnel",
-          "fonction_confidence": "ca"
+          "fonction_confidence": "ca",
+          "name_original": "Administration: Personnel titulaire - Autres indemnités"
         },
         {
           "name": "Administration: Cotisations aux caisses de retraite",
@@ -2283,11 +2339,12 @@
           "fonction_confidence": "ca"
         },
         {
-          "name": "Administration: Personnel titulaire - Rémunération principale",
+          "name": "Administration: Rémunération du personnel titulaire",
           "value": 20250370.7,
           "fonction": "Personnel non ventilé",
           "flow_category": "Personnel",
-          "fonction_confidence": "ca"
+          "fonction_confidence": "ca",
+          "name_original": "Administration: Personnel titulaire - Rémunération principale"
         },
         {
           "name": "Reversements Fiscaux: Fonds de péréquation de la cotisation sur la valeur ajoutéedes entreprises",
@@ -2304,11 +2361,12 @@
           "fonction_confidence": "ca"
         },
         {
-          "name": "Administration: Personnel non titulaire - Rémunérations",
+          "name": "Administration: Rémunération du personnel non titulaire",
           "value": 18836269.99,
           "fonction": "Adm générale collectivité",
           "flow_category": "Personnel",
-          "fonction_confidence": "ca"
+          "fonction_confidence": "ca",
+          "name_original": "Administration: Personnel non titulaire - Rémunérations"
         },
         {
           "name": "Administration: Autres charges diverses de gestion courante - Autres",
@@ -2339,11 +2397,12 @@
           "fonction_confidence": "ca"
         },
         {
-          "name": "Administration: Personnel non titulaire - Rémunérations",
+          "name": "Administration: Rémunération du personnel non titulaire",
           "value": 12904873.71,
           "fonction": "Assemblée délibérante",
           "flow_category": "Personnel",
-          "fonction_confidence": "ca"
+          "fonction_confidence": "ca",
+          "name_original": "Administration: Personnel non titulaire - Rémunérations"
         },
         {
           "name": "Administration: Indemnités de fonction",
@@ -2360,11 +2419,12 @@
           "fonction_confidence": "ca"
         },
         {
-          "name": "Administration: Personnel titulaire - Rémunération principale",
+          "name": "Administration: Rémunération du personnel titulaire",
           "value": 9664446.03,
           "fonction": "Cimetière pompe funèbre",
           "flow_category": "Personnel",
-          "fonction_confidence": "ca"
+          "fonction_confidence": "ca",
+          "name_original": "Administration: Personnel titulaire - Rémunération principale"
         },
         {
           "name": "Administration: Frais de nettoyage des locaux",
@@ -2388,11 +2448,12 @@
           "fonction_confidence": "ca"
         },
         {
-          "name": "Administration: Personnel titulaire - Rémunération principale",
+          "name": "Administration: Rémunération du personnel titulaire",
           "value": 6988708.93,
           "fonction": "Admin général Etat",
           "flow_category": "Personnel",
-          "fonction_confidence": "ca"
+          "fonction_confidence": "ca",
+          "name_original": "Administration: Personnel titulaire - Rémunération principale"
         },
         {
           "name": "Administration: Titres annulés (sur exercices antérieurs)",
@@ -2409,32 +2470,36 @@
           "fonction_confidence": "ca"
         },
         {
-          "name": "Administration: Personnel non titulaire - Primes et autres indemnités",
+          "name": "Administration: Primes du personnel non titulaire",
           "value": 5154956.67,
           "fonction": "Adm générale collectivité",
           "flow_category": "Personnel",
-          "fonction_confidence": "ca"
+          "fonction_confidence": "ca",
+          "name_original": "Administration: Personnel non titulaire - Primes et autres indemnités"
         },
         {
-          "name": "Administration: Personnel titulaire - Autres indemnités",
+          "name": "Administration: Indemnités du personnel titulaire",
           "value": 4572488.55,
           "fonction": "Cimetière pompe funèbre",
           "flow_category": "Personnel",
-          "fonction_confidence": "ca"
+          "fonction_confidence": "ca",
+          "name_original": "Administration: Personnel titulaire - Autres indemnités"
         },
         {
-          "name": "Administration: Personnel titulaire - Rémunération principale",
+          "name": "Administration: Rémunération du personnel titulaire",
           "value": 4498591.12,
           "fonction": "Assemblée délibérante",
           "flow_category": "Personnel",
-          "fonction_confidence": "ca"
+          "fonction_confidence": "ca",
+          "name_original": "Administration: Personnel titulaire - Rémunération principale"
         },
         {
-          "name": "Administration: Personnel titulaire - Autres indemnités",
+          "name": "Administration: Indemnités du personnel titulaire",
           "value": 4385882.86,
           "fonction": "Personnel non ventilé",
           "flow_category": "Personnel",
-          "fonction_confidence": "ca"
+          "fonction_confidence": "ca",
+          "name_original": "Administration: Personnel titulaire - Autres indemnités"
         },
         {
           "name": "Administration: Cotisations à l'U.R.S.S.A.F.",
@@ -2444,11 +2509,12 @@
           "fonction_confidence": "ca"
         },
         {
-          "name": "Administration: Personnel titulaire - Supplément familial de traitement et indemnité de résidence",
+          "name": "Administration: Supplément familial + indemnité de résidence",
           "value": 4180087.7,
           "fonction": "Adm générale collectivité",
           "flow_category": "Personnel",
-          "fonction_confidence": "ca"
+          "fonction_confidence": "ca",
+          "name_original": "Administration: Personnel titulaire - Supplément familial de traitement et indemnité de résidence"
         },
         {
           "name": "Administration: Achats de prestations de services (autres que terrains à aménager)",
@@ -2528,11 +2594,12 @@
           "fonction_confidence": "ca"
         },
         {
-          "name": "Administration: Personnel titulaire - Autres indemnités",
+          "name": "Administration: Indemnités du personnel titulaire",
           "value": 2580264.11,
           "fonction": "Admin général Etat",
           "flow_category": "Personnel",
-          "fonction_confidence": "ca"
+          "fonction_confidence": "ca",
+          "name_original": "Administration: Personnel titulaire - Autres indemnités"
         }
       ],
       "Économie": [
@@ -2684,18 +2751,20 @@
           "fonction_confidence": "ca"
         },
         {
-          "name": "Action Économique: Personnel titulaire - Rémunération principale",
+          "name": "Action Économique: Rémunération du personnel titulaire",
           "value": 1048862.98,
           "fonction": "Autres actions",
           "flow_category": "Personnel",
-          "fonction_confidence": "ca"
+          "fonction_confidence": "ca",
+          "name_original": "Action Économique: Personnel titulaire - Rémunération principale"
         },
         {
-          "name": "Action Économique: Personnel titulaire - Rémunération principale",
+          "name": "Action Économique: Rémunération du personnel titulaire",
           "value": 1040576.22,
           "fonction": "Industrie,commerce artisa",
           "flow_category": "Personnel",
-          "fonction_confidence": "ca"
+          "fonction_confidence": "ca",
+          "name_original": "Action Économique: Personnel titulaire - Rémunération principale"
         },
         {
           "name": "Action Économique: Contrats de prestations de services",
@@ -2726,11 +2795,12 @@
           "fonction_confidence": "ca"
         },
         {
-          "name": "Action Économique: Personnel titulaire - Rémunération principale",
+          "name": "Action Économique: Rémunération du personnel titulaire",
           "value": 758182.66,
           "fonction": "Insertion éco sociale",
           "flow_category": "Personnel",
-          "fonction_confidence": "ca"
+          "fonction_confidence": "ca",
+          "name_original": "Action Économique: Personnel titulaire - Rémunération principale"
         },
         {
           "name": "Action Économique: Locations immobilières",
@@ -2740,11 +2810,12 @@
           "fonction_confidence": "ca"
         },
         {
-          "name": "Action Économique: Personnel titulaire - Rémunération principale",
+          "name": "Action Économique: Rémunération du personnel titulaire",
           "value": 721299.14,
           "fonction": "Services communs",
           "flow_category": "Personnel",
-          "fonction_confidence": "ca"
+          "fonction_confidence": "ca",
+          "name_original": "Action Économique: Personnel titulaire - Rémunération principale"
         },
         {
           "name": "Invest. Économie: Constructions",
@@ -2768,25 +2839,28 @@
           "fonction_confidence": "ca"
         },
         {
-          "name": "Action Économique: Personnel titulaire - Autres indemnités",
+          "name": "Action Économique: Indemnités du personnel titulaire",
           "value": 485490.24,
           "fonction": "Industrie,commerce artisa",
           "flow_category": "Personnel",
-          "fonction_confidence": "ca"
+          "fonction_confidence": "ca",
+          "name_original": "Action Économique: Personnel titulaire - Autres indemnités"
         },
         {
-          "name": "Action Économique: Personnel non titulaire - Rémunérations",
+          "name": "Action Économique: Rémunération du personnel non titulaire",
           "value": 446713.27,
           "fonction": "Insertion éco sociale",
           "flow_category": "Personnel",
-          "fonction_confidence": "ca"
+          "fonction_confidence": "ca",
+          "name_original": "Action Économique: Personnel non titulaire - Rémunérations"
         },
         {
-          "name": "Action Économique: Personnel titulaire - Autres indemnités",
+          "name": "Action Économique: Indemnités du personnel titulaire",
           "value": 433610.04,
           "fonction": "Services communs",
           "flow_category": "Personnel",
-          "fonction_confidence": "ca"
+          "fonction_confidence": "ca",
+          "name_original": "Action Économique: Personnel titulaire - Autres indemnités"
         },
         {
           "name": "Action Économique: Fournitures de petit équipement",
@@ -2810,11 +2884,12 @@
           "fonction_confidence": "ca"
         },
         {
-          "name": "Action Économique: Personnel titulaire - Autres indemnités",
+          "name": "Action Économique: Indemnités du personnel titulaire",
           "value": 361515.24,
           "fonction": "Autres actions",
           "flow_category": "Personnel",
-          "fonction_confidence": "ca"
+          "fonction_confidence": "ca",
+          "name_original": "Action Économique: Personnel titulaire - Autres indemnités"
         },
         {
           "name": "Action Économique: Cotisations aux caisses de retraite",
@@ -2824,11 +2899,12 @@
           "fonction_confidence": "ca"
         },
         {
-          "name": "Action Économique: Personnel titulaire - Autres indemnités",
+          "name": "Action Économique: Indemnités du personnel titulaire",
           "value": 346651.02,
           "fonction": "Insertion éco sociale",
           "flow_category": "Personnel",
-          "fonction_confidence": "ca"
+          "fonction_confidence": "ca",
+          "name_original": "Action Économique: Personnel titulaire - Autres indemnités"
         },
         {
           "name": "Invest. Économie: Installations, matériel et outillage techniques",
@@ -2838,11 +2914,12 @@
           "fonction_confidence": "ca"
         },
         {
-          "name": "Action Économique: Personnel titulaire - Rémunération principale",
+          "name": "Action Économique: Rémunération du personnel titulaire",
           "value": 324683.03,
           "fonction": "Rayonnement et attractivi",
           "flow_category": "Personnel",
-          "fonction_confidence": "ca"
+          "fonction_confidence": "ca",
+          "name_original": "Action Économique: Personnel titulaire - Rémunération principale"
         },
         {
           "name": "Invest. Économie: Subventions aux personnes de droit privé - Bâtiments et installations",
@@ -2859,11 +2936,12 @@
           "fonction_confidence": "ca"
         },
         {
-          "name": "Action Économique: Personnel non titulaire - Rémunérations",
+          "name": "Action Économique: Rémunération du personnel non titulaire",
           "value": 278087.22,
           "fonction": "Autres actions",
           "flow_category": "Personnel",
-          "fonction_confidence": "ca"
+          "fonction_confidence": "ca",
+          "name_original": "Action Économique: Personnel non titulaire - Rémunérations"
         },
         {
           "name": "Action Économique: Cotisations aux caisses de retraite",
@@ -2889,11 +2967,12 @@
       ],
       "Environnement": [
         {
-          "name": "Environnement: Personnel titulaire - Rémunération principale",
+          "name": "Environnement: Rémunération du personnel titulaire",
           "value": 140334593.13,
           "fonction": "Ser com collecte propreté",
           "flow_category": "Personnel",
-          "fonction_confidence": "ca"
+          "fonction_confidence": "ca",
+          "name_original": "Environnement: Personnel titulaire - Rémunération principale"
         },
         {
           "name": "Environnement: Contributions à des fonds - Autres contributions",
@@ -2910,11 +2989,12 @@
           "fonction_confidence": "ca"
         },
         {
-          "name": "Environnement: Personnel titulaire - Autres indemnités",
+          "name": "Environnement: Indemnités du personnel titulaire",
           "value": 55170227.84,
           "fonction": "Ser com collecte propreté",
           "flow_category": "Personnel",
-          "fonction_confidence": "ca"
+          "fonction_confidence": "ca",
+          "name_original": "Environnement: Personnel titulaire - Autres indemnités"
         },
         {
           "name": "Environnement: Contrats de prestations de services",
@@ -2966,11 +3046,12 @@
           "fonction_confidence": "ca"
         },
         {
-          "name": "Environnement: Personnel titulaire - Rémunération principale",
+          "name": "Environnement: Rémunération du personnel titulaire",
           "value": 10210577.45,
           "fonction": "Services communs",
           "flow_category": "Personnel",
-          "fonction_confidence": "ca"
+          "fonction_confidence": "ca",
+          "name_original": "Environnement: Personnel titulaire - Rémunération principale"
         },
         {
           "name": "Invest. Environnement: Subventions aux personnes de droit privé - Biens mobiliers,matériel et études",
@@ -2987,11 +3068,12 @@
           "fonction_confidence": "ca"
         },
         {
-          "name": "Environnement: Personnel titulaire - Supplément familial de traitement et indemnité de résidence",
+          "name": "Environnement: Supplément familial + indemnité de résidence",
           "value": 7733340.03,
           "fonction": "Ser com collecte propreté",
           "flow_category": "Personnel",
-          "fonction_confidence": "ca"
+          "fonction_confidence": "ca",
+          "name_original": "Environnement: Personnel titulaire - Supplément familial de traitement et indemnité de résidence"
         },
         {
           "name": "Environnement: Contrats de prestations de services",
@@ -3015,11 +3097,12 @@
           "fonction_confidence": "ca"
         },
         {
-          "name": "Environnement: Personnel titulaire - Autres indemnités",
+          "name": "Environnement: Indemnités du personnel titulaire",
           "value": 4678570.2,
           "fonction": "Services communs",
           "flow_category": "Personnel",
-          "fonction_confidence": "ca"
+          "fonction_confidence": "ca",
+          "name_original": "Environnement: Personnel titulaire - Autres indemnités"
         },
         {
           "name": "Environnement: Versement de transport",
@@ -3057,25 +3140,28 @@
           "fonction_confidence": "ca"
         },
         {
-          "name": "Environnement: Personnel non titulaire - Rémunérations",
+          "name": "Environnement: Rémunération du personnel non titulaire",
           "value": 2866588.83,
           "fonction": "Ser com collecte propreté",
           "flow_category": "Personnel",
-          "fonction_confidence": "ca"
+          "fonction_confidence": "ca",
+          "name_original": "Environnement: Personnel non titulaire - Rémunérations"
         },
         {
-          "name": "Environnement: Personnel titulaire - Rémunération principale",
+          "name": "Environnement: Rémunération du personnel titulaire",
           "value": 2258079.78,
           "fonction": "Actions transversales",
           "flow_category": "Personnel",
-          "fonction_confidence": "ca"
+          "fonction_confidence": "ca",
+          "name_original": "Environnement: Personnel titulaire - Rémunération principale"
         },
         {
-          "name": "Environnement: Personnel titulaire - Rémunération principale",
+          "name": "Environnement: Rémunération du personnel titulaire",
           "value": 2234518.0,
           "fonction": "Assainissement",
           "flow_category": "Personnel",
-          "fonction_confidence": "ca"
+          "fonction_confidence": "ca",
+          "name_original": "Environnement: Personnel titulaire - Rémunération principale"
         },
         {
           "name": "Environnement: Locations mobilières - Autres",
@@ -3106,18 +3192,20 @@
           "fonction_confidence": "ca"
         },
         {
-          "name": "Environnement: Personnel titulaire - Rémunération principale",
+          "name": "Environnement: Rémunération du personnel titulaire",
           "value": 1499755.86,
           "fonction": "Prés patri nat gest risk",
           "flow_category": "Personnel",
-          "fonction_confidence": "ca"
+          "fonction_confidence": "ca",
+          "name_original": "Environnement: Personnel titulaire - Rémunération principale"
         },
         {
-          "name": "Environnement: Personnel titulaire - Rémunération principale",
+          "name": "Environnement: Rémunération du personnel titulaire",
           "value": 1425077.38,
           "fonction": "Tri, valo et trait déchet",
           "flow_category": "Personnel",
-          "fonction_confidence": "ca"
+          "fonction_confidence": "ca",
+          "name_original": "Environnement: Personnel titulaire - Rémunération principale"
         },
         {
           "name": "Invest. Environnement: Autre matériel technique",
@@ -3148,11 +3236,12 @@
           "fonction_confidence": "ca"
         },
         {
-          "name": "Environnement: Personnel titulaire - Autres indemnités",
+          "name": "Environnement: Indemnités du personnel titulaire",
           "value": 1117315.11,
           "fonction": "Actions transversales",
           "flow_category": "Personnel",
-          "fonction_confidence": "ca"
+          "fonction_confidence": "ca",
+          "name_original": "Environnement: Personnel titulaire - Autres indemnités"
         },
         {
           "name": "Environnement: Subventions de fonctionnement aux personnes, aux associations et aux autres organismes de droit privé - Autres personnes de droit privé",
@@ -3169,11 +3258,12 @@
           "fonction_confidence": "ca"
         },
         {
-          "name": "Environnement: Personnel titulaire - Autres indemnités",
+          "name": "Environnement: Indemnités du personnel titulaire",
           "value": 1016091.39,
           "fonction": "Assainissement",
           "flow_category": "Personnel",
-          "fonction_confidence": "ca"
+          "fonction_confidence": "ca",
+          "name_original": "Environnement: Personnel titulaire - Autres indemnités"
         },
         {
           "name": "Invest. Environnement: Installations, matériel et outillage techniques",
@@ -3190,11 +3280,12 @@
           "fonction_confidence": "ca"
         },
         {
-          "name": "Environnement: Personnel non titulaire - Primes et autres indemnités",
+          "name": "Environnement: Primes du personnel non titulaire",
           "value": 881032.9,
           "fonction": "Ser com collecte propreté",
           "flow_category": "Personnel",
-          "fonction_confidence": "ca"
+          "fonction_confidence": "ca",
+          "name_original": "Environnement: Personnel non titulaire - Primes et autres indemnités"
         },
         {
           "name": "Environnement: Fournitures de voirie",
@@ -3225,11 +3316,12 @@
           "fonction_confidence": "ca"
         },
         {
-          "name": "Environnement: Personnel titulaire - Autres indemnités",
+          "name": "Environnement: Indemnités du personnel titulaire",
           "value": 646125.56,
           "fonction": "Prés patri nat gest risk",
           "flow_category": "Personnel",
-          "fonction_confidence": "ca"
+          "fonction_confidence": "ca",
+          "name_original": "Environnement: Personnel titulaire - Autres indemnités"
         },
         {
           "name": "Environnement: Autres fournitures non stockées",
@@ -3255,18 +3347,20 @@
           "fonction_confidence": "ca"
         },
         {
-          "name": "Sécurité: Personnel titulaire - Rémunération principale",
+          "name": "Sécurité: Rémunération du personnel titulaire",
           "value": 63133797.84,
           "fonction": "Police, sécurité, justice",
           "flow_category": "Personnel",
-          "fonction_confidence": "ca"
+          "fonction_confidence": "ca",
+          "name_original": "Sécurité: Personnel titulaire - Rémunération principale"
         },
         {
-          "name": "Sécurité: Personnel titulaire - Autres indemnités",
+          "name": "Sécurité: Indemnités du personnel titulaire",
           "value": 33614748.17,
           "fonction": "Police, sécurité, justice",
           "flow_category": "Personnel",
-          "fonction_confidence": "ca"
+          "fonction_confidence": "ca",
+          "name_original": "Sécurité: Personnel titulaire - Autres indemnités"
         },
         {
           "name": "Sécurité: Cotisations aux caisses de retraite",
@@ -3304,25 +3398,28 @@
           "fonction_confidence": "ca"
         },
         {
-          "name": "Sécurité: Personnel titulaire - Rémunération principale",
+          "name": "Sécurité: Rémunération du personnel titulaire",
           "value": 5402136.57,
           "fonction": "Services communs",
           "flow_category": "Personnel",
-          "fonction_confidence": "ca"
+          "fonction_confidence": "ca",
+          "name_original": "Sécurité: Personnel titulaire - Rémunération principale"
         },
         {
-          "name": "Sécurité: Personnel titulaire - Supplément familial de traitement et indemnité de résidence",
+          "name": "Sécurité: Supplément familial + indemnité de résidence",
           "value": 3120346.44,
           "fonction": "Police, sécurité, justice",
           "flow_category": "Personnel",
-          "fonction_confidence": "ca"
+          "fonction_confidence": "ca",
+          "name_original": "Sécurité: Personnel titulaire - Supplément familial de traitement et indemnité de résidence"
         },
         {
-          "name": "Sécurité: Personnel titulaire - Autres indemnités",
+          "name": "Sécurité: Indemnités du personnel titulaire",
           "value": 2668468.86,
           "fonction": "Services communs",
           "flow_category": "Personnel",
-          "fonction_confidence": "ca"
+          "fonction_confidence": "ca",
+          "name_original": "Sécurité: Personnel titulaire - Autres indemnités"
         },
         {
           "name": "Sécurité: Locations mobilières - Matériel roulant",
@@ -3332,11 +3429,12 @@
           "fonction_confidence": "ca"
         },
         {
-          "name": "Sécurité: Personnel titulaire - Rémunération principale",
+          "name": "Sécurité: Rémunération du personnel titulaire",
           "value": 2189606.84,
           "fonction": "Hygiène salubrité publiqu",
           "flow_category": "Personnel",
-          "fonction_confidence": "ca"
+          "fonction_confidence": "ca",
+          "name_original": "Sécurité: Personnel titulaire - Rémunération principale"
         },
         {
           "name": "Invest. Sécurité: Installations, matériel et outillage techniques",
@@ -3388,11 +3486,12 @@
           "fonction_confidence": "ca"
         },
         {
-          "name": "Sécurité: Personnel titulaire - Autres indemnités",
+          "name": "Sécurité: Indemnités du personnel titulaire",
           "value": 1108562.26,
           "fonction": "Hygiène salubrité publiqu",
           "flow_category": "Personnel",
-          "fonction_confidence": "ca"
+          "fonction_confidence": "ca",
+          "name_original": "Sécurité: Personnel titulaire - Autres indemnités"
         },
         {
           "name": "Sécurité: Autres charges de personnel",
@@ -3409,18 +3508,20 @@
           "fonction_confidence": "ca"
         },
         {
-          "name": "Sécurité: Personnel non titulaire - Rémunérations",
+          "name": "Sécurité: Rémunération du personnel non titulaire",
           "value": 832928.67,
           "fonction": "Police, sécurité, justice",
           "flow_category": "Personnel",
-          "fonction_confidence": "ca"
+          "fonction_confidence": "ca",
+          "name_original": "Sécurité: Personnel non titulaire - Rémunérations"
         },
         {
-          "name": "Sécurité: Personnel titulaire - NBI",
+          "name": "Sécurité: NBI (Nouvelle Bonification Indiciaire)",
           "value": 825888.46,
           "fonction": "Police, sécurité, justice",
           "flow_category": "Personnel",
-          "fonction_confidence": "ca"
+          "fonction_confidence": "ca",
+          "name_original": "Sécurité: Personnel titulaire - NBI"
         },
         {
           "name": "Sécurité: Autre personnel extérieur",
@@ -3465,11 +3566,12 @@
           "fonction_confidence": "ca"
         },
         {
-          "name": "Sécurité: Personnel non titulaire - Primes et autres indemnités",
+          "name": "Sécurité: Primes du personnel non titulaire",
           "value": 274262.59,
           "fonction": "Police, sécurité, justice",
           "flow_category": "Personnel",
-          "fonction_confidence": "ca"
+          "fonction_confidence": "ca",
+          "name_original": "Sécurité: Personnel non titulaire - Primes et autres indemnités"
         },
         {
           "name": "Sécurité: Versement de transport",
@@ -3479,11 +3581,12 @@
           "fonction_confidence": "ca"
         },
         {
-          "name": "Sécurité: Personnel titulaire - Supplément familial de traitement et indemnité de résidence",
+          "name": "Sécurité: Supplément familial + indemnité de résidence",
           "value": 207939.18,
           "fonction": "Services communs",
           "flow_category": "Personnel",
-          "fonction_confidence": "ca"
+          "fonction_confidence": "ca",
+          "name_original": "Sécurité: Personnel titulaire - Supplément familial de traitement et indemnité de résidence"
         },
         {
           "name": "Sécurité: Voyages, déplacements et missions",
@@ -3500,11 +3603,12 @@
           "fonction_confidence": "ca"
         },
         {
-          "name": "Sécurité: Personnel non titulaire - Rémunérations",
+          "name": "Sécurité: Rémunération du personnel non titulaire",
           "value": 174343.37,
           "fonction": "Hygiène salubrité publiqu",
           "flow_category": "Personnel",
-          "fonction_confidence": "ca"
+          "fonction_confidence": "ca",
+          "name_original": "Sécurité: Personnel non titulaire - Rémunérations"
         },
         {
           "name": "Sécurité: Frais de nettoyage des locaux",
@@ -3514,11 +3618,12 @@
           "fonction_confidence": "ca"
         },
         {
-          "name": "Sécurité: Personnel non titulaire - Rémunérations",
+          "name": "Sécurité: Rémunération du personnel non titulaire",
           "value": 171953.94,
           "fonction": "Services communs",
           "flow_category": "Personnel",
-          "fonction_confidence": "ca"
+          "fonction_confidence": "ca",
+          "name_original": "Sécurité: Personnel non titulaire - Rémunérations"
         },
         {
           "name": "Sécurité: Autres bâtiments",
@@ -3556,11 +3661,12 @@
           "fonction_confidence": "ca"
         },
         {
-          "name": "Sécurité: Personnel titulaire - Supplément familial de traitement et indemnité de résidence",
+          "name": "Sécurité: Supplément familial + indemnité de résidence",
           "value": 86721.24,
           "fonction": "Hygiène salubrité publiqu",
           "flow_category": "Personnel",
-          "fonction_confidence": "ca"
+          "fonction_confidence": "ca",
+          "name_original": "Sécurité: Personnel titulaire - Supplément familial de traitement et indemnité de résidence"
         },
         {
           "name": "Sécurité: Autres charges de personnel",
@@ -3635,11 +3741,12 @@
           "fonction_confidence": "ca"
         },
         {
-          "name": "Transports: Personnel titulaire - Rémunération principale",
+          "name": "Transports: Rémunération du personnel titulaire",
           "value": 21704126.14,
           "fonction": "Voirie communale",
           "flow_category": "Personnel",
-          "fonction_confidence": "ca"
+          "fonction_confidence": "ca",
+          "name_original": "Transports: Personnel titulaire - Rémunération principale"
         },
         {
           "name": "Transports: Aides",
@@ -3670,11 +3777,12 @@
           "fonction_confidence": "ca"
         },
         {
-          "name": "Transports: Personnel titulaire - Autres indemnités",
+          "name": "Transports: Indemnités du personnel titulaire",
           "value": 10189872.47,
           "fonction": "Voirie communale",
           "flow_category": "Personnel",
-          "fonction_confidence": "ca"
+          "fonction_confidence": "ca",
+          "name_original": "Transports: Personnel titulaire - Autres indemnités"
         },
         {
           "name": "Invest. Transports: Installations, matériel et outillage techniques",
@@ -3719,11 +3827,12 @@
           "fonction_confidence": "ca"
         },
         {
-          "name": "Transports: Personnel titulaire - Rémunération principale",
+          "name": "Transports: Rémunération du personnel titulaire",
           "value": 4584933.49,
           "fonction": "Halte fluv autre infra fl",
           "flow_category": "Personnel",
-          "fonction_confidence": "ca"
+          "fonction_confidence": "ca",
+          "name_original": "Transports: Personnel titulaire - Rémunération principale"
         },
         {
           "name": "Transports: Cotisations à l'U.R.S.S.A.F.",
@@ -3747,18 +3856,20 @@
           "fonction_confidence": "ca"
         },
         {
-          "name": "Transports: Personnel titulaire - Rémunération principale",
+          "name": "Transports: Rémunération du personnel titulaire",
           "value": 3105071.28,
           "fonction": "Services communs",
           "flow_category": "Personnel",
-          "fonction_confidence": "ca"
+          "fonction_confidence": "ca",
+          "name_original": "Transports: Personnel titulaire - Rémunération principale"
         },
         {
           "name": "Invest. Transports: Frais d'études",
           "value": 3078615.47,
           "fonction": "Transport ferroviaire",
           "flow_category": "Études",
-          "fonction_confidence": "ca"
+          "fonction_confidence": "ca",
+          "name_original": "Invest. Transports: Frais d'études"
         },
         {
           "name": "Invest. Transports: Installations, matériel et outillage techniques",
@@ -3782,11 +3893,12 @@
           "fonction_confidence": "ca"
         },
         {
-          "name": "Transports: Personnel titulaire - Autres indemnités",
+          "name": "Transports: Indemnités du personnel titulaire",
           "value": 1983792.03,
           "fonction": "Halte fluv autre infra fl",
           "flow_category": "Personnel",
-          "fonction_confidence": "ca"
+          "fonction_confidence": "ca",
+          "name_original": "Transports: Personnel titulaire - Autres indemnités"
         },
         {
           "name": "Transports: Locations mobilières - Matériel roulant",
@@ -3817,11 +3929,12 @@
           "fonction_confidence": "ca"
         },
         {
-          "name": "Transports: Personnel titulaire - Autres indemnités",
+          "name": "Transports: Indemnités du personnel titulaire",
           "value": 1592919.43,
           "fonction": "Services communs",
           "flow_category": "Personnel",
-          "fonction_confidence": "ca"
+          "fonction_confidence": "ca",
+          "name_original": "Transports: Personnel titulaire - Autres indemnités"
         },
         {
           "name": "Transports: Autres charges diverses de gestion courante - Autres",
@@ -3835,7 +3948,8 @@
           "value": 1521740.97,
           "fonction": "Voirie communale",
           "flow_category": "Études",
-          "fonction_confidence": "ca"
+          "fonction_confidence": "ca",
+          "name_original": "Invest. Transports: Frais d'études"
         },
         {
           "name": "Invest. Transports: Autres immobilisations corporelles",
@@ -3880,11 +3994,12 @@
           "fonction_confidence": "ca"
         },
         {
-          "name": "Transports: Personnel titulaire - Rémunération principale",
+          "name": "Transports: Rémunération du personnel titulaire",
           "value": 1174263.21,
           "fonction": "Sécurité routière",
           "flow_category": "Personnel",
-          "fonction_confidence": "ca"
+          "fonction_confidence": "ca",
+          "name_original": "Transports: Personnel titulaire - Rémunération principale"
         },
         {
           "name": "Transports: Cotisations aux caisses de retraite",
@@ -3908,11 +4023,12 @@
           "fonction_confidence": "ca"
         },
         {
-          "name": "Transports: Personnel titulaire - Supplément familial de traitement et indemnité de résidence",
+          "name": "Transports: Supplément familial + indemnité de résidence",
           "value": 930606.48,
           "fonction": "Voirie communale",
           "flow_category": "Personnel",
-          "fonction_confidence": "ca"
+          "fonction_confidence": "ca",
+          "name_original": "Transports: Personnel titulaire - Supplément familial de traitement et indemnité de résidence"
         },
         {
           "name": "Invest. Transports: Constructions",
@@ -3922,11 +4038,12 @@
           "fonction_confidence": "ca"
         },
         {
-          "name": "Transports: Personnel non titulaire - Rémunérations",
+          "name": "Transports: Rémunération du personnel non titulaire",
           "value": 753419.85,
           "fonction": "Voirie communale",
           "flow_category": "Personnel",
-          "fonction_confidence": "ca"
+          "fonction_confidence": "ca",
+          "name_original": "Transports: Personnel non titulaire - Rémunérations"
         },
         {
           "name": "Transports: Cotisations à l'U.R.S.S.A.F.",
@@ -4029,11 +4146,12 @@
           "fonction_confidence": "ca"
         },
         {
-          "name": "Opérations Financières: Intérêts - rattachement des ICNE",
+          "name": "Opérations Financières: Intérêts — rattachement des ICNE (intérêts courus non échus)",
           "value": 1557344.78,
           "fonction": "Opérations non ventilable",
           "flow_category": "Charges financières",
-          "fonction_confidence": "ca"
+          "fonction_confidence": "ca",
+          "name_original": "Opérations Financières: Intérêts - rattachement des ICNE"
         },
         {
           "name": "Opérations Financières: Intérêts des autres dettes",
@@ -4095,11 +4213,12 @@
             "fonction_confidence": "ca"
           },
           {
-            "name": "Action Sociale: Personnel titulaire - Rémunération principale",
+            "name": "Action Sociale: Rémunération du personnel titulaire",
             "value": 151654488.83,
             "fonction": "Crèches et garderies",
             "flow_category": "Personnel",
-            "fonction_confidence": "ca"
+            "fonction_confidence": "ca",
+            "name_original": "Action Sociale: Personnel titulaire - Rémunération principale"
           },
           {
             "name": "Action Sociale: Frais de séjour en établissements et services pour adultes handicapés",
@@ -4158,11 +4277,12 @@
             "fonction_confidence": "ca"
           },
           {
-            "name": "Action Sociale: Personnel titulaire - Autres indemnités",
+            "name": "Action Sociale: Indemnités du personnel titulaire",
             "value": 41292997.6,
             "fonction": "Crèches et garderies",
             "flow_category": "Personnel",
-            "fonction_confidence": "ca"
+            "fonction_confidence": "ca",
+            "name_original": "Action Sociale: Personnel titulaire - Autres indemnités"
           },
           {
             "name": "APA: APA à domicile versée au service d’aide à domicile",
@@ -4261,11 +4381,12 @@
             "fonction_confidence": "ca"
           },
           {
-            "name": "Invest. Social: Subventions aux organismes publics - CCAS - Bâtiments et installations",
+            "name": "Invest. Social: Subventions aux organismes publics — CCAS (bâtiments)",
             "value": 2250000.0,
             "fonction": "Autre intervention social",
             "flow_category": "Subventions (investissement)",
-            "fonction_confidence": "ca"
+            "fonction_confidence": "ca",
+            "name_original": "Invest. Social: Subventions aux organismes publics - CCAS - Bâtiments et installations"
           },
           {
             "name": "Invest. Social: Constructions sur sol d'autrui",
@@ -4335,14 +4456,16 @@
             "value": 648396.34,
             "fonction": "Crèches et garderies",
             "flow_category": "Études",
-            "fonction_confidence": "ca"
+            "fonction_confidence": "ca",
+            "name_original": "Invest. Social: Frais d'études"
           },
           {
             "name": "Invest. Social: Frais d'études",
             "value": 591013.93,
             "fonction": "Personnes handicapées",
             "flow_category": "Études",
-            "fonction_confidence": "ca"
+            "fonction_confidence": "ca",
+            "name_original": "Invest. Social: Frais d'études"
           },
           {
             "name": "Invest. Social: Constructions",
@@ -4373,18 +4496,20 @@
         "total": 247333419.89000008,
         "items": [
           {
-            "name": "Aménagement: Personnel titulaire - Rémunération principale",
+            "name": "Aménagement: Rémunération du personnel titulaire",
             "value": 45506706.7,
             "fonction": "Espaces verts urbains",
             "flow_category": "Personnel",
-            "fonction_confidence": "ca"
+            "fonction_confidence": "ca",
+            "name_original": "Aménagement: Personnel titulaire - Rémunération principale"
           },
           {
-            "name": "Aménagement: Personnel titulaire - Rémunération principale",
+            "name": "Aménagement: Rémunération du personnel titulaire",
             "value": 20444975.119999997,
             "fonction": "Services communs",
             "flow_category": "Personnel",
-            "fonction_confidence": "ca"
+            "fonction_confidence": "ca",
+            "name_original": "Aménagement: Personnel titulaire - Rémunération principale"
           },
           {
             "name": "Aménagement: Voiries",
@@ -4401,11 +4526,12 @@
             "fonction_confidence": "ca"
           },
           {
-            "name": "Aménagement: Personnel titulaire - Autres indemnités",
+            "name": "Aménagement: Indemnités du personnel titulaire",
             "value": 14915735.46,
             "fonction": "Espaces verts urbains",
             "flow_category": "Personnel",
-            "fonction_confidence": "ca"
+            "fonction_confidence": "ca",
+            "name_original": "Aménagement: Personnel titulaire - Autres indemnités"
           },
           {
             "name": "Aménagement: Énergie - Électricité",
@@ -4415,11 +4541,12 @@
             "fonction_confidence": "ca"
           },
           {
-            "name": "Aménagement: Personnel titulaire - Autres indemnités",
+            "name": "Aménagement: Indemnités du personnel titulaire",
             "value": 9091226.120000001,
             "fonction": "Services communs",
             "flow_category": "Personnel",
-            "fonction_confidence": "ca"
+            "fonction_confidence": "ca",
+            "name_original": "Aménagement: Personnel titulaire - Autres indemnités"
           },
           {
             "name": "Aménagement: Subventions de fonctionnement aux personnes, aux associations et aux autres organismes de droit privé - Autres personnes de droit privé",
@@ -4471,18 +4598,20 @@
             "fonction_confidence": "ca"
           },
           {
-            "name": "Aménagement: Personnel titulaire - Rémunération principale",
+            "name": "Aménagement: Rémunération du personnel titulaire",
             "value": 3552396.39,
             "fonction": "Réserves Foncières",
             "flow_category": "Personnel",
-            "fonction_confidence": "ca"
+            "fonction_confidence": "ca",
+            "name_original": "Aménagement: Personnel titulaire - Rémunération principale"
           },
           {
-            "name": "Aménagement: Personnel titulaire - Rémunération principale",
+            "name": "Aménagement: Rémunération du personnel titulaire",
             "value": 2791894.96,
             "fonction": "Opérations d’aménagement",
             "flow_category": "Personnel",
-            "fonction_confidence": "ca"
+            "fonction_confidence": "ca",
+            "name_original": "Aménagement: Personnel titulaire - Rémunération principale"
           },
           {
             "name": "Aménagement: Contrats de prestations de services",
@@ -4499,11 +4628,12 @@
             "fonction_confidence": "ca"
           },
           {
-            "name": "Aménagement: Personnel non titulaire - Rémunérations",
+            "name": "Aménagement: Rémunération du personnel non titulaire",
             "value": 2199715.96,
             "fonction": "Espaces verts urbains",
             "flow_category": "Personnel",
-            "fonction_confidence": "ca"
+            "fonction_confidence": "ca",
+            "name_original": "Aménagement: Personnel non titulaire - Rémunérations"
           },
           {
             "name": "Aménagement: Terrains",
@@ -4679,18 +4809,20 @@
             "fonction_confidence": "ca"
           },
           {
-            "name": "Culture & Sport: Personnel titulaire - Rémunération principale",
+            "name": "Culture & Sport: Rémunération du personnel titulaire",
             "value": 28409091.52,
             "fonction": "Bibliothèques médiathèque",
             "flow_category": "Personnel",
-            "fonction_confidence": "ca"
+            "fonction_confidence": "ca",
+            "name_original": "Culture & Sport: Personnel titulaire - Rémunération principale"
           },
           {
-            "name": "Culture & Sport: Personnel titulaire - Rémunération principale",
+            "name": "Culture & Sport: Rémunération du personnel titulaire",
             "value": 26247710.8,
             "fonction": "Salles de sport, gymnases",
             "flow_category": "Personnel",
-            "fonction_confidence": "ca"
+            "fonction_confidence": "ca",
+            "name_original": "Culture & Sport: Personnel titulaire - Rémunération principale"
           },
           {
             "name": "Culture & Sport: Subventions de fonctionnement aux personnes, aux associations et aux autres organismes de droit privé - Autres personnes de droit privé",
@@ -4700,18 +4832,20 @@
             "fonction_confidence": "ca"
           },
           {
-            "name": "Culture & Sport: Personnel titulaire - Rémunération principale",
+            "name": "Culture & Sport: Rémunération du personnel titulaire",
             "value": 24147167.81,
             "fonction": "Activités artistiques,act",
             "flow_category": "Personnel",
-            "fonction_confidence": "ca"
+            "fonction_confidence": "ca",
+            "name_original": "Culture & Sport: Personnel titulaire - Rémunération principale"
           },
           {
-            "name": "Culture & Sport: Personnel titulaire - Rémunération principale",
+            "name": "Culture & Sport: Rémunération du personnel titulaire",
             "value": 17318354.75,
             "fonction": "Services communs",
             "flow_category": "Personnel",
-            "fonction_confidence": "ca"
+            "fonction_confidence": "ca",
+            "name_original": "Culture & Sport: Personnel titulaire - Rémunération principale"
           },
           {
             "name": "Culture & Sport: Subventions de fonctionnement aux organismes publics - Organismes publics divers",
@@ -4721,11 +4855,12 @@
             "fonction_confidence": "ca"
           },
           {
-            "name": "Culture & Sport: Personnel titulaire - Rémunération principale",
+            "name": "Culture & Sport: Rémunération du personnel titulaire",
             "value": 16597667.39,
             "fonction": "Autres actions vie social",
             "flow_category": "Personnel",
-            "fonction_confidence": "ca"
+            "fonction_confidence": "ca",
+            "name_original": "Culture & Sport: Personnel titulaire - Rémunération principale"
           },
           {
             "name": "Culture & Sport: Contrats de prestations de services",
@@ -4735,11 +4870,12 @@
             "fonction_confidence": "ca"
           },
           {
-            "name": "Culture & Sport: Personnel titulaire - Rémunération principale",
+            "name": "Culture & Sport: Rémunération du personnel titulaire",
             "value": 15629164.9,
             "fonction": "Piscines",
             "flow_category": "Personnel",
-            "fonction_confidence": "ca"
+            "fonction_confidence": "ca",
+            "name_original": "Culture & Sport: Personnel titulaire - Rémunération principale"
           },
           {
             "name": "Culture & Sport: Subventions de fonctionnement aux personnes, aux associations et aux autres organismes de droit privé - Autres personnes de droit privé",
@@ -4756,18 +4892,20 @@
             "fonction_confidence": "ca"
           },
           {
-            "name": "Culture & Sport: Personnel titulaire - Autres indemnités",
+            "name": "Culture & Sport: Indemnités du personnel titulaire",
             "value": 9538422.38,
             "fonction": "Salles de sport, gymnases",
             "flow_category": "Personnel",
-            "fonction_confidence": "ca"
+            "fonction_confidence": "ca",
+            "name_original": "Culture & Sport: Personnel titulaire - Autres indemnités"
           },
           {
-            "name": "Culture & Sport: Personnel non titulaire - Rémunérations",
+            "name": "Culture & Sport: Rémunération du personnel non titulaire",
             "value": 9488488.75,
             "fonction": "Activités artistiques,act",
             "flow_category": "Personnel",
-            "fonction_confidence": "ca"
+            "fonction_confidence": "ca",
+            "name_original": "Culture & Sport: Personnel non titulaire - Rémunérations"
           },
           {
             "name": "Culture & Sport: Cotisations aux caisses de retraite",
@@ -4798,11 +4936,12 @@
             "fonction_confidence": "ca"
           },
           {
-            "name": "Culture & Sport: Personnel titulaire - Autres indemnités",
+            "name": "Culture & Sport: Indemnités du personnel titulaire",
             "value": 8106262.92,
             "fonction": "Services communs",
             "flow_category": "Personnel",
-            "fonction_confidence": "ca"
+            "fonction_confidence": "ca",
+            "name_original": "Culture & Sport: Personnel titulaire - Autres indemnités"
           }
         ]
       },
@@ -4856,7 +4995,8 @@
             "value": 8113985.85,
             "fonction": "Manifestations sportives",
             "flow_category": "Études",
-            "fonction_confidence": "ca"
+            "fonction_confidence": "ca",
+            "name_original": "Invest. Culture: Frais d'études"
           },
           {
             "name": "Invest. Culture: Constructions",
@@ -4940,14 +5080,16 @@
             "value": 1525790.58,
             "fonction": "Patrimoine",
             "flow_category": "Études",
-            "fonction_confidence": "ca"
+            "fonction_confidence": "ca",
+            "name_original": "Invest. Culture: Frais d'études"
           },
           {
             "name": "Invest. Culture: Frais d'études",
             "value": 1462852.87,
             "fonction": "Piscines",
             "flow_category": "Études",
-            "fonction_confidence": "ca"
+            "fonction_confidence": "ca",
+            "name_original": "Invest. Culture: Frais d'études"
           }
         ]
       }
@@ -4964,18 +5106,20 @@
             "fonction_confidence": "ca"
           },
           {
-            "name": "Éducation: Personnel titulaire - Rémunération principale",
+            "name": "Éducation: Rémunération du personnel titulaire",
             "value": 78022518.8,
             "fonction": "Écoles primaires",
             "flow_category": "Personnel",
-            "fonction_confidence": "ca"
+            "fonction_confidence": "ca",
+            "name_original": "Éducation: Personnel titulaire - Rémunération principale"
           },
           {
-            "name": "Éducation: Personnel titulaire - Rémunération principale",
+            "name": "Éducation: Rémunération du personnel titulaire",
             "value": 56671031.79,
             "fonction": "Écoles maternelles",
             "flow_category": "Personnel",
-            "fonction_confidence": "ca"
+            "fonction_confidence": "ca",
+            "name_original": "Éducation: Personnel titulaire - Rémunération principale"
           },
           {
             "name": "Éducation: Autres contributions obligatoires",
@@ -5013,11 +5157,12 @@
             "fonction_confidence": "ca"
           },
           {
-            "name": "Éducation: Personnel titulaire - Rémunération principale",
+            "name": "Éducation: Rémunération du personnel titulaire",
             "value": 23184767.03,
             "fonction": "Services communs",
             "flow_category": "Personnel",
-            "fonction_confidence": "ca"
+            "fonction_confidence": "ca",
+            "name_original": "Éducation: Personnel titulaire - Rémunération principale"
           },
           {
             "name": "Éducation: Cotisations à l'U.R.S.S.A.F.",
@@ -5048,18 +5193,20 @@
             "fonction_confidence": "ca"
           },
           {
-            "name": "Éducation: Personnel non titulaire - Rémunérations",
+            "name": "Éducation: Rémunération du personnel non titulaire",
             "value": 17168547.6,
             "fonction": "Écoles maternelles",
             "flow_category": "Personnel",
-            "fonction_confidence": "ca"
+            "fonction_confidence": "ca",
+            "name_original": "Éducation: Personnel non titulaire - Rémunérations"
           },
           {
-            "name": "Éducation: Personnel titulaire - Autres indemnités",
+            "name": "Éducation: Indemnités du personnel titulaire",
             "value": 15329279.92,
             "fonction": "Écoles primaires",
             "flow_category": "Personnel",
-            "fonction_confidence": "ca"
+            "fonction_confidence": "ca",
+            "name_original": "Éducation: Personnel titulaire - Autres indemnités"
           },
           {
             "name": "Éducation: Dotation de fonctionnement des collèges - Établissements publics",
@@ -5069,25 +5216,28 @@
             "fonction_confidence": "ca"
           },
           {
-            "name": "Éducation: Personnel titulaire - Autres indemnités",
+            "name": "Éducation: Indemnités du personnel titulaire",
             "value": 15269743.43,
             "fonction": "Écoles maternelles",
             "flow_category": "Personnel",
-            "fonction_confidence": "ca"
+            "fonction_confidence": "ca",
+            "name_original": "Éducation: Personnel titulaire - Autres indemnités"
           },
           {
-            "name": "Éducation: Personnel titulaire - Rémunération principale",
+            "name": "Éducation: Rémunération du personnel titulaire",
             "value": 14334240.35,
             "fonction": "Collèges",
             "flow_category": "Personnel",
-            "fonction_confidence": "ca"
+            "fonction_confidence": "ca",
+            "name_original": "Éducation: Personnel titulaire - Rémunération principale"
           },
           {
-            "name": "Éducation: Personnel non titulaire - Rémunérations",
+            "name": "Éducation: Rémunération du personnel non titulaire",
             "value": 11056311.96,
             "fonction": "Écoles primaires",
             "flow_category": "Personnel",
-            "fonction_confidence": "ca"
+            "fonction_confidence": "ca",
+            "name_original": "Éducation: Personnel non titulaire - Rémunérations"
           },
           {
             "name": "Éducation: Achats de prestations de services (autres que terrains à aménager)",
@@ -5141,7 +5291,8 @@
             "value": 3712417.75,
             "fonction": "Classes regroupées",
             "flow_category": "Études",
-            "fonction_confidence": "ca"
+            "fonction_confidence": "ca",
+            "name_original": "Invest. Éducation: Frais d'études"
           },
           {
             "name": "Invest. Éducation: Constructions",
@@ -5256,11 +5407,12 @@
             "fonction_confidence": "ca"
           },
           {
-            "name": "Administration: Personnel titulaire - Rémunération principale",
+            "name": "Administration: Rémunération du personnel titulaire",
             "value": 98656775.27,
             "fonction": "Adm générale collectivité",
             "flow_category": "Personnel",
-            "fonction_confidence": "ca"
+            "fonction_confidence": "ca",
+            "name_original": "Administration: Personnel titulaire - Rémunération principale"
           },
           {
             "name": "Administration: Locations immobilières",
@@ -5270,11 +5422,12 @@
             "fonction_confidence": "ca"
           },
           {
-            "name": "Administration: Personnel titulaire - Autres indemnités",
+            "name": "Administration: Indemnités du personnel titulaire",
             "value": 44316614.02,
             "fonction": "Adm générale collectivité",
             "flow_category": "Personnel",
-            "fonction_confidence": "ca"
+            "fonction_confidence": "ca",
+            "name_original": "Administration: Personnel titulaire - Autres indemnités"
           },
           {
             "name": "Administration: Cotisations aux caisses de retraite",
@@ -5312,11 +5465,12 @@
             "fonction_confidence": "ca"
           },
           {
-            "name": "Administration: Personnel titulaire - Rémunération principale",
+            "name": "Administration: Rémunération du personnel titulaire",
             "value": 20250370.7,
             "fonction": "Personnel non ventilé",
             "flow_category": "Personnel",
-            "fonction_confidence": "ca"
+            "fonction_confidence": "ca",
+            "name_original": "Administration: Personnel titulaire - Rémunération principale"
           },
           {
             "name": "Administration: Subventions de fonctionnement aux personnes, aux associations et aux autres organismes de droit privé - Autres personnes de droit privé",
@@ -5326,11 +5480,12 @@
             "fonction_confidence": "ca"
           },
           {
-            "name": "Administration: Personnel non titulaire - Rémunérations",
+            "name": "Administration: Rémunération du personnel non titulaire",
             "value": 18836269.99,
             "fonction": "Adm générale collectivité",
             "flow_category": "Personnel",
-            "fonction_confidence": "ca"
+            "fonction_confidence": "ca",
+            "name_original": "Administration: Personnel non titulaire - Rémunérations"
           },
           {
             "name": "Administration: Autres charges diverses de gestion courante - Autres",
@@ -5354,11 +5509,12 @@
             "fonction_confidence": "ca"
           },
           {
-            "name": "Administration: Personnel non titulaire - Rémunérations",
+            "name": "Administration: Rémunération du personnel non titulaire",
             "value": 12904873.71,
             "fonction": "Assemblée délibérante",
             "flow_category": "Personnel",
-            "fonction_confidence": "ca"
+            "fonction_confidence": "ca",
+            "name_original": "Administration: Personnel non titulaire - Rémunérations"
           },
           {
             "name": "Administration: Indemnités de fonction",
@@ -5375,11 +5531,12 @@
             "fonction_confidence": "ca"
           },
           {
-            "name": "Administration: Personnel titulaire - Rémunération principale",
+            "name": "Administration: Rémunération du personnel titulaire",
             "value": 9664446.03,
             "fonction": "Cimetière pompe funèbre",
             "flow_category": "Personnel",
-            "fonction_confidence": "ca"
+            "fonction_confidence": "ca",
+            "name_original": "Administration: Personnel titulaire - Rémunération principale"
           },
           {
             "name": "Administration: Frais de nettoyage des locaux",
@@ -5445,18 +5602,20 @@
             "fonction_confidence": "ca"
           },
           {
-            "name": "Action Économique: Personnel titulaire - Rémunération principale",
+            "name": "Action Économique: Rémunération du personnel titulaire",
             "value": 1048862.98,
             "fonction": "Autres actions",
             "flow_category": "Personnel",
-            "fonction_confidence": "ca"
+            "fonction_confidence": "ca",
+            "name_original": "Action Économique: Personnel titulaire - Rémunération principale"
           },
           {
-            "name": "Action Économique: Personnel titulaire - Rémunération principale",
+            "name": "Action Économique: Rémunération du personnel titulaire",
             "value": 1040576.22,
             "fonction": "Industrie,commerce artisa",
             "flow_category": "Personnel",
-            "fonction_confidence": "ca"
+            "fonction_confidence": "ca",
+            "name_original": "Action Économique: Personnel titulaire - Rémunération principale"
           },
           {
             "name": "Action Économique: Contrats de prestations de services",
@@ -5473,11 +5632,12 @@
             "fonction_confidence": "ca"
           },
           {
-            "name": "Action Économique: Personnel titulaire - Rémunération principale",
+            "name": "Action Économique: Rémunération du personnel titulaire",
             "value": 758182.66,
             "fonction": "Insertion éco sociale",
             "flow_category": "Personnel",
-            "fonction_confidence": "ca"
+            "fonction_confidence": "ca",
+            "name_original": "Action Économique: Personnel titulaire - Rémunération principale"
           },
           {
             "name": "Action Économique: Locations immobilières",
@@ -5487,11 +5647,12 @@
             "fonction_confidence": "ca"
           },
           {
-            "name": "Action Économique: Personnel titulaire - Rémunération principale",
+            "name": "Action Économique: Rémunération du personnel titulaire",
             "value": 721299.14,
             "fonction": "Services communs",
             "flow_category": "Personnel",
-            "fonction_confidence": "ca"
+            "fonction_confidence": "ca",
+            "name_original": "Action Économique: Personnel titulaire - Rémunération principale"
           },
           {
             "name": "Action Économique: Foires et expositions",
@@ -5501,25 +5662,28 @@
             "fonction_confidence": "ca"
           },
           {
-            "name": "Action Économique: Personnel titulaire - Autres indemnités",
+            "name": "Action Économique: Indemnités du personnel titulaire",
             "value": 485490.24,
             "fonction": "Industrie,commerce artisa",
             "flow_category": "Personnel",
-            "fonction_confidence": "ca"
+            "fonction_confidence": "ca",
+            "name_original": "Action Économique: Personnel titulaire - Autres indemnités"
           },
           {
-            "name": "Action Économique: Personnel non titulaire - Rémunérations",
+            "name": "Action Économique: Rémunération du personnel non titulaire",
             "value": 446713.27,
             "fonction": "Insertion éco sociale",
             "flow_category": "Personnel",
-            "fonction_confidence": "ca"
+            "fonction_confidence": "ca",
+            "name_original": "Action Économique: Personnel non titulaire - Rémunérations"
           },
           {
-            "name": "Action Économique: Personnel titulaire - Autres indemnités",
+            "name": "Action Économique: Indemnités du personnel titulaire",
             "value": 433610.04,
             "fonction": "Services communs",
             "flow_category": "Personnel",
-            "fonction_confidence": "ca"
+            "fonction_confidence": "ca",
+            "name_original": "Action Économique: Personnel titulaire - Autres indemnités"
           },
           {
             "name": "Action Économique: Fournitures de petit équipement",
@@ -5678,7 +5842,8 @@
             "value": 220059.43,
             "fonction": "Recherche et innovation",
             "flow_category": "Études",
-            "fonction_confidence": "ca"
+            "fonction_confidence": "ca",
+            "name_original": "Invest. Économie: Frais d'études"
           }
         ]
       }
@@ -5688,11 +5853,12 @@
         "total": 676429051.8800004,
         "items": [
           {
-            "name": "Environnement: Personnel titulaire - Rémunération principale",
+            "name": "Environnement: Rémunération du personnel titulaire",
             "value": 140334593.13,
             "fonction": "Ser com collecte propreté",
             "flow_category": "Personnel",
-            "fonction_confidence": "ca"
+            "fonction_confidence": "ca",
+            "name_original": "Environnement: Personnel titulaire - Rémunération principale"
           },
           {
             "name": "Environnement: Contributions à des fonds - Autres contributions",
@@ -5709,11 +5875,12 @@
             "fonction_confidence": "ca"
           },
           {
-            "name": "Environnement: Personnel titulaire - Autres indemnités",
+            "name": "Environnement: Indemnités du personnel titulaire",
             "value": 55170227.84,
             "fonction": "Ser com collecte propreté",
             "flow_category": "Personnel",
-            "fonction_confidence": "ca"
+            "fonction_confidence": "ca",
+            "name_original": "Environnement: Personnel titulaire - Autres indemnités"
           },
           {
             "name": "Environnement: Contrats de prestations de services",
@@ -5758,18 +5925,20 @@
             "fonction_confidence": "ca"
           },
           {
-            "name": "Environnement: Personnel titulaire - Rémunération principale",
+            "name": "Environnement: Rémunération du personnel titulaire",
             "value": 10210577.45,
             "fonction": "Services communs",
             "flow_category": "Personnel",
-            "fonction_confidence": "ca"
+            "fonction_confidence": "ca",
+            "name_original": "Environnement: Personnel titulaire - Rémunération principale"
           },
           {
-            "name": "Environnement: Personnel titulaire - Supplément familial de traitement et indemnité de résidence",
+            "name": "Environnement: Supplément familial + indemnité de résidence",
             "value": 7733340.03,
             "fonction": "Ser com collecte propreté",
             "flow_category": "Personnel",
-            "fonction_confidence": "ca"
+            "fonction_confidence": "ca",
+            "name_original": "Environnement: Personnel titulaire - Supplément familial de traitement et indemnité de résidence"
           },
           {
             "name": "Environnement: Contrats de prestations de services",
@@ -5786,11 +5955,12 @@
             "fonction_confidence": "ca"
           },
           {
-            "name": "Environnement: Personnel titulaire - Autres indemnités",
+            "name": "Environnement: Indemnités du personnel titulaire",
             "value": 4678570.2,
             "fonction": "Services communs",
             "flow_category": "Personnel",
-            "fonction_confidence": "ca"
+            "fonction_confidence": "ca",
+            "name_original": "Environnement: Personnel titulaire - Autres indemnités"
           },
           {
             "name": "Environnement: Versement de transport",
@@ -5956,7 +6126,8 @@
             "value": 173206.72,
             "fonction": "Ser com collecte propreté",
             "flow_category": "Études",
-            "fonction_confidence": "ca"
+            "fonction_confidence": "ca",
+            "name_original": "Invest. Environnement: Frais d'études"
           },
           {
             "name": "Invest. Environnement: Autres agencements et aménagements",
@@ -5970,7 +6141,8 @@
             "value": 166747.31,
             "fonction": "Prés patri nat gest risk",
             "flow_category": "Études",
-            "fonction_confidence": "ca"
+            "fonction_confidence": "ca",
+            "name_original": "Invest. Environnement: Frais d'études"
           }
         ]
       }
@@ -5994,18 +6166,20 @@
             "fonction_confidence": "ca"
           },
           {
-            "name": "Sécurité: Personnel titulaire - Rémunération principale",
+            "name": "Sécurité: Rémunération du personnel titulaire",
             "value": 63133797.84,
             "fonction": "Police, sécurité, justice",
             "flow_category": "Personnel",
-            "fonction_confidence": "ca"
+            "fonction_confidence": "ca",
+            "name_original": "Sécurité: Personnel titulaire - Rémunération principale"
           },
           {
-            "name": "Sécurité: Personnel titulaire - Autres indemnités",
+            "name": "Sécurité: Indemnités du personnel titulaire",
             "value": 33614748.17,
             "fonction": "Police, sécurité, justice",
             "flow_category": "Personnel",
-            "fonction_confidence": "ca"
+            "fonction_confidence": "ca",
+            "name_original": "Sécurité: Personnel titulaire - Autres indemnités"
           },
           {
             "name": "Sécurité: Cotisations aux caisses de retraite",
@@ -6029,25 +6203,28 @@
             "fonction_confidence": "ca"
           },
           {
-            "name": "Sécurité: Personnel titulaire - Rémunération principale",
+            "name": "Sécurité: Rémunération du personnel titulaire",
             "value": 5402136.57,
             "fonction": "Services communs",
             "flow_category": "Personnel",
-            "fonction_confidence": "ca"
+            "fonction_confidence": "ca",
+            "name_original": "Sécurité: Personnel titulaire - Rémunération principale"
           },
           {
-            "name": "Sécurité: Personnel titulaire - Supplément familial de traitement et indemnité de résidence",
+            "name": "Sécurité: Supplément familial + indemnité de résidence",
             "value": 3120346.44,
             "fonction": "Police, sécurité, justice",
             "flow_category": "Personnel",
-            "fonction_confidence": "ca"
+            "fonction_confidence": "ca",
+            "name_original": "Sécurité: Personnel titulaire - Supplément familial de traitement et indemnité de résidence"
           },
           {
-            "name": "Sécurité: Personnel titulaire - Autres indemnités",
+            "name": "Sécurité: Indemnités du personnel titulaire",
             "value": 2668468.86,
             "fonction": "Services communs",
             "flow_category": "Personnel",
-            "fonction_confidence": "ca"
+            "fonction_confidence": "ca",
+            "name_original": "Sécurité: Personnel titulaire - Autres indemnités"
           },
           {
             "name": "Sécurité: Locations mobilières - Matériel roulant",
@@ -6057,11 +6234,12 @@
             "fonction_confidence": "ca"
           },
           {
-            "name": "Sécurité: Personnel titulaire - Rémunération principale",
+            "name": "Sécurité: Rémunération du personnel titulaire",
             "value": 2189606.84,
             "fonction": "Hygiène salubrité publiqu",
             "flow_category": "Personnel",
-            "fonction_confidence": "ca"
+            "fonction_confidence": "ca",
+            "name_original": "Sécurité: Personnel titulaire - Rémunération principale"
           },
           {
             "name": "Sécurité: Versement de transport",
@@ -6106,11 +6284,12 @@
             "fonction_confidence": "ca"
           },
           {
-            "name": "Sécurité: Personnel titulaire - Autres indemnités",
+            "name": "Sécurité: Indemnités du personnel titulaire",
             "value": 1108562.26,
             "fonction": "Hygiène salubrité publiqu",
             "flow_category": "Personnel",
-            "fonction_confidence": "ca"
+            "fonction_confidence": "ca",
+            "name_original": "Sécurité: Personnel titulaire - Autres indemnités"
           },
           {
             "name": "Sécurité: Autres charges de personnel",
@@ -6227,7 +6406,8 @@
             "value": 6032.07,
             "fonction": "Police, sécurité, justice",
             "flow_category": "Études",
-            "fonction_confidence": "ca"
+            "fonction_confidence": "ca",
+            "name_original": "Invest. Sécurité: Frais d'études"
           },
           {
             "name": "Invest. Sécurité: Cheptel",
@@ -6279,11 +6459,12 @@
             "fonction_confidence": "ca"
           },
           {
-            "name": "Transports: Personnel titulaire - Rémunération principale",
+            "name": "Transports: Rémunération du personnel titulaire",
             "value": 21704126.14,
             "fonction": "Voirie communale",
             "flow_category": "Personnel",
-            "fonction_confidence": "ca"
+            "fonction_confidence": "ca",
+            "name_original": "Transports: Personnel titulaire - Rémunération principale"
           },
           {
             "name": "Transports: Aides",
@@ -6307,11 +6488,12 @@
             "fonction_confidence": "ca"
           },
           {
-            "name": "Transports: Personnel titulaire - Autres indemnités",
+            "name": "Transports: Indemnités du personnel titulaire",
             "value": 10189872.47,
             "fonction": "Voirie communale",
             "flow_category": "Personnel",
-            "fonction_confidence": "ca"
+            "fonction_confidence": "ca",
+            "name_original": "Transports: Personnel titulaire - Autres indemnités"
           },
           {
             "name": "Transports: Taxes foncières",
@@ -6335,11 +6517,12 @@
             "fonction_confidence": "ca"
           },
           {
-            "name": "Transports: Personnel titulaire - Rémunération principale",
+            "name": "Transports: Rémunération du personnel titulaire",
             "value": 4584933.49,
             "fonction": "Halte fluv autre infra fl",
             "flow_category": "Personnel",
-            "fonction_confidence": "ca"
+            "fonction_confidence": "ca",
+            "name_original": "Transports: Personnel titulaire - Rémunération principale"
           },
           {
             "name": "Transports: Cotisations à l'U.R.S.S.A.F.",
@@ -6363,11 +6546,12 @@
             "fonction_confidence": "ca"
           },
           {
-            "name": "Transports: Personnel titulaire - Rémunération principale",
+            "name": "Transports: Rémunération du personnel titulaire",
             "value": 3105071.28,
             "fonction": "Services communs",
             "flow_category": "Personnel",
-            "fonction_confidence": "ca"
+            "fonction_confidence": "ca",
+            "name_original": "Transports: Personnel titulaire - Rémunération principale"
           },
           {
             "name": "Transports: Autres impôts locaux",
@@ -6377,11 +6561,12 @@
             "fonction_confidence": "ca"
           },
           {
-            "name": "Transports: Personnel titulaire - Autres indemnités",
+            "name": "Transports: Indemnités du personnel titulaire",
             "value": 1983792.03,
             "fonction": "Halte fluv autre infra fl",
             "flow_category": "Personnel",
-            "fonction_confidence": "ca"
+            "fonction_confidence": "ca",
+            "name_original": "Transports: Personnel titulaire - Autres indemnités"
           },
           {
             "name": "Transports: Locations mobilières - Matériel roulant",
@@ -6456,7 +6641,8 @@
             "value": 3078615.47,
             "fonction": "Transport ferroviaire",
             "flow_category": "Études",
-            "fonction_confidence": "ca"
+            "fonction_confidence": "ca",
+            "name_original": "Invest. Transports: Frais d'études"
           },
           {
             "name": "Invest. Transports: Installations, matériel et outillage techniques",
@@ -6484,7 +6670,8 @@
             "value": 1521740.97,
             "fonction": "Voirie communale",
             "flow_category": "Études",
-            "fonction_confidence": "ca"
+            "fonction_confidence": "ca",
+            "name_original": "Invest. Transports: Frais d'études"
           },
           {
             "name": "Invest. Transports: Autres immobilisations corporelles",
@@ -6505,7 +6692,8 @@
             "value": 692368.9,
             "fonction": "Circulations douces",
             "flow_category": "Études",
-            "fonction_confidence": "ca"
+            "fonction_confidence": "ca",
+            "name_original": "Invest. Transports: Frais d'études"
           },
           {
             "name": "Invest. Transports: Autres installations, matériel et outillage       techniques",

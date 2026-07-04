@@ -93,6 +93,21 @@ def main():
         
         print()  # Ligne vide après le script
     
+    # Post-traitement : libellés grand-public (seed_label_friendly.csv) appliqués
+    # à TOUS les JSON exportés. Doit tourner EN DERNIER, après que chaque export a
+    # (ré)écrit ses fichiers — sinon le Sankey ressort en jargon M57 brut.
+    log.section("[post] Libellés grand-public")
+    print()
+    friendly_path = Path(__file__).parent.parent / "audit" / "apply_friendly_labels.py"
+    start = time.time()
+    friendly_ok = False
+    try:
+        subprocess.run([sys.executable, str(friendly_path)], check=True)
+        friendly_ok = True
+    except Exception as e:
+        log.error("Échec apply_friendly_labels", extra=str(e))
+    results.append(("Libellés grand-public (post)", friendly_ok, time.time() - start))
+
     # Résumé final
     log.header("Résumé Export Complet")
     
