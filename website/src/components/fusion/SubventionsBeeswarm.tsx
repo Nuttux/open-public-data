@@ -1,0 +1,373 @@
+"use client";
+/**
+ * La nuée (v2 — courbe de rang) : chaque bénéficiaire de l'année est un
+ * point, classé du plus petit au plus grand montant (x = rang, y = montant
+ * sur échelle log). Contrairement au beeswarm, aucun chevauchement possible
+ * par construction — lisible à 6 000 points. Survol nomme le point, clic
+ * ouvre la fiche association (navigation douce → drawer).
+ *
+ * Données : le même index « slim » que l'explorateur (cache HTTP partagé),
+ * chargé paresseusement à l'approche de la section.
+ */
+import { useEffect, useMemo, useRef, useState } from "react";
+import { useRouter } from "next/navigation";
+import { useLocale, useT } from "@/lib/localeContext";
+
+type SearchIndexFile = {
+  years: number[];
+  count: number;
+  data: {
+    name: string;
+    norm: string;
+    theme: string | null;
+    byYear: Record<string, number>;
+  }[];
+};
+
+type Dot = {
+  name: string;
+  amount: number;
+  theme: string | null;
+  x: number;
+  y: number;
+  rank: number;
+  top10: boolean;
+};
+
+const fill = (s: string, vars: Record<string, string | number>) => {
+  let r = s;
+  for (const [k, v] of Object.entries(vars)) r = r.split(`{${k}}`).join(String(v));
+  return r;
+};
+
+function fmtEur(v: number, locale: string): string {
+  const loc = locale === "en" ? "en-GB" : "fr-FR";
+  if (v >= 1e6) {
+    const n = v / 1e6;
+    return `${n.toLocaleString(loc, { maximumFractionDigits: n >= 10 ? 0 : 1 })} M€`;
+  }
+  if (v >= 1e3) return `${Math.round(v / 1e3).toLocaleString(loc)} k€`;
+  return `${Math.round(v).toLocaleString(loc)} €`;
+}
+
+const PAD_L = 58;
+const PAD_R = 18;
+const PAD_T = 14;
+const AXIS_H = 30;
+
+export default function SubventionsBeeswarm({
+  year,
+  searchIndexUrl,
+  ficheBase,
+}: {
+  year: number;
+  searchIndexUrl: string;
+  /** e.g. /ville/paris/subventions — fiche = `${ficheBase}/association/${slug}` */
+  ficheBase: string;
+}) {
+  const t = useT();
+  const router = useRouter();
+  const { locale } = useLocale();
+  const wrapRef = useRef<HTMLDivElement>(null);
+  const canvasRef = useRef<HTMLCanvasElement>(null);
+  const [raw, setRaw] = useState<{ name: string; amount: number; theme: string | null }[] | null>(null);
+  const [failed, setFailed] = useState(false);
+  const [hover, setHover] = useState<Dot | null>(null);
+  const [tipPos, setTipPos] = useState<{ x: number; y: number }>({ x: 0, y: 0 });
+  const [size, setSize] = useState<{ w: number; h: number }>({ w: 0, h: 0 });
+  const fetchedRef = useRef(false);
+
+  // Lazy fetch when the section approaches the viewport.
+  useEffect(() => {
+    const el = wrapRef.current;
+    if (!el) return;
+    const io = new IntersectionObserver(
+      (entries) => {
+        if (!entries.some((e) => e.isIntersecting) || fetchedRef.current) return;
+        fetchedRef.current = true;
+        fetch(searchIndexUrl)
+          .then((r) => (r.ok ? r.json() : Promise.reject(new Error(String(r.status)))))
+          .then((json: SearchIndexFile) => {
+            const pts = json.data
+              .map((b) => ({ name: b.name, amount: b.byYear?.[String(year)] ?? 0, theme: b.theme }))
+              .filter((b) => b.amount > 0);
+            setRaw(pts);
+          })
+          .catch(() => setFailed(true));
+      },
+      { rootMargin: "600px" },
+    );
+    io.observe(el);
+    return () => io.disconnect();
+  }, [searchIndexUrl, year]);
+
+  // Track container width.
+  useEffect(() => {
+    const el = wrapRef.current;
+    if (!el) return;
+    const measure = () => {
+      const w = el.clientWidth;
+      setSize({ w, h: w > 640 ? 380 : 290 });
+    };
+    measure();
+    const ro = new ResizeObserver(measure);
+    ro.observe(el);
+    return () => ro.disconnect();
+  }, []);
+
+  const stats = useMemo(() => {
+    if (!raw || raw.length === 0) return null;
+    const sorted = raw.slice().sort((a, b) => a.amount - b.amount);
+    const median = sorted[Math.floor(sorted.length / 2)].amount;
+    const total = sorted.reduce((s, p) => s + p.amount, 0);
+    const top10 = sorted.slice(-10).reduce((s, p) => s + p.amount, 0);
+    return { median, total, top10Pct: total > 0 ? (top10 / total) * 100 : 0, count: sorted.length };
+  }, [raw]);
+
+  const scale = useMemo(() => {
+    if (!raw || raw.length === 0) return null;
+    const amounts = raw.map((p) => p.amount);
+    const min = Math.max(1, Math.min(...amounts));
+    const max = Math.max(...amounts);
+    return { logMin: Math.log10(min) - 0.06, logMax: Math.log10(max) + 0.12 };
+  }, [raw]);
+
+  const dots = useMemo<Dot[]>(() => {
+    if (!raw || raw.length === 0 || size.w === 0 || !scale) return [];
+    const sorted = raw.slice().sort((a, b) => a.amount - b.amount);
+    const n = sorted.length;
+    const plotW = size.w - PAD_L - PAD_R;
+    const plotH = size.h - PAD_T - AXIS_H;
+    return sorted.map((p, i) => ({
+      name: p.name,
+      amount: p.amount,
+      theme: p.theme,
+      x: PAD_L + (n > 1 ? (i / (n - 1)) * plotW : plotW / 2),
+      y:
+        PAD_T +
+        plotH -
+        ((Math.log10(Math.max(1, p.amount)) - scale.logMin) / (scale.logMax - scale.logMin)) * plotH,
+      rank: i + 1,
+      top10: i >= n - 10,
+    }));
+  }, [raw, size, scale]);
+
+  // Draw.
+  useEffect(() => {
+    const cv = canvasRef.current;
+    if (!cv || size.w === 0) return;
+    const dpr = window.devicePixelRatio || 1;
+    cv.width = Math.round(size.w * dpr);
+    cv.height = Math.round(size.h * dpr);
+    cv.style.height = `${size.h}px`;
+    const ctx = cv.getContext("2d");
+    if (!ctx) return;
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    ctx.clearRect(0, 0, size.w, size.h);
+    if (dots.length === 0 || !scale || !stats) return;
+
+    const plotH = size.h - PAD_T - AXIS_H;
+    const yFor = (v: number) =>
+      PAD_T + plotH - ((Math.log10(v) - scale.logMin) / (scale.logMax - scale.logMin)) * plotH;
+
+    // Horizontal gridlines at powers of ten (montants).
+    ctx.font = "10.5px var(--f-mono), monospace";
+    const ticks = [1e2, 1e3, 1e4, 1e5, 1e6, 1e7, 1e8].filter(
+      (v) => Math.log10(v) > scale.logMin && Math.log10(v) < scale.logMax,
+    );
+    for (const v of ticks) {
+      const ty = yFor(v);
+      ctx.strokeStyle = "#eceade";
+      ctx.beginPath();
+      ctx.moveTo(PAD_L, ty);
+      ctx.lineTo(size.w - PAD_R, ty);
+      ctx.stroke();
+      ctx.fillStyle = "#5f6672";
+      ctx.fillText(fmtEur(v, locale), 8, ty + 3.5);
+    }
+    // Baseline.
+    ctx.strokeStyle = "#e4e6ea";
+    ctx.beginPath();
+    ctx.moveTo(PAD_L, size.h - AXIS_H + 4);
+    ctx.lineTo(size.w - PAD_R, size.h - AXIS_H + 4);
+    ctx.stroke();
+    ctx.fillStyle = "#5f6672";
+    ctx.fillText(t("fx.qr.swarm.xaxis"), PAD_L, size.h - 10);
+
+    // Median marker: the exact middle of the rank axis, labelled where the
+    // dashed line meets the curve.
+    const mx = PAD_L + 0.5 * (size.w - PAD_L - PAD_R);
+    const yMed = yFor(Math.max(1, stats.median));
+    ctx.strokeStyle = "#c12323";
+    ctx.setLineDash([4, 3]);
+    ctx.beginPath();
+    ctx.moveTo(mx, yMed - 8);
+    ctx.lineTo(mx, size.h - AXIS_H + 4);
+    ctx.stroke();
+    ctx.setLineDash([]);
+    const label = fill(t("fx.qr.swarm.median_label"), { amount: fmtEur(stats.median, locale) });
+    ctx.font = "600 11.5px var(--f-ui), sans-serif";
+    const tw = ctx.measureText(label).width;
+    const lx = Math.min(mx - tw / 2, size.w - tw - 12);
+    const ly = Math.max(PAD_T + 10, yMed - 16);
+    ctx.fillStyle = "rgba(250,250,247,.92)";
+    ctx.fillRect(lx - 3, ly - 12, tw + 8, 16);
+    ctx.fillStyle = "#c12323";
+    ctx.fillText(label, lx, ly);
+
+    // Dots — drawn after grid so they sit on top.
+    for (const d of dots) {
+      const isHover = hover?.name === d.name;
+      ctx.globalAlpha = d.top10 ? 0.95 : 0.55;
+      ctx.fillStyle = isHover ? "#1e45e4" : d.top10 ? "#c12323" : "#2a3680";
+      ctx.beginPath();
+      ctx.arc(d.x, d.y, isHover ? 4.5 : d.top10 ? 3.4 : 1.6, 0, Math.PI * 2);
+      ctx.fill();
+    }
+    ctx.globalAlpha = 1;
+
+    // In-graph annotations: the top-10 share, and the #1 beneficiary named.
+    const n = dots.length;
+    if (n > 10) {
+      const first10 = dots[n - 10];
+      const biggest = dots[n - 1];
+      const yMid = (first10.y + biggest.y) / 2 + 14;
+      const a10 = fill(t("fx.qr.swarm.top10_label"), { pct: Math.round(stats.top10Pct) });
+      ctx.font = "600 11.5px var(--f-ui), sans-serif";
+      const w10 = ctx.measureText(a10).width;
+      const x10 = Math.max(PAD_L + 8, size.w - PAD_R - w10 - 26);
+      ctx.fillStyle = "rgba(250,250,247,.92)";
+      ctx.fillRect(x10 - 3, yMid - 12, w10 + 8, 16);
+      ctx.fillStyle = "#c12323";
+      ctx.fillText(a10, x10, yMid);
+
+      const shortName =
+        biggest.name.length > 24 ? `${biggest.name.slice(0, 23)}…` : biggest.name;
+      const a1 = `${shortName} · ${fmtEur(biggest.amount, locale)}`;
+      ctx.font = "700 11.5px var(--f-ui), sans-serif";
+      const w1 = ctx.measureText(a1).width;
+      const x1 = Math.max(PAD_L + 8, biggest.x - w1 - 12);
+      const y1 = Math.max(PAD_T + 10, biggest.y + 4);
+      ctx.fillStyle = "rgba(250,250,247,.92)";
+      ctx.fillRect(x1 - 3, y1 - 12, w1 + 8, 16);
+      ctx.fillStyle = "#0a0a0a";
+      ctx.fillText(a1, x1, y1);
+    }
+  }, [dots, size, hover, stats, scale, locale, t]);
+
+  const nearest = (clientX: number, clientY: number): Dot | null => {
+    const cv = canvasRef.current;
+    if (!cv) return null;
+    const rect = cv.getBoundingClientRect();
+    const mx = clientX - rect.left;
+    const my = clientY - rect.top;
+    let best: Dot | null = null;
+    let bd = 140;
+    for (const d of dots) {
+      const dx = d.x - mx;
+      const dy = d.y - my;
+      const dist = dx * dx + dy * dy;
+      if (dist < bd) {
+        bd = dist;
+        best = d;
+      }
+    }
+    return best;
+  };
+
+  return (
+    <div ref={wrapRef} style={{ position: "relative" }}>
+      {!raw && !failed && (
+        <div
+          style={{
+            height: size.h || 300,
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            color: "var(--muted)",
+            fontFamily: "var(--f-mono)",
+            fontSize: 12,
+            border: "1px dashed var(--rule)",
+          }}
+        >
+          {t("fx.qr.swarm.loading")}
+        </div>
+      )}
+      {failed && (
+        <div style={{ padding: "18px 0", color: "var(--muted)", fontSize: 14 }}>
+          {t("fx.qr.swarm.error")}
+        </div>
+      )}
+      {raw && !failed && (
+        <>
+          <canvas
+            ref={canvasRef}
+            role="img"
+            aria-label={fill(t("fx.qr.swarm.aria"), { count: stats?.count ?? 0, year })}
+            style={{ display: "block", width: "100%", cursor: hover ? "pointer" : "default" }}
+            onMouseMove={(e) => {
+              const d = nearest(e.clientX, e.clientY);
+              setHover(d);
+              if (d) {
+                const rect = wrapRef.current!.getBoundingClientRect();
+                setTipPos({ x: e.clientX - rect.left, y: e.clientY - rect.top });
+              }
+            }}
+            onMouseLeave={() => setHover(null)}
+            onClick={(e) => {
+              const d = nearest(e.clientX, e.clientY);
+              if (d) {
+                router.push(`${ficheBase}/association/${encodeURIComponent(d.name)}`, {
+                  scroll: false,
+                });
+              }
+            }}
+          />
+          {hover && (
+            <div
+              style={{
+                position: "absolute",
+                left: Math.min(Math.max(tipPos.x - 110, 0), Math.max(0, size.w - 230)),
+                top: tipPos.y + 18,
+                width: 220,
+                background: "var(--ink)",
+                color: "var(--bg)",
+                padding: "8px 10px",
+                pointerEvents: "none",
+                zIndex: 4,
+              }}
+            >
+              <div
+                style={{
+                  fontFamily: "var(--f-ui)",
+                  fontWeight: 700,
+                  fontSize: 12.5,
+                  lineHeight: 1.3,
+                  overflow: "hidden",
+                  display: "-webkit-box",
+                  WebkitLineClamp: 2,
+                  WebkitBoxOrient: "vertical",
+                }}
+              >
+                {hover.name}
+              </div>
+              <div style={{ fontFamily: "var(--f-mono)", fontSize: 12, marginTop: 3 }}>
+                {fmtEur(hover.amount, locale)}
+                <span style={{ opacity: 0.65 }}>
+                  {" · "}
+                  {fill(t("fx.qr.swarm.tip_rank"), {
+                    rank: hover.rank.toLocaleString(locale === "en" ? "en-GB" : "fr-FR"),
+                    count: (stats?.count ?? 0).toLocaleString(locale === "en" ? "en-GB" : "fr-FR"),
+                  })}
+                </span>
+              </div>
+              <div style={{ fontFamily: "var(--f-mono)", fontSize: 10, marginTop: 3, opacity: 0.75 }}>
+                {t("fx.qr.swarm.tip_click")}
+              </div>
+            </div>
+          )}
+        </>
+      )}
+    </div>
+  );
+}

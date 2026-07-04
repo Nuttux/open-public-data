@@ -18,6 +18,7 @@ import Tip from "@/components/fusion/Tip";
 import BudgetTimeline from "@/components/fusion/BudgetTimeline";
 import StackedBarTheme from "@/components/fusion/StackedBarTheme";
 import QuiRecoitExplorer from "./QuiRecoitExplorer";
+import SubventionsBeeswarm from "@/components/fusion/SubventionsBeeswarm";
 import RelatedArticles, { type ArticlePlaceholder } from "@/components/fusion/RelatedArticles";
 import PageHook from "@/components/fusion/PageHook";
 import { fmtBillions, fmtDec, fmtInt, fmtMillions } from "@/lib/fmt";
@@ -62,6 +63,10 @@ export default function QuiRecoitClient({
   const pathname = usePathname();
   const citySlug = citySlugFromPathname(pathname);
   const cityBasePath = `/ville/${citySlug}/subventions`;
+  const swarmIndexUrl =
+    citySlug === "paris"
+      ? "/data/subventions/beneficiaires_search.json"
+      : `/data/${citySlug}/subventions/beneficiaires_search.json`;
   const cityBudgetPath = `/ville/${citySlug}/budget`;
   const cityMarchesPath = `/ville/${citySlug}/marches`;
   const cityLogementPath = "/ville/paris/logement";
@@ -76,6 +81,7 @@ export default function QuiRecoitClient({
 
       <PageTOC
         items={[
+          { id: "sec-nuee", label: t("fx.toc.nuee") },
           { id: "sec-overview", label: t("fx.toc.chiffres") },
           { id: "sec-themes", label: t("fx.toc.themes") },
           { id: "sec-top-benef", label: t("fx.toc.top_benef") },
@@ -155,10 +161,36 @@ export default function QuiRecoitClient({
         );
       })()}
 
-      <section className="fx-section" id="sec-overview">
+      <section className="fx-section" id="sec-nuee">
         <div className="fx-wrap">
           <SectionHead
             number="01"
+            kind={t("fx.qr.swarm.kind")}
+            title={
+              <>
+                {t("fx.qr.swarm.title.before")}
+                <em>{t("fx.qr.swarm.title.em")}</em>
+                {t("fx.qr.swarm.title.after")}
+              </>
+            }
+            subtitle={fill(t("fx.qr.swarm.sub"), { year: d.year, nb: fmtInt(d.nbBeneficiaires) })}
+          />
+          <SubventionsBeeswarm year={d.year} searchIndexUrl={swarmIndexUrl} ficheBase={cityBasePath} />
+          <p className="fx-sec-sub" style={{ marginTop: 10 }}>
+            {fill(t("fx.qr.swarm.caption"), { concentr: Math.round(d.concentrationTop10Pct) })}
+          </p>
+          <ChartSource
+            source={fill(t("fx.qr.s02.source.cite"), { year: d.year })}
+            dataHref="https://opendata.paris.fr/explore/dataset/subventions-versees-annexe-compte-administratif-a-partir-de-2018/"
+            methodAnchor="subventions"
+          />
+        </div>
+      </section>
+
+      <section className="fx-section" id="sec-overview">
+        <div className="fx-wrap">
+          <SectionHead
+            number="02"
             kind={t("fx.qr.s01.kind")}
             title={
               <>
@@ -234,7 +266,7 @@ export default function QuiRecoitClient({
       <section className="fx-section" id="sec-themes">
         <div className="fx-wrap">
           <SectionHead
-            number="02"
+            number="03"
             kind={<Tip label={t("fx.qr.s02.kind.tip")}>{t("fx.qr.s02.kind")}</Tip>}
             title={
               <>
