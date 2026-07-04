@@ -625,3 +625,14 @@ models:
       - name: ode_categorie_flux
         description: "Catégorie de flux dérivée de nature_code (Personnel, Achats, Subventions, etc.)"
         tests: [not_null]
+
+  - name: mart_logement_sru
+    description: "Taux SRU par arrondissement et par année (2001-2019, APUR). Contrat pour l'export logement_sru_arrondissements.json."
+    columns:
+      - name: arrondissement
+        tests:
+          - not_null
+      - name: taux_sru_pct
+        description: "100 × logements_sociaux / residences_principales, arrondi à 0,1 pt"
+        tests:
+          - not_null

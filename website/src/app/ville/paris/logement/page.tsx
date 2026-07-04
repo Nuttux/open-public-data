@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import "@/app/fusion.css";
-import { loadLogementSocialData } from "@/lib/fusion-data";
+import { loadLogementSocialData, loadSruArrondissements } from "@/lib/fusion-data";
 import { getPostsForPage } from "@/lib/page-articles";
 import { buildLocaleAwareMetadata } from "@/lib/seo";
 import LogementSocialClient from "./LogementSocialClient";
@@ -27,6 +27,7 @@ export default async function LogementSocialPage({
   const sp = await searchParams;
   const requestedYear = sp.year ? Number(sp.year) : undefined;
   const d = loadLogementSocialData(requestedYear);
+  const sruArr = loadSruArrondissements();
   const posts = getPostsForPage("logement-social");
-  return <LogementSocialClient d={d} posts={posts} />;
+  return <LogementSocialClient d={d} sruArr={sruArr} posts={posts} />;
 }

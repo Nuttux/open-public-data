@@ -658,3 +658,23 @@ models:
         tests:
           - not_null
           - unique
+
+  - name: stg_apur_sru
+    description: "Inventaire SRU par arrondissement 2001-2019 (APUR, licence ODbL). Seed figé — dernière ventilation infra-communale publiée en open data."
+    columns:
+      - name: arrondissement
+        description: "Numéro d'arrondissement (1-20)"
+        tests:
+          - not_null
+      - name: annee
+        description: "Année de l'inventaire SRU (au 1er janvier)"
+        tests:
+          - not_null
+      - name: logements_sociaux
+        description: "Logements sociaux comptabilisés au sens de la loi SRU"
+        tests:
+          - not_null
+      - name: residences_principales
+        description: "Résidences principales au sens SRU (dénominateur DGFiP)"
+        tests:
+          - not_null

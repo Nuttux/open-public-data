@@ -2330,6 +2330,20 @@ const en: Record<string, string> = {
   'fx.det.hb.r5.e': "Vélib', Autolib', Bikes commitments", 'fx.det.hb.r5.ent': 'Syndicate / concession holders', 'fx.det.hb.r5.v': '≈ €200M',
 
   // ── Logement social page ─────────────────────────────────────────────────────
+  // ── Housing · SRU by arrondissement ────────────────────────────────────────
+  'fx.toc.sruarr': 'By arrondissement',
+  'fx.log.sruarr.kind': 'the 25% line',
+  'fx.log.sruarr.title.before': 'The ',
+  'fx.log.sruarr.title.em': '25% line',
+  'fx.log.sruarr.title.after': ', arrondissement by arrondissement.',
+  'fx.log.sruarr.sub': 'Each bar measures the distance to the {target}% legal threshold — SRU inventory as of 1 January {year}, the latest per-arrondissement breakdown published. Click a bar to open the profile.',
+  'fx.log.sruarr.target_label': '{target}% (SRU law)',
+  'fx.log.sruarr.note': 'The SRU law applies to the commune as a whole — the 25% line is a reading anchor here, not a per-arrondissement obligation. Paris-wide, the most recent official rate is {ratio}% ({ratioYear}); the breakdown above is the {dataYear} vintage, the latest published as open data (APUR).',
+  'fx.log.sruarr.vintage': 'SRU inventory · 1 January {year}',
+  'fx.log.sruarr.legend.below': 'below {target}%',
+  'fx.log.sruarr.legend.above': 'above {target}%',
+  'fx.log.sruarr.legend.past': 'rate in {year}',
+  'fx.log.sruarr.source.cite': 'APUR · Social housing figures 2001-2019 (SRU inventory, ODbL licence)',
   'fx.log.kicker': '06 · Social housing',
   'fx.log.hook.aria': 'City social-housing production and demand pressure',
   'fx.log.hook.kicker': 'City output · {year}',

@@ -4,6 +4,7 @@ import { usePathname } from "next/navigation";
 import Navbar from "@/components/fusion/Navbar";
 import Footer from "@/components/fusion/Footer";
 import SectionHead from "@/components/fusion/SectionHead";
+import SruDeviationBars from "@/components/fusion/SruDeviationBars";
 import HeroNumber from "@/components/fusion/HeroNumber";
 import KPIGrid from "@/components/fusion/KPIGrid";
 import AnimatedNumber from "@/components/fusion/AnimatedNumber";
@@ -20,7 +21,7 @@ import RelatedArticles, { type ArticlePlaceholder } from "@/components/fusion/Re
 import PageHook from "@/components/fusion/PageHook";
 import { fmtDec, fmtInt } from "@/lib/fmt";
 import type { BlogPostMeta } from "@/lib/blog";
-import type { LogementSocialData } from "@/lib/fusion-data";
+import type { LogementSocialData, SruArrondissementsData } from "@/lib/fusion-data";
 import { useT, useLocale } from "@/lib/localeContext";
 import { trLabel } from "@/lib/label-translate";
 import { slugifyBailleur } from "@/lib/projet-utils";
@@ -113,9 +114,11 @@ const LOG_PLACEHOLDERS: ArticlePlaceholder[] = [
 
 export default function LogementSocialClient({
   d,
+  sruArr,
   posts,
 }: {
   d: LogementSocialData;
+  sruArr: SruArrondissementsData | null;
   posts: BlogPostMeta[];
 }) {
   const t = useT();
@@ -141,6 +144,7 @@ export default function LogementSocialClient({
       <PageTOC
         items={[
           { id: "sec-sru", label: t("fx.toc.sru") },
+          { id: "sec-sru-arr", label: t("fx.toc.sruarr") },
           ...(hasBailleurs ? [{ id: "sec-bailleurs", label: t("fx.toc.bailleurs") }] : []),
           { id: "sec-territoire", label: t("fx.log.s02.kind") },
           { id: "sec-production", label: t("fx.toc.production") },
@@ -288,6 +292,45 @@ export default function LogementSocialClient({
         </div>
       </section>
 
+      {sruArr && (
+        <section className="fx-section" id="sec-sru-arr">
+          <div className="fx-wrap">
+            <SectionHead
+              number="02"
+              kind={t("fx.log.sruarr.kind")}
+              title={
+                <>
+                  {t("fx.log.sruarr.title.before")}
+                  <em>{t("fx.log.sruarr.title.em")}</em>
+                  {t("fx.log.sruarr.title.after")}
+                </>
+              }
+              subtitle={fill(t("fx.log.sruarr.sub"), { year: sruArr.latest_year, target: d.sruTarget })}
+            />
+            <SruDeviationBars
+              rows={sruArr.arrondissements.map((a) => ({
+                arr: a.arr,
+                label: a.label,
+                tauxPct: a.latest.taux_pct,
+                href: `/ville/paris/logement/arrondissement/${a.arr}`,
+                title: `${fmtInt(a.latest.logements_sociaux)} logements sociaux / ${fmtInt(a.latest.residences_principales)} résidences principales (${a.latest.year})`,
+              }))}
+              targetPct={d.sruTarget}
+              targetLabel={fill(t("fx.log.sruarr.target_label"), { target: d.sruTarget })}
+              vintageLabel={fill(t("fx.log.sruarr.vintage"), { year: sruArr.latest_year })}
+              legendBelow={fill(t("fx.log.sruarr.legend.below"), { target: d.sruTarget })}
+              legendAbove={fill(t("fx.log.sruarr.legend.above"), { target: d.sruTarget })}
+            />
+            <p className="fx-note">{fill(t("fx.log.sruarr.note"), { ratio: fmtDec(d.sruRatio, 1), ratioYear: d.sruYear, dataYear: sruArr.latest_year })}</p>
+            <ChartSource
+              source={t("fx.log.sruarr.source.cite")}
+              dataHref="https://opendata.apur.org/datasets/Apur::logement-social20012019"
+              methodAnchor="logement"
+            />
+          </div>
+        </section>
+      )}
+
       {/* §02 — Bailleurs (Paris : cards cliquables vers /dette/bailleur ;
           autres villes : cards rendues comme blocs simples — pas de routes
           drill-down en POC). */}
@@ -295,7 +338,7 @@ export default function LogementSocialClient({
         <section className="fx-section" id="sec-bailleurs">
           <div className="fx-wrap">
             <SectionHead
-              number="02"
+              number="03"
               kind={<Tip label={t("fx.log.bailleur.tip")}>{t("fx.log.s03.kind")}</Tip>}
               title={
                 <>
@@ -345,7 +388,7 @@ export default function LogementSocialClient({
       <section className="fx-section" id="sec-territoire">
         <div className="fx-wrap">
           <SectionHead
-            number="03"
+            number="04"
             kind={<Tip label={t("fx.log.s02.kind.tip")}>{t("fx.log.s02.kind")}</Tip>}
             title={
               <>
@@ -411,7 +454,7 @@ export default function LogementSocialClient({
       <section className="fx-section" id="sec-production">
         <div className="fx-wrap">
           <SectionHead
-            number="04"
+            number="05"
             kind={<Tip label={t("fx.log.s04.kind.tip")}>{t("fx.log.s04.kind")}</Tip>}
             title={
               <>
@@ -465,7 +508,7 @@ export default function LogementSocialClient({
         <section className="fx-section" id="sec-tension">
           <div className="fx-wrap">
             <SectionHead
-              number="05"
+              number="06"
               kind={t("fx.log.tension.kind")}
               title={
                 <>
@@ -521,7 +564,7 @@ export default function LogementSocialClient({
         <section className="fx-section" id="sec-tension-arr">
           <div className="fx-wrap">
             <SectionHead
-              number="06"
+              number="07"
               kind={t("fx.log.s06b.kind")}
               title={
                 <>
@@ -547,12 +590,12 @@ export default function LogementSocialClient({
         </section>
       )}
 
-      <RelatedArticles number="07" posts={posts} placeholders={LOG_PLACEHOLDERS} />
+      <RelatedArticles number="08" posts={posts} placeholders={LOG_PLACEHOLDERS} />
 
       {/* §08 — Sources & exports */}
       <section className="fx-section" id="sec-explorer">
         <div className="fx-wrap">
-          <SectionHead number="08" kind={t("fx.log.s06.kind")} />
+          <SectionHead number="09" kind={t("fx.log.s06.kind")} />
           <div className="fx-grid-tiles">
             <TileCard
               href={`/ville/${citySlug}/investissements`}

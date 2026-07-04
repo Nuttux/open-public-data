@@ -1,0 +1,2530 @@
+{
+  "generated_at": "2026-07-04T22:43:56.789262+00:00",
+  "source": "APUR - Chiffres du logement social 2001-2019 (inventaire SRU au 1er janvier)",
+  "source_url": "https://opendata.apur.org/datasets/Apur::logement-social20012019",
+  "licence": "ODbL",
+  "latest_year": 2019,
+  "note": "Dernière ventilation par arrondissement publiée en open data. Le taux communal officiel plus récent (data.gouv, inventaire SRU) n'est pas ventilé par arrondissement.",
+  "arrondissements": [
+    {
+      "arr": 1,
+      "label": "1er",
+      "latest": {
+        "year": 2019,
+        "logements_sociaux": 1126,
+        "residences_principales": 10015,
+        "taux_pct": 11.2
+      },
+      "series": [
+        {
+          "year": 2001,
+          "logements_sociaux": 446,
+          "residences_principales": 10498,
+          "taux_pct": 4.2
+        },
+        {
+          "year": 2002,
+          "logements_sociaux": 444,
+          "residences_principales": 10519,
+          "taux_pct": 4.2
+        },
+        {
+          "year": 2003,
+          "logements_sociaux": 444,
+          "residences_principales": 10364,
+          "taux_pct": 4.3
+        },
+        {
+          "year": 2004,
+          "logements_sociaux": 444,
+          "residences_principales": 10292,
+          "taux_pct": 4.3
+        },
+        {
+          "year": 2005,
+          "logements_sociaux": 488,
+          "residences_principales": 10345,
+          "taux_pct": 4.7
+        },
+        {
+          "year": 2006,
+          "logements_sociaux": 513,
+          "residences_principales": 10234,
+          "taux_pct": 5.0
+        },
+        {
+          "year": 2007,
+          "logements_sociaux": 513,
+          "residences_principales": 10238,
+          "taux_pct": 5.0
+        },
+        {
+          "year": 2008,
+          "logements_sociaux": 519,
+          "residences_principales": 10066,
+          "taux_pct": 5.2
+        },
+        {
+          "year": 2009,
+          "logements_sociaux": 733,
+          "residences_principales": 10102,
+          "taux_pct": 7.3
+        },
+        {
+          "year": 2010,
+          "logements_sociaux": 735,
+          "residences_principales": 10150,
+          "taux_pct": 7.2
+        },
+        {
+          "year": 2011,
+          "logements_sociaux": 736,
+          "residences_principales": 10060,
+          "taux_pct": 7.3
+        },
+        {
+          "year": 2012,
+          "logements_sociaux": 847,
+          "residences_principales": 10067,
+          "taux_pct": 8.4
+        },
+        {
+          "year": 2013,
+          "logements_sociaux": 848,
+          "residences_principales": 9846,
+          "taux_pct": 8.6
+        },
+        {
+          "year": 2014,
+          "logements_sociaux": 906,
+          "residences_principales": 9632,
+          "taux_pct": 9.4
+        },
+        {
+          "year": 2015,
+          "logements_sociaux": 1039,
+          "residences_principales": 10037,
+          "taux_pct": 10.4
+        },
+        {
+          "year": 2016,
+          "logements_sociaux": 1095,
+          "residences_principales": 9946,
+          "taux_pct": 11.0
+        },
+        {
+          "year": 2017,
+          "logements_sociaux": 1108,
+          "residences_principales": 9953,
+          "taux_pct": 11.1
+        },
+        {
+          "year": 2018,
+          "logements_sociaux": 1108,
+          "residences_principales": 9921,
+          "taux_pct": 11.2
+        },
+        {
+          "year": 2019,
+          "logements_sociaux": 1126,
+          "residences_principales": 10015,
+          "taux_pct": 11.2
+        }
+      ]
+    },
+    {
+      "arr": 2,
+      "label": "2e",
+      "latest": {
+        "year": 2019,
+        "logements_sociaux": 808,
+        "residences_principales": 13650,
+        "taux_pct": 5.9
+      },
+      "series": [
+        {
+          "year": 2001,
+          "logements_sociaux": 207,
+          "residences_principales": 13214,
+          "taux_pct": 1.6
+        },
+        {
+          "year": 2002,
+          "logements_sociaux": 266,
+          "residences_principales": 13164,
+          "taux_pct": 2.0
+        },
+        {
+          "year": 2003,
+          "logements_sociaux": 262,
+          "residences_principales": 13226,
+          "taux_pct": 2.0
+        },
+        {
+          "year": 2004,
+          "logements_sociaux": 284,
+          "residences_principales": 13045,
+          "taux_pct": 2.2
+        },
+        {
+          "year": 2005,
+          "logements_sociaux": 361,
+          "residences_principales": 13169,
+          "taux_pct": 2.7
+        },
+        {
+          "year": 2006,
+          "logements_sociaux": 382,
+          "residences_principales": 13118,
+          "taux_pct": 2.9
+        },
+        {
+          "year": 2007,
+          "logements_sociaux": 421,
+          "residences_principales": 13083,
+          "taux_pct": 3.2
+        },
+        {
+          "year": 2008,
+          "logements_sociaux": 429,
+          "residences_principales": 12928,
+          "taux_pct": 3.3
+        },
+        {
+          "year": 2009,
+          "logements_sociaux": 449,
+          "residences_principales": 13220,
+          "taux_pct": 3.4
+        },
+        {
+          "year": 2010,
+          "logements_sociaux": 525,
+          "residences_principales": 12853,
+          "taux_pct": 4.1
+        },
+        {
+          "year": 2011,
+          "logements_sociaux": 586,
+          "residences_principales": 12886,
+          "taux_pct": 4.5
+        },
+        {
+          "year": 2012,
+          "logements_sociaux": 597,
+          "residences_principales": 13072,
+          "taux_pct": 4.6
+        },
+        {
+          "year": 2013,
+          "logements_sociaux": 628,
+          "residences_principales": 13221,
+          "taux_pct": 4.8
+        },
+        {
+          "year": 2014,
+          "logements_sociaux": 723,
+          "residences_principales": 13213,
+          "taux_pct": 5.5
+        },
+        {
+          "year": 2015,
+          "logements_sociaux": 745,
+          "residences_principales": 13358,
+          "taux_pct": 5.6
+        },
+        {
+          "year": 2016,
+          "logements_sociaux": 745,
+          "residences_principales": 13320,
+          "taux_pct": 5.6
+        },
+        {
+          "year": 2017,
+          "logements_sociaux": 759,
+          "residences_principales": 13167,
+          "taux_pct": 5.8
+        },
+        {
+          "year": 2018,
+          "logements_sociaux": 788,
+          "residences_principales": 13200,
+          "taux_pct": 6.0
+        },
+        {
+          "year": 2019,
+          "logements_sociaux": 808,
+          "residences_principales": 13650,
+          "taux_pct": 5.9
+        }
+      ]
+    },
+    {
+      "arr": 3,
+      "label": "3e",
+      "latest": {
+        "year": 2019,
+        "logements_sociaux": 1706,
+        "residences_principales": 20635,
+        "taux_pct": 8.3
+      },
+      "series": [
+        {
+          "year": 2001,
+          "logements_sociaux": 588,
+          "residences_principales": 21334,
+          "taux_pct": 2.8
+        },
+        {
+          "year": 2002,
+          "logements_sociaux": 589,
+          "residences_principales": 21097,
+          "taux_pct": 2.8
+        },
+        {
+          "year": 2003,
+          "logements_sociaux": 632,
+          "residences_principales": 21015,
+          "taux_pct": 3.0
+        },
+        {
+          "year": 2004,
+          "logements_sociaux": 720,
+          "residences_principales": 20965,
+          "taux_pct": 3.4
+        },
+        {
+          "year": 2005,
+          "logements_sociaux": 720,
+          "residences_principales": 20927,
+          "taux_pct": 3.4
+        },
+        {
+          "year": 2006,
+          "logements_sociaux": 815,
+          "residences_principales": 20920,
+          "taux_pct": 3.9
+        },
+        {
+          "year": 2007,
+          "logements_sociaux": 852,
+          "residences_principales": 20273,
+          "taux_pct": 4.2
+        },
+        {
+          "year": 2008,
+          "logements_sociaux": 862,
+          "residences_principales": 20037,
+          "taux_pct": 4.3
+        },
+        {
+          "year": 2009,
+          "logements_sociaux": 1091,
+          "residences_principales": 20425,
+          "taux_pct": 5.3
+        },
+        {
+          "year": 2010,
+          "logements_sociaux": 1099,
+          "residences_principales": 20380,
+          "taux_pct": 5.4
+        },
+        {
+          "year": 2011,
+          "logements_sociaux": 1252,
+          "residences_principales": 20193,
+          "taux_pct": 6.2
+        },
+        {
+          "year": 2012,
+          "logements_sociaux": 1267,
+          "residences_principales": 20548,
+          "taux_pct": 6.2
+        },
+        {
+          "year": 2013,
+          "logements_sociaux": 1291,
+          "residences_principales": 20677,
+          "taux_pct": 6.2
+        },
+        {
+          "year": 2014,
+          "logements_sociaux": 1352,
+          "residences_principales": 20598,
+          "taux_pct": 6.6
+        },
+        {
+          "year": 2015,
+          "logements_sociaux": 1494,
+          "residences_principales": 20311,
+          "taux_pct": 7.4
+        },
+        {
+          "year": 2016,
+          "logements_sociaux": 1638,
+          "residences_principales": 19892,
+          "taux_pct": 8.2
+        },
+        {
+          "year": 2017,
+          "logements_sociaux": 1667,
+          "residences_principales": 19988,
+          "taux_pct": 8.3
+        },
+        {
+          "year": 2018,
+          "logements_sociaux": 1702,
+          "residences_principales": 20109,
+          "taux_pct": 8.5
+        },
+        {
+          "year": 2019,
+          "logements_sociaux": 1706,
+          "residences_principales": 20635,
+          "taux_pct": 8.3
+        }
+      ]
+    },
+    {
+      "arr": 4,
+      "label": "4e",
+      "latest": {
+        "year": 2019,
+        "logements_sociaux": 2446,
+        "residences_principales": 16864,
+        "taux_pct": 14.5
+      },
+      "series": [
+        {
+          "year": 2001,
+          "logements_sociaux": 1100,
+          "residences_principales": 18637,
+          "taux_pct": 5.9
+        },
+        {
+          "year": 2002,
+          "logements_sociaux": 1183,
+          "residences_principales": 18741,
+          "taux_pct": 6.3
+        },
+        {
+          "year": 2003,
+          "logements_sociaux": 1147,
+          "residences_principales": 18089,
+          "taux_pct": 6.3
+        },
+        {
+          "year": 2004,
+          "logements_sociaux": 1147,
+          "residences_principales": 17994,
+          "taux_pct": 6.4
+        },
+        {
+          "year": 2005,
+          "logements_sociaux": 1186,
+          "residences_principales": 17665,
+          "taux_pct": 6.7
+        },
+        {
+          "year": 2006,
+          "logements_sociaux": 1194,
+          "residences_principales": 17523,
+          "taux_pct": 6.8
+        },
+        {
+          "year": 2007,
+          "logements_sociaux": 1205,
+          "residences_principales": 17030,
+          "taux_pct": 7.1
+        },
+        {
+          "year": 2008,
+          "logements_sociaux": 1206,
+          "residences_principales": 17024,
+          "taux_pct": 7.1
+        },
+        {
+          "year": 2009,
+          "logements_sociaux": 1382,
+          "residences_principales": 17049,
+          "taux_pct": 8.1
+        },
+        {
+          "year": 2010,
+          "logements_sociaux": 1440,
+          "residences_principales": 16894,
+          "taux_pct": 8.5
+        },
+        {
+          "year": 2011,
+          "logements_sociaux": 1505,
+          "residences_principales": 16690,
+          "taux_pct": 9.0
+        },
+        {
+          "year": 2012,
+          "logements_sociaux": 1909,
+          "residences_principales": 16644,
+          "taux_pct": 11.5
+        },
+        {
+          "year": 2013,
+          "logements_sociaux": 1987,
+          "residences_principales": 16626,
+          "taux_pct": 12.0
+        },
+        {
+          "year": 2014,
+          "logements_sociaux": 2049,
+          "residences_principales": 16571,
+          "taux_pct": 12.4
+        },
+        {
+          "year": 2015,
+          "logements_sociaux": 2134,
+          "residences_principales": 16459,
+          "taux_pct": 13.0
+        },
+        {
+          "year": 2016,
+          "logements_sociaux": 2300,
+          "residences_principales": 16273,
+          "taux_pct": 14.1
+        },
+        {
+          "year": 2017,
+          "logements_sociaux": 2300,
+          "residences_principales": 16539,
+          "taux_pct": 13.9
+        },
+        {
+          "year": 2018,
+          "logements_sociaux": 2354,
+          "residences_principales": 16510,
+          "taux_pct": 14.3
+        },
+        {
+          "year": 2019,
+          "logements_sociaux": 2446,
+          "residences_principales": 16864,
+          "taux_pct": 14.5
+        }
+      ]
+    },
+    {
+      "arr": 5,
+      "label": "5e",
+      "latest": {
+        "year": 2019,
+        "logements_sociaux": 3126,
+        "residences_principales": 32647,
+        "taux_pct": 9.6
+      },
+      "series": [
+        {
+          "year": 2001,
+          "logements_sociaux": 1984,
+          "residences_principales": 32040,
+          "taux_pct": 6.2
+        },
+        {
+          "year": 2002,
+          "logements_sociaux": 1800,
+          "residences_principales": 32247,
+          "taux_pct": 5.6
+        },
+        {
+          "year": 2003,
+          "logements_sociaux": 1766,
+          "residences_principales": 32413,
+          "taux_pct": 5.4
+        },
+        {
+          "year": 2004,
+          "logements_sociaux": 1794,
+          "residences_principales": 32376,
+          "taux_pct": 5.5
+        },
+        {
+          "year": 2005,
+          "logements_sociaux": 1825,
+          "residences_principales": 31663,
+          "taux_pct": 5.8
+        },
+        {
+          "year": 2006,
+          "logements_sociaux": 2009,
+          "residences_principales": 31234,
+          "taux_pct": 6.4
+        },
+        {
+          "year": 2007,
+          "logements_sociaux": 2129,
+          "residences_principales": 31625,
+          "taux_pct": 6.7
+        },
+        {
+          "year": 2008,
+          "logements_sociaux": 2161,
+          "residences_principales": 31945,
+          "taux_pct": 6.8
+        },
+        {
+          "year": 2009,
+          "logements_sociaux": 2363,
+          "residences_principales": 31956,
+          "taux_pct": 7.4
+        },
+        {
+          "year": 2010,
+          "logements_sociaux": 2420,
+          "residences_principales": 31996,
+          "taux_pct": 7.6
+        },
+        {
+          "year": 2011,
+          "logements_sociaux": 2432,
+          "residences_principales": 31982,
+          "taux_pct": 7.6
+        },
+        {
+          "year": 2012,
+          "logements_sociaux": 2605,
+          "residences_principales": 32373,
+          "taux_pct": 8.0
+        },
+        {
+          "year": 2013,
+          "logements_sociaux": 2633,
+          "residences_principales": 32581,
+          "taux_pct": 8.1
+        },
+        {
+          "year": 2014,
+          "logements_sociaux": 2669,
+          "residences_principales": 32486,
+          "taux_pct": 8.2
+        },
+        {
+          "year": 2015,
+          "logements_sociaux": 2761,
+          "residences_principales": 32418,
+          "taux_pct": 8.5
+        },
+        {
+          "year": 2016,
+          "logements_sociaux": 2970,
+          "residences_principales": 32176,
+          "taux_pct": 9.2
+        },
+        {
+          "year": 2017,
+          "logements_sociaux": 3091,
+          "residences_principales": 32234,
+          "taux_pct": 9.6
+        },
+        {
+          "year": 2018,
+          "logements_sociaux": 3108,
+          "residences_principales": 31912,
+          "taux_pct": 9.7
+        },
+        {
+          "year": 2019,
+          "logements_sociaux": 3126,
+          "residences_principales": 32647,
+          "taux_pct": 9.6
+        }
+      ]
+    },
+    {
+      "arr": 6,
+      "label": "6e",
+      "latest": {
+        "year": 2019,
+        "logements_sociaux": 880,
+        "residences_principales": 23716,
+        "taux_pct": 3.7
+      },
+      "series": [
+        {
+          "year": 2001,
+          "logements_sociaux": 480,
+          "residences_principales": 26413,
+          "taux_pct": 1.8
+        },
+        {
+          "year": 2002,
+          "logements_sociaux": 519,
+          "residences_principales": 26253,
+          "taux_pct": 2.0
+        },
+        {
+          "year": 2003,
+          "logements_sociaux": 518,
+          "residences_principales": 26084,
+          "taux_pct": 2.0
+        },
+        {
+          "year": 2004,
+          "logements_sociaux": 529,
+          "residences_principales": 25997,
+          "taux_pct": 2.0
+        },
+        {
+          "year": 2005,
+          "logements_sociaux": 528,
+          "residences_principales": 25583,
+          "taux_pct": 2.1
+        },
+        {
+          "year": 2006,
+          "logements_sociaux": 485,
+          "residences_principales": 25194,
+          "taux_pct": 1.9
+        },
+        {
+          "year": 2007,
+          "logements_sociaux": 593,
+          "residences_principales": 24834,
+          "taux_pct": 2.4
+        },
+        {
+          "year": 2008,
+          "logements_sociaux": 615,
+          "residences_principales": 24632,
+          "taux_pct": 2.5
+        },
+        {
+          "year": 2009,
+          "logements_sociaux": 615,
+          "residences_principales": 24197,
+          "taux_pct": 2.5
+        },
+        {
+          "year": 2010,
+          "logements_sociaux": 643,
+          "residences_principales": 23834,
+          "taux_pct": 2.7
+        },
+        {
+          "year": 2011,
+          "logements_sociaux": 662,
+          "residences_principales": 23742,
+          "taux_pct": 2.8
+        },
+        {
+          "year": 2012,
+          "logements_sociaux": 719,
+          "residences_principales": 23972,
+          "taux_pct": 3.0
+        },
+        {
+          "year": 2013,
+          "logements_sociaux": 719,
+          "residences_principales": 23589,
+          "taux_pct": 3.0
+        },
+        {
+          "year": 2014,
+          "logements_sociaux": 719,
+          "residences_principales": 23601,
+          "taux_pct": 3.0
+        },
+        {
+          "year": 2015,
+          "logements_sociaux": 719,
+          "residences_principales": 23860,
+          "taux_pct": 3.0
+        },
+        {
+          "year": 2016,
+          "logements_sociaux": 846,
+          "residences_principales": 23302,
+          "taux_pct": 3.6
+        },
+        {
+          "year": 2017,
+          "logements_sociaux": 864,
+          "residences_principales": 23041,
+          "taux_pct": 3.7
+        },
+        {
+          "year": 2018,
+          "logements_sociaux": 864,
+          "residences_principales": 23446,
+          "taux_pct": 3.7
+        },
+        {
+          "year": 2019,
+          "logements_sociaux": 880,
+          "residences_principales": 23716,
+          "taux_pct": 3.7
+        }
+      ]
+    },
+    {
+      "arr": 7,
+      "label": "7e",
+      "latest": {
+        "year": 2019,
+        "logements_sociaux": 622,
+        "residences_principales": 29240,
+        "taux_pct": 2.1
+      },
+      "series": [
+        {
+          "year": 2001,
+          "logements_sociaux": 244,
+          "residences_principales": 31338,
+          "taux_pct": 0.8
+        },
+        {
+          "year": 2002,
+          "logements_sociaux": 244,
+          "residences_principales": 31543,
+          "taux_pct": 0.8
+        },
+        {
+          "year": 2003,
+          "logements_sociaux": 213,
+          "residences_principales": 31035,
+          "taux_pct": 0.7
+        },
+        {
+          "year": 2004,
+          "logements_sociaux": 356,
+          "residences_principales": 31006,
+          "taux_pct": 1.1
+        },
+        {
+          "year": 2005,
+          "logements_sociaux": 356,
+          "residences_principales": 30760,
+          "taux_pct": 1.2
+        },
+        {
+          "year": 2006,
+          "logements_sociaux": 357,
+          "residences_principales": 30737,
+          "taux_pct": 1.2
+        },
+        {
+          "year": 2007,
+          "logements_sociaux": 367,
+          "residences_principales": 30447,
+          "taux_pct": 1.2
+        },
+        {
+          "year": 2008,
+          "logements_sociaux": 376,
+          "residences_principales": 30090,
+          "taux_pct": 1.2
+        },
+        {
+          "year": 2009,
+          "logements_sociaux": 399,
+          "residences_principales": 30087,
+          "taux_pct": 1.3
+        },
+        {
+          "year": 2010,
+          "logements_sociaux": 399,
+          "residences_principales": 30152,
+          "taux_pct": 1.3
+        },
+        {
+          "year": 2011,
+          "logements_sociaux": 399,
+          "residences_principales": 30148,
+          "taux_pct": 1.3
+        },
+        {
+          "year": 2012,
+          "logements_sociaux": 399,
+          "residences_principales": 30066,
+          "taux_pct": 1.3
+        },
+        {
+          "year": 2013,
+          "logements_sociaux": 399,
+          "residences_principales": 29610,
+          "taux_pct": 1.3
+        },
+        {
+          "year": 2014,
+          "logements_sociaux": 405,
+          "residences_principales": 29324,
+          "taux_pct": 1.4
+        },
+        {
+          "year": 2015,
+          "logements_sociaux": 555,
+          "residences_principales": 28959,
+          "taux_pct": 1.9
+        },
+        {
+          "year": 2016,
+          "logements_sociaux": 603,
+          "residences_principales": 29131,
+          "taux_pct": 2.1
+        },
+        {
+          "year": 2017,
+          "logements_sociaux": 603,
+          "residences_principales": 28928,
+          "taux_pct": 2.1
+        },
+        {
+          "year": 2018,
+          "logements_sociaux": 603,
+          "residences_principales": 29201,
+          "taux_pct": 2.1
+        },
+        {
+          "year": 2019,
+          "logements_sociaux": 622,
+          "residences_principales": 29240,
+          "taux_pct": 2.1
+        }
+      ]
+    },
+    {
+      "arr": 8,
+      "label": "8e",
+      "latest": {
+        "year": 2019,
+        "logements_sociaux": 697,
+        "residences_principales": 20718,
+        "taux_pct": 3.4
+      },
+      "series": [
+        {
+          "year": 2001,
+          "logements_sociaux": 127,
+          "residences_principales": 20888,
+          "taux_pct": 0.6
+        },
+        {
+          "year": 2002,
+          "logements_sociaux": 145,
+          "residences_principales": 20898,
+          "taux_pct": 0.7
+        },
+        {
+          "year": 2003,
+          "logements_sociaux": 153,
+          "residences_principales": 20710,
+          "taux_pct": 0.7
+        },
+        {
+          "year": 2004,
+          "logements_sociaux": 318,
+          "residences_principales": 20784,
+          "taux_pct": 1.5
+        },
+        {
+          "year": 2005,
+          "logements_sociaux": 318,
+          "residences_principales": 20675,
+          "taux_pct": 1.5
+        },
+        {
+          "year": 2006,
+          "logements_sociaux": 336,
+          "residences_principales": 20583,
+          "taux_pct": 1.6
+        },
+        {
+          "year": 2007,
+          "logements_sociaux": 355,
+          "residences_principales": 20969,
+          "taux_pct": 1.7
+        },
+        {
+          "year": 2008,
+          "logements_sociaux": 425,
+          "residences_principales": 21041,
+          "taux_pct": 2.0
+        },
+        {
+          "year": 2009,
+          "logements_sociaux": 443,
+          "residences_principales": 21181,
+          "taux_pct": 2.1
+        },
+        {
+          "year": 2010,
+          "logements_sociaux": 454,
+          "residences_principales": 21192,
+          "taux_pct": 2.1
+        },
+        {
+          "year": 2011,
+          "logements_sociaux": 508,
+          "residences_principales": 20806,
+          "taux_pct": 2.4
+        },
+        {
+          "year": 2012,
+          "logements_sociaux": 535,
+          "residences_principales": 21033,
+          "taux_pct": 2.5
+        },
+        {
+          "year": 2013,
+          "logements_sociaux": 549,
+          "residences_principales": 20595,
+          "taux_pct": 2.7
+        },
+        {
+          "year": 2014,
+          "logements_sociaux": 619,
+          "residences_principales": 20785,
+          "taux_pct": 3.0
+        },
+        {
+          "year": 2015,
+          "logements_sociaux": 636,
+          "residences_principales": 20833,
+          "taux_pct": 3.1
+        },
+        {
+          "year": 2016,
+          "logements_sociaux": 667,
+          "residences_principales": 20631,
+          "taux_pct": 3.2
+        },
+        {
+          "year": 2017,
+          "logements_sociaux": 667,
+          "residences_principales": 20364,
+          "taux_pct": 3.3
+        },
+        {
+          "year": 2018,
+          "logements_sociaux": 670,
+          "residences_principales": 20398,
+          "taux_pct": 3.3
+        },
+        {
+          "year": 2019,
+          "logements_sociaux": 697,
+          "residences_principales": 20718,
+          "taux_pct": 3.4
+        }
+      ]
+    },
+    {
+      "arr": 9,
+      "label": "9e",
+      "latest": {
+        "year": 2019,
+        "logements_sociaux": 2406,
+        "residences_principales": 34558,
+        "taux_pct": 7.0
+      },
+      "series": [
+        {
+          "year": 2001,
+          "logements_sociaux": 676,
+          "residences_principales": 33527,
+          "taux_pct": 2.0
+        },
+        {
+          "year": 2002,
+          "logements_sociaux": 696,
+          "residences_principales": 33638,
+          "taux_pct": 2.1
+        },
+        {
+          "year": 2003,
+          "logements_sociaux": 771,
+          "residences_principales": 33933,
+          "taux_pct": 2.3
+        },
+        {
+          "year": 2004,
+          "logements_sociaux": 969,
+          "residences_principales": 34422,
+          "taux_pct": 2.8
+        },
+        {
+          "year": 2005,
+          "logements_sociaux": 1020,
+          "residences_principales": 34005,
+          "taux_pct": 3.0
+        },
+        {
+          "year": 2006,
+          "logements_sociaux": 1189,
+          "residences_principales": 33352,
+          "taux_pct": 3.6
+        },
+        {
+          "year": 2007,
+          "logements_sociaux": 1284,
+          "residences_principales": 33580,
+          "taux_pct": 3.8
+        },
+        {
+          "year": 2008,
+          "logements_sociaux": 1300,
+          "residences_principales": 33618,
+          "taux_pct": 3.9
+        },
+        {
+          "year": 2009,
+          "logements_sociaux": 1396,
+          "residences_principales": 33886,
+          "taux_pct": 4.1
+        },
+        {
+          "year": 2010,
+          "logements_sociaux": 1560,
+          "residences_principales": 33842,
+          "taux_pct": 4.6
+        },
+        {
+          "year": 2011,
+          "logements_sociaux": 1695,
+          "residences_principales": 33893,
+          "taux_pct": 5.0
+        },
+        {
+          "year": 2012,
+          "logements_sociaux": 1824,
+          "residences_principales": 33674,
+          "taux_pct": 5.4
+        },
+        {
+          "year": 2013,
+          "logements_sociaux": 2020,
+          "residences_principales": 34191,
+          "taux_pct": 5.9
+        },
+        {
+          "year": 2014,
+          "logements_sociaux": 2080,
+          "residences_principales": 34156,
+          "taux_pct": 6.1
+        },
+        {
+          "year": 2015,
+          "logements_sociaux": 2259,
+          "residences_principales": 34231,
+          "taux_pct": 6.6
+        },
+        {
+          "year": 2016,
+          "logements_sociaux": 2232,
+          "residences_principales": 33817,
+          "taux_pct": 6.6
+        },
+        {
+          "year": 2017,
+          "logements_sociaux": 2275,
+          "residences_principales": 33902,
+          "taux_pct": 6.7
+        },
+        {
+          "year": 2018,
+          "logements_sociaux": 2343,
+          "residences_principales": 34147,
+          "taux_pct": 6.9
+        },
+        {
+          "year": 2019,
+          "logements_sociaux": 2406,
+          "residences_principales": 34558,
+          "taux_pct": 7.0
+        }
+      ]
+    },
+    {
+      "arr": 10,
+      "label": "10e",
+      "latest": {
+        "year": 2019,
+        "logements_sociaux": 7860,
+        "residences_principales": 51612,
+        "taux_pct": 15.2
+      },
+      "series": [
+        {
+          "year": 2001,
+          "logements_sociaux": 3743,
+          "residences_principales": 48598,
+          "taux_pct": 7.7
+        },
+        {
+          "year": 2002,
+          "logements_sociaux": 3861,
+          "residences_principales": 49464,
+          "taux_pct": 7.8
+        },
+        {
+          "year": 2003,
+          "logements_sociaux": 4235,
+          "residences_principales": 49364,
+          "taux_pct": 8.6
+        },
+        {
+          "year": 2004,
+          "logements_sociaux": 4280,
+          "residences_principales": 49626,
+          "taux_pct": 8.6
+        },
+        {
+          "year": 2005,
+          "logements_sociaux": 4356,
+          "residences_principales": 49578,
+          "taux_pct": 8.8
+        },
+        {
+          "year": 2006,
+          "logements_sociaux": 4727,
+          "residences_principales": 49911,
+          "taux_pct": 9.5
+        },
+        {
+          "year": 2007,
+          "logements_sociaux": 4928,
+          "residences_principales": 50013,
+          "taux_pct": 9.9
+        },
+        {
+          "year": 2008,
+          "logements_sociaux": 5189,
+          "residences_principales": 50012,
+          "taux_pct": 10.4
+        },
+        {
+          "year": 2009,
+          "logements_sociaux": 5323,
+          "residences_principales": 50457,
+          "taux_pct": 10.5
+        },
+        {
+          "year": 2010,
+          "logements_sociaux": 5460,
+          "residences_principales": 50895,
+          "taux_pct": 10.7
+        },
+        {
+          "year": 2011,
+          "logements_sociaux": 5570,
+          "residences_principales": 50967,
+          "taux_pct": 10.9
+        },
+        {
+          "year": 2012,
+          "logements_sociaux": 5638,
+          "residences_principales": 51222,
+          "taux_pct": 11.0
+        },
+        {
+          "year": 2013,
+          "logements_sociaux": 5992,
+          "residences_principales": 51291,
+          "taux_pct": 11.7
+        },
+        {
+          "year": 2014,
+          "logements_sociaux": 6498,
+          "residences_principales": 51283,
+          "taux_pct": 12.7
+        },
+        {
+          "year": 2015,
+          "logements_sociaux": 6818,
+          "residences_principales": 51490,
+          "taux_pct": 13.2
+        },
+        {
+          "year": 2016,
+          "logements_sociaux": 7234,
+          "residences_principales": 51088,
+          "taux_pct": 14.2
+        },
+        {
+          "year": 2017,
+          "logements_sociaux": 7566,
+          "residences_principales": 51153,
+          "taux_pct": 14.8
+        },
+        {
+          "year": 2018,
+          "logements_sociaux": 7676,
+          "residences_principales": 51219,
+          "taux_pct": 15.0
+        },
+        {
+          "year": 2019,
+          "logements_sociaux": 7860,
+          "residences_principales": 51612,
+          "taux_pct": 15.2
+        }
+      ]
+    },
+    {
+      "arr": 11,
+      "label": "11e",
+      "latest": {
+        "year": 2019,
+        "logements_sociaux": 12172,
+        "residences_principales": 86105,
+        "taux_pct": 14.1
+      },
+      "series": [
+        {
+          "year": 2001,
+          "logements_sociaux": 6945,
+          "residences_principales": 85222,
+          "taux_pct": 8.1
+        },
+        {
+          "year": 2002,
+          "logements_sociaux": 7311,
+          "residences_principales": 85588,
+          "taux_pct": 8.5
+        },
+        {
+          "year": 2003,
+          "logements_sociaux": 7552,
+          "residences_principales": 85272,
+          "taux_pct": 8.9
+        },
+        {
+          "year": 2004,
+          "logements_sociaux": 7775,
+          "residences_principales": 84704,
+          "taux_pct": 9.2
+        },
+        {
+          "year": 2005,
+          "logements_sociaux": 7995,
+          "residences_principales": 84629,
+          "taux_pct": 9.4
+        },
+        {
+          "year": 2006,
+          "logements_sociaux": 8337,
+          "residences_principales": 85046,
+          "taux_pct": 9.8
+        },
+        {
+          "year": 2007,
+          "logements_sociaux": 8610,
+          "residences_principales": 85008,
+          "taux_pct": 10.1
+        },
+        {
+          "year": 2008,
+          "logements_sociaux": 9155,
+          "residences_principales": 85067,
+          "taux_pct": 10.8
+        },
+        {
+          "year": 2009,
+          "logements_sociaux": 9281,
+          "residences_principales": 84846,
+          "taux_pct": 10.9
+        },
+        {
+          "year": 2010,
+          "logements_sociaux": 9702,
+          "residences_principales": 85075,
+          "taux_pct": 11.4
+        },
+        {
+          "year": 2011,
+          "logements_sociaux": 10171,
+          "residences_principales": 85638,
+          "taux_pct": 11.9
+        },
+        {
+          "year": 2012,
+          "logements_sociaux": 10397,
+          "residences_principales": 86437,
+          "taux_pct": 12.0
+        },
+        {
+          "year": 2013,
+          "logements_sociaux": 10502,
+          "residences_principales": 86720,
+          "taux_pct": 12.1
+        },
+        {
+          "year": 2014,
+          "logements_sociaux": 10942,
+          "residences_principales": 86113,
+          "taux_pct": 12.7
+        },
+        {
+          "year": 2015,
+          "logements_sociaux": 11269,
+          "residences_principales": 86192,
+          "taux_pct": 13.1
+        },
+        {
+          "year": 2016,
+          "logements_sociaux": 11537,
+          "residences_principales": 85961,
+          "taux_pct": 13.4
+        },
+        {
+          "year": 2017,
+          "logements_sociaux": 11851,
+          "residences_principales": 85715,
+          "taux_pct": 13.8
+        },
+        {
+          "year": 2018,
+          "logements_sociaux": 12002,
+          "residences_principales": 86180,
+          "taux_pct": 13.9
+        },
+        {
+          "year": 2019,
+          "logements_sociaux": 12172,
+          "residences_principales": 86105,
+          "taux_pct": 14.1
+        }
+      ]
+    },
+    {
+      "arr": 12,
+      "label": "12e",
+      "latest": {
+        "year": 2019,
+        "logements_sociaux": 18828,
+        "residences_principales": 76285,
+        "taux_pct": 24.7
+      },
+      "series": [
+        {
+          "year": 2001,
+          "logements_sociaux": 9684,
+          "residences_principales": 73899,
+          "taux_pct": 13.1
+        },
+        {
+          "year": 2002,
+          "logements_sociaux": 10040,
+          "residences_principales": 74627,
+          "taux_pct": 13.5
+        },
+        {
+          "year": 2003,
+          "logements_sociaux": 10714,
+          "residences_principales": 74611,
+          "taux_pct": 14.4
+        },
+        {
+          "year": 2004,
+          "logements_sociaux": 10856,
+          "residences_principales": 73844,
+          "taux_pct": 14.7
+        },
+        {
+          "year": 2005,
+          "logements_sociaux": 11716,
+          "residences_principales": 74407,
+          "taux_pct": 15.7
+        },
+        {
+          "year": 2006,
+          "logements_sociaux": 11643,
+          "residences_principales": 74357,
+          "taux_pct": 15.7
+        },
+        {
+          "year": 2007,
+          "logements_sociaux": 11787,
+          "residences_principales": 74502,
+          "taux_pct": 15.8
+        },
+        {
+          "year": 2008,
+          "logements_sociaux": 12142,
+          "residences_principales": 74604,
+          "taux_pct": 16.3
+        },
+        {
+          "year": 2009,
+          "logements_sociaux": 12275,
+          "residences_principales": 74329,
+          "taux_pct": 16.5
+        },
+        {
+          "year": 2010,
+          "logements_sociaux": 12496,
+          "residences_principales": 74523,
+          "taux_pct": 16.8
+        },
+        {
+          "year": 2011,
+          "logements_sociaux": 13729,
+          "residences_principales": 74401,
+          "taux_pct": 18.5
+        },
+        {
+          "year": 2012,
+          "logements_sociaux": 14262,
+          "residences_principales": 74430,
+          "taux_pct": 19.2
+        },
+        {
+          "year": 2013,
+          "logements_sociaux": 14673,
+          "residences_principales": 75252,
+          "taux_pct": 19.5
+        },
+        {
+          "year": 2014,
+          "logements_sociaux": 15016,
+          "residences_principales": 75519,
+          "taux_pct": 19.9
+        },
+        {
+          "year": 2015,
+          "logements_sociaux": 15848,
+          "residences_principales": 75718,
+          "taux_pct": 20.9
+        },
+        {
+          "year": 2016,
+          "logements_sociaux": 16833,
+          "residences_principales": 75907,
+          "taux_pct": 22.2
+        },
+        {
+          "year": 2017,
+          "logements_sociaux": 17010,
+          "residences_principales": 75854,
+          "taux_pct": 22.4
+        },
+        {
+          "year": 2018,
+          "logements_sociaux": 18808,
+          "residences_principales": 75596,
+          "taux_pct": 24.9
+        },
+        {
+          "year": 2019,
+          "logements_sociaux": 18828,
+          "residences_principales": 76285,
+          "taux_pct": 24.7
+        }
+      ]
+    },
+    {
+      "arr": 13,
+      "label": "13e",
+      "latest": {
+        "year": 2019,
+        "logements_sociaux": 35583,
+        "residences_principales": 90124,
+        "taux_pct": 39.5
+      },
+      "series": [
+        {
+          "year": 2001,
+          "logements_sociaux": 25762,
+          "residences_principales": 86487,
+          "taux_pct": 29.8
+        },
+        {
+          "year": 2002,
+          "logements_sociaux": 25842,
+          "residences_principales": 86897,
+          "taux_pct": 29.7
+        },
+        {
+          "year": 2003,
+          "logements_sociaux": 26375,
+          "residences_principales": 87769,
+          "taux_pct": 30.1
+        },
+        {
+          "year": 2004,
+          "logements_sociaux": 26567,
+          "residences_principales": 88492,
+          "taux_pct": 30.0
+        },
+        {
+          "year": 2005,
+          "logements_sociaux": 26602,
+          "residences_principales": 88326,
+          "taux_pct": 30.1
+        },
+        {
+          "year": 2006,
+          "logements_sociaux": 27200,
+          "residences_principales": 87750,
+          "taux_pct": 31.0
+        },
+        {
+          "year": 2007,
+          "logements_sociaux": 27446,
+          "residences_principales": 87928,
+          "taux_pct": 31.2
+        },
+        {
+          "year": 2008,
+          "logements_sociaux": 27583,
+          "residences_principales": 87692,
+          "taux_pct": 31.5
+        },
+        {
+          "year": 2009,
+          "logements_sociaux": 27920,
+          "residences_principales": 87569,
+          "taux_pct": 31.9
+        },
+        {
+          "year": 2010,
+          "logements_sociaux": 28329,
+          "residences_principales": 88395,
+          "taux_pct": 32.0
+        },
+        {
+          "year": 2011,
+          "logements_sociaux": 29117,
+          "residences_principales": 87802,
+          "taux_pct": 33.2
+        },
+        {
+          "year": 2012,
+          "logements_sociaux": 29384,
+          "residences_principales": 88348,
+          "taux_pct": 33.3
+        },
+        {
+          "year": 2013,
+          "logements_sociaux": 31585,
+          "residences_principales": 89790,
+          "taux_pct": 35.2
+        },
+        {
+          "year": 2014,
+          "logements_sociaux": 32029,
+          "residences_principales": 90119,
+          "taux_pct": 35.5
+        },
+        {
+          "year": 2015,
+          "logements_sociaux": 32738,
+          "residences_principales": 89917,
+          "taux_pct": 36.4
+        },
+        {
+          "year": 2016,
+          "logements_sociaux": 33800,
+          "residences_principales": 90321,
+          "taux_pct": 37.4
+        },
+        {
+          "year": 2017,
+          "logements_sociaux": 34411,
+          "residences_principales": 90221,
+          "taux_pct": 38.1
+        },
+        {
+          "year": 2018,
+          "logements_sociaux": 35307,
+          "residences_principales": 89651,
+          "taux_pct": 39.4
+        },
+        {
+          "year": 2019,
+          "logements_sociaux": 35583,
+          "residences_principales": 90124,
+          "taux_pct": 39.5
+        }
+      ]
+    },
+    {
+      "arr": 14,
+      "label": "14e",
+      "latest": {
+        "year": 2019,
+        "logements_sociaux": 21085,
+        "residences_principales": 73025,
+        "taux_pct": 28.9
+      },
+      "series": [
+        {
+          "year": 2001,
+          "logements_sociaux": 14022,
+          "residences_principales": 71422,
+          "taux_pct": 19.6
+        },
+        {
+          "year": 2002,
+          "logements_sociaux": 14188,
+          "residences_principales": 72002,
+          "taux_pct": 19.7
+        },
+        {
+          "year": 2003,
+          "logements_sociaux": 14153,
+          "residences_principales": 73043,
+          "taux_pct": 19.4
+        },
+        {
+          "year": 2004,
+          "logements_sociaux": 14225,
+          "residences_principales": 72461,
+          "taux_pct": 19.6
+        },
+        {
+          "year": 2005,
+          "logements_sociaux": 14281,
+          "residences_principales": 72667,
+          "taux_pct": 19.7
+        },
+        {
+          "year": 2006,
+          "logements_sociaux": 14334,
+          "residences_principales": 72354,
+          "taux_pct": 19.8
+        },
+        {
+          "year": 2007,
+          "logements_sociaux": 15287,
+          "residences_principales": 72510,
+          "taux_pct": 21.1
+        },
+        {
+          "year": 2008,
+          "logements_sociaux": 15380,
+          "residences_principales": 72112,
+          "taux_pct": 21.3
+        },
+        {
+          "year": 2009,
+          "logements_sociaux": 15678,
+          "residences_principales": 71999,
+          "taux_pct": 21.8
+        },
+        {
+          "year": 2010,
+          "logements_sociaux": 16044,
+          "residences_principales": 71337,
+          "taux_pct": 22.5
+        },
+        {
+          "year": 2011,
+          "logements_sociaux": 17136,
+          "residences_principales": 71606,
+          "taux_pct": 23.9
+        },
+        {
+          "year": 2012,
+          "logements_sociaux": 17180,
+          "residences_principales": 71760,
+          "taux_pct": 23.9
+        },
+        {
+          "year": 2013,
+          "logements_sociaux": 17231,
+          "residences_principales": 71401,
+          "taux_pct": 24.1
+        },
+        {
+          "year": 2014,
+          "logements_sociaux": 17752,
+          "residences_principales": 71702,
+          "taux_pct": 24.8
+        },
+        {
+          "year": 2015,
+          "logements_sociaux": 18267,
+          "residences_principales": 71875,
+          "taux_pct": 25.4
+        },
+        {
+          "year": 2016,
+          "logements_sociaux": 18711,
+          "residences_principales": 71647,
+          "taux_pct": 26.1
+        },
+        {
+          "year": 2017,
+          "logements_sociaux": 19122,
+          "residences_principales": 71831,
+          "taux_pct": 26.6
+        },
+        {
+          "year": 2018,
+          "logements_sociaux": 20197,
+          "residences_principales": 72208,
+          "taux_pct": 28.0
+        },
+        {
+          "year": 2019,
+          "logements_sociaux": 21085,
+          "residences_principales": 73025,
+          "taux_pct": 28.9
+        }
+      ]
+    },
+    {
+      "arr": 15,
+      "label": "15e",
+      "latest": {
+        "year": 2019,
+        "logements_sociaux": 23800,
+        "residences_principales": 126805,
+        "taux_pct": 18.8
+      },
+      "series": [
+        {
+          "year": 2001,
+          "logements_sociaux": 13918,
+          "residences_principales": 125203,
+          "taux_pct": 11.1
+        },
+        {
+          "year": 2002,
+          "logements_sociaux": 14252,
+          "residences_principales": 125825,
+          "taux_pct": 11.3
+        },
+        {
+          "year": 2003,
+          "logements_sociaux": 14578,
+          "residences_principales": 125148,
+          "taux_pct": 11.6
+        },
+        {
+          "year": 2004,
+          "logements_sociaux": 15540,
+          "residences_principales": 124562,
+          "taux_pct": 12.5
+        },
+        {
+          "year": 2005,
+          "logements_sociaux": 15646,
+          "residences_principales": 124192,
+          "taux_pct": 12.6
+        },
+        {
+          "year": 2006,
+          "logements_sociaux": 16289,
+          "residences_principales": 123429,
+          "taux_pct": 13.2
+        },
+        {
+          "year": 2007,
+          "logements_sociaux": 17091,
+          "residences_principales": 122990,
+          "taux_pct": 13.9
+        },
+        {
+          "year": 2008,
+          "logements_sociaux": 17235,
+          "residences_principales": 123372,
+          "taux_pct": 14.0
+        },
+        {
+          "year": 2009,
+          "logements_sociaux": 17469,
+          "residences_principales": 123293,
+          "taux_pct": 14.2
+        },
+        {
+          "year": 2010,
+          "logements_sociaux": 18197,
+          "residences_principales": 124128,
+          "taux_pct": 14.7
+        },
+        {
+          "year": 2011,
+          "logements_sociaux": 19090,
+          "residences_principales": 124649,
+          "taux_pct": 15.3
+        },
+        {
+          "year": 2012,
+          "logements_sociaux": 19207,
+          "residences_principales": 124568,
+          "taux_pct": 15.4
+        },
+        {
+          "year": 2013,
+          "logements_sociaux": 19966,
+          "residences_principales": 125455,
+          "taux_pct": 15.9
+        },
+        {
+          "year": 2014,
+          "logements_sociaux": 20488,
+          "residences_principales": 125262,
+          "taux_pct": 16.4
+        },
+        {
+          "year": 2015,
+          "logements_sociaux": 21102,
+          "residences_principales": 125758,
+          "taux_pct": 16.8
+        },
+        {
+          "year": 2016,
+          "logements_sociaux": 21603,
+          "residences_principales": 125037,
+          "taux_pct": 17.3
+        },
+        {
+          "year": 2017,
+          "logements_sociaux": 22147,
+          "residences_principales": 125426,
+          "taux_pct": 17.7
+        },
+        {
+          "year": 2018,
+          "logements_sociaux": 22577,
+          "residences_principales": 126099,
+          "taux_pct": 17.9
+        },
+        {
+          "year": 2019,
+          "logements_sociaux": 23800,
+          "residences_principales": 126805,
+          "taux_pct": 18.8
+        }
+      ]
+    },
+    {
+      "arr": 16,
+      "label": "16e",
+      "latest": {
+        "year": 2019,
+        "logements_sociaux": 6177,
+        "residences_principales": 85102,
+        "taux_pct": 7.3
+      },
+      "series": [
+        {
+          "year": 2001,
+          "logements_sociaux": 1473,
+          "residences_principales": 84851,
+          "taux_pct": 1.7
+        },
+        {
+          "year": 2002,
+          "logements_sociaux": 1828,
+          "residences_principales": 84975,
+          "taux_pct": 2.2
+        },
+        {
+          "year": 2003,
+          "logements_sociaux": 1847,
+          "residences_principales": 83871,
+          "taux_pct": 2.2
+        },
+        {
+          "year": 2004,
+          "logements_sociaux": 1875,
+          "residences_principales": 83297,
+          "taux_pct": 2.3
+        },
+        {
+          "year": 2005,
+          "logements_sociaux": 1919,
+          "residences_principales": 83168,
+          "taux_pct": 2.3
+        },
+        {
+          "year": 2006,
+          "logements_sociaux": 1966,
+          "residences_principales": 83387,
+          "taux_pct": 2.4
+        },
+        {
+          "year": 2007,
+          "logements_sociaux": 1955,
+          "residences_principales": 83205,
+          "taux_pct": 2.3
+        },
+        {
+          "year": 2008,
+          "logements_sociaux": 2044,
+          "residences_principales": 82996,
+          "taux_pct": 2.5
+        },
+        {
+          "year": 2009,
+          "logements_sociaux": 2081,
+          "residences_principales": 82778,
+          "taux_pct": 2.5
+        },
+        {
+          "year": 2010,
+          "logements_sociaux": 2236,
+          "residences_principales": 83495,
+          "taux_pct": 2.7
+        },
+        {
+          "year": 2011,
+          "logements_sociaux": 3091,
+          "residences_principales": 83494,
+          "taux_pct": 3.7
+        },
+        {
+          "year": 2012,
+          "logements_sociaux": 3113,
+          "residences_principales": 83861,
+          "taux_pct": 3.7
+        },
+        {
+          "year": 2013,
+          "logements_sociaux": 3114,
+          "residences_principales": 83559,
+          "taux_pct": 3.7
+        },
+        {
+          "year": 2014,
+          "logements_sociaux": 3174,
+          "residences_principales": 83747,
+          "taux_pct": 3.8
+        },
+        {
+          "year": 2015,
+          "logements_sociaux": 3654,
+          "residences_principales": 83506,
+          "taux_pct": 4.4
+        },
+        {
+          "year": 2016,
+          "logements_sociaux": 5086,
+          "residences_principales": 83235,
+          "taux_pct": 6.1
+        },
+        {
+          "year": 2017,
+          "logements_sociaux": 5761,
+          "residences_principales": 82528,
+          "taux_pct": 7.0
+        },
+        {
+          "year": 2018,
+          "logements_sociaux": 5923,
+          "residences_principales": 83596,
+          "taux_pct": 7.1
+        },
+        {
+          "year": 2019,
+          "logements_sociaux": 6177,
+          "residences_principales": 85102,
+          "taux_pct": 7.3
+        }
+      ]
+    },
+    {
+      "arr": 17,
+      "label": "17e",
+      "latest": {
+        "year": 2019,
+        "logements_sociaux": 16040,
+        "residences_principales": 92601,
+        "taux_pct": 17.3
+      },
+      "series": [
+        {
+          "year": 2001,
+          "logements_sociaux": 7684,
+          "residences_principales": 87251,
+          "taux_pct": 8.8
+        },
+        {
+          "year": 2002,
+          "logements_sociaux": 7841,
+          "residences_principales": 87212,
+          "taux_pct": 9.0
+        },
+        {
+          "year": 2003,
+          "logements_sociaux": 7938,
+          "residences_principales": 86909,
+          "taux_pct": 9.1
+        },
+        {
+          "year": 2004,
+          "logements_sociaux": 8160,
+          "residences_principales": 86497,
+          "taux_pct": 9.4
+        },
+        {
+          "year": 2005,
+          "logements_sociaux": 8387,
+          "residences_principales": 87073,
+          "taux_pct": 9.6
+        },
+        {
+          "year": 2006,
+          "logements_sociaux": 8743,
+          "residences_principales": 87052,
+          "taux_pct": 10.0
+        },
+        {
+          "year": 2007,
+          "logements_sociaux": 8951,
+          "residences_principales": 87533,
+          "taux_pct": 10.2
+        },
+        {
+          "year": 2008,
+          "logements_sociaux": 9107,
+          "residences_principales": 87711,
+          "taux_pct": 10.4
+        },
+        {
+          "year": 2009,
+          "logements_sociaux": 9103,
+          "residences_principales": 87958,
+          "taux_pct": 10.3
+        },
+        {
+          "year": 2010,
+          "logements_sociaux": 9241,
+          "residences_principales": 88503,
+          "taux_pct": 10.4
+        },
+        {
+          "year": 2011,
+          "logements_sociaux": 9867,
+          "residences_principales": 89185,
+          "taux_pct": 11.1
+        },
+        {
+          "year": 2012,
+          "logements_sociaux": 9956,
+          "residences_principales": 89552,
+          "taux_pct": 11.1
+        },
+        {
+          "year": 2013,
+          "logements_sociaux": 10631,
+          "residences_principales": 90096,
+          "taux_pct": 11.8
+        },
+        {
+          "year": 2014,
+          "logements_sociaux": 11223,
+          "residences_principales": 90728,
+          "taux_pct": 12.4
+        },
+        {
+          "year": 2015,
+          "logements_sociaux": 11685,
+          "residences_principales": 90811,
+          "taux_pct": 12.9
+        },
+        {
+          "year": 2016,
+          "logements_sociaux": 12538,
+          "residences_principales": 91170,
+          "taux_pct": 13.8
+        },
+        {
+          "year": 2017,
+          "logements_sociaux": 15128,
+          "residences_principales": 90783,
+          "taux_pct": 16.7
+        },
+        {
+          "year": 2018,
+          "logements_sociaux": 15182,
+          "residences_principales": 91422,
+          "taux_pct": 16.6
+        },
+        {
+          "year": 2019,
+          "logements_sociaux": 16040,
+          "residences_principales": 92601,
+          "taux_pct": 17.3
+        }
+      ]
+    },
+    {
+      "arr": 18,
+      "label": "18e",
+      "latest": {
+        "year": 2019,
+        "logements_sociaux": 23290,
+        "residences_principales": 103835,
+        "taux_pct": 22.4
+      },
+      "series": [
+        {
+          "year": 2001,
+          "logements_sociaux": 15710,
+          "residences_principales": 103415,
+          "taux_pct": 15.2
+        },
+        {
+          "year": 2002,
+          "logements_sociaux": 16260,
+          "residences_principales": 102918,
+          "taux_pct": 15.8
+        },
+        {
+          "year": 2003,
+          "logements_sociaux": 17004,
+          "residences_principales": 103050,
+          "taux_pct": 16.5
+        },
+        {
+          "year": 2004,
+          "logements_sociaux": 17304,
+          "residences_principales": 102952,
+          "taux_pct": 16.8
+        },
+        {
+          "year": 2005,
+          "logements_sociaux": 17676,
+          "residences_principales": 102323,
+          "taux_pct": 17.3
+        },
+        {
+          "year": 2006,
+          "logements_sociaux": 18196,
+          "residences_principales": 101575,
+          "taux_pct": 17.9
+        },
+        {
+          "year": 2007,
+          "logements_sociaux": 18372,
+          "residences_principales": 102491,
+          "taux_pct": 17.9
+        },
+        {
+          "year": 2008,
+          "logements_sociaux": 18547,
+          "residences_principales": 101808,
+          "taux_pct": 18.2
+        },
+        {
+          "year": 2009,
+          "logements_sociaux": 19129,
+          "residences_principales": 103085,
+          "taux_pct": 18.6
+        },
+        {
+          "year": 2010,
+          "logements_sociaux": 19481,
+          "residences_principales": 102478,
+          "taux_pct": 19.0
+        },
+        {
+          "year": 2011,
+          "logements_sociaux": 20000,
+          "residences_principales": 102690,
+          "taux_pct": 19.5
+        },
+        {
+          "year": 2012,
+          "logements_sociaux": 20404,
+          "residences_principales": 102959,
+          "taux_pct": 19.8
+        },
+        {
+          "year": 2013,
+          "logements_sociaux": 20670,
+          "residences_principales": 103487,
+          "taux_pct": 20.0
+        },
+        {
+          "year": 2014,
+          "logements_sociaux": 21308,
+          "residences_principales": 103529,
+          "taux_pct": 20.6
+        },
+        {
+          "year": 2015,
+          "logements_sociaux": 22174,
+          "residences_principales": 103772,
+          "taux_pct": 21.4
+        },
+        {
+          "year": 2016,
+          "logements_sociaux": 22396,
+          "residences_principales": 102822,
+          "taux_pct": 21.8
+        },
+        {
+          "year": 2017,
+          "logements_sociaux": 22964,
+          "residences_principales": 103038,
+          "taux_pct": 22.3
+        },
+        {
+          "year": 2018,
+          "logements_sociaux": 23013,
+          "residences_principales": 103229,
+          "taux_pct": 22.3
+        },
+        {
+          "year": 2019,
+          "logements_sociaux": 23290,
+          "residences_principales": 103835,
+          "taux_pct": 22.4
+        }
+      ]
+    },
+    {
+      "arr": 19,
+      "label": "19e",
+      "latest": {
+        "year": 2019,
+        "logements_sociaux": 36584,
+        "residences_principales": 86960,
+        "taux_pct": 42.1
+      },
+      "series": [
+        {
+          "year": 2001,
+          "logements_sociaux": 26330,
+          "residences_principales": 82374,
+          "taux_pct": 32.0
+        },
+        {
+          "year": 2002,
+          "logements_sociaux": 26794,
+          "residences_principales": 81783,
+          "taux_pct": 32.8
+        },
+        {
+          "year": 2003,
+          "logements_sociaux": 26998,
+          "residences_principales": 81911,
+          "taux_pct": 33.0
+        },
+        {
+          "year": 2004,
+          "logements_sociaux": 27465,
+          "residences_principales": 82349,
+          "taux_pct": 33.4
+        },
+        {
+          "year": 2005,
+          "logements_sociaux": 27565,
+          "residences_principales": 83383,
+          "taux_pct": 33.1
+        },
+        {
+          "year": 2006,
+          "logements_sociaux": 28147,
+          "residences_principales": 82638,
+          "taux_pct": 34.1
+        },
+        {
+          "year": 2007,
+          "logements_sociaux": 28953,
+          "residences_principales": 83121,
+          "taux_pct": 34.8
+        },
+        {
+          "year": 2008,
+          "logements_sociaux": 29368,
+          "residences_principales": 83443,
+          "taux_pct": 35.2
+        },
+        {
+          "year": 2009,
+          "logements_sociaux": 29940,
+          "residences_principales": 83721,
+          "taux_pct": 35.8
+        },
+        {
+          "year": 2010,
+          "logements_sociaux": 30303,
+          "residences_principales": 84356,
+          "taux_pct": 35.9
+        },
+        {
+          "year": 2011,
+          "logements_sociaux": 31263,
+          "residences_principales": 85522,
+          "taux_pct": 36.6
+        },
+        {
+          "year": 2012,
+          "logements_sociaux": 31529,
+          "residences_principales": 85370,
+          "taux_pct": 36.9
+        },
+        {
+          "year": 2013,
+          "logements_sociaux": 32041,
+          "residences_principales": 85926,
+          "taux_pct": 37.3
+        },
+        {
+          "year": 2014,
+          "logements_sociaux": 32861,
+          "residences_principales": 86374,
+          "taux_pct": 38.0
+        },
+        {
+          "year": 2015,
+          "logements_sociaux": 33575,
+          "residences_principales": 86522,
+          "taux_pct": 38.8
+        },
+        {
+          "year": 2016,
+          "logements_sociaux": 34719,
+          "residences_principales": 87046,
+          "taux_pct": 39.9
+        },
+        {
+          "year": 2017,
+          "logements_sociaux": 35346,
+          "residences_principales": 87438,
+          "taux_pct": 40.4
+        },
+        {
+          "year": 2018,
+          "logements_sociaux": 36475,
+          "residences_principales": 87518,
+          "taux_pct": 41.7
+        },
+        {
+          "year": 2019,
+          "logements_sociaux": 36584,
+          "residences_principales": 86960,
+          "taux_pct": 42.1
+        }
+      ]
+    },
+    {
+      "arr": 20,
+      "label": "20e",
+      "latest": {
+        "year": 2019,
+        "logements_sociaux": 35382,
+        "residences_principales": 97672,
+        "taux_pct": 36.2
+      },
+      "series": [
+        {
+          "year": 2001,
+          "logements_sociaux": 23191,
+          "residences_principales": 91946,
+          "taux_pct": 25.2
+        },
+        {
+          "year": 2002,
+          "logements_sociaux": 23660,
+          "residences_principales": 92944,
+          "taux_pct": 25.5
+        },
+        {
+          "year": 2003,
+          "logements_sociaux": 24009,
+          "residences_principales": 93948,
+          "taux_pct": 25.6
+        },
+        {
+          "year": 2004,
+          "logements_sociaux": 24389,
+          "residences_principales": 94638,
+          "taux_pct": 25.8
+        },
+        {
+          "year": 2005,
+          "logements_sociaux": 24448,
+          "residences_principales": 94492,
+          "taux_pct": 25.9
+        },
+        {
+          "year": 2006,
+          "logements_sociaux": 24640,
+          "residences_principales": 94334,
+          "taux_pct": 26.1
+        },
+        {
+          "year": 2007,
+          "logements_sociaux": 24924,
+          "residences_principales": 95050,
+          "taux_pct": 26.2
+        },
+        {
+          "year": 2008,
+          "logements_sociaux": 25106,
+          "residences_principales": 95694,
+          "taux_pct": 26.2
+        },
+        {
+          "year": 2009,
+          "logements_sociaux": 25885,
+          "residences_principales": 95669,
+          "taux_pct": 27.1
+        },
+        {
+          "year": 2010,
+          "logements_sociaux": 26153,
+          "residences_principales": 95886,
+          "taux_pct": 27.3
+        },
+        {
+          "year": 2011,
+          "logements_sociaux": 28605,
+          "residences_principales": 96168,
+          "taux_pct": 29.7
+        },
+        {
+          "year": 2012,
+          "logements_sociaux": 29221,
+          "residences_principales": 96251,
+          "taux_pct": 30.4
+        },
+        {
+          "year": 2013,
+          "logements_sociaux": 30205,
+          "residences_principales": 96728,
+          "taux_pct": 31.2
+        },
+        {
+          "year": 2014,
+          "logements_sociaux": 31656,
+          "residences_principales": 96776,
+          "taux_pct": 32.7
+        },
+        {
+          "year": 2015,
+          "logements_sociaux": 32445,
+          "residences_principales": 96628,
+          "taux_pct": 33.6
+        },
+        {
+          "year": 2016,
+          "logements_sociaux": 32732,
+          "residences_principales": 96387,
+          "taux_pct": 34.0
+        },
+        {
+          "year": 2017,
+          "logements_sociaux": 33218,
+          "residences_principales": 96669,
+          "taux_pct": 34.4
+        },
+        {
+          "year": 2018,
+          "logements_sociaux": 34510,
+          "residences_principales": 96830,
+          "taux_pct": 35.6
+        },
+        {
+          "year": 2019,
+          "logements_sociaux": 35382,
+          "residences_principales": 97672,
+          "taux_pct": 36.2
+        }
+      ]
+    }
+  ]
+}

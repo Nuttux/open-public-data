@@ -2330,6 +2330,20 @@ const fr: Record<string, string> = {
   'fx.det.hb.r5.e': "Engagements Vélib', Autolib', Vélos", 'fx.det.hb.r5.ent': 'Syndicat / délégataires', 'fx.det.hb.r5.v': '≈ 200 M €',
 
   // ── Logement social page ─────────────────────────────────────────────────────
+  // ── Logement · SRU par arrondissement ─────────────────────────────────────
+  'fx.toc.sruarr': 'Par arrondissement',
+  'fx.log.sruarr.kind': 'la ligne des 25 %',
+  'fx.log.sruarr.title.before': 'La ligne des ',
+  'fx.log.sruarr.title.em': '25 %',
+  'fx.log.sruarr.title.after': ', arrondissement par arrondissement.',
+  'fx.log.sruarr.sub': 'Chaque barre mesure la distance au seuil légal de {target} % — inventaire SRU au 1er janvier {year}, dernière ventilation par arrondissement publiée. Cliquez une barre pour ouvrir la fiche.',
+  'fx.log.sruarr.target_label': '{target} % (loi SRU)',
+  'fx.log.sruarr.note': 'La loi SRU s’applique à la commune entière — la ligne des 25 % sert ici de repère de lecture, pas d’obligation par arrondissement. À l’échelle de Paris, le taux officiel le plus récent est de {ratio} % ({ratioYear}) ; la ventilation ci-dessus correspond au millésime {dataYear}, le plus récent publié en open data (APUR).',
+  'fx.log.sruarr.vintage': 'Inventaire SRU · 1ᵉʳ janvier {year}',
+  'fx.log.sruarr.legend.below': 'sous {target} %',
+  'fx.log.sruarr.legend.above': 'au-dessus de {target} %',
+  'fx.log.sruarr.legend.past': 'taux en {year}',
+  'fx.log.sruarr.source.cite': 'APUR · Chiffres du logement social 2001-2019 (inventaire SRU, licence ODbL)',
   'fx.log.kicker': '06 · Logement social',
   'fx.log.hook.aria': 'Production de logement social à Paris et tension de la demande',
   'fx.log.hook.kicker': 'Production Ville · {year}',

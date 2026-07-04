@@ -3142,6 +3142,25 @@ type ArrStats = {
   }>;
 };
 
+export type SruArrondissement = {
+  arr: number;
+  label: string;
+  latest: { year: number; logements_sociaux: number; residences_principales: number; taux_pct: number };
+  series: { year: number; logements_sociaux: number; residences_principales: number; taux_pct: number }[];
+};
+
+export type SruArrondissementsData = {
+  source: string;
+  source_url: string;
+  licence: string;
+  latest_year: number;
+  arrondissements: SruArrondissement[];
+};
+
+export function loadSruArrondissements(): SruArrondissementsData | null {
+  return readJsonOrNull<SruArrondissementsData>("logement_sru_arrondissements.json");
+}
+
 export type LogementSocialData = {
   year: number;
   availableYears: number[];

@@ -15238,3 +15238,7 @@ body:has(.theme-db-scrolly) { background: #fafaf7 !important; color: var(--p-ink
 .theme-fusion .fx-signalement-fallback:hover {
   text-decoration-color: var(--ocre, #b8551c);
 }
+
+/* SRU deviation bars */
+.fx-sru-row:hover { background: var(--bg-hover); }
+.fx-sru-row:focus-visible { outline: 2px solid var(--bleu-vif); outline-offset: 1px; }

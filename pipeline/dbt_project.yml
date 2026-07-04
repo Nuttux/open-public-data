@@ -282,6 +282,17 @@ seeds:
         source: STRING
         source_url: STRING
 
+    seed_apur_sru_2001_2019:
+      +column_types:
+        arrondissement: INT64
+        label: STRING
+        annee: INT64
+        logements_sociaux: INT64
+        residences_principales: INT64
+        source: STRING
+        source_url: STRING
+        licence: STRING
+
 # =============================================================================
 # Configuration des modèles par couche
 # =============================================================================

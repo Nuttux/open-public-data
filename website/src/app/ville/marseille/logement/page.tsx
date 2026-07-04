@@ -41,5 +41,5 @@ export default async function LogementSocialMarseillePage({
   // No Marseille-specific blog posts yet — empty list filters out the
   // RelatedArticles section (handled inside LogementSocialClient).
   const posts: Parameters<typeof LogementSocialClient>[0]["posts"] = [];
-  return <LogementSocialClient d={d} posts={posts} />;
+  return <LogementSocialClient sruArr={null} d={d} posts={posts} />;
 }
