@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import "@/app/fusion.css";
-import { loadInvestissementsData } from "@/lib/fusion-data";
+import { loadInvestissementsData , loadFriseChantiers } from "@/lib/fusion-data";
 import { getPostsForPage } from "@/lib/page-articles";
 import { buildLocaleAwareMetadata } from "@/lib/seo";
 import InvestissementsClient from "./InvestissementsClient";
@@ -27,6 +27,7 @@ export default async function InvestissementsPage({
   const sp = await searchParams;
   const requestedYear = sp.year ? Number(sp.year) : undefined;
   const d = loadInvestissementsData(requestedYear);
+  const frise = loadFriseChantiers();
   const posts = getPostsForPage("investissements");
-  return <InvestissementsClient d={d} posts={posts} />;
+  return <InvestissementsClient frise={frise} d={d} posts={posts} />;
 }
