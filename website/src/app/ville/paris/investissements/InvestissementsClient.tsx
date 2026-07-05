@@ -15,6 +15,7 @@ import ExportRow from "@/components/fusion/ExportRow";
 import Tip from "@/components/fusion/Tip";
 import ProjectMap from "@/components/fusion/ProjectMap";
 import ProjetThumb from "@/components/fusion/ProjetThumb";
+import FriseChantiers from "@/components/fusion/FriseChantiers";
 import ParisChoropleth from "@/components/fusion/ParisChoropleth";
 import BudgetTimeline from "@/components/fusion/BudgetTimeline";
 import StackedBarTheme from "@/components/fusion/StackedBarTheme";
@@ -23,7 +24,7 @@ import RelatedArticles, { type ArticlePlaceholder } from "@/components/fusion/Re
 import PageHook from "@/components/fusion/PageHook";
 import { fmtBillions, fmtDec, fmtInt, fmtMillions } from "@/lib/fmt";
 import type { BlogPostMeta } from "@/lib/blog";
-import type { InvestissementsData } from "@/lib/fusion-data";
+import type { InvestissementsData , FriseChantiersData } from "@/lib/fusion-data";
 import { slugifyChapitre } from "@/lib/projet-utils";
 import { useT, useLocale } from "@/lib/localeContext";
 import { trLabel } from "@/lib/label-translate";
@@ -52,9 +53,11 @@ const INV_PLACEHOLDERS: ArticlePlaceholder[] = [
 
 export default function InvestissementsClient({
   d,
+  frise,
   posts,
 }: {
   d: InvestissementsData;
+  frise: FriseChantiersData | null;
   posts: BlogPostMeta[];
 }) {
   const t = useT();
@@ -97,6 +100,7 @@ export default function InvestissementsClient({
           { id: "sec-chapitre", label: t("fx.toc.chapitres") },
           { id: "sec-territoire", label: t("fx.inv.s05.kind") },
           { id: "sec-evolution", label: t("fx.toc.evolution") },
+          { id: "sec-frise", label: t("fx.toc.frise") },
           { id: "sec-projets", label: t("fx.toc.projets") },
           { id: "sec-analyses", label: t("fx.toc.analyses") },
           { id: "sec-explorer", label: t("fx.toc.explorer") },
@@ -389,10 +393,33 @@ export default function InvestissementsClient({
       </section>
 
 
+      {frise && (
+        <section className="fx-section" id="sec-frise">
+          <div className="fx-wrap">
+            <SectionHead
+              number="05"
+              kind={t("fx.inv.frise.kind")}
+              title={
+                <>
+                  {t("fx.inv.frise.title.before")}
+                  <em>{t("fx.inv.frise.title.em")}</em>
+                  {t("fx.inv.frise.title.after")}
+                </>
+              }
+              subtitle={fill(t("fx.inv.frise.sub"), { from: frise.from, to: frise.to, n: frise.perYear })}
+            />
+          </div>
+          <FriseChantiers data={frise} ficheBase={cityBasePath} />
+          <div className="fx-wrap">
+            <p className="fx-note" style={{ marginTop: 18 }}>{t("fx.inv.frise.note")}</p>
+          </div>
+        </section>
+      )}
+
       <section className="fx-section" id="sec-projets">
         <div className="fx-wrap">
           <SectionHead
-            number="05"
+            number="06"
             kind={t("fx.inv.s01.kind")}
             title={
               <>
@@ -434,11 +461,11 @@ export default function InvestissementsClient({
         </div>
       </section>
 
-      <RelatedArticles number="06" posts={posts} placeholders={INV_PLACEHOLDERS} />
+      <RelatedArticles number="07" posts={posts} placeholders={INV_PLACEHOLDERS} />
 
       <section className="fx-section" id="sec-explorer">
         <div className="fx-wrap">
-          <SectionHead number="07" kind={t("fx.inv.s09.kind")} />
+          <SectionHead number="08" kind={t("fx.inv.s09.kind")} />
           <div className="fx-grid-tiles">
             <TileCard
               href={cityMarchesPath}
