@@ -14,6 +14,7 @@ import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import AnalyticsProvider from "@/components/AnalyticsProvider";
+import ChatPanel from "@/components/ChatPanel";
 import { LocaleProvider } from "@/lib/localeContext";
 import SearchModal from "@/components/fusion/SearchModal";
 import { SITE_URL, SITE_NAME, organizationJsonLd, websiteJsonLd, readLocale } from "@/lib/seo";
@@ -150,6 +151,7 @@ export default async function RootLayout({
             {children}
             {drawer}
             <SearchModal />
+            <ChatPanel />
           </LocaleProvider>
         </AnalyticsProvider>
         {/* Vercel Speed Insights — Web Vitals (LCP, CLS, INP) en prod. */}

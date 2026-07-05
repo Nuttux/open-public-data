@@ -1,5 +1,10 @@
 """Contexte sémantique des datasets — injecté dans le system prompt pour guider Claude.
 
+⚠️ DEPRECATED comme source de vérité : le site utilise désormais
+website/src/lib/chat/dataContext.ts (inventaire GÉNÉRÉ via `npm run gen:chat-context`
++ couche éditoriale). Ce module ne sert plus que le harness CLI local et
+peut dériver ; ne pas le synchroniser à la main.
+
 Inspiré de l'idée "semantic layer" (Dot, dbt) : décrire explicitement
 ce que contient chaque dataset, sa granularité, ses pièges, et les synonymes
 utilisateur → dataset. Évite que le modèle parte chercher au mauvais endroit

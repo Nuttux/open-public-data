@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import Link from "next/link";
+import ChatExamples from "./ChatExamples";
 
 export const metadata: Metadata = {
   title: "Pose tes questions au budget de Paris",
@@ -13,15 +13,6 @@ export const metadata: Metadata = {
     type: "website",
   },
 };
-
-const EXAMPLES: { q: string; tag: string }[] = [
-  { q: "Combien Paris a-t-elle versé en subventions en 2024 ?", tag: "Subventions" },
-  { q: "Quels secteurs captent le plus de subventions ?", tag: "Thématiques" },
-  { q: "Combien Paris dépense-t-elle en cabinets de conseil ?", tag: "Marchés" },
-  { q: "Quel est le total de la dette de Paris ?", tag: "Dette" },
-  { q: "Compare le total des subventions 2019 et 2024", tag: "Évolution" },
-  { q: "Quel est le plus gros marché public notifié en 2024 ?", tag: "Top contrats" },
-];
 
 const POINTS = [
   {
@@ -50,32 +41,14 @@ export default function ChatLanding() {
           Pose tes questions au <span className="text-[#2a3680] italic">budget de Paris</span>.
         </h1>
         <p className="mt-5 max-w-2xl text-lg text-neutral-700">
-          Un assistant qui répond à partir des données publiques de la Ville — subventions, marchés, dette, budget. Sources citées, ton neutre, zéro hallucination.
+          Un assistant qui répond à partir des données publiques de la Ville — subventions, marchés, dette, budget. Sources citées, ton neutre, chiffres issus des seules données ouvertes.
         </p>
 
         <div className="mt-10">
           <div className="mb-3 text-[11px] font-semibold uppercase tracking-wider text-neutral-500">
             Exemples de questions
           </div>
-          <div className="grid gap-2 md:grid-cols-2">
-            {EXAMPLES.map((ex) => (
-              <Link
-                key={ex.q}
-                href={`/?q=${encodeURIComponent(ex.q)}`}
-                className="group flex items-start justify-between gap-3 rounded-lg border border-neutral-200 bg-white px-4 py-3 text-left transition hover:border-[#2a3680] hover:shadow-sm"
-              >
-                <div>
-                  <div className="text-[10px] font-semibold uppercase tracking-wider text-[#2a3680]">
-                    {ex.tag}
-                  </div>
-                  <div className="mt-0.5 text-sm text-neutral-800 group-hover:text-[#2a3680] transition">
-                    {ex.q}
-                  </div>
-                </div>
-                <span className="mt-3 text-neutral-300 group-hover:text-[#2a3680] transition">→</span>
-              </Link>
-            ))}
-          </div>
+          <ChatExamples />
           <p className="mt-3 text-xs text-neutral-500">
             Cliquer ouvre le chat avec la question pré-remplie.
           </p>
@@ -115,7 +88,7 @@ export default function ChatLanding() {
           <ul className="mt-2 space-y-1.5 text-xs text-neutral-600">
             <li>• Les données 2025-2026 sont budgétaires (votées), pas exécutées.</li>
             <li>• Les marchés publics affichent des enveloppes pluriannuelles, pas des dépenses annuelles réelles.</li>
-            <li>• Certaines années de subventions manquent (2020-2021).</li>
+            <li>• Le nombre de subventions par année n'est pas toujours comparable d'une année à l'autre (les montants, si).</li>
             <li>• L'assistant ne fait pas d'analyse politique ni de jugement sur les bénéficiaires.</li>
           </ul>
         </div>

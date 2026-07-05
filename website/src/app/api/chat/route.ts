@@ -5,9 +5,9 @@ import { TOOL_SCHEMAS, runTool } from "@/lib/chat/tools";
 export const runtime = "nodejs";
 export const maxDuration = 90;
 
-const MODEL = process.env.CHAT_MODEL ?? "claude-sonnet-4-5";
-const THINKING_BUDGET = 3000;
-const MAX_TOKENS = 6000; // doit être > THINKING_BUDGET ; reste pour le texte + tool_use
+const MODEL = process.env.CHAT_MODEL ?? "claude-sonnet-5";
+// Adaptive thinking (le modèle dose lui-même) ; max_tokens couvre thinking + texte + tool_use.
+const MAX_TOKENS = 12000;
 const MAX_TOOL_LOOPS = 8;
 
 type ChatMessage = { role: "user" | "assistant"; content: string };
@@ -15,7 +15,7 @@ type ChatMessage = { role: "user" | "assistant"; content: string };
 // Simple in-memory rate limit per IP. OK pour un seul process Next.js.
 // Pour du multi-instance, brancher Upstash Redis.
 const RATE_WINDOW_MS = 60 * 60 * 1000; // 1h
-const RATE_MAX_REQ = 20;
+const RATE_MAX_REQ = Number(process.env.CHAT_RATE_MAX ?? 20);
 const rateMap = new Map<string, number[]>();
 function rateLimit(ip: string): { ok: boolean; retryAfter?: number } {
   const now = Date.now();
@@ -46,7 +46,7 @@ export async function POST(req: Request) {
     );
   }
 
-  let body: { messages?: ChatMessage[] };
+  let body: { messages?: ChatMessage[]; locale?: string };
   try {
     body = await req.json();
   } catch {
@@ -60,6 +60,12 @@ export async function POST(req: Request) {
       return new Response(JSON.stringify({ error: "message invalide" }), { status: 400 });
     }
   }
+
+  // Deux variantes stables du system (fr/en) — chacune reste cacheable.
+  const sessionLang =
+    body.locale === "en"
+      ? "\n\n# Langue de session\nL'interface de l'utilisateur est en ANGLAIS. Réponds ENTIÈREMENT en anglais — texte, tableaux, libellés de liens et relances <followups> — sauf si l'utilisateur écrit explicitement en français."
+      : "";
 
   const apiKey = process.env.ANTHROPIC_API_KEY;
   if (!apiKey) return new Response(JSON.stringify({ error: "missing key" }), { status: 500 });
@@ -79,8 +85,8 @@ export async function POST(req: Request) {
           const turn = anthropic.messages.stream({
             model: MODEL,
             max_tokens: MAX_TOKENS,
-            thinking: { type: "enabled", budget_tokens: THINKING_BUDGET },
-            system: [{ type: "text", text: SYSTEM_PROMPT, cache_control: { type: "ephemeral" } }],
+            thinking: { type: "adaptive" },
+            system: [{ type: "text", text: SYSTEM_PROMPT + sessionLang, cache_control: { type: "ephemeral" } }],
             tools: TOOL_SCHEMAS as unknown as Anthropic.Tool[],
             messages,
           });
