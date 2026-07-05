@@ -62,6 +62,9 @@ export default function HeroDeck({ stats }: Props) {
   const fa = stats.featuredAsso;
   const fm = stats.featuredMarcheCategorie;
   const fb = stats.featuredBailleur;
+  // Titles come from i18n (not the data `nom`) so the EN locale can gloss the
+  // French names — keep fr/en `fx.land.deck.c*.title` in sync with the
+  // HERO_FEATURED_* picks in fusion-data.ts.
 
   return (
     <section className="fx-hero-deck" id="hero-deck" aria-label={t("fx.land.deck.aria")}>
@@ -71,7 +74,7 @@ export default function HeroDeck({ stats }: Props) {
             <HeroDeckCard
               href={`/ville/paris/investissements/projet/${fp.id}`}
               kicker={t("fx.land.deck.c1.kicker")}
-              title={fp.nom}
+              title={t("fx.land.deck.c1.title")}
               amount={fmtDec(fp.montant / 1e6, 1)}
               amountUnit="M €"
               meta={fill(t("fx.land.deck.c1.meta"), { arr: fp.arrondissement, year: fp.year })}
@@ -85,7 +88,7 @@ export default function HeroDeck({ stats }: Props) {
             <HeroDeckCard
               href={`/ville/paris/subventions/association/${fa.slug}`}
               kicker={t("fx.land.deck.c2.kicker")}
-              title={fa.nom}
+              title={t("fx.land.deck.c2.title")}
               amount={fmtInt(fa.montant / 1e6)}
               amountUnit="M €"
               meta={fill(t("fx.land.deck.c2.meta"), { year: fa.year, theme: fa.theme ?? "Culture" })}
@@ -99,7 +102,7 @@ export default function HeroDeck({ stats }: Props) {
             <HeroDeckCard
               href={`/ville/paris/marches/categorie/${fm.slug}`}
               kicker={t("fx.land.deck.c3.kicker")}
-              title={fm.nom}
+              title={t("fx.land.deck.c3.title")}
               amount={fm.total >= 1e9 ? fmtBillions(fm.total) : fmtMillions(fm.total)}
               amountUnit={fm.total >= 1e9 ? "Md €" : "M €"}
               meta={fill(t("fx.land.deck.c3.meta"), { year: fm.year, nb: fm.nbMarches })}
@@ -113,7 +116,7 @@ export default function HeroDeck({ stats }: Props) {
             <HeroDeckCard
               href={`/ville/paris/dette/bailleur/${fb.slug}`}
               kicker={t("fx.land.deck.c4.kicker")}
-              title={fb.nom}
+              title={t("fx.land.deck.c4.title")}
               amount={fb.capitalRestant >= 1e9 ? fmtBillions(fb.capitalRestant) : fmtMillions(fb.capitalRestant)}
               amountUnit={fb.capitalRestant >= 1e9 ? "Md €" : "M €"}
               meta={fill(t("fx.land.deck.c4.meta"), { year: fb.year, nb: fb.nbEmprunts })}
