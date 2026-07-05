@@ -2540,6 +2540,57 @@ function loadInvestissementsDataMarseille(requestedYear?: number): Investissemen
   };
 }
 
+// ─── La frise des chantiers ───────────────────────────────────────────────
+//
+// Les plus gros chantiers de chaque exercice, avec photo résolue (dédiée →
+// générique → pictogramme). L'axe est l'exercice budgétaire (inscription au
+// CA) — les données publiques ne portent pas de date de livraison, et un
+// même équipement peut apparaître plusieurs années (tranches successives).
+
+export type FriseProjet = {
+  id: string;
+  name: string;
+  name_en?: string;
+  arr: number;
+  chapitre: string;
+  amount: number;
+  isJO: boolean;
+  photo: ProjetPhotoResolved;
+};
+
+export type FriseYear = { year: number; total: number; projets: FriseProjet[] };
+
+export type FriseChantiersData = { years: FriseYear[]; from: number; to: number; perYear: number };
+
+export function loadFriseChantiers(perYear = 4): FriseChantiersData | null {
+  const trends = readJsonOrNull<InvTrends>("investissement_tendances.json");
+  if (!trends) return null;
+  const years: FriseYear[] = [];
+  for (const ty of trends.years.slice().sort((a, b) => a.year - b.year)) {
+    const raw = readJsonOrNull<InvComplet>(`map/investissements_complet_${ty.year}.json`);
+    if (!raw?.data?.length) continue;
+    const top = raw.data
+      .filter(hasUsableName)
+      .slice()
+      .sort((a, b) => (b.montant ?? 0) - (a.montant ?? 0))
+      .slice(0, perYear)
+      .map((pr) => ({
+        id: pr.id,
+        name: pr.nom_projet as string,
+        name_en: getProjetNameEn(pr.id) ?? undefined,
+        arr: Number(pr.arrondissement) || 0,
+        chapitre: pr.chapitre_libelle ?? "—",
+        amount: Number(pr.montant ?? 0),
+        isJO: detectJO(pr.nom_projet),
+        photo: resolveProjetPhoto(pr.id, pr.nom_projet),
+      }));
+    if (top.length === 0) continue;
+    years.push({ year: ty.year, total: ty.depenses_total, projets: top });
+  }
+  if (years.length < 3) return null;
+  return { years, from: years[0].year, to: years[years.length - 1].year, perYear };
+}
+
 export function loadInvestissementsData(
   requestedYear?: number,
   city: string = "paris",

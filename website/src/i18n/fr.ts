@@ -1861,6 +1861,19 @@ const fr: Record<string, string> = {
   'fx.mp.s08.t3.desc': "Où s'inscrivent ces enveloppes dans le budget global.",
 
   // ── Investissements page ─────────────────────────────────────────────────────
+  // ── Investissements · la frise des chantiers ──────────────────────────────
+  'fx.toc.frise': 'La frise',
+  'fx.inv.frise.kind': 'exercice par exercice',
+  'fx.inv.frise.title.before': 'La frise des ',
+  'fx.inv.frise.title.em': 'chantiers',
+  'fx.inv.frise.title.after': '.',
+  'fx.inv.frise.sub': 'Les {n} plus gros chantiers inscrits chaque année, de {from} à {to} — faites glisser la frise, cliquez une carte pour ouvrir la fiche.',
+  'fx.inv.frise.total': '{total} investis cette année-là',
+  'fx.inv.frise.hint': '← faites glisser →',
+  'fx.inv.frise.prev': 'Reculer dans la frise',
+  'fx.inv.frise.next': 'Avancer dans la frise',
+  'fx.inv.frise.aria': 'Frise horizontale des plus gros chantiers par exercice, de {from} à {to}',
+  'fx.inv.frise.note': 'L’année est l’exercice budgétaire (inscription au compte administratif), pas une date de livraison — la donnée publique n’en contient pas. Un même équipement peut apparaître plusieurs années : ce sont des tranches successives du même chantier.',
   'fx.inv.kicker': '04 · Investissements',
   'fx.inv.title.before': 'Les ',
   'fx.inv.title.em': 'chantiers',

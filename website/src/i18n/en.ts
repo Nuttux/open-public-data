@@ -1861,6 +1861,19 @@ const en: Record<string, string> = {
   'fx.mp.s08.t3.desc': 'Where these envelopes sit within the overall budget.',
 
   // ── Investissements page ─────────────────────────────────────────────────────
+  // ── Investments · the works timeline ───────────────────────────────────────
+  'fx.toc.frise': 'The timeline',
+  'fx.inv.frise.kind': 'year by year',
+  'fx.inv.frise.title.before': 'The ',
+  'fx.inv.frise.title.em': 'works timeline',
+  'fx.inv.frise.title.after': '.',
+  'fx.inv.frise.sub': 'The {n} biggest projects booked each year, from {from} to {to} — drag the strip, click a card to open the project profile.',
+  'fx.inv.frise.total': '{total} invested that year',
+  'fx.inv.frise.hint': '← drag →',
+  'fx.inv.frise.prev': 'Scroll timeline backwards',
+  'fx.inv.frise.next': 'Scroll timeline forwards',
+  'fx.inv.frise.aria': 'Horizontal timeline of the biggest projects per budget year, {from} to {to}',
+  'fx.inv.frise.note': 'The year is the budget exercise (entry in the administrative account), not a delivery date — the public data does not contain one. The same facility can appear in several years: successive phases of the same project.',
   'fx.inv.kicker': '04 · Investments',
   'fx.inv.title.before': 'Paris ',
   'fx.inv.title.em': 'capital projects',
