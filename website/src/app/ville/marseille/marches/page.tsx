@@ -37,5 +37,5 @@ export default async function MarchesPublicsPage({
   // No Marseille-specific blog posts yet — empty list filters out the
   // RelatedArticles section (handled inside MarchesPublicsClient).
   const posts: Parameters<typeof MarchesPublicsClient>[0]["posts"] = [];
-  return <MarchesPublicsClient idx={idx} d={d} posts={posts} />;
+  return <MarchesPublicsClient ranking={null} idx={idx} d={d} posts={posts} />;
 }

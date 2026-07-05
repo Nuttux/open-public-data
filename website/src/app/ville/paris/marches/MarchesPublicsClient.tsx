@@ -15,13 +15,14 @@ import ExpandableList from "@/components/fusion/ExpandableList";
 import BudgetTimeline from "@/components/fusion/BudgetTimeline";
 import Tip from "@/components/fusion/Tip";
 import StackedBarTheme from "@/components/fusion/StackedBarTheme";
+import FournisseursBumpChart from "@/components/fusion/FournisseursBumpChart";
 import MarchesSearch from "./MarchesSearch";
 import RelatedArticles, { type ArticlePlaceholder } from "@/components/fusion/RelatedArticles";
 import PageHook from "@/components/fusion/PageHook";
 import { normalizeObjet } from "@/lib/objet-normalizer";
 import { fmtBillions, fmtDec, fmtInt, fmtMillions } from "@/lib/fmt";
 import type { BlogPostMeta } from "@/lib/blog";
-import type { MarchesPageData } from "@/lib/fusion-data";
+import type { MarchesPageData , FournisseursRankingData } from "@/lib/fusion-data";
 import { useT, useLocale } from "@/lib/localeContext";
 import { trLabel } from "@/lib/label-translate";
 
@@ -53,10 +54,12 @@ const MP_PLACEHOLDERS: ArticlePlaceholder[] = [
 export default function MarchesPublicsClient({
   idx,
   d,
+  ranking,
   posts,
 }: {
   idx: MarchesIndex;
   d: MarchesPageData;
+  ranking: FournisseursRankingData | null;
   posts: BlogPostMeta[];
 }) {
   const t = useT();
@@ -75,6 +78,7 @@ export default function MarchesPublicsClient({
           { id: "sec-overview", label: t("fx.toc.chiffres") },
           { id: "sec-categorie", label: t("fx.toc.categories") },
           { id: "sec-titulaires", label: t("fx.toc.titulaires") },
+          { id: "sec-classement", label: t("fx.toc.classement") },
           { id: "sec-recherche", label: t("fx.toc.recherche") },
           { id: "sec-procedure", label: t("fx.toc.procedure") },
           { id: "sec-evolution", label: t("fx.toc.evolution") },
@@ -441,10 +445,41 @@ export default function MarchesPublicsClient({
         </div>
       </section>
 
+      {ranking && (
+        <section className="fx-section" id="sec-classement">
+          <div className="fx-wrap">
+            <SectionHead
+              number="04"
+              kind={t("fx.mp.rank.kind")}
+              title={
+                <>
+                  {t("fx.mp.rank.title.before")}
+                  <em>{t("fx.mp.rank.title.em")}</em>
+                  {t("fx.mp.rank.title.after")}
+                </>
+              }
+              subtitle={fill(t("fx.mp.rank.sub"), {
+                n: ranking.rows.length,
+                from: ranking.years[0],
+                to: ranking.years[ranking.years.length - 1],
+                share: Math.round(ranking.topSharePct),
+              })}
+            />
+            <FournisseursBumpChart data={ranking} ficheBase="/ville/paris/marches" />
+            <p className="fx-note">{t("fx.mp.rank.note")}</p>
+            <ChartSource
+              source={fill(t("fx.mp.rank.source.cite"), { from: ranking.years[0], to: ranking.years[ranking.years.length - 1] })}
+              dataHref="https://opendata.paris.fr/explore/dataset/marches-publics-notifies-a-partir-de-2013/"
+              methodAnchor="marches"
+            />
+          </div>
+        </section>
+      )}
+
       <section className="fx-section" id="sec-recherche">
         <div className="fx-wrap">
           <SectionHead
-            number="04"
+            number="05"
             kind={t("fx.mp.s04.kind")}
             title={
               <>
@@ -468,7 +503,7 @@ export default function MarchesPublicsClient({
       <section className="fx-section" id="sec-procedure">
         <div className="fx-wrap">
           <SectionHead
-            number="05"
+            number="06"
             kind={<Tip label={t("fx.mp.s05.kind.tip")}>{t("fx.mp.s05.kind")}</Tip>}
             title={
               <>
@@ -713,7 +748,7 @@ export default function MarchesPublicsClient({
       <section className="fx-section" id="sec-evolution">
         <div className="fx-wrap">
           <SectionHead
-            number="06"
+            number="07"
             kind={t("fx.mp.s07.kind")}
             title={
               <>
@@ -745,12 +780,12 @@ export default function MarchesPublicsClient({
         </div>
       </section>
 
-      <RelatedArticles number="07" posts={posts} placeholders={MP_PLACEHOLDERS} />
+      <RelatedArticles number="08" posts={posts} placeholders={MP_PLACEHOLDERS} />
 
       <section className="fx-section" id="sec-explorer">
         <div className="fx-wrap">
           <SectionHead
-            number="08"
+            number="09"
             kind={t("fx.mp.s08.kind")}
             subtitle={t("fx.mp.s08.sub")}
           />

@@ -1906,6 +1906,166 @@ export function loadFournisseur(key: string): FournisseurFiche | null {
   };
 }
 
+// ─── Classement des fournisseurs (cumul pluriannuel) ─────────────────────
+//
+// Rang par CUMUL de plafonds notifiés depuis la première année disponible —
+// volontairement pas par montant annuel : les enveloppes pluriannuelles
+// rendent les rangs annuels erratiques (un accord-cadre gagné = pic isolé).
+// Mêmes règles d'agrégation que loadMarchesPageData : clé SIREN (ou nom
+// normalisé à défaut), multi-attributaires exclus.
+
+export type FournisseurRankPoint = { year: number; cumul: number; rank: number };
+
+export type FournisseurRankRow = {
+  /** SIREN 9 chiffres, ou null si inconnu (pas de fiche cliquable). */
+  siren: string | null;
+  name: string;
+  /** Catégorie dominante (par € cumulés) — libellé Paris. */
+  categorie: string;
+  /** Groupe éditorial dérivé de la catégorie (clé i18n fx.mp.rank.cat.*). */
+  catGroup: "proprete" | "btp" | "energie" | "mobilier" | "it" | "autres";
+  totalAmount: number;
+  nbContrats: number;
+  firstYear: number;
+  points: FournisseurRankPoint[];
+};
+
+export type FournisseursRankingData = {
+  years: number[];
+  rows: FournisseurRankRow[];
+  totalAll: number;
+  topSharePct: number;
+  topN: number;
+};
+
+function catGroupOf(label: string): FournisseurRankRow["catGroup"] {
+  const l = label.toLowerCase();
+  if (/propret|d[ée]chet|collecte|nettoie|nettoyage/.test(l)) return "proprete";
+  // Énergie avant BTP : « travaux d'installations électriques » = énergie.
+  if (/[ée]nergie|[ée]lectric|[ée]clairage|chauffage|gaz|carburant|combustible/.test(l)) return "energie";
+  if (/voirie|travaux|b[âa]timent|construction|g[ée]nie civil|am[ée]nagement|route/.test(l)) return "btp";
+  if (/mobilier urbain|affichage|signal|communication ext/.test(l)) return "mobilier";
+  if (/informatique|logiciel|num[ée]rique|t[ée]l[ée]com|maintenance/.test(l)) return "it";
+  return "autres";
+}
+
+export function loadFournisseursRanking(city: string = "paris", topN = 12): FournisseursRankingData | null {
+  let indexRaw: MarchesIndexRaw;
+  try {
+    indexRaw = readJson<MarchesIndexRaw>(cityJsonPath(city, "marches-publics/index.json"));
+  } catch {
+    return null;
+  }
+  const currentYear = new Date().getFullYear();
+  const years = (indexRaw.availableYears ?? [])
+    .filter((y) => y < currentYear)
+    .slice()
+    .sort((a, b) => a - b);
+  if (years.length < 3) return null;
+
+  const MULTI_NAME = "MARCHE MULTIATTRIBUTAIRE";
+  type Agg = {
+    siren: string | null;
+    name: string;
+    byYear: Map<number, number>;
+    byCat: Map<string, number>;
+    nbContrats: number;
+  };
+  const agg = new Map<string, Agg>();
+
+  for (const y of years) {
+    let file: MarchesFile;
+    try {
+      file = readJson<MarchesFile>(cityJsonPath(city, `marches-publics/marches_${y}.json`));
+    } catch {
+      continue;
+    }
+    for (const m of file.data ?? file.marches ?? []) {
+      const r = m as MarcheRow & { fournisseur_siret?: string; is_multiattributaire?: boolean };
+      const name = (r.fournisseur_nom ?? "").trim();
+      if (!name || name === MULTI_NAME || Boolean(r.is_multiattributaire)) continue;
+      const v = Number(r.montant_max ?? r.montant_min ?? 0);
+      if (!Number.isFinite(v) || v <= 0) continue;
+      const rawSiret = (r.fournisseur_siret ?? "").replace(/\s/g, "");
+      const siren = /^\d{9}/.test(rawSiret) ? rawSiret.slice(0, 9) : null;
+      const key = siren ?? `n:${name.toUpperCase().replace(/[^A-Z0-9]+/g, " ").trim()}`;
+      let a = agg.get(key);
+      if (!a) {
+        a = { siren, name, byYear: new Map(), byCat: new Map(), nbContrats: 0 };
+        agg.set(key, a);
+      }
+      if (name.length > a.name.length) a.name = name;
+      a.byYear.set(y, (a.byYear.get(y) ?? 0) + v);
+      const cat = (r.categorie_libelle ?? "Autres").trim() || "Autres";
+      a.byCat.set(cat, (a.byCat.get(cat) ?? 0) + v);
+      a.nbContrats += 1;
+    }
+  }
+  if (agg.size === 0) return null;
+
+  // Cumuls par année pour chaque fournisseur, puis rang annuel global.
+  const keys = [...agg.keys()];
+  const cumulByKey = new Map<string, Map<number, number>>();
+  for (const k of keys) {
+    const a = agg.get(k)!;
+    let run = 0;
+    const c = new Map<number, number>();
+    for (const y of years) {
+      run += a.byYear.get(y) ?? 0;
+      c.set(y, run);
+    }
+    cumulByKey.set(k, c);
+  }
+  const rankByKeyYear = new Map<string, Map<number, number>>();
+  for (const y of years) {
+    const arr = keys
+      .map((k) => ({ k, c: cumulByKey.get(k)!.get(y) ?? 0 }))
+      .filter((e) => e.c > 0)
+      .sort((x, z) => z.c - x.c);
+    arr.forEach((e, i) => {
+      if (!rankByKeyYear.has(e.k)) rankByKeyYear.set(e.k, new Map());
+      rankByKeyYear.get(e.k)!.set(y, i + 1);
+    });
+  }
+
+  const lastYear = years[years.length - 1];
+  const finals = keys
+    .map((k) => ({ k, total: cumulByKey.get(k)!.get(lastYear) ?? 0 }))
+    .sort((x, z) => z.total - x.total);
+  const totalAll = finals.reduce((s2, e) => s2 + e.total, 0);
+  const top = finals.slice(0, topN);
+
+  const rows: FournisseurRankRow[] = top.map(({ k, total }) => {
+    const a = agg.get(k)!;
+    let bestCat = "Autres";
+    let bestAmt = -1;
+    for (const [cat, amt] of a.byCat) {
+      if (amt > bestAmt) {
+        bestAmt = amt;
+        bestCat = cat;
+      }
+    }
+    const activeYears = years.filter((y) => (cumulByKey.get(k)!.get(y) ?? 0) > 0);
+    return {
+      siren: a.siren,
+      name: a.name,
+      categorie: bestCat,
+      catGroup: catGroupOf(bestCat),
+      totalAmount: total,
+      nbContrats: a.nbContrats,
+      firstYear: activeYears[0] ?? years[0],
+      points: activeYears.map((y) => ({
+        year: y,
+        cumul: cumulByKey.get(k)!.get(y) ?? 0,
+        rank: rankByKeyYear.get(k)?.get(y) ?? 9999,
+      })),
+    };
+  });
+
+  const topShare = totalAll > 0 ? (top.reduce((s2, e) => s2 + e.total, 0) / totalAll) * 100 : 0;
+  return { years, rows, totalAll, topSharePct: topShare, topN };
+}
+
 export function loadMarchesPageData(requestedYear?: number, city: string = "paris"): MarchesPageData {
   const indexRaw = readJson<MarchesIndexRaw>(cityJsonPath(city, "marches-publics/index.json"));
   // Exclure l'année calendaire en cours : DECP est en remontée continue, un

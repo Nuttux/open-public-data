@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import "@/app/fusion.css";
-import { loadMarchesIndex, loadMarchesPageData } from "@/lib/fusion-data";
+import { loadFournisseursRanking, loadMarchesIndex, loadMarchesPageData } from "@/lib/fusion-data";
 import { getPostsForPage } from "@/lib/page-articles";
 import { buildLocaleAwareMetadata } from "@/lib/seo";
 import MarchesPublicsClient from "./MarchesPublicsClient";
@@ -28,6 +28,7 @@ export default async function MarchesPublicsPage({
   const requestedYear = sp.year ? Number(sp.year) : undefined;
   const idx = loadMarchesIndex();
   const d = loadMarchesPageData(requestedYear);
+  const ranking = loadFournisseursRanking();
   const posts = getPostsForPage("marches-publics");
-  return <MarchesPublicsClient idx={idx} d={d} posts={posts} />;
+  return <MarchesPublicsClient idx={idx} d={d} ranking={ranking} posts={posts} />;
 }
