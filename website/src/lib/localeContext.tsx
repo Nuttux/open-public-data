@@ -95,6 +95,13 @@ export function LocaleProvider({
     } catch { /* SSR / private browsing */ }
   }, [locale]);
 
+  // Keep <html lang> in sync with the active locale: SSR only knows the cookie,
+  // so a client-side toggle would otherwise leave a stale lang attribute —
+  // wrong for screen readers and for :lang() CSS (EN hero sizing).
+  useEffect(() => {
+    document.documentElement.lang = locale;
+  }, [locale]);
+
   const setLocale = useCallback((l: Locale) => {
     setLocaleState(l);
     try { localStorage.setItem(STORAGE_KEY, l); } catch { /* ignore */ }

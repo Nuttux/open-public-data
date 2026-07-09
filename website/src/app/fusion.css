@@ -891,6 +891,14 @@ body:has(.theme-fusion) > div.pb-24 { padding-bottom: 0 !important; }
   .theme-fusion .fx-marquee-item { font-size: 13px; }
   .theme-fusion .fx-marquee-amount { font-size: 11px; }
 }
+/* Grands écrans (16" et +) : le marquee garde une présence visuelle
+ * proportionnée au fold au lieu de se réduire à un fil. */
+@media (min-width: 1440px) {
+  .theme-fusion .fx-marquee { padding: 22px 0; }
+  .theme-fusion .fx-marquee-track { gap: 44px; }
+  .theme-fusion .fx-marquee-item { font-size: 16px; }
+  .theme-fusion .fx-marquee-amount { font-size: 14px; }
+}
 
 /* ───── ACTE 2 — ÉCHELLE + DÉTAIL (chiffre intro → décompo en 6 sections) ────────── */
 /* Pas de border-bottom : l'échelle et le chip-strip lisent comme une seule séquence
@@ -5267,6 +5275,18 @@ body:has(.theme-fusion) > div.pb-24 { padding-bottom: 0 !important; }
   max-width: 1100px;
 }
 .theme-fusion .fx-hero h1 em { font-style: italic; font-weight: 600; color: var(--bleu); }
+/* EN : « Where does public money » à 120px fait ~1320px, plus large que le
+ * .fx-wrap (1160px utiles) → le H1 casse en 3 lignes et le marquee déborde
+ * sous le fold. Corps max réduit pour garantir 2 lignes (mesuré : 2 lignes
+ * à ≤100px, 3 à 102px — l'em italique élargit ; 96px laisse du slack).
+ * Le FR garde 120px : il casse sur son <br> explicite. */
+@media (min-width: 769px) {
+  /* Scopé desktop : la spécificité de :lang(en) battrait sinon la règle
+   * mobile (max-width:768px) qui réduit le H1 à clamp(28px, 8vw, 44px). */
+  .theme-fusion .fx-hero h1:lang(en) {
+    font-size: clamp(44px, 8vw, 96px);
+  }
+}
 .theme-fusion .fx-hero h1 b { font-weight: 700; color: var(--rouge); }
 .theme-fusion .fx-hero .fx-lede {
   font-family: var(--f-ui);
@@ -5315,6 +5335,16 @@ body:has(.theme-fusion) > div.pb-24 { padding-bottom: 0 !important; }
   /* Sur mobile, le Deck horizontal carousel veut son padding-bottom limité
    * pour que le marquee remonte vers le bas du fold. */
   .theme-fusion .fx-hero-deck { padding: 16px 0; }
+}
+/* Fenêtre large mais peu haute : le fold n'a aucun slack (voir .fx-hero-fold),
+ * donc les ~20px pris par le marquee agrandi (media min-width:1440px plus haut)
+ * sont rendus en compactant les espacements hero + deck — sinon le marquee
+ * déborde sous le 1er écran. Doit rester APRÈS les règles .fx-hero ci-dessus
+ * (même spécificité : l'ordre décide). */
+@media (min-width: 1440px) and (max-height: 980px) {
+  .theme-fusion .fx-hero { padding: 36px 0 12px; }
+  .theme-fusion .fx-hero h1 { margin-bottom: 20px; }
+  .theme-fusion .fx-hero-deck { padding: 12px 0; }
 }
 
 /* Scale section */
