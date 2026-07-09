@@ -36,7 +36,8 @@ function marchesBlock(): string {
 - Années : ${Math.min(...m.years)}–${Math.max(...m.years)}.
 - Enveloppes max totales par année :
 ${totals}
-- Outils : get_marches_summary (top contrats + catégories), search_marches (mot-clé), get_marches_tendances (évolution).
+- Outils : get_marches_summary (top contrats + catégories), search_marches (mot-clé), get_top_fournisseurs (classement fournisseurs cumulé), get_marches_tendances (évolution).
+- Mots-clés éprouvés par sujet (utilise CES ensembles pour la reproductibilité) : propreté/ordures → "collecte" + "déchets" + "nettoiement" ; vélo → "cyclable" (PAS "vélo", trop de bruit) ; piscines → "piscine" ; écoles → "scolaire" + "école".
 - PIÈGE CRITIQUE : montant_max = enveloppe contractuelle PLURIANNUELLE (plafond), PAS une dépense annuelle. À préciser à CHAQUE citation de montant de marché.
 - PIÈGE : ${Math.max(...m.years) - 1}–${Math.max(...m.years)} = années en cours de publication, probablement incomplètes.
 - PAS pour : ce qui a été réellement payé/facturé (non disponible en open data).`;

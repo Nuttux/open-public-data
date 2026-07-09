@@ -1,6 +1,7 @@
 import { notFound } from "next/navigation";
 
 import { DetailDrawer, ContratFiche } from "@/components/fusion";
+import { DrawerKicker } from "@/components/fusion/DataLabel";
 import {
   loadContrat,
   loadContratRanking,
@@ -35,7 +36,7 @@ export default async function DrawerContratPage({ params }: { params: Promise<Pa
   return (
     <div className="theme-fusion">
       <DetailDrawer
-        kicker={<>Marché · {contrat.nature} · {contrat.year}</>}
+        kicker={<DrawerKicker k="contrat" year={contrat.year} nature={contrat.nature} />}
         title={vulgarization?.objet_clair || contrat.objet || `Marché ${contrat.numero}`}
         shareUrl={`/ville/paris/marches/contrat/${contrat.numero}`}
         shareText={shareText}

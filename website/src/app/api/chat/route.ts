@@ -81,7 +81,13 @@ export async function POST(req: Request) {
       };
 
       try {
+        const deadline = Date.now() + 80_000; // sous maxDuration, coupe proprement
         for (let i = 0; i < MAX_TOOL_LOOPS; i++) {
+          if (Date.now() > deadline) {
+            send("error", { message: "réponse trop longue, réessaie avec une question plus ciblée" });
+            controller.close();
+            return;
+          }
           const turn = anthropic.messages.stream({
             model: MODEL,
             max_tokens: MAX_TOKENS,

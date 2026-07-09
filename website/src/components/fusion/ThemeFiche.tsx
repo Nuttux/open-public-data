@@ -1,7 +1,17 @@
+"use client";
+
 import Link from "next/link";
 
 import type { ThemeSubventionsFiche } from "@/lib/fusion-data";
 import { fmtCompactEur, fmtInt, fmtDec } from "@/lib/fmt";
+import { useT, useLocale } from "@/lib/localeContext";
+import { trLabel } from "@/lib/label-translate";
+
+const fill = (s: string, vars: Record<string, string | number>) => {
+  let r = s;
+  for (const [k, v] of Object.entries(vars)) r = r.split(`{${k}}`).join(String(v));
+  return r;
+};
 
 const THEME_COLORS: Record<string, string> = {
   "Social": "#c12323",
@@ -26,6 +36,8 @@ function colorFor(theme: string): string {
 }
 
 export default function ThemeFiche({ fiche }: { fiche: ThemeSubventionsFiche }) {
+  const t = useT();
+  const { locale } = useLocale();
   const total = fmtCompactEur(fiche.total);
   const color = colorFor(fiche.theme);
   const maxEvol = Math.max(...fiche.evolution.map((e) => e.amount), 1);
@@ -44,36 +56,40 @@ export default function ThemeFiche({ fiche }: { fiche: ThemeSubventionsFiche }) 
           textTransform: "uppercase",
         }}
       >
-        {fiche.theme} · {fmtInt(fiche.nbBeneficiaires)} bénéficiaires · {fmtInt(fiche.nbSubventions)} subventions
+        {fill(t("fx.fiche.theme.banner"), {
+          theme: trLabel(fiche.theme, locale),
+          benef: fmtInt(fiche.nbBeneficiaires),
+          subv: fmtInt(fiche.nbSubventions),
+        })}
       </div>
 
       <div className="fx-fiche-kpis">
         <div className="fx-fiche-kpi">
-          <div className="fx-fiche-kpi-label">Montant {fiche.year}</div>
+          <div className="fx-fiche-kpi-label">{fill(t("fx.fiche.theme.kpi.montant"), { year: fiche.year })}</div>
           <div className="fx-fiche-kpi-value tnum">
             {total.value}
             <span className="u">{total.unit}</span>
           </div>
         </div>
         <div className="fx-fiche-kpi">
-          <div className="fx-fiche-kpi-label">Part du total</div>
+          <div className="fx-fiche-kpi-label">{t("fx.fiche.theme.kpi.part")}</div>
           <div className="fx-fiche-kpi-value tnum">
             {fmtDec(fiche.shareOfTotalPct, 1)}
             <span className="u">%</span>
           </div>
         </div>
         <div className="fx-fiche-kpi">
-          <div className="fx-fiche-kpi-label">Bénéficiaires</div>
+          <div className="fx-fiche-kpi-label">{t("fx.fiche.theme.kpi.benef")}</div>
           <div className="fx-fiche-kpi-value tnum">{fmtInt(fiche.nbBeneficiaires)}</div>
         </div>
         <div className="fx-fiche-kpi">
-          <div className="fx-fiche-kpi-label">Subventions</div>
+          <div className="fx-fiche-kpi-label">{t("fx.fiche.theme.kpi.subv")}</div>
           <div className="fx-fiche-kpi-value tnum">{fmtInt(fiche.nbSubventions)}</div>
         </div>
       </div>
 
       <section className="fx-fiche-section">
-        <div className="fx-fiche-h">Top 10 bénéficiaires · {fiche.year}</div>
+        <div className="fx-fiche-h">{fill(t("fx.fiche.theme.top10"), { year: fiche.year })}</div>
         <div>
           {fiche.topBeneficiaires.map((b, i) => {
             const { value, unit } = fmtCompactEur(b.amount);
@@ -107,7 +123,7 @@ export default function ThemeFiche({ fiche }: { fiche: ThemeSubventionsFiche }) 
 
       {fiche.evolution.length > 1 && (
         <section className="fx-fiche-section">
-          <div className="fx-fiche-h">Évolution depuis {fiche.evolution[0].year}</div>
+          <div className="fx-fiche-h">{fill(t("fx.fiche.theme.evolution"), { year: fiche.evolution[0].year })}</div>
           <div>
             {fiche.evolution
               .slice()
@@ -147,7 +163,7 @@ export default function ThemeFiche({ fiche }: { fiche: ThemeSubventionsFiche }) 
                       {value} <span style={{ fontSize: ".7em", color: "var(--muted)" }}>{unit}</span>
                     </span>
                     <span style={{ textAlign: "right", fontFamily: "var(--f-mono)", fontSize: 11, color: "var(--muted)" }}>
-                      {fmtInt(y.count)} sub.
+                      {fill(t("fx.fiche.theme.sub_abbr"), { n: fmtInt(y.count) })}
                     </span>
                   </div>
                 );
@@ -156,10 +172,7 @@ export default function ThemeFiche({ fiche }: { fiche: ThemeSubventionsFiche }) 
         </section>
       )}
 
-      <p className="fx-fiche-note">
-        Les subventions sont agrégées depuis le jeu open data « Subventions accordées ». Chaque clic sur
-        un bénéficiaire ouvre l&apos;historique complet de l&apos;association.
-      </p>
+      <p className="fx-fiche-note">{t("fx.fiche.theme.note")}</p>
     </div>
   );
 }

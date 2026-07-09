@@ -57,6 +57,8 @@ type MarcheRow = {
   objet?: string;
   nature?: string;
   fournisseur_nom?: string;
+  fournisseur_siret?: string | null;
+  is_multiattributaire?: boolean;
   montant_min?: number;
   montant_max?: number;
   date_notification?: string;
@@ -327,6 +329,47 @@ export function get_marches_tendances() {
       enveloppe_totale: round0(y.enveloppe_totale),
       nb_marches: y.nb_marches,
       par_nature: y.par_nature?.map((n) => ({ label: n.label, montant: round0(n.montant), count: n.count })),
+    })),
+  };
+}
+
+export function get_top_fournisseurs({ limit = 15, year }: { limit?: number; year?: number }) {
+  const years = year ? [year] : [...(INV.marches?.years ?? [])];
+  type Agg = { nom: string; total: number; nb: number; yMin: number; yMax: number };
+  const bySupplier = new Map<string, Agg>();
+  let multiTotal = 0;
+  let multiNb = 0;
+  for (const y of years) {
+    const d = loadJson<MarchesYearFile>(`marches-publics/marches_${y}.json`);
+    if (!d) continue;
+    for (const r of d.data) {
+      const montant = r.montant_max ?? 0;
+      if (r.is_multiattributaire || fold(r.fournisseur_nom ?? "") === "marche multiattributaire") {
+        multiTotal += montant;
+        multiNb += 1;
+        continue;
+      }
+      if (!r.fournisseur_nom) continue;
+      // identité : SIREN (9 premiers chiffres du SIRET) si présent, sinon nom normalisé
+      const key = r.fournisseur_siret ? r.fournisseur_siret.slice(0, 9) : fold(r.fournisseur_nom);
+      const cur = bySupplier.get(key) ?? { nom: r.fournisseur_nom, total: 0, nb: 0, yMin: y, yMax: y };
+      cur.total += montant;
+      cur.nb += 1;
+      cur.yMin = Math.min(cur.yMin, y);
+      cur.yMax = Math.max(cur.yMax, y);
+      bySupplier.set(key, cur);
+    }
+  }
+  const top = [...bySupplier.values()].sort((a, b) => b.total - a.total).slice(0, Math.min(limit, 30));
+  return {
+    periode: year ? String(year) : `${Math.min(...years)}–${Math.max(...years)}`,
+    note: "cumuls d'enveloppes contractuelles PLURIANNUELLES (plafonds), pas des dépenses réelles ; identité par SIREN quand disponible, sinon par nom",
+    marches_multiattributaires_hors_classement: { total_enveloppes: round0(multiTotal), nb_marches: multiNb, note: "groupements sans attributaire individuel identifié dans les données" },
+    top: top.map((t) => ({
+      fournisseur: t.nom,
+      total_enveloppes_max: round0(t.total),
+      nb_marches: t.nb,
+      annees: t.yMin === t.yMax ? String(t.yMin) : `${t.yMin}–${t.yMax}`,
     })),
   };
 }
@@ -619,6 +662,11 @@ export const TOOL_SCHEMAS = [
     },
   },
   {
+    name: "get_top_fournisseurs",
+    description: "Classement des fournisseurs de la Ville par enveloppes cumulées (toutes années, ou une année via year). Les marchés multiattributaires (groupements sans nom) sont comptés à part. Appelle-le pour 'top fournisseurs', 'qui a le plus de contrats', 'plus gros prestataires'.",
+    input_schema: { type: "object", properties: { limit: { type: "integer", default: 15 }, year: { type: "integer" } }, required: [] },
+  },
+  {
     name: "get_marches_tendances",
     description: "Évolution annuelle des marchés publics (enveloppes, nombre, répartition TRAVAUX/SERVICES/FOURNITURES) sur toutes les années.",
     input_schema: { type: "object", properties: {}, required: [] },
@@ -680,6 +728,7 @@ export const DISPATCH: Record<string, (args: ToolArgs) => unknown> = {
   get_marches_summary: (a) => get_marches_summary(a as { year: number; top_n?: number }),
   search_marches: (a) => search_marches(a as { query: string; year?: number; min_montant?: number; limit?: number }),
   get_marches_tendances,
+  get_top_fournisseurs: (a) => get_top_fournisseurs(a as { limit?: number; year?: number }),
   get_budget_sankey: (a) => get_budget_sankey(a as { year: number }),
   get_budget_nature: (a) => get_budget_nature(a as { year: number; nature?: string }),
   get_evolution_budget: (a) => get_evolution_budget(a as { year?: number }),

@@ -5,6 +5,7 @@ import "@/app/fusion.css";
 import { Navbar, Footer } from "@/components/fusion";
 import ThemeFiche from "@/components/fusion/ThemeFiche";
 import { SubventionsBackKicker, ThemeLede } from "@/components/fusion/EntityPageHeaders";
+import { DataLabel } from "@/components/fusion/DataLabel";
 import { loadThemeSubventions } from "@/lib/fusion-data";
 import { readLocale } from "@/lib/seo";
 import { trLabel } from "@/lib/label-translate";
@@ -59,7 +60,7 @@ export default async function ThemePage({ params }: { params: Promise<Params> })
       <section className="fx-page-header">
         <div className="fx-wrap">
           <SubventionsBackKicker />
-          <h1 className="fx-page-title">{fiche.theme}</h1>
+          <h1 className="fx-page-title"><DataLabel value={fiche.theme} /></h1>
           <ThemeLede
             nbBeneficiaires={fiche.nbBeneficiaires}
             nbSubventions={fiche.nbSubventions}

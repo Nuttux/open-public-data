@@ -576,7 +576,7 @@ body:has(.theme-fusion) > div.pb-24 { padding-bottom: 0 !important; }
  * l'alignement vertical sur desktop. Le .fx-wrap interne tient les cards
  * et est centré verticalement par align-items:center du parent flex. */
 .theme-fusion .fx-hero-deck {
-  padding: 24px 0;
+  padding: 16px 0;
   width: 100%;
   /* Pas de border-bottom : le HeroMarquee qui suit a déjà sa border-top
    * (et bottom), donc empiler les deux fait une "barre noire" épaisse
@@ -5249,9 +5249,11 @@ body:has(.theme-fusion) > div.pb-24 { padding-bottom: 0 !important; }
 /* Hero sans lede : juste le H1 (style éditorial). Pas d'overflow:hidden :
  * le menu dropdown du H1 (ScopeDropdown) doit pouvoir sortir verticalement.
  * Le HeroBg est contraint via bottom:0.
- * Padding optimisé pour tenir avec Deck + Marquee dans un viewport ~900px. */
+ * Padding optimisé pour tenir avec Deck + Marquee dans un viewport ~900px
+ * (hero 48+16 + deck 16+16 : le contenu du fold doit rester ≤ 844px pour
+ * que le marquee ne soit pas coupé au bas du 1er écran). */
 .theme-fusion .fx-hero {
-  padding: 56px 0 24px;
+  padding: 48px 0 16px;
   position: relative;
 }
 .theme-fusion .fx-hero .fx-wrap { position: relative; z-index: 1; }
