@@ -1,6 +1,7 @@
 import { notFound } from "next/navigation";
 
 import { DetailDrawer } from "@/components/fusion";
+import { DataLabel, DrawerKicker } from "@/components/fusion/DataLabel";
 import ThemeFiche from "@/components/fusion/ThemeFiche";
 import { loadThemeSubventions } from "@/lib/fusion-data";
 
@@ -22,8 +23,8 @@ export default async function DrawerThemePage({ params }: { params: Promise<Para
   return (
     <div className="theme-fusion">
       <DetailDrawer
-        kicker={<>Thématique · Subventions · {fiche.year}</>}
-        title={fiche.theme}
+        kicker={<DrawerKicker k="theme" year={fiche.year} />}
+        title={<DataLabel value={fiche.theme} />}
         shareUrl={`/ville/paris/subventions/theme/${fiche.slug}`}
         shareText={shareText}
         backHref="/ville/paris/subventions"

@@ -101,6 +101,18 @@ export function LocaleProvider({
     writeCookie(l);
   }, []);
 
+  // One-shot on mount: an explicit ?lang= in the URL wins over any stored
+  // preference, so shared links (QR codes, printed material) land directly in
+  // the requested language. Persists through the normal cookie/localStorage
+  // path; the toggle behaves normally afterwards. Keeps EN opt-in explicit —
+  // the link itself is the choice, we still never sniff Accept-Language.
+  useEffect(() => {
+    try {
+      const fromUrl = new URLSearchParams(window.location.search).get('lang');
+      if (fromUrl === 'en' || fromUrl === 'fr') setLocale(fromUrl);
+    } catch { /* non-browser */ }
+  }, [setLocale]);
+
   const pathname = usePathname();
   const citySlug = detectCityFromPath(pathname);
 

@@ -1,6 +1,7 @@
 import { notFound } from "next/navigation";
 
 import { DetailDrawer } from "@/components/fusion";
+import { DataLabel, DrawerKicker } from "@/components/fusion/DataLabel";
 import CategorieMarcheFiche from "@/components/fusion/CategorieMarcheFiche";
 import { loadMarcheCategorie } from "@/lib/fusion-data";
 
@@ -22,8 +23,8 @@ export default async function DrawerCategoriePage({ params }: { params: Promise<
   return (
     <div className="theme-fusion">
       <DetailDrawer
-        kicker={<>Catégorie · Marchés publics · {fiche.year}</>}
-        title={fiche.category}
+        kicker={<DrawerKicker k="categorie" year={fiche.year} />}
+        title={<DataLabel value={fiche.category} />}
         shareUrl={`/ville/paris/marches/categorie/${fiche.slug}`}
         shareText={shareText}
         backHref="/ville/paris/marches"

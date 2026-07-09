@@ -341,7 +341,6 @@ main#main-content:focus {
   padding: 0.3rem 0.55rem;
   text-align: left;
   border-bottom: 1px solid #e5e5e5;
-  white-space: nowrap;
 }
 .chat-md th {
   font-weight: 600;
@@ -351,13 +350,74 @@ main#main-content:focus {
   text-transform: uppercase;
   letter-spacing: 0.02em;
 }
-.chat-md td:not(:first-child),
-.chat-md th:not(:first-child) {
+/* seule la colonne des montants (dernière) est alignée à droite et
+   insécable — les colonnes de texte wrappent pour tenir dans le panneau */
+.chat-md td:last-child,
+.chat-md th:last-child {
   text-align: right;
+  white-space: nowrap;
 }
 .chat-md code {
   background: #f5f5f4;
   padding: 0.1rem 0.3rem;
   border-radius: 3px;
   font-size: 0.78rem;
+}
+
+/**
+ * Chat — accroche chiffrée (blockquote = stat-carte).
+ * Le modèle ouvre ses réponses par `> **≈ 1,63 Md€** contexte…` ;
+ * rendu façon tuile de stat du site : bordure navy, chiffre en gros.
+ */
+.chat-md blockquote {
+  margin: 0.1rem 0 0.7rem;
+  padding: 0.55rem 0.8rem;
+  border-left: 3px solid #2a3680;
+  background: #f7f7f4;
+  border-radius: 0 8px 8px 0;
+}
+.chat-md blockquote p {
+  margin: 0;
+  font-size: 0.8rem;
+  color: #525252;
+  line-height: 1.45;
+}
+.chat-md blockquote strong {
+  display: block;
+  font-size: 1.35rem;
+  line-height: 1.2;
+  color: #2a3680;
+  font-variant-numeric: tabular-nums;
+}
+.chat-md blockquote strong {
+  display: block;
+  font-size: 1.35rem;
+  font-weight: 650;
+  line-height: 1.15;
+  color: #171717;
+  letter-spacing: -0.01em;
+  margin-bottom: 0.1rem;
+}
+
+/* Variante robuste : le modèle ouvre par « **chiffre** contexte » en premier
+   paragraphe — on style ce paragraphe en stat-carte sans dépendre de la
+   syntaxe blockquote. */
+.chat-md > p:first-child:has(> strong:first-child) {
+  margin: 0.1rem 0 0.7rem;
+  padding: 0.55rem 0.8rem;
+  border-left: 3px solid #2a3680;
+  background: #f7f7f4;
+  border-radius: 0 8px 8px 0;
+  font-size: 0.8rem;
+  color: #525252;
+  line-height: 1.45;
+}
+.chat-md > p:first-child:has(> strong:first-child) > strong:first-child {
+  display: block;
+  font-size: 1.35rem;
+  font-weight: 650;
+  line-height: 1.15;
+  color: #171717;
+  letter-spacing: -0.01em;
+  margin-bottom: 0.1rem;
 }

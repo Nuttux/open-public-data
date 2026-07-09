@@ -1,6 +1,7 @@
 import { describe, it, expect } from "vitest";
 import {
   list_datasets,
+  get_top_fournisseurs,
   get_subventions_summary,
   get_subventions_tendances,
   search_beneficiaire,
@@ -105,6 +106,18 @@ describe("marchés publics", () => {
     if ("error" in r) throw new Error(r.error as string);
     expect(r.nb_matches).toBeGreaterThan(0);
     expect(r.note).toMatch(/pluriannuel/);
+  });
+
+  it("top fournisseurs : cumul cross-années, multiattributaires à part", () => {
+    const r = get_top_fournisseurs({ limit: 10 });
+    if (!("top" in r)) throw new Error("no data");
+    expect(r.top.length).toBe(10);
+    expect(r.top[0].total_enveloppes_max!).toBeGreaterThanOrEqual(r.top[1].total_enveloppes_max ?? 0);
+    expect(r.top.some((t) => /multiattributaire/i.test(t.fournisseur ?? ""))).toBe(false);
+    expect(r.marches_multiattributaires_hors_classement.nb_marches).toBeGreaterThan(50);
+    const y = get_top_fournisseurs({ limit: 5, year: 2024 });
+    if (!("top" in y)) throw new Error("no data");
+    expect(y.periode).toBe("2024");
   });
 
   it("tendances couvre 2013+", () => {

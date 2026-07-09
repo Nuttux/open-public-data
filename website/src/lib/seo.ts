@@ -24,14 +24,18 @@ export const TWITTER_HANDLE = '@donneeslumieres';
  * browsers (OS/dev tooling), and Accept-Language was sending them to EN
  * involuntarily — including when they shared links to other French speakers.
  * EN is opt-in via the explicit toggle.
+ * Exception événementielle : DEFAULT_LOCALE=en bascule le fallback (visiteurs
+ * sans cookie) en anglais — pour un salon/une démo où le public scanne un QR.
+ * Un choix explicite (cookie) garde toujours la priorité.
  */
 export async function readLocale(): Promise<'fr' | 'en'> {
   try {
     const c = await cookies();
     const fromCookie = c.get('dl_locale')?.value;
     if (fromCookie === 'en') return 'en';
+    if (fromCookie === 'fr') return 'fr';
   } catch { /* cookies() may throw at module load — ignore */ }
-  return 'fr';
+  return process.env.DEFAULT_LOCALE === 'en' ? 'en' : 'fr';
 }
 
 type BuildMetadataInput = {

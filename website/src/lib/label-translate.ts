@@ -6,6 +6,7 @@
  */
 
 import type { Locale } from "./localeContext";
+import { DATA_LABELS_EN, normalizeDataKey } from "@/i18n/dataLabels";
 
 const EN: Record<string, string> = {
   // ── Subvention thematiques ────────────────────────────────────────────────
@@ -270,9 +271,11 @@ const EN: Record<string, string> = {
 };
 
 /** Translate a data-driven label. Returns the English version when locale is "en"
- *  and a translation exists; otherwise returns the input unchanged. */
+ *  and a translation exists; otherwise returns the input unchanged.
+ *  Lookup order: exact match here, then the normalized-key dictionary in
+ *  i18n/dataLabels.ts (covers casing/whitespace variants of the same value). */
 export function trLabel(raw: string | undefined | null, locale: Locale): string {
   if (!raw) return "";
   if (locale !== "en") return raw;
-  return EN[raw] ?? raw;
+  return EN[raw] ?? DATA_LABELS_EN[normalizeDataKey(raw)] ?? raw;
 }
