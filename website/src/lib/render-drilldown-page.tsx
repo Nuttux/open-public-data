@@ -997,7 +997,7 @@ function resolveLocalScope(ctx: ResolveCtx): ResolvedRender | null {
   const bucketLabel = locale === "en" ? bucket.label_en : bucket.label_fr;
   const scopeLabel = (() => {
     if (scope === "bloc_communal") {
-      return locale === "en" ? "Block communal" : "Bloc communal";
+      return locale === "en" ? "Municipal block" : "Bloc communal";
     }
     if (scope === "dept") {
       return locale === "en"

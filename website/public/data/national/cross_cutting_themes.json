@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-07T22:31:20.474602+00:00",
+  "generated_at": "2026-07-09T13:37:14.054430+00:00",
   "source_pipeline": "scripts/enrich/build_cross_cutting_themes.py",
   "audit_promise": "Tous les montants sont calculés depuis daily_bread.json (totaux S1311/S1313/S1314, breakdowns APUL) et daily_bread_drilldown.json (shares level2/level3 par bucket). Aucun montant n'est hardcodé : la fraction éditoriale (frontière santé/social du bloc communal et des départements) provient du seed seed_cross_cutting_themes.csv.",
   "denominator_total_apu_eur": 1808304655700,

@@ -50,9 +50,70 @@ ROOT = Path(__file__).parent.parent.parent.parent
 PUBLIC_NATIONAL_DIR = ROOT / "website" / "public" / "data" / "national"
 OUTPUT_PATH = PUBLIC_NATIONAL_DIR / "daily_bread_drilldown.json"
 
+# Curated FR→EN label seed. Sub-builders fall back to `label_en = label_fr`
+# when they have no translation (documented TODO at programme grain) — the
+# orchestrator patches those from this seed so the EN site never shows FR
+# programme/action names.
+LABELS_EN_SEED = ROOT / "pipeline" / "seeds" / "seed_drilldown_labels_en.csv"
+
+# FR action labels embed a "Action NN — " prefix (PLF convention). The seed
+# is keyed on the stem (prefix stripped) so identical actions across
+# programmes share one translation; EN labels drop the prefix, matching the
+# curated hints in build_drilldown_etat_actions.py.
+_ACTION_PREFIX = re.compile(r"^Action\s+\S+\s+—\s+")
+
 _KEY_OK = re.compile(r"^[a-z0-9_]+$")
 SHARE_TOL_LO = 0.95
 SHARE_TOL_HI = 1.05
+
+
+def _load_labels_en() -> dict[str, str]:
+    """Load the FR-stem → EN seed. Missing file → empty overlay (soft)."""
+    if not LABELS_EN_SEED.exists():
+        return {}
+    import csv
+    overlay: dict[str, str] = {}
+    with open(LABELS_EN_SEED, encoding="utf-8") as f:
+        for row in csv.DictReader(f):
+            fr = (row.get("label_fr") or "").strip()
+            en = (row.get("label_en") or "").strip()
+            if fr and en:
+                overlay[fr] = en
+    return overlay
+
+
+def apply_en_overrides(payload: dict) -> tuple[int, list[str]]:
+    """Patch entries whose `label_en` fell back to FR, from the seed.
+
+    Returns (patched_count, still_untranslated_fr_labels).
+    """
+    overlay = _load_labels_en()
+    patched = 0
+    missing: list[str] = []
+
+    def visit(entry: dict) -> None:
+        nonlocal patched
+        fr = entry.get("label_fr")
+        en = entry.get("label_en")
+        if fr and en == fr:
+            stem = _ACTION_PREFIX.sub("", fr)
+            translated = overlay.get(stem) or overlay.get(fr)
+            if translated:
+                entry["label_en"] = translated
+                patched += 1
+            else:
+                missing.append(fr)
+        for child_key in ("level2", "level3", "level4", "aggregations"):
+            for child in entry.get(child_key) or []:
+                visit(child)
+        for block_key in ("departement", "region"):
+            block = entry.get(block_key)
+            if block:
+                visit(block)
+
+    for bucket in (payload.get("buckets") or {}).values():
+        visit(bucket)
+    return patched, missing
 
 
 def _check_entry(entry: dict, ctx: str, errors: list[str]) -> None:
@@ -260,6 +321,14 @@ def build_drilldown() -> dict:
 
 def main() -> int:
     payload = build_drilldown()
+
+    patched, missing_en = apply_en_overrides(payload)
+    print(f"[i18n] label_en patched from seed: {patched}")
+    if missing_en:
+        print(f"[i18n] WARNING: {len(missing_en)} label(s) still FR-only "
+              f"(add to {LABELS_EN_SEED.name}):")
+        for lbl in sorted(set(missing_en))[:20]:
+            print(f"    - {lbl}")
 
     errors, warnings = validate_drilldown(payload)
 
