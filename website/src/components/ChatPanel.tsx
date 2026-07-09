@@ -621,7 +621,7 @@ export default function ChatPanel() {
                             className="text-[11px] text-neutral-500 italic truncate"
                             title={toolRaw(t.name, t.input)}
                           >
-                            <span className="not-italic text-[#e11d1d]">→</span> {toolLabel(t.name, t.input)}
+                            <span className="not-italic text-[#e11d1d]">→</span> {toolLabel(t.name, t.input, locale)}
                             {loading && i === messages.length - 1 && j === (m.tools?.length ?? 0) - 1 && !m.content ? "…" : ""}
                           </div>
                         ))}

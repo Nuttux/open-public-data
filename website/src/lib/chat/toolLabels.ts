@@ -1,14 +1,57 @@
 // Libellés humains des appels d'outils, affichés pendant le chargement.
 // Le nom technique reste accessible en title/tooltip — sur scène et pour le
 // grand public, « je fouille les marchés ("ordures") » raconte l'attente.
+// Deux dictionnaires (fr/en) : le libellé suit la locale de l'interface,
+// comme le reste du panneau.
 
 type ToolInput = Record<string, unknown>;
 
-export function toolLabel(name: string, input: ToolInput): string {
+export function toolLabel(name: string, input: ToolInput, locale: "fr" | "en" = "fr"): string {
   const year = input.year != null ? ` ${input.year}` : "";
   const q = typeof input.query === "string" && input.query ? ` (« ${input.query} »)` : "";
+  const qEn = typeof input.query === "string" && input.query ? ` ("${input.query}")` : "";
   const theme = typeof input.thematique === "string" && input.thematique ? ` — ${input.thematique}` : "";
   const nature = typeof input.nature === "string" && input.nature ? ` « ${input.nature} »` : "";
+  const natureEn = typeof input.nature === "string" && input.nature ? ` "${input.nature}"` : "";
+
+  if (locale === "en") {
+    switch (name) {
+      case "list_datasets":
+        return "listing the available datasets";
+      case "get_subventions_summary":
+        return `checking${year} subsidies${theme} (top recipients)`;
+      case "get_subventions_tendances":
+        return year ? `breaking down${year} subsidies by theme` : "pulling the subsidies series over the years";
+      case "search_beneficiaire":
+        return `searching subsidy recipients${qEn}`;
+      case "get_marches_summary":
+        return `checking${year} public contracts`;
+      case "search_marches":
+        return `digging through public contracts${qEn}`;
+      case "get_marches_tendances":
+        return "pulling the public-contracts trend";
+      case "get_budget_sankey":
+        return `checking${year} budget flows`;
+      case "get_budget_nature":
+        return natureEn ? `breaking down${natureEn}${year} spending by sector` : `checking the${year} budget by type of spending`;
+      case "get_evolution_budget":
+        return year ? `detailing the${year} budget` : "pulling the budget trend";
+      case "get_vote_vs_execute":
+        return `comparing voted vs executed budget${year}`;
+      case "get_investissements":
+        return year ? `checking${year} investments` : "pulling the investment series";
+      case "get_dette_structure":
+        return year ? `detailing${year} debt (instruments, issuances)` : "pulling the debt trend";
+      case "get_bilan":
+        return year ? `checking the${year} balance sheet` : "pulling the balance-sheet series";
+      case "get_hors_bilan":
+        return year ? `checking${year} loan guarantees` : "pulling the guarantees series";
+      case "get_logement_social":
+        return "checking social-housing demand";
+      default:
+        return name;
+    }
+  }
 
   switch (name) {
     case "list_datasets":
