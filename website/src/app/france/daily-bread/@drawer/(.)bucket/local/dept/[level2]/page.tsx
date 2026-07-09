@@ -13,7 +13,7 @@ export default async function DrawerDeptL2Page({
     params,
     searchParams,
     voice: "perso",
-    basePath: "/ville/paris/daily-bread",
+    basePath: "/france/daily-bread",
     isDrawer: true,
     kind: "local-dept",
   });

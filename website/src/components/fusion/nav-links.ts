@@ -8,7 +8,7 @@ export type NavLink = {
 export const NATIONAL_NAV_LINKS: NavLink[] = [
   { href: "/",                          labelKey: "fx.nav.link.home" },
   { href: "/france/budget",             labelKey: "fx.nav.link.budget_france" },
-  { href: "/ville/paris/daily-bread",   labelKey: "fx.nav.link.daily_bread" },
+  { href: "/france/daily-bread",   labelKey: "fx.nav.link.daily_bread" },
 ];
 
 const VILLE_SECTIONS: { section: string; labelKey: string }[] = [

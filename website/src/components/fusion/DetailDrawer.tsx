@@ -37,6 +37,20 @@ type Props = {
   shareText?: string;
   /** Where the close button navigates when drawer was opened via in-app link. */
   backHref?: string;
+  /**
+   * Parent explicite dans une hiérarchie de drill-down (ex : fiche level 3
+   * → sa fiche level 2). Quand fourni, la pastille "← Retour" navigue vers
+   * cette URL au lieu de rejouer l'historique via la pile sessionStorage —
+   * l'historique et la pile divergent dès qu'on remonte via le breadcrumb
+   * (le back "redescendait" alors vers la fiche qu'on venait de quitter).
+   */
+  parentLink?: {
+    url: string;
+    label: string;
+    /** true → navigation dure (le parent est la page shell : une soft-nav
+     *  laisserait le slot @drawer rendre ce drawer périmé). */
+    hard?: boolean;
+  };
   /** Sticky footer — usually a set of export/action buttons. */
   footer?: ReactNode;
   /** Short label for this entity (used by the next drawer's breadcrumb). */
@@ -50,6 +64,7 @@ export default function DetailDrawer({
   shareUrl,
   shareText,
   backHref,
+  parentLink,
   footer,
   breadcrumbLabel,
   children,
@@ -106,6 +121,19 @@ export default function DetailDrawer({
   // pill. On mount, peek; on unmount (when user keeps navigating), push self.
   useEffect(() => {
     if (!shareUrl) return;
+    // Drill-down hiérarchique : le parent est connu statiquement, la pile
+    // sessionStorage ne sert à rien (et se désynchronise de l'historique
+    // quand on remonte). On ne lit ni n'écrit la pile dans ce mode.
+    if (parentLink) {
+      openedAtRef.current = Date.now();
+      track("drawer_open", {
+        entity_type: entityType,
+        url: shareUrl,
+        has_parent: true,
+        parent_url: parentLink.url,
+      });
+      return;
+    }
     const stack = readStack();
     const top = stack[stack.length - 1];
     if (top && top.url !== shareUrl) {
@@ -172,6 +200,19 @@ export default function DetailDrawer({
   };
 
   const goBackToPrevious = () => {
+    if (parentLink) {
+      track("drawer_back", {
+        from_type: entityType,
+        from_url: shareUrl || null,
+        to_url: parentLink.url,
+      });
+      if (parentLink.hard) {
+        window.location.assign(parentLink.url);
+      } else {
+        router.push(parentLink.url, { scroll: false });
+      }
+      return;
+    }
     if (!previous) return;
     track("drawer_back", {
       from_type: entityType,
@@ -250,15 +291,18 @@ export default function DetailDrawer({
         aria-modal="true"
         aria-label={typeof title === "string" ? title : undefined}
       >
-        {previous && (
+        {(parentLink || previous) && (
           <div className="fx-drawer-crumb">
             <button
               type="button"
               className="fx-drawer-crumb-btn"
               onClick={goBackToPrevious}
-              aria-label={t("fx.drawer.crumb.back_aria").replace("{label}", previous.label)}
+              aria-label={t("fx.drawer.crumb.back_aria").replace(
+                "{label}",
+                (parentLink ?? previous)!.label,
+              )}
             >
-              {t("fx.drawer.crumb.back")} · <span>{previous.label}</span>
+              {t("fx.drawer.crumb.back")} · <span>{(parentLink ?? previous)!.label}</span>
             </button>
           </div>
         )}

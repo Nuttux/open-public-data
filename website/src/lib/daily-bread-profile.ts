@@ -591,7 +591,7 @@ export function formatNationalAnnualLabel(
 /**
  * Shell labels for drill-down routes — the breadcrumb's first crumb and
  * the eyebrow voice depends on whether we're under
- * `/ville/paris/daily-bread` (perso "Daily Bread") or `/france/budget`
+ * `/france/daily-bread` (perso "Daily Bread") or `/france/budget`
  * (impersonnel "Le budget"). Centralisé pour rester DRY entre les
  * 17+ routes drawer/standalone.
  */

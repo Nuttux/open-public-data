@@ -35,6 +35,7 @@ import {
   getDeptLevel3Entry,
   getDrilldownEntry,
   getEtatAggregation,
+  getEtatAggregationForMission,
   getRegionDrilldown,
   getRegionEntry,
   isStub,
@@ -70,7 +71,7 @@ const VALID_BUCKETS = new Set<BucketKey>(["secu", "etat", "local"]);
 export type DrilldownVoice = "perso" | "impersonal";
 
 export type DrilldownBasePath =
-  | "/ville/paris/daily-bread"
+  | "/france/daily-bread"
   | "/france/budget";
 
 export type DrilldownKind =
@@ -114,7 +115,7 @@ function shellVoice(voice: DrilldownVoice): DrilldownShellVoice {
 /**
  * Rend une page drill-down (drawer ou standalone) en factorisant la totalité
  * de la logique commune. À utiliser depuis chaque `page.tsx` sous
- * `/ville/paris/daily-bread/...` et `/france/budget/...` — voir
+ * `/france/daily-bread/...` et `/france/budget/...` — voir
  * `app/.../page.tsx` pour les call sites.
  */
 export async function renderDrilldownPage(
@@ -147,11 +148,19 @@ export async function renderDrilldownPage(
   });
   if (!resolved) return notFound();
 
-  const { eyebrow, title, shareUrl, backHref, ficheNode } = resolved;
+  const { eyebrow, title, shareUrl, backHref, breadcrumb, ficheNode } = resolved;
 
   // 3. Wrapper drawer ou standalone — différence purement visuelle, pas
   // sémantique. Les deux passent la même fiche.
   if (opts.isDrawer) {
+    // Parent hiérarchique = maillon cliquable le plus profond du breadcrumb
+    // (hors nœud courant). La pastille "← Retour" du drawer navigue vers
+    // cette URL — remonter d'exactement un niveau, indépendamment de
+    // l'historique.
+    const parentCrumb = [...breadcrumb]
+      .slice(0, -1)
+      .reverse()
+      .find((c) => c.href);
     return (
       <div className="theme-fusion db-drawer-shell">
         <DetailDrawer
@@ -159,6 +168,15 @@ export async function renderDrilldownPage(
           title={title}
           shareUrl={shareUrl}
           backHref={backHref}
+          parentLink={
+            parentCrumb?.href
+              ? {
+                  url: parentCrumb.href,
+                  label: parentCrumb.label,
+                  hard: parentCrumb.hard,
+                }
+              : undefined
+          }
           breadcrumbLabel={title}
         >
           {ficheNode}
@@ -215,13 +233,13 @@ type ResolveCtx = {
  * personalMonthlyEur faire son travail).
  *
  * Le label "Sur ton profil" devient "Par habitant" côté fiche quand on est
- * en mode per-capita (déterminé par basePath /ville/...).
+ * en mode per-capita (voix "perso" — Daily Bread).
  */
 function perCapitaMonthly(
   nationalAnnualEur: number | null,
-  basePath: string,
+  voice: DrilldownVoice,
 ): number | null {
-  if (!basePath.startsWith("/ville/")) return null;
+  if (voice !== "perso") return null;
   if (nationalAnnualEur == null || nationalAnnualEur <= 0) return null;
   const db = loadDailyBread();
   const pop = db?.apu_subsectors?.totals?.population_france ?? 68042591;
@@ -249,7 +267,33 @@ function rootCrumb(
   basePath: string,
 ): DrilldownBreadcrumbCrumb {
   const root = shellRootCrumb(shellVoice(voice), locale, basePath);
-  return { label: root.label, href: root.href };
+  // hard: depuis un drawer, revenir à la racine exige une navigation dure —
+  // sinon le slot @drawer garde son contenu périmé (cf. DrilldownBreadcrumb).
+  return { label: root.label, href: root.href, hard: true };
+}
+
+/**
+ * Crumb agrégat éditorial (État seulement) — maillon "Éducation et
+ * recherche" entre le bucket et la mission, cliquable vers la fiche agrégat.
+ * null pour les autres buckets ou si la mission n'appartient à aucun agrégat.
+ */
+function etatAggCrumb(
+  bucketKey: BucketKey,
+  level2Key: string,
+  locale: "fr" | "en",
+  basePath: string,
+  profileQuery: string | undefined,
+): DrilldownBreadcrumbCrumb | null {
+  if (bucketKey !== "etat") return null;
+  const agg = getEtatAggregationForMission(level2Key);
+  if (!agg) return null;
+  return {
+    label: locale === "en" ? agg.label_en : agg.label_fr,
+    href: withProfile(
+      `${basePath}/bucket/etat/agg/${encodeURIComponent(agg.key)}`,
+      profileQuery,
+    ),
+  };
 }
 
 /**
@@ -329,7 +373,7 @@ function resolveLevel2(ctx: ResolveCtx): ResolvedRender | null {
 
   // Daily Bread (Approche A) : per-capita. Budget Explorer : perso (profile).
   const personalMonthlyEur =
-    perCapitaMonthly(nationalAnnualEur, opts.basePath) ??
+    perCapitaMonthly(nationalAnnualEur, opts.voice) ??
     (monthlies
       ? projectLevel2Monthly(
           monthlies,
@@ -344,10 +388,20 @@ function resolveLevel2(ctx: ResolveCtx): ResolvedRender | null {
       : null;
 
   // Breadcrumb : pour level2 plain (non-scope), bucket crumb est plain dans
-  // les deux voix — pas de href.
+  // les deux voix — pas de href. Pour une mission État rattachée à un
+  // agrégat éditorial, on insère le maillon agrégat (cliquable) — sinon la
+  // fiche mission n'offrait aucun chemin remontant d'un niveau.
+  const aggCrumb = etatAggCrumb(
+    bucketKey,
+    decodedL2,
+    locale,
+    opts.basePath,
+    profileQuery,
+  );
   const breadcrumb: DrilldownBreadcrumbCrumb[] = [
     rootCrumb(opts.voice, locale, opts.basePath),
     { label: bucketLabel },
+    ...(aggCrumb ? [aggCrumb] : []),
     { label: entryLabel },
   ];
 
@@ -444,7 +498,7 @@ function resolveLevel3(ctx: ResolveCtx): ResolvedRender | null {
   );
 
   const personalMonthlyEur =
-    perCapitaMonthly(nationalAnnualEur, opts.basePath) ??
+    perCapitaMonthly(nationalAnnualEur, opts.voice) ??
     (monthlies
       ? projectLevel3Monthly(
           monthlies,
@@ -459,9 +513,17 @@ function resolveLevel3(ctx: ResolveCtx): ResolvedRender | null {
       ? formatMonthlyEur(personalMonthlyEur, locale)
       : null;
 
+  const aggCrumb = etatAggCrumb(
+    bucketKey,
+    decodedL2,
+    locale,
+    opts.basePath,
+    profileQuery,
+  );
   const breadcrumb: DrilldownBreadcrumbCrumb[] = [
     rootCrumb(opts.voice, locale, opts.basePath),
     { label: bucketLabel },
+    ...(aggCrumb ? [aggCrumb] : []),
     {
       label: parentLabel,
       href: withProfile(
@@ -584,7 +646,7 @@ function resolveLevel4(ctx: ResolveCtx): ResolvedRender | null {
   );
 
   const personalMonthlyEur =
-    perCapitaMonthly(nationalAnnualEur, opts.basePath) ??
+    perCapitaMonthly(nationalAnnualEur, opts.voice) ??
     (monthlies
       ? projectLevel4Monthly(
           monthlies,
@@ -600,13 +662,11 @@ function resolveLevel4(ctx: ResolveCtx): ResolvedRender | null {
       ? formatMonthlyEur(personalMonthlyEur, locale)
       : null;
 
-  // Breadcrumb : en perso (Daily Bread), bucket crumb est cliquable —
-  // permet de remonter rapidement à la page bucket racine. En impersonal
-  // (Budget Explorer), on garde le crumb plain (cf. commit b171639,
-  // décision design : moins de liens dans le breadcrumb pour la voix
-  // institutionnelle).
+  // Breadcrumb : bucket crumb cliquable seulement pour `local` — c'est le
+  // seul bucket avec une page racine (`/bucket/local`). Pour etat/secu la
+  // route n'existe pas (le lien renvoyait un 404), crumb plain.
   const bucketCrumb: DrilldownBreadcrumbCrumb =
-    opts.voice === "perso"
+    opts.voice === "perso" && bucketKey === "local"
       ? {
           label: bucketLabel,
           href: withProfile(
@@ -616,9 +676,17 @@ function resolveLevel4(ctx: ResolveCtx): ResolvedRender | null {
         }
       : { label: bucketLabel };
 
+  const aggCrumb = etatAggCrumb(
+    bucketKey,
+    decodedL2,
+    locale,
+    opts.basePath,
+    profileQuery,
+  );
   const breadcrumb: DrilldownBreadcrumbCrumb[] = [
     rootCrumb(opts.voice, locale, opts.basePath),
     bucketCrumb,
+    ...(aggCrumb ? [aggCrumb] : []),
     {
       label: l2Label,
       href: withProfile(
@@ -705,7 +773,7 @@ function resolveEtatAggregation(ctx: ResolveCtx): ResolvedRender | null {
   );
 
   const personalMonthlyEur =
-    perCapitaMonthly(nationalAnnualEur, opts.basePath) ??
+    perCapitaMonthly(nationalAnnualEur, opts.voice) ??
     (monthlies
       ? projectEtatAggregationMonthly(
           monthlies,
@@ -718,18 +786,11 @@ function resolveEtatAggregation(ctx: ResolveCtx): ResolvedRender | null {
       ? formatMonthlyEur(personalMonthlyEur, locale)
       : null;
 
-  // Breadcrumb : bucket crumb cliquable seulement en perso (cf. level4).
-  const bucketCrumb: DrilldownBreadcrumbCrumb =
-    opts.voice === "perso"
-      ? {
-          label: bucketLabel,
-          href: withProfile(`${opts.basePath}/bucket/etat`, profileQuery),
-        }
-      : { label: bucketLabel };
-
+  // Breadcrumb : crumb État toujours plain — `/bucket/etat` n'est pas une
+  // route (le lien renvoyait un 404).
   const breadcrumb: DrilldownBreadcrumbCrumb[] = [
     rootCrumb(opts.voice, locale, opts.basePath),
-    bucketCrumb,
+    { label: bucketLabel },
     { label: aggLabel },
   ];
 
@@ -800,7 +861,7 @@ function resolveLocalDept(ctx: ResolveCtx): ResolvedRender | null {
   );
 
   const personalMonthlyEur =
-    perCapitaMonthly(nationalAnnualEur, opts.basePath) ??
+    perCapitaMonthly(nationalAnnualEur, opts.voice) ??
     (monthlies
       ? projectLocalScopeLevel2Monthly(
           monthlies,
@@ -1029,7 +1090,7 @@ function resolveLocalScope(ctx: ResolveCtx): ResolvedRender | null {
   );
 
   const personalMonthlyEur =
-    perCapitaMonthly(nationalAnnualEur, opts.basePath) ??
+    perCapitaMonthly(nationalAnnualEur, opts.voice) ??
     (monthlies
       ? scope === "bloc_communal"
         ? monthlies.blocCommunalMonthly

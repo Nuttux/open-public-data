@@ -255,6 +255,22 @@ export function getEtatAggregation(key: string): ResolvedAggregation | null {
   return { ...agg, resolvedMissions, bucket: b };
 }
 
+/**
+ * Lookup inverse : l'agrégat éditorial qui contient une mission level2.
+ * Sert au breadcrumb des fiches mission/programme/action pour offrir un
+ * maillon remontant vers la fiche agrégat.
+ */
+export function getEtatAggregationForMission(
+  level2Key: string,
+): AggregationEntry | null {
+  const b = getBucket("etat");
+  if (!b) return null;
+  return (
+    (b.aggregations ?? []).find((a) => (a.missions ?? []).includes(level2Key)) ??
+    null
+  );
+}
+
 // ─── Local dept / region scopes ───────────────────────────────────────────
 
 export function getDeptDrilldown(): LocalScopeBlock | null {

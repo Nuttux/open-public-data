@@ -18,7 +18,7 @@ export default async function DrawerL4Page({
     params,
     searchParams,
     voice: "perso",
-    basePath: "/ville/paris/daily-bread",
+    basePath: "/france/daily-bread",
     isDrawer: true,
     kind: "level4",
   });

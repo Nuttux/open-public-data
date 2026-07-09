@@ -98,12 +98,12 @@ type Mode =
  * Le % reste TOUJOURS visible dans le lead header — c'est l'info de
  * contexte parent ("39% PART DE SÉCURITÉ SOCIALE").
  *
- * Inféré depuis `basePath` : commence par `/ville/` → perso, sinon impersonal.
+ * Inféré depuis `basePath` : section daily-bread → perso, sinon impersonal.
  */
 type Voice = "perso" | "impersonal";
 
 function inferVoice(basePath: string): Voice {
-  return basePath.startsWith("/ville/") ? "perso" : "impersonal";
+  return basePath.includes("daily-bread") ? "perso" : "impersonal";
 }
 
 /**
@@ -142,7 +142,7 @@ type LegacyProps = {
   breadcrumb?: DrilldownBreadcrumbCrumb[];
   /** Query string profil à propager aux liens enfants (level3/level4/agg). */
   profileQuery?: string;
-  /** Préfixe URL pour les liens enfants — par défaut /ville/paris/daily-bread.
+  /** Préfixe URL pour les liens enfants — par défaut /france/daily-bread.
    *  Ex: "/france/budget" pour le drawer Budget Explorer. */
   basePath?: string;
   /** Asides éditoriaux ("Chiffres à retenir") — i18n keys, le composant
@@ -253,7 +253,7 @@ export default function BudgetDrilldownFiche(props: Props) {
   const { locale } = useLocale();
   const { bucket, bucketKey, isStub, amounts, breadcrumb, profileQuery } =
     props;
-  const basePath = props.basePath ?? "/ville/paris/daily-bread";
+  const basePath = props.basePath ?? "/france/daily-bread";
   const editorialAsides = props.editorialAsides;
   const voice: Voice = inferVoice(basePath);
   const hasProfile = (amounts?.parentPersonalMonthlyEur ?? null) !== null;

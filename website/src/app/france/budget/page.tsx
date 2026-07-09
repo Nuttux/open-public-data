@@ -994,7 +994,7 @@ export default async function FranceBudgetPage({
             subtitle={t("budget.cta.daily_bread.body")}
           />
           <Link
-            href={profileQs ? `/ville/paris/daily-bread?${profileQs}` : "/ville/paris/daily-bread"}
+            href={profileQs ? `/france/daily-bread?${profileQs}` : "/france/daily-bread"}
             className="fx-btn fx-btn-primary"
             style={{ marginTop: 8 }}
           >

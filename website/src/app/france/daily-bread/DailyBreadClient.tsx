@@ -276,7 +276,7 @@ export default function DailyBreadClient({
       const available = new Set(drilldownIndex?.[bucket]?.level2 ?? []);
       for (const [inPage, drillKey] of Object.entries(alias)) {
         if (available.has(drillKey)) {
-          m.set(inPage, `/ville/paris/daily-bread/bucket/${bucket}/${drillKey}`);
+          m.set(inPage, `/france/daily-bread/bucket/${bucket}/${drillKey}`);
         }
       }
       return m;
@@ -300,7 +300,7 @@ export default function DailyBreadClient({
     const available = new Set(drilldownIndex?.etat_aggregations ?? []);
     for (const [inPage, aggKey] of Object.entries(ETAT_TOP_ALIAS_AGG)) {
       if (available.has(aggKey)) {
-        m.set(inPage, `/ville/paris/daily-bread/bucket/etat/agg/${aggKey}`);
+        m.set(inPage, `/france/daily-bread/bucket/etat/agg/${aggKey}`);
       }
     }
     // La ligne "Contribution UE" ouvre la fiche recette détaillée (PSR-UE
@@ -323,13 +323,13 @@ export default function DailyBreadClient({
     const deptKeys = drilldownIndex?.local_dept?.level2 ?? [];
     const regKeys = drilldownIndex?.local_region?.level2 ?? [];
     if (blocKeys.length > 0) {
-      m.set("bloc_communal", `/ville/paris/daily-bread/bucket/local`);
+      m.set("bloc_communal", `/france/daily-bread/bucket/local`);
     }
     if (deptKeys.length > 0) {
-      m.set("departement", `/ville/paris/daily-bread/bucket/local/dept`);
+      m.set("departement", `/france/daily-bread/bucket/local/dept`);
     }
     if (regKeys.length > 0) {
-      m.set("region", `/ville/paris/daily-bread/bucket/local/region`);
+      m.set("region", `/france/daily-bread/bucket/local/region`);
     }
     return m;
   }, [drilldownIndex]);
@@ -415,12 +415,12 @@ export default function DailyBreadClient({
   // (?net=2100&parts=1&c=paris) ; on omet les zéros pour rester propre.
   //
   // ⚠ Skip si on a navigué vers une sous-route (drawer drill-down) — sinon le
-  // replace écrase l'URL `/ville/paris/daily-bread/bucket/<bucket>/...` et tue l'intercept
+  // replace écrase l'URL `/france/daily-bread/bucket/<bucket>/...` et tue l'intercept
   // parallel-route. Le client reste monté pendant l'intercept (layout persiste)
   // donc l'effect tourne encore.
   const pathname = usePathname();
   useEffect(() => {
-    if (pathname && pathname !== "/ville/paris/daily-bread") return;
+    if (pathname && pathname !== "/france/daily-bread") return;
     const params = new URLSearchParams();
     params.set("net", String(salaireMonthly));
     params.set("parts", String(parts));
@@ -433,7 +433,7 @@ export default function DailyBreadClient({
       params.set("indep_ca", String(indepCaAnnuel));
       if (indepType !== "services_bic") params.set("indep_type", indepType);
     }
-    router.replace(`/ville/paris/daily-bread?${params.toString()}`, { scroll: false });
+    router.replace(`/france/daily-bread?${params.toString()}`, { scroll: false });
   }, [
     salaireMonthly,
     pensionMonthly,
@@ -2510,7 +2510,7 @@ function BarList({
   color: "c-secu" | "c-etat" | "c-local";
   locale: string;
   /** Optional : si l'item a une `key` présente dans cette map, la barre
-   *  devient cliquable (drill vers `/ville/paris/daily-bread/bucket/<bucket>/<level2>`). */
+   *  devient cliquable (drill vers `/france/daily-bread/bucket/<bucket>/<level2>`). */
   clickableUrls?: Map<string, string>;
   /** Query string profil (sans `?`), append à l'URL drill — propage le
    *  contexte ?net=...&parts=...&c=... pour que le drawer affiche les

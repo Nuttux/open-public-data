@@ -16,6 +16,14 @@ import Link from "next/link";
 export type DrilldownBreadcrumbCrumb = {
   label: string;
   href?: string;
+  /**
+   * true → navigation dure (<a> plein, pas de Link Next). Nécessaire pour le
+   * crumb racine cliqué depuis un drawer : une soft-nav vers la page shell
+   * laisse le slot parallèle `@drawer` rendre son contenu périmé (le
+   * `default.tsx` ne s'applique qu'au chargement dur) — le drawer restait
+   * ouvert sur l'URL racine.
+   */
+  hard?: boolean;
 };
 
 export default function DrilldownBreadcrumb({
@@ -40,6 +48,10 @@ export default function DrilldownBreadcrumb({
                 >
                   {crumb.label}
                 </span>
+              ) : crumb.hard ? (
+                <a href={crumb.href} className="db-breadcrumb-link">
+                  {crumb.label}
+                </a>
               ) : (
                 <Link
                   href={crumb.href}
