@@ -1,0 +1,133 @@
+# =============================================================================
+# United States — national sources configuration
+#
+# Read by:
+#   - `pipeline/scripts/sync/sync_fiscaldata.py us`   (type: fiscaldata_api)
+#   - `pipeline/scripts/sync/sync_census_popest.py us` (type: census_popest_csv)
+#
+# Each source declares how to ingest one dataset into BigQuery `raw.us_*`.
+# Raw tables keep every value AS A STRING exactly as the API returns it
+# (Fiscal Data returns everything as JSON strings, with missing values as
+# the literal string "null" — typing happens once, in stg. See
+# docs/us/API-RECON.md §B.5).
+#
+# Decision references: ADR-0010 (D3 protocol adapters + country YAML),
+# docs/us/API-RECON.md §B (verified endpoints and extraction recipes).
+# =============================================================================
+
+country_slug: us
+country_name: United States
+
+# BigQuery destination dataset for raw tables (same `raw` dataset as
+# France/Paris; the `us_` table prefix is the country namespace).
+bq_raw_dataset: raw
+
+# ---------------------------------------------------------------------------
+# Treasury Fiscal Data protocol settings (shared by all fiscaldata_api
+# sources). The machine-readable catalog carries per-field labels/units and
+# dataset page paths; sync_fiscaldata.py snapshots the entries for every
+# source below into `raw.us_fiscaldata_catalog` on each run.
+# ---------------------------------------------------------------------------
+fiscaldata:
+  api_base: "https://api.fiscaldata.treasury.gov/services/api/fiscal_service"
+  catalog_url: "https://api.fiscaldata.treasury.gov/services/dtg/metadata/"
+  dataset_page_base: "https://fiscaldata.treasury.gov/datasets"
+  catalog_table: us_fiscaldata_catalog
+  page_size: 10000
+
+sources:
+  # ---------------------------------------------------------------------------
+  # MTS Table 9 — receipts by source + outlays by function (daily-bread table)
+  # 33 rows/month: section 1 = receipts (D|RSG detail, T|SL total at 1.8),
+  # section 2 = outlays by function (D|F detail, T|SL total at 2.20).
+  # Amounts in DOLLARS. Coverage verified 2015-03-31 → latest closed month.
+  # ---------------------------------------------------------------------------
+  - id: mts_table_9
+    type: fiscaldata_api
+    target_table: us_fiscaldata_mts_table_9
+    endpoint: "v1/accounting/mts/mts_table_9"
+    earliest_record_date: "2015-03-31"
+    sort: "record_date,src_line_nbr"
+    description: "MTS Table 9 — Summary of Receipts by Source, and Outlays by Function (dollars, monthly + FYTD + prior FYTD)"
+
+  # ---------------------------------------------------------------------------
+  # MTS Table 9A — outlays by function × subfunction. No data_type_cd column;
+  # verified 2026-07-15: rows are clean detail (no embedded totals), the sum
+  # of all rows per record_date equals the Table 9 outlays total to the penny.
+  # ---------------------------------------------------------------------------
+  - id: mts_table_9_outlays_functions_subfunctions
+    type: fiscaldata_api
+    target_table: us_fiscaldata_mts_table_9_outlays_functions_subfunctions
+    endpoint: "v1/accounting/mts/mts_table_9_outlays_functions_subfunctions"
+    earliest_record_date: "2015-03-31"
+    sort: "record_date,src_line_nbr"
+    description: "MTS Table 9A — Summary of Outlays by Function and Subfunction (dollars)"
+
+  # ---------------------------------------------------------------------------
+  # MTS Table 5 — outlays by agency/bureau/account. ~802 rows/month, 5-level
+  # hierarchy. Agency totals = data_type_cd 'T' + record_type_cd 'C' (verified
+  # 2026-07-15: always sequence_level_nbr 2, 29 rows/month, and
+  # sum(T|C) + 'Total--Undistributed Offsetting Receipts' = 'Total Outlays'
+  # SL row to the penny).
+  # ---------------------------------------------------------------------------
+  - id: mts_table_5
+    type: fiscaldata_api
+    target_table: us_fiscaldata_mts_table_5
+    endpoint: "v1/accounting/mts/mts_table_5"
+    earliest_record_date: "2015-03-31"
+    sort: "record_date,src_line_nbr"
+    description: "MTS Table 5 — Outlays of the U.S. Government by agency/bureau/account (dollars, gross/applicable receipts/net)"
+
+  # ---------------------------------------------------------------------------
+  # MTS long series — monthly Receipts / Outlays / Deficit-Surplus since
+  # 1980-10-31, in MILLIONS of dollars. Sign convention in this dataset:
+  # 'Deficit/Surplus (-)' = Outlays − Receipts (deficit POSITIVE) — flipped
+  # vs MTS Tables 3/5. Normalized in core_us_monthly_totals.
+  # ---------------------------------------------------------------------------
+  - id: mts_receipts_outlays_deficit_surplus
+    type: fiscaldata_api
+    target_table: us_fiscaldata_mts_receipts_outlays_deficit_surplus
+    endpoint: "v1/accounting/mts/mts_receipts_outlays_deficit_surplus"
+    earliest_record_date: "1980-10-31"
+    sort: "record_date,src_line_nbr"
+    description: "MTS — Monthly Receipts, Outlays and Deficit/Surplus since FY1981 (MILLIONS of dollars, deficit positive)"
+
+  # ---------------------------------------------------------------------------
+  # Debt to the Penny — total public debt outstanding per business day
+  # (public + intragovernmental + total), dollars, 1993-04-01 → daily.
+  # ---------------------------------------------------------------------------
+  - id: debt_to_penny
+    type: fiscaldata_api
+    target_table: us_fiscaldata_debt_to_penny
+    endpoint: "v2/accounting/od/debt_to_penny"
+    earliest_record_date: "1993-04-01"
+    sort: "record_date,src_line_nbr"
+    description: "Debt to the Penny — daily total public debt outstanding (dollars)"
+
+  # ---------------------------------------------------------------------------
+  # Historical Debt Outstanding — fiscal-year-end debt, annual 1790 → latest
+  # closed fiscal year, dollars.
+  # ---------------------------------------------------------------------------
+  - id: debt_outstanding
+    type: fiscaldata_api
+    target_table: us_fiscaldata_debt_outstanding
+    endpoint: "v2/accounting/od/debt_outstanding"
+    earliest_record_date: "1790-01-01"
+    sort: "record_date,src_line_nbr"
+    description: "Historical Debt Outstanding — fiscal-year-end total public debt since 1790 (dollars)"
+
+  # ---------------------------------------------------------------------------
+  # Census population — US national resident population (per-resident scaling).
+  # The api.census.gov API now REQUIRES a key (verified live 2026-07-15:
+  # HTTP 302 → missing_key.html, header X-DataWebAPI-KeyError). The Vintage
+  # 2025 estimates CSV on www2.census.gov is no-auth and machine-readable —
+  # synced instead (raw → stg → core, same layering).
+  # NOTE: www2.census.gov can hang on IPv6 — sync_census_popest.py forces IPv4.
+  # ---------------------------------------------------------------------------
+  - id: census_population
+    type: census_popest_csv
+    target_table: us_census_population
+    url: "https://www2.census.gov/programs-surveys/popest/datasets/2020-2025/state/totals/NST-EST2025-ALLDATA.csv"
+    source: "U.S. Census Bureau, Population Estimates Program (PEP), Vintage 2025"
+    source_page: "https://www.census.gov/programs-surveys/popest.html"
+    description: "Census Bureau Vintage 2025 resident population estimates (national + states), July 1 estimates 2020-2025"
