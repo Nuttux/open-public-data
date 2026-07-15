@@ -90,9 +90,13 @@ export default function FournisseurFiche({
         </div>
       ) : (
         <p style={{ margin: "8px 0 0", fontSize: 13, color: "var(--muted)" }}>
-          {t("fx.fiche.fourn.no_sirene")}{fournisseur.siren ? ` ${fournisseur.siren}` : ""}. {t("fx.fiche.fourn.no_sirene_pre_link")}{" "}
+          {t("fx.fiche.fourn.no_sirene")}{/^\d{9}$/.test(fournisseur.siren) ? ` ${fournisseur.siren}` : ""}. {t("fx.fiche.fourn.no_sirene_pre_link")}{" "}
           <a
-            href={`https://annuaire-entreprises.data.gouv.fr/entreprise/${fournisseur.siren}`}
+            /* siret "#" ou absent dans DECP → /entreprise/<siren> serait un
+             * lien mort ; on retombe sur la recherche par nom */
+            href={/^\d{9}$/.test(fournisseur.siren)
+              ? `https://annuaire-entreprises.data.gouv.fr/entreprise/${fournisseur.siren}`
+              : `https://annuaire-entreprises.data.gouv.fr/rechercher?terme=${encodeURIComponent(fournisseur.nom)}`}
             target="_blank"
             rel="noopener noreferrer"
             style={{ color: "var(--bleu)", borderBottom: "1px solid var(--bleu)" }}

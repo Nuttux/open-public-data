@@ -11,6 +11,26 @@ const fill = (s: string, vars: Record<string, string | number>) => {
   return r;
 };
 
+/** Source réelle des subventions : dataset "versées annexe CA" (les noms de
+ * l'export en sont issus verbatim, le refine matche donc exactement).
+ * Exception 2020-2021 : ces exercices viennent du PDF B8.1.1 du compte
+ * administratif (le dataset opendata ne contient que les prestations en
+ * nature sur ces deux années). */
+const SUBV_DATASET =
+  "https://opendata.paris.fr/explore/dataset/subventions-versees-annexe-compte-administratif-a-partir-de-2018/table/";
+const B811_PDF: Record<number, string> = {
+  2020: "https://cdn.paris.fr/paris/2021/06/29/6af66b077794b1079d192c1d50df98f4.pdf",
+  2021: "https://cdn.paris.fr/paris/2022/06/28/358d098a9a8a7bc4feb74399c61fd634.pdf",
+};
+
+function subvSourceUrl(name: string, year?: number): { href: string; isPdf: boolean } {
+  if (year != null && B811_PDF[year]) return { href: B811_PDF[year], isPdf: true };
+  const nom = `refine.nom_de_l_organisme_beneficiaire=${encodeURIComponent(name)}`;
+  if (year == null) return { href: `${SUBV_DATASET}?${nom}`, isPdf: false };
+  const pub = year >= 2022 ? String(year) : `CA ${year}`;
+  return { href: `${SUBV_DATASET}?refine.publication=${encodeURIComponent(pub)}&${nom}`, isPdf: false };
+}
+
 export default function AssociationFiche({
   asso,
   vulgarization,
@@ -298,14 +318,19 @@ export default function AssociationFiche({
                               </div>
                             )}
                             <div style={{ marginTop: 4 }}>
-                              <a
-                                href={`https://opendata.paris.fr/explore/dataset/subventions-associations-votees-/table/?refine.annee_budget=${l.year}&refine.nom_beneficiaire=${encodeURIComponent(asso.name)}${l.direction ? `&refine.direction=${encodeURIComponent(l.direction)}` : ""}`}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                style={{ fontFamily: "var(--f-mono)", fontSize: 12, color: "var(--bleu)", borderBottom: "1px solid var(--bleu)" }}
-                              >
-                                {t("fx.fiche.asso.detail.opendata")}
-                              </a>
+                              {(() => {
+                                const src = subvSourceUrl(asso.name, l.year);
+                                return (
+                                  <a
+                                    href={src.href}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    style={{ fontFamily: "var(--f-mono)", fontSize: 12, color: "var(--bleu)", borderBottom: "1px solid var(--bleu)" }}
+                                  >
+                                    {t(src.isPdf ? "fx.fiche.asso.detail.pdf" : "fx.fiche.asso.detail.opendata")}
+                                  </a>
+                                );
+                              })()}
                             </div>
                           </div>
                         </td>
@@ -338,14 +363,24 @@ export default function AssociationFiche({
           )}
           <p className="fx-fiche-note" style={{ marginTop: 10 }}>
             {t("fx.fiche.asso.note")}{" "}
-            <a
-              href={`https://opendata.paris.fr/explore/dataset/subventions-associations-votees-/table/?refine.objet_du_dossier=&refine.nom_beneficiaire=${encodeURIComponent(asso.name)}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              style={{ color: "var(--bleu)", borderBottom: "1px solid var(--bleu)" }}
-            >
-              opendata.paris.fr ↗
-            </a>.
+            {(() => {
+              /* Asso financée uniquement en 2020-2021 : absente du dataset
+               * opendata (années PDF), le refine par nom renverrait 0 ligne. */
+              const pdfOnly = asso.yearsActive.every((y) => B811_PDF[y]);
+              const href = pdfOnly
+                ? B811_PDF[Math.max(...asso.yearsActive)]
+                : subvSourceUrl(asso.name).href;
+              return (
+                <a
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{ color: "var(--bleu)", borderBottom: "1px solid var(--bleu)" }}
+                >
+                  {pdfOnly ? "cdn.paris.fr (PDF) ↗" : "opendata.paris.fr ↗"}
+                </a>
+              );
+            })()}.
           </p>
         </section>
       )}

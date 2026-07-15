@@ -247,7 +247,7 @@ export default function MarchesPublicsClient({
           />
           <ChartSource
             source={t("fx.mp.s02.source.cite")}
-            dataHref="https://opendata.paris.fr/explore/dataset/marches-publics-conclus-par-la-ville-de-paris/"
+            dataHref="https://opendata.paris.fr/explore/dataset/liste-des-marches-de-la-collectivite-parisienne/"
             methodAnchor="marches-publics"
           />
         </div>
@@ -469,7 +469,7 @@ export default function MarchesPublicsClient({
             <p className="fx-note">{t("fx.mp.rank.note")}</p>
             <ChartSource
               source={fill(t("fx.mp.rank.source.cite"), { from: ranking.years[0], to: ranking.years[ranking.years.length - 1] })}
-              dataHref="https://opendata.paris.fr/explore/dataset/marches-publics-notifies-a-partir-de-2013/"
+              dataHref="https://opendata.paris.fr/explore/dataset/liste-des-marches-de-la-collectivite-parisienne/"
               methodAnchor="marches"
             />
           </div>
@@ -739,7 +739,7 @@ export default function MarchesPublicsClient({
           })()}
           <ChartSource
             source={fill(t("fx.mp.s03.source.cite"), { year: d.year })}
-            dataHref="https://opendata.paris.fr/explore/dataset/marches-publics-conclus-par-la-ville-de-paris/"
+            dataHref="https://opendata.paris.fr/explore/dataset/liste-des-marches-de-la-collectivite-parisienne/"
             methodAnchor="marches-publics"
           />
         </div>
@@ -774,7 +774,7 @@ export default function MarchesPublicsClient({
           </p>
           <ChartSource
             source={t("fx.mp.s05.source.cite")}
-            dataHref="https://opendata.paris.fr/explore/dataset/marches-publics-conclus-par-la-ville-de-paris/"
+            dataHref="https://opendata.paris.fr/explore/dataset/liste-des-marches-de-la-collectivite-parisienne/"
             methodAnchor="marches-publics"
           />
         </div>

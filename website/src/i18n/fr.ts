@@ -2707,7 +2707,8 @@ const fr: Record<string, string> = {
   'fx.fiche.asso.detail.sub_category': 'Sous-catégorie',
   'fx.fiche.asso.detail.secteurs': "Secteurs d'activité",
   'fx.fiche.asso.detail.opendata': 'Voir les lignes exactes sur opendata.paris.fr ↗',
-  'fx.fiche.asso.note': "Données agrégées par année depuis le jeu open data « Subventions accordées ». Le détail ligne-à-ligne (chaque délibération) est consultable sur",
+  'fx.fiche.asso.detail.pdf': 'Voir l’annexe B8.1.1 du compte administratif (PDF) ↗',
+  'fx.fiche.asso.note': "Données agrégées par année depuis le jeu open data « Subventions versées (annexe au compte administratif) » ; exercices 2020-2021 complétés par l'annexe B8.1.1 (PDF). Le détail ligne-à-ligne est consultable sur",
   'fx.fiche.asso.sub': 'sub.',
   'fx.fiche.asso.vs_prev': 'vs année précédente',
 
@@ -2732,8 +2733,9 @@ const fr: Record<string, string> = {
   'fx.fiche.contrat.perimetre': 'Périmètre',
   'fx.fiche.contrat.num_marche': 'N° marché',
   'fx.fiche.contrat.decp': 'DECP nat.',
-  'fx.fiche.contrat.decp_link': 'Rechercher sur data.gouv.fr ↗',
+  'fx.fiche.contrat.decp_link': 'Consulter la DECP consolidée (data.gouv.fr) ↗',
   'fx.fiche.contrat.opendata': 'Open data',
+  'fx.fiche.contrat.opendata_link': 'Voir la fiche exacte du marché sur opendata.paris.fr ↗',
   'fx.fiche.contrat.avenir': "À venir : liens directs vers l'avis BOAMP, la liste des co-attributaires déclarés, les avenants et sous-traitants — via enrichissement du pipeline DECP.",
 
   // ── ProjetFiche ──────────────────────────────────────────────────────────────
@@ -2904,6 +2906,8 @@ const fr: Record<string, string> = {
   'fx.fiche.chap.no_projets_body': 'Le PDF « Investissements localisés » (Ville de Paris, CA {year}) expose les chantiers géolocalisables — équipements bâtis, voirie, espaces verts. Ce chapitre n’y figure pas à cette granularité : ses dépenses transitent principalement par d’autres canaux (transferts aux bailleurs, opérations foncières, subventions), non détaillés projet par projet dans la source actuelle.',
   'fx.fiche.chap.top_arr': 'Top arrondissements · {label}',
   'fx.fiche.chap.top_proj': 'Top projets · {label}',
+  'fx.fiche.chap.source_note': 'Le montant du chapitre vient des comptes administratifs M57 (exercice {year}), dépenses d’investissement.',
+  'fx.fiche.chap.source_link': 'Voir les lignes budgétaires sur opendata.paris.fr ↗',
   'fx.fiche.chap.projet_s': 'projet',
   'fx.fiche.chap.projet_p': 'projets',
   'fx.fiche.chap.transverse': 'Transverse',

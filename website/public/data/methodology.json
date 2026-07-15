@@ -55,7 +55,7 @@
       "value": 24.5,
       "unit": "pct",
       "source": "DDT Paris - Inventaire SRU 2024",
-      "source_url": "https://www.statistiques.developpement-durable.gouv.fr/bilans-sru",
+      "source_url": "https://www.ecologie.gouv.fr/politiques-publiques/larticle-55-loi-solidarite-renouvellement-urbain-sru",
       "date_reference": "2024-12-31",
       "notes": "Ratio de logements sociaux SRU pour Paris au 31/12/2024. Calculé sur les résidences principales selon l'article L302-5 du CCH. Mise à jour annuelle vers fin avril N+1."
     },
@@ -71,7 +71,7 @@
       "value": 2024,
       "unit": "year",
       "source": "DDT Paris - Inventaire SRU 2024",
-      "source_url": "https://www.statistiques.developpement-durable.gouv.fr/bilans-sru",
+      "source_url": "https://www.ecologie.gouv.fr/politiques-publiques/larticle-55-loi-solidarite-renouvellement-urbain-sru",
       "date_reference": "2024-12-31",
       "notes": "Année de référence de l'inventaire SRU le plus récent publié par la DDT Paris."
     },
@@ -79,7 +79,7 @@
       "value": 258400,
       "unit": "logements",
       "source": "DDT Paris - Inventaire SRU 2024",
-      "source_url": "https://www.statistiques.developpement-durable.gouv.fr/bilans-sru",
+      "source_url": "https://www.ecologie.gouv.fr/politiques-publiques/larticle-55-loi-solidarite-renouvellement-urbain-sru",
       "date_reference": "2024-12-31",
       "notes": "Stock total de logements sociaux SRU au 31/12/2024 (numérateur). Le dénominateur (résidences principales) est d'environ 1 055 000."
     },
@@ -137,7 +137,7 @@
       "value": 12,
       "unit": "années",
       "source": "Cour des comptes - rapports sur les finances locales",
-      "source_url": "https://www.ccomptes.fr/fr/publications/les-finances-publiques-locales-2023",
+      "source_url": "https://www.ccomptes.fr/fr/publications/les-finances-publiques-locales-2023-fascicule-1",
       "date_reference": "2023-09-01",
       "notes": "Seuil d'alerte de capacité de désendettement communément utilisé par les chambres régionales des comptes. Au-delà : risque financier signalé."
     },
@@ -145,7 +145,7 @@
       "value": 20,
       "unit": "années",
       "source": "Cour des comptes - rapports sur les finances locales",
-      "source_url": "https://www.ccomptes.fr/fr/publications/les-finances-publiques-locales-2023",
+      "source_url": "https://www.ccomptes.fr/fr/publications/les-finances-publiques-locales-2023-fascicule-1",
       "date_reference": "2023-09-01",
       "notes": "Seuil critique : au-delà, la collectivité est considérée en situation financière très préoccupante."
     },

@@ -231,7 +231,7 @@
           "value": 0.55,
           "year": 2023,
           "source": "OFGL - Comptes des collectivités locales 2023",
-          "source_url": "https://www.collectivites-locales.gouv.fr/files/Finances%20locales/Rapports%20OFGL/2024/note_OFGL_finances_locales_2023.pdf",
+          "source_url": "https://www.collectivites-locales.gouv.fr/etudes-et-statistiques/rapports-de-lobservatoire-des-finances-et-de-la-gestion-publique-locales-ofgl",
           "date_reference": "2024-09-01",
           "notes": "Part du bloc communal (communes + groupements à fiscalité propre) dans les dépenses totales des APUL 2023. Source OFGL : rapport finances locales 2023."
         },
@@ -241,7 +241,7 @@
           "value": 0.3,
           "year": 2023,
           "source": "OFGL - Comptes des collectivités locales 2023",
-          "source_url": "https://www.collectivites-locales.gouv.fr/files/Finances%20locales/Rapports%20OFGL/2024/note_OFGL_finances_locales_2023.pdf",
+          "source_url": "https://www.collectivites-locales.gouv.fr/etudes-et-statistiques/rapports-de-lobservatoire-des-finances-et-de-la-gestion-publique-locales-ofgl",
           "date_reference": "2024-09-01",
           "notes": "Part des départements dans les dépenses totales des APUL 2023 (~30% : action sociale, RSA, dépendance, collèges, voirie départementale)."
         },
@@ -251,7 +251,7 @@
           "value": 0.15,
           "year": 2023,
           "source": "OFGL - Comptes des collectivités locales 2023",
-          "source_url": "https://www.collectivites-locales.gouv.fr/files/Finances%20locales/Rapports%20OFGL/2024/note_OFGL_finances_locales_2023.pdf",
+          "source_url": "https://www.collectivites-locales.gouv.fr/etudes-et-statistiques/rapports-de-lobservatoire-des-finances-et-de-la-gestion-publique-locales-ofgl",
           "date_reference": "2024-09-01",
           "notes": "Part des régions dans les dépenses totales des APUL 2023 (~15% : lycées, formation professionnelle, transport, développement économique)."
         }
@@ -267,7 +267,7 @@
           "value": 0.46,
           "year": 2024,
           "source": "PLFSS 2025 - branche maladie / total ASSO",
-          "source_url": "https://www.securite-sociale.fr/files-sso/files/2024/10/PLFSS-2025_Annexe5.pdf",
+          "source_url": "https://www.securite-sociale.fr/files/live/sites/SSFR/files/medias/PLFSS/2025/PLFSS2025-Annexe05.pdf",
           "date_reference": "2024-10-08",
           "notes": "Part de la branche maladie (CNAM) dans le total des dépenses ASSO (Sécurité sociale). PLFSS 2025, annexe 5."
         },
@@ -277,7 +277,7 @@
           "value": 0.39,
           "year": 2024,
           "source": "PLFSS 2025 - branche vieillesse / total ASSO",
-          "source_url": "https://www.securite-sociale.fr/files-sso/files/2024/10/PLFSS-2025_Annexe5.pdf",
+          "source_url": "https://www.securite-sociale.fr/files/live/sites/SSFR/files/medias/PLFSS/2025/PLFSS2025-Annexe05.pdf",
           "date_reference": "2024-10-08",
           "notes": "Part des retraites (régime général CNAV + régimes alignés + régimes de base) dans le total ASSO 2024."
         },
@@ -287,7 +287,7 @@
           "value": 0.07,
           "year": 2024,
           "source": "PLFSS 2025 - branche famille / total ASSO",
-          "source_url": "https://www.securite-sociale.fr/files-sso/files/2024/10/PLFSS-2025_Annexe5.pdf",
+          "source_url": "https://www.securite-sociale.fr/files/live/sites/SSFR/files/medias/PLFSS/2025/PLFSS2025-Annexe05.pdf",
           "date_reference": "2024-10-08",
           "notes": "Part de la branche famille (CNAF) dans le total ASSO 2024 : prestations familiales, allocations logement, RSA majoré, etc."
         },
@@ -297,7 +297,7 @@
           "value": 0.06,
           "year": 2024,
           "source": "UNEDIC - Comptes 2023",
-          "source_url": "https://www.unedic.org/publications/situation-financiere-de-lassurance-chomage-pour-2024-2026",
+          "source_url": "https://www.unedic.org/publications/previsions-financieres-de-l-unedic-juin-2024",
           "date_reference": "2024-06-01",
           "notes": "Part de l'UNEDIC (assurance chômage) dans le total ASSO 2024. Allocations chômage hors solidarité (ASS = État)."
         },
@@ -307,7 +307,7 @@
           "value": 0.02,
           "year": 2024,
           "source": "PLFSS 2025 - branches AT-MP et autonomie",
-          "source_url": "https://www.securite-sociale.fr/files-sso/files/2024/10/PLFSS-2025_Annexe5.pdf",
+          "source_url": "https://www.securite-sociale.fr/files/live/sites/SSFR/files/medias/PLFSS/2025/PLFSS2025-Annexe05.pdf",
           "date_reference": "2024-10-08",
           "notes": "Part résiduelle des branches accidents du travail / maladies professionnelles (AT-MP) et autonomie (CNSA) dans le total ASSO 2024."
         }
@@ -596,7 +596,7 @@
         "unit": "EUR",
         "year": 2022,
         "source": "DREES - Les retraités et les retraites - édition 2024",
-        "source_url": "https://drees.solidarites-sante.gouv.fr/publications-communique-de-presse/panoramas-de-la-drees/les-retraites-et-les-retraites-edition-2024",
+        "source_url": "https://drees.solidarites-sante.gouv.fr/publications-communique-de-presse-documents-de-reference/panoramas-de-la-drees/241030_Retraites_2024",
         "date_reference": "2024-04-15",
         "notes": "Pension brute mensuelle moyenne (tous régimes confondus, hors majorations enfants), résidents en France, 2022. Source : DREES, EIR 2020-2022 actualisé."
       },
@@ -618,7 +618,7 @@
         "unit": "EUR",
         "year": 2024,
         "source": "Code de la défense - solde du soldat de 2e classe",
-        "source_url": "https://www.defense.gouv.fr/defense/etre-militaire/remunerations",
+        "source_url": "https://www.defense.gouv.fr/sga/travailler-au-ministere/carrieres/solde-militaires",
         "date_reference": "2024-01-01",
         "notes": "Solde indiciaire brute mensuelle du soldat de 2e classe en début de carrière (indice majoré 332 × valeur du point d'indice 4,9214 en 2024)."
       },
@@ -640,7 +640,7 @@
         "unit": "EUR",
         "year": 2023,
         "source": "AMF - Étude tarifs cantine scolaire 2022 / Sénat rapport 2023",
-        "source_url": "https://www.senat.fr/rap/r22-558/r22-558.html",
+        "source_url": "https://www.senat.fr/questions/base/2022/qSEQ220700811.html",
         "date_reference": "2023-06-01",
         "notes": "Tarif moyen pondéré d'un repas de cantine scolaire en France (varie 1-7€ selon QF familial). Source AMF / mission Sénat 2023."
       },
@@ -651,7 +651,7 @@
         "unit": "EUR",
         "year": 2022,
         "source": "DREES - Comptes de la santé 2023 - prix moyen de la journée d'hospitalisation MCO",
-        "source_url": "https://drees.solidarites-sante.gouv.fr/publications-communique-de-presse/panoramas-de-la-drees/comptes-de-la-sante-2023",
+        "source_url": "https://drees.solidarites-sante.gouv.fr/publications-communique-de-presse-documents-de-reference/panoramas-de-la-drees/241120-Panorama-CNS24",
         "date_reference": "2023-09-01",
         "notes": "Prix moyen d'une journée en court séjour MCO (médecine, chirurgie, obstétrique) public en 2022, financé par l'Assurance maladie via la T2A. ~1300€/jour, varie selon la lourdeur du GHM."
       },
@@ -662,7 +662,7 @@
         "unit": "EUR",
         "year": 2025,
         "source": "Décret n°2024-1032 du 18 novembre 2024 - SMIC au 1er janvier 2025",
-        "source_url": "https://www.service-public.fr/particuliers/actualites/A18004",
+        "source_url": "https://www.service-public.fr/particuliers/vosdroits/F2300",
         "date_reference": "2025-01-01",
         "notes": "SMIC mensuel brut 35h au 1er janvier 2025 (1 801,80 € arrondi)."
       }
@@ -676,7 +676,7 @@
       "total_md_eur": 279.7,
       "sum_share": 1.0,
       "source": "PLFSS 2025 - sous-objectifs résiduels (FIR, AME, prévention, soutien aux secteurs en difficulté)",
-      "source_url": "https://www.securite-sociale.fr/files-sso/files/2024/10/PLFSS-2025_Annexe7.pdf",
+      "source_url": "https://www.securite-sociale.fr/files/live/sites/SSFR/files/medias/PLFSS/2025/PLFSS2025_Annexe07.pdf",
       "date_reference": "2024-10-08",
       "items": {
         "hopital_etablissements_sante": {
@@ -724,7 +724,7 @@
       "total_md_eur": 325.0,
       "sum_share": 1.0,
       "source": "DREES — Les retraites et les retraités, édition 2024",
-      "source_url": "https://drees.solidarites-sante.gouv.fr/publications-communique-de-presse/panoramas-de-la-drees/240725_Panorama_Retraites",
+      "source_url": "https://drees.solidarites-sante.gouv.fr/publications-communique-de-presse-documents-de-reference/panoramas-de-la-drees/241030_Retraites_2024",
       "date_reference": "2024-07-25",
       "items": {
         "regime_general_salaries_prive": {
@@ -765,7 +765,7 @@
       "total_md_eur": 81.5,
       "sum_share": 1.0,
       "source": "Comptes de la Sécurité sociale 2024 + DREES Aide sociale",
-      "source_url": "https://www.securite-sociale.fr/files-sso/files/2024/09/CCSS-2024-09.pdf",
+      "source_url": "https://www.securite-sociale.fr/files/live/sites/SSFR/files/medias/CCSS/2024/CCSS-octobre%202024.pdf",
       "date_reference": "2024-09-30",
       "items": {
         "prestations_familiales": {
@@ -813,7 +813,7 @@
       "total_md_eur": 40.0,
       "sum_share": 1.0,
       "source": "UNEDIC — Rapport annuel 2024",
-      "source_url": "https://www.unedic.org/publications/rapport-financier-2023",
+      "source_url": "https://www.unedic.org/qui-sommes-nous/rapports/rapport-financier-de-l-unedic-2023",
       "date_reference": "2024-06-30",
       "items": {
         "are_allocation_retour_emploi": {
@@ -1022,7 +1022,7 @@
       "perimeter_en": "OFGL/DGCL — Functional breakdown of the municipal block (national, pop-weighted)",
       "year": 2024,
       "source": "DGCL/OFGL — Rapport annuel finances locales 2024",
-      "source_url": "https://www.collectivites-locales.gouv.fr/files/Finances%20locales/Rapports%20OFGL/2024/note_OFGL_finances_locales_2023.pdf",
+      "source_url": "https://www.collectivites-locales.gouv.fr/etudes-et-statistiques/rapports-de-lobservatoire-des-finances-et-de-la-gestion-publique-locales-ofgl",
       "scope_note_fr": "Le dataset OFGL ne publie pas la ventilation fonctionnelle au niveau de chaque commune (seul `departements-fonctionnelle` est exposé). Les valeurs ici sont les moyennes nationales du bloc communal (communes + EPCI) issues du rapport annuel OFGL/DGCL. L'overlay `by_insee_top_200` est laissé vide pour l'instant.",
       "fonctions": [
         "administration_generale",
@@ -1157,7 +1157,7 @@
       "perimeter_en": "OFGL — Functional breakdown of regions (M71, national avg)",
       "year": 2024,
       "source": "DGCL/OFGL — Comptes des régions 2023 (M71 fonctionnelle)",
-      "source_url": "https://data.ofgl.fr/explore/dataset/ofgl-base-regions-fonctionnelle/",
+      "source_url": "https://data.ofgl.fr/explore/dataset/ofgl-base-regions/",
       "scope_note_fr": "Fonction 8 transports : autorité organisatrice des TER (conventions SNCF Voyageurs, ~360 000 voyageurs/jour), transports routiers interurbains (compétence transférée des départements en 2017), liaisons aériennes essentielles. TODO: vérifier.",
       "fonctions": [
         "transports_ter_routier",

@@ -24,7 +24,7 @@
           "fraction_applied": 1.0,
           "drill_url": "/france/budget/bucket/secu/cnam_maladie",
           "source": "PLFSS 2025 — annexe 5 (branche maladie)",
-          "source_url": "https://www.securite-sociale.fr/files-sso/files/2024/10/PLFSS-2025_Annexe5.pdf",
+          "source_url": "https://www.securite-sociale.fr/files/live/sites/SSFR/files/medias/PLFSS/2025/PLFSS2025-Annexe05.pdf",
           "note": "Branche maladie au sens PLFSS : ONDAM (hôpital, ville, médico-social), IJ, AME, FIR.",
           "share_of_theme": 0.947364
         },
@@ -185,7 +185,7 @@
           "fraction_applied": 1.0,
           "drill_url": "/france/budget/bucket/secu/cnaf_famille",
           "source": "PLFSS 2025 — annexe 5 (branche famille)",
-          "source_url": "https://www.securite-sociale.fr/files-sso/files/2024/10/PLFSS-2025_Annexe5.pdf",
+          "source_url": "https://www.securite-sociale.fr/files/live/sites/SSFR/files/medias/PLFSS/2025/PLFSS2025-Annexe05.pdf",
           "note": "Branche famille : prestations familiales, allocations logement, RSA majoré.",
           "share_of_theme": 0.285973
         },
@@ -215,7 +215,7 @@
           "fraction_applied": 1.0,
           "drill_url": "/france/budget/bucket/secu/unedic_chomage",
           "source": "UNEDIC — Comptes 2023",
-          "source_url": "https://www.unedic.org/publications/situation-financiere-de-lassurance-chomage-pour-2023-2025",
+          "source_url": "https://www.unedic.org/publications/previsions-financieres-de-l-unedic-juin-2023",
           "note": "UNEDIC : allocations chômage (ARE), aides au reclassement.",
           "share_of_theme": 0.245119
         },
@@ -406,7 +406,7 @@
           "fraction_applied": 1.0,
           "drill_url": "/france/budget/bucket/secu/cnaf_famille",
           "source": "PLFSS 2025 — annexe 5 (branche famille — aides au logement)",
-          "source_url": "https://www.securite-sociale.fr/files-sso/files/2024/10/PLFSS-2025_Annexe5.pdf",
+          "source_url": "https://www.securite-sociale.fr/files/live/sites/SSFR/files/medias/PLFSS/2025/PLFSS2025-Annexe05.pdf",
           "note": "Aides personnelles au logement (APL, ALS, ALF) versées par la CAF pour le compte du Fonds national d'aide au logement (FNAL). ~26 % de la branche famille.",
           "share_of_theme": 0.279928
         },

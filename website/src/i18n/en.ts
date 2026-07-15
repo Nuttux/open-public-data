@@ -2707,7 +2707,8 @@ const en: Record<string, string> = {
   'fx.fiche.asso.detail.sub_category': 'Sub-category',
   'fx.fiche.asso.detail.secteurs': 'Activity sectors',
   'fx.fiche.asso.detail.opendata': 'See the exact records on opendata.paris.fr ↗',
-  'fx.fiche.asso.note': 'Data aggregated by year from the open data set "Grants awarded". The line-by-line detail (each resolution) can be viewed on',
+  'fx.fiche.asso.detail.pdf': 'See annex B8.1.1 of the administrative account (PDF) ↗',
+  'fx.fiche.asso.note': 'Data aggregated by year from the open data set "Grants paid (administrative account annex)"; fiscal years 2020-2021 filled in from annex B8.1.1 (PDF). The line-by-line detail can be viewed on',
   'fx.fiche.asso.sub': 'gr.',
   'fx.fiche.asso.vs_prev': 'vs previous year',
 
@@ -2732,8 +2733,9 @@ const en: Record<string, string> = {
   'fx.fiche.contrat.perimetre': 'Scope',
   'fx.fiche.contrat.num_marche': 'Contract no.',
   'fx.fiche.contrat.decp': 'Nat. DECP',
-  'fx.fiche.contrat.decp_link': 'Search on data.gouv.fr ↗',
+  'fx.fiche.contrat.decp_link': 'View the consolidated DECP (data.gouv.fr) ↗',
   'fx.fiche.contrat.opendata': 'Open data',
+  'fx.fiche.contrat.opendata_link': 'See this contract’s exact record on opendata.paris.fr ↗',
   'fx.fiche.contrat.avenir': 'Coming soon: direct links to the BOAMP notice, the list of declared co-awardees, amendments and subcontractors — via DECP pipeline enrichment.',
 
   // ── ProjetFiche ──────────────────────────────────────────────────────────────
@@ -2904,6 +2906,8 @@ const en: Record<string, string> = {
   'fx.fiche.chap.no_projets_body': 'The "Localised investments" PDF (City of Paris, FY {year}) lists geolocatable construction sites — buildings, roads, parks. This chapter does not appear there at that granularity: its spending flows mostly through other channels (transfers to social-housing operators, land operations, subsidies), which are not broken down project-by-project in the current source.',
   'fx.fiche.chap.top_arr': 'Top districts · {label}',
   'fx.fiche.chap.top_proj': 'Top projects · {label}',
+  'fx.fiche.chap.source_note': 'The chapter amount comes from the M57 administrative accounts (FY {year}), investment expenditure.',
+  'fx.fiche.chap.source_link': 'See the budget lines on opendata.paris.fr ↗',
   'fx.fiche.chap.projet_s': 'project',
   'fx.fiche.chap.projet_p': 'projects',
   'fx.fiche.chap.transverse': 'City-wide',
