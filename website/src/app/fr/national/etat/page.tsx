@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import "../../fusion.css";
+import "@/app/fusion.css";
 import { loadEtatLFI, loadEtatLFIHistory } from "@/lib/national-data";
 import { buildLocaleAwareMetadata } from "@/lib/seo";
 import EtatClient from "./EtatClient";

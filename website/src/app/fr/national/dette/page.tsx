@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import "../../fusion.css";
+import "@/app/fusion.css";
 import { loadEurostatDette } from "@/lib/national-data";
 import { buildLocaleAwareMetadata } from "@/lib/seo";
 import DetteClient from "./DetteClient";

@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import "../../fusion.css";
+import "@/app/fusion.css";
 import { getCityOrNull, listCities, listCitySlugs } from "@/lib/cities";
 import {
   computeCapaciteDesendettement,
