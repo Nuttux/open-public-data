@@ -14,7 +14,7 @@ export async function generateMetadata(): Promise<Metadata> {
       description:
         "Structure of compulsory levies in France: social contributions, VAT, income tax, corporate tax, other taxes — as % of GDP and in billion euros, since 2010.",
     },
-    path: "/france/fiscalite",
+    path: "/fr/national/fiscalite",
   });
 }
 

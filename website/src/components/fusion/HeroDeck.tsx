@@ -72,7 +72,7 @@ export default function HeroDeck({ stats }: Props) {
         <div className="fx-hero-deck-rail" role="group">
           {fp && (
             <HeroDeckCard
-              href={`/ville/paris/investissements/projet/${fp.id}`}
+              href={`/fr/city/paris/investissements/projet/${fp.id}`}
               kicker={t("fx.land.deck.c1.kicker")}
               title={t("fx.land.deck.c1.title")}
               amount={fmtDec(fp.montant / 1e6, 1)}
@@ -86,7 +86,7 @@ export default function HeroDeck({ stats }: Props) {
 
           {fa && (
             <HeroDeckCard
-              href={`/ville/paris/subventions/association/${fa.slug}`}
+              href={`/fr/city/paris/subventions/association/${fa.slug}`}
               kicker={t("fx.land.deck.c2.kicker")}
               title={t("fx.land.deck.c2.title")}
               amount={fmtInt(fa.montant / 1e6)}
@@ -100,7 +100,7 @@ export default function HeroDeck({ stats }: Props) {
 
           {fm && (
             <HeroDeckCard
-              href={`/ville/paris/marches/categorie/${fm.slug}`}
+              href={`/fr/city/paris/marches/categorie/${fm.slug}`}
               kicker={t("fx.land.deck.c3.kicker")}
               title={t("fx.land.deck.c3.title")}
               amount={fm.total >= 1e9 ? fmtBillions(fm.total) : fmtMillions(fm.total)}
@@ -114,7 +114,7 @@ export default function HeroDeck({ stats }: Props) {
 
           {fb && (
             <HeroDeckCard
-              href={`/ville/paris/dette/bailleur/${fb.slug}`}
+              href={`/fr/city/paris/dette/bailleur/${fb.slug}`}
               kicker={t("fx.land.deck.c4.kicker")}
               title={t("fx.land.deck.c4.title")}
               amount={fb.capitalRestant >= 1e9 ? fmtBillions(fb.capitalRestant) : fmtMillions(fb.capitalRestant)}

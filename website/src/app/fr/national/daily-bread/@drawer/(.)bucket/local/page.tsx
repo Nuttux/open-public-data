@@ -9,7 +9,7 @@ export default async function DrawerBlocOverviewPage({
     params: Promise.resolve({}),
     searchParams,
     voice: "perso",
-    basePath: "/france/daily-bread",
+    basePath: "/fr/national/daily-bread",
     isDrawer: true,
     kind: "local-scope",
     localScope: "bloc_communal",

@@ -43,7 +43,7 @@ export async function generateMetadata({
         title: `${cityRich.nom} — Local finances · France Open Data`,
         description: `Budget, debt, taxation of ${cityRich.nom} (${cityRich.code_insee}, ${cityRich.reg_name}). OFGL harmonised data 2014-present.`,
       },
-      path: `/ville/${slug}`,
+      path: `/fr/city/${slug}`,
     });
   }
   // Tail commune (slim page)
@@ -56,7 +56,7 @@ export async function generateMetadata({
         title: `${slim.nom} (${slim.dep_name}) — Local finances · France Open Data`,
         description: `Budget, debt, taxation of ${slim.nom} (INSEE ${slim.insee}, ${slim.reg_name}). OFGL data.`,
       },
-      path: `/ville/${slug}`,
+      path: `/fr/city/${slug}`,
     });
   }
   return { title: "Page non trouvée — France Open Data" };

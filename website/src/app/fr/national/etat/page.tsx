@@ -14,7 +14,7 @@ export async function generateMetadata(): Promise<Metadata> {
       description:
         "Central government Budget Général broken down by mission and programme: the ~€447B of net spending planned for PLF 2025, ranked from school education to overseas development aid.",
     },
-    path: "/france/etat",
+    path: "/fr/national/etat",
   });
 }
 

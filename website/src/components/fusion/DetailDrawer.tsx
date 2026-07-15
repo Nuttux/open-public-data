@@ -319,7 +319,7 @@ export default function DetailDrawer({
               // suffit). Action plus utile : explorer le listing complet de
               // l'entité une fois qu'on a peeké un cas spécifique.
               if (!shareUrl) return null;
-              const m = shareUrl.match(/^(\/ville\/[^/]+\/([^/]+))\//);
+              const m = shareUrl.match(/^(\/fr\/city\/[^/]+\/([^/]+))\//);
               if (!m) return null;
               const hubHref = m[1];
               const section = m[2];

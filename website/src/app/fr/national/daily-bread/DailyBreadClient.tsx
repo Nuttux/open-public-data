@@ -276,7 +276,7 @@ export default function DailyBreadClient({
       const available = new Set(drilldownIndex?.[bucket]?.level2 ?? []);
       for (const [inPage, drillKey] of Object.entries(alias)) {
         if (available.has(drillKey)) {
-          m.set(inPage, `/france/daily-bread/bucket/${bucket}/${drillKey}`);
+          m.set(inPage, `/fr/national/daily-bread/bucket/${bucket}/${drillKey}`);
         }
       }
       return m;
@@ -300,13 +300,13 @@ export default function DailyBreadClient({
     const available = new Set(drilldownIndex?.etat_aggregations ?? []);
     for (const [inPage, aggKey] of Object.entries(ETAT_TOP_ALIAS_AGG)) {
       if (available.has(aggKey)) {
-        m.set(inPage, `/france/daily-bread/bucket/etat/agg/${aggKey}`);
+        m.set(inPage, `/fr/national/daily-bread/bucket/etat/agg/${aggKey}`);
       }
     }
     // La ligne "Contribution UE" ouvre la fiche recette détaillée (PSR-UE
     // décomposé en RNB/TVA/plastique/NGEU + bilan brut/reçu/net) — partage
-    // la même fiche que /france/budget/recettes/psr_ue.
-    m.set("contribution_ue", "/france/budget/recettes/psr_ue");
+    // la même fiche que /fr/national/budget/recettes/psr_ue.
+    m.set("contribution_ue", "/fr/national/budget/recettes/psr_ue");
     return m;
   }, [drilldownIndex]);
   // (URLs alias bloc-communal-seed / fonctionnelle / dept / region —
@@ -323,13 +323,13 @@ export default function DailyBreadClient({
     const deptKeys = drilldownIndex?.local_dept?.level2 ?? [];
     const regKeys = drilldownIndex?.local_region?.level2 ?? [];
     if (blocKeys.length > 0) {
-      m.set("bloc_communal", `/france/daily-bread/bucket/local`);
+      m.set("bloc_communal", `/fr/national/daily-bread/bucket/local`);
     }
     if (deptKeys.length > 0) {
-      m.set("departement", `/france/daily-bread/bucket/local/dept`);
+      m.set("departement", `/fr/national/daily-bread/bucket/local/dept`);
     }
     if (regKeys.length > 0) {
-      m.set("region", `/france/daily-bread/bucket/local/region`);
+      m.set("region", `/fr/national/daily-bread/bucket/local/region`);
     }
     return m;
   }, [drilldownIndex]);
@@ -415,12 +415,12 @@ export default function DailyBreadClient({
   // (?net=2100&parts=1&c=paris) ; on omet les zéros pour rester propre.
   //
   // ⚠ Skip si on a navigué vers une sous-route (drawer drill-down) — sinon le
-  // replace écrase l'URL `/france/daily-bread/bucket/<bucket>/...` et tue l'intercept
+  // replace écrase l'URL `/fr/national/daily-bread/bucket/<bucket>/...` et tue l'intercept
   // parallel-route. Le client reste monté pendant l'intercept (layout persiste)
   // donc l'effect tourne encore.
   const pathname = usePathname();
   useEffect(() => {
-    if (pathname && pathname !== "/france/daily-bread") return;
+    if (pathname && pathname !== "/fr/national/daily-bread") return;
     const params = new URLSearchParams();
     params.set("net", String(salaireMonthly));
     params.set("parts", String(parts));
@@ -433,7 +433,7 @@ export default function DailyBreadClient({
       params.set("indep_ca", String(indepCaAnnuel));
       if (indepType !== "services_bic") params.set("indep_type", indepType);
     }
-    router.replace(`/france/daily-bread?${params.toString()}`, { scroll: false });
+    router.replace(`/fr/national/daily-bread?${params.toString()}`, { scroll: false });
   }, [
     salaireMonthly,
     pensionMonthly,
@@ -2111,7 +2111,7 @@ export default function DailyBreadClient({
                     </p>
                     {commune && (
                       <Link
-                        href={`/ville/${commune.slug}`}
+                        href={`/fr/city/${commune.slug}`}
                         className="db-local-cta"
                       >
                         {t("db.local.cta").replace("{city}", commune.nom)} →
@@ -2167,7 +2167,7 @@ export default function DailyBreadClient({
                   </div>
                   <div className="db-macro-to-micro-grid">
                     <Link
-                      href="/ville/paris/budget"
+                      href="/fr/city/paris/budget"
                       className="db-macro-to-micro-card"
                     >
                       <span className="db-macro-to-micro-card-label">
@@ -2179,7 +2179,7 @@ export default function DailyBreadClient({
                       <span className="db-macro-to-micro-card-arrow">→</span>
                     </Link>
                     <Link
-                      href="/ville/paris/subventions"
+                      href="/fr/city/paris/subventions"
                       className="db-macro-to-micro-card"
                     >
                       <span className="db-macro-to-micro-card-label">
@@ -2191,7 +2191,7 @@ export default function DailyBreadClient({
                       <span className="db-macro-to-micro-card-arrow">→</span>
                     </Link>
                     <Link
-                      href="/ville/paris/marches"
+                      href="/fr/city/paris/marches"
                       className="db-macro-to-micro-card"
                     >
                       <span className="db-macro-to-micro-card-label">
@@ -2203,7 +2203,7 @@ export default function DailyBreadClient({
                       <span className="db-macro-to-micro-card-arrow">→</span>
                     </Link>
                     <Link
-                      href="/ville/paris/investissements"
+                      href="/fr/city/paris/investissements"
                       className="db-macro-to-micro-card"
                     >
                       <span className="db-macro-to-micro-card-label">
@@ -2215,7 +2215,7 @@ export default function DailyBreadClient({
                       <span className="db-macro-to-micro-card-arrow">→</span>
                     </Link>
                     <Link
-                      href="/ville/paris/logement"
+                      href="/fr/city/paris/logement"
                       className="db-macro-to-micro-card"
                     >
                       <span className="db-macro-to-micro-card-label">
@@ -2227,7 +2227,7 @@ export default function DailyBreadClient({
                       <span className="db-macro-to-micro-card-arrow">→</span>
                     </Link>
                     <Link
-                      href="/ville/paris/dette"
+                      href="/fr/city/paris/dette"
                       className="db-macro-to-micro-card"
                     >
                       <span className="db-macro-to-micro-card-label">
@@ -2253,7 +2253,7 @@ export default function DailyBreadClient({
                     )}
                   </p>
                   <Link
-                    href={`/ville/${commune.slug}`}
+                    href={`/fr/city/${commune.slug}`}
                     className="db-macro-to-micro-other-link"
                   >
                     {t("db.macro_micro.other_link").replace(
@@ -2470,7 +2470,7 @@ export default function DailyBreadClient({
 
             <div className="db-p-method-foot">
               <Link
-                href={profileQuery ? `/france/budget?${profileQuery}` : "/france/budget"}
+                href={profileQuery ? `/fr/national/budget?${profileQuery}` : "/fr/national/budget"}
                 className="db-p-method-foot-link"
               >
                 {t("budget.cross_link.from_db")}
@@ -2510,7 +2510,7 @@ function BarList({
   color: "c-secu" | "c-etat" | "c-local";
   locale: string;
   /** Optional : si l'item a une `key` présente dans cette map, la barre
-   *  devient cliquable (drill vers `/france/daily-bread/bucket/<bucket>/<level2>`). */
+   *  devient cliquable (drill vers `/fr/national/daily-bread/bucket/<bucket>/<level2>`). */
   clickableUrls?: Map<string, string>;
   /** Query string profil (sans `?`), append à l'URL drill — propage le
    *  contexte ?net=...&parts=...&c=... pour que le drawer affiche les

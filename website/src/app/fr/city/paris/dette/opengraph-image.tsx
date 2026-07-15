@@ -158,7 +158,7 @@ export default async function DetteOG() {
           }}
         >
           <div style={{ display: "flex" }}>Source Paris Open Data · Bilan M57</div>
-          <div style={{ display: "flex" }}>franceopendata.org/ville/paris/dette</div>
+          <div style={{ display: "flex" }}>franceopendata.org/fr/city/paris/dette</div>
         </div>
       </div>
     ),

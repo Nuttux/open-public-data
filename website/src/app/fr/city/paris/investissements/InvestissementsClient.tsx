@@ -64,14 +64,14 @@ export default function InvestissementsClient({
   const { locale } = useLocale();
   const trL = (s: string | undefined) => trLabel(s, locale);
   // Multi-cities awareness — derive city slug from URL so the same client
-  // can render under /ville/paris/... and /ville/marseille/... without
+  // can render under /fr/city/paris/... and /fr/city/marseille/... without
   // hardcoded paths or constants. cf. project_marseille_v1_decisions.
   const pathname = usePathname();
   const citySlug = citySlugFromPathname(pathname);
-  const cityBasePath = `/ville/${citySlug}/investissements`;
-  const cityMarchesPath = `/ville/${citySlug}/marches`;
-  const cityLogementPath = `/ville/${citySlug}/logement`;
-  const cityDettePath = `/ville/${citySlug}/dette`;
+  const cityBasePath = `/fr/city/${citySlug}/investissements`;
+  const cityMarchesPath = `/fr/city/${citySlug}/marches`;
+  const cityLogementPath = `/fr/city/${citySlug}/logement`;
+  const cityDettePath = `/fr/city/${citySlug}/dette`;
   const isParis = citySlug === "paris";
   const ytrend = d.yearsSummary;
   const delta5y =

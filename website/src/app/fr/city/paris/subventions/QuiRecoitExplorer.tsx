@@ -98,7 +98,7 @@ export default function QuiRecoitExplorer({
   const locStr = locale === "en" ? "en-GB" : "fr-FR";
   const pathname = usePathname();
   const citySlug = citySlugFromPathname(pathname);
-  const cityBasePath = `/ville/${citySlug}/subventions`;
+  const cityBasePath = `/fr/city/${citySlug}/subventions`;
   const searchIndexUrl = citySlug === "paris"
     ? "/data/subventions/beneficiaires_search.json"
     : `/data/${citySlug}/subventions/beneficiaires_search.json`;

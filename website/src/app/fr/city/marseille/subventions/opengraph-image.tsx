@@ -156,7 +156,7 @@ export default async function MarseilleSubventionsOG() {
           }}
         >
           <div style={{ display: "flex" }}>Source data.gouv.fr · Comptes M57</div>
-          <div style={{ display: "flex" }}>franceopendata.org/ville/marseille/subventions</div>
+          <div style={{ display: "flex" }}>franceopendata.org/fr/city/marseille/subventions</div>
         </div>
       </div>
     ),

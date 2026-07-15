@@ -20,7 +20,7 @@ export async function generateMetadata({ params }: { params: Promise<Params> }):
       robots: { index: false },
     };
   }
-  const canonical = `/ville/paris/marches/contrat/${c.numero}`;
+  const canonical = `/fr/city/paris/marches/contrat/${c.numero}`;
   // Prefer EN object name when available (vulgarization_marches_en.json)
   const v = loadMarcheVulgarization(c.numero);
   const objetSnippet = locale === "en"

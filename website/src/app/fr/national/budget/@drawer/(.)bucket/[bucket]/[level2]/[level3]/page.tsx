@@ -13,7 +13,7 @@ export default async function DrawerBudgetL3Page({
     params,
     searchParams,
     voice: "impersonal",
-    basePath: "/france/budget",
+    basePath: "/fr/national/budget",
     isDrawer: true,
     kind: "level3",
   });

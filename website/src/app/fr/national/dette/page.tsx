@@ -14,7 +14,7 @@ export async function generateMetadata(): Promise<Metadata> {
       description:
         "Maastricht government debt of France broken down by sub-sector — central, local, social security — as % of GDP and in billion euros, quarterly series from 2000 to today.",
     },
-    path: "/france/dette",
+    path: "/fr/national/dette",
   });
 }
 

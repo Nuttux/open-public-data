@@ -18,7 +18,7 @@ export default async function DrawerBudgetL4Page({
     params,
     searchParams,
     voice: "impersonal",
-    basePath: "/france/budget",
+    basePath: "/fr/national/budget",
     isDrawer: true,
     kind: "level4",
   });

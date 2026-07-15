@@ -23,8 +23,8 @@ export async function generateMetadata({ searchParams }: { searchParams: Search 
   const ogImage = ogQuery ? `/api/og/stress?${ogQuery}` : "/api/og/stress";
 
   const canonical = ogQuery
-    ? `/ville/paris/dette/stress-test?${ogQuery}`
-    : "/ville/paris/dette/stress-test";
+    ? `/fr/city/paris/dette/stress-test?${ogQuery}`
+    : "/fr/city/paris/dette/stress-test";
 
   return {
     title: "Paris peut-elle faire faillite ? — Stress-test · France Open Data",

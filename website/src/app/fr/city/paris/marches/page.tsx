@@ -15,7 +15,7 @@ export async function generateMetadata(): Promise<Metadata> {
       description:
         "Contracts awarded by the Ville de Paris: contractors, CPV categories, volumes. Multi-year envelopes, not annual spend.",
     },
-    path: "/ville/paris/marches",
+    path: "/fr/city/paris/marches",
   });
 }
 

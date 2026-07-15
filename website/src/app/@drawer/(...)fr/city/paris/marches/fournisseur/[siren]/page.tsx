@@ -25,9 +25,9 @@ export default async function DrawerFournisseurPage({ params }: { params: Promis
       <DetailDrawer
         kicker={<>Fournisseur · {fournisseur.contratCount} contrats</>}
         title={fournisseur.nom}
-        shareUrl={`/ville/paris/marches/fournisseur/${fournisseur.siren || fournisseur.siret}`}
+        shareUrl={`/fr/city/paris/marches/fournisseur/${fournisseur.siren || fournisseur.siret}`}
         shareText={shareText}
-        backHref="/ville/paris/marches"
+        backHref="/fr/city/paris/marches"
         breadcrumbLabel={fournisseur.nom}
       >
         <FournisseurFiche fournisseur={fournisseur} sirene={sirene} />

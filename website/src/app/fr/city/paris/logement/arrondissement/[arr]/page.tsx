@@ -27,7 +27,7 @@ export async function generateMetadata({
   const data = loadArrondissementLogement(arr);
   if (!data) return {};
   const locale = await readLocale();
-  const canonical = `/ville/paris/logement/arrondissement/${data.slug}`;
+  const canonical = `/fr/city/paris/logement/arrondissement/${data.slug}`;
   const title = locale === "en"
     ? `${data.label} · social housing — France Open Data`
     : `${data.label} · logement social — France Open Data`;

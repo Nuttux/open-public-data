@@ -34,7 +34,7 @@ export async function generateMetadata({
           : "Fonds européens reçus — France Open Data";
     }
   }
-  const canonical = `/france/budget/recettes/${encodeURIComponent(decoded)}`;
+  const canonical = `/fr/national/budget/recettes/${encodeURIComponent(decoded)}`;
   return {
     title,
     alternates: {

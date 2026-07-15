@@ -32,9 +32,9 @@ export default async function DrawerArrondissementPage({ params }: { params: Pro
       <DetailDrawer
         kicker={<>Arrondissement · Investissement · {arr.year}</>}
         title={`${arr.arr}${suf(arr.arr)} arrondissement`}
-        shareUrl={`/ville/paris/investissements/arrondissement/${arr.arr}`}
+        shareUrl={`/fr/city/paris/investissements/arrondissement/${arr.arr}`}
         shareText={shareText}
-        backHref="/ville/paris/investissements"
+        backHref="/fr/city/paris/investissements"
         breadcrumbLabel={`${arr.arr}${suf(arr.arr)} arr.`}
       >
         <ArrondissementFiche arr={arr} />

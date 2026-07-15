@@ -20,7 +20,7 @@ export async function generateMetadata({ params }: { params: Promise<Params> }):
       robots: { index: false },
     };
   }
-  const canonical = `/ville/paris/investissements/chapitre/${c.slug}`;
+  const canonical = `/fr/city/paris/investissements/chapitre/${c.slug}`;
   const labelEn = trLabel(c.label, locale);
   const totalFmt = c.total.toLocaleString(locale === "en" ? "en-GB" : "fr-FR");
   const title = locale === "en"

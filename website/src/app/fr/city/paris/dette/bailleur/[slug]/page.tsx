@@ -34,7 +34,7 @@ export async function generateMetadata({ params }: { params: Promise<Params> }):
   } else {
     capital = locale === "en" ? "Paris social-housing operator" : "bailleur social parisien";
   }
-  const canonical = `/ville/paris/dette/bailleur/${encodeURIComponent(b.slug)}`;
+  const canonical = `/fr/city/paris/dette/bailleur/${encodeURIComponent(b.slug)}`;
   const title = locale === "en"
     ? `${b.name} — Operator · France Open Data`
     : `${b.name} — Bailleur · France Open Data`;

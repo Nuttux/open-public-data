@@ -14,7 +14,7 @@ export async function generateMetadata(): Promise<Metadata> {
       description:
         "How France's ~57% GDP general government expenditure breaks down by COFOG function, and how it compares to European peers.",
     },
-    path: "/france",
+    path: "/fr/national",
   });
 }
 

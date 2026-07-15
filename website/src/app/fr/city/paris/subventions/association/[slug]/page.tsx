@@ -26,7 +26,7 @@ export async function generateMetadata({ params }: { params: Promise<Params> }):
   const description = locale === "en"
     ? `${a.name}: ${a.subventionCount} grants, total €${amountFmt} from the Ville de Paris.`
     : `${a.name} : ${a.subventionCount} subventions, cumul ${amountFmt} € de la Ville de Paris.`;
-  const canonical = `/ville/paris/subventions/association/${encodeURIComponent(a.name)}`;
+  const canonical = `/fr/city/paris/subventions/association/${encodeURIComponent(a.name)}`;
   return {
     title,
     description,

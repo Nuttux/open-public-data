@@ -11,7 +11,7 @@ export async function generateMetadata(): Promise<Metadata> {
       description:
         'Grants paid by the Ville de Marseille (2017-2022). Source: data.gouv.fr (SCDL).',
     },
-    path: '/ville/marseille/subventions',
+    path: '/fr/city/marseille/subventions',
     keywords: ['subventions Marseille', 'associations', 'SCDL', 'bénéficiaires'],
   });
 }
@@ -20,7 +20,7 @@ const dataset = datasetJsonLd({
   name: 'Subventions de la Ville de Marseille',
   description:
     'Subventions versées par la Ville de Marseille (2017-2022). Source : data.gouv.fr (SCDL).',
-  path: '/ville/marseille/subventions',
+  path: '/fr/city/marseille/subventions',
   keywords: ['subventions', 'Marseille', 'SCDL', 'associations'],
   temporalCoverage: '2017/2022',
   spatialCoverage: 'Marseille, France',

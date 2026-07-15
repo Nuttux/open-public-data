@@ -9,7 +9,7 @@ export default async function DrawerDeptOverviewPage({
     params: Promise.resolve({}),
     searchParams,
     voice: "perso",
-    basePath: "/france/daily-bread",
+    basePath: "/fr/national/daily-bread",
     isDrawer: true,
     kind: "local-scope",
     localScope: "dept",

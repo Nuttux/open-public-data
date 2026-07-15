@@ -186,7 +186,7 @@ export default async function BudgetOG() {
           }}
         >
           <div style={{ display: "flex" }}>Source Paris Open Data · Comptes M57</div>
-          <div style={{ display: "flex" }}>franceopendata.org/ville/paris/budget</div>
+          <div style={{ display: "flex" }}>franceopendata.org/fr/city/paris/budget</div>
         </div>
       </div>
     ),

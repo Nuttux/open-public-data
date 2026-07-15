@@ -9,16 +9,16 @@ import { listCities } from "@/lib/cities";
 
 /**
  * Scope selector — switches between the Paris-rich pages (root URLs),
- * the 9 other registered cities (V2 placeholders at /ville/[slug]) and
+ * the 9 other registered cities (V2 placeholders at /fr/city/[slug]) and
  * the France macro pages (/apu, /etat, /dette, /fiscalite).
  *
  * Cities listed in EXHAUSTIVE_CITIES below have rich pages under
- * /ville/[slug]/{budget,marches,subventions,...} — for them we navigate
- * to the equivalent section instead of the slim /ville/[slug] placeholder.
+ * /fr/city/[slug]/{budget,marches,subventions,...} — for them we navigate
+ * to the equivalent section instead of the slim /fr/city/[slug] placeholder.
  */
 const EXHAUSTIVE_CITIES = new Set(["marseille"]);
 
-// Map Paris-rich pathname → equivalent section slug used in /ville/[slug]/<sec>.
+// Map Paris-rich pathname → equivalent section slug used in /fr/city/[slug]/<sec>.
 function sectionFromParisPath(pathname: string): string | null {
   if (pathname.startsWith("/budget")) return "budget";
   if (pathname.startsWith("/marches-publics")) return "marches";
@@ -29,9 +29,9 @@ function sectionFromParisPath(pathname: string): string | null {
   return null;
 }
 
-// Extract section from /ville/[city]/[section]/... pathname.
+// Extract section from /fr/city/[city]/[section]/... pathname.
 function sectionFromVillePath(pathname: string): string | null {
-  const m = pathname.match(/^\/ville\/[^/]+\/([^/]+)/);
+  const m = pathname.match(/^\/fr\/city\/[^/]+\/([^/]+)/);
   return m && m[1] !== "daily-bread" ? m[1] : null;
 }
 
@@ -73,16 +73,16 @@ export default function ScopeDropdown({ variant = "nav" }: Props) {
   const cities = listCities();
   const otherCities = cities.filter((c) => c.slug !== "paris");
 
-  // National scope: any /france/* page or the Daily Bread tool (national).
+  // National scope: any /fr/national/* page or the Daily Bread tool (national).
   const isOnFrance =
-    pathname === "/france" ||
-    pathname.startsWith("/france/") ||
-    /^\/ville\/[^/]+\/daily-bread(\/|$)/.test(pathname);
-  // Match /ville/[city] AND /ville/[city]/<sub> so the label stays right on
-  // rich subpages (e.g. /ville/marseille/budget).
-  const cityMatch = pathname.startsWith("/ville/")
+    pathname === "/fr/national" ||
+    pathname.startsWith("/fr/national/") ||
+    /^\/fr\/city\/[^/]+\/daily-bread(\/|$)/.test(pathname);
+  // Match /fr/city/[city] AND /fr/city/[city]/<sub> so the label stays right on
+  // rich subpages (e.g. /fr/city/marseille/budget).
+  const cityMatch = pathname.startsWith("/fr/city/")
     ? cities.find(
-        (c) => pathname === `/ville/${c.slug}` || pathname.startsWith(`/ville/${c.slug}/`),
+        (c) => pathname === `/fr/city/${c.slug}` || pathname.startsWith(`/fr/city/${c.slug}/`),
       )
     : undefined;
   const isOnParisRich = !isOnFrance && !cityMatch;
@@ -97,7 +97,7 @@ export default function ScopeDropdown({ variant = "nav" }: Props) {
 
   function hrefForExhaustiveCity(slug: string): string {
     const sec = currentSection ?? "budget";
-    return `/ville/${slug}/${sec}`;
+    return `/fr/city/${slug}/${sec}`;
   }
 
   function hrefForParis(): string {
@@ -141,12 +141,12 @@ export default function ScopeDropdown({ variant = "nav" }: Props) {
       </button>
       {open && (
         <div className="fx-scope-menu" role="menu">
-          {/* France (national scope) — top entry, lands on /france/budget. */}
+          {/* France (national scope) — top entry, lands on /fr/national/budget. */}
           <Link
             className={`fx-sm-item ${isOnFrance ? "fx-sm-active" : ""}`}
-            href="/france/budget"
+            href="/fr/national/budget"
             role="menuitem"
-            onClick={() => handleNav("/france/budget")}
+            onClick={() => handleNav("/fr/national/budget")}
           >
             <span>{t("fx.scope.france")}</span>
             {isOnFrance && <span className="fx-sm-check" aria-hidden="true">✓</span>}

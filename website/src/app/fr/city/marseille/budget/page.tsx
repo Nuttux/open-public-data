@@ -8,7 +8,7 @@ import {
 } from "@/lib/fusion-data";
 import { getPostsForPage } from "@/lib/page-articles";
 import { buildLocaleAwareMetadata } from "@/lib/seo";
-import BudgetClient from "@/app/ville/paris/budget/BudgetClient";
+import BudgetClient from "@/app/fr/city/paris/budget/BudgetClient";
 
 // POC v1 Marseille — réutilise BudgetClient Paris avec data Marseille.
 // Le BudgetClient consommera des labels "Budget Marseille" via centralNodeFor()
@@ -27,7 +27,7 @@ export async function generateMetadata(): Promise<Metadata> {
       description:
         "Revenue, spending and execution of the Ville de Marseille budget. Full flow, breakdown by flow category. Source: M57 administrative accounts (data.gouv.fr).",
     },
-    path: "/ville/marseille/budget",
+    path: "/fr/city/marseille/budget",
   });
 }
 

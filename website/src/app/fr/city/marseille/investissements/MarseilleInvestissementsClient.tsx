@@ -44,7 +44,7 @@ const fill = (s: string, vars: Record<string, string | number>) => {
   return r;
 };
 
-const CITY_BASE = "/ville/marseille/investissements";
+const CITY_BASE = "/fr/city/marseille/investissements";
 
 export default function MarseilleInvestissementsClient({
   d,
@@ -461,7 +461,7 @@ export default function MarseilleInvestissementsClient({
           <SectionHead number="06" kind={t("fx.inv.s09.kind")} />
           <div className="fx-grid-tiles">
             <TileCard
-              href="/ville/marseille/budget"
+              href="/fr/city/marseille/budget"
               number="01"
               kind={t("fx.toc.budget")}
               title={locale === "en" ? "Marseille budget" : "Budget de Marseille"}
@@ -483,7 +483,7 @@ export default function MarseilleInvestissementsClient({
               kpiDelta={`CA ${d.year}`}
             />
             <TileCard
-              href="/ville/marseille/marches"
+              href="/fr/city/marseille/marches"
               number="02"
               kind={t("fx.inv.s09.t1.kind")}
               title={

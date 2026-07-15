@@ -22,7 +22,7 @@ export async function generateMetadata({ params }: { params: Promise<Params> }):
   // Canonical URL = SIREN (9 chars) — la fiche agrège tous les SIRETs du
   // même SIREN, donc l'URL stable est le SIREN, pas le SIRET du premier
   // établissement rencontré.
-  const canonical = `/ville/paris/marches/fournisseur/${f.siren || f.siret}`;
+  const canonical = `/fr/city/paris/marches/fournisseur/${f.siren || f.siret}`;
   const amountFmt = f.totalAmount.toLocaleString(locale === "en" ? "en-GB" : "fr-FR");
   const title = locale === "en"
     ? `${f.nom} — Supplier · France Open Data`

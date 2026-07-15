@@ -25,9 +25,9 @@ export default async function DrawerThemePage({ params }: { params: Promise<Para
       <DetailDrawer
         kicker={<DrawerKicker k="theme" year={fiche.year} />}
         title={<DataLabel value={fiche.theme} />}
-        shareUrl={`/ville/paris/subventions/theme/${fiche.slug}`}
+        shareUrl={`/fr/city/paris/subventions/theme/${fiche.slug}`}
         shareText={shareText}
-        backHref="/ville/paris/subventions"
+        backHref="/fr/city/paris/subventions"
         breadcrumbLabel={fiche.theme}
       >
         <ThemeFiche fiche={fiche} />

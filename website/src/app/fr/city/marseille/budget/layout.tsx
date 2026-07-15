@@ -11,7 +11,7 @@ export async function generateMetadata(): Promise<Metadata> {
       description:
         "Ville de Marseille budget as an interactive visualisation: €1.84Bn split between operating and investment. Sankey flows by spending category. Source: data.gouv.fr (M57, by nature).",
     },
-    path: '/ville/marseille/budget',
+    path: '/fr/city/marseille/budget',
     keywords: [
       'budget Marseille',
       'Ville de Marseille',
@@ -26,7 +26,7 @@ const dataset = datasetJsonLd({
   name: 'Budget de la Ville de Marseille (Comptes administratifs M57)',
   description:
     "Recettes et dépenses de la Ville de Marseille, ventilées par section (fonctionnement / investissement) et par nature comptable. Source : data.gouv.fr.",
-  path: '/ville/marseille/budget',
+  path: '/fr/city/marseille/budget',
   keywords: ['budget', 'Marseille', 'compte administratif', 'finances publiques'],
   temporalCoverage: '2018/2024',
   spatialCoverage: 'Marseille, France',

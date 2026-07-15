@@ -15,7 +15,7 @@ export async function generateMetadata(): Promise<Metadata> {
       description:
         "The Ville de Paris consolidated balance sheet: assets, liabilities, debt, equity. Golden rule and balance safeguards.",
     },
-    path: "/ville/paris/dette",
+    path: "/fr/city/paris/dette",
   });
 }
 

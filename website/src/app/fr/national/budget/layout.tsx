@@ -1,5 +1,5 @@
 // Slot layout permettant l'interception de routes pour ouvrir un drawer
-// au-dessus de /france/budget. Mirror de /france/daily-bread.
+// au-dessus de /fr/national/budget. Mirror de /fr/national/daily-bread.
 export default function FranceBudgetLayout({
   children,
   drawer,

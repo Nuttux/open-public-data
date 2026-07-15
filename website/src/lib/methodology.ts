@@ -95,11 +95,11 @@ export function cityNbArrondissements(slug: string): number {
   return entry ? num(entry) : PARIS_NB_ARRONDISSEMENTS;
 }
 
-// Detect city from Next.js pathname (/ville/[city]/...). Returns 'paris' for
+// Detect city from Next.js pathname (/fr/city/[city]/...). Returns 'paris' for
 // root paths (Paris-rich pages live at the root for rétro-compat).
 export function citySlugFromPathname(pathname: string | null): string {
   if (!pathname) return "paris";
-  const m = pathname.match(/^\/ville\/([^/]+)/);
+  const m = pathname.match(/^\/fr\/city\/([^/]+)/);
   return m ? m[1] : "paris";
 }
 

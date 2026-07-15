@@ -53,7 +53,7 @@ export async function generateMetadata({
       description:
         "How much you pay in compulsory levies per month, and where it goes — social security, central government, local. Personalised by salary, household and city.",
     },
-    path: "/france/daily-bread",
+    path: "/fr/national/daily-bread",
   });
   // Override OG/Twitter image to point to the per-profile poster (1080×1080).
   return {

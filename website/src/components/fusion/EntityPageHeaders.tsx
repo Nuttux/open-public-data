@@ -30,7 +30,7 @@ export function MarchesBackKicker() {
   const t = useT();
   return (
     <div className="fx-page-kicker">
-      <Link href="/ville/paris/marches" style={{ color: "var(--ocre)" }}>
+      <Link href="/fr/city/paris/marches" style={{ color: "var(--ocre)" }}>
         {t("fx.fiche.back.marches")}
       </Link>
     </div>
@@ -41,7 +41,7 @@ export function InvestBackKicker() {
   const t = useT();
   return (
     <div className="fx-page-kicker">
-      <Link href="/ville/paris/investissements" style={{ color: "var(--ocre)" }}>
+      <Link href="/fr/city/paris/investissements" style={{ color: "var(--ocre)" }}>
         {t("fx.fiche.back.invest")}
       </Link>
     </div>
@@ -52,7 +52,7 @@ export function SubventionsBackKicker() {
   const t = useT();
   return (
     <div className="fx-page-kicker">
-      <Link href="/ville/paris/subventions" style={{ color: "var(--ocre)" }}>
+      <Link href="/fr/city/paris/subventions" style={{ color: "var(--ocre)" }}>
         {t("fx.fiche.back.subventions")}
       </Link>
     </div>
@@ -321,7 +321,7 @@ export function LogementArrBackLink() {
   const t = useT();
   return (
     <p className="fx-page-lede">
-      <Link href="/ville/paris/logement">{t("fx.fiche.back.logement")}</Link>
+      <Link href="/fr/city/paris/logement">{t("fx.fiche.back.logement")}</Link>
     </p>
   );
 }

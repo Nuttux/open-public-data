@@ -31,7 +31,7 @@ export async function generateMetadata({
       robots: { index: false },
     };
   }
-  const canonical = `/ville/paris/budget/poste/${p.slug}`;
+  const canonical = `/fr/city/paris/budget/poste/${p.slug}`;
   const labelEn = trLabel(p.label, locale);
   const kindLabel = locale === "en"
     ? (p.kind === "depense" ? "expense" : "revenue")
@@ -78,7 +78,7 @@ export default async function PostePage({
       <main id="main-content" tabIndex={-1}>
       <section className="fx-page-header">
         <div className="fx-wrap">
-          <BudgetBackKicker href={year ? `/ville/paris/budget?year=${year}` : "/ville/paris/budget"} />
+          <BudgetBackKicker href={year ? `/fr/city/paris/budget?year=${year}` : "/fr/city/paris/budget"} />
           <h1 className="fx-page-title">{poste.label}</h1>
           <PosteLede
             kind={poste.kind}

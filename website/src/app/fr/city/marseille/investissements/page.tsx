@@ -27,7 +27,7 @@ export async function generateMetadata(): Promise<Metadata> {
       description:
         "Ville de Marseille investment projects, classified by theme and district. Source: administrative account presentation reports (PDF marseille.fr).",
     },
-    path: "/ville/marseille/investissements",
+    path: "/fr/city/marseille/investissements",
   });
 }
 

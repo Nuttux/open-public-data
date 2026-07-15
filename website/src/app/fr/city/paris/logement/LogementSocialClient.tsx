@@ -129,7 +129,7 @@ export default function LogementSocialClient({
   const pathname = usePathname();
   const citySlug = citySlugFromPathname(pathname);
   const isParis = citySlug === "paris";
-  const cityBasePath = `/ville/${citySlug}/logement`;
+  const cityBasePath = `/fr/city/${citySlug}/logement`;
   const tension = d.tension;
   const hasTension = tension !== null;
   const hasBailleurs = d.bailleurs.length > 0;
@@ -312,7 +312,7 @@ export default function LogementSocialClient({
                 arr: a.arr,
                 label: a.label,
                 tauxPct: a.latest.taux_pct,
-                href: `/ville/paris/logement/arrondissement/${a.arr}`,
+                href: `/fr/city/paris/logement/arrondissement/${a.arr}`,
                 title: `${fmtInt(a.latest.logements_sociaux)} logements sociaux / ${fmtInt(a.latest.residences_principales)} résidences principales (${a.latest.year})`,
               }))}
               targetPct={d.sruTarget}
@@ -365,7 +365,7 @@ export default function LogementSocialClient({
                 return isParis ? (
                   <Link
                     key={b.name}
-                    href={`/ville/${citySlug}/dette/bailleur/${slugifyBailleur(b.name)}`}
+                    href={`/fr/city/${citySlug}/dette/bailleur/${slugifyBailleur(b.name)}`}
                     className="fx-bailleur-card"
                   >
                     {cardContent}
@@ -598,7 +598,7 @@ export default function LogementSocialClient({
           <SectionHead number="09" kind={t("fx.log.s06.kind")} />
           <div className="fx-grid-tiles">
             <TileCard
-              href={`/ville/${citySlug}/investissements`}
+              href={`/fr/city/${citySlug}/investissements`}
               number={t("fx.log.s06.t1.n")}
               kind={t("fx.log.s06.t1.kind")}
               title={t("fx.log.s06.t1.title")}
@@ -628,7 +628,7 @@ export default function LogementSocialClient({
               kpiDelta={t("fx.log.s06.t1.delta")}
             />
             <TileCard
-              href={`/ville/${citySlug}/subventions`}
+              href={`/fr/city/${citySlug}/subventions`}
               number={t("fx.log.s06.t2.n")}
               kind={t("fx.log.s06.t2.kind")}
               title={t("fx.log.s06.t2.title")}
@@ -648,7 +648,7 @@ export default function LogementSocialClient({
               kpiDelta={t("fx.log.s06.t2.delta")}
             />
             <TileCard
-              href={`/ville/${citySlug}/dette`}
+              href={`/fr/city/${citySlug}/dette`}
               number={t("fx.log.s06.t3.n")}
               kind={t("fx.log.s06.t3.kind")}
               title={t("fx.log.s06.t3.title")}

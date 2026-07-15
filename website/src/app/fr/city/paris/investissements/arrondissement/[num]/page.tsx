@@ -28,7 +28,7 @@ export async function generateMetadata({ params }: { params: Promise<Params> }):
       robots: { index: false },
     };
   }
-  const canonical = `/ville/paris/investissements/arrondissement/${a.arr}`;
+  const canonical = `/fr/city/paris/investissements/arrondissement/${a.arr}`;
   const arrLabel = locale === "en"
     ? `${a.arr}${sufEn(a.arr)} arrondissement`
     : `${a.arr}${sufFr(a.arr)} arrondissement`;

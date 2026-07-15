@@ -15,7 +15,7 @@ export async function generateMetadata(): Promise<Metadata> {
       description:
         "The Paris social-housing stock, the SRU law, and rental pressure. Public data reaggregated by arrondissement and operator.",
     },
-    path: "/ville/paris/logement",
+    path: "/fr/city/paris/logement",
   });
 }
 

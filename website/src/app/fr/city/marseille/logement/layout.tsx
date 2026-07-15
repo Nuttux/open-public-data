@@ -11,7 +11,7 @@ export async function generateMetadata(): Promise<Metadata> {
       description:
         "Marseille's social-housing stock as an interactive visualisation: SRU rate, district-level atlas, main landlords. Source: Aix-Marseille-Provence Métropole.",
     },
-    path: '/ville/marseille/logement',
+    path: '/fr/city/marseille/logement',
     keywords: [
       'logement social Marseille',
       'taux SRU',
@@ -25,7 +25,7 @@ const dataset = datasetJsonLd({
   name: 'Logement social à Marseille (Atlas RPLS Métropole AMP)',
   description:
     "Parc social de Marseille — taux SRU annuel commune, atlas du parc par arrondissement (16), parts des principaux bailleurs. Source : Métropole Aix-Marseille-Provence (data.ampmetropole.fr).",
-  path: '/ville/marseille/logement',
+  path: '/fr/city/marseille/logement',
   keywords: ['logement social', 'SRU', 'Marseille', 'RPLS', 'bailleurs sociaux'],
   temporalCoverage: '2010/2024',
   spatialCoverage: 'Marseille, France',

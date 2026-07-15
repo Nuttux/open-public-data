@@ -156,7 +156,7 @@ export default async function InvestissementsOG() {
           }}
         >
           <div style={{ display: "flex" }}>Source Paris Open Data · CA M57</div>
-          <div style={{ display: "flex" }}>franceopendata.org/ville/paris/investissements</div>
+          <div style={{ display: "flex" }}>franceopendata.org/fr/city/paris/investissements</div>
         </div>
       </div>
     ),

@@ -66,7 +66,7 @@ type Props = {
 
 /**
  * Fiche détaillée d'une recette publique — sert le drawer et le standalone
- * `/france/budget/recettes/[key]`. Affiche le montant national absolu, la
+ * `/fr/national/budget/recettes/[key]`. Affiche le montant national absolu, la
  * part dans son sous-secteur, la source officielle clickable, les notes
  * méthodologiques, et pour l'UE une décomposition (RNB/TVA/plastique/NGEU
  * versés, PAC/FEDER/Horizon/NGEU reçus).

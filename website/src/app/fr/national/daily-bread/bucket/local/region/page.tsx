@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 import { renderDrilldownPage } from "@/lib/render-drilldown-page";
 import { readLocale } from "@/lib/seo";
 
-const BASE_PATH = "/france/daily-bread";
+const BASE_PATH = "/fr/national/daily-bread";
 
 export async function generateMetadata(): Promise<Metadata> {
   const locale = await readLocale();

@@ -12,7 +12,7 @@ type Params = {
 };
 
 const VALID_BUCKETS = new Set<BucketKey>(["secu", "etat", "local"]);
-const BASE_PATH = "/france/budget";
+const BASE_PATH = "/fr/national/budget";
 
 export async function generateMetadata({
   params,

@@ -112,7 +112,7 @@ export default function MarchesPublicsClient({
             <YearPicker
               years={(idx.availableYears ?? []).slice().sort((a, b) => a - b)}
               current={d.year}
-              basePath="/ville/paris/marches"
+              basePath="/fr/city/paris/marches"
               label={t("fx.s.year_label")}
             />
           </div>
@@ -213,9 +213,9 @@ export default function MarchesPublicsClient({
           >
             <b style={{ color: "var(--ink)" }}>{t("fx.mp.s01.cross.title")}</b> {t("fx.mp.s01.cross.body")}
             {" "}
-            <Link href="/ville/paris/budget" style={{ color: "var(--bleu)", borderBottom: "1px solid var(--bleu)" }}>{t("fx.mp.s01.cross.link_budget")}</Link>
+            <Link href="/fr/city/paris/budget" style={{ color: "var(--bleu)", borderBottom: "1px solid var(--bleu)" }}>{t("fx.mp.s01.cross.link_budget")}</Link>
             {" · "}
-            <Link href="/ville/paris/investissements" style={{ color: "var(--bleu)", borderBottom: "1px solid var(--bleu)" }}>{t("fx.mp.s01.cross.link_invest")}</Link>
+            <Link href="/fr/city/paris/investissements" style={{ color: "var(--bleu)", borderBottom: "1px solid var(--bleu)" }}>{t("fx.mp.s01.cross.link_invest")}</Link>
             {" · "}
             <Link href="/methode#marches-publics" style={{ color: "var(--bleu)", borderBottom: "1px solid var(--bleu)" }}>{t("fx.mp.s01.cross.link_methode")}</Link>
           </div>
@@ -240,7 +240,7 @@ export default function MarchesPublicsClient({
             total={d.total}
             concentrationTop10Pct={top10Pct}
             year={d.year}
-            basePath="/ville/paris/marches"
+            basePath="/fr/city/paris/marches"
             kicker={fill(t("fx.mp.s02.kicker"), { year: d.year })}
             entityNoun={t("fx.mp.s02.entity_noun")}
             paretoContrast={t("fx.mp.s02.pareto_contrast")}
@@ -282,7 +282,7 @@ export default function MarchesPublicsClient({
               // par SIREN, donc l'URL doit l'être aussi pour éviter les
               // doublons selon quel SIRET du groupe est cliqué.
               const ficheHref = ti.siret
-                ? `/ville/paris/marches/fournisseur/${encodeURIComponent(ti.siret.slice(0, 9))}`
+                ? `/fr/city/paris/marches/fournisseur/${encodeURIComponent(ti.siret.slice(0, 9))}`
                 : null;
               return {
                 key: String(ti.rank),
@@ -348,7 +348,7 @@ export default function MarchesPublicsClient({
                                 const shown = clean.length > 100 ? clean.slice(0, 100) + "…" : clean;
                                 return c.numero ? (
                                   <Link
-                                    href={`/ville/paris/marches/contrat/${encodeURIComponent(c.numero)}`}
+                                    href={`/fr/city/paris/marches/contrat/${encodeURIComponent(c.numero)}`}
                                     style={{ color: "var(--ink)" }}
                                     scroll={false}
                                   >
@@ -465,7 +465,7 @@ export default function MarchesPublicsClient({
                 share: Math.round(ranking.topSharePct),
               })}
             />
-            <FournisseursBumpChart data={ranking} ficheBase="/ville/paris/marches" />
+            <FournisseursBumpChart data={ranking} ficheBase="/fr/city/paris/marches" />
             <p className="fx-note">{t("fx.mp.rank.note")}</p>
             <ChartSource
               source={fill(t("fx.mp.rank.source.cite"), { from: ranking.years[0], to: ranking.years[ranking.years.length - 1] })}
@@ -791,7 +791,7 @@ export default function MarchesPublicsClient({
           />
           <div className="fx-grid-tiles">
             <TileCard
-              href="/ville/paris/subventions"
+              href="/fr/city/paris/subventions"
               number={t("fx.mp.s08.t1.n")}
               kind={t("fx.mp.s08.t1.kind")}
               title={t("fx.mp.s08.t1.title")}
@@ -811,7 +811,7 @@ export default function MarchesPublicsClient({
               kpiDelta={String(d.year)}
             />
             <TileCard
-              href="/ville/paris/investissements"
+              href="/fr/city/paris/investissements"
               number={t("fx.mp.s08.t2.n")}
               kind={t("fx.mp.s08.t2.kind")}
               title={t("fx.mp.s08.t2.title")}
@@ -841,7 +841,7 @@ export default function MarchesPublicsClient({
               kpiDelta={t("fx.mp.s08.t2.delta")}
             />
             <TileCard
-              href="/ville/paris/budget"
+              href="/fr/city/paris/budget"
               number={t("fx.mp.s08.t3.n")}
               kind={t("fx.mp.s08.t3.kind")}
               title={t("fx.mp.s08.t3.title")}

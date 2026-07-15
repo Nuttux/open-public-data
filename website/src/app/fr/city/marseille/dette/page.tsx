@@ -8,7 +8,7 @@ import {
   loadCitiesDebtSnapshot,
 } from "@/lib/fusion-data";
 import { buildLocaleAwareMetadata } from "@/lib/seo";
-import DettePatrimoineClient from "@/app/ville/paris/dette/DettePatrimoineClient";
+import DettePatrimoineClient from "@/app/fr/city/paris/dette/DettePatrimoineClient";
 
 // POC v1 Marseille dette/patrimoine — réutilise DettePatrimoineClient Paris
 // avec data Marseille issue de l'agrégat OFGL national (code INSEE 13055).
@@ -34,7 +34,7 @@ export async function generateMetadata(): Promise<Metadata> {
       description:
         "Debt outstanding and financial trajectory of the Ville de Marseille. Source: OFGL (consolidated communes dataset).",
     },
-    path: "/ville/marseille/dette",
+    path: "/fr/city/marseille/dette",
   });
 }
 

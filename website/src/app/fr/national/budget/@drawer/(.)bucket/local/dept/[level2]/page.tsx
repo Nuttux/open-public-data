@@ -13,7 +13,7 @@ export default async function DrawerBudgetDeptL2Page({
     params,
     searchParams,
     voice: "impersonal",
-    basePath: "/france/budget",
+    basePath: "/fr/national/budget",
     isDrawer: true,
     kind: "local-dept",
   });

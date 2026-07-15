@@ -25,9 +25,9 @@ export default async function DrawerCategoriePage({ params }: { params: Promise<
       <DetailDrawer
         kicker={<DrawerKicker k="categorie" year={fiche.year} />}
         title={<DataLabel value={fiche.category} />}
-        shareUrl={`/ville/paris/marches/categorie/${fiche.slug}`}
+        shareUrl={`/fr/city/paris/marches/categorie/${fiche.slug}`}
         shareText={shareText}
-        backHref="/ville/paris/marches"
+        backHref="/fr/city/paris/marches"
         breadcrumbLabel={fiche.category}
       >
         <CategorieMarcheFiche fiche={fiche} />

@@ -62,14 +62,14 @@ export default function QuiRecoitClient({
   const t = useT();
   const pathname = usePathname();
   const citySlug = citySlugFromPathname(pathname);
-  const cityBasePath = `/ville/${citySlug}/subventions`;
+  const cityBasePath = `/fr/city/${citySlug}/subventions`;
   const swarmIndexUrl =
     citySlug === "paris"
       ? "/data/subventions/beneficiaires_search.json"
       : `/data/${citySlug}/subventions/beneficiaires_search.json`;
-  const cityBudgetPath = `/ville/${citySlug}/budget`;
-  const cityMarchesPath = `/ville/${citySlug}/marches`;
-  const cityLogementPath = "/ville/paris/logement";
+  const cityBudgetPath = `/fr/city/${citySlug}/budget`;
+  const cityMarchesPath = `/fr/city/${citySlug}/marches`;
+  const cityLogementPath = "/fr/city/paris/logement";
   const dir: "up" | "down" | "flat" =
     d.deltaMontantPct > 0.1 ? "up" : d.deltaMontantPct < -0.1 ? "down" : "flat";
   const arrow = dir === "down" ? "↓" : dir === "flat" ? "→" : "↑";

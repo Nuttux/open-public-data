@@ -156,7 +156,7 @@ export default async function SubventionsOG() {
           }}
         >
           <div style={{ display: "flex" }}>Source Paris Open Data · Comptes M57</div>
-          <div style={{ display: "flex" }}>franceopendata.org/ville/paris/subventions</div>
+          <div style={{ display: "flex" }}>franceopendata.org/fr/city/paris/subventions</div>
         </div>
       </div>
     ),

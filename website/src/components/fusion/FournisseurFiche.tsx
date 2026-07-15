@@ -153,7 +153,7 @@ export default function FournisseurFiche({
                       const shown = clean.length > 70 ? clean.slice(0, 70) + "…" : clean;
                       return c.numero ? (
                         <Link
-                          href={`/ville/paris/marches/contrat/${c.numero}`}
+                          href={`/fr/city/paris/marches/contrat/${c.numero}`}
                           scroll={false}
                         >
                           {shown}

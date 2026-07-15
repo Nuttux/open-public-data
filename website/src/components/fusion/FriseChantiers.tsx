@@ -30,7 +30,7 @@ export default function FriseChantiers({
   ficheBase,
 }: {
   data: FriseChantiersData;
-  /** e.g. /ville/paris/investissements — fiche = `${ficheBase}/projet/${id}` */
+  /** e.g. /fr/city/paris/investissements — fiche = `${ficheBase}/projet/${id}` */
   ficheBase: string;
 }) {
   const t = useT();

@@ -11,7 +11,7 @@ export async function generateMetadata(): Promise<Metadata> {
       description:
         "Schools, security, environment, sports: Ville de Marseille investment projects extracted from the administrative account presentation reports. District-level granularity.",
     },
-    path: '/ville/marseille/investissements',
+    path: '/fr/city/marseille/investissements',
     keywords: [
       'investissements Marseille',
       'projets municipaux',
@@ -26,7 +26,7 @@ const dataset = datasetJsonLd({
   name: "Projets d'investissement de la Ville de Marseille (CA, parsing PDF)",
   description:
     "Projets d'investissement de la Ville de Marseille extraits des rapports de présentation des comptes administratifs (PDF). Classification par thématique et arrondissement. POC v1 (couverture 2023-2024).",
-  path: '/ville/marseille/investissements',
+  path: '/fr/city/marseille/investissements',
   keywords: ['investissement', 'Marseille', 'compte administratif', 'thématiques'],
   temporalCoverage: '2023/2024',
   spatialCoverage: 'Marseille, France',

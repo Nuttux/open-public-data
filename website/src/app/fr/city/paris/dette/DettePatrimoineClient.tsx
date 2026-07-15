@@ -55,7 +55,7 @@ export default function DettePatrimoineClient({
   const { locale } = useLocale();
   const pathname = usePathname();
   const citySlug = citySlugFromPathname(pathname);
-  const cityBasePath = `/ville/${citySlug}/dette`;
+  const cityBasePath = `/fr/city/${citySlug}/dette`;
   const population = cityPopulation(citySlug);
   const DET_PLACEHOLDERS: ArticlePlaceholder[] = [
     {
@@ -636,7 +636,7 @@ export default function DettePatrimoineClient({
           <SectionHead number="11" kind={t("fx.det.s07.kind")} />
           <div className="fx-grid-tiles">
             <TileCard
-              href={`/ville/${citySlug}/budget`}
+              href={`/fr/city/${citySlug}/budget`}
               number={t("fx.det.s07.t1.n")}
               kind={t("fx.det.s07.t1.kind")}
               title={t("fx.det.s07.t1.title")}
@@ -655,7 +655,7 @@ export default function DettePatrimoineClient({
               kpiDelta={t("fx.det.s07.t1.delta")}
             />
             <TileCard
-              href={`/ville/${citySlug}/investissements`}
+              href={`/fr/city/${citySlug}/investissements`}
               number={t("fx.det.s07.t2.n")}
               kind={t("fx.det.s07.t2.kind")}
               title={t("fx.det.s07.t2.title")}
@@ -685,7 +685,7 @@ export default function DettePatrimoineClient({
               kpiDelta="2024"
             />
             <TileCard
-              href={`/ville/${citySlug}/logement`}
+              href={`/fr/city/${citySlug}/logement`}
               number={t("fx.det.s07.t3.n")}
               kind={t("fx.det.s07.t3.kind")}
               title={t("fx.det.s07.t3.title")}

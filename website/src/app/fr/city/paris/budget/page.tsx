@@ -20,7 +20,7 @@ export async function generateMetadata(): Promise<Metadata> {
       description:
         "Revenue, spending and execution of the Ville de Paris budget. Full flow, breakdown by theme, 2019–2026 trend. Source: M57 administrative accounts.",
     },
-    path: "/ville/paris/budget",
+    path: "/fr/city/paris/budget",
   });
 }
 

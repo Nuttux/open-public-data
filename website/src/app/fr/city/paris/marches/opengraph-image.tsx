@@ -156,7 +156,7 @@ export default async function MarchesOG() {
           }}
         >
           <div style={{ display: "flex" }}>Source Paris Open Data · DECP</div>
-          <div style={{ display: "flex" }}>franceopendata.org/ville/paris/marches</div>
+          <div style={{ display: "flex" }}>franceopendata.org/fr/city/paris/marches</div>
         </div>
       </div>
     ),

@@ -7,7 +7,7 @@ import { readLocale } from "@/lib/seo";
 type Params = { bucket: string; level2: string; level3: string };
 
 const VALID_BUCKETS = new Set<BucketKey>(["secu", "etat", "local"]);
-const BASE_PATH = "/france/daily-bread";
+const BASE_PATH = "/fr/national/daily-bread";
 
 export async function generateMetadata({
   params,

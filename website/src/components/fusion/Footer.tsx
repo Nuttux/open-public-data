@@ -14,12 +14,12 @@ const COLUMNS: Col[] = [
   {
     headingKey: "fx.foot.col.pages",
     links: [
-      { href: "/ville/paris/budget", labelKey: "fx.foot.link.budget" },
-      { href: "/ville/paris/subventions", labelKey: "fx.foot.link.subventions" },
-      { href: "/ville/paris/marches", labelKey: "fx.foot.link.marches" },
-      { href: "/ville/paris/investissements", labelKey: "fx.foot.link.invest" },
-      { href: "/ville/paris/logement", labelKey: "fx.foot.link.logement" },
-      { href: "/ville/paris/dette", labelKey: "fx.foot.link.dette" },
+      { href: "/fr/city/paris/budget", labelKey: "fx.foot.link.budget" },
+      { href: "/fr/city/paris/subventions", labelKey: "fx.foot.link.subventions" },
+      { href: "/fr/city/paris/marches", labelKey: "fx.foot.link.marches" },
+      { href: "/fr/city/paris/investissements", labelKey: "fx.foot.link.invest" },
+      { href: "/fr/city/paris/logement", labelKey: "fx.foot.link.logement" },
+      { href: "/fr/city/paris/dette", labelKey: "fx.foot.link.dette" },
     ],
   },
   {

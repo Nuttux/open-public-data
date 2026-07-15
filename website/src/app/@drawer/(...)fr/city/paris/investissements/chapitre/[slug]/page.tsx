@@ -24,9 +24,9 @@ export default async function DrawerChapitrePage({ params }: { params: Promise<P
       <DetailDrawer
         kicker={<>Chapitre · Investissement · {chap.year}</>}
         title={chap.label}
-        shareUrl={`/ville/paris/investissements/chapitre/${chap.slug}`}
+        shareUrl={`/fr/city/paris/investissements/chapitre/${chap.slug}`}
         shareText={shareText}
-        backHref="/ville/paris/investissements"
+        backHref="/fr/city/paris/investissements"
         breadcrumbLabel={chap.label}
       >
         <ChapitreFiche chap={chap} />

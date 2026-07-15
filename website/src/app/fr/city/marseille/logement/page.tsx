@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import "@/app/fusion.css";
 import { loadLogementSocialData } from "@/lib/fusion-data";
 import { buildLocaleAwareMetadata } from "@/lib/seo";
-import LogementSocialClient from "@/app/ville/paris/logement/LogementSocialClient";
+import LogementSocialClient from "@/app/fr/city/paris/logement/LogementSocialClient";
 
 // POC v1 Marseille — réutilise LogementSocialClient Paris avec data Marseille.
 // Limites POC connues (P3.2 option a — sections disparaissent silencieusement) :
@@ -26,7 +26,7 @@ export async function generateMetadata(): Promise<Metadata> {
       description:
         "Marseille's social-housing stock: SRU rate, stock per arrondissement, main social landlords. Source: Aix-Marseille-Provence Métropole (RPLS atlas + sru-taux).",
     },
-    path: "/ville/marseille/logement",
+    path: "/fr/city/marseille/logement",
   });
 }
 

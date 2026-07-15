@@ -21,8 +21,8 @@ export default async function DrawerBailleurPage({ params }: { params: Promise<P
       <DetailDrawer
         kicker={<span className="fx-kicker-mono">{kicker}</span>}
         title={bailleur.name}
-        shareUrl={`/ville/paris/dette/bailleur/${encodeURIComponent(bailleur.slug)}`}
-        backHref="/ville/paris/dette#sec-hors-bilan"
+        shareUrl={`/fr/city/paris/dette/bailleur/${encodeURIComponent(bailleur.slug)}`}
+        backHref="/fr/city/paris/dette#sec-hors-bilan"
         breadcrumbLabel={bailleur.name}
       >
         <BailleurFiche bailleur={bailleur} />

@@ -23,9 +23,9 @@ export default async function DrawerAssoPage({ params }: { params: Promise<Param
       <DetailDrawer
         kicker={<AssoKicker theme={asso.theme} />}
         title={asso.name}
-        shareUrl={`/ville/paris/subventions/association/${encodeURIComponent(asso.name)}`}
+        shareUrl={`/fr/city/paris/subventions/association/${encodeURIComponent(asso.name)}`}
         shareText={shareText}
-        backHref="/ville/paris/subventions"
+        backHref="/fr/city/paris/subventions"
         breadcrumbLabel={asso.name}
       >
         <AssociationFiche asso={asso} vulgarization={vulgarization} grounded={grounded} />

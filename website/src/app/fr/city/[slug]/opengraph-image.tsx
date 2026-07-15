@@ -72,7 +72,7 @@ export default async function CityOG({ params }: { params: Promise<{ slug: strin
 
         <div style={{ display: "flex", justifyContent: "space-between", marginTop: 32, paddingTop: 16, borderTop: "2px solid #111", fontSize: 14, color: "#666", letterSpacing: 2, textTransform: "uppercase" }}>
           <div style={{ display: "flex" }}>Source OFGL · M14/M57 harmonisé</div>
-          <div style={{ display: "flex" }}>franceopendata.org/ville/{slug}</div>
+          <div style={{ display: "flex" }}>franceopendata.org/fr/city/{slug}</div>
         </div>
       </div>
     ),

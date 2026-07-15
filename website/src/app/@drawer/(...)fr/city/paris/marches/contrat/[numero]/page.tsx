@@ -38,9 +38,9 @@ export default async function DrawerContratPage({ params }: { params: Promise<Pa
       <DetailDrawer
         kicker={<DrawerKicker k="contrat" year={contrat.year} nature={contrat.nature} />}
         title={vulgarization?.objet_clair || contrat.objet || `Marché ${contrat.numero}`}
-        shareUrl={`/ville/paris/marches/contrat/${contrat.numero}`}
+        shareUrl={`/fr/city/paris/marches/contrat/${contrat.numero}`}
         shareText={shareText}
-        backHref="/ville/paris/marches"
+        backHref="/fr/city/paris/marches"
         breadcrumbLabel={`Contrat ${contrat.numero}`}
       >
         <ContratFiche

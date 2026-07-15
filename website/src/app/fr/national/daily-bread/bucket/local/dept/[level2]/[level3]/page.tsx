@@ -6,7 +6,7 @@ import { readLocale } from "@/lib/seo";
 
 type Params = { level2: string; level3: string };
 
-const BASE_PATH = "/france/daily-bread";
+const BASE_PATH = "/fr/national/daily-bread";
 
 export async function generateMetadata({
   params,

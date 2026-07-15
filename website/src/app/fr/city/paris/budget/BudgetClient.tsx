@@ -120,7 +120,7 @@ export default function BudgetClient({ index, d, voteExec, posts }: Props) {
               years={index.availableYears.slice().sort((a, b) => a - b)}
               votedYears={index.votedYears ?? []}
               current={d.year}
-              basePath="/ville/paris/budget"
+              basePath="/fr/city/paris/budget"
               label={t("fx.bud.year_label")}
             />
           </div>
@@ -144,7 +144,7 @@ export default function BudgetClient({ index, d, voteExec, posts }: Props) {
                 <span>{fill("fx.bud.voted_notice", { year: d.year, next: d.year + 1 })}</span>
                 {lastExecuted && (
                   <Link
-                    href={`/ville/paris/budget?year=${lastExecuted}`}
+                    href={`/fr/city/paris/budget?year=${lastExecuted}`}
                     style={{
                       color: "var(--bleu)",
                       borderBottom: "1px solid var(--bleu)",
@@ -275,7 +275,7 @@ export default function BudgetClient({ index, d, voteExec, posts }: Props) {
                 value: r.value,
                 display: `${fmtBillions(r.value)} Md €`,
                 rouge: false,
-                href: `/ville/paris/budget/poste/${slugifyLabel(r.label)}?year=${d.year}`,
+                href: `/fr/city/paris/budget/poste/${slugifyLabel(r.label)}?year=${d.year}`,
               })),
             }}
             right={{
@@ -285,7 +285,7 @@ export default function BudgetClient({ index, d, voteExec, posts }: Props) {
                 value: x.value,
                 display: `${fmtBillions(x.value)} Md €`,
                 rouge: false,
-                href: `/ville/paris/budget/poste/${slugifyLabel(x.label)}?year=${d.year}`,
+                href: `/fr/city/paris/budget/poste/${slugifyLabel(x.label)}?year=${d.year}`,
               })),
             }}
             center={{
@@ -402,7 +402,7 @@ export default function BudgetClient({ index, d, voteExec, posts }: Props) {
                     .slice(-3)
                     .reverse()
                     .map((r) => (
-                      <Button key={r.year} href={`/ville/paris/budget?year=${r.year}#execution`}>
+                      <Button key={r.year} href={`/fr/city/paris/budget?year=${r.year}#execution`}>
                         {fill("fx.bud.s05.empty.cta", { year: r.year })}
                       </Button>
                     ))}
@@ -499,7 +499,7 @@ export default function BudgetClient({ index, d, voteExec, posts }: Props) {
           />
           <div className="fx-grid-tiles fx-grid-tiles-4">
             <TileCard
-              href="/ville/paris/subventions"
+              href="/fr/city/paris/subventions"
               number={t("fx.bud.s07.t1.n")}
               kind={t("fx.bud.s07.t1.kind")}
               title={t("fx.bud.s07.t1.title")}
@@ -510,7 +510,7 @@ export default function BudgetClient({ index, d, voteExec, posts }: Props) {
               kpiDelta={<>{t("fx.bud.s07.t1.delta")}</>}
             />
             <TileCard
-              href="/ville/paris/investissements"
+              href="/fr/city/paris/investissements"
               number={t("fx.bud.s07.t2.n")}
               kind={t("fx.bud.s07.t2.kind")}
               title={t("fx.bud.s07.t2.title")}
@@ -521,7 +521,7 @@ export default function BudgetClient({ index, d, voteExec, posts }: Props) {
               kpiDelta={<>{t("fx.bud.s07.t2.delta")}</>}
             />
             <TileCard
-              href="/ville/paris/dette"
+              href="/fr/city/paris/dette"
               number={t("fx.bud.s07.t3.n")}
               kind={t("fx.bud.s07.t3.kind")}
               title={t("fx.bud.s07.t3.title")}

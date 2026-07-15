@@ -13,7 +13,7 @@ export default async function DrawerAggregationPage({
     params,
     searchParams,
     voice: "perso",
-    basePath: "/france/daily-bread",
+    basePath: "/fr/national/daily-bread",
     isDrawer: true,
     kind: "etat-aggregation",
   });

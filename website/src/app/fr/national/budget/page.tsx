@@ -30,7 +30,7 @@ import fr from "@/i18n/fr";
 import en from "@/i18n/en";
 
 /**
- * /france/budget — Budget Explorer impersonnel.
+ * /fr/national/budget — Budget Explorer impersonnel.
  *
  *  - §01 hero "1 808 Md€/an"
  *  - §02 treemap visuel des ~30 plus grosses cellules
@@ -59,7 +59,7 @@ export async function generateMetadata(): Promise<Metadata> {
       description:
         "Explore French public expenditure (~€1,808 bn/yr): social security, central government, local authorities. Eurostat, PLF, OFGL data — no personal projection.",
     },
-    path: "/france/budget",
+    path: "/fr/national/budget",
   });
 }
 
@@ -94,7 +94,7 @@ function fmtPct(share: number, locale: "fr" | "en"): string {
   return locale === "fr" ? `${r.replace(".", ",")} %` : `${r}%`;
 }
 
-// URLs drawer locales — pointent vers /france/budget/bucket/... pour
+// URLs drawer locales — pointent vers /fr/national/budget/bucket/... pour
 // déclencher l'intercept Next.js depuis cette page (drawer overlay au
 // lieu d'une nav full-page). Les routes standalone sous le même
 // préfixe servent de fallback (deep-link, refresh, partage).
@@ -109,22 +109,22 @@ function suffixQs(url: string, qs?: string): string {
   return `${url}${sep}${qs}`;
 }
 function urlSecuLevel2(level2Key: string, qs?: string) {
-  return suffixQs(`/france/budget/bucket/secu/${level2Key}`, qs);
+  return suffixQs(`/fr/national/budget/bucket/secu/${level2Key}`, qs);
 }
 function urlEtatAggregation(aggKey: string, qs?: string) {
-  return suffixQs(`/france/budget/bucket/etat/agg/${aggKey}`, qs);
+  return suffixQs(`/fr/national/budget/bucket/etat/agg/${aggKey}`, qs);
 }
 function urlEtatMission(missionCode: string, qs?: string) {
-  return suffixQs(`/france/budget/bucket/etat/${missionCode.toLowerCase()}`, qs);
+  return suffixQs(`/fr/national/budget/bucket/etat/${missionCode.toLowerCase()}`, qs);
 }
 function urlLocalLevel2(level2Key: string, qs?: string) {
-  return suffixQs(`/france/budget/bucket/local/${level2Key}`, qs);
+  return suffixQs(`/fr/national/budget/bucket/local/${level2Key}`, qs);
 }
 function urlLocalDeptLevel2(level2Key: string, qs?: string) {
-  return suffixQs(`/france/budget/bucket/local/dept/${level2Key}`, qs);
+  return suffixQs(`/fr/national/budget/bucket/local/dept/${level2Key}`, qs);
 }
 function urlLocalRegionLevel2(level2Key: string, qs?: string) {
-  return suffixQs(`/france/budget/bucket/local/region/${level2Key}`, qs);
+  return suffixQs(`/fr/national/budget/bucket/local/region/${level2Key}`, qs);
 }
 
 // ─── Page ─────────────────────────────────────────────────────────────────
@@ -262,11 +262,11 @@ export default async function FranceBudgetPage({
   const deptFirstHref =
     deptL2List.length > 0
       ? urlLocalDeptLevel2(deptL2List[0].key, profileQs)
-      : "/france/budget#bucket-local";
+      : "/fr/national/budget#bucket-local";
   const regFirstHref =
     regL2List.length > 0
       ? urlLocalRegionLevel2(regL2List[0].key, profileQs)
-      : "/france/budget#bucket-local";
+      : "/fr/national/budget#bucket-local";
   if (deptAnnual > 0) {
     treemapItems.push({
       id: `local-dept`,
@@ -459,7 +459,7 @@ export default async function FranceBudgetPage({
                   key: "secu",
                   // Anchor scroll vers §04 (drill Sécu) — pas de page bucket
                   // dédiée, les 5 branches sont déjà listées dans cette section.
-                  href: "/france/budget#bucket-secu",
+                  href: "/fr/national/budget#bucket-secu",
                   rank: "01",
                   title: t("budget.card.secu.title"),
                   subtitle: t("budget.card.secu.subtitle"),
@@ -469,7 +469,7 @@ export default async function FranceBudgetPage({
                 },
                 {
                   key: "etat",
-                  href: "/france/budget#bucket-etat",
+                  href: "/fr/national/budget#bucket-etat",
                   rank: "02",
                   title: t("budget.card.etat.title"),
                   subtitle: t("budget.card.etat.subtitle"),
@@ -479,7 +479,7 @@ export default async function FranceBudgetPage({
                 },
                 {
                   key: "local",
-                  href: "/france/budget#bucket-local",
+                  href: "/fr/national/budget#bucket-local",
                   rank: "03",
                   title: t("budget.card.local.title"),
                   subtitle: t("budget.card.local.subtitle"),
@@ -657,7 +657,7 @@ export default async function FranceBudgetPage({
                 const aggKey = b.key === "autres_ministeres" ? "autres" : b.key;
                 const href =
                   b.key === "contribution_ue"
-                    ? "/france/budget/recettes/psr_ue"
+                    ? "/fr/national/budget/recettes/psr_ue"
                     : hasAgg
                       ? urlEtatAggregation(aggKey, profileQs)
                       : undefined;
@@ -703,7 +703,7 @@ export default async function FranceBudgetPage({
                   href:
                     blocCommunalSorted.length > 0
                       ? urlLocalLevel2(blocCommunalSorted[0].key, profileQs)
-                      : "/france/budget#bucket-local",
+                      : "/fr/national/budget#bucket-local",
                   rank: "06.1",
                   title: locale === "en"
                     ? "Municipal block"
@@ -994,7 +994,7 @@ export default async function FranceBudgetPage({
             subtitle={t("budget.cta.daily_bread.body")}
           />
           <Link
-            href={profileQs ? `/france/daily-bread?${profileQs}` : "/france/daily-bread"}
+            href={profileQs ? `/fr/national/daily-bread?${profileQs}` : "/fr/national/daily-bread"}
             className="fx-btn fx-btn-primary"
             style={{ marginTop: 8 }}
           >

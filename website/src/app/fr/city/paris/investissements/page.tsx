@@ -15,7 +15,7 @@ export async function generateMetadata(): Promise<Metadata> {
       description:
         "Paris construction projects at a glance: projects, budgets, districts. Investments extracted from the administrative accounts and classified.",
     },
-    path: "/ville/paris/investissements",
+    path: "/fr/city/paris/investissements",
   });
 }
 

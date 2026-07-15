@@ -22,7 +22,7 @@ export async function generateMetadata({ params }: { params: Promise<Params> }):
       robots: { index: false },
     };
   }
-  const canonical = `/ville/paris/marches/categorie/${f.slug}`;
+  const canonical = `/fr/city/paris/marches/categorie/${f.slug}`;
   const categoryLabel = trLabel(f.category, locale);
   const totalM = Math.round(f.total / 1e6);
   const title = locale === "en"

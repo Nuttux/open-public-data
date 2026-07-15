@@ -15,7 +15,7 @@ export async function generateMetadata(): Promise<Metadata> {
       description:
         "Grants paid by the Ville de Paris: beneficiaries, themes, trends. Open-data figures reaggregated and classified.",
     },
-    path: "/ville/paris/subventions",
+    path: "/fr/city/paris/subventions",
   });
 }
 

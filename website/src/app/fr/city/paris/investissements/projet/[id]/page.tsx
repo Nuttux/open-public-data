@@ -21,7 +21,7 @@ export async function generateMetadata({ params }: { params: Promise<Params> }):
       robots: { index: false },
     };
   }
-  const canonical = `/ville/paris/investissements/projet/${encodeURIComponent(p.id)}`;
+  const canonical = `/fr/city/paris/investissements/projet/${encodeURIComponent(p.id)}`;
   const projectName = locale === "en" && (p as { name_en?: string }).name_en
     ? (p as { name_en?: string }).name_en!
     : p.name;

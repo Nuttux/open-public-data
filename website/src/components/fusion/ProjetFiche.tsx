@@ -220,7 +220,7 @@ export default function ProjetFiche({ projet, photo }: { projet: ProjetFicheType
               return (
                 <Link
                   key={m.numero_marche}
-                  href={`/ville/paris/marches/contrat/${encodeURIComponent(m.numero_marche)}`}
+                  href={`/fr/city/paris/marches/contrat/${encodeURIComponent(m.numero_marche)}`}
                   scroll={false}
                   className="fx-row-link"
                   style={{
@@ -330,7 +330,7 @@ export default function ProjetFiche({ projet, photo }: { projet: ProjetFicheType
               return (
                 <Link
                   key={s.id}
-                  href={`/ville/paris/investissements/projet/${encodeURIComponent(s.id)}`}
+                  href={`/fr/city/paris/investissements/projet/${encodeURIComponent(s.id)}`}
                   scroll={false}
                   className="fx-row-link"
                   style={{

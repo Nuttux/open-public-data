@@ -39,8 +39,8 @@ export default async function DrawerArrLogementPage({
           </span>
         }
         title={data.label}
-        shareUrl={`/ville/paris/logement/arrondissement/${data.slug}`}
-        backHref="/ville/paris/logement"
+        shareUrl={`/fr/city/paris/logement/arrondissement/${data.slug}`}
+        backHref="/fr/city/paris/logement"
         breadcrumbLabel={data.label}
       >
         <ArrondissementLogementFiche data={data} />

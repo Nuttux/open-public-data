@@ -8,13 +8,13 @@ type Params = { id: string };
 
 /**
  * Root-level intercept — ouvre la fiche projet en drawer quand l'utilisateur
- * navigue vers /ville/paris/investissements/projet/[id] depuis n'importe où
+ * navigue vers /fr/city/paris/investissements/projet/[id] depuis n'importe où
  * dans l'app (home, autre section). L'intercept section-level
  * `investissements/@drawer/(.)projet/[id]` reste prioritaire quand la nav se
  * fait depuis l'intérieur d'investissements.
  *
  * Navigation directe (URL partagée) → page complète via
- * /ville/paris/investissements/projet/[id]/page.tsx.
+ * /fr/city/paris/investissements/projet/[id]/page.tsx.
  */
 export default async function RootDrawerProjetPage({ params }: { params: Promise<Params> }) {
   const { id } = await params;
@@ -43,7 +43,7 @@ export default async function RootDrawerProjetPage({ params }: { params: Promise
       <DetailDrawer
         kicker={<>{locale === "en" ? "Investment" : "Investissement"} · {projet.year} · {arr}</>}
         title={displayName}
-        shareUrl={`/ville/paris/investissements/projet/${encodeURIComponent(projet.id)}`}
+        shareUrl={`/fr/city/paris/investissements/projet/${encodeURIComponent(projet.id)}`}
         shareText={shareText}
         backHref="/"
         breadcrumbLabel={displayName.slice(0, 50)}

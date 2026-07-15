@@ -27,7 +27,7 @@ export default async function DrawerPostePage({
   if (!poste) return notFound();
 
   const kindLabel = poste.kind === "depense" ? "Dépense" : "Recette";
-  const backHref = year ? `/ville/paris/budget?year=${year}` : "/ville/paris/budget";
+  const backHref = year ? `/fr/city/paris/budget?year=${year}` : "/fr/city/paris/budget";
   const shareText = `${poste.label} — ${fmtEur(poste.total)} (${poste.year}, ${kindLabel.toLowerCase()}) · ${poste.subPostes.length} sous-postes.`;
 
   return (
@@ -35,7 +35,7 @@ export default async function DrawerPostePage({
       <DetailDrawer
         kicker={<>{kindLabel} · Budget {poste.year}</>}
         title={poste.label}
-        shareUrl={`/ville/paris/budget/poste/${poste.slug}${year ? `?year=${year}` : ""}`}
+        shareUrl={`/fr/city/paris/budget/poste/${poste.slug}${year ? `?year=${year}` : ""}`}
         shareText={shareText}
         backHref={backHref}
         breadcrumbLabel={poste.label}

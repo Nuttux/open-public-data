@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import "@/app/fusion.css";
 import { loadMarchesIndex, loadMarchesPageData } from "@/lib/fusion-data";
 import { buildLocaleAwareMetadata } from "@/lib/seo";
-import MarchesPublicsClient from "@/app/ville/paris/marches/MarchesPublicsClient";
+import MarchesPublicsClient from "@/app/fr/city/paris/marches/MarchesPublicsClient";
 
 // POC v1 Marseille marches — réutilise MarchesPublicsClient avec data Marseille.
 // Limites POC connues :
@@ -21,7 +21,7 @@ export async function generateMetadata(): Promise<Metadata> {
       description:
         "Contracts awarded by the Ville de Marseille in 2020: contractors, amounts, objects, and CPV categories. Source: data.gouv.fr (SCDL Ville).",
     },
-    path: "/ville/marseille/marches",
+    path: "/fr/city/marseille/marches",
   });
 }
 

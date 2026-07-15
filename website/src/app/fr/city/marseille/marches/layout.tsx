@@ -11,7 +11,7 @@ export async function generateMetadata(): Promise<Metadata> {
       description:
         "Public contracts awarded by Ville de Marseille (2020). Source: data.gouv.fr (SCDL Ville).",
     },
-    path: '/ville/marseille/marches',
+    path: '/fr/city/marseille/marches',
     keywords: ['marchés publics Marseille', 'commande publique', 'SCDL'],
   });
 }
@@ -20,7 +20,7 @@ const dataset = datasetJsonLd({
   name: 'Marchés publics de la Ville de Marseille',
   description:
     "Marchés publics passés par la Ville de Marseille (2020). Source : data.gouv.fr (SCDL Ville).",
-  path: '/ville/marseille/marches',
+  path: '/fr/city/marseille/marches',
   keywords: ['marchés publics', 'commande publique', 'Marseille', 'SCDL'],
   temporalCoverage: '2020/2020',
   spatialCoverage: 'Marseille, France',
