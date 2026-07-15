@@ -1,0 +1,70 @@
+# =============================================================================
+# Sources : Tables raw BigQuery — US national (Treasury Fiscal Data, Census)
+#
+# Dataset: raw (open-data-france-484717.raw), country-namespaced `us_*`
+# Synced via scripts/sync/sync_fiscaldata.py + sync_census_popest.py,
+# driven by configs/countries/us.yaml (ADR-0010 D3).
+#
+# RAW CONVENTION: every column is a STRING exactly as the API returned it —
+# Fiscal Data serialises everything as JSON strings and encodes missing
+# values as the literal string "null" (docs/us/API-RECON.md §B.5).
+# Typing happens once, in stg.
+#
+# FRESHNESS: MTS lands ~8th business day of the following month; Debt to
+# the Penny daily with 1-2 day lag; Census vintage estimates annual.
+# =============================================================================
+
+version: 2
+
+sources:
+  - name: us_raw
+    description: "US national raw tables (Treasury Fiscal Data + Census PEP)"
+    database: open-data-france-484717
+    schema: raw
+    loaded_at_field: _synced_at
+    freshness:
+      warn_after: {count: 60, period: day}
+      error_after: {count: 180, period: day}
+    tables:
+      - name: us_fiscaldata_mts_table_9
+        description: |
+          MTS Table 9 — Summary of Receipts by Source, and Outlays by Function.
+          33 rows/month since 2015-03-31. Amounts in dollars.
+          Line types: data_type_cd D=detail / S=header ("null" amounts) /
+          T=total (double-counts if summed with D).
+          Receipts detail = D|RSG, outlays-by-function detail = D|F.
+      - name: us_fiscaldata_mts_table_9_outlays_functions_subfunctions
+        description: |
+          MTS Table 9A — outlays by function × subfunction, dollars, 2015-03-31+.
+          No data_type_cd; verified 2026-07-15: rows are clean detail — the sum
+          of all rows per record_date equals the Table 9 outlays total exactly.
+      - name: us_fiscaldata_mts_table_5
+        description: |
+          MTS Table 5 — Outlays by agency/bureau/account, dollars, 2015-03-31+.
+          ~802 rows/month, 5-level hierarchy. Agency totals = T|C rows
+          (verified: always sequence_level_nbr=2, 29/month).
+      - name: us_fiscaldata_mts_receipts_outlays_deficit_surplus
+        description: |
+          MTS long series — monthly Receipts/Outlays/Deficit-Surplus since
+          1980-10-31, in MILLIONS of dollars. Deficit sign is POSITIVE here
+          (= Outlays − Receipts) — flipped vs MTS Tables 3/5.
+          3 financing categories (Borrowing from the Public, etc.) exist
+          from 2010-01-31 only.
+      - name: us_fiscaldata_debt_to_penny
+        description: "Debt to the Penny — daily public + intragovernmental + total debt, dollars, 1993-04-01+."
+      - name: us_fiscaldata_debt_outstanding
+        description: "Historical Debt Outstanding — fiscal-year-end total debt, dollars, annual since 1790."
+      - name: us_fiscaldata_catalog
+        description: |
+          Snapshot of the Fiscal Data machine-readable catalog
+          (services/dtg/metadata/) for the synced endpoints: one row per
+          (endpoint, field) with dataset page URL, row definitions,
+          per-field labels/types, coverage dates and update cadence.
+          Provenance source of truth for stg/marts/exports.
+      - name: us_census_population
+        description: |
+          Census Bureau Vintage 2025 resident population estimates
+          (NST-EST2025-ALLDATA.csv, national + states, July 1 estimates
+          2020-2025). Carries _source/_source_url provenance columns.
+          Synced as CSV because api.census.gov requires an API key
+          (verified live 2026-07-15).

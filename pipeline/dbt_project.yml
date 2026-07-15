@@ -353,6 +353,37 @@ models:
     national:
       +enabled: false
 
+    # -------------------------------------------------------------------------
+    # US models (Treasury Fiscal Data, Census) — dbt_us_* dataset family
+    # (ADR-0010 D3). The `us_*` schema prefixes are mapped to dbt_us_* by
+    # macros/generate_schema_name.sql, mirroring the dbt_paris_* naming.
+    # -------------------------------------------------------------------------
+    us:
+      staging:
+        +materialized: view
+        +schema: us_staging
+        +tags: ['us', 'staging']
+        +meta:
+          owner: "danielshavit92@gmail.com"
+          cadence: "on-demand (sync run cadence)"
+          cost_bucket: "low"  # views, no storage
+      core:
+        +materialized: table
+        +schema: us_analytics
+        +tags: ['us', 'core']
+        +meta:
+          owner: "danielshavit92@gmail.com"
+          cadence: "after stg refresh"
+          cost_bucket: "low-medium"
+      marts:
+        +materialized: table
+        +schema: us_marts
+        +tags: ['us', 'marts']
+        +meta:
+          owner: "danielshavit92@gmail.com"
+          cadence: "before each export run"
+          cost_bucket: "low"
+
 # =============================================================================
 # Configuration des snapshots — reproductibilité des chiffres publiés
 #
