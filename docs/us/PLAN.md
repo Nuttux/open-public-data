@@ -23,10 +23,10 @@ Pure URL migration, zero behavior change. Ships independently of US work so Fran
 
 ## Phase 1 — `/us/national` daily-bread vertical slice (branch `us-v0`)
 
-- [ ] 1.1 `configs/countries/us.yaml` + `scripts/sync/sync_fiscaldata.py` (protocol adapter) → `raw.us_mts_table_9`, `raw.us_mts_table_5`, `raw.us_debt_*` (+ catalog metadata capture).
-- [ ] 1.2 dbt `models/us/{staging,core,marts}` → `dbt_us_*` datasets. stg encodes the verified extraction recipes (Table 9: `D`+`F` rows; Table 5: `T`+`C` agency totals). Tests: `T = Σ D` identities, cross-table total equality (T9=T3=T5), units/signs normalized per API-RECON D.3.
-- [ ] 1.3 Census population seed/sync (per-resident scaling) with source_url.
-- [ ] 1.4 Export `public/data/us/national/daily_bread.json` (+ index): `generated_at`, `source_pipeline`, per-value `source`/`source_url`, `as_of` completeness flag.
+- [x] 1.1 `configs/countries/us.yaml` + `scripts/sync/sync_fiscaldata.py` (protocol adapter) → `raw.us_fiscaldata_{mts_table_9,mts_table_9_outlays_functions_subfunctions,mts_table_5,mts_receipts_outlays_deficit_surplus,debt_to_penny,debt_outstanding}` + `raw.us_fiscaldata_catalog` (2026-07-15, full history, 134k rows).
+- [x] 1.2 dbt `models/us/{staging,core,marts}` → `dbt_us_{staging,analytics,marts}` (via `generate_schema_name` country mapping). Core encodes the verified recipes (T9 `D|F`/`D|RSG`, T5 `T|C` L2 agencies); 10 singular identity tests in `tests/us/` (T=ΣD, T9=T5, T9A=T9, agencies+UOR=total, row counts, deficit identity) — 86/86 green 2026-07-15. 3 documented source anomalies excluded with evidence in test comments.
+- [x] 1.3 Census population synced (not seeded): api.census.gov now requires a key (verified live) → `sync_census_popest.py` pulls the no-auth Vintage 2025 CSV → `raw.us_census_population` → `core_us_population` with source_url. July 1 2025: 341,784,857.
+- [x] 1.4 Export `public/data/us/national/{daily_bread,debt_series,index}.json` via `export_us_national.py` ← `mart_us_{daily_bread,debt_series}`: `generated_at`, `source_pipeline`, per-block `source`/`source_url` + API endpoint, `as_of`, months-into-FY completeness flag, per-resident values. FYTD outlays through 2026-06 = $5,517,917,965,556.91 (matches MTS published total, tested).
 - [ ] 1.5 Page `app/us/national/` (EN-only): receipts → functions daily-bread view composed from fusion primitives; per-resident scaling; provenance modal wired to `dbt_us_*` lineage.
 - [ ] 1.6 LEARNINGS.md rows for every transplant/generalization made along the way.
 
