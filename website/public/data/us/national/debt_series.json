@@ -1,0 +1,3641 @@
+{
+  "generated_at": "2026-07-15T13:50:16.215806+00:00",
+  "source_pipeline": "configs/countries/us.yaml → sync_fiscaldata.py + sync_census_popest.py → raw.us_* → dbt_us_staging → dbt_us_analytics → dbt_us_marts → export_us_national.py",
+  "country": "us",
+  "scale": "national",
+  "unit": "USD",
+  "as_of": "2026-07-13",
+  "latest": {
+    "record_date": "2026-07-13",
+    "tot_pub_debt_out_usd": 39417905469064.21,
+    "debt_held_public_usd": 31707770448042.27,
+    "intragov_hold_usd": 7710135021021.94,
+    "per_resident_usd": 115329.58,
+    "source": {
+      "name": "Debt to the Penny",
+      "source_url": "https://fiscaldata.treasury.gov/datasets/debt-to-the-penny",
+      "api_endpoint": "/services/api/fiscal_service/v2/accounting/od/debt_to_penny",
+      "update_frequency": "Daily"
+    }
+  },
+  "population": {
+    "value": 341784857,
+    "year": 2025,
+    "as_of": "2025-07-01",
+    "source": "U.S. Census Bureau, Population Estimates Program (PEP), Vintage 2025",
+    "source_url": "https://www2.census.gov/programs-surveys/popest/datasets/2020-2025/state/totals/NST-EST2025-ALLDATA.csv",
+    "note": "Denominator for all per_resident_* values."
+  },
+  "series": {
+    "annual_fy_end": {
+      "description": "Total public debt outstanding at each fiscal-year end since 1790 (Historical Debt Outstanding). No public/intragov breakout in this dataset.",
+      "source": {
+        "name": "Historical Debt Outstanding",
+        "source_url": "https://fiscaldata.treasury.gov/datasets/historical-debt-outstanding",
+        "api_endpoint": "/services/api/fiscal_service/v2/accounting/od/debt_outstanding",
+        "update_frequency": "Annually"
+      },
+      "n_points": 237,
+      "points": [
+        {
+          "record_date": "1790-01-01",
+          "fiscal_year": 1790,
+          "tot_pub_debt_out_usd": 71060508.5
+        },
+        {
+          "record_date": "1791-01-01",
+          "fiscal_year": 1791,
+          "tot_pub_debt_out_usd": 75463476.52
+        },
+        {
+          "record_date": "1792-01-01",
+          "fiscal_year": 1792,
+          "tot_pub_debt_out_usd": 77227924.66
+        },
+        {
+          "record_date": "1793-01-01",
+          "fiscal_year": 1793,
+          "tot_pub_debt_out_usd": 80358634.04
+        },
+        {
+          "record_date": "1794-01-01",
+          "fiscal_year": 1794,
+          "tot_pub_debt_out_usd": 78427404.77
+        },
+        {
+          "record_date": "1795-01-01",
+          "fiscal_year": 1795,
+          "tot_pub_debt_out_usd": 80747587.39
+        },
+        {
+          "record_date": "1796-01-01",
+          "fiscal_year": 1796,
+          "tot_pub_debt_out_usd": 83762172.07
+        },
+        {
+          "record_date": "1797-01-01",
+          "fiscal_year": 1797,
+          "tot_pub_debt_out_usd": 82064479.33
+        },
+        {
+          "record_date": "1798-01-01",
+          "fiscal_year": 1798,
+          "tot_pub_debt_out_usd": 79228529.12
+        },
+        {
+          "record_date": "1799-01-01",
+          "fiscal_year": 1799,
+          "tot_pub_debt_out_usd": 78408669.77
+        },
+        {
+          "record_date": "1800-01-01",
+          "fiscal_year": 1800,
+          "tot_pub_debt_out_usd": 82976294.35
+        },
+        {
+          "record_date": "1801-01-01",
+          "fiscal_year": 1801,
+          "tot_pub_debt_out_usd": 83038050.8
+        },
+        {
+          "record_date": "1802-01-01",
+          "fiscal_year": 1802,
+          "tot_pub_debt_out_usd": 80712632.25
+        },
+        {
+          "record_date": "1803-01-01",
+          "fiscal_year": 1803,
+          "tot_pub_debt_out_usd": 77054686.4
+        },
+        {
+          "record_date": "1804-01-01",
+          "fiscal_year": 1804,
+          "tot_pub_debt_out_usd": 86427120.88
+        },
+        {
+          "record_date": "1805-01-01",
+          "fiscal_year": 1805,
+          "tot_pub_debt_out_usd": 82312150.5
+        },
+        {
+          "record_date": "1806-01-01",
+          "fiscal_year": 1806,
+          "tot_pub_debt_out_usd": 75723270.66
+        },
+        {
+          "record_date": "1807-01-01",
+          "fiscal_year": 1807,
+          "tot_pub_debt_out_usd": 69218398.64
+        },
+        {
+          "record_date": "1808-01-01",
+          "fiscal_year": 1808,
+          "tot_pub_debt_out_usd": 65196317.97
+        },
+        {
+          "record_date": "1809-01-01",
+          "fiscal_year": 1809,
+          "tot_pub_debt_out_usd": 57023192.09
+        },
+        {
+          "record_date": "1810-01-01",
+          "fiscal_year": 1810,
+          "tot_pub_debt_out_usd": 53173217.52
+        },
+        {
+          "record_date": "1811-01-01",
+          "fiscal_year": 1811,
+          "tot_pub_debt_out_usd": 48005587.76
+        },
+        {
+          "record_date": "1812-01-01",
+          "fiscal_year": 1812,
+          "tot_pub_debt_out_usd": 45209737.9
+        },
+        {
+          "record_date": "1813-01-01",
+          "fiscal_year": 1813,
+          "tot_pub_debt_out_usd": 55962827.57
+        },
+        {
+          "record_date": "1814-01-01",
+          "fiscal_year": 1814,
+          "tot_pub_debt_out_usd": 81487846.24
+        },
+        {
+          "record_date": "1815-01-01",
+          "fiscal_year": 1815,
+          "tot_pub_debt_out_usd": 99833660.15
+        },
+        {
+          "record_date": "1816-01-01",
+          "fiscal_year": 1816,
+          "tot_pub_debt_out_usd": 127334933.74
+        },
+        {
+          "record_date": "1817-01-01",
+          "fiscal_year": 1817,
+          "tot_pub_debt_out_usd": 123491965.16
+        },
+        {
+          "record_date": "1818-01-01",
+          "fiscal_year": 1818,
+          "tot_pub_debt_out_usd": 103466633.83
+        },
+        {
+          "record_date": "1819-01-01",
+          "fiscal_year": 1819,
+          "tot_pub_debt_out_usd": 95529648.28
+        },
+        {
+          "record_date": "1820-01-01",
+          "fiscal_year": 1820,
+          "tot_pub_debt_out_usd": 91015566.15
+        },
+        {
+          "record_date": "1821-01-01",
+          "fiscal_year": 1821,
+          "tot_pub_debt_out_usd": 89987427.66
+        },
+        {
+          "record_date": "1822-01-01",
+          "fiscal_year": 1822,
+          "tot_pub_debt_out_usd": 93546676.98
+        },
+        {
+          "record_date": "1823-01-01",
+          "fiscal_year": 1823,
+          "tot_pub_debt_out_usd": 90875877.28
+        },
+        {
+          "record_date": "1824-01-01",
+          "fiscal_year": 1824,
+          "tot_pub_debt_out_usd": 90269777.77
+        },
+        {
+          "record_date": "1825-01-01",
+          "fiscal_year": 1825,
+          "tot_pub_debt_out_usd": 83788432.71
+        },
+        {
+          "record_date": "1826-01-01",
+          "fiscal_year": 1826,
+          "tot_pub_debt_out_usd": 81054059.99
+        },
+        {
+          "record_date": "1827-01-01",
+          "fiscal_year": 1827,
+          "tot_pub_debt_out_usd": 73987357.2
+        },
+        {
+          "record_date": "1828-01-01",
+          "fiscal_year": 1828,
+          "tot_pub_debt_out_usd": 67475043.87
+        },
+        {
+          "record_date": "1829-01-01",
+          "fiscal_year": 1829,
+          "tot_pub_debt_out_usd": 58421413.67
+        },
+        {
+          "record_date": "1830-01-01",
+          "fiscal_year": 1830,
+          "tot_pub_debt_out_usd": 48565406.5
+        },
+        {
+          "record_date": "1831-01-01",
+          "fiscal_year": 1831,
+          "tot_pub_debt_out_usd": 39123191.68
+        },
+        {
+          "record_date": "1832-01-01",
+          "fiscal_year": 1832,
+          "tot_pub_debt_out_usd": 24322235.18
+        },
+        {
+          "record_date": "1833-01-01",
+          "fiscal_year": 1833,
+          "tot_pub_debt_out_usd": 7001698.83
+        },
+        {
+          "record_date": "1834-01-01",
+          "fiscal_year": 1834,
+          "tot_pub_debt_out_usd": 4760082.08
+        },
+        {
+          "record_date": "1835-01-01",
+          "fiscal_year": 1835,
+          "tot_pub_debt_out_usd": 33733.05
+        },
+        {
+          "record_date": "1836-01-01",
+          "fiscal_year": 1836,
+          "tot_pub_debt_out_usd": 37513.05
+        },
+        {
+          "record_date": "1837-01-01",
+          "fiscal_year": 1837,
+          "tot_pub_debt_out_usd": 336957.83
+        },
+        {
+          "record_date": "1838-01-01",
+          "fiscal_year": 1838,
+          "tot_pub_debt_out_usd": 3308124.07
+        },
+        {
+          "record_date": "1839-01-01",
+          "fiscal_year": 1839,
+          "tot_pub_debt_out_usd": 10434221.14
+        },
+        {
+          "record_date": "1840-01-01",
+          "fiscal_year": 1840,
+          "tot_pub_debt_out_usd": 3573343.82
+        },
+        {
+          "record_date": "1841-01-01",
+          "fiscal_year": 1841,
+          "tot_pub_debt_out_usd": 5250875.54
+        },
+        {
+          "record_date": "1842-01-01",
+          "fiscal_year": 1842,
+          "tot_pub_debt_out_usd": 13594480.73
+        },
+        {
+          "record_date": "1843-01-01",
+          "fiscal_year": 1843,
+          "tot_pub_debt_out_usd": 20201226.27
+        },
+        {
+          "record_date": "1843-07-01",
+          "fiscal_year": 1843,
+          "tot_pub_debt_out_usd": 32742922.0
+        },
+        {
+          "record_date": "1844-07-01",
+          "fiscal_year": 1844,
+          "tot_pub_debt_out_usd": 23461652.5
+        },
+        {
+          "record_date": "1845-07-01",
+          "fiscal_year": 1845,
+          "tot_pub_debt_out_usd": 15925303.01
+        },
+        {
+          "record_date": "1846-07-01",
+          "fiscal_year": 1846,
+          "tot_pub_debt_out_usd": 15550202.97
+        },
+        {
+          "record_date": "1847-07-01",
+          "fiscal_year": 1847,
+          "tot_pub_debt_out_usd": 38826534.77
+        },
+        {
+          "record_date": "1848-07-01",
+          "fiscal_year": 1848,
+          "tot_pub_debt_out_usd": 47044862.23
+        },
+        {
+          "record_date": "1849-07-01",
+          "fiscal_year": 1849,
+          "tot_pub_debt_out_usd": 63061858.69
+        },
+        {
+          "record_date": "1850-07-01",
+          "fiscal_year": 1850,
+          "tot_pub_debt_out_usd": 63452773.55
+        },
+        {
+          "record_date": "1851-07-01",
+          "fiscal_year": 1851,
+          "tot_pub_debt_out_usd": 68304796.02
+        },
+        {
+          "record_date": "1852-07-01",
+          "fiscal_year": 1852,
+          "tot_pub_debt_out_usd": 66199341.71
+        },
+        {
+          "record_date": "1853-07-01",
+          "fiscal_year": 1853,
+          "tot_pub_debt_out_usd": 59803117.7
+        },
+        {
+          "record_date": "1854-07-01",
+          "fiscal_year": 1854,
+          "tot_pub_debt_out_usd": 42242222.42
+        },
+        {
+          "record_date": "1855-07-01",
+          "fiscal_year": 1855,
+          "tot_pub_debt_out_usd": 35586956.56
+        },
+        {
+          "record_date": "1856-07-01",
+          "fiscal_year": 1856,
+          "tot_pub_debt_out_usd": 31972537.9
+        },
+        {
+          "record_date": "1857-07-01",
+          "fiscal_year": 1857,
+          "tot_pub_debt_out_usd": 28699831.85
+        },
+        {
+          "record_date": "1858-07-01",
+          "fiscal_year": 1858,
+          "tot_pub_debt_out_usd": 44911881.03
+        },
+        {
+          "record_date": "1859-07-01",
+          "fiscal_year": 1859,
+          "tot_pub_debt_out_usd": 58496837.88
+        },
+        {
+          "record_date": "1860-07-01",
+          "fiscal_year": 1860,
+          "tot_pub_debt_out_usd": 64842287.88
+        },
+        {
+          "record_date": "1861-07-01",
+          "fiscal_year": 1861,
+          "tot_pub_debt_out_usd": 90580873.72
+        },
+        {
+          "record_date": "1862-07-01",
+          "fiscal_year": 1862,
+          "tot_pub_debt_out_usd": 524176412.13
+        },
+        {
+          "record_date": "1863-07-01",
+          "fiscal_year": 1863,
+          "tot_pub_debt_out_usd": 1119772138.63
+        },
+        {
+          "record_date": "1864-07-01",
+          "fiscal_year": 1864,
+          "tot_pub_debt_out_usd": 1815784370.57
+        },
+        {
+          "record_date": "1865-07-01",
+          "fiscal_year": 1865,
+          "tot_pub_debt_out_usd": 2680647869.74
+        },
+        {
+          "record_date": "1866-07-01",
+          "fiscal_year": 1866,
+          "tot_pub_debt_out_usd": 2773236173.69
+        },
+        {
+          "record_date": "1867-07-01",
+          "fiscal_year": 1867,
+          "tot_pub_debt_out_usd": 2678126103.87
+        },
+        {
+          "record_date": "1868-07-01",
+          "fiscal_year": 1868,
+          "tot_pub_debt_out_usd": 2611687851.19
+        },
+        {
+          "record_date": "1869-07-01",
+          "fiscal_year": 1869,
+          "tot_pub_debt_out_usd": 2588452213.94
+        },
+        {
+          "record_date": "1870-07-01",
+          "fiscal_year": 1870,
+          "tot_pub_debt_out_usd": 2480672427.81
+        },
+        {
+          "record_date": "1871-07-01",
+          "fiscal_year": 1871,
+          "tot_pub_debt_out_usd": 2353211332.32
+        },
+        {
+          "record_date": "1872-07-01",
+          "fiscal_year": 1872,
+          "tot_pub_debt_out_usd": 2253251328.78
+        },
+        {
+          "record_date": "1873-07-01",
+          "fiscal_year": 1873,
+          "tot_pub_debt_out_usd": 2234482993.2
+        },
+        {
+          "record_date": "1874-07-01",
+          "fiscal_year": 1874,
+          "tot_pub_debt_out_usd": 2251690468.43
+        },
+        {
+          "record_date": "1875-07-01",
+          "fiscal_year": 1875,
+          "tot_pub_debt_out_usd": 2232284531.95
+        },
+        {
+          "record_date": "1876-07-01",
+          "fiscal_year": 1876,
+          "tot_pub_debt_out_usd": 2180395067.15
+        },
+        {
+          "record_date": "1877-07-01",
+          "fiscal_year": 1877,
+          "tot_pub_debt_out_usd": 2205301392.1
+        },
+        {
+          "record_date": "1878-07-01",
+          "fiscal_year": 1878,
+          "tot_pub_debt_out_usd": 2256205892.53
+        },
+        {
+          "record_date": "1879-07-01",
+          "fiscal_year": 1879,
+          "tot_pub_debt_out_usd": 2349567482.04
+        },
+        {
+          "record_date": "1880-07-01",
+          "fiscal_year": 1880,
+          "tot_pub_debt_out_usd": 2120415370.63
+        },
+        {
+          "record_date": "1881-07-01",
+          "fiscal_year": 1881,
+          "tot_pub_debt_out_usd": 2069013569.58
+        },
+        {
+          "record_date": "1882-07-01",
+          "fiscal_year": 1882,
+          "tot_pub_debt_out_usd": 1918312994.03
+        },
+        {
+          "record_date": "1883-07-01",
+          "fiscal_year": 1883,
+          "tot_pub_debt_out_usd": 1884171728.07
+        },
+        {
+          "record_date": "1884-07-01",
+          "fiscal_year": 1884,
+          "tot_pub_debt_out_usd": 1830528923.57
+        },
+        {
+          "record_date": "1885-07-01",
+          "fiscal_year": 1885,
+          "tot_pub_debt_out_usd": 1863964873.14
+        },
+        {
+          "record_date": "1886-07-01",
+          "fiscal_year": 1886,
+          "tot_pub_debt_out_usd": 1775063013.78
+        },
+        {
+          "record_date": "1887-07-01",
+          "fiscal_year": 1887,
+          "tot_pub_debt_out_usd": 1657602592.63
+        },
+        {
+          "record_date": "1888-07-01",
+          "fiscal_year": 1888,
+          "tot_pub_debt_out_usd": 1692858984.58
+        },
+        {
+          "record_date": "1889-07-01",
+          "fiscal_year": 1889,
+          "tot_pub_debt_out_usd": 1619052922.23
+        },
+        {
+          "record_date": "1890-07-01",
+          "fiscal_year": 1890,
+          "tot_pub_debt_out_usd": 1552140204.73
+        },
+        {
+          "record_date": "1891-07-01",
+          "fiscal_year": 1891,
+          "tot_pub_debt_out_usd": 1545996591.61
+        },
+        {
+          "record_date": "1892-07-01",
+          "fiscal_year": 1892,
+          "tot_pub_debt_out_usd": 1588464144.63
+        },
+        {
+          "record_date": "1893-07-01",
+          "fiscal_year": 1893,
+          "tot_pub_debt_out_usd": 1545985686.13
+        },
+        {
+          "record_date": "1894-07-01",
+          "fiscal_year": 1894,
+          "tot_pub_debt_out_usd": 1632253636.68
+        },
+        {
+          "record_date": "1895-07-01",
+          "fiscal_year": 1895,
+          "tot_pub_debt_out_usd": 1676120983.25
+        },
+        {
+          "record_date": "1896-07-01",
+          "fiscal_year": 1896,
+          "tot_pub_debt_out_usd": 1769840323.4
+        },
+        {
+          "record_date": "1897-07-01",
+          "fiscal_year": 1897,
+          "tot_pub_debt_out_usd": 1817672665.9
+        },
+        {
+          "record_date": "1898-07-01",
+          "fiscal_year": 1898,
+          "tot_pub_debt_out_usd": 1796531995.9
+        },
+        {
+          "record_date": "1899-07-01",
+          "fiscal_year": 1899,
+          "tot_pub_debt_out_usd": 1991927306.92
+        },
+        {
+          "record_date": "1900-07-01",
+          "fiscal_year": 1900,
+          "tot_pub_debt_out_usd": 2136961091.67
+        },
+        {
+          "record_date": "1901-07-01",
+          "fiscal_year": 1901,
+          "tot_pub_debt_out_usd": 2143326933.89
+        },
+        {
+          "record_date": "1902-07-01",
+          "fiscal_year": 1902,
+          "tot_pub_debt_out_usd": 2158610445.89
+        },
+        {
+          "record_date": "1903-07-01",
+          "fiscal_year": 1903,
+          "tot_pub_debt_out_usd": 2202464781.89
+        },
+        {
+          "record_date": "1904-07-01",
+          "fiscal_year": 1904,
+          "tot_pub_debt_out_usd": 2264003585.14
+        },
+        {
+          "record_date": "1905-07-01",
+          "fiscal_year": 1905,
+          "tot_pub_debt_out_usd": 2274615063.84
+        },
+        {
+          "record_date": "1906-07-01",
+          "fiscal_year": 1906,
+          "tot_pub_debt_out_usd": 2337161839.04
+        },
+        {
+          "record_date": "1907-07-01",
+          "fiscal_year": 1907,
+          "tot_pub_debt_out_usd": 2457188061.54
+        },
+        {
+          "record_date": "1908-07-01",
+          "fiscal_year": 1908,
+          "tot_pub_debt_out_usd": 2626806271.54
+        },
+        {
+          "record_date": "1909-07-01",
+          "fiscal_year": 1909,
+          "tot_pub_debt_out_usd": 2639546241.04
+        },
+        {
+          "record_date": "1910-07-01",
+          "fiscal_year": 1910,
+          "tot_pub_debt_out_usd": 2652665838.04
+        },
+        {
+          "record_date": "1911-07-01",
+          "fiscal_year": 1911,
+          "tot_pub_debt_out_usd": 2765600606.69
+        },
+        {
+          "record_date": "1912-07-01",
+          "fiscal_year": 1912,
+          "tot_pub_debt_out_usd": 2868373874.16
+        },
+        {
+          "record_date": "1913-07-01",
+          "fiscal_year": 1913,
+          "tot_pub_debt_out_usd": 2916204913.66
+        },
+        {
+          "record_date": "1914-07-01",
+          "fiscal_year": 1914,
+          "tot_pub_debt_out_usd": 2912499269.16
+        },
+        {
+          "record_date": "1915-07-01",
+          "fiscal_year": 1915,
+          "tot_pub_debt_out_usd": 3058136873.16
+        },
+        {
+          "record_date": "1916-07-01",
+          "fiscal_year": 1916,
+          "tot_pub_debt_out_usd": 3609244262.16
+        },
+        {
+          "record_date": "1917-07-01",
+          "fiscal_year": 1917,
+          "tot_pub_debt_out_usd": 5717770279.52
+        },
+        {
+          "record_date": "1918-07-01",
+          "fiscal_year": 1918,
+          "tot_pub_debt_out_usd": 14592161414.0
+        },
+        {
+          "record_date": "1919-07-01",
+          "fiscal_year": 1919,
+          "tot_pub_debt_out_usd": 27390970113.12
+        },
+        {
+          "record_date": "1920-07-01",
+          "fiscal_year": 1920,
+          "tot_pub_debt_out_usd": 25952456406.16
+        },
+        {
+          "record_date": "1921-06-30",
+          "fiscal_year": 1921,
+          "tot_pub_debt_out_usd": 23977450552.54
+        },
+        {
+          "record_date": "1922-06-30",
+          "fiscal_year": 1922,
+          "tot_pub_debt_out_usd": 22963381708.31
+        },
+        {
+          "record_date": "1923-06-30",
+          "fiscal_year": 1923,
+          "tot_pub_debt_out_usd": 22349707365.36
+        },
+        {
+          "record_date": "1924-06-30",
+          "fiscal_year": 1924,
+          "tot_pub_debt_out_usd": 21250812989.49
+        },
+        {
+          "record_date": "1925-06-30",
+          "fiscal_year": 1925,
+          "tot_pub_debt_out_usd": 20516193887.9
+        },
+        {
+          "record_date": "1926-06-30",
+          "fiscal_year": 1926,
+          "tot_pub_debt_out_usd": 19643216315.19
+        },
+        {
+          "record_date": "1927-06-30",
+          "fiscal_year": 1927,
+          "tot_pub_debt_out_usd": 18511906931.85
+        },
+        {
+          "record_date": "1928-06-30",
+          "fiscal_year": 1928,
+          "tot_pub_debt_out_usd": 17604293201.43
+        },
+        {
+          "record_date": "1929-06-29",
+          "fiscal_year": 1929,
+          "tot_pub_debt_out_usd": 16931088484.1
+        },
+        {
+          "record_date": "1930-06-30",
+          "fiscal_year": 1930,
+          "tot_pub_debt_out_usd": 16185309831.43
+        },
+        {
+          "record_date": "1931-06-30",
+          "fiscal_year": 1931,
+          "tot_pub_debt_out_usd": 16801281491.71
+        },
+        {
+          "record_date": "1932-06-30",
+          "fiscal_year": 1932,
+          "tot_pub_debt_out_usd": 19487002444.13
+        },
+        {
+          "record_date": "1933-06-30",
+          "fiscal_year": 1933,
+          "tot_pub_debt_out_usd": 22538672560.15
+        },
+        {
+          "record_date": "1934-06-30",
+          "fiscal_year": 1934,
+          "tot_pub_debt_out_usd": 27053141414.48
+        },
+        {
+          "record_date": "1935-06-29",
+          "fiscal_year": 1935,
+          "tot_pub_debt_out_usd": 28700892624.53
+        },
+        {
+          "record_date": "1936-06-30",
+          "fiscal_year": 1936,
+          "tot_pub_debt_out_usd": 33778543493.73
+        },
+        {
+          "record_date": "1937-06-30",
+          "fiscal_year": 1937,
+          "tot_pub_debt_out_usd": 36424613732.29
+        },
+        {
+          "record_date": "1938-06-30",
+          "fiscal_year": 1938,
+          "tot_pub_debt_out_usd": 37164740315.45
+        },
+        {
+          "record_date": "1939-06-30",
+          "fiscal_year": 1939,
+          "tot_pub_debt_out_usd": 40439532411.11
+        },
+        {
+          "record_date": "1940-06-29",
+          "fiscal_year": 1940,
+          "tot_pub_debt_out_usd": 42967531037.68
+        },
+        {
+          "record_date": "1941-06-30",
+          "fiscal_year": 1941,
+          "tot_pub_debt_out_usd": 48961443535.71
+        },
+        {
+          "record_date": "1942-06-30",
+          "fiscal_year": 1942,
+          "tot_pub_debt_out_usd": 72422445116.22
+        },
+        {
+          "record_date": "1943-06-30",
+          "fiscal_year": 1943,
+          "tot_pub_debt_out_usd": 136696090329.9
+        },
+        {
+          "record_date": "1944-06-30",
+          "fiscal_year": 1944,
+          "tot_pub_debt_out_usd": 201003387221.13
+        },
+        {
+          "record_date": "1945-06-30",
+          "fiscal_year": 1945,
+          "tot_pub_debt_out_usd": 258682187409.93
+        },
+        {
+          "record_date": "1946-06-28",
+          "fiscal_year": 1946,
+          "tot_pub_debt_out_usd": 269422099173.26
+        },
+        {
+          "record_date": "1947-06-30",
+          "fiscal_year": 1947,
+          "tot_pub_debt_out_usd": 258286383108.67
+        },
+        {
+          "record_date": "1948-06-30",
+          "fiscal_year": 1948,
+          "tot_pub_debt_out_usd": 252292246512.99
+        },
+        {
+          "record_date": "1949-06-30",
+          "fiscal_year": 1949,
+          "tot_pub_debt_out_usd": 252770359860.33
+        },
+        {
+          "record_date": "1950-06-30",
+          "fiscal_year": 1950,
+          "tot_pub_debt_out_usd": 257357352351.04
+        },
+        {
+          "record_date": "1951-06-29",
+          "fiscal_year": 1951,
+          "tot_pub_debt_out_usd": 255221976814.93
+        },
+        {
+          "record_date": "1952-06-30",
+          "fiscal_year": 1952,
+          "tot_pub_debt_out_usd": 259105178785.43
+        },
+        {
+          "record_date": "1953-06-30",
+          "fiscal_year": 1953,
+          "tot_pub_debt_out_usd": 266071061638.57
+        },
+        {
+          "record_date": "1954-06-30",
+          "fiscal_year": 1954,
+          "tot_pub_debt_out_usd": 271259599108.46
+        },
+        {
+          "record_date": "1955-06-30",
+          "fiscal_year": 1955,
+          "tot_pub_debt_out_usd": 274374222802.62
+        },
+        {
+          "record_date": "1956-06-30",
+          "fiscal_year": 1956,
+          "tot_pub_debt_out_usd": 272750813649.32
+        },
+        {
+          "record_date": "1957-06-30",
+          "fiscal_year": 1957,
+          "tot_pub_debt_out_usd": 270527171896.43
+        },
+        {
+          "record_date": "1958-06-30",
+          "fiscal_year": 1958,
+          "tot_pub_debt_out_usd": 276343217745.81
+        },
+        {
+          "record_date": "1959-06-30",
+          "fiscal_year": 1959,
+          "tot_pub_debt_out_usd": 284705907078.22
+        },
+        {
+          "record_date": "1960-06-30",
+          "fiscal_year": 1960,
+          "tot_pub_debt_out_usd": 286330760848.37
+        },
+        {
+          "record_date": "1961-06-30",
+          "fiscal_year": 1961,
+          "tot_pub_debt_out_usd": 288970938610.05
+        },
+        {
+          "record_date": "1962-06-30",
+          "fiscal_year": 1962,
+          "tot_pub_debt_out_usd": 298200822720.87
+        },
+        {
+          "record_date": "1963-06-30",
+          "fiscal_year": 1963,
+          "tot_pub_debt_out_usd": 305859632996.41
+        },
+        {
+          "record_date": "1964-06-30",
+          "fiscal_year": 1964,
+          "tot_pub_debt_out_usd": 311712899257.3
+        },
+        {
+          "record_date": "1965-06-30",
+          "fiscal_year": 1965,
+          "tot_pub_debt_out_usd": 317273898983.64
+        },
+        {
+          "record_date": "1966-06-30",
+          "fiscal_year": 1966,
+          "tot_pub_debt_out_usd": 319907087795.48
+        },
+        {
+          "record_date": "1967-06-30",
+          "fiscal_year": 1967,
+          "tot_pub_debt_out_usd": 326220937794.54
+        },
+        {
+          "record_date": "1968-06-30",
+          "fiscal_year": 1968,
+          "tot_pub_debt_out_usd": 347578406425.88
+        },
+        {
+          "record_date": "1969-06-30",
+          "fiscal_year": 1969,
+          "tot_pub_debt_out_usd": 353720253841.41
+        },
+        {
+          "record_date": "1970-06-30",
+          "fiscal_year": 1970,
+          "tot_pub_debt_out_usd": 370918706949.93
+        },
+        {
+          "record_date": "1971-06-30",
+          "fiscal_year": 1971,
+          "tot_pub_debt_out_usd": 398129744455.54
+        },
+        {
+          "record_date": "1972-06-30",
+          "fiscal_year": 1972,
+          "tot_pub_debt_out_usd": 427260460940.5
+        },
+        {
+          "record_date": "1973-06-30",
+          "fiscal_year": 1973,
+          "tot_pub_debt_out_usd": 458141605312.09
+        },
+        {
+          "record_date": "1974-06-30",
+          "fiscal_year": 1974,
+          "tot_pub_debt_out_usd": 475059815731.55
+        },
+        {
+          "record_date": "1975-06-30",
+          "fiscal_year": 1975,
+          "tot_pub_debt_out_usd": 533189000000.0
+        },
+        {
+          "record_date": "1976-06-30",
+          "fiscal_year": 1976,
+          "tot_pub_debt_out_usd": 620433000000.0
+        },
+        {
+          "record_date": "1977-09-30",
+          "fiscal_year": 1977,
+          "tot_pub_debt_out_usd": 698840000000.0
+        },
+        {
+          "record_date": "1978-09-30",
+          "fiscal_year": 1978,
+          "tot_pub_debt_out_usd": 771544000000.0
+        },
+        {
+          "record_date": "1979-09-30",
+          "fiscal_year": 1979,
+          "tot_pub_debt_out_usd": 826519000000.0
+        },
+        {
+          "record_date": "1980-09-30",
+          "fiscal_year": 1980,
+          "tot_pub_debt_out_usd": 907701000000.0
+        },
+        {
+          "record_date": "1981-09-30",
+          "fiscal_year": 1981,
+          "tot_pub_debt_out_usd": 997855000000.0
+        },
+        {
+          "record_date": "1982-09-30",
+          "fiscal_year": 1982,
+          "tot_pub_debt_out_usd": 1142034000000.0
+        },
+        {
+          "record_date": "1983-09-30",
+          "fiscal_year": 1983,
+          "tot_pub_debt_out_usd": 1377210000000.0
+        },
+        {
+          "record_date": "1984-09-30",
+          "fiscal_year": 1984,
+          "tot_pub_debt_out_usd": 1572266000000.0
+        },
+        {
+          "record_date": "1985-09-30",
+          "fiscal_year": 1985,
+          "tot_pub_debt_out_usd": 1823103000000.0
+        },
+        {
+          "record_date": "1986-09-30",
+          "fiscal_year": 1986,
+          "tot_pub_debt_out_usd": 2125302616658.42
+        },
+        {
+          "record_date": "1987-09-30",
+          "fiscal_year": 1987,
+          "tot_pub_debt_out_usd": 2350276890953.0
+        },
+        {
+          "record_date": "1988-09-30",
+          "fiscal_year": 1988,
+          "tot_pub_debt_out_usd": 2602337712041.16
+        },
+        {
+          "record_date": "1989-09-29",
+          "fiscal_year": 1989,
+          "tot_pub_debt_out_usd": 2857430960187.32
+        },
+        {
+          "record_date": "1990-09-28",
+          "fiscal_year": 1990,
+          "tot_pub_debt_out_usd": 3233313451777.25
+        },
+        {
+          "record_date": "1991-09-30",
+          "fiscal_year": 1991,
+          "tot_pub_debt_out_usd": 3665303351697.03
+        },
+        {
+          "record_date": "1992-09-30",
+          "fiscal_year": 1992,
+          "tot_pub_debt_out_usd": 4064620655521.66
+        },
+        {
+          "record_date": "1993-09-30",
+          "fiscal_year": 1993,
+          "tot_pub_debt_out_usd": 4411488883139.38
+        },
+        {
+          "record_date": "1994-09-30",
+          "fiscal_year": 1994,
+          "tot_pub_debt_out_usd": 4692749910013.32
+        },
+        {
+          "record_date": "1995-09-29",
+          "fiscal_year": 1995,
+          "tot_pub_debt_out_usd": 4973982900709.39
+        },
+        {
+          "record_date": "1996-09-30",
+          "fiscal_year": 1996,
+          "tot_pub_debt_out_usd": 5224810939135.73
+        },
+        {
+          "record_date": "1997-09-30",
+          "fiscal_year": 1997,
+          "tot_pub_debt_out_usd": 5413146011397.34
+        },
+        {
+          "record_date": "1998-09-30",
+          "fiscal_year": 1998,
+          "tot_pub_debt_out_usd": 5526193008897.62
+        },
+        {
+          "record_date": "1999-09-30",
+          "fiscal_year": 1999,
+          "tot_pub_debt_out_usd": 5656270901615.43
+        },
+        {
+          "record_date": "2000-09-30",
+          "fiscal_year": 2000,
+          "tot_pub_debt_out_usd": 5674178209886.86
+        },
+        {
+          "record_date": "2001-09-30",
+          "fiscal_year": 2001,
+          "tot_pub_debt_out_usd": 5807463412200.06
+        },
+        {
+          "record_date": "2002-09-30",
+          "fiscal_year": 2002,
+          "tot_pub_debt_out_usd": 6228235965597.16
+        },
+        {
+          "record_date": "2003-09-30",
+          "fiscal_year": 2003,
+          "tot_pub_debt_out_usd": 6783231062743.62
+        },
+        {
+          "record_date": "2004-09-30",
+          "fiscal_year": 2004,
+          "tot_pub_debt_out_usd": 7379052696330.32
+        },
+        {
+          "record_date": "2005-09-30",
+          "fiscal_year": 2005,
+          "tot_pub_debt_out_usd": 7932709661723.5
+        },
+        {
+          "record_date": "2006-09-30",
+          "fiscal_year": 2006,
+          "tot_pub_debt_out_usd": 8506973899215.23
+        },
+        {
+          "record_date": "2007-09-30",
+          "fiscal_year": 2007,
+          "tot_pub_debt_out_usd": 9007653372262.48
+        },
+        {
+          "record_date": "2008-09-30",
+          "fiscal_year": 2008,
+          "tot_pub_debt_out_usd": 10024724896912.49
+        },
+        {
+          "record_date": "2009-09-30",
+          "fiscal_year": 2009,
+          "tot_pub_debt_out_usd": 11909829003511.75
+        },
+        {
+          "record_date": "2010-09-30",
+          "fiscal_year": 2010,
+          "tot_pub_debt_out_usd": 13561623030891.79
+        },
+        {
+          "record_date": "2011-09-30",
+          "fiscal_year": 2011,
+          "tot_pub_debt_out_usd": 14790340328557.15
+        },
+        {
+          "record_date": "2012-09-30",
+          "fiscal_year": 2012,
+          "tot_pub_debt_out_usd": 16066241407385.89
+        },
+        {
+          "record_date": "2013-09-30",
+          "fiscal_year": 2013,
+          "tot_pub_debt_out_usd": 16738183526697.32
+        },
+        {
+          "record_date": "2014-09-30",
+          "fiscal_year": 2014,
+          "tot_pub_debt_out_usd": 17824071380733.82
+        },
+        {
+          "record_date": "2015-09-30",
+          "fiscal_year": 2015,
+          "tot_pub_debt_out_usd": 18150617666484.33
+        },
+        {
+          "record_date": "2016-09-30",
+          "fiscal_year": 2016,
+          "tot_pub_debt_out_usd": 19573444713936.79
+        },
+        {
+          "record_date": "2017-09-30",
+          "fiscal_year": 2017,
+          "tot_pub_debt_out_usd": 20244900016053.51
+        },
+        {
+          "record_date": "2018-09-30",
+          "fiscal_year": 2018,
+          "tot_pub_debt_out_usd": 21516058183180.23
+        },
+        {
+          "record_date": "2019-09-30",
+          "fiscal_year": 2019,
+          "tot_pub_debt_out_usd": 22719401753433.78
+        },
+        {
+          "record_date": "2020-09-30",
+          "fiscal_year": 2020,
+          "tot_pub_debt_out_usd": 26945391194615.15
+        },
+        {
+          "record_date": "2021-09-30",
+          "fiscal_year": 2021,
+          "tot_pub_debt_out_usd": 28428918570048.68
+        },
+        {
+          "record_date": "2022-09-30",
+          "fiscal_year": 2022,
+          "tot_pub_debt_out_usd": 30928911613306.73
+        },
+        {
+          "record_date": "2023-09-30",
+          "fiscal_year": 2023,
+          "tot_pub_debt_out_usd": 33167334044723.16
+        },
+        {
+          "record_date": "2024-09-30",
+          "fiscal_year": 2024,
+          "tot_pub_debt_out_usd": 35464673929171.69
+        },
+        {
+          "record_date": "2025-09-30",
+          "fiscal_year": 2025,
+          "tot_pub_debt_out_usd": 37637553494935.61
+        }
+      ]
+    },
+    "month_end": {
+      "description": "Total public debt outstanding at the last business day of each month since 1993-04 (Debt to the Penny, downsampled from daily).",
+      "source": {
+        "name": "Debt to the Penny",
+        "source_url": "https://fiscaldata.treasury.gov/datasets/debt-to-the-penny",
+        "api_endpoint": "/services/api/fiscal_service/v2/accounting/od/debt_to_penny",
+        "update_frequency": "Daily"
+      },
+      "n_points": 400,
+      "points": [
+        {
+          "record_date": "1993-04-30",
+          "tot_pub_debt_out_usd": 4254084170636.01,
+          "debt_held_public_usd": null,
+          "intragov_hold_usd": null
+        },
+        {
+          "record_date": "1993-05-28",
+          "tot_pub_debt_out_usd": 4296278014612.43,
+          "debt_held_public_usd": null,
+          "intragov_hold_usd": null
+        },
+        {
+          "record_date": "1993-06-30",
+          "tot_pub_debt_out_usd": 4351950333834.76,
+          "debt_held_public_usd": null,
+          "intragov_hold_usd": null
+        },
+        {
+          "record_date": "1993-07-30",
+          "tot_pub_debt_out_usd": 4350260845100.3,
+          "debt_held_public_usd": null,
+          "intragov_hold_usd": null
+        },
+        {
+          "record_date": "1993-08-31",
+          "tot_pub_debt_out_usd": 4403247046170.58,
+          "debt_held_public_usd": null,
+          "intragov_hold_usd": null
+        },
+        {
+          "record_date": "1993-09-30",
+          "tot_pub_debt_out_usd": 4411488883139.38,
+          "debt_held_public_usd": null,
+          "intragov_hold_usd": null
+        },
+        {
+          "record_date": "1993-10-29",
+          "tot_pub_debt_out_usd": 4422511446437.79,
+          "debt_held_public_usd": null,
+          "intragov_hold_usd": null
+        },
+        {
+          "record_date": "1993-11-30",
+          "tot_pub_debt_out_usd": 4493535023468.35,
+          "debt_held_public_usd": null,
+          "intragov_hold_usd": null
+        },
+        {
+          "record_date": "1993-12-31",
+          "tot_pub_debt_out_usd": 4535687054406.14,
+          "debt_held_public_usd": null,
+          "intragov_hold_usd": null
+        },
+        {
+          "record_date": "1994-01-31",
+          "tot_pub_debt_out_usd": 4526307553267.04,
+          "debt_held_public_usd": null,
+          "intragov_hold_usd": null
+        },
+        {
+          "record_date": "1994-02-28",
+          "tot_pub_debt_out_usd": 4559540702805.73,
+          "debt_held_public_usd": null,
+          "intragov_hold_usd": null
+        },
+        {
+          "record_date": "1994-03-31",
+          "tot_pub_debt_out_usd": 4575869228916.28,
+          "debt_held_public_usd": null,
+          "intragov_hold_usd": null
+        },
+        {
+          "record_date": "1994-04-29",
+          "tot_pub_debt_out_usd": 4568703508047.36,
+          "debt_held_public_usd": null,
+          "intragov_hold_usd": null
+        },
+        {
+          "record_date": "1994-05-31",
+          "tot_pub_debt_out_usd": 4609296212021.38,
+          "debt_held_public_usd": null,
+          "intragov_hold_usd": null
+        },
+        {
+          "record_date": "1994-06-30",
+          "tot_pub_debt_out_usd": 4645801898177.58,
+          "debt_held_public_usd": null,
+          "intragov_hold_usd": null
+        },
+        {
+          "record_date": "1994-07-29",
+          "tot_pub_debt_out_usd": 4636361778400.62,
+          "debt_held_public_usd": null,
+          "intragov_hold_usd": null
+        },
+        {
+          "record_date": "1994-08-31",
+          "tot_pub_debt_out_usd": 4691991360873.49,
+          "debt_held_public_usd": null,
+          "intragov_hold_usd": null
+        },
+        {
+          "record_date": "1994-09-30",
+          "tot_pub_debt_out_usd": 4692749910013.32,
+          "debt_held_public_usd": null,
+          "intragov_hold_usd": null
+        },
+        {
+          "record_date": "1994-10-31",
+          "tot_pub_debt_out_usd": 4734167494604.92,
+          "debt_held_public_usd": null,
+          "intragov_hold_usd": null
+        },
+        {
+          "record_date": "1994-11-30",
+          "tot_pub_debt_out_usd": 4778520357397.26,
+          "debt_held_public_usd": null,
+          "intragov_hold_usd": null
+        },
+        {
+          "record_date": "1994-12-30",
+          "tot_pub_debt_out_usd": 4800149946143.75,
+          "debt_held_public_usd": null,
+          "intragov_hold_usd": null
+        },
+        {
+          "record_date": "1995-01-31",
+          "tot_pub_debt_out_usd": 4815826745802.15,
+          "debt_held_public_usd": null,
+          "intragov_hold_usd": null
+        },
+        {
+          "record_date": "1995-02-28",
+          "tot_pub_debt_out_usd": 4854297850590.37,
+          "debt_held_public_usd": null,
+          "intragov_hold_usd": null
+        },
+        {
+          "record_date": "1995-03-31",
+          "tot_pub_debt_out_usd": 4864115841256.92,
+          "debt_held_public_usd": null,
+          "intragov_hold_usd": null
+        },
+        {
+          "record_date": "1995-04-28",
+          "tot_pub_debt_out_usd": 4852327350096.6,
+          "debt_held_public_usd": null,
+          "intragov_hold_usd": null
+        },
+        {
+          "record_date": "1995-05-31",
+          "tot_pub_debt_out_usd": 4903925978763.93,
+          "debt_held_public_usd": null,
+          "intragov_hold_usd": null
+        },
+        {
+          "record_date": "1995-06-30",
+          "tot_pub_debt_out_usd": 4951372092079.13,
+          "debt_held_public_usd": null,
+          "intragov_hold_usd": null
+        },
+        {
+          "record_date": "1995-07-31",
+          "tot_pub_debt_out_usd": 4960151653142.55,
+          "debt_held_public_usd": null,
+          "intragov_hold_usd": null
+        },
+        {
+          "record_date": "1995-08-31",
+          "tot_pub_debt_out_usd": 4970755679060.21,
+          "debt_held_public_usd": null,
+          "intragov_hold_usd": null
+        },
+        {
+          "record_date": "1995-09-29",
+          "tot_pub_debt_out_usd": 4973982900709.39,
+          "debt_held_public_usd": null,
+          "intragov_hold_usd": null
+        },
+        {
+          "record_date": "1995-10-31",
+          "tot_pub_debt_out_usd": 4985262110021.06,
+          "debt_held_public_usd": null,
+          "intragov_hold_usd": null
+        },
+        {
+          "record_date": "1995-11-30",
+          "tot_pub_debt_out_usd": 4989329926644.31,
+          "debt_held_public_usd": null,
+          "intragov_hold_usd": null
+        },
+        {
+          "record_date": "1995-12-29",
+          "tot_pub_debt_out_usd": 4988664979014.54,
+          "debt_held_public_usd": null,
+          "intragov_hold_usd": null
+        },
+        {
+          "record_date": "1996-01-31",
+          "tot_pub_debt_out_usd": 4987436358165.2,
+          "debt_held_public_usd": null,
+          "intragov_hold_usd": null
+        },
+        {
+          "record_date": "1996-02-29",
+          "tot_pub_debt_out_usd": 5016040703255.02,
+          "debt_held_public_usd": null,
+          "intragov_hold_usd": null
+        },
+        {
+          "record_date": "1996-03-29",
+          "tot_pub_debt_out_usd": 5117786366014.56,
+          "debt_held_public_usd": null,
+          "intragov_hold_usd": null
+        },
+        {
+          "record_date": "1996-04-30",
+          "tot_pub_debt_out_usd": 5102048827234.22,
+          "debt_held_public_usd": null,
+          "intragov_hold_usd": null
+        },
+        {
+          "record_date": "1996-05-31",
+          "tot_pub_debt_out_usd": 5128508504892.8,
+          "debt_held_public_usd": null,
+          "intragov_hold_usd": null
+        },
+        {
+          "record_date": "1996-06-28",
+          "tot_pub_debt_out_usd": 5161075688140.93,
+          "debt_held_public_usd": null,
+          "intragov_hold_usd": null
+        },
+        {
+          "record_date": "1996-07-31",
+          "tot_pub_debt_out_usd": 5188888625925.87,
+          "debt_held_public_usd": null,
+          "intragov_hold_usd": null
+        },
+        {
+          "record_date": "1996-08-30",
+          "tot_pub_debt_out_usd": 5208303439417.93,
+          "debt_held_public_usd": null,
+          "intragov_hold_usd": null
+        },
+        {
+          "record_date": "1996-09-30",
+          "tot_pub_debt_out_usd": 5224810939135.73,
+          "debt_held_public_usd": null,
+          "intragov_hold_usd": null
+        },
+        {
+          "record_date": "1996-10-31",
+          "tot_pub_debt_out_usd": 5247319617599.91,
+          "debt_held_public_usd": null,
+          "intragov_hold_usd": null
+        },
+        {
+          "record_date": "1996-11-29",
+          "tot_pub_debt_out_usd": 5296548923143.63,
+          "debt_held_public_usd": null,
+          "intragov_hold_usd": null
+        },
+        {
+          "record_date": "1996-12-31",
+          "tot_pub_debt_out_usd": 5323171750783.19,
+          "debt_held_public_usd": null,
+          "intragov_hold_usd": null
+        },
+        {
+          "record_date": "1997-01-30",
+          "tot_pub_debt_out_usd": 5315795971480.01,
+          "debt_held_public_usd": null,
+          "intragov_hold_usd": null
+        },
+        {
+          "record_date": "1997-02-28",
+          "tot_pub_debt_out_usd": 5349937360942.68,
+          "debt_held_public_usd": null,
+          "intragov_hold_usd": null
+        },
+        {
+          "record_date": "1997-03-31",
+          "tot_pub_debt_out_usd": 5380889857391.59,
+          "debt_held_public_usd": null,
+          "intragov_hold_usd": null
+        },
+        {
+          "record_date": "1997-04-30",
+          "tot_pub_debt_out_usd": 5353971314439.39,
+          "debt_held_public_usd": null,
+          "intragov_hold_usd": null
+        },
+        {
+          "record_date": "1997-05-30",
+          "tot_pub_debt_out_usd": 5344961362266.83,
+          "debt_held_public_usd": null,
+          "intragov_hold_usd": null
+        },
+        {
+          "record_date": "1997-06-30",
+          "tot_pub_debt_out_usd": 5376151252876.02,
+          "debt_held_public_usd": null,
+          "intragov_hold_usd": null
+        },
+        {
+          "record_date": "1997-07-31",
+          "tot_pub_debt_out_usd": 5373228560474.27,
+          "debt_held_public_usd": null,
+          "intragov_hold_usd": null
+        },
+        {
+          "record_date": "1997-08-29",
+          "tot_pub_debt_out_usd": 5404420294885.51,
+          "debt_held_public_usd": null,
+          "intragov_hold_usd": null
+        },
+        {
+          "record_date": "1997-09-30",
+          "tot_pub_debt_out_usd": 5413146011397.34,
+          "debt_held_public_usd": 3789667546849.6,
+          "intragov_hold_usd": 1623478464547.74
+        },
+        {
+          "record_date": "1997-10-31",
+          "tot_pub_debt_out_usd": 5427225185059.66,
+          "debt_held_public_usd": null,
+          "intragov_hold_usd": null
+        },
+        {
+          "record_date": "1997-11-28",
+          "tot_pub_debt_out_usd": 5462621557837.57,
+          "debt_held_public_usd": null,
+          "intragov_hold_usd": null
+        },
+        {
+          "record_date": "1997-12-31",
+          "tot_pub_debt_out_usd": 5502388012375.95,
+          "debt_held_public_usd": null,
+          "intragov_hold_usd": null
+        },
+        {
+          "record_date": "1998-01-30",
+          "tot_pub_debt_out_usd": 5490064235079.64,
+          "debt_held_public_usd": null,
+          "intragov_hold_usd": null
+        },
+        {
+          "record_date": "1998-02-27",
+          "tot_pub_debt_out_usd": 5520668318465.51,
+          "debt_held_public_usd": null,
+          "intragov_hold_usd": null
+        },
+        {
+          "record_date": "1998-03-31",
+          "tot_pub_debt_out_usd": 5542425768605.91,
+          "debt_held_public_usd": null,
+          "intragov_hold_usd": null
+        },
+        {
+          "record_date": "1998-04-30",
+          "tot_pub_debt_out_usd": 5499894559513.94,
+          "debt_held_public_usd": null,
+          "intragov_hold_usd": null
+        },
+        {
+          "record_date": "1998-05-29",
+          "tot_pub_debt_out_usd": 5506355797435.19,
+          "debt_held_public_usd": null,
+          "intragov_hold_usd": null
+        },
+        {
+          "record_date": "1998-06-30",
+          "tot_pub_debt_out_usd": 5547934743559.81,
+          "debt_held_public_usd": null,
+          "intragov_hold_usd": null
+        },
+        {
+          "record_date": "1998-07-31",
+          "tot_pub_debt_out_usd": 5527738221101.41,
+          "debt_held_public_usd": null,
+          "intragov_hold_usd": null
+        },
+        {
+          "record_date": "1998-08-31",
+          "tot_pub_debt_out_usd": 5564553479478.04,
+          "debt_held_public_usd": null,
+          "intragov_hold_usd": null
+        },
+        {
+          "record_date": "1998-09-30",
+          "tot_pub_debt_out_usd": 5526193008897.62,
+          "debt_held_public_usd": 3733864472163.53,
+          "intragov_hold_usd": 1792328536734.09
+        },
+        {
+          "record_date": "1998-10-30",
+          "tot_pub_debt_out_usd": 5559254634398.44,
+          "debt_held_public_usd": null,
+          "intragov_hold_usd": null
+        },
+        {
+          "record_date": "1998-11-30",
+          "tot_pub_debt_out_usd": 5591979348249.72,
+          "debt_held_public_usd": null,
+          "intragov_hold_usd": null
+        },
+        {
+          "record_date": "1998-12-31",
+          "tot_pub_debt_out_usd": 5614217021195.87,
+          "debt_held_public_usd": null,
+          "intragov_hold_usd": null
+        },
+        {
+          "record_date": "1999-01-29",
+          "tot_pub_debt_out_usd": 5610117097678.95,
+          "debt_held_public_usd": null,
+          "intragov_hold_usd": null
+        },
+        {
+          "record_date": "1999-02-26",
+          "tot_pub_debt_out_usd": 5621945513528.0,
+          "debt_held_public_usd": null,
+          "intragov_hold_usd": null
+        },
+        {
+          "record_date": "1999-03-31",
+          "tot_pub_debt_out_usd": 5651615289284.87,
+          "debt_held_public_usd": null,
+          "intragov_hold_usd": null
+        },
+        {
+          "record_date": "1999-04-30",
+          "tot_pub_debt_out_usd": 5585839850171.61,
+          "debt_held_public_usd": null,
+          "intragov_hold_usd": null
+        },
+        {
+          "record_date": "1999-05-28",
+          "tot_pub_debt_out_usd": 5604198055526.11,
+          "debt_held_public_usd": null,
+          "intragov_hold_usd": null
+        },
+        {
+          "record_date": "1999-06-30",
+          "tot_pub_debt_out_usd": 5638780248334.54,
+          "debt_held_public_usd": null,
+          "intragov_hold_usd": null
+        },
+        {
+          "record_date": "1999-07-30",
+          "tot_pub_debt_out_usd": 5638655711931.6,
+          "debt_held_public_usd": null,
+          "intragov_hold_usd": null
+        },
+        {
+          "record_date": "1999-08-31",
+          "tot_pub_debt_out_usd": 5672386167530.41,
+          "debt_held_public_usd": null,
+          "intragov_hold_usd": null
+        },
+        {
+          "record_date": "1999-09-30",
+          "tot_pub_debt_out_usd": 5656270901633.43,
+          "debt_held_public_usd": 3636104594501.81,
+          "intragov_hold_usd": 2020166307131.62
+        },
+        {
+          "record_date": "1999-10-29",
+          "tot_pub_debt_out_usd": 5679726662904.06,
+          "debt_held_public_usd": null,
+          "intragov_hold_usd": null
+        },
+        {
+          "record_date": "1999-11-29",
+          "tot_pub_debt_out_usd": 5702010056766.2,
+          "debt_held_public_usd": null,
+          "intragov_hold_usd": null
+        },
+        {
+          "record_date": "1999-12-31",
+          "tot_pub_debt_out_usd": 5776091314225.33,
+          "debt_held_public_usd": null,
+          "intragov_hold_usd": null
+        },
+        {
+          "record_date": "2000-01-31",
+          "tot_pub_debt_out_usd": 5711285168951.46,
+          "debt_held_public_usd": null,
+          "intragov_hold_usd": null
+        },
+        {
+          "record_date": "2000-02-29",
+          "tot_pub_debt_out_usd": 5735333348132.58,
+          "debt_held_public_usd": null,
+          "intragov_hold_usd": null
+        },
+        {
+          "record_date": "2000-03-31",
+          "tot_pub_debt_out_usd": 5773391634682.91,
+          "debt_held_public_usd": null,
+          "intragov_hold_usd": null
+        },
+        {
+          "record_date": "2000-04-28",
+          "tot_pub_debt_out_usd": 5685108228594.76,
+          "debt_held_public_usd": null,
+          "intragov_hold_usd": null
+        },
+        {
+          "record_date": "2000-05-31",
+          "tot_pub_debt_out_usd": 5647169888532.25,
+          "debt_held_public_usd": null,
+          "intragov_hold_usd": null
+        },
+        {
+          "record_date": "2000-06-30",
+          "tot_pub_debt_out_usd": 5685938087296.66,
+          "debt_held_public_usd": null,
+          "intragov_hold_usd": null
+        },
+        {
+          "record_date": "2000-07-31",
+          "tot_pub_debt_out_usd": 5658807449906.68,
+          "debt_held_public_usd": null,
+          "intragov_hold_usd": null
+        },
+        {
+          "record_date": "2000-08-31",
+          "tot_pub_debt_out_usd": 5677822307077.83,
+          "debt_held_public_usd": null,
+          "intragov_hold_usd": null
+        },
+        {
+          "record_date": "2000-09-29",
+          "tot_pub_debt_out_usd": 5674178209886.86,
+          "debt_held_public_usd": 3405303490221.2,
+          "intragov_hold_usd": 2268874719665.66
+        },
+        {
+          "record_date": "2000-10-31",
+          "tot_pub_debt_out_usd": 5657327531667.14,
+          "debt_held_public_usd": null,
+          "intragov_hold_usd": null
+        },
+        {
+          "record_date": "2000-11-30",
+          "tot_pub_debt_out_usd": 5709699281427.0,
+          "debt_held_public_usd": null,
+          "intragov_hold_usd": null
+        },
+        {
+          "record_date": "2000-12-29",
+          "tot_pub_debt_out_usd": 5662216013697.37,
+          "debt_held_public_usd": null,
+          "intragov_hold_usd": null
+        },
+        {
+          "record_date": "2001-01-31",
+          "tot_pub_debt_out_usd": 5716070587057.36,
+          "debt_held_public_usd": null,
+          "intragov_hold_usd": null
+        },
+        {
+          "record_date": "2001-02-28",
+          "tot_pub_debt_out_usd": 5735859380573.98,
+          "debt_held_public_usd": null,
+          "intragov_hold_usd": null
+        },
+        {
+          "record_date": "2001-03-30",
+          "tot_pub_debt_out_usd": 5773739949951.53,
+          "debt_held_public_usd": null,
+          "intragov_hold_usd": null
+        },
+        {
+          "record_date": "2001-04-30",
+          "tot_pub_debt_out_usd": 5661347798002.65,
+          "debt_held_public_usd": null,
+          "intragov_hold_usd": null
+        },
+        {
+          "record_date": "2001-05-31",
+          "tot_pub_debt_out_usd": 5656181958605.26,
+          "debt_held_public_usd": null,
+          "intragov_hold_usd": null
+        },
+        {
+          "record_date": "2001-06-29",
+          "tot_pub_debt_out_usd": 5726814835287.17,
+          "debt_held_public_usd": null,
+          "intragov_hold_usd": null
+        },
+        {
+          "record_date": "2001-07-31",
+          "tot_pub_debt_out_usd": 5718303095621.12,
+          "debt_held_public_usd": null,
+          "intragov_hold_usd": null
+        },
+        {
+          "record_date": "2001-08-31",
+          "tot_pub_debt_out_usd": 5769875781034.48,
+          "debt_held_public_usd": null,
+          "intragov_hold_usd": null
+        },
+        {
+          "record_date": "2001-09-28",
+          "tot_pub_debt_out_usd": 5807463412200.06,
+          "debt_held_public_usd": 3339310176094.74,
+          "intragov_hold_usd": 2468153236105.32
+        },
+        {
+          "record_date": "2001-10-31",
+          "tot_pub_debt_out_usd": 5815983290402.24,
+          "debt_held_public_usd": 3333039379996.92,
+          "intragov_hold_usd": 2482943910405.32
+        },
+        {
+          "record_date": "2001-11-30",
+          "tot_pub_debt_out_usd": 5888896887571.34,
+          "debt_held_public_usd": 3404026838038.17,
+          "intragov_hold_usd": 2484870049533.17
+        },
+        {
+          "record_date": "2001-12-31",
+          "tot_pub_debt_out_usd": 5943438563436.13,
+          "debt_held_public_usd": 3394398958213.6,
+          "intragov_hold_usd": 2549039605222.53
+        },
+        {
+          "record_date": "2002-01-31",
+          "tot_pub_debt_out_usd": 5937228743476.27,
+          "debt_held_public_usd": 3378924426706.66,
+          "intragov_hold_usd": 2558304316769.61
+        },
+        {
+          "record_date": "2002-02-28",
+          "tot_pub_debt_out_usd": 6003453016583.85,
+          "debt_held_public_usd": 3442243757040.41,
+          "intragov_hold_usd": 2561209259543.44
+        },
+        {
+          "record_date": "2002-03-29",
+          "tot_pub_debt_out_usd": 6006031606265.38,
+          "debt_held_public_usd": 3444137028277.33,
+          "intragov_hold_usd": 2561894577988.05
+        },
+        {
+          "record_date": "2002-04-30",
+          "tot_pub_debt_out_usd": 5984677357213.86,
+          "debt_held_public_usd": 3402336886067.7,
+          "intragov_hold_usd": 2582340471146.16
+        },
+        {
+          "record_date": "2002-05-31",
+          "tot_pub_debt_out_usd": 6019332312247.55,
+          "debt_held_public_usd": 3433836481390.91,
+          "intragov_hold_usd": 2585495830856.64
+        },
+        {
+          "record_date": "2002-06-28",
+          "tot_pub_debt_out_usd": 6126468760400.48,
+          "debt_held_public_usd": 3464147372780.82,
+          "intragov_hold_usd": 2662321387619.66
+        },
+        {
+          "record_date": "2002-07-31",
+          "tot_pub_debt_out_usd": 6159740790009.39,
+          "debt_held_public_usd": 3500451919732.42,
+          "intragov_hold_usd": 2659288870276.97
+        },
+        {
+          "record_date": "2002-08-30",
+          "tot_pub_debt_out_usd": 6210481675956.26,
+          "debt_held_public_usd": 3558276735685.63,
+          "intragov_hold_usd": 2652204940270.63
+        },
+        {
+          "record_date": "2002-09-30",
+          "tot_pub_debt_out_usd": 6228235965597.16,
+          "debt_held_public_usd": 3553180247874.74,
+          "intragov_hold_usd": 2675055717722.42
+        },
+        {
+          "record_date": "2002-10-31",
+          "tot_pub_debt_out_usd": 6282527974378.5,
+          "debt_held_public_usd": 3586523556148.57,
+          "intragov_hold_usd": 2696004418229.93
+        },
+        {
+          "record_date": "2002-11-29",
+          "tot_pub_debt_out_usd": 6343460146781.79,
+          "debt_held_public_usd": 3649352539575.36,
+          "intragov_hold_usd": 2694107607206.43
+        },
+        {
+          "record_date": "2002-12-31",
+          "tot_pub_debt_out_usd": 6405707456847.53,
+          "debt_held_public_usd": 3647939770383.73,
+          "intragov_hold_usd": 2757767686463.8
+        },
+        {
+          "record_date": "2003-01-31",
+          "tot_pub_debt_out_usd": 6401376662047.32,
+          "debt_held_public_usd": null,
+          "intragov_hold_usd": null
+        },
+        {
+          "record_date": "2003-02-28",
+          "tot_pub_debt_out_usd": 6445790102794.08,
+          "debt_held_public_usd": 3683888032284.53,
+          "intragov_hold_usd": 2761902070509.55
+        },
+        {
+          "record_date": "2003-03-31",
+          "tot_pub_debt_out_usd": 6460776256578.16,
+          "debt_held_public_usd": 3711311962399.17,
+          "intragov_hold_usd": 2749464294178.99
+        },
+        {
+          "record_date": "2003-04-30",
+          "tot_pub_debt_out_usd": 6460380745789.28,
+          "debt_held_public_usd": 3702844997678.07,
+          "intragov_hold_usd": 2757535748111.21
+        },
+        {
+          "record_date": "2003-05-30",
+          "tot_pub_debt_out_usd": 6558143157335.55,
+          "debt_held_public_usd": 3776618318157.35,
+          "intragov_hold_usd": 2781524839178.2
+        },
+        {
+          "record_date": "2003-06-30",
+          "tot_pub_debt_out_usd": 6670121155027.26,
+          "debt_held_public_usd": 3816831315563.84,
+          "intragov_hold_usd": 2853289839463.42
+        },
+        {
+          "record_date": "2003-07-31",
+          "tot_pub_debt_out_usd": 6751195107063.07,
+          "debt_held_public_usd": 3902893862015.02,
+          "intragov_hold_usd": 2848301245048.05
+        },
+        {
+          "record_date": "2003-08-29",
+          "tot_pub_debt_out_usd": 6790040713975.5,
+          "debt_held_public_usd": 3947859871672.16,
+          "intragov_hold_usd": 2842180842303.34
+        },
+        {
+          "record_date": "2003-09-30",
+          "tot_pub_debt_out_usd": 6783231062743.62,
+          "debt_held_public_usd": 3924090106880.88,
+          "intragov_hold_usd": 2859140955862.74
+        },
+        {
+          "record_date": "2003-10-31",
+          "tot_pub_debt_out_usd": 6872675839106.67,
+          "debt_held_public_usd": 3990508094197.53,
+          "intragov_hold_usd": 2882167744909.14
+        },
+        {
+          "record_date": "2003-11-28",
+          "tot_pub_debt_out_usd": 6925065499881.34,
+          "debt_held_public_usd": 4032904791048.37,
+          "intragov_hold_usd": 2892160708832.97
+        },
+        {
+          "record_date": "2003-12-31",
+          "tot_pub_debt_out_usd": 6997964247818.28,
+          "debt_held_public_usd": 4044243829239.6,
+          "intragov_hold_usd": 2953720418578.68
+        },
+        {
+          "record_date": "2004-01-30",
+          "tot_pub_debt_out_usd": 7009234605728.06,
+          "debt_held_public_usd": 4045200977014.69,
+          "intragov_hold_usd": 2964033628713.37
+        },
+        {
+          "record_date": "2004-02-27",
+          "tot_pub_debt_out_usd": 7091943110094.84,
+          "debt_held_public_usd": 4125593309304.13,
+          "intragov_hold_usd": 2966349800790.71
+        },
+        {
+          "record_date": "2004-03-31",
+          "tot_pub_debt_out_usd": 7131067950647.32,
+          "debt_held_public_usd": 4176873639108.95,
+          "intragov_hold_usd": 2954194311538.37
+        },
+        {
+          "record_date": "2004-04-30",
+          "tot_pub_debt_out_usd": 7133789490581.43,
+          "debt_held_public_usd": 4158978012936.35,
+          "intragov_hold_usd": 2974811477645.08
+        },
+        {
+          "record_date": "2004-05-28",
+          "tot_pub_debt_out_usd": 7196382805621.99,
+          "debt_held_public_usd": 4207088167467.45,
+          "intragov_hold_usd": 2989294638154.54
+        },
+        {
+          "record_date": "2004-06-30",
+          "tot_pub_debt_out_usd": 7274334972199.15,
+          "debt_held_public_usd": 4218910346556.86,
+          "intragov_hold_usd": 3055424625642.29
+        },
+        {
+          "record_date": "2004-07-30",
+          "tot_pub_debt_out_usd": 7316567571232.89,
+          "debt_held_public_usd": 4267913389239.04,
+          "intragov_hold_usd": 3048654181993.85
+        },
+        {
+          "record_date": "2004-08-31",
+          "tot_pub_debt_out_usd": 7350950234630.15,
+          "debt_held_public_usd": 4298491873263.92,
+          "intragov_hold_usd": 3052458361366.23
+        },
+        {
+          "record_date": "2004-09-30",
+          "tot_pub_debt_out_usd": 7379052696330.32,
+          "debt_held_public_usd": 4307344596908.92,
+          "intragov_hold_usd": 3071708099421.4
+        },
+        {
+          "record_date": "2004-10-29",
+          "tot_pub_debt_out_usd": 7429677448545.04,
+          "debt_held_public_usd": 4318485169426.38,
+          "intragov_hold_usd": 3111192279118.66
+        },
+        {
+          "record_date": "2004-11-30",
+          "tot_pub_debt_out_usd": 7525209508979.45,
+          "debt_held_public_usd": 4407906685920.48,
+          "intragov_hold_usd": 3117302823058.97
+        },
+        {
+          "record_date": "2004-12-31",
+          "tot_pub_debt_out_usd": 7596142802424.14,
+          "debt_held_public_usd": 4408389327642.95,
+          "intragov_hold_usd": 3187753474781.19
+        },
+        {
+          "record_date": "2005-01-31",
+          "tot_pub_debt_out_usd": 7627742597775.41,
+          "debt_held_public_usd": 4428221052835.58,
+          "intragov_hold_usd": 3199521544939.83
+        },
+        {
+          "record_date": "2005-02-28",
+          "tot_pub_debt_out_usd": 7713137673664.71,
+          "debt_held_public_usd": 4508287643340.95,
+          "intragov_hold_usd": 3204850030323.76
+        },
+        {
+          "record_date": "2005-03-31",
+          "tot_pub_debt_out_usd": 7776939047670.14,
+          "debt_held_public_usd": 4572715640119.2,
+          "intragov_hold_usd": 3204223407550.94
+        },
+        {
+          "record_date": "2005-04-29",
+          "tot_pub_debt_out_usd": 7764537337364.14,
+          "debt_held_public_usd": 4551064845424.92,
+          "intragov_hold_usd": 3213472491939.22
+        },
+        {
+          "record_date": "2005-05-31",
+          "tot_pub_debt_out_usd": 7777880152594.89,
+          "debt_held_public_usd": 4542377939314.92,
+          "intragov_hold_usd": 3235502213279.97
+        },
+        {
+          "record_date": "2005-06-30",
+          "tot_pub_debt_out_usd": 7836495788085.86,
+          "debt_held_public_usd": 4527696944757.64,
+          "intragov_hold_usd": 3308798843328.22
+        },
+        {
+          "record_date": "2005-07-29",
+          "tot_pub_debt_out_usd": 7887617581195.58,
+          "debt_held_public_usd": 4580783743975.33,
+          "intragov_hold_usd": 3306833837220.25
+        },
+        {
+          "record_date": "2005-08-31",
+          "tot_pub_debt_out_usd": 7926933374544.81,
+          "debt_held_public_usd": 4614279354560.18,
+          "intragov_hold_usd": 3312654019984.63
+        },
+        {
+          "record_date": "2005-09-30",
+          "tot_pub_debt_out_usd": 7932709661723.5,
+          "debt_held_public_usd": 4601238726062.04,
+          "intragov_hold_usd": 3331470935661.46
+        },
+        {
+          "record_date": "2005-10-31",
+          "tot_pub_debt_out_usd": 8027123404214.36,
+          "debt_held_public_usd": 4650516371930.66,
+          "intragov_hold_usd": 3376607032283.7
+        },
+        {
+          "record_date": "2005-11-30",
+          "tot_pub_debt_out_usd": 8092322205720.65,
+          "debt_held_public_usd": 4709402951558.77,
+          "intragov_hold_usd": 3382919254161.88
+        },
+        {
+          "record_date": "2005-12-30",
+          "tot_pub_debt_out_usd": 8170424541313.62,
+          "debt_held_public_usd": 4714821211003.33,
+          "intragov_hold_usd": 3455603330310.29
+        },
+        {
+          "record_date": "2006-01-31",
+          "tot_pub_debt_out_usd": 8196070437599.52,
+          "debt_held_public_usd": 4724637490626.8,
+          "intragov_hold_usd": 3471432946972.72
+        },
+        {
+          "record_date": "2006-02-28",
+          "tot_pub_debt_out_usd": 8269885515386.04,
+          "debt_held_public_usd": 4771117050096.0,
+          "intragov_hold_usd": 3498768465290.04
+        },
+        {
+          "record_date": "2006-03-31",
+          "tot_pub_debt_out_usd": 8371156293376.33,
+          "debt_held_public_usd": 4872484731241.19,
+          "intragov_hold_usd": 3498671562135.14
+        },
+        {
+          "record_date": "2006-04-28",
+          "tot_pub_debt_out_usd": 8355718074718.49,
+          "debt_held_public_usd": 4819948752057.74,
+          "intragov_hold_usd": 3535769322660.75
+        },
+        {
+          "record_date": "2006-05-31",
+          "tot_pub_debt_out_usd": 8356776604649.14,
+          "debt_held_public_usd": 4807516533937.29,
+          "intragov_hold_usd": 3549260070711.85
+        },
+        {
+          "record_date": "2006-06-30",
+          "tot_pub_debt_out_usd": 8420041947892.19,
+          "debt_held_public_usd": 4797203565138.78,
+          "intragov_hold_usd": 3622838382753.41
+        },
+        {
+          "record_date": "2006-07-31",
+          "tot_pub_debt_out_usd": 8444346806853.08,
+          "debt_held_public_usd": 4819732427280.7,
+          "intragov_hold_usd": 3624614379572.38
+        },
+        {
+          "record_date": "2006-08-31",
+          "tot_pub_debt_out_usd": 8515033652079.62,
+          "debt_held_public_usd": 4884685325020.02,
+          "intragov_hold_usd": 3630348327059.6
+        },
+        {
+          "record_date": "2006-09-29",
+          "tot_pub_debt_out_usd": 8506973899215.23,
+          "debt_held_public_usd": 4843120736192.43,
+          "intragov_hold_usd": 3663853163022.8
+        },
+        {
+          "record_date": "2006-10-31",
+          "tot_pub_debt_out_usd": 8584329355565.37,
+          "debt_held_public_usd": 4880611427682.72,
+          "intragov_hold_usd": 3703717927882.65
+        },
+        {
+          "record_date": "2006-11-30",
+          "tot_pub_debt_out_usd": 8633245608345.17,
+          "debt_held_public_usd": 4929567181031.48,
+          "intragov_hold_usd": 3703678427313.69
+        },
+        {
+          "record_date": "2006-12-29",
+          "tot_pub_debt_out_usd": 8680224380086.18,
+          "debt_held_public_usd": 4901046516367.78,
+          "intragov_hold_usd": 3779177863718.4
+        },
+        {
+          "record_date": "2007-01-31",
+          "tot_pub_debt_out_usd": 8707561063967.12,
+          "debt_held_public_usd": 4913960890707.78,
+          "intragov_hold_usd": 3793600173259.34
+        },
+        {
+          "record_date": "2007-02-28",
+          "tot_pub_debt_out_usd": 8778110896597.94,
+          "debt_held_public_usd": 4979111025291.64,
+          "intragov_hold_usd": 3798999871306.3
+        },
+        {
+          "record_date": "2007-03-30",
+          "tot_pub_debt_out_usd": 8849665208495.43,
+          "debt_held_public_usd": 5053940043633.51,
+          "intragov_hold_usd": 3795725164861.92
+        },
+        {
+          "record_date": "2007-04-30",
+          "tot_pub_debt_out_usd": 8840168384430.83,
+          "debt_held_public_usd": 5007058051986.64,
+          "intragov_hold_usd": 3833110332444.19
+        },
+        {
+          "record_date": "2007-05-31",
+          "tot_pub_debt_out_usd": 8828992459660.72,
+          "debt_held_public_usd": 4980871453801.81,
+          "intragov_hold_usd": 3848121005858.91
+        },
+        {
+          "record_date": "2007-06-29",
+          "tot_pub_debt_out_usd": 8867675276751.65,
+          "debt_held_public_usd": 4943089820238.26,
+          "intragov_hold_usd": 3924585456513.39
+        },
+        {
+          "record_date": "2007-07-31",
+          "tot_pub_debt_out_usd": 8932438299899.54,
+          "debt_held_public_usd": 5003716733048.46,
+          "intragov_hold_usd": 3928721566851.08
+        },
+        {
+          "record_date": "2007-08-31",
+          "tot_pub_debt_out_usd": 9005648561262.7,
+          "debt_held_public_usd": 5096938116500.6,
+          "intragov_hold_usd": 3908710444762.1
+        },
+        {
+          "record_date": "2007-09-28",
+          "tot_pub_debt_out_usd": 9007653372262.48,
+          "debt_held_public_usd": 5049305502926.48,
+          "intragov_hold_usd": 3958347869336.0
+        },
+        {
+          "record_date": "2007-10-31",
+          "tot_pub_debt_out_usd": 9079086185866.28,
+          "debt_held_public_usd": 5067078546655.56,
+          "intragov_hold_usd": 4012007639210.72
+        },
+        {
+          "record_date": "2007-11-30",
+          "tot_pub_debt_out_usd": 9149341364936.71,
+          "debt_held_public_usd": 5146579494448.64,
+          "intragov_hold_usd": 4002761870488.07
+        },
+        {
+          "record_date": "2007-12-31",
+          "tot_pub_debt_out_usd": 9229172659218.31,
+          "debt_held_public_usd": 5136302727072.67,
+          "intragov_hold_usd": 4092869932145.64
+        },
+        {
+          "record_date": "2008-01-31",
+          "tot_pub_debt_out_usd": 9238008288942.11,
+          "debt_held_public_usd": 5132265067831.71,
+          "intragov_hold_usd": 4105743221110.4
+        },
+        {
+          "record_date": "2008-02-29",
+          "tot_pub_debt_out_usd": 9358051423747.64,
+          "debt_held_public_usd": 5259804376714.62,
+          "intragov_hold_usd": 4098247047033.02
+        },
+        {
+          "record_date": "2008-03-31",
+          "tot_pub_debt_out_usd": 9437594138091.39,
+          "debt_held_public_usd": 5334115575742.88,
+          "intragov_hold_usd": 4103478562348.51
+        },
+        {
+          "record_date": "2008-04-30",
+          "tot_pub_debt_out_usd": 9377557217133.44,
+          "debt_held_public_usd": 5244194578964.17,
+          "intragov_hold_usd": 4133362638169.27
+        },
+        {
+          "record_date": "2008-05-30",
+          "tot_pub_debt_out_usd": 9388666879582.79,
+          "debt_held_public_usd": 5278567329795.98,
+          "intragov_hold_usd": 4110099549786.81
+        },
+        {
+          "record_date": "2008-06-30",
+          "tot_pub_debt_out_usd": 9492006123003.8,
+          "debt_held_public_usd": 5285063693378.25,
+          "intragov_hold_usd": 4206942429625.55
+        },
+        {
+          "record_date": "2008-07-31",
+          "tot_pub_debt_out_usd": 9585479639200.33,
+          "debt_held_public_usd": 5403381951775.03,
+          "intragov_hold_usd": 4182097687425.3
+        },
+        {
+          "record_date": "2008-08-29",
+          "tot_pub_debt_out_usd": 9645725555640.02,
+          "debt_held_public_usd": 5479100086662.1,
+          "intragov_hold_usd": 4166625468977.92
+        },
+        {
+          "record_date": "2008-09-30",
+          "tot_pub_debt_out_usd": 10024724896912.49,
+          "debt_held_public_usd": 5808691665403.71,
+          "intragov_hold_usd": 4216033231508.78
+        },
+        {
+          "record_date": "2008-10-31",
+          "tot_pub_debt_out_usd": 10574094462968.23,
+          "debt_held_public_usd": 6302793747598.97,
+          "intragov_hold_usd": 4271300715369.26
+        },
+        {
+          "record_date": "2008-11-28",
+          "tot_pub_debt_out_usd": 10661174903807.68,
+          "debt_held_public_usd": 6396590860569.49,
+          "intragov_hold_usd": 4264584043238.19
+        },
+        {
+          "record_date": "2008-12-31",
+          "tot_pub_debt_out_usd": 10699804864612.13,
+          "debt_held_public_usd": 6369318869476.54,
+          "intragov_hold_usd": 4330485995135.59
+        },
+        {
+          "record_date": "2009-01-30",
+          "tot_pub_debt_out_usd": 10632005246736.97,
+          "debt_held_public_usd": 6317224182633.94,
+          "intragov_hold_usd": 4314781064103.03
+        },
+        {
+          "record_date": "2009-02-27",
+          "tot_pub_debt_out_usd": 10877144501237.52,
+          "debt_held_public_usd": 6579162708614.6,
+          "intragov_hold_usd": 4297981792622.92
+        },
+        {
+          "record_date": "2009-03-31",
+          "tot_pub_debt_out_usd": 11126941485713.37,
+          "debt_held_public_usd": 6833543454712.9,
+          "intragov_hold_usd": 4293398031000.47
+        },
+        {
+          "record_date": "2009-04-30",
+          "tot_pub_debt_out_usd": 11238592141958.64,
+          "debt_held_public_usd": 6930824942975.56,
+          "intragov_hold_usd": 4307767198983.08
+        },
+        {
+          "record_date": "2009-05-29",
+          "tot_pub_debt_out_usd": 11321599905356.4,
+          "debt_held_public_usd": 7019321525525.25,
+          "intragov_hold_usd": 4302278379831.15
+        },
+        {
+          "record_date": "2009-06-30",
+          "tot_pub_debt_out_usd": 11545275346431.39,
+          "debt_held_public_usd": 7174912385059.26,
+          "intragov_hold_usd": 4370362961372.13
+        },
+        {
+          "record_date": "2009-07-31",
+          "tot_pub_debt_out_usd": 11669251349504.65,
+          "debt_held_public_usd": 7335573300422.11,
+          "intragov_hold_usd": 4333678049082.54
+        },
+        {
+          "record_date": "2009-08-31",
+          "tot_pub_debt_out_usd": 11812870150873.53,
+          "debt_held_public_usd": 7484144701889.34,
+          "intragov_hold_usd": 4328725448984.19
+        },
+        {
+          "record_date": "2009-09-30",
+          "tot_pub_debt_out_usd": 11909829003511.75,
+          "debt_held_public_usd": 7551861558736.77,
+          "intragov_hold_usd": 4357967444774.98
+        },
+        {
+          "record_date": "2009-10-30",
+          "tot_pub_debt_out_usd": 11893091028361.01,
+          "debt_held_public_usd": 7487886930552.47,
+          "intragov_hold_usd": 4405204097808.54
+        },
+        {
+          "record_date": "2009-11-30",
+          "tot_pub_debt_out_usd": 12113047538115.42,
+          "debt_held_public_usd": 7712387187111.25,
+          "intragov_hold_usd": 4400660351004.17
+        },
+        {
+          "record_date": "2009-12-31",
+          "tot_pub_debt_out_usd": 12311349677512.03,
+          "debt_held_public_usd": 7811008785487.3,
+          "intragov_hold_usd": 4500340892024.73
+        },
+        {
+          "record_date": "2010-01-29",
+          "tot_pub_debt_out_usd": 12278635997966.88,
+          "debt_held_public_usd": 7759490293035.97,
+          "intragov_hold_usd": 4519145704930.91
+        },
+        {
+          "record_date": "2010-02-26",
+          "tot_pub_debt_out_usd": 12440068020714.47,
+          "debt_held_public_usd": 7936671001094.13,
+          "intragov_hold_usd": 4503397019620.34
+        },
+        {
+          "record_date": "2010-03-31",
+          "tot_pub_debt_out_usd": 12773123096139.43,
+          "debt_held_public_usd": 8290068831046.49,
+          "intragov_hold_usd": 4483054265092.94
+        },
+        {
+          "record_date": "2010-04-30",
+          "tot_pub_debt_out_usd": 12948738915856.86,
+          "debt_held_public_usd": 8434434625613.16,
+          "intragov_hold_usd": 4514304290243.7
+        },
+        {
+          "record_date": "2010-05-28",
+          "tot_pub_debt_out_usd": 12992539130957.22,
+          "debt_held_public_usd": 8494419432586.19,
+          "intragov_hold_usd": 4498119698371.03
+        },
+        {
+          "record_date": "2010-06-30",
+          "tot_pub_debt_out_usd": 13203473753968.1,
+          "debt_held_public_usd": 8633680393089.93,
+          "intragov_hold_usd": 4569793360878.17
+        },
+        {
+          "record_date": "2010-07-30",
+          "tot_pub_debt_out_usd": 13237726976890.03,
+          "debt_held_public_usd": 8702457766405.64,
+          "intragov_hold_usd": 4535269210484.39
+        },
+        {
+          "record_date": "2010-08-31",
+          "tot_pub_debt_out_usd": 13449652537035.05,
+          "debt_held_public_usd": 8927061238060.48,
+          "intragov_hold_usd": 4522591298974.57
+        },
+        {
+          "record_date": "2010-09-30",
+          "tot_pub_debt_out_usd": 13561623030891.79,
+          "debt_held_public_usd": 9022808423453.08,
+          "intragov_hold_usd": 4538814607438.71
+        },
+        {
+          "record_date": "2010-10-29",
+          "tot_pub_debt_out_usd": 13668825497341.36,
+          "debt_held_public_usd": 9069879047803.52,
+          "intragov_hold_usd": 4598946449537.84
+        },
+        {
+          "record_date": "2010-11-30",
+          "tot_pub_debt_out_usd": 13860773759018.43,
+          "debt_held_public_usd": 9275024690843.88,
+          "intragov_hold_usd": 4585749068174.55
+        },
+        {
+          "record_date": "2010-12-31",
+          "tot_pub_debt_out_usd": 14025215218708.52,
+          "debt_held_public_usd": 9390476088043.35,
+          "intragov_hold_usd": 4634739130665.17
+        },
+        {
+          "record_date": "2011-01-31",
+          "tot_pub_debt_out_usd": 14131051056010.84,
+          "debt_held_public_usd": 9485416860164.29,
+          "intragov_hold_usd": 4645634195846.55
+        },
+        {
+          "record_date": "2011-02-28",
+          "tot_pub_debt_out_usd": 14194764339462.64,
+          "debt_held_public_usd": 9565541417510.14,
+          "intragov_hold_usd": 4629222921952.5
+        },
+        {
+          "record_date": "2011-03-31",
+          "tot_pub_debt_out_usd": 14270114530800.38,
+          "debt_held_public_usd": 9651643154138.73,
+          "intragov_hold_usd": 4618471376661.65
+        },
+        {
+          "record_date": "2011-04-29",
+          "tot_pub_debt_out_usd": 14287630052323.12,
+          "debt_held_public_usd": 9654950165830.41,
+          "intragov_hold_usd": 4632679886492.71
+        },
+        {
+          "record_date": "2011-05-31",
+          "tot_pub_debt_out_usd": 14344668281211.01,
+          "debt_held_public_usd": 9723456023743.74,
+          "intragov_hold_usd": 4621212257467.27
+        },
+        {
+          "record_date": "2011-06-30",
+          "tot_pub_debt_out_usd": 14343087640008.4,
+          "debt_held_public_usd": 9742223364846.58,
+          "intragov_hold_usd": 4600864275161.82
+        },
+        {
+          "record_date": "2011-07-29",
+          "tot_pub_debt_out_usd": 14342369286195.61,
+          "debt_held_public_usd": 9755795681448.82,
+          "intragov_hold_usd": 4586573604746.79
+        },
+        {
+          "record_date": "2011-08-31",
+          "tot_pub_debt_out_usd": 14684292994743.93,
+          "debt_held_public_usd": 10024253354407.07,
+          "intragov_hold_usd": 4660039640336.86
+        },
+        {
+          "record_date": "2011-09-30",
+          "tot_pub_debt_out_usd": 14790340328557.15,
+          "debt_held_public_usd": 10127031384654.1,
+          "intragov_hold_usd": 4663308943903.05
+        },
+        {
+          "record_date": "2011-10-31",
+          "tot_pub_debt_out_usd": 14993709044140.78,
+          "debt_held_public_usd": 10256015431383.46,
+          "intragov_hold_usd": 4737693612757.32
+        },
+        {
+          "record_date": "2011-11-30",
+          "tot_pub_debt_out_usd": 15110498560876.77,
+          "debt_held_public_usd": 10389957793202.05,
+          "intragov_hold_usd": 4720540767674.72
+        },
+        {
+          "record_date": "2011-12-30",
+          "tot_pub_debt_out_usd": 15222940045451.09,
+          "debt_held_public_usd": 10447662851807.15,
+          "intragov_hold_usd": 4775277193643.94
+        },
+        {
+          "record_date": "2012-01-31",
+          "tot_pub_debt_out_usd": 15356140493616.06,
+          "debt_held_public_usd": 10572374387699.06,
+          "intragov_hold_usd": 4783766105917.0
+        },
+        {
+          "record_date": "2012-02-29",
+          "tot_pub_debt_out_usd": 15488891296248.02,
+          "debt_held_public_usd": 10722996298868.22,
+          "intragov_hold_usd": 4765894997379.8
+        },
+        {
+          "record_date": "2012-03-30",
+          "tot_pub_debt_out_usd": 15582078681188.69,
+          "debt_held_public_usd": 10846824546943.15,
+          "intragov_hold_usd": 4735254134245.54
+        },
+        {
+          "record_date": "2012-04-30",
+          "tot_pub_debt_out_usd": 15692368067305.23,
+          "debt_held_public_usd": 10916070898102.68,
+          "intragov_hold_usd": 4776297169202.55
+        },
+        {
+          "record_date": "2012-05-31",
+          "tot_pub_debt_out_usd": 15770685085364.14,
+          "debt_held_public_usd": 11006251094374.26,
+          "intragov_hold_usd": 4764433990989.88
+        },
+        {
+          "record_date": "2012-06-29",
+          "tot_pub_debt_out_usd": 15856367214324.44,
+          "debt_held_public_usd": 11044184844611.66,
+          "intragov_hold_usd": 4812182369712.78
+        },
+        {
+          "record_date": "2012-07-31",
+          "tot_pub_debt_out_usd": 15933234637493.55,
+          "debt_held_public_usd": 11122281549948.22,
+          "intragov_hold_usd": 4810953087545.33
+        },
+        {
+          "record_date": "2012-08-31",
+          "tot_pub_debt_out_usd": 16015769788215.8,
+          "debt_held_public_usd": 11272625663662.57,
+          "intragov_hold_usd": 4743144124553.23
+        },
+        {
+          "record_date": "2012-09-28",
+          "tot_pub_debt_out_usd": 16066241407385.89,
+          "debt_held_public_usd": 11269585800039.32,
+          "intragov_hold_usd": 4796655607346.57
+        },
+        {
+          "record_date": "2012-10-31",
+          "tot_pub_debt_out_usd": 16261470510720.74,
+          "debt_held_public_usd": 11411598060978.54,
+          "intragov_hold_usd": 4849872449742.2
+        },
+        {
+          "record_date": "2012-11-30",
+          "tot_pub_debt_out_usd": 16369548799604.93,
+          "debt_held_public_usd": 11553200614797.95,
+          "intragov_hold_usd": 4816348184806.98
+        },
+        {
+          "record_date": "2012-12-31",
+          "tot_pub_debt_out_usd": 16432730050569.12,
+          "debt_held_public_usd": 11581517550395.07,
+          "intragov_hold_usd": 4851212500174.05
+        },
+        {
+          "record_date": "2013-01-31",
+          "tot_pub_debt_out_usd": 16433791850294.04,
+          "debt_held_public_usd": 11560175568531.63,
+          "intragov_hold_usd": 4873616281762.41
+        },
+        {
+          "record_date": "2013-02-28",
+          "tot_pub_debt_out_usd": 16687289180215.37,
+          "debt_held_public_usd": 11822436182671.08,
+          "intragov_hold_usd": 4864852997544.29
+        },
+        {
+          "record_date": "2013-03-29",
+          "tot_pub_debt_out_usd": 16771379006760.38,
+          "debt_held_public_usd": 11916887638498.36,
+          "intragov_hold_usd": 4854491368262.02
+        },
+        {
+          "record_date": "2013-04-30",
+          "tot_pub_debt_out_usd": 16828845497183.9,
+          "debt_held_public_usd": 11943148398205.65,
+          "intragov_hold_usd": 4885697098978.25
+        },
+        {
+          "record_date": "2013-05-31",
+          "tot_pub_debt_out_usd": 16738821943986.12,
+          "debt_held_public_usd": 11897150711173.54,
+          "intragov_hold_usd": 4841671232812.58
+        },
+        {
+          "record_date": "2013-06-28",
+          "tot_pub_debt_out_usd": 16738320054489.27,
+          "debt_held_public_usd": 11901292256124.39,
+          "intragov_hold_usd": 4837027798364.88
+        },
+        {
+          "record_date": "2013-07-31",
+          "tot_pub_debt_out_usd": 16738599194294.87,
+          "debt_held_public_usd": 11917023270880.15,
+          "intragov_hold_usd": 4821575923414.72
+        },
+        {
+          "record_date": "2013-08-30",
+          "tot_pub_debt_out_usd": 16738649841392.7,
+          "debt_held_public_usd": 11967014240420.23,
+          "intragov_hold_usd": 4771635600972.47
+        },
+        {
+          "record_date": "2013-09-30",
+          "tot_pub_debt_out_usd": 16738183526697.32,
+          "debt_held_public_usd": 11976279236073.83,
+          "intragov_hold_usd": 4761904290623.49
+        },
+        {
+          "record_date": "2013-10-31",
+          "tot_pub_debt_out_usd": 17156117102204.49,
+          "debt_held_public_usd": 12187369856433.22,
+          "intragov_hold_usd": 4968747245771.27
+        },
+        {
+          "record_date": "2013-11-29",
+          "tot_pub_debt_out_usd": 17217151645105.86,
+          "debt_held_public_usd": 12281126257987.08,
+          "intragov_hold_usd": 4936025387118.78
+        },
+        {
+          "record_date": "2013-12-31",
+          "tot_pub_debt_out_usd": 17351970784950.15,
+          "debt_held_public_usd": 12355426523284.55,
+          "intragov_hold_usd": 4996544261665.6
+        },
+        {
+          "record_date": "2014-01-31",
+          "tot_pub_debt_out_usd": 17293019654983.61,
+          "debt_held_public_usd": 12308142849415.81,
+          "intragov_hold_usd": 4984876805567.8
+        },
+        {
+          "record_date": "2014-02-28",
+          "tot_pub_debt_out_usd": 17463228562652.94,
+          "debt_held_public_usd": 12492549870567.82,
+          "intragov_hold_usd": 4970678692085.12
+        },
+        {
+          "record_date": "2014-03-31",
+          "tot_pub_debt_out_usd": 17601227291213.89,
+          "debt_held_public_usd": 12619319113193.99,
+          "intragov_hold_usd": 4981908178019.9
+        },
+        {
+          "record_date": "2014-04-30",
+          "tot_pub_debt_out_usd": 17508437127661.62,
+          "debt_held_public_usd": 12503468335518.28,
+          "intragov_hold_usd": 5004968792143.34
+        },
+        {
+          "record_date": "2014-05-30",
+          "tot_pub_debt_out_usd": 17516958495107.78,
+          "debt_held_public_usd": 12538030396095.88,
+          "intragov_hold_usd": 4978928099011.9
+        },
+        {
+          "record_date": "2014-06-30",
+          "tot_pub_debt_out_usd": 17632606234365.92,
+          "debt_held_public_usd": 12572219622017.57,
+          "intragov_hold_usd": 5060386612348.35
+        },
+        {
+          "record_date": "2014-07-31",
+          "tot_pub_debt_out_usd": 17687136723410.59,
+          "debt_held_public_usd": 12651478122995.52,
+          "intragov_hold_usd": 5035658600415.07
+        },
+        {
+          "record_date": "2014-08-29",
+          "tot_pub_debt_out_usd": 17749172392528.1,
+          "debt_held_public_usd": 12732611644765.48,
+          "intragov_hold_usd": 5016560747762.62
+        },
+        {
+          "record_date": "2014-09-30",
+          "tot_pub_debt_out_usd": 17824071380733.82,
+          "debt_held_public_usd": 12784971238978.02,
+          "intragov_hold_usd": 5039100141755.8
+        },
+        {
+          "record_date": "2014-10-31",
+          "tot_pub_debt_out_usd": 17937160394872.6,
+          "debt_held_public_usd": 12857056287256.22,
+          "intragov_hold_usd": 5080104107616.38
+        },
+        {
+          "record_date": "2014-11-28",
+          "tot_pub_debt_out_usd": 18005549328561.45,
+          "debt_held_public_usd": 12922681725432.94,
+          "intragov_hold_usd": 5082867603128.51
+        },
+        {
+          "record_date": "2014-12-31",
+          "tot_pub_debt_out_usd": 18141444135563.3,
+          "debt_held_public_usd": 13023951380768.58,
+          "intragov_hold_usd": 5117492754794.72
+        },
+        {
+          "record_date": "2015-01-30",
+          "tot_pub_debt_out_usd": 18082294157510.2,
+          "debt_held_public_usd": 12984930426312.84,
+          "intragov_hold_usd": 5097363731197.36
+        },
+        {
+          "record_date": "2015-02-27",
+          "tot_pub_debt_out_usd": 18155853840783.67,
+          "debt_held_public_usd": 13074036284486.1,
+          "intragov_hold_usd": 5081817556297.57
+        },
+        {
+          "record_date": "2015-03-31",
+          "tot_pub_debt_out_usd": 18152056197489.27,
+          "debt_held_public_usd": 13090399293659.46,
+          "intragov_hold_usd": 5061656903829.81
+        },
+        {
+          "record_date": "2015-04-30",
+          "tot_pub_debt_out_usd": 18152560126787.71,
+          "debt_held_public_usd": 13053681247951.16,
+          "intragov_hold_usd": 5098878878836.55
+        },
+        {
+          "record_date": "2015-05-29",
+          "tot_pub_debt_out_usd": 18152851678150.27,
+          "debt_held_public_usd": 13052706400435.71,
+          "intragov_hold_usd": 5100145277714.56
+        },
+        {
+          "record_date": "2015-06-30",
+          "tot_pub_debt_out_usd": 18151997510872.44,
+          "debt_held_public_usd": 13076414145360.92,
+          "intragov_hold_usd": 5075583365511.52
+        },
+        {
+          "record_date": "2015-07-31",
+          "tot_pub_debt_out_usd": 18151322549156.91,
+          "debt_held_public_usd": 13135044925569.77,
+          "intragov_hold_usd": 5016277623587.14
+        },
+        {
+          "record_date": "2015-08-31",
+          "tot_pub_debt_out_usd": 18151150179588.05,
+          "debt_held_public_usd": 13119752728787.69,
+          "intragov_hold_usd": 5031397450800.36
+        },
+        {
+          "record_date": "2015-09-30",
+          "tot_pub_debt_out_usd": 18150617666484.33,
+          "debt_held_public_usd": 13123847198347.81,
+          "intragov_hold_usd": 5026770468136.52
+        },
+        {
+          "record_date": "2015-10-30",
+          "tot_pub_debt_out_usd": 18152981685747.52,
+          "debt_held_public_usd": 13060656874967.53,
+          "intragov_hold_usd": 5092324810779.99
+        },
+        {
+          "record_date": "2015-11-30",
+          "tot_pub_debt_out_usd": 18827322966908.8,
+          "debt_held_public_usd": 13588988502149.66,
+          "intragov_hold_usd": 5238334464759.14
+        },
+        {
+          "record_date": "2015-12-31",
+          "tot_pub_debt_out_usd": 18922179009420.89,
+          "debt_held_public_usd": 13672522257291.59,
+          "intragov_hold_usd": 5249656752129.3
+        },
+        {
+          "record_date": "2016-01-29",
+          "tot_pub_debt_out_usd": 19012827698417.93,
+          "debt_held_public_usd": 13657155197715.49,
+          "intragov_hold_usd": 5355672500702.44
+        },
+        {
+          "record_date": "2016-02-29",
+          "tot_pub_debt_out_usd": 19125455057425.8,
+          "debt_held_public_usd": 13785189234310.03,
+          "intragov_hold_usd": 5340265823115.77
+        },
+        {
+          "record_date": "2016-03-31",
+          "tot_pub_debt_out_usd": 19264938619643.07,
+          "debt_held_public_usd": 13924877638956.82,
+          "intragov_hold_usd": 5340060980686.25
+        },
+        {
+          "record_date": "2016-04-29",
+          "tot_pub_debt_out_usd": 19187387483983.37,
+          "debt_held_public_usd": 13841194733299.04,
+          "intragov_hold_usd": 5346192750684.33
+        },
+        {
+          "record_date": "2016-05-31",
+          "tot_pub_debt_out_usd": 19265451572330.71,
+          "debt_held_public_usd": 13886302639366.64,
+          "intragov_hold_usd": 5379148932964.07
+        },
+        {
+          "record_date": "2016-06-30",
+          "tot_pub_debt_out_usd": 19381591140792.22,
+          "debt_held_public_usd": 13932742716540.43,
+          "intragov_hold_usd": 5448848424251.79
+        },
+        {
+          "record_date": "2016-07-29",
+          "tot_pub_debt_out_usd": 19427694579786.64,
+          "debt_held_public_usd": 13998219609725.92,
+          "intragov_hold_usd": 5429474970060.72
+        },
+        {
+          "record_date": "2016-08-31",
+          "tot_pub_debt_out_usd": 19510296242765.66,
+          "debt_held_public_usd": 14104113716888.75,
+          "intragov_hold_usd": 5406182525876.91
+        },
+        {
+          "record_date": "2016-09-30",
+          "tot_pub_debt_out_usd": 19573444713936.79,
+          "debt_held_public_usd": 14173423516895.82,
+          "intragov_hold_usd": 5400021197040.97
+        },
+        {
+          "record_date": "2016-10-31",
+          "tot_pub_debt_out_usd": 19805715214641.75,
+          "debt_held_public_usd": 14286500538390.57,
+          "intragov_hold_usd": 5519214676251.18
+        },
+        {
+          "record_date": "2016-11-30",
+          "tot_pub_debt_out_usd": 19948064697245.75,
+          "debt_held_public_usd": 14443700147858.19,
+          "intragov_hold_usd": 5504364549387.56
+        },
+        {
+          "record_date": "2016-12-30",
+          "tot_pub_debt_out_usd": 19976826951047.8,
+          "debt_held_public_usd": 14434841520928.37,
+          "intragov_hold_usd": 5541985430119.43
+        },
+        {
+          "record_date": "2017-01-31",
+          "tot_pub_debt_out_usd": 19937261314503.29,
+          "debt_held_public_usd": 14376138803534.81,
+          "intragov_hold_usd": 5561122510968.48
+        },
+        {
+          "record_date": "2017-02-28",
+          "tot_pub_debt_out_usd": 19959593604841.58,
+          "debt_held_public_usd": 14411380938688.54,
+          "intragov_hold_usd": 5548212666153.04
+        },
+        {
+          "record_date": "2017-03-31",
+          "tot_pub_debt_out_usd": 19846420062676.87,
+          "debt_held_public_usd": 14369681939302.91,
+          "intragov_hold_usd": 5476738123373.96
+        },
+        {
+          "record_date": "2017-04-28",
+          "tot_pub_debt_out_usd": 19846129308635.72,
+          "debt_held_public_usd": 14293344777463.61,
+          "intragov_hold_usd": 5552784531172.11
+        },
+        {
+          "record_date": "2017-05-31",
+          "tot_pub_debt_out_usd": 19845941916894.67,
+          "debt_held_public_usd": 14298976496221.59,
+          "intragov_hold_usd": 5546965420673.08
+        },
+        {
+          "record_date": "2017-06-30",
+          "tot_pub_debt_out_usd": 19844554182651.33,
+          "debt_held_public_usd": 14366186344565.7,
+          "intragov_hold_usd": 5478367838085.63
+        },
+        {
+          "record_date": "2017-07-31",
+          "tot_pub_debt_out_usd": 19844908989217.09,
+          "debt_held_public_usd": 14360944436689.72,
+          "intragov_hold_usd": 5483964552527.37
+        },
+        {
+          "record_date": "2017-08-31",
+          "tot_pub_debt_out_usd": 19844533441924.39,
+          "debt_held_public_usd": 14381561995497.24,
+          "intragov_hold_usd": 5462971446427.15
+        },
+        {
+          "record_date": "2017-09-29",
+          "tot_pub_debt_out_usd": 20244900016053.51,
+          "debt_held_public_usd": 14673428663140.94,
+          "intragov_hold_usd": 5571471352912.57
+        },
+        {
+          "record_date": "2017-10-31",
+          "tot_pub_debt_out_usd": 20442473549889.39,
+          "debt_held_public_usd": 14751446096800.09,
+          "intragov_hold_usd": 5691027453089.3
+        },
+        {
+          "record_date": "2017-11-30",
+          "tot_pub_debt_out_usd": 20590391942312.26,
+          "debt_held_public_usd": 14918713237390.02,
+          "intragov_hold_usd": 5671678704922.24
+        },
+        {
+          "record_date": "2017-12-29",
+          "tot_pub_debt_out_usd": 20492746546193.75,
+          "debt_held_public_usd": 14814721127803.77,
+          "intragov_hold_usd": 5678025418389.98
+        },
+        {
+          "record_date": "2018-01-31",
+          "tot_pub_debt_out_usd": 20493729921939.72,
+          "debt_held_public_usd": 14803169732410.16,
+          "intragov_hold_usd": 5690560189529.56
+        },
+        {
+          "record_date": "2018-02-28",
+          "tot_pub_debt_out_usd": 20855671542905.95,
+          "debt_held_public_usd": 15150589235512.83,
+          "intragov_hold_usd": 5705082307393.12
+        },
+        {
+          "record_date": "2018-03-30",
+          "tot_pub_debt_out_usd": 21089642954195.85,
+          "debt_held_public_usd": 15428010045518.83,
+          "intragov_hold_usd": 5661632908677.02
+        },
+        {
+          "record_date": "2018-04-30",
+          "tot_pub_debt_out_usd": 21068200197433.39,
+          "debt_held_public_usd": 15335128360141.59,
+          "intragov_hold_usd": 5733071837291.8
+        },
+        {
+          "record_date": "2018-05-31",
+          "tot_pub_debt_out_usd": 21145215185726.27,
+          "debt_held_public_usd": 15426913434471.75,
+          "intragov_hold_usd": 5718301751254.52
+        },
+        {
+          "record_date": "2018-06-29",
+          "tot_pub_debt_out_usd": 21195069635322.81,
+          "debt_held_public_usd": 15466564313316.59,
+          "intragov_hold_usd": 5728505322006.22
+        },
+        {
+          "record_date": "2018-07-31",
+          "tot_pub_debt_out_usd": 21313061060202.36,
+          "debt_held_public_usd": 15569493125391.06,
+          "intragov_hold_usd": 5743567934811.3
+        },
+        {
+          "record_date": "2018-08-31",
+          "tot_pub_debt_out_usd": 21458849674105.03,
+          "debt_held_public_usd": 15785389142392.19,
+          "intragov_hold_usd": 5673460531712.84
+        },
+        {
+          "record_date": "2018-09-28",
+          "tot_pub_debt_out_usd": 21516058183180.23,
+          "debt_held_public_usd": 15761154524132.45,
+          "intragov_hold_usd": 5754903659047.78
+        },
+        {
+          "record_date": "2018-10-31",
+          "tot_pub_debt_out_usd": 21702369768174.47,
+          "debt_held_public_usd": 15843329310589.99,
+          "intragov_hold_usd": 5859040457584.48
+        },
+        {
+          "record_date": "2018-11-30",
+          "tot_pub_debt_out_usd": 21850093880675.8,
+          "debt_held_public_usd": 16044318195178.8,
+          "intragov_hold_usd": 5805775685497.0
+        },
+        {
+          "record_date": "2018-12-31",
+          "tot_pub_debt_out_usd": 21974095705790.55,
+          "debt_held_public_usd": 16101666500481.68,
+          "intragov_hold_usd": 5872429205308.87
+        },
+        {
+          "record_date": "2019-01-31",
+          "tot_pub_debt_out_usd": 21982423036475.23,
+          "debt_held_public_usd": 16101226791887.87,
+          "intragov_hold_usd": 5881196244587.36
+        },
+        {
+          "record_date": "2019-02-28",
+          "tot_pub_debt_out_usd": 22115526445599.07,
+          "debt_held_public_usd": 16250898044728.34,
+          "intragov_hold_usd": 5864628400870.73
+        },
+        {
+          "record_date": "2019-03-29",
+          "tot_pub_debt_out_usd": 22027880157027.99,
+          "debt_held_public_usd": 16204392002372.97,
+          "intragov_hold_usd": 5823488154655.02
+        },
+        {
+          "record_date": "2019-04-30",
+          "tot_pub_debt_out_usd": 22027668200019.47,
+          "debt_held_public_usd": 16192789476576.03,
+          "intragov_hold_usd": 5834878723443.44
+        },
+        {
+          "record_date": "2019-05-31",
+          "tot_pub_debt_out_usd": 22026423883026.38,
+          "debt_held_public_usd": 16202282783139.21,
+          "intragov_hold_usd": 5824141099887.17
+        },
+        {
+          "record_date": "2019-06-28",
+          "tot_pub_debt_out_usd": 22023282617075.45,
+          "debt_held_public_usd": 16188422046434.7,
+          "intragov_hold_usd": 5834860570640.75
+        },
+        {
+          "record_date": "2019-07-31",
+          "tot_pub_debt_out_usd": 22022368854863.19,
+          "debt_held_public_usd": 16211185016302.46,
+          "intragov_hold_usd": 5811183838560.73
+        },
+        {
+          "record_date": "2019-08-30",
+          "tot_pub_debt_out_usd": 22460466625952.37,
+          "debt_held_public_usd": 16596815590260.74,
+          "intragov_hold_usd": 5863651035691.63
+        },
+        {
+          "record_date": "2019-09-30",
+          "tot_pub_debt_out_usd": 22719401753433.78,
+          "debt_held_public_usd": 16809092325171.8,
+          "intragov_hold_usd": 5910309428261.98
+        },
+        {
+          "record_date": "2019-10-31",
+          "tot_pub_debt_out_usd": 23008409564494.99,
+          "debt_held_public_usd": 16981310915367.49,
+          "intragov_hold_usd": 6027098649127.5
+        },
+        {
+          "record_date": "2019-11-29",
+          "tot_pub_debt_out_usd": 23076198934547.7,
+          "debt_held_public_usd": 17105420783631.03,
+          "intragov_hold_usd": 5970778150916.67
+        },
+        {
+          "record_date": "2019-12-31",
+          "tot_pub_debt_out_usd": 23201380134806.73,
+          "debt_held_public_usd": 17170442487631.56,
+          "intragov_hold_usd": 6030937647175.17
+        },
+        {
+          "record_date": "2020-01-31",
+          "tot_pub_debt_out_usd": 23223812882713.14,
+          "debt_held_public_usd": 17212634807910.27,
+          "intragov_hold_usd": 6011178074802.87
+        },
+        {
+          "record_date": "2020-02-28",
+          "tot_pub_debt_out_usd": 23409959150243.63,
+          "debt_held_public_usd": 17413049915879.8,
+          "intragov_hold_usd": 5996909234363.83
+        },
+        {
+          "record_date": "2020-03-31",
+          "tot_pub_debt_out_usd": 23686870812640.08,
+          "debt_held_public_usd": 17674771266474.08,
+          "intragov_hold_usd": 6012099546166.0
+        },
+        {
+          "record_date": "2020-04-30",
+          "tot_pub_debt_out_usd": 24974171868164.35,
+          "debt_held_public_usd": 19053618801919.97,
+          "intragov_hold_usd": 5920553066244.38
+        },
+        {
+          "record_date": "2020-05-29",
+          "tot_pub_debt_out_usd": 25746260186742.66,
+          "debt_held_public_usd": 19812769028672.42,
+          "intragov_hold_usd": 5933491158070.24
+        },
+        {
+          "record_date": "2020-06-30",
+          "tot_pub_debt_out_usd": 26477240853124.76,
+          "debt_held_public_usd": 20530278232389.35,
+          "intragov_hold_usd": 5946962620735.41
+        },
+        {
+          "record_date": "2020-07-31",
+          "tot_pub_debt_out_usd": 26524953451577.6,
+          "debt_held_public_usd": 20634399708136.4,
+          "intragov_hold_usd": 5890553743441.2
+        },
+        {
+          "record_date": "2020-08-31",
+          "tot_pub_debt_out_usd": 26728835852386.44,
+          "debt_held_public_usd": 20822038395784.06,
+          "intragov_hold_usd": 5906797456602.38
+        },
+        {
+          "record_date": "2020-09-30",
+          "tot_pub_debt_out_usd": 26945391194615.15,
+          "debt_held_public_usd": 21018952080385.63,
+          "intragov_hold_usd": 5926439114229.52
+        },
+        {
+          "record_date": "2020-10-30",
+          "tot_pub_debt_out_usd": 27135476803126.2,
+          "debt_held_public_usd": 21096955697143.0,
+          "intragov_hold_usd": 6038521105983.2
+        },
+        {
+          "record_date": "2020-11-30",
+          "tot_pub_debt_out_usd": 27446288188250.17,
+          "debt_held_public_usd": 21349471573310.81,
+          "intragov_hold_usd": 6096816614939.36
+        },
+        {
+          "record_date": "2020-12-31",
+          "tot_pub_debt_out_usd": 27747797947667.77,
+          "debt_held_public_usd": 21632418904104.24,
+          "intragov_hold_usd": 6115379043563.53
+        },
+        {
+          "record_date": "2021-01-29",
+          "tot_pub_debt_out_usd": 27784553033005.01,
+          "debt_held_public_usd": 21643914788373.87,
+          "intragov_hold_usd": 6140638244631.14
+        },
+        {
+          "record_date": "2021-02-26",
+          "tot_pub_debt_out_usd": 27902363734475.7,
+          "debt_held_public_usd": 21755737194886.79,
+          "intragov_hold_usd": 6146626539588.91
+        },
+        {
+          "record_date": "2021-03-31",
+          "tot_pub_debt_out_usd": 28132570303600.16,
+          "debt_held_public_usd": 21986937011551.51,
+          "intragov_hold_usd": 6145633292048.65
+        },
+        {
+          "record_date": "2021-04-30",
+          "tot_pub_debt_out_usd": 28174714484167.37,
+          "debt_held_public_usd": 22056055138417.67,
+          "intragov_hold_usd": 6118659345749.7
+        },
+        {
+          "record_date": "2021-05-28",
+          "tot_pub_debt_out_usd": 28199008338520.65,
+          "debt_held_public_usd": 22020939013605.78,
+          "intragov_hold_usd": 6178069324914.87
+        },
+        {
+          "record_date": "2021-06-30",
+          "tot_pub_debt_out_usd": 28529435873139.77,
+          "debt_held_public_usd": 22329822962202.0,
+          "intragov_hold_usd": 6199612910937.77
+        },
+        {
+          "record_date": "2021-07-30",
+          "tot_pub_debt_out_usd": 28427721872418.7,
+          "debt_held_public_usd": 22284627647306.26,
+          "intragov_hold_usd": 6143094225112.44
+        },
+        {
+          "record_date": "2021-08-31",
+          "tot_pub_debt_out_usd": 28427317184527.64,
+          "debt_held_public_usd": 22254543554131.93,
+          "intragov_hold_usd": 6172773630395.71
+        },
+        {
+          "record_date": "2021-09-30",
+          "tot_pub_debt_out_usd": 28428918570048.68,
+          "debt_held_public_usd": 22282900363084.77,
+          "intragov_hold_usd": 6146018206963.91
+        },
+        {
+          "record_date": "2021-10-29",
+          "tot_pub_debt_out_usd": 28908765340554.33,
+          "debt_held_public_usd": 22637089774173.57,
+          "intragov_hold_usd": 6271675566380.76
+        },
+        {
+          "record_date": "2021-11-30",
+          "tot_pub_debt_out_usd": 28907986914620.48,
+          "debt_held_public_usd": 22645911986862.15,
+          "intragov_hold_usd": 6262074927758.33
+        },
+        {
+          "record_date": "2021-12-31",
+          "tot_pub_debt_out_usd": 29617214856051.75,
+          "debt_held_public_usd": 23143747354717.21,
+          "intragov_hold_usd": 6473467501334.54
+        },
+        {
+          "record_date": "2022-01-31",
+          "tot_pub_debt_out_usd": 30012386059238.29,
+          "debt_held_public_usd": 23487180861724.36,
+          "intragov_hold_usd": 6525205197513.93
+        },
+        {
+          "record_date": "2022-02-28",
+          "tot_pub_debt_out_usd": 30290352672788.26,
+          "debt_held_public_usd": 23776559880654.69,
+          "intragov_hold_usd": 6513792792133.57
+        },
+        {
+          "record_date": "2022-03-31",
+          "tot_pub_debt_out_usd": 30400959928180.97,
+          "debt_held_public_usd": 23879767750374.44,
+          "intragov_hold_usd": 6521192177806.53
+        },
+        {
+          "record_date": "2022-04-29",
+          "tot_pub_debt_out_usd": 30374154511898.01,
+          "debt_held_public_usd": 23847245116757.6,
+          "intragov_hold_usd": 6526909395140.41
+        },
+        {
+          "record_date": "2022-05-31",
+          "tot_pub_debt_out_usd": 30499618521246.79,
+          "debt_held_public_usd": 23904391446377.85,
+          "intragov_hold_usd": 6595227074868.94
+        },
+        {
+          "record_date": "2022-06-30",
+          "tot_pub_debt_out_usd": 30568582029058.95,
+          "debt_held_public_usd": 23912159729664.37,
+          "intragov_hold_usd": 6656422299394.58
+        },
+        {
+          "record_date": "2022-07-29",
+          "tot_pub_debt_out_usd": 30595108567190.06,
+          "debt_held_public_usd": 23952579183056.89,
+          "intragov_hold_usd": 6642529384133.17
+        },
+        {
+          "record_date": "2022-08-31",
+          "tot_pub_debt_out_usd": 30936075214882.41,
+          "debt_held_public_usd": 24267551242280.32,
+          "intragov_hold_usd": 6668523972602.09
+        },
+        {
+          "record_date": "2022-09-30",
+          "tot_pub_debt_out_usd": 30928911613306.73,
+          "debt_held_public_usd": 24299192620158.51,
+          "intragov_hold_usd": 6629718993148.22
+        },
+        {
+          "record_date": "2022-10-31",
+          "tot_pub_debt_out_usd": 31238301149359.52,
+          "debt_held_public_usd": 24352541663465.59,
+          "intragov_hold_usd": 6885759485893.93
+        },
+        {
+          "record_date": "2022-11-30",
+          "tot_pub_debt_out_usd": 31413322465316.3,
+          "debt_held_public_usd": 24553456579697.93,
+          "intragov_hold_usd": 6859865885618.37
+        },
+        {
+          "record_date": "2022-12-30",
+          "tot_pub_debt_out_usd": 31419689421557.9,
+          "debt_held_public_usd": 24517593324394.19,
+          "intragov_hold_usd": 6902096097163.71
+        },
+        {
+          "record_date": "2023-01-31",
+          "tot_pub_debt_out_usd": 31454982227739.16,
+          "debt_held_public_usd": 24583993573074.66,
+          "intragov_hold_usd": 6870988654664.5
+        },
+        {
+          "record_date": "2023-02-28",
+          "tot_pub_debt_out_usd": 31459291458579.46,
+          "debt_held_public_usd": 24609240801721.77,
+          "intragov_hold_usd": 6850050656857.69
+        },
+        {
+          "record_date": "2023-03-31",
+          "tot_pub_debt_out_usd": 31458437575028.18,
+          "debt_held_public_usd": 24693515037758.24,
+          "intragov_hold_usd": 6764922537269.94
+        },
+        {
+          "record_date": "2023-04-28",
+          "tot_pub_debt_out_usd": 31457814648415.87,
+          "debt_held_public_usd": 24605068022566.94,
+          "intragov_hold_usd": 6852746625848.93
+        },
+        {
+          "record_date": "2023-05-31",
+          "tot_pub_debt_out_usd": 31464457465522.98,
+          "debt_held_public_usd": 24630686283413.55,
+          "intragov_hold_usd": 6833771182109.43
+        },
+        {
+          "record_date": "2023-06-30",
+          "tot_pub_debt_out_usd": 32332274184762.99,
+          "debt_held_public_usd": 25461998188055.84,
+          "intragov_hold_usd": 6870275996707.15
+        },
+        {
+          "record_date": "2023-07-31",
+          "tot_pub_debt_out_usd": 32608585072666.14,
+          "debt_held_public_usd": 25708799188483.91,
+          "intragov_hold_usd": 6899785884182.23
+        },
+        {
+          "record_date": "2023-08-31",
+          "tot_pub_debt_out_usd": 32914149363760.95,
+          "debt_held_public_usd": 26044050577584.54,
+          "intragov_hold_usd": 6870098786176.41
+        },
+        {
+          "record_date": "2023-09-29",
+          "tot_pub_debt_out_usd": 33167334044723.16,
+          "debt_held_public_usd": 26330142473191.94,
+          "intragov_hold_usd": 6837191571531.22
+        },
+        {
+          "record_date": "2023-10-31",
+          "tot_pub_debt_out_usd": 33699580339128.49,
+          "debt_held_public_usd": 26576222054905.35,
+          "intragov_hold_usd": 7123358284223.14
+        },
+        {
+          "record_date": "2023-11-30",
+          "tot_pub_debt_out_usd": 33878679367501.2,
+          "debt_held_public_usd": 26843822063762.45,
+          "intragov_hold_usd": 7034857303738.75
+        },
+        {
+          "record_date": "2023-12-29",
+          "tot_pub_debt_out_usd": 34001493655565.48,
+          "debt_held_public_usd": 26938517614684.59,
+          "intragov_hold_usd": 7062976040880.89
+        },
+        {
+          "record_date": "2024-01-31",
+          "tot_pub_debt_out_usd": 34191150402393.64,
+          "debt_held_public_usd": 27071861894841.0,
+          "intragov_hold_usd": 7119288507552.64
+        },
+        {
+          "record_date": "2024-02-29",
+          "tot_pub_debt_out_usd": 34471083238111.75,
+          "debt_held_public_usd": 27380289989183.77,
+          "intragov_hold_usd": 7090793248927.98
+        },
+        {
+          "record_date": "2024-03-29",
+          "tot_pub_debt_out_usd": 34586533479349.88,
+          "debt_held_public_usd": 27511454993243.97,
+          "intragov_hold_usd": 7075078486105.91
+        },
+        {
+          "record_date": "2024-04-30",
+          "tot_pub_debt_out_usd": 34616994016250.88,
+          "debt_held_public_usd": 27480960216618.32,
+          "intragov_hold_usd": 7136033799632.56
+        },
+        {
+          "record_date": "2024-05-31",
+          "tot_pub_debt_out_usd": 34667115142400.83,
+          "debt_held_public_usd": 27606806621699.92,
+          "intragov_hold_usd": 7060308520700.91
+        },
+        {
+          "record_date": "2024-06-28",
+          "tot_pub_debt_out_usd": 34831634431393.47,
+          "debt_held_public_usd": 27612896549329.17,
+          "intragov_hold_usd": 7218737882064.3
+        },
+        {
+          "record_date": "2024-07-31",
+          "tot_pub_debt_out_usd": 35104770649301.03,
+          "debt_held_public_usd": 27930511528793.83,
+          "intragov_hold_usd": 7174259120507.2
+        },
+        {
+          "record_date": "2024-08-30",
+          "tot_pub_debt_out_usd": 35256056842790.06,
+          "debt_held_public_usd": 28168005045836.45,
+          "intragov_hold_usd": 7088051796953.61
+        },
+        {
+          "record_date": "2024-09-30",
+          "tot_pub_debt_out_usd": 35464673929171.69,
+          "debt_held_public_usd": 28307312290783.0,
+          "intragov_hold_usd": 7157361638388.69
+        },
+        {
+          "record_date": "2024-10-31",
+          "tot_pub_debt_out_usd": 35951601173936.02,
+          "debt_held_public_usd": 28572149038424.26,
+          "intragov_hold_usd": 7379452135511.76
+        },
+        {
+          "record_date": "2024-11-29",
+          "tot_pub_debt_out_usd": 36087362960612.0,
+          "debt_held_public_usd": 28791207744535.64,
+          "intragov_hold_usd": 7296155216076.36
+        },
+        {
+          "record_date": "2024-12-31",
+          "tot_pub_debt_out_usd": 36218605311689.91,
+          "debt_held_public_usd": 28836996111881.81,
+          "intragov_hold_usd": 7381609199808.1
+        },
+        {
+          "record_date": "2025-01-31",
+          "tot_pub_debt_out_usd": 36220206738047.96,
+          "debt_held_public_usd": 28911508658693.08,
+          "intragov_hold_usd": 7308698079354.88
+        },
+        {
+          "record_date": "2025-02-28",
+          "tot_pub_debt_out_usd": 36218923369370.1,
+          "debt_held_public_usd": 28914410587820.34,
+          "intragov_hold_usd": 7304512781549.76
+        },
+        {
+          "record_date": "2025-03-31",
+          "tot_pub_debt_out_usd": 36214310420174.13,
+          "debt_held_public_usd": 28909508850275.58,
+          "intragov_hold_usd": 7304801569898.55
+        },
+        {
+          "record_date": "2025-04-30",
+          "tot_pub_debt_out_usd": 36213557195810.65,
+          "debt_held_public_usd": 28852660949319.21,
+          "intragov_hold_usd": 7360896246491.44
+        },
+        {
+          "record_date": "2025-05-30",
+          "tot_pub_debt_out_usd": 36215818399936.85,
+          "debt_held_public_usd": 28952461153000.13,
+          "intragov_hold_usd": 7263357246936.72
+        },
+        {
+          "record_date": "2025-06-30",
+          "tot_pub_debt_out_usd": 36211469351821.31,
+          "debt_held_public_usd": 28953496505343.54,
+          "intragov_hold_usd": 7257972846477.77
+        },
+        {
+          "record_date": "2025-07-31",
+          "tot_pub_debt_out_usd": 36916987311998.03,
+          "debt_held_public_usd": 29531340715980.52,
+          "intragov_hold_usd": 7385646596017.51
+        },
+        {
+          "record_date": "2025-08-29",
+          "tot_pub_debt_out_usd": 37274265917907.03,
+          "debt_held_public_usd": 29968531307467.56,
+          "intragov_hold_usd": 7305734610439.47
+        },
+        {
+          "record_date": "2025-09-30",
+          "tot_pub_debt_out_usd": 37637553494935.61,
+          "debt_held_public_usd": 30277766440770.58,
+          "intragov_hold_usd": 7359787054165.03
+        },
+        {
+          "record_date": "2025-10-31",
+          "tot_pub_debt_out_usd": 38040093786521.02,
+          "debt_held_public_usd": 30570708483009.12,
+          "intragov_hold_usd": 7469385303511.9
+        },
+        {
+          "record_date": "2025-11-28",
+          "tot_pub_debt_out_usd": 38396211497613.65,
+          "debt_held_public_usd": 30774117238206.31,
+          "intragov_hold_usd": 7622094259407.34
+        },
+        {
+          "record_date": "2025-12-31",
+          "tot_pub_debt_out_usd": 38514009184232.72,
+          "debt_held_public_usd": 30846716536213.26,
+          "intragov_hold_usd": 7667292648019.46
+        },
+        {
+          "record_date": "2026-01-30",
+          "tot_pub_debt_out_usd": 38521368112341.66,
+          "debt_held_public_usd": 30919122670062.31,
+          "intragov_hold_usd": 7602245442279.35
+        },
+        {
+          "record_date": "2026-02-27",
+          "tot_pub_debt_out_usd": 38769805982273.81,
+          "debt_held_public_usd": 31186965290815.89,
+          "intragov_hold_usd": 7582840691457.92
+        },
+        {
+          "record_date": "2026-03-31",
+          "tot_pub_debt_out_usd": 39065421393640.82,
+          "debt_held_public_usd": 31431182280136.26,
+          "intragov_hold_usd": 7634239113504.56
+        },
+        {
+          "record_date": "2026-04-30",
+          "tot_pub_debt_out_usd": 38967833861543.11,
+          "debt_held_public_usd": 31272489865435.88,
+          "intragov_hold_usd": 7695343996107.23
+        },
+        {
+          "record_date": "2026-05-29",
+          "tot_pub_debt_out_usd": 39207759598302.62,
+          "debt_held_public_usd": 31515369798622.98,
+          "intragov_hold_usd": 7692389799679.64
+        },
+        {
+          "record_date": "2026-06-30",
+          "tot_pub_debt_out_usd": 39462398380774.37,
+          "debt_held_public_usd": 31681308373695.03,
+          "intragov_hold_usd": 7781090007079.34
+        },
+        {
+          "record_date": "2026-07-13",
+          "tot_pub_debt_out_usd": 39417905469064.21,
+          "debt_held_public_usd": 31707770448042.27,
+          "intragov_hold_usd": 7710135021021.94
+        }
+      ]
+    }
+  },
+  "notes": "The annual (Historical Debt Outstanding) and daily-based (Debt to the Penny) series treat Federal Financing Bank debt differently per the datasets' published notes — do not splice them into a single continuous line."
+}

@@ -1,0 +1,371 @@
+{
+  "generated_at": "2026-07-15T13:50:15.415400+00:00",
+  "source_pipeline": "configs/countries/us.yaml → sync_fiscaldata.py + sync_census_popest.py → raw.us_* → dbt_us_staging → dbt_us_analytics → dbt_us_marts → export_us_national.py",
+  "country": "us",
+  "scale": "national",
+  "unit": "USD",
+  "accounting_basis": "Federal cash receipts and outlays (Monthly Treasury Statement — the official deficit math). Not comparable with USAspending obligations.",
+  "as_of": "2026-06-30",
+  "fiscal_year": 2026,
+  "completeness": {
+    "fytd_through": "2026-06-30",
+    "months_into_fiscal_year": 9,
+    "fiscal_year_months": 12,
+    "fiscal_year_complete": false,
+    "note": "FYTD figures cover October 2025 through June 2026 — month 9 of 12 of fiscal year 2026. prior_fytd = same window one fiscal year earlier. Each MTS publication restates prior months; this export always reflects the latest publication."
+  },
+  "source": {
+    "name": "Monthly Treasury Statement (MTS)",
+    "table": "Summary of Receipts by Source, and Outlays by Function of the U.S. Government",
+    "source_url": "https://fiscaldata.treasury.gov/datasets/monthly-treasury-statement",
+    "api_endpoint": "/services/api/fiscal_service/v1/accounting/mts/mts_table_9",
+    "update_frequency": "Monthly"
+  },
+  "population": {
+    "value": 341784857,
+    "year": 2025,
+    "as_of": "2025-07-01",
+    "source": "U.S. Census Bureau, Population Estimates Program (PEP), Vintage 2025",
+    "source_url": "https://www2.census.gov/programs-surveys/popest/datasets/2020-2025/state/totals/NST-EST2025-ALLDATA.csv",
+    "note": "Denominator for all per_resident_* values."
+  },
+  "receipts": {
+    "total": {
+      "current_month_usd": 495761481568.7,
+      "current_fytd_usd": 4151409628325.36,
+      "prior_fytd_usd": 4008146228420.72,
+      "yoy_fytd_pct": 0.035743,
+      "per_resident_fytd_usd": 12146.27,
+      "per_resident_month_usd": 1450.51
+    },
+    "items": [
+      {
+        "category": "Individual Income Taxes",
+        "line_code_nbr": "20",
+        "current_month_usd": 283146831936.7,
+        "current_fytd_usd": 2195686009715.02,
+        "prior_fytd_usd": 2059338673178.2,
+        "share_of_side_fytd": 0.528901,
+        "yoy_fytd_pct": 0.066209,
+        "per_resident_fytd_usd": 6424.18,
+        "per_resident_month_usd": 828.44
+      },
+      {
+        "category": "Employment and General Retirement",
+        "line_code_nbr": "50",
+        "current_month_usd": 153951919603.48,
+        "current_fytd_usd": 1337686863340.28,
+        "prior_fytd_usd": 1298091520635.59,
+        "share_of_side_fytd": 0.322225,
+        "yoy_fytd_pct": 0.030503,
+        "per_resident_fytd_usd": 3913.83,
+        "per_resident_month_usd": 450.44
+      },
+      {
+        "category": "Corporation Income Taxes",
+        "line_code_nbr": "30",
+        "current_month_usd": 69536652912.03,
+        "current_fytd_usd": 279340329731.11,
+        "prior_fytd_usd": 366273181699.05,
+        "share_of_side_fytd": 0.067288,
+        "yoy_fytd_pct": -0.237344,
+        "per_resident_fytd_usd": 817.3,
+        "per_resident_month_usd": 203.45
+      },
+      {
+        "category": "Customs Duties",
+        "line_code_nbr": "100",
+        "current_month_usd": -25555668440.83,
+        "current_fytd_usd": 163019127010.17,
+        "prior_fytd_usd": 108017789769.64,
+        "share_of_side_fytd": 0.039268,
+        "yoy_fytd_pct": 0.509188,
+        "per_resident_fytd_usd": 476.96,
+        "per_resident_month_usd": -74.77
+      },
+      {
+        "category": "Excise Taxes",
+        "line_code_nbr": "80",
+        "current_month_usd": 7705552298.15,
+        "current_fytd_usd": 74998291464.9,
+        "prior_fytd_usd": 75358459105.36,
+        "share_of_side_fytd": 0.018066,
+        "yoy_fytd_pct": -0.004779,
+        "per_resident_fytd_usd": 219.43,
+        "per_resident_month_usd": 22.55
+      },
+      {
+        "category": "Unemployment Insurance",
+        "line_code_nbr": "60",
+        "current_month_usd": 800628657.83,
+        "current_fytd_usd": 39711885909.84,
+        "prior_fytd_usd": 44880292823.61,
+        "share_of_side_fytd": 0.009566,
+        "yoy_fytd_pct": -0.11516,
+        "per_resident_fytd_usd": 116.19,
+        "per_resident_month_usd": 2.34
+      },
+      {
+        "category": "Estate and Gift Taxes",
+        "line_code_nbr": "90",
+        "current_month_usd": 2203882904.32,
+        "current_fytd_usd": 30155144920.07,
+        "prior_fytd_usd": 22341365083.15,
+        "share_of_side_fytd": 0.007264,
+        "yoy_fytd_pct": 0.349745,
+        "per_resident_fytd_usd": 88.23,
+        "per_resident_month_usd": 6.45
+      },
+      {
+        "category": "Miscellaneous Receipts",
+        "line_code_nbr": "110",
+        "current_month_usd": 3215365290.77,
+        "current_fytd_usd": 24531156595.98,
+        "prior_fytd_usd": 27521485434.88,
+        "share_of_side_fytd": 0.005909,
+        "yoy_fytd_pct": -0.108654,
+        "per_resident_fytd_usd": 71.77,
+        "per_resident_month_usd": 9.41
+      },
+      {
+        "category": "Other Retirement",
+        "line_code_nbr": "70",
+        "current_month_usd": 756316406.25,
+        "current_fytd_usd": 6280819637.99,
+        "prior_fytd_usd": 6323460691.24,
+        "share_of_side_fytd": 0.001513,
+        "yoy_fytd_pct": -0.006743,
+        "per_resident_fytd_usd": 18.38,
+        "per_resident_month_usd": 2.21
+      }
+    ],
+    "n_items": 9
+  },
+  "outlays": {
+    "total": {
+      "current_month_usd": 616066757155.07,
+      "current_fytd_usd": 5517917965556.91,
+      "prior_fytd_usd": 5345518587370.96,
+      "yoy_fytd_pct": 0.032251,
+      "per_resident_fytd_usd": 16144.42,
+      "per_resident_month_usd": 1802.5
+    },
+    "items": [
+      {
+        "category": "Social Security",
+        "line_code_nbr": "270",
+        "current_month_usd": 146737369071.6,
+        "current_fytd_usd": 1243761295140.85,
+        "prior_fytd_usd": 1181018943946.16,
+        "share_of_side_fytd": 0.225404,
+        "yoy_fytd_pct": 0.053126,
+        "per_resident_fytd_usd": 3639.02,
+        "per_resident_month_usd": 429.33
+      },
+      {
+        "category": "Net Interest",
+        "line_code_nbr": "320",
+        "current_month_usd": 104490682743.68,
+        "current_fytd_usd": 827197193986.88,
+        "prior_fytd_usd": 748748607258.27,
+        "share_of_side_fytd": 0.149911,
+        "yoy_fytd_pct": 0.104773,
+        "per_resident_fytd_usd": 2420.23,
+        "per_resident_month_usd": 305.72
+      },
+      {
+        "category": "Medicare",
+        "line_code_nbr": "250",
+        "current_month_usd": 103468801709.98,
+        "current_fytd_usd": 780274075893.63,
+        "prior_fytd_usd": 723374938005.42,
+        "share_of_side_fytd": 0.141407,
+        "yoy_fytd_pct": 0.078658,
+        "per_resident_fytd_usd": 2282.94,
+        "per_resident_month_usd": 302.73
+      },
+      {
+        "category": "Health",
+        "line_code_nbr": "240",
+        "current_month_usd": 97113581261.41,
+        "current_fytd_usd": 762323690457.23,
+        "prior_fytd_usd": 715393775890.42,
+        "share_of_side_fytd": 0.138154,
+        "yoy_fytd_pct": 0.0656,
+        "per_resident_fytd_usd": 2230.42,
+        "per_resident_month_usd": 284.14
+      },
+      {
+        "category": "National Defense",
+        "line_code_nbr": "140",
+        "current_month_usd": 82229219356.31,
+        "current_fytd_usd": 713130187997.62,
+        "prior_fytd_usd": 682434569378.62,
+        "share_of_side_fytd": 0.129239,
+        "yoy_fytd_pct": 0.04498,
+        "per_resident_fytd_usd": 2086.49,
+        "per_resident_month_usd": 240.59
+      },
+      {
+        "category": "Income Security",
+        "line_code_nbr": "260",
+        "current_month_usd": 44758192389.46,
+        "current_fytd_usd": 543688382296.23,
+        "prior_fytd_usd": 554383451873.46,
+        "share_of_side_fytd": 0.098531,
+        "yoy_fytd_pct": -0.019292,
+        "per_resident_fytd_usd": 1590.73,
+        "per_resident_month_usd": 130.95
+      },
+      {
+        "category": "Veterans Benefits and Services",
+        "line_code_nbr": "280",
+        "current_month_usd": 34728873816.5,
+        "current_fytd_usd": 305345750427.52,
+        "prior_fytd_usd": 278214619434.19,
+        "share_of_side_fytd": 0.055337,
+        "yoy_fytd_pct": 0.097519,
+        "per_resident_fytd_usd": 893.39,
+        "per_resident_month_usd": 101.61
+      },
+      {
+        "category": "Transportation",
+        "line_code_nbr": "210",
+        "current_month_usd": 12919905211.34,
+        "current_fytd_usd": 100145018374.51,
+        "prior_fytd_usd": 98699938152.54,
+        "share_of_side_fytd": 0.018149,
+        "yoy_fytd_pct": 0.014641,
+        "per_resident_fytd_usd": 293.01,
+        "per_resident_month_usd": 37.8
+      },
+      {
+        "category": "Administration of Justice",
+        "line_code_nbr": "290",
+        "current_month_usd": 8760071148.1,
+        "current_fytd_usd": 77190666163.91,
+        "prior_fytd_usd": 62363985338.25,
+        "share_of_side_fytd": 0.013989,
+        "yoy_fytd_pct": 0.237744,
+        "per_resident_fytd_usd": 225.85,
+        "per_resident_month_usd": 25.63
+      },
+      {
+        "category": "Education, Training, Employment, and Social Services",
+        "line_code_nbr": "230",
+        "current_month_usd": -34006133101.74,
+        "current_fytd_usd": 73053250676.28,
+        "prior_fytd_usd": 130336547494.57,
+        "share_of_side_fytd": 0.013239,
+        "yoy_fytd_pct": -0.439503,
+        "per_resident_fytd_usd": 213.74,
+        "per_resident_month_usd": -99.5
+      },
+      {
+        "category": "Agriculture",
+        "line_code_nbr": "190",
+        "current_month_usd": 2608054849.25,
+        "current_fytd_usd": 47463372391.12,
+        "prior_fytd_usd": 41824797701.7,
+        "share_of_side_fytd": 0.008602,
+        "yoy_fytd_pct": 0.134814,
+        "per_resident_fytd_usd": 138.87,
+        "per_resident_month_usd": 7.63
+      },
+      {
+        "category": "Community and Regional Development",
+        "line_code_nbr": "220",
+        "current_month_usd": 16345811723.66,
+        "current_fytd_usd": 45128873395.95,
+        "prior_fytd_usd": 66514322274.13,
+        "share_of_side_fytd": 0.008179,
+        "yoy_fytd_pct": -0.321516,
+        "per_resident_fytd_usd": 132.04,
+        "per_resident_month_usd": 47.82
+      },
+      {
+        "category": "Natural Resources and Environment",
+        "line_code_nbr": "180",
+        "current_month_usd": 4422388949.15,
+        "current_fytd_usd": 43703376280.03,
+        "prior_fytd_usd": 69769234741.74,
+        "share_of_side_fytd": 0.00792,
+        "yoy_fytd_pct": -0.373601,
+        "per_resident_fytd_usd": 127.87,
+        "per_resident_month_usd": 12.94
+      },
+      {
+        "category": "International Affairs",
+        "line_code_nbr": "150",
+        "current_month_usd": 635092835.65,
+        "current_fytd_usd": 33949408492.65,
+        "prior_fytd_usd": 45220764045.25,
+        "share_of_side_fytd": 0.006153,
+        "yoy_fytd_pct": -0.249252,
+        "per_resident_fytd_usd": 99.33,
+        "per_resident_month_usd": 1.86
+      },
+      {
+        "category": "General Science, Space, and Technology",
+        "line_code_nbr": "160",
+        "current_month_usd": 3199425090.97,
+        "current_fytd_usd": 29336183364.58,
+        "prior_fytd_usd": 30808750506.39,
+        "share_of_side_fytd": 0.005317,
+        "yoy_fytd_pct": -0.047797,
+        "per_resident_fytd_usd": 85.83,
+        "per_resident_month_usd": 9.36
+      },
+      {
+        "category": "Energy",
+        "line_code_nbr": "170",
+        "current_month_usd": 3081505841.86,
+        "current_fytd_usd": 14209917310.62,
+        "prior_fytd_usd": 15969204642.68,
+        "share_of_side_fytd": 0.002575,
+        "yoy_fytd_pct": -0.110167,
+        "per_resident_fytd_usd": 41.58,
+        "per_resident_month_usd": 9.02
+      },
+      {
+        "category": "General Government",
+        "line_code_nbr": "300",
+        "current_month_usd": -1501170352.45,
+        "current_fytd_usd": 13446062686.77,
+        "prior_fytd_usd": 24817054987.75,
+        "share_of_side_fytd": 0.002437,
+        "yoy_fytd_pct": -0.458193,
+        "per_resident_fytd_usd": 39.34,
+        "per_resident_month_usd": -4.39
+      },
+      {
+        "category": "Commerce and Housing Credit",
+        "line_code_nbr": "200",
+        "current_month_usd": -4725090886.39,
+        "current_fytd_usd": -12592634598.07,
+        "prior_fytd_usd": -6001758210.51,
+        "share_of_side_fytd": -0.002282,
+        "yoy_fytd_pct": -1.098158,
+        "per_resident_fytd_usd": -36.84,
+        "per_resident_month_usd": -13.82
+      },
+      {
+        "category": "Undistributed Offsetting Receipts",
+        "line_code_nbr": "330",
+        "current_month_usd": -9199824503.27,
+        "current_fytd_usd": -122836105181.4,
+        "prior_fytd_usd": -118373160090.07,
+        "share_of_side_fytd": -0.022261,
+        "yoy_fytd_pct": -0.037702,
+        "per_resident_fytd_usd": -359.4,
+        "per_resident_month_usd": -26.92
+      }
+    ],
+    "n_items": 19
+  },
+  "budget_balance": {
+    "current_fytd_usd": -1366508337231.55,
+    "current_month_usd": -120305275586.37,
+    "sign_convention": "receipts − outlays: surplus positive, deficit negative (matches the MTS 'Total Surplus (+) or Deficit (-)' line)."
+  }
+}

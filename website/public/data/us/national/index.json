@@ -1,0 +1,30 @@
+{
+  "generated_at": "2026-07-15T13:50:16.221249+00:00",
+  "source_pipeline": "configs/countries/us.yaml → sync_fiscaldata.py + sync_census_popest.py → raw.us_* → dbt_us_staging → dbt_us_analytics → dbt_us_marts → export_us_national.py",
+  "country": "us",
+  "scale": "national",
+  "files": {
+    "daily_bread.json": {
+      "description": "Receipts by source + outlays by function, latest closed MTS month (current month, FYTD, prior FYTD, per resident)",
+      "as_of": "2026-06-30",
+      "fiscal_year": 2026,
+      "completeness": {
+        "fytd_through": "2026-06-30",
+        "months_into_fiscal_year": 9,
+        "fiscal_year_months": 12,
+        "fiscal_year_complete": false,
+        "note": "FYTD figures cover October 2025 through June 2026 — month 9 of 12 of fiscal year 2026. prior_fytd = same window one fiscal year earlier. Each MTS publication restates prior months; this export always reflects the latest publication."
+      },
+      "source_url": "https://fiscaldata.treasury.gov/datasets/monthly-treasury-statement"
+    },
+    "debt_series.json": {
+      "description": "Public debt outstanding — annual FY-end 1790+, month-end 1993+, latest daily observation",
+      "as_of": "2026-07-13",
+      "source_urls": [
+        "https://fiscaldata.treasury.gov/datasets/debt-to-the-penny",
+        "https://fiscaldata.treasury.gov/datasets/historical-debt-outstanding"
+      ]
+    }
+  },
+  "population_source_url": "https://www2.census.gov/programs-surveys/popest/datasets/2020-2025/state/totals/NST-EST2025-ALLDATA.csv"
+}
