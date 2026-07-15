@@ -1,0 +1,71 @@
+{
+  "$comment": "Place registry — ADR-0010 contract #1. Every place the app serves, declared as data. Consumers (nav, sitemap, ScopeDropdown, routing guards) are wired in progressively; EXHAUSTIVE_CITIES-style hand-wiring retires as they land. status: 'live' = pages served in prod, 'wip' = being built on a branch.",
+  "places": [
+    {
+      "slug": "fr-national",
+      "country": "fr",
+      "level": "national",
+      "name": "France",
+      "schemaFamily": "fr-national",
+      "locale": "fr",
+      "currency": "EUR",
+      "dataNamespace": "national",
+      "path": "/fr/national",
+      "modules": ["budget", "daily-bread", "dette", "etat", "fiscalite"],
+      "status": "live"
+    },
+    {
+      "slug": "paris",
+      "country": "fr",
+      "level": "city",
+      "name": "Paris",
+      "schemaFamily": "fr-commune",
+      "locale": "fr",
+      "currency": "EUR",
+      "dataNamespace": "",
+      "dataNamespaceComment": "Paris exports live un-namespaced at public/data/ root (rétro-compat, ADR-0010 logged debt)",
+      "path": "/fr/city/paris",
+      "modules": ["budget", "subventions", "marches", "investissements", "logement", "dette"],
+      "status": "live"
+    },
+    {
+      "slug": "marseille",
+      "country": "fr",
+      "level": "city",
+      "name": "Marseille",
+      "schemaFamily": "fr-commune",
+      "locale": "fr",
+      "currency": "EUR",
+      "dataNamespace": "marseille",
+      "path": "/fr/city/marseille",
+      "modules": ["budget", "subventions", "marches", "investissements", "logement", "dette"],
+      "status": "live"
+    },
+    {
+      "slug": "us-national",
+      "country": "us",
+      "level": "national",
+      "name": "United States",
+      "schemaFamily": "us-federal",
+      "locale": "en",
+      "currency": "USD",
+      "dataNamespace": "us/national",
+      "path": "/us/national",
+      "modules": ["daily-bread"],
+      "status": "wip"
+    },
+    {
+      "slug": "sf",
+      "country": "us",
+      "level": "city",
+      "name": "San Francisco",
+      "schemaFamily": "us-municipal",
+      "locale": "en",
+      "currency": "USD",
+      "dataNamespace": "us/sf",
+      "path": "/us/city/sf",
+      "modules": [],
+      "status": "wip"
+    }
+  ]
+}

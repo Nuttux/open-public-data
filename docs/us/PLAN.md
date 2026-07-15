@@ -6,11 +6,11 @@
 
 Pure URL migration, zero behavior change. Ships independently of US work so France prod gets it early and `us-v0` rebases on it.
 
-- [ ] R1. Move trees: `app/ville/paris/*` → `app/fr/city/paris/*`, `app/ville/marseille/*` → `app/fr/city/marseille/*`, `app/ville/[slug]` → `app/fr/city/[slug]`, `app/france/*` → `app/fr/national/*`; drawer intercepts `@drawer/(...)ville/*` → `@drawer/(...)fr/city/*`; fix cross-tree imports (Marseille pages import Paris clients).
-- [ ] R2. `next.config.ts`: retarget the 34 legacy redirects to final destinations (no chains), add catch-alls `/ville/:path*` → `/fr/city/:path*`, `/france/:path*` → `/fr/national/:path*`.
-- [ ] R3. Internal link sweep: ~123 `"/ville/` + ~121 `/france/` occurrences across ~100 src files (nav-links, ScopeDropdown, chat systemPrompt/tools, sitemap, robots, OG routes, i18n values). Data-file paths under `public/data/` are NOT routes — untouched.
-- [ ] R4. `data_lineage.json` page references + its pipeline generator (so regeneration doesn't revert).
-- [ ] R5. Verify: build green; zero residual old-route strings outside redirect sources; Playwright desktop+mobile screenshots of root, Paris budget/subventions, Marseille budget, national budget/daily-bread; drawer deep-link loads; old URL 301s once.
+- [x] R1. Move trees (`796f2e0b`, pure git mv, 139 files) + import fixes (`7e4f0f1e`: fusion.css depth).
+- [x] R2. Redirects retargeted + catch-alls (`49975b22`); verified one-hop 308s incl. `/budget`, `/ville/paris/budget`, `/france/daily-bread`, `/c/lyon`, `/qui-recoit/association/*`.
+- [x] R3. Link sweep done (zero residual `"/ville/`/`"/france/` in src); also blog MDX, `corrections.json`, `cross_cutting_themes.json` + its generator `build_cross_cutting_themes.py`.
+- [x] R4. `data_lineage.json` updated directly — **no pipeline generator exists** (hand-authored file; only consumer DataProvenance.tsx).
+- [x] R5. Build green; 13 Playwright screenshots (desktop+mobile) reviewed 2026-07-15; drawer deep links + client-side intercept verified. **Awaiting daniel's review → merge `routes-v2` into `main`.**
 
 **Acceptance**: all R5 checks pass, screenshots visually reviewed (no layout/regression), single-hop redirects, France pages pixel-identical.
 
