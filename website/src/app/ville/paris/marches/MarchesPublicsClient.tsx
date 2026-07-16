@@ -17,6 +17,7 @@ import Tip from "@/components/fusion/Tip";
 import StackedBarTheme from "@/components/fusion/StackedBarTheme";
 import FournisseursBumpChart from "@/components/fusion/FournisseursBumpChart";
 import MarchesSearch from "./MarchesSearch";
+import MarchesSignature from "@/components/fusion/MarchesSignature";
 import RelatedArticles, { type ArticlePlaceholder } from "@/components/fusion/RelatedArticles";
 import PageHook from "@/components/fusion/PageHook";
 import { normalizeObjet } from "@/lib/objet-normalizer";
@@ -76,6 +77,7 @@ export default function MarchesPublicsClient({
       <PageTOC
         items={[
           { id: "sec-overview", label: t("fx.toc.chiffres") },
+          { id: "sec-signature", label: t("fx.toc.signature") },
           { id: "sec-categorie", label: t("fx.toc.categories") },
           { id: "sec-titulaires", label: t("fx.toc.titulaires") },
           { id: "sec-classement", label: t("fx.toc.classement") },
@@ -222,10 +224,38 @@ export default function MarchesPublicsClient({
         </div>
       </section>
 
+      {/* Scène signature — trois contrats réels de l'année, sélection par
+       * règles fixes (cf. loadMarchesPageData). La page ne montrait que des
+       * agrégats ; ces cartes donnent la matérialité et mènent aux fiches. */}
+      {d.signature.length > 0 && (
+        <section className="fx-section" id="sec-signature">
+          <div className="fx-wrap">
+            <SectionHead
+              number="02"
+              kind={t("fx.mp.sig.kind")}
+              title={
+                <>
+                  {t("fx.mp.sig.title.before")}
+                  <em>{t("fx.mp.sig.title.em")}</em>
+                  {t("fx.mp.sig.title.after")}
+                </>
+              }
+              subtitle={fill(
+                // Avant 2024, les DECP ne publient pas le nombre d'offres :
+                // seuls les volets concurrence disparaissent, on l'explique.
+                t(d.signature.some((s) => s.offres != null) ? "fx.mp.sig.sub" : "fx.mp.sig.sub_nooffres"),
+                { year: d.year },
+              )}
+            />
+            <MarchesSignature items={d.signature} />
+          </div>
+        </section>
+      )}
+
       <section className="fx-section" id="sec-categorie">
         <div className="fx-wrap">
           <SectionHead
-            number="02"
+            number="03"
             kind={<Tip label={t("fx.mp.s02.kind.tip")}>{t("fx.mp.s02.kind")}</Tip>}
             title={
               <>
@@ -256,7 +286,7 @@ export default function MarchesPublicsClient({
       <section className="fx-section" id="sec-titulaires">
         <div className="fx-wrap">
           <SectionHead
-            number="03"
+            number="04"
             kind={<Tip label={t("fx.mp.s03.kind.tip")}>{t("fx.mp.s03.kind")}</Tip>}
             title={
               <>
@@ -449,7 +479,7 @@ export default function MarchesPublicsClient({
         <section className="fx-section" id="sec-classement">
           <div className="fx-wrap">
             <SectionHead
-              number="04"
+              number="05"
               kind={t("fx.mp.rank.kind")}
               title={
                 <>
@@ -479,7 +509,7 @@ export default function MarchesPublicsClient({
       <section className="fx-section" id="sec-recherche">
         <div className="fx-wrap">
           <SectionHead
-            number="05"
+            number="06"
             kind={t("fx.mp.s04.kind")}
             title={
               <>
@@ -503,7 +533,7 @@ export default function MarchesPublicsClient({
       <section className="fx-section" id="sec-procedure">
         <div className="fx-wrap">
           <SectionHead
-            number="06"
+            number="07"
             kind={<Tip label={t("fx.mp.s05.kind.tip")}>{t("fx.mp.s05.kind")}</Tip>}
             title={
               <>
@@ -697,7 +727,9 @@ export default function MarchesPublicsClient({
                                 top: 0,
                                 height: "100%",
                                 width: `${(b.count / refMax) * 100}%`,
-                                background: "var(--ink)",
+                                // Ocre sur l'offre unique — même langage que les
+                                // fiches contrat et les cartes de résultats.
+                                background: b.bucket === "1" ? "var(--ocre)" : "var(--ink)",
                               }}
                             />
                           </div>
@@ -748,7 +780,7 @@ export default function MarchesPublicsClient({
       <section className="fx-section" id="sec-evolution">
         <div className="fx-wrap">
           <SectionHead
-            number="07"
+            number="08"
             kind={t("fx.mp.s07.kind")}
             title={
               <>
@@ -780,12 +812,12 @@ export default function MarchesPublicsClient({
         </div>
       </section>
 
-      <RelatedArticles number="08" posts={posts} placeholders={MP_PLACEHOLDERS} />
+      <RelatedArticles number="09" posts={posts} placeholders={MP_PLACEHOLDERS} />
 
       <section className="fx-section" id="sec-explorer">
         <div className="fx-wrap">
           <SectionHead
-            number="09"
+            number="10"
             kind={t("fx.mp.s08.kind")}
             subtitle={t("fx.mp.s08.sub")}
           />

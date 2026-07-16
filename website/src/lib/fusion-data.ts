@@ -1,5 +1,6 @@
 import fs from "node:fs";
 import path from "node:path";
+import { normalizeObjet } from "@/lib/objet-normalizer";
 
 export { PARIS_POPULATION } from "@/lib/methodology";
 import {
@@ -1772,6 +1773,25 @@ export type MarchesPageData = {
     offres: number | null;
   }[];
   yearsSummary: { year: number; total: number; count: number }[];
+  /** Scène signature : trois contrats réels de l'année, choisis par des
+   *  règles fixes (jamais à la main) — le plus gros marché adossé à un
+   *  chantier avec photo, le plus gros attribué sur offre unique, celui qui
+   *  a reçu le plus d'offres. 0 à 3 entrées selon la donnée disponible. */
+  signature: {
+    kind: "chantier" | "mono" | "dispute";
+    numero: string;
+    label: string;
+    labelEn: string | null;
+    fournisseur: string;
+    montant: number;
+    offres: number | null;
+    photoUrl: string | null;
+    photoCredit: string | null;
+    projetNom: string | null;
+    projetNomEn: string | null;
+    dateNotification: string;
+    dureeJours: number;
+  }[];
 };
 
 type MarchesIndexRaw = {
@@ -2478,6 +2498,66 @@ export function loadMarchesPageData(requestedYear?: number, city: string = "pari
     };
   });
 
+  // Scène signature — règles fixes, aucun choix éditorial par contrat :
+  //   « chantier »  : plus gros marché de l'année adossé à un projet
+  //                   d'investissement AVEC photo (la matérialité) ;
+  //   « mono »      : plus gros marché attribué sur offre unique ;
+  //   « dispute »   : marché ayant reçu le plus d'offres (montant départage).
+  // Un même contrat ne sert qu'une fois ; les cartes absentes (pas de photo,
+  // pas de données offres pour le millésime) sont simplement omises.
+  const signature: MarchesPageData["signature"] = (() => {
+    type SigRow = { numero: string; objet: string; fournisseur: string; montant: number; offres: number | null; date: string; dureeJours: number };
+    const rows: SigRow[] = [];
+    for (const m of marches) {
+      const r = m as MarcheRow & { numero_marche?: string; is_multiattributaire?: boolean; duree_jours?: number };
+      const numero = r.numero_marche ?? "";
+      const multi = r.fournisseur_nom === MULTI_NAME || Boolean(r.is_multiattributaire);
+      const montant = Number(r.montant_max ?? 0);
+      if (!numero || multi || !(montant > 0)) continue;
+      rows.push({
+        numero,
+        objet: r.objet ?? "",
+        fournisseur: r.fournisseur_nom || "Non précisé",
+        montant,
+        offres: r.decp_offres_recues != null ? Number(r.decp_offres_recues) : null,
+        date: r.date_notification ?? "",
+        dureeJours: Number(r.duree_jours ?? 0),
+      });
+    }
+    const byMontant = [...rows].sort((a, b) => b.montant - a.montant);
+    const used = new Set<string>();
+    const mkCard = (r: SigRow, kind: "chantier" | "mono" | "dispute") => {
+      const pj = loadContratProjet(r.numero);
+      const vg = vulgMap[r.numero];
+      used.add(r.numero);
+      return {
+        kind,
+        numero: r.numero,
+        label: vg?.objet_clair || normalizeObjet(r.objet),
+        labelEn: vg?.objet_clair_en ?? null,
+        fournisseur: r.fournisseur,
+        montant: r.montant,
+        offres: r.offres,
+        photoUrl: pj?.photoUrl ?? null,
+        photoCredit: pj?.photoCredit ?? null,
+        projetNom: pj?.nom ?? null,
+        projetNomEn: pj?.nomEn ?? null,
+        dateNotification: r.date,
+        dureeJours: r.dureeJours,
+      };
+    };
+    const out: MarchesPageData["signature"] = [];
+    const chantier = byMontant.find((r) => loadContratProjet(r.numero)?.photoUrl);
+    if (chantier) out.push(mkCard(chantier, "chantier"));
+    const mono = byMontant.find((r) => r.offres === 1 && !used.has(r.numero));
+    if (mono) out.push(mkCard(mono, "mono"));
+    const dispute = rows
+      .filter((r) => r.offres != null && !used.has(r.numero))
+      .sort((a, b) => (b.offres! - a.offres!) || (b.montant - a.montant))[0];
+    if (dispute && dispute.offres != null && dispute.offres > 1) out.push(mkCard(dispute, "dispute"));
+    return out;
+  })();
+
   return {
     year: yr as number,
     availableYears: years,
@@ -2491,6 +2571,7 @@ export function loadMarchesPageData(requestedYear?: number, city: string = "pari
     concurrence,
     allMarches,
     yearsSummary,
+    signature,
   };
 }
 
