@@ -131,3 +131,62 @@ models:
         tests: [not_null]
       - name: classified_at
         tests: [not_null]
+
+  - name: stg_us_sf_dept_names
+    description: >
+      Modern-era (FY2019+) SF department display names (1:1 with
+      seed_us_sf_dept_names, Block 1 in-session enrichment). Display layer
+      only — source labels carried verbatim, never overwritten.
+    columns:
+      - name: department_code
+        tests: [not_null, unique]
+      - name: source_label
+        tests: [not_null]
+      - name: display_name
+        tests: [not_null]
+      - name: provenance
+        tests: [not_null]
+
+  - name: stg_us_sf_character_glosses
+    description: >
+      Modern-era SF budget character glosses, both sides (1:1 with
+      seed_us_sf_character_glosses, Block 1 in-session enrichment).
+      display_category drives UI placement (ranked bars vs internal /
+      adjustment / offsets blocks).
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns: [side, character_code]
+    columns:
+      - name: side
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['Revenue', 'Spending']
+      - name: character_code
+        tests: [not_null]
+      - name: gloss
+        tests: [not_null]
+      - name: display_category
+        tests:
+          - not_null
+          - accepted_values:
+              values: [standard, internal, adjustment, offset]
+      - name: provenance
+        tests: [not_null]
+
+  - name: stg_us_sf_bva_outliers
+    description: >
+      Structural-outlier annotations for the department-level
+      budget-vs-actual table (1:1 with seed_us_sf_bva_outliers): GEN and
+      PUC deviations are measured perimeter artifacts, not execution
+      stories.
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns: [department_code, side]
+    columns:
+      - name: department_code
+        tests: [not_null]
+      - name: outlier_note
+        tests: [not_null]
+      - name: is_structural_outlier
+        tests: [not_null]

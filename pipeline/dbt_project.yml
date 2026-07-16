@@ -309,6 +309,39 @@ seeds:
             classification_note: STRING
             classification_method: STRING
             classified_at: STRING
+        # SF department display names (Block 1 enrichment, in-session).
+        # Provenance-flagged DISPLAY layer — source labels are kept verbatim
+        # in source_label and never overwritten in models.
+        seed_us_sf_dept_names:
+          +column_types:
+            department_code: STRING
+            source_label: STRING
+            display_name: STRING
+            provenance: STRING
+            enriched_at: STRING
+        # SF budget character glosses (Block 1 enrichment, in-session).
+        # One-line explanations of accounting characters + display_category
+        # (standard | internal | adjustment | offset) driving where the UI
+        # renders each character (ranked bars vs internal/offsets blocks).
+        seed_us_sf_character_glosses:
+          +column_types:
+            side: STRING
+            character_code: STRING
+            source_label: STRING
+            gloss: STRING
+            display_category: STRING
+            provenance: STRING
+            enriched_at: STRING
+        # SF budget-vs-actual structural outliers (GEN/PUC) — documented
+        # perimeter artifacts, measured on mart_us_sf_budget_vs_actual_dept.
+        seed_us_sf_bva_outliers:
+          +column_types:
+            department_code: STRING
+            side: STRING
+            is_structural_outlier: BOOLEAN
+            outlier_note: STRING
+            provenance: STRING
+            noted_at: STRING
 
 # =============================================================================
 # Configuration des modèles par couche

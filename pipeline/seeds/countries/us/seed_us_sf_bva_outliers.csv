@@ -1,0 +1,3 @@
+department_code,side,is_structural_outlier,outlier_note,provenance,noted_at
+GEN,Spending,true,"GEN is the citywide unallocated bucket, not an operating department: items budgeted here are often spent from line departments, so large deviations (for example +73% in FY2024) are a perimeter artifact of where money is parked, not overspending.",manual_in_session_measured_on_mart,2026-07-16
+PUC,Spending,true,"The SFPUC's budget sits across a fund structure where part of the Operating-fund budget is executed in other fund categories (debt service, capital), so large under-execution (for example −42% in FY2024) is a fund-structure artifact, not money left unspent.",manual_in_session_measured_on_mart,2026-07-16
