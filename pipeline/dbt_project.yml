@@ -293,6 +293,23 @@ seeds:
         source_url: STRING
         licence: STRING
 
+    # -------------------------------------------------------------------------
+    # Country seeds — US (ADR-0010 D3). `us_seeds` lands in the dbt_us_*
+    # dataset family via macros/generate_schema_name.sql.
+    # -------------------------------------------------------------------------
+    countries:
+      us:
+        +schema: us_seeds
+        # Manual bucket classification of top SF voucher payees (display
+        # categorization only — amounts come from raw.us_sf_vouchers).
+        seed_us_sf_payee_buckets:
+          +column_types:
+            vendor: STRING
+            bucket: STRING
+            classification_note: STRING
+            classification_method: STRING
+            classified_at: STRING
+
 # =============================================================================
 # Configuration des modèles par couche
 # =============================================================================

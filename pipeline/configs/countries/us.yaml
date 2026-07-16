@@ -1,18 +1,20 @@
 # =============================================================================
-# United States — national sources configuration
+# United States — national + city sources configuration
 #
 # Read by:
 #   - `pipeline/scripts/sync/sync_fiscaldata.py us`   (type: fiscaldata_api)
 #   - `pipeline/scripts/sync/sync_census_popest.py us` (type: census_popest_csv)
+#   - `pipeline/scripts/sync/sync_socrata.py us`      (type: socrata — DataSF)
 #
-# Each source declares how to ingest one dataset into BigQuery `raw.us_*`.
-# Raw tables keep every value AS A STRING exactly as the API returns it
-# (Fiscal Data returns everything as JSON strings, with missing values as
-# the literal string "null" — typing happens once, in stg. See
-# docs/us/API-RECON.md §B.5).
+# Each source declares how to ingest one dataset into BigQuery `raw.us_*`
+# (city-scale tables are `raw.us_sf_*`). Raw tables keep every value AS A
+# STRING exactly as the API returns it (Fiscal Data returns everything as
+# JSON strings with "null" for missing; Socrata numbers arrive as strings
+# and text dates come in mixed formats — typing happens once, in stg. See
+# docs/us/API-RECON.md §A.6 and §B.5).
 #
 # Decision references: ADR-0010 (D3 protocol adapters + country YAML),
-# docs/us/API-RECON.md §B (verified endpoints and extraction recipes).
+# docs/us/API-RECON.md §A (DataSF) + §B (verified endpoints and recipes).
 # =============================================================================
 
 country_slug: us
@@ -34,6 +36,32 @@ fiscaldata:
   dataset_page_base: "https://fiscaldata.treasury.gov/datasets"
   catalog_table: us_fiscaldata_catalog
   page_size: 10000
+
+# ---------------------------------------------------------------------------
+# DataSF / Socrata protocol settings (shared by all `socrata` sources below).
+# Generic SODA mechanics verified live 2026-07-15/16 (docs/us/API-RECON.md
+# §A.6 + sync_socrata.py header):
+#   - paged JSON via $limit/$offset (always pass $order for stable paging;
+#     `:id` is the stable system ordering)
+#   - bulk CSV in large /resource/<id>.csv pages — the one-shot
+#     /api/views/<id>/rows.csv export drops mid-stream on multi-GB pulls
+#     (verified 2026-07-16) with no Range/resume, so pages retry instead
+#   - JSON records OMIT keys whose value is null → the column list must come
+#     from the views metadata, not from the first row
+#   - numbers arrive as strings; raw keeps them byte-faithful (typing in stg)
+# sync_socrata.py snapshots each dataset's /api/views/<id>.json metadata
+# (name, rowsUpdatedAt, columns) into `raw.us_sf_catalog` on each run —
+# the provenance source of truth for stg/marts/exports.
+# ---------------------------------------------------------------------------
+datasf:
+  protocol: socrata
+  domain: "data.sfgov.org"
+  portal_name: "DataSF — City and County of San Francisco open data portal"
+  dataset_page_base: "https://data.sfgov.org/d"
+  catalog_table: us_sf_catalog
+  page_size: 50000        # paged-json mode ($limit per request)
+  csv_page_size: 500000   # bulk-csv mode (rows per CSV page; the one-shot
+                          # rows.csv export drops mid-stream on long pulls)
 
 sources:
   # ---------------------------------------------------------------------------
@@ -131,3 +159,100 @@ sources:
     source: "U.S. Census Bureau, Population Estimates Program (PEP), Vintage 2025"
     source_page: "https://www.census.gov/programs-surveys/popest.html"
     description: "Census Bureau Vintage 2025 resident population estimates (national + states), July 1 estimates 2020-2025"
+
+  # ---------------------------------------------------------------------------
+  # Census population — incorporated places (city-level, for /us/city/* per-
+  # resident scaling). Same no-auth www2.census.gov Vintage 2025 path as the
+  # national file, cities/totals variant (verified live 2026-07-16: HTTP 200,
+  # text/csv, 7.4 MB). San Francisco city = SUMLEV '162', STATE '06',
+  # PLACE '67000' (filtered in stg_us_sf_population, whole file kept in raw).
+  # Same IPv4-forcing caveat as the national file.
+  # ---------------------------------------------------------------------------
+  - id: census_population_places
+    type: census_popest_csv
+    target_table: us_census_population_places
+    url: "https://www2.census.gov/programs-surveys/popest/datasets/2020-2025/cities/totals/sub-est2025.csv"
+    source: "U.S. Census Bureau, Population Estimates Program (PEP), Vintage 2025 — Subcounty Resident Population Estimates"
+    source_page: "https://www.census.gov/programs-surveys/popest.html"
+    description: "Census Bureau Vintage 2025 resident population estimates (incorporated places and minor civil divisions), July 1 estimates 2020-2025"
+
+  # ===========================================================================
+  # DataSF — /us/city/sf modern spine (docs/us/API-RECON.md §A)
+  # All published by the SF Controller's Office, refreshed weekly (comp
+  # bi-annually). All-STRING raw tables `raw.us_sf_*` + `_synced_at`.
+  # ===========================================================================
+
+  # ---------------------------------------------------------------------------
+  # Budget — adopted AAO only (no budget-phase field anywhere on the portal).
+  # Grain: FY × revenue_or_spending × org/dept/program × character/object/
+  # sub_object × fund hierarchy. FY2010–FY2027 (SF budgets two years at a
+  # time — year-2 figures are high-level estimates; label partial years).
+  # Net total DEPENDS on embedded negative "Transfer Adjustments (Citywide)"
+  # rows — keep them. `related_govt_unit` is broken here (mirrors
+  # revenue_or_spending) — the real flag lives on the actuals dataset.
+  # ---------------------------------------------------------------------------
+  - id: sf_budget
+    type: socrata
+    target_table: us_sf_budget
+    dataset_id: "xdgd-c79v"
+    mode: paged-json
+    order_by: ":id"
+    description: "SF Budget (adopted AAO) — FY2010-FY2027, ~390k rows, weekly"
+
+  # ---------------------------------------------------------------------------
+  # Spending and Revenue (actuals) — FY1999–FY2027, gross where budget is net
+  # (related govt units + Transfers Out + Intrafund Transfers Out; see
+  # analysis_us_sf_budget_vs_actual_reconciliation). Casing bug verified:
+  # related_govt_units ∈ {No, NO, Yes, YES} — normalized in stg.
+  # Chart-of-accounts break at FY2018 (legacy numeric codes → PeopleSoft
+  # mnemonics).
+  # ---------------------------------------------------------------------------
+  - id: sf_spending_revenue
+    type: socrata
+    target_table: us_sf_spending_revenue
+    dataset_id: "bpnb-jwfb"
+    mode: paged-json
+    order_by: ":id"
+    description: "SF Spending and Revenue (actuals) — FY1999-FY2027, ~763k rows, weekly"
+
+  # ---------------------------------------------------------------------------
+  # Vendor Payments (Vouchers) — the "qui reçoit" dataset. 8.07M rows →
+  # synced via bulk CSV pages (buffered to one local .csv.gz, single BQ
+  # load job — NEVER paged as 8M JSON rows). Grain: voucher × accounting
+  # distribution line. Vendor names are UNKEYED STRINGS (BNY Mellon under
+  # 2 spellings); naive top-payee ranking is dominated by banks/fiscal
+  # agents → bucketed via seed_us_sf_payee_buckets.
+  # ---------------------------------------------------------------------------
+  - id: sf_vouchers
+    type: socrata
+    target_table: us_sf_vouchers
+    dataset_id: "n9pm-xkyq"
+    mode: bulk-csv
+    order_by: ":id"
+    description: "SF Vendor Payments (vouchers) — FY2007-FY2027, ~8.07M rows, weekly (bulk CSV)"
+
+  # ---------------------------------------------------------------------------
+  # Supplier Contracts — grain = contract × project-team member: summing
+  # agreed_amt double-counts (48,350 rows vs ~31,935 distinct contract_no —
+  # encoded as a dbt test). Placeholder 2200-12-31 end dates capped in stg.
+  # ---------------------------------------------------------------------------
+  - id: sf_supplier_contracts
+    type: socrata
+    target_table: us_sf_supplier_contracts
+    dataset_id: "cqi5-hm2d"
+    mode: paged-json
+    order_by: ":id"
+    description: "SF Supplier Contracts — ~48k rows (contract × team member), weekly"
+
+  # ---------------------------------------------------------------------------
+  # Employee Compensation — pseudonymous employee × year × year_type × job ×
+  # dept, 2013-2025, bi-annual. #1 trap: year_type contains BOTH Calendar
+  # AND Fiscal — always filter one or everything double-counts (kept in core
+  # with the field exposed; marts filter year_type='Fiscal').
+  # ---------------------------------------------------------------------------
+  - id: sf_employee_comp
+    type: socrata
+    target_table: us_sf_employee_comp
+    dataset_id: "88g8-5mnd"
+    mode: bulk-csv
+    description: "SF Employee Compensation — 2013-2025, ~1.1M rows (Calendar + Fiscal), bi-annual (bulk CSV)"

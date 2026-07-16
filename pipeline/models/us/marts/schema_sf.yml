@@ -1,0 +1,84 @@
+version: 2
+
+models:
+  - name: mart_us_sf_budget_by_year
+    description: >
+      SF net adopted budget per fiscal year × side (Revenue | Spending),
+      FY2010-FY2027, with per-resident scaling (2020-2025 Census years)
+      and DataSF provenance. Revenue = Spending per FY within $10 (tested).
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns: [fiscal_year, side]
+    columns:
+      - name: fiscal_year
+        tests: [not_null]
+      - name: side
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['Revenue', 'Spending']
+      - name: total_usd
+        tests: [not_null]
+      - name: source_url
+        tests: [not_null]
+      - name: source_rows_updated_at
+        tests: [not_null]
+
+  - name: mart_us_sf_top_payees
+    description: >
+      Top 100 voucher payees per fiscal year (FY2007-FY2027) with amounts,
+      non-profit flag, share of FY total and the manual bucket
+      classification for the FY2025 top payees (fiscal agents/banks
+      dominate the naive ranking — API-RECON §A.3).
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns: [fiscal_year, vendor]
+    columns:
+      - name: fiscal_year
+        tests: [not_null]
+      - name: rank_in_fy
+        tests: [not_null]
+      - name: vendor
+        tests: [not_null]
+      - name: vouchers_paid_usd
+        tests: [not_null]
+      - name: source_url
+        tests: [not_null]
+
+  - name: mart_us_sf_comp_by_year
+    description: >
+      SF employee compensation aggregates per FISCAL year (year_type =
+      'Fiscal' only — the Calendar/Fiscal filter lives here, not in core),
+      2013-2025: salary/benefit component totals, distinct-employee
+      headcount, per-employee mean/median.
+    columns:
+      - name: fiscal_year
+        tests: [not_null, unique]
+      - name: year_type
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['Fiscal']
+      - name: total_compensation_usd
+        tests: [not_null]
+      - name: n_employees
+        tests: [not_null]
+
+  - name: mart_us_sf_budget_vs_actual
+    description: >
+      Measured budget-vs-actual reconciliation per fiscal year × side:
+      candidate perimeters (net, excl. related govt units, excl. transfer
+      characters) and their residuals. This table is the evidence base for
+      whether/what to export as a comparison — see the model header and
+      export_us_sf.py notes.
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns: [fiscal_year, side]
+    columns:
+      - name: fiscal_year
+        tests: [not_null]
+      - name: side
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['Revenue', 'Spending']

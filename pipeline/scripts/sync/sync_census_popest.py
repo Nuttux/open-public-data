@@ -93,7 +93,14 @@ def sync_source(client: bigquery.Client, config: dict, source: dict, log: Logger
     resp = requests.get(url, timeout=REQUEST_TIMEOUT_S)
     resp.raise_for_status()
 
-    reader = csv.DictReader(io.StringIO(resp.content.decode("utf-8-sig")))
+    # The state-level NST file is ASCII, but the places file (sub-est*.csv)
+    # is Latin-1 — city names carry ñ etc. (verified live 2026-07-16:
+    # byte 0xf1 → UnicodeDecodeError under utf-8).
+    try:
+        text = resp.content.decode("utf-8-sig")
+    except UnicodeDecodeError:
+        text = resp.content.decode("latin-1")
+    reader = csv.DictReader(io.StringIO(text))
     synced_at = datetime.now(timezone.utc).isoformat()
     rows = []
     for r in reader:
