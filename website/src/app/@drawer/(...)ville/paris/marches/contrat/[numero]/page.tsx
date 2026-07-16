@@ -8,6 +8,7 @@ import {
   loadMarcheVulgarization,
   loadSirene,
 } from "@/lib/fusion-data";
+import { normalizeObjet } from "@/lib/objet-normalizer";
 
 type Params = { numero: string };
 
@@ -31,13 +32,19 @@ export default async function DrawerContratPage({ params }: { params: Promise<Pa
   const montantStr = contrat.montantMax >= 1e6
     ? `${(contrat.montantMax / 1e6).toFixed(1).replace(".", ",")} M€`
     : `${Math.round(contrat.montantMax / 1000).toLocaleString("fr-FR")} k€`;
-  const shareText = `Paris a notifié un marché de ${montantStr} à ${contrat.fournisseur} en ${contrat.year} — ${vulgarization?.objet_clair || contrat.objet}`;
+
+  // Même précédence que ContratFiche (objet_clair → regex → brut). Sans le
+  // repli `normalizeObjet`, l'en-tête affichait le libellé technique brut
+  // ("SA4.TRVX CSTRUCT…") juste au-dessus du lead qui, lui, montrait la version
+  // normalisée ("Sa4.Travaux Cstruct…") — deux titres pour un même contrat.
+  const label = vulgarization?.objet_clair || normalizeObjet(contrat.objet);
+  const shareText = `Paris a notifié un marché de ${montantStr} à ${contrat.fournisseur} en ${contrat.year} — ${label}`;
 
   return (
     <div className="theme-fusion">
       <DetailDrawer
         kicker={<DrawerKicker k="contrat" year={contrat.year} nature={contrat.nature} />}
-        title={vulgarization?.objet_clair || contrat.objet || `Marché ${contrat.numero}`}
+        title={label || `Marché ${contrat.numero}`}
         shareUrl={`/ville/paris/marches/contrat/${contrat.numero}`}
         shareText={shareText}
         backHref="/ville/paris/marches"

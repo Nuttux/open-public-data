@@ -75,9 +75,25 @@ export default function HeroDeck({ stats }: Props) {
               href={`/ville/paris/investissements/projet/${fp.id}`}
               kicker={t("fx.land.deck.c1.kicker")}
               title={t("fx.land.deck.c1.title")}
-              amount={fmtDec(fp.montant / 1e6, 1)}
+              // Angle commande publique quand le projet a des marchés
+              // rapprochés : le gros lot travaux comme chiffre, la
+              // concurrence en meta. Sinon, montant voté comme avant.
+              amount={fmtDec((fp.marches ? fp.marches.grosLotMontant : fp.montant) / 1e6, 1)}
               amountUnit="M €"
-              meta={fill(t("fx.land.deck.c1.meta"), { arr: fp.arrondissement, year: fp.year })}
+              meta={
+                fp.marches
+                  ? fp.marches.grosLotOffres != null
+                    ? fill(t("fx.land.deck.c1.meta_marches_offres"), {
+                        arr: fp.arrondissement,
+                        nb: fp.marches.nb,
+                        offres: fp.marches.grosLotOffres,
+                      })
+                    : fill(t("fx.land.deck.c1.meta_marches"), {
+                        arr: fp.arrondissement,
+                        nb: fp.marches.nb,
+                      })
+                  : fill(t("fx.land.deck.c1.meta"), { arr: fp.arrondissement, year: fp.year })
+              }
               cta={t("fx.land.deck.c1.cta")}
               photoPath={fp.photoPath}
               photoCredit={fp.credit}

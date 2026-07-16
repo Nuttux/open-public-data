@@ -24,9 +24,30 @@ describe("normalizeObjet", () => {
   });
 
   it("keeps short acronyms (≤3 chars) uppercase in ALL-CAPS context", () => {
-    // SA3 is a 3-char acronym → stays uppercase.
-    const out = normalizeObjet("SA3 OPERATION DE TRAVAUX");
-    expect(out).toMatch(/\bSA3\b/);
+    // MOE is a 3-char acronym → stays uppercase. (This test used to use "SA3",
+    // but a leading "SA<n>" is now stripped as a section code — see below.)
+    const out = normalizeObjet("MISSION MOE POUR LES ECOLES");
+    expect(out).toMatch(/\bMOE\b/);
+  });
+
+  it("strips the leading internal section code", () => {
+    // "CSP<n>"/"SA<n>" are Ville section identifiers — pure gestion, no meaning
+    // for a reader. They open ~42% of the corpus.
+    expect(normalizeObjet("CSP5 RENOVATION PARTIELLE MUSEE CARNAVALET")).not.toMatch(/CSP5/i);
+    expect(normalizeObjet("SA4.TRVX CSTRUCT PISCINE")).not.toMatch(/SA4/i);
+    expect(normalizeObjet("CSP4: AC_BC - LOT 1 : TVX")).not.toMatch(/CSP4/i);
+    // Only in leading position — a section code is only unambiguous there.
+    expect(normalizeObjet("TRAVAUX SECTEUR SA4")).toMatch(/\bSA4\b/);
+    // A leading lot number is information, not noise — it must survive.
+    expect(normalizeObjet("LOT2 AMENAGT")).toMatch(/lot 2/i);
+  });
+
+  it("restores accents on recurring domain vocabulary", () => {
+    const out = normalizeObjet("CSP5 RENOVATION PARTIELLE MUSEE CARNAVALET");
+    expect(out).toMatch(/Rénovation/);
+    expect(out).toMatch(/[Mm]usée/);
+    // Case of the source word is preserved — no capital mid-sentence.
+    expect(normalizeObjet("travaux de renovation")).toMatch(/de rénovation/);
   });
 
   it("normalises lot-and-number patterns", () => {

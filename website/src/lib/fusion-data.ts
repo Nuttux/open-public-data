@@ -327,6 +327,16 @@ export type FeaturedProjet = {
   direction: string | null;
   photoPath: string;
   credit: string | null;
+  /** Angle commande publique du chantier, calculé depuis projet_marches.json
+   *  + exports marchés (jamais saisi à la main). Null si le projet n'a pas de
+   *  marchés rapprochés — la carte retombe alors sur le montant voté. */
+  marches: {
+    nb: number;
+    /** Enveloppe max du plus gros marché lié. */
+    grosLotMontant: number;
+    /** Offres reçues sur ce gros lot (null si millésime pré-2024). */
+    grosLotOffres: number | null;
+  } | null;
 };
 
 export type FeaturedAsso = {
@@ -359,8 +369,12 @@ export type FeaturedBailleur = {
   photoCredit: string | null;
 };
 
-const HERO_FEATURED_PROJET_ID = "2024_18_51_019";
-const HERO_FEATURED_PROJET_PHOTO = "/photos/hero/piscine-belliard.jpg";
+// Château-Landon plutôt que Belliard : même famille (piscine, photo dédiée)
+// mais 5 marchés rapprochés 2022→2026 dont le gros lot travaux porte des
+// données de concurrence DECP (offres reçues) — Belliard, notifié en 2023,
+// n'en aura jamais (champ publié à partir du millésime 2024).
+const HERO_FEATURED_PROJET_ID = "2024_10_27_016";
+const HERO_FEATURED_PROJET_PHOTO = "/photos/hero/piscine-chateau-landon.jpg";
 
 const HERO_FEATURED_ASSO_NAME = "PARIS MUSEES";
 const HERO_FEATURED_ASSO_PHOTO = "/photos/hero/petit-palais.jpg";
@@ -395,6 +409,19 @@ function loadFeaturedProjet(): FeaturedProjet | null {
       );
       credit = photos.items[HERO_FEATURED_PROJET_ID]?.credit ?? null;
     } catch {}
+
+    // Angle commande publique de la carte : calculé, jamais saisi à la main.
+    const linked = loadProjetMarches(HERO_FEATURED_PROJET_ID);
+    let marches: FeaturedProjet["marches"] = null;
+    if (linked.length > 0) {
+      const grosLot = linked.reduce((a, b) => ((b.montant_max ?? 0) > (a.montant_max ?? 0) ? b : a));
+      marches = {
+        nb: linked.length,
+        grosLotMontant: grosLot.montant_max ?? 0,
+        grosLotOffres: grosLot.offres_recues ?? null,
+      };
+    }
+
     return {
       id: p.id,
       nom: p.nom_projet ?? "",
@@ -404,6 +431,7 @@ function loadFeaturedProjet(): FeaturedProjet | null {
       direction: p.direction ?? null,
       photoPath: HERO_FEATURED_PROJET_PHOTO,
       credit,
+      marches,
     };
   } catch {
     return null;
@@ -1007,7 +1035,38 @@ export type ProjetMarche = {
   lieu_execution: string | null;
   score: number;
   label: "confirmed" | "probable";
+  /** Nombre d'offres reçues (DECP), joint au chargement depuis les exports
+   *  marchés. Absent de projet_marches.json — null pour les millésimes
+   *  antérieurs à 2024 où le champ n'est pas publié. */
+  offres_recues?: number | null;
+  /** Libellés vulgarisés, joints au chargement — même précédence que les
+   *  autres listes : objet_clair (EN si dispo) → normalizeObjet(objet). */
+  objet_clair?: string | null;
+  objet_clair_en?: string | null;
 };
+
+// Index numero_marche → offres reçues, construit une fois depuis les exports
+// marchés (le champ n'existe pas dans projet_marches.json). Mémoïsé process-
+// wide comme les autres caches de ce module.
+let _offresByNumero: Map<string, number> | null = null;
+
+function offresRecuesFor(numero: string): number | null {
+  if (_offresByNumero === null) {
+    _offresByNumero = new Map();
+    const indexRaw = readJsonOrNull<MarchesIndexRaw>("marches-publics/index.json");
+    for (const y of indexRaw?.availableYears ?? []) {
+      const f = readJsonOrNull<MarchesFile>(`marches-publics/marches_${y}.json`);
+      for (const m of f?.data ?? f?.marches ?? []) {
+        const r = m as MarcheRow & { numero_marche?: string };
+        const n = Number(r.decp_offres_recues ?? 0);
+        if (r.numero_marche && Number.isFinite(n) && n > 0) {
+          _offresByNumero.set(r.numero_marche, n);
+        }
+      }
+    }
+  }
+  return _offresByNumero.get(numero) ?? null;
+}
 
 export type ProjetFiche = {
   id: string;
@@ -1057,7 +1116,26 @@ export function loadProjetMarches(id: string): ProjetMarche[] {
     const raw = readJsonOrNull<{ projets?: Record<string, ProjetMarche[]> }>("map/projet_marches.json");
     _projetMarches = raw?.projets ?? {};
   }
-  return _projetMarches[id] ?? [];
+  // Joins au moment de la lecture (pas stockés dans le fichier de
+  // rapprochement) : offres reçues depuis les exports marchés, et nom du
+  // titulaire via le cache SIRENE quand DECP ne publie que le SIRET — les
+  // lignes decp-2025/2026 arrivent parfois sans `fournisseur_nom` alors que
+  // l'entreprise est résolvable localement.
+  return (_projetMarches[id] ?? []).map((m) => {
+    let nom = m.fournisseur_nom;
+    if (!nom && m.fournisseur_siret) {
+      const siren = m.fournisseur_siret.replace(/\s/g, "").slice(0, 9);
+      if (/^\d{9}$/.test(siren)) nom = loadSirene(siren)?.nom ?? null;
+    }
+    const vulg = m.numero_marche ? loadMarcheVulgarization(m.numero_marche) : null;
+    return {
+      ...m,
+      fournisseur_nom: nom,
+      offres_recues: m.numero_marche ? offresRecuesFor(m.numero_marche) : null,
+      objet_clair: vulg?.objet_clair ?? null,
+      objet_clair_en: vulg?.objet_clair_en ?? null,
+    };
+  });
 }
 
 let _projetMarchesCoverage: {
@@ -1567,6 +1645,7 @@ type MarcheRow = {
   nature?: string;
   date_notification?: string;
   decp_offres_recues?: number | null;
+  decp_procedure?: string | null;
 };
 
 type MarchesFile = {
@@ -1686,6 +1765,14 @@ export type ContratRanking = {
   medianNature: number;      // médiane des montants pour cette nature/année
   year: number;
   nature: string;
+  /** Médiane des offres reçues chez les contrats de même procédure, même
+   *  année — le repère qui dit si « 1 offre » est banal ou notable ici.
+   *  `null` quand l'échantillon est vide : `offresRecues` n'est renseigné de
+   *  façon systématique dans DECP qu'à partir du millésime 2024. */
+  medianOffresProcedure: number | null;
+  /** Taille de l'échantillon derrière la médiane — sert à ne pas afficher un
+   *  repère calculé sur trois contrats. */
+  totalOffresProcedure: number;
 };
 
 /**
@@ -1710,6 +1797,21 @@ export function loadContratRanking(numero: string, year: number, nature: string,
     const median = natureRows.length
       ? natureRows[Math.floor(natureRows.length / 2)]
       : 0;
+
+    // Repère de concurrence : « 1 offre » ne se lit pas pareil selon la
+    // procédure — c'est la norme sur un marché sans mise en concurrence, c'est
+    // notable sur un appel d'offres ouvert. On compare donc le contrat à ses
+    // pairs de même procédure plutôt qu'à l'ensemble de l'année.
+    const self = rows.find((r) => r.numero_marche === numero);
+    const procedure = self?.decp_procedure ?? null;
+    const offresPairs = procedure
+      ? rows
+          .filter((r) => r.decp_procedure === procedure)
+          .map((r) => Number(r.decp_offres_recues ?? 0))
+          .filter((n) => n > 0)
+          .sort((a, b) => a - b)
+      : [];
+
     return {
       montant,
       rankYear,
@@ -1719,6 +1821,10 @@ export function loadContratRanking(numero: string, year: number, nature: string,
       medianNature: median,
       year,
       nature,
+      medianOffresProcedure: offresPairs.length
+        ? offresPairs[Math.floor(offresPairs.length / 2)]
+        : null,
+      totalOffresProcedure: offresPairs.length,
     };
   } catch {
     return null;
@@ -1762,12 +1868,19 @@ export function loadContrat(numero: string): ContratFiche | null {
         || r.decp_cpv_famille != null
         || r.decp_montant_notifie != null
         || r.decp_lieu_execution_lisible != null;
+      // Certaines lignes decp-2025/2026 arrivent sans nom de titulaire mais
+      // avec un SIRET — résolvable via le cache SIRENE local.
+      let fournisseurNom = r.fournisseur_nom;
+      if (!fournisseurNom && r.fournisseur_siret) {
+        const siren9 = r.fournisseur_siret.replace(/\s/g, "").slice(0, 9);
+        if (/^\d{9}$/.test(siren9)) fournisseurNom = loadSirene(siren9)?.nom;
+      }
       return {
         numero: r.numero_marche ?? numero,
         objet: r.objet ?? "",
         nature: r.nature ?? "—",
         categorie: r.categorie_libelle ?? "—",
-        fournisseur: r.fournisseur_nom ?? "Non précisé",
+        fournisseur: fournisseurNom ?? "Non précisé",
         fournisseurSiret: r.fournisseur_siret ?? "",
         multiAttributaire: r.fournisseur_nom === "MARCHE MULTIATTRIBUTAIRE" || Boolean(r.is_multiattributaire),
         montantMin: Number(r.montant_min ?? 0),
@@ -1808,7 +1921,11 @@ export type FournisseurFiche = {
   yearsActive: number[];
   byYear: { year: number; amount: number; count: number }[];
   byCategory: { category: string; amount: number; count: number }[];
-  contrats: { numero: string; objet: string; montant: number; year: number; date: string; categorie: string; nature: string }[];
+  /** `objet` est le libellé technique DECP brut ; `objetClair`/`objetClairEn`
+   *  sont la version vulgarisée quand elle existe (couverture partielle). Les
+   *  consommateurs suivent la même précédence qu'ailleurs :
+   *  objetClair → normalizeObjet(objet) → objet. */
+  contrats: { numero: string; objet: string; objetClair?: string; objetClairEn?: string; montant: number; year: number; date: string; categorie: string; nature: string }[];
   /** Détail de l'agrégation par SIREN : un même SIREN peut couvrir plusieurs
    *  établissements (SIRETs) qui apparaissent sous des libellés différents
    *  dans DECP. Les montants ci-dessus somment tous ces SIRETs. */
@@ -1855,9 +1972,18 @@ export function loadFournisseur(key: string): FournisseurFiche | null {
         const v = Number(r.montant_max ?? r.montant_min ?? 0);
         const cat = r.categorie_libelle || r.nature || "Autres";
 
+        // Même join que les pages liste (loadMarchesPageData) : sans lui, la
+        // table de la fiche fournisseur affichait le libellé brut même pour
+        // les contrats qui ont une version vulgarisée. `loadMarcheVulgarization`
+        // mémoïse la map par ville, donc ce lookup par ligne ne coûte qu'une
+        // seule lecture de fichier.
+        const vulg = r.numero_marche ? loadMarcheVulgarization(r.numero_marche) : null;
+
         contrats.push({
           numero: r.numero_marche ?? "",
           objet: r.objet ?? "",
+          objetClair: vulg?.objet_clair,
+          objetClairEn: vulg?.objet_clair_en,
           montant: v,
           year: y,
           date: r.date_notification ?? "",

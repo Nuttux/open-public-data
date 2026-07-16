@@ -11,7 +11,7 @@ export default function ContratFiche({
   contrat,
   vulgarization,
   fournisseurSirene,
-  ranking: _ranking,
+  ranking,
 }: {
   contrat: ContratFicheType;
   vulgarization?: MarcheVulgarization | null;
@@ -64,16 +64,9 @@ export default function ContratFiche({
   if (decp?.lieuExecution) {
     decpTags.push({ label: `📍 ${decp.lieuExecution}`, title: t("fx.fiche.contrat.tag.lieu_title") });
   }
-  if (decp?.offresRecues != null && decp.offresRecues > 0) {
-    decpTags.push({
-      label: decp.offresRecues === 1
-        ? t("fx.fiche.contrat.tag.offres_singular")
-        : t("fx.fiche.contrat.tag.offres_plural").replace("{n}", String(decp.offresRecues)),
-      title: decp.offresRecues === 1
-        ? t("fx.fiche.contrat.tag.offres_singular_title")
-        : t("fx.fiche.contrat.tag.offres_plural_title"),
-    });
-  }
+  // `offresRecues` ne figure plus ici : promu en section « Concurrence », où
+  // il y a la place pour le repère de comparaison et pour dire ce que
+  // l'open data ne publie pas.
   if (decp?.hasConsiderationSociale) {
     decpTags.push({
       label: t("fx.fiche.contrat.tag.clauses_sociales"),
@@ -177,6 +170,108 @@ export default function ContratFiche({
           ))}
         </div>
       )}
+
+      {/* Concurrence — répond à « combien d'entreprises ont candidaté ? », la
+       * question que pose n'importe quel lecteur devant un contrat attribué.
+       *
+       * Ce que les DECP publient : le titulaire, le nombre d'offres reçues, la
+       * procédure. Ce qu'elles ne publient PAS : l'identité des candidats non
+       * retenus — aucun champ du standard ne la porte. On l'écrit dans la fiche
+       * plutôt que de laisser chercher une donnée qui n'existe pas.
+       *
+       * `offresRecues` n'est renseigné de façon systématique qu'à partir du
+       * millésime 2024 ; avant, on n'a que la procédure (elle, toujours
+       * présente). La section s'adapte au lieu de disparaître. */}
+      {(decp?.offresRecues != null || decp?.procedure) && (() => {
+        const offres = decp?.offresRecues ?? null;
+        const seul = offres === 1;
+        // Repère : la médiane des offres chez les contrats de MÊME procédure.
+        // « 1 offre » est la norme sur un marché sans mise en concurrence et
+        // notable sur un appel d'offres ouvert — comparer à l'ensemble de
+        // l'année mélangerait ces deux cas. Masqué sous 5 pairs : une médiane
+        // sur 3 contrats ne vaut pas un repère.
+        const repere =
+          ranking?.medianOffresProcedure != null && ranking.totalOffresProcedure >= 5
+            ? ranking
+            : null;
+        const dots = offres != null ? Math.min(offres, 12) : 0;
+
+        return (
+          <section className="fx-fiche-section">
+            <div className="fx-fiche-h">{t("fx.fiche.contrat.conc")}</div>
+
+            {offres != null && offres > 0 ? (
+              <div style={{ margin: "0 0 18px" }}>
+                <div style={{ display: "flex", alignItems: "center", gap: 12, flexWrap: "wrap" }}>
+                  <div aria-hidden="true" style={{ display: "flex", gap: 5, alignItems: "center" }}>
+                    {Array.from({ length: dots }).map((_, i) => (
+                      <span
+                        key={i}
+                        style={{
+                          width: 9,
+                          height: 9,
+                          borderRadius: "50%",
+                          background: seul ? "var(--ocre)" : "var(--ink-2)",
+                        }}
+                      />
+                    ))}
+                    {offres > 12 && (
+                      <span style={{ fontFamily: "var(--f-mono)", fontSize: 11, color: "var(--muted)", marginLeft: 2 }}>+</span>
+                    )}
+                  </div>
+                  <div
+                    style={{
+                      fontFamily: "var(--f-ui)",
+                      fontSize: 15,
+                      fontWeight: 600,
+                      color: seul ? "var(--ocre)" : "var(--ink)",
+                    }}
+                  >
+                    {offres === 1
+                      ? t("fx.fiche.contrat.conc.offre_one")
+                      : t("fx.fiche.contrat.conc.offres_n").replace("{n}", String(offres))}
+                  </div>
+                </div>
+                {repere && (
+                  <p style={{ margin: "8px 0 0", fontSize: 13, color: "var(--ink-2)" }}>
+                    {t("fx.fiche.contrat.conc.repere")
+                      .replace("{n}", String(repere.medianOffresProcedure))
+                      .replace("{total}", String(repere.totalOffresProcedure))
+                      .replace("{year}", String(contrat.year))}
+                  </p>
+                )}
+              </div>
+            ) : (
+              <p style={{ margin: "0 0 18px", fontSize: 13, color: "var(--muted)" }}>
+                {t("fx.fiche.contrat.conc.non_publie")}
+              </p>
+            )}
+
+            <dl>
+              {decp?.procedure && (
+                <div className="fx-fiche-prop">
+                  <dt>{t("fx.fiche.contrat.conc.procedure")}</dt>
+                  <dd>{trLabel(decp.procedure, locale)}</dd>
+                </div>
+              )}
+              {decp?.titulairesCount != null && decp.titulairesCount > 0 && (
+                <div className="fx-fiche-prop">
+                  <dt>{t("fx.fiche.contrat.conc.attribue")}</dt>
+                  <dd>
+                    {decp.titulairesCount === 1
+                      ? t("fx.fiche.contrat.conc.attribue_one")
+                      : t("fx.fiche.contrat.conc.attribue_n").replace("{n}", String(decp.titulairesCount))}
+                  </dd>
+                </div>
+              )}
+            </dl>
+
+            <p style={{ margin: "14px 0 0", fontSize: 12, color: "var(--muted)", fontStyle: "italic", lineHeight: 1.5 }}>
+              {t("fx.fiche.contrat.conc.note")}
+            </p>
+          </section>
+        );
+      })()}
 
       {/* Titulaire promu en position 1 après KPIs+tags — c'est THE différentiateur
        * FOD (qui touche combien chez la Ville) vs simple liste DECP brute.

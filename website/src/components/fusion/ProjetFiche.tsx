@@ -5,6 +5,7 @@ import type { ProjetFiche as ProjetFicheType, ProjetPhotoResolved } from "@/lib/
 import ProjetThumb from "./ProjetThumb";
 import { useT, useLocale } from "@/lib/localeContext";
 import { trLabel } from "@/lib/label-translate";
+import { normalizeObjet } from "@/lib/objet-normalizer";
 
 const fill = (s: string, vars: Record<string, string | number>) => {
   let r = s;
@@ -213,7 +214,9 @@ export default function ProjetFiche({ projet, photo }: { projet: ProjetFicheType
           />
 
           <div>
-            {projet.marches.map((m) => {
+            {/* Plus gros marchés d'abord — le lot travaux principal est ce que
+             * le lecteur vient chercher, pas la chronologie AMO→MOE. */}
+            {[...projet.marches].sort((a, b) => (b.montant_max ?? 0) - (a.montant_max ?? 0)).map((m) => {
               const f = fmtEur(m.montant_max);
               const confidence = m.label === "confirmed" ? t("fx.fiche.projet.confidence.confirmed") : t("fx.fiche.projet.confidence.probable");
               const badgeColor = m.label === "confirmed" ? "var(--vert)" : "var(--ocre)";
@@ -241,13 +244,27 @@ export default function ProjetFiche({ projet, photo }: { projet: ProjetFicheType
                     </span>
                   </div>
                   <div style={{ fontSize: 12, color: "var(--ink-2)", lineHeight: 1.45, marginBottom: 4 }}>
-                    {m.objet.length > 120 ? m.objet.slice(0, 120) + "…" : m.objet}
+                    {(() => {
+                      // Précédence partagée avec les autres listes : version
+                      // vulgarisée (EN si dispo) → repli regex sur le libellé
+                      // technique DECP.
+                      const clair = locale === "en" ? m.objet_clair_en || m.objet_clair : m.objet_clair;
+                      const clean = clair || normalizeObjet(m.objet);
+                      return clean.length > 120 ? clean.slice(0, 120) + "…" : clean;
+                    })()}
                   </div>
                   <div style={{ display: "flex", flexWrap: "wrap", gap: 6, fontSize: 10.5, fontFamily: "var(--f-mono)", color: "var(--muted)", textTransform: "uppercase", letterSpacing: ".04em" }}>
                     <span style={{ color: badgeColor, fontWeight: 600 }}>
                       {confidence}
                     </span>
                     {m.annee && <span>· {m.annee}</span>}
+                    {m.offres_recues != null && m.offres_recues > 0 && (
+                      <span style={{ color: m.offres_recues === 1 ? "var(--ocre)" : undefined, fontWeight: m.offres_recues === 1 ? 600 : undefined }}>
+                        · {m.offres_recues === 1
+                          ? t("fx.fiche.contrat.conc.offre_one")
+                          : fill(t("fx.fiche.contrat.conc.offres_n"), { n: m.offres_recues })}
+                      </span>
+                    )}
                     {m.ccag && <span>· {m.ccag}</span>}
                     {m.cpv_famille && <span>· {m.cpv_famille}</span>}
                     {m.lieu_execution && <span>· {m.lieu_execution}</span>}

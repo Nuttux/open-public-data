@@ -149,7 +149,11 @@ export default function FournisseurFiche({
                 <tr key={c.numero}>
                   <td style={{ fontWeight: 500, maxWidth: 280 }}>
                     {(() => {
-                      const clean = normalizeObjet(c.objet);
+                      // Précédence partagée avec les pages liste : version
+                      // vulgarisée si elle existe, sinon repli regex sur le
+                      // libellé technique DECP.
+                      const clair = locale === "en" ? c.objetClairEn || c.objetClair : c.objetClair;
+                      const clean = clair || normalizeObjet(c.objet);
                       const shown = clean.length > 70 ? clean.slice(0, 70) + "…" : clean;
                       return c.numero ? (
                         <Link

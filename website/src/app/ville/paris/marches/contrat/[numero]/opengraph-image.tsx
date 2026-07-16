@@ -1,6 +1,7 @@
 import { ImageResponse } from "next/og";
 
 import { loadContrat, loadMarcheVulgarization } from "@/lib/fusion-data";
+import { normalizeObjet } from "@/lib/objet-normalizer";
 
 export const runtime = "nodejs";
 export const alt = "Marché public — France Open Data";
@@ -19,7 +20,10 @@ export default async function OG({ params }: { params: Promise<{ numero: string 
   const c = loadContrat(numero);
   const v = c ? loadMarcheVulgarization(c.numero) : null;
 
-  const title = v?.objet_clair || c?.objet || `Marché ${numero}`;
+  // Même précédence que la fiche : sans le repli `normalizeObjet`, la carte
+  // sociale partait avec le libellé technique brut pour les ~93 % de contrats
+  // qui n'ont pas de vulgarisation.
+  const title = v?.objet_clair || (c ? normalizeObjet(c.objet) : "") || `Marché ${numero}`;
   const montant = c ? fmtEur(c.montantMax) : "—";
   const fournisseur = c?.fournisseur || "";
   const year = c?.year || "";
