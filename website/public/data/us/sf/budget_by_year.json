@@ -1,0 +1,362 @@
+{
+  "generated_at": "2026-07-16T14:41:57.397162+00:00",
+  "source_pipeline": "configs/countries/us.yaml → sync_socrata.py + sync_census_popest.py → raw.us_sf_* → dbt_us_staging → dbt_us_analytics → dbt_us_marts → export_us_sf.py",
+  "country": "us",
+  "scale": "city",
+  "place": "sf",
+  "unit": "USD",
+  "as_of": "2026-07-13T10:17:58+00:00",
+  "source": {
+    "name": "Budget",
+    "dataset_id": "xdgd-c79v",
+    "source_url": "https://data.sfgov.org/d/xdgd-c79v",
+    "attribution": "SF Controller's Office",
+    "rows_updated_at": "2026-07-13T10:17:58+00:00"
+  },
+  "population": {
+    "value": 826079,
+    "year": 2025,
+    "as_of": "2025-07-01",
+    "source": "U.S. Census Bureau, Population Estimates Program (PEP), Vintage 2025 — Subcounty Resident Population Estimates",
+    "source_url": "https://www2.census.gov/programs-surveys/popest/datasets/2020-2025/cities/totals/sub-est2025.csv",
+    "note": "July 1 Census estimate. per_resident_usd values are computed per fiscal year against the SAME-year estimate (SF fiscal year N ends June 30 of year N) and only exist for fiscal years with a Vintage 2025 estimate (2020-2025)."
+  },
+  "perimeter": "Adopted budget (Annual Appropriation Ordinance) as published by the SF Controller — ALL funds (operating + capital + continuing projects), citywide. Totals are NET: the dataset embeds negative 'Transfer Adjustment' rows that cancel inter/intra-fund transfers (their per-year size is exposed as transfer_adjustment_usd). There is no proposed-vs-adopted distinction anywhere on the portal.",
+  "sides": {
+    "spending": {
+      "points": [
+        {
+          "fiscal_year": 2010,
+          "total_usd": 6680927708.0,
+          "transfer_adjustment_usd": -1756099852.0,
+          "n_lines": 11050,
+          "per_resident_usd": null,
+          "population_year": null,
+          "is_fiscal_year_complete": true
+        },
+        {
+          "fiscal_year": 2011,
+          "total_usd": 6658375805.0,
+          "transfer_adjustment_usd": -1706561884.0,
+          "n_lines": 11152,
+          "per_resident_usd": null,
+          "population_year": null,
+          "is_fiscal_year_complete": true
+        },
+        {
+          "fiscal_year": 2012,
+          "total_usd": 6929075337.0,
+          "transfer_adjustment_usd": -1799129288.0,
+          "n_lines": 10841,
+          "per_resident_usd": null,
+          "population_year": null,
+          "is_fiscal_year_complete": true
+        },
+        {
+          "fiscal_year": 2013,
+          "total_usd": 7598515108.0,
+          "transfer_adjustment_usd": -1923103039.0,
+          "n_lines": 11209,
+          "per_resident_usd": null,
+          "population_year": null,
+          "is_fiscal_year_complete": true
+        },
+        {
+          "fiscal_year": 2014,
+          "total_usd": 8317291789.0,
+          "transfer_adjustment_usd": -2271329214.0,
+          "n_lines": 11379,
+          "per_resident_usd": null,
+          "population_year": null,
+          "is_fiscal_year_complete": true
+        },
+        {
+          "fiscal_year": 2015,
+          "total_usd": 9065449277.0,
+          "transfer_adjustment_usd": -2468574733.0,
+          "n_lines": 11433,
+          "per_resident_usd": null,
+          "population_year": null,
+          "is_fiscal_year_complete": true
+        },
+        {
+          "fiscal_year": 2016,
+          "total_usd": 9535686254.0,
+          "transfer_adjustment_usd": -2637091628.0,
+          "n_lines": 11534,
+          "per_resident_usd": null,
+          "population_year": null,
+          "is_fiscal_year_complete": true
+        },
+        {
+          "fiscal_year": 2017,
+          "total_usd": 10221212885.0,
+          "transfer_adjustment_usd": -2904646201.0,
+          "n_lines": 11951,
+          "per_resident_usd": null,
+          "population_year": null,
+          "is_fiscal_year_complete": true
+        },
+        {
+          "fiscal_year": 2018,
+          "total_usd": 10503079466.0,
+          "transfer_adjustment_usd": -2576658637.0,
+          "n_lines": 32923,
+          "per_resident_usd": null,
+          "population_year": null,
+          "is_fiscal_year_complete": true
+        },
+        {
+          "fiscal_year": 2019,
+          "total_usd": 11054255070.0,
+          "transfer_adjustment_usd": -3013846189.0,
+          "n_lines": 22645,
+          "per_resident_usd": null,
+          "population_year": null,
+          "is_fiscal_year_complete": true
+        },
+        {
+          "fiscal_year": 2020,
+          "total_usd": 12313688231.0,
+          "transfer_adjustment_usd": -3453172648.0,
+          "n_lines": 25347,
+          "per_resident_usd": 14070.55,
+          "population_year": 2020,
+          "is_fiscal_year_complete": true
+        },
+        {
+          "fiscal_year": 2021,
+          "total_usd": 13614632249.0,
+          "transfer_adjustment_usd": -4157515177.0,
+          "n_lines": 25077,
+          "per_resident_usd": 16681.14,
+          "population_year": 2021,
+          "is_fiscal_year_complete": true
+        },
+        {
+          "fiscal_year": 2022,
+          "total_usd": 13248709511.0,
+          "transfer_adjustment_usd": -3388369540.0,
+          "n_lines": 24113,
+          "per_resident_usd": 16290.75,
+          "population_year": 2022,
+          "is_fiscal_year_complete": true
+        },
+        {
+          "fiscal_year": 2023,
+          "total_usd": 14001270636.0,
+          "transfer_adjustment_usd": -3601754400.0,
+          "n_lines": 24513,
+          "per_resident_usd": 17138.97,
+          "population_year": 2023,
+          "is_fiscal_year_complete": true
+        },
+        {
+          "fiscal_year": 2024,
+          "total_usd": 14631715548.0,
+          "transfer_adjustment_usd": -3594259577.0,
+          "n_lines": 24033,
+          "per_resident_usd": 17823.02,
+          "population_year": 2024,
+          "is_fiscal_year_complete": true
+        },
+        {
+          "fiscal_year": 2025,
+          "total_usd": 15917870152.0,
+          "transfer_adjustment_usd": -4011606506.0,
+          "n_lines": 23750,
+          "per_resident_usd": 19269.19,
+          "population_year": 2025,
+          "is_fiscal_year_complete": true
+        },
+        {
+          "fiscal_year": 2026,
+          "total_usd": 15990860523.0,
+          "transfer_adjustment_usd": -3938338493.0,
+          "n_lines": 23551,
+          "per_resident_usd": null,
+          "population_year": null,
+          "is_fiscal_year_complete": true
+        },
+        {
+          "fiscal_year": 2027,
+          "total_usd": 16234417626.0,
+          "transfer_adjustment_usd": -3782131311.0,
+          "n_lines": 7621,
+          "per_resident_usd": null,
+          "population_year": null,
+          "is_fiscal_year_complete": false
+        }
+      ],
+      "n_points": 18
+    },
+    "revenue": {
+      "points": [
+        {
+          "fiscal_year": 2010,
+          "total_usd": 6680927708.0,
+          "transfer_adjustment_usd": -1756099852.0,
+          "n_lines": 2181,
+          "per_resident_usd": null,
+          "population_year": null,
+          "is_fiscal_year_complete": true
+        },
+        {
+          "fiscal_year": 2011,
+          "total_usd": 6658375805.0,
+          "transfer_adjustment_usd": -1706561884.0,
+          "n_lines": 2249,
+          "per_resident_usd": null,
+          "population_year": null,
+          "is_fiscal_year_complete": true
+        },
+        {
+          "fiscal_year": 2012,
+          "total_usd": 6929075337.0,
+          "transfer_adjustment_usd": -1799129288.0,
+          "n_lines": 2458,
+          "per_resident_usd": null,
+          "population_year": null,
+          "is_fiscal_year_complete": true
+        },
+        {
+          "fiscal_year": 2013,
+          "total_usd": 7598515111.0,
+          "transfer_adjustment_usd": -1923103039.0,
+          "n_lines": 2543,
+          "per_resident_usd": null,
+          "population_year": null,
+          "is_fiscal_year_complete": true
+        },
+        {
+          "fiscal_year": 2014,
+          "total_usd": 8317291789.0,
+          "transfer_adjustment_usd": -2271329214.0,
+          "n_lines": 2625,
+          "per_resident_usd": null,
+          "population_year": null,
+          "is_fiscal_year_complete": true
+        },
+        {
+          "fiscal_year": 2015,
+          "total_usd": 9065449277.0,
+          "transfer_adjustment_usd": -2468574733.0,
+          "n_lines": 2662,
+          "per_resident_usd": null,
+          "population_year": null,
+          "is_fiscal_year_complete": true
+        },
+        {
+          "fiscal_year": 2016,
+          "total_usd": 9535686254.0,
+          "transfer_adjustment_usd": -2637091628.0,
+          "n_lines": 2681,
+          "per_resident_usd": null,
+          "population_year": null,
+          "is_fiscal_year_complete": true
+        },
+        {
+          "fiscal_year": 2017,
+          "total_usd": 10221212885.0,
+          "transfer_adjustment_usd": -2904646201.0,
+          "n_lines": 2785,
+          "per_resident_usd": null,
+          "population_year": null,
+          "is_fiscal_year_complete": true
+        },
+        {
+          "fiscal_year": 2018,
+          "total_usd": 10503079466.0,
+          "transfer_adjustment_usd": -2576658637.0,
+          "n_lines": 6733,
+          "per_resident_usd": null,
+          "population_year": null,
+          "is_fiscal_year_complete": true
+        },
+        {
+          "fiscal_year": 2019,
+          "total_usd": 11054255070.0,
+          "transfer_adjustment_usd": -3013846189.0,
+          "n_lines": 4243,
+          "per_resident_usd": null,
+          "population_year": null,
+          "is_fiscal_year_complete": true
+        },
+        {
+          "fiscal_year": 2020,
+          "total_usd": 12313688231.0,
+          "transfer_adjustment_usd": -3453172648.0,
+          "n_lines": 4676,
+          "per_resident_usd": 14070.55,
+          "population_year": 2020,
+          "is_fiscal_year_complete": true
+        },
+        {
+          "fiscal_year": 2021,
+          "total_usd": 13614632249.0,
+          "transfer_adjustment_usd": -4157515177.0,
+          "n_lines": 4707,
+          "per_resident_usd": 16681.14,
+          "population_year": 2021,
+          "is_fiscal_year_complete": true
+        },
+        {
+          "fiscal_year": 2022,
+          "total_usd": 13248709511.0,
+          "transfer_adjustment_usd": -3388369540.0,
+          "n_lines": 4365,
+          "per_resident_usd": 16290.75,
+          "population_year": 2022,
+          "is_fiscal_year_complete": true
+        },
+        {
+          "fiscal_year": 2023,
+          "total_usd": 14001270636.0,
+          "transfer_adjustment_usd": -3601754400.0,
+          "n_lines": 4540,
+          "per_resident_usd": 17138.97,
+          "population_year": 2023,
+          "is_fiscal_year_complete": true
+        },
+        {
+          "fiscal_year": 2024,
+          "total_usd": 14631715548.0,
+          "transfer_adjustment_usd": -3594259577.0,
+          "n_lines": 4578,
+          "per_resident_usd": 17823.02,
+          "population_year": 2024,
+          "is_fiscal_year_complete": true
+        },
+        {
+          "fiscal_year": 2025,
+          "total_usd": 15917870147.0,
+          "transfer_adjustment_usd": -4011606506.0,
+          "n_lines": 4662,
+          "per_resident_usd": 19269.19,
+          "population_year": 2025,
+          "is_fiscal_year_complete": true
+        },
+        {
+          "fiscal_year": 2026,
+          "total_usd": 15990860523.0,
+          "transfer_adjustment_usd": -3938338493.0,
+          "n_lines": 4378,
+          "per_resident_usd": null,
+          "population_year": null,
+          "is_fiscal_year_complete": true
+        },
+        {
+          "fiscal_year": 2027,
+          "total_usd": 16234417626.0,
+          "transfer_adjustment_usd": -3782131311.0,
+          "n_lines": 2568,
+          "per_resident_usd": null,
+          "population_year": null,
+          "is_fiscal_year_complete": false
+        }
+      ],
+      "n_points": 18
+    }
+  },
+  "notes": "San Francisco adopts a balanced two-year budget: Revenue equals Spending in every fiscal year (dbt-tested within $10), and the two most recent fiscal years (FY2026, FY2027) are adopted in the same AAO cycle — the second year's enterprise-department figures are high-level estimates, not re-appropriated amounts. SF fiscal year N runs July 1 (N-1) to June 30 N. Dataset floor: FY2010."
+}

@@ -1,0 +1,1133 @@
+{
+  "generated_at": "2026-07-16T14:41:59.784545+00:00",
+  "source_pipeline": "configs/countries/us.yaml → sync_socrata.py + sync_census_popest.py → raw.us_sf_* → dbt_us_staging → dbt_us_analytics → dbt_us_marts → export_us_sf.py",
+  "country": "us",
+  "scale": "city",
+  "place": "sf",
+  "unit": "USD",
+  "as_of": "2026-07-13T10:08:21+00:00",
+  "sources": {
+    "budget": {
+      "source_url": "https://data.sfgov.org/d/xdgd-c79v",
+      "rows_updated_at": "2026-07-13T10:17:58+00:00"
+    },
+    "actuals": {
+      "source_url": "https://data.sfgov.org/d/bpnb-jwfb",
+      "rows_updated_at": "2026-07-13T10:08:21+00:00"
+    }
+  },
+  "comparable_perimeter": "operating_comparison",
+  "notes": "Two ways to read this file, both measured in mart_us_sf_budget_vs_actual (2026-07-16). (1) ALL FUNDS: budget_net_usd (net adopted AAO) and actual_all_usd are SEPARATE labeled series, NOT a like-for-like pair — even after dropping related-government-unit rows (retirement system, OCII…, absent from the budget dataset) and all transfer characters from both sides, actual spending stays $0.6-2.8B above budget per fiscal year (+4% to +23%, FY2018-FY2025; reconciliation_all_funds block). That residual concentrates in an actuals-only 'Unspecified' fund category with no budget counterpart ($1.6-2.4B/FY) and in continuing-project funds, where spending draws on MULTI-YEAR authority — a real feature of how SF budgets, not noise we can subtract. (2) OPERATING FUNDS ONLY (operating_comparison block: fund_category='Operating' on both sides, related govt units and transfer characters excluded): budget and actual DO reconcile — actuals run 0.4% to 8.8% UNDER budget across FY2010-FY2025 (one -16.8% outlier in FY2021, COVID), i.e. ordinary under-execution of appropriations. Only the operating_comparison pair should be charted as budget-vs-actual.",
+  "sides": {
+    "spending": {
+      "points": [
+        {
+          "fiscal_year": 1999,
+          "budget_net_usd": null,
+          "actual_all_usd": 5706903542.24,
+          "actual_excl_related_govt_units_usd": 5194971174.02,
+          "reconciliation_all_funds": {
+            "budget_excl_transfers_usd": null,
+            "actual_excl_rgu_excl_transfers_usd": 5633838254.54,
+            "residual_usd": null,
+            "residual_pct": null
+          },
+          "operating_comparison": {
+            "budget_usd": null,
+            "actual_usd": 3693898800.26,
+            "residual_usd": null,
+            "residual_pct": null
+          },
+          "is_fiscal_year_complete": true
+        },
+        {
+          "fiscal_year": 2000,
+          "budget_net_usd": null,
+          "actual_all_usd": 5953112306.33,
+          "actual_excl_related_govt_units_usd": 5174398560.18,
+          "reconciliation_all_funds": {
+            "budget_excl_transfers_usd": null,
+            "actual_excl_rgu_excl_transfers_usd": 5650273377.23,
+            "residual_usd": null,
+            "residual_pct": null
+          },
+          "operating_comparison": {
+            "budget_usd": null,
+            "actual_usd": 3773354436.78,
+            "residual_usd": null,
+            "residual_pct": null
+          },
+          "is_fiscal_year_complete": true
+        },
+        {
+          "fiscal_year": 2001,
+          "budget_net_usd": null,
+          "actual_all_usd": 6403605952.75,
+          "actual_excl_related_govt_units_usd": 5546363546.45,
+          "reconciliation_all_funds": {
+            "budget_excl_transfers_usd": null,
+            "actual_excl_rgu_excl_transfers_usd": 6053383146.03,
+            "residual_usd": null,
+            "residual_pct": null
+          },
+          "operating_comparison": {
+            "budget_usd": null,
+            "actual_usd": 4064568541.42,
+            "residual_usd": null,
+            "residual_pct": null
+          },
+          "is_fiscal_year_complete": true
+        },
+        {
+          "fiscal_year": 2002,
+          "budget_net_usd": null,
+          "actual_all_usd": 6450360608.22,
+          "actual_excl_related_govt_units_usd": 5591686205.8,
+          "reconciliation_all_funds": {
+            "budget_excl_transfers_usd": null,
+            "actual_excl_rgu_excl_transfers_usd": 6175901992.89,
+            "residual_usd": null,
+            "residual_pct": null
+          },
+          "operating_comparison": {
+            "budget_usd": null,
+            "actual_usd": 4451701783.09,
+            "residual_usd": null,
+            "residual_pct": null
+          },
+          "is_fiscal_year_complete": true
+        },
+        {
+          "fiscal_year": 2003,
+          "budget_net_usd": null,
+          "actual_all_usd": 6683912459.76,
+          "actual_excl_related_govt_units_usd": 5709395351.25,
+          "reconciliation_all_funds": {
+            "budget_excl_transfers_usd": null,
+            "actual_excl_rgu_excl_transfers_usd": 6309811042.82,
+            "residual_usd": null,
+            "residual_pct": null
+          },
+          "operating_comparison": {
+            "budget_usd": null,
+            "actual_usd": 4544420692.71,
+            "residual_usd": null,
+            "residual_pct": null
+          },
+          "is_fiscal_year_complete": true
+        },
+        {
+          "fiscal_year": 2004,
+          "budget_net_usd": null,
+          "actual_all_usd": 6552184130.52,
+          "actual_excl_related_govt_units_usd": 5462056248.26,
+          "reconciliation_all_funds": {
+            "budget_excl_transfers_usd": null,
+            "actual_excl_rgu_excl_transfers_usd": 6111048996.64,
+            "residual_usd": null,
+            "residual_pct": null
+          },
+          "operating_comparison": {
+            "budget_usd": null,
+            "actual_usd": 4612490330.66,
+            "residual_usd": null,
+            "residual_pct": null
+          },
+          "is_fiscal_year_complete": true
+        },
+        {
+          "fiscal_year": 2005,
+          "budget_net_usd": null,
+          "actual_all_usd": 6515070642.14,
+          "actual_excl_related_govt_units_usd": 5323162736.09,
+          "reconciliation_all_funds": {
+            "budget_excl_transfers_usd": null,
+            "actual_excl_rgu_excl_transfers_usd": 6011984050.96,
+            "residual_usd": null,
+            "residual_pct": null
+          },
+          "operating_comparison": {
+            "budget_usd": null,
+            "actual_usd": 4735413204.15,
+            "residual_usd": null,
+            "residual_pct": null
+          },
+          "is_fiscal_year_complete": true
+        },
+        {
+          "fiscal_year": 2006,
+          "budget_net_usd": null,
+          "actual_all_usd": 7032504310.47,
+          "actual_excl_related_govt_units_usd": 5711440408.41,
+          "reconciliation_all_funds": {
+            "budget_excl_transfers_usd": null,
+            "actual_excl_rgu_excl_transfers_usd": 6440134828.98,
+            "residual_usd": null,
+            "residual_pct": null
+          },
+          "operating_comparison": {
+            "budget_usd": null,
+            "actual_usd": 4925260967.76,
+            "residual_usd": null,
+            "residual_pct": null
+          },
+          "is_fiscal_year_complete": true
+        },
+        {
+          "fiscal_year": 2007,
+          "budget_net_usd": null,
+          "actual_all_usd": 7876073319.85,
+          "actual_excl_related_govt_units_usd": 6448638028.9,
+          "reconciliation_all_funds": {
+            "budget_excl_transfers_usd": null,
+            "actual_excl_rgu_excl_transfers_usd": 7206835307.1,
+            "residual_usd": null,
+            "residual_pct": null
+          },
+          "operating_comparison": {
+            "budget_usd": null,
+            "actual_usd": 5260150606.12,
+            "residual_usd": null,
+            "residual_pct": null
+          },
+          "is_fiscal_year_complete": true
+        },
+        {
+          "fiscal_year": 2008,
+          "budget_net_usd": null,
+          "actual_all_usd": 8320554906.14,
+          "actual_excl_related_govt_units_usd": 6753328741.45,
+          "reconciliation_all_funds": {
+            "budget_excl_transfers_usd": null,
+            "actual_excl_rgu_excl_transfers_usd": 7563093143.04,
+            "residual_usd": null,
+            "residual_pct": null
+          },
+          "operating_comparison": {
+            "budget_usd": null,
+            "actual_usd": 5639990764.44,
+            "residual_usd": null,
+            "residual_pct": null
+          },
+          "is_fiscal_year_complete": true
+        },
+        {
+          "fiscal_year": 2009,
+          "budget_net_usd": null,
+          "actual_all_usd": 8616502486.82,
+          "actual_excl_related_govt_units_usd": 6966913167.39,
+          "reconciliation_all_funds": {
+            "budget_excl_transfers_usd": null,
+            "actual_excl_rgu_excl_transfers_usd": 7812222210.7,
+            "residual_usd": null,
+            "residual_pct": null
+          },
+          "operating_comparison": {
+            "budget_usd": null,
+            "actual_usd": 5850247534.35,
+            "residual_usd": null,
+            "residual_pct": null
+          },
+          "is_fiscal_year_complete": true
+        },
+        {
+          "fiscal_year": 2010,
+          "budget_net_usd": 6680927708.0,
+          "actual_all_usd": 9185963929.98,
+          "actual_excl_related_govt_units_usd": 7456351206.92,
+          "reconciliation_all_funds": {
+            "budget_excl_transfers_usd": 7660892477.0,
+            "actual_excl_rgu_excl_transfers_usd": 8310821220.75,
+            "residual_usd": 649928743.75,
+            "residual_pct": 0.084837
+          },
+          "operating_comparison": {
+            "budget_usd": 6111112843.0,
+            "actual_usd": 5921315670.16,
+            "residual_usd": -189797172.84,
+            "residual_pct": -0.031058
+          },
+          "is_fiscal_year_complete": true
+        },
+        {
+          "fiscal_year": 2011,
+          "budget_net_usd": 6658375805.0,
+          "actual_all_usd": 9738243905.15,
+          "actual_excl_related_govt_units_usd": 7863651283.71,
+          "reconciliation_all_funds": {
+            "budget_excl_transfers_usd": 7608596754.0,
+            "actual_excl_rgu_excl_transfers_usd": 8705921153.04,
+            "residual_usd": 1097324399.04,
+            "residual_pct": 0.144222
+          },
+          "operating_comparison": {
+            "budget_usd": 6291961723.0,
+            "actual_usd": 5966557432.53,
+            "residual_usd": -325404290.47,
+            "residual_pct": -0.051717
+          },
+          "is_fiscal_year_complete": true
+        },
+        {
+          "fiscal_year": 2012,
+          "budget_net_usd": 6929075337.0,
+          "actual_all_usd": 10465877639.99,
+          "actual_excl_related_govt_units_usd": 8506691723.03,
+          "reconciliation_all_funds": {
+            "budget_excl_transfers_usd": 7910714765.0,
+            "actual_excl_rgu_excl_transfers_usd": 9390096784.16,
+            "residual_usd": 1479382019.16,
+            "residual_pct": 0.18701
+          },
+          "operating_comparison": {
+            "budget_usd": 6641057625.0,
+            "actual_usd": 6320693281.25,
+            "residual_usd": -320364343.75,
+            "residual_pct": -0.04824
+          },
+          "is_fiscal_year_complete": true
+        },
+        {
+          "fiscal_year": 2013,
+          "budget_net_usd": 7598515108.0,
+          "actual_all_usd": 11126760151.12,
+          "actual_excl_related_govt_units_usd": 8925462561.54,
+          "reconciliation_all_funds": {
+            "budget_excl_transfers_usd": 8596327807.0,
+            "actual_excl_rgu_excl_transfers_usd": 9805728332.36,
+            "residual_usd": 1209400525.36,
+            "residual_pct": 0.140688
+          },
+          "operating_comparison": {
+            "budget_usd": 7019474927.0,
+            "actual_usd": 6608712762.58,
+            "residual_usd": -410762164.42,
+            "residual_pct": -0.058518
+          },
+          "is_fiscal_year_complete": true
+        },
+        {
+          "fiscal_year": 2014,
+          "budget_net_usd": 8317291789.0,
+          "actual_all_usd": 11909628003.5,
+          "actual_excl_related_govt_units_usd": 9593852065.62,
+          "reconciliation_all_funds": {
+            "budget_excl_transfers_usd": 9352633728.0,
+            "actual_excl_rgu_excl_transfers_usd": 10514052635.13,
+            "residual_usd": 1161418907.13,
+            "residual_pct": 0.124181
+          },
+          "operating_comparison": {
+            "budget_usd": 7496897353.0,
+            "actual_usd": 6937019209.16,
+            "residual_usd": -559878143.84,
+            "residual_pct": -0.074681
+          },
+          "is_fiscal_year_complete": true
+        },
+        {
+          "fiscal_year": 2015,
+          "budget_net_usd": 9065449277.0,
+          "actual_all_usd": 11953339075.68,
+          "actual_excl_related_govt_units_usd": 9571465905.02,
+          "reconciliation_all_funds": {
+            "budget_excl_transfers_usd": 10188745830.0,
+            "actual_excl_rgu_excl_transfers_usd": 10557825507.76,
+            "residual_usd": 369079677.76,
+            "residual_pct": 0.036224
+          },
+          "operating_comparison": {
+            "budget_usd": 7994658222.0,
+            "actual_usd": 7291115453.42,
+            "residual_usd": -703542768.58,
+            "residual_pct": -0.088002
+          },
+          "is_fiscal_year_complete": true
+        },
+        {
+          "fiscal_year": 2016,
+          "budget_net_usd": 9535686254.0,
+          "actual_all_usd": 13082927955.93,
+          "actual_excl_related_govt_units_usd": 10473584118.49,
+          "reconciliation_all_funds": {
+            "budget_excl_transfers_usd": 10740934375.0,
+            "actual_excl_rgu_excl_transfers_usd": 11533379555.0,
+            "residual_usd": 792445180.0,
+            "residual_pct": 0.073778
+          },
+          "operating_comparison": {
+            "budget_usd": 8296252575.0,
+            "actual_usd": 7812815538.38,
+            "residual_usd": -483437036.62,
+            "residual_pct": -0.058272
+          },
+          "is_fiscal_year_complete": true
+        },
+        {
+          "fiscal_year": 2017,
+          "budget_net_usd": 10221212885.0,
+          "actual_all_usd": 13803922566.76,
+          "actual_excl_related_govt_units_usd": 11160776142.59,
+          "reconciliation_all_funds": {
+            "budget_excl_transfers_usd": 11501789369.0,
+            "actual_excl_rgu_excl_transfers_usd": 12278320426.22,
+            "residual_usd": 776531057.22,
+            "residual_pct": 0.067514
+          },
+          "operating_comparison": {
+            "budget_usd": 8692217537.0,
+            "actual_usd": 8061260736.12,
+            "residual_usd": -630956800.88,
+            "residual_pct": -0.072589
+          },
+          "is_fiscal_year_complete": true
+        },
+        {
+          "fiscal_year": 2018,
+          "budget_net_usd": 10503079466.0,
+          "actual_all_usd": 16088170197.79,
+          "actual_excl_related_govt_units_usd": 13144539407.5,
+          "reconciliation_all_funds": {
+            "budget_excl_transfers_usd": 11412441418.0,
+            "actual_excl_rgu_excl_transfers_usd": 13780098704.72,
+            "residual_usd": 2367657286.72,
+            "residual_pct": 0.207463
+          },
+          "operating_comparison": {
+            "budget_usd": 9028653293.0,
+            "actual_usd": 8307924738.31,
+            "residual_usd": -720728554.69,
+            "residual_pct": -0.079827
+          },
+          "is_fiscal_year_complete": true
+        },
+        {
+          "fiscal_year": 2019,
+          "budget_net_usd": 11054255070.0,
+          "actual_all_usd": 16656359102.91,
+          "actual_excl_related_govt_units_usd": 13793121882.63,
+          "reconciliation_all_funds": {
+            "budget_excl_transfers_usd": 12051968560.0,
+            "actual_excl_rgu_excl_transfers_usd": 14781109625.5,
+            "residual_usd": 2729141065.5,
+            "residual_pct": 0.226448
+          },
+          "operating_comparison": {
+            "budget_usd": 9259191475.0,
+            "actual_usd": 8941667310.55,
+            "residual_usd": -317524164.45,
+            "residual_pct": -0.034293
+          },
+          "is_fiscal_year_complete": true
+        },
+        {
+          "fiscal_year": 2020,
+          "budget_net_usd": 12313688231.0,
+          "actual_all_usd": 17657774484.47,
+          "actual_excl_related_govt_units_usd": 14664112703.1,
+          "reconciliation_all_funds": {
+            "budget_excl_transfers_usd": 13429571739.0,
+            "actual_excl_rgu_excl_transfers_usd": 15680767258.07,
+            "residual_usd": 2251195519.07,
+            "residual_pct": 0.16763
+          },
+          "operating_comparison": {
+            "budget_usd": 10166690089.0,
+            "actual_usd": 9540783137.71,
+            "residual_usd": -625906951.29,
+            "residual_pct": -0.061564
+          },
+          "is_fiscal_year_complete": true
+        },
+        {
+          "fiscal_year": 2021,
+          "budget_net_usd": 13614632249.0,
+          "actual_all_usd": 17530823739.71,
+          "actual_excl_related_govt_units_usd": 14346393092.21,
+          "reconciliation_all_funds": {
+            "budget_excl_transfers_usd": 14736880905.0,
+            "actual_excl_rgu_excl_transfers_usd": 15366742469.34,
+            "residual_usd": 629861564.34,
+            "residual_pct": 0.04274
+          },
+          "operating_comparison": {
+            "budget_usd": 10218313186.0,
+            "actual_usd": 8503863496.32,
+            "residual_usd": -1714449689.68,
+            "residual_pct": -0.167782
+          },
+          "is_fiscal_year_complete": true
+        },
+        {
+          "fiscal_year": 2022,
+          "budget_net_usd": 13248709511.0,
+          "actual_all_usd": 18288093980.61,
+          "actual_excl_related_govt_units_usd": 14896512314.07,
+          "reconciliation_all_funds": {
+            "budget_excl_transfers_usd": 14438916579.0,
+            "actual_excl_rgu_excl_transfers_usd": 16047800226.76,
+            "residual_usd": 1608883647.76,
+            "residual_pct": 0.111427
+          },
+          "operating_comparison": {
+            "budget_usd": 10411443410.0,
+            "actual_usd": 10068735417.65,
+            "residual_usd": -342707992.35,
+            "residual_pct": -0.032916
+          },
+          "is_fiscal_year_complete": true
+        },
+        {
+          "fiscal_year": 2023,
+          "budget_net_usd": 14001270636.0,
+          "actual_all_usd": 19264495696.04,
+          "actual_excl_related_govt_units_usd": 15765707552.19,
+          "reconciliation_all_funds": {
+            "budget_excl_transfers_usd": 15341455028.0,
+            "actual_excl_rgu_excl_transfers_usd": 17020802874.49,
+            "residual_usd": 1679347846.49,
+            "residual_pct": 0.109465
+          },
+          "operating_comparison": {
+            "budget_usd": 11017826791.0,
+            "actual_usd": 10537555853.72,
+            "residual_usd": -480270937.28,
+            "residual_pct": -0.04359
+          },
+          "is_fiscal_year_complete": true
+        },
+        {
+          "fiscal_year": 2024,
+          "budget_net_usd": 14631715548.0,
+          "actual_all_usd": 21161653535.43,
+          "actual_excl_related_govt_units_usd": 17493524641.61,
+          "reconciliation_all_funds": {
+            "budget_excl_transfers_usd": 16048755394.0,
+            "actual_excl_rgu_excl_transfers_usd": 18836784369.36,
+            "residual_usd": 2788028975.36,
+            "residual_pct": 0.173722
+          },
+          "operating_comparison": {
+            "budget_usd": 11479773159.0,
+            "actual_usd": 11433862081.34,
+            "residual_usd": -45911077.66,
+            "residual_pct": -0.003999
+          },
+          "is_fiscal_year_complete": true
+        },
+        {
+          "fiscal_year": 2025,
+          "budget_net_usd": 15917870152.0,
+          "actual_all_usd": 22193717773.89,
+          "actual_excl_related_govt_units_usd": 18176470942.3,
+          "reconciliation_all_funds": {
+            "budget_excl_transfers_usd": 17376785053.0,
+            "actual_excl_rgu_excl_transfers_usd": 19552403651.64,
+            "residual_usd": 2175618598.64,
+            "residual_pct": 0.125203
+          },
+          "operating_comparison": {
+            "budget_usd": 12004301998.0,
+            "actual_usd": 11789219017.12,
+            "residual_usd": -215082980.88,
+            "residual_pct": -0.017917
+          },
+          "is_fiscal_year_complete": true
+        },
+        {
+          "fiscal_year": 2026,
+          "budget_net_usd": 15990860523.0,
+          "actual_all_usd": 21841742303.51,
+          "actual_excl_related_govt_units_usd": 17820186958.3,
+          "reconciliation_all_funds": {
+            "budget_excl_transfers_usd": 17499344539.0,
+            "actual_excl_rgu_excl_transfers_usd": 18926998932.56,
+            "residual_usd": 1427654393.56,
+            "residual_pct": 0.081583
+          },
+          "operating_comparison": {
+            "budget_usd": 12655177357.0,
+            "actual_usd": 11550921130.44,
+            "residual_usd": -1104256226.56,
+            "residual_pct": -0.087257
+          },
+          "is_fiscal_year_complete": true
+        },
+        {
+          "fiscal_year": 2027,
+          "budget_net_usd": 16234417626.0,
+          "actual_all_usd": 345974209.67,
+          "actual_excl_related_govt_units_usd": 266760714.93,
+          "reconciliation_all_funds": {
+            "budget_excl_transfers_usd": 17798960605.0,
+            "actual_excl_rgu_excl_transfers_usd": 266888701.09,
+            "residual_usd": -17532071903.91,
+            "residual_pct": -0.985005
+          },
+          "operating_comparison": {
+            "budget_usd": 13405381054.0,
+            "actual_usd": 153577411.32,
+            "residual_usd": -13251803642.68,
+            "residual_pct": -0.988544
+          },
+          "is_fiscal_year_complete": false
+        }
+      ]
+    },
+    "revenue": {
+      "points": [
+        {
+          "fiscal_year": 1999,
+          "budget_net_usd": null,
+          "actual_all_usd": 5644992141.04,
+          "actual_excl_related_govt_units_usd": 5089448998.19,
+          "reconciliation_all_funds": {
+            "budget_excl_transfers_usd": null,
+            "actual_excl_rgu_excl_transfers_usd": 5476681158.83,
+            "residual_usd": null,
+            "residual_pct": null
+          },
+          "operating_comparison": {
+            "budget_usd": null,
+            "actual_usd": 3868372075.13,
+            "residual_usd": null,
+            "residual_pct": null
+          },
+          "is_fiscal_year_complete": true
+        },
+        {
+          "fiscal_year": 2000,
+          "budget_net_usd": null,
+          "actual_all_usd": 7850450791.31,
+          "actual_excl_related_govt_units_usd": 4911839361.46,
+          "reconciliation_all_funds": {
+            "budget_excl_transfers_usd": null,
+            "actual_excl_rgu_excl_transfers_usd": 5329264328.86,
+            "residual_usd": null,
+            "residual_pct": null
+          },
+          "operating_comparison": {
+            "budget_usd": null,
+            "actual_usd": 4012714506.23,
+            "residual_usd": null,
+            "residual_pct": null
+          },
+          "is_fiscal_year_complete": true
+        },
+        {
+          "fiscal_year": 2001,
+          "budget_net_usd": null,
+          "actual_all_usd": 5158187580.77,
+          "actual_excl_related_govt_units_usd": 5928630695.6,
+          "reconciliation_all_funds": {
+            "budget_excl_transfers_usd": null,
+            "actual_excl_rgu_excl_transfers_usd": 6380476735.1,
+            "residual_usd": null,
+            "residual_pct": null
+          },
+          "operating_comparison": {
+            "budget_usd": null,
+            "actual_usd": 4507185191.28,
+            "residual_usd": null,
+            "residual_pct": null
+          },
+          "is_fiscal_year_complete": true
+        },
+        {
+          "fiscal_year": 2002,
+          "budget_net_usd": null,
+          "actual_all_usd": 5517742369.56,
+          "actual_excl_related_govt_units_usd": 5403185824.18,
+          "reconciliation_all_funds": {
+            "budget_excl_transfers_usd": null,
+            "actual_excl_rgu_excl_transfers_usd": 5883357956.06,
+            "residual_usd": null,
+            "residual_pct": null
+          },
+          "operating_comparison": {
+            "budget_usd": null,
+            "actual_usd": 4461785213.56,
+            "residual_usd": null,
+            "residual_pct": null
+          },
+          "is_fiscal_year_complete": true
+        },
+        {
+          "fiscal_year": 2003,
+          "budget_net_usd": null,
+          "actual_all_usd": 6287350874.6,
+          "actual_excl_related_govt_units_usd": 5164502746.76,
+          "reconciliation_all_funds": {
+            "budget_excl_transfers_usd": null,
+            "actual_excl_rgu_excl_transfers_usd": 5688079863.09,
+            "residual_usd": null,
+            "residual_pct": null
+          },
+          "operating_comparison": {
+            "budget_usd": null,
+            "actual_usd": 4495787636.52,
+            "residual_usd": null,
+            "residual_pct": null
+          },
+          "is_fiscal_year_complete": true
+        },
+        {
+          "fiscal_year": 2004,
+          "budget_net_usd": null,
+          "actual_all_usd": 6423900669.03,
+          "actual_excl_related_govt_units_usd": 5325644567.64,
+          "reconciliation_all_funds": {
+            "budget_excl_transfers_usd": null,
+            "actual_excl_rgu_excl_transfers_usd": 5906260395.02,
+            "residual_usd": null,
+            "residual_pct": null
+          },
+          "operating_comparison": {
+            "budget_usd": null,
+            "actual_usd": 4617033956.95,
+            "residual_usd": null,
+            "residual_pct": null
+          },
+          "is_fiscal_year_complete": true
+        },
+        {
+          "fiscal_year": 2005,
+          "budget_net_usd": null,
+          "actual_all_usd": 7311948436.01,
+          "actual_excl_related_govt_units_usd": 5750949983.49,
+          "reconciliation_all_funds": {
+            "budget_excl_transfers_usd": null,
+            "actual_excl_rgu_excl_transfers_usd": 6366571340.36,
+            "residual_usd": null,
+            "residual_pct": null
+          },
+          "operating_comparison": {
+            "budget_usd": null,
+            "actual_usd": 4943823235.83,
+            "residual_usd": null,
+            "residual_pct": null
+          },
+          "is_fiscal_year_complete": true
+        },
+        {
+          "fiscal_year": 2006,
+          "budget_net_usd": null,
+          "actual_all_usd": 8097371700.99,
+          "actual_excl_related_govt_units_usd": 6324103377.0,
+          "reconciliation_all_funds": {
+            "budget_excl_transfers_usd": null,
+            "actual_excl_rgu_excl_transfers_usd": 6963108688.17,
+            "residual_usd": null,
+            "residual_pct": null
+          },
+          "operating_comparison": {
+            "budget_usd": null,
+            "actual_usd": 5314787384.17,
+            "residual_usd": null,
+            "residual_pct": null
+          },
+          "is_fiscal_year_complete": true
+        },
+        {
+          "fiscal_year": 2007,
+          "budget_net_usd": null,
+          "actual_all_usd": 8127800770.83,
+          "actual_excl_related_govt_units_usd": 6334267945.28,
+          "reconciliation_all_funds": {
+            "budget_excl_transfers_usd": null,
+            "actual_excl_rgu_excl_transfers_usd": 7042239566.48,
+            "residual_usd": null,
+            "residual_pct": null
+          },
+          "operating_comparison": {
+            "budget_usd": null,
+            "actual_usd": 5625445706.35,
+            "residual_usd": null,
+            "residual_pct": null
+          },
+          "is_fiscal_year_complete": true
+        },
+        {
+          "fiscal_year": 2008,
+          "budget_net_usd": null,
+          "actual_all_usd": 8332812399.38,
+          "actual_excl_related_govt_units_usd": 6465263976.51,
+          "reconciliation_all_funds": {
+            "budget_excl_transfers_usd": null,
+            "actual_excl_rgu_excl_transfers_usd": 7264369504.1,
+            "residual_usd": null,
+            "residual_pct": null
+          },
+          "operating_comparison": {
+            "budget_usd": null,
+            "actual_usd": 5895223133.68,
+            "residual_usd": null,
+            "residual_pct": null
+          },
+          "is_fiscal_year_complete": true
+        },
+        {
+          "fiscal_year": 2009,
+          "budget_net_usd": null,
+          "actual_all_usd": 9113646360.95,
+          "actual_excl_related_govt_units_usd": 6978030291.88,
+          "reconciliation_all_funds": {
+            "budget_excl_transfers_usd": null,
+            "actual_excl_rgu_excl_transfers_usd": 7811334423.19,
+            "residual_usd": null,
+            "residual_pct": null
+          },
+          "operating_comparison": {
+            "budget_usd": null,
+            "actual_usd": 5937431528.79,
+            "residual_usd": null,
+            "residual_pct": null
+          },
+          "is_fiscal_year_complete": true
+        },
+        {
+          "fiscal_year": 2010,
+          "budget_net_usd": 6680927708.0,
+          "actual_all_usd": 11041315212.53,
+          "actual_excl_related_govt_units_usd": 8693091838.19,
+          "reconciliation_all_funds": {
+            "budget_excl_transfers_usd": 7660892477.0,
+            "actual_excl_rgu_excl_transfers_usd": 9521601815.02,
+            "residual_usd": 1860709338.02,
+            "residual_pct": 0.242884
+          },
+          "operating_comparison": {
+            "budget_usd": 6403004452.0,
+            "actual_usd": 6087255677.23,
+            "residual_usd": -315748774.77,
+            "residual_pct": -0.049313
+          },
+          "is_fiscal_year_complete": true
+        },
+        {
+          "fiscal_year": 2011,
+          "budget_net_usd": 6658375805.0,
+          "actual_all_usd": 10559553014.76,
+          "actual_excl_related_govt_units_usd": 8263157363.86,
+          "reconciliation_all_funds": {
+            "budget_excl_transfers_usd": 7608596754.0,
+            "actual_excl_rgu_excl_transfers_usd": 9078094800.19,
+            "residual_usd": 1469498046.19,
+            "residual_pct": 0.193137
+          },
+          "operating_comparison": {
+            "budget_usd": 6498649378.0,
+            "actual_usd": 6557849088.28,
+            "residual_usd": 59199710.28,
+            "residual_pct": 0.00911
+          },
+          "is_fiscal_year_complete": true
+        },
+        {
+          "fiscal_year": 2012,
+          "budget_net_usd": 6929075337.0,
+          "actual_all_usd": 11955234445.83,
+          "actual_excl_related_govt_units_usd": 9399427600.33,
+          "reconciliation_all_funds": {
+            "budget_excl_transfers_usd": 7910714765.0,
+            "actual_excl_rgu_excl_transfers_usd": 10266645376.46,
+            "residual_usd": 2355930611.46,
+            "residual_pct": 0.297815
+          },
+          "operating_comparison": {
+            "budget_usd": 6902876528.0,
+            "actual_usd": 7201805382.96,
+            "residual_usd": 298928854.96,
+            "residual_pct": 0.043305
+          },
+          "is_fiscal_year_complete": true
+        },
+        {
+          "fiscal_year": 2013,
+          "budget_net_usd": 7598515111.0,
+          "actual_all_usd": 12310120073.85,
+          "actual_excl_related_govt_units_usd": 9732220947.78,
+          "reconciliation_all_funds": {
+            "budget_excl_transfers_usd": 8596327810.0,
+            "actual_excl_rgu_excl_transfers_usd": 10594011525.6,
+            "residual_usd": 1997683715.6,
+            "residual_pct": 0.232388
+          },
+          "operating_comparison": {
+            "budget_usd": 7331033949.0,
+            "actual_usd": 7750620215.43,
+            "residual_usd": 419586266.43,
+            "residual_pct": 0.057234
+          },
+          "is_fiscal_year_complete": true
+        },
+        {
+          "fiscal_year": 2014,
+          "budget_net_usd": 8317291789.0,
+          "actual_all_usd": 12809955651.42,
+          "actual_excl_related_govt_units_usd": 9776374029.18,
+          "reconciliation_all_funds": {
+            "budget_excl_transfers_usd": 9352633728.0,
+            "actual_excl_rgu_excl_transfers_usd": 10669509646.69,
+            "residual_usd": 1316875918.69,
+            "residual_pct": 0.140803
+          },
+          "operating_comparison": {
+            "budget_usd": 7948464836.0,
+            "actual_usd": 8067350991.29,
+            "residual_usd": 118886155.29,
+            "residual_pct": 0.014957
+          },
+          "is_fiscal_year_complete": true
+        },
+        {
+          "fiscal_year": 2015,
+          "budget_net_usd": 9065449277.0,
+          "actual_all_usd": 13468864857.19,
+          "actual_excl_related_govt_units_usd": 10125892694.12,
+          "reconciliation_all_funds": {
+            "budget_excl_transfers_usd": 10188745830.0,
+            "actual_excl_rgu_excl_transfers_usd": 11083169733.86,
+            "residual_usd": 894423903.86,
+            "residual_pct": 0.087785
+          },
+          "operating_comparison": {
+            "budget_usd": 8610212907.0,
+            "actual_usd": 8723265038.54,
+            "residual_usd": 113052131.54,
+            "residual_pct": 0.01313
+          },
+          "is_fiscal_year_complete": true
+        },
+        {
+          "fiscal_year": 2016,
+          "budget_net_usd": 9535686254.0,
+          "actual_all_usd": 14643520227.37,
+          "actual_excl_related_govt_units_usd": 11155729774.91,
+          "reconciliation_all_funds": {
+            "budget_excl_transfers_usd": 10740934375.0,
+            "actual_excl_rgu_excl_transfers_usd": 12185425211.42,
+            "residual_usd": 1444490836.42,
+            "residual_pct": 0.134485
+          },
+          "operating_comparison": {
+            "budget_usd": 9037761336.0,
+            "actual_usd": 9075827069.0,
+            "residual_usd": 38065733.0,
+            "residual_pct": 0.004212
+          },
+          "is_fiscal_year_complete": true
+        },
+        {
+          "fiscal_year": 2017,
+          "budget_net_usd": 10221212885.0,
+          "actual_all_usd": 15881648684.64,
+          "actual_excl_related_govt_units_usd": 12186844586.81,
+          "reconciliation_all_funds": {
+            "budget_excl_transfers_usd": 11501789369.0,
+            "actual_excl_rgu_excl_transfers_usd": 13269506098.44,
+            "residual_usd": 1767716729.44,
+            "residual_pct": 0.153691
+          },
+          "operating_comparison": {
+            "budget_usd": 9547392706.0,
+            "actual_usd": 9630595397.29,
+            "residual_usd": 83202691.29,
+            "residual_pct": 0.008715
+          },
+          "is_fiscal_year_complete": true
+        },
+        {
+          "fiscal_year": 2018,
+          "budget_net_usd": 10503079466.0,
+          "actual_all_usd": 17923934645.23,
+          "actual_excl_related_govt_units_usd": 14422629340.84,
+          "reconciliation_all_funds": {
+            "budget_excl_transfers_usd": 11412441418.0,
+            "actual_excl_rgu_excl_transfers_usd": 15012610732.47,
+            "residual_usd": 3600169314.47,
+            "residual_pct": 0.31546
+          },
+          "operating_comparison": {
+            "budget_usd": 9915244973.0,
+            "actual_usd": 10011293182.35,
+            "residual_usd": 96048209.35,
+            "residual_pct": 0.009687
+          },
+          "is_fiscal_year_complete": true
+        },
+        {
+          "fiscal_year": 2019,
+          "budget_net_usd": 11054255070.0,
+          "actual_all_usd": 17881019348.0,
+          "actual_excl_related_govt_units_usd": 14580653750.03,
+          "reconciliation_all_funds": {
+            "budget_excl_transfers_usd": 12051968560.0,
+            "actual_excl_rgu_excl_transfers_usd": 15594176912.26,
+            "residual_usd": 3542208352.26,
+            "residual_pct": 0.293911
+          },
+          "operating_comparison": {
+            "budget_usd": 10525252925.0,
+            "actual_usd": 11092594525.72,
+            "residual_usd": 567341600.72,
+            "residual_pct": 0.053903
+          },
+          "is_fiscal_year_complete": true
+        },
+        {
+          "fiscal_year": 2020,
+          "budget_net_usd": 12313688231.0,
+          "actual_all_usd": 17595752279.07,
+          "actual_excl_related_govt_units_usd": 14033744713.29,
+          "reconciliation_all_funds": {
+            "budget_excl_transfers_usd": 13429571739.0,
+            "actual_excl_rgu_excl_transfers_usd": 15104530584.8,
+            "residual_usd": 1674958845.8,
+            "residual_pct": 0.124722
+          },
+          "operating_comparison": {
+            "budget_usd": 11691921736.0,
+            "actual_usd": 10775290862.65,
+            "residual_usd": -916630873.35,
+            "residual_pct": -0.078399
+          },
+          "is_fiscal_year_complete": true
+        },
+        {
+          "fiscal_year": 2021,
+          "budget_net_usd": 13614632249.0,
+          "actual_all_usd": 19383879364.07,
+          "actual_excl_related_govt_units_usd": 15114914334.85,
+          "reconciliation_all_funds": {
+            "budget_excl_transfers_usd": 14736880905.0,
+            "actual_excl_rgu_excl_transfers_usd": 16173750787.33,
+            "residual_usd": 1436869882.33,
+            "residual_pct": 0.097502
+          },
+          "operating_comparison": {
+            "budget_usd": 10830055538.0,
+            "actual_usd": 10270300924.78,
+            "residual_usd": -559754613.22,
+            "residual_pct": -0.051685
+          },
+          "is_fiscal_year_complete": true
+        },
+        {
+          "fiscal_year": 2022,
+          "budget_net_usd": 13248709511.0,
+          "actual_all_usd": 20046305404.16,
+          "actual_excl_related_govt_units_usd": 15711082780.79,
+          "reconciliation_all_funds": {
+            "budget_excl_transfers_usd": 14438916579.0,
+            "actual_excl_rgu_excl_transfers_usd": 16899993445.58,
+            "residual_usd": 2461076866.58,
+            "residual_pct": 0.170447
+          },
+          "operating_comparison": {
+            "budget_usd": 11239078232.0,
+            "actual_usd": 12012030403.71,
+            "residual_usd": 772952171.71,
+            "residual_pct": 0.068774
+          },
+          "is_fiscal_year_complete": true
+        },
+        {
+          "fiscal_year": 2023,
+          "budget_net_usd": 14001270636.0,
+          "actual_all_usd": 19352546133.4,
+          "actual_excl_related_govt_units_usd": 15238147879.49,
+          "reconciliation_all_funds": {
+            "budget_excl_transfers_usd": 15341455028.0,
+            "actual_excl_rgu_excl_transfers_usd": 16532040420.43,
+            "residual_usd": 1190585392.43,
+            "residual_pct": 0.077606
+          },
+          "operating_comparison": {
+            "budget_usd": 12219074608.0,
+            "actual_usd": 11759183179.55,
+            "residual_usd": -459891428.45,
+            "residual_pct": -0.037637
+          },
+          "is_fiscal_year_complete": true
+        },
+        {
+          "fiscal_year": 2024,
+          "budget_net_usd": 14631715548.0,
+          "actual_all_usd": 21487475704.1,
+          "actual_excl_related_govt_units_usd": 16736448297.59,
+          "reconciliation_all_funds": {
+            "budget_excl_transfers_usd": 16048755394.0,
+            "actual_excl_rgu_excl_transfers_usd": 18120600975.91,
+            "residual_usd": 2071845581.91,
+            "residual_pct": 0.129097
+          },
+          "operating_comparison": {
+            "budget_usd": 12685952297.0,
+            "actual_usd": 12614924750.99,
+            "residual_usd": -71027546.01,
+            "residual_pct": -0.005599
+          },
+          "is_fiscal_year_complete": true
+        },
+        {
+          "fiscal_year": 2025,
+          "budget_net_usd": 15917870147.0,
+          "actual_all_usd": 23573026348.72,
+          "actual_excl_related_govt_units_usd": 18830184131.21,
+          "reconciliation_all_funds": {
+            "budget_excl_transfers_usd": 17376785048.0,
+            "actual_excl_rgu_excl_transfers_usd": 20261116725.61,
+            "residual_usd": 2884331677.61,
+            "residual_pct": 0.165988
+          },
+          "operating_comparison": {
+            "budget_usd": 13456885880.0,
+            "actual_usd": 13110225245.86,
+            "residual_usd": -346660634.14,
+            "residual_pct": -0.025761
+          },
+          "is_fiscal_year_complete": true
+        },
+        {
+          "fiscal_year": 2026,
+          "budget_net_usd": 15990860523.0,
+          "actual_all_usd": 22656353480.94,
+          "actual_excl_related_govt_units_usd": 17689827682.05,
+          "reconciliation_all_funds": {
+            "budget_excl_transfers_usd": 17499344539.0,
+            "actual_excl_rgu_excl_transfers_usd": 18849964511.26,
+            "residual_usd": 1350619972.26,
+            "residual_pct": 0.077181
+          },
+          "operating_comparison": {
+            "budget_usd": 13808885693.0,
+            "actual_usd": 12972907421.63,
+            "residual_usd": -835978271.37,
+            "residual_pct": -0.060539
+          },
+          "is_fiscal_year_complete": true
+        },
+        {
+          "fiscal_year": 2027,
+          "budget_net_usd": 16234417626.0,
+          "actual_all_usd": 74829306.38,
+          "actual_excl_related_govt_units_usd": 85489125.01,
+          "reconciliation_all_funds": {
+            "budget_excl_transfers_usd": 17798960605.0,
+            "actual_excl_rgu_excl_transfers_usd": 85617111.17,
+            "residual_usd": -17713343493.83,
+            "residual_pct": -0.99519
+          },
+          "operating_comparison": {
+            "budget_usd": 14463637879.0,
+            "actual_usd": 76593893.0,
+            "residual_usd": -14387043986.0,
+            "residual_pct": -0.994704
+          },
+          "is_fiscal_year_complete": false
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "generated_at": "2026-07-16T14:41:59.799116+00:00",
+  "source_pipeline": "configs/countries/us.yaml → sync_socrata.py + sync_census_popest.py → raw.us_sf_* → dbt_us_staging → dbt_us_analytics → dbt_us_marts → export_us_sf.py",
+  "country": "us",
+  "scale": "city",
+  "place": "sf",
+  "files": {
+    "budget_by_year.json": {
+      "description": "Net adopted budget per fiscal year × side (Revenue/Spending), FY2010+, per-resident on Census years",
+      "as_of": "2026-07-13T10:17:58+00:00",
+      "source_url": "https://data.sfgov.org/d/xdgd-c79v"
+    },
+    "top_payees.json": {
+      "description": "Top 40 voucher payees per fiscal year with manual bucket classification (FY2025)",
+      "as_of": "2026-07-13T13:40:40+00:00",
+      "source_url": "https://data.sfgov.org/d/n9pm-xkyq"
+    },
+    "budget_vs_actual.json": {
+      "description": "Adopted budget and actuals as separate labeled series + measured reconciliation residuals (not a like-for-like comparison — see file notes)",
+      "as_of": "2026-07-13T10:08:21+00:00",
+      "source_urls": [
+        "https://data.sfgov.org/d/bpnb-jwfb",
+        "https://data.sfgov.org/d/xdgd-c79v"
+      ]
+    }
+  },
+  "population_source_url": "https://www2.census.gov/programs-surveys/popest/datasets/2020-2025/cities/totals/sub-est2025.csv"
+}
