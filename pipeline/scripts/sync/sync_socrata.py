@@ -94,7 +94,13 @@ def request_headers() -> dict:
 
 def get_with_retry(url: str, params: dict | None = None, log: Logger | None = None,
                    stream: bool = False) -> requests.Response:
-    """GET with linear-backoff retries (same pattern as sync_fiscaldata.py)."""
+    """GET with linear-backoff retries (same pattern as sync_fiscaldata.py).
+
+    Catches ALL RequestExceptions — mid-body connection drops surface as
+    ChunkedEncodingError/IncompleteRead (observed live 2026-07-16 on
+    multi-hundred-MB Socrata CSV pages), which is neither a ConnectionError
+    nor a Timeout. With stream=False the whole body is read HERE, so a
+    retry covers body truncation too."""
     last_exc: Exception | None = None
     for attempt in range(1, MAX_RETRIES + 1):
         try:
@@ -102,7 +108,7 @@ def get_with_retry(url: str, params: dict | None = None, log: Logger | None = No
                                 timeout=REQUEST_TIMEOUT_S, stream=stream)
             resp.raise_for_status()
             return resp
-        except (requests.ConnectionError, requests.Timeout, requests.HTTPError) as e:
+        except requests.exceptions.RequestException as e:
             last_exc = e
             if attempt < MAX_RETRIES:
                 if log:
@@ -306,6 +312,10 @@ def sync_bulk_csv(
                         f"({page_header!r} != {header_line!r})"
                     )
                 out.write(body[nl + 1:])
+            if not body.endswith(b"\n"):
+                # Socrata CSV pages end with a trailing newline (verified
+                # live 2026-07-16); guard anyway so pages can never merge.
+                out.write(b"\n")
             written += len(body)
             page_no += 1
             log.info("page fetched", extra=f"{page_no}/{n_pages} (offset {offset:,}, {written / (1 << 20):,.0f} MiB)")

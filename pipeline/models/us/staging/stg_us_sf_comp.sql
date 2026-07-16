@@ -28,7 +28,7 @@ SELECT
     {{ us_sf_string('department_code') }}          AS department_code,
     {{ us_sf_string('department') }}               AS department,
     {{ us_sf_string('union_code') }}               AS union_code,
-    {{ us_sf_string('union') }}                    AS union_name,
+    {{ us_sf_string('`union`') }}                  AS union_name,  -- reserved keyword in GoogleSQL
     {{ us_sf_string('job_family_code') }}          AS job_family_code,
     {{ us_sf_string('job_family') }}               AS job_family,
     {{ us_sf_string('job_code') }}                 AS job_code,
