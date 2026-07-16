@@ -8,6 +8,7 @@ import Footer from "@/components/fusion/Footer";
 import SectionHead from "@/components/fusion/SectionHead";
 import ChartSource from "@/components/fusion/ChartSource";
 import PageTOC from "@/components/fusion/PageTOC";
+import SubvExemples from "@/components/fusion/SubvExemples";
 import HeroNumber from "@/components/fusion/HeroNumber";
 import KPIGrid from "@/components/fusion/KPIGrid";
 import AnimatedNumber from "@/components/fusion/AnimatedNumber";
@@ -83,6 +84,7 @@ export default function QuiRecoitClient({
         items={[
           { id: "sec-nuee", label: t("fx.toc.nuee") },
           { id: "sec-overview", label: t("fx.toc.chiffres") },
+          { id: "sec-exemples", label: t("fx.toc.signature") },
           { id: "sec-themes", label: t("fx.toc.themes") },
           { id: "sec-top-benef", label: t("fx.toc.top_benef") },
           { id: "recherche", label: t("fx.toc.recherche") },
@@ -263,10 +265,30 @@ export default function QuiRecoitClient({
         </div>
       </section>
 
+      {/* « Par exemple » — même grammaire que marchés/investissements. */}
+      {d.exemples.length > 0 && (
+        <section className="fx-section" id="sec-exemples">
+          <div className="fx-wrap">
+            <SectionHead
+              number="03"
+              kind={t("fx.mp.sig.kind")}
+              title={
+                <>
+                  <em>{t("fx.qr.sig.title.em")}</em>
+                  {fill(t("fx.qr.sig.title.after"), { year: d.year })}
+                </>
+              }
+              subtitle={t("fx.qr.sig.sub")}
+            />
+            <SubvExemples items={d.exemples} />
+          </div>
+        </section>
+      )}
+
       <section className="fx-section" id="sec-themes">
         <div className="fx-wrap">
           <SectionHead
-            number="03"
+            number="04"
             kind={<Tip label={t("fx.qr.s02.kind.tip")}>{t("fx.qr.s02.kind")}</Tip>}
             title={
               <>

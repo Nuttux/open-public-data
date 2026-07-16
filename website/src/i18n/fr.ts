@@ -3148,6 +3148,14 @@ const fr: Record<string, string> = {
   'fx.exemples.arrondissement': 'arrondissement',
   'fx.exemples.nb_marches_one': '1 marché public lié',
   'fx.exemples.nb_marches': '{n} marchés publics liés',
+  // Subventions · Par exemple
+  'fx.qr.sig.title.em': 'Trois bénéficiaires',
+  'fx.qr.sig.title.after': ' de {year}.',
+  'fx.qr.sig.sub': "Sélection par règles fixes : le plus gros bénéficiaire, la plus grosse association, et la plus grosse association soutenue chaque année des données publiées. Cliquez pour ouvrir la fiche.",
+  'fx.qr.sig.k.gros': 'Le plus gros bénéficiaire',
+  'fx.qr.sig.k.asso': 'La plus grosse association',
+  'fx.qr.sig.k.fidele': 'Soutenue chaque année',
+  'fx.qr.sig.depuis': 'chaque année depuis {year}',
   // Investissements · Par exemple
   'fx.inv.sig.title.em': 'Trois projets',
   'fx.inv.sig.title.after': ' de {year}.',

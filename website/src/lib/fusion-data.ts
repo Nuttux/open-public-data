@@ -863,6 +863,19 @@ export type QuiRecoitData = {
     thresholdCurrentEur: number;
     thresholdPrevEur: number;
   };
+  /** « Par exemple » : plus gros bénéficiaire, plus grosse association,
+   *  association soutenue chaque année de la fenêtre de données. */
+  exemples: {
+    kind: "gros" | "asso" | "fidele";
+    name: string;
+    theme: string | null;
+    nature: string | null;
+    amount: number;
+    sinceYear: number | null;
+    photoUrl: string | null;
+    photoCredit: string | null;
+    photoKind: "reelle" | "illustration" | null;
+  }[];
 };
 
 export function loadQuiRecoitIndex(city: string = "paris") {
@@ -1675,6 +1688,88 @@ export function loadQuiRecoitData(requestedYear?: number, city: string = "paris"
     count: ppRows.length > 1 ? ppRows.length : null,
   };
 
+  // « Par exemple » — règles fixes : le plus gros bénéficiaire (toutes
+  // natures — souvent un opérateur de la Ville, on affiche sa nature), la
+  // plus grosse association, et la plus grosse association soutenue chaque
+  // année de la fenêtre de données (thématique différente si possible).
+  // Photos : curation réelle (beneficiaire_photos.json) → banque générique
+  // par thématique, étiquetée « Photo d'illustration ».
+  const exemples: QuiRecoitData["exemples"] = (() => {
+    if (city !== "paris") return [];
+    const agg = new Map<string, { name: string; amount: number; theme: string | null; nature: string | null }>();
+    for (const b of ben.data) {
+      if (b.nature_juridique === "Personnes physiques") continue;
+      const cur = agg.get(b.beneficiaire) ?? { name: b.beneficiaire, amount: 0, theme: b.thematique ?? null, nature: b.nature_juridique ?? null };
+      cur.amount += b.montant_total;
+      agg.set(b.beneficiaire, cur);
+    }
+    const all = [...agg.values()].sort((a, b) => b.amount - a.amount);
+    const assos = all.filter((x) => x.nature === "Associations");
+
+    const curated = readJsonOrNull<{ items?: Record<string, { photo_url?: string; credit?: string }> }>(
+      "enrichment/beneficiaire_photos.json",
+    )?.items ?? {};
+    const bank = readJsonOrNull<{ items?: Record<string, { url?: string; source_label?: string }> }>(
+      "enrichment/generic_photo_bank.json",
+    )?.items ?? {};
+    const THEME_TYPO: Record<string, string> = {
+      "Culture": "equipement-culturel",
+      "Sport": "gymnase",
+      "Éducation": "ecole",
+      "Education": "ecole",
+      "Logement": "logement-social",
+      "Social - Petite enfance": "creche",
+      "Environnement": "espace-vert",
+    };
+    // Une même image générique ne sert qu'une fois par section : deux cartes
+    // avec la photo d'illustration identique côte à côte cassent la section —
+    // mieux vaut une carte sans photo.
+    const usedPhotoUrls = new Set<string>();
+    const photoFor = (name: string, theme: string | null) => {
+      const c = curated[name];
+      if (c?.photo_url) {
+        usedPhotoUrls.add(c.photo_url);
+        return { url: c.photo_url, credit: c.credit ?? null, kind: "reelle" as const };
+      }
+      const g = bank[THEME_TYPO[theme ?? ""] ?? "administration"];
+      if (g?.url && !usedPhotoUrls.has(g.url)) {
+        usedPhotoUrls.add(g.url);
+        return { url: g.url, credit: g.source_label ?? null, kind: "illustration" as const };
+      }
+      return { url: null, credit: null, kind: null };
+    };
+    const yearsWindow = idx.availableYears.slice().sort((a, b) => a - b);
+    const presentEveryYear = (name: string) => {
+      const h = benHistory.get(name);
+      return h ? yearsWindow.every((y) => (h.get(y) ?? 0) > 0) : false;
+    };
+
+    const used = new Set<string>();
+    const mk = (x: (typeof all)[number], kind: "gros" | "asso" | "fidele") => {
+      used.add(x.name);
+      const ph = photoFor(x.name, x.theme);
+      return {
+        kind,
+        name: x.name,
+        theme: x.theme,
+        nature: x.nature,
+        amount: x.amount,
+        sinceYear: kind === "fidele" ? yearsWindow[0] : null,
+        photoUrl: ph.url,
+        photoCredit: ph.credit,
+        photoKind: ph.kind,
+      };
+    };
+    const out: QuiRecoitData["exemples"] = [];
+    if (all[0]) out.push(mk(all[0], "gros"));
+    const asso = assos.find((x) => !used.has(x.name));
+    if (asso) out.push(mk(asso, "asso"));
+    const fidCandidates = assos.filter((x) => !used.has(x.name) && presentEveryYear(x.name));
+    const fidele = fidCandidates.find((x) => x.theme !== asso?.theme) ?? fidCandidates[0];
+    if (fidele) out.push(mk(fidele, "fidele"));
+    return out;
+  })();
+
   return {
     year: yr,
     previousYear: prev,
@@ -1700,6 +1795,7 @@ export function loadQuiRecoitData(requestedYear?: number, city: string = "paris"
       thresholdPrevEur: MOVERS_MIN_PREV,
     },
     personnesPhysiques,
+    exemples,
   };
 }
 

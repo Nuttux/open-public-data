@@ -1,0 +1,13 @@
+{
+ "generated_at": "2026-07-16",
+ "source": "curation in-session (Claude Code) — photos réelles pour des bénéficiaires précis, clé = beneficiaire_normalise",
+ "note": "Consommé par loadQuiRecoitData (section Par exemple), avant la banque générique.",
+ "items": {
+  "THEATRE MUSICAL DE PARIS": {
+   "photo_url": "https://commons.wikimedia.org/wiki/Special:FilePath/Th%C3%A9%C3%A2tre%20du%20Ch%C3%A2telet%20Fa%C3%A7ade%20(cropped).jpg?width=1400",
+   "credit": "Wikimedia CC BY-SA 4.0",
+   "source_page": "https://commons.wikimedia.org/wiki/File:Th%C3%A9%C3%A2tre_du_Ch%C3%A2telet_Fa%C3%A7ade_(cropped).jpg",
+   "source_label": "Wikimedia Commons — Théâtre du Châtelet"
+  }
+ }
+}

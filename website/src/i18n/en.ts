@@ -3148,6 +3148,14 @@ const en: Record<string, string> = {
   'fx.exemples.arrondissement': 'arrondissement',
   'fx.exemples.nb_marches_one': '1 linked public contract',
   'fx.exemples.nb_marches': '{n} linked public contracts',
+  // Grants · For example
+  'fx.qr.sig.title.em': 'Three beneficiaries',
+  'fx.qr.sig.title.after': ' from {year}.',
+  'fx.qr.sig.sub': "Selected by fixed rules: the largest beneficiary, the largest association, and the largest association supported every year of the published data. Click to open the file.",
+  'fx.qr.sig.k.gros': 'The largest beneficiary',
+  'fx.qr.sig.k.asso': 'The largest association',
+  'fx.qr.sig.k.fidele': 'Supported every year',
+  'fx.qr.sig.depuis': 'every year since {year}',
   // Investments · For example
   'fx.inv.sig.title.em': 'Three projects',
   'fx.inv.sig.title.after': ' from {year}.',
