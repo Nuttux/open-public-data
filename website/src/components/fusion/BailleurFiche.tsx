@@ -73,7 +73,9 @@ export default function BailleurFiche({ bailleur }: { bailleur: BailleurFicheTyp
           <p style={{ fontSize: 13.5, color: "var(--ink-2)", lineHeight: 1.55, margin: "0 0 16px" }}>
             {t("fx.fiche.bail.garanties_lead")}{" "}
             <a
-              href="https://opendata.paris.fr/explore/dataset/dette-garantie/"
+              /* name_raw = désignation verbatim du dataset dette-garantie, le
+               * refine tombe donc exactement sur les emprunts de ce bailleur */
+              href={`https://opendata.paris.fr/explore/dataset/dette-garantie/table/?refine.annee_de_publication=${g.year}&refine.designation_du_beneficiaire=${encodeURIComponent(g.name_raw)}`}
               target="_blank"
               rel="noopener noreferrer"
               style={{ color: "var(--bleu)", borderBottom: "1px solid var(--bleu)" }}

@@ -2491,7 +2491,9 @@ body:has(.theme-fusion) > div.pb-24 { padding-bottom: 0 !important; }
   vertical-align: top;
 }
 .theme-fusion .fx-article-full tbody tr:last-child td { border-bottom: 0; }
-.theme-fusion .fx-article-full tbody tr:hover td { background: var(--bg-hover); }
+/* Rows sans lien uniquement — cf. .fx-table plus bas : un bg de <td> masque
+ * l'inversion dark des rows cliquables et rend le texte blanc illisible. */
+.theme-fusion .fx-article-full tbody tr:not(:has(a[href])):hover td { background: var(--bg-hover); }
 .theme-fusion .fx-article-full th[align="right"],
 .theme-fusion .fx-article-full td[align="right"] {
   text-align: right;
@@ -2993,7 +2995,11 @@ body:has(.theme-fusion) > div.pb-24 { padding-bottom: 0 !important; }
   color: var(--ink);
 }
 .theme-fusion .fx-table tr:last-child td { border-bottom: 0; }
-.theme-fusion .fx-table tr:hover td { background: var(--bg-hover); }
+/* Rows SANS lien uniquement. Une row cliquable (tr:has(a[href])) reçoit
+ * l'inversion dark plus bas — or un background de <td> peint AU-DESSUS du
+ * background de <tr>, donc un bg de cellule ici masquerait l'inversion tout
+ * en laissant le texte forcé en blanc : blanc sur beige, illisible. */
+.theme-fusion .fx-table tr:not(:has(a[href])):hover td { background: var(--bg-hover); }
 .theme-fusion .fx-table .num {
   font-family: var(--f-disp);
   font-weight: 700;
@@ -3580,19 +3586,30 @@ body:has(.theme-fusion) > div.pb-24 { padding-bottom: 0 !important; }
   cursor: pointer;
   transition: background .1s ease, color .1s ease;
 }
-.theme-fusion table tr:has(a[href]):hover {
-  background: var(--fx-row-link-bg-hover);
-  color: var(--fx-row-link-text-hover);
+/* Hover full-inversion réservé au pointeur fin — même raison que .fx-row-link
+ * plus haut : sur touch, le tap laisse un :hover persistant qui fige la row en
+ * bloc noir. Ce garde-fou existait pour .fx-row-link mais avait été oublié ici. */
+@media (hover: hover) and (pointer: fine) {
+  .theme-fusion table tr:has(a[href]):hover {
+    background: var(--fx-row-link-bg-hover);
+    color: var(--fx-row-link-text-hover);
+  }
+  .theme-fusion table tr:has(a[href]):hover a,
+  .theme-fusion table tr:has(a[href]):hover td {
+    color: var(--fx-row-link-text-hover);
+  }
+  /* opacity sur la cellule rend AUSSI son background translucide : ne jamais
+   * combiner avec un bg de <td>, sinon le bg dark du <tr> transparaît en gris. */
+  .theme-fusion table tr:has(a[href]):hover .muted,
+  .theme-fusion table tr:has(a[href]):hover .mono,
+  .theme-fusion table tr:has(a[href]):hover .rank {
+    color: var(--fx-row-link-text-hover);
+    opacity: 0.7;
+  }
 }
-.theme-fusion table tr:has(a[href]):hover a,
-.theme-fusion table tr:has(a[href]):hover td {
-  color: var(--fx-row-link-text-hover);
-}
-.theme-fusion table tr:has(a[href]):hover .muted,
-.theme-fusion table tr:has(a[href]):hover .mono,
-.theme-fusion table tr:has(a[href]):hover .rank {
-  color: var(--fx-row-link-text-hover);
-  opacity: 0.7;
+/* Touch / coarse pointer : soft hover seulement (pas d'inversion complète) */
+@media (hover: none), (pointer: coarse) {
+  .theme-fusion table tr:has(a[href]):active td { background: var(--bg-hover); }
 }
 
 /* Variante non-Link : pour les rows clickables via onClick (expand toggle,

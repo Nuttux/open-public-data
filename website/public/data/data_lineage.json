@@ -1,299 +1,285 @@
 {
-  "schema_version": 2,
-  "description": "Lineage cliquable pour les 6 outils Paris. Chaque chart liste sa chaîne mart → core → staging → raw → source officielle. Le composant <DataProvenance> consomme ce fichier pour ouvrir, par étape, la table BigQuery publique correspondante. Le code des transformations dbt reste accessible via le lien `code_repo` en footer du modal.",
-  "bq_project": "open-data-france-484717",
-  "bq_console_url_template": "https://console.cloud.google.com/bigquery?p={project}&d={dataset}&t={table}&page=table",
-  "code_repo": "https://github.com/Nuttux/open-public-data/tree/main/pipeline/models",
-  "charts": {
-    "budget-sankey-paris": {
-      "label_fr": "Sankey budget — Ville de Paris",
-      "label_en": "Budget Sankey — City of Paris",
-      "page_fr": "/ville/paris/budget",
-      "page_en": "/ville/paris/budget",
-      "json_export": "/data/budget_sankey_{year}.json",
-      "what_it_shows_fr": "Flux des recettes et dépenses du Budget Principal, agrégés par chapitre fonctionnel.",
-      "what_it_shows_en": "Revenue and spending flows from the Main Budget, aggregated by functional chapter.",
-      "chain": [
-        {
-          "layer": "mart",
-          "name": "mart_sankey",
-          "bq_table": "dbt_paris_marts.mart_sankey",
-          "role_fr": "Agrégation Sankey nodes + links par année.",
-          "role_en": "Sankey nodes + links aggregation per year."
-        },
-        {
-          "layer": "core",
-          "name": "core_budget",
-          "bq_table": "dbt_paris_analytics.core_budget",
-          "role_fr": "OBT Budget exécuté (CA) ligne par ligne avec thématiques.",
-          "role_en": "Executed Budget (CA) OBT row-level with themes."
-        },
-        {
-          "layer": "staging",
-          "name": "stg_budget_principal",
-          "bq_table": "dbt_paris_staging.stg_budget_principal",
-          "role_fr": "Typage, filtre type_operation='Réel', renommage colonnes FR.",
-          "role_en": "Typing, type_operation='Réel' filter, FR column renaming."
-        },
-        {
-          "layer": "raw",
-          "name": "raw.comptes_administratifs_budgets_principaux_a_partir_de_2019_m57_ville_departement",
-          "bq_table": "raw.comptes_administratifs_budgets_principaux_a_partir_de_2019_m57_ville_departement",
-          "role_fr": "Miroir exact du CSV OpenData, aucune transformation.",
-          "role_en": "Exact mirror of OpenData CSV, no transformation."
-        },
-        {
-          "layer": "source",
-          "name": "OpenData Paris — Comptes administratifs Budget Principal M57",
-          "url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-budgets-principaux-a-partir-de-2019-m57-ville-departement/",
-          "role_fr": "Dataset officiel publié par la Ville de Paris (M57, à partir de 2019).",
-          "role_en": "Official dataset published by the City of Paris (M57, from 2019)."
-        }
-      ]
+ "schema_version": 2,
+ "description": "Lineage cliquable pour les 6 outils Paris. Chaque chart liste sa chaîne mart → core → staging → raw → source officielle. Le composant <DataProvenance> consomme ce fichier pour ouvrir, par étape, la table BigQuery publique correspondante. Le code des transformations dbt reste accessible via le lien `code_repo` en footer du modal.",
+ "bq_project": "open-data-france-484717",
+ "bq_console_url_template": "https://console.cloud.google.com/bigquery?p={project}&d={dataset}&t={table}&page=table",
+ "code_repo": "https://github.com/Nuttux/open-public-data/tree/main/pipeline/models",
+ "charts": {
+  "budget-sankey-paris": {
+   "label_fr": "Sankey budget — Ville de Paris",
+   "label_en": "Budget Sankey — City of Paris",
+   "page_fr": "/fr/city/paris/budget",
+   "page_en": "/fr/city/paris/budget",
+   "json_export": "/data/budget_sankey_{year}.json",
+   "what_it_shows_fr": "Flux des recettes et dépenses du Budget Principal, agrégés par chapitre fonctionnel.",
+   "what_it_shows_en": "Revenue and spending flows from the Main Budget, aggregated by functional chapter.",
+   "chain": [
+    {
+     "layer": "mart",
+     "name": "mart_sankey",
+     "bq_table": "dbt_paris_marts.mart_sankey",
+     "role_fr": "Agrégation Sankey nodes + links par année.",
+     "role_en": "Sankey nodes + links aggregation per year."
     },
-    "subventions-treemap-paris": {
-      "label_fr": "Treemap subventions — Ville de Paris",
-      "label_en": "Grants treemap — City of Paris",
-      "page_fr": "/ville/paris/subventions",
-      "page_en": "/ville/paris/subventions",
-      "json_export": "/data/subventions/treemap_{year}.json",
-      "what_it_shows_fr": "Montants des subventions versées agrégés par thématique, avec drill-down par bénéficiaire.",
-      "what_it_shows_en": "Grants paid aggregated by theme, with beneficiary drill-down.",
-      "chain": [
-        {
-          "layer": "mart",
-          "name": "mart_subventions_treemap",
-          "bq_table": "dbt_paris_marts.mart_subventions_treemap",
-          "role_fr": "Agrégation treemap par thématique + top bénéficiaires.",
-          "role_en": "Treemap aggregation by theme + top beneficiaries."
-        },
-        {
-          "layer": "core",
-          "name": "core_subventions",
-          "bq_table": "dbt_paris_analytics.core_subventions",
-          "role_fr": "OBT subventions avec thématique, type d'organisme, dédup CASVP.",
-          "role_en": "Grants OBT with theme, organisation type, CASVP dedup."
-        },
-        {
-          "layer": "intermediate",
-          "name": "int_subventions_enrichies",
-          "bq_table": "dbt_paris_intermediate.int_subventions_enrichies",
-          "role_fr": "Cascade thématique : pattern → direction → LLM → default. Voir aussi calibration LLM.",
-          "role_en": "Theme cascade: pattern → direction → LLM → default. See also LLM calibration."
-        },
-        {
-          "layer": "staging",
-          "name": "stg_subventions_all + stg_associations",
-          "bq_table": "dbt_paris_staging.stg_subventions_all",
-          "role_fr": "Typage, normalisation des noms de bénéficiaires (table principale ; voir aussi stg_associations).",
-          "role_en": "Typing, beneficiary name normalisation (primary table; see also stg_associations)."
-        },
-        {
-          "layer": "raw",
-          "name": "raw.subventions_versees_annexe_compte_administratif_a_partir_de_2018 + raw.subventions_associations_votees",
-          "bq_table": "raw.subventions_versees_annexe_compte_administratif_a_partir_de_2018",
-          "role_fr": "Miroirs des CSVs OpenData (annexe CA — table principale ; voir aussi subventions_associations_votees).",
-          "role_en": "Mirrors of OpenData CSVs (CA annex — primary table; see also subventions_associations_votees)."
-        },
-        {
-          "layer": "source",
-          "name": "OpenData Paris — Subventions versées + Subventions associations votées",
-          "url": "https://opendata.paris.fr/explore/dataset/subventions-versees-annexe-compte-administratif-a-partir-de-2018/",
-          "role_fr": "2 datasets officiels Ville de Paris. ⚠ Années 2020-2021 absentes (bénéficiaires non publiés).",
-          "role_en": "2 official City of Paris datasets. ⚠ Years 2020-2021 missing (beneficiaries not published)."
-        }
-      ]
+    {
+     "layer": "core",
+     "name": "core_budget",
+     "bq_table": "dbt_paris_analytics.core_budget",
+     "role_fr": "OBT Budget exécuté (CA) ligne par ligne avec thématiques.",
+     "role_en": "Executed Budget (CA) OBT row-level with themes."
     },
-    "marches-fournisseurs-paris": {
-      "label_fr": "Marchés publics — Ville de Paris",
-      "label_en": "Public contracts — City of Paris",
-      "page_fr": "/ville/paris/marches",
-      "page_en": "/ville/paris/marches",
-      "json_export": "/data/marches-publics/marches_{year}.json",
-      "what_it_shows_fr": "Marchés notifiés par la Ville et ses entités, agrégés par fournisseur et par nature.",
-      "what_it_shows_en": "Contracts awarded by the City and its entities, aggregated by supplier and nature.",
-      "chain": [
-        {
-          "layer": "mart",
-          "name": "mart_marches_fournisseurs",
-          "bq_table": "dbt_paris_marts.mart_marches_fournisseurs",
-          "role_fr": "Agrégation par fournisseur (SIRET) × année, top N + total.",
-          "role_en": "Aggregation by supplier (SIRET) × year, top N + total."
-        },
-        {
-          "layer": "core",
-          "name": "core_marches_publics",
-          "bq_table": "dbt_paris_analytics.core_marches_publics",
-          "role_fr": "OBT marchés ligne par ligne, fusion Ville + DECP national, dédup uid.",
-          "role_en": "Contracts OBT row-level, City + national DECP merge, uid dedup."
-        },
-        {
-          "layer": "staging",
-          "name": "stg_marches_publics + stg_decp_marches_paris",
-          "bq_table": "dbt_paris_staging.stg_marches_publics",
-          "role_fr": "Typage, normalisation SIRET titulaires (Ville). Voir aussi stg_decp_marches_paris pour la branche DECP nationale.",
-          "role_en": "Typing, titulaire SIRET normalisation (City). See also stg_decp_marches_paris for the national DECP branch."
-        },
-        {
-          "layer": "raw",
-          "name": "raw.liste_des_marches_de_la_collectivite_parisienne + raw.decp_marches_paris",
-          "bq_table": "raw.liste_des_marches_de_la_collectivite_parisienne",
-          "role_fr": "Miroirs des CSVs OpenData Paris + DECP national (filtre SIRET 217500* Paris).",
-          "role_en": "Mirrors of OpenData Paris CSVs + national DECP (SIRET 217500* Paris filter)."
-        },
-        {
-          "layer": "source",
-          "name": "OpenData Paris — Liste des marchés + data.gouv.fr DECP consolidée",
-          "url": "https://opendata.paris.fr/explore/dataset/liste-des-marches-de-la-collectivite-parisienne/",
-          "role_fr": "2 sources officielles : OpenData Paris (Ville) + DECP nationale data.gouv (consolide les marchés déclarés au-delà du périmètre Ville).",
-          "role_en": "2 official sources: OpenData Paris (City) + national DECP on data.gouv (consolidates contracts declared beyond the City scope)."
-        }
-      ]
+    {
+     "layer": "staging",
+     "name": "stg_budget_principal",
+     "bq_table": "dbt_paris_staging.stg_budget_principal",
+     "role_fr": "Typage, filtre type_operation='Réel', renommage colonnes FR.",
+     "role_en": "Typing, type_operation='Réel' filter, FR column renaming."
     },
-    "investissements-map-paris": {
-      "label_fr": "Carte des projets d'investissement — Ville de Paris",
-      "label_en": "Investment projects map — City of Paris",
-      "page_fr": "/ville/paris/investissements",
-      "page_en": "/ville/paris/investissements",
-      "json_export": "/data/map/investissements_complet_{year}.json",
-      "what_it_shows_fr": "Projets d'investissement géolocalisés par arrondissement (et parfois adresse précise).",
-      "what_it_shows_en": "Investment projects geolocated by arrondissement (sometimes precise address).",
-      "chain": [
-        {
-          "layer": "mart",
-          "name": "mart_carte_investissements",
-          "bq_table": "dbt_paris_marts.mart_carte_investissements",
-          "role_fr": "Sélection des projets géolocalisés, fusion AP OpenData + PDF Investissements Localisés.",
-          "role_en": "Geolocated projects selection, AP OpenData + PDF Localised Investments merge."
-        },
-        {
-          "layer": "core",
-          "name": "core_ap_projets",
-          "bq_table": "dbt_paris_analytics.core_ap_projets",
-          "role_fr": "OBT projets AP avec arrondissement, lat/lng, confidence géoloc.",
-          "role_en": "AP projects OBT with arrondissement, lat/lng, geoloc confidence."
-        },
-        {
-          "layer": "intermediate",
-          "name": "int_ap_projets_enrichis",
-          "bq_table": "dbt_paris_intermediate.int_ap_projets_enrichis",
-          "role_fr": "Cascade géoloc : regex CP → lieux connus → LLM. Voir aussi calibration LLM.",
-          "role_en": "Geoloc cascade: postcode regex → known places → LLM. See also LLM calibration."
-        },
-        {
-          "layer": "staging",
-          "name": "stg_ap_projets",
-          "bq_table": "dbt_paris_staging.stg_ap_projets",
-          "role_fr": "Filtre Réel+Dépenses, extraction d'arrondissement par regex.",
-          "role_en": "Réel+Dépenses filter, arrondissement extraction by regex."
-        },
-        {
-          "layer": "raw",
-          "name": "raw.comptes_administratifs_autorisations_de_programmes_a_partir_de_2018_m57_ville_de",
-          "bq_table": "raw.comptes_administratifs_autorisations_de_programmes_a_partir_de_2018_m57_ville_de",
-          "role_fr": "Miroir CSV AP OpenData. ⚠ Dataset gelé : pas de mise à jour pour 2023-2024.",
-          "role_en": "AP OpenData CSV mirror. ⚠ Dataset frozen: no update for 2023-2024."
-        },
-        {
-          "layer": "source",
-          "name": "OpenData Paris — AP Comptes administratifs + PDFs Investissements Localisés",
-          "url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-a-partir-de-2018-m57-ville-de/",
-          "role_fr": "Dataset officiel + PDFs annexe IL des Comptes Administratifs.",
-          "role_en": "Official dataset + PDF Localised Investments annexes from Administrative Accounts."
-        }
-      ]
+    {
+     "layer": "raw",
+     "name": "raw.comptes_administratifs_budgets_principaux_a_partir_de_2019_m57_ville_departement",
+     "bq_table": "raw.comptes_administratifs_budgets_principaux_a_partir_de_2019_m57_ville_departement",
+     "role_fr": "Miroir exact du CSV OpenData, aucune transformation.",
+     "role_en": "Exact mirror of OpenData CSV, no transformation."
     },
-    "logement-map-paris": {
-      "label_fr": "Carte du logement social — Ville de Paris",
-      "label_en": "Social housing map — City of Paris",
-      "page_fr": "/ville/paris/logement",
-      "page_en": "/ville/paris/logement",
-      "json_export": "/data/map/logements_{year}.json",
-      "what_it_shows_fr": "Opérations de logement social financées par la Ville, géolocalisées par arrondissement.",
-      "what_it_shows_en": "Social housing operations funded by the City, geolocated by arrondissement.",
-      "chain": [
-        {
-          "layer": "mart",
-          "name": "mart_logements_map",
-          "bq_table": "dbt_paris_marts.mart_logements_map",
-          "role_fr": "Sélection des opérations géolocalisées par année et arrondissement.",
-          "role_en": "Selection of geolocated operations by year and arrondissement."
-        },
-        {
-          "layer": "core",
-          "name": "core_logements_sociaux",
-          "bq_table": "dbt_paris_analytics.core_logements_sociaux",
-          "role_fr": "OBT opérations de logement social (PLAI/PLUS/PLS, années, adresses).",
-          "role_en": "Social housing operations OBT (PLAI/PLUS/PLS, years, addresses)."
-        },
-        {
-          "layer": "staging",
-          "name": "stg_logements_sociaux",
-          "bq_table": "dbt_paris_staging.stg_logements_sociaux",
-          "role_fr": "Typage, normalisation des catégories de financement.",
-          "role_en": "Typing, financing category normalisation."
-        },
-        {
-          "layer": "raw",
-          "name": "raw.logements_sociaux_finances_a_paris",
-          "bq_table": "raw.logements_sociaux_finances_a_paris",
-          "role_fr": "Miroir exact du CSV OpenData, aucune transformation.",
-          "role_en": "Exact mirror of OpenData CSV, no transformation."
-        },
-        {
-          "layer": "source",
-          "name": "OpenData Paris — Logements sociaux financés à Paris",
-          "url": "https://opendata.paris.fr/explore/dataset/logements-sociaux-finances-a-paris/",
-          "role_fr": "Dataset officiel publié par la Ville de Paris (opérations 2001-2024).",
-          "role_en": "Official dataset published by the City of Paris (operations 2001-2024)."
-        }
-      ]
-    },
-    "dette-sankey-paris": {
-      "label_fr": "Bilan & dette — Ville de Paris",
-      "label_en": "Balance sheet & debt — City of Paris",
-      "page_fr": "/ville/paris/dette",
-      "page_en": "/ville/paris/dette",
-      "json_export": "/data/bilan_sankey_{year}.json",
-      "what_it_shows_fr": "Sankey du bilan comptable (actif, fonds propres, dette, provisions) — annuel.",
-      "what_it_shows_en": "Balance sheet Sankey (assets, equity, debt, provisions) — annual.",
-      "chain": [
-        {
-          "layer": "mart",
-          "name": "mart_bilan_sankey",
-          "bq_table": "dbt_paris_marts.mart_bilan_sankey",
-          "role_fr": "Agrégation Sankey nodes + links du bilan par année.",
-          "role_en": "Balance sheet Sankey nodes + links aggregation per year."
-        },
-        {
-          "layer": "core",
-          "name": "core_bilan_comptable",
-          "bq_table": "dbt_paris_analytics.core_bilan_comptable",
-          "role_fr": "OBT bilan : actif / fonds propres / dette / provisions, ligne par compte M57.",
-          "role_en": "Balance sheet OBT: assets / equity / debt / provisions, row per M57 account."
-        },
-        {
-          "layer": "staging",
-          "name": "stg_bilan_comptable",
-          "bq_table": "dbt_paris_staging.stg_bilan_comptable",
-          "role_fr": "Typage, regroupement classes 1-5 (M57) en grandes masses.",
-          "role_en": "Typing, M57 classes 1-5 grouped into major masses."
-        },
-        {
-          "layer": "raw",
-          "name": "raw.bilan_comptable",
-          "bq_table": "raw.bilan_comptable",
-          "role_fr": "Miroir exact du CSV OpenData, aucune transformation.",
-          "role_en": "Exact mirror of OpenData CSV, no transformation."
-        },
-        {
-          "layer": "source",
-          "name": "OpenData Paris — Bilan comptable",
-          "url": "https://opendata.paris.fr/explore/dataset/bilan-comptable/",
-          "role_fr": "Dataset officiel Ville de Paris. Hors-bilan (dette-garantie) modélisé séparément.",
-          "role_en": "Official City of Paris dataset. Off-balance-sheet (guaranteed debt) modelled separately."
-        }
-      ]
+    {
+     "layer": "source",
+     "name": "OpenData Paris — Comptes administratifs Budget Principal M57",
+     "url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-budgets-principaux-a-partir-de-2019-m57-ville-departement/",
+     "role_fr": "Dataset officiel publié par la Ville de Paris (M57, à partir de 2019).",
+     "role_en": "Official dataset published by the City of Paris (M57, from 2019)."
     }
+   ]
+  },
+  "subventions-treemap-paris": {
+   "label_fr": "Treemap subventions — Ville de Paris",
+   "label_en": "Grants treemap — City of Paris",
+   "page_fr": "/fr/city/paris/subventions",
+   "page_en": "/fr/city/paris/subventions",
+   "json_export": "/data/subventions/treemap_{year}.json",
+   "what_it_shows_fr": "Montants des subventions versées agrégés par thématique, avec drill-down par bénéficiaire.",
+   "what_it_shows_en": "Grants paid aggregated by theme, with beneficiary drill-down.",
+   "chain": [
+    {
+     "layer": "mart",
+     "name": "mart_subventions_treemap",
+     "bq_table": "dbt_paris_marts.mart_subventions_treemap",
+     "role_fr": "Agrégation treemap par thématique + top bénéficiaires.",
+     "role_en": "Treemap aggregation by theme + top beneficiaries."
+    },
+    {
+     "layer": "core",
+     "name": "core_subventions",
+     "bq_table": "dbt_paris_analytics.core_subventions",
+     "role_fr": "OBT subventions avec thématique, type d'organisme, dédup CASVP. Cascade thématique intégrée : pattern → direction → cache LLM → default.",
+     "role_en": "Grants OBT with theme, organisation type, CASVP dedup. Built-in theme cascade: pattern → direction → LLM cache → default."
+    },
+    {
+     "layer": "staging",
+     "name": "stg_subventions_all + stg_associations",
+     "bq_table": "dbt_paris_staging.stg_subventions_all",
+     "role_fr": "Typage, normalisation des noms de bénéficiaires (table principale ; voir aussi stg_associations).",
+     "role_en": "Typing, beneficiary name normalisation (primary table; see also stg_associations)."
+    },
+    {
+     "layer": "raw",
+     "name": "raw.subventions_versees_annexe_compte_administratif_a_partir_de_2018 + raw.subventions_associations_votees",
+     "bq_table": "raw.subventions_versees_annexe_compte_administratif_a_partir_de_2018",
+     "role_fr": "Miroirs des CSVs OpenData (annexe CA — table principale ; voir aussi subventions_associations_votees).",
+     "role_en": "Mirrors of OpenData CSVs (CA annex — primary table; see also subventions_associations_votees)."
+    },
+    {
+     "layer": "source",
+     "name": "OpenData Paris — Subventions versées + Subventions associations votées",
+     "url": "https://opendata.paris.fr/explore/dataset/subventions-versees-annexe-compte-administratif-a-partir-de-2018/",
+     "role_fr": "2 datasets officiels Ville de Paris. ⚠ Années 2020-2021 absentes (bénéficiaires non publiés).",
+     "role_en": "2 official City of Paris datasets. ⚠ Years 2020-2021 missing (beneficiaries not published)."
+    }
+   ]
+  },
+  "marches-fournisseurs-paris": {
+   "label_fr": "Marchés publics — Ville de Paris",
+   "label_en": "Public contracts — City of Paris",
+   "page_fr": "/fr/city/paris/marches",
+   "page_en": "/fr/city/paris/marches",
+   "json_export": "/data/marches-publics/marches_{year}.json",
+   "what_it_shows_fr": "Marchés notifiés par la Ville et ses entités, agrégés par fournisseur et par nature.",
+   "what_it_shows_en": "Contracts awarded by the City and its entities, aggregated by supplier and nature.",
+   "chain": [
+    {
+     "layer": "mart",
+     "name": "mart_marches_fournisseurs",
+     "bq_table": "dbt_paris_marts.mart_marches_fournisseurs",
+     "role_fr": "Agrégation par fournisseur (SIRET) × année, top N + total.",
+     "role_en": "Aggregation by supplier (SIRET) × year, top N + total."
+    },
+    {
+     "layer": "core",
+     "name": "core_marches_publics",
+     "bq_table": "dbt_paris_analytics.core_marches_publics",
+     "role_fr": "OBT marchés ligne par ligne, fusion Ville + DECP national, dédup uid.",
+     "role_en": "Contracts OBT row-level, City + national DECP merge, uid dedup."
+    },
+    {
+     "layer": "staging",
+     "name": "stg_marches_publics + stg_decp_marches_paris",
+     "bq_table": "dbt_paris_staging.stg_marches_publics",
+     "role_fr": "Typage, normalisation SIRET titulaires (Ville). Voir aussi stg_decp_marches_paris pour la branche DECP nationale.",
+     "role_en": "Typing, titulaire SIRET normalisation (City). See also stg_decp_marches_paris for the national DECP branch."
+    },
+    {
+     "layer": "raw",
+     "name": "raw.liste_des_marches_de_la_collectivite_parisienne + raw.decp_marches_paris",
+     "bq_table": "raw.liste_des_marches_de_la_collectivite_parisienne",
+     "role_fr": "Miroirs des CSVs OpenData Paris + DECP national (filtre SIRET 217500* Paris).",
+     "role_en": "Mirrors of OpenData Paris CSVs + national DECP (SIRET 217500* Paris filter)."
+    },
+    {
+     "layer": "source",
+     "name": "OpenData Paris — Liste des marchés + data.gouv.fr DECP consolidée",
+     "url": "https://opendata.paris.fr/explore/dataset/liste-des-marches-de-la-collectivite-parisienne/",
+     "role_fr": "2 sources officielles : OpenData Paris (Ville) + DECP nationale data.gouv (consolide les marchés déclarés au-delà du périmètre Ville).",
+     "role_en": "2 official sources: OpenData Paris (City) + national DECP on data.gouv (consolidates contracts declared beyond the City scope)."
+    }
+   ]
+  },
+  "investissements-map-paris": {
+   "label_fr": "Carte des projets d'investissement — Ville de Paris",
+   "label_en": "Investment projects map — City of Paris",
+   "page_fr": "/fr/city/paris/investissements",
+   "page_en": "/fr/city/paris/investissements",
+   "json_export": "/data/map/investissements_complet_{year}.json",
+   "what_it_shows_fr": "Projets d'investissement géolocalisés par arrondissement (et parfois adresse précise).",
+   "what_it_shows_en": "Investment projects geolocated by arrondissement (sometimes precise address).",
+   "chain": [
+    {
+     "layer": "mart",
+     "name": "mart_carte_investissements",
+     "bq_table": "dbt_paris_marts.mart_carte_investissements",
+     "role_fr": "Sélection des projets géolocalisés, fusion AP OpenData + PDF Investissements Localisés.",
+     "role_en": "Geolocated projects selection, AP OpenData + PDF Localised Investments merge."
+    },
+    {
+     "layer": "core",
+     "name": "core_ap_projets",
+     "bq_table": "dbt_paris_analytics.core_ap_projets",
+     "role_fr": "OBT projets AP avec arrondissement, lat/lng, confidence géoloc. Cascade géoloc intégrée : regex CP → lieux connus → cache LLM.",
+     "role_en": "AP projects OBT with arrondissement, lat/lng, geoloc confidence. Built-in geoloc cascade: postcode regex → known places → LLM cache."
+    },
+    {
+     "layer": "staging",
+     "name": "stg_ap_projets",
+     "bq_table": "dbt_paris_staging.stg_ap_projets",
+     "role_fr": "Filtre Réel+Dépenses, extraction d'arrondissement par regex.",
+     "role_en": "Réel+Dépenses filter, arrondissement extraction by regex."
+    },
+    {
+     "layer": "raw",
+     "name": "raw.comptes_administratifs_autorisations_de_programmes_a_partir_de_2018_m57_ville_de",
+     "bq_table": "raw.comptes_administratifs_autorisations_de_programmes_a_partir_de_2018_m57_ville_de",
+     "role_fr": "Miroir CSV AP OpenData. ⚠ Dataset gelé : pas de mise à jour pour 2023-2024.",
+     "role_en": "AP OpenData CSV mirror. ⚠ Dataset frozen: no update for 2023-2024."
+    },
+    {
+     "layer": "source",
+     "name": "OpenData Paris — AP Comptes administratifs + PDFs Investissements Localisés",
+     "url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-a-partir-de-2018-m57-ville-de/",
+     "role_fr": "Dataset officiel + PDFs annexe IL des Comptes Administratifs.",
+     "role_en": "Official dataset + PDF Localised Investments annexes from Administrative Accounts."
+    }
+   ]
+  },
+  "logement-map-paris": {
+   "label_fr": "Carte du logement social — Ville de Paris",
+   "label_en": "Social housing map — City of Paris",
+   "page_fr": "/fr/city/paris/logement",
+   "page_en": "/fr/city/paris/logement",
+   "json_export": "/data/map/logements_{year}.json",
+   "what_it_shows_fr": "Opérations de logement social financées par la Ville, géolocalisées par arrondissement.",
+   "what_it_shows_en": "Social housing operations funded by the City, geolocated by arrondissement.",
+   "chain": [
+    {
+     "layer": "mart",
+     "name": "mart_logements_map",
+     "bq_table": "dbt_paris_marts.mart_logements_map",
+     "role_fr": "Sélection des opérations géolocalisées par année et arrondissement.",
+     "role_en": "Selection of geolocated operations by year and arrondissement."
+    },
+    {
+     "layer": "core",
+     "name": "core_logements_sociaux",
+     "bq_table": "dbt_paris_analytics.core_logements_sociaux",
+     "role_fr": "OBT opérations de logement social (PLAI/PLUS/PLS, années, adresses).",
+     "role_en": "Social housing operations OBT (PLAI/PLUS/PLS, years, addresses)."
+    },
+    {
+     "layer": "staging",
+     "name": "stg_logements_sociaux",
+     "bq_table": "dbt_paris_staging.stg_logements_sociaux",
+     "role_fr": "Typage, normalisation des catégories de financement.",
+     "role_en": "Typing, financing category normalisation."
+    },
+    {
+     "layer": "raw",
+     "name": "raw.logements_sociaux_finances_a_paris",
+     "bq_table": "raw.logements_sociaux_finances_a_paris",
+     "role_fr": "Miroir exact du CSV OpenData, aucune transformation.",
+     "role_en": "Exact mirror of OpenData CSV, no transformation."
+    },
+    {
+     "layer": "source",
+     "name": "OpenData Paris — Logements sociaux financés à Paris",
+     "url": "https://opendata.paris.fr/explore/dataset/logements-sociaux-finances-a-paris/",
+     "role_fr": "Dataset officiel publié par la Ville de Paris (opérations 2001-2024).",
+     "role_en": "Official dataset published by the City of Paris (operations 2001-2024)."
+    }
+   ]
+  },
+  "dette-sankey-paris": {
+   "label_fr": "Bilan & dette — Ville de Paris",
+   "label_en": "Balance sheet & debt — City of Paris",
+   "page_fr": "/fr/city/paris/dette",
+   "page_en": "/fr/city/paris/dette",
+   "json_export": "/data/bilan_sankey_{year}.json",
+   "what_it_shows_fr": "Sankey du bilan comptable (actif, fonds propres, dette, provisions) — annuel.",
+   "what_it_shows_en": "Balance sheet Sankey (assets, equity, debt, provisions) — annual.",
+   "chain": [
+    {
+     "layer": "mart",
+     "name": "mart_bilan_sankey",
+     "bq_table": "dbt_paris_marts.mart_bilan_sankey",
+     "role_fr": "Agrégation Sankey nodes + links du bilan par année.",
+     "role_en": "Balance sheet Sankey nodes + links aggregation per year."
+    },
+    {
+     "layer": "core",
+     "name": "core_bilan_comptable",
+     "bq_table": "dbt_paris_analytics.core_bilan_comptable",
+     "role_fr": "OBT bilan : actif / fonds propres / dette / provisions, ligne par compte M57.",
+     "role_en": "Balance sheet OBT: assets / equity / debt / provisions, row per M57 account."
+    },
+    {
+     "layer": "staging",
+     "name": "stg_bilan_comptable",
+     "bq_table": "dbt_paris_staging.stg_bilan_comptable",
+     "role_fr": "Typage, regroupement classes 1-5 (M57) en grandes masses.",
+     "role_en": "Typing, M57 classes 1-5 grouped into major masses."
+    },
+    {
+     "layer": "raw",
+     "name": "raw.bilan_comptable",
+     "bq_table": "raw.bilan_comptable",
+     "role_fr": "Miroir exact du CSV OpenData, aucune transformation.",
+     "role_en": "Exact mirror of OpenData CSV, no transformation."
+    },
+    {
+     "layer": "source",
+     "name": "OpenData Paris — Bilan comptable",
+     "url": "https://opendata.paris.fr/explore/dataset/bilan-comptable/",
+     "role_fr": "Dataset officiel Ville de Paris. Hors-bilan (dette-garantie) modélisé séparément.",
+     "role_en": "Official City of Paris dataset. Off-balance-sheet (guaranteed debt) modelled separately."
+    }
+   ]
   }
+ }
 }

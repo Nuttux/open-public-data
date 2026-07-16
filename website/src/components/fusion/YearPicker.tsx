@@ -12,7 +12,7 @@ type Props = {
   previewYears?: number[];
   /** Currently selected year. */
   current: number;
-  /** Base path (e.g. "/ville/paris/budget"). The year is appended as ?year=YYYY. */
+  /** Base path (e.g. "/fr/city/paris/budget"). The year is appended as ?year=YYYY. */
   basePath: string;
   /** Optional prefix label; defaults to "Exercice". */
   label?: string;

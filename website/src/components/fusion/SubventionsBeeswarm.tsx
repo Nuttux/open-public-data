@@ -62,7 +62,7 @@ export default function SubventionsBeeswarm({
 }: {
   year: number;
   searchIndexUrl: string;
-  /** e.g. /ville/paris/subventions — fiche = `${ficheBase}/association/${slug}` */
+  /** e.g. /fr/city/paris/subventions — fiche = `${ficheBase}/association/${slug}` */
   ficheBase: string;
 }) {
   const t = useT();

@@ -464,7 +464,7 @@ export default function ContratFiche({
                 <dt>{t("fx.fiche.contrat.voir")}</dt>
                 <dd>
                   <Link
-                    href={`/ville/paris/marches/fournisseur/${contrat.fournisseurSiret.replace(/\s/g, "")}`}
+                    href={`/fr/city/paris/marches/fournisseur/${contrat.fournisseurSiret.replace(/\s/g, "")}`}
                     style={{ fontFamily: "var(--f-mono)", fontSize: 12, color: "var(--bleu)", borderBottom: "1px solid var(--bleu)", paddingBottom: 1 }}
                     scroll={false}
                   >
@@ -494,32 +494,39 @@ export default function ContratFiche({
               <dd>{contrat.perimetre}</dd>
             </div>
           )}
-          <div className="fx-fiche-prop">
-            <dt>{t("fx.fiche.contrat.decp")}</dt>
-            <dd>
-              <a
-                href={`https://www.data.gouv.fr/datasets/donnees-essentielles-de-la-commande-publique/#/_search?q=${encodeURIComponent(contrat.numero)}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                style={{ color: "var(--bleu)", borderBottom: "1px solid var(--bleu)" }}
-              >
-                {t("fx.fiche.contrat.decp_link")}
-              </a>
-            </dd>
-          </div>
-          <div className="fx-fiche-prop">
-            <dt>{t("fx.fiche.contrat.opendata")}</dt>
-            <dd>
-              <a
-                href="https://opendata.paris.fr/explore/dataset/liste-des-marches-de-la-collectivite-parisienne/"
-                target="_blank"
-                rel="noopener noreferrer"
-                style={{ color: "var(--bleu)", borderBottom: "1px solid var(--bleu)" }}
-              >
-                opendata.paris.fr ↗
-              </a>
-            </dd>
-          </div>
+          {contrat.numero.startsWith("decp-") ? (
+            /* Marché issu des DECP consolidées : pas de page par enregistrement
+             * côté data.gouv, on pointe le jeu de données lui-même. */
+            <div className="fx-fiche-prop">
+              <dt>{t("fx.fiche.contrat.decp")}</dt>
+              <dd>
+                <a
+                  href="https://www.data.gouv.fr/fr/datasets/donnees-essentielles-de-la-commande-publique-fichiers-consolides/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{ color: "var(--bleu)", borderBottom: "1px solid var(--bleu)" }}
+                >
+                  {t("fx.fiche.contrat.decp_link")}
+                </a>
+              </dd>
+            </div>
+          ) : (
+            /* Marché opendata Paris : refine.num_marche matche exactement la
+             * ligne source (vérifié 30/30 sur échantillon). */
+            <div className="fx-fiche-prop">
+              <dt>{t("fx.fiche.contrat.opendata")}</dt>
+              <dd>
+                <a
+                  href={`https://opendata.paris.fr/explore/dataset/liste-des-marches-de-la-collectivite-parisienne/table/?refine.num_marche=${encodeURIComponent(contrat.numero)}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{ color: "var(--bleu)", borderBottom: "1px solid var(--bleu)" }}
+                >
+                  {t("fx.fiche.contrat.opendata_link")}
+                </a>
+              </dd>
+            </div>
+          )}
         </dl>
       </section>
 

@@ -34,7 +34,7 @@ Schéma :
               "annual_eur": 367_000_000_000,
               "share_of_theme": 0.895,
               "fraction_applied": 1.0,
-              "drill_url": "/france/budget/bucket/secu/cnam_maladie",
+              "drill_url": "/fr/national/budget/bucket/secu/cnam_maladie",
               "source": "...", "source_url": "...",
               "note": "..."
             }, ...
@@ -331,29 +331,29 @@ def _project_amount(
         institution_total = inst_totals.get("S1314", {}).get("annual_eur") or 0
         dd_bucket = drilldown["buckets"].get("secu") or {}
         scale_factor = 1.0
-        drill_url = f"/france/budget/bucket/secu/{level2}"
+        drill_url = f"/fr/national/budget/bucket/secu/{level2}"
     elif bucket == "etat":
         # Base = total_net_cp_eur (somme des missions PLF, ≈ 447 Md€), PAS S1311.
         # Cf. docstring : éviter la surestimation 676/447 ≈ 1,51×.
         institution_total = state_total_net_cp_eur
         dd_bucket = drilldown["buckets"].get("etat") or {}
         scale_factor = 1.0
-        drill_url = f"/france/budget/bucket/etat/{level2}"
+        drill_url = f"/fr/national/budget/bucket/etat/{level2}"
     elif bucket == "local_communal":
         institution_total = inst_totals.get("S1313", {}).get("annual_eur") or 0
         scale_factor = (apul_breakdown.get("part_communes_epci") or {}).get("value") or 0.0
         dd_bucket = drilldown["buckets"].get("local") or {}
-        drill_url = f"/france/budget/bucket/local/{level2}"
+        drill_url = f"/fr/national/budget/bucket/local/{level2}"
     elif bucket == "local_dept":
         institution_total = inst_totals.get("S1313", {}).get("annual_eur") or 0
         scale_factor = (apul_breakdown.get("part_departements") or {}).get("value") or 0.0
         dd_bucket = (drilldown["buckets"].get("local") or {}).get("departement") or {}
-        drill_url = f"/france/budget/bucket/local/dept/{level2}"
+        drill_url = f"/fr/national/budget/bucket/local/dept/{level2}"
     else:  # local_region
         institution_total = inst_totals.get("S1313", {}).get("annual_eur") or 0
         scale_factor = (apul_breakdown.get("part_regions") or {}).get("value") or 0.0
         dd_bucket = (drilldown["buckets"].get("local") or {}).get("region") or {}
-        drill_url = f"/france/budget/bucket/local/region/{level2}"
+        drill_url = f"/fr/national/budget/bucket/local/region/{level2}"
 
     # Resolve level2 share
     l2_share, l2_entry = _resolve_level2_share(dd_bucket, level2)

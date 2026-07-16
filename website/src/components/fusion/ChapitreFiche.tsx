@@ -122,7 +122,7 @@ export default function ChapitreFiche({ chap }: { chap: ChapitreFicheType }) {
               return (
                 <Link
                   key={a.arr}
-                  href={`/ville/paris/investissements/arrondissement/${a.arr}`}
+                  href={`/fr/city/paris/investissements/arrondissement/${a.arr}`}
                   scroll={false}
                   className="fx-row-link"
                   style={{
@@ -161,7 +161,7 @@ export default function ChapitreFiche({ chap }: { chap: ChapitreFicheType }) {
             return (
               <Link
                 key={p.id}
-                href={`/ville/paris/investissements/projet/${encodeURIComponent(p.id)}`}
+                href={`/fr/city/paris/investissements/projet/${encodeURIComponent(p.id)}`}
                 scroll={false}
                 className="fx-arr-top-item"
               >
@@ -188,6 +188,24 @@ export default function ChapitreFiche({ chap }: { chap: ChapitreFicheType }) {
         </div>
       </section>
       )}
+
+      <section className="fx-fiche-section">
+        <div className="fx-fiche-h">{t("fx.fiche.shared.source")}</div>
+        <p style={{ fontSize: 13.5, color: "var(--ink-2)", lineHeight: 1.55, margin: 0 }}>
+          {fill(t("fx.fiche.chap.source_note"), { year: chap.year })}{" "}
+          <a
+            /* Le libellé chapitre de la fiche est un renommage éditorial : on ne
+             * peut pas refine dessus. On pointe les lignes M57 dépenses
+             * d'investissement de l'exercice (jamais vide, périmètre exact). */
+            href={`https://opendata.paris.fr/explore/dataset/comptes-administratifs-budgets-principaux-a-partir-de-2019-m57-ville-departement/table/?refine.exercice_comptable=${chap.year}&refine.section_budgetaire_i_f=Investissement&refine.sens_depense_recette=D%C3%A9penses`}
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{ color: "var(--bleu)", borderBottom: "1px solid var(--bleu)" }}
+          >
+            {t("fx.fiche.chap.source_link")}
+          </a>
+        </p>
+      </section>
     </div>
   );
 }

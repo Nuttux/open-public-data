@@ -27,7 +27,7 @@ export default function SignalementClient() {
   const [errorKey, setErrorKey] = useState<string>("");
 
   // Pré-remplir l'URL si on arrive depuis un bouton "Signaler" (DataProvenance modal
-  // notamment) : `?page=/ville/paris/budget`.
+  // notamment) : `?page=/fr/city/paris/budget`.
   useEffect(() => {
     const fromQuery = search.get("page");
     if (fromQuery) setPageUrl(fromQuery);
@@ -140,7 +140,7 @@ export default function SignalementClient() {
                     type="text"
                     value={pageUrl}
                     onChange={(e) => setPageUrl(e.target.value)}
-                    placeholder={isFr ? "/ville/paris/budget" : "/ville/paris/budget"}
+                    placeholder={isFr ? "/fr/city/paris/budget" : "/fr/city/paris/budget"}
                   />
                 </label>
 

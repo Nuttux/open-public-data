@@ -15,7 +15,7 @@
           "label_en": "Health insurance (CNAM)",
           "share_of_parent": 0.46,
           "source": "PLFSS 2025 - branche maladie / total ASSO",
-          "source_url": "https://www.securite-sociale.fr/files-sso/files/2024/10/PLFSS-2025_Annexe5.pdf",
+          "source_url": "https://www.securite-sociale.fr/files/live/sites/SSFR/files/medias/PLFSS/2025/PLFSS2025-Annexe05.pdf",
           "level3": [
             {
               "key": "cnam_maladie_hopital_etablissements_sante",
@@ -23,7 +23,7 @@
               "label_en": "Hospitals + healthcare facilities",
               "share_of_parent": 0.388,
               "source": "PLFSS 2025 - ONDAM voté, sous-objectif 'Établissements de santé'",
-              "source_url": "https://www.securite-sociale.fr/files-sso/files/2024/10/PLFSS-2025_Annexe7.pdf"
+              "source_url": "https://www.securite-sociale.fr/files/live/sites/SSFR/files/medias/PLFSS/2025/PLFSS2025_Annexe07.pdf"
             },
             {
               "key": "cnam_maladie_medecine_ville_soins_ambulatoires",
@@ -31,7 +31,7 @@
               "label_en": "City medicine + outpatient care",
               "share_of_parent": 0.383,
               "source": "PLFSS 2025 - ONDAM voté, sous-objectif 'Soins de ville'",
-              "source_url": "https://www.securite-sociale.fr/files-sso/files/2024/10/PLFSS-2025_Annexe7.pdf",
+              "source_url": "https://www.securite-sociale.fr/files/live/sites/SSFR/files/medias/PLFSS/2025/PLFSS2025_Annexe07.pdf",
               "level4": [
                 {
                   "key": "cnam_maladie_medecine_ville_soins_ambulatoires_medicaments_remboursables",
@@ -113,7 +113,7 @@
               "label_en": "Medico-social (nursing homes, disability)",
               "share_of_parent": 0.109,
               "source": "PLFSS 2025 - ONDAM voté, sous-objectif 'Médico-social'",
-              "source_url": "https://www.securite-sociale.fr/files-sso/files/2024/10/PLFSS-2025_Annexe7.pdf"
+              "source_url": "https://www.securite-sociale.fr/files/live/sites/SSFR/files/medias/PLFSS/2025/PLFSS2025_Annexe07.pdf"
             },
             {
               "key": "cnam_maladie_indemnites_journalieres_maternite",
@@ -121,7 +121,7 @@
               "label_en": "Daily allowances + maternity",
               "share_of_parent": 0.06,
               "source": "PLFSS 2025 - branche maladie / IJ + maternité",
-              "source_url": "https://www.securite-sociale.fr/files-sso/files/2024/10/PLFSS-2025_Annexe7.pdf"
+              "source_url": "https://www.securite-sociale.fr/files/live/sites/SSFR/files/medias/PLFSS/2025/PLFSS2025_Annexe07.pdf"
             },
             {
               "key": "cnam_maladie_fir_ame_prevention_autres",
@@ -129,7 +129,7 @@
               "label_en": "Regional fund + state medical aid + prevention",
               "share_of_parent": 0.06,
               "source": "PLFSS 2025 - sous-objectifs résiduels (FIR, AME, prévention, soutien aux secteurs en difficulté)",
-              "source_url": "https://www.securite-sociale.fr/files-sso/files/2024/10/PLFSS-2025_Annexe7.pdf"
+              "source_url": "https://www.securite-sociale.fr/files/live/sites/SSFR/files/medias/PLFSS/2025/PLFSS2025_Annexe07.pdf"
             }
           ]
         },
@@ -139,7 +139,7 @@
           "label_en": "Pensions (CNAV + other base schemes)",
           "share_of_parent": 0.39,
           "source": "PLFSS 2025 - branche vieillesse / total ASSO",
-          "source_url": "https://www.securite-sociale.fr/files-sso/files/2024/10/PLFSS-2025_Annexe5.pdf",
+          "source_url": "https://www.securite-sociale.fr/files/live/sites/SSFR/files/medias/PLFSS/2025/PLFSS2025-Annexe05.pdf",
           "level3": [
             {
               "key": "cnav_retraites_regime_general_salaries_prive",
@@ -147,7 +147,7 @@
               "label_en": "General scheme (private-sector employees)",
               "share_of_parent": 0.46,
               "source": "DREES — Les retraites et les retraités, édition 2024",
-              "source_url": "https://drees.solidarites-sante.gouv.fr/publications-communique-de-presse/panoramas-de-la-drees/240725_Panorama_Retraites"
+              "source_url": "https://drees.solidarites-sante.gouv.fr/publications-communique-de-presse-documents-de-reference/panoramas-de-la-drees/241030_Retraites_2024"
             },
             {
               "key": "cnav_retraites_fonction_publique",
@@ -155,7 +155,7 @@
               "label_en": "Civil service (State, local, hospital)",
               "share_of_parent": 0.26,
               "source": "DREES — Les retraites et les retraités, édition 2024",
-              "source_url": "https://drees.solidarites-sante.gouv.fr/publications-communique-de-presse/panoramas-de-la-drees/240725_Panorama_Retraites"
+              "source_url": "https://drees.solidarites-sante.gouv.fr/publications-communique-de-presse-documents-de-reference/panoramas-de-la-drees/241030_Retraites_2024"
             },
             {
               "key": "cnav_retraites_independants_agricoles_autres",
@@ -163,7 +163,7 @@
               "label_en": "Self-employed + farmers (RSI, MSA)",
               "share_of_parent": 0.2,
               "source": "DREES — Les retraites et les retraités, édition 2024",
-              "source_url": "https://drees.solidarites-sante.gouv.fr/publications-communique-de-presse/panoramas-de-la-drees/240725_Panorama_Retraites"
+              "source_url": "https://drees.solidarites-sante.gouv.fr/publications-communique-de-presse-documents-de-reference/panoramas-de-la-drees/241030_Retraites_2024"
             },
             {
               "key": "cnav_retraites_regimes_speciaux",
@@ -171,7 +171,7 @@
               "label_en": "Special schemes (SNCF, RATP, EDF, etc.)",
               "share_of_parent": 0.08,
               "source": "DREES — Les retraites et les retraités, édition 2024",
-              "source_url": "https://drees.solidarites-sante.gouv.fr/publications-communique-de-presse/panoramas-de-la-drees/240725_Panorama_Retraites"
+              "source_url": "https://drees.solidarites-sante.gouv.fr/publications-communique-de-presse-documents-de-reference/panoramas-de-la-drees/241030_Retraites_2024"
             }
           ]
         },
@@ -181,7 +181,7 @@
           "label_en": "Family / housing / solidarity (CNAF)",
           "share_of_parent": 0.07,
           "source": "PLFSS 2025 - branche famille / total ASSO",
-          "source_url": "https://www.securite-sociale.fr/files-sso/files/2024/10/PLFSS-2025_Annexe5.pdf",
+          "source_url": "https://www.securite-sociale.fr/files/live/sites/SSFR/files/medias/PLFSS/2025/PLFSS2025-Annexe05.pdf",
           "level3": [
             {
               "key": "cnaf_famille_prestations_familiales",
@@ -189,7 +189,7 @@
               "label_en": "Family benefits (allowances, AEEH, AJPP)",
               "share_of_parent": 0.33,
               "source": "Comptes de la Sécurité sociale 2024 + DREES Aide sociale",
-              "source_url": "https://www.securite-sociale.fr/files-sso/files/2024/09/CCSS-2024-09.pdf"
+              "source_url": "https://www.securite-sociale.fr/files/live/sites/SSFR/files/medias/CCSS/2024/CCSS-octobre%202024.pdf"
             },
             {
               "key": "cnaf_famille_aides_logement",
@@ -197,7 +197,7 @@
               "label_en": "Housing benefits (APL, ALS, ALF)",
               "share_of_parent": 0.26,
               "source": "Comptes de la Sécurité sociale 2024 + DREES Aide sociale",
-              "source_url": "https://www.securite-sociale.fr/files-sso/files/2024/09/CCSS-2024-09.pdf"
+              "source_url": "https://www.securite-sociale.fr/files/live/sites/SSFR/files/medias/CCSS/2024/CCSS-octobre%202024.pdf"
             },
             {
               "key": "cnaf_famille_rsa",
@@ -205,7 +205,7 @@
               "label_en": "Active solidarity income (paid by CAF for State)",
               "share_of_parent": 0.22,
               "source": "Comptes de la Sécurité sociale 2024 + DREES Aide sociale",
-              "source_url": "https://www.securite-sociale.fr/files-sso/files/2024/09/CCSS-2024-09.pdf"
+              "source_url": "https://www.securite-sociale.fr/files/live/sites/SSFR/files/medias/CCSS/2024/CCSS-octobre%202024.pdf"
             },
             {
               "key": "cnaf_famille_prime_activite",
@@ -213,7 +213,7 @@
               "label_en": "Activity bonus",
               "share_of_parent": 0.11,
               "source": "Comptes de la Sécurité sociale 2024",
-              "source_url": "https://www.securite-sociale.fr/files-sso/files/2024/09/CCSS-2024-09.pdf"
+              "source_url": "https://www.securite-sociale.fr/files/live/sites/SSFR/files/medias/CCSS/2024/CCSS-octobre%202024.pdf"
             },
             {
               "key": "cnaf_famille_autres_aides_handicap_aspa",
@@ -221,7 +221,7 @@
               "label_en": "Others (AAH, ASPA, RSO)",
               "share_of_parent": 0.08,
               "source": "Comptes de la Sécurité sociale 2024 + DREES Aide sociale",
-              "source_url": "https://www.securite-sociale.fr/files-sso/files/2024/09/CCSS-2024-09.pdf"
+              "source_url": "https://www.securite-sociale.fr/files/live/sites/SSFR/files/medias/CCSS/2024/CCSS-octobre%202024.pdf"
             }
           ]
         },
@@ -231,7 +231,7 @@
           "label_en": "Unemployment insurance (UNEDIC)",
           "share_of_parent": 0.06,
           "source": "UNEDIC - Comptes 2023",
-          "source_url": "https://www.unedic.org/publications/situation-financiere-de-lassurance-chomage-pour-2024-2026",
+          "source_url": "https://www.unedic.org/publications/previsions-financieres-de-l-unedic-juin-2024",
           "level3": [
             {
               "key": "unedic_chomage_are_allocation_retour_emploi",
@@ -239,7 +239,7 @@
               "label_en": "ARE (Return-to-work allowance)",
               "share_of_parent": 0.75,
               "source": "UNEDIC — Rapport annuel 2024",
-              "source_url": "https://www.unedic.org/publications/rapport-financier-2023"
+              "source_url": "https://www.unedic.org/qui-sommes-nous/rapports/rapport-financier-de-l-unedic-2023"
             },
             {
               "key": "unedic_chomage_autres_indemnisations_aer_asp",
@@ -247,7 +247,7 @@
               "label_en": "Other benefits (AER, ASP, ATA)",
               "share_of_parent": 0.15,
               "source": "UNEDIC — Rapport annuel 2024",
-              "source_url": "https://www.unedic.org/publications/rapport-financier-2023"
+              "source_url": "https://www.unedic.org/qui-sommes-nous/rapports/rapport-financier-de-l-unedic-2023"
             },
             {
               "key": "unedic_chomage_aides_formation",
@@ -255,7 +255,7 @@
               "label_en": "Training assistance",
               "share_of_parent": 0.1,
               "source": "UNEDIC — Rapport annuel 2024",
-              "source_url": "https://www.unedic.org/publications/rapport-financier-2023"
+              "source_url": "https://www.unedic.org/qui-sommes-nous/rapports/rapport-financier-de-l-unedic-2023"
             }
           ]
         },
@@ -265,7 +265,7 @@
           "label_en": "Work injury (AT-MP) + autonomy (CNSA)",
           "share_of_parent": 0.02,
           "source": "PLFSS 2025 - branches AT-MP et autonomie",
-          "source_url": "https://www.securite-sociale.fr/files-sso/files/2024/10/PLFSS-2025_Annexe5.pdf"
+          "source_url": "https://www.securite-sociale.fr/files/live/sites/SSFR/files/medias/PLFSS/2025/PLFSS2025-Annexe05.pdf"
         }
       ],
       "notes_fr": "level2 = branches ASSO (CNAM / CNAV / CNAF / UNEDIC / AT-MP+CNSA), shares PLFSS 2025 renormalisés. level3 fourni pour CNAM (sous-objectifs ONDAM), CNAV (régimes), CNAF (prestations) et UNEDIC ; AT-MP + autonomie (CNSA) sans level3 publié à ce grain — détail non disponible côté seeds. level4 publié uniquement pour CNAM > médecine de ville (proxy DREES Comptes de la santé 2024 filtré financeur Sécurité sociale) ; autres sous-objectifs ONDAM sans source publique structurée à ce grain."

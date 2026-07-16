@@ -87,10 +87,10 @@ type Mode =
  * "Voix" éditoriale du drawer — détermine quelles colonnes (€/mois,
  * Md€/an, %) on affiche dans les sub-rows et les cards d'aggregation.
  *
- * - "perso" (/ville/<slug>/daily-bread) : on parle à L'utilisateur, on
+ * - "perso" (/fr/city/<slug>/daily-bread) : on parle à L'utilisateur, on
  *   n'affiche QUE €/mois. Le Md€ est trop abstrait, le % redondant avec
  *   le lead header.
- * - "impersonal" (/france/budget) sans profil : on affiche QUE Md€/an
+ * - "impersonal" (/fr/national/budget) sans profil : on affiche QUE Md€/an
  *   (vue nationale impersonnelle).
  * - "impersonal" + profil cross-link (?net=...) : on affiche Md€/an +
  *   €/mois (les deux). Pas de %.
@@ -142,8 +142,8 @@ type LegacyProps = {
   breadcrumb?: DrilldownBreadcrumbCrumb[];
   /** Query string profil à propager aux liens enfants (level3/level4/agg). */
   profileQuery?: string;
-  /** Préfixe URL pour les liens enfants — par défaut /france/daily-bread.
-   *  Ex: "/france/budget" pour le drawer Budget Explorer. */
+  /** Préfixe URL pour les liens enfants — par défaut /fr/national/daily-bread.
+   *  Ex: "/fr/national/budget" pour le drawer Budget Explorer. */
   basePath?: string;
   /** Asides éditoriaux ("Chiffres à retenir") — i18n keys, le composant
    *  appelle `t()` lui-même via le hook. Affichés en bas de la fiche. */
@@ -253,7 +253,7 @@ export default function BudgetDrilldownFiche(props: Props) {
   const { locale } = useLocale();
   const { bucket, bucketKey, isStub, amounts, breadcrumb, profileQuery } =
     props;
-  const basePath = props.basePath ?? "/france/daily-bread";
+  const basePath = props.basePath ?? "/fr/national/daily-bread";
   const editorialAsides = props.editorialAsides;
   const voice: Voice = inferVoice(basePath);
   const hasProfile = (amounts?.parentPersonalMonthlyEur ?? null) !== null;

@@ -153,7 +153,7 @@ export default function AssoDrawer({ fiche, onClose }: Props) {
           </div>
 
           <p className="fx-drawer-note">
-            Les montants sont agrégés depuis le jeu open data « Subventions accordées ».
+            Les montants sont agrégés depuis le jeu open data « Subventions versées (annexe au compte administratif) ».
             Une asso peut recevoir plusieurs subventions la même année (reconductions, avenants).
           </p>
         </div>
@@ -161,7 +161,7 @@ export default function AssoDrawer({ fiche, onClose }: Props) {
         <div className="fx-drawer-foot">
           <a
             className="fx-btn fx-btn-small"
-            href={`https://opendata.paris.fr/explore/dataset/subventions-accordees-et-refusees-ville-de-paris/table/?q=${encodeURIComponent(fiche.name)}`}
+            href={`https://opendata.paris.fr/explore/dataset/subventions-versees-annexe-compte-administratif-a-partir-de-2018/table/?refine.nom_de_l_organisme_beneficiaire=${encodeURIComponent(fiche.name)}`}
             target="_blank"
             rel="noopener noreferrer"
           >

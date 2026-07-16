@@ -5,15 +5,15 @@ import { usePathname } from "next/navigation";
 import { useT } from "@/lib/localeContext";
 
 const PAGES = [
-  { href: "/france", labelKey: "fx.scope.france.apu", numKey: "fx.macro.nav.num.apu" },
-  { href: "/france/etat", labelKey: "fx.scope.france.etat", numKey: "fx.macro.nav.num.etat" },
-  { href: "/france/dette", labelKey: "fx.scope.france.dette", numKey: "fx.macro.nav.num.dette" },
-  { href: "/france/fiscalite", labelKey: "fx.scope.france.fiscalite", numKey: "fx.macro.nav.num.fiscalite" },
+  { href: "/fr/national", labelKey: "fx.scope.france.apu", numKey: "fx.macro.nav.num.apu" },
+  { href: "/fr/national/etat", labelKey: "fx.scope.france.etat", numKey: "fx.macro.nav.num.etat" },
+  { href: "/fr/national/dette", labelKey: "fx.scope.france.dette", numKey: "fx.macro.nav.num.dette" },
+  { href: "/fr/national/fiscalite", labelKey: "fx.scope.france.fiscalite", numKey: "fx.macro.nav.num.fiscalite" },
 ];
 
 /**
  * Inline cross-nav between the 4 France-macro thematic pages.
- * Rendered just below the navbar on /france, /france/dette, /france/fiscalite, /france/etat.
+ * Rendered just below the navbar on /fr/national, /fr/national/dette, /fr/national/fiscalite, /fr/national/etat.
  */
 export default function FranceMacroNav() {
   const pathname = usePathname() ?? "/";

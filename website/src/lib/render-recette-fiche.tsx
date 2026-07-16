@@ -8,7 +8,7 @@ import { readLocale } from "@/lib/seo";
 /**
  * Helper unique pour rendre la fiche d'une recette publique (drawer ou
  * standalone). Mirror de render-drilldown-page.tsx mais pour les recettes
- * du panneau §02 /france/budget.
+ * du panneau §02 /fr/national/budget.
  *
  * Cas spécial : la clé `psr_ue` ouvre une fiche enrichie avec la
  * décomposition PSR-UE (RNB, TVA, plastique, NextGenerationEU). La clé
@@ -62,8 +62,8 @@ export async function renderRecettePage(
         locale === "en"
           ? "EU balance · gross / received / net"
           : "Bilan UE · brut / reçu / net",
-      shareUrl: "/france/budget/recettes/psr_ue",
-      backHref: "/france/budget#recettes-apu",
+      shareUrl: "/fr/national/budget/recettes/psr_ue",
+      backHref: "/fr/national/budget#recettes-apu",
       fiche: (
         <RecetteFiche
           item={ficheItem}
@@ -110,8 +110,8 @@ export async function renderRecettePage(
         locale === "en"
           ? "EU balance · gross / received / net"
           : "Bilan UE · brut / reçu / net",
-      shareUrl: "/france/budget/recettes/ue_fonds_recus",
-      backHref: "/france/budget#recettes-apu",
+      shareUrl: "/fr/national/budget/recettes/ue_fonds_recus",
+      backHref: "/fr/national/budget#recettes-apu",
       fiche: (
         <RecetteFiche
           item={ficheItem}
@@ -166,8 +166,8 @@ export async function renderRecettePage(
     isDrawer: opts.isDrawer,
     title,
     kicker,
-    shareUrl: `/france/budget/recettes/${encodeURIComponent(decoded)}`,
-    backHref: "/france/budget#recettes-apu",
+    shareUrl: `/fr/national/budget/recettes/${encodeURIComponent(decoded)}`,
+    backHref: "/fr/national/budget#recettes-apu",
     fiche: (
       <RecetteFiche
         item={item}

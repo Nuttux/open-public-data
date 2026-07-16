@@ -1202,21 +1202,21 @@ const en: Record<string, string> = {
   'fx.land.deck.h2.before': "Here's what it ",
   'fx.land.deck.h2.em': "looks like",
   'fx.land.deck.h2.dot': '.',
-  'fx.land.deck.c1.kicker': 'A worksite',
+  'fx.land.deck.c1.kicker': 'Worksite',
   'fx.land.deck.c1.title': 'Château-Landon Swimming Pool',
   'fx.land.deck.c1.meta': "{arr}th arrondissement · budget voted in {year}",
   'fx.land.deck.c1.meta_marches': "{arr}th arrondissement · {nb} linked public contracts",
   'fx.land.deck.c1.meta_marches_offres': "{arr}th arrondissement · {nb} public contracts · main lot: {offres} bids received",
   'fx.land.deck.c1.cta': "Follow this worksite",
-  'fx.land.deck.c2.kicker': 'A grant',
+  'fx.land.deck.c2.kicker': 'Grant',
   'fx.land.deck.c2.title': 'Paris Musées (city museums)',
   'fx.land.deck.c2.meta': "Grant disbursed by the City in {year}",
   'fx.land.deck.c2.cta': "See the recipient page",
-  'fx.land.deck.c3.kicker': 'A public contract',
+  'fx.land.deck.c3.kicker': 'Public contract',
   'fx.land.deck.c3.title': 'Green space maintenance',
   'fx.land.deck.c3.meta': "{nb} contracts notified in {year}",
   'fx.land.deck.c3.cta': "See the category",
-  'fx.land.deck.c4.kicker': "A social landlord",
+  'fx.land.deck.c4.kicker': "Social landlord",
   'fx.land.deck.c4.title': 'Paris Habitat',
   'fx.land.deck.c4.meta': "{nb} loans guaranteed by the City ({year})",
   'fx.land.deck.c4.cta': "See the landlord page",
@@ -2715,7 +2715,8 @@ const en: Record<string, string> = {
   'fx.fiche.asso.detail.sub_category': 'Sub-category',
   'fx.fiche.asso.detail.secteurs': 'Activity sectors',
   'fx.fiche.asso.detail.opendata': 'See the exact records on opendata.paris.fr ↗',
-  'fx.fiche.asso.note': 'Data aggregated by year from the open data set "Grants awarded". The line-by-line detail (each resolution) can be viewed on',
+  'fx.fiche.asso.detail.pdf': 'See annex B8.1.1 of the administrative account (PDF) ↗',
+  'fx.fiche.asso.note': 'Data aggregated by year from the open data set "Grants paid (administrative account annex)"; fiscal years 2020-2021 filled in from annex B8.1.1 (PDF). The line-by-line detail can be viewed on',
   'fx.fiche.asso.sub': 'gr.',
   'fx.fiche.asso.vs_prev': 'vs previous year',
 
@@ -2753,8 +2754,9 @@ const en: Record<string, string> = {
   'fx.fiche.contrat.perimetre': 'Scope',
   'fx.fiche.contrat.num_marche': 'Contract no.',
   'fx.fiche.contrat.decp': 'Nat. DECP',
-  'fx.fiche.contrat.decp_link': 'Search on data.gouv.fr ↗',
+  'fx.fiche.contrat.decp_link': 'View the consolidated DECP (data.gouv.fr) ↗',
   'fx.fiche.contrat.opendata': 'Open data',
+  'fx.fiche.contrat.opendata_link': 'See this contract’s exact record on opendata.paris.fr ↗',
   'fx.fiche.contrat.avenir': 'Coming soon: direct links to the BOAMP notice, the list of declared co-awardees, amendments and subcontractors — via DECP pipeline enrichment.',
 
   // ── ProjetFiche ──────────────────────────────────────────────────────────────
@@ -2925,6 +2927,8 @@ const en: Record<string, string> = {
   'fx.fiche.chap.no_projets_body': 'The "Localised investments" PDF (City of Paris, FY {year}) lists geolocatable construction sites — buildings, roads, parks. This chapter does not appear there at that granularity: its spending flows mostly through other channels (transfers to social-housing operators, land operations, subsidies), which are not broken down project-by-project in the current source.',
   'fx.fiche.chap.top_arr': 'Top districts · {label}',
   'fx.fiche.chap.top_proj': 'Top projects · {label}',
+  'fx.fiche.chap.source_note': 'The chapter amount comes from the M57 administrative accounts (FY {year}), investment expenditure.',
+  'fx.fiche.chap.source_link': 'See the budget lines on opendata.paris.fr ↗',
   'fx.fiche.chap.projet_s': 'project',
   'fx.fiche.chap.projet_p': 'projects',
   'fx.fiche.chap.transverse': 'City-wide',
@@ -3556,7 +3560,7 @@ const en: Record<string, string> = {
   'apu.series.gap': 'Gap',
   'apu.no_data': 'Eurostat data not available. Run `python pipeline/scripts/sync/sync_eurostat_cofog.py` to generate it.',
 
-  // ── Page /ville/[slug] (City placeholder V2) ────────────────────────────────
+  // ── Page /fr/city/[slug] (City placeholder V2) ────────────────────────────────
   'city.section.kind': 'City',
   'city.placeholder.badge': 'V2 — Coverage in progress',
   'city.hero.label': 'Population',
@@ -3920,12 +3924,12 @@ const en: Record<string, string> = {
   'db.method.body.sources.ofgl': "local-government finances by function (cities, departments, regions).",
   'db.method.body.sources.drees': "health accounts, breakdown ambulatory / hospital / drugs.",
   // 04 — Scope
-  'db.method.body.perimetre.intro': "General government (APU) is split into three accounting sub-sectors. Daily Bread uses a CAUSAL view: each tax goes to its actual legal recipient, not a proportional split. (For the proportional Eurostat view, see Budget Explorer /france/budget.)",
+  'db.method.body.perimetre.intro': "General government (APU) is split into three accounting sub-sectors. Daily Bread uses a CAUSAL view: each tax goes to its actual legal recipient, not a proportional split. (For the proportional Eurostat view, see Budget Explorer /fr/national/budget.)",
   'db.method.body.perimetre.s1311': "S1311 Central state + ODAC ≈ €676 bn/yr — ministries, agencies, debt service. You contribute via {b}your income tax{/b} + {b}45% of your VAT{/b} (State share, PLF V&M).",
   'db.method.body.perimetre.s1313': "S1313 Local government ≈ €334 bn/yr — cities, EPCIs, departments, regions. You contribute via {b}your property tax{/b} (if homeowner) + {b}24% of your VAT{/b} (housing-tax/CVAE compensation).",
   'db.method.body.perimetre.s1314': "S1314 Social security ≈ €798 bn/yr — health (CNAM), pensions (CNAV), family (CAF), unemployment (Unédic), workplace (AT-MP). You contribute via {b}your social contributions{/b} + {b}CSG/CRDS{/b} + {b}31% of your VAT{/b} (allocated VAT) + {b}capital social levies (17.2%){/b}.",
   'db.method.body.perimetre.caveat_label': "Causal vs proportional view:",
-  'db.method.body.perimetre.caveat_229': "Daily Bread maps each euro of tax to its actual recipient (contributions → Social Security, income tax → State, VAT → 3 sub-sectors per PLF allocation). Budget Explorer (/france/budget) keeps the Eurostat S13 proportional view (44/37/18) showing each sub-sector's share of total public SPENDING. Both are useful: causal for « where does MY contribution go », proportional for « how is national public spending distributed ».",
+  'db.method.body.perimetre.caveat_229': "Daily Bread maps each euro of tax to its actual recipient (contributions → Social Security, income tax → State, VAT → 3 sub-sectors per PLF allocation). Budget Explorer (/fr/national/budget) keeps the Eurostat S13 proportional view (44/37/18) showing each sub-sector's share of total public SPENDING. Both are useful: causal for « where does MY contribution go », proportional for « how is national public spending distributed ».",
   // 05 — Why personal
   'db.method.body.pourquoi_perso.p1': "The exact French tax computation goes through OpenFisca, the official simulation engine maintained by DINUM/Etalab — source code aligned with the current finance law, updated at each PLF.",
   'db.method.body.pourquoi_perso.p2': "Daily Bread is a simplified MVP, designed to stay accessible without a tax-portal login and without entering a detailed RFR. Goal: a readable order of magnitude plus a deep drilldown — not a replacement for impots.gouv.fr.",
@@ -4284,7 +4288,7 @@ const en: Record<string, string> = {
   'etat.missions.header_right': 'PLF {year}',
   'etat.no_data': 'PLF data not available. Run `python pipeline/scripts/sync/sync_etat_lfi.py` to generate it.',
 
-  // ── Page /france/budget — Budget Explorer (impersonal MVP + treemap) ────
+  // ── Page /fr/national/budget — Budget Explorer (impersonal MVP + treemap) ────
   'budget.page.kicker': 'France · Consolidated budget',
   'budget.hero.title': 'The French budget',
   'budget.hero.amount_unit': 'bn€',

@@ -131,7 +131,7 @@ export function parseDailyBreadProfile(
 
 /**
  * Compute the user's monthly contributions distributed across institutions,
- * aligned with the calculator on `/france/daily-bread`.
+ * aligned with the calculator on `/fr/national/daily-bread`.
  *
  * Returns null if the daily_bread.json is unavailable — caller should hide
  * the personal column in that case.
@@ -591,7 +591,7 @@ export function formatNationalAnnualLabel(
 /**
  * Shell labels for drill-down routes — the breadcrumb's first crumb and
  * the eyebrow voice depends on whether we're under
- * `/france/daily-bread` (perso "Daily Bread") or `/france/budget`
+ * `/fr/national/daily-bread` (perso "Daily Bread") or `/fr/national/budget`
  * (impersonnel "Le budget"). Centralisé pour rester DRY entre les
  * 17+ routes drawer/standalone.
  */

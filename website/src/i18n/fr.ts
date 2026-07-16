@@ -1202,21 +1202,21 @@ const fr: Record<string, string> = {
   'fx.land.deck.h2.before': 'Voilà à quoi ',
   'fx.land.deck.h2.em': "ça ressemble",
   'fx.land.deck.h2.dot': '.',
-  'fx.land.deck.c1.kicker': 'Un chantier',
+  'fx.land.deck.c1.kicker': 'Chantier',
   'fx.land.deck.c1.title': 'Piscine Château-Landon',
   'fx.land.deck.c1.meta': "{arr}ᵉ arrondissement · budget voté en {year}",
   'fx.land.deck.c1.meta_marches': "{arr}ᵉ arrondissement · {nb} marchés publics liés",
   'fx.land.deck.c1.meta_marches_offres': "{arr}ᵉ arrondissement · {nb} marchés publics · gros lot : {offres} offres reçues",
   'fx.land.deck.c1.cta': "Suivre ce chantier",
-  'fx.land.deck.c2.kicker': 'Une subvention',
+  'fx.land.deck.c2.kicker': 'Subvention',
   'fx.land.deck.c2.title': 'Paris Musées',
   'fx.land.deck.c2.meta': "Subvention versée par la Ville en {year}",
   'fx.land.deck.c2.cta': "Voir la fiche bénéficiaire",
-  'fx.land.deck.c3.kicker': 'Un marché public',
+  'fx.land.deck.c3.kicker': 'Marché public',
   'fx.land.deck.c3.title': 'Entretien des espaces verts',
   'fx.land.deck.c3.meta': "{nb} marchés notifiés en {year}",
   'fx.land.deck.c3.cta': "Voir la catégorie",
-  'fx.land.deck.c4.kicker': "Un bailleur social",
+  'fx.land.deck.c4.kicker': "Bailleur social",
   'fx.land.deck.c4.title': 'Paris Habitat',
   'fx.land.deck.c4.meta': "{nb} emprunts garantis par la Ville ({year})",
   'fx.land.deck.c4.cta': "Voir la fiche bailleur",
@@ -2715,7 +2715,8 @@ const fr: Record<string, string> = {
   'fx.fiche.asso.detail.sub_category': 'Sous-catégorie',
   'fx.fiche.asso.detail.secteurs': "Secteurs d'activité",
   'fx.fiche.asso.detail.opendata': 'Voir les lignes exactes sur opendata.paris.fr ↗',
-  'fx.fiche.asso.note': "Données agrégées par année depuis le jeu open data « Subventions accordées ». Le détail ligne-à-ligne (chaque délibération) est consultable sur",
+  'fx.fiche.asso.detail.pdf': 'Voir l’annexe B8.1.1 du compte administratif (PDF) ↗',
+  'fx.fiche.asso.note': "Données agrégées par année depuis le jeu open data « Subventions versées (annexe au compte administratif) » ; exercices 2020-2021 complétés par l'annexe B8.1.1 (PDF). Le détail ligne-à-ligne est consultable sur",
   'fx.fiche.asso.sub': 'sub.',
   'fx.fiche.asso.vs_prev': 'vs année précédente',
 
@@ -2753,8 +2754,9 @@ const fr: Record<string, string> = {
   'fx.fiche.contrat.perimetre': 'Périmètre',
   'fx.fiche.contrat.num_marche': 'N° marché',
   'fx.fiche.contrat.decp': 'DECP nat.',
-  'fx.fiche.contrat.decp_link': 'Rechercher sur data.gouv.fr ↗',
+  'fx.fiche.contrat.decp_link': 'Consulter la DECP consolidée (data.gouv.fr) ↗',
   'fx.fiche.contrat.opendata': 'Open data',
+  'fx.fiche.contrat.opendata_link': 'Voir la fiche exacte du marché sur opendata.paris.fr ↗',
   'fx.fiche.contrat.avenir': "À venir : liens directs vers l'avis BOAMP, la liste des co-attributaires déclarés, les avenants et sous-traitants — via enrichissement du pipeline DECP.",
 
   // ── ProjetFiche ──────────────────────────────────────────────────────────────
@@ -2925,6 +2927,8 @@ const fr: Record<string, string> = {
   'fx.fiche.chap.no_projets_body': 'Le PDF « Investissements localisés » (Ville de Paris, CA {year}) expose les chantiers géolocalisables — équipements bâtis, voirie, espaces verts. Ce chapitre n’y figure pas à cette granularité : ses dépenses transitent principalement par d’autres canaux (transferts aux bailleurs, opérations foncières, subventions), non détaillés projet par projet dans la source actuelle.',
   'fx.fiche.chap.top_arr': 'Top arrondissements · {label}',
   'fx.fiche.chap.top_proj': 'Top projets · {label}',
+  'fx.fiche.chap.source_note': 'Le montant du chapitre vient des comptes administratifs M57 (exercice {year}), dépenses d’investissement.',
+  'fx.fiche.chap.source_link': 'Voir les lignes budgétaires sur opendata.paris.fr ↗',
   'fx.fiche.chap.projet_s': 'projet',
   'fx.fiche.chap.projet_p': 'projets',
   'fx.fiche.chap.transverse': 'Transverse',
@@ -3556,7 +3560,7 @@ const fr: Record<string, string> = {
   'apu.series.gap': 'Écart',
   'apu.no_data': 'Données Eurostat non disponibles. Lancez `python pipeline/scripts/sync/sync_eurostat_cofog.py` pour les générer.',
 
-  // ── Page /ville/[slug] (City placeholder V2) ────────────────────────────────
+  // ── Page /fr/city/[slug] (City placeholder V2) ────────────────────────────────
   'city.section.kind': 'Commune',
   'city.placeholder.badge': 'V2 — Maillage en construction',
   'city.hero.label': 'Population',
@@ -3929,12 +3933,12 @@ const fr: Record<string, string> = {
   'db.method.body.sources.ofgl': "finances locales fonctionnelles (communes, départements, régions).",
   'db.method.body.sources.drees': "Comptes santé, décomposition médecine de ville / hôpital / médicaments.",
   // 04 — Périmètre
-  'db.method.body.perimetre.intro': "Les Administrations Publiques (APU) se décomposent en trois sous-secteurs comptables. Daily Bread utilise une vue CAUSALE : chaque impôt va à l'affectataire LÉGAL réel, pas une répartition proportionnelle. (Pour la vue proportionnelle Eurostat, voir Budget Explorer /france/budget.)",
+  'db.method.body.perimetre.intro': "Les Administrations Publiques (APU) se décomposent en trois sous-secteurs comptables. Daily Bread utilise une vue CAUSALE : chaque impôt va à l'affectataire LÉGAL réel, pas une répartition proportionnelle. (Pour la vue proportionnelle Eurostat, voir Budget Explorer /fr/national/budget.)",
   'db.method.body.perimetre.s1311': "S1311 État central + ODAC ≈ 676 Md€/an — ministères, opérateurs, charge de la dette. Tu y contribues via {b}ton IR{/b} + {b}45 % de ta TVA{/b} (part nette État, PLF V&M tome I).",
   'db.method.body.perimetre.s1313': "S1313 APUL collectivités ≈ 334 Md€/an — communes, EPCI, départements, régions. Tu y contribues via {b}ta TF{/b} (si propriétaire) + {b}24 % de ta TVA{/b} (compensation TH/CVAE).",
   'db.method.body.perimetre.s1314': "S1314 ASSO Sécurité sociale ≈ 798 Md€/an — CNAM, CNAV, CAF, Unédic, AT-MP. Tu y contribues via {b}tes cotisations sociales{/b} + {b}ta CSG/CRDS{/b} + {b}31 % de ta TVA{/b} (TVA affectée Sécu) + {b}prélèvements sociaux capital (17,2 %){/b}.",
   'db.method.body.perimetre.caveat_label': "Vue causale vs proportionnelle :",
-  'db.method.body.perimetre.caveat_229': "Daily Bread mappe chaque euro d'impôt à son affectataire réel (cotisations → Sécu, IR → État, TVA → 3 caisses selon PLF). Budget Explorer (/france/budget) garde la vue proportionnelle Eurostat S13 (44/37/18) qui montre la part de chaque sous-secteur dans la DÉPENSE publique totale. Les deux sont utiles : causale pour « où va MA contribution », proportionnelle pour « comment se répartit la dépense publique nationale ».",
+  'db.method.body.perimetre.caveat_229': "Daily Bread mappe chaque euro d'impôt à son affectataire réel (cotisations → Sécu, IR → État, TVA → 3 caisses selon PLF). Budget Explorer (/fr/national/budget) garde la vue proportionnelle Eurostat S13 (44/37/18) qui montre la part de chaque sous-secteur dans la DÉPENSE publique totale. Les deux sont utiles : causale pour « où va MA contribution », proportionnelle pour « comment se répartit la dépense publique nationale ».",
   // 05 — Pourquoi perso
   'db.method.body.pourquoi_perso.p1': "Le calcul fiscal exact en France passe par OpenFisca, le moteur de simulation officiel maintenu par DINUM/Etalab — code source aligné sur le PLF en vigueur, mis à jour à chaque loi de finances.",
   'db.method.body.pourquoi_perso.p2': "Daily Bread est un MVP simplifié, pensé pour rester accessible sans login fiscal et sans saisie de RFR détaillé. L'objectif : donner un ordre de grandeur lisible et un drilldown profond, pas remplacer impots.gouv.fr.",
@@ -4293,7 +4297,7 @@ const fr: Record<string, string> = {
   'etat.missions.header_right': 'PLF {year}',
   'etat.no_data': 'Données PLF non disponibles. Lancez `python pipeline/scripts/sync/sync_etat_lfi.py` pour les générer.',
 
-  // ── Page /france/budget — Budget Explorer (impersonnel, MVP + treemap) ──
+  // ── Page /fr/national/budget — Budget Explorer (impersonnel, MVP + treemap) ──
   'budget.page.kicker': 'France · Budget consolidé',
   'budget.hero.title': 'Le budget de la France',
   'budget.hero.amount_unit': 'Md€',

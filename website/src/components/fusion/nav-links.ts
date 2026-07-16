@@ -4,11 +4,11 @@ export type NavLink = {
 };
 
 // Top-nav links shown when the user is on a France-scope page
-// (/france*, /comparer, /ville/*/daily-bread).
+// (/fr/national*, /comparer, /fr/city/*/daily-bread).
 export const NATIONAL_NAV_LINKS: NavLink[] = [
   { href: "/",                          labelKey: "fx.nav.link.home" },
-  { href: "/france/budget",             labelKey: "fx.nav.link.budget_france" },
-  { href: "/france/daily-bread",   labelKey: "fx.nav.link.daily_bread" },
+  { href: "/fr/national/budget",             labelKey: "fx.nav.link.budget_france" },
+  { href: "/fr/national/daily-bread",   labelKey: "fx.nav.link.daily_bread" },
 ];
 
 const VILLE_SECTIONS: { section: string; labelKey: string }[] = [
@@ -26,7 +26,7 @@ export function villeNavLinks(citySlug: string): NavLink[] {
   return [
     { href: "/", labelKey: "fx.nav.link.home" },
     ...VILLE_SECTIONS.map((s) => ({
-      href: `/ville/${citySlug}/${s.section}`,
+      href: `/fr/city/${citySlug}/${s.section}`,
       labelKey: s.labelKey,
     })),
     { href: "/analyses", labelKey: "fx.nav.link.analyses" },

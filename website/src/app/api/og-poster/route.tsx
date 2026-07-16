@@ -2,7 +2,7 @@
  * Daily Bread — share-poster endpoint.
  *
  * Generates a 1080×1080 PNG that summarises a user's tax-and-spending profile
- * (calculated from the same query-string the `/france/daily-bread` page uses).
+ * (calculated from the same query-string the `/fr/national/daily-bread` page uses).
  *
  * Anonymous-only by design (cultural taboo on personal income in France):
  * the poster shows what the user funds via concrete equivalents (GP visits,

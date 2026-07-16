@@ -155,7 +155,7 @@ async function resolveChart(chart: string): Promise<JSX.Element> {
         title: `${fmtBn(d.depenses)} Md€ — où va l'argent ?`,
         rows: topDep,
         sourceText: "Source Paris Open Data · Comptes M57",
-        urlText: "franceopendata.org/ville/paris/budget",
+        urlText: "franceopendata.org/fr/city/paris/budget",
       });
     }
     case "paris-subv-top-themes": {
@@ -169,7 +169,7 @@ async function resolveChart(chart: string): Promise<JSX.Element> {
         title: `${fmtBn(d.total)} Md€ versés — par thème`,
         rows,
         sourceText: "Source Paris Open Data · Annexe CA",
-        urlText: "franceopendata.org/ville/paris/subventions",
+        urlText: "franceopendata.org/fr/city/paris/subventions",
       });
     }
     case "paris-subv-top-benef": {
@@ -185,7 +185,7 @@ async function resolveChart(chart: string): Promise<JSX.Element> {
         title: `Top bénéficiaires — ${Math.round(d.concentrationTop10Pct)}% du total`,
         rows,
         sourceText: "Source Paris Open Data · Annexe CA",
-        urlText: "franceopendata.org/ville/paris/subventions",
+        urlText: "franceopendata.org/fr/city/paris/subventions",
       });
     }
     case "paris-marches-top-fournisseurs": {
@@ -202,7 +202,7 @@ async function resolveChart(chart: string): Promise<JSX.Element> {
         title: `Top 10 fournisseurs — ${Math.round(top10Share * 100)}% des enveloppes`,
         rows,
         sourceText: "Source DECP · Ville de Paris",
-        urlText: "franceopendata.org/ville/paris/marches",
+        urlText: "franceopendata.org/fr/city/paris/marches",
       });
     }
     case "paris-dette-capacite": {
@@ -225,7 +225,7 @@ async function resolveChart(chart: string): Promise<JSX.Element> {
           { label: "Statut", value: status, accent: status !== "Sain" },
         ],
         sourceText: "Source Paris Open Data · Bilan + CA",
-        urlText: "franceopendata.org/ville/paris/dette",
+        urlText: "franceopendata.org/fr/city/paris/dette",
       });
     }
     case "paris-logement-tension": {
@@ -246,7 +246,7 @@ async function resolveChart(chart: string): Promise<JSX.Element> {
           { label: "Logements financés", value: fmtFr(d.nouveauxParAn), accent: true },
         ],
         sourceText: "Source DRIHL · Paris Open Data",
-        urlText: "franceopendata.org/ville/paris/logement",
+        urlText: "franceopendata.org/fr/city/paris/logement",
       });
     }
     case "fr-daily-bread-composition": {
@@ -269,7 +269,7 @@ async function resolveChart(chart: string): Promise<JSX.Element> {
         title: `${fmtBn(tot)} Md€ — qui dépense quoi ?`,
         rows,
         sourceText: "Source Eurostat · gov_10a_main",
-        urlText: "franceopendata.org/france/daily-bread",
+        urlText: "franceopendata.org/fr/national/daily-bread",
       });
     }
     case "fr-fiscalite-categories": {
@@ -290,7 +290,7 @@ async function resolveChart(chart: string): Promise<JSX.Element> {
         title: `${totalPo.toLocaleString("fr-FR", { maximumFractionDigits: 1 })}% du PIB — qui paie quoi ?`,
         rows: cats,
         sourceText: "Source Eurostat · gov_10a_taxag",
-        urlText: "franceopendata.org/france/fiscalite",
+        urlText: "franceopendata.org/fr/national/fiscalite",
       });
     }
     case "landing-per-capita": {
