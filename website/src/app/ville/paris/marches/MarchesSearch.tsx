@@ -32,8 +32,10 @@ type Props = {
 
 // Curated to span themes & scales: voirie (Eiffage, Eurovia), bâtiment
 // (Bouygues), énergie (TotalEnergies), mobilier urbain (JCDecaux), espaces
-// verts (Idverde), eau (Veolia), conseil (BearingPoint). Verified against
-// 2024 DECP data — each returns >=1 hit via fournisseur or objet.
+// verts (Idverde), eau (Veolia), conseil (BearingPoint). Candidats
+// seulement : `visibleSeeds` ne retient à l'affichage que ceux qui donnent
+// ≥1 résultat dans le corpus de l'année affichée — la présence d'un
+// fournisseur varie fortement d'un millésime à l'autre.
 const SEEDS = [
   "Eiffage",
   "Eurovia",
@@ -124,6 +126,24 @@ export default function MarchesSearch({ items, categories, natures, year }: Prop
   const isQueryActive = query.trim().length >= 2;
   const isFilterActive = Boolean(category) || Boolean(nature) || !hideMulti;
   const hasActiveSelection = isQueryActive || isFilterActive;
+
+  // Un chip mort (0 résultat au clic) est pire que pas de chip. La liste
+  // curée avait été « vérifiée sur 2024 » : sur les millésimes 2023/2025/2026,
+  // 3 à 5 seeds sur 8 ne matchaient plus rien. On ne propose que les seeds
+  // qui donnent ≥1 résultat dans le corpus affiché, avec les mêmes filtres
+  // par défaut que la recherche (les chips ne s'affichent que quand aucun
+  // filtre n'est actif, donc hideMulti vaut sa valeur par défaut).
+  const visibleSeeds = useMemo(
+    () =>
+      SEEDS.filter((s) => {
+        const exp = expandQuery(s);
+        return items.some((it, idx) => {
+          if (hideMulti && it.multiAttributaire) return false;
+          return matchExpanded(hayNorms[idx], exp).match;
+        });
+      }),
+    [items, hayNorms, hideMulti]
+  );
 
   const displayCap = hasActiveSelection ? 24 : 3;
   const displayed = filtered.slice(0, displayCap);
@@ -221,11 +241,11 @@ export default function MarchesSearch({ items, categories, natures, year }: Prop
             </button>
           )}
         </div>
-        {!hasActiveSelection && (
+        {!hasActiveSelection && visibleSeeds.length > 0 && (
           <div className="fx-search-filters">
             <span className="fx-search-filter-label">{t("fx.mp.search.seeds_label")}</span>
             <div className="fx-search-seeds">
-              {SEEDS.map((s) => (
+              {visibleSeeds.map((s) => (
                 <button
                   key={s}
                   type="button"

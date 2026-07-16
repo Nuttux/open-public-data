@@ -196,6 +196,20 @@ export default function QuiRecoitExplorer({
     }));
   }, [searchData, year]);
 
+  // Un chip mort (0 résultat au clic) est pire que pas de chip : la liste
+  // curée était « vérifiée sur 2024 » et rien ne garantit sa survie sur les
+  // autres millésimes. Tant que le fichier de recherche n'est pas chargé
+  // (fetch lazy), on affiche tout ; une fois chargé, seuls les seeds qui
+  // matchent ≥1 bénéficiaire restent. Les chips ne s'affichent que quand
+  // aucun filtre n'est actif — le prédicat se réduit donc au nom.
+  const visibleSeeds = useMemo(() => {
+    if (!searchData) return SEEDS;
+    return SEEDS.filter((s) => {
+      const exp = expandQuery(s);
+      return allBeneficiaires.some((it) => matchExpanded(it.nameNorm ?? normSearch(it.name), exp).match);
+    });
+  }, [allBeneficiaires, searchData]);
+
   const filtered = useMemo(() => {
     if (!hasQuery || !searchData) return [];
     const exp = expandQuery(query);
@@ -531,7 +545,7 @@ export default function QuiRecoitExplorer({
                     {t("fx.qr.search.hint_before")}<b>{t("fx.qr.search.hint_two")}</b> {t("fx.qr.search.hint_after")}
                   </p>
                   <div className="fx-search-seeds">
-                    {SEEDS.map((s) => (
+                    {visibleSeeds.map((s) => (
                       <button
                         key={s}
                         type="button"
