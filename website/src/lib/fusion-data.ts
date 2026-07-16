@@ -2653,6 +2653,21 @@ export type InvestissementsData = {
   top10ProjetsPct: number;
   byArrondissement: { arr: number; amount: number; count: number }[];
   topProjets: { id: string; name: string; name_en?: string; arr: number; chapitre: string; amount: number; photo: ProjetPhotoResolved }[];
+  /** « Par exemple » : trois projets réels de l'année, règles fixes, photo
+   *  dédiée exigée (un exemple sans bonne image ne vend rien) — le plus
+   *  gros, celui au plus de marchés publics liés, le plus gros équipement
+   *  du quotidien (école, crèche, piscine, bibliothèque, gymnase). */
+  exemples: {
+    kind: "gros" | "chantier" | "quotidien";
+    id: string;
+    name: string;
+    nameEn: string | null;
+    arr: number;
+    amount: number;
+    nbMarches: number;
+    photoUrl: string;
+    photoCredit: string | null;
+  }[];
   geoPoints: {
     id: string;
     lat: number;
@@ -2864,6 +2879,9 @@ function loadInvestissementsDataMarseille(requestedYear?: number): Investissemen
     top10ProjetsPct,
     byArrondissement: byArrondissementFiltered,
     topProjets,
+    // Pas d'exemples pour Marseille : ni banque photo ni rapprochement
+    // projet↔marchés dans le POC — la section ne s'affiche pas.
+    exemples: [],
     geoPoints,
     yearsSummary,
   };
@@ -2974,6 +2992,67 @@ export function loadInvestissementsData(
       photo: resolveProjetPhoto(p.id, p.nom_projet),
     }));
 
+  // « Par exemple » — règles fixes, photo dédiée EXIGÉE (feedback user :
+  // un pick sans bonne image dessert la section ; les gros projets et
+  // équipements en ont presque toujours une).
+  const exemples: InvestissementsData["exemples"] = (() => {
+    const candidats = projets
+      .filter(hasUsableName)
+      .slice()
+      .sort((a, b) => (b.montant ?? 0) - (a.montant ?? 0))
+      .map((p) => {
+        const photo = resolveProjetPhoto(p.id, p.nom_projet);
+        return {
+          p,
+          photoUrl: photo.photo?.photo_url ?? null,
+          photoCredit: photo.photo?.credit ?? null,
+          typologie: photo.typologie ?? guessTypologieFromName(p.nom_projet),
+        };
+      })
+      .filter((c) => c.photoUrl);
+    const used = new Set<string>();
+    const mk = (c: (typeof candidats)[number], kind: "gros" | "chantier" | "quotidien") => {
+      used.add(c.p.id);
+      return {
+        kind,
+        id: c.p.id,
+        name: c.p.nom_projet as string,
+        nameEn: getProjetNameEn(c.p.id),
+        arr: Number(c.p.arrondissement) || 0,
+        amount: Number(c.p.montant ?? 0),
+        nbMarches: loadProjetMarches(c.p.id).length,
+        photoUrl: c.photoUrl as string,
+        photoCredit: c.photoCredit,
+      };
+    };
+    const out: InvestissementsData["exemples"] = [];
+    // Diversité territoriale : à règle égale, on préfère un exemple dans un
+    // arrondissement pas encore montré (2024 : les trois plus gros sont tous
+    // Porte de la Chapelle — trois cartes du même lieu ne montrent rien).
+    const usedArr = new Set<number>();
+    const pick = <T extends (typeof candidats)[number]>(list: T[]): T | undefined =>
+      list.find((c) => !usedArr.has(Number(c.p.arrondissement) || 0)) ?? list[0];
+
+    if (candidats[0]) {
+      out.push(mk(candidats[0], "gros"));
+      usedArr.add(Number(candidats[0].p.arrondissement) || 0);
+    }
+    const chantiers = candidats
+      .filter((c) => !used.has(c.p.id))
+      .map((c) => ({ c, n: loadProjetMarches(c.p.id).length }))
+      .filter((x) => x.n >= 2)
+      .sort((a, b) => b.n - a.n || (b.c.p.montant ?? 0) - (a.c.p.montant ?? 0));
+    const chantier = pick(chantiers.map((x) => x.c));
+    if (chantier) {
+      out.push(mk(chantier, "chantier"));
+      usedArr.add(Number(chantier.p.arrondissement) || 0);
+    }
+    const QUOTIDIEN = new Set(["ecole", "creche", "piscine", "bibliotheque", "gymnase", "college", "lycee"]);
+    const quotidien = pick(candidats.filter((c) => !used.has(c.p.id) && c.typologie && QUOTIDIEN.has(c.typologie)));
+    if (quotidien) out.push(mk(quotidien, "quotidien"));
+    return out;
+  })();
+
   const nbGeo = projets.filter((p) => p.lat != null && p.lon != null).length;
 
   const geoPoints = projets
@@ -3027,6 +3106,7 @@ export function loadInvestissementsData(
     top10ProjetsPct,
     byArrondissement,
     topProjets,
+    exemples,
     geoPoints,
     // yearsSummary garde toutes les années pour la timeline (même sans noms,
     // on connaît le MONTANT total voté depuis investissement_tendances.json).

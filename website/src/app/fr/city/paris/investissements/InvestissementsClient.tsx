@@ -20,6 +20,7 @@ import ParisChoropleth from "@/components/fusion/ParisChoropleth";
 import BudgetTimeline from "@/components/fusion/BudgetTimeline";
 import StackedBarTheme from "@/components/fusion/StackedBarTheme";
 import PageTOC from "@/components/fusion/PageTOC";
+import InvestExemples from "@/components/fusion/InvestExemples";
 import RelatedArticles, { type ArticlePlaceholder } from "@/components/fusion/RelatedArticles";
 import PageHook from "@/components/fusion/PageHook";
 import { fmtBillions, fmtDec, fmtInt, fmtMillions } from "@/lib/fmt";
@@ -97,6 +98,7 @@ export default function InvestissementsClient({
       <PageTOC
         items={[
           { id: "sec-overview", label: t("fx.toc.chiffres") },
+          { id: "sec-exemples", label: t("fx.toc.signature") },
           { id: "sec-chapitre", label: t("fx.toc.chapitres") },
           { id: "sec-territoire", label: t("fx.inv.s05.kind") },
           { id: "sec-evolution", label: t("fx.toc.evolution") },
@@ -231,10 +233,31 @@ export default function InvestissementsClient({
         </div>
       </section>
 
+      {/* « Par exemple » — même grammaire que la page marchés : trois
+       * projets réels, règles fixes, photo dédiée exigée (cf. loader). */}
+      {d.exemples.length > 0 && (
+        <section className="fx-section" id="sec-exemples">
+          <div className="fx-wrap">
+            <SectionHead
+              number="02"
+              kind={t("fx.mp.sig.kind")}
+              title={
+                <>
+                  <em>{t("fx.inv.sig.title.em")}</em>
+                  {fill(t("fx.inv.sig.title.after"), { year: d.year })}
+                </>
+              }
+              subtitle={t("fx.inv.sig.sub")}
+            />
+            <InvestExemples items={d.exemples} />
+          </div>
+        </section>
+      )}
+
       <section className="fx-section" id="sec-chapitre">
         <div className="fx-wrap">
           <SectionHead
-            number="02"
+            number="03"
             kind={<Tip label={t("fx.inv.classif_fonct.tip")}>{t("fx.inv.s04.kind")}</Tip>}
             title={
               <>
@@ -266,7 +289,7 @@ export default function InvestissementsClient({
       <section className="fx-section" id="sec-territoire">
         <div className="fx-wrap">
           <SectionHead
-            number="03"
+            number="04"
             kind={t("fx.inv.s05.kind")}
             title={
               <>
@@ -363,7 +386,7 @@ export default function InvestissementsClient({
       <section className="fx-section" id="sec-evolution">
         <div className="fx-wrap">
           <SectionHead
-            number="04"
+            number="05"
             kind={t("fx.inv.s06.kind")}
             title={
               <>
@@ -397,7 +420,7 @@ export default function InvestissementsClient({
         <section className="fx-section" id="sec-frise">
           <div className="fx-wrap">
             <SectionHead
-              number="05"
+              number="06"
               kind={t("fx.inv.frise.kind")}
               title={
                 <>
@@ -419,7 +442,7 @@ export default function InvestissementsClient({
       <section className="fx-section" id="sec-projets">
         <div className="fx-wrap">
           <SectionHead
-            number="06"
+            number="07"
             kind={t("fx.inv.s01.kind")}
             title={
               <>
@@ -461,11 +484,11 @@ export default function InvestissementsClient({
         </div>
       </section>
 
-      <RelatedArticles number="07" posts={posts} placeholders={INV_PLACEHOLDERS} />
+      <RelatedArticles number="08" posts={posts} placeholders={INV_PLACEHOLDERS} />
 
       <section className="fx-section" id="sec-explorer">
         <div className="fx-wrap">
-          <SectionHead number="08" kind={t("fx.inv.s09.kind")} />
+          <SectionHead number="09" kind={t("fx.inv.s09.kind")} />
           <div className="fx-grid-tiles">
             <TileCard
               href={cityMarchesPath}

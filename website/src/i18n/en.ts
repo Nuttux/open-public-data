@@ -3142,6 +3142,19 @@ const en: Record<string, string> = {
   'fx.mfl.col.objet': 'Subject',
   'fx.mfl.col.categorie': 'Category',
   // ── Marchés · signature scene (3 real contracts of the year) ───────────────
+  // ── Shared example cards ("For example") ──────────────────────────────────
+  'fx.exemples.cta': 'See the file',
+  'fx.exemples.illustration': 'Illustrative photo',
+  'fx.exemples.arrondissement': 'arrondissement',
+  'fx.exemples.nb_marches_one': '1 linked public contract',
+  'fx.exemples.nb_marches': '{n} linked public contracts',
+  // Investments · For example
+  'fx.inv.sig.title.em': 'Three projects',
+  'fx.inv.sig.title.after': ' from {year}.',
+  'fx.inv.sig.sub': "Selected by fixed rules: the year's largest project, the one with the most linked public contracts, the largest everyday facility. Click to open the file.",
+  'fx.inv.sig.k.gros': "The year's largest project",
+  'fx.inv.sig.k.chantier': 'The most linked public contracts',
+  'fx.inv.sig.k.quotidien': 'The largest everyday facility',
   'fx.mp.sig.kind': 'For example',
   'fx.mp.sig.title.before': '',
   'fx.mp.sig.title.em': 'Three contracts',
