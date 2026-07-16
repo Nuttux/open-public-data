@@ -15,19 +15,19 @@ import { useT } from "@/lib/localeContext";
 import { useTrack } from "@/lib/analyticsContext";
 
 // Pick the right top-nav link set based on the current pathname.
-// National scope: /france*, /comparer, /ville/*/daily-bread.
-// Ville scope: /ville/[slug]/* (default Paris on root).
+// National scope: /fr/national*, /comparer, /fr/city/*/daily-bread.
+// Ville scope: /fr/city/[slug]/* (default Paris on root).
 function navLinksForPath(pathname: string) {
   if (
-    pathname === "/france" ||
-    pathname.startsWith("/france/") ||
+    pathname === "/fr/national" ||
+    pathname.startsWith("/fr/national/") ||
     pathname === "/comparer" ||
     pathname.startsWith("/comparer/") ||
-    /^\/ville\/[^/]+\/daily-bread(\/|$)/.test(pathname)
+    /^\/fr\/city\/[^/]+\/daily-bread(\/|$)/.test(pathname)
   ) {
     return NATIONAL_NAV_LINKS;
   }
-  const m = pathname.match(/^\/ville\/([^/]+)/);
+  const m = pathname.match(/^\/fr\/city\/([^/]+)/);
   return villeNavLinks(m ? m[1] : "paris");
 }
 

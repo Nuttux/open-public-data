@@ -4,7 +4,7 @@ import { useMemo, useState } from "react";
 import Link from "next/link";
 
 /**
- * Treemap squarified pour la page /france/budget.
+ * Treemap squarified pour la page /fr/national/budget.
  *
  * Hand-rolled (zero-dep) — d3-hierarchy n'est pas dans `package.json` et
  * n'est pas justifié pour ~30 cellules. L'algo suit Bruls/Huijing/van Wijk

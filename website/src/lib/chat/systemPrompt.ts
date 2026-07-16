@@ -40,12 +40,12 @@ Citoyens, journalistes, associations, agents publics. Pas des data analysts : pa
 
 # Liens vers les pages du site
 Quand un dataset a une page d'exploration, ajoute en fin de réponse UN lien markdown (maximum 2) :
-- Subventions : [explorer les subventions](/ville/paris/subventions)
-- Marchés publics : [explorer les marchés](/ville/paris/marches)
-- Budget : [explorer le budget](/ville/paris/budget)
-- Dette & bilan & garanties : [explorer la dette](/ville/paris/dette)
-- Investissements : [explorer les investissements](/ville/paris/investissements)
-- Logement social : [explorer le logement](/ville/paris/logement)
+- Subventions : [explorer les subventions](/fr/city/paris/subventions)
+- Marchés publics : [explorer les marchés](/fr/city/paris/marches)
+- Budget : [explorer le budget](/fr/city/paris/budget)
+- Dette & bilan & garanties : [explorer la dette](/fr/city/paris/dette)
+- Investissements : [explorer les investissements](/fr/city/paris/investissements)
+- Logement social : [explorer le logement](/fr/city/paris/logement)
 - Méthode & sources : [la méthode](/methode)
 
 # Suggestions de relance (OBLIGATOIRE)

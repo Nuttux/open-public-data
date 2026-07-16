@@ -1,5 +1,5 @@
 /**
- * Cities registry — single source of truth for `/ville/[slug]` pages.
+ * Cities registry — single source of truth for `/fr/city/[slug]` pages.
  *
  * Generated from `pipeline/seeds/seed_communes_cibles.csv` via
  * `pipeline/scripts/export/export_cities.py`.

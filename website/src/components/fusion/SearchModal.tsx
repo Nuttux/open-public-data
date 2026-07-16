@@ -18,7 +18,7 @@ const fmtInt = (n: number) => n.toLocaleString("fr-FR");
 /**
  * Global search modal — opened from a navbar button or Cmd/Ctrl+K shortcut.
  * Searches the 35 000 French communes index server-side and lets the user
- * jump to any /ville/[slug] page.
+ * jump to any /fr/city/[slug] page.
  */
 export default function SearchModal() {
   const [open, setOpen] = useState(false);
@@ -97,11 +97,11 @@ export default function SearchModal() {
   const goTo = useCallback(
     (hit: Hit) => {
       track("search_modal_select", { slug: hit.slug, insee: hit.insee });
-      // Paris rich pages live at the root, not under /ville/paris (which would
-      // fall through to the slim generic fiche). Marseille has /ville/marseille
-      // wired to redirect to its rich PoC pages, so /ville/<slug> works for it
+      // Paris rich pages live at the root, not under /fr/city/paris (which would
+      // fall through to the slim generic fiche). Marseille has /fr/city/marseille
+      // wired to redirect to its rich PoC pages, so /fr/city/<slug> works for it
       // and for every other commune (slim fiche).
-      const target = hit.slug === "paris" ? "/" : `/ville/${hit.slug}`;
+      const target = hit.slug === "paris" ? "/" : `/fr/city/${hit.slug}`;
       router.push(target);
       setOpen(false);
     },

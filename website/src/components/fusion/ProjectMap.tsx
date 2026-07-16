@@ -301,7 +301,7 @@ export default function ProjectMap({ points, year, height = 620 }: Props) {
             arr: p.arr,
             is_jo: p.isJO,
           });
-          router.push(`/ville/paris/investissements/projet/${encodeURIComponent(p.id)}`, { scroll: false });
+          router.push(`/fr/city/paris/investissements/projet/${encodeURIComponent(p.id)}`, { scroll: false });
         });
         cluster.addLayer(marker);
       }

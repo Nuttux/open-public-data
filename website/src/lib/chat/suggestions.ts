@@ -120,7 +120,7 @@ export function getChatSuggestions(section: SectionKey, locale: Locale): string[
 }
 
 export function sectionForPath(pathname: string): SectionKey {
-  const m = pathname.match(/^\/ville\/[^/]+\/(budget|dette|subventions|marches|logement|investissements)(\/|$)/);
+  const m = pathname.match(/^\/fr\/city\/[^/]+\/(budget|dette|subventions|marches|logement|investissements)(\/|$)/);
   return (m?.[1] as SectionKey) ?? "default";
 }
 

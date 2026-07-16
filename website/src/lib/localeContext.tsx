@@ -6,7 +6,7 @@ import fr from '@/i18n/fr';
 import en from '@/i18n/en';
 
 // City label rewriter — replaces hardcoded "Paris" forms with the current
-// city's label when navigating under /ville/[city]/*. Lets us reuse the Paris
+// city's label when navigating under /fr/city/[city]/*. Lets us reuse the Paris
 // i18n strings for other cities without forking 50+ keys (POC v1 Marseille).
 const CITY_LABELS: Record<string, { nom: string; adj_m: string; adj_f: string }> = {
   paris: { nom: 'Paris', adj_m: 'parisien', adj_f: 'parisienne' },
@@ -15,7 +15,7 @@ const CITY_LABELS: Record<string, { nom: string; adj_m: string; adj_f: string }>
 
 function detectCityFromPath(pathname: string | null): string | null {
   if (!pathname) return null;
-  const m = pathname.match(/^\/ville\/([^/]+)/);
+  const m = pathname.match(/^\/fr\/city\/([^/]+)/);
   return m ? m[1] : null;
 }
 

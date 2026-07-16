@@ -122,7 +122,7 @@ export default function ChapitreFiche({ chap }: { chap: ChapitreFicheType }) {
               return (
                 <Link
                   key={a.arr}
-                  href={`/ville/paris/investissements/arrondissement/${a.arr}`}
+                  href={`/fr/city/paris/investissements/arrondissement/${a.arr}`}
                   scroll={false}
                   className="fx-row-link"
                   style={{
@@ -161,7 +161,7 @@ export default function ChapitreFiche({ chap }: { chap: ChapitreFicheType }) {
             return (
               <Link
                 key={p.id}
-                href={`/ville/paris/investissements/projet/${encodeURIComponent(p.id)}`}
+                href={`/fr/city/paris/investissements/projet/${encodeURIComponent(p.id)}`}
                 scroll={false}
                 className="fx-arr-top-item"
               >

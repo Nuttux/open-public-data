@@ -65,7 +65,7 @@ export default function CategorieMarcheFiche({ fiche }: { fiche: MarcheCategorie
                   <td style={{ maxWidth: 360 }}>
                     {c.numero ? (
                       <Link
-                        href={`/ville/paris/marches/contrat/${encodeURIComponent(c.numero)}`}
+                        href={`/fr/city/paris/marches/contrat/${encodeURIComponent(c.numero)}`}
                         scroll={false}
 
                       >
@@ -78,7 +78,7 @@ export default function CategorieMarcheFiche({ fiche }: { fiche: MarcheCategorie
                   <td style={{ fontSize: 12 }}>
                     {c.fournisseurSiret ? (
                       <Link
-                        href={`/ville/paris/marches/fournisseur/${encodeURIComponent(c.fournisseurSiret)}`}
+                        href={`/fr/city/paris/marches/fournisseur/${encodeURIComponent(c.fournisseurSiret)}`}
                         scroll={false}
 
                       >
@@ -104,7 +104,7 @@ export default function CategorieMarcheFiche({ fiche }: { fiche: MarcheCategorie
           {fiche.topTitulaires.map((tit, i) => {
             const { value, unit } = fmtCompactEur(tit.amount);
             const pct = (tit.amount / fiche.total) * 100;
-            const href = tit.siret ? `/ville/paris/marches/fournisseur/${encodeURIComponent(tit.siret)}` : null;
+            const href = tit.siret ? `/fr/city/paris/marches/fournisseur/${encodeURIComponent(tit.siret)}` : null;
             const countLabel = fill(
               tit.nb > 1 ? t("fx.categorie.contrats_count_many") : t("fx.categorie.contrats_count_one"),
               { n: tit.nb },

@@ -50,7 +50,7 @@ export default function FournisseursBumpChart({
   ficheBase,
 }: {
   data: FournisseursRankingData;
-  /** e.g. /ville/paris/marches — fiche = `${ficheBase}/fournisseur/${siren}` */
+  /** e.g. /fr/city/paris/marches — fiche = `${ficheBase}/fournisseur/${siren}` */
   ficheBase: string;
 }) {
   const t = useT();

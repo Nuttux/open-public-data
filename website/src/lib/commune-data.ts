@@ -66,7 +66,7 @@ export function loadCommunesIndex(): CommuneIndex | null {
 
 /**
  * Load all peer cities (the 9 biggest excluding the focal slug).
- * Used by the peer-compare section on /ville/[slug].
+ * Used by the peer-compare section on /fr/city/[slug].
  */
 export function loadPeerCities(focalSlug: string): CommuneData[] {
   const idx = loadCommunesIndex();

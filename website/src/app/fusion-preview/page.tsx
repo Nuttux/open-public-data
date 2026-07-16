@@ -81,7 +81,7 @@ export default function FusionPreview() {
           <SectionHead number="04" kind="Tile grid" title={<>Tuiles <em>analyses</em></>} subtitle="Hover pour voir l'inversion de thème." />
           <div className="fx-grid-tiles">
             <TileCard
-              href="/ville/paris/budget"
+              href="/fr/city/paris/budget"
               number="01"
               kind="Flux de l'argent"
               title="Budget"
@@ -102,7 +102,7 @@ export default function FusionPreview() {
               kpiDelta={<>↑ <b>2,1 %</b> vs 2025</>}
             />
             <TileCard
-              href="/ville/paris/investissements"
+              href="/fr/city/paris/investissements"
               number="02"
               kind="Carte"
               title="Investissements"
@@ -122,7 +122,7 @@ export default function FusionPreview() {
               kpiDelta={<>↑ <b>8,4 %</b> vs 2025</>}
             />
             <TileCard
-              href="/ville/paris/subventions"
+              href="/fr/city/paris/subventions"
               number="03"
               kind="Classement"
               title="Subventions"

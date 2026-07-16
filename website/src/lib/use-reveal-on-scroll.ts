@@ -53,7 +53,7 @@ export function useRevealOnScroll(
 
     // ⚠️ Bug fix 2026-05-20 : IntersectionObserver computes ratio as
     // (intersected area / TOTAL element area). Pour les éléments PLUS
-    // grands que le viewport (ex /france/budget §08 cross-cutting =
+    // grands que le viewport (ex /fr/national/budget §08 cross-cutting =
     // 7062px sur 900px viewport, ratio max = 12.7%), un `threshold` > 12%
     // ne peut JAMAIS être atteint → l'élément ne se révèle jamais et
     // reste opacity:0 même quand l'utilisateur scrolle dessus.

@@ -5,18 +5,18 @@ import { listAllCommunesMeta } from '@/lib/all-communes';
 
 const MAIN_ROUTES = [
   { path: '', priority: 1.0 },
-  { path: '/ville/paris/budget', priority: 0.9 },
-  { path: '/ville/paris/subventions', priority: 0.9 },
-  { path: '/ville/paris/investissements', priority: 0.9 },
-  { path: '/ville/paris/dette', priority: 0.8 },
-  { path: '/ville/paris/marches', priority: 0.8 },
-  { path: '/ville/paris/logement', priority: 0.8 },
-  { path: '/france/daily-bread', priority: 0.9 },
-  { path: '/france', priority: 0.8 },
-  { path: '/france/dette', priority: 0.8 },
-  { path: '/france/fiscalite', priority: 0.8 },
-  { path: '/france/etat', priority: 0.8 },
-  { path: '/france/budget', priority: 0.85 },
+  { path: '/fr/city/paris/budget', priority: 0.9 },
+  { path: '/fr/city/paris/subventions', priority: 0.9 },
+  { path: '/fr/city/paris/investissements', priority: 0.9 },
+  { path: '/fr/city/paris/dette', priority: 0.8 },
+  { path: '/fr/city/paris/marches', priority: 0.8 },
+  { path: '/fr/city/paris/logement', priority: 0.8 },
+  { path: '/fr/national/daily-bread', priority: 0.9 },
+  { path: '/fr/national', priority: 0.8 },
+  { path: '/fr/national/dette', priority: 0.8 },
+  { path: '/fr/national/fiscalite', priority: 0.8 },
+  { path: '/fr/national/etat', priority: 0.8 },
+  { path: '/fr/national/budget', priority: 0.85 },
   { path: '/comparer', priority: 0.7 },
   { path: '/analyses', priority: 0.7 },
   { path: '/methode', priority: 0.6 },
@@ -58,7 +58,7 @@ export default function sitemap({ id }: { id: number }): MetadataRoute.Sitemap {
     const cityRoutes = listCities()
       .filter((c) => c.slug !== 'paris')
       .map((c) => ({
-        url: `${SITE_URL}/ville/${c.slug}`,
+        url: `${SITE_URL}/fr/city/${c.slug}`,
         lastModified: now,
         changeFrequency: 'monthly' as const,
         priority: 0.5,
@@ -77,7 +77,7 @@ export default function sitemap({ id }: { id: number }): MetadataRoute.Sitemap {
   const slice = tail.slice(start, start + CHUNK_SIZE);
 
   return slice.map((c) => ({
-    url: `${SITE_URL}/ville/${c.slug}`,
+    url: `${SITE_URL}/fr/city/${c.slug}`,
     lastModified: now,
     changeFrequency: 'yearly' as const,
     // Lower priority for tail communes; higher for bigger pop.

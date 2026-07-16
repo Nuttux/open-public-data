@@ -1,5 +1,5 @@
 /**
- * Panel "D'où vient l'argent ?" pour /france/budget. Trois cartes
+ * Panel "D'où vient l'argent ?" pour /fr/national/budget. Trois cartes
  * horizontales (Sécu / État / Local) — chaque carte a une barre empilée
  * par nature de recette (cotisations, CSG, fiscalité directe, indirecte,
  * non-fiscal, transferts). Ligne "déficit / emprunt" séparée en bas.
@@ -108,7 +108,7 @@ export default function RecettesPanel({ data, locale, t }: Props) {
               institution.annual_eur > 0
                 ? item.annual_eur / institution.annual_eur
                 : 0;
-            const href = `/france/budget/recettes/${encodeURIComponent(item.key)}`;
+            const href = `/fr/national/budget/recettes/${encodeURIComponent(item.key)}`;
             return (
               <li key={item.key} className="fx-recettes-item">
                 <Link
@@ -210,7 +210,7 @@ export default function RecettesPanel({ data, locale, t }: Props) {
           </p>
           <div className="fx-recettes-ue-flow">
             <Link
-              href="/france/budget/recettes/psr_ue"
+              href="/fr/national/budget/recettes/psr_ue"
               scroll={false}
               prefetch={false}
               className="fx-recettes-ue-row fx-recettes-ue-row-link"
@@ -227,7 +227,7 @@ export default function RecettesPanel({ data, locale, t }: Props) {
               </span>
             </Link>
             <Link
-              href="/france/budget/recettes/ue_fonds_recus"
+              href="/fr/national/budget/recettes/ue_fonds_recus"
               scroll={false}
               prefetch={false}
               className="fx-recettes-ue-row fx-recettes-ue-row-link"

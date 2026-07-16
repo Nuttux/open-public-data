@@ -3518,7 +3518,7 @@ const en: Record<string, string> = {
   'apu.series.gap': 'Gap',
   'apu.no_data': 'Eurostat data not available. Run `python pipeline/scripts/sync/sync_eurostat_cofog.py` to generate it.',
 
-  // ── Page /ville/[slug] (City placeholder V2) ────────────────────────────────
+  // ── Page /fr/city/[slug] (City placeholder V2) ────────────────────────────────
   'city.section.kind': 'City',
   'city.placeholder.badge': 'V2 — Coverage in progress',
   'city.hero.label': 'Population',
@@ -3882,12 +3882,12 @@ const en: Record<string, string> = {
   'db.method.body.sources.ofgl': "local-government finances by function (cities, departments, regions).",
   'db.method.body.sources.drees': "health accounts, breakdown ambulatory / hospital / drugs.",
   // 04 — Scope
-  'db.method.body.perimetre.intro': "General government (APU) is split into three accounting sub-sectors. Daily Bread uses a CAUSAL view: each tax goes to its actual legal recipient, not a proportional split. (For the proportional Eurostat view, see Budget Explorer /france/budget.)",
+  'db.method.body.perimetre.intro': "General government (APU) is split into three accounting sub-sectors. Daily Bread uses a CAUSAL view: each tax goes to its actual legal recipient, not a proportional split. (For the proportional Eurostat view, see Budget Explorer /fr/national/budget.)",
   'db.method.body.perimetre.s1311': "S1311 Central state + ODAC ≈ €676 bn/yr — ministries, agencies, debt service. You contribute via {b}your income tax{/b} + {b}45% of your VAT{/b} (State share, PLF V&M).",
   'db.method.body.perimetre.s1313': "S1313 Local government ≈ €334 bn/yr — cities, EPCIs, departments, regions. You contribute via {b}your property tax{/b} (if homeowner) + {b}24% of your VAT{/b} (housing-tax/CVAE compensation).",
   'db.method.body.perimetre.s1314': "S1314 Social security ≈ €798 bn/yr — health (CNAM), pensions (CNAV), family (CAF), unemployment (Unédic), workplace (AT-MP). You contribute via {b}your social contributions{/b} + {b}CSG/CRDS{/b} + {b}31% of your VAT{/b} (allocated VAT) + {b}capital social levies (17.2%){/b}.",
   'db.method.body.perimetre.caveat_label': "Causal vs proportional view:",
-  'db.method.body.perimetre.caveat_229': "Daily Bread maps each euro of tax to its actual recipient (contributions → Social Security, income tax → State, VAT → 3 sub-sectors per PLF allocation). Budget Explorer (/france/budget) keeps the Eurostat S13 proportional view (44/37/18) showing each sub-sector's share of total public SPENDING. Both are useful: causal for « where does MY contribution go », proportional for « how is national public spending distributed ».",
+  'db.method.body.perimetre.caveat_229': "Daily Bread maps each euro of tax to its actual recipient (contributions → Social Security, income tax → State, VAT → 3 sub-sectors per PLF allocation). Budget Explorer (/fr/national/budget) keeps the Eurostat S13 proportional view (44/37/18) showing each sub-sector's share of total public SPENDING. Both are useful: causal for « where does MY contribution go », proportional for « how is national public spending distributed ».",
   // 05 — Why personal
   'db.method.body.pourquoi_perso.p1': "The exact French tax computation goes through OpenFisca, the official simulation engine maintained by DINUM/Etalab — source code aligned with the current finance law, updated at each PLF.",
   'db.method.body.pourquoi_perso.p2': "Daily Bread is a simplified MVP, designed to stay accessible without a tax-portal login and without entering a detailed RFR. Goal: a readable order of magnitude plus a deep drilldown — not a replacement for impots.gouv.fr.",
@@ -4246,7 +4246,7 @@ const en: Record<string, string> = {
   'etat.missions.header_right': 'PLF {year}',
   'etat.no_data': 'PLF data not available. Run `python pipeline/scripts/sync/sync_etat_lfi.py` to generate it.',
 
-  // ── Page /france/budget — Budget Explorer (impersonal MVP + treemap) ────
+  // ── Page /fr/national/budget — Budget Explorer (impersonal MVP + treemap) ────
   'budget.page.kicker': 'France · Consolidated budget',
   'budget.hero.title': 'The French budget',
   'budget.hero.amount_unit': 'bn€',
