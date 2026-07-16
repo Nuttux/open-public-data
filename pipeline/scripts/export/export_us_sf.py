@@ -273,11 +273,17 @@ def build_budget_vs_actual(rows: list[dict]) -> dict:
                 "budget_net_usd": _f(r["budget_net_usd"], 2),
                 "actual_all_usd": _f(r["actual_all_usd"], 2),
                 "actual_excl_related_govt_units_usd": _f(r["actual_excl_rgu_usd"], 2),
-                "reconciliation": {
+                "reconciliation_all_funds": {
                     "budget_excl_transfers_usd": _f(r["budget_excl_transfers_usd"], 2),
                     "actual_excl_rgu_excl_transfers_usd": _f(r["actual_excl_rgu_excl_transfers_usd"], 2),
                     "residual_usd": _f(r["residual_excl_transfers_usd"], 2),
                     "residual_pct": _f(r["residual_excl_transfers_pct"], 6),
+                },
+                "operating_comparison": {
+                    "budget_usd": _f(r["budget_operating_excl_transfers_usd"], 2),
+                    "actual_usd": _f(r["actual_operating_aligned_usd"], 2),
+                    "residual_usd": _f(r["residual_operating_usd"], 2),
+                    "residual_pct": _f(r["residual_operating_pct"], 6),
                 },
                 "is_fiscal_year_complete": (
                     bool(r["is_fiscal_year_complete"])
@@ -304,24 +310,29 @@ def build_budget_vs_actual(rows: list[dict]) -> dict:
                 "rows_updated_at": _ts(ref["actuals_rows_updated_at"]),
             },
         },
-        "series_are_separate": True,
+        "comparable_perimeter": "operating_comparison",
         "notes": (
-            "Budget (net adopted AAO) and actuals are published here as "
-            "SEPARATE labeled series, NOT as a like-for-like comparison. "
-            "Measured on FY2010-FY2024 (complete years), even after "
-            "aligning the perimeters — dropping related-government-unit "
-            "rows (retirement system, OCII…, absent from the budget "
-            "dataset) and all transfer characters from both sides — "
-            "actual spending exceeds the adopted budget by roughly "
-            "$1.5-4B per year (~10-25%). That residual is real budget "
-            "life (supplemental appropriations, carryforward of "
-            "continuing-project authority, grant-driven spending), not "
-            "accounting noise we can subtract — so publishing a single "
-            "'budget vs actual' bar would imply a precision the data "
-            "does not support. The reconciliation block carries the "
-            "aligned-perimeter figures and the measured residual per "
-            "fiscal year so the gap itself is a documented, queryable "
-            "fact (mart_us_sf_budget_vs_actual)."
+            "Two ways to read this file, both measured in "
+            "mart_us_sf_budget_vs_actual (2026-07-16). (1) ALL FUNDS: "
+            "budget_net_usd (net adopted AAO) and actual_all_usd are "
+            "SEPARATE labeled series, NOT a like-for-like pair — even "
+            "after dropping related-government-unit rows (retirement "
+            "system, OCII…, absent from the budget dataset) and all "
+            "transfer characters from both sides, actual spending stays "
+            "$0.6-2.8B above budget per fiscal year (+4% to +23%, "
+            "FY2018-FY2025; reconciliation_all_funds block). That "
+            "residual concentrates in an actuals-only 'Unspecified' fund "
+            "category with no budget counterpart ($1.6-2.4B/FY) and in "
+            "continuing-project funds, where spending draws on MULTI-YEAR "
+            "authority — a real feature of how SF budgets, not noise we "
+            "can subtract. (2) OPERATING FUNDS ONLY (operating_comparison "
+            "block: fund_category='Operating' on both sides, related govt "
+            "units and transfer characters excluded): budget and actual "
+            "DO reconcile — actuals run 0.4% to 8.8% UNDER budget across "
+            "FY2010-FY2025 (one -16.8% outlier in FY2021, COVID), i.e. "
+            "ordinary under-execution of appropriations. Only the "
+            "operating_comparison pair should be charted as "
+            "budget-vs-actual."
         ),
         "sides": {
             "spending": {"points": points("Spending")},

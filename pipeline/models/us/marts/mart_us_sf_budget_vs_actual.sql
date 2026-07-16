@@ -21,11 +21,22 @@
 --                               characters — the same perimeter as
 --                               budget_excl_transfers_usd
 --
--- The honest comparison pair is the *_excl_transfers one (identical
--- character perimeter on both sides, related-government entities removed).
--- The residual (actual − budget) on that pair is real over/under-execution
--- + supplemental appropriations, NOT accounting noise. The export decision
--- based on these measurements is documented in export_us_sf.py.
+-- MEASURED FINDINGS (BQ, 2026-07-16, this model's own numbers):
+--   - All-funds aligned perimeter (excl RGU + excl transfers both sides)
+--     STILL leaves actuals $0.6-2.8B ABOVE budget per FY (+4% to +23%,
+--     FY2018-FY2025). Split by fund_category, that residual concentrates
+--     in (a) an actuals-only 'Unspecified' fund_category with ZERO budget
+--     counterpart ($1.6-2.4B/FY — PUC debt service, capital outlay, …)
+--     and (b) Continuing Projects funds, where spending draws on
+--     MULTI-YEAR authority and can legitimately exceed any single year's
+--     adopted budget. All-funds budget-vs-actual is therefore NOT an
+--     honest comparison and is exported as separate series only.
+--   - OPERATING funds only (fund_category = 'Operating' on BOTH sides,
+--     same exclusions) reconciles: residual is consistently NEGATIVE
+--     (under-execution of appropriations), −0.4% to −8.8% across
+--     FY2010-FY2025 with a single −16.8% outlier in FY2021 (COVID).
+--     That pair is exported as the honest comparison
+--     (operating_* columns below).
 -- =============================================================================
 
 WITH budget AS (
@@ -35,7 +46,9 @@ WITH budget AS (
         SUM(budget_amt)                                         AS budget_net_usd,
         SUM(IF(NOT is_transfer_character, budget_amt, 0))       AS budget_excl_transfers_usd,
         SUM(IF(is_transfer_character, budget_amt, 0))           AS budget_transfers_usd,
-        SUM(IF(is_transfer_adjustment, budget_amt, 0))          AS budget_transfer_adjustments_usd
+        SUM(IF(is_transfer_adjustment, budget_amt, 0))          AS budget_transfer_adjustments_usd,
+        SUM(IF(fund_category = 'Operating' AND NOT is_transfer_character,
+               budget_amt, 0))                                  AS budget_operating_excl_transfers_usd
     FROM {{ ref('core_us_sf_budget') }}
     GROUP BY fiscal_year, revenue_or_spending
 ),
@@ -51,6 +64,9 @@ actuals AS (
                                                                 AS actual_transfers_usd,
         SUM(IF(NOT is_related_govt_unit AND NOT is_transfer_character, amount, 0))
                                                                 AS actual_excl_rgu_excl_transfers_usd,
+        SUM(IF(fund_category = 'Operating'
+               AND NOT is_related_govt_unit AND NOT is_transfer_character,
+               amount, 0))                                      AS actual_operating_aligned_usd,
         LOGICAL_AND(is_fiscal_year_complete)                    AS is_fiscal_year_complete
     FROM {{ ref('core_us_sf_actuals') }}
     GROUP BY fiscal_year, revenue_or_spending
@@ -91,6 +107,14 @@ SELECT
     SAFE_DIVIDE(a.actual_excl_rgu_excl_transfers_usd - b.budget_excl_transfers_usd,
                 b.budget_excl_transfers_usd)
         AS residual_excl_transfers_pct,
+    -- the honest comparison: Operating funds on both sides (see header)
+    b.budget_operating_excl_transfers_usd,
+    a.actual_operating_aligned_usd,
+    a.actual_operating_aligned_usd - b.budget_operating_excl_transfers_usd
+        AS residual_operating_usd,
+    SAFE_DIVIDE(a.actual_operating_aligned_usd - b.budget_operating_excl_transfers_usd,
+                b.budget_operating_excl_transfers_usd)
+        AS residual_operating_pct,
     pr.budget_source_url,
     pr.budget_rows_updated_at,
     pr.actuals_source_url,
