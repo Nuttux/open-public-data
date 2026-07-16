@@ -262,7 +262,7 @@ export default function ContratFiche({
        * Rapprochement automatique (même hedge que la fiche projet, en tooltip). */}
       {projet && (
         <Link
-          href={`/ville/paris/investissements/projet/${projet.id}`}
+          href={`/fr/city/paris/investissements/projet/${projet.id}`}
           scroll={false}
           title={t("fx.fiche.contrat.chantier.hedge")}
           style={{

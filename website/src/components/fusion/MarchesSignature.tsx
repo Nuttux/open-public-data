@@ -51,7 +51,7 @@ export default function MarchesSignature({ items }: { items: SigItem[] }) {
         return (
           <Link
             key={it.numero}
-            href={`/ville/paris/marches/contrat/${encodeURIComponent(it.numero)}`}
+            href={`/fr/city/paris/marches/contrat/${encodeURIComponent(it.numero)}`}
             scroll={false}
             className="fx-row-link"
             style={{
