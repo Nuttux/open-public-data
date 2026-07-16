@@ -19,6 +19,8 @@ type Item = {
   montant: number;
   categorie: string;
   date: string;
+  /** Offres reçues (DECP) — null hors millésimes 2024+. */
+  offres?: number | null;
 };
 
 const PAGE_SIZE = 50;
@@ -156,6 +158,7 @@ export default function MarchesFullList({ items }: { items: Item[] }) {
             <th>{t("fx.mfl.col.titulaire")}</th>
             <th>{t("fx.mfl.col.objet")}</th>
             <th>{t("fx.mfl.col.categorie")}</th>
+            <th title={t("fx.mfl.col.offres_title")} style={{ cursor: "help" }}>{t("fx.mfl.col.offres")}</th>
             <th>{t("fx.mfl.col.date")}</th>
             <th style={{ textAlign: "right" }}>{t("fx.mfl.col.enveloppe")}</th>
           </tr>
@@ -177,6 +180,18 @@ export default function MarchesFullList({ items }: { items: Item[] }) {
               </td>
               <td className="muted" style={{ maxWidth: 200 }}>
                 {(() => { const lbl = trLabel(it.categorie, locale); return lbl.length > 40 ? lbl.slice(0, 40) + "…" : lbl; })()}
+              </td>
+              {/* Concurrence : point + nombre (le nombre porte l'info, la
+               * couleur souligne l'offre unique). Vide avant 2024 — champ
+               * non publié, pas une fausse absence. */}
+              <td className="muted" style={{ whiteSpace: "nowrap" }}>
+                {it.offres != null && it.offres > 0 ? (
+                  <span style={it.offres === 1 ? { color: "var(--ocre)", fontWeight: 600 } : undefined}>
+                    <span aria-hidden="true" style={{ fontSize: 9 }}>●</span> {it.offres}
+                  </span>
+                ) : (
+                  ""
+                )}
               </td>
               <td className="muted">{fmtDate(it.date)}</td>
               <td className="num">{fmtEur(it.montant)}</td>

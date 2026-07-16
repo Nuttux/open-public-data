@@ -21,6 +21,8 @@ type Item = {
   nature: string;
   date: string;
   multiAttributaire: boolean;
+  /** Offres reçues (DECP) — null hors millésimes 2024+. */
+  offres?: number | null;
 };
 
 type Props = {
@@ -336,7 +338,21 @@ export default function MarchesSearch({ items, categories, natures, year }: Prop
             return (
               <CardEl key={i} className="fx-result-card" {...cardProps}>
                 <div className="fx-result-card-top">
-                  <span className="fx-result-card-type">{t("fx.mp.search.card.marche")} · {trLabel(it.nature, locale)}</span>
+                  <span className="fx-result-card-type">
+                    {t("fx.mp.search.card.marche")} · {trLabel(it.nature, locale)}
+                    {it.offres != null && it.offres > 0 && (
+                      <span
+                        title={t("fx.mfl.col.offres_title")}
+                        style={it.offres === 1 ? { color: "var(--ocre)", fontWeight: 600 } : undefined}
+                      >
+                        {" · "}
+                        <span aria-hidden="true" style={{ fontSize: 8 }}>●</span>{" "}
+                        {it.offres === 1
+                          ? t("fx.fiche.contrat.conc.offre_one")
+                          : t("fx.fiche.contrat.conc.offres_n").replace("{n}", String(it.offres))}
+                      </span>
+                    )}
+                  </span>
                   <span>{fmtDate(it.date)}</span>
                 </div>
                 <h3>{(() => {

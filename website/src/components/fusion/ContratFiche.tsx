@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import type { ContratFiche as ContratFicheType, ContratRanking, MarcheVulgarization, SireneCompany } from "@/lib/fusion-data";
+import type { ContratFiche as ContratFicheType, ContratProjetLink, ContratRanking, MarcheVulgarization, SireneCompany } from "@/lib/fusion-data";
 import { normalizeObjet } from "@/lib/objet-normalizer";
 import { useT, useLocale } from "@/lib/localeContext";
 import { trLabel } from "@/lib/label-translate";
@@ -12,11 +12,13 @@ export default function ContratFiche({
   vulgarization,
   fournisseurSirene,
   ranking,
+  projet,
 }: {
   contrat: ContratFicheType;
   vulgarization?: MarcheVulgarization | null;
   fournisseurSirene?: SireneCompany | null;
   ranking?: ContratRanking | null;
+  projet?: ContratProjetLink | null;
 }) {
   const t = useT();
   const { locale } = useLocale();
@@ -47,6 +49,26 @@ export default function ContratFiche({
     ? (contrat.dureeJours / 365).toFixed(1).replace(".", locale === "en" ? "." : ",")
     : "—";
 
+  // Frise de vie du contrat : notifié → aujourd'hui → fin contractuelle.
+  // Remplace les tuiles « Durée » + « Notifié le » (mêmes données, en
+  // graphique) ; ~2 995 contrats du corpus courent encore aujourd'hui.
+  const timeline = (() => {
+    if (!contrat.dateNotification || !(contrat.dureeJours > 0)) return null;
+    const startMs = Date.parse(contrat.dateNotification);
+    if (Number.isNaN(startMs)) return null;
+    const DAY = 86400000;
+    const endMs = startMs + contrat.dureeJours * DAY;
+    // Précision au JOUR UTC : un `new Date()` à la milliseconde diffère entre
+    // le rendu serveur et l'hydratation client → mismatch React sur la
+    // largeur de la barre. Le jour suffit pour une frise de contrat.
+    const nowMs = Math.floor(Date.now() / DAY) * DAY;
+    const total = endMs - startMs;
+    const pct = total > 0
+      ? Math.round(Math.min(Math.max(((nowMs - startMs) / total) * 100, 0), 100) * 100) / 100
+      : 100;
+    return { end: new Date(endMs), pct, enCours: nowMs < endMs };
+  })();
+
   // Enrichissement DECP — affichage conditionnel.
   const decp = contrat.decp;
   const showNotifie = Boolean(decp?.afficherDeuxMontants && decp?.montantNotifie != null && decp.montantNotifie > 0);
@@ -55,7 +77,12 @@ export default function ContratFiche({
   // Tags DECP (affichés en ligne sous l'objet, uniquement si ≠ null/vide).
   type Tag = { label: string; title?: string };
   const decpTags: Tag[] = [];
-  if (decp?.ccag) {
+  // Catégorie en tag (l'ex-section Classification) — seulement quand elle
+  // apporte plus que la nature déjà affichée en KPI.
+  if (contrat.categorie && contrat.categorie !== "—" && contrat.categorie.toLowerCase() !== contrat.nature.toLowerCase()) {
+    decpTags.push({ label: trLabel(contrat.categorie, locale), title: t("fx.fiche.contrat.categorie") });
+  }
+  if (decp?.ccag && decp.ccag !== contrat.categorie) {
     decpTags.push({ label: decp.ccag, title: t("fx.fiche.contrat.tag.ccag_title") });
   }
   if (decp?.cpvFamille && decp.cpvFamille !== decp.ccag) {
@@ -105,8 +132,12 @@ export default function ContratFiche({
           <p style={{ margin: 0, fontWeight: 600, color: "var(--ink)", fontSize: 17, lineHeight: 1.45 }}>
             {normalizeObjet(contrat.objet)}
           </p>
-          <p style={{ margin: "10px 0 0", fontSize: 12, color: "var(--muted)", fontStyle: "italic" }}>
-            {t("fx.fiche.contrat.libelle_reformat")}
+          {/* Phrase italique → tag discret : même info, moins de texte. */}
+          <p
+            style={{ margin: "8px 0 0", fontFamily: "var(--f-mono)", fontSize: 10, letterSpacing: ".08em", textTransform: "uppercase", color: "var(--muted)", cursor: "help" }}
+            title={t("fx.fiche.contrat.libelle_reformat")}
+          >
+            {t("fx.fiche.contrat.libelle_reformat_tag")} ⓘ
           </p>
         </div>
       )}
@@ -140,26 +171,81 @@ export default function ContratFiche({
             </div>
           </div>
         )}
-        <div className="fx-fiche-kpi">
-          <div className="fx-fiche-kpi-label">{t("fx.fiche.contrat.duree")}</div>
-          <div className="fx-fiche-kpi-value tnum">
-            {dureeAnnees}
-            <span className="u">{dureeAnnees !== "—" ? t("fx.fiche.contrat.duree_unit") : ""}</span>
+        {!timeline && (
+          <div className="fx-fiche-kpi">
+            <div className="fx-fiche-kpi-label">{t("fx.fiche.contrat.duree")}</div>
+            <div className="fx-fiche-kpi-value tnum">
+              {dureeAnnees}
+              <span className="u">{dureeAnnees !== "—" ? t("fx.fiche.contrat.duree_unit") : ""}</span>
+            </div>
           </div>
-        </div>
+        )}
         <div className="fx-fiche-kpi">
           <div className="fx-fiche-kpi-label">{t("fx.fiche.shared.nature")}</div>
           <div className="fx-fiche-kpi-value" style={{ fontSize: 15 }}>
             {trLabel(contrat.nature, locale)}
           </div>
         </div>
-        <div className="fx-fiche-kpi">
-          <div className="fx-fiche-kpi-label">{t("fx.fiche.contrat.notifie")}</div>
-          <div className="fx-fiche-kpi-value" style={{ fontSize: 15 }}>
-            {fmtDate(contrat.dateNotification)}
+        {!timeline && (
+          <div className="fx-fiche-kpi">
+            <div className="fx-fiche-kpi-label">{t("fx.fiche.contrat.notifie")}</div>
+            <div className="fx-fiche-kpi-value" style={{ fontSize: 15 }}>
+              {fmtDate(contrat.dateNotification)}
+            </div>
+          </div>
+        )}
+      </div>
+
+      {timeline && (
+        <div
+          style={{ margin: "16px 0 0" }}
+          aria-label={t(timeline.enCours ? "fx.fiche.contrat.tl.aria_encours" : "fx.fiche.contrat.tl.aria_termine")
+            .replace("{start}", fmtDate(contrat.dateNotification))
+            .replace("{end}", fmtDate(timeline.end.toISOString()))}
+        >
+          <div style={{ display: "flex", justifyContent: "space-between", fontFamily: "var(--f-mono)", fontSize: 10.5, letterSpacing: ".06em", textTransform: "uppercase", color: "var(--muted)", marginBottom: 7 }}>
+            <span>{t("fx.fiche.contrat.tl.notifie")} {fmtDate(contrat.dateNotification)}</span>
+            <span>~ {fmtDate(timeline.end.toISOString())}</span>
+          </div>
+          <div style={{ position: "relative", height: 4, background: "var(--rule)", borderRadius: 2 }} aria-hidden="true">
+            <div
+              style={{
+                position: "absolute",
+                top: 0,
+                bottom: 0,
+                left: 0,
+                width: `${timeline.pct}%`,
+                background: timeline.enCours ? "var(--bleu)" : "var(--ink-2)",
+                borderRadius: 2,
+              }}
+            />
+            {timeline.enCours && (
+              <span
+                style={{
+                  position: "absolute",
+                  left: `${timeline.pct}%`,
+                  top: "50%",
+                  transform: "translate(-50%, -50%)",
+                  width: 9,
+                  height: 9,
+                  borderRadius: "50%",
+                  background: "var(--bleu)",
+                  boxShadow: "0 0 0 2px var(--bg)",
+                }}
+              />
+            )}
+          </div>
+          <div
+            style={{ marginTop: 7, fontFamily: "var(--f-mono)", fontSize: 10.5, letterSpacing: ".06em", textTransform: "uppercase", cursor: "help" }}
+            title={t("fx.fiche.contrat.tl.hedge")}
+          >
+            <span style={{ color: timeline.enCours ? "var(--bleu)" : "var(--muted)", fontWeight: 600 }}>
+              {timeline.enCours ? t("fx.fiche.contrat.tl.en_cours") : t("fx.fiche.contrat.tl.termine")}
+            </span>
+            <span style={{ color: "var(--muted)" }}> · {dureeAnnees} {t("fx.fiche.contrat.duree_unit")}</span>
           </div>
         </div>
-      </div>
+      )}
 
       {decpTags.length > 0 && (
         <div style={{ display: "flex", flexWrap: "wrap", gap: 14, margin: "14px 0 0", fontFamily: "var(--f-mono)", fontSize: 10.5, letterSpacing: ".08em", textTransform: "uppercase", color: "var(--muted)" }}>
@@ -169,6 +255,51 @@ export default function ContratFiche({
             </span>
           ))}
         </div>
+      )}
+
+      {/* Chantier — quand le marché est rapproché d'un projet d'investissement,
+       * la fiche gagne une photo et un contexte : à quoi sert cet argent.
+       * Rapprochement automatique (même hedge que la fiche projet, en tooltip). */}
+      {projet && (
+        <Link
+          href={`/ville/paris/investissements/projet/${projet.id}`}
+          scroll={false}
+          title={t("fx.fiche.contrat.chantier.hedge")}
+          style={{
+            display: "flex",
+            gap: 14,
+            alignItems: "center",
+            margin: "18px 0 0",
+            padding: "12px 14px",
+            border: "1px solid var(--rule)",
+            background: "var(--bg)",
+            textDecoration: "none",
+          }}
+        >
+          {projet.photoUrl && (
+            <img
+              src={projet.photoUrl}
+              alt=""
+              width={104}
+              height={70}
+              loading="lazy"
+              style={{ width: 104, height: 70, objectFit: "cover", flexShrink: 0 }}
+            />
+          )}
+          <div style={{ minWidth: 0 }}>
+            <div style={{ fontFamily: "var(--f-mono)", fontSize: 10, letterSpacing: ".1em", textTransform: "uppercase", color: "var(--muted)", marginBottom: 4 }}>
+              {t("fx.fiche.contrat.chantier.kicker")}
+            </div>
+            <div style={{ fontFamily: "var(--f-ui)", fontSize: 14.5, fontWeight: 600, color: "var(--ink)", lineHeight: 1.35 }}>
+              {locale === "en" && projet.nomEn ? projet.nomEn : projet.nom}
+            </div>
+            <div style={{ fontFamily: "var(--f-mono)", fontSize: 10.5, letterSpacing: ".06em", textTransform: "uppercase", color: "var(--bleu)", marginTop: 4 }}>
+              {projet.arrondissement ? `${projet.arrondissement}ᵉ · ` : ""}
+              {t("fx.fiche.contrat.chantier.nb").replace("{n}", String(projet.nbMarches))}
+              {" · "}{t("fx.fiche.contrat.chantier.cta")} →
+            </div>
+          </div>
+        </Link>
       )}
 
       {/* Concurrence — répond à « combien d'entreprises ont candidaté ? », la
@@ -346,24 +477,10 @@ export default function ContratFiche({
         )}
       </section>
 
-      <section className="fx-fiche-section">
-        <div className="fx-fiche-h">{t("fx.fiche.contrat.classification")}</div>
-        <dl>
-          <div className="fx-fiche-prop">
-            <dt>{t("fx.fiche.contrat.categorie")}</dt>
-            <dd>{trLabel(contrat.categorie, locale)}</dd>
-          </div>
-          <div className="fx-fiche-prop">
-            <dt>{t("fx.fiche.contrat.perimetre")}</dt>
-            <dd>{contrat.perimetre}</dd>
-          </div>
-          <div className="fx-fiche-prop">
-            <dt>{t("fx.fiche.shared.exercice")}</dt>
-            <dd>{contrat.year}</dd>
-          </div>
-        </dl>
-      </section>
-
+      {/* Section « Classification » dissoute (régime anti-mur-de-texte) :
+       * catégorie déjà portée par les tags CCAG/CPV, exercice déjà dans le
+       * kicker — seul le périmètre (M57…) migre dans Sources, où il sert
+       * l'audit. Une section de moins. */}
       <section className="fx-fiche-section">
         <div className="fx-fiche-h">{t("fx.fiche.shared.sources")}</div>
         <dl>
@@ -371,6 +488,12 @@ export default function ContratFiche({
             <dt>{t("fx.fiche.contrat.num_marche")}</dt>
             <dd style={{ fontFamily: "var(--f-mono)" }}>{contrat.numero}</dd>
           </div>
+          {contrat.perimetre && contrat.perimetre !== "—" && (
+            <div className="fx-fiche-prop">
+              <dt>{t("fx.fiche.contrat.perimetre")}</dt>
+              <dd>{contrat.perimetre}</dd>
+            </div>
+          )}
           <div className="fx-fiche-prop">
             <dt>{t("fx.fiche.contrat.decp")}</dt>
             <dd>

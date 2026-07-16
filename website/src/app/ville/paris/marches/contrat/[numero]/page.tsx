@@ -4,7 +4,7 @@ import "@/app/fusion.css";
 
 import { Navbar, Footer, ContratFiche } from "@/components/fusion";
 import { MarchesBackKicker, ContratLede, ContratTitleFallback } from "@/components/fusion/EntityPageHeaders";
-import { loadContrat, loadContratRanking, loadMarcheVulgarization, loadSirene } from "@/lib/fusion-data";
+import { loadContrat, loadContratProjet, loadContratRanking, loadMarcheVulgarization, loadSirene } from "@/lib/fusion-data";
 import { readLocale } from "@/lib/seo";
 import { normalizeObjet } from "@/lib/objet-normalizer";
 
@@ -91,6 +91,7 @@ export default async function ContratPage({ params }: { params: Promise<Params> 
           vulgarization={vulgarization}
           fournisseurSirene={fournisseurSirene}
           ranking={ranking}
+          projet={loadContratProjet(contrat.numero)}
         />
       </div>
       </main>

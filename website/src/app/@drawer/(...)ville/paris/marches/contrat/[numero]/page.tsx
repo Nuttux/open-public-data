@@ -4,6 +4,7 @@ import { DetailDrawer, ContratFiche } from "@/components/fusion";
 import { DrawerKicker } from "@/components/fusion/DataLabel";
 import {
   loadContrat,
+  loadContratProjet,
   loadContratRanking,
   loadMarcheVulgarization,
   loadSirene,
@@ -55,6 +56,7 @@ export default async function DrawerContratPage({ params }: { params: Promise<Pa
           vulgarization={vulgarization}
           fournisseurSirene={fournisseurSirene}
           ranking={ranking}
+          projet={loadContratProjet(contrat.numero)}
         />
       </DetailDrawer>
     </div>

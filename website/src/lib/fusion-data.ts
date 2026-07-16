@@ -1138,6 +1138,74 @@ export function loadProjetMarches(id: string): ProjetMarche[] {
   });
 }
 
+/** Lien inverse marché → chantier (projet d'investissement). Donne à la
+ *  fiche contrat sa photo et son contexte : « ce marché contribue au
+ *  chantier X ». Index construit une fois depuis projet_marches.json +
+ *  noms/arrondissements des exports investissements + photos d'enrichissement. */
+export type ContratProjetLink = {
+  id: string;
+  nom: string;
+  nomEn: string | null;
+  arrondissement: number | null;
+  nbMarches: number;
+  photoUrl: string | null;
+  photoCredit: string | null;
+};
+
+let _projetByNumero: Map<string, ContratProjetLink> | null = null;
+
+export function loadContratProjet(numero: string): ContratProjetLink | null {
+  if (_projetByNumero === null) {
+    _projetByNumero = new Map();
+    const raw = readJsonOrNull<{ projets?: Record<string, ProjetMarche[]> }>("map/projet_marches.json");
+    const projets = raw?.projets ?? {};
+
+    // Noms + arrondissements : premier fichier qui connaît l'id gagne.
+    const meta = new Map<string, { nom: string; arr: number | null }>();
+    for (let y = 2024; y >= 2018; y--) {
+      for (const file of [
+        readJsonOrNull<InvComplet>(`map/investissements_complet_${y}.json`),
+        readJsonOrNull<InvComplet>(`map/investissements_localises_${y}.json`),
+      ]) {
+        for (const p of file?.data ?? []) {
+          if (p.id && p.nom_projet && !meta.has(p.id)) {
+            meta.set(p.id, { nom: p.nom_projet, arr: Number(p.arrondissement) || null });
+          }
+        }
+      }
+    }
+    const namesEn = readJsonOrNull<Record<string, string>>("enrichment/projet_names_en.json") ?? {};
+    const photos = readJsonOrNull<{ items: Record<string, { photo_url?: string | null; credit?: string | null }> }>(
+      "enrichment/projet_photos.json",
+    );
+
+    for (const [pid, marches] of Object.entries(projets)) {
+      const m = meta.get(pid);
+      if (!m) continue;
+      const ph = photos?.items?.[pid];
+      const link: ContratProjetLink = {
+        id: pid,
+        nom: m.nom,
+        nomEn: typeof namesEn[pid] === "string" ? namesEn[pid] : null,
+        arrondissement: m.arr,
+        nbMarches: marches.length,
+        photoUrl: ph?.photo_url ?? null,
+        photoCredit: ph?.credit ?? null,
+      };
+      for (const mm of marches) {
+        // Un marché peut apparaître dans plusieurs projets (lots partagés) :
+        // on garde le projet au rapprochement le plus riche (plus de marchés
+        // = chantier mieux documenté).
+        const prev = _projetByNumero.get(mm.numero_marche);
+        if (!prev || link.nbMarches > prev.nbMarches) {
+          _projetByNumero.set(mm.numero_marche, link);
+        }
+      }
+    }
+  }
+  return _projetByNumero.get(numero) ?? null;
+}
+
 let _projetMarchesCoverage: {
   matched: number;
   total: number;
@@ -1700,6 +1768,8 @@ export type MarchesPageData = {
     nature: string;
     date: string;
     multiAttributaire: boolean;
+    /** Offres reçues (DECP) — null hors millésimes 2024+. */
+    offres: number | null;
   }[];
   yearsSummary: { year: number; total: number; count: number }[];
 };
@@ -2394,6 +2464,7 @@ export function loadMarchesPageData(requestedYear?: number, city: string = "pari
         nature: r.nature || "Autres",
         date: r.date_notification || "",
         multiAttributaire: r.fournisseur_nom === MULTI_NAME || Boolean(r.is_multiattributaire),
+        offres: r.decp_offres_recues != null ? Number(r.decp_offres_recues) : null,
       };
     })
     .sort((a, b) => b.montant - a.montant);
