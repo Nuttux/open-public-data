@@ -1,12 +1,13 @@
 "use client";
 
 import Link from "next/link";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { normalizeObjet } from "@/lib/objet-normalizer";
 import { useT, useLocale } from "@/lib/localeContext";
 import { trLabel } from "@/lib/label-translate";
 import { useTrack } from "@/lib/analyticsContext";
 import { useDebouncedTrack, hashQuery, queryShape } from "@/lib/analytics-helpers";
+import { normSearch, expandQuery, matchExpanded } from "@/lib/search-synonyms";
 
 type Item = {
   titulaire: string;
@@ -78,16 +79,47 @@ export default function MarchesSearch({ items, categories, natures, year }: Prop
   const track = useTrack();
   const trackDebounced = useDebouncedTrack(700);
 
+  // Haystack normalisé une seule fois par jeu de données, pas à chaque frappe.
+  const hayNorms = useMemo(
+    () => items.map((it) => normSearch(`${it.objet} ${it.titulaire} ${it.objetClair || ""} ${it.objetClairEn || ""}`)),
+    [items]
+  );
+
   const filtered = useMemo(() => {
-    const q = query.trim().toLowerCase();
-    return items.filter((it) => {
-      if (hideMulti && it.multiAttributaire) return false;
-      if (category && it.categorie !== category) return false;
-      if (nature && it.nature !== nature) return false;
-      if (q && !it.objet.toLowerCase().includes(q) && !it.titulaire.toLowerCase().includes(q) && !(it.objetClair || "").toLowerCase().includes(q) && !(it.objetClairEn || "").toLowerCase().includes(q)) return false;
-      return true;
+    const exp = expandQuery(query);
+    const out: { it: Item; via: string[] }[] = [];
+    items.forEach((it, idx) => {
+      if (hideMulti && it.multiAttributaire) return;
+      if (category && it.categorie !== category) return;
+      if (nature && it.nature !== nature) return;
+      const m = matchExpanded(hayNorms[idx], exp);
+      if (!m.match) return;
+      out.push({ it, via: m.via });
     });
-  }, [items, query, category, nature, hideMulti]);
+    return out;
+  }, [items, hayNorms, query, category, nature, hideMulti]);
+
+  // Track search après recalcul de filtered, pour envoyer results_count
+  // (les requêtes zéro-résultat guident le dictionnaire de synonymes).
+  useEffect(() => {
+    const q = query.trim();
+    if (q.length < 2) return;
+    let cancelled = false;
+    (async () => {
+      const qHash = await hashQuery(q);
+      if (cancelled) return;
+      trackDebounced("search_submit", {
+        page: "marches-publics",
+        q_hash: qHash,
+        ...queryShape(q),
+        results_count: filtered.length,
+      });
+    })();
+    return () => {
+      cancelled = true;
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps -- filtered est frais dans la closure ; ne refire que sur query.
+  }, [query]);
 
   const isQueryActive = query.trim().length >= 2;
   const isFilterActive = Boolean(category) || Boolean(nature) || !hideMulti;
@@ -127,18 +159,7 @@ export default function MarchesSearch({ items, categories, natures, year }: Prop
             type="search"
             placeholder={t("fx.mp.search.placeholder")}
             value={query}
-            onChange={async (e) => {
-              const next = e.target.value;
-              setQuery(next);
-              if (next.trim().length >= 2) {
-                const qHash = await hashQuery(next);
-                trackDebounced("search_submit", {
-                  page: "marches-publics",
-                  q_hash: qHash,
-                  ...queryShape(next),
-                });
-              }
-            }}
+            onChange={(e) => setQuery(e.target.value)}
           />
         </div>
         <div className="fx-search-filters">
@@ -231,7 +252,7 @@ export default function MarchesSearch({ items, categories, natures, year }: Prop
 
       {displayed.length > 0 ? (
         <div className="fx-results-grid">
-          {displayed.map((it, i) => {
+          {displayed.map(({ it, via }, i) => {
             const { v, u } = fmtAmount(it.montant);
             const href = it.numeroMarche
               ? `/ville/paris/marches/contrat/${encodeURIComponent(it.numeroMarche)}`
@@ -261,6 +282,11 @@ export default function MarchesSearch({ items, categories, natures, year }: Prop
                   const clean = preferred || normalizeObjet(it.objet);
                   return clean.length > 90 ? clean.slice(0, 90) + "…" : clean;
                 })()}</h3>
+                {via.length > 0 && (
+                  <div className="fx-result-card-via">
+                    {t("fx.search.match_via")} {via.join(", ")}
+                  </div>
+                )}
                 <div className="fx-result-card-amount tnum">
                   {v}
                   <span className="u">{u}</span>

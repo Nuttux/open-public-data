@@ -1,10 +1,11 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { useT, useLocale } from "@/lib/localeContext";
 import { trLabel } from "@/lib/label-translate";
 import { useTrack } from "@/lib/analyticsContext";
 import { useDebouncedTrack, hashQuery, queryShape } from "@/lib/analytics-helpers";
+import { normSearch, expandQuery, matchExpanded } from "@/lib/search-synonyms";
 
 const fill = (s: string, vars: Record<string, string | number>) => {
   let r = s;
@@ -55,17 +56,46 @@ export default function MarchesFullList({ items }: { items: Item[] }) {
     return [...s].sort();
   }, [items]);
 
+  // Haystack normalisé une seule fois par jeu de données, pas à chaque frappe.
+  const hayNorms = useMemo(
+    () => items.map((it) => normSearch(`${it.titulaire} ${it.objet}`)),
+    [items]
+  );
+
   const filtered = useMemo(() => {
-    const qLower = q.trim().toLowerCase();
-    return items.filter((it) => {
-      if (cat && it.categorie !== cat) return false;
-      if (!qLower) return true;
-      return (
-        it.titulaire.toLowerCase().includes(qLower) ||
-        it.objet.toLowerCase().includes(qLower)
-      );
+    const exp = expandQuery(q);
+    const out: { it: Item; via: string[] }[] = [];
+    items.forEach((it, idx) => {
+      if (cat && it.categorie !== cat) return;
+      const m = matchExpanded(hayNorms[idx], exp);
+      if (!m.match) return;
+      out.push({ it, via: m.via });
     });
-  }, [items, q, cat]);
+    return out;
+  }, [items, hayNorms, q, cat]);
+
+  // Track search après recalcul de filtered, pour envoyer results_count
+  // (les requêtes zéro-résultat guident le dictionnaire de synonymes).
+  useEffect(() => {
+    const trimmed = q.trim();
+    if (trimmed.length < 2) return;
+    let cancelled = false;
+    (async () => {
+      const qHash = await hashQuery(trimmed);
+      if (cancelled) return;
+      trackDebounced("search_submit", {
+        page: "marches-publics",
+        source: "full_list",
+        q_hash: qHash,
+        ...queryShape(trimmed),
+        results_count: filtered.length,
+      });
+    })();
+    return () => {
+      cancelled = true;
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps -- filtered est frais dans la closure ; ne refire que sur q.
+  }, [q]);
 
   const visible = filtered.slice(0, shown);
 
@@ -78,19 +108,9 @@ export default function MarchesFullList({ items }: { items: Item[] }) {
             type="search"
             placeholder={t("fx.mfl.search_placeholder")}
             value={q}
-            onChange={async (e) => {
-              const next = e.target.value;
-              setQ(next);
+            onChange={(e) => {
+              setQ(e.target.value);
               setShown(PAGE_SIZE);
-              if (next.trim().length >= 2) {
-                const qHash = await hashQuery(next);
-                trackDebounced("search_submit", {
-                  page: "marches-publics",
-                  source: "full_list",
-                  q_hash: qHash,
-                  ...queryShape(next),
-                });
-              }
             }}
           />
         </div>
@@ -141,10 +161,17 @@ export default function MarchesFullList({ items }: { items: Item[] }) {
           </tr>
         </thead>
         <tbody>
-          {visible.map((it, i) => (
+          {visible.map(({ it, via }, i) => (
             <tr key={i}>
               <td className="rank">{String(i + 1).padStart(3, "0")}</td>
-              <td style={{ fontWeight: 500 }}>{it.titulaire}</td>
+              <td style={{ fontWeight: 500 }}>
+                {it.titulaire}
+                {via.length > 0 && (
+                  <div className="fx-result-card-via" style={{ margin: 0 }}>
+                    {t("fx.search.match_via")} {via.join(", ")}
+                  </div>
+                )}
+              </td>
               <td className="muted" style={{ maxWidth: 360 }}>
                 {it.objet.length > 120 ? it.objet.slice(0, 120) + "…" : it.objet}
               </td>

@@ -823,6 +823,8 @@ export type QuiRecoitData = {
   }[];
   yearsSummary: { year: number; total: number; count: number; preview: boolean }[];
   availableThemes: string[];
+  /** Aides aux personnes physiques (agrégat ; count null si source déjà agrégée). */
+  personnesPhysiques: { amount: number; count: number | null };
   movers: {
     hausses: { name: string; amount: number; delta: number }[];
     baisses: { name: string; amount: number; delta: number }[];
@@ -1515,6 +1517,17 @@ export function loadQuiRecoitData(requestedYear?: number, city: string = "paris"
 
   const availableThemes = byTheme.map((t) => t.theme);
 
+  // Aides aux personnes physiques : montrées en agrégat uniquement (vie
+  // privée — cf. /methode#personnes-physiques) ; les noms ne sont ni indexés
+  // ni cherchables. Certains exercices (2020-2021) arrivent déjà agrégés en
+  // une ligne dans la source → le nombre de bénéficiaires n'a de sens que
+  // quand la source est nominative (count > 1).
+  const ppRows = ben.data.filter((b) => b.nature_juridique === "Personnes physiques");
+  const personnesPhysiques = {
+    amount: ppRows.reduce((s, b) => s + b.montant_total, 0),
+    count: ppRows.length > 1 ? ppRows.length : null,
+  };
+
   return {
     year: yr,
     previousYear: prev,
@@ -1539,6 +1552,7 @@ export function loadQuiRecoitData(requestedYear?: number, city: string = "paris"
       thresholdCurrentEur: MOVERS_MIN_CURRENT,
       thresholdPrevEur: MOVERS_MIN_PREV,
     },
+    personnesPhysiques,
   };
 }
 

@@ -10,6 +10,7 @@ import { useT, useLocale } from "@/lib/localeContext";
 import { trLabel } from "@/lib/label-translate";
 import { useTrack } from "@/lib/analyticsContext";
 import { useDebouncedTrack, hashQuery, queryShape } from "@/lib/analytics-helpers";
+import { normSearch, expandQuery, matchExpanded } from "@/lib/search-synonyms";
 
 function themeColor(theme: string | null): string {
   if (!theme) return "#9099a6";
@@ -19,6 +20,8 @@ function themeColor(theme: string | null): string {
 
 type Bene = {
   name: string;
+  /** Précalculé pour la recherche ; absent sur le top 10 (jamais filtré). */
+  nameNorm?: string;
   theme: string | null;
   amount: number;
   totalAmount: number;
@@ -28,6 +31,20 @@ type Bene = {
 };
 
 type Top10Bene = Bene & { rank: number };
+
+/**
+ * Dernière subvention connue d'un bénéficiaire : celle de l'exercice affiché
+ * s'il est actif, sinon celle de sa dernière année d'activité. Chaque carte
+ * de résultat montre « une subvention + son année » — pas de distinction
+ * live/historique.
+ */
+function lastGrant(b: Bene, viewedYear: number): { year: number; amount: number } {
+  if (b.amount > 0) return { year: viewedYear, amount: b.amount };
+  return {
+    year: b.lastActiveYear,
+    amount: b.history.find((h) => h.year === b.lastActiveYear)?.amount ?? b.totalAmount,
+  };
+}
 
 type SearchBene = {
   name: string;
@@ -51,6 +68,8 @@ type Props = {
   top10: Top10Bene[];
   themes: string[];
   concentrationTop10Pct: number;
+  /** Aides aux personnes physiques : agrégat affiché sous la recherche. */
+  personnesPhysiques?: { amount: number; count: number | null };
 };
 
 const UNCLASSIFIED_THEME = "__unclassified__";
@@ -61,17 +80,6 @@ const fill = (s: string, vars: Record<string, string | number>) => {
   for (const [k, v] of Object.entries(vars)) r = r.split(`{${k}}`).join(String(v));
   return r;
 };
-
-/** Normalise for search: lowercase, strip diacritics + non-alnum. */
-function norm(s: string): string {
-  return s
-    .normalize("NFD")
-    .replace(/[\u0300-\u036f]/g, "")
-    .toLowerCase()
-    .replace(/[^a-z0-9 ]/g, " ")
-    .replace(/\s+/g, " ")
-    .trim();
-}
 
 // Curated to span themes & scales: bailleur social, arts operator,
 // university, emergency ops, humanitarian NGO, theatre, foundation.
@@ -92,6 +100,7 @@ export default function QuiRecoitExplorer({
   top10,
   themes,
   concentrationTop10Pct,
+  personnesPhysiques,
 }: Props) {
   const t = useT();
   const { locale } = useLocale();
@@ -176,6 +185,7 @@ export default function QuiRecoitExplorer({
     const yrKey = String(year);
     return searchData.map((s) => ({
       name: s.name,
+      nameNorm: normSearch(s.name),
       theme: s.theme,
       amount: s.byYear[yrKey] ?? 0,
       totalAmount: s.totalAmount,
@@ -188,22 +198,46 @@ export default function QuiRecoitExplorer({
 
   const filtered = useMemo(() => {
     if (!hasQuery || !searchData) return [];
-    const q = norm(query);
+    const exp = expandQuery(query);
     const min = minEur ? Number(minEur) : 0;
     const max = maxEur ? Number(maxEur) : Number.POSITIVE_INFINITY;
-    return allBeneficiaires.filter((it) => {
+    return allBeneficiaires.flatMap((it) => {
       if (theme === UNCLASSIFIED_THEME) {
-        if (it.theme) return false;
+        if (it.theme) return [];
       } else if (theme && it.theme !== theme) {
-        return false;
+        return [];
       }
       // Compare sur le cumul historique si l'asso n'a rien cette année.
       const ref = it.amount > 0 ? it.amount : it.totalAmount;
-      if (ref < min || ref > max) return false;
-      if (q && !norm(it.name).includes(q)) return false;
-      return true;
-    });
-  }, [allBeneficiaires, query, theme, minEur, maxEur, hasQuery, searchData]);
+      if (ref < min || ref > max) return [];
+      const m = matchExpanded(it.nameNorm ?? normSearch(it.name), exp);
+      if (!m.match) return [];
+      return [{ bene: it, via: m.via }];
+    }).sort((a, b) => lastGrant(b.bene, year).amount - lastGrant(a.bene, year).amount);
+  }, [allBeneficiaires, query, theme, minEur, maxEur, hasQuery, searchData, year]);
+
+  // Track search après recalcul de filtered, pour envoyer results_count
+  // (les requêtes zéro-résultat guident l'enrichissement du dictionnaire
+  // de synonymes). Attend l'index chargé pour ne pas compter un faux 0.
+  useEffect(() => {
+    const q = query.trim();
+    if (q.length < 2 || !searchData) return;
+    let cancelled = false;
+    (async () => {
+      const qHash = await hashQuery(q);
+      if (cancelled) return;
+      trackDebounced("search_submit", {
+        page: "qui-recoit",
+        q_hash: qHash,
+        ...queryShape(q),
+        results_count: filtered.length,
+      });
+    })();
+    return () => {
+      cancelled = true;
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps -- filtered est frais dans la closure ; ne refire que sur query/index.
+  }, [query, searchData]);
 
   const reset = () => {
     setQuery("");
@@ -319,18 +353,7 @@ export default function QuiRecoitExplorer({
                   type="search"
                   placeholder={t("fx.qr.search.placeholder")}
                   value={query}
-                  onChange={async (e) => {
-                    const next = e.target.value;
-                    setQuery(next);
-                    if (next.trim().length >= 2) {
-                      const qHash = await hashQuery(next);
-                      trackDebounced("search_submit", {
-                        page: "qui-recoit",
-                        q_hash: qHash,
-                        ...queryShape(next),
-                      });
-                    }
-                  }}
+                  onChange={(e) => setQuery(e.target.value)}
                 />
               </div>
               <div className="fx-search-filters">
@@ -421,10 +444,9 @@ export default function QuiRecoitExplorer({
 
             {hasQuery && !searchLoading && !searchError && filtered.length > 0 && (
               <div className="fx-results-grid">
-                {filtered.slice(0, visibleCount).map((it, i) => {
-                  const activeThisYear = it.amount > 0;
-                  const displayAmount = activeThisYear ? it.amount : it.totalAmount;
-                  const { v, u } = fmtEur(displayAmount);
+                {filtered.slice(0, visibleCount).map(({ bene: it, via }, i) => {
+                  const grant = lastGrant(it, year);
+                  const { v, u } = fmtEur(grant.amount);
                   const isRaw = !it.theme;
                   return (
                     <Link
@@ -444,14 +466,15 @@ export default function QuiRecoitExplorer({
                       }
                     >
                       <div className="fx-result-card-top">
-                        <span className="fx-result-card-type">
-                          {activeThisYear ? t("fx.qr.search.card.grant") : t("fx.qr.search.card.history")}
-                        </span>
-                        <span>
-                          {activeThisYear ? year : fill(t("fx.qr.search.card.last"), { year: it.lastActiveYear })}
-                        </span>
+                        <span className="fx-result-card-type">{t("fx.qr.search.card.grant")}</span>
+                        <span>{grant.year}</span>
                       </div>
                       <h3>{it.name}</h3>
+                      {via.length > 0 && (
+                        <div className="fx-result-card-via">
+                          {t("fx.search.match_via")} {via.join(", ")}
+                        </div>
+                      )}
                       <div className="fx-result-card-amount tnum">
                         {v}
                         <span className="u">{u}</span>
@@ -462,12 +485,8 @@ export default function QuiRecoitExplorer({
                             <em style={{ color: "var(--muted)", fontStyle: "normal", fontFamily: "var(--f-mono)", fontSize: 11, letterSpacing: ".04em" }}>
                               {locale === "en" ? "raw data" : "données brutes"}
                             </em>
-                          ) : activeThisYear ? (
-                            trLabel(it.theme ?? undefined, locale) || "—"
                           ) : (
-                            <em style={{ color: "var(--muted)", fontStyle: "normal" }}>
-                              {fill(t("fx.qr.search.card.cumul"), { n: new Intl.NumberFormat(locStr).format(it.history.filter(h => h.amount > 0).length) })}
-                            </em>
+                            trLabel(it.theme ?? undefined, locale) || "—"
                           )}
                         </span>
                         <span className="fx-result-card-cta">
@@ -571,6 +590,20 @@ export default function QuiRecoitExplorer({
               </>
             )}
           </div>
+          {personnesPhysiques && personnesPhysiques.amount > 0 && (
+            <p style={{ fontFamily: "var(--f-mono)", fontSize: 11.5, color: "var(--muted)", letterSpacing: ".03em", marginTop: 14, lineHeight: 1.6 }}>
+              {(() => {
+                const { v, u } = fmtEur(personnesPhysiques.amount);
+                const amount = `${v} ${u}`;
+                return personnesPhysiques.count
+                  ? fill(t("fx.qr.search.pp_note"), { amount, count: new Intl.NumberFormat(locStr).format(personnesPhysiques.count), year })
+                  : fill(t("fx.qr.search.pp_note_agg"), { amount, year });
+              })()}{" "}
+              <Link href="/methode#personnes-physiques" style={{ color: "var(--bleu)" }}>
+                {t("fx.qr.search.pp_why")}
+              </Link>
+            </p>
+          )}
         </div>
       </section>
     </>

@@ -331,6 +331,12 @@ def export_beneficiaires_search(years: list):
         years_seen.add(year)
 
         for row in payload.get("data", []):
+            # Personnes physiques (label source Ville de Paris) : hors index de
+            # recherche — la page cible les associations/organismes ; sinon
+            # ~8k noms de famille par exercice (aides individuelles) polluent
+            # la long tail (ex. « gay » remontait GAYE, GAYET, GAYOUT).
+            if (row.get("nature_juridique") or "").strip() == "Personnes physiques":
+                continue
             name = (row.get("beneficiaire") or "").strip()
             if not name:
                 continue
@@ -367,6 +373,7 @@ def export_beneficiaires_search(years: list):
     output = {
         "generated_at": datetime.now().isoformat(),
         "source": "post-processing beneficiaires_{year}.json",
+        "excludes": "nature_juridique = 'Personnes physiques' (label source)",
         "years": sorted(years_seen),
         "count": len(data),
         "data": data,

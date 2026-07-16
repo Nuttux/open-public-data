@@ -243,6 +243,12 @@ export default function MethodeClient() {
               : <><b>From the City, and only from the City</b>: no data published here has been reconstructed or estimated from elsewhere. For the few qualitative financial ratios the City does not publish as open data (weighted average rate, debt maturity for example), values are explicitly marked as "indicative" on the relevant panel.</>}
           </p>
 
+          <p id="personnes-physiques" style={{ maxWidth: 780, marginBottom: 28, lineHeight: 1.55 }}>
+            {isFr
+              ? <><b>Personnes physiques : agrégées, jamais nominatives.</b> L&apos;annexe au compte administratif liste aussi des aides versées à des personnes physiques — quelques centaines d&apos;euros chacune, étiquetées « Personnes physiques » par la Ville elle-même. Le jeu de données source les publie nominativement ; ce site fait un autre choix : les montants restent visibles en agrégat par exercice, mais aucun nom de particulier n&apos;est indexé ni cherchable. Un nom associé à une aide renseigne sur la situation sociale d&apos;une personne, sans apport pour le contrôle citoyen au niveau individuel — ces lignes n&apos;indiquent d&apos;ailleurs ni objet ni direction. Certains exercices (2020-2021) arrivent déjà agrégés en une ligne dans la source. Le détail nominatif reste accessible dans le jeu de données de la Ville.</>
+              : <><b>Individuals: aggregated, never by name.</b> The administrative-account annex also lists aid paid to individuals — a few hundred euros each, labelled &ldquo;Personnes physiques&rdquo; by the City itself. The source dataset publishes them by name; this site makes a different choice: amounts remain visible as a per-year aggregate, but no individual&apos;s name is indexed or searchable. A name attached to an aid payment reveals a person&apos;s social situation, with no public-scrutiny value at the individual level — these rows carry neither purpose nor department. Some years (2020-2021) already arrive aggregated as a single line in the source. The name-level detail remains available in the City&apos;s dataset.</>}
+          </p>
+
           <div className="fx-sources-table">
             <div className="fx-sources-table-head">
               <span>{isFr ? "Portail" : "Portal"}</span>

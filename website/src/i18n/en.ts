@@ -2617,7 +2617,7 @@ const en: Record<string, string> = {
   'fx.qr.search.title.before': 'Find ',
   'fx.qr.search.title.em': 'a specific organisation',
   'fx.qr.search.title.after': '.',
-  'fx.qr.search.sub': 'Name, theme, amount range. Type the first letters — the search ignores accents and hyphens. Click a profile to see the full history.',
+  'fx.qr.search.sub': 'Name, theme, amount range. The search ignores accents and understands common synonyms — “park” also finds “jardin”. Click a profile to see the full history.',
   'fx.qr.search.label': 'Search',
   'fx.qr.search.placeholder': 'Organisation name, SIRET, RNA\u2026',
   'fx.qr.search.filters': 'Filters',
@@ -2637,7 +2637,7 @@ const en: Record<string, string> = {
   'fx.wip.marseille.text': "Scope still being completed: budget, balance sheet, contracts and grants are live; housing, investments and debt to come. The pipeline is open if you want to help.",
   'fx.qr.search.reset': 'Reset',
   'fx.qr.search.results_for': 'Results for',
-  'fx.qr.search.sorted': 'Sorted by amount · {year} fiscal year',
+  'fx.qr.search.sorted': 'Sorted by latest grant amount',
   'fx.qr.search.card.grant': 'Grant',
   'fx.qr.search.card.history': 'History',
   'fx.qr.search.card.last': 'last: {year}',
@@ -2647,11 +2647,17 @@ const en: Record<string, string> = {
   'fx.qr.search.empty': 'No organisation matches. Try a different keyword or widen the amount range.',
   'fx.qr.search.hint_before': 'Type at least ',
   'fx.qr.search.hint_two': 'two letters',
-  'fx.qr.search.hint_after': "of an organisation's name, or use a filter. The search ignores accents and hyphens.",
+  'fx.qr.search.hint_after': "of an organisation's name, or use a filter. The search ignores accents and understands common synonyms (“park” also finds “jardin”).",
   'fx.qr.search.assoc_s': 'organisation',
   'fx.qr.search.assoc_p': 'organisations',
   'fx.qr.search.match_s': 'matches',
   'fx.qr.search.match_p': 'match',
+  // Shared subventions + marchés: result found via a dictionary synonym.
+  'fx.search.match_via': 'matches:',
+  // Privacy note under the search: aid to individuals shown aggregated.
+  'fx.qr.search.pp_note': 'Aid to individuals — {amount} paid to {count} recipients in {year} — is shown aggregated, never by name.',
+  'fx.qr.search.pp_note_agg': 'Aid to individuals ({amount} in {year}) is shown aggregated, never by name.',
+  'fx.qr.search.pp_why': 'Why →',
 
   // ── MarchesSearch ────────────────────────────────────────────────────────────
   'fx.mp.search.label': 'Search a contract or company',

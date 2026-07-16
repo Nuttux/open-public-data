@@ -4658,6 +4658,13 @@ body:has(.theme-fusion) > div.pb-24 { padding-bottom: 0 !important; }
   color: var(--muted);
 }
 .theme-fusion .fx-result-card-arr { letter-spacing: .04em; }
+.theme-fusion .fx-result-card-via {
+  font-family: var(--f-mono);
+  font-size: 10.5px;
+  color: var(--muted);
+  letter-spacing: .04em;
+  margin-top: -4px;
+}
 .theme-fusion .fx-result-card-cta { color: var(--bleu); }
 .theme-fusion .fx-result-card-cta .chev { margin-left: 4px; }
 .theme-fusion .fx-results-overflow {

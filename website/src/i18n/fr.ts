@@ -2617,7 +2617,7 @@ const fr: Record<string, string> = {
   'fx.qr.search.title.before': 'Cherchez ',
   'fx.qr.search.title.em': 'une association',
   'fx.qr.search.title.after': ' précise.',
-  'fx.qr.search.sub': "Nom, thématique, fourchette de montant. Tapez les premières lettres — la recherche ignore les accents et les tirets. Cliquez sur une fiche pour voir l'historique complet.",
+  'fx.qr.search.sub': "Nom, thématique, fourchette de montant. La recherche ignore les accents et comprend quelques synonymes — « lgbt » trouve aussi « queer ». Cliquez sur une fiche pour voir l'historique complet.",
   'fx.qr.search.label': 'Rechercher',
   'fx.qr.search.placeholder': "Nom d'une association, SIRET, RNA\u2026",
   'fx.qr.search.filters': 'Filtres',
@@ -2637,7 +2637,7 @@ const fr: Record<string, string> = {
   'fx.wip.marseille.text': "Périmètre en cours de complétion : budget, bilan, marchés et subventions disponibles ; logement, investissements et dette à venir. Le pipeline est ouvert si vous voulez aider.",
   'fx.qr.search.reset': 'Réinitialiser',
   'fx.qr.search.results_for': 'Résultats pour',
-  'fx.qr.search.sorted': 'Trié par montant · exercice {year}',
+  'fx.qr.search.sorted': 'Trié par montant de la dernière subvention',
   'fx.qr.search.card.grant': 'Subvention',
   'fx.qr.search.card.history': 'Historique',
   'fx.qr.search.card.last': 'dernière : {year}',
@@ -2647,11 +2647,17 @@ const fr: Record<string, string> = {
   'fx.qr.search.empty': "Aucune association ne correspond. Essayez un autre mot-clé ou élargissez la fourchette de montant.",
   'fx.qr.search.hint_before': 'Tapez au moins ',
   'fx.qr.search.hint_two': 'deux lettres',
-  'fx.qr.search.hint_after': "du nom d'une association, ou utilisez un filtre. La recherche ignore les accents et les tirets.",
+  'fx.qr.search.hint_after': "du nom d'une association, ou utilisez un filtre. La recherche ignore les accents et comprend quelques synonymes (« lgbt » trouve aussi « queer »).",
   'fx.qr.search.assoc_s': 'association',
   'fx.qr.search.assoc_p': 'associations',
   'fx.qr.search.match_s': 'correspond',
   'fx.qr.search.match_p': 'correspondent',
+  // Partagé subventions + marchés : résultat trouvé via un synonyme du dictionnaire.
+  'fx.search.match_via': 'correspond :',
+  // Note vie privée sous la recherche : aides aux personnes physiques agrégées.
+  'fx.qr.search.pp_note': 'Les aides aux personnes physiques — {amount} versés à {count} bénéficiaires en {year} — sont agrégées, non nominatives.',
+  'fx.qr.search.pp_note_agg': 'Les aides aux personnes physiques ({amount} en {year}) sont agrégées, non nominatives.',
+  'fx.qr.search.pp_why': 'Pourquoi →',
 
   // ── MarchesSearch ────────────────────────────────────────────────────────────
   'fx.mp.search.label': 'Rechercher un contrat ou une entreprise',

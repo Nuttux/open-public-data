@@ -303,6 +303,7 @@ export default function QuiRecoitClient({
           top10={d.top10}
           themes={d.availableThemes}
           concentrationTop10Pct={d.concentrationTop10Pct}
+          personnesPhysiques={d.personnesPhysiques}
         />
       </Suspense>
 
