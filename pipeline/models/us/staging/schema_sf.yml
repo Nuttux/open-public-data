@@ -1,0 +1,133 @@
+version: 2
+
+models:
+  - name: stg_us_sf_budget
+    description: >
+      SF adopted budget lines (xdgd-c79v), typed 1:1 with raw. Net totals
+      depend on embedded negative Transfer Adjustment rows — kept. The
+      broken related_govt_unit column (mirrors revenue_or_spending) is
+      deliberately not exposed.
+    columns:
+      - name: fiscal_year
+        tests: [not_null]
+      - name: revenue_or_spending
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['Revenue', 'Spending']
+      - name: budget_amt
+        tests: [not_null]
+
+  - name: stg_us_sf_actuals
+    description: >
+      SF spending and revenue actuals (bpnb-jwfb), typed 1:1 with raw.
+      related_govt_units casing normalized ({No,NO,Yes,YES} → {No,Yes} —
+      the verified casing bug, API-RECON §A.2).
+    columns:
+      - name: fiscal_year
+        tests: [not_null]
+      - name: revenue_or_spending
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['Revenue', 'Spending']
+      - name: related_govt_units
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['Yes', 'No']
+      - name: amount
+        tests: [not_null]
+
+  - name: stg_us_sf_vouchers
+    description: >
+      SF vendor payments / vouchers (n9pm-xkyq), typed 1:1 with raw
+      (~8.07M rows). Text data_as_of parsed from its UTC-offset format.
+    columns:
+      - name: fiscal_year
+        tests: [not_null]
+      - name: related_govt_units
+        tests:
+          - accepted_values:
+              values: ['Yes', 'No']
+
+  - name: stg_us_sf_contracts
+    description: >
+      SF supplier contracts (cqi5-hm2d), typed 1:1 with raw. Placeholder
+      far-future end dates (2200-12-31) capped to NULL with the published
+      value and a flag preserved.
+    columns:
+      - name: agreed_amt
+        tests: [not_null]
+      - name: project_team_constituent
+        tests: [not_null]
+
+  - name: stg_us_sf_comp
+    description: >
+      SF employee compensation (88g8-5mnd), typed 1:1 with raw. BOTH
+      year_type accountings kept (Calendar + Fiscal) — filtering is
+      downstream business.
+    columns:
+      - name: year
+        tests: [not_null]
+      - name: year_type
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['Calendar', 'Fiscal']
+      - name: total_compensation
+        tests: [not_null]
+
+  - name: stg_us_sf_catalog
+    description: >
+      DataSF Socrata views metadata snapshot (dataset × column) — the
+      provenance source of truth (dataset page URLs, rows_updated_at)
+      for SF marts and exports.
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns: [source_id, column_field_name]
+    columns:
+      - name: source_id
+        tests: [not_null]
+      - name: dataset_page_url
+        tests: [not_null]
+      - name: rows_updated_at
+        tests: [not_null]
+
+  - name: stg_us_sf_population
+    description: >
+      Census Vintage 2025 San Francisco city population row (SUMLEV 162,
+      STATE 06, PLACE 67000), July 1 estimates 2020-2025 pivoted as
+      published.
+    columns:
+      - name: area_name
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['San Francisco city']
+      - name: popestimate_2025
+        tests: [not_null]
+
+  - name: stg_us_sf_payee_buckets
+    description: >
+      Manual bucket classification of the top FY2025 voucher payees
+      (1:1 with seed_us_sf_payee_buckets). Buckets are display
+      categorization only — amounts always come from the voucher data.
+    columns:
+      - name: vendor
+        tests: [not_null, unique]
+      - name: bucket
+        tests:
+          - not_null
+          - accepted_values:
+              values:
+                - fiscal_agent_debt_service
+                - payroll_passthrough
+                - healthcare
+                - nonprofit
+                - supplier
+                - other
+      - name: classification_note
+        tests: [not_null]
+      - name: classified_at
+        tests: [not_null]

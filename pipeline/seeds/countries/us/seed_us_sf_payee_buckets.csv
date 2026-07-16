@@ -1,0 +1,43 @@
+vendor,bucket,classification_note,classification_method,classified_at
+J P MORGAN CHASE BANK NA,fiscal_agent_debt_service,"City's commercial bank / paying agent — debt service and pass-through flows, not a service provider",manual,2026-07-16
+THE DEPOSITORY TRUST COMPANY,fiscal_agent_debt_service,"DTC — clearing house through which bond principal and interest payments flow to bondholders",manual,2026-07-16
+THE BANK OF NEW YORK MELLON TRUST CO NA,fiscal_agent_debt_service,"Bond trustee / paying agent (spelling 1 of 2 — same institution as THE BANK OF NEW YORK MELLON)",manual,2026-07-16
+THE BANK OF NEW YORK MELLON,fiscal_agent_debt_service,"Bond trustee / paying agent (spelling 2 of 2 — same institution as THE BANK OF NEW YORK MELLON TRUST CO NA)",manual,2026-07-16
+US BANK NATIONAL ASSOCIATION,fiscal_agent_debt_service,"Bond trustee / paying agent — debt service flows",manual,2026-07-16
+KAISER FOUNDATION HEALTH PLAN INC,healthcare,"Employee/retiree health plan premiums (nonprofit health plan — flagged X in the data)",manual,2026-07-16
+BLUE SHIELD OF CALIF,healthcare,"Employee/retiree health plan premiums",manual,2026-07-16
+MWH CONSTRS & WEBCOR BLDRS A CNST JV,supplier,"Construction joint venture (SFPUC capital projects)",manual,2026-07-16
+Single Payment Payees,other,"Controller's aggregation of one-off payees published as a single line — not one entity",manual,2026-07-16
+CITY COLLEGE OF SAN FRANCISCO,other,"Public community college district — intergovernmental funding, not a market supplier",manual,2026-07-16
+STATE OF CALIF DEPT OF HEALTH CARE SVCS,other,"State agency — intergovernmental health program flows (Medi-Cal etc.)",manual,2026-07-16
+REGENTS OF THE UNIVERSITY OF CALIFORNIA,healthcare,"UC (public university) — primarily UCSF clinical staffing of Zuckerberg SF General under the affiliation agreement",manual,2026-07-16
+Voya Institutional Plan Services LLC,payroll_passthrough,"Deferred-compensation (457b) plan administrator — employee contributions passing through, not city spending on services",manual,2026-07-16
+TURNER CONSTRUCTION CO,supplier,"Construction contractor (capital projects)",manual,2026-07-16
+HENSEL PHELPS CONSTRUCTION CO,supplier,"Construction contractor (capital projects)",manual,2026-07-16
+DEPARTMENT OF SOCIAL SERVICES,other,"State agency — intergovernmental social-services flows (IHSS etc.)",manual,2026-07-16
+PCL CONSTRUCTION INC.,supplier,"Construction contractor (capital projects)",manual,2026-07-16
+CHILDREN'S COUNCIL OF SAN FRANCISCO,nonprofit,"Nonprofit — child-care subsidy administration and family services",manual,2026-07-16
+THE NORTHERN TRUST COMPANY,fiscal_agent_debt_service,"Custodian bank (investment/retirement custody flows), not a service provider",manual,2026-07-16
+SAN FRANCISCO COUNTY TRANSPORTATION AUTH,other,"Public agency (sales-tax transportation authority) — intergovernmental",manual,2026-07-16
+Siemens Mobility Inc.,supplier,"Light-rail vehicle manufacturer (Muni LRV4 fleet)",manual,2026-07-16
+SF BAY AREA RAPID TRANSIT DISTRICT,other,"Public transit district — intergovernmental",manual,2026-07-16
+SF IN-HOME SPPRTIV SVCS (IHSS) PUBL AUTH,payroll_passthrough,"Public authority administering wages/benefits of IHSS home-care workers",manual,2026-07-16
+MCKESSON CORPORATION,supplier,"Pharmaceutical distribution",manual,2026-07-16
+HEALTHRIGHT 360,nonprofit,"Nonprofit — health and behavioral-health services",manual,2026-07-16
+ZB National Association,fiscal_agent_debt_service,"Zions Bancorporation NA — paying agent / trustee flows",manual,2026-07-16
+PACIFIC GAS & ELECTRIC CO,supplier,"Utility (gas and electricity)",manual,2026-07-16
+MCCARTHY BUILDING COMPANIES INC,supplier,"Construction contractor (capital projects)",manual,2026-07-16
+TENDERLOIN HOUSING CLINIC INC,nonprofit,"Nonprofit — supportive housing and tenant services",manual,2026-07-16
+DELTA DENTAL PLAN OF CALIFORNIA,healthcare,"Employee/retiree dental plan premiums",manual,2026-07-16
+A P X INC,supplier,"Energy market scheduling/clearing services (CleanPowerSF)",manual,2026-07-16
+UNITED HEALTHCARE INSURANCE COMPANY,healthcare,"Employee/retiree health plan premiums",manual,2026-07-16
+CALPINE ENERGY SERVICES LP,supplier,"Wholesale power purchases",manual,2026-07-16
+EPISCOPAL COMMUNITY SVCS OF S F INC,nonprofit,"Nonprofit — homelessness and supportive-housing services",manual,2026-07-16
+FIVE KEYS SCHOOLS AND PROGRAMS,nonprofit,"Nonprofit — charter schools, reentry and shelter programs",manual,2026-07-16
+GOLDEN GATE CONSTRUCTORS,supplier,"Construction joint venture",manual,2026-07-16
+MOSCONE CENTER JOINT VENTURE,supplier,"Construction/facility joint venture (Moscone Center)",manual,2026-07-16
+S J AMOROSO CONSTRUCTION CO LLC,supplier,"Construction contractor (capital projects)",manual,2026-07-16
+NEXTERA ENERGY MARKETING LLC,supplier,"Wholesale power purchases (CleanPowerSF / Hetch Hetchy)",manual,2026-07-16
+SWINERTON BUILDERS,supplier,"Construction contractor (capital projects)",manual,2026-07-16
+SUNDT/WALSH A JOINT VENTURE,supplier,"Construction joint venture",manual,2026-07-16
+THE SF HOUSING ACCELERATOR FUND,nonprofit,"Nonprofit housing acquisition/preservation fund",manual,2026-07-16

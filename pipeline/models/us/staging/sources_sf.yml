@@ -1,0 +1,85 @@
+# =============================================================================
+# Sources : Tables raw BigQuery — US city / San Francisco (DataSF + Census)
+#
+# Dataset: raw (open-data-france-484717.raw), city-namespaced `us_sf_*`
+# (+ `us_census_population_places` shared city-level Census file).
+# Synced via scripts/sync/sync_socrata.py + sync_census_popest.py,
+# driven by configs/countries/us.yaml (ADR-0010 D3 protocol adapters).
+#
+# RAW CONVENTION: every column is a STRING exactly as the portal returned
+# it — Socrata serialises numbers as strings, bulk CSV and paged JSON
+# serialise the SAME calendar_date columns in different lexical formats,
+# and some date columns are Socrata type "text" with mixed formats
+# (docs/us/API-RECON.md §A). Typing happens once, in stg
+# (macros/us_sf_helpers.sql).
+#
+# FRESHNESS: DataSF Controller datasets refresh weekly (employee comp
+# bi-annually); Census vintage estimates annual.
+# =============================================================================
+
+version: 2
+
+sources:
+  - name: us_sf_raw
+    description: "US San Francisco raw tables (DataSF/Socrata + Census PEP places)"
+    database: open-data-france-484717
+    schema: raw
+    loaded_at_field: _synced_at
+    freshness:
+      warn_after: {count: 60, period: day}
+      error_after: {count: 180, period: day}
+    tables:
+      - name: us_sf_budget
+        description: |
+          SF Budget (adopted AAO) — dataset xdgd-c79v, FY2010-FY2027,
+          ~390k rows, weekly. Grain: FY × revenue_or_spending × org group ×
+          dept × program × character × object × sub_object × fund hierarchy.
+          Adopted only (NO budget-phase field on the portal). Net totals
+          depend on embedded negative "Transfer Adjustments (Citywide)"
+          rows — keep them. `related_govt_unit` is broken here (mirrors
+          revenue_or_spending).
+      - name: us_sf_spending_revenue
+        description: |
+          SF Spending and Revenue (actuals) — dataset bpnb-jwfb,
+          FY1999-FY2027 (in-progress years present), ~763k rows, weekly.
+          Same dimension hierarchy as budget but GROSS where budget is net
+          (related govt units + transfer characters). Casing bug:
+          related_govt_units ∈ {No, NO, Yes, YES} — normalized in stg.
+          Chart-of-accounts break at FY2018 (legacy numeric → PeopleSoft
+          mnemonic codes).
+      - name: us_sf_vouchers
+        description: |
+          SF Vendor Payments (Vouchers) — dataset n9pm-xkyq, FY2007-FY2027,
+          ~8.07M rows, weekly (synced via bulk CSV). Grain: voucher ×
+          accounting distribution line. Vendor names are unkeyed strings;
+          non_profit_indicator = 'X' when flagged. data_as_of is Socrata
+          type "text" with UTC-offset format.
+      - name: us_sf_supplier_contracts
+        description: |
+          SF Supplier Contracts — dataset cqi5-hm2d, ~48k rows. GRAIN =
+          contract × project-team member (summing agreed_amt double-counts;
+          31,935 distinct contract_no — tested). Placeholder 2200-12-31 end
+          dates; missing contract_no on some rows; junk titles.
+      - name: us_sf_employee_comp
+        description: |
+          SF Employee Compensation — dataset 88g8-5mnd, 2013-2025, ~1.1M
+          rows, bi-annual (synced via bulk CSV). Pseudonymous
+          employee_identifier × year × year_type × job × dept. #1 trap:
+          year_type contains BOTH Calendar AND Fiscal — filter one
+          downstream or everything double-counts.
+      - name: us_sf_catalog
+        description: |
+          Snapshot of the Socrata /api/views/<id>.json metadata for the
+          synced DataSF datasets: one row per (dataset, column) with the
+          dataset name/description, data.sfgov.org dataset page URL,
+          rows_updated_at (the portal's refresh timestamp → as_of in
+          exports) and per-column display names/types. Provenance source
+          of truth for stg/marts/exports.
+      - name: us_census_population_places
+        description: |
+          Census Bureau Vintage 2025 subcounty resident population
+          estimates (sub-est2025.csv — incorporated places and minor civil
+          divisions), July 1 estimates 2020-2025. San Francisco city =
+          SUMLEV '162', STATE '06', PLACE '67000'. Carries
+          _source/_source_url provenance columns. Synced as CSV because
+          api.census.gov requires an API key (verified live 2026-07-15).
