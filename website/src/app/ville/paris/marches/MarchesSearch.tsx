@@ -30,13 +30,17 @@ type Props = {
   year: number;
 };
 
-// Curated to span themes & scales: voirie (Eiffage, Eurovia), bâtiment
-// (Bouygues), énergie (TotalEnergies), mobilier urbain (JCDecaux), espaces
-// verts (Idverde), eau (Veolia), conseil (BearingPoint). Candidats
-// seulement : `visibleSeeds` ne retient à l'affichage que ceux qui donnent
-// ≥1 résultat dans le corpus de l'année affichée — la présence d'un
-// fournisseur varie fortement d'un millésime à l'autre.
-const SEEDS = [
+// Suggestions à trois étages, tous CANDIDATS seulement — `visibleSeeds` ne
+// retient que ce qui donne ≥1 résultat dans le corpus de l'année affichée,
+// via le même prédicat que la recherche :
+//  1. marques curées (reconnaissables, mais leur présence varie fort d'un
+//     millésime à l'autre — 3 à 5 sur 8 étaient absentes selon l'année) ;
+//  2. thèmes (quasi immortels : « école », « piscine »… reviennent chaque
+//     année et s'étendent via le dictionnaire de synonymes, bilingue) ;
+//  3. étage adaptatif : plus gros titulaires du corpus affiché, calculés au
+//     rendu — ne peut être vide que si la page l'est. Zéro curation pour une
+//     nouvelle ville ou un nouveau millésime.
+const BRAND_SEEDS = [
   "Eiffage",
   "Eurovia",
   "Bouygues",
@@ -46,6 +50,22 @@ const SEEDS = [
   "Veolia",
   "BearingPoint",
 ];
+
+// Termes au singulier : sans groupe de synonymes, un pluriel ne matche pas
+// le singulier du corpus. Tous passent par le même prédicat de validation.
+const THEME_SEEDS_FR = ["école", "piscine", "propreté", "crèche", "éclairage", "voirie"];
+const THEME_SEEDS_EN = ["school", "water", "energy", "waste", "housing", "cycling"];
+
+// Mots outils à garder en minuscules quand on remet en casse un nom de
+// titulaire tout-MAJ ("EIFFAGE ROUTE ILE DE FRANCE" → "Eiffage Route Ile de France").
+const NAME_STOPWORDS = new Set(["de", "du", "des", "la", "le", "les", "et", "d'", "l'"]);
+function titleCaseName(raw: string): string {
+  return raw
+    .toLowerCase()
+    .split(/\s+/)
+    .map((w, i) => (i > 0 && NAME_STOPWORDS.has(w) ? w : w.charAt(0).toUpperCase() + w.slice(1)))
+    .join(" ");
+}
 
 const fill = (s: string, vars: Record<string, string | number>) => {
   let r = s;
@@ -127,23 +147,45 @@ export default function MarchesSearch({ items, categories, natures, year }: Prop
   const isFilterActive = Boolean(category) || Boolean(nature) || !hideMulti;
   const hasActiveSelection = isQueryActive || isFilterActive;
 
-  // Un chip mort (0 résultat au clic) est pire que pas de chip. La liste
-  // curée avait été « vérifiée sur 2024 » : sur les millésimes 2023/2025/2026,
-  // 3 à 5 seeds sur 8 ne matchaient plus rien. On ne propose que les seeds
-  // qui donnent ≥1 résultat dans le corpus affiché, avec les mêmes filtres
-  // par défaut que la recherche (les chips ne s'affichent que quand aucun
-  // filtre n'est actif, donc hideMulti vaut sa valeur par défaut).
-  const visibleSeeds = useMemo(
-    () =>
-      SEEDS.filter((s) => {
-        const exp = expandQuery(s);
-        return items.some((it, idx) => {
-          if (hideMulti && it.multiAttributaire) return false;
-          return matchExpanded(hayNorms[idx], exp).match;
-        });
-      }),
-    [items, hayNorms, hideMulti]
-  );
+  // Un chip mort (0 résultat au clic) est pire que pas de chip : chaque
+  // étage est validé via le même prédicat que la recherche, avec les mêmes
+  // filtres par défaut (les chips ne s'affichent que quand aucun filtre
+  // n'est actif, donc hideMulti vaut sa valeur par défaut).
+  const visibleSeeds = useMemo(() => {
+    const alive = (s: string) => {
+      const exp = expandQuery(s);
+      return items.some((it, idx) => {
+        if (hideMulti && it.multiAttributaire) return false;
+        return matchExpanded(hayNorms[idx], exp).match;
+      });
+    };
+    const brands = BRAND_SEEDS.filter(alive).slice(0, 3);
+    const themes = (locale === "en" ? THEME_SEEDS_EN : THEME_SEEDS_FR).filter(alive).slice(0, 3);
+
+    // Étage adaptatif : plus gros titulaires (en nombre de contrats) du
+    // corpus affiché. Ils viennent du corpus, donc matchent par construction
+    // (la remise en casse ne change pas la forme normalisée).
+    const byName = new Map<string, number>();
+    for (const it of items) {
+      if (it.multiAttributaire) continue;
+      const n = (it.titulaire || "").trim();
+      if (!n || n === "Non précisé") continue;
+      byName.set(n, (byName.get(n) ?? 0) + 1);
+    }
+    const takenNorms = brands.map((s) => normSearch(s).trim());
+    const computed = [...byName.entries()]
+      .sort((a, b) => b[1] - a[1])
+      .map(([n]) => titleCaseName(n))
+      // Écarte les doublons d'une marque déjà affichée ("Eiffage Route Ile
+      // de France" quand le chip « Eiffage » est déjà là).
+      .filter((n) => {
+        const nn = normSearch(n).trim();
+        return !takenNorms.some((t) => nn.includes(t) || t.includes(nn));
+      })
+      .slice(0, Math.max(0, 7 - brands.length - themes.length));
+
+    return [...brands, ...themes, ...computed];
+  }, [items, hayNorms, hideMulti, locale]);
 
   const displayCap = hasActiveSelection ? 24 : 3;
   const displayed = filtered.slice(0, displayCap);
