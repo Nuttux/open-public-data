@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-16T14:41:57.397162+00:00",
+  "generated_at": "2026-07-16T21:33:03.160046+00:00",
   "source_pipeline": "configs/countries/us.yaml → sync_socrata.py + sync_census_popest.py → raw.us_sf_* → dbt_us_staging → dbt_us_analytics → dbt_us_marts → export_us_sf.py",
   "country": "us",
   "scale": "city",
@@ -32,7 +32,8 @@
           "n_lines": 11050,
           "per_resident_usd": null,
           "population_year": null,
-          "is_fiscal_year_complete": true
+          "is_fiscal_year_complete": true,
+          "execution_status": "closed"
         },
         {
           "fiscal_year": 2011,
@@ -41,7 +42,8 @@
           "n_lines": 11152,
           "per_resident_usd": null,
           "population_year": null,
-          "is_fiscal_year_complete": true
+          "is_fiscal_year_complete": true,
+          "execution_status": "closed"
         },
         {
           "fiscal_year": 2012,
@@ -50,7 +52,8 @@
           "n_lines": 10841,
           "per_resident_usd": null,
           "population_year": null,
-          "is_fiscal_year_complete": true
+          "is_fiscal_year_complete": true,
+          "execution_status": "closed"
         },
         {
           "fiscal_year": 2013,
@@ -59,7 +62,8 @@
           "n_lines": 11209,
           "per_resident_usd": null,
           "population_year": null,
-          "is_fiscal_year_complete": true
+          "is_fiscal_year_complete": true,
+          "execution_status": "closed"
         },
         {
           "fiscal_year": 2014,
@@ -68,7 +72,8 @@
           "n_lines": 11379,
           "per_resident_usd": null,
           "population_year": null,
-          "is_fiscal_year_complete": true
+          "is_fiscal_year_complete": true,
+          "execution_status": "closed"
         },
         {
           "fiscal_year": 2015,
@@ -77,7 +82,8 @@
           "n_lines": 11433,
           "per_resident_usd": null,
           "population_year": null,
-          "is_fiscal_year_complete": true
+          "is_fiscal_year_complete": true,
+          "execution_status": "closed"
         },
         {
           "fiscal_year": 2016,
@@ -86,7 +92,8 @@
           "n_lines": 11534,
           "per_resident_usd": null,
           "population_year": null,
-          "is_fiscal_year_complete": true
+          "is_fiscal_year_complete": true,
+          "execution_status": "closed"
         },
         {
           "fiscal_year": 2017,
@@ -95,7 +102,8 @@
           "n_lines": 11951,
           "per_resident_usd": null,
           "population_year": null,
-          "is_fiscal_year_complete": true
+          "is_fiscal_year_complete": true,
+          "execution_status": "closed"
         },
         {
           "fiscal_year": 2018,
@@ -104,7 +112,8 @@
           "n_lines": 32923,
           "per_resident_usd": null,
           "population_year": null,
-          "is_fiscal_year_complete": true
+          "is_fiscal_year_complete": true,
+          "execution_status": "closed"
         },
         {
           "fiscal_year": 2019,
@@ -113,7 +122,8 @@
           "n_lines": 22645,
           "per_resident_usd": null,
           "population_year": null,
-          "is_fiscal_year_complete": true
+          "is_fiscal_year_complete": true,
+          "execution_status": "closed"
         },
         {
           "fiscal_year": 2020,
@@ -122,7 +132,8 @@
           "n_lines": 25347,
           "per_resident_usd": 14070.55,
           "population_year": 2020,
-          "is_fiscal_year_complete": true
+          "is_fiscal_year_complete": true,
+          "execution_status": "closed"
         },
         {
           "fiscal_year": 2021,
@@ -131,7 +142,8 @@
           "n_lines": 25077,
           "per_resident_usd": 16681.14,
           "population_year": 2021,
-          "is_fiscal_year_complete": true
+          "is_fiscal_year_complete": true,
+          "execution_status": "closed"
         },
         {
           "fiscal_year": 2022,
@@ -140,7 +152,8 @@
           "n_lines": 24113,
           "per_resident_usd": 16290.75,
           "population_year": 2022,
-          "is_fiscal_year_complete": true
+          "is_fiscal_year_complete": true,
+          "execution_status": "closed"
         },
         {
           "fiscal_year": 2023,
@@ -149,7 +162,8 @@
           "n_lines": 24513,
           "per_resident_usd": 17138.97,
           "population_year": 2023,
-          "is_fiscal_year_complete": true
+          "is_fiscal_year_complete": true,
+          "execution_status": "closed"
         },
         {
           "fiscal_year": 2024,
@@ -158,7 +172,8 @@
           "n_lines": 24033,
           "per_resident_usd": 17823.02,
           "population_year": 2024,
-          "is_fiscal_year_complete": true
+          "is_fiscal_year_complete": true,
+          "execution_status": "closed"
         },
         {
           "fiscal_year": 2025,
@@ -167,7 +182,8 @@
           "n_lines": 23750,
           "per_resident_usd": 19269.19,
           "population_year": 2025,
-          "is_fiscal_year_complete": true
+          "is_fiscal_year_complete": true,
+          "execution_status": "closed"
         },
         {
           "fiscal_year": 2026,
@@ -176,7 +192,8 @@
           "n_lines": 23551,
           "per_resident_usd": null,
           "population_year": null,
-          "is_fiscal_year_complete": true
+          "is_fiscal_year_complete": true,
+          "execution_status": "recently_closed_preliminary"
         },
         {
           "fiscal_year": 2027,
@@ -185,7 +202,8 @@
           "n_lines": 7621,
           "per_resident_usd": null,
           "population_year": null,
-          "is_fiscal_year_complete": false
+          "is_fiscal_year_complete": false,
+          "execution_status": "adopted_only"
         }
       ],
       "n_points": 18
@@ -199,7 +217,8 @@
           "n_lines": 2181,
           "per_resident_usd": null,
           "population_year": null,
-          "is_fiscal_year_complete": true
+          "is_fiscal_year_complete": true,
+          "execution_status": "closed"
         },
         {
           "fiscal_year": 2011,
@@ -208,7 +227,8 @@
           "n_lines": 2249,
           "per_resident_usd": null,
           "population_year": null,
-          "is_fiscal_year_complete": true
+          "is_fiscal_year_complete": true,
+          "execution_status": "closed"
         },
         {
           "fiscal_year": 2012,
@@ -217,7 +237,8 @@
           "n_lines": 2458,
           "per_resident_usd": null,
           "population_year": null,
-          "is_fiscal_year_complete": true
+          "is_fiscal_year_complete": true,
+          "execution_status": "closed"
         },
         {
           "fiscal_year": 2013,
@@ -226,7 +247,8 @@
           "n_lines": 2543,
           "per_resident_usd": null,
           "population_year": null,
-          "is_fiscal_year_complete": true
+          "is_fiscal_year_complete": true,
+          "execution_status": "closed"
         },
         {
           "fiscal_year": 2014,
@@ -235,7 +257,8 @@
           "n_lines": 2625,
           "per_resident_usd": null,
           "population_year": null,
-          "is_fiscal_year_complete": true
+          "is_fiscal_year_complete": true,
+          "execution_status": "closed"
         },
         {
           "fiscal_year": 2015,
@@ -244,7 +267,8 @@
           "n_lines": 2662,
           "per_resident_usd": null,
           "population_year": null,
-          "is_fiscal_year_complete": true
+          "is_fiscal_year_complete": true,
+          "execution_status": "closed"
         },
         {
           "fiscal_year": 2016,
@@ -253,7 +277,8 @@
           "n_lines": 2681,
           "per_resident_usd": null,
           "population_year": null,
-          "is_fiscal_year_complete": true
+          "is_fiscal_year_complete": true,
+          "execution_status": "closed"
         },
         {
           "fiscal_year": 2017,
@@ -262,7 +287,8 @@
           "n_lines": 2785,
           "per_resident_usd": null,
           "population_year": null,
-          "is_fiscal_year_complete": true
+          "is_fiscal_year_complete": true,
+          "execution_status": "closed"
         },
         {
           "fiscal_year": 2018,
@@ -271,7 +297,8 @@
           "n_lines": 6733,
           "per_resident_usd": null,
           "population_year": null,
-          "is_fiscal_year_complete": true
+          "is_fiscal_year_complete": true,
+          "execution_status": "closed"
         },
         {
           "fiscal_year": 2019,
@@ -280,7 +307,8 @@
           "n_lines": 4243,
           "per_resident_usd": null,
           "population_year": null,
-          "is_fiscal_year_complete": true
+          "is_fiscal_year_complete": true,
+          "execution_status": "closed"
         },
         {
           "fiscal_year": 2020,
@@ -289,7 +317,8 @@
           "n_lines": 4676,
           "per_resident_usd": 14070.55,
           "population_year": 2020,
-          "is_fiscal_year_complete": true
+          "is_fiscal_year_complete": true,
+          "execution_status": "closed"
         },
         {
           "fiscal_year": 2021,
@@ -298,7 +327,8 @@
           "n_lines": 4707,
           "per_resident_usd": 16681.14,
           "population_year": 2021,
-          "is_fiscal_year_complete": true
+          "is_fiscal_year_complete": true,
+          "execution_status": "closed"
         },
         {
           "fiscal_year": 2022,
@@ -307,7 +337,8 @@
           "n_lines": 4365,
           "per_resident_usd": 16290.75,
           "population_year": 2022,
-          "is_fiscal_year_complete": true
+          "is_fiscal_year_complete": true,
+          "execution_status": "closed"
         },
         {
           "fiscal_year": 2023,
@@ -316,7 +347,8 @@
           "n_lines": 4540,
           "per_resident_usd": 17138.97,
           "population_year": 2023,
-          "is_fiscal_year_complete": true
+          "is_fiscal_year_complete": true,
+          "execution_status": "closed"
         },
         {
           "fiscal_year": 2024,
@@ -325,7 +357,8 @@
           "n_lines": 4578,
           "per_resident_usd": 17823.02,
           "population_year": 2024,
-          "is_fiscal_year_complete": true
+          "is_fiscal_year_complete": true,
+          "execution_status": "closed"
         },
         {
           "fiscal_year": 2025,
@@ -334,7 +367,8 @@
           "n_lines": 4662,
           "per_resident_usd": 19269.19,
           "population_year": 2025,
-          "is_fiscal_year_complete": true
+          "is_fiscal_year_complete": true,
+          "execution_status": "closed"
         },
         {
           "fiscal_year": 2026,
@@ -343,7 +377,8 @@
           "n_lines": 4378,
           "per_resident_usd": null,
           "population_year": null,
-          "is_fiscal_year_complete": true
+          "is_fiscal_year_complete": true,
+          "execution_status": "recently_closed_preliminary"
         },
         {
           "fiscal_year": 2027,
@@ -352,7 +387,8 @@
           "n_lines": 2568,
           "per_resident_usd": null,
           "population_year": null,
-          "is_fiscal_year_complete": false
+          "is_fiscal_year_complete": false,
+          "execution_status": "adopted_only"
         }
       ],
       "n_points": 18

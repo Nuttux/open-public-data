@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-16T14:41:59.799116+00:00",
+  "generated_at": "2026-07-16T21:33:11.635285+00:00",
   "source_pipeline": "configs/countries/us.yaml → sync_socrata.py + sync_census_popest.py → raw.us_sf_* → dbt_us_staging → dbt_us_analytics → dbt_us_marts → export_us_sf.py",
   "country": "us",
   "scale": "city",
@@ -17,6 +17,59 @@
     },
     "budget_vs_actual.json": {
       "description": "Adopted budget and actuals as separate labeled series + measured reconciliation residuals (not a like-for-like comparison — see file notes)",
+      "as_of": "2026-07-13T10:08:21+00:00",
+      "source_urls": [
+        "https://data.sfgov.org/d/bpnb-jwfb",
+        "https://data.sfgov.org/d/xdgd-c79v"
+      ]
+    },
+    "budget_breakdown_{fy}.json": {
+      "description": "Per-fiscal-year budget breakdown: org groups, departments, dept × character cells, characters (with glosses), program strip, funds",
+      "fiscal_years": [
+        2010,
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016,
+        2017,
+        2018,
+        2019,
+        2020,
+        2021,
+        2022,
+        2023,
+        2024,
+        2025,
+        2026,
+        2027
+      ],
+      "execution_status": {
+        "2010": "closed",
+        "2011": "closed",
+        "2012": "closed",
+        "2013": "closed",
+        "2014": "closed",
+        "2015": "closed",
+        "2016": "closed",
+        "2017": "closed",
+        "2018": "closed",
+        "2019": "closed",
+        "2020": "closed",
+        "2021": "closed",
+        "2022": "closed",
+        "2023": "closed",
+        "2024": "closed",
+        "2025": "closed",
+        "2026": "recently_closed_preliminary",
+        "2027": "adopted_only"
+      },
+      "as_of": "2026-07-13T10:17:58+00:00",
+      "source_url": "https://data.sfgov.org/d/xdgd-c79v"
+    },
+    "budget_vs_actual_departments.json": {
+      "description": "Department-level budget vs actual, Operating perimeter, closed fiscal years FY2019+, GEN/PUC annotated",
       "as_of": "2026-07-13T10:08:21+00:00",
       "source_urls": [
         "https://data.sfgov.org/d/bpnb-jwfb",
