@@ -1,0 +1,11 @@
+# Block studies — per-page data research (2026-07-16)
+
+Five research agents, one per SF build block, each working live against BigQuery (`dbt_us_*` + `raw.us_sf_*`) — every number query-backed, no code changes. These briefs are the evidence base for [SF-BUILD-PLAN.md](../SF-BUILD-PLAN.md) v2; read the relevant brief before building its block.
+
+| Brief | Block | Decisive findings |
+|---|---|---|
+| [1-budget.md](1-budget.md) | `/us/city/sf/budget` | Programs are a dead level post-2018 (10 generic tags); page spine = org group (7) → dept (55) + character (26) tabs; FY2018 = corrupted-drill year; budget→voucher join PROVEN at dept×character (90.3% of nonzero-budget $); `is_fiscal_year_complete` flag unsafe → `execution_status` enum; GEN/PUC deviations are perimeter artifacts |
+| [2-payees.md](2-payees.md) | who gets paid | FY2018 cliff everywhere (contract#s, nonprofit flag, vendor collapse into "Single Payment Payees"); $5.46B/33% of FY2025 is related-govt-unit flow — label or overstate; grant lens = Paris-subventions equivalent ($1.9–2.1B/yr); name canonicalization batch = 1,675 names for 95% of $; individual landlords appear as payees → `person` bucket |
+| [3-contracts.md](3-contracts.md) | contracts | `consumed_amt`/`remaining_amt` unpublishable (−$83.5B); prime-dedupe grain + CI test; sole-source lens rich (4.1% / $4.2B, DPH/Police variation); contract→voucher join 99.1% of $ FY2018+ → fiches with spend curves ship BEFORE payee fiches; no descriptive text exists in source (scope capped 50 chars) → titles must be generated; half the register is grants ($18.5B) |
+| [4-payroll.md](4-payroll.md) | payroll | Small-cell study: dept×job has 1,039 n=1 cells (named individuals); dept×job-family n≥5 pools only 1.2% of $ → recommended dial; native 60-family taxonomy kills the anticipated AI batch (only ~104 junk titles remain); OT $164M→$471M, Police OT ×3 since 2017; dept labels break FY2017 → key on dept_code; new `DistributionStrip` primitive needed |
+| [5-landing.md](5-landing.md) | landing hub | Laguna Honda scene must be fund-based (program labels die at FY2018); contract pmt fields unreliable → voucher sums only; 4 KPIs recommended (FY2027 adopted / $53-a-day / payroll / weekly freshness); gotcha audit: homelessness nonprofits + police OT averages stay OFF the landing; hub Option A (Paris mirror) + freshness sub-line |
