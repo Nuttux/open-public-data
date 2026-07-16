@@ -17,7 +17,7 @@ import {
   fmtPctAbs,
   fmtDateLong,
   fmtMonthYear,
-} from "./us-format";
+} from "@/lib/us/format";
 import type { UsDailyBread, UsDebtSlim } from "./us-types";
 
 /**
@@ -102,10 +102,6 @@ export default function UsNationalClient({
 
   return (
     <div className="theme-fusion">
-      <header className="fx-nav">
-        <span className="fx-brand">{t("us.national.wordmark")}</span>
-      </header>
-
       <main id="main-content" tabIndex={-1}>
         {/* ── Page header ── */}
         <section className="fx-page-header">

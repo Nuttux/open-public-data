@@ -1,6 +1,6 @@
 "use client";
 
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { useT } from "@/lib/localeContext";
 import { useTrack } from "@/lib/analyticsContext";
@@ -20,7 +20,7 @@ const fmtInt = (n: number) => n.toLocaleString("fr-FR");
  * Searches the 35 000 French communes index server-side and lets the user
  * jump to any /fr/city/[slug] page.
  */
-export default function SearchModal() {
+function SearchModalInner() {
   const [open, setOpen] = useState(false);
   const [query, setQuery] = useState("");
   const [hits, setHits] = useState<Hit[]>([]);
@@ -208,4 +208,15 @@ export default function SearchModal() {
       </div>
     </div>
   );
+}
+
+/**
+ * v0 US : la recherche interroge l'index des 35 000 communes françaises —
+ * hors sujet sur /us (ADR-0010 D3). Rien n'est rendu là-bas (ni le modal,
+ * ni le raccourci Cmd/Ctrl+K) tant qu'il n'existe pas de recherche US.
+ */
+export default function SearchModal() {
+  const pathname = usePathname() ?? "/";
+  if (pathname === "/us" || pathname.startsWith("/us/")) return null;
+  return <SearchModalInner />;
 }

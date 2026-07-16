@@ -4411,7 +4411,10 @@ const fr: Record<string, string> = {
   // ── US · National (/us/national) — EN-only per ADR-0010 D3 ────────────────
   // FR values mirror the English verbatim so the page stays English on every
   // locale toggle (fr.ts must typecheck; US routes have no FR parity rule).
-  'us.national.wordmark': 'US · National — Public Data Explorer (working title)',
+  'us.chrome.wordmark': 'US — Public Data Explorer (working title)',
+  'us.chrome.nav_aria': 'United States sections',
+  'us.chrome.nav.national': 'National',
+  'us.chrome.nav.sf': 'San Francisco',
   'us.national.kicker': 'United States · Federal finances — fiscal year {fy}',
   'us.national.title.before': 'Where the ',
   'us.national.title.em': 'federal dollar',

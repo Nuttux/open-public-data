@@ -95,7 +95,7 @@ function extractFollowups(text: string): { clean: string; followups: string[] } 
 
 const TEASER_DISMISS_KEY = "open-public-data:chat:teaser-dismissed";
 
-export default function ChatPanel() {
+function ChatPanelInner() {
   const [open, setOpen] = useState(false);
   const [messages, setMessages] = useState<Msg[]>([]);
   const [hydrated, setHydrated] = useState(false);
@@ -743,4 +743,16 @@ export default function ChatPanel() {
       </div>
     </>
   );
+}
+
+/**
+ * v0 US : le chat est soudé à Paris — prompt système, outils, chemins de
+ * données (ADR-0010 D4). Sur les routes /us on ne rend rien, tant qu'un
+ * « place context pack » US n'existe pas. Wrapper séparé pour garder
+ * l'ordre des hooks stable quel que soit le chemin.
+ */
+export default function ChatPanel() {
+  const pathname = usePathname() ?? "/";
+  if (pathname === "/us" || pathname.startsWith("/us/")) return null;
+  return <ChatPanelInner />;
 }
