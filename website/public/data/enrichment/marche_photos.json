@@ -1,0 +1,13 @@
+{
+ "generated_at": "2026-07-16",
+ "source": "curation in-session (Claude Code) — photos réelles pour des contrats précis, clé = numero_marche",
+ "note": "Consommé par loadMarchesPageData (scène signature) en repli après la photo du chantier lié ; avant la banque générique.",
+ "items": {
+  "decp-2025S01581": {
+   "photo_url": "https://cdn.paris.fr/paris/2019/09/26/original-1dc59db5ea135cc51c71e810b9908855.jpg",
+   "credit": "Ville de Paris",
+   "source_page": "https://www.paris.fr/pages/trilib-une-nouvelle-approche-du-tri-selectif-3963",
+   "source_label": "paris.fr — Trilib', le tri en bas de chez vous"
+  }
+ }
+}

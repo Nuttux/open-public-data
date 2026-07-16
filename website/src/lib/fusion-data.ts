@@ -1787,6 +1787,10 @@ export type MarchesPageData = {
     offres: number | null;
     photoUrl: string | null;
     photoCredit: string | null;
+    /** « reelle » = photo du chantier lié ou curation marche_photos.json ;
+     *  « illustration » = banque générique par typologie, affichée avec la
+     *  mention explicite (jamais une photo générique déguisée en vraie). */
+    photoKind: "reelle" | "illustration" | null;
     projetNom: string | null;
     projetNomEn: string | null;
     dateNotification: string;
@@ -2506,7 +2510,7 @@ export function loadMarchesPageData(requestedYear?: number, city: string = "pari
   // Un même contrat ne sert qu'une fois ; les cartes absentes (pas de photo,
   // pas de données offres pour le millésime) sont simplement omises.
   const signature: MarchesPageData["signature"] = (() => {
-    type SigRow = { numero: string; objet: string; fournisseur: string; montant: number; offres: number | null; date: string; dureeJours: number };
+    type SigRow = { numero: string; objet: string; fournisseur: string; montant: number; offres: number | null; date: string; dureeJours: number; nature: string };
     const rows: SigRow[] = [];
     for (const m of marches) {
       const r = m as MarcheRow & { numero_marche?: string; is_multiattributaire?: boolean; duree_jours?: number };
@@ -2522,24 +2526,57 @@ export function loadMarchesPageData(requestedYear?: number, city: string = "pari
         offres: r.decp_offres_recues != null ? Number(r.decp_offres_recues) : null,
         date: r.date_notification ?? "",
         dureeJours: Number(r.duree_jours ?? 0),
+        nature: r.nature ?? "",
       });
     }
     const byMontant = [...rows].sort((a, b) => b.montant - a.montant);
     const used = new Set<string>();
+
+    // Chaîne photo : (1) photo réelle du chantier lié, (2) photo réelle
+    // curée pour CE contrat (enrichment/marche_photos.json, rempli
+    // in-session), (3) banque générique par typologie — affichée avec la
+    // mention « photo d'illustration », jamais déguisée en vraie.
+    const marchePhotos = readJsonOrNull<{ items?: Record<string, { photo_url?: string; credit?: string; }> }>(
+      "enrichment/marche_photos.json",
+    )?.items ?? {};
+    const genericBank = readJsonOrNull<{ items?: Record<string, { url?: string; source_label?: string }> }>(
+      "enrichment/generic_photo_bank.json",
+    )?.items ?? {};
+
     const mkCard = (r: SigRow, kind: "chantier" | "mono" | "dispute") => {
       const pj = loadContratProjet(r.numero);
       const vg = vulgMap[r.numero];
       used.add(r.numero);
+      const label = vg?.objet_clair || normalizeObjet(r.objet);
+      let photoUrl = pj?.photoUrl ?? null;
+      let photoCredit = pj?.photoCredit ?? null;
+      let photoKind: "reelle" | "illustration" | null = photoUrl ? "reelle" : null;
+      if (!photoUrl && marchePhotos[r.numero]?.photo_url) {
+        photoUrl = marchePhotos[r.numero].photo_url ?? null;
+        photoCredit = marchePhotos[r.numero].credit ?? null;
+        photoKind = "reelle";
+      }
+      if (!photoUrl) {
+        const typo = guessTypologieFromName(label)
+          ?? (/service|prestation/i.test(r.nature) ? "administration" : "autre");
+        const g = genericBank[typo];
+        if (g?.url) {
+          photoUrl = g.url;
+          photoCredit = g.source_label ?? null;
+          photoKind = "illustration";
+        }
+      }
       return {
         kind,
         numero: r.numero,
-        label: vg?.objet_clair || normalizeObjet(r.objet),
+        label,
         labelEn: vg?.objet_clair_en ?? null,
         fournisseur: r.fournisseur,
         montant: r.montant,
         offres: r.offres,
-        photoUrl: pj?.photoUrl ?? null,
-        photoCredit: pj?.photoCredit ?? null,
+        photoUrl,
+        photoCredit,
+        photoKind,
         projetNom: pj?.nom ?? null,
         projetNomEn: pj?.nomEn ?? null,
         dateNotification: r.date,

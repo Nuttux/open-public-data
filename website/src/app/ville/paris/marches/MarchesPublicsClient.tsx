@@ -235,9 +235,9 @@ export default function MarchesPublicsClient({
               kind={t("fx.mp.sig.kind")}
               title={
                 <>
-                  {t("fx.mp.sig.title.before")}
+                  {fill(t("fx.mp.sig.title.before"), { year: d.year })}
                   <em>{t("fx.mp.sig.title.em")}</em>
-                  {t("fx.mp.sig.title.after")}
+                  {fill(t("fx.mp.sig.title.after"), { year: d.year })}
                 </>
               }
               subtitle={fill(

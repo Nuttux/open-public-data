@@ -71,11 +71,16 @@ export default function MarchesSignature({ items }: { items: SigItem[] }) {
                   loading="lazy"
                   style={{ width: "100%", height: 150, objectFit: "cover", display: "block" }}
                 />
-                {it.photoCredit && (
+                {/* Photo réelle → crédit ; banque générique → mention explicite
+                 * « photo d'illustration » (règle : jamais un visuel générique
+                 * qui se fait passer pour le vrai chantier). */}
+                {(it.photoKind === "illustration" || it.photoCredit) && (
                   <figcaption
                     style={{ position: "absolute", right: 6, bottom: 6, fontFamily: "var(--f-mono)", fontSize: 9, color: "#fff", background: "rgba(0,0,0,.55)", padding: "2px 6px" }}
                   >
-                    © {it.photoCredit}
+                    {it.photoKind === "illustration"
+                      ? t("fx.mp.sig.illustration")
+                      : `© ${it.photoCredit}`}
                   </figcaption>
                 )}
               </figure>
