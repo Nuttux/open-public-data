@@ -191,7 +191,11 @@ def build_budget_by_year(rows: list[dict]) -> dict:
                 "n_lines": int(r["n_lines"]),
                 "per_resident_usd": _f(r["per_resident_usd"], 2),
                 "population_year": int(r["population_year"]) if r["population_year"] is not None else None,
+                # Deprecated calendar boolean (flags the newest ended FY
+                # "complete" while the close runs for months) — kept for
+                # compatibility; read execution_status instead.
                 "is_fiscal_year_complete": bool(r["is_fiscal_year_complete"]),
+                "execution_status": r["execution_status"],
             }
             for r in rows if r["side"] == side
         ]

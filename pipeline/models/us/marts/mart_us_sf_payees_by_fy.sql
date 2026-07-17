@@ -155,7 +155,7 @@ SELECT
     ntd.top_nonprofit_department_usd,
     g.grant_funded_usd,
     g.grant_funded_nonprofit_usd,
-    {{ us_sf_execution_status('t.fiscal_year') }}  AS execution_status,
+    {{ us_sf_execution_status('t.fiscal_year', basis='actuals') }}  AS execution_status,
     pr.dataset_id                                  AS source_dataset_id,
     pr.dataset_name                                AS source_name,
     pr.dataset_page_url                            AS source_url,

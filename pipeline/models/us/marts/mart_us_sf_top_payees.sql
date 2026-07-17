@@ -158,7 +158,7 @@ SELECT
     o3.objects_top3,
     gf.grant_funded_usd,
     r.is_fiscal_year_complete,
-    {{ us_sf_execution_status('r.fiscal_year') }}  AS execution_status,
+    {{ us_sf_execution_status('r.fiscal_year', basis='actuals') }}  AS execution_status,
     SAFE_DIVIDE(r.vouchers_paid_usd, ft.fy_total_vouchers_paid_usd)  AS share_of_fy_paid,
     ft.fy_total_vouchers_paid_usd,
     pb.bucket,

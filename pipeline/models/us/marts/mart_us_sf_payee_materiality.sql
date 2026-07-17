@@ -56,7 +56,7 @@ SELECT
     p.fiscal_year,
     a.amount_usd,
     a.n_voucher_lines,
-    {{ us_sf_execution_status('p.fiscal_year') }}  AS execution_status,
+    {{ us_sf_execution_status('p.fiscal_year', basis='actuals') }}  AS execution_status,
     p.method                               AS curation_method,
     p.added_at                             AS curated_at,
     pr.dataset_id                          AS source_dataset_id,

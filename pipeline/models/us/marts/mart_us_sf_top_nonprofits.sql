@@ -124,7 +124,7 @@ SELECT
     r.classification_note,
     ft.fy_nonprofit_total_usd,
     SAFE_DIVIDE(r.vouchers_paid_usd, ft.fy_nonprofit_total_usd) AS share_of_fy_nonprofit,
-    {{ us_sf_execution_status('r.fiscal_year') }}  AS execution_status,
+    {{ us_sf_execution_status('r.fiscal_year', basis='actuals') }}  AS execution_status,
     pr.dataset_id                          AS source_dataset_id,
     pr.dataset_name                        AS source_name,
     pr.dataset_page_url                    AS source_url,
