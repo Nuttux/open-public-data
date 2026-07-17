@@ -131,3 +131,33 @@ models:
         tests: [not_null]
       - name: classified_at
         tests: [not_null]
+
+  - name: stg_us_sf_purchasing_authority_families
+    description: >
+      Manual display-family classification of the register's 93 distinct
+      purchasing_authority strings (1:1 with
+      seed_us_sf_purchasing_authority_families, authored in-session
+      2026-07-16, human review pending). Families group the STRINGS for the
+      "how contracts get awarded" section — the sole-source lens is driven
+      by the source's sole_source_flg, and fiches render the authority
+      string verbatim.
+    columns:
+      - name: purchasing_authority
+        tests: [not_null, unique]
+      - name: authority_family
+        tests:
+          - not_null
+          - accepted_values:
+              values:
+                - competitive_bid
+                - sole_source_waiver
+                - emergency
+                - grant
+                - government_agreement
+                - rent_real_estate
+                - legacy_none
+                - other
+      - name: classification_method
+        tests: [not_null]
+      - name: classified_at
+        tests: [not_null]

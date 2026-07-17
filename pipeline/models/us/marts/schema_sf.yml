@@ -82,3 +82,90 @@ models:
           - not_null
           - accepted_values:
               values: ['Revenue', 'Spending']
+
+  - name: mart_us_sf_contracts_summary
+    description: >
+      SF supplier-contract register at CONTRACT grain (prime-dedupe over
+      core_us_sf_contracts: money summed over prime rows only, netting the
+      ~40 multi-prime amendment pairs; 75 sub-only contracts excluded).
+      Money columns are agreed_usd, paid_usd (source pmt_amt = lifetime
+      voucher payments) and derived remaining_calc_usd = GREATEST(agreed −
+      paid, 0). consumed/remaining source columns never surface here
+      (tests/us/assert_us_sf_contract_marts_no_consumed_remaining.sql);
+      totals are grain-tested against core
+      (tests/us/assert_us_sf_contracts_summary_grain.sql).
+    columns:
+      - name: contract_no
+        tests: [not_null, unique]
+      - name: agreed_usd
+        tests: [not_null]
+      - name: paid_usd
+        tests: [not_null]
+      - name: remaining_calc_usd
+        tests: [not_null]
+      - name: authority_family
+        tests:
+          - not_null
+          - accepted_values:
+              values:
+                - competitive_bid
+                - sole_source_waiver
+                - emergency
+                - grant
+                - government_agreement
+                - rent_real_estate
+                - legacy_none
+                - other
+      - name: is_sole_source
+        tests: [not_null]
+      - name: source_url
+        tests: [not_null]
+
+  - name: mart_us_sf_contract_spend_by_fy
+    description: >
+      Per-contract spend curves — vouchers paid per contract × fiscal year
+      (voucher join on contract_number: 97.3% of numbers, 99.1% of joined
+      dollars; coverage starts FY2018, the PeopleSoft break). Register
+      money stays in mart_us_sf_contracts_summary; this table only feeds
+      fiche curves and the FY-activity context.
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns: [contract_no, fiscal_year]
+    columns:
+      - name: contract_no
+        tests: [not_null]
+      - name: fiscal_year
+        tests: [not_null]
+      - name: vouchers_paid_usd
+        tests: [not_null]
+      - name: execution_status
+        tests:
+          - not_null
+          - accepted_values:
+              values: [closed, recently_closed_preliminary, in_progress]
+      - name: source_url
+        tests: [not_null]
+
+  - name: mart_us_sf_contract_team
+    description: >
+      Project-team members per contract (prime / subcontractor / joint
+      venture constituent) with LBE status and attached amounts. NEVER
+      unioned into contract money — attached_usd lives inside the prime's
+      envelope and reconciles imperfectly in the source (sub totals exceed
+      prime agreed on 486 contracts). Feeds fiche team tabs and the LBE
+      participation aggregates as their own labeled perimeter.
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns: [contract_no, supplier, role, is_lbe]
+    columns:
+      - name: contract_no
+        tests: [not_null]
+      - name: role
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['Prime Contractor', 'Subcontractor', 'Joint Venture Constituent']
+      - name: is_lbe
+        tests: [not_null]
+      - name: source_url
+        tests: [not_null]
