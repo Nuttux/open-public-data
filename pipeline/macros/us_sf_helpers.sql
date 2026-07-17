@@ -40,3 +40,22 @@
 {% macro us_sf_string(column_name) -%}
     NULLIF(TRIM({{ column_name }}), '')
 {%- endmacro %}
+
+{#
+  execution_status enum (SF-BUILD-PLAN cross-cutting rule 2) — replaces the
+  calendar boolean is_fiscal_year_complete in exports. SF fiscal year N runs
+  July 1 (N-1) → June 30 N; the Controller's year-end close runs for months
+  after June 30, so a year is "recently_closed_preliminary" until ~4 months
+  past its end (through late October), then "closed". ("adopted_only" exists
+  in the enum for budget-side data and never applies to vouchers/actuals.)
+#}
+{% macro us_sf_execution_status(fy_col) -%}
+    CASE
+        WHEN CURRENT_DATE('America/Los_Angeles') <= DATE({{ fy_col }}, 6, 30)
+            THEN 'in_progress'
+        WHEN CURRENT_DATE('America/Los_Angeles')
+                < DATE_ADD(DATE({{ fy_col }}, 6, 30), INTERVAL 4 MONTH)
+            THEN 'recently_closed_preliminary'
+        ELSE 'closed'
+    END
+{%- endmacro %}
