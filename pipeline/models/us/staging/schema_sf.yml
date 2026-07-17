@@ -110,9 +110,14 @@ models:
 
   - name: stg_us_sf_payee_buckets
     description: >
-      Manual bucket classification of the top FY2025 voucher payees
-      (1:1 with seed_us_sf_payee_buckets). Buckets are display
+      Manual bucket classification of top voucher payees (1:1 with
+      seed_us_sf_payee_buckets; 232 rows after the Block 2 extension —
+      the measured per-FY top-30 union + all-time top-200 + six
+      study-named individual landlords). Buckets are display
       categorization only — amounts always come from the voucher data.
+      `person` rows render as "individual payee" and are never featured
+      (personnes-physiques doctrine); is_aggregation_line marks the
+      Controller's aggregated vendor lines.
     columns:
       - name: vendor
         tests: [not_null, unique]
@@ -127,9 +132,32 @@ models:
                 - nonprofit
                 - supplier
                 - other
+                - person
       - name: classification_note
         tests: [not_null]
       - name: classified_at
+        tests: [not_null]
+      - name: is_aggregation_line
+        tests: [not_null]
+
+  - name: stg_us_sf_payee_materiality
+    description: >
+      Curated "what a payment buys" picks (1:1 with
+      seed_us_sf_payee_materiality). The seed chooses WHICH voucher lines
+      to feature; amounts are computed from core_us_sf_vouchers in
+      mart_us_sf_payee_materiality — never stored here.
+    columns:
+      - name: slug
+        tests: [not_null, unique]
+      - name: vendor
+        tests: [not_null]
+      - name: department
+        tests: [not_null]
+      - name: sub_object
+        tests: [not_null]
+      - name: fiscal_year
+        tests: [not_null]
+      - name: label
         tests: [not_null]
 
   - name: stg_us_sf_job_family_display

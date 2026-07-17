@@ -27,9 +27,11 @@ models:
   - name: mart_us_sf_top_payees
     description: >
       Top 100 voucher payees per fiscal year (FY2007-FY2027) with amounts,
-      non-profit flag, share of FY total and the manual bucket
-      classification for the FY2025 top payees (fiscal agents/banks
-      dominate the naive ranking — API-RECON §A.3).
+      non-profit flag, share of FY total, top-3 objects, grant-funded $
+      (FY2018+) and the manual bucket classification (fiscal agents/banks
+      dominate the naive ranking — API-RECON §A.3). The binding
+      default-view guards live in
+      tests/us/assert_us_sf_payee_default_top10_clean.sql.
     tests:
       - dbt_utils.unique_combination_of_columns:
           combination_of_columns: [fiscal_year, vendor]
@@ -41,6 +43,93 @@ models:
       - name: vendor
         tests: [not_null]
       - name: vouchers_paid_usd
+        tests: [not_null]
+      - name: execution_status
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['closed', 'recently_closed_preliminary', 'in_progress']
+      - name: is_aggregation_line
+        tests: [not_null]
+      - name: source_url
+        tests: [not_null]
+
+  - name: mart_us_sf_payees_by_fy
+    description: >
+      Per-fiscal-year context for /us/city/sf/who-gets-paid — totals with
+      the city vs related-government-units perimeter split (never netted
+      silently), per-FY bucket-classification coverage, nonprofit slice
+      (FY2018+ only — flag empty before), grant-funded lens (FY2018+ only)
+      and execution_status. One row per FY.
+    columns:
+      - name: fiscal_year
+        tests: [not_null, unique]
+      - name: total_usd
+        tests: [not_null]
+      - name: city_usd
+        tests: [not_null]
+      - name: related_govt_units_usd
+        tests: [not_null]
+      - name: bucket_coverage_pct
+        tests: [not_null]
+      - name: execution_status
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['closed', 'recently_closed_preliminary', 'in_progress']
+      - name: source_url
+        tests: [not_null]
+
+  - name: mart_us_sf_top_nonprofits
+    description: >
+      Top 30 nonprofit-flagged payees per fiscal year, FY2018+ ONLY (the
+      non_profit_indicator is empty before FY2018 — measured). Carries the
+      community-ranking exclusion: healthcare-premium and
+      intergovernmental buckets are flagged out of community_rank and
+      rendered by the UI in a labeled note instead.
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns: [fiscal_year, vendor]
+    columns:
+      - name: fiscal_year
+        tests: [not_null]
+      - name: vendor
+        tests: [not_null]
+      - name: vouchers_paid_usd
+        tests: [not_null]
+      - name: in_community_ranking
+        tests: [not_null]
+      - name: source_url
+        tests: [not_null]
+
+  - name: mart_us_sf_payees_search
+    description: >
+      Lazy search index for the who-gets-paid page — one row per vendor in
+      the union of per-FY top-1,000 payees (measured 4,068 vendors,
+      ≈95-97% of every FY's dollars), with full per-FY series, all-time
+      top department and bucket. Paris beneficiaires_search.json pattern.
+    columns:
+      - name: vendor
+        tests: [not_null, unique]
+      - name: total_usd
+        tests: [not_null]
+      - name: last_fy
+        tests: [not_null]
+      - name: source_url
+        tests: [not_null]
+
+  - name: mart_us_sf_payee_materiality
+    description: >
+      Curated "what a payment buys" lines with amounts computed from the
+      voucher data (seed picks the lines, BigQuery computes the dollars —
+      zero-hardcode). Every seed pick must match:
+      tests/us/assert_us_sf_materiality_rows_match.sql.
+    columns:
+      - name: slug
+        tests: [not_null, unique]
+      - name: label
+        tests: [not_null]
+      - name: amount_usd
         tests: [not_null]
       - name: source_url
         tests: [not_null]

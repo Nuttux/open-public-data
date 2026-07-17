@@ -11,16 +11,19 @@ import { useT } from "@/lib/localeContext";
  * FY2018 renders this ONE note (copy lives in the shared us.sf.fy2018.*
  * keys), or readers will invent policy stories for a systems migration.
  *
- * `variant="inline"` is the one-line ⓘ form for fiches/drawers;
- * `extra` lets a page append its own dataset-specific breaks in the same
- * callout (e.g. payroll's FY2017 department-label break).
+ * `variant="inline"` is the one-line ⓘ form for fiches/drawers; `extra`
+ * lets a page append its own dataset-specific breaks in the same callout
+ * (e.g. payroll's FY2017 department-label break); `id` gives pages a
+ * stable in-page anchor (defaults to "fy2018-note").
  */
 export default function Fy2018Note({
   variant = "block",
   extra,
+  id,
 }: {
   variant?: "block" | "inline";
   extra?: ReactNode;
+  id?: string;
 }) {
   const t = useT();
 
@@ -43,7 +46,7 @@ export default function Fy2018Note({
   }
 
   return (
-    <div className="fx-callout">
+    <div className="fx-callout" id={id ?? "fy2018-note"}>
       <b>{t("us.sf.fy2018.title")}</b> {t("us.sf.fy2018.body")}
       {extra}
     </div>

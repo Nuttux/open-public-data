@@ -302,6 +302,10 @@ seeds:
         +schema: us_seeds
         # Manual bucket classification of top SF voucher payees (display
         # categorization only — amounts come from raw.us_sf_vouchers).
+        # Extended 2026-07-16 (Block 2): the measured per-FY top-30 union +
+        # all-time top-200 classified in-session; is_aggregation_line flags
+        # the Controller's aggregated vendor lines (Single Payment Payees,
+        # HSA AP Interface) that are not real entities.
         seed_us_sf_payee_buckets:
           +column_types:
             vendor: STRING
@@ -309,6 +313,22 @@ seeds:
             classification_note: STRING
             classification_method: STRING
             classified_at: STRING
+            is_aggregation_line: BOOLEAN
+        # Curated "what a payment buys" lines (Block 2 materiality strip).
+        # The seed only picks WHICH (vendor × department × sub_object × FY)
+        # lines to feature + the editorial label; every amount is computed
+        # from the voucher data in mart_us_sf_payee_materiality.
+        seed_us_sf_payee_materiality:
+          +column_types:
+            slug: STRING
+            vendor: STRING
+            department: STRING
+            sub_object: STRING
+            fiscal_year: INT64
+            label: STRING
+            editorial_note: STRING
+            method: STRING
+            added_at: STRING
         # SF payroll — native job-family code → display family (60 codes →
         # 16 display families, by hand in-session per
         # docs/us/block-studies/4-payroll.md). Display grouping only —

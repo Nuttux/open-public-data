@@ -1,43 +1,233 @@
-vendor,bucket,classification_note,classification_method,classified_at
-J P MORGAN CHASE BANK NA,fiscal_agent_debt_service,"City's commercial bank / paying agent — debt service and pass-through flows, not a service provider",manual,2026-07-16
-THE DEPOSITORY TRUST COMPANY,fiscal_agent_debt_service,"DTC — clearing house through which bond principal and interest payments flow to bondholders",manual,2026-07-16
-THE BANK OF NEW YORK MELLON TRUST CO NA,fiscal_agent_debt_service,"Bond trustee / paying agent (spelling 1 of 2 — same institution as THE BANK OF NEW YORK MELLON)",manual,2026-07-16
-THE BANK OF NEW YORK MELLON,fiscal_agent_debt_service,"Bond trustee / paying agent (spelling 2 of 2 — same institution as THE BANK OF NEW YORK MELLON TRUST CO NA)",manual,2026-07-16
-US BANK NATIONAL ASSOCIATION,fiscal_agent_debt_service,"Bond trustee / paying agent — debt service flows",manual,2026-07-16
-KAISER FOUNDATION HEALTH PLAN INC,healthcare,"Employee/retiree health plan premiums (nonprofit health plan — flagged X in the data)",manual,2026-07-16
-BLUE SHIELD OF CALIF,healthcare,"Employee/retiree health plan premiums",manual,2026-07-16
-MWH CONSTRS & WEBCOR BLDRS A CNST JV,supplier,"Construction joint venture (SFPUC capital projects)",manual,2026-07-16
-Single Payment Payees,other,"Controller's aggregation of one-off payees published as a single line — not one entity",manual,2026-07-16
-CITY COLLEGE OF SAN FRANCISCO,other,"Public community college district — intergovernmental funding, not a market supplier",manual,2026-07-16
-STATE OF CALIF DEPT OF HEALTH CARE SVCS,other,"State agency — intergovernmental health program flows (Medi-Cal etc.)",manual,2026-07-16
-REGENTS OF THE UNIVERSITY OF CALIFORNIA,healthcare,"UC (public university) — primarily UCSF clinical staffing of Zuckerberg SF General under the affiliation agreement",manual,2026-07-16
-Voya Institutional Plan Services LLC,payroll_passthrough,"Deferred-compensation (457b) plan administrator — employee contributions passing through, not city spending on services",manual,2026-07-16
-TURNER CONSTRUCTION CO,supplier,"Construction contractor (capital projects)",manual,2026-07-16
-HENSEL PHELPS CONSTRUCTION CO,supplier,"Construction contractor (capital projects)",manual,2026-07-16
-DEPARTMENT OF SOCIAL SERVICES,other,"State agency — intergovernmental social-services flows (IHSS etc.)",manual,2026-07-16
-PCL CONSTRUCTION INC.,supplier,"Construction contractor (capital projects)",manual,2026-07-16
-CHILDREN'S COUNCIL OF SAN FRANCISCO,nonprofit,"Nonprofit — child-care subsidy administration and family services",manual,2026-07-16
-THE NORTHERN TRUST COMPANY,fiscal_agent_debt_service,"Custodian bank (investment/retirement custody flows), not a service provider",manual,2026-07-16
-SAN FRANCISCO COUNTY TRANSPORTATION AUTH,other,"Public agency (sales-tax transportation authority) — intergovernmental",manual,2026-07-16
-Siemens Mobility Inc.,supplier,"Light-rail vehicle manufacturer (Muni LRV4 fleet)",manual,2026-07-16
-SF BAY AREA RAPID TRANSIT DISTRICT,other,"Public transit district — intergovernmental",manual,2026-07-16
-SF IN-HOME SPPRTIV SVCS (IHSS) PUBL AUTH,payroll_passthrough,"Public authority administering wages/benefits of IHSS home-care workers",manual,2026-07-16
-MCKESSON CORPORATION,supplier,"Pharmaceutical distribution",manual,2026-07-16
-HEALTHRIGHT 360,nonprofit,"Nonprofit — health and behavioral-health services",manual,2026-07-16
-ZB National Association,fiscal_agent_debt_service,"Zions Bancorporation NA — paying agent / trustee flows",manual,2026-07-16
-PACIFIC GAS & ELECTRIC CO,supplier,"Utility (gas and electricity)",manual,2026-07-16
-MCCARTHY BUILDING COMPANIES INC,supplier,"Construction contractor (capital projects)",manual,2026-07-16
-TENDERLOIN HOUSING CLINIC INC,nonprofit,"Nonprofit — supportive housing and tenant services",manual,2026-07-16
-DELTA DENTAL PLAN OF CALIFORNIA,healthcare,"Employee/retiree dental plan premiums",manual,2026-07-16
-A P X INC,supplier,"Energy market scheduling/clearing services (CleanPowerSF)",manual,2026-07-16
-UNITED HEALTHCARE INSURANCE COMPANY,healthcare,"Employee/retiree health plan premiums",manual,2026-07-16
-CALPINE ENERGY SERVICES LP,supplier,"Wholesale power purchases",manual,2026-07-16
-EPISCOPAL COMMUNITY SVCS OF S F INC,nonprofit,"Nonprofit — homelessness and supportive-housing services",manual,2026-07-16
-FIVE KEYS SCHOOLS AND PROGRAMS,nonprofit,"Nonprofit — charter schools, reentry and shelter programs",manual,2026-07-16
-GOLDEN GATE CONSTRUCTORS,supplier,"Construction joint venture",manual,2026-07-16
-MOSCONE CENTER JOINT VENTURE,supplier,"Construction/facility joint venture (Moscone Center)",manual,2026-07-16
-S J AMOROSO CONSTRUCTION CO LLC,supplier,"Construction contractor (capital projects)",manual,2026-07-16
-NEXTERA ENERGY MARKETING LLC,supplier,"Wholesale power purchases (CleanPowerSF / Hetch Hetchy)",manual,2026-07-16
-SWINERTON BUILDERS,supplier,"Construction contractor (capital projects)",manual,2026-07-16
-SUNDT/WALSH A JOINT VENTURE,supplier,"Construction joint venture",manual,2026-07-16
-THE SF HOUSING ACCELERATOR FUND,nonprofit,"Nonprofit housing acquisition/preservation fund",manual,2026-07-16
+vendor,bucket,classification_note,classification_method,classified_at,is_aggregation_line
+J P MORGAN CHASE BANK NA,fiscal_agent_debt_service,"City's commercial bank / paying agent — debt service and pass-through flows, not a service provider",manual,2026-07-16,false
+THE DEPOSITORY TRUST COMPANY,fiscal_agent_debt_service,DTC — clearing house through which bond principal and interest payments flow to bondholders,manual,2026-07-16,false
+THE BANK OF NEW YORK MELLON TRUST CO NA,fiscal_agent_debt_service,Bond trustee / paying agent (spelling 1 of 2 — same institution as THE BANK OF NEW YORK MELLON),manual,2026-07-16,false
+THE BANK OF NEW YORK MELLON,fiscal_agent_debt_service,Bond trustee / paying agent (spelling 2 of 2 — same institution as THE BANK OF NEW YORK MELLON TRUST CO NA),manual,2026-07-16,false
+US BANK NATIONAL ASSOCIATION,fiscal_agent_debt_service,Bond trustee / paying agent — debt service flows,manual,2026-07-16,false
+KAISER FOUNDATION HEALTH PLAN INC,healthcare,Employee/retiree health plan premiums (nonprofit health plan — flagged X in the data),manual,2026-07-16,false
+BLUE SHIELD OF CALIF,healthcare,Employee/retiree health plan premiums,manual,2026-07-16,false
+MWH CONSTRS & WEBCOR BLDRS A CNST JV,supplier,Construction joint venture (SFPUC capital projects),manual,2026-07-16,false
+Single Payment Payees,other,Controller's aggregation of one-off payees published as a single line — not one entity,manual,2026-07-16,true
+CITY COLLEGE OF SAN FRANCISCO,other,"Public community college district — intergovernmental funding, not a market supplier",manual,2026-07-16,false
+STATE OF CALIF DEPT OF HEALTH CARE SVCS,other,State agency — intergovernmental health program flows (Medi-Cal etc.),manual,2026-07-16,false
+REGENTS OF THE UNIVERSITY OF CALIFORNIA,healthcare,UC (public university) — primarily UCSF clinical staffing of Zuckerberg SF General under the affiliation agreement,manual,2026-07-16,false
+Voya Institutional Plan Services LLC,payroll_passthrough,"Deferred-compensation (457b) plan administrator — employee contributions passing through, not city spending on services",manual,2026-07-16,false
+TURNER CONSTRUCTION CO,supplier,Construction contractor (capital projects),manual,2026-07-16,false
+HENSEL PHELPS CONSTRUCTION CO,supplier,Construction contractor (capital projects),manual,2026-07-16,false
+DEPARTMENT OF SOCIAL SERVICES,other,State agency — intergovernmental social-services flows (IHSS etc.),manual,2026-07-16,false
+PCL CONSTRUCTION INC.,supplier,Construction contractor (capital projects),manual,2026-07-16,false
+CHILDREN'S COUNCIL OF SAN FRANCISCO,nonprofit,Nonprofit — child-care subsidy administration and family services,manual,2026-07-16,false
+THE NORTHERN TRUST COMPANY,fiscal_agent_debt_service,"Custodian bank (investment/retirement custody flows), not a service provider",manual,2026-07-16,false
+SAN FRANCISCO COUNTY TRANSPORTATION AUTH,other,Public agency (sales-tax transportation authority) — intergovernmental,manual,2026-07-16,false
+Siemens Mobility Inc.,supplier,Light-rail vehicle manufacturer (Muni LRV4 fleet),manual,2026-07-16,false
+SF BAY AREA RAPID TRANSIT DISTRICT,other,Public transit district — intergovernmental,manual,2026-07-16,false
+SF IN-HOME SPPRTIV SVCS (IHSS) PUBL AUTH,payroll_passthrough,Public authority administering wages/benefits of IHSS home-care workers,manual,2026-07-16,false
+MCKESSON CORPORATION,supplier,Pharmaceutical distribution,manual,2026-07-16,false
+HEALTHRIGHT 360,nonprofit,Nonprofit — health and behavioral-health services,manual,2026-07-16,false
+ZB National Association,fiscal_agent_debt_service,Zions Bancorporation NA — paying agent / trustee flows,manual,2026-07-16,false
+PACIFIC GAS & ELECTRIC CO,supplier,Utility (gas and electricity),manual,2026-07-16,false
+MCCARTHY BUILDING COMPANIES INC,supplier,Construction contractor (capital projects),manual,2026-07-16,false
+TENDERLOIN HOUSING CLINIC INC,nonprofit,Nonprofit — supportive housing and tenant services,manual,2026-07-16,false
+DELTA DENTAL PLAN OF CALIFORNIA,healthcare,Employee/retiree dental plan premiums,manual,2026-07-16,false
+A P X INC,supplier,Energy market scheduling/clearing services (CleanPowerSF),manual,2026-07-16,false
+UNITED HEALTHCARE INSURANCE COMPANY,healthcare,Employee/retiree health plan premiums,manual,2026-07-16,false
+CALPINE ENERGY SERVICES LP,supplier,Wholesale power purchases,manual,2026-07-16,false
+EPISCOPAL COMMUNITY SVCS OF S F INC,nonprofit,Nonprofit — homelessness and supportive-housing services,manual,2026-07-16,false
+FIVE KEYS SCHOOLS AND PROGRAMS,nonprofit,"Nonprofit — charter schools, reentry and shelter programs",manual,2026-07-16,false
+GOLDEN GATE CONSTRUCTORS,supplier,Construction joint venture,manual,2026-07-16,false
+MOSCONE CENTER JOINT VENTURE,supplier,Construction/facility joint venture (Moscone Center),manual,2026-07-16,false
+S J AMOROSO CONSTRUCTION CO LLC,supplier,Construction contractor (capital projects),manual,2026-07-16,false
+NEXTERA ENERGY MARKETING LLC,supplier,Wholesale power purchases (CleanPowerSF / Hetch Hetchy),manual,2026-07-16,false
+SWINERTON BUILDERS,supplier,Construction contractor (capital projects),manual,2026-07-16,false
+SUNDT/WALSH A JOINT VENTURE,supplier,Construction joint venture,manual,2026-07-16,false
+THE SF HOUSING ACCELERATOR FUND,nonprofit,Nonprofit housing acquisition/preservation fund,manual,2026-07-16,false
+BANK OF AMERICA NT & SA,fiscal_agent_debt_service,City's former commercial bank — payroll-tax and other pass-through remittances (pre-2018 banking role),manual,2026-07-16,false
+U S BANK,fiscal_agent_debt_service,Bond trustee / paying agent — debt service flows (spelling variant of US BANK NATIONAL ASSOCIATION),manual,2026-07-16,false
+U S BANK TRUST N A,fiscal_agent_debt_service,Bond/lease trustee — debt service and lease-financing flows,manual,2026-07-16,false
+WELLS FARGO BANK N A,fiscal_agent_debt_service,Trustee/custodian bank — restricted-asset and debt-related flows,manual,2026-07-16,false
+WILMINGTON TRUST NATIONAL ASSOCIATION,fiscal_agent_debt_service,Bond trustee / escrow agent — refunding-bond and debt service flows,manual,2026-07-16,false
+MUFG UNION BANK NA,fiscal_agent_debt_service,Bond trustee / paying agent — debt service flows,manual,2026-07-16,false
+DEUTSCHE BANK NATIONAL TRUST CO,fiscal_agent_debt_service,Trustee — lease-financing and debt service flows,manual,2026-07-16,false
+BANK OF AMERICA NA,fiscal_agent_debt_service,Disbursement bank for assistance programs (support and care of persons) — funds passing through to program recipients,manual,2026-07-16,false
+CITY NATIONAL BANK,fiscal_agent_debt_service,Disbursement bank for assistance and loan programs — funds passing through to recipients,manual,2026-07-16,false
+CALPERS,payroll_passthrough,State pension system — retirement contributions remitted for CalPERS-covered employees,manual,2026-07-16,false
+PRUDENTIAL INVESTMENT MANAGEMENT INC,payroll_passthrough,Former deferred-compensation (457b) plan administrator — employee contributions passing through (predecessor to Voya),manual,2026-07-16,false
+P&A ADMINISTRATIVE SERVICES INC,payroll_passthrough,Employee-benefit account administrator (flexible spending / COBRA) — employee money passing through,manual,2026-07-16,false
+ACUMEN FISCAL AGENT LLC,payroll_passthrough,Fiscal agent / employer-of-record for in-home care worker payments — wages passing through,manual,2026-07-16,false
+San Francisco Health Plan,healthcare,City-sponsored Medi-Cal managed-care plan — largely program premium flows,manual,2026-07-16,false
+SAN FRANCISCO COMMUNITY HEALTH AUTHORITY,healthcare,Public authority operating the San Francisco Health Plan (Medi-Cal managed care),manual,2026-07-16,false
+UCSF CLINIC PRAC GRP SFGH/COMM FOCUS PGM,healthcare,UCSF clinical practice group — physician staffing of Zuckerberg SF General,manual,2026-07-16,false
+REGENTS UNIV OF CA / SFGH PSYCHIATRY DPT,healthcare,UCSF psychiatry department at Zuckerberg SF General (UC Regents affiliate spelling),manual,2026-07-16,false
+CRESTWOOD BEHAVIORAL HEALTH INC,healthcare,Behavioral-health facility operator — psychiatric placements for DPH clients,manual,2026-07-16,false
+ADDICTION RESEARCH & TREATMENT INC,healthcare,Opioid-treatment (methadone) clinic operator under DPH contracts,manual,2026-07-16,false
+CROSS COUNTRY STAFFING,healthcare,Clinical staffing agency — hospital nurse staffing,manual,2026-07-16,false
+STATE OF CALIF STATE TREAS CASH MGT DIV,other,State treasury — court fees and other collections remitted to the State,manual,2026-07-16,false
+DEPARTMENT OF GENERAL SERVICES,other,California Department of General Services — intergovernmental energy and service flows,manual,2026-07-16,false
+CA dept of Tax & Fee Admin (BOE),other,State tax agency — tax remittances (intergovernmental),manual,2026-07-16,false
+STATE WATER RESOURCES CONTROL BOARD,other,State agency — clean-water revolving-fund loan repayments (intergovernmental),manual,2026-07-16,false
+NATIONAL PARK SERVICE,other,"Federal agency — permits, leases and intergovernmental payments",manual,2026-07-16,false
+SAN MATEO COUNTY,other,Neighboring county — intergovernmental program payments,manual,2026-07-16,false
+SAN FRANCISCO UNIFIED SCHOOL DISTRICT,other,School district — City grants and program funding to SFUSD (intergovernmental),manual,2026-07-16,false
+SAN FRANCISCO COMMUNITY COLLEGE DISTRICT,other,Public community college district — intergovernmental funding (spelling variant of CITY COLLEGE OF SAN FRANCISCO),manual,2026-07-16,false
+TRANSBAY JOINT POWERS AUTHORITY,other,Public agency (Transbay transit center) — intergovernmental,manual,2026-07-16,false
+PENINSULA CORRIDOR JOINT POWERS BOARD,other,Caltrain joint powers board — intergovernmental transit funding,manual,2026-07-16,false
+METROPOLITAN TRANSPORTATION COMMISSION,other,Regional transportation agency — intergovernmental,manual,2026-07-16,false
+SF TOURISM IMPROVEMENT DIST MGMT CORP,other,Business-district assessment pass-through — hotel assessments collected by the City and remitted to the district,manual,2026-07-16,false
+CCSF HRD WORKERS COMP DIVISION,other,The City's own workers'-compensation division — internal insurance funding flows,manual,2026-07-16,false
+CCSF TPA WORKERS COMP DIVISION,other,The City's own workers'-compensation division (third-party-administered) — internal insurance flows,manual,2026-07-16,false
+CCSF/MTA WORKERS' COMP/INTERCARE INS SVC,other,"City workers'-compensation account (MTA), third-party-administered — internal insurance flows",manual,2026-07-16,false
+HSA AP Interface Supplier,other,"Accounting interface line for HSA aid payments (foster care, adoption, CAAP) — aggregated benefit payments, not one entity",manual,2026-07-16,true
+RICHMOND AREA MULTI-SERVICES INC,nonprofit,Nonprofit — behavioral-health and community services,manual,2026-07-16,false
+PROGRESS FOUNDATION,nonprofit,Nonprofit — residential behavioral-health programs,manual,2026-07-16,false
+WU YEE CHILDREN'S SERVICES,nonprofit,Nonprofit — early-childhood education and family services,manual,2026-07-16,false
+CATHOLIC CHARITIES,nonprofit,"Nonprofit — homelessness, housing and family services",manual,2026-07-16,false
+FELTON INSTITUTE,nonprofit,Nonprofit — behavioral-health and social services,manual,2026-07-16,false
+BAKER PLACES INC,nonprofit,Nonprofit — residential treatment programs,manual,2026-07-16,false
+HOMEBRIDGE INC,nonprofit,Nonprofit — in-home care services (IHSS contract mode),manual,2026-07-16,false
+WESTSIDE COMMUNITY MENTAL HEALTH CTR INC,nonprofit,Nonprofit — community mental-health services,manual,2026-07-16,false
+CONARD HOUSE INC,nonprofit,Nonprofit — supportive housing and mental-health services,manual,2026-07-16,false
+SAN FRANCISCO AIDS FOUNDATION,nonprofit,Nonprofit — HIV/AIDS health services,manual,2026-07-16,false
+LARKIN STREET YOUTH SERVICES,nonprofit,Nonprofit — homeless and at-risk youth services,manual,2026-07-16,false
+JAPANESE COMMUNITY YOUTH COUNCIL,nonprofit,Nonprofit — youth employment and community programs,manual,2026-07-16,false
+YMCA OF SAN FRANCISCO,nonprofit,"Nonprofit — youth, family and community programs",manual,2026-07-16,false
+Y M C A OF SAN FRANCISCO,nonprofit,"Nonprofit — youth, family and community programs (spelling variant)",manual,2026-07-16,false
+BAYVIEW HUNTERS PT FNDTN FOR COMM IMPROV,nonprofit,Nonprofit — community behavioral-health and social services,manual,2026-07-16,false
+HELUNA HEALTH,nonprofit,Nonprofit — public-health program fiscal sponsor and operator,manual,2026-07-16,false
+COMPASS FAMILY SERVICES,nonprofit,Nonprofit — family homelessness services,manual,2026-07-16,false
+EDGEWOOD CENTER FOR CHILDREN AND FAMILES,nonprofit,Nonprofit — children's behavioral-health services,manual,2026-07-16,false
+ST VINCENT DE PAUL SOCIETY OF SF,nonprofit,Nonprofit — shelters and homelessness services,manual,2026-07-16,false
+TIDES CENTER,nonprofit,Nonprofit — fiscal sponsor for community programs,manual,2026-07-16,false
+INSTITUTO FAMILIAR DE LA RAZA INC,nonprofit,Nonprofit — Latino family health and community services,manual,2026-07-16,false
+MEDA Small Properties LLC,nonprofit,Nonprofit-affiliated housing entity (Mission Economic Development Agency) — small-sites acquisition loans,manual,2026-07-16,false
+MEALS ON WHEELS,nonprofit,Nonprofit — home-delivered meals for seniors,manual,2026-07-16,false
+EVICTION DEFENSE COLLABORATIVE INC,nonprofit,Nonprofit — tenant legal aid and rent assistance,manual,2026-07-16,false
+CALIFORNIA ACADEMY OF SCIENCES,nonprofit,Nonprofit — natural-history museum receiving City operating support,manual,2026-07-16,false
+BRILLIANT CORNERS,nonprofit,Nonprofit — supportive-housing rent payments on behalf of clients,manual,2026-07-16,false
+LOW INCOME INVESTMENT FUND,nonprofit,Nonprofit — community development financial institution (child-care and housing facilities),manual,2026-07-16,false
+MISSION NEIGHBORHOOD CENTERS INC,nonprofit,Nonprofit — neighborhood family and youth services,manual,2026-07-16,false
+INSTITUTE ON AGING,nonprofit,Nonprofit — senior health and social services,manual,2026-07-16,false
+MISSION ACTION INC,nonprofit,Nonprofit — homelessness and community services,manual,2026-07-16,false
+YOUNG COMMUNITY DEVELOPERS INC,nonprofit,Nonprofit — workforce development and youth services,manual,2026-07-16,false
+COMMUNITY HOUSING PARTNERSHIP,nonprofit,Nonprofit — supportive housing operator,manual,2026-07-16,false
+COMMUNITY YOUTH CENTER SAN FRANCISCO,nonprofit,Nonprofit — youth services,manual,2026-07-16,false
+ASIAN AMERICAN RECOVERY SERVICES INC,nonprofit,Nonprofit — substance-use treatment services (later merged into HealthRight 360),manual,2026-07-16,false
+COMMUNITY FORWARD SF,nonprofit,Nonprofit — behavioral-health and shelter services,manual,2026-07-16,false
+TENDERLOIN NEIGHBORHOOD DEVELOPMENT CORP,nonprofit,Nonprofit — affordable-housing developer and operator,manual,2026-07-16,false
+HOMELESS PRENATAL PROGRAM,nonprofit,Nonprofit — family homelessness and prenatal services,manual,2026-07-16,false
+ARRIBA JUNTOS - IAL,nonprofit,Nonprofit — workforce development services,manual,2026-07-16,false
+SAN FRANCISCO FOOD BANK,nonprofit,Nonprofit — food bank (SF-Marin Food Bank),manual,2026-07-16,false
+SAN FRANCISCO STUDY CENTER INC,nonprofit,Nonprofit — fiscal sponsor for community programs,manual,2026-07-16,false
+URBAN ALCHEMY,nonprofit,Nonprofit — street cleanliness and safety programs,manual,2026-07-16,false
+SAN FRANCISCO ZOOLOGICAL SOCIETY,nonprofit,Nonprofit — operates the SF Zoo under City agreement,manual,2026-07-16,false
+SELF-HELP FOR THE ELDERLY,nonprofit,"Nonprofit — senior services (home care, meals, housing)",manual,2026-07-16,false
+WEBCOR BUILDERS,supplier,Construction contractor (capital projects),manual,2026-07-16,false
+TUTOR PERINI CORPORATION,supplier,Construction contractor (Central Subway and other transit projects),manual,2026-07-16,false
+AUSTIN WEBCOR JV,supplier,Construction joint venture (airport projects),manual,2026-07-16,false
+CLARK CONSTRUCTION GROUP - CALIF LP,supplier,Construction contractor (capital projects),manual,2026-07-16,false
+DRAGADOS USA/FLATIRON WEST/SUKUT CNST JV,supplier,Construction joint venture (water-system projects),manual,2026-07-16,false
+CHARLES PANKOW BUILDERS LTD,supplier,Construction contractor (capital projects),manual,2026-07-16,false
+KIEWIT INFRASTRUCTURE WEST CO,supplier,Construction contractor (infrastructure projects),manual,2026-07-16,false
+WALSH CONSTRUCTION COMPANY II,supplier,Construction contractor (capital projects),manual,2026-07-16,false
+SHIMMICK CONSTRUCTION CO INC,supplier,Construction contractor (water-system projects),manual,2026-07-16,false
+N T K CONSTRUCTION INC,supplier,Construction contractor (transit and utility projects),manual,2026-07-16,false
+A RUIZ CONSTRUCTION CO AND ASSOC INC,supplier,Construction contractor (public works),manual,2026-07-16,false
+SOUTHLAND TUTOR PERINI JV,supplier,Construction joint venture (sewer-system projects),manual,2026-07-16,false
+ESQUIVEL GRADING & PAVING INC,supplier,Street grading and paving contractor,manual,2026-07-16,false
+ANVIL BUILDERS INC,supplier,Construction contractor (utility projects),manual,2026-07-16,false
+BARNARD IMPREGILO HEALY JV,supplier,Tunnel construction joint venture (Central Subway),manual,2026-07-16,false
+J FLORES CONSTRUCTION COMPANY INC,supplier,Construction contractor (utility projects),manual,2026-07-16,false
+M SQUARED CONSTRUCTION INC,supplier,Construction contractor (public works),manual,2026-07-16,false
+NIBBI BROS ASSOCIATES INC,supplier,Construction contractor (capital projects),manual,2026-07-16,false
+MICHELS/JAY DEE/COLUCCIO JOINT VENTURE,supplier,Tunnel construction joint venture (sewer projects),manual,2026-07-16,false
+MITCHELL ENGINEERING,supplier,Construction and engineering contractor (public works),manual,2026-07-16,false
+SCHEMBRI CONSTRUCTION CO INC,supplier,Construction contractor (airport projects),manual,2026-07-16,false
+GRANITE ROCK CO,supplier,Construction materials and paving contractor,manual,2026-07-16,false
+MONTEREY MECHANICAL CO,supplier,Mechanical construction contractor (utility projects),manual,2026-07-16,false
+WESTERN WATER CONSTRUCTORS INC,supplier,Water-system construction contractor,manual,2026-07-16,false
+BROWN & CALDWELL,supplier,Environmental engineering firm (water/wastewater),manual,2026-07-16,false
+SKANSKA USA BUILDING INC,supplier,Construction contractor (airport projects),manual,2026-07-16,false
+SKANSKA CONSTRUCTORS,supplier,"Construction contractor (airport projects, spelling variant)",manual,2026-07-16,false
+JMB CONSTRUCTION INC,supplier,Construction contractor (utility projects),manual,2026-07-16,false
+CAL STATE CONSTRUCTORS INC,supplier,Construction contractor (utility projects),manual,2026-07-16,false
+PRECISION ENGINEERING INC,supplier,Construction contractor (public works),manual,2026-07-16,false
+SHAW PIPELINE INC,supplier,Pipeline construction contractor,manual,2026-07-16,false
+S J AMOROSO CONSTRUCTION CO INC,supplier,Construction contractor (spelling variant of S J AMOROSO CONSTRUCTION CO LLC),manual,2026-07-16,false
+MOUNTAIN CASCADE INC,supplier,Pipeline construction contractor,manual,2026-07-16,false
+RANGER PIPELINES INC,supplier,Pipeline construction contractor,manual,2026-07-16,false
+YERBA BUENA ENGINEERING & CONSTRCTN INC,supplier,Construction contractor (utility projects),manual,2026-07-16,false
+C L W BUILDERS INC,supplier,Construction contractor (public works),manual,2026-07-16,false
+SIERRA MOUNTAIN CONSTRUCTION INC,supplier,Construction contractor (utility projects),manual,2026-07-16,false
+BAUMAN LANDSCAPE & CONSTRUCTION INC,supplier,Landscape and streetscape construction contractor,manual,2026-07-16,false
+HUNT CONSTRUCTION GROUP INC,supplier,Construction contractor (airport projects),manual,2026-07-16,false
+STACY & WITBECK INC,supplier,Transit construction contractor,manual,2026-07-16,false
+DARCY & HARTY CONSTR INC,supplier,Sewer construction contractor,manual,2026-07-16,false
+MEDLINE INDUSTRIES INC,supplier,Hospital and clinic supplies distributor,manual,2026-07-16,false
+AECOM/PARSONS JV,supplier,Engineering joint venture (sewer program management),manual,2026-07-16,false
+AECOM TECHNICAL SERVICES INC,supplier,Engineering and program-management services,manual,2026-07-16,false
+U R S CORPORATION,supplier,Engineering and program-management services,manual,2026-07-16,false
+BLACK & VEATCH CORPORATION,supplier,Engineering services (water/power),manual,2026-07-16,false
+PARSONS WATER & INFRASTRUCTURE INC,supplier,Engineering services (water infrastructure),manual,2026-07-16,false
+GALLIERA INC DBA TRICO CONSTRUCTION,supplier,Construction contractor (airport projects),manual,2026-07-16,false
+PCL CIVIL CONSTRUCTORS INC,supplier,Civil construction contractor (spelling variant of PCL CONSTRUCTION INC.),manual,2026-07-16,false
+SHANK/BALFOUR BEATTY JV,supplier,Tunnel construction joint venture (sewer projects),manual,2026-07-16,false
+CONTRI CONSTRUCTION CO,supplier,Construction contractor (utility projects),manual,2026-07-16,false
+SUPER EXCAVATORS INC,supplier,Excavation and tunneling contractor,manual,2026-07-16,false
+C OVERAA & CO,supplier,Construction contractor (capital projects),manual,2026-07-16,false
+D W NICHOLSON CORP,supplier,Mechanical construction contractor (airport projects),manual,2026-07-16,false
+ENGINEERED ARRESTING SYSTEMS CORPORATION,supplier,Airport runway safety-systems supplier,manual,2026-07-16,false
+GHILOTTI BROS INC,supplier,Street and infrastructure construction contractor,manual,2026-07-16,false
+CHICAGO TITLE COMPANY,supplier,"Title/escrow company — City land and building purchases flow through escrow (the payee is the escrow, the purchase is real)",manual,2026-07-16,false
+STEWART TITLE GUARANTY CO,supplier,Title/escrow company — City land and building purchases flow through escrow,manual,2026-07-16,false
+NEW FLYER OF AMERICA INC,supplier,Transit bus manufacturer (Muni fleet),manual,2026-07-16,false
+New Flyer of America Inc,supplier,"Transit bus manufacturer (Muni fleet, spelling variant)",manual,2026-07-16,false
+SIEMENS INDUSTRY INC,supplier,Rail systems and building-technology supplier,manual,2026-07-16,false
+Alstom Transport USA Inc,supplier,"Rail vehicle systems supplier (airport people-mover, Muni)",manual,2026-07-16,false
+BOMBARDIER TRANSPRTN (HOLDINGS) USA INC,supplier,Airport people-mover systems supplier,manual,2026-07-16,false
+HITACHI RAIL USA INC,supplier,Rail vehicle systems supplier,manual,2026-07-16,false
+DAIMLER BUSES NORTH AMERICA INC,supplier,Transit bus manufacturer,manual,2026-07-16,false
+COMPLETE COACH WORKS,supplier,Transit vehicle rehabilitation contractor,manual,2026-07-16,false
+VANDERLANDE INDUSTRIES INC,supplier,Airport baggage-handling systems supplier,manual,2026-07-16,false
+HARRIS CORPORATION,supplier,Radio and communication systems supplier,manual,2026-07-16,false
+VORTECH INDUSTRIES,supplier,Transit parts and equipment supplier,manual,2026-07-16,false
+TOWNE FORD SALES,supplier,Vehicle dealer (City fleet purchases),manual,2026-07-16,false
+Morgan Stanley Capital Group Inc.,supplier,"Wholesale power purchases (CleanPowerSF / Hetch Hetchy) — an energy-trading counterparty, not a fiscal agent",manual,2026-07-16,false
+NRG Business Marketing LLC,supplier,Wholesale power purchases,manual,2026-07-16,false
+SHELL ENERGY NORTH AMERICA (US) LP,supplier,Wholesale power purchases,manual,2026-07-16,false
+SOUTHERN CALIFORNIA EDISON CO.,supplier,Wholesale power purchases,manual,2026-07-16,false
+GOLDEN GATE PETROLEUM,supplier,Fuel supplier (City fleet),manual,2026-07-16,false
+WESTERN STATES OIL,supplier,Fuel supplier (City fleet),manual,2026-07-16,false
+SAN FRANCISCO PETROLEUM,supplier,Fuel supplier (City fleet),manual,2026-07-16,false
+A T & T,supplier,Telecommunications utility,manual,2026-07-16,false
+RECOLOGY SUNSET SCAVENGER COMPANY,supplier,Waste collection and disposal services,manual,2026-07-16,false
+XTECH,supplier,IT hardware/software reseller,manual,2026-07-16,false
+COMPUTERLAND SILICON VALLEY,supplier,IT hardware/software reseller,manual,2026-07-16,false
+EN POINTE TECHNOLOGIES SALES INC,supplier,IT hardware/software reseller,manual,2026-07-16,false
+ZONES LLC,supplier,IT hardware/software reseller,manual,2026-07-16,false
+CONNECTION,supplier,IT hardware/software reseller,manual,2026-07-16,false
+Epic State and Local Government LLC,supplier,Electronic health-record software (DPH),manual,2026-07-16,false
+TRANSDEV SERVICES INC,supplier,Paratransit operations contractor (Muni),manual,2026-07-16,false
+A T C/VANCOM INC,supplier,Paratransit operations contractor,manual,2026-07-16,false
+NEW SOUTH PARKING-CALIFORNIA GP,supplier,Airport parking operator,manual,2026-07-16,false
+AMPCO SYSTEM PARKING,supplier,Airport parking operator,manual,2026-07-16,false
+LAZ PARKING CALIFORNIA LLC,supplier,Parking garage operator (City garages),manual,2026-07-16,false
+IMCO PARKING LLC,supplier,Parking garage operator (City garages),manual,2026-07-16,false
+TEGSCO LLC,supplier,Towing services contractor (SFMTA),manual,2026-07-16,false
+ALLIED UNIVERSAL  SECURITY SERVICES,supplier,Security guard services,manual,2026-07-16,false
+ALLIANT INSURANCE SERVICES INC,supplier,Insurance brokerage services,manual,2026-07-16,false
+INTERCARE HOLDINGS INSURANCE SVCS INC,supplier,Workers'-compensation claims administration services,manual,2026-07-16,false
+SEDGWICK CMS,supplier,Workers'-compensation claims administration services,manual,2026-07-16,false
+CARDINALHEALTH MEDICAL PRODUCTS & SVCS,supplier,Hospital and clinic supplies distributor,manual,2026-07-16,false
+MCKESSON PLASMA AND BIOLOGICS LLC,supplier,Pharmaceutical distribution (plasma and biologics),manual,2026-07-16,false
+SFO HOTEL SHUTTLE INC,supplier,Airport shuttle operations contractor,manual,2026-07-16,false
+GRID ONE SOLUTIONS INC,supplier,Meter-reading and field services contractor,manual,2026-07-16,false
+Goodwill SF Urban Development LLC,supplier,Goodwill-affiliated real-estate entity — City rent/lease and development payments,manual,2026-07-16,false
+220 GOLDEN GATE ASSOCIATES LP,supplier,Property owner — leased premises / program building payments,manual,2026-07-16,false
+KAIM 350 Rhode Island LLC,supplier,Property owner — City office lease (350 Rhode Island),manual,2026-07-16,false
+3900 3RD STREET HOUSING LLC,supplier,Single-purpose affordable-housing entity — City loan disbursement,manual,2026-07-16,false
+ALLSTAR FIRE EQUIPMENT INC,supplier,Firefighter safety equipment supplier,manual,2026-07-16,false
+BARAK D JOLISH,person,"Individual payee — direct rent/lease payments (leased or master-leased premises); rendered as 'individual payee', never featured",manual,2026-07-16,false
+WILLIAM J PIEDEMONTE,person,"Individual payee — direct rent/lease payments; rendered as 'individual payee', never featured",manual,2026-07-16,false
+LAN FONG HUEY,person,"Individual payee — direct rent/lease payments; rendered as 'individual payee', never featured",manual,2026-07-16,false
+RUTH MELLINGER,person,"Individual payee — direct rent/lease payments; rendered as 'individual payee', never featured",manual,2026-07-16,false
+CELESTINA JIMENEZ,person,"Individual payee — direct rent/lease payments; rendered as 'individual payee', never featured",manual,2026-07-16,false
+Lolita Lodhia,person,"Individual payee — direct rent/lease payments; rendered as 'individual payee', never featured",manual,2026-07-16,false

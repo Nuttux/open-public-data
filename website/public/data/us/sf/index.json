@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-16T14:41:59.799116+00:00",
+  "generated_at": "2026-07-16T21:44:09.911068+00:00",
   "source_pipeline": "configs/countries/us.yaml → sync_socrata.py + sync_census_popest.py → raw.us_sf_* → dbt_us_staging → dbt_us_analytics → dbt_us_marts → export_us_sf.py",
   "country": "us",
   "scale": "city",
@@ -11,7 +11,12 @@
       "source_url": "https://data.sfgov.org/d/xdgd-c79v"
     },
     "top_payees.json": {
-      "description": "Top 40 voucher payees per fiscal year with manual bucket classification (FY2025)",
+      "description": "Who-gets-paid payload: top 100 voucher payees per fiscal year with bucket classification, perimeter split, coverage, nonprofit slice (FY2018+), grant lens and materiality lines",
+      "as_of": "2026-07-13T13:40:40+00:00",
+      "source_url": "https://data.sfgov.org/d/n9pm-xkyq"
+    },
+    "payees_search.json": {
+      "description": "Lazy payee search index — 4068 vendors (per-FY top-1,000 union) with per-FY sums and buckets",
       "as_of": "2026-07-13T13:40:40+00:00",
       "source_url": "https://data.sfgov.org/d/n9pm-xkyq"
     },

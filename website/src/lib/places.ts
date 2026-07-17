@@ -61,6 +61,7 @@ export const PLACES: Place[] = [
     dataNamespace: "us/sf",
     hub: false,
     modules: [
+      { slug: "who-gets-paid", labelKey: "us.sf.nav.who_gets_paid" },
       { slug: "contracts", labelKey: "us.sf.nav.contracts" },
       { slug: "payroll", labelKey: "us.sf.nav.payroll" },
     ],
