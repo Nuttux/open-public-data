@@ -52,6 +52,12 @@ SELECT
     b.transfer_adjustment_usd,
     b.n_lines,
     b.is_fiscal_year_complete,
+    -- Block 1: the calendar boolean above misleads (it flags the newest
+    -- ended FY "complete" while the accounting close runs for months) —
+    -- exports and the UI read execution_status instead (boolean kept,
+    -- additive; see macros/us_sf_execution_status.sql).
+    {{ us_sf_execution_status('b.fiscal_year', basis='budget') }}
+                                            AS execution_status,
     SAFE_DIVIDE(b.total_usd, p.population)  AS per_resident_usd,
     p.population,
     p.year                                  AS population_year,

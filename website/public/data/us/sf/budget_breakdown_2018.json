@@ -1,0 +1,848 @@
+{
+  "generated_at": "2026-07-16T21:33:11.030453+00:00",
+  "source_pipeline": "configs/countries/us.yaml → sync_socrata.py + sync_census_popest.py → raw.us_sf_* → dbt_us_staging → dbt_us_analytics → dbt_us_marts → export_us_sf.py",
+  "country": "us",
+  "scale": "city",
+  "place": "sf",
+  "unit": "USD",
+  "fiscal_year": 2018,
+  "execution_status": "closed",
+  "as_of": "2026-07-13T10:17:58+00:00",
+  "source": {
+    "name": "Budget",
+    "dataset_id": "xdgd-c79v",
+    "source_url": "https://data.sfgov.org/d/xdgd-c79v",
+    "attribution": "SF Controller's Office",
+    "rows_updated_at": "2026-07-13T10:17:58+00:00"
+  },
+  "perimeter": "Adopted budget (Annual Appropriation Ordinance), ALL funds, citywide, NET of the dataset's embedded negative 'Transfer Adjustment' rows — those lines are carried explicitly (never silently netted) as transfer_adjustment_usd at every altitude and flagged in the dept × character cells.",
+  "chart_of_accounts": "legacy",
+  "drill": {
+    "available": false,
+    "reason": "FY2018 is the PeopleSoft migration year: the budget dataset mixes both chart-of-accounts systems and duplicates department identities, so department/character breakdowns are not publishable. Citywide, org-group and fund totals are consistent and shipped."
+  },
+  "totals": {
+    "spending": {
+      "total_usd": 10503079466.0,
+      "transfer_adjustment_usd": -2576658637.0,
+      "n_lines": 32923,
+      "per_resident_usd": null,
+      "population_year": null
+    },
+    "revenue": {
+      "total_usd": 10503079466.0,
+      "transfer_adjustment_usd": -2576658637.0,
+      "n_lines": 6733,
+      "per_resident_usd": null,
+      "population_year": null
+    }
+  },
+  "org_groups": {
+    "spending": [
+      {
+        "code": "02",
+        "label": "Public Works, Transportation & Commerce",
+        "total_usd": 3574797592.0,
+        "transfer_adjustment_usd": -844924640.0,
+        "share_of_side": 0.340357,
+        "n_departments": 12
+      },
+      {
+        "code": "04",
+        "label": "Community Health",
+        "total_usd": 2153111291.0,
+        "transfer_adjustment_usd": -188898067.0,
+        "share_of_side": 0.204998,
+        "n_departments": 1
+      },
+      {
+        "code": "03",
+        "label": "Human Welfare & Neighborhood Development",
+        "total_usd": 1664168170.0,
+        "transfer_adjustment_usd": -92494977.0,
+        "share_of_side": 0.158446,
+        "n_departments": 11
+      },
+      {
+        "code": "01",
+        "label": "Public Protection",
+        "total_usd": 1564586391.0,
+        "transfer_adjustment_usd": -37949358.0,
+        "share_of_side": 0.148965,
+        "n_departments": 10
+      },
+      {
+        "code": "06",
+        "label": "General Administration & Finance",
+        "total_usd": 636705702.0,
+        "transfer_adjustment_usd": -544467687.0,
+        "share_of_side": 0.060621,
+        "n_departments": 15
+      },
+      {
+        "code": "07",
+        "label": "General City Responsibilities",
+        "total_usd": 470378969.0,
+        "transfer_adjustment_usd": -831890221.0,
+        "share_of_side": 0.044785,
+        "n_departments": 1
+      },
+      {
+        "code": "05",
+        "label": "Culture & Recreation",
+        "total_usd": 439331351.0,
+        "transfer_adjustment_usd": -36033687.0,
+        "share_of_side": 0.041829,
+        "n_departments": 8
+      }
+    ],
+    "revenue": [
+      {
+        "code": "02",
+        "label": "Public Works, Transportation & Commerce",
+        "total_usd": 3574797592.0,
+        "transfer_adjustment_usd": -932756891.0,
+        "share_of_side": 0.340357,
+        "n_departments": 12
+      },
+      {
+        "code": "04",
+        "label": "Community Health",
+        "total_usd": 2153111291.0,
+        "transfer_adjustment_usd": -188898067.0,
+        "share_of_side": 0.204998,
+        "n_departments": 1
+      },
+      {
+        "code": "03",
+        "label": "Human Welfare & Neighborhood Development",
+        "total_usd": 1664168170.0,
+        "transfer_adjustment_usd": -92494977.0,
+        "share_of_side": 0.158446,
+        "n_departments": 11
+      },
+      {
+        "code": "01",
+        "label": "Public Protection",
+        "total_usd": 1564586391.0,
+        "transfer_adjustment_usd": 49882893.0,
+        "share_of_side": 0.148965,
+        "n_departments": 10
+      },
+      {
+        "code": "06",
+        "label": "General Administration & Finance",
+        "total_usd": 636705702.0,
+        "transfer_adjustment_usd": -544467687.0,
+        "share_of_side": 0.060621,
+        "n_departments": 15
+      },
+      {
+        "code": "07",
+        "label": "General City Responsibilities",
+        "total_usd": 470378969.0,
+        "transfer_adjustment_usd": -831890221.0,
+        "share_of_side": 0.044785,
+        "n_departments": 2
+      },
+      {
+        "code": "05",
+        "label": "Culture & Recreation",
+        "total_usd": 439331351.0,
+        "transfer_adjustment_usd": -36033687.0,
+        "share_of_side": 0.041829,
+        "n_departments": 8
+      }
+    ]
+  },
+  "departments": {
+    "spending": [],
+    "revenue": []
+  },
+  "dept_characters": {
+    "columns": [
+      "department_code",
+      "character_code",
+      "amount_usd",
+      "is_transfer_adjustment"
+    ],
+    "spending": [],
+    "revenue": []
+  },
+  "characters": {
+    "spending": [],
+    "revenue": []
+  },
+  "program_strip": {
+    "available": false,
+    "note": "Not rendered: this fiscal year's program dimension is the legacy per-department taxonomy (hundreds of programs), not the modern activity tags.",
+    "rows": []
+  },
+  "funds": {
+    "spending": [
+      {
+        "fund_type": "General Fund",
+        "fund_category": "Operating",
+        "total_usd": 3448472539.0,
+        "n_funds": 1
+      },
+      {
+        "fund_type": "SF International Airport Funds",
+        "fund_category": "Operating",
+        "total_usd": 975221652.0,
+        "n_funds": 1
+      },
+      {
+        "fund_type": "General Hospital Medical Center Funds",
+        "fund_category": "Operating",
+        "total_usd": 879229336.0,
+        "n_funds": 1
+      },
+      {
+        "fund_type": "MTA Municipal Railway Funds",
+        "fund_category": "Operating",
+        "total_usd": 878014754.0,
+        "n_funds": 1
+      },
+      {
+        "fund_type": "Special Revenue Funds",
+        "fund_category": "Operating",
+        "total_usd": 521019570.0,
+        "n_funds": 15
+      },
+      {
+        "fund_type": "PUC Water Department Funds",
+        "fund_category": "Operating",
+        "total_usd": 439098635.0,
+        "n_funds": 2
+      },
+      {
+        "fund_type": "General Fund",
+        "fund_category": "Continuing Projects",
+        "total_usd": 428858240.0,
+        "n_funds": 1
+      },
+      {
+        "fund_type": "Special Revenue Funds",
+        "fund_category": "Continuing Projects",
+        "total_usd": 416052887.0,
+        "n_funds": 19
+      },
+      {
+        "fund_type": "Debt Service Funds",
+        "fund_category": "Operating",
+        "total_usd": 303185312.0,
+        "n_funds": 3
+      },
+      {
+        "fund_type": "Laguna Honda Hospital Funds",
+        "fund_category": "Operating",
+        "total_usd": 254605735.0,
+        "n_funds": 2
+      },
+      {
+        "fund_type": "PUC Wastewater Funds",
+        "fund_category": "Operating",
+        "total_usd": 249305091.0,
+        "n_funds": 1
+      },
+      {
+        "fund_type": "Special Revenue Funds",
+        "fund_category": "Grants",
+        "total_usd": 198399604.0,
+        "n_funds": 11
+      },
+      {
+        "fund_type": "General Fund",
+        "fund_category": "Annual Projects",
+        "total_usd": 196814022.0,
+        "n_funds": 1
+      },
+      {
+        "fund_type": "MTA Parking & Traffic Funds",
+        "fund_category": "Operating",
+        "total_usd": 153939851.0,
+        "n_funds": 1
+      },
+      {
+        "fund_type": "Successor Agency-Former SF Redev Agency",
+        "fund_category": null,
+        "total_usd": 122093237.0,
+        "n_funds": 2
+      },
+      {
+        "fund_type": "Port Of San Francisco Funds",
+        "fund_category": "Operating",
+        "total_usd": 96825490.0,
+        "n_funds": 1
+      },
+      {
+        "fund_type": "Agency Funds",
+        "fund_category": "Operating",
+        "total_usd": 92186500.0,
+        "n_funds": 1
+      },
+      {
+        "fund_type": "Successor Agency-Former SF Redev Agency",
+        "fund_category": "Continuing Projects",
+        "total_usd": 78745584.0,
+        "n_funds": 1
+      },
+      {
+        "fund_type": "MTA Municipal Railway Funds",
+        "fund_category": "Continuing Projects",
+        "total_usd": 77125681.0,
+        "n_funds": 3
+      },
+      {
+        "fund_type": "Successor Agency-Former SF Redev Agency",
+        "fund_category": "Annual Projects",
+        "total_usd": 75198211.0,
+        "n_funds": 2
+      },
+      {
+        "fund_type": "Retiree Health Care Trust Fund - Prop B",
+        "fund_category": "Operating",
+        "total_usd": 67157000.0,
+        "n_funds": 1
+      },
+      {
+        "fund_type": "Capital Projects Funds",
+        "fund_category": "Grants",
+        "total_usd": 55000000.0,
+        "n_funds": 1
+      },
+      {
+        "fund_type": "PUC Hetch Hetchy Funds",
+        "fund_category": "Operating",
+        "total_usd": 45996346.0,
+        "n_funds": 1
+      },
+      {
+        "fund_type": "PUC Wastewater Funds",
+        "fund_category": "Continuing Projects",
+        "total_usd": 45000000.0,
+        "n_funds": 1
+      },
+      {
+        "fund_type": "Clp-Clean Powersf Funds",
+        "fund_category": "Operating",
+        "total_usd": 40257512.0,
+        "n_funds": 2
+      },
+      {
+        "fund_type": "MTA Parking Garages/Other",
+        "fund_category": "Operating",
+        "total_usd": 35873488.0,
+        "n_funds": 1
+      },
+      {
+        "fund_type": "PUC Hetch Hetchy Funds",
+        "fund_category": "Continuing Projects",
+        "total_usd": 35000000.0,
+        "n_funds": 2
+      },
+      {
+        "fund_type": "PUC Water Department Funds",
+        "fund_category": "Continuing Projects",
+        "total_usd": 33591596.0,
+        "n_funds": 2
+      },
+      {
+        "fund_type": "Pension Trust Funds",
+        "fund_category": "Operating",
+        "total_usd": 29200550.0,
+        "n_funds": 1
+      },
+      {
+        "fund_type": "Capital Projects Funds",
+        "fund_category": "Continuing Projects",
+        "total_usd": 26919000.0,
+        "n_funds": 2
+      },
+      {
+        "fund_type": "Port Of San Francisco Funds",
+        "fund_category": "Continuing Projects",
+        "total_usd": 23227281.0,
+        "n_funds": 2
+      },
+      {
+        "fund_type": "SF International Airport Funds",
+        "fund_category": "Grants",
+        "total_usd": 21510000.0,
+        "n_funds": 2
+      },
+      {
+        "fund_type": "SF International Airport Funds",
+        "fund_category": "Continuing Projects",
+        "total_usd": 19720799.0,
+        "n_funds": 2
+      },
+      {
+        "fund_type": "PUC Water Department Funds",
+        "fund_category": "Annual Projects",
+        "total_usd": 14978000.0,
+        "n_funds": 1
+      },
+      {
+        "fund_type": "MTA Parking & Traffic Funds",
+        "fund_category": "Continuing Projects",
+        "total_usd": 14130271.0,
+        "n_funds": 2
+      },
+      {
+        "fund_type": "General Hospital Medical Center Funds",
+        "fund_category": "Continuing Projects",
+        "total_usd": 13370496.0,
+        "n_funds": 2
+      },
+      {
+        "fund_type": "PUC Hetch Hetchy Funds",
+        "fund_category": "Annual Projects",
+        "total_usd": 12475000.0,
+        "n_funds": 1
+      },
+      {
+        "fund_type": "Treasure Island Development Authority",
+        "fund_category": "Continuing Projects",
+        "total_usd": 12373850.0,
+        "n_funds": 1
+      },
+      {
+        "fund_type": "MTA Municipal Railway Funds",
+        "fund_category": "Grants",
+        "total_usd": 11000000.0,
+        "n_funds": 1
+      },
+      {
+        "fund_type": "Internal Service Funds",
+        "fund_category": "Continuing Projects",
+        "total_usd": 8661654.0,
+        "n_funds": 1
+      },
+      {
+        "fund_type": "Port Of San Francisco Funds",
+        "fund_category": "Annual Projects",
+        "total_usd": 8318535.0,
+        "n_funds": 2
+      },
+      {
+        "fund_type": "SF International Airport Funds",
+        "fund_category": "Work Orders/Overhead",
+        "total_usd": 7500000.0,
+        "n_funds": 1
+      },
+      {
+        "fund_type": "Special Revenue Funds",
+        "fund_category": "Annual Projects",
+        "total_usd": 6144952.0,
+        "n_funds": 3
+      },
+      {
+        "fund_type": "Expendable Trust Funds",
+        "fund_category": "Grants",
+        "total_usd": 5893726.0,
+        "n_funds": 2
+      },
+      {
+        "fund_type": "MTA Taxi Commission",
+        "fund_category": "Operating",
+        "total_usd": 5765761.0,
+        "n_funds": 1
+      },
+      {
+        "fund_type": "PUC Wastewater Funds",
+        "fund_category": "Annual Projects",
+        "total_usd": 5230000.0,
+        "n_funds": 1
+      },
+      {
+        "fund_type": "MTA Parking Garages/Other",
+        "fund_category": "Continuing Projects",
+        "total_usd": 5000000.0,
+        "n_funds": 1
+      },
+      {
+        "fund_type": "Successor Agency-Former SF Redev Agency",
+        "fund_category": "Grants",
+        "total_usd": 3404084.0,
+        "n_funds": 1
+      },
+      {
+        "fund_type": "SF International Airport Funds",
+        "fund_category": "Annual Projects",
+        "total_usd": 2422034.0,
+        "n_funds": 1
+      },
+      {
+        "fund_type": "Laguna Honda Hospital Funds",
+        "fund_category": "Continuing Projects",
+        "total_usd": 1666274.0,
+        "n_funds": 1
+      },
+      {
+        "fund_type": "General Hospital Medical Center Funds",
+        "fund_category": "Annual Projects",
+        "total_usd": 1404199.0,
+        "n_funds": 1
+      },
+      {
+        "fund_type": "Laguna Honda Hospital Funds",
+        "fund_category": "Annual Projects",
+        "total_usd": 1213191.0,
+        "n_funds": 1
+      },
+      {
+        "fund_type": "General Hospital Medical Center Funds",
+        "fund_category": "Grants",
+        "total_usd": 1111884.0,
+        "n_funds": 2
+      },
+      {
+        "fund_type": "General Fund",
+        "fund_category": "Work Orders/Overhead",
+        "total_usd": 863469.0,
+        "n_funds": 2
+      },
+      {
+        "fund_type": "Internal Service Funds",
+        "fund_category": "Operating",
+        "total_usd": -2693417.0,
+        "n_funds": 3
+      }
+    ],
+    "revenue": [
+      {
+        "fund_type": "General Fund",
+        "fund_category": "Operating",
+        "total_usd": 3448472539.0,
+        "n_funds": 1
+      },
+      {
+        "fund_type": "SF International Airport Funds",
+        "fund_category": "Operating",
+        "total_usd": 975221652.0,
+        "n_funds": 1
+      },
+      {
+        "fund_type": "General Hospital Medical Center Funds",
+        "fund_category": "Operating",
+        "total_usd": 879229336.0,
+        "n_funds": 1
+      },
+      {
+        "fund_type": "MTA Municipal Railway Funds",
+        "fund_category": "Operating",
+        "total_usd": 878014754.0,
+        "n_funds": 1
+      },
+      {
+        "fund_type": "Special Revenue Funds",
+        "fund_category": "Operating",
+        "total_usd": 521019570.0,
+        "n_funds": 15
+      },
+      {
+        "fund_type": "PUC Water Department Funds",
+        "fund_category": "Operating",
+        "total_usd": 439098635.0,
+        "n_funds": 2
+      },
+      {
+        "fund_type": "General Fund",
+        "fund_category": "Continuing Projects",
+        "total_usd": 428858240.0,
+        "n_funds": 1
+      },
+      {
+        "fund_type": "Special Revenue Funds",
+        "fund_category": "Continuing Projects",
+        "total_usd": 416052887.0,
+        "n_funds": 19
+      },
+      {
+        "fund_type": "Debt Service Funds",
+        "fund_category": "Operating",
+        "total_usd": 303185312.0,
+        "n_funds": 3
+      },
+      {
+        "fund_type": "Laguna Honda Hospital Funds",
+        "fund_category": "Operating",
+        "total_usd": 254605735.0,
+        "n_funds": 2
+      },
+      {
+        "fund_type": "PUC Wastewater Funds",
+        "fund_category": "Operating",
+        "total_usd": 249305091.0,
+        "n_funds": 1
+      },
+      {
+        "fund_type": "Special Revenue Funds",
+        "fund_category": "Grants",
+        "total_usd": 198399604.0,
+        "n_funds": 11
+      },
+      {
+        "fund_type": "General Fund",
+        "fund_category": "Annual Projects",
+        "total_usd": 196814022.0,
+        "n_funds": 1
+      },
+      {
+        "fund_type": "MTA Parking & Traffic Funds",
+        "fund_category": "Operating",
+        "total_usd": 153939851.0,
+        "n_funds": 1
+      },
+      {
+        "fund_type": "Successor Agency-Former SF Redev Agency",
+        "fund_category": null,
+        "total_usd": 122093237.0,
+        "n_funds": 2
+      },
+      {
+        "fund_type": "Port Of San Francisco Funds",
+        "fund_category": "Operating",
+        "total_usd": 96825490.0,
+        "n_funds": 1
+      },
+      {
+        "fund_type": "Agency Funds",
+        "fund_category": "Operating",
+        "total_usd": 92186500.0,
+        "n_funds": 1
+      },
+      {
+        "fund_type": "Successor Agency-Former SF Redev Agency",
+        "fund_category": "Continuing Projects",
+        "total_usd": 78745584.0,
+        "n_funds": 1
+      },
+      {
+        "fund_type": "MTA Municipal Railway Funds",
+        "fund_category": "Continuing Projects",
+        "total_usd": 77125681.0,
+        "n_funds": 3
+      },
+      {
+        "fund_type": "Successor Agency-Former SF Redev Agency",
+        "fund_category": "Annual Projects",
+        "total_usd": 75198211.0,
+        "n_funds": 2
+      },
+      {
+        "fund_type": "Retiree Health Care Trust Fund - Prop B",
+        "fund_category": "Operating",
+        "total_usd": 67157000.0,
+        "n_funds": 1
+      },
+      {
+        "fund_type": "Capital Projects Funds",
+        "fund_category": "Grants",
+        "total_usd": 55000000.0,
+        "n_funds": 1
+      },
+      {
+        "fund_type": "PUC Hetch Hetchy Funds",
+        "fund_category": "Operating",
+        "total_usd": 45996346.0,
+        "n_funds": 1
+      },
+      {
+        "fund_type": "PUC Wastewater Funds",
+        "fund_category": "Continuing Projects",
+        "total_usd": 45000000.0,
+        "n_funds": 1
+      },
+      {
+        "fund_type": "Clp-Clean Powersf Funds",
+        "fund_category": "Operating",
+        "total_usd": 40257512.0,
+        "n_funds": 2
+      },
+      {
+        "fund_type": "MTA Parking Garages/Other",
+        "fund_category": "Operating",
+        "total_usd": 35873488.0,
+        "n_funds": 1
+      },
+      {
+        "fund_type": "PUC Hetch Hetchy Funds",
+        "fund_category": "Continuing Projects",
+        "total_usd": 35000000.0,
+        "n_funds": 2
+      },
+      {
+        "fund_type": "PUC Water Department Funds",
+        "fund_category": "Continuing Projects",
+        "total_usd": 33591596.0,
+        "n_funds": 2
+      },
+      {
+        "fund_type": "Pension Trust Funds",
+        "fund_category": "Operating",
+        "total_usd": 29200550.0,
+        "n_funds": 1
+      },
+      {
+        "fund_type": "Capital Projects Funds",
+        "fund_category": "Continuing Projects",
+        "total_usd": 26919000.0,
+        "n_funds": 2
+      },
+      {
+        "fund_type": "Port Of San Francisco Funds",
+        "fund_category": "Continuing Projects",
+        "total_usd": 23227281.0,
+        "n_funds": 2
+      },
+      {
+        "fund_type": "SF International Airport Funds",
+        "fund_category": "Grants",
+        "total_usd": 21510000.0,
+        "n_funds": 2
+      },
+      {
+        "fund_type": "SF International Airport Funds",
+        "fund_category": "Continuing Projects",
+        "total_usd": 19720799.0,
+        "n_funds": 2
+      },
+      {
+        "fund_type": "PUC Water Department Funds",
+        "fund_category": "Annual Projects",
+        "total_usd": 14978000.0,
+        "n_funds": 1
+      },
+      {
+        "fund_type": "MTA Parking & Traffic Funds",
+        "fund_category": "Continuing Projects",
+        "total_usd": 14130271.0,
+        "n_funds": 2
+      },
+      {
+        "fund_type": "General Hospital Medical Center Funds",
+        "fund_category": "Continuing Projects",
+        "total_usd": 13370496.0,
+        "n_funds": 2
+      },
+      {
+        "fund_type": "PUC Hetch Hetchy Funds",
+        "fund_category": "Annual Projects",
+        "total_usd": 12475000.0,
+        "n_funds": 1
+      },
+      {
+        "fund_type": "Treasure Island Development Authority",
+        "fund_category": "Continuing Projects",
+        "total_usd": 12373850.0,
+        "n_funds": 1
+      },
+      {
+        "fund_type": "MTA Municipal Railway Funds",
+        "fund_category": "Grants",
+        "total_usd": 11000000.0,
+        "n_funds": 1
+      },
+      {
+        "fund_type": "Internal Service Funds",
+        "fund_category": "Continuing Projects",
+        "total_usd": 8661654.0,
+        "n_funds": 1
+      },
+      {
+        "fund_type": "Port Of San Francisco Funds",
+        "fund_category": "Annual Projects",
+        "total_usd": 8318535.0,
+        "n_funds": 2
+      },
+      {
+        "fund_type": "SF International Airport Funds",
+        "fund_category": "Work Orders/Overhead",
+        "total_usd": 7500000.0,
+        "n_funds": 1
+      },
+      {
+        "fund_type": "Special Revenue Funds",
+        "fund_category": "Annual Projects",
+        "total_usd": 6144952.0,
+        "n_funds": 3
+      },
+      {
+        "fund_type": "Expendable Trust Funds",
+        "fund_category": "Grants",
+        "total_usd": 5893726.0,
+        "n_funds": 2
+      },
+      {
+        "fund_type": "MTA Taxi Commission",
+        "fund_category": "Operating",
+        "total_usd": 5765761.0,
+        "n_funds": 1
+      },
+      {
+        "fund_type": "PUC Wastewater Funds",
+        "fund_category": "Annual Projects",
+        "total_usd": 5230000.0,
+        "n_funds": 1
+      },
+      {
+        "fund_type": "MTA Parking Garages/Other",
+        "fund_category": "Continuing Projects",
+        "total_usd": 5000000.0,
+        "n_funds": 1
+      },
+      {
+        "fund_type": "Successor Agency-Former SF Redev Agency",
+        "fund_category": "Grants",
+        "total_usd": 3404084.0,
+        "n_funds": 1
+      },
+      {
+        "fund_type": "SF International Airport Funds",
+        "fund_category": "Annual Projects",
+        "total_usd": 2422034.0,
+        "n_funds": 1
+      },
+      {
+        "fund_type": "Laguna Honda Hospital Funds",
+        "fund_category": "Continuing Projects",
+        "total_usd": 1666274.0,
+        "n_funds": 1
+      },
+      {
+        "fund_type": "General Hospital Medical Center Funds",
+        "fund_category": "Annual Projects",
+        "total_usd": 1404199.0,
+        "n_funds": 1
+      },
+      {
+        "fund_type": "Laguna Honda Hospital Funds",
+        "fund_category": "Annual Projects",
+        "total_usd": 1213191.0,
+        "n_funds": 1
+      },
+      {
+        "fund_type": "General Hospital Medical Center Funds",
+        "fund_category": "Grants",
+        "total_usd": 1111884.0,
+        "n_funds": 2
+      },
+      {
+        "fund_type": "General Fund",
+        "fund_category": "Work Orders/Overhead",
+        "total_usd": 863469.0,
+        "n_funds": 1
+      },
+      {
+        "fund_type": "Internal Service Funds",
+        "fund_category": "Operating",
+        "total_usd": -2693417.0,
+        "n_funds": 3
+      }
+    ]
+  },
+  "notes": "display_name and gloss fields are a provenance-flagged IN-SESSION enrichment layer (seed_us_sf_dept_names, seed_us_sf_character_glosses, 2026-07-16) — source labels are always carried verbatim alongside and never overwritten. Departments with a null display_name (legacy years) render their source label."
+}

@@ -1,0 +1,6951 @@
+{
+  "generated_at": "2026-07-16T21:33:11.036767+00:00",
+  "source_pipeline": "configs/countries/us.yaml → sync_socrata.py + sync_census_popest.py → raw.us_sf_* → dbt_us_staging → dbt_us_analytics → dbt_us_marts → export_us_sf.py",
+  "country": "us",
+  "scale": "city",
+  "place": "sf",
+  "unit": "USD",
+  "fiscal_year": 2024,
+  "execution_status": "closed",
+  "as_of": "2026-07-13T10:17:58+00:00",
+  "source": {
+    "name": "Budget",
+    "dataset_id": "xdgd-c79v",
+    "source_url": "https://data.sfgov.org/d/xdgd-c79v",
+    "attribution": "SF Controller's Office",
+    "rows_updated_at": "2026-07-13T10:17:58+00:00"
+  },
+  "perimeter": "Adopted budget (Annual Appropriation Ordinance), ALL funds, citywide, NET of the dataset's embedded negative 'Transfer Adjustment' rows — those lines are carried explicitly (never silently netted) as transfer_adjustment_usd at every altitude and flagged in the dept × character cells.",
+  "chart_of_accounts": "modern",
+  "drill": {
+    "available": true,
+    "reason": null
+  },
+  "totals": {
+    "spending": {
+      "total_usd": 14631715548.0,
+      "transfer_adjustment_usd": -3594259577.0,
+      "n_lines": 24033,
+      "per_resident_usd": 17823.02,
+      "population_year": 2024
+    },
+    "revenue": {
+      "total_usd": 14631715548.0,
+      "transfer_adjustment_usd": -3594259577.0,
+      "n_lines": 4578,
+      "per_resident_usd": 17823.02,
+      "population_year": 2024
+    }
+  },
+  "org_groups": {
+    "spending": [
+      {
+        "code": "02",
+        "label": "Public Works, Transportation & Commerce",
+        "total_usd": 4977276080.0,
+        "transfer_adjustment_usd": -1137234123.0,
+        "share_of_side": 0.34017,
+        "n_departments": 8
+      },
+      {
+        "code": "04",
+        "label": "Community Health",
+        "total_usd": 3134434430.0,
+        "transfer_adjustment_usd": -174638920.0,
+        "share_of_side": 0.214222,
+        "n_departments": 1
+      },
+      {
+        "code": "03",
+        "label": "Human Welfare & Neighborhood Development",
+        "total_usd": 2539410600.0,
+        "transfer_adjustment_usd": -162472748.0,
+        "share_of_side": 0.173555,
+        "n_departments": 9
+      },
+      {
+        "code": "01",
+        "label": "Public Protection",
+        "total_usd": 1950218644.0,
+        "transfer_adjustment_usd": -62685825.0,
+        "share_of_side": 0.133287,
+        "n_departments": 11
+      },
+      {
+        "code": "06",
+        "label": "General Administration & Finance",
+        "total_usd": 763539191.0,
+        "transfer_adjustment_usd": -825423075.0,
+        "share_of_side": 0.052184,
+        "n_departments": 15
+      },
+      {
+        "code": "07",
+        "label": "General City Responsibilities",
+        "total_usd": 685107393.0,
+        "transfer_adjustment_usd": -1160866686.0,
+        "share_of_side": 0.046823,
+        "n_departments": 1
+      },
+      {
+        "code": "05",
+        "label": "Culture & Recreation",
+        "total_usd": 581729210.0,
+        "transfer_adjustment_usd": -70938200.0,
+        "share_of_side": 0.039758,
+        "n_departments": 8
+      }
+    ],
+    "revenue": [
+      {
+        "code": "07",
+        "label": "General City Responsibilities",
+        "total_usd": 5453315676.0,
+        "transfer_adjustment_usd": -973879527.0,
+        "share_of_side": 0.372705,
+        "n_departments": 1
+      },
+      {
+        "code": "02",
+        "label": "Public Works, Transportation & Commerce",
+        "total_usd": 4194830956.0,
+        "transfer_adjustment_usd": -1288044745.0,
+        "share_of_side": 0.286694,
+        "n_departments": 8
+      },
+      {
+        "code": "04",
+        "label": "Community Health",
+        "total_usd": 2261242780.0,
+        "transfer_adjustment_usd": -176240575.0,
+        "share_of_side": 0.154544,
+        "n_departments": 1
+      },
+      {
+        "code": "03",
+        "label": "Human Welfare & Neighborhood Development",
+        "total_usd": 1673749892.0,
+        "transfer_adjustment_usd": -251504165.0,
+        "share_of_side": 0.114392,
+        "n_departments": 9
+      },
+      {
+        "code": "01",
+        "label": "Public Protection",
+        "total_usd": 429818681.0,
+        "transfer_adjustment_usd": 51946287.0,
+        "share_of_side": 0.029376,
+        "n_departments": 9
+      },
+      {
+        "code": "05",
+        "label": "Culture & Recreation",
+        "total_usd": 311032670.0,
+        "transfer_adjustment_usd": -87406631.0,
+        "share_of_side": 0.021257,
+        "n_departments": 6
+      },
+      {
+        "code": "06",
+        "label": "General Administration & Finance",
+        "total_usd": 307724893.0,
+        "transfer_adjustment_usd": -869130221.0,
+        "share_of_side": 0.021031,
+        "n_departments": 15
+      }
+    ]
+  },
+  "departments": {
+    "spending": [
+      {
+        "code": "DPH",
+        "label": "DPH Public Health",
+        "display_name": "Public Health",
+        "org_group_code": "04",
+        "total_usd": 3134434430.0,
+        "transfer_adjustment_usd": -174638920.0,
+        "share_of_side": 0.214222,
+        "n_characters": 15
+      },
+      {
+        "code": "PUC",
+        "label": "PUC Public Utilities Commsn",
+        "display_name": "Public Utilities Commission (water, power, sewer)",
+        "org_group_code": "02",
+        "total_usd": 1591284883.0,
+        "transfer_adjustment_usd": -457870074.0,
+        "share_of_side": 0.108756,
+        "n_characters": 16
+      },
+      {
+        "code": "MTA",
+        "label": "MTA Municipal Transprtn Agncy",
+        "display_name": "Municipal Transportation Agency (Muni)",
+        "org_group_code": "02",
+        "total_usd": 1468376047.0,
+        "transfer_adjustment_usd": -215283110.0,
+        "share_of_side": 0.100356,
+        "n_characters": 12
+      },
+      {
+        "code": "AIR",
+        "label": "AIR Airport Commission",
+        "display_name": "Airport (SFO)",
+        "org_group_code": "02",
+        "total_usd": 1254423107.0,
+        "transfer_adjustment_usd": -204631463.0,
+        "share_of_side": 0.085733,
+        "n_characters": 12
+      },
+      {
+        "code": "HSA",
+        "label": "HSA Human Services Agency",
+        "display_name": "Human Services Agency",
+        "org_group_code": "03",
+        "total_usd": 1147672899.0,
+        "transfer_adjustment_usd": -43375729.0,
+        "share_of_side": 0.078437,
+        "n_characters": 13
+      },
+      {
+        "code": "POL",
+        "label": "POL Police",
+        "display_name": "Police",
+        "org_group_code": "01",
+        "total_usd": 768894868.0,
+        "transfer_adjustment_usd": -6016843.0,
+        "share_of_side": 0.05255,
+        "n_characters": 11
+      },
+      {
+        "code": "HOM",
+        "label": "HOM Homelessness Services",
+        "display_name": "Homelessness & Supportive Housing",
+        "org_group_code": "03",
+        "total_usd": 702182180.0,
+        "transfer_adjustment_usd": -11110401.0,
+        "share_of_side": 0.04799,
+        "n_characters": 11
+      },
+      {
+        "code": "GEN",
+        "label": "GEN General City - Unallocated",
+        "display_name": "General City (unallocated)",
+        "org_group_code": "07",
+        "total_usd": 685107393.0,
+        "transfer_adjustment_usd": -1160866686.0,
+        "share_of_side": 0.046823,
+        "n_characters": 11
+      },
+      {
+        "code": "FIR",
+        "label": "FIR Fire Department",
+        "display_name": "Fire Department",
+        "org_group_code": "01",
+        "total_usd": 498101415.0,
+        "transfer_adjustment_usd": -16338877.0,
+        "share_of_side": 0.034043,
+        "n_characters": 11
+      },
+      {
+        "code": "CHF",
+        "label": "CHF Children;Youth & Families",
+        "display_name": "Children, Youth & Their Families",
+        "org_group_code": "03",
+        "total_usd": 333614732.0,
+        "transfer_adjustment_usd": -15075959.0,
+        "share_of_side": 0.022801,
+        "n_characters": 11
+      },
+      {
+        "code": "DPW",
+        "label": "DPW Public Works",
+        "display_name": "Public Works",
+        "org_group_code": "02",
+        "total_usd": 290151374.0,
+        "transfer_adjustment_usd": -167077885.0,
+        "share_of_side": 0.01983,
+        "n_characters": 15
+      },
+      {
+        "code": "ADM",
+        "label": "ADM GSA - City Administrator",
+        "display_name": "City Administrator",
+        "org_group_code": "06",
+        "total_usd": 271632241.0,
+        "transfer_adjustment_usd": -335498970.0,
+        "share_of_side": 0.018565,
+        "n_characters": 12
+      },
+      {
+        "code": "DEC",
+        "label": "DEC Dept of Early Childhood",
+        "display_name": "Early Childhood",
+        "org_group_code": "03",
+        "total_usd": 264849703.0,
+        "transfer_adjustment_usd": -80634023.0,
+        "share_of_side": 0.018101,
+        "n_characters": 10
+      },
+      {
+        "code": "REC",
+        "label": "REC Recreation & Park Commsn",
+        "display_name": "Recreation & Parks",
+        "org_group_code": "05",
+        "total_usd": 258980221.0,
+        "transfer_adjustment_usd": -36350038.0,
+        "share_of_side": 0.0177,
+        "n_characters": 15
+      },
+      {
+        "code": "SHF",
+        "label": "SHF Sheriff",
+        "display_name": "Sheriff",
+        "org_group_code": "01",
+        "total_usd": 257981652.0,
+        "transfer_adjustment_usd": -33032950.0,
+        "share_of_side": 0.017632,
+        "n_characters": 9
+      },
+      {
+        "code": "LIB",
+        "label": "LIB Public Library",
+        "display_name": "Public Library",
+        "org_group_code": "05",
+        "total_usd": 200167326.0,
+        "transfer_adjustment_usd": -32867636.0,
+        "share_of_side": 0.01368,
+        "n_characters": 11
+      },
+      {
+        "code": "MYR",
+        "label": "MYR Mayor",
+        "display_name": "Mayor",
+        "org_group_code": "06",
+        "total_usd": 162721944.0,
+        "transfer_adjustment_usd": -38324008.0,
+        "share_of_side": 0.011121,
+        "n_characters": 14
+      },
+      {
+        "code": "PRT",
+        "label": "PRT Port",
+        "display_name": "Port",
+        "org_group_code": "02",
+        "total_usd": 150093563.0,
+        "transfer_adjustment_usd": -47138031.0,
+        "share_of_side": 0.010258,
+        "n_characters": 13
+      },
+      {
+        "code": "DEM",
+        "label": "DEM Emergency Management",
+        "display_name": "Emergency Management",
+        "org_group_code": "01",
+        "total_usd": 137623911.0,
+        "transfer_adjustment_usd": -1150271.0,
+        "share_of_side": 0.009406,
+        "n_characters": 10
+      },
+      {
+        "code": "ECN",
+        "label": "ECN Economic & Wrkfrce Dvlpmnt",
+        "display_name": "Economic & Workforce Development",
+        "org_group_code": "02",
+        "total_usd": 135904548.0,
+        "transfer_adjustment_usd": -22177440.0,
+        "share_of_side": 0.009288,
+        "n_characters": 9
+      },
+      {
+        "code": "DAT",
+        "label": "DAT District Attorney",
+        "display_name": "District Attorney",
+        "org_group_code": "01",
+        "total_usd": 89069188.0,
+        "transfer_adjustment_usd": -490853.0,
+        "share_of_side": 0.006087,
+        "n_characters": 10
+      },
+      {
+        "code": "DBI",
+        "label": "DBI Building Inspection",
+        "display_name": "Building Inspection",
+        "org_group_code": "02",
+        "total_usd": 85899521.0,
+        "transfer_adjustment_usd": -23056120.0,
+        "share_of_side": 0.005871,
+        "n_characters": 9
+      },
+      {
+        "code": "CPC",
+        "label": "CPC City Planning",
+        "display_name": "City Planning",
+        "org_group_code": "06",
+        "total_usd": 55654390.0,
+        "transfer_adjustment_usd": -3043444.0,
+        "share_of_side": 0.003804,
+        "n_characters": 8
+      },
+      {
+        "code": "ADP",
+        "label": "ADP Adult Probation",
+        "display_name": "Adult Probation",
+        "org_group_code": "01",
+        "total_usd": 53091142.0,
+        "transfer_adjustment_usd": -5025598.0,
+        "share_of_side": 0.003628,
+        "n_characters": 8
+      },
+      {
+        "code": "PDR",
+        "label": "PDR Public Defender",
+        "display_name": "Public Defender",
+        "org_group_code": "01",
+        "total_usd": 52518099.0,
+        "transfer_adjustment_usd": -92000.0,
+        "share_of_side": 0.003589,
+        "n_characters": 8
+      },
+      {
+        "code": "RET",
+        "label": "RET Retirement System",
+        "display_name": "Retirement System",
+        "org_group_code": "06",
+        "total_usd": 51359503.0,
+        "transfer_adjustment_usd": -110000.0,
+        "share_of_side": 0.00351,
+        "n_characters": 10
+      },
+      {
+        "code": "JUV",
+        "label": "JUV Juvenile Probation",
+        "display_name": "Juvenile Probation",
+        "org_group_code": "01",
+        "total_usd": 48762139.0,
+        "transfer_adjustment_usd": -205638.0,
+        "share_of_side": 0.003333,
+        "n_characters": 8
+      },
+      {
+        "code": "ART",
+        "label": "ART Arts Commission",
+        "display_name": "Arts Commission",
+        "org_group_code": "05",
+        "total_usd": 41474409.0,
+        "transfer_adjustment_usd": -1267539.0,
+        "share_of_side": 0.002835,
+        "n_characters": 10
+      },
+      {
+        "code": "TTX",
+        "label": "TTX Treasurer-Tax Collector",
+        "display_name": "Treasurer & Tax Collector",
+        "org_group_code": "06",
+        "total_usd": 39878798.0,
+        "transfer_adjustment_usd": -10678462.0,
+        "share_of_side": 0.002726,
+        "n_characters": 8
+      },
+      {
+        "code": "CAT",
+        "label": "CAT City Attorney",
+        "display_name": "City Attorney",
+        "org_group_code": "06",
+        "total_usd": 37486415.0,
+        "transfer_adjustment_usd": -71253153.0,
+        "share_of_side": 0.002562,
+        "n_characters": 6
+      },
+      {
+        "code": "WAR",
+        "label": "WAR War Memorial",
+        "display_name": "War Memorial & Performing Arts",
+        "org_group_code": "05",
+        "total_usd": 37371430.0,
+        "transfer_adjustment_usd": -273987.0,
+        "share_of_side": 0.002554,
+        "n_characters": 8
+      },
+      {
+        "code": "ASR",
+        "label": "ASR Assessor - Recorder",
+        "display_name": "Assessor-Recorder",
+        "org_group_code": "06",
+        "total_usd": 37177891.0,
+        "transfer_adjustment_usd": 0.0,
+        "share_of_side": 0.002541,
+        "n_characters": 7
+      },
+      {
+        "code": "CRT",
+        "label": "CRT Superior Court",
+        "display_name": "Superior Court",
+        "org_group_code": "01",
+        "total_usd": 32781944.0,
+        "transfer_adjustment_usd": 0.0,
+        "share_of_side": 0.00224,
+        "n_characters": 3
+      },
+      {
+        "code": "ENV",
+        "label": "ENV Environment",
+        "display_name": "Environment",
+        "org_group_code": "03",
+        "total_usd": 29460159.0,
+        "transfer_adjustment_usd": -7025862.0,
+        "share_of_side": 0.002013,
+        "n_characters": 10
+      },
+      {
+        "code": "BOS",
+        "label": "BOS Board of Supervisors",
+        "display_name": "Board of Supervisors",
+        "org_group_code": "06",
+        "total_usd": 23444609.0,
+        "transfer_adjustment_usd": -161996.0,
+        "share_of_side": 0.001602,
+        "n_characters": 6
+      },
+      {
+        "code": "FAM",
+        "label": "FAM Fine Arts Museum",
+        "display_name": "Fine Arts Museums",
+        "org_group_code": "05",
+        "total_usd": 23068361.0,
+        "transfer_adjustment_usd": -179000.0,
+        "share_of_side": 0.001577,
+        "n_characters": 8
+      },
+      {
+        "code": "REG",
+        "label": "REG Elections",
+        "display_name": "Elections",
+        "org_group_code": "06",
+        "total_usd": 22732949.0,
+        "transfer_adjustment_usd": -210000.0,
+        "share_of_side": 0.001554,
+        "n_characters": 8
+      },
+      {
+        "code": "HRD",
+        "label": "HRD Human Resources",
+        "display_name": "Human Resources",
+        "org_group_code": "06",
+        "total_usd": 20155994.0,
+        "transfer_adjustment_usd": -130603863.0,
+        "share_of_side": 0.001378,
+        "n_characters": 8
+      },
+      {
+        "code": "RNT",
+        "label": "RNT Rent Arbitration Board",
+        "display_name": "Rent Board",
+        "org_group_code": "03",
+        "total_usd": 17725223.0,
+        "transfer_adjustment_usd": 0.0,
+        "share_of_side": 0.001211,
+        "n_characters": 6
+      },
+      {
+        "code": "TIS",
+        "label": "DT  GSA - Technology",
+        "display_name": "Technology",
+        "org_group_code": "06",
+        "total_usd": 17154995.0,
+        "transfer_adjustment_usd": -152785105.0,
+        "share_of_side": 0.001172,
+        "n_characters": 10
+      },
+      {
+        "code": "HRC",
+        "label": "HRC Human Rights Commission",
+        "display_name": "Human Rights Commission",
+        "org_group_code": "03",
+        "total_usd": 16423806.0,
+        "transfer_adjustment_usd": -5099600.0,
+        "share_of_side": 0.001122,
+        "n_characters": 8
+      },
+      {
+        "code": "CON",
+        "label": "CON Controller",
+        "display_name": "Controller",
+        "org_group_code": "06",
+        "total_usd": 15051689.0,
+        "transfer_adjustment_usd": -68930284.0,
+        "share_of_side": 0.001029,
+        "n_characters": 8
+      },
+      {
+        "code": "WOM",
+        "label": "WOM Status of Women",
+        "display_name": "Status of Women",
+        "org_group_code": "03",
+        "total_usd": 13966542.0,
+        "transfer_adjustment_usd": 0.0,
+        "share_of_side": 0.000955,
+        "n_characters": 6
+      },
+      {
+        "code": "CSS",
+        "label": "CSS Child Support Services",
+        "display_name": "Child Support Services",
+        "org_group_code": "03",
+        "total_usd": 13515356.0,
+        "transfer_adjustment_usd": -151174.0,
+        "share_of_side": 0.000924,
+        "n_characters": 6
+      },
+      {
+        "code": "AAM",
+        "label": "AAM Asian Art Museum",
+        "display_name": "Asian Art Museum",
+        "org_group_code": "05",
+        "total_usd": 11412118.0,
+        "transfer_adjustment_usd": 0.0,
+        "share_of_side": 0.00078,
+        "n_characters": 6
+      },
+      {
+        "code": "DPA",
+        "label": "DPA Police Accountabilty",
+        "display_name": "Police Accountability",
+        "org_group_code": "01",
+        "total_usd": 9637558.0,
+        "transfer_adjustment_usd": -332795.0,
+        "share_of_side": 0.000659,
+        "n_characters": 7
+      },
+      {
+        "code": "ETH",
+        "label": "ETH Ethics Commission",
+        "display_name": "Ethics Commission",
+        "org_group_code": "06",
+        "total_usd": 7537872.0,
+        "transfer_adjustment_usd": 0.0,
+        "share_of_side": 0.000515,
+        "n_characters": 6
+      },
+      {
+        "code": "SCI",
+        "label": "SCI Academy of Sciences",
+        "display_name": "Academy of Sciences",
+        "org_group_code": "05",
+        "total_usd": 7460485.0,
+        "transfer_adjustment_usd": 0.0,
+        "share_of_side": 0.00051,
+        "n_characters": 5
+      },
+      {
+        "code": "LLB",
+        "label": "LLB Law Library",
+        "display_name": "Law Library",
+        "org_group_code": "05",
+        "total_usd": 1794860.0,
+        "transfer_adjustment_usd": 0.0,
+        "share_of_side": 0.000123,
+        "n_characters": 4
+      },
+      {
+        "code": "SDA",
+        "label": "SDA Shrf Dept Ofc Inspctr Genl",
+        "display_name": "Sheriff's Office of Inspector General",
+        "org_group_code": "01",
+        "total_usd": 1756728.0,
+        "transfer_adjustment_usd": 0.0,
+        "share_of_side": 0.00012,
+        "n_characters": 5
+      },
+      {
+        "code": "BOA",
+        "label": "BOA Board of Appeals",
+        "display_name": "Board of Appeals",
+        "org_group_code": "02",
+        "total_usd": 1143037.0,
+        "transfer_adjustment_usd": 0.0,
+        "share_of_side": 7.8e-05,
+        "n_characters": 5
+      },
+      {
+        "code": "CSC",
+        "label": "CSC Civil Service Commission",
+        "display_name": "Civil Service Commission",
+        "org_group_code": "06",
+        "total_usd": 1080770.0,
+        "transfer_adjustment_usd": -430839.0,
+        "share_of_side": 7.4e-05,
+        "n_characters": 6
+      },
+      {
+        "code": "HSS",
+        "label": "HSS Health Service System",
+        "display_name": "Health Service System",
+        "org_group_code": "06",
+        "total_usd": 469131.0,
+        "transfer_adjustment_usd": -13392951.0,
+        "share_of_side": 3.2e-05,
+        "n_characters": 6
+      },
+      {
+        "code": "CCD",
+        "label": "CCD SF Communtiy College Dist",
+        "display_name": "SF Community College District",
+        "org_group_code": "03",
+        "total_usd": 0.0,
+        "transfer_adjustment_usd": 0.0,
+        "share_of_side": 0.0,
+        "n_characters": 0
+      },
+      {
+        "code": "USD",
+        "label": "USD County Education Office",
+        "display_name": "County Office of Education",
+        "org_group_code": "03",
+        "total_usd": 0.0,
+        "transfer_adjustment_usd": 0.0,
+        "share_of_side": 0.0,
+        "n_characters": 0
+      },
+      {
+        "code": "CFC",
+        "label": "CFC Children & Families Commsn",
+        "display_name": "Children & Families Commission",
+        "org_group_code": "03",
+        "total_usd": 0.0,
+        "transfer_adjustment_usd": 0.0,
+        "share_of_side": 0.0,
+        "n_characters": 0
+      },
+      {
+        "code": "CII",
+        "label": "CII Commty Invest & Infrstrctr",
+        "display_name": "Community Investment & Infrastructure",
+        "org_group_code": "03",
+        "total_usd": 0.0,
+        "transfer_adjustment_usd": 0.0,
+        "share_of_side": 0.0,
+        "n_characters": 0
+      }
+    ],
+    "revenue": [
+      {
+        "code": "GEN",
+        "label": "GEN General City - Unallocated",
+        "display_name": "General City (unallocated)",
+        "org_group_code": "07",
+        "total_usd": 5453315676.0,
+        "transfer_adjustment_usd": -973879527.0,
+        "share_of_side": 0.372705,
+        "n_characters": 15
+      },
+      {
+        "code": "DPH",
+        "label": "DPH Public Health",
+        "display_name": "Public Health",
+        "org_group_code": "04",
+        "total_usd": 2261242780.0,
+        "transfer_adjustment_usd": -176240575.0,
+        "share_of_side": 0.154544,
+        "n_characters": 16
+      },
+      {
+        "code": "PUC",
+        "label": "PUC Public Utilities Commsn",
+        "display_name": "Public Utilities Commission (water, power, sewer)",
+        "org_group_code": "02",
+        "total_usd": 1591375482.0,
+        "transfer_adjustment_usd": -457779475.0,
+        "share_of_side": 0.108762,
+        "n_characters": 9
+      },
+      {
+        "code": "AIR",
+        "label": "AIR Airport Commission",
+        "display_name": "Airport (SFO)",
+        "org_group_code": "02",
+        "total_usd": 1305341570.0,
+        "transfer_adjustment_usd": -268345112.0,
+        "share_of_side": 0.089213,
+        "n_characters": 11
+      },
+      {
+        "code": "MTA",
+        "label": "MTA Municipal Transprtn Agncy",
+        "display_name": "Municipal Transportation Agency (Muni)",
+        "org_group_code": "02",
+        "total_usd": 870167022.0,
+        "transfer_adjustment_usd": -299842135.0,
+        "share_of_side": 0.059471,
+        "n_characters": 13
+      },
+      {
+        "code": "HSA",
+        "label": "HSA Human Services Agency",
+        "display_name": "Human Services Agency",
+        "org_group_code": "03",
+        "total_usd": 840298462.0,
+        "transfer_adjustment_usd": -36637584.0,
+        "share_of_side": 0.05743,
+        "n_characters": 9
+      },
+      {
+        "code": "HOM",
+        "label": "HOM Homelessness Services",
+        "display_name": "Homelessness & Supportive Housing",
+        "org_group_code": "03",
+        "total_usd": 377702617.0,
+        "transfer_adjustment_usd": -33476702.0,
+        "share_of_side": 0.025814,
+        "n_characters": 10
+      },
+      {
+        "code": "DEC",
+        "label": "DEC Dept of Early Childhood",
+        "display_name": "Early Childhood",
+        "org_group_code": "03",
+        "total_usd": 242063815.0,
+        "transfer_adjustment_usd": -52284023.0,
+        "share_of_side": 0.016544,
+        "n_characters": 9
+      },
+      {
+        "code": "REC",
+        "label": "REC Recreation & Park Commsn",
+        "display_name": "Recreation & Parks",
+        "org_group_code": "05",
+        "total_usd": 171036932.0,
+        "transfer_adjustment_usd": -36350038.0,
+        "share_of_side": 0.011689,
+        "n_characters": 12
+      },
+      {
+        "code": "DPW",
+        "label": "DPW Public Works",
+        "display_name": "Public Works",
+        "org_group_code": "02",
+        "total_usd": 170411006.0,
+        "transfer_adjustment_usd": -163979360.0,
+        "share_of_side": 0.011647,
+        "n_characters": 11
+      },
+      {
+        "code": "CHF",
+        "label": "CHF Children;Youth & Families",
+        "display_name": "Children, Youth & Their Families",
+        "org_group_code": "03",
+        "total_usd": 154224192.0,
+        "transfer_adjustment_usd": -115389288.0,
+        "share_of_side": 0.01054,
+        "n_characters": 10
+      },
+      {
+        "code": "POL",
+        "label": "POL Police",
+        "display_name": "Police",
+        "org_group_code": "01",
+        "total_usd": 151758589.0,
+        "transfer_adjustment_usd": 73852573.0,
+        "share_of_side": 0.010372,
+        "n_characters": 7
+      },
+      {
+        "code": "PRT",
+        "label": "PRT Port",
+        "display_name": "Port",
+        "org_group_code": "02",
+        "total_usd": 150125276.0,
+        "transfer_adjustment_usd": -47106318.0,
+        "share_of_side": 0.01026,
+        "n_characters": 9
+      },
+      {
+        "code": "FIR",
+        "label": "FIR Fire Department",
+        "display_name": "Fire Department",
+        "org_group_code": "01",
+        "total_usd": 148601678.0,
+        "transfer_adjustment_usd": 18423819.0,
+        "share_of_side": 0.010156,
+        "n_characters": 8
+      },
+      {
+        "code": "ADM",
+        "label": "ADM GSA - City Administrator",
+        "display_name": "City Administrator",
+        "org_group_code": "06",
+        "total_usd": 144328615.0,
+        "transfer_adjustment_usd": -381097662.0,
+        "share_of_side": 0.009864,
+        "n_characters": 15
+      },
+      {
+        "code": "LIB",
+        "label": "LIB Public Library",
+        "display_name": "Public Library",
+        "org_group_code": "05",
+        "total_usd": 97357326.0,
+        "transfer_adjustment_usd": -32887636.0,
+        "share_of_side": 0.006654,
+        "n_characters": 11
+      },
+      {
+        "code": "DBI",
+        "label": "DBI Building Inspection",
+        "display_name": "Building Inspection",
+        "org_group_code": "02",
+        "total_usd": 80799521.0,
+        "transfer_adjustment_usd": -28156120.0,
+        "share_of_side": 0.005522,
+        "n_characters": 9
+      },
+      {
+        "code": "RET",
+        "label": "RET Retirement System",
+        "display_name": "Retirement System",
+        "org_group_code": "06",
+        "total_usd": 51359503.0,
+        "transfer_adjustment_usd": -110000.0,
+        "share_of_side": 0.00351,
+        "n_characters": 5
+      },
+      {
+        "code": "CPC",
+        "label": "CPC City Planning",
+        "display_name": "City Planning",
+        "org_group_code": "06",
+        "total_usd": 44406230.0,
+        "transfer_adjustment_usd": -3043444.0,
+        "share_of_side": 0.003035,
+        "n_characters": 7
+      },
+      {
+        "code": "DEM",
+        "label": "DEM Emergency Management",
+        "display_name": "Emergency Management",
+        "org_group_code": "01",
+        "total_usd": 42258125.0,
+        "transfer_adjustment_usd": -1150271.0,
+        "share_of_side": 0.002888,
+        "n_characters": 4
+      },
+      {
+        "code": "SHF",
+        "label": "SHF Sheriff",
+        "display_name": "Sheriff",
+        "org_group_code": "01",
+        "total_usd": 35336383.0,
+        "transfer_adjustment_usd": -33032950.0,
+        "share_of_side": 0.002415,
+        "n_characters": 6
+      },
+      {
+        "code": "MYR",
+        "label": "MYR Mayor",
+        "display_name": "Mayor",
+        "org_group_code": "06",
+        "total_usd": 30594631.0,
+        "transfer_adjustment_usd": -36132462.0,
+        "share_of_side": 0.002091,
+        "n_characters": 8
+      },
+      {
+        "code": "ART",
+        "label": "ART Arts Commission",
+        "display_name": "Arts Commission",
+        "org_group_code": "05",
+        "total_usd": 29521327.0,
+        "transfer_adjustment_usd": -1479033.0,
+        "share_of_side": 0.002018,
+        "n_characters": 11
+      },
+      {
+        "code": "ENV",
+        "label": "ENV Environment",
+        "display_name": "Environment",
+        "org_group_code": "03",
+        "total_usd": 28020227.0,
+        "transfer_adjustment_usd": -8465794.0,
+        "share_of_side": 0.001915,
+        "n_characters": 9
+      },
+      {
+        "code": "ECN",
+        "label": "ECN Economic & Wrkfrce Dvlpmnt",
+        "display_name": "Economic & Workforce Development",
+        "org_group_code": "02",
+        "total_usd": 25479020.0,
+        "transfer_adjustment_usd": -22836225.0,
+        "share_of_side": 0.001741,
+        "n_characters": 12
+      },
+      {
+        "code": "ADP",
+        "label": "ADP Adult Probation",
+        "display_name": "Adult Probation",
+        "org_group_code": "01",
+        "total_usd": 22158863.0,
+        "transfer_adjustment_usd": -5025598.0,
+        "share_of_side": 0.001514,
+        "n_characters": 6
+      },
+      {
+        "code": "JUV",
+        "label": "JUV Juvenile Probation",
+        "display_name": "Juvenile Probation",
+        "org_group_code": "01",
+        "total_usd": 17996388.0,
+        "transfer_adjustment_usd": -205638.0,
+        "share_of_side": 0.00123,
+        "n_characters": 6
+      },
+      {
+        "code": "RNT",
+        "label": "RNT Rent Arbitration Board",
+        "display_name": "Rent Board",
+        "org_group_code": "03",
+        "total_usd": 17725223.0,
+        "transfer_adjustment_usd": 0.0,
+        "share_of_side": 0.001211,
+        "n_characters": 2
+      },
+      {
+        "code": "CSS",
+        "label": "CSS Child Support Services",
+        "display_name": "Child Support Services",
+        "org_group_code": "03",
+        "total_usd": 13515356.0,
+        "transfer_adjustment_usd": -151174.0,
+        "share_of_side": 0.000924,
+        "n_characters": 5
+      },
+      {
+        "code": "TTX",
+        "label": "TTX Treasurer-Tax Collector",
+        "display_name": "Treasurer & Tax Collector",
+        "org_group_code": "06",
+        "total_usd": 13034121.0,
+        "transfer_adjustment_usd": -10678462.0,
+        "share_of_side": 0.000891,
+        "n_characters": 7
+      },
+      {
+        "code": "WAR",
+        "label": "WAR War Memorial",
+        "display_name": "War Memorial & Performing Arts",
+        "org_group_code": "05",
+        "total_usd": 11563915.0,
+        "transfer_adjustment_usd": -16510924.0,
+        "share_of_side": 0.00079,
+        "n_characters": 7
+      },
+      {
+        "code": "TIS",
+        "label": "DT  GSA - Technology",
+        "display_name": "Technology",
+        "org_group_code": "06",
+        "total_usd": 9648341.0,
+        "transfer_adjustment_usd": -153085105.0,
+        "share_of_side": 0.000659,
+        "n_characters": 9
+      },
+      {
+        "code": "DAT",
+        "label": "DAT District Attorney",
+        "display_name": "District Attorney",
+        "org_group_code": "01",
+        "total_usd": 9267471.0,
+        "transfer_adjustment_usd": -490853.0,
+        "share_of_side": 0.000633,
+        "n_characters": 6
+      },
+      {
+        "code": "ASR",
+        "label": "ASR Assessor - Recorder",
+        "display_name": "Assessor-Recorder",
+        "org_group_code": "06",
+        "total_usd": 5258213.0,
+        "transfer_adjustment_usd": 0.0,
+        "share_of_side": 0.000359,
+        "n_characters": 2
+      },
+      {
+        "code": "CAT",
+        "label": "CAT City Attorney",
+        "display_name": "City Attorney",
+        "org_group_code": "06",
+        "total_usd": 5199038.0,
+        "transfer_adjustment_usd": -71253153.0,
+        "share_of_side": 0.000355,
+        "n_characters": 4
+      },
+      {
+        "code": "CON",
+        "label": "CON Controller",
+        "display_name": "Controller",
+        "org_group_code": "06",
+        "total_usd": 2695388.0,
+        "transfer_adjustment_usd": -68930284.0,
+        "share_of_side": 0.000184,
+        "n_characters": 7
+      },
+      {
+        "code": "PDR",
+        "label": "PDR Public Defender",
+        "display_name": "Public Defender",
+        "org_group_code": "01",
+        "total_usd": 2441184.0,
+        "transfer_adjustment_usd": -92000.0,
+        "share_of_side": 0.000167,
+        "n_characters": 5
+      },
+      {
+        "code": "FAM",
+        "label": "FAM Fine Arts Museum",
+        "display_name": "Fine Arts Museums",
+        "org_group_code": "05",
+        "total_usd": 1161188.0,
+        "transfer_adjustment_usd": -179000.0,
+        "share_of_side": 7.9e-05,
+        "n_characters": 3
+      },
+      {
+        "code": "BOA",
+        "label": "BOA Board of Appeals",
+        "display_name": "Board of Appeals",
+        "org_group_code": "02",
+        "total_usd": 1132059.0,
+        "transfer_adjustment_usd": 0.0,
+        "share_of_side": 7.7e-05,
+        "n_characters": 1
+      },
+      {
+        "code": "HSS",
+        "label": "HSS Health Service System",
+        "display_name": "Health Service System",
+        "org_group_code": "06",
+        "total_usd": 469131.0,
+        "transfer_adjustment_usd": -13392951.0,
+        "share_of_side": 3.2e-05,
+        "n_characters": 4
+      },
+      {
+        "code": "AAM",
+        "label": "AAM Asian Art Museum",
+        "display_name": "Asian Art Museum",
+        "org_group_code": "05",
+        "total_usd": 391982.0,
+        "transfer_adjustment_usd": 0.0,
+        "share_of_side": 2.7e-05,
+        "n_characters": 1
+      },
+      {
+        "code": "BOS",
+        "label": "BOS Board of Supervisors",
+        "display_name": "Board of Supervisors",
+        "org_group_code": "06",
+        "total_usd": 344150.0,
+        "transfer_adjustment_usd": -161996.0,
+        "share_of_side": 2.4e-05,
+        "n_characters": 3
+      },
+      {
+        "code": "WOM",
+        "label": "WOM Status of Women",
+        "display_name": "Status of Women",
+        "org_group_code": "03",
+        "total_usd": 200000.0,
+        "transfer_adjustment_usd": 0.0,
+        "share_of_side": 1.4e-05,
+        "n_characters": 1
+      },
+      {
+        "code": "ETH",
+        "label": "ETH Ethics Commission",
+        "display_name": "Ethics Commission",
+        "org_group_code": "06",
+        "total_usd": 157200.0,
+        "transfer_adjustment_usd": 0.0,
+        "share_of_side": 1.1e-05,
+        "n_characters": 3
+      },
+      {
+        "code": "HRD",
+        "label": "HRD Human Resources",
+        "display_name": "Human Resources",
+        "org_group_code": "06",
+        "total_usd": 146103.0,
+        "transfer_adjustment_usd": -130603863.0,
+        "share_of_side": 1e-05,
+        "n_characters": 3
+      },
+      {
+        "code": "REG",
+        "label": "REG Elections",
+        "display_name": "Elections",
+        "org_group_code": "06",
+        "total_usd": 84229.0,
+        "transfer_adjustment_usd": -210000.0,
+        "share_of_side": 6e-06,
+        "n_characters": 3
+      },
+      {
+        "code": "DPA",
+        "label": "DPA Police Accountabilty",
+        "display_name": "Police Accountability",
+        "org_group_code": "01",
+        "total_usd": 0.0,
+        "transfer_adjustment_usd": -332795.0,
+        "share_of_side": 0.0,
+        "n_characters": 2
+      },
+      {
+        "code": "CCD",
+        "label": "CCD SF Communtiy College Dist",
+        "display_name": "SF Community College District",
+        "org_group_code": "03",
+        "total_usd": 0.0,
+        "transfer_adjustment_usd": 0.0,
+        "share_of_side": 0.0,
+        "n_characters": 0
+      },
+      {
+        "code": "USD",
+        "label": "USD County Education Office",
+        "display_name": "County Office of Education",
+        "org_group_code": "03",
+        "total_usd": 0.0,
+        "transfer_adjustment_usd": 0.0,
+        "share_of_side": 0.0,
+        "n_characters": 0
+      },
+      {
+        "code": "CRT",
+        "label": "CRT Superior Court",
+        "display_name": "Superior Court",
+        "org_group_code": "01",
+        "total_usd": 0.0,
+        "transfer_adjustment_usd": 0.0,
+        "share_of_side": 0.0,
+        "n_characters": 0
+      },
+      {
+        "code": "CSC",
+        "label": "CSC Civil Service Commission",
+        "display_name": "Civil Service Commission",
+        "org_group_code": "06",
+        "total_usd": 0.0,
+        "transfer_adjustment_usd": -430839.0,
+        "share_of_side": 0.0,
+        "n_characters": 2
+      },
+      {
+        "code": "CFC",
+        "label": "CFC Children & Families Commsn",
+        "display_name": "Children & Families Commission",
+        "org_group_code": "03",
+        "total_usd": 0.0,
+        "transfer_adjustment_usd": 0.0,
+        "share_of_side": 0.0,
+        "n_characters": 0
+      },
+      {
+        "code": "CTA",
+        "label": "CTA SF County Transprtn Auth",
+        "display_name": "County Transportation Authority",
+        "org_group_code": "02",
+        "total_usd": 0.0,
+        "transfer_adjustment_usd": 0.0,
+        "share_of_side": 0.0,
+        "n_characters": 0
+      },
+      {
+        "code": "HRC",
+        "label": "HRC Human Rights Commission",
+        "display_name": "Human Rights Commission",
+        "org_group_code": "03",
+        "total_usd": 0.0,
+        "transfer_adjustment_usd": -5099600.0,
+        "share_of_side": 0.0,
+        "n_characters": 2
+      },
+      {
+        "code": "CII",
+        "label": "CII Commty Invest & Infrstrctr",
+        "display_name": "Community Investment & Infrastructure",
+        "org_group_code": "03",
+        "total_usd": 0.0,
+        "transfer_adjustment_usd": 0.0,
+        "share_of_side": 0.0,
+        "n_characters": 0
+      }
+    ]
+  },
+  "dept_characters": {
+    "columns": [
+      "department_code",
+      "character_code",
+      "amount_usd",
+      "is_transfer_adjustment"
+    ],
+    "spending": [
+      [
+        "GEN",
+        "ELU",
+        -1160866686.0,
+        1
+      ],
+      [
+        "DPH",
+        "SALARIES",
+        1150953319.0,
+        0
+      ],
+      [
+        "DPH",
+        "NON_PERS_SVCS",
+        1048601170.0,
+        0
+      ],
+      [
+        "GEN",
+        "INTRA_TFR_OUT",
+        884432147.0,
+        0
+      ],
+      [
+        "MTA",
+        "SALARIES",
+        624015243.0,
+        0
+      ],
+      [
+        "PUC",
+        "NON_PERS_SVCS",
+        583597873.0,
+        0
+      ],
+      [
+        "AIR",
+        "DEBT_SERVICE",
+        575029174.0,
+        0
+      ],
+      [
+        "POL",
+        "SALARIES",
+        520225129.0,
+        0
+      ],
+      [
+        "HOM",
+        "CITY_GR_PROG",
+        485967886.0,
+        0
+      ],
+      [
+        "PUC",
+        "ELU",
+        -457870074.0,
+        1
+      ],
+      [
+        "HSA",
+        "AID_PMTS",
+        454471475.0,
+        0
+      ],
+      [
+        "PUC",
+        "DEBT_SERVICE",
+        435545028.0,
+        0
+      ],
+      [
+        "GEN",
+        "DEBT_SERVICE",
+        418147554.0,
+        0
+      ],
+      [
+        "DPH",
+        "MAND_FRING_BEN",
+        413688719.0,
+        0
+      ],
+      [
+        "FIR",
+        "SALARIES",
+        361097906.0,
+        0
+      ],
+      [
+        "MTA",
+        "MAND_FRING_BEN",
+        345414521.0,
+        0
+      ],
+      [
+        "ADM",
+        "ELU",
+        -335498970.0,
+        1
+      ],
+      [
+        "PUC",
+        "SALARIES",
+        316251021.0,
+        0
+      ],
+      [
+        "DEC",
+        "CITY_GR_PROG",
+        278799601.0,
+        0
+      ],
+      [
+        "GEN",
+        "OPER_TFR_OUT",
+        274475670.0,
+        0
+      ],
+      [
+        "CHF",
+        "CITY_GR_PROG",
+        273215214.0,
+        0
+      ],
+      [
+        "MTA",
+        "NON_PERS_SVCS",
+        259520795.0,
+        0
+      ],
+      [
+        "HSA",
+        "SALARIES",
+        257513770.0,
+        0
+      ],
+      [
+        "AIR",
+        "SALARIES",
+        220078480.0,
+        0
+      ],
+      [
+        "MTA",
+        "ELU",
+        -215283110.0,
+        1
+      ],
+      [
+        "PUC",
+        "INTRA_TFR_OUT",
+        214138146.0,
+        0
+      ],
+      [
+        "AIR",
+        "ELU",
+        -204631463.0,
+        1
+      ],
+      [
+        "ADM",
+        "NON_PERS_SVCS",
+        202490947.0,
+        0
+      ],
+      [
+        "AIR",
+        "NON_PERS_SVCS",
+        189685653.0,
+        0
+      ],
+      [
+        "DPH",
+        "SVCS_OTHER_DEPTS",
+        187288780.0,
+        0
+      ],
+      [
+        "DPH",
+        "MTL_SUPP",
+        187027423.0,
+        0
+      ],
+      [
+        "HSA",
+        "CITY_GR_PROG",
+        178132284.0,
+        0
+      ],
+      [
+        "DPH",
+        "ELU",
+        -174638920.0,
+        1
+      ],
+      [
+        "DPW",
+        "ELU",
+        -167077885.0,
+        1
+      ],
+      [
+        "MTA",
+        "OPER_TFR_OUT",
+        165511487.0,
+        0
+      ],
+      [
+        "SHF",
+        "SALARIES",
+        157224548.0,
+        0
+      ],
+      [
+        "AIR",
+        "INTRA_TFR_OUT",
+        153625000.0,
+        0
+      ],
+      [
+        "DPW",
+        "SALARIES",
+        153580638.0,
+        0
+      ],
+      [
+        "TIS",
+        "ELU",
+        -152785105.0,
+        1
+      ],
+      [
+        "POL",
+        "MAND_FRING_BEN",
+        133896688.0,
+        0
+      ],
+      [
+        "PUC",
+        "UNAP_REV_RET",
+        132691774.0,
+        0
+      ],
+      [
+        "HRD",
+        "ELU",
+        -130603863.0,
+        1
+      ],
+      [
+        "PUC",
+        "MAND_FRING_BEN",
+        126852172.0,
+        0
+      ],
+      [
+        "ADM",
+        "SALARIES",
+        125165040.0,
+        0
+      ],
+      [
+        "HSA",
+        "MAND_FRING_BEN",
+        116161808.0,
+        0
+      ],
+      [
+        "PUC",
+        "SVCS_OTHER_DEPTS",
+        111600913.0,
+        0
+      ],
+      [
+        "MTA",
+        "SVCS_OTHER_DEPTS",
+        109711028.0,
+        0
+      ],
+      [
+        "DPW",
+        "CAP_OUTLAY",
+        107573262.0,
+        0
+      ],
+      [
+        "DPH",
+        "OPER_TFR_OUT",
+        106796804.0,
+        0
+      ],
+      [
+        "REC",
+        "SALARIES",
+        101853163.0,
+        0
+      ],
+      [
+        "ECN",
+        "CITY_GR_PROG",
+        100996189.0,
+        0
+      ],
+      [
+        "HOM",
+        "PROG_PROJ",
+        97739353.0,
+        0
+      ],
+      [
+        "MYR",
+        "CITY_GR_PROG",
+        97104036.0,
+        0
+      ],
+      [
+        "AIR",
+        "SVCS_OTHER_DEPTS",
+        94953334.0,
+        0
+      ],
+      [
+        "HRD",
+        "NON_PERS_SVCS",
+        94033154.0,
+        0
+      ],
+      [
+        "AIR",
+        "MAND_FRING_BEN",
+        93921103.0,
+        0
+      ],
+      [
+        "HSA",
+        "SVCS_OTHER_DEPTS",
+        93752675.0,
+        0
+      ],
+      [
+        "PUC",
+        "OH_ALLOCS",
+        -92597355.0,
+        0
+      ],
+      [
+        "FIR",
+        "MAND_FRING_BEN",
+        91308107.0,
+        0
+      ],
+      [
+        "GEN",
+        "MAND_FRING_BEN",
+        88692776.0,
+        0
+      ],
+      [
+        "ADM",
+        "SVCS_OTHER_DEPTS",
+        85768313.0,
+        0
+      ],
+      [
+        "DPH",
+        "PROG_PROJ",
+        84215305.0,
+        0
+      ],
+      [
+        "DEC",
+        "ELU",
+        -80634023.0,
+        1
+      ],
+      [
+        "DPH",
+        "CAP_OUTLAY",
+        79251959.0,
+        0
+      ],
+      [
+        "LIB",
+        "SALARIES",
+        74929839.0,
+        0
+      ],
+      [
+        "TIS",
+        "NON_PERS_SVCS",
+        74863063.0,
+        0
+      ],
+      [
+        "MTA",
+        "MTL_SUPP",
+        74590552.0,
+        0
+      ],
+      [
+        "SHF",
+        "MAND_FRING_BEN",
+        73221065.0,
+        0
+      ],
+      [
+        "POL",
+        "SVCS_OTHER_DEPTS",
+        72945553.0,
+        0
+      ],
+      [
+        "CAT",
+        "ELU",
+        -71253153.0,
+        1
+      ],
+      [
+        "GEN",
+        "UNAP_REV_DESIG",
+        70840000.0,
+        0
+      ],
+      [
+        "CON",
+        "ELU",
+        -68930284.0,
+        1
+      ],
+      [
+        "PUC",
+        "UNAP_REV_DESIG",
+        66434681.0,
+        0
+      ],
+      [
+        "MTA",
+        "CAP_OUTLAY",
+        65210058.0,
+        0
+      ],
+      [
+        "CAT",
+        "SALARIES",
+        64627798.0,
+        0
+      ],
+      [
+        "DPW",
+        "MAND_FRING_BEN",
+        62843271.0,
+        0
+      ],
+      [
+        "ADM",
+        "DEBT_SERVICE",
+        61098724.0,
+        0
+      ],
+      [
+        "MYR",
+        "OTH_SUP_CARE_PERS",
+        56327920.0,
+        0
+      ],
+      [
+        "AIR",
+        "CAP_OUTLAY",
+        55093005.0,
+        0
+      ],
+      [
+        "DEM",
+        "SALARIES",
+        52495328.0,
+        0
+      ],
+      [
+        "DAT",
+        "SALARIES",
+        51766339.0,
+        0
+      ],
+      [
+        "AIR",
+        "OPER_TFR_OUT",
+        50918463.0,
+        0
+      ],
+      [
+        "HOM",
+        "SVCS_OTHER_DEPTS",
+        50108855.0,
+        0
+      ],
+      [
+        "GEN",
+        "SVCS_OTHER_DEPTS",
+        49113223.0,
+        0
+      ],
+      [
+        "ADM",
+        "MAND_FRING_BEN",
+        47331621.0,
+        0
+      ],
+      [
+        "PRT",
+        "ELU",
+        -47138031.0,
+        1
+      ],
+      [
+        "PRT",
+        "INTRA_TFR_OUT",
+        47106318.0,
+        0
+      ],
+      [
+        "DPW",
+        "SVCS_OTHER_DEPTS",
+        46910815.0,
+        0
+      ],
+      [
+        "PUC",
+        "FAC_MNTC",
+        46886510.0,
+        0
+      ],
+      [
+        "PUC",
+        "OPER_TFR_OUT",
+        46614485.0,
+        0
+      ],
+      [
+        "HSA",
+        "NON_PERS_SVCS",
+        45477413.0,
+        0
+      ],
+      [
+        "MTA",
+        "INTRA_TFR_OUT",
+        45387369.0,
+        0
+      ],
+      [
+        "HSA",
+        "ELU",
+        -43375729.0,
+        1
+      ],
+      [
+        "TIS",
+        "SALARIES",
+        43348253.0,
+        0
+      ],
+      [
+        "REC",
+        "MAND_FRING_BEN",
+        41871501.0,
+        0
+      ],
+      [
+        "CHF",
+        "SVCS_OTHER_DEPTS",
+        41602216.0,
+        0
+      ],
+      [
+        "DBI",
+        "SALARIES",
+        41362210.0,
+        0
+      ],
+      [
+        "CON",
+        "SALARIES",
+        41156987.0,
+        0
+      ],
+      [
+        "PUC",
+        "MTL_SUPP",
+        39875564.0,
+        0
+      ],
+      [
+        "REC",
+        "CAP_OUTLAY",
+        39508959.0,
+        0
+      ],
+      [
+        "LIB",
+        "MAND_FRING_BEN",
+        38573292.0,
+        0
+      ],
+      [
+        "MYR",
+        "ELU",
+        -38324008.0,
+        1
+      ],
+      [
+        "FIR",
+        "SVCS_OTHER_DEPTS",
+        37385264.0,
+        0
+      ],
+      [
+        "PRT",
+        "SVCS_OTHER_DEPTS",
+        36777968.0,
+        0
+      ],
+      [
+        "REC",
+        "ELU",
+        -36350038.0,
+        1
+      ],
+      [
+        "PDR",
+        "SALARIES",
+        36100458.0,
+        0
+      ],
+      [
+        "PRT",
+        "SALARIES",
+        35827687.0,
+        0
+      ],
+      [
+        "REC",
+        "SVCS_OTHER_DEPTS",
+        35325393.0,
+        0
+      ],
+      [
+        "DEM",
+        "NON_PERS_SVCS",
+        33969190.0,
+        0
+      ],
+      [
+        "MTA",
+        "OH_ALLOCS",
+        -33952656.0,
+        0
+      ],
+      [
+        "ADM",
+        "CITY_GR_PROG",
+        33884625.0,
+        0
+      ],
+      [
+        "LIB",
+        "CAP_OUTLAY",
+        33758000.0,
+        0
+      ],
+      [
+        "PRT",
+        "CAP_OUTLAY",
+        33740034.0,
+        0
+      ],
+      [
+        "HOM",
+        "SALARIES",
+        33095318.0,
+        0
+      ],
+      [
+        "SHF",
+        "ELU",
+        -33032950.0,
+        1
+      ],
+      [
+        "LIB",
+        "ELU",
+        -32867636.0,
+        1
+      ],
+      [
+        "LIB",
+        "INTRA_TFR_OUT",
+        32780000.0,
+        0
+      ],
+      [
+        "CRT",
+        "NON_PERS_SVCS",
+        32095944.0,
+        0
+      ],
+      [
+        "HRD",
+        "SALARIES",
+        30606987.0,
+        0
+      ],
+      [
+        "HOM",
+        "NON_PERS_SVCS",
+        29705466.0,
+        0
+      ],
+      [
+        "DEC",
+        "OPER_TFR_OUT",
+        28350000.0,
+        0
+      ],
+      [
+        "MTA",
+        "DEBT_SERVICE",
+        27850760.0,
+        0
+      ],
+      [
+        "RET",
+        "SALARIES",
+        27792434.0,
+        0
+      ],
+      [
+        "CPC",
+        "SALARIES",
+        27174566.0,
+        0
+      ],
+      [
+        "LIB",
+        "MTL_SUPP",
+        26119071.0,
+        0
+      ],
+      [
+        "REC",
+        "NON_PERS_SVCS",
+        25639466.0,
+        0
+      ],
+      [
+        "TTX",
+        "SALARIES",
+        24766455.0,
+        0
+      ],
+      [
+        "DPW",
+        "NON_PERS_SVCS",
+        24224748.0,
+        0
+      ],
+      [
+        "REC",
+        "OPER_TFR_OUT",
+        24069033.0,
+        0
+      ],
+      [
+        "DBI",
+        "ELU",
+        -23056120.0,
+        1
+      ],
+      [
+        "SHF",
+        "SVCS_OTHER_DEPTS",
+        23005866.0,
+        0
+      ],
+      [
+        "DBI",
+        "INTRA_TFR_OUT",
+        22852067.0,
+        0
+      ],
+      [
+        "CAT",
+        "MAND_FRING_BEN",
+        22617235.0,
+        0
+      ],
+      [
+        "HSA",
+        "INTRA_TFR_OUT",
+        22366301.0,
+        0
+      ],
+      [
+        "ECN",
+        "ELU",
+        -22177440.0,
+        1
+      ],
+      [
+        "DPW",
+        "MTL_SUPP",
+        21074722.0,
+        0
+      ],
+      [
+        "ASR",
+        "SALARIES",
+        21072513.0,
+        0
+      ],
+      [
+        "JUV",
+        "SALARIES",
+        20372696.0,
+        0
+      ],
+      [
+        "GEN",
+        "NON_PERS_SVCS",
+        20215790.0,
+        0
+      ],
+      [
+        "DEM",
+        "PROG_PROJ",
+        19300908.0,
+        0
+      ],
+      [
+        "TIS",
+        "SVCS_OTHER_DEPTS",
+        19139858.0,
+        0
+      ],
+      [
+        "ADP",
+        "SALARIES",
+        18793976.0,
+        0
+      ],
+      [
+        "ADM",
+        "MTL_SUPP",
+        18600467.0,
+        0
+      ],
+      [
+        "POL",
+        "NON_PERS_SVCS",
+        18509488.0,
+        0
+      ],
+      [
+        "GEN",
+        "UNAP_REV_RET",
+        17800000.0,
+        0
+      ],
+      [
+        "DPH",
+        "DEBT_SERVICE",
+        17737015.0,
+        0
+      ],
+      [
+        "DBI",
+        "SVCS_OTHER_DEPTS",
+        17587066.0,
+        0
+      ],
+      [
+        "CAT",
+        "NON_PERS_SVCS",
+        17478423.0,
+        0
+      ],
+      [
+        "POL",
+        "PROG_PROJ",
+        17059353.0,
+        0
+      ],
+      [
+        "ECN",
+        "SALARIES",
+        16914693.0,
+        0
+      ],
+      [
+        "DEM",
+        "MAND_FRING_BEN",
+        16904528.0,
+        0
+      ],
+      [
+        "DBI",
+        "MAND_FRING_BEN",
+        16798842.0,
+        0
+      ],
+      [
+        "DAT",
+        "MAND_FRING_BEN",
+        16686305.0,
+        0
+      ],
+      [
+        "HSA",
+        "AID_ASSIST",
+        16613495.0,
+        0
+      ],
+      [
+        "FIR",
+        "ELU",
+        -16338877.0,
+        1
+      ],
+      [
+        "AIR",
+        "MTL_SUPP",
+        16306528.0,
+        0
+      ],
+      [
+        "CON",
+        "NON_PERS_SVCS",
+        16186581.0,
+        0
+      ],
+      [
+        "TIS",
+        "MAND_FRING_BEN",
+        15940825.0,
+        0
+      ],
+      [
+        "AIR",
+        "FAC_MNTC",
+        15750000.0,
+        0
+      ],
+      [
+        "SHF",
+        "NON_PERS_SVCS",
+        15711272.0,
+        0
+      ],
+      [
+        "PUC",
+        "CAP_OUTLAY",
+        15581607.0,
+        0
+      ],
+      [
+        "PRT",
+        "MAND_FRING_BEN",
+        15307798.0,
+        0
+      ],
+      [
+        "PRT",
+        "NON_PERS_SVCS",
+        15248943.0,
+        0
+      ],
+      [
+        "ADP",
+        "CITY_GR_PROG",
+        15191540.0,
+        0
+      ],
+      [
+        "CHF",
+        "ELU",
+        -15075959.0,
+        1
+      ],
+      [
+        "GEN",
+        "PROG_PROJ",
+        15056919.0,
+        0
+      ],
+      [
+        "CON",
+        "MAND_FRING_BEN",
+        14993775.0,
+        0
+      ],
+      [
+        "LIB",
+        "SVCS_OTHER_DEPTS",
+        14784501.0,
+        0
+      ],
+      [
+        "ART",
+        "CITY_GR_PROG",
+        13426309.0,
+        0
+      ],
+      [
+        "ECN",
+        "PROG_PROJ",
+        13414693.0,
+        0
+      ],
+      [
+        "HSS",
+        "ELU",
+        -13392951.0,
+        1
+      ],
+      [
+        "HRC",
+        "PROG_PROJ",
+        13132205.0,
+        0
+      ],
+      [
+        "BOS",
+        "SALARIES",
+        12866811.0,
+        0
+      ],
+      [
+        "ADM",
+        "CAP_OUTLAY",
+        12851133.0,
+        0
+      ],
+      [
+        "ART",
+        "CAP_OUTLAY",
+        12839707.0,
+        0
+      ],
+      [
+        "DAT",
+        "SVCS_OTHER_DEPTS",
+        12544242.0,
+        0
+      ],
+      [
+        "SHF",
+        "CITY_GR_PROG",
+        12198047.0,
+        0
+      ],
+      [
+        "DPH",
+        "INTRA_TFR_OUT",
+        12184544.0,
+        0
+      ],
+      [
+        "ECN",
+        "SVCS_OTHER_DEPTS",
+        12133830.0,
+        0
+      ],
+      [
+        "HOM",
+        "MAND_FRING_BEN",
+        11997459.0,
+        0
+      ],
+      [
+        "PDR",
+        "MAND_FRING_BEN",
+        11838294.0,
+        0
+      ],
+      [
+        "WOM",
+        "CITY_GR_PROG",
+        11823828.0,
+        0
+      ],
+      [
+        "DEC",
+        "UNAP_REV_DESIG",
+        11760744.0,
+        0
+      ],
+      [
+        "MYR",
+        "SALARIES",
+        11645767.0,
+        0
+      ],
+      [
+        "REG",
+        "NON_PERS_SVCS",
+        11198828.0,
+        0
+      ],
+      [
+        "HOM",
+        "ELU",
+        -11110401.0,
+        1
+      ],
+      [
+        "DPH",
+        "CITY_GR_PROG",
+        10949501.0,
+        0
+      ],
+      [
+        "HRD",
+        "MAND_FRING_BEN",
+        10903470.0,
+        0
+      ],
+      [
+        "FAM",
+        "SALARIES",
+        10811764.0,
+        0
+      ],
+      [
+        "CPC",
+        "MAND_FRING_BEN",
+        10759359.0,
+        0
+      ],
+      [
+        "TTX",
+        "ELU",
+        -10678462.0,
+        1
+      ],
+      [
+        "LIB",
+        "NON_PERS_SVCS",
+        10614533.0,
+        0
+      ],
+      [
+        "ADM",
+        "INTRA_TFR_OUT",
+        10600000.0,
+        0
+      ],
+      [
+        "JUV",
+        "MAND_FRING_BEN",
+        10480969.0,
+        0
+      ],
+      [
+        "DPW",
+        "DEBT_SERVICE",
+        10477000.0,
+        0
+      ],
+      [
+        "ADP",
+        "MAND_FRING_BEN",
+        10159231.0,
+        0
+      ],
+      [
+        "CHF",
+        "SALARIES",
+        10057426.0,
+        0
+      ],
+      [
+        "ENV",
+        "SALARIES",
+        9887748.0,
+        0
+      ],
+      [
+        "CPC",
+        "SVCS_OTHER_DEPTS",
+        9486330.0,
+        0
+      ],
+      [
+        "HRD",
+        "SVCS_OTHER_DEPTS",
+        9484604.0,
+        0
+      ],
+      [
+        "TTX",
+        "MAND_FRING_BEN",
+        9445424.0,
+        0
+      ],
+      [
+        "JUV",
+        "SVCS_OTHER_DEPTS",
+        9421871.0,
+        0
+      ],
+      [
+        "CHF",
+        "NON_PERS_SVCS",
+        9414786.0,
+        0
+      ],
+      [
+        "RET",
+        "MAND_FRING_BEN",
+        9382028.0,
+        0
+      ],
+      [
+        "DPW",
+        "CITY_GR_PROG",
+        9234885.0,
+        0
+      ],
+      [
+        "DPW",
+        "PROG_PROJ",
+        9141865.0,
+        0
+      ],
+      [
+        "FIR",
+        "MTL_SUPP",
+        9128447.0,
+        0
+      ],
+      [
+        "WAR",
+        "DEBT_SERVICE",
+        9079743.0,
+        0
+      ],
+      [
+        "DEC",
+        "SVCS_OTHER_DEPTS",
+        9011254.0,
+        0
+      ],
+      [
+        "DEM",
+        "SVCS_OTHER_DEPTS",
+        8884156.0,
+        0
+      ],
+      [
+        "DEC",
+        "SALARIES",
+        8831881.0,
+        0
+      ],
+      [
+        "ECN",
+        "NON_PERS_SVCS",
+        8634652.0,
+        0
+      ],
+      [
+        "REC",
+        "PROG_PROJ",
+        8295406.0,
+        0
+      ],
+      [
+        "ADM",
+        "OH_ALLOCS",
+        8277344.0,
+        0
+      ],
+      [
+        "REC",
+        "INTRA_TFR_OUT",
+        8160836.0,
+        0
+      ],
+      [
+        "ENV",
+        "NON_PERS_SVCS",
+        8116100.0,
+        0
+      ],
+      [
+        "ASR",
+        "MAND_FRING_BEN",
+        8103641.0,
+        0
+      ],
+      [
+        "WAR",
+        "SALARIES",
+        8047852.0,
+        0
+      ],
+      [
+        "WAR",
+        "SVCS_OTHER_DEPTS",
+        7958558.0,
+        0
+      ],
+      [
+        "RNT",
+        "SALARIES",
+        7747722.0,
+        0
+      ],
+      [
+        "CSS",
+        "SALARIES",
+        7712971.0,
+        0
+      ],
+      [
+        "CPC",
+        "PROG_PROJ",
+        7705818.0,
+        0
+      ],
+      [
+        "WAR",
+        "CAP_OUTLAY",
+        7639740.0,
+        0
+      ],
+      [
+        "RET",
+        "SVCS_OTHER_DEPTS",
+        7627628.0,
+        0
+      ],
+      [
+        "SHF",
+        "MTL_SUPP",
+        7564112.0,
+        0
+      ],
+      [
+        "ENV",
+        "SVCS_OTHER_DEPTS",
+        7510886.0,
+        0
+      ],
+      [
+        "REG",
+        "SALARIES",
+        7351336.0,
+        0
+      ],
+      [
+        "CON",
+        "PROG_PROJ",
+        7266463.0,
+        0
+      ],
+      [
+        "GEN",
+        "CITY_GR_PROG",
+        7200000.0,
+        0
+      ],
+      [
+        "MYR",
+        "PROG_PROJ",
+        7172089.0,
+        0
+      ],
+      [
+        "TTX",
+        "NON_PERS_SVCS",
+        7029435.0,
+        0
+      ],
+      [
+        "ENV",
+        "ELU",
+        -7025862.0,
+        1
+      ],
+      [
+        "ART",
+        "NON_PERS_SVCS",
+        6833855.0,
+        0
+      ],
+      [
+        "POL",
+        "MTL_SUPP",
+        6811207.0,
+        0
+      ],
+      [
+        "ADP",
+        "NON_PERS_SVCS",
+        6751102.0,
+        0
+      ],
+      [
+        "FIR",
+        "CAP_OUTLAY",
+        6594338.0,
+        0
+      ],
+      [
+        "TIS",
+        "PROG_PROJ",
+        6544376.0,
+        0
+      ],
+      [
+        "CHF",
+        "INTRA_TFR_OUT",
+        6520000.0,
+        0
+      ],
+      [
+        "HSS",
+        "SALARIES",
+        6308915.0,
+        0
+      ],
+      [
+        "AIR",
+        "OH_ALLOCS",
+        -6306170.0,
+        0
+      ],
+      [
+        "REC",
+        "MTL_SUPP",
+        6205446.0,
+        0
+      ],
+      [
+        "PRT",
+        "DEBT_SERVICE",
+        6135955.0,
+        0
+      ],
+      [
+        "TTX",
+        "SVCS_OTHER_DEPTS",
+        6090300.0,
+        0
+      ],
+      [
+        "POL",
+        "ELU",
+        -6016843.0,
+        1
+      ],
+      [
+        "ECN",
+        "MAND_FRING_BEN",
+        5930446.0,
+        0
+      ],
+      [
+        "DPA",
+        "SALARIES",
+        5915788.0,
+        0
+      ],
+      [
+        "MYR",
+        "DEBT_SERVICE",
+        5828541.0,
+        0
+      ],
+      [
+        "MYR",
+        "SVCS_OTHER_DEPTS",
+        5699766.0,
+        0
+      ],
+      [
+        "AAM",
+        "SALARIES",
+        5586477.0,
+        0
+      ],
+      [
+        "FAM",
+        "SVCS_OTHER_DEPTS",
+        5433484.0,
+        0
+      ],
+      [
+        "DPW",
+        "OPER_TFR_OUT",
+        5396207.0,
+        0
+      ],
+      [
+        "RET",
+        "NON_PERS_SVCS",
+        5329173.0,
+        0
+      ],
+      [
+        "BOS",
+        "NON_PERS_SVCS",
+        5297359.0,
+        0
+      ],
+      [
+        "HRD",
+        "PROG_PROJ",
+        5291126.0,
+        0
+      ],
+      [
+        "HRC",
+        "ELU",
+        -5099600.0,
+        1
+      ],
+      [
+        "ADP",
+        "ELU",
+        -5025598.0,
+        1
+      ],
+      [
+        "DPH",
+        "OH_ALLOCS",
+        5008220.0,
+        0
+      ],
+      [
+        "DBI",
+        "CITY_GR_PROG",
+        4800000.0,
+        0
+      ],
+      [
+        "BOS",
+        "MAND_FRING_BEN",
+        4672474.0,
+        0
+      ],
+      [
+        "DEC",
+        "NON_PERS_SVCS",
+        4617268.0,
+        0
+      ],
+      [
+        "PRT",
+        "PROG_PROJ",
+        4551589.0,
+        0
+      ],
+      [
+        "ETH",
+        "SALARIES",
+        4490066.0,
+        0
+      ],
+      [
+        "FAM",
+        "MAND_FRING_BEN",
+        4468127.0,
+        0
+      ],
+      [
+        "DAT",
+        "NON_PERS_SVCS",
+        4420300.0,
+        0
+      ],
+      [
+        "DPH",
+        "FAC_MNTC",
+        4301526.0,
+        0
+      ],
+      [
+        "POL",
+        "CAP_OUTLAY",
+        4253366.0,
+        0
+      ],
+      [
+        "MYR",
+        "AID_ASSIST",
+        4200000.0,
+        0
+      ],
+      [
+        "ENV",
+        "INTRA_TFR_OUT",
+        4168084.0,
+        0
+      ],
+      [
+        "MYR",
+        "MAND_FRING_BEN",
+        4144271.0,
+        0
+      ],
+      [
+        "RNT",
+        "NON_PERS_SVCS",
+        4087558.0,
+        0
+      ],
+      [
+        "HRC",
+        "SALARIES",
+        4085332.0,
+        0
+      ],
+      [
+        "ENV",
+        "MAND_FRING_BEN",
+        3988601.0,
+        0
+      ],
+      [
+        "MYR",
+        "OH_ALLOCS",
+        3978824.0,
+        0
+      ],
+      [
+        "JUV",
+        "NON_PERS_SVCS",
+        3946859.0,
+        0
+      ],
+      [
+        "DEM",
+        "DEBT_SERVICE",
+        3922592.0,
+        0
+      ],
+      [
+        "HSA",
+        "MTL_SUPP",
+        3914664.0,
+        0
+      ],
+      [
+        "CAT",
+        "SVCS_OTHER_DEPTS",
+        3861112.0,
+        0
+      ],
+      [
+        "DBI",
+        "NON_PERS_SVCS",
+        3761000.0,
+        0
+      ],
+      [
+        "CSS",
+        "MAND_FRING_BEN",
+        3751258.0,
+        0
+      ],
+      [
+        "ADP",
+        "PROG_PROJ",
+        3750000.0,
+        0
+      ],
+      [
+        "CON",
+        "SVCS_OTHER_DEPTS",
+        3748156.0,
+        0
+      ],
+      [
+        "ART",
+        "SALARIES",
+        3712457.0,
+        0
+      ],
+      [
+        "TIS",
+        "INTRA_TFR_OUT",
+        3626847.0,
+        0
+      ],
+      [
+        "CHF",
+        "MAND_FRING_BEN",
+        3564488.0,
+        0
+      ],
+      [
+        "DEC",
+        "MAND_FRING_BEN",
+        3495040.0,
+        0
+      ],
+      [
+        "WAR",
+        "MAND_FRING_BEN",
+        3491587.0,
+        0
+      ],
+      [
+        "ADP",
+        "SVCS_OTHER_DEPTS",
+        3294108.0,
+        0
+      ],
+      [
+        "ASR",
+        "SVCS_OTHER_DEPTS",
+        3236359.0,
+        0
+      ],
+      [
+        "TIS",
+        "MTL_SUPP",
+        3225657.0,
+        0
+      ],
+      [
+        "CHF",
+        "PROG_PROJ",
+        3152503.0,
+        0
+      ],
+      [
+        "JUV",
+        "CAP_OUTLAY",
+        3119742.0,
+        0
+      ],
+      [
+        "TTX",
+        "PROG_PROJ",
+        3111000.0,
+        0
+      ],
+      [
+        "FIR",
+        "NON_PERS_SVCS",
+        3101959.0,
+        0
+      ],
+      [
+        "DPW",
+        "UNAP_REV_DESIG",
+        3100656.0,
+        0
+      ],
+      [
+        "ART",
+        "PROG_PROJ",
+        3060047.0,
+        0
+      ],
+      [
+        "CPC",
+        "ELU",
+        -3043444.0,
+        1
+      ],
+      [
+        "DAT",
+        "PROG_PROJ",
+        3011304.0,
+        0
+      ],
+      [
+        "RNT",
+        "MAND_FRING_BEN",
+        2965934.0,
+        0
+      ],
+      [
+        "PUC",
+        "PROG_PROJ",
+        2851014.0,
+        0
+      ],
+      [
+        "ASR",
+        "NON_PERS_SVCS",
+        2842401.0,
+        0
+      ],
+      [
+        "PUC",
+        "CITY_GR_PROG",
+        2831524.0,
+        0
+      ],
+      [
+        "SCI",
+        "SVCS_OTHER_DEPTS",
+        2807648.0,
+        0
+      ],
+      [
+        "HOM",
+        "AID_ASSIST",
+        2754382.0,
+        0
+      ],
+      [
+        "CPC",
+        "NON_PERS_SVCS",
+        2741533.0,
+        0
+      ],
+      [
+        "MYR",
+        "NON_PERS_SVCS",
+        2625864.0,
+        0
+      ],
+      [
+        "HSS",
+        "MAND_FRING_BEN",
+        2613811.0,
+        0
+      ],
+      [
+        "RNT",
+        "SVCS_OTHER_DEPTS",
+        2549588.0,
+        0
+      ],
+      [
+        "HSS",
+        "NON_PERS_SVCS",
+        2522965.0,
+        0
+      ],
+      [
+        "FIR",
+        "PROG_PROJ",
+        2475000.0,
+        0
+      ],
+      [
+        "PDR",
+        "SVCS_OTHER_DEPTS",
+        2449336.0,
+        0
+      ],
+      [
+        "HSS",
+        "SVCS_OTHER_DEPTS",
+        2371932.0,
+        0
+      ],
+      [
+        "REC",
+        "CITY_GR_PROG",
+        2263831.0,
+        0
+      ],
+      [
+        "MYR",
+        "OPER_TFR_OUT",
+        2250000.0,
+        0
+      ],
+      [
+        "AAM",
+        "MAND_FRING_BEN",
+        2247643.0,
+        0
+      ],
+      [
+        "DEM",
+        "MTL_SUPP",
+        2234185.0,
+        0
+      ],
+      [
+        "REC",
+        "FAC_MNTC",
+        2153000.0,
+        0
+      ],
+      [
+        "DPA",
+        "MAND_FRING_BEN",
+        2081155.0,
+        0
+      ],
+      [
+        "REG",
+        "SVCS_OTHER_DEPTS",
+        2030246.0,
+        0
+      ],
+      [
+        "SCI",
+        "SALARIES",
+        1839159.0,
+        0
+      ],
+      [
+        "REG",
+        "MAND_FRING_BEN",
+        1816882.0,
+        0
+      ],
+      [
+        "TIS",
+        "CAP_OUTLAY",
+        1805000.0,
+        0
+      ],
+      [
+        "FIR",
+        "INTRA_TFR_OUT",
+        1801498.0,
+        0
+      ],
+      [
+        "FAM",
+        "CAP_OUTLAY",
+        1795956.0,
+        0
+      ],
+      [
+        "AAM",
+        "SVCS_OTHER_DEPTS",
+        1783173.0,
+        0
+      ],
+      [
+        "SHF",
+        "PROG_PROJ",
+        1740235.0,
+        0
+      ],
+      [
+        "DPW",
+        "INTRA_TFR_OUT",
+        1702399.0,
+        0
+      ],
+      [
+        "CSS",
+        "SVCS_OTHER_DEPTS",
+        1677487.0,
+        0
+      ],
+      [
+        "ETH",
+        "MAND_FRING_BEN",
+        1598439.0,
+        0
+      ],
+      [
+        "HRC",
+        "CITY_GR_PROG",
+        1547416.0,
+        0
+      ],
+      [
+        "ART",
+        "MAND_FRING_BEN",
+        1537383.0,
+        0
+      ],
+      [
+        "HRC",
+        "MAND_FRING_BEN",
+        1529181.0,
+        0
+      ],
+      [
+        "HOM",
+        "CAP_OUTLAY",
+        1500000.0,
+        0
+      ],
+      [
+        "ASR",
+        "PROG_PROJ",
+        1500000.0,
+        0
+      ],
+      [
+        "REC",
+        "DEBT_SERVICE",
+        1458020.0,
+        0
+      ],
+      [
+        "HSA",
+        "CAP_OUTLAY",
+        1451243.0,
+        0
+      ],
+      [
+        "TIS",
+        "OH_ALLOCS",
+        1446221.0,
+        0
+      ],
+      [
+        "REC",
+        "OH_ALLOCS",
+        -1373795.0,
+        0
+      ],
+      [
+        "FIR",
+        "OPER_TFR_OUT",
+        1354313.0,
+        0
+      ],
+      [
+        "DBI",
+        "OH_ALLOCS",
+        1352456.0,
+        0
+      ],
+      [
+        "WOM",
+        "SALARIES",
+        1346799.0,
+        0
+      ],
+      [
+        "PDR",
+        "NON_PERS_SVCS",
+        1342751.0,
+        0
+      ],
+      [
+        "PRT",
+        "MTL_SUPP",
+        1333905.0,
+        0
+      ],
+      [
+        "ART",
+        "ELU",
+        -1267539.0,
+        1
+      ],
+      [
+        "JUV",
+        "PROG_PROJ",
+        1236293.0,
+        0
+      ],
+      [
+        "SCI",
+        "NON_PERS_SVCS",
+        1215448.0,
+        0
+      ],
+      [
+        "LLB",
+        "SVCS_OTHER_DEPTS",
+        1181642.0,
+        0
+      ],
+      [
+        "PRT",
+        "UNAP_REV_RET",
+        1167414.0,
+        0
+      ],
+      [
+        "DEM",
+        "ELU",
+        -1150271.0,
+        1
+      ],
+      [
+        "WAR",
+        "NON_PERS_SVCS",
+        1135920.0,
+        0
+      ],
+      [
+        "DAT",
+        "CITY_GR_PROG",
+        1104186.0,
+        0
+      ],
+      [
+        "DPA",
+        "SVCS_OTHER_DEPTS",
+        1104156.0,
+        0
+      ],
+      [
+        "DPH",
+        "UNAP_REV_RET",
+        1069065.0,
+        0
+      ],
+      [
+        "ADM",
+        "PROG_PROJ",
+        1062997.0,
+        0
+      ],
+      [
+        "HRC",
+        "SVCS_OTHER_DEPTS",
+        1049219.0,
+        0
+      ],
+      [
+        "AAM",
+        "NON_PERS_SVCS",
+        1041116.0,
+        0
+      ],
+      [
+        "DPW",
+        "FAC_MNTC",
+        1040738.0,
+        0
+      ],
+      [
+        "ART",
+        "SVCS_OTHER_DEPTS",
+        1031240.0,
+        0
+      ],
+      [
+        "ENV",
+        "OH_ALLOCS",
+        1026629.0,
+        0
+      ],
+      [
+        "DEM",
+        "CAP_OUTLAY",
+        1023295.0,
+        0
+      ],
+      [
+        "HSA",
+        "OTH_SUP_CARE_PERS",
+        1010000.0,
+        0
+      ],
+      [
+        "DPW",
+        "OH_ALLOCS",
+        928053.0,
+        0
+      ],
+      [
+        "SCI",
+        "CAP_OUTLAY",
+        919021.0,
+        0
+      ],
+      [
+        "CSC",
+        "SALARIES",
+        902920.0,
+        0
+      ],
+      [
+        "ENV",
+        "PROG_PROJ",
+        859935.0,
+        0
+      ],
+      [
+        "LIB",
+        "UNAP_REV_DESIG",
+        825241.0,
+        0
+      ],
+      [
+        "SDA",
+        "SALARIES",
+        820893.0,
+        0
+      ],
+      [
+        "AAM",
+        "CAP_OUTLAY",
+        722911.0,
+        0
+      ],
+      [
+        "ENV",
+        "CITY_GR_PROG",
+        683142.0,
+        0
+      ],
+      [
+        "SCI",
+        "MAND_FRING_BEN",
+        679209.0,
+        0
+      ],
+      [
+        "CHF",
+        "MTL_SUPP",
+        679058.0,
+        0
+      ],
+      [
+        "ETH",
+        "SVCS_OTHER_DEPTS",
+        666227.0,
+        0
+      ],
+      [
+        "CRT",
+        "MAND_FRING_BEN",
+        665000.0,
+        0
+      ],
+      [
+        "LIB",
+        "CITY_GR_PROG",
+        650000.0,
+        0
+      ],
+      [
+        "CON",
+        "MTL_SUPP",
+        630011.0,
+        0
+      ],
+      [
+        "FAM",
+        "NON_PERS_SVCS",
+        625489.0,
+        0
+      ],
+      [
+        "BOS",
+        "SVCS_OTHER_DEPTS",
+        593045.0,
+        0
+      ],
+      [
+        "POL",
+        "DEBT_SERVICE",
+        550000.0,
+        0
+      ],
+      [
+        "RET",
+        "OH_ALLOCS",
+        547081.0,
+        0
+      ],
+      [
+        "WOM",
+        "MAND_FRING_BEN",
+        506973.0,
+        0
+      ],
+      [
+        "BOA",
+        "SALARIES",
+        501705.0,
+        0
+      ],
+      [
+        "DPA",
+        "PROG_PROJ",
+        500000.0,
+        0
+      ],
+      [
+        "POL",
+        "CARRYFWD_BUD_ONLY",
+        494805.0,
+        0
+      ],
+      [
+        "DAT",
+        "ELU",
+        -490853.0,
+        1
+      ],
+      [
+        "RET",
+        "UNAP_REV_DESIG",
+        489110.0,
+        0
+      ],
+      [
+        "CPC",
+        "OH_ALLOCS",
+        458758.0,
+        0
+      ],
+      [
+        "ETH",
+        "CITY_GR_PROG",
+        446860.0,
+        0
+      ],
+      [
+        "DBI",
+        "MTL_SUPP",
+        442000.0,
+        0
+      ],
+      [
+        "HRD",
+        "MTL_SUPP",
+        440516.0,
+        0
+      ],
+      [
+        "CSC",
+        "ELU",
+        -430839.0,
+        1
+      ],
+      [
+        "LLB",
+        "SALARIES",
+        428446.0,
+        0
+      ],
+      [
+        "REG",
+        "MTL_SUPP",
+        423931.0,
+        0
+      ],
+      [
+        "PDR",
+        "CITY_GR_PROG",
+        414239.0,
+        0
+      ],
+      [
+        "MTA",
+        "UNAP_REV_DESIG",
+        400000.0,
+        0
+      ],
+      [
+        "JUV",
+        "MTL_SUPP",
+        389347.0,
+        0
+      ],
+      [
+        "CHF",
+        "OH_ALLOCS",
+        375000.0,
+        0
+      ],
+      [
+        "CPC",
+        "MTL_SUPP",
+        371470.0,
+        0
+      ],
+      [
+        "CSS",
+        "NON_PERS_SVCS",
+        358079.0,
+        0
+      ],
+      [
+        "BOA",
+        "SVCS_OTHER_DEPTS",
+        354626.0,
+        0
+      ],
+      [
+        "SHF",
+        "CAP_OUTLAY",
+        349457.0,
+        0
+      ],
+      [
+        "SDA",
+        "SVCS_OTHER_DEPTS",
+        346287.0,
+        0
+      ],
+      [
+        "DEC",
+        "MTL_SUPP",
+        345610.0,
+        0
+      ],
+      [
+        "SDA",
+        "NON_PERS_SVCS",
+        334336.0,
+        0
+      ],
+      [
+        "DPA",
+        "NON_PERS_SVCS",
+        334336.0,
+        0
+      ],
+      [
+        "RNT",
+        "OH_ALLOCS",
+        334171.0,
+        0
+      ],
+      [
+        "PDR",
+        "PROG_PROJ",
+        333212.0,
+        0
+      ],
+      [
+        "DPA",
+        "ELU",
+        -332795.0,
+        1
+      ],
+      [
+        "CSC",
+        "MAND_FRING_BEN",
+        330140.0,
+        0
+      ],
+      [
+        "WAR",
+        "MTL_SUPP",
+        292017.0,
+        0
+      ],
+      [
+        "ASR",
+        "MTL_SUPP",
+        283670.0,
+        0
+      ],
+      [
+        "ART",
+        "OH_ALLOCS",
+        275721.0,
+        0
+      ],
+      [
+        "WAR",
+        "ELU",
+        -273987.0,
+        1
+      ],
+      [
+        "DEC",
+        "AID_ASSIST",
+        272328.0,
+        0
+      ],
+      [
+        "ETH",
+        "NON_PERS_SVCS",
+        270160.0,
+        0
+      ],
+      [
+        "BOA",
+        "MAND_FRING_BEN",
+        263608.0,
+        0
+      ],
+      [
+        "SDA",
+        "MAND_FRING_BEN",
+        250391.0,
+        0
+      ],
+      [
+        "CSC",
+        "SVCS_OTHER_DEPTS",
+        246359.0,
+        0
+      ],
+      [
+        "ENV",
+        "MTL_SUPP",
+        244896.0,
+        0
+      ],
+      [
+        "HOM",
+        "OH_ALLOCS",
+        240697.0,
+        0
+      ],
+      [
+        "RET",
+        "MTL_SUPP",
+        215000.0,
+        0
+      ],
+      [
+        "REG",
+        "ELU",
+        -210000.0,
+        1
+      ],
+      [
+        "DAT",
+        "OH_ALLOCS",
+        -208544.0,
+        0
+      ],
+      [
+        "JUV",
+        "ELU",
+        -205638.0,
+        1
+      ],
+      [
+        "FIR",
+        "OH_ALLOCS",
+        193460.0,
+        0
+      ],
+      [
+        "WOM",
+        "SVCS_OTHER_DEPTS",
+        185394.0,
+        0
+      ],
+      [
+        "HSA",
+        "PROG_PROJ",
+        183500.0,
+        0
+      ],
+      [
+        "HOM",
+        "MTL_SUPP",
+        183165.0,
+        0
+      ],
+      [
+        "FAM",
+        "ELU",
+        -179000.0,
+        1
+      ],
+      [
+        "LLB",
+        "MAND_FRING_BEN",
+        178772.0,
+        0
+      ],
+      [
+        "BOS",
+        "MTL_SUPP",
+        176916.0,
+        0
+      ],
+      [
+        "ADP",
+        "MTL_SUPP",
+        176783.0,
+        0
+      ],
+      [
+        "CSS",
+        "MTL_SUPP",
+        166735.0,
+        0
+      ],
+      [
+        "POL",
+        "CITY_GR_PROG",
+        166122.0,
+        0
+      ],
+      [
+        "DAT",
+        "MTL_SUPP",
+        163905.0,
+        0
+      ],
+      [
+        "BOS",
+        "ELU",
+        -161996.0,
+        1
+      ],
+      [
+        "CAT",
+        "MTL_SUPP",
+        155000.0,
+        0
+      ],
+      [
+        "CSS",
+        "ELU",
+        -151174.0,
+        1
+      ],
+      [
+        "HRC",
+        "NON_PERS_SVCS",
+        150616.0,
+        0
+      ],
+      [
+        "ASR",
+        "OH_ALLOCS",
+        139307.0,
+        0
+      ],
+      [
+        "PDR",
+        "MTL_SUPP",
+        131809.0,
+        0
+      ],
+      [
+        "TTX",
+        "MTL_SUPP",
+        115343.0,
+        0
+      ],
+      [
+        "CHF",
+        "UNAP_REV_DESIG",
+        110000.0,
+        0
+      ],
+      [
+        "RET",
+        "ELU",
+        -110000.0,
+        1
+      ],
+      [
+        "REG",
+        "CITY_GR_PROG",
+        100000.0,
+        0
+      ],
+      [
+        "REC",
+        "CARRYFWD_BUD_ONLY",
+        -100000.0,
+        0
+      ],
+      [
+        "PDR",
+        "ELU",
+        -92000.0,
+        1
+      ],
+      [
+        "DAT",
+        "CAP_OUTLAY",
+        72004.0,
+        0
+      ],
+      [
+        "WOM",
+        "NON_PERS_SVCS",
+        71864.0,
+        0
+      ],
+      [
+        "FAM",
+        "OH_ALLOCS",
+        69291.0,
+        0
+      ],
+      [
+        "ETH",
+        "MTL_SUPP",
+        66120.0,
+        0
+      ],
+      [
+        "ECN",
+        "MTL_SUPP",
+        57485.0,
+        0
+      ],
+      [
+        "RET",
+        "PROG_PROJ",
+        50000.0,
+        0
+      ],
+      [
+        "HSS",
+        "MTL_SUPP",
+        44459.0,
+        0
+      ],
+      [
+        "FAM",
+        "MTL_SUPP",
+        43250.0,
+        0
+      ],
+      [
+        "RNT",
+        "MTL_SUPP",
+        40250.0,
+        0
+      ],
+      [
+        "DEM",
+        "CITY_GR_PROG",
+        40000.0,
+        0
+      ],
+      [
+        "MYR",
+        "UNAP_REV_DESIG",
+        38874.0,
+        0
+      ],
+      [
+        "RET",
+        "CAP_OUTLAY",
+        37049.0,
+        0
+      ],
+      [
+        "DPA",
+        "MTL_SUPP",
+        34918.0,
+        0
+      ],
+      [
+        "PRT",
+        "OPER_TFR_OUT",
+        31713.0,
+        0
+      ],
+      [
+        "WOM",
+        "MTL_SUPP",
+        31684.0,
+        0
+      ],
+      [
+        "AAM",
+        "OH_ALLOCS",
+        30798.0,
+        0
+      ],
+      [
+        "MYR",
+        "MTL_SUPP",
+        30000.0,
+        0
+      ],
+      [
+        "HRC",
+        "MTL_SUPP",
+        29437.0,
+        0
+      ],
+      [
+        "CSC",
+        "NON_PERS_SVCS",
+        28795.0,
+        0
+      ],
+      [
+        "ART",
+        "MTL_SUPP",
+        25229.0,
+        0
+      ],
+      [
+        "REG",
+        "CAP_OUTLAY",
+        21726.0,
+        0
+      ],
+      [
+        "CRT",
+        "SVCS_OTHER_DEPTS",
+        21000.0,
+        0
+      ],
+      [
+        "BOA",
+        "NON_PERS_SVCS",
+        19700.0,
+        0
+      ],
+      [
+        "LLB",
+        "MTL_SUPP",
+        6000.0,
+        0
+      ],
+      [
+        "SDA",
+        "MTL_SUPP",
+        4821.0,
+        0
+      ],
+      [
+        "BOA",
+        "MTL_SUPP",
+        3398.0,
+        0
+      ],
+      [
+        "CSC",
+        "MTL_SUPP",
+        3395.0,
+        0
+      ],
+      [
+        "PRT",
+        "UNAP_REV_DESIG",
+        2270.0,
+        0
+      ],
+      [
+        "TTX",
+        "OH_ALLOCS",
+        -697.0,
+        0
+      ],
+      [
+        "LIB",
+        "OH_ALLOCS",
+        485.0,
+        0
+      ]
+    ],
+    "revenue": [
+      [
+        "GEN",
+        "PROP_TAX",
+        2900433086.0,
+        0
+      ],
+      [
+        "PUC",
+        "CHGS_FOR_SERVICES",
+        1496497235.0,
+        0
+      ],
+      [
+        "DPH",
+        "CHGS_FOR_SERVICES",
+        1366624825.0,
+        0
+      ],
+      [
+        "GEN",
+        "OTHER_LOC_TAX",
+        1017350000.0,
+        0
+      ],
+      [
+        "GEN",
+        "ELS",
+        -973879527.0,
+        1
+      ],
+      [
+        "GEN",
+        "BUS_TAX",
+        952989800.0,
+        0
+      ],
+      [
+        "GEN",
+        "INTRAFD_TFR_IN",
+        883833908.0,
+        0
+      ],
+      [
+        "AIR",
+        "CHGS_FOR_SERVICES",
+        858381000.0,
+        0
+      ],
+      [
+        "DPH",
+        "INTERGOV_REV_ST",
+        576515893.0,
+        0
+      ],
+      [
+        "HSA",
+        "INTERGOV_REV_ST",
+        496032999.0,
+        0
+      ],
+      [
+        "PUC",
+        "ELS",
+        -457779475.0,
+        1
+      ],
+      [
+        "ADM",
+        "ELS",
+        -381097662.0,
+        1
+      ],
+      [
+        "AIR",
+        "RENTS_CONCESSIONS",
+        365563000.0,
+        0
+      ],
+      [
+        "HSA",
+        "INTER_REV_FED",
+        339641715.0,
+        0
+      ],
+      [
+        "ADM",
+        "EXP_RECOVERY",
+        324898970.0,
+        0
+      ],
+      [
+        "MTA",
+        "ELS",
+        -299842135.0,
+        1
+      ],
+      [
+        "AIR",
+        "ELS",
+        -268345112.0,
+        1
+      ],
+      [
+        "MTA",
+        "OPER_TFR_IN",
+        250070512.0,
+        0
+      ],
+      [
+        "GEN",
+        "UNAPP_FD_BAL",
+        224143330.0,
+        0
+      ],
+      [
+        "HOM",
+        "BUS_TAX",
+        218445150.0,
+        0
+      ],
+      [
+        "PUC",
+        "INTRAFD_TFR_IN",
+        214138146.0,
+        0
+      ],
+      [
+        "MTA",
+        "INTER_REV_FED",
+        206084347.0,
+        0
+      ],
+      [
+        "PUC",
+        "EXP_RECOVERY",
+        197117443.0,
+        0
+      ],
+      [
+        "DEC",
+        "BUS_TAX",
+        189000000.0,
+        0
+      ],
+      [
+        "MTA",
+        "CHGS_FOR_SERVICES",
+        182800965.0,
+        0
+      ],
+      [
+        "DPH",
+        "ELS",
+        -176240575.0,
+        1
+      ],
+      [
+        "GEN",
+        "INTER_REV_FED",
+        170000000.0,
+        0
+      ],
+      [
+        "DPW",
+        "ELS",
+        -163979360.0,
+        1
+      ],
+      [
+        "DPW",
+        "EXP_RECOVERY",
+        159979279.0,
+        0
+      ],
+      [
+        "AIR",
+        "INTRAFD_TFR_IN",
+        153625000.0,
+        0
+      ],
+      [
+        "TIS",
+        "ELS",
+        -153085105.0,
+        1
+      ],
+      [
+        "TIS",
+        "EXP_RECOVERY",
+        149158258.0,
+        0
+      ],
+      [
+        "MTA",
+        "RENTS_CONCESSIONS",
+        139849506.0,
+        0
+      ],
+      [
+        "HRD",
+        "EXP_RECOVERY",
+        130603863.0,
+        0
+      ],
+      [
+        "HRD",
+        "ELS",
+        -130603863.0,
+        1
+      ],
+      [
+        "CHF",
+        "PROP_TAX",
+        127220000.0,
+        0
+      ],
+      [
+        "MTA",
+        "INTERGOV_REV_OTH",
+        124239639.0,
+        0
+      ],
+      [
+        "CHF",
+        "ELS",
+        -115389288.0,
+        1
+      ],
+      [
+        "GEN",
+        "INT_INV_INC",
+        114727000.0,
+        0
+      ],
+      [
+        "DPH",
+        "OPER_TFR_IN",
+        108398459.0,
+        0
+      ],
+      [
+        "MTA",
+        "FINE_FORF_PENAL",
+        101282266.0,
+        0
+      ],
+      [
+        "CHF",
+        "OPER_TFR_IN",
+        99835000.0,
+        0
+      ],
+      [
+        "DPH",
+        "INTER_REV_FED",
+        88296193.0,
+        0
+      ],
+      [
+        "GEN",
+        "OPER_TFR_IN",
+        88086750.0,
+        0
+      ],
+      [
+        "PRT",
+        "RENTS_CONCESSIONS",
+        85976464.0,
+        0
+      ],
+      [
+        "REC",
+        "PROP_TAX",
+        79520000.0,
+        0
+      ],
+      [
+        "LIB",
+        "PROP_TAX",
+        79520000.0,
+        0
+      ],
+      [
+        "POL",
+        "ELS",
+        73852573.0,
+        1
+      ],
+      [
+        "HOM",
+        "INTERGOV_REV_ST",
+        73499050.0,
+        0
+      ],
+      [
+        "DPH",
+        "BUS_TAX",
+        72815050.0,
+        0
+      ],
+      [
+        "CAT",
+        "ELS",
+        -71253153.0,
+        1
+      ],
+      [
+        "CAT",
+        "EXP_RECOVERY",
+        71253153.0,
+        0
+      ],
+      [
+        "CON",
+        "EXP_RECOVERY",
+        68930284.0,
+        0
+      ],
+      [
+        "CON",
+        "ELS",
+        -68930284.0,
+        1
+      ],
+      [
+        "AIR",
+        "UNAPP_FD_BAL",
+        64080682.0,
+        0
+      ],
+      [
+        "DPW",
+        "INTERGOV_REV_ST",
+        63855791.0,
+        0
+      ],
+      [
+        "HOM",
+        "INTER_REV_FED",
+        62799252.0,
+        0
+      ],
+      [
+        "MTA",
+        "INTERGOV_REV_ST",
+        61088973.0,
+        0
+      ],
+      [
+        "FIR",
+        "CHGS_FOR_SERVICES",
+        60454669.0,
+        0
+      ],
+      [
+        "AIR",
+        "OTH_REV",
+        59748000.0,
+        0
+      ],
+      [
+        "ADM",
+        "RENTS_CONCESSIONS",
+        59136745.0,
+        0
+      ],
+      [
+        "DPH",
+        "FINE_FORF_PENAL",
+        58097000.0,
+        0
+      ],
+      [
+        "DPH",
+        "EXP_RECOVERY",
+        55657572.0,
+        0
+      ],
+      [
+        "DEC",
+        "EXP_RECOVERY",
+        52284023.0,
+        0
+      ],
+      [
+        "DEC",
+        "ELS",
+        -52284023.0,
+        1
+      ],
+      [
+        "POL",
+        "INTERGOV_REV_ST",
+        52261478.0,
+        0
+      ],
+      [
+        "FIR",
+        "INTERGOV_REV_ST",
+        51710000.0,
+        0
+      ],
+      [
+        "DPH",
+        "OTH_REV",
+        50095394.0,
+        0
+      ],
+      [
+        "RET",
+        "CONTRIB_RET_HSS_HLTH",
+        49037353.0,
+        0
+      ],
+      [
+        "AIR",
+        "INTER_REV_FED",
+        48010000.0,
+        0
+      ],
+      [
+        "PRT",
+        "INTRAFD_TFR_IN",
+        47106318.0,
+        0
+      ],
+      [
+        "PRT",
+        "ELS",
+        -47106318.0,
+        1
+      ],
+      [
+        "DBI",
+        "CHGS_FOR_SERVICES",
+        47057008.0,
+        0
+      ],
+      [
+        "PUC",
+        "OPER_TFR_IN",
+        46523886.0,
+        0
+      ],
+      [
+        "REC",
+        "CHGS_FOR_SERVICES",
+        45776257.0,
+        0
+      ],
+      [
+        "ADM",
+        "OPER_TFR_IN",
+        45598692.0,
+        0
+      ],
+      [
+        "MTA",
+        "INTRAFD_TFR_IN",
+        45387369.0,
+        0
+      ],
+      [
+        "DPW",
+        "OTH_FIN_SRCS",
+        44426849.0,
+        0
+      ],
+      [
+        "DEM",
+        "INTER_REV_FED",
+        40943447.0,
+        0
+      ],
+      [
+        "PUC",
+        "OTH_REV",
+        40292320.0,
+        0
+      ],
+      [
+        "CPC",
+        "CHGS_FOR_SERVICES",
+        38045230.0,
+        0
+      ],
+      [
+        "HSA",
+        "ELS",
+        -36637584.0,
+        1
+      ],
+      [
+        "REC",
+        "ELS",
+        -36350038.0,
+        1
+      ],
+      [
+        "MYR",
+        "ELS",
+        -36132462.0,
+        1
+      ],
+      [
+        "MYR",
+        "EXP_RECOVERY",
+        36074008.0,
+        0
+      ],
+      [
+        "SHF",
+        "INTERGOV_REV_ST",
+        36019808.0,
+        0
+      ],
+      [
+        "PUC",
+        "UNAPP_FD_BAL",
+        35438527.0,
+        0
+      ],
+      [
+        "HOM",
+        "ELS",
+        -33476702.0,
+        1
+      ],
+      [
+        "SHF",
+        "EXP_RECOVERY",
+        33032950.0,
+        0
+      ],
+      [
+        "SHF",
+        "ELS",
+        -33032950.0,
+        1
+      ],
+      [
+        "LIB",
+        "ELS",
+        -32887636.0,
+        1
+      ],
+      [
+        "LIB",
+        "INTRAFD_TFR_IN",
+        32780000.0,
+        0
+      ],
+      [
+        "DPW",
+        "CHGS_FOR_SERVICES",
+        29749413.0,
+        0
+      ],
+      [
+        "DBI",
+        "ELS",
+        -28156120.0,
+        1
+      ],
+      [
+        "PRT",
+        "INTER_REV_FED",
+        27279000.0,
+        0
+      ],
+      [
+        "GEN",
+        "CHGS_FOR_SERVICES",
+        26176603.0,
+        0
+      ],
+      [
+        "REC",
+        "OPER_TFR_IN",
+        24069033.0,
+        0
+      ],
+      [
+        "DBI",
+        "UNAPP_FD_BAL",
+        22852067.0,
+        0
+      ],
+      [
+        "DBI",
+        "INTRAFD_TFR_IN",
+        22852067.0,
+        0
+      ],
+      [
+        "ECN",
+        "ELS",
+        -22836225.0,
+        1
+      ],
+      [
+        "ADM",
+        "CHGS_FOR_SERVICES",
+        22720093.0,
+        0
+      ],
+      [
+        "AIR",
+        "INT_INV_INC",
+        22522000.0,
+        0
+      ],
+      [
+        "MTA",
+        "OTH_REV",
+        22509428.0,
+        0
+      ],
+      [
+        "HOM",
+        "INTRAFD_TFR_IN",
+        22366301.0,
+        0
+      ],
+      [
+        "DPH",
+        "UNAPP_FD_BAL",
+        22329670.0,
+        0
+      ],
+      [
+        "ECN",
+        "EXP_RECOVERY",
+        22177440.0,
+        0
+      ],
+      [
+        "ADP",
+        "INTERGOV_REV_ST",
+        21237389.0,
+        0
+      ],
+      [
+        "HSA",
+        "EXP_RECOVERY",
+        21009428.0,
+        0
+      ],
+      [
+        "PRT",
+        "CHGS_FOR_SERVICES",
+        20633997.0,
+        0
+      ],
+      [
+        "GEN",
+        "FINE_FORF_PENAL",
+        20240266.0,
+        0
+      ],
+      [
+        "MTA",
+        "LIC_PERM_FRAN",
+        19921167.0,
+        0
+      ],
+      [
+        "REC",
+        "RENTS_CONCESSIONS",
+        19590095.0,
+        0
+      ],
+      [
+        "ENV",
+        "CHGS_FOR_SERVICES",
+        19094727.0,
+        0
+      ],
+      [
+        "FIR",
+        "ELS",
+        18423819.0,
+        1
+      ],
+      [
+        "ADM",
+        "OTH_REV",
+        18368890.0,
+        0
+      ],
+      [
+        "ADM",
+        "OTHER_LOC_TAX",
+        17574000.0,
+        0
+      ],
+      [
+        "MYR",
+        "OTH_REV",
+        17385534.0,
+        0
+      ],
+      [
+        "DPW",
+        "UNAPP_FD_BAL",
+        17041007.0,
+        0
+      ],
+      [
+        "JUV",
+        "INTERGOV_REV_ST",
+        16511248.0,
+        0
+      ],
+      [
+        "WAR",
+        "ELS",
+        -16510924.0,
+        1
+      ],
+      [
+        "WAR",
+        "OPER_TFR_IN",
+        16236937.0,
+        0
+      ],
+      [
+        "LIB",
+        "UNAPP_FD_BAL",
+        16128811.0,
+        0
+      ],
+      [
+        "HSA",
+        "OPER_TFR_IN",
+        15628156.0,
+        0
+      ],
+      [
+        "GEN",
+        "LIC_PERM_FRAN",
+        15590000.0,
+        0
+      ],
+      [
+        "DEC",
+        "INTERGOV_REV_ST",
+        15069083.0,
+        0
+      ],
+      [
+        "PUC",
+        "RENTS_CONCESSIONS",
+        14640400.0,
+        0
+      ],
+      [
+        "DPW",
+        "INT_INV_INC",
+        14331944.0,
+        0
+      ],
+      [
+        "ECN",
+        "OTH_REV",
+        14149032.0,
+        0
+      ],
+      [
+        "DEC",
+        "UNAPP_FD_BAL",
+        13985502.0,
+        0
+      ],
+      [
+        "ART",
+        "OTHER_LOC_TAX",
+        13691000.0,
+        0
+      ],
+      [
+        "ADM",
+        "UNAPP_FD_BAL",
+        13589864.0,
+        0
+      ],
+      [
+        "HSS",
+        "EXP_RECOVERY",
+        13392951.0,
+        0
+      ],
+      [
+        "HSS",
+        "ELS",
+        -13392951.0,
+        1
+      ],
+      [
+        "FIR",
+        "EXP_RECOVERY",
+        13183066.0,
+        0
+      ],
+      [
+        "RNT",
+        "CHGS_FOR_SERVICES",
+        12950258.0,
+        0
+      ],
+      [
+        "HOM",
+        "INT_INV_INC",
+        12596000.0,
+        0
+      ],
+      [
+        "MTA",
+        "INT_INV_INC",
+        12390731.0,
+        0
+      ],
+      [
+        "CHF",
+        "UNAPP_FD_BAL",
+        12216613.0,
+        0
+      ],
+      [
+        "DPH",
+        "INTRAFD_TFR_IN",
+        12184544.0,
+        0
+      ],
+      [
+        "DEC",
+        "INT_INV_INC",
+        11926736.0,
+        0
+      ],
+      [
+        "DPH",
+        "LIC_PERM_FRAN",
+        11510407.0,
+        0
+      ],
+      [
+        "PRT",
+        "OTH_REV",
+        11415489.0,
+        0
+      ],
+      [
+        "HOM",
+        "EXP_RECOVERY",
+        11110401.0,
+        0
+      ],
+      [
+        "DPH",
+        "INT_INV_INC",
+        11010358.0,
+        0
+      ],
+      [
+        "REC",
+        "FINE_FORF_PENAL",
+        11000000.0,
+        0
+      ],
+      [
+        "ART",
+        "OTH_FIN_SRCS",
+        10698751.0,
+        0
+      ],
+      [
+        "TTX",
+        "EXP_RECOVERY",
+        10678462.0,
+        0
+      ],
+      [
+        "TTX",
+        "ELS",
+        -10678462.0,
+        1
+      ],
+      [
+        "ADM",
+        "INTRAFD_TFR_IN",
+        10600000.0,
+        0
+      ],
+      [
+        "POL",
+        "CHGS_FOR_SERVICES",
+        9170626.0,
+        0
+      ],
+      [
+        "CHF",
+        "EXP_RECOVERY",
+        8555959.0,
+        0
+      ],
+      [
+        "ENV",
+        "ELS",
+        -8465794.0,
+        1
+      ],
+      [
+        "CHF",
+        "INTERGOV_REV_ST",
+        8383220.0,
+        0
+      ],
+      [
+        "CSS",
+        "INTER_REV_FED",
+        8359395.0,
+        0
+      ],
+      [
+        "POL",
+        "INTER_REV_FED",
+        8172005.0,
+        0
+      ],
+      [
+        "REC",
+        "INTRAFD_TFR_IN",
+        8160836.0,
+        0
+      ],
+      [
+        "DBI",
+        "LIC_PERM_FRAN",
+        7718319.0,
+        0
+      ],
+      [
+        "TIS",
+        "UNAPP_FD_BAL",
+        7034110.0,
+        0
+      ],
+      [
+        "WAR",
+        "OTH_FIN_SRCS",
+        7000000.0,
+        0
+      ],
+      [
+        "CHF",
+        "INTRAFD_TFR_IN",
+        6998329.0,
+        0
+      ],
+      [
+        "DEC",
+        "OTH_REV",
+        6767822.0,
+        0
+      ],
+      [
+        "HOM",
+        "CHGS_FOR_SERVICES",
+        6683325.0,
+        0
+      ],
+      [
+        "REC",
+        "UNAPP_FD_BAL",
+        6505711.0,
+        0
+      ],
+      [
+        "TTX",
+        "INT_INV_INC",
+        6226329.0,
+        0
+      ],
+      [
+        "POL",
+        "EXP_RECOVERY",
+        6016843.0,
+        0
+      ],
+      [
+        "GEN",
+        "OTH_REV",
+        5860907.0,
+        0
+      ],
+      [
+        "GEN",
+        "INTERGOV_REV_ST",
+        5804684.0,
+        0
+      ],
+      [
+        "ENV",
+        "INTERGOV_REV_ST",
+        5509991.0,
+        0
+      ],
+      [
+        "REC",
+        "OTH_REV",
+        5112746.0,
+        0
+      ],
+      [
+        "DBI",
+        "OPER_TFR_IN",
+        5100000.0,
+        0
+      ],
+      [
+        "HRC",
+        "EXP_RECOVERY",
+        5099600.0,
+        0
+      ],
+      [
+        "HRC",
+        "ELS",
+        -5099600.0,
+        1
+      ],
+      [
+        "ECN",
+        "INTER_REV_FED",
+        5055917.0,
+        0
+      ],
+      [
+        "MYR",
+        "RENTS_CONCESSIONS",
+        5030000.0,
+        0
+      ],
+      [
+        "ADP",
+        "ELS",
+        -5025598.0,
+        1
+      ],
+      [
+        "ADP",
+        "EXP_RECOVERY",
+        5025598.0,
+        0
+      ],
+      [
+        "CHF",
+        "OTH_REV",
+        4800000.0,
+        0
+      ],
+      [
+        "CAT",
+        "FINE_FORF_PENAL",
+        4799038.0,
+        0
+      ],
+      [
+        "RNT",
+        "UNAPP_FD_BAL",
+        4774965.0,
+        0
+      ],
+      [
+        "PUC",
+        "INT_INV_INC",
+        4507000.0,
+        0
+      ],
+      [
+        "MTA",
+        "EXP_RECOVERY",
+        4384254.0,
+        0
+      ],
+      [
+        "CSS",
+        "INTERGOV_REV_ST",
+        4306354.0,
+        0
+      ],
+      [
+        "TTX",
+        "CHGS_FOR_SERVICES",
+        4249350.0,
+        0
+      ],
+      [
+        "ADM",
+        "OTH_FIN_SRCS",
+        4234378.0,
+        0
+      ],
+      [
+        "ENV",
+        "INTRAFD_TFR_IN",
+        4168084.0,
+        0
+      ],
+      [
+        "REC",
+        "EXP_RECOVERY",
+        4120169.0,
+        0
+      ],
+      [
+        "CPC",
+        "INTERGOV_REV_ST",
+        3890000.0,
+        0
+      ],
+      [
+        "DAT",
+        "INTERGOV_REV_ST",
+        3759914.0,
+        0
+      ],
+      [
+        "TIS",
+        "INTRAFD_TFR_IN",
+        3626847.0,
+        0
+      ],
+      [
+        "HOM",
+        "UNAPP_FD_BAL",
+        3550000.0,
+        0
+      ],
+      [
+        "MYR",
+        "UNAPP_FD_BAL",
+        3530000.0,
+        0
+      ],
+      [
+        "REC",
+        "INTERGOV_REV_OTH",
+        3387123.0,
+        0
+      ],
+      [
+        "DEC",
+        "INTER_REV_FED",
+        3314672.0,
+        0
+      ],
+      [
+        "WAR",
+        "RENTS_CONCESSIONS",
+        3289725.0,
+        0
+      ],
+      [
+        "MYR",
+        "OTHER_LOC_TAX",
+        3234000.0,
+        0
+      ],
+      [
+        "ASR",
+        "CHGS_FOR_SERVICES",
+        3181412.0,
+        0
+      ],
+      [
+        "CPC",
+        "ELS",
+        -3043444.0,
+        1
+      ],
+      [
+        "CPC",
+        "EXP_RECOVERY",
+        3043444.0,
+        0
+      ],
+      [
+        "DAT",
+        "INTER_REV_FED",
+        2913016.0,
+        0
+      ],
+      [
+        "ENV",
+        "EXP_RECOVERY",
+        2857778.0,
+        0
+      ],
+      [
+        "PRT",
+        "FINE_FORF_PENAL",
+        2819552.0,
+        0
+      ],
+      [
+        "ADM",
+        "LIC_PERM_FRAN",
+        2601077.0,
+        0
+      ],
+      [
+        "DPH",
+        "OTH_FIN_SRCS",
+        2600000.0,
+        0
+      ],
+      [
+        "ADM",
+        "BUS_TAX",
+        2500000.0,
+        0
+      ],
+      [
+        "ECN",
+        "OTHER_LOC_TAX",
+        2500000.0,
+        0
+      ],
+      [
+        "ECN",
+        "INTERGOV_REV_ST",
+        2333871.0,
+        0
+      ],
+      [
+        "HSA",
+        "OTH_REV",
+        2324523.0,
+        0
+      ],
+      [
+        "DPW",
+        "OPER_TFR_IN",
+        2297682.0,
+        0
+      ],
+      [
+        "ADM",
+        "INTERGOV_REV_OTH",
+        2163387.0,
+        0
+      ],
+      [
+        "ASR",
+        "UNAPP_FD_BAL",
+        2076801.0,
+        0
+      ],
+      [
+        "ENV",
+        "OTH_REV",
+        2022509.0,
+        0
+      ],
+      [
+        "DEC",
+        "CHGS_FOR_SERVICES",
+        2000000.0,
+        0
+      ],
+      [
+        "GEN",
+        "EXP_RECOVERY",
+        1958869.0,
+        0
+      ],
+      [
+        "JUV",
+        "INTER_REV_FED",
+        1958140.0,
+        0
+      ],
+      [
+        "DBI",
+        "INT_INV_INC",
+        1922127.0,
+        0
+      ],
+      [
+        "RET",
+        "CHGS_FOR_SERVICES",
+        1921150.0,
+        0
+      ],
+      [
+        "HSA",
+        "CHGS_FOR_SERVICES",
+        1911225.0,
+        0
+      ],
+      [
+        "DAT",
+        "UNAPP_FD_BAL",
+        1887937.0,
+        0
+      ],
+      [
+        "ART",
+        "CHGS_FOR_SERVICES",
+        1876552.0,
+        0
+      ],
+      [
+        "TIS",
+        "LIC_PERM_FRAN",
+        1828000.0,
+        0
+      ],
+      [
+        "FIR",
+        "INTRAFD_TFR_IN",
+        1801498.0,
+        0
+      ],
+      [
+        "PDR",
+        "INTERGOV_REV_ST",
+        1798979.0,
+        0
+      ],
+      [
+        "DPW",
+        "INTRAFD_TFR_IN",
+        1702399.0,
+        0
+      ],
+      [
+        "AIR",
+        "FINE_FORF_PENAL",
+        1664000.0,
+        0
+      ],
+      [
+        "ART",
+        "UNAPP_FD_BAL",
+        1565024.0,
+        0
+      ],
+      [
+        "TTX",
+        "OTH_REV",
+        1526311.0,
+        0
+      ],
+      [
+        "CHF",
+        "INTER_REV_FED",
+        1524359.0,
+        0
+      ],
+      [
+        "ART",
+        "OTH_REV",
+        1500000.0,
+        0
+      ],
+      [
+        "POL",
+        "LIC_PERM_FRAN",
+        1489610.0,
+        0
+      ],
+      [
+        "ART",
+        "ELS",
+        -1479033.0,
+        1
+      ],
+      [
+        "ENV",
+        "OPER_TFR_IN",
+        1439932.0,
+        0
+      ],
+      [
+        "MYR",
+        "INTERGOV_REV_OTH",
+        1415097.0,
+        0
+      ],
+      [
+        "SHF",
+        "OTH_FIN_SRCS",
+        -1407000.0,
+        0
+      ],
+      [
+        "FIR",
+        "OPER_TFR_IN",
+        1354313.0,
+        0
+      ],
+      [
+        "FIR",
+        "INTER_REV_FED",
+        1354313.0,
+        0
+      ],
+      [
+        "DEM",
+        "CHGS_FOR_SERVICES",
+        1314678.0,
+        0
+      ],
+      [
+        "ART",
+        "EXP_RECOVERY",
+        1267539.0,
+        0
+      ],
+      [
+        "DBI",
+        "OTH_REV",
+        1250000.0,
+        0
+      ],
+      [
+        "FAM",
+        "CHGS_FOR_SERVICES",
+        1161188.0,
+        0
+      ],
+      [
+        "DEM",
+        "EXP_RECOVERY",
+        1150271.0,
+        0
+      ],
+      [
+        "DEM",
+        "ELS",
+        -1150271.0,
+        1
+      ],
+      [
+        "BOA",
+        "CHGS_FOR_SERVICES",
+        1132059.0,
+        0
+      ],
+      [
+        "CPC",
+        "INTER_REV_FED",
+        1120000.0,
+        0
+      ],
+      [
+        "LIB",
+        "OTH_REV",
+        1020000.0,
+        0
+      ],
+      [
+        "PRT",
+        "INTERGOV_REV_OTH",
+        1000774.0,
+        0
+      ],
+      [
+        "CON",
+        "OTH_REV",
+        1000000.0,
+        0
+      ],
+      [
+        "PRT",
+        "INT_INV_INC",
+        1000000.0,
+        0
+      ],
+      [
+        "ENV",
+        "INTER_REV_FED",
+        1000000.0,
+        0
+      ],
+      [
+        "CPC",
+        "INTERGOV_REV_OTH",
+        876000.0,
+        0
+      ],
+      [
+        "CON",
+        "UNAPP_FD_BAL",
+        857388.0,
+        0
+      ],
+      [
+        "CSS",
+        "OTH_REV",
+        849607.0,
+        0
+      ],
+      [
+        "ADM",
+        "FINE_FORF_PENAL",
+        798286.0,
+        0
+      ],
+      [
+        "POL",
+        "FINE_FORF_PENAL",
+        795454.0,
+        0
+      ],
+      [
+        "WAR",
+        "UNAPP_FD_BAL",
+        760386.0,
+        0
+      ],
+      [
+        "DPH",
+        "RENTS_CONCESSIONS",
+        747990.0,
+        0
+      ],
+      [
+        "DAT",
+        "CHGS_FOR_SERVICES",
+        706604.0,
+        0
+      ],
+      [
+        "ADM",
+        "INTERGOV_REV_ST",
+        641895.0,
+        0
+      ],
+      [
+        "DPH",
+        "INTERGOV_REV_OTH",
+        600000.0,
+        0
+      ],
+      [
+        "ECN",
+        "OPER_TFR_IN",
+        600000.0,
+        0
+      ],
+      [
+        "PDR",
+        "OTH_REV",
+        588142.0,
+        0
+      ],
+      [
+        "TTX",
+        "INTERGOV_REV_ST",
+        582131.0,
+        0
+      ],
+      [
+        "TIS",
+        "RENTS_CONCESSIONS",
+        581169.0,
+        0
+      ],
+      [
+        "ECN",
+        "CHGS_FOR_SERVICES",
+        535000.0,
+        0
+      ],
+      [
+        "ADP",
+        "INTERGOV_REV_OTH",
+        531618.0,
+        0
+      ],
+      [
+        "SHF",
+        "CHGS_FOR_SERVICES",
+        529965.0,
+        0
+      ],
+      [
+        "WAR",
+        "CHGS_FOR_SERVICES",
+        513804.0,
+        0
+      ],
+      [
+        "DPW",
+        "OTH_REV",
+        508002.0,
+        0
+      ],
+      [
+        "DPW",
+        "LIC_PERM_FRAN",
+        498000.0,
+        0
+      ],
+      [
+        "DAT",
+        "EXP_RECOVERY",
+        490853.0,
+        0
+      ],
+      [
+        "DAT",
+        "ELS",
+        -490853.0,
+        1
+      ],
+      [
+        "JUV",
+        "OTH_FIN_SRCS",
+        -476000.0,
+        0
+      ],
+      [
+        "CPC",
+        "OTH_REV",
+        475000.0,
+        0
+      ],
+      [
+        "HSS",
+        "OTH_REV",
+        460000.0,
+        0
+      ],
+      [
+        "TTX",
+        "PROP_TAX",
+        450000.0,
+        0
+      ],
+      [
+        "CON",
+        "CHGS_FOR_SERVICES",
+        440000.0,
+        0
+      ],
+      [
+        "CSC",
+        "EXP_RECOVERY",
+        430839.0,
+        0
+      ],
+      [
+        "CSC",
+        "ELS",
+        -430839.0,
+        1
+      ],
+      [
+        "RET",
+        "INT_INV_INC",
+        401000.0,
+        0
+      ],
+      [
+        "CAT",
+        "INTERGOV_REV_OTH",
+        400000.0,
+        0
+      ],
+      [
+        "ENV",
+        "UNAPP_FD_BAL",
+        393000.0,
+        0
+      ],
+      [
+        "AAM",
+        "CHGS_FOR_SERVICES",
+        391982.0,
+        0
+      ],
+      [
+        "ADP",
+        "INTER_REV_FED",
+        387356.0,
+        0
+      ],
+      [
+        "ECN",
+        "BUS_TAX",
+        350000.0,
+        0
+      ],
+      [
+        "BOS",
+        "CHGS_FOR_SERVICES",
+        344150.0,
+        0
+      ],
+      [
+        "DPA",
+        "EXP_RECOVERY",
+        332795.0,
+        0
+      ],
+      [
+        "DPA",
+        "ELS",
+        -332795.0,
+        1
+      ],
+      [
+        "FIR",
+        "RENTS_CONCESSIONS",
+        320000.0,
+        0
+      ],
+      [
+        "ECN",
+        "RENTS_CONCESSIONS",
+        300000.0,
+        0
+      ],
+      [
+        "TIS",
+        "OPER_TFR_IN",
+        300000.0,
+        0
+      ],
+      [
+        "CON",
+        "INTERGOV_REV_OTH",
+        298000.0,
+        0
+      ],
+      [
+        "HSA",
+        "INT_INV_INC",
+        288000.0,
+        0
+      ],
+      [
+        "WAR",
+        "EXP_RECOVERY",
+        273987.0,
+        0
+      ],
+      [
+        "ECN",
+        "INTERGOV_REV_OTH",
+        255200.0,
+        0
+      ],
+      [
+        "LIB",
+        "INTERGOV_REV_ST",
+        250000.0,
+        0
+      ],
+      [
+        "LIB",
+        "INT_INV_INC",
+        237400.0,
+        0
+      ],
+      [
+        "REG",
+        "ELS",
+        -210000.0,
+        1
+      ],
+      [
+        "REG",
+        "EXP_RECOVERY",
+        210000.0,
+        0
+      ],
+      [
+        "ART",
+        "OPER_TFR_IN",
+        208823.0,
+        0
+      ],
+      [
+        "JUV",
+        "ELS",
+        -205638.0,
+        1
+      ],
+      [
+        "JUV",
+        "EXP_RECOVERY",
+        205638.0,
+        0
+      ],
+      [
+        "DBI",
+        "EXP_RECOVERY",
+        204053.0,
+        0
+      ],
+      [
+        "WOM",
+        "LIC_PERM_FRAN",
+        200000.0,
+        0
+      ],
+      [
+        "SHF",
+        "FINE_FORF_PENAL",
+        193610.0,
+        0
+      ],
+      [
+        "FAM",
+        "EXP_RECOVERY",
+        179000.0,
+        0
+      ],
+      [
+        "FAM",
+        "ELS",
+        -179000.0,
+        1
+      ],
+      [
+        "LIB",
+        "CHGS_FOR_SERVICES",
+        175000.0,
+        0
+      ],
+      [
+        "BOS",
+        "ELS",
+        -161996.0,
+        1
+      ],
+      [
+        "BOS",
+        "EXP_RECOVERY",
+        161996.0,
+        0
+      ],
+      [
+        "CSS",
+        "EXP_RECOVERY",
+        151174.0,
+        0
+      ],
+      [
+        "CSS",
+        "ELS",
+        -151174.0,
+        1
+      ],
+      [
+        "HRD",
+        "OTH_REV",
+        146103.0,
+        0
+      ],
+      [
+        "REC",
+        "INTERGOV_REV_ST",
+        145000.0,
+        0
+      ],
+      [
+        "ART",
+        "INTERGOV_REV_ST",
+        130000.0,
+        0
+      ],
+      [
+        "HOM",
+        "RENTS_CONCESSIONS",
+        129840.0,
+        0
+      ],
+      [
+        "TIS",
+        "INTERGOV_REV_OTH",
+        115062.0,
+        0
+      ],
+      [
+        "RET",
+        "ELS",
+        -110000.0,
+        1
+      ],
+      [
+        "RET",
+        "EXP_RECOVERY",
+        110000.0,
+        0
+      ],
+      [
+        "CON",
+        "PROP_TAX",
+        100000.0,
+        0
+      ],
+      [
+        "HSA",
+        "RENTS_CONCESSIONS",
+        100000.0,
+        0
+      ],
+      [
+        "ETH",
+        "LIC_PERM_FRAN",
+        92000.0,
+        0
+      ],
+      [
+        "PDR",
+        "EXP_RECOVERY",
+        92000.0,
+        0
+      ],
+      [
+        "PDR",
+        "ELS",
+        -92000.0,
+        1
+      ],
+      [
+        "TIS",
+        "INT_INV_INC",
+        90000.0,
+        0
+      ],
+      [
+        "AIR",
+        "EXP_RECOVERY",
+        88000.0,
+        0
+      ],
+      [
+        "LIB",
+        "EXP_RECOVERY",
+        87636.0,
+        0
+      ],
+      [
+        "REG",
+        "CHGS_FOR_SERVICES",
+        84229.0,
+        0
+      ],
+      [
+        "CHF",
+        "INT_INV_INC",
+        80000.0,
+        0
+      ],
+      [
+        "ETH",
+        "FINE_FORF_PENAL",
+        62750.0,
+        0
+      ],
+      [
+        "ART",
+        "INTER_REV_FED",
+        60000.0,
+        0
+      ],
+      [
+        "ECN",
+        "INTRAFD_TFR_IN",
+        58785.0,
+        0
+      ],
+      [
+        "MYR",
+        "INTRAFD_TFR_IN",
+        58454.0,
+        0
+      ],
+      [
+        "PDR",
+        "INTER_REV_FED",
+        54063.0,
+        0
+      ],
+      [
+        "LIB",
+        "RENTS_CONCESSIONS",
+        26115.0,
+        0
+      ],
+      [
+        "LIB",
+        "OPER_TFR_IN",
+        20000.0,
+        0
+      ],
+      [
+        "HSS",
+        "CHGS_FOR_SERVICES",
+        9131.0,
+        0
+      ],
+      [
+        "AIR",
+        "INTERGOV_REV_ST",
+        5000.0,
+        0
+      ],
+      [
+        "JUV",
+        "CHGS_FOR_SERVICES",
+        3000.0,
+        0
+      ],
+      [
+        "ART",
+        "INTRAFD_TFR_IN",
+        2671.0,
+        0
+      ],
+      [
+        "ADP",
+        "CHGS_FOR_SERVICES",
+        2500.0,
+        0
+      ],
+      [
+        "ETH",
+        "CHGS_FOR_SERVICES",
+        2450.0,
+        0
+      ]
+    ]
+  },
+  "characters": {
+    "spending": [
+      {
+        "code": "SALARIES",
+        "label": "Salaries",
+        "gloss": "Pay for the City's workforce — police officers, nurses, Muni operators, librarians and everyone else on the payroll.",
+        "display_category": "standard",
+        "total_usd": 4781063029.0,
+        "share_of_side": 0.32676,
+        "n_departments": 51,
+        "is_transfer_adjustment": false
+      },
+      {
+        "code": "NON_PERS_SVCS",
+        "label": "Non-Personnel Services",
+        "gloss": "Services the City buys rather than staffs: professional services, maintenance contracts, utilities, rent, training, travel.",
+        "display_category": "standard",
+        "total_usd": 2868071519.0,
+        "share_of_side": 0.196017,
+        "n_departments": 52,
+        "is_transfer_adjustment": false
+      },
+      {
+        "code": "MAND_FRING_BEN",
+        "label": "Mandatory Fringe Benefits",
+        "gloss": "The employer's share of employee benefits the City is required to fund: pension contributions, health coverage, Social Security and Medicare.",
+        "display_category": "standard",
+        "total_usd": 1942866640.0,
+        "share_of_side": 0.132785,
+        "n_departments": 53,
+        "is_transfer_adjustment": false
+      },
+      {
+        "code": "DEBT_SERVICE",
+        "label": "Debt Service",
+        "gloss": "Principal and interest payments on bonds and other borrowing.",
+        "display_category": "standard",
+        "total_usd": 1572860106.0,
+        "share_of_side": 0.107497,
+        "n_departments": 13,
+        "is_transfer_adjustment": false
+      },
+      {
+        "code": "CITY_GR_PROG",
+        "label": "City Grant Program",
+        "gloss": "Grants the City makes to outside organizations — mostly nonprofits delivering health, housing and social services.",
+        "display_category": "standard",
+        "total_usd": 1543171265.0,
+        "share_of_side": 0.105468,
+        "n_departments": 26,
+        "is_transfer_adjustment": false
+      },
+      {
+        "code": "INTRA_TFR_OUT",
+        "label": "Intrafund Transfers Out",
+        "gloss": "Accounting transfers between accounts inside the same fund — internal money movement, not services delivered. Cancelled citywide by the transfer adjustment.",
+        "display_category": "standard",
+        "total_usd": 1471451556.0,
+        "share_of_side": 0.100566,
+        "n_departments": 16,
+        "is_transfer_adjustment": false
+      },
+      {
+        "code": "SVCS_OTHER_DEPTS",
+        "label": "Services Of Other Depts",
+        "gloss": "Internal billing: one City department paying another for its work (legal counsel, fleet, IT, real estate). Money that stays inside the City.",
+        "display_category": "standard",
+        "total_usd": 1275636870.0,
+        "share_of_side": 0.087183,
+        "n_departments": 53,
+        "is_transfer_adjustment": false
+      },
+      {
+        "code": "OPER_TFR_OUT",
+        "label": "Transfers Out",
+        "gloss": "Money moved from one City fund to another (for example General Fund support to Muni). Cancelled citywide by the transfer adjustment.",
+        "display_category": "standard",
+        "total_usd": 705768175.0,
+        "share_of_side": 0.048236,
+        "n_departments": 11,
+        "is_transfer_adjustment": false
+      },
+      {
+        "code": "CAP_OUTLAY",
+        "label": "Capital Outlay",
+        "gloss": "Purchases of physical assets: equipment, vehicles, building improvements, infrastructure.",
+        "display_category": "standard",
+        "total_usd": 486712572.0,
+        "share_of_side": 0.033264,
+        "n_departments": 25,
+        "is_transfer_adjustment": false
+      },
+      {
+        "code": "AID_PMTS",
+        "label": "Aid Payments",
+        "gloss": "Direct assistance paid to or on behalf of individuals — public-assistance grants such as CalWORKs and county adult assistance.",
+        "display_category": "standard",
+        "total_usd": 454471475.0,
+        "share_of_side": 0.031061,
+        "n_departments": 1,
+        "is_transfer_adjustment": false
+      },
+      {
+        "code": "MTL_SUPP",
+        "label": "Materials & Supplies",
+        "gloss": "Physical goods the City consumes: pharmaceuticals, fuel, food, office and maintenance supplies.",
+        "display_category": "standard",
+        "total_usd": 430459578.0,
+        "share_of_side": 0.02942,
+        "n_departments": 49,
+        "is_transfer_adjustment": false
+      },
+      {
+        "code": "PROG_PROJ",
+        "label": "Programmatic Projects",
+        "gloss": "Budget set aside for defined projects and initiatives, spent through the programs that carry them out.",
+        "display_category": "standard",
+        "total_usd": 344764508.0,
+        "share_of_side": 0.023563,
+        "n_departments": 31,
+        "is_transfer_adjustment": false
+      },
+      {
+        "code": "UNAP_REV_DESIG",
+        "label": "Unappropriated Rev-Designated",
+        "gloss": "Revenue set aside for a designated future purpose rather than appropriated for spending this year.",
+        "display_category": "standard",
+        "total_usd": 154001576.0,
+        "share_of_side": 0.010525,
+        "n_departments": 10,
+        "is_transfer_adjustment": false
+      },
+      {
+        "code": "UNAP_REV_RET",
+        "label": "Unappropriated Rev Retained",
+        "gloss": "Revenue budgeted but deliberately not appropriated for spending — retained as fund balance or reserve.",
+        "display_category": "standard",
+        "total_usd": 152728253.0,
+        "share_of_side": 0.010438,
+        "n_departments": 4,
+        "is_transfer_adjustment": false
+      },
+      {
+        "code": "FAC_MNTC",
+        "label": "Facilities Maintenance",
+        "gloss": "Upkeep of City buildings and facilities: repairs, renovation and maintenance projects.",
+        "display_category": "standard",
+        "total_usd": 70131774.0,
+        "share_of_side": 0.004793,
+        "n_departments": 5,
+        "is_transfer_adjustment": false
+      },
+      {
+        "code": "OTH_SUP_CARE_PERS",
+        "label": "Other Support/Care of Persons",
+        "gloss": "Care purchased for people the City is responsible for: foster care, board-and-care, shelter beds, treatment placements.",
+        "display_category": "standard",
+        "total_usd": 57337920.0,
+        "share_of_side": 0.003919,
+        "n_departments": 2,
+        "is_transfer_adjustment": false
+      },
+      {
+        "code": "AID_ASSIST",
+        "label": "Aid Assistance",
+        "gloss": "In-kind and support assistance tied to public-aid programs, alongside direct aid payments.",
+        "display_category": "standard",
+        "total_usd": 23840205.0,
+        "share_of_side": 0.001629,
+        "n_departments": 4,
+        "is_transfer_adjustment": false
+      },
+      {
+        "code": "CARRYFWD_BUD_ONLY",
+        "label": "Carry-Forward Budgets Only",
+        "gloss": "Budget authority carried forward from a prior year — a budgeting entry, not new money.",
+        "display_category": "standard",
+        "total_usd": 394805.0,
+        "share_of_side": 2.7e-05,
+        "n_departments": 2,
+        "is_transfer_adjustment": false
+      },
+      {
+        "code": "OH_ALLOCS",
+        "label": "Overhead and Allocations",
+        "gloss": "Overhead charged out to other departments and funds; appears negative where a department recovers its overhead costs from the departments it serves.",
+        "display_category": "offset",
+        "total_usd": -109756701.0,
+        "share_of_side": -0.007501,
+        "n_departments": 27,
+        "is_transfer_adjustment": false
+      },
+      {
+        "code": "ELU",
+        "label": "Transfer Adjustment - Uses",
+        "gloss": "The negative adjustment that cancels inter- and intra-fund transfers so the citywide total counts each dollar once.",
+        "display_category": "adjustment",
+        "total_usd": -3594259577.0,
+        "share_of_side": -0.245649,
+        "n_departments": 43,
+        "is_transfer_adjustment": true
+      }
+    ],
+    "revenue": [
+      {
+        "code": "CHGS_FOR_SERVICES",
+        "label": "Charges for Services",
+        "gloss": "Fees charged for services — dominated by the City's enterprises billing their customers: hospital care billed to insurers and Medi-Cal, airport charges to airlines, water and sewer bills. Not primarily fees on residents.",
+        "display_category": "standard",
+        "total_usd": 4265301660.0,
+        "share_of_side": 0.291511,
+        "n_departments": 38,
+        "is_transfer_adjustment": false
+      },
+      {
+        "code": "PROP_TAX",
+        "label": "Property Taxes",
+        "gloss": "The City's share of the 1% property tax on assessed value, plus voter-approved add-ons.",
+        "display_category": "standard",
+        "total_usd": 3187243086.0,
+        "share_of_side": 0.217831,
+        "n_departments": 6,
+        "is_transfer_adjustment": false
+      },
+      {
+        "code": "INTERGOV_REV_ST",
+        "label": "Intergovernmental: State",
+        "gloss": "Money from the State of California: health and social-services realignment funds and program reimbursements.",
+        "display_category": "standard",
+        "total_usd": 1501342751.0,
+        "share_of_side": 0.102609,
+        "n_departments": 25,
+        "is_transfer_adjustment": false
+      },
+      {
+        "code": "INTRAFD_TFR_IN",
+        "label": "IntraFund Transfers In",
+        "gloss": "Accounting transfers between accounts inside the same fund — internal mechanics, not money coming in from outside.",
+        "display_category": "internal",
+        "total_usd": 1471451556.0,
+        "share_of_side": 0.100566,
+        "n_departments": 19,
+        "is_transfer_adjustment": false
+      },
+      {
+        "code": "BUS_TAX",
+        "label": "Business Taxes",
+        "gloss": "Taxes on business activity: gross receipts tax, homelessness gross receipts tax, business registration fees.",
+        "display_category": "standard",
+        "total_usd": 1436100000.0,
+        "share_of_side": 0.09815,
+        "n_departments": 6,
+        "is_transfer_adjustment": false
+      },
+      {
+        "code": "EXP_RECOVERY",
+        "label": "Expenditure Recovery",
+        "gloss": "One department recovering its costs from another — internal billing income, the mirror of 'Services of Other Depts' on the spending side.",
+        "display_category": "internal",
+        "total_usd": 1417039846.0,
+        "share_of_side": 0.096847,
+        "n_departments": 42,
+        "is_transfer_adjustment": false
+      },
+      {
+        "code": "OTHER_LOC_TAX",
+        "label": "Other Local Taxes",
+        "gloss": "Local taxes other than property and business taxes: the City's sales-tax share, hotel tax, real-estate transfer tax, parking tax, utility users tax.",
+        "display_category": "standard",
+        "total_usd": 1054349000.0,
+        "share_of_side": 0.072059,
+        "n_departments": 5,
+        "is_transfer_adjustment": false
+      },
+      {
+        "code": "INTER_REV_FED",
+        "label": "Intergovernmental: Federal",
+        "gloss": "Federal money: Medicaid and Medicare reimbursements plus federal grants for housing, transit and emergencies.",
+        "display_category": "standard",
+        "total_usd": 1018327190.0,
+        "share_of_side": 0.069597,
+        "n_departments": 21,
+        "is_transfer_adjustment": false
+      },
+      {
+        "code": "OPER_TFR_IN",
+        "label": "Transfers In",
+        "gloss": "Money received from another City fund — the receiving side of fund-to-fund transfers. Cancelled citywide by the transfer adjustment.",
+        "display_category": "standard",
+        "total_usd": 705768175.0,
+        "share_of_side": 0.048236,
+        "n_departments": 17,
+        "is_transfer_adjustment": false
+      },
+      {
+        "code": "RENTS_CONCESSIONS",
+        "label": "Rents & Concessions",
+        "gloss": "Rent and concession income from City property: airport concessions, port leases, facility rentals.",
+        "display_category": "standard",
+        "total_usd": 695281049.0,
+        "share_of_side": 0.047519,
+        "n_departments": 15,
+        "is_transfer_adjustment": false
+      },
+      {
+        "code": "UNAPP_FD_BAL",
+        "label": "Unappropriated Fund Balance",
+        "gloss": "Prior-year fund balance brought into the budget as a source of funding.",
+        "display_category": "standard",
+        "total_usd": 474741395.0,
+        "share_of_side": 0.032446,
+        "n_departments": 21,
+        "is_transfer_adjustment": false
+      },
+      {
+        "code": "OTH_REV",
+        "label": "Other Revenues",
+        "gloss": "Revenue that fits no other category — settlements, donations, miscellaneous income.",
+        "display_category": "standard",
+        "total_usd": 270175759.0,
+        "share_of_side": 0.018465,
+        "n_departments": 25,
+        "is_transfer_adjustment": false
+      },
+      {
+        "code": "INT_INV_INC",
+        "label": "Interest & Investment Income",
+        "gloss": "Earnings on the City's cash and investment pools.",
+        "display_category": "standard",
+        "total_usd": 214256625.0,
+        "share_of_side": 0.014643,
+        "n_departments": 16,
+        "is_transfer_adjustment": false
+      },
+      {
+        "code": "FINE_FORF_PENAL",
+        "label": "Fines, Forfeiture, & Penalties",
+        "gloss": "Parking and traffic fines, court penalties, code-enforcement fines.",
+        "display_category": "standard",
+        "total_usd": 201752222.0,
+        "share_of_side": 0.013789,
+        "n_departments": 11,
+        "is_transfer_adjustment": false
+      },
+      {
+        "code": "INTERGOV_REV_OTH",
+        "label": "Intergovernmental: Other",
+        "gloss": "Money from other governments — regional agencies, other counties and special districts.",
+        "display_category": "standard",
+        "total_usd": 135281900.0,
+        "share_of_side": 0.009246,
+        "n_departments": 12,
+        "is_transfer_adjustment": false
+      },
+      {
+        "code": "OTH_FIN_SRCS",
+        "label": "Other Financing Sources",
+        "gloss": "Financing inflows: bond and loan proceeds, proceeds from asset sales.",
+        "display_category": "standard",
+        "total_usd": 67076978.0,
+        "share_of_side": 0.004584,
+        "n_departments": 7,
+        "is_transfer_adjustment": false
+      },
+      {
+        "code": "LIC_PERM_FRAN",
+        "label": "Licenses, Permits,& Franchises",
+        "gloss": "Business licenses, construction and use permits, franchise fees from utilities.",
+        "display_category": "standard",
+        "total_usd": 61448580.0,
+        "share_of_side": 0.0042,
+        "n_departments": 10,
+        "is_transfer_adjustment": false
+      },
+      {
+        "code": "CONTRIB_RET_HSS_HLTH",
+        "label": "Contributions Ret/HSS/HlthCare",
+        "gloss": "Employee and employer contributions flowing into the retirement and health-benefit systems.",
+        "display_category": "standard",
+        "total_usd": 49037353.0,
+        "share_of_side": 0.003351,
+        "n_departments": 1,
+        "is_transfer_adjustment": false
+      },
+      {
+        "code": "ELS",
+        "label": "Transfer Adjustment-Source",
+        "gloss": "The negative adjustment on the revenue side that cancels inter- and intra-fund transfers so the citywide total counts each dollar once.",
+        "display_category": "adjustment",
+        "total_usd": -3594259577.0,
+        "share_of_side": -0.245649,
+        "n_departments": 43,
+        "is_transfer_adjustment": true
+      }
+    ]
+  },
+  "program_strip": {
+    "available": true,
+    "note": "From FY2019 the source's program dimension is ~10 generic activity tags (Operating / Capital / Administrative…) — an operating-vs-capital strip, not a drill level.",
+    "rows": [
+      {
+        "program": "Operating",
+        "total_usd": 12335359721.0,
+        "share_of_side": 0.843056
+      },
+      {
+        "program": "Capital",
+        "total_usd": 774863258.0,
+        "share_of_side": 0.052958
+      },
+      {
+        "program": "Administrative",
+        "total_usd": 756813079.0,
+        "share_of_side": 0.051724
+      },
+      {
+        "program": "Capital-CPC Funded",
+        "total_usd": 327597789.0,
+        "share_of_side": 0.02239
+      },
+      {
+        "program": "Disaster Recovery",
+        "total_usd": 219534812.0,
+        "share_of_side": 0.015004
+      },
+      {
+        "program": "Special Events",
+        "total_usd": 64618094.0,
+        "share_of_side": 0.004416
+      },
+      {
+        "program": "Maintenance",
+        "total_usd": 64114557.0,
+        "share_of_side": 0.004382
+      },
+      {
+        "program": "Technology",
+        "total_usd": 43074272.0,
+        "share_of_side": 0.002944
+      },
+      {
+        "program": "Technology-COIT Funded",
+        "total_usd": 31829207.0,
+        "share_of_side": 0.002175
+      },
+      {
+        "program": "Maintenance-CPC Funded",
+        "total_usd": 13910759.0,
+        "share_of_side": 0.000951
+      }
+    ]
+  },
+  "funds": {
+    "spending": [
+      {
+        "fund_type": "Enterprise Funds",
+        "fund_category": "Operating",
+        "total_usd": 5170890043.0,
+        "n_funds": 14
+      },
+      {
+        "fund_type": "General Fund",
+        "fund_category": "Operating",
+        "total_usd": 4631633475.0,
+        "n_funds": 1
+      },
+      {
+        "fund_type": "Special Revenue Funds",
+        "fund_category": "Continuing Projects - Authority Control",
+        "total_usd": 1225393909.0,
+        "n_funds": 77
+      },
+      {
+        "fund_type": "Special Revenue Funds",
+        "fund_category": "Operating",
+        "total_usd": 611585494.0,
+        "n_funds": 18
+      },
+      {
+        "fund_type": "Enterprise Funds",
+        "fund_category": "Continuing Projects - Authority Control",
+        "total_usd": 564086617.0,
+        "n_funds": 19
+      },
+      {
+        "fund_type": "General Fund",
+        "fund_category": "Continuing Projects - Authority Control",
+        "total_usd": 540305545.0,
+        "n_funds": 2
+      },
+      {
+        "fund_type": "Debt Service Funds",
+        "fund_category": "Operating",
+        "total_usd": 418147554.0,
+        "n_funds": 4
+      },
+      {
+        "fund_type": "Special Revenue Funds",
+        "fund_category": "Grants Projects",
+        "total_usd": 356294892.0,
+        "n_funds": 24
+      },
+      {
+        "fund_type": "General Fund",
+        "fund_category": "Annual Projects - Authority Control",
+        "total_usd": 348466323.0,
+        "n_funds": 1
+      },
+      {
+        "fund_type": "Enterprise Funds",
+        "fund_category": "Grants Projects",
+        "total_usd": 273708420.0,
+        "n_funds": 4
+      },
+      {
+        "fund_type": "Enterprise Funds",
+        "fund_category": "Continuing Projects - Project Control",
+        "total_usd": 98541165.0,
+        "n_funds": 6
+      },
+      {
+        "fund_type": "Capital Projects Funds",
+        "fund_category": "Continuing Projects - Authority Control",
+        "total_usd": 81373261.0,
+        "n_funds": 25
+      },
+      {
+        "fund_type": "Special Revenue Funds",
+        "fund_category": "Continuing Projects - Project Control",
+        "total_usd": 80261714.0,
+        "n_funds": 6
+      },
+      {
+        "fund_type": "Enterprise Funds",
+        "fund_category": "Annual Projects - Authority Control",
+        "total_usd": 54333341.0,
+        "n_funds": 8
+      },
+      {
+        "fund_type": "Special Revenue Funds",
+        "fund_category": "Annual Projects - Authority Control",
+        "total_usd": 53096876.0,
+        "n_funds": 7
+      },
+      {
+        "fund_type": "Pension, Other Employee and Ot",
+        "fund_category": "Operating",
+        "total_usd": 49437353.0,
+        "n_funds": 3
+      },
+      {
+        "fund_type": "Component Units",
+        "fund_category": "Continuing Projects - Authority Control",
+        "total_usd": 28536538.0,
+        "n_funds": 1
+      },
+      {
+        "fund_type": "Special Revenue Funds",
+        "fund_category": "Work Orders/Overhead",
+        "total_usd": 10881554.0,
+        "n_funds": 2
+      },
+      {
+        "fund_type": "Special Revenue Funds",
+        "fund_category": "Continuing Projects - Account Control",
+        "total_usd": 9367500.0,
+        "n_funds": 1
+      },
+      {
+        "fund_type": "Agency Funds",
+        "fund_category": "Operating",
+        "total_usd": 9123994.0,
+        "n_funds": 1
+      },
+      {
+        "fund_type": "Capital Projects Funds",
+        "fund_category": "Continuing Projects - Project Control",
+        "total_usd": 4725000.0,
+        "n_funds": 3
+      },
+      {
+        "fund_type": "Internal Service Funds",
+        "fund_category": "Continuing Projects - Authority Control",
+        "total_usd": 3926847.0,
+        "n_funds": 1
+      },
+      {
+        "fund_type": "Internal Service Funds",
+        "fund_category": "Annual Projects - Authority Control",
+        "total_usd": 2622696.0,
+        "n_funds": 1
+      },
+      {
+        "fund_type": "General Fund",
+        "fund_category": "Work Orders/Overhead",
+        "total_usd": 2062588.0,
+        "n_funds": 3
+      },
+      {
+        "fund_type": "Internal Service Funds",
+        "fund_category": "Operating",
+        "total_usd": 1576271.0,
+        "n_funds": 3
+      },
+      {
+        "fund_type": "Permanent Fund",
+        "fund_category": "Grants Projects",
+        "total_usd": 1336578.0,
+        "n_funds": 1
+      }
+    ],
+    "revenue": [
+      {
+        "fund_type": "General Fund",
+        "fund_category": "Operating",
+        "total_usd": 6549689947.0,
+        "n_funds": 1
+      },
+      {
+        "fund_type": "Enterprise Funds",
+        "fund_category": "Operating",
+        "total_usd": 4575844762.0,
+        "n_funds": 14
+      },
+      {
+        "fund_type": "Special Revenue Funds",
+        "fund_category": "Continuing Projects - Authority Control",
+        "total_usd": 932368171.0,
+        "n_funds": 82
+      },
+      {
+        "fund_type": "Enterprise Funds",
+        "fund_category": "Continuing Projects - Authority Control",
+        "total_usd": 545305483.0,
+        "n_funds": 21
+      },
+      {
+        "fund_type": "Special Revenue Funds",
+        "fund_category": "Operating",
+        "total_usd": 497003441.0,
+        "n_funds": 20
+      },
+      {
+        "fund_type": "Debt Service Funds",
+        "fund_category": "Operating",
+        "total_usd": 415897554.0,
+        "n_funds": 5
+      },
+      {
+        "fund_type": "Special Revenue Funds",
+        "fund_category": "Grants Projects",
+        "total_usd": 357649205.0,
+        "n_funds": 24
+      },
+      {
+        "fund_type": "Enterprise Funds",
+        "fund_category": "Grants Projects",
+        "total_usd": 300987420.0,
+        "n_funds": 4
+      },
+      {
+        "fund_type": "Capital Projects Funds",
+        "fund_category": "Continuing Projects - Authority Control",
+        "total_usd": 81373261.0,
+        "n_funds": 25
+      },
+      {
+        "fund_type": "Special Revenue Funds",
+        "fund_category": "Continuing Projects - Project Control",
+        "total_usd": 80261714.0,
+        "n_funds": 6
+      },
+      {
+        "fund_type": "General Fund",
+        "fund_category": "Continuing Projects - Authority Control",
+        "total_usd": 51378865.0,
+        "n_funds": 3
+      },
+      {
+        "fund_type": "Pension, Other Employee and Ot",
+        "fund_category": "Operating",
+        "total_usd": 49437353.0,
+        "n_funds": 3
+      },
+      {
+        "fund_type": "Enterprise Funds",
+        "fund_category": "Continuing Projects - Project Control",
+        "total_usd": 45711165.0,
+        "n_funds": 6
+      },
+      {
+        "fund_type": "Special Revenue Funds",
+        "fund_category": "Annual Projects - Authority Control",
+        "total_usd": 42731616.0,
+        "n_funds": 7
+      },
+      {
+        "fund_type": "Component Units",
+        "fund_category": "Continuing Projects - Authority Control",
+        "total_usd": 28536538.0,
+        "n_funds": 1
+      },
+      {
+        "fund_type": "Special Revenue Funds",
+        "fund_category": "Continuing Projects - Account Control",
+        "total_usd": 18470000.0,
+        "n_funds": 1
+      },
+      {
+        "fund_type": "General Fund",
+        "fund_category": "Annual Projects - Authority Control",
+        "total_usd": 17555419.0,
+        "n_funds": 1
+      },
+      {
+        "fund_type": "Special Revenue Funds",
+        "fund_category": "Work Orders/Overhead",
+        "total_usd": 10881554.0,
+        "n_funds": 2
+      },
+      {
+        "fund_type": "Agency Funds",
+        "fund_category": "Operating",
+        "total_usd": 9123994.0,
+        "n_funds": 2
+      },
+      {
+        "fund_type": "Internal Service Funds",
+        "fund_category": "Annual Projects - Authority Control",
+        "total_usd": 6249543.0,
+        "n_funds": 1
+      },
+      {
+        "fund_type": "Enterprise Funds",
+        "fund_category": "Annual Projects - Authority Control",
+        "total_usd": 5558106.0,
+        "n_funds": 8
+      },
+      {
+        "fund_type": "Capital Projects Funds",
+        "fund_category": "Continuing Projects - Project Control",
+        "total_usd": 4725000.0,
+        "n_funds": 5
+      },
+      {
+        "fund_type": "General Fund",
+        "fund_category": "Work Orders/Overhead",
+        "total_usd": 2062588.0,
+        "n_funds": 2
+      },
+      {
+        "fund_type": "Internal Service Funds",
+        "fund_category": "Operating",
+        "total_usd": 1576271.0,
+        "n_funds": 3
+      },
+      {
+        "fund_type": "Permanent Fund",
+        "fund_category": "Grants Projects",
+        "total_usd": 1336578.0,
+        "n_funds": 1
+      }
+    ]
+  },
+  "notes": "display_name and gloss fields are a provenance-flagged IN-SESSION enrichment layer (seed_us_sf_dept_names, seed_us_sf_character_glosses, 2026-07-16) — source labels are always carried verbatim alongside and never overwritten. Departments with a null display_name (legacy years) render their source label."
+}

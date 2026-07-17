@@ -1,0 +1,7742 @@
+{
+  "generated_at": "2026-07-16T21:33:11.025979+00:00",
+  "source_pipeline": "configs/countries/us.yaml → sync_socrata.py + sync_census_popest.py → raw.us_sf_* → dbt_us_staging → dbt_us_analytics → dbt_us_marts → export_us_sf.py",
+  "country": "us",
+  "scale": "city",
+  "place": "sf",
+  "unit": "USD",
+  "fiscal_year": 2015,
+  "execution_status": "closed",
+  "as_of": "2026-07-13T10:17:58+00:00",
+  "source": {
+    "name": "Budget",
+    "dataset_id": "xdgd-c79v",
+    "source_url": "https://data.sfgov.org/d/xdgd-c79v",
+    "attribution": "SF Controller's Office",
+    "rows_updated_at": "2026-07-13T10:17:58+00:00"
+  },
+  "perimeter": "Adopted budget (Annual Appropriation Ordinance), ALL funds, citywide, NET of the dataset's embedded negative 'Transfer Adjustment' rows — those lines are carried explicitly (never silently netted) as transfer_adjustment_usd at every altitude and flagged in the dept × character cells.",
+  "chart_of_accounts": "legacy",
+  "drill": {
+    "available": true,
+    "reason": null
+  },
+  "totals": {
+    "spending": {
+      "total_usd": 9065449277.0,
+      "transfer_adjustment_usd": -2468574733.0,
+      "n_lines": 11433,
+      "per_resident_usd": null,
+      "population_year": null
+    },
+    "revenue": {
+      "total_usd": 9065449277.0,
+      "transfer_adjustment_usd": -2468574733.0,
+      "n_lines": 2662,
+      "per_resident_usd": null,
+      "population_year": null
+    }
+  },
+  "org_groups": {
+    "spending": [
+      {
+        "code": "02",
+        "label": "Public Works, Transportation & Commerce",
+        "total_usd": 3064560012.0,
+        "transfer_adjustment_usd": -1139577984.0,
+        "share_of_side": 0.338048,
+        "n_departments": 11
+      },
+      {
+        "code": "04",
+        "label": "Community Health",
+        "total_usd": 1948301269.0,
+        "transfer_adjustment_usd": -215825849.0,
+        "share_of_side": 0.214915,
+        "n_departments": 1
+      },
+      {
+        "code": "03",
+        "label": "Human Welfare & Neighborhood Development",
+        "total_usd": 1425792736.0,
+        "transfer_adjustment_usd": -76016972.0,
+        "share_of_side": 0.157278,
+        "n_departments": 10
+      },
+      {
+        "code": "01",
+        "label": "Public Protection",
+        "total_usd": 1385486589.0,
+        "transfer_adjustment_usd": -31739374.0,
+        "share_of_side": 0.152832,
+        "n_departments": 9
+      },
+      {
+        "code": "06",
+        "label": "General Administration & Finance",
+        "total_usd": 461779577.0,
+        "transfer_adjustment_usd": -460931434.0,
+        "share_of_side": 0.050938,
+        "n_departments": 15
+      },
+      {
+        "code": "07",
+        "label": "General City Responsibilities",
+        "total_usd": 450377320.0,
+        "transfer_adjustment_usd": -492196022.0,
+        "share_of_side": 0.049681,
+        "n_departments": 1
+      },
+      {
+        "code": "05",
+        "label": "Culture & Recreation",
+        "total_usd": 329151774.0,
+        "transfer_adjustment_usd": -52287098.0,
+        "share_of_side": 0.036308,
+        "n_departments": 8
+      }
+    ],
+    "revenue": [
+      {
+        "code": "02",
+        "label": "Public Works, Transportation & Commerce",
+        "total_usd": 3064560012.0,
+        "transfer_adjustment_usd": -1215045864.0,
+        "share_of_side": 0.338048,
+        "n_departments": 11
+      },
+      {
+        "code": "04",
+        "label": "Community Health",
+        "total_usd": 1948301269.0,
+        "transfer_adjustment_usd": -215825849.0,
+        "share_of_side": 0.214915,
+        "n_departments": 1
+      },
+      {
+        "code": "03",
+        "label": "Human Welfare & Neighborhood Development",
+        "total_usd": 1425792736.0,
+        "transfer_adjustment_usd": -76016972.0,
+        "share_of_side": 0.157278,
+        "n_departments": 10
+      },
+      {
+        "code": "01",
+        "label": "Public Protection",
+        "total_usd": 1385486589.0,
+        "transfer_adjustment_usd": 43728506.0,
+        "share_of_side": 0.152832,
+        "n_departments": 9
+      },
+      {
+        "code": "06",
+        "label": "General Administration & Finance",
+        "total_usd": 461779577.0,
+        "transfer_adjustment_usd": -460931434.0,
+        "share_of_side": 0.050938,
+        "n_departments": 15
+      },
+      {
+        "code": "07",
+        "label": "General City Responsibilities",
+        "total_usd": 450377320.0,
+        "transfer_adjustment_usd": -492196022.0,
+        "share_of_side": 0.049681,
+        "n_departments": 2
+      },
+      {
+        "code": "05",
+        "label": "Culture & Recreation",
+        "total_usd": 329151774.0,
+        "transfer_adjustment_usd": -52287098.0,
+        "share_of_side": 0.036308,
+        "n_departments": 8
+      }
+    ]
+  },
+  "departments": {
+    "spending": [
+      {
+        "code": "DPH",
+        "label": "Public Health",
+        "display_name": "Public Health",
+        "org_group_code": "04",
+        "total_usd": 1948301269.0,
+        "transfer_adjustment_usd": -215825849.0,
+        "share_of_side": 0.214915,
+        "n_characters": 15
+      },
+      {
+        "code": "MTA",
+        "label": "Municipal Transportation Agency",
+        "display_name": "Municipal Transportation Agency (Muni)",
+        "org_group_code": "02",
+        "total_usd": 945196051.0,
+        "transfer_adjustment_usd": -269558302.0,
+        "share_of_side": 0.104264,
+        "n_characters": 12
+      },
+      {
+        "code": "AIR",
+        "label": "Airport Commission",
+        "display_name": "Airport (SFO)",
+        "org_group_code": "02",
+        "total_usd": 909807360.0,
+        "transfer_adjustment_usd": -217850875.0,
+        "share_of_side": 0.10036,
+        "n_characters": 12
+      },
+      {
+        "code": "DSS",
+        "label": "Human Services",
+        "display_name": null,
+        "org_group_code": "03",
+        "total_usd": 798020264.0,
+        "transfer_adjustment_usd": -54729438.0,
+        "share_of_side": 0.088029,
+        "n_characters": 15
+      },
+      {
+        "code": "POL",
+        "label": "Police",
+        "display_name": "Police",
+        "org_group_code": "01",
+        "total_usd": 518902970.0,
+        "transfer_adjustment_usd": -9940203.0,
+        "share_of_side": 0.05724,
+        "n_characters": 10
+      },
+      {
+        "code": "WTR",
+        "label": "PUC Water Department",
+        "display_name": null,
+        "org_group_code": "02",
+        "total_usd": 470158144.0,
+        "transfer_adjustment_usd": -112112923.0,
+        "share_of_side": 0.051863,
+        "n_characters": 16
+      },
+      {
+        "code": "GEN",
+        "label": "General City Responsibility",
+        "display_name": "General City (unallocated)",
+        "org_group_code": "07",
+        "total_usd": 450377320.0,
+        "transfer_adjustment_usd": -492196022.0,
+        "share_of_side": 0.049681,
+        "n_characters": 13
+      },
+      {
+        "code": "CII",
+        "label": "Community Investment & Infrastructure",
+        "display_name": "Community Investment & Infrastructure",
+        "org_group_code": "03",
+        "total_usd": 377466569.0,
+        "transfer_adjustment_usd": 0.0,
+        "share_of_side": 0.041638,
+        "n_characters": 11
+      },
+      {
+        "code": "FIR",
+        "label": "Fire Department",
+        "display_name": "Fire Department",
+        "org_group_code": "01",
+        "total_usd": 343662995.0,
+        "transfer_adjustment_usd": -2790880.0,
+        "share_of_side": 0.037909,
+        "n_characters": 12
+      },
+      {
+        "code": "CWP",
+        "label": "PUC Wastewater Enterprise",
+        "display_name": null,
+        "org_group_code": "02",
+        "total_usd": 266156252.0,
+        "transfer_adjustment_usd": -52067567.0,
+        "share_of_side": 0.029359,
+        "n_characters": 15
+      },
+      {
+        "code": "SHF",
+        "label": "Sheriff",
+        "display_name": "Sheriff",
+        "org_group_code": "01",
+        "total_usd": 176460296.0,
+        "transfer_adjustment_usd": -16133818.0,
+        "share_of_side": 0.019465,
+        "n_characters": 9
+      },
+      {
+        "code": "ADM",
+        "label": "General Services Agency - City Admin",
+        "display_name": "City Administrator",
+        "org_group_code": "06",
+        "total_usd": 175238250.0,
+        "transfer_adjustment_usd": -171866094.0,
+        "share_of_side": 0.01933,
+        "n_characters": 14
+      },
+      {
+        "code": "REC",
+        "label": "Recreation and Park Commission",
+        "display_name": "Recreation & Parks",
+        "org_group_code": "05",
+        "total_usd": 160075643.0,
+        "transfer_adjustment_usd": -47836824.0,
+        "share_of_side": 0.017658,
+        "n_characters": 15
+      },
+      {
+        "code": "CHF",
+        "label": "Children, Youth & Their Families",
+        "display_name": "Children, Youth & Their Families",
+        "org_group_code": "03",
+        "total_usd": 159501569.0,
+        "transfer_adjustment_usd": -6383675.0,
+        "share_of_side": 0.017594,
+        "n_characters": 8
+      },
+      {
+        "code": "DPW",
+        "label": "General Services Agency - Public Works",
+        "display_name": "Public Works",
+        "org_group_code": "02",
+        "total_usd": 150467347.0,
+        "transfer_adjustment_usd": -139105496.0,
+        "share_of_side": 0.016598,
+        "n_characters": 13
+      },
+      {
+        "code": "CRT",
+        "label": "Superior Court",
+        "display_name": "Superior Court",
+        "org_group_code": "01",
+        "total_usd": 124843089.0,
+        "transfer_adjustment_usd": 0.0,
+        "share_of_side": 0.013771,
+        "n_characters": 6
+      },
+      {
+        "code": "LIB",
+        "label": "Public Library",
+        "display_name": "Public Library",
+        "org_group_code": "05",
+        "total_usd": 109422353.0,
+        "transfer_adjustment_usd": -2161020.0,
+        "share_of_side": 0.01207,
+        "n_characters": 9
+      },
+      {
+        "code": "PRT",
+        "label": "Port",
+        "display_name": "Port",
+        "org_group_code": "02",
+        "total_usd": 108673479.0,
+        "transfer_adjustment_usd": -17954502.0,
+        "share_of_side": 0.011988,
+        "n_characters": 15
+      },
+      {
+        "code": "DBI",
+        "label": "Department of Building Inspection",
+        "display_name": "Building Inspection",
+        "org_group_code": "02",
+        "total_usd": 92311619.0,
+        "transfer_adjustment_usd": -30488063.0,
+        "share_of_side": 0.010183,
+        "n_characters": 10
+      },
+      {
+        "code": "HHP",
+        "label": "PUC Hetch Hetchy",
+        "display_name": null,
+        "org_group_code": "02",
+        "total_usd": 88667548.0,
+        "transfer_adjustment_usd": -133619035.0,
+        "share_of_side": 0.009781,
+        "n_characters": 15
+      },
+      {
+        "code": "MYR",
+        "label": "Mayor",
+        "display_name": "Mayor",
+        "org_group_code": "06",
+        "total_usd": 75689363.0,
+        "transfer_adjustment_usd": -14478989.0,
+        "share_of_side": 0.008349,
+        "n_characters": 12
+      },
+      {
+        "code": "ECD",
+        "label": "Department of Emergency Management",
+        "display_name": null,
+        "org_group_code": "01",
+        "total_usd": 74470869.0,
+        "transfer_adjustment_usd": -1629258.0,
+        "share_of_side": 0.008215,
+        "n_characters": 10
+      },
+      {
+        "code": "CFC",
+        "label": "Children and Families Commission",
+        "display_name": "Children & Families Commission",
+        "org_group_code": "03",
+        "total_usd": 49146200.0,
+        "transfer_adjustment_usd": -9445079.0,
+        "share_of_side": 0.005421,
+        "n_characters": 7
+      },
+      {
+        "code": "DAT",
+        "label": "District Attorney",
+        "display_name": "District Attorney",
+        "org_group_code": "01",
+        "total_usd": 47616396.0,
+        "transfer_adjustment_usd": -965215.0,
+        "share_of_side": 0.005253,
+        "n_characters": 8
+      },
+      {
+        "code": "JUV",
+        "label": "Juvenile Probation",
+        "display_name": "Juvenile Probation",
+        "org_group_code": "01",
+        "total_usd": 38539911.0,
+        "transfer_adjustment_usd": -80000.0,
+        "share_of_side": 0.004251,
+        "n_characters": 9
+      },
+      {
+        "code": "CPC",
+        "label": "City Planning",
+        "display_name": "City Planning",
+        "org_group_code": "06",
+        "total_usd": 37904477.0,
+        "transfer_adjustment_usd": -447135.0,
+        "share_of_side": 0.004181,
+        "n_characters": 9
+      },
+      {
+        "code": "TTX",
+        "label": "Treasurer/Tax Collector",
+        "display_name": "Treasurer & Tax Collector",
+        "org_group_code": "06",
+        "total_usd": 36448166.0,
+        "transfer_adjustment_usd": -3745538.0,
+        "share_of_side": 0.004021,
+        "n_characters": 8
+      },
+      {
+        "code": "ECN",
+        "label": "Economic and Workforce Development",
+        "display_name": "Economic & Workforce Development",
+        "org_group_code": "02",
+        "total_usd": 32157832.0,
+        "transfer_adjustment_usd": -4664853.0,
+        "share_of_side": 0.003547,
+        "n_characters": 10
+      },
+      {
+        "code": "ADP",
+        "label": "Adult Probation",
+        "display_name": "Adult Probation",
+        "org_group_code": "01",
+        "total_usd": 30756242.0,
+        "transfer_adjustment_usd": 0.0,
+        "share_of_side": 0.003393,
+        "n_characters": 7
+      },
+      {
+        "code": "PDR",
+        "label": "Public Defender",
+        "display_name": "Public Defender",
+        "org_group_code": "01",
+        "total_usd": 30233821.0,
+        "transfer_adjustment_usd": -200000.0,
+        "share_of_side": 0.003335,
+        "n_characters": 7
+      },
+      {
+        "code": "RET",
+        "label": "Retirement System",
+        "display_name": "Retirement System",
+        "org_group_code": "06",
+        "total_usd": 27480036.0,
+        "transfer_adjustment_usd": -40515.0,
+        "share_of_side": 0.003031,
+        "n_characters": 8
+      },
+      {
+        "code": "ASR",
+        "label": "Assessor/Recorder",
+        "display_name": "Assessor-Recorder",
+        "org_group_code": "06",
+        "total_usd": 22607168.0,
+        "transfer_adjustment_usd": -1250000.0,
+        "share_of_side": 0.002494,
+        "n_characters": 9
+      },
+      {
+        "code": "FAM",
+        "label": "Fine Arts Museum",
+        "display_name": "Fine Arts Museums",
+        "org_group_code": "05",
+        "total_usd": 17423878.0,
+        "transfer_adjustment_usd": -179000.0,
+        "share_of_side": 0.001922,
+        "n_characters": 9
+      },
+      {
+        "code": "CAT",
+        "label": "City Attorney",
+        "display_name": "City Attorney",
+        "org_group_code": "06",
+        "total_usd": 16555865.0,
+        "transfer_adjustment_usd": -59195329.0,
+        "share_of_side": 0.001826,
+        "n_characters": 7
+      },
+      {
+        "code": "REG",
+        "label": "Elections",
+        "display_name": "Elections",
+        "org_group_code": "06",
+        "total_usd": 15556158.0,
+        "transfer_adjustment_usd": -785632.0,
+        "share_of_side": 0.001716,
+        "n_characters": 7
+      },
+      {
+        "code": "ENV",
+        "label": "Environment",
+        "display_name": "Environment",
+        "org_group_code": "03",
+        "total_usd": 14089553.0,
+        "transfer_adjustment_usd": -4941279.0,
+        "share_of_side": 0.001554,
+        "n_characters": 10
+      },
+      {
+        "code": "WAR",
+        "label": "War Memorial",
+        "display_name": "War Memorial & Performing Arts",
+        "org_group_code": "05",
+        "total_usd": 13536389.0,
+        "transfer_adjustment_usd": -1195000.0,
+        "share_of_side": 0.001493,
+        "n_characters": 10
+      },
+      {
+        "code": "CON",
+        "label": "Controller",
+        "display_name": "Controller",
+        "org_group_code": "06",
+        "total_usd": 13367779.0,
+        "transfer_adjustment_usd": -40269527.0,
+        "share_of_side": 0.001475,
+        "n_characters": 7
+      },
+      {
+        "code": "BOS",
+        "label": "Board of Supervisors",
+        "display_name": "Board of Supervisors",
+        "org_group_code": "06",
+        "total_usd": 13344121.0,
+        "transfer_adjustment_usd": -141076.0,
+        "share_of_side": 0.001472,
+        "n_characters": 8
+      },
+      {
+        "code": "ART",
+        "label": "Arts Commission",
+        "display_name": "Arts Commission",
+        "org_group_code": "05",
+        "total_usd": 13153591.0,
+        "transfer_adjustment_usd": -915254.0,
+        "share_of_side": 0.001451,
+        "n_characters": 11
+      },
+      {
+        "code": "CSS",
+        "label": "Child Support Services",
+        "display_name": "Child Support Services",
+        "org_group_code": "03",
+        "total_usd": 12941422.0,
+        "transfer_adjustment_usd": -421501.0,
+        "share_of_side": 0.001428,
+        "n_characters": 6
+      },
+      {
+        "code": "HRD",
+        "label": "Human Resources",
+        "display_name": "Human Resources",
+        "org_group_code": "06",
+        "total_usd": 12136863.0,
+        "transfer_adjustment_usd": -69263683.0,
+        "share_of_side": 0.001339,
+        "n_characters": 8
+      },
+      {
+        "code": "TIS",
+        "label": "General Services Agency - Technology",
+        "display_name": "Technology",
+        "org_group_code": "06",
+        "total_usd": 9616182.0,
+        "transfer_adjustment_usd": -89614871.0,
+        "share_of_side": 0.001061,
+        "n_characters": 9
+      },
+      {
+        "code": "AAM",
+        "label": "Asian Art Museum",
+        "display_name": "Asian Art Museum",
+        "org_group_code": "05",
+        "total_usd": 9456379.0,
+        "transfer_adjustment_usd": 0.0,
+        "share_of_side": 0.001043,
+        "n_characters": 8
+      },
+      {
+        "code": "RNT",
+        "label": "Rent Arbitration Board",
+        "display_name": "Rent Board",
+        "org_group_code": "03",
+        "total_usd": 6531162.0,
+        "transfer_adjustment_usd": -96000.0,
+        "share_of_side": 0.00072,
+        "n_characters": 7
+      },
+      {
+        "code": "WOM",
+        "label": "Department of the Status of Women",
+        "display_name": "Status of Women",
+        "org_group_code": "03",
+        "total_usd": 5832617.0,
+        "transfer_adjustment_usd": 0.0,
+        "share_of_side": 0.000643,
+        "n_characters": 6
+      },
+      {
+        "code": "ETH",
+        "label": "Ethics Commission",
+        "display_name": "Ethics Commission",
+        "org_group_code": "06",
+        "total_usd": 4574354.0,
+        "transfer_adjustment_usd": 0.0,
+        "share_of_side": 0.000505,
+        "n_characters": 6
+      },
+      {
+        "code": "SCI",
+        "label": "Academy of Sciences",
+        "display_name": "Academy of Sciences",
+        "org_group_code": "05",
+        "total_usd": 4547630.0,
+        "transfer_adjustment_usd": 0.0,
+        "share_of_side": 0.000502,
+        "n_characters": 6
+      },
+      {
+        "code": "HRC",
+        "label": "Human Rights Commission",
+        "display_name": "Human Rights Commission",
+        "org_group_code": "03",
+        "total_usd": 2147380.0,
+        "transfer_adjustment_usd": 0.0,
+        "share_of_side": 0.000237,
+        "n_characters": 6
+      },
+      {
+        "code": "LLB",
+        "label": "Law Library",
+        "display_name": "Law Library",
+        "org_group_code": "05",
+        "total_usd": 1535911.0,
+        "transfer_adjustment_usd": 0.0,
+        "share_of_side": 0.000169,
+        "n_characters": 5
+      },
+      {
+        "code": "PAB",
+        "label": "Board of Appeals",
+        "display_name": null,
+        "org_group_code": "02",
+        "total_usd": 964380.0,
+        "transfer_adjustment_usd": 0.0,
+        "share_of_side": 0.000106,
+        "n_characters": 5
+      },
+      {
+        "code": "CSC",
+        "label": "Civil Service Commission",
+        "display_name": "Civil Service Commission",
+        "org_group_code": "06",
+        "total_usd": 809109.0,
+        "transfer_adjustment_usd": -310000.0,
+        "share_of_side": 8.9e-05,
+        "n_characters": 6
+      },
+      {
+        "code": "HSS",
+        "label": "Health Service System",
+        "display_name": "Health Service System",
+        "org_group_code": "06",
+        "total_usd": 451686.0,
+        "transfer_adjustment_usd": -9523045.0,
+        "share_of_side": 5e-05,
+        "n_characters": 6
+      },
+      {
+        "code": "USD",
+        "label": "County Education Office",
+        "display_name": "County Office of Education",
+        "org_group_code": "03",
+        "total_usd": 116000.0,
+        "transfer_adjustment_usd": 0.0,
+        "share_of_side": 1.3e-05,
+        "n_characters": 1
+      },
+      {
+        "code": "PUC",
+        "label": "PUC Public Utilities Commission",
+        "display_name": "Public Utilities Commission (water, power, sewer)",
+        "org_group_code": "02",
+        "total_usd": 0.0,
+        "transfer_adjustment_usd": -162156368.0,
+        "share_of_side": 0.0,
+        "n_characters": 7
+      }
+    ],
+    "revenue": [
+      {
+        "code": "DPH",
+        "label": "Public Health",
+        "display_name": "Public Health",
+        "org_group_code": "04",
+        "total_usd": 1948301269.0,
+        "transfer_adjustment_usd": -215825849.0,
+        "share_of_side": 0.214915,
+        "n_characters": 16
+      },
+      {
+        "code": "MTA",
+        "label": "Municipal Transportation Agency",
+        "display_name": "Municipal Transportation Agency (Muni)",
+        "org_group_code": "02",
+        "total_usd": 945196051.0,
+        "transfer_adjustment_usd": -269558302.0,
+        "share_of_side": 0.104264,
+        "n_characters": 15
+      },
+      {
+        "code": "AIR",
+        "label": "Airport Commission",
+        "display_name": "Airport (SFO)",
+        "org_group_code": "02",
+        "total_usd": 909807360.0,
+        "transfer_adjustment_usd": -289958281.0,
+        "share_of_side": 0.10036,
+        "n_characters": 11
+      },
+      {
+        "code": "DSS",
+        "label": "Human Services",
+        "display_name": null,
+        "org_group_code": "03",
+        "total_usd": 798020264.0,
+        "transfer_adjustment_usd": -54729438.0,
+        "share_of_side": 0.088029,
+        "n_characters": 13
+      },
+      {
+        "code": "POL",
+        "label": "Police",
+        "display_name": "Police",
+        "org_group_code": "01",
+        "total_usd": 518902970.0,
+        "transfer_adjustment_usd": 39953902.0,
+        "share_of_side": 0.05724,
+        "n_characters": 11
+      },
+      {
+        "code": "WTR",
+        "label": "PUC Water Department",
+        "display_name": null,
+        "org_group_code": "02",
+        "total_usd": 470158144.0,
+        "transfer_adjustment_usd": -112112923.0,
+        "share_of_side": 0.051863,
+        "n_characters": 8
+      },
+      {
+        "code": "GEN",
+        "label": "General City Responsibility",
+        "display_name": "General City (unallocated)",
+        "org_group_code": "07",
+        "total_usd": 450377320.0,
+        "transfer_adjustment_usd": -492196022.0,
+        "share_of_side": 0.049681,
+        "n_characters": 10
+      },
+      {
+        "code": "CII",
+        "label": "Community Investment & Infrastructure",
+        "display_name": "Community Investment & Infrastructure",
+        "org_group_code": "03",
+        "total_usd": 377466569.0,
+        "transfer_adjustment_usd": 0.0,
+        "share_of_side": 0.041638,
+        "n_characters": 7
+      },
+      {
+        "code": "FIR",
+        "label": "Fire Department",
+        "display_name": "Fire Department",
+        "org_group_code": "01",
+        "total_usd": 343662995.0,
+        "transfer_adjustment_usd": 22782895.0,
+        "share_of_side": 0.037909,
+        "n_characters": 10
+      },
+      {
+        "code": "CWP",
+        "label": "PUC Wastewater Enterprise",
+        "display_name": null,
+        "org_group_code": "02",
+        "total_usd": 266156252.0,
+        "transfer_adjustment_usd": -52067567.0,
+        "share_of_side": 0.029359,
+        "n_characters": 7
+      },
+      {
+        "code": "SHF",
+        "label": "Sheriff",
+        "display_name": "Sheriff",
+        "org_group_code": "01",
+        "total_usd": 176460296.0,
+        "transfer_adjustment_usd": -16133818.0,
+        "share_of_side": 0.019465,
+        "n_characters": 9
+      },
+      {
+        "code": "ADM",
+        "label": "General Services Agency - City Admin",
+        "display_name": "City Administrator",
+        "org_group_code": "06",
+        "total_usd": 175238250.0,
+        "transfer_adjustment_usd": -171866094.0,
+        "share_of_side": 0.01933,
+        "n_characters": 13
+      },
+      {
+        "code": "REC",
+        "label": "Recreation and Park Commission",
+        "display_name": "Recreation & Parks",
+        "org_group_code": "05",
+        "total_usd": 160075643.0,
+        "transfer_adjustment_usd": -47836824.0,
+        "share_of_side": 0.017658,
+        "n_characters": 13
+      },
+      {
+        "code": "CHF",
+        "label": "Children, Youth & Their Families",
+        "display_name": "Children, Youth & Their Families",
+        "org_group_code": "03",
+        "total_usd": 159501569.0,
+        "transfer_adjustment_usd": -6383675.0,
+        "share_of_side": 0.017594,
+        "n_characters": 10
+      },
+      {
+        "code": "DPW",
+        "label": "General Services Agency - Public Works",
+        "display_name": "Public Works",
+        "org_group_code": "02",
+        "total_usd": 150467347.0,
+        "transfer_adjustment_usd": -139105496.0,
+        "share_of_side": 0.016598,
+        "n_characters": 12
+      },
+      {
+        "code": "CRT",
+        "label": "Superior Court",
+        "display_name": "Superior Court",
+        "org_group_code": "01",
+        "total_usd": 124843089.0,
+        "transfer_adjustment_usd": 0.0,
+        "share_of_side": 0.013771,
+        "n_characters": 5
+      },
+      {
+        "code": "LIB",
+        "label": "Public Library",
+        "display_name": "Public Library",
+        "org_group_code": "05",
+        "total_usd": 109422353.0,
+        "transfer_adjustment_usd": -2161020.0,
+        "share_of_side": 0.01207,
+        "n_characters": 11
+      },
+      {
+        "code": "PRT",
+        "label": "Port",
+        "display_name": "Port",
+        "org_group_code": "02",
+        "total_usd": 108673479.0,
+        "transfer_adjustment_usd": -21314976.0,
+        "share_of_side": 0.011988,
+        "n_characters": 10
+      },
+      {
+        "code": "DBI",
+        "label": "Department of Building Inspection",
+        "display_name": "Building Inspection",
+        "org_group_code": "02",
+        "total_usd": 92311619.0,
+        "transfer_adjustment_usd": -30488063.0,
+        "share_of_side": 0.010183,
+        "n_characters": 7
+      },
+      {
+        "code": "HHP",
+        "label": "PUC Hetch Hetchy",
+        "display_name": null,
+        "org_group_code": "02",
+        "total_usd": 88667548.0,
+        "transfer_adjustment_usd": -133619035.0,
+        "share_of_side": 0.009781,
+        "n_characters": 8
+      },
+      {
+        "code": "MYR",
+        "label": "Mayor",
+        "display_name": "Mayor",
+        "org_group_code": "06",
+        "total_usd": 75689363.0,
+        "transfer_adjustment_usd": -14478989.0,
+        "share_of_side": 0.008349,
+        "n_characters": 10
+      },
+      {
+        "code": "ECD",
+        "label": "Department of Emergency Management",
+        "display_name": null,
+        "org_group_code": "01",
+        "total_usd": 74470869.0,
+        "transfer_adjustment_usd": -1629258.0,
+        "share_of_side": 0.008215,
+        "n_characters": 5
+      },
+      {
+        "code": "CFC",
+        "label": "Children and Families Commission",
+        "display_name": "Children & Families Commission",
+        "org_group_code": "03",
+        "total_usd": 49146200.0,
+        "transfer_adjustment_usd": -9445079.0,
+        "share_of_side": 0.005421,
+        "n_characters": 7
+      },
+      {
+        "code": "DAT",
+        "label": "District Attorney",
+        "display_name": "District Attorney",
+        "org_group_code": "01",
+        "total_usd": 47616396.0,
+        "transfer_adjustment_usd": -965215.0,
+        "share_of_side": 0.005253,
+        "n_characters": 7
+      },
+      {
+        "code": "JUV",
+        "label": "Juvenile Probation",
+        "display_name": "Juvenile Probation",
+        "org_group_code": "01",
+        "total_usd": 38539911.0,
+        "transfer_adjustment_usd": -80000.0,
+        "share_of_side": 0.004251,
+        "n_characters": 6
+      },
+      {
+        "code": "CPC",
+        "label": "City Planning",
+        "display_name": "City Planning",
+        "org_group_code": "06",
+        "total_usd": 37904477.0,
+        "transfer_adjustment_usd": -447135.0,
+        "share_of_side": 0.004181,
+        "n_characters": 8
+      },
+      {
+        "code": "TTX",
+        "label": "Treasurer/Tax Collector",
+        "display_name": "Treasurer & Tax Collector",
+        "org_group_code": "06",
+        "total_usd": 36448166.0,
+        "transfer_adjustment_usd": -3745538.0,
+        "share_of_side": 0.004021,
+        "n_characters": 7
+      },
+      {
+        "code": "ECN",
+        "label": "Economic and Workforce Development",
+        "display_name": "Economic & Workforce Development",
+        "org_group_code": "02",
+        "total_usd": 32157832.0,
+        "transfer_adjustment_usd": -4664853.0,
+        "share_of_side": 0.003547,
+        "n_characters": 10
+      },
+      {
+        "code": "ADP",
+        "label": "Adult Probation",
+        "display_name": "Adult Probation",
+        "org_group_code": "01",
+        "total_usd": 30756242.0,
+        "transfer_adjustment_usd": 0.0,
+        "share_of_side": 0.003393,
+        "n_characters": 4
+      },
+      {
+        "code": "PDR",
+        "label": "Public Defender",
+        "display_name": "Public Defender",
+        "org_group_code": "01",
+        "total_usd": 30233821.0,
+        "transfer_adjustment_usd": -200000.0,
+        "share_of_side": 0.003335,
+        "n_characters": 5
+      },
+      {
+        "code": "RET",
+        "label": "Retirement System",
+        "display_name": "Retirement System",
+        "org_group_code": "06",
+        "total_usd": 27480036.0,
+        "transfer_adjustment_usd": -40515.0,
+        "share_of_side": 0.003031,
+        "n_characters": 5
+      },
+      {
+        "code": "ASR",
+        "label": "Assessor/Recorder",
+        "display_name": "Assessor-Recorder",
+        "org_group_code": "06",
+        "total_usd": 22607168.0,
+        "transfer_adjustment_usd": -1250000.0,
+        "share_of_side": 0.002494,
+        "n_characters": 4
+      },
+      {
+        "code": "FAM",
+        "label": "Fine Arts Museum",
+        "display_name": "Fine Arts Museums",
+        "org_group_code": "05",
+        "total_usd": 17423878.0,
+        "transfer_adjustment_usd": -179000.0,
+        "share_of_side": 0.001922,
+        "n_characters": 4
+      },
+      {
+        "code": "CAT",
+        "label": "City Attorney",
+        "display_name": "City Attorney",
+        "org_group_code": "06",
+        "total_usd": 16555865.0,
+        "transfer_adjustment_usd": -59195329.0,
+        "share_of_side": 0.001826,
+        "n_characters": 5
+      },
+      {
+        "code": "REG",
+        "label": "Elections",
+        "display_name": "Elections",
+        "org_group_code": "06",
+        "total_usd": 15556158.0,
+        "transfer_adjustment_usd": -785632.0,
+        "share_of_side": 0.001716,
+        "n_characters": 4
+      },
+      {
+        "code": "ENV",
+        "label": "Environment",
+        "display_name": "Environment",
+        "org_group_code": "03",
+        "total_usd": 14089553.0,
+        "transfer_adjustment_usd": -4941279.0,
+        "share_of_side": 0.001554,
+        "n_characters": 7
+      },
+      {
+        "code": "WAR",
+        "label": "War Memorial",
+        "display_name": "War Memorial & Performing Arts",
+        "org_group_code": "05",
+        "total_usd": 13536389.0,
+        "transfer_adjustment_usd": -1195000.0,
+        "share_of_side": 0.001493,
+        "n_characters": 6
+      },
+      {
+        "code": "CON",
+        "label": "Controller",
+        "display_name": "Controller",
+        "org_group_code": "06",
+        "total_usd": 13367779.0,
+        "transfer_adjustment_usd": -40269527.0,
+        "share_of_side": 0.001475,
+        "n_characters": 8
+      },
+      {
+        "code": "BOS",
+        "label": "Board of Supervisors",
+        "display_name": "Board of Supervisors",
+        "org_group_code": "06",
+        "total_usd": 13344121.0,
+        "transfer_adjustment_usd": -141076.0,
+        "share_of_side": 0.001472,
+        "n_characters": 4
+      },
+      {
+        "code": "ART",
+        "label": "Arts Commission",
+        "display_name": "Arts Commission",
+        "org_group_code": "05",
+        "total_usd": 13153591.0,
+        "transfer_adjustment_usd": -915254.0,
+        "share_of_side": 0.001451,
+        "n_characters": 9
+      },
+      {
+        "code": "CSS",
+        "label": "Child Support Services",
+        "display_name": "Child Support Services",
+        "org_group_code": "03",
+        "total_usd": 12941422.0,
+        "transfer_adjustment_usd": -421501.0,
+        "share_of_side": 0.001428,
+        "n_characters": 4
+      },
+      {
+        "code": "HRD",
+        "label": "Human Resources",
+        "display_name": "Human Resources",
+        "org_group_code": "06",
+        "total_usd": 12136863.0,
+        "transfer_adjustment_usd": -69263683.0,
+        "share_of_side": 0.001339,
+        "n_characters": 3
+      },
+      {
+        "code": "TIS",
+        "label": "General Services Agency - Technology",
+        "display_name": "Technology",
+        "org_group_code": "06",
+        "total_usd": 9616182.0,
+        "transfer_adjustment_usd": -89614871.0,
+        "share_of_side": 0.001061,
+        "n_characters": 9
+      },
+      {
+        "code": "AAM",
+        "label": "Asian Art Museum",
+        "display_name": "Asian Art Museum",
+        "org_group_code": "05",
+        "total_usd": 9456379.0,
+        "transfer_adjustment_usd": 0.0,
+        "share_of_side": 0.001043,
+        "n_characters": 2
+      },
+      {
+        "code": "RNT",
+        "label": "Rent Arbitration Board",
+        "display_name": "Rent Board",
+        "org_group_code": "03",
+        "total_usd": 6531162.0,
+        "transfer_adjustment_usd": -96000.0,
+        "share_of_side": 0.00072,
+        "n_characters": 4
+      },
+      {
+        "code": "WOM",
+        "label": "Department of the Status of Women",
+        "display_name": "Status of Women",
+        "org_group_code": "03",
+        "total_usd": 5832617.0,
+        "transfer_adjustment_usd": 0.0,
+        "share_of_side": 0.000643,
+        "n_characters": 3
+      },
+      {
+        "code": "ETH",
+        "label": "Ethics Commission",
+        "display_name": "Ethics Commission",
+        "org_group_code": "06",
+        "total_usd": 4574354.0,
+        "transfer_adjustment_usd": 0.0,
+        "share_of_side": 0.000505,
+        "n_characters": 4
+      },
+      {
+        "code": "SCI",
+        "label": "Academy of Sciences",
+        "display_name": "Academy of Sciences",
+        "org_group_code": "05",
+        "total_usd": 4547630.0,
+        "transfer_adjustment_usd": 0.0,
+        "share_of_side": 0.000502,
+        "n_characters": 1
+      },
+      {
+        "code": "HRC",
+        "label": "Human Rights Commission",
+        "display_name": "Human Rights Commission",
+        "org_group_code": "03",
+        "total_usd": 2147380.0,
+        "transfer_adjustment_usd": 0.0,
+        "share_of_side": 0.000237,
+        "n_characters": 1
+      },
+      {
+        "code": "LLB",
+        "label": "Law Library",
+        "display_name": "Law Library",
+        "org_group_code": "05",
+        "total_usd": 1535911.0,
+        "transfer_adjustment_usd": 0.0,
+        "share_of_side": 0.000169,
+        "n_characters": 1
+      },
+      {
+        "code": "PAB",
+        "label": "Board of Appeals",
+        "display_name": null,
+        "org_group_code": "02",
+        "total_usd": 964380.0,
+        "transfer_adjustment_usd": 0.0,
+        "share_of_side": 0.000106,
+        "n_characters": 1
+      },
+      {
+        "code": "CSC",
+        "label": "Civil Service Commission",
+        "display_name": "Civil Service Commission",
+        "org_group_code": "06",
+        "total_usd": 809109.0,
+        "transfer_adjustment_usd": -310000.0,
+        "share_of_side": 8.9e-05,
+        "n_characters": 3
+      },
+      {
+        "code": "HSS",
+        "label": "Health Service System",
+        "display_name": "Health Service System",
+        "org_group_code": "06",
+        "total_usd": 451686.0,
+        "transfer_adjustment_usd": -9523045.0,
+        "share_of_side": 5e-05,
+        "n_characters": 4
+      },
+      {
+        "code": "USD",
+        "label": "County Education Office",
+        "display_name": "County Office of Education",
+        "org_group_code": "03",
+        "total_usd": 116000.0,
+        "transfer_adjustment_usd": 0.0,
+        "share_of_side": 1.3e-05,
+        "n_characters": 1
+      },
+      {
+        "code": "UNA",
+        "label": "General Fund Unallocated",
+        "display_name": null,
+        "org_group_code": "07",
+        "total_usd": 0.0,
+        "transfer_adjustment_usd": 0.0,
+        "share_of_side": 0.0,
+        "n_characters": 14
+      },
+      {
+        "code": "PUC",
+        "label": "PUC Public Utilities Commission",
+        "display_name": "Public Utilities Commission (water, power, sewer)",
+        "org_group_code": "02",
+        "total_usd": 0.0,
+        "transfer_adjustment_usd": -162156368.0,
+        "share_of_side": 0.0,
+        "n_characters": 2
+      }
+    ]
+  },
+  "dept_characters": {
+    "columns": [
+      "department_code",
+      "character_code",
+      "amount_usd",
+      "is_transfer_adjustment"
+    ],
+    "spending": [
+      [
+        "DPH",
+        "021",
+        723238751.0,
+        0
+      ],
+      [
+        "DPH",
+        "001",
+        663109172.0,
+        0
+      ],
+      [
+        "GEN",
+        "ELU",
+        -492196022.0,
+        1
+      ],
+      [
+        "MTA",
+        "001",
+        391166266.0,
+        0
+      ],
+      [
+        "AIR",
+        "070",
+        390477686.0,
+        0
+      ],
+      [
+        "POL",
+        "001",
+        348097873.0,
+        0
+      ],
+      [
+        "GEN",
+        "095",
+        287226735.0,
+        0
+      ],
+      [
+        "DPH",
+        "013",
+        287096934.0,
+        0
+      ],
+      [
+        "DSS",
+        "037",
+        279680066.0,
+        0
+      ],
+      [
+        "MTA",
+        "ELU",
+        -269558302.0,
+        1
+      ],
+      [
+        "GEN",
+        "070",
+        250807676.0,
+        0
+      ],
+      [
+        "WTR",
+        "070",
+        244760963.0,
+        0
+      ],
+      [
+        "FIR",
+        "001",
+        239049621.0,
+        0
+      ],
+      [
+        "AIR",
+        "ELU",
+        -217850875.0,
+        1
+      ],
+      [
+        "DPH",
+        "ELU",
+        -215825849.0,
+        1
+      ],
+      [
+        "MTA",
+        "013",
+        211783412.0,
+        0
+      ],
+      [
+        "GEN",
+        "091",
+        204969287.0,
+        0
+      ],
+      [
+        "MTA",
+        "021",
+        189889547.0,
+        0
+      ],
+      [
+        "ADM",
+        "ELU",
+        -171866094.0,
+        1
+      ],
+      [
+        "AIR",
+        "095",
+        170770760.0,
+        0
+      ],
+      [
+        "DSS",
+        "001",
+        165173759.0,
+        0
+      ],
+      [
+        "PUC",
+        "ELU",
+        -162156368.0,
+        1
+      ],
+      [
+        "DSS",
+        "038",
+        159036432.0,
+        0
+      ],
+      [
+        "MTA",
+        "091",
+        153329210.0,
+        0
+      ],
+      [
+        "ADM",
+        "021",
+        148056750.0,
+        0
+      ],
+      [
+        "DPH",
+        "091",
+        143773497.0,
+        0
+      ],
+      [
+        "DPW",
+        "ELU",
+        -139105496.0,
+        1
+      ],
+      [
+        "AIR",
+        "001",
+        134858081.0,
+        0
+      ],
+      [
+        "HHP",
+        "ELU",
+        -133619035.0,
+        1
+      ],
+      [
+        "CHF",
+        "038",
+        127707563.0,
+        0
+      ],
+      [
+        "CII",
+        "070",
+        119554756.0,
+        0
+      ],
+      [
+        "POL",
+        "013",
+        115466425.0,
+        0
+      ],
+      [
+        "SHF",
+        "001",
+        114309062.0,
+        0
+      ],
+      [
+        "DPH",
+        "040",
+        112740854.0,
+        0
+      ],
+      [
+        "AIR",
+        "013",
+        112123611.0,
+        0
+      ],
+      [
+        "WTR",
+        "ELU",
+        -112112923.0,
+        1
+      ],
+      [
+        "MTA",
+        "020",
+        109695630.0,
+        0
+      ],
+      [
+        "CII",
+        "039",
+        103171800.0,
+        0
+      ],
+      [
+        "AIR",
+        "021",
+        100715333.0,
+        0
+      ],
+      [
+        "DPH",
+        "081",
+        94872935.0,
+        0
+      ],
+      [
+        "DPW",
+        "060",
+        90507793.0,
+        0
+      ],
+      [
+        "TIS",
+        "ELU",
+        -89614871.0,
+        1
+      ],
+      [
+        "AIR",
+        "060",
+        86601448.0,
+        0
+      ],
+      [
+        "DSS",
+        "013",
+        83803193.0,
+        0
+      ],
+      [
+        "PUC",
+        "001",
+        81552076.0,
+        0
+      ],
+      [
+        "MTA",
+        "040",
+        79018137.0,
+        0
+      ],
+      [
+        "DPW",
+        "001",
+        74494800.0,
+        0
+      ],
+      [
+        "CII",
+        "097",
+        73760286.0,
+        0
+      ],
+      [
+        "HRD",
+        "ELU",
+        -69263683.0,
+        1
+      ],
+      [
+        "FIR",
+        "013",
+        68285808.0,
+        0
+      ],
+      [
+        "WTR",
+        "081",
+        66005145.0,
+        0
+      ],
+      [
+        "HHP",
+        "021",
+        65529440.0,
+        0
+      ],
+      [
+        "ADM",
+        "001",
+        65414523.0,
+        0
+      ],
+      [
+        "DPH",
+        "06P",
+        63500000.0,
+        0
+      ],
+      [
+        "AIR",
+        "081",
+        63191687.0,
+        0
+      ],
+      [
+        "MTA",
+        "081",
+        62726209.0,
+        0
+      ],
+      [
+        "REC",
+        "001",
+        62331920.0,
+        0
+      ],
+      [
+        "CRT",
+        "001",
+        61059242.0,
+        0
+      ],
+      [
+        "WTR",
+        "095",
+        60999894.0,
+        0
+      ],
+      [
+        "CWP",
+        "081",
+        60593401.0,
+        0
+      ],
+      [
+        "GEN",
+        "013",
+        60581816.0,
+        0
+      ],
+      [
+        "CAT",
+        "ELU",
+        -59195329.0,
+        1
+      ],
+      [
+        "DSS",
+        "036",
+        59010132.0,
+        0
+      ],
+      [
+        "WTR",
+        "001",
+        57731206.0,
+        0
+      ],
+      [
+        "HRD",
+        "021",
+        56544651.0,
+        0
+      ],
+      [
+        "CWP",
+        "070",
+        54768723.0,
+        0
+      ],
+      [
+        "DSS",
+        "ELU",
+        -54729438.0,
+        1
+      ],
+      [
+        "CII",
+        "021",
+        53563703.0,
+        0
+      ],
+      [
+        "CWP",
+        "ELU",
+        -52067567.0,
+        1
+      ],
+      [
+        "DSS",
+        "081",
+        48837352.0,
+        0
+      ],
+      [
+        "LIB",
+        "001",
+        48205820.0,
+        0
+      ],
+      [
+        "REC",
+        "ELU",
+        -47836824.0,
+        1
+      ],
+      [
+        "TIS",
+        "021",
+        47172626.0,
+        0
+      ],
+      [
+        "CFC",
+        "038",
+        47169688.0,
+        0
+      ],
+      [
+        "CWP",
+        "095",
+        44808000.0,
+        0
+      ],
+      [
+        "CWP",
+        "001",
+        44369402.0,
+        0
+      ],
+      [
+        "CAT",
+        "001",
+        42963274.0,
+        0
+      ],
+      [
+        "GEN",
+        "098",
+        41094743.0,
+        0
+      ],
+      [
+        "SHF",
+        "013",
+        40742562.0,
+        0
+      ],
+      [
+        "HHP",
+        "095",
+        40595796.0,
+        0
+      ],
+      [
+        "CON",
+        "ELU",
+        -40269527.0,
+        1
+      ],
+      [
+        "POL",
+        "081",
+        39348567.0,
+        0
+      ],
+      [
+        "CWP",
+        "097",
+        39000000.0,
+        0
+      ],
+      [
+        "DPW",
+        "013",
+        38938772.0,
+        0
+      ],
+      [
+        "DPH",
+        "095",
+        38436000.0,
+        0
+      ],
+      [
+        "AIR",
+        "091",
+        38431713.0,
+        0
+      ],
+      [
+        "ADM",
+        "081",
+        37856932.0,
+        0
+      ],
+      [
+        "WTR",
+        "091",
+        36831712.0,
+        0
+      ],
+      [
+        "DPW",
+        "020",
+        36117961.0,
+        0
+      ],
+      [
+        "DSS",
+        "021",
+        34802250.0,
+        0
+      ],
+      [
+        "CRT",
+        "021",
+        34076137.0,
+        0
+      ],
+      [
+        "PUC",
+        "013",
+        32794253.0,
+        0
+      ],
+      [
+        "DAT",
+        "001",
+        32309059.0,
+        0
+      ],
+      [
+        "GEN",
+        "097",
+        31366882.0,
+        0
+      ],
+      [
+        "REC",
+        "020",
+        31088597.0,
+        0
+      ],
+      [
+        "MYR",
+        "06P",
+        30889488.0,
+        0
+      ],
+      [
+        "DBI",
+        "ELU",
+        -30488063.0,
+        1
+      ],
+      [
+        "ADM",
+        "013",
+        30393690.0,
+        0
+      ],
+      [
+        "DBI",
+        "095",
+        30351926.0,
+        0
+      ],
+      [
+        "DBI",
+        "001",
+        29627143.0,
+        0
+      ],
+      [
+        "REC",
+        "013",
+        29558886.0,
+        0
+      ],
+      [
+        "WTR",
+        "097",
+        29219000.0,
+        0
+      ],
+      [
+        "ECD",
+        "001",
+        29072323.0,
+        0
+      ],
+      [
+        "DPW",
+        "081",
+        28238191.0,
+        0
+      ],
+      [
+        "WTR",
+        "013",
+        28032945.0,
+        0
+      ],
+      [
+        "CRT",
+        "013",
+        27778375.0,
+        0
+      ],
+      [
+        "LIB",
+        "013",
+        27280881.0,
+        0
+      ],
+      [
+        "HHP",
+        "001",
+        26711823.0,
+        0
+      ],
+      [
+        "PUC",
+        "081",
+        26333451.0,
+        0
+      ],
+      [
+        "CHF",
+        "081",
+        26195181.0,
+        0
+      ],
+      [
+        "MTA",
+        "079",
+        -25994576.0,
+        0
+      ],
+      [
+        "CON",
+        "001",
+        24647359.0,
+        0
+      ],
+      [
+        "PRT",
+        "001",
+        24620097.0,
+        0
+      ],
+      [
+        "MTA",
+        "060",
+        24330518.0,
+        0
+      ],
+      [
+        "TIS",
+        "001",
+        23836206.0,
+        0
+      ],
+      [
+        "HHP",
+        "097",
+        23251796.0,
+        0
+      ],
+      [
+        "REC",
+        "060",
+        22826062.0,
+        0
+      ],
+      [
+        "GEN",
+        "081",
+        22636278.0,
+        0
+      ],
+      [
+        "CWP",
+        "098",
+        21931665.0,
+        0
+      ],
+      [
+        "ADM",
+        "095",
+        21623916.0,
+        0
+      ],
+      [
+        "MYR",
+        "038",
+        21550279.0,
+        0
+      ],
+      [
+        "CWP",
+        "013",
+        21306339.0,
+        0
+      ],
+      [
+        "MYR",
+        "039",
+        20934063.0,
+        0
+      ],
+      [
+        "DBI",
+        "021",
+        20760421.0,
+        0
+      ],
+      [
+        "REC",
+        "081",
+        20677196.0,
+        0
+      ],
+      [
+        "ECD",
+        "021",
+        20624318.0,
+        0
+      ],
+      [
+        "JUV",
+        "001",
+        20366816.0,
+        0
+      ],
+      [
+        "HHP",
+        "081",
+        20344701.0,
+        0
+      ],
+      [
+        "PDR",
+        "001",
+        20081790.0,
+        0
+      ],
+      [
+        "PRT",
+        "060",
+        19465662.0,
+        0
+      ],
+      [
+        "GEN",
+        "096",
+        19090000.0,
+        0
+      ],
+      [
+        "TTX",
+        "001",
+        19087288.0,
+        0
+      ],
+      [
+        "REC",
+        "021",
+        19037811.0,
+        0
+      ],
+      [
+        "DPH",
+        "070",
+        18305412.0,
+        0
+      ],
+      [
+        "FIR",
+        "081",
+        18228677.0,
+        0
+      ],
+      [
+        "CAT",
+        "013",
+        18045595.0,
+        0
+      ],
+      [
+        "PRT",
+        "ELU",
+        -17954502.0,
+        1
+      ],
+      [
+        "ECN",
+        "038",
+        17478713.0,
+        0
+      ],
+      [
+        "AIR",
+        "040",
+        17318880.0,
+        0
+      ],
+      [
+        "CPC",
+        "001",
+        17055552.0,
+        0
+      ],
+      [
+        "WTR",
+        "06F",
+        16995000.0,
+        0
+      ],
+      [
+        "PRT",
+        "095",
+        16742789.0,
+        0
+      ],
+      [
+        "HHP",
+        "06F",
+        16707000.0,
+        0
+      ],
+      [
+        "SHF",
+        "ELU",
+        -16133818.0,
+        1
+      ],
+      [
+        "CWP",
+        "021",
+        15838529.0,
+        0
+      ],
+      [
+        "LIB",
+        "040",
+        15274828.0,
+        0
+      ],
+      [
+        "PUC",
+        "021",
+        15153316.0,
+        0
+      ],
+      [
+        "PRT",
+        "081",
+        15076881.0,
+        0
+      ],
+      [
+        "ADM",
+        "040",
+        14735805.0,
+        0
+      ],
+      [
+        "DPH",
+        "060",
+        14534173.0,
+        0
+      ],
+      [
+        "MYR",
+        "ELU",
+        -14478989.0,
+        1
+      ],
+      [
+        "DSS",
+        "095",
+        14364884.0,
+        0
+      ],
+      [
+        "POL",
+        "021",
+        14332324.0,
+        0
+      ],
+      [
+        "DBI",
+        "013",
+        14072756.0,
+        0
+      ],
+      [
+        "WTR",
+        "040",
+        13624461.0,
+        0
+      ],
+      [
+        "ADP",
+        "001",
+        13445969.0,
+        0
+      ],
+      [
+        "WTR",
+        "021",
+        13350205.0,
+        0
+      ],
+      [
+        "HRD",
+        "001",
+        13304594.0,
+        0
+      ],
+      [
+        "DBI",
+        "060",
+        12756766.0,
+        0
+      ],
+      [
+        "ASR",
+        "001",
+        12693167.0,
+        0
+      ],
+      [
+        "HHP",
+        "013",
+        12682310.0,
+        0
+      ],
+      [
+        "SHF",
+        "021",
+        12464322.0,
+        0
+      ],
+      [
+        "DAT",
+        "013",
+        12273430.0,
+        0
+      ],
+      [
+        "PRT",
+        "013",
+        12228829.0,
+        0
+      ],
+      [
+        "MTA",
+        "070",
+        12000000.0,
+        0
+      ],
+      [
+        "GEN",
+        "021",
+        11545443.0,
+        0
+      ],
+      [
+        "PRT",
+        "021",
+        11446224.0,
+        0
+      ],
+      [
+        "AIR",
+        "06F",
+        11403000.0,
+        0
+      ],
+      [
+        "ECD",
+        "013",
+        11350229.0,
+        0
+      ],
+      [
+        "CII",
+        "06P",
+        11238939.0,
+        0
+      ],
+      [
+        "WTR",
+        "060",
+        11210804.0,
+        0
+      ],
+      [
+        "ADM",
+        "060",
+        11094721.0,
+        0
+      ],
+      [
+        "ADM",
+        "038",
+        11054506.0,
+        0
+      ],
+      [
+        "RET",
+        "001",
+        10967420.0,
+        0
+      ],
+      [
+        "TIS",
+        "013",
+        10845570.0,
+        0
+      ],
+      [
+        "CON",
+        "013",
+        10469462.0,
+        0
+      ],
+      [
+        "SHF",
+        "081",
+        10459737.0,
+        0
+      ],
+      [
+        "DBI",
+        "081",
+        10193395.0,
+        0
+      ],
+      [
+        "POL",
+        "ELU",
+        -9940203.0,
+        1
+      ],
+      [
+        "CWP",
+        "040",
+        9789273.0,
+        0
+      ],
+      [
+        "CAT",
+        "021",
+        9729426.0,
+        0
+      ],
+      [
+        "ECN",
+        "001",
+        9630986.0,
+        0
+      ],
+      [
+        "DPW",
+        "021",
+        9621078.0,
+        0
+      ],
+      [
+        "HSS",
+        "ELU",
+        -9523045.0,
+        1
+      ],
+      [
+        "CFC",
+        "ELU",
+        -9445079.0,
+        1
+      ],
+      [
+        "PRT",
+        "070",
+        9396259.0,
+        0
+      ],
+      [
+        "FIR",
+        "060",
+        9290595.0,
+        0
+      ],
+      [
+        "WTR",
+        "079",
+        -9166340.0,
+        0
+      ],
+      [
+        "WTR",
+        "098",
+        8758894.0,
+        0
+      ],
+      [
+        "LIB",
+        "021",
+        8535730.0,
+        0
+      ],
+      [
+        "TTX",
+        "013",
+        8508963.0,
+        0
+      ],
+      [
+        "FAM",
+        "001",
+        8303527.0,
+        0
+      ],
+      [
+        "CON",
+        "021",
+        8228800.0,
+        0
+      ],
+      [
+        "CPC",
+        "013",
+        8101313.0,
+        0
+      ],
+      [
+        "GEN",
+        "038",
+        8087000.0,
+        0
+      ],
+      [
+        "JUV",
+        "013",
+        7781317.0,
+        0
+      ],
+      [
+        "PDR",
+        "013",
+        7772098.0,
+        0
+      ],
+      [
+        "HHP",
+        "098",
+        7633389.0,
+        0
+      ],
+      [
+        "LIB",
+        "081",
+        7552491.0,
+        0
+      ],
+      [
+        "CII",
+        "020",
+        7511067.0,
+        0
+      ],
+      [
+        "ECD",
+        "081",
+        7167556.0,
+        0
+      ],
+      [
+        "BOS",
+        "001",
+        7034757.0,
+        0
+      ],
+      [
+        "CON",
+        "06P",
+        6956756.0,
+        0
+      ],
+      [
+        "REG",
+        "021",
+        6921893.0,
+        0
+      ],
+      [
+        "CFC",
+        "081",
+        6873804.0,
+        0
+      ],
+      [
+        "MTA",
+        "095",
+        6810000.0,
+        0
+      ],
+      [
+        "CSS",
+        "001",
+        6790782.0,
+        0
+      ],
+      [
+        "RET",
+        "081",
+        6546626.0,
+        0
+      ],
+      [
+        "CHF",
+        "ELU",
+        -6383675.0,
+        1
+      ],
+      [
+        "PRT",
+        "06F",
+        6261896.0,
+        0
+      ],
+      [
+        "REC",
+        "091",
+        6141627.0,
+        0
+      ],
+      [
+        "CWP",
+        "06F",
+        6054000.0,
+        0
+      ],
+      [
+        "HRD",
+        "013",
+        6019503.0,
+        0
+      ],
+      [
+        "POL",
+        "060",
+        5816847.0,
+        0
+      ],
+      [
+        "TIS",
+        "091",
+        5747920.0,
+        0
+      ],
+      [
+        "REC",
+        "095",
+        5743589.0,
+        0
+      ],
+      [
+        "ASR",
+        "013",
+        5697372.0,
+        0
+      ],
+      [
+        "SHF",
+        "040",
+        5691966.0,
+        0
+      ],
+      [
+        "REC",
+        "040",
+        5619155.0,
+        0
+      ],
+      [
+        "SHF",
+        "038",
+        5421349.0,
+        0
+      ],
+      [
+        "PRT",
+        "098",
+        5394107.0,
+        0
+      ],
+      [
+        "CII",
+        "038",
+        5312467.0,
+        0
+      ],
+      [
+        "ADP",
+        "013",
+        5290724.0,
+        0
+      ],
+      [
+        "ADP",
+        "021",
+        5197482.0,
+        0
+      ],
+      [
+        "ENV",
+        "001",
+        5194511.0,
+        0
+      ],
+      [
+        "FIR",
+        "040",
+        5176471.0,
+        0
+      ],
+      [
+        "POL",
+        "040",
+        5129137.0,
+        0
+      ],
+      [
+        "MYR",
+        "001",
+        5117262.0,
+        0
+      ],
+      [
+        "GEN",
+        "060",
+        5067482.0,
+        0
+      ],
+      [
+        "WAR",
+        "001",
+        4966849.0,
+        0
+      ],
+      [
+        "TTX",
+        "081",
+        4952059.0,
+        0
+      ],
+      [
+        "ENV",
+        "ELU",
+        -4941279.0,
+        1
+      ],
+      [
+        "RET",
+        "013",
+        4864220.0,
+        0
+      ],
+      [
+        "CPC",
+        "06P",
+        4837334.0,
+        0
+      ],
+      [
+        "CAT",
+        "081",
+        4782021.0,
+        0
+      ],
+      [
+        "WOM",
+        "038",
+        4723593.0,
+        0
+      ],
+      [
+        "CPC",
+        "081",
+        4677510.0,
+        0
+      ],
+      [
+        "ECN",
+        "ELU",
+        -4664853.0,
+        1
+      ],
+      [
+        "RET",
+        "021",
+        4607013.0,
+        0
+      ],
+      [
+        "ART",
+        "038",
+        4575923.0,
+        0
+      ],
+      [
+        "HSS",
+        "001",
+        4500107.0,
+        0
+      ],
+      [
+        "TTX",
+        "06P",
+        4486654.0,
+        0
+      ],
+      [
+        "REG",
+        "001",
+        4417611.0,
+        0
+      ],
+      [
+        "AAM",
+        "001",
+        4356904.0,
+        0
+      ],
+      [
+        "HRD",
+        "081",
+        4283236.0,
+        0
+      ],
+      [
+        "ADP",
+        "081",
+        4265455.0,
+        0
+      ],
+      [
+        "TIS",
+        "081",
+        4252397.0,
+        0
+      ],
+      [
+        "DPW",
+        "040",
+        4240405.0,
+        0
+      ],
+      [
+        "ECN",
+        "013",
+        4106264.0,
+        0
+      ],
+      [
+        "JUV",
+        "081",
+        3989577.0,
+        0
+      ],
+      [
+        "CSS",
+        "013",
+        3962561.0,
+        0
+      ],
+      [
+        "CHF",
+        "095",
+        3910000.0,
+        0
+      ],
+      [
+        "TTX",
+        "ELU",
+        -3745538.0,
+        1
+      ],
+      [
+        "CHF",
+        "001",
+        3735465.0,
+        0
+      ],
+      [
+        "RNT",
+        "001",
+        3720725.0,
+        0
+      ],
+      [
+        "PUC",
+        "060",
+        3718020.0,
+        0
+      ],
+      [
+        "HHP",
+        "060",
+        3620660.0,
+        0
+      ],
+      [
+        "ENV",
+        "081",
+        3509839.0,
+        0
+      ],
+      [
+        "JUV",
+        "021",
+        3499215.0,
+        0
+      ],
+      [
+        "FAM",
+        "013",
+        3481854.0,
+        0
+      ],
+      [
+        "HHP",
+        "070",
+        3444584.0,
+        0
+      ],
+      [
+        "TIS",
+        "060",
+        3426298.0,
+        0
+      ],
+      [
+        "ART",
+        "021",
+        3384549.0,
+        0
+      ],
+      [
+        "DPW",
+        "06F",
+        3228303.0,
+        0
+      ],
+      [
+        "ADM",
+        "020",
+        3204746.0,
+        0
+      ],
+      [
+        "TTX",
+        "021",
+        3154778.0,
+        0
+      ],
+      [
+        "MYR",
+        "070",
+        3125000.0,
+        0
+      ],
+      [
+        "BOS",
+        "013",
+        3070615.0,
+        0
+      ],
+      [
+        "ENV",
+        "095",
+        3051196.0,
+        0
+      ],
+      [
+        "ECD",
+        "06P",
+        3003146.0,
+        0
+      ],
+      [
+        "SHF",
+        "060",
+        2999116.0,
+        0
+      ],
+      [
+        "ENV",
+        "013",
+        2989252.0,
+        0
+      ],
+      [
+        "MYR",
+        "060",
+        2950968.0,
+        0
+      ],
+      [
+        "CON",
+        "081",
+        2905729.0,
+        0
+      ],
+      [
+        "BOS",
+        "021",
+        2877677.0,
+        0
+      ],
+      [
+        "HHP",
+        "040",
+        2859273.0,
+        0
+      ],
+      [
+        "FIR",
+        "ELU",
+        -2790880.0,
+        1
+      ],
+      [
+        "DBI",
+        "038",
+        2779620.0,
+        0
+      ],
+      [
+        "DPH",
+        "06F",
+        2770000.0,
+        0
+      ],
+      [
+        "WAR",
+        "081",
+        2757345.0,
+        0
+      ],
+      [
+        "FAM",
+        "081",
+        2746814.0,
+        0
+      ],
+      [
+        "DSS",
+        "040",
+        2709940.0,
+        0
+      ],
+      [
+        "DSS",
+        "091",
+        2680915.0,
+        0
+      ],
+      [
+        "LIB",
+        "060",
+        2623869.0,
+        0
+      ],
+      [
+        "PUC",
+        "040",
+        2605252.0,
+        0
+      ],
+      [
+        "WTR",
+        "038",
+        2604178.0,
+        0
+      ],
+      [
+        "ART",
+        "001",
+        2514987.0,
+        0
+      ],
+      [
+        "WAR",
+        "013",
+        2506880.0,
+        0
+      ],
+      [
+        "CPC",
+        "021",
+        2460517.0,
+        0
+      ],
+      [
+        "ECD",
+        "060",
+        2437768.0,
+        0
+      ],
+      [
+        "CWP",
+        "079",
+        -2423730.0,
+        0
+      ],
+      [
+        "CHF",
+        "021",
+        2422287.0,
+        0
+      ],
+      [
+        "TIS",
+        "040",
+        2418254.0,
+        0
+      ],
+      [
+        "REC",
+        "06F",
+        2355000.0,
+        0
+      ],
+      [
+        "DAT",
+        "021",
+        2322325.0,
+        0
+      ],
+      [
+        "MYR",
+        "013",
+        2297142.0,
+        0
+      ],
+      [
+        "ECN",
+        "021",
+        2284759.0,
+        0
+      ],
+      [
+        "CII",
+        "069",
+        2282550.0,
+        0
+      ],
+      [
+        "HSS",
+        "013",
+        2239415.0,
+        0
+      ],
+      [
+        "FIR",
+        "021",
+        2221686.0,
+        0
+      ],
+      [
+        "ADM",
+        "06P",
+        2195905.0,
+        0
+      ],
+      [
+        "ECD",
+        "070",
+        2194219.0,
+        0
+      ],
+      [
+        "REG",
+        "060",
+        2162863.0,
+        0
+      ],
+      [
+        "LIB",
+        "ELU",
+        -2161020.0,
+        1
+      ],
+      [
+        "SCI",
+        "021",
+        2115113.0,
+        0
+      ],
+      [
+        "LIB",
+        "095",
+        2100000.0,
+        0
+      ],
+      [
+        "ENV",
+        "021",
+        2095738.0,
+        0
+      ],
+      [
+        "ADP",
+        "038",
+        2092075.0,
+        0
+      ],
+      [
+        "ASR",
+        "081",
+        2058885.0,
+        0
+      ],
+      [
+        "CFC",
+        "021",
+        2057145.0,
+        0
+      ],
+      [
+        "ETH",
+        "038",
+        1948970.0,
+        0
+      ],
+      [
+        "AAM",
+        "013",
+        1940169.0,
+        0
+      ],
+      [
+        "FIR",
+        "091",
+        1897763.0,
+        0
+      ],
+      [
+        "ECN",
+        "081",
+        1858599.0,
+        0
+      ],
+      [
+        "PRT",
+        "06P",
+        1815906.0,
+        0
+      ],
+      [
+        "AIR",
+        "020",
+        1766036.0,
+        0
+      ],
+      [
+        "CHF",
+        "013",
+        1726868.0,
+        0
+      ],
+      [
+        "REC",
+        "070",
+        1725535.0,
+        0
+      ],
+      [
+        "WAR",
+        "060",
+        1725000.0,
+        0
+      ],
+      [
+        "DPH",
+        "020",
+        1724211.0,
+        0
+      ],
+      [
+        "JUV",
+        "060",
+        1691863.0,
+        0
+      ],
+      [
+        "RNT",
+        "013",
+        1689369.0,
+        0
+      ],
+      [
+        "REG",
+        "013",
+        1657570.0,
+        0
+      ],
+      [
+        "FAM",
+        "021",
+        1640625.0,
+        0
+      ],
+      [
+        "DPW",
+        "06P",
+        1633600.0,
+        0
+      ],
+      [
+        "HSS",
+        "021",
+        1631244.0,
+        0
+      ],
+      [
+        "ECD",
+        "ELU",
+        -1629258.0,
+        1
+      ],
+      [
+        "CRT",
+        "020",
+        1611756.0,
+        0
+      ],
+      [
+        "ASR",
+        "021",
+        1586559.0,
+        0
+      ],
+      [
+        "CFC",
+        "001",
+        1579733.0,
+        0
+      ],
+      [
+        "HSS",
+        "081",
+        1573865.0,
+        0
+      ],
+      [
+        "AAM",
+        "021",
+        1553719.0,
+        0
+      ],
+      [
+        "ETH",
+        "001",
+        1547374.0,
+        0
+      ],
+      [
+        "CSS",
+        "021",
+        1542282.0,
+        0
+      ],
+      [
+        "TIS",
+        "020",
+        1531782.0,
+        0
+      ],
+      [
+        "MYR",
+        "021",
+        1514802.0,
+        0
+      ],
+      [
+        "DSS",
+        "06P",
+        1497275.0,
+        0
+      ],
+      [
+        "DBI",
+        "020",
+        1494328.0,
+        0
+      ],
+      [
+        "ASR",
+        "06P",
+        1493354.0,
+        0
+      ],
+      [
+        "ENV",
+        "06P",
+        1454280.0,
+        0
+      ],
+      [
+        "PRT",
+        "040",
+        1397661.0,
+        0
+      ],
+      [
+        "DPW",
+        "038",
+        1360000.0,
+        0
+      ],
+      [
+        "WTR",
+        "06P",
+        1313000.0,
+        0
+      ],
+      [
+        "ASR",
+        "ELU",
+        -1250000.0,
+        1
+      ],
+      [
+        "PDR",
+        "081",
+        1248651.0,
+        0
+      ],
+      [
+        "HHP",
+        "079",
+        -1247901.0,
+        0
+      ],
+      [
+        "PRT",
+        "069",
+        1220224.0,
+        0
+      ],
+      [
+        "SCI",
+        "001",
+        1196096.0,
+        0
+      ],
+      [
+        "WAR",
+        "095",
+        1195000.0,
+        0
+      ],
+      [
+        "WAR",
+        "ELU",
+        -1195000.0,
+        1
+      ],
+      [
+        "ART",
+        "013",
+        1189850.0,
+        0
+      ],
+      [
+        "HRC",
+        "001",
+        1152887.0,
+        0
+      ],
+      [
+        "CWP",
+        "06P",
+        1150000.0,
+        0
+      ],
+      [
+        "MYR",
+        "081",
+        1131457.0,
+        0
+      ],
+      [
+        "FAM",
+        "060",
+        1105933.0,
+        0
+      ],
+      [
+        "HRD",
+        "06P",
+        1089053.0,
+        0
+      ],
+      [
+        "ADM",
+        "06F",
+        1069000.0,
+        0
+      ],
+      [
+        "PRT",
+        "091",
+        1041713.0,
+        0
+      ],
+      [
+        "CII",
+        "013",
+        1040000.0,
+        0
+      ],
+      [
+        "DPW",
+        "095",
+        1038641.0,
+        0
+      ],
+      [
+        "AAM",
+        "081",
+        1016036.0,
+        0
+      ],
+      [
+        "CWP",
+        "060",
+        1006504.0,
+        0
+      ],
+      [
+        "DAT",
+        "081",
+        982516.0,
+        0
+      ],
+      [
+        "ART",
+        "040",
+        980110.0,
+        0
+      ],
+      [
+        "CPC",
+        "060",
+        979343.0,
+        0
+      ],
+      [
+        "PDR",
+        "021",
+        974410.0,
+        0
+      ],
+      [
+        "DAT",
+        "ELU",
+        -965215.0,
+        1
+      ],
+      [
+        "ART",
+        "060",
+        959500.0,
+        0
+      ],
+      [
+        "LLB",
+        "081",
+        939541.0,
+        0
+      ],
+      [
+        "FIR",
+        "069",
+        933000.0,
+        0
+      ],
+      [
+        "REG",
+        "081",
+        920101.0,
+        0
+      ],
+      [
+        "ART",
+        "ELU",
+        -915254.0,
+        1
+      ],
+      [
+        "CSS",
+        "081",
+        909965.0,
+        0
+      ],
+      [
+        "RNT",
+        "081",
+        895011.0,
+        0
+      ],
+      [
+        "REG",
+        "ELU",
+        -785632.0,
+        1
+      ],
+      [
+        "WAR",
+        "021",
+        764900.0,
+        0
+      ],
+      [
+        "DBI",
+        "040",
+        763327.0,
+        0
+      ],
+      [
+        "CFC",
+        "013",
+        762749.0,
+        0
+      ],
+      [
+        "ECN",
+        "06P",
+        741107.0,
+        0
+      ],
+      [
+        "JUV",
+        "040",
+        739177.0,
+        0
+      ],
+      [
+        "ETH",
+        "013",
+        675800.0,
+        0
+      ],
+      [
+        "FIR",
+        "06F",
+        670000.0,
+        0
+      ],
+      [
+        "DSS",
+        "060",
+        622504.0,
+        0
+      ],
+      [
+        "MYR",
+        "020",
+        614202.0,
+        0
+      ],
+      [
+        "WOM",
+        "001",
+        592312.0,
+        0
+      ],
+      [
+        "REC",
+        "038",
+        589350.0,
+        0
+      ],
+      [
+        "FIR",
+        "095",
+        589000.0,
+        0
+      ],
+      [
+        "CSC",
+        "001",
+        582326.0,
+        0
+      ],
+      [
+        "ECN",
+        "020",
+        574700.0,
+        0
+      ],
+      [
+        "ART",
+        "081",
+        552152.0,
+        0
+      ],
+      [
+        "PRT",
+        "020",
+        519733.0,
+        0
+      ],
+      [
+        "ADM",
+        "070",
+        506231.0,
+        0
+      ],
+      [
+        "SHF",
+        "06F",
+        506000.0,
+        0
+      ],
+      [
+        "SCI",
+        "013",
+        502741.0,
+        0
+      ],
+      [
+        "HRC",
+        "013",
+        499540.0,
+        0
+      ],
+      [
+        "CPC",
+        "ELU",
+        -447135.0,
+        1
+      ],
+      [
+        "CON",
+        "040",
+        429200.0,
+        0
+      ],
+      [
+        "PAB",
+        "001",
+        423773.0,
+        0
+      ],
+      [
+        "CSS",
+        "ELU",
+        -421501.0,
+        1
+      ],
+      [
+        "WAR",
+        "06F",
+        412000.0,
+        0
+      ],
+      [
+        "POL",
+        "06P",
+        400000.0,
+        0
+      ],
+      [
+        "LLB",
+        "001",
+        390328.0,
+        0
+      ],
+      [
+        "JUV",
+        "06F",
+        364000.0,
+        0
+      ],
+      [
+        "ADP",
+        "040",
+        362815.0,
+        0
+      ],
+      [
+        "ART",
+        "020",
+        -358026.0,
+        0
+      ],
+      [
+        "SCI",
+        "081",
+        357280.0,
+        0
+      ],
+      [
+        "DAT",
+        "040",
+        338187.0,
+        0
+      ],
+      [
+        "AAM",
+        "060",
+        332000.0,
+        0
+      ],
+      [
+        "CSC",
+        "ELU",
+        -310000.0,
+        1
+      ],
+      [
+        "ENV",
+        "038",
+        300000.0,
+        0
+      ],
+      [
+        "HRC",
+        "081",
+        293153.0,
+        0
+      ],
+      [
+        "CRT",
+        "038",
+        280000.0,
+        0
+      ],
+      [
+        "DSS",
+        "039",
+        275000.0,
+        0
+      ],
+      [
+        "CSC",
+        "081",
+        266513.0,
+        0
+      ],
+      [
+        "REG",
+        "040",
+        261752.0,
+        0
+      ],
+      [
+        "BOS",
+        "081",
+        260693.0,
+        0
+      ],
+      [
+        "WOM",
+        "013",
+        260294.0,
+        0
+      ],
+      [
+        "DAT",
+        "038",
+        256746.0,
+        0
+      ],
+      [
+        "CSC",
+        "013",
+        256575.0,
+        0
+      ],
+      [
+        "DSS",
+        "06F",
+        256000.0,
+        0
+      ],
+      [
+        "ECD",
+        "040",
+        244813.0,
+        0
+      ],
+      [
+        "PDR",
+        "040",
+        236809.0,
+        0
+      ],
+      [
+        "PAB",
+        "013",
+        232240.0,
+        0
+      ],
+      [
+        "ENV",
+        "040",
+        231156.0,
+        0
+      ],
+      [
+        "WAR",
+        "040",
+        229000.0,
+        0
+      ],
+      [
+        "AAM",
+        "06F",
+        228725.0,
+        0
+      ],
+      [
+        "SCI",
+        "06F",
+        226400.0,
+        0
+      ],
+      [
+        "PAB",
+        "081",
+        224777.0,
+        0
+      ],
+      [
+        "RET",
+        "040",
+        220000.0,
+        0
+      ],
+      [
+        "TTX",
+        "040",
+        219099.0,
+        0
+      ],
+      [
+        "TTX",
+        "020",
+        -215137.0,
+        0
+      ],
+      [
+        "CPC",
+        "040",
+        213856.0,
+        0
+      ],
+      [
+        "ETH",
+        "021",
+        209244.0,
+        0
+      ],
+      [
+        "ASR",
+        "020",
+        205659.0,
+        0
+      ],
+      [
+        "ENV",
+        "020",
+        204860.0,
+        0
+      ],
+      [
+        "PDR",
+        "ELU",
+        -200000.0,
+        1
+      ],
+      [
+        "ART",
+        "06F",
+        194000.0,
+        0
+      ],
+      [
+        "LLB",
+        "013",
+        188324.0,
+        0
+      ],
+      [
+        "JUV",
+        "038",
+        187946.0,
+        0
+      ],
+      [
+        "CHF",
+        "040",
+        187880.0,
+        0
+      ],
+      [
+        "ETH",
+        "081",
+        179500.0,
+        0
+      ],
+      [
+        "FAM",
+        "ELU",
+        -179000.0,
+        1
+      ],
+      [
+        "WAR",
+        "070",
+        174415.0,
+        0
+      ],
+      [
+        "FAM",
+        "06F",
+        166000.0,
+        0
+      ],
+      [
+        "RNT",
+        "021",
+        164558.0,
+        0
+      ],
+      [
+        "RET",
+        "020",
+        161728.0,
+        0
+      ],
+      [
+        "HRD",
+        "040",
+        159509.0,
+        0
+      ],
+      [
+        "CSS",
+        "040",
+        157333.0,
+        0
+      ],
+      [
+        "RET",
+        "060",
+        153544.0,
+        0
+      ],
+      [
+        "DPW",
+        "070",
+        153299.0,
+        0
+      ],
+      [
+        "SCI",
+        "060",
+        150000.0,
+        0
+      ],
+      [
+        "REC",
+        "098",
+        149141.0,
+        0
+      ],
+      [
+        "CFC",
+        "040",
+        148160.0,
+        0
+      ],
+      [
+        "BOS",
+        "ELU",
+        -141076.0,
+        1
+      ],
+      [
+        "ECN",
+        "040",
+        136285.0,
+        0
+      ],
+      [
+        "CAT",
+        "040",
+        135000.0,
+        0
+      ],
+      [
+        "POL",
+        "06F",
+        132000.0,
+        0
+      ],
+      [
+        "FAM",
+        "020",
+        127125.0,
+        0
+      ],
+      [
+        "WOM",
+        "081",
+        123243.0,
+        0
+      ],
+      [
+        "HHP",
+        "06P",
+        122000.0,
+        0
+      ],
+      [
+        "PDR",
+        "060",
+        120063.0,
+        0
+      ],
+      [
+        "RNT",
+        "038",
+        120000.0,
+        0
+      ],
+      [
+        "POL",
+        "038",
+        120000.0,
+        0
+      ],
+      [
+        "USD",
+        "038",
+        116000.0,
+        0
+      ],
+      [
+        "FIR",
+        "020",
+        111254.0,
+        0
+      ],
+      [
+        "BOS",
+        "06P",
+        109545.0,
+        0
+      ],
+      [
+        "ASR",
+        "040",
+        109059.0,
+        0
+      ],
+      [
+        "WOM",
+        "021",
+        108440.0,
+        0
+      ],
+      [
+        "HRC",
+        "038",
+        105000.0,
+        0
+      ],
+      [
+        "ADM",
+        "079",
+        -102381.0,
+        0
+      ],
+      [
+        "ADP",
+        "060",
+        101722.0,
+        0
+      ],
+      [
+        "GEN",
+        "06P",
+        100000.0,
+        0
+      ],
+      [
+        "DAT",
+        "060",
+        99348.0,
+        0
+      ],
+      [
+        "RNT",
+        "ELU",
+        -96000.0,
+        1
+      ],
+      [
+        "CAT",
+        "060",
+        95878.0,
+        0
+      ],
+      [
+        "BOS",
+        "040",
+        93401.0,
+        0
+      ],
+      [
+        "HRC",
+        "021",
+        91800.0,
+        0
+      ],
+      [
+        "JUV",
+        "ELU",
+        -80000.0,
+        1
+      ],
+      [
+        "ART",
+        "06P",
+        75800.0,
+        0
+      ],
+      [
+        "PAB",
+        "021",
+        74192.0,
+        0
+      ],
+      [
+        "REC",
+        "06P",
+        68598.0,
+        0
+      ],
+      [
+        "MYR",
+        "040",
+        43689.0,
+        0
+      ],
+      [
+        "RET",
+        "ELU",
+        -40515.0,
+        1
+      ],
+      [
+        "BOS",
+        "060",
+        38509.0,
+        0
+      ],
+      [
+        "CRT",
+        "081",
+        37579.0,
+        0
+      ],
+      [
+        "RNT",
+        "040",
+        37499.0,
+        0
+      ],
+      [
+        "CWP",
+        "091",
+        31713.0,
+        0
+      ],
+      [
+        "HHP",
+        "091",
+        31712.0,
+        0
+      ],
+      [
+        "FAM",
+        "040",
+        31000.0,
+        0
+      ],
+      [
+        "CII",
+        "040",
+        31000.0,
+        0
+      ],
+      [
+        "HSS",
+        "040",
+        30100.0,
+        0
+      ],
+      [
+        "CPC",
+        "020",
+        26187.0,
+        0
+      ],
+      [
+        "DPH",
+        "036",
+        25000.0,
+        0
+      ],
+      [
+        "WOM",
+        "040",
+        24735.0,
+        0
+      ],
+      [
+        "AAM",
+        "020",
+        22393.0,
+        0
+      ],
+      [
+        "LLB",
+        "021",
+        17275.0,
+        0
+      ],
+      [
+        "ETH",
+        "040",
+        13466.0,
+        0
+      ],
+      [
+        "ASR",
+        "098",
+        13113.0,
+        0
+      ],
+      [
+        "ECN",
+        "091",
+        11272.0,
+        0
+      ],
+      [
+        "CSC",
+        "021",
+        10300.0,
+        0
+      ],
+      [
+        "LIB",
+        "020",
+        9754.0,
+        0
+      ],
+      [
+        "PAB",
+        "040",
+        9398.0,
+        0
+      ],
+      [
+        "AAM",
+        "098",
+        6433.0,
+        0
+      ],
+      [
+        "ECD",
+        "020",
+        5755.0,
+        0
+      ],
+      [
+        "HRC",
+        "040",
+        5000.0,
+        0
+      ],
+      [
+        "CSC",
+        "040",
+        3395.0,
+        0
+      ],
+      [
+        "LLB",
+        "040",
+        443.0,
+        0
+      ],
+      [
+        "DPH",
+        "079",
+        179.0,
+        0
+      ],
+      [
+        "CII",
+        "079",
+        1.0,
+        0
+      ]
+    ],
+    "revenue": [
+      [
+        "UNA",
+        "GFS",
+        -3255247358.0,
+        0
+      ],
+      [
+        "UNA",
+        "100",
+        1232510000.0,
+        0
+      ],
+      [
+        "UNA",
+        "120",
+        910355000.0,
+        0
+      ],
+      [
+        "DPH",
+        "600",
+        905075814.0,
+        0
+      ],
+      [
+        "GEN",
+        "GFS",
+        668610423.0,
+        0
+      ],
+      [
+        "DPH",
+        "GFS",
+        614148840.0,
+        0
+      ],
+      [
+        "AIR",
+        "600",
+        608434000.0,
+        0
+      ],
+      [
+        "UNA",
+        "110",
+        572320000.0,
+        0
+      ],
+      [
+        "GEN",
+        "ELS",
+        -492196022.0,
+        1
+      ],
+      [
+        "WTR",
+        "600",
+        412683756.0,
+        0
+      ],
+      [
+        "POL",
+        "GFS",
+        411097038.0,
+        0
+      ],
+      [
+        "DSS",
+        "450",
+        299789277.0,
+        0
+      ],
+      [
+        "AIR",
+        "ELS",
+        -289958281.0,
+        1
+      ],
+      [
+        "DPH",
+        "450",
+        283039358.0,
+        0
+      ],
+      [
+        "AIR",
+        "350",
+        276505000.0,
+        0
+      ],
+      [
+        "MTA",
+        "ELS",
+        -269558302.0,
+        1
+      ],
+      [
+        "UNA",
+        "950",
+        264426735.0,
+        0
+      ],
+      [
+        "DSS",
+        "400",
+        260336638.0,
+        0
+      ],
+      [
+        "CWP",
+        "600",
+        259064289.0,
+        0
+      ],
+      [
+        "MTA",
+        "GFS",
+        247860000.0,
+        0
+      ],
+      [
+        "MTA",
+        "600",
+        238507816.0,
+        0
+      ],
+      [
+        "DSS",
+        "GFS",
+        234447517.0,
+        0
+      ],
+      [
+        "GEN",
+        "100",
+        229493388.0,
+        0
+      ],
+      [
+        "MTA",
+        "910",
+        222239210.0,
+        0
+      ],
+      [
+        "FIR",
+        "GFS",
+        221874544.0,
+        0
+      ],
+      [
+        "DPH",
+        "ELS",
+        -215825849.0,
+        1
+      ],
+      [
+        "UNA",
+        "999",
+        185572975.0,
+        0
+      ],
+      [
+        "ADM",
+        "ELS",
+        -171866094.0,
+        1
+      ],
+      [
+        "AIR",
+        "950",
+        170770760.0,
+        0
+      ],
+      [
+        "PUC",
+        "ELS",
+        -162156368.0,
+        1
+      ],
+      [
+        "PUC",
+        "865",
+        162156368.0,
+        0
+      ],
+      [
+        "SHF",
+        "GFS",
+        150444115.0,
+        0
+      ],
+      [
+        "ADM",
+        "865",
+        150242178.0,
+        0
+      ],
+      [
+        "DPH",
+        "910",
+        143875914.0,
+        0
+      ],
+      [
+        "CII",
+        "750",
+        143365157.0,
+        0
+      ],
+      [
+        "DPW",
+        "ELS",
+        -139105496.0,
+        1
+      ],
+      [
+        "DPW",
+        "865",
+        138066855.0,
+        0
+      ],
+      [
+        "HHP",
+        "ELS",
+        -133619035.0,
+        1
+      ],
+      [
+        "CII",
+        "100",
+        131308701.0,
+        0
+      ],
+      [
+        "WTR",
+        "ELS",
+        -112112923.0,
+        1
+      ],
+      [
+        "MTA",
+        "350",
+        110109777.0,
+        0
+      ],
+      [
+        "MTA",
+        "865",
+        109419092.0,
+        0
+      ],
+      [
+        "HHP",
+        "865",
+        92991527.0,
+        0
+      ],
+      [
+        "CRT",
+        "450",
+        89703373.0,
+        0
+      ],
+      [
+        "TIS",
+        "ELS",
+        -89614871.0,
+        1
+      ],
+      [
+        "MTA",
+        "250",
+        88321980.0,
+        0
+      ],
+      [
+        "DPW",
+        "GFS",
+        87982701.0,
+        0
+      ],
+      [
+        "MTA",
+        "490",
+        85717100.0,
+        0
+      ],
+      [
+        "TIS",
+        "865",
+        83866951.0,
+        0
+      ],
+      [
+        "AIR",
+        "999",
+        69429479.0,
+        0
+      ],
+      [
+        "HRD",
+        "ELS",
+        -69263683.0,
+        1
+      ],
+      [
+        "HRD",
+        "865",
+        69263683.0,
+        0
+      ],
+      [
+        "DPH",
+        "400",
+        68423366.0,
+        0
+      ],
+      [
+        "CII",
+        "999",
+        67524423.0,
+        0
+      ],
+      [
+        "PRT",
+        "350",
+        66452200.0,
+        0
+      ],
+      [
+        "CHF",
+        "910",
+        65845000.0,
+        0
+      ],
+      [
+        "LIB",
+        "GFS",
+        61630000.0,
+        0
+      ],
+      [
+        "WTR",
+        "950",
+        60999894.0,
+        0
+      ],
+      [
+        "CAT",
+        "865",
+        59195329.0,
+        0
+      ],
+      [
+        "CAT",
+        "ELS",
+        -59195329.0,
+        1
+      ],
+      [
+        "DBI",
+        "600",
+        58829496.0,
+        0
+      ],
+      [
+        "DSS",
+        "ELS",
+        -54729438.0,
+        1
+      ],
+      [
+        "ADM",
+        "910",
+        54618202.0,
+        0
+      ],
+      [
+        "CWP",
+        "ELS",
+        -52067567.0,
+        1
+      ],
+      [
+        "ADM",
+        "GFS",
+        51711488.0,
+        0
+      ],
+      [
+        "CHF",
+        "100",
+        51615000.0,
+        0
+      ],
+      [
+        "WTR",
+        "999",
+        50555097.0,
+        0
+      ],
+      [
+        "REC",
+        "GFS",
+        50201609.0,
+        0
+      ],
+      [
+        "ECD",
+        "GFS",
+        50073512.0,
+        0
+      ],
+      [
+        "FIR",
+        "600",
+        48256033.0,
+        0
+      ],
+      [
+        "REC",
+        "ELS",
+        -47836824.0,
+        1
+      ],
+      [
+        "POL",
+        "450",
+        46891038.0,
+        0
+      ],
+      [
+        "HHP",
+        "600",
+        46519069.0,
+        0
+      ],
+      [
+        "FIR",
+        "450",
+        45690000.0,
+        0
+      ],
+      [
+        "CWP",
+        "950",
+        44808000.0,
+        0
+      ],
+      [
+        "LIB",
+        "100",
+        43020000.0,
+        0
+      ],
+      [
+        "REC",
+        "100",
+        43020000.0,
+        0
+      ],
+      [
+        "DAT",
+        "GFS",
+        42347437.0,
+        0
+      ],
+      [
+        "HHP",
+        "950",
+        40595796.0,
+        0
+      ],
+      [
+        "CON",
+        "865",
+        40269527.0,
+        0
+      ],
+      [
+        "CON",
+        "ELS",
+        -40269527.0,
+        1
+      ],
+      [
+        "POL",
+        "ELS",
+        39953902.0,
+        1
+      ],
+      [
+        "MTA",
+        "450",
+        39090000.0,
+        0
+      ],
+      [
+        "ADM",
+        "350",
+        38480999.0,
+        0
+      ],
+      [
+        "DPH",
+        "950",
+        38436000.0,
+        0
+      ],
+      [
+        "UNA",
+        "910",
+        38400000.0,
+        0
+      ],
+      [
+        "AIR",
+        "750",
+        37789000.0,
+        0
+      ],
+      [
+        "DSS",
+        "865",
+        37683639.0,
+        0
+      ],
+      [
+        "HHP",
+        "910",
+        36800000.0,
+        0
+      ],
+      [
+        "DPH",
+        "800",
+        36000000.0,
+        0
+      ],
+      [
+        "REC",
+        "865",
+        35951608.0,
+        0
+      ],
+      [
+        "MTA",
+        "999",
+        35500000.0,
+        0
+      ],
+      [
+        "DPW",
+        "450",
+        34691673.0,
+        0
+      ],
+      [
+        "DPH",
+        "865",
+        33616352.0,
+        0
+      ],
+      [
+        "CPC",
+        "600",
+        32022896.0,
+        0
+      ],
+      [
+        "CRT",
+        "GFS",
+        31960320.0,
+        0
+      ],
+      [
+        "JUV",
+        "GFS",
+        31669640.0,
+        0
+      ],
+      [
+        "WTR",
+        "750",
+        31592275.0,
+        0
+      ],
+      [
+        "DBI",
+        "ELS",
+        -30488063.0,
+        1
+      ],
+      [
+        "DBI",
+        "950",
+        30351926.0,
+        0
+      ],
+      [
+        "PDR",
+        "GFS",
+        29960740.0,
+        0
+      ],
+      [
+        "CHF",
+        "GFS",
+        29806848.0,
+        0
+      ],
+      [
+        "CII",
+        "350",
+        29577938.0,
+        0
+      ],
+      [
+        "REC",
+        "600",
+        29409920.0,
+        0
+      ],
+      [
+        "MYR",
+        "800",
+        28125000.0,
+        0
+      ],
+      [
+        "CFC",
+        "GFS",
+        27470000.0,
+        0
+      ],
+      [
+        "DPH",
+        "750",
+        27442489.0,
+        0
+      ],
+      [
+        "DBI",
+        "999",
+        26226900.0,
+        0
+      ],
+      [
+        "RET",
+        "700",
+        26025156.0,
+        0
+      ],
+      [
+        "TTX",
+        "GFS",
+        25552900.0,
+        0
+      ],
+      [
+        "MTA",
+        "200",
+        24089378.0,
+        0
+      ],
+      [
+        "ECD",
+        "400",
+        23912257.0,
+        0
+      ],
+      [
+        "MYR",
+        "950",
+        22800000.0,
+        0
+      ],
+      [
+        "FIR",
+        "ELS",
+        22782895.0,
+        1
+      ],
+      [
+        "SHF",
+        "450",
+        22441500.0,
+        0
+      ],
+      [
+        "AIR",
+        "400",
+        22250000.0,
+        0
+      ],
+      [
+        "REC",
+        "350",
+        22025909.0,
+        0
+      ],
+      [
+        "GEN",
+        "700",
+        21750000.0,
+        0
+      ],
+      [
+        "ADM",
+        "950",
+        21568916.0,
+        0
+      ],
+      [
+        "PRT",
+        "ELS",
+        -21314976.0,
+        1
+      ],
+      [
+        "ECN",
+        "GFS",
+        20060779.0,
+        0
+      ],
+      [
+        "PRT",
+        "999",
+        18649619.0,
+        0
+      ],
+      [
+        "ASR",
+        "GFS",
+        17889761.0,
+        0
+      ],
+      [
+        "DPW",
+        "600",
+        17877311.0,
+        0
+      ],
+      [
+        "UNA",
+        "200",
+        16982000.0,
+        0
+      ],
+      [
+        "ADP",
+        "GFS",
+        16832715.0,
+        0
+      ],
+      [
+        "PRT",
+        "950",
+        16742789.0,
+        0
+      ],
+      [
+        "PRT",
+        "600",
+        16732000.0,
+        0
+      ],
+      [
+        "SHF",
+        "ELS",
+        -16133818.0,
+        1
+      ],
+      [
+        "SHF",
+        "865",
+        16133818.0,
+        0
+      ],
+      [
+        "REG",
+        "GFS",
+        15474113.0,
+        0
+      ],
+      [
+        "GEN",
+        "250",
+        15148633.0,
+        0
+      ],
+      [
+        "FAM",
+        "GFS",
+        14565040.0,
+        0
+      ],
+      [
+        "MYR",
+        "ELS",
+        -14478989.0,
+        1
+      ],
+      [
+        "MYR",
+        "865",
+        14478989.0,
+        0
+      ],
+      [
+        "DSS",
+        "950",
+        14364884.0,
+        0
+      ],
+      [
+        "WTR",
+        "865",
+        14281317.0,
+        0
+      ],
+      [
+        "ADM",
+        "999",
+        14151420.0,
+        0
+      ],
+      [
+        "ADP",
+        "450",
+        13272168.0,
+        0
+      ],
+      [
+        "MYR",
+        "GFS",
+        13226110.0,
+        0
+      ],
+      [
+        "BOS",
+        "GFS",
+        12994121.0,
+        0
+      ],
+      [
+        "HRD",
+        "GFS",
+        12136863.0,
+        0
+      ],
+      [
+        "CON",
+        "GFS",
+        12010320.0,
+        0
+      ],
+      [
+        "CFC",
+        "450",
+        11828650.0,
+        0
+      ],
+      [
+        "ENV",
+        "600",
+        11651648.0,
+        0
+      ],
+      [
+        "UNA",
+        "750",
+        11650000.0,
+        0
+      ],
+      [
+        "WTR",
+        "350",
+        10948583.0,
+        0
+      ],
+      [
+        "CAT",
+        "GFS",
+        10581630.0,
+        0
+      ],
+      [
+        "WAR",
+        "910",
+        10211989.0,
+        0
+      ],
+      [
+        "POL",
+        "865",
+        9940203.0,
+        0
+      ],
+      [
+        "UNA",
+        "600",
+        9550648.0,
+        0
+      ],
+      [
+        "HSS",
+        "ELS",
+        -9523045.0,
+        1
+      ],
+      [
+        "HSS",
+        "865",
+        9523045.0,
+        0
+      ],
+      [
+        "CFC",
+        "ELS",
+        -9445079.0,
+        1
+      ],
+      [
+        "CFC",
+        "865",
+        9445079.0,
+        0
+      ],
+      [
+        "DPW",
+        "750",
+        9102800.0,
+        0
+      ],
+      [
+        "AAM",
+        "GFS",
+        8768412.0,
+        0
+      ],
+      [
+        "CFC",
+        "999",
+        8746355.0,
+        0
+      ],
+      [
+        "AIR",
+        "865",
+        8648402.0,
+        0
+      ],
+      [
+        "CSS",
+        "400",
+        8541339.0,
+        0
+      ],
+      [
+        "DPH",
+        "200",
+        7977878.0,
+        0
+      ],
+      [
+        "ART",
+        "GFS",
+        7859474.0,
+        0
+      ],
+      [
+        "CHF",
+        "999",
+        7593953.0,
+        0
+      ],
+      [
+        "REC",
+        "999",
+        7485956.0,
+        0
+      ],
+      [
+        "ADM",
+        "750",
+        7343787.0,
+        0
+      ],
+      [
+        "CWP",
+        "865",
+        7227854.0,
+        0
+      ],
+      [
+        "REC",
+        "750",
+        7164249.0,
+        0
+      ],
+      [
+        "UNA",
+        "450",
+        7140000.0,
+        0
+      ],
+      [
+        "ECN",
+        "400",
+        7040623.0,
+        0
+      ],
+      [
+        "MTA",
+        "950",
+        6810000.0,
+        0
+      ],
+      [
+        "DBI",
+        "200",
+        6696009.0,
+        0
+      ],
+      [
+        "CHF",
+        "ELS",
+        -6383675.0,
+        1
+      ],
+      [
+        "POL",
+        "600",
+        6196597.0,
+        0
+      ],
+      [
+        "REC",
+        "910",
+        6141627.0,
+        0
+      ],
+      [
+        "RNT",
+        "600",
+        6029680.0,
+        0
+      ],
+      [
+        "TIS",
+        "910",
+        5747920.0,
+        0
+      ],
+      [
+        "REC",
+        "950",
+        5743589.0,
+        0
+      ],
+      [
+        "AIR",
+        "300",
+        5739000.0,
+        0
+      ],
+      [
+        "TTX",
+        "300",
+        5651768.0,
+        0
+      ],
+      [
+        "WOM",
+        "GFS",
+        5595017.0,
+        0
+      ],
+      [
+        "MYR",
+        "350",
+        5500000.0,
+        0
+      ],
+      [
+        "CWP",
+        "750",
+        5312465.0,
+        0
+      ],
+      [
+        "PRT",
+        "750",
+        5272300.0,
+        0
+      ],
+      [
+        "CII",
+        "120",
+        5100350.0,
+        0
+      ],
+      [
+        "ENV",
+        "ELS",
+        -4941279.0,
+        1
+      ],
+      [
+        "JUV",
+        "450",
+        4898551.0,
+        0
+      ],
+      [
+        "ASR",
+        "600",
+        4717407.0,
+        0
+      ],
+      [
+        "ECN",
+        "ELS",
+        -4664853.0,
+        1
+      ],
+      [
+        "ECN",
+        "865",
+        4653581.0,
+        0
+      ],
+      [
+        "HHP",
+        "750",
+        4578584.0,
+        0
+      ],
+      [
+        "SCI",
+        "GFS",
+        4547630.0,
+        0
+      ],
+      [
+        "ETH",
+        "GFS",
+        4504354.0,
+        0
+      ],
+      [
+        "CAT",
+        "999",
+        4499235.0,
+        0
+      ],
+      [
+        "ADM",
+        "600",
+        4418354.0,
+        0
+      ],
+      [
+        "CSS",
+        "450",
+        4400083.0,
+        0
+      ],
+      [
+        "TIS",
+        "999",
+        4000000.0,
+        0
+      ],
+      [
+        "CHF",
+        "950",
+        3910000.0,
+        0
+      ],
+      [
+        "TTX",
+        "600",
+        3870751.0,
+        0
+      ],
+      [
+        "MTA",
+        "400",
+        3810000.0,
+        0
+      ],
+      [
+        "TTX",
+        "ELS",
+        -3745538.0,
+        1
+      ],
+      [
+        "TTX",
+        "865",
+        3745538.0,
+        0
+      ],
+      [
+        "UNA",
+        "250",
+        3700000.0,
+        0
+      ],
+      [
+        "ART",
+        "910",
+        3606676.0,
+        0
+      ],
+      [
+        "MYR",
+        "490",
+        3535968.0,
+        0
+      ],
+      [
+        "DAT",
+        "450",
+        3309222.0,
+        0
+      ],
+      [
+        "CHF",
+        "450",
+        3170000.0,
+        0
+      ],
+      [
+        "CRT",
+        "600",
+        3074396.0,
+        0
+      ],
+      [
+        "ENV",
+        "950",
+        3051196.0,
+        0
+      ],
+      [
+        "GEN",
+        "999",
+        3012089.0,
+        0
+      ],
+      [
+        "PRT",
+        "250",
+        3012000.0,
+        0
+      ],
+      [
+        "TIS",
+        "200",
+        2973600.0,
+        0
+      ],
+      [
+        "FAM",
+        "600",
+        2858838.0,
+        0
+      ],
+      [
+        "DSS",
+        "910",
+        2680915.0,
+        0
+      ],
+      [
+        "CHF",
+        "865",
+        2473675.0,
+        0
+      ],
+      [
+        "ECN",
+        "750",
+        2445101.0,
+        0
+      ],
+      [
+        "SHF",
+        "600",
+        2429982.0,
+        0
+      ],
+      [
+        "CPC",
+        "GFS",
+        2372625.0,
+        0
+      ],
+      [
+        "DPH",
+        "250",
+        2372500.0,
+        0
+      ],
+      [
+        "TIS",
+        "GFS",
+        2370322.0,
+        0
+      ],
+      [
+        "GEN",
+        "910",
+        2353566.0,
+        0
+      ],
+      [
+        "DPH",
+        "860",
+        2310206.0,
+        0
+      ],
+      [
+        "LIB",
+        "ELS",
+        -2161020.0,
+        1
+      ],
+      [
+        "HRC",
+        "GFS",
+        2147380.0,
+        0
+      ],
+      [
+        "LIB",
+        "950",
+        2100000.0,
+        0
+      ],
+      [
+        "POL",
+        "250",
+        2030648.0,
+        0
+      ],
+      [
+        "MTA",
+        "300",
+        2030000.0,
+        0
+      ],
+      [
+        "POL",
+        "400",
+        1982183.0,
+        0
+      ],
+      [
+        "JUV",
+        "400",
+        1934720.0,
+        0
+      ],
+      [
+        "PRT",
+        "490",
+        1903093.0,
+        0
+      ],
+      [
+        "FIR",
+        "910",
+        1897763.0,
+        0
+      ],
+      [
+        "FIR",
+        "400",
+        1897763.0,
+        0
+      ],
+      [
+        "ENV",
+        "865",
+        1890083.0,
+        0
+      ],
+      [
+        "WAR",
+        "350",
+        1760409.0,
+        0
+      ],
+      [
+        "CPC",
+        "750",
+        1671600.0,
+        0
+      ],
+      [
+        "ADM",
+        "200",
+        1662000.0,
+        0
+      ],
+      [
+        "ECN",
+        "999",
+        1642601.0,
+        0
+      ],
+      [
+        "LIB",
+        "350",
+        1634288.0,
+        0
+      ],
+      [
+        "ECD",
+        "ELS",
+        -1629258.0,
+        1
+      ],
+      [
+        "ECD",
+        "865",
+        1629258.0,
+        0
+      ],
+      [
+        "UNA",
+        "350",
+        1600000.0,
+        0
+      ],
+      [
+        "LLB",
+        "GFS",
+        1535911.0,
+        0
+      ],
+      [
+        "ENV",
+        "750",
+        1518233.0,
+        0
+      ],
+      [
+        "DSS",
+        "600",
+        1502579.0,
+        0
+      ],
+      [
+        "CAT",
+        "490",
+        1475000.0,
+        0
+      ],
+      [
+        "DSS",
+        "750",
+        1410140.0,
+        0
+      ],
+      [
+        "ADM",
+        "490",
+        1407000.0,
+        0
+      ],
+      [
+        "WAR",
+        "999",
+        1376392.0,
+        0
+      ],
+      [
+        "CHF",
+        "400",
+        1362768.0,
+        0
+      ],
+      [
+        "ASR",
+        "ELS",
+        -1250000.0,
+        1
+      ],
+      [
+        "ASR",
+        "865",
+        1250000.0,
+        0
+      ],
+      [
+        "MTA",
+        "750",
+        1250000.0,
+        0
+      ],
+      [
+        "ART",
+        "600",
+        1217756.0,
+        0
+      ],
+      [
+        "WTR",
+        "300",
+        1210145.0,
+        0
+      ],
+      [
+        "RET",
+        "600",
+        1203880.0,
+        0
+      ],
+      [
+        "WAR",
+        "ELS",
+        -1195000.0,
+        1
+      ],
+      [
+        "WAR",
+        "950",
+        1195000.0,
+        0
+      ],
+      [
+        "LIB",
+        "750",
+        1179300.0,
+        0
+      ],
+      [
+        "MYR",
+        "450",
+        1090000.0,
+        0
+      ],
+      [
+        "PRT",
+        "300",
+        1054454.0,
+        0
+      ],
+      [
+        "CPC",
+        "450",
+        1044096.0,
+        0
+      ],
+      [
+        "UNA",
+        "300",
+        1040000.0,
+        0
+      ],
+      [
+        "DPW",
+        "950",
+        1038641.0,
+        0
+      ],
+      [
+        "GEN",
+        "800",
+        1025500.0,
+        0
+      ],
+      [
+        "ADM",
+        "110",
+        1000000.0,
+        0
+      ],
+      [
+        "TTX",
+        "750",
+        991718.0,
+        0
+      ],
+      [
+        "CWP",
+        "300",
+        969614.0,
+        0
+      ],
+      [
+        "DAT",
+        "ELS",
+        -965215.0,
+        1
+      ],
+      [
+        "DAT",
+        "865",
+        965215.0,
+        0
+      ],
+      [
+        "PAB",
+        "600",
+        964380.0,
+        0
+      ],
+      [
+        "DAT",
+        "400",
+        960944.0,
+        0
+      ],
+      [
+        "ART",
+        "ELS",
+        -915254.0,
+        1
+      ],
+      [
+        "ART",
+        "865",
+        915254.0,
+        0
+      ],
+      [
+        "CWP",
+        "350",
+        841597.0,
+        0
+      ],
+      [
+        "CFC",
+        "400",
+        830800.0,
+        0
+      ],
+      [
+        "CSC",
+        "GFS",
+        809109.0,
+        0
+      ],
+      [
+        "GEN",
+        "450",
+        800000.0,
+        0
+      ],
+      [
+        "SHF",
+        "999",
+        794856.0,
+        0
+      ],
+      [
+        "REG",
+        "865",
+        785632.0,
+        0
+      ],
+      [
+        "REG",
+        "ELS",
+        -785632.0,
+        1
+      ],
+      [
+        "DPH",
+        "350",
+        754240.0,
+        0
+      ],
+      [
+        "LIB",
+        "600",
+        750800.0,
+        0
+      ],
+      [
+        "MYR",
+        "999",
+        731170.0,
+        0
+      ],
+      [
+        "LIB",
+        "999",
+        715565.0,
+        0
+      ],
+      [
+        "CPC",
+        "400",
+        700000.0,
+        0
+      ],
+      [
+        "AAM",
+        "600",
+        687967.0,
+        0
+      ],
+      [
+        "MYR",
+        "750",
+        681115.0,
+        0
+      ],
+      [
+        "CON",
+        "750",
+        600000.0,
+        0
+      ],
+      [
+        "FIR",
+        "950",
+        589000.0,
+        0
+      ],
+      [
+        "DBI",
+        "300",
+        559214.0,
+        0
+      ],
+      [
+        "HHP",
+        "300",
+        549742.0,
+        0
+      ],
+      [
+        "REC",
+        "300",
+        523000.0,
+        0
+      ],
+      [
+        "ENV",
+        "450",
+        521672.0,
+        0
+      ],
+      [
+        "DAT",
+        "999",
+        505225.0,
+        0
+      ],
+      [
+        "RNT",
+        "999",
+        501482.0,
+        0
+      ],
+      [
+        "ECN",
+        "910",
+        501272.0,
+        0
+      ],
+      [
+        "POL",
+        "200",
+        500959.0,
+        0
+      ],
+      [
+        "ADM",
+        "250",
+        500000.0,
+        0
+      ],
+      [
+        "DAT",
+        "600",
+        493568.0,
+        0
+      ],
+      [
+        "ECD",
+        "600",
+        485100.0,
+        0
+      ],
+      [
+        "DPW",
+        "200",
+        463800.0,
+        0
+      ],
+      [
+        "CPC",
+        "ELS",
+        -447135.0,
+        1
+      ],
+      [
+        "CPC",
+        "865",
+        447135.0,
+        0
+      ],
+      [
+        "HSS",
+        "750",
+        445686.0,
+        0
+      ],
+      [
+        "DPH",
+        "999",
+        434161.0,
+        0
+      ],
+      [
+        "CSS",
+        "865",
+        421501.0,
+        0
+      ],
+      [
+        "CSS",
+        "ELS",
+        -421501.0,
+        1
+      ],
+      [
+        "ADP",
+        "600",
+        420000.0,
+        0
+      ],
+      [
+        "ECN",
+        "600",
+        405000.0,
+        0
+      ],
+      [
+        "ENV",
+        "490",
+        398000.0,
+        0
+      ],
+      [
+        "TTX",
+        "100",
+        381029.0,
+        0
+      ],
+      [
+        "GEN",
+        "300",
+        379743.0,
+        0
+      ],
+      [
+        "FIR",
+        "350",
+        370000.0,
+        0
+      ],
+      [
+        "CON",
+        "600",
+        365826.0,
+        0
+      ],
+      [
+        "BOS",
+        "600",
+        350000.0,
+        0
+      ],
+      [
+        "ART",
+        "200",
+        334685.0,
+        0
+      ],
+      [
+        "CSC",
+        "ELS",
+        -310000.0,
+        1
+      ],
+      [
+        "CSC",
+        "865",
+        310000.0,
+        0
+      ],
+      [
+        "FIR",
+        "865",
+        304117.0,
+        0
+      ],
+      [
+        "CII",
+        "800",
+        300000.0,
+        0
+      ],
+      [
+        "CII",
+        "400",
+        290000.0,
+        0
+      ],
+      [
+        "LIB",
+        "300",
+        272400.0,
+        0
+      ],
+      [
+        "CFC",
+        "300",
+        270395.0,
+        0
+      ],
+      [
+        "POL",
+        "999",
+        258102.0,
+        0
+      ],
+      [
+        "HHP",
+        "350",
+        251865.0,
+        0
+      ],
+      [
+        "RET",
+        "300",
+        251000.0,
+        0
+      ],
+      [
+        "ADP",
+        "400",
+        231359.0,
+        0
+      ],
+      [
+        "CON",
+        "999",
+        225273.0,
+        0
+      ],
+      [
+        "SHF",
+        "400",
+        223790.0,
+        0
+      ],
+      [
+        "DPH",
+        "300",
+        220000.0,
+        0
+      ],
+      [
+        "WOM",
+        "200",
+        220000.0,
+        0
+      ],
+      [
+        "LIB",
+        "450",
+        220000.0,
+        0
+      ],
+      [
+        "DPW",
+        "999",
+        202401.0,
+        0
+      ],
+      [
+        "PDR",
+        "865",
+        200000.0,
+        0
+      ],
+      [
+        "PDR",
+        "ELS",
+        -200000.0,
+        1
+      ],
+      [
+        "DSS",
+        "350",
+        194000.0,
+        0
+      ],
+      [
+        "WAR",
+        "600",
+        187599.0,
+        0
+      ],
+      [
+        "AIR",
+        "250",
+        180000.0,
+        0
+      ],
+      [
+        "FAM",
+        "ELS",
+        -179000.0,
+        1
+      ],
+      [
+        "FAM",
+        "865",
+        179000.0,
+        0
+      ],
+      [
+        "PRT",
+        "865",
+        170000.0,
+        0
+      ],
+      [
+        "REC",
+        "450",
+        170000.0,
+        0
+      ],
+      [
+        "PDR",
+        "450",
+        170000.0,
+        0
+      ],
+      [
+        "TIS",
+        "350",
+        163814.0,
+        0
+      ],
+      [
+        "DSS",
+        "300",
+        160000.0,
+        0
+      ],
+      [
+        "BOS",
+        "865",
+        141076.0,
+        0
+      ],
+      [
+        "BOS",
+        "ELS",
+        -141076.0,
+        1
+      ],
+      [
+        "DBI",
+        "865",
+        136137.0,
+        0
+      ],
+      [
+        "CON",
+        "490",
+        130000.0,
+        0
+      ],
+      [
+        "SHF",
+        "250",
+        123053.0,
+        0
+      ],
+      [
+        "DSS",
+        "490",
+        120000.0,
+        0
+      ],
+      [
+        "USD",
+        "GFS",
+        116000.0,
+        0
+      ],
+      [
+        "CHF",
+        "300",
+        108000.0,
+        0
+      ],
+      [
+        "PDR",
+        "400",
+        103081.0,
+        0
+      ],
+      [
+        "RNT",
+        "ELS",
+        -96000.0,
+        1
+      ],
+      [
+        "RNT",
+        "865",
+        96000.0,
+        0
+      ],
+      [
+        "CPC",
+        "490",
+        93260.0,
+        0
+      ],
+      [
+        "DPW",
+        "350",
+        90000.0,
+        0
+      ],
+      [
+        "REG",
+        "600",
+        82045.0,
+        0
+      ],
+      [
+        "CRT",
+        "300",
+        81000.0,
+        0
+      ],
+      [
+        "JUV",
+        "ELS",
+        -80000.0,
+        1
+      ],
+      [
+        "JUV",
+        "865",
+        80000.0,
+        0
+      ],
+      [
+        "REC",
+        "120",
+        75000.0,
+        0
+      ],
+      [
+        "ECN",
+        "110",
+        65000.0,
+        0
+      ],
+      [
+        "TIS",
+        "490",
+        63946.0,
+        0
+      ],
+      [
+        "LIB",
+        "865",
+        61020.0,
+        0
+      ],
+      [
+        "DSS",
+        "999",
+        60113.0,
+        0
+      ],
+      [
+        "ART",
+        "490",
+        60000.0,
+        0
+      ],
+      [
+        "ART",
+        "950",
+        55000.0,
+        0
+      ],
+      [
+        "POL",
+        "300",
+        48800.0,
+        0
+      ],
+      [
+        "TIS",
+        "300",
+        44500.0,
+        0
+      ],
+      [
+        "ETH",
+        "200",
+        42000.0,
+        0
+      ],
+      [
+        "DPW",
+        "300",
+        41661.0,
+        0
+      ],
+      [
+        "RET",
+        "ELS",
+        -40515.0,
+        1
+      ],
+      [
+        "RET",
+        "865",
+        40515.0,
+        0
+      ],
+      [
+        "JUV",
+        "600",
+        37000.0,
+        0
+      ],
+      [
+        "CON",
+        "100",
+        36360.0,
+        0
+      ],
+      [
+        "ETH",
+        "250",
+        27000.0,
+        0
+      ],
+      [
+        "CRT",
+        "250",
+        24000.0,
+        0
+      ],
+      [
+        "ART",
+        "750",
+        20000.0,
+        0
+      ],
+      [
+        "AIR",
+        "450",
+        20000.0,
+        0
+      ],
+      [
+        "WOM",
+        "999",
+        17600.0,
+        0
+      ],
+      [
+        "DPW",
+        "250",
+        15000.0,
+        0
+      ],
+      [
+        "ECN",
+        "300",
+        8728.0,
+        0
+      ],
+      [
+        "HSS",
+        "600",
+        6000.0,
+        0
+      ],
+      [
+        "POL",
+        "490",
+        3500.0,
+        0
+      ],
+      [
+        "SHF",
+        "300",
+        3000.0,
+        0
+      ],
+      [
+        "ETH",
+        "600",
+        1000.0,
+        0
+      ],
+      [
+        "FIR",
+        "200",
+        880.0,
+        0
+      ]
+    ]
+  },
+  "characters": {
+    "spending": [
+      {
+        "code": "001",
+        "label": "Salaries",
+        "gloss": null,
+        "display_category": "standard",
+        "total_usd": 2989462005.0,
+        "share_of_side": 0.329764,
+        "n_departments": 52,
+        "is_transfer_adjustment": false
+      },
+      {
+        "code": "021",
+        "label": "Non Personnel Services",
+        "gloss": null,
+        "display_category": "standard",
+        "total_usd": 1703763662.0,
+        "share_of_side": 0.18794,
+        "n_departments": 54,
+        "is_transfer_adjustment": false
+      },
+      {
+        "code": "013",
+        "label": "Mandatory Fringe Benefits",
+        "gloss": null,
+        "display_category": "standard",
+        "total_usd": 1409247665.0,
+        "share_of_side": 0.155453,
+        "n_departments": 54,
+        "is_transfer_adjustment": false
+      },
+      {
+        "code": "070",
+        "label": "Debt Service",
+        "gloss": null,
+        "display_category": "standard",
+        "total_usd": 1111394758.0,
+        "share_of_side": 0.122597,
+        "n_departments": 15,
+        "is_transfer_adjustment": false
+      },
+      {
+        "code": "081",
+        "label": "Services of Other Depts",
+        "gloss": null,
+        "display_category": "standard",
+        "total_usd": 758907892.0,
+        "share_of_side": 0.083714,
+        "n_departments": 53,
+        "is_transfer_adjustment": false
+      },
+      {
+        "code": "095",
+        "label": "Intrafund Transfers Out",
+        "gloss": null,
+        "display_category": "standard",
+        "total_usd": 750358126.0,
+        "share_of_side": 0.082771,
+        "n_departments": 18,
+        "is_transfer_adjustment": false
+      },
+      {
+        "code": "091",
+        "label": "Operating Transfers Out",
+        "gloss": null,
+        "display_category": "standard",
+        "total_usd": 594920054.0,
+        "share_of_side": 0.065625,
+        "n_departments": 13,
+        "is_transfer_adjustment": false
+      },
+      {
+        "code": "038",
+        "label": "City Grant Programs",
+        "gloss": null,
+        "display_category": "standard",
+        "total_usd": 424977398.0,
+        "share_of_side": 0.046879,
+        "n_departments": 25,
+        "is_transfer_adjustment": false
+      },
+      {
+        "code": "060",
+        "label": "Capital Outlay",
+        "gloss": null,
+        "display_category": "standard",
+        "total_usd": 346624144.0,
+        "share_of_side": 0.038236,
+        "n_departments": 35,
+        "is_transfer_adjustment": false
+      },
+      {
+        "code": "040",
+        "label": "Materials & Supplies",
+        "gloss": null,
+        "display_category": "standard",
+        "total_usd": 307175405.0,
+        "share_of_side": 0.033884,
+        "n_departments": 50,
+        "is_transfer_adjustment": false
+      },
+      {
+        "code": "037",
+        "label": "Aid Payments",
+        "gloss": null,
+        "display_category": "standard",
+        "total_usd": 279680066.0,
+        "share_of_side": 0.030851,
+        "n_departments": 1,
+        "is_transfer_adjustment": false
+      },
+      {
+        "code": "020",
+        "label": "Overhead",
+        "gloss": null,
+        "display_category": "standard",
+        "total_usd": 197756301.0,
+        "share_of_side": 0.021814,
+        "n_departments": 24,
+        "is_transfer_adjustment": false
+      },
+      {
+        "code": "097",
+        "label": "Unappropriated Revenue Retained",
+        "gloss": null,
+        "display_category": "standard",
+        "total_usd": 196597964.0,
+        "share_of_side": 0.021687,
+        "n_departments": 5,
+        "is_transfer_adjustment": false
+      },
+      {
+        "code": "06P",
+        "label": "Programmatic Projects",
+        "gloss": null,
+        "display_category": "standard",
+        "total_usd": 140171740.0,
+        "share_of_side": 0.015462,
+        "n_departments": 23,
+        "is_transfer_adjustment": false
+      },
+      {
+        "code": "039",
+        "label": "Other Support & Care Of Persons",
+        "gloss": null,
+        "display_category": "standard",
+        "total_usd": 124380863.0,
+        "share_of_side": 0.01372,
+        "n_departments": 3,
+        "is_transfer_adjustment": false
+      },
+      {
+        "code": "098",
+        "label": "Unappropriated Revenue-Designated",
+        "gloss": null,
+        "display_category": "standard",
+        "total_usd": 84981485.0,
+        "share_of_side": 0.009374,
+        "n_departments": 8,
+        "is_transfer_adjustment": false
+      },
+      {
+        "code": "06F",
+        "label": "Facilities Maintenance",
+        "gloss": null,
+        "display_category": "standard",
+        "total_usd": 69998324.0,
+        "share_of_side": 0.007721,
+        "n_departments": 19,
+        "is_transfer_adjustment": false
+      },
+      {
+        "code": "036",
+        "label": "Aid Assistance",
+        "gloss": null,
+        "display_category": "standard",
+        "total_usd": 59035132.0,
+        "share_of_side": 0.006512,
+        "n_departments": 2,
+        "is_transfer_adjustment": false
+      },
+      {
+        "code": "096",
+        "label": "Unappropriated Revenue-Charter Reserves",
+        "gloss": null,
+        "display_category": "standard",
+        "total_usd": 19090000.0,
+        "share_of_side": 0.002106,
+        "n_departments": 1,
+        "is_transfer_adjustment": false
+      },
+      {
+        "code": "069",
+        "label": "Project Carryforward Budgets Only",
+        "gloss": null,
+        "display_category": "standard",
+        "total_usd": 4435774.0,
+        "share_of_side": 0.000489,
+        "n_departments": 3,
+        "is_transfer_adjustment": false
+      },
+      {
+        "code": "079",
+        "label": "Allocated Charges",
+        "gloss": null,
+        "display_category": "standard",
+        "total_usd": -38934748.0,
+        "share_of_side": -0.004295,
+        "n_departments": 8,
+        "is_transfer_adjustment": false
+      },
+      {
+        "code": "ELU",
+        "label": "Transfer Adjustments-Uses",
+        "gloss": "The negative adjustment that cancels inter- and intra-fund transfers so the citywide total counts each dollar once.",
+        "display_category": "adjustment",
+        "total_usd": -2468574733.0,
+        "share_of_side": -0.272306,
+        "n_departments": 44,
+        "is_transfer_adjustment": true
+      }
+    ],
+    "revenue": [
+      {
+        "code": "600",
+        "label": "Charges for Services",
+        "gloss": null,
+        "display_category": "standard",
+        "total_usd": 2737371201.0,
+        "share_of_side": 0.301956,
+        "n_departments": 39,
+        "is_transfer_adjustment": false
+      },
+      {
+        "code": "100",
+        "label": "Property Taxes",
+        "gloss": null,
+        "display_category": "standard",
+        "total_usd": 1731384478.0,
+        "share_of_side": 0.190987,
+        "n_departments": 8,
+        "is_transfer_adjustment": false
+      },
+      {
+        "code": "865",
+        "label": "Expenditure Recovery",
+        "gloss": null,
+        "display_category": "standard",
+        "total_usd": 1123296553.0,
+        "share_of_side": 0.12391,
+        "n_departments": 42,
+        "is_transfer_adjustment": false
+      },
+      {
+        "code": "120",
+        "label": "Other Local Taxes",
+        "gloss": null,
+        "display_category": "standard",
+        "total_usd": 915530350.0,
+        "share_of_side": 0.100991,
+        "n_departments": 3,
+        "is_transfer_adjustment": false
+      },
+      {
+        "code": "450",
+        "label": "Intergovernmental Revenues-State",
+        "gloss": null,
+        "display_category": "standard",
+        "total_usd": 913390661.0,
+        "share_of_side": 0.100755,
+        "n_departments": 23,
+        "is_transfer_adjustment": false
+      },
+      {
+        "code": "950",
+        "label": "Intrafund Transfers In",
+        "gloss": null,
+        "display_category": "standard",
+        "total_usd": 750358126.0,
+        "share_of_side": 0.082771,
+        "n_departments": 20,
+        "is_transfer_adjustment": false
+      },
+      {
+        "code": "910",
+        "label": "Operating Transfers In",
+        "gloss": null,
+        "display_category": "standard",
+        "total_usd": 594920054.0,
+        "share_of_side": 0.065625,
+        "n_departments": 14,
+        "is_transfer_adjustment": false
+      },
+      {
+        "code": "110",
+        "label": "Business Taxes",
+        "gloss": null,
+        "display_category": "standard",
+        "total_usd": 573385000.0,
+        "share_of_side": 0.063249,
+        "n_departments": 3,
+        "is_transfer_adjustment": false
+      },
+      {
+        "code": "350",
+        "label": "Rents & Concessions",
+        "gloss": null,
+        "display_category": "standard",
+        "total_usd": 567260619.0,
+        "share_of_side": 0.062574,
+        "n_departments": 18,
+        "is_transfer_adjustment": false
+      },
+      {
+        "code": "999",
+        "label": "Unappropriated Fund Balance",
+        "gloss": null,
+        "display_category": "standard",
+        "total_usd": 510412442.0,
+        "share_of_side": 0.056303,
+        "n_departments": 27,
+        "is_transfer_adjustment": false
+      },
+      {
+        "code": "400",
+        "label": "Intergovernmental Revenues-Federal",
+        "gloss": null,
+        "display_category": "standard",
+        "total_usd": 404831631.0,
+        "share_of_side": 0.044657,
+        "n_departments": 18,
+        "is_transfer_adjustment": false
+      },
+      {
+        "code": "750",
+        "label": "Other Revenues",
+        "gloss": null,
+        "display_category": "standard",
+        "total_usd": 302825999.0,
+        "share_of_side": 0.033404,
+        "n_departments": 22,
+        "is_transfer_adjustment": false
+      },
+      {
+        "code": "250",
+        "label": "Fines, Forfeitures & Penalties",
+        "gloss": null,
+        "display_category": "standard",
+        "total_usd": 115454814.0,
+        "share_of_side": 0.012736,
+        "n_departments": 12,
+        "is_transfer_adjustment": false
+      },
+      {
+        "code": "490",
+        "label": "Intergovernmental Revenues-Other",
+        "gloss": null,
+        "display_category": "standard",
+        "total_usd": 94906867.0,
+        "share_of_side": 0.010469,
+        "n_departments": 12,
+        "is_transfer_adjustment": false
+      },
+      {
+        "code": "800",
+        "label": "Other Financing Sources",
+        "gloss": null,
+        "display_category": "standard",
+        "total_usd": 65450500.0,
+        "share_of_side": 0.00722,
+        "n_departments": 4,
+        "is_transfer_adjustment": false
+      },
+      {
+        "code": "200",
+        "label": "Licenses, Permits & Franchises",
+        "gloss": null,
+        "display_category": "standard",
+        "total_usd": 61943189.0,
+        "share_of_side": 0.006833,
+        "n_departments": 12,
+        "is_transfer_adjustment": false
+      },
+      {
+        "code": "700",
+        "label": "Contributions (Ret, HSS, Health Care)",
+        "gloss": null,
+        "display_category": "standard",
+        "total_usd": 47775156.0,
+        "share_of_side": 0.00527,
+        "n_departments": 2,
+        "is_transfer_adjustment": false
+      },
+      {
+        "code": "300",
+        "label": "Interest & Investment Income",
+        "gloss": null,
+        "display_category": "standard",
+        "total_usd": 21216164.0,
+        "share_of_side": 0.00234,
+        "n_departments": 23,
+        "is_transfer_adjustment": false
+      },
+      {
+        "code": "860",
+        "label": "ISF Charges for Services",
+        "gloss": null,
+        "display_category": "standard",
+        "total_usd": 2310206.0,
+        "share_of_side": 0.000255,
+        "n_departments": 1,
+        "is_transfer_adjustment": false
+      },
+      {
+        "code": "ELS",
+        "label": "Transfer Adjustments-Sources",
+        "gloss": "The negative adjustment on the revenue side that cancels inter- and intra-fund transfers so the citywide total counts each dollar once.",
+        "display_category": "adjustment",
+        "total_usd": -2468574733.0,
+        "share_of_side": -0.272306,
+        "n_departments": 44,
+        "is_transfer_adjustment": true
+      }
+    ]
+  },
+  "program_strip": {
+    "available": false,
+    "note": "Not rendered: this fiscal year's program dimension is the legacy per-department taxonomy (hundreds of programs), not the modern activity tags.",
+    "rows": []
+  },
+  "funds": {
+    "spending": [
+      {
+        "fund_type": "General Fund",
+        "fund_category": "Operating",
+        "total_usd": 3058000763.0,
+        "n_funds": 1
+      },
+      {
+        "fund_type": "SF International Airport Funds",
+        "fund_category": "Operating",
+        "total_usd": 840573894.0,
+        "n_funds": 1
+      },
+      {
+        "fund_type": "General Hospital Medical Center Funds",
+        "fund_category": "Operating",
+        "total_usd": 789304046.0,
+        "n_funds": 1
+      },
+      {
+        "fund_type": "MTA Municipal Railway Funds",
+        "fund_category": "Operating",
+        "total_usd": 737984638.0,
+        "n_funds": 1
+      },
+      {
+        "fund_type": "Special Revenue Funds",
+        "fund_category": "Operating",
+        "total_usd": 437823973.0,
+        "n_funds": 15
+      },
+      {
+        "fund_type": "PUC Water Department Funds",
+        "fund_category": "Operating",
+        "total_usd": 417917144.0,
+        "n_funds": 2
+      },
+      {
+        "fund_type": "General Fund",
+        "fund_category": "Continuing Projects",
+        "total_usd": 290695874.0,
+        "n_funds": 1
+      },
+      {
+        "fund_type": "Special Revenue Funds",
+        "fund_category": "Continuing Projects",
+        "total_usd": 270003442.0,
+        "n_funds": 18
+      },
+      {
+        "fund_type": "Debt Service Funds",
+        "fund_category": "Operating",
+        "total_usd": 253253659.0,
+        "n_funds": 2
+      },
+      {
+        "fund_type": "Successor Agency-Former SF Redev Agency",
+        "fund_category": "Continuing Projects",
+        "total_usd": 239032835.0,
+        "n_funds": 1
+      },
+      {
+        "fund_type": "Laguna Honda Hospital Funds",
+        "fund_category": "Operating",
+        "total_usd": 236627165.0,
+        "n_funds": 2
+      },
+      {
+        "fund_type": "PUC Wastewater Funds",
+        "fund_category": "Operating",
+        "total_usd": 221348252.0,
+        "n_funds": 1
+      },
+      {
+        "fund_type": "Special Revenue Funds",
+        "fund_category": "Grants",
+        "total_usd": 155511139.0,
+        "n_funds": 11
+      },
+      {
+        "fund_type": "MTA Parking & Traffic Funds",
+        "fund_category": "Operating",
+        "total_usd": 135075783.0,
+        "n_funds": 1
+      },
+      {
+        "fund_type": "Successor Agency-Former SF Redev Agency",
+        "fund_category": null,
+        "total_usd": 109088558.0,
+        "n_funds": 1
+      },
+      {
+        "fund_type": "Agency Funds",
+        "fund_category": "Operating",
+        "total_usd": 89784373.0,
+        "n_funds": 1
+      },
+      {
+        "fund_type": "General Fund",
+        "fund_category": "Annual Projects",
+        "total_usd": 86576205.0,
+        "n_funds": 1
+      },
+      {
+        "fund_type": "Port Of San Francisco Funds",
+        "fund_category": "Operating",
+        "total_usd": 79740528.0,
+        "n_funds": 1
+      },
+      {
+        "fund_type": "SF International Airport Funds",
+        "fund_category": "Continuing Projects",
+        "total_usd": 73782112.0,
+        "n_funds": 2
+      },
+      {
+        "fund_type": "General Hospital Medical Center Funds",
+        "fund_category": "Continuing Projects",
+        "total_usd": 71200000.0,
+        "n_funds": 1
+      },
+      {
+        "fund_type": "PUC Hetch Hetchy Funds",
+        "fund_category": "Operating",
+        "total_usd": 46071752.0,
+        "n_funds": 1
+      },
+      {
+        "fund_type": "MTA Parking Garages/Other",
+        "fund_category": "Operating",
+        "total_usd": 45132419.0,
+        "n_funds": 1
+      },
+      {
+        "fund_type": "SF International Airport Funds",
+        "fund_category": "Work Orders/Overhead",
+        "total_usd": 43000000.0,
+        "n_funds": 1
+      },
+      {
+        "fund_type": "PUC Wastewater Funds",
+        "fund_category": "Continuing Projects",
+        "total_usd": 39000000.0,
+        "n_funds": 1
+      },
+      {
+        "fund_type": "PUC Water Department Funds",
+        "fund_category": "Continuing Projects",
+        "total_usd": 38607000.0,
+        "n_funds": 2
+      },
+      {
+        "fund_type": "Successor Agency-Former SF Redev Agency",
+        "fund_category": "Annual Projects",
+        "total_usd": 27640976.0,
+        "n_funds": 2
+      },
+      {
+        "fund_type": "Pension Trust Funds",
+        "fund_category": "Operating",
+        "total_usd": 26275156.0,
+        "n_funds": 1
+      },
+      {
+        "fund_type": "PUC Hetch Hetchy Funds",
+        "fund_category": "Continuing Projects",
+        "total_usd": 25951796.0,
+        "n_funds": 2
+      },
+      {
+        "fund_type": "SF International Airport Funds",
+        "fund_category": "Grants",
+        "total_usd": 22250000.0,
+        "n_funds": 2
+      },
+      {
+        "fund_type": "Retiree Health Care Trust Fund - Prop B",
+        "fund_category": "Operating",
+        "total_usd": 22129743.0,
+        "n_funds": 1
+      },
+      {
+        "fund_type": "Port Of San Francisco Funds",
+        "fund_category": "Continuing Projects",
+        "total_usd": 19254799.0,
+        "n_funds": 2
+      },
+      {
+        "fund_type": "PUC Hetch Hetchy Funds",
+        "fund_category": "Annual Projects",
+        "total_usd": 16644000.0,
+        "n_funds": 1
+      },
+      {
+        "fund_type": "Treasure Island Development Authority",
+        "fund_category": "Continuing Projects",
+        "total_usd": 16366423.0,
+        "n_funds": 1
+      },
+      {
+        "fund_type": "PUC Water Department Funds",
+        "fund_category": "Annual Projects",
+        "total_usd": 13634000.0,
+        "n_funds": 1
+      },
+      {
+        "fund_type": "Port Of San Francisco Funds",
+        "fund_category": "Annual Projects",
+        "total_usd": 13038626.0,
+        "n_funds": 2
+      },
+      {
+        "fund_type": "MTA Municipal Railway Funds",
+        "fund_category": "Continuing Projects",
+        "total_usd": 13000000.0,
+        "n_funds": 3
+      },
+      {
+        "fund_type": "PUC Wastewater Funds",
+        "fund_category": "Annual Projects",
+        "total_usd": 5808000.0,
+        "n_funds": 1
+      },
+      {
+        "fund_type": "MTA Parking & Traffic Funds",
+        "fund_category": "Continuing Projects",
+        "total_usd": 5796621.0,
+        "n_funds": 2
+      },
+      {
+        "fund_type": "Internal Service Funds",
+        "fund_category": "Continuing Projects",
+        "total_usd": 5747920.0,
+        "n_funds": 1
+      },
+      {
+        "fund_type": "MTA Taxi Commission",
+        "fund_category": "Operating",
+        "total_usd": 5206590.0,
+        "n_funds": 1
+      },
+      {
+        "fund_type": "Special Revenue Funds",
+        "fund_category": "Annual Projects",
+        "total_usd": 4760923.0,
+        "n_funds": 3
+      },
+      {
+        "fund_type": "General Hospital Medical Center Funds",
+        "fund_category": "Grants",
+        "total_usd": 4152116.0,
+        "n_funds": 1
+      },
+      {
+        "fund_type": "MTA Parking Garages/Other",
+        "fund_category": "Continuing Projects",
+        "total_usd": 3000000.0,
+        "n_funds": 1
+      },
+      {
+        "fund_type": "SF International Airport Funds",
+        "fund_category": "Annual Projects",
+        "total_usd": 2308760.0,
+        "n_funds": 1
+      },
+      {
+        "fund_type": "Expendable Trust Funds",
+        "fund_category": "Grants",
+        "total_usd": 1791524.0,
+        "n_funds": 2
+      },
+      {
+        "fund_type": "Successor Agency-Former SF Redev Agency",
+        "fund_category": "Grants",
+        "total_usd": 1554200.0,
+        "n_funds": 1
+      },
+      {
+        "fund_type": "General Hospital Medical Center Funds",
+        "fund_category": "Annual Projects",
+        "total_usd": 1213000.0,
+        "n_funds": 1
+      },
+      {
+        "fund_type": "Laguna Honda Hospital Funds",
+        "fund_category": "Annual Projects",
+        "total_usd": 1048000.0,
+        "n_funds": 1
+      },
+      {
+        "fund_type": "Laguna Honda Hospital Funds",
+        "fund_category": "Continuing Projects",
+        "total_usd": 1017000.0,
+        "n_funds": 1
+      },
+      {
+        "fund_type": "Laguna Honda Hospital Funds",
+        "fund_category": "Grants",
+        "total_usd": 658750.0,
+        "n_funds": 1
+      },
+      {
+        "fund_type": "General Fund",
+        "fund_category": "Work Orders/Overhead",
+        "total_usd": 427674.0,
+        "n_funds": 2
+      },
+      {
+        "fund_type": "Successor Agency-Former SF Redev Agency",
+        "fund_category": "Operating",
+        "total_usd": 150000.0,
+        "n_funds": 1
+      },
+      {
+        "fund_type": "Internal Service Funds",
+        "fund_category": "Operating",
+        "total_usd": -512874.0,
+        "n_funds": 3
+      }
+    ],
+    "revenue": [
+      {
+        "fund_type": "General Fund",
+        "fund_category": "Operating",
+        "total_usd": 3058000763.0,
+        "n_funds": 1
+      },
+      {
+        "fund_type": "SF International Airport Funds",
+        "fund_category": "Operating",
+        "total_usd": 840573894.0,
+        "n_funds": 1
+      },
+      {
+        "fund_type": "General Hospital Medical Center Funds",
+        "fund_category": "Operating",
+        "total_usd": 789304046.0,
+        "n_funds": 1
+      },
+      {
+        "fund_type": "MTA Municipal Railway Funds",
+        "fund_category": "Operating",
+        "total_usd": 737984638.0,
+        "n_funds": 1
+      },
+      {
+        "fund_type": "Special Revenue Funds",
+        "fund_category": "Operating",
+        "total_usd": 437823973.0,
+        "n_funds": 15
+      },
+      {
+        "fund_type": "PUC Water Department Funds",
+        "fund_category": "Operating",
+        "total_usd": 417917144.0,
+        "n_funds": 2
+      },
+      {
+        "fund_type": "General Fund",
+        "fund_category": "Continuing Projects",
+        "total_usd": 290695874.0,
+        "n_funds": 1
+      },
+      {
+        "fund_type": "Special Revenue Funds",
+        "fund_category": "Continuing Projects",
+        "total_usd": 270003442.0,
+        "n_funds": 18
+      },
+      {
+        "fund_type": "Debt Service Funds",
+        "fund_category": "Operating",
+        "total_usd": 253253659.0,
+        "n_funds": 2
+      },
+      {
+        "fund_type": "Successor Agency-Former SF Redev Agency",
+        "fund_category": "Continuing Projects",
+        "total_usd": 239032835.0,
+        "n_funds": 1
+      },
+      {
+        "fund_type": "Laguna Honda Hospital Funds",
+        "fund_category": "Operating",
+        "total_usd": 236627165.0,
+        "n_funds": 2
+      },
+      {
+        "fund_type": "PUC Wastewater Funds",
+        "fund_category": "Operating",
+        "total_usd": 221348252.0,
+        "n_funds": 1
+      },
+      {
+        "fund_type": "Special Revenue Funds",
+        "fund_category": "Grants",
+        "total_usd": 155511139.0,
+        "n_funds": 10
+      },
+      {
+        "fund_type": "MTA Parking & Traffic Funds",
+        "fund_category": "Operating",
+        "total_usd": 135075783.0,
+        "n_funds": 1
+      },
+      {
+        "fund_type": "Successor Agency-Former SF Redev Agency",
+        "fund_category": null,
+        "total_usd": 109088558.0,
+        "n_funds": 1
+      },
+      {
+        "fund_type": "Agency Funds",
+        "fund_category": "Operating",
+        "total_usd": 89784373.0,
+        "n_funds": 1
+      },
+      {
+        "fund_type": "General Fund",
+        "fund_category": "Annual Projects",
+        "total_usd": 86576205.0,
+        "n_funds": 1
+      },
+      {
+        "fund_type": "Port Of San Francisco Funds",
+        "fund_category": "Operating",
+        "total_usd": 79740528.0,
+        "n_funds": 1
+      },
+      {
+        "fund_type": "SF International Airport Funds",
+        "fund_category": "Continuing Projects",
+        "total_usd": 73782112.0,
+        "n_funds": 2
+      },
+      {
+        "fund_type": "General Hospital Medical Center Funds",
+        "fund_category": "Continuing Projects",
+        "total_usd": 71200000.0,
+        "n_funds": 1
+      },
+      {
+        "fund_type": "PUC Hetch Hetchy Funds",
+        "fund_category": "Operating",
+        "total_usd": 46071752.0,
+        "n_funds": 1
+      },
+      {
+        "fund_type": "MTA Parking Garages/Other",
+        "fund_category": "Operating",
+        "total_usd": 45132419.0,
+        "n_funds": 1
+      },
+      {
+        "fund_type": "SF International Airport Funds",
+        "fund_category": "Work Orders/Overhead",
+        "total_usd": 43000000.0,
+        "n_funds": 1
+      },
+      {
+        "fund_type": "PUC Wastewater Funds",
+        "fund_category": "Continuing Projects",
+        "total_usd": 39000000.0,
+        "n_funds": 1
+      },
+      {
+        "fund_type": "PUC Water Department Funds",
+        "fund_category": "Continuing Projects",
+        "total_usd": 38607000.0,
+        "n_funds": 2
+      },
+      {
+        "fund_type": "Successor Agency-Former SF Redev Agency",
+        "fund_category": "Annual Projects",
+        "total_usd": 27640976.0,
+        "n_funds": 2
+      },
+      {
+        "fund_type": "Pension Trust Funds",
+        "fund_category": "Operating",
+        "total_usd": 26275156.0,
+        "n_funds": 1
+      },
+      {
+        "fund_type": "PUC Hetch Hetchy Funds",
+        "fund_category": "Continuing Projects",
+        "total_usd": 25951796.0,
+        "n_funds": 2
+      },
+      {
+        "fund_type": "SF International Airport Funds",
+        "fund_category": "Grants",
+        "total_usd": 22250000.0,
+        "n_funds": 2
+      },
+      {
+        "fund_type": "Retiree Health Care Trust Fund - Prop B",
+        "fund_category": "Operating",
+        "total_usd": 22129743.0,
+        "n_funds": 1
+      },
+      {
+        "fund_type": "Port Of San Francisco Funds",
+        "fund_category": "Continuing Projects",
+        "total_usd": 19254799.0,
+        "n_funds": 2
+      },
+      {
+        "fund_type": "PUC Hetch Hetchy Funds",
+        "fund_category": "Annual Projects",
+        "total_usd": 16644000.0,
+        "n_funds": 1
+      },
+      {
+        "fund_type": "Treasure Island Development Authority",
+        "fund_category": "Continuing Projects",
+        "total_usd": 16366423.0,
+        "n_funds": 1
+      },
+      {
+        "fund_type": "PUC Water Department Funds",
+        "fund_category": "Annual Projects",
+        "total_usd": 13634000.0,
+        "n_funds": 1
+      },
+      {
+        "fund_type": "Port Of San Francisco Funds",
+        "fund_category": "Annual Projects",
+        "total_usd": 13038626.0,
+        "n_funds": 2
+      },
+      {
+        "fund_type": "MTA Municipal Railway Funds",
+        "fund_category": "Continuing Projects",
+        "total_usd": 13000000.0,
+        "n_funds": 3
+      },
+      {
+        "fund_type": "PUC Wastewater Funds",
+        "fund_category": "Annual Projects",
+        "total_usd": 5808000.0,
+        "n_funds": 1
+      },
+      {
+        "fund_type": "MTA Parking & Traffic Funds",
+        "fund_category": "Continuing Projects",
+        "total_usd": 5796621.0,
+        "n_funds": 2
+      },
+      {
+        "fund_type": "Internal Service Funds",
+        "fund_category": "Continuing Projects",
+        "total_usd": 5747920.0,
+        "n_funds": 1
+      },
+      {
+        "fund_type": "MTA Taxi Commission",
+        "fund_category": "Operating",
+        "total_usd": 5206590.0,
+        "n_funds": 1
+      },
+      {
+        "fund_type": "Special Revenue Funds",
+        "fund_category": "Annual Projects",
+        "total_usd": 4760923.0,
+        "n_funds": 3
+      },
+      {
+        "fund_type": "General Hospital Medical Center Funds",
+        "fund_category": "Grants",
+        "total_usd": 4152116.0,
+        "n_funds": 1
+      },
+      {
+        "fund_type": "MTA Parking Garages/Other",
+        "fund_category": "Continuing Projects",
+        "total_usd": 3000000.0,
+        "n_funds": 1
+      },
+      {
+        "fund_type": "SF International Airport Funds",
+        "fund_category": "Annual Projects",
+        "total_usd": 2308760.0,
+        "n_funds": 1
+      },
+      {
+        "fund_type": "Expendable Trust Funds",
+        "fund_category": "Grants",
+        "total_usd": 1791524.0,
+        "n_funds": 2
+      },
+      {
+        "fund_type": "Successor Agency-Former SF Redev Agency",
+        "fund_category": "Grants",
+        "total_usd": 1554200.0,
+        "n_funds": 1
+      },
+      {
+        "fund_type": "General Hospital Medical Center Funds",
+        "fund_category": "Annual Projects",
+        "total_usd": 1213000.0,
+        "n_funds": 1
+      },
+      {
+        "fund_type": "Laguna Honda Hospital Funds",
+        "fund_category": "Annual Projects",
+        "total_usd": 1048000.0,
+        "n_funds": 1
+      },
+      {
+        "fund_type": "Laguna Honda Hospital Funds",
+        "fund_category": "Continuing Projects",
+        "total_usd": 1017000.0,
+        "n_funds": 1
+      },
+      {
+        "fund_type": "Laguna Honda Hospital Funds",
+        "fund_category": "Grants",
+        "total_usd": 658750.0,
+        "n_funds": 1
+      },
+      {
+        "fund_type": "General Fund",
+        "fund_category": "Work Orders/Overhead",
+        "total_usd": 427674.0,
+        "n_funds": 2
+      },
+      {
+        "fund_type": "Successor Agency-Former SF Redev Agency",
+        "fund_category": "Operating",
+        "total_usd": 150000.0,
+        "n_funds": 1
+      },
+      {
+        "fund_type": "Internal Service Funds",
+        "fund_category": "Operating",
+        "total_usd": -512874.0,
+        "n_funds": 3
+      }
+    ]
+  },
+  "notes": "display_name and gloss fields are a provenance-flagged IN-SESSION enrichment layer (seed_us_sf_dept_names, seed_us_sf_character_glosses, 2026-07-16) — source labels are always carried verbatim alongside and never overwritten. Departments with a null display_name (legacy years) render their source label."
+}

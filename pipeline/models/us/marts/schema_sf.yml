@@ -409,3 +409,163 @@ models:
         tests: [not_null]
       - name: source_url
         tests: [not_null]
+
+  # ── Block 1 — /us/city/sf/budget breakdown marts ──────────────────────────
+
+  - name: mart_us_sf_budget_org_group
+    description: >
+      Net adopted budget per fiscal year × side × organization group (7
+      groups — the only dimension stable across the FY2018 break; all
+      fiscal years). Feeds the org-group treemap.
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns: [fiscal_year, side, organization_group_code]
+    columns:
+      - name: fiscal_year
+        tests: [not_null]
+      - name: side
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['Revenue', 'Spending']
+      - name: organization_group_code
+        tests: [not_null]
+      - name: total_usd
+        tests: [not_null]
+      - name: execution_status
+        tests:
+          - not_null
+          - accepted_values:
+              values: [closed, recently_closed_preliminary, in_progress, adopted_only]
+      - name: source_url
+        tests: [not_null]
+
+  - name: mart_us_sf_budget_dept
+    description: >
+      Net adopted budget per fiscal year × side × department, with the
+      per-department transfer-adjustment netting exposed and seed display
+      names (modern era). FY2018 excluded — corrupted-drill year.
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns: [fiscal_year, side, department_code]
+    columns:
+      - name: fiscal_year
+        tests: [not_null]
+      - name: side
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['Revenue', 'Spending']
+      - name: department_code
+        tests: [not_null]
+      - name: total_usd
+        tests: [not_null]
+      - name: execution_status
+        tests:
+          - not_null
+          - accepted_values:
+              values: [closed, recently_closed_preliminary, in_progress, adopted_only]
+
+  - name: mart_us_sf_budget_dept_character
+    description: >
+      Adopted budget dept × character cells (the fiche altitude, ~460
+      spending + ~330 revenue nonzero cells per modern FY) with character
+      glosses. Transfer-adjustment cells kept and flagged. FY2018 excluded.
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns: [fiscal_year, side, department_code, character_code]
+    columns:
+      - name: fiscal_year
+        tests: [not_null]
+      - name: side
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['Revenue', 'Spending']
+      - name: amount_usd
+        tests: [not_null]
+      - name: is_transfer_adjustment
+        tests: [not_null]
+
+  - name: mart_us_sf_budget_character
+    description: >
+      Net adopted budget per fiscal year × side × character (the economic
+      altitude) with glosses and display_category driving UI placement.
+      FY2018 excluded.
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns: [fiscal_year, side, character_code]
+    columns:
+      - name: fiscal_year
+        tests: [not_null]
+      - name: side
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['Revenue', 'Spending']
+      - name: total_usd
+        tests: [not_null]
+      - name: display_category
+        tests:
+          - accepted_values:
+              values: [standard, internal, adjustment, offset]
+
+  - name: mart_us_sf_budget_program
+    description: >
+      Adopted budget per fiscal year × side × program. Programs are a strip,
+      not a drill level: ~10 generic activity tags from FY2019
+      (n_programs_in_fy lets the export decide renderability). FY2018
+      excluded.
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns: [fiscal_year, side, program_code, program]
+    columns:
+      - name: fiscal_year
+        tests: [not_null]
+      - name: total_usd
+        tests: [not_null]
+
+  - name: mart_us_sf_budget_fund
+    description: >
+      Adopted budget per fiscal year × side × fund type × fund category —
+      the perimeter block (Operating vs Continuing Projects vs Grants).
+      All fiscal years (FY2018 uses the legacy fund taxonomy, internally
+      consistent).
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns: [fiscal_year, side, fund_type_code, fund_category_code]
+    columns:
+      - name: fiscal_year
+        tests: [not_null]
+      - name: total_usd
+        tests: [not_null]
+
+  - name: mart_us_sf_budget_vs_actual_dept
+    description: >
+      Department-level budget vs actual on the measured honest perimeter
+      (Operating funds, no related govt units, no transfer characters),
+      CLOSED fiscal years FY2019+ only, with GEN/PUC structural-outlier
+      annotations from the seed. Sums back to the citywide operating pair
+      exactly (tested).
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns: [fiscal_year, side, department_code]
+    columns:
+      - name: fiscal_year
+        tests: [not_null]
+      - name: side
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['Revenue', 'Spending']
+      - name: department_code
+        tests: [not_null]
+      - name: is_comparable
+        tests: [not_null]
+      - name: is_structural_outlier
+        tests: [not_null]
+      - name: execution_status
+        tests:
+          - not_null
+          - accepted_values:
+              values: [closed]

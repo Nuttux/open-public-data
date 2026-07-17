@@ -4,11 +4,12 @@ import type { ReactNode } from "react";
 import { useT } from "@/lib/localeContext";
 
 /**
- * Shared FY2018 systems-break note (SF build plan, cross-cutting rule 1):
- * San Francisco migrated its financial system to PeopleSoft at FY2018 —
- * contract numbers, nonprofit flags, program detail and vendor granularity
- * all start or change shape that year. Every SF page whose series kink at
- * FY2018 renders this ONE note (copy lives in the shared us.sf.fy2018.*
+ * THE shared FY2018 systems-break note (SF build plan, cross-cutting rule 1):
+ * in FY2018 the City moved its financial system to PeopleSoft, and contract
+ * numbers, nonprofit flags, program detail and vendor granularity all start
+ * or change that year — the chart of accounts itself switched from legacy
+ * numeric codes to the modern mnemonics. Every SF page whose series kink at
+ * FY2018 renders this ONE component (copy lives in the shared us.sf.fy2018.*
  * keys), or readers will invent policy stories for a systems migration.
  *
  * `variant="inline"` is the one-line ⓘ form for fiches/drawers; `extra`
@@ -45,9 +46,22 @@ export default function Fy2018Note({
     );
   }
 
+  const bullets = [
+    t("us.sf.fy2018.b.accounts"),
+    t("us.sf.fy2018.b.programs"),
+    t("us.sf.fy2018.b.contracts"),
+    t("us.sf.fy2018.b.vendors"),
+  ];
+
   return (
-    <div className="fx-callout" id={id ?? "fy2018-note"}>
-      <b>{t("us.sf.fy2018.title")}</b> {t("us.sf.fy2018.body")}
+    <div id={id ?? "fy2018-note"} className="fx-callout" role="note" style={{ marginTop: 18 }}>
+      <b>{t("us.sf.fy2018.title")}</b> {t("us.sf.fy2018.intro")}
+      <ul style={{ margin: "10px 0 0", paddingLeft: 18, display: "grid", gap: 4 }}>
+        {bullets.map((b, i) => (
+          <li key={i} style={{ lineHeight: 1.5 }}>{b}</li>
+        ))}
+      </ul>
+      <p style={{ margin: "10px 0 0" }}>{t("us.sf.fy2018.consequence")}</p>
       {extra}
     </div>
   );

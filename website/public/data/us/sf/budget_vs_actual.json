@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-16T21:44:09.823295+00:00",
+  "generated_at": "2026-07-16T21:33:04.426397+00:00",
   "source_pipeline": "configs/countries/us.yaml → sync_socrata.py + sync_census_popest.py → raw.us_sf_* → dbt_us_staging → dbt_us_analytics → dbt_us_marts → export_us_sf.py",
   "country": "us",
   "scale": "city",

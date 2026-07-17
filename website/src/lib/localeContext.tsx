@@ -145,3 +145,31 @@ export function useLocale() {
 export function useT() {
   return useContext(LocaleContext).t;
 }
+
+/**
+ * Subtree locale override — re-provides the context with a FIXED locale and
+ * an inert setLocale. US routes are EN-only (ADR-0010 D3: "the FR/EN toggle
+ * is hidden or inert on US routes"): without this, shared-chrome strings
+ * (DetailDrawer buttons, PageTOC aria…) render French for fr-locale visitors
+ * on /us. Additive — France behavior unchanged (nothing wraps FR routes).
+ * NB the root @drawer slot renders OUTSIDE nested layouts, so US drawer
+ * pages must apply this wrapper themselves.
+ */
+export function ForcedLocale({
+  locale,
+  children,
+}: {
+  locale: Locale;
+  children: ReactNode;
+}) {
+  const t = useCallback(
+    (key: string): string => DICTIONARIES[locale][key] ?? DICTIONARIES.fr[key] ?? key,
+    [locale],
+  );
+  const setLocale = useCallback(() => {}, []);
+  return (
+    <LocaleContext.Provider value={{ locale, setLocale, t }}>
+      {children}
+    </LocaleContext.Provider>
+  );
+}
