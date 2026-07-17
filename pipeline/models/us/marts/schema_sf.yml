@@ -50,7 +50,10 @@ models:
       SF employee compensation aggregates per FISCAL year (year_type =
       'Fiscal' only — the Calendar/Fiscal filter lives here, not in core),
       2013-2025: salary/benefit component totals, distinct-employee
-      headcount, per-employee mean/median.
+      headcount, per-employee mean and EXACT median, the
+      overtime-exceeds-salary counters ($1k floor documented in
+      int_us_sf_comp_employee_year), and per-resident scaling on Census
+      years (2020-2025).
     columns:
       - name: fiscal_year
         tests: [not_null, unique]
@@ -62,6 +65,154 @@ models:
       - name: total_compensation_usd
         tests: [not_null]
       - name: n_employees
+        tests: [not_null]
+      - name: median_total_comp_usd
+        tests: [not_null]
+      - name: n_ot_exceeds_salary_floored
+        tests: [not_null]
+      - name: source_url
+        tests: [not_null]
+
+  - name: mart_us_sf_payroll_by_dept_year
+    description: >
+      SF payroll by department × fiscal year, 2013-2025 — PUBLISHED rows
+      only (dial B: department-years under 5 distinct employees fold into
+      citywide totals; the fold is asserted ≤ 4 employees/yr by
+      assert_us_sf_payroll_dept_totals_match_by_year). KEYED ON
+      department_code with canonical latest labels — labels break at
+      FY2017 (block study §5).
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns: [fiscal_year, department_code]
+    columns:
+      - name: fiscal_year
+        tests: [not_null]
+      - name: year_type
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['Fiscal']
+      - name: department_code
+        tests: [not_null]
+      - name: department
+        tests: [not_null]
+      - name: organization_group
+        tests: [not_null]
+      - name: total_compensation_usd
+        tests: [not_null]
+      - name: n_employees
+        tests: [not_null]
+      - name: source_url
+        tests: [not_null]
+
+  - name: mart_us_sf_payroll_by_family_year
+    description: >
+      SF payroll drill grain — department × job family × fiscal year with
+      the dial-B small-cell rule applied in the mart: every row covers
+      ≥ 5 distinct employees; sub-threshold cells pool into a visible
+      per-department "Other roles" row; pools under 5 fold into the
+      department total with no row
+      (assert_us_sf_payroll_family_cells_reconcile). Junk families
+      reclassified + 16 display families from the two in-session seeds.
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns: [fiscal_year, department_code, family_code]
+    columns:
+      - name: fiscal_year
+        tests: [not_null]
+      - name: department_code
+        tests: [not_null]
+      - name: family_code
+        tests: [not_null]
+      - name: family_label
+        tests: [not_null]
+      - name: display_family
+        tests:
+          - not_null
+          - accepted_values:
+              values:
+                - Health & Hospitals
+                - Police
+                - Fire
+                - Justice & Corrections
+                - Security, Dispatch & Protection
+                - Transit Operations
+                - Trades & Maintenance
+                - Engineering & Inspection
+                - Social & Community Services
+                - Administration & Finance
+                - Management & Officials
+                - Information Technology
+                - Culture, Parks & Libraries
+                - Airport & Port Operations
+                - Custodial, Food & Service Aides
+                - Other & Unassigned
+                - Other roles
+      - name: n_employees
+        tests: [not_null]
+      - name: total_compensation_usd
+        tests: [not_null]
+      - name: source_url
+        tests: [not_null]
+
+  - name: mart_us_sf_payroll_distribution
+    description: >
+      SF payroll distribution per fiscal year (citywide, person grain):
+      EXACT percentiles p25-p99 (p10 deliberately not published —
+      part-timer pollution), threshold counts, and a $25k-bucket histogram
+      0-500k as an ARRAY column (sparse top-tail buckets merged at export
+      time). Σ histogram + n_at_or_above_500k = n_employees is tested.
+    columns:
+      - name: fiscal_year
+        tests: [not_null, unique]
+      - name: n_employees
+        tests: [not_null]
+      - name: p25_usd
+        tests: [not_null]
+      - name: p50_usd
+        tests: [not_null]
+      - name: p99_usd
+        tests: [not_null]
+      - name: source_url
+        tests: [not_null]
+
+  - name: mart_us_sf_payroll_high_earner_titles
+    description: >
+      Composition of the >$400k-total-comp group in the latest fiscal
+      year, by primary job title — COUNT-ONLY (no dollar columns), titles
+      with n ≥ 5 plus one remainder row. Exists so the page's
+      public-safety/physician framing of high earners is pipeline data,
+      not prose.
+    columns:
+      - name: fiscal_year
+        tests: [not_null]
+      - name: threshold_usd
+        tests: [not_null]
+      - name: job_title
+        tests: [not_null]
+      - name: n_employees
+        tests: [not_null]
+      - name: source_url
+        tests: [not_null]
+
+  - name: mart_us_sf_payroll_ot_titles
+    description: >
+      Top 10 job titles by overtime dollars in the latest fiscal year,
+      filtered to titles with ≥ 100 employees citywide (title-level detail
+      is safe at that size; a smaller title drops off the list rather than
+      shipping a small cell).
+    columns:
+      - name: fiscal_year
+        tests: [not_null]
+      - name: job_code
+        tests: [not_null, unique]
+      - name: job_title
+        tests: [not_null]
+      - name: n_employees
+        tests: [not_null]
+      - name: overtime_usd
+        tests: [not_null]
+      - name: source_url
         tests: [not_null]
 
   - name: mart_us_sf_budget_vs_actual

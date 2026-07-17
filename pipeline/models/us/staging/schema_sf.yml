@@ -131,3 +131,58 @@ models:
         tests: [not_null]
       - name: classified_at
         tests: [not_null]
+
+  - name: stg_us_sf_job_family_display
+    description: >
+      SF payroll display-family map (1:1 with seed_us_sf_job_family_display):
+      the source's 59 native job-family codes + the synthetic ELEC family,
+      grouped by hand into 16 citizen-readable display families. Display
+      grouping only — amounts always come from the comp data.
+    columns:
+      - name: job_family_code
+        tests: [not_null, unique]
+      - name: display_family
+        tests:
+          - not_null
+          - accepted_values:
+              values:
+                - Health & Hospitals
+                - Police
+                - Fire
+                - Justice & Corrections
+                - Security, Dispatch & Protection
+                - Transit Operations
+                - Trades & Maintenance
+                - Engineering & Inspection
+                - Social & Community Services
+                - Administration & Finance
+                - Management & Officials
+                - Information Technology
+                - Culture, Parks & Libraries
+                - Airport & Port Operations
+                - Custodial, Food & Service Aides
+                - Other & Unassigned
+      - name: classification_method
+        tests: [not_null]
+      - name: classified_at
+        tests: [not_null]
+
+  - name: stg_us_sf_job_reclass
+    description: >
+      SF payroll junk-title reclassification (1:1 with
+      seed_us_sf_job_reclass): the 103 job codes the source files under
+      "Untitled"/"Unassigned", assigned by hand to real families. Applied
+      only where the native family is junk — never overrides a source value.
+    columns:
+      - name: job_code
+        tests: [not_null, unique]
+      - name: reclass_family_code
+        tests:
+          - not_null
+          - relationships:
+              to: ref('stg_us_sf_job_family_display')
+              field: job_family_code
+      - name: note
+        tests: [not_null]
+      - name: classified_at
+        tests: [not_null]
