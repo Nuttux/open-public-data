@@ -60,7 +60,9 @@ export const PLACES: Place[] = [
     currency: "USD",
     dataNamespace: "us/sf",
     hub: false,
-    modules: [],
+    modules: [
+      { slug: "contracts", labelKey: "us.sf.nav.contracts" },
+    ],
   },
 ];
 
