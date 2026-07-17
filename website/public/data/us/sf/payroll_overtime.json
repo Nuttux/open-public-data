@@ -1,0 +1,780 @@
+{
+  "generated_at": "2026-07-16T21:42:30.552777+00:00",
+  "source_pipeline": "configs/countries/us.yaml → sync_socrata.py + sync_census_popest.py → raw.us_sf_employee_comp → dbt_us_staging (+ seeds seed_us_sf_job_family_display / seed_us_sf_job_reclass) → dbt_us_intermediate → dbt_us_analytics → dbt_us_marts → export_us_sf_payroll.py",
+  "country": "us",
+  "scale": "city",
+  "place": "sf",
+  "unit": "USD",
+  "as_of": "2026-07-13T10:19:58+00:00",
+  "source": {
+    "name": "Employee Compensation",
+    "dataset_id": "88g8-5mnd",
+    "source_url": "https://data.sfgov.org/d/88g8-5mnd",
+    "attribution": "SF Controller's Office",
+    "rows_updated_at": "2026-07-13T10:19:58+00:00"
+  },
+  "fiscal_year_note": "SF fiscal year N runs July 1 (N-1) to June 30 N. All figures are FISCAL-year accounting only — the source publishes every row under BOTH Calendar and Fiscal accountings and mixing them double-counts (the dataset's #1 trap).",
+  "framing_note": "Overtime concentration reflects how staffing gaps in 24/7 services (police patrol, jails, transit, hospitals, fire) are covered — existing staff working paid extra hours when positions go unfilled. This file measures the pattern; it does not adjudicate it.",
+  "dept_series_note": "Named department series start FY2017 (the study's label-clean window); full department histories keyed on stable codes live in payroll_by_dept_year.json. Top 8 departments by FY2025 overtime.",
+  "counter_note": "n_ot_exceeds_salary_* count employees whose overtime pay exceeded their base salary in the fiscal year. The floored variant requires salary > $1,000: without it, FY2019 shows a 1,900-person spike that is an artifact of job-change rows with near-zero salaries. Use the floored series; the naive one is published to keep the artifact measurable.",
+  "titles_note": "Top job titles by overtime in the latest fiscal year, restricted to titles with at least 100 employees citywide.",
+  "ot_salary_floor_usd": 1000,
+  "privacy": {
+    "rule": "No dollar aggregate in this file covers fewer than 5 employees. Groups under 5 people are pooled into visible 'Other roles' rows per department; pools that would themselves stay under the threshold are folded into the department total with no row. Departments under the threshold (the Law Library in practice, 2-3 people) are included in citywide totals but not listed.",
+    "measured_cost": "Pooling moves ~1.2% of total dollars into visible 'Other roles' rows; the department-level fold is under $600k/year (<0.01% of compensation). Nothing is removed from totals.",
+    "count_only_disclosures": "Counts of employees above fixed thresholds (>$200k…>$500k) are published exactly, including values under 5: they attach no dollar amount to any group. The source itself is public at row level (pseudonymized); this site publishes aggregates only."
+  },
+  "citywide": [
+    {
+      "fiscal_year": 2013,
+      "overtime_usd": 163729791.23,
+      "total_compensation_usd": 3793165149.6,
+      "ot_share_of_comp": 0.043164,
+      "n_ot_exceeds_salary_naive": 107,
+      "n_ot_exceeds_salary_floored": 38
+    },
+    {
+      "fiscal_year": 2014,
+      "overtime_usd": 174605791.52,
+      "total_compensation_usd": 3941699740.63,
+      "ot_share_of_comp": 0.044297,
+      "n_ot_exceeds_salary_naive": 91,
+      "n_ot_exceeds_salary_floored": 45
+    },
+    {
+      "fiscal_year": 2015,
+      "overtime_usd": 186434218.28,
+      "total_compensation_usd": 4179072336.48,
+      "ot_share_of_comp": 0.044611,
+      "n_ot_exceeds_salary_naive": 70,
+      "n_ot_exceeds_salary_floored": 32
+    },
+    {
+      "fiscal_year": 2016,
+      "overtime_usd": 214810921.31,
+      "total_compensation_usd": 4393634525.81,
+      "ot_share_of_comp": 0.048891,
+      "n_ot_exceeds_salary_naive": 70,
+      "n_ot_exceeds_salary_floored": 42
+    },
+    {
+      "fiscal_year": 2017,
+      "overtime_usd": 252791104.65,
+      "total_compensation_usd": 4655608529.8,
+      "ot_share_of_comp": 0.054298,
+      "n_ot_exceeds_salary_naive": 76,
+      "n_ot_exceeds_salary_floored": 60
+    },
+    {
+      "fiscal_year": 2018,
+      "overtime_usd": 270372371.15,
+      "total_compensation_usd": 4948954074.82,
+      "ot_share_of_comp": 0.054632,
+      "n_ot_exceeds_salary_naive": 100,
+      "n_ot_exceeds_salary_floored": 86
+    },
+    {
+      "fiscal_year": 2019,
+      "overtime_usd": 309893912.55,
+      "total_compensation_usd": 5186149280.94,
+      "ot_share_of_comp": 0.059754,
+      "n_ot_exceeds_salary_naive": 1903,
+      "n_ot_exceeds_salary_floored": 147
+    },
+    {
+      "fiscal_year": 2020,
+      "overtime_usd": 309626323.91,
+      "total_compensation_usd": 5471254950.6,
+      "ot_share_of_comp": 0.056591,
+      "n_ot_exceeds_salary_naive": 150,
+      "n_ot_exceeds_salary_floored": 125
+    },
+    {
+      "fiscal_year": 2021,
+      "overtime_usd": 265996493.08,
+      "total_compensation_usd": 5580757280.65,
+      "ot_share_of_comp": 0.047663,
+      "n_ot_exceeds_salary_naive": 148,
+      "n_ot_exceeds_salary_floored": 112
+    },
+    {
+      "fiscal_year": 2022,
+      "overtime_usd": 367083683.64,
+      "total_compensation_usd": 5781613083.35,
+      "ot_share_of_comp": 0.063492,
+      "n_ot_exceeds_salary_naive": 228,
+      "n_ot_exceeds_salary_floored": 200
+    },
+    {
+      "fiscal_year": 2023,
+      "overtime_usd": 434498804.43,
+      "total_compensation_usd": 6108155886.12,
+      "ot_share_of_comp": 0.071134,
+      "n_ot_exceeds_salary_naive": 476,
+      "n_ot_exceeds_salary_floored": 313
+    },
+    {
+      "fiscal_year": 2024,
+      "overtime_usd": 468861634.07,
+      "total_compensation_usd": 6482379724.36,
+      "ot_share_of_comp": 0.072329,
+      "n_ot_exceeds_salary_naive": 425,
+      "n_ot_exceeds_salary_floored": 353
+    },
+    {
+      "fiscal_year": 2025,
+      "overtime_usd": 471006259.12,
+      "total_compensation_usd": 6918815425.94,
+      "ot_share_of_comp": 0.068076,
+      "n_ot_exceeds_salary_naive": 388,
+      "n_ot_exceeds_salary_floored": 373
+    }
+  ],
+  "departments": [
+    {
+      "department_code": "POL",
+      "department": "Police",
+      "organization_group": "Public Protection",
+      "series": [
+        {
+          "fiscal_year": 2017,
+          "overtime_usd": 50701428.91,
+          "total_compensation_usd": 502824398.39,
+          "ot_share_of_comp": 0.100833,
+          "n_employees": 3249
+        },
+        {
+          "fiscal_year": 2018,
+          "overtime_usd": 56074167.89,
+          "total_compensation_usd": 517720667.4,
+          "ot_share_of_comp": 0.10831,
+          "n_employees": 3135
+        },
+        {
+          "fiscal_year": 2019,
+          "overtime_usd": 62751932.55,
+          "total_compensation_usd": 549141196.08,
+          "ot_share_of_comp": 0.114273,
+          "n_employees": 3412
+        },
+        {
+          "fiscal_year": 2020,
+          "overtime_usd": 65868652.41,
+          "total_compensation_usd": 578830690.35,
+          "ot_share_of_comp": 0.113796,
+          "n_employees": 3179
+        },
+        {
+          "fiscal_year": 2021,
+          "overtime_usd": 52766030.05,
+          "total_compensation_usd": 575106574.08,
+          "ot_share_of_comp": 0.09175,
+          "n_employees": 3081
+        },
+        {
+          "fiscal_year": 2022,
+          "overtime_usd": 81283052.35,
+          "total_compensation_usd": 583183333.41,
+          "ot_share_of_comp": 0.139378,
+          "n_employees": 3001
+        },
+        {
+          "fiscal_year": 2023,
+          "overtime_usd": 117846382.06,
+          "total_compensation_usd": 633667019.54,
+          "ot_share_of_comp": 0.185975,
+          "n_employees": 2891
+        },
+        {
+          "fiscal_year": 2024,
+          "overtime_usd": 143230750.99,
+          "total_compensation_usd": 675680914.15,
+          "ot_share_of_comp": 0.21198,
+          "n_employees": 2889
+        },
+        {
+          "fiscal_year": 2025,
+          "overtime_usd": 147221287.8,
+          "total_compensation_usd": 714143931.48,
+          "ot_share_of_comp": 0.206151,
+          "n_employees": 3007
+        }
+      ]
+    },
+    {
+      "department_code": "MTA",
+      "department": "Municipal Transportation Agcy",
+      "organization_group": "Public Works, Transportation & Commerce",
+      "series": [
+        {
+          "fiscal_year": 2017,
+          "overtime_usd": 68423694.36,
+          "total_compensation_usd": 703157901.28,
+          "ot_share_of_comp": 0.097309,
+          "n_employees": 6309
+        },
+        {
+          "fiscal_year": 2018,
+          "overtime_usd": 78072712.86,
+          "total_compensation_usd": 742376723.21,
+          "ot_share_of_comp": 0.105166,
+          "n_employees": 6315
+        },
+        {
+          "fiscal_year": 2019,
+          "overtime_usd": 94067290.96,
+          "total_compensation_usd": 773124902.97,
+          "ot_share_of_comp": 0.121672,
+          "n_employees": 6828
+        },
+        {
+          "fiscal_year": 2020,
+          "overtime_usd": 84982161.52,
+          "total_compensation_usd": 808614593.85,
+          "ot_share_of_comp": 0.105096,
+          "n_employees": 6337
+        },
+        {
+          "fiscal_year": 2021,
+          "overtime_usd": 40725096.22,
+          "total_compensation_usd": 774370047.51,
+          "ot_share_of_comp": 0.052591,
+          "n_employees": 5988
+        },
+        {
+          "fiscal_year": 2022,
+          "overtime_usd": 59480634.82,
+          "total_compensation_usd": 810602464.1,
+          "ot_share_of_comp": 0.073378,
+          "n_employees": 6238
+        },
+        {
+          "fiscal_year": 2023,
+          "overtime_usd": 74354805.45,
+          "total_compensation_usd": 870697796.18,
+          "ot_share_of_comp": 0.085397,
+          "n_employees": 6406
+        },
+        {
+          "fiscal_year": 2024,
+          "overtime_usd": 75728853.77,
+          "total_compensation_usd": 920275481.77,
+          "ot_share_of_comp": 0.082289,
+          "n_employees": 6554
+        },
+        {
+          "fiscal_year": 2025,
+          "overtime_usd": 77077036.82,
+          "total_compensation_usd": 960677279.95,
+          "ot_share_of_comp": 0.080232,
+          "n_employees": 6381
+        }
+      ]
+    },
+    {
+      "department_code": "FIR",
+      "department": "Fire Department",
+      "organization_group": "Public Protection",
+      "series": [
+        {
+          "fiscal_year": 2017,
+          "overtime_usd": 39546873.91,
+          "total_compensation_usd": 332786334.6,
+          "ot_share_of_comp": 0.118836,
+          "n_employees": 1934
+        },
+        {
+          "fiscal_year": 2018,
+          "overtime_usd": 35423023.05,
+          "total_compensation_usd": 345038364.05,
+          "ot_share_of_comp": 0.102664,
+          "n_employees": 1969
+        },
+        {
+          "fiscal_year": 2019,
+          "overtime_usd": 40506020.85,
+          "total_compensation_usd": 360986153.41,
+          "ot_share_of_comp": 0.112209,
+          "n_employees": 2039
+        },
+        {
+          "fiscal_year": 2020,
+          "overtime_usd": 37870182.69,
+          "total_compensation_usd": 376164357.17,
+          "ot_share_of_comp": 0.100675,
+          "n_employees": 1920
+        },
+        {
+          "fiscal_year": 2021,
+          "overtime_usd": 55467821.7,
+          "total_compensation_usd": 398246355.95,
+          "ot_share_of_comp": 0.13928,
+          "n_employees": 1870
+        },
+        {
+          "fiscal_year": 2022,
+          "overtime_usd": 86110156.04,
+          "total_compensation_usd": 433163112.33,
+          "ot_share_of_comp": 0.198794,
+          "n_employees": 1984
+        },
+        {
+          "fiscal_year": 2023,
+          "overtime_usd": 76423287.11,
+          "total_compensation_usd": 444514179.94,
+          "ot_share_of_comp": 0.171925,
+          "n_employees": 2012
+        },
+        {
+          "fiscal_year": 2024,
+          "overtime_usd": 72361593.29,
+          "total_compensation_usd": 457257125.54,
+          "ot_share_of_comp": 0.158251,
+          "n_employees": 2050
+        },
+        {
+          "fiscal_year": 2025,
+          "overtime_usd": 69383803.27,
+          "total_compensation_usd": 477279432.76,
+          "ot_share_of_comp": 0.145374,
+          "n_employees": 2054
+        }
+      ]
+    },
+    {
+      "department_code": "DPH",
+      "department": "Public Health",
+      "organization_group": "Community Health",
+      "series": [
+        {
+          "fiscal_year": 2017,
+          "overtime_usd": 31050257.68,
+          "total_compensation_usd": 998822571.94,
+          "ot_share_of_comp": 0.031087,
+          "n_employees": 8169
+        },
+        {
+          "fiscal_year": 2018,
+          "overtime_usd": 32526061.5,
+          "total_compensation_usd": 1078174586.87,
+          "ot_share_of_comp": 0.030168,
+          "n_employees": 8408
+        },
+        {
+          "fiscal_year": 2019,
+          "overtime_usd": 38653278.22,
+          "total_compensation_usd": 1129561781.45,
+          "ot_share_of_comp": 0.03422,
+          "n_employees": 8665
+        },
+        {
+          "fiscal_year": 2020,
+          "overtime_usd": 44701454.11,
+          "total_compensation_usd": 1191229385.62,
+          "ot_share_of_comp": 0.037525,
+          "n_employees": 8363
+        },
+        {
+          "fiscal_year": 2021,
+          "overtime_usd": 52433973.04,
+          "total_compensation_usd": 1272458607.45,
+          "ot_share_of_comp": 0.041207,
+          "n_employees": 8405
+        },
+        {
+          "fiscal_year": 2022,
+          "overtime_usd": 62008620.62,
+          "total_compensation_usd": 1317410416.97,
+          "ot_share_of_comp": 0.047069,
+          "n_employees": 8386
+        },
+        {
+          "fiscal_year": 2023,
+          "overtime_usd": 74180193.32,
+          "total_compensation_usd": 1387319254.08,
+          "ot_share_of_comp": 0.05347,
+          "n_employees": 8464
+        },
+        {
+          "fiscal_year": 2024,
+          "overtime_usd": 71697010.3,
+          "total_compensation_usd": 1458087634.11,
+          "ot_share_of_comp": 0.049172,
+          "n_employees": 8868
+        },
+        {
+          "fiscal_year": 2025,
+          "overtime_usd": 65313732.32,
+          "total_compensation_usd": 1583866801.6,
+          "ot_share_of_comp": 0.041237,
+          "n_employees": 8904
+        }
+      ]
+    },
+    {
+      "department_code": "SHF",
+      "department": "Sheriff",
+      "organization_group": "Public Protection",
+      "series": [
+        {
+          "fiscal_year": 2017,
+          "overtime_usd": 28196166.54,
+          "total_compensation_usd": 178956300.12,
+          "ot_share_of_comp": 0.157559,
+          "n_employees": 1104
+        },
+        {
+          "fiscal_year": 2018,
+          "overtime_usd": 30759867.93,
+          "total_compensation_usd": 187543470.33,
+          "ot_share_of_comp": 0.164015,
+          "n_employees": 1102
+        },
+        {
+          "fiscal_year": 2019,
+          "overtime_usd": 31230118.53,
+          "total_compensation_usd": 198217523.47,
+          "ot_share_of_comp": 0.157555,
+          "n_employees": 1139
+        },
+        {
+          "fiscal_year": 2020,
+          "overtime_usd": 35421988.81,
+          "total_compensation_usd": 210704992.27,
+          "ot_share_of_comp": 0.168112,
+          "n_employees": 1095
+        },
+        {
+          "fiscal_year": 2021,
+          "overtime_usd": 28791929.59,
+          "total_compensation_usd": 217200182.08,
+          "ot_share_of_comp": 0.132559,
+          "n_employees": 1057
+        },
+        {
+          "fiscal_year": 2022,
+          "overtime_usd": 36219858.02,
+          "total_compensation_usd": 227331387.04,
+          "ot_share_of_comp": 0.159326,
+          "n_employees": 1062
+        },
+        {
+          "fiscal_year": 2023,
+          "overtime_usd": 39957938.76,
+          "total_compensation_usd": 231652502.84,
+          "ot_share_of_comp": 0.172491,
+          "n_employees": 1025
+        },
+        {
+          "fiscal_year": 2024,
+          "overtime_usd": 47092216.0,
+          "total_compensation_usd": 239142493.08,
+          "ot_share_of_comp": 0.196921,
+          "n_employees": 1076
+        },
+        {
+          "fiscal_year": 2025,
+          "overtime_usd": 53696200.87,
+          "total_compensation_usd": 251350968.54,
+          "ot_share_of_comp": 0.21363,
+          "n_employees": 1027
+        }
+      ]
+    },
+    {
+      "department_code": "PUC",
+      "department": "Public Utilities Commission",
+      "organization_group": "Public Works, Transportation & Commerce",
+      "series": [
+        {
+          "fiscal_year": 2017,
+          "overtime_usd": 7847450.38,
+          "total_compensation_usd": 316610669.9,
+          "ot_share_of_comp": 0.024786,
+          "n_employees": 2477
+        },
+        {
+          "fiscal_year": 2018,
+          "overtime_usd": 8400947.67,
+          "total_compensation_usd": 327771803.72,
+          "ot_share_of_comp": 0.02563,
+          "n_employees": 2478
+        },
+        {
+          "fiscal_year": 2019,
+          "overtime_usd": 10010017.45,
+          "total_compensation_usd": 342616177.91,
+          "ot_share_of_comp": 0.029216,
+          "n_employees": 2628
+        },
+        {
+          "fiscal_year": 2020,
+          "overtime_usd": 8906556.91,
+          "total_compensation_usd": 361880220.71,
+          "ot_share_of_comp": 0.024612,
+          "n_employees": 2493
+        },
+        {
+          "fiscal_year": 2021,
+          "overtime_usd": 8688342.69,
+          "total_compensation_usd": 376283197.07,
+          "ot_share_of_comp": 0.02309,
+          "n_employees": 2431
+        },
+        {
+          "fiscal_year": 2022,
+          "overtime_usd": 8865800.78,
+          "total_compensation_usd": 386822445.83,
+          "ot_share_of_comp": 0.02292,
+          "n_employees": 2500
+        },
+        {
+          "fiscal_year": 2023,
+          "overtime_usd": 10191504.62,
+          "total_compensation_usd": 407072072.37,
+          "ot_share_of_comp": 0.025036,
+          "n_employees": 2480
+        },
+        {
+          "fiscal_year": 2024,
+          "overtime_usd": 11899179.46,
+          "total_compensation_usd": 436464384.2,
+          "ot_share_of_comp": 0.027263,
+          "n_employees": 2612
+        },
+        {
+          "fiscal_year": 2025,
+          "overtime_usd": 11928064.47,
+          "total_compensation_usd": 475550972.11,
+          "ot_share_of_comp": 0.025083,
+          "n_employees": 2679
+        }
+      ]
+    },
+    {
+      "department_code": "DEM",
+      "department": "Emergency Management",
+      "organization_group": "Public Protection",
+      "series": [
+        {
+          "fiscal_year": 2018,
+          "overtime_usd": 5280198.15,
+          "total_compensation_usd": 47147675.7,
+          "ot_share_of_comp": 0.111993,
+          "n_employees": 323
+        },
+        {
+          "fiscal_year": 2019,
+          "overtime_usd": 5199453.08,
+          "total_compensation_usd": 48851088.1,
+          "ot_share_of_comp": 0.106435,
+          "n_employees": 359
+        },
+        {
+          "fiscal_year": 2020,
+          "overtime_usd": 5141802.09,
+          "total_compensation_usd": 52151375.79,
+          "ot_share_of_comp": 0.098594,
+          "n_employees": 329
+        },
+        {
+          "fiscal_year": 2021,
+          "overtime_usd": 6408602.21,
+          "total_compensation_usd": 54967579.79,
+          "ot_share_of_comp": 0.116589,
+          "n_employees": 319
+        },
+        {
+          "fiscal_year": 2022,
+          "overtime_usd": 6873313.62,
+          "total_compensation_usd": 57357326.42,
+          "ot_share_of_comp": 0.119833,
+          "n_employees": 326
+        },
+        {
+          "fiscal_year": 2023,
+          "overtime_usd": 8089293.79,
+          "total_compensation_usd": 60125537.32,
+          "ot_share_of_comp": 0.13454,
+          "n_employees": 322
+        },
+        {
+          "fiscal_year": 2024,
+          "overtime_usd": 9125674.39,
+          "total_compensation_usd": 64754021.03,
+          "ot_share_of_comp": 0.140928,
+          "n_employees": 357
+        },
+        {
+          "fiscal_year": 2025,
+          "overtime_usd": 9625682.58,
+          "total_compensation_usd": 71634868.6,
+          "ot_share_of_comp": 0.134371,
+          "n_employees": 376
+        }
+      ]
+    },
+    {
+      "department_code": "AIR",
+      "department": "Airport Commission",
+      "organization_group": "Public Works, Transportation & Commerce",
+      "series": [
+        {
+          "fiscal_year": 2017,
+          "overtime_usd": 4403401.59,
+          "total_compensation_usd": 211346378.74,
+          "ot_share_of_comp": 0.020835,
+          "n_employees": 1931
+        },
+        {
+          "fiscal_year": 2018,
+          "overtime_usd": 4840059.71,
+          "total_compensation_usd": 229227399.26,
+          "ot_share_of_comp": 0.021115,
+          "n_employees": 1984
+        },
+        {
+          "fiscal_year": 2019,
+          "overtime_usd": 5705762.31,
+          "total_compensation_usd": 236035915.08,
+          "ot_share_of_comp": 0.024173,
+          "n_employees": 2095
+        },
+        {
+          "fiscal_year": 2020,
+          "overtime_usd": 5867392.49,
+          "total_compensation_usd": 252307417.81,
+          "ot_share_of_comp": 0.023255,
+          "n_employees": 1972
+        },
+        {
+          "fiscal_year": 2021,
+          "overtime_usd": 4035973.33,
+          "total_compensation_usd": 248971744.24,
+          "ot_share_of_comp": 0.016211,
+          "n_employees": 1749
+        },
+        {
+          "fiscal_year": 2022,
+          "overtime_usd": 5187637.24,
+          "total_compensation_usd": 242018984.07,
+          "ot_share_of_comp": 0.021435,
+          "n_employees": 1642
+        },
+        {
+          "fiscal_year": 2023,
+          "overtime_usd": 7054092.3,
+          "total_compensation_usd": 245375580.96,
+          "ot_share_of_comp": 0.028748,
+          "n_employees": 1662
+        },
+        {
+          "fiscal_year": 2024,
+          "overtime_usd": 8764722.6,
+          "total_compensation_usd": 271359368.93,
+          "ot_share_of_comp": 0.032299,
+          "n_employees": 1825
+        },
+        {
+          "fiscal_year": 2025,
+          "overtime_usd": 8871715.92,
+          "total_compensation_usd": 304651739.36,
+          "ot_share_of_comp": 0.029121,
+          "n_employees": 1973
+        }
+      ]
+    }
+  ],
+  "top_titles": [
+    {
+      "fiscal_year": 2025,
+      "job_title": "Police Officer 3",
+      "display_family": "Police",
+      "n_employees": 1118,
+      "n_ot_earners": 843,
+      "overtime_usd": 67002181.54,
+      "avg_ot_per_ot_earner_usd": 79480.64
+    },
+    {
+      "fiscal_year": 2025,
+      "job_title": "Sergeant 3",
+      "display_family": "Police",
+      "n_employees": 428,
+      "n_ot_earners": 415,
+      "overtime_usd": 42236211.54,
+      "avg_ot_per_ot_earner_usd": 101774.0
+    },
+    {
+      "fiscal_year": 2025,
+      "job_title": "Transit Operator",
+      "display_family": "Transit Operations",
+      "n_employees": 2618,
+      "n_ot_earners": 2362,
+      "overtime_usd": 40030282.29,
+      "avg_ot_per_ot_earner_usd": 16947.62
+    },
+    {
+      "fiscal_year": 2025,
+      "job_title": "Firefighter",
+      "display_family": "Fire",
+      "n_employees": 874,
+      "n_ot_earners": 836,
+      "overtime_usd": 28701606.58,
+      "avg_ot_per_ot_earner_usd": 34332.07
+    },
+    {
+      "fiscal_year": 2025,
+      "job_title": "Registered Nurse",
+      "display_family": "Health & Hospitals",
+      "n_employees": 1741,
+      "n_ot_earners": 1512,
+      "overtime_usd": 22617594.48,
+      "avg_ot_per_ot_earner_usd": 14958.73
+    },
+    {
+      "fiscal_year": 2025,
+      "job_title": "Deputy Sheriff (SFERS)",
+      "display_family": "Justice & Corrections",
+      "n_employees": 389,
+      "n_ot_earners": 344,
+      "overtime_usd": 20334679.2,
+      "avg_ot_per_ot_earner_usd": 59112.44
+    },
+    {
+      "fiscal_year": 2025,
+      "job_title": "Police Officer 2",
+      "display_family": "Police",
+      "n_employees": 257,
+      "n_ot_earners": 253,
+      "overtime_usd": 17289895.01,
+      "avg_ot_per_ot_earner_usd": 68339.51
+    },
+    {
+      "fiscal_year": 2025,
+      "job_title": "Deputy Sheriff",
+      "display_family": "Justice & Corrections",
+      "n_employees": 248,
+      "n_ot_earners": 221,
+      "overtime_usd": 15939265.91,
+      "avg_ot_per_ot_earner_usd": 72123.38
+    },
+    {
+      "fiscal_year": 2025,
+      "job_title": "EMT/Paramedic/Firefighter",
+      "display_family": "Fire",
+      "n_employees": 551,
+      "n_ot_earners": 504,
+      "overtime_usd": 13838460.44,
+      "avg_ot_per_ot_earner_usd": 27457.26
+    },
+    {
+      "fiscal_year": 2025,
+      "job_title": "Lieutenant, Fire Suppression",
+      "display_family": "Fire",
+      "n_employees": 203,
+      "n_ot_earners": 186,
+      "overtime_usd": 10125164.14,
+      "avg_ot_per_ot_earner_usd": 54436.37
+    }
+  ]
+}

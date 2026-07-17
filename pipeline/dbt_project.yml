@@ -309,6 +309,31 @@ seeds:
             classification_note: STRING
             classification_method: STRING
             classified_at: STRING
+        # SF payroll — native job-family code → display family (60 codes →
+        # 16 display families, by hand in-session per
+        # docs/us/block-studies/4-payroll.md). Display grouping only —
+        # amounts come from raw.us_sf_employee_comp.
+        seed_us_sf_job_family_display:
+          +column_types:
+            job_family_code: STRING
+            canonical_label: STRING
+            display_family: STRING
+            classification_method: STRING
+            classified_at: STRING
+        # SF payroll — reclassification of the 103 job codes the source
+        # leaves in the "Untitled"/"Unassigned" families (the court's own
+        # xxC scheme, mayoral staff grades, commissioners, OCII codes…).
+        # Applied ONLY where the native family is junk — never overrides
+        # a real source value.
+        seed_us_sf_job_reclass:
+          +column_types:
+            job_code: STRING
+            job_title_ref: STRING
+            reclass_family_code: STRING
+            reclass_family: STRING
+            note: STRING
+            classification_method: STRING
+            classified_at: STRING
 
 # =============================================================================
 # Configuration des modèles par couche
@@ -384,6 +409,14 @@ models:
           owner: "danielshavit92@gmail.com"
           cadence: "on-demand (sync run cadence)"
           cost_bucket: "low"  # views, no storage
+      intermediate:
+        +materialized: table
+        +schema: us_intermediate
+        +tags: ['us', 'intermediate']
+        +meta:
+          owner: "danielshavit92@gmail.com"
+          cadence: "after stg refresh"
+          cost_bucket: "low-medium"
       core:
         +materialized: table
         +schema: us_analytics

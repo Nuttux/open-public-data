@@ -1,0 +1,1588 @@
+{
+  "generated_at": "2026-07-16T21:42:30.125138+00:00",
+  "source_pipeline": "configs/countries/us.yaml → sync_socrata.py + sync_census_popest.py → raw.us_sf_employee_comp → dbt_us_staging (+ seeds seed_us_sf_job_family_display / seed_us_sf_job_reclass) → dbt_us_intermediate → dbt_us_analytics → dbt_us_marts → export_us_sf_payroll.py",
+  "country": "us",
+  "scale": "city",
+  "place": "sf",
+  "unit": "USD",
+  "as_of": "2026-07-13T10:19:58+00:00",
+  "source": {
+    "name": "Employee Compensation",
+    "dataset_id": "88g8-5mnd",
+    "source_url": "https://data.sfgov.org/d/88g8-5mnd",
+    "attribution": "SF Controller's Office",
+    "rows_updated_at": "2026-07-13T10:19:58+00:00"
+  },
+  "fiscal_year_note": "SF fiscal year N runs July 1 (N-1) to June 30 N. All figures are FISCAL-year accounting only — the source publishes every row under BOTH Calendar and Fiscal accountings and mixing them double-counts (the dataset's #1 trap).",
+  "bucket_width_usd": 25000,
+  "percentile_note": "Percentiles are exact, computed on per-person annual totals. p10 IS NOT PUBLISHED: the bottom decile is dominated by part-year and part-time staff (FY2025: ~10% of employees under $25k), and a p10 line reads as 'poverty wages' when it mostly measures partial years. The published floor is p25; the low histogram bump is annotated instead.",
+  "histogram_note": "Buckets of $25,000 from $0; the top bucket is open (ceiling_usd null). Sparse top-tail buckets (fewer than 5 people, 2013-2016 only) are merged into the open bucket so every published count covers 0 or ≥ 5 people. Employees with negative net compensation (adjustment rows, n_negative_comp) are counted in the first bucket.",
+  "high_earners": {
+    "fiscal_year": 2025,
+    "threshold_usd": 400000,
+    "note": "Composition of the above-threshold group by PRIMARY job title (each person counted once, under their highest-paying title). Count-only — no amounts beyond 'above the threshold'. Titles with at least 5 people; everyone else in the remainder row.",
+    "titles": [
+      {
+        "job_title": "Sergeant 3",
+        "display_family": "Police",
+        "n_employees": 168,
+        "is_remainder": false
+      },
+      {
+        "job_title": "Police Officer 3",
+        "display_family": "Police",
+        "n_employees": 145,
+        "is_remainder": false
+      },
+      {
+        "job_title": "Registered Nurse",
+        "display_family": "Health & Hospitals",
+        "n_employees": 95,
+        "is_remainder": false
+      },
+      {
+        "job_title": "Deputy Sheriff",
+        "display_family": "Justice & Corrections",
+        "n_employees": 63,
+        "is_remainder": false
+      },
+      {
+        "job_title": "Lieutenant 3",
+        "display_family": "Police",
+        "n_employees": 57,
+        "is_remainder": false
+      },
+      {
+        "job_title": "Sr Psychiatric Physician Spec",
+        "display_family": "Health & Hospitals",
+        "n_employees": 37,
+        "is_remainder": false
+      },
+      {
+        "job_title": "Battalion Chief, Fire Suppress",
+        "display_family": "Fire",
+        "n_employees": 28,
+        "is_remainder": false
+      },
+      {
+        "job_title": "Firefighter",
+        "display_family": "Fire",
+        "n_employees": 26,
+        "is_remainder": false
+      },
+      {
+        "job_title": "Senior Physician Specialist",
+        "display_family": "Health & Hospitals",
+        "n_employees": 25,
+        "is_remainder": false
+      },
+      {
+        "job_title": "Sheriff's Lieutenant",
+        "display_family": "Justice & Corrections",
+        "n_employees": 24,
+        "is_remainder": false
+      },
+      {
+        "job_title": "Other titles",
+        "display_family": null,
+        "n_employees": 584,
+        "is_remainder": true
+      }
+    ]
+  },
+  "privacy": {
+    "rule": "No dollar aggregate in this file covers fewer than 5 employees. Groups under 5 people are pooled into visible 'Other roles' rows per department; pools that would themselves stay under the threshold are folded into the department total with no row. Departments under the threshold (the Law Library in practice, 2-3 people) are included in citywide totals but not listed.",
+    "measured_cost": "Pooling moves ~1.2% of total dollars into visible 'Other roles' rows; the department-level fold is under $600k/year (<0.01% of compensation). Nothing is removed from totals.",
+    "count_only_disclosures": "Counts of employees above fixed thresholds (>$200k…>$500k) are published exactly, including values under 5: they attach no dollar amount to any group. The source itself is public at row level (pseudonymized); this site publishes aggregates only."
+  },
+  "points": [
+    {
+      "fiscal_year": 2013,
+      "n_employees": 37255,
+      "p25_usd": 50301.0,
+      "p50_usd": 103155.0,
+      "p75_usd": 143399.0,
+      "p90_usd": 185444.0,
+      "p99_usd": 259311.0,
+      "n_above_200k": 2590,
+      "n_above_300k": 97,
+      "n_above_400k": 1,
+      "n_above_500k": 0,
+      "n_negative_comp": 15,
+      "histogram": [
+        {
+          "floor_usd": 0,
+          "ceiling_usd": 25000,
+          "n_employees": 6886
+        },
+        {
+          "floor_usd": 25000,
+          "ceiling_usd": 50000,
+          "n_employees": 2363
+        },
+        {
+          "floor_usd": 50000,
+          "ceiling_usd": 75000,
+          "n_employees": 2330
+        },
+        {
+          "floor_usd": 75000,
+          "ceiling_usd": 100000,
+          "n_employees": 6228
+        },
+        {
+          "floor_usd": 100000,
+          "ceiling_usd": 125000,
+          "n_employees": 6552
+        },
+        {
+          "floor_usd": 125000,
+          "ceiling_usd": 150000,
+          "n_employees": 4489
+        },
+        {
+          "floor_usd": 150000,
+          "ceiling_usd": 175000,
+          "n_employees": 3517
+        },
+        {
+          "floor_usd": 175000,
+          "ceiling_usd": 200000,
+          "n_employees": 2300
+        },
+        {
+          "floor_usd": 200000,
+          "ceiling_usd": 225000,
+          "n_employees": 1251
+        },
+        {
+          "floor_usd": 225000,
+          "ceiling_usd": 250000,
+          "n_employees": 786
+        },
+        {
+          "floor_usd": 250000,
+          "ceiling_usd": 275000,
+          "n_employees": 340
+        },
+        {
+          "floor_usd": 275000,
+          "ceiling_usd": 300000,
+          "n_employees": 116
+        },
+        {
+          "floor_usd": 300000,
+          "ceiling_usd": 325000,
+          "n_employees": 42
+        },
+        {
+          "floor_usd": 325000,
+          "ceiling_usd": 350000,
+          "n_employees": 29
+        },
+        {
+          "floor_usd": 350000,
+          "ceiling_usd": 375000,
+          "n_employees": 13
+        },
+        {
+          "floor_usd": 375000,
+          "ceiling_usd": null,
+          "n_employees": 13
+        }
+      ]
+    },
+    {
+      "fiscal_year": 2014,
+      "n_employees": 38212,
+      "p25_usd": 47734.0,
+      "p50_usd": 104615.0,
+      "p75_usd": 146638.0,
+      "p90_usd": 189229.0,
+      "p99_usd": 265206.0,
+      "n_above_200k": 2990,
+      "n_above_300k": 100,
+      "n_above_400k": 7,
+      "n_above_500k": 0,
+      "n_negative_comp": 74,
+      "histogram": [
+        {
+          "floor_usd": 0,
+          "ceiling_usd": 25000,
+          "n_employees": 7206
+        },
+        {
+          "floor_usd": 25000,
+          "ceiling_usd": 50000,
+          "n_employees": 2543
+        },
+        {
+          "floor_usd": 50000,
+          "ceiling_usd": 75000,
+          "n_employees": 2348
+        },
+        {
+          "floor_usd": 75000,
+          "ceiling_usd": 100000,
+          "n_employees": 5885
+        },
+        {
+          "floor_usd": 100000,
+          "ceiling_usd": 125000,
+          "n_employees": 6325
+        },
+        {
+          "floor_usd": 125000,
+          "ceiling_usd": 150000,
+          "n_employees": 4799
+        },
+        {
+          "floor_usd": 150000,
+          "ceiling_usd": 175000,
+          "n_employees": 3592
+        },
+        {
+          "floor_usd": 175000,
+          "ceiling_usd": 200000,
+          "n_employees": 2524
+        },
+        {
+          "floor_usd": 200000,
+          "ceiling_usd": 225000,
+          "n_employees": 1402
+        },
+        {
+          "floor_usd": 225000,
+          "ceiling_usd": 250000,
+          "n_employees": 882
+        },
+        {
+          "floor_usd": 250000,
+          "ceiling_usd": 275000,
+          "n_employees": 432
+        },
+        {
+          "floor_usd": 275000,
+          "ceiling_usd": 300000,
+          "n_employees": 174
+        },
+        {
+          "floor_usd": 300000,
+          "ceiling_usd": 325000,
+          "n_employees": 50
+        },
+        {
+          "floor_usd": 325000,
+          "ceiling_usd": 350000,
+          "n_employees": 23
+        },
+        {
+          "floor_usd": 350000,
+          "ceiling_usd": 375000,
+          "n_employees": 15
+        },
+        {
+          "floor_usd": 375000,
+          "ceiling_usd": 400000,
+          "n_employees": 5
+        },
+        {
+          "floor_usd": 400000,
+          "ceiling_usd": null,
+          "n_employees": 7
+        }
+      ]
+    },
+    {
+      "fiscal_year": 2015,
+      "n_employees": 39753,
+      "p25_usd": 45882.0,
+      "p50_usd": 106623.0,
+      "p75_usd": 150225.0,
+      "p90_usd": 195149.0,
+      "p99_usd": 271510.0,
+      "n_above_200k": 3495,
+      "n_above_300k": 154,
+      "n_above_400k": 14,
+      "n_above_500k": 0,
+      "n_negative_comp": 56,
+      "histogram": [
+        {
+          "floor_usd": 0,
+          "ceiling_usd": 25000,
+          "n_employees": 7447
+        },
+        {
+          "floor_usd": 25000,
+          "ceiling_usd": 50000,
+          "n_employees": 2922
+        },
+        {
+          "floor_usd": 50000,
+          "ceiling_usd": 75000,
+          "n_employees": 2330
+        },
+        {
+          "floor_usd": 75000,
+          "ceiling_usd": 100000,
+          "n_employees": 5544
+        },
+        {
+          "floor_usd": 100000,
+          "ceiling_usd": 125000,
+          "n_employees": 6585
+        },
+        {
+          "floor_usd": 125000,
+          "ceiling_usd": 150000,
+          "n_employees": 4940
+        },
+        {
+          "floor_usd": 150000,
+          "ceiling_usd": 175000,
+          "n_employees": 3647
+        },
+        {
+          "floor_usd": 175000,
+          "ceiling_usd": 200000,
+          "n_employees": 2843
+        },
+        {
+          "floor_usd": 200000,
+          "ceiling_usd": 225000,
+          "n_employees": 1693
+        },
+        {
+          "floor_usd": 225000,
+          "ceiling_usd": 250000,
+          "n_employees": 868
+        },
+        {
+          "floor_usd": 250000,
+          "ceiling_usd": 275000,
+          "n_employees": 571
+        },
+        {
+          "floor_usd": 275000,
+          "ceiling_usd": 300000,
+          "n_employees": 209
+        },
+        {
+          "floor_usd": 300000,
+          "ceiling_usd": 325000,
+          "n_employees": 89
+        },
+        {
+          "floor_usd": 325000,
+          "ceiling_usd": 350000,
+          "n_employees": 28
+        },
+        {
+          "floor_usd": 350000,
+          "ceiling_usd": 375000,
+          "n_employees": 20
+        },
+        {
+          "floor_usd": 375000,
+          "ceiling_usd": null,
+          "n_employees": 17
+        }
+      ]
+    },
+    {
+      "fiscal_year": 2016,
+      "n_employees": 41167,
+      "p25_usd": 48540.0,
+      "p50_usd": 107363.0,
+      "p75_usd": 151633.0,
+      "p90_usd": 197895.0,
+      "p99_usd": 276603.0,
+      "n_above_200k": 3898,
+      "n_above_300k": 190,
+      "n_above_400k": 11,
+      "n_above_500k": 1,
+      "n_negative_comp": 31,
+      "histogram": [
+        {
+          "floor_usd": 0,
+          "ceiling_usd": 25000,
+          "n_employees": 7490
+        },
+        {
+          "floor_usd": 25000,
+          "ceiling_usd": 50000,
+          "n_employees": 2914
+        },
+        {
+          "floor_usd": 50000,
+          "ceiling_usd": 75000,
+          "n_employees": 2409
+        },
+        {
+          "floor_usd": 75000,
+          "ceiling_usd": 100000,
+          "n_employees": 5919
+        },
+        {
+          "floor_usd": 100000,
+          "ceiling_usd": 125000,
+          "n_employees": 6739
+        },
+        {
+          "floor_usd": 125000,
+          "ceiling_usd": 150000,
+          "n_employees": 5090
+        },
+        {
+          "floor_usd": 150000,
+          "ceiling_usd": 175000,
+          "n_employees": 3749
+        },
+        {
+          "floor_usd": 175000,
+          "ceiling_usd": 200000,
+          "n_employees": 2959
+        },
+        {
+          "floor_usd": 200000,
+          "ceiling_usd": 225000,
+          "n_employees": 1797
+        },
+        {
+          "floor_usd": 225000,
+          "ceiling_usd": 250000,
+          "n_employees": 975
+        },
+        {
+          "floor_usd": 250000,
+          "ceiling_usd": 275000,
+          "n_employees": 696
+        },
+        {
+          "floor_usd": 275000,
+          "ceiling_usd": 300000,
+          "n_employees": 240
+        },
+        {
+          "floor_usd": 300000,
+          "ceiling_usd": 325000,
+          "n_employees": 92
+        },
+        {
+          "floor_usd": 325000,
+          "ceiling_usd": 350000,
+          "n_employees": 51
+        },
+        {
+          "floor_usd": 350000,
+          "ceiling_usd": 375000,
+          "n_employees": 27
+        },
+        {
+          "floor_usd": 375000,
+          "ceiling_usd": 400000,
+          "n_employees": 9
+        },
+        {
+          "floor_usd": 400000,
+          "ceiling_usd": 425000,
+          "n_employees": 6
+        },
+        {
+          "floor_usd": 425000,
+          "ceiling_usd": null,
+          "n_employees": 5
+        }
+      ]
+    },
+    {
+      "fiscal_year": 2017,
+      "n_employees": 39597,
+      "p25_usd": 66591.0,
+      "p50_usd": 114825.0,
+      "p75_usd": 162874.0,
+      "p90_usd": 212762.0,
+      "p99_usd": 331809.0,
+      "n_above_200k": 5072,
+      "n_above_300k": 658,
+      "n_above_400k": 137,
+      "n_above_500k": 47,
+      "n_negative_comp": 2,
+      "histogram": [
+        {
+          "floor_usd": 0,
+          "ceiling_usd": 25000,
+          "n_employees": 6241
+        },
+        {
+          "floor_usd": 25000,
+          "ceiling_usd": 50000,
+          "n_employees": 2363
+        },
+        {
+          "floor_usd": 50000,
+          "ceiling_usd": 75000,
+          "n_employees": 2034
+        },
+        {
+          "floor_usd": 75000,
+          "ceiling_usd": 100000,
+          "n_employees": 5384
+        },
+        {
+          "floor_usd": 100000,
+          "ceiling_usd": 125000,
+          "n_employees": 6444
+        },
+        {
+          "floor_usd": 125000,
+          "ceiling_usd": 150000,
+          "n_employees": 5317
+        },
+        {
+          "floor_usd": 150000,
+          "ceiling_usd": 175000,
+          "n_employees": 3832
+        },
+        {
+          "floor_usd": 175000,
+          "ceiling_usd": 200000,
+          "n_employees": 2910
+        },
+        {
+          "floor_usd": 200000,
+          "ceiling_usd": 225000,
+          "n_employees": 2004
+        },
+        {
+          "floor_usd": 225000,
+          "ceiling_usd": 250000,
+          "n_employees": 1170
+        },
+        {
+          "floor_usd": 250000,
+          "ceiling_usd": 275000,
+          "n_employees": 834
+        },
+        {
+          "floor_usd": 275000,
+          "ceiling_usd": 300000,
+          "n_employees": 406
+        },
+        {
+          "floor_usd": 300000,
+          "ceiling_usd": 325000,
+          "n_employees": 217
+        },
+        {
+          "floor_usd": 325000,
+          "ceiling_usd": 350000,
+          "n_employees": 147
+        },
+        {
+          "floor_usd": 350000,
+          "ceiling_usd": 375000,
+          "n_employees": 100
+        },
+        {
+          "floor_usd": 375000,
+          "ceiling_usd": 400000,
+          "n_employees": 57
+        },
+        {
+          "floor_usd": 400000,
+          "ceiling_usd": 425000,
+          "n_employees": 30
+        },
+        {
+          "floor_usd": 425000,
+          "ceiling_usd": 450000,
+          "n_employees": 22
+        },
+        {
+          "floor_usd": 450000,
+          "ceiling_usd": 475000,
+          "n_employees": 15
+        },
+        {
+          "floor_usd": 475000,
+          "ceiling_usd": 500000,
+          "n_employees": 23
+        },
+        {
+          "floor_usd": 500000,
+          "ceiling_usd": null,
+          "n_employees": 47
+        }
+      ]
+    },
+    {
+      "fiscal_year": 2018,
+      "n_employees": 40242,
+      "p25_usd": 72145.0,
+      "p50_usd": 120008.0,
+      "p75_usd": 169858.0,
+      "p90_usd": 220417.0,
+      "p99_usd": 345868.0,
+      "n_above_200k": 5961,
+      "n_above_300k": 828,
+      "n_above_400k": 189,
+      "n_above_500k": 73,
+      "n_negative_comp": 5,
+      "histogram": [
+        {
+          "floor_usd": 0,
+          "ceiling_usd": 25000,
+          "n_employees": 6089
+        },
+        {
+          "floor_usd": 25000,
+          "ceiling_usd": 50000,
+          "n_employees": 2300
+        },
+        {
+          "floor_usd": 50000,
+          "ceiling_usd": 75000,
+          "n_employees": 1922
+        },
+        {
+          "floor_usd": 75000,
+          "ceiling_usd": 100000,
+          "n_employees": 4508
+        },
+        {
+          "floor_usd": 100000,
+          "ceiling_usd": 125000,
+          "n_employees": 6673
+        },
+        {
+          "floor_usd": 125000,
+          "ceiling_usd": 150000,
+          "n_employees": 5492
+        },
+        {
+          "floor_usd": 150000,
+          "ceiling_usd": 175000,
+          "n_employees": 3971
+        },
+        {
+          "floor_usd": 175000,
+          "ceiling_usd": 200000,
+          "n_employees": 3326
+        },
+        {
+          "floor_usd": 200000,
+          "ceiling_usd": 225000,
+          "n_employees": 2246
+        },
+        {
+          "floor_usd": 225000,
+          "ceiling_usd": 250000,
+          "n_employees": 1433
+        },
+        {
+          "floor_usd": 250000,
+          "ceiling_usd": 275000,
+          "n_employees": 977
+        },
+        {
+          "floor_usd": 275000,
+          "ceiling_usd": 300000,
+          "n_employees": 477
+        },
+        {
+          "floor_usd": 300000,
+          "ceiling_usd": 325000,
+          "n_employees": 269
+        },
+        {
+          "floor_usd": 325000,
+          "ceiling_usd": 350000,
+          "n_employees": 176
+        },
+        {
+          "floor_usd": 350000,
+          "ceiling_usd": 375000,
+          "n_employees": 118
+        },
+        {
+          "floor_usd": 375000,
+          "ceiling_usd": 400000,
+          "n_employees": 76
+        },
+        {
+          "floor_usd": 400000,
+          "ceiling_usd": 425000,
+          "n_employees": 54
+        },
+        {
+          "floor_usd": 425000,
+          "ceiling_usd": 450000,
+          "n_employees": 33
+        },
+        {
+          "floor_usd": 450000,
+          "ceiling_usd": 475000,
+          "n_employees": 16
+        },
+        {
+          "floor_usd": 475000,
+          "ceiling_usd": 500000,
+          "n_employees": 13
+        },
+        {
+          "floor_usd": 500000,
+          "ceiling_usd": null,
+          "n_employees": 73
+        }
+      ]
+    },
+    {
+      "fiscal_year": 2019,
+      "n_employees": 41848,
+      "p25_usd": 61955.0,
+      "p50_usd": 122413.0,
+      "p75_usd": 174549.0,
+      "p90_usd": 227769.0,
+      "p99_usd": 359713.0,
+      "n_above_200k": 6893,
+      "n_above_300k": 1023,
+      "n_above_400k": 251,
+      "n_above_500k": 92,
+      "n_negative_comp": 9,
+      "histogram": [
+        {
+          "floor_usd": 0,
+          "ceiling_usd": 25000,
+          "n_employees": 7477
+        },
+        {
+          "floor_usd": 25000,
+          "ceiling_usd": 50000,
+          "n_employees": 2099
+        },
+        {
+          "floor_usd": 50000,
+          "ceiling_usd": 75000,
+          "n_employees": 1895
+        },
+        {
+          "floor_usd": 75000,
+          "ceiling_usd": 100000,
+          "n_employees": 3776
+        },
+        {
+          "floor_usd": 100000,
+          "ceiling_usd": 125000,
+          "n_employees": 6313
+        },
+        {
+          "floor_usd": 125000,
+          "ceiling_usd": 150000,
+          "n_employees": 5696
+        },
+        {
+          "floor_usd": 150000,
+          "ceiling_usd": 175000,
+          "n_employees": 4188
+        },
+        {
+          "floor_usd": 175000,
+          "ceiling_usd": 200000,
+          "n_employees": 3511
+        },
+        {
+          "floor_usd": 200000,
+          "ceiling_usd": 225000,
+          "n_employees": 2498
+        },
+        {
+          "floor_usd": 225000,
+          "ceiling_usd": 250000,
+          "n_employees": 1617
+        },
+        {
+          "floor_usd": 250000,
+          "ceiling_usd": 275000,
+          "n_employees": 1010
+        },
+        {
+          "floor_usd": 275000,
+          "ceiling_usd": 300000,
+          "n_employees": 745
+        },
+        {
+          "floor_usd": 300000,
+          "ceiling_usd": 325000,
+          "n_employees": 339
+        },
+        {
+          "floor_usd": 325000,
+          "ceiling_usd": 350000,
+          "n_employees": 207
+        },
+        {
+          "floor_usd": 350000,
+          "ceiling_usd": 375000,
+          "n_employees": 144
+        },
+        {
+          "floor_usd": 375000,
+          "ceiling_usd": 400000,
+          "n_employees": 82
+        },
+        {
+          "floor_usd": 400000,
+          "ceiling_usd": 425000,
+          "n_employees": 71
+        },
+        {
+          "floor_usd": 425000,
+          "ceiling_usd": 450000,
+          "n_employees": 39
+        },
+        {
+          "floor_usd": 450000,
+          "ceiling_usd": 475000,
+          "n_employees": 32
+        },
+        {
+          "floor_usd": 475000,
+          "ceiling_usd": 500000,
+          "n_employees": 17
+        },
+        {
+          "floor_usd": 500000,
+          "ceiling_usd": null,
+          "n_employees": 92
+        }
+      ]
+    },
+    {
+      "fiscal_year": 2020,
+      "n_employees": 39828,
+      "p25_usd": 85863.0,
+      "p50_usd": 133126.0,
+      "p75_usd": 187904.0,
+      "p90_usd": 242045.0,
+      "p99_usd": 384877.0,
+      "n_above_200k": 8277,
+      "n_above_300k": 1363,
+      "n_above_400k": 307,
+      "n_above_500k": 116,
+      "n_negative_comp": 9,
+      "histogram": [
+        {
+          "floor_usd": 0,
+          "ceiling_usd": 25000,
+          "n_employees": 5190
+        },
+        {
+          "floor_usd": 25000,
+          "ceiling_usd": 50000,
+          "n_employees": 2115
+        },
+        {
+          "floor_usd": 50000,
+          "ceiling_usd": 75000,
+          "n_employees": 1777
+        },
+        {
+          "floor_usd": 75000,
+          "ceiling_usd": 100000,
+          "n_employees": 2804
+        },
+        {
+          "floor_usd": 100000,
+          "ceiling_usd": 125000,
+          "n_employees": 6055
+        },
+        {
+          "floor_usd": 125000,
+          "ceiling_usd": 150000,
+          "n_employees": 5823
+        },
+        {
+          "floor_usd": 150000,
+          "ceiling_usd": 175000,
+          "n_employees": 4390
+        },
+        {
+          "floor_usd": 175000,
+          "ceiling_usd": 200000,
+          "n_employees": 3397
+        },
+        {
+          "floor_usd": 200000,
+          "ceiling_usd": 225000,
+          "n_employees": 2789
+        },
+        {
+          "floor_usd": 225000,
+          "ceiling_usd": 250000,
+          "n_employees": 2070
+        },
+        {
+          "floor_usd": 250000,
+          "ceiling_usd": 275000,
+          "n_employees": 1139
+        },
+        {
+          "floor_usd": 275000,
+          "ceiling_usd": 300000,
+          "n_employees": 916
+        },
+        {
+          "floor_usd": 300000,
+          "ceiling_usd": 325000,
+          "n_employees": 467
+        },
+        {
+          "floor_usd": 325000,
+          "ceiling_usd": 350000,
+          "n_employees": 277
+        },
+        {
+          "floor_usd": 350000,
+          "ceiling_usd": 375000,
+          "n_employees": 168
+        },
+        {
+          "floor_usd": 375000,
+          "ceiling_usd": 400000,
+          "n_employees": 144
+        },
+        {
+          "floor_usd": 400000,
+          "ceiling_usd": 425000,
+          "n_employees": 78
+        },
+        {
+          "floor_usd": 425000,
+          "ceiling_usd": 450000,
+          "n_employees": 44
+        },
+        {
+          "floor_usd": 450000,
+          "ceiling_usd": 475000,
+          "n_employees": 42
+        },
+        {
+          "floor_usd": 475000,
+          "ceiling_usd": 500000,
+          "n_employees": 27
+        },
+        {
+          "floor_usd": 500000,
+          "ceiling_usd": null,
+          "n_employees": 116
+        }
+      ]
+    },
+    {
+      "fiscal_year": 2021,
+      "n_employees": 37620,
+      "p25_usd": 102478.0,
+      "p50_usd": 141925.0,
+      "p75_usd": 197149.0,
+      "p90_usd": 253341.0,
+      "p99_usd": 405359.0,
+      "n_above_200k": 8934,
+      "n_above_300k": 1769,
+      "n_above_400k": 401,
+      "n_above_500k": 130,
+      "n_negative_comp": 10,
+      "histogram": [
+        {
+          "floor_usd": 0,
+          "ceiling_usd": 25000,
+          "n_employees": 3935
+        },
+        {
+          "floor_usd": 25000,
+          "ceiling_usd": 50000,
+          "n_employees": 1603
+        },
+        {
+          "floor_usd": 50000,
+          "ceiling_usd": 75000,
+          "n_employees": 1469
+        },
+        {
+          "floor_usd": 75000,
+          "ceiling_usd": 100000,
+          "n_employees": 1996
+        },
+        {
+          "floor_usd": 100000,
+          "ceiling_usd": 125000,
+          "n_employees": 5645
+        },
+        {
+          "floor_usd": 125000,
+          "ceiling_usd": 150000,
+          "n_employees": 5912
+        },
+        {
+          "floor_usd": 150000,
+          "ceiling_usd": 175000,
+          "n_employees": 4709
+        },
+        {
+          "floor_usd": 175000,
+          "ceiling_usd": 200000,
+          "n_employees": 3417
+        },
+        {
+          "floor_usd": 200000,
+          "ceiling_usd": 225000,
+          "n_employees": 2842
+        },
+        {
+          "floor_usd": 225000,
+          "ceiling_usd": 250000,
+          "n_employees": 2132
+        },
+        {
+          "floor_usd": 250000,
+          "ceiling_usd": 275000,
+          "n_employees": 1290
+        },
+        {
+          "floor_usd": 275000,
+          "ceiling_usd": 300000,
+          "n_employees": 901
+        },
+        {
+          "floor_usd": 300000,
+          "ceiling_usd": 325000,
+          "n_employees": 664
+        },
+        {
+          "floor_usd": 325000,
+          "ceiling_usd": 350000,
+          "n_employees": 361
+        },
+        {
+          "floor_usd": 350000,
+          "ceiling_usd": 375000,
+          "n_employees": 187
+        },
+        {
+          "floor_usd": 375000,
+          "ceiling_usd": 400000,
+          "n_employees": 156
+        },
+        {
+          "floor_usd": 400000,
+          "ceiling_usd": 425000,
+          "n_employees": 104
+        },
+        {
+          "floor_usd": 425000,
+          "ceiling_usd": 450000,
+          "n_employees": 76
+        },
+        {
+          "floor_usd": 450000,
+          "ceiling_usd": 475000,
+          "n_employees": 50
+        },
+        {
+          "floor_usd": 475000,
+          "ceiling_usd": 500000,
+          "n_employees": 41
+        },
+        {
+          "floor_usd": 500000,
+          "ceiling_usd": null,
+          "n_employees": 130
+        }
+      ]
+    },
+    {
+      "fiscal_year": 2022,
+      "n_employees": 38532,
+      "p25_usd": 93050.0,
+      "p50_usd": 143909.0,
+      "p75_usd": 202372.0,
+      "p90_usd": 266397.0,
+      "p99_usd": 428020.0,
+      "n_above_200k": 9905,
+      "n_above_300k": 2325,
+      "n_above_400k": 547,
+      "n_above_500k": 180,
+      "n_negative_comp": 9,
+      "histogram": [
+        {
+          "floor_usd": 0,
+          "ceiling_usd": 25000,
+          "n_employees": 4510
+        },
+        {
+          "floor_usd": 25000,
+          "ceiling_usd": 50000,
+          "n_employees": 1819
+        },
+        {
+          "floor_usd": 50000,
+          "ceiling_usd": 75000,
+          "n_employees": 1947
+        },
+        {
+          "floor_usd": 75000,
+          "ceiling_usd": 100000,
+          "n_employees": 1968
+        },
+        {
+          "floor_usd": 100000,
+          "ceiling_usd": 125000,
+          "n_employees": 4912
+        },
+        {
+          "floor_usd": 125000,
+          "ceiling_usd": 150000,
+          "n_employees": 5436
+        },
+        {
+          "floor_usd": 150000,
+          "ceiling_usd": 175000,
+          "n_employees": 4559
+        },
+        {
+          "floor_usd": 175000,
+          "ceiling_usd": 200000,
+          "n_employees": 3476
+        },
+        {
+          "floor_usd": 200000,
+          "ceiling_usd": 225000,
+          "n_employees": 2685
+        },
+        {
+          "floor_usd": 225000,
+          "ceiling_usd": 250000,
+          "n_employees": 2267
+        },
+        {
+          "floor_usd": 250000,
+          "ceiling_usd": 275000,
+          "n_employees": 1559
+        },
+        {
+          "floor_usd": 275000,
+          "ceiling_usd": 300000,
+          "n_employees": 1069
+        },
+        {
+          "floor_usd": 300000,
+          "ceiling_usd": 325000,
+          "n_employees": 810
+        },
+        {
+          "floor_usd": 325000,
+          "ceiling_usd": 350000,
+          "n_employees": 485
+        },
+        {
+          "floor_usd": 350000,
+          "ceiling_usd": 375000,
+          "n_employees": 313
+        },
+        {
+          "floor_usd": 375000,
+          "ceiling_usd": 400000,
+          "n_employees": 170
+        },
+        {
+          "floor_usd": 400000,
+          "ceiling_usd": 425000,
+          "n_employees": 149
+        },
+        {
+          "floor_usd": 425000,
+          "ceiling_usd": 450000,
+          "n_employees": 100
+        },
+        {
+          "floor_usd": 450000,
+          "ceiling_usd": 475000,
+          "n_employees": 61
+        },
+        {
+          "floor_usd": 475000,
+          "ceiling_usd": 500000,
+          "n_employees": 57
+        },
+        {
+          "floor_usd": 500000,
+          "ceiling_usd": null,
+          "n_employees": 180
+        }
+      ]
+    },
+    {
+      "fiscal_year": 2023,
+      "n_employees": 38945,
+      "p25_usd": 91901.0,
+      "p50_usd": 150508.0,
+      "p75_usd": 212267.0,
+      "p90_usd": 282531.0,
+      "p99_usd": 456094.0,
+      "n_above_200k": 11220,
+      "n_above_300k": 3075,
+      "n_above_400k": 773,
+      "n_above_500k": 233,
+      "n_negative_comp": 7,
+      "histogram": [
+        {
+          "floor_usd": 0,
+          "ceiling_usd": 25000,
+          "n_employees": 4773
+        },
+        {
+          "floor_usd": 25000,
+          "ceiling_usd": 50000,
+          "n_employees": 1927
+        },
+        {
+          "floor_usd": 50000,
+          "ceiling_usd": 75000,
+          "n_employees": 1819
+        },
+        {
+          "floor_usd": 75000,
+          "ceiling_usd": 100000,
+          "n_employees": 1798
+        },
+        {
+          "floor_usd": 100000,
+          "ceiling_usd": 125000,
+          "n_employees": 3905
+        },
+        {
+          "floor_usd": 125000,
+          "ceiling_usd": 150000,
+          "n_employees": 5128
+        },
+        {
+          "floor_usd": 150000,
+          "ceiling_usd": 175000,
+          "n_employees": 4752
+        },
+        {
+          "floor_usd": 175000,
+          "ceiling_usd": 200000,
+          "n_employees": 3623
+        },
+        {
+          "floor_usd": 200000,
+          "ceiling_usd": 225000,
+          "n_employees": 2778
+        },
+        {
+          "floor_usd": 225000,
+          "ceiling_usd": 250000,
+          "n_employees": 2327
+        },
+        {
+          "floor_usd": 250000,
+          "ceiling_usd": 275000,
+          "n_employees": 1769
+        },
+        {
+          "floor_usd": 275000,
+          "ceiling_usd": 300000,
+          "n_employees": 1271
+        },
+        {
+          "floor_usd": 300000,
+          "ceiling_usd": 325000,
+          "n_employees": 885
+        },
+        {
+          "floor_usd": 325000,
+          "ceiling_usd": 350000,
+          "n_employees": 674
+        },
+        {
+          "floor_usd": 350000,
+          "ceiling_usd": 375000,
+          "n_employees": 431
+        },
+        {
+          "floor_usd": 375000,
+          "ceiling_usd": 400000,
+          "n_employees": 312
+        },
+        {
+          "floor_usd": 400000,
+          "ceiling_usd": 425000,
+          "n_employees": 219
+        },
+        {
+          "floor_usd": 425000,
+          "ceiling_usd": 450000,
+          "n_employees": 138
+        },
+        {
+          "floor_usd": 450000,
+          "ceiling_usd": 475000,
+          "n_employees": 105
+        },
+        {
+          "floor_usd": 475000,
+          "ceiling_usd": 500000,
+          "n_employees": 78
+        },
+        {
+          "floor_usd": 500000,
+          "ceiling_usd": null,
+          "n_employees": 233
+        }
+      ]
+    },
+    {
+      "fiscal_year": 2024,
+      "n_employees": 40700,
+      "p25_usd": 89120.0,
+      "p50_usd": 152716.0,
+      "p75_usd": 215613.0,
+      "p90_usd": 289326.0,
+      "p99_usd": 474981.0,
+      "n_above_200k": 11995,
+      "n_above_300k": 3546,
+      "n_above_400k": 977,
+      "n_above_500k": 317,
+      "n_negative_comp": 5,
+      "histogram": [
+        {
+          "floor_usd": 0,
+          "ceiling_usd": 25000,
+          "n_employees": 5065
+        },
+        {
+          "floor_usd": 25000,
+          "ceiling_usd": 50000,
+          "n_employees": 2239
+        },
+        {
+          "floor_usd": 50000,
+          "ceiling_usd": 75000,
+          "n_employees": 1851
+        },
+        {
+          "floor_usd": 75000,
+          "ceiling_usd": 100000,
+          "n_employees": 1813
+        },
+        {
+          "floor_usd": 100000,
+          "ceiling_usd": 125000,
+          "n_employees": 3695
+        },
+        {
+          "floor_usd": 125000,
+          "ceiling_usd": 150000,
+          "n_employees": 5105
+        },
+        {
+          "floor_usd": 150000,
+          "ceiling_usd": 175000,
+          "n_employees": 4904
+        },
+        {
+          "floor_usd": 175000,
+          "ceiling_usd": 200000,
+          "n_employees": 4033
+        },
+        {
+          "floor_usd": 200000,
+          "ceiling_usd": 225000,
+          "n_employees": 2674
+        },
+        {
+          "floor_usd": 225000,
+          "ceiling_usd": 250000,
+          "n_employees": 2438
+        },
+        {
+          "floor_usd": 250000,
+          "ceiling_usd": 275000,
+          "n_employees": 1971
+        },
+        {
+          "floor_usd": 275000,
+          "ceiling_usd": 300000,
+          "n_employees": 1366
+        },
+        {
+          "floor_usd": 300000,
+          "ceiling_usd": 325000,
+          "n_employees": 956
+        },
+        {
+          "floor_usd": 325000,
+          "ceiling_usd": 350000,
+          "n_employees": 721
+        },
+        {
+          "floor_usd": 350000,
+          "ceiling_usd": 375000,
+          "n_employees": 524
+        },
+        {
+          "floor_usd": 375000,
+          "ceiling_usd": 400000,
+          "n_employees": 368
+        },
+        {
+          "floor_usd": 400000,
+          "ceiling_usd": 425000,
+          "n_employees": 257
+        },
+        {
+          "floor_usd": 425000,
+          "ceiling_usd": 450000,
+          "n_employees": 184
+        },
+        {
+          "floor_usd": 450000,
+          "ceiling_usd": 475000,
+          "n_employees": 129
+        },
+        {
+          "floor_usd": 475000,
+          "ceiling_usd": 500000,
+          "n_employees": 90
+        },
+        {
+          "floor_usd": 500000,
+          "ceiling_usd": null,
+          "n_employees": 317
+        }
+      ]
+    },
+    {
+      "fiscal_year": 2025,
+      "n_employees": 40786,
+      "p25_usd": 106367.0,
+      "p50_usd": 160118.0,
+      "p75_usd": 225576.0,
+      "p90_usd": 301632.0,
+      "p99_usd": 495279.0,
+      "n_above_200k": 13308,
+      "n_above_300k": 4161,
+      "n_above_400k": 1252,
+      "n_above_500k": 390,
+      "n_negative_comp": 3,
+      "histogram": [
+        {
+          "floor_usd": 0,
+          "ceiling_usd": 25000,
+          "n_employees": 4215
+        },
+        {
+          "floor_usd": 25000,
+          "ceiling_usd": 50000,
+          "n_employees": 1817
+        },
+        {
+          "floor_usd": 50000,
+          "ceiling_usd": 75000,
+          "n_employees": 1874
+        },
+        {
+          "floor_usd": 75000,
+          "ceiling_usd": 100000,
+          "n_employees": 1776
+        },
+        {
+          "floor_usd": 100000,
+          "ceiling_usd": 125000,
+          "n_employees": 3446
+        },
+        {
+          "floor_usd": 125000,
+          "ceiling_usd": 150000,
+          "n_employees": 5067
+        },
+        {
+          "floor_usd": 150000,
+          "ceiling_usd": 175000,
+          "n_employees": 5059
+        },
+        {
+          "floor_usd": 175000,
+          "ceiling_usd": 200000,
+          "n_employees": 4224
+        },
+        {
+          "floor_usd": 200000,
+          "ceiling_usd": 225000,
+          "n_employees": 3034
+        },
+        {
+          "floor_usd": 225000,
+          "ceiling_usd": 250000,
+          "n_employees": 2504
+        },
+        {
+          "floor_usd": 250000,
+          "ceiling_usd": 275000,
+          "n_employees": 1998
+        },
+        {
+          "floor_usd": 275000,
+          "ceiling_usd": 300000,
+          "n_employees": 1611
+        },
+        {
+          "floor_usd": 300000,
+          "ceiling_usd": 325000,
+          "n_employees": 1049
+        },
+        {
+          "floor_usd": 325000,
+          "ceiling_usd": 350000,
+          "n_employees": 843
+        },
+        {
+          "floor_usd": 350000,
+          "ceiling_usd": 375000,
+          "n_employees": 607
+        },
+        {
+          "floor_usd": 375000,
+          "ceiling_usd": 400000,
+          "n_employees": 410
+        },
+        {
+          "floor_usd": 400000,
+          "ceiling_usd": 425000,
+          "n_employees": 297
+        },
+        {
+          "floor_usd": 425000,
+          "ceiling_usd": 450000,
+          "n_employees": 259
+        },
+        {
+          "floor_usd": 450000,
+          "ceiling_usd": 475000,
+          "n_employees": 176
+        },
+        {
+          "floor_usd": 475000,
+          "ceiling_usd": 500000,
+          "n_employees": 130
+        },
+        {
+          "floor_usd": 500000,
+          "ceiling_usd": null,
+          "n_employees": 390
+        }
+      ]
+    }
+  ]
+}
