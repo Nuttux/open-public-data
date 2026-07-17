@@ -16,6 +16,9 @@ type Props = {
   basePath: string;
   /** Optional prefix label; defaults to "Exercice". */
   label?: string;
+  /** Hover title for preview years — overridable for non-French pages
+   *  (defaults to the historical French copy; additive, France unchanged). */
+  previewTitle?: string;
 };
 
 /**
@@ -31,6 +34,7 @@ export default function YearPicker({
   current,
   basePath,
   label = "Exercice",
+  previewTitle = "Aperçu non-consolidé (délibérations)",
 }: Props) {
   const votedSet = new Set(votedYears);
   const previewSet = new Set(previewYears);
@@ -59,7 +63,7 @@ export default function YearPicker({
             href={`${basePath}?year=${y}`}
             className={cls}
             scroll={false}
-            title={isPreview ? "Aperçu non-consolidé (délibérations)" : undefined}
+            title={isPreview ? previewTitle : undefined}
             onClick={() => {
               if (y === current) return;
               track("year_change", {

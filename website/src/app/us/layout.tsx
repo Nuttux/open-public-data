@@ -1,5 +1,6 @@
 import "@/app/fusion.css";
 import UsChrome from "@/components/us/UsChrome";
+import { ForcedLocale } from "@/lib/localeContext";
 
 /**
  * Layout for every /us route: registry-driven US chrome on top (ADR-0010
@@ -8,9 +9,11 @@ import UsChrome from "@/components/us/UsChrome";
  */
 export default function UsLayout({ children }: { children: React.ReactNode }) {
   return (
-    <div className="theme-fusion">
-      <UsChrome />
-      {children}
-    </div>
+    <ForcedLocale locale="en">
+      <div className="theme-fusion">
+        <UsChrome />
+        {children}
+      </div>
+    </ForcedLocale>
   );
 }
