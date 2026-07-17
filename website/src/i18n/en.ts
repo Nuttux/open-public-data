@@ -4427,6 +4427,8 @@ const en: Record<string, string> = {
   'us.chrome.nav_aria': 'United States sections',
   'us.chrome.nav.national': 'National',
   'us.chrome.nav.sf': 'San Francisco',
+  'us.chrome.menu_aria': 'Menu',
+  'us.chrome.close': 'Close',
   'us.national.kicker': 'United States · Federal finances — fiscal year {fy}',
   'us.national.title.before': 'Where the ',
   'us.national.title.em': 'federal dollar',
@@ -4812,7 +4814,7 @@ const en: Record<string, string> = {
   'us.sf.contracts.fiche.sources.rows': 'This contract in the source',
   'us.sf.contracts.fiche.sources.rows_link': 'Raw rows (JSON, data.sfgov.org)',
   // ── /us/city/sf/who-gets-paid — EN-only (values mirrored verbatim in the other locale file) ──
-  'us.sf.nav.who_gets_paid': 'San Francisco · Who gets paid',
+  'us.sf.nav.who_gets_paid': 'Who gets paid',
   'us.sf.wgp.kicker': 'United States · San Francisco — fiscal year {fy}',
   'us.sf.wgp.title.before': 'Who ',
   'us.sf.wgp.title.em': 'gets paid',
