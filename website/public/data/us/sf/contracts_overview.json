@@ -1,0 +1,782 @@
+{
+  "generated_at": "2026-07-17T08:24:43.801008+00:00",
+  "source_pipeline": "configs/countries/us.yaml → sync_socrata.py → raw.us_sf_supplier_contracts + raw.us_sf_vouchers → dbt_us_staging → dbt_us_analytics → dbt_us_marts → export_us_sf_contracts.py",
+  "country": "us",
+  "scale": "city",
+  "place": "sf",
+  "unit": "USD",
+  "as_of": "2026-07-13T09:54:19+00:00",
+  "source": {
+    "name": "Supplier Contracts",
+    "dataset_id": "cqi5-hm2d",
+    "source_url": "https://data.sfgov.org/d/cqi5-hm2d",
+    "attribution": null,
+    "rows_updated_at": "2026-07-13T09:54:19+00:00"
+  },
+  "export_date_pacific": "2026-07-17",
+  "perimeter": "Every supplier agreement in the SF Controller's register (dataset cqi5-hm2d): purchasing and construction contracts, professional services, GRANTS THE CITY GIVES OUT, rents and other non-purchasing agreements. One row per contract (prime-contractor dedupe); the 'active' portfolio is the subset whose term covers the export date.",
+  "hero": {
+    "active": {
+      "n_contracts": 5128,
+      "agreed_usd": 43357164085.38,
+      "paid_usd": 23780345191.47
+    },
+    "register": {
+      "n_contracts": 31860,
+      "agreed_usd": 93057642487.26,
+      "paid_usd": 58189360524.79,
+      "n_expired": 26362,
+      "n_unknown_end": 370
+    },
+    "active_definition": "term_end_date >= the export date (America/Los_Angeles). Contracts with no recorded end date are counted separately (n_unknown_end), never as active.",
+    "paid_definition": "paid_usd is the register's lifetime payment total per contract, which matches summed vouchers (payment detail begins FY2018 — PeopleSoft migration)."
+  },
+  "landscape": {
+    "by_type": [
+      {
+        "contract_type": "Grant Contracts (City as Grantor, previously named ‘Grants’)",
+        "n_contracts": 14475,
+        "agreed_usd": 18481729001.61,
+        "paid_usd": 12769087872.65,
+        "share_of_register_agreed": 0.198605
+      },
+      {
+        "contract_type": "Professional Services and P-Form Contracts (Charter Authority)",
+        "n_contracts": 1583,
+        "agreed_usd": 13658410769.57,
+        "paid_usd": 5707804717.64,
+        "share_of_register_agreed": 0.146774
+      },
+      {
+        "contract_type": "Non-Purchasing Contract (Rents, etc.)",
+        "n_contracts": 3418,
+        "agreed_usd": 11624525961.03,
+        "paid_usd": 5997530763.72,
+        "share_of_register_agreed": 0.124917
+      },
+      {
+        "contract_type": "Professional Services and P-Form Contracts",
+        "n_contracts": 3422,
+        "agreed_usd": 11298298486.93,
+        "paid_usd": 6984769966.0,
+        "share_of_register_agreed": 0.121412
+      },
+      {
+        "contract_type": "Construction Contracts",
+        "n_contracts": 1017,
+        "agreed_usd": 10710147163.58,
+        "paid_usd": 9959157463.17,
+        "share_of_register_agreed": 0.115092
+      },
+      {
+        "contract_type": "Purchasing Contract",
+        "n_contracts": 4068,
+        "agreed_usd": 7779935452.64,
+        "paid_usd": 1859451208.54,
+        "share_of_register_agreed": 0.083603
+      },
+      {
+        "contract_type": "Construction Contracts - Unilateral",
+        "n_contracts": 706,
+        "agreed_usd": 7146552780.26,
+        "paid_usd": 9768203907.64,
+        "share_of_register_agreed": 0.076797
+      },
+      {
+        "contract_type": "Purchasing Contract - Term Contract Commodities",
+        "n_contracts": 1359,
+        "agreed_usd": 4731007007.57,
+        "paid_usd": 1946197853.33,
+        "share_of_register_agreed": 0.05084
+      },
+      {
+        "contract_type": "Purchasing Contract – OCA Approval NOT Required",
+        "n_contracts": 207,
+        "agreed_usd": 4027450006.68,
+        "paid_usd": 1288255278.97,
+        "share_of_register_agreed": 0.043279
+      },
+      {
+        "contract_type": "Professional Services - Chapter 6",
+        "n_contracts": 1106,
+        "agreed_usd": 2486879064.23,
+        "paid_usd": 1382785801.39,
+        "share_of_register_agreed": 0.026724
+      },
+      {
+        "contract_type": "Purchasing Contract - Term Contract General Services",
+        "n_contracts": 461,
+        "agreed_usd": 1003884931.96,
+        "paid_usd": 502823025.78,
+        "share_of_register_agreed": 0.010788
+      },
+      {
+        "contract_type": "Supplier Contract used to track MOU Agreement",
+        "n_contracts": 14,
+        "agreed_usd": 88777825.99,
+        "paid_usd": 13610237.17,
+        "share_of_register_agreed": 0.000954
+      },
+      {
+        "contract_type": "Construction Contracts - Modification",
+        "n_contracts": 1,
+        "agreed_usd": 7500000.0,
+        "paid_usd": 7153377.69,
+        "share_of_register_agreed": 8.1e-05
+      },
+      {
+        "contract_type": "(not specified)",
+        "n_contracts": 1,
+        "agreed_usd": 5398820.0,
+        "paid_usd": 0.0,
+        "share_of_register_agreed": 5.8e-05
+      },
+      {
+        "contract_type": "Grant Contract AP Dept Approval Required",
+        "n_contracts": 14,
+        "agreed_usd": 4926375.0,
+        "paid_usd": 120764.42,
+        "share_of_register_agreed": 5.3e-05
+      },
+      {
+        "contract_type": "Construction Contracts - Change Order",
+        "n_contracts": 8,
+        "agreed_usd": 2218840.2,
+        "paid_usd": 2408286.68,
+        "share_of_register_agreed": 2.4e-05
+      }
+    ],
+    "grants": {
+      "n_contracts": 14475,
+      "agreed_usd": 18481729001.61,
+      "paid_usd": 12769087872.65,
+      "share_of_register_agreed": 0.198605
+    }
+  },
+  "departments": [
+    {
+      "department": "PUC Public Utilities Commsn",
+      "department_code": "PUC",
+      "n_contracts": 2243,
+      "agreed_usd": 17232796974.24,
+      "paid_usd": 13191293044.32
+    },
+    {
+      "department": "DPH Public Health",
+      "department_code": "DPH",
+      "n_contracts": 1972,
+      "agreed_usd": 14494770957.14,
+      "paid_usd": 7554885897.89
+    },
+    {
+      "department": "MTA Municipal Transprtn Agncy",
+      "department_code": "MTA",
+      "n_contracts": 775,
+      "agreed_usd": 11076181830.52,
+      "paid_usd": 4405739783.03
+    },
+    {
+      "department": "AIR Airport Commission",
+      "department_code": "AIR",
+      "n_contracts": 3184,
+      "agreed_usd": 9735437595.76,
+      "paid_usd": 8618596905.56
+    },
+    {
+      "department": "ADM GSA - City Administrator",
+      "department_code": "ADM",
+      "n_contracts": 5191,
+      "agreed_usd": 8491511807.15,
+      "paid_usd": 3821630911.96
+    },
+    {
+      "department": "HSA Human Services Agency",
+      "department_code": "HSA",
+      "n_contracts": 1622,
+      "agreed_usd": 6023220185.92,
+      "paid_usd": 4470464443.31
+    },
+    {
+      "department": "HOM Homelessness Services",
+      "department_code": "HOM",
+      "n_contracts": 1038,
+      "agreed_usd": 5314530864.33,
+      "paid_usd": 3379431535.82
+    },
+    {
+      "department": "MYR Mayor",
+      "department_code": "MYR",
+      "n_contracts": 5498,
+      "agreed_usd": 4759406624.41,
+      "paid_usd": 3746290719.86
+    },
+    {
+      "department": "DPW GSA - Public Works",
+      "department_code": "DPW",
+      "n_contracts": 1126,
+      "agreed_usd": 3728130244.22,
+      "paid_usd": 2336779135.16
+    },
+    {
+      "department": "CHF Children;Youth & Families",
+      "department_code": "CHF",
+      "n_contracts": 824,
+      "agreed_usd": 1874138292.93,
+      "paid_usd": 1127979659.46
+    },
+    {
+      "department": "DEC Dept of Early Childhood",
+      "department_code": "DEC",
+      "n_contracts": 144,
+      "agreed_usd": 1700889330.76,
+      "paid_usd": 911252487.5
+    },
+    {
+      "department": "RET Retirement System",
+      "department_code": "RET",
+      "n_contracts": 137,
+      "agreed_usd": 1303226367.16,
+      "paid_usd": 352458495.24
+    },
+    {
+      "department": "DT  GSA - Technology",
+      "department_code": "TIS",
+      "n_contracts": 186,
+      "agreed_usd": 1095197619.81,
+      "paid_usd": 576452914.27
+    },
+    {
+      "department": "DPW Public Works",
+      "department_code": "DPW",
+      "n_contracts": 251,
+      "agreed_usd": 924159161.48,
+      "paid_usd": 383265079.23
+    },
+    {
+      "department": "DEM Emergency Management",
+      "department_code": "DEM",
+      "n_contracts": 437,
+      "agreed_usd": 768265922.83,
+      "paid_usd": 223784014.29
+    }
+  ],
+  "non_profit": {
+    "n_contracts": 12610,
+    "agreed_usd": 25379638589.81,
+    "paid_usd": 16032579455.78,
+    "flag_definition": "non_profit = 'X' as published by the Controller on any row of the contract."
+  },
+  "sole_source": {
+    "n_contracts": 1314,
+    "agreed_usd": 4178872863.72,
+    "paid_usd": 1589070108.81,
+    "share_of_contracts": 0.041243,
+    "share_of_agreed": 0.044906,
+    "active": {
+      "n_contracts": 390,
+      "agreed_usd": 1065799001.34
+    },
+    "flag_definition": "sole_source_flg = 'X' as published by the Controller on any row of the contract. Sole-source is a lawful procurement path that requires a waiver or commission approval — each contract's purchasing-authority string states the basis and is rendered verbatim.",
+    "by_department": [
+      {
+        "department": "DPH Public Health",
+        "department_code": "DPH",
+        "n_sole": 400,
+        "sole_agreed_usd": 2145210623.58,
+        "n_contracts": 1972,
+        "dept_agreed_usd": 14494770957.14,
+        "share_of_dept_contracts": 0.20284,
+        "share_of_dept_agreed": 0.147999
+      },
+      {
+        "department": "MTA Municipal Transprtn Agncy",
+        "department_code": "MTA",
+        "n_sole": 141,
+        "sole_agreed_usd": 388154068.51,
+        "n_contracts": 775,
+        "dept_agreed_usd": 11076181830.52,
+        "share_of_dept_contracts": 0.181935,
+        "share_of_dept_agreed": 0.035044
+      },
+      {
+        "department": "HSA Human Services Agency",
+        "department_code": "HSA",
+        "n_sole": 66,
+        "sole_agreed_usd": 386168576.98,
+        "n_contracts": 1622,
+        "dept_agreed_usd": 6023220185.92,
+        "share_of_dept_contracts": 0.040691,
+        "share_of_dept_agreed": 0.064113
+      },
+      {
+        "department": "AIR Airport Commission",
+        "department_code": "AIR",
+        "n_sole": 128,
+        "sole_agreed_usd": 347812435.17,
+        "n_contracts": 3184,
+        "dept_agreed_usd": 9735437595.76,
+        "share_of_dept_contracts": 0.040201,
+        "share_of_dept_agreed": 0.035726
+      },
+      {
+        "department": "ADM GSA - City Administrator",
+        "department_code": "ADM",
+        "n_sole": 98,
+        "sole_agreed_usd": 216828108.48,
+        "n_contracts": 5191,
+        "dept_agreed_usd": 8491511807.15,
+        "share_of_dept_contracts": 0.018879,
+        "share_of_dept_agreed": 0.025535
+      },
+      {
+        "department": "DT  GSA - Technology",
+        "department_code": "TIS",
+        "n_sole": 28,
+        "sole_agreed_usd": 102022179.84,
+        "n_contracts": 186,
+        "dept_agreed_usd": 1095197619.81,
+        "share_of_dept_contracts": 0.150538,
+        "share_of_dept_agreed": 0.093154
+      },
+      {
+        "department": "DEM Emergency Management",
+        "department_code": "DEM",
+        "n_sole": 24,
+        "sole_agreed_usd": 75770119.92,
+        "n_contracts": 437,
+        "dept_agreed_usd": 768265922.83,
+        "share_of_dept_contracts": 0.05492,
+        "share_of_dept_agreed": 0.098625
+      },
+      {
+        "department": "PUC Public Utilities Commsn",
+        "department_code": "PUC",
+        "n_sole": 96,
+        "sole_agreed_usd": 71631949.77,
+        "n_contracts": 2243,
+        "dept_agreed_usd": 17232796974.24,
+        "share_of_dept_contracts": 0.0428,
+        "share_of_dept_agreed": 0.004157
+      },
+      {
+        "department": "DEC Dept of Early Childhood",
+        "department_code": "DEC",
+        "n_sole": 4,
+        "sole_agreed_usd": 68984809.0,
+        "n_contracts": 144,
+        "dept_agreed_usd": 1700889330.76,
+        "share_of_dept_contracts": 0.027778,
+        "share_of_dept_agreed": 0.040558
+      },
+      {
+        "department": "CON Controller",
+        "department_code": "CON",
+        "n_sole": 23,
+        "sole_agreed_usd": 53685626.09,
+        "n_contracts": 335,
+        "dept_agreed_usd": 233111227.34,
+        "share_of_dept_contracts": 0.068657,
+        "share_of_dept_agreed": 0.2303
+      },
+      {
+        "department": "POL Police",
+        "department_code": "POL",
+        "n_sole": 60,
+        "sole_agreed_usd": 53229551.98,
+        "n_contracts": 208,
+        "dept_agreed_usd": 183853342.54,
+        "share_of_dept_contracts": 0.288462,
+        "share_of_dept_agreed": 0.289522
+      },
+      {
+        "department": "HOM Homelessness Services",
+        "department_code": "HOM",
+        "n_sole": 21,
+        "sole_agreed_usd": 49398901.0,
+        "n_contracts": 1038,
+        "dept_agreed_usd": 5314530864.33,
+        "share_of_dept_contracts": 0.020231,
+        "share_of_dept_agreed": 0.009295
+      }
+    ],
+    "by_start_year": [
+      {
+        "year": 2000,
+        "n_contracts": 19,
+        "n_sole": 0,
+        "share_sole": 0.0
+      },
+      {
+        "year": 2001,
+        "n_contracts": 34,
+        "n_sole": 0,
+        "share_sole": 0.0
+      },
+      {
+        "year": 2002,
+        "n_contracts": 16,
+        "n_sole": 0,
+        "share_sole": 0.0
+      },
+      {
+        "year": 2003,
+        "n_contracts": 13,
+        "n_sole": 0,
+        "share_sole": 0.0
+      },
+      {
+        "year": 2004,
+        "n_contracts": 9,
+        "n_sole": 0,
+        "share_sole": 0.0
+      },
+      {
+        "year": 2005,
+        "n_contracts": 7,
+        "n_sole": 0,
+        "share_sole": 0.0
+      },
+      {
+        "year": 2006,
+        "n_contracts": 13,
+        "n_sole": 3,
+        "share_sole": 0.230769
+      },
+      {
+        "year": 2007,
+        "n_contracts": 19,
+        "n_sole": 5,
+        "share_sole": 0.263158
+      },
+      {
+        "year": 2008,
+        "n_contracts": 24,
+        "n_sole": 1,
+        "share_sole": 0.041667
+      },
+      {
+        "year": 2009,
+        "n_contracts": 58,
+        "n_sole": 8,
+        "share_sole": 0.137931
+      },
+      {
+        "year": 2010,
+        "n_contracts": 122,
+        "n_sole": 58,
+        "share_sole": 0.47541
+      },
+      {
+        "year": 2011,
+        "n_contracts": 127,
+        "n_sole": 20,
+        "share_sole": 0.15748
+      },
+      {
+        "year": 2012,
+        "n_contracts": 170,
+        "n_sole": 20,
+        "share_sole": 0.117647
+      },
+      {
+        "year": 2013,
+        "n_contracts": 301,
+        "n_sole": 18,
+        "share_sole": 0.059801
+      },
+      {
+        "year": 2014,
+        "n_contracts": 417,
+        "n_sole": 27,
+        "share_sole": 0.064748
+      },
+      {
+        "year": 2015,
+        "n_contracts": 961,
+        "n_sole": 57,
+        "share_sole": 0.059313
+      },
+      {
+        "year": 2016,
+        "n_contracts": 1281,
+        "n_sole": 68,
+        "share_sole": 0.053084
+      },
+      {
+        "year": 2017,
+        "n_contracts": 2814,
+        "n_sole": 91,
+        "share_sole": 0.032338
+      },
+      {
+        "year": 2018,
+        "n_contracts": 3610,
+        "n_sole": 174,
+        "share_sole": 0.048199
+      },
+      {
+        "year": 2019,
+        "n_contracts": 3252,
+        "n_sole": 92,
+        "share_sole": 0.02829
+      },
+      {
+        "year": 2020,
+        "n_contracts": 3010,
+        "n_sole": 109,
+        "share_sole": 0.036213
+      },
+      {
+        "year": 2021,
+        "n_contracts": 3377,
+        "n_sole": 92,
+        "share_sole": 0.027243
+      },
+      {
+        "year": 2022,
+        "n_contracts": 3208,
+        "n_sole": 97,
+        "share_sole": 0.030237
+      },
+      {
+        "year": 2023,
+        "n_contracts": 3275,
+        "n_sole": 132,
+        "share_sole": 0.040305
+      },
+      {
+        "year": 2024,
+        "n_contracts": 2995,
+        "n_sole": 127,
+        "share_sole": 0.042404
+      },
+      {
+        "year": 2025,
+        "n_contracts": 2064,
+        "n_sole": 93,
+        "share_sole": 0.045058
+      },
+      {
+        "year": 2026,
+        "n_contracts": 552,
+        "n_sole": 22,
+        "share_sole": 0.039855
+      }
+    ],
+    "stability": {
+      "min_starts_floor": 300,
+      "year_from": 2013,
+      "year_to": 2026,
+      "share_min": 0.027243,
+      "share_max": 0.064748,
+      "note": "Computed over start years with at least 300 recorded starts — the living register keeps only a thin, biased residue of older start years."
+    },
+    "top_contracts": [
+      {
+        "contract_no": "1000014537",
+        "title": "HSA: IHSS-IP Mode 19-22",
+        "title_plain": "IHSS-IP Mode 19-22",
+        "prime_contractor": "SF IN-HOME SPPRTIV SVCS (IHSS) PUBL AUTH",
+        "department": "HSA Human Services Agency",
+        "agreed_usd": 255912584.0,
+        "paid_usd": 235395884.26,
+        "purchasing_authority": "FOR PROFESSIONAL SERVICES CONTRACTS THAT HAVE NOT BEEN COMPETITIVELY BID AND WHERE A SOLE SOURCE WAIVER HAS BEEN APPROVED",
+        "authority_family": "sole_source_waiver",
+        "is_active": false
+      },
+      {
+        "contract_no": "1000006337",
+        "title": "AIR8838 AirTrain",
+        "title_plain": null,
+        "prime_contractor": "Alstom Transport USA Inc",
+        "department": "AIR Airport Commission",
+        "agreed_usd": 128670340.8,
+        "paid_usd": 28572274.69,
+        "purchasing_authority": "AIRPORT COMMISSION AUTHORITY - SOLE SOURCE",
+        "authority_family": "sole_source_waiver",
+        "is_active": false
+      },
+      {
+        "contract_no": "1000002966",
+        "title": "MENTAL HEALTH SERVICES",
+        "title_plain": "Mental Health Services",
+        "prime_contractor": "PROGRESS FOUNDATION",
+        "department": "DPH Public Health",
+        "agreed_usd": 113522056.0,
+        "paid_usd": 8531850.06,
+        "purchasing_authority": "ADMIN CODE. SOLE SOURCE, REQUIRES SF HEALTH COMMISSION APPROVAL",
+        "authority_family": "sole_source_waiver",
+        "is_active": false
+      },
+      {
+        "contract_no": "1000003036",
+        "title": "FISCAL INTERMEDIARY CHECK-WRIT",
+        "title_plain": "Fiscal Intermediary Check-Writ",
+        "prime_contractor": "HEALTHRIGHT 360",
+        "department": "DPH Public Health",
+        "agreed_usd": 100947391.0,
+        "paid_usd": 44279529.97,
+        "purchasing_authority": "ADMIN CODE. SOLE SOURCE, REQUIRES SF HEALTH COMMISSION APPROVAL",
+        "authority_family": "sole_source_waiver",
+        "is_active": false
+      },
+      {
+        "contract_no": "1000020197",
+        "title": "DPH - Phmcy Scndry Dist.",
+        "title_plain": "Phmcy Scndry Dist.",
+        "prime_contractor": "CURASCRIPT SPECIALTY DISTRIBUTION",
+        "department": "DPH Public Health",
+        "agreed_usd": 98480167.52,
+        "paid_usd": 11650137.92,
+        "purchasing_authority": "NO OTHER SOURCE",
+        "authority_family": "sole_source_waiver",
+        "is_active": true
+      },
+      {
+        "contract_no": "1000002995",
+        "title": "SUBSTANCE ABUSE & MENTAL HEALT",
+        "title_plain": "Substance Abuse & Mental Healt",
+        "prime_contractor": "HEALTHRIGHT 360",
+        "department": "DPH Public Health",
+        "agreed_usd": 91525506.0,
+        "paid_usd": 6711153.27,
+        "purchasing_authority": "ADMIN CODE. SOLE SOURCE, REQUIRES SF HEALTH COMMISSION APPROVAL",
+        "authority_family": "sole_source_waiver",
+        "is_active": false
+      },
+      {
+        "contract_no": "1000002556",
+        "title": "DATA PROCESSING OF CLINICAL FI",
+        "title_plain": "Data Processing of Clinical FI",
+        "prime_contractor": "CERNER HEALTH SERVICES INC",
+        "department": "DPH Public Health",
+        "agreed_usd": 87478859.0,
+        "paid_usd": 19141746.81,
+        "purchasing_authority": "Chapter 21.30 software licenses, support, escrow, finance, equipment maintenance agreements, and content & data subscriptions",
+        "authority_family": "sole_source_waiver",
+        "is_active": false
+      },
+      {
+        "contract_no": "1000002972",
+        "title": "SUBSTANCE & MENTAL HEALTH SERV",
+        "title_plain": "Substance & Mental Health Serv",
+        "prime_contractor": "BAKER PLACES INC",
+        "department": "DPH Public Health",
+        "agreed_usd": 80260847.0,
+        "paid_usd": 5443247.22,
+        "purchasing_authority": "ADMIN CODE. SOLE SOURCE, REQUIRES SF HEALTH COMMISSION APPROVAL",
+        "authority_family": "sole_source_waiver",
+        "is_active": false
+      },
+      {
+        "contract_no": "1000030493",
+        "title": "SFMTA/MTC Clipper MOU",
+        "title_plain": null,
+        "prime_contractor": "METROPOLITAN TRANSPORTATION COMMISSION",
+        "department": "MTA Municipal Transprtn Agncy",
+        "agreed_usd": 76070629.0,
+        "paid_usd": 10265111.4,
+        "purchasing_authority": "MUNICIPAL TRANSPORATION AGENCY AUTHORITY - SOLE SOURCE",
+        "authority_family": "sole_source_waiver",
+        "is_active": true
+      },
+      {
+        "contract_no": "1000034737",
+        "title": "CC Facilities & TA FY25",
+        "title_plain": null,
+        "prime_contractor": "LOW INCOME INVESTMENT FUND",
+        "department": "DEC Dept of Early Childhood",
+        "agreed_usd": 67715789.0,
+        "paid_usd": 24686503.95,
+        "purchasing_authority": "Grant Sole Source – solicitation infeasible or impracticable/Public Purpose",
+        "authority_family": "grant",
+        "is_active": true
+      }
+    ]
+  },
+  "lbe": {
+    "prime": {
+      "n_contracts": 2112,
+      "agreed_usd": 3583093300.86,
+      "perimeter": "Contracts whose PRIME contractor is a certified Local Business Enterprise — amounts are those contracts' full agreed envelopes."
+    },
+    "team": {
+      "n_member_rows": 7801,
+      "n_contracts": 1921,
+      "attached_usd": 3149638892.83,
+      "perimeter": "LBE subcontractors and joint-venture members on other primes' contracts — attached amounts live INSIDE those primes' envelopes. Never add this to the prime figure."
+    }
+  },
+  "authority_families": {
+    "families": [
+      {
+        "family": "competitive_bid",
+        "n_contracts": 7841,
+        "agreed_usd": 49168582844.61,
+        "n_sole_flagged": 0
+      },
+      {
+        "family": "grant",
+        "n_contracts": 14034,
+        "agreed_usd": 15544722315.01,
+        "n_sole_flagged": 78
+      },
+      {
+        "family": "sole_source_waiver",
+        "n_contracts": 1377,
+        "agreed_usd": 4381792230.85,
+        "n_sole_flagged": 1232
+      },
+      {
+        "family": "government_agreement",
+        "n_contracts": 248,
+        "agreed_usd": 3534512595.94,
+        "n_sole_flagged": 2
+      },
+      {
+        "family": "rent_real_estate",
+        "n_contracts": 1658,
+        "agreed_usd": 4801528684.74,
+        "n_sole_flagged": 2
+      },
+      {
+        "family": "emergency",
+        "n_contracts": 151,
+        "agreed_usd": 677891202.28,
+        "n_sole_flagged": 0
+      },
+      {
+        "family": "legacy_none",
+        "n_contracts": 527,
+        "agreed_usd": 2744388512.45,
+        "n_sole_flagged": 0
+      },
+      {
+        "family": "other",
+        "n_contracts": 6024,
+        "agreed_usd": 12204224101.37,
+        "n_sole_flagged": 0
+      }
+    ],
+    "classification": {
+      "method": "manual_in_session",
+      "classified_at": "2026-07-16",
+      "seed": "pipeline/seeds/countries/us/seed_us_sf_purchasing_authority_families.csv",
+      "note": "93 distinct free-text authority strings grouped into 8 display families by hand (human review pending). Families group the strings only — the sole-source lens uses the source's own flag."
+    }
+  },
+  "data_quality": {
+    "n_paid_exceeds_agreed": 1053,
+    "n_multi_prime_row_contracts": 40,
+    "n_sub_only_contracts_excluded": 75,
+    "share_src_arithmetic_consistent": 0.809824,
+    "n_placeholder_end_dates": 25,
+    "voucher_join": {
+      "voucher_contract_numbers": 29842,
+      "matched_in_register": 28986,
+      "matched_dollar_share": 0.987902,
+      "coverage_floor": "FY2018 (PeopleSoft migration)"
+    },
+    "notes": "paid_usd can exceed agreed_usd (payments accumulate across modifications while agreed reflects the base document — visible mostly on construction; 'Unilateral' contracts are change-order vehicles). The source's own consumed/remaining columns fail basic arithmetic and are never published; 'remaining' anywhere on the page is GREATEST(agreed − paid, 0)."
+  }
+}

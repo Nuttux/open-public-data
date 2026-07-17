@@ -1,0 +1,94 @@
+purchasing_authority,authority_family,classification_note,classification_method,classified_at
+CONSTRUCTION SERVICES,competitive_bid,Public-works construction authority (Chapter 6) — competitively bid by default,manual_in_session,2026-07-16
+"TERM CONTRACT PROFSERV-BID, ENVIRONMENTAL CONSULTING",competitive_bid,,manual_in_session,2026-07-16
+MUNICIPAL TRANSPORATION AGENCY AUTHORITY - DOCUMENT BID,competitive_bid,,manual_in_session,2026-07-16
+AIRPORT COMMISSION AUTHORITY - DOCUMENT BID,competitive_bid,,manual_in_session,2026-07-16
+COMPETITIVE SOLICITATION,competitive_bid,,manual_in_session,2026-07-16
+Grant Competitive Solicitation,grant,Grant awarded through a competitive solicitation,manual_in_session,2026-07-16
+AUTHORIZED BY GRANT - NOT PURCHASING AUTHORITY,grant,,manual_in_session,2026-07-16
+ADMIN CODE 21.04(A)(6)-DIRECT PURCHASE BY GENERAL MANAGER OF PUC,other,Direct-purchase authority delegated to the PUC General Manager,manual_in_session,2026-07-16
+GRANTS ONLY - COMPETITIVE BID,grant,Grant awarded through a competitive solicitation,manual_in_session,2026-07-16
+ADMIN CODE 21.43 - PURCHASE & SALE OF ELECTRICITY & REL PROD BY PUC - BID,competitive_bid,"Electricity purchases by the PUC, bid variant",manual_in_session,2026-07-16
+NON-PURCHASING,rent_real_estate,Non-purchasing agreements — rents and similar,manual_in_session,2026-07-16
+No purchasing authority in legacy system,legacy_none,,manual_in_session,2026-07-16
+"Core Initiatives Addressing Homelessness,Drug Overdoses & Substance Use Disorders,Mental Health Needs,Integrated Health Needs & Public Safety Hiring",other,Special initiative authority; solicitation path not stated in the string,manual_in_session,2026-07-16
+"ADMIN CODE. SOLE SOURCE, REQUIRES SF HEALTH COMMISSION APPROVAL",sole_source_waiver,,manual_in_session,2026-07-16
+AUTHORITY TO BE USED IN NP BPO/PO FOR RENT,rent_real_estate,,manual_in_session,2026-07-16
+UNIV HEALTHSYSTEMS CONSORTIUM SERVICES - HEALTH DEPT USE ONLY - DOC BID,competitive_bid,"Group-purchasing consortium, bid variant",manual_in_session,2026-07-16
+UCSF MASTER AGREEMENT,government_agreement,"Master agreement with UCSF, a public university",manual_in_session,2026-07-16
+UNIV HEALTHSYSTEMS CONSORTIUM SERVICES - HEALTH DEPT USE ONLY - DOC NOT BID,other,"Group-purchasing consortium, not competitively bid",manual_in_session,2026-07-16
+Term Contract,other,Term-contract authority; solicitation path not stated in the string,manual_in_session,2026-07-16
+Government Entity Agreements,government_agreement,,manual_in_session,2026-07-16
+BOARD OF SUPERVISORS RESOLUTION #398-03,other,Authority from a specific Board of Supervisors resolution,manual_in_session,2026-07-16
+RECIPROCAL & OTHER AGREEMENTS WITH PUBLIC AGENCIES,government_agreement,,manual_in_session,2026-07-16
+FOR PROFESSIONAL SERVICES CONTRACTS THAT HAVE NOT BEEN COMPETITIVELY BID AND WHERE A SOLE SOURCE WAIVER HAS BEEN APPROVED,sole_source_waiver,,manual_in_session,2026-07-16
+Grant No Bid – government entity,grant,"Grant to a government entity, no solicitation",manual_in_session,2026-07-16
+MUNICIPAL TRANSPORATION AGENCY AUTHORITY - DOCUMENT NOT BID,other,"Agency document authority, not competitively bid; no waiver stated",manual_in_session,2026-07-16
+CHAPTER 21 EMERGENCY PROCUREMENT,emergency,,manual_in_session,2026-07-16
+INSURANCE PURCHASED BY RISK MANAGER,other,Insurance placement by the Risk Manager,manual_in_session,2026-07-16
+"Chapter 21.30 software licenses, support, escrow, finance, equipment maintenance agreements, and content & data subscriptions",sole_source_waiver,Admin Code 21.30 — software licenses and maintenance treated as sole source,manual_in_session,2026-07-16
+GRANTS ONLY - NO BID - EMERGENCY PROCUREMENT,grant,"Emergency grant, no solicitation",manual_in_session,2026-07-16
+NO OTHER SOURCE,sole_source_waiver,,manual_in_session,2026-07-16
+MUNICIPAL TRANSPORATION AGENCY AUTHORITY - SOLE SOURCE,sole_source_waiver,,manual_in_session,2026-07-16
+ADMIN CODE.  SOFTWARE LICENSE AND MAINTENANCE ARE SOLE SOURCE.,sole_source_waiver,,manual_in_session,2026-07-16
+REPAIRS FOR EQUIP INCL SVC AND PARTS WHEN REPAIRS MUST BE DONE BY MFGR OR INSTALLER OR WHEN REPAIRS BY OTHER WOULD VOID WARRANTY,other,Manufacturer/installer-only repairs (warranty protection),manual_in_session,2026-07-16
+ADMIN CODE 21.04(A)(2)-DEPARTMENTS MAY CONTRACT WITH OTHER PUBLIC ENTITIES,government_agreement,,manual_in_session,2026-07-16
+AIRPORT COMMISSION AUTHORITY - SOLE SOURCE,sole_source_waiver,,manual_in_session,2026-07-16
+SHORT-TERM CONTRACT EXTENSIONS (Chapter 21),other,Short-term extension authority,manual_in_session,2026-07-16
+Behavioral Health and Residential Care Contracts by DPH,other,Special DPH contracting authority; solicitation path not stated in the string,manual_in_session,2026-07-16
+UNIV HEALTHSYSTEMS CONSORTIUM SERVICES - HEALTH DEPT USE ONLY,other,Group-purchasing consortium; solicitation path not stated in the string,manual_in_session,2026-07-16
+"BOOKS, MAGAZINES, PAMPHLETS AND PERIODICALS",other,Commodity-class purchasing authority,manual_in_session,2026-07-16
+OPEN MARKET PURCHASES,other,Small open-market purchases,manual_in_session,2026-07-16
+Grant Sole Source – solicitation infeasible or impracticable/Public Purpose,grant,Sole-source grant — solicitation infeasible or impracticable,manual_in_session,2026-07-16
+PROPERTY MANAGEMENT AGREEMENTS FOR REC & PARK,rent_real_estate,,manual_in_session,2026-07-16
+REAL ESTATE - DOCUMENT BID - USING ORDINANCE 309-08,rent_real_estate,"Real-estate transaction, bid variant",manual_in_session,2026-07-16
+CHAPTER 6 EMERGENCY PROCUREMENT,emergency,,manual_in_session,2026-07-16
+"MEDICAL, SURGICAL & DENTAL EQUIPMENT; INSTRUMENTS; PROSTHETIC DEVICES;SPECIAL SUPPLIES.",other,Commodity-class purchasing authority,manual_in_session,2026-07-16
+CALIFORNIA SECRETARY OF STATE ELECTION CODE SECTION 13001(A),other,State election-code authority for election materials,manual_in_session,2026-07-16
+Grant No Bid – compliance with law/contract/funding source,grant,"Grant without solicitation — required by law, contract or funding source",manual_in_session,2026-07-16
+REAL ESTATE - DOCUMENT NOT BID - USING ORDINANCE 309-08,rent_real_estate,"Real-estate transaction, not bid",manual_in_session,2026-07-16
+TREASURE ISLAND AGENCY AUTHORITY - DOCUMENT NOT BID,other,"Agency document authority, not competitively bid; no waiver stated",manual_in_session,2026-07-16
+PROFESSIONAL SVC CONTRACT BTWN CCSF & S.F. CONSERVATION CORP,other,Named partnership authority (SF Conservation Corps),manual_in_session,2026-07-16
+FINE ARTS; MUSIC; PLAYS; WORKS OF ART; FILMS; AUDIO AND VIDEO CASSETTES; ETC.,other,Commodity-class purchasing authority,manual_in_session,2026-07-16
+NO VALID OFFERS RECEIVED; MULTIPLE LOW OFFERS,other,Fallback after a failed solicitation,manual_in_session,2026-07-16
+"CHARTER SEC 5.101 AUTHORITY - CHARITABLE TRUST DEPT (AAM,FAM,WAR)",other,"Charitable-trust departments authority (museums, War Memorial)",manual_in_session,2026-07-16
+Grant Sole Source – City-owned cultural center,grant,Sole-source grant — City-owned cultural center,manual_in_session,2026-07-16
+STREAMLINE CONTRACTING FOR HOMELESS SHELTERS,other,Streamlined statutory path for homeless shelters,manual_in_session,2026-07-16
+GRANTS ONLY - NO BID,grant,Grant without solicitation,manual_in_session,2026-07-16
+FOR PURCHASING WORKS OF ART OR ARTIFACTS FOR MUSEUMS OR DISPLAY IN PUBLIC; SPECIAL ART RESTORATION;INSURING;TRANSPORT;STORAGE;CURATION;CONSERVATION,other,Commodity-class purchasing authority,manual_in_session,2026-07-16
+Contracting with Developers to Install Electric Facilities at New Developments,other,Named statutory authority (electric facilities at new developments),manual_in_session,2026-07-16
+REDEVELOPMENT - DOCUMENT BID,competitive_bid,,manual_in_session,2026-07-16
+AIRPORT COMMISSION AUTHORITY - DOCUMENT NOT BID,other,"Agency document authority, not competitively bid; no waiver stated",manual_in_session,2026-07-16
+"Direct departmental purchase of individual contract or classes of contract, as approved by the Purchaser",other,Direct departmental purchase approved by the Purchaser,manual_in_session,2026-07-16
+"PURCHASE BASED ON PRIOR AWARD, AT SAME OR LOWER PRICE, WITHIN ONE YEAR",other,Repeat purchase on a prior award's terms,manual_in_session,2026-07-16
+TREASURE ISLAND AGENCY AUTHORITY - DOCUMENT BID,competitive_bid,,manual_in_session,2026-07-16
+AMER RECOVERY REINVEST ACT 2009 - NO OTHER SOURCE,sole_source_waiver,"ARRA 2009 funding, no-other-source variant",manual_in_session,2026-07-16
+UNIV HEALTHSYSTEMS CONSORTIUM SERVICES - HEALTH DEPT USE ONLY - SOLE SOURCE,sole_source_waiver,,manual_in_session,2026-07-16
+SHORT-TERM GRANT EXTENSIONS,grant,Short-term grant extension,manual_in_session,2026-07-16
+PROP Q AUTHORITY NOT BID,other,"Prop Q small purchases, not bid",manual_in_session,2026-07-16
+PILOT PROJECT (TERM NOT TO EXCEED 2 YEARS),other,Pilot-project authority,manual_in_session,2026-07-16
+Public Power in New City Developments,other,Named statutory authority (public power),manual_in_session,2026-07-16
+Awarded Contractor Failure to Deliver; Temporarily Purchase from Any Source,other,Temporary replacement after contractor failure to deliver,manual_in_session,2026-07-16
+Grant Sole Source – solicitation infeasible or impracticable: emergency,grant,Sole-source grant — emergency,manual_in_session,2026-07-16
+RELEASE AGAINST A CITY OR DEPARTMENTAL BLANK PURCHASE ORDER,other,Release against a blanket purchase order,manual_in_session,2026-07-16
+Chapter 21 Solicitation Waived by Ordinance,sole_source_waiver,Solicitation waived by ordinance,manual_in_session,2026-07-16
+MEDICINES & DRUGS,other,Commodity-class purchasing authority,manual_in_session,2026-07-16
+AMER RECOVERY REINVEST ACT 2009 - DOCUMENT BID,competitive_bid,"ARRA 2009 funding, bid variant",manual_in_session,2026-07-16
+CPUC TARIFF RULE 20B – UNDERGROUNDING,other,State tariff rule (utility undergrounding),manual_in_session,2026-07-16
+ADMIN CODE 21.43 - PURCHASE & SALE OF ELECTRICITY & REL PROD BY PUC - NO BID,other,"Electricity purchases by the PUC, no-bid variant",manual_in_session,2026-07-16
+Perishable Foods,other,Commodity-class purchasing authority,manual_in_session,2026-07-16
+Grant Sole Source – recurring grant,grant,Sole-source grant — recurring,manual_in_session,2026-07-16
+FOR PROFESSIONAL SERVICES CONTRACTS UNDER 10K,other,Small-dollar direct award (under $10k),manual_in_session,2026-07-16
+PILOT PROJECT.  SEE RULES & REGS,other,Pilot-project authority,manual_in_session,2026-07-16
+COURTS (TO BE USED ONLY BY THE COURTS. ALL OTHERS MAY NOT USE.) GRANT,grant,Court-specific grant authority,manual_in_session,2026-07-16
+TREASURE ISLAND AGENCY AUTHORITY - SOLE SOURCE,sole_source_waiver,,manual_in_session,2026-07-16
+Grant No Bid – private property/neighborhood improvement,grant,Grant without solicitation — neighborhood improvement,manual_in_session,2026-07-16
+Supplier Contract used to track MOU Agreement,government_agreement,Memorandum of understanding tracked as a supplier contract,manual_in_session,2026-07-16
+Departments may directly enter into contracts for the investment of trust moneys and agreements relating to the management of trust assets,other,Trust-asset management authority,manual_in_session,2026-07-16
+FOR PROFESSIONAL SERVICES CONTRACTS UNDER 20K,other,Small-dollar direct award (under $20k),manual_in_session,2026-07-16
+REAL ESTATE - NO OTHER SOURCE UNDER ORDINANCE 309-08,rent_real_estate,"Real-estate transaction, no-other-source variant",manual_in_session,2026-07-16
+"SPECIALIZED EQUIPMENT, MATERIALS AND SUPPLIES FOR INSTRUCTIONAL PURPOSES.  SPECIALIZED EDUATIONAL TESTS AND TESTING SERVICES.",other,Commodity-class purchasing authority,manual_in_session,2026-07-16
+Grant Sole Source – solicitation infeasible or impracticable (including emergency grants)/Public Purpose,grant,Sole-source grant — solicitation infeasible or impracticable,manual_in_session,2026-07-16
+GRANT FROM HOMELAND SECURITY,grant,Grant funded by Homeland Security,manual_in_session,2026-07-16
+PROP Q AUTHORITY WITH BID,competitive_bid,"Prop Q small purchases, bid variant",manual_in_session,2026-07-16
+IT-No Bid (OCA Use Only),other,IT purchase without solicitation (OCA only),manual_in_session,2026-07-16

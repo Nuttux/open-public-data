@@ -332,6 +332,16 @@ seeds:
             reclass_family_code: STRING
             reclass_family: STRING
             note: STRING
+        # Purchasing-authority strings (93 distinct, queried 2026-07-16) →
+        # 8 display families (Block 3 contracts). Classifies the STRINGS
+        # only — the sole-source lens is driven by the source's
+        # sole_source_flg, never by this seed. Manual in-session seed,
+        # flagged for human review.
+        seed_us_sf_purchasing_authority_families:
+          +column_types:
+            purchasing_authority: STRING
+            authority_family: STRING
+            classification_note: STRING
             classification_method: STRING
             classified_at: STRING
 
