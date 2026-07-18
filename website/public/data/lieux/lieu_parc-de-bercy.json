@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-18T14:38:43.284445+00:00",
+ "generated_at": "2026-07-18T14:53:30.492622+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "parc-de-bercy",
  "name": "Parc de Bercy",
@@ -215,6 +215,7 @@
   {
    "numero_marche": "20232023S08935",
    "objet": "MANDAT MAÎTRISE D'OUVRAGE COUVERTURE EGP 12 PARC DE BERCY",
+   "objet_clair": null,
    "fournisseur": "SPL PARISEINE",
    "montant_max": 190000.0,
    "date_notification": "2023-10-03",
@@ -223,6 +224,7 @@
   {
    "numero_marche": "20212021S02444",
    "objet": "MOE RÉNOVATION ÉNERGÉTIQUE MAISON DU LAC PARC DE BERCY SAMO",
+   "objet_clair": null,
    "fournisseur": "YLE",
    "montant_max": 159595.0,
    "date_notification": "2021-05-04",
@@ -231,6 +233,7 @@
   {
    "numero_marche": "20212021S03024",
    "objet": "SA5 AMO AMELIORATION SECURITAIRE PARC DE BERCY",
+   "objet_clair": null,
    "fournisseur": "AREP",
    "montant_max": 109425.0,
    "date_notification": "2021-05-31",

@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-18T14:38:43.284445+00:00",
+ "generated_at": "2026-07-18T14:53:30.492622+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "piscine-hebert",
  "name": "Piscine Hébert",
@@ -83,6 +83,7 @@
   {
    "numero_marche": "20131210009283",
    "objet": "MODERNISATION CHAUFFERIE GAZ ET INSTALLATION PISCINE HÉBERT",
+   "objet_clair": null,
    "fournisseur": "ALVES PEREIRA",
    "montant_max": 616715.0,
    "date_notification": "2013-05-16",
@@ -91,6 +92,7 @@
   {
    "numero_marche": "20131410009793",
    "objet": "TX DE MISE EN SÉCURITÉ DU RÉSEAU ECS DE LA PISCINE HÉBERT",
+   "objet_clair": null,
    "fournisseur": "TECHNIBAT",
    "montant_max": 63100.0,
    "date_notification": "2013-07-29",
@@ -99,6 +101,7 @@
   {
    "numero_marche": "20232023T05146",
    "objet": "RÉNOVATION SSI PISCINE HÉBERT, 750018",
+   "objet_clair": null,
    "fournisseur": "TETIB",
    "montant_max": 31607.0,
    "date_notification": "2023-06-22",

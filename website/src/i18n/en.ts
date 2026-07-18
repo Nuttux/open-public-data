@@ -5105,7 +5105,7 @@ const en: Record<string, string> = {
   'fx.lieu.marches_note': 'Contract ceiling as notified, not actual spend. Each line links to the contract record.',
   'fx.lieu.bmo_voir': 'See the {n} archive extracts ({a})',
   'fx.lieu.bmo_note': 'Account written by AI from the selected extracts of the city’s official bulletin — each extract links to the scanned page on Gallica.',
-  'fx.lieu.argent_absent': 'No spending can be tied to this place in the open data: day-to-day running costs (upkeep, staff) are not broken down by place. Only subsidies to an operator and investment projects that name the place appear here.',
+  'fx.lieu.argent_absent': 'No spending can be tied to this place in the open data: day-to-day running costs (upkeep, staff) are not broken down by place. Only subsidies to an operator, investment projects and public contracts that name the place appear here.',
   'fx.lieu.moments_note': 'AI reading of the {n} documents found — each line links to its deliberation.',
   'fx.lieu.src_invest': 'CA annexes, Ville de Paris',
   'fx.lieu.presentation_src': 'About:',

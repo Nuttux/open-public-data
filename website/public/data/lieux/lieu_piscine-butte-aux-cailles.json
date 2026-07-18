@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-18T14:38:43.284445+00:00",
+ "generated_at": "2026-07-18T14:53:30.492622+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "piscine-butte-aux-cailles",
  "name": "Piscine de la Butte-aux-Cailles",
@@ -84,6 +84,7 @@
   {
    "numero_marche": "20242024S02607",
    "objet": "MS CSPS PISCINE DE LA BUTTE-AUX-CAILLES",
+   "objet_clair": "Coordination de la sécurité du chantier de la piscine de la Butte-aux-Cailles.",
    "fournisseur": "BUREAU D ETUDES ET DE CONSEILS EN",
    "montant_max": 25979.33,
    "date_notification": "2024-04-16",
@@ -92,6 +93,7 @@
   {
    "numero_marche": "decp-2024S03906",
    "objet": "Contrôle technique de la construction pour des opérations nécessitant un coordinateur de sécurité et protection de la santé de catégories 1 ou 2  Modernisation et extension de la Piscine de la Butte-a",
+   "objet_clair": null,
    "fournisseur": "ALPHA CONTROLE",
    "montant_max": 16782.0,
    "date_notification": "2024-05-23",

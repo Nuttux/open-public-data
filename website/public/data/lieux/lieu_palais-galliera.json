@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-18T14:38:43.284445+00:00",
+ "generated_at": "2026-07-18T14:53:30.492622+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "palais-galliera",
  "name": "Palais Galliera",
@@ -152,6 +152,7 @@
   {
    "numero_marche": "20171210000388",
    "objet": "MOE RESTRUCTURATION PALAIS GALLIERA 10 AV.PIERRE 1ER SERBIE",
+   "objet_clair": null,
    "fournisseur": "ATELIER DE L'ILE",
    "montant_max": 777464.36,
    "date_notification": "2017-03-29",
@@ -160,6 +161,7 @@
   {
    "numero_marche": "20191210000448",
    "objet": "CSP5 TVX RESTRUCTUR PALAIS GALLIERA LOT8 : RESTAUR. FACADES",
+   "objet_clair": null,
    "fournisseur": "STE LOUIS GENESTE ET SES FILS",
    "montant_max": 529283.38,
    "date_notification": "2019-04-23",
@@ -168,6 +170,7 @@
   {
    "numero_marche": "20191210000268",
    "objet": "CSP5 TVX PALAIS GALLIERA - LOT6 : BALUSTRADES & ESCALIERS",
+   "objet_clair": null,
    "fournisseur": "STE LOUIS GENESTE ET SES FILS",
    "montant_max": 328949.53,
    "date_notification": "2019-03-06",
@@ -176,6 +179,7 @@
   {
    "numero_marche": "20191210000447",
    "objet": "CSP5 TVX RESTRUCTURATION PALAIS GALLIERA LOT7 : SIGNALETIQUE",
+   "objet_clair": null,
    "fournisseur": "SINIO",
    "montant_max": 25128.0,
    "date_notification": "2019-04-23",

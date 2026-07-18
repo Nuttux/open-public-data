@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-18T14:38:43.284445+00:00",
+ "generated_at": "2026-07-18T14:53:30.492622+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "petite-ceinture",
  "name": "Petite Ceinture",
@@ -207,6 +207,7 @@
   {
    "numero_marche": "20232023T03892",
    "objet": "SA3 ACBC AMENAGEMENT PROMENADE PETITE CEINTURE 20EME LOT 1",
+   "objet_clair": null,
    "fournisseur": "ENTREPRISE DE TRAVAUX PUBLICS EGA",
    "montant_max": 1580837.76,
    "date_notification": "2023-06-14",
@@ -215,6 +216,7 @@
   {
    "numero_marche": "20222022T06773",
    "objet": "SA3-TVX PROMENADE PETITE CEINTURE - GENIE CIVIL/VRD - LOT1",
+   "objet_clair": null,
    "fournisseur": "TERIDEAL",
    "montant_max": 1299402.1,
    "date_notification": "2022-09-28",
@@ -223,6 +225,7 @@
   {
    "numero_marche": "20191230000954",
    "objet": "CSP EP TVX AMENAGT PETITE CEINTURE TRONCON PC -LOT2:SERRURER",
+   "objet_clair": null,
    "fournisseur": "ENVIRONNEMENT SERVICES",
    "montant_max": 612466.34,
    "date_notification": "2019-07-11",
@@ -231,6 +234,7 @@
   {
    "numero_marche": "decp-2025T10219",
    "objet": "Travaux d’espaces verts pour l’aménagement d’une promenade de la Petite Ceinture dans le secteur compris entre la gare Masséna et le pont de Patay à Paris 13ème",
+   "objet_clair": null,
    "fournisseur": "ARTOPIA",
    "montant_max": 588319.43,
    "date_notification": "2025-10-08",
@@ -239,6 +243,7 @@
   {
    "numero_marche": "20222022F06774",
    "objet": "SA3-TVX PROMENADE PETITE CEINTURE - SERRURERIE/METALL - LOT2",
+   "objet_clair": null,
    "fournisseur": "SERRURERIE MENUISERIE",
    "montant_max": 557679.27,
    "date_notification": "2022-09-27",
@@ -247,6 +252,7 @@
   {
    "numero_marche": "20232023T03963",
    "objet": "SA3 ACBC AMENAGEMENT PROMENADE PETITE CEINTURE 20EME LOT 2",
+   "objet_clair": null,
    "fournisseur": "ENVIRONNEMENT SERVICES",
    "montant_max": 499985.92,
    "date_notification": "2023-06-14",
@@ -255,6 +261,7 @@
   {
    "numero_marche": "20232023T11232",
    "objet": "SA3/ACBC_TVX AMENAGMT ACCES A LA PROMENADE (PETITE CEINTURE)",
+   "objet_clair": null,
    "fournisseur": "URBAINE DE TRAVAUX",
    "montant_max": 179510.48,
    "date_notification": "2023-12-30",
@@ -263,6 +270,7 @@
   {
    "numero_marche": "20242024T04674",
    "objet": "SA3_TRAVAUX DE SERRURERIE_PETITE CEINTURE 15E _LOT 2",
+   "objet_clair": "Travaux de serrurerie et de métallerie sur la Petite Ceinture du 15e arrondissement.",
    "fournisseur": "ENVIRONNEMENT SERVICES",
    "montant_max": 165554.51,
    "date_notification": "2024-06-17",
@@ -271,6 +279,7 @@
   {
    "numero_marche": "20191210001317",
    "objet": "FOURNITURE ET POSE MODULES PRÉFABRIQUÉS PETITE CEINTURE 13E",
+   "objet_clair": null,
    "fournisseur": "YVES COUGNAUD",
    "montant_max": 163000.0,
    "date_notification": "2019-10-10",
@@ -279,6 +288,7 @@
   {
    "numero_marche": "20232023S03133",
    "objet": "SA3-MSAC-ETUDE TECH OPERAT AMENAGEMENT PETITE CEINTURE",
+   "objet_clair": null,
    "fournisseur": "ETUDES PLURIDISCIPLIN ET CONSEILS",
    "montant_max": 148462.0,
    "date_notification": "2023-04-26",

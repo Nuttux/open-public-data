@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-18T14:38:43.284445+00:00",
+ "generated_at": "2026-07-18T14:53:30.492622+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "piscine-josephine-baker",
  "name": "Piscine Joséphine-Baker",
@@ -92,6 +92,7 @@
   {
    "numero_marche": "20222022S01763",
    "objet": "SA2 EXPLOITATION DE LA PISCINE JOSEPHINE BAKER",
+   "objet_clair": null,
    "fournisseur": "SNC JOSEPHINE",
    "montant_max": 9853607.4,
    "date_notification": "2022-04-11",
@@ -100,6 +101,7 @@
   {
    "numero_marche": "20222022S06717",
    "objet": "SA2.PRESTAT° CARENAGE DES FLOTTEURS PISCINE JOSEPHINE BAKER",
+   "objet_clair": null,
    "fournisseur": "B SERTS",
    "montant_max": 4000000.0,
    "date_notification": "2022-09-06",
@@ -108,6 +110,7 @@
   {
    "numero_marche": "20141410011518",
    "objet": "CSP2 - L'EXPLOITATION DE LA PISCINE JOSEPHINE BAKER 13ÈME",
+   "objet_clair": null,
    "fournisseur": "ARTEIS",
    "montant_max": 2137976.78,
    "date_notification": "2014-06-27",

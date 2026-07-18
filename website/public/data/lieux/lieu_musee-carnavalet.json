@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-18T14:38:43.284445+00:00",
+ "generated_at": "2026-07-18T14:53:30.492622+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "musee-carnavalet",
  "name": "Musée Carnavalet",
@@ -355,6 +355,7 @@
   {
    "numero_marche": "20171210001782",
    "objet": "CSP5 RENOVATION PARTIELLE MUSEE CARNAVALET-LOT3 BATIMENT TCE",
+   "objet_clair": null,
    "fournisseur": "BOUYGUES BATIMENT ILE DE FRANCE",
    "montant_max": 25957872.68,
    "date_notification": "2017-11-27",
@@ -363,6 +364,7 @@
   {
    "numero_marche": "20181210020013",
    "objet": "CSP5 RENOV PARTIELLE MUSEE CARNAVALET AMENAGT MUSEOGRAPHIQUE",
+   "objet_clair": null,
    "fournisseur": "VITRINEN-UND",
    "montant_max": 3605352.0,
    "date_notification": "2018-06-18",
@@ -371,6 +373,7 @@
   {
    "numero_marche": "20161210000654",
    "objet": "MARCHÉ SUBSÉQUENT 2 MOE RENOVATION MUSEE CARNAVALET 3EME",
+   "objet_clair": null,
    "fournisseur": "CHATILLON ARCHITECTES",
    "montant_max": 3253221.47,
    "date_notification": "2016-05-25",
@@ -379,6 +382,7 @@
   {
    "numero_marche": "20151210020012",
    "objet": "MARCHÉ SUBSÉQUENT MOE RÉNOVATION DU MUSÉE CARNAVALET 75003",
+   "objet_clair": null,
    "fournisseur": "CHATILLON ARCHITECTES",
    "montant_max": 1896816.68,
    "date_notification": "2015-12-17",
@@ -387,6 +391,7 @@
   {
    "numero_marche": "20171210000854",
    "objet": "CSP5 TVX RENOVATION PARTIELLE MUSEE CARNAVALET LOT1",
+   "objet_clair": null,
    "fournisseur": "AVENIR DECONSTRUCTION",
    "montant_max": 783890.0,
    "date_notification": "2017-06-02",
@@ -395,6 +400,7 @@
   {
    "numero_marche": "20181210000996",
    "objet": "CSP5 RENOVATION PARTIELLE DU MUSEE CARNAVALET LOT 07",
+   "objet_clair": null,
    "fournisseur": "ARTECHNIC",
    "montant_max": 602809.73,
    "date_notification": "2018-07-10",
@@ -403,6 +409,7 @@
   {
    "numero_marche": "20181210000994",
    "objet": "CSP5 RENOVATION PARTIELLE DU MUSEE CARNAVALET LOT 05",
+   "objet_clair": null,
    "fournisseur": "ENVIRONNEMENT SERVICES CONSTRUCTION",
    "montant_max": 562142.19,
    "date_notification": "2018-07-10",
@@ -411,6 +418,7 @@
   {
    "numero_marche": "20171210003002",
    "objet": "MARCHÉ SUSÉQUENT 3 MOE RENOVATION MUSEE CARNAVALET 3EME",
+   "objet_clair": null,
    "fournisseur": "CHATILLON ARCHITECTES",
    "montant_max": 555100.0,
    "date_notification": "2017-02-16",
@@ -419,6 +427,7 @@
   {
    "numero_marche": "20141210010908",
    "objet": "CSP5 TX FACADES MUSEE CARNAVALET LOT 1",
+   "objet_clair": null,
    "fournisseur": "EIFFAGE CONSTRUCTION EQUIPEMENTS",
    "montant_max": 498319.04,
    "date_notification": "2014-03-07",
@@ -427,6 +436,7 @@
   {
    "numero_marche": "20181210000995",
    "objet": "CSP5 RENOVATION PARTIELLE DU MUSEE CARNAVALET LOT 06",
+   "objet_clair": null,
    "fournisseur": "VIDELIO IEC",
    "montant_max": 337165.24,
    "date_notification": "2018-07-10",

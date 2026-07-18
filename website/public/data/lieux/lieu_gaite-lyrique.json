@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-18T14:38:43.284445+00:00",
+ "generated_at": "2026-07-18T14:53:30.492622+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "gaite-lyrique",
  "name": "Gaîté-Lyrique",
@@ -209,6 +209,7 @@
   {
    "numero_marche": "20191210003827",
    "objet": "MODERNISATION INSTALLATION VENTILATION LA GAÎTÉ LYRIQUE",
+   "objet_clair": null,
    "fournisseur": "EIFFAGE ENERGIE SYSTEMES",
    "montant_max": 353000.0,
    "date_notification": "2019-08-30",
@@ -217,6 +218,7 @@
   {
    "numero_marche": "20181210000601",
    "objet": "THEATRE GAITE LYRIQUE DESENFUMAGE",
+   "objet_clair": null,
    "fournisseur": "TRAVAUX BATIMENTS ELECTRICITE SECUR",
    "montant_max": 245846.5,
    "date_notification": "2018-05-09",
@@ -225,6 +227,7 @@
   {
    "numero_marche": "20141210000154",
    "objet": "CRÉATION D'UN SAS DANS LE HALL DE LA GAÎTÉ LYRIQUE 75003",
+   "objet_clair": null,
    "fournisseur": "DORMAKABA FRANCE",
    "montant_max": 69323.0,
    "date_notification": "2014-12-02",
@@ -233,6 +236,7 @@
   {
    "numero_marche": "20161210000648",
    "objet": "MODIFICATION PORTES SALLE DE CONCERT GAÎTÉ LYRIQUE",
+   "objet_clair": null,
    "fournisseur": "AGENCEMENT CLOISONS DECORAT PARQUET",
    "montant_max": 60296.0,
    "date_notification": "2016-06-17",
@@ -241,6 +245,7 @@
   {
    "numero_marche": "20191210005220",
    "objet": "AMÉLIORATION DES INSTALLATIONS DE VENTILATION GAITÉ LYRIQUE",
+   "objet_clair": null,
    "fournisseur": "SPHERE INGENIERIE",
    "montant_max": 53280.0,
    "date_notification": "2019-04-19",
@@ -249,6 +254,7 @@
   {
    "numero_marche": "20131060000539",
    "objet": "FOURNITURE DE PRODUITS DERIVES GAITE LYRIQUE",
+   "objet_clair": null,
    "fournisseur": "SOC DE GESTION DE LA GAITE LYRIQUE",
    "montant_max": 50000.0,
    "date_notification": "2013-09-12",

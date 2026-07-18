@@ -33,6 +33,8 @@ export type LieuBmoExtrait = { date: string; extrait: string; source_url: string
 export type LieuMarche = {
   numero_marche: string;
   objet: string;
+  /** Libellé en français clair (cache vulgarization_marches). */
+  objet_clair?: string | null;
   fournisseur: string | null;
   montant_max: number;
   date_notification?: string | null;

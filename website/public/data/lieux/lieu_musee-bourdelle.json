@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-18T14:38:43.284445+00:00",
+ "generated_at": "2026-07-18T14:53:30.492622+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "musee-bourdelle",
  "name": "Musée Bourdelle",
@@ -278,6 +278,7 @@
   {
    "numero_marche": "20141210010854",
    "objet": "CSP5 MUSEE BOURDELLE RESTRUCTURATION TCE",
+   "objet_clair": null,
    "fournisseur": "ENTREPRISE DESTAS ET CREIB",
    "montant_max": 1132659.88,
    "date_notification": "2014-02-10",
@@ -286,6 +287,7 @@
   {
    "numero_marche": "20141210010853",
    "objet": "CSP5 MUSEE BOURDELLE RESTRUCTURATION ELECTRICITE LOT 2",
+   "objet_clair": null,
    "fournisseur": "SERVICES INSTALLATIONS ELECTRIQUES",
    "montant_max": 605241.8,
    "date_notification": "2014-02-10",

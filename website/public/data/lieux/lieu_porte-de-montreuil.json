@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-18T14:38:43.284445+00:00",
+ "generated_at": "2026-07-18T14:53:30.492622+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "porte-de-montreuil",
  "name": "Porte de Montreuil",
@@ -222,6 +222,7 @@
   {
    "numero_marche": "20161360001610",
    "objet": "ETUDES URBAINES-OP AMENAGEMENT PORTE DE MONTREUIL",
+   "objet_clair": null,
    "fournisseur": "TVK",
    "montant_max": 1147590.0,
    "date_notification": "2016-11-14",
@@ -230,6 +231,7 @@
   {
    "numero_marche": "20191370000735",
    "objet": "MOE RÉAMÉNAGEMENT PORTE DE MONTREUIL",
+   "objet_clair": null,
    "fournisseur": "SETEC TRAVAUX PUBLICS ET INDUSTRIEL",
    "montant_max": 355910.0,
    "date_notification": "2019-05-22",
@@ -238,6 +240,7 @@
   {
    "numero_marche": "20171360000389",
    "objet": "ETUDE QUALITÉ DE L'AIR PORTE DE MONTREUIL - LOT 4",
+   "objet_clair": null,
    "fournisseur": "EGIS STRUCTURES ET ENVIRONNEMENT",
    "montant_max": 100294.0,
    "date_notification": "2017-04-04",
@@ -246,6 +249,7 @@
   {
    "numero_marche": "20171360000386",
    "objet": "ETUDE IMPACT AMENAGEMENT PORTE DE MONTREUIL 20E",
+   "objet_clair": null,
    "fournisseur": "SOBERCO ENVIRONNEMENT",
    "montant_max": 75700.0,
    "date_notification": "2017-04-04",
@@ -254,6 +258,7 @@
   {
    "numero_marche": "decp-2025S02459",
    "objet": "Assistance à maitrise d'ouvrage pour le centre de santé de la porte de Montreuil",
+   "objet_clair": null,
    "fournisseur": "ATIXIS",
    "montant_max": 10800.0,
    "date_notification": "2025-03-06",

@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-18T14:38:43.284445+00:00",
+ "generated_at": "2026-07-18T14:53:30.492622+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "parc-andre-citroen",
  "name": "Parc André-Citroën",
@@ -183,6 +183,7 @@
   {
    "numero_marche": "20232023T07507",
    "objet": "SA3.ACBC.TRVX RENOV (FONTAINERIE SERRURIE)PARC ANDRE CITROEN",
+   "objet_clair": null,
    "fournisseur": "TERIDEAL",
    "montant_max": 2399279.62,
    "date_notification": "2023-08-31",
@@ -191,6 +192,7 @@
   {
    "numero_marche": "20121230008269",
    "objet": "A4:TVX REAMENAGEMENT PARC ANDRE CITROEN -LOT 5:OSSATURE BOIS",
+   "objet_clair": null,
    "fournisseur": "AUBRILAM",
    "montant_max": 247703.5,
    "date_notification": "2013-01-21",
@@ -199,6 +201,7 @@
   {
    "numero_marche": "20191230000871",
    "objet": "CSP EP MISSIONS ÉTUD TECH RÉNOV°FONTAINE PARC ANDRÉ CITROEN",
+   "objet_clair": null,
    "fournisseur": "OMNIUM GENERAL D'INGENIERIE",
    "montant_max": 54070.0,
    "date_notification": "2019-06-20",
@@ -207,6 +210,7 @@
   {
    "numero_marche": "decp-2024S05301",
    "objet": "Demande poste secours k-street festival les 22 et 23 juin 2024 parc André Citroën 75015",
+   "objet_clair": null,
    "fournisseur": "CROIX ROUGE FRANCAISE",
    "montant_max": 708.0,
    "date_notification": "2024-06-17",

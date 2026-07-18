@@ -4,6 +4,7 @@ import type { ReactNode } from "react";
 import type { LieuFicheData } from "@/lib/lieux-data";
 import Link from "next/link";
 import { useT, useLocale } from "@/lib/localeContext";
+import { normalizeObjet } from "@/lib/objet-normalizer";
 
 const fill = (s: string, vars: Record<string, string | number>) => {
   let r = s;
@@ -183,7 +184,7 @@ export default function LieuFiche({ lieu }: { lieu: LieuFicheData }) {
       {/* Absence d'argent rattachable ≠ lieu gratuit. Le fonctionnement courant
        *  (entretien, personnel) n'est pas ventilé par lieu dans l'open data : on
        *  le dit, sinon le vide se lit comme « ne coûte rien ». */}
-      {!lieu.subventions_exploitant && lieu.residents.length === 0 && lieu.invest.length === 0 && (
+      {!lieu.subventions_exploitant && lieu.residents.length === 0 && lieu.invest.length === 0 && !(lieu.marches?.length) && (
         <p className="fx-fiche-note">{t("fx.lieu.argent_absent")}</p>
       )}
 
@@ -291,7 +292,7 @@ export default function LieuFiche({ lieu }: { lieu: LieuFicheData }) {
               style={{ display: "flex", justifyContent: "space-between", gap: 12, padding: "11px 6px", borderBottom: "1px solid var(--rule)", alignItems: "baseline" }}
             >
               <span style={{ fontSize: 13, color: "var(--ink-2)", flex: 1 }}>
-                {m.objet.charAt(0) + m.objet.slice(1).toLowerCase()}
+                {m.objet_clair || normalizeObjet(m.objet)}
                 <span aria-hidden="true" style={{ color: "var(--muted)" }}> →</span>
                 {m.fournisseur && (
                   <span style={{ display: "block", fontFamily: "var(--f-mono)", fontSize: 10, letterSpacing: ".04em", textTransform: "uppercase", color: "var(--muted)", marginTop: 2 }}>

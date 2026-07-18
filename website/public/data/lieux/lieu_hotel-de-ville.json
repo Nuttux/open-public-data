@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-18T14:38:43.284445+00:00",
+ "generated_at": "2026-07-18T14:53:30.492622+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "hotel-de-ville",
  "name": "Hôtel de Ville",
@@ -116,6 +116,7 @@
   {
    "numero_marche": "20151130000180",
    "objet": "CSP1 LOT 1 NETTOYAGE VITRES BATIMENTS HOTEL DE VILLE LAUZUN",
+   "objet_clair": null,
    "fournisseur": "VEGA CONSEIL SECURITE",
    "montant_max": 960000.0,
    "date_notification": "2015-04-08",
@@ -124,6 +125,7 @@
   {
    "numero_marche": "20121340008400",
    "objet": "ASSURANCE \"DOMMAGES AUX BIENS\" SITE HOTEL DE VILLE CONTRAT 2",
+   "objet_clair": null,
    "fournisseur": "SA DE TRANSACTIONS ET COURTAGE",
    "montant_max": 531309.42,
    "date_notification": "2013-12-21",
@@ -132,6 +134,7 @@
   {
    "numero_marche": "20161060001301",
    "objet": "AMENAGEMENT SCENO EXPO COLUCHE SALLE ST JEAN HOTEL DE VILLE",
+   "objet_clair": null,
    "fournisseur": "VOLUME INTERNATIONAL",
    "montant_max": 124600.0,
    "date_notification": "2016-07-08",
@@ -140,6 +143,7 @@
   {
    "numero_marche": "decp-2025F12685",
    "objet": "Marché subséquent fondé sur l’accord-cadre 20212021F09371 relatif à la location de matériel et prestations associées dans le domaine audiovisuel ayant pour objet le marché de Noël 2025 à L'Hôtel de Vi",
+   "objet_clair": null,
    "fournisseur": "SOC ACOUSTIQUE FRANCAISE",
    "montant_max": 95867.34,
    "date_notification": "2025-11-28",
@@ -148,6 +152,7 @@
   {
    "numero_marche": "20242024F00306",
    "objet": "ECLAIRAGE DE L'HÔTEL DE VILLE",
+   "objet_clair": "Installation et gestion des éclairages événementiels pour l'Hôtel de Ville de Paris.",
    "fournisseur": "IMPACT EVENEMENT",
    "montant_max": 66999.09,
    "date_notification": "2024-04-26",
@@ -156,6 +161,7 @@
   {
    "numero_marche": "20232023S11630",
    "objet": "MS ACTIVITE LUGE PARVIS HOTEL DE VILLE DECEMBRE 2023",
+   "objet_clair": null,
    "fournisseur": "PRISME EVENTS",
    "montant_max": 49910.0,
    "date_notification": "2023-12-12",
@@ -164,6 +170,7 @@
   {
    "numero_marche": "20242024S12105",
    "objet": "IMPRESSION ET POSE ANAMORPHOSE FORÊT URBAINE HÔTEL DE VILLE",
+   "objet_clair": "Installation d'un décor visuel en trompe-l'œil devant l'Hôtel de Ville",
    "fournisseur": "DUPLIGRAFIC",
    "montant_max": 40585.69,
    "date_notification": "2024-11-05",
@@ -172,6 +179,7 @@
   {
    "numero_marche": "20222022S09922",
    "objet": "MS AC ANIMATION HIVERNALE LUGE PARVIS HOTEL DE VILLE 2023",
+   "objet_clair": null,
    "fournisseur": "PRISME EVENTS",
    "montant_max": 40173.0,
    "date_notification": "2022-12-06",
@@ -180,6 +188,7 @@
   {
    "numero_marche": "decp-2025F03822",
    "objet": "Sondes d’humidité des sols pour la forêt urbaine sur le parvis de l’Hôtel de Ville",
+   "objet_clair": null,
    "fournisseur": "AGRALIS",
    "montant_max": 39933.8,
    "date_notification": "2025-04-11",
@@ -188,6 +197,7 @@
   {
    "numero_marche": "20212021S08973",
    "objet": "ANIMATION LUGE PARVIS HÔTEL DE VILLE 75004",
+   "objet_clair": null,
    "fournisseur": "EUROPEVENT",
    "montant_max": 38295.0,
    "date_notification": "2021-11-18",

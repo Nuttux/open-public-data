@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-18T14:38:43.284445+00:00",
+ "generated_at": "2026-07-18T14:53:30.492622+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "parc-montsouris",
  "name": "Parc Montsouris",
@@ -156,6 +156,7 @@
   {
    "numero_marche": "20222022T07789",
    "objet": "MISE EN PLA FILET ANTICHUTE PASSERELLE RER PARC MONTSOURIS",
+   "objet_clair": null,
    "fournisseur": "RATP",
    "montant_max": 33378.61,
    "date_notification": "2022-09-27",
@@ -164,6 +165,7 @@
   {
    "numero_marche": "20242024S12566",
    "objet": "DIAGNOSTIC STRUCTUREL PASSERELLE CASCADE RER PARC MONTSOURIS",
+   "objet_clair": "Vérification de la solidité de la passerelle de la cascade au parc Montsouris",
    "fournisseur": "REGIE AUTONOME",
    "montant_max": 27800.0,
    "date_notification": "2024-11-27",

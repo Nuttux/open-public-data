@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-18T14:38:43.284445+00:00",
+ "generated_at": "2026-07-18T14:53:30.492622+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "stade-jean-bouin",
  "name": "Stade Jean-Bouin",
@@ -204,6 +204,7 @@
   {
    "numero_marche": "20161410000952",
    "objet": "CSP5 MAINTENANCE MULTITECH & COORD STADE JEAN BOUIN LOT04",
+   "objet_clair": null,
    "fournisseur": "ENGIE ENERGIE SERVICES",
    "montant_max": 2533788.0,
    "date_notification": "2016-07-11",
@@ -212,6 +213,7 @@
   {
    "numero_marche": "20161410000977",
    "objet": "CSP1 LOT 6 SECURITE INCENDIE DU STADE JEAN BOUIN",
+   "objet_clair": null,
    "fournisseur": "CHALLANCIN PREVENTION ET SECURITE",
    "montant_max": 1797093.16,
    "date_notification": "2016-07-11",
@@ -220,6 +222,7 @@
   {
    "numero_marche": "20131410009012",
    "objet": "CSP5 GESTION TECHNIQUE GLOBALE DU STADE JEAN BOUIN LOT 1",
+   "objet_clair": null,
    "fournisseur": "ENGIE ENERGIE SERVICES",
    "montant_max": 1677872.0,
    "date_notification": "2013-05-27",
@@ -228,6 +231,7 @@
   {
    "numero_marche": "20131410009013",
    "objet": "CSP5 STADE JEAN BOUIN LOT 2 NETTOYAGE",
+   "objet_clair": null,
    "fournisseur": "ELIOR SERVICES PROPRETE ET SANTE",
    "montant_max": 1436304.81,
    "date_notification": "2013-05-28",
@@ -236,6 +240,7 @@
   {
    "numero_marche": "20131410009014",
    "objet": "CSP5 STADE JEAN BOUIN LOT 3 SECURITE",
+   "objet_clair": null,
    "fournisseur": "MONDIAL PROTECTION",
    "montant_max": 1237298.0,
    "date_notification": "2013-05-29",
@@ -244,6 +249,7 @@
   {
    "numero_marche": "20161410000976",
    "objet": "LOT 5 NETTOYAGE DU STADE JEAN BOUIN",
+   "objet_clair": null,
    "fournisseur": "ELIOR SERVICES PROPRETE ET SANTE",
    "montant_max": 1060038.88,
    "date_notification": "2016-07-12",
@@ -252,6 +258,7 @@
   {
    "numero_marche": "20222022F02263",
    "objet": "MS AC RENOUVELLEMENT CAMÉRAS STADE JEAN BOUIN PARIS 75016",
+   "objet_clair": null,
    "fournisseur": "VIDELIO",
    "montant_max": 285853.84,
    "date_notification": "2022-04-11",
@@ -260,6 +267,7 @@
   {
    "numero_marche": "20232023T02855",
    "objet": "TRAVAUX INFRASTRUCTURES STADE JEAN BOUIN",
+   "objet_clair": null,
    "fournisseur": "SASU ICT ENGINE",
    "montant_max": 86407.65,
    "date_notification": "2023-04-14",
@@ -268,6 +276,7 @@
   {
    "numero_marche": "20232023T03125",
    "objet": "TRAVAUX DE PEINTURE STADE JEAN BOUIN 75016",
+   "objet_clair": null,
    "fournisseur": "LES TRAVAUX PARISIENS",
    "montant_max": 65114.0,
    "date_notification": "2023-04-21",
@@ -276,6 +285,7 @@
   {
    "numero_marche": "20161410000330",
    "objet": "CONTROLE TECHNIQUE SYSTEME D'ECLAIRAGE STADE JEAN BOUIN",
+   "objet_clair": null,
    "fournisseur": "QUALICONSULT",
    "montant_max": 42313.72,
    "date_notification": "2016-03-14",

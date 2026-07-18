@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-18T14:38:43.284445+00:00",
+ "generated_at": "2026-07-18T14:53:30.492622+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "theatre-de-la-ville",
  "name": "Théâtre de la Ville",
@@ -408,6 +408,7 @@
   {
    "numero_marche": "20181210001694",
    "objet": "CSP5 RENOVATION THEATRE DE LA VILLE - LOT 2 : TVX BAT. TCE",
+   "objet_clair": null,
    "fournisseur": "COLAS FRANCE",
    "montant_max": 14657894.43,
    "date_notification": "2018-12-18",
@@ -416,6 +417,7 @@
   {
    "numero_marche": "20181210001697",
    "objet": "CSP5 RENOVATION THEATRE DE LA VILLE - LOT 3 : SCENOGRAPHIE",
+   "objet_clair": null,
    "fournisseur": "A M G  FECHOZ",
    "montant_max": 4832500.0,
    "date_notification": "2018-12-18",
@@ -424,6 +426,7 @@
   {
    "numero_marche": "20151210001173",
    "objet": "RÉNOVATION PARTIELLE THÉÂTRE DE LA VILLE 75004   MOE",
+   "objet_clair": null,
    "fournisseur": "BLOND ET ROUX ARCHITECTES",
    "montant_max": 3093225.14,
    "date_notification": "2015-06-30",
@@ -432,6 +435,7 @@
   {
    "numero_marche": "20181210001036",
    "objet": "CSP5 TVX DE CURAGE & DEPOLLUTION THEATRE DE LA VILLE 4ÈME",
+   "objet_clair": null,
    "fournisseur": "SUPRAMIANTE",
    "montant_max": 1377686.05,
    "date_notification": "2018-07-16",
@@ -440,6 +444,7 @@
   {
    "numero_marche": "20191210001361",
    "objet": "SA4 DEPLOMBAGE/RESTAURATION THEATRE DE LA VILLE",
+   "objet_clair": null,
    "fournisseur": "STE LOUIS GENESTE ET SES FILS",
    "montant_max": 1080033.02,
    "date_notification": "2019-11-14",
@@ -448,6 +453,7 @@
   {
    "numero_marche": "20191210020021",
    "objet": "SA4 TVX RÉNOVATION THÉÂTRE DE LA VILLE LOT4 FAUTEUILS",
+   "objet_clair": null,
    "fournisseur": "JEZET SEATING SA",
    "montant_max": 499825.0,
    "date_notification": "2019-08-29",
@@ -456,6 +462,7 @@
   {
    "numero_marche": "20151210000972",
    "objet": "REMPLACEMENT DU MONTE-DÉCOR THÉÂTRE DE LA VILLE 75004",
+   "objet_clair": null,
    "fournisseur": "SN ERCT CONSTRUCTION",
    "montant_max": 494514.82,
    "date_notification": "2015-06-10",
@@ -464,6 +471,7 @@
   {
    "numero_marche": "20131210008861",
    "objet": "REMPLACT DU PROSCENIUM ET DE L'ÉCLAIRAGE THÉÂTRE DE LA VILLE",
+   "objet_clair": null,
    "fournisseur": "A M G  FECHOZ",
    "montant_max": 488292.0,
    "date_notification": "2013-03-29",
@@ -472,6 +480,7 @@
   {
    "numero_marche": "20141210011769",
    "objet": "MODERNISATION LOCAUX ET SSI THÉÂTRE DE LA VILLE",
+   "objet_clair": null,
    "fournisseur": "AC2P",
    "montant_max": 483079.65,
    "date_notification": "2014-07-10",
@@ -480,6 +489,7 @@
   {
    "numero_marche": "20202020S07442",
    "objet": "OPC RÉNOVATION THÉÂTRE DE LA VILLE 75004",
+   "objet_clair": null,
    "fournisseur": "IPCS",
    "montant_max": 209950.0,
    "date_notification": "2020-11-20",

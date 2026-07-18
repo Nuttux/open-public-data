@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-18T14:38:43.284445+00:00",
+ "generated_at": "2026-07-18T14:53:30.492622+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "theatre-du-chatelet",
  "name": "Théâtre du Châtelet",
@@ -332,6 +332,7 @@
   {
    "numero_marche": "20171210001086",
    "objet": "CSP5 TVX TCE THEATRE DU CHATELET LOT2",
+   "objet_clair": null,
    "fournisseur": "BALAS",
    "montant_max": 10225896.0,
    "date_notification": "2017-07-07",
@@ -340,6 +341,7 @@
   {
    "numero_marche": "20171210001352",
    "objet": "CSP5 RESTAURATION THEATRE DU CHATELET - TVX PATRIM LOT 3",
+   "objet_clair": null,
    "fournisseur": "BAUDIN CHATEAUNEUF",
    "montant_max": 5300665.92,
    "date_notification": "2017-08-21",
@@ -348,6 +350,7 @@
   {
    "numero_marche": "20171210001353",
    "objet": "CSP5 RESTAURATION THEATRE CHATELET-LOT4- MACHINERIE SCENIQUE",
+   "objet_clair": null,
    "fournisseur": "BC CAIRE",
    "montant_max": 2909288.0,
    "date_notification": "2017-10-04",
@@ -356,6 +359,7 @@
   {
    "numero_marche": "20151210001812",
    "objet": "MOE MISE NORMES TECH./RESTAURATION DÉCORS THÉÂTRE CHATELET",
+   "objet_clair": null,
    "fournisseur": "PHILIPPE PUMAIN ARCHITECTE SARL",
    "montant_max": 2796756.67,
    "date_notification": "2015-12-01",
@@ -364,6 +368,7 @@
   {
    "numero_marche": "20171210001087",
    "objet": "CSP5 TVX RESEAUX SCENIQUES THEATRE CHATELET LOT 5",
+   "objet_clair": null,
    "fournisseur": "SNEF",
    "montant_max": 1447818.0,
    "date_notification": "2017-07-07",
@@ -372,6 +377,7 @@
   {
    "numero_marche": "20171210000337",
    "objet": "CSP5 TVX CURAGE DEPOLLUTION THEATRE CHATELET",
+   "objet_clair": null,
    "fournisseur": "VALGO",
    "montant_max": 659508.25,
    "date_notification": "2017-03-09",
@@ -380,6 +386,7 @@
   {
    "numero_marche": "20181210001696",
    "objet": "CSP5 FACADE THEATRE D CHATELET -LOT 8:METALLERIE/PDUITS VERR",
+   "objet_clair": null,
    "fournisseur": "VERRE ET METAL",
    "montant_max": 482587.0,
    "date_notification": "2018-12-17",
@@ -388,6 +395,7 @@
   {
    "numero_marche": "20171210001679",
    "objet": "AMO SUBSÉQUENT CONDUITE OPÉRATION TH. VILLE ET TH.CHATELET",
+   "objet_clair": null,
    "fournisseur": "ARTELIA",
    "montant_max": 429397.0,
    "date_notification": "2017-10-31",
@@ -396,6 +404,7 @@
   {
    "numero_marche": "20151210001347",
    "objet": "TRAVAUX MONTE-ORCHESTRE THÉÂTRE DU CHÂTELET 75001",
+   "objet_clair": null,
    "fournisseur": "BAUDIN CHATEAUNEUF",
    "montant_max": 309434.03,
    "date_notification": "2015-08-05",
@@ -404,6 +413,7 @@
   {
    "numero_marche": "20151210001281",
    "objet": "INSTALLATIONS ÉLECTRIQUES THÉÂTRE DU CHÂTELET 75001",
+   "objet_clair": null,
    "fournisseur": "TRAVAUX BATIMENTS ELECTRICITE SECUR",
    "montant_max": 290761.53,
    "date_notification": "2015-07-27",

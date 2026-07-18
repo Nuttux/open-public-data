@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-18T14:38:43.284445+00:00",
+ "generated_at": "2026-07-18T14:53:30.492622+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "stade-charlety",
  "name": "Stade Charléty",
@@ -180,6 +180,7 @@
   {
    "numero_marche": "20201410000412",
    "objet": "SA4.MAINTENANCE MULTI TECHNIQUE,COORDINAT°STADE CHARLETY V.P",
+   "objet_clair": null,
    "fournisseur": "ENGIE ENERGIE SERVICES",
    "montant_max": 5112609.99,
    "date_notification": "2020-06-15",
@@ -188,6 +189,7 @@
   {
    "numero_marche": "20242024S10144",
    "objet": "SA4_ACBC_MAINTENANCE MULTI-TECHNIQUE DU STADE CHARLÉTY 75013",
+   "objet_clair": "Entretien technique complet des installations du stade Charléty dans le 13e arrondissement.",
    "fournisseur": "EIFFAGE ENERGIE SYSTEMES",
    "montant_max": 4530785.0,
    "date_notification": "2024-10-04",
@@ -196,6 +198,7 @@
   {
    "numero_marche": "20161410000951",
    "objet": "CSP5 MAINTENANCE MULTITECHNIQUE ET COORD STADE CHARLETY LOT1",
+   "objet_clair": null,
    "fournisseur": "ENGIE ENERGIE SERVICES",
    "montant_max": 3116568.0,
    "date_notification": "2016-07-11",
@@ -204,6 +207,7 @@
   {
    "numero_marche": "20161410000975",
    "objet": "CSP1 LOT 3 SECURITE INCENDIE ET ACCUEIL DU STADE CHARLETY",
+   "objet_clair": null,
    "fournisseur": "CHALLANCIN PREVENTION ET SECURITE",
    "montant_max": 3081210.4,
    "date_notification": "2016-07-11",
@@ -212,6 +216,7 @@
   {
    "numero_marche": "20242024F11836",
    "objet": "SA1_SECURITE INCENDIE ACCEUIL STADE CHARLETY_LOT 1",
+   "objet_clair": "Sécurité incendie et accueil au stade Charléty",
    "fournisseur": "FRANCE SECURITY PRIVEE",
    "montant_max": 3013824.82,
    "date_notification": "2024-12-03",
@@ -220,6 +225,7 @@
   {
    "numero_marche": "20202020S08283",
    "objet": "SA1 ACBC SECURITE INCENDIE ACCUEIL STADE CHARLETY LOT 1",
+   "objet_clair": null,
    "fournisseur": "VIGI-SECURITE",
    "montant_max": 2481469.99,
    "date_notification": "2021-01-15",
@@ -228,6 +234,7 @@
   {
    "numero_marche": "20242024F11837",
    "objet": "SA1_NETTOYAGE STADE CHARLETY_LOT2",
+   "objet_clair": "Nettoyage et entretien du stade Charléty.",
    "fournisseur": "REKEEP FACILITY SAS",
    "montant_max": 1847694.68,
    "date_notification": "2024-12-03",
@@ -236,6 +243,7 @@
   {
    "numero_marche": "20201410000480",
    "objet": "SA4 ENTRETIEN PELOUSE TERRAIN D'HONNEUR STADE CHARLETY -LOT2",
+   "objet_clair": null,
    "fournisseur": "BOTANICA JARDINS SERVICES",
    "montant_max": 1400009.99,
    "date_notification": "2020-07-03",
@@ -244,6 +252,7 @@
   {
    "numero_marche": "20161410000974",
    "objet": "CSP1 LOT 2 NETTOYAGE DU STADE CHARLETY",
+   "objet_clair": null,
    "fournisseur": "ELIOR SERVICES PROPRETE ET SANTE",
    "montant_max": 1379461.08,
    "date_notification": "2016-07-12",
@@ -252,6 +261,7 @@
   {
    "numero_marche": "20202020S08284",
    "objet": "SA1 ACBC NETTOYAGE DU STADE CHARLETY - LOT2",
+   "objet_clair": null,
    "fournisseur": "ELIOR SERVICES PROPRETE ET SANTE",
    "montant_max": 1252459.99,
    "date_notification": "2021-01-07",

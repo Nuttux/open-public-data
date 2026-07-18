@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-18T14:38:43.284445+00:00",
+ "generated_at": "2026-07-18T14:53:30.492622+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "pavillon-de-larsenal",
  "name": "Pavillon de l'Arsenal",
@@ -258,6 +258,7 @@
   {
    "numero_marche": "20212021S09807",
    "objet": "SUBSÉQUENT MOE RÉNOVATION PAVILLON DE L'ARSENAL SAMO",
+   "objet_clair": null,
    "fournisseur": "DATA ARCHITECTES",
    "montant_max": 926670.0,
    "date_notification": "2021-12-22",
@@ -266,6 +267,7 @@
   {
    "numero_marche": "20202020S03929",
    "objet": "MOE RÉNOVATION PARTIELLE PAVILLON DE L'ARSENAL",
+   "objet_clair": null,
    "fournisseur": "DATA ARCHITECTES",
    "montant_max": 112130.0,
    "date_notification": "2020-07-08",
@@ -274,6 +276,7 @@
   {
    "numero_marche": "20191210000983",
    "objet": "AMO PERFORMANCE ENERGETIQUE PAVILLON DE L'ARSENAL 21 MORLAND",
+   "objet_clair": null,
    "fournisseur": "ETAMINE",
    "montant_max": 79200.0,
    "date_notification": "2019-07-16",
@@ -282,6 +285,7 @@
   {
    "numero_marche": "20222022S02118",
    "objet": "SUBSÉQUENT SPS 1 RÉNOVATION PAVILLON DE L'ARSENAL 75004 SAMO",
+   "objet_clair": null,
    "fournisseur": "BTP CONSULTANTS",
    "montant_max": 25920.0,
    "date_notification": "2022-04-26",

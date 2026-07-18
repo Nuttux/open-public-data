@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-18T14:38:43.284445+00:00",
+ "generated_at": "2026-07-18T14:53:30.492622+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "musee-cognacq-jay",
  "name": "Musée Cognacq-Jay",
@@ -75,6 +75,7 @@
   {
    "numero_marche": "20141210011375",
    "objet": "MISE AUX NORMES SSI MUSÉE COGNACQ-JAY / HÔTEL DONON 75003",
+   "objet_clair": null,
    "fournisseur": "SOC ETUDES REALIS INSTALLATIONS SEC",
    "montant_max": 232408.1,
    "date_notification": "2014-06-16",
@@ -83,6 +84,7 @@
   {
    "numero_marche": "20131210010111",
    "objet": "MOE ET COORDINATION SSI MUSÉE COGNACQ-JAY 75003",
+   "objet_clair": null,
    "fournisseur": "RISK&CO SOLUTIONS",
    "montant_max": 30925.0,
    "date_notification": "2013-10-16",

@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-18T14:38:43.284445+00:00",
+ "generated_at": "2026-07-18T14:53:30.492622+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "piscine-belliard",
  "name": "Piscine Belliard",
@@ -111,6 +111,7 @@
   {
    "numero_marche": "20232023T09910",
    "objet": "TEP JESSE OWENS-ECOLE ELÉM BELLIARD, FUTURE PISCINE BELLIARD",
+   "objet_clair": null,
    "fournisseur": "EIFFAGE ENERGIE SYSTEMES-CLEVIA IDF",
    "montant_max": 692000.0,
    "date_notification": "2023-11-03",

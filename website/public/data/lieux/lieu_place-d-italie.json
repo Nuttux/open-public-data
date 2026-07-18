@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-18T14:38:43.284445+00:00",
+ "generated_at": "2026-07-18T14:53:30.492622+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "place-d-italie",
  "name": "Place d'Italie",
@@ -108,6 +108,7 @@
   {
    "numero_marche": "20171370000093",
    "objet": "CSP4 LOT 1 MISSION CO-CONCEPTION PLACE D'ITALIE PLACE NATION",
+   "objet_clair": null,
    "fournisseur": "CONTEMPORARY LANDSCAPE CREATIONS",
    "montant_max": 1000000.0,
    "date_notification": "2017-01-17",
@@ -116,6 +117,7 @@
   {
    "numero_marche": "20191230082702",
    "objet": "CSP4 MS AC TVX AMENAGEMENT JARDIN CENTRAL PLACE D ITALIE 13E",
+   "objet_clair": null,
    "fournisseur": "AGRIGEX ENVIRO/LACHAUX PAYSA/SEGEX",
    "montant_max": 226375.12,
    "date_notification": "2019-04-26",
@@ -124,6 +126,7 @@
   {
    "numero_marche": "20191370090073",
    "objet": "CSP4 MS/AC OPC AMENAGEMENT JARDIN CENTRAL DE PLACE D ITALIE",
+   "objet_clair": null,
    "fournisseur": "LOUIS BERGER",
    "montant_max": 51630.0,
    "date_notification": "2019-04-29",

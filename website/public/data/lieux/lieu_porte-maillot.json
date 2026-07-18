@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-18T14:38:43.284445+00:00",
+ "generated_at": "2026-07-18T14:53:30.492622+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "porte-maillot",
  "name": "Porte Maillot",
@@ -220,6 +220,7 @@
   {
    "numero_marche": "20181370090022",
    "objet": "MANDAT DE MAITRISE D'OUVRAGE REAMENAGEMENT PORTE MAILLOT",
+   "objet_clair": null,
    "fournisseur": "SPL PARISEINE",
    "montant_max": 1093031.0,
    "date_notification": "2018-05-31",
@@ -228,6 +229,7 @@
   {
    "numero_marche": "20151380000359",
    "objet": "CSP4: CREATION D'UN EGOUT PLACE DE LA PORTE MAILLOT - EOLE",
+   "objet_clair": null,
    "fournisseur": "SADE CGTH",
    "montant_max": 997653.0,
    "date_notification": "2016-07-28",
@@ -236,6 +238,7 @@
   {
    "numero_marche": "20181370090079",
    "objet": "MANDAT D'ETUDE COORDINATION PROJETS SECTEUR PORTE MAILLOT",
+   "objet_clair": null,
    "fournisseur": "SPL PARISEINE",
    "montant_max": 608311.0,
    "date_notification": "2018-09-28",
@@ -244,6 +247,7 @@
   {
    "numero_marche": "20161360001632",
    "objet": "QUASI-REGIE CONSTITUTION DOSSIER CONNCERTATION PORTE MAILLOT",
+   "objet_clair": null,
    "fournisseur": "ATELIER PARISIEN D'URBANISME",
    "montant_max": 45000.0,
    "date_notification": "2016-12-02",
@@ -252,6 +256,7 @@
   {
    "numero_marche": "20171360001600",
    "objet": "AMO PROJET RÉAMÉNAGEMENT PORTE MAILLOT",
+   "objet_clair": null,
    "fournisseur": "ATELIER PARISIEN D'URBANISME",
    "montant_max": 35000.0,
    "date_notification": "2017-10-16",
@@ -260,6 +265,7 @@
   {
    "numero_marche": "20151360001001",
    "objet": "CSP3-DÉPOLLUTION SOLS PORTE MAILLOT ET SES ABORDS 16E ET 17E",
+   "objet_clair": null,
    "fournisseur": "HPC ENVIROTEC",
    "montant_max": 29066.0,
    "date_notification": "2015-06-08",

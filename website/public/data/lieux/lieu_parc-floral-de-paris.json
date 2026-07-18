@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-18T14:38:43.284445+00:00",
+ "generated_at": "2026-07-18T14:53:30.492622+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "parc-floral-de-paris",
  "name": "Parc floral de Paris",
@@ -229,6 +229,7 @@
   {
    "numero_marche": "decp-2025S01135",
    "objet": "Réalisation de prestations annexes dans le cadre de l’occupation du Pavillon de la Chesnaie du Roy au parc Floral de Paris",
+   "objet_clair": null,
    "fournisseur": "SOC D EXPLOITATION DE PARCS D EXPOSITION",
    "montant_max": 8214.0,
    "date_notification": "2025-03-10",
@@ -237,6 +238,7 @@
   {
    "numero_marche": "decp-2025S02976",
    "objet": "Expertise et suivi de la collection des Bonsaïs au Parc Floral de Paris- Jardin Botanique de Paris",
+   "objet_clair": null,
    "fournisseur": "JEAN-PHILIPPE HOAREAU",
    "montant_max": 200.0,
    "date_notification": "2025-05-27",

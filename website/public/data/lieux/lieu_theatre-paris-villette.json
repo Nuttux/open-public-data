@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-18T14:38:43.284445+00:00",
+ "generated_at": "2026-07-18T14:53:30.492622+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "theatre-paris-villette",
  "name": "Théâtre Paris-Villette",
@@ -143,6 +143,7 @@
   {
    "numero_marche": "20191320000205",
    "objet": "CSP5 MODERNISATION RESEAUX SCENIQ THEATRE PARIS VILLETTE",
+   "objet_clair": null,
    "fournisseur": "D 6 BELL LIGHT",
    "montant_max": 123681.0,
    "date_notification": "2019-04-29",
@@ -151,6 +152,7 @@
   {
    "numero_marche": "20161210001306",
    "objet": "RÉNOVATION SALLE DE RÉPÉTITION THÉÂTRE PARIS VILLETTE 75019",
+   "objet_clair": null,
    "fournisseur": "ERI",
    "montant_max": 47000.0,
    "date_notification": "2016-09-19",

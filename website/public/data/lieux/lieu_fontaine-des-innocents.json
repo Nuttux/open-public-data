@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-18T14:38:43.284445+00:00",
+ "generated_at": "2026-07-18T14:53:30.492622+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "fontaine-des-innocents",
  "name": "Fontaine des Innocents",
@@ -76,6 +76,7 @@
   {
    "numero_marche": "20232023T02042",
    "objet": "SA4 RESTAURATION FONTAINE DES INNOCENTS LOT1:INSTAL CHANTIER",
+   "objet_clair": null,
    "fournisseur": "H. CHEVALIER",
    "montant_max": 1019737.15,
    "date_notification": "2023-04-04",
@@ -84,6 +85,7 @@
   {
    "numero_marche": "20222022T08669",
    "objet": "SA3 MS/AC AMENAGEMENT DES ABORDS FONTAINE DES INNOCENTS",
+   "objet_clair": null,
    "fournisseur": "COCHERY ILE DE FRANCE",
    "montant_max": 432846.28,
    "date_notification": "2022-11-04",
@@ -92,6 +94,7 @@
   {
    "numero_marche": "20212021S07089",
    "objet": "SA4 MO RELATIVE A LA RESTAURATION FONTAINE DES INNOCENTS",
+   "objet_clair": null,
    "fournisseur": "SUNMETRON",
    "montant_max": 258357.5,
    "date_notification": "2021-10-18",

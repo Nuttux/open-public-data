@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-18T14:38:43.284445+00:00",
+ "generated_at": "2026-07-18T14:53:30.492622+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "maison-de-la-poesie",
  "name": "Maison de la Poésie",
@@ -350,6 +350,7 @@
   {
    "numero_marche": "decp-2025T01821",
    "objet": "Marché de travaux de mise à niveau des équipements de machinerie scénique de la Maison de la Poésie, sise 157 rue Saint Martin à Paris 3ème\nIl est prévu les travaux suivants :\n- Dépose des matériels s",
+   "objet_clair": null,
    "fournisseur": "TAMBE",
    "montant_max": 265000,
    "date_notification": "2025-02-17",

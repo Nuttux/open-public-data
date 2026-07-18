@@ -102,6 +102,23 @@ def norm_key(s: str) -> str:
     return re.sub(r"[^a-z0-9]+", " ", s).strip()
 
 
+_VULG_MARCHES: dict | None = None
+
+
+def vulgarisation_marches() -> dict:
+    """Libellés de marché en français clair, indexés par numéro — le même cache
+    que celui des fiches contrat (`objet_clair`). Évite de republier le libellé
+    administratif brut sur la fiche du lieu."""
+    global _VULG_MARCHES
+    if _VULG_MARCHES is None:
+        p = ROOT / "website" / "public" / "data" / "enrichment" / "vulgarization_marches.json"
+        try:
+            _VULG_MARCHES = json.load(open(p)).get("items") or {}
+        except Exception:
+            _VULG_MARCHES = {}
+    return _VULG_MARCHES
+
+
 _PROJET_ID_INDEX: dict | None = None
 
 
@@ -234,8 +251,14 @@ def resolve_argent(slug: str) -> dict:
     # Marchés publics rattachés au lieu (jugés « au-lieu ») : c'est de l'argent
     # public au même titre qu'une subvention ou un investissement, et il manquait
     # à la fiche. Chaque ligne renvoie à sa fiche contrat.
+    # `objet_clair` : le libellé en français clair déjà produit pour les fiches
+    # contrat (vulgarization_marches.json). Sans lui la fiche affichait le libellé
+    # brut du marché, codes de section compris (« Csp4:ma sub_ac:mission moe … ») —
+    # illisible. Repli côté front sur normalizeObjet(), comme la fiche contrat.
+    vulg = vulgarisation_marches()
     marches = [
         {"numero_marche": m.get("numero_marche"), "objet": (m.get("objet") or "")[:200],
+         "objet_clair": (vulg.get(str(m.get("numero_marche"))) or {}).get("objet_clair"),
          "fournisseur": m.get("fournisseur"), "montant_max": m.get("montant_max") or 0,
          "date_notification": m.get("date_notification"), "preuve": m.get("preuve")}
         for m in r.get("marches", [])

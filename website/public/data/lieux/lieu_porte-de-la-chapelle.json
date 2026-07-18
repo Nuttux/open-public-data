@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-18T14:38:43.284445+00:00",
+ "generated_at": "2026-07-18T14:53:30.492622+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "porte-de-la-chapelle",
  "name": "Porte de la Chapelle",
@@ -244,6 +244,7 @@
   {
    "numero_marche": "20222022S01527",
    "objet": "MOE RÉAMÉNAGEMENT DE LA PORTE DE LA CHAPELLE",
+   "objet_clair": null,
    "fournisseur": "ARCADIS ESG",
    "montant_max": 1151853.98,
    "date_notification": "2022-03-23",
@@ -252,6 +253,7 @@
   {
    "numero_marche": "20201370000247",
    "objet": "SA3 AMO COORDINATION TVX PORTE DE LA CHAPELLE",
+   "objet_clair": null,
    "fournisseur": "LOUIS BERGER",
    "montant_max": 610679.0,
    "date_notification": "2020-03-27",
@@ -260,6 +262,7 @@
   {
    "numero_marche": "20222022T09890",
    "objet": "SA3 MSAC TVX AMENAGEMENT ESPACES VERTS PORTE DE LA CHAPELLE",
+   "objet_clair": null,
    "fournisseur": "TERIDEAL AGRIGEX ENVIRONNEMENT",
    "montant_max": 510070.49,
    "date_notification": "2022-12-14",
@@ -268,6 +271,7 @@
   {
    "numero_marche": "20212021S03139",
    "objet": "MSAC MOE REAMENAGEMENT PORTE DE LA CHAPELLE AVP + EP",
+   "objet_clair": null,
    "fournisseur": "ARCADIS ESG",
    "montant_max": 499558.5,
    "date_notification": "2021-05-25",
@@ -276,6 +280,7 @@
   {
    "numero_marche": "20242024S00371",
    "objet": "MOE RÉAMÉNAGEMENT DE LA PORTE DE LA CHAPELLE 3",
+   "objet_clair": "Pilotage technique du projet de réaménagement de la Porte de la Chapelle.",
    "fournisseur": "ARCADIS ESG",
    "montant_max": 261200.0,
    "date_notification": "2024-01-30",
@@ -284,6 +289,7 @@
   {
    "numero_marche": "20222022S10203",
    "objet": "SA3 MSAC OPC OPERATION AMENAGEMENT PORTE DE LA CHAPELLE",
+   "objet_clair": null,
    "fournisseur": "SEGIC INGENIERIE",
    "montant_max": 150500.0,
    "date_notification": "2022-12-22",

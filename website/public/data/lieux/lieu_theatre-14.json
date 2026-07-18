@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-18T14:38:43.284445+00:00",
+ "generated_at": "2026-07-18T14:53:30.492622+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "theatre-14",
  "name": "Théâtre 14",
@@ -173,6 +173,7 @@
   {
    "numero_marche": "20191210020029",
    "objet": "TRAVAUX RESTRUCTURATION THÉÂTRE 14-20 MARC SANGNIER PARIS 14",
+   "objet_clair": null,
    "fournisseur": "REA CONCEPT",
    "montant_max": 291808.96,
    "date_notification": "2019-08-30",
@@ -181,6 +182,7 @@
   {
    "numero_marche": "20191210001368",
    "objet": "THEATRE 14 LOT 2 FAUTEUILS",
+   "objet_clair": null,
    "fournisseur": "KLESLO",
    "montant_max": 35000.0,
    "date_notification": "2019-11-04",
@@ -189,6 +191,7 @@
   {
    "numero_marche": "20242024S10634",
    "objet": "MOE POUR EXTENSION DU THEATRE 14",
+   "objet_clair": "Études d'architecte pour agrandir le Théâtre 14",
    "fournisseur": "STUDIO MIHA",
    "montant_max": 30450.0,
    "date_notification": "2024-10-01",
@@ -197,6 +200,7 @@
   {
    "numero_marche": "20181210001273",
    "objet": "MO MODERNISATION INSTALLATIONS GÉNIE CLIM THÉÂTRE 14",
+   "objet_clair": null,
    "fournisseur": "ESPACE TEMPS",
    "montant_max": 25000.0,
    "date_notification": "2018-09-19",
@@ -205,6 +209,7 @@
   {
    "numero_marche": "20181320001429",
    "objet": "MOE REORGANISATION ET REQUALIFICATION THEATRE 14",
+   "objet_clair": null,
    "fournisseur": "X X L.ATELIER",
    "montant_max": 25000.0,
    "date_notification": "2018-10-24",

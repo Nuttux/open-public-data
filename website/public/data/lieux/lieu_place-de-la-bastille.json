@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-18T14:38:43.284445+00:00",
+ "generated_at": "2026-07-18T14:53:30.492622+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "place-de-la-bastille",
  "name": "Place de la Bastille",
@@ -166,6 +166,7 @@
   {
    "numero_marche": "20171370007202",
    "objet": "CSP4: MA SUB_AC:MISSION MOE AMENAGEMENT PLACE DE LA BASTILLE",
+   "objet_clair": null,
    "fournisseur": "OMNIUM GENERAL D'INGENIERIE",
    "montant_max": 561010.26,
    "date_notification": "2017-01-23",
@@ -174,6 +175,7 @@
   {
    "numero_marche": "20171370001077",
    "objet": "CSP4-MS OPC AMÉNAGEMENT PLACE DE LA BASTILLE",
+   "objet_clair": null,
    "fournisseur": "ARTELIA",
    "montant_max": 138934.53,
    "date_notification": "2017-07-17",
@@ -182,6 +184,7 @@
   {
    "numero_marche": "20191370000727",
    "objet": "CSP EP MS OPC CREAT.CONTINUITE PLACE DE LA BASTILLE/ARSENAL",
+   "objet_clair": null,
    "fournisseur": "ARTELIA",
    "montant_max": 45509.45,
    "date_notification": "2019-05-27",
@@ -190,6 +193,7 @@
   {
    "numero_marche": "20191370000119",
    "objet": "FOURNITURE MEDAILLONS CERAMIQUES PLACE DE LA BASTILLE",
+   "objet_clair": null,
    "fournisseur": "ETAB. PUBLIC CITE CERAMIQUE-SEVRES",
    "montant_max": 25000.0,
    "date_notification": "2019-01-31",

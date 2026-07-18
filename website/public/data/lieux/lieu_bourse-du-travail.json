@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-18T14:38:43.284445+00:00",
+ "generated_at": "2026-07-18T14:53:30.492622+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "bourse-du-travail",
  "name": "Bourse du Travail",
@@ -101,6 +101,7 @@
   {
    "numero_marche": "20242024S01579",
    "objet": "MOE COORDINATION SSI NORMES INCENDIE BOURSE DU TRAVAIL 10E",
+   "objet_clair": "Mise aux normes de sécurité incendie de la Bourse du Travail",
    "fournisseur": "EFFICIO",
    "montant_max": 109769.51,
    "date_notification": "2024-03-21",
@@ -109,6 +110,7 @@
   {
    "numero_marche": "20171210001853",
    "objet": "BOURSE DU TRAVAIL RENOVATION HALL ACCUEIL",
+   "objet_clair": null,
    "fournisseur": "BOMAN ARCHITECTES",
    "montant_max": 29818.0,
    "date_notification": "2017-12-15",

@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-18T14:38:43.284445+00:00",
+ "generated_at": "2026-07-18T14:53:30.492622+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "bois-de-boulogne",
  "name": "Bois de Boulogne",
@@ -201,6 +201,7 @@
   {
    "numero_marche": "decp-2026T01251",
    "objet": "Travaux de fontainerie, d’entretien, de réparation et d’extension des réseaux d’adduction d’eau dans les bois, espaces verts et cimetières de la ville de Paris.\n\n - Travaux de fontainerie, d’entretien",
+   "objet_clair": null,
    "fournisseur": "EIFFAGE GENIE CIVIL RESEAUX",
    "montant_max": 6000000.0,
    "date_notification": "2026-03-10",
@@ -209,6 +210,7 @@
   {
    "numero_marche": "decp-2025T02922",
    "objet": "Accords-cadres à bons de commande pour les travaux de fouilles et plantations d'arbres pour la Ville de Paris et le Centre d'Action Sociale de la Ville de Paris. - Travaux de fouilles et de plantation",
+   "objet_clair": null,
    "fournisseur": "UNIVERSAL PAYSAGE",
    "montant_max": 2010000.0,
    "date_notification": "2025-06-05",
@@ -217,6 +219,7 @@
   {
    "numero_marche": "20212021T00511",
    "objet": "SA3 AC BC LOT4 TRAVAVAUX DE FOUILLES - BOIS DE BOULOGNE",
+   "objet_clair": null,
    "fournisseur": "UNIVERSAL PAYSAGE",
    "montant_max": 1920009.99,
    "date_notification": "2021-03-17",
@@ -225,6 +228,7 @@
   {
    "numero_marche": "decp-2025T05384",
    "objet": "Travaux d’entretien des sols (voirie, réseaux et travaux divers) dans les espaces verts, bois et cimetières parisiens. - Travaux d’entretien des sols (voirie, réseaux et travaux divers) dans les espac",
+   "objet_clair": null,
    "fournisseur": "ACTIV TP",
    "montant_max": 999637.0,
    "date_notification": "2025-07-01",
@@ -233,6 +237,7 @@
   {
    "numero_marche": "20161230001022",
    "objet": "CSP5 - VRD ET ESPACES VERTS - AAGV BOIS DE BOULOGNE LOT 2",
+   "objet_clair": null,
    "fournisseur": "TERIDEAL SEGEX",
    "montant_max": 996122.96,
    "date_notification": "2016-07-25",
@@ -241,6 +246,7 @@
   {
    "numero_marche": "20151400000758",
    "objet": "CSP2-BUNGALOWS-CELLES-ST-CLOUD/BOIS DE BOULOGNE-LOT 1",
+   "objet_clair": null,
    "fournisseur": "TRANSPORTS PIERRE ROSSION",
    "montant_max": 800000.0,
    "date_notification": "2015-07-06",
@@ -249,6 +255,7 @@
   {
    "numero_marche": "decp-2025S07121",
    "objet": "Entretien des jeunes peuplements forestiers dans le bois de Boulogne\n(16ème) et le Domaine de Beauregard (78).",
+   "objet_clair": null,
    "fournisseur": "ESPACE DECO",
    "montant_max": 400000.0,
    "date_notification": "2025-08-19",
@@ -257,6 +264,7 @@
   {
    "numero_marche": "20212021T02137",
    "objet": "BAT DEVE 93W AVENUE DE L'HIPPODROME BOIS DE BOULOGNE",
+   "objet_clair": null,
    "fournisseur": "PROCHALOR",
    "montant_max": 338189.48,
    "date_notification": "2021-04-26",
@@ -265,6 +273,7 @@
   {
    "numero_marche": "decp-2026S01626",
    "objet": "Prestations de fauchage de prairies et pelouses, de débroussaillage de bords de voies et de taillage de haies pour les bois de Vincennes (12ème arrondissement) et Boulogne (16ème arrondissement), ains",
+   "objet_clair": null,
    "fournisseur": "ROBERT PAYSAGE",
    "montant_max": 120000.0,
    "date_notification": "2026-03-27",
@@ -273,6 +282,7 @@
   {
    "numero_marche": "decp-2025S03215",
    "objet": "Marché de location d’une barge motorisée pour accessibilité et transport de matériaux vers le Kiosque de l’Empereur situé sur l’ile du lac intérieur du Bois de Boulogne, 75016 Paris",
+   "objet_clair": null,
    "fournisseur": "CONTRASTE PRO",
    "montant_max": 32569.0,
    "date_notification": "2025-03-28",

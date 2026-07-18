@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-18T14:38:43.284445+00:00",
+ "generated_at": "2026-07-18T14:53:30.492622+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "parc-des-buttes-chaumont",
  "name": "Parc des Buttes-Chaumont",
@@ -207,6 +207,7 @@
   {
    "numero_marche": "decp-2025T13454",
    "objet": "Marché de conception réalisation pour la restauration structurelle et paysagère durable du parc des Buttes-Chaumont à Paris 19ème",
+   "objet_clair": null,
    "fournisseur": "EIFFAGE ROUTE ILE DE FRANCE / CENTRE OUEST",
    "montant_max": 94000000.0,
    "date_notification": "2026-01-27",
@@ -215,6 +216,7 @@
   {
    "numero_marche": "decp-2026S00531",
    "objet": "Missions de contrôle technique relative à la restauration structurelle et paysagère durable du parc des Buttes-Chaumont à Paris 19ème",
+   "objet_clair": null,
    "fournisseur": "SOCOTEC CONSTRUCTION",
    "montant_max": 691560.0,
    "date_notification": "2026-02-13",
@@ -223,6 +225,7 @@
   {
    "numero_marche": "decp-2025T13056",
    "objet": "Travaux pour le réaménagement d’une aire de loisirs au parc des Buttes-Chaumont à Paris 19ème  - Travaux de terrassement, maçonnerie, réseaux divers, brumisation, sols souples et fourniture et pose de",
+   "objet_clair": null,
    "fournisseur": "TERIDEAL",
    "montant_max": 576028.61,
    "date_notification": "2025-12-16",
@@ -231,6 +234,7 @@
   {
    "numero_marche": "decp-2025T13057",
    "objet": "Travaux pour le réaménagement d’une aire de loisirs au parc des Buttes-Chaumont à Paris 19ème  - Travaux de serrurerie, montage de bancs, fourniture et pose d’agrès sportifs pour le réaménagement d’un",
+   "objet_clair": null,
    "fournisseur": "SARMATES",
    "montant_max": 95349.22,
    "date_notification": "2025-12-16",
@@ -239,6 +243,7 @@
   {
    "numero_marche": "20151230000439",
    "objet": "RÉNOVATION DE LA CLÔTURE DU PARC DES BUTTES CHAUMONT 19E",
+   "objet_clair": null,
    "fournisseur": "ENTREPRISE GENERALE DE CLOTURES",
    "montant_max": 84620.39,
    "date_notification": "2015-02-19",
@@ -247,6 +252,7 @@
   {
    "numero_marche": "decp-2025T04021",
    "objet": "Réalisation d’un dispositif de guidage pour les malvoyants au parc des Buttes Chaumont",
+   "objet_clair": null,
    "fournisseur": "RUGOTECH",
    "montant_max": 10000.0,
    "date_notification": "2025-04-25",

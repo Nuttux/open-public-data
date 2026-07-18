@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-18T14:38:43.284445+00:00",
+ "generated_at": "2026-07-18T14:53:30.492622+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "canal-saint-martin",
  "name": "Canal Saint-Martin",
@@ -140,6 +140,7 @@
   {
    "numero_marche": "20242024S09979",
    "objet": "SA3.ACBC.TRANSPORT VOIE FLUVIAL MATÉRIAUX CANAL SAINT MARTIN",
+   "objet_clair": "Transport de matériaux par bateau sur le canal Saint-Martin",
    "fournisseur": "BATAIL-LOG",
    "montant_max": 500000.0,
    "date_notification": "2024-11-05",
@@ -148,6 +149,7 @@
   {
    "numero_marche": "20242024S00824",
    "objet": "BAIGNADE CANAL SAINT MARTIN",
+   "objet_clair": "Organisation et surveillance de la baignade estivale dans le canal Saint-Martin.",
    "fournisseur": "SSO ACTIVE",
    "montant_max": 38400.0,
    "date_notification": "2024-02-14",

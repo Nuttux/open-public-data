@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-18T14:38:43.284445+00:00",
+ "generated_at": "2026-07-18T14:53:30.492622+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "piscine-pontoise",
  "name": "Piscine Pontoise",
@@ -212,6 +212,7 @@
   {
    "numero_marche": "20222022T04166",
    "objet": "SA4 PISCINE PONTOISE RENOVATION ACCES ET BASSIN",
+   "objet_clair": null,
    "fournisseur": "LEFEVRE SAS",
    "montant_max": 2698652.0,
    "date_notification": "2022-06-20",
@@ -220,6 +221,7 @@
   {
    "numero_marche": "20212021T01396",
    "objet": "SA4 PISCINE PONTOISE MACONNERIE DEMOLITION ETANCHEITE LOT1",
+   "objet_clair": null,
    "fournisseur": "LEFEVRE SAS",
    "montant_max": 2074418.33,
    "date_notification": "2021-04-06",
@@ -228,6 +230,7 @@
   {
    "numero_marche": "20212021T01397",
    "objet": "SA4 RENOVATION CHARPENTE VERRIERE PISCINE PONTOISE LOT2",
+   "objet_clair": null,
    "fournisseur": "EIFFAGE METAL",
    "montant_max": 1832099.0,
    "date_notification": "2021-04-02",
@@ -236,6 +239,7 @@
   {
    "numero_marche": "20212021T01398",
    "objet": "SA4 RENOVATION CVC/CFA/SSI/TRAITT EAU PISCINE PONTOISE LOT3",
+   "objet_clair": null,
    "fournisseur": "ENTREPRISE GUIBAN SA",
    "montant_max": 1273020.0,
    "date_notification": "2021-04-06",
@@ -244,6 +248,7 @@
   {
    "numero_marche": "20212021T09836",
    "objet": "TVX RÉNOVATION PLOMBERIE ET SSI PISCINE PONTOISE",
+   "objet_clair": null,
    "fournisseur": "ENTREPRISE GUIBAN SA",
    "montant_max": 1245790.03,
    "date_notification": "2021-12-14",
@@ -252,6 +257,7 @@
   {
    "numero_marche": "20222022T00424",
    "objet": "SA4_TVX RÉPARATION BÉTON DU BASSIN/PLAGES PISCINE PONTOISE",
+   "objet_clair": null,
    "fournisseur": "LEFEVRE SAS",
    "montant_max": 592784.96,
    "date_notification": "2022-02-03",
@@ -260,6 +266,7 @@
   {
    "numero_marche": "20212021S07139",
    "objet": "MOE RESTRUCTURATION PISCINE PONTOISE (OPÉRATION 2) SAMO",
+   "objet_clair": null,
    "fournisseur": "MARCHAND",
    "montant_max": 531820.6,
    "date_notification": "2021-09-30",
@@ -268,6 +275,7 @@
   {
    "numero_marche": "20191210000214",
    "objet": "MOE VERRIÈRE ET RÉNOVATION VENTILATION PISCINE PONTOISE 5ÈME",
+   "objet_clair": null,
    "fournisseur": "MARCHAND",
    "montant_max": 466886.04,
    "date_notification": "2019-02-25",
@@ -276,6 +284,7 @@
   {
    "numero_marche": "20171210001559",
    "objet": "MOE RÉNOVATION TECHNIQUE DE LA PISCINE PONTOISE 75005",
+   "objet_clair": null,
    "fournisseur": "SARL EUGENE ARCHITECTES DU PATRIMOI",
    "montant_max": 235290.0,
    "date_notification": "2017-10-19",
@@ -284,6 +293,7 @@
   {
    "numero_marche": "20151410001090",
    "objet": "M. SUBS. TX RÉNOVATION FILTRATION PISCINE PONTOISE 75005",
+   "objet_clair": null,
    "fournisseur": "TECHNIQUE FRANCAISE DE L EAU",
    "montant_max": 105449.53,
    "date_notification": "2015-06-15",

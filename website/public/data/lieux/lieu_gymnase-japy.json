@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-18T14:38:43.284445+00:00",
+ "generated_at": "2026-07-18T14:53:30.492622+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "gymnase-japy",
  "name": "Gymnase Japy",
@@ -118,6 +118,7 @@
   {
    "numero_marche": "20161410001216",
    "objet": "CSP5 TVX SYSTEMES D'ECLAIRAGE GYMNASE JAPY 11ÈME",
+   "objet_clair": null,
    "fournisseur": "SPIE CITYNETWORKS",
    "montant_max": 128392.0,
    "date_notification": "2016-08-24",

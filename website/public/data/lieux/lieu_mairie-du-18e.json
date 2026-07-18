@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-18T14:38:43.284445+00:00",
+ "generated_at": "2026-07-18T14:53:30.492622+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "mairie-du-18e",
  "name": "Mairie du 18e",
@@ -131,6 +131,7 @@
   {
    "numero_marche": "20181210001165",
    "objet": "AMÉNAGEMENT DU PÉRISTYLE MAIRIE DU 18ÈME ARRONDISSEMENT",
+   "objet_clair": null,
    "fournisseur": "EDILE CONSTRUCTION",
    "montant_max": 165182.51,
    "date_notification": "2018-08-27",
@@ -139,6 +140,7 @@
   {
    "numero_marche": "decp-2025F00696",
    "objet": "Marché d’enlèvement de 2 classeurs rotatifs et pour la fourniture, l’installation, la mise en service, la maintenance de 2 nouveaux classeurs rotatifs destinés à la mairie du 18ème arrondissement.",
+   "objet_clair": null,
    "fournisseur": "KARDEX FRANCE",
    "montant_max": 135000.0,
    "date_notification": "2025-01-28",
@@ -147,6 +149,7 @@
   {
    "numero_marche": "20181210000233",
    "objet": "MODERNISATION DU SSI    MAIRIE DU 18E",
+   "objet_clair": null,
    "fournisseur": "SOC ETUDES REALIS INSTALLATIONS SEC",
    "montant_max": 106948.0,
    "date_notification": "2018-02-21",
@@ -155,6 +158,7 @@
   {
    "numero_marche": "20181210029805",
    "objet": "MS DIVERS TRX GÉNIE CLIMATIQUE MAIRIE DU 18E PL J.JOFFRIN",
+   "objet_clair": null,
    "fournisseur": "CELSIO",
    "montant_max": 75695.55,
    "date_notification": "2018-06-04",
@@ -163,6 +167,7 @@
   {
    "numero_marche": "20141210000222",
    "objet": "MODERNISATION DU TGBT  MAIRIE DU 18E",
+   "objet_clair": null,
    "fournisseur": "ERI",
    "montant_max": 48250.0,
    "date_notification": "2014-12-12",
@@ -171,6 +176,7 @@
   {
    "numero_marche": "20171210001833",
    "objet": "MODERNISATION DES SANITAIRES PUBLICS   MAIRIE DU 18E",
+   "objet_clair": null,
    "fournisseur": "ALB-BAT GROUPE",
    "montant_max": 45983.0,
    "date_notification": "2017-12-04",
@@ -179,6 +185,7 @@
   {
    "numero_marche": "decp-2026T00919",
    "objet": "Travaux de modernisation des anciens bureaux de l'antenne logement (DLH) à la Mairie du 18ème Arrondissement - 1 place Jules Juffrin 75018 Paris",
+   "objet_clair": null,
    "fournisseur": "ERI",
    "montant_max": 42481.1,
    "date_notification": "2026-01-28",
@@ -187,6 +194,7 @@
   {
    "numero_marche": "20161210001390",
    "objet": "CRÉATION D'UNE SALLE DE REPOS  À LA MAIRIE DU 18E",
+   "objet_clair": null,
    "fournisseur": "ALB-BAT GROUPE",
    "montant_max": 39302.0,
    "date_notification": "2016-10-03",
@@ -195,6 +203,7 @@
   {
    "numero_marche": "20131210008893",
    "objet": "MODERNISATION DU LOCAL PRESSOIR DE LA MAIRIE DU 18E.",
+   "objet_clair": null,
    "fournisseur": "SOC INDUSTR RATIONALIS ENTRET",
    "montant_max": 39000.0,
    "date_notification": "2013-03-21",
@@ -203,6 +212,7 @@
   {
    "numero_marche": "decp-2024T08025",
    "objet": "Mission de BET pour le renforcement du plancher de l'état civil dans le cadre du remplacement des classeurs rotatifs de la Mairie du 18ème arrondissement - 1 Place Jules Joffrin 75018 Paris",
+   "objet_clair": null,
    "fournisseur": "PRATEC",
    "montant_max": 4250.0,
    "date_notification": "2024-08-01",

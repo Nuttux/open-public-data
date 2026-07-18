@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-18T14:38:43.284445+00:00",
+ "generated_at": "2026-07-18T14:53:30.492622+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "bibliotheque-forney",
  "name": "Bibliothèque Forney",
@@ -116,6 +116,7 @@
   {
    "numero_marche": "20232023T03371",
    "objet": "CVC BIBLIOTHEQUE FORNEY CENTRE ESPACE CANCER FIGUIER 4EME",
+   "objet_clair": null,
    "fournisseur": "PROCHALOR",
    "montant_max": 635437.96,
    "date_notification": "2023-05-04",
@@ -124,6 +125,7 @@
   {
    "numero_marche": "20161210000018",
    "objet": "TRAVAUX SSI BIBLIOTHÈQUE FORNEY - HÔTEL DE SENS 75004",
+   "objet_clair": null,
    "fournisseur": "ATOUTRENOV",
    "montant_max": 199988.0,
    "date_notification": "2016-02-10",

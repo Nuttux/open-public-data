@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-18T14:38:43.284445+00:00",
+ "generated_at": "2026-07-18T14:53:30.492622+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "maison-de-balzac",
  "name": "Maison de Balzac",
@@ -165,6 +165,7 @@
   {
    "numero_marche": "20191060020047",
    "objet": "CAMPAGNE REOUVERTURE MUSEE DE LA MAISON DE BALZAC",
+   "objet_clair": null,
    "fournisseur": "MAKUITY",
    "montant_max": 48688.77,
    "date_notification": "2019-07-24",

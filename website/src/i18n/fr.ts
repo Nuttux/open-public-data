@@ -5114,7 +5114,7 @@ const fr: Record<string, string> = {
   'fx.lieu.marches_note': 'Montant maximum du marché (plafond notifié), pas la dépense constatée. Chaque ligne mène à la fiche du contrat.',
   'fx.lieu.bmo_voir': 'Voir les {n} extraits d’archive ({a})',
   'fx.lieu.bmo_note': 'Récit établi par IA à partir des extraits retenus du Bulletin municipal officiel — chaque extrait renvoie à la page numérisée sur Gallica.',
-  'fx.lieu.argent_absent': 'Aucune dépense n’est rattachable à ce lieu dans les données ouvertes : le fonctionnement courant (entretien, personnel) n’y est pas ventilé par lieu. N’apparaissent ici que les subventions à un exploitant et les projets d’investissement qui nomment le lieu.',
+  'fx.lieu.argent_absent': 'Aucune dépense n’est rattachable à ce lieu dans les données ouvertes : le fonctionnement courant (entretien, personnel) n’y est pas ventilé par lieu. N’apparaissent ici que les subventions à un exploitant, les projets d’investissement et les marchés publics qui nomment le lieu.',
   'fx.lieu.moments_note': 'Lecture IA des {n} documents trouvés — chaque ligne renvoie à sa délibération.',
   'fx.lieu.src_invest': 'Annexes CA, Ville de Paris',
   'fx.lieu.presentation_src': 'Présentation :',

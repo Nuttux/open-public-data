@@ -24,10 +24,20 @@ describe("normalizeObjet", () => {
   });
 
   it("keeps short acronyms (≤3 chars) uppercase in ALL-CAPS context", () => {
-    // MOE is a 3-char acronym → stays uppercase. (This test used to use "SA3",
-    // but a leading "SA<n>" is now stripped as a section code — see below.)
-    const out = normalizeObjet("MISSION MOE POUR LES ECOLES");
-    expect(out).toMatch(/\bMOE\b/);
+    // Un acronyme court non traduit garde ses capitales (il ne doit pas devenir
+    // « Pmr »). L'exemple était « MOE », qui est désormais TRADUIT — voir le
+    // test suivant ; on prend donc un acronyme qu'on ne développe pas.
+    const out = normalizeObjet("TRAVAUX ACCESSIBILITE PMR DES ECOLES");
+    expect(out).toMatch(/\bPMR\b/);
+  });
+
+  it("traduit le vocabulaire de la commande publique", () => {
+    // Ces sigles ouvrent une grande partie des objets de marché et ne veulent
+    // rien dire pour un lecteur non initié : on les développe plutôt que de
+    // republier le libellé administratif tel quel.
+    expect(normalizeObjet("MISSION MOE POUR LES ECOLES")).toMatch(/maîtrise d’œuvre/i);
+    expect(normalizeObjet("CSP4:MA SUB_AC:MISSION MOE AMENAGEMENT")).not.toMatch(/SUB_AC/i);
+    expect(normalizeObjet("AMENAGEMENT PLACE PARIS 8ÈME.")).toMatch(/\b8e\b/);
   });
 
   it("strips the leading internal section code", () => {

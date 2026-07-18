@@ -100,6 +100,20 @@ const ABBREVIATIONS: Rule[] = [
   [/\bTVX\s+CSTRUCT\b/gi, "Travaux de construction"],
   [/\bTRVX\s+RENOV\b/gi, "Travaux de rénovation"],
   [/\bTVX\s+RENOV\b/gi, "Travaux de rénovation"],
+  // Vocabulaire de la commande publique : fréquent en tête d'objet et opaque
+  // pour un lecteur non initié — « CSP4:MA SUB_AC:MISSION MOE … » restait tel
+  // quel sur la fiche. À traiter avant les règles unitaires (MA, AC).
+  [/\bMA\s+SUB[_\s]?AC\b\s*:?\s*/gi, "Marché subséquent — "],
+  [/\bSUB[_\s]?AC\b\s*:?\s*/gi, "marché subséquent — "],
+  [/\bMISSION\s+MOE\b/gi, "Mission de maîtrise d’œuvre"],
+  [/\bMOE\b/gi, "maîtrise d’œuvre"],
+  [/\bMOA\b/gi, "maîtrise d’ouvrage"],
+  [/\bAMO\b/gi, "assistance à maîtrise d’ouvrage"],
+  [/\bOPC\b/gi, "ordonnancement, pilotage et coordination"],
+  [/\bSPS\b/gi, "sécurité et protection de la santé"],
+  [/\bCT\b(?=\s|$)/g, "contrôle technique"],
+  // « PARIS 8ÈME » / « 11EME » → forme ordinale lisible.
+  [/\b(\d{1,2})\s*[ÈE]ME\b\.?/gi, "$1e"],
 
   // Types de travaux / prestations
   [/\bTRVX\b/gi, "Travaux"],

@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-18T14:38:43.284445+00:00",
+ "generated_at": "2026-07-18T14:53:30.492622+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "serres-dauteuil",
  "name": "Serres d'Auteuil",
@@ -150,6 +150,7 @@
   {
    "numero_marche": "20151230000549",
    "objet": "A4: TVX D'AMENAGEMENT PAYSAGER -SERRES D'AUTEUIL,PARC FLORAL",
+   "objet_clair": null,
    "fournisseur": "TERIDEAL SEGEX",
    "montant_max": 536757.3,
    "date_notification": "2015-03-18",
@@ -158,6 +159,7 @@
   {
    "numero_marche": "20141230010731",
    "objet": "CSP4:TVX RENOVATION SERRES D'AUTEUIL(6-17)-LOT1:VITRAG,PEINT",
+   "objet_clair": null,
    "fournisseur": "CONSTRUCTIONS METALLIQUES FLORENTAI",
    "montant_max": 327836.65,
    "date_notification": "2014-02-04",
@@ -166,6 +168,7 @@
   {
    "numero_marche": "20141230010732",
    "objet": "CSP4 TVX RENOVATION SERRES D'AUTEUIL(6-17)-LOT2:EQU.HORTICOL",
+   "objet_clair": null,
    "fournisseur": "SARL CLAIE",
    "montant_max": 152596.73,
    "date_notification": "2014-02-03",
@@ -174,6 +177,7 @@
   {
    "numero_marche": "20161230001333",
    "objet": "INSTALLATION DE CLAIES D'OMBRAGE SUR LES SERRES D'AUTEUIL",
+   "objet_clair": null,
    "fournisseur": "CONSTRUCTIONS METALLIQUES FLORENTAI",
    "montant_max": 71544.88,
    "date_notification": "2016-09-16",

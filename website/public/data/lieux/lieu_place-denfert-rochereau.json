@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-18T14:38:43.284445+00:00",
+ "generated_at": "2026-07-18T14:53:30.492622+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "place-denfert-rochereau",
  "name": "Place Denfert-Rochereau",
@@ -141,6 +141,7 @@
   {
    "numero_marche": "decp-2025T00806",
    "objet": "Travaux d’infrastructure pour le réaménagement de la place Denfert-Rochereau",
+   "objet_clair": null,
    "fournisseur": "EUROVIA ILE DE FRANCE",
    "montant_max": 6220708.5,
    "date_notification": "2025-02-14",
@@ -149,6 +150,7 @@
   {
    "numero_marche": "decp-2025T01113",
    "objet": "Travaux de végétalisation dans le cadre du réaménagement de la place Denfert-Rochereau à Paris 14e",
+   "objet_clair": null,
    "fournisseur": "TERIDEAL ESPACES VERTS ILE DE FRANCE",
    "montant_max": 1830081.63,
    "date_notification": "2025-02-04",
@@ -157,6 +159,7 @@
   {
    "numero_marche": "20242024S02949",
    "objet": "MSAC2 MOE PLACE DENFERT ROCHEREAU",
+   "objet_clair": "Études pour le réaménagement de la place Denfert-Rochereau.",
    "fournisseur": "BUREAU DES PAYSAGES",
    "montant_max": 755300.0,
    "date_notification": "2024-05-21",
@@ -165,6 +168,7 @@
   {
    "numero_marche": "20232023S06118",
    "objet": "SA3-ACBC-MS REAMENAGEMENT PLACE DENFERT ROCHEREAU PARIS 14",
+   "objet_clair": null,
    "fournisseur": "ALEXANDRE CHEMETOFF ET ASSOCIES",
    "montant_max": 465100.06,
    "date_notification": "2023-08-24",
@@ -173,6 +177,7 @@
   {
    "numero_marche": "decp-2025T03460",
    "objet": "Travaux d’éclairage public, d’illuminations et de signalisation lumineuse et tricolore (EP/SLT) dans le cadre du réaménagement de la place Denfert-Rochereau à Paris 14ème.",
+   "objet_clair": null,
    "fournisseur": "BOUYGUES ENERGIES & SERVICES",
    "montant_max": 439932.21,
    "date_notification": "2025-04-16",
@@ -181,6 +186,7 @@
   {
    "numero_marche": "20232023S12026",
    "objet": "MS MOE REAMENAGEMENT PLACE DENFERT-ROCHEREAU",
+   "objet_clair": null,
    "fournisseur": "ALEXANDRE CHEMETOFF ET ASSOCIES",
    "montant_max": 308000.0,
    "date_notification": "2023-12-22",

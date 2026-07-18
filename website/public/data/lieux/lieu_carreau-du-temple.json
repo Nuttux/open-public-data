@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-18T14:38:43.284445+00:00",
+ "generated_at": "2026-07-18T14:53:30.492622+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "carreau-du-temple",
  "name": "Carreau du Temple",
@@ -268,6 +268,7 @@
   {
    "numero_marche": "20242024S12498",
    "objet": "CONCESSION GESTION CARREAU DU TEMPLE",
+   "objet_clair": "Gestion et animation du centre culturel et sportif du Carreau du Temple.",
    "fournisseur": "SOC PUBLIQUE LOCALE CARREAU TEMPLE",
    "montant_max": 5834850.0,
    "date_notification": "2024-12-05",
@@ -276,6 +277,7 @@
   {
    "numero_marche": "20131210009282",
    "objet": "CARREAU DU TEMPLE REHABILITATION EXTENSION EN SOUS-SOL",
+   "objet_clair": null,
    "fournisseur": "D B S",
    "montant_max": 980620.0,
    "date_notification": "2013-05-22",
@@ -284,6 +286,7 @@
   {
    "numero_marche": "20232023T04109",
    "objet": "RAFRAISSEMENT COMPLEMENTAIRES CARREAU DU TEMPLE 3EME",
+   "objet_clair": null,
    "fournisseur": "PROCHALOR",
    "montant_max": 752885.54,
    "date_notification": "2023-05-24",
@@ -292,6 +295,7 @@
   {
    "numero_marche": "20242024T00240",
    "objet": "MODERNISATION INSTAL. RAFRAÎCHISSEMENT CARREAU DU TEMPLE",
+   "objet_clair": "Modernisation du système de rafraîchissement d'air du Carreau du Temple.",
    "fournisseur": "EIFFAGE ENERGIE SYSTEMES",
    "montant_max": 385285.5,
    "date_notification": "2024-01-18",
@@ -300,6 +304,7 @@
   {
    "numero_marche": "20141210011779",
    "objet": "TRAVAUX SYSTÈME DE VERROUILLAGE CARREAU DU TEMPLE",
+   "objet_clair": null,
    "fournisseur": "BRUNET",
    "montant_max": 119757.6,
    "date_notification": "2014-07-07",
@@ -308,6 +313,7 @@
   {
    "numero_marche": "20151210000961",
    "objet": "CRÉATION D'UN SAS POUR LE CARREAU DU TEMPLE  75003",
+   "objet_clair": null,
    "fournisseur": "LOISON",
    "montant_max": 116393.5,
    "date_notification": "2015-06-10",
@@ -316,6 +322,7 @@
   {
    "numero_marche": "20202020T01920",
    "objet": "REMPLACMENT DE VITRAGES EN TOITURE CARREAU DU TEMPLE PARIS 3",
+   "objet_clair": null,
    "fournisseur": "LOISON",
    "montant_max": 104767.0,
    "date_notification": "2020-04-13",
@@ -324,6 +331,7 @@
   {
    "numero_marche": "20141210010724",
    "objet": "ASSURANCE CCRD RÉHABILITATION DU CARREAU DU TEMPLE",
+   "objet_clair": null,
    "fournisseur": "CLEMENT ARNAUD ET DELPIERRE YANN",
    "montant_max": 81188.54,
    "date_notification": "2014-01-21",
@@ -332,6 +340,7 @@
   {
    "numero_marche": "20232023S05787",
    "objet": "CARREAU DU TEMPLE 4 RUE EUGÈNE SPULLER AMO CVC",
+   "objet_clair": null,
    "fournisseur": "SPHERE INGENIERIE",
    "montant_max": 40400.0,
    "date_notification": "2023-06-30",

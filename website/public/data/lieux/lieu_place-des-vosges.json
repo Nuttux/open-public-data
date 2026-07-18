@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-18T14:38:43.284445+00:00",
+ "generated_at": "2026-07-18T14:53:30.492622+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "place-des-vosges",
  "name": "Place des Vosges",
@@ -226,6 +226,7 @@
   {
    "numero_marche": "20212021T03259",
    "objet": "MODERNISAT°DES MENUISERIES EXTERIEURS EM 12 PLACE DES VOSGES",
+   "objet_clair": null,
    "fournisseur": "ART ET TECHNIQUE DE LA MENUISERIE",
    "montant_max": 218560.0,
    "date_notification": "2021-05-31",
@@ -234,6 +235,7 @@
   {
    "numero_marche": "20222022T02115",
    "objet": "MODERNISATION MENUISERIES EXT. EM 12 PLACE DES VOSGES 4E",
+   "objet_clair": null,
    "fournisseur": "ART ET TECHNIQUE DE LA MENUISERIE",
    "montant_max": 163500.0,
    "date_notification": "2022-03-30",

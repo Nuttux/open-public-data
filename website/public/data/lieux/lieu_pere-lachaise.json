@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-18T14:38:43.284445+00:00",
+ "generated_at": "2026-07-18T14:53:30.492622+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "pere-lachaise",
  "name": "Cimetière du Père-Lachaise",
@@ -208,6 +208,7 @@
   {
    "numero_marche": "decp-2025T02140",
    "objet": "Travaux prioritaires de conservation du Columbarium aérien et souterrain, dans le cadre de l’opération de restauration du Columbarium du cimetière du Père Lachaise (75020) comprenant 3 lots : \n- Maçon",
+   "objet_clair": null,
    "fournisseur": "H. CHEVALIER",
    "montant_max": 602939.87,
    "date_notification": "2025-03-07",
@@ -216,6 +217,7 @@
   {
    "numero_marche": "decp-2025T02142",
    "objet": "Travaux prioritaires de conservation du Columbarium aérien et souterrain, dans le cadre de l’opération de restauration du Columbarium du cimetière du Père Lachaise (75020) comprenant 3 lots : \n- Maçon",
+   "objet_clair": null,
    "fournisseur": "TRAVAUX BATIMENTS ELECTRICITE SECURITE",
    "montant_max": 107000.0,
    "date_notification": "2025-03-07",
@@ -224,6 +226,7 @@
   {
    "numero_marche": "decp-2025T02141",
    "objet": "Travaux prioritaires de conservation du Columbarium aérien et souterrain, dans le cadre de l’opération de restauration du Columbarium du cimetière du Père Lachaise (75020) comprenant 3 lots : \n- Maçon",
+   "objet_clair": null,
    "fournisseur": "UNION TECHNIQUE DU BATIMENT",
    "montant_max": 48000.0,
    "date_notification": "2025-03-07",
@@ -232,6 +235,7 @@
   {
    "numero_marche": "decp-2025S12014",
    "objet": "Marché subséquent à l'accord-cadre pour les prestations de sécurité et protection de la santé de catégorie 2 pour le réaménagement des bureaux de la conservation cimetière du Père Lachaise, 16 rue du ",
+   "objet_clair": null,
    "fournisseur": "4G INGENIERIE & CONSULTING",
    "montant_max": 6086.0,
    "date_notification": "2025-11-14",

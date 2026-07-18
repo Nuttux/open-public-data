@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-18T14:38:43.284445+00:00",
+ "generated_at": "2026-07-18T14:53:30.492622+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "piscine-georges-vallerey",
  "name": "Piscine Georges-Vallerey",
@@ -180,6 +180,7 @@
   {
    "numero_marche": "20171210001819",
    "objet": "RÉNOVATION DE LA PISCINE GEORGES VALLEREY",
+   "objet_clair": null,
    "fournisseur": "BAUDIN CHATEAUNEUF",
    "montant_max": 1825232.87,
    "date_notification": "2017-11-30",
@@ -188,6 +189,7 @@
   {
    "numero_marche": "20222022T04610",
    "objet": "SA4 AOO RENOVATION PARTIELLE PISCINE GEORGES VALLEREY LOT2",
+   "objet_clair": null,
    "fournisseur": "EZEL",
    "montant_max": 1271574.74,
    "date_notification": "2022-07-05",
@@ -196,6 +198,7 @@
   {
    "numero_marche": "20212021T00256",
    "objet": "REFECTION TOITURE PISCINE GEORGES VALLEREY 20 EME",
+   "objet_clair": null,
    "fournisseur": "ALTAIS TRAVAUX D'ACCES DIFFICILE",
    "montant_max": 36890.0,
    "date_notification": "2021-02-10",

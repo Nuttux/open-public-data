@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-18T14:38:43.284445+00:00",
+ "generated_at": "2026-07-18T14:53:30.492622+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "adidas-arena",
  "name": "Adidas Arena",
@@ -194,6 +194,7 @@
   {
    "numero_marche": "20232023F08583",
    "objet": "M. SUBS. CAMÉRAS DE TYPE « POURSUITE » POUR L'ADIDAS ARÉNA",
+   "objet_clair": null,
    "fournisseur": "VIDELIO",
    "montant_max": 273214.47,
    "date_notification": "2023-09-25",
@@ -202,6 +203,7 @@
   {
    "numero_marche": "20232023F10215",
    "objet": "M. SUBS. FOURNITURE DE PALANS POUR L'ADIDAS ARÉNA",
+   "objet_clair": null,
    "fournisseur": "VIDELIO",
    "montant_max": 98774.79,
    "date_notification": "2023-11-10",
@@ -210,6 +212,7 @@
   {
    "numero_marche": "20232023T02637",
    "objet": "BRANCHEMENTS EN EAU POTABLE - ADIDAS ARÉNA ET PLC",
+   "objet_clair": null,
    "fournisseur": "EAU DE PARIS",
    "montant_max": 40000.88,
    "date_notification": "2023-02-22",
@@ -218,6 +221,7 @@
   {
    "numero_marche": "20241370090003",
    "objet": "ADIDAS ARENA PORTE DE LA CHAPELLE",
+   "objet_clair": "Impression et pose de panneaux d'affichage pour l'Adidas Arena (18e)",
    "fournisseur": "DUPLIGRAFIC",
    "montant_max": 38782.59,
    "date_notification": "2024-01-09",
@@ -226,6 +230,7 @@
   {
    "numero_marche": "20242024S00363",
    "objet": "MISE EN PEINTURE GBA ADIDAS ARENA",
+   "objet_clair": "Réalisation d'une fresque artistique sur les murets de sécurité de l'Adidas Arena.",
    "fournisseur": "TRALALART",
    "montant_max": 37045.0,
    "date_notification": "2024-01-23",
@@ -234,6 +239,7 @@
   {
    "numero_marche": "20242024S02485",
    "objet": "PRESTATIONS TECHNIQUES LANCEMENT SOP ADIDAS ARENA",
+   "objet_clair": "Organisation technique du lancement de la Semaine Olympique à l'Adidas Arena",
    "fournisseur": "S. E. DE LA CHAPELLE DISTRICT",
    "montant_max": 32518.0,
    "date_notification": "2024-04-08",
@@ -242,6 +248,7 @@
   {
    "numero_marche": "20232023S09306",
    "objet": "TESTS FINAUX DE PERMÉABILITÉ À L'AIR DE L'ADIDAS ARÉNA",
+   "objet_clair": null,
    "fournisseur": "ENEXCO PARIS",
    "montant_max": 27749.5,
    "date_notification": "2023-10-13",
@@ -250,6 +257,7 @@
   {
    "numero_marche": "20242024S02810",
    "objet": "PRESTATIONS TECHNIQUES LANCEMENT PVOL ADIDAS ARENA",
+   "objet_clair": "Organisation technique du lancement d'un événement sportif à l'Adidas Arena",
    "fournisseur": "S. E. DE LA CHAPELLE DISTRICT",
    "montant_max": 26984.23,
    "date_notification": "2024-04-15",
@@ -258,6 +266,7 @@
   {
    "numero_marche": "decp-2024S05188",
    "objet": "Soirée mouvement sportif Parisien ADIDAS ARENA",
+   "objet_clair": null,
    "fournisseur": "SOCIETE D'EXPLOITATION DE LA CHAPELLE DISTRICT",
    "montant_max": 14309.7,
    "date_notification": "2024-06-13",
