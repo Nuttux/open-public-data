@@ -1,0 +1,359 @@
+{
+ "generated_at": "2026-07-18T14:38:43.284445+00:00",
+ "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
+ "slug": "carreau-du-temple",
+ "name": "Carreau du Temple",
+ "kind_fr": "Équipement",
+ "kind_en": "Public facility",
+ "famille": "services",
+ "arrondissement": 3,
+ "lat": 48.8645,
+ "lon": 2.3615,
+ "photo": "/img/lieux/carreau-du-temple.jpg",
+ "photo_credit": {
+  "licence": null,
+  "auteur": null,
+  "url": "https://fr.wikipedia.org/wiki/Carreau_du_Temple",
+  "source": "Wikipédia"
+ },
+ "wiki": {
+  "extract": "Le Carreau du Temple, situé dans le 3e arrondissement de Paris, est un ancien marché couvert du XIXe siècle. Sauvé de la démolition à la suite d'une mobilisation citoyenne, il est désormais un lieu culturel et sportif reposant sur une économie mixte publique-privée.",
+  "url": "https://fr.wikipedia.org/wiki/Carreau_du_Temple",
+  "source": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ },
+ "stats": {
+  "n_delibs": 140,
+  "delibs_span": [
+   1995,
+   2021
+  ],
+  "n_bmo_brut": 1807,
+  "n_bmo_verifies": 7,
+  "invest_total_eur": 0,
+  "invest_annees": [],
+  "lecture_mode": "titre nommant le lieu (23 trouvés)",
+  "n_lus": 23,
+  "n_lieu": 23
+ },
+ "subventions_exploitant": {
+  "nom_fiche": "SOCIETE PUBLIQUE LOCALE LE CARREAU DU TEMPLE",
+  "total_eur": 97250.0,
+  "annees": [
+   "2022",
+   "2022"
+  ],
+  "rows": [
+   {
+    "annee": "2022",
+    "montant_eur": 97250.0,
+    "beneficiaire": "SOCIETE PUBLIQUE LOCALE LE CARREAU DU TEMPLE",
+    "thematique": "Culture"
+   }
+  ],
+  "perimetre": "mono",
+  "note_publique": null,
+  "autres_sites": []
+ },
+ "residents": [
+  {
+   "beneficiaire": "CINECARO",
+   "montant_total": 18000.0,
+   "preuve": "Objet verbatim : « Soutien en fonctionnement sur CREDITS BLOCHE, de la 8e saison de CineCaro au Carreau du Temple » (SIRET 80447765100017). Ciné-club programmé DANS l'auditorium — 2021 DAC 57 : « un auditorium de 250 places dans lequel se déroulent entre autres des séances de ciné-Carreau, ciné-club local ». Le « fonctionnement » vise la saison de CineCaro, pas la gestion du lieu."
+  },
+  {
+   "beneficiaire": "MAMAMA",
+   "montant_total": 9180.0,
+   "preuve": "Objet verbatim : « Subvention pour distributions de colis d'urgence bébés au Carreau du Temple pendant le confinement » (SIRET 88342586000011). Confirmé par 2021 DAC 57 : « \"La Fabrique de la solidarité\" et l'association \"MaMaMa\" fournissent aux mères isolées des vêtements chauds et des colis alimentaires et d'hygiène », dans le dispositif d'accueil installé au Carreau du Temple."
+  },
+  {
+   "beneficiaire": "ARTINCIDENCE",
+   "montant_total": 4500.0,
+   "preuve": "Objet verbatim : « AIDE A LA DIFFUSION \"I'M A BRUJA\" FESTIVAL EVERYBODY au Carreau du Temple » (SIRET 45094968000067) — aide à la diffusion d'un spectacle joué dans le lieu, sans rôle de gestion."
+  },
+  {
+   "beneficiaire": "DEFRACTO",
+   "montant_total": 4000.0,
+   "preuve": "Objet verbatim : « Aide à la Diffusion ¿ DAC ¿ Arts du Cirque et Arts de la Rue - Dystonie au Carreau du Temple » (SIRET 52748129500014) — aide à la diffusion d'un spectacle joué dans le lieu, sans rôle de gestion."
+  },
+  {
+   "beneficiaire": "LES SENS DES MOTS",
+   "montant_total": 4000.0,
+   "preuve": "Objet verbatim : « AAPCS18 - binôme spectacles arts/sciences au Carreau du Temple » (SIRET 51386558400025) — activité programmée dans le lieu, sans rôle de gestion."
+  }
+ ],
+ "kpi_montant": null,
+ "synthese_fr": "Jusqu'aux années 2000, le Carreau du Temple est un marché couvert géré par la Ville, qui subventionne trois années de suite (1995-1997) l'animation commerciale du syndicat de ses marchands, 10 000 F par an, et fixe ses droits de place, 11,36 € le mètre carré par mois pour les boutiques de la « Temple friperie » en 2006. En 2001, une question au Conseil expose le conflit entre les commerçants et les défilés de mode organisés dans la halle, et l'adjointe répond que le marché est en régression et qu'une réhabilitation est envisagée. La Ville décide en 2004 d'en faire un « grand équipement de proximité à usage sportif et culturel », puis enchaîne diagnostic archéologique, maîtrise d'œuvre attribuée à Studio Milou (2007), résiliation du marché d'assistance à maîtrise d'ouvrage de la société GUIGUES SA avec 655 032 € d'avance remboursée (2009), et marchés de travaux et de fouilles ; en juillet 2009 les commerçants sont indemnisés selon un barème (200 € par année d'ancienneté, 100 € par m², 10 000 € forfaitaires, loyers impayés déduits) et doivent partir au plus tard le 20 août, tandis qu'en juin un élu d'opposition affirme en séance que le projet, chiffré 30 millions d'euros au départ, en coûte « le double » avant le premier coup de pioche. Après la livraison de 2014, l'exploitation est confiée à une société publique locale : subventions d'équipement en 2016 pour un montant annoncé différemment selon les intervenants (260 000 € au titre du projet, 250 000 € selon le maire du 3e, 300 000 € selon le premier adjoint), nouvelle délégation de service public en 2018 avec l'entrée de La Courneuve au capital et 400 000 visiteurs annoncés, puis un avenant assorti de 50 000 € en 2021, après une période où la halle fermée a servi d'accueil de jour.",
+ "moments": [
+  {
+   "id": "21663",
+   "seance": "OCTOBRE 2001",
+   "fait": "Interrogé sur la responsabilité de la gestion du Carreau après que des commerçants ont été priés de cesser leur activité pendant des défilés de haute couture, l'exécutif rappelle que le marché est géré par la Mairie de Paris, constate que son évolution commerciale « est en régression depuis plusieurs années » et indique qu'une réhabilitation est envisagée.",
+   "pourquoi": "Le déclin du marché est acté publiquement",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=21663"
+  },
+  {
+   "id": "54449",
+   "seance": "DECEMBRE 2007",
+   "fait": "Le Conseil approuve le principe des travaux de réhabilitation avec extension en sous-sol et attribue la maîtrise d'œuvre, à l'issue d'un concours, au groupement mené par STUDIO MILOU Architecture ; les permis de démolir et de construire sont autorisés.",
+   "pourquoi": "L'architecte et le sous-sol contesté sont actés",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=54449"
+  },
+  {
+   "id": "50062",
+   "seance": "FEVRIER 2009",
+   "fait": "La Ville résilie le marché d'assistance à maîtrise d'ouvrage attribué à la société GUIGUES SA, relance deux marchés d'AMO et constate une recette de 655 032 € au titre du remboursement de l'avance forfaitaire.",
+   "pourquoi": "Rupture contractuelle chiffrée sur le chantier",
+   "vedette": false,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=50062"
+  },
+  {
+   "id": "5669",
+   "seance": "JUIN 2009",
+   "fait": "En séance, un élu du groupe U.M.P. juge le projet « trop long, trop coûteux », rappelle qu'une livraison avait été promise pour 2008 alors que les travaux ne commenceront qu'en septembre 2009, et affirme que le coût est passé de 30 millions d'euros au double avant le premier coup de pioche ; l'adjoint aux sports répond que la halle était jusque-là sous-occupée.",
+   "pourquoi": "Le coût et le calendrier contestés en séance",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=5669"
+  },
+  {
+   "id": "75089",
+   "seance": "JUILLET 2009",
+   "fait": "La Ville indemnise les commerçants du marché, contraints de partir au plus tard le 20 août 2009, selon un barème combinant 200 € par année d'ancienneté, 100 € par m² de surface de vente et 10 000 € forfaitaires, duquel sont déduits les loyers impayés ; ceux qui ne signent pas partent sans indemnité.",
+   "pourquoi": "La fermeture du marché et son prix humain",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=75089"
+  },
+  {
+   "id": "129289",
+   "seance": "MARS 2016",
+   "fait": "Subventions d'équipement à la société publique locale exploitante : le titre annonce 260 000 €, le maire du 3e détaille 150 000 € en 2016 et 100 000 € en 2017, le premier adjoint évoque 300 000 €. Le même débat annonce 425 000 visiteurs en 2015 et évoque « une période de rodage parfois un peu compliquée ».",
+   "pourquoi": "Trois chiffres pour une même subvention",
+   "vedette": false,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=129289"
+  },
+  {
+   "id": "143187",
+   "seance": "JUIN 2018",
+   "fait": "Nouvelle délégation de service public de gré à gré à la S.P.L., avec entrée de la commune de La Courneuve au capital, Paris ne pouvant plus y siéger à la fois comme Ville et comme Département. En séance : 400 000 visiteurs sur 300 jours d'ouverture pour 270 exigés, premier compte administratif à l'équilibre, et un élu regrette que la subvention soit limitée au tiers des dépenses.",
+   "pourquoi": "Gouvernance élargie, modèle économique discuté",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=143187"
+  },
+  {
+   "id": "164061",
+   "seance": "NOVEMBRE 2021",
+   "fait": "Avenant à la DSP et 50 000 € de subventions d'investissement à la S.P.L. ; fermé par la crise sanitaire, l'équipement a accueilli l'association Aurore du 24 mars au 30 juin 2020, puis la halte femmes du 12e arrondissement, près de 130 femmes par jour d'octobre 2020 au 30 avril 2021.",
+   "pourquoi": "La halle fermée devient accueil de jour",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=164061"
+  }
+ ],
+ "montants": [
+  {
+   "seance": "JUILLET 1995",
+   "montant": "10 000 F",
+   "objet": "subvention à l'association des marchands du marché pour l'animation commerciale « Paris Fleuri, Paris Courtois » (18 septembre - 8 octobre 1995)",
+   "citation": "Une subvention de 10.000 F est attribuée à l'association \"Syndicat des marchands du Carreau-du-Temple\", 2, rue Perrée (3e), pour l'organisation d'une animation commerciale qui aura lieu du 18 septembre au 8 octobre 1995.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=718"
+  },
+  {
+   "seance": "JUILLET 1996",
+   "montant": "10 000 F",
+   "objet": "subvention à l'association des marchands du marché pour l'animation commerciale du 1er au 22 juin 1996",
+   "citation": "Une subvention de 10.000 F est attribuée à l'association \"Syndicat des marchands du Carreau du Temple\", 2, rue Perrée (3e) pour l'organisation de \"Paris Fleuri, Paris Courtois\", animation commerciale qui a eu lieu du 1er au 22 juin 1996.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=58342"
+  },
+  {
+   "seance": "SEPTEMBRE 1997",
+   "montant": "10 000 F",
+   "objet": "subvention à l'association des marchands du marché pour l'animation commerciale du 31 mai au 21 juin 1997",
+   "citation": "Une subvention de 10.000 F est attribuée à l'association \"Syndicat des marchands du Carreau-du-Temple\", 2, rue Perrée (3e), pour l'organisation de \"Paris Fleuri, Paris Courtois\", animation commerciale",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=75718"
+  },
+  {
+   "seance": "MAI 2006",
+   "montant": "11,36 € par m² et par mois",
+   "objet": "droit de place des boutiques (« Temple friperie ») du marché du Carreau du Temple, converti en euros",
+   "citation": "Les droits et redevances perçus sur le marché du Carreau du Temple sis à Paris (3ème) sont fixés ainsi qu?il suit : Boutiques (Temple friperie) : - droit de place par mètre carré et par mois : 11,36 euros",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=88833"
+  },
+  {
+   "seance": "MAI 2006",
+   "montant": "1,40 € par m² et par jour ; 13,11 € par panier et par mois ; 33,23 € par casier et par mois",
+   "objet": "droits de place des extensions précaires, des resserres à paniers et des casiers du Carreau du Temple",
+   "citation": "Extensions précaires (Carreau du Temple) : - droit de place par mètre carré et par jour : 1,40 euro Resserres à paniers - par mois et par panier : 13,11 euros Casiers - par mois et par casier : 33,23 euros",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=88833"
+  },
+  {
+   "seance": "FEVRIER 2009",
+   "montant": "655 032 €",
+   "objet": "recette constatée au budget d'investissement, correspondant au remboursement de l'avance forfaitaire après résiliation du marché d'AMO de la société GUIGUES SA",
+   "citation": "Il sera constaté une recette de 655. 032 euros correspondant au remboursement de l?avance forfaitaire au chapitre 23, article 238, rubrique 411, mission 88000-99-030 du budget d?investissement de la Ville de Paris",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=50062"
+  },
+  {
+   "seance": "JUIN 2009",
+   "montant": "30 M€ au départ, « le double » en 2009",
+   "objet": "coût du projet cité en débat par M. Jean-Jacques GIANNESINI (groupe U.M.P.) ; chiffre avancé en séance, non voté et non confirmé par la délibération",
+   "citation": "Au départ, le projet coûtait 30 millions d'euros ; aujourd'hui, il en coûte le double avant que le premier coup de pioche ait été donné.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=5669"
+  },
+  {
+   "seance": "JUILLET 2009",
+   "montant": "200 € par année d'ancienneté + 100 € par m² + 10 000 € forfaitaires",
+   "objet": "barème d'indemnisation des commerçants du Carreau du Temple suite à la fermeture du marché, duquel sont déduits les loyers impayés",
+   "citation": "Le montant de l?indemnisation est calculé pour tous les commerçants selon les modalités suivantes: - 200 euros par année d?ancienneté sur le site, - 100 euros par m² de surface de vente exploitée, - 10.000 euros d?indemnité forfaitaire.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=75089"
+  },
+  {
+   "seance": "SEPTEMBRE 2009",
+   "montant": "15 400 € (au lieu de 14 600 €)",
+   "objet": "indemnité compensatrice d'un commerçant du marché, revalorisée de 800 € après justification de ses années d'ancienneté sur le site",
+   "citation": "Le montant total de l?indemnité compensatrice versée à M. Daniel Tordjman s?élève à 15.400 euros et non 14.600 euros comme précisé dans la délibération 2009 DDEE 188 des 6, 7 et 8 juillet 2009.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=36601"
+  },
+  {
+   "seance": "MARS 2016",
+   "montant": "260 000 €",
+   "objet": "subventions d'équipement annoncées dans le titre du projet de délibération, pour le programme d'investissement 2016-2017 de la S.P.L. exploitante",
+   "citation": "Subventions d’équipement (260.000 euros), avenant à la délégation de service public dans le cadre du programme d’investissement 2016-2017 de la société publique locale \"Le Carreau du Temple\" (3e).",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=129289"
+  },
+  {
+   "seance": "MARS 2016",
+   "montant": "150 000 € en 2016 et 100 000 € en 2017 (soit 250 000 €)",
+   "objet": "ventilation citée en débat par M. Pierre AIDENBAUM, maire du 3e arrondissement ; ne coïncide pas avec les 260 000 € du titre",
+   "citation": "L?avenant à la D.S.P. que nous examinons aujourd?hui vise à accorder une subvention de 150.000 euros en 2016 et 100.000 euros en 2017.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=129289"
+  },
+  {
+   "seance": "MARS 2016",
+   "montant": "300 000 €",
+   "objet": "montant cité en débat par M. Bruno JULLIARD, premier adjoint ; ne coïncide ni avec le titre ni avec la ventilation du maire du 3e",
+   "citation": "grâce à cette subvention d?investissement importante, à hauteur de 300.000 euros, la Ville continue à soutenir fortement \"Le Carreau du Temple\"",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=129289"
+  },
+  {
+   "seance": "NOVEMBRE 2021",
+   "montant": "50 000 €",
+   "objet": "subventions d'investissement à la Société publique locale du Carreau du Temple, accompagnant l'avenant à la délégation de service public",
+   "citation": "Avenant à la délégation de service public relative à la gestion et l’exploitation du Carreau du Temple et subventions d’investissement (50.000 euros) à la Société publique locale du Carreau du Temple.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=164061"
+  }
+ ],
+ "bmo_extraits": [
+  {
+   "date": "1889-02-12",
+   "extrait": "Le Conseil, Vu la pétition de l'Union syndicale des marchands brocanteurs concernant l'organisation de la vente au carreau du Temple  … accès du carreau du Temple",
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k6291240p/f2.item"
+  },
+  {
+   "date": "1889-08-19",
+   "extrait": "Dans le même temps, le terrain communal dit « Carreau du Temple » comporte, en plein cœur du quartier, une superficie de 3.900 mètres carrés fort mal utilisée",
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k97195840/f1.item"
+  },
+  {
+   "date": "1891-11-22",
+   "extrait": "80. — Renvoi à l'Administration d'un mémoire de M le Préfet de la Seine relatif à la concession du hall du Carreau du Temple",
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k64185242/f16.item"
+  }
+ ],
+ "bmo_recit": "Le Carreau du Temple apparaît dans le Bulletin municipal officiel à la fin des années 1880, comme une affaire de commerce et de terrain. En février 1889, le Conseil est saisi d'une pétition de l'Union syndicale des marchands brocanteurs portant sur l'organisation de la vente et sur l'accès au carreau. En août de la même année, le Bulletin décrit ce terrain communal de 3.900 mètres carrés, situé en plein cœur du quartier, comme une superficie « fort mal utilisée ». En novembre 1891, un mémoire du Préfet de la Seine relatif à la concession du hall du Carreau du Temple est renvoyé à l'Administration. L'archive ne retient que ces trois moments, resserrés sur trois ans.",
+ "invest": [],
+ "marches": [
+  {
+   "numero_marche": "20242024S12498",
+   "objet": "CONCESSION GESTION CARREAU DU TEMPLE",
+   "fournisseur": "SOC PUBLIQUE LOCALE CARREAU TEMPLE",
+   "montant_max": 5834850.0,
+   "date_notification": "2024-12-05",
+   "preuve": "Objet portant sur l'exploitation du lieu lui-même : « CONCESSION GESTION CARREAU DU TEMPLE ». Titulaire SIRET 78977257100020 = la SPL exploitante identifiée par les délibérations (2018 DAC 42, DSP d'exploitation ; « Ce contrat s'achèvera en 2024 », d'où la nouvelle concession notifiée le 2024-12-05)."
+  },
+  {
+   "numero_marche": "20131210009282",
+   "objet": "CARREAU DU TEMPLE REHABILITATION EXTENSION EN SOUS-SOL",
+   "fournisseur": "D B S",
+   "montant_max": 980620.0,
+   "date_notification": "2013-05-22",
+   "preuve": "Objet nommant le bâtiment et ses travaux : « CARREAU DU TEMPLE REHABILITATION EXTENSION EN SOUS-SOL ». Correspond à l'opération délibérée en 2007 DPA 331 : « réalisation des travaux de réhabilitation avec extension en sous sol du Carreau du Temple, 4 rue Eugène Spuller, 1 rue Dupetit Thouars (3e) »."
+  },
+  {
+   "numero_marche": "20232023T04109",
+   "objet": "RAFRAISSEMENT COMPLEMENTAIRES CARREAU DU TEMPLE 3EME",
+   "fournisseur": "PROCHALOR",
+   "montant_max": 752885.54,
+   "date_notification": "2023-05-24",
+   "preuve": "Objet nommant le lieu et son arrondissement : « RAFRAISSEMENT COMPLEMENTAIRES CARREAU DU TEMPLE 3EME » — travaux portant sur ce bâtiment, la nature exacte n'étant pas détaillée par l'objet ; le 3e correspond à la localisation du lieu."
+  },
+  {
+   "numero_marche": "20242024T00240",
+   "objet": "MODERNISATION INSTAL. RAFRAÎCHISSEMENT CARREAU DU TEMPLE",
+   "fournisseur": "EIFFAGE ENERGIE SYSTEMES",
+   "montant_max": 385285.5,
+   "date_notification": "2024-01-18",
+   "preuve": "Objet nommant le lieu : « MODERNISATION INSTAL. RAFRAÎCHISSEMENT CARREAU DU TEMPLE » — modernisation d'une installation technique du bâtiment."
+  },
+  {
+   "numero_marche": "20141210011779",
+   "objet": "TRAVAUX SYSTÈME DE VERROUILLAGE CARREAU DU TEMPLE",
+   "fournisseur": "BRUNET",
+   "montant_max": 119757.6,
+   "date_notification": "2014-07-07",
+   "preuve": "Objet nommant le lieu : « TRAVAUX SYSTÈME DE VERROUILLAGE CARREAU DU TEMPLE » — travaux sur le bâtiment, notifiés l'année de sa livraison (2021 DAC 57 : « L'équipement, livré en 2014 »)."
+  },
+  {
+   "numero_marche": "20151210000961",
+   "objet": "CRÉATION D'UN SAS POUR LE CARREAU DU TEMPLE  75003",
+   "fournisseur": "LOISON",
+   "montant_max": 116393.5,
+   "date_notification": "2015-06-10",
+   "preuve": "Objet nommant le lieu et son code postal : « CRÉATION D'UN SAS POUR LE CARREAU DU TEMPLE  75003 » — ouvrage créé sur le bâtiment ; 75003 conforme au 3e arrondissement."
+  },
+  {
+   "numero_marche": "20202020T01920",
+   "objet": "REMPLACMENT DE VITRAGES EN TOITURE CARREAU DU TEMPLE PARIS 3",
+   "fournisseur": "LOISON",
+   "montant_max": 104767.0,
+   "date_notification": "2020-04-13",
+   "preuve": "Objet nommant le lieu et l'arrondissement : « REMPLACMENT DE VITRAGES EN TOITURE CARREAU DU TEMPLE PARIS 3 » — travaux sur la toiture de la halle."
+  },
+  {
+   "numero_marche": "20141210010724",
+   "objet": "ASSURANCE CCRD RÉHABILITATION DU CARREAU DU TEMPLE",
+   "fournisseur": "CLEMENT ARNAUD ET DELPIERRE YANN",
+   "montant_max": 81188.54,
+   "date_notification": "2014-01-21",
+   "preuve": "Objet nommant le lieu : « ASSURANCE CCRD RÉHABILITATION DU CARREAU DU TEMPLE » — assurance attachée au chantier de réhabilitation de ce bâtiment (opération 2007 DPA 331, livraison 2014)."
+  },
+  {
+   "numero_marche": "20232023S05787",
+   "objet": "CARREAU DU TEMPLE 4 RUE EUGÈNE SPULLER AMO CVC",
+   "fournisseur": "SPHERE INGENIERIE",
+   "montant_max": 40400.0,
+   "date_notification": "2023-06-30",
+   "preuve": "Objet nommant le lieu ET son adresse : « CARREAU DU TEMPLE 4 RUE EUGÈNE SPULLER AMO CVC ». Adresse identique à celle des délibérations (2007 DPA 9 : « réhabilitation du Carreau du Temple, 4, rue Eugène-Spuller (3e) »)."
+  }
+ ],
+ "sources": {
+  "delibs": {
+   "name": "Débat-Délibs — Conseil de Paris",
+   "url": "https://a06-v7.apps.paris.fr/a06/"
+  },
+  "bmo": {
+   "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
+   "url": "https://gallica.bnf.fr/ark:/12148/cb343512457/date"
+  },
+  "invest": {
+   "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
+   "url": "https://opendata.paris.fr/"
+  },
+  "wiki": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ }
+}

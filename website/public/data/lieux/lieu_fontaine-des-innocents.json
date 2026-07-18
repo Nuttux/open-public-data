@@ -1,0 +1,119 @@
+{
+ "generated_at": "2026-07-18T14:38:43.284445+00:00",
+ "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
+ "slug": "fontaine-des-innocents",
+ "name": "Fontaine des Innocents",
+ "kind_fr": "Monument",
+ "kind_en": "Monument",
+ "famille": "urbain",
+ "arrondissement": 1,
+ "lat": 48.860458,
+ "lon": 2.347394,
+ "photo": "/img/lieux/fontaine-des-innocents.jpg",
+ "photo_credit": {
+  "licence": "CC BY-SA 3.0",
+  "auteur": "JLPC\n",
+  "url": "https://commons.wikimedia.org/wiki/File:Paris_Fontaine_Innocents_Nymphe1_2013.jpg",
+  "source": "Wikimedia Commons"
+ },
+ "wiki": {
+  "extract": "La fontaine des Innocents, d'abord appelée fontaine des Nymphes, est une fontaine située dans le 1er arrondissement de Paris, sur l'actuelle place Joachim-du-Bellay dans le quartier des Halles. De style Renaissance, elle a connu diverses modifications et a été déplacée à deux occasions. Elle est classée monument historique depuis 1862.",
+  "url": "https://fr.wikipedia.org/wiki/Fontaine_des_Innocents",
+  "source": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ },
+ "stats": {
+  "n_delibs": 681,
+  "delibs_span": [
+   2014,
+   2017
+  ],
+  "n_bmo_brut": 0,
+  "n_bmo_verifies": null,
+  "invest_total_eur": 0,
+  "invest_annees": [],
+  "lecture_mode": "titre nommant le lieu (2 trouvés)",
+  "n_lus": 2,
+  "n_lieu": 2
+ },
+ "subventions_exploitant": null,
+ "residents": [],
+ "kpi_montant": null,
+ "synthese_fr": "En novembre 2014, le Conseil de Paris adopte à l'unanimité un vœu du groupe UMP demandant une opération de sauvegarde de la fontaine des Innocents, que Jean-François LEGARET, maire du 1er arrondissement, décrit comme un monument majeur du centre de Paris en très mauvais état. L'Exécutif émet un avis favorable, et Bruno Julliard indique vouloir proposer à la Maire de Paris d'inscrire la fontaine au plan d'investissement de la mandature. Deux ans et demi plus tard, en mai 2017, le groupe les Républicains dépose un nouveau vœu : LEGARET affirme que rien n'a été entamé et qu'aucun budget n'a été mobilisé pour les études préalables et les travaux, alors que la Direction du Patrimoine et de l'Architecture aurait, selon lui, inscrit 4 millions d'euros d'investissements localisés. Ce second vœu demande à la Maire de préciser son engagement financier, de lancer l'opération de restauration et de modernisation, et de réactualiser le calendrier.",
+ "moments": [
+  {
+   "id": "121333",
+   "seance": "NOVEMBRE 2014",
+   "fait": "Le Conseil de Paris adopte à l'unanimité un vœu du groupe UMP pour la sauvegarde de la fontaine ; l'Exécutif est favorable et Bruno Julliard dit vouloir l'inscrire au plan d'investissement de la mandature.",
+   "pourquoi": "L'engagement de principe qui lance tout",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=121333"
+  },
+  {
+   "id": "135790",
+   "seance": "MAI 2017",
+   "fait": "Le groupe les Républicains redépose un vœu ; Jean-François LEGARET affirme que rien n'a été entamé et qu'aucun budget n'a été mobilisé, malgré 4 M€ qu'aurait inscrits la Direction du Patrimoine et de l'Architecture.",
+   "pourquoi": "Deux ans et demi après, l'opposition affirme que rien n'a avancé",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=135790"
+  }
+ ],
+ "montants": [
+  {
+   "seance": "MAI 2017",
+   "montant": "4 millions d'euros",
+   "objet": "Investissements localisés pour la restauration et la modernisation de la fontaine, montant que M. Legaret dit avoir été inscrit par la Direction du Patrimoine et de l'Architecture.",
+   "citation": "la Direction du Patrimoine et de l?Architecture avait inscrit 4 millions d?euros d?investissements localisés pour la restauration et la modernisation de la fontaine des Innocents",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=135790"
+  }
+ ],
+ "bmo_extraits": [],
+ "bmo_recit": null,
+ "invest": [],
+ "marches": [
+  {
+   "numero_marche": "20232023T02042",
+   "objet": "SA4 RESTAURATION FONTAINE DES INNOCENTS LOT1:INSTAL CHANTIER",
+   "fournisseur": "H. CHEVALIER",
+   "montant_max": 1019737.15,
+   "date_notification": "2023-04-04",
+   "preuve": "L'objet du marche nomme le lieu et porte sur des travaux le concernant : « SA4 RESTAURATION FONTAINE DES INNOCENTS LOT1:INSTAL CHANTIER » (lot installation de chantier de la restauration). Le contexte des deliberations confirme une operation de restauration de la fontaine des Innocents (1er), monument historique classe en 1862."
+  },
+  {
+   "numero_marche": "20222022T08669",
+   "objet": "SA3 MS/AC AMENAGEMENT DES ABORDS FONTAINE DES INNOCENTS",
+   "fournisseur": "COCHERY ILE DE FRANCE",
+   "montant_max": 432846.28,
+   "date_notification": "2022-11-04",
+   "preuve": "L'objet nomme le lieu et porte sur son amenagement, pas sur un simple repere d'adresse : « SA3 MS/AC AMENAGEMENT DES ABORDS FONTAINE DES INNOCENTS ». Perimetre = les abords immediats du monument (place Joachim-du-Bellay, cf. deliberation MAI 2017), non le monument lui-meme."
+  },
+  {
+   "numero_marche": "20212021S07089",
+   "objet": "SA4 MO RELATIVE A LA RESTAURATION FONTAINE DES INNOCENTS",
+   "fournisseur": "SUNMETRON",
+   "montant_max": 258357.5,
+   "date_notification": "2021-10-18",
+   "preuve": "L'objet nomme le lieu et porte sur la maitrise d'oeuvre de sa restauration : « SA4 MO RELATIVE A LA RESTAURATION FONTAINE DES INNOCENTS ». Anteriorite coherente avec le marche de travaux notifie le 2023-04-04."
+  }
+ ],
+ "sources": {
+  "delibs": {
+   "name": "Débat-Délibs — Conseil de Paris",
+   "url": "https://a06-v7.apps.paris.fr/a06/"
+  },
+  "bmo": {
+   "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
+   "url": "https://gallica.bnf.fr/ark:/12148/cb343512457/date"
+  },
+  "invest": {
+   "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
+   "url": "https://opendata.paris.fr/"
+  },
+  "wiki": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ }
+}

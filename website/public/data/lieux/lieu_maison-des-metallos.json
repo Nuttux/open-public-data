@@ -1,0 +1,476 @@
+{
+ "generated_at": "2026-07-18T14:38:43.284445+00:00",
+ "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
+ "slug": "maison-des-metallos",
+ "name": "Maison des Métallos",
+ "kind_fr": "Équipement culturel",
+ "kind_en": "Cultural venue",
+ "famille": "culture",
+ "arrondissement": 11,
+ "lat": 48.8666,
+ "lon": 2.3778,
+ "photo": "/img/lieux/maison-des-metallos.jpg",
+ "photo_credit": {
+  "licence": null,
+  "auteur": null,
+  "url": "https://fr.wikipedia.org/wiki/Maison_des_m%C3%A9tallos",
+  "source": "Wikipédia"
+ },
+ "wiki": {
+  "extract": "La Maison des métallos est un bâtiment situé 94 rue Jean-Pierre-Timbaud dans le 11e arrondissement de Paris, en France.",
+  "url": "https://fr.wikipedia.org/wiki/Maison_des_m%C3%A9tallos",
+  "source": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ },
+ "stats": {
+  "n_delibs": 299,
+  "delibs_span": [
+   1999,
+   2024
+  ],
+  "n_bmo_brut": 0,
+  "n_bmo_verifies": null,
+  "invest_total_eur": 0,
+  "invest_annees": [],
+  "lecture_mode": "titre nommant le lieu (69 trouvés)",
+  "n_lus": 42,
+  "n_lieu": 42
+ },
+ "subventions_exploitant": {
+  "nom_fiche": "MAISON DES METALLOS",
+  "total_eur": 14568999.120000001,
+  "annees": [
+   "2018",
+   "2024"
+  ],
+  "rows": [
+   {
+    "annee": "2024",
+    "montant_eur": 2255000.0,
+    "beneficiaire": "MAISON DES METALLOS",
+    "thematique": "Culture"
+   },
+   {
+    "annee": "2023",
+    "montant_eur": 2075000.0,
+    "beneficiaire": "MAISON DES METALLOS",
+    "thematique": "Culture"
+   },
+   {
+    "annee": "2022",
+    "montant_eur": 2029000.0,
+    "beneficiaire": "MAISON DES METALLOS",
+    "thematique": "Culture"
+   },
+   {
+    "annee": "2021",
+    "montant_eur": 1975000.0,
+    "beneficiaire": "MAISON DES METALLOS",
+    "thematique": "Culture"
+   },
+   {
+    "annee": "2020",
+    "montant_eur": 2155073.12,
+    "beneficiaire": "MAISON DES METALLOS",
+    "thematique": "Culture"
+   },
+   {
+    "annee": "2019",
+    "montant_eur": 2039926.0,
+    "beneficiaire": "MAISON DES METALLOS",
+    "thematique": "Culture"
+   },
+   {
+    "annee": "2018",
+    "montant_eur": 2040000.0,
+    "beneficiaire": "MAISON DES METALLOS",
+    "thematique": "Culture"
+   }
+  ],
+  "perimetre": "mono",
+  "note_publique": null,
+  "autres_sites": []
+ },
+ "residents": [],
+ "kpi_montant": null,
+ "synthese_fr": "Le corpus s'ouvre en janvier 1999 : la Fédération C.G.T. métaux a mis en vente le 94, rue Jean-Pierre Timbaud depuis juin 1998, un collectif inter-associatif propose d'y installer quatre équipements et Martine BILLARD demande une préemption à laquelle la Ville ne s'est alors pas engagée ; en juin 2002, un vœu acte que le bâtiment a été « sauvé et racheté par la Ville de Paris ». La Ville approuve le principe des travaux en juillet 2002 (2002 DAC 213), confie le mandat de maîtrise d'ouvrage à la SEMAEST et la maîtrise d'œuvre à l'architecte Vincent Brossy (marché signé le 9 juillet 2004), ferme le lieu fin juin 2005 pour travaux et crée en novembre 2005 une régie personnalisée pour sa gestion ; en juin 2007, des avenants portent le lot n°1 des travaux de 8.325.434.93 à 8.697.162.82 euros TTC, et une transaction avec son titulaire BACOTRA est encore approuvée en mars 2011. Le lieu ouvre en 2007 — Philippe DUCLOUX le dit « inaugurée en novembre 2007 par Bertrand DELANOË » — et sa subvention de fonctionnement est votée en deux temps, un acompte en décembre puis un complément l'été, pour un total voisin de 2.000.000 euros en 2008 (420.000 puis 1.580.000 euros), 2009 (1.000.000 puis 1.000.000 euros) et 2010 (portée à 2.020.000 euros), auxquels s'ajoutent des subventions d'équipement répétées (300.000 euros en 2007, 150.000 en 2008, 100.000 en 2009, 150.000 en 2010). Ce niveau est contesté en juillet 2011 par David ALPHAND, pour qui « on est en train de lâcher les vannes financières sur la Maison des Métallos pour essayer de sauver un projet culturellement en péril », quand Christophe GIRARD répond par une résorption du déficit de 50.000 euros pour l'exercice 2011 ; en parallèle et sur une tout autre échelle, la Ville subventionne l'association Comité Métallos, domiciliée dans le lieu et siégeant à son conseil d'administration depuis 2006 (40.000 euros en 2004 et 2005, 15.000 euros par an de 2008 à 2011, 13.000 euros en 2021). La contribution à l'établissement public de coopération culturelle est de 2.000.000 euros en 2022, 2023 et mai 2024, puis portée à 2.235.000 euros en novembre 2024 ; la même année, un vœu du groupe « Les Ecologistes » porte sur la mise à l'abri pérenne des « jeunes de la Maison des Métallos ».",
+ "moments": [
+  {
+   "id": "25067",
+   "seance": "JANVIER 1999",
+   "fait": "Martine BILLARD demande à la Ville de préempter le bâtiment que la Fédération C.G.T. métaux met en vente depuis juin 1998 ; un collectif inter-associatif propose d'en faire quatre équipements sur 4 000 mètres carrés, et la question relate qu'aucun engagement de la Ville n'a suivi à cette date.",
+   "pourquoi": "point de départ : la vente et la préemption demandée",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=25067"
+  },
+  {
+   "id": "7996",
+   "seance": "JUILLET 2002",
+   "fait": "Le Conseil approuve le principe des travaux de restructuration et un marché d'études ; Christophe GIRARD résume l'enjeu par « il faut sauver ce lieu » et évoque des travaux d'urgence de sécurité, tandis que le comité de pilotage a fixé quatre axes et confié la préfiguration à Gérard PAQUET.",
+   "pourquoi": "la Ville engage la transformation du bâtiment",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=7996"
+  },
+  {
+   "id": "10946",
+   "seance": "JUILLET 2004",
+   "fait": "Sur le marché de maîtrise d'œuvre, Khédija BOURCART relaie les inquiétudes du Comité des métallos sur les projets architecturaux et pose le conflit de vocation : ni « petit Opéra Bastille au cœur du Bas-Belleville », ni « garage associatif ».",
+   "pourquoi": "conflit ouvert sur la vocation du lieu",
+   "vedette": false,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=10946"
+  },
+  {
+   "id": "90967",
+   "seance": "NOVEMBRE 2005",
+   "fait": "Le Conseil crée une régie personnalisée pour la gestion de la Maison des métallos, approuve ses statuts, fixe sa dotation initiale et désigne son directeur général : la structure qui exploitera le lieu naît pendant les travaux.",
+   "pourquoi": "naissance de la structure qui gère le lieu",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=90967"
+  },
+  {
+   "id": "72728",
+   "seance": "JUIN 2007",
+   "fait": "Des avenants réévaluent les quatre lots de travaux : le lot n°1 tous corps d'état (BACOTRA) passe de 8 325 434.93 à 8 697 162.82 euros TTC, avec un délai prolongé jusqu'au 30 septembre 2007 pour les ravalements.",
+   "pourquoi": "le chantier coûte plus cher à son terme",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=72728"
+  },
+  {
+   "id": "20549",
+   "seance": "JUILLET 2009",
+   "fait": "Philippe DUCLOUX rappelle une inauguration en novembre 2007 par Bertrand DELANOË après trois ans de préfiguration, situe le fonctionnement à 2 millions d'euros comme en 2008, première année pleine, et annonce le départ à la retraite du directeur Gérard PAQUET.",
+   "pourquoi": "le lieu ouvert trouve son régime de croisière",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=20549"
+  },
+  {
+   "id": "100773",
+   "seance": "JUILLET 2011",
+   "fait": "David ALPHAND conteste le pilotage financier — « on est en train de lâcher les vannes financières sur la Maison des Métallos pour essayer de sauver un projet culturellement en péril » — et Christophe GIRARD répond par une résorption du déficit de 50 000 euros pour l'exercice 2011.",
+   "pourquoi": "premier examen contradictoire de la gestion",
+   "vedette": false,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=100773"
+  },
+  {
+   "id": "176047",
+   "seance": "MAI 2024",
+   "fait": "Le groupe « Les Ecologistes » dépose un vœu relatif à la mise à l'abri pérenne des « jeunes de la Maison des Métallos » et des jeunes mineurs en situation de rue ; la même année, la contribution à l'établissement passe de 2 000 000 euros en mai à 2 235 000 euros en novembre.",
+   "pourquoi": "l'équipement culturel devient un enjeu d'hébergement",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=176047"
+  }
+ ],
+ "montants": [
+  {
+   "seance": "NOVEMBRE 2024",
+   "montant": "2.235.000 euros",
+   "objet": "contribution de la Ville à l'établissement public de coopération culturelle, portée au titre de la délibération 2024 DAC 390",
+   "citation": "2024 DAC 390 - Contribution (2.235.000 euros) et avenant à convention avec l’établissement public de coopération culturelle \"La Maison des Métallos\" (11e).",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=178698"
+  },
+  {
+   "seance": "MAI 2024",
+   "montant": "2.000.000 euros",
+   "objet": "contribution de la Ville à l'établissement public de coopération culturelle (2024 DAC 4)",
+   "citation": "2024 DAC 4 - Contribution (2.000.000 euros) et avenant à convention avec l’établissement public de coopération culturelle \"La Maison des Métallos\" (11e).",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=176269"
+  },
+  {
+   "seance": "JUIN 2023",
+   "montant": "2.000.000 euros",
+   "objet": "contribution de la Ville à l'établissement public de coopération culturelle (2023 DAC 36)",
+   "citation": "2023 DAC 36 - Contribution (2.000.000 euros) et avenant à convention avec l’établissement public de coopération culturelle Maison des métallos (11e).",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=169733"
+  },
+  {
+   "seance": "OCTOBRE 2022",
+   "montant": "2.000.000 euros",
+   "objet": "contribution de la Ville à l'établissement public de coopération culturelle (2022 DAC 36)",
+   "citation": "2022 DAC 36 - Contribution (2.000.000 euros) et avenant à convention avec l’établissement public de coopération culturelle Maison des Métallos (11e).",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=167222"
+  },
+  {
+   "seance": "OCTOBRE 2021",
+   "montant": "13.000 euros",
+   "objet": "subvention au Comité pour une maison des savoirs et des cultures de l'Est parisien (association tierce domiciliée dans le lieu), et non à l'établissement public",
+   "citation": "Nous examinons le projet de délibération DAC 306 : subvention de 13.000 euros au Comité pour une maison des savoirs et des cultures de l?Est parisien dans la Maison des métallos.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=160931"
+  },
+  {
+   "seance": "JUILLET 2020",
+   "montant": "11.050.000 euros",
+   "objet": "montant global des contributions votées pour trois établissements publics (Maison des métallos, CENTQUATRE, Ateliers Médicis) : non ventilé, la part de la Maison des métallos n'apparaît pas dans les contextes",
+   "citation": "2020 DAC 8 - Contributions (11.050.000 euros) et avenants à conventions avec les établissements publics de coopération culturelle Maison des métallos (11e), CENTQUATRE (19e) et Ateliers Médicis.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=156182"
+  },
+  {
+   "seance": "MAI 2018",
+   "montant": "1.500.000 euros",
+   "objet": "contribution de la Ville à l'établissement public de coopération culturelle (2018 DAC 20)",
+   "citation": "2018 DAC 20 - Contribution (1.500.000 euros) et avenant à convention avec l’établissement public de coopération culturelle \"Maison des Métallos\" (11e).",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=142454"
+  },
+  {
+   "seance": "MAI 2017",
+   "montant": "1.552.500 euros",
+   "objet": "contribution et subvention d'équipement réunies au titre de la délibération 2017 DAC 21",
+   "citation": "2017 DAC 21 - Contribution et subvention d'équipement (1.552.500 euros), avenant à convention et convention avec l’établissement public de coopération culturelle \"Maison des métallos\" (11e).",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=135820"
+  },
+  {
+   "seance": "MAI 2017",
+   "montant": "1.500.000 euros",
+   "objet": "part de contribution annoncée oralement en séance par le président de séance, le titre portant 1.552.500 euros au total avec la subvention d'équipement",
+   "citation": "Nous examinons le projet de délibération DAC 21 : subvention de 1.500.000 euros à la Maison des métallos.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=135820"
+  },
+  {
+   "seance": "JUILLET 2011",
+   "montant": "1.112.000 euros",
+   "objet": "deux subventions à l'établissement public local (fonctionnement et équipement réunis, 2011 DAC 130)",
+   "citation": "nous allons examiner le projet de délibération DAC 130 relatif à la signature avec l?établissement public local de la Maison des Métallos d?un avenant à la convention pluriannuelle d?objectifs pour une subvention de 1.112.000 euros.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=100773"
+  },
+  {
+   "seance": "JUILLET 2011",
+   "montant": "122.000 euros",
+   "objet": "part d'équipement, chiffre cité en débat par l'élu David ALPHAND et non isolé dans le dispositif capté",
+   "citation": "une subvention d?équipement avait été décidée courant de l?année 2010, en septembre, pour 150.000 euros et qu?on y revient à nouveau aujourd?hui, c?est-à-dire moins d?un an après, et qu?on remet encore au pot 122.000 euros.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=100773"
+  },
+  {
+   "seance": "JUILLET 2011",
+   "montant": "50.000 euros",
+   "objet": "résorption annuelle du déficit annoncée en débat par l'adjoint Christophe GIRARD pour l'exercice 2011 (annonce, non montant voté)",
+   "citation": "une résorption annuelle du déficit de 50.000 euros pour l?exercice 2011, qui va se poursuivre de manière significative lors de la saison 2011-2012.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=100773"
+  },
+  {
+   "seance": "MAI 2011",
+   "montant": "15.000 euros",
+   "objet": "subvention de fonctionnement à l'association Comité Métallos (tiers D06718), domiciliée dans le lieu, et non à l'établissement public",
+   "citation": "Article 1 : Une subvention de fonctionnement de 15.000 euros est attribuée à l?association Comité Métallos - 94, rue Jean-Pierre Timbaud (11e) (D06718 ; 2011_02080).",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=97751"
+  },
+  {
+   "seance": "NOVEMBRE 2010",
+   "montant": "15.000 euros",
+   "objet": "subvention de fonctionnement à l'association Comité Métallos (tiers D06718), domiciliée dans le lieu, et non à l'établissement public",
+   "citation": "Article 1 : Une subvention de fonctionnement de 15.000 euros est attribuée à l?association Comité Métallos, sise 94, rue Jean-Pierre Timbaud (11e). D06718 ; 2010_01729.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=85742"
+  },
+  {
+   "seance": "JUILLET 2010",
+   "montant": "2.020.000 euros",
+   "objet": "subvention de fonctionnement 2010 après avenant, portée depuis 1.000.000 euros",
+   "citation": "La subvention attribuée à l?établissement public de ?La Maison des métallos?, 94, rue Jean-Pierre Timbaud (11e), afin de lui permettre de faire fonctionner l?établissement est portée de 1.000.000 euros à 2.020.000 euros (W00320).",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=79479"
+  },
+  {
+   "seance": "JUILLET 2010",
+   "montant": "1.020.000 euros",
+   "objet": "dépense complémentaire imputée au budget de fonctionnement 2010 (solde entre l'acompte et la subvention portée)",
+   "citation": "La dépense correspondante, soit 1.020.000 euros sera imputée sur le budget de fonctionnement de la Ville de Paris de 2010",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=79479"
+  },
+  {
+   "seance": "JUILLET 2010",
+   "montant": "1.000.000 d’euros",
+   "objet": "acompte au titre de 2010 voté en décembre 2009 (délibération 2009 DAC 698), rappelé en visa",
+   "citation": "Vu la délibération 2009 DAC 698, des 15, 16 et 17 décembre 2009, relative à la signature d?une convention pluriannuelle d?objectifs pour l?attribution d?un acompte de 1.000.000 d?euros au titre de 2010",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=79479"
+  },
+  {
+   "seance": "SEPTEMBRE 2010",
+   "montant": "150.000 euros",
+   "objet": "subvention à l'établissement public pour matériel et installations, imputée au budget d'investissement de la Ville",
+   "citation": "Article 1 : Une subvention de 150.000 euros est attribuée à l?établissement public La Maison des métallos - 94, rue Jean-Pierre Timbaud (11e), afin de renforcer son matériel scénique, bureautique et ses installations de sécurité",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=39442"
+  },
+  {
+   "seance": "SEPTEMBRE 2010",
+   "montant": "8.500 euros",
+   "objet": "subvention à l'association Compagnie Orten (bénéficiaire tiers) pour un spectacle diffusé à la Maison des métallos et au Théâtre de l'Epée de Bois : montant non ventilé entre les deux lieux",
+   "citation": "La dépense correspondante, soit 8.500 euros, sera imputée comme suit : - 6.000 euros sur le budget de fonctionnement de la Ville de Paris de 2010",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=39755"
+  },
+  {
+   "seance": "JUILLET 2009",
+   "montant": "1.100.000 euros",
+   "objet": "montant total de la délibération 2009 DAC 448 porté au compte rendu (complément de fonctionnement de 1.000.000 euros et subvention d'équipement de 100.000 euros)",
+   "citation": "2009, DAC 448 - Signature d'un avenant et d'une convention avec l'établissement public \"La Maison des Métallos\" pour l'attribution d'une subvention de fonctionnement et d'une subvention d'équipement. - Montant : 1.100.000 euros.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=20549"
+  },
+  {
+   "seance": "JUILLET 2009",
+   "montant": "2 millions d'euros",
+   "objet": "niveau de la subvention de fonctionnement 2009 tel que décrit en débat par l'élu Philippe DUCLOUX, maintenu au niveau de 2008",
+   "citation": "je me réjouis ici, ce soir, du maintien de la subvention de fonctionnement de \"La Maison des Métallos\" au même niveau que l'année 2008, qui était la première année pleine d?ouverture, soit 2 millions d'euros",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=20549"
+  },
+  {
+   "seance": "JUILLET 2009",
+   "montant": "100.000 euros",
+   "objet": "subvention exceptionnelle d'équipement, telle que qualifiée en débat par l'élu Philippe DUCLOUX",
+   "citation": "et de l'attribution d'une subvention exceptionnelle d'équipement de 100.000 euros. C'est un effort non négligeable que je tiens à saluer.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=20549"
+  },
+  {
+   "seance": "JUILLET 2009",
+   "montant": "2.000.000 euros",
+   "objet": "subvention de fonctionnement 2009 après avenant, portée depuis 1.000.000 euros",
+   "citation": "afin de lui permettre de faire fonctionner l?établissement est portée de 1.000.000 euros à 2.000.000 euros.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=74849"
+  },
+  {
+   "seance": "JUILLET 2009",
+   "montant": "1.000.000 d’euros",
+   "objet": "dépense complémentaire imputée au budget de fonctionnement 2009",
+   "citation": "La dépense correspondante, soit 1.000.000 d?euros, sera imputée au chapitre 65, nature 6573, rubrique 33, ligne 40007",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=74849"
+  },
+  {
+   "seance": "JUILLET 2009",
+   "montant": "100.000 euros",
+   "objet": "subvention d'équipement à l'établissement public pour l'acquisition de divers matériels, imputée au budget d'investissement",
+   "citation": "La dépense correspondante, soit 100.000 euros, sera imputée sur le budget d?investissement de la Ville de Paris, rubrique 33, nature 2042, ligne E011",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=74849"
+  },
+  {
+   "seance": "JUILLET 2009",
+   "montant": "1.000.000 d’euros (acompte 2009)",
+   "objet": "acompte au titre de 2009 voté en décembre 2008 (2e avenant à la convention pluriannuelle), rappelé en visa",
+   "citation": "Vu le 2e avenant à la convention pluriannuelle d?objectifs relatif à l?attribution d?un acompte de 1.000.000 d?euros au titre de 2009 approuvé par délibération des 15, 16 et 17 décembre 2008",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=74849"
+  },
+  {
+   "seance": "JUIN 2009",
+   "montant": "5.000 euros",
+   "objet": "subvention à l'association Comité des Métallos (tiers D06718) pour son Parcours Filles/Femmes 2009, et non à l'établissement public",
+   "citation": "Une subvention de 5.000 euros est attribuée au Comité pour une Maison des Savoirs et des Cultures de l?Est Parisien dans la Maison des Métallos (dit Comité des Métallos), situé au 94 rue Jean-Pierre Timbaud (11e)",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=77337"
+  },
+  {
+   "seance": "DECEMBRE 2009",
+   "montant": "15.000 euros",
+   "objet": "subvention de fonctionnement à l'association Comité Métallos (tiers D06718) pour ses actions sociales et artistiques et l'installation de l'emblème de la Maison des Métallos",
+   "citation": "Une subvention de fonctionnement de 15.000 euros est attribuée à l?association Comité Métallos, sise 94, rue Jean-Pierre Timbaud (11e), pour ses actions sociales et artistiques et pour l?installation de l?emblème de la Maison des Métallos",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=32699"
+  },
+  {
+   "seance": "MAI 2008",
+   "montant": "1.580.000 euros",
+   "objet": "subvention de fonctionnement 2008 à l'établissement public (avenant n° 3 à la convention pluriannuelle d'objectifs)",
+   "citation": "Article premier.- Une subvention de 1.580.000 euros est attribuée à l?établissement public de \"la Maison des métallos\", dont le siège social est situé 94 rue Jean-Pierre Timbaud (11e)",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=69776"
+  },
+  {
+   "seance": "MAI 2008",
+   "montant": "420.000 euros",
+   "objet": "acompte au titre de 2008 voté en décembre 2007 (2e avenant à la convention pluriannuelle), rappelé en visa",
+   "citation": "Vu le deuxième avenant à la convention pluriannuelle d?objectifs relatif à l?attribution d?un acompte de 420.000 euros au titre de 2008 approuvé par délibération en date des 17, 18 et 19 décembre 2007",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=69776"
+  },
+  {
+   "seance": "MAI 2008",
+   "montant": "150.000 euros",
+   "objet": "subvention d'équipement au titre du programme d'équipement 2008 de l'établissement public",
+   "citation": "Une subvention d'équipement d'un montant de 150.000 euros est attribuée à l'établissement public de \"la Maison des métallos\", dont le siège social est situé 94 rue Jean-Pierre Timbaud (11e) au titre de son programme d'équipement 2008.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=69776"
+  },
+  {
+   "seance": "MAI 2008",
+   "montant": "15.000 euros",
+   "objet": "subvention sur projet à l'établissement public pour « Jus de cactus », Un autre regard sur la Palestine, imputée sur les crédits de la Délégation générale aux Relations internationales",
+   "citation": "Une subvention de 15.000 euros est attribuée à l'établissement public de \"la Maison des Métallos\" dont le siège social est situé 94, rue Jean-Pierre Timbaud (11e) pour soutenir le projet \"Jus de cactus\", Un autre regard sur la Palestine.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=69776"
+  },
+  {
+   "seance": "DECEMBRE 2008",
+   "montant": "15.000 euros",
+   "objet": "subvention de fonctionnement à l'association Comité Métallos (tiers D06718) pour ses actions sociales et artistiques et l'installation de l'emblème des Métallos",
+   "citation": "Une subvention de fonctionnement de 15.000 euros est attribuée à l?association ?Comité Métallos?, sise 94, rue Jean-Pierre Timbaud (11e), pour ses actions sociales et artistiques et pour l?installation de l?emblème des Métallos",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=78163"
+  },
+  {
+   "seance": "JUIN 2007",
+   "montant": "8.697.162.82 euros TTC (porté depuis 8.325.434.93 euros TTC)",
+   "objet": "lot n°1 tous corps d'état bâtiment, société BACOTRA S.A. : avenant au marché de travaux de restructuration",
+   "citation": "- lot n°1 Tous corps d?état bâtiment : Société BACOTRA S.A. Montant porté de 8.325.434.93 euros TTC à 8.697.162.82 euros TTC",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=72728"
+  },
+  {
+   "seance": "JUIN 2007",
+   "montant": "380.436.27 euros TTC (porté depuis 365.259.59 euros TTC)",
+   "objet": "lot n°2 machineries scénographiques, société CAIRE S.A. : avenant au marché de travaux",
+   "citation": "- lot n°2. Machineries scénographiques. Société CAIRE S.A. Montant porté de 365.259.59 euros TTC à 380.436.27 euros TTC.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=72728"
+  },
+  {
+   "seance": "JUIN 2007",
+   "montant": "615.884.98 euros TTC (porté depuis 596.396.16 euros TTC)",
+   "objet": "lot n°4 réseaux scénographiques, société TECH AUDIO S.N.C. : avenant au marché de travaux",
+   "citation": "- lot n°4 : Réseaux scénographiques. Société TECH AUDIO S.N.C. Montant porté de 596.396.16 euros TTC à 615.884.98 euros TTC.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=72728"
+  },
+  {
+   "seance": "JUIN 2007",
+   "montant": "131.774.08 euros TTC (porté depuis 129.872.44 euros TTC)",
+   "objet": "lot n°5 gradins, société LAPIS LAZULI S.A.S. : avenant au marché de travaux",
+   "citation": "- lot n°5 : Gradins. Société LAPIS LAZULI. S.A.S. Montant porté de 129.872.44 euros TTC à 131.774.08 euros TTC.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=72728"
+  },
+  {
+   "seance": "JUIN 2007",
+   "montant": "300.000 euros",
+   "objet": "subvention d'équipement à la régie personnalisée chargée de l'exploitation, imputée au budget d'investissement",
+   "citation": "Article premier.- Une subvention d?équipement de 300.000 euros est attribuée à la Régie ?établissement public de la Maison des Métallos? dont le siège social est fixé 94 rue Jean-Pierre Timbaud (11e) (W00320).",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=72322"
+  },
+  {
+   "seance": "JUIN 2007",
+   "montant": "300.000 euros",
+   "objet": "subvention d'équipement à la régie personnalisée chargée de l'exploitation, montant annoncé en séance",
+   "citation": "relative à l?attribution d?une subvention d?équipement à la régie personnalisée chargée de l?exploitation de la Maison des Métallos, pour un montant de 300.000 euros.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=21108"
+  },
+  {
+   "seance": "MAI 2005",
+   "montant": "40.000 euros",
+   "objet": "subvention de fonctionnement à l'association Comité Métallos (tiers D06718) pour des projets d'animation culturelle dans le quartier Fontaine-au-Roi, et non à l'établissement",
+   "citation": "Une subvention de fonctionnement de 40.000 euros est octroyée à l?association ?Comité pour une maison des savoirs et des cultures de l?est parisien dans la Maison des Métallos, dit Comité Métallos? (D06718) (2005-01430)",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=80698"
+  },
+  {
+   "seance": "MAI 2004",
+   "montant": "40.000 euros",
+   "objet": "subvention de fonctionnement à l'association Comité Métallos (tiers D06718) pour des projets d'animation culturelle dans le quartier Fontaine au Roi, et non à l'établissement",
+   "citation": "Une subvention de fonctionnement de 40.000 euros est octroyée à l'association \"Comité pour une maison des savoirs et des cultures de l'est parisien dans la Maison des Métallos, dit Comité Métallos\" (D06718)",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=45665"
+  }
+ ],
+ "bmo_extraits": [],
+ "bmo_recit": null,
+ "invest": [],
+ "marches": [],
+ "sources": {
+  "delibs": {
+   "name": "Débat-Délibs — Conseil de Paris",
+   "url": "https://a06-v7.apps.paris.fr/a06/"
+  },
+  "bmo": {
+   "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
+   "url": "https://gallica.bnf.fr/ark:/12148/cb343512457/date"
+  },
+  "invest": {
+   "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
+   "url": "https://opendata.paris.fr/"
+  },
+  "wiki": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ }
+}

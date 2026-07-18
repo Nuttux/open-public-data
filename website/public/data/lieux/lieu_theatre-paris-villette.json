@@ -1,0 +1,178 @@
+{
+ "generated_at": "2026-07-18T14:38:43.284445+00:00",
+ "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
+ "slug": "theatre-paris-villette",
+ "name": "Théâtre Paris-Villette",
+ "kind_fr": "Théâtre",
+ "kind_en": "Theatre",
+ "famille": "culture",
+ "arrondissement": 19,
+ "lat": 48.88895,
+ "lon": 2.39245,
+ "photo": "/img/lieux/theatre-paris-villette.jpg",
+ "photo_credit": {
+  "licence": null,
+  "auteur": null,
+  "url": "https://fr.wikipedia.org/wiki/Th%C3%A9%C3%A2tre_Paris-Villette",
+  "source": "Wikipédia"
+ },
+ "wiki": {
+  "extract": "Le Théâtre Paris-Villette est un théâtre créé en 1986, dans le parc de la Villette, à Paris . Il est dirigé depuis 2013 par Valérie Dassonville et Adrien de Van.",
+  "url": "https://fr.wikipedia.org/wiki/Th%C3%A9%C3%A2tre_Paris-Villette",
+  "source": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ },
+ "stats": {
+  "n_delibs": 794,
+  "delibs_span": [
+   2016,
+   2019
+  ],
+  "n_bmo_brut": 0,
+  "n_bmo_verifies": null,
+  "invest_total_eur": 0,
+  "invest_annees": [],
+  "lecture_mode": "titre nommant le lieu (2 trouvés)",
+  "n_lus": 2,
+  "n_lieu": 2
+ },
+ "subventions_exploitant": {
+  "nom_fiche": "THEATRE PARIS VILLETTE",
+  "total_eur": 7455500.0,
+  "annees": [
+   "2018",
+   "2024"
+  ],
+  "rows": [
+   {
+    "annee": "2024",
+    "montant_eur": 1188500.0,
+    "beneficiaire": "THEATRE PARIS VILLETTE",
+    "thematique": "Culture"
+   },
+   {
+    "annee": "2023",
+    "montant_eur": 1149000.0,
+    "beneficiaire": "THEATRE PARIS VILLETTE",
+    "thematique": "Culture"
+   },
+   {
+    "annee": "2022",
+    "montant_eur": 1058500.0,
+    "beneficiaire": "THEATRE PARIS VILLETTE",
+    "thematique": "Culture"
+   },
+   {
+    "annee": "2021",
+    "montant_eur": 955500.0,
+    "beneficiaire": "THEATRE PARIS VILLETTE",
+    "thematique": "Culture"
+   },
+   {
+    "annee": "2020",
+    "montant_eur": 1089350.0,
+    "beneficiaire": "THEATRE PARIS VILLETTE",
+    "thematique": "Culture"
+   },
+   {
+    "annee": "2019",
+    "montant_eur": 1019150.0,
+    "beneficiaire": "THEATRE PARIS VILLETTE",
+    "thematique": "Culture"
+   },
+   {
+    "annee": "2018",
+    "montant_eur": 995500.0,
+    "beneficiaire": "THEATRE PARIS VILLETTE",
+    "thematique": "Culture"
+   }
+  ],
+  "perimetre": "multi",
+  "note_publique": "L'association qui gère le Théâtre Paris-Villette (19e) gère aussi le centre culturel « Grand Parquet » (18e). La subvention de fonctionnement couvre donc les deux sites et ne finance pas uniquement ce bâtiment.",
+  "autres_sites": [
+   "Grand Parquet (18e)"
+  ]
+ },
+ "residents": [
+  {
+   "beneficiaire": "MADANI COMPAGNIE",
+   "montant_total": 6000.0,
+   "preuve": "Objet verbatim : « Aide à la diffusion du spectacle Incandescences au Théâtre Paris-Villette » — l'objet nomme explicitement et uniquement le lieu ; aide à une activité DANS le lieu, sans gestion."
+  },
+  {
+   "beneficiaire": "COMPAGNIE MARIZIBILL",
+   "montant_total": 5000.0,
+   "preuve": "Objet verbatim : « Théâtre Paris-Villette - spectacle \"Luce\" » — l'objet nomme explicitement le lieu ; aide à un spectacle DANS le lieu, sans gestion."
+  }
+ ],
+ "kpi_montant": null,
+ "synthese_fr": "En mars 2016, le Conseil de Paris adopte la délibération DAC 35 accordant des subventions, une convention et un avenant à l'association Théâtre Paris Villette, dans le cadre du transfert de la gestion du Grand Parquet à cette équipe. Le débat porte alors sur le choix de lui confier le Grand Parquet sans appel d'offres — que M. Pascal JULIEN qualifie de choix « sans procédure transparente » — et sur un comité de suivi que Mme Danièle PREMEL et M. Julien réclament. En février 2019, le Conseil adopte la délibération DAC 9, une convention d'occupation du domaine public dont l'objectif, selon l'adjoint Christophe GIRARD, est de mettre les espaces du centre culturel Grand Parquet à disposition de l'association qui gère le théâtre Paris-Villette. Cette séance est dominée par le sort d'un local du Grand Parquet servant à l'association « Petit Déj' solidaire » pour stocker et préparer des petits-déjeuners distribués à des personnes migrantes : M. Julien alerte que la convention le lui fait perdre, tandis que M. Girard assure chercher avec Mme Dominique VERSINI une solution de relogement à proximité.",
+ "moments": [
+  {
+   "id": "129306",
+   "seance": "MARS 2016",
+   "fait": "Le Conseil adopte la délibération DAC 35 accordant des subventions (582 500 €), une convention et un avenant à l'association Théâtre Paris Villette, dans le cadre du transfert de la gestion du Grand Parquet.",
+   "pourquoi": "L'argent qui acte la reprise du Grand Parquet",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=129306"
+  },
+  {
+   "id": "147425",
+   "seance": "FEVRIER 2019",
+   "fait": "Le Conseil adopte la délibération DAC 9, une convention d'occupation du domaine public mettant, selon Christophe GIRARD, les espaces du Grand Parquet à disposition de l'association du théâtre Paris-Villette.",
+   "pourquoi": "Le sort du local des petits-déjeuners solidaires",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=147425"
+  }
+ ],
+ "montants": [
+  {
+   "seance": "MARS 2016",
+   "montant": "582 500 €",
+   "objet": "Subventions à l'association Théâtre Paris Villette (convention et avenant)",
+   "citation": "Subventions (582.500 euros)",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=129306"
+  }
+ ],
+ "bmo_extraits": [],
+ "bmo_recit": null,
+ "invest": [],
+ "marches": [
+  {
+   "numero_marche": "20191320000205",
+   "objet": "CSP5 MODERNISATION RESEAUX SCENIQ THEATRE PARIS VILLETTE",
+   "fournisseur": "D 6 BELL LIGHT",
+   "montant_max": 123681.0,
+   "date_notification": "2019-04-29",
+   "preuve": "L'objet du marché nomme le lieu et porte sur une intervention technique dans le bâtiment : « CSP5 MODERNISATION RESEAUX SCENIQ THEATRE PARIS VILLETTE » (modernisation des réseaux scéniques). Le lieu est l'objet des travaux, pas un repère d'adresse."
+  },
+  {
+   "numero_marche": "20161210001306",
+   "objet": "RÉNOVATION SALLE DE RÉPÉTITION THÉÂTRE PARIS VILLETTE 75019",
+   "fournisseur": "ERI",
+   "montant_max": 47000.0,
+   "date_notification": "2016-09-19",
+   "preuve": "L'objet du marché nomme le lieu et son code postal, cohérent avec le 19e arrondissement : « RÉNOVATION SALLE DE RÉPÉTITION THÉÂTRE PARIS VILLETTE 75019 ». Travaux portant sur un local du bâtiment."
+  }
+ ],
+ "sources": {
+  "delibs": {
+   "name": "Débat-Délibs — Conseil de Paris",
+   "url": "https://a06-v7.apps.paris.fr/a06/"
+  },
+  "bmo": {
+   "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
+   "url": "https://gallica.bnf.fr/ark:/12148/cb343512457/date"
+  },
+  "invest": {
+   "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
+   "url": "https://opendata.paris.fr/"
+  },
+  "wiki": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ }
+}

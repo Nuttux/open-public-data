@@ -1,0 +1,149 @@
+{
+ "generated_at": "2026-07-18T14:38:43.284445+00:00",
+ "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
+ "slug": "marche-daligre",
+ "name": "Marché d'Aligre",
+ "kind_fr": "Marché",
+ "kind_en": "Market",
+ "famille": "services",
+ "arrondissement": 12,
+ "lat": 48.849,
+ "lon": 2.3785,
+ "photo": "/img/lieux/marche-daligre.jpg",
+ "photo_credit": {
+  "licence": "CC BY 3.0",
+  "auteur": "Mbzt",
+  "url": "https://commons.wikimedia.org/wiki/File:P1010871_Paris_XII_Place_Aligre_March%C3%A9_Beauvau_reductwk.JPG",
+  "source": "Wikimedia Commons"
+ },
+ "wiki": {
+  "extract": "Le marché d’Aligre se déroule tous les matins sauf le lundi place d'Aligre et rue d'Aligre, dans le 12e arrondissement de Paris.",
+  "url": "https://fr.wikipedia.org/wiki/March%C3%A9_d'Aligre",
+  "source": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ },
+ "stats": {
+  "n_delibs": 97,
+  "delibs_span": [
+   1996,
+   2015
+  ],
+  "n_bmo_brut": 978,
+  "n_bmo_verifies": null,
+  "invest_total_eur": 0,
+  "invest_annees": [],
+  "lecture_mode": "titre nommant le lieu (12 trouvés)",
+  "n_lus": 12,
+  "n_lieu": 6
+ },
+ "subventions_exploitant": null,
+ "residents": [],
+ "kpi_montant": null,
+ "synthese_fr": "Les délibérations du Conseil de Paris suivent le marché Beauvau, dit marché d'Aligre, d'abord par sa gestion : en 1996, après un avenant prolongeant de six mois la convention en cours, le Conseil autorise le Maire à signer un nouveau contrat d'affermage du marché découvert avec le Groupement d'intérêt économique du quartier d'Aligre, un choix que le conseiller Gérard REY conteste au nom des finances de la Ville. Les années 2000 sont marquées par des travaux votés en principe : protection anti-pigeons de la halle couverte (2002), aménagement de voirie de la place d'Aligre et des rues de Cotte et d'Aligre (2005), et la Maison des Ensembles, 3-5 rue d'Aligre, dont le principe et la maîtrise d'œuvre sont approuvés en 2005 puis les modalités du marché de travaux en 2006. La propreté du quartier fait l'objet d'une question en 2003, la Ville détaillant le nettoyage spécifique imposé par la tenue du marché. En 2015, selon l'adjointe Olivia POLSKI, la halle Beauvau, touchée par un incendie en juillet, ferme l'été puis rouvre le 1er octobre, une seconde phase de travaux étant prévue pour les étés 2016 et 2017, tandis qu'un vœu d'opposition demande un concours d'architectes pour aménager un étage de convivialité. En 2023, un vœu demandant de végétaliser la place d'Aligre est rejeté, l'Exécutif invoquant la concertation de 2022 et les contraintes d'exploitation du marché.",
+ "moments": [
+  {
+   "id": "82881",
+   "seance": "MARS 1996",
+   "fait": "Le Conseil autorise le Maire à souscrire un avenant prolongeant de six mois la convention d'affermage du marché découvert Beauvau avec le G.I.E. du quartier d'Aligre.",
+   "pourquoi": "gérer la transition avant le nouveau contrat",
+   "vedette": false,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=82881"
+  },
+  {
+   "id": "4148",
+   "seance": "JUILLET 1996",
+   "fait": "Débat sur l'affermage du marché : le conseiller Gérard REY conteste l'attribution au G.I.E. du quartier d'Aligre après le retrait d'un concurrent et annonce voter contre.",
+   "pourquoi": "la concession du marché attribuée malgré la contestation de M. REY",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=4148"
+  },
+  {
+   "id": "24047",
+   "seance": "DECEMBRE 1996",
+   "fait": "Le maire du 12e interroge le Préfet de police sur l'occupation illégale d'un immeuble du 5 rue d'Aligre par environ 200 personnes.",
+   "pourquoi": "un immeuble voisin occupé, préserver la bonne marche du marché",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=24047"
+  },
+  {
+   "id": "39040",
+   "seance": "MARS 2002",
+   "fait": "Le Conseil approuve le principe de travaux de protection anti-pigeons au marché couvert Beauvau et autorise le Maire à signer le marché.",
+   "pourquoi": "protéger la halle Beauvau des pigeons",
+   "vedette": false,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=39040"
+  },
+  {
+   "id": "22697",
+   "seance": "MARS 2003",
+   "fait": "En réponse à une question sur la malpropreté du quartier, la Ville détaille le nettoyage spécifique imposé par la tenue quasi quotidienne du marché.",
+   "pourquoi": "la propreté du marché mise en question",
+   "vedette": false,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=22697"
+  },
+  {
+   "id": "80464",
+   "seance": "MAI 2005",
+   "fait": "Le Conseil approuve le principe et les modalités de passation de deux marchés de travaux de voirie et d'électricité pour aménager la place d'Aligre et les rues de Cotte et d'Aligre.",
+   "pourquoi": "réaménager la place et ses rues",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=80464"
+  },
+  {
+   "id": "128239",
+   "seance": "DECEMBRE 2015",
+   "fait": "Après un incendie ayant fermé la halle l'été, l'adjointe fait état d'une réouverture au 1er octobre ; un vœu d'opposition demande un concours d'architectes pour un étage de convivialité.",
+   "pourquoi": "après l'incendie, rouvrir et rêver un étage",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=128239"
+  },
+  {
+   "id": "169929",
+   "seance": "JUIN 2023",
+   "fait": "Un vœu d'opposition demandant de végétaliser et d'ombrager la place d'Aligre est rejeté, l'Exécutif invoquant la concertation de 2022 et les contraintes du marché.",
+   "pourquoi": "végétaliser la place, un vœu rejeté",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=169929"
+  }
+ ],
+ "montants": [
+  {
+   "seance": "JUILLET 1996",
+   "montant": "230 000 F",
+   "objet": "redevance annuelle à la Ville prévue dans l'offre du G.I.E. du quartier d'Aligre, présentée comme la plus basse par le conseiller Gérard REY",
+   "citation": "soit 230.000 F pour le G.I.E. contre 358.399 pour \"Paris-Marchés\" notamment.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=4148"
+  },
+  {
+   "seance": "JUILLET 1996",
+   "montant": "358 399 F",
+   "objet": "redevance prévue dans l'offre de la société « Paris-Marchés », citée par le conseiller Gérard REY",
+   "citation": "soit 230.000 F pour le G.I.E. contre 358.399 pour \"Paris-Marchés\" notamment.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=4148"
+  }
+ ],
+ "bmo_extraits": [],
+ "bmo_recit": null,
+ "invest": [],
+ "marches": [],
+ "sources": {
+  "delibs": {
+   "name": "Débat-Délibs — Conseil de Paris",
+   "url": "https://a06-v7.apps.paris.fr/a06/"
+  },
+  "bmo": {
+   "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
+   "url": "https://gallica.bnf.fr/ark:/12148/cb343512457/date"
+  },
+  "invest": {
+   "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
+   "url": "https://opendata.paris.fr/"
+  },
+  "wiki": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ }
+}

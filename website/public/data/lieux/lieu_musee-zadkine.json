@@ -1,0 +1,198 @@
+{
+ "generated_at": "2026-07-18T14:38:43.284445+00:00",
+ "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
+ "slug": "musee-zadkine",
+ "name": "Musée Zadkine",
+ "kind_fr": "Musée",
+ "kind_en": "Musée",
+ "famille": "culture",
+ "arrondissement": 6,
+ "lat": 48.84303,
+ "lon": 2.33404,
+ "photo": "/img/lieux/musee-zadkine.jpg",
+ "photo_credit": {
+  "licence": "CC BY 3.0",
+  "auteur": "Mbzt",
+  "url": "https://commons.wikimedia.org/wiki/File:P1020116_Paris_VI_Rue_d%27Assas_Mus%C3%A9e_Zadkine_reductwk.JPG",
+  "source": "Wikimedia Commons"
+ },
+ "wiki": {
+  "extract": "Le musée Zadkine est un musée parisien consacré au sculpteur d'origine russe Ossip Zadkine (1890-1967) qui s'est établi à Paris en 1910. Il est situé no 100 bis, rue d'Assas, dans le 6e arrondissement de Paris. Il existe également un musée départemental dans le village des Arques dans le Lot, où vécut Ossip Zadkine.",
+  "url": "https://fr.wikipedia.org/wiki/Mus%C3%A9e_Zadkine",
+  "source": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ },
+ "stats": {
+  "n_delibs": 51,
+  "delibs_span": [
+   1997,
+   2010
+  ],
+  "n_bmo_brut": 0,
+  "n_bmo_verifies": null,
+  "invest_total_eur": 0,
+  "invest_annees": [],
+  "lecture_mode": "titre nommant le lieu (15 trouvés)",
+  "n_lus": 14,
+  "n_lieu": 10
+ },
+ "subventions_exploitant": null,
+ "residents": [],
+ "kpi_montant": null,
+ "synthese_fr": "Installé au 100 bis, rue d'Assas (6e), le musée Zadkine est adossé au legs universel consenti à la Ville de Paris par la veuve de l'artiste. En 1997, le Conseil de Paris autorise le Maire à déposer les permis de démolir et de construire pour son réaménagement et son extension, puis approuve en 2000 le principe des travaux d'extension et de restructuration ainsi que de l'aménagement paysager de son jardin. Au fil des années 2000, le Conseil autorise plusieurs acquisitions destinées à enrichir ses collections : un marbre en 1997 financé sur les produits du legs (400 000 F), une sculpture « Tête d'homme » de Zadkine en 2003 (174 511,23 €), sept collages de Jan Dibbets en 2005 (95 680 €) et une « Tête d'homme » de Zadkine en 2009 (280 000 €). En 2001, il autorise le réinvestissement du capital du legs Zadkine sur des valeurs d'État, et en 2010 il approuve le principe de la vente de deux bronzes d'Ossip Zadkine pour 47 000 €, dont le produit est rattaché au legs et « affecté exclusivement aux dépenses du musée, conformément aux volontés de la légatrice ».",
+ "moments": [
+  {
+   "id": "49607",
+   "seance": "NOVEMBRE 1997",
+   "fait": "Le Conseil autorise le Maire à déposer les permis de démolir et de construire pour le réaménagement et l'extension du musée Zadkine (6e).",
+   "pourquoi": "Le premier feu vert à l'agrandissement",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=49607"
+  },
+  {
+   "id": "49408",
+   "seance": "NOVEMBRE 1997",
+   "fait": "Le Conseil autorise l'acquisition d'un marbre blanc « Tête, 1916 » pour le musée, financée sur les produits du legs Zadkine (400 000 F).",
+   "pourquoi": "Le legs finance ses propres œuvres",
+   "vedette": false,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=49408"
+  },
+  {
+   "id": "50500",
+   "seance": "JUILLET 2000",
+   "fait": "Le Conseil approuve le principe des travaux d'extension et de restructuration du musée et de l'aménagement paysager de son jardin, et autorise la signature des marchés.",
+   "pourquoi": "Principe des travaux et du jardin voté",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=50500"
+  },
+  {
+   "id": "30671",
+   "seance": "NOVEMBRE 2001",
+   "fait": "Le Conseil autorise le réinvestissement du capital du legs Zadkine sur des valeurs d'État, recette et dépense évaluées à 507 500 F.",
+   "pourquoi": "Comment la Ville gère l'héritage Zadkine",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=30671"
+  },
+  {
+   "id": "89631",
+   "seance": "AVRIL 2003",
+   "fait": "Le Conseil autorise l'acquisition d'une sculpture « Tête d'homme » d'Ossip Zadkine pour le musée, pour 174 511,23 €.",
+   "pourquoi": "Une œuvre de Zadkine pour le musée qui porte son nom",
+   "vedette": false,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=89631"
+  },
+  {
+   "id": "63222",
+   "seance": "SEPTEMBRE 2005",
+   "fait": "Le Conseil autorise le Maire à accepter divers dons manuels pour plusieurs musées ; deux concernent le musée Zadkine : un portrait lithographié de Zadkine (150 €) et un dessin de l'artiste (1 200 €).",
+   "pourquoi": "La collection s'enrichit aussi par dons",
+   "vedette": false,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=63222"
+  },
+  {
+   "id": "59521",
+   "seance": "MAI 2009",
+   "fait": "Le Conseil autorise l'acquisition d'une œuvre d'Ossip Zadkine, « Tête d'homme », en faveur du musée pour 280 000 €.",
+   "pourquoi": "Une acquisition à 280 000 euros",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=59521"
+  },
+  {
+   "id": "35835",
+   "seance": "MAI 2010",
+   "fait": "Le Conseil approuve le principe de la vente de deux bronzes d'Ossip Zadkine pour 47 000 €, produit affecté aux dépenses du musée selon les volontés de la légatrice.",
+   "pourquoi": "Le musée vend pour se financer",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=35835"
+  }
+ ],
+ "montants": [
+  {
+   "seance": "MAI 2009",
+   "montant": "280.000 euros",
+   "objet": "Acquisition de l'œuvre « Tête d'homme » d'Ossip Zadkine pour le musée Zadkine",
+   "citation": "M. le Maire de Paris est autorisé à acquérir une ?uvre d?Ossip Zadkine ?Tête d?homme? en faveur du Musée Zadkine pour un montant de 280.000 euros.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=59521"
+  },
+  {
+   "seance": "OCTOBRE 2005",
+   "montant": "95.680 euros",
+   "objet": "Acquisition d'une suite de sept collages photographiques de Jan Dibbets pour le musée Zadkine",
+   "citation": "M. le Maire de Paris est autorisé à acquérir une suite de sept collages photographiques par Jan Dibbets, Saenredam-Zadkine (2003), pour le musée Zadkine, pour une somme de 95.680 euros.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=25922"
+  },
+  {
+   "seance": "NOVEMBRE 1997",
+   "montant": "400.000 F",
+   "objet": "Acquisition d'un marbre blanc « Tête, 1916 » pour le musée Zadkine, sur les produits du legs Zadkine",
+   "citation": "La dépense correspondante, d'un montant de 400.000 F, sera imputée au budget d'investissement de la Ville de Paris",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=49408"
+  },
+  {
+   "seance": "MAI 2010",
+   "montant": "47.000 euros",
+   "objet": "Prix total de la vente de deux fontes (bronzes) d'Ossip Zadkine",
+   "citation": "M. le Maire de Paris est autorisé à procéder à la vente de deux fontes d?Ossip Zadkine dont la description suit, moyennant le prix total de quarante sept mille euros (47.000 euros)",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=35835"
+  },
+  {
+   "seance": "MAI 2010",
+   "montant": "22 000 euros",
+   "objet": "Prix de la fonte « Projet pour l'Architecture »",
+   "citation": "Projet pour l?Architecture , 52 x 55 x 23 cm, justifié 3/8, pour la somme de : 22 000 euros",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=35835"
+  },
+  {
+   "seance": "MAI 2010",
+   "montant": "25 000 euros",
+   "objet": "Prix de la fonte « Daphné »",
+   "citation": "Daphné , 74 x 41x 32 cm, justifié 5/8, pour la somme de : 25 000 euros",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=35835"
+  },
+  {
+   "seance": "AVRIL 2003",
+   "montant": "174.511,23 euros",
+   "objet": "Acquisition d'une sculpture « Tête d'homme » d'Ossip Zadkine pour le musée Zadkine",
+   "citation": "M. le Maire de Paris est autorisé à acquérir une sculpture d'Ossip Zadkine représentant une \"Tête d'homme\", pour une somme 174.511,23 euros.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=89631"
+  },
+  {
+   "seance": "NOVEMBRE 2001",
+   "montant": "507.500 F",
+   "objet": "Recette évaluée du remploi du capital du legs Zadkine",
+   "citation": "La recette évaluée à 507.500 F sera inscrite au bloc 4, fonction 01, code nature 1025, compte de provision 93000-4-99-001, du budget d'investissement de la Ville de Paris de 2001.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=30671"
+  },
+  {
+   "seance": "NOVEMBRE 2001",
+   "montant": "507.500 F",
+   "objet": "Dépense évaluée du remploi du capital du legs Zadkine",
+   "citation": "La dépense évaluée à 507.500 F sera inscrite au bloc 4, fonction 01, code nature 272, compte de provision 93000-4-99-001, du budget d'investissement de la Ville de Paris de 2001.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=30671"
+  }
+ ],
+ "bmo_extraits": [],
+ "bmo_recit": null,
+ "invest": [],
+ "marches": [],
+ "sources": {
+  "delibs": {
+   "name": "Débat-Délibs — Conseil de Paris",
+   "url": "https://a06-v7.apps.paris.fr/a06/"
+  },
+  "bmo": {
+   "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
+   "url": "https://gallica.bnf.fr/ark:/12148/cb343512457/date"
+  },
+  "invest": {
+   "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
+   "url": "https://opendata.paris.fr/"
+  },
+  "wiki": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ }
+}

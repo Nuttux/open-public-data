@@ -1,0 +1,116 @@
+{
+ "generated_at": "2026-07-18T14:38:43.284445+00:00",
+ "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
+ "slug": "arenes-de-lutece",
+ "name": "Arènes de Lutèce",
+ "kind_fr": "Monument",
+ "kind_en": "Monument",
+ "famille": "urbain",
+ "arrondissement": 5,
+ "lat": 48.855149,
+ "lon": 2.346456,
+ "photo": "/img/lieux/arenes-de-lutece.jpg",
+ "photo_credit": {
+  "licence": "CC BY 2.0",
+  "auteur": "Shadowgate from Novara, ITALY",
+  "url": "https://commons.wikimedia.org/wiki/File:Ar%C3%A8nes_de_Lut%C3%A8ce,_Paris_15_August_2013_006.jpg",
+  "source": "Wikimedia Commons"
+ },
+ "wiki": {
+  "extract": "Les arènes de Lutèce, construites au IIe siècle, sont un amphithéâtre gallo-romain situé à Paris. Il s'agit d'un complexe hybride, de type « amphithéâtre à scène » ou encore « amphithéâtre-théâtre », comportant à la fois une scène pour les représentations théâtrales et une arène pour les combats de gladiateurs et autres jeux de l'amphithéâtre.",
+  "url": "https://fr.wikipedia.org/wiki/Ar%C3%A8nes_de_Lut%C3%A8ce",
+  "source": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ },
+ "stats": {
+  "n_delibs": 58,
+  "delibs_span": [
+   1999,
+   2024
+  ],
+  "n_bmo_brut": 0,
+  "n_bmo_verifies": null,
+  "invest_total_eur": 0,
+  "invest_annees": [],
+  "lecture_mode": "titre nommant le lieu (4 trouvés)",
+  "n_lus": 4,
+  "n_lieu": 4
+ },
+ "subventions_exploitant": null,
+ "residents": [
+  {
+   "beneficiaire": "ESCRIME DES QUAIS DE SEINE",
+   "montant_total": 1400.0,
+   "preuve": "Objet verbatim : \"FSF05 : animation d'escrime aux Arènes de Lutéce\" — l'association reçoit une aide pour une activité DANS le lieu, elle ne le gère pas (le square/monument est géré par la Ville, DEVE)."
+  }
+ ],
+ "kpi_montant": null,
+ "synthese_fr": "En juin 1999, le Conseil de Paris approuve le principe de la rénovation des Arènes de Lutèce et autorise le Maire à signer les marchés de travaux, passés en appel d'offres ouvert et trois lots séparés. En séance, Mme de Panafieu précise que les allées, endommagées par le poids des véhicules d'entretien et de livraison (jardin et activités épisodiques de spectacle), seront traitées en béton désactivé à l'aspect inchangé, sans dallage, avec un nouveau caniveau. En février 2019, un vœu des Républicains et Indépendants demande de classer l'espace vert des Arènes en refuge de la Ligue de protection des oiseaux ; l'Exécutif propose par amendement de labelliser plutôt le parc Saint-Médard, au regard, selon Mme Komitès, des animations qui ont lieu dans les Arènes. En octobre 2024, un vœu du groupe Union Capitale demande de pérenniser les Arènes comme site de festivités estivales de proximité, avec animations et ateliers culturels et sportifs. D'une rénovation matérielle des allées à la place à donner aux animations, la vie événementielle du square revient à chaque séance.",
+ "moments": [
+  {
+   "id": "75993",
+   "seance": "JUIN 1999",
+   "fait": "Le Conseil approuve le principe de la rénovation des Arènes et autorise le Maire à signer les marchés (appel d'offres ouvert, 3 lots séparés).",
+   "pourquoi": "point de départ officiel du chantier",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=75993"
+  },
+  {
+   "id": "5434",
+   "seance": "JUIN 1999",
+   "fait": "En séance, Mme de Panafieu détaille les travaux — allées en béton désactivé, sans dallage, nouveau caniveau — et la délibération est adoptée.",
+   "pourquoi": "à quoi ressembleront les allées",
+   "vedette": false,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=5434"
+  },
+  {
+   "id": "147519",
+   "seance": "FEVRIER 2019",
+   "fait": "Un vœu demande de classer les Arènes en refuge L.P.O. ; l'Exécutif propose par amendement de labelliser plutôt le parc Saint-Médard, au motif — selon Mme Komitès — des animations qui ont lieu dans les Arènes.",
+   "pourquoi": "quand l'argument des animations écarte les Arènes du label nature",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=147519"
+  },
+  {
+   "id": "178225",
+   "seance": "OCTOBRE 2024",
+   "fait": "Un vœu du groupe Union Capitale demande de pérenniser les Arènes comme site de festivités estivales de proximité.",
+   "pourquoi": "faire des festivités estivales un rendez-vous durable",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=178225"
+  }
+ ],
+ "montants": [
+  {
+   "seance": "FEVRIER 2019",
+   "montant": "13.500 euros",
+   "objet": "Subvention à la Ligue de protection des oiseaux Île-de-France pour la labellisation d'espaces verts parisiens en refuges L.P.O. — délibération à laquelle le vœu sur les Arènes est rattaché ; somme non affectée aux Arènes.",
+   "citation": "Subvention (13.500 euros) à la Ligue de protection des oiseaux Ile-de-France pour la labellisation d’espaces verts parisiens en refuges L.P.O.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=147519"
+  }
+ ],
+ "bmo_extraits": [],
+ "bmo_recit": null,
+ "invest": [],
+ "marches": [],
+ "sources": {
+  "delibs": {
+   "name": "Débat-Délibs — Conseil de Paris",
+   "url": "https://a06-v7.apps.paris.fr/a06/"
+  },
+  "bmo": {
+   "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
+   "url": "https://gallica.bnf.fr/ark:/12148/cb343512457/date"
+  },
+  "invest": {
+   "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
+   "url": "https://opendata.paris.fr/"
+  },
+  "wiki": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ }
+}

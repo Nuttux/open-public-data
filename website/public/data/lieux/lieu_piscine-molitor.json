@@ -1,0 +1,261 @@
+{
+ "generated_at": "2026-07-18T14:38:43.284445+00:00",
+ "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
+ "slug": "piscine-molitor",
+ "name": "Piscine Molitor",
+ "kind_fr": "Piscine",
+ "kind_en": "Swimming pool",
+ "famille": "sport",
+ "arrondissement": 16,
+ "lat": 48.845229,
+ "lon": 2.262475,
+ "photo": "/img/lieux/piscine-molitor.jpg",
+ "photo_credit": {
+  "licence": null,
+  "auteur": null,
+  "url": "https://fr.wikipedia.org/wiki/Piscine_Molitor",
+  "source": "Wikipédia"
+ },
+ "wiki": {
+  "extract": "La piscine Molitor est un complexe nautique et hôtelier jouxtant le bois de Boulogne, entre le stade Roland-Garros et le Parc des Princes, dans le 16e arrondissement de Paris. Inaugurée en 1929 par les nageurs médaillés olympiques Aileen Riggin Soule et Johnny Weissmuller, elle est restée célèbre pour sa décoration Art déco et quelques événements comme la première apparition du bikini après 1945. Surnommée « le paquebot blanc », elle a fermé ses portes en 1989.",
+  "url": "https://fr.wikipedia.org/wiki/Piscine_Molitor",
+  "source": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ },
+ "stats": {
+  "n_delibs": 1308,
+  "delibs_span": [
+   1995,
+   2021
+  ],
+  "n_bmo_brut": 0,
+  "n_bmo_verifies": null,
+  "invest_total_eur": 0,
+  "invest_annees": [],
+  "lecture_mode": "titre nommant le lieu (39 trouvés)",
+  "n_lus": 39,
+  "n_lieu": 39
+ },
+ "subventions_exploitant": null,
+ "residents": [],
+ "kpi_montant": null,
+ "synthese_fr": "Fermée en 1989 après le non-renouvellement de la concession de la Société des piscines de France, la piscine Molitor, inscrite aux monuments historiques en 1990, traverse près de vingt ans de projets contrariés. Un premier montage associant une piscine publique à un programme immobilier privé confié à Meunier Promotion (deux hôtels et des logements) est approuvé en 1997 puis en 1999, mais il est bloqué par le refus de démolir opposé par la ministre de la Culture en 2000, puis remis en cause devant le tribunal administratif, obligeant la Ville à indemniser ses architectes. Des expertises de 2001-2002 concluant à un béton irrécupérable, la Ville renonce à la réhabilitation à l'identique et relance des études de définition. En 2008, elle retient un bail emphytéotique administratif de 54 ans confiant la rénovation et l'exploitation privée du site à ColSpa SAS (groupement Colony Capital), formule qui nourrit ensuite des débats récurrents sur les tarifs, l'accès du grand public et, jusqu'en 2021, les créneaux réservés aux scolaires.",
+ "moments": [
+  {
+   "id": "25120",
+   "seance": "JANVIER 1999",
+   "fait": "Le Conseil autorise le Maire à défendre la Ville devant le tribunal administratif dans l'instance engagée par l'association Piscine Molitor, qui demande l'annulation de la délibération de 1997 relative à la restructuration du site.",
+   "pourquoi": "les riverains attaquent le projet en justice",
+   "vedette": false,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=25120"
+  },
+  {
+   "id": "24570",
+   "seance": "JUILLET 1999",
+   "fait": "Le Conseil vote le réaménagement du site : la Ville cède à Meunier Promotion des droits à construire pour financer la réhabilitation d'un des deux bassins, l'opposition dénonçant un bradage du patrimoine.",
+   "pourquoi": "vendre des droits à bâtir pour payer un bassin",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=24570"
+  },
+  {
+   "id": "10141",
+   "seance": "SEPTEMBRE 2000",
+   "fait": "La Ville indique que la ministre de la Culture Catherine Tasca a refusé, le 3 août 2000, l'autorisation nécessaire au permis de démolir, ce qui bloque le projet de réhabilitation partielle.",
+   "pourquoi": "la ministre de la Culture bloque la démolition",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=10141"
+  },
+  {
+   "id": "8751",
+   "seance": "MAI 2001",
+   "fait": "Le représentant du préfet de police détaille la rave party du 15 avril 2001, qui a réuni environ 2 000 personnes dans la piscine désaffectée et fermée depuis 1989.",
+   "pourquoi": "deux mille personnes dans la piscine murée",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=8751"
+  },
+  {
+   "id": "2484",
+   "seance": "AVRIL 2002",
+   "fait": "L'adjoint indique que trois études concordantes jugent l'état du béton « extrêmement préoccupant », rendant incertaine une remise en état à l'identique de la piscine.",
+   "pourquoi": "trois expertises jugent le béton « extrêmement préoccupant »",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=2484"
+  },
+  {
+   "id": "6406",
+   "seance": "OCTOBRE 2002",
+   "fait": "Le Conseil examine l'indemnisation des architectes Reichen et Robert et Mimram, dont les marchés de maîtrise d'œuvre de 1997 sont résolus après l'abandon du projet hôtelier.",
+   "pourquoi": "le projet abandonné oblige à indemniser les architectes",
+   "vedette": false,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=6406"
+  },
+  {
+   "id": "61964",
+   "seance": "NOVEMBRE 2008",
+   "fait": "Le Conseil approuve le bail emphytéotique administratif et autorise le Maire à le signer avec ColSpa SAS (groupement Colony Capital) pour une durée de 54 ans.",
+   "pourquoi": "Molitor confiée au privé pour cinquante-quatre ans",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=61964"
+  },
+  {
+   "id": "158419",
+   "seance": "AVRIL 2021",
+   "fait": "L'adjoint oppose un avis défavorable à un vœu réclamant des créneaux scolaires à Molitor, expliquant que le bail n'impose aucune obligation d'accueil scolaire et que le site s'est révélé inadapté.",
+   "pourquoi": "la Ville refuse de rétablir les créneaux scolaires",
+   "vedette": false,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=158419"
+  }
+ ],
+ "montants": [
+  {
+   "seance": "JUILLET 1998",
+   "montant": "60 millions de francs",
+   "objet": "Vente de 12 500 m² de droits à construire à Meunier Promotion (selon Mme Capelle)",
+   "citation": "Par la vente de 12.500 mètres carrés droits à construire pour un montant de 60 millions de francs",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=24330"
+  },
+  {
+   "seance": "JUILLET 1998",
+   "montant": "58,2 millions de francs",
+   "objet": "Coût estimé de la réhabilitation d'un des bassins (selon Mme Capelle)",
+   "citation": "vous projetez en effet de financer la réhabilitation - au coût estimé de 58,2 millions de francs - d'un des bassins",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=24330"
+  },
+  {
+   "seance": "JUILLET 1999",
+   "montant": "70 millions de francs",
+   "objet": "Vente de près de 12 500 m² de droits à construire (selon M. Mano)",
+   "citation": "Par la vente de près de 12.500 mètres carrés de droits à construire pour un montant de 70 millions de francs contre 60 en 1998",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=24570"
+  },
+  {
+   "seance": "JUILLET 1999",
+   "montant": "58 millions de francs",
+   "objet": "Coût estimé de la réhabilitation d'un des bassins dans le mémoire de 1998 (selon M. Mano)",
+   "citation": "financer la réhabilitation d'un des bassins de cette piscine, dont le coût a été estimé dans le mémoire de 1998, à près de 58 millions de francs",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=24570"
+  },
+  {
+   "seance": "NOVEMBRE 1999",
+   "montant": "70 millions de francs",
+   "objet": "Prix prévu de cession des droits à construire au partenaire privé, recette pour la Ville",
+   "citation": "La Ville a prévu de céder à cet opérateur les droits à construire correspondants pour un prix de 70 millions de francs conformément à l'avis du 1er juin 1999 des Services fonciers.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=9806"
+  },
+  {
+   "seance": "MAI 2001",
+   "montant": "5 millions de francs",
+   "objet": "Crédit inscrit au budget primitif 2001 pour la réhabilitation (selon M. Cherki, adjoint)",
+   "citation": "pour mener à bien cet ambitieux projet un crédit de 5 millions de francs a été inscrit à cet effet dans le budget primitif 2001",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=8745"
+  },
+  {
+   "seance": "OCTOBRE 2002",
+   "montant": "1.199.530 F",
+   "objet": "Indemnisation de Reichen et Robert (selon M. Blet)",
+   "citation": "REICHEN et ROBERT toucheront la coquette somme de 1.199.530 F et MIMRAM 742.237 F.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=6406"
+  },
+  {
+   "seance": "OCTOBRE 2002",
+   "montant": "742.237 F",
+   "objet": "Indemnisation de Marc Mimram (selon M. Blet)",
+   "citation": "REICHEN et ROBERT toucheront la coquette somme de 1.199.530 F et MIMRAM 742.237 F.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=6406"
+  },
+  {
+   "seance": "JANVIER 2003",
+   "montant": "900.000 euros",
+   "objet": "Études diverses dépensées depuis 2001 (selon M. Leban)",
+   "citation": "900.000 euros sortant de la poche des Parisiens ont été dépensés en études diverses pour rien",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=7010"
+  },
+  {
+   "seance": "AVRIL 2005",
+   "montant": "263.837,60 euros",
+   "objet": "Marché d'étude de définition signé avec le groupement Ernst & Young / Philippon (2e rang)",
+   "citation": "M. le Maire de Paris est autorisé à signer avec le groupement Ernst And Young / Atelier Jean-Paul Philippon / C § E / Trouvin / Patrice Camusso et Associés - PCA, pour un montant de 263.837,60 euros.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=43738"
+  },
+  {
+   "seance": "AVRIL 2005",
+   "montant": "351.814,10 euros",
+   "objet": "Autorisation retirée au groupement Bortolussi pour la même étude de définition",
+   "citation": "d?un montant de 351.814,10 euros avec le groupement Pierre Bortolussi / Laurent Meder / CEBTP / CML / ECRH pour la réalisation d?une étude de définition portant sur la réhabilitation du site de la piscine Molitor est retirée.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=43738"
+  },
+  {
+   "seance": "AVRIL 2005",
+   "montant": "260.000 euros",
+   "objet": "Études supplémentaires (selon M. Leban)",
+   "citation": "Nous dépensons donc 260.000 euros supplémentaires pour faire des études",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=15654"
+  },
+  {
+   "seance": "AVRIL 2005",
+   "montant": "5 millions de francs",
+   "objet": "Coût estimé des travaux de réfection proposés en 1989 par le concessionnaire (selon M. Flores)",
+   "citation": "Coût estimé des travaux de réfection : 5 millions de francs.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=15654"
+  },
+  {
+   "seance": "NOVEMBRE 2008",
+   "montant": "200 000 euros",
+   "objet": "Redevance forfaitaire annuelle préconisée par France Domaines dans son avis du 16 octobre 2008",
+   "citation": "le service des Domaines dans son avis en date du 16 octobre 2008 a indiqué qu?il conviendrait de prévoir une redevance forfaitaire annuelle de 200 000 euros",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=61964"
+  },
+  {
+   "seance": "NOVEMBRE 2008",
+   "montant": "20 euros",
+   "objet": "Tarif du bassin découvert dénoncé pour deux heures (selon Mme Hoffenberg)",
+   "citation": "ce projet est un projet qui propose un bassin découvert au tarif rédhibitoire de 20 euros les deux heures !",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=18121"
+  },
+  {
+   "seance": "JUILLET 2010",
+   "montant": "20 euros",
+   "objet": "Tarif de la piscine découverte pour une demi-journée dénoncé (selon Mme Hoffenberg)",
+   "citation": "20 euros la demi-journée par personne ! Tarifs que je trouvais déjà indécents en 2008",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=13598"
+  },
+  {
+   "seance": "JUILLET 2010",
+   "montant": "4,50 euros / 2,50 euros",
+   "objet": "Tarifs indicatifs du bassin d'hiver communiqués par le candidat (selon M. Vuillermoz)",
+   "citation": "Le tarif public qu'ils envisageaient était de 4,50 euros pour les adultes et 2,50 euros pour les enfants avec durée illimitée.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=13598"
+  },
+  {
+   "seance": "NOVEMBRE 2011",
+   "montant": "4,50 euros / 2,50 euros",
+   "objet": "Tarifs indicatifs du bassin d'hiver fournis par le candidat (selon M. Vuillermoz)",
+   "citation": "4,50 euros pour une entrée adulte et 2,50 euros pour une entrée enfant, pour le bassin hiver, tarifs certes supérieurs aux tarifs municipaux",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=102512"
+  }
+ ],
+ "bmo_extraits": [],
+ "bmo_recit": null,
+ "invest": [],
+ "marches": [],
+ "sources": {
+  "delibs": {
+   "name": "Débat-Délibs — Conseil de Paris",
+   "url": "https://a06-v7.apps.paris.fr/a06/"
+  },
+  "bmo": {
+   "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
+   "url": "https://gallica.bnf.fr/ark:/12148/cb343512457/date"
+  },
+  "invest": {
+   "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
+   "url": "https://opendata.paris.fr/"
+  },
+  "wiki": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ }
+}

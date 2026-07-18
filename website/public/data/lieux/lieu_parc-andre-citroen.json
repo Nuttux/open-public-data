@@ -1,0 +1,234 @@
+{
+ "generated_at": "2026-07-18T14:38:43.284445+00:00",
+ "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
+ "slug": "parc-andre-citroen",
+ "name": "Parc André-Citroën",
+ "kind_fr": "Parc",
+ "kind_en": "Park",
+ "famille": "vert",
+ "arrondissement": 15,
+ "lat": 48.8412,
+ "lon": 2.2746,
+ "photo": "/img/lieux/parc-andre-citroen.jpg",
+ "photo_credit": {
+  "licence": null,
+  "auteur": null,
+  "url": "https://fr.wikipedia.org/wiki/Parc_Andr%C3%A9-Citro%C3%ABn",
+  "source": "Wikipédia"
+ },
+ "wiki": {
+  "extract": "Le parc André-Citroën est un jardin public situé dans le 15e arrondissement de Paris, sur la rive gauche de la Seine. Aménagé sur une partie de l’ancien site industriel des usines Citroën de Javel, il est inauguré en 1992 et constitue l’un des grands parcs contemporains créés à Paris à la fin du XXe siècle.",
+  "url": "https://fr.wikipedia.org/wiki/Parc_Andr%C3%A9-Citro%C3%ABn",
+  "source": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ },
+ "stats": {
+  "n_delibs": 346,
+  "delibs_span": [
+   1995,
+   2023
+  ],
+  "n_bmo_brut": 0,
+  "n_bmo_verifies": null,
+  "invest_total_eur": 3177469.13,
+  "invest_annees": [
+   "2024"
+  ],
+  "lecture_mode": "titre nommant le lieu (57 trouvés)",
+  "n_lus": 45,
+  "n_lieu": 37
+ },
+ "subventions_exploitant": null,
+ "residents": [],
+ "kpi_montant": null,
+ "synthese_fr": "Ouvert au public en 1992 sur l'emplacement des anciennes usines d'automobile, le parc de 14 hectares fait l'objet, de 1995 à 2002, d'avenants successifs au marché de maîtrise d'œuvre confié à MM. PROVOST, VIGUIER, CLEMENT, BERGER, LLORCA et SGTE — dont un avenant de 2002 portant sur « la suppression d'éléments de mission non exécutés » — puis, entre 1998 et 1999, de l'aménagement puis de l'entretien de son débouché sur le port de Javel bas, conventionnés avec le Port autonome de Paris. Le Conseil y autorise en parallèle une série d'occupations commerciales : le ballon captif exploité par Aéroparis, installé pour l'an 2000 puis reconduit par conventions successives jusqu'aux exercices 2008 à 2012 ; le tarif de location de la serre de l'Orangerie, fixé en 1999 à 100 F T.T.C. le mètre carré par jour ; un chalet de vente et une location de chaises longues en 2005, dont la redevance est assise sur 8 % du chiffre d'affaires hors taxes ; un manège enfantin au Jardin Blanc en 2008, dont les dégradations donnent lieu à un vœu rejeté en 2011. L'extension du parc est approuvée en février 2011, avec un coût de l'ordre de 3,6 millions d'euros cité en débat, et une rénovation complète est engagée en 2015, dont la deuxième phase est présentée en séance avec un budget de 3,7 millions d'euros en 2015 comme en 2018. Le parc accueille de nouveaux usages — mémorial aux soldats morts en opérations extérieures dans le jardin Eugénie-Djendi en 2018, structure éphémère d'Universcience dans le jardin Caroline-Aigle en 2019 — pendant que son ouverture 24 heures sur 24 est contestée en 2016 et que le grand canal, à l'arrêt depuis 2002, fait encore l'objet d'un vœu de réhabilitation en décembre 2020. En juin 2023, le Conseil examine la résiliation de la concession de travaux du 28 avril 2015 portant sur un établissement de restauration dans le parc.",
+ "moments": [
+  {
+   "id": "23136",
+   "seance": "MAI 1998",
+   "fait": "Vingt ans après le lancement du projet, le Conseil autorise la convention avec le Port autonome pour aménager le débouché du parc sur le port de Javel bas ; Laure SCHNEITER conteste le caractère minéral de cette troisième tranche, Françoise de PANAFIEU assume le choix de la pierre et des pavés contre la pelouse.",
+   "pourquoi": "le parc rejoint la Seine, conception contestée",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=23136"
+  },
+  {
+   "id": "7341",
+   "seance": "MARS 2002",
+   "fait": "Débat sur la convention Aéroparis : le ballon captif, installé pour le passage à l'an 2000 et déjà prolongé d'un an, est reconduit ; l'opposition demande le report faute de saisine du Conseil du 15e, et le mécénat passe à la société EUTELSAT.",
+   "pourquoi": "l'éphémère de l'an 2000 devient durable",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=7341"
+  },
+  {
+   "id": "15172",
+   "seance": "JUIN 2005",
+   "fait": "Interrogé sur les jeux du Jardin Blanc, l'adjoint rappelle que ce jardin est un hectare sur quatorze du parc, que ses concepteurs conservent un droit de propriété intellectuelle bloquant toute modification profonde, et chiffre la rénovation de l'aire de jeux à 150 000 euros.",
+   "pourquoi": "les concepteurs gardent un droit de veto",
+   "vedette": false,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=15172"
+  },
+  {
+   "id": "14709",
+   "seance": "JUIN 2008",
+   "fait": "Le Conseil affecte une parcelle du Jardin Blanc à un manège enfantin, réimplanté dans le 15e après l'opposition des riverains du square Maurice-Gardette (11e) ; un amendement du 15e prévoyant son déplacement en cas de nuisances est adopté.",
+   "pourquoi": "un équipement placé sans concertation préalable",
+   "vedette": false,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=14709"
+  },
+  {
+   "id": "96052",
+   "seance": "FEVRIER 2011",
+   "fait": "Approbation de l'extension du parc : 4 000 m² gagnés et 6 000 m² rénovés, avec pelouses, aires de jeux, espace pour adolescents et petite restauration ; le coût est chiffré en débat à environ 3,6 millions d'euros, pour une ouverture annoncée au printemps 2013.",
+   "pourquoi": "le plus gros investissement documenté du corpus",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=96052"
+  },
+  {
+   "id": "129861",
+   "seance": "MAI 2016",
+   "fait": "Le groupe les Républicains demande l'annulation de l'ouverture du parc 24 heures sur 24 décidée par la Maire de Paris, en invoquant les plans d'eau, l'absence d'éclairage et les nuisances constatées, et propose une fermeture à 23 heures avec gardiennage.",
+   "pourquoi": "conflit Ville et mairie d'arrondissement sur les horaires",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=129861"
+  },
+  {
+   "id": "143942",
+   "seance": "JUILLET 2018",
+   "fait": "Convention de transfert de maîtrise d'ouvrage entre la Ville et l'État pour réaménager le jardin Eugénie-Djendi et y installer le mémorial aux soldats morts en opérations extérieures ; le maire du 15e soutient le projet, Pascal JULIEN en conteste la portée symbolique.",
+   "pourquoi": "le parc devient un lieu de mémoire nationale",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=143942"
+  },
+  {
+   "id": "157113",
+   "seance": "DECEMBRE 2020",
+   "fait": "Vœu demandant un calendrier pour la réhabilitation du grand canal, à l'arrêt depuis 2002 ; l'adjoint répond que la rénovation engagée en 2015 se poursuit et que le grand canal y est intégré, au stade des diagnostics et des scénarios d'aménagement.",
+   "pourquoi": "dix-huit ans d'attente sur un élément central",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=157113"
+  }
+ ],
+ "montants": [
+  {
+   "seance": "FEVRIER 2018",
+   "montant": "3,7 millions",
+   "objet": "budget de la deuxième phase de rénovation du parc, coût cité en débat par Claire de CLERMONT-TONNERRE (non voté dans ce document)",
+   "citation": "La programmation de la deuxième phase est prévue pour l?actuelle mandature, avec un budget de 3,7 millions",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=140878"
+  },
+  {
+   "seance": "MARS 2015",
+   "montant": "3,7 millions d'euros",
+   "objet": "budget de la deuxième phase de rénovation, coût cité en débat par Agnès EVREN (non voté dans ce document)",
+   "citation": "Alors qu?une deuxième phase de rénovation est prévue avec un budget de 3,7 millions d'euros, nous demandons donc que la Ville de Paris donne les moyens à la DEVE d'assurer cet entretien régulier et adapté.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=123584"
+  },
+  {
+   "seance": "FEVRIER 2011",
+   "montant": "3,6 millions d'euros",
+   "objet": "coût de l'opération d'extension et de rénovation, coût cité en débat par Claude DARGENT (non chiffré dans le texte délibéré)",
+   "citation": "Leur coût n?est pas négligeable, il est de l?ordre de 3,6 millions d?euros, ce qui représente un dixième de l?opération que notre Conseil a consenti tout à l?heure pour l?aménagement des voies sur berges",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=96052"
+  },
+  {
+   "seance": "JUILLET 2005",
+   "montant": "8 % du chiffre d'affaires hors taxes",
+   "objet": "recette votée au profit de la Ville, assise sur le chiffre d'affaires des concessions du chalet de vente et du point de location de chaises longues",
+   "citation": "Leurs montants s?élèveront à 8 % du chiffre d?affaires hors taxes dégagés par les exploitations",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=86827"
+  },
+  {
+   "seance": "JUILLET 1999",
+   "montant": "100 F T.T.C. par mètre carré et par jour",
+   "objet": "tarif de location voté pour la serre de l'Orangerie du parc André-Citroën (recette de fonctionnement) ; les deux autres lieux de la même délibération sont tarifés à 60 F",
+   "citation": "Le montant du tarif de location de la serre de l'Orangerie du parc André-Citroën (15e) est fixé à 100 F T.T.C. par mètre carré et par jour.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=85486"
+  },
+  {
+   "seance": "JUIN 2005",
+   "montant": "150.000 euros",
+   "objet": "coût annoncé en réponse par l'adjoint pour la rénovation de l'aire de jeux du Jardin Blanc, à intégrer à un programme en cours d'élaboration (non voté dans ce document)",
+   "citation": "la rénovation de l?aire de jeux, chiffrée à 150.000 euros, sera intégrée au programme de rénovation des aires de jeux en cours d?élaboration",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=15172"
+  },
+  {
+   "seance": "JUIN 2005",
+   "montant": "9.000 euros",
+   "objet": "dépense d'entretien courant du 1er semestre 2005 pour le remplacement de jeux pour les plus petits, citée en réponse par l'adjoint",
+   "citation": "L?entretien courant est assuré, tels les 9.000 euros dépensés au 1er semestre 2005 pour remplacer des jeux pour les plus petits.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=15172"
+  }
+ ],
+ "bmo_extraits": [],
+ "bmo_recit": null,
+ "invest": [
+  {
+   "annee": 2024,
+   "montant_eur": 2967076.57,
+   "nom_projet": "Parc Andre Citroen - Rénovation du Grand Canal",
+   "preuve": "Le nom du projet nomme explicitement le lieu : « Parc Andre Citroen - Rénovation du Grand Canal » (distance 120 m). Confirmé par les délibérations : vœu de DECEMBRE 2020 « relatif à la réhabilitation du grand canal parc André Citroën », où l'adjoint Christophe NAJDOVSKI indique que « la rénovation du grand canal [...] est également intégrée à ce programme de travaux ».",
+   "id": "2024_15_42_015"
+  },
+  {
+   "annee": 2024,
+   "montant_eur": 210392.56,
+   "nom_projet": "Parc Andre Citroen - Rénovation",
+   "preuve": "Le nom du projet nomme explicitement le lieu : « Parc Andre Citroen - Rénovation » (distance 120 m). Le parc fait l'objet d'un programme de rénovation pluriannuel documenté en Conseil (FEVRIER 2018 : « La programmation de la deuxième phase est prévue pour l'actuelle mandature, avec un budget de 3,7 millions »), mais aucun élément ne rattache ce montant 2024 à cette phase précise : le rattachement au lieu repose sur le nom du projet.",
+   "id": "2024_15_42_014"
+  }
+ ],
+ "marches": [
+  {
+   "numero_marche": "20232023T07507",
+   "objet": "SA3.ACBC.TRVX RENOV (FONTAINERIE SERRURIE)PARC ANDRE CITROEN",
+   "fournisseur": "TERIDEAL",
+   "montant_max": 2399279.62,
+   "date_notification": "2023-08-31",
+   "preuve": "L'objet du marché nomme le lieu et porte sur des travaux qui s'y exécutent : « TRVX RENOV (FONTAINERIE SERRURIE)PARC ANDRE CITROEN ». Le rattachement repose sur ce seul objet ; il n'est pas rapproché de la réfection des fontaines sérielles évoquée en DECEMBRE 2020, annoncée comme achevée au premier semestre 2021, soit avant la notification de ce marché (2023-08-31)."
+  },
+  {
+   "numero_marche": "20121230008269",
+   "objet": "A4:TVX REAMENAGEMENT PARC ANDRE CITROEN -LOT 5:OSSATURE BOIS",
+   "fournisseur": "AUBRILAM",
+   "montant_max": 247703.5,
+   "date_notification": "2013-01-21",
+   "preuve": "L'objet nomme le lieu et décrit des travaux d'aménagement sur place : « TVX REAMENAGEMENT PARC ANDRE CITROEN -LOT 5:OSSATURE BOIS ». Cohérent avec la première phase de rénovation du parc menée sous la mandature précédente (MARS 2015 : « la rénovation de la fontaine lisière, la rénovation de la fontaine aquaculture [...] et des travaux de dallage »)."
+  },
+  {
+   "numero_marche": "20191230000871",
+   "objet": "CSP EP MISSIONS ÉTUD TECH RÉNOV°FONTAINE PARC ANDRÉ CITROEN",
+   "fournisseur": "OMNIUM GENERAL D'INGENIERIE",
+   "montant_max": 54070.0,
+   "date_notification": "2019-06-20",
+   "preuve": "L'objet nomme le lieu : « MISSIONS ÉTUD TECH RÉNOV°FONTAINE PARC ANDRÉ CITROEN » — études techniques portant sur les fontaines de ce parc. Le rattachement repose sur ce seul objet ; les études de maîtrise d'ouvrage du grand canal citées en DECEMBRE 2020 portent sur un autre ouvrage du parc et ne sont pas retenues comme preuve."
+  },
+  {
+   "numero_marche": "decp-2024S05301",
+   "objet": "Demande poste secours k-street festival les 22 et 23 juin 2024 parc André Citroën 75015",
+   "fournisseur": "CROIX ROUGE FRANCAISE",
+   "montant_max": 708.0,
+   "date_notification": "2024-06-17",
+   "preuve": "L'objet situe la prestation dans le parc, avec dates et adresse : « poste secours k-street festival les 22 et 23 juin 2024 parc André Citroën 75015 ». Le poste de secours est déployé dans le parc pour un évènement qui s'y tient : le lieu n'est pas un simple repère d'adresse. Le lieu_execution DECP (« Paris ») est trop large et n'est pas retenu comme preuve."
+  }
+ ],
+ "sources": {
+  "delibs": {
+   "name": "Débat-Délibs — Conseil de Paris",
+   "url": "https://a06-v7.apps.paris.fr/a06/"
+  },
+  "bmo": {
+   "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
+   "url": "https://gallica.bnf.fr/ark:/12148/cb343512457/date"
+  },
+  "invest": {
+   "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
+   "url": "https://opendata.paris.fr/"
+  },
+  "wiki": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ }
+}

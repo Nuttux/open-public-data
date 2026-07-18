@@ -1,0 +1,175 @@
+{
+ "generated_at": "2026-07-18T14:38:43.284445+00:00",
+ "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
+ "slug": "canal-saint-martin",
+ "name": "Canal Saint-Martin",
+ "kind_fr": "Infrastructure",
+ "kind_en": "Infrastructure",
+ "famille": "services",
+ "arrondissement": 10,
+ "lat": 48.8712,
+ "lon": 2.366,
+ "photo": "/img/lieux/canal-saint-martin.jpg",
+ "photo_credit": {
+  "licence": null,
+  "auteur": null,
+  "url": "https://fr.wikipedia.org/wiki/Canal_Saint-Martin",
+  "source": "Wikipédia"
+ },
+ "wiki": {
+  "extract": "Le canal Saint-Martin, long de 4,55 km, est situé pour l'essentiel dans les 10e et 11e arrondissements de Paris. Il relie le bassin de la Villette — et au-delà le canal de l'Ourcq — au port de l'Arsenal qui communique avec la Seine. C'est un canal de petit gabarit destiné, à l'origine, à l'adduction d'eau potable dans la capitale. Inauguré en 1825, il comporte neuf écluses et deux ponts tournants pour une dénivellation totale de 25 m.",
+  "url": "https://fr.wikipedia.org/wiki/Canal_Saint-Martin",
+  "source": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ },
+ "stats": {
+  "n_delibs": 746,
+  "delibs_span": [
+   2000,
+   2024
+  ],
+  "n_bmo_brut": 2000,
+  "n_bmo_verifies": 8,
+  "invest_total_eur": 0,
+  "invest_annees": [],
+  "lecture_mode": "titre nommant le lieu (37 trouvés)",
+  "n_lus": 37,
+  "n_lieu": 25
+ },
+ "subventions_exploitant": null,
+ "residents": [],
+ "kpi_montant": null,
+ "synthese_fr": "Dans les délibérations du Conseil de Paris, le canal Saint-Martin apparaît d'abord comme un chantier : au tournant des années 2000, la Ville engage la reconstruction des bassins Louis-Blanc et des Récollets, la fabrication de portes d'écluses et l'illumination artistique de sa voûte couverte, cette dernière dépense étant contestée en séance par une élue du 11e. Le domaine public fluvial devient ensuite un support d'occupations — Point Éphémère et pompiers au bassin Louis-Blanc, Maison des associations du 10e — tandis que les berges concentrent des tensions d'usage : nuisances sonores et propreté dénoncées par des riverains, campements de personnes sans abri et grévistes de la faim en 2007. Des questions récurrentes portent aussi sur la piétonnisation dominicale des quais et sur les liaisons cyclables. À plusieurs reprises, la Ville approuve la mise en chômage (mise à sec) du canal pour l'entretenir — pour un chômage prévu fin 2001, puis une mission de maîtrise d'œuvre approuvée en 2008 — et la question des algues revient en 2019. Plus récemment, le canal est présenté comme le cadre d'un projet de réaménagement annoncé pour une livraison en 2026 et de baignades estivales rendues gratuites pendant l'été des Jeux de 2024.",
+ "moments": [
+  {
+   "id": "2886",
+   "seance": "FEVRIER 2000",
+   "fait": "Le Conseil autorise le marché d'illumination de la voûte couverte du canal ; une élue du 11e conteste des « travaux de prestige » chiffrés à « plus de deux millions ».",
+   "pourquoi": "mettre le canal en lumière, à quel prix",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=2886"
+  },
+  {
+   "id": "50877",
+   "seance": "AVRIL 2000",
+   "fait": "Le Conseil approuve le principe de la reconstruction des bassins Louis-Blanc et Récollets et autorise la signature des marchés de maîtrise d'œuvre.",
+   "pourquoi": "reconstruire les bassins historiques du canal",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=50877"
+  },
+  {
+   "id": "94460",
+   "seance": "NOVEMBRE 2003",
+   "fait": "Le Conseil autorise une convention d'occupation avec l'association La Caserne Ephémère sur le domaine public fluvial du canal, au bassin Louis-Blanc.",
+   "pourquoi": "un lieu culturel s'installe au bord du canal",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=94460"
+  },
+  {
+   "id": "11636",
+   "seance": "OCTOBRE 2005",
+   "fait": "Une question U.M.P. dénonce les nuisances des riverains ; l'adjoint détaille le nettoiement renforcé et renvoie bruit et alcool à la Préfecture.",
+   "pourquoi": "riverains contre la rançon de l'attractivité festive",
+   "vedette": false,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=11636"
+  },
+  {
+   "id": "9744",
+   "seance": "FEVRIER 2007",
+   "fait": "Un vœu des Verts réclame l'assurance qu'aucune évacuation du campement le long du canal n'aura lieu sans hébergement ; le préfet dit n'en pas envisager.",
+   "pourquoi": "le canal, refuge d'un campement de sans-abri",
+   "vedette": false,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=9744"
+  },
+  {
+   "id": "67618",
+   "seance": "SEPTEMBRE 2008",
+   "fait": "Le Conseil approuve le principe d'une mission de maîtrise d'œuvre pour la mise en chômage (mise à sec) du canal.",
+   "pourquoi": "vider le canal pour l'entretenir",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=67618"
+  },
+  {
+   "id": "174185",
+   "seance": "DECEMBRE 2023",
+   "fait": "Un vœu demande la candidature au label Quiet ; l'adjoint détaille les mesures anti-bruit d'un réaménagement du canal annoncé pour 2026.",
+   "pourquoi": "le grand réaménagement annoncé pour 2026",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=174185"
+  },
+  {
+   "id": "176215",
+   "seance": "MAI 2024",
+   "fait": "Le Conseil approuve à l'unanimité la gratuité des baignades de l'été 2024, dont celles de l'espace délimité du canal Saint-Martin.",
+   "pourquoi": "se baigner dans le canal, l'été des Jeux",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=176215"
+  }
+ ],
+ "montants": [
+  {
+   "seance": "FEVRIER 2000",
+   "montant": "plus de deux millions",
+   "objet": "illumination de la voûte du canal Saint-Martin, montant avancé et contesté par l'élue du 11e Cécile SILHOUETTE (unité de compte non précisée ; francs en 2000)",
+   "citation": "Vous avez demandé l'avis des élus du 11e sur ce projet qui accorde plus de deux millions pour l'illumination de la voûte du canal Saint-Martin sous le boulevard Richard-Lenoir.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=2886"
+  }
+ ],
+ "bmo_extraits": [
+  {
+   "date": "1883-07-07",
+   "extrait": "Canal Saint - Martin . — 10 jours de chômage, du 1er juillet au 11 juillet …  Canal Saint - Martin . —",
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k6247490r/f2.item"
+  },
+  {
+   "date": "1894-06-24",
+   "extrait": "1376. — Mise en adjudication de la concession du touage dans le quatrième bief du canal Saint - Martin (M. Paris, rapporteur … juin 1905, par lequel M. le Préfet de la Seine propose la mise e",
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k6334659p/f14.item"
+  },
+  {
+   "date": "1962-11-18",
+   "extrait": "Préfet de la Seine sur les raisons pour lesquelles le service de batellerie a été si longtemps interrompu sur le canal Saint - Martin et sur les mesures que l'Administration a prises pour &",
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k6433647d/f2.item"
+  }
+ ],
+ "bmo_recit": "Au Bulletin municipal officiel, le canal Saint-Martin apparaît d'abord comme un ouvrage à exploiter et à entretenir. En juillet 1883, le Bulletin annonce dix jours de chômage du canal, du 1er au 11 juillet. En juin 1894, il enregistre la mise en adjudication de la concession du touage dans le quatrième bief, sur rapport de M. Paris : la concession est alors ouverte à la concurrence, et non encore attribuée. Le canal ne reparaît qu'en novembre 1962, lorsque le Préfet de la Seine est interrogé sur les raisons pour lesquelles le service de batellerie a été si longtemps interrompu et sur les mesures prises par l'Administration. Trois passages seulement, mais qui suivent tous la même ligne : celle d'une voie d'eau dont on règle l'arrêt, l'exploitation, puis le trafic interrompu.",
+ "invest": [],
+ "marches": [
+  {
+   "numero_marche": "20242024S09979",
+   "objet": "SA3.ACBC.TRANSPORT VOIE FLUVIAL MATÉRIAUX CANAL SAINT MARTIN",
+   "fournisseur": "BATAIL-LOG",
+   "montant_max": 500000.0,
+   "date_notification": "2024-11-05",
+   "preuve": "L'objet du marché nomme le lieu et porte sur une prestation qui s'y déroule : « SA3.ACBC.TRANSPORT VOIE FLUVIAL MATÉRIAUX CANAL SAINT MARTIN » — transport de matériaux par la voie d'eau sur le canal Saint-Martin lui-même (SIRET fournisseur 84770940900019)."
+  },
+  {
+   "numero_marche": "20242024S00824",
+   "objet": "BAIGNADE CANAL SAINT MARTIN",
+   "fournisseur": "SSO ACTIVE",
+   "montant_max": 38400.0,
+   "date_notification": "2024-02-14",
+   "preuve": "L'objet du marché nomme le lieu et porte sur une prestation qui s'y déroule : « BAIGNADE CANAL SAINT MARTIN » (SIRET fournisseur 81096330600016). Contexte corroborant l'existence d'une baignade au canal Saint-Martin à cette période, sans lien établi avec ce marché : délibération 2024 DJS 94 (Conseil de Paris, mai 2024), « Gratuité d'utilisation pendant l'été 2024 des bassins éphémères implantés dans les centres sportifs et les baignades dans l'espace naturel délimité du canal Saint-Martin et de La Villette »."
+  }
+ ],
+ "sources": {
+  "delibs": {
+   "name": "Débat-Délibs — Conseil de Paris",
+   "url": "https://a06-v7.apps.paris.fr/a06/"
+  },
+  "bmo": {
+   "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
+   "url": "https://gallica.bnf.fr/ark:/12148/cb343512457/date"
+  },
+  "invest": {
+   "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
+   "url": "https://opendata.paris.fr/"
+  },
+  "wiki": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ }
+}

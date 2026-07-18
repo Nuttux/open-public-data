@@ -1,0 +1,309 @@
+{
+ "generated_at": "2026-07-18T14:38:43.284445+00:00",
+ "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
+ "slug": "pavillon-de-larsenal",
+ "name": "Pavillon de l'Arsenal",
+ "kind_fr": "Équipement",
+ "kind_en": "Public facility",
+ "famille": "services",
+ "arrondissement": 4,
+ "lat": 48.8511,
+ "lon": 2.362,
+ "photo": "/img/lieux/pavillon-de-larsenal.jpg",
+ "photo_credit": {
+  "licence": "CC BY 2.0",
+  "auteur": "Guilhem Vellut from Paris, France",
+  "url": "https://commons.wikimedia.org/wiki/File:Pavillon_de_l%27Arsenal,_Paris_27_February_2016.jpg",
+  "source": "Wikimedia Commons"
+ },
+ "wiki": {
+  "extract": "Le Pavillon de l’Arsenal est le « Centre d'information, de documentation et d'exposition d'urbanisme et d'architecture de Paris et de la métropole parisienne ». Il est situé 21, boulevard Morland dans le 4e arrondissement de Paris, au sein du quartier de l'Arsenal.",
+  "url": "https://fr.wikipedia.org/wiki/Pavillon_de_l'Arsenal",
+  "source": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ },
+ "stats": {
+  "n_delibs": 187,
+  "delibs_span": [
+   1998,
+   2025
+  ],
+  "n_bmo_brut": 0,
+  "n_bmo_verifies": null,
+  "invest_total_eur": 0,
+  "invest_annees": [],
+  "lecture_mode": "titre nommant le lieu (28 trouvés)",
+  "n_lus": 27,
+  "n_lieu": 26
+ },
+ "subventions_exploitant": {
+  "nom_fiche": "PAVILLON DE L ARSENAL",
+  "total_eur": 15619641.0,
+  "annees": [
+   "2018",
+   "2024"
+  ],
+  "rows": [
+   {
+    "annee": "2024",
+    "montant_eur": 2074867.0,
+    "beneficiaire": "PAVILLON DE L ARSENAL",
+    "thematique": "Culture"
+   },
+   {
+    "annee": "2023",
+    "montant_eur": 2074867.0,
+    "beneficiaire": "PAVILLON DE L ARSENAL",
+    "thematique": "Culture"
+   },
+   {
+    "annee": "2022",
+    "montant_eur": 2074867.0,
+    "beneficiaire": "PAVILLON DE L ARSENAL",
+    "thematique": "Culture"
+   },
+   {
+    "annee": "2021",
+    "montant_eur": 2231040.0,
+    "beneficiaire": "PAVILLON DE L ARSENAL",
+    "thematique": "Culture"
+   },
+   {
+    "annee": "2020",
+    "montant_eur": 2388000.0,
+    "beneficiaire": "PAVILLON DE L ARSENAL",
+    "thematique": "Culture"
+   },
+   {
+    "annee": "2019",
+    "montant_eur": 2388000.0,
+    "beneficiaire": "PAVILLON DE L ARSENAL",
+    "thematique": "Culture"
+   },
+   {
+    "annee": "2018",
+    "montant_eur": 2388000.0,
+    "beneficiaire": "PAVILLON DE L ARSENAL",
+    "thematique": "Culture"
+   }
+  ],
+  "perimetre": "mono",
+  "note_publique": "Le Pavillon de l'Arsenal est un équipement d'un seul tenant : les deux adresses qui apparaissent dans les délibérations, 21 boulevard Morland et 7/9 rue Agrippa d'Aubigné (4e), désignent le même bâtiment. L'association qui porte le nom du lieu en est l'affectataire et n'exploite pas d'autre équipement. Une réserve toutefois sur la période récente : le site Morland est en rénovation, la Ville a mis temporairement à disposition de l'association des locaux 21-27 rue des Blancs-Manteaux (Paris Centre) et la programmation se déploie « hors les murs ». Les subventions de fonctionnement versées pendant cette période financent donc une activité qui ne se tient pas entièrement dans ce bâtiment.",
+  "autres_sites": [
+   "Locaux communaux 21-27, rue des Blancs-Manteaux (Paris Centre) — mise à disposition temporaire pendant la rénovation",
+   "Expositions « hors les murs » dans des lieux culturels métropolitains, tiers-lieux et écoles d'architecture (programmation 2026)"
+  ]
+ },
+ "residents": [],
+ "kpi_montant": null,
+ "synthese_fr": "Depuis 1998, la Ville de Paris encadre le Pavillon de l'Arsenal par une serie de conventions — missions de l'association, mise a disposition de personnel et de locaux boulevard Morland — et lui verse chaque annee une subvention de fonctionnement de l'ordre de deux millions d'euros. En 2002, le Conseil approuve de nouveaux statuts et acte que la presidence de l'association sera assuree par la Ville. Le batiment revient regulierement en seance pour des travaux et des marches d'exploitation — couverture du batiment administratif, maintenance des installations de securite, surveillance du site — et sa qualite fait debat en 2006, quand Laurent Dominati le juge indigne d'une capitale et que Christian Sautter lui oppose 180.000 visiteurs recus en 2005. La meme annee, le Conseil autorise une convention modifiee integrant une nouvelle mission « qualite et creation architecturale » ; a partir de 2008, une nouvelle convention prevoit de faire supporter a l'association les charges de son occupation, avant qu'une subvention complementaire de 326.500 euros ne lui soit accordee en 2009 au titre des charges locatives. En 2024-2025, la Ville met temporairement a sa disposition des locaux rue des Blancs-Manteaux et la programmation 2026 prevoit un deploiement « hors les murs », le temps de la renovation du site Morland evoquee en seance.",
+ "moments": [
+  {
+   "id": "92506",
+   "seance": "SEPTEMBRE 1998",
+   "fait": "Le Conseil autorise la signature de trois conventions fondatrices avec le Pavillon (objectifs et missions avec subvention, mise a disposition de personnel, mise a disposition de locaux municipaux).",
+   "pourquoi": "socle fondateur : missions, personnel et locaux",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=92506"
+  },
+  {
+   "id": "43243",
+   "seance": "MAI 2000",
+   "fait": "Le Conseil approuve le principe de travaux de depose de couverture et de nouveaux revetements sur le batiment administratif du Pavillon (7-9 rue Agrippa-d'Aubigne) et autorise la signature du marche correspondant.",
+   "pourquoi": "refection de la toiture du batiment administratif",
+   "vedette": false,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=43243"
+  },
+  {
+   "id": "55641",
+   "seance": "JUIN 2002",
+   "fait": "Le Conseil approuve les nouveaux statuts de l'association et acte que la presidence du Pavillon de l'Arsenal sera assuree par la Ville de Paris.",
+   "pourquoi": "la Ville prend la presidence de l'association",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=55641"
+  },
+  {
+   "id": "87664",
+   "seance": "DECEMBRE 2004",
+   "fait": "Le Conseil attribue au Pavillon une subvention de fonctionnement de 70 000 euros et une subvention d'equipement exceptionnelle de 30 000 euros.",
+   "pourquoi": "appui ponctuel en equipement et fonctionnement",
+   "vedette": false,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=87664"
+  },
+  {
+   "id": "16916",
+   "seance": "AVRIL 2006",
+   "fait": "A l'occasion de la modification de la convention pluriannuelle d'objectifs, Laurent Dominati juge le Pavillon indigne d'une capitale, quand Christian Sautter lui repond en avancant 180 000 visiteurs recus en 2005.",
+   "pourquoi": "un elu tacle le Pavillon, 180.000 visiteurs en reponse",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=16916"
+  },
+  {
+   "id": "38650",
+   "seance": "AVRIL 2006",
+   "fait": "Le Conseil autorise la signature d'une convention pluriannuelle modifiee integrant une nouvelle mission « qualite et creation architecturale ».",
+   "pourquoi": "une mission creation architecturale entre dans la convention",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=38650"
+  },
+  {
+   "id": "61977",
+   "seance": "NOVEMBRE 2008",
+   "fait": "Le Conseil autorise la signature d'une nouvelle convention d'occupation faisant supporter a l'association les charges de ses locaux et mettant a jour les surfaces occupees (Morland et Agrippa d'Aubigne).",
+   "pourquoi": "l'association appelee a supporter les charges de son occupation",
+   "vedette": false,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=61977"
+  },
+  {
+   "id": "183748",
+   "seance": "DECEMBRE 2025",
+   "fait": "En decembre 2025, le Conseil examine la subvention 2026 au Pavillon de l'Arsenal, decrit en seance comme un lieu de reference sur l'histoire urbaine du Grand Paris, tandis qu'est evoquee la renovation du site Morland et un deploiement « hors les murs » de la programmation 2026.",
+   "pourquoi": "renovation Morland, la programmation part hors les murs",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=183748"
+  }
+ ],
+ "montants": [
+  {
+   "seance": "DECEMBRE 2004",
+   "montant": "2.080.600 euros",
+   "objet": "subvention de fonctionnement 2005",
+   "citation": "Une subvention de fonctionnement de 2.080.600 euros est attribuée à l?association ?Pavillon de l?Arsenal?, 21, boulevard Morland (4e), au titre de l?exercice 2005",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=87752"
+  },
+  {
+   "seance": "DECEMBRE 2007",
+   "montant": "2.111.810 euros",
+   "objet": "subvention de fonctionnement 2008",
+   "citation": "Une subvention de fonctionnement de 2.111.810 euros est attribuée à l?association ?Pavillon de l?Arsenal? 21, boulevard Morland (4e) au titre de l?exercice 2008",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=54742"
+  },
+  {
+   "seance": "FEVRIER 2004",
+   "montant": "2.080.600 euros",
+   "objet": "subvention 2004",
+   "citation": "Une subvention de 2.080.600 euros est attribuée à l'association \"Pavillon de l'Arsenal\", 21, boulevard Morland (4e) au titre de l'exercice 2004.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=33981"
+  },
+  {
+   "seance": "DECEMBRE 2005",
+   "montant": "2.080.600 euros",
+   "objet": "subvention de fonctionnement 2006",
+   "citation": "Une subvention de fonctionnement de 2.080.600 euros est attribuée à l?association ?Pavillon de l?Arsenal? 21, boulevard Morland (4e) au titre de l?exercice 2006",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=32897"
+  },
+  {
+   "seance": "DECEMBRE 2006",
+   "montant": "2.080.600 euros",
+   "objet": "subvention de fonctionnement 2007",
+   "citation": "Une subvention de fonctionnement de 2.080.600 euros est attribuée à l?association ?Pavillon de l?Arsenal? 21, boulevard Morland (4e) au titre de l?exercice 2007",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=92340"
+  },
+  {
+   "seance": "SEPTEMBRE 2009",
+   "montant": "326.500 euros",
+   "objet": "subvention complementaire, charges locatives 2009",
+   "citation": "Une subvention de fonctionnement de 326.500 euros est attribuée à l'association \"Pavillon de l'Arsenal\" 21, boulevard Morland (4ème) au titre de l'exercice 2009, au titre du financement des charges locatives de l?année 2009",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=37041"
+  },
+  {
+   "seance": "DECEMBRE 2009",
+   "montant": "2.437.100 euros",
+   "objet": "subvention de fonctionnement 2010",
+   "citation": "Une subvention de fonctionnement de 2.437.100 euros est attribuée à l?association ?Pavillon de l?Arsenal? 21, boulevard Morland (4e) au titre de l?exercice 2010",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=32235"
+  },
+  {
+   "seance": "DECEMBRE 2002",
+   "montant": "2.019.648 euros",
+   "objet": "subvention 2003",
+   "citation": "Une subvention de 2.019.648 euros est attribuée à l'association \"Pavillon de l'Arsenal\", 21, boulevard Morland (4e) au titre de l'exercice 2003.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=71131"
+  },
+  {
+   "seance": "DECEMBRE 2008",
+   "montant": "2.110.600 euros",
+   "objet": "subvention de fonctionnement 2009",
+   "citation": "Une subvention de fonctionnement de 2.110.600 euros est attribuée à l?association ?Pavillon de l?Arsenal? 21, boulevard Morland (4e) au titre de l?exercice 2009",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=78172"
+  },
+  {
+   "seance": "FEVRIER 2002",
+   "montant": "2.103.772 euros",
+   "objet": "subvention 2002",
+   "citation": "Une subvention de 2.103.772 euros est attribuée à l'association \"Pavillon de l'Arsenal\", 21, boulevard Morland (4e) au titre de l'exercice 2002.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=58122"
+  },
+  {
+   "seance": "DECEMBRE 2004",
+   "montant": "70.000 euros",
+   "objet": "subvention de fonctionnement",
+   "citation": "Une subvention de fonctionnement de 70.000 euros et une subvention d?équipement de 30.000 euros sont attribuées à l?association Pavillon de l?Arsenal dont le siège social est situé 21, boulevard Morland (4e)",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=87664"
+  },
+  {
+   "seance": "DECEMBRE 2004",
+   "montant": "30.000 euros",
+   "objet": "subvention d'equipement",
+   "citation": "Une subvention de fonctionnement de 70.000 euros et une subvention d?équipement de 30.000 euros sont attribuées à l?association Pavillon de l?Arsenal dont le siège social est situé 21, boulevard Morland (4e)",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=87664"
+  }
+ ],
+ "bmo_extraits": [],
+ "bmo_recit": null,
+ "invest": [],
+ "marches": [
+  {
+   "numero_marche": "20212021S09807",
+   "objet": "SUBSÉQUENT MOE RÉNOVATION PAVILLON DE L'ARSENAL SAMO",
+   "fournisseur": "DATA ARCHITECTES",
+   "montant_max": 926670.0,
+   "date_notification": "2021-12-22",
+   "preuve": "L'objet nomme le lieu et porte sur des travaux le concernant : « SUBSÉQUENT MOE RÉNOVATION PAVILLON DE L'ARSENAL SAMO » (maîtrise d'œuvre de la rénovation du bâtiment). Le lieu est l'objet du marché, pas un repère d'adresse. Rénovation confirmée par la délibération 2025 DU 105 : « la période actuelle marquée par la rénovation du site Morland »."
+  },
+  {
+   "numero_marche": "20202020S03929",
+   "objet": "MOE RÉNOVATION PARTIELLE PAVILLON DE L'ARSENAL",
+   "fournisseur": "DATA ARCHITECTES",
+   "montant_max": 112130.0,
+   "date_notification": "2020-07-08",
+   "preuve": "L'objet nomme le lieu comme objet même de la prestation : « MOE RÉNOVATION PARTIELLE PAVILLON DE L'ARSENAL » (maîtrise d'œuvre de rénovation du bâtiment)."
+  },
+  {
+   "numero_marche": "20191210000983",
+   "objet": "AMO PERFORMANCE ENERGETIQUE PAVILLON DE L'ARSENAL 21 MORLAND",
+   "fournisseur": "ETAMINE",
+   "montant_max": 79200.0,
+   "date_notification": "2019-07-16",
+   "preuve": "L'objet nomme le lieu ET son adresse : « AMO PERFORMANCE ENERGETIQUE PAVILLON DE L'ARSENAL 21 MORLAND » — même adresse que celle des délibérations (« 21, boulevard Morland (4e) », 2005 DU 231). Assistance à maîtrise d'ouvrage portant sur la performance énergétique de ce bâtiment."
+  },
+  {
+   "numero_marche": "20222022S02118",
+   "objet": "SUBSÉQUENT SPS 1 RÉNOVATION PAVILLON DE L'ARSENAL 75004 SAMO",
+   "fournisseur": "BTP CONSULTANTS",
+   "montant_max": 25920.0,
+   "date_notification": "2022-04-26",
+   "preuve": "L'objet nomme le lieu et son code postal : « SUBSÉQUENT SPS 1 RÉNOVATION PAVILLON DE L'ARSENAL 75004 SAMO » — 75004 correspond à l'arrondissement du lieu. Mission de coordination sécurité et protection de la santé sur le chantier de rénovation du bâtiment."
+  }
+ ],
+ "sources": {
+  "delibs": {
+   "name": "Débat-Délibs — Conseil de Paris",
+   "url": "https://a06-v7.apps.paris.fr/a06/"
+  },
+  "bmo": {
+   "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
+   "url": "https://gallica.bnf.fr/ark:/12148/cb343512457/date"
+  },
+  "invest": {
+   "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
+   "url": "https://opendata.paris.fr/"
+  },
+  "wiki": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ }
+}

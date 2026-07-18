@@ -2,6 +2,7 @@ import { notFound } from "next/navigation";
 
 import { DetailDrawer, ContratFiche } from "@/components/fusion";
 import { DrawerKicker } from "@/components/fusion/DataLabel";
+import VoirLeLieu from "@/components/fusion/VoirLeLieu";
 import {
   loadContrat,
   loadContratProjet,
@@ -9,6 +10,7 @@ import {
   loadMarcheVulgarization,
   loadSirene,
 } from "@/lib/fusion-data";
+import { lieuForProjet } from "@/lib/lieux-data";
 import { normalizeObjet } from "@/lib/objet-normalizer";
 
 type Params = { numero: string };
@@ -41,6 +43,9 @@ export default async function DrawerContratPage({ params }: { params: Promise<Pa
   const label = vulgarization?.objet_clair || normalizeObjet(contrat.objet);
   const shareText = `Paris a notifié un marché de ${montantStr} à ${contrat.fournisseur} en ${contrat.year} — ${label}`;
 
+  const projetLink = loadContratProjet(contrat.numero);
+  const lieuLien = projetLink ? lieuForProjet(projetLink.nom) : null;
+
   return (
     <div className="theme-fusion">
       <DetailDrawer
@@ -51,12 +56,13 @@ export default async function DrawerContratPage({ params }: { params: Promise<Pa
         backHref="/fr/city/paris/marches"
         breadcrumbLabel={`Contrat ${contrat.numero}`}
       >
+        <VoirLeLieu lien={lieuLien} locale={"fr"} />
         <ContratFiche
           contrat={contrat}
           vulgarization={vulgarization}
           fournisseurSirene={fournisseurSirene}
           ranking={ranking}
-          projet={loadContratProjet(contrat.numero)}
+          projet={projetLink}
         />
       </DetailDrawer>
     </div>

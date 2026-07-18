@@ -3504,8 +3504,11 @@ body:has(.theme-fusion) > div.pb-24 { padding-bottom: 0 !important; }
  *   - Pour adoucir : `rgba(10,10,10,0.08)` + garder color
  * ──────────────────────────────────────────────────────────────────── */
 .theme-fusion {
-  --fx-row-link-bg-hover: var(--ink);
-  --fx-row-link-text-hover: var(--bg);
+  /* Hover adouci : une teinte chaude discrète au lieu de l'inversion encre
+   * pleine (trop contrastée — un bloc noir dans une frise éditoriale claire).
+   * Le texte se consolide en encre ; rouge/ocre sémantiques préservés. */
+  --fx-row-link-bg-hover: rgba(10, 10, 10, 0.05);
+  --fx-row-link-text-hover: var(--ink);
   --fx-row-link-padding-shift: 6px;
 }
 
@@ -4079,6 +4082,19 @@ body:has(.theme-fusion) > div.pb-24 { padding-bottom: 0 !important; }
   padding-bottom: 8px;
   border-bottom: 1px solid var(--rule);
 }
+/* Deux niveaux de titre de section (audit UX : la fiche était plate). Les blocs
+ * porteurs — argent, récit — passent en encre avec une pastille de couleur ;
+ * l'archive et le secondaire gardent le mono muet. Reste dans le système. */
+.theme-fusion .fx-fiche-h--money,
+.theme-fusion .fx-fiche-h--moments { color: var(--ink); }
+.theme-fusion .fx-fiche-h--money::before,
+.theme-fusion .fx-fiche-h--moments::before {
+  content: ""; display: inline-block; width: 7px; height: 7px; border-radius: 2px;
+  margin-right: 8px; position: relative; top: 0;
+}
+.theme-fusion .fx-fiche-h--money::before { background: var(--bleu); }
+.theme-fusion .fx-fiche-h--moments::before { background: var(--rouge); }
+
 .theme-fusion .fx-fiche-prop {
   display: grid;
   grid-template-columns: 140px 1fr;
@@ -15453,4 +15469,152 @@ body:has(.theme-db-scrolly) { background: #fafaf7 !important; color: var(--p-ink
   .theme-fusion .fx-frise-card { width: 218px; }
   .theme-fusion .fx-frise-watermark { font-size: 96px; }
   .theme-fusion .fx-frise-track { padding: 8px 18px 0; }
+}
+
+/* Carte des lieux — hauteur responsive : 560px en desktop est un piège sur
+ * mobile (66 % de l'écran pour un amas illisible). Voir docs/paris-lieux. */
+.theme-fusion .fx-lieux-map { height: 560px; }
+@media (max-width: 768px) {
+  .theme-fusion .fx-lieux-map { height: 380px; }
+}
+.theme-fusion .fx-lieu-pin { background: none; border: 0; }
+/* Micro-scale du point au survol : le point survolé « répond » (audit carte).
+ * On agit sur le <span> interne — l'opacité du marqueur reste pilotée en JS. */
+.theme-fusion .fx-lieu-pin span { transition: transform .12s ease; transform-origin: center; }
+.theme-fusion .fx-lieu-pin:hover span { transform: scale(1.35); }
+@media (prefers-reduced-motion: reduce) {
+  .theme-fusion .fx-lieu-pin:hover span { transform: none; }
+}
+
+/* Contrôle zoom Leaflet aux couleurs de la marque (le stock fait daté) : encre
+ * sur papier, mono, coins nets, même grammaire que les boutons du site. */
+.theme-fusion .fx-lieux-map .leaflet-bar { border: 0; box-shadow: none; }
+.theme-fusion .fx-lieux-map .leaflet-bar a {
+  width: 30px; height: 30px; line-height: 30px;
+  background: var(--bg); color: var(--ink); border: 1px solid var(--ink);
+  font-family: var(--f-mono); font-size: 16px; font-weight: 400; border-radius: 0;
+}
+.theme-fusion .fx-lieux-map .leaflet-bar a:first-child { border-bottom: 0; }
+.theme-fusion .fx-lieux-map .leaflet-bar a:hover { background: var(--ink); color: var(--bg); }
+.theme-fusion .fx-lieux-map .leaflet-bar a.leaflet-disabled { opacity: .4; }
+.theme-fusion .fx-lieux-map .leaflet-control-attribution {
+  font-family: var(--f-mono); font-size: 9px; background: rgba(250,250,247,.82);
+}
+
+/* Liste des lieux — vraies cartes : la photo et le nombre de délibérations
+ * sont l'argument de la page, pas une note de bas de ligne. */
+.theme-fusion .fx-lieux-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 18px;
+  margin-top: 28px;
+}
+.theme-fusion .fx-lieu-card {
+  display: flex; flex-direction: column;
+  border: 1px solid var(--rule);
+  background: var(--bg);
+  text-decoration: none;
+  transition: border-color .15s, transform .15s;
+}
+.theme-fusion .fx-lieu-card:hover { border-color: var(--ink); transform: translateY(-2px); }
+.theme-fusion .fx-lieu-card:focus-visible { outline: 2px solid var(--bleu-vif); outline-offset: 2px; }
+.theme-fusion .fx-lieu-card-img { aspect-ratio: 16 / 9; overflow: hidden; background: var(--cream); }
+.theme-fusion .fx-lieu-card-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.theme-fusion .fx-lieu-card-noimg { display: block; width: 100%; height: 100%; opacity: .14; }
+.theme-fusion .fx-lieu-card-body { padding: 12px 14px 14px; display: flex; flex-direction: column; gap: 5px; }
+.theme-fusion .fx-lieu-card-kicker {
+  font-family: var(--f-mono); font-size: 9.5px; letter-spacing: .09em;
+  text-transform: uppercase; color: var(--muted); display: flex; align-items: center;
+}
+.theme-fusion .fx-lieu-card-name {
+  font-family: var(--f-disp); font-weight: 700; font-size: 16px;
+  letter-spacing: -.015em; line-height: 1.2; color: var(--ink);
+}
+.theme-fusion .fx-lieu-card-n {
+  font-family: var(--f-mono); font-size: 15px; font-weight: 600; color: var(--ink); margin-top: 2px;
+}
+.theme-fusion .fx-lieu-card-n span {
+  font-size: 9.5px; font-weight: 400; letter-spacing: .08em;
+  text-transform: uppercase; color: var(--muted); margin-left: 3px;
+}
+@media (prefers-reduced-motion: reduce) { .theme-fusion .fx-lieu-card:hover { transform: none; } }
+
+/* Leaflet monte ses panneaux jusqu'à z-index 1000 (contrôles, attribution) et
+ * ne crée pas de contexte d'empilement : ces valeurs concourent donc dans le
+ * contexte racine et passent DEVANT le drawer (z-index 81) — la fiche s'ouvrait
+ * sous la carte. `isolation: isolate` enferme l'échelle interne de Leaflet dans
+ * le conteneur ; le conteneur, lui, s'empile en flux, sous le drawer.
+ * Vaut pour toutes les cartes du site (lieux, projets), pas seulement celle-ci. */
+.theme-fusion .leaflet-container { isolation: isolate; }
+
+/* Fiche lieu en page pleine : fil d'Ariane + rebond « voisins ». */
+.theme-fusion .fx-fiche-back { margin-bottom: 14px; }
+.theme-fusion .fx-fiche-back a {
+  font-family: var(--f-mono); font-size: 11px; letter-spacing: .04em; color: var(--muted); text-decoration: none;
+}
+.theme-fusion .fx-fiche-back a:hover { color: var(--ink); }
+.theme-fusion .fx-voisins { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 12px; }
+.theme-fusion .fx-voisin { text-decoration: none; display: flex; flex-direction: column; gap: 6px; }
+.theme-fusion .fx-voisin img, .theme-fusion .fx-voisin-noimg {
+  aspect-ratio: 16 / 10; width: 100%; object-fit: cover; background: var(--cream); display: block;
+  border: 1px solid var(--rule);
+}
+.theme-fusion .fx-voisin:hover img { border-color: var(--ink); }
+.theme-fusion .fx-voisin-name { font-size: 12.5px; font-weight: 600; color: var(--ink); line-height: 1.25; }
+.theme-fusion .fx-voisin-meta {
+  font-family: var(--f-mono); font-size: 10px; letter-spacing: .04em;
+  color: var(--muted); margin-top: -2px;
+}
+.theme-fusion .fx-lieuxlies-intro {
+  font-size: 12.5px; color: var(--muted); margin: -4px 0 12px; line-height: 1.5;
+}
+
+/* Bandeau « ↗ Voir le lieu » — tissu conjonctif entre une fiche (subvention,
+ * projet) et la fiche du lieu rattaché. Discret mais cliquable, en tête de fiche. */
+.theme-fusion .fx-voir-lieu {
+  display: flex; align-items: center; gap: 10px;
+  border: 1px solid var(--ink); background: var(--bg-warm);
+  padding: 10px 14px; margin: 0 0 18px; text-decoration: none;
+  transition: background .15s;
+}
+.theme-fusion .fx-voir-lieu:hover { background: var(--bg-hover); }
+.theme-fusion .fx-voir-lieu-kicker {
+  font-family: var(--f-mono); font-size: 9.5px; letter-spacing: .1em;
+  text-transform: uppercase; color: var(--ocre); white-space: nowrap;
+}
+.theme-fusion .fx-voir-lieu-name {
+  font-family: var(--f-disp); font-weight: 700; font-size: 15px;
+  letter-spacing: -.01em; color: var(--ink); flex: 1;
+}
+.theme-fusion .fx-voir-lieu-arrow { font-family: var(--f-mono); color: var(--rouge); font-size: 15px; }
+
+/* Frise « mémoire d'un lieu » — la scène signature de la fiche. */
+.theme-fusion .fx-frise { margin: 20px 0 26px; }
+.theme-fusion .fx-frise-legend { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 12px; }
+.theme-fusion .fx-frise-leg {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-family: var(--f-mono); font-size: 9.5px; letter-spacing: .06em;
+  text-transform: uppercase; color: var(--muted);
+}
+.theme-fusion .fx-frise-dot { width: 8px; height: 8px; border-radius: 50%; }
+.theme-fusion .fx-frise-n { color: var(--ink); font-weight: 600; }
+.theme-fusion .fx-frise-plot { padding-bottom: 4px; }
+.theme-fusion .fx-frise-tip {
+  position: absolute; top: -6px; transform: translateX(-50%);
+  background: var(--ink); color: var(--bg); padding: 7px 10px; max-width: 260px;
+  display: flex; flex-direction: column; gap: 2px; pointer-events: none; z-index: 5;
+  box-shadow: 0 4px 14px rgba(10,10,10,.25);
+}
+.theme-fusion .fx-frise-tip-y { font-family: var(--f-mono); font-size: 11px; font-weight: 700; }
+.theme-fusion .fx-frise-tip-l { font-size: 12px; line-height: 1.35; font-weight: 600; }
+.theme-fusion .fx-frise-tip-s { font-size: 11px; line-height: 1.35; opacity: .8; }
+
+/* Page /lieux — ligne stat d'accroche sous le chapô (matérialité en tête). */
+.theme-fusion .fx-lieux-hero-stats {
+  display: flex; flex-wrap: wrap; gap: 26px; margin-top: 20px;
+  font-family: var(--f-mono); font-size: 12px; letter-spacing: .02em; color: var(--muted);
+}
+.theme-fusion .fx-lieux-hero-stats b {
+  font-family: var(--f-disp); font-weight: 700; font-size: 19px;
+  letter-spacing: -.02em; color: var(--ink); margin-right: 2px;
 }

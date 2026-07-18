@@ -1,0 +1,86 @@
+{
+ "generated_at": "2026-07-18T14:38:43.284445+00:00",
+ "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
+ "slug": "mediatheque-james-baldwin",
+ "name": "Médiathèque James Baldwin",
+ "kind_fr": "Bibliothèque",
+ "kind_en": "Library",
+ "famille": "culture",
+ "arrondissement": 19,
+ "lat": 48.8897,
+ "lon": 2.3686,
+ "photo": "/img/lieux/mediatheque-james-baldwin.jpg",
+ "photo_credit": {
+  "licence": null,
+  "auteur": null,
+  "url": "https://fr.wikipedia.org/wiki/M%C3%A9diath%C3%A8que_James-Baldwin",
+  "source": "Wikipédia"
+ },
+ "wiki": {
+  "extract": "La médiathèque James-Baldwin est une médiathèque faisant partie des bibliothèques municipales de la ville de Paris, créée en 2024 dans le 19e arrondissement de Paris, à proximité de la place des fêtes. Elle a été nommée en référence à l'écrivain américain James Baldwin. Les spécialités documentaires de la médiathèque sont le féminisme, les cultures LGBTQIA+, l'écologie et l'exil et la culture sourde.",
+  "url": "https://fr.wikipedia.org/wiki/M%C3%A9diath%C3%A8que_James-Baldwin",
+  "source": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ },
+ "stats": {
+  "n_delibs": 80,
+  "delibs_span": [
+   2019,
+   2021
+  ],
+  "n_bmo_brut": 0,
+  "n_bmo_verifies": null,
+  "invest_total_eur": 0,
+  "invest_annees": [],
+  "lecture_mode": "titre nommant le lieu (2 trouvés)",
+  "n_lus": 2,
+  "n_lieu": 2
+ },
+ "subventions_exploitant": null,
+ "residents": [],
+ "kpi_montant": null,
+ "synthese_fr": "En juin 2019, le groupe PCF-FG dépose le vœu n° 47 demandant qu'un lieu parisien porte le nom de James Baldwin, écrivain afro-américain lié à Paris, en référence à la recommandation 44 du rapport « Paris, ville phare de l'inclusion et de la diversité ». Présenté par Raphaëlle PRIMET, le vœu reçoit un avis favorable de l'adjointe Catherine VIEU-CHARIER et est adopté. Un an et demi plus tard, en février 2021, le Conseil examine le projet de délibération DAC 346 attribuant cette dénomination à la médiathèque de la rue Jean-Quarré, dans le 19e arrondissement. Le débat mobilise plusieurs inscrits, dont David ALPHAND, qui salue « un très beau projet de délibération » et rappelle l'attachement de Baldwin à Paris. Le vœu de 2019 met en avant l'écrivain comme une figure de la lutte pour les droits civiques et LGBTQI ; en 2021, David ALPHAND insiste surtout sur son talent littéraire et son attachement à Paris.",
+ "moments": [
+  {
+   "id": "150026",
+   "seance": "JUIN 2019",
+   "fait": "Le Conseil adopte le vœu n° 47 (PCF-FG) demandant qu'un lieu parisien porte le nom de James Baldwin, avec un avis favorable de l'Exécutif.",
+   "pourquoi": "L'idée d'un hommage parisien est lancée",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=150026"
+  },
+  {
+   "id": "157599",
+   "seance": "FEVRIER 2021",
+   "fait": "Le Conseil examine le projet de délibération DAC 346 attribuant la dénomination James Baldwin à la médiathèque de la rue Jean-Quarré (19e).",
+   "pourquoi": "L'hommage passe du principe de 2019 à un lieu précis",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=157599"
+  }
+ ],
+ "montants": [],
+ "bmo_extraits": [],
+ "bmo_recit": null,
+ "invest": [],
+ "marches": [],
+ "sources": {
+  "delibs": {
+   "name": "Débat-Délibs — Conseil de Paris",
+   "url": "https://a06-v7.apps.paris.fr/a06/"
+  },
+  "bmo": {
+   "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
+   "url": "https://gallica.bnf.fr/ark:/12148/cb343512457/date"
+  },
+  "invest": {
+   "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
+   "url": "https://opendata.paris.fr/"
+  },
+  "wiki": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ }
+}

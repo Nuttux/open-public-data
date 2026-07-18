@@ -1,0 +1,303 @@
+{
+ "generated_at": "2026-07-18T14:38:43.284445+00:00",
+ "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
+ "slug": "stade-jean-bouin",
+ "name": "Stade Jean-Bouin",
+ "kind_fr": "Stade",
+ "kind_en": "Stadium",
+ "famille": "sport",
+ "arrondissement": 16,
+ "lat": 48.8432,
+ "lon": 2.253,
+ "photo": "/img/lieux/stade-jean-bouin.jpg",
+ "photo_credit": {
+  "licence": null,
+  "auteur": null,
+  "url": "https://fr.wikipedia.org/wiki/Stade_Jean-Bouin_(Paris)",
+  "source": "Wikipédia"
+ },
+ "wiki": {
+  "extract": "Le stade Jean-Bouin est un stade inauguré en 1928 et situé dans le 16e arrondissement de Paris. Il est principalement destiné à la pratique du rugby à XV et du football. Sa capacité actuelle est de 19 607 places.",
+  "url": "https://fr.wikipedia.org/wiki/Stade_Jean-Bouin_(Paris)",
+  "source": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ },
+ "stats": {
+  "n_delibs": 1619,
+  "delibs_span": [
+   1996,
+   2014
+  ],
+  "n_bmo_brut": 140,
+  "n_bmo_verifies": 7,
+  "invest_total_eur": 667533.71,
+  "invest_annees": [
+   "2022"
+  ],
+  "lecture_mode": "titre nommant le lieu (42 trouvés)",
+  "n_lus": 41,
+  "n_lieu": 36
+ },
+ "subventions_exploitant": null,
+ "residents": [],
+ "kpi_montant": null,
+ "synthese_fr": "Dans les années 1990, le stade Jean-Bouin (20-40, avenue du Général-Sarrail, 16e) fait l'objet de marchés de travaux successifs - réparation de l'ossature béton des tribunes, rénovation des tribunes couvertes, mise aux normes, réfection de l'éclairage du terrain de rugby - tandis que la Ville soutient financièrement son occupant historique, le Club athlétique des sports généraux (CASG), jusqu'à participer en 1996 à son plan de redressement pour éviter sa cessation d'activité. En 2004, le Conseil approuve un nouveau contrat d'occupation avec l'association Paris Jean-Bouin CASG, avant d'approuver en 2007 le principe d'une démolition-reconstruction du stade et d'autoriser, en 2008, la résiliation de cette convention pour motif d'intérêt général ; l'exécutif présente l'opération comme la réponse au besoin d'un vrai stade de rugby pour le Stade Français et prévoit de reloger les sections sportives et scolaires vers l'hippodrome d'Auteuil. L'opération suscite une vive contestation en séance - projet qualifié d'« inutile », arbres marqués de taches blanches, redevance discutée. En 2010, la Ville déclare sans suite la consultation lancée en 2009, approuve une reprise en régie du site, puis autorise la signature d'une convention d'occupation - concession de travaux confiée à la Fédération Française de Tennis, dont l'investissement (3,1 M€ selon l'opposition) et la redevance sont contestés ; en parallèle, elle verse des subventions de fonctionnement à l'association Paris Jean-Bouin (91.470 € en 2006, 71.470 € en 2007, 40.000 € en 2010, 50.000 € en 2014).",
+ "moments": [
+  {
+   "id": "91683",
+   "seance": "JANVIER 1996",
+   "fait": "Le Conseil autorise un avenant à la convention d'occupation du stade avec le CASG, destiné à participer au plan de redressement financier du club pour éviter sa cessation d'activité.",
+   "pourquoi": "éviter la cessation d'activité du club occupant historique",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=91683"
+  },
+  {
+   "id": "65055",
+   "seance": "OCTOBRE 1998",
+   "fait": "Le Conseil approuve le principe de la rénovation des tribunes couvertes et de la mise aux normes du stade, et autorise le Maire à signer les marchés de travaux.",
+   "pourquoi": "rénover et mettre aux normes de vieilles tribunes",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=65055"
+  },
+  {
+   "id": "8105",
+   "seance": "JUIN 2001",
+   "fait": "En réponse à M. GOASGUEN, l'adjoint M. BAUPIN indique qu'un projet de parc de stationnement d'environ 450 places sous le terrain de hockey a été étudié, puis retiré et à réexaminer.",
+   "pourquoi": "un parking souterrain sous le terrain de hockey",
+   "vedette": false,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=8105"
+  },
+  {
+   "id": "60162",
+   "seance": "JUILLET 2004",
+   "fait": "Le Conseil approuve le contrat d'occupation du domaine public du stade et des tennis du bois de Boulogne, et autorise le Maire à le signer avec l'association Paris Jean-Bouin CASG.",
+   "pourquoi": "le bail d'occupation qui encadre tout le site",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=60162"
+  },
+  {
+   "id": "90839",
+   "seance": "NOVEMBRE 2005",
+   "fait": "Le Conseil émet le vœu que la Ville crée un groupe de travail sur la rénovation de Jean-Bouin, l'évolution de Charléty et leur complémentarité.",
+   "pourquoi": "repenser Jean-Bouin après l'échec des JO 2012",
+   "vedette": false,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=90839"
+  },
+  {
+   "id": "61916",
+   "seance": "NOVEMBRE 2008",
+   "fait": "Le Conseil autorise le Maire à résilier, pour motif d'intérêt général, la convention de 2004, en vue de l'opération de démolition puis de reconstruction du stade.",
+   "pourquoi": "résilier le bail pour démolir puis reconstruire",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=61916"
+  },
+  {
+   "id": "12976",
+   "seance": "JUIN 2010",
+   "fait": "Lors du débat sur le renouvellement des autorisations d'occupation, des élus qualifient le projet d'« inutile » et dénoncent des menaces d'abattage d'arbres autour de l'enceinte (37 troncs marqués selon M. ALPHAND).",
+   "pourquoi": "les arbres marqués cristallisent la contestation",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=12976"
+  },
+  {
+   "id": "11100",
+   "seance": "SEPTEMBRE 2010",
+   "fait": "Lors du débat sur la concession de travaux, l'opposition met en cause la transparence financière, une redevance jugée faible et l'investissement de la F.F.T. (3,1 M€ selon M. ALPHAND), y voyant un montage lié à Roland-Garros.",
+   "pourquoi": "la concession tennis attribuée à la Fédération de tennis",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=11100"
+  }
+ ],
+ "montants": [
+  {
+   "seance": "NOVEMBRE 2014",
+   "montant": "50.000 euros",
+   "objet": "subvention de fonctionnement à l'association Paris Jean-Bouin C.A.S.G. pour la saison 2014-2015, selon M. GABORIAU",
+   "citation": "une subvention de fonctionnement d'un montant de 50.000 euros soit attribuée au \"Paris Jean-Bouin C.A.S.G.\" au titre de la saison 2014-2015.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=121411"
+  },
+  {
+   "seance": "NOVEMBRE 2014",
+   "montant": "40.000 euros",
+   "objet": "part de la subvention dédiée à la section hockey sur gazon, selon M. GABORIAU",
+   "citation": "40.000 euros seront dédiés à la section hockey sur gazon",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=121411"
+  },
+  {
+   "seance": "NOVEMBRE 2010",
+   "montant": "40.000 euros",
+   "objet": "subvention de fonctionnement à l'association Paris Jean-Bouin C.A.S.G. au titre de 2010",
+   "citation": "Une subvention d?un montant de 40.000 euros est attribuée à l?association Paris Jean-Bouin C.A.S.G. (D04355 / 2010_03349) au titre de l?exercice 2010.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=86298"
+  },
+  {
+   "seance": "NOVEMBRE 2007",
+   "montant": "71.470 euros",
+   "objet": "subvention de fonctionnement à l'association Paris Jean-Bouin C.A.S.G. pour ses activités sportives 2007",
+   "citation": "Une subvention d?un montant de 71.470 euros est attribuée à l?association ?Paris Jean-Bouin C.A.S.G.? (D04355/ 2007_) 26, avenue du Général Sarrail (16e), au titre de ses activités sportives pour l?année 2007.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=66083"
+  },
+  {
+   "seance": "OCTOBRE 2006",
+   "montant": "91.470 euros",
+   "objet": "subvention de fonctionnement à l'association Paris Jean-Bouin C.A.S.G. pour ses activités sportives 2006",
+   "citation": "Une subvention d?un montant de 91.470 euros est attribuée à l?association Paris Jean-Bouin C.A.S.G. (D04355 / 2006 00506) - 26, avenue du Général Sarrail (16e), au titre de ses activités sportives pour l?année 2006.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=35394"
+  },
+  {
+   "seance": "SEPTEMBRE 2010",
+   "montant": "3,1 millions d'euros",
+   "objet": "investissements prévus par la F.F.T., inférieurs à l'offre concurrente, selon M. ALPHAND",
+   "citation": "le montant des investissements prévus : 3,1 millions d'euros, se révèle inférieur à celui envisagé par la société Paris-tennis, qui proposait 4 millions d?euros.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=11100"
+  },
+  {
+   "seance": "SEPTEMBRE 2010",
+   "montant": "4 millions d'euros",
+   "objet": "investissement proposé par la société Paris-tennis, candidat évincé, selon M. ALPHAND",
+   "citation": "le montant des investissements prévus : 3,1 millions d'euros, se révèle inférieur à celui envisagé par la société Paris-tennis, qui proposait 4 millions d?euros.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=11100"
+  },
+  {
+   "seance": "SEPTEMBRE 2010",
+   "montant": "300.000 euros",
+   "objet": "charges que la F.F.T. se facturerait à elle-même dans son business plan, selon M. CONTASSOT",
+   "citation": "l'on se paie à soi-même des charges, 300.000 euros, une paille?",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=11100"
+  },
+  {
+   "seance": "JANVIER 1996",
+   "montant": "1.700.000 F",
+   "objet": "créances de la Ville abandonnées au profit du CASG, selon M. BLOCHE",
+   "citation": "elle abandonne des créances d'un total de 1.700.000 F.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=4289"
+  },
+  {
+   "seance": "JANVIER 1996",
+   "montant": "300.000 F à 200.000 F",
+   "objet": "redevance payée par le CASG, réduite, selon M. BLOCHE",
+   "citation": "elle réduit de 300.000 F à 200.000 F la redevance que cette association lui payait.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=4289"
+  },
+  {
+   "seance": "JANVIER 1996",
+   "montant": "10 %",
+   "objet": "supplément perçu par la Ville sur les recettes des manifestations autorisées, selon M. BLOCHE",
+   "citation": "un supplément de 10 % sur les recettes des manifestations autorisées.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=4289"
+  }
+ ],
+ "bmo_extraits": [],
+ "bmo_recit": null,
+ "invest": [
+  {
+   "annee": "2022",
+   "montant_eur": 667533.71,
+   "nom_projet": "Stade Jean Bouin (CODP)",
+   "preuve": "Le nom du projet nomme explicitement CE lieu (« Stade Jean Bouin (CODP) »), à distance_m=47 de l'emprise. Adresse du lieu confirmée par les délibérations du Conseil de Paris : « dans l'enceinte du stade Jean-Bouin (20 à 40, avenue du Général-Sarrail - 16e) » (2006 DJS 469). Réserve de périmètre : les conventions d'occupation du domaine public (CODP) portant sur ce site couvrent, dans les délibérations disponibles, DEUX emprises — « le site dénommé \"stade Jean-Bouin\", 20 à 40, avenue du Général-Sarrail (16e) et le site des terrains de tennis du bois de Boulogne, allée Fortunée (n° 28A) ». Le montant peut donc ne pas porter en totalité sur ce seul équipement (voir stade-jean-bouin_perimetre.json).",
+   "id": "2022_gen_2dac1f39"
+  }
+ ],
+ "marches": [
+  {
+   "numero_marche": "20161410000952",
+   "objet": "CSP5 MAINTENANCE MULTITECH & COORD STADE JEAN BOUIN LOT04",
+   "fournisseur": "ENGIE ENERGIE SERVICES",
+   "montant_max": 2533788.0,
+   "date_notification": "2016-07-11",
+   "preuve": "L'objet porte sur CE lieu et sur rien d'autre : « CSP5 MAINTENANCE MULTITECH & COORD STADE JEAN BOUIN LOT04 ». Marché de maintenance de l'équipement lui-même : ni marché-cadre de toute la Ville, ni simple repère d'adresse."
+  },
+  {
+   "numero_marche": "20161410000977",
+   "objet": "CSP1 LOT 6 SECURITE INCENDIE DU STADE JEAN BOUIN",
+   "fournisseur": "CHALLANCIN PREVENTION ET SECURITE",
+   "montant_max": 1797093.16,
+   "date_notification": "2016-07-11",
+   "preuve": "L'objet nomme le lieu comme périmètre unique de la prestation : « CSP1 LOT 6 SECURITE INCENDIE DU STADE JEAN BOUIN » — sécurité incendie de l'équipement lui-même."
+  },
+  {
+   "numero_marche": "20131410009012",
+   "objet": "CSP5 GESTION TECHNIQUE GLOBALE DU STADE JEAN BOUIN LOT 1",
+   "fournisseur": "ENGIE ENERGIE SERVICES",
+   "montant_max": 1677872.0,
+   "date_notification": "2013-05-27",
+   "preuve": "L'objet désigne l'exploitation technique de ce seul équipement : « CSP5 GESTION TECHNIQUE GLOBALE DU STADE JEAN BOUIN LOT 1 »."
+  },
+  {
+   "numero_marche": "20131410009013",
+   "objet": "CSP5 STADE JEAN BOUIN LOT 2 NETTOYAGE",
+   "fournisseur": "ELIOR SERVICES PROPRETE ET SANTE",
+   "montant_max": 1436304.81,
+   "date_notification": "2013-05-28",
+   "preuve": "L'objet nomme le lieu et la prestation qui s'y déroule : « CSP5 STADE JEAN BOUIN LOT 2 NETTOYAGE ». Même série de lots CSP5 que la gestion technique globale du même stade (marché 20131410009012)."
+  },
+  {
+   "numero_marche": "20131410009014",
+   "objet": "CSP5 STADE JEAN BOUIN LOT 3 SECURITE",
+   "fournisseur": "MONDIAL PROTECTION",
+   "montant_max": 1237298.0,
+   "date_notification": "2013-05-29",
+   "preuve": "L'objet nomme le lieu et la prestation qui s'y déroule : « CSP5 STADE JEAN BOUIN LOT 3 SECURITE ». Même série de lots CSP5 que les marchés 20131410009012 et 20131410009013."
+  },
+  {
+   "numero_marche": "20161410000976",
+   "objet": "LOT 5 NETTOYAGE DU STADE JEAN BOUIN",
+   "fournisseur": "ELIOR SERVICES PROPRETE ET SANTE",
+   "montant_max": 1060038.88,
+   "date_notification": "2016-07-12",
+   "preuve": "L'objet porte sur le nettoyage de ce seul équipement : « LOT 5 NETTOYAGE DU STADE JEAN BOUIN »."
+  },
+  {
+   "numero_marche": "20222022F02263",
+   "objet": "MS AC RENOUVELLEMENT CAMÉRAS STADE JEAN BOUIN PARIS 75016",
+   "fournisseur": "VIDELIO",
+   "montant_max": 285853.84,
+   "date_notification": "2022-04-11",
+   "preuve": "L'objet nomme le lieu ET son code postal, qui correspond à l'arrondissement du lieu : « MS AC RENOUVELLEMENT CAMÉRAS STADE JEAN BOUIN PARIS 75016 ». Équipement installé dans le stade (20-40 avenue du Général-Sarrail, 16e)."
+  },
+  {
+   "numero_marche": "20232023T02855",
+   "objet": "TRAVAUX INFRASTRUCTURES STADE JEAN BOUIN",
+   "fournisseur": "SASU ICT ENGINE",
+   "montant_max": 86407.65,
+   "date_notification": "2023-04-14",
+   "preuve": "L'objet est un marché de travaux portant sur ce lieu : « TRAVAUX INFRASTRUCTURES STADE JEAN BOUIN »."
+  },
+  {
+   "numero_marche": "20232023T03125",
+   "objet": "TRAVAUX DE PEINTURE STADE JEAN BOUIN 75016",
+   "fournisseur": "LES TRAVAUX PARISIENS",
+   "montant_max": 65114.0,
+   "date_notification": "2023-04-21",
+   "preuve": "L'objet nomme le lieu ET son code postal : « TRAVAUX DE PEINTURE STADE JEAN BOUIN 75016 », cohérent avec l'adresse 20-40 avenue du Général-Sarrail (16e)."
+  },
+  {
+   "numero_marche": "20161410000330",
+   "objet": "CONTROLE TECHNIQUE SYSTEME D'ECLAIRAGE STADE JEAN BOUIN",
+   "fournisseur": "QUALICONSULT",
+   "montant_max": 42313.72,
+   "date_notification": "2016-03-14",
+   "preuve": "L'objet porte sur une installation de ce lieu : « CONTROLE TECHNIQUE SYSTEME D'ECLAIRAGE STADE JEAN BOUIN ». Le site dispose bien d'installations d'éclairage sportif, documentées par deux délibérations : 1997 JS 170, « réfection de l'éclairage sportif du terrain de rugby du stade Jean-Bouin, 20 à 40, avenue du Général-Sarrail (16e) », et 2001 JS 101-1°, « réalisation de 2 mâts d'éclairage au stade de rugby du centre sportif Jean-Bouin, 20-40, avenue du Général-Sarrail (16e) »."
+  }
+ ],
+ "sources": {
+  "delibs": {
+   "name": "Débat-Délibs — Conseil de Paris",
+   "url": "https://a06-v7.apps.paris.fr/a06/"
+  },
+  "bmo": {
+   "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
+   "url": "https://gallica.bnf.fr/ark:/12148/cb343512457/date"
+  },
+  "invest": {
+   "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
+   "url": "https://opendata.paris.fr/"
+  },
+  "wiki": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ }
+}

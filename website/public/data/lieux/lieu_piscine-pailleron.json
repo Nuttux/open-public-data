@@ -1,0 +1,233 @@
+{
+ "generated_at": "2026-07-18T14:38:43.284445+00:00",
+ "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
+ "slug": "piscine-pailleron",
+ "name": "Piscine Pailleron",
+ "kind_fr": "Piscine",
+ "kind_en": "Swimming pool",
+ "famille": "sport",
+ "arrondissement": 19,
+ "lat": 48.8788,
+ "lon": 2.3766,
+ "photo": "/img/lieux/piscine-pailleron.jpg",
+ "photo_credit": {
+  "licence": null,
+  "auteur": null,
+  "url": "https://fr.wikipedia.org/wiki/Espace_sportif_Pailleron",
+  "source": "Wikipédia"
+ },
+ "wiki": {
+  "extract": "L'espace sportif Pailleron est un complexe sportif situé rue Édouard-Pailleron dans le 19e arrondissement de Paris (France). Entièrement rénové, il a rouvert ses portes en octobre 2006. Il est composé de trois espaces : une piscine, une patinoire et un espace forme et bien-être.",
+  "url": "https://fr.wikipedia.org/wiki/Espace_sportif_Pailleron",
+  "source": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ },
+ "stats": {
+  "n_delibs": 101,
+  "delibs_span": [
+   1997,
+   2025
+  ],
+  "n_bmo_brut": 265,
+  "n_bmo_verifies": 4,
+  "invest_total_eur": 0,
+  "invest_annees": [],
+  "lecture_mode": "titre nommant le lieu (26 trouvés)",
+  "n_lus": 26,
+  "n_lieu": 26
+ },
+ "subventions_exploitant": null,
+ "residents": [],
+ "kpi_montant": null,
+ "synthese_fr": "En septembre 1997, le Conseil de Paris prend acte du bilan de la concertation sur l'emprise municipale 20-38 rue Edouard-Pailleron et autorise M. le Maire de Paris à signer la demande de permis de démolir la piscine construite en 1933 par Lucien Pollet et la patinoire, fermées depuis 1991 ; en séance, plusieurs orateurs plaident pour la réhabilitation et Gisèle STIEVENARD reproche à la Ville de ne pas avoir entretenu les bâtiments. Le mois suivant, le Conseil approuve les modalités des travaux de démolition en vue d'une reconstruction ultérieure. Interrogée à plusieurs reprises entre 1998 et 2000 par Georges SARRE puis Michel BULTÉ, la Ville répond que l'inscription de la piscine en totalité à l'Inventaire supplémentaire des Monuments historiques, décidée le 19 juin 1998, remet en cause l'opération alors que les études et la première tranche de travaux étaient financées : aucune suite n'est donnée au concours d'architectes, les candidats sont indemnisés, les façades purgées et le complexe muré, et le budget de 23 millions de francs inscrit en 1998 est reporté après déduction de l'indemnisation des concepteurs et des travaux de mise en sécurité. En juillet 2001, le Conseil approuve le principe d'une rénovation de la piscine, de la reconstruction d'une patinoire de loisir et d'un bassin d'initiation, fixe le coût d'investissement à 135.000.000 F TTC et autorise la signature d'une convention de mandat de maîtrise d'ouvrage avec la SEMAVIP ; l'équipe Marc Mimram est choisie comme maître d'œuvre en juillet 2002. Les avenants n° 2 (septembre 2003), n° 3 (mars 2004) et n° 4 (mai 2005) portent successivement le coût d'investissement à 22.058.339,89 euros valeur juin 2001, puis 27.205.000 euros valeur octobre 2003, puis 29.766.056,97 euros TTC ; la livraison, prévue en décembre 2005 par l'avenant n° 3, laisse place à un calendrier prévisionnel fixant la fin des travaux en mars 2006. Le respect de l'architecture d'origine revient dans les débats, de l'amendement du groupe « Les Verts » sur la toiture au vœu demandant l'étude de la restitution de la cheminée. En juillet 2006, le Conseil approuve la convention de délégation de service public confiant la gestion à l'UCPA ; en mai 2015, au renouvellement de la DSP, Sergio TINTI avance 600.000 entrées en 2014 et le label QualiParis obtenu en 2013 et 2014. Un avenant prolonge le contrat de huit mois fin 2021, puis l'exploitation revient à Vert Marine, dont l'annonce de ne pas ouvrir l'établissement le 8 septembre 2022 conduit la Ville à annoncer en séance l'application des pénalités prévues au contrat. Le mode de gestion est débattu sur toute la période, de la demande d'une gestion directe formulée dès 1997 par Gisèle STIEVENARD jusqu'au vœu de municipalisation rattaché, en décembre 2025, au projet de délibération portant sur le principe et les modalités de passation d'une nouvelle DSP.",
+ "moments": [
+  {
+   "id": "19722",
+   "seance": "SEPTEMBRE 1997",
+   "fait": "Cinq orateurs débattent du réaménagement de l'emprise Pailleron : plusieurs contestent la démolition-reconstruction de la piscine Art Déco de 1933, fermée depuis 1991, et plaident la réhabilitation ; Gisèle STIEVENARD reproche à la Ville de ne pas avoir entretenu les bâtiments.",
+   "pourquoi": "Point de départ : le Conseil est saisi d'un permis de démolir",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=19722"
+  },
+  {
+   "id": "17574",
+   "seance": "SEPTEMBRE 1999",
+   "fait": "En réponse au groupe « Rassemblement pour Paris », la Ville expose que l'inscription en totalité aux Monuments historiques, par arrêté du 19 juin 1998, a remis en cause l'opération au moment où le lauréat du concours allait être désigné : aucune suite donnée au concours, candidats indemnisés, complexe muré.",
+   "pourquoi": "La Ville impute à l'inscription l'arrêt d'un projet déjà financé",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=17574"
+  },
+  {
+   "id": "62768",
+   "seance": "JUILLET 2001",
+   "fait": "Le Conseil approuve le principe de la rénovation de la piscine et de la reconstruction de la patinoire, avec un bassin d'initiation, fixe le coût d'investissement à 135 000 000 F TTC et autorise le Maire à signer la convention de mandat de maîtrise d'ouvrage avec la SEMAVIP.",
+   "pourquoi": "Le principe passe de la démolition à la rénovation",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=62768"
+  },
+  {
+   "id": "3330",
+   "seance": "SEPTEMBRE 2003",
+   "fait": "Débat sur l'avenant n° 2 : BLET demande que l'esprit de l'architecture Art Déco soit réellement respecté, MADEC attribue l'avenant aux exigences de l'architecte des Bâtiments de France, CHERKI défend l'usage et chiffre le projet à plus de 20 millions d'euros en séance.",
+   "pourquoi": "Coût et respect du bâti d'origine discutés ensemble",
+   "vedette": false,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=3330"
+  },
+  {
+   "id": "81132",
+   "seance": "JUILLET 2006",
+   "fait": "Le Conseil approuve la convention de délégation de service public confiant la gestion de la piscine-patinoire à l'association UCPA et autorise le Maire à la signer.",
+   "pourquoi": "L'exploitation passe en gestion déléguée",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=81132"
+  },
+  {
+   "id": "125479",
+   "seance": "MAI 2015",
+   "fait": "Au renouvellement de la DSP, Sergio TINTI avance 600 000 entrées en 2014 et le label QualiParis obtenu en 2013 et 2014, tandis que Danielle SIMONNET déplore la disparité tarifaire entre piscines, le ticket étant à 3,50 euros à Pailleron.",
+   "pourquoi": "Fréquentation et tarifs au cœur du renouvellement",
+   "vedette": false,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=125479"
+  },
+  {
+   "id": "167353",
+   "seance": "OCTOBRE 2022",
+   "fait": "Après l'annonce de Vert Marine de ne pas ouvrir le site le 8 septembre, Karim ZIADY annonce que la Ville applique les pénalités contractuelles, de l'ordre de 1 000 euros par jour de fermeture ; le vœu demande un conseil des usagers et le dédommagement des usagers lésés.",
+   "pourquoi": "La Ville annonce des pénalités contre son délégataire",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=167353"
+  },
+  {
+   "id": "183699",
+   "seance": "DECEMBRE 2025",
+   "fait": "Le Conseil examine le principe et les modalités de passation d'une nouvelle DSP, auquel est rattaché un vœu du groupe Communiste et Citoyen demandant la municipalisation de l'espace sportif Pailleron.",
+   "pourquoi": "Le mode de gestion toujours en débat",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=183699"
+  }
+ ],
+ "montants": [
+  {
+   "seance": "JUIN 1998",
+   "montant": "18,65 millions de francs (première tranche) ; 75 millions de francs (total estimé)",
+   "objet": "Crédits votés pour la reconstruction du complexe et estimation totale de l'opération — chiffres cités par Georges SARRE dans le libellé de sa question, non votés dans ce document",
+   "citation": "le Conseil de Paris a voté, lors de la dernière séance budgétaire, une première tranche de 18,65 millions de francs. Le total de cette opération était alors estimé à 75 millions de francs.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=22498"
+  },
+  {
+   "seance": "NOVEMBRE 2000",
+   "montant": "23 millions de francs",
+   "objet": "Budget inscrit en 1998 pour la démolition et la première phase des études et travaux, reporté après déduction de l'indemnisation des concepteurs et des travaux de mise en sécurité — chiffre donné en réponse par l'adjoint Dominique CANE",
+   "citation": "Un budget de l'ordre de 23 millions de francs était inscrit en 1998 pour la démolition des constructions du site et la première phase des études et des travaux du nouvel équipement.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=17156"
+  },
+  {
+   "seance": "JUILLET 2001",
+   "montant": "135.000.000 F TTC, valeur juin 2001",
+   "objet": "Coût d'investissement de l'opération, fixé par la délibération approuvant le principe de la rénovation",
+   "citation": "Art. 3.- Le coût d'investissement est fixé à 135.000.000 F TTC, valeur juin 2001.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=62768"
+  },
+  {
+   "seance": "SEPTEMBRE 2003",
+   "montant": "22.058.339,89 euros (valeur juin 2001) soit 23.582.922,35 euros TTC en valeur juin 2003",
+   "objet": "Coût d'investissement de l'opération, porté par l'avenant n° 2 à la convention de maîtrise d'ouvrage SEMAVIP",
+   "citation": "Art. 2.- Le coût d'investissement de l'opération est porté à 22.058.339,89 euros (valeur juin 2001) soit 23.582.922,35 euros TTC, en valeur juin 2003.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=47656"
+  },
+  {
+   "seance": "SEPTEMBRE 2003",
+   "montant": "plus de 20 millions d'euros",
+   "objet": "Coût du projet cité en débat par Pascal CHERKI, adjoint — chiffre avancé en séance ; le montant approuvé figure dans la délibération 2003 JS 491 elle-même",
+   "citation": "Nous n'avions pas les sommes au départ mais aujourd'hui nous avons un projet de plus de 20 millions d'euros.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=3330"
+  },
+  {
+   "seance": "SEPTEMBRE 2003",
+   "montant": "20 millions d'euros",
+   "objet": "Montant que la Ville consacre à la réhabilitation selon Pascal CHERKI, adjoint — chiffre avancé en séance",
+   "citation": "La Ville de Paris met 20 millions d'euros, pour une piscine à réhabiliter à peu près à l'identique de la piscine Pailleron pour les habitants du 19e et de l'Est parisien",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=3330"
+  },
+  {
+   "seance": "MARS 2004",
+   "montant": "27.205.000,00 euros valeur octobre 2003",
+   "objet": "Coût d'investissement de l'opération, fixé par l'avenant n° 3 à la convention de maîtrise d'ouvrage SEMAVIP",
+   "citation": "Art. 2.- Le coût d'investissement de l'opération est fixé à 27.205.000,00 euros valeur octobre 2003.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=57899"
+  },
+  {
+   "seance": "MARS 2004",
+   "montant": "21.070.343,64 euros T.T.C.",
+   "objet": "Lot du marché de travaux attribué au groupement \"LAINE DELAU/GTM/VIRY\" par la Commission d'appel d'offres du 12 février 2004, que la S.E.M.A.V.I.P. est autorisée à signer",
+   "citation": "au groupement \"LAINE DELAU/GTM/VIRY\" pour un montant de 21.070.343,64 euros T.T.C.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=57899"
+  },
+  {
+   "seance": "JUIN 2004",
+   "montant": "136.123,74 euros T.T.C.",
+   "objet": "Marché de contrôle d'accès attribué à la société Horanet par la Commission d'appel d'offres du 13 mai 2004",
+   "citation": "à la société Horanet pour un montant de 136.123,74 euros T.T.C.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=94956"
+  },
+  {
+   "seance": "AVRIL 2005",
+   "montant": "877.835,89 euros T.T.C.",
+   "objet": "Marché du lot Carrelages attribué à la société CMC La Mosaïque par la Commission d'appel d'offres du 24 janvier 2005",
+   "citation": "à la société CMC La Mosaïque pour un montant de 877.835,89 euros T.T.C.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=43910"
+  },
+  {
+   "seance": "MAI 2005",
+   "montant": "29.766.056,97 euros TTC (valeur octobre 2003), soit une augmentation de 2.561.056,97 euros TTC",
+   "objet": "Coût d'investissement définitif de la convention de mandat, porté par l'avenant n° 4, rémunération du mandataire incluse",
+   "citation": "est porté de 27.205.000 euros TTC (valeur octobre 2003) à 29.766.056,97 euros TTC (valeur octobre 2003), hors révision, y compris la rémunération du mandataire, soit une augmentation de 2.561.056,97 euros TTC",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=80809"
+  },
+  {
+   "seance": "MAI 2005",
+   "montant": "679.610,52 euros TTC",
+   "objet": "Nouveau coût de rémunération de la SEMAVIP, mandataire, estimé par l'avenant n° 4 : 290.000 euros TTC pour la phase étude et 389.610,52 euros TTC pour la phase travaux",
+   "citation": "Art. 4.- Le nouveau coût de rémunération de la SEMAVIP est estimé à 679.610,52 euros TTC réparti en 290.000,00 euros TTC pour la phase étude, et 389.610,52 euros TTC pour la phase travaux.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=80809"
+  },
+  {
+   "seance": "MAI 2015",
+   "montant": "3,50 euros",
+   "objet": "Prix du ticket d'entrée à Pailleron, cité en débat par Danielle SIMONNET, qui le situe dans la moyenne parisienne (de 3 euros à plus de 4,50 euros) tout en déplorant la disparité tarifaire entre piscines",
+   "citation": "D'un arrondissement à l'autre, le prix du ticket d?entrée varie fortement. Ici, il est de 3,50 euros. Vous me direz : \"C?est dans la moyenne\" puisqu?on a des piscines à 3 euros et des piscines à plus de 4,50 euros, comme aux Halles.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=125479"
+  },
+  {
+   "seance": "OCTOBRE 2022",
+   "montant": "1.000 euros par jour de fermeture",
+   "objet": "Pénalités financières contractuelles que la Ville a décidé d'appliquer au délégataire Vert Marine, annoncées en séance par Karim ZIADY",
+   "citation": "Nous avons donc pris la dÃ©cision d?appliquer les pÃ©nalitÃ©s financiÃ¨res qui sont contractuellement dans la dÃ©lÃ©gation de service public, de l?ordre de 1.000 euros par jour de fermeture.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=167353"
+  }
+ ],
+ "bmo_extraits": [],
+ "bmo_recit": null,
+ "invest": [],
+ "marches": [],
+ "sources": {
+  "delibs": {
+   "name": "Débat-Délibs — Conseil de Paris",
+   "url": "https://a06-v7.apps.paris.fr/a06/"
+  },
+  "bmo": {
+   "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
+   "url": "https://gallica.bnf.fr/ark:/12148/cb343512457/date"
+  },
+  "invest": {
+   "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
+   "url": "https://opendata.paris.fr/"
+  },
+  "wiki": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ }
+}

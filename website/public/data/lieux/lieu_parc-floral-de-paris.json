@@ -1,0 +1,264 @@
+{
+ "generated_at": "2026-07-18T14:38:43.284445+00:00",
+ "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
+ "slug": "parc-floral-de-paris",
+ "name": "Parc floral de Paris",
+ "kind_fr": "Parc",
+ "kind_en": "Park",
+ "famille": "vert",
+ "arrondissement": 12,
+ "lat": 48.8355,
+ "lon": 2.447,
+ "photo": "/img/lieux/parc-floral-de-paris.jpg",
+ "photo_credit": {
+  "licence": "Public domain",
+  "auteur": "Jebulon.",
+  "url": "https://commons.wikimedia.org/wiki/File:Lilium_regale_%27Album%27,_Parc_Floral_de_Paris,_France_-_20100704.jpg",
+  "source": "Wikimedia Commons"
+ },
+ "wiki": {
+  "extract": null,
+  "url": null,
+  "source": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ },
+ "stats": {
+  "n_delibs": 536,
+  "delibs_span": [
+   1998,
+   2011
+  ],
+  "n_bmo_brut": 0,
+  "n_bmo_verifies": null,
+  "invest_total_eur": 0,
+  "invest_annees": [],
+  "lecture_mode": "titre nommant le lieu (22 trouvés)",
+  "n_lus": 22,
+  "n_lieu": 22
+ },
+ "subventions_exploitant": null,
+ "residents": [],
+ "kpi_montant": null,
+ "synthese_fr": "À la fin des années 1990, la Ville de Paris confie à une association l'animation du Parc floral et l'occupation de certains de ses bâtiments, par une convention d'occupation du domaine public ; le groupe socialiste conteste ce choix de gestion au regard de la loi Sapin et interroge les recettes que la Ville tire du parc. De la fin des années 1990 aux années 2000, le Conseil approuve le principe d'une longue série de travaux : arrosage automatique, aménagement des entrées, création d'un espace paysager dans l'aire de jeux en cinq tranches, mises en conformité électriques, puis rénovation du Hall de la Pinède. En parallèle, il autorise régulièrement des marchés pour les festivals de musique et les spectacles pour enfants (Paris Jazz Festival, Classique au Vert), dont le coût global avoisine le million d'euros en 2003. La même année, un conseiller met en cause l'usage du parc comme centre d'expositions et de congrès, jusqu'aux salons de voitures d'occasion, au nom de la Charte d'aménagement durable du bois de Vincennes. Jusqu'à la fin des années 2000, la gestion des activités commerciales du parc, des points de vente de glaces aux jeux, revient régulièrement devant le Conseil.",
+ "moments": [
+  {
+   "id": "48411",
+   "seance": "JANVIER 1998",
+   "fait": "Le Conseil autorise le Maire à signer une convention concédant à l'Association pour l'animation et la promotion du Parc floral le droit d'occuper certains bâtiments du parc.",
+   "pourquoi": "La Ville confie l'animation du parc à une association",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=48411"
+  },
+  {
+   "id": "18168",
+   "seance": "JANVIER 1998",
+   "fait": "Le débat sur cette convention voit le groupe socialiste invoquer la loi Sapin ; le projet est adopté à la majorité, ce groupe votant contre.",
+   "pourquoi": "La gestion sans appel d'offres contestée en séance",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=18168"
+  },
+  {
+   "id": "5523",
+   "seance": "MARS 1999",
+   "fait": "Interrogée par le groupe socialiste, Mme de PANAFIEU chiffre les recettes que la Ville tire du parc à près de 3,3 millions de francs dès 1999.",
+   "pourquoi": "Ce que le parc rapporte à la Ville, questionné",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=5523"
+  },
+  {
+   "id": "28331",
+   "seance": "SEPTEMBRE 2000",
+   "fait": "Le Conseil approuve le principe d'un espace paysager dans l'aire de jeux du Parc Floral, chantier qui se déroulera en cinq tranches jusqu'en 2004.",
+   "pourquoi": "Une aire de jeux repensée en cinq tranches",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=28331"
+  },
+  {
+   "id": "94201",
+   "seance": "NOVEMBRE 2003",
+   "fait": "Le Conseil autorise trois marchés pour les festivals de jazz, de musique classique et de spectacles pour enfants, pour une dépense globale d'un million d'euros.",
+   "pourquoi": "Un million d'euros pour les festivals du parc",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=94201"
+  },
+  {
+   "id": "21407",
+   "seance": "NOVEMBRE 2003",
+   "fait": "Un conseiller met en cause l'usage du parc comme centre d'expositions et de congrès, jusqu'aux salons de voitures d'occasion, au regard de la Charte du bois de Vincennes.",
+   "pourquoi": "Des salons de voitures en plein bois, dénoncés",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=21407"
+  },
+  {
+   "id": "54262",
+   "seance": "DECEMBRE 2007",
+   "fait": "Le Conseil approuve le principe des travaux de confortation des structures et de modernisation de la couverture du Hall de la Pinède.",
+   "pourquoi": "Moderniser la couverture du Hall de la Pinède",
+   "vedette": false,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=54262"
+  },
+  {
+   "id": "93302",
+   "seance": "OCTOBRE 2009",
+   "fait": "Le Conseil autorise un appel à candidatures pour deux points de vente de glaces et de boissons dans le parc, avec une redevance de 8 % du chiffre d'affaires.",
+   "pourquoi": "Deux points de vente de glaces mis en concurrence",
+   "vedette": false,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=93302"
+  }
+ ],
+ "montants": [
+  {
+   "seance": "OCTOBRE 2009",
+   "montant": "8 % du chiffre d'affaires",
+   "objet": "Redevance annuelle des points de vente",
+   "citation": "à laquelle sera appliquée une redevance forfaitaire annuelle de 8 % du chiffre d?affaires hors taxes fiscalement déclaré à l?administration",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=93302"
+  },
+  {
+   "seance": "NOVEMBRE 2003",
+   "montant": "650.000 euros TTC",
+   "objet": "Lot 1 jazz (SARL Némo)",
+   "citation": "lot n° 1 jazz, avec la SARL \"Némo\" pour 650.000 euros TTC",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=94201"
+  },
+  {
+   "seance": "NOVEMBRE 2003",
+   "montant": "190.000 euros",
+   "objet": "Lot 2 musique classique (SARL Satirino)",
+   "citation": "lot n° 2, musique classique avec la SARL \"Satirino\" pour 190.000 euros",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=94201"
+  },
+  {
+   "seance": "NOVEMBRE 2003",
+   "montant": "109.300 euros TTC",
+   "objet": "Lot 3 spectacles pour enfants (association UNJMF)",
+   "citation": "lot n° 3 spectacles pour enfants avec l'association l'UNJMF pour 109.300 euros TTC",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=94201"
+  },
+  {
+   "seance": "NOVEMBRE 2003",
+   "montant": "1 million d'euros",
+   "objet": "Dépense globale des trois marchés",
+   "citation": "La dépense globale chiffrée à 1 million d'euros",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=94201"
+  },
+  {
+   "seance": "JANVIER 2003",
+   "montant": "689.999,91 euros",
+   "objet": "Lot 1 jazz (SARL Némo)",
+   "citation": "lot n° 1 jazz, avec la S.A.R.L. \"Némo\" pour 689.999,91 euros",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=41641"
+  },
+  {
+   "seance": "JANVIER 2003",
+   "montant": "218.122 euros",
+   "objet": "Lot 2 musique classique (SARL Satirino)",
+   "citation": "lot n° 2, musique classique avec la S.A.R.L. \"Satirino\" pour 218.122 euros",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=41641"
+  },
+  {
+   "seance": "JANVIER 2003",
+   "montant": "91.878 euros",
+   "objet": "Lot 3 spectacles pour enfants (SARL Satirino)",
+   "citation": "le lot n° 3 spectacles pour enfants avec la S.A.R.L. \"Satirino\" pour 91.878 euros",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=41641"
+  },
+  {
+   "seance": "JANVIER 2003",
+   "montant": "999.999,91 euros",
+   "objet": "Dépense globale des trois marchés",
+   "citation": "La dépense globale chiffrée à 999.999,91 euros",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=41641"
+  },
+  {
+   "seance": "DECEMBRE 2002",
+   "montant": "7.500 euros",
+   "objet": "Subvention de fonctionnement 2002 à l'association Théâtre Astral",
+   "citation": "La dépense correspondante, soit 7.500 euros, sera imputée sur le budget de fonctionnement de la Ville de Paris de 2002, nature 6574, rubrique 33",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=71052"
+  },
+  {
+   "seance": "MARS 1999",
+   "montant": "1.350.000 F",
+   "objet": "Redevance annuelle, part fixe (selon Mme de PANAFIEU)",
+   "citation": "une part fixe de 1.350.000 F, qui doit être payée en 4 versements trimestriels",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=5523"
+  },
+  {
+   "seance": "MARS 1999",
+   "montant": "1,314 million de francs (estimé)",
+   "objet": "Redevance, part variable de 8 % des recettes (selon Mme de PANAFIEU)",
+   "citation": "Sur la base des résultats 1997, le montant de cette partie variable peut être estimé à 1,314 million de francs.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=5523"
+  },
+  {
+   "seance": "MARS 1999",
+   "montant": "430.000 F",
+   "objet": "Somme annuelle, droits d'entrée des visiteurs de salon (selon Mme de PANAFIEU)",
+   "citation": "le versement à la Ville de Paris d'une somme annuelle de 430.000 F correspondant aux droits d'entrée au Parc des visiteurs de salon",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=5523"
+  },
+  {
+   "seance": "MARS 1999",
+   "montant": "3,3 millions de francs (estimé, 1999)",
+   "objet": "Recettes totales de la Ville tirées du parc (selon Mme de PANAFIEU)",
+   "citation": "l'ensemble des recettes retiré par la Ville de Paris de l'exploitation de cette activité devrait s'approcher de 3,3 millions de francs dès 1999",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=5523"
+  },
+  {
+   "seance": "SEPTEMBRE 2004",
+   "montant": "44.086,95 euros TTC",
+   "objet": "Extension d'un jeu pour handicapés (CITEC-ENVIRONNEMENT)",
+   "citation": "le marché relatif à l'extension du jeu pour handicapés dans l'aire de jeux du Parc Floral avec la société CITEC-ENVIRONNEMENT, pour un montant de 44.086,95 euros TTC",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=46844"
+  },
+  {
+   "seance": "SEPTEMBRE 2004",
+   "montant": "64.169,94 euros TTC",
+   "objet": "Pose de cordages sur le jeu Pyracorde (PRO URBA)",
+   "citation": "le marché relatif à la pose de cordages sur le jeu Pyracorde dans l'aire de jeux du Parc Floral avec la société PRO URBA pour un montant de 64.169,94 euros TTC",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=46844"
+  }
+ ],
+ "bmo_extraits": [],
+ "bmo_recit": null,
+ "invest": [],
+ "marches": [
+  {
+   "numero_marche": "decp-2025S01135",
+   "objet": "Réalisation de prestations annexes dans le cadre de l’occupation du Pavillon de la Chesnaie du Roy au parc Floral de Paris",
+   "fournisseur": "SOC D EXPLOITATION DE PARCS D EXPOSITION",
+   "montant_max": 8214.0,
+   "date_notification": "2025-03-10",
+   "preuve": "L'objet nomme le lieu verbatim : « Réalisation de prestations annexes dans le cadre de l’occupation du Pavillon de la Chesnaie du Roy au parc Floral de Paris ». L'objet situe lui-meme le Pavillon de la Chesnaie du Roy « au parc Floral de Paris » : la prestation porte sur l'occupation d'un batiment de ce parc, pas sur un marche-cadre de toute la Ville ni sur un simple repere d'adresse."
+  },
+  {
+   "numero_marche": "decp-2025S02976",
+   "objet": "Expertise et suivi de la collection des Bonsaïs au Parc Floral de Paris- Jardin Botanique de Paris",
+   "fournisseur": "JEAN-PHILIPPE HOAREAU",
+   "montant_max": 200.0,
+   "date_notification": "2025-05-27",
+   "preuve": "L'objet nomme le lieu verbatim : « Expertise et suivi de la collection des Bonsais au Parc Floral de Paris- Jardin Botanique de Paris ». La prestation porte sur une collection vegetale physiquement situee dans ce parc, pas sur un marche-cadre de toute la Ville."
+  }
+ ],
+ "sources": {
+  "delibs": {
+   "name": "Débat-Délibs — Conseil de Paris",
+   "url": "https://a06-v7.apps.paris.fr/a06/"
+  },
+  "bmo": {
+   "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
+   "url": "https://gallica.bnf.fr/ark:/12148/cb343512457/date"
+  },
+  "invest": {
+   "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
+   "url": "https://opendata.paris.fr/"
+  },
+  "wiki": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ }
+}

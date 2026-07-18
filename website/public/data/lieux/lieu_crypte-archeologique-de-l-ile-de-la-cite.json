@@ -1,0 +1,145 @@
+{
+ "generated_at": "2026-07-18T14:38:43.284445+00:00",
+ "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
+ "slug": "crypte-archeologique-de-l-ile-de-la-cite",
+ "name": "Crypte archéologique de l'île de la Cité",
+ "kind_fr": "Musée",
+ "kind_en": "Musée",
+ "famille": "culture",
+ "arrondissement": 4,
+ "lat": 48.85321,
+ "lon": 2.3487,
+ "photo": "/img/lieux/crypte-archeologique-de-l-ile-de-la-cite.jpg",
+ "photo_credit": {
+  "licence": null,
+  "auteur": null,
+  "url": "https://fr.wikipedia.org/wiki/Crypte_arch%C3%A9ologique_de_l'%C3%AEle_de_la_Cit%C3%A9",
+  "source": "Wikipédia"
+ },
+ "wiki": {
+  "extract": "La crypte archéologique de l'île de la Cité, anciennement crypte archéologique du parvis Notre-Dame, est un musée de la Ville de Paris, situé juste sous le parvis de la cathédrale Notre-Dame, dans le quartier Notre-Dame du 4e arrondissement. Le site présente des vestiges archéologiques de l'Antiquité au XIXe siècle, découverts lors des fouilles réalisées dans les années 1960-1970, avant la construction d'un parking souterrain.",
+  "url": "https://fr.wikipedia.org/wiki/Crypte_arch%C3%A9ologique_de_l'%C3%AEle_de_la_Cit%C3%A9",
+  "source": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ },
+ "stats": {
+  "n_delibs": 166,
+  "delibs_span": [
+   1998,
+   2000
+  ],
+  "n_bmo_brut": 89,
+  "n_bmo_verifies": null,
+  "invest_total_eur": 0,
+  "invest_annees": [],
+  "lecture_mode": "titre nommant le lieu (5 trouvés)",
+  "n_lus": 4,
+  "n_lieu": 4
+ },
+ "subventions_exploitant": null,
+ "residents": [],
+ "kpi_montant": null,
+ "synthese_fr": "En novembre 1998, le Conseil de Paris approuve le principe d'une délégation de service public pour la gestion de la crypte archéologique du parvis Notre-Dame, et autorise le Maire à engager la procédure. En septembre 1999, il fixe les tarifs d'entrée du public : 33 francs (5,03 euros) plein tarif individuel, 600 francs par groupe. En juillet 2000, le Conseil décide finalement de ne pas donner suite à la procédure de délégation engagée deux ans plus tôt, et autorise le Maire à en informer les candidats. Le même mois, il modifie les tarifs à la baisse, ramenant le plein tarif individuel à 22 francs (3,35 euros).",
+ "moments": [
+  {
+   "id": "62381",
+   "seance": "NOVEMBRE 1998",
+   "fait": "Le Conseil approuve le principe d'une délégation de service public pour la gestion de la crypte.",
+   "pourquoi": "Paris envisage de déléguer la gestion de la crypte",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=62381"
+  },
+  {
+   "id": "83954",
+   "seance": "SEPTEMBRE 1999",
+   "fait": "Fixation des tarifs d'entrée du public : 33 francs plein tarif individuel, 600 francs par groupe, au 1er octobre 1999.",
+   "pourquoi": "Ce que coûte l'entrée du monument au public",
+   "vedette": false,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=83954"
+  },
+  {
+   "id": "50462",
+   "seance": "JUILLET 2000",
+   "fait": "Le Conseil décide de ne pas donner suite à la procédure de délégation lancée en 1998.",
+   "pourquoi": "La procédure de délégation est finalement abandonnée deux ans après",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=50462"
+  },
+  {
+   "id": "50516",
+   "seance": "JUILLET 2000",
+   "fait": "Modification des tarifs à la baisse : plein tarif individuel ramené de 33 à 22 francs, au 1er août 2000.",
+   "pourquoi": "Le tarif d'entrée est revu nettement à la baisse",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=50516"
+  }
+ ],
+ "montants": [
+  {
+   "seance": "SEPTEMBRE 1999",
+   "montant": "33 francs (5,03 euros)",
+   "objet": "Plein tarif individuel, billet crypte",
+   "citation": "billet crypte archéologique - plein tarif : 33 francs, soit 5,03 euros - tarif réduit : 22 francs, soit 3,35 euros",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=83954"
+  },
+  {
+   "seance": "SEPTEMBRE 1999",
+   "montant": "40 francs (6,10 euros)",
+   "objet": "Plein tarif, billet combiné crypte/musée Carnavalet",
+   "citation": "billet combiné crypte archéologique/collections du musée Carnavalet - plein tarif : 40 francs, soit 6,10 euros - tarif réduit : 26 francs, soit 3,96 euros",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=83954"
+  },
+  {
+   "seance": "SEPTEMBRE 1999",
+   "montant": "600 francs (91,47 euros)",
+   "objet": "Tarif d'entrée par groupe (30 personnes max.)",
+   "citation": "le tarif d'entrée des groupes à la crypte archéologique du parvis Notre-Dame est fixé comme suit : 600 francs, soit 91,47 euros, par groupe limité à 30 personnes au maximum",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=83954"
+  },
+  {
+   "seance": "JUILLET 2000",
+   "montant": "22 francs (3,35 euros)",
+   "objet": "Plein tarif individuel, billet crypte (au 1er août 2000)",
+   "citation": "billet crypte archéologique - plein tarif : 22 francs, soit 3,35 euros - tarif réduit : 15 francs soit 2,29 euros",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=50516"
+  },
+  {
+   "seance": "JUILLET 2000",
+   "montant": "33 francs (5,03 euros)",
+   "objet": "Plein tarif, billet combiné crypte/musée Carnavalet",
+   "citation": "billet combiné crypte archéologique/collections du musée Carnavalet - plein tarif : 33 francs, soit 5,03 euros - tarif réduit : 22 francs, soit 3,35 euros",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=50516"
+  },
+  {
+   "seance": "JUILLET 2000",
+   "montant": "300 francs (45,73 euros)",
+   "objet": "Tarif d'entrée par groupe, crypte seule (30 pers. max.)",
+   "citation": "Pour la crypte archéologique 300 francs, soit 45,73 euros, par groupe limité à 30 personnes au maximum.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=50516"
+  }
+ ],
+ "bmo_extraits": [],
+ "bmo_recit": null,
+ "invest": [],
+ "marches": [],
+ "sources": {
+  "delibs": {
+   "name": "Débat-Délibs — Conseil de Paris",
+   "url": "https://a06-v7.apps.paris.fr/a06/"
+  },
+  "bmo": {
+   "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
+   "url": "https://gallica.bnf.fr/ark:/12148/cb343512457/date"
+  },
+  "invest": {
+   "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
+   "url": "https://opendata.paris.fr/"
+  },
+  "wiki": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ }
+}

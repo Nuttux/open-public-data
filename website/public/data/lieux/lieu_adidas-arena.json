@@ -1,0 +1,285 @@
+{
+ "generated_at": "2026-07-18T14:38:43.284445+00:00",
+ "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
+ "slug": "adidas-arena",
+ "name": "Adidas Arena",
+ "kind_fr": "Équipement",
+ "kind_en": "Public facility",
+ "famille": "sport",
+ "arrondissement": 18,
+ "lat": 48.89809,
+ "lon": 2.34744,
+ "photo": "/img/lieux/adidas-arena.jpg",
+ "photo_credit": {
+  "licence": null,
+  "auteur": null,
+  "url": "https://fr.wikipedia.org/wiki/Arena_Porte_de_la_Chapelle",
+  "source": "Wikipédia"
+ },
+ "wiki": {
+  "extract": "L’Adidas Arena est une salle polyvalente et modulable située dans le quartier de la Chapelle à Paris en France. Inaugurée le 11 février 2024, elle a été spécialement construite pour les Jeux olympiques d'été de 2024.",
+  "url": "https://fr.wikipedia.org/wiki/Arena_Porte_de_la_Chapelle",
+  "source": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ },
+ "stats": {
+  "n_delibs": 85,
+  "delibs_span": [
+   2018,
+   2025
+  ],
+  "n_bmo_brut": 1,
+  "n_bmo_verifies": null,
+  "invest_total_eur": 0,
+  "invest_annees": [],
+  "lecture_mode": "titre nommant le lieu (15 trouvés)",
+  "n_lus": 15,
+  "n_lieu": 13
+ },
+ "subventions_exploitant": null,
+ "residents": [],
+ "kpi_montant": null,
+ "synthese_fr": "En juillet 2018, le Conseil de Paris autorise les démarches d'urbanisme et une convention d'études avec la SOLIDEO pour construire l'Aréna II à la Porte de la Chapelle, présentée comme l'unique équipement parisien bâti pour les Jeux de 2024. Les délibérations suivantes en organisent la gestion : lancement de la délégation de service public pour l'exploitation commerciale et protocole avec le Paris Basketball (2019), attribution du contrat assortie de l'exigence de 51 dates dont 16 réservées au sport (2020), puis création d'une filiale de la SAE POPB pour l'exploiter (2021). Le financement est discuté à plusieurs reprises — récupération de TVA évoquée à hauteur de 25 millions d'euros (2021), subvention de 600.000 euros de l'Agence nationale du sport pour les deux gymnases de proximité et avenant intégrant le parvis et une rue au périmètre d'exploitation, dont l'opposition chiffre l'extension à 2.065.000 euros (2022). Le choix d'un \"naming\" conduit en juillet 2022 à la dénomination \"Adidas Arena\", combattue par les Écologistes au nom d'Alice Milliat, dont le nom est donné au parvis, tandis que deux gymnases intérieurs sont dénommés Aimée Lallement et Alice Coachman (2023). Une fois la salle ouverte, les débats portent sur ses usages — subvention d'équipement au Paris Basketball résident (2024) — et sur une publicité Adidas jugée illégale par les Écologistes, ce que l'Exécutif conteste (2025).",
+ "moments": [
+  {
+   "id": "144041",
+   "seance": "JUILLET 2018",
+   "fait": "Le Conseil autorise les démarches d'urbanisme et une convention d'études avec la SOLIDEO pour construire l'Aréna II.",
+   "pourquoi": "le premier vote qui engage le projet de l'Aréna",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=144041"
+  },
+  {
+   "id": "156191",
+   "seance": "JUILLET 2020",
+   "fait": "Attribution du contrat de délégation de service public, avec 51 dates dont 16 réservées au sport imposées au délégataire.",
+   "pourquoi": "ce que la Ville revendique comme une gestion publique",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=156191"
+  },
+  {
+   "id": "157759",
+   "seance": "FEVRIER 2021",
+   "fait": "Création d'une filiale de la SAE POPB (gestionnaire de Bercy) pour exploiter l'Aréna 2, avec débat sur les garanties pour la Ville.",
+   "pourquoi": "qui pilotera vraiment la salle après 2024",
+   "vedette": false,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=157759"
+  },
+  {
+   "id": "159173",
+   "seance": "JUIN 2021",
+   "fait": "Avenants à la convention Ville–Paris 2024–Solideo ; l'opposition évoque une TVA de 25 M€ et un modèle jugé fragile.",
+   "pourquoi": "l'argent public et le montage sous surveillance",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=159173"
+  },
+  {
+   "id": "164591",
+   "seance": "FEVRIER 2022",
+   "fait": "Approbation d'une subvention de 600 000 euros de l'Agence nationale du sport pour les deux gymnases de quartier.",
+   "pourquoi": "l'État participe aux gymnases populaires",
+   "vedette": false,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=164591"
+  },
+  {
+   "id": "165087",
+   "seance": "JUILLET 2022",
+   "fait": "Examen de l'agrément de la dénomination \"Adidas Arena\", combattu par les Écologistes au nom du féminisme.",
+   "pourquoi": "la marque remplace le nom d'Alice Milliat",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=165087"
+  },
+  {
+   "id": "168522",
+   "seance": "MARS 2023",
+   "fait": "Attribution du nom de l'athlète Aimée Lallement au gymnase n° 1 intégré à l'Arena.",
+   "pourquoi": "deux sportives entrent dans l'équipement",
+   "vedette": false,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=168522"
+  },
+  {
+   "id": "183569",
+   "seance": "OCTOBRE 2025",
+   "fait": "Un vœu écologiste dénonce une publicité Adidas de 650 m² jugée illégale ; l'Exécutif la déclare autorisée et conforme.",
+   "pourquoi": "la façade publique devient-elle une vitrine",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=183569"
+  }
+ ],
+ "montants": [
+  {
+   "seance": "FEVRIER 2022",
+   "montant": "600.000 euros",
+   "objet": "Subvention de l'Agence nationale du sport pour les deux gymnases",
+   "citation": "l'Etat, avec l'Agence nationale du sport, va nous accompagner dans cette opÃ©ration en finanÃ§ant Ã hauteur de 600.000 euros",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=164591"
+  },
+  {
+   "seance": "FEVRIER 2022",
+   "montant": "environ 20 millions d'euros",
+   "objet": "Budget des deux gymnases (selon Pierre Rabadan)",
+   "citation": "le budget des deux gymnases est autour d'une vingtaine de millions d'euros",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=164591"
+  },
+  {
+   "seance": "MAI 2022",
+   "montant": "2,60 millions d'euros par an",
+   "objet": "Montant total du projet de naming présenté (selon Emmanuel Coblence)",
+   "citation": "Le projet qui est prÃ©sentÃ© s?Ã©lÃ¨ve en tout Ã 2,60 millions d?euros par an. 2,30 millions d?euros au seul titre du \"naming\"",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=164975"
+  },
+  {
+   "seance": "MAI 2022",
+   "montant": "2,30 millions d'euros par an",
+   "objet": "Part au seul titre du naming (selon Emmanuel Coblence)",
+   "citation": "Le projet qui est prÃ©sentÃ© s?Ã©lÃ¨ve en tout Ã 2,60 millions d?euros par an. 2,30 millions d?euros au seul titre du \"naming\"",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=164975"
+  },
+  {
+   "seance": "MAI 2022",
+   "montant": "260.000 euros par an",
+   "objet": "Redevance additionnelle de 10 % sur le chiffre d'affaires perçue par la Ville (selon Emmanuel Coblence)",
+   "citation": "La redevance additionnelle de 10Â % sur le chiffre d?affaires permettra Ã la Ville de Paris de percevoir une redevance de 260.000 euros par an.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=164975"
+  },
+  {
+   "seance": "MAI 2022",
+   "montant": "180.000 euros par an",
+   "objet": "Fonds social Adidas pour des associations locales (selon Emmanuel Coblence)",
+   "citation": "un fonds social, Ã hauteur de 180.000 euros par an, pour financer des associations locales en lien avec la mairie du 18",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=164975"
+  },
+  {
+   "seance": "JUILLET 2022",
+   "montant": "100.000 euros",
+   "objet": "Contribution d'Adidas aux associations sportives, selon Émile Meunier (propos critique)",
+   "citation": "Adidas va donner 100.000 euros pour permettre aux associations sportives d?acheter des chasubles et des ballons de basket",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=165087"
+  },
+  {
+   "seance": "FEVRIER 2022",
+   "montant": "2.065.000 euros",
+   "objet": "Montant global de l'extension de périmètre (selon Rudolph Granier)",
+   "citation": "le montant global de cette extension de pÃ©rimÃ¨tre s?Ã©lÃ¨ve Ã 2.065.000 euros",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=164458"
+  },
+  {
+   "seance": "FEVRIER 2022",
+   "montant": "820.000 euros",
+   "objet": "150 places de vélo supplémentaires (selon Rudolph Granier)",
+   "citation": "150 places de vÃ©lo en plus pour 820.000 euros",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=164458"
+  },
+  {
+   "seance": "NOVEMBRE 2024",
+   "montant": "75.000 euros",
+   "objet": "Subvention d'équipement au Paris Basketball pour des sièges courtside",
+   "citation": "une subvention d'Ã©quipement de 75.000 euros et d'une convention avec le Paris Basketball dans le cadre de l'Ã©quipement de l'Adidas Arena",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=178544"
+  },
+  {
+   "seance": "JUIN 2021",
+   "montant": "25 millions d'euros",
+   "objet": "Récupération de TVA liée à l'exploitation, évoquée par Rudolph Granier",
+   "citation": "une récupération de TVA d?un montant de 25 millions d?euros",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=159173"
+  }
+ ],
+ "bmo_extraits": [],
+ "bmo_recit": null,
+ "invest": [],
+ "marches": [
+  {
+   "numero_marche": "20232023F08583",
+   "objet": "M. SUBS. CAMÉRAS DE TYPE « POURSUITE » POUR L'ADIDAS ARÉNA",
+   "fournisseur": "VIDELIO",
+   "montant_max": 273214.47,
+   "date_notification": "2023-09-25",
+   "preuve": "L'objet nomme le lieu comme destinataire de la fourniture : « CAMÉRAS DE TYPE \"POURSUITE\" POUR L'ADIDAS ARÉNA » — équipement audiovisuel installé dans la salle, le lieu n'est pas un simple repère d'adresse."
+  },
+  {
+   "numero_marche": "20232023F10215",
+   "objet": "M. SUBS. FOURNITURE DE PALANS POUR L'ADIDAS ARÉNA",
+   "fournisseur": "VIDELIO",
+   "montant_max": 98774.79,
+   "date_notification": "2023-11-10",
+   "preuve": "L'objet nomme le lieu comme destinataire : « FOURNITURE DE PALANS POUR L'ADIDAS ARÉNA » — équipement de levage scénique de la salle."
+  },
+  {
+   "numero_marche": "20232023T02637",
+   "objet": "BRANCHEMENTS EN EAU POTABLE - ADIDAS ARÉNA ET PLC",
+   "fournisseur": "EAU DE PARIS",
+   "montant_max": 40000.88,
+   "date_notification": "2023-02-22",
+   "preuve": "L'objet nomme le lieu pour des travaux de raccordement : « BRANCHEMENTS EN EAU POTABLE - ADIDAS ARÉNA ET PLC ». Réserve : l'objet couvre aussi « PLC », le montant ne porte donc pas uniquement sur l'Arena."
+  },
+  {
+   "numero_marche": "20241370090003",
+   "objet": "ADIDAS ARENA PORTE DE LA CHAPELLE",
+   "fournisseur": "DUPLIGRAFIC",
+   "montant_max": 38782.59,
+   "date_notification": "2024-01-09",
+   "preuve": "L'objet du marché est exactement et uniquement le nom du lieu : « ADIDAS ARENA PORTE DE LA CHAPELLE », qui correspond à l'Arena Porte de la Chapelle située boulevard Ney (18e) confirmée par les délibérations. La nature de la prestation n'est pas détaillée dans l'objet."
+  },
+  {
+   "numero_marche": "20242024S00363",
+   "objet": "MISE EN PEINTURE GBA ADIDAS ARENA",
+   "fournisseur": "TRALALART",
+   "montant_max": 37045.0,
+   "date_notification": "2024-01-23",
+   "preuve": "Travaux dont l'objet nomme le lieu : « MISE EN PEINTURE GBA ADIDAS ARENA ». La nature exacte de l'ouvrage peint (GBA) n'est pas détaillée dans la source."
+  },
+  {
+   "numero_marche": "20242024S02485",
+   "objet": "PRESTATIONS TECHNIQUES LANCEMENT SOP ADIDAS ARENA",
+   "fournisseur": "S. E. DE LA CHAPELLE DISTRICT",
+   "montant_max": 32518.0,
+   "date_notification": "2024-04-08",
+   "preuve": "Prestation se déroulant dans le lieu, nommé dans l'objet : « PRESTATIONS TECHNIQUES LANCEMENT SOP ADIDAS ARENA ». Le fournisseur (SIRET 90075363300016, S. E. de la Chapelle District) est l'exploitant du lieu : le Conseil de Paris a attribué la DSP de l'Aréna Porte de la Chapelle en juillet 2020 (2020 SG 18 - DJS) puis créé en 2021 une filiale à 100 % de la S.A.E. P.O.P.B. « dédiée à l'exploitation de l'Aréna 2 », ayant pour seule mission d'exécuter cette DSP (2021 DFA 1) ; le nom « La Chapelle District » figure dans le débat du Conseil sur le naming de l'Arena (mai 2022)."
+  },
+  {
+   "numero_marche": "20232023S09306",
+   "objet": "TESTS FINAUX DE PERMÉABILITÉ À L'AIR DE L'ADIDAS ARÉNA",
+   "fournisseur": "ENEXCO PARIS",
+   "montant_max": 27749.5,
+   "date_notification": "2023-10-13",
+   "preuve": "Prestation portant sur le bâtiment lui-même : « TESTS FINAUX DE PERMÉABILITÉ À L'AIR DE L'ADIDAS ARÉNA » (essais de réception réalisés sur l'ouvrage avant livraison)."
+  },
+  {
+   "numero_marche": "20242024S02810",
+   "objet": "PRESTATIONS TECHNIQUES LANCEMENT PVOL ADIDAS ARENA",
+   "fournisseur": "S. E. DE LA CHAPELLE DISTRICT",
+   "montant_max": 26984.23,
+   "date_notification": "2024-04-15",
+   "preuve": "Prestation se déroulant dans le lieu, nommé dans l'objet : « PRESTATIONS TECHNIQUES LANCEMENT PVOL ADIDAS ARENA ». Fournisseur = exploitant du lieu (SIRET 90075363300016, S. E. de la Chapelle District, filiale dédiée à l'exploitation de l'Aréna 2 créée pour exécuter la DSP — 2021 DFA 1)."
+  },
+  {
+   "numero_marche": "decp-2024S05188",
+   "objet": "Soirée mouvement sportif Parisien ADIDAS ARENA",
+   "fournisseur": "SOCIETE D'EXPLOITATION DE LA CHAPELLE DISTRICT",
+   "montant_max": 14309.7,
+   "date_notification": "2024-06-13",
+   "preuve": "Événement organisé dans le lieu, nommé dans l'objet : « Soirée mouvement sportif Parisien ADIDAS ARENA ». Fournisseur = exploitant du lieu (SIRET 90075363300016). Le lieu_execution DECP « Paris » est trop large pour prouver quoi que ce soit : c'est l'objet seul qui fonde le rattachement."
+  }
+ ],
+ "sources": {
+  "delibs": {
+   "name": "Débat-Délibs — Conseil de Paris",
+   "url": "https://a06-v7.apps.paris.fr/a06/"
+  },
+  "bmo": {
+   "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
+   "url": "https://gallica.bnf.fr/ark:/12148/cb343512457/date"
+  },
+  "invest": {
+   "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
+   "url": "https://opendata.paris.fr/"
+  },
+  "wiki": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ }
+}

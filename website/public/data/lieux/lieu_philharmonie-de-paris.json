@@ -1,0 +1,697 @@
+{
+ "generated_at": "2026-07-18T14:38:43.284445+00:00",
+ "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
+ "slug": "philharmonie-de-paris",
+ "name": "Philharmonie de Paris",
+ "kind_fr": "Salle de concert",
+ "kind_en": "Concert hall",
+ "famille": "culture",
+ "arrondissement": 19,
+ "lat": 48.8908,
+ "lon": 2.3939,
+ "photo": "/img/lieux/philharmonie-de-paris.jpg",
+ "photo_credit": {
+  "licence": null,
+  "auteur": null,
+  "url": "https://fr.wikipedia.org/wiki/Philharmonie_de_Paris",
+  "source": "Wikipédia"
+ },
+ "wiki": {
+  "extract": "La Philharmonie de Paris, inaugurée le 14 janvier 2015, est un centre culturel français composé d'une salle de concert de 2 400 places, dite « Pierre Boulez », d'espaces d'exposition, d'ateliers pédagogiques et de salles de répétitions.",
+  "url": "https://fr.wikipedia.org/wiki/Philharmonie_de_Paris",
+  "source": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ },
+ "stats": {
+  "n_delibs": 178,
+  "delibs_span": [
+   2006,
+   2025
+  ],
+  "n_bmo_brut": 46,
+  "n_bmo_verifies": 12,
+  "invest_total_eur": 10997126.39,
+  "invest_annees": [
+   "2022"
+  ],
+  "lecture_mode": "titre nommant le lieu (35 trouvés)",
+  "n_lus": 35,
+  "n_lieu": 34
+ },
+ "subventions_exploitant": {
+  "nom_fiche": "LA CITE DE LA MUSIQUE",
+  "total_eur": 101117978.3,
+  "annees": [
+   "2018",
+   "2024"
+  ],
+  "rows": [
+   {
+    "annee": "2024",
+    "montant_eur": 15927885.0,
+    "beneficiaire": "LA CITE DE LA MUSIQUE",
+    "thematique": "Culture"
+   },
+   {
+    "annee": "2023",
+    "montant_eur": 15058117.0,
+    "beneficiaire": "LA CITE DE LA MUSIQUE",
+    "thematique": "Culture"
+   },
+   {
+    "annee": "2022",
+    "montant_eur": 11107825.0,
+    "beneficiaire": "LA CITE DE LA MUSIQUE",
+    "thematique": "Culture"
+   },
+   {
+    "annee": "2021",
+    "montant_eur": 12468588.81,
+    "beneficiaire": "LA CITE DE LA MUSIQUE",
+    "thematique": "Culture"
+   },
+   {
+    "annee": "2020",
+    "montant_eur": 17101387.49,
+    "beneficiaire": "LA CITE DE LA MUSIQUE",
+    "thematique": "Culture"
+   },
+   {
+    "annee": "2019",
+    "montant_eur": 17233336.0,
+    "beneficiaire": "LA CITE DE LA MUSIQUE",
+    "thematique": "Culture"
+   },
+   {
+    "annee": "2018",
+    "montant_eur": 12220839.0,
+    "beneficiaire": "LA CITE DE LA MUSIQUE",
+    "thematique": "Culture"
+   }
+  ],
+  "perimetre": "multi",
+  "note_publique": "Cette subvention finance l'établissement public Cité de la musique - Philharmonie de Paris, né de la fusion de la Cité de la musique et de la Philharmonie : elle couvre les deux sites voisins de La Villette (19e), pas uniquement la Philharmonie.",
+  "autres_sites": [
+   "Cité de la musique (19e)"
+  ]
+ },
+ "residents": [],
+ "kpi_montant": {
+  "valeur": "15,3 M€/an",
+  "label_fr": "Charge d’emprunt 2015–2028",
+  "label_en": "Loan burden 2015–2028",
+  "doc_id": "164316",
+  "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=164316"
+ },
+ "synthese_fr": "De 2006 à 2014, la Ville de Paris subventionne l'association « Philharmonie de Paris » chargée transitoirement de la maîtrise d'ouvrage (240.000 € en 2006, puis des subventions annuelles croissantes de fonctionnement et d'équipement, jusqu'à 5.536.577 € d'équipement en 2008). En 2009, la Ville garantit les emprunts de l'association à hauteur de 117.167.610 €, garantie portée à 158.265.348 € en mars 2011, tandis que le coût du projet dérive selon les débats : estimé 118 à 175 M€ à l'origine, il est cité à 350 M€ en 2011, 381 M€ en 2014, puis 328 M€ « à la livraison » et jusqu'à 534 M€ dans les débats de 2022-2024. En octobre 2014, une convention (2014 DFA 33) organise le remboursement par la Ville de l'emprunt contracté par l'association au taux de 5,186 % (surcoût chiffré à 25 M€ par l'opposition) ; après des vœux répétés et le rapport de la Chambre régionale des comptes, le prêt obligataire Société Générale est réaménagé en septembre 2016 avec un taux abaissé à 4,7 %, soit 4,35 M€ de baisse. Depuis la substitution de l'établissement public à l'association le 1er octobre 2015, la Ville verse une subvention annuelle d'environ 15,3 à 15,7 M€ correspondant, selon l'Exécutif, à 152 M€ de capital et 62,40 M€ d'intérêts à rembourser de 2015 à 2028 (15,30 M€ par an). Après la livraison, des subventions d'équipement supplémentaires s'ajoutent : 3,5 M€ actés fin 2021 puis 7 M€ en mars 2022 à la suite de l'accord transactionnel du 20 octobre 2021 avec Jean Nouvel, dont le procès s'était soldé par 15 M€ de travaux supplémentaires et « un accord dont on ne connaît pas le montant ».",
+ "moments": [
+  {
+   "id": "92379",
+   "seance": "DECEMBRE 2006",
+   "fait": "Première subvention municipale (240 000 €) à l'association chargée transitoirement de la maîtrise d'ouvrage du grand auditorium.",
+   "pourquoi": "point de départ",
+   "vedette": false,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=92379"
+  },
+  {
+   "id": "90357",
+   "seance": "JUILLET 2007",
+   "fait": "Le Conseil décide de créer avec l'État et la Région l'établissement public « Philharmonie de Paris », chargé de construire le grand auditorium.",
+   "pourquoi": "acte de naissance institutionnel",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=90357"
+  },
+  {
+   "id": "74657",
+   "seance": "JUILLET 2009",
+   "fait": "La Ville garantit les emprunts de l'association jusqu'à 117 167 610 €, s'engageant à payer en cas de défaillance.",
+   "pourquoi": "la Ville s'expose",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=74657"
+  },
+  {
+   "id": "121130",
+   "seance": "OCTOBRE 2014",
+   "fait": "Convention pour le remboursement par la Ville de l'emprunt de l'association ; l'opposition chiffre le coût à 381 M€ contre 118 M€ estimés.",
+   "pourquoi": "la dette bascule sur la Ville",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=121130"
+  },
+  {
+   "id": "121312",
+   "seance": "NOVEMBRE 2014",
+   "fait": "Dernière subvention à l'association avant l'ouverture au public, le 14 janvier 2015.",
+   "pourquoi": "l'ouverture",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=121312"
+  },
+  {
+   "id": "132294",
+   "seance": "SEPTEMBRE 2016",
+   "fait": "Rapport de la Chambre régionale des comptes sur la construction ; le prêt Société Générale est renégocié de 5,186 % à 4,7 %, soit 4,35 M€ de baisse.",
+   "pourquoi": "critique officielle puis renégociation",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=132294"
+  },
+  {
+   "id": "142377",
+   "seance": "MAI 2018",
+   "fait": "Avec la subvention annuelle, le Conseil adopte un vœu pour une exposition Pierre Henry, programmée du 9 avril au 11 août 2019.",
+   "pourquoi": "la vie culturelle entre en séance",
+   "vedette": false,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=142377"
+  },
+  {
+   "id": "174216",
+   "seance": "DECEMBRE 2023",
+   "fait": "Au vote de la subvention annuelle, l'Exécutif salue plus de 1 400 000 visiteurs en 2023 et un public de moins de 28 ans en hausse de 57 %.",
+   "pourquoi": "l'équipement trouve son public",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=174216"
+  }
+ ],
+ "montants": [
+  {
+   "seance": "DECEMBRE 2024",
+   "montant": "15.295.751,69 euros",
+   "objet": "subventions de fonctionnement et d'équipement 2024 à l'établissement public",
+   "citation": "subventions de fonctionnement et d'Ã©quipement de 15.295.751,69 euros et convention avec l'Ã©tablissement public CitÃ© de la musique - Philharmonie de Paris dans le 19e arrondissement",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=179020"
+  },
+  {
+   "seance": "DECEMBRE 2024",
+   "montant": "173 millions d'euros",
+   "objet": "évaluation de la construction au préprogramme de 2006",
+   "citation": "ÃvaluÃ©e Ã 173 millions d'euros lors de son prÃ©programme en 2006, la construction de la Philharmonie de Paris a en rÃ©alitÃ© coÃ»tÃ© 534 millions d'euros.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=179020"
+  },
+  {
+   "seance": "DECEMBRE 2024",
+   "montant": "534 millions d'euros",
+   "objet": "coût réel de la construction selon l'élue Marie Toubiana",
+   "citation": "la construction de la Philharmonie de Paris a en rÃ©alitÃ© coÃ»tÃ© 534 millions d'euros. La Chambre rÃ©gionale des comptes d'Ile-de-France avait relevÃ© que le choix de gestion Ã©tait gÃ©nÃ©rateur de coÃ»ts importants pour la Ville de Paris.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=179020"
+  },
+  {
+   "seance": "MARS 2022",
+   "montant": "7 millions d’euros",
+   "objet": "subvention d'équipement 2022 à l'établissement public",
+   "citation": "l'attribution d'une subvention d?Ã©quipement de 7 millions d?euros et d'une convention avec l?Ã©tablissement public CitÃ© de la Musique-Philharmonie de Paris, dans le 19e arrondissement",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=164670"
+  },
+  {
+   "seance": "MARS 2022",
+   "montant": "3,5 millions",
+   "objet": "engagement de subvention voté en décembre 2021, ensuite doublé",
+   "citation": "La Ville s?engage Ã attribuer une subvention Ã hauteur de 3,5 millions\". 3,5 millionsÂ ? AhÂ ? On est passÃ© Ã 7 millions.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=164670"
+  },
+  {
+   "seance": "MARS 2022",
+   "montant": "118 millions / 300 millions / 534 millions",
+   "objet": "trajectoire du coût du projet selon Jérôme Gleizes",
+   "citation": "Au dÃ©part, c?Ã©tait un projet Ã 118 millions. AprÃ¨s, il est passÃ© Ã 300Â millions, et, enfin, il est passÃ© Ã 534 millions.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=164670"
+  },
+  {
+   "seance": "MARS 2022",
+   "montant": "400 millions de plus",
+   "objet": "ampleur du dépassement (triplement du coût)",
+   "citation": "Et lÃ , on a triplÃ©. Mais tripler, c?est quand mÃªme 400 millions de plus.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=164670"
+  },
+  {
+   "seance": "NOVEMBRE 2009",
+   "montant": "904.148 euros",
+   "objet": "avenant à la subvention 2009 de l'association",
+   "citation": "signature d'un avenant avec l'association \"Philharmonie de Paris\" pour l'attribution d'une subvention de 904.148 euros",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=15360"
+  },
+  {
+   "seance": "NOVEMBRE 2009",
+   "montant": "34 millions d'euros",
+   "objet": "budget de fonctionnement annuel estimé de l'équipement",
+   "citation": "l'équipement prévoit un budget de fonctionnement annuel estimé à 34 millions d'euros",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=15360"
+  },
+  {
+   "seance": "NOVEMBRE 2009",
+   "montant": "environ 7,8 millions d'euros",
+   "objet": "participation annuelle prévue de la Ville, à parité avec l'État",
+   "citation": "La participation prévue pour la Ville de Paris sera d'environ 7,8 millions d'euros à part égale avec l'Etat",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=15360"
+  },
+  {
+   "seance": "NOVEMBRE 2009",
+   "montant": "175 millions d'euros hors taxes",
+   "objet": "estimation du montant total des travaux (2009)",
+   "citation": "le montant total des travaux est estimé à 175 millions d'euros hors taxes",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=15360"
+  },
+  {
+   "seance": "DECEMBRE 2006",
+   "montant": "240.000 euros",
+   "objet": "subvention de fonctionnement 2006 à l'association de préfiguration",
+   "citation": "Une subvention de fonctionnement de 240.000 euros est attribuée à l?association ?Philharmonie de Paris?",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=92379"
+  },
+  {
+   "seance": "DECEMBRE 2021",
+   "montant": "15.295.751,69 euros",
+   "objet": "subventions de fonctionnement et d'équipement 2021 (annuité de l'emprunt)",
+   "citation": "subventions de fonctionnement et d?Ã©quipement pour un montant de 15.295.751,69 euros, et sur une convention avec l?Ã©tablissement public CitÃ© de la musique - Philharmonie de Paris",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=164316"
+  },
+  {
+   "seance": "DECEMBRE 2021",
+   "montant": "4,30 millions d’euros / 11 millions d’euros",
+   "objet": "répartition de l'annuité entre fonctionnement et investissement",
+   "citation": "il s?agit du remboursement de l?emprunt de la Philharmonie garanti par la Ville de Paris et rÃ©parti en 4,30 millions d?euros de fonctionnement et 11 millions d?euros d?investissement",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=164316"
+  },
+  {
+   "seance": "DECEMBRE 2021",
+   "montant": "152 millions d’euros de capital et 62,40 millions d’euros d’intérêts",
+   "objet": "charge totale de la Ville au titre de l'emprunt (accord Ville-État de 2015)",
+   "citation": "soit au total, lorsque les opÃ©rations seront terminÃ©es, de 152 millions d?euros de capital. 62,40 millions d?euros d?intÃ©rÃªts qui sont Ã rembourser sur une pÃ©riode qui va de 2015 Ã 2028",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=164316"
+  },
+  {
+   "seance": "DECEMBRE 2021",
+   "montant": "15,30 millions d’euros chaque année",
+   "objet": "compensation annuelle versée par la Ville à la Philharmonie",
+   "citation": "la Ville compense Ã l?euro auprÃ¨s de la Philharmonie les annuitÃ©s ainsi contractÃ©es, soit 15,30 millions d?euros chaque annÃ©e",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=164316"
+  },
+  {
+   "seance": "NOVEMBRE 2014",
+   "montant": "1.250.000 euros",
+   "objet": "subvention et avenant à convention avec l'association (solde 2014)",
+   "citation": "2014 DAC 1493 - Subvention (1.250.000 euros) et avenant à convention avec l'association \"Philharmonie de Paris\" (19e).",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=121312"
+  },
+  {
+   "seance": "NOVEMBRE 2013",
+   "montant": "1.700.000 euros",
+   "objet": "subvention 2013 et avenant à la convention avec l'association",
+   "citation": "2013 DAC 633 - Subvention (1.700.000 euros) et avenant à la convention avec l'association \"Philharmonie de Paris\" (19e).",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=116447"
+  },
+  {
+   "seance": "MAI 2007",
+   "montant": "1.888.906 euros",
+   "objet": "subvention de fonctionnement 2007 à l'association",
+   "citation": "Une subvention de fonctionnement de 1.888.906 euros est attribuée à l?association Philharmonie de Paris",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=80322"
+  },
+  {
+   "seance": "MAI 2007",
+   "montant": "1.685.502 euros",
+   "objet": "subvention d'équipement 2007 à l'association",
+   "citation": "Une subvention d?équipement de 1.685.502 euros est attribuée à l?association Philharmonie de Paris",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=80322"
+  },
+  {
+   "seance": "SEPTEMBRE 2016",
+   "montant": "5,186 %",
+   "objet": "taux de l'emprunt obligataire initial pointé par la CRC",
+   "citation": "la CRC pointe du doigt cette méthode coûteuse : un taux d'emprunt de 5,186 %, auquel se sont ajoutés les 300.000 euros hors taxes de rémunération de la Société Générale pour avoir créé ce montage obligataire",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=132294"
+  },
+  {
+   "seance": "SEPTEMBRE 2016",
+   "montant": "300.000 euros hors taxes",
+   "objet": "rémunération de la Société Générale pour le montage obligataire",
+   "citation": "auquel se sont ajoutés les 300.000 euros hors taxes de rémunération de la Société Générale pour avoir créé ce montage obligataire",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=132294"
+  },
+  {
+   "seance": "SEPTEMBRE 2016",
+   "montant": "4,7 % / 4,35 millions d'euros",
+   "objet": "taux renégocié et économie totale du réaménagement",
+   "citation": "d?abaisser le taux d?emprunt ainsi renégocié par la Philharmonie aidée par la ville auprès de la Société générale à 4,7 - franchement, ce n'est pas énorme -, soit une baisse totale renégociée de 4,35 millions d'euros",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=132294"
+  },
+  {
+   "seance": "DECEMBRE 2023",
+   "montant": "15.295.751,69 euros",
+   "objet": "subventions de fonctionnement et d'équipement 2023",
+   "citation": "2023 DAC 109 - Subventions de fonctionnement et d’équipement (15.295.751,69 euros) et convention avec l'établissement public Cité de la musique - Philharmonie de Paris (19e).",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=174216"
+  },
+  {
+   "seance": "DECEMBRE 2023",
+   "montant": "8 euros / 10 euros",
+   "objet": "tarification jeune public des concerts",
+   "citation": "une stratÃ©gie tarifaire volontaire, trÃ¨s avantageuse au prix de 8 euros le concert en abonnement, et de 10 euros Ã l'unitÃ©",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=174216"
+  },
+  {
+   "seance": "MAI 2018",
+   "montant": "6.000.000 euros",
+   "objet": "subvention 2018 et avenant à convention avec l'établissement public",
+   "citation": "2018 DAC 94 - Subvention (6.000.000 euros) et avenant à convention avec l’établissement public \"Cité de la musique - Philharmonie de Paris\" (19e).",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=142377"
+  },
+  {
+   "seance": "SEPTEMBRE 2008",
+   "montant": "de 944.453 euros à 1.410.000 euros",
+   "objet": "subvention de fonctionnement 2008 revalorisée",
+   "citation": "La subvention de fonctionnement attribuée à l?association ?Philharmonie de Paris? - 211, avenue Jean Jaurès (19e), au titre de 2008 est portée de 944.453 euros à 1.410.000 euros.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=67233"
+  },
+  {
+   "seance": "SEPTEMBRE 2008",
+   "montant": "de 944.453 euros à 5.536.577 euros",
+   "objet": "subvention d'équipement 2008 revalorisée",
+   "citation": "La subvention d?équipement attribuée à l?association ?Philharmonie de Paris? - 211, avenue Jean Jaurès (19e) au titre de 2008 est portée de 944.453 euros à 5.536.577 euros.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=67233"
+  },
+  {
+   "seance": "SEPTEMBRE 2008",
+   "montant": "465.547 euros",
+   "objet": "imputation sur le budget de fonctionnement 2008",
+   "citation": "ligne P003 ?Provision pour subventions de fonctionnement au titre de la culture?: 465.547 euros",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=67233"
+  },
+  {
+   "seance": "SEPTEMBRE 2008",
+   "montant": "4.693.826 euros",
+   "objet": "imputation sur le budget d'investissement 2008 et suivants",
+   "citation": "ligne E011 ?Crédits pour subventions d?équipement? : 4.693.826 euros",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=67233"
+  },
+  {
+   "seance": "MARS 2011",
+   "montant": "de 117.167.610 euros à 158.265.348 euros",
+   "objet": "montant en capital garanti par la Ville sur les emprunts de l'association",
+   "citation": "est porté de 117.167.610 euros à 158.265.348 euros. La Ville de Paris garantit l?amortissement, le service des intérêts, les intérêts de retard et les pénalités de remboursement anticipé de cet emprunt de 158 265 348 euros",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=96786"
+  },
+  {
+   "seance": "DECEMBRE 2017",
+   "montant": "15.295.752 euros",
+   "objet": "subventions 2017 et convention avec l'établissement public",
+   "citation": "2017 DAC 176 - Subventions (15.295.752 euros) et convention avec l'établissement public Cité de la musique - Philharmonie de Paris (19e).",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=140571"
+  },
+  {
+   "seance": "DECEMBRE 2017",
+   "montant": "de 5,1 % à 4,7 / 4,3 millions d'euros",
+   "objet": "renégociation du taux de l'emprunt et économie pour la Ville",
+   "citation": "le taux de l'emprunt a été renégocié de 5,1 % à 4,7, faisant réaliser à la Ville une économie substantielle de 4,3 millions d'euros",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=140571"
+  },
+  {
+   "seance": "MAI 2011",
+   "montant": "700.000 euros",
+   "objet": "acompte sur la subvention 2011 de l'association",
+   "citation": "pour l?attribution d?un acompte sur la subvention 2011 à hauteur de 700.000 euros",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=95701"
+  },
+  {
+   "seance": "MAI 2011",
+   "montant": "près de 4 millions d’euros",
+   "objet": "charges 2011 estimées de l'association (personnels, locaux, études, assistance juridique)",
+   "citation": "les frais de location de locaux temporaires, les achats d?études et de prestations, et les frais d?assistance juridique qui sont estimés à près de 4 millions d?euros",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=95701"
+  },
+  {
+   "seance": "MAI 2011",
+   "montant": "150 millions d’euros (2006) / 350 millions d’euros",
+   "objet": "évolution du coût total des travaux",
+   "citation": "était estimé au départ à 150 millions d?euros en 2006 et atteint aujourd?hui 350 millions d?euros, en intégrant toutes les modifications du cahier des charges",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=95701"
+  },
+  {
+   "seance": "DECEMBRE 2025",
+   "montant": "15.295.751,69 euros",
+   "objet": "subventions de fonctionnement et d'équipement 2025",
+   "citation": "subventions de fonctionnement et d'Ã©quipement de 15.295.751,69 euros, pour Ãªtre prÃ©cis, et convention et avenant Ã la convention d'investissement avec l'Ã©tablissement public \"CitÃ© de la musique - Philharmonie de Paris\"",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=183673"
+  },
+  {
+   "seance": "DECEMBRE 2022",
+   "montant": "6.793.200 euros",
+   "objet": "subvention de fonctionnement 2022 (DAC 157)",
+   "citation": "2022 DAC 157 - Subvention de fonctionnement (6.793.200 euros) et avenant à la convention avec l'établissement public \"Cité de la Musique - Philharmonie de Paris\" (19e).",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=167873"
+  },
+  {
+   "seance": "DECEMBRE 2022",
+   "montant": "15.295.751,69 euros",
+   "objet": "subventions de fonctionnement et d'équipement (DAC 158)",
+   "citation": "2022 DAC 158 - Subventions de fonctionnement et d’équipement (15.295.751,69 euros) et convention avec l'établissement public \"Cité de la musique - Philharmonie de Paris \"(19e).",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=167873"
+  },
+  {
+   "seance": "DECEMBRE 2022",
+   "montant": "25 millions d’euros",
+   "objet": "coût supplémentaire lié au montage de l'emprunt obligataire porté par l'association",
+   "citation": "le remboursement par la Ville de Paris des annuitÃ©s de l?emprunt obligataire contractÃ© par la \"CitÃ© de la Musique - Philharmonie de Paris\" et portÃ© par l?association \"Philharmonie de Paris\" avec un coÃ»t supplÃ©mentaire de 25 millions d?euros",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=167873"
+  },
+  {
+   "seance": "DECEMBRE 2022",
+   "montant": "de 118 millions d’euros à 328 millions d’euros",
+   "objet": "coût total du projet du concours à la livraison",
+   "citation": "le coÃ»t total du projet de la Philharmonie de Paris Ã©tait passÃ© de 118 millions d?euros au moment du concours Ã 328 millions d?euros Ã la livraison",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=167873"
+  },
+  {
+   "seance": "DECEMBRE 2022",
+   "montant": "15 millions",
+   "objet": "travaux supplémentaires issus du procès avec Jean Nouvel",
+   "citation": "Ce procÃ¨s s?Ã©tait soldÃ© par une enveloppe de 15 millions de travaux supplÃ©mentaires et un accord dont on ne connaÃ®t pas le montant.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=167873"
+  },
+  {
+   "seance": "NOVEMBRE 2009",
+   "montant": "de 705.000 euros à 1.609.148 euros",
+   "objet": "subvention de fonctionnement 2009 revalorisée",
+   "citation": "La subvention de fonctionnement attribuée à l?association Philharmonie de Paris, dont le siège social est situé 211 avenue Jean Jaurès (19e), au titre de 2009 est portée de 705.000 euros à 1.609.148 euros.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=82256"
+  },
+  {
+   "seance": "NOVEMBRE 2009",
+   "montant": "904 148 euros",
+   "objet": "dépense correspondante imputée au budget 2009",
+   "citation": "La dépense correspondante, soit 904 148 euros, sera imputée sur le budget de fonctionnement de la Ville de Paris de 2009",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=82256"
+  },
+  {
+   "seance": "MARS 2011",
+   "montant": "environ 40 millions d'euros",
+   "objet": "sommes engagées par la Ville et l'État depuis 2006 (premiers travaux et fonctionnement de l'association)",
+   "citation": "Depuis 2006, la Ville de Paris et l'État ont engagé des sommes importantes - environ 40 millions d'euros - pour financer les premiers travaux, notamment de terrassement, et le fonctionnement de l'association",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=95874"
+  },
+  {
+   "seance": "MARS 2011",
+   "montant": "150 millions d'euros (2006) / 350 millions d'euros",
+   "objet": "évolution du coût total des travaux",
+   "citation": "le coût total des travaux était estimés à 150 millions d'euros en 2006 et atteint aujourd'hui 350 millions d'euros en intégrant les modifications du cahier des charges et l'ensemble des autres dépenses de toutes natures",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=95874"
+  },
+  {
+   "seance": "JUIN 2016",
+   "montant": "15.658.233 euros",
+   "objet": "subvention totale versée par la Ville à l'association dès 2015",
+   "citation": "le versement par la Ville de Paris à l?association \"Philharmonie de Paris\" d?une subvention d?un montant total de 15.658.233 euros",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=131356"
+  },
+  {
+   "seance": "JUIN 2016",
+   "montant": "7.599.654 euros",
+   "objet": "part investissement (remboursement du capital de l'emprunt)",
+   "citation": "dont 7.599.654 euros de subvention au titre de l?investissement (remboursement du capital)",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=131356"
+  },
+  {
+   "seance": "JUIN 2016",
+   "montant": "8.058.579 euros",
+   "objet": "part fonctionnement (remboursement des intérêts de l'emprunt)",
+   "citation": "et 8.058.579 euros au titre du fonctionnement (remboursement des intérêts)",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=131356"
+  },
+  {
+   "seance": "JUIN 2016",
+   "montant": "5,186 %",
+   "objet": "taux de l'emprunt sur 17 ans",
+   "citation": "l?emprunt sur 17 ans étant à un taux extrêmement élevé : 5,186 % faisant perdre chaque jour à la Mairie de Paris et gagner chaque jour à la banque ayant octroyé le prêt des sommes considérables",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=131356"
+  },
+  {
+   "seance": "JUILLET 2009",
+   "montant": "117.167.610 euros",
+   "objet": "montant total maximum des emprunts de l'association garantis par la Ville",
+   "citation": "La Ville de Paris garantit, pour la totalité de sa durée, le service des intérêts et l?amortissement d?un ou plusieurs emprunts d?un montant total maximum de 117.167.610 euros que l?association ?Philharmonie de Paris? se propose de contracter",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=74657"
+  },
+  {
+   "seance": "DECEMBRE 2015",
+   "montant": "15.658.233 euros",
+   "objet": "subventions de fonctionnement et d'équipement 2015 à l'établissement public",
+   "citation": "2015 DAC 602 Subventions de fonctionnement et d’équipement (15.658.233 euros) et convention avec l'établissement public Cité de la musique - Philharmonie de Paris (19e).",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=128267"
+  },
+  {
+   "seance": "MAI 2011",
+   "montant": "700.000 euros",
+   "objet": "acompte sur la subvention 2011 de l'association",
+   "citation": "Un acompte d?un montant de 700.000 euros au titre de la subvention 2011 est attribuée à l?association Philharmonie de Paris - 211, avenue Jean Jaurès (19e)",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=97970"
+  },
+  {
+   "seance": "SEPTEMBRE 2011",
+   "montant": "626.407 euros",
+   "objet": "solde de la subvention 2011 et avenant à la convention",
+   "citation": "accordant une subvention de 626.407 euros et un avenant à la convention avec l?association Philharmonie de Paris",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=102116"
+  },
+  {
+   "seance": "SEPTEMBRE 2011",
+   "montant": "1.326.407 euros",
+   "objet": "total de la subvention 2011",
+   "citation": "le solde de cette subvention qui a un total de 1.326.407 euros au titre de l'année 2011",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=102116"
+  },
+  {
+   "seance": "SEPTEMBRE 2011",
+   "montant": "700.000 euros",
+   "objet": "premier acompte 2011 déjà versé",
+   "citation": "il s'agit du versement du solde de la subvention de l'association après un premier acompte de 700.000 euros, ce qui porte la subvention totale à environ 1,3 million d?euros en 2011",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=102116"
+  },
+  {
+   "seance": "NOVEMBRE 2012",
+   "montant": "936.800 euros",
+   "objet": "solde de la subvention 2012 à l'association",
+   "citation": "l'attribution d'une subvention de 936.800 euros et avenant à la convention avec l'association \"Philharmonie de Paris\"",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=109669"
+  },
+  {
+   "seance": "NOVEMBRE 2012",
+   "montant": "1.600.000 euros",
+   "objet": "subvention 2012 totale, à parité avec l'État",
+   "citation": "une subvention au titre de 2012 de 1.600.000 euros à parité avec l'Etat, soit un solde de 936.800 euros après déduction de l'acompte déjà versé",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=109669"
+  },
+  {
+   "seance": "NOVEMBRE 2012",
+   "montant": "1.100.000 euros (2010) / 1.326.000 euros (2011)",
+   "objet": "subventions de fonctionnement des années précédentes",
+   "citation": "en 2010, la subvention de fonctionnement était de 1.100.000 euros, elle est passée en 2011 à 1.326.000 euros",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=109669"
+  },
+  {
+   "seance": "NOVEMBRE 2012",
+   "montant": "multipliés par 2,3",
+   "objet": "explosion des coûts du projet",
+   "citation": "le projet est très cher en lui-même, mais les coûts ont littéralement explosé puisque multipliés par 2,3 à la date d'aujourd'hui",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=109669"
+  },
+  {
+   "seance": "NOVEMBRE 2012",
+   "montant": "environ 9 millions d'euros pour l'Etat et autant pour la Ville",
+   "objet": "coût de fonctionnement prévisionnel de la salle",
+   "citation": "le fonctionnement de la salle représenterait environ 9 millions d'euros pour l'Etat et autant pour la Ville",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=109669"
+  },
+  {
+   "seance": "NOVEMBRE 2012",
+   "montant": "15 millions d'euros (9 billetterie, 6 mécénat)",
+   "objet": "recettes propres prévisionnelles",
+   "citation": "les recettes propres de l'équipement devraient se monter à 15 millions d'euros, 9 millions de billetterie et 6 millions de mécénat",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=109669"
+  },
+  {
+   "seance": "NOVEMBRE 2012",
+   "montant": "environ 30 %",
+   "objet": "sous-évaluation des coûts de construction reconnue par l'Exécutif",
+   "citation": "c'est d'abord l'augmentation, ou plutôt la sous-évaluation par les entreprises, des coûts de construction de la Philharmonie, environ 30 %, et c'est tout de même très regrettable",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=109669"
+  },
+  {
+   "seance": "OCTOBRE 2014",
+   "montant": "118 millions / 337 millions / 381 millions d'euros",
+   "objet": "trajectoire du coût de l'établissement",
+   "citation": "Estimée à 118 millions d'euros, puis à 337 millions d'euros, le coût de cet établissement atteint désormais les vertigineux sommets de 381 millions d'euros pour 30.000 mètres carrés utiles, soit 13.000 euros le mètre carré.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=121130"
+  },
+  {
+   "seance": "OCTOBRE 2014",
+   "montant": "13.000 euros le mètre carré",
+   "objet": "coût au m² comparé au Mucem",
+   "citation": "381 millions d'euros pour 30.000 mètres carrés utiles, soit 13.000 euros le mètre carré. A titre comparatif, le Mucem de Marseille, qui a stupéfait par son geste architectural, aura coûté quatre fois moins cher au mètre carré.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=121130"
+  },
+  {
+   "seance": "OCTOBRE 2014",
+   "montant": "18 millions d'euros",
+   "objet": "subvention de fonctionnement demandée pour 2015, dont la Ville refuse la moitié",
+   "citation": "La Ville refuse de payer, à juste titre, la moitié des 18 millions d'euros de subvention de fonctionnement demandée pour 2015.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=121130"
+  },
+  {
+   "seance": "OCTOBRE 2014",
+   "montant": "5,2 % / 3,5 %",
+   "objet": "taux des emprunts de l'association contre taux que la Ville aurait pu négocier",
+   "citation": "ce sont les emprunts contractés par l'association Philharmonie au taux de 5,2 %, quand la Ville aurait pu négocier à 3,5 %",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=121130"
+  },
+  {
+   "seance": "OCTOBRE 2014",
+   "montant": "25 millions d'euros",
+   "objet": "surcoût attribué au choix de financement par l'association",
+   "citation": "Je vous rappelle le chiffre : 25 millions d'euros dérivant de ce choix. En toute logique, nous demandons la renégociation de ces intérêts d'emprunt afin d'en faire baisser les coûts pour les Parisiens.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=121130"
+  },
+  {
+   "seance": "AVRIL 2025",
+   "montant": "9 euros",
+   "objet": "tarif de concert de la stratégie tarifaire jeune public",
+   "citation": "Cette pÃ©riode a Ã©tÃ© favorisÃ©e par une stratÃ©gie tarifaire volontariste trÃ¨s avantageuse, avec un concert Ã 9 euros",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=179777"
+  },
+  {
+   "seance": "JUILLET 2009",
+   "montant": "45 % / 45 % / 10 %",
+   "objet": "répartition du financement de la Philharmonie entre Ville, État et Région",
+   "citation": "Le financement de la Philharmonie est assuré à 45 % par la Ville, à 45 % par l'Etat et, nous l?espérons, à 10 % par la Région Ile-de-France.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=20676"
+  }
+ ],
+ "bmo_extraits": [],
+ "bmo_recit": null,
+ "invest": [
+  {
+   "annee": "2022",
+   "montant_eur": 10997126.39,
+   "nom_projet": "PROV SUB EQUIP PHILHARMONIE DE PARIS",
+   "preuve": "Le nom du projet désigne explicitement CE lieu: «PROV SUB EQUIP PHILHARMONIE DE PARIS» (provision subvention équipement Philharmonie de Paris), à 168 m. Cohérent avec 2022 DAC 105 «Subvention d'équipement (7.000.000 euros) ... Cité de la Musique - Philharmonie de Paris».",
+   "id": "2022_gen_dd1bcb2c"
+  }
+ ],
+ "marches": [],
+ "sources": {
+  "delibs": {
+   "name": "Débat-Délibs — Conseil de Paris",
+   "url": "https://a06-v7.apps.paris.fr/a06/"
+  },
+  "bmo": {
+   "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
+   "url": "https://gallica.bnf.fr/ark:/12148/cb343512457/date"
+  },
+  "invest": {
+   "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
+   "url": "https://opendata.paris.fr/"
+  },
+  "wiki": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ }
+}

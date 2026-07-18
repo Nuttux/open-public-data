@@ -5,6 +5,8 @@ import "@/app/fusion.css";
 import { Navbar, Footer, AssociationFiche } from "@/components/fusion";
 import { AssoPageHeader } from "@/components/fusion/AssoKicker";
 import { loadAssociation, loadSubventionVulgarization, loadBeneficiaireGrounded } from "@/lib/fusion-data";
+import { lieuForBeneficiaire } from "@/lib/lieux-data";
+import VoirLeLieu from "@/components/fusion/VoirLeLieu";
 import { readLocale } from "@/lib/seo";
 
 type Params = { slug: string };
@@ -47,6 +49,8 @@ export default async function AssociationPage({ params }: { params: Promise<Para
   if (!asso) return notFound();
   const vulgarization = loadSubventionVulgarization(asso.name);
   const grounded = loadBeneficiaireGrounded(asso.name);
+  const lieuLien = lieuForBeneficiaire(asso.name);
+  const locale = await readLocale();
 
   return (
     <div className="theme-fusion">
@@ -67,6 +71,7 @@ export default async function AssociationPage({ params }: { params: Promise<Para
         </div>
       </section>
       <div className="fx-fiche-wrap">
+        <VoirLeLieu lien={lieuLien} locale={locale} />
         <AssociationFiche asso={asso} vulgarization={vulgarization} grounded={grounded} />
       </div>
       </main>

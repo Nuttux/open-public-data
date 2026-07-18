@@ -1,0 +1,313 @@
+{
+ "generated_at": "2026-07-18T14:38:43.284445+00:00",
+ "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
+ "slug": "musee-bourdelle",
+ "name": "Musée Bourdelle",
+ "kind_fr": "Musée",
+ "kind_en": "Musée",
+ "famille": "culture",
+ "arrondissement": 15,
+ "lat": 48.84298,
+ "lon": 2.31859,
+ "photo": "/img/lieux/musee-bourdelle.jpg",
+ "photo_credit": {
+  "licence": "Public domain",
+  "auteur": "Didier Descouens",
+  "url": "https://commons.wikimedia.org/wiki/File:Mus%C3%A9e_Ingres-Bourdelle_-_La_Com%C3%A9die_-_Platre_-_Antoine_Bourdelle_Joconde06070001207.jpg",
+  "source": "Wikimedia Commons"
+ },
+ "wiki": {
+  "extract": "Le musée Bourdelle est l'un des quatorze musées de la Ville de Paris. Consacré à l'œuvre d'Antoine Bourdelle, il est situé dans le 15e arrondissement, sur les lieux où le sculpteur vivait et travaillait de 1885 à sa mort. Son adresse actuelle est no 18, rue Antoine-Bourdelle ; pendant la vie de Bourdelle, elle était no 16, impasse du Maine.",
+  "url": "https://fr.wikipedia.org/wiki/Mus%C3%A9e_Bourdelle",
+  "source": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ },
+ "stats": {
+  "n_delibs": 98,
+  "delibs_span": [
+   1996,
+   2011
+  ],
+  "n_bmo_brut": 253,
+  "n_bmo_verifies": null,
+  "invest_total_eur": 0,
+  "invest_annees": [],
+  "lecture_mode": "titre nommant le lieu (29 trouvés)",
+  "n_lus": 28,
+  "n_lieu": 19
+ },
+ "subventions_exploitant": null,
+ "residents": [],
+ "kpi_montant": null,
+ "synthese_fr": "Le Musée Bourdelle apparaît d'abord dans les délibérations du Conseil de Paris par un contentieux : en 1996, le Conseil autorise le Maire à transiger avec l'architecte Christian de Portzamparc, à hauteur de 715.692 F, après l'annulation par le tribunal administratif du marché de maîtrise d'œuvre passé pour l'aménagement intérieur du musée. En décembre 2002, il autorise l'acceptation du legs universel de Rodia Dufet-Bourdelle au profit du musée, assorti du droit de vendre les biens mobiliers en dépendant. Ce legs structure la décennie suivante : le Conseil autorise une série de ventes de bronzes et de fontes d'Antoine Bourdelle — 650.000 euros à la fondation Onassis en 2004, 188.000 euros à la Longfield Collection en 2005, 100.000 euros aux Fujikawa Galleries en 2006, 250.000 euros pour six fontes en 2008 — dont le produit doit, conformément aux volontés de la légatrice, revenir au musée, ainsi que des transactions avec d'anciens salariés de la légatrice. En parallèle, la Ville administre et enrichit le musée : le Conseil autorise l'acquisition du « Buste de Jeanne Prinet » pour 150.000 euros en 2007, la signature d'une convention de mécénat et d'une convention d'inventaire avec l'INHA, et approuve le principe de trois transactions après un accident survenu au musée, pour une dépense de 44.657,91 euros, en 2010. En février 2011, le Conseil approuve le principe d'une restructuration partielle du musée et la passation du marché de maîtrise d'œuvre ; en séance, l'adjointe Danièle Pourtaud décrit des travaux mêlant sécurisation et modernisation, dont la création d'une cafétéria, et un élu chiffre les travaux à près de 2,5 millions d'euros.",
+ "moments": [
+  {
+   "id": "33303",
+   "seance": "MAI 1996",
+   "fait": "Le Conseil autorise le Maire à transiger avec l'architecte Christian de Portzamparc, indemnisé à hauteur de 715 692 F, après l'annulation par le tribunal administratif du marché de maîtrise d'œuvre pour l'aménagement intérieur du musée.",
+   "pourquoi": "Le chantier du musée commence par un procès perdu.",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=33303"
+  },
+  {
+   "id": "62733",
+   "seance": "JUILLET 2001",
+   "fait": "Le Conseil autorise le Maire à signer une convention d'objectifs avec l'association « Les amis de Bourdelle », domiciliée 16 rue Antoine-Bourdelle.",
+   "pourquoi": "La Ville conventionne l'association des amis du musée.",
+   "vedette": false,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=62733"
+  },
+  {
+   "id": "71313",
+   "seance": "DECEMBRE 2002",
+   "fait": "Le Conseil autorise le Maire à accepter le legs universel de Rodia Dufet-Bourdelle au profit du Musée Bourdelle et à vendre les biens mobiliers en dépendant.",
+   "pourquoi": "Un legs fait entrer toute une collection.",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=71313"
+  },
+  {
+   "id": "87809",
+   "seance": "DECEMBRE 2004",
+   "fait": "Le Conseil autorise le Maire à vendre deux sculptures d'Antoine Bourdelle à la fondation Onassis : le « Centaure mourant » (450 000 euros) et « Sapho » (200 000 euros).",
+   "pourquoi": "La plus grosse vente de bronzes est autorisée.",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=87809"
+  },
+  {
+   "id": "66146",
+   "seance": "NOVEMBRE 2007",
+   "fait": "Le Conseil autorise le Maire à signer avec l'INHA et le Centre André Chastel une convention pour un programme d'inventaire et une exposition au musée Bourdelle.",
+   "pourquoi": "Inventorier et exposer la collection avec l'INHA.",
+   "vedette": false,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=66146"
+  },
+  {
+   "id": "35633",
+   "seance": "MAI 2010",
+   "fait": "Le Conseil approuve le principe de trois transactions après l'accident de Mme Du Boisrouvray survenu au musée, pour une dépense de 44 657,91 euros.",
+   "pourquoi": "Un accident au musée traité par voie de transaction.",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=35633"
+  },
+  {
+   "id": "97180",
+   "seance": "FEVRIER 2011",
+   "fait": "Le Conseil approuve le principe de la restructuration partielle du musée et la passation du marché de maîtrise d'œuvre.",
+   "pourquoi": "Le musée entre dans un projet de restructuration.",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=97180"
+  },
+  {
+   "id": "96031",
+   "seance": "FEVRIER 2011",
+   "fait": "En séance, l'adjointe Danièle Pourtaud présente des travaux de sécurisation et de modernisation, dont la création d'une cafétéria ; la nomination de la directrice Amélie Simier et le 150e anniversaire de Bourdelle sont évoqués.",
+   "pourquoi": "Nouvelle directrice, cafétéria et 150e anniversaire évoqués en séance.",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=96031"
+  }
+ ],
+ "montants": [
+  {
+   "seance": "MARS 2007",
+   "montant": "150.000 euros",
+   "objet": "acquisition de la sculpture « Buste de Jeanne Prinet » d'Antoine Bourdelle pour les collections du musée",
+   "citation": "M. le Maire de Paris est autorisé à acquérir une sculpture d?Antoine Bourdelle ?Buste de Jeanne Prinet?, pour un montant de 150.000 euros.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=31806"
+  },
+  {
+   "seance": "MAI 2010",
+   "montant": "4.500 euros",
+   "objet": "indemnité à la succession de Mme Du Boisrouvray (Maître Baget)",
+   "citation": "Maître Baget, chargé de la succession de Mme Du Boisrouvray, le contrat de transaction joint à la présente délibération, prévoyant le versement par la Ville d?une indemnité de 4.500 euros",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=35633"
+  },
+  {
+   "seance": "MAI 2010",
+   "montant": "2.212,11 euros",
+   "objet": "indemnité à la Mutuelle Assurance des Instituteurs de France",
+   "citation": "la Mutuelle Assurance des Instituteurs de France, le contrat de transaction joint à la présente délibération, prévoyant le versement par la Ville d?une indemnité de 2.212,11 euros",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=35633"
+  },
+  {
+   "seance": "MAI 2010",
+   "montant": "37.945,80 euros",
+   "objet": "indemnité à la Caisse Primaire d'Assurance Maladie de Rennes",
+   "citation": "la Caisse Primaire d?Assurance Maladie de Rennes, le contrat de transaction joint à la présente délibération, prévoyant le versement par la Ville d?une indemnité de 37.945,80 euros",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=35633"
+  },
+  {
+   "seance": "MAI 2010",
+   "montant": "44.657,91 euros",
+   "objet": "dépense totale des trois transactions",
+   "citation": "La dépense correspondante de 44.657,91 euros sera imputée sur le budget de fonctionnement de la Ville de Paris de 2010",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=35633"
+  },
+  {
+   "seance": "FEVRIER 2011",
+   "montant": "2,5 millions d'euros",
+   "objet": "coût des travaux de rénovation, estimation avancée en séance par M. Hermano Sanches Ruivo (propos, non délibéré)",
+   "citation": "je me réjouis qu?un nouveau musée de la Ville, le musée Bourdelle, fasse l?objet d?importants travaux de rénovation pour un montant estimé à près de 2,5 millions d?euros",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=96031"
+  },
+  {
+   "seance": "NOVEMBRE 2009",
+   "montant": "60.000 euros et 80.000 euros",
+   "objet": "estimation de la fonte « Le Fruit » mise en vente aux enchères (prix de réserve 60.000 euros)",
+   "citation": "sur une estimation comprise entre soixante à quatre vingt mille euros (60.000 euros et 80.000 euros) avec un prix de réserve de soixante mille euros (60.000 euros)",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=81827"
+  },
+  {
+   "seance": "SEPTEMBRE 2008",
+   "montant": "deux cent cinquante mille euros (250.000 euros)",
+   "objet": "prix total de la vente de six fontes d'Antoine Bourdelle",
+   "citation": "M. le Maire de Paris est autorisé à procéder à la vente de 6 fontes d?Antoine Bourdelle dont la description suit, moyennant le prix total de deux cent cinquante mille euros (250.000 euros)",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=66850"
+  },
+  {
+   "seance": "NOVEMBRE 2008",
+   "montant": "dix mille euros (10.000 euros)",
+   "objet": "prix de vente amiable du « buste de Jeanne Prinet »",
+   "citation": "la mise en vente amiable du ?buste de Jeanne Prinet? bronze d?Antoine Bourdelle (51x30x30 cm), fonte de Coubertin numéro 1 réalisée en 2008, au prix de dix mille euros (10.000 euros)",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=61715"
+  },
+  {
+   "seance": "NOVEMBRE 2008",
+   "montant": "90.000 euros et 130.000 euros",
+   "objet": "estimation de la « Tête de cheval » du Monument au général Alvéar aux enchères (réserve 90.000 euros)",
+   "citation": "sur une estimation comprise entre quatre vingt dix mille euros et cent trente mille euros (90.000 euros et 130.000 euros) avec un prix de réserve de quatre vingt dix mille euros (90.000 euros)",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=61715"
+  },
+  {
+   "seance": "JUILLET 2008",
+   "montant": "dix mille euros (10.000euros)",
+   "objet": "prix de vente amiable du « buste de Jeanne Prinet »",
+   "citation": "la mise en vente amiable du ?buste de Jeanne Prinet? bronze d?Antoine Bourdelle (51x30x30 cm), fonte de Coubertin numéro 1 réalisée en 2008, au prix de dix mille euros (10.000euros)",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=91477"
+  },
+  {
+   "seance": "JUILLET 2008",
+   "montant": "90.000euros et 13.000 euros",
+   "objet": "estimation de la « Tête de cheval » du Monument au général Alvéar (chiffres tels qu'imprimés dans la source ; en toutes lettres : quatre vingt dix mille à cent trente mille euros)",
+   "citation": "sur une estimation comprise entre quatre vingt dix mille euros et cent trente mille euros (90.000euros et 13.000 euros) avec un prix de réserve de quatre vingt dix mille euros (90.000 euros)",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=91477"
+  },
+  {
+   "seance": "MARS 2010",
+   "montant": "dix mille euros (10.000 euros)",
+   "objet": "prix de vente amiable du « buste de Jeanne Prinet » (fonte n°2 substituée à la n°1)",
+   "citation": "la mise en vente amiable du buste de Jeanne Prinet bronze d?Antoine Bourdelle (51x30x30 cm) , fonte de Coubertin numéro 2 réalisée en 2008, au prix de dix mille euros (10.000 euros)",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=44917"
+  },
+  {
+   "seance": "FEVRIER 2006",
+   "montant": "100.000 euros",
+   "objet": "vente d'un tirage bronze « Beethoven dans le vent avec draperie » à Fujikawa Galleries (Tokyo)",
+   "citation": "La vente est consentie pour un tirage en bronze de la sculpture d?Antoine Bourdelle ?Beethoven dans le vent avec draperie? à un montant de 100.000 euros.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=27796"
+  },
+  {
+   "seance": "DECEMBRE 2004",
+   "montant": "450.000 euros",
+   "objet": "vente du « Centaure mourant, variante imberbe »",
+   "citation": "?Centaure mourant, variante imberbe, 1914, bronze, 288x80x185 cm, fonte Coubertin numéro 3?, réalisée en 1991 au prix de 450.000 euros",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=87809"
+  },
+  {
+   "seance": "DECEMBRE 2004",
+   "montant": "200.000 euros",
+   "objet": "vente de « Sapho (grand modèle dit deuxième étude) »",
+   "citation": "?Sapho (grand modèle dit deuxième étude) 1887-1925,bronze, 220x94x145 cm, fonte Coubertin, exemplaire ?E.A./1?, réalisée en 1994 au prix de 200.000 euros",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=87809"
+  },
+  {
+   "seance": "JUILLET 2005",
+   "montant": "188.000 euros",
+   "objet": "vente de deux tirages bronze « Cheval sans selle » à la Longfield Collection (Genève)",
+   "citation": "La vente est consentie pour deux tirages en bronze de la sulpture d?Antoine Bourdelle ?Cheval sans selle, étude intermédiaire pour le Monument au Général Alvear? à un montant de 188.000 euros.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=87247"
+  },
+  {
+   "seance": "MARS 2005",
+   "montant": "21.863,72 euros",
+   "objet": "indemnité transactionnelle à M. Carnajac (ancien salarié de Mme Dufet-Bourdelle)",
+   "citation": "le protocole d?accord transactionnel établi avec M. Carnajac disposant qu?il lui sera versé au titre de l?indemnité transactionnelle la somme brute de 21.863,72 euros",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=26464"
+  },
+  {
+   "seance": "MARS 2005",
+   "montant": "49.999,86 euros",
+   "objet": "indemnité transactionnelle à M. Diallo (ancien salarié de Mme Dufet-Bourdelle)",
+   "citation": "le protocole d?accord transactionnel établi avec M. Diallo disposant qu?il lui sera versé au titre de l?indemnité transactionnelle la somme brute de 49.999,86 euros",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=26464"
+  },
+  {
+   "seance": "MARS 2005",
+   "montant": "71.863,58 euros",
+   "objet": "dépense totale des deux protocoles",
+   "citation": "La dépense correspondante, soit la somme totale de 71.863,58 euros, sera imputée sur le budget de fonctionnement de la Ville de Paris de 2005",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=26464"
+  },
+  {
+   "seance": "NOVEMBRE 2007",
+   "montant": "15.000 euros",
+   "objet": "dépense pour le programme d'inventaire et l'exposition au musée Bourdelle",
+   "citation": "La dépense, soit 15.000 euros, sera imputée sur le budget de fonctionnement de la Ville de Paris de l?exercice 2009",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=66146"
+  },
+  {
+   "seance": "NOVEMBRE 2007",
+   "montant": "4.000 euros",
+   "objet": "recette financée directement par l'INHA",
+   "citation": "La recette, soit 4.000 euros, financée directement par l?Institut National d?Histoire de l?Art à la Ville, sera constatée sur le budget de fonctionnement de la Ville de Paris de l?exercice 2009 et suivants",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=66146"
+  },
+  {
+   "seance": "MAI 1996",
+   "montant": "715.692 F",
+   "objet": "indemnisation de l'architecte Christian de Portzamparc après annulation du marché de maîtrise d'œuvre",
+   "citation": "ledit contrat visant à indemniser M. Christian de PORTZAMPARC à hauteur de 715.692 F.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=33303"
+  }
+ ],
+ "bmo_extraits": [],
+ "bmo_recit": null,
+ "invest": [],
+ "marches": [
+  {
+   "numero_marche": "20141210010854",
+   "objet": "CSP5 MUSEE BOURDELLE RESTRUCTURATION TCE",
+   "fournisseur": "ENTREPRISE DESTAS ET CREIB",
+   "montant_max": 1132659.88,
+   "date_notification": "2014-02-10",
+   "preuve": "L'objet du marché nomme le lieu et porte sur des travaux le concernant : « CSP5 MUSEE BOURDELLE RESTRUCTURATION TCE » (tous corps d'état). Il correspond à l'opération votée par la délibération 2011 DPA 7 : « Est approuvé le principe de réalisation des travaux de restructuration partielle du musée Bourdelle - 16, rue Antoine Bourdelle (15e) », discutée en séance de février 2011 pour « un montant estimé à près de 2,5 millions d'euros ». Notification 2014-02-10, cohérente avec le calendrier de l'opération (maîtrise d'œuvre lancée en 2011)."
+  },
+  {
+   "numero_marche": "20141210010853",
+   "objet": "CSP5 MUSEE BOURDELLE RESTRUCTURATION ELECTRICITE LOT 2",
+   "fournisseur": "SERVICES INSTALLATIONS ELECTRIQUES",
+   "montant_max": 605241.8,
+   "date_notification": "2014-02-10",
+   "preuve": "L'objet nomme le lieu et désigne un lot de travaux de la même opération : « CSP5 MUSEE BOURDELLE RESTRUCTURATION ELECTRICITE LOT 2 ». Même préfixe d'opération (« CSP5 MUSEE BOURDELLE RESTRUCTURATION ») et même date de notification (2014-02-10) que le lot TCE, rattachés à la restructuration partielle du musée votée par la délibération 2011 DPA 7 (16, rue Antoine Bourdelle, 15e)."
+  }
+ ],
+ "sources": {
+  "delibs": {
+   "name": "Débat-Délibs — Conseil de Paris",
+   "url": "https://a06-v7.apps.paris.fr/a06/"
+  },
+  "bmo": {
+   "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
+   "url": "https://gallica.bnf.fr/ark:/12148/cb343512457/date"
+  },
+  "invest": {
+   "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
+   "url": "https://opendata.paris.fr/"
+  },
+  "wiki": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ }
+}

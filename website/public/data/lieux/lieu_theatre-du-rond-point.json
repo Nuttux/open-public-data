@@ -1,0 +1,383 @@
+{
+ "generated_at": "2026-07-18T14:38:43.284445+00:00",
+ "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
+ "slug": "theatre-du-rond-point",
+ "name": "Théâtre du Rond-Point",
+ "kind_fr": "Théâtre",
+ "kind_en": "Theatre",
+ "famille": "culture",
+ "arrondissement": 8,
+ "lat": 48.86778,
+ "lon": 2.31055,
+ "photo": "/img/lieux/theatre-du-rond-point.jpg",
+ "photo_credit": {
+  "licence": null,
+  "auteur": null,
+  "url": "https://fr.wikipedia.org/wiki/Th%C3%A9%C3%A2tre_du_Rond-Point",
+  "source": "Wikipédia"
+ },
+ "wiki": {
+  "extract": "Le théâtre du Rond-Point est un théâtre parisien, situé dans le 8e arrondissement, 2bis avenue Franklin-D.-Roosevelt, à proximité des Champs-Élysées.",
+  "url": "https://fr.wikipedia.org/wiki/Th%C3%A9%C3%A2tre_du_Rond-Point",
+  "source": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ },
+ "stats": {
+  "n_delibs": 1434,
+  "delibs_span": [
+   1999,
+   2024
+  ],
+  "n_bmo_brut": 0,
+  "n_bmo_verifies": null,
+  "invest_total_eur": 0,
+  "invest_annees": [],
+  "lecture_mode": "titre nommant le lieu (43 trouvés)",
+  "n_lus": 43,
+  "n_lieu": 26
+ },
+ "subventions_exploitant": {
+  "nom_fiche": "THEATRE DU ROND POINT",
+  "total_eur": 15542346.0,
+  "annees": [
+   "2018",
+   "2024"
+  ],
+  "rows": [
+   {
+    "annee": "2024",
+    "montant_eur": 2345000.0,
+    "beneficiaire": "THEATRE DU ROND POINT",
+    "thematique": "Culture"
+   },
+   {
+    "annee": "2023",
+    "montant_eur": 2300000.0,
+    "beneficiaire": "THEATRE DU ROND POINT",
+    "thematique": "Culture"
+   },
+   {
+    "annee": "2022",
+    "montant_eur": 1980000.0,
+    "beneficiaire": "THEATRE DU ROND POINT",
+    "thematique": "Culture"
+   },
+   {
+    "annee": "2021",
+    "montant_eur": 1950500.0,
+    "beneficiaire": "THEATRE DU ROND POINT",
+    "thematique": "Culture"
+   },
+   {
+    "annee": "2020",
+    "montant_eur": 2479500.0,
+    "beneficiaire": "THEATRE DU ROND POINT",
+    "thematique": "Culture"
+   },
+   {
+    "annee": "2019",
+    "montant_eur": 2167600.0,
+    "beneficiaire": "THEATRE DU ROND POINT",
+    "thematique": "Culture"
+   },
+   {
+    "annee": "2018",
+    "montant_eur": 2319746.0,
+    "beneficiaire": "THEATRE DU ROND POINT",
+    "thematique": "Culture"
+   }
+  ]
+ },
+ "residents": [
+  {
+   "beneficiaire": "COMPAGNIE 7BIS",
+   "montant_total": 3000.0,
+   "preuve": "Objet de subvention verbatim : « diffusion DIPTYQUE au Théâtre du Rond-Point » (SIRET 85048147400045). Aide de 3 000 € à une compagnie pour une diffusion DANS le lieu, sans le gérer → résident."
+  }
+ ],
+ "kpi_montant": null,
+ "synthese_fr": "Le Théâtre du Rond-Point, 2 bis avenue Franklin D. Roosevelt (8e), est occupé et exploité par la SARL « Théâtre du Rond-Point » dans le cadre de conventions passées avec la Ville de Paris et avec l'État (ministère de la Culture, convention du 2 juin 1980), que le Conseil de Paris proroge à plusieurs reprises autour de 1999-2001 — l'adjointe Carine Rolland rappelant en 2020 que « les murs appartiennent à la Ville ». En 1999, la Ville subventionne encore le théâtre au titre de la compagnie Marcel-Maréchal ; au début des années 2000, l'adjoint Christophe Girard dit vouloir rouvrir le théâtre avec Jean-Michel Ribes. D'année en année, le Conseil vote des subventions de fonctionnement (1.300.000 € en 2002, 1.525.000 € en 2003, 1.675.000 € en 2004 et 2005, 1.775.000 € en 2007), complétées par des subventions d'équipement (console de la salle Renaud-Barrault, monte-décors, serrureries) et par des demandes de subvention à l'État pour des travaux de rénovation et de mise aux normes (2005, 2008, 2009). Le soutien se poursuit dans les délibérations les plus récentes, avec 2.350.000 € votés en 2020 et 2.190.000 € en 2024. Autour du théâtre, d'autres délibérations portent sur les abords du Rond-Point des Champs-Elysées — le parc de stationnement, la galerie marchande et les six fontaines, longtemps hors service avant l'inauguration de nouvelles fontaines en 2019.",
+ "moments": [
+  {
+   "id": "59148",
+   "seance": "FEVRIER 1999",
+   "fait": "La Ville attribue 100 000 F au Théâtre du Rond-Point – Compagnie Marcel-Maréchal pour la pièce « Rêver peut être » de Jean-Claude Grumberg.",
+   "pourquoi": "L'ère Marcel-Maréchal, une décennie avant Ribes",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=59148"
+  },
+  {
+   "id": "7935",
+   "seance": "JUILLET 2002",
+   "fait": "Sur l'avenant DAC 259, l'adjoint Christophe Girard dit vouloir rouvrir le théâtre avec Jean-Michel Ribes, tandis que le maire du 8e dénonce l'absence de saisine du conseil d'arrondissement.",
+   "pourquoi": "Rouvrir avec Jean-Michel Ribes, sous tension d'arrondissement",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=7935"
+  },
+  {
+   "id": "43876",
+   "seance": "AVRIL 2005",
+   "fait": "Le Conseil approuve, et autorise le Maire à signer, une convention d'occupation et une convention d'exploitation du théâtre liant la Ville, la SARL et l'État.",
+   "pourquoi": "Le triangle Ville–SARL–État qui régit le théâtre",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=43876"
+  },
+  {
+   "id": "92228",
+   "seance": "DECEMBRE 2006",
+   "fait": "Le Conseil vote une subvention de 35 340 € au théâtre dans le cadre de l'opération « Rond-Point Paris Beyrouth Ville Ouverte ».",
+   "pourquoi": "Quand la subvention finance un pont vers Beyrouth",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=92228"
+  },
+  {
+   "id": "14766",
+   "seance": "JUIN 2008",
+   "fait": "Sur la demande de subvention à l'État (DAC 352), le maire du 8e réclame l'engagement que les travaux de rénovation — clos et couvert, cuisines, électricité — commencent pendant la fermeture estivale.",
+   "pourquoi": "Le maire du 8e presse pour des travaux urgents",
+   "vedette": false,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=14766"
+  },
+  {
+   "id": "17429",
+   "seance": "MARS 2009",
+   "fait": "Un vœu demande la remise en état des six fontaines du rond-point des Champs-Elysées, à l'arrêt depuis plusieurs années; le devis est évalué à environ 800 000 € par le maire du 8e.",
+   "pourquoi": "Les fontaines voisines, à sec depuis des années",
+   "vedette": false,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=17429"
+  },
+  {
+   "id": "156121",
+   "seance": "JUILLET 2020",
+   "fait": "Le Conseil vote 2 350 000 € pour le théâtre; en séance, l'adjointe Carine Rolland évoque « entre 150 000 et 200 000 spectateurs » par an et écarte le critère de rentabilité.",
+   "pourquoi": "2,35 M€ et un débat sur la fréquentation",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=156121"
+  },
+  {
+   "id": "176056",
+   "seance": "MAI 2024",
+   "fait": "Le Conseil adopte la délibération DAC 9 attribuant 2 190 000 € (subvention et avenant) au théâtre du Rond-Point.",
+   "pourquoi": "Le soutien le plus récent voté : 2,19 M€",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=176056"
+  }
+ ],
+ "montants": [
+  {
+   "seance": "MAI 2024",
+   "montant": "2.190.000 euros",
+   "objet": "Subvention et avenant à convention votés en 2024 (DAC 9)",
+   "citation": "2024 DAC 9 - Subvention (2.190.000 euros) et avenant à convention avec la S.A.R.L. théâtre du Rond-Point (8e).",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=176056"
+  },
+  {
+   "seance": "JUILLET 2020",
+   "montant": "2.350.000 euros",
+   "objet": "Subvention de fonctionnement 2020 et avenant à convention",
+   "citation": "l'attribution d'une subvention de 2,350 millions d?euros et d'un avenant à la convention avec le Théâtre du Rond-Point.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=156121"
+  },
+  {
+   "seance": "JUIN 2009",
+   "montant": "445.208,82 euros",
+   "objet": "Subvention sollicitée auprès de l'État pour travaux de rénovation 2009",
+   "citation": "M. le Maire de Paris est autorisé à solliciter auprès de l?Etat une subvention d?un montant de 445.208,82 euros pour la réalisation en 2009 de travaux de rénovation au Théâtre du Rond-Point 2 bis, avenue Franklin D. Roosevelt (8e).",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=77563"
+  },
+  {
+   "seance": "OCTOBRE 2008",
+   "montant": "7.000 euros",
+   "objet": "Subvention à l'association BCDV Théâtre pour un spectacle joué au théâtre",
+   "citation": "La dépense correspondante, soit 7.000 euros, sera imputée sur le budget de fonctionnement de la Ville de Paris de 2008",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=42692"
+  },
+  {
+   "seance": "MAI 2010",
+   "montant": "de 937.500 euros à 1.846.875 euros",
+   "objet": "Subvention de fonctionnement 2010 portée par avenant",
+   "citation": "au titre de l?année 2010 est portée de 937.500 euros à 1.846.875 euros.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=35570"
+  },
+  {
+   "seance": "MAI 2010",
+   "montant": "909.375 euros",
+   "objet": "Dépense complémentaire correspondant à l'avenant 2010",
+   "citation": "La dépense correspondante, soit 909.375 euros sera imputée sur le budget de fonctionnement de la Ville de Paris de 2010",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=35570"
+  },
+  {
+   "seance": "AVRIL 2009",
+   "montant": "de 937.500 euros à 1.875.000 euros",
+   "objet": "Subvention de fonctionnement 2009 portée par avenant",
+   "citation": "au titre de l?année 2009 est portée de 937.500 euros à 1.875.000 euros.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=64628"
+  },
+  {
+   "seance": "AVRIL 2009",
+   "montant": "937.500 euros",
+   "objet": "Dépense complémentaire correspondant à l'avenant 2009",
+   "citation": "La dépense correspondante, soit 937.500 euros, sera imputée sur le budget de fonctionnement de la Ville de Paris de 2009",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=64628"
+  },
+  {
+   "seance": "JUIN 2008",
+   "montant": "1.154.477 euros",
+   "objet": "Subvention sollicitée auprès de l'État pour travaux de rénovation (2008)",
+   "citation": "Monsieur le Maire de Paris est autorisé à solliciter auprès de l?Etat une subvention d?un montant de 1.154.477 euros pour la réalisation de travaux de rénovation au Theâtre du Rond-Point 2bis avenue Franklin D. Roosevelt 75008 Paris.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=68748"
+  },
+  {
+   "seance": "JUIN 2008",
+   "montant": "1.134.238 euros",
+   "objet": "Montant de la demande de subvention indiqué dans l'intitulé de la délibération DAC 352",
+   "citation": "Montant : 1.134.238 euros.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=14766"
+  },
+  {
+   "seance": "AVRIL 2006",
+   "montant": "1.675.000 euros",
+   "objet": "Subvention de fonctionnement 2006",
+   "citation": "La dépense correspondante, soit 1.675.000 euros, sera imputée sur le budget de fonctionnement de la Ville de Paris de 2006",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=38721"
+  },
+  {
+   "seance": "FEVRIER 1999",
+   "montant": "100.000 F",
+   "objet": "Subvention au titre de la Compagnie Marcel-Maréchal (1999)",
+   "citation": "Une subvention de 100.000 F est attribuée au Théâtre du Rond-Point - Compagnie Marcel-Maréchal, 2 bis, avenue Franklin-Roosevelt (8e)",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=59148"
+  },
+  {
+   "seance": "MARS 2007",
+   "montant": "1.775.000 euros",
+   "objet": "Subvention de fonctionnement 2007",
+   "citation": "La dépense correspondante, soit 1.775.000 euros, sera imputée sur le budget de fonctionnement de la Ville de Paris de 2007",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=31653"
+  },
+  {
+   "seance": "NOVEMBRE 2005",
+   "montant": "12.650 euros",
+   "objet": "Subvention d'équipement exceptionnelle (serrureries, plancher démontable)",
+   "citation": "La dépense correspondante, soit 12.650 euros",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=90920"
+  },
+  {
+   "seance": "DECEMBRE 2006",
+   "montant": "35.340 euros",
+   "objet": "Subvention au titre de l'opération Rond-Point Paris Beyrouth Ville Ouverte",
+   "citation": "La dépense correspondante, soit 35.340 euros",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=92228"
+  },
+  {
+   "seance": "SEPTEMBRE 2008",
+   "montant": "de 887.500 euros à 1.885.000 euros",
+   "objet": "Subvention de fonctionnement 2008 portée par avenant (dont 10.000 € Nuit Blanche)",
+   "citation": "au titre de l?année 2008 est portée de 887.500 euros à 1.885.000 euros, dont 10.000 euros au titre de la Nuit Blanche 2008.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=67140"
+  },
+  {
+   "seance": "SEPTEMBRE 2008",
+   "montant": "997.500 euros",
+   "objet": "Dépense complémentaire de fonctionnement correspondant à l'avenant 2008",
+   "citation": "La dépense correspondante, soit 997.500 euros, sera imputée sur le budget de fonctionnement de la Ville de Paris de 2008",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=67140"
+  },
+  {
+   "seance": "SEPTEMBRE 2008",
+   "montant": "68.900 euros",
+   "objet": "Subvention d'équipement (monte-décors, strapontins salle Renaud-Barrault, mezzanine)",
+   "citation": "La dépense correspondante, soit 68.900 euros, sera imputée sur le budget d?investissement de la Ville de Paris",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=67140"
+  },
+  {
+   "seance": "MARS 2004",
+   "montant": "1.675.000 euros",
+   "objet": "Subvention de fonctionnement 2004",
+   "citation": "La dépense correspondante, soit 1.675.000 euros, sera imputée sur le budget de fonctionnement de la Ville de Paris de 2004",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=57864"
+  },
+  {
+   "seance": "AVRIL 2002",
+   "montant": "370.000 euros",
+   "objet": "Subvention d'équipement (aménagement et mise en conformité)",
+   "citation": "Une subvention d'équipement de 370.000 euros est attribuée à la S.A.R.L. \"Théâtre du Rond-Point\", 2 bis, avenue Franklin-D. Roosevelt (8e), afin de participer au financement d'acquisitions pour l'aménagement et la mise en conformité",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=73713"
+  },
+  {
+   "seance": "MARS 2002",
+   "montant": "1.300.000 euros",
+   "objet": "Subvention de fonctionnement 2002",
+   "citation": "La dépense correspondante, soit 1.300.000 euros, sera imputée sur le budget de fonctionnement de la Ville de Paris de 2002",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=39032"
+  },
+  {
+   "seance": "AVRIL 2005",
+   "montant": "1.675.000 euros",
+   "objet": "Subvention de fonctionnement 2005",
+   "citation": "La dépense correspondante, soit 1.675.000 euros, sera imputée sur le budget de fonctionnement de la Ville de Paris de 2005",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=43779"
+  },
+  {
+   "seance": "AVRIL 2005",
+   "montant": "8.422 euros",
+   "objet": "Subvention d'équipement exceptionnelle (console numérique salle Renaud-Barrault)",
+   "citation": "La dépense correspondante, soit 8.422 euros, sera imputée sur le budget de fonctionnement de la Ville de Paris",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=43779"
+  },
+  {
+   "seance": "MARS 2003",
+   "montant": "1.525.000 euros",
+   "objet": "Subvention de fonctionnement 2003",
+   "citation": "La dépense correspondante, soit 1.525.000 euros, sera imputée sur le budget de fonctionnement de la Ville de Paris de 2003",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=68802"
+  },
+  {
+   "seance": "JUILLET 2002",
+   "montant": "225.000 euros",
+   "objet": "Complément de subvention de fonctionnement 2002 (avenant)",
+   "citation": "La dépense correspondante, soit 225.000 euros, sera imputée sur le budget de fonctionnement de la Ville de Paris de 2002",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=87949"
+  },
+  {
+   "seance": "JUILLET 2002",
+   "montant": "450.000 euros",
+   "objet": "Subvention au théâtre évoquée en séance par le maire du 8e (propos; la délibération DAC 259 porte, elle, sur 225.000 €)",
+   "citation": "je vois apparaître à notre ordre du jour une subvention de 450.000 euros pour le Théâtre du Rond-Point",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=7935"
+  }
+ ],
+ "bmo_extraits": [],
+ "bmo_recit": null,
+ "invest": [],
+ "marches": [
+  {
+   "numero_marche": "20181210020007",
+   "objet": "MODERNISATION DES INSTALLATIONS THÉÂTRE DU ROND POINT",
+   "fournisseur": "SPIE INDUSTRIE & TERTIAIRE",
+   "montant_max": 292000.0,
+   "date_notification": "2018-04-17",
+   "preuve": "L'objet du marché nomme le lieu et porte sur des travaux dans ce bâtiment, verbatim : « MODERNISATION DES INSTALLATIONS THÉÂTRE DU ROND POINT ». Le lieu n'est pas un simple repère d'adresse et il ne s'agit pas d'un marché-cadre citant le lieu en exemple. Cohérent avec la propriété municipale des murs (séance juillet 2020 : « les murs appartiennent à la Ville ») et avec l'historique de travaux au lieu (2009 DAC 304 « Demande de subvention à l'Etat pour la réalisation de travaux de rénovation au \"Théâtre du Rond-Point\" (8e) »)."
+  }
+ ],
+ "sources": {
+  "delibs": {
+   "name": "Débat-Délibs — Conseil de Paris",
+   "url": "https://a06-v7.apps.paris.fr/a06/"
+  },
+  "bmo": {
+   "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
+   "url": "https://gallica.bnf.fr/ark:/12148/cb343512457/date"
+  },
+  "invest": {
+   "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
+   "url": "https://opendata.paris.fr/"
+  },
+  "wiki": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ }
+}

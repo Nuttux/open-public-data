@@ -1,0 +1,300 @@
+{
+ "generated_at": "2026-07-18T14:38:43.284445+00:00",
+ "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
+ "slug": "bois-de-boulogne",
+ "name": "Bois de Boulogne",
+ "kind_fr": "Bois",
+ "kind_en": "Bois",
+ "famille": "vert",
+ "arrondissement": 16,
+ "lat": 48.87511,
+ "lon": 2.286939,
+ "photo": "/img/lieux/bois-de-boulogne.jpg",
+ "photo_credit": {
+  "licence": null,
+  "auteur": null,
+  "url": "https://fr.wikipedia.org/wiki/Bois_de_Boulogne",
+  "source": "Wikipédia"
+ },
+ "wiki": {
+  "extract": "Le bois de Boulogne est une étendue boisée, située dans le 16e arrondissement de Paris.",
+  "url": "https://fr.wikipedia.org/wiki/Bois_de_Boulogne",
+  "source": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ },
+ "stats": {
+  "n_delibs": 828,
+  "delibs_span": [
+   2005,
+   2025
+  ],
+  "n_bmo_brut": 0,
+  "n_bmo_verifies": null,
+  "invest_total_eur": 0,
+  "invest_annees": [],
+  "lecture_mode": "titre nommant le lieu (203 trouvés)",
+  "n_lus": 45,
+  "n_lieu": 44
+ },
+ "subventions_exploitant": null,
+ "residents": [],
+ "kpi_montant": null,
+ "synthese_fr": "Depuis 2005, le bois de Boulogne revient régulièrement devant le Conseil de Paris, d'abord au fil de dossiers ponctuels : un vœu demandant l'abandon de l'extension de Roland-Garros, qui aurait pris environ un hectare du bois (2005), les concessions et leur desserte, la charte d'aménagement durable signée en 2003, ou l'arrêté préfectoral de 2012 et les travailleuses du sexe du bois. En 2017, un rapport de la Chambre régionale des comptes sur la gestion des deux bois nourrit un débat où des élus dénoncent un contrôle trop faible des concessions privées. À partir de 2023, le Conseil crée une Mission d'information et d'évaluation sur les deux bois, dont le rapport de mai 2024 formule plus de 68 recommandations. Le meurtre de Philippine en septembre 2024 fait de la sécurité le sujet dominant — vœux sur les effectifs, demande d'une brigade dédiée, puis, fin 2025, une délibération permettant à la Garde républicaine de regrouper et d'étendre ses locaux dans le bois — tandis que se poursuivent des dossiers plus quotidiens : entretien des lacs, stationnement payant, dénomination d'une allée, prolongation du contrat du centre hippique.",
+ "moments": [
+  {
+   "id": "87249",
+   "seance": "JUILLET 2005",
+   "fait": "Le Conseil examine un vœu demandant l'abandon du projet d'extension de Roland-Garros, qui aurait pris environ un hectare du bois.",
+   "pourquoi": "Les Verts contre l'extension de Roland-Garros",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=87249"
+  },
+  {
+   "id": "106208",
+   "seance": "JUIN 2012",
+   "fait": "Après un arrêté préfectoral du 1er mars, l'Exécutif demande au Préfet que la réglementation ne serve pas à réprimer les travailleuses et travailleurs du sexe du bois.",
+   "pourquoi": "Ville et police s'opposent sur la prostitution",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=106208"
+  },
+  {
+   "id": "138151",
+   "seance": "SEPTEMBRE 2017",
+   "fait": "Le Conseil débat du rapport de la Chambre régionale des comptes sur la gestion des deux bois, où des élus dénoncent un contrôle trop faible des concessions privées.",
+   "pourquoi": "Le rapport de la Chambre des comptes en débat",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=138151"
+  },
+  {
+   "id": "163913",
+   "seance": "JUILLET 2021",
+   "fait": "Un vœu réclame l'entretien régulier des lacs et la protection de leur biodiversité, après des morts d'animaux attribuées au botulisme.",
+   "pourquoi": "Cygnes morts, lac jamais curé depuis 1941",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=163913"
+  },
+  {
+   "id": "176209",
+   "seance": "MAI 2024",
+   "fait": "Le Conseil débat du rapport de la Mission d'information et d'évaluation sur les deux bois, présenté comme une mission record aux 68 recommandations.",
+   "pourquoi": "Le grand bilan des deux bois parisiens",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=176209"
+  },
+  {
+   "id": "178369",
+   "seance": "OCTOBRE 2024",
+   "fait": "Après le meurtre de Philippine, des vœux demandent d'appliquer les préconisations de sécurité et de créer une brigade de police municipale dédiée au bois.",
+   "pourquoi": "Après le meurtre de Philippine, la sécurité",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=178369"
+  },
+  {
+   "id": "181370",
+   "seance": "JUIN 2025",
+   "fait": "Le Conseil donne à une partie du chemin des Réservoirs le nom d'allée Albert Ouzoulias, résistant communiste, près du monument aux fusillés de la cascade.",
+   "pourquoi": "Un résistant honoré au cœur du bois",
+   "vedette": false,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=181370"
+  },
+  {
+   "id": "182210",
+   "seance": "JUILLET 2025",
+   "fait": "Le Conseil prolonge de deux ans le contrat du centre hippique, les clubs s'engageant à 226 000 € de travaux, le temps d'études sur le bien-être animal et le bâti napoléonien.",
+   "pourquoi": "Le centre équestre prolongé pour deux ans",
+   "vedette": false,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=182210"
+  }
+ ],
+ "montants": [
+  {
+   "seance": "JUILLET 2025",
+   "montant": "226 000 €",
+   "objet": "travaux que les clubs s'engagent à réaliser pendant la prolongation de deux ans",
+   "citation": "programme de travaux pour un montant de 226.000 euros",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=182210"
+  },
+  {
+   "seance": "JUILLET 2025",
+   "montant": "2 100 à 2 700 € / an",
+   "objet": "tarifs annuels du centre équestre cités par Mme Markovic (droits, cotisations, forfaits)",
+   "citation": "des tarifs entre 2.100 et 2.700 euros",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=182210"
+  },
+  {
+   "seance": "OCTOBRE 2024",
+   "montant": "3 € / 3 h",
+   "objet": "ticket de stationnement « de bois » créé par la Ville pour les loisirs, selon M. Belliard",
+   "citation": "un ticket de bois Ã 3 euros pour 3 heures, les mercredis et samedis",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=178301"
+  },
+  {
+   "seance": "SEPTEMBRE 2011",
+   "montant": "2 millions (évoqués)",
+   "objet": "somme évoquée de façon rhétorique par M. Contassot au sujet de la dépollution du plomb du site",
+   "citation": "Pourquoi dépenser 2 millions alors que la Ville peut les prendre en charge",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=102078"
+  },
+  {
+   "seance": "JUILLET 2005",
+   "montant": "227 M€ (total estimé)",
+   "objet": "coût estimé du projet (87 M€) et de la couverture du périphérique (140 M€), selon l'exposé du vœu",
+   "citation": "Le coût de ce projet a été estimé à 87 millions d?euros et le coût de la couverture à 140 millions d?euros, soit un total de 227 millions d?euros",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=87249"
+  },
+  {
+   "seance": "JUILLET 2005",
+   "montant": "75,66 M€ (Ville, conditionnel)",
+   "objet": "participation prévisionnelle de la Ville, « participerait à hauteur de 33,33 % », selon l'exposé du vœu",
+   "citation": "La Ville de Paris participerait à hauteur de 33,33% du coût total, soit un montant de 75,66 millions d?euros",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=87249"
+  },
+  {
+   "seance": "JUILLET 2005",
+   "montant": "62 M€ (FFT)",
+   "objet": "enveloppe déjà dégagée par la Fédération française de tennis, selon l'exposé du vœu",
+   "citation": "La Fédération Française de Tennis a quant à elle d?ores et déjà dégagé une enveloppe de 62 millions d?euros",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=87249"
+  },
+  {
+   "seance": "JUILLET 2005",
+   "montant": "137 M€ (reste, conditionnel)",
+   "objet": "montant restant à répartir entre l'État et l'Île-de-France, selon l'exposé du vœu",
+   "citation": "Les 137 millions d?euros restant seraient répartis entre l?Etat et l?Ile de France",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=87249"
+  },
+  {
+   "seance": "MARS 2012",
+   "montant": "207 000 € + redevance +13 %",
+   "objet": "travaux du concessionnaire et hausse de redevance pendant la prolongation de 18 mois, selon M. Gaudillère",
+   "citation": "la redevance sera augmentée de 13 % et le concessionnaire s?est engagé à faire 207.000 euros de travaux",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=104659"
+  },
+  {
+   "seance": "JUILLET 2009",
+   "montant": "239 000 € (refusés)",
+   "objet": "somme que les forains auraient dû payer pour les dégradations et qu'ils ont refusée, selon M. Contassot",
+   "citation": "ils auraient dû payer au total 239.000 euros",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=20641"
+  },
+  {
+   "seance": "JUILLET 2009",
+   "montant": "150 000 €",
+   "objet": "redevance forfaitaire versée à la Ville pour l'occupation du domaine public par la Fête au Bois 2009",
+   "citation": "La redevance perçue par la Ville de Paris au titre de l?occupation du domaine public est fixée forfaitairement à 150.000 euros",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=74951"
+  },
+  {
+   "seance": "MAI 2011",
+   "montant": "25 000 € minimum (≥10 % du CA)",
+   "objet": "redevance minimale garantie imposée aux repreneurs des chalets de vente du bois",
+   "citation": "taux minimum de la redevance due par le concessionnaire à 10% minimum du chiffre d?affaires hors taxes généré par son activité sur le site et un montant de redevance garanti de 25 000 euros minimum",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=97785"
+  }
+ ],
+ "bmo_extraits": [],
+ "bmo_recit": null,
+ "invest": [],
+ "marches": [
+  {
+   "numero_marche": "decp-2026T01251",
+   "objet": "Travaux de fontainerie, d’entretien, de réparation et d’extension des réseaux d’adduction d’eau dans les bois, espaces verts et cimetières de la ville de Paris.\n\n - Travaux de fontainerie, d’entretien",
+   "fournisseur": "EIFFAGE GENIE CIVIL RESEAUX",
+   "montant_max": 6000000.0,
+   "date_notification": "2026-03-10",
+   "preuve": "Objet complet du lot (source DECP decp_2026_paris.json) : « Travaux de fontainerie, d’entretien, de réparation et d’extension des réseaux d’adduction d’eau dans les bois de Boulogne (16ème) et de Vincennes (12ème) et de l’École du Breuil. » Le lot nomme explicitement le bois de Boulogne et son arrondissement (16ème). Périmètre partagé avec le bois de Vincennes et l’École du Breuil : le montant maximum ne porte pas sur ce seul lieu."
+  },
+  {
+   "numero_marche": "decp-2025T02922",
+   "objet": "Accords-cadres à bons de commande pour les travaux de fouilles et plantations d'arbres pour la Ville de Paris et le Centre d'Action Sociale de la Ville de Paris. - Travaux de fouilles et de plantation",
+   "fournisseur": "UNIVERSAL PAYSAGE",
+   "montant_max": 2010000.0,
+   "date_notification": "2025-06-05",
+   "preuve": "Objet complet du lot (source DECP decp_2025_paris.json) : « Travaux de fouilles et de plantations d’arbres pour le bois de Boulogne, le bois de Vincennes et le domaine de Beauregard (78) de la Ville de Paris et le parc de la résidence de Saint-Vrain (91) du CAS-VP. » Le bois de Boulogne est nommé en premier périmètre du lot. Périmètre partagé (Vincennes, Beauregard, Saint-Vrain) : le montant maximum ne porte pas sur ce seul lieu."
+  },
+  {
+   "numero_marche": "20212021T00511",
+   "objet": "SA3 AC BC LOT4 TRAVAVAUX DE FOUILLES - BOIS DE BOULOGNE",
+   "fournisseur": "UNIVERSAL PAYSAGE",
+   "montant_max": 1920009.99,
+   "date_notification": "2021-03-17",
+   "preuve": "L’objet verbatim « SA3 AC BC LOT4 TRAVAVAUX DE FOUILLES - BOIS DE BOULOGNE » désigne un lot dédié au bois de Boulogne, nommé en toutes lettres comme seul périmètre du lot. Le marché est classé « travaux de plantation » (nature TRAVAUX) dans l’export marchés de la Ville (marches_2021.json), cohérent avec des fouilles de plantation dans le bois."
+  },
+  {
+   "numero_marche": "decp-2025T05384",
+   "objet": "Travaux d’entretien des sols (voirie, réseaux et travaux divers) dans les espaces verts, bois et cimetières parisiens. - Travaux d’entretien des sols (voirie, réseaux et travaux divers) dans les espac",
+   "fournisseur": "ACTIV TP",
+   "montant_max": 999637.0,
+   "date_notification": "2025-07-01",
+   "preuve": "Objet complet du lot (source DECP decp_2025_paris.json) : « Travaux d’entretien des sols (voirie, réseaux et travaux divers) dans les espaces verts du bois de Boulogne, le Domaine de Beauregard (78) et les centres horticoles de Rungis (94) et d’Achères (78). » Le bois de Boulogne est le premier périmètre nommé du lot. Périmètre partagé : le montant maximum ne porte pas sur ce seul lieu."
+  },
+  {
+   "numero_marche": "20161230001022",
+   "objet": "CSP5 - VRD ET ESPACES VERTS - AAGV BOIS DE BOULOGNE LOT 2",
+   "fournisseur": "TERIDEAL SEGEX",
+   "montant_max": 996122.96,
+   "date_notification": "2016-07-25",
+   "preuve": "L’objet verbatim « CSP5 - VRD ET ESPACES VERTS - AAGV BOIS DE BOULOGNE LOT 2 » nomme le bois de Boulogne comme seul site, pour des travaux de voirie-réseaux-divers et d’espaces verts à l’aire d’accueil des gens du voyage (AAGV). L’existence de cette aire dans le bois est confirmée par une délibération du contexte : « Vœu déposé par les groupes les Républicains et Indépendants, Parisiens Progressistes, Constructifs et Indépendants et UDI-MODEM relatif à l’aire d’accueil des gens du voyage du bois de Boulogne » (séance de février 2019)."
+  },
+  {
+   "numero_marche": "20151400000758",
+   "objet": "CSP2-BUNGALOWS-CELLES-ST-CLOUD/BOIS DE BOULOGNE-LOT 1",
+   "fournisseur": "TRANSPORTS PIERRE ROSSION",
+   "montant_max": 800000.0,
+   "date_notification": "2015-07-06",
+   "preuve": "L’objet verbatim « CSP2-BUNGALOWS-CELLES-ST-CLOUD/BOIS DE BOULOGNE-LOT 1 » nomme le bois de Boulogne comme site du lot ; l’export marchés de la Ville (marches_2015.json) classe ce marché en « Structures provisoires, accueil d’été des centres de loisirs ». Confiance moyenne : l’objet abrégé sépare par une barre oblique deux sites (La Celle-Saint-Cloud et le bois de Boulogne) sans permettre de savoir quelle part revient au bois."
+  },
+  {
+   "numero_marche": "decp-2025S07121",
+   "objet": "Entretien des jeunes peuplements forestiers dans le bois de Boulogne\n(16ème) et le Domaine de Beauregard (78).",
+   "fournisseur": "ESPACE DECO",
+   "montant_max": 400000.0,
+   "date_notification": "2025-08-19",
+   "preuve": "L’objet verbatim « Entretien des jeunes peuplements forestiers dans le bois de Boulogne (16ème) et le Domaine de Beauregard (78) » nomme le lieu et son arrondissement, et décrit une prestation sylvicole qui s’y déroule. Périmètre partagé avec le Domaine de Beauregard (78) : le montant maximum ne porte pas sur ce seul lieu."
+  },
+  {
+   "numero_marche": "20212021T02137",
+   "objet": "BAT DEVE 93W AVENUE DE L'HIPPODROME BOIS DE BOULOGNE",
+   "fournisseur": "PROCHALOR",
+   "montant_max": 338189.48,
+   "date_notification": "2021-04-26",
+   "preuve": "L’objet verbatim « BAT DEVE 93W AVENUE DE L'HIPPODROME BOIS DE BOULOGNE » situe le bâtiment concerné dans le bois de Boulogne, nommé comme seul site après l’adresse. L’export marchés de la Ville (marches_2021.json) classe le marché en « Travaux de génie climatique » (nature TRAVAUX) : il s’agit de travaux sur un bâtiment situé dans le bois, pas d’un lieu cité comme simple repère."
+  },
+  {
+   "numero_marche": "decp-2026S01626",
+   "objet": "Prestations de fauchage de prairies et pelouses, de débroussaillage de bords de voies et de taillage de haies pour les bois de Vincennes (12ème arrondissement) et Boulogne (16ème arrondissement), ains",
+   "fournisseur": "ROBERT PAYSAGE",
+   "montant_max": 120000.0,
+   "date_notification": "2026-03-27",
+   "preuve": "Objet complet (source DECP decp_2026_paris.json) : le lot retenu est « Lot 2 : Bois de Boulogne (16ème arrondissement) et domaine de Beauregard (78) » — le lot nomme explicitement ce lieu et son arrondissement pour des prestations de fauchage, débroussaillage et taillage qui s’y déroulent. Périmètre partagé avec le domaine de Beauregard (78) : le montant maximum ne porte pas sur ce seul lieu."
+  },
+  {
+   "numero_marche": "decp-2025S03215",
+   "objet": "Marché de location d’une barge motorisée pour accessibilité et transport de matériaux vers le Kiosque de l’Empereur situé sur l’ile du lac intérieur du Bois de Boulogne, 75016 Paris",
+   "fournisseur": "CONTRASTE PRO",
+   "montant_max": 32569.0,
+   "date_notification": "2025-03-28",
+   "preuve": "L’objet verbatim situe la prestation « vers le Kiosque de l’Empereur situé sur l’ile du lac intérieur du Bois de Boulogne, 75016 Paris » : la totalité du marché s’exécute à l’intérieur du lieu, à une adresse précise du bois."
+  }
+ ],
+ "sources": {
+  "delibs": {
+   "name": "Débat-Délibs — Conseil de Paris",
+   "url": "https://a06-v7.apps.paris.fr/a06/"
+  },
+  "bmo": {
+   "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
+   "url": "https://gallica.bnf.fr/ark:/12148/cb343512457/date"
+  },
+  "invest": {
+   "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
+   "url": "https://opendata.paris.fr/"
+  },
+  "wiki": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ }
+}

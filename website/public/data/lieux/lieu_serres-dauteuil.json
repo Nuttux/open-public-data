@@ -1,0 +1,201 @@
+{
+ "generated_at": "2026-07-18T14:38:43.284445+00:00",
+ "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
+ "slug": "serres-dauteuil",
+ "name": "Serres d'Auteuil",
+ "kind_fr": "Jardin",
+ "kind_en": "Garden",
+ "famille": "vert",
+ "arrondissement": 16,
+ "lat": 48.8464,
+ "lon": 2.2523,
+ "photo": "/img/lieux/serres-dauteuil.jpg",
+ "photo_credit": {
+  "licence": "CC BY-SA 4.0",
+  "auteur": "Polymagou",
+  "url": "https://commons.wikimedia.org/wiki/File:Jardin_des_serres_d%27Auteuil,_Paris_16e_58-1.jpg",
+  "source": "Wikimedia Commons"
+ },
+ "wiki": {
+  "extract": "Le jardin des serres d'Auteuil est un jardin botanique ouvert au public, situé à la lisière du bois de Boulogne à Paris (France). C'est l'un des quatre pôles du Jardin botanique de la ville de Paris. Réaménagé à la fin du XIXe siècle sous la conduite de Jean Camille Formigé, il est agrémenté de grandes serres en fonte peintes en bleu turquoise, édifiées par l'architecte français en 1898, d'une fontaine de Jules Dalou et de mascarons d'Auguste Rodin.",
+  "url": "https://fr.wikipedia.org/wiki/Jardin_des_serres_d'Auteuil",
+  "source": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ },
+ "stats": {
+  "n_delibs": 107,
+  "delibs_span": [
+   1995,
+   2012
+  ],
+  "n_bmo_brut": 1554,
+  "n_bmo_verifies": null,
+  "invest_total_eur": 0,
+  "invest_annees": [],
+  "lecture_mode": "titre nommant le lieu (13 trouvés)",
+  "n_lus": 13,
+  "n_lieu": 11
+ },
+ "subventions_exploitant": null,
+ "residents": [
+  {
+   "beneficiaire": "ARS MOBILIS",
+   "montant_total": 4500,
+   "preuve": "Objet de la subvention verbatim : « Les Solistes à l'Orangerie des Serres d'Auteuil » — l'objet nomme le lieu (l'Orangerie du jardin des Serres d'Auteuil, 16e) comme lieu de la programmation. C'est une aide à une activité musicale accueillie DANS le lieu, pas une subvention de fonctionnement du jardin : le personnel du site est employé par la Ville (2012 DEVE 75 : « les jardiniers qui sont en charge des serres d'Auteuil »), et rien dans l'objet n'indique qu'ARS MOBILIS gère le jardin. Rattaché en résident, pas en exploitant."
+  }
+ ],
+ "kpi_montant": null,
+ "synthese_fr": "Dès le milieu des années 1990, le Conseil de Paris autorise régulièrement le Maire à déposer des permis pour démolir, reconstruire ou restructurer des serres du jardin des serres d'Auteuil, du permis visant les conduits de fumée de l'ancienne chaufferie (1995) à la reconstruction de serres (1997-2000). En 1999, pour le centenaire du jardin, la Ville présente l'exposition « Palmiers entre soleil et ombre » et le Conseil autorise la signature de conventions de partenariat avec Gaz de France et Carrefour, dont la régularisation tardive est critiquée en séance. À partir de 2010, le site bascule dans un conflit d'aménagement : face au projet d'extension de Roland-Garros porté par la F.F.T., le Maire défend un vœu affirmant que seules des « serres de travail » récentes seraient touchées, tandis que le groupe E.E.L.V.A. dépose un vœu concurrent pour la préservation des serres. En 2012, la délibération DEVE 75 engage les demandes d'autorisations d'urbanisme liées à ce projet, dont un nouveau terrain de tennis, au milieu d'un débat où des élus contestent le coût et la méthode.",
+ "moments": [
+  {
+   "id": "2201",
+   "seance": "DECEMBRE 1995",
+   "fait": "Le Conseil autorise le Maire à déposer un permis de démolir visant les conduits de fumée de l'ancienne chaufferie des serres d'Auteuil.",
+   "pourquoi": "Premier permis de démolir sur l'ancienne chaufferie",
+   "vedette": false,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=2201"
+  },
+  {
+   "id": "5349",
+   "seance": "JUIN 1999",
+   "fait": "Pour le centenaire du jardin, le Conseil débat de l'autorisation de signer des conventions de mécénat (Gaz de France, Carrefour) finançant l'exposition « Palmiers entre soleil et ombre ».",
+   "pourquoi": "Le centenaire du jardin ouvre la porte au mécénat privé",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=5349"
+  },
+  {
+   "id": "20770",
+   "seance": "OCTOBRE 2003",
+   "fait": "Des élus U.M.P. interrogent le Maire sur une suppression, signalée par des correspondants, de la gratuité d'accès aux serres pour les titulaires de la carte « Paris-Famille », qui passeraient au demi-tarif ; la réponse n'est pas parvenue.",
+   "pourquoi": "Une gratuité pour les familles signalée comme supprimée",
+   "vedette": false,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=20770"
+  },
+  {
+   "id": "38548",
+   "seance": "AVRIL 2006",
+   "fait": "Le Conseil autorise le Maire à déposer une demande de permis de démolir un groupe de serres dites « couloir A » dans le jardin des serres d'Auteuil.",
+   "pourquoi": "Feu vert à une demande de permis de démolir un groupe de serres",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=38548"
+  },
+  {
+   "id": "25483",
+   "seance": "DECEMBRE 2009",
+   "fait": "L'U.M.P.P.A. demande par vœu que le comité de concertation de la Porte d'Auteuil, promis en 2008 mais jamais réuni, se tienne avant toute délibération d'urbanisme ; Anne Hidalgo propose de retirer le vœu.",
+   "pourquoi": "Un comité de concertation promis mais jamais réuni",
+   "vedette": false,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=25483"
+  },
+  {
+   "id": "20427",
+   "seance": "DECEMBRE 2010",
+   "fait": "Le Maire présente un vœu pour maintenir Roland-Garros à Paris et défend l'extension ; le groupe E.E.L.V.A. dépose un vœu concurrent pour la préservation des serres d'Auteuil.",
+   "pourquoi": "Roland-Garros contre les serres : le conflit s'ouvre",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=20427"
+  },
+  {
+   "id": "107297",
+   "seance": "JUILLET 2012",
+   "fait": "La délibération DEVE 75 engage les demandes d'autorisations d'urbanisme pour les serres et le réseau de chauffage ; le débat porte sur le terrain de tennis prévu sur les serres chaudes.",
+   "pourquoi": "Les autorisations d'urbanisme actent le projet contesté",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=107297"
+  }
+ ],
+ "montants": [
+  {
+   "seance": "JUILLET 2012",
+   "montant": "40 millions d'euros",
+   "objet": "sommes que la Ville aurait engagées ou promises pour la F.F.T., selon M. Yves Contassot (élu, en séance)",
+   "citation": "les sommes engagées ou promises par la Ville pour donner satisfaction à la F.F.T. dépassent déjà 40 millions d'euros",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=107297"
+  },
+  {
+   "seance": "JUILLET 2012",
+   "montant": "300 millions d'euros",
+   "objet": "coût de l'extension de Roland-Garros, selon Mme Laurence Dreyfuss (élue, en séance)",
+   "citation": "on est déjà largement au-dessus des 300 millions d'euros pour l'extension de Roland Garros et ce n'est pas fini",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=107297"
+  },
+  {
+   "seance": "DECEMBRE 2010",
+   "montant": "1,6 à 3 millions d'euros",
+   "objet": "redevance de la F.F.T. dans les premières années, augmentation proposée par le Maire de Paris",
+   "citation": "la redevance passant en gros d?1,6 à 3 millions d'euros dans les premières années",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=20427"
+  },
+  {
+   "seance": "DECEMBRE 2010",
+   "montant": "6 à 7 millions d'euros par an",
+   "objet": "redevance de la F.F.T. indexée sur le chiffre d'affaires à partir de 2016, selon le Maire de Paris",
+   "citation": "à partir de 2016, une fois la modernisation de Roland Garros achevée, la redevance sera indexée sur le chiffre d'affaires et devrait rapidement atteindre 6 à 7 millions d'euros par an",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=20427"
+  },
+  {
+   "seance": "JUIN 1999",
+   "montant": "2 millions de francs",
+   "objet": "budget de l'exposition « Palmiers entre soleil et ombre » (rénovation des serres et exposition-promenade), selon Mme de Panafieu (adjointe)",
+   "citation": "compte tenu du budget qui était de l'ordre de 2 millions de francs",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=5349"
+  }
+ ],
+ "bmo_extraits": [],
+ "bmo_recit": null,
+ "invest": [],
+ "marches": [
+  {
+   "numero_marche": "20151230000549",
+   "objet": "A4: TVX D'AMENAGEMENT PAYSAGER -SERRES D'AUTEUIL,PARC FLORAL",
+   "fournisseur": "TERIDEAL SEGEX",
+   "montant_max": 536757.3,
+   "date_notification": "2015-03-18",
+   "preuve": "L'objet nomme le lieu verbatim : « TVX D'AMENAGEMENT PAYSAGER -SERRES D'AUTEUIL,PARC FLORAL ». Montant partagé : l'objet vise deux sites du Jardin botanique de Paris (Serres d'Auteuil ET Parc Floral), ce que confirme le Conseil de Paris (« le Jardin botanique de Paris se développe sur plusieurs sites : le jardin des serres d'Auteuil, le jardin du Parc floral, le jardin de Bagatelle et l'arboretum », 2012 DEVE 75). La part revenant aux seules Serres d'Auteuil n'est pas connue : les 536 757,30 € ne peuvent pas être attribués en totalité à ce lieu."
+  },
+  {
+   "numero_marche": "20141230010731",
+   "objet": "CSP4:TVX RENOVATION SERRES D'AUTEUIL(6-17)-LOT1:VITRAG,PEINT",
+   "fournisseur": "CONSTRUCTIONS METALLIQUES FLORENTAI",
+   "montant_max": 327836.65,
+   "date_notification": "2014-02-04",
+   "preuve": "L'objet du marché nomme le lieu verbatim : « TVX RENOVATION SERRES D'AUTEUIL(6-17)-LOT1:VITRAG,PEINT » — travaux de rénovation (vitrage, peinture) portant sur les serres elles-mêmes, désignées par numéros (6 à 17). Le lieu n'est pas un simple repère d'adresse : il est l'objet des travaux. (Le Conseil de Paris a par ailleurs autorisé en 2012 des travaux dans ce jardin — 2012 DEVE 75, « réaménagement et rénovation des serres \"exposition\" et \"Azalée\" […] dans le jardin des Serres d'Auteuil (16e) » — sans qu'on puisse affirmer qu'il s'agit de la même opération que ce marché de 2014.)"
+  },
+  {
+   "numero_marche": "20141230010732",
+   "objet": "CSP4 TVX RENOVATION SERRES D'AUTEUIL(6-17)-LOT2:EQU.HORTICOL",
+   "fournisseur": "SARL CLAIE",
+   "montant_max": 152596.73,
+   "date_notification": "2014-02-03",
+   "preuve": "L'objet nomme le lieu verbatim : « TVX RENOVATION SERRES D'AUTEUIL(6-17)-LOT2:EQU.HORTICOL » — lot 2 (équipement horticole) de la même opération de rénovation des serres 6 à 17 que le marché 20141230010731, notifié à un jour d'intervalle."
+  },
+  {
+   "numero_marche": "20161230001333",
+   "objet": "INSTALLATION DE CLAIES D'OMBRAGE SUR LES SERRES D'AUTEUIL",
+   "fournisseur": "CONSTRUCTIONS METALLIQUES FLORENTAI",
+   "montant_max": 71544.88,
+   "date_notification": "2016-09-16",
+   "preuve": "L'objet nomme le lieu verbatim et désigne l'équipement posé sur le bâti : « INSTALLATION DE CLAIES D'OMBRAGE SUR LES SERRES D'AUTEUIL ». Prestation exécutée sur les serres du jardin."
+  }
+ ],
+ "sources": {
+  "delibs": {
+   "name": "Débat-Délibs — Conseil de Paris",
+   "url": "https://a06-v7.apps.paris.fr/a06/"
+  },
+  "bmo": {
+   "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
+   "url": "https://gallica.bnf.fr/ark:/12148/cb343512457/date"
+  },
+  "invest": {
+   "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
+   "url": "https://opendata.paris.fr/"
+  },
+  "wiki": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ }
+}

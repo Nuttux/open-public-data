@@ -1,0 +1,148 @@
+{
+ "generated_at": "2026-07-18T14:38:43.284445+00:00",
+ "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
+ "slug": "catacombes-de-paris",
+ "name": "Catacombes de Paris",
+ "kind_fr": "Musée",
+ "kind_en": "Musée",
+ "famille": "culture",
+ "arrondissement": 14,
+ "lat": 48.83398,
+ "lon": 2.33251,
+ "photo": "/img/lieux/catacombes-de-paris.jpg",
+ "photo_credit": {
+  "licence": null,
+  "auteur": null,
+  "url": "https://fr.wikipedia.org/wiki/Catacombes_de_Paris",
+  "source": "Wikipédia"
+ },
+ "wiki": {
+  "extract": "Les catacombes de Paris, terme utilisé pour nommer l'ossuaire municipal, sont à l'origine une partie des anciennes carrières souterraines situées dans le 14e arrondissement de Paris, reliées entre elles par des galeries d'inspection. Elles sont transformées en ossuaire municipal à la fin du XVIIIe siècle avec le transfert des restes d'environ six millions d'individus, évacués des divers cimetières parisiens jusqu'en 1861 pour des raisons de salubrité publique. Elles prennent alors le nom abusif de « catacombes », par analogie avec les nécropoles souterraines de la Rome antique, bien qu'elles n'aient jamais officiellement servi de lieu de sépulture.",
+  "url": "https://fr.wikipedia.org/wiki/Catacombes_de_Paris",
+  "source": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ },
+ "stats": {
+  "n_delibs": 66,
+  "delibs_span": [
+   1999,
+   2013
+  ],
+  "n_bmo_brut": 294,
+  "n_bmo_verifies": 14,
+  "invest_total_eur": 0,
+  "invest_annees": [],
+  "lecture_mode": "titre nommant le lieu (9 trouvés)",
+  "n_lus": 8,
+  "n_lieu": 8
+ },
+ "subventions_exploitant": null,
+ "residents": [],
+ "kpi_montant": null,
+ "synthese_fr": "De 1999 à 2013, le musée des Catacombes revient régulièrement devant le Conseil de Paris. Côté travaux, le Conseil approuve successivement le principe de la modernisation des installations électriques (1999), du remplacement des grilles du circuit de visite (2003), puis d'une détection incendie et d'un escalier de secours (2007) ; pour les marchés électrique (1999) et des grilles (2003), il autorise en outre le Maire à signer. Côté tarifs, il fixe le plein tarif à 7 € en 2006, puis supprime en 2009 les tarifs spécifiques du site pour les aligner sur la grille des musées de la Ville. En octobre 2009, après le saccage de l'ossuaire du 12 septembre, il examine les conditions de réouverture ; l'adjointe chargée du dossier chiffre alors à près de 700 000 € les dépenses de sécurisation engagées depuis 2004. En 2013, un vœu du groupe U.D.I. revient sur les fermetures répétées, que l'adjointe explique par des pannes de climatisation et d'éclairage de secours.",
+ "moments": [
+  {
+   "id": "9783",
+   "seance": "NOVEMBRE 1999",
+   "fait": "Le Conseil autorise le Maire à signer le marché de modernisation des installations électriques du musée ; en séance, un élu du groupe U.D.F. s'étonne du recours à un bureau d'études extérieur.",
+   "pourquoi": "premiers grands travaux électriques débattus en séance",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=9783"
+  },
+  {
+   "id": "47317",
+   "seance": "OCTOBRE 2003",
+   "fait": "Le Conseil approuve le principe des travaux de remplacement des grilles du circuit de visite et autorise le Maire à signer le marché.",
+   "pourquoi": "remplacer les grilles du circuit de visite",
+   "vedette": false,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=47317"
+  },
+  {
+   "id": "80853",
+   "seance": "JUILLET 2006",
+   "fait": "Le Conseil fixe les tarifs d'entrée des Catacombes à 7,00 € en plein tarif et 5,50 € en tarif réduit.",
+   "pourquoi": "le billet d'entrée fixé à 7 euros",
+   "vedette": false,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=80853"
+  },
+  {
+   "id": "80164",
+   "seance": "MAI 2007",
+   "fait": "Le Conseil approuve le principe de travaux de détection incendie et de mise en service d'un escalier de secours au musée.",
+   "pourquoi": "améliorer la sécurité incendie et l'évacuation du musée",
+   "vedette": false,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=80164"
+  },
+  {
+   "id": "14836",
+   "seance": "OCTOBRE 2009",
+   "fait": "Après le saccage de l'ossuaire du 12 septembre, le Conseil examine les modifications d'accès permettant la réouverture ; l'adjointe chiffre à près de 700 000 € les dépenses de sécurisation depuis 2004.",
+   "pourquoi": "réouverture après le saccage de l'ossuaire",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=14836"
+  },
+  {
+   "id": "93258",
+   "seance": "OCTOBRE 2009",
+   "fait": "Le Conseil supprime les tarifs spécifiques des Catacombes et les aligne sur la grille des musées de la Ville, à compter du 26 octobre 2009.",
+   "pourquoi": "tarifs alignés sur les musées de la Ville",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=93258"
+  },
+  {
+   "id": "111243",
+   "seance": "FEVRIER 2013",
+   "fait": "Un vœu du groupe U.D.I. pointe les fermetures à répétition (électricité, ventilation, chutes d'ossements) ; l'adjointe répond en détaillant deux fermetures récentes.",
+   "pourquoi": "fermetures à répétition d'un site souterrain",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=111243"
+  }
+ ],
+ "montants": [
+  {
+   "seance": "OCTOBRE 2009",
+   "montant": "près de 700 000 €",
+   "objet": "dépenses de sécurisation du site depuis 2004 (propos de l'adjointe Danièle POURTAUD)",
+   "citation": "la Ville a dépensé près de 700.000 euros depuis 2004 pour sécuriser les lieux",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=14836"
+  },
+  {
+   "seance": "OCTOBRE 2009",
+   "montant": "grille TTC de 2 à 11 €",
+   "objet": "tarifs des Catacombes alignés sur la grille des musées de la Ville (2009 DAC 90)",
+   "citation": "Plein tarif Tarif réduit 1 Demi tarif Tarif réduit 2 4 3 2 4,50 3 2,20 5 3,50 2,50",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=93258"
+  },
+  {
+   "seance": "JUILLET 2006",
+   "montant": "7,00 € (plein) / 5,50 € (réduit)",
+   "objet": "tarifs d'entrée des Catacombes fixés par 2006 DAC 193",
+   "citation": "Les tarifs d?entrée aux Catacombes sont fixés à : Plein tarif : 7,00 euros Tarif réduit : 5,50 euros.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=80853"
+  }
+ ],
+ "bmo_extraits": [],
+ "bmo_recit": null,
+ "invest": [],
+ "marches": [],
+ "sources": {
+  "delibs": {
+   "name": "Débat-Délibs — Conseil de Paris",
+   "url": "https://a06-v7.apps.paris.fr/a06/"
+  },
+  "bmo": {
+   "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
+   "url": "https://gallica.bnf.fr/ark:/12148/cb343512457/date"
+  },
+  "invest": {
+   "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
+   "url": "https://opendata.paris.fr/"
+  },
+  "wiki": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ }
+}

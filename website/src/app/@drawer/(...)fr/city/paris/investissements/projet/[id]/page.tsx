@@ -1,7 +1,9 @@
 import { notFound } from "next/navigation";
 
 import { DetailDrawer, ProjetFiche } from "@/components/fusion";
+import VoirLeLieu from "@/components/fusion/VoirLeLieu";
 import { loadProjet, resolveProjetPhoto } from "@/lib/fusion-data";
+import { lieuForProjet } from "@/lib/lieux-data";
 import { readLocale } from "@/lib/seo";
 
 type Params = { id: string };
@@ -48,6 +50,7 @@ export default async function RootDrawerProjetPage({ params }: { params: Promise
         backHref="/"
         breadcrumbLabel={displayName.slice(0, 50)}
       >
+        <VoirLeLieu lien={lieuForProjet(projet.name)} locale={locale} />
         <ProjetFiche projet={projet} photo={photo} />
       </DetailDrawer>
     </div>

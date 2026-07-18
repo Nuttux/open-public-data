@@ -3,6 +3,8 @@ import { notFound } from "next/navigation";
 import { DetailDrawer, AssociationFiche } from "@/components/fusion";
 import { AssoKicker } from "@/components/fusion/AssoKicker";
 import { loadAssociation, loadSubventionVulgarization, loadBeneficiaireGrounded } from "@/lib/fusion-data";
+import { lieuForBeneficiaire } from "@/lib/lieux-data";
+import VoirLeLieu from "@/components/fusion/VoirLeLieu";
 
 type Params = { slug: string };
 
@@ -28,6 +30,7 @@ export default async function DrawerAssoPage({ params }: { params: Promise<Param
         backHref="/fr/city/paris/subventions"
         breadcrumbLabel={asso.name}
       >
+        <VoirLeLieu lien={lieuForBeneficiaire(asso.name)} locale={"fr"} />
         <AssociationFiche asso={asso} vulgarization={vulgarization} grounded={grounded} />
       </DetailDrawer>
     </div>

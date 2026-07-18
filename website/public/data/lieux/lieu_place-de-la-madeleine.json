@@ -1,0 +1,173 @@
+{
+ "generated_at": "2026-07-18T14:38:43.284445+00:00",
+ "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
+ "slug": "place-de-la-madeleine",
+ "name": "Place de la Madeleine",
+ "kind_fr": "Place",
+ "kind_en": "Square",
+ "famille": "urbain",
+ "arrondissement": 8,
+ "lat": 48.870779,
+ "lon": 2.325,
+ "photo": "/img/lieux/place-de-la-madeleine.jpg",
+ "photo_credit": {
+  "licence": "CC0",
+  "auteur": "Jebulon",
+  "url": "https://commons.wikimedia.org/wiki/File:Madeleine_Paris.jpg",
+  "source": "Wikimedia Commons"
+ },
+ "wiki": {
+  "extract": "La place de la Madeleine est une place du 8e arrondissement de Paris.",
+  "url": "https://fr.wikipedia.org/wiki/Place_de_la_Madeleine",
+  "source": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ },
+ "stats": {
+  "n_delibs": 1146,
+  "delibs_span": [
+   1996,
+   2019
+  ],
+  "n_bmo_brut": 0,
+  "n_bmo_verifies": null,
+  "invest_total_eur": 0,
+  "invest_annees": [],
+  "lecture_mode": "titre nommant le lieu (22 trouvés)",
+  "n_lus": 22,
+  "n_lieu": 15
+ },
+ "subventions_exploitant": null,
+ "residents": [],
+ "kpi_montant": null,
+ "synthese_fr": "En janvier 1996, la Ville met en vente par adjudication un lot communal d'un immeuble de la place ; la même année, un arrêté approuve le principe de sa rénovation totale et, en novembre, le Conseil autorise une convention avec la R.A.T.P. sur la participation de la régie aux travaux. Sur près de vingt-cinq ans, le Conseil de Paris approuve des tranches successives d'aménagement — le terre-plein est en 1998, le principe d'une 2e phase en mars 2000 — jusqu'à un réaménagement d'ensemble que l'adjoint Christophe NAJDOVSKI décrit comme « achevé » en novembre 2019. À plusieurs reprises, des élus relaient l'inquiétude des commerçants sur l'impact des travaux : dès 2000 par une question de M. Georges SARRE, puis en 2019 avec deux vœux du groupe LRI, l'un retiré, l'autre rejeté. En parallèle, la place fait l'objet de délibérations patrimoniales et économiques : protection du bâti au Plan d'occupation des sols en 1999, tarifs du marché aux fleurs en 2005, et débats répétés sur la restauration des lavatories Art nouveau classés depuis 2011.",
+ "moments": [
+  {
+   "id": "17683",
+   "seance": "NOVEMBRE 1996",
+   "fait": "Mme SCHNEITER propose en séance de transformer la place en vaste zone piétonnière ; le maire du 8e M. LEBEL rejette vivement l'idée.",
+   "pourquoi": "quand la place piétonne divise déjà",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=17683"
+  },
+  {
+   "id": "56089",
+   "seance": "JUIN 1998",
+   "fait": "Un avenant à la convention avec la R.A.T.P. ramène la dépense inscrite de 9 000 000 F à 7 700 000 F et vise la rénovation du passage Tronchet.",
+   "pourquoi": "la facture RATP revue à la baisse",
+   "vedette": false,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=56089"
+  },
+  {
+   "id": "31083",
+   "seance": "MARS 2000",
+   "fait": "Le Conseil approuve le principe de la 2e phase d'aménagement de la place et autorise le Maire à signer le marché de travaux.",
+   "pourquoi": "le grand chantier de la place voté",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=31083"
+  },
+  {
+   "id": "10026",
+   "seance": "SEPTEMBRE 2000",
+   "fait": "Interpellé sur le retard des travaux de voirie, M. PLASAIT détaille un planning établi en concertation avec les commerçants pour limiter la gêne.",
+   "pourquoi": "les commerçants craignent le chantier de rentrée",
+   "vedette": false,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=10026"
+  },
+  {
+   "id": "43845",
+   "seance": "AVRIL 2005",
+   "fait": "Le Conseil autorise un contrat reliant par un couloir piétonnier un garage privé au parc de stationnement public situé sous la place.",
+   "pourquoi": "sous la place, un parking et ses passages",
+   "vedette": false,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=43845"
+  },
+  {
+   "id": "63123",
+   "seance": "SEPTEMBRE 2005",
+   "fait": "Le Conseil fixe à 0,64 € par m² et par jour le droit de place du marché aux fleurs de la Madeleine.",
+   "pourquoi": "le tarif du marché aux fleurs fixé",
+   "vedette": false,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=63123"
+  },
+  {
+   "id": "133321",
+   "seance": "NOVEMBRE 2016",
+   "fait": "Un vœu alerte sur la dégradation des lavatories Art nouveau, classés depuis 2011, et demande la restauration de leurs parements avant réouverture.",
+   "pourquoi": "l'avenir des lavatories Art nouveau classés",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=133321"
+  },
+  {
+   "id": "152719",
+   "seance": "NOVEMBRE 2019",
+   "fait": "L'adjoint NAJDOVSKI présente le réaménagement de la place comme achevé et conteste tout lien avec les pertes commerciales ; le vœu du groupe LRI est rejeté.",
+   "pourquoi": "la place rénovée, les commerçants pas convaincus",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=152719"
+  }
+ ],
+ "montants": [
+  {
+   "seance": "SEPTEMBRE 2005",
+   "montant": "0,64 euro",
+   "objet": "droit de place par m² et par jour au marché aux fleurs de la Madeleine",
+   "citation": "Fleurs Madeleine : Droit de place par mètre carré et par jour de tenue : 0,64 euro.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=63123"
+  },
+  {
+   "seance": "JUIN 1998",
+   "montant": "9.000.000 F",
+   "objet": "dépenses initialement inscrites au budget d'investissement",
+   "citation": "Les dépenses de 9.000.000 F inscrites au chapitre 23, article 2315, rubrique 641, compte de provision 95-000-4-99-006, du budget d'investissement de la Ville de Paris, sont ramenés à 7.700.000 F.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=56089"
+  },
+  {
+   "seance": "JUIN 1998",
+   "montant": "7.700.000 F",
+   "objet": "montant révisé à la baisse de ces dépenses",
+   "citation": "Les dépenses de 9.000.000 F inscrites au chapitre 23, article 2315, rubrique 641, compte de provision 95-000-4-99-006, du budget d'investissement de la Ville de Paris, sont ramenés à 7.700.000 F.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=56089"
+  }
+ ],
+ "bmo_extraits": [],
+ "bmo_recit": null,
+ "invest": [],
+ "marches": [
+  {
+   "numero_marche": "20181370001240",
+   "objet": "CSP4.AMÉNAGEMENT DE LA PLACE DE LA MADELEINE PARIS 8ÈME.",
+   "fournisseur": "FAYOLLE ET FILS/FAYOLLE DESAMIANTAG",
+   "montant_max": 1267254.42,
+   "date_notification": "2018-09-17",
+   "preuve": "L'objet du marché nomme le lieu verbatim : « CSP4.AMÉNAGEMENT DE LA PLACE DE LA MADELEINE PARIS 8ÈME. » — travaux d'aménagement portant sur la place elle-même, et non simple repère d'adresse. Notifié le 2018-09-17, ce marché correspond au chantier décrit au Conseil de Paris : « le réaménagement de la place de la Madeleine commence » (vœu de décembre 2018), puis « La place de la Madeleine vient d'être achevée, elle a été réaménagée » (Christophe NAJDOVSKI, séance de novembre 2019)."
+  },
+  {
+   "numero_marche": "20171370007203",
+   "objet": "CSP4:MA SUB_AC:MISSION MOE AMENAGEMENT PLACE DE LA MADELEINE",
+   "fournisseur": "OMNIUM GENERAL D'INGENIERIE",
+   "montant_max": 222788.75,
+   "date_notification": "2017-01-23",
+   "preuve": "L'objet nomme le lieu verbatim et décrit une mission de maîtrise d'œuvre dédiée à ce site : « CSP4:MA SUB_AC:MISSION MOE AMENAGEMENT PLACE DE LA MADELEINE » (SIRET fournisseur 38400090700020). Notifié le 2017-01-23, il précède de vingt mois le marché de travaux 20181370001240 portant sur le même aménagement, séquence cohérente avec le chantier confirmé par les délibérations de 2018-2019."
+  }
+ ],
+ "sources": {
+  "delibs": {
+   "name": "Débat-Délibs — Conseil de Paris",
+   "url": "https://a06-v7.apps.paris.fr/a06/"
+  },
+  "bmo": {
+   "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
+   "url": "https://gallica.bnf.fr/ark:/12148/cb343512457/date"
+  },
+  "invest": {
+   "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
+   "url": "https://opendata.paris.fr/"
+  },
+  "wiki": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ }
+}

@@ -1,0 +1,431 @@
+{
+ "generated_at": "2026-07-18T14:38:43.284445+00:00",
+ "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
+ "slug": "theatre-du-chatelet",
+ "name": "Théâtre du Châtelet",
+ "kind_fr": "Théâtre",
+ "kind_en": "Theatre",
+ "famille": "culture",
+ "arrondissement": 1,
+ "lat": 48.8579,
+ "lon": 2.3469,
+ "photo": "/img/lieux/theatre-du-chatelet.jpg",
+ "photo_credit": {
+  "licence": "CC BY-SA 4.0",
+  "auteur": "Arthur Weidmann",
+  "url": "https://commons.wikimedia.org/wiki/File:Th%C3%A9%C3%A2tre_du_Ch%C3%A2telet_Fa%C3%A7ade_(cropped).jpg",
+  "source": "Wikimedia Commons"
+ },
+ "wiki": {
+  "extract": "Le théâtre du Châtelet est un théâtre situé place du Châtelet dans le 1er arrondissement de Paris, inauguré en 1862. Dirigé par Olivier Py depuis 2023, il propose des comédies musicales, des opéras, des concerts classiques, du jazz, des récitals et de la danse. De 2002 à 2016, il a accueilli la cérémonie des César du cinéma. Le théâtre du Châtelet est également membre du Réseau européen pour la sensibilisation à l'opéra et à la danse (RESEO).",
+  "url": "https://fr.wikipedia.org/wiki/Th%C3%A9%C3%A2tre_du_Ch%C3%A2telet",
+  "source": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ },
+ "stats": {
+  "n_delibs": 329,
+  "delibs_span": [
+   1996,
+   2023
+  ],
+  "n_bmo_brut": 50,
+  "n_bmo_verifies": null,
+  "invest_total_eur": 0,
+  "invest_annees": [],
+  "lecture_mode": "titre nommant le lieu (30 trouvés)",
+  "n_lus": 30,
+  "n_lieu": 30
+ },
+ "subventions_exploitant": {
+  "nom_fiche": "THEATRE MUSICAL DE PARIS",
+  "total_eur": 106063603.0,
+  "annees": [
+   "2018",
+   "2024"
+  ],
+  "rows": [
+   {
+    "annee": "2024",
+    "montant_eur": 15625000.0,
+    "beneficiaire": "THEATRE MUSICAL DE PARIS",
+    "thematique": "Culture"
+   },
+   {
+    "annee": "2023",
+    "montant_eur": 15395000.0,
+    "beneficiaire": "THEATRE MUSICAL DE PARIS",
+    "thematique": "Culture"
+   },
+   {
+    "annee": "2022",
+    "montant_eur": 15423603.0,
+    "beneficiaire": "THEATRE MUSICAL DE PARIS",
+    "thematique": "Culture"
+   },
+   {
+    "annee": "2021",
+    "montant_eur": 14846000.0,
+    "beneficiaire": "THEATRE MUSICAL DE PARIS",
+    "thematique": "Culture"
+   },
+   {
+    "annee": "2020",
+    "montant_eur": 16274000.0,
+    "beneficiaire": "THEATRE MUSICAL DE PARIS",
+    "thematique": "Culture"
+   },
+   {
+    "annee": "2019",
+    "montant_eur": 16500000.0,
+    "beneficiaire": "THEATRE MUSICAL DE PARIS",
+    "thematique": "Culture"
+   },
+   {
+    "annee": "2018",
+    "montant_eur": 12000000.0,
+    "beneficiaire": "THEATRE MUSICAL DE PARIS",
+    "thematique": "Culture"
+   }
+  ],
+  "perimetre": "mono",
+  "note_publique": null,
+  "autres_sites": []
+ },
+ "residents": [],
+ "kpi_montant": null,
+ "synthese_fr": "De 1996 a 2001, le Conseil de Paris approuve le principe et les modalites de passation de plusieurs marches au theatre : genie climatique mene avec la mairie du 1er arrondissement, securite incendie, refection de la cage de scene, ravalement des facades avenue Victoria et rue Edouard-Colonne, asservissement des issues de secours, modernisation de l'ascenseur et travaux du foyer Nijinski. Le chantier de la cage de scene, dont la passation du marche de travaux est approuvee en septembre 1997, revient en septembre 1999 avec un avenant conteste en seance : Alain Le Garrec n'y voit que des sous-estimations du cahier des charges plutot que des aleas, un elu annonce son abstention a titre personnel, et la rapporteure Helene Mace de Lepinay indique que le chantier s'est acheve le 1er juillet 1999 dans les delais prevus, pour une reouverture prevue le 8 octobre 1999. Les annees 2000 apportent d'autres marches : refection du parquet de scene en mars 2003, modernisation des fauteuils et des parquets en decembre 2003, fauteuils des balcons et des amphitheatres puis cellules haute tension en 2007. En parallele, le Conseil autorise la signature de conventions avec l'association Theatre musical de Paris : une subvention de fonctionnement de 16.460.000 euros prevue pour le projet artistique 2002, puis, en juin 2009, un avenant et une convention d'equipement d'un montant total de 9.273.000 euros, dont 300.000 euros d'equipement ; Danielle Fournier indique alors en seance que le soutien de la Ville a l'institution atteint 17.746.000 euros pour l'annee, et Hermano Sanches Ruivo presente le theatre comme la structure beneficiant de l'aide la plus importante de la Ville, pour un budget de structure qu'il evalue a plus de 26 millions d'euros. Deux projets de deliberation ulterieurs portent une subvention de 15.800.000 euros en 2020 et de 14.192.000 euros en 2022. Le principe de l'extension du theatre dans l'ancien Hotel du Palais, que Danielle Fournier rattache a l'incendie de decembre 2001, est approuve en mai 2008 ; en fevrier 2012, le Conseil adopte la signature d'un avenant n° 1 au marche de maitrise d'oeuvre, dont la meme elue indique qu'il remunere notamment l'etude de variantes de reduction de programme destinees a diminuer le cout previsionnel des travaux. En mars 2015, un voeu du groupe UMP porte sur les renovations prevues : Jean-Francois Legaret, maire du 1er arrondissement, expose le calendrier tel qu'il indique en avoir connaissance - des travaux de l'ete 2017 a l'ete 2019, soit deux saisons et demie - et pose la question du sort des 143 membres du personnel et de la continuite de la programmation, quand Bruno Julliard repond que la survie du theatre n'est pas en jeu et que les travaux doivent etre menes en urgence. En mai 2017, le Conseil adopte une convention d'occupation du domaine public pour un espace d'affichage publicitaire sur l'echafaudage de restauration, malgre les elus ecologistes qui demandent un vote contre : le premier adjoint indique que Decaux a fait la meilleure offre et estime qu'elle pourra permettre de financer 2,7 millions de travaux supplementaires. En novembre 2018, une convention tripartite de mecenat avec la Fondation du Patrimoine et l'association est contestee par Danielle Simonnet, selon qui la Ville va demander a Total un soutien de 250.000 euros ; Christophe Girard lui repond. A partir de 2019, la gouvernance et la programmation reviennent en seance : voeu du groupe Democrates et Progressistes sur le projet artistique, voeu du groupe UDI-MODEM sur l'activite du club \"Josephine\", deux voeux du groupe Changer Paris en octobre 2020 - l'un demandant la publication de l'audit sur la gestion du theatre, l'autre portant sur son avenir, Catherine Dumas declarant en seance que le conseil d'administration a revoque la directrice artistique Ruth Mackenzie fin aout 2020 -, puis un voeu sur la direction artistique en 2022 et un point sur la procedure de nomination du nouveau directeur en 2023. En octobre 2023, un rapport de la Chambre regionale des comptes sur la gestion de l'association est inscrit a l'ordre du jour.",
+ "moments": [
+  {
+   "id": "8506",
+   "seance": "MAI 1996",
+   "fait": "Une subvention d'equipement de 1 200 000 F et une operation de travaux de securite de 3 530 000 F sont votees le meme soir. Alain Le Garrec juge qu'il n'est pas possible de voter au coup par coup faute de vue globale des investissements ; le president de seance repond avoir deja donne un etat recapitulatif des depenses des dix dernieres annees.",
+   "pourquoi": "la lisibilite des depenses contestee en seance",
+   "vedette": false,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=8506"
+  },
+  {
+   "id": "17525",
+   "seance": "SEPTEMBRE 1999",
+   "fait": "L'avenant au marche de la cage de scene (800 000 F, soit 1,4 % du budget global des travaux selon Alain Le Garrec) est conteste ; un elu annonce son abstention a titre personnel. La rapporteure Helene Mace de Lepinay indique que le chantier s'est acheve le 1er juillet 1999 dans les delais prevus et que la reouverture est prevue le 8 octobre 1999.",
+   "pourquoi": "achevement annonce en seance, avenant conteste",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=17525"
+  },
+  {
+   "id": "69983",
+   "seance": "MAI 2008",
+   "fait": "Le Conseil approuve le principe d'extension du theatre dans l'ancien Hotel du Palais, 2 quai de la Megisserie, les modalites de passation du marche de maitrise d'oeuvre et le depot des demandes de permis de demolir et de construire.",
+   "pourquoi": "le principe de l'extension entre au Conseil",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=69983"
+  },
+  {
+   "id": "5727",
+   "seance": "JUIN 2009",
+   "fait": "Le projet de deliberation reunit un avenant de subvention de fonctionnement et une convention d'equipement pour un montant total de 9 273 000 euros. Danielle Fournier indique que le soutien de la Ville a l'institution atteint ainsi 17 746 000 euros pour l'annee ; Christophe Girard fait etat de plus de 300 000 visiteurs par an.",
+   "pourquoi": "presente en seance comme l'aide la plus importante de la Ville",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=5727"
+  },
+  {
+   "id": "123735",
+   "seance": "MARS 2015",
+   "fait": "Voeu sur les renovations prevues : Jean-Francois Legaret, maire du 1er arrondissement, expose le calendrier tel qu'il indique en avoir connaissance - de l'ete 2017 a l'ete 2019, soit deux saisons et demie - et pose la question du sort des 143 membres du personnel et de la continuite de la programmation.",
+   "pourquoi": "calendrier des travaux et sort des salaries en question",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=123735"
+  },
+  {
+   "id": "135753",
+   "seance": "MAI 2017",
+   "fait": "Le Conseil adopte la convention d'occupation du domaine public pour un espace d'affichage sur l'echafaudage, malgre les elus ecologistes qui demandent un vote contre. Bruno Julliard indique que Decaux a fait la meilleure offre et estime qu'elle pourra permettre de financer 2,7 millions de travaux supplementaires.",
+   "pourquoi": "la publicite comme recette de chantier, en debat",
+   "vedette": false,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=135753"
+  },
+  {
+   "id": "146544",
+   "seance": "NOVEMBRE 2018",
+   "fait": "Convention tripartite de mecenat avec la Fondation du Patrimoine et l'association pour financer les travaux. Danielle Simonnet conteste le projet : selon elle, la Ville va demander a Total un soutien de 250 000 euros et la Fondation Total sera signalee sur une plaque apposee sur l'operation d'un grand foyer.",
+   "pourquoi": "le mecenat prive conteste en seance",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=146544"
+  },
+  {
+   "id": "156363",
+   "seance": "OCTOBRE 2020",
+   "fait": "Le projet de subvention de 15 800 000 euros est examine avec deux voeux du groupe Changer Paris, l'un demandant la publication de l'audit sur la gestion du theatre, l'autre portant sur son avenir. Catherine Dumas declare en seance que le conseil d'administration a revoque la directrice artistique Ruth Mackenzie fin aout 2020 a la suite d'un audit.",
+   "pourquoi": "l'opposition demande la publication de l'audit",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=156363"
+  }
+ ],
+ "montants": [
+  {
+   "seance": "OCTOBRE 2020",
+   "montant": "15.800.000 euros",
+   "objet": "subvention et 2e avenant avec l'association Theatre Musical de Paris, montant figurant dans l'intitule du projet de deliberation DAC 105",
+   "citation": "2020 DAC 105 - Subvention (15.800.000 euros) et 2e avenant avec l’association Théâtre Musical de Paris (1er).",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=156363"
+  },
+  {
+   "seance": "OCTOBRE 2020",
+   "montant": "15,8 millions d'euros",
+   "objet": "meme subvention, telle que presentee en seance par le president de seance Ian Brossat",
+   "citation": "Il s'agit de l'attribution d'une subvention de 15,8 millions d'euros et d'un avenant avec l'association \"Théâtre musical de Paris\".",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=156363"
+  },
+  {
+   "seance": "OCTOBRE 2020",
+   "montant": "près de 16 millions d'euros",
+   "objet": "montant du vote tel que decrit en debat par Catherine Dumas (Changer Paris)",
+   "citation": "Le montant du vote qui nous est proposé de près de 16 millions d'euros est versé à l'association de gestion du théâtre du Châtelet.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=156363"
+  },
+  {
+   "seance": "JUILLET 2022",
+   "montant": "14.192.000 euros",
+   "objet": "subvention et avenant avec l'association \"Theatre musical de Paris\", montant figurant dans l'intitule du projet de deliberation DAC 115",
+   "citation": "2022 DAC 115 - Subvention (14.192.000 euros) et avenant avec l’association \"Théâtre musical de Paris\" (Paris Centre).",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=165192"
+  },
+  {
+   "seance": "NOVEMBRE 2018",
+   "montant": "250.000 euros",
+   "objet": "soutien a Total pour le financement des travaux, chiffre avance en debat par Danielle Simonnet, qui le rapporte a 70 % des depenses",
+   "citation": "vous allez, certes, demander un soutien de 250.000 euros, soit 70 % des dépenses, à Total.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=146544"
+  },
+  {
+   "seance": "NOVEMBRE 2018",
+   "montant": "2,7 millions d’euros",
+   "objet": "recette des baches publicitaires, presentee en debat par Christophe Girard comme s'ajoutant au financement public prevu",
+   "citation": "la nécessité de ce dispositif avec une recette de 2,7 millions d?euros qui viennent s?ajouter au financement public prévu",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=146544"
+  },
+  {
+   "seance": "MAI 2017",
+   "montant": "2,7 millions",
+   "objet": "travaux supplementaires que l'offre retenue pourrait financer, estimation donnee en seance par Bruno Julliard",
+   "citation": "Nous estimons que cette offre pourra nous permettre de financer 2,7 millions de travaux supplémentaires à ce que nous avions prévu.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=135753"
+  },
+  {
+   "seance": "FEVRIER 2012",
+   "montant": "65.356 euros hors taxes",
+   "objet": "remuneration supplementaire du maitre d'oeuvre, que Danielle Fournier rapporte en debat a 17,5 % du marche initial",
+   "citation": "nous allons ajouter une rémunération supplémentaire pour le maître d'?uvre de 65.356 euros hors taxes, soit déjà 17,5 % du marché initial qui s'élève, pour mémoire, à 373.000 euros",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=103882"
+  },
+  {
+   "seance": "FEVRIER 2012",
+   "montant": "373.000 euros",
+   "objet": "montant du marche initial de maitrise d'oeuvre, cite en debat par Danielle Fournier",
+   "citation": "soit déjà 17,5 % du marché initial qui s'élève, pour mémoire, à 373.000 euros",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=103882"
+  },
+  {
+   "seance": "FEVRIER 2012",
+   "montant": "1 million d'euros",
+   "objet": "somme que Christophe Girard indique en seance avoir ete rapportee au theatre pour la seule annee 2011, dans un echange sur l'accueil de mecenes",
+   "citation": "Aujourd'hui, le Châtelet, pour la seule année 2011, et j?en félicite le directeur Jean-Luc CHOPLIN et le président du conseil d'administration, d'avoir pu rapporter 1 million d'euros au théâtre.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=103882"
+  },
+  {
+   "seance": "FEVRIER 2002",
+   "montant": "16.460.000 euros",
+   "objet": "subvention de fonctionnement prevue par la convention relative au projet artistique 2002, que le Conseil autorise le Maire a signer",
+   "citation": "relative à la réalisation de son projet artistique 2002 et prévoyant notamment l'attribution d'une subvention de fonctionnement de 16.460.000 euros",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=58005"
+  },
+  {
+   "seance": "FEVRIER 2002",
+   "montant": "76.225 euros",
+   "objet": "subvention d'equipement prevue par la seconde convention, relative au renouvellement de l'equipement de certains materiels",
+   "citation": "relative au renouvellement de l'équipement de certains matériels au Théâtre du Châtelet, 2, rue Edouard-Colonne (1er), et prévoyant notamment l'attribution d'une subvention d'équipement de 76.225 euros",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=58005"
+  },
+  {
+   "seance": "JUIN 2009",
+   "montant": "9.273.000 euros",
+   "objet": "montant total du projet de deliberation, qui reunit l'avenant de subvention de fonctionnement et la convention de subvention d'equipement",
+   "citation": "2009, DAC 53 - Signature avec l'association \"Théâtre Musical de Paris\" (Théâtre du Châtelet) (1er) d'un avenant à la convention annuelle d'objectifs relative à l'attribution d'une subvention de fonctionnement au titre de 2009 et d'une convention relative à une subvention d'équipement. - Montant total : 9.273.000 euros.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=5727"
+  },
+  {
+   "seance": "JUIN 2009",
+   "montant": "17.746.000 euros",
+   "objet": "soutien total de la Ville a l'institution pour 2009, chiffre cite en debat par Danielle Fournier",
+   "citation": "ce qui porte le soutien de la Ville à cette institution à la somme de 17.746.000 euros pour cette année",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=5727"
+  },
+  {
+   "seance": "JUIN 2009",
+   "montant": "8.773.000 euros",
+   "objet": "premiere tranche (acompte) de la subvention 2009 votee en fevrier 2009, rappelee en debat par Hermano Sanches Ruivo",
+   "citation": "nous avons voté la première tranche (un acompte) de la subvention 2009 accordée au Théâtre musical de Paris, Théâtre du Châtelet, d'un montant de 8.773.000 euros",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=5727"
+  },
+  {
+   "seance": "JUIN 2009",
+   "montant": "8.973.000 euros",
+   "objet": "complement de subvention de fonctionnement que le projet de deliberation propose de verser, expose en debat par Hermano Sanches Ruivo",
+   "citation": "de fixer le montant global de la subvention 2009 à un peu plus de 17 millions d?euros, et donc de verser ce complément de 8.973.000 euros",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=5727"
+  },
+  {
+   "seance": "JUIN 2009",
+   "montant": "300.000 euros",
+   "objet": "subvention d'equipement proposee pour le renouvellement d'une partie du materiel technique, exposee en debat par Hermano Sanches Ruivo",
+   "citation": "il nous est également proposé dans le projet de délibération, et de façon plus calme, d'attribuer à cette structure une subvention d'équipement de 300.000 euros, afin qu'elle puisse renouveler une partie de son matériel technique",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=5727"
+  },
+  {
+   "seance": "JUIN 2009",
+   "montant": "plus de 26 millions d'euros",
+   "objet": "budget global de la structure, evaluation citee en debat par Hermano Sanches Ruivo",
+   "citation": "Le budget global de cette structure culturelle et artistique étant évalué à plus de 26 millions d'euros",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=5727"
+  },
+  {
+   "seance": "SEPTEMBRE 1999",
+   "montant": "800.000 F",
+   "objet": "montant que Alain Le Garrec rapporte en debat au budget global des travaux (1,4 %) et au fonds annuel pour la musique a Paris (40 % en volume)",
+   "citation": "Il s'agit d'1,4 %, une misère, l'affaire est entendue. Ces 800.000 F c'est, en volume, 40 % du fonds annuel pour la musique à Paris.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=17525"
+  },
+  {
+   "seance": "SEPTEMBRE 1999",
+   "montant": "plus de 50 millions de francs",
+   "objet": "budget des travaux, ordre de grandeur cite en debat par Alain Le Garrec",
+   "citation": "Comment peut-on, sur un budget de plus de 50 millions de francs, dans un théâtre municipal, se faire coincer par la commission de sécurité !",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=17525"
+  },
+  {
+   "seance": "SEPTEMBRE 1999",
+   "montant": "401.808,41 F",
+   "objet": "cout des modifications demandees en cours de chantier, soit 0,8 % du marche de travaux, chiffre en seance par la rapporteure Helene Mace de Lepinay",
+   "citation": "Le coût de ces modifications, y compris un aménagement complémentaire du trottoir, demandé par les services de voirie, s'élève à 401.808,41 F soit 0,8 % du marché de travaux.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=17525"
+  },
+  {
+   "seance": "MAI 1996",
+   "montant": "1.200.000 F",
+   "objet": "subvention d'equipement, montant rectifie en seance par Alain Le Garrec (le projet indiquait 12 millions par ailleurs)",
+   "citation": "le premier concerne l'attribution d'une subvention d'équipement de 1.200.000 F et non pas 12 millions comme indiqué par ailleurs sur le projet",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=8506"
+  },
+  {
+   "seance": "MAI 1996",
+   "montant": "3.530.000 F",
+   "objet": "operation de travaux de securite, montant cite en debat par Alain Le Garrec",
+   "citation": "le deuxième qui est une opération de 3.530.000 F pour procéder à des travaux de sécurité est passé devant le Conseil d'arrondissement",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=8506"
+  }
+ ],
+ "bmo_extraits": [],
+ "bmo_recit": null,
+ "invest": [],
+ "marches": [
+  {
+   "numero_marche": "20171210001086",
+   "objet": "CSP5 TVX TCE THEATRE DU CHATELET LOT2",
+   "fournisseur": "BALAS",
+   "montant_max": 10225896.0,
+   "date_notification": "2017-07-07",
+   "preuve": "L'objet nomme le lieu : \"CSP5 TVX TCE THEATRE DU CHATELET LOT2\" — lot de travaux tous corps d'état du chantier de restauration du Théâtre du Châtelet (programme de travaux confirmé par le vœu de mars 2015 : \"de l'été 2017 à l'été 2019 pour le Théâtre du Châtelet\")."
+  },
+  {
+   "numero_marche": "20171210001352",
+   "objet": "CSP5 RESTAURATION THEATRE DU CHATELET - TVX PATRIM LOT 3",
+   "fournisseur": "BAUDIN CHATEAUNEUF",
+   "montant_max": 5300665.92,
+   "date_notification": "2017-08-21",
+   "preuve": "L'objet nomme le lieu : \"CSP5 RESTAURATION THEATRE DU CHATELET - TVX PATRIM LOT 3\" — travaux patrimoniaux sur le bâtiment."
+  },
+  {
+   "numero_marche": "20171210001353",
+   "objet": "CSP5 RESTAURATION THEATRE CHATELET-LOT4- MACHINERIE SCENIQUE",
+   "fournisseur": "BC CAIRE",
+   "montant_max": 2909288.0,
+   "date_notification": "2017-10-04",
+   "preuve": "L'objet nomme le lieu : \"CSP5 RESTAURATION THEATRE CHATELET-LOT4- MACHINERIE SCENIQUE\" — machinerie scénique, équipement propre à la salle."
+  },
+  {
+   "numero_marche": "20151210001812",
+   "objet": "MOE MISE NORMES TECH./RESTAURATION DÉCORS THÉÂTRE CHATELET",
+   "fournisseur": "PHILIPPE PUMAIN ARCHITECTE SARL",
+   "montant_max": 2796756.67,
+   "date_notification": "2015-12-01",
+   "preuve": "L'objet nomme le lieu : \"MOE MISE NORMES TECH./RESTAURATION DÉCORS THÉÂTRE CHATELET\" — maîtrise d'œuvre de la restauration du théâtre."
+  },
+  {
+   "numero_marche": "20171210001087",
+   "objet": "CSP5 TVX RESEAUX SCENIQUES THEATRE CHATELET LOT 5",
+   "fournisseur": "SNEF",
+   "montant_max": 1447818.0,
+   "date_notification": "2017-07-07",
+   "preuve": "L'objet nomme le lieu : \"CSP5 TVX RESEAUX SCENIQUES THEATRE CHATELET LOT 5\" — réseaux scéniques du bâtiment."
+  },
+  {
+   "numero_marche": "20171210000337",
+   "objet": "CSP5 TVX CURAGE DEPOLLUTION THEATRE CHATELET",
+   "fournisseur": "VALGO",
+   "montant_max": 659508.25,
+   "date_notification": "2017-03-09",
+   "preuve": "L'objet nomme le lieu : \"CSP5 TVX CURAGE DEPOLLUTION THEATRE CHATELET\" — curage/dépollution préalable au chantier du théâtre."
+  },
+  {
+   "numero_marche": "20181210001696",
+   "objet": "CSP5 FACADE THEATRE D CHATELET -LOT 8:METALLERIE/PDUITS VERR",
+   "fournisseur": "VERRE ET METAL",
+   "montant_max": 482587.0,
+   "date_notification": "2018-12-17",
+   "preuve": "L'objet nomme le lieu : \"CSP5 FACADE THEATRE D CHATELET -LOT 8:METALLERIE/PDUITS VERR\" — façade du théâtre."
+  },
+  {
+   "numero_marche": "20171210001679",
+   "objet": "AMO SUBSÉQUENT CONDUITE OPÉRATION TH. VILLE ET TH.CHATELET",
+   "fournisseur": "ARTELIA",
+   "montant_max": 429397.0,
+   "date_notification": "2017-10-31",
+   "preuve": "L'objet nomme explicitement le lieu : \"AMO SUBSÉQUENT CONDUITE OPÉRATION TH. VILLE ET TH.CHATELET\". Réserve : ce marché d'assistance à maîtrise d'ouvrage couvre DEUX chantiers menés en parallèle (Théâtre de la Ville et Théâtre du Châtelet) — cf. vœu de mars 2015 : \"des programmes de travaux très lourds qui sont envisagés au théâtre du Châtelet et au Théâtre de la Ville\". Le montant de 429 397 € ne porte donc pas sur ce seul bâtiment."
+  },
+  {
+   "numero_marche": "20151210001347",
+   "objet": "TRAVAUX MONTE-ORCHESTRE THÉÂTRE DU CHÂTELET 75001",
+   "fournisseur": "BAUDIN CHATEAUNEUF",
+   "montant_max": 309434.03,
+   "date_notification": "2015-08-05",
+   "preuve": "L'objet nomme le lieu et son code postal : \"TRAVAUX MONTE-ORCHESTRE THÉÂTRE DU CHÂTELET 75001\" — équipement de fosse d'orchestre, propre à la salle."
+  },
+  {
+   "numero_marche": "20151210001281",
+   "objet": "INSTALLATIONS ÉLECTRIQUES THÉÂTRE DU CHÂTELET 75001",
+   "fournisseur": "TRAVAUX BATIMENTS ELECTRICITE SECUR",
+   "montant_max": 290761.53,
+   "date_notification": "2015-07-27",
+   "preuve": "L'objet nomme le lieu et son code postal : \"INSTALLATIONS ÉLECTRIQUES THÉÂTRE DU CHÂTELET 75001\"."
+  }
+ ],
+ "sources": {
+  "delibs": {
+   "name": "Débat-Délibs — Conseil de Paris",
+   "url": "https://a06-v7.apps.paris.fr/a06/"
+  },
+  "bmo": {
+   "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
+   "url": "https://gallica.bnf.fr/ark:/12148/cb343512457/date"
+  },
+  "invest": {
+   "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
+   "url": "https://opendata.paris.fr/"
+  },
+  "wiki": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ }
+}

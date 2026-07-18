@@ -1,0 +1,311 @@
+{
+ "generated_at": "2026-07-18T14:38:43.284445+00:00",
+ "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
+ "slug": "piscine-pontoise",
+ "name": "Piscine Pontoise",
+ "kind_fr": "Piscine",
+ "kind_en": "Swimming pool",
+ "famille": "sport",
+ "arrondissement": 5,
+ "lat": 48.8497,
+ "lon": 2.3529,
+ "photo": "/img/lieux/piscine-pontoise.jpg",
+ "photo_credit": {
+  "licence": null,
+  "auteur": null,
+  "url": "https://fr.wikipedia.org/wiki/Piscine_Pontoise",
+  "source": "Wikipédia"
+ },
+ "wiki": {
+  "extract": "La piscine Pontoise est une piscine située 19, rue de Pontoise dans le 5e arrondissement de Paris (France).",
+  "url": "https://fr.wikipedia.org/wiki/Piscine_Pontoise",
+  "source": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ },
+ "stats": {
+  "n_delibs": 71,
+  "delibs_span": [
+   1996,
+   2023
+  ],
+  "n_bmo_brut": 319,
+  "n_bmo_verifies": 1,
+  "invest_total_eur": 6218252.79,
+  "invest_annees": [
+   "2022",
+   "2024"
+  ],
+  "lecture_mode": "titre nommant le lieu (23 trouvés)",
+  "n_lus": 22,
+  "n_lieu": 22
+ },
+ "subventions_exploitant": null,
+ "residents": [],
+ "kpi_montant": null,
+ "synthese_fr": "Le Conseil de Paris confie la gestion de la piscine Pontoise (19, rue de Pontoise, 5e) par delegation de service public : le principe est approuve en avril 1997 selon la loi Sapin, la convention avec « Les piscines de France » en janvier 1998, prolongee en 2002, renouvelee en fevrier 2004, prolongee de nouveau en fevrier 2010 ; la delegation accordee a S3P s'acheve le 30 juin 2020 sans etre prolongee, et un nouveau contrat est confie a Prestalis en octobre 2023. Le mode de gestion revient en debat a plusieurs reprises : en 1997, Alain MORELL y voit « la privatisation renforcee des activites sportives de la piscine Pontoise », quand le rapporteur Dominique CANE indique que 27 des 33 piscines publiques parisiennes sont alors gerees en regie directe, que la piscine Pontoise a ete confiee a la societe des piscines de France en 1978 et que le squash et le fitness y representent « plus de la moitie des recettes » ; en 2022 puis en 2023, le groupe ecologiste annonce voter contre puis s'abstenir, Lea VASA jugeant qu'il s'agit d'« une delegation de service public sur une piscine qui est rentable ». Entre 1996 et 2001, le Conseil approuve une succession de principes de travaux ponctuels -- coupe-feu de la charpente metallique, chauffage-ventilation, filtration a deux reprises, mise en securite des fenetres -- sans montant inscrit dans les textes. En 2002, il approuve la desaffectation puis le declassement d'un volume en trefonds de 249 m2 situe sous la parcelle de la piscine et soustrait de la concession de l'exploitant, avant d'autoriser sa cession a l'Association Diocesaine de Paris au prix de 68.750 euros, assortie de deux tolerances autorisees moyennant 40.000 et 72.000 euros. Fermee le 21 decembre 2018 pour des raisons de securite liees a sa verriere, la piscine fait l'objet d'un budget d'operation annonce en seance par l'adjoint Jean-Francois MARTINS comme « releve de 3,2 millions a 5,6 millions d'euros T.T.C. » en fevrier 2019, puis chiffre a 14,50 millions d'euros par l'adjoint Jacques BAUDRIER en fevrier 2022, apres la decouverte de problemes de structure du bassin et des plages pendant les travaux sur la verriere ; selon la maire du 5e, les salaries de l'espace sportif sont reclasses ou licencies par le delegataire au 30 juin 2020. La reouverture du bassin est annoncee pour le 1er decembre 2023, cinq ans apres la fermeture.",
+ "moments": [
+  {
+   "id": "19351",
+   "seance": "AVRIL 1997",
+   "fait": "Le Conseil autorise M. le Maire de Paris a signer une convention de delegation de service public pour la gestion de la piscine : Alain MORELL y voit « la privatisation renforcee des activites sportives » et demande le montant des redevances versees depuis cinq ans, que le rapporteur Dominique CANE ne communique pas dans sa reponse ; celui-ci indique que 27 des 33 piscines publiques parisiennes sont gerees en regie directe et que le squash et le fitness representent « plus de la moitie des recettes ». Le projet est adopte a la majorite, les groupes communiste et du Mouvement des citoyens votant contre.",
+   "pourquoi": "Le mode de gestion en debat : delegation ou regie",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=19351"
+  },
+  {
+   "id": "29974",
+   "seance": "DECEMBRE 2001",
+   "fait": "Le Conseil approuve les tarifs d'acces des usagers individuels applicables au 1er janvier 2002 et autorise le Maire a souscrire un avenant a la convention de delegation, suite a ces modifications tarifaires et a la conversion en euro des montants du contrat.",
+   "pourquoi": "En 2001, les tarifs d'acces passent par une deliberation du Conseil",
+   "vedette": false,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=29974"
+  },
+  {
+   "id": "70942",
+   "seance": "DECEMBRE 2002",
+   "fait": "Le Conseil autorise la cession a l'Association Diocesaine de Paris d'un volume en trefonds de 249 m2 sous la parcelle de la piscine, au prix de 68 750 euros, plus 40 000 euros pour une tolerance de passage et 72 000 euros pour l'implantation de micropieux ; le volume est soustrait de la concession de l'exploitant. La deliberation indique une valeur comptable de 9 346 euros et une plus-value previsionnelle de 59 404 euros.",
+   "pourquoi": "Ce que la Ville tire du sous-sol de la piscine",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=70942"
+  },
+  {
+   "id": "147487",
+   "seance": "FEVRIER 2019",
+   "fait": "Apres la fermeture du 21 decembre, decidee selon l'adjoint Jean-Francois MARTINS « par anticipation pour des raisons de securite », celui-ci annonce en seance un budget d'operation « releve de 3,2 millions a 5,6 millions d'euros T.T.C. » et indique que l'exploitation des autres surfaces sportives sera assuree durant les travaux. Le voeu du groupe les Republicains et Independants, qui demandait un budget supplementaire, est adopte avec un avis favorable de l'Executif.",
+   "pourquoi": "Le budget de l'operation passe de 3,2 a 5,6 millions d'euros en seance",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=147487"
+  },
+  {
+   "id": "156230",
+   "seance": "OCTOBRE 2020",
+   "fait": "La delegation accordee a S3P s'acheve le 30 juin 2020 sans etre prolongee : l'adjoint Karim ZIADY explique qu'une nouvelle prolongation « n'aurait pas pu passer le controle de legalite ». Selon la maire du 5e, les salaries se sont vu signifier en fevrier 2020 qu'ils seraient « soit reclasses, soit licencies » ; son voeu demande la reprise en regie directe de l'activite et des personnels qui le souhaitent et, a defaut (« un amendement de repli »), que le prochain appel d'offres impose au futur delegataire de reprendre « les anciens salaries licencies au 30 juin 2020 qui le souhaitent avec leur ancien contrat de travail ».",
+   "pourquoi": "Ce que devient le personnel quand la delegation s'arrete",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=156230"
+  },
+  {
+   "id": "157590",
+   "seance": "FEVRIER 2021",
+   "fait": "La maire du 5e Florence BERTHOUT declare avoir decouvert le 16 decembre 2020 que les travaux ne seraient pas acheves « avant a minima septembre 2022 » et que le programme ne prevoyait que la verriere, sans traiter le bassin ni les toitures des salles de sport adjacentes ; son voeu demande le lancement en urgence d'une etude de structure du bassin. L'adjoint Pierre RABADAN evoque « de nombreux affrontements administratifs » entre les services de l'Etat et ceux de la Ville, et repond que « l'ensemble des considerants que vous demandez sont maintenant inclus dans les etudes en cours ».",
+   "pourquoi": "Le perimetre du chantier en debat : la verriere seule ou aussi le bassin",
+   "vedette": false,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=157590"
+  },
+  {
+   "id": "164582",
+   "seance": "FEVRIER 2022",
+   "fait": "Le Conseil examine la restructuration partielle de la piscine, chiffree en seance a 14,50 millions d'euros par l'adjoint Jacques BAUDRIER apres la decouverte, durant les travaux sur la verriere, de « problemes de structure du bassin et des plages ». La maire du 5e Florence BERTHOUT declare que le Conseil vote « avec 3 ans de retard » ; Anne BIRABEN affirme que la verriere d'origine « a ete entierement deposee » et remplacee par des fermes « plus hautes, plus minces, rehaussant la hauteur du batiment d'environ 1,50 metre ».",
+   "pourquoi": "Le chiffrage du chantier et le sort de la verriere d'origine",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=164582"
+  },
+  {
+   "id": "171859",
+   "seance": "OCTOBRE 2023",
+   "fait": "Le Conseil approuve le contrat de delegation confie a Prestalis a compter du 1er decembre, cinq ans apres la fermeture de l'equipement. Le groupe ecologiste s'abstient : Lea VASA juge qu'il s'agit d'« une delegation de service public sur une piscine qui est rentable » ; l'adjoint Pierre RABADAN indique que le contrat imposait au delegataire un tarif « entre 4 et 6 euros » et que celui-ci « est arrive sur 5,20 euros ».",
+   "pourquoi": "Le retour de l'equipement et le prix d'entree en debat",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=171859"
+  }
+ ],
+ "montants": [
+  {
+   "seance": "DECEMBRE 2002",
+   "montant": "68.750 euros",
+   "objet": "prix autorise pour la cession du volume en trefonds de 249 m2 au sol et 26 m de profondeur, soustrait de la concession de la piscine ; recette a constater au budget de fonctionnement",
+   "citation": "Est autorisée au prix de 68.750 euros, la cession au profit de l'Association Diocésaine de Paris du volume de 249 mètres carrés de surface au sol et 26 m de profondeur soustrait de la concession à la société Les Piscines de France",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=70942"
+  },
+  {
+   "seance": "DECEMBRE 2002",
+   "montant": "40.000 euros",
+   "objet": "somme autorisee pour l'octroi d'une tolerance de passage ; recette a recouvrer au budget de fonctionnement",
+   "citation": "Sont également autorisés l'octroi d'une tolérance de passage moyennant la somme de 40.000 euros et la perception d'une somme de 72.000 euros pour l'implantation de micropieux.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=70942"
+  },
+  {
+   "seance": "DECEMBRE 2002",
+   "montant": "72.000 euros",
+   "objet": "somme autorisee pour la tolerance d'implantation des micropieux en trefonds des parcelles communales ; recette a recouvrer au budget de fonctionnement",
+   "citation": "Sont également autorisés l'octroi d'une tolérance de passage moyennant la somme de 40.000 euros et la perception d'une somme de 72.000 euros pour l'implantation de micropieux.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=70942"
+  },
+  {
+   "seance": "DECEMBRE 2002",
+   "montant": "9.346 euros",
+   "objet": "valeur comptable du volume cede, telle qu'indiquee par la deliberation",
+   "citation": "La valeur comptable du bien est de 9.346 euros. La plus value prévisionnelle s'établit à 59.404 euros.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=70942"
+  },
+  {
+   "seance": "DECEMBRE 2002",
+   "montant": "59.404 euros",
+   "objet": "plus-value previsionnelle de la cession, telle qu'indiquee par la deliberation",
+   "citation": "La valeur comptable du bien est de 9.346 euros. La plus value prévisionnelle s'établit à 59.404 euros.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=70942"
+  },
+  {
+   "seance": "FEVRIER 2019",
+   "montant": "3,2 millions d'euros",
+   "objet": "budget deja programme par la Ville pour la reparation de la verriere, chiffre cite en debat par Mme Dominique STOPPA-LYONNET",
+   "citation": "La Ville en a déjà pris la dimension, puisqu?elle a même programmé sa réparation avec un budget de 3,2 millions d?euros.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=147487"
+  },
+  {
+   "seance": "FEVRIER 2019",
+   "montant": "5,6 millions d'euros T.T.C. (budget d'operation releve depuis 3,2 millions)",
+   "objet": "budget d'operation releve apres la fermeture, annonce en debat par l'adjoint Jean-Francois MARTINS ; le Conseil vote le voeu, pas ce montant",
+   "citation": "j'ai pris la décision de fermer et d'engager dès à présent les travaux, pour un budget d'opération relevé de 3,2 millions à 5,6 millions d'euros T.T.C.,",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=147487"
+  },
+  {
+   "seance": "FEVRIER 2022",
+   "montant": "14,50 millions d'euros",
+   "objet": "montant du chantier apres elargissement du programme, cite en debat par l'adjoint Jacques BAUDRIER lors de l'examen du projet de deliberation DCPA 7",
+   "citation": "Il s?agit d?une augmentation des budgets, des investissements rÃ©alisÃ©s pour ce chantier, qui, rappelons-le, va engager 14,50 millions d?euros.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=164582"
+  },
+  {
+   "seance": "OCTOBRE 2023",
+   "montant": "5 euros",
+   "objet": "prix d'entree pratique par le delegataire, cite en debat par Mme Lea VASA, contre 3,50 euros dans les piscines en regie",
+   "citation": "prix d'entrÃ©e, ce qui fait qu'il est presque deux fois plus cher que dans nos piscines en rÃ©gieÂ : prix d'entrÃ©e Ã 5 euros, le tarif social est Ã 3,20 euros. Normalement, le prix d'entrÃ©e pour la piscine, c'est 3,50 euros.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=171859"
+  },
+  {
+   "seance": "OCTOBRE 2023",
+   "montant": "3,20 euros",
+   "objet": "tarif social, cite en debat par Mme Lea VASA",
+   "citation": "prix d'entrÃ©e, ce qui fait qu'il est presque deux fois plus cher que dans nos piscines en rÃ©gieÂ : prix d'entrÃ©e Ã 5 euros, le tarif social est Ã 3,20 euros. Normalement, le prix d'entrÃ©e pour la piscine, c'est 3,50 euros.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=171859"
+  },
+  {
+   "seance": "OCTOBRE 2023",
+   "montant": "5,20 euros (obligation contractuelle : un tarif entre 4 et 6 euros)",
+   "objet": "tarif d'entree retenu et fourchette imposee au delegataire par le contrat, cites en debat par l'adjoint Pierre RABADAN ; chiffre different des 5 euros avances par Mme VASA dans le meme debat",
+   "citation": "Le dÃ©lÃ©gataire avait dans son contrat une obligation de trouver un tarif entre 4 et 6 euros. Il est arrivÃ© sur 5,20 euros",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=171859"
+  }
+ ],
+ "bmo_extraits": [],
+ "bmo_recit": null,
+ "invest": [
+  {
+   "annee": 2022,
+   "montant_eur": 5730507.0,
+   "nom_projet": "Piscine 19, rue de Pontoise - Travaux de rénovation",
+   "preuve": "Nom du projet 'Piscine 19, rue de Pontoise - Travaux de rénovation' : l'adresse '19, rue de Pontoise' correspond exactement à celle du lieu (ctx : 'la gestion de la piscine Pontoise, 19, rue de Pontoise (5e)', délib. 2004 JS 18 ; délib. 2022 DCPA 7 'Restructuration partielle de la piscine, 19, rue de Pontoise (5e)'). distance_m=89.",
+   "id": "2022_05_12_014"
+  },
+  {
+   "annee": 2024,
+   "montant_eur": 487745.79,
+   "nom_projet": "Piscine Pontoise - Rénovation de la piscine",
+   "preuve": "Nom du projet 'Piscine Pontoise - Rénovation de la piscine' nomme directement le lieu (alias 'Piscine Pontoise'), cohérent avec le chantier documenté au Conseil de Paris (ctx : vœu 'relatif au chantier de la piscine Pontoise (5e)', et 2022 DCPA 7 : 'nous votons des travaux de restructuration'). distance_m=89.",
+   "id": "2024_05_12_016"
+  }
+ ],
+ "marches": [
+  {
+   "numero_marche": "20222022T04166",
+   "objet": "SA4 PISCINE PONTOISE RENOVATION ACCES ET BASSIN",
+   "fournisseur": "LEFEVRE SAS",
+   "montant_max": 2698652.0,
+   "date_notification": "2022-06-20",
+   "preuve": "L'objet nomme le lieu et porte sur le bâtiment lui-même : 'SA4 PISCINE PONTOISE RENOVATION ACCES ET BASSIN'. Recoupe la délib. 2022 DCPA 7 (travaux sur le bassin et mise en accessibilité de la piscine Pontoise)."
+  },
+  {
+   "numero_marche": "20212021T01396",
+   "objet": "SA4 PISCINE PONTOISE MACONNERIE DEMOLITION ETANCHEITE LOT1",
+   "fournisseur": "LEFEVRE SAS",
+   "montant_max": 2074418.33,
+   "date_notification": "2021-04-06",
+   "preuve": "L'objet nomme le lieu et vise des travaux sur le bâtiment : 'SA4 PISCINE PONTOISE MACONNERIE DEMOLITION ETANCHEITE LOT1'. Le vœu de février 2021 sur 'le chantier de la piscine Pontoise (5e)' évoque 'il y a nécessité de reprendre l'étanchéité'."
+  },
+  {
+   "numero_marche": "20212021T01397",
+   "objet": "SA4 RENOVATION CHARPENTE VERRIERE PISCINE PONTOISE LOT2",
+   "fournisseur": "EIFFAGE METAL",
+   "montant_max": 1832099.0,
+   "date_notification": "2021-04-02",
+   "preuve": "L'objet nomme le lieu : 'SA4 RENOVATION CHARPENTE VERRIERE PISCINE PONTOISE LOT2'. La verrière est l'élément central du chantier selon les débats (ctx 2019 : 'la verrière de la piscine Pontoise menace de s'effondrer' ; 2022 DCPA 7 : 'la verrière a été entièrement déposée [...] remplacée par une nouvelle verrière montée sur des fermes métalliques')."
+  },
+  {
+   "numero_marche": "20212021T01398",
+   "objet": "SA4 RENOVATION CVC/CFA/SSI/TRAITT EAU PISCINE PONTOISE LOT3",
+   "fournisseur": "ENTREPRISE GUIBAN SA",
+   "montant_max": 1273020.0,
+   "date_notification": "2021-04-06",
+   "preuve": "L'objet nomme le lieu et porte sur ses installations techniques : 'SA4 RENOVATION CVC/CFA/SSI/TRAITT EAU PISCINE PONTOISE LOT3'. Lot 3 du même chantier que les lots 1 et 2 notifiés début avril 2021."
+  },
+  {
+   "numero_marche": "20212021T09836",
+   "objet": "TVX RÉNOVATION PLOMBERIE ET SSI PISCINE PONTOISE",
+   "fournisseur": "ENTREPRISE GUIBAN SA",
+   "montant_max": 1245790.03,
+   "date_notification": "2021-12-14",
+   "preuve": "L'objet nomme le lieu et vise des travaux dans le bâtiment : 'TVX RÉNOVATION PLOMBERIE ET SSI PISCINE PONTOISE'."
+  },
+  {
+   "numero_marche": "20222022T00424",
+   "objet": "SA4_TVX RÉPARATION BÉTON DU BASSIN/PLAGES PISCINE PONTOISE",
+   "fournisseur": "LEFEVRE SAS",
+   "montant_max": 592784.96,
+   "date_notification": "2022-02-03",
+   "preuve": "L'objet nomme le lieu et son bassin : 'SA4_TVX RÉPARATION BÉTON DU BASSIN/PLAGES PISCINE PONTOISE'. Recoupe la délib. 2022 DCPA 7 : 'la découverte, durant les travaux sur la verrière, de problèmes de structure du bassin et des plages'."
+  },
+  {
+   "numero_marche": "20212021S07139",
+   "objet": "MOE RESTRUCTURATION PISCINE PONTOISE (OPÉRATION 2) SAMO",
+   "fournisseur": "MARCHAND",
+   "montant_max": 531820.6,
+   "date_notification": "2021-09-30",
+   "preuve": "Maîtrise d'œuvre nommant le lieu : 'MOE RESTRUCTURATION PISCINE PONTOISE (OPÉRATION 2) SAMO'. Le Conseil de Paris a délibéré sur la 'Restructuration partielle de la piscine, 19, rue de Pontoise (5e)' (2022 DCPA 7) ; le rattachement repose sur l'objet, qui nomme le lieu."
+  },
+  {
+   "numero_marche": "20191210000214",
+   "objet": "MOE VERRIÈRE ET RÉNOVATION VENTILATION PISCINE PONTOISE 5ÈME",
+   "fournisseur": "MARCHAND",
+   "montant_max": 466886.04,
+   "date_notification": "2019-02-25",
+   "preuve": "L'objet nomme le lieu et son arrondissement : 'MOE VERRIÈRE ET RÉNOVATION VENTILATION PISCINE PONTOISE 5ÈME' (le lieu est au 19, rue de Pontoise, 5e). Le rattachement repose sur ce seul signal : les sources disponibles ne permettent pas d'identifier le titulaire de ce marché parmi les consultations de maîtrise d'œuvre évoquées en 2022 DCPA 7."
+  },
+  {
+   "numero_marche": "20171210001559",
+   "objet": "MOE RÉNOVATION TECHNIQUE DE LA PISCINE PONTOISE 75005",
+   "fournisseur": "SARL EUGENE ARCHITECTES DU PATRIMOI",
+   "montant_max": 235290.0,
+   "date_notification": "2017-10-19",
+   "preuve": "L'objet nomme le lieu et son code postal : 'MOE RÉNOVATION TECHNIQUE DE LA PISCINE PONTOISE 75005' (lieu situé 19, rue de Pontoise, 5e). Le rattachement repose sur ce seul signal ; les sources ne permettent pas de rattacher ce marché à l'une des consultations de maîtrise d'œuvre successives évoquées en 2022 DCPA 7."
+  },
+  {
+   "numero_marche": "20151410001090",
+   "objet": "M. SUBS. TX RÉNOVATION FILTRATION PISCINE PONTOISE 75005",
+   "fournisseur": "TECHNIQUE FRANCAISE DE L EAU",
+   "montant_max": 105449.53,
+   "date_notification": "2015-06-15",
+   "preuve": "L'objet nomme le lieu et son code postal, et porte sur un équipement du bâtiment : 'M. SUBS. TX RÉNOVATION FILTRATION PISCINE PONTOISE 75005'."
+  }
+ ],
+ "sources": {
+  "delibs": {
+   "name": "Débat-Délibs — Conseil de Paris",
+   "url": "https://a06-v7.apps.paris.fr/a06/"
+  },
+  "bmo": {
+   "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
+   "url": "https://gallica.bnf.fr/ark:/12148/cb343512457/date"
+  },
+  "invest": {
+   "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
+   "url": "https://opendata.paris.fr/"
+  },
+  "wiki": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ }
+}

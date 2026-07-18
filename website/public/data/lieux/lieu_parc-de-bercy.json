@@ -1,0 +1,258 @@
+{
+ "generated_at": "2026-07-18T14:38:43.284445+00:00",
+ "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
+ "slug": "parc-de-bercy",
+ "name": "Parc de Bercy",
+ "kind_fr": "Parc",
+ "kind_en": "Park",
+ "famille": "vert",
+ "arrondissement": 12,
+ "lat": 48.8352,
+ "lon": 2.3826,
+ "photo": "/img/lieux/parc-de-bercy.jpg",
+ "photo_credit": {
+  "licence": "CC BY-SA 3.0",
+  "auteur": "JLPC\n",
+  "url": "https://commons.wikimedia.org/wiki/File:Paris_Parc_Bercy_voie_pav%C3%A9e_2014.jpg",
+  "source": "Wikimedia Commons"
+ },
+ "wiki": {
+  "extract": "Le parc de Bercy est un ensemble de trois jardins situés dans le quartier de Bercy du 12e arrondissement de Paris, entre le Palais omnisports de Paris-Bercy et le centre commercial et de restauration Bercy Village, à l'emplacement des anciens entrepôts de Bercy.",
+  "url": "https://fr.wikipedia.org/wiki/Parc_de_Bercy",
+  "source": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ },
+ "stats": {
+  "n_delibs": 683,
+  "delibs_span": [
+   1996,
+   2025
+  ],
+  "n_bmo_brut": 2000,
+  "n_bmo_verifies": null,
+  "invest_total_eur": 0,
+  "invest_annees": [],
+  "lecture_mode": "titre nommant le lieu (86 trouvés)",
+  "n_lus": 45,
+  "n_lieu": 31
+ },
+ "subventions_exploitant": null,
+ "residents": [],
+ "kpi_montant": null,
+ "synthese_fr": "Les délibérations du Conseil de Paris suivent le parc de Bercy depuis son chantier des années 1990, aménagé sur d'anciens entrepôts vinicoles : le Conseil y vote série après série d'avenants, indemnise des marchés annulés ou repris (Orangerie, engazonnement Falleau) et s'entend affirmer par l'Exécutif que l'enveloppe initiale de 399,7 millions de francs (valeur 1992) « n'a pas été dépassée ». Autour de la grande terrasse s'ajoutent un dépôt archéologique baptisé « Les jardins de la Mémoire », des accès pour personnes à mobilité réduite dont un ascenseur retardé par des appels d'offres successifs infructueux, et la passerelle vers le quai François-Mauriac confiée à l'architecte Dietmar Feichtinger. Les usages se façonnent au fil des votes : manège, exposition, roller park couvert (indemnisé de 22 487,19 € pour travaux supplémentaires), buvette, puis la ferme en container « Agricool » reconduite à titre gratuit malgré l'opposition écologiste. À partir de 2017, le parc devient un enjeu de conflit : un vœu conteste l'« Arena 2 » qui amputerait 2,5 hectares, et l'installation d'une gare routière à Bercy-Seine transforme, selon des élus, le parc en « hall de gare » aux pelouses dégradées. La Ville annonce en 2023 vouloir fermer cette gare et reloger les autocars, intègre en 2024 l'entretien du parc et la fontaine Canyoneaustrate à la concession de l'Accor Arena, et donne en 2025 les noms des compositeurs Michel Magne et Georges Delerue à deux allées.",
+ "moments": [
+  {
+   "id": "5328",
+   "seance": "JUIN 1999",
+   "fait": "Le Conseil équipe le dépôt archéologique « Les jardins de la Mémoire », sous la grande terrasse, qui abrite les vestiges des fouilles néolithiques de Bercy.",
+   "pourquoi": "Des pirogues de 6 500 ans sous le parc",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=5328"
+  },
+  {
+   "id": "13359",
+   "seance": "JANVIER 2001",
+   "fait": "L'ascenseur d'accessibilité voté en 1997 n'est toujours pas construit : trois appels d'offres ont déjà échoué faute d'offres acceptables, et un quatrième vient d'être lancé.",
+   "pourquoi": "Quatre appels d'offres pour un ascenseur",
+   "vedette": false,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=13359"
+  },
+  {
+   "id": "7073",
+   "seance": "JANVIER 2003",
+   "fait": "L'adjoint Denis Baupin annonce le calendrier de la passerelle vers le quai François-Mauriac (chantier 2004, livraison début 2006), confiée à l'architecte Dietmar Feichtinger.",
+   "pourquoi": "La passerelle signature enfin datée",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=7073"
+  },
+  {
+   "id": "22434",
+   "seance": "MARS 2007",
+   "fait": "Le Conseil autorise la couverture du roller park et adopte un vœu pour étudier une aire de jeux de ballons, le terrain de basket ayant cédé la place au roller.",
+   "pourquoi": "Le roller gagne, le basket perd",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=22434"
+  },
+  {
+   "id": "138128",
+   "seance": "SEPTEMBRE 2017",
+   "fait": "Un vœu de Danielle Simonnet demande une alternative à l'« Arena 2 », qui amputerait selon elle 2,5 hectares du parc pour les Jeux ; l'Exécutif y est défavorable.",
+   "pourquoi": "2,5 hectares de parc dans la balance",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=138128"
+  },
+  {
+   "id": "144116",
+   "seance": "JUILLET 2018",
+   "fait": "Le Conseil renouvelle à titre gratuit la convention de la ferme en container « Agricool », que les élus écologistes accusent de ne pas tenir ses promesses.",
+   "pourquoi": "Une ferme-vitrine gratuite qui fait débat",
+   "vedette": false,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=144116"
+  },
+  {
+   "id": "152315",
+   "seance": "SEPTEMBRE 2019",
+   "fait": "Un vœu, rejeté, dénonce le parc « devenu un hall de gare » depuis le transfert des autocars à Bercy-Seine ; la Ville dit avoir investi plus de 1 million d'euros dans sa rénovation.",
+   "pourquoi": "Le parc transformé en salle d'attente",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=152315"
+  },
+  {
+   "id": "176389",
+   "seance": "JUIN 2024",
+   "fait": "À l'approche des Jeux, l'adjoint David Belliard indique que la Ville a décidé de fermer la gare Bercy-Seine, dont les flux dégradaient le parc.",
+   "pourquoi": "La Ville acte la fermeture de la gare",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=176389"
+  }
+ ],
+ "montants": [
+  {
+   "seance": "JUILLET 1996",
+   "montant": "6.100.401 F",
+   "objet": "marché de construction de l'Orangerie du parc annulé par le tribunal administratif, réglé par transaction",
+   "citation": "l'annulation par le Tribunal administratif du marché d'un montant de 6.100.401 F dont elle avait été déclarée attributaire",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=4122"
+  },
+  {
+   "seance": "OCTOBRE 1996",
+   "montant": "6.700.000 F",
+   "objet": "supplément de crédit soumis au vote au titre de la 4e série d'avenants (selon M. Rey)",
+   "citation": "nous allons voter un supplément de crédit de 6.700.000 F environ",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=4368"
+  },
+  {
+   "seance": "OCTOBRE 1996",
+   "montant": "près de 8 millions de francs",
+   "objet": "surcoût attribué au retard du chantier (selon Mme Capelle)",
+   "citation": "Il en coûtera près de 8 millions de francs de plus aux Parisiens.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=4368"
+  },
+  {
+   "seance": "NOVEMBRE 1996",
+   "montant": "7.400.000",
+   "objet": "marché initial d'engazonnement/plantations du parc, avec un avenant antérieur de près de 600.000 F (selon M. Rey)",
+   "citation": "un avenant financier a déjà été voté, de près de 600.000 F sur un marché initial de 7.400.000",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=17618"
+  },
+  {
+   "seance": "NOVEMBRE 1997",
+   "montant": "2.360.000 F",
+   "objet": "aménagement d'un dépôt lapidaire sous la terrasse est (stockage d'œuvres du musée Carnavalet)",
+   "citation": "l'aménagement d'un dépôt lapidaire sous la terrasse côté est du parc pour un coût global de 2.360.000 F",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=16626"
+  },
+  {
+   "seance": "NOVEMBRE 1997",
+   "montant": "399,7 millions de francs",
+   "objet": "enveloppe initiale de l'aménagement du parc, valeur juillet 1992 (selon l'adjointe M.-T. Junot)",
+   "citation": "l'enveloppe initiale concernant l'aménagement du Parc de Bercy a été fixée à 399,7 millions de francs, valeur juillet 1992. Cette enveloppe n'a pas été dépassée.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=16626"
+  },
+  {
+   "seance": "MARS 1997",
+   "montant": "900.000 F",
+   "objet": "coût prévisionnel total de l'ascenseur et de l'élévateur d'accessibilité (jugé élevé par l'élue L. Schneiter)",
+   "citation": "La somme totale paraît un peu élevée (900.000 F)",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=15454"
+  },
+  {
+   "seance": "MARS 1999",
+   "montant": "8 % du chiffre d'affaires hors taxes",
+   "objet": "redevance annuelle due à la Ville pour l'exploitation du manège enfantin",
+   "citation": "une redevance annuelle fixée à un taux révisable de 8 % du chiffre d'affaires hors taxes",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=34298"
+  },
+  {
+   "seance": "JANVIER 2001",
+   "montant": "supérieure de 43 %",
+   "objet": "unique offre au 1er appel d'offres de l'ascenseur (juin 1998), au-dessus de l'estimation de l'administration",
+   "citation": "Un premier appel d'offres a alors été lancé en juin 1998, et déclaré infructueux compte tenu du prix de l'unique offre reçue, supérieure de 43 % à l'estimation de l'administration",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=13359"
+  },
+  {
+   "seance": "JANVIER 2001",
+   "montant": "supérieure de 48,3 %",
+   "objet": "unique offre au 2e appel d'offres de l'ascenseur (décembre 1999)",
+   "citation": "un deuxième appel d'offres a été relancé en décembre 1999, lui aussi infructueux, une seule offre, supérieure de 48,3 % à l'estimation de l'administration, ayant été remise",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=13359"
+  },
+  {
+   "seance": "MARS 2007",
+   "montant": "400.000 euros / 250.000 euros",
+   "objet": "couverture du roller park : crédits inscrits au BP 2007 et compléments demandés ultérieurement",
+   "citation": "400.000 euros et les 250.000 euros demandés ultérieurement sous réserve de la décision de financement",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=31470"
+  },
+  {
+   "seance": "JUILLET 2008",
+   "montant": "22.487,19 euros TTC",
+   "objet": "indemnisation de la société SMC2 pour travaux supplémentaires sur la couverture du roller park",
+   "citation": "montant total de 22.487,19 euros TTC sera imputée au budget de fonctionnement 2008",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=91131"
+  },
+  {
+   "seance": "JUILLET 2018",
+   "montant": "à titre gratuit",
+   "objet": "renouvellement de la convention d'occupation du domaine public accordée à Agricool (relevé par l'élue J. Morel)",
+   "citation": "convention d?occupation de l?espace public à titre gratuit",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=144116"
+  },
+  {
+   "seance": "SEPTEMBRE 2019",
+   "montant": "plus de 1 million d'euros",
+   "objet": "réaménagement, rénovation et accessibilité des allées du parc (selon l'adjointe P. Komitès)",
+   "citation": "investi plus de 1 million d?euros pour son réaménagement, sa rénovation",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=152315"
+  }
+ ],
+ "bmo_extraits": [],
+ "bmo_recit": null,
+ "invest": [],
+ "marches": [
+  {
+   "numero_marche": "20232023S08935",
+   "objet": "MANDAT MAÎTRISE D'OUVRAGE COUVERTURE EGP 12 PARC DE BERCY",
+   "fournisseur": "SPL PARISEINE",
+   "montant_max": 190000.0,
+   "date_notification": "2023-10-03",
+   "preuve": "L'objet du marché nomme le lieu verbatim : « MANDAT MAÎTRISE D'OUVRAGE COUVERTURE EGP 12 PARC DE BERCY ». Mandat de maîtrise d'ouvrage pour une couverture d'équipement située dans le parc. Le Conseil de Paris documente une opération de couverture d'équipement dans ce parc : « création de la couverture du roller park du parc de Bercy (12e) » (2007 DJS 231, mars 2007) puis contrat de transaction avec la société SMC2 SARL pour « les travaux de création de la couverture du roller park du Parc de Bercy (12e) » (2008 DJS 339, juillet 2008). Le sigle « EGP 12 » n'apparaît pas dans les sources consultées : l'équipement précis n'est pas identifié ici, mais le marché porte bien sur le parc de Bercy."
+  },
+  {
+   "numero_marche": "20212021S02444",
+   "objet": "MOE RÉNOVATION ÉNERGÉTIQUE MAISON DU LAC PARC DE BERCY SAMO",
+   "fournisseur": "YLE",
+   "montant_max": 159595.0,
+   "date_notification": "2021-05-04",
+   "preuve": "L'objet nomme le lieu verbatim : « MOE RÉNOVATION ÉNERGÉTIQUE MAISON DU LAC PARC DE BERCY SAMO ». La Maison du Lac est un bâtiment situé dans le parc de Bercy : la délibération 1997 PJEV 26 (mars 1997, travaux d'adaptation du parc de Bercy à la circulation des personnes à mobilité réduite) mentionne « un élévateur desservant les salles de conférences de la Maison du Lac ». Maîtrise d'œuvre de rénovation énergétique portant sur ce bâtiment du parc."
+  },
+  {
+   "numero_marche": "20212021S03024",
+   "objet": "SA5 AMO AMELIORATION SECURITAIRE PARC DE BERCY",
+   "fournisseur": "AREP",
+   "montant_max": 109425.0,
+   "date_notification": "2021-05-31",
+   "preuve": "L'objet nomme le lieu verbatim : « SA5 AMO AMELIORATION SECURITAIRE PARC DE BERCY ». Assistance à maîtrise d'ouvrage pour l'amélioration sécuritaire du parc lui-même ; sujet corroboré par le vœu de l'Exécutif de février 2022 « relatif à la sécurité dans le parc de Bercy et au déplacement de la gare routière »."
+  }
+ ],
+ "sources": {
+  "delibs": {
+   "name": "Débat-Délibs — Conseil de Paris",
+   "url": "https://a06-v7.apps.paris.fr/a06/"
+  },
+  "bmo": {
+   "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
+   "url": "https://gallica.bnf.fr/ark:/12148/cb343512457/date"
+  },
+  "invest": {
+   "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
+   "url": "https://opendata.paris.fr/"
+  },
+  "wiki": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ }
+}

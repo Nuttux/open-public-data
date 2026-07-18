@@ -1,0 +1,276 @@
+{
+ "generated_at": "2026-07-18T14:38:43.284445+00:00",
+ "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
+ "slug": "gaite-lyrique",
+ "name": "Gaîté-Lyrique",
+ "kind_fr": "Équipement culturel",
+ "kind_en": "Cultural venue",
+ "famille": "culture",
+ "arrondissement": 3,
+ "lat": 48.8666,
+ "lon": 2.3535,
+ "photo": "/img/lieux/gaite-lyrique.jpg",
+ "photo_credit": {
+  "licence": null,
+  "auteur": null,
+  "url": "https://fr.wikipedia.org/wiki/Ga%C3%AEt%C3%A9-Lyrique",
+  "source": "Wikipédia"
+ },
+ "wiki": {
+  "extract": "La Gaîté Lyrique, anciennement théâtre de la Gaîté ou Gaîté-Lyrique, est une salle de spectacle parisienne située 3bis rue Papin (3e) et reconvertie en centre culturel de la Ville de Paris depuis 2011.",
+  "url": "https://fr.wikipedia.org/wiki/Ga%C3%AEt%C3%A9-Lyrique",
+  "source": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ },
+ "stats": {
+  "n_delibs": 500,
+  "delibs_span": [
+   1996,
+   2025
+  ],
+  "n_bmo_brut": 1545,
+  "n_bmo_verifies": null,
+  "invest_total_eur": 0,
+  "invest_annees": [],
+  "lecture_mode": "titre nommant le lieu (55 trouvés)",
+  "n_lus": 44,
+  "n_lieu": 43
+ },
+ "subventions_exploitant": {
+  "nom_fiche": "GAITE LYRIQUE S.A.S.",
+  "total_eur": 114140.0,
+  "annees": [
+   "2018",
+   "2024"
+  ],
+  "rows": [
+   {
+    "annee": "2024",
+    "montant_eur": 5000.0,
+    "beneficiaire": "GAITE LYRIQUE S.A.S.",
+    "thematique": "Non classifié"
+   },
+   {
+    "annee": "2021",
+    "montant_eur": 50000.0,
+    "beneficiaire": "STE EXPLOITAT. DE LA GAITE LYRIQUE",
+    "thematique": "Économie"
+   },
+   {
+    "annee": "2020",
+    "montant_eur": 55000.0,
+    "beneficiaire": "STE EXPLOITAT. DE LA GAITE LYRIQUE",
+    "thematique": "Économie"
+   },
+   {
+    "annee": "2018",
+    "montant_eur": 4140.0,
+    "beneficiaire": "SOC DE GESTION DE LA GAITE LYRIQUE",
+    "thematique": "Culture"
+   }
+  ],
+  "perimetre": "mono",
+  "note_publique": null,
+  "autres_sites": []
+ },
+ "residents": [
+  {
+   "beneficiaire": "MARATHON",
+   "montant_total": 5000.0,
+   "preuve": "objet du candidat : « Festival Marathon ! 2024 à la Gaîté Lyrique à Paris » — l'objet nomme le lieu, mais décrit une activité accueillie DANS le lieu (festival) et non sa gestion, d'où le rôle résident ; SIRET 80066061500041. Montant repris du candidat (5 000 €), qui correspond à la seule subvention dont l'objet nomme la Gaîté Lyrique — aucun autre exercice n'est rattaché"
+  }
+ ],
+ "kpi_montant": null,
+ "synthese_fr": "En mai 1996, le groupe communiste interroge la Ville sur un théâtre fermé depuis cinq ans, dont sa question décrit l'intérieur comme « détruit par l'implantation d'un centre d'attractions pour enfants » ; la Ville répond qu'elle s'est fixé pour objectif d'y maintenir des activités culturelles et oppose que le bâtiment « a subi des transformations » : « ce n'est plus un grand théâtre, même s'il comporte toujours deux salles de spectacles ». En novembre 1996, le Conseil adopte à la majorité 248.000 F de fonctionnement pour une association de préfiguration chargée de réfléchir au devenir du lieu ; au cours du débat, Mme Laure SCHNEITER chiffre à 180 millions de francs la caution que la faillite de la Planète magique laissera selon elle à la Ville. En juin 1999, la Ville indique que cette association, dont le siège était au 3 bis rue Papin, a fonctionné deux ans et reçu deux subventions, tandis que le groupe socialiste en réclame le bilan. En mai 2001, l'adjoint à la Culture expose les fondements de la décision d'abandonner le projet de salle de concert symphonique de 2.100 places, qu'il juge très coûteux et inadapté ; il conteste au passage la lecture des 87 millions de francs du contrat de plan Etat-Région avancée par la question, ce contrat portant selon lui sur plusieurs salles « mais pas uniquement de la Gaîté-Lyrique ». En mars 2002, interrogé sur la composition du comité de pilotage, il répond que le projet « fera l'objet de la mise en place d'un comité de pilotage » qu'il présidera pour suivre les études de définition. De 2002 à 2011, le Conseil est saisi des actes successifs du chantier — marchés de définition, marché de maîtrise d'œuvre conclu avec le groupement représenté par l'architecte Manuelle GAUTRAND, démolitions, recherche de polychromies, résiliations des missions OPC et SPS, avenants, mobiliers « Eclaireuses » et « Ruban Numérique » — ainsi que de plusieurs transactions et indemnisations (relevage d'eau, génie climatique, œuvre d'une artiste dans le hall, chantier), et autorise en décembre 2007 le Maire à signer avec la Société de Gestion de la Gaîté Lyrique SAS une convention de délégation de service public pour l'exploitation du lieu. Après une délibération portant avenant à la concession et transaction avec la SEGL en 2023, l'année 2025 voit une question d'actualité sur la situation des mineurs isolés de la Gaîté Lyrique et une série de vœux — subvention exceptionnelle, avenir du lieu, dégradations subies, suspension des subventions aux associations ayant selon le groupe Union Capitale soutenu ou facilité l'occupation, situation financière — avant un protocole transactionnel avec « La Gaîté lyrique S.A.S. » soumis au Conseil en décembre 2025.",
+ "moments": [
+  {
+   "id": "8555",
+   "seance": "MAI 1996",
+   "fait": "Le groupe communiste interroge la Ville sur l'avenir d'un théâtre fermé depuis cinq ans, dont sa question décrit l'intérieur comme « détruit par l'implantation d'un centre d'attractions pour enfants » ; la Ville répond viser le maintien d'activités culturelles et oppose que le bâtiment « a subi des transformations ».",
+   "pourquoi": "Point de départ : un théâtre fermé, dont l'état est décrit en termes opposés par le groupe communiste et par la Ville",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=8555"
+  },
+  {
+   "id": "17623",
+   "seance": "NOVEMBRE 1996",
+   "fait": "Le Conseil adopte à la majorité 248 000 F de fonctionnement pour une association de préfiguration ; en débat, Mme Laure SCHNEITER chiffre à 180 millions de francs la caution que la faillite de la Planète magique laissera selon elle à la Ville.",
+   "pourquoi": "Premier vote de crédits pour rouvrir le lieu",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=17623"
+  },
+  {
+   "id": "8820",
+   "seance": "MAI 2001",
+   "fait": "L'adjoint à la Culture expose les fondements de la décision d'abandonner le projet de salle symphonique de 2 100 places inscrit au contrat de plan Etat-Région, et conteste que les 22 millions de francs de l'Etat soient affectés à la Gaîté-Lyrique.",
+   "pourquoi": "L'exécutif annonce l'abandon de la salle symphonique",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=8820"
+  },
+  {
+   "id": "7409",
+   "seance": "MARS 2002",
+   "fait": "Interrogé sur les membres du comité de pilotage de la réhabilitation, l'adjoint à la Culture répond que le projet « fera l'objet de la mise en place d'un comité de pilotage », qu'il présidera, pour suivre les études de définition et organiser la concertation.",
+   "pourquoi": "La gouvernance annoncée pour le projet",
+   "vedette": false,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=7409"
+  },
+  {
+   "id": "33851",
+   "seance": "FEVRIER 2004",
+   "fait": "Le Conseil est saisi d'une délibération autorisant le Maire à signer le marché de maîtrise d'œuvre et à déposer les demandes de permis de construire et de démolir pour le centre dédié aux musiques actuelles et aux arts numériques.",
+   "pourquoi": "Autorisation de désigner la maîtrise d'œuvre et de déposer les permis",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=33851"
+  },
+  {
+   "id": "72642",
+   "seance": "JUIN 2007",
+   "fait": "Le Conseil est saisi d'une délibération autorisant le Maire à signer un contrat de transaction avec Mme Isabel Michel, artiste, lui accordant une indemnisation au titre des droits de propriété intellectuelle sur l'œuvre qu'elle a réalisée dans le hall.",
+   "pourquoi": "Droits d'auteur sur une œuvre du hall",
+   "vedette": false,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=72642"
+  },
+  {
+   "id": "54389",
+   "seance": "DECEMBRE 2007",
+   "fait": "Le Conseil est saisi d'une délibération autorisant le Maire à signer avec la Société de Gestion de la Gaîté Lyrique SAS (S.G.G.L) une convention de délégation de service public pour l'exploitation de la Gaîté Lyrique.",
+   "pourquoi": "Vers une exploitation en gestion déléguée",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=54389"
+  },
+  {
+   "id": "179753",
+   "seance": "AVRIL 2025",
+   "fait": "M. Laurent SOREL adresse à la Maire de Paris et au Préfet de police une question d'actualité relative à la situation des mineurs isolés de la Gaîté Lyrique.",
+   "pourquoi": "La situation des mineurs isolés arrive en question d'actualité",
+   "vedette": false,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=179753"
+  },
+  {
+   "id": "179771",
+   "seance": "AVRIL 2025",
+   "fait": "Quatre vœux sont déposés sur la Gaîté Lyrique : attribution d'une subvention exceptionnelle (Les Ecologistes), avenir du lieu (Union Capitale), dégradations subies (Les Républicains, Les Centristes et Indépendants) et vœu de l'Exécutif.",
+   "pourquoi": "Trois groupes et l'Exécutif saisissent le Conseil sur le sort du lieu",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=179771"
+  }
+ ],
+ "montants": [
+  {
+   "seance": "NOVEMBRE 1996",
+   "montant": "248.000 F",
+   "objet": "subvention de fonctionnement à l'association de préfiguration « Gaîté Lyrique - Le théâtre des arts et métiers du spectacle », soumise au vote (délibération D. 1640 adoptée à la majorité)",
+   "citation": "Vous proposez à notre Assemblée de voter la somme de 248.000 F pour le fonctionnement d'une nouvelle association \"Gaîté Lyrique - Le théâtre des arts et métiers du spectacle\"",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=17623"
+  },
+  {
+   "seance": "NOVEMBRE 1996",
+   "montant": "180 millions de francs",
+   "objet": "montant avancé en débat par Mme Laure SCHNEITER : selon elle, la caution de la Planète magique laissera cette somme à la Ville après sa faillite ; propos d'une élue, non soumis au vote dans cette délibération",
+   "citation": "Mise en faillite, la Planète magique laissera à la Ville l'ardoise de sa caution, à savoir 180 millions de francs , c'est-à-dire deux fois le coût de sa rénovation initiale.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=17623"
+  },
+  {
+   "seance": "JUIN 1999",
+   "montant": "248.000 F",
+   "objet": "subvention de fonctionnement votée le 25 novembre 1996 à l'association de préfiguration, rappelée dans le libellé de la question",
+   "citation": "Le 25 novembre 1996, le Conseil de Paris votait une subvention de fonctionnement de 248.000 F pour l'association \"Gaîté-Lyrique : le théâtre des arts et métiers du spectacle\"",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=5401"
+  },
+  {
+   "seance": "JUIN 1999",
+   "montant": "249.000 F",
+   "objet": "autorisations de programme engagées pour adapter le 5e étage du théâtre aux locaux de l'association ; chiffre avancé dans le libellé de la question (QOC), non voté dans ce document",
+   "citation": "puis 249.000 F d'autorisations de programme ont été engagées pour adapter le 5e étage du théâtre aux conditions de travail de l'association",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=5401"
+  },
+  {
+   "seance": "MAI 2001",
+   "montant": "87 millions de francs",
+   "objet": "crédit inscrit au contrat de plan Etat-Région (65 millions Région Ile-de-France, 22 millions Etat) pour une salle de concert symphonique de 2.100 places, tel qu'énoncé dans le libellé de la question ; l'adjoint à la Culture répond que le contrat de plan porte sur la rénovation de plusieurs salles de spectacles, « mais pas uniquement de la Gaîté-Lyrique », et expose la décision d'abandonner le projet",
+   "citation": "un crédit de 87 millions de francs (65 millions pour la Région d'Ile-de-France et 22 millions pour l'Etat) a été inscrit pour installer dans ce théâtre, désaffecté depuis 1989, une salle de concert symphonique de 2.100 places",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=8820"
+  },
+  {
+   "seance": "MAI 2001",
+   "montant": "22 millions de francs",
+   "objet": "part de l'Etat que l'adjoint à la Culture affirme en débat ne pas être affectée à la Gaîté-Lyrique",
+   "citation": "les 22 millions de francs ne sont pas affectés à la Gaîté-Lyrique par l'Etat, l'Etat n'ayant pas indiqué de façon précise leur affectation",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=8820"
+  }
+ ],
+ "bmo_extraits": [],
+ "bmo_recit": null,
+ "invest": [],
+ "marches": [
+  {
+   "numero_marche": "20191210003827",
+   "objet": "MODERNISATION INSTALLATION VENTILATION LA GAÎTÉ LYRIQUE",
+   "fournisseur": "EIFFAGE ENERGIE SYSTEMES",
+   "montant_max": 353000.0,
+   "date_notification": "2019-08-30",
+   "preuve": "l'objet nomme le lieu et porte sur une installation technique du bâtiment : « MODERNISATION INSTALLATION VENTILATION LA GAÎTÉ LYRIQUE »"
+  },
+  {
+   "numero_marche": "20181210000601",
+   "objet": "THEATRE GAITE LYRIQUE DESENFUMAGE",
+   "fournisseur": "TRAVAUX BATIMENTS ELECTRICITE SECUR",
+   "montant_max": 245846.5,
+   "date_notification": "2018-05-09",
+   "preuve": "l'objet nomme le lieu et porte sur une installation de sécurité incendie du bâtiment : « THEATRE GAITE LYRIQUE DESENFUMAGE »"
+  },
+  {
+   "numero_marche": "20141210000154",
+   "objet": "CRÉATION D'UN SAS DANS LE HALL DE LA GAÎTÉ LYRIQUE 75003",
+   "fournisseur": "DORMAKABA FRANCE",
+   "montant_max": 69323.0,
+   "date_notification": "2014-12-02",
+   "preuve": "l'objet nomme le lieu, un local précis du bâtiment et son code postal : « CRÉATION D'UN SAS DANS LE HALL DE LA GAÎTÉ LYRIQUE 75003 » — cohérent avec le 3e arrondissement (3 bis rue Papin)"
+  },
+  {
+   "numero_marche": "20161210000648",
+   "objet": "MODIFICATION PORTES SALLE DE CONCERT GAÎTÉ LYRIQUE",
+   "fournisseur": "AGENCEMENT CLOISONS DECORAT PARQUET",
+   "montant_max": 60296.0,
+   "date_notification": "2016-06-17",
+   "preuve": "l'objet nomme le lieu et un local précis du bâtiment : « MODIFICATION PORTES SALLE DE CONCERT GAÎTÉ LYRIQUE »"
+  },
+  {
+   "numero_marche": "20191210005220",
+   "objet": "AMÉLIORATION DES INSTALLATIONS DE VENTILATION GAITÉ LYRIQUE",
+   "fournisseur": "SPHERE INGENIERIE",
+   "montant_max": 53280.0,
+   "date_notification": "2019-04-19",
+   "preuve": "l'objet nomme le lieu et porte sur ses installations techniques : « AMÉLIORATION DES INSTALLATIONS DE VENTILATION GAITÉ LYRIQUE »"
+  },
+  {
+   "numero_marche": "20131060000539",
+   "objet": "FOURNITURE DE PRODUITS DERIVES GAITE LYRIQUE",
+   "fournisseur": "SOC DE GESTION DE LA GAITE LYRIQUE",
+   "montant_max": 50000.0,
+   "date_notification": "2013-09-12",
+   "preuve": "l'objet nomme le lieu (« FOURNITURE DE PRODUITS DERIVES GAITE LYRIQUE ») et le titulaire, SIRET 50290276000045, est la Société de Gestion de la Gaîté Lyrique, exploitant du lieu confirmé par la délib 2007 DAC 698 (DSP pour l'exploitation de la Gaîté Lyrique, 3bis rue Papin). Catégorie DECP « Objets promotionnels » : marché lié à l'exploitation commerciale du lieu, et non à des travaux ou à l'entretien du bâtiment, d'où confiance moyenne"
+  }
+ ],
+ "sources": {
+  "delibs": {
+   "name": "Débat-Délibs — Conseil de Paris",
+   "url": "https://a06-v7.apps.paris.fr/a06/"
+  },
+  "bmo": {
+   "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
+   "url": "https://gallica.bnf.fr/ark:/12148/cb343512457/date"
+  },
+  "invest": {
+   "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
+   "url": "https://opendata.paris.fr/"
+  },
+  "wiki": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ }
+}

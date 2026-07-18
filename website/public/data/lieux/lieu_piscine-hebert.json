@@ -1,0 +1,126 @@
+{
+ "generated_at": "2026-07-18T14:38:43.284445+00:00",
+ "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
+ "slug": "piscine-hebert",
+ "name": "Piscine Hébert",
+ "kind_fr": "Piscine",
+ "kind_en": "Swimming pool",
+ "famille": "sport",
+ "arrondissement": 18,
+ "lat": 48.8935,
+ "lon": 2.3612,
+ "photo": "/img/lieux/piscine-hebert.jpg",
+ "photo_credit": {
+  "licence": null,
+  "auteur": null,
+  "url": "https://fr.wikipedia.org/wiki/Piscine_H%C3%A9bert",
+  "source": "Wikipédia"
+ },
+ "wiki": {
+  "extract": "La Piscine Hébert est une piscine située à Paris, au 2, rue des Fillettes, près de la place Hébert.",
+  "url": "https://fr.wikipedia.org/wiki/Piscine_H%C3%A9bert",
+  "source": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ },
+ "stats": {
+  "n_delibs": 44,
+  "delibs_span": [
+   2002,
+   2019
+  ],
+  "n_bmo_brut": 652,
+  "n_bmo_verifies": null,
+  "invest_total_eur": 0,
+  "invest_annees": [],
+  "lecture_mode": "titre nommant le lieu (3 trouvés)",
+  "n_lus": 3,
+  "n_lieu": 2
+ },
+ "subventions_exploitant": null,
+ "residents": [],
+ "kpi_montant": null,
+ "synthese_fr": "En septembre 2002, la piscine Hébert fait l'objet d'une question de Mme Roxane DECORTE et du groupe « Rassemblement pour la République et apparentés » sur le report de son ouverture estivale à 8 heures : M. Pascal CHERKI, adjoint, répond que les horaires de l'été 2002 y ont été fixés « du lundi au dimanche de 8 heures à 18 heures », en invoquant les congés des personnels spécialisés et un décret énonçant que « la durée quotidienne du travail ne peut excéder 10 heures », et renvoie les nageurs matinaux vers la piscine des Amiraux, « située à moins d'un kilomètre ». En avril 2019, deux vœux sont déposés sur l'équipement, l'un par le groupe Communiste - Front de Gauche, l'autre par l'Exécutif. Pour le premier, Mme Danièle PREMEL déclare que la piscine « a connu de trop nombreuses fermetures ces derniers mois », qu'elle attribue à des « difficultés sociales, réglementaires ou encore techniques », et demande « une programmation de travaux à moyen terme pour une réhabilitation lourde » ainsi que des horaires élargis dans les autres piscines du 18e. En réponse, M. Jean-François MARTINS, adjoint, indique avoir déposé un vœu bis de l'Exécutif « pour repréciser que les travaux à Hébert sont évidemment nécessaires et attendus dès cet été », énumère des interventions portant sur l'accueil, les vestiaires et les installations de filtration, et situe « la structure du bassin et la structure de la toiture » dans la prochaine mandature ; il évoque en outre « un sujet RH dans cette piscine », selon lui « lié à un problème de relation entre un chef de bassin et les agents qui y travaillent ». Les deux montants qu'il cite alors — 150 millions d'euros pour créer de nouvelles piscines, 50 millions d'euros de « grands entretiens et de rénovations » — portent sur le Plan Nager à Paris dans son ensemble et non sur la piscine Hébert ; le compte rendu de la séance ne rapporte pas le sort réservé aux deux vœux.",
+ "moments": [
+  {
+   "id": "5985",
+   "seance": "SEPTEMBRE 2002",
+   "fait": "Interrogé par Mme Roxane DECORTE sur une ouverture estivale « à 8 heures au lieu de 7 heures », M. Pascal CHERKI, adjoint, répond que les horaires de l'été 2002 de la piscine Hébert ont été fixés « du lundi au dimanche de 8 heures à 18 heures », en invoquant « l'absence d'une partie des personnels spécialisés tenue de prendre leurs congés en dehors des périodes scolaires » et le « décret n° 2000-15 du 25 août 2000 » sur l'aménagement et la réduction du temps de travail.",
+   "pourquoi": "Registre des usages et du personnel : l'amplitude d'ouverture de l'équipement se règle ici au croisement du droit du travail et de l'offre voisine, la réponse renvoyant les nageurs matinaux vers la piscine des Amiraux, « ouverte de 7 heures à 17 heures du mardi au samedi ».",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=5985"
+  },
+  {
+   "id": "148298",
+   "seance": "AVRIL 2019",
+   "fait": "Mme Danièle PREMEL, pour le groupe Communiste - Front de Gauche, demande « une programmation de travaux à moyen terme pour une réhabilitation lourde » de la piscine Hébert et que « les autres piscines du 18e arrondissement, Dauvin, Amiraux, puissent bénéficier d'horaires élargis » ; M. Jean-François MARTINS, adjoint, répond avoir déposé un vœu bis de l'Exécutif « pour repréciser que les travaux à Hébert sont évidemment nécessaires et attendus dès cet été ».",
+   "pourquoi": "Registre gouvernance et travaux : demande d'une réhabilitation lourde et annonce d'un chantier d'été coexistent dans la même séance, M. Jean-François MARTINS situant « la structure du bassin et la structure de la toiture » dans la prochaine mandature et évoquant « un sujet RH dans cette piscine », selon lui « lié à un problème de relation entre un chef de bassin et les agents qui y travaillent ».",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=148298"
+  }
+ ],
+ "montants": [
+  {
+   "seance": "AVRIL 2019",
+   "montant": "150 millions d'euros",
+   "objet": "Investissement pour créer de nouvelles piscines, annoncé par M. Jean-François MARTINS au titre du Plan Nager à Paris (échelle de la Ville) ; le propos ne rattache pas ce montant à la piscine Hébert.",
+   "citation": "je sais l'implication, l'engagement du groupe Communiste pour que nous allions au bout du Plan Nager à Paris et que nous mettions en ?uvre les 150 millions d'euros d'investissement pour créer de nouvelles piscines",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=148298"
+  },
+  {
+   "seance": "AVRIL 2019",
+   "montant": "50 millions d'euros",
+   "objet": "Grands entretiens et rénovations annoncés par M. Jean-François MARTINS dans le même propos sur le Plan Nager à Paris, cités à l'appui des piscines nouvelles des portes de Paris ; aucun rattachement à la piscine Hébert dans la citation.",
+   "citation": "verront le jour durant cette mandature et permettront à ces familles des portes de Paris de bénéficier de cet engagement de piscines nouvelles mais aussi de 50 millions d'euros de grands entretiens et de rénovations",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=148298"
+  }
+ ],
+ "bmo_extraits": [],
+ "bmo_recit": null,
+ "invest": [],
+ "marches": [
+  {
+   "numero_marche": "20131210009283",
+   "objet": "MODERNISATION CHAUFFERIE GAZ ET INSTALLATION PISCINE HÉBERT",
+   "fournisseur": "ALVES PEREIRA",
+   "montant_max": 616715.0,
+   "date_notification": "2013-05-16",
+   "preuve": "L'objet du marché nomme le lieu verbatim : « MODERNISATION CHAUFFERIE GAZ ET INSTALLATION PISCINE HÉBERT ». Il porte sur l'équipement technique du bâtiment lui-même (chaufferie), et non sur un simple repère d'adresse."
+  },
+  {
+   "numero_marche": "20131410009793",
+   "objet": "TX DE MISE EN SÉCURITÉ DU RÉSEAU ECS DE LA PISCINE HÉBERT",
+   "fournisseur": "TECHNIBAT",
+   "montant_max": 63100.0,
+   "date_notification": "2013-07-29",
+   "preuve": "L'objet du marché nomme le lieu verbatim : « TX DE MISE EN SÉCURITÉ DU RÉSEAU ECS DE LA PISCINE HÉBERT ». Travaux sur le réseau d'eau chaude sanitaire de cet équipement, donc sur le bâtiment lui-même."
+  },
+  {
+   "numero_marche": "20232023T05146",
+   "objet": "RÉNOVATION SSI PISCINE HÉBERT, 750018",
+   "fournisseur": "TETIB",
+   "montant_max": 31607.0,
+   "date_notification": "2023-06-22",
+   "preuve": "L'objet du marché nomme le lieu et son arrondissement verbatim : « RÉNOVATION SSI PISCINE HÉBERT, 750018 ». Le code 750018 concorde avec l'arrondissement du lieu (18e), confirmé par le vœu du Conseil de Paris d'avril 2019 « relatif à la piscine Hébert (18e) » (doc 148298). Rénovation du système de sécurité incendie du bâtiment."
+  }
+ ],
+ "sources": {
+  "delibs": {
+   "name": "Débat-Délibs — Conseil de Paris",
+   "url": "https://a06-v7.apps.paris.fr/a06/"
+  },
+  "bmo": {
+   "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
+   "url": "https://gallica.bnf.fr/ark:/12148/cb343512457/date"
+  },
+  "invest": {
+   "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
+   "url": "https://opendata.paris.fr/"
+  },
+  "wiki": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ }
+}

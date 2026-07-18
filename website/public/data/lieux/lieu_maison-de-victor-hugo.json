@@ -1,0 +1,233 @@
+{
+ "generated_at": "2026-07-18T14:38:43.284445+00:00",
+ "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
+ "slug": "maison-de-victor-hugo",
+ "name": "Maison de Victor Hugo",
+ "kind_fr": "Musée",
+ "kind_en": "Musée",
+ "famille": "culture",
+ "arrondissement": 4,
+ "lat": 48.85482,
+ "lon": 2.36613,
+ "photo": "/img/lieux/maison-de-victor-hugo.jpg",
+ "photo_credit": {
+  "licence": null,
+  "auteur": null,
+  "url": "https://fr.wikipedia.org/wiki/Maison_de_Victor_Hugo",
+  "source": "Wikipédia"
+ },
+ "wiki": {
+  "extract": "Maisons de Victor Hugo est un musée monographique parisien, situé au 6, place des Vosges, dans le 4e arrondissement, qui préserve l’ancien hôtel de Rohan-Guémené où Victor Hugo loua l'appartement au deuxième étage pendant seize ans, de 1832 à 1848.",
+  "url": "https://fr.wikipedia.org/wiki/Maison_de_Victor_Hugo",
+  "source": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ },
+ "stats": {
+  "n_delibs": 188,
+  "delibs_span": [
+   1997,
+   2007
+  ],
+  "n_bmo_brut": 2000,
+  "n_bmo_verifies": 4,
+  "invest_total_eur": 0,
+  "invest_annees": [],
+  "lecture_mode": "titre nommant le lieu (16 trouvés)",
+  "n_lus": 16,
+  "n_lieu": 14
+ },
+ "subventions_exploitant": null,
+ "residents": [],
+ "kpi_montant": null,
+ "synthese_fr": "De 1997 à 2007, la Maison de Victor Hugo revient régulièrement devant le Conseil de Paris, d'abord pour enrichir ses collections : le Conseil autorise l'acquisition de dessins, d'éditions originales et d'autographes de l'écrivain — jusqu'à 320 000 euros pour « Les Travailleurs de la mer » en 2003 — souvent complétée par des dons d'entreprises. En 2000 puis 2001, il approuve le principe d'une restructuration partielle du musée, 6 place des Vosges, puis les modalités d'un marché de travaux destiné à améliorer l'accueil du public. Les délibérations concernent aussi le second site de l'institution, la maison d'exil de Hauteville House à Guernesey, dont le Conseil fixe les tarifs d'entrée et autorise l'acceptation d'un don et d'un legs. À la fin des années 2000, l'attention se porte sur les usages : label d'accessibilité « Tourisme et Handicap » en 2007 et convention de programmation culturelle. En 2003, lors de l'un de ces achats, un conseiller réclame en séance une expertise du prix indépendante du vendeur.",
+ "moments": [
+  {
+   "id": "49346",
+   "seance": "NOVEMBRE 1997",
+   "fait": "Le Conseil autorise le Maire à acquérir, pour la maison de Victor Hugo, un dessin de Victor Hugo « Composition abstraite » (300 000 FF), dans un achat groupé avec le musée Cernuschi.",
+   "pourquoi": "premier achat documenté pour les collections",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=49346"
+  },
+  {
+   "id": "65048",
+   "seance": "OCTOBRE 1998",
+   "fait": "Le Conseil autorise l'acceptation d'un don de 20 000 F de la société AKG Photothèque, destiné à l'achat de photographies d'Olivier Mériel pour le musée.",
+   "pourquoi": "le mécénat d'entreprise entre au musée",
+   "vedette": false,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=65048"
+  },
+  {
+   "id": "84950",
+   "seance": "JANVIER 2001",
+   "fait": "Le Conseil approuve les modalités d'un marché de travaux pour améliorer l'accueil du public, 6 place des Vosges, et autorise le Maire à le signer, après avoir approuvé en 2000 le principe d'une restructuration partielle.",
+   "pourquoi": "le musée réaménage l'accueil du public",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=84950"
+  },
+  {
+   "id": "8331",
+   "seance": "JUILLET 2003",
+   "fait": "En séance, le conseiller Yves Pozzo di Borgo demande le nom de l'expert ayant estimé le prix de l'œuvre acquise et conditionne son vote à une expertise indépendante du vendeur.",
+   "pourquoi": "un élu conteste le prix d'un achat",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=8331"
+  },
+  {
+   "id": "31801",
+   "seance": "MARS 2007",
+   "fait": "Le Conseil autorise le Maire à accepter le legs de M. Walter Beardmore, une œuvre estimée à 23 000 euros, pour le site de Hauteville House (Guernesey).",
+   "pourquoi": "un legs enrichit la maison d'exil",
+   "vedette": false,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=31801"
+  },
+  {
+   "id": "53266",
+   "seance": "OCTOBRE 2007",
+   "fait": "Le Conseil autorise le Maire à signer la charte relative à l'attribution au musée du label national « Tourisme et Handicap » (handicap moteur).",
+   "pourquoi": "un label national d'accessibilité pour le musée",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=53266"
+  },
+  {
+   "id": "54752",
+   "seance": "DECEMBRE 2007",
+   "fait": "Le Conseil fixe de nouveaux tarifs d'entrée à Hauteville House, la maison d'exil de Victor Hugo à Guernesey, applicables au 1er avril 2008.",
+   "pourquoi": "nouveaux tarifs pour le site de Guernesey",
+   "vedette": false,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=54752"
+  },
+  {
+   "id": "54453",
+   "seance": "DECEMBRE 2007",
+   "fait": "Le Conseil autorise le Maire à signer une convention avec la Maison du geste et de l'image pour un programme d'activités culturelles avec le musée.",
+   "pourquoi": "des activités culturelles avec un partenaire",
+   "vedette": false,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=54453"
+  }
+ ],
+ "montants": [
+  {
+   "seance": "NOVEMBRE 1997",
+   "montant": "300.000 FF",
+   "objet": "acquisition, pour la maison de Victor Hugo, du dessin « Composition abstraite »",
+   "citation": "un dessin de Victor Hugo intitulé \"Composition abstraite\", vers 1853-1855, lavis d'encre brune, 15,7 cm x 24,3 cm, appartenant à la galerie Jan Krugier à Genève pour le prix de 300.000 FF",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=49346"
+  },
+  {
+   "seance": "NOVEMBRE 1997",
+   "montant": "680.000 F",
+   "objet": "dépense totale de l'achat groupé (maison de Victor Hugo + musée Cernuschi)",
+   "citation": "La dépense totale correspondante, soit 680.000 F, sera imputée au chapitre 903, sous-chapitre 903-62, article 2141",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=49346"
+  },
+  {
+   "seance": "OCTOBRE 1998",
+   "montant": "20.000 F T.T.C.",
+   "objet": "don de la société « AKG Photothèque » pour l'achat de photographies d'Olivier Mériel",
+   "citation": "l'aide financière que la société \"AKG Photothèque\" est disposée à apporter à la Maison de Victor Hugo, soit un don en espèces d'un montant de 20.000 F T.T.C.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=65048"
+  },
+  {
+   "seance": "SEPTEMBRE 2000",
+   "montant": "640.000 F",
+   "objet": "acquisition du dessin de Victor Hugo « Château sur une colline »",
+   "citation": "M. le Maire de Paris est autorisé à acquérir un dessin de Victor Hugo \"Château sur une colline\" pour la Maison de Victor Hugo pour un montant de 640.000 F.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=28351"
+  },
+  {
+   "seance": "JUILLET 2001",
+   "montant": "389.121,10 F",
+   "objet": "acquisition de divers ouvrages et autographes de Victor Hugo",
+   "citation": "M. le Maire de Paris est autorisé à acquérir divers ouvrages et autographes de Victor Hugo pour la somme de 389.121,10 F.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=62700"
+  },
+  {
+   "seance": "DECEMBRE 2002",
+   "montant": "6.148 euros",
+   "objet": "don de la société Rhodia Organique pour l'acquisition d'œuvres d'art",
+   "citation": "Il s'agit d'un don en espèce d'un montant de 6.148 euros et est destiné à l'acquisition d'?uvres d'art pour la Maison de Victor Hugo.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=71024"
+  },
+  {
+   "seance": "JUILLET 2003",
+   "montant": "320.000 euros",
+   "objet": "acquisition de l'édition originale « Les Travailleurs de la mer »",
+   "citation": "M. le Maire de Paris est autorisé à acquérir l'édition originale \"Les Travailleurs de la mer\" de Victor Hugo pour un montant de 320.000 euros.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=70138"
+  },
+  {
+   "seance": "JUILLET 2003",
+   "montant": "320.000 euros",
+   "objet": "acquisition d'une œuvre d'art pour la Maison de Victor Hugo (2003 DAC 247)",
+   "citation": "Montant : 320.000 euros",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=8331"
+  },
+  {
+   "seance": "AVRIL 2005",
+   "montant": "2.500 euros",
+   "objet": "don de l'agence MEDIAPLUS-ETAT DE FETE pour l'acquisition d'œuvres d'art",
+   "citation": "Il s?agit d?un don en espèce d?un montant de 2.500 euros destiné à l?acquisition d??uvres d?art pour la Maison de Victor Hugo.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=43535"
+  },
+  {
+   "seance": "AVRIL 2005",
+   "montant": "716 euros",
+   "objet": "don de la Banque Julius Baer pour la restauration d'œuvres d'art à Hauteville House (Guernesey)",
+   "citation": "Il s?agit d?un don en espèces d?un montant de 716 euros destiné à la restauration d??uvres d?art pour la Maison d?exil de Victor Hugo à Guernesey.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=43678"
+  },
+  {
+   "seance": "MARS 2007",
+   "montant": "23.000 euros",
+   "objet": "valeur d'immobilisation de l'œuvre léguée par M. Walter Beardmore",
+   "citation": "La valeur d?immobilisation de l??uvre léguée, estimée à 23.000 euros",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=31801"
+  },
+  {
+   "seance": "DECEMBRE 2007",
+   "montant": "6 £ / 8,67 €",
+   "objet": "plein tarif de droit d'entrée à Hauteville House (Guernesey)",
+   "citation": "Plein tarif 6 8,67",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=54752"
+  },
+  {
+   "seance": "DECEMBRE 2007",
+   "montant": "2.300 euros",
+   "objet": "dépense de personnel du programme d'activités culturelles (2007-2008)",
+   "citation": "La dépense de personnel, soit 2.300 euros, sera imputée, au chapitre 012 du budget de fonctionnement, à concurrence de 760 euros sur l?exercice 2007 et 1.540 euros sur l?exercice 2008",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=54453"
+  },
+  {
+   "seance": "DECEMBRE 2007",
+   "montant": "700 euros",
+   "objet": "dépense de fournitures pédagogiques du programme",
+   "citation": "La dépense de fournitures pédagogiques, soit 700 euros, sera imputée sur le budget de fonctionnement au chapitre 011",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=54453"
+  }
+ ],
+ "bmo_extraits": [],
+ "bmo_recit": null,
+ "invest": [],
+ "marches": [],
+ "sources": {
+  "delibs": {
+   "name": "Débat-Délibs — Conseil de Paris",
+   "url": "https://a06-v7.apps.paris.fr/a06/"
+  },
+  "bmo": {
+   "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
+   "url": "https://gallica.bnf.fr/ark:/12148/cb343512457/date"
+  },
+  "invest": {
+   "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
+   "url": "https://opendata.paris.fr/"
+  },
+  "wiki": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ }
+}

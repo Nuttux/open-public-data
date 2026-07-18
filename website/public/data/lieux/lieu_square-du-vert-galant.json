@@ -1,0 +1,93 @@
+{
+ "generated_at": "2026-07-18T14:38:43.284445+00:00",
+ "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
+ "slug": "square-du-vert-galant",
+ "name": "Square du Vert-Galant",
+ "kind_fr": "Square",
+ "kind_en": "Square",
+ "famille": "vert",
+ "arrondissement": 1,
+ "lat": 48.8574,
+ "lon": 2.341,
+ "photo": "/img/lieux/square-du-vert-galant.jpg",
+ "photo_credit": {
+  "licence": "CC BY-SA 3.0",
+  "auteur": "Daniel Kraft",
+  "url": "https://commons.wikimedia.org/wiki/File:Square_du_Vert-Galant_panosphere.jpg",
+  "source": "Wikimedia Commons"
+ },
+ "wiki": {
+  "extract": null,
+  "url": null,
+  "source": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ },
+ "stats": {
+  "n_delibs": 1229,
+  "delibs_span": [
+   1995,
+   1995
+  ],
+  "n_bmo_brut": 0,
+  "n_bmo_verifies": null,
+  "invest_total_eur": 0,
+  "invest_annees": [],
+  "lecture_mode": "titre nommant le lieu (2 trouvés)",
+  "n_lus": 1,
+  "n_lieu": 1
+ },
+ "subventions_exploitant": null,
+ "residents": [],
+ "kpi_montant": null,
+ "synthese_fr": "Le square du Vert-Galant apparaît dans les délibérations du Conseil de Paris de juillet 1995 au titre d'un projet d'illumination. Est soumis au Conseil un projet de délibération autorisant le Maire à signer un marché sur appel d'offres pour éclairer le pont Neuf et le square (projet D. 1100), pour un montant annoncé de 13 millions de francs ; un second marché vise les ponts d'Arcole et Louis-Philippe (4,5 millions), soit 17,5 millions au total. En séance, Mme Yvette DAVANT juge la somme « énorme » et s'interroge sur « l'opportunité d'une telle dépense » « dans le contexte actuel de rigueur budgétaire », la rapprochant des 568.000 F votés le même jour pour la prévention été et répartis sur 46 associations.",
+ "moments": [
+  {
+   "id": "397",
+   "seance": "JUILLET 1995",
+   "fait": "Le Conseil examine l'autorisation au Maire de signer un marché d'illumination du pont Neuf et du square du Vert-Galant, projet chiffré à 13 millions de francs et contesté en séance pour son coût.",
+   "pourquoi": "Éclairer le square, une dépense jugée « énorme »",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=397"
+  }
+ ],
+ "montants": [
+  {
+   "seance": "JUILLET 1995",
+   "montant": "13 millions de francs",
+   "objet": "Illumination du pont Neuf et du square du Vert-Galant (projet D. 1100), montant annoncé conjointement pour les deux ouvrages",
+   "citation": "entraînent des dépenses s'élevant à 13 millions de francs pour les premières et 4,5 millions de francs pour les secondes, soit un coût total de 17,5 millions de francs.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=397"
+  },
+  {
+   "seance": "JUILLET 1995",
+   "montant": "17,5 millions de francs",
+   "objet": "Coût total annoncé des deux marchés d'illumination examinés (pont Neuf + square du Vert-Galant, et ponts d'Arcole et Louis-Philippe)",
+   "citation": "entraînent des dépenses s'élevant à 13 millions de francs pour les premières et 4,5 millions de francs pour les secondes, soit un coût total de 17,5 millions de francs.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=397"
+  }
+ ],
+ "bmo_extraits": [],
+ "bmo_recit": null,
+ "invest": [],
+ "marches": [],
+ "sources": {
+  "delibs": {
+   "name": "Débat-Délibs — Conseil de Paris",
+   "url": "https://a06-v7.apps.paris.fr/a06/"
+  },
+  "bmo": {
+   "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
+   "url": "https://gallica.bnf.fr/ark:/12148/cb343512457/date"
+  },
+  "invest": {
+   "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
+   "url": "https://opendata.paris.fr/"
+  },
+  "wiki": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ }
+}

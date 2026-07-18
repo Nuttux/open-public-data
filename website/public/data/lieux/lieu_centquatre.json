@@ -1,0 +1,282 @@
+{
+ "generated_at": "2026-07-18T14:38:43.284445+00:00",
+ "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
+ "slug": "centquatre",
+ "name": "Le Centquatre",
+ "kind_fr": "Équipement culturel",
+ "kind_en": "Cultural venue",
+ "famille": "culture",
+ "arrondissement": 19,
+ "lat": 48.8901,
+ "lon": 2.3702,
+ "photo": "/img/lieux/centquatre.jpg",
+ "photo_credit": {
+  "licence": "CC BY 2.0",
+  "auteur": "Jeanne Menjoulet from Paris, France",
+  "url": "https://commons.wikimedia.org/wiki/File:Le_Centquatre,_les_anciennes_pompes_fun%C3%A8bres_de_Paris_(22063339170).jpg",
+  "source": "Wikimedia Commons"
+ },
+ "wiki": {
+  "extract": "Le Centquatre-Paris est un établissement public de coopération culturelle parisien, ouvert depuis le 11 octobre 2008 sur le site de l'ancien Service municipal des pompes funèbres de la Ville de Paris, situé au 5 rue Curial dans le 19e arrondissement de Paris.",
+  "url": "https://fr.wikipedia.org/wiki/Centquatre-Paris",
+  "source": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ },
+ "stats": {
+  "n_delibs": 141,
+  "delibs_span": [
+   2009,
+   2025
+  ],
+  "n_bmo_brut": 100,
+  "n_bmo_verifies": null,
+  "invest_total_eur": 0,
+  "invest_annees": [],
+  "lecture_mode": "titre nommant le lieu (22 trouvés)",
+  "n_lus": 22,
+  "n_lieu": 20
+ },
+ "subventions_exploitant": null,
+ "residents": [],
+ "kpi_montant": null,
+ "synthese_fr": "Le Conseil de Paris crée un établissement public local pour gérer le 104 rue d'Aubervilliers en mars 2007, puis un établissement public de coopération culturelle en juillet 2008 ; il renonce à l'exploitation du premier en mai 2009 et en valide le compte de liquidation en novembre 2010, transférant à l'EPCC l'actif, le passif, l'emprunt et la convention d'occupation du domaine public. Les premières années cumulent des rallonges — 600.000 euros « à titre complémentaire et exceptionnel » fin 2009, subvention 2010 portée de 2.000.000 à 3.880.000 euros — et une crise de direction : en juin 2010, le Conseil arrête une liste de quatre candidats parmi 56 candidatures, dont une élue membre du conseil d'administration relève qu'elle n'a pas été établie par celui-ci et qu'elle ne compte que 10 femmes. En février 2018, le Conseil examine le rapport de la Chambre régionale des comptes sur la gestion depuis 2006 : en séance, une élue en retient que le service public n'était pas au rendez-vous au bout d'un an, que la réorientation conduite par le directeur José-Manuel Gonçalvès est une réussite, et que le total des subventions a atteint 8,8 millions d'euros en 2016. Les débats suivants portent sur l'ancrage dans le quartier et la gentrification (2019), sur la fréquentation et la lisibilité des comptes (vœu de 2020 citant 703.000 publics en 2017 et 585.000 en 2019), sur l'hébergement d'un centre de vaccination (149.705 euros puis 30.434 euros), et sur la grève des salariés et intermittents ouverte le 31 janvier 2022, au moment même où les statuts sont modifiés pour permettre des formations certifiantes. En 2025, après quinze ans de direction de José-Manuel Gonçalvès, le Conseil approuve trois candidatures pour la nouvelle direction, puis une subvention complémentaire de 8.800.000 euros que l'opposition lie à un déficit de fonctionnement.",
+ "moments": [
+  {
+   "id": "50264",
+   "seance": "OCTOBRE 2009",
+   "fait": "600 000 euros d'investissement pour aménager une pépinière d'entreprises dans l'établissement culturel.",
+   "pourquoi": "Le lieu n'est pas seulement culturel",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=50264"
+  },
+  {
+   "id": "12913",
+   "seance": "JUIN 2010",
+   "fait": "Débat sur le renouvellement de la direction : 56 candidatures dont 10 de femmes, liste non établie par le conseil d'administration selon une de ses membres, audit non rendu.",
+   "pourquoi": "Crise de direction dès la deuxième année",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=12913"
+  },
+  {
+   "id": "85906",
+   "seance": "NOVEMBRE 2010",
+   "fait": "Compte de liquidation de l'établissement public local créé en 2007 ; actif, passif et résultat transférés à l'EPCC sans passage par les écritures de la Ville.",
+   "pourquoi": "Le premier montage juridique abandonné",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=85906"
+  },
+  {
+   "id": "140956",
+   "seance": "FEVRIER 2018",
+   "fait": "Examen du rapport de la Chambre régionale des comptes sur la gestion depuis 2006 : service public jugé absent la première année, réorientation ultérieure jugée réussie, subventions portées à 8,8 millions d'euros en 2016.",
+   "pourquoi": "Seul regard extérieur sur la gestion",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=140956"
+  },
+  {
+   "id": "150036",
+   "seance": "JUIN 2019",
+   "fait": "Contribution de 8 900 000 euros votée ; une élue conteste l'ouverture réelle sur le quartier et interroge le rôle du lieu dans la gentrification.",
+   "pourquoi": "Le conflit sur le public visé",
+   "vedette": false,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=150036"
+  },
+  {
+   "id": "163796",
+   "seance": "JUILLET 2021",
+   "fait": "149 705 euros pour les frais d'hébergement d'un centre de vaccination Covid installé dans l'établissement de janvier à août 2021.",
+   "pourquoi": "L'équipement culturel devient centre sanitaire",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=163796"
+  },
+  {
+   "id": "164633",
+   "seance": "FEVRIER 2022",
+   "fait": "Modification des statuts pour dispenser des formations certifiantes, votée pendant la grève des salariés et intermittents engagée le 31 janvier.",
+   "pourquoi": "Conflit social au coeur de l'équipement",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=164633"
+  },
+  {
+   "id": "184682",
+   "seance": "NOVEMBRE 2025",
+   "fait": "Subvention complémentaire portant la contribution municipale à 8,8 millions d'euros, présentée en débat comme comblant un déficit de fonctionnement.",
+   "pourquoi": "La question du modèle reste ouverte",
+   "vedette": false,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=184682"
+  }
+ ],
+ "montants": [
+  {
+   "seance": "OCTOBRE 2009",
+   "montant": "600.000 euros",
+   "objet": "subvention d'investissement du Département de Paris pour l'aménagement des locaux de la pépinière d'entreprises du CENTQUATRE",
+   "citation": "Article 2 : Une subvention d?investissement d?un montant de 600.000 euros est attribuée au CENTQUATRE dans le cadre de l?aménagement des locaux relatifs à cette pépinière.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=50264"
+  },
+  {
+   "seance": "DECEMBRE 2009",
+   "montant": "600.000 euros",
+   "objet": "subvention de fonctionnement 2009 attribuée à titre complémentaire et exceptionnel",
+   "citation": "Article 1 : Une subvention de 600.000 euros est attribuée à titre complémentaire et exceptionnel à l?établissement public de coopération culturelle 104 CentQuatre situé au 104 rue d?Aubervilliers (19e).",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=32625"
+  },
+  {
+   "seance": "MARS 2010",
+   "montant": "4.000.000 euros",
+   "objet": "subvention de fonctionnement 2010 du Département de Paris à l'EPCC 104 CentQuatre",
+   "citation": "Article 1 : Une subvention de 4.000.000 euros est attribuée à l?établissement public de coopération culturelle 104 CentQuatre situé au 104 rue d?Aubervilliers (19e).",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=67767"
+  },
+  {
+   "seance": "SEPTEMBRE 2010",
+   "montant": "3.880.000 euros",
+   "objet": "subvention de fonctionnement de la Ville de Paris pour 2010, portée de 2.000.000 à 3.880.000 euros par avenant",
+   "citation": "Article 1 : La subvention de la Ville de Paris attribuée à l?établissement public de coopération culturelle CENTQUATRE au titre de l?année 2010 est portée de 2.000.000 euros à 3.880.000 euros.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=39766"
+  },
+  {
+   "seance": "SEPTEMBRE 2010",
+   "montant": "1.880.000 euros",
+   "objet": "dépense supplémentaire correspondante, imputée sur le budget de fonctionnement 2010 de la Ville de Paris",
+   "citation": "Article 3 : La dépense correspondante, soit 1.880.000 euros, est imputée sur le budget de fonctionnement 2010 de la Ville de Paris,",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=39766"
+  },
+  {
+   "seance": "JUIN 2012",
+   "montant": "2.000.000 euros",
+   "objet": "subvention 2012 du Département de Paris et avenant avec l'EPCC 104 CENTQUATRE",
+   "citation": "18 - 2012, DAC 32 G - Subvention (2.000.000 euros) et avenant avec l'établissement public de coopération culturelle 104 CENTQUATRE (19e).",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=106256"
+  },
+  {
+   "seance": "MAI 2016",
+   "montant": "2.725.000 euros",
+   "objet": "subvention 2016 accompagnée d'un avenant à convention et d'une convention avec l'EPCC CENTQUATRE",
+   "citation": "2016 DAC 39 - Subvention (2.725.000 euros), avenant à convention et convention avec l’établissement public de coopération culturelle \"CENTQUATRE\" (19e).",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=129928"
+  },
+  {
+   "seance": "FEVRIER 2018",
+   "montant": "8 millions d'euros par an",
+   "objet": "subvention annuelle relevée par la C.R.C., complétée de subventions exceptionnelles régulières — chiffre cité en débat par une élue rendant compte du rapport",
+   "citation": "le Centquatre bénéficie d?une importante subvention de 8 millions d?euros chaque année, mais il faut ajouter à cela, comme le précise la C.R.C., de régulières subventions exceptionnelles",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=140956"
+  },
+  {
+   "seance": "FEVRIER 2018",
+   "montant": "8,8 millions d'euros",
+   "objet": "total des subventions atteint en 2016 après hausse continue depuis 2011 — chiffre cité en débat par une élue rendant compte du rapport de la C.R.C.",
+   "citation": "ce qui conduit à une augmentation de ce montant sans discontinuer entre 2011 et 2016, année où le total des subventions a atteint 8,8 millions d?euros.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=140956"
+  },
+  {
+   "seance": "JUIN 2019",
+   "montant": "8.900.000 euros",
+   "objet": "contribution 2019 de la Ville de Paris à l'EPCC, assortie d'un avenant à convention",
+   "citation": "2019 DAC 29 - Contribution (8.900.000 euros) et avenant à convention avec l’établissement public de coopération culturelle le \"Centquatre\" (19e).",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=150036"
+  },
+  {
+   "seance": "JUILLET 2020",
+   "montant": "11.050.000 euros",
+   "objet": "montant global de la délibération, réparti entre trois établissements (Maison des métallos, CENTQUATRE et Ateliers Médicis) : la part du CENTQUATRE n'est pas isolée dans les extraits",
+   "citation": "2020 DAC 8 - Contributions (11.050.000 euros) et avenants à conventions avec les établissements publics de coopération culturelle Maison des métallos (11e), CENTQUATRE (19e) et Ateliers Médicis.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=156182"
+  },
+  {
+   "seance": "JUILLET 2020",
+   "montant": "400.000 euros",
+   "objet": "subvention qualifiée d'exceptionnelle reconduite depuis 2014 — chiffre cité en débat par un élu",
+   "citation": "On parle pour le \"Centquatre\" d'une subvention exceptionnelle de 400.000 euros. Elle est exceptionnelle depuis 2014.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=156182"
+  },
+  {
+   "seance": "JUILLET 2020",
+   "montant": "un million d'euros",
+   "objet": "progression des dépenses de personnel sur la mandature précédente, soit plus de 15 % — chiffre cité en débat par un élu d'après le rapport sur l'établissement",
+   "citation": "on voit que les dépenses de personnel ont progressé sur la mandature dernière, d?un million, soit plus de 15 %.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=156182"
+  },
+  {
+   "seance": "OCTOBRE 2020",
+   "montant": "8 millions d'euros",
+   "objet": "niveau présenté comme la limite à ne pas dépasser fixée lors du recrutement du directeur, et régulièrement excédé — chiffre cité en débat par un élu",
+   "citation": "elles ont régulièrement excédé le niveau de 8 millions d'euros, défini lors du recrutement de son directeur actuel, comme étant la limite à ne pas dépasser.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=156271"
+  },
+  {
+   "seance": "OCTOBRE 2020",
+   "montant": "600.000 euros",
+   "objet": "subvention d'équipement au titre du budget participatif du 19e en 2016, présentée comme non conforme aux conditions fixées par la Ville — affirmation d'un élu en débat",
+   "citation": "Le \"Centquatre\" a même bénéficié d'une subvention d'équipement de 600.000 euros au titre du budget participatif du 19e arrondissement en 2016, qui ne respectait pas les conditions fixées par la Ville elle-même.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=156271"
+  },
+  {
+   "seance": "JUILLET 2021",
+   "montant": "149.705 euros",
+   "objet": "prise en charge des frais liés à l'hébergement d'un centre de vaccination (montage et démontage des box, personnel, nettoyage)",
+   "citation": "2021 DASES 146 - Subvention (149.705 euros) et convention avec l’établissement public de coopération culturelle Centquatre-Paris. - Prise en charge des frais liés à l’hébergement d’un centre de vaccination (19e).",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=163796"
+  },
+  {
+   "seance": "JUILLET 2021",
+   "montant": "plus de 10 millions d'euros",
+   "objet": "budget annuel de l'établissement — chiffre cité en débat par un élu, non voté",
+   "citation": "Pouvez-vous nous expliquer donc pourquoi un traitement diffÃ©rent doit Ãªtre apportÃ© au Centquatre, dont je rappelle que le budget annuel est de plus de 10 millions d?euros",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=163796"
+  },
+  {
+   "seance": "OCTOBRE 2022",
+   "montant": "30.434 euros",
+   "objet": "compensation des surcoûts d'hébergement du centre de vaccination pour le mois de septembre 2021, après les 149.705 euros votés en juillet 2021",
+   "citation": "2022 DSP 76 - Subvention (30.434 euros) et convention avec l’établissement public de coopération culturelle \"Centquatre-Paris\" pour l'hébergement d’un centre de vaccination (19e).",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=167277"
+  },
+  {
+   "seance": "JUIN 2025",
+   "montant": "plus de 8,7 millions d'euros",
+   "objet": "subventions publiques annuelles hors aides annexes, mises à disposition de locaux et appuis événementiels — chiffre cité en débat par une élue",
+   "citation": "Je veux Ã©galement rappeler que \"le Centquatre\" bÃ©nÃ©ficie chaque annÃ©e de plus de 8,7 millions d'euros de subventions publiques,",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=181136"
+  },
+  {
+   "seance": "NOVEMBRE 2025",
+   "montant": "8.800.000 euros",
+   "objet": "subvention complémentaire et avenant à convention avec l'EPCC Centquatre (montant porté au titre de la délibération)",
+   "citation": "2025 DAC 469 Subvention complémentaire (8.800.000 euros) et avenant à convention avec l'EPCC Centquatre (19e).",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=184682"
+  },
+  {
+   "seance": "NOVEMBRE 2025",
+   "montant": "100.000 euros",
+   "objet": "hausse destinée à combler le déficit de fonctionnement, portant la subvention à 8,8 millions d'euros — lecture de la délibération faite en débat par une élue",
+   "citation": "Le projet de dÃ©libÃ©ration qui nous est soumis aujourd'hui porte la subvention municipale du Centquatre Ã 8,8 millions d'euros, soit une hausse de 100.000 euros supplÃ©mentaires pour combler le dÃ©ficit de fonctionnement.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=184682"
+  }
+ ],
+ "bmo_extraits": [],
+ "bmo_recit": null,
+ "invest": [],
+ "marches": [],
+ "sources": {
+  "delibs": {
+   "name": "Débat-Délibs — Conseil de Paris",
+   "url": "https://a06-v7.apps.paris.fr/a06/"
+  },
+  "bmo": {
+   "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
+   "url": "https://gallica.bnf.fr/ark:/12148/cb343512457/date"
+  },
+  "invest": {
+   "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
+   "url": "https://opendata.paris.fr/"
+  },
+  "wiki": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ }
+}

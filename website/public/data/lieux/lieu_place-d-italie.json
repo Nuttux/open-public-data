@@ -1,0 +1,151 @@
+{
+ "generated_at": "2026-07-18T14:38:43.284445+00:00",
+ "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
+ "slug": "place-d-italie",
+ "name": "Place d'Italie",
+ "kind_fr": "Place",
+ "kind_en": "Square",
+ "famille": "urbain",
+ "arrondissement": 13,
+ "lat": 48.831342,
+ "lon": 2.355345,
+ "photo": "/img/lieux/place-d-italie.jpg",
+ "photo_credit": {
+  "licence": "CC BY-SA 3.0",
+  "auteur": "Cramos",
+  "url": "https://commons.wikimedia.org/wiki/File:Place_d%27Italie_m%C3%A9tro_Paris_ligne_6_par_Cramos.JPG",
+  "source": "Wikimedia Commons"
+ },
+ "wiki": {
+  "extract": "La place d’Italie est une place du 13e arrondissement de Paris.",
+  "url": "https://fr.wikipedia.org/wiki/Place_d'Italie_(Paris)",
+  "source": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ },
+ "stats": {
+  "n_delibs": 1055,
+  "delibs_span": [
+   2018,
+   2018
+  ],
+  "n_bmo_brut": 0,
+  "n_bmo_verifies": null,
+  "invest_total_eur": 0,
+  "invest_annees": [],
+  "lecture_mode": "titre nommant le lieu (9 trouvés)",
+  "n_lus": 9,
+  "n_lieu": 1
+ },
+ "subventions_exploitant": null,
+ "residents": [],
+ "kpi_montant": null,
+ "synthese_fr": "Sur pres de vingt ans, \"place d'Italie\" revient au Conseil de Paris surtout comme l'adresse de la mairie du 13e, 1 place d'Italie, ou plusieurs associations de l'arrondissement sont domiciliees : le Conseil y vote des subventions de fonctionnement a la Societe d'Histoire et d'Archeologie (4 573 EUR en 2002), au Comite des Fetes (70 927 EUR en 2002, dont 10 000 EUR pour un \"Festival italien\"), aux Anciens Combattants du 13e (534 EUR en 2002) et au Cercle des Beaux-Arts (3 000 EUR en 2004). Des 1998, le Conseil general autorise la signature de conventions en vue de l'installation d'un \"Point Info Jeunes\" a la station de metro place d'Italie, avec une subvention de 120 000 F a la Mission locale \"Soleil\". En 2000 puis 2003, il approuve le principe de travaux sur le batiment de la mairie - climatisation des combles, menuiseries exterieures - et autorise le Maire a signer les marches, sans qu'un montant soit chiffre dans ces deliberations. En 2018, un voeu du maire du 13e Jerome Coumet porte cette fois sur la place elle-meme : il denonce des proces-verbaux dresses a des cyclistes, que le representant du Prefet de police reconnait en seance avoir ete etablis \"au mépris du Code de la route\", tandis que Coumet evoque un \"futur de la place d'Italie\" attendu pas avant 2020.",
+ "moments": [
+  {
+   "id": "56746",
+   "seance": "MARS 1998",
+   "fait": "Le Conseil general autorise la signature d'une convention avec l'Etat et la Mission locale \"Soleil\" pour un \"Point Info Jeunes\" a la station de metro place d'Italie, avec 120 000 F a la Mission locale.",
+   "pourquoi": "Un guichet jeunesse au hub metro",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=56746"
+  },
+  {
+   "id": "58847",
+   "seance": "OCTOBRE 2000",
+   "fait": "Le Conseil approuve le principe de modernisation de la climatisation des combles de la mairie du 13e (place d'Italie) et autorise le Maire a signer les marches.",
+   "pourquoi": "Entretenir le batiment-phare de la place",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=58847"
+  },
+  {
+   "id": "71521",
+   "seance": "DECEMBRE 2002",
+   "fait": "Le Conseil autorise la signature d'une convention avec le Comite des Fetes du 13e et lui attribue 70 927 EUR, dont 10 000 EUR pour un projet \"Festival italien\".",
+   "pourquoi": "La place fete son nom italien",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=71521"
+  },
+  {
+   "id": "41692",
+   "seance": "JANVIER 2003",
+   "fait": "Le Conseil approuve le principe de travaux de modernisation des menuiseries exterieures de la mairie du 13e, place d'Italie, et autorise le Maire a signer le marche.",
+   "pourquoi": "Refaire les fenetres de la mairie",
+   "vedette": false,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=41692"
+  },
+  {
+   "id": "68932",
+   "seance": "MARS 2003",
+   "fait": "Le Conseil attribue 534 EUR au Comite d'entente des Anciens Combattants et Victimes de Guerre du 13e, domicilie a la mairie, place d'Italie.",
+   "pourquoi": "La memoire combattante logee a la mairie",
+   "vedette": false,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=68932"
+  },
+  {
+   "id": "64254",
+   "seance": "OCTOBRE 2004",
+   "fait": "Le Conseil attribue 3 000 EUR au Cercle Municipal des Gobelins et des Beaux-Arts, domicilie a la mairie du 13e, place d'Italie.",
+   "pourquoi": "Le cercle des beaux-arts, adresse mairie",
+   "vedette": false,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=64254"
+  },
+  {
+   "id": "146582",
+   "seance": "NOVEMBRE 2018",
+   "fait": "Voeu du maire du 13e Jerome Coumet : des cyclistes ont ete verbalises place d'Italie ; le representant du Prefet reconnait des PV \"au mépris du Code de la route\".",
+   "pourquoi": "Quand la place se conteste a velo",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=146582"
+  }
+ ],
+ "montants": [],
+ "bmo_extraits": [],
+ "bmo_recit": null,
+ "invest": [],
+ "marches": [
+  {
+   "numero_marche": "20171370000093",
+   "objet": "CSP4 LOT 1 MISSION CO-CONCEPTION PLACE D'ITALIE PLACE NATION",
+   "fournisseur": "CONTEMPORARY LANDSCAPE CREATIONS",
+   "montant_max": 1000000.0,
+   "date_notification": "2017-01-17",
+   "preuve": "L'objet nomme explicitement le lieu : « CSP4 LOT 1 MISSION CO-CONCEPTION PLACE D'ITALIE PLACE NATION ». Mission de conception portant sur la place elle-même. Réserve : le même lot couvre aussi la place de la Nation, le montant maximum de 1 000 000 € n'est donc pas imputable à la seule place d'Italie."
+  },
+  {
+   "numero_marche": "20191230082702",
+   "objet": "CSP4 MS AC TVX AMENAGEMENT JARDIN CENTRAL PLACE D ITALIE 13E",
+   "fournisseur": "AGRIGEX ENVIRO/LACHAUX PAYSA/SEGEX",
+   "montant_max": 226375.12,
+   "date_notification": "2019-04-26",
+   "preuve": "L'objet porte des travaux sur la place elle-même : « CSP4 MS AC TVX AMENAGEMENT JARDIN CENTRAL PLACE D ITALIE 13E ». Le jardin central est une composante physique de la place, et l'arrondissement cité (13E) correspond."
+  },
+  {
+   "numero_marche": "20191370090073",
+   "objet": "CSP4 MS/AC OPC AMENAGEMENT JARDIN CENTRAL DE PLACE D ITALIE",
+   "fournisseur": "LOUIS BERGER",
+   "montant_max": 51630.0,
+   "date_notification": "2019-04-29",
+   "preuve": "L'objet nomme le lieu et son objet d'intervention : « CSP4 MS/AC OPC AMENAGEMENT JARDIN CENTRAL DE PLACE D ITALIE ». Mission d'ordonnancement-pilotage-coordination adossée aux travaux d'aménagement du jardin central de la place (notifiée à 3 jours du marché de travaux 20191230082702)."
+  }
+ ],
+ "sources": {
+  "delibs": {
+   "name": "Débat-Délibs — Conseil de Paris",
+   "url": "https://a06-v7.apps.paris.fr/a06/"
+  },
+  "bmo": {
+   "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
+   "url": "https://gallica.bnf.fr/ark:/12148/cb343512457/date"
+  },
+  "invest": {
+   "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
+   "url": "https://opendata.paris.fr/"
+  },
+  "wiki": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ }
+}

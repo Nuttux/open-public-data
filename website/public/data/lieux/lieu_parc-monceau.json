@@ -1,0 +1,175 @@
+{
+ "generated_at": "2026-07-18T14:38:43.284445+00:00",
+ "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
+ "slug": "parc-monceau",
+ "name": "Parc Monceau",
+ "kind_fr": "Parc",
+ "kind_en": "Park",
+ "famille": "vert",
+ "arrondissement": 8,
+ "lat": 48.8797,
+ "lon": 2.3089,
+ "photo": "/img/lieux/parc-monceau.jpg",
+ "photo_credit": {
+  "licence": null,
+  "auteur": null,
+  "url": "https://fr.wikipedia.org/wiki/Parc_Monceau",
+  "source": "Wikipédia"
+ },
+ "wiki": {
+  "extract": "Le parc Monceau est un jardin d'agrément situé dans le quartier de l'Europe du 8e arrondissement de Paris.",
+  "url": "https://fr.wikipedia.org/wiki/Parc_Monceau",
+  "source": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ },
+ "stats": {
+  "n_delibs": 108,
+  "delibs_span": [
+   1996,
+   2025
+  ],
+  "n_bmo_brut": 1175,
+  "n_bmo_verifies": 7,
+  "invest_total_eur": 579659.28,
+  "invest_annees": [
+   "2023",
+   "2024"
+  ],
+  "lecture_mode": "titre nommant le lieu (13 trouvés)",
+  "n_lus": 13,
+  "n_lieu": 12
+ },
+ "subventions_exploitant": null,
+ "residents": [],
+ "kpi_montant": null,
+ "synthese_fr": "Sur 108 documents du Conseil de Paris mentionnant « Monceau », les 13 dont le titre nomme le lieu couvrent 1996-2025 et ne contiennent aucun montant chiffré. Le Conseil approuve en mai 1996 le principe de la rénovation des 2 allées principales et le marché de travaux correspondant — la dépense est imputée au chapitre 901 du budget d'investissement, sans montant dans les extraits — puis, en octobre 1998, un avenant substituant « Entreprise Jean Lefèbvre Ile-de-France S.A. » au titulaire initial. L'ouverture des pelouses produit deux séquences inversées : en octobre 1998, Bertrand Delanoë et le groupe socialiste demandent leur ouverture, que la réponse municipale refuse au motif du « caractère particulièrement prestigieux » du jardin ; en janvier 2002, les pelouses ayant été ouvertes en juin 2001, le maire du 8e François Lebel en demande la fermeture hivernale et interroge le Préfet de police sur l'insécurité, qui recense 24 plaintes et 328 passages de fonctionnaires en V.T.T. pour 2001. Suivent des interpellations sur l'aire de jeux, dont une requalification inscrite à un budget précédent n'a jamais été réalisée (2004), une convention d'installation de ruches avec le Syndicat National d'Apiculture (2009), un permis de construire pour les locaux des jardiniers et des agents d'accueil que François Lebel qualifie de « lotissement » d'un parc classé monument historique quand Fabienne Giboudeaux invoque des locaux « indignes » (2011), et un vœu contre la « privatisation » du parc pour une nuit d'événement privé réunissant 2.000 participants, dont la redevance réclamée par l'opposition n'est pas chiffrée en séance (2016). Depuis 2018, les seuls documents dont le titre nomme le parc portent sur des dénominations d'allées : France Gall, auprès de l'allée Michel Berger inaugurée en 2012, puis Nicolae Titulescu en 2025.",
+ "moments": [
+  {
+   "id": "33376",
+   "seance": "MAI 1996",
+   "fait": "Le Conseil approuve le principe de la rénovation des 2 allées principales et le marché de travaux correspondant, imputé au budget d'investissement (chapitre 901) sans montant affiché.",
+   "pourquoi": "Seul marché de travaux du corpus",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=33376"
+  },
+  {
+   "id": "19591",
+   "seance": "OCTOBRE 1998",
+   "fait": "Delanoë, Bertinotti, Schapira et le groupe socialiste demandent l'ouverture des pelouses ; la réponse municipale la refuse, le parc ayant « dès l'origine » été classé parmi ceux dont les pelouses restent fermées.",
+   "pourquoi": "État initial : pelouses fermées, demande refusée",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=19591"
+  },
+  {
+   "id": "6381",
+   "seance": "JANVIER 2002",
+   "fait": "Les pelouses ayant été ouvertes en juin 2001, le maire du 8e François Lebel en demande la fermeture hivernale ; Yves Contassot confirme que Monceau était le seul grand jardin totalement fermé et annonce des réfections en 2002.",
+   "pourquoi": "Inversion politique exacte de 1998",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=6381"
+  },
+  {
+   "id": "6268",
+   "seance": "JANVIER 2002",
+   "fait": "Interrogé sur l'insécurité, le Préfet de police reconnaît une hausse de la délinquance en 2001 « même si les chiffres restent faibles » : 24 plaintes, 5 mains courantes, 328 passages en V.T.T.",
+   "pourquoi": "Registre police, seuls chiffres vérifiés du corpus",
+   "vedette": false,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=6268"
+  },
+  {
+   "id": "11314",
+   "seance": "SEPTEMBRE 2004",
+   "fait": "Deux questions jointes dénoncent la vétusté de l'aire de jeux et relèvent qu'une requalification inscrite à un budget précédent n'a jamais été réalisée ; un contrôle est annoncé pour fin 2004.",
+   "pourquoi": "Requalification budgétée mais jamais réalisée",
+   "vedette": false,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=11314"
+  },
+  {
+   "id": "34604",
+   "seance": "SEPTEMBRE 2009",
+   "fait": "Le Conseil autorise une convention avec le Syndicat National d'Apiculture pour installer des ruches dans le parc, pour trois ans maximum tacitement renouvelable.",
+   "pourquoi": "Occupation par un tiers, version consensuelle",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=34604"
+  },
+  {
+   "id": "100754",
+   "seance": "JUILLET 2011",
+   "fait": "Permis de construire et de démolir pour les locaux des jardiniers et des agents d'accueil : Lebel y voit le « lotissement » d'un parc classé monument historique, Giboudeaux invoque des locaux « indignes, parfois en sous-sol ».",
+   "pourquoi": "Conflit patrimoine contre conditions de travail",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=100754"
+  },
+  {
+   "id": "131397",
+   "seance": "JUIN 2016",
+   "fait": "Vœu contre la « privatisation » du parc, fermé au public une nuit pour 2 000 campeurs invités par Michel et Augustin ; l'opposition réclame les termes du contrat et la redevance, non chiffrée en séance.",
+   "pourquoi": "Gouvernance : convention hors délibération",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=131397"
+  }
+ ],
+ "montants": [],
+ "bmo_extraits": [],
+ "bmo_recit": null,
+ "invest": [
+  {
+   "annee": 2023,
+   "montant_eur": 170425.15,
+   "nom_projet": "Renouveau au Parc Monceau !",
+   "preuve": "Le nom du projet nomme explicitement le lieu : « Renouveau au Parc Monceau ! » ; distance_m 34.",
+   "id": "2023_08_21_018"
+  },
+  {
+   "annee": 2023,
+   "montant_eur": 152038.6,
+   "nom_projet": "Parc Monceau - Travaux de maintenance et entretiens courants",
+   "preuve": "Le nom du projet nomme explicitement le lieu : « Parc Monceau - Travaux de maintenance et entretiens courants » ; distance_m 34.",
+   "id": "2023_08_21_006"
+  },
+  {
+   "annee": 2024,
+   "montant_eur": 190528.51,
+   "nom_projet": "Parc Monceau - Entretien courant",
+   "preuve": "Le nom du projet nomme explicitement le lieu : « Parc Monceau - Entretien courant » ; distance_m 34. Contexte concordant : 2011 DEVE 43 porte sur les locaux de jardiniers et les locaux des agents d'accueil et de surveillance du Parc Monceau, ce qui atteste la présence de services de la Ville sur le site.",
+   "id": "2024_08_21_003"
+  },
+  {
+   "annee": 2024,
+   "montant_eur": 66667.02,
+   "nom_projet": "Parc Monceau",
+   "preuve": "Le nom du projet est exactement le nom du lieu : « Parc Monceau » ; distance_m 34.",
+   "id": "2024_08_21_015"
+  }
+ ],
+ "marches": [
+  {
+   "numero_marche": "20232022T10830",
+   "objet": "TVX CRÉATION SANITAIRES PUBLICS PARC MONCEAU 75008",
+   "fournisseur": "ALB-BAT GROUPE",
+   "montant_max": 146184.93,
+   "date_notification": "2023-01-24",
+   "preuve": "L'objet nomme le lieu et son code postal et porte sur un équipement créé dans le parc lui-même : « TVX CRÉATION SANITAIRES PUBLICS PARC MONCEAU 75008 ». Le lieu n'est pas un simple repère d'adresse, et l'objet n'est pas un marché-cadre de toute la Ville. Titulaire ALB-BAT GROUPE, SIRET 53306882100024."
+  }
+ ],
+ "sources": {
+  "delibs": {
+   "name": "Débat-Délibs — Conseil de Paris",
+   "url": "https://a06-v7.apps.paris.fr/a06/"
+  },
+  "bmo": {
+   "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
+   "url": "https://gallica.bnf.fr/ark:/12148/cb343512457/date"
+  },
+  "invest": {
+   "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
+   "url": "https://opendata.paris.fr/"
+  },
+  "wiki": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ }
+}

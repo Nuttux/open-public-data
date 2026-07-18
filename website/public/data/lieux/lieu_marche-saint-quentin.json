@@ -1,0 +1,126 @@
+{
+ "generated_at": "2026-07-18T14:38:43.284445+00:00",
+ "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
+ "slug": "marche-saint-quentin",
+ "name": "Marché Saint-Quentin",
+ "kind_fr": "Marché couvert",
+ "kind_en": "Covered market",
+ "famille": "services",
+ "arrondissement": 10,
+ "lat": 48.8781,
+ "lon": 2.3577,
+ "photo": "/img/lieux/marche-saint-quentin.jpg",
+ "photo_credit": {
+  "licence": null,
+  "auteur": null,
+  "url": "https://fr.wikipedia.org/wiki/March%C3%A9_Saint-Quentin",
+  "source": "Wikipédia"
+ },
+ "wiki": {
+  "extract": "Le marché Saint-Quentin est un marché couvert parisien, situé au 85 bis, boulevard de Magenta dans le 10e arrondissement.",
+  "url": "https://fr.wikipedia.org/wiki/March%C3%A9_Saint-Quentin",
+  "source": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ },
+ "stats": {
+  "n_delibs": 1752,
+  "delibs_span": [
+   2000,
+   2004
+  ],
+  "n_bmo_brut": 2000,
+  "n_bmo_verifies": null,
+  "invest_total_eur": 0,
+  "invest_annees": [],
+  "lecture_mode": "titre nommant le lieu (6 trouvés)",
+  "n_lus": 6,
+  "n_lieu": 5
+ },
+ "subventions_exploitant": null,
+ "residents": [],
+ "kpi_montant": null,
+ "synthese_fr": "Au tournant des années 2000, le Conseil de Paris traite d'abord le marché couvert Saint-Quentin comme une vitrine commerciale : en avril 2000, il approuve les modalités de deux marchés pour des campagnes d'animations sur les marchés Saint-Quentin et des Ternes « visant à les promouvoir comme vitrine des produits du terroir français », puis attribue en septembre 2000 une subvention de 30.000 F à l'association des commerçants du quartier. À partir de 2001, l'attention se déplace vers le bâti : en octobre 2001, le Conseil approuve le principe des travaux de réfection des peintures intérieures du marché, au 85 boulevard Magenta, et autorise le Maire à signer les marchés correspondants. Ce chantier nourrit en septembre 2002 une question de M. René LE GOFF, qui rapporte des travaux entrepris « sans aucune concertation préalable » selon les commerçants, tandis que Mme Cohen-Solal répond en retraçant un calendrier plusieurs fois décalé. Les tensions se prolongent ensuite : en juillet 2004, MM. Toubon et Le Goff signalent que, selon eux, les verrières zénithales remplacées laissent le soleil frapper les étals alimentaires, et en octobre 2005 M. Le Goff relaie des commerçants « au bord de la faillite collective » du fait des travaux du boulevard Magenta, réclamant une exonération de loyer.",
+ "moments": [
+  {
+   "id": "50983",
+   "seance": "AVRIL 2000",
+   "fait": "Le Conseil approuve les modalités de deux marchés d'animations pour promouvoir Saint-Quentin et Ternes comme vitrine du terroir français.",
+   "pourquoi": "Promouvoir le marché comme vitrine du terroir",
+   "vedette": false,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=50983"
+  },
+  {
+   "id": "28624",
+   "seance": "SEPTEMBRE 2000",
+   "fait": "Le Conseil attribue 30 000 F à l'association des commerçants pour des animations commerciales tenues en avril et mai 2000.",
+   "pourquoi": "30 000 F pour animer le marché",
+   "vedette": false,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=28624"
+  },
+  {
+   "id": "33529",
+   "seance": "OCTOBRE 2001",
+   "fait": "Le Conseil approuve le principe de la réfection des peintures intérieures et autorise le Maire à signer les marchés.",
+   "pourquoi": "Feu vert au principe de rénovation du bâti",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=33529"
+  },
+  {
+   "id": "6001",
+   "seance": "SEPTEMBRE 2002",
+   "fait": "M. Le Goff dénonce un chantier engagé selon les commerçants sans concertation ; l'adjointe retrace un calendrier décalé.",
+   "pourquoi": "Travaux contestés en pleine activité",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=6001"
+  },
+  {
+   "id": "11019",
+   "seance": "JUILLET 2004",
+   "fait": "MM. Toubon et Le Goff signalent que les nouvelles verrières laissent, selon eux, le soleil frapper les étals alimentaires.",
+   "pourquoi": "Verrières neuves accusées de surchauffer les étals",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=11019"
+  },
+  {
+   "id": "11665",
+   "seance": "OCTOBRE 2005",
+   "fait": "M. Le Goff relaie des commerçants dits au bord de la faillite à cause du chantier Magenta et demande une exonération de loyer.",
+   "pourquoi": "Baisse d'activité imputée aux travaux du boulevard Magenta",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=11665"
+  }
+ ],
+ "montants": [
+  {
+   "seance": "SEPTEMBRE 2000",
+   "montant": "30.000 F",
+   "objet": "subvention à l'Association des commerçants du quartier du marché Saint-Quentin pour l'organisation d'animations commerciales (avril-mai 2000)",
+   "citation": "Une subvention de 30.000 F est attribuée à l'Association des commerçants du quartier du marché Saint-Quentin, 12, rue de Chabrol (10e) (C00273), pour l'organisation des animations commerciales qui ont eu lieu en avril et mai 2000.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=28624"
+  }
+ ],
+ "bmo_extraits": [],
+ "bmo_recit": null,
+ "invest": [],
+ "marches": [],
+ "sources": {
+  "delibs": {
+   "name": "Débat-Délibs — Conseil de Paris",
+   "url": "https://a06-v7.apps.paris.fr/a06/"
+  },
+  "bmo": {
+   "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
+   "url": "https://gallica.bnf.fr/ark:/12148/cb343512457/date"
+  },
+  "invest": {
+   "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
+   "url": "https://opendata.paris.fr/"
+  },
+  "wiki": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ }
+}

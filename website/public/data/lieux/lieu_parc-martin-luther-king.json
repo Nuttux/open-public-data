@@ -1,0 +1,134 @@
+{
+ "generated_at": "2026-07-18T14:38:43.284445+00:00",
+ "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
+ "slug": "parc-martin-luther-king",
+ "name": "Parc Martin Luther King",
+ "kind_fr": "Parc",
+ "kind_en": "Park",
+ "famille": "vert",
+ "arrondissement": 17,
+ "lat": 48.8912,
+ "lon": 2.316,
+ "photo": "/img/lieux/parc-martin-luther-king.jpg",
+ "photo_credit": {
+  "licence": "CC BY 2.0",
+  "auteur": "Guilhem Vellut from Annecy, France",
+  "url": "https://commons.wikimedia.org/wiki/File:H%C3%A9ron_cendr%C3%A9_@_Parc_Clichy-Batignolles_-_Martin-Luther-King_@_Paris_(29769549362).jpg",
+  "source": "Wikimedia Commons"
+ },
+ "wiki": {
+  "extract": null,
+  "url": null,
+  "source": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ },
+ "stats": {
+  "n_delibs": 1234,
+  "delibs_span": [
+   2007,
+   2025
+  ],
+  "n_bmo_brut": 0,
+  "n_bmo_verifies": null,
+  "invest_total_eur": 0,
+  "invest_annees": [],
+  "lecture_mode": "titre nommant le lieu (9 trouvés)",
+  "n_lus": 9,
+  "n_lieu": 8
+ },
+ "subventions_exploitant": null,
+ "residents": [],
+ "kpi_montant": null,
+ "synthese_fr": "En 2007, un vœu propose de baptiser « parc Martin Luther King » le futur parc Clichy-Batignolles, l'Exécutif se disant favorable tout en renvoyant le nom à une concertation. Dès l'ouverture, la sécurité domine les débats : gardiennage jugé insuffisant en 2009, question sur le coût d'une ouverture 24h/24 restée sans réponse en 2016, vœux de fermeture nocturne repoussés en 2017, tandis qu'un cabinet médical de secteur 1 portant le nom du parc fait l'objet d'une subvention proposée de 30.000 euros. La même année, la remise en exploitation des locaux « La Forge » et « Le Belvédère » et la tranquillité des riverains reviennent en séance, l'adjointe disant avoir éteint « Le Belvédère » à titre expérimental. En 2021, l'adjoint annonce la livraison de la dernière tranche de ce parc de 10 hectares, encore coupé par un faisceau ferroviaire dont un vœu réclame le franchissement piéton. En 2025, le Conseil adopte la dénomination de six allées, choisies par les habitants au terme d'une démarche participative.",
+ "moments": [
+  {
+   "id": "14093",
+   "seance": "JUILLET 2007",
+   "fait": "Un vœu propose de nommer le futur parc « parc Martin Luther King » ; l'Exécutif y est favorable mais diffère la décision finale à une concertation.",
+   "pourquoi": "L'acte de baptême, différé pour concertation",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=14093"
+  },
+  {
+   "id": "20579",
+   "seance": "JUILLET 2009",
+   "fait": "Des élus du 17e demandent un gardiennage renforcé face à l'insécurité ; l'adjoint reconnaît de « vrais problèmes » mais renvoie à la police nationale.",
+   "pourquoi": "Dès l'ouverture, la sécurité fait débat",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=20579"
+  },
+  {
+   "id": "129862",
+   "seance": "MAI 2016",
+   "fait": "Une question écrite réclame le coût de l'ouverture 24h/24 du parc, en investissement et fonctionnement ; la réponse n'est pas parvenue.",
+   "pourquoi": "Combien coûte un parc ouvert nuit et jour ?",
+   "vedette": false,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=129862"
+  },
+  {
+   "id": "134780",
+   "seance": "JANVIER 2017",
+   "fait": "Une subvention proposée de 30 000 euros accompagne l'installation d'un cabinet médical de secteur 1 portant le nom du parc, via « Paris Med' ».",
+   "pourquoi": "30 000 € pour un cabinet médical de proximité",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=134780"
+  },
+  {
+   "id": "135834",
+   "seance": "MAI 2017",
+   "fait": "Deux vœux des Républicains demandant la fermeture nocturne estivale du parc et plus d'effectifs DPP sont repoussés, avis défavorable de l'Exécutif.",
+   "pourquoi": "Fermer le parc la nuit ? Rejeté",
+   "vedette": false,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=135834"
+  },
+  {
+   "id": "138068",
+   "seance": "SEPTEMBRE 2017",
+   "fait": "Vœux sur la tranquillité des riverains et la remise en exploitation de « La Forge » et « Le Belvédère » ; l'adjointe dit avoir éteint « Le Belvédère » à l'essai.",
+   "pourquoi": "Deux locaux inoccupés, la tranquillité en question",
+   "vedette": false,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=138068"
+  },
+  {
+   "id": "157802",
+   "seance": "MARS 2021",
+   "fait": "Un vœu réclame un franchissement piéton des voies ferrées ; l'adjoint annonce la livraison de la dernière tranche du parc de 10 hectares.",
+   "pourquoi": "Le parc s'achève, encore coupé par le rail",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=157802"
+  },
+  {
+   "id": "179866",
+   "seance": "AVRIL 2025",
+   "fait": "Le Conseil adopte la dénomination de six allées du parc, issue d'une démarche participative de féminisation menée par la mairie du 17e.",
+   "pourquoi": "Six allées nommées, choisies par les habitants",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=179866"
+  }
+ ],
+ "montants": [],
+ "bmo_extraits": [],
+ "bmo_recit": null,
+ "invest": [],
+ "marches": [],
+ "sources": {
+  "delibs": {
+   "name": "Débat-Délibs — Conseil de Paris",
+   "url": "https://a06-v7.apps.paris.fr/a06/"
+  },
+  "bmo": {
+   "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
+   "url": "https://gallica.bnf.fr/ark:/12148/cb343512457/date"
+  },
+  "invest": {
+   "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
+   "url": "https://opendata.paris.fr/"
+  },
+  "wiki": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ }
+}

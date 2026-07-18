@@ -1,0 +1,158 @@
+{
+ "generated_at": "2026-07-18T14:38:43.284445+00:00",
+ "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
+ "slug": "place-de-la-nation",
+ "name": "Place de la Nation",
+ "kind_fr": "Place",
+ "kind_en": "Square",
+ "famille": "urbain",
+ "arrondissement": 12,
+ "lat": 48.8484,
+ "lon": 2.3958,
+ "photo": "/img/lieux/place-de-la-nation.jpg",
+ "photo_credit": {
+  "licence": null,
+  "auteur": null,
+  "url": "https://fr.wikipedia.org/wiki/Place_de_la_Nation_(Paris)",
+  "source": "Wikipédia"
+ },
+ "wiki": {
+  "extract": "La place de la Nation, ancienne « place du Trône » puis « place du Trône-Renversé », est une place de Paris située à la limite du 11e et du 12e arrondissement de la ville.",
+  "url": "https://fr.wikipedia.org/wiki/Place_de_la_Nation_(Paris)",
+  "source": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ },
+ "stats": {
+  "n_delibs": 572,
+  "delibs_span": [
+   1995,
+   2019
+  ],
+  "n_bmo_brut": 2000,
+  "n_bmo_verifies": 10,
+  "invest_total_eur": 0,
+  "invest_annees": [],
+  "lecture_mode": "titre nommant le lieu (15 trouvés)",
+  "n_lus": 15,
+  "n_lieu": 11
+ },
+ "subventions_exploitant": null,
+ "residents": [],
+ "kpi_montant": null,
+ "synthese_fr": "Dans les délibérations du Conseil de Paris, la place de la Nation apparaît d'abord par ses marges : des subventions à l'association des commerçants pour animer et illuminer les fêtes de fin d'année (20.000 F votés en 1995, 13.000 F en 1996), puis des travaux approuvés sur ses abords, de l'avenue du Trône (2001) à l'éclairage du boulevard Voltaire (2004). Les années 2000 reviennent surtout sur le stationnement sauvage de camions, objet de vœux et de questions répétés, et sur une question — restée sans réponse — relative à la restauration des colonnes du Trône. En mars 2016, une communication municipale fait de la Nation l'une des sept places à réaménager et annonce qu'elle « sera transformée en place jardin ». Le lieu demeure un point de tension : le groupe Les Républicains alerte la même année sur les dégradations liées aux manifestations, tandis qu'en 2017 le Conseil traite l'apposition d'une plaque à la mémoire des sept morts du 14 juillet 1953 et adopte à l'unanimité un vœu pérennisant une ludothèque pour les enfants du quartier. En 2019 enfin, un vœu socialiste soutenu par l'Exécutif demande à la Ville de tout faire pour empêcher l'installation d'un McDonald's au 19 de la place.",
+ "moments": [
+  {
+   "id": "930",
+   "seance": "JUILLET 1995",
+   "fait": "La Ville subventionne (20 000 F) l'animation commerciale de l'association des commerçants de la place.",
+   "pourquoi": "l'argent public soutient les vitrines de la place",
+   "vedette": false,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=930"
+  },
+  {
+   "id": "28804",
+   "seance": "JUIN 2001",
+   "fait": "Le Conseil approuve les modalités d'attribution de trois marchés pour aménager l'avenue du Trône, jusqu'à la place de la Nation.",
+   "pourquoi": "les abords se refont autour de la place",
+   "vedette": false,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=28804"
+  },
+  {
+   "id": "11555",
+   "seance": "OCTOBRE 2005",
+   "fait": "Un élu réclame la restauration des colonnes du Trône ; la réponse ne parvient pas.",
+   "pourquoi": "le patrimoine de la place s'abîme sans réponse",
+   "vedette": false,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=11555"
+  },
+  {
+   "id": "129302",
+   "seance": "MARS 2016",
+   "fait": "La Ville annonce la Nation « transformée en place jardin » parmi sept places réaménagées.",
+   "pourquoi": "le grand projet de réaménagement s'engage",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=129302"
+  },
+  {
+   "id": "129983",
+   "seance": "MAI 2016",
+   "fait": "Les Républicains alertent sur les dégradations liées aux manifestations qui aboutissent sur la place.",
+   "pourquoi": "la place-exutoire des manifestations inquiète les commerçants",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=129983"
+  },
+  {
+   "id": "134766",
+   "seance": "JANVIER 2017",
+   "fait": "Une délibération porte une plaque à la mémoire des sept morts du 14 juillet 1953.",
+   "pourquoi": "la mémoire d'un drame méconnu enfin honorée par la Ville",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=134766"
+  },
+  {
+   "id": "136955",
+   "seance": "JUIN 2017",
+   "fait": "Le Conseil adopte à l'unanimité un vœu pérennisant une ludothèque sur la place.",
+   "pourquoi": "la place devient terrain de jeu des enfants",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=136955"
+  },
+  {
+   "id": "175747",
+   "seance": "DECEMBRE 2019",
+   "fait": "L'Exécutif soutient un vœu demandant d'empêcher un McDonald's au 19 de la place.",
+   "pourquoi": "un fast-food contesté au cœur de la place",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=175747"
+  }
+ ],
+ "montants": [
+  {
+   "seance": "JANVIER 1996",
+   "montant": "13.000 F",
+   "objet": "illuminations des fêtes de fin d'année 1995 (Association des commerçants de la place de la Nation)",
+   "citation": "Une subvention de 13.000 F est attribuée à l'Association des commerçants de la place de la Nation, 16, place de la Nation (12e), pour la mise en place d'illuminations à l'occasion des fêtes de fin d'année 1995",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=91779"
+  },
+  {
+   "seance": "JUILLET 1995",
+   "montant": "20.000 F",
+   "objet": "animation commerciale du 7 au 17 décembre 1994 (association des commerçants de la place de la Nation)",
+   "citation": "Une subvention de 20.000 F est attribuée à l'association des commerçants de la place de la Nation, 16, place de la Nation (12e), pour l'organisation d'une animation commerciale qui a eu lieu du 7 au 17 décembre 1994",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=930"
+  }
+ ],
+ "bmo_extraits": [],
+ "bmo_recit": null,
+ "invest": [],
+ "marches": [
+  {
+   "numero_marche": "20181230000535",
+   "objet": "CSP4 MS TVX ESPACES VERTS AMENAGEMENT PLACE DE LA NATION",
+   "fournisseur": "MARCEL VILLETTE",
+   "montant_max": 1510132.5,
+   "date_notification": "2018-05-28",
+   "preuve": "L'objet du marché nomme explicitement le lieu et porte sur des travaux exécutés sur la place elle-même : « CSP4 MS TVX ESPACES VERTS AMENAGEMENT PLACE DE LA NATION » (marché subséquent travaux espaces verts). Le lieu n'est pas un simple repère d'adresse : l'aménagement est l'objet du marché. Corroboré par les délibérations du Conseil de Paris : « 2016 DVD 68 - Communication sur le réaménagement de 7 places parisiennes » (mars 2016) et le vœu de décembre 2017 « relatif à la rénovation de la place de la Nation », qui indique que « les phases de concertation sur la place de la Bastille et de la Nation s'achèveront bientôt, le 18 et le 19 décembre » — soit une notification de travaux en mai 2018 cohérente avec ce calendrier. Portée : ce marché subséquent ne couvre que le lot espaces verts de l'aménagement ; le montant maximum ne représente donc pas le coût total du réaménagement de la place."
+  }
+ ],
+ "sources": {
+  "delibs": {
+   "name": "Débat-Délibs — Conseil de Paris",
+   "url": "https://a06-v7.apps.paris.fr/a06/"
+  },
+  "bmo": {
+   "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
+   "url": "https://gallica.bnf.fr/ark:/12148/cb343512457/date"
+  },
+  "invest": {
+   "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
+   "url": "https://opendata.paris.fr/"
+  },
+  "wiki": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ }
+}

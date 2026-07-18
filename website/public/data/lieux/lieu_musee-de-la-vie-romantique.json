@@ -1,0 +1,170 @@
+{
+ "generated_at": "2026-07-18T14:38:43.284445+00:00",
+ "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
+ "slug": "musee-de-la-vie-romantique",
+ "name": "Musée de la Vie romantique",
+ "kind_fr": "Musée",
+ "kind_en": "Musée",
+ "famille": "culture",
+ "arrondissement": 9,
+ "lat": 48.8809,
+ "lon": 2.33329,
+ "photo": "/img/lieux/musee-de-la-vie-romantique.jpg",
+ "photo_credit": {
+  "licence": null,
+  "auteur": null,
+  "url": "https://fr.wikipedia.org/wiki/Mus%C3%A9e_de_la_Vie_romantique",
+  "source": "Wikipédia"
+ },
+ "wiki": {
+  "extract": "Le musée de la Vie romantique est situé dans le quartier de la Nouvelle Athènes du 9e arrondissement de Paris. Il est installé au 16, rue Chaptal, dans l’hôtel Scheffer-Renan, ancienne demeure du peintre d'origine hollandaise Ary Scheffer et foyer d'inspiration romantique durant la première partie du XIXe siècle.",
+  "url": "https://fr.wikipedia.org/wiki/Mus%C3%A9e_de_la_Vie_romantique",
+  "source": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ },
+ "stats": {
+  "n_delibs": 1211,
+  "delibs_span": [
+   1999,
+   2011
+  ],
+  "n_bmo_brut": 166,
+  "n_bmo_verifies": null,
+  "invest_total_eur": 0,
+  "invest_annees": [],
+  "lecture_mode": "titre nommant le lieu (12 trouvés)",
+  "n_lus": 12,
+  "n_lieu": 12
+ },
+ "subventions_exploitant": null,
+ "residents": [],
+ "kpi_montant": null,
+ "synthese_fr": "Dès 1999, le Conseil de Paris autorise une première convention d'objectifs avec l'association des amis du musée de la Vie romantique, 16 rue Chaptal (9e), puis autorise l'acquisition de toiles d'Ary Scheffer pour ses collections (106 714,31 € en 2003, 200 000 € en 2005). En 2005 puis 2006, il approuve le principe du ravalement des bâtiments annexes et la passation des marchés de travaux, dont la rénovation de la verrière du jardin d'hiver ; en séance, l'adjointe Moïra Guilmart présente ces opérations comme urgentes et en estime le coût à 220 000 €. En 2006, il autorise la signature de la convention par laquelle l'État transfère à la Ville la propriété de l'Hôtel Renan-Scheffer, qui abrite le musée, et un vœu demande d'examiner en priorité sa mise aux normes d'accessibilité pour les personnes handicapées. La même année, il autorise la signature d'une convention d'occupation du domaine public pour le salon de thé « Un Thé dans le Jardin », au musée. Le soutien se prolonge ensuite par de nouvelles conventions avec les amis du musée (2007, 2011) et une convention de mécénat avec le cabinet d'avocats SALANS (2010, recette de 10 000 €).",
+ "moments": [
+  {
+   "id": "42611",
+   "seance": "OCTOBRE 1999",
+   "fait": "Le Conseil autorise le Maire à signer une convention d'objectifs avec l'Association des amis du musée de la Vie romantique.",
+   "pourquoi": "Premier lien formel avec l'association des amis du musée",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=42611"
+  },
+  {
+   "id": "89723",
+   "seance": "AVRIL 2003",
+   "fait": "Le Conseil autorise l'acquisition d'une huile d'Ary Schaeffer, « Portrait de Marguerite au rouet », pour 106 714,31 €.",
+   "pourquoi": "Une œuvre d'Ary Scheffer destinée à l'enrichissement des collections",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=89723"
+  },
+  {
+   "id": "32765",
+   "seance": "DECEMBRE 2005",
+   "fait": "Le Conseil approuve le principe du ravalement des bâtiments annexes et autorise le dépôt du permis de construire.",
+   "pourquoi": "La Ville engage le principe des travaux",
+   "vedette": false,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=32765"
+  },
+  {
+   "id": "74278",
+   "seance": "SEPTEMBRE 2006",
+   "fait": "Le Conseil émet le vœu que le musée soit examiné en priorité pour la mise aux normes d'accessibilité des personnes handicapées.",
+   "pourquoi": "L'accès des personnes handicapées en question",
+   "vedette": false,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=74278"
+  },
+  {
+   "id": "10807",
+   "seance": "SEPTEMBRE 2006",
+   "fait": "En séance, l'adjointe Moïra Guilmart présente le ravalement et la rénovation de la verrière comme urgents et en estime le coût à 220 000 €.",
+   "pourquoi": "Un chantier dit urgent, chiffré en séance",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=10807"
+  },
+  {
+   "id": "73843",
+   "seance": "SEPTEMBRE 2006",
+   "fait": "Le Conseil autorise la signature d'une convention d'occupation du domaine public pour le salon de thé « Un Thé dans le Jardin ».",
+   "pourquoi": "Un salon de thé dans le jardin du musée",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=73843"
+  },
+  {
+   "id": "52412",
+   "seance": "NOVEMBRE 2006",
+   "fait": "Le Conseil autorise le Maire à signer la convention par laquelle l'État transfère à la Ville la propriété de l'Hôtel Renan-Scheffer.",
+   "pourquoi": "L'État cède les murs à la Ville",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=52412"
+  },
+  {
+   "id": "39344",
+   "seance": "SEPTEMBRE 2010",
+   "fait": "Le Conseil autorise la signature d'une convention de mécénat avec le cabinet d'avocats SALANS, pour une recette de 10 000 €.",
+   "pourquoi": "Un cabinet d'avocats devient mécène",
+   "vedette": false,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=39344"
+  }
+ ],
+ "montants": [
+  {
+   "seance": "AVRIL 2003",
+   "montant": "106 714,31 €",
+   "objet": "Acquisition d'une huile sur toile d'Ary Schaeffer, « Portrait de Marguerite au rouet », pour les collections du musée",
+   "citation": "M. le Maire de Paris est autorisé à acquérir une huile sur toile d'Ary Schaeffer représentant le \"Portrait de Marguerite au rouet\" pour un montant de 106.714,31 euros.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=89723"
+  },
+  {
+   "seance": "MAI 2005",
+   "montant": "200 000 €",
+   "objet": "Acquisition d'une huile sur toile d'Ary Scheffer, « Portrait de la Princesse de Joinville », pour les collections du musée",
+   "citation": "M. le Maire de Paris est autorisé à acquérir une huile sur toile d?Ary Scheffer, ?Portrait de la Princesse de Joinville?, pour le Musée de la Vie Romantique, pour une somme de 200.000 euros.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=80582"
+  },
+  {
+   "seance": "SEPTEMBRE 2006",
+   "montant": "220 000 € (estimation en séance)",
+   "objet": "Coût estimé par l'adjointe Moïra Guilmart pour le ravalement des façades et bâtiments annexes et la rénovation de la verrière du jardin d'hiver",
+   "citation": "Ces travaux sont importants, puisque leur coût est estimé à 220.000 euros et devraient débuter en février prochain",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=10807"
+  },
+  {
+   "seance": "SEPTEMBRE 2010",
+   "montant": "10 000 € (recette)",
+   "objet": "Recette pour la Ville liée à la convention de mécénat du cabinet d'avocats SALANS au profit du musée",
+   "citation": "Article 2 : Une recette de 10.000 euros sera constatée au budget de fonctionnement de la Ville de Paris de l?exercice 2010, sur la mission 2, chapitre 70, nature 7088, rubrique 322.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=39344"
+  },
+  {
+   "seance": "MARS 2011",
+   "montant": "4 200 € (recette estimée)",
+   "objet": "Recette estimée pour la Ville, frais de mise à disposition du personnel d'accueil et de sécurité (article 3.4 de la convention)",
+   "citation": "Les recettes correspondant aux frais de mise à disposition du personnel d?accueil et de sécurité (article 3.4 de la convention) estimées 4.200 euros seront constatées sur la mission 2, chapitre 70, article 70848",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=96759"
+  }
+ ],
+ "bmo_extraits": [],
+ "bmo_recit": null,
+ "invest": [],
+ "marches": [],
+ "sources": {
+  "delibs": {
+   "name": "Débat-Délibs — Conseil de Paris",
+   "url": "https://a06-v7.apps.paris.fr/a06/"
+  },
+  "bmo": {
+   "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
+   "url": "https://gallica.bnf.fr/ark:/12148/cb343512457/date"
+  },
+  "invest": {
+   "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
+   "url": "https://opendata.paris.fr/"
+  },
+  "wiki": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ }
+}

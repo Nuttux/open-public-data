@@ -1,0 +1,96 @@
+slug,name,kind_fr,arr,lat,lon,delib_query,title_phrase,bmo_query,noms_historiques,priorite,famille,invest_pat
+piscine-des-amiraux,Piscine des Amiraux,Piscine,18,48.8926,2.3557,piscine AND Amiraux,Amiraux,piscine des Amiraux,,1,sport,amiraux
+philharmonie-de-paris,Philharmonie de Paris,Salle de concert,19,48.8908,2.3939,Philharmonie,Philharmonie,Philharmonie de Paris,,1,culture,philharmonie
+theatre-de-la-ville,Théâtre de la Ville,Théâtre,4,48.8574,2.3477,Théâtre AND Ville AND Châtelet,Théâtre de la Ville,Théâtre de la Ville,Théâtre Sarah-Bernhardt;Théâtre des Nations,1,culture,th[eé][aâ]tre de la ville
+porte-maillot,Porte Maillot,Place,16,48.8781,2.2822,Porte AND Maillot,Maillot,Porte Maillot,,1,urbain,porte maillot
+piscine-butte-aux-cailles,Piscine de la Butte-aux-Cailles,Piscine,13,48.8265,2.3524,piscine AND Butte-aux-Cailles,Butte-aux-Cailles,piscine de la Butte-aux-Cailles,,1,sport,Piscine[\s'’-]+de[\s'’-]+la[\s'’-]+Butte[\s'’-]+aux[\s'’-]+Cailles
+parc-des-buttes-chaumont,Parc des Buttes-Chaumont,Parc,19,48.8809,2.3819,Buttes-Chaumont,Buttes-Chaumont,Buttes-Chaumont,,1,vert,Parc[\s'’-]+des[\s'’-]+Buttes[\s'’-]+Chaumont
+tour-saint-jacques,Tour Saint-Jacques,Monument,4,48.8579,2.3489,tour AND Saint-Jacques,tour Saint-Jacques,tour Saint-Jacques,,1,urbain,Tour[\s'’-]+Saint[\s'’-]+Jacques
+marche-des-enfants-rouges,Marché des Enfants-Rouges,Marché couvert,3,48.8628,2.3623,Enfants-Rouges,Enfants-Rouges,marché des Enfants-Rouges,,1,services,Marché[\s'’-]+des[\s'’-]+Enfants[\s'’-]+Rouges
+petite-ceinture,Petite Ceinture,Infrastructure,0,48.8342,2.3906,Petite AND Ceinture,Petite Ceinture,chemin de fer de Ceinture,,1,services,Petite[\s'’-]+Ceinture
+les-halles,Les Halles,Quartier-équipement,1,48.8621,2.3454,Halles AND Canopée,Halles,pavillons des Halles,Halles centrales,1,services,Les[\s'’-]+Halles
+piscine-pontoise,Piscine Pontoise,Piscine,5,48.8497,2.3529,piscine AND Pontoise,Pontoise,piscine de la rue de Pontoise,,2,sport,Piscine[\s'’-]+Pontoise
+piscine-georges-vallerey,Piscine Georges-Vallerey,Piscine,20,48.8746,2.4085,piscine AND Vallerey,Vallerey,piscine des Tourelles,stade nautique des Tourelles,2,sport,Piscine[\s'’-]+Georges[\s'’-]+Vallerey
+piscine-josephine-baker,Piscine Joséphine-Baker,Piscine,13,48.8367,2.3762,piscine AND Joséphine AND Baker,Joséphine Baker,,,2,sport,Piscine[\s'’-]+Joséphine[\s'’-]+Baker
+piscine-hebert,Piscine Hébert,Piscine,18,48.8935,2.3612,piscine AND Hébert,Hébert,piscine Hébert,,2,sport,Piscine[\s'’-]+Hébert
+piscine-pailleron,Piscine Pailleron,Piscine,19,48.8788,2.3766,piscine AND Pailleron,Pailleron,piscine Pailleron,,2,sport,Piscine[\s'’-]+Pailleron
+theatre-du-chatelet,Théâtre du Châtelet,Théâtre,1,48.8579,2.3469,Théâtre AND Châtelet,Théâtre du Châtelet,théâtre du Châtelet,Théâtre Musical de Paris,2,culture,Théâtre[\s'’-]+du[\s'’-]+Châtelet
+gaite-lyrique,Gaîté-Lyrique,Équipement culturel,3,48.8666,2.3535,Gaîté-Lyrique,Gaîté-Lyrique,théâtre de la Gaîté,,2,culture,Gaîté[\s'’-]+Lyrique
+centquatre,Le Centquatre,Équipement culturel,19,48.8901,2.3702,Centquatre,Centquatre,pompes funèbres municipales,,2,culture,Le[\s'’-]+Centquatre
+carreau-du-temple,Carreau du Temple,Équipement,3,48.8645,2.3615,Carreau AND Temple,Carreau du Temple,Carreau du Temple,,2,services,Carreau[\s'’-]+du[\s'’-]+Temple
+maison-des-metallos,Maison des Métallos,Équipement culturel,11,48.8666,2.3778,Maison AND Métallos,Métallos,,,2,culture,Maison[\s'’-]+des[\s'’-]+Métallos
+parc-montsouris,Parc Montsouris,Parc,14,48.8222,2.3386,Montsouris,Montsouris,parc de Montsouris,,2,vert,Parc[\s'’-]+Montsouris
+parc-monceau,Parc Monceau,Parc,8,48.8797,2.3089,parc AND Monceau,Monceau,parc Monceau,,2,vert,Parc[\s'’-]+Monceau
+parc-andre-citroen,Parc André-Citroën,Parc,15,48.8412,2.2746,parc AND Citroën,Citroën,,,2,vert,Parc[\s'’-]+André[\s'’-]+Citroën
+parc-de-bercy,Parc de Bercy,Parc,12,48.8352,2.3826,parc AND Bercy,Bercy,entrepôts de Bercy,,2,vert,Parc[\s'’-]+de[\s'’-]+Bercy
+parc-de-la-villette,Parc de la Villette,Parc,19,48.8938,2.3906,parc AND Villette,Villette,abattoirs de la Villette,,2,vert,Parc[\s'’-]+de[\s'’-]+la[\s'’-]+Villette
+parc-georges-brassens,Parc Georges-Brassens,Parc,15,48.8319,2.2999,parc AND Brassens,Brassens,abattoirs de Vaugirard,,2,vert,Parc[\s'’-]+Georges[\s'’-]+Brassens
+parc-de-belleville,Parc de Belleville,Parc,20,48.8710,2.3846,parc AND Belleville,parc de Belleville,,,2,vert,Parc[\s'’-]+de[\s'’-]+Belleville
+place-de-la-republique,Place de la République,Place,3,48.8676,2.3637,place AND République,place de la République,place de la République,place du Château-d'Eau,2,urbain,Place[\s'’-]+de[\s'’-]+la[\s'’-]+République
+place-de-la-bastille,Place de la Bastille,Place,4,48.8532,2.3692,place AND Bastille,place de la Bastille,place de la Bastille,,2,urbain,Place[\s'’-]+de[\s'’-]+la[\s'’-]+Bastille
+place-de-la-nation,Place de la Nation,Place,12,48.8484,2.3958,place AND Nation,place de la Nation,place de la Nation,place du Trône,2,urbain,Place[\s'’-]+de[\s'’-]+la[\s'’-]+Nation
+marche-daligre,Marché d'Aligre,Marché,12,48.8490,2.3785,marché AND Aligre,Aligre,marché d'Aligre,marché Beauvau,2,services,Marché[\s'’-]+d[\s'’-]+Aligre
+marche-saint-quentin,Marché Saint-Quentin,Marché couvert,10,48.8781,2.3577,marché AND Saint-Quentin,Saint-Quentin,marché Saint-Quentin,,2,services,Marché[\s'’-]+Saint[\s'’-]+Quentin
+hotel-de-ville,Hôtel de Ville,Monument,4,48.8566,2.3522,Hôtel AND Ville AND bâtiment,Hôtel de Ville,Hôtel de Ville,,2,urbain,Hôtel[\s'’-]+de[\s'’-]+Ville
+canal-saint-martin,Canal Saint-Martin,Infrastructure,10,48.8712,2.3660,canal AND Saint-Martin,canal Saint-Martin,canal Saint-Martin,,2,services,Canal[\s'’-]+Saint[\s'’-]+Martin
+pavillon-de-larsenal,Pavillon de l'Arsenal,Équipement,4,48.8511,2.3620,Pavillon AND Arsenal,Arsenal,,,2,services,Pavillon[\s'’-]+de[\s'’-]+l[\s'’-]+Arsenal
+serres-dauteuil,Serres d'Auteuil,Jardin,16,48.8464,2.2523,serres AND Auteuil,Auteuil,jardin fleuriste municipal,,2,vert,Serres[\s'’-]+d[\s'’-]+Auteuil
+pere-lachaise,Cimetière du Père-Lachaise,Cimetière,20,48.8610,2.3933,Père-Lachaise,Père-Lachaise,Père-Lachaise,cimetière de l'Est,2,vert,Cimetière[\s'’-]+du[\s'’-]+Père[\s'’-]+Lachaise
+gymnase-japy,Gymnase Japy,Gymnase,11,48.8577,2.3800,gymnase AND Japy,Japy,gymnase Japy,,2,sport,Gymnase[\s'’-]+Japy
+bourse-du-travail,Bourse du Travail,Équipement,10,48.8680,2.3618,Bourse AND Travail,Bourse du Travail,Bourse du Travail,,2,services,Bourse[\s'’-]+du[\s'’-]+Travail
+mairie-du-18e,Mairie du 18e,Mairie,18,48.8927,2.3444,mairie AND 18e AND Jules-Joffrin,mairie du 18e,mairie du XVIIIe arrondissement,,3,services,Mairie[\s'’-]+du[\s'’-]+18e
+bibliotheque-historique,Bibliothèque historique (BHVP),Bibliothèque,4,48.8556,2.3585,Bibliothèque AND historique AND Lamoignon,Lamoignon,hôtel de Lamoignon,,3,culture,Bibliothèque[\s'’-]+historique[\s'’-]+\(BHVP\)
+halle-saint-pierre,Halle Saint-Pierre,Équipement,18,48.8853,2.3419,Halle AND Saint-Pierre,Halle Saint-Pierre,marché Saint-Pierre,,3,services,Halle[\s'’-]+Saint[\s'’-]+Pierre
+theatre-13,Théâtre 13,Théâtre,13,48.8291,2.3562,Théâtre AND 13,Théâtre 13,,,3,culture,Théâtre[\s'’-]+13
+kiosque-fleurs-cite,Marché aux fleurs de la Cité,Marché,4,48.8555,2.3474,marché AND fleurs AND Cité,marché aux fleurs,marché aux fleurs,,3,services,Marché[\s'’-]+aux[\s'’-]+fleurs[\s'’-]+de[\s'’-]+la[\s'’-]+Cité
+stade-jean-bouin,Stade Jean-Bouin,Stade,16,48.8432,2.2530,Jean-Bouin,Jean-Bouin,stade Jean-Bouin,,3,sport,Stade[\s'’-]+Jean[\s'’-]+Bouin
+square-du-vert-galant,Square du Vert-Galant,Square,1,48.8574,2.3410,Vert-Galant,Vert-Galant,square du Vert-Galant,,3,vert,Square[\s'’-]+du[\s'’-]+Vert[\s'’-]+Galant
+fontaine-saint-michel,Fontaine Saint-Michel,Monument,6,48.8534,2.3438,fontaine AND Saint-Michel,fontaine Saint-Michel,fontaine Saint-Michel,,3,urbain,Fontaine[\s'’-]+Saint[\s'’-]+Michel
+musee-carnavalet,Musée Carnavalet,Musée,3,48.85706,2.36285,Carnavalet,Carnavalet,Musée Carnavalet,,2,culture,Musée[\s'’-]+Carnavalet
+petit-palais,Petit Palais,Musée,8,48.86608,2.31364,Petit Palais,Petit Palais,Petit Palais,,2,culture,Petit[\s'’-]+Palais
+musee-d-art-moderne-de-paris,Musée d'Art moderne de Paris,Musée,16,48.86438,2.29353,Art moderne AND Ville,Art moderne,Musée d'Art moderne de Paris,,2,culture,Musée[\s'’-]+d[\s'’-]+Art[\s'’-]+moderne[\s'’-]+de[\s'’-]+Paris
+catacombes-de-paris,Catacombes de Paris,Musée,14,48.83398,2.33251,Catacombes,Catacombes,Catacombes de Paris,,2,culture,Catacombes[\s'’-]+de[\s'’-]+Paris
+maison-de-victor-hugo,Maison de Victor Hugo,Musée,4,48.85482,2.36613,Victor Hugo AND maison,Victor Hugo,Maison de Victor Hugo,,2,culture,Maison[\s'’-]+de[\s'’-]+Victor[\s'’-]+Hugo
+musee-de-la-vie-romantique,Musée de la Vie romantique,Musée,9,48.8809,2.33329,Vie romantique,Vie romantique,Musée de la Vie romantique,,2,culture,Musée[\s'’-]+de[\s'’-]+la[\s'’-]+Vie[\s'’-]+romantique
+musee-cognacq-jay,Musée Cognacq-Jay,Musée,3,48.8582,2.36147,Cognacq-Jay,Cognacq-Jay,Musée Cognacq-Jay,,2,culture,Musée[\s'’-]+Cognacq[\s'’-]+Jay
+musee-bourdelle,Musée Bourdelle,Musée,15,48.84298,2.31859,Bourdelle,Bourdelle,Musée Bourdelle,,2,culture,Musée[\s'’-]+Bourdelle
+musee-zadkine,Musée Zadkine,Musée,6,48.84303,2.33404,Zadkine,Zadkine,Musée Zadkine,,2,culture,Musée[\s'’-]+Zadkine
+maison-de-balzac,Maison de Balzac,Musée,16,48.85536,2.28085,Balzac,Balzac,Maison de Balzac,,2,culture,Maison[\s'’-]+de[\s'’-]+Balzac
+musee-cernuschi,Musée Cernuschi,Musée,8,48.87964,2.31246,Cernuschi,Cernuschi,Musée Cernuschi,,2,culture,Musée[\s'’-]+Cernuschi
+palais-galliera,Palais Galliera,Musée,16,48.86597,2.29657,Galliera,Galliera,Palais Galliera,,2,culture,Palais[\s'’-]+Galliera
+memorial-du-marechal-leclerc-et-musee-jean-moulin,Mémorial du Maréchal Leclerc et musée Jean Moulin,Musée,15,48.84066,2.31967,Jean Moulin,Jean Moulin,Mémorial du Maréchal Leclerc et musée Jean Moulin,,2,culture,Mémorial[\s'’-]+du[\s'’-]+Maréchal[\s'’-]+Leclerc[\s'’-]+et[\s'’-]+musée[\s'’-]+Jean[\s'’-]+Moulin
+crypte-archeologique-de-l-ile-de-la-cite,Crypte archéologique de l'île de la Cité,Musée,4,48.85321,2.3487,Crypte archéologique,Crypte archéologique,Crypte archéologique de l'île de la Cité,,2,culture,Crypte[\s'’-]+archéologique[\s'’-]+de[\s'’-]+l[\s'’-]+île[\s'’-]+de[\s'’-]+la[\s'’-]+Cité
+theatre-du-rond-point,Théâtre du Rond-Point,Théâtre,8,48.86778,2.31055,Rond-Point,Rond-Point,Théâtre du Rond-Point,,2,culture,Théâtre[\s'’-]+du[\s'’-]+Rond[\s'’-]+Point
+theatre-silvia-monfort,Théâtre Silvia Monfort,Théâtre,15,48.8303,2.30182,Silvia Monfort,Silvia Monfort,Théâtre Silvia Monfort,,2,culture,Théâtre[\s'’-]+Silvia[\s'’-]+Monfort
+theatre-paris-villette,Théâtre Paris-Villette,Théâtre,19,48.88895,2.39245,Paris Villette,Paris Villette,Théâtre Paris-Villette,,2,culture,Théâtre[\s'’-]+Paris[\s'’-]+Villette
+theatre-14,Théâtre 14,Théâtre,14,48.8259,2.30685,Théâtre 14,Théâtre 14,Théâtre 14,,2,culture,Théâtre[\s'’-]+14
+adidas-arena,Adidas Arena,Équipement,18,48.89809,2.34744,Arena AND Chapelle,Arena,Adidas Arena,,2,sport,Adidas[\s'’-]+Arena
+porte-de-la-chapelle,Porte de la Chapelle,Place,18,48.90002,2.35857,Porte de la Chapelle,Porte de la Chapelle,Porte de la Chapelle,,2,urbain,Porte[\s'’-]+de[\s'’-]+la[\s'’-]+Chapelle
+porte-de-montreuil,Porte de Montreuil,Place,20,48.85439,2.41427,Porte de Montreuil,Porte de Montreuil,Porte de Montreuil,,2,urbain,Porte[\s'’-]+de[\s'’-]+Montreuil
+piscine-belliard,Piscine Belliard,Piscine,18,48.89623,2.33473,Belliard,Belliard,Piscine Belliard,,2,sport,Piscine[\s'’-]+Belliard
+mediatheque-james-baldwin,Médiathèque James Baldwin,Bibliothèque,19,48.8897,2.3686,James Baldwin,James Baldwin,Médiathèque James Baldwin,,2,culture,Médiathèque[\s'’-]+James[\s'’-]+Baldwin
+stade-charlety,Stade Charléty,Stade,13,48.81922,2.34555,Charléty,Charléty,Stade Charléty,,2,sport,Stade[\s'’-]+Charléty
+cirque-d-hiver,Cirque d'Hiver,Équipement culturel,11,48.86312,2.36727,Cirque d’Hiver,Cirque d’Hiver,Cirque d'Hiver,,2,culture,Cirque[\s'’-]+d[\s'’-]+Hiver
+colonne-de-juillet,Colonne de Juillet,Monument,11,48.85371,2.37021,Colonne de Juillet,Colonne de Juillet,Colonne de Juillet,,2,urbain,Colonne[\s'’-]+de[\s'’-]+Juillet
+bibliotheque-forney,Bibliothèque Forney,Bibliothèque,4,48.853389,2.359078,Bibliothèque Forney,Bibliothèque Forney,Bibliothèque Forney,,3,culture,Bibliothèque[\s'’-]+Forney
+bibliotheque-de-l-heure-joyeuse,Bibliothèque de l'Heure joyeuse,Bibliothèque,5,48.876627,2.289892,Bibliothèque de l'Heure joyeuse,Bibliothèque de l'Heure joyeuse,Bibliothèque de l'Heure joyeuse,,3,culture,Bibliothèque[\s'’-]+Heure[\s'’-]+joyeuse
+maison-de-la-poesie,Maison de la Poésie,Scène littéraire,3,48.825945,2.358291,Maison de la Poésie,Maison de la Poésie,Maison de la Poésie,,3,culture,Maison[\s'’-]+Poésie
+conservatoire-de-paris-crr,Conservatoire de Paris (CRR),Conservatoire,19,48.873259,2.346855,Conservatoire de Paris (CRR),Conservatoire de Paris (CRR),Conservatoire de Paris (CRR),,3,culture,Conservatoire[\s'’-]+Paris[\s'’-]+\(CRR\)
+theatre-de-la-bastille,Théâtre de la Bastille,Théâtre,11,48.853849,2.367928,Théâtre de la Bastille,Théâtre de la Bastille,Théâtre de la Bastille,,3,culture,Théâtre[\s'’-]+Bastille
+theatre-de-la-cite-internationale,Théâtre de la Cité internationale,Théâtre,14,48.887406,2.358517,Théâtre de la Cité internationale,Théâtre de la Cité internationale,Théâtre de la Cité internationale,,3,culture,Théâtre[\s'’-]+Cité[\s'’-]+internationale
+piscine-molitor,Piscine Molitor,Piscine,16,48.845229,2.262475,Piscine Molitor,Piscine Molitor,Piscine Molitor,,3,sport,Piscine[\s'’-]+Molitor
+parc-martin-luther-king,Parc Martin Luther King,Parc,17,48.8912,2.316,Parc Martin Luther King,Parc Martin Luther King,Parc Martin Luther King,,3,vert,Parc[\s'’-]+Martin[\s'’-]+Luther[\s'’-]+King
+parc-floral-de-paris,Parc floral de Paris,Parc,12,48.8355,2.447,Parc floral de Paris,Parc floral de Paris,Parc floral de Paris,,3,vert,Parc[\s'’-]+floral[\s'’-]+Paris
+bois-de-vincennes,Bois de Vincennes,Bois,12,48.847196,2.404955,Bois de Vincennes,Bois de Vincennes,Bois de Vincennes,,3,vert,Bois[\s'’-]+Vincennes
+bois-de-boulogne,Bois de Boulogne,Bois,16,48.87511,2.286939,Bois de Boulogne,Bois de Boulogne,Bois de Boulogne,,3,vert,Bois[\s'’-]+Boulogne
+jardin-du-ranelagh,Jardin du Ranelagh,Jardin,16,48.858701,2.269321,Jardin du Ranelagh,Jardin du Ranelagh,Jardin du Ranelagh,,3,vert,Jardin[\s'’-]+Ranelagh
+coulee-verte-rene-dumont,Coulée verte René-Dumont,Promenade,12,48.8478,2.376,Coulée verte René-Dumont,Coulée verte René-Dumont,Coulée verte René-Dumont,,3,vert,Coulée[\s'’-]+verte[\s'’-]+René[\s'’-]+Dumont
+place-des-vosges,Place des Vosges,Place,4,48.85565,2.36555,Place des Vosges,Place des Vosges,Place des Vosges,,3,urbain,Place[\s'’-]+Vosges
+place-d-italie,Place d'Italie,Place,13,48.831342,2.355345,Place d'Italie,Place d'Italie,Place d'Italie,,3,urbain,Place[\s'’-]+Italie
+place-du-tertre,Place du Tertre,Place,18,48.886518,2.340671,Place du Tertre,Place du Tertre,Place du Tertre,,3,urbain,Place[\s'’-]+Tertre
+arenes-de-lutece,Arènes de Lutèce,Monument,5,48.855149,2.346456,Arènes de Lutèce,Arènes de Lutèce,Arènes de Lutèce,,3,urbain,Arènes[\s'’-]+Lutèce
+place-denfert-rochereau,Place Denfert-Rochereau,Place,14,48.833963,2.331487,Place Denfert-Rochereau,Place Denfert-Rochereau,Place Denfert-Rochereau,,3,urbain,Place[\s'’-]+Denfert[\s'’-]+Rochereau
+fontaine-des-innocents,Fontaine des Innocents,Monument,1,48.860458,2.347394,Fontaine des Innocents,Fontaine des Innocents,Fontaine des Innocents,,3,urbain,Fontaine[\s'’-]+Innocents
+place-du-chatelet,Place du Châtelet,Place,1,48.857346,2.34779,Place du Châtelet,Place du Châtelet,Place du Châtelet,,3,urbain,Place[\s'’-]+Châtelet
+place-de-la-madeleine,Place de la Madeleine,Place,8,48.870779,2.325,Place de la Madeleine,Place de la Madeleine,Place de la Madeleine,,3,urbain,Place[\s'’-]+Madeleine
+bourse-de-commerce,Bourse de Commerce,Monument,1,48.862819,2.342834,Bourse de Commerce,Bourse de Commerce,Bourse de Commerce,,3,services,Bourse[\s'’-]+Commerce

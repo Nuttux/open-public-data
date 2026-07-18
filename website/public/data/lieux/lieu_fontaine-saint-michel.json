@@ -1,0 +1,143 @@
+{
+ "generated_at": "2026-07-18T14:38:43.284445+00:00",
+ "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
+ "slug": "fontaine-saint-michel",
+ "name": "Fontaine Saint-Michel",
+ "kind_fr": "Monument",
+ "kind_en": "Monument",
+ "famille": "urbain",
+ "arrondissement": 6,
+ "lat": 48.8534,
+ "lon": 2.3438,
+ "photo": "/img/lieux/fontaine-saint-michel.jpg",
+ "photo_credit": {
+  "licence": "CC BY-SA 4.0",
+  "auteur": "Diego Delso",
+  "url": "https://commons.wikimedia.org/wiki/File:Fuente_de_Saint-Michel,_Par%C3%ADs,_Francia,_2022-10-29,_DD_141.jpg",
+  "source": "Wikimedia Commons"
+ },
+ "wiki": {
+  "extract": null,
+  "url": null,
+  "source": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ },
+ "stats": {
+  "n_delibs": 738,
+  "delibs_span": [
+   1998,
+   2024
+  ],
+  "n_bmo_brut": 2000,
+  "n_bmo_verifies": null,
+  "invest_total_eur": 0,
+  "invest_annees": [],
+  "lecture_mode": "titre nommant le lieu (2 trouvés)",
+  "n_lus": 2,
+  "n_lieu": 2
+ },
+ "subventions_exploitant": null,
+ "residents": [],
+ "kpi_montant": null,
+ "synthese_fr": "En septembre 1998, le Conseil de Paris approuve le principe de la restauration de la fontaine Saint-Michel, place Saint-Michel (6e), approuve les modalités du marché de travaux correspondant et autorise le Maire à le signer, la dépense étant imputée au budget d'investissement de la Ville ; le texte ne chiffre aucun montant. Vingt-six ans plus tard, en octobre 2024, alors qu'une nouvelle restauration se prépare, le Conseil débat d'une convention d'occupation du domaine public portant sur une bâche publicitaire installée sur l'échafaudage du chantier. Selon Mme Céline Hervieu (Paris en commun), cette rénovation doit débuter en 2025 et porter sur les pierres, les statues, les bassins et la mise en lumière du monument, inscrit au titre des monuments historiques. Le recours à la publicité pour financer les travaux divise : M. Meunier (Les Écologistes) y dénonce une « pollution visuelle », M. Sorel une « pub » géante, et Mme Primet (Communiste et Citoyen) s'oppose au principe tout en annonçant son abstention, quand Mme Hervieu (Paris en commun) y voit une opportunité d'autofinancer un projet patrimonial dans un contexte budgétaire resserré.",
+ "moments": [
+  {
+   "id": "92631",
+   "seance": "SEPTEMBRE 1998",
+   "fait": "Le Conseil de Paris approuve le principe de la restauration de la fontaine et autorise le Maire à signer le marché de travaux correspondant.",
+   "pourquoi": "le premier feu vert, il y a un quart de siècle",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=92631"
+  },
+  {
+   "id": "178355",
+   "seance": "OCTOBRE 2024",
+   "fait": "Selon Mme Hervieu, la nouvelle rénovation doit débuter en 2025 et porter sur les pierres, les statues, les bassins et la mise en lumière du monument.",
+   "pourquoi": "le monument emblématique repart en chantier",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=178355"
+  },
+  {
+   "id": "178355",
+   "seance": "OCTOBRE 2024",
+   "fait": "Une convention d'occupation du domaine public prévoit une bâche publicitaire sur l'échafaudage, présentée comme un moyen d'autofinancer la restauration.",
+   "pourquoi": "la publicité pour payer la pierre",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=178355"
+  },
+  {
+   "id": "178355",
+   "seance": "OCTOBRE 2024",
+   "fait": "Le recours à la publicité divise le Conseil : dénonciation d'une « pub » géante et d'une « pollution visuelle » contre défense d'une opportunité de financement.",
+   "pourquoi": "faut-il vendre le décor pour le sauver",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=178355"
+  },
+  {
+   "id": "178355",
+   "seance": "OCTOBRE 2024",
+   "fait": "Selon Mme Primet, l'échafaudage couvrira 686 m² pendant dix mois, la bâche pouvant occuper jusqu'à 50 % de l'édifice.",
+   "pourquoi": "l'ampleur physique du dispositif temporaire",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=178355"
+  }
+ ],
+ "montants": [
+  {
+   "seance": "OCTOBRE 2024",
+   "montant": "≈ 30 M€ / an",
+   "objet": "Entretien annuel de l'ensemble du patrimoine parisien, évoqué comme contexte budgétaire par Mme Primet (Communiste) — chiffre non spécifique à la fontaine.",
+   "citation": "environ 30 millions d'euros par an Ã l'entretien de son patrimoine",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=178355"
+  }
+ ],
+ "bmo_extraits": [],
+ "bmo_recit": null,
+ "invest": [],
+ "marches": [
+  {
+   "numero_marche": "decp-2024S05330",
+   "objet": "Marché d'Assistance à maîtrise d’ouvrage pour la mission de conseil en éclairage du programme de restauration et ravalement de la fontaine Saint-Michel - Place Saint-Michel 75006 Paris",
+   "fournisseur": "RAYMOND BELLE",
+   "montant_max": 11725.0,
+   "date_notification": "2024-06-25",
+   "preuve": "L'objet du marché nomme le lieu et son adresse verbatim : « programme de restauration et ravalement de la fontaine Saint-Michel - Place Saint-Michel 75006 Paris ». Le lieu n'est pas un simple repère d'adresse : il est l'objet même de la prestation (conseil en éclairage du programme de restauration). Confirmé par la délibération 2024 DCPA 12 (octobre 2024), qui décrit le projet comme comprenant « la restauration des pierres, des statues, des bassins, et la mise en lumière globale de l'ensemble »."
+  },
+  {
+   "numero_marche": "decp-2024S03807",
+   "objet": "Marché subséquent de contrôle technique pour l’opération de travaux de restauration de la Fontaine Saint-Michel, place Saint-Michel 75006 Paris fondé sur l'accord cadre 20232023S11958",
+   "fournisseur": "APAVE INFRASTRUCTURES ET CONSTRUCTION FRANCE",
+   "montant_max": 11275.0,
+   "date_notification": "2024-06-06",
+   "preuve": "L'objet nomme le lieu et son adresse verbatim : « l’opération de travaux de restauration de la Fontaine Saint-Michel, place Saint-Michel 75006 Paris ». Il s'agit d'un marché subséquent rattaché à cette opération précise (et non de l'accord-cadre 20232023S11958 lui-même, qui couvre toute la Ville), donc la dépense porte bien sur ce monument. Opération confirmée par la délibération 2024 DCPA 12 : « travaux de restauration de la fontaine Saint-Michel (6e) »."
+  },
+  {
+   "numero_marche": "decp-2024S03797",
+   "objet": "Marché subséquent de SPS pour l’opération de travaux de restauration de la Fontaine Saint-Michel, place Saint-Michel 75006 Paris fondé sur l'accord cadre 20232023S06428",
+   "fournisseur": "4G INGENIERIE & CONSULTING",
+   "montant_max": 10880.0,
+   "date_notification": "2025-05-29",
+   "preuve": "L'objet nomme le lieu et son adresse verbatim : « l’opération de travaux de restauration de la Fontaine Saint-Michel, place Saint-Michel 75006 Paris ». Marché subséquent de coordination sécurité et protection de la santé rattaché à cette opération précise, notifié en mai 2025, cohérent avec la délibération 2024 DCPA 12 qui annonce que « sa rénovation débutera en 2025 »."
+  }
+ ],
+ "sources": {
+  "delibs": {
+   "name": "Débat-Délibs — Conseil de Paris",
+   "url": "https://a06-v7.apps.paris.fr/a06/"
+  },
+  "bmo": {
+   "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
+   "url": "https://gallica.bnf.fr/ark:/12148/cb343512457/date"
+  },
+  "invest": {
+   "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
+   "url": "https://opendata.paris.fr/"
+  },
+  "wiki": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ }
+}

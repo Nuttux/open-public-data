@@ -1,0 +1,394 @@
+{
+ "generated_at": "2026-07-18T14:38:43.284445+00:00",
+ "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
+ "slug": "musee-d-art-moderne-de-paris",
+ "name": "Musée d'Art moderne de Paris",
+ "kind_fr": "Musée",
+ "kind_en": "Musée",
+ "famille": "culture",
+ "arrondissement": 16,
+ "lat": 48.86438,
+ "lon": 2.29353,
+ "photo": "/img/lieux/musee-d-art-moderne-de-paris.jpg",
+ "photo_credit": {
+  "licence": null,
+  "auteur": null,
+  "url": "https://fr.wikipedia.org/wiki/Mus%C3%A9e_d'Art_moderne_de_Paris",
+  "source": "Wikipédia"
+ },
+ "wiki": {
+  "extract": "Le musée d'Art moderne de Paris, ou MAM Paris, situé au 11, avenue du Président-Wilson dans le 16e arrondissement de Paris, est un musée d'art français.",
+  "url": "https://fr.wikipedia.org/wiki/Mus%C3%A9e_d'Art_moderne_de_Paris",
+  "source": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ },
+ "stats": {
+  "n_delibs": 1242,
+  "delibs_span": [
+   1995,
+   2012
+  ],
+  "n_bmo_brut": 2000,
+  "n_bmo_verifies": null,
+  "invest_total_eur": 0,
+  "invest_annees": [],
+  "lecture_mode": "titre nommant le lieu (81 trouvés)",
+  "n_lus": 43,
+  "n_lieu": 41
+ },
+ "subventions_exploitant": null,
+ "residents": [],
+ "kpi_montant": null,
+ "synthese_fr": "Dans les délibérations du Conseil de Paris, le Musée d'Art Moderne de la Ville de Paris — 11, avenue du Président-Wilson (16e) — apparaît d'abord comme destinataire d'œuvres : acquisitions autorisées de façon récurrente entre 1995 et 2011 (d'Arman à Hervé Télémaque), dons du Musée d'art moderne de Sao Paulo et du Sankei Shimbun, legs de particuliers et mécénats, dont le don par L'Oréal de quinze sculptures d'Etienne Martin estimé à 1 367 000 euros en 2008. La vie matérielle du lieu passe aussi par le Conseil : concession du « Café du musée » en 1999, marché de travaux du parcours muséographique des collections permanentes en 2005, convention d'occupation pour sa librairie en 2011. En 2006, le Conseil crée un emploi de Délégué à l'art moderne et contemporain chargé d'assurer la direction du musée. En 2002, l'acquisition d'une œuvre de Marcel Broodthaers donne lieu, en séance, à un débat sur l'indépendance de la commission d'achat du musée face aux élus. En 2011 puis 2012, des élus interpellent l'exécutif sur la sécurité de l'établissement — sécurité incendie, puis, après un vol de cinq toiles évoqué en séance et un accident du travail, une demande d'audit à laquelle l'adjoint Bruno Julliard répond en faisant état de travaux de sécurité.",
+ "moments": [
+  {
+   "id": "42446",
+   "seance": "OCTOBRE 1999",
+   "fait": "Le Conseil autorise la concession du café-restaurant « Café du musée » à la SARL « Driver's », au sein du musée.",
+   "pourquoi": "Un café-restaurant concédé dans le musée",
+   "vedette": false,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=42446"
+  },
+  {
+   "id": "16080",
+   "seance": "NOVEMBRE 2002",
+   "fait": "Le débat sur l'achat d'une œuvre de Broodthaers (un perroquet vivant) tourne à la controverse sur l'indépendance de la commission d'achat.",
+   "pourquoi": "Un perroquet vivant enflamme le Conseil",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=16080"
+  },
+  {
+   "id": "47867",
+   "seance": "SEPTEMBRE 2003",
+   "fait": "Le Conseil autorise l'acquisition d'œuvres surréalistes préemptées aux ventes André Breton, dont un Picabia à 1 799 732 €.",
+   "pourquoi": "Préemptions surréalistes à la vente Breton",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=47867"
+  },
+  {
+   "id": "63652",
+   "seance": "SEPTEMBRE 2005",
+   "fait": "Le Conseil autorise le marché de travaux d'aménagement du parcours muséographique des collections permanentes.",
+   "pourquoi": "Un marché pour réaménager le parcours des collections",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=63652"
+  },
+  {
+   "id": "92276",
+   "seance": "DECEMBRE 2006",
+   "fait": "Le Conseil crée un emploi de Délégué à l'art moderne et contemporain chargé d'assurer la direction du musée.",
+   "pourquoi": "Un poste créé pour diriger le musée",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=92276"
+  },
+  {
+   "id": "67572",
+   "seance": "SEPTEMBRE 2008",
+   "fait": "Le Conseil autorise la convention de mécénat par laquelle L'Oréal donne au musée quinze sculptures d'Etienne Martin (1 367 000 €).",
+   "pourquoi": "L'Oréal donne quinze sculptures d'Etienne Martin",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=67572"
+  },
+  {
+   "id": "35899",
+   "seance": "MAI 2010",
+   "fait": "Le Conseil approuve la grille tarifaire de l'exposition « Dynasty », coprésentée avec le Palais de Tokyo.",
+   "pourquoi": "Tarifs fixés pour l'exposition Dynasty",
+   "vedette": false,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=35899"
+  },
+  {
+   "id": "108500",
+   "seance": "SEPTEMBRE 2012",
+   "fait": "Un vœu réclame un audit du musée après le vol de 2010 et l'accident d'un agent ; l'adjoint fait état de travaux de sécurité.",
+   "pourquoi": "Après vol et accident, un audit réclamé",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=108500"
+  }
+ ],
+ "montants": [
+  {
+   "seance": "MARS 2011",
+   "montant": "60 000 €",
+   "objet": "Convention de mécénat CB'a Design Solutions au profit du musée",
+   "citation": "La dépense estimée à 60.000 euros sera inscrite au chapitre 21, nature 2162, rubrique V322",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=96556"
+  },
+  {
+   "seance": "SEPTEMBRE 2010",
+   "montant": "45 000 €",
+   "objet": "Donation des héritiers de Bernard Buffet (œuvres) au musée",
+   "citation": "La valeur d?immobilisation des oeuvres données, estimées au total à la somme de 45.000 euros",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=39545"
+  },
+  {
+   "seance": "AVRIL 2009",
+   "montant": "29 500 €",
+   "objet": "Legs de M. Robert Pezard (œuvres) au musée",
+   "citation": "La valeur d?immobilisation des ?uvres léguées, estimées au total à la somme de 29.500 euros",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=64611"
+  },
+  {
+   "seance": "JUIN 2005",
+   "montant": "7 650 €",
+   "objet": "Legs de M. Jacky Beillerot (œuvre) au musée",
+   "citation": "La valeur d?immobilisation de l??uvre léguée, estimée à 7.650 euros",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=83309"
+  },
+  {
+   "seance": "MAI 2010",
+   "montant": "9 € (plein tarif)",
+   "objet": "Tarif d'entrée de l'exposition « Dynasty » (musée / Palais de Tokyo)",
+   "citation": "Entrée exposition Dynasty (Individuels) 9 euros 6 euros 4,50 euros 3 euros",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=35899"
+  },
+  {
+   "seance": "NOVEMBRE 2009",
+   "montant": "1 367 000 €",
+   "objet": "Don de 15 sculptures d'Etienne Martin au musée (écriture budgétaire ajustée)",
+   "citation": "concernant l?inscription de la recette et de la dépense de 1.367.000 euros relative au don de 15 sculptures d?Etienne MARTIN en faveur du Musée d?Art Moderne",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=81684"
+  },
+  {
+   "seance": "MAI 2008",
+   "montant": "28 000 € (au total, musée + Petit Palais)",
+   "objet": "Legs de M. André Berne-Joffroy (œuvres) au musée et au Petit Palais",
+   "citation": "La valeur d?immobilisation des ?uvres léguées, estimées au total à la somme de 28.000 euros",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=69652"
+  },
+  {
+   "seance": "SEPTEMBRE 2008",
+   "montant": "1 367 000 €",
+   "objet": "Don L'Oréal de 15 sculptures d'Etienne Martin au musée (total)",
+   "citation": "La dépense estimée à 1.367.000 euros, sera inscrite au chapitre 21, nature 2162, rubrique 01 du budget municipal d?investissement de la Ville de Paris, exercice 2008.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=67572"
+  },
+  {
+   "seance": "SEPTEMBRE 2008",
+   "montant": "220 000 €",
+   "objet": "Valeur de la sculpture « Celle qui veille » (1980), la plus élevée du don",
+   "citation": "?Celle qui veille?, 1980 : 220.000,00 euros",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=67572"
+  },
+  {
+   "seance": "DECEMBRE 1999",
+   "montant": "400 000 F",
+   "objet": "Don en espèces du Musée d'art moderne de Sao Paulo pour les collections du musée",
+   "citation": "soit un don en espèces d'un montant de 400.000 F pour l'enrichissement des collections du Musée d'art moderne de la Ville de Paris.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=51878"
+  },
+  {
+   "seance": "SEPTEMBRE 1998",
+   "montant": "1 000 000 F",
+   "objet": "Don en espèces du Musée d'art moderne de Sao Paulo pour les collections du musée",
+   "citation": "soit un don en espèces d'un montant de 1.000.000 F, pour l'enrichissement des collections du Musée d'art moderne de la Ville de Paris.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=92491"
+  },
+  {
+   "seance": "SEPTEMBRE 1995",
+   "montant": "487 560 F",
+   "objet": "Acquisition de 2 œuvres (Arman, Spoerri) pour le musée",
+   "citation": "La dépense correspondante sera imputée, pour un montant de 487.560 F",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=1786"
+  },
+  {
+   "seance": "SEPTEMBRE 2012",
+   "montant": "≈ 1,4 M€ (selon M. Julliard)",
+   "objet": "Opération sur le système de sûreté, programmée après le vol (propos de M. Julliard, adjoint)",
+   "citation": "une partie de cette opération est déjà réalisée et le reste doit commencer avant la fin de cette même année, pour un montant global d'environ 1,4 million d'euros.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=108500"
+  },
+  {
+   "seance": "SEPTEMBRE 2012",
+   "montant": "> 5 M€ (selon M. Julliard)",
+   "objet": "Travaux de sécurité 2010-2013 (propos de M. Julliard, adjoint ; modalité future : « auront été réalisés »)",
+   "citation": "entre 2010, à la suite du vol, et 2013, c'est un montant d'un peu plus de 5 millions d'euros de travaux de sécurité divers qui auront été réalisés au Musée d'Art moderne.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=108500"
+  },
+  {
+   "seance": "FEVRIER 2011",
+   "montant": "112 150 €",
+   "objet": "Acquisition d'une œuvre d'Anton Räderscheidt (Aufbruch) pour le musée",
+   "citation": "en faveur du musée d?Art Moderne, pour un montant de 112.150 euros.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=97114"
+  },
+  {
+   "seance": "MARS 1999",
+   "montant": "2 500 000 F",
+   "objet": "Don en espèces du Sankei Shimbun (Japon) pour les collections du musée",
+   "citation": "soit un don en espèces d'un montant de 2.500.000 F pour l'enrichissement des collections du Musée d'art moderne de la Ville de Paris.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=34094"
+  },
+  {
+   "seance": "OCTOBRE 2009",
+   "montant": "325 000 €",
+   "objet": "Acquisition de « Lilac Painting 1 » de Bridget Riley pour le musée",
+   "citation": "en faveur du musée d?Art Moderne pour un montant de 325.000 euros.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=93288"
+  },
+  {
+   "seance": "JUIN 2008",
+   "montant": "153 000 €",
+   "objet": "Acquisition d'une œuvre de Kara Walker pour le musée",
+   "citation": "en faveur du musée d?Art moderne pour un montant de 153.000 euros.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=68758"
+  },
+  {
+   "seance": "DECEMBRE 2007",
+   "montant": "150 000 €",
+   "objet": "Acquisition d'une peinture d'Anton Räderscheidt (« Autoportrait ») pour le musée",
+   "citation": "pour le Musée d?art moderne, pour un montant total de 150.000 euros.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=54657"
+  },
+  {
+   "seance": "DECEMBRE 2006",
+   "montant": "112 917 €",
+   "objet": "Charges de personnel du poste de Délégué à l'art moderne et contemporain (direction du musée)",
+   "citation": "La dépense correspondante résultant de la mesure ci-dessus s?élèvera à 112.917 euros",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=92276"
+  },
+  {
+   "seance": "OCTOBRE 2007",
+   "montant": "220 000 €",
+   "objet": "Acquisition d'une sculpture de James Lee Byars pour le musée",
+   "citation": "pour le Musée d?art moderne, pour un montant total de 220.000 euros.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=53045"
+  },
+  {
+   "seance": "FEVRIER 2007",
+   "montant": "102 000 €",
+   "objet": "Acquisition d'un film de Tacita Dean pour le musée",
+   "citation": "M. le Maire de Paris est autorisé à acquérir un film de Tacita Dean ?Présentation Sisters?, pour un montant de 102.000 euros.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=26836"
+  },
+  {
+   "seance": "FEVRIER 2011",
+   "montant": "79 000 €",
+   "objet": "Acquisition d'une œuvre d'Hervé Télémaque pour le musée",
+   "citation": "en faveur du musée d?Art Moderne, pour un montant de 79.000 euros.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=97404"
+  },
+  {
+   "seance": "SEPTEMBRE 2003",
+   "montant": "100 000 €",
+   "objet": "Acquisition de quatre œuvres de Luciano Fabro pour le musée",
+   "citation": "M. le Maire de Paris est autorisé à acquérir quatre ?uvres de Luciano Fabro, pour une somme 100.000 euros.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=47818"
+  },
+  {
+   "seance": "SEPTEMBRE 2003",
+   "montant": "1 799 732 €",
+   "objet": "Préemption du tableau de Picabia « les Amoureux (Après la pluie) » (vente André Breton)",
+   "citation": "Lot n° 4393 : Picabia, les Amoureux (Après la pluie), 1925, Ripolin sur Toile, 116 x 115 cm : 1.799.732,00 euros",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=47867"
+  },
+  {
+   "seance": "SEPTEMBRE 2003",
+   "montant": "96 265,60 €",
+   "objet": "Préemption d'une photographie de Bellmer, « La Poupée » (vente André Breton)",
+   "citation": "Lot n° 5045 : Bellmer, La Poupée, 1936, photographie, tirage coloré à l'aniline, 23,8 x 24 cm : 96.265,60 euros",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=47867"
+  },
+  {
+   "seance": "SEPTEMBRE 2003",
+   "montant": "62 572,64 €",
+   "objet": "Préemption d'une photographie de Man Ray, « La Tonsure » (vente André Breton)",
+   "citation": "Lot n° 5007 : Man Ray, Marcel Duchamp, La Tonsure, 1920, photographie, tirage du début des années trente, 12,7 x 16,4 cm : 62.572,64 euros",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=47867"
+  },
+  {
+   "seance": "MARS 2005",
+   "montant": "110 000 €",
+   "objet": "Acquisition d'une œuvre de John Armeleder pour le musée",
+   "citation": "M. le Maire de Paris est autorisé à acquérir une ?uvre de John Armeleder Untitled (Bar), Furniture Sculpture FS 2003, pour une somme 110.000 euros.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=26366"
+  },
+  {
+   "seance": "MARS 2005",
+   "montant": "149 500 €",
+   "objet": "Acquisition d'une œuvre de Douglas Gordon pour le musée",
+   "citation": "pour une somme de 149.500 euros.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=26588"
+  },
+  {
+   "seance": "NOVEMBRE 2002",
+   "montant": "210 000 €",
+   "objet": "Acquisition de l'œuvre de Marcel Broodthaers pour le musée",
+   "citation": "M. le Maire de Paris est autorisé à acquérir une ?uvre de Marcel Broodthaers \"Ne dites pas que je ne l'ai pas dit\", pour une somme 210.000 euros.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=45373"
+  },
+  {
+   "seance": "SEPTEMBRE 2002",
+   "montant": "87 331,75 €",
+   "objet": "Acquisition d'une œuvre de Marcel Duchamp pour le musée",
+   "citation": "M. le Maire de Paris est autorisé à acquérir une ?uvre de Marcel Duchamp \"la Boîte-en-valise\", série G pour une somme 87.331,75 euros.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=29315"
+  },
+  {
+   "seance": "SEPTEMBRE 2002",
+   "montant": "91 470 €",
+   "objet": "Acquisition d'une œuvre de Klaus Rinke pour le musée",
+   "citation": "M. le Maire de Paris est autorisé à acquérir une ?uvre de Klaus Rinke \"de la Verticale à l'horizontale\", pour une somme 91.470 euros.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=29463"
+  },
+  {
+   "seance": "JUILLET 2002",
+   "montant": "121 960 €",
+   "objet": "Acquisition d'une œuvre de Giulio Paolini pour le musée",
+   "citation": "autorisé à acquérir une ?uvre de Giulio Paolini pour une somme 121.960 euros.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=87920"
+  },
+  {
+   "seance": "SEPTEMBRE 2008",
+   "montant": "150 000 €",
+   "objet": "Paiement dû à Mme Gesche Poppe pour la peinture d'Anton Räderscheidt (musée)",
+   "citation": "concernant l?imputation de la somme de 150.000 euros relative au paiement dû à Mme Gesche Poppe pour la vente d?une peinture d?Anton Räderscheidt ?Autoportrait? en faveur du Musée d?Art moderne",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=66882"
+  },
+  {
+   "seance": "NOVEMBRE 2001",
+   "montant": "775 348 F",
+   "objet": "Acquisition de « Portrait-robot d'Iris » d'Arman pour le musée",
+   "citation": "M. le Maire de Paris est autorisé à acquérir une oeuvre d'ARMAN \"Portrait-robot d'Iris\" pour la somme de 775.348 F",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=30416"
+  },
+  {
+   "seance": "SEPTEMBRE 2001",
+   "montant": "≈ 396 000 F (90 000 F suisses)",
+   "objet": "Acquisition d'une œuvre de John Armleder pour le musée",
+   "citation": "pour la somme de 90.000 F suisses, soit environ 396.000 F.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=84556"
+  },
+  {
+   "seance": "SEPTEMBRE 2001",
+   "montant": "2 600 000 F",
+   "objet": "Acquisition de « Femme debout » de Jean Fautrier pour le musée",
+   "citation": "M. le Maire de Paris est autorisé à acquérir une ?uvre de Jean Fautrier \"Femme debout\" pour la somme de 2.600.000 F.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=84657"
+  }
+ ],
+ "bmo_extraits": [],
+ "bmo_recit": null,
+ "invest": [],
+ "marches": [],
+ "sources": {
+  "delibs": {
+   "name": "Débat-Délibs — Conseil de Paris",
+   "url": "https://a06-v7.apps.paris.fr/a06/"
+  },
+  "bmo": {
+   "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
+   "url": "https://gallica.bnf.fr/ark:/12148/cb343512457/date"
+  },
+  "invest": {
+   "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
+   "url": "https://opendata.paris.fr/"
+  },
+  "wiki": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ }
+}

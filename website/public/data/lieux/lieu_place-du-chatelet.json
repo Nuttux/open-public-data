@@ -1,0 +1,135 @@
+{
+ "generated_at": "2026-07-18T14:38:43.284445+00:00",
+ "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
+ "slug": "place-du-chatelet",
+ "name": "Place du Châtelet",
+ "kind_fr": "Place",
+ "kind_en": "Square",
+ "famille": "urbain",
+ "arrondissement": 1,
+ "lat": 48.857346,
+ "lon": 2.34779,
+ "photo": "/img/lieux/place-du-chatelet.jpg",
+ "photo_credit": {
+  "licence": "CC0",
+  "auteur": "Romainbehar",
+  "url": "https://commons.wikimedia.org/wiki/File:Paris_1er_-_Place_du_Ch%C3%A2telet_-_Th%C3%A9%C3%A2tre_du_Ch%C3%A2telet_-_Fa%C3%A7ade_est_-_Paratonnerre_et_angelots_du_toit.jpg",
+  "source": "Wikimedia Commons"
+ },
+ "wiki": {
+  "extract": "La place du Châtelet est située à cheval sur le 1er et le 4e arrondissement de Paris, au bord de la Seine, à l'entrée du pont au Change.",
+  "url": "https://fr.wikipedia.org/wiki/Place_du_Ch%C3%A2telet",
+  "source": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ },
+ "stats": {
+  "n_delibs": 1097,
+  "delibs_span": [
+   1998,
+   2023
+  ],
+  "n_bmo_brut": 0,
+  "n_bmo_verifies": null,
+  "invest_total_eur": 0,
+  "invest_annees": [],
+  "lecture_mode": "titre nommant le lieu (14 trouvés)",
+  "n_lus": 13,
+  "n_lieu": 12
+ },
+ "subventions_exploitant": null,
+ "residents": [],
+ "kpi_montant": null,
+ "synthese_fr": "Les délibérations qui nomment la place du Châtelet portent presque toutes sur les deux théâtres qui la bordent — le Théâtre du Châtelet (1, place) et le Théâtre de la Ville (2, place). De 2002 à 2007, le Conseil de Paris approuve une succession de principes de travaux et autorise le Maire à signer les marchés correspondants : restauration des façades du Théâtre de la Ville (maîtrise d'œuvre attribuée en 2002 à Marc Ferauge), parquet de scène et fauteuils du Théâtre du Châtelet, postes et cellules haute tension, éclairage scénique. Le plus ancien document, en 1998, autorise le dépôt de permis pour rénover le hall d'accès principal côté place du Châtelet et améliorer l'accès des personnes handicapées. En janvier 2006, la place est présentée comme le point de départ, débattu en séance, du premier axe d'un « réseau vert » de rues réservées aux vélos, aux piétons et à la desserte locale vers le canal Saint-Martin. Vingt ans plus tard, en 2023, le Conseil attribue au théâtre du 2, place du Châtelet la dénomination « théâtre Sarah Bernhardt » et délibère sur la transformation de la place elle-même.",
+ "moments": [
+  {
+   "id": "44178",
+   "seance": "AVRIL 1998",
+   "fait": "Le Conseil autorise le Maire à déposer les permis pour rénover le hall d'accès principal (façade place du Châtelet) et améliorer l'accès des personnes handicapées au Théâtre musical de Paris.",
+   "pourquoi": "Le plus ancien acte : accessibilité et façade",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=44178"
+  },
+  {
+   "id": "38934",
+   "seance": "MARS 2002",
+   "fait": "Le Conseil approuve le principe de restauration des façades du Théâtre de la Ville et attribue le marché de maîtrise d'œuvre à Marc Ferauge.",
+   "pourquoi": "Un maître d'œuvre nommé pour les façades",
+   "vedette": false,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=38934"
+  },
+  {
+   "id": "89595",
+   "seance": "AVRIL 2003",
+   "fait": "Le Conseil approuve la passation du marché de travaux de restauration des façades du Théâtre de la Ville et autorise le Maire à le signer.",
+   "pourquoi": "Du projet de 2002 au marché de travaux",
+   "vedette": false,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=89595"
+  },
+  {
+   "id": "24809",
+   "seance": "JANVIER 2006",
+   "fait": "La place du Châtelet est présentée en séance comme le point de départ du premier axe du « réseau vert » vers le canal Saint-Martin, dont l'itinéraire est débattu.",
+   "pourquoi": "La place, tête d'un axe vélo débattu",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=24809"
+  },
+  {
+   "id": "72231",
+   "seance": "JUIN 2007",
+   "fait": "Le Conseil approuve le principe de modernisation des cellules haute tension du Théâtre du Châtelet et le lancement du marché de travaux.",
+   "pourquoi": "Une longue série d'entretiens techniques des théâtres",
+   "vedette": false,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=72231"
+  },
+  {
+   "id": "170563",
+   "seance": "JUILLET 2023",
+   "fait": "Le Conseil attribue la dénomination « théâtre Sarah Bernhardt » au théâtre situé 2, place du Châtelet.",
+   "pourquoi": "Le Théâtre de la Ville change de nom",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=170563"
+  },
+  {
+   "id": "172018",
+   "seance": "OCTOBRE 2023",
+   "fait": "Une délibération d'octobre 2023 porte sur la transformation de la place du Châtelet elle-même.",
+   "pourquoi": "La place elle-même entre en projet",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=172018"
+  }
+ ],
+ "montants": [],
+ "bmo_extraits": [],
+ "bmo_recit": null,
+ "invest": [],
+ "marches": [
+  {
+   "numero_marche": "20232023S04804",
+   "objet": "MOE RESTAURATION FONTAINE DU PALMIER PLACE DU CHÂTELET 1ER",
+   "fournisseur": "DE BERGEVIN",
+   "montant_max": 85310.0,
+   "date_notification": "2023-06-27",
+   "preuve": "L'objet du marché nomme explicitement le lieu : « MOE RESTAURATION FONTAINE DU PALMIER PLACE DU CHÂTELET 1ER ». La prestation (maîtrise d'œuvre de restauration) porte sur la Fontaine du Palmier, ouvrage de la place elle-même — la place n'est pas ici un simple repère d'adresse, et il ne s'agit pas d'un marché-cadre de toute la Ville. Signal du candidat : « objet ». Fournisseur DE BERGEVIN, SIRET 38125680900058."
+  }
+ ],
+ "sources": {
+  "delibs": {
+   "name": "Débat-Délibs — Conseil de Paris",
+   "url": "https://a06-v7.apps.paris.fr/a06/"
+  },
+  "bmo": {
+   "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
+   "url": "https://gallica.bnf.fr/ark:/12148/cb343512457/date"
+  },
+  "invest": {
+   "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
+   "url": "https://opendata.paris.fr/"
+  },
+  "wiki": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ }
+}

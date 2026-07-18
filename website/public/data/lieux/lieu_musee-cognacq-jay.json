@@ -1,0 +1,110 @@
+{
+ "generated_at": "2026-07-18T14:38:43.284445+00:00",
+ "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
+ "slug": "musee-cognacq-jay",
+ "name": "Musée Cognacq-Jay",
+ "kind_fr": "Musée",
+ "kind_en": "Musée",
+ "famille": "culture",
+ "arrondissement": 3,
+ "lat": 48.8582,
+ "lon": 2.36147,
+ "photo": "/img/lieux/musee-cognacq-jay.jpg",
+ "photo_credit": {
+  "licence": "CC BY-SA 3.0",
+  "auteur": "Siren-Com",
+  "url": "https://commons.wikimedia.org/wiki/File:Cognacq-Jay_mus%C3%A9e_int%C3%A9rieur_XVIIIe.jpg",
+  "source": "Wikimedia Commons"
+ },
+ "wiki": {
+  "extract": "Le musée Cognacq-Jay est un musée municipal de la Ville de Paris présentant une collection d'œuvres et d'objets d'art du XVIIIe siècle issue du legs d'Ernest Cognacq.",
+  "url": "https://fr.wikipedia.org/wiki/Mus%C3%A9e_Cognacq-Jay",
+  "source": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ },
+ "stats": {
+  "n_delibs": 49,
+  "delibs_span": [
+   2010,
+   2010
+  ],
+  "n_bmo_brut": 199,
+  "n_bmo_verifies": null,
+  "invest_total_eur": 0,
+  "invest_annees": [],
+  "lecture_mode": "titre nommant le lieu (2 trouvés)",
+  "n_lus": 2,
+  "n_lieu": 1
+ },
+ "subventions_exploitant": null,
+ "residents": [],
+ "kpi_montant": null,
+ "synthese_fr": "Au Conseil de Paris, le musée Cognacq-Jay, 8 rue Elzévir (4e), apparaît notamment en novembre 2010 : le Conseil approuve le principe d'une transaction après un accident survenu à Madame EDE au sein du musée et autorise le Maire de Paris à signer un contrat prévoyant le versement d'une indemnité de 8 125 euros, en échange de la renonciation à tout recours contre la Ville. Cette dépense serait imputée sur le budget de fonctionnement 2010 de la Ville, sous réserve de la décision de financement correspondante. La délibération n'approuve à ce stade que le principe et l'autorisation de signer, non un versement déjà effectué. Un second texte, de mai 2024, ne concerne pas ce musée mais la rue Cognacq-Jay (7e), rive gauche : il porte sur l'apposition d'une plaque en souvenir du premier journal télévisé français, un homonyme à ne pas confondre avec le musée du Marais.",
+ "moments": [
+  {
+   "id": "85988",
+   "seance": "NOVEMBRE 2010",
+   "fait": "Le Conseil approuve le principe d'une transaction et autorise le Maire à signer un contrat indemnisant Madame EDE de 8 125 euros après un accident survenu au sein du musée.",
+   "pourquoi": "Accident au musée : transaction à 8 125 euros",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=85988"
+  }
+ ],
+ "montants": [
+  {
+   "seance": "NOVEMBRE 2010",
+   "montant": "8 125 euros",
+   "objet": "Indemnité que la Ville verserait à Madame EDE au titre du contrat de transaction, contre renonciation à tout recours",
+   "citation": "prévoyant le versement par la Ville d?une indemnité de 8.125 euros et la renonciation à tout recours ultérieur contre la Ville",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=85988"
+  },
+  {
+   "seance": "NOVEMBRE 2010",
+   "montant": "8 125 euros",
+   "objet": "Dépense qui serait imputée sur le budget de fonctionnement 2010 de la Ville de Paris, sous réserve de la décision de financement correspondante",
+   "citation": "La dépense correspondante de 8.125 euros sera imputée sur le budget de fonctionnement de la Ville de Paris de 2010",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=85988"
+  }
+ ],
+ "bmo_extraits": [],
+ "bmo_recit": null,
+ "invest": [],
+ "marches": [
+  {
+   "numero_marche": "20141210011375",
+   "objet": "MISE AUX NORMES SSI MUSÉE COGNACQ-JAY / HÔTEL DONON 75003",
+   "fournisseur": "SOC ETUDES REALIS INSTALLATIONS SEC",
+   "montant_max": 232408.1,
+   "date_notification": "2014-06-16",
+   "preuve": "L'objet du marché nomme explicitement le lieu et son bâtiment : « MISE AUX NORMES SSI MUSÉE COGNACQ-JAY / HÔTEL DONON 75003 ». L'Hôtel Donon est le bâtiment qui abrite le musée, et le code postal 75003 correspond à l'arrondissement du lieu. Il s'agit de travaux de mise aux normes du système de sécurité incendie portant sur le bâtiment lui-même, et non d'un simple repère d'adresse."
+  },
+  {
+   "numero_marche": "20131210010111",
+   "objet": "MOE ET COORDINATION SSI MUSÉE COGNACQ-JAY 75003",
+   "fournisseur": "RISK&CO SOLUTIONS",
+   "montant_max": 30925.0,
+   "date_notification": "2013-10-16",
+   "preuve": "L'objet nomme explicitement le lieu : « MOE ET COORDINATION SSI MUSÉE COGNACQ-JAY 75003 ». Il s'agit d'une prestation de maîtrise d'œuvre et de coordination du système de sécurité incendie portant sur ce bâtiment, dans le 75003 (arrondissement du lieu), et non d'un simple repère d'adresse ni d'un marché-cadre de toute la Ville."
+  }
+ ],
+ "sources": {
+  "delibs": {
+   "name": "Débat-Délibs — Conseil de Paris",
+   "url": "https://a06-v7.apps.paris.fr/a06/"
+  },
+  "bmo": {
+   "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
+   "url": "https://gallica.bnf.fr/ark:/12148/cb343512457/date"
+  },
+  "invest": {
+   "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
+   "url": "https://opendata.paris.fr/"
+  },
+  "wiki": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ }
+}

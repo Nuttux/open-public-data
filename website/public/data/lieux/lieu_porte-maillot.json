@@ -1,0 +1,287 @@
+{
+ "generated_at": "2026-07-18T14:38:43.284445+00:00",
+ "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
+ "slug": "porte-maillot",
+ "name": "Porte Maillot",
+ "kind_fr": "Place",
+ "kind_en": "Square",
+ "famille": "urbain",
+ "arrondissement": 16,
+ "lat": 48.8781,
+ "lon": 2.2822,
+ "photo": "/img/lieux/porte-maillot.jpg",
+ "photo_credit": {
+  "licence": null,
+  "auteur": null,
+  "url": "https://fr.wikipedia.org/wiki/Porte_Maillot",
+  "source": "Wikipédia"
+ },
+ "wiki": {
+  "extract": "La porte Maillot, située au milieu de l'axe historique de Paris, est l'un des accès de Paris par l'ouest et constitue un échangeur entre le boulevard périphérique, l'Étoile et la Défense, via l'avenue Charles-de-Gaulle à Neuilly-sur-Seine.",
+  "url": "https://fr.wikipedia.org/wiki/Porte_Maillot",
+  "source": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ },
+ "stats": {
+  "n_delibs": 325,
+  "delibs_span": [
+   1995,
+   2024
+  ],
+  "n_bmo_brut": 2000,
+  "n_bmo_verifies": 14,
+  "invest_total_eur": 15100091.55,
+  "invest_annees": [
+   "2022",
+   "2023",
+   "2024"
+  ],
+  "lecture_mode": "titre nommant le lieu (42 trouvés)",
+  "n_lus": 42,
+  "n_lieu": 36
+ },
+ "subventions_exploitant": null,
+ "residents": [],
+ "kpi_montant": null,
+ "synthese_fr": "Le corpus s'ouvre en 1995-1996 sur l'extension du Palais des Congrès et du parc de stationnement souterrain, concédés à la Chambre de commerce et d'industrie de Paris par les conventions du 19 janvier et du 16 juin 1970, et sur l'abandon annoncé le 15 avril 1996 de la Z.A.C. « Maillot », dont les délibérations de création de 1988 avaient été annulées par le tribunal administratif en 1991, décision confirmée par le Conseil d'État en 1993. Cet abandon débouche sur un contentieux indemnitaire : un arrêt du 28 février 2002 de la Cour administrative d'appel retient la responsabilité de la Ville à proportion des trois quarts pour deux des quatre sociétés requérantes, et le Conseil, après avoir provisionné 40.000.000 euros en 2002-2003, reprend 39.725.590 euros de cette provision en décembre 2004. Entre 1996 et 2005, les délibérations portent sur des interventions ponctuelles — travaux de voirie, cheminement piétonnier au sud de la place, œuvre d'art et jardin central, ascenseurs du parc, publicité et rénovation du couloir souterrain vers le métro évaluée à 900.000 euros — pendant que des élus et des associations de riverains contestent une place devenue échangeur routier. À partir de 2010 et 2014, le Conseil vote des études sur l'axe Etoile-pont de Neuilly et le secteur Maillot-Grande Armée, puis, de 2016 à 2021, un avenant sur les études du prolongement du T3, l'exonération de redevances pour les travaux d'Eole et la déclaration de projet d'intérêt général du réaménagement, présenté en séance comme le futur lieu d'accueil du Comité international olympique en 2024. Les vœux de 2016 à 2024 suivent la vie concrète du site : parking d'autocars sans services, coordination des chantiers, réunion du comité porte Maillot, et une vélo-station dont les études de faisabilité étaient toujours en cours en octobre 2024.",
+ "moments": [
+  {
+   "id": "207",
+   "seance": "NOVEMBRE 1995",
+   "fait": "Le Conseil autorise les permis de démolir et de construire de l'extension du Palais des Congrès et la modification du parc de stationnement ; une élue demande l'assurance que le Palais est sorti de la Z.A.C. et que l'opération ne sera pas financée par les contribuables.",
+   "pourquoi": "Le point de départ, déjà contesté",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=207"
+  },
+  {
+   "id": "7223",
+   "seance": "JUIN 1996",
+   "fait": "Déclassement d'emprises aux abords du Palais des Congrès et avenants aux conventions de 1970 : la Ville est interrogée sur l'abandon annoncé de la Z.A.C. « Maillot » et la Chambre de commerce abandonne ses droits sur le terrain Pershing, alors utilisé pour le stationnement des autocars.",
+   "pourquoi": "La ZAC abandonnée, le foncier rendu",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=7223"
+  },
+  {
+   "id": "3703",
+   "seance": "AVRIL 2000",
+   "fait": "Marchés de définition pour une œuvre d'art, son environnement végétal et la mise en lumière du jardin central : un élu approuve les 7 millions de francs investis, une autre demande que la priorité financière aille au jardin dégradé plutôt qu'à l'œuvre d'art.",
+   "pourquoi": "L'argent de l'embellissement mis en débat",
+   "vedette": false,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=3703"
+  },
+  {
+   "id": "2490",
+   "seance": "AVRIL 2002",
+   "fait": "Marché d'expertise ordonné par la Cour administrative d'appel après l'abandon de la Z.A.C. : l'arrêt du 28 février 2002 retient la responsabilité de la Ville aux trois quarts pour deux des quatre sociétés requérantes.",
+   "pourquoi": "Le prix juridique d'un projet abandonné",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=2490"
+  },
+  {
+   "id": "87616",
+   "seance": "DECEMBRE 2004",
+   "fait": "Le Conseil autorise la reprise de 39 725 590 euros sur la provision de 40 000 000 euros constituée au titre du contentieux de la Porte Maillot.",
+   "pourquoi": "Le contentieux soldé dans les comptes",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=87616"
+  },
+  {
+   "id": "103917",
+   "seance": "FEVRIER 2012",
+   "fait": "Attribution de la dénomination « jardin Alexandre Soljenitsyne » au jardin de la place, contestée en séance sur les positions de l'écrivain, l'adjointe rappelant que le choix a été arrêté en commission.",
+   "pourquoi": "Le jardin nommé, la mémoire disputée",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=103917"
+  },
+  {
+   "id": "138065",
+   "seance": "SEPTEMBRE 2017",
+   "fait": "Approbation du bilan de la concertation préalable au réaménagement, avec trois vœux sur un coordinateur général, les commerces impactés et des points de vigilance ; les élues décrivent des chantiers imbriqués prévus pour plus de six ans.",
+   "pourquoi": "Le chantier total et sa coordination",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=138065"
+  },
+  {
+   "id": "178258",
+   "seance": "OCTOBRE 2024",
+   "fait": "Vœu sur la vélo-station : l'Exécutif indique que les études de faisabilité sont toujours en cours, que l'implantation se fera au niveau -1 du parking pour plus de 700 places, avec une ouverture visée à la rentrée 2025.",
+   "pourquoi": "Le hub achevé, l'équipement encore attendu",
+   "vedette": false,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=178258"
+  }
+ ],
+ "montants": [
+  {
+   "seance": "DECEMBRE 2004",
+   "montant": "40.000.000 euros",
+   "objet": "provision constituée au titre du contentieux de la Porte Maillot, créée par les délibérations de novembre 2002 et mars 2003 (rappel dans les visas)",
+   "citation": "Vu les délibérations 2002 DFAE 137 des 18 et 19 novembre 2002 et 2003 DFAE 25 du 3 mars 2003 autorisant la création d?une provision de 40.000.000 euros au titre du contentieux de la Porte Maillot ;",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=87616"
+  },
+  {
+   "seance": "DECEMBRE 2004",
+   "montant": "274.410 euros",
+   "objet": "reprise partielle sur cette provision, autorisée par la délibération 2003 DF 132 (rappel dans les visas)",
+   "citation": "Vu la délibération 2003 DF 132 des 24 et 25 novembre 2003 autorisant une reprise partielle de 274.410 euros sur cette provision ;",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=87616"
+  },
+  {
+   "seance": "DECEMBRE 2004",
+   "montant": "39.725.590 euros",
+   "objet": "reprise du solde de la provision du contentieux, votée par cette délibération et imputée sur les budgets 2005",
+   "citation": "M. le Maire de Paris est autorisé à reprendre la somme de 39.725.590 euros sur la provision constituée au titre du contentieux de la Porte Maillot.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=87616"
+  },
+  {
+   "seance": "JUIN 2004",
+   "montant": "900.000 euros",
+   "objet": "coût évalué de l'aménagement du passage souterrain en galerie marchande, dans la réponse de l'adjoint Denis BAUPIN ; répartition des dépenses restant à trouver entre la R.A.T.P., la Ville et la C.C.I.P.",
+   "citation": "Le coût de cet aménagement est évalué à 900.000 euros.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=9138"
+  },
+  {
+   "seance": "DECEMBRE 2005",
+   "montant": "900.000 euros",
+   "objet": "coût d'un nouvel aménagement du couloir souterrain, rappelé en séance par une élue citant la réponse qui lui avait été faite en 2004",
+   "citation": "Vous m?aviez alors répondu qu?un nouvel aménagement était évalué à 900.000 euros, que la répartition des dépenses relatives à cette rénovation serait à trouver entre la R.A.T.P., la Ville de Paris et la Chambre de Commerce",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=22059"
+  },
+  {
+   "seance": "AVRIL 2000",
+   "montant": "7 millions de francs",
+   "objet": "investissement pour l'aménagement de la place et l'œuvre d'art, montant cité en débat par un élu (Yves POZZO DI BORGO) ; la délibération elle-même ne comporte pas de montant",
+   "citation": "Nous ne pouvons qu'approuver l'importance relative des 7 millions de francs investis pour cet acte de beauté qui devrait marquer Paris.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=3703"
+  },
+  {
+   "seance": "AVRIL 2002",
+   "montant": "2 milliards de francs environ",
+   "objet": "enjeu financier de la Z.A.C. « Maillot » à sa création en 1988, chiffre cité en débat par un élu (Jacques BRAVO)",
+   "citation": "Je ne reviens pas sur la délimitation des objectifs et du programme, mais l'enjeu financier était à l'époque de 2 milliards de francs environ.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=2490"
+  },
+  {
+   "seance": "AVRIL 2002",
+   "montant": "trois points de pression fiscale",
+   "objet": "coût du dossier pour les Parisiens avancé en débat par un élu (Jacques BRAVO), sans chiffrage voté dans la délibération",
+   "citation": "j'aimerais qu'ils prennent toutes leurs responsabilités pour nous expliquer pourquoi leurs errements dont je vais parler, vont, eux, coûter trois points de pression fiscale aux Parisiens.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=2490"
+  }
+ ],
+ "bmo_extraits": [
+  {
+   "date": "1889-11-27",
+   "extrait": "De MM. Massilon et Biraud soumettant un projet de concession d'une ligne métropolitaine de la porte Maillot à la porte de Picpus",
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k64532161/f20.item"
+  },
+  {
+   "date": "1905-12-04",
+   "extrait": "L'aspect futur de la porte Maillot et les abords du bois de Boulogne ne sauraient être envisagés non pas seulement sous l'angle de la commodité pour l",
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k97866242/f4.item"
+  },
+  {
+   "date": "1924-02-21",
+   "extrait": "Il n’existe en effet, actuellement, aucune liaison directe, ni par métro ni par autobus, entre les transports en commun de banlieue qui ont leur terminus et leur point de départ à la porte Maillot et les gares du Nord",
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k3210683p/f1.item"
+  },
+  {
+   "date": "1957-07-01",
+   "extrait": "N° 1498. — M. Pozza, conseiller municipal, appelle l’attention de M. le Préfet de la Seine sur l’état du bâtiment réservé aux gardiens dans le nouveau square de la porte Maillot  … terrasse",
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k3200811m/f36.item"
+  }
+ ],
+ "bmo_recit": "Dans le Bulletin municipal, la porte Maillot apparaît d'abord comme un point de départ : en novembre 1889, MM. Massilon et Biraud soumettent un projet de concession d'une ligne métropolitaine qui irait de la porte Maillot à la porte de Picpus. En décembre 1905, la discussion porte sur l'aspect futur de la porte et des abords du bois de Boulogne, dont il est soutenu en séance qu'ils ne sauraient être envisagés sous le seul angle de la commodité. En février 1924, c'est la desserte qui revient : il est relevé qu'aucune liaison directe, ni par métro ni par autobus, n'existe entre les transports de banlieue qui ont là leur terminus et les gares. En juillet 1957, l'échelle change — le conseiller municipal Pozza appelle l'attention du préfet de la Seine sur l'état du bâtiment réservé aux gardiens dans le nouveau square de la porte Maillot. L'archive ne garde que ces quatre moments, échelonnés sur près de soixante-dix ans, qui vont des projets de liaison à l'entretien du square.",
+ "invest": [
+  {
+   "annee": 2022,
+   "montant_eur": 7097978.0,
+   "nom_projet": "Porte Maillot - Réaménagement",
+   "preuve": "Le nom du projet nomme le lieu : « Porte Maillot - Réaménagement ». Confirmé par « 2017 DVD 100 - DEVE - DU - Réaménagement de la porte Maillot. - Approbation du bilan de la concertation préalable » et « 2019 DU 162 - Réaménagement de la place de la Porte Maillot (16e et 17e) ».",
+   "id": "2022_17_52_019"
+  },
+  {
+   "annee": 2023,
+   "montant_eur": 893581.82,
+   "nom_projet": "Parcs de stationnememnt Porte Maillot",
+   "preuve": "Le nom du projet nomme le lieu. Le parc de stationnement public est un équipement de la place, à l'adresse « 2, place de la Porte-Maillot (17e) », attenant au Palais des Congrès (avis du Conseil de Paris sur l'exploitation du parc souterrain), et fait l'objet de la délibération « 2018 DVD 103 - Parc de stationnement porte Maillot (17e). - Avenant n° 3 à la convention de concession du parc public. - Convention relative aux travaux préparatoires à la construction de la gare EOLE ».",
+   "id": "2023_17_48_027"
+  },
+  {
+   "annee": 2024,
+   "montant_eur": 7108531.73,
+   "nom_projet": "Porte Maillot - Réaménagement",
+   "preuve": "Le nom du projet nomme le lieu : « Porte Maillot - Réaménagement ». Confirmé par les délibérations « 2021 DU 5 - Réaménagement de la place de la Porte Maillot (16e et 17e) » et « 2019 DU 201 - Réaménagement de la place de la Porte Maillot (16e et 17e). - Avis favorable du Conseil de Paris sur l'étude d'impact et la demande de permis d'aménager ».",
+   "id": "2024_16_45_019"
+  }
+ ],
+ "marches": [
+  {
+   "numero_marche": "20181370090022",
+   "objet": "MANDAT DE MAITRISE D'OUVRAGE REAMENAGEMENT PORTE MAILLOT",
+   "fournisseur": "SPL PARISEINE",
+   "montant_max": 1093031.0,
+   "date_notification": "2018-05-31",
+   "preuve": "L'objet porte sur le lieu : « MANDAT DE MAITRISE D'OUVRAGE REAMENAGEMENT PORTE MAILLOT ». La S.P.L. PariSeine est bien l'opérateur des travaux sur la place : « 2021 DVD 55 - Prolongement du RER E Eole à l'Ouest et aménagement de la place Porte Maillot (17e). - Exonération de S.N.C.F. Réseau et la S.P.L. PariSeine des redevances d'occupation du domaine public pour les travaux » (SIRET fournisseur 83942912300020)."
+  },
+  {
+   "numero_marche": "20151380000359",
+   "objet": "CSP4: CREATION D'UN EGOUT PLACE DE LA PORTE MAILLOT - EOLE",
+   "fournisseur": "SADE CGTH",
+   "montant_max": 997653.0,
+   "date_notification": "2016-07-28",
+   "preuve": "L'objet nomme explicitement l'emprise : « CREATION D'UN EGOUT PLACE DE LA PORTE MAILLOT ». Le volet EOLE est confirmé par « 2021 DVD 55 - Prolongement du RER E Eole à l'Ouest et aménagement de la place Porte Maillot (17e) » et par les « travaux préparatoires à la construction de la gare EOLE » (2018 DVD 103)."
+  },
+  {
+   "numero_marche": "20181370090079",
+   "objet": "MANDAT D'ETUDE COORDINATION PROJETS SECTEUR PORTE MAILLOT",
+   "fournisseur": "SPL PARISEINE",
+   "montant_max": 608311.0,
+   "date_notification": "2018-09-28",
+   "preuve": "L'objet porte sur la coordination des projets du secteur du lieu. Correspond à la délibération « DVD 17. Place de la Porte Maillot (16e et 17e). - Conventions liées à la coordination des projets dans le cadre de son réaménagement » (séance de mai 2020), même mandataire S.P.L. PariSeine (SIRET 83942912300020)."
+  },
+  {
+   "numero_marche": "20161360001632",
+   "objet": "QUASI-REGIE CONSTITUTION DOSSIER CONNCERTATION PORTE MAILLOT",
+   "fournisseur": "ATELIER PARISIEN D'URBANISME",
+   "montant_max": 45000.0,
+   "date_notification": "2016-12-02",
+   "preuve": "L'objet porte sur le dossier de concertation du lieu. La concertation préalable au réaménagement de la place est attestée : « 2017 DVD 100 - Réaménagement de la porte Maillot. - Approbation du bilan de la concertation préalable » et « 2019 DU 162 - Réaménagement de la place de la Porte Maillot (16e et 17e). - Mise en compatibilité du Plan Local d'Urbanisme. - Concertation »."
+  },
+  {
+   "numero_marche": "20171360001600",
+   "objet": "AMO PROJET RÉAMÉNAGEMENT PORTE MAILLOT",
+   "fournisseur": "ATELIER PARISIEN D'URBANISME",
+   "montant_max": 35000.0,
+   "date_notification": "2017-10-16",
+   "preuve": "L'objet nomme le lieu et son projet : « AMO PROJET RÉAMÉNAGEMENT PORTE MAILLOT », notifié en octobre 2017, concomitant à « 2017 DVD 100 - Réaménagement de la porte Maillot » (séance de septembre 2017)."
+  },
+  {
+   "numero_marche": "20151360001001",
+   "objet": "CSP3-DÉPOLLUTION SOLS PORTE MAILLOT ET SES ABORDS 16E ET 17E",
+   "fournisseur": "HPC ENVIROTEC",
+   "montant_max": 29066.0,
+   "date_notification": "2015-06-08",
+   "preuve": "L'objet vise les sols du lieu lui-même : « DÉPOLLUTION SOLS PORTE MAILLOT ET SES ABORDS 16E ET 17E ». Le périmètre 16e/17e correspond exactement à celui de la place tel que désigné par « 2021 DU 5 - Réaménagement de la place de la Porte Maillot (16e et 17e) »."
+  }
+ ],
+ "sources": {
+  "delibs": {
+   "name": "Débat-Délibs — Conseil de Paris",
+   "url": "https://a06-v7.apps.paris.fr/a06/"
+  },
+  "bmo": {
+   "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
+   "url": "https://gallica.bnf.fr/ark:/12148/cb343512457/date"
+  },
+  "invest": {
+   "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
+   "url": "https://opendata.paris.fr/"
+  },
+  "wiki": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ }
+}

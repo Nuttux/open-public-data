@@ -1,0 +1,102 @@
+{
+ "generated_at": "2026-07-18T14:38:43.284445+00:00",
+ "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
+ "slug": "coulee-verte-rene-dumont",
+ "name": "Coulée verte René-Dumont",
+ "kind_fr": "Promenade",
+ "kind_en": "Promenade",
+ "famille": "vert",
+ "arrondissement": 12,
+ "lat": 48.8478,
+ "lon": 2.376,
+ "photo": "/img/lieux/coulee-verte-rene-dumont.jpg",
+ "photo_credit": {
+  "licence": null,
+  "auteur": null,
+  "url": "https://fr.wikipedia.org/wiki/Coul%C3%A9e_verte_Ren%C3%A9-Dumont",
+  "source": "Wikipédia"
+ },
+ "wiki": {
+  "extract": "La coulée verte René-Dumont, anciennement Promenade plantée, est une voie verte et un parc linéaire du 12e arrondissement de Paris en France.",
+  "url": "https://fr.wikipedia.org/wiki/Coul%C3%A9e_verte_Ren%C3%A9-Dumont",
+  "source": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ },
+ "stats": {
+  "n_delibs": 1377,
+  "delibs_span": [
+   2000,
+   2020
+  ],
+  "n_bmo_brut": 0,
+  "n_bmo_verifies": null,
+  "invest_total_eur": 0,
+  "invest_annees": [],
+  "lecture_mode": "tête du classement Solr (1377 documents au total)",
+  "n_lus": 43,
+  "n_lieu": 3
+ },
+ "subventions_exploitant": null,
+ "residents": [],
+ "kpi_montant": null,
+ "synthese_fr": "Peu de délibérations du Conseil de Paris concernent directement cette promenade du 12e arrondissement : beaucoup portent en réalité sur d'autres « coulées vertes » parisiennes (Petite Ceinture, 16e) ou sur d'autres personnalités prénommées René. Dès février 2000, une question orale du groupe socialiste interroge le Maire de Paris « à propos de la Coulée verte (12e) ». En juillet 2018, un vœu porte sur l'autorisation d'accès des chiens à la « promenade plantée René-Dumont », autre appellation du lieu. En octobre 2020, le Conseil examine un avenant à la convention avec l'association Pixo pour le « Coulée Verte Art Project », que la maire du 12e rattache aux fresques de street art apparues « le long de la Coulée verte ». Aucun montant propre à ce lieu ni aucun chantier d'aménagement n'apparaît dans ces délibérations.",
+ "moments": [
+  {
+   "id": "2802",
+   "seance": "FEVRIER 2000",
+   "fait": "Le groupe socialiste (Mme Michèle Blumenthal) interroge par question orale le Maire de Paris à propos de la Coulée verte du 12e.",
+   "pourquoi": "La première mention retrouvée au Conseil",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=2802"
+  },
+  {
+   "id": "20632",
+   "seance": "JUILLET 2009",
+   "fait": "Le groupe « Les Verts » (Yves Contassot) dépose un vœu pour dénommer un lieu parisien en hommage à René Dumont.",
+   "pourquoi": "L'homme dont ce lieu porte le nom",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=20632"
+  },
+  {
+   "id": "143943",
+   "seance": "JUILLET 2018",
+   "fait": "Un vœu porte sur l'autorisation d'accès des chiens à la promenade plantée René-Dumont.",
+   "pourquoi": "Quand les usages ordinaires font débat",
+   "vedette": false,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=143943"
+  },
+  {
+   "id": "156357",
+   "seance": "OCTOBRE 2020",
+   "fait": "Le Conseil examine un avenant à la convention avec l'association Pixo pour le « Coulée Verte Art Project », des fresques évoquées le long de la coulée.",
+   "pourquoi": "L'art public s'invite le long de la coulée",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=156357"
+  }
+ ],
+ "montants": [],
+ "bmo_extraits": [],
+ "bmo_recit": null,
+ "invest": [],
+ "marches": [],
+ "sources": {
+  "delibs": {
+   "name": "Débat-Délibs — Conseil de Paris",
+   "url": "https://a06-v7.apps.paris.fr/a06/"
+  },
+  "bmo": {
+   "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
+   "url": "https://gallica.bnf.fr/ark:/12148/cb343512457/date"
+  },
+  "invest": {
+   "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
+   "url": "https://opendata.paris.fr/"
+  },
+  "wiki": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ }
+}

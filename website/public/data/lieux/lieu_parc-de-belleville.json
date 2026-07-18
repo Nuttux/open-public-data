@@ -1,0 +1,166 @@
+{
+ "generated_at": "2026-07-18T14:38:43.284445+00:00",
+ "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
+ "slug": "parc-de-belleville",
+ "name": "Parc de Belleville",
+ "kind_fr": "Parc",
+ "kind_en": "Park",
+ "famille": "vert",
+ "arrondissement": 20,
+ "lat": 48.871,
+ "lon": 2.3846,
+ "photo": "/img/lieux/parc-de-belleville.jpg",
+ "photo_credit": {
+  "licence": null,
+  "auteur": null,
+  "url": "https://fr.wikipedia.org/wiki/Parc_de_Belleville",
+  "source": "Wikipédia"
+ },
+ "wiki": {
+  "extract": "Le parc de Belleville, aussi appelé jardin Belleville - Julien-Lacroix, est l'un des parcs et jardins du 20e arrondissement de Paris (France).",
+  "url": "https://fr.wikipedia.org/wiki/Parc_de_Belleville",
+  "source": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ },
+ "stats": {
+  "n_delibs": 448,
+  "delibs_span": [
+   1995,
+   2025
+  ],
+  "n_bmo_brut": 0,
+  "n_bmo_verifies": null,
+  "invest_total_eur": 216838.4,
+  "invest_annees": [
+   "2024"
+  ],
+  "lecture_mode": "titre nommant le lieu (14 trouvés)",
+  "n_lus": 14,
+  "n_lieu": 14
+ },
+ "subventions_exploitant": null,
+ "residents": [],
+ "kpi_montant": null,
+ "synthese_fr": "Les délibérations les plus anciennes portent sur le sol même du parc : approbation, en 1995, du principe de la stabilisation d'un talus dans le cadre de son extension, puis, en 1998, du principe de la démolition de falaises artificielles. Dans les années 2000, le Conseil approuve le principe et les modalités du réaménagement de l'aire de jeux (2005 puis 2006), avant d'autoriser en 2007 un avenant transférant le marché de rénovation de la grande aire de jeux d'une entreprise à une autre. À partir de 2015, et surtout de 2017, l'attention se déplace vers le pavillon « Maison de l'air », en haut du parc : une convention d'un an confie ce lieu de 646 m² à l'association « Les Halles civiques », et des élus réclament qu'il ne devienne pas une concession commerciale. De 2021 à 2023, des conventions temporaires successives prolongent l'occupation (« Démocratie ouverte » puis le centre social Archipélia), tandis qu'Antoinette Guhl fait état de 3,4 M€ d'investissement attribués au budget de décembre pour réhabiliter le pavillon. En octobre 2023, un vœu alerte sur un campement de jeunes sans-abri installé dans le parc, et en 2025 le Conseil examine l'apposition d'une plaque en hommage à Rachid Taha sur l'amphithéâtre.",
+ "moments": [
+  {
+   "id": "1179",
+   "seance": "OCTOBRE 1995",
+   "fait": "Le Conseil approuve le principe de la stabilisation d'un talus dans le cadre de l'extension du parc de Belleville et autorise le Maire à signer le marché.",
+   "pourquoi": "aux origines : le parc s'étend, le terrain doit tenir",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=1179"
+  },
+  {
+   "id": "15945",
+   "seance": "NOVEMBRE 1998",
+   "fait": "Le Conseil autorise le Maire à signer un marché pour la démolition des falaises artificielles du parc ; Laure Schneiter dénonce un « gaspillage financier ».",
+   "pourquoi": "des falaises récentes déjà à démolir, dépense contestée",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=15945"
+  },
+  {
+   "id": "54882",
+   "seance": "DECEMBRE 2007",
+   "fait": "Le Conseil autorise le Maire à signer un avenant transférant le marché de rénovation de la grande aire de jeux de Quillery Environnement Urbain à Eiffage Travaux Publics Réseaux.",
+   "pourquoi": "le chantier de l'aire de jeux change d'entreprise",
+   "vedette": false,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=54882"
+  },
+  {
+   "id": "138045",
+   "seance": "SEPTEMBRE 2017",
+   "fait": "Le Conseil examine une convention confiant pour un an le pavillon Maison de l'air (646 m²) à l'association « Les Halles civiques » ; des élus s'opposent à une future concession commerciale.",
+   "pourquoi": "équipement citoyen ou future concession : le pavillon en débat",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=138045"
+  },
+  {
+   "id": "157746",
+   "seance": "FEVRIER 2021",
+   "fait": "Le Conseil examine une convention prolongeant de six mois l'occupation de la Maison de l'air par « Démocratie ouverte » et débat de deux vœux écologistes sur l'avenir du lieu.",
+   "pourquoi": "la concertation sur l'avenir du pavillon est relancée",
+   "vedette": false,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=157746"
+  },
+  {
+   "id": "168281",
+   "seance": "MARS 2023",
+   "fait": "Le Conseil examine le renouvellement de la convention confiant la Maison de l'air au centre social Archipélia ; Antoinette Guhl fait état de 3,4 M€ d'investissement pour réhabiliter le pavillon.",
+   "pourquoi": "3,4 M€ annoncés pour réhabiliter la Maison de l'air",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=168281"
+  },
+  {
+   "id": "171836",
+   "seance": "OCTOBRE 2023",
+   "fait": "Un vœu alerte sur un campement de jeunes sans-abri installé dans le parc et interpelle le Préfet de Région, le maire du 20e évoquant plus de 180 personnes.",
+   "pourquoi": "un campement de jeunes sans-abri dans le parc",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=171836"
+  },
+  {
+   "id": "181237",
+   "seance": "JUIN 2025",
+   "fait": "Le Conseil examine l'apposition d'une plaque commémorative en hommage au chanteur Rachid Taha sur l'amphithéâtre du parc de Belleville.",
+   "pourquoi": "une plaque pour Rachid Taha sur l'amphithéâtre",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=181237"
+  }
+ ],
+ "montants": [
+  {
+   "seance": "NOVEMBRE 1998",
+   "montant": "un million de francs",
+   "objet": "coût, selon Mme Schneiter, des seuls travaux conservatoires liés aux falaises",
+   "citation": "les seuls travaux conservatoires coûtent déjà un million de francs !",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=15945"
+  },
+  {
+   "seance": "FEVRIER 2022",
+   "montant": "plusieurs millions d'euros",
+   "objet": "travaux jugés nécessaires à la Maison de l'air, selon F.-M. Didier",
+   "citation": "la Maison de l?air, pour pouvoir Ãªtre un vrai lieu de projets, a besoin de plusieurs millions d?euros de travaux.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=164512"
+  },
+  {
+   "seance": "MARS 2023",
+   "montant": "3,4 millions d'euros",
+   "objet": "investissement pour la Maison de l'air voté au budget de décembre, selon Antoinette Guhl",
+   "citation": "Nous avons, lors du budget en dÃ©cembre, attribuÃ© 3,4 millions d'euros en investissement pour la \"Maison de l'air\".",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=168281"
+  }
+ ],
+ "bmo_extraits": [],
+ "bmo_recit": null,
+ "invest": [
+  {
+   "annee": 2024,
+   "montant_eur": 216838.4,
+   "nom_projet": "Maison de l'air",
+   "preuve": "Le pavillon « Maison de l'air » est un equipement situe A L'INTERIEUR du parc de Belleville, prouve par les deliberations du contexte : 2023 DDCT 123 « Approbation de la convention de mise a disposition temporaire du pavillon \"Maison de l'air\" du parc de Belleville 27, rue Piat (20e) » et 2022 DDCT 22 « pavillon \"Maison de l'air\" du Parc de Belleville 27, rue Piat (20e) ». En seance, le maire du 20e decrit « ce lieu situe en haut du parc de Belleville ». Le nom du projet d'investissement (a 115 m) designe exactement ce pavillon.",
+   "id": "2024_20_57_014"
+  }
+ ],
+ "marches": [],
+ "sources": {
+  "delibs": {
+   "name": "Débat-Délibs — Conseil de Paris",
+   "url": "https://a06-v7.apps.paris.fr/a06/"
+  },
+  "bmo": {
+   "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
+   "url": "https://gallica.bnf.fr/ark:/12148/cb343512457/date"
+  },
+  "invest": {
+   "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
+   "url": "https://opendata.paris.fr/"
+  },
+  "wiki": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ }
+}

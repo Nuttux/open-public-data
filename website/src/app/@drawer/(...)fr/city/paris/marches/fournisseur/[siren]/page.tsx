@@ -1,7 +1,9 @@
 import { notFound } from "next/navigation";
 
 import { DetailDrawer, FournisseurFiche } from "@/components/fusion";
+import VoirLeLieu from "@/components/fusion/VoirLeLieu";
 import { loadFournisseur, loadSirene } from "@/lib/fusion-data";
+import { lieuForBeneficiaire } from "@/lib/lieux-data";
 
 type Params = { siren: string };
 
@@ -30,6 +32,7 @@ export default async function DrawerFournisseurPage({ params }: { params: Promis
         backHref="/fr/city/paris/marches"
         breadcrumbLabel={fournisseur.nom}
       >
+        <VoirLeLieu lien={lieuForBeneficiaire(fournisseur.nom)} locale={"fr"} />
         <FournisseurFiche fournisseur={fournisseur} sirene={sirene} />
       </DetailDrawer>
     </div>

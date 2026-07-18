@@ -1,0 +1,170 @@
+{
+ "generated_at": "2026-07-18T14:38:43.284445+00:00",
+ "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
+ "slug": "memorial-du-marechal-leclerc-et-musee-jean-moulin",
+ "name": "Mémorial du Maréchal Leclerc et musée Jean Moulin",
+ "kind_fr": "Musée",
+ "kind_en": "Musée",
+ "famille": "culture",
+ "arrondissement": 15,
+ "lat": 48.84066,
+ "lon": 2.31967,
+ "photo": "/img/lieux/memorial-du-marechal-leclerc-et-musee-jean-moulin.jpg",
+ "photo_credit": {
+  "licence": "CC BY-SA 3.0",
+  "auteur": "Besopha",
+  "url": "https://commons.wikimedia.org/wiki/File:L%27entr%C3%A9e_du_mus%C3%A9e_Jean_Moulin,_Paris.jpg",
+  "source": "Wikimedia Commons"
+ },
+ "wiki": {
+  "extract": null,
+  "url": null,
+  "source": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ },
+ "stats": {
+  "n_delibs": 1534,
+  "delibs_span": [
+   1995,
+   2015
+  ],
+  "n_bmo_brut": 32,
+  "n_bmo_verifies": null,
+  "invest_total_eur": 0,
+  "invest_annees": [],
+  "lecture_mode": "titre nommant le lieu (21 trouvés)",
+  "n_lus": 21,
+  "n_lieu": 10
+ },
+ "subventions_exploitant": null,
+ "residents": [],
+ "kpi_montant": null,
+ "synthese_fr": "En 1995, le Conseil de Paris autorise le Maire à défendre en justice le droit de la Ville de créer, à partir du legs d'Antoinette Sasse, un musée dédié à Jean Moulin dans des locaux distincts de ceux prévus au testament. Installé au-dessus de la gare Montparnasse, dans le 15e, le Mémorial Leclerc - Musée Jean Moulin revient ensuite régulièrement devant le Conseil pour sa gestion : maintenance des équipements audiovisuels (2002), principe de travaux d'extension (2003), et subventions demandées à l'État au titre de la réserve parlementaire (31.490 euros en 2009 pour numériser ses archives, 9.155 euros en 2010 pour déplacer son comptoir de vente). En 2012, le Conseil accepte le legs Escoffier, décrit en séance comme sept mètres linéaires d'archives dont les fonds de Jean Moulin et des siens. À partir de 2014-2015, le projet de transfert du musée vers Denfert-Rochereau (14e) suscite des vœux d'opposition demandant son maintien à Montparnasse : le premier adjoint Bruno Julliard y répond en parlant d'un déplacement, non d'une fermeture, le vœu de 2014 reçoit un avis défavorable et celui de 2015 est repoussé. Plusieurs délibérations mentionnant « Jean Moulin » concernent en réalité d'autres lieux du 14e — un collège, une avenue, un centre d'aide par le travail — sans rapport avec le musée.",
+ "moments": [
+  {
+   "id": "548",
+   "seance": "JUILLET 1995",
+   "fait": "Le Conseil autorise le Maire à défendre en appel le droit de la Ville de créer le musée Jean-Moulin, issu du legs Sasse, dans des locaux distincts de ceux du testament.",
+   "pourquoi": "la bataille judiciaire qui fonde le musée",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=548"
+  },
+  {
+   "id": "47346",
+   "seance": "OCTOBRE 2003",
+   "fait": "Le Conseil approuve le principe de travaux d'extension des locaux du Mémorial Leclerc et Musée Jean Moulin, au Jardin Atlantique (15e), et autorise le Maire à signer le marché.",
+   "pourquoi": "agrandir le musée au Jardin Atlantique",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=47346"
+  },
+  {
+   "id": "17312",
+   "seance": "SEPTEMBRE 2009",
+   "fait": "Le Conseil adopte la demande d'une subvention de 31 490 euros de la réserve parlementaire du sénateur David Assouline pour numériser le fonds d'archives audiovisuelles du musée.",
+   "pourquoi": "un sénateur finance le sauvetage des archives",
+   "vedette": false,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=17312"
+  },
+  {
+   "id": "39519",
+   "seance": "SEPTEMBRE 2010",
+   "fait": "Le Conseil autorise le Maire à demander 9 155 euros à l'État (réserve parlementaire) pour déplacer le comptoir de vente et la caisse du musée.",
+   "pourquoi": "réaménager l'accueil et la boutique du musée",
+   "vedette": false,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=39519"
+  },
+  {
+   "id": "109475",
+   "seance": "OCTOBRE 2012",
+   "fait": "Le Conseil accepte le legs particulier de Mme Escoffier, décrit en séance comme sept mètres linéaires d'archives dont les fonds Jean Moulin.",
+   "pourquoi": "sept mètres d'archives Jean Moulin entrent au musée",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=109475"
+  },
+  {
+   "id": "118689",
+   "seance": "FEVRIER 2014",
+   "fait": "Un vœu du groupe UMPPA demande le maintien du musée à la gare Montparnasse ; il reçoit un avis défavorable de l'Exécutif.",
+   "pourquoi": "premier vœu contre le départ de Montparnasse",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=118689"
+  },
+  {
+   "id": "123715",
+   "seance": "MARS 2015",
+   "fait": "Le vœu UMP demandant de garder le musée à Montparnasse est repoussé ; Bruno Julliard défend un déplacement face aux catacombes, non une fermeture.",
+   "pourquoi": "déplacement ou fermeture, le vœu repoussé",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=123715"
+  },
+  {
+   "id": "125443",
+   "seance": "MAI 2015",
+   "fait": "Le Conseil examine l'apposition au musée d'une plaque en hommage aux résistants du lycée Buffon et de la Rose Blanche de Munich ; selon Mme Vieu-Charier, elle suivra le déménagement.",
+   "pourquoi": "une plaque franco-allemande de la Résistance",
+   "vedette": false,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=125443"
+  }
+ ],
+ "montants": [
+  {
+   "seance": "SEPTEMBRE 2009",
+   "montant": "31.490 euros HT",
+   "objet": "subvention d'investissement demandée à l'État (réserve parlementaire) pour la conservation du fonds d'archives audiovisuelles",
+   "citation": "une subvention d?investissement de 31.490 euros HT, du Ministère de l?Intérieur, au titre de la réserve parlementaire, au profit de la Ville de Paris pour la conservation du fonds d?archives audiovisuelles",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=36504"
+  },
+  {
+   "seance": "SEPTEMBRE 2009",
+   "montant": "31.490 euros",
+   "objet": "somme de la réserve parlementaire du sénateur David Assouline pour transposer les interviews audiovisuelles sur support pérenne",
+   "citation": "a pris l'initiative de proposer pour leur préservation une somme de 31.490 euros sur la réserve parlementaire afin de transposer ces interviews sur un support pérenne",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=17312"
+  },
+  {
+   "seance": "SEPTEMBRE 2010",
+   "montant": "9.155 euros",
+   "objet": "subvention d'investissement demandée à l'État (réserve parlementaire) pour déplacer le comptoir de vente et la caisse",
+   "citation": "une subvention d?investissement de 9.155 euros, auprès du Ministère de l?Intérieur, au titre de la réserve parlementaire pour le déplacement du comptoir de vente et de la caisse du Mémorial Leclerc - Musée Jean Moulin",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=39519"
+  },
+  {
+   "seance": "SEPTEMBRE 2010",
+   "montant": "21.900 euros",
+   "objet": "dépense estimée de l'opération de déplacement",
+   "citation": "La dépense estimée à 21.900 euros sera imputée au chapitre 23, nature 2313, rubrique V322",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=39519"
+  },
+  {
+   "seance": "FEVRIER 2014",
+   "montant": "40 millions d'euros",
+   "objet": "budget du transfert place Denfert-Rochereau cité par Mme Fonlladosa d'après la presse",
+   "citation": "le transfert de ce musée municipal place Denfert-Rochereau est récemment réapparu dans la presse, assorti d'un budget d'une exceptionnelle hauteur, soit 40 millions d'euros",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=118689"
+  }
+ ],
+ "bmo_extraits": [],
+ "bmo_recit": null,
+ "invest": [],
+ "marches": [],
+ "sources": {
+  "delibs": {
+   "name": "Débat-Délibs — Conseil de Paris",
+   "url": "https://a06-v7.apps.paris.fr/a06/"
+  },
+  "bmo": {
+   "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
+   "url": "https://gallica.bnf.fr/ark:/12148/cb343512457/date"
+  },
+  "invest": {
+   "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
+   "url": "https://opendata.paris.fr/"
+  },
+  "wiki": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ }
+}

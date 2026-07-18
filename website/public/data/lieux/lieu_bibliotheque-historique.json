@@ -1,0 +1,78 @@
+{
+ "generated_at": "2026-07-18T14:38:43.284445+00:00",
+ "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
+ "slug": "bibliotheque-historique",
+ "name": "Bibliothèque historique (BHVP)",
+ "kind_fr": "Bibliothèque",
+ "kind_en": "Library",
+ "famille": "culture",
+ "arrondissement": 4,
+ "lat": 48.8556,
+ "lon": 2.3585,
+ "photo": "/img/lieux/bibliotheque-historique.jpg",
+ "photo_credit": {
+  "licence": "CC BY 4.0",
+  "auteur": "Siren-Com",
+  "url": "https://commons.wikimedia.org/wiki/File:Jules_Cousin_BHVP_Paris.jpg",
+  "source": "Wikimedia Commons"
+ },
+ "wiki": {
+  "extract": null,
+  "url": null,
+  "source": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ },
+ "stats": {
+  "n_delibs": 5,
+  "delibs_span": [
+   1997,
+   2018
+  ],
+  "n_bmo_brut": 199,
+  "n_bmo_verifies": 1,
+  "invest_total_eur": 0,
+  "invest_annees": [],
+  "lecture_mode": "titre nommant le lieu (1 trouvés)",
+  "n_lus": 1,
+  "n_lieu": 0
+ },
+ "subventions_exploitant": null,
+ "residents": [],
+ "kpi_montant": null,
+ "synthese_fr": "La bibliothèque historique de la Ville de Paris occupe l'hôtel Lamoignon, dans le 4e arrondissement. En septembre 2018, le Conseil de Paris examine l'attribution du nom « Jardin de l'hôtel Lamoignon - Mark Ashton » au jardin situé devant ce bâtiment, en hommage à Mark Ashton, militant britannique des droits des personnes LGBT et du soutien aux mineurs grévistes. Dans ce débat, la bibliothèque n'apparaît que comme l'institution logée dans l'hôtel : la délibération qui la mentionne ne touche que ses abords, et non l'établissement lui-même.",
+ "moments": [
+  {
+   "id": "145103",
+   "seance": "SEPTEMBRE 2018",
+   "fait": "Le Conseil de Paris examine l'attribution du nom « Jardin de l'hôtel Lamoignon - Mark Ashton » au jardin situé devant l'hôtel qui abrite la bibliothèque, en hommage au militant décédé du Sida en 1987.",
+   "pourquoi": "un hommage LGBT aux portes de la bibliothèque",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=145103"
+  }
+ ],
+ "montants": [],
+ "bmo_extraits": [],
+ "bmo_recit": null,
+ "invest": [],
+ "marches": [],
+ "sources": {
+  "delibs": {
+   "name": "Débat-Délibs — Conseil de Paris",
+   "url": "https://a06-v7.apps.paris.fr/a06/"
+  },
+  "bmo": {
+   "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
+   "url": "https://gallica.bnf.fr/ark:/12148/cb343512457/date"
+  },
+  "invest": {
+   "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
+   "url": "https://opendata.paris.fr/"
+  },
+  "wiki": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ }
+}

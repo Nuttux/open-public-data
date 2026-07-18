@@ -1,0 +1,257 @@
+{
+ "generated_at": "2026-07-18T14:38:43.284445+00:00",
+ "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
+ "slug": "bois-de-vincennes",
+ "name": "Bois de Vincennes",
+ "kind_fr": "Bois",
+ "kind_en": "Bois",
+ "famille": "vert",
+ "arrondissement": 12,
+ "lat": 48.847196,
+ "lon": 2.404955,
+ "photo": "/img/lieux/bois-de-vincennes.jpg",
+ "photo_credit": {
+  "licence": "CC BY 4.0",
+  "auteur": "Marie-Lan Taÿ Pamart ",
+  "url": "https://commons.wikimedia.org/wiki/File:Corvus_corone_Bois_de_Vincennes_20181117_t141840.jpg",
+  "source": "Wikimedia Commons"
+ },
+ "wiki": {
+  "extract": null,
+  "url": null,
+  "source": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ },
+ "stats": {
+  "n_delibs": 937,
+  "delibs_span": [
+   2005,
+   2025
+  ],
+  "n_bmo_brut": 0,
+  "n_bmo_verifies": null,
+  "invest_total_eur": 0,
+  "invest_annees": [],
+  "lecture_mode": "titre nommant le lieu (187 trouvés)",
+  "n_lus": 44,
+  "n_lieu": 42
+ },
+ "subventions_exploitant": null,
+ "residents": [
+  {
+   "beneficiaire": "CABANES",
+   "montant_total": 5000.0,
+   "preuve": "Objet de la subvention (verbatim) : « Mois d’août de la culture 2020 - Concerts, lectures musicales et art dans le bois de Vincennes ». L’objet nomme explicitement le lieu et décrit une programmation culturelle ponctuelle qui s’y déroule (août 2020) : aide à une activité DANS le bois, aucun élément de l’objet n’indique une mission de gestion ou d’entretien du site — rôle « resident », pas exploitant."
+  }
+ ],
+ "kpi_montant": null,
+ "synthese_fr": "Depuis le milieu des annees 2000, le bois de Vincennes revient regulierement devant le Conseil de Paris, d'abord sur la pression automobile et la protection de son statut d'espace boise classe : opposition au doublement des autoroutes A4/A86 (2006), classement de cinq voies en voies vertes par arretes du Maire de Paris (2007-2008) et maintien de l'operation Paris respire. En parallele, la Ville encadre les occupations du domaine public - Chalet de la Porte Jaune, ruches, Cirque Ici au Jardin d'agronomie tropicale, refuge pour herissons, festival We Love Green - approuve le principe de l'entretien des reseaux d'eau des deux bois (2006) et reamenage l'anneau cyclable du Polygone (ete 2019). Cote gouvernance, le Conseil est consulte en 2018 sur l'adoption d'un reglement dedie aux deux bois, jusque-la rattaches au reglement des parcs et jardins, puis examine en 2024 un rapport de mission d'information et d'evaluation formulant 68 preconisations. Plusieurs sujets restent conflictuels - aires d'accueil des gens du voyage, abattage d'arbres pour des zones de reboisement, ampleur des manifestations musicales - l'opposition rappelant que le bois est classe depuis 1960 et n'a, selon elle, pas vocation a etre une reserve fonciere.",
+ "moments": [
+  {
+   "id": "92878",
+   "seance": "JUIN 2006",
+   "fait": "Un voeu affirme l'opposition de la Ville a la reduction de 10,3 hectares d'espace boise classe pour le doublement des autoroutes A4/A86.",
+   "pourquoi": "La Ville refuse d'amputer le bois pour l'autoroute",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=92878"
+  },
+  {
+   "id": "90056",
+   "seance": "JUILLET 2007",
+   "fait": "La convention DF 52 porte la redevance annuelle du Chalet de la Porte Jaune a 627 750 euros ; un voeu demande le reamenagement cyclable du site.",
+   "pourquoi": "La redevance du Chalet quadruple a 627.750 euros",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=90056"
+  },
+  {
+   "id": "35566",
+   "seance": "MAI 2010",
+   "fait": "Un voeu demande la mise en oeuvre avant l'ete 2010 des cinq voies vertes classees par arretes de 2007 et 2008.",
+   "pourquoi": "Cinq voies rendues aux pietons et cyclistes",
+   "vedette": false,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=35566"
+  },
+  {
+   "id": "146566",
+   "seance": "NOVEMBRE 2018",
+   "fait": "Le Conseil est consulte sur un reglement dedie aux bois de Boulogne et de Vincennes, jusque-la rattaches au reglement des parcs et jardins.",
+   "pourquoi": "Un reglement enfin propre aux deux bois",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=146566"
+  },
+  {
+   "id": "175604",
+   "seance": "DECEMBRE 2019",
+   "fait": "L'anneau cyclable du Polygone, reamenage l'ete 2019 avec un nouveau revetement, recoit un avis favorable pour etre denomme Raymond-Poulidor.",
+   "pourquoi": "L'anneau cyclable renove prend le nom de Poulidor",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=175604"
+  },
+  {
+   "id": "163807",
+   "seance": "JUILLET 2021",
+   "fait": "Une convention d'occupation precaire avec l'association Erinaceus doit permettre l'ouverture d'un refuge de soins pour herissons au coeur du bois.",
+   "pourquoi": "Un refuge pour herissons ouvre dans le bois",
+   "vedette": false,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=163807"
+  },
+  {
+   "id": "164729",
+   "seance": "MARS 2022",
+   "fait": "Repondant a une question de l'opposition sur l'abattage de 200 arbres pour une zone de reboisement, l'adjoint invoque le plan de gestion arboricole et la securite du public.",
+   "pourquoi": "L'abattage de 200 arbres declenche la polemique",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=164729"
+  },
+  {
+   "id": "176209",
+   "seance": "MAI 2024",
+   "fait": "Le Conseil examine le rapport de la mission d'information et d'evaluation sur les deux bois (68 preconisations) ; le voeu LR rattache est retire.",
+   "pourquoi": "Une mission d'evaluation rend 68 preconisations",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=176209"
+  }
+ ],
+ "montants": [
+  {
+   "seance": "MAI 2024",
+   "montant": "9,8 millions d'euros",
+   "objet": "credits affectes a la DEVE pour les deux bois en 2014, face a 46,5 millions de recettes (chiffres avances par Mme Montandon)",
+   "citation": "face aux 46,5 millions de recettes, c'Ã©taient 9,8 millions qui Ã©taient affectÃ©s Ã la DEVE pour les deux bois en 2014.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=176209"
+  },
+  {
+   "seance": "SEPTEMBRE 2018",
+   "montant": "40.000 euros",
+   "objet": "perte annuelle de billetterie du theatre Astral liee au plan Vigipirate (selon M. Bonnet-Oulaldj)",
+   "citation": "le théâtre a perdu 40.000 euros de billetterie chaque année.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=145008"
+  },
+  {
+   "seance": "JUILLET 2007",
+   "montant": "627.750 euros par an",
+   "objet": "redevance annuelle du futur exploitant du Chalet de la Porte Jaune, multipliee par quatre par rapport a la convention precedente",
+   "citation": "Le montant moyen de la redevance qui sera versée par le futur exploitant sera multiplié par quatre par rapport à la précédente convention pour s?établir à 627.750 euros par an.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=90056"
+  },
+  {
+   "seance": "MARS 2011",
+   "montant": "16.821.061 euros",
+   "objet": "cout annonce du projet d'aires d'accueil des gens du voyage (chiffre cite par Mme Montandon)",
+   "citation": "Vous nous annoncez un coût très précis de 16.821.061 euros, mais le cahier des charges, lui, n?était pas établi.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=95891"
+  },
+  {
+   "seance": "DECEMBRE 2006",
+   "montant": "minimum 272.000 euros et maximum 540.000 euros",
+   "objet": "marche negocie d'entretien des reseaux d'eau, Lot n 1 (bois de Vincennes)",
+   "citation": "Lot n°1 (bois de Vincennes) : minimum 272.000 euros et maximum 540.000 euros.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=91989"
+  }
+ ],
+ "bmo_extraits": [],
+ "bmo_recit": null,
+ "invest": [],
+ "marches": [
+  {
+   "numero_marche": "20181230001493",
+   "objet": "CSP4.TRAVAUX D'AMENAGEMENT LE BOIS DE VINCENNES PARIS 12ÈME.",
+   "fournisseur": "LES PAVEURS DE MONTROUGE/SETHY",
+   "montant_max": 847455.03,
+   "date_notification": "2018-11-14",
+   "preuve": "L’objet nomme le lieu et porte sur des travaux qui s’y déroulent : « TRAVAUX D'AMENAGEMENT LE BOIS DE VINCENNES PARIS 12ÈME »."
+  },
+  {
+   "numero_marche": "20151400000759",
+   "objet": "CSP2-BUNGALOWS -BOIS DE VINCENNES - LOT 2",
+   "fournisseur": "COFICIEL SOLUTIONS MODULAIRES",
+   "montant_max": 720000.0,
+   "date_notification": "2015-07-06",
+   "preuve": "L’objet nomme le lieu et porte sur un équipement installé sur place : « BUNGALOWS -BOIS DE VINCENNES - LOT 2 »."
+  },
+  {
+   "numero_marche": "20131230010307",
+   "objet": "CSP5 TERRASSEMENT & DEPOLLUTION BOIS DE VINCENNES LOT 4",
+   "fournisseur": "TERIDEAL SEGEX",
+   "montant_max": 511914.0,
+   "date_notification": "2013-11-25",
+   "preuve": "L’objet nomme le lieu et décrit des travaux menés sur son emprise : « TERRASSEMENT & DEPOLLUTION BOIS DE VINCENNES LOT 4 »."
+  },
+  {
+   "numero_marche": "decp-2025S07120",
+   "objet": "Entretien des jeunes peuplements forestiers dans le bois de Vincennes\n(12ème).",
+   "fournisseur": "ESPACE DECO",
+   "montant_max": 400000.0,
+   "date_notification": "2025-08-19",
+   "preuve": "Objet entièrement dédié au lieu : « Entretien des jeunes peuplements forestiers dans le bois de Vincennes (12ème) »."
+  },
+  {
+   "numero_marche": "20212021T01103",
+   "objet": "RESTRUCTURATION LOCAUX BÛCHERONS-BOIS DE VINCENNES 75012",
+   "fournisseur": "DARRAS ET JOUANIN",
+   "montant_max": 390751.46,
+   "date_notification": "2021-03-05",
+   "preuve": "L’objet nomme le lieu et porte sur ses bâtiments d’exploitation forestière : « RESTRUCTURATION LOCAUX BÛCHERONS-BOIS DE VINCENNES 75012 »."
+  },
+  {
+   "numero_marche": "20212021S05431",
+   "objet": "SA3_ENTRETIEN FORESTIER DANS LE BOIS DE VINCENNES_LOT 2",
+   "fournisseur": "SPORTS ET PAYSAGES",
+   "montant_max": 261289.99,
+   "date_notification": "2021-08-09",
+   "preuve": "Objet dédié au lieu : « ENTRETIEN FORESTIER DANS LE BOIS DE VINCENNES_LOT 2 »."
+  },
+  {
+   "numero_marche": "20131320010272",
+   "objet": "CSP5 RESTAURATION PAGODE BOIS DE VINCENNES LOT 4",
+   "fournisseur": "SERRURERIE MENUISERIE",
+   "montant_max": 123889.95,
+   "date_notification": "2013-11-27",
+   "preuve": "L’objet nomme le lieu et porte sur la restauration d’un édifice qui s’y trouve : « RESTAURATION PAGODE BOIS DE VINCENNES LOT 4 » (lot 4 d’un chantier dont les lots 2 et 3 figurent aussi aux candidats)."
+  },
+  {
+   "numero_marche": "20131320010654",
+   "objet": "CSP5 RESTAURATION PAGODE BOIS DE VINCENNES LOT2 CHARPENTE",
+   "fournisseur": "SOC COOP PRODUCT CHARPENTIER PARIS",
+   "montant_max": 121000.0,
+   "date_notification": "2014-01-09",
+   "preuve": "L’objet nomme le lieu : « RESTAURATION PAGODE BOIS DE VINCENNES LOT2 CHARPENTE » — lot charpente du même chantier de restauration de la Pagode du bois de Vincennes."
+  },
+  {
+   "numero_marche": "decp-2026S01621",
+   "objet": "Prestations de fauchage de prairies et pelouses, de débroussaillage de bords de voies et de taillage de haies pour les bois de Vincennes (12ème arrondissement) et Boulogne (16ème arrondissement), ains",
+   "fournisseur": "A.D.N",
+   "montant_max": 120000.0,
+   "date_notification": "2026-03-27",
+   "preuve": "L’objet désigne nommément le lieu comme site de la prestation : « … fauchage de prairies et pelouses, de débroussaillage de bords de voies et de taillage de haies pour les bois de Vincennes (12ème arrondissement) … ». Réserve : marché multi-sites (bois de Boulogne 16e et un autre domaine), le montant maximum n’est pas dépensé au seul bois de Vincennes — voir bois-de-vincennes_perimetre.json."
+  },
+  {
+   "numero_marche": "decp-2026S01626",
+   "objet": "Prestations de fauchage de prairies et pelouses, de débroussaillage de bords de voies et de taillage de haies pour les bois de Vincennes (12ème arrondissement) et Boulogne (16ème arrondissement), ains",
+   "fournisseur": "ROBERT PAYSAGE",
+   "montant_max": 120000.0,
+   "date_notification": "2026-03-27",
+   "preuve": "Même objet, autre attributaire : « … pour les bois de Vincennes (12ème arrondissement) et Boulogne (16ème arrondissement) … ». Le lieu est nommé comme site de la prestation. Réserve : marché multi-sites, le montant maximum n’est pas dépensé au seul bois de Vincennes — voir bois-de-vincennes_perimetre.json."
+  }
+ ],
+ "sources": {
+  "delibs": {
+   "name": "Débat-Délibs — Conseil de Paris",
+   "url": "https://a06-v7.apps.paris.fr/a06/"
+  },
+  "bmo": {
+   "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
+   "url": "https://gallica.bnf.fr/ark:/12148/cb343512457/date"
+  },
+  "invest": {
+   "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
+   "url": "https://opendata.paris.fr/"
+  },
+  "wiki": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ }
+}

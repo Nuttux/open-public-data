@@ -1,0 +1,134 @@
+{
+ "generated_at": "2026-07-18T14:38:43.284445+00:00",
+ "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
+ "slug": "conservatoire-de-paris-crr",
+ "name": "Conservatoire de Paris (CRR)",
+ "kind_fr": "Conservatoire",
+ "kind_en": "Conservatoire",
+ "famille": "culture",
+ "arrondissement": 19,
+ "lat": 48.873259,
+ "lon": 2.346855,
+ "photo": "/img/lieux/conservatoire-de-paris-crr.jpg",
+ "photo_credit": {
+  "licence": "CC BY-SA 3.0",
+  "auteur": "Jean-Christophe Windland",
+  "url": "https://commons.wikimedia.org/wiki/File:Orchestre_Symphonique_CRR_Paris.JPG",
+  "source": "Wikimedia Commons"
+ },
+ "wiki": {
+  "extract": null,
+  "url": null,
+  "source": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ },
+ "stats": {
+  "n_delibs": 583,
+  "delibs_span": [
+   1995,
+   2024
+  ],
+  "n_bmo_brut": 953,
+  "n_bmo_verifies": null,
+  "invest_total_eur": 0,
+  "invest_annees": [],
+  "lecture_mode": "tête du classement Solr (583 documents au total)",
+  "n_lus": 44,
+  "n_lieu": 21
+ },
+ "subventions_exploitant": null,
+ "residents": [],
+ "kpi_montant": null,
+ "synthese_fr": "Dans les deliberations du Conseil de Paris, l'etablissement apparait sous des noms successifs — Conservatoire superieur de Paris, Conservatoire national de region (CNR), puis Conservatoire a rayonnement regional (CRR). Les plus anciens dossiers portent sur son financement et son patrimoine : une subvention a l'association du conservatoire (8e) en 1995, l'acceptation autorisee d'un don de livres et partitions de la Fondation de France en 2002, puis d'un legs particulier en 2004. De 2006 a 2011, le Conseil autorise a plusieurs reprises le Maire a solliciter de l'Etat (DRAC) une subvention annuelle de fonctionnement, et demande presque chaque annee une subvention europeenne au titre du programme Erasmus, une deliberation de 2006 y ajoutant l'adhesion de la Ville a l'association europeenne des conservatoires. La gouvernance de l'etablissement est organisee par la creation d'un conseil d'etablissement en 2007, dont les statuts sont modifies en 2009. Les dossiers recents concernent son statut et son identite : renouvellement de l'agrement d'etablissement preparant a l'enseignement superieur (2023), demande de renouvellement du classement aupres du Ministere (2024) et attribution de la denomination « Ida Rubinstein » (juin 2024).",
+ "moments": [
+  {
+   "id": "742",
+   "seance": "JUILLET 1995",
+   "fait": "Une subvention a l'Association du conservatoire superieur de Paris - C.N.R. (8e) est mise en deliberation.",
+   "pourquoi": "la Ville soutient tot l'association du conservatoire",
+   "vedette": false,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=742"
+  },
+  {
+   "id": "95383",
+   "seance": "OCTOBRE 2002",
+   "fait": "Le Conseil autorise le Maire a accepter le don de la Fondation de France au Conservatoire superieur de Paris CNR : les livres et partitions edites par le Centre de musique baroque de Versailles.",
+   "pourquoi": "un fonds de partitions baroques destine au conservatoire",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=95383"
+  },
+  {
+   "id": "46091",
+   "seance": "SEPTEMBRE 2004",
+   "fait": "Le Conseil accepte un legs particulier consenti a la Ville pour le Conservatoire superieur de Paris par Mlle Francoise Milde.",
+   "pourquoi": "un legs prive revient au conservatoire",
+   "vedette": false,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=46091"
+  },
+  {
+   "id": "74126",
+   "seance": "SEPTEMBRE 2006",
+   "fait": "La deliberation autorise le Maire a solliciter aupres de la Commission europeenne une subvention Erasmus pour le Conservatoire national de region de Paris et porte sur l'adhesion de la Ville a l'association europeenne des conservatoires.",
+   "pourquoi": "le conservatoire s'inscrit dans un reseau europeen",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=74126"
+  },
+  {
+   "id": "54631",
+   "seance": "DECEMBRE 2007",
+   "fait": "La deliberation cree un conseil d'etablissement au sein du Conservatoire national de region de Paris.",
+   "pourquoi": "l'etablissement se dote d'une instance de gouvernance",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=54631"
+  },
+  {
+   "id": "42720",
+   "seance": "OCTOBRE 2008",
+   "fait": "Le Conseil autorise le Maire a solliciter de l'Etat (DRAC) une subvention annuelle de fonctionnement pour le CRR de Paris (2008).",
+   "pourquoi": "financer le fonctionnement via une aide de l'Etat",
+   "vedette": false,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=42720"
+  },
+  {
+   "id": "171892",
+   "seance": "OCTOBRE 2023",
+   "fait": "La deliberation porte sur le renouvellement de l'agrement du CRR comme etablissement preparant a l'entree dans l'enseignement superieur de la creation artistique.",
+   "pourquoi": "garder le statut de tremplin vers le superieur",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=171892"
+  },
+  {
+   "id": "176404",
+   "seance": "JUIN 2024",
+   "fait": "La deliberation porte sur l'attribution de la denomination « Ida Rubinstein » au Conservatoire a rayonnement regional de Paris.",
+   "pourquoi": "le conservatoire recoit le nom d'Ida Rubinstein",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=176404"
+  }
+ ],
+ "montants": [],
+ "bmo_extraits": [],
+ "bmo_recit": null,
+ "invest": [],
+ "marches": [],
+ "sources": {
+  "delibs": {
+   "name": "Débat-Délibs — Conseil de Paris",
+   "url": "https://a06-v7.apps.paris.fr/a06/"
+  },
+  "bmo": {
+   "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
+   "url": "https://gallica.bnf.fr/ark:/12148/cb343512457/date"
+  },
+  "invest": {
+   "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
+   "url": "https://opendata.paris.fr/"
+  },
+  "wiki": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ }
+}

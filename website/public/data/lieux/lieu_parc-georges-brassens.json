@@ -1,0 +1,177 @@
+{
+ "generated_at": "2026-07-18T14:38:43.284445+00:00",
+ "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
+ "slug": "parc-georges-brassens",
+ "name": "Parc Georges-Brassens",
+ "kind_fr": "Parc",
+ "kind_en": "Park",
+ "famille": "vert",
+ "arrondissement": 15,
+ "lat": 48.8319,
+ "lon": 2.2999,
+ "photo": "/img/lieux/parc-georges-brassens.jpg",
+ "photo_credit": {
+  "licence": null,
+  "auteur": null,
+  "url": "https://fr.wikipedia.org/wiki/Parc_Georges-Brassens",
+  "source": "Wikipédia"
+ },
+ "wiki": {
+  "extract": "Le parc Georges-Brassens se trouve dans le 15e arrondissement de Paris sur l'emplacement des anciens abattoirs de Vaugirard. Ouvert en 1985, il couvre une superficie de 8,7 hectares sur un terrain en dénivelé qui abritait au XVIIIe siècle le vignoble de Périchaux.",
+  "url": "https://fr.wikipedia.org/wiki/Parc_Georges-Brassens",
+  "source": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ },
+ "stats": {
+  "n_delibs": 221,
+  "delibs_span": [
+   1997,
+   2023
+  ],
+  "n_bmo_brut": 2000,
+  "n_bmo_verifies": 10,
+  "invest_total_eur": 0,
+  "invest_annees": [],
+  "lecture_mode": "titre nommant le lieu (15 trouvés)",
+  "n_lus": 15,
+  "n_lieu": 11
+ },
+ "subventions_exploitant": null,
+ "residents": [],
+ "kpi_montant": null,
+ "synthese_fr": "Au fil d'un quart de siècle de séances du Conseil de Paris, le parc Georges Brassens apparaît par petites touches. En 1997, l'adjointe Françoise de Panafieu explique une réduction des horaires d'ouverture estivaux pour raisons de sécurité ; en 2003, la Ville élargit au marché du livre ancien l'occupation de sa Halle aux Chevaux ; et en 2005 elle encadre par convention le rucher pédagogique de la Société centrale d'apiculture, moyennant une redevance de 100 euros par an. Le parc se lit aussi comme un lieu de vie et de mémoire : un arbre du souvenir voté à l'unanimité en 2010 pour un adolescent tué, 800 bouteilles de vin issues de ses vignes attribuées par convention la même année à une association pour les œuvres sociales, un marché alimentaire créé à son entrée en 2007 malgré un débat sur sa localisation. Plus récemment, l'Exécutif indique poursuivre les études sur l'agrandissement du rucher, dans le respect du classement du parc en espace boisé classé (2023), tandis que ses allées sont mises à l'honneur en 2025, avec l'adoption de la dénomination « allée Raymond Devos » et un hommage à Alexis Grüss.",
+ "moments": [
+  {
+   "id": "15544",
+   "seance": "JUIN 1997",
+   "fait": "Répondant à une question écrite de l'élue Laure Schneiter, l'adjointe Françoise de Panafieu indique que la fermeture estivale du parc a été ramenée de 22 h à 21 h 30 depuis 1996, pour des raisons de sécurité.",
+   "pourquoi": "pourquoi le parc ferme plus tôt l'été",
+   "vedette": false,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=15544"
+  },
+  {
+   "id": "41516",
+   "seance": "JANVIER 2003",
+   "fait": "Le Conseil de Paris modifie la convention de 1989 pour autoriser le GIPPE à occuper aussi la partie basse de la Halle aux Chevaux, chaque samedi et dimanche, pour le marché du livre ancien et d'occasion.",
+   "pourquoi": "le marché du livre ancien gagne toute la halle",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=41516"
+  },
+  {
+   "id": "63126",
+   "seance": "SEPTEMBRE 2005",
+   "fait": "Le Conseil approuve une convention de six ans autorisant la Société centrale d'apiculture à occuper une partie du parc pour y exploiter un rucher, moyennant une redevance annuelle de 100 euros, et autorise le Maire à la signer.",
+   "pourquoi": "le rucher pédagogique obtient un bail de six ans",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=63126"
+  },
+  {
+   "id": "19766",
+   "seance": "OCTOBRE 2007",
+   "fait": "Lors du débat sur la création du marché « Georges Brassens », l'élue Claire de Clermont-Tonnerre conteste son implantation place Jacques Marette, à l'entrée du parc, estimant qu'elle ne répond pas à la demande initiale d'un marché sous la halle aux chevaux.",
+   "pourquoi": "la localisation du nouveau marché fait débat",
+   "vedette": false,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=19766"
+  },
+  {
+   "id": "85962",
+   "seance": "NOVEMBRE 2010",
+   "fait": "Le Conseil autorise le Maire à signer une convention accordant à l'association « Le Club Vaugirard » 800 bouteilles de vin issues des vignes du parc, à vendre au profit des œuvres sociales de l'arrondissement.",
+   "pourquoi": "le vin des vignes du parc pour les œuvres sociales",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=85962"
+  },
+  {
+   "id": "8637",
+   "seance": "MARS 2010",
+   "fait": "Le vœu demandant un arbre du souvenir pour Malik, adolescent tué, est adopté à l'unanimité, après que le maire du 15e eut, selon l'adjointe Fabienne Giboudeaux citant sa lettre du 18 février, d'abord jugé que le parc ne s'y prêtait pas.",
+   "pourquoi": "un arbre du souvenir, malgré une réticence initiale",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=8637"
+  },
+  {
+   "id": "172005",
+   "seance": "OCTOBRE 2023",
+   "fait": "Sur un vœu de l'Exécutif, l'adjoint Christophe Najdovski confirme que des études sont en cours pour améliorer les locaux du rucher pédagogique, en précisant que le classement du parc en espace boisé classé au P.L.U. y interdit toute construction.",
+   "pourquoi": "agrandir le rucher, mais le parc est protégé",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=172005"
+  },
+  {
+   "id": "183343",
+   "seance": "OCTOBRE 2025",
+   "fait": "Le Conseil de Paris adopte la dénomination « allée Raymond Devos » pour l'allée du parc donnant sur la place Jacques Marette, en hommage à l'humoriste ami de Georges Brassens.",
+   "pourquoi": "une allée du parc nommée d'après Raymond Devos",
+   "vedette": false,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=183343"
+  }
+ ],
+ "montants": [
+  {
+   "seance": "NOVEMBRE 2012",
+   "montant": "72 000 €",
+   "objet": "subvention et convention avec l'association du Parc Georges Brassens (intitulé de la délibération)",
+   "citation": "Subvention et convention (72.000 euros) avec l'association du Parc Georges Brassens (15e).",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=109734"
+  },
+  {
+   "seance": "NOVEMBRE 2012",
+   "montant": "≈ 120 000 €",
+   "objet": "estimation, par Mme Chérioux de Soultrait, de la mise à disposition gratuite des locaux (aide en nature)",
+   "citation": "La mise à disposition gratuite de ces locaux, c?est aux alentours de 120.000 euros, ce qui correspond quasiment au budget global de l'association.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=109734"
+  },
+  {
+   "seance": "NOVEMBRE 2010",
+   "montant": "800 bouteilles de vin",
+   "objet": "subvention en nature issue des vignes du parc, vendue au profit des œuvres sociales de l'arrondissement",
+   "citation": "soit 800 bouteilles de vin issues des vignes du Parc Georges Brassens (15e), afin qu?elle les vende au profit des oeuvres sociales de l?arrondissement.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=85962"
+  },
+  {
+   "seance": "SEPTEMBRE 2005",
+   "montant": "5 700 € (2002) → 1 000 € (2005)",
+   "objet": "évolution de la subvention au rucher, selon Mme de Clermont-Tonnerre (0 € en 2004)",
+   "citation": "de 5.700 euros en 2002, la subvention est tombée à 4.000 euros en 2003, puis à 0 euro en 2004, pour atteindre 1.000 euros en 2005.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=10420"
+  },
+  {
+   "seance": "SEPTEMBRE 2005",
+   "montant": "100 € / an",
+   "objet": "redevance annuelle d'occupation du domaine pour le rucher de la Société centrale d'apiculture",
+   "citation": "Elle donnera lieu au règlement d?une redevance annuelle de 100 euros.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=63126"
+  },
+  {
+   "seance": "JUILLET 1999",
+   "montant": "60 F / m² / jour",
+   "objet": "tarif de location de la halle aux chevaux du parc Georges-Brassens (même tarif que le pavillon de Bercy)",
+   "citation": "de la halle aux chevaux dans le parc Georges-Brassens (15e) est fixé à 60 F T.T.C. par mètre carré et par jour.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=85486"
+  }
+ ],
+ "bmo_extraits": [],
+ "bmo_recit": null,
+ "invest": [],
+ "marches": [],
+ "sources": {
+  "delibs": {
+   "name": "Débat-Délibs — Conseil de Paris",
+   "url": "https://a06-v7.apps.paris.fr/a06/"
+  },
+  "bmo": {
+   "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
+   "url": "https://gallica.bnf.fr/ark:/12148/cb343512457/date"
+  },
+  "invest": {
+   "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
+   "url": "https://opendata.paris.fr/"
+  },
+  "wiki": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ }
+}

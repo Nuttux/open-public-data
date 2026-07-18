@@ -1,0 +1,145 @@
+{
+ "generated_at": "2026-07-18T14:38:43.284445+00:00",
+ "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
+ "slug": "gymnase-japy",
+ "name": "Gymnase Japy",
+ "kind_fr": "Gymnase",
+ "kind_en": "Gym",
+ "famille": "sport",
+ "arrondissement": 11,
+ "lat": 48.8577,
+ "lon": 2.38,
+ "photo": "/img/lieux/gymnase-japy.jpg",
+ "photo_credit": {
+  "licence": null,
+  "auteur": null,
+  "url": "https://fr.wikipedia.org/wiki/Gymnase_Japy",
+  "source": "Wikipédia"
+ },
+ "wiki": {
+  "extract": "Le gymnase Japy est un hall omnisports du 11e arrondissement de Paris, en France.",
+  "url": "https://fr.wikipedia.org/wiki/Gymnase_Japy",
+  "source": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ },
+ "stats": {
+  "n_delibs": 34,
+  "delibs_span": [
+   1996,
+   2002
+  ],
+  "n_bmo_brut": 286,
+  "n_bmo_verifies": 14,
+  "invest_total_eur": 0,
+  "invest_annees": [],
+  "lecture_mode": "titre nommant le lieu (4 trouvés)",
+  "n_lus": 4,
+  "n_lieu": 4
+ },
+ "subventions_exploitant": null,
+ "residents": [],
+ "kpi_montant": null,
+ "synthese_fr": "Entre 1996 et 2002, le gymnase Japy, 2, rue Japy (11e), revient à trois reprises devant le Conseil de Paris pour des travaux successifs. En octobre 1996, le Conseil approuve le principe de la réfection du parquet sportif de la salle et autorise le Maire à signer le marché ; en séance, l'élu Patrick Bloche relève que les travaux prévus pour juillet 1996 n'ont pas commencé et demande leur report à juillet 1997, s'interrogeant sur un surcoût que Dominique Cane confirme sans le chiffrer. En septembre 1999, le Conseil approuve le principe de travaux de renforcement de structure des planchers et des tribunes. En janvier 2002, il approuve le principe de travaux de mise aux normes de la verrière. Chaque délibération autorise le Maire à signer les marchés correspondants, le seul chiffre énoncé étant un coût prévisionnel de 1,2 million de francs avancé en séance pour le parquet en 1996.",
+ "moments": [
+  {
+   "id": "55120",
+   "seance": "OCTOBRE 1996",
+   "fait": "Le Conseil approuve le principe de la réfection du parquet sportif de la salle et autorise le Maire à signer le marché.",
+   "pourquoi": "le parquet sportif de la salle à refaire",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=55120"
+  },
+  {
+   "id": "4454",
+   "seance": "OCTOBRE 1996",
+   "fait": "En séance, Patrick Bloche demande le report du chantier à juillet 1997 et s'inquiète du surcoût ; Dominique Cane confirme une plus-value sans la chiffrer.",
+   "pourquoi": "report du chantier demandé, surcoût admis mais non chiffré",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=4454"
+  },
+  {
+   "id": "84073",
+   "seance": "SEPTEMBRE 1999",
+   "fait": "Le Conseil approuve le principe de travaux de renforcement de structure des planchers et des tribunes.",
+   "pourquoi": "planchers et tribunes du gymnase à renforcer",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=84073"
+  },
+  {
+   "id": "27101",
+   "seance": "JANVIER 2002",
+   "fait": "Le Conseil approuve le principe de travaux de mise aux normes de la verrière et autorise le Maire à signer les marchés.",
+   "pourquoi": "la verrière du gymnase à mettre aux normes",
+   "vedette": false,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=27101"
+  }
+ ],
+ "montants": [
+  {
+   "seance": "OCTOBRE 1996",
+   "montant": "1.200.000 F T.T.C.",
+   "objet": "Coût d'investissement prévisionnel de la réfection du parquet sportif (valeur exécution juillet 1996), cité en séance par M. Bloche d'après le projet de délibération.",
+   "citation": "Je m'interroge également sur le coût d'investissement prévisionnel qui est de 1.200.000 F T.T.C., valeur exécution juillet 1996.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=4454"
+  }
+ ],
+ "bmo_extraits": [
+  {
+   "date": "1885-09-25",
+   "extrait": "N° 1037. — Les conseillers ci-dessous désignés sont intervenus à plusieurs reprises pour que des travaux indispensables soient entrepris au gymnase Japy  … De ce fait, les sociétés et ligues sportives",
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k96204481/f1.item"
+  },
+  {
+   "date": "1903-11-10",
+   "extrait": "habitants voisins du gymnase Japy (Il e) qui s'affirment fort incommodés par le tumulte qui résulte des fêtes nocturnes organisées dans ce local … Le principe de ces fêtes, presque toutes destinées",
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k9619849b/f3.item"
+  },
+  {
+   "date": "1914-07-09",
+   "extrait": "N° 276. — Le Conseil municipal de Paris a adopté une proposition des auteurs de cette question tendant à l'aménagement d'un cabinet médico-sportif dans le gymnase Japy  … mais pourrait égalem",
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k9622861w/f404.item"
+  },
+  {
+   "date": "1922-05-03",
+   "extrait": "réfection du gymnase Japy et les retards constamment apportés à l'exécution des travaux et demandant à M. le Préfet de la Seine : 1° Quand ces travaux seront enfin terminés … Les travaux comp",
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k6491532n/f2.item"
+  },
+  {
+   "date": "1931-08-13",
+   "extrait": "N° 82. — 12 février 1932. — Le transfert des services de chômage du 11e arrondissement au gymnase Japy répond au but de la question n° 34, posée par M. René Fiquet, et constitue une séri",
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k6453804w/f1.item"
+  }
+ ],
+ "bmo_recit": "Le gymnase Japy, dans le 11e arrondissement, apparaît dans le Bulletin municipal dès 1885, lorsque des conseillers signalent être intervenus à plusieurs reprises pour que des travaux jugés indispensables y soient entrepris. En 1903, ce sont les habitants voisins qui se manifestent : ils s'affirment fort incommodés par le tumulte des fêtes nocturnes organisées dans ce local. En 1914, le Conseil municipal adopte une proposition tendant à l'aménagement d'un cabinet médico-sportif dans le gymnase. En 1922, une question demande au préfet de la Seine quand seront enfin terminés les travaux de réfection du gymnase, dont les retards constants sont relevés. Au début des années 1930, le lieu change d'usage : les services de chômage du 11e arrondissement y sont transférés, en réponse à une question posée par M. René Fiquet.",
+ "invest": [],
+ "marches": [
+  {
+   "numero_marche": "20161410001216",
+   "objet": "CSP5 TVX SYSTEMES D'ECLAIRAGE GYMNASE JAPY 11ÈME",
+   "fournisseur": "SPIE CITYNETWORKS",
+   "montant_max": 128392.0,
+   "date_notification": "2016-08-24",
+   "preuve": "L'objet du marché nomme le lieu verbatim : « CSP5 TVX SYSTEMES D'ECLAIRAGE GYMNASE JAPY 11ÈME » — travaux (TVX) sur les systèmes d'éclairage du gymnase Japy, 11e. Le lieu n'est pas un simple repère d'adresse : il est l'objet même des travaux. Identité du lieu confirmée par les délibérations du Conseil de Paris, qui situent le « gymnase Japy - 2, rue Japy (11e) » et lui rattachent des travaux de bâtiment de même nature (1999 DPA 184, « renforcement de structure des planchers et des tribunes au gymnase Japy, 2, rue Japy (11e) » ; 2001 DPA 405, « mise aux normes de la verrière du gymnase Japy (11e) »)."
+  }
+ ],
+ "sources": {
+  "delibs": {
+   "name": "Débat-Délibs — Conseil de Paris",
+   "url": "https://a06-v7.apps.paris.fr/a06/"
+  },
+  "bmo": {
+   "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
+   "url": "https://gallica.bnf.fr/ark:/12148/cb343512457/date"
+  },
+  "invest": {
+   "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
+   "url": "https://opendata.paris.fr/"
+  },
+  "wiki": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ }
+}

@@ -1,0 +1,203 @@
+{
+ "generated_at": "2026-07-18T14:38:43.284445+00:00",
+ "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
+ "slug": "palais-galliera",
+ "name": "Palais Galliera",
+ "kind_fr": "Musée",
+ "kind_en": "Musée",
+ "famille": "culture",
+ "arrondissement": 16,
+ "lat": 48.86597,
+ "lon": 2.29657,
+ "photo": "/img/lieux/palais-galliera.jpg",
+ "photo_credit": {
+  "licence": "CC0",
+  "auteur": "Joe deSousa",
+  "url": "https://commons.wikimedia.org/wiki/File:Mus%C3%A9e_Galliera,_Paris_21_July_2017.jpg",
+  "source": "Wikimedia Commons"
+ },
+ "wiki": {
+  "extract": "Situé sur la colline de Chaillot, le palais Galliera, musée de la Mode de la ville de Paris, est un musée français de style néo-Renaissance, situé dans le 16e arrondissement de Paris.",
+  "url": "https://fr.wikipedia.org/wiki/Palais_Galliera%2C_mus%C3%A9e_de_la_Mode_de_la_ville_de_Paris",
+  "source": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ },
+ "stats": {
+  "n_delibs": 130,
+  "delibs_span": [
+   1997,
+   2025
+  ],
+  "n_bmo_brut": 749,
+  "n_bmo_verifies": 4,
+  "invest_total_eur": 0,
+  "invest_annees": [],
+  "lecture_mode": "titre nommant le lieu (24 trouvés)",
+  "n_lus": 24,
+  "n_lieu": 20
+ },
+ "subventions_exploitant": null,
+ "residents": [],
+ "kpi_montant": null,
+ "synthese_fr": "Dès 1996, le Conseil de Paris approuve le principe de travaux sur les abords du musée — réfection du parvis Est sur jardin — et, en 2000, autorise une convention d'objectifs avec l'association « Amis du Musée Galliera ». Au fil des années 2000, il autorise l'enrichissement des collections de mode : acquisition de pièces de Paul Poiret pour 83.486,35 euros en 2005, acceptation de dons et de legs. Le Conseil approuve ensuite, dossier après dossier, le principe de travaux sur le bâtiment — rénovation de locaux (2007), ravalement et mise en lumière des façades (2008), désenfumage (2009) — puis la passation d'un marché d'études pour la mise aux normes électriques et l'accessibilité (2011), avant l'adoption, en 2017, de la délibération DPA 9 « Paris fait Paris » portant restructuration partielle. En 2024 et 2025, plusieurs vœux au Conseil portent sur la suspension de deux veilleurs de nuit des réserves du Palais Galliera, sur fond d'accusations que se renvoient agents et administration.",
+ "moments": [
+  {
+   "id": "55060",
+   "seance": "OCTOBRE 1996",
+   "fait": "Le Conseil approuve le principe de réfection du parvis Est sur jardin du musée Galliera et autorise la signature du marché.",
+   "pourquoi": "Le dossier s'ouvre dehors : parvis et jardin",
+   "vedette": false,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=55060"
+  },
+  {
+   "id": "50557",
+   "seance": "JUILLET 2000",
+   "fait": "Le Conseil autorise la signature d'une convention d'objectifs avec l'association « Amis du Musée Galliera ».",
+   "pourquoi": "La Ville s'allie aux amis historiens du costume",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=50557"
+  },
+  {
+   "id": "63425",
+   "seance": "SEPTEMBRE 2005",
+   "fait": "Le Conseil autorise l'acquisition de pièces de Paul Poiret ayant appartenu à Denise Poiret, pour 83 486,35 euros.",
+   "pourquoi": "83 486 euros pour entrer du Poiret en collection",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=63425"
+  },
+  {
+   "id": "91073",
+   "seance": "JUILLET 2008",
+   "fait": "Le Conseil approuve le principe du ravalement et de la mise en lumière des façades du musée.",
+   "pourquoi": "Ravaler et éclairer les façades du palais",
+   "vedette": false,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=91073"
+  },
+  {
+   "id": "39950",
+   "seance": "SEPTEMBRE 2010",
+   "fait": "Le Conseil autorise une convention de partenariat avec la société Neomis pour le projet « Funky Fashion Four ».",
+   "pourquoi": "Un partenariat privé baptisé Funky Fashion Four",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=39950"
+  },
+  {
+   "id": "96991",
+   "seance": "MARS 2011",
+   "fait": "Le Conseil approuve la passation d'un marché d'études pour la mise aux normes électriques et l'accessibilité du musée.",
+   "pourquoi": "Des études pour l'accessibilité et l'électricité",
+   "vedette": false,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=96991"
+  },
+  {
+   "id": "134700",
+   "seance": "JANVIER 2017",
+   "fait": "Le projet de délibération DPA 9 « Paris fait Paris », de restructuration partielle, est adopté.",
+   "pourquoi": "Le Conseil vote la restructuration partielle du palais",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=134700"
+  },
+  {
+   "id": "179921",
+   "seance": "AVRIL 2025",
+   "fait": "Un vœu déposé par M. Laurent SOREL, relatif à la suspension de deux veilleurs de nuit des réserves, est examiné en séance.",
+   "pourquoi": "Deux veilleurs de nuit suspendus, le Conseil saisi",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=179921"
+  }
+ ],
+ "montants": [
+  {
+   "seance": "OCTOBRE 2009",
+   "montant": "100 euros",
+   "objet": "valeur d'immobilisation du bien légué (tenue de communiante des années 1930)",
+   "citation": "La valeur d?immobilisation du bien donné, estimé à la somme de 100 euros",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=93400"
+  },
+  {
+   "seance": "SEPTEMBRE 2005",
+   "montant": "83.486,35 euros",
+   "objet": "acquisition de pièces créées par Paul Poiret et ayant appartenu à Denise Poiret",
+   "citation": "M. le Maire de Paris est autorisé à acquérir diverses pièces créées par Paul Poiret et ayant appartenu à Denise Poiret pour le Musée Galliera, pour une somme de 83.486,35 euros.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=63425"
+  },
+  {
+   "seance": "SEPTEMBRE 2005",
+   "montant": "2.000,00 euros",
+   "objet": "estimations des dons pour le Musée Galliera (ensemble d'équitation 1 800 €, jaquette 700 €, costume de course 2 000 €...)",
+   "citation": "Pour le Musée Galliera Un ensemble d?équitation => 1.800,00 euros Une jaquette => 700,00 euros Un costume de course => 2.000,00 euros Un habit de soirée => 1.500,00 euros Un costume 3 pièces => 1.500,00 euros",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=63222"
+  },
+  {
+   "seance": "SEPTEMBRE 2004",
+   "montant": "10.815,00",
+   "objet": "estimation d'un ensemble de 64 pièces griffées donné par Karl Lagerfeld (Maison Chanel)",
+   "citation": "Don de M. Lagerfeld Karl, Maison Chanel, 31, rue Cambon, 75001 Paris ensemble de 64 pièces griffées (accessoires et vêtements) : T. Mugler, Givenchy, S. Rykiel, Vuitton, Hom, C. Dior, Céline, C. Thomass 10.815,00",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=46543"
+  },
+  {
+   "seance": "SEPTEMBRE 2004",
+   "montant": "15.300,00",
+   "objet": "estimation d'un don de la Maison Chanel (manchons, gants, éventail, écrans, canne)",
+   "citation": "Don de la Maison Chanel, 31, rue Cambon, 75001 Paris 2 manchons en fourrure (collection A/H 1980-81), 2 paires de gants de 1982, l éventail P/E 1981, 3 écrans A/H 1982-83, canne A/H 1982-83 15.300,00",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=46543"
+  }
+ ],
+ "bmo_extraits": [],
+ "bmo_recit": null,
+ "invest": [],
+ "marches": [
+  {
+   "numero_marche": "20171210000388",
+   "objet": "MOE RESTRUCTURATION PALAIS GALLIERA 10 AV.PIERRE 1ER SERBIE",
+   "fournisseur": "ATELIER DE L'ILE",
+   "montant_max": 777464.36,
+   "date_notification": "2017-03-29",
+   "preuve": "L'objet nomme le lieu ET son adresse verbatim : « MOE RESTRUCTURATION PALAIS GALLIERA 10 AV.PIERRE 1ER SERBIE ». L'adresse correspond à celle confirmée par les délibérations (2017 DPA 9 : « Palais Galliera, 10, avenue Pierre-Ier-de-Serbie (16e). - Restructuration partielle. - Objectifs, programme des travaux, modalités de réalisation. », séance de janvier 2017). Marché de maîtrise d'œuvre notifié le 2017-03-29, soit deux mois après cette délibération, ce qui concorde avec la MOE de cette restructuration ; le rattachement au lieu repose de toute façon sur l'objet et l'adresse, cités verbatim."
+  },
+  {
+   "numero_marche": "20191210000448",
+   "objet": "CSP5 TVX RESTRUCTUR PALAIS GALLIERA LOT8 : RESTAUR. FACADES",
+   "fournisseur": "STE LOUIS GENESTE ET SES FILS",
+   "montant_max": 529283.38,
+   "date_notification": "2019-04-23",
+   "preuve": "L'objet nomme le lieu et porte sur le bâtiment lui-même : « CSP5 TVX RESTRUCTUR PALAIS GALLIERA LOT8 : RESTAUR. FACADES ». Lot de travaux de la restructuration approuvée par 2017 DPA 9 (« Palais Galliera, 10, avenue Pierre-Ier-de-Serbie (16e). - Restructuration partielle »)."
+  },
+  {
+   "numero_marche": "20191210000268",
+   "objet": "CSP5 TVX PALAIS GALLIERA - LOT6 : BALUSTRADES & ESCALIERS",
+   "fournisseur": "STE LOUIS GENESTE ET SES FILS",
+   "montant_max": 328949.53,
+   "date_notification": "2019-03-06",
+   "preuve": "L'objet nomme le lieu et porte sur des éléments bâtis du monument : « CSP5 TVX PALAIS GALLIERA - LOT6 : BALUSTRADES & ESCALIERS ». Le rattachement repose sur ce seul objet, qui suffit. Le rapprochement avec l'opération de restructuration (2017 DPA 9) n'est qu'un indice concordant (même préfixe CSP5, même titulaire et même période que le lot 8) et n'est pas écrit dans la source."
+  },
+  {
+   "numero_marche": "20191210000447",
+   "objet": "CSP5 TVX RESTRUCTURATION PALAIS GALLIERA LOT7 : SIGNALETIQUE",
+   "fournisseur": "SINIO",
+   "montant_max": 25128.0,
+   "date_notification": "2019-04-23",
+   "preuve": "L'objet nomme le lieu et porte sur son équipement : « CSP5 TVX RESTRUCTURATION PALAIS GALLIERA LOT7 : SIGNALETIQUE ». Lot de la même restructuration (2017 DPA 9), notifié le même jour que le lot 8."
+  }
+ ],
+ "sources": {
+  "delibs": {
+   "name": "Débat-Délibs — Conseil de Paris",
+   "url": "https://a06-v7.apps.paris.fr/a06/"
+  },
+  "bmo": {
+   "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
+   "url": "https://gallica.bnf.fr/ark:/12148/cb343512457/date"
+  },
+  "invest": {
+   "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
+   "url": "https://opendata.paris.fr/"
+  },
+  "wiki": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ }
+}

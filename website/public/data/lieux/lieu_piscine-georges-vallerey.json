@@ -1,0 +1,223 @@
+{
+ "generated_at": "2026-07-18T14:38:43.284445+00:00",
+ "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
+ "slug": "piscine-georges-vallerey",
+ "name": "Piscine Georges-Vallerey",
+ "kind_fr": "Piscine",
+ "kind_en": "Swimming pool",
+ "famille": "sport",
+ "arrondissement": 20,
+ "lat": 48.8746,
+ "lon": 2.4085,
+ "photo": "/img/lieux/piscine-georges-vallerey.jpg",
+ "photo_credit": {
+  "licence": "CC BY 2.0",
+  "auteur": "Guilhem Vellut from Paris, France",
+  "url": "https://commons.wikimedia.org/wiki/File:Piscine_Georges_Vallerey,_Paris_8_April_2017.jpg",
+  "source": "Wikimedia Commons"
+ },
+ "wiki": {
+  "extract": "La piscine Georges-Vallerey ou piscine des Tourelles est un complexe aquatique situé 148 avenue Gambetta, près de la porte des Lilas, dans le 20e arrondissement de Paris. Construite à l'occasion des Jeux olympiques d'été de 1924, la piscine était le siège de la Fédération française de natation, et de nombreuses éditions des championnats de France de natation y ont été organisées.",
+  "url": "https://fr.wikipedia.org/wiki/Piscine_Georges-Vallerey",
+  "source": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ },
+ "stats": {
+  "n_delibs": 70,
+  "delibs_span": [
+   1997,
+   2022
+  ],
+  "n_bmo_brut": 546,
+  "n_bmo_verifies": 3,
+  "invest_total_eur": 0,
+  "invest_annees": [],
+  "lecture_mode": "titre nommant le lieu (13 trouvés)",
+  "n_lus": 13,
+  "n_lieu": 13
+ },
+ "subventions_exploitant": null,
+ "residents": [],
+ "kpi_montant": null,
+ "synthese_fr": "Entre 1997 et 2022, les délibérations du Conseil de Paris consacrées au stade nautique Georges-Vallerey portent d'abord sur le mode de gestion de l'équipement. En avril 1997, le Conseil examine une subvention compensatrice de 1.504.203 F du loyer dû par la Fédération française de natation et deux comités pour leurs locaux dans l'enceinte du stade nautique, alors concédé à la société France Patinoire ; M. RIOU annonce que le groupe socialiste et apparentés votera contre, et l'adjoint rapporteur répond que le concessionnaire reverse à la Ville la totalité de son bénéfice d'exploitation, soit 1 million de francs pour la saison 1995-1996. En janvier 1998, le Conseil approuve le principe d'une délégation de service public selon la procédure de la loi Sapin et autorise le Maire à engager la publicité ; l'adjoint indique en séance que Vallerey est la seule piscine de Paris à disposer d'un bassin olympique, avec 160 756 entrées en 1996. En octobre 1998, le Conseil est appelé à autoriser le Maire à signer la convention avec la société France patinoires S.A. ; la convention sera signée le 6 novembre 1998, date que retient la délibération de décembre 2001 lui apportant un avenant. En séance, Mme BILLARD relève que la délégation doit prendre effet le 1er octobre alors que le vote a lieu le 19, et indique que le Conseil du 20e arrondissement a voté contre ; Mme DURAND dénonce un prix d'entrée de 34 F, « le plus cher de Paris », et affirme que la convention prévoit une fermeture totale pour travaux en 1998-1999 dont le coût est « a priori pris en charge totalement par la Ville de Paris, selon l'article 6-2 de la convention » ; M. AUTEXIER affirme que la Ville s'engage à combler tout déficit d'exploitation. La gestion est ensuite exercée par la société Carilis : approbation des tarifs et avenant de conversion à l'euro fin 2001, prolongation d'un an en 2003 — l'adjoint aux Sports expliquant que les travaux incombant à la collectivité n'ont pas été faits parce que les crédits n'avaient pas été mobilisés —, puis marché d'exploitation pris en 2005, aménagé par un avenant en 2006 et prolongé de sept mois en 2011, son échéance étant reportée au 31 décembre 2011. Les autres textes portent sur les travaux et la vie de l'équipement : approbation du principe de la mise aux normes du traitement de l'eau du bassin de 50 mètres et autorisation de signer le marché correspondant en 2002 ; approbation du principe d'une indemnisation de la société MOTEC INGENIERIE pour les préjudices subis lors de la modernisation des chaufferies et de la ventilation, en octobre 2007 puis à nouveau en mai 2008 ; subvention de 20.000 euros à la Fédération française de natation pour le Tournoi Multinations Junior en 2008 ; et, en 2022, examen d'une convention de cession à titre gratuit d'éléments en bois issus de la charpente à l'association \"Extramuros\".",
+ "moments": [
+  {
+   "id": "19373",
+   "seance": "AVRIL 1997",
+   "fait": "Le Conseil examine une subvention compensatrice de 1 504 203 F du loyer dû par la Fédération française de natation et deux comités pour leurs locaux dans le stade nautique, concédé à la société France Patinoire ; M. RIOU annonce que le groupe socialiste et apparentés votera contre.",
+   "pourquoi": "La Ville subventionne un loyer encaissé par son concessionnaire",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=19373"
+  },
+  {
+   "id": "18194",
+   "seance": "JANVIER 1998",
+   "fait": "Débat sur le principe de la délégation : l'adjoint indique que Vallerey est la seule piscine de Paris à disposer d'un bassin olympique, qu'elle a enregistré 160 756 entrées en 1996 et que le délégataire reverse à la Ville la totalité de son bénéfice d'exploitation.",
+   "pourquoi": "Le seul bassin olympique de Paris, selon l'adjoint",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=18194"
+  },
+  {
+   "id": "19546",
+   "seance": "OCTOBRE 1998",
+   "fait": "Le Conseil est appelé à autoriser le Maire à signer la convention de délégation avec France patinoires S.A. ; Mme BILLARD conteste une date d'effet antérieure au vote et indique que le Conseil du 20e arrondissement a voté contre, Mme DURAND avance 34 F l'entrée et une fermeture pour travaux en 1998-1999 dont le coût serait pris en charge par la Ville, M. AUTEXIER affirme que la Ville s'engage à combler tout déficit.",
+   "pourquoi": "Les tarifs et le partage du risque en débat",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=19546"
+  },
+  {
+   "id": "88016",
+   "seance": "JUILLET 2002",
+   "fait": "Le Conseil approuve le principe de la mise aux normes du traitement de l'eau du bassin de 50 mètres et autorise le Maire à signer le marché de travaux correspondant, passé sur appel d'offres ouvert.",
+   "pourquoi": "Le traitement de l'eau du bassin de 50 mètres à mettre aux normes",
+   "vedette": false,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=88016"
+  },
+  {
+   "id": "8201",
+   "seance": "JUILLET 2003",
+   "fait": "Le Conseil prolonge d'un an la délégation : l'adjoint aux Sports explique que les travaux incombant à la collectivité n'ont pas été faits parce que les crédits n'avaient pas été mobilisés, et que la prolongation doit permettre de les réaliser avant de revoir les tarifs.",
+   "pourquoi": "Selon l'adjoint aux Sports, des travaux repoussés faute de crédits mobilisés",
+   "vedette": false,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=8201"
+  },
+  {
+   "id": "53804",
+   "seance": "OCTOBRE 2007",
+   "fait": "Le Conseil approuve le principe d'indemniser la société MOTEC INGENIERIE pour les préjudices subis dans le cadre de la modernisation des chaufferies et de la ventilation de la piscine, et autorise le Maire à signer une transaction.",
+   "pourquoi": "Après le chantier de ventilation, le principe d'une indemnisation",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=53804"
+  },
+  {
+   "id": "61435",
+   "seance": "NOVEMBRE 2008",
+   "fait": "Une subvention de 20 000 euros est attribuée à la Fédération française de natation pour organiser le Tournoi Multinations Junior de natation dans la piscine.",
+   "pourquoi": "L'équipement accueille le Tournoi Multinations Junior",
+   "vedette": false,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=61435"
+  },
+  {
+   "id": "168035",
+   "seance": "DECEMBRE 2022",
+   "fait": "Le Conseil examine la cession à titre gratuit d'éléments en bois issus de la charpente de la piscine à l'association \"Extramuros\", en même temps qu'un vœu sur le contrôle de la ventilation des piscines municipales.",
+   "pourquoi": "Que devient le bois de la charpente de la piscine",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=168035"
+  }
+ ],
+ "montants": [
+  {
+   "seance": "AVRIL 1997",
+   "montant": "1.504.203 F",
+   "objet": "subvention compensatrice du loyer dû par la Fédération française de natation, le Comité d'Ile-de-France et le Comité de Paris de natation pour l'occupation de locaux dans l'enceinte du stade nautique, au titre de 1997 ; montant du projet de délibération soumis au Conseil",
+   "citation": "l'occupation de locaux dans l'enceinte du stade nautique \" Georges-Vallerey \" au titre de l'année 1997. - Montant total : 1.504.203 F.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=19373"
+  },
+  {
+   "seance": "AVRIL 1997",
+   "montant": "1 million de francs",
+   "objet": "bénéfice d'exploitation reversé à la Ville par France Patinoire pour la saison 1995-1996 ; chiffre cité en débat par l'adjoint rapporteur, non voté",
+   "citation": "Pour la dernière saison 1995-1996, le bénéfice versé à la Ville de Paris s'élève à 1 million de francs.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=19373"
+  },
+  {
+   "seance": "JANVIER 1998",
+   "montant": "un million de francs",
+   "objet": "bénéfice d'exploitation reversé à la Ville par la Société France-Patinoire pour la saison 1995/1996 ; chiffre cité en débat par l'adjoint, non voté",
+   "citation": "la Société France-Patinoire reverse à la Ville de Paris la totalité de son bénéfice d'exploitation, pour la dernière saison 1995/1996 le bénéfice versé à la Ville de Paris s'est élevé à un million de francs.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=18194"
+  },
+  {
+   "seance": "OCTOBRE 1998",
+   "montant": "180 F (carnet de 10 entrées) contre 75 F",
+   "objet": "prix du carnet de 10 entrées à Vallerey comparé aux piscines municipales, avec hausse annoncée de 4 % au 1er janvier ; tarifs cités en débat par une élue",
+   "citation": "le carnet de 10 entrées 30 F plus cher qu'à Pontoise, soit 180 F, contre 75 F dans les piscines municipales. Et tous ces tarifs seront augmentés de 4 % au 1er janvier.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=19546"
+  },
+  {
+   "seance": "OCTOBRE 1998",
+   "montant": "20 F (enfants) et 25 F (adultes)",
+   "objet": "tarifs d'entrée avancés pour Vallerey et comparés à 9 F et 16 F dans les piscines de Paris ; chiffres cités en débat par un élu, au conditionnel",
+   "citation": "les tarifs dans les piscines de Paris, c'est 9 F pour les enfants, 16 F pour les adultes ; à la piscine Georges-Vallerey, ce serait 20 F pour les enfants, 25 F pour les adultes",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=19546"
+  },
+  {
+   "seance": "OCTOBRE 1998",
+   "montant": "825 F hors taxes de l'heure",
+   "objet": "prix que la Ville paierait au délégataire pour la location d'un bassin pour les enfants des écoles ; chiffre cité en débat par un élu",
+   "citation": "il faudra qu'elle paye 825 F hors taxes de l'heure pour la location d'un bassin, c'est-à-dire l'équivalent de 40 entrées.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=19546"
+  },
+  {
+   "seance": "OCTOBRE 1998",
+   "montant": "34 F l'entrée",
+   "objet": "prix d'entrée présenté comme le plus cher de Paris ; chiffre cité en débat par une élue, non voté",
+   "citation": "le stade nautique Georges-Vallerey est la piscine municipale parisienne où le prix d'entrée est le plus cher de Paris : 34 F l'entrée !",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=19546"
+  },
+  {
+   "seance": "JUILLET 2003",
+   "montant": "3,95 euros (tarif plein) et 3,20 euros (tarif réduit)",
+   "objet": "tarifs d'entrée à Georges-Vallerey, comparés par l'élue à 2,41 euros et 1,35 euro en piscine municipale ; chiffres cités en débat, non votés",
+   "citation": "Piscine Georges-Vallerey, c'est 3,95 euros tarif plein ou 3,20 euros pour le tarif réduit.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=8201"
+  },
+  {
+   "seance": "NOVEMBRE 2008",
+   "montant": "20.000 euros",
+   "objet": "subvention votée à la Fédération Française de Natation pour l'organisation du Tournoi Multinations Junior de natation à la piscine",
+   "citation": "Une subvention d?un montant de 20.000 euros est attribuée à la Fédération Française de Natation (n°D02597/2008), 148, avenue Gambetta (20ème), pour l?organisation du Tournoi Multinations Junior de natation",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=61435"
+  }
+ ],
+ "bmo_extraits": [],
+ "bmo_recit": null,
+ "invest": [],
+ "marches": [
+  {
+   "numero_marche": "20171210001819",
+   "objet": "RÉNOVATION DE LA PISCINE GEORGES VALLEREY",
+   "fournisseur": "BAUDIN CHATEAUNEUF",
+   "montant_max": 1825232.87,
+   "date_notification": "2017-11-30",
+   "preuve": "L'objet du marché nomme explicitement le lieu : « RÉNOVATION DE LA PISCINE GEORGES VALLEREY ». Travaux portant sur l'équipement lui-même. Les 13 délibérations lues mentionnant « Vallerey » renvoient toutes au même équipement (stade nautique Georges-Vallerey, 148 avenue Gambetta, 20e — adresse citée notamment par les délibérations 1997 JS 369 et 2002 JS 213), sans autre équipement parisien homonyme dans le corpus."
+  },
+  {
+   "numero_marche": "20222022T04610",
+   "objet": "SA4 AOO RENOVATION PARTIELLE PISCINE GEORGES VALLEREY LOT2",
+   "fournisseur": "EZEL",
+   "montant_max": 1271574.74,
+   "date_notification": "2022-07-05",
+   "preuve": "L'objet nomme le lieu : « RENOVATION PARTIELLE PISCINE GEORGES VALLEREY LOT2 ». Marché de travaux sur l'équipement lui-même. À titre de contexte concordant (sans que la source rattache ce marché précis), la délibération 2022 DJS 163 (séance de décembre 2022) atteste de travaux sur la charpente du bâtiment à la même période : « convention de cession à titre gratuit d'éléments en bois issus de la charpente de la piscine Georges Vallerey (20e) à l'association \"Extramuros\" »."
+  },
+  {
+   "numero_marche": "20212021T00256",
+   "objet": "REFECTION TOITURE PISCINE GEORGES VALLEREY 20 EME",
+   "fournisseur": "ALTAIS TRAVAUX D'ACCES DIFFICILE",
+   "montant_max": 36890.0,
+   "date_notification": "2021-02-10",
+   "preuve": "L'objet nomme le lieu et son arrondissement : « REFECTION TOITURE PISCINE GEORGES VALLEREY 20 EME », cohérent avec la localisation du lieu (20e arrondissement, 148 avenue Gambetta). Travaux sur le bâtiment lui-même."
+  }
+ ],
+ "sources": {
+  "delibs": {
+   "name": "Débat-Délibs — Conseil de Paris",
+   "url": "https://a06-v7.apps.paris.fr/a06/"
+  },
+  "bmo": {
+   "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
+   "url": "https://gallica.bnf.fr/ark:/12148/cb343512457/date"
+  },
+  "invest": {
+   "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
+   "url": "https://opendata.paris.fr/"
+  },
+  "wiki": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ }
+}

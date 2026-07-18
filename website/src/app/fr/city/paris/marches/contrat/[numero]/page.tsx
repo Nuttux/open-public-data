@@ -4,7 +4,9 @@ import "@/app/fusion.css";
 
 import { Navbar, Footer, ContratFiche } from "@/components/fusion";
 import { MarchesBackKicker, ContratLede, ContratTitleFallback } from "@/components/fusion/EntityPageHeaders";
+import VoirLeLieu from "@/components/fusion/VoirLeLieu";
 import { loadContrat, loadContratProjet, loadContratRanking, loadMarcheVulgarization, loadSirene } from "@/lib/fusion-data";
+import { lieuForProjet } from "@/lib/lieux-data";
 import { readLocale } from "@/lib/seo";
 import { normalizeObjet } from "@/lib/objet-normalizer";
 
@@ -61,6 +63,12 @@ export default async function ContratPage({ params }: { params: Promise<Params> 
     : null;
   const fournisseurSirene = siren ? loadSirene(siren) : null;
   const ranking = loadContratRanking(contrat.numero, contrat.year, contrat.nature, contrat.montantMax);
+  const locale = await readLocale();
+  // Lien transitif vers le lieu : ce contrat porte sur un projet, et le projet a
+  // été rattaché à un lieu par le juge — pas de nouvelle résolution, on suit la
+  // chaîne contrat → projet → lieu.
+  const projetLink = loadContratProjet(contrat.numero);
+  const lieuLien = projetLink ? lieuForProjet(projetLink.nom) : null;
 
   // h1 keeps proper-noun data (objet_clair / normalizeObjet output) — already
   // FR but data-driven, not template text. Fallback uses a translation key.
@@ -86,12 +94,13 @@ export default async function ContratPage({ params }: { params: Promise<Params> 
         </div>
       </section>
       <div className="fx-fiche-wrap">
+        <VoirLeLieu lien={lieuLien} locale={locale} />
         <ContratFiche
           contrat={contrat}
           vulgarization={vulgarization}
           fournisseurSirene={fournisseurSirene}
           ranking={ranking}
-          projet={loadContratProjet(contrat.numero)}
+          projet={projetLink}
         />
       </div>
       </main>

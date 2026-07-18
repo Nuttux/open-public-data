@@ -1,0 +1,128 @@
+{
+ "generated_at": "2026-07-18T14:38:43.284445+00:00",
+ "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
+ "slug": "kiosque-fleurs-cite",
+ "name": "Marché aux fleurs de la Cité",
+ "kind_fr": "Marché",
+ "kind_en": "Market",
+ "famille": "services",
+ "arrondissement": 4,
+ "lat": 48.8555,
+ "lon": 2.3474,
+ "photo": "/img/lieux/kiosque-fleurs-cite.jpg",
+ "photo_credit": {
+  "licence": "Public domain",
+  "auteur": "Theodor Josef Hubert Hoffbauer",
+  "url": "https://commons.wikimedia.org/wiki/File:Quai_de_la_Cit%C3%A9_et_March%C3%A9_aux_Fleurs,_1876.jpg",
+  "source": "Wikimedia Commons"
+ },
+ "wiki": {
+  "extract": null,
+  "url": null,
+  "source": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ },
+ "stats": {
+  "n_delibs": 75,
+  "delibs_span": [
+   2003,
+   2023
+  ],
+  "n_bmo_brut": 2000,
+  "n_bmo_verifies": null,
+  "invest_total_eur": 97211.13,
+  "invest_annees": [
+   "2023"
+  ],
+  "lecture_mode": "titre nommant le lieu (6 trouvés)",
+  "n_lus": 6,
+  "n_lieu": 5
+ },
+ "subventions_exploitant": null,
+ "residents": [],
+ "kpi_montant": null,
+ "synthese_fr": "Le marché aux fleurs de l'île de la Cité revient devant le Conseil de Paris à partir de 2003, lorsque des travaux d'étanchéité de la station de métro Cité conduisent des élus à s'inquiéter, par deux vœux, du démontage des halles et de la réinstallation des commerçants. En 2006, une délibération convertit en euros les droits de place perçus sur ce marché parmi d'autres marchés parisiens. En 2018, un vœu du groupe UDI-MODEM, amendé par l'Exécutif et adopté, demande des études complémentaires sur la rénovation, une adjointe indiquant qu'un diagnostic de 2016-2017 avait relevé des pathologies structurelles. En décembre 2020, le projet de délibération DCPA 24 porte sur la rénovation patrimoniale des halles de la fin du XIXe siècle et un projet de réaménagement de l'espace public alentour ; en février 2021, un vœu de l'Exécutif demande l'arrêt de la vente d'animaux à la réouverture des halles rénovées, l'adjoint Christophe Najdovski s'engageant à modifier le règlement pour interdire la vente d'oiseaux et d'animaux, tandis qu'un vœu de mars 2023 porte sur la préservation du marché.",
+ "moments": [
+  {
+   "id": "8368",
+   "seance": "JUILLET 2003",
+   "fait": "Deux vœux U.D.F.-U.M.P. s'inquiètent du démontage des halles pour les travaux d'étanchéité du métro Cité et réclament des garanties pour les fleuristes.",
+   "pourquoi": "Un chantier de métro inquiète les fleuristes",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=8368"
+  },
+  {
+   "id": "88833",
+   "seance": "MAI 2006",
+   "fait": "Le Conseil fixe en euros les droits de place du marché aux fleurs de la Cité, de 0,32 à 2,74 euros selon la place.",
+   "pourquoi": "Ce que paient les fleuristes à la Ville",
+   "vedette": false,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=88833"
+  },
+  {
+   "id": "143989",
+   "seance": "JUILLET 2018",
+   "fait": "Un vœu UDI-MODEM, amendé et adopté, demande des études complémentaires sur la rénovation et l'idée d'une vitrine de la biodiversité.",
+   "pourquoi": "Faire du marché une vitrine végétale",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=143989"
+  },
+  {
+   "id": "157263",
+   "seance": "DECEMBRE 2020",
+   "fait": "Le projet de délibération DCPA 24 porte la rénovation patrimoniale des halles et le réaménagement de l'espace public alentour.",
+   "pourquoi": "La rénovation attendue arrive en délibération",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=157263"
+  },
+  {
+   "id": "157579",
+   "seance": "FEVRIER 2021",
+   "fait": "Un vœu de l'Exécutif demande l'arrêt de la vente d'oiseaux et d'animaux à la réouverture des halles rénovées ; l'adjoint s'engage à modifier le règlement.",
+   "pourquoi": "La fin annoncée du marché aux oiseaux",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=157579"
+  },
+  {
+   "id": "168328",
+   "seance": "MARS 2023",
+   "fait": "Un vœu 'relatif à la préservation du Marché aux Fleurs' est déposé.",
+   "pourquoi": "La préservation du marché revient au Conseil",
+   "vedette": false,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=168328"
+  }
+ ],
+ "montants": [],
+ "bmo_extraits": [],
+ "bmo_recit": null,
+ "invest": [
+  {
+   "annee": 2023,
+   "montant_eur": 97211.13,
+   "nom_projet": "Marché couvert 21, place Louis Lépine - Réhabilitation des pavillons",
+   "preuve": "Le nom du projet nomme l'adresse et le bâtiment du lieu : « Marché couvert 21, place Louis Lépine - Réhabilitation des pavillons ». Le marché aux fleurs de la Cité est le marché couvert de la place Louis-Lépine (4e) — ctx : « marché aux fleurs de la Cité sis à Paris (4ème) », « marché aux Fleurs place Louis-Lépine ». Ses halles/pavillons font l'objet de la rénovation votée en DCPA 24 (déc. 2020, « remettre en état d'origine les halles patrimoniales »). Distance 39 m.",
+   "id": "2023_00_9_036"
+  }
+ ],
+ "marches": [],
+ "sources": {
+  "delibs": {
+   "name": "Débat-Délibs — Conseil de Paris",
+   "url": "https://a06-v7.apps.paris.fr/a06/"
+  },
+  "bmo": {
+   "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
+   "url": "https://gallica.bnf.fr/ark:/12148/cb343512457/date"
+  },
+  "invest": {
+   "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
+   "url": "https://opendata.paris.fr/"
+  },
+  "wiki": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ }
+}

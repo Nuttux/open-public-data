@@ -1,0 +1,306 @@
+{
+ "generated_at": "2026-07-18T14:38:43.284445+00:00",
+ "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
+ "slug": "petite-ceinture",
+ "name": "Petite Ceinture",
+ "kind_fr": "Infrastructure",
+ "kind_en": "Infrastructure",
+ "famille": "services",
+ "arrondissement": 0,
+ "lat": 48.8342,
+ "lon": 2.3906,
+ "photo": "/img/lieux/petite-ceinture.jpg",
+ "photo_credit": {
+  "licence": "CC BY-SA 3.0",
+  "auteur": "Myrabella",
+  "url": "https://commons.wikimedia.org/wiki/File:Ligne_Petite_Ceinture_parc_Montsouris_Paris.jpg",
+  "source": "Wikimedia Commons"
+ },
+ "wiki": {
+  "extract": "La ligne de Petite Ceinture de Paris, communément désignée sous le nom de Petite Ceinture, est une ligne de chemin de fer à double voie de 32 kilomètres de longueur encerclant Paris à l'intérieur des boulevards des Maréchaux. Bien que faisant toujours partie du réseau ferré national, elle est aujourd'hui inutilisée sur la majeure partie de son parcours.",
+  "url": "https://fr.wikipedia.org/wiki/Ligne_de_Petite_Ceinture",
+  "source": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ },
+ "stats": {
+  "n_delibs": 642,
+  "delibs_span": [
+   2005,
+   2026
+  ],
+  "n_bmo_brut": 1525,
+  "n_bmo_verifies": 10,
+  "invest_total_eur": 0,
+  "invest_annees": [],
+  "lecture_mode": "titre nommant le lieu (105 trouvés)",
+  "n_lus": 43,
+  "n_lieu": 43
+ },
+ "subventions_exploitant": null,
+ "residents": [
+  {
+   "beneficiaire": "HALAGE",
+   "montant_total": 358108.0,
+   "preuve": "Objet de la subvention verbatim : « Chantier d¿insertion entretien de la Petite Ceinture ferroviaire PC18, PC19, PC20) » — l'objet nomme le lieu et désigne l'entretien de trois tronçons (18e, 19e, 20e). SIRET 40116107000032. Le débat de la délibération 2023 DEVE 20, « Subventions (410.676 euros) à 5 associations pour des projets d'insertion professionnelle par l'entretien de la petite ceinture ferroviaire », cite nommément « Halage » parmi ces structures d'insertion. Rôle « resident » et non « exploitant » : l'association réalise un chantier d'insertion SUR le site, elle ne gère pas la Petite Ceinture — la Ville conventionne 5 associations pour cet entretien (2023 DEVE 20, 2025 DEVE 26, 2025 DEVE 88) et l'infrastructure appartient à S.N.C.F. Réseau (2026 DEVE 16, « Conventions de financement de travaux de mise en sécurité sur la Petite Ceinture du 15e avec S.N.C.F. Réseau »). Réserve sur le montant : 255 258 € (2024) proviennent d'une subvention unique dont l'objet nomme la Petite Ceinture ; les 102 850 € restants (2018) proviennent d'une ligne agrégeant 2 subventions dont seul l'objet principal nomme le lieu."
+  },
+  {
+   "beneficiaire": "INTERFACE FORMATION",
+   "montant_total": 96300.0,
+   "preuve": "Objet de la subvention verbatim : « Chantier d'insertion Petite ceinture ferroviaire 12e et 20e association Interface Formation-Fonctionnement » — l'objet nomme le lieu et précise les tronçons (12e et 20e). SIRET 40218568000020. Rôle « resident » et non « exploitant » : le terme « Fonctionnement » qualifie le type de subvention versée à l'association, pas la gestion du lieu ; l'association mène un chantier d'insertion sur le site sans le gérer, la Ville conventionnant 5 associations pour cet entretien (2023 DEVE 20, 2025 DEVE 26, 2025 DEVE 88). Confiance « moyenne » : l'association n'est nommée dans aucune délibération ni aucun débat du contexte, et la totalité du montant provient d'une seule ligne (2018) agrégeant 2 subventions dont seul l'objet principal nomme la Petite Ceinture."
+  }
+ ],
+ "kpi_montant": null,
+ "synthese_fr": "Les plus anciens documents du corpus (2005) montrent le Conseil de Paris demandant à RFF et à la SNCF de répondre à ses propositions d'aménagements paysagers sur la Petite Ceinture, dont l'entretien est jugé insuffisant ; un protocole-cadre Ville-RFF est signé en juin 2006 pour cinq ans et prévoit des aménagements réversibles à des fins ludiques et récréatives. Les premiers tronçons sont conventionnés puis ouverts dans le 15e (convention d'occupation temporaire Balard-Olivier de Serres en 2011, promenade ouverte depuis trois mois lors du débat de novembre 2013), tandis que la conférence de consensus votée à l'unanimité en novembre 2011 est dotée de 80.000 euros au budget supplémentaire, après une projection ramenée de 150.000 euros. À partir de 2018, la Ville prend par convention l'entretien, la gestion et la surveillance de tronçons (PC 17), et les débats récurrents portent sur la sécurité, l'accessibilité aux personnes à mobilité réduite, les grillages, l'absence de bancs, de poubelles et de cendriers, et l'interdiction des chiens, demandée en 2019 puis à nouveau en 2023 et refusée les deux fois. Les montants votés relèvent surtout de subventions d'insertion pour l'entretien (18.635 euros en 2016, 31.217 euros en 2019, 410.676 euros en 2023) et de cofinancements extérieurs : Région Île-de-France en 2017, Métropole du Grand Paris et fonds Nature 2050 pour 500.000 euros en 2023, Fonds vert et Agence de l'Eau Seine-Normandie en 2024, le rachat à la SNCF de la parcelle du futur bois de Charonne étant chiffré à 11,5 millions par le maire du 20e en séance. Le principe de réversibilité ferroviaire, inscrit au protocole-cadre de 2015, est contesté dans les deux sens — le groupe Communiste demandant que les voies ne soient pas déposées, le groupe Union Capitale demandant la levée de la clause —, et cette convention-cadre arrive à son terme en 2025, alors que la Ville annonce 11,5 kilomètres accessibles au public en 2026 dans 9 arrondissements.",
+ "moments": [
+  {
+   "id": "89213",
+   "seance": "MAI 2006",
+   "fait": "Vœu accompagnant le protocole Ville-RFF conclu pour cinq ans : le Conseil constate qu'aucun projet ferroviaire n'est avéré et demande le lancement rapide des sentiers, jardins et usages ludiques prévus sur les surlargeurs et la plateforme.",
+   "pourquoi": "Le cadre contractuel qui rend la reconversion possible",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=89213"
+  },
+  {
+   "id": "100826",
+   "seance": "JUILLET 2011",
+   "fait": "Signature avec RFF d'une convention d'occupation temporaire sur le tronçon Balard-Olivier de Serres (15e) et prorogation de la convention-cadre ; le maire du 15e rappelle une concertation ayant réuni 300 riverains et un retard sur le calendrier.",
+   "pourquoi": "Premier tronçon conventionné puis aménagé",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=100826"
+  },
+  {
+   "id": "109566",
+   "seance": "OCTOBRE 2012",
+   "fait": "Question d'actualité sur la conférence de consensus votée un an plus tôt et toujours pas lancée : 80 000 euros ont été inscrits au budget supplémentaire pour une assistance à maîtrise d'ouvrage, après une projection ramenée de 150 000 euros.",
+   "pourquoi": "Ce que coûte, et retarde, la concertation",
+   "vedette": false,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=109566"
+  },
+  {
+   "id": "116504",
+   "seance": "NOVEMBRE 2013",
+   "fait": "Avenant au marché de travaux du 15e pour des panneaux pédagogiques et une liaison vers un court de tennis ; le débat porte sur les tags, les jets de cailloux vers les riverains, l'expérimentation sans poubelle et l'heure de fermeture le week-end.",
+   "pourquoi": "La promenade ouverte, ses usages et ses conflits",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=116504"
+  },
+  {
+   "id": "140877",
+   "seance": "FEVRIER 2018",
+   "fait": "Convention de transfert de gestion de la PC 17 : la Ville s'engage à assumer l'entretien, la gestion courante et la surveillance de plus de 16 000 m², ce que le maire du 17e juge sans garantie de moyens.",
+   "pourquoi": "La Ville devient gestionnaire, pas seulement occupante",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=140877"
+  },
+  {
+   "id": "146651",
+   "seance": "NOVEMBRE 2018",
+   "fait": "Vœu déposé après le retrait d'un projet de société par actions simplifiée Ville-SNCF sur le devenir des bâtiments de la Petite Ceinture, qualifié de « machine à cash » et critiqué pour sa gouvernance ; avis défavorable de l'Exécutif.",
+   "pourquoi": "Le conflit sur qui décide du patrimoine bâti",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=146651"
+  },
+  {
+   "id": "152497",
+   "seance": "SEPTEMBRE 2019",
+   "fait": "Refus d'autoriser les chiens tenus en laisse sur la coulée verte Pereire, ouverte en août : l'adjointe assume le choix de ne pas multiplier poubelles, cendriers et bancs pour préserver le caractère du site.",
+   "pourquoi": "Les règles d'usage d'un site volontairement nu",
+   "vedette": false,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=152497"
+  },
+  {
+   "id": "179740",
+   "seance": "AVRIL 2025",
+   "fait": "Subventions aux cinq associations d'insertion qui entretiennent la ligne et vœu communiste sur le renouvellement de la convention-cadre de 2015, arrivée à son terme ; la Ville annonce 11,5 kilomètres accessibles en 2026 dans 9 arrondissements.",
+   "pourquoi": "L'échéance contractuelle et le bilan chiffré",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=179740"
+  }
+ ],
+ "montants": [
+  {
+   "seance": "OCTOBRE 2012",
+   "montant": "80.000 euros",
+   "objet": "Ligne budgétaire inscrite au budget supplémentaire pour financer une assistance à maîtrise d'ouvrage pour l'organisation de la conférence de consensus ; montant cité en débat par un élu (Yves CONTASSOT), à la suite d'un amendement de son groupe.",
+   "citation": "une ligne budgétaire de 80.000 euros a été inscrite au budget supplémentaire pour le financement d'une assistance à maîtrise d'ouvrage pour accompagner la Ville dans l'organisation de la conférence de consensus",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=109566"
+  },
+  {
+   "seance": "OCTOBRE 2012",
+   "montant": "150.000 euros",
+   "objet": "Projection initiale du coût de la conférence de consensus, ramenée à 80.000 euros ; montant cité en débat par la première adjointe Anne HIDALGO.",
+   "citation": "il y aura une conférence, moins coûteuse que ce que vous aviez souhaité au départ, puisqu'il y avait une projection de 150.000 euros que l'on avait ramené à 80.000 euros.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=109566"
+  },
+  {
+   "seance": "SEPTEMBRE 2016",
+   "montant": "18.635 euros",
+   "objet": "Subvention votée à l'association « Espaces » pour un projet d'insertion professionnelle par l'entretien d'espaces de la Petite Ceinture ferroviaire (15e), assortie d'un avenant à convention.",
+   "citation": "Subvention (18.635 euros) et avenant à convention avec l’association \"Espaces\" pour la réalisation d’un projet d’insertion professionnelle par l’entretien d’espaces de la Petite Ceinture ferroviaire (15e).",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=132300"
+  },
+  {
+   "seance": "SEPTEMBRE 2019",
+   "montant": "31.217 euros",
+   "objet": "Subventions votées à deux associations pour des projets d'insertion professionnelle par l'entretien de la Petite Ceinture ferroviaire (12e, 14e, 15e et 20e), au titre du budget participatif 2015.",
+   "citation": "Subventions (31.217 euros) à deux associations pour des projets d'insertion professionnelle par l'entretien de la P.C. ferroviaire (12e, 14e, 15e et 20e).",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=152362"
+  },
+  {
+   "seance": "JUILLET 2021",
+   "montant": "800.000 euros",
+   "objet": "Enveloppe votée au budget participatif 2019 par les habitants pour la viabilisation et l'ouverture aux piétons de ce tronçon ; montant rappelé en débat par le maire du 20e.",
+   "citation": "fait voter une enveloppe de 800.000 euros au budget participatif 2019 visant Ã la viabilisation et Ã l?ouverture aux piÃ©tons de ce tronÃ§on",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=163925"
+  },
+  {
+   "seance": "MARS 2023",
+   "montant": "500.000 euros",
+   "objet": "Cofinancement de la Métropole du Grand Paris et du Fonds Nature 2050 pour la création d'un nouvel espace de biodiversité le long de la Petite Ceinture du 20e, objet du projet de délibération voté.",
+   "citation": "pour la création d'un nouvel espace de biodiversité le long de la petite ceinture 20e (500.000 euros).",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=168473"
+  },
+  {
+   "seance": "MARS 2023",
+   "montant": "11,5 millions",
+   "objet": "Investissement de la Ville de Paris pour le rachat à la SNCF de la parcelle du futur bois de Charonne ; montant cité en débat par le maire du 20e, Éric PLIEZ, et non voté par ce projet de délibération.",
+   "citation": "aboutissant au rachat de cette parcelle grÃ¢ce Ã un investissement de 11,5 millions de la Ville de Paris",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=168473"
+  },
+  {
+   "seance": "JUIN 2023",
+   "montant": "410.676 euros",
+   "objet": "Subventions votées à cinq associations pour des projets d'insertion professionnelle par l'entretien de la petite ceinture ferroviaire (12e, 13e, 14e, 15e, 16e, 17e, 18e, 19e et 20e).",
+   "citation": "Subventions (410.676 euros) à 5 associations pour des projets d’insertion professionnelle par l’entretien de la petite ceinture ferroviaire (12e, 13e, 14e, 15e, 16e, 17e, 18e, 19e et 20e).",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=169763"
+  },
+  {
+   "seance": "FEVRIER 2024",
+   "montant": "250.000 euros",
+   "objet": "Subvention votée, via le budget participatif, à l'association « Jardin des Traverses » pour l'installation du projet « ParisCulteurs » sur la Petite Ceinture (18e).",
+   "citation": "Subvention (250.000 euros) à l'association \"Jardin des Traverses\" pour l'installation du projet \"ParisCulteurs\" sur la Petite Ceinture (18e).",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=174434"
+  }
+ ],
+ "bmo_extraits": [
+  {
+   "date": "1894-07-07",
+   "extrait": "CONTRIBUTION SUPPLÉMENTAIRE DE LA VILLE DANS LA SUPPRESSION DES PASSAGES A NIVEAU DU CHEMIN DE FER DE CEINTURE ENTRE LE TUNNEL DE CHARONNE ET'LA SEINE. v M. Vauthier. — Le Conseil a déci",
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k6452799q/f9.item"
+  },
+  {
+   "date": "1923-03-17",
+   "extrait": "154. — Couverture du chemin de fer de Ceinture , rues Sorbier et de la Bidassoa, en vue de l'aménagement d'un Square … de francs pour la couverture du chemin</sp",
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k6430871t/f25.item"
+  },
+  {
+   "date": "1932-04-14",
+   "extrait": "Lajarrige. — Les rues de Cambrai et de Flandre sont traversées par des ponts sur lesquels passe le chemin de fer de Ceinture  … honneur d'attirer l'attention de l'Administration &#",
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k6435687j/f30.item"
+  }
+ ],
+ "bmo_recit": "Dans le Bulletin municipal officiel, le chemin de fer de Ceinture apparaît surtout par ses points de contact avec la voirie. En juillet 1894, le Conseil examine une contribution supplémentaire de la Ville dans la suppression des passages à niveau de la ligne, entre le tunnel de Charonne et la Seine ; M. Vauthier y prend la parole. En mars 1923, une délibération porte sur la couverture de la ligne, rues Sorbier et de la Bidassoa, en vue de l'aménagement d'un square, pour une somme en francs. En avril 1932, M. Lajarrige attire l'attention de l'Administration sur les ponts qui font passer la ligne au-dessus des rues de Cambrai et de Flandre. Sur près de quarante ans, la ligne revient ainsi en séance moins pour son trafic que pour ses croisements avec la rue : passages à niveau, couverture, ponts.",
+ "invest": [],
+ "marches": [
+  {
+   "numero_marche": "20232023T03892",
+   "objet": "SA3 ACBC AMENAGEMENT PROMENADE PETITE CEINTURE 20EME LOT 1",
+   "fournisseur": "ENTREPRISE DE TRAVAUX PUBLICS EGA",
+   "montant_max": 1580837.76,
+   "date_notification": "2023-06-14",
+   "preuve": "L'objet porte explicitement sur le lieu : « AMENAGEMENT PROMENADE PETITE CEINTURE 20EME LOT 1 » (travaux d'aménagement du tronçon du 20e)."
+  },
+  {
+   "numero_marche": "20222022T06773",
+   "objet": "SA3-TVX PROMENADE PETITE CEINTURE - GENIE CIVIL/VRD - LOT1",
+   "fournisseur": "TERIDEAL",
+   "montant_max": 1299402.1,
+   "date_notification": "2022-09-28",
+   "preuve": "L'objet porte explicitement sur le lieu : « TVX PROMENADE PETITE CEINTURE - GENIE CIVIL/VRD - LOT1 » (travaux de génie civil sur la promenade de la Petite Ceinture)."
+  },
+  {
+   "numero_marche": "20191230000954",
+   "objet": "CSP EP TVX AMENAGT PETITE CEINTURE TRONCON PC -LOT2:SERRURER",
+   "fournisseur": "ENVIRONNEMENT SERVICES",
+   "montant_max": 612466.34,
+   "date_notification": "2019-07-11",
+   "preuve": "L'objet porte explicitement sur le lieu : « TVX AMENAGT PETITE CEINTURE TRONCON PC -LOT2:SERRURER » (travaux d'aménagement d'un tronçon, lot serrurerie)."
+  },
+  {
+   "numero_marche": "decp-2025T10219",
+   "objet": "Travaux d’espaces verts pour l’aménagement d’une promenade de la Petite Ceinture dans le secteur compris entre la gare Masséna et le pont de Patay à Paris 13ème",
+   "fournisseur": "ARTOPIA",
+   "montant_max": 588319.43,
+   "date_notification": "2025-10-08",
+   "preuve": "L'objet nomme le lieu et localise le chantier : « aménagement d’une promenade de la Petite Ceinture dans le secteur compris entre la gare Masséna et le pont de Patay à Paris 13ème ». Lieu d'exécution DECP : « Paris »."
+  },
+  {
+   "numero_marche": "20222022F06774",
+   "objet": "SA3-TVX PROMENADE PETITE CEINTURE - SERRURERIE/METALL - LOT2",
+   "fournisseur": "SERRURERIE MENUISERIE",
+   "montant_max": 557679.27,
+   "date_notification": "2022-09-27",
+   "preuve": "L'objet porte explicitement sur le lieu : « TVX PROMENADE PETITE CEINTURE - SERRURERIE/METALL - LOT2 » (lot serrurerie/métallerie de la promenade)."
+  },
+  {
+   "numero_marche": "20232023T03963",
+   "objet": "SA3 ACBC AMENAGEMENT PROMENADE PETITE CEINTURE 20EME LOT 2",
+   "fournisseur": "ENVIRONNEMENT SERVICES",
+   "montant_max": 499985.92,
+   "date_notification": "2023-06-14",
+   "preuve": "L'objet porte explicitement sur le lieu : « AMENAGEMENT PROMENADE PETITE CEINTURE 20EME LOT 2 » (lot 2 du même aménagement du tronçon du 20e)."
+  },
+  {
+   "numero_marche": "20232023T11232",
+   "objet": "SA3/ACBC_TVX AMENAGMT ACCES A LA PROMENADE (PETITE CEINTURE)",
+   "fournisseur": "URBAINE DE TRAVAUX",
+   "montant_max": 179510.48,
+   "date_notification": "2023-12-30",
+   "preuve": "L'objet nomme le lieu : « TVX AMENAGMT ACCES A LA PROMENADE (PETITE CEINTURE) » — travaux d'aménagement des accès à la promenade."
+  },
+  {
+   "numero_marche": "20242024T04674",
+   "objet": "SA3_TRAVAUX DE SERRURERIE_PETITE CEINTURE 15E _LOT 2",
+   "fournisseur": "ENVIRONNEMENT SERVICES",
+   "montant_max": 165554.51,
+   "date_notification": "2024-06-17",
+   "preuve": "L'objet nomme le lieu et le tronçon : « TRAVAUX DE SERRURERIE_PETITE CEINTURE 15E _LOT 2 ». Cohérent avec la délibération 2026 DEVE 16, « Conventions de financement de travaux de mise en sécurité sur la Petite Ceinture du 15e avec S.N.C.F. Réseau »."
+  },
+  {
+   "numero_marche": "20191210001317",
+   "objet": "FOURNITURE ET POSE MODULES PRÉFABRIQUÉS PETITE CEINTURE 13E",
+   "fournisseur": "YVES COUGNAUD",
+   "montant_max": 163000.0,
+   "date_notification": "2019-10-10",
+   "preuve": "L'objet nomme le lieu et le tronçon : « FOURNITURE ET POSE MODULES PRÉFABRIQUÉS PETITE CEINTURE 13E » (équipement posé sur le site)."
+  },
+  {
+   "numero_marche": "20232023S03133",
+   "objet": "SA3-MSAC-ETUDE TECH OPERAT AMENAGEMENT PETITE CEINTURE",
+   "fournisseur": "ETUDES PLURIDISCIPLIN ET CONSEILS",
+   "montant_max": 148462.0,
+   "date_notification": "2023-04-26",
+   "preuve": "L'objet porte sur ce lieu : « ETUDE TECH OPERAT AMENAGEMENT PETITE CEINTURE » (étude technique opérationnelle d'aménagement de la Petite Ceinture)."
+  }
+ ],
+ "sources": {
+  "delibs": {
+   "name": "Débat-Délibs — Conseil de Paris",
+   "url": "https://a06-v7.apps.paris.fr/a06/"
+  },
+  "bmo": {
+   "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
+   "url": "https://gallica.bnf.fr/ark:/12148/cb343512457/date"
+  },
+  "invest": {
+   "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
+   "url": "https://opendata.paris.fr/"
+  },
+  "wiki": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ }
+}

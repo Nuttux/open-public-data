@@ -1,0 +1,391 @@
+{
+ "generated_at": "2026-07-18T14:38:43.284445+00:00",
+ "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
+ "slug": "theatre-silvia-monfort",
+ "name": "Théâtre Silvia Monfort",
+ "kind_fr": "Théâtre",
+ "kind_en": "Theatre",
+ "famille": "culture",
+ "arrondissement": 15,
+ "lat": 48.8303,
+ "lon": 2.30182,
+ "photo": "/img/lieux/theatre-silvia-monfort.jpg",
+ "photo_credit": {
+  "licence": "CC BY-SA 4.0",
+  "auteur": "Jeanne Roualet",
+  "url": "https://commons.wikimedia.org/wiki/File:Monfort-Jeanne.jpg",
+  "source": "Wikimedia Commons"
+ },
+ "wiki": {
+  "extract": "Le théâtre Silvia-Monfort est un établissement culturel de la ville de Paris, situé dans le parc Georges-Brassens, 106, rue Brancion dans le 15e arrondissement de Paris.",
+  "url": "https://fr.wikipedia.org/wiki/Th%C3%A9%C3%A2tre_Silvia-Monfort",
+  "source": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ },
+ "stats": {
+  "n_delibs": 187,
+  "delibs_span": [
+   2002,
+   2010
+  ],
+  "n_bmo_brut": 14,
+  "n_bmo_verifies": null,
+  "invest_total_eur": 0,
+  "invest_annees": [],
+  "lecture_mode": "titre nommant le lieu (37 trouvés)",
+  "n_lus": 36,
+  "n_lieu": 23
+ },
+ "subventions_exploitant": {
+  "nom_fiche": "THEATRE SILVIA MONFORT",
+  "total_eur": 2959000.0,
+  "annees": [
+   "2022",
+   "2023"
+  ],
+  "rows": [
+   {
+    "annee": "2023",
+    "montant_eur": 1584000.0,
+    "beneficiaire": "THEATRE SILVIA MONFORT",
+    "thematique": "Culture"
+   },
+   {
+    "annee": "2022",
+    "montant_eur": 1375000.0,
+    "beneficiaire": "THEATRE SILVIA MONFORT",
+    "thematique": "Culture"
+   }
+  ]
+ },
+ "residents": [
+  {
+   "beneficiaire": "HYBRIDITES FRANCE CHINE",
+   "montant_total": 8000.0,
+   "preuve": "Objet « SV24RES2  Moi, Elles de Jing WANG - Théâtre Silvia Monfort  / Théâtre de l'Opprimé » : aide de résidence nommant explicitement le lieu, sans gestion du théâtre. Confiance moyenne car le spectacle est aussi présenté au Théâtre de l'Opprimé : le montant de 8 000 € couvre les deux salles et n'est pas dédié à ce seul lieu."
+  },
+  {
+   "beneficiaire": "GROUPE CHIENDENT",
+   "montant_total": 7000.0,
+   "preuve": "Objet « Diffusion en serie d'un spectacle (théâtre) au Théâtre Silvia Monfort automne 2024 - SV24DIF2 » : aide à la diffusion nommant explicitement et uniquement le lieu ; le bénéficiaire y accueille un spectacle sans gérer le théâtre."
+  }
+ ],
+ "kpi_montant": null,
+ "synthese_fr": "Ouvert en 1992 dans un bâtiment de l'architecte Claude Parent, au bout du parc Georges Brassens, le théâtre Silvia Monfort est géré par une association que la Ville de Paris subventionne chaque année, 750 000 € en 2002 puis 850 000 € de 2003 à 2006. Au milieu des années 2000, les débats du Conseil portent sur ses difficultés financières : l'élue Karen Taïeb évoque en 2006 un déficit de plus de 100 000 € et des fuites dans la salle, et une subvention exceptionnelle de 90 000 € est votée fin 2006. En 2008-2009, le départ du directeur Régis Santon après dix-sept ans provoque de vifs échanges, l'opposition dénonçant un « quasi-limogeage » quand l'adjoint Christophe Girard parle d'un renouvellement décidé par le conseil d'administration de l'association, qui choisit Laurence de Magalhaès et Stéphane Ricordel. En 2010, la Ville porte la subvention de fonctionnement à 1 440 000 € et ajoute 240 000 € d'équipement pour rétablir la situation financière ; en 2025, le Conseil dénomme « Alexis Grüss » l'allée du parc Georges Brassens qui mène au théâtre.",
+ "moments": [
+  {
+   "id": "7470",
+   "seance": "MARS 2002",
+   "fait": "Le théâtre fête ses dix ans ; le Conseil examine sa subvention de fonctionnement 2002 de 750 000 €, que M. Alayrac juge en baisse de 7 % et Mme Macé de Lépinay insuffisante pour la survie du théâtre.",
+   "pourquoi": "Le théâtre fête ses dix ans",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=7470"
+  },
+  {
+   "id": "18521",
+   "seance": "AVRIL 2003",
+   "fait": "Le Conseil vote 850 000 € pour 2003 ; Mme Macé de Lépinay reproche à la Ville un versement trop tardif et rappelle que le théâtre emploie dix personnes.",
+   "pourquoi": "Subvention votée, mais versée trop tard",
+   "vedette": false,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=18521"
+  },
+  {
+   "id": "16897",
+   "seance": "AVRIL 2006",
+   "fait": "Lors du débat sur la subvention 2006, Mme Taïeb rapporte un déficit de plus de 100 000 € et des fuites dans la salle, disant le théâtre « en danger de fermeture ».",
+   "pourquoi": "Fuites dans la salle, fermeture redoutée",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=16897"
+  },
+  {
+   "id": "72278",
+   "seance": "JUIN 2007",
+   "fait": "Le Conseil émet un vœu réclamant la publication du rapport Faivre d'Arcier sur le théâtre et le versement rapide de la subvention, le vœu évoquant des travaux sur la cage de scène.",
+   "pourquoi": "Un rapport réclamé, des travaux sur scène",
+   "vedette": false,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=72278"
+  },
+  {
+   "id": "18137",
+   "seance": "NOVEMBRE 2008",
+   "fait": "L'opposition dénonce le « quasi-limogeage » du directeur Régis Santon ; M. Girard confirme un changement de direction après dix-sept ans et dit la subvention (900 000 €) maintenue.",
+   "pourquoi": "Le départ du directeur enflamme le Conseil",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=18137"
+  },
+  {
+   "id": "20604",
+   "seance": "JUILLET 2009",
+   "fait": "À l'occasion de l'avenant portant la subvention 2009 à 1 242 000 €, Mme Macé de Lépinay rappelle que Santon quitte le théâtre après dix-huit saisons et 750 000 spectateurs, remplacé par de Magalhaès et Ricordel.",
+   "pourquoi": "Dix-huit saisons, 750 000 spectateurs, un adieu",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=20604"
+  },
+  {
+   "id": "39467",
+   "seance": "SEPTEMBRE 2010",
+   "fait": "Le Conseil attribue une subvention exceptionnelle de 440 000 € (portant le fonctionnement 2010 à 1 440 000 €) et 240 000 € d'équipement pour rétablir la situation financière.",
+   "pourquoi": "La Ville renfloue le théâtre en 2010",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=39467"
+  },
+  {
+   "id": "183301",
+   "seance": "OCTOBRE 2025",
+   "fait": "Le Conseil adopte la dénomination « Alexis Grüss » pour l'allée du parc Georges Brassens qui relie la rue Brancion au théâtre Silvia Monfort.",
+   "pourquoi": "Une allée mène désormais au théâtre",
+   "vedette": false,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=183301"
+  }
+ ],
+ "montants": [
+  {
+   "seance": "JUILLET 2010",
+   "montant": "de 450.000 euros à 1.000.000 euros",
+   "objet": "subvention de fonctionnement 2010 (fonds de roulement)",
+   "citation": "au titre de l?année 2010 est portée de 450.000 euros à 1.000.000 euros, afin de rétablir une partie du fonds de roulement du Théâtre Silvia Monfort",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=79425"
+  },
+  {
+   "seance": "JUILLET 2010",
+   "montant": "550.000 euros",
+   "objet": "dépense imputée au budget 2010 (part complémentaire)",
+   "citation": "La dépense correspondante sera imputée sur le budget de fonctionnement de la Ville de Paris de 2010, soit 550.000 euros sur la rubrique 33",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=79425"
+  },
+  {
+   "seance": "SEPTEMBRE 2010",
+   "montant": "440.000 euros",
+   "objet": "subvention exceptionnelle de fonctionnement 2010",
+   "citation": "Une subvention exceptionnelle de fonctionnement de 440.000 euros est attribuée à l?association Théâtre Silvia Monfort 106, rue Brancion (15e) au titre de l?année 2010",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=39467"
+  },
+  {
+   "seance": "SEPTEMBRE 2010",
+   "montant": "1.440.000 euros",
+   "objet": "total de la subvention de fonctionnement 2010",
+   "citation": "portant ainsi le montant total de la subvention de fonctionnement en 2010 à 1.440.000 euros, pour permettre de rétablir la situation financière de ce théâtre",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=39467"
+  },
+  {
+   "seance": "SEPTEMBRE 2010",
+   "montant": "240.000 euros",
+   "objet": "subvention d'équipement (fonds propres)",
+   "citation": "Une subvention d?équipement de 240.000 euros est attribuée à l?association Théâtre Silvia Monfort 106, rue Brancion (15e), pour renforcer les fonds propres de l?association",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=39467"
+  },
+  {
+   "seance": "NOVEMBRE 2008",
+   "montant": "900.000 euros",
+   "objet": "subvention de fonctionnement, dite maintenue (propos de M. Girard)",
+   "citation": "La subvention de fonctionnement de la Ville, qui est de 900.000 euros, n'est absolument pas remise en question.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=18137"
+  },
+  {
+   "seance": "JUILLET 2007",
+   "montant": "900.000 euros",
+   "objet": "subvention de fonctionnement 2007",
+   "citation": "La dépense correspondante, soit 900.000 euros, sera imputée sur le budget de fonctionnement de la Ville de Paris de 2007",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=90349"
+  },
+  {
+   "seance": "JUILLET 2009",
+   "montant": "de 772.000 euros à 1.242.000 euros",
+   "objet": "subvention de fonctionnement 2009",
+   "citation": "au titre de l?année 2009 est portée de 772.000 euros à 1.242.000 euros, afin de soutenir les activités du Théâtre Silvia Monfort",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=74974"
+  },
+  {
+   "seance": "JUILLET 2009",
+   "montant": "20 000 euros",
+   "objet": "subvention d'équipement 2009",
+   "citation": "la subvention d?équipement de 20 000 euros doit permettre l?acquisition de divers matériels en 2009",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=74974"
+  },
+  {
+   "seance": "SEPTEMBRE 2008",
+   "montant": "de 450.000 euros à 900.000 euros",
+   "objet": "subvention de fonctionnement 2008",
+   "citation": "au titre de l?année 2008 est portée de 450.000 euros à 900.000 euros, afin de soutenir les activités du ?Théâtre Silvia Monfort?",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=67388"
+  },
+  {
+   "seance": "SEPTEMBRE 2008",
+   "montant": "20.000 euros",
+   "objet": "subvention d'équipement 2008",
+   "citation": "la subvention d?équipement de 20.000 euros doit permettre l?acquisition de divers matériels en 2008",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=67388"
+  },
+  {
+   "seance": "AVRIL 2004",
+   "montant": "850.000 euros",
+   "objet": "subvention de fonctionnement 2004",
+   "citation": "La dépense correspondante, soit 850.000 euros, sera imputée sur le budget de fonctionnement de la Ville de Paris de 2004",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=52013"
+  },
+  {
+   "seance": "MARS 2005",
+   "montant": "850.000 euros",
+   "objet": "subvention de fonctionnement 2005",
+   "citation": "La dépense correspondante, soit 850.000 euros, sera imputée sur le budget de fonctionnement de la Ville de Paris de 2005",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=26505"
+  },
+  {
+   "seance": "JUILLET 2009",
+   "montant": "300.000 euros",
+   "objet": "hausse de subvention imputée au départ de Santon et aux nouveaux directeurs (propos de Mme Macé de Lépinay)",
+   "citation": "si la subvention que nous allons voter est en hausse de 300.000 euros, c'est pour compenser l'indemnité de départ de Régis SANTON et le coût des salaires des deux nouveaux directeurs",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=20604"
+  },
+  {
+   "seance": "JUILLET 2009",
+   "montant": "22.000 euros",
+   "objet": "aide à la production des deux premiers spectacles (propos de Mme Macé de Lépinay)",
+   "citation": "Il est également prévu une subvention de 22.000 euros pour aider à la production des deux premiers spectacles de la nouvelle saison.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=20604"
+  },
+  {
+   "seance": "DECEMBRE 2006",
+   "montant": "90.000 euros",
+   "objet": "avenant, subvention de fonctionnement complémentaire 2006",
+   "citation": "La dépense correspondante soit 90.000 euros sera imputée sur le budget de fonctionnement de la Ville de Paris de 2006",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=91890"
+  },
+  {
+   "seance": "DECEMBRE 2006",
+   "montant": "90.000 euros",
+   "objet": "subvention de fonctionnement exceptionnelle 2006",
+   "citation": "attribuer une subvention de fonctionnement exceptionnelle, je dis bien exceptionnelle, de 90.000 euros à l?association ?Théâtre Silvia Monfort? pour l?année 2006",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=17913"
+  },
+  {
+   "seance": "DECEMBRE 2006",
+   "montant": "850.000 euros",
+   "objet": "subvention de fonctionnement votée en avril 2005",
+   "citation": "venant en complément de la subvention votée en avril 2005 d?un montant de 850.000 euros",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=17913"
+  },
+  {
+   "seance": "DECEMBRE 2006",
+   "montant": "moins 43.900 euros",
+   "objet": "déficit de l'exercice 2005 (propos de M. Girard)",
+   "citation": "Les deux derniers exercices ont été déficitaires, moins 43.900 euros en 2005",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=17913"
+  },
+  {
+   "seance": "MARS 2002",
+   "montant": "750.000 euros",
+   "objet": "subvention de fonctionnement 2002",
+   "citation": "La dépense correspondante, soit 750.000 euros sera imputée sur le budget de fonctionnement de la Ville de Paris de 2002",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=38929"
+  },
+  {
+   "seance": "JUILLET 2007",
+   "montant": "900.000 euros",
+   "objet": "subvention de fonctionnement 2007",
+   "citation": "l?attribution d?une subvention de fonctionnement de 900.000 euros au théâtre Silvia Montfort",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=14090"
+  },
+  {
+   "seance": "JUILLET 2007",
+   "montant": "90.000 euros",
+   "objet": "subvention exceptionnelle votée en décembre (propos de M. Girard)",
+   "citation": "en votant en décembre dernier une subvention exceptionnelle supplémentaire de 90.000 euros",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=14090"
+  },
+  {
+   "seance": "JUILLET 2007",
+   "montant": "50.000 euros",
+   "objet": "hausse du fonctionnement 2007 (propos de M. Girard)",
+   "citation": "en augmentant la subvention de fonctionnement 2007 de 50.000 euros par rapport à son niveau habituel",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=14090"
+  },
+  {
+   "seance": "AVRIL 2003",
+   "montant": "850.000 euros",
+   "objet": "subvention de fonctionnement 2003",
+   "citation": "signer une convention relative à l'attribution d'une subvention de fonctionnement avec l'association Théâtre Silvia Monfort, dans le 15ème pour un montant de 850.000 euros",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=18521"
+  },
+  {
+   "seance": "MARS 2002",
+   "montant": "750.000 euros",
+   "objet": "subvention de fonctionnement 2002",
+   "citation": "une convention relative à l'attribution d'une subvention de fonctionnement d'un montant de 750.000 euros",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=7470"
+  },
+  {
+   "seance": "MARS 2002",
+   "montant": "au moins 40.000 euros",
+   "objet": "complément jugé nécessaire à la survie (propos de Mme Macé de Lépinay)",
+   "citation": "c'est au moins 40.000 euros qui sont nécessaires pour sa survie",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=7470"
+  },
+  {
+   "seance": "AVRIL 2006",
+   "montant": "850.000 euros",
+   "objet": "subvention de fonctionnement 2006",
+   "citation": "Une subvention de fonctionnement d?un montant de 850.000 euros et une subvention d?équipement d?un montant de 20.000 euros sont attribuées à l?association Théâtre Silvia Monfort",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=38467"
+  },
+  {
+   "seance": "AVRIL 2006",
+   "montant": "20.000 euros",
+   "objet": "subvention d'équipement 2006",
+   "citation": "Une subvention de fonctionnement d?un montant de 850.000 euros et une subvention d?équipement d?un montant de 20.000 euros sont attribuées à l?association Théâtre Silvia Monfort",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=38467"
+  },
+  {
+   "seance": "AVRIL 2003",
+   "montant": "850.000 euros",
+   "objet": "subvention de fonctionnement 2003",
+   "citation": "La dépense correspondante, soit 850.000 euros, sera imputée sur le budget de fonctionnement de la Ville de Paris de 2003",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=89740"
+  },
+  {
+   "seance": "SEPTEMBRE 2002",
+   "montant": "80.000 euros",
+   "objet": "avenant, subvention de fonctionnement complémentaire 2002",
+   "citation": "La dépense correspondante, soit 80.000 euros, sera imputée sur le budget de fonctionnement de la Ville de Paris de 2002",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=29250"
+  },
+  {
+   "seance": "AVRIL 2006",
+   "montant": "plus de 100.000 euros",
+   "objet": "déficit du théâtre (propos de Mme Taïeb)",
+   "citation": "le théâtre rencontre des difficultés financières qui débouchent sur un déficit de plus de 100.000 euros",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=16897"
+  },
+  {
+   "seance": "AVRIL 2006",
+   "montant": "850.000 euros",
+   "objet": "subvention annuelle jugée insuffisante (propos de Mme Taïeb)",
+   "citation": "avec 850.000 euros de subvention annuelle, le théâtre municipal du 15e arrondissement ne s?en sort pas",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=16897"
+  }
+ ],
+ "bmo_extraits": [],
+ "bmo_recit": null,
+ "invest": [],
+ "marches": [],
+ "sources": {
+  "delibs": {
+   "name": "Débat-Délibs — Conseil de Paris",
+   "url": "https://a06-v7.apps.paris.fr/a06/"
+  },
+  "bmo": {
+   "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
+   "url": "https://gallica.bnf.fr/ark:/12148/cb343512457/date"
+  },
+  "invest": {
+   "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
+   "url": "https://opendata.paris.fr/"
+  },
+  "wiki": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ }
+}

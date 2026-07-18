@@ -1,7 +1,9 @@
 import { notFound } from "next/navigation";
 
 import { ArrondissementFiche, DetailDrawer } from "@/components/fusion";
+import LieuxLies from "@/components/fusion/LieuxLies";
 import { loadArrondissement } from "@/lib/fusion-data";
+import { loadLieuxIndex } from "@/lib/lieux-data";
 
 type Params = { num: string };
 
@@ -27,6 +29,10 @@ export default async function DrawerArrondissementPage({ params }: { params: Pro
 
   const shareText = `${arr.arr}${suf(arr.arr)} arrondissement de Paris — ${fmtEur(arr.total)} investis en ${arr.year} sur ${arr.nbProjets} projets`;
 
+  const lieuxArr = loadLieuxIndex()
+    .filter((l) => l.arrondissement === arrNum)
+    .sort((a, b) => (b.argent_total_eur ?? 0) - (a.argent_total_eur ?? 0) || (a.depuis ?? 9999) - (b.depuis ?? 9999));
+
   return (
     <div className="theme-fusion">
       <DetailDrawer
@@ -38,6 +44,12 @@ export default async function DrawerArrondissementPage({ params }: { params: Pro
         breadcrumbLabel={`${arr.arr}${suf(arr.arr)} arr.`}
       >
         <ArrondissementFiche arr={arr} />
+        <LieuxLies
+          lieux={lieuxArr}
+          title={`Lieux du ${arr.arr}${suf(arr.arr)}`}
+          intro="Lieux de cet arrondissement dotés d’une fiche — délibérations, archives et argent public."
+          locale="fr"
+        />
       </DetailDrawer>
     </div>
   );

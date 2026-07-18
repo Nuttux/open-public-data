@@ -1,0 +1,208 @@
+{
+ "generated_at": "2026-07-18T14:38:43.284445+00:00",
+ "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
+ "slug": "place-denfert-rochereau",
+ "name": "Place Denfert-Rochereau",
+ "kind_fr": "Place",
+ "kind_en": "Square",
+ "famille": "urbain",
+ "arrondissement": 14,
+ "lat": 48.833963,
+ "lon": 2.331487,
+ "photo": "/img/lieux/place-denfert-rochereau.jpg",
+ "photo_credit": {
+  "licence": null,
+  "auteur": null,
+  "url": "https://fr.wikipedia.org/wiki/Place_Denfert-Rochereau",
+  "source": "Wikipédia"
+ },
+ "wiki": {
+  "extract": "La place Denfert-Rochereau est une place du sud de Paris, anciennement appelée « place d’Enfer » et située dans le 14e arrondissement de cette ville, dans le quartier du Montparnasse.",
+  "url": "https://fr.wikipedia.org/wiki/Place_Denfert-Rochereau",
+  "source": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ },
+ "stats": {
+  "n_delibs": 1097,
+  "delibs_span": [
+   2003,
+   2025
+  ],
+  "n_bmo_brut": 0,
+  "n_bmo_verifies": null,
+  "invest_total_eur": 901342.24,
+  "invest_annees": [
+   "2024"
+  ],
+  "lecture_mode": "titre nommant le lieu (8 trouvés)",
+  "n_lus": 8,
+  "n_lieu": 6
+ },
+ "subventions_exploitant": null,
+ "residents": [],
+ "kpi_montant": null,
+ "synthese_fr": "Sur près de trente ans, la place Denfert-Rochereau apparaît au Conseil de Paris surtout par ses bords et ses équipements. En 1998, le Conseil déclasse une parcelle d'environ 15 m² à l'angle du boulevard Saint-Jacques et en autorise la cession au Syndicat des Transports parisiens, où la R.A.T.P. envisage un édicule pour un bus vers Orly. Au début des années 2000, la place est un point de friction des mobilités — une question orale relaie l'inquiétude de riverains face à la déviation du bus 38 sur la contre-allée (2003) — et l'objet de gestes ponctuels : approbation du principe de remplacement des grilles du circuit des Catacombes (2003), puis subventions au cinéma Le Denfert, 20 000 € en fonctionnement (2004) et 40 000 € en investissement (2006). En 2016, le réaménagement d'ensemble entre dans une communication sur sept places, où l'opposition juge la place « sacrifiée » et écartée du projet. Le dossier reste ouvert : un vœu des Écologistes sur sa transformation est retiré en 2024, un vœu du groupe Changer Paris sur son aménagement revient en 2025.",
+ "moments": [
+  {
+   "id": "64887",
+   "seance": "OCTOBRE 1998",
+   "fait": "Le Conseil déclasse une parcelle de 15 m² à l'angle du boulevard Saint-Jacques et en autorise la cession au Syndicat des Transports parisiens (192 000 F), pour un projet d'édicule RATP.",
+   "pourquoi": "un coin de la place quitte le domaine public",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=64887"
+  },
+  {
+   "id": "7018",
+   "seance": "JANVIER 2003",
+   "fait": "Une question orale du groupe UDF relaie l'inquiétude de riverains non consultés sur la déviation du bus 38 en contre-allée entre la place et la rue Cassini.",
+   "pourquoi": "des riverains inquiets d'un couloir de bus",
+   "vedette": false,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=7018"
+  },
+  {
+   "id": "47317",
+   "seance": "OCTOBRE 2003",
+   "fait": "Le Conseil approuve le principe du remplacement des grilles du circuit de visite des Catacombes et autorise le Maire à signer le marché.",
+   "pourquoi": "réparer l'accès du musée souterrain",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=47317"
+  },
+  {
+   "id": "59761",
+   "seance": "JUILLET 2004",
+   "fait": "Le Conseil autorise une subvention de fonctionnement de 20 000 € au cinéma Le Denfert, 24 place Denfert-Rochereau, pour sa programmation.",
+   "pourquoi": "la Ville soutient le cinéma de la place",
+   "vedette": false,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=59761"
+  },
+  {
+   "id": "38479",
+   "seance": "AVRIL 2006",
+   "fait": "Le Conseil autorise une subvention d'investissement de 40 000 € au cinéma Le Denfert, présentée pour sa rénovation et sa modernisation.",
+   "pourquoi": "aider à rénover le cinéma",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=38479"
+  },
+  {
+   "id": "129302",
+   "seance": "MARS 2016",
+   "fait": "Dans le débat sur le réaménagement de sept places, un vœu des Républicains vise la place ; Mme Kosciusko-Morizet la juge « sacrifiée » et écartée du projet.",
+   "pourquoi": "le réaménagement de la place, attendu puis contesté",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=129302"
+  },
+  {
+   "id": "179200",
+   "seance": "DECEMBRE 2024",
+   "fait": "Le vœu du groupe Les Écologistes sur la transformation de la place est retiré de l'ordre du jour.",
+   "pourquoi": "une transformation qui revient puis se retire",
+   "vedette": false,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=179200"
+  },
+  {
+   "id": "182326",
+   "seance": "JUILLET 2025",
+   "fait": "Le groupe Changer Paris dépose un vœu relatif à l'aménagement de la place.",
+   "pourquoi": "l'aménagement toujours en débat",
+   "vedette": false,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=182326"
+  }
+ ],
+ "montants": [
+  {
+   "seance": "JUILLET 2004",
+   "montant": "20.000 euros",
+   "objet": "subvention de fonctionnement au cinéma Le Denfert, pour sa programmation",
+   "citation": "Une subvention de fonctionnement de 20.000 euros est attribuée S.A. Société d'Exploitation du Théâtre Denfert Rochereau (cinéma Le Denfert) située 24, place Denfert-Rochereau (14e)",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=59761"
+  },
+  {
+   "seance": "AVRIL 2006",
+   "montant": "40.000 euros",
+   "objet": "subvention d'investissement au cinéma Le Denfert (rénovation/modernisation selon l'intitulé)",
+   "citation": "La dépense correspondante, soit 40.000 euros sera imputée sur le budget d?investissement de la Ville de Paris pour 2006",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=38479"
+  }
+ ],
+ "bmo_extraits": [],
+ "bmo_recit": null,
+ "invest": [
+  {
+   "annee": 2024,
+   "montant_eur": 901342.24,
+   "nom_projet": "Place Denfert Rocherau - Aménagement",
+   "preuve": "Le nom du projet nomme ce lieu : « Place Denfert Rocherau - Aménagement » (graphie source, coquille pour Rochereau), à 33 m. Le chantier de réaménagement est corroboré par les marchés attachés à ce même lieu : maîtrise d’œuvre notifiée en 2023 (« MS MOE REAMENAGEMENT PLACE DENFERT-ROCHEREAU ») puis travaux d’infrastructure notifiés en 2025. Deux vœux du Conseil de Paris portent également sur l’aménagement de cette place (id 182326, JUILLET 2025 ; id 179200, DECEMBRE 2024) : ils attestent que la place fait l’objet d’un projet débattu, mais ne valent pas preuve de dépense — le vœu de décembre 2024 a été retiré de l’ordre du jour.",
+   "id": "2024_14_39_023"
+  }
+ ],
+ "marches": [
+  {
+   "numero_marche": "decp-2025T00806",
+   "objet": "Travaux d’infrastructure pour le réaménagement de la place Denfert-Rochereau",
+   "fournisseur": "EUROVIA ILE DE FRANCE",
+   "montant_max": 6220708.5,
+   "date_notification": "2025-02-14",
+   "preuve": "L’objet porte sur ce lieu et non sur un repère d’adresse : « Travaux d’infrastructure pour le réaménagement de la place Denfert-Rochereau ». La place est l’objet même des travaux (le lieu_execution « Paris » est trop large pour prouver quoi que ce soit, il n’est pas utilisé ici)."
+  },
+  {
+   "numero_marche": "decp-2025T01113",
+   "objet": "Travaux de végétalisation dans le cadre du réaménagement de la place Denfert-Rochereau à Paris 14e",
+   "fournisseur": "TERIDEAL ESPACES VERTS ILE DE FRANCE",
+   "montant_max": 1830081.63,
+   "date_notification": "2025-02-04",
+   "preuve": "L’objet nomme le lieu et son arrondissement : « Travaux de végétalisation dans le cadre du réaménagement de la place Denfert-Rochereau à Paris 14e », cohérent avec l’arrondissement 14 du lieu."
+  },
+  {
+   "numero_marche": "20242024S02949",
+   "objet": "MSAC2 MOE PLACE DENFERT ROCHEREAU",
+   "fournisseur": "BUREAU DES PAYSAGES",
+   "montant_max": 755300.0,
+   "date_notification": "2024-05-21",
+   "preuve": "Marché de maîtrise d’œuvre (MOE) dont l’objet nomme le lieu : « MSAC2 MOE PLACE DENFERT ROCHEREAU ». Prestation intellectuelle portant sur l’aménagement de cette place."
+  },
+  {
+   "numero_marche": "20232023S06118",
+   "objet": "SA3-ACBC-MS REAMENAGEMENT PLACE DENFERT ROCHEREAU PARIS 14",
+   "fournisseur": "ALEXANDRE CHEMETOFF ET ASSOCIES",
+   "montant_max": 465100.06,
+   "date_notification": "2023-08-24",
+   "preuve": "L’objet nomme le lieu et l’arrondissement : « SA3-ACBC-MS REAMENAGEMENT PLACE DENFERT ROCHEREAU PARIS 14 »."
+  },
+  {
+   "numero_marche": "decp-2025T03460",
+   "objet": "Travaux d’éclairage public, d’illuminations et de signalisation lumineuse et tricolore (EP/SLT) dans le cadre du réaménagement de la place Denfert-Rochereau à Paris 14ème.",
+   "fournisseur": "BOUYGUES ENERGIES & SERVICES",
+   "montant_max": 439932.21,
+   "date_notification": "2025-04-16",
+   "preuve": "L’objet rattache explicitement ces travaux d’éclairage au chantier de ce lieu : « … dans le cadre du réaménagement de la place Denfert-Rochereau à Paris 14ème ». Ce n’est ni un marché-cadre d’éclairage de toute la Ville citant la place en exemple, ni une adresse-repère."
+  },
+  {
+   "numero_marche": "20232023S12026",
+   "objet": "MS MOE REAMENAGEMENT PLACE DENFERT-ROCHEREAU",
+   "fournisseur": "ALEXANDRE CHEMETOFF ET ASSOCIES",
+   "montant_max": 308000.0,
+   "date_notification": "2023-12-22",
+   "preuve": "Maîtrise d’œuvre dont l’objet nomme le lieu : « MS MOE REAMENAGEMENT PLACE DENFERT-ROCHEREAU »."
+  }
+ ],
+ "sources": {
+  "delibs": {
+   "name": "Débat-Délibs — Conseil de Paris",
+   "url": "https://a06-v7.apps.paris.fr/a06/"
+  },
+  "bmo": {
+   "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
+   "url": "https://gallica.bnf.fr/ark:/12148/cb343512457/date"
+  },
+  "invest": {
+   "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
+   "url": "https://opendata.paris.fr/"
+  },
+  "wiki": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ }
+}

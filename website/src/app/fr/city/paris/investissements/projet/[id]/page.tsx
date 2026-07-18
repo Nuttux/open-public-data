@@ -6,6 +6,8 @@ import { Navbar, Footer } from "@/components/fusion";
 import ProjetFiche from "@/components/fusion/ProjetFiche";
 import { InvestBackKicker, ProjetLede } from "@/components/fusion/EntityPageHeaders";
 import { loadProjet, resolveProjetPhoto } from "@/lib/fusion-data";
+import { lieuForProjet } from "@/lib/lieux-data";
+import VoirLeLieu from "@/components/fusion/VoirLeLieu";
 import { readLocale } from "@/lib/seo";
 import { trLabel } from "@/lib/label-translate";
 
@@ -72,6 +74,7 @@ export default async function ProjetPage({ params }: { params: Promise<Params> }
         </div>
       </section>
       <div className="fx-fiche-wrap">
+        <VoirLeLieu lien={lieuForProjet(projet.name)} locale={locale} />
         <ProjetFiche projet={projet} photo={photo} />
       </div>
       </main>

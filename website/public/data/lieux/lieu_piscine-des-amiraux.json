@@ -1,0 +1,170 @@
+{
+ "generated_at": "2026-07-18T14:38:43.284445+00:00",
+ "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
+ "slug": "piscine-des-amiraux",
+ "name": "Piscine des Amiraux",
+ "kind_fr": "Piscine",
+ "kind_en": "Swimming pool",
+ "famille": "sport",
+ "arrondissement": 18,
+ "lat": 48.8926,
+ "lon": 2.3557,
+ "photo": "/img/lieux/piscine-des-amiraux.jpg",
+ "photo_credit": {
+  "licence": null,
+  "auteur": null,
+  "url": "https://fr.wikipedia.org/wiki/Immeuble_et_piscine_des_Amiraux",
+  "source": "Wikipédia"
+ },
+ "wiki": {
+  "extract": "L'immeuble et la piscine des Amiraux sont un immeuble d'habitation abritant une piscine publique, construits par Henri Sauvage entre 1922 et 1927 dans le 18e arrondissement de Paris, rues des Amiraux et Hermann-Lachapelle. Ils constituent un élément de la recherche architecturale pour construire des habitations à bon marché mais « hygiéniques ».",
+  "url": "https://fr.wikipedia.org/wiki/Immeuble_et_piscine_des_Amiraux",
+  "source": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ },
+ "stats": {
+  "n_delibs": 39,
+  "delibs_span": [
+   1997,
+   2021
+  ],
+  "n_bmo_brut": 740,
+  "n_bmo_verifies": 8,
+  "invest_total_eur": 0,
+  "invest_annees": [],
+  "lecture_mode": "corpus complet (39 documents)",
+  "n_lus": 39,
+  "n_lieu": 13
+ },
+ "subventions_exploitant": null,
+ "residents": [],
+ "kpi_montant": {
+  "valeur": "3,2 M€",
+  "label_fr": "Rénovation 2018",
+  "label_en": "2018 renovation",
+  "doc_id": "143081",
+  "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=143081"
+ },
+ "synthese_fr": "De 1995 à 2003, la piscine des Amiraux n'apparaît que dans les inventaires d'équipements confiés au conseil du 18e arrondissement (avec les bains-douches des Amiraux au 6, rue Hermann-Lachapelle), tandis que la plupart des autres mentions « Amiraux » renvoient à la rue (écoles, jardin « Amiraux-Boinod ») ou au quartier politique de la ville homonyme « Amiraux-Simplon ». Dès 1997, l'équipement est un lieu de mobilisation : des usagers manifestent devant la piscine contre la hausse des tarifs et recueillent plus de 2.000 signatures, obtenant le rétablissement de l'abonnement trimestriel. À partir de 2012, le Conseil de Paris engage la restauration et la mise aux normes de la piscine — principe et maîtrise d'œuvre en juillet 2012 avec autorisations sur édifices classés monuments historiques, demande de subvention au CNDS en septembre 2012, marchés de travaux en février 2014, demandes de subventions à la Région en 2015 dont le dispositif « patrimoine architectural protégé » —, dans le cadre du plan « Nager à Paris ». En 2017-2019, l'exécutif la cite parmi les piscines rénovées livrées, chiffre à 3,2 millions d'euros sa part dans les opérations de rénovation de 2018 et évoque une « rénovation intégrale ». En 2021, sa restauration « à l'identique » est présentée en exemple de conciliation entre écologie et patrimoine ; en 2011, la Ville avait par ailleurs dénommé « Jardin Henri Sauvage » l'espace vert du 5, rue des Amiraux.",
+ "moments": [
+  {
+   "id": "16564",
+   "seance": "NOVEMBRE 1997",
+   "fait": "Après la hausse des tarifs des piscines votée en septembre 1997, des usagers manifestent devant la piscine des Amiraux et recueillent plus de 2 000 signatures, obtenant le rétablissement de l'abonnement trimestriel.",
+   "pourquoi": "mobilisation d'usagers, recul tarifaire obtenu",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=16564"
+  },
+  {
+   "id": "107210",
+   "seance": "JUILLET 2012",
+   "fait": "Le Conseil approuve le principe des travaux de restauration et de mise aux normes de la piscine, avec marché de maîtrise d'œuvre et autorisations sur édifices classés monuments historiques.",
+   "pourquoi": "lancement de la restauration patrimoniale",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=107210"
+  },
+  {
+   "id": "118679",
+   "seance": "FEVRIER 2014",
+   "fait": "Le Conseil approuve les modalités de passation des marchés de travaux de restructuration et de mise aux normes de la piscine.",
+   "pourquoi": "passage à la phase travaux",
+   "vedette": false,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=118679"
+  },
+  {
+   "id": "143081",
+   "seance": "JUIN 2018",
+   "fait": "L'exécutif chiffre à 3,2 millions d'euros la part de la piscine des Amiraux dans les opérations de rénovation de l'exercice 2018.",
+   "pourquoi": "seul montant chiffré pour la piscine",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=143081"
+  },
+  {
+   "id": "148298",
+   "seance": "AVRIL 2019",
+   "fait": "La piscine des Amiraux est décrite comme ayant bénéficié d'une rénovation intégrale au titre du plan Nager à Paris.",
+   "pourquoi": "rénovation achevée, constatée en séance",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=148298"
+  },
+  {
+   "id": "164005",
+   "seance": "NOVEMBRE 2021",
+   "fait": "La piscine est citée en exemple d'une restauration faite à l'identique, conciliant écologie et patrimoine.",
+   "pourquoi": "reconnaissance patrimoniale de la restauration",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=164005"
+  }
+ ],
+ "montants": [
+  {
+   "seance": "JUIN 2018",
+   "montant": "3,2 millions d’euros",
+   "objet": "part de la piscine des Amiraux dans les opérations de rénovation de piscines de l'exercice 2018",
+   "citation": "Les opérations de rénovation ont représenté 12 millions d?euros, dont 3,2 millions d?euros pour la piscine des Amiraux dans le 18e arrondissement",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=143081"
+  }
+ ],
+ "bmo_extraits": [
+  {
+   "date": "1965-01-07",
+   "extrait": "Piscine des Amiraux : Vitrerie. — MM. Thomas et Harrisson. — Prix forfaitaire, 24.400 francs",
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k6435422h/f7.item"
+  },
+  {
+   "date": "1969-02-19",
+   "extrait": "Michel Salles, Claude Estier et Pierre Seince. — Question orale sans débat à M. le Préfet de Paris sur les conditions de fonctionnement de la piscine des Amiraux",
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k3213241w/f2.item"
+  },
+  {
+   "date": "1973-07-01",
+   "extrait": "Piscine rue des Amiraux : Canalisations. — MM. Botte père et fils. — Prix forfaitaire, 58.000 francs. ---' SERVICE MÉTÉOROLOGIQUE … ",
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k6435431g/f8.item"
+  },
+  {
+   "date": "1976-06-12",
+   "extrait": "Sur le second crédit de 10 millions ont été imputées les dépenses pour la construction de la piscine des- Amiraux , des bains douches avenue Mathurin-Moreau. et rue Saint-Merri, pour un total de 7.383.726 fr … La",
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k64354213/f16.item"
+  }
+ ],
+ "bmo_recit": "Le Bulletin municipal ne garde trace de la piscine des Amiraux que sur une douzaine d'années, de 1965 à 1976, et surtout à travers des décisions d'entretien. En janvier 1965, un marché de vitrerie est attribué à MM. Thomas et Harrisson au prix forfaitaire de 24.400 francs ; en juillet 1973, un marché de canalisations revient à MM. Botte père et fils pour 58.000 francs. Entre les deux, en février 1969, Michel Salles, Claude Estier et Pierre Seince adressent au Préfet de Paris une question orale sans débat sur les conditions de fonctionnement de la piscine, dont le Bulletin ne retient que l'intitulé. En juin 1976, l'équipement réapparaît dans un compte de crédits : sur un second crédit de 10 millions ont été imputées les dépenses de construction de la piscine des Amiraux ainsi que de bains-douches avenue Mathurin-Moreau et rue Saint-Merri, pour un total de 7.383.726 francs.",
+ "invest": [],
+ "marches": [
+  {
+   "numero_marche": "20151210000996",
+   "objet": "CSP5 TCE PISCINE DES AMIRAUX LOT 1",
+   "fournisseur": "BOUYGUES BATIMENT ILE DE FRANCE",
+   "montant_max": 6350625.71,
+   "date_notification": "2015-06-10",
+   "preuve": "L'objet du marché nomme le lieu verbatim : « CSP5 TCE PISCINE DES AMIRAUX LOT 1 » (marché de travaux tous corps d'état). Il correspond à la délibération 2014 DPA 1 « Modalités de passation des marchés de travaux relatifs à la restructuration et à la mise aux normes de la piscine des Amiraux, 6 rue Hermann Lachapelle (18e) » (Conseil de Paris, février 2014), même adresse que « 6 RUE HERMANN-LACHAPELLE - PISCINE DES AMIRAUX » à l'inventaire des équipements du 18e (2003 DDATC 319). Notification 2015-06-10, cohérente avec la rénovation évoquée en séance : « Le 18e arrondissement a bénéficié du Plan Nager à Paris avec la rénovation intégrale de la piscine des Amiraux »."
+  },
+  {
+   "numero_marche": "20131210008827",
+   "objet": "MOE RESTAURATION ET MISE NORMES PISCINE DES AMIRAUX 75018",
+   "fournisseur": "CHATILLON ARCHITECTES",
+   "montant_max": 1619654.5,
+   "date_notification": "2013-03-01",
+   "preuve": "L'objet nomme le lieu et son arrondissement verbatim : « MOE RESTAURATION ET MISE NORMES PISCINE DES AMIRAUX 75018 » (maîtrise d'œuvre). Il correspond à la délibération 2012 DPA 65 « Approbation du principe des travaux de restauration et de mise aux normes de la piscine des Amiraux 6, rue Hermann Lachapelle (18e) et des modalités de passation du marché de maîtrise d'oeuvre et dépôt des demandes d'autorisations correspondantes sur les édifices classés monuments historiques » (Conseil de Paris, juillet 2012), antérieure de quelques mois à la notification du 2013-03-01."
+  }
+ ],
+ "sources": {
+  "delibs": {
+   "name": "Débat-Délibs — Conseil de Paris",
+   "url": "https://a06-v7.apps.paris.fr/a06/"
+  },
+  "bmo": {
+   "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
+   "url": "https://gallica.bnf.fr/ark:/12148/cb343512457/date"
+  },
+  "invest": {
+   "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
+   "url": "https://opendata.paris.fr/"
+  },
+  "wiki": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ }
+}

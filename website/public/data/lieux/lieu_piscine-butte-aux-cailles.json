@@ -1,0 +1,119 @@
+{
+ "generated_at": "2026-07-18T14:38:43.284445+00:00",
+ "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
+ "slug": "piscine-butte-aux-cailles",
+ "name": "Piscine de la Butte-aux-Cailles",
+ "kind_fr": "Piscine",
+ "kind_en": "Swimming pool",
+ "famille": "sport",
+ "arrondissement": 13,
+ "lat": 48.8265,
+ "lon": 2.3524,
+ "photo": "/img/lieux/piscine-butte-aux-cailles.jpg",
+ "photo_credit": {
+  "licence": null,
+  "auteur": null,
+  "url": "https://fr.wikipedia.org/wiki/Piscine_de_la_Butte-aux-Cailles",
+  "source": "Wikipédia"
+ },
+ "wiki": {
+  "extract": "La piscine de la Butte-aux-Cailles est l'une des plus anciennes piscines de Paris, en France. Elle est située au 5, place Paul-Verlaine, dans le quartier de la Butte-aux-Cailles, dans le 13e arrondissement.",
+  "url": "https://fr.wikipedia.org/wiki/Piscine_de_la_Butte-aux-Cailles",
+  "source": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ },
+ "stats": {
+  "n_delibs": 989,
+  "delibs_span": [
+   1995,
+   2005
+  ],
+  "n_bmo_brut": 473,
+  "n_bmo_verifies": 7,
+  "invest_total_eur": 0,
+  "invest_annees": [],
+  "lecture_mode": "titre nommant le lieu (4 trouvés)",
+  "n_lus": 3,
+  "n_lieu": 3
+ },
+ "subventions_exploitant": null,
+ "residents": [],
+ "kpi_montant": null,
+ "synthese_fr": "Trois délibérations dont l'intitulé nomme la piscine de la Butte-aux-Cailles se rattachent à des séances isolées : juillet 1995, mai 1996 et juillet 2005. En juillet 1995, le Conseil de Paris autorise M. le Maire de Paris à signer avec l'entreprise « PISONI » un contrat de transaction tenant compte de l'avis du Comité consultatif interrégional de règlement amiable des litiges du 17 mars 1995, et à lui régler une indemnité de 2.770.946,47 F T.T.C. pour les sujétions extra-contractuelles supportées lors des travaux de réhabilitation ; la délibération vise un chantier antérieur — principe de restructuration approuvé par la délibération D. 899 du 26 juin 1989, avenant n° 1 au marché de travaux n° 89/25/275 attribué à « PISONI » par la délibération D. 1136 du 8 juillet 1991, puis indemnisation provisoire de cette entreprise par la délibération D. 1608 du 17 octobre 1994. En mai 1996, le Conseil approuve le principe de la réfection du bassin extérieur, 5 place Paul-Verlaine, ainsi que les modalités d'attribution du marché de travaux correspondant (appel d'offres ouvert, 3 lots), et autorise M. le Maire de Paris à le signer : aucun montant n'est chiffré, et la dépense n'est imputée au budget d'investissement que « sous réserve de la décision de financement ». Pour juillet 2005, l'intitulé de la délibération est la seule source disponible : il annonce la fixation des tarifs et des conditions d'accès aux équipements de mise en forme situés à la piscine, pour les usagers individuels, sans chiffrer aucun tarif.",
+ "moments": [
+  {
+   "id": "530",
+   "seance": "JUILLET 1995",
+   "fait": "Le Conseil autorise M. le Maire de Paris à signer avec l'entreprise « PISONI » un contrat de transaction tenant compte de l'avis du Comité consultatif interrégional de règlement amiable des litiges du 17 mars 1995, et à lui régler une indemnité de 2 770 946,47 F T.T.C. pour les sujétions extra-contractuelles supportées lors des travaux de réhabilitation. Une indemnisation provisoire de la même entreprise avait été décidée en octobre 1994.",
+   "pourquoi": "Une indemnisation amiable que le Conseil autorise, après avis du comité de règlement des litiges.",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=530"
+  },
+  {
+   "id": "33275",
+   "seance": "MAI 1996",
+   "fait": "Le Conseil approuve le principe de la réfection du bassin extérieur, 5 place Paul-Verlaine, et les modalités d'attribution du marché de travaux correspondant (appel d'offres ouvert, 3 lots), et autorise M. le Maire de Paris à le signer. Aucun montant n'est chiffré, et la dépense n'est imputée au budget d'investissement que « sous réserve de la décision de financement ».",
+   "pourquoi": "Le principe est approuvé ; le financement reste à décider.",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=33275"
+  },
+  {
+   "id": "87101",
+   "seance": "JUILLET 2005",
+   "fait": "Une délibération dont l'intitulé annonce la fixation des tarifs et des conditions d'accès aux équipements de mise en forme situés à la piscine, pour les usagers individuels, sur rapport de M. Pascal CHERKI. Cet intitulé est la seule source disponible : il ne chiffre aucun tarif et n'indique pas l'issue du vote.",
+   "pourquoi": "L'intitulé annonce des tarifs, sans en chiffrer aucun.",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=87101"
+  }
+ ],
+ "montants": [
+  {
+   "seance": "JUILLET 1995",
+   "montant": "2.770.946,47 F T.T.C.",
+   "objet": "Indemnité que le Conseil autorise M. le Maire de Paris à régler à l'entreprise « PISONI » pour les sujétions extra-contractuelles supportées par celle-ci lors des travaux de réhabilitation ; la dépense sera imputée au budget de fonctionnement de la Ville de Paris de 1995 (chapitre 932, sous-chapitre 932-25, article 665). Une indemnisation provisoire de la même entreprise avait été décidée par la délibération D. 1608 du 17 octobre 1994.",
+   "citation": "M. le Maire de Paris est autorisé à procéder au règlement d'une indemnité de 2.770.946,47 F T.T.C. à l'entreprise \"PISONI\".",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=530"
+  }
+ ],
+ "bmo_extraits": [],
+ "bmo_recit": null,
+ "invest": [],
+ "marches": [
+  {
+   "numero_marche": "20242024S02607",
+   "objet": "MS CSPS PISCINE DE LA BUTTE-AUX-CAILLES",
+   "fournisseur": "BUREAU D ETUDES ET DE CONSEILS EN",
+   "montant_max": 25979.33,
+   "date_notification": "2024-04-16",
+   "preuve": "L'objet nomme le lieu en toutes lettres : « MS CSPS PISCINE DE LA BUTTE-AUX-CAILLES ». Il s'agit d'un marché subséquent (MS) d'un accord-cadre de coordination sécurité et protection de la santé, mais rattaché à cette seule opération : l'objet DECP du même numéro se termine par « Modernisation et extension de la Piscine de la Butte-aux-Cailles, 75013 Paris ». Le montant de 25 979,33 € est propre à ce marché subséquent, ce n'est pas l'enveloppe de l'accord-cadre."
+  },
+  {
+   "numero_marche": "decp-2024S03906",
+   "objet": "Contrôle technique de la construction pour des opérations nécessitant un coordinateur de sécurité et protection de la santé de catégories 1 ou 2  Modernisation et extension de la Piscine de la Butte-a",
+   "fournisseur": "ALPHA CONTROLE",
+   "montant_max": 16782.0,
+   "date_notification": "2024-05-23",
+   "preuve": "L'objet désigne l'opération elle-même : « Modernisation et extension de la Piscine de la Butte-aux-Cailles, 5 Place Paul Verlaine, 75013 Paris ». Une seule opération est citée, le lieu est l'objet du contrôle technique et non un repère d'adresse. L'adresse concorde avec la délibération de mai 1996 qui situe « la piscine de la Butte-aux-Cailles, 5, place Paul-Verlaine (13e) »."
+  }
+ ],
+ "sources": {
+  "delibs": {
+   "name": "Débat-Délibs — Conseil de Paris",
+   "url": "https://a06-v7.apps.paris.fr/a06/"
+  },
+  "bmo": {
+   "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
+   "url": "https://gallica.bnf.fr/ark:/12148/cb343512457/date"
+  },
+  "invest": {
+   "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
+   "url": "https://opendata.paris.fr/"
+  },
+  "wiki": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ }
+}

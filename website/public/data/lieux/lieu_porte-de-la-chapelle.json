@@ -1,0 +1,311 @@
+{
+ "generated_at": "2026-07-18T14:38:43.284445+00:00",
+ "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
+ "slug": "porte-de-la-chapelle",
+ "name": "Porte de la Chapelle",
+ "kind_fr": "Place",
+ "kind_en": "Square",
+ "famille": "urbain",
+ "arrondissement": 18,
+ "lat": 48.90002,
+ "lon": 2.35857,
+ "photo": "/img/lieux/porte-de-la-chapelle.jpg",
+ "photo_credit": {
+  "licence": "CC BY-SA 2.0",
+  "auteur": "Victor Brito",
+  "url": "https://commons.wikimedia.org/wiki/File:Sprague-Thomson_%C3%A0_Porte_de_La_Chapelle_(17_juin_2006).jpg",
+  "source": "Wikimedia Commons"
+ },
+ "wiki": {
+  "extract": "La porte de la Chapelle, de son nom complet porte de la Chapelle-Saint-Denis est l'une des 17 portes percées dans l'enceinte de Thiers au milieu du XIXe siècle pour protéger Paris, en France.",
+  "url": "https://fr.wikipedia.org/wiki/Porte_de_la_Chapelle",
+  "source": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ },
+ "stats": {
+  "n_delibs": 1156,
+  "delibs_span": [
+   2003,
+   2025
+  ],
+  "n_bmo_brut": 2000,
+  "n_bmo_verifies": 12,
+  "invest_total_eur": 36762691.28,
+  "invest_annees": [
+   "2023",
+   "2024"
+  ],
+  "lecture_mode": "titre nommant le lieu (80 trouvés)",
+  "n_lus": 43,
+  "n_lieu": 26
+ },
+ "subventions_exploitant": null,
+ "residents": [
+  {
+   "beneficiaire": "ASSOCIATION AURORE",
+   "montant_total": 4108195.0,
+   "preuve": "Signal exact : l'objet de la subvention, écrit par la Ville, nomme le lieu — « Fonctionnement Espace d'accueil et de repos à Porte de la Chapelle » (ligne 2024, SIRET 77568497003594). La délibération 2019 DASES 238 - DLH corrobore l'implantation et le montage : « Conventions avec l'association AURORE - Mise à disposition par la Ville de Paris de l'espace de repos et de répit Porte de la Chapelle (18e) et subventions de fonctionnement et d'équipements (145.000 euros) » — la Ville met le site à disposition, AURORE y exploite l'espace d'accueil mais ne gère pas la porte elle-même (voirie et espace public de la Ville), d'où le rôle « résident ». RÉSERVE SUR LE MONTANT : les 4 108 195 € sont le total versé par la Ville à ASSOCIATION AURORE en 2024, tous dossiers confondus — ce n'est pas le budget de l'espace de repos. L'export des bénéficiaires a pour grain (année × bénéficiaire) et son champ objet_principal ne retient que l'objet du plus gros dossier de l'année : les années précédentes, ce même champ désigne d'autres actions d'AURORE sans lien avec la porte (« Accueil espace Prague » en 2019, « Aide alimentaire Urgence Covid 19 » en 2020, « ASSORE » en 2021 et 2022). Le champ nb_subventions ne permet pas de conclure à l'absence d'agrégation : il vaut 1 sur 5 919 des 5 948 lignes de 2024, y compris pour le CASVP à 416,5 M€. La part revenant réellement à l'espace de repos n'est donc pas isolable dans la source ; le seul montant sourcé propre à cet équipement est celui de 2019 DASES 238 (145 000 € de fonctionnement et d'équipement). Voir porte-de-la-chapelle_perimetre.json."
+  },
+  {
+   "beneficiaire": "L'INTESTINE",
+   "montant_total": 21450.0,
+   "preuve": "Signal exact : l'objet nomme le lieu, sur les deux exercices retenus — « CPO SPV LA PERMANENCE CHORÉGRAPHIQUE PORTE DE LA CHAPELLE 2022 // CARNAVALER PARIS 18 » (2022) et « LA PERMANENCE CHOREGRAPHIQUE PORTE DE LA CHAPELLE 2019 // EPANOUISSEMENT DES FORMES POUR VIVRE L'ENV » (2019). Activité artistique accueillie sur le lieu, sans gestion de celui-ci → résident. RÉSERVE SUR LE MONTANT : les 21 450 € additionnent deux totaux annuels de l'association (9 650 € en 2019, SIRET 47890755300042, et 11 800 € en 2022, SIRET 47890755300059 — même association, établissements différents). Comme toute ligne de cet export, chacun est un total (année × bénéficiaire) dont l'objet affiché est celui du plus gros dossier ; chaque objet couple d'ailleurs la permanence chorégraphique à une seconde action, si bien que la part revenant strictement au lieu n'est pas isolable dans la source. Aucune délibération du contexte ne mentionne cette permanence."
+  }
+ ],
+ "kpi_montant": null,
+ "synthese_fr": "Dès 2003, le Conseil de Paris émet le vœu d'aménager à court terme la Porte de la Chapelle, décrite comme l'une des principales portes de Paris. À partir de 2009-2011, l'essentiel des délibérations concerne l'arrivée puis l'extension du tramway T3 — le deuxième tronçon atteint la porte en 2012 — sur fond de tension avec l'État, dont la participation est jugée très faible par des élus. Au milieu des années 2010, plusieurs délibérations portent sur les campements de migrants et la consommation de crack à la porte : la Ville ouvre un Centre de premier accueil humanitaire (2016), puis met à disposition un espace de repos géré par l'association Aurore (2019), pendant que des vœux d'opposition alertent sur la dégradation du cadre de vie. En parallèle, la Ville et la SOLIDEO engagent l'Arena II, présentée comme le seul équipement bâti pour les JO 2024 : études et autorisations d'urbanisme en 2018, délégation de service public en gestion publique en 2020, dénomination « Adidas Arena » approuvée en 2022 malgré l'opposition d'une partie des élus. Le bilan de la concertation et le programme du réaménagement des espaces publics de la porte sont approuvés en 2021, et la publicité apposée sur l'Arena fait encore débat en 2025.",
+ "moments": [
+  {
+   "id": "69035",
+   "seance": "DECEMBRE 2003",
+   "fait": "Le Conseil émet le vœu que la Ville examine, avec le conseil de quartier, un aménagement à court terme de la Porte de la Chapelle, « l'une des principales portes de Paris ».",
+   "pourquoi": "dès 2003, la porte réclame déjà un réaménagement",
+   "vedette": false,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=69035"
+  },
+  {
+   "id": "101094",
+   "seance": "JUIN 2011",
+   "fait": "Le Conseil débat de la convention de financement des études d'extension du T3 au-delà de la porte de la Chapelle ; Mme Gachet juge « scandaleuse » la part de l'État, 20 M€ sur un coût global estimé à ~300 M€.",
+   "pourquoi": "tram : l'État jugé quasi absent du financement",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=101094"
+  },
+  {
+   "id": "133318",
+   "seance": "NOVEMBRE 2016",
+   "fait": "En réponse à deux questions d'actualité, l'Exécutif annonce l'ouverture imminente du Centre de premier accueil humanitaire porte de la Chapelle pour les migrants primo-arrivants.",
+   "pourquoi": "2016 : la Ville ouvre le centre humanitaire",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=133318"
+  },
+  {
+   "id": "144041",
+   "seance": "JUILLET 2018",
+   "fait": "Le Conseil approuve les autorisations d'urbanisme et une convention d'études, avec la SOLIDEO, pour la construction de l'Arena II sur le site de la Porte de la Chapelle.",
+   "pourquoi": "feu vert aux études de l'Arena olympique",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=144041"
+  },
+  {
+   "id": "152432",
+   "seance": "SEPTEMBRE 2019",
+   "fait": "Le Conseil approuve des conventions avec l'association Aurore (subventions 145 000 €) pour un espace de repos et de répit destiné aux consommateurs de crack, porte de la Chapelle.",
+   "pourquoi": "un espace de répit face au crack",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=152432"
+  },
+  {
+   "id": "157791",
+   "seance": "MARS 2021",
+   "fait": "Le Conseil approuve le bilan de la concertation, les objectifs et le programme du réaménagement de la Porte de la Chapelle ; l'opposition conteste la concertation (92 % des participants disant ne pas s'y sentir en sécurité).",
+   "pourquoi": "le grand réaménagement de la porte est programmé",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=157791"
+  },
+  {
+   "id": "165087",
+   "seance": "JUILLET 2022",
+   "fait": "Le Conseil approuve la nouvelle dénomination de l'Arena en « Adidas Arena » (naming) ; l'Exécutif met en avant un coût de ~100 M€ (moitié Ville, moitié Solideo) et un versement de 180 000 €/an pour des actions locales.",
+   "pourquoi": "l'Arena rebaptisée « Adidas Arena »",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=165087"
+  },
+  {
+   "id": "183569",
+   "seance": "OCTOBRE 2025",
+   "fait": "Le groupe Les Écologistes dépose un vœu réclamant le retrait de ce qu'il qualifie de publicité illégale (650 m² Adidas) sur la façade de l'Arena Alice Milliat, porte de la Chapelle.",
+   "pourquoi": "polémique sur 650 m² de pub Adidas",
+   "vedette": false,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=183569"
+  }
+ ],
+ "montants": [
+  {
+   "seance": "MAI 2022",
+   "montant": "2,60 M€/an",
+   "objet": "Recettes annuelles totales du projet de naming avancées par M. Coblence (Paris en commun)",
+   "citation": "Le projet qui est prÃ©sentÃ© s?Ã©lÃ¨ve en tout Ã 2,60 millions d?euros par an.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=164975"
+  },
+  {
+   "seance": "MAI 2022",
+   "montant": "2,30 M€/an",
+   "objet": "Part annuelle au seul titre du « naming » selon M. Coblence",
+   "citation": "2,30 millions d?euros au seul titre du \"naming",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=164975"
+  },
+  {
+   "seance": "MAI 2022",
+   "montant": "260 000 €/an",
+   "objet": "Redevance additionnelle (10 % du chiffre d'affaires) revenant à la Ville, selon M. Coblence",
+   "citation": "La redevance additionnelle de 10Â % sur le chiffre d?affaires permettra Ã la Ville de Paris de percevoir une redevance de 260.000 euros par an.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=164975"
+  },
+  {
+   "seance": "MAI 2022",
+   "montant": "180 000 €/an",
+   "objet": "Fonds social annuel promis par Adidas pour des associations locales, selon M. Coblence",
+   "citation": "Adidas s?est engagÃ© Ã crÃ©er un fonds social, Ã hauteur de 180.000 euros par an,",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=164975"
+  },
+  {
+   "seance": "DECEMBRE 2022",
+   "montant": "23 M€",
+   "objet": "Financement de la Ville pour le Campus Condorcet (à parts égales avec l'État et la Région), terrain mis à disposition en sus",
+   "citation": "participer Ã parts Ã©gales aux cÃ´tÃ©s de l?Etat et de la RÃ©gion au coÃ»t de construction de ce campus parisien de Condorcet, soit 23 millions d?euros en tout.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=167935"
+  },
+  {
+   "seance": "JUILLET 2022",
+   "montant": "100 M€",
+   "objet": "Coût de construction de l'Arena avancé par M. Coblence (moitié Solideo, moitié Ville)",
+   "citation": "Avec un coÃ»t d?un peu plus de 100 millions d?euros, financÃ©s pour moitiÃ© par la Solideo et pour l?autre par la Ville",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=165087"
+  },
+  {
+   "seance": "JUILLET 2022",
+   "montant": "180 000 €/an",
+   "objet": "Versement annuel de la société pour des actions locales, selon Mme Akkari",
+   "citation": "ce sont plus de 180.000 euros qui seront versÃ©s par la sociÃ©tÃ© pour financer des actions locales",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=165087"
+  },
+  {
+   "seance": "JUIN 2023",
+   "montant": "13 000 000 €",
+   "objet": "Montant des deux conventions de cofinancement Ville–Métropole du Grand Paris (intitulé de la délibération)",
+   "citation": "de cofinancement avec la Métropole du Grand Paris pour l'aménagement de la Porte de la Chapelle et des rues Chapelle/Marx Dormoy (13.000.000 euros)",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=169773"
+  },
+  {
+   "seance": "FEVRIER 2022",
+   "montant": "820 000 €",
+   "objet": "Coût de 150 places de vélo supplémentaires, présenté par M. Granier comme du « greenwashing »",
+   "citation": "150 places de vÃ©lo en plus pour 820.000 euros.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=164458"
+  },
+  {
+   "seance": "FEVRIER 2022",
+   "montant": "2 065 000 €",
+   "objet": "Montant global de l'extension de périmètre de la DSP de l'Arena, selon M. Granier",
+   "citation": "le montant global de cette extension de pÃ©rimÃ¨tre s?Ã©lÃ¨ve Ã 2.065.000 euros.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=164458"
+  },
+  {
+   "seance": "FEVRIER 2022",
+   "montant": "600 000 €",
+   "objet": "Subvention de l'Agence nationale du sport pour les deux gymnases, selon M. Bonnet-Oulaldj",
+   "citation": "va nous accompagner dans cette opÃ©ration en finanÃ§ant Ã hauteur de 600.000 euros,",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=164591"
+  },
+  {
+   "seance": "FEVRIER 2022",
+   "montant": "≈20 M€",
+   "objet": "Budget des deux gymnases, environ une vingtaine de millions, selon M. Rabadan",
+   "citation": "le budget des deux gymnases est autour d'une vingtaine de millions",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=164591"
+  },
+  {
+   "seance": "SEPTEMBRE 2019",
+   "montant": "145 000 €",
+   "objet": "Subventions de fonctionnement et d'équipements à l'association Aurore (intitulé de la délibération)",
+   "citation": "subventions de fonctionnement et d'équipements (145.000 euros)",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=152432"
+  }
+ ],
+ "bmo_extraits": [],
+ "bmo_recit": null,
+ "invest": [
+  {
+   "annee": 2023,
+   "montant_eur": 11290856.2,
+   "nom_projet": "Réaménagement de la Porte Chapelle (JO 2024)",
+   "preuve": "Le nom du projet nomme ce lieu et aucun autre : « Réaménagement de la Porte Chapelle (JO 2024) », à 40 m. Opération corroborée par la délibération 2021 DVD 26 - « Réaménagement de la Porte de La Chapelle (18e). Bilan de la concertation. Objectifs et Programme », portant sur « l'aménagement des espaces publics de la porte de la Chapelle ».",
+   "id": "2023_18_51_028"
+  },
+  {
+   "annee": 2024,
+   "montant_eur": 13523054.39,
+   "nom_projet": "Porte de la Chapelle - Réaménagement JO 2024",
+   "preuve": "Le nom du projet nomme ce lieu et aucun autre : « Porte de la Chapelle - Réaménagement JO 2024 », à 146 m. Même opération de réaménagement des espaces publics de la porte que celle approuvée par 2021 DVD 26.",
+   "id": "2024_18_51_021"
+  },
+  {
+   "annee": 2024,
+   "montant_eur": 11948780.69,
+   "nom_projet": "Porte de la Chapelle - rue de la Chapelle - rue Marx Dormoy - Rond Point",
+   "preuve": "Le nom du projet nomme ce lieu en tête : « Porte de la Chapelle - rue de la Chapelle - rue Marx Dormoy - Rond Point », à 146 m. Corroboré par la délibération 2023 DGGP 8 - « Signature de deux conventions de cofinancement avec la Métropole du Grand Paris pour l'aménagement de la Porte de la Chapelle et des rues Chapelle/Marx Dormoy (13.000.000 euros) ». Réserve : le périmètre de l'opération déborde la place et inclut les rues de la Chapelle et Marx Dormoy, le montant ne porte donc pas uniquement sur la porte.",
+   "id": "2024_18_51_020"
+  }
+ ],
+ "marches": [
+  {
+   "numero_marche": "20222022S01527",
+   "objet": "MOE RÉAMÉNAGEMENT DE LA PORTE DE LA CHAPELLE",
+   "fournisseur": "ARCADIS ESG",
+   "montant_max": 1151853.98,
+   "date_notification": "2022-03-23",
+   "preuve": "L'objet porte entièrement sur le lieu : « MOE RÉAMÉNAGEMENT DE LA PORTE DE LA CHAPELLE » — maîtrise d'œuvre de l'opération de réaménagement de la porte approuvée par 2021 DVD 26. Le lieu est l'objet même du marché, pas un repère d'adresse."
+  },
+  {
+   "numero_marche": "20201370000247",
+   "objet": "SA3 AMO COORDINATION TVX PORTE DE LA CHAPELLE",
+   "fournisseur": "LOUIS BERGER",
+   "montant_max": 610679.0,
+   "date_notification": "2020-03-27",
+   "preuve": "L'objet porte sur les travaux du lieu : « SA3 AMO COORDINATION TVX PORTE DE LA CHAPELLE » — assistance à maîtrise d'ouvrage pour la coordination des travaux à la porte de la Chapelle."
+  },
+  {
+   "numero_marche": "20222022T09890",
+   "objet": "SA3 MSAC TVX AMENAGEMENT ESPACES VERTS PORTE DE LA CHAPELLE",
+   "fournisseur": "TERIDEAL AGRIGEX ENVIRONNEMENT",
+   "montant_max": 510070.49,
+   "date_notification": "2022-12-14",
+   "preuve": "Travaux exécutés sur le lieu, nommé dans l'objet : « SA3 MSAC TVX AMENAGEMENT ESPACES VERTS PORTE DE LA CHAPELLE » — aménagement des espaces verts de la porte, volet du réaménagement des espaces publics."
+  },
+  {
+   "numero_marche": "20212021S03139",
+   "objet": "MSAC MOE REAMENAGEMENT PORTE DE LA CHAPELLE AVP + EP",
+   "fournisseur": "ARCADIS ESG",
+   "montant_max": 499558.5,
+   "date_notification": "2021-05-25",
+   "preuve": "L'objet porte entièrement sur le lieu : « MSAC MOE REAMENAGEMENT PORTE DE LA CHAPELLE AVP + EP » — maîtrise d'œuvre du réaménagement de la porte, phases avant-projet et études préliminaires."
+  },
+  {
+   "numero_marche": "20242024S00371",
+   "objet": "MOE RÉAMÉNAGEMENT DE LA PORTE DE LA CHAPELLE 3",
+   "fournisseur": "ARCADIS ESG",
+   "montant_max": 261200.0,
+   "date_notification": "2024-01-30",
+   "preuve": "L'objet porte entièrement sur le lieu : « MOE RÉAMÉNAGEMENT DE LA PORTE DE LA CHAPELLE 3 » — tranche de maîtrise d'œuvre du réaménagement de la porte, même titulaire (ARCADIS ESG, SIRET 40150379200533) que les marchés de MOE de 2021 et 2022."
+  },
+  {
+   "numero_marche": "20222022S10203",
+   "objet": "SA3 MSAC OPC OPERATION AMENAGEMENT PORTE DE LA CHAPELLE",
+   "fournisseur": "SEGIC INGENIERIE",
+   "montant_max": 150500.0,
+   "date_notification": "2022-12-22",
+   "preuve": "L'objet nomme l'opération d'aménagement du lieu : « SA3 MSAC OPC OPERATION AMENAGEMENT PORTE DE LA CHAPELLE » — ordonnancement, pilotage et coordination du chantier d'aménagement de la porte."
+  }
+ ],
+ "sources": {
+  "delibs": {
+   "name": "Débat-Délibs — Conseil de Paris",
+   "url": "https://a06-v7.apps.paris.fr/a06/"
+  },
+  "bmo": {
+   "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
+   "url": "https://gallica.bnf.fr/ark:/12148/cb343512457/date"
+  },
+  "invest": {
+   "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
+   "url": "https://opendata.paris.fr/"
+  },
+  "wiki": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ }
+}

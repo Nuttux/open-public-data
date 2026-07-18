@@ -1,0 +1,240 @@
+{
+ "generated_at": "2026-07-18T14:38:43.284445+00:00",
+ "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
+ "slug": "petit-palais",
+ "name": "Petit Palais",
+ "kind_fr": "Musée",
+ "kind_en": "Musée",
+ "famille": "culture",
+ "arrondissement": 8,
+ "lat": 48.86608,
+ "lon": 2.31364,
+ "photo": "/img/lieux/petit-palais.jpg",
+ "photo_credit": {
+  "licence": null,
+  "auteur": null,
+  "url": "https://fr.wikipedia.org/wiki/Petit_Palais",
+  "source": "Wikipédia"
+ },
+ "wiki": {
+  "extract": "Le Petit Palais, construit à l'occasion de l'Exposition universelle de 1900 par l'architecte Charles Girault, abrite le musée des Beaux-Arts de la ville de Paris. Il est situé à Paris 8e, avenue Winston-Churchill, face au Grand Palais et bordé par la Seine et l'avenue des Champs-Élysées. Il est érigé en partie à la place du palais de l'Industrie, démoli en 1896. Le bâtiment est inscrit aux monuments historiques en 1975.",
+  "url": "https://fr.wikipedia.org/wiki/Petit_Palais",
+  "source": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ },
+ "stats": {
+  "n_delibs": 1187,
+  "delibs_span": [
+   1996,
+   2011
+  ],
+  "n_bmo_brut": 2000,
+  "n_bmo_verifies": 7,
+  "invest_total_eur": 0,
+  "invest_annees": [],
+  "lecture_mode": "titre nommant le lieu (64 trouvés)",
+  "n_lus": 43,
+  "n_lieu": 38
+ },
+ "subventions_exploitant": null,
+ "residents": [],
+ "kpi_montant": null,
+ "synthese_fr": "Sur quinze ans, les délibérations du Conseil de Paris suivent le Petit Palais à travers un grand chantier et sa vie quotidienne. À la fin des années 1990, le Conseil autorise l'acquisition d'œuvres pour enrichir les collections du musée, sur les arrérages du legs Dutuit. À partir de 1999, un chantier de modernisation et de restauration structure le dossier : marchés de travaux, avenant portant la maîtrise d'œuvre à près de 6 millions d'euros HT, puis plusieurs délibérations approuvant le principe d'indemniser des entreprises pour les préjudices subis pendant les travaux. La réouverture, autour de 2005-2006, ouvre des débats sur les moyens humains : un vœu communiste s'oppose à l'externalisation du poste de sécurité, un autre réclame plus d'agents titulaires de surveillance, avec des chiffres contestés en séance. Les années suivantes portent l'exploitation courante (librairies, café-jardin, maintenance) et des ressources privées : conventions de mécénat avec SAMSUNG, le Studio Philippe Apeloig et la Fondation Hermès, parrainage Epson, et de nouvelles acquisitions comme un pendentif de René Lalique.",
+ "moments": [
+  {
+   "id": "55737",
+   "seance": "JUIN 2002",
+   "fait": "Un vœu demande le démontage de l'installation publicitaire géante dressée devant le Petit Palais, alors en travaux.",
+   "pourquoi": "une pub géante masque le monument en chantier",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=55737"
+  },
+  {
+   "id": "9317",
+   "seance": "JUILLET 2005",
+   "fait": "Le groupe communiste dépose un vœu s'opposant à l'externalisation du poste de sécurité du musée.",
+   "pourquoi": "l'externalisation de la sécurité contestée en séance",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=9317"
+  },
+  {
+   "id": "16875",
+   "seance": "AVRIL 2006",
+   "fait": "En séance, un vœu réclame plus d'agents titulaires de surveillance ; l'adjointe conteste les effectifs avancés.",
+   "pourquoi": "bataille de chiffres sur les gardiens du musée",
+   "vedette": false,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=16875"
+  },
+  {
+   "id": "35186",
+   "seance": "OCTOBRE 2006",
+   "fait": "Le Conseil approuve le principe d'indemniser les sociétés SCOP UTB et Crystal pour préjudices subis pendant le chantier.",
+   "pourquoi": "le chantier de rénovation finit en indemnités",
+   "vedette": false,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=35186"
+  },
+  {
+   "id": "72489",
+   "seance": "JUIN 2007",
+   "fait": "Le Maire est autorisé à signer une convention avec l'association DAÏKA pour l'exposition « Petit Palais intime ou l'étoffe des héroïnes ».",
+   "pourquoi": "une exposition co-construite avec une association",
+   "vedette": false,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=72489"
+  },
+  {
+   "id": "68536",
+   "seance": "JUIN 2008",
+   "fait": "Le Conseil autorise un avenant n°3 portant le marché de maîtrise d'œuvre de la rénovation à 5 951 996,93 € HT.",
+   "pourquoi": "le coût de la maîtrise d'œuvre relevé",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=68536"
+  },
+  {
+   "id": "3972",
+   "seance": "FEVRIER 2010",
+   "fait": "En séance, la concession des librairies-boutiques du Petit Palais et de Carnavalet à la RMN est débattue.",
+   "pourquoi": "à qui confier la boutique du musée",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=3972"
+  },
+  {
+   "id": "39739",
+   "seance": "SEPTEMBRE 2010",
+   "fait": "Le Maire est autorisé à signer deux conventions de mécénat avec SAMSUNG au profit du musée (valeur estimée 650 000 €).",
+   "pourquoi": "le mécénat privé entre au musée",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=39739"
+  }
+ ],
+ "montants": [
+  {
+   "seance": "SEPTEMBRE 2010",
+   "montant": "650.000 euros",
+   "objet": "mécénat SAMSUNG (dépense estimée, budget de fonctionnement)",
+   "citation": "La dépense, estimée à 650.000 euros, sera imputée sur la mission 2, chapitre 011, nature 611, rubrique V322 du budget de fonctionnement",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=39739"
+  },
+  {
+   "seance": "SEPTEMBRE 2010",
+   "montant": "77.774 euros",
+   "objet": "mécénat SAMSUNG (dépense estimée, budget d'investissement)",
+   "citation": "La dépense, estimée à 77.774 euros, sera inscrite au chapitre 21, nature 2162, rubrique V322 du budget d?investissement",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=39739"
+  },
+  {
+   "seance": "MARS 2011",
+   "montant": "180.000 euros",
+   "objet": "pendentif « Anémones des bois » de René Lalique",
+   "citation": "acquérir un pendentif ?Anémones des bois? de René Lalique en faveur du Petit Palais, Musée des Beaux Arts de la Ville de Paris pour un montant de 180.000 euros.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=96642"
+  },
+  {
+   "seance": "MARS 2011",
+   "montant": "87.000 euros",
+   "objet": "mécénat Studio Philippe Apeloig (dépense estimée)",
+   "citation": "La dépense estimée à 87.000 euros sera inscrite au chapitre 21, nature 2162, rubrique V322 du budget municipal d?investissement",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=96833"
+  },
+  {
+   "seance": "OCTOBRE 2008",
+   "montant": "115.000 euros",
+   "objet": "tapisserie",
+   "citation": "acquérir une tapisserie en faveur du Petit Palais, musée des Beaux-Arts de la Ville de Paris pour un montant de 115.000 euros.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=43081"
+  },
+  {
+   "seance": "MAI 2004",
+   "montant": "84.651 euros",
+   "objet": "peinture de Daniel Seghers et Cornelis Schut",
+   "citation": "acquérir une peinture de Daniel Seghers et Cornelis Schut \"Vierge à l'Enfant dans une couronne de fleurs\", pour une somme de 84.651 euros.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=45815"
+  },
+  {
+   "seance": "JUILLET 2003",
+   "montant": "100.000 euros",
+   "objet": "émail de Grandhomme d'après Gustave Moreau",
+   "citation": "acquérir un émail de Grandhomme d'après Gustave Moreau, représentant Europe aux pieds de Jupiter, pour une somme 100.000 euros.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=70214"
+  },
+  {
+   "seance": "AVRIL 2005",
+   "montant": "98 507,69 euros",
+   "objet": "sculpture en marbre de Jules Dalou « Eve »",
+   "citation": "acquérir une sculpture en marbre de Jules Dalou intitulée Eve, pour une somme 98 507,69 euros.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=43889"
+  },
+  {
+   "seance": "SEPTEMBRE 2008",
+   "montant": "32.866,00 euros",
+   "objet": "don de matériel de vidéoprojection (valeur estimée)",
+   "citation": "La dépense estimée à 32.866,00 euros, sera inscrite au chapitre 21, nature 2162, rubrique 01",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=66883"
+  },
+  {
+   "seance": "JUIN 2011",
+   "montant": "4.688,32 euros",
+   "objet": "mécénat Fondation d'entreprise Hermès (recette inscrite)",
+   "citation": "Une recette de 4.688,32 euros sera inscrite au chapitre 10, nature 10251, rubrique V322 du budget d?investissement",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=96350"
+  },
+  {
+   "seance": "MAI 2008",
+   "montant": "28.000 euros",
+   "objet": "œuvres léguées par M. André Berne-Joffroy (valeur totale, Petit Palais et Musée d'Art moderne)",
+   "citation": "estimées au total à la somme de 28.000 euros",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=69652"
+  },
+  {
+   "seance": "JUILLET 2003",
+   "montant": "17.500 euros",
+   "objet": "œuvres léguées par Mme Denyse Lion-Comerre (valeur d'immobilisation)",
+   "citation": "La valeur d'immobilisation des ?uvres léguées, estimées à 17.500 euros au total",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=70491"
+  },
+  {
+   "seance": "JUIN 2008",
+   "montant": "5.951.996,93 euros HT",
+   "objet": "avenant n°3 au marché de maîtrise d'œuvre (nouveau montant du marché)",
+   "citation": "portant le montant du marché de 5.762.264,68 euros HT à 5.951.996,93 euros HT (valeur MO), soit de 6.891.668,80 euros TTC (valeur MO) à 7.118.588,33 euros TTC",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=68536"
+  },
+  {
+   "seance": "OCTOBRE 1999",
+   "montant": "501.000 F",
+   "objet": "gravures de Goya (arrérages du legs Dutuit)",
+   "citation": "proposées par la galerie Paul Prouté au prix total de 501.000 F.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=42415"
+  },
+  {
+   "seance": "OCTOBRE 1996",
+   "montant": "3.547.328 F",
+   "objet": "pendule à orgues « Concert des singes » (arrérages du legs Dutuit)",
+   "citation": "adjugée le 26 juin 1996 par Me Binoche, commissaire-priseur, à la somme de 3.547.328 F avec les frais.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=55217"
+  }
+ ],
+ "bmo_extraits": [],
+ "bmo_recit": null,
+ "invest": [],
+ "marches": [],
+ "sources": {
+  "delibs": {
+   "name": "Débat-Délibs — Conseil de Paris",
+   "url": "https://a06-v7.apps.paris.fr/a06/"
+  },
+  "bmo": {
+   "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
+   "url": "https://gallica.bnf.fr/ark:/12148/cb343512457/date"
+  },
+  "invest": {
+   "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
+   "url": "https://opendata.paris.fr/"
+  },
+  "wiki": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ }
+}

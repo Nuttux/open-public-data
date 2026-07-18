@@ -27,6 +27,21 @@ function writeStack(stack: DrawerReferrer[]) {
   }
 }
 
+/**
+ * Vide la pile de drawers. À appeler quand on atterrit sur une PAGE DE LISTE :
+ * on n'est alors dans aucune chaîne de drill-down, donc aucune pastille
+ * « ← Retour » ne doit s'afficher au prochain drawer ouvert. Sans ça, la pile
+ * survivait à une sortie de drawer non déclenchée par le bouton (retour
+ * navigateur…) et la fiche suivante affichait « ← Retour · <fiche périmée> ».
+ */
+export function clearDrawerStack() {
+  try {
+    sessionStorage.removeItem(STORAGE_KEY);
+  } catch {
+    /* storage disabled */
+  }
+}
+
 type Props = {
   /** Shown in mono kicker above the title. */
   kicker?: ReactNode;

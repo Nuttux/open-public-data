@@ -1,0 +1,94 @@
+{
+ "generated_at": "2026-07-18T14:38:43.284445+00:00",
+ "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
+ "slug": "bourse-de-commerce",
+ "name": "Bourse de Commerce",
+ "kind_fr": "Monument",
+ "kind_en": "Monument",
+ "famille": "services",
+ "arrondissement": 1,
+ "lat": 48.862819,
+ "lon": 2.342834,
+ "photo": "/img/lieux/bourse-de-commerce.jpg",
+ "photo_credit": {
+  "licence": "CC BY-SA 4.0",
+  "auteur": "Chabe01",
+  "url": "https://commons.wikimedia.org/wiki/File:Bourse_Commerce_-_Paris_I_(FR75)_-_2021-06-05_-_1.jpg",
+  "source": "Wikimedia Commons"
+ },
+ "wiki": {
+  "extract": null,
+  "url": null,
+  "source": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ },
+ "stats": {
+  "n_delibs": 527,
+  "delibs_span": [
+   2004,
+   2018
+  ],
+  "n_bmo_brut": 0,
+  "n_bmo_verifies": null,
+  "invest_total_eur": 0,
+  "invest_annees": [],
+  "lecture_mode": "tête du classement Solr (527 documents au total)",
+  "n_lus": 44,
+  "n_lieu": 3
+ },
+ "subventions_exploitant": null,
+ "residents": [],
+ "kpi_montant": null,
+ "synthese_fr": "En mars 2004, une question orale adressée au Préfet de police porte sur les mesures prises après la détection de légionellose dans une tour aéroréfrigérante de la Bourse du Commerce. En mai 2016, l'avenir du bâtiment fait débat au Conseil : un vœu de Mme Danielle Simonnet reçoit un avis défavorable et une suggestion de retrait pour un examen reporté à juillet, tandis que M. Jean-François Legaret, maire du 1er arrondissement, décrit le bâtiment comme « très largement inutilisé » et défend l'arrivée d'un projet culturel. En février 2018, Mme Simonnet dépose un nouveau vœu, cette fois relatif à la cession de la Bourse du commerce.",
+ "moments": [
+  {
+   "id": "11898",
+   "seance": "MARS 2004",
+   "fait": "Une question orale interroge le Préfet de police sur les mesures prises après une détection de légionellose dans une tour aéroréfrigérante de la Bourse du Commerce.",
+   "pourquoi": "Quand la santé publique s'invite dans le bâtiment",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=11898"
+  },
+  {
+   "id": "129956",
+   "seance": "MAI 2016",
+   "fait": "Le devenir du bâtiment fait débat : le vœu de Mme Simonnet reçoit un avis défavorable, M. Legaret le disant « très largement inutilisé » et défendant un projet culturel.",
+   "pourquoi": "Le sort du bâtiment divise le Conseil",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=129956"
+  },
+  {
+   "id": "140891",
+   "seance": "FEVRIER 2018",
+   "fait": "Mme Danielle Simonnet dépose un vœu relatif à la cession de la Bourse du commerce.",
+   "pourquoi": "La cession du bâtiment revient au Conseil",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=140891"
+  }
+ ],
+ "montants": [],
+ "bmo_extraits": [],
+ "bmo_recit": null,
+ "invest": [],
+ "marches": [],
+ "sources": {
+  "delibs": {
+   "name": "Débat-Délibs — Conseil de Paris",
+   "url": "https://a06-v7.apps.paris.fr/a06/"
+  },
+  "bmo": {
+   "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
+   "url": "https://gallica.bnf.fr/ark:/12148/cb343512457/date"
+  },
+  "invest": {
+   "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
+   "url": "https://opendata.paris.fr/"
+  },
+  "wiki": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ }
+}

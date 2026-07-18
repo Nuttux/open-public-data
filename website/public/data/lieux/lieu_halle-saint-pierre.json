@@ -1,0 +1,360 @@
+{
+ "generated_at": "2026-07-18T14:38:43.284445+00:00",
+ "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
+ "slug": "halle-saint-pierre",
+ "name": "Halle Saint-Pierre",
+ "kind_fr": "Équipement",
+ "kind_en": "Public facility",
+ "famille": "services",
+ "arrondissement": 18,
+ "lat": 48.8853,
+ "lon": 2.3419,
+ "photo": "/img/lieux/halle-saint-pierre.jpg",
+ "photo_credit": {
+  "licence": null,
+  "auteur": null,
+  "url": "https://fr.wikipedia.org/wiki/Halle_Saint-Pierre",
+  "source": "Wikipédia"
+ },
+ "wiki": {
+  "extract": "La Halle Saint-Pierre est un musée consacré à l'art naïf, l'art brut, l'art singulier et l'art outsider. Il est situé à Paris, au pied de la butte Montmartre dans une ancienne halle de style Baltard, ayant autrefois abrité un marché, une école, puis un garage du service municipal de la propreté.",
+  "url": "https://fr.wikipedia.org/wiki/Halle_Saint-Pierre",
+  "source": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ },
+ "stats": {
+  "n_delibs": 473,
+  "delibs_span": [
+   2001,
+   2023
+  ],
+  "n_bmo_brut": 2000,
+  "n_bmo_verifies": null,
+  "invest_total_eur": 0,
+  "invest_annees": [],
+  "lecture_mode": "titre nommant le lieu (29 trouvés)",
+  "n_lus": 29,
+  "n_lieu": 25
+ },
+ "subventions_exploitant": {
+  "nom_fiche": "ASSOCIATION HALLE SAINT PIERRE",
+  "total_eur": 400000.0,
+  "annees": [
+   "2022",
+   "2022"
+  ],
+  "rows": [
+   {
+    "annee": "2022",
+    "montant_eur": 400000.0,
+    "beneficiaire": "ASSOCIATION HALLE SAINT PIERRE",
+    "thematique": "Culture"
+   }
+  ]
+ },
+ "residents": [],
+ "kpi_montant": null,
+ "synthese_fr": "En octobre 2001, la Ville autorise une convention d'objectifs et une convention d'occupation du domaine public qui encadrent la présence de l'association dans le bâtiment municipal du 2, rue Ronsard. Pendant une décennie, la subvention annuelle reste élevée, le plus souvent autour de 680.000 euros, mais elle s'accompagne à partir de 2006-2007 de difficultés de gestion : un audit de l'Inspection générale pointant des dysfonctionnements, puis un vœu du Conseil demandant un versement en deux tranches conditionné à la mise en œuvre de préconisations, et, selon les élus, une information judiciaire et le départ du président. À partir de 2010, la participation municipale décroît (650.000 euros), puis 470.000 en 2017, 450.000 en 2019 et 380.000 en 2023, sur fond de débats récurrents sur la médiation jeunesse, l'inconfort thermique du bâtiment et des incidents (feu de façade et cambriolage évoqués en 2017). En 2023, un « appel au secours » des personnels, amplifié par un afflux de visiteurs après une story Instagram, relance la question des conditions de travail, et l'adjointe à la culture dit avoir engagé un plan pluriannuel de travaux. En marge, quatre vœux de 2009 portent non sur la Halle elle-même mais sur ses abords, où un comité de soutien à un couple licencié du Marché Saint-Pierre voisin distribue des tracts.",
+ "moments": [
+  {
+   "id": "33683",
+   "seance": "OCTOBRE 2001",
+   "fait": "Le Conseil autorise le Maire à signer avec l'association une convention d'objectifs et une convention d'occupation du domaine public pour les locaux du 2, rue Ronsard.",
+   "pourquoi": "le cadre fondateur : la Ville héberge, l'association occupe",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=33683"
+  },
+  {
+   "id": "12228",
+   "seance": "MAI 2007",
+   "fait": "Autour de la subvention de 680 000 euros, M. Garel indique que les fonctionnaires chargés de l'audit ont transmis des remarques au Procureur et qu'une information judiciaire est ouverte, et demande un versement fractionné.",
+   "pourquoi": "un audit de gestion vire au judiciaire",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=12228"
+  },
+  {
+   "id": "20577",
+   "seance": "JUILLET 2009",
+   "fait": "Le débat porte sur un projet de suppression du service d'animation inscrit à l'ordre du jour du conseil d'administration, que plusieurs élus contestent au nom de la médiation jeunesse.",
+   "pourquoi": "faut-il sacrifier la médiation pour les scolaires",
+   "vedette": false,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=20577"
+  },
+  {
+   "id": "21508",
+   "seance": "NOVEMBRE 2010",
+   "fait": "La subvention passe de 680 000 à 650 000 euros ; les élus annoncent un redressement des comptes en 2009 et un changement de présidence après le départ de M. Riglet.",
+   "pourquoi": "sortie de crise : comptes et présidence renouvelés",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=21508"
+  },
+  {
+   "id": "140032",
+   "seance": "NOVEMBRE 2017",
+   "fait": "M. Julliard signale que la halle vient de subir un feu de façade parti d'un tas d'ordures et un cambriolage, tout en réaffirmant le soutien de la Ville.",
+   "pourquoi": "incendie et cambriolage frappent le musée",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=140032"
+  },
+  {
+   "id": "150078",
+   "seance": "JUIN 2019",
+   "fait": "Mme Mées affirme qu'en 2018 la Ville a mené d'importants travaux sur le bâtiment (toiture, auditorium, chauffage, aération) pour améliorer l'accueil du public.",
+   "pourquoi": "la Ville dit avoir rénové toiture et chauffage",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=150078"
+  },
+  {
+   "id": "169860",
+   "seance": "JUIN 2023",
+   "fait": "Le groupe Changer Paris relaie un « appel au secours » des personnels sur leurs conditions de travail, après un afflux de visiteurs lié à une story Instagram vue plusieurs millions de fois.",
+   "pourquoi": "un pic viral expose la détresse des salariés",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=169860"
+  },
+  {
+   "id": "170392",
+   "seance": "JUILLET 2023",
+   "fait": "Le projet DAC 143 est adopté : la subvention est fixée à 380 000 euros et Mme Rolland dit avoir engagé un plan pluriannuel de travaux sur la « structure Eiffel ».",
+   "pourquoi": "subvention en baisse, travaux enfin promis",
+   "vedette": false,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=170392"
+  }
+ ],
+ "montants": [
+  {
+   "seance": "JUIN 2023",
+   "montant": "40.000 euros",
+   "objet": "Baisse de subvention proposée que le vœu conteste (propos de M. Granier)",
+   "citation": "Nous demandons donc, Ã travers ce v?u, que la subvention soit ramenÃ©e au mÃªme niveau, et non diminuÃ©e de 40.000 euros, comme cela a Ã©tÃ© proposÃ©.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=169860"
+  },
+  {
+   "seance": "JUILLET 2023",
+   "montant": "380.000 euros",
+   "objet": "Subvention 2023 proposée (DAC 143)",
+   "citation": "Il concerne une subvention de 380.000 euros et d'un avenant Ã convention avec l'association \"Halle Saint-Pierre\", 18e.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=170541"
+  },
+  {
+   "seance": "JUILLET 2023",
+   "montant": "60.000 euros",
+   "objet": "Baisse du soutien de la Ville pour 2023 (propos de Mme Primet)",
+   "citation": "le soutien de la Ville Ã l'association \"Halle Saint-Pierre\" a diminuÃ© de 60.000 euros pour l'annÃ©e 2023",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=170541"
+  },
+  {
+   "seance": "JUILLET 2023",
+   "montant": "200.000 euros",
+   "objet": "Coût maximal d'une exposition (propos de Mme Primet)",
+   "citation": "le coÃ»t d'une exposition peut aller jusqu'Ã 200.000 euros et que ces expositions coÃ»tent de plus en plus cher",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=170541"
+  },
+  {
+   "seance": "JUILLET 2023",
+   "montant": "380.000 euros",
+   "objet": "Subvention 2023 votée (DAC 143 adopté)",
+   "citation": "C'est ce qui a permis d'aboutir Ã un montant de subvention proposÃ© de 380.000 euros.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=170392"
+  },
+  {
+   "seance": "JUIN 2019",
+   "montant": "450.000 euros",
+   "objet": "Subvention 2019 (DAC 222)",
+   "citation": "Nous passons au projet de délibération DAC 222, avec la subvention de 450.000 euros et la convention avec l?association \"Halle Saint-Pierre\" dans le 18e arrondissement.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=150078"
+  },
+  {
+   "seance": "NOVEMBRE 2017",
+   "montant": "470.000 euros",
+   "objet": "Subvention 2017 (DAC 570)",
+   "citation": "Il s'agit d'une subvention de 470.000 euros avec l'association \"Halle Saint-Pierre\".",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=140032"
+  },
+  {
+   "seance": "MARS 2016",
+   "montant": "470.000 euros",
+   "objet": "Montant total de la subvention 2016, dont ce projet vote le solde (propos de M. Julliard)",
+   "citation": "d'accorder le solde de subvention à la Halle Saint-Pierre pour un montant total de 470.000 euros",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=129254"
+  },
+  {
+   "seance": "MARS 2016",
+   "montant": "235.000 euros",
+   "objet": "Solde de subvention voté au titre de 2016 (intitulé du projet DAC 413)",
+   "citation": "Subvention (235.000 euros)",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=129254"
+  },
+  {
+   "seance": "MAI 2007",
+   "montant": "680.000 euros",
+   "objet": "Subvention de fonctionnement 2007 (avis favorable voté au Conseil du 18e)",
+   "citation": "Un avis favorable à l?attribution d?une subvention de fonctionnement de 680.000 euros pour l?année 2007 à l?association ?La Halle Saint-Pierre? a été voté au Conseil d?arrondissement du 18e.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=80371"
+  },
+  {
+   "seance": "NOVEMBRE 2010",
+   "montant": "650.000 euros",
+   "objet": "Subvention 2010 totale fixée (complément inclus)",
+   "citation": "est fixée à 650.000 euros, soit un complément de 310.000 euros",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=86133"
+  },
+  {
+   "seance": "NOVEMBRE 2010",
+   "montant": "650.000 euros",
+   "objet": "Subvention 2010, en baisse par rapport à 680.000 euros (propos de Mme Goldgrab)",
+   "citation": "elle est désormais portée à 650.000 euros dans sa totalité au lieu de 680.000 euros",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=21508"
+  },
+  {
+   "seance": "NOVEMBRE 2010",
+   "montant": "310.000 euros",
+   "objet": "Complément de subvention voté (DAC 502)",
+   "citation": "pour l?attribution d?une subvention de 310.000 euros",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=21508"
+  },
+  {
+   "seance": "NOVEMBRE 2010",
+   "montant": "30.000 euros",
+   "objet": "Résultat positif 2009, contre un déficit de près de 100.000 euros en 2007 (propos de M. Girard)",
+   "citation": "un résultat positif de plus de 30.000 euros en 2009, alors que les comptes 2007 faisaient apparaître un résultat négatif de presque 100.000 euros",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=21508"
+  },
+  {
+   "seance": "JUILLET 2009",
+   "montant": "680.000 euros",
+   "objet": "Subvention 2009 portée à son total par le complément",
+   "citation": "au titre de l?année 2009 est portée de 340.000 euros à 680.000 euros",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=75023"
+  },
+  {
+   "seance": "JUILLET 2009",
+   "montant": "340.000 euros",
+   "objet": "Complément de subvention 2009 (DAC 88)",
+   "citation": "signée avec l?association \"Halle Saint-Pierre\" pour l'attribution d'une subvention de 340.000 euros",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=20577"
+  },
+  {
+   "seance": "JUILLET 2009",
+   "montant": "680.000 euros",
+   "objet": "Subvention totale attribuée à la Halle (propos de Mme Fournier)",
+   "citation": "le complément du montant de la subvention qui est attribuée à la Halle Saint-Pierre qui est de 680.000 euros",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=20577"
+  },
+  {
+   "seance": "SEPTEMBRE 2008",
+   "montant": "680.000 euros",
+   "objet": "Subvention 2008 portée à son total par le complément",
+   "citation": "au titre de l?année 2008, est portée de 340.000 euros à 680.000 euros",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=67635"
+  },
+  {
+   "seance": "SEPTEMBRE 2008",
+   "montant": "680.000 euros",
+   "objet": "Subvention totale 2008, soit 53 % des ressources du lieu (propos de Mme Fournier)",
+   "citation": "ce qui donne une subvention très importante de 680.000 euros, montant total versé par la Ville, qui représente 53 % des ressources de ce lieu",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=6835"
+  },
+  {
+   "seance": "SEPTEMBRE 2008",
+   "montant": "3.800 euros",
+   "objet": "Contribution du Centre national du livre, jugée faible (propos de Mme Fournier)",
+   "citation": "le Centre national du livre, pour 3.800 euros et 2.500 euros pour les expositions",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=6835"
+  },
+  {
+   "seance": "MAI 2007",
+   "montant": "680.000 euros",
+   "objet": "Subvention de fonctionnement 2007 (avenant n°4)",
+   "citation": "une subvention de 680.000 euros est attribuée à l?association Halle Saint-Pierre dont le siège social est situé 2, rue Ronsard (18e) (D04953 - 2007)",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=80226"
+  },
+  {
+   "seance": "FEVRIER 2006",
+   "montant": "680.000 euros",
+   "objet": "Subvention de fonctionnement 2006 (avenant n°3)",
+   "citation": "une subvention de 680.000 euros est attribuée à l?association Halle Saint-Pierre dont le siège social est situé 2, rue Ronsard (18e) (D04953 -2006_02236)",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=27866"
+  },
+  {
+   "seance": "JUILLET 2003",
+   "montant": "680.000 euros",
+   "objet": "Subvention de fonctionnement 2003 (3e avenant)",
+   "citation": "Une subvention de 680.000 euros est attribuée à l'Association Halle Saint-Pierre dont le siège social est situé 2, rue Ronsard (18e)",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=70615"
+  },
+  {
+   "seance": "SEPTEMBRE 2005",
+   "montant": "15.000 euros",
+   "objet": "Subvention complémentaire pour les activités musicales (avenant n°2)",
+   "citation": "Afin de lui permettre de poursuivre ses activités musicales, une subvention de 15.000 euros est attribuée à l?association ?Halle Saint-Pierre?",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=63521"
+  },
+  {
+   "seance": "FEVRIER 2006",
+   "montant": "680.000 euros",
+   "objet": "Participation de la Ville en 2006, contre 692.000 en 2005 (propos de M. Girard)",
+   "citation": "La participation de la Ville s?élèvera donc à 680.000 euros contre 692.000 en 2005 en effet, soit un écart de 12.000 euros qui correspond à la prise en compte par la Ville des agios bancaires",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=25372"
+  },
+  {
+   "seance": "MARS 2002",
+   "montant": "641.765 euros",
+   "objet": "Subvention de fonctionnement 2002 (avenant)",
+   "citation": "Une subvention de 641.765 euros est attribuée à l'Association Halle Saint-Pierre, afin de lui permettre d'organiser des expositions et des animations culturelles en 2002.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=39076"
+  },
+  {
+   "seance": "JUILLET 2004",
+   "montant": "680 000 euros",
+   "objet": "Subvention de fonctionnement 2004 (avenant n°4)",
+   "citation": "une subvention de 680 000 euros est attribuée à l'association Halle Saint-Pierre dont le siège social est situé 2, rue Ronsard - 75018 Paris",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=59924"
+  },
+  {
+   "seance": "DECEMBRE 2002",
+   "montant": "44.235 euros",
+   "objet": "Dépense du second avenant 2002",
+   "citation": "La dépense correspondante, soit 44.235 euros, sera imputée sur le budget de fonctionnement de la Ville de Paris de 2002.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=71412"
+  },
+  {
+   "seance": "AVRIL 2005",
+   "montant": "692.000 euros",
+   "objet": "Subvention de fonctionnement 2005 (convention triennale + avenant n°1)",
+   "citation": "une subvention de 692.000 euros est attribuée à l?association Halle Saint-Pierre, dont le siège social est situé 2, rue Ronsard 75018 Paris",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=43531"
+  },
+  {
+   "seance": "MAI 2007",
+   "montant": "680.000 euros",
+   "objet": "Subvention 2007 (DAC 109) débattue avec le vœu Les Verts",
+   "citation": "le montant de la subvention et de 680.000 euros",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=12228"
+  }
+ ],
+ "bmo_extraits": [],
+ "bmo_recit": null,
+ "invest": [],
+ "marches": [],
+ "sources": {
+  "delibs": {
+   "name": "Débat-Délibs — Conseil de Paris",
+   "url": "https://a06-v7.apps.paris.fr/a06/"
+  },
+  "bmo": {
+   "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
+   "url": "https://gallica.bnf.fr/ark:/12148/cb343512457/date"
+  },
+  "invest": {
+   "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
+   "url": "https://opendata.paris.fr/"
+  },
+  "wiki": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ }
+}

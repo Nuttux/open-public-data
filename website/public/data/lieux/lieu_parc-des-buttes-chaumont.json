@@ -1,0 +1,274 @@
+{
+ "generated_at": "2026-07-18T14:38:43.284445+00:00",
+ "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
+ "slug": "parc-des-buttes-chaumont",
+ "name": "Parc des Buttes-Chaumont",
+ "kind_fr": "Parc",
+ "kind_en": "Park",
+ "famille": "vert",
+ "arrondissement": 19,
+ "lat": 48.8809,
+ "lon": 2.3819,
+ "photo": "/img/lieux/parc-des-buttes-chaumont.jpg",
+ "photo_credit": {
+  "licence": null,
+  "auteur": null,
+  "url": "https://fr.wikipedia.org/wiki/Parc_des_Buttes-Chaumont",
+  "source": "Wikipédia"
+ },
+ "wiki": {
+  "extract": "Le parc des Buttes-Chaumont est un jardin public situé dans le 19e arrondissement de Paris, un secteur nord-est de Paris, en région française Île-de-France.",
+  "url": "https://fr.wikipedia.org/wiki/Parc_des_Buttes-Chaumont",
+  "source": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ },
+ "stats": {
+  "n_delibs": 440,
+  "delibs_span": [
+   1998,
+   2025
+  ],
+  "n_bmo_brut": 1250,
+  "n_bmo_verifies": 14,
+  "invest_total_eur": 2409957.22,
+  "invest_annees": [
+   "2022",
+   "2024"
+  ],
+  "lecture_mode": "titre nommant le lieu (75 trouvés)",
+  "n_lus": 44,
+  "n_lieu": 23
+ },
+ "subventions_exploitant": null,
+ "residents": [],
+ "kpi_montant": null,
+ "synthese_fr": "Les documents lus commencent par la vie contractuelle du parc : en mai 1998, la Ville répond que l'article 7 du règlement laisse les voitures entrer pour desservir les trois restaurants concédés (Weber Café, Pavillon du Lac, Salon Puebla) et qu'y renoncer remettrait en cause les conventions signées, et en février 2000 la convention du « Pavillon du lac » est contestée en séance parce qu'elle maintient cet accès et prévoit d'indemniser l'exploitant si la Ville le supprimait. Le même mois, le Conseil approuve le principe de restauration du parc et le lancement d'un concours international de maîtrise d'œuvre ; en juin 2000, une question écrite porte sur le castelet du théâtre Guignol Anatole détruit par la tempête du 26 décembre 1999, pour lequel une subvention exceptionnelle de 100 000 F est annoncée. Le Pavillon du Lac reste ensuite fermé : son concessionnaire n'obtient pas de permis après l'avis défavorable de la Commission départementale des sites du 16 janvier 2001, bénéficie d'une exonération de redevance jusqu'à la résiliation anticipée de la convention en 2002, un nouvel appel à candidatures est publié en janvier 2004, et en avril 2005 le Conseil autorise une convention avec la S.A.R.L. « Ça fait rêver ». Les travaux arrivent par lots successifs — pavillon Armand-Carrel (1999), pavillon du 5 rue Botzaris et passerelle suspendue (2006, relancée en 2008), consolidation des sols sous la voie circulaire du lac (2008), réseaux hydrauliques et voiries (2010, 2011, 2012) — sans qu'aucun montant ne figure dans les extraits de ces délibérations. En octobre 2021, l'adjoint Christophe NAJDOVSKI fait état de 12 millions d'euros déjà engagés, de 5 hectares restant à rénover sur 25 et d'une étude du BRGM passée en septembre 2021 ; en mai 2022, la conseillère qui avait retiré son vœu constate que cette étude ne lui a pas été communiquée, et des vœux sur l'avancement des travaux, les carrières de gypse et les chiens sans laisse reviennent en juin et décembre 2025.",
+ "moments": [
+  {
+   "id": "51155",
+   "seance": "FEVRIER 2000",
+   "fait": "Le Conseil approuve le principe de restauration du parc et le lancement d'un concours international de maîtrise d'œuvre, sans montant indiqué.",
+   "pourquoi": "Le plan fondateur invoqué vingt ans après",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=51155"
+  },
+  {
+   "id": "2890",
+   "seance": "FEVRIER 2000",
+   "fait": "La convention du « Pavillon du lac » est contestée en séance : son article 11 maintient l'accès automobile et prévoit d'indemniser l'exploitant si la Ville le supprimait, malgré le vœu unanime de la Commission des sites du 8 juin 1999.",
+   "pourquoi": "Conflit fondateur entre concessions et parc",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=2890"
+  },
+  {
+   "id": "22909",
+   "seance": "JUIN 2000",
+   "fait": "Le castelet du théâtre Guignol Anatole, détruit par la tempête du 26 décembre 1999, doit être reconstruit : devis de 206 127 F HT, dont 106 127 F d'assurance et 100 000 F de subvention exceptionnelle annoncée.",
+   "pourquoi": "Vie culturelle du parc et argent public",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=22909"
+  },
+  {
+   "id": "13178",
+   "seance": "AVRIL 2004",
+   "fait": "Le Pavillon du Lac est inexploité depuis 2001 : permis refusé après avis défavorable des sites, exonération de redevance, convention résiliée en 2002 et nouvel appel à candidatures publié en janvier 2004.",
+   "pourquoi": "Une concession défaillante, des recettes perdues",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=13178"
+  },
+  {
+   "id": "61514",
+   "seance": "NOVEMBRE 2008",
+   "fait": "Le Conseil lance un appel d'offres pour la poursuite des travaux de consolidation des sols sous la voie circulaire du lac et sous certains pavillons.",
+   "pourquoi": "Le sol instable, cause de tout le reste",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=61514"
+  },
+  {
+   "id": "111280",
+   "seance": "FEVRIER 2013",
+   "fait": "Un vœu demandant deux espaces de liberté pour chiens est repoussé ; l'adjointe signale qu'un comité de suivi du parc a été créé avec la mairie du 19e.",
+   "pourquoi": "Usages quotidiens et gouvernance du parc",
+   "vedette": false,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=111280"
+  },
+  {
+   "id": "161060",
+   "seance": "OCTOBRE 2021",
+   "fait": "L'Exécutif répond à un vœu sur l'état du parc : 12 millions d'euros déjà engagés, 5 hectares à rénover sur 25, étude du BRGM passée en septembre 2021 et deux ans avant les premiers travaux.",
+   "pourquoi": "Premier chiffrage public de la rénovation",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=161060"
+  },
+  {
+   "id": "164858",
+   "seance": "MAI 2022",
+   "fait": "Sept mois plus tard, la conseillère constate que l'étude d'expertise promise ne lui a pas été communiquée et demande un plan de travaux public et chiffré.",
+   "pourquoi": "La promesse de transparence non tenue",
+   "vedette": false,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=164858"
+  }
+ ],
+ "montants": [
+  {
+   "seance": "OCTOBRE 2021",
+   "montant": "5 millions d'euros",
+   "objet": "travaux de maintenance en 2020, chiffre cité en débat par la conseillère Marie TOUBIANA pour dénoncer un effort insuffisant (non voté)",
+   "citation": "Seulement 5 millions d?euros de travaux de maintenance en 2020. Ce n?est vraiment pas assez.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=161060"
+  },
+  {
+   "seance": "OCTOBRE 2021",
+   "montant": "12 millions d'euros",
+   "objet": "montant déjà engagé sur le réseau hydraulique et les allées, cité en réponse par l'adjoint Christophe NAJDOVSKI (non voté dans ce document)",
+   "citation": "des travaux de rénovation d?envergure ont déjà été réalisés sur le parc, avec la réfection intégrale du réseau hydraulique ainsi que des allées, pour un montant déjà engagé de 12 millions d?euros.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=161060"
+  },
+  {
+   "seance": "AVRIL 2004",
+   "montant": "3.000.000 F (457.347 euros)",
+   "objet": "produit que l'exploitation du Pavillon du Lac « représentait jusqu'à 2001 » ; chiffre avancé en question écrite par le conseiller Michel BULTÉ, non voté et non repris dans la réponse de l'Exécutif",
+   "citation": "L'exploitation de cet ensemble représentait jusqu'à 2001 environ 3.000.000 F (457.347 euros), ce qui atteste de l'intérêt que lui portent nombre de Parisiens et de touristes.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=13178"
+  },
+  {
+   "seance": "AVRIL 2004",
+   "montant": "5.000.000 F hors taxes (762.245 euros)",
+   "objet": "travaux de rénovation que le concessionnaire Scott Traiteur voulait réaliser ; montant avancé en question écrite par le conseiller Michel BULTÉ, non voté",
+   "citation": "a demandé un dispositif juridique de permis de construire afin d'effectuer les travaux de rénovation à hauteur de 5.000.000 F hors taxes (762.245 euros).",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=13178"
+  },
+  {
+   "seance": "JUIN 2000",
+   "montant": "100.000 F",
+   "objet": "aide en équipement sollicitée par l'association gestionnaire pour reconstruire le théâtre",
+   "citation": "L'association \"Théâtre Guignol Anatole des Buttes-Chaumont\" qui gère ce théâtre, a sollicité de la Ville de Paris, pour sa reconstruction, une aide en équipement d'un montant de 100.000 F.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=22909"
+  },
+  {
+   "seance": "JUIN 2000",
+   "montant": "206.127 F hors taxe",
+   "objet": "devis de reconstruction du théâtre, dont 106.127 F couverts par le contrat d'assurance de l'association",
+   "citation": "Le montant des devis de reconstruction du Théâtre Guignol Anatole des Buttes-Chaumont s'élève à 206.127 F hors taxe, dont 106.127 F seront couverts par le contrat d'assurance souscrit par l'association.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=22909"
+  },
+  {
+   "seance": "JUIN 2000",
+   "montant": "100.000 F",
+   "objet": "subvention exceptionnelle d'équipement annoncée en réponse par l'adjointe, à présenter au Conseil de Paris : annoncée dans ce document, non votée",
+   "citation": "un projet de délibération proposant l'attribution d'une subvention exceptionnelle d'équipement d'un montant de 100.000 F sera prochainement présenté devant le Conseil de Paris",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=22909"
+  }
+ ],
+ "bmo_extraits": [
+  {
+   "date": "1898-12-25",
+   "extrait": "Le parc des Buttes - Chaumont est mis à la disposition de la Caisse, qui y a récolté, en 1882, une somme … ",
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k6248152b/f3.item"
+  },
+  {
+   "date": "1900-10-21",
+   "extrait": "Le parc des Buttes - Chaumont est situé sur son territoire et la grande distance : place des Fêtes—porte d'Aubervilliers ne dispose d'aucun moyen de transport",
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k9636762g/f1.item"
+  },
+  {
+   "date": "1907-07-20",
+   "extrait": "Travaux à exécuter pour la restauration du pont Fessart-Secrétan, dans le parc des Buttes - Chaumont  … secteur Est des Promenades, à l'adjudication, au rabais, sur soumissions cachetées, de l'entreprise",
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k6495693x/f7.item"
+  }
+ ],
+ "bmo_recit": "Entre 1898 et 1907, le parc des Buttes-Chaumont n'apparaît que trois fois dans le Bulletin municipal officiel, et chaque fois pour un motif différent. En décembre 1898, le parc est mis à la disposition de la Caisse — que le Bulletin ne désigne pas autrement —, qui y avait déjà fait une recette en 1882. En octobre 1900, il est fait valoir que le parc se trouve sur le territoire concerné et que la grande distance entre la place des Fêtes et la porte d'Aubervilliers ne dispose d'aucun moyen de transport. En juillet 1907, les travaux de restauration du pont Fessart-Secrétan, dans le parc, relevant du secteur Est des Promenades, sont mis à l'adjudication, au rabais et sur soumissions cachetées ; l'archive s'arrête à cette mise en concurrence et ne dit pas ce qui en est advenu.",
+ "invest": [
+  {
+   "annee": 2022,
+   "montant_eur": 472990.0,
+   "nom_projet": "Parc des buttes Chaumont (Ile de la Falaise) - Etudes de diagnostic et mis en sécurité",
+   "preuve": "Le nom du projet nomme ce lieu : « Parc des buttes Chaumont (Ile de la Falaise) - Etudes de diagnostic et mis en securite » (58 m). A la meme periode, le Conseil de Paris de mai 2022 debat d'un v?u « relatif a l'etude d'expertise promise sur l'etat du parc des Buttes-Chaumont » ; le lien entre cette etude et cette ligne d'investissement n'est pas etabli par les sources.",
+   "id": "2022_19_59_019"
+  },
+  {
+   "annee": 2024,
+   "montant_eur": 1092130.35,
+   "nom_projet": "Parc Des Buttes Chaumont -Ile de la Falaise",
+   "preuve": "Le nom du projet nomme ce lieu : « Parc Des Buttes Chaumont -Ile de la Falaise » (58 m). L'ile du parc fait partie des 5 ha restant a renover selon le Conseil de Paris d'octobre 2021 : « il reste 5 hectares du parc a renover - l'ile, la grotte et le temple - sur les 25 que compte le parc ».",
+   "id": "2024_19_54_016"
+  },
+  {
+   "annee": 2024,
+   "montant_eur": 844836.87,
+   "nom_projet": "Parc Des Buttes Chaumont - Curage du lac",
+   "preuve": "Le nom du projet nomme ce lieu et son lac : « Parc Des Buttes Chaumont - Curage du lac » (58 m). Le lac et sa voie circulaire sont des ouvrages du parc, cites dans les deliberations (2008 DEVE 33, « travaux de consolidation des sols sous la voie circulaire du lac [...] parc des Buttes Chaumont »).",
+   "id": "2024_19_54_006"
+  }
+ ],
+ "marches": [
+  {
+   "numero_marche": "decp-2025T13454",
+   "objet": "Marché de conception réalisation pour la restauration structurelle et paysagère durable du parc des Buttes-Chaumont à Paris 19ème",
+   "fournisseur": "EIFFAGE ROUTE ILE DE FRANCE / CENTRE OUEST",
+   "montant_max": 94000000.0,
+   "date_notification": "2026-01-27",
+   "preuve": "L'objet nomme explicitement ce lieu : « Marche de conception realisation pour la restauration structurelle et paysagere durable du parc des Buttes-Chaumont a Paris 19eme ». Marche dedie au parc (et non marche-cadre Ville) ; montant_max = plafond du marche, pas une depense constatee."
+  },
+  {
+   "numero_marche": "decp-2026S00531",
+   "objet": "Missions de contrôle technique relative à la restauration structurelle et paysagère durable du parc des Buttes-Chaumont à Paris 19ème",
+   "fournisseur": "SOCOTEC CONSTRUCTION",
+   "montant_max": 691560.0,
+   "date_notification": "2026-02-13",
+   "preuve": "L'objet nomme explicitement ce lieu : « Missions de controle technique relative a la restauration structurelle et paysagere durable du parc des Buttes-Chaumont a Paris 19eme ». Prestation de controle technique portant sur ce parc ; son objet reprend l'intitule de l'operation de restauration du meme parc."
+  },
+  {
+   "numero_marche": "decp-2025T13056",
+   "objet": "Travaux pour le réaménagement d’une aire de loisirs au parc des Buttes-Chaumont à Paris 19ème  - Travaux de terrassement, maçonnerie, réseaux divers, brumisation, sols souples et fourniture et pose de",
+   "fournisseur": "TERIDEAL",
+   "montant_max": 576028.61,
+   "date_notification": "2025-12-16",
+   "preuve": "L'objet nomme explicitement ce lieu : « Travaux pour le reamenagement d'une aire de loisirs au parc des Buttes-Chaumont a Paris 19eme - Travaux de terrassement, maconnerie, reseaux divers, brumisation, sols souples et fourniture et pose de jeux ». Travaux realises dans le parc."
+  },
+  {
+   "numero_marche": "decp-2025T13057",
+   "objet": "Travaux pour le réaménagement d’une aire de loisirs au parc des Buttes-Chaumont à Paris 19ème  - Travaux de serrurerie, montage de bancs, fourniture et pose d’agrès sportifs pour le réaménagement d’un",
+   "fournisseur": "SARMATES",
+   "montant_max": 95349.22,
+   "date_notification": "2025-12-16",
+   "preuve": "L'objet nomme explicitement ce lieu : « Travaux pour le reamenagement d'une aire de loisirs au parc des Buttes-Chaumont a Paris 19eme - Travaux de serrurerie, montage de bancs, fourniture et pose d'agres sportifs ». Travaux realises dans le parc, sur la meme aire de loisirs que le marche decp-2025T13056 (meme intitule d'operation, meme date de notification)."
+  },
+  {
+   "numero_marche": "20151230000439",
+   "objet": "RÉNOVATION DE LA CLÔTURE DU PARC DES BUTTES CHAUMONT 19E",
+   "fournisseur": "ENTREPRISE GENERALE DE CLOTURES",
+   "montant_max": 84620.39,
+   "date_notification": "2015-02-19",
+   "preuve": "L'objet nomme explicitement ce lieu : « RENOVATION DE LA CLOTURE DU PARC DES BUTTES CHAUMONT 19E ». Travaux sur un ouvrage du parc lui-meme (cloture)."
+  },
+  {
+   "numero_marche": "decp-2025T04021",
+   "objet": "Réalisation d’un dispositif de guidage pour les malvoyants au parc des Buttes Chaumont",
+   "fournisseur": "RUGOTECH",
+   "montant_max": 10000.0,
+   "date_notification": "2025-04-25",
+   "preuve": "L'objet nomme explicitement ce lieu : « Realisation d'un dispositif de guidage pour les malvoyants au parc des Buttes Chaumont ». Equipement installe dans le parc."
+  }
+ ],
+ "sources": {
+  "delibs": {
+   "name": "Débat-Délibs — Conseil de Paris",
+   "url": "https://a06-v7.apps.paris.fr/a06/"
+  },
+  "bmo": {
+   "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
+   "url": "https://gallica.bnf.fr/ark:/12148/cb343512457/date"
+  },
+  "invest": {
+   "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
+   "url": "https://opendata.paris.fr/"
+  },
+  "wiki": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ }
+}

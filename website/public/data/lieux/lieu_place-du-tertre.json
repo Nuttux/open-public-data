@@ -1,0 +1,170 @@
+{
+ "generated_at": "2026-07-18T14:38:43.284445+00:00",
+ "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
+ "slug": "place-du-tertre",
+ "name": "Place du Tertre",
+ "kind_fr": "Place",
+ "kind_en": "Square",
+ "famille": "urbain",
+ "arrondissement": 18,
+ "lat": 48.886518,
+ "lon": 2.340671,
+ "photo": "/img/lieux/place-du-tertre.jpg",
+ "photo_credit": {
+  "licence": "CC0",
+  "auteur": "Pierre Blaché from Paris, France",
+  "url": "https://commons.wikimedia.org/wiki/File:Restaurants,_Place_du_Tertre,_Paris_30_September_2019.jpg",
+  "source": "Wikimedia Commons"
+ },
+ "wiki": {
+  "extract": "La place du Tertre est située sur la butte Montmartre, dans le quartier de Clignancourt du 18e arrondissement de Paris, en France, à 130 m d'altitude. Place principale de l’ancien village de Montmartre et célèbre dans le monde entier pour ses artistes peintres et ses terrasses, de nombreux artistes y dressent leurs chevalets chaque jour pour les touristes. Elle est un des lieux de Paris les plus visités.",
+  "url": "https://fr.wikipedia.org/wiki/Place_du_Tertre",
+  "source": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ },
+ "stats": {
+  "n_delibs": 1126,
+  "delibs_span": [
+   2000,
+   2022
+  ],
+  "n_bmo_brut": 0,
+  "n_bmo_verifies": null,
+  "invest_total_eur": 0,
+  "invest_annees": [],
+  "lecture_mode": "titre nommant le lieu (19 trouvés)",
+  "n_lus": 19,
+  "n_lieu": 12
+ },
+ "subventions_exploitant": null,
+ "residents": [],
+ "kpi_montant": null,
+ "synthese_fr": "Depuis 2000, la place du Tertre revient régulièrement devant le Conseil de Paris autour d'un même cœur : le « Carré aux artistes » et son encadrement. En novembre 2000, une question orale dénonce le désordre et les vendeurs non autorisés, tandis que l'adjoint au Maire et le Préfet rappellent le cadre issu de l'arrêté de 1990 et les 149 emplacements. La tarification des artistes est réformée en 2009 (redevance fixée à 1,52 € par m² et par jour), le règlement de l'activité est approuvé en 2010 ; en 2012, le Conseil examine l'instauration d'une épreuve de sélection des artistes. À partir de 2017, l'Exécutif annonce un budget d'un million d'euros pour transformer la place et ses abords et, sous l'effet de l'ordonnance du 19 avril 2017, engage une mise en concurrence des emplacements qui aboutit au nouveau règlement de 2021 et à la tarification de 2022. En marge, plusieurs délibérations portent sur des immeubles de la place (subventions à une association, cessions et échange de lots) sans concerner directement la place elle-même.",
+ "moments": [
+  {
+   "id": "17129",
+   "seance": "NOVEMBRE 2000",
+   "fait": "Une question orale interroge le Maire et le Préfet en dénonçant le désordre et les vendeurs non autorisés du Carré aux artistes ; la réponse détaille le cadre réglementaire et les 149 emplacements.",
+   "pourquoi": "Le désordre du Carré déjà en débat",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=17129"
+  },
+  {
+   "id": "37200",
+   "seance": "SEPTEMBRE 2009",
+   "fait": "Le Conseil fixe la redevance d'occupation du domaine public sur la place à 1,52 € par m² et par jour.",
+   "pourquoi": "La redevance des artistes chiffrée au mètre carré",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=37200"
+  },
+  {
+   "id": "79378",
+   "seance": "JUILLET 2010",
+   "fait": "Le Conseil approuve le nouveau règlement organisant l'activité artistique de la place, applicable à tous les artistes.",
+   "pourquoi": "La vie du Carré passe sous règlement",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=79378"
+  },
+  {
+   "id": "109521",
+   "seance": "OCTOBRE 2012",
+   "fait": "Un vœu dénonce des reproductions importées vendues comme « made in Montmartre » ; l'Exécutif décrit un groupe de travail associant douanes et police.",
+   "pourquoi": "La contrefaçon menace les artistes de la place",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=109521"
+  },
+  {
+   "id": "138054",
+   "seance": "SEPTEMBRE 2017",
+   "fait": "Répondant à un vœu de piétonisation, l'adjoint annonce un budget d'un million d'euros dédié à la transformation de la place et de ses abords, travaux annoncés pour 2018.",
+   "pourquoi": "Un million d'euros dédié à la transformation",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=138054"
+  },
+  {
+   "id": "140809",
+   "seance": "FEVRIER 2018",
+   "fait": "Le Conseil examine la création de huit emplacements de peintres rue Norvins, après une expérimentation menée en 2016.",
+   "pourquoi": "Huit nouveaux emplacements de peintres rue Norvins",
+   "vedette": false,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=140809"
+  },
+  {
+   "id": "159156",
+   "seance": "JUIN 2021",
+   "fait": "Le Conseil adopte un nouveau règlement et lance la mise en concurrence des emplacements imposée par l'ordonnance de 2017, avec des autorisations de sept ans.",
+   "pourquoi": "Les emplacements ouverts à la mise en concurrence",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=159156"
+  },
+  {
+   "id": "164954",
+   "seance": "MAI 2022",
+   "fait": "Le Conseil adopte la nouvelle tarification des artistes ; l'adjointe indique qu'elle n'entraîne pas de hausse tarifaire.",
+   "pourquoi": "Nouvelle tarification, sans hausse selon l'adjointe",
+   "vedette": false,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=164954"
+  }
+ ],
+ "montants": [
+  {
+   "seance": "SEPTEMBRE 2009",
+   "montant": "hausse de 350 % (alléguée)",
+   "objet": "augmentation tarifaire dénoncée par Mme Fournier comme décidée sans concertation avec les artistes",
+   "citation": "l'on a appris aux artistes qu?il y avait une augmentation de 350 % sans qu'ils aient été associés à cette décision, ni même prévenus.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=17281"
+  },
+  {
+   "seance": "SEPTEMBRE 2009",
+   "montant": "1,52 euro / m² / jour",
+   "objet": "redevance d'occupation du domaine public sur la place, base de calcul pour les artistes",
+   "citation": "Les tarifs d?occupation du domaine public sur la place du tertre servant de base au calcul de la redevance perçue par la direction du développement économique et de l?emploi sont fixées comme suit : 1,52 euro par mètres carrés et par jour.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=37200"
+  },
+  {
+   "seance": "FEVRIER 2018",
+   "montant": "plus de 500.000 euros",
+   "objet": "coût, selon Mme Méhal, du projet de réaménagement de la place proposé par la mairie du 18e et présenté comme « en discussion »",
+   "citation": "puisque les travaux coûteront plus de 500.000 euros, une forme de crispation entre les artistes et les restaurateurs",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=140809"
+  },
+  {
+   "seance": "SEPTEMBRE 2017",
+   "montant": "un million d'euros",
+   "objet": "budget dédié dans le plan d'investissement de la mandature à la transformation de la place et de ses abords",
+   "citation": "de dédier un budget d'un million d'euros dans le cadre du plan d'investissement de la mandature à cette transformation de la place du Tertre et de ses abords",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=138054"
+  },
+  {
+   "seance": "JUILLET 2018",
+   "montant": "un million d'euros",
+   "objet": "budget dédié dans le plan d'investissement de la mandature à la transformation de la place et de ses abords (rappelé par Mme Solans)",
+   "citation": "de dédier un budget d?un million d?euros dans le cadre du plan d?investissement de la mandature, à la transformation de la place du Tertre et de ses abords",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=144059"
+  }
+ ],
+ "bmo_extraits": [],
+ "bmo_recit": null,
+ "invest": [],
+ "marches": [],
+ "sources": {
+  "delibs": {
+   "name": "Débat-Délibs — Conseil de Paris",
+   "url": "https://a06-v7.apps.paris.fr/a06/"
+  },
+  "bmo": {
+   "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
+   "url": "https://gallica.bnf.fr/ark:/12148/cb343512457/date"
+  },
+  "invest": {
+   "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
+   "url": "https://opendata.paris.fr/"
+  },
+  "wiki": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ }
+}

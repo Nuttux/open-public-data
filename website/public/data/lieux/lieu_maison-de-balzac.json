@@ -1,0 +1,192 @@
+{
+ "generated_at": "2026-07-18T14:38:43.284445+00:00",
+ "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
+ "slug": "maison-de-balzac",
+ "name": "Maison de Balzac",
+ "kind_fr": "Musée",
+ "kind_en": "Musée",
+ "famille": "culture",
+ "arrondissement": 16,
+ "lat": 48.85536,
+ "lon": 2.28085,
+ "photo": "/img/lieux/maison-de-balzac.jpg",
+ "photo_credit": {
+  "licence": "CC BY-SA 4.0",
+  "auteur": "\n\n\n\nThank you to indicate this credit line next to the image in case of reuse:\n\n",
+  "url": "https://commons.wikimedia.org/wiki/File:Maison_de_Balzac,_Paris_16e_5.jpg",
+  "source": "Wikimedia Commons"
+ },
+ "wiki": {
+  "extract": "La Maison de Balzac est un pavillon abritant un musée consacré à Honoré de Balzac situé dans le 16e arrondissement de Paris. L'écrivain vécut de 1840 à 1847 dans un appartement de ce pavillon.",
+  "url": "https://fr.wikipedia.org/wiki/Maison_de_Balzac",
+  "source": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ },
+ "stats": {
+  "n_delibs": 309,
+  "delibs_span": [
+   1995,
+   2011
+  ],
+  "n_bmo_brut": 690,
+  "n_bmo_verifies": 6,
+  "invest_total_eur": 0,
+  "invest_annees": [],
+  "lecture_mode": "titre nommant le lieu (48 trouvés)",
+  "n_lus": 45,
+  "n_lieu": 7
+ },
+ "subventions_exploitant": null,
+ "residents": [],
+ "kpi_montant": null,
+ "synthese_fr": "Entre 1995 et 2004, le Conseil de Paris soutient à plusieurs reprises la Maison de Balzac, musée municipal installé au 47, rue Raynouard (16e), dans la maison où vécut l'écrivain. Il subventionne sa société d'amis (10.000 F en 1995, 30.000 F en 1998), autorise le Maire à signer une convention d'objectifs avec elle en 2000, puis à acquérir deux pièces pour ses collections — un manuscrit de Balzac (350.000 F, 2000) et l'édition de 1826 de La physiologie du mariage imprimée par Balzac (130.000 euros, 2004). En 2001, il approuve le principe de fouilles archéologiques préventives dans le jardin du musée. À partir de 2011, le projet de la Ville de vendre les maisons voisines du musée devient un point de conflit : des élus d'opposition du 16e (groupe UMPPA en 2011, puis MM. Alphand et Dreyfuss en 2012) déposent des vœux demandant de renoncer à ces cessions, au motif que ces maisons seraient nécessaires à l'extension de la Maison de Balzac. Ces textes sont des vœux — des demandes adressées au Maire — et non des décisions de vente.",
+ "moments": [
+  {
+   "id": "1372",
+   "seance": "NOVEMBRE 1995",
+   "fait": "Le Conseil attribue 10 000 F à la Société des amis d'Honoré de Balzac et de la Maison de Balzac, domiciliée à l'adresse du musée.",
+   "pourquoi": "premier soutien municipal à la société d'amis",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=1372"
+  },
+  {
+   "id": "31125",
+   "seance": "MARS 2000",
+   "fait": "Le Maire est autorisé à signer une convention d'objectifs avec la Société des amis d'Honoré de Balzac et de la maison de Balzac.",
+   "pourquoi": "cadre conventionnel avec la société d'amis",
+   "vedette": false,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=31125"
+  },
+  {
+   "id": "28266",
+   "seance": "SEPTEMBRE 2000",
+   "fait": "Le Maire est autorisé à acquérir un manuscrit de Balzac pour la Maison de Balzac, pour 350 000 F.",
+   "pourquoi": "la Ville enrichit les collections du musée",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=28266"
+  },
+  {
+   "id": "30554",
+   "seance": "NOVEMBRE 2001",
+   "fait": "Le Conseil approuve le principe de fouilles archéologiques préventives dans le jardin de la Maison de Balzac et autorise deux conventions.",
+   "pourquoi": "des fouilles préventives dans le jardin",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=30554"
+  },
+  {
+   "id": "37399",
+   "seance": "NOVEMBRE 2004",
+   "fait": "Le Maire est autorisé à acquérir pour le musée l'édition de 1826 de La physiologie du mariage imprimée par Balzac, pour 130 000 euros.",
+   "pourquoi": "une édition de 1826 imprimée par Balzac",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=37399"
+  },
+  {
+   "id": "102024",
+   "seance": "SEPTEMBRE 2011",
+   "fait": "Le groupe UMPPA dépose un vœu demandant au Maire de renoncer à vendre les maisons jouxtant le musée, jugées nécessaires à son extension.",
+   "pourquoi": "l'extension du musée devient un enjeu politique",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=102024"
+  },
+  {
+   "id": "104651",
+   "seance": "MARS 2012",
+   "fait": "Sur le projet de cession de l'ensemble mitoyen 43-45, rue Raynouard, MM. Alphand et Dreyfuss déposent un vœu pour la sauvegarde de la Maison de Balzac.",
+   "pourquoi": "vendre les maisons voisines fâche le 16e",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=104651"
+  }
+ ],
+ "montants": [
+  {
+   "seance": "SEPTEMBRE 2011",
+   "montant": "6 millions",
+   "objet": "prix de vente allégué du terrain jouxtant le musée (propos de M. Gaboriau, non chiffrage de la délibération)",
+   "citation": "ce terrain doit être mis en vente pour la somme dérisoire de 6 millions, au détriment de la conservation et de l'amélioration du patrimoine culturel",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=102024"
+  },
+  {
+   "seance": "SEPTEMBRE 2000",
+   "montant": "350.000 F",
+   "objet": "acquisition d'un manuscrit de Balzac pour la Maison de Balzac",
+   "citation": "M. le Maire de Paris est autorisé à acquérir un manuscrit de Balzac, pour la Maison de Balzac, 47, rue Raynouard (16e), proposé par M. René Vigneron pour un montant de 350.000 F.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=28266"
+  },
+  {
+   "seance": "OCTOBRE 1998",
+   "montant": "30.000 F",
+   "objet": "subvention à l'association Société des amis de Balzac, Maison de Balzac",
+   "citation": "Une subvention de 30.000 F est attribuée à l'association \"Société des amis de Balzac, Maison de Balzac\", 47, rue Raynouard (16e).",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=64809"
+  },
+  {
+   "seance": "NOVEMBRE 2004",
+   "montant": "130.000 euros",
+   "objet": "acquisition d'une édition de 1826 de La physiologie du mariage pour la Maison de Balzac",
+   "citation": "M. le Maire de Paris est autorisé à acquérir l?édition de 1826 de La physiologie du mariage imprimé par Balzac, pour une somme 130.000 euros.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=37399"
+  },
+  {
+   "seance": "NOVEMBRE 1995",
+   "montant": "10.000 F",
+   "objet": "subvention à la Société des amis d'Honoré de Balzac et de la Maison de Balzac",
+   "citation": "Une subvention de 10.000 F est attribuée à la Société des amis d'Honoré de Balzac et de la Maison de Balzac, Maison de Balzac, 47, rue Raynouard (16e).",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=1372"
+  }
+ ],
+ "bmo_extraits": [
+  {
+   "date": "1921-08-12",
+   "extrait": "rue Raynouard (n° 1 du plan), mais qu'elle possède la totalité du n° 147, dans lequel se trouvent la maison et le jardin de Balzac",
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k6293783s/f10.item"
+  },
+  {
+   "date": "1934-07-20",
+   "extrait": "acquisition de l'aile de la maison de Balzac occupée par M. Drugeon (orateurs : MM. Minot, René Fayssat, Taittinger, Louis Baillot, Victor Bucaille, Griotteray, le Préfet de la Seine et le Directeur des beaux-arts … ",
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k9710433j/f107.item"
+  },
+  {
+   "date": "1960-01-06",
+   "extrait": "Subvention à la maison de Balzac , 7.500 francs",
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k6441260j/f29.item"
+  },
+  {
+   "date": "1972-10-06",
+   "extrait": "81. — Programme d'équipement pour 1967. — Prise en consideration de projets de remise en état de l'aile gauche de la Maison de Balzac et d'aménagement des salles du rez-de-chaussée haut au Mu",
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k9707851r/f35.item"
+  }
+ ],
+ "bmo_recit": "Dans le Bulletin municipal, la maison apparaît d'abord comme une emprise foncière : en 1921, il est relevé que la Ville possède en totalité le numéro de la rue Raynouard où se trouvent la maison et le jardin de Balzac. En 1934, l'acquisition de l'aile occupée par M. Drugeon vient en séance, débattue par plusieurs orateurs, le Préfet de la Seine et le Directeur des beaux-arts, sans que l'issue en soit consignée. Le lieu revient ensuite par le budget : une subvention de 7.500 francs à la maison de Balzac en 1960, puis, dans un numéro de 1972 et au titre d'un programme d'équipement pour 1967, la prise en considération de projets de remise en état de l'aile gauche et d'aménagement des salles du rez-de-chaussée haut — des intentions actées en séance, non des travaux constatés. Ce sont là quelques passages ponctuels, étalés sur un demi-siècle : une propriété établie, une aile dont l'acquisition se discute, puis l'entretien et la subvention.",
+ "invest": [],
+ "marches": [
+  {
+   "numero_marche": "20191060020047",
+   "objet": "CAMPAGNE REOUVERTURE MUSEE DE LA MAISON DE BALZAC",
+   "fournisseur": "MAKUITY",
+   "montant_max": 48688.77,
+   "date_notification": "2019-07-24",
+   "preuve": "L'objet du marche nomme le lieu verbatim : « CAMPAGNE REOUVERTURE MUSEE DE LA MAISON DE BALZAC ». Il s'agit d'une prestation de communication portant sur ce musee precis, et non d'un marche-cadre citant le lieu en exemple. Les deliberations du Conseil de Paris confirment que la Maison de Balzac est un musee de la Ville situe 47, rue Raynouard (16e) (« M. le Maire de Paris est autorise a acquerir un manuscrit de Balzac, pour la Maison de Balzac, 47, rue Raynouard (16e) », 2000 DAC 125). Les homonymes du corpus sont exclus : le cinema Le Balzac exploite par la SA Cinelba est « sise 1, rue Balzac (8e) » et le lycee-college Honore-de-Balzac est « 118, boulevard Bessieres (17e) » ; ni l'un ni l'autre n'est un musee."
+  }
+ ],
+ "sources": {
+  "delibs": {
+   "name": "Débat-Délibs — Conseil de Paris",
+   "url": "https://a06-v7.apps.paris.fr/a06/"
+  },
+  "bmo": {
+   "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
+   "url": "https://gallica.bnf.fr/ark:/12148/cb343512457/date"
+  },
+  "invest": {
+   "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
+   "url": "https://opendata.paris.fr/"
+  },
+  "wiki": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ }
+}

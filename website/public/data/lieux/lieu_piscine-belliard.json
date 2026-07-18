@@ -1,0 +1,138 @@
+{
+ "generated_at": "2026-07-18T14:38:43.284445+00:00",
+ "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
+ "slug": "piscine-belliard",
+ "name": "Piscine Belliard",
+ "kind_fr": "Piscine",
+ "kind_en": "Swimming pool",
+ "famille": "sport",
+ "arrondissement": 18,
+ "lat": 48.89623,
+ "lon": 2.33473,
+ "photo": null,
+ "photo_credit": null,
+ "wiki": {
+  "extract": null,
+  "url": null,
+  "source": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ },
+ "stats": {
+  "n_delibs": 791,
+  "delibs_span": [
+   2016,
+   2025
+  ],
+  "n_bmo_brut": 356,
+  "n_bmo_verifies": null,
+  "invest_total_eur": 0,
+  "invest_annees": [],
+  "lecture_mode": "titre nommant le lieu (96 trouvés)",
+  "n_lus": 45,
+  "n_lieu": 2
+ },
+ "subventions_exploitant": null,
+ "residents": [],
+ "kpi_montant": null,
+ "synthese_fr": "Sur la longue rue Belliard, dans le 18e arrondissement, l'espace public arrive d'abord devant le Conseil : en 2002, celui-ci approuve le principe de l'aménagement du mail Leibniz-Belliard et de la rue Belliard, entre les rues du Poteau et Agutte, et autorise le Maire à signer le marché de travaux. En décembre 2016, au titre du Plan « Nager à Paris », il se prononce sur la poursuite de l'opération d'aménagement d'une piscine aux 133 et 133 bis, rue Belliard, un projet à propos duquel des élus soulèvent en séance l'ensoleillement des écoles mitoyennes et la nature gypseuse du sous-sol. En parallèle, l'avenir du dépôt de bus voisin agite le quartier : en 2019 puis en 2020, des élus alertent sur la densité du projet immobilier « Halte urbaine Belliard » porté par la R.A.T.P. (environ 25 000 m² pour 450 logements) et font adopter des amendements sur les espaces verts et l'ouverture des jardins. En juin 2025, le Conseil adopte l'attribution de la dénomination « Solita Salgado » à la piscine Belliard. La plupart des délibérations où apparaît le mot « Belliard » concernent toutefois d'autres réalités — l'adjoint David Belliard, la Mission locale Belliard ou des adresses distinctes de la même rue — sans lien avec l'équipement sportif.",
+ "moments": [
+  {
+   "id": "88125",
+   "seance": "JUILLET 2002",
+   "fait": "Le Conseil approuve le principe de l'aménagement du mail Leibniz-Belliard et de la rue Belliard et autorise le Maire à signer le marché de travaux.",
+   "pourquoi": "premier aménagement d'espace public voté sur la rue",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=88125"
+  },
+  {
+   "id": "24873",
+   "seance": "JANVIER 2006",
+   "fait": "Un vœu adopté demande une étude de faisabilité pour reconvertir en local commercial un ancien édicule E.D.F. du mail Belliard.",
+   "pourquoi": "que faire d'un vieil édicule EDF",
+   "vedette": false,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=24873"
+  },
+  {
+   "id": "74035",
+   "seance": "SEPTEMBRE 2006",
+   "fait": "Le Conseil approuve le principe des travaux de modernisation des menuiseries de l'école élémentaire du 129, rue Belliard.",
+   "pourquoi": "moderniser les fenêtres de l'école voisine",
+   "vedette": false,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=74035"
+  },
+  {
+   "id": "134505",
+   "seance": "DECEMBRE 2016",
+   "fait": "Au titre du Plan « Nager à Paris », le Conseil se prononce sur la poursuite de l'opération d'aménagement d'une piscine aux 133 et 133 bis, rue Belliard, malgré des inquiétudes d'élus sur l'ensoleillement et le sous-sol gypseux.",
+   "pourquoi": "l'enquête publique passée, le Conseil se prononce pour la poursuite du projet",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=134505"
+  },
+  {
+   "id": "136838",
+   "seance": "JUIN 2017",
+   "fait": "Un vœu Les Républicains rapporte des campements et nuisances rue Belliard ; le premier adjoint répond que des maraudes hebdomadaires interviennent sur le secteur.",
+   "pourquoi": "tensions de voisinage sur la rue",
+   "vedette": false,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=136838"
+  },
+  {
+   "id": "175648",
+   "seance": "DECEMBRE 2019",
+   "fait": "Un vœu écologiste sur le projet de la R.A.T.P. au dépôt Belliard (≈ 25 000 m², 450 logements) demande d'en réduire la densité ; il reçoit un avis favorable de l'adjoint J.-L. MISSIKA.",
+   "pourquoi": "alerte sur la densité du dépôt voisin",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=175648"
+  },
+  {
+   "id": "156476",
+   "seance": "NOVEMBRE 2020",
+   "fait": "Sur l'étude d'impact de la « Halte urbaine Belliard », quatre amendements écologistes (jardins, espaces verts, E.S.S.) sont adoptés ; le groupe Changer Paris annonce voter contre le projet.",
+   "pourquoi": "béton contre nature, le vote clive",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=156476"
+  },
+  {
+   "id": "181254",
+   "seance": "JUIN 2025",
+   "fait": "Le Conseil adopte l'attribution de la dénomination « Solita Salgado » à la piscine Belliard (18e).",
+   "pourquoi": "la piscine reçoit enfin un nom",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=181254"
+  }
+ ],
+ "montants": [],
+ "bmo_extraits": [],
+ "bmo_recit": null,
+ "invest": [],
+ "marches": [
+  {
+   "numero_marche": "20232023T09910",
+   "objet": "TEP JESSE OWENS-ECOLE ELÉM BELLIARD, FUTURE PISCINE BELLIARD",
+   "fournisseur": "EIFFAGE ENERGIE SYSTEMES-CLEVIA IDF",
+   "montant_max": 692000.0,
+   "date_notification": "2023-11-03",
+   "preuve": "L'objet du marché nomme le lieu verbatim : « FUTURE PISCINE BELLIARD ». L'identification est confirmée par les délibérations du Conseil de Paris : 2016 DU 249, « Plan \"Nager à Paris\". - Projet d'aménagement du 133 et 133 bis, rue Belliard (18e) », dont le débat évoque « les cours des écoles maternelle et primaire de la rue Belliard, mitoyennes de la future piscine » (l'objet du marché cite pour sa part l'« ECOLE ELÉM BELLIARD » voisine) ; et 2025 DJS 96, « Attribution de la dénomination Solita Salgado à la piscine Belliard (18e) ». Réserve : le marché porte sur trois sites voisins du même îlot (TEP Jesse Owens, école élémentaire Belliard, future piscine Belliard) ; les 692 000 € ne vont donc pas à la seule piscine et aucune ventilation par site n'est disponible dans la source."
+  }
+ ],
+ "sources": {
+  "delibs": {
+   "name": "Débat-Délibs — Conseil de Paris",
+   "url": "https://a06-v7.apps.paris.fr/a06/"
+  },
+  "bmo": {
+   "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
+   "url": "https://gallica.bnf.fr/ark:/12148/cb343512457/date"
+  },
+  "invest": {
+   "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
+   "url": "https://opendata.paris.fr/"
+  },
+  "wiki": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ }
+}

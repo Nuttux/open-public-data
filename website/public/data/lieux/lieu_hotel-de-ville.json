@@ -1,0 +1,215 @@
+{
+ "generated_at": "2026-07-18T14:38:43.284445+00:00",
+ "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
+ "slug": "hotel-de-ville",
+ "name": "Hôtel de Ville",
+ "kind_fr": "Monument",
+ "kind_en": "Monument",
+ "famille": "urbain",
+ "arrondissement": 4,
+ "lat": 48.8566,
+ "lon": 2.3522,
+ "photo": "/img/lieux/hotel-de-ville.jpg",
+ "photo_credit": {
+  "licence": null,
+  "auteur": null,
+  "url": "https://fr.wikipedia.org/wiki/H%C3%B4tel_de_ville_de_Paris",
+  "source": "Wikipédia"
+ },
+ "wiki": {
+  "extract": "L’hôtel de ville de Paris, communément appelé l’Hôtel de Ville, est le bâtiment qui héberge les institutions municipales de la Ville de Paris depuis 1357.",
+  "url": "https://fr.wikipedia.org/wiki/H%C3%B4tel_de_ville_de_Paris",
+  "source": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ },
+ "stats": {
+  "n_delibs": 1027,
+  "delibs_span": [
+   1997,
+   2024
+  ],
+  "n_bmo_brut": 650,
+  "n_bmo_verifies": null,
+  "invest_total_eur": 0,
+  "invest_annees": [],
+  "lecture_mode": "titre nommant le lieu (12 trouvés)",
+  "n_lus": 11,
+  "n_lieu": 8
+ },
+ "subventions_exploitant": null,
+ "residents": [],
+ "kpi_montant": null,
+ "synthese_fr": "À travers ces délibérations, l'Hôtel de Ville apparaît d'abord comme un bâtiment que la Ville entretient : le Conseil approuve en 1997 le principe de réfection de sa couverture, en 2003 celui de la modernisation de ses ascenseurs, et autorise la même année le Maire à souscrire un avenant sur le marché d'entretien des systèmes d'alarme et de détection incendie. Un audit de sécurité engagé dès 2003 débouche sur un plan de mise en sécurité incendie dont les travaux touchent à leur fin en 2010, non sans un débat sur les dispositifs de comptage des entrées-sorties que le groupe U.M.P.P.A. qualifie de « flicage ». Le monument est aussi une place et un parvis : un vœu de 2002 sur la circulation lors des manifestations est adopté, tandis que ceux réclamant des arbres (2012) ou une crèche de Noël (2016) reçoivent un avis défavorable. En 2021, un vœu du groupe Changer Paris relance la question de l'entretien et de la mise en valeur patrimoniale, et l'adjoint Patrick Bloche annonce que des études ont été lancées et qu'un marché sera attribué en 2022 à un groupement compétent en Monuments historiques. En 2024, des espaces de l'Hôtel de Ville font l'objet d'une convention de mise à disposition pour la Halte des Femmes du Samu social, et un nouveau vœu porte sur les engagements de restauration.",
+ "moments": [
+  {
+   "id": "42178",
+   "seance": "JUIN 1997",
+   "fait": "Le Conseil approuve le principe de la réfection à l'identique de la couverture de l'Hôtel de Ville et autorise le Maire à signer le marché de travaux.",
+   "pourquoi": "refaire à l'identique sa propre toiture",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=42178"
+  },
+  {
+   "id": "16103",
+   "seance": "NOVEMBRE 2002",
+   "fait": "Le Conseil adopte un vœu demandant qu'un passage soit réservé au personnel lors des manifestations festives ou associatives sur le parvis.",
+   "pourquoi": "un passage pour les agents du « 9 » les jours de fête",
+   "vedette": false,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=16103"
+  },
+  {
+   "id": "48126",
+   "seance": "SEPTEMBRE 2003",
+   "fait": "Le Conseil approuve le principe de modernisation et de création d'ascenseurs et de monte-charge et autorise le Maire à signer le marché.",
+   "pourquoi": "moderniser les ascenseurs d'un monument classé",
+   "vedette": false,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=48126"
+  },
+  {
+   "id": "8682",
+   "seance": "MARS 2010",
+   "fait": "Le groupe U.M.P.P.A., par la voix de Patrick Trémège, dénonce un « flicage » et refuse de voter les dispositifs de sécurisation incendie présentés par l'Exécutif.",
+   "pourquoi": "le badgeage anti-incendie dénoncé comme flicage",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=8682"
+  },
+  {
+   "id": "109706",
+   "seance": "NOVEMBRE 2012",
+   "fait": "Le vœu demandant des plantations d'arbres place de l'Hôtel de Ville est repoussé, l'adjointe opposant la présence d'un parking sous la place.",
+   "pourquoi": "des arbres jugés impossibles au-dessus d'un parking",
+   "vedette": false,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=109706"
+  },
+  {
+   "id": "134628",
+   "seance": "DECEMBRE 2016",
+   "fait": "Un vœu du groupe LR pour réinstaller une crèche de Noël sur le parvis reçoit un avis défavorable du premier adjoint Bruno Julliard.",
+   "pourquoi": "la crèche de Noël qui divise le Conseil",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=134628"
+  },
+  {
+   "id": "160949",
+   "seance": "OCTOBRE 2021",
+   "fait": "Face à un vœu Changer Paris sur l'entretien, l'adjoint Patrick Bloche annonce des études lancées et un marché Monuments historiques attendu pour 2022.",
+   "pourquoi": "l'entretien du bâtiment revient à l'agenda",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=160949"
+  },
+  {
+   "id": "174352",
+   "seance": "FEVRIER 2024",
+   "fait": "Une convention met des espaces de l'Hôtel de Ville à disposition de la Halte des Femmes, au profit du Samu social de Paris.",
+   "pourquoi": "des espaces prêtés à la Halte des Femmes",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=174352"
+  }
+ ],
+ "montants": [],
+ "bmo_extraits": [],
+ "bmo_recit": null,
+ "invest": [],
+ "marches": [
+  {
+   "numero_marche": "20151130000180",
+   "objet": "CSP1 LOT 1 NETTOYAGE VITRES BATIMENTS HOTEL DE VILLE LAUZUN",
+   "fournisseur": "VEGA CONSEIL SECURITE",
+   "montant_max": 960000.0,
+   "date_notification": "2015-04-08",
+   "preuve": "L'objet nomme le lieu et porte sur son entretien, verbatim : « CSP1 LOT 1 NETTOYAGE VITRES BATIMENTS HOTEL DE VILLE LAUZUN ». Réserve : le même lot couvre l'Hôtel de Lauzun, bâtiment distinct de la Ville cité dans les débats du Conseil (« la création d'un Centre Baudelaire à l'Hôtel de Lauzun », novembre 2007) — le montant max de 960 000 € n'est donc pas imputable au seul Hôtel de Ville. Voir hotel-de-ville_perimetre.json."
+  },
+  {
+   "numero_marche": "20121340008400",
+   "objet": "ASSURANCE \"DOMMAGES AUX BIENS\" SITE HOTEL DE VILLE CONTRAT 2",
+   "fournisseur": "SA DE TRANSACTIONS ET COURTAGE",
+   "montant_max": 531309.42,
+   "date_notification": "2013-12-21",
+   "preuve": "L'objet désigne le site lui-même, verbatim : « ASSURANCE \"DOMMAGES AUX BIENS\" SITE HOTEL DE VILLE CONTRAT 2 ». Le mot « SITE » rattache la police d'assurance au bâtiment, ce n'est pas un repère d'adresse."
+  },
+  {
+   "numero_marche": "20161060001301",
+   "objet": "AMENAGEMENT SCENO EXPO COLUCHE SALLE ST JEAN HOTEL DE VILLE",
+   "fournisseur": "VOLUME INTERNATIONAL",
+   "montant_max": 124600.0,
+   "date_notification": "2016-07-08",
+   "preuve": "L'objet nomme une salle interne de l'Hôtel de Ville, verbatim : « AMENAGEMENT SCENO EXPO COLUCHE SALLE ST JEAN HOTEL DE VILLE ». La prestation (scénographie d'exposition) se déroule dans le bâtiment, dont les délibérations confirment l'usage de salles d'accueil du public (« mise à disposition de l'auditorium, du foyer, de la salle Xavier Lacoste, de la salle Tignous », 2021 DDCT 76)."
+  },
+  {
+   "numero_marche": "decp-2025F12685",
+   "objet": "Marché subséquent fondé sur l’accord-cadre 20212021F09371 relatif à la location de matériel et prestations associées dans le domaine audiovisuel ayant pour objet le marché de Noël 2025 à L'Hôtel de Vi",
+   "fournisseur": "SOC ACOUSTIQUE FRANCAISE",
+   "montant_max": 95867.34,
+   "date_notification": "2025-11-28",
+   "preuve": "L'objet nomme le lieu comme lieu de l'événement, verbatim : « […] ayant pour objet le marché de Noël 2025 à L'Hôtel de Ville » (prestations audiovisuelles). Le lieu_execution DECP « Paris » est trop large pour prouver quoi que ce soit, mais l'objet est explicite."
+  },
+  {
+   "numero_marche": "20242024F00306",
+   "objet": "ECLAIRAGE DE L'HÔTEL DE VILLE",
+   "fournisseur": "IMPACT EVENEMENT",
+   "montant_max": 66999.09,
+   "date_notification": "2024-04-26",
+   "preuve": "L'objet porte exclusivement sur le bâtiment, verbatim : « ECLAIRAGE DE L'HÔTEL DE VILLE »."
+  },
+  {
+   "numero_marche": "20232023S11630",
+   "objet": "MS ACTIVITE LUGE PARVIS HOTEL DE VILLE DECEMBRE 2023",
+   "fournisseur": "PRISME EVENTS",
+   "montant_max": 49910.0,
+   "date_notification": "2023-12-12",
+   "preuve": "L'objet localise l'animation sur le parvis, verbatim : « MS ACTIVITE LUGE PARVIS HOTEL DE VILLE DECEMBRE 2023 ». Contexte deliberations (place de l'Hotel de Ville) : « il y a très souvent des installations éphémères ou provisoires qui sont installées sur cette place, des animations type patinoire, courts de tennis »."
+  },
+  {
+   "numero_marche": "20242024S12105",
+   "objet": "IMPRESSION ET POSE ANAMORPHOSE FORÊT URBAINE HÔTEL DE VILLE",
+   "fournisseur": "DUPLIGRAFIC",
+   "montant_max": 40585.69,
+   "date_notification": "2024-11-05",
+   "preuve": "L'objet nomme le lieu et l'aménagement qui s'y trouve, verbatim : « IMPRESSION ET POSE ANAMORPHOSE FORÊT URBAINE HÔTEL DE VILLE ». Deux autres marchés de la même liste localisent cette forêt urbaine : « … sur le parvis de l'Hôtel de Ville » (decp-2025F03822, decp-2025F03310)."
+  },
+  {
+   "numero_marche": "20222022S09922",
+   "objet": "MS AC ANIMATION HIVERNALE LUGE PARVIS HOTEL DE VILLE 2023",
+   "fournisseur": "PRISME EVENTS",
+   "montant_max": 40173.0,
+   "date_notification": "2022-12-06",
+   "preuve": "L'objet localise l'animation sur le parvis, verbatim : « MS AC ANIMATION HIVERNALE LUGE PARVIS HOTEL DE VILLE 2023 ». Contexte deliberations (place de l'Hotel de Ville) : « il y a très souvent des installations éphémères ou provisoires qui sont installées sur cette place, des animations type patinoire, courts de tennis »."
+  },
+  {
+   "numero_marche": "decp-2025F03822",
+   "objet": "Sondes d’humidité des sols pour la forêt urbaine sur le parvis de l’Hôtel de Ville",
+   "fournisseur": "AGRALIS",
+   "montant_max": 39933.8,
+   "date_notification": "2025-04-11",
+   "preuve": "L'objet localise l'équipement sur le parvis, verbatim : « Sondes d’humidité des sols pour la forêt urbaine sur le parvis de l’Hôtel de Ville »."
+  },
+  {
+   "numero_marche": "20212021S08973",
+   "objet": "ANIMATION LUGE PARVIS HÔTEL DE VILLE 75004",
+   "fournisseur": "EUROPEVENT",
+   "montant_max": 38295.0,
+   "date_notification": "2021-11-18",
+   "preuve": "L'objet localise l'animation sur le parvis avec le code postal du lieu, verbatim : « ANIMATION LUGE PARVIS HÔTEL DE VILLE 75004 »."
+  }
+ ],
+ "sources": {
+  "delibs": {
+   "name": "Débat-Délibs — Conseil de Paris",
+   "url": "https://a06-v7.apps.paris.fr/a06/"
+  },
+  "bmo": {
+   "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
+   "url": "https://gallica.bnf.fr/ark:/12148/cb343512457/date"
+  },
+  "invest": {
+   "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
+   "url": "https://opendata.paris.fr/"
+  },
+  "wiki": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ }
+}

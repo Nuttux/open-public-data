@@ -1,0 +1,94 @@
+{
+ "generated_at": "2026-07-18T14:38:43.284445+00:00",
+ "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
+ "slug": "cirque-d-hiver",
+ "name": "Cirque d'Hiver",
+ "kind_fr": "Équipement culturel",
+ "kind_en": "Cultural venue",
+ "famille": "culture",
+ "arrondissement": 11,
+ "lat": 48.86312,
+ "lon": 2.36727,
+ "photo": "/img/lieux/cirque-d-hiver.jpg",
+ "photo_credit": {
+  "licence": null,
+  "auteur": null,
+  "url": "https://fr.wikipedia.org/wiki/Cirque_d'Hiver_(Paris)",
+  "source": "Wikipédia"
+ },
+ "wiki": {
+  "extract": "Le cirque d'hiver de Paris, souvent appelé simplement le Cirque d'Hiver, ou encore le Cirque d'hiver Bouglione depuis son achat par la famille Bouglione en 1934, est une salle de spectacle située 110 rue Amelot dans le 11e arrondissement de Paris. Construit en 1852 par l'architecte Jacques Hittorff, il a été successivement appelé « cirque Napoléon » puis « Cirque national ». Il est inscrit au titre des monuments historiques depuis le 10 février 1975.",
+  "url": "https://fr.wikipedia.org/wiki/Cirque_d'Hiver_(Paris)",
+  "source": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ },
+ "stats": {
+  "n_delibs": 431,
+  "delibs_span": [
+   2008,
+   2008
+  ],
+  "n_bmo_brut": 501,
+  "n_bmo_verifies": 7,
+  "invest_total_eur": 0,
+  "invest_annees": [],
+  "lecture_mode": "titre nommant le lieu (1 trouvés)",
+  "n_lus": 1,
+  "n_lieu": 1
+ },
+ "subventions_exploitant": null,
+ "residents": [],
+ "kpi_montant": null,
+ "synthese_fr": "Le Cirque d’Hiver figure dans l’intitulé d’une seule délibération du Conseil de Paris. En novembre 2008, celle-ci (2008 DAC 537) porte sur une subvention à l’Association Académie de musique des grandes écoles et universités (16e) pour l’organisation d’un concert au Cirque d’Hiver en avril 2008, sur rapport de Christophe Girard et Didier Guillot. Le montant de cette subvention ne figure pas dans l’intitulé de la délibération, et aucun élément ne porte sur la gestion, les travaux ou la propriété du lieu lui-même.",
+ "moments": [
+  {
+   "id": "62009",
+   "seance": "NOVEMBRE 2008",
+   "fait": "Subvention à l’Association Académie de musique des grandes écoles et universités (16e) pour l’organisation d’un concert au Cirque d’Hiver en avril 2008.",
+   "pourquoi": "seule mention du lieu, comme salle de concert",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=62009"
+  }
+ ],
+ "montants": [],
+ "bmo_extraits": [
+  {
+   "date": "1887-07-07",
+   "extrait": "Dausset, président du Conseil municipal. — Demain, nous avons plusieurs réunions de Commissions : les 38 et 4e Commissions examineront la location du Cirque d ' hiver et à cinq heures",
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k62539804/f18.item"
+  },
+  {
+   "date": "1898-07-02",
+   "extrait": "Matinées organisées pour les délégations des écoles primaires de Paris, à une heure : Au Cirque d'été … Au Cirque d ' hiver (..",
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k6413848z/f2.item"
+  },
+  {
+   "date": "1907-07-02",
+   "extrait": "dont la première est cette inauguration et qui se terminera le Dimanche 17 Mai dans la soirée par un Gala organisé au Cirque d ' Hiver au profit de l'Association' Mutuelle des Mut",
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k6431063t/f6.item"
+  }
+ ],
+ "bmo_recit": "Le Cirque d'Hiver ne traverse le Bulletin municipal officiel que par trois passages, entre 1887 et 1907. En juillet 1887, le président du Conseil municipal annonce en séance que deux commissions se réuniront le lendemain pour examiner la location du Cirque d'hiver ; l'archive n'en donne pas l'issue. Onze ans plus tard, la salle figure au programme des matinées organisées à une heure pour les délégations des écoles primaires de Paris, aux côtés du Cirque d'été. En 1907, elle apparaît une dernière fois comme lieu du gala qui clôt une série de manifestations, donné au profit d'une association mutuelle.",
+ "invest": [],
+ "marches": [],
+ "sources": {
+  "delibs": {
+   "name": "Débat-Délibs — Conseil de Paris",
+   "url": "https://a06-v7.apps.paris.fr/a06/"
+  },
+  "bmo": {
+   "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
+   "url": "https://gallica.bnf.fr/ark:/12148/cb343512457/date"
+  },
+  "invest": {
+   "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
+   "url": "https://opendata.paris.fr/"
+  },
+  "wiki": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ }
+}

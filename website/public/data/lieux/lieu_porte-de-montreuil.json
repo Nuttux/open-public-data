@@ -1,0 +1,281 @@
+{
+ "generated_at": "2026-07-18T14:38:43.284445+00:00",
+ "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
+ "slug": "porte-de-montreuil",
+ "name": "Porte de Montreuil",
+ "kind_fr": "Place",
+ "kind_en": "Square",
+ "famille": "urbain",
+ "arrondissement": 20,
+ "lat": 48.85439,
+ "lon": 2.41427,
+ "photo": "/img/lieux/porte-de-montreuil.jpg",
+ "photo_credit": {
+  "licence": null,
+  "auteur": null,
+  "url": "https://fr.wikipedia.org/wiki/Porte_de_Montreuil",
+  "source": "Wikipédia"
+ },
+ "wiki": {
+  "extract": "La porte de Montreuil est l'une des dix-sept portes percées dans l'enceinte de Thiers au milieu du XIXe siècle pour protéger Paris, en France.",
+  "url": "https://fr.wikipedia.org/wiki/Porte_de_Montreuil",
+  "source": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ },
+ "stats": {
+  "n_delibs": 1176,
+  "delibs_span": [
+   2003,
+   2025
+  ],
+  "n_bmo_brut": 2000,
+  "n_bmo_verifies": 14,
+  "invest_total_eur": 0,
+  "invest_annees": [],
+  "lecture_mode": "titre nommant le lieu (81 trouvés)",
+  "n_lus": 44,
+  "n_lieu": 30
+ },
+ "subventions_exploitant": null,
+ "residents": [],
+ "kpi_montant": null,
+ "synthese_fr": "Depuis l'approbation du « Projet de Territoire » du GPRU en 2003, la Porte de Montreuil fait l'objet d'un projet de réaménagement dont la couverture du périphérique est présentée, dès 2007, comme la clé. À partir de 2019, l'opération prend la forme d'un projet immobilier confié, via « Reinventing Cities », au groupement mené par Nexity, contesté par les élus écologistes qui dénoncent « une muraille de bureaux » et une réduction du nombre de stands promis aux puciers. En février 2022, le Conseil examine l'acquisition du volume devant accueillir le marché aux puces reconstitué, et le maire du 20e chiffre le projet global à 97 millions d'euros, dont 26 pour le seul marché ; après un accord de majorité conclu en juillet 2023, la Ville déclare sans suite la procédure de DSP et prolonge le contrat pour assurer la continuité du marché aux puces en plein air. En 2024, un avenant à la concession avec la SEMAPA ramène la constructibilité à 26.000 m² et supprime l'hôtel prévu, avant que la délibération de 2025 ne porte sur l'acquisition d'un volume destiné à un futur centre municipal de santé, un élu y relevant la confirmation de l'abandon des immeubles-ponts. Sur toute la période, les débats mêlent l'avenir du marché aux puces centenaire, les nuisances et ventes à la sauvette signalées aux abords, et la préservation des arbres.",
+ "moments": [
+  {
+   "id": "47568",
+   "seance": "SEPTEMBRE 2003",
+   "fait": "Le Conseil approuve le « Projet de Territoire » du GPRU de la Porte de Montreuil.",
+   "pourquoi": "le premier acte officiel du réaménagement",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=47568"
+  },
+  {
+   "id": "54261",
+   "seance": "DECEMBRE 2007",
+   "fait": "Le Conseil érige la couverture du périphérique en condition de la transformation de la porte et demande à l'État et à la Région d'en cofinancer les travaux.",
+   "pourquoi": "couvrir le périphérique, clé de tout le projet",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=54261"
+  },
+  {
+   "id": "8622",
+   "seance": "MARS 2010",
+   "fait": "L'Exécutif fait adopter un vœu contre l'occupation illégale de l'espace public à la Porte de Montreuil ; la maire du 20e distingue ventes à la sauvette et puces historiques.",
+   "pourquoi": "les ventes à la sauvette exaspèrent les riverains",
+   "vedette": false,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=8622"
+  },
+  {
+   "id": "164469",
+   "seance": "FEVRIER 2022",
+   "fait": "Le Conseil approuve le principe de renouvellement de la DSP des puces ; le maire du 20e chiffre le projet global à 97 M€, dont 26 M€ pour le marché aux puces.",
+   "pourquoi": "un chiffrage public : 97 millions d'euros",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=164469"
+  },
+  {
+   "id": "167254",
+   "seance": "OCTOBRE 2022",
+   "fait": "Les Ecologistes déposent un vœu contre le projet Nexity, dénonçant « une muraille de 60 000 m² de bureaux » ; l'Exécutif dépose un vœu concurrent.",
+   "pourquoi": "les écologistes contre la muraille de bureaux",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=167254"
+  },
+  {
+   "id": "168416",
+   "seance": "MARS 2023",
+   "fait": "En réponse aux Ecologistes, le Préfet de police décrit un rond-point dégradé par le stationnement sauvage, aménagé après l'accident mortel d'une cycliste le 2 juillet 2021.",
+   "pourquoi": "un carrefour dangereux, une cycliste tuée",
+   "vedette": false,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=168416"
+  },
+  {
+   "id": "174161",
+   "seance": "DECEMBRE 2023",
+   "fait": "Après l'accord de majorité de juillet 2023, la Ville déclare sans suite la procédure de DSP et prolonge le contrat pour assurer la continuité du marché aux puces en plein air.",
+   "pourquoi": "les puces maintenues en plein air",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=174161"
+  },
+  {
+   "id": "179991",
+   "seance": "AVRIL 2025",
+   "fait": "Le Conseil examine le déclassement d'emprises et l'acquisition d'un volume d'environ 1 000 m² destiné à un futur centre municipal de santé ; un élu y relève la confirmation de l'abandon des immeubles-ponts.",
+   "pourquoi": "un centre de santé, la fin annoncée des immeubles-ponts",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=179991"
+  }
+ ],
+ "montants": [
+  {
+   "seance": "AVRIL 2025",
+   "montant": "775.000 euros (estime)",
+   "objet": "acquisition par la Ville d'un volume d'environ 1000 m2 destine a un futur centre municipal de sante (montant estime, selon R. Primet)",
+   "citation": "acquisition d'un volume de prÃ¨s de 1.000 mÃ¨tres carrÃ©s, sur deux niveaux, destinÃ© Ã accueillir un centre municipal de santÃ© pour un montant estimÃ© Ã 775.000 euros.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=179991"
+  },
+  {
+   "seance": "FEVRIER 2024",
+   "montant": "1.000 euros",
+   "objet": "charge fonciere par lot jugee pas du tout normale par J. Gleizes (propos)",
+   "citation": "ces 1.000 euros ne me paraissent pas du tout normaux.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=174503"
+  },
+  {
+   "seance": "MARS 2023",
+   "montant": "37,5 millions d'euros H.T.",
+   "objet": "prix de cession des emprises foncieres de la Ville a l'amenageur SEMAPA, chiffre cite dans la question d'apres la deliberation de decembre 2019",
+   "citation": "pour un montant global de 37,5 millions d'euros H.T., qui doivent Ãªtre amÃ©nagÃ©es puis cÃ©dÃ©es Ã Nexity pour un montant de 66,4 millions",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=168460"
+  },
+  {
+   "seance": "MARS 2023",
+   "montant": "66,4 millions d'euros H.T.",
+   "objet": "prix de revente prevu des terrains par la SEMAPA a Nexity (recettes foncieres de l'amenageur), meme source",
+   "citation": "pour un montant global de 37,5 millions d'euros H.T., qui doivent Ãªtre amÃ©nagÃ©es puis cÃ©dÃ©es Ã Nexity pour un montant de 66,4 millions",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=168460"
+  },
+  {
+   "seance": "MARS 2023",
+   "montant": "environ 50 millions d'euros",
+   "objet": "depenses engagees par la SEMAPA depuis 2019 que la Ville devrait rembourser en cas d'abandon (a fin 2022, reponse d'E. Gregoire)",
+   "citation": "la Ville aurait l?obligation de rembourser ces dÃ©penses qui se montent, Ã fin 2022, Ã environ 50 millions",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=168381"
+  },
+  {
+   "seance": "MARS 2023",
+   "montant": "entre 40 et 50 millions d'euros (estimation de presse)",
+   "objet": "cout d'un abandon du projet Nexity selon la presse, cite dans la question",
+   "citation": "abandon du Projet Nexity coÃ»terait entre 40 et 50 millions car un compromis de vente aurait Ã©tÃ© signÃ© en avril 2022",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=168381"
+  },
+  {
+   "seance": "FEVRIER 2022",
+   "montant": "97 millions d'euros",
+   "objet": "cout du projet global de requalification de la porte, selon le maire du 20e E. Pliez",
+   "citation": "Il va mobiliser 97Â millions d?euros de la Ville, dont 26 pour le seul marchÃ© aux puces, incluant l?amÃ©nagement d?une place de 3,5Â hectares et 25.000Â mÃ¨tres carrÃ©s d?espaces verts.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=164469"
+  },
+  {
+   "seance": "FEVRIER 2022",
+   "montant": "26 millions d'euros",
+   "objet": "part du projet global affectee au seul marche aux puces, selon le maire du 20e",
+   "citation": "Il va mobiliser 97Â millions d?euros de la Ville, dont 26 pour le seul marchÃ© aux puces, incluant l?amÃ©nagement d?une place de 3,5Â hectares et 25.000Â mÃ¨tres carrÃ©s d?espaces verts.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=164469"
+  },
+  {
+   "seance": "FEVRIER 2022",
+   "montant": "30.000 euros",
+   "objet": "depenses de communication declarees par le concessionnaire sortant, jugees a revoir (propos de J. Gleizes)",
+   "citation": "aussi de 30.000Â euros pour la communication",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=164469"
+  },
+  {
+   "seance": "DECEMBRE 2014",
+   "montant": "112.124,04 EUR (2015), 104.479,67 EUR (2016), 94.937,67 EUR (2017)",
+   "objet": "part fixe de la redevance versee a la Ville par le delegataire, en plus de 2% des droits de place - decroissante",
+   "citation": "Il serait en effet égal à 2 % des droits de place perçus, plus une part fixe fixée comme suit : en 2015, 112.124,04 euros ; en 2016, on descend à 104.479,67 euros et 2017 : 94.937,67 euros.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=122386"
+  },
+  {
+   "seance": "DECEMBRE 2014",
+   "montant": "plus de 370.000 euros",
+   "objet": "redevance percue par la Ville sous la DSP precedente, selon J. Gleizes",
+   "citation": "recevait une redevance de plus de 370.000 euros.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=122386"
+  },
+  {
+   "seance": "DECEMBRE 2014",
+   "montant": "de 261.205 a 415.624 euros par an",
+   "objet": "frais de personnel du delegataire, en hausse (nettoyage renforce), explique par O. Polski",
+   "citation": "les frais de personnels passent de 261.205 à 415.624 euros par an",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=122386"
+  },
+  {
+   "seance": "DECEMBRE 2014",
+   "montant": "de 10.000 a 25.000 euros par an",
+   "objet": "participation du delegataire aux frais de promotion du marche",
+   "citation": "la participation passe de 10.000 euros à 25.000 euros par an.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=122386"
+  },
+  {
+   "seance": "DECEMBRE 2014",
+   "montant": "25.000 euros",
+   "objet": "investissement : deux bornes a eau",
+   "citation": "deux bornes à eau pour un coût de 25.000 euros",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=122386"
+  },
+  {
+   "seance": "DECEMBRE 2014",
+   "montant": "41.000 euros par an (contre 10.000)",
+   "objet": "dotation aux amortissements des investissements sur la duree de la DSP",
+   "citation": "La dotation aux amortissements s'établit à 41.000 euros par an, contre 10.000 dans la précédente D.S.P.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=122386"
+  }
+ ],
+ "bmo_extraits": [],
+ "bmo_recit": null,
+ "invest": [],
+ "marches": [
+  {
+   "numero_marche": "20161360001610",
+   "objet": "ETUDES URBAINES-OP AMENAGEMENT PORTE DE MONTREUIL",
+   "fournisseur": "TVK",
+   "montant_max": 1147590.0,
+   "date_notification": "2016-11-14",
+   "preuve": "L'objet nomme le lieu et en fait l'objet même du marché : « ETUDES URBAINES-OP AMENAGEMENT PORTE DE MONTREUIL » — études urbaines de l'opération d'aménagement de la Porte de Montreuil (SIRET fournisseur 80804880500028). Le débat du Conseil de Paris confirme une opération portant sur la place elle-même : « il y a la requalification urbaine de la porte de Montreuil elle-même, de transformer cet échangeur en grand jardin public place, qui soit vraiment requalifié de façon exceptionnelle » (vœu du groupe Écologiste de Paris relatif à l'aménagement de la Porte de Montreuil)."
+  },
+  {
+   "numero_marche": "20191370000735",
+   "objet": "MOE RÉAMÉNAGEMENT PORTE DE MONTREUIL",
+   "fournisseur": "SETEC TRAVAUX PUBLICS ET INDUSTRIEL",
+   "montant_max": 355910.0,
+   "date_notification": "2019-05-22",
+   "preuve": "Maîtrise d'œuvre du réaménagement du lieu lui-même, nommé verbatim dans l'objet : « MOE RÉAMÉNAGEMENT PORTE DE MONTREUIL » (SIRET fournisseur 67203828800060). Cohérent avec la délibération 2024 DU 21 « Opération Porte de Montreuil (20e) », où il est rappelé que ce projet « remplace la délibération de 2019 qui portait sur le réaménagement de la porte de Montreuil »."
+  },
+  {
+   "numero_marche": "20171360000389",
+   "objet": "ETUDE QUALITÉ DE L'AIR PORTE DE MONTREUIL - LOT 4",
+   "fournisseur": "EGIS STRUCTURES ET ENVIRONNEMENT",
+   "montant_max": 100294.0,
+   "date_notification": "2017-04-04",
+   "preuve": "Étude réalisée sur le site même, nommé dans l'objet : « ETUDE QUALITÉ DE L'AIR PORTE DE MONTREUIL - LOT 4 » (SIRET fournisseur 49338967000164). Le lieu n'est pas un repère d'adresse : il est le périmètre mesuré. Notifiée le même jour (2017-04-04) que l'étude d'impact de l'opération d'aménagement de la Porte de Montreuil (marché 20171360000386)."
+  },
+  {
+   "numero_marche": "20171360000386",
+   "objet": "ETUDE IMPACT AMENAGEMENT PORTE DE MONTREUIL 20E",
+   "fournisseur": "SOBERCO ENVIRONNEMENT",
+   "montant_max": 75700.0,
+   "date_notification": "2017-04-04",
+   "preuve": "L'objet nomme le lieu et son arrondissement, conformes à la fiche (20e) : « ETUDE IMPACT AMENAGEMENT PORTE DE MONTREUIL 20E » (SIRET fournisseur 40514454400013). Étude d'impact de l'opération d'aménagement de ce lieu, pas un simple repère d'adresse."
+  },
+  {
+   "numero_marche": "decp-2025S02459",
+   "objet": "Assistance à maitrise d'ouvrage pour le centre de santé de la porte de Montreuil",
+   "fournisseur": "ATIXIS",
+   "montant_max": 10800.0,
+   "date_notification": "2025-03-06",
+   "preuve": "L'objet nomme le lieu, qui est aussi le nom de l'équipement : « Assistance à maitrise d'ouvrage pour le centre de santé de la porte de Montreuil » (SIRET fournisseur 78972947200025). Cet équipement est rattaché à l'opération sur ce lieu par la délibération 2024 DU 21 « Opération Porte de Montreuil (20e) », à laquelle est joint le « Vœu déposé par le groupe Communiste et Citoyen relatif à la création d'un centre municipal de santé d'innovation Porte de Montreuil ». Confiance moyenne : le marché porte sur un équipement implanté à la porte et non sur l'aménagement de la place elle-même, et le lieu_execution DECP (« Paris ») ne prouve rien à lui seul."
+  }
+ ],
+ "sources": {
+  "delibs": {
+   "name": "Débat-Délibs — Conseil de Paris",
+   "url": "https://a06-v7.apps.paris.fr/a06/"
+  },
+  "bmo": {
+   "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
+   "url": "https://gallica.bnf.fr/ark:/12148/cb343512457/date"
+  },
+  "invest": {
+   "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
+   "url": "https://opendata.paris.fr/"
+  },
+  "wiki": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ }
+}

@@ -4,7 +4,9 @@ import "@/app/fusion.css";
 
 import { Navbar, Footer, ArrondissementFiche } from "@/components/fusion";
 import { InvestBackKicker, ArrInvestTitleAndLede } from "@/components/fusion/EntityPageHeaders";
+import LieuxLies from "@/components/fusion/LieuxLies";
 import { loadArrondissement } from "@/lib/fusion-data";
+import { loadLieuxIndex } from "@/lib/lieux-data";
 import { readLocale } from "@/lib/seo";
 
 type Params = { num: string };
@@ -61,6 +63,14 @@ export default async function ArrondissementPage({ params }: { params: Promise<P
   const arrNum = parseInt(num, 10);
   const arr = loadArrondissement(arrNum);
   if (!arr) return notFound();
+  const locale = await readLocale();
+
+  // Lieux couverts dans cet arrondissement — rattachement déterministe (pas de
+  // juge) : l'arrondissement est la seule clé partagée sûre lieu↔section.
+  const lieuxArr = loadLieuxIndex()
+    .filter((l) => l.arrondissement === arrNum)
+    .sort((a, b) => (b.argent_total_eur ?? 0) - (a.argent_total_eur ?? 0) || (a.depuis ?? 9999) - (b.depuis ?? 9999));
+  const arrLabel = `${arrNum}${arrNum === 1 ? (locale === "en" ? "st" : "er") : (locale === "en" ? "th" : "e")}`;
 
   return (
     <div className="theme-fusion">
@@ -74,6 +84,14 @@ export default async function ArrondissementPage({ params }: { params: Promise<P
       </section>
       <div className="fx-fiche-wrap">
         <ArrondissementFiche arr={arr} />
+        <LieuxLies
+          lieux={lieuxArr}
+          title={locale === "en" ? `Places in the ${arrLabel}` : `Lieux du ${arrLabel}`}
+          intro={locale === "en"
+            ? "Places in this district with their own fiche — deliberations, archives and public money."
+            : "Lieux de cet arrondissement dotés d’une fiche — délibérations, archives et argent public."}
+          locale={locale}
+        />
       </div>
       </main>
       <Footer />

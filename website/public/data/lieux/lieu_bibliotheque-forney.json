@@ -1,0 +1,151 @@
+{
+ "generated_at": "2026-07-18T14:38:43.284445+00:00",
+ "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
+ "slug": "bibliotheque-forney",
+ "name": "Bibliothèque Forney",
+ "kind_fr": "Bibliothèque",
+ "kind_en": "Library",
+ "famille": "culture",
+ "arrondissement": 4,
+ "lat": 48.853389,
+ "lon": 2.359078,
+ "photo": "/img/lieux/bibliotheque-forney.jpg",
+ "photo_credit": {
+  "licence": null,
+  "auteur": null,
+  "url": "https://fr.wikipedia.org/wiki/Biblioth%C3%A8que_Forney",
+  "source": "Wikipédia"
+ },
+ "wiki": {
+  "extract": "La bibliothèque Forney fait partie du réseau des bibliothèques patrimoniales et spécialisées de la Ville de Paris, ses collections s’étant développées autour des arts décoratifs, des métiers d’art et de leurs techniques, des beaux-arts et des arts graphiques. Elle organise régulièrement des expositions.",
+  "url": "https://fr.wikipedia.org/wiki/Biblioth%C3%A8que_Forney",
+  "source": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ },
+ "stats": {
+  "n_delibs": 1432,
+  "delibs_span": [
+   2000,
+   2025
+  ],
+  "n_bmo_brut": 0,
+  "n_bmo_verifies": null,
+  "invest_total_eur": 0,
+  "invest_annees": [],
+  "lecture_mode": "titre nommant le lieu (7 trouvés)",
+  "n_lus": 7,
+  "n_lieu": 7
+ },
+ "subventions_exploitant": null,
+ "residents": [],
+ "kpi_montant": null,
+ "synthese_fr": "Installée dans l'Hôtel de Sens (4e), la bibliothèque Forney apparaît au Conseil de Paris d'abord par ses équipements : en avril 2000, le Conseil approuve le principe du remplacement d'un ascenseur et autorise le Maire à signer le marché correspondant. En septembre 2001, le Maire est autorisé à accepter deux legs particuliers de Mme Roberte JOUVE au profit du Musée Carnavalet et de la bibliothèque, dont la valeur d'immobilisation des œuvres est estimée à 17.500 F au total. À partir de 2006, plusieurs délibérations approuvent des principes de travaux sur le bâtiment — mise aux normes des monte-dossiers (avril 2006), restauration des chêneaux, des corniches et des façades (novembre 2006), puis restructuration des salles d'exposition (mai 2007) — le Maire ayant été autorisé dès février 2006 à solliciter de l'État une subvention d'investissement au titre des monuments historiques pour la réfection des chéneaux. En décembre 2025, la Ville accepte un legs particulier consenti par M. B, à charge pour elle de mettre des livres à la disposition de la bibliothèque.",
+ "moments": [
+  {
+   "id": "51052",
+   "seance": "AVRIL 2000",
+   "fait": "Le Conseil approuve le principe du remplacement de l'ascenseur et autorise le Maire à signer le marché de travaux.",
+   "pourquoi": "Premier chantier : remplacer l'ascenseur",
+   "vedette": false,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=51052"
+  },
+  {
+   "id": "84874",
+   "seance": "SEPTEMBRE 2001",
+   "fait": "Le Maire est autorisé à accepter deux legs de Mme Roberte JOUVE, partagés entre le Musée Carnavalet et la bibliothèque.",
+   "pourquoi": "Un legs d'œuvres partagé avec Carnavalet",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=84874"
+  },
+  {
+   "id": "27794",
+   "seance": "FEVRIER 2006",
+   "fait": "Le Maire est autorisé à solliciter de l'État une subvention d'investissement au titre des monuments historiques pour les chéneaux.",
+   "pourquoi": "Solliciter l'État au titre des monuments historiques",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=27794"
+  },
+  {
+   "id": "38783",
+   "seance": "AVRIL 2006",
+   "fait": "Le Conseil approuve le principe des travaux de mise aux normes des monte-dossiers.",
+   "pourquoi": "Mettre les monte-dossiers aux normes",
+   "vedette": false,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=38783"
+  },
+  {
+   "id": "52553",
+   "seance": "NOVEMBRE 2006",
+   "fait": "Le Conseil approuve le principe des travaux de restauration des chêneaux, des corniches et des façades.",
+   "pourquoi": "Restaurer chêneaux, corniches et façades",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=52553"
+  },
+  {
+   "id": "80301",
+   "seance": "MAI 2007",
+   "fait": "Le Conseil approuve le principe de restructuration des salles d'exposition.",
+   "pourquoi": "Repenser les salles d'exposition de la bibliothèque",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=80301"
+  },
+  {
+   "id": "183732",
+   "seance": "DECEMBRE 2025",
+   "fait": "La Ville accepte un legs particulier de M. B, à charge pour elle de mettre des livres à disposition de la bibliothèque.",
+   "pourquoi": "Un legs de livres, un quart de siècle plus tard",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=183732"
+  }
+ ],
+ "montants": [
+  {
+   "seance": "SEPTEMBRE 2001",
+   "montant": "17.500 F",
+   "objet": "Valeur d'immobilisation totale des œuvres léguées par les deux legs (Musée Carnavalet et Bibliothèque Forney réunis), inscrite au budget d'investissement.",
+   "citation": "La valeur d'immobilisation des ?uvres léguées, estimée à 17.500 F au total sera inscrite au chapitre 10, compte 1025, sous-fonction 01, du budget d'investissement de la Ville de Paris.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=84874"
+  }
+ ],
+ "bmo_extraits": [],
+ "bmo_recit": null,
+ "invest": [],
+ "marches": [
+  {
+   "numero_marche": "20232023T03371",
+   "objet": "CVC BIBLIOTHEQUE FORNEY CENTRE ESPACE CANCER FIGUIER 4EME",
+   "fournisseur": "PROCHALOR",
+   "montant_max": 635437.96,
+   "date_notification": "2023-05-04",
+   "preuve": "L'objet nomme le lieu en premier : « CVC BIBLIOTHEQUE FORNEY CENTRE ESPACE CANCER FIGUIER 4EME » — prestation de chauffage / ventilation / climatisation portant sur le bâtiment. Réserve explicite : le même marché couvre un second équipement, le « CENTRE ESPACE CANCER FIGUIER » (4e) ; le montant maximum de 635 437,96 € ne revient donc pas en totalité à la bibliothèque Forney."
+  },
+  {
+   "numero_marche": "20161210000018",
+   "objet": "TRAVAUX SSI BIBLIOTHÈQUE FORNEY - HÔTEL DE SENS 75004",
+   "fournisseur": "ATOUTRENOV",
+   "montant_max": 199988.0,
+   "date_notification": "2016-02-10",
+   "preuve": "L'objet du marché nomme le lieu et son bâtiment verbatim : « TRAVAUX SSI BIBLIOTHÈQUE FORNEY - HÔTEL DE SENS 75004 ». Travaux de système de sécurité incendie sur le bâtiment lui-même, aucun autre site cité. L'identité Forney = Hôtel de Sens, 4e, est confirmée par la délibération 2007 DPA 96 : « travaux de restructuration des salles d'exposition à la Bibliothèque Forney (Hôtel de Sens) sise 3, rue du Figuier (4e) »."
+  }
+ ],
+ "sources": {
+  "delibs": {
+   "name": "Débat-Délibs — Conseil de Paris",
+   "url": "https://a06-v7.apps.paris.fr/a06/"
+  },
+  "bmo": {
+   "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
+   "url": "https://gallica.bnf.fr/ark:/12148/cb343512457/date"
+  },
+  "invest": {
+   "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
+   "url": "https://opendata.paris.fr/"
+  },
+  "wiki": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ }
+}

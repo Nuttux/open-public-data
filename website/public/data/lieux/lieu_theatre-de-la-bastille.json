@@ -1,0 +1,345 @@
+{
+ "generated_at": "2026-07-18T14:38:43.284445+00:00",
+ "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
+ "slug": "theatre-de-la-bastille",
+ "name": "Théâtre de la Bastille",
+ "kind_fr": "Théâtre",
+ "kind_en": "Theatre",
+ "famille": "culture",
+ "arrondissement": 11,
+ "lat": 48.853849,
+ "lon": 2.367928,
+ "photo": "/img/lieux/theatre-de-la-bastille.jpg",
+ "photo_credit": {
+  "licence": null,
+  "auteur": null,
+  "url": "https://fr.wikipedia.org/wiki/Th%C3%A9%C3%A2tre_de_la_Bastille",
+  "source": "Wikipédia"
+ },
+ "wiki": {
+  "extract": "Le théâtre de la Bastille est une salle de spectacles située au 76, rue de la Roquette dans le 11e arrondissement de Paris. Sa programmation est principalement consacrée au théâtre contemporain et à la danse contemporaine. Devenu théâtre public en 2023, il est dirigé depuis lors par Claire Dupont.",
+  "url": "https://fr.wikipedia.org/wiki/Th%C3%A9%C3%A2tre_de_la_Bastille",
+  "source": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ },
+ "stats": {
+  "n_delibs": 835,
+  "delibs_span": [
+   1997,
+   2021
+  ],
+  "n_bmo_brut": 0,
+  "n_bmo_verifies": null,
+  "invest_total_eur": 0,
+  "invest_annees": [],
+  "lecture_mode": "titre nommant le lieu (21 trouvés)",
+  "n_lus": 21,
+  "n_lieu": 20
+ },
+ "subventions_exploitant": null,
+ "residents": [],
+ "kpi_montant": null,
+ "synthese_fr": "Depuis 1997, où le Conseil de Paris vote 100.000 F pour un cycle de théâtre russe, la Ville subventionne le Théâtre de la Bastille, exploité par la SARL La Manufacture au 76, rue de la Roquette (11e). Les subventions de fonctionnement passent de 470.000 euros en 2002-2003 à 520.000 euros de 2004 à 2007, complétées par des subventions d'équipement pour la rénovation de la scène et des équipements scéniques (76.834 euros en 2002, 50.154 euros en 2003). Des difficultés financières reviennent régulièrement : en décembre 2007, un vœu demande une aide exceptionnelle de 150.000 euros, ramenée en séance à 50.000 euros. En 2010, des élus décrivent un théâtre « privé » dirigé par Jean-Marie Hordé et cofinancé par la Ville et l'État ; en 2011, la subvention annuelle est portée à 615.000 euros. En 2020 et 2021, les débats portent sur une programmation jugée très masculine, que l'adjointe à la culture relie en partie à une saison amputée par la pandémie.",
+ "moments": [
+  {
+   "id": "49812",
+   "seance": "NOVEMBRE 1997",
+   "fait": "Le Conseil de Paris attribue 100 000 F au Théâtre de la Bastille pour des spectacles d'un cycle de théâtre russe.",
+   "pourquoi": "la plus ancienne trace, encore en francs",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=49812"
+  },
+  {
+   "id": "70269",
+   "seance": "JUILLET 2003",
+   "fait": "Le Maire est autorisé à signer une subvention d'équipement de 50 154 euros pour les travaux de rénovation de la scène.",
+   "pourquoi": "la Ville finance la rénovation de la scène",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=70269"
+  },
+  {
+   "id": "15576",
+   "seance": "AVRIL 2005",
+   "fait": "Un amendement augmente la subvention de 20 000 euros ; M. Girard annonce un courrier au directeur pour clarifier une aide exceptionnelle.",
+   "pourquoi": "un courrier au directeur pour clarifier l'aide",
+   "vedette": false,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=15576"
+  },
+  {
+   "id": "4708",
+   "seance": "DECEMBRE 2007",
+   "fait": "Un vœu réclame 150 000 euros exceptionnels ; M. Girard propose 50 000 euros, montant finalement retenu.",
+   "pourquoi": "150.000 demandés, 50.000 accordés en séance",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=4708"
+  },
+  {
+   "id": "11142",
+   "seance": "SEPTEMBRE 2010",
+   "fait": "En séance, le théâtre est décrit comme « sorte de théâtre privé » dirigé par Jean-Marie Hordé depuis 21 ans, cofinancé Ville-État.",
+   "pourquoi": "portrait du théâtre et de son directeur",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=11142"
+  },
+  {
+   "id": "96125",
+   "seance": "JUIN 2011",
+   "fait": "Un avenant porte la subvention 2011 de 307 500 à 615 000 euros.",
+   "pourquoi": "la subvention portée du simple au double",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=96125"
+  },
+  {
+   "id": "156063",
+   "seance": "JUILLET 2020",
+   "fait": "Lors du vote de 900 000 euros pour trois théâtres, une élue soulève le sexisme des programmations culturelles.",
+   "pourquoi": "la parité s'invite dans les subventions",
+   "vedette": false,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=156063"
+  },
+  {
+   "id": "159161",
+   "seance": "JUIN 2021",
+   "fait": "L'adjointe à la culture reconnaît une programmation très masculine tout en l'imputant à une saison amputée par la pandémie.",
+   "pourquoi": "parité et saison tronquée par la pandémie",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=159161"
+  }
+ ],
+ "montants": [
+  {
+   "seance": "NOVEMBRE 1997",
+   "montant": "100.000 F",
+   "objet": "subvention pour la présentation de spectacles dans le cadre du cycle de théâtre russe",
+   "citation": "Une subvention de 100.000 F est attribuée au Théâtre de la Bastille - S.A.R.L. \"La Manufacture\", 76, rue de la Roquette (11e) pour la présentation de spectacles dans le cadre du cycle de théâtre russe.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=49812"
+  },
+  {
+   "seance": "AVRIL 2002",
+   "montant": "470.000 euros",
+   "objet": "subvention pour le fonctionnement en 2002 du théâtre de la Bastille",
+   "citation": "Une subvention de 470.000 euros est attribuée à la S.A.R.L. \"La Manufacture\", 76, rue de la Roquette (11e) pour le fonctionnement en 2002 du théâtre de la Bastille, 76, rue de la Roquette (11e)",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=73562"
+  },
+  {
+   "seance": "SEPTEMBRE 2002",
+   "montant": "76.834 euros",
+   "objet": "subvention d'équipement pour la rénovation et la modernisation des équipements scéniques",
+   "citation": "La dépense correspondante, soit 76.834 euros, sera imputée sur le budget de fonctionnement de la Ville de Paris, rubrique 33, nature 6745, chapitre 67, ligne E005 provision pour subventions d'équipement au titre de la culture.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=29136"
+  },
+  {
+   "seance": "AVRIL 2003",
+   "montant": "470.000 euros",
+   "objet": "subvention de fonctionnement au titre de l'année 2003",
+   "citation": "La dépense correspondante, soit 470.000 euros, sera imputée sur le budget de fonctionnement de la Ville de Paris de 2003, nature 6574, rubrique 33, ligne P003",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=89465"
+  },
+  {
+   "seance": "JUILLET 2003",
+   "montant": "50.154 euros",
+   "objet": "subvention d'équipement pour les travaux de rénovation de la scène",
+   "citation": "La dépense correspondante, soit 50.154 euros, sera imputée sur le budget de fonctionnement de la Ville de Paris, rubrique 33, nature 6745, ligne E005",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=70269"
+  },
+  {
+   "seance": "AVRIL 2004",
+   "montant": "520.000 euros",
+   "objet": "subvention de fonctionnement au titre de l'année 2004",
+   "citation": "La dépense correspondante, soit 520.000 euros, sera imputée sur le budget de fonctionnement de la Ville de Paris de 2004, nature 6574, rubrique 33, ligne P003",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=52201"
+  },
+  {
+   "seance": "AVRIL 2005",
+   "montant": "520.000 euros (500.000 + 20.000)",
+   "objet": "subvention de fonctionnement 2005 : aide annuelle plus part exceptionnelle",
+   "citation": "Une subvention de fonctionnement de 520.000 euros (soit 500.000 euros au titre d?une aide annuelle et 20.000 euros à titre exceptionnel) est attribuée à la SARL ?La Manufacture?, 76, rue de la Roquette (11e)",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=43773"
+  },
+  {
+   "seance": "AVRIL 2005",
+   "montant": "20.000 euros",
+   "objet": "augmentation de la subvention par amendement, saluée par Mme Macé de Lépinay",
+   "citation": "augmentant de 20.000 euros le montant de la subvention du théâtre de la Bastille",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=15576"
+  },
+  {
+   "seance": "AVRIL 2005",
+   "montant": "500.000 euros + 20.000 euros",
+   "objet": "composition de la subvention 2004 rappelée par M. Girard",
+   "citation": "La subvention adoptée en 2004 par le Conseil de Paris pour ?La Manufacture? qui gère le théâtre de la Bastille était composée d?une aide de 500.000 euros et de 20.000 euros à titre exceptionnel.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=15576"
+  },
+  {
+   "seance": "AVRIL 2005",
+   "montant": "520.000 euros",
+   "objet": "maintien de la subvention antérieure prévu au budget 2005 de la SARL",
+   "citation": "un maintien de la subvention antérieure à hauteur de 520.000 euros",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=15576"
+  },
+  {
+   "seance": "MAI 2006",
+   "montant": "520 000 euros",
+   "objet": "subvention de fonctionnement au titre de l'année 2006",
+   "citation": "La dépense correspondante, soit 520 000 euros, sera imputée sur le budget de fonctionnement de la Ville de Paris de 2006, nature 6574, rubrique 33, ligne P003",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=88908"
+  },
+  {
+   "seance": "JUIN 2007",
+   "montant": "520.000 euros",
+   "objet": "subvention de fonctionnement au titre de l'année 2007",
+   "citation": "La dépense correspondante, soit 520.000 euros, sera imputée sur le budget de fonctionnement de la Ville de Paris de 2007, nature 6574, rubrique 33, ligne P003",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=72694"
+  },
+  {
+   "seance": "DECEMBRE 2007",
+   "montant": "150.000 euros",
+   "objet": "subvention exceptionnelle demandée par le vœu",
+   "citation": "relatif à l?attribution d?une subvention exceptionnelle de 150.000 euros au théâtre de la Bastille",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=4708"
+  },
+  {
+   "seance": "DECEMBRE 2007",
+   "montant": "200.000 euros",
+   "objet": "montant que M. Girard estime peut-être justifié mais indisponible",
+   "citation": "vous imaginez que 150.000 euros, même si 200.000 euros seraient peut-être justifiés, nous ne les avons pas",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=4708"
+  },
+  {
+   "seance": "DECEMBRE 2007",
+   "montant": "50.000 euros",
+   "objet": "montant proposé par M. Girard et retenu par le vote",
+   "citation": "je propose que nous accordions 50.000 euros à titre exceptionnel.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=4708"
+  },
+  {
+   "seance": "DECEMBRE 2007",
+   "montant": "50.000 euros",
+   "objet": "subvention exceptionnelle souhaitée par le vœu pour 2008",
+   "citation": "Que la Ville de Paris accorde une subvention exceptionnelle de 50.000 euros en 2008 à la SARL ?La Manufacture?, 76, rue de la Roquette (11e) destinée au financement des activités du Théâtre de la Bastille.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=54816"
+  },
+  {
+   "seance": "DECEMBRE 2007",
+   "montant": "520.000 euros (Ville) et 1.150.000 euros (État)",
+   "objet": "subventions publiques existantes rappelées dans les considérants du vœu",
+   "citation": "la subvention de fonctionnement accordée actuellement par la Ville de Paris, soit une dépense de 520.000 euros, et celle attribuée par l?Etat, soit 1.150.000 euros",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=54816"
+  },
+  {
+   "seance": "DECEMBRE 2007",
+   "montant": "150.000 euros (dette) ; 20.000 à 50.000 euros (licenciements)",
+   "objet": "charges à réduire évoquées dans les considérants du vœu",
+   "citation": "cette réduction suppose l?épuration d?une dette de 150.000 euros, le financement de 2 ou 3 licenciements (20.000 à 50.000 euros)",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=54816"
+  },
+  {
+   "seance": "DECEMBRE 2007",
+   "montant": "moins 60.000 euros",
+   "objet": "anticipation de baisse des recettes 2008 évoquée dans les considérants",
+   "citation": "une anticipation de la baisse des recettes en 2008 due à la réduction du nombre de spectacles (moins 60.000 euros)",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=54816"
+  },
+  {
+   "seance": "JUIN 2008",
+   "montant": "310.000 euros (dont 50.000 exceptionnel)",
+   "objet": "subvention de fonctionnement 2008 par avenant",
+   "citation": "La dépense correspondante, soit 310.000 euros, dont 50.000 euros à titre complémentaire et exceptionnel, sera imputée sur le budget de fonctionnement de la Ville de Paris de 2008, nature 6574, rubrique 33, ligne P003",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=68597"
+  },
+  {
+   "seance": "JUIN 2008",
+   "montant": "260 000 euros",
+   "objet": "acompte 2008 versé au titre de la convention du 10 janvier 2008",
+   "citation": "un acompte de 260 000 euros au titre de l?année 2008",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=68597"
+  },
+  {
+   "seance": "JUIN 2008",
+   "montant": "320.000 euros",
+   "objet": "subvention au théâtre annoncée en séance (délibération amendée)",
+   "citation": "l?attribution d?une subvention au Théâtre de la Bastille, situé à la même adresse : 320.000 euros.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=14751"
+  },
+  {
+   "seance": "SEPTEMBRE 2009",
+   "montant": "325.000 euros (dont 65.000 exceptionnel)",
+   "objet": "subvention de fonctionnement 2009 par avenant",
+   "citation": "La dépense correspondante, soit 325.000 euros, dont 65.000 euros à titre exceptionnel, sera imputée sur le budget de fonctionnement de la Ville de Paris de 2009, nature 6574, rubrique 33, ligne P003",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=36762"
+  },
+  {
+   "seance": "SEPTEMBRE 2009",
+   "montant": "260.000 euros",
+   "objet": "acompte 2009 versé au titre de la convention du 12 février 2009",
+   "citation": "un acompte de 260.000 euros au titre de l?année 2009",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=36762"
+  },
+  {
+   "seance": "SEPTEMBRE 2010",
+   "montant": "355.000 euros",
+   "objet": "subvention de fonctionnement 2010 attribuée par avenant",
+   "citation": "Une subvention de fonctionnement d?un montant de 355.000 euros est attribuée à la SARL La Manufacture - 76, rue de la Roquette (11e), pour les activités du Théâtre de la Bastille",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=39703"
+  },
+  {
+   "seance": "SEPTEMBRE 2010",
+   "montant": "260.000 euros",
+   "objet": "acompte 2010 versé au titre de la convention du 18 décembre 2009",
+   "citation": "un acompte de 260.000 euros au titre de l?année 2010",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=39703"
+  },
+  {
+   "seance": "SEPTEMBRE 2010",
+   "montant": "355.000 euros",
+   "objet": "subvention débattue en séance (DAC 41, avenant 2010)",
+   "citation": "pour l'attribution d'une subvention de 355.000 euros au Théâtre de la Bastille",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=11142"
+  },
+  {
+   "seance": "JUIN 2011",
+   "montant": "615.000 euros (de 307.500 à 615.000)",
+   "objet": "subvention de fonctionnement 2011 portée au double par avenant",
+   "citation": "au titre de l?année 2011 pour les activités du Théâtre de la Bastille 76 rue de la Roquette 75011 Paris, est portée de 307.500 euros à 615.000 euros.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=96125"
+  },
+  {
+   "seance": "JUILLET 2020",
+   "montant": "900.000 euros",
+   "objet": "subventions et avenants partagés entre trois établissements dont le théâtre",
+   "citation": "l'attribution d'une subvention de 900.000 euros et des avenants à conventions avec le Théâtre de la Bastille, la Ménagerie de Verre, et le Théâtre des Bouffes",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=156063"
+  },
+  {
+   "seance": "JUIN 2021",
+   "montant": "620.000 euros",
+   "objet": "subvention et avenant à la convention avec le théâtre (DAC 33)",
+   "citation": "2021 DAC 33 - Subvention (620.000 euros) et avenant à convention avec le théâtre de la Bastille.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=159161"
+  }
+ ],
+ "bmo_extraits": [],
+ "bmo_recit": null,
+ "invest": [],
+ "marches": [],
+ "sources": {
+  "delibs": {
+   "name": "Débat-Délibs — Conseil de Paris",
+   "url": "https://a06-v7.apps.paris.fr/a06/"
+  },
+  "bmo": {
+   "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
+   "url": "https://gallica.bnf.fr/ark:/12148/cb343512457/date"
+  },
+  "invest": {
+   "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
+   "url": "https://opendata.paris.fr/"
+  },
+  "wiki": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ }
+}

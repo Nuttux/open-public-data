@@ -1,0 +1,329 @@
+{
+ "generated_at": "2026-07-18T14:38:43.284445+00:00",
+ "beneficiaires": {
+  "la cite de la musique": {
+   "slug": "philharmonie-de-paris",
+   "lieu": "Philharmonie de Paris",
+   "role": "exploitant"
+  },
+  "theatre de la ville": {
+   "slug": "theatre-de-la-ville",
+   "lieu": "Théâtre de la Ville",
+   "role": "exploitant"
+  },
+  "halage": {
+   "slug": "petite-ceinture",
+   "lieu": "Petite Ceinture",
+   "role": "resident"
+  },
+  "interface formation": {
+   "slug": "petite-ceinture",
+   "lieu": "Petite Ceinture",
+   "role": "resident"
+  },
+  "theatre musical de paris": {
+   "slug": "theatre-du-chatelet",
+   "lieu": "Théâtre du Châtelet",
+   "role": "exploitant"
+  },
+  "ste exploitat de la gaite lyrique": {
+   "slug": "gaite-lyrique",
+   "lieu": "Gaîté-Lyrique",
+   "role": "exploitant"
+  },
+  "gaite lyrique s a s": {
+   "slug": "gaite-lyrique",
+   "lieu": "Gaîté-Lyrique",
+   "role": "exploitant"
+  },
+  "soc de gestion de la gaite lyrique": {
+   "slug": "gaite-lyrique",
+   "lieu": "Gaîté-Lyrique",
+   "role": "exploitant"
+  },
+  "marathon": {
+   "slug": "gaite-lyrique",
+   "lieu": "Gaîté-Lyrique",
+   "role": "resident"
+  },
+  "societe publique locale le carreau du temple": {
+   "slug": "carreau-du-temple",
+   "lieu": "Carreau du Temple",
+   "role": "exploitant"
+  },
+  "cinecaro": {
+   "slug": "carreau-du-temple",
+   "lieu": "Carreau du Temple",
+   "role": "resident"
+  },
+  "mamama": {
+   "slug": "carreau-du-temple",
+   "lieu": "Carreau du Temple",
+   "role": "resident"
+  },
+  "artincidence": {
+   "slug": "carreau-du-temple",
+   "lieu": "Carreau du Temple",
+   "role": "resident"
+  },
+  "defracto": {
+   "slug": "carreau-du-temple",
+   "lieu": "Carreau du Temple",
+   "role": "resident"
+  },
+  "les sens des mots": {
+   "slug": "carreau-du-temple",
+   "lieu": "Carreau du Temple",
+   "role": "resident"
+  },
+  "maison des metallos": {
+   "slug": "maison-des-metallos",
+   "lieu": "Maison des Métallos",
+   "role": "exploitant"
+  },
+  "pavillon de l arsenal": {
+   "slug": "pavillon-de-larsenal",
+   "lieu": "Pavillon de l'Arsenal",
+   "role": "exploitant"
+  },
+  "ars mobilis": {
+   "slug": "serres-dauteuil",
+   "lieu": "Serres d'Auteuil",
+   "role": "resident"
+  },
+  "bourse du travail de paris": {
+   "slug": "bourse-du-travail",
+   "lieu": "Bourse du Travail",
+   "role": "exploitant"
+  },
+  "association des organisations syndicales de la bourse du travail de paris": {
+   "slug": "bourse-du-travail",
+   "lieu": "Bourse du Travail",
+   "role": "resident"
+  },
+  "association halle saint pierre": {
+   "slug": "halle-saint-pierre",
+   "lieu": "Halle Saint-Pierre",
+   "role": "exploitant"
+  },
+  "les mille printemps": {
+   "slug": "theatre-13",
+   "lieu": "Théâtre 13",
+   "role": "resident"
+  },
+  "teatro picaro": {
+   "slug": "theatre-13",
+   "lieu": "Théâtre 13",
+   "role": "resident"
+  },
+  "compagnie dtm 9 4": {
+   "slug": "theatre-13",
+   "lieu": "Théâtre 13",
+   "role": "resident"
+  },
+  "compagnie eulalie": {
+   "slug": "theatre-13",
+   "lieu": "Théâtre 13",
+   "role": "resident"
+  },
+  "compagnie mesden": {
+   "slug": "theatre-13",
+   "lieu": "Théâtre 13",
+   "role": "resident"
+  },
+  "le temps des possibles": {
+   "slug": "theatre-13",
+   "lieu": "Théâtre 13",
+   "role": "resident"
+  },
+  "theatre du rond point": {
+   "slug": "theatre-du-rond-point",
+   "lieu": "Théâtre du Rond-Point",
+   "role": "exploitant"
+  },
+  "compagnie 7bis": {
+   "slug": "theatre-du-rond-point",
+   "lieu": "Théâtre du Rond-Point",
+   "role": "resident"
+  },
+  "theatre silvia monfort": {
+   "slug": "theatre-silvia-monfort",
+   "lieu": "Théâtre Silvia Monfort",
+   "role": "exploitant"
+  },
+  "groupe chiendent": {
+   "slug": "theatre-silvia-monfort",
+   "lieu": "Théâtre Silvia Monfort",
+   "role": "resident"
+  },
+  "hybridites france chine": {
+   "slug": "theatre-silvia-monfort",
+   "lieu": "Théâtre Silvia Monfort",
+   "role": "resident"
+  },
+  "theatre paris villette": {
+   "slug": "theatre-paris-villette",
+   "lieu": "Théâtre Paris-Villette",
+   "role": "exploitant"
+  },
+  "madani compagnie": {
+   "slug": "theatre-paris-villette",
+   "lieu": "Théâtre Paris-Villette",
+   "role": "resident"
+  },
+  "compagnie marizibill": {
+   "slug": "theatre-paris-villette",
+   "lieu": "Théâtre Paris-Villette",
+   "role": "resident"
+  },
+  "universites populaires du theatre": {
+   "slug": "theatre-14",
+   "lieu": "Théâtre 14",
+   "role": "resident"
+  },
+  "association aurore": {
+   "slug": "porte-de-la-chapelle",
+   "lieu": "Porte de la Chapelle",
+   "role": "resident"
+  },
+  "l intestine": {
+   "slug": "porte-de-la-chapelle",
+   "lieu": "Porte de la Chapelle",
+   "role": "resident"
+  },
+  "maison de la poesie": {
+   "slug": "maison-de-la-poesie",
+   "lieu": "Maison de la Poésie",
+   "role": "exploitant"
+  },
+  "tsara": {
+   "slug": "theatre-de-la-cite-internationale",
+   "lieu": "Théâtre de la Cité internationale",
+   "role": "resident"
+  },
+  "cabanes": {
+   "slug": "bois-de-vincennes",
+   "lieu": "Bois de Vincennes",
+   "role": "resident"
+  },
+  "escrime des quais de seine": {
+   "slug": "arenes-de-lutece",
+   "lieu": "Arènes de Lutèce",
+   "role": "resident"
+  }
+ },
+ "projets": {
+  "prov sub equip philharmonie de paris": {
+   "slug": "philharmonie-de-paris",
+   "lieu": "Philharmonie de Paris"
+  },
+  "theatre de la ville renovation": {
+   "slug": "theatre-de-la-ville",
+   "lieu": "Théâtre de la Ville"
+  },
+  "porte maillot reamenagement": {
+   "slug": "porte-maillot",
+   "lieu": "Porte Maillot"
+  },
+  "parcs de stationnememnt porte maillot": {
+   "slug": "porte-maillot",
+   "lieu": "Porte Maillot"
+  },
+  "parc des buttes chaumont ile de la falaise": {
+   "slug": "parc-des-buttes-chaumont",
+   "lieu": "Parc des Buttes-Chaumont"
+  },
+  "parc des buttes chaumont curage du lac": {
+   "slug": "parc-des-buttes-chaumont",
+   "lieu": "Parc des Buttes-Chaumont"
+  },
+  "parc des buttes chaumont ile de la falaise etudes de diagnostic et mis en securite": {
+   "slug": "parc-des-buttes-chaumont",
+   "lieu": "Parc des Buttes-Chaumont"
+  },
+  "piscine 19 rue de pontoise travaux de renovation": {
+   "slug": "piscine-pontoise",
+   "lieu": "Piscine Pontoise"
+  },
+  "piscine pontoise renovation de la piscine": {
+   "slug": "piscine-pontoise",
+   "lieu": "Piscine Pontoise"
+  },
+  "parc montsouris entretien courant": {
+   "slug": "parc-montsouris",
+   "lieu": "Parc Montsouris"
+  },
+  "parc montsouris travaux d entretien courant": {
+   "slug": "parc-montsouris",
+   "lieu": "Parc Montsouris"
+  },
+  "parc monceau entretien courant": {
+   "slug": "parc-monceau",
+   "lieu": "Parc Monceau"
+  },
+  "renouveau au parc monceau": {
+   "slug": "parc-monceau",
+   "lieu": "Parc Monceau"
+  },
+  "parc monceau travaux de maintenance et entretiens courants": {
+   "slug": "parc-monceau",
+   "lieu": "Parc Monceau"
+  },
+  "parc monceau": {
+   "slug": "parc-monceau",
+   "lieu": "Parc Monceau"
+  },
+  "parc andre citroen renovation du grand canal": {
+   "slug": "parc-andre-citroen",
+   "lieu": "Parc André-Citroën"
+  },
+  "parc andre citroen renovation": {
+   "slug": "parc-andre-citroen",
+   "lieu": "Parc André-Citroën"
+  },
+  "maison de l air": {
+   "slug": "parc-de-belleville",
+   "lieu": "Parc de Belleville"
+  },
+  "place de la republique refection des trottoirs": {
+   "slug": "place-de-la-republique",
+   "lieu": "Place de la République"
+  },
+  "marche couvert 21 place louis lepine rehabilitation des pavillons": {
+   "slug": "kiosque-fleurs-cite",
+   "lieu": "Marché aux fleurs de la Cité"
+  },
+  "stade jean bouin codp": {
+   "slug": "stade-jean-bouin",
+   "lieu": "Stade Jean-Bouin"
+  },
+  "reamenagement de la porte chapelle jo 2024": {
+   "slug": "porte-de-la-chapelle",
+   "lieu": "Porte de la Chapelle"
+  },
+  "porte de la chapelle reamenagement jo 2024": {
+   "slug": "porte-de-la-chapelle",
+   "lieu": "Porte de la Chapelle"
+  },
+  "porte de la chapelle rue de la chapelle rue marx dormoy rond point": {
+   "slug": "porte-de-la-chapelle",
+   "lieu": "Porte de la Chapelle"
+  },
+  "place des vosges": {
+   "slug": "place-des-vosges",
+   "lieu": "Place des Vosges"
+  },
+  "square louis xiii amenagement des sanitaires pmr renovation des sols": {
+   "slug": "place-des-vosges",
+   "lieu": "Place des Vosges"
+  },
+  "lycee municipal theophile gautier annexe place des vosges": {
+   "slug": "place-des-vosges",
+   "lieu": "Place des Vosges"
+  },
+  "place denfert rocherau amenagement": {
+   "slug": "place-denfert-rochereau",
+   "lieu": "Place Denfert-Rochereau"
+  }
+ }
+}

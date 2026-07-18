@@ -4,7 +4,9 @@ import "@/app/fusion.css";
 
 import { Navbar, Footer, FournisseurFiche } from "@/components/fusion";
 import { MarchesBackKicker, FournisseurLede } from "@/components/fusion/EntityPageHeaders";
+import VoirLeLieu from "@/components/fusion/VoirLeLieu";
 import { loadFournisseur, loadSirene } from "@/lib/fusion-data";
+import { lieuForBeneficiaire } from "@/lib/lieux-data";
 import { readLocale } from "@/lib/seo";
 
 type Params = { siren: string };
@@ -53,6 +55,7 @@ export default async function FournisseurPage({ params }: { params: Promise<Para
   if (!fournisseur) return notFound();
 
   const sirene = loadSirene(fournisseur.siren);
+  const locale = await readLocale();
 
   return (
     <div className="theme-fusion">
@@ -72,6 +75,7 @@ export default async function FournisseurPage({ params }: { params: Promise<Para
         </div>
       </section>
       <div className="fx-fiche-wrap">
+        <VoirLeLieu lien={lieuForBeneficiaire(fournisseur.nom)} locale={locale} />
         <FournisseurFiche fournisseur={fournisseur} sirene={sirene} />
       </div>
       </main>

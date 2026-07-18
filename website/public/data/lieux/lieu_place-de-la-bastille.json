@@ -1,0 +1,217 @@
+{
+ "generated_at": "2026-07-18T14:38:43.284445+00:00",
+ "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
+ "slug": "place-de-la-bastille",
+ "name": "Place de la Bastille",
+ "kind_fr": "Place",
+ "kind_en": "Square",
+ "famille": "urbain",
+ "arrondissement": 4,
+ "lat": 48.8532,
+ "lon": 2.3692,
+ "photo": "/img/lieux/place-de-la-bastille.jpg",
+ "photo_credit": {
+  "licence": "CC BY-SA 4.0",
+  "auteur": "FreCha",
+  "url": "https://commons.wikimedia.org/wiki/File:Place_de_la_Bastille_-_ICM.jpg",
+  "source": "Wikimedia Commons"
+ },
+ "wiki": {
+  "extract": "La place de la Bastille est une place de Paris, lieu symbolique de la Révolution française, où l'ancienne forteresse de la Bastille fut détruite entre le 14 juillet 1789 et le 14 juillet 1790.",
+  "url": "https://fr.wikipedia.org/wiki/Place_de_la_Bastille",
+  "source": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ },
+ "stats": {
+  "n_delibs": 497,
+  "delibs_span": [
+   1995,
+   2019
+  ],
+  "n_bmo_brut": 2000,
+  "n_bmo_verifies": 14,
+  "invest_total_eur": 0,
+  "invest_annees": [],
+  "lecture_mode": "titre nommant le lieu (20 trouvés)",
+  "n_lus": 20,
+  "n_lieu": 19
+ },
+ "subventions_exploitant": null,
+ "residents": [],
+ "kpi_montant": null,
+ "synthese_fr": "Dans les délibérations du Conseil de Paris, la place de la Bastille apparaît d'abord comme un espace d'ordre public et d'usages : rassemblements de motards le vendredi soir (1997-1998), station de taxis réaménagée, manifestations et contre-manifestations (1995), mendicité signalée (2013). Des années 2002 à 2007, elle est surtout le lieu des spectacles et bals du 13 juillet financés par la Ville (de l'ordre de 120 000 à 195 000 euros TTC) ; nettement plus coûteux, le spectacle commémorant le 60e anniversaire de la Libération de Paris (25 août 2004) mobilise un marché de 1 177 404,60 euros TTC. En 2009, un salon d'art et d'antiquités-brocante y génère 165 000 euros de redevance pour la Ville. En juin 2010, le Conseil adopte un vœu de soutien aux travailleurs sans-papiers qui occupaient les marches de l'Opéra Bastille. À partir de 2015, la place devient l'objet d'un réaménagement : une communication de 2016 sur sept places annonce la fin de sa circulation circulaire au profit d'un axe Nord-Sud ouvrant sur le bassin de l'Arsenal. L'opposition dépose alors plusieurs vœux — sur la propreté (2015), la concertation et un test de préfiguration (2017), la circulation des bus et la consultation de la RATP et d'Île-de-France Mobilités (2019).",
+ "moments": [
+  {
+   "id": "57",
+   "seance": "DECEMBRE 1995",
+   "fait": "Le Préfet de police justifie devant le Conseil d'avoir laissé se tenir place de la Bastille le rassemblement du 25 novembre pour les droits des femmes malgré une contre-manifestation.",
+   "pourquoi": "Ordre public : manif et contre-manif",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=57"
+  },
+  {
+   "id": "19615",
+   "seance": "SEPTEMBRE 1997",
+   "fait": "Le Préfet de police annonce information et contrôles face au rassemblement hebdomadaire de 100 à 150 motos place de la Bastille le vendredi soir.",
+   "pourquoi": "Les motards du vendredi soir",
+   "vedette": false,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=19615"
+  },
+  {
+   "id": "37198",
+   "seance": "SEPTEMBRE 2009",
+   "fait": "Le Conseil autorise une convention pour un salon d'antiquités-brocante place de la Bastille, générant 165 000 euros de redevance pour la Ville.",
+   "pourquoi": "La place qui rapporte à la Ville",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=37198"
+  },
+  {
+   "id": "45889",
+   "seance": "MAI 2004",
+   "fait": "Le Conseil approuve le principe d'un marché de 1 177 404,60 euros TTC (Luna Production) et en autorise la signature, pour un spectacle commémorant le 60e anniversaire de la Libération de Paris.",
+   "pourquoi": "Un marché bien plus lourd que les bals du 13 juillet",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=45889"
+  },
+  {
+   "id": "12925",
+   "seance": "JUIN 2010",
+   "fait": "Le Conseil adopte un vœu de soutien aux travailleurs sans-papiers en grève qui occupaient les marches de l'Opéra Bastille depuis le 27 mai.",
+   "pourquoi": "Quand la place devient tribune sociale",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=12925"
+  },
+  {
+   "id": "123627",
+   "seance": "MARS 2015",
+   "fait": "Répondant à un vœu du groupe UMP dénonçant la dégradation de la place, l'adjoint Mao Peninou détaille l'entretien quotidien assuré par la Ville et fait valoir que le nettoyage des marches de l'Opéra relève de l'État.",
+   "pourquoi": "Qui nettoie, qui entretient la place",
+   "vedette": false,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=123627"
+  },
+  {
+   "id": "129302",
+   "seance": "MARS 2016",
+   "fait": "Une communication sur le réaménagement de sept places présente la fin de la circulation circulaire de la Bastille au profit d'un axe Nord-Sud vers le bassin de l'Arsenal.",
+   "pourquoi": "Le projet qui redessine la place",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=129302"
+  },
+  {
+   "id": "147430",
+   "seance": "FEVRIER 2019",
+   "fait": "Mme Montandon reproche à la Ville, par un vœu, de ne pas avoir consulté la RATP et Île-de-France Mobilités sur l'aménagement de la place et la circulation des bus.",
+   "pourquoi": "Bus oubliés : le reproche de l'opposition",
+   "vedette": false,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=147430"
+  }
+ ],
+ "montants": [
+  {
+   "seance": "SEPTEMBRE 2009",
+   "montant": "165 000 €",
+   "objet": "Redevance d'occupation du domaine public perçue par la Ville pour le salon d'antiquités-brocante (recette, non dépense)",
+   "citation": "La redevance perçue par la Ville de Paris au titre de cette autorisation d?occupation est de 165.000 euros.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=37198"
+  },
+  {
+   "seance": "JUIN 2007",
+   "montant": "150 000 € TTC",
+   "objet": "Subvention de la Ville à l'agence Idéactif pour un spectacle musical sur le thème de l'Afrique (13 juillet 2007)",
+   "citation": "la Ville attribue une subvention de 150.000 euros TTC à l?agence Idéactif",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=72362"
+  },
+  {
+   "seance": "JUIN 2005",
+   "montant": "120 000 € TTC",
+   "objet": "Subvention de la Ville à la SARL Idéactif pour un spectacle musical (13 juillet 2005)",
+   "citation": "La dépense, d'un coût total de 120.000 euros TTC",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=83325"
+  },
+  {
+   "seance": "JUIN 2004",
+   "montant": "159 426,80 € TTC",
+   "objet": "Marché (association ADCEP) pour un spectacle musical et un bal du 13 juillet 2004",
+   "citation": "La dépense, d'un coût total de 159.426,80 euros T.T.C.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=94931"
+  },
+  {
+   "seance": "MAI 2004",
+   "montant": "1 177 404,60 € TTC",
+   "objet": "Marché (SARL Luna Production) pour le spectacle du 60e anniversaire de la Libération de Paris (25 août 2004)",
+   "citation": "La dépense, d'un coût total de 1.177.404,60 euros TTC",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=45889"
+  },
+  {
+   "seance": "JUIN 2002",
+   "montant": "194 638,83 € TTC",
+   "objet": "Marché (SA ARDISTIC) pour un spectacle musical et un bal du 13 juillet 2002",
+   "citation": "La dépense, d'un coût total de 194.638.83 euros T.T.C.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=55816"
+  },
+  {
+   "seance": "JUILLET 2003",
+   "montant": "175 005,75 € TTC",
+   "objet": "Marché (SA ARTISTIC) pour un spectacle musical et un bal du 13 juillet 2003",
+   "citation": "La dépense, d'un coût total de 175.005,75 euros T.T.C.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=70576"
+  }
+ ],
+ "bmo_extraits": [],
+ "bmo_recit": null,
+ "invest": [],
+ "marches": [
+  {
+   "numero_marche": "20171370007202",
+   "objet": "CSP4: MA SUB_AC:MISSION MOE AMENAGEMENT PLACE DE LA BASTILLE",
+   "fournisseur": "OMNIUM GENERAL D'INGENIERIE",
+   "montant_max": 561010.26,
+   "date_notification": "2017-01-23",
+   "preuve": "L'objet du marché nomme le lieu verbatim : « MISSION MOE AMENAGEMENT PLACE DE LA BASTILLE ». Il s'agit d'une mission de maîtrise d'œuvre portant sur l'aménagement de la place elle-même, et non d'un simple repère d'adresse. Le calendrier concorde avec le réaménagement débattu au Conseil de Paris : en mars 2015, en réponse à un vœu du groupe UMP sur la rénovation de la place, Mao PENINOU, adjoint, déclare « cette place va être réaménagée pour mettre en valeur son patrimoine et son paysage, apaiser la circulation automobile » ; en décembre 2017, lors du vœu du groupe LRI, Valérie MONTANDON indique que « les phases de concertation sur la place de la Bastille et de la Nation s'achèveront bientôt, le 18 et le 19 décembre prochain » (la concertation citée porte sur deux places, mais elle inclut explicitement la Bastille)."
+  },
+  {
+   "numero_marche": "20171370001077",
+   "objet": "CSP4-MS OPC AMÉNAGEMENT PLACE DE LA BASTILLE",
+   "fournisseur": "ARTELIA",
+   "montant_max": 138934.53,
+   "date_notification": "2017-07-17",
+   "preuve": "L'objet nomme le lieu verbatim : « OPC AMÉNAGEMENT PLACE DE LA BASTILLE ». Mission d'ordonnancement-pilotage-coordination du chantier d'aménagement de la place, adossée à la maîtrise d'œuvre notifiée la même année (même préfixe CSP4). L'objet porte sur le lieu, pas sur une adresse de référence."
+  },
+  {
+   "numero_marche": "20191370000727",
+   "objet": "CSP EP MS OPC CREAT.CONTINUITE PLACE DE LA BASTILLE/ARSENAL",
+   "fournisseur": "ARTELIA",
+   "montant_max": 45509.45,
+   "date_notification": "2019-05-27",
+   "preuve": "L'objet nomme le lieu verbatim : « CREAT.CONTINUITE PLACE DE LA BASTILLE/ARSENAL ». Mission OPC sur la création de la continuité entre la place et le bassin de l'Arsenal. Réserve : le même marché couvre explicitement deux sites (Bastille et Arsenal), le montant maximum de 45 509,45 € n'est donc pas imputable à la seule place — d'où une confiance « moyenne » et une note de périmètre (place-de-la-bastille_perimetre.json)."
+  },
+  {
+   "numero_marche": "20191370000119",
+   "objet": "FOURNITURE MEDAILLONS CERAMIQUES PLACE DE LA BASTILLE",
+   "fournisseur": "ETAB. PUBLIC CITE CERAMIQUE-SEVRES",
+   "montant_max": 25000.0,
+   "date_notification": "2019-01-31",
+   "preuve": "L'objet nomme le lieu verbatim : « FOURNITURE MEDAILLONS CERAMIQUES PLACE DE LA BASTILLE ». Fourniture d'un équipement destiné à être posé sur la place, notifiée en 2019 pendant le chantier de réaménagement : le lieu est la destination du marché, pas un repère d'adresse."
+  }
+ ],
+ "sources": {
+  "delibs": {
+   "name": "Débat-Délibs — Conseil de Paris",
+   "url": "https://a06-v7.apps.paris.fr/a06/"
+  },
+  "bmo": {
+   "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
+   "url": "https://gallica.bnf.fr/ark:/12148/cb343512457/date"
+  },
+  "invest": {
+   "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
+   "url": "https://opendata.paris.fr/"
+  },
+  "wiki": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ }
+}

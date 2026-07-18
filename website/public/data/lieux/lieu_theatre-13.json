@@ -1,0 +1,322 @@
+{
+ "generated_at": "2026-07-18T14:38:43.284445+00:00",
+ "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
+ "slug": "theatre-13",
+ "name": "Théâtre 13",
+ "kind_fr": "Théâtre",
+ "kind_en": "Theatre",
+ "famille": "culture",
+ "arrondissement": 13,
+ "lat": 48.8291,
+ "lon": 2.3562,
+ "photo": null,
+ "photo_credit": null,
+ "wiki": {
+  "extract": "Le Théâtre 13, historiquement situé au 103A boulevard Auguste-Blanqui dans le 13e arrondissement de Paris, est un théâtre d'arrondissement créé en 1981 et subventionné par la Mairie de Paris. Depuis novembre 2011, une deuxième salle lui a été adjointe au 30 rue du Chevaleret, toujours dans le 13e arrondissement, sous le nom de « Théâtre 13 / Bibliothèque », la salle historique étant de ce fait baptisée « Théâtre 13 / Glacière ».",
+  "url": "https://fr.wikipedia.org/wiki/Th%C3%A9%C3%A2tre_13",
+  "source": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ },
+ "stats": {
+  "n_delibs": 1006,
+  "delibs_span": [
+   2002,
+   2011
+  ],
+  "n_bmo_brut": 0,
+  "n_bmo_verifies": null,
+  "invest_total_eur": 0,
+  "invest_annees": [],
+  "lecture_mode": "titre nommant le lieu (25 trouvés)",
+  "n_lus": 22,
+  "n_lieu": 16
+ },
+ "subventions_exploitant": null,
+ "residents": [
+  {
+   "beneficiaire": "LES MILLE PRINTEMPS",
+   "montant_total": 9000,
+   "preuve": "Objet nomme le lieu verbatim : \"Aide à la diffusion pour 16 représentations du spectacle BIQUES au Théâtre 13\". Aide à un spectacle diffusé dans le lieu, pas à sa gestion."
+  },
+  {
+   "beneficiaire": "TEATRO PICARO",
+   "montant_total": 5000,
+   "preuve": "Objet nomme le lieu verbatim : \"LA FUITE d'après Luigi PIRANDELLO au Théâtre 13 à Paris.\". Diffusion d'un spectacle dans le lieu."
+  },
+  {
+   "beneficiaire": "COMPAGNIE DTM 9.4",
+   "montant_total": 5000,
+   "preuve": "Objet nomme le lieu verbatim : \"Viril(e.s) - reprise au Théâtre 13-AAP-SV22DIF2\". Aide à la diffusion (AAP-SV DIF) d'une reprise dans le lieu."
+  },
+  {
+   "beneficiaire": "COMPAGNIE EULALIE",
+   "montant_total": 5000,
+   "preuve": "Objet nomme le lieu verbatim : \"Aide à la diffusion NOS EDUCATIONS SENTIMENTALES ... THEATRE 13 PARIS\". Compagnie déjà accueillie au Théâtre 13 (délib. 2009 DAC 423, \"Le jour de l'italienne présenté au Théâtre 13\")."
+  },
+  {
+   "beneficiaire": "COMPAGNIE MESDEN",
+   "montant_total": 5000,
+   "preuve": "Objet nomme le lieu verbatim : \"Aide à la diffusion Spectacle 3 contrefaçons, Bucarest, Ibiza, Venise au Théâtre 13\". Diffusion d'un spectacle dans le lieu."
+  },
+  {
+   "beneficiaire": "LE TEMPS DES POSSIBLES",
+   "montant_total": 4000,
+   "preuve": "Objet nomme une salle du lieu verbatim : \"... de la pièce de G. Calderon au Théâtre 13 Seine\". Le Théâtre 13 Seine (rue du Chevaleret) est l'une des deux salles du Théâtre 13, confirmée par la délib. 2011 DAC 696."
+  }
+ ],
+ "kpi_montant": null,
+ "synthese_fr": "Géré par l'Association pour l'animation sportive et culturelle du Sud parisien, le Théâtre 13 — salle intégrée au centre d'animation Daviel — reçoit chaque année une subvention municipale de fonctionnement, portée de 500.000 euros en 2002 à 561.000 euros après un avenant destiné à intégrer les « scènes d'été du 13 », montant reconduit à l'identique jusqu'en 2007. En 2003, le débat pointe la situation domaniale du théâtre, présenté en séance comme occupant sans titre d'un bâtiment de la Ville et appelé à payer un loyer, l'adjoint Christophe Girard annonçant qu'une convention d'occupation est en préparation ; le Conseil autorise ensuite, en 2007 puis 2008, la signature de conventions d'occupation d'un an dont la valeur locative est estimée à 26.000 euros. La Ville complète ce soutien par des subventions d'équipement de 20.000 euros (2004, 2006, 2009). Après une critique de l'opposition sur une subvention de fonctionnement inchangée « depuis cinq ans » (2006), celle-ci est relevée, à 576.000 euros en 2009 puis 596.000 euros en 2010. En 2011, la gestion d'une nouvelle salle rue du Chevaleret (quartier Paris Rive Gauche) s'accompagne d'une subvention de 430.000 euros (50.000 de fonctionnement, 380.000 d'équipement), le théâtre devant alors gérer à titre transitoire deux salles baptisées « Théâtre 13 Jardin » et « Théâtre 13 Seine ».",
+ "moments": [
+  {
+   "id": "58004",
+   "seance": "FEVRIER 2002",
+   "fait": "Le Conseil autorise une convention de fonctionnement du Théâtre 13, dotée de 500 000 euros pour 2002.",
+   "pourquoi": "le soutien municipal au fonctionnement du théâtre",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=58004"
+  },
+  {
+   "id": "29656",
+   "seance": "SEPTEMBRE 2002",
+   "fait": "Un avenant porte la subvention 2002 de 500 000 à 561 000 euros pour intégrer les « scènes d'été du 13 ».",
+   "pourquoi": "un complément pour les scènes d'été",
+   "vedette": false,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=29656"
+  },
+  {
+   "id": "18544",
+   "seance": "AVRIL 2003",
+   "fait": "Le Conseil vote la subvention 2003 (561 000 euros) ; le débat présente le théâtre comme occupant sans titre du centre Daviel, une convention d'occupation étant annoncée en préparation et l'association appelée à payer un loyer.",
+   "pourquoi": "la question du statut d'occupant du théâtre dans un bâtiment municipal",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=18544"
+  },
+  {
+   "id": "46808",
+   "seance": "SEPTEMBRE 2004",
+   "fait": "Une subvention d'équipement de 20 000 euros participe au financement de l'acquisition de matériels scéniques, lumière et son.",
+   "pourquoi": "financer la scène, la lumière et le son",
+   "vedette": false,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=46808"
+  },
+  {
+   "id": "10561",
+   "seance": "MAI 2006",
+   "fait": "Au vote des subventions 2006, l'opposition regrette une subvention de fonctionnement identique depuis cinq ans et réclame le rapport Faivre d'Arcier sur les théâtres d'arrondissement.",
+   "pourquoi": "l'opposition dénonce une subvention gelée",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=10561"
+  },
+  {
+   "id": "53115",
+   "seance": "OCTOBRE 2007",
+   "fait": "Le Conseil autorise une convention d'occupation d'un an du Théâtre 13, valeur locative estimée à 26 000 euros, chauffage et électricité restant à la charge de la DJS.",
+   "pourquoi": "un bail d'un an, chauffage payé par la Ville",
+   "vedette": false,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=53115"
+  },
+  {
+   "id": "37246",
+   "seance": "SEPTEMBRE 2009",
+   "fait": "La subvention de fonctionnement 2009 est portée à 576 000 euros, complétée d'une subvention d'équipement de 20 000 euros.",
+   "pourquoi": "la subvention de fonctionnement portée à 576.000 euros, plus 20.000 d'équipement",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=37246"
+  },
+  {
+   "id": "102037",
+   "seance": "SEPTEMBRE 2011",
+   "fait": "Le Conseil accorde 430 000 euros (50 000 de fonctionnement, 380 000 d'équipement) pour la gestion et l'équipement d'une nouvelle salle rue du Chevaleret, le théâtre gérant transitoirement deux salles.",
+   "pourquoi": "une deuxième salle rue du Chevaleret",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=102037"
+  }
+ ],
+ "montants": [
+  {
+   "seance": "FEVRIER 2002",
+   "montant": "500.000 euros",
+   "objet": "subvention de fonctionnement 2002",
+   "citation": "La dépense correspondante, soit 500.000 euros sera imputée sur le budget de fonctionnement de la Ville de Paris de 2002",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=58004"
+  },
+  {
+   "seance": "SEPTEMBRE 2002",
+   "montant": "561.000 euros",
+   "objet": "subvention de fonctionnement 2002 relevée par avenant",
+   "citation": "est porté de 500.000 euros à 561.000 euros afin de prendre en compte dans la programmation du théâtre la manifestation \"scènes d'été du 13\"",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=29656"
+  },
+  {
+   "seance": "SEPTEMBRE 2002",
+   "montant": "61.000 euros",
+   "objet": "complément de subvention (dépense de l'avenant)",
+   "citation": "La dépense correspondante, soit 61.000 euros sera imputée sur le budget de fonctionnement de la Ville de Paris de 2002",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=29656"
+  },
+  {
+   "seance": "SEPTEMBRE 2002",
+   "montant": "61.000 euros",
+   "objet": "subvention complémentaire 2002 (avenant)",
+   "citation": "qui gère le \"Théâtre 13\", situé 103 A, boulevard Auguste-Blanqui, dans le 13e, pour un montant de 61.000 euros",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=5989"
+  },
+  {
+   "seance": "AVRIL 2003",
+   "montant": "561.000 euros",
+   "objet": "subvention de fonctionnement 2003",
+   "citation": "Une subvention de 561.000 euros est attribuée à l'Association pour l'animation sportive et culturelle du sud parisien, 24, rue Daviel (13e)",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=89657"
+  },
+  {
+   "seance": "AVRIL 2003",
+   "montant": "561.000 euros",
+   "objet": "subvention de fonctionnement 2003 (reconduit 2002)",
+   "citation": "qui gère le Théâtre 13 pour un montant de 561.000 euros",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=18544"
+  },
+  {
+   "seance": "AVRIL 2003",
+   "montant": "entre 15.000 et 20.000 euros",
+   "objet": "loyer futur estimé, évoqué par Mme Forette",
+   "citation": "l'association qui gère ce théâtre doit payer un loyer à la Ville de Paris qui se montera probablement entre 15.000 et 20.000 euros",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=18544"
+  },
+  {
+   "seance": "AVRIL 2004",
+   "montant": "561.000 euros",
+   "objet": "subvention de fonctionnement 2004",
+   "citation": "Une subvention de 561.000 euros est attribuée à l'Association pour l'animation sportive et culturelle du Sud parisien, 24, rue Daviel (13e)",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=52018"
+  },
+  {
+   "seance": "SEPTEMBRE 2004",
+   "montant": "20.000 euros",
+   "objet": "subvention d'équipement 2004 (matériels scéniques, lumière et son)",
+   "citation": "20.000 euros est attribuée à l'association A.A.S.C.S.P. qui gère le Théâtre 13, situé 103A, avenue Auguste Blanqui - 75013 Paris, pour participer au financement de l'acquisition de matériels scéniques, lumière et son",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=46808"
+  },
+  {
+   "seance": "MARS 2005",
+   "montant": "561.000 euros",
+   "objet": "subvention de fonctionnement 2005",
+   "citation": "La dépense correspondante, soit 561.000 euros, sera imputée sur le budget de fonctionnement de la Ville de Paris de 2005",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=26512"
+  },
+  {
+   "seance": "MAI 2006",
+   "montant": "561.000 euros",
+   "objet": "subvention de fonctionnement 2006",
+   "citation": "561.000 euros sur la rubrique 33, nature 6574, ligne P003 ?Provision pour subventions de fonctionnement au titre de la culture?",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=89122"
+  },
+  {
+   "seance": "MAI 2006",
+   "montant": "20.000 euros",
+   "objet": "subvention d'équipement 2006",
+   "citation": "20.000 euros sur la rubrique 33, nature 2042, ligne E011, n° d?individualisation 06 V 00458 DAC",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=89122"
+  },
+  {
+   "seance": "MAI 2006",
+   "montant": "561.000 euros",
+   "objet": "subvention de fonctionnement 2006",
+   "citation": "une convention relative à l?attribution d?une subvention de fonctionnement de 561.000 euros",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=10561"
+  },
+  {
+   "seance": "MAI 2006",
+   "montant": "20.000 euros",
+   "objet": "subvention d'équipement 2006",
+   "citation": "une convention relative à une subvention d?équipement de 20.000 euros",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=10561"
+  },
+  {
+   "seance": "MARS 2007",
+   "montant": "561.000 euros",
+   "objet": "subvention de fonctionnement 2007",
+   "citation": "La dépense correspondante soit 561.000 euros sera imputée sur le budget de fonctionnement de la Ville de Paris de 2007",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=31343"
+  },
+  {
+   "seance": "OCTOBRE 2007",
+   "montant": "26.000 euros",
+   "objet": "valeur locative estimée du Théâtre 13 (convention d'occupation d'un an)",
+   "citation": "relative à l?occupation du Théâtre 13 situé 103A, boulevard Auguste-Blanqui (13e). La valeur locative réelle estimée par la direction de l?urbanisme qui devra être valorisée dans ses comptes par l?association, est de : 26.000 euros",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=53115"
+  },
+  {
+   "seance": "SEPTEMBRE 2009",
+   "montant": "576.000 euros",
+   "objet": "subvention de fonctionnement 2009 (portée de 280.500 euros)",
+   "citation": "au titre de l?année 2009 est portée de 280.500 euros à 576.000 euros, afin de soutenir les activités du Théâtre 13",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=37246"
+  },
+  {
+   "seance": "SEPTEMBRE 2009",
+   "montant": "20.000 euros",
+   "objet": "subvention d'équipement 2009",
+   "citation": "20.000 euros sur la rubrique 33, nature 2042, ligne E011, provision pour subventions d?équipement au titre de la culture",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=37246"
+  },
+  {
+   "seance": "SEPTEMBRE 2010",
+   "montant": "596.000 euros",
+   "objet": "subvention de fonctionnement 2010 (portée de 288.000 euros)",
+   "citation": "au titre de l?année 2010, est portée de 288.000 euros à 596.000 euros, afin de soutenir les activités du Théâtre 13",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=39542"
+  },
+  {
+   "seance": "NOVEMBRE 2008",
+   "montant": "26.000 euros",
+   "objet": "valeur locative estimée du Théâtre 13 (convention d'occupation d'un an)",
+   "citation": "La valeur locative réelle estimée par la direction de l?urbanisme qui devra être valorisée dans ses comptes par l?association, est de 26.000 euros",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=61769"
+  },
+  {
+   "seance": "SEPTEMBRE 2011",
+   "montant": "430.000 euros",
+   "objet": "subvention globale 2011 (DAC 696)",
+   "citation": "Nous examinons le projet de délibération DAC 696 accordant une subvention de 430.000 euros, avenant et convention avec l'association \"A.A.S.C.S.P./Théâtre 13\"",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=102037"
+  },
+  {
+   "seance": "SEPTEMBRE 2011",
+   "montant": "50.000 euros",
+   "objet": "subvention de fonctionnement complémentaire (gestion de la nouvelle salle)",
+   "citation": "attribuer au \"Théâtre 13\" une subvention de fonctionnement complémentaire de 50.000 euros pour l'année 2011 correspondant à la gestion de la nouvelle salle",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=102037"
+  },
+  {
+   "seance": "SEPTEMBRE 2011",
+   "montant": "380.000 euros",
+   "objet": "subvention d'équipement du nouveau théâtre",
+   "citation": "une subvention d'équipement de 380.000 euros, permettant l'équipement du nouveau théâtre",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=102037"
+  }
+ ],
+ "bmo_extraits": [],
+ "bmo_recit": null,
+ "invest": [],
+ "marches": [],
+ "sources": {
+  "delibs": {
+   "name": "Débat-Délibs — Conseil de Paris",
+   "url": "https://a06-v7.apps.paris.fr/a06/"
+  },
+  "bmo": {
+   "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
+   "url": "https://gallica.bnf.fr/ark:/12148/cb343512457/date"
+  },
+  "invest": {
+   "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
+   "url": "https://opendata.paris.fr/"
+  },
+  "wiki": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ }
+}

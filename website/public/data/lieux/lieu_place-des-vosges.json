@@ -1,0 +1,261 @@
+{
+ "generated_at": "2026-07-18T14:38:43.284445+00:00",
+ "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
+ "slug": "place-des-vosges",
+ "name": "Place des Vosges",
+ "kind_fr": "Place",
+ "kind_en": "Square",
+ "famille": "urbain",
+ "arrondissement": 4,
+ "lat": 48.85565,
+ "lon": 2.36555,
+ "photo": "/img/lieux/place-des-vosges.jpg",
+ "photo_credit": {
+  "licence": "CC BY-SA 4.0",
+  "auteur": "Mbzt",
+  "url": "https://commons.wikimedia.org/wiki/File:F0723_Paris_IV_place_Vosges_statue_Louis_XIII_rwk.jpg",
+  "source": "Wikimedia Commons"
+ },
+ "wiki": {
+  "extract": "La place des Vosges, anciennement place Royale, car initialement dédiée au roi Henri IV et finalement, après l'assassinat du roi par François Ravaillac, dédiée à son fils Louis XIII, est une place de Paris dans le quartier du Marais, faisant partie des 3e et 4e arrondissements.",
+  "url": "https://fr.wikipedia.org/wiki/Place_des_Vosges",
+  "source": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ },
+ "stats": {
+  "n_delibs": 1106,
+  "delibs_span": [
+   1996,
+   2025
+  ],
+  "n_bmo_brut": 0,
+  "n_bmo_verifies": null,
+  "invest_total_eur": 894884.96,
+  "invest_annees": [
+   "2022",
+   "2024"
+  ],
+  "lecture_mode": "titre nommant le lieu (24 trouvés)",
+  "n_lus": 23,
+  "n_lieu": 23
+ },
+ "subventions_exploitant": null,
+ "residents": [],
+ "kpi_montant": null,
+ "synthese_fr": "Au Conseil de Paris, la place des Vosges revient d'abord pour l'entretien de son patrimoine, adresse par adresse : des subventions dont le principe est approuve pour restaurer les facades et couvertures des immeubles des 15 et 20 (1998, 2001), l'eclairage des fontaines du square Louis XIII et des travaux au lycee Theophile-Gautier et au Musee Victor-Hugo (2001-2002). A partir de 2009, l'assemblee se saisit d'un hotel particulier du 1 / 1 bis, vacant depuis 1965 et occupe par le collectif \"Jeudi Noir\" : elle adopte des voeux de soutien, demande une mediation, puis, apres l'expulsion de 2010, reclame le relogement des occupants. En 2016, un voeu demande d'appliquer la regle de 30 % de logements sociaux a ce meme hotel Coulanges, que Mme Simonnet dit rachete par Xavier Niel et Delphine Arnault. Le debat se deplace ensuite vers l'hotel de Fourcy (8) : designation d'un laureat \"Reinventer Paris\" en 2019, puis en 2025 deux deliberations portant un bail emphyteotique a CDC Habitat social et un programme de 17 logements sociaux (subvention de 2 300 101 euros), vivement debattues en seance.",
+ "moments": [
+  {
+   "id": "84921",
+   "seance": "JANVIER 2001",
+   "fait": "Le Conseil approuve le principe des travaux d'eclairage des fontaines du square Louis XIII et autorise le Maire a signer le marche.",
+   "pourquoi": "Eclairer les fontaines du square Louis XIII",
+   "vedette": false,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=84921"
+  },
+  {
+   "id": "28786",
+   "seance": "JUIN 2001",
+   "fait": "Le Conseil approuve le principe d'une subvention de 900 000 F et autorise le Maire a signer une convention pour restaurer la facade classee du 20.",
+   "pourquoi": "La Ville subventionne une facade classee",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=28786"
+  },
+  {
+   "id": "44371",
+   "seance": "JUIN 2006",
+   "fait": "Le Conseil attribue la denomination \"synagogue Charles Liche\" a la synagogue du 14, place des Vosges.",
+   "pourquoi": "Une synagogue nommee en hommage a un rabbin",
+   "vedette": false,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=44371"
+  },
+  {
+   "id": "82165",
+   "seance": "NOVEMBRE 2009",
+   "fait": "Le Conseil exprime son soutien a l'occupation, par \"Jeudi Noir\", de l'hotel du 1, place des Vosges, vacant depuis 1965.",
+   "pourquoi": "Le Conseil soutient l'occupation d'un hotel vide",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=82165"
+  },
+  {
+   "id": "79290",
+   "seance": "FEVRIER 2010",
+   "fait": "Le Conseil emet le voeu que la Prefecture ne procede a aucune expulsion sans relogement des occupants du 1 bis.",
+   "pourquoi": "Pas d'expulsion sans relogement des occupants",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=79290"
+  },
+  {
+   "id": "132298",
+   "seance": "SEPTEMBRE 2016",
+   "fait": "Mme Simonnet demande par voeu que la regle de 30 % de logements sociaux s'applique au 1 bis (hotel Coulanges) et la levee des poursuites contre les anciens occupants.",
+   "pourquoi": "Du logement social exige dans l'hotel Coulanges",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=132298"
+  },
+  {
+   "id": "152764",
+   "seance": "NOVEMBRE 2019",
+   "fait": "Le Conseil designe le laureat \"Reinventer Paris\" pour l'hotel de Fourcy (8) et autorise le declassement par anticipation et la signature du bail a construction.",
+   "pourquoi": "Un laureat pour reinventer l'hotel de Fourcy",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=152764"
+  },
+  {
+   "id": "184653",
+   "seance": "NOVEMBRE 2025",
+   "fait": "Deux deliberations prevoient la location de l'hotel de Fourcy (8) a CDC Habitat social et un programme de 17 logements sociaux, avec une subvention de 2 300 101 euros ; le debat est vif.",
+   "pourquoi": "17 logements sociaux, debat tres vif",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=184653"
+  }
+ ],
+ "montants": [
+  {
+   "seance": "NOVEMBRE 2025",
+   "montant": "2.300.101 euros",
+   "objet": "Subvention au programme de 17 logements sociaux du 8 (DLH 361)",
+   "citation": "par CDC Habitat social - Subvention (2.300.101 euros).",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=184653"
+  },
+  {
+   "seance": "SEPTEMBRE 2016",
+   "montant": "31,5 millions d'euros",
+   "objet": "Prix de rachat de l'hotel Coulanges selon Mme Simonnet",
+   "citation": "a été récemment racheté par Xavier NIEL, le patron de \"Free\", et Delphine ARNAULT, la D.G.A. de Louis Vuitton et fille de Bernard ARNAULT, pour un montant de 31,5 millions d'euros.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=132298"
+  },
+  {
+   "seance": "SEPTEMBRE 2016",
+   "montant": "3.400 euros par mois",
+   "objet": "Indemnites reclamees aux anciens occupants selon Mme Simonnet",
+   "citation": "condamnés à payer 3.400 euros d'indemnité par mois occupé, soit environ 10.000 euros.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=132298"
+  },
+  {
+   "seance": "FEVRIER 2010",
+   "montant": "69.663 euros par mois",
+   "objet": "Indemnite d'occupation fixee par l'ordonnance de refere du 18 janvier 2010",
+   "citation": "les condamne à verser une indemnité d?occupation de 69.663 euros par mois",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=79290"
+  },
+  {
+   "seance": "NOVEMBRE 2010",
+   "montant": "25.000 euros par mois",
+   "objet": "Indemnite mensuelle d'occupation fixee par le tribunal en janvier 2010",
+   "citation": "le collectif devait s?acquitter de 25.000 euros mensuels d?indemnités",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=86043"
+  },
+  {
+   "seance": "OCTOBRE 2010",
+   "montant": "25.000 euros par mois",
+   "objet": "Indemnite mensuelle d'occupation fixee par le tribunal le 18 janvier 2010",
+   "citation": "le collectif devait s?acquitter de 25.000 euros mensuels d?indemnités",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=23645"
+  },
+  {
+   "seance": "OCTOBRE 2010",
+   "montant": "25.000 euros par mois",
+   "objet": "Indemnite mensuelle d'occupation fixee par le tribunal le 18 janvier 2010",
+   "citation": "le collectif devait s?acquitter de 25.000 euros mensuels d?indemnités",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=86775"
+  },
+  {
+   "seance": "FEVRIER 2010",
+   "montant": "25.000 euros par mois",
+   "objet": "Indemnite mensuelle d'occupation fixee par le tribunal le 18 janvier 2010",
+   "citation": "le collectif devrait s'acquitter de 25.000 euros mensuels d'indemnités",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=4013"
+  },
+  {
+   "seance": "FEVRIER 2010",
+   "montant": "25.000 euros par mois",
+   "objet": "Indemnite mensuelle d'occupation fixee par le tribunal le 18 janvier 2010",
+   "citation": "le collectif devrait s?acquitter de 25.000 euros mensuels d?indemnités",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=79302"
+  },
+  {
+   "seance": "JUIN 1996",
+   "montant": "2.000 F",
+   "objet": "Subvention a l'OCCE de la maternelle du 12 pour une classe de decouverte",
+   "citation": "Une subvention de 2.000 F est attribuée à l'O.C.C.E. - coopérative scolaire de l'école maternelle, 12, place des Vosges (4e)",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=73094"
+  },
+  {
+   "seance": "JUIN 2001",
+   "montant": "900.000 F",
+   "objet": "Subvention a la restauration de la facade et des couvertures du 20",
+   "citation": "une convention ayant pour but d'octroyer une subvention, pour la réalisation des travaux mentionnés à l'article ci-dessus, pour un montant de 900.000 F.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=28786"
+  },
+  {
+   "seance": "DECEMBRE 1998",
+   "montant": "1.350.000 F",
+   "objet": "Subvention a la restauration de la facade et des couvertures du 15 (repartie 1998-1999)",
+   "citation": "ayant pour but d'octroyer une subvention, pour la réalisation des travaux mentionnés à l'article ci-dessus, pour un montant de 1.350.000 F.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=57488"
+  }
+ ],
+ "bmo_extraits": [],
+ "bmo_recit": null,
+ "invest": [
+  {
+   "annee": 2022,
+   "montant_eur": 323650.0,
+   "nom_projet": "Square Louis XIII - Aménagement des sanitaires PMR, Rénovation des sols",
+   "preuve": "Le square Louis XIII est le jardin central de la place, pas un lieu voisin : la délibération de JANVIER 2001 (doc 84921) le situe verbatim « travaux d'éclairage des fontaines du square Louis XIII, place des Vosges (4e) ». Le projet 2022 (sanitaires PMR, rénovation des sols) porte donc sur l'enceinte même de la place ; distance_m 58.",
+   "id": "2022_00_9_006"
+  },
+  {
+   "annee": 2024,
+   "montant_eur": 286844.68,
+   "nom_projet": "Place des Vosges",
+   "preuve": "Le nom du projet est exactement le nom du lieu : « Place des Vosges » (2024, 286 844,68 €), distance_m 58. Aucun autre lieu n'est nommé.",
+   "id": "2024_00_9_008"
+  },
+  {
+   "annee": 2024,
+   "montant_eur": 284390.28,
+   "nom_projet": "Lycée Municipal Theophile Gautier - Annexe place des Vosges",
+   "preuve": "Le nom du projet nomme le lieu : « Lycée Municipal Theophile Gautier - Annexe place des Vosges ». Les adresses connues du lycée sont toutes sur la place : délibération MAI 2001 (doc 89820) « au lycée d'enseignement commercial Théophile-Gautier, 6 bis, place des Vosges (4e) » et NOVEMBRE 2025 (doc 184653) « lycée professionnel Théophile Gautier, installé au 6, place des Vosges ». Le numéro du bâtiment de l'annexe visée en 2024 n'est pas établi par les sources disponibles. Distance_m 58.",
+   "id": "2024_00_9_024"
+  }
+ ],
+ "marches": [
+  {
+   "numero_marche": "20212021T03259",
+   "objet": "MODERNISAT°DES MENUISERIES EXTERIEURS EM 12 PLACE DES VOSGES",
+   "fournisseur": "ART ET TECHNIQUE DE LA MENUISERIE",
+   "montant_max": 218560.0,
+   "date_notification": "2021-05-31",
+   "preuve": "L'objet porte des travaux sur un bâtiment de la place, et non sur un repère d'adresse : « MODERNISAT°DES MENUISERIES EXTERIEURS EM 12 PLACE DES VOSGES ». « EM 12 place des Vosges » = école maternelle du 12, place des Vosges, dont l'existence est confirmée verbatim par les délibérations JUIN 1996 (doc 73094) « école maternelle, 12, place des Vosges (4e) » et MAI 2001 (doc 89755) « mise en conformité de canalisations à l'école maternelle, 12, place des Vosges ». SIRET fournisseur 47777174500023."
+  },
+  {
+   "numero_marche": "20222022T02115",
+   "objet": "MODERNISATION MENUISERIES EXT. EM 12 PLACE DES VOSGES 4E",
+   "fournisseur": "ART ET TECHNIQUE DE LA MENUISERIE",
+   "montant_max": 163500.0,
+   "date_notification": "2022-03-30",
+   "preuve": "L'objet nomme le bâtiment et l'arrondissement : « MODERNISATION MENUISERIES EXT. EM 12 PLACE DES VOSGES 4E ». « EM 12 place des Vosges » = école maternelle du 12, place des Vosges (4e), confirmée par la délibération MAI 2001 (doc 89755) « à l'école maternelle, 12, place des Vosges ». Second marché de menuiseries sur le même bâtiment, même fournisseur (SIRET 47777174500023), un an après le marché 20212021T03259 ; les sources ne permettent pas de dire s'il s'agit du même chantier ou d'une tranche distincte."
+  }
+ ],
+ "sources": {
+  "delibs": {
+   "name": "Débat-Délibs — Conseil de Paris",
+   "url": "https://a06-v7.apps.paris.fr/a06/"
+  },
+  "bmo": {
+   "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
+   "url": "https://gallica.bnf.fr/ark:/12148/cb343512457/date"
+  },
+  "invest": {
+   "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
+   "url": "https://opendata.paris.fr/"
+  },
+  "wiki": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ }
+}

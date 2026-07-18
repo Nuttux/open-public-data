@@ -1,0 +1,175 @@
+{
+ "generated_at": "2026-07-18T14:38:43.284445+00:00",
+ "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
+ "slug": "place-de-la-republique",
+ "name": "Place de la République",
+ "kind_fr": "Place",
+ "kind_en": "Square",
+ "famille": "urbain",
+ "arrondissement": 3,
+ "lat": 48.8676,
+ "lon": 2.3637,
+ "photo": "/img/lieux/place-de-la-republique.jpg",
+ "photo_credit": {
+  "licence": null,
+  "auteur": null,
+  "url": "https://fr.wikipedia.org/wiki/Place_de_la_R%C3%A9publique_(Paris)",
+  "source": "Wikipédia"
+ },
+ "wiki": {
+  "extract": "La place de la République est une place de 3,4 ha située à la limite des 3e, 10e et 11e arrondissements de Paris.",
+  "url": "https://fr.wikipedia.org/wiki/Place_de_la_R%C3%A9publique_(Paris)",
+  "source": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ },
+ "stats": {
+  "n_delibs": 1591,
+  "delibs_span": [
+   2003,
+   2025
+  ],
+  "n_bmo_brut": 2000,
+  "n_bmo_verifies": null,
+  "invest_total_eur": 37864.05,
+  "invest_annees": [
+   "2023"
+  ],
+  "lecture_mode": "titre nommant le lieu (41 trouvés)",
+  "n_lus": 41,
+  "n_lieu": 32
+ },
+ "subventions_exploitant": null,
+ "residents": [],
+ "kpi_montant": null,
+ "synthese_fr": "En 2003, le Conseil de Paris autorise la restauration du monument à la gloire de la République, au centre de la place, quand des élus demandent déjà d'en écarter la circulation automobile. À partir de 2009, la Ville engage le réaménagement : désignation d'un jury, concertation présentée comme large, puis attribution en 2010 du marché de maîtrise d'œuvre à l'équipe TVK, autour d'un projet qui doit transformer le rond-point de la statue en espace piétonnier ; un coût de 17,5 millions d'euros, avancé dans la délibération, est contesté en séance par l'opposition. Inaugurée en 2013, la place se dote d'un café-pavillon destiné à l'animer et voit sa charge symbolique renforcée par les grands rassemblements qui suivent les attentats de janvier 2015. Elle devient ensuite le théâtre de tensions — mouvement Nuit Debout en 2016, évacuation d'un campement de migrants en 2020 — et fait l'objet de demandes répétées, jusqu'en 2025, sur son entretien, son éclairage et sa végétalisation.",
+ "moments": [
+  {
+   "id": "3359",
+   "seance": "SEPTEMBRE 2003",
+   "fait": "Le Conseil autorise la restauration du monument à la gloire de la République, au centre de la place, et adopte deux vœux demandant d'étudier sa fermeture à la circulation automobile.",
+   "pourquoi": "Restaurer Marianne, premier appel à écarter les voitures",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=3359"
+  },
+  {
+   "id": "13258",
+   "seance": "AVRIL 2004",
+   "fait": "Un jardin de la place reçoit le nom de square André Tollet, en hommage au président du Comité parisien de la Libération.",
+   "pourquoi": "La Résistance entre dans le sol de la place",
+   "vedette": false,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=13258"
+  },
+  {
+   "id": "5678",
+   "seance": "JUIN 2009",
+   "fait": "Mme Annick LEPETIT annonce l'installation du premier jury et le choix de cinq équipes d'architectes, parmi 72 candidatures, pour esquisser le réaménagement.",
+   "pourquoi": "Le concours d'architectes s'ouvre, 72 candidatures reçues",
+   "vedette": false,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=5678"
+  },
+  {
+   "id": "8614",
+   "seance": "MARS 2010",
+   "fait": "Le Conseil autorise la signature du marché de maîtrise d'œuvre avec l'équipe TVK ; le projet doit transformer le rond-point autour de la statue en espace piétonnier.",
+   "pourquoi": "TVK va refondre l'une des plus grandes places d'Europe",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=8614"
+  },
+  {
+   "id": "12990",
+   "seance": "JUIN 2010",
+   "fait": "En approuvant les objectifs et la concertation, le Conseil affronte l'opposition, qui conteste le coût de 17,5 millions d'euros avancé en séance et réclame une expérimentation préalable.",
+   "pourquoi": "L'opposition conteste les 17,5 millions d'euros",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=12990"
+  },
+  {
+   "id": "111210",
+   "seance": "FEVRIER 2013",
+   "fait": "Le Conseil confie au groupe S.O.S. le café-pavillon « Monde et Médias », qui doit ouvrir au printemps 2013 avec la livraison de la place.",
+   "pourquoi": "Animer la place neuve pour éviter un « lieu mort »",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=111210"
+  },
+  {
+   "id": "129889",
+   "seance": "MAI 2016",
+   "fait": "Face au mouvement Nuit Debout installé depuis le 31 mars, plusieurs vœux cherchent à concilier droit de manifester et nuisances signalées par les riverains.",
+   "pourquoi": "Nuit Debout : manifester sans confisquer la place",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=129889"
+  },
+  {
+   "id": "157211",
+   "seance": "DECEMBRE 2020",
+   "fait": "Plusieurs vœux dénoncent l'évacuation, le 23 novembre 2020, d'un campement de migrants installé place de la République et demandent une mise à l'abri systématique.",
+   "pourquoi": "Un campement de migrants évacué sous tension",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=157211"
+  }
+ ],
+ "montants": [
+  {
+   "seance": "SEPTEMBRE 2003",
+   "montant": "450 000 euros",
+   "objet": "marché de restauration du monument à la gloire de la République, montant avancé en séance par Mme Charlotte NENNER",
+   "citation": "Considérant qu'il s'agit d'un marché important pour un montant total de 450.000 euros",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=3359"
+  },
+  {
+   "seance": "SEPTEMBRE 2003",
+   "montant": "454 565 euros",
+   "objet": "coût total estimé (2003-2004) du marché de restauration du monument à la gloire de la République",
+   "citation": "dont le montant total pour 2003 et 2004 est estimé à 454.565 euros",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=48063"
+  },
+  {
+   "seance": "JUIN 2010",
+   "montant": "17,5 millions d'euros",
+   "objet": "coût de l'opération de réaménagement, chiffre cité et contesté en séance par Mme Delphine BURKLI (opposition)",
+   "citation": "je m'interroge sur le montant très élevé, sans vraiment comprendre ce que représente la somme de 17,5 millions d'euros pour le contribuable parisien",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=12990"
+  }
+ ],
+ "bmo_extraits": [],
+ "bmo_recit": null,
+ "invest": [
+  {
+   "annee": 2023,
+   "montant_eur": 37864.05,
+   "nom_projet": "Place de la république - Réfection des trottoirs",
+   "preuve": "Le nom du projet nomme explicitement CE lieu (verbatim : « Place de la république - Réfection des trottoirs ») et porte sur les trottoirs de la place elle-même, qui font partie de son emprise : les délibérations traitent « l'élargissement des trottoirs autour de la place » comme un élément de la place (2009 DVD 178). Distance de 144 m au point de référence, compatible avec un point situé sur cette très grande place (3e, 10e et 11e arrondissements). Limite : cette citation de 2009 documente le réaménagement de 2009-2013, pas l'opération de 2023 ; le rattachement repose sur le nom du projet seul.",
+   "id": "2023_00_9_026"
+  }
+ ],
+ "marches": [
+  {
+   "numero_marche": "20141300010870",
+   "objet": "CSP2-GESTION  ANIMATION LUDOKIOSQUE PLACE DE LA REPUBLIQUE",
+   "fournisseur": "ASS LUDOTHEQUES ILE DE FRANCE",
+   "montant_max": 600000.0,
+   "date_notification": "2014-03-27",
+   "preuve": "L'objet du marché nomme le lieu et porte sur la gestion et l'animation d'un équipement situé sur la place (verbatim : « CSP2-GESTION  ANIMATION LUDOKIOSQUE PLACE DE LA REPUBLIQUE ») : prestation qui s'y déroule, et non simple repère d'adresse ni marché-cadre de toute la Ville. SIRET du titulaire : 34852016400040. Réserves : aucune source consultée ne mentionne le ludokiosque ni son exploitation — les délibérations n'évoquent des « kiosques » que de façon générique dans le marché de maîtrise d'œuvre de la place (2010 DVD 112, autorisation de « déposer la demande de permis de construire pour la réalisation des kiosques »), sans qu'on puisse établir qu'il s'agit de celui-ci ; le rattachement repose sur l'objet seul. Le montant est un maximum contractuel, pas une dépense constatée."
+  }
+ ],
+ "sources": {
+  "delibs": {
+   "name": "Débat-Délibs — Conseil de Paris",
+   "url": "https://a06-v7.apps.paris.fr/a06/"
+  },
+  "bmo": {
+   "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
+   "url": "https://gallica.bnf.fr/ark:/12148/cb343512457/date"
+  },
+  "invest": {
+   "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
+   "url": "https://opendata.paris.fr/"
+  },
+  "wiki": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ }
+}

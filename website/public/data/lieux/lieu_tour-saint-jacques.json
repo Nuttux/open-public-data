@@ -1,0 +1,134 @@
+{
+ "generated_at": "2026-07-18T14:38:43.284445+00:00",
+ "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
+ "slug": "tour-saint-jacques",
+ "name": "Tour Saint-Jacques",
+ "kind_fr": "Monument",
+ "kind_en": "Monument",
+ "famille": "urbain",
+ "arrondissement": 4,
+ "lat": 48.8579,
+ "lon": 2.3489,
+ "photo": "/img/lieux/tour-saint-jacques.jpg",
+ "photo_credit": {
+  "licence": null,
+  "auteur": null,
+  "url": "https://fr.wikipedia.org/wiki/Tour_Saint-Jacques",
+  "source": "Wikipédia"
+ },
+ "wiki": {
+  "extract": "La tour Saint-Jacques est l'ancien clocher, construit entre 1509 et 1523, de Saint-Jacques-de-la-Boucherie, église dont ce clocher-tour est l'unique vestige. Aujourd'hui, elle se dresse au milieu du square qui porte son nom, dans le 4e arrondissement de Paris.",
+  "url": "https://fr.wikipedia.org/wiki/Tour_Saint-Jacques",
+  "source": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ },
+ "stats": {
+  "n_delibs": 1499,
+  "delibs_span": [
+   1995,
+   2023
+  ],
+  "n_bmo_brut": 2000,
+  "n_bmo_verifies": 13,
+  "invest_total_eur": 0,
+  "invest_annees": [],
+  "lecture_mode": "titre nommant le lieu (7 trouvés)",
+  "n_lus": 7,
+  "n_lieu": 7
+ },
+ "subventions_exploitant": null,
+ "residents": [],
+ "kpi_montant": null,
+ "synthese_fr": "En octobre 1995, le Conseil de Paris approuve le principe du réaménagement du square de la Tour Saint-Jacques, prévoit des marchés en six lots séparés et autorise le Maire à signer avec la R.A.T.P. une convention fixant les conditions de la participation de celle-ci à la remise en état du square ; la délibération n'en précise ni la nature ni le montant, renvoyés au texte de la convention. Les décisions portant sur le monument s'échelonnent ensuite : approbation du principe d'un échafaudage sur la tour en octobre 1999, puis, en mars 2004, approbation du principe de la restauration des façades et autorisation donnée au Maire de signer le marché de maîtrise d'œuvre avec Jean-François LAGNEAU et Jacques DESMARQUEST. Les marchés de travaux passent ensuite lot par lot devant le Conseil : en février 2005, le lot n° 1 « pierre de taille ; sculpture ; restauration de sculpture » part en appel d'offres ouvert européen avec une seule tranche ferme sur trois ; en juillet 2008, le Conseil autorise le Maire à signer le lot n° 5 « espaces verts », correspondant à la remise en état du square, pour 397.976,42 euros TTC avec la société CERCIS. En juin 2014, le Conseil examine une convention d'occupation temporaire du domaine public ; Christophe GIRARD, maire du 4e, y apporte son soutien et rattache l'ouverture du site à la visite aux « lourds travaux de restauration de la statuaire ». En juillet 2023, Maud GATEL présente un vœu demandant que la Ville renonce à retirer les grilles du square : Christophe NAJDOVSKI, adjoint, défend l'étude de ce retrait au nom de la végétalisation et de l'ouverture des espaces verts, tandis qu'Ariel WEIL, maire de Paris Centre, juge que « l'urgence n'est certainement pas au retrait des grilles » et situe la priorité ailleurs, affirmant que ces grilles avaient été ôtées en 1969 et qu'elles ont, croit-il, été remises en 1995.",
+ "moments": [
+  {
+   "id": "1097",
+   "seance": "OCTOBRE 1995",
+   "fait": "Le principe du réaménagement du square est approuvé, les travaux prévus en six lots séparés, et le Maire autorisé à signer avec la R.A.T.P. une convention fixant les conditions de la participation de celle-ci à la remise en état du square.",
+   "pourquoi": "La R.A.T.P. doit participer à la remise en état du square ; la délibération renvoie les conditions à une convention jointe et ne dit ni la nature ni le montant de cet apport.",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=1097"
+  },
+  {
+   "id": "42556",
+   "seance": "OCTOBRE 1999",
+   "fait": "Le principe de la fourniture et de la mise en place d'un échafaudage sur la tour est approuvé, le marché prévu en appel d'offres ouvert à tranche et lot uniques, et le Maire autorisé à le signer.",
+   "pourquoi": "L'échafaudage est voté en 1999 ; le principe de la restauration des façades ne le sera qu'en mars 2004.",
+   "vedette": false,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=42556"
+  },
+  {
+   "id": "57691",
+   "seance": "MARS 2004",
+   "fait": "Le principe de l'opération de restauration des façades est approuvé ; le Maire est autorisé à signer le marché de maîtrise d'œuvre, négocié en quatre tranches, avec Jean-François LAGNEAU, mandataire, et Jacques DESMARQUEST, co-traitant.",
+   "pourquoi": "Avant tout marché de travaux, l'opération reçoit son cadre : une maîtrise d'œuvre en quatre tranches, dont trois conditionnelles.",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=57691"
+  },
+  {
+   "id": "82386",
+   "seance": "FEVRIER 2005",
+   "fait": "La passation du lot n° 1 « pierre de taille ; sculpture ; restauration de sculpture » est approuvée : appel d'offres ouvert européen, une tranche ferme et deux tranches conditionnelles.",
+   "pourquoi": "Sur les trois tranches du lot de pierre et de sculpture, une seule est ferme.",
+   "vedette": false,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=82386"
+  },
+  {
+   "id": "91566",
+   "seance": "JUILLET 2008",
+   "fait": "Le Maire est autorisé à signer le lot n° 5 « espaces verts » — remise en état du square — d'un montant de 397 976,42 euros TTC, avec la société CERCIS.",
+   "pourquoi": "397.976,42 euros TTC pour les espaces verts du square : le chiffrage porte sur les abords, pas sur la pierre de la tour.",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=91566"
+  },
+  {
+   "id": "118841",
+   "seance": "JUIN 2014",
+   "fait": "Une convention d'occupation temporaire du domaine public est examinée ; le maire du 4e, Christophe GIRARD, la soutient et rattache l'ouverture de la tour à la visite aux travaux de restauration de la statuaire et au souhait du conseil de quartier Saint-Merri.",
+   "pourquoi": "Selon le maire du 4e, l'ouverture du site à la visite fait suite aux travaux de restauration de la statuaire.",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=118841"
+  },
+  {
+   "id": "170467",
+   "seance": "JUILLET 2023",
+   "fait": "Vœu de Maud GATEL demandant le maintien des grilles du square : l'adjoint Christophe NAJDOVSKI défend l'étude de leur retrait, tandis qu'Ariel WEIL, maire de Paris Centre, situe l'urgence ailleurs et évoque des grilles ôtées en 1969 puis remises en 1995.",
+   "pourquoi": "Le retrait des grilles n'est qu'à l'étude ; l'adjoint et le maire de Paris Centre divergent sur la priorité à lui donner.",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=170467"
+  }
+ ],
+ "montants": [
+  {
+   "seance": "JUILLET 2008",
+   "montant": "397.976,42 euros TTC",
+   "objet": "Lot n° 5 « espaces verts » du marché de restauration des façades (remise en état du square), que le Conseil autorise le Maire à signer avec la société CERCIS",
+   "citation": "M. le Maire de Paris est autorisé à signer le marché detravaux de restauration des façades de la Tour Saint-Jacques (4e) lot n° 5 : ?espaces verts?, d?un montant de 397.976,42 euros TTC avec la société CERCIS, attributaire proposé par la Commission interne des marchés de la Direction des Affaires Culturelles.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=91566"
+  }
+ ],
+ "bmo_extraits": [],
+ "bmo_recit": null,
+ "invest": [],
+ "marches": [],
+ "sources": {
+  "delibs": {
+   "name": "Débat-Délibs — Conseil de Paris",
+   "url": "https://a06-v7.apps.paris.fr/a06/"
+  },
+  "bmo": {
+   "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
+   "url": "https://gallica.bnf.fr/ark:/12148/cb343512457/date"
+  },
+  "invest": {
+   "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
+   "url": "https://opendata.paris.fr/"
+  },
+  "wiki": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ }
+}
