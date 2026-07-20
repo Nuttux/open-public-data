@@ -1,4 +1,5 @@
 import fs from "node:fs";
+import { loadLieuxIndex, loadLieu } from "./lieux-data";
 import path from "node:path";
 import { normalizeObjet } from "@/lib/objet-normalizer";
 
@@ -309,8 +310,8 @@ export type LandingStats = {
   capaciteDesendettement: number; // années, pour teaser stress-test landing
   topBeneficiaires: { name: string; amount: number; year: number }[];
   topFournisseurs: { name: string; siret: string; amount: number; year: number }[];
-  /** Projet vedette pour la card 1 du hero deck — référencé par ID stable. */
-  featuredProjet: FeaturedProjet | null;
+  /** Lieu vedette pour la card 1 du hero deck — la porte d'entrée « lieux ». */
+  featuredLieu: FeaturedLieu | null;
   /** Subvention vedette (Paris Musées). */
   featuredAsso: FeaturedAsso | null;
   /** Catégorie de marché vedette (espaces verts). */
@@ -319,25 +320,16 @@ export type LandingStats = {
   featuredBailleur: FeaturedBailleur | null;
 };
 
-export type FeaturedProjet = {
-  id: string;
-  nom: string;
-  year: number;
-  montant: number;
+export type FeaturedLieu = {
+  slug: string;
+  name: string;
+  kind: string;
   arrondissement: number;
-  direction: string | null;
+  /** Total d'argent public relié au lieu (délibs + marchés + subventions). */
+  argentTotal: number;
+  depuis: number | null;
   photoPath: string;
   credit: string | null;
-  /** Angle commande publique du chantier, calculé depuis projet_marches.json
-   *  + exports marchés (jamais saisi à la main). Null si le projet n'a pas de
-   *  marchés rapprochés — la carte retombe alors sur le montant voté. */
-  marches: {
-    nb: number;
-    /** Enveloppe max du plus gros marché lié. */
-    grosLotMontant: number;
-    /** Offres reçues sur ce gros lot (null si millésime pré-2024). */
-    grosLotOffres: number | null;
-  } | null;
 };
 
 export type FeaturedAsso = {
@@ -374,8 +366,7 @@ export type FeaturedBailleur = {
 // mais 5 marchés rapprochés 2022→2026 dont le gros lot travaux porte des
 // données de concurrence DECP (offres reçues) — Belliard, notifié en 2023,
 // n'en aura jamais (champ publié à partir du millésime 2024).
-const HERO_FEATURED_PROJET_ID = "2024_10_27_016";
-const HERO_FEATURED_PROJET_PHOTO = "/photos/hero/piscine-chateau-landon.jpg";
+const HERO_FEATURED_LIEU_SLUG = "philharmonie-de-paris";
 
 const HERO_FEATURED_ASSO_NAME = "PARIS MUSEES";
 const HERO_FEATURED_ASSO_PHOTO = "/photos/hero/petit-palais.jpg";
@@ -389,54 +380,20 @@ const HERO_FEATURED_BAILLEUR_SLUG = "paris-habitat";
 const HERO_FEATURED_BAILLEUR_PHOTO = "/photos/hero/cite-michelet.jpg";
 const HERO_FEATURED_BAILLEUR_PHOTO_CREDIT = "Wikimedia CC";
 
-function loadFeaturedProjet(): FeaturedProjet | null {
-  try {
-    const invest = readJson<{
-      data: Array<{
-        id: string;
-        annee: number;
-        montant: number;
-        nom_projet?: string;
-        arrondissement?: number;
-        direction?: string;
-      }>;
-    }>("map/investissements_2024.json");
-    const p = invest.data.find((x) => x.id === HERO_FEATURED_PROJET_ID);
-    if (!p) return null;
-    let credit: string | null = null;
-    try {
-      const photos = readJson<{ items: Record<string, { credit?: string | null }> }>(
-        "enrichment/projet_photos.json",
-      );
-      credit = photos.items[HERO_FEATURED_PROJET_ID]?.credit ?? null;
-    } catch {}
-
-    // Angle commande publique de la carte : calculé, jamais saisi à la main.
-    const linked = loadProjetMarches(HERO_FEATURED_PROJET_ID);
-    let marches: FeaturedProjet["marches"] = null;
-    if (linked.length > 0) {
-      const grosLot = linked.reduce((a, b) => ((b.montant_max ?? 0) > (a.montant_max ?? 0) ? b : a));
-      marches = {
-        nb: linked.length,
-        grosLotMontant: grosLot.montant_max ?? 0,
-        grosLotOffres: grosLot.offres_recues ?? null,
-      };
-    }
-
-    return {
-      id: p.id,
-      nom: p.nom_projet ?? "",
-      year: p.annee,
-      montant: p.montant,
-      arrondissement: p.arrondissement ?? 0,
-      direction: p.direction ?? null,
-      photoPath: HERO_FEATURED_PROJET_PHOTO,
-      credit,
-      marches,
-    };
-  } catch {
-    return null;
-  }
+function loadFeaturedLieu(): FeaturedLieu | null {
+  const l = loadLieuxIndex().find((x) => x.slug === HERO_FEATURED_LIEU_SLUG);
+  if (!l?.photo || !l.argent_total_eur) return null;
+  const fiche = loadLieu(l.slug);
+  return {
+    slug: l.slug,
+    name: l.name,
+    kind: l.kind_fr,
+    arrondissement: l.arrondissement,
+    argentTotal: l.argent_total_eur,
+    depuis: l.depuis ?? null,
+    photoPath: l.photo,
+    credit: fiche?.photo_credit?.auteur ?? fiche?.photo_credit?.source ?? null,
+  };
 }
 
 function loadFeaturedAsso(): FeaturedAsso | null {
@@ -711,7 +668,7 @@ export function loadLandingStats(): LandingStats {
     capaciteDesendettement,
     topBeneficiaires,
     topFournisseurs,
-    featuredProjet: loadFeaturedProjet(),
+    featuredLieu: loadFeaturedLieu(),
     featuredAsso: loadFeaturedAsso(),
     featuredMarcheCategorie: loadFeaturedMarcheCategorie(),
     featuredBailleur: loadFeaturedBailleur(),

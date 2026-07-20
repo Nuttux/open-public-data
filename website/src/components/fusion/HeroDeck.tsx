@@ -58,7 +58,7 @@ function HeroDeckCard({ href, kicker, title, amount, amountUnit, meta, cta, phot
 
 export default function HeroDeck({ stats }: Props) {
   const t = useT();
-  const fp = stats.featuredProjet;
+  const fl = stats.featuredLieu;
   const fa = stats.featuredAsso;
   const fm = stats.featuredMarcheCategorie;
   const fb = stats.featuredBailleur;
@@ -70,33 +70,20 @@ export default function HeroDeck({ stats }: Props) {
     <section className="fx-hero-deck" id="hero-deck" aria-label={t("fx.land.deck.aria")}>
       <div className="fx-wrap">
         <div className="fx-hero-deck-rail" role="group">
-          {fp && (
+          {fl && (
             <HeroDeckCard
-              href={`/fr/city/paris/investissements/projet/${fp.id}`}
-              kicker={t("fx.land.deck.c1.kicker")}
-              title={t("fx.land.deck.c1.title")}
-              // Angle commande publique quand le projet a des marchés
-              // rapprochés : le gros lot travaux comme chiffre, la
-              // concurrence en meta. Sinon, montant voté comme avant.
-              amount={fmtDec((fp.marches ? fp.marches.grosLotMontant : fp.montant) / 1e6, 1)}
+              href={`/fr/city/paris/lieu/${fl.slug}`}
+              kicker={t("fx.land.deck.lieu.kicker")}
+              title={fl.name}
+              amount={fmtInt(fl.argentTotal / 1e6)}
               amountUnit="M €"
-              meta={
-                fp.marches
-                  ? fp.marches.grosLotOffres != null
-                    ? fill(t("fx.land.deck.c1.meta_marches_offres"), {
-                        arr: fp.arrondissement,
-                        nb: fp.marches.nb,
-                        offres: fp.marches.grosLotOffres,
-                      })
-                    : fill(t("fx.land.deck.c1.meta_marches"), {
-                        arr: fp.arrondissement,
-                        nb: fp.marches.nb,
-                      })
-                  : fill(t("fx.land.deck.c1.meta"), { arr: fp.arrondissement, year: fp.year })
-              }
-              cta={t("fx.land.deck.c1.cta")}
-              photoPath={fp.photoPath}
-              photoCredit={fp.credit}
+              meta={fill(
+                t(fl.depuis ? "fx.land.deck.lieu.meta" : "fx.land.deck.lieu.meta_nodate"),
+                { kind: fl.kind, arr: fl.arrondissement, depuis: fl.depuis ?? "" },
+              )}
+              cta={t("fx.land.deck.lieu.cta")}
+              photoPath={fl.photoPath}
+              photoCredit={fl.credit}
             />
           )}
 

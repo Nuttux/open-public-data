@@ -80,6 +80,13 @@ export default function LandingClient({ stats, posts }: Props) {
             {t("fx.land.chips.h2.before")}<em>{t("fx.land.chips.h2.em")}</em>{t("fx.land.chips.h2.dot")}
           </h2>
           <ul className="fx-chip-strip-list">
+            <li className="fx-chip-strip-li-featured">
+              <Link href="/fr/city/paris/lieux">
+                <span className="fx-chip-strip-title">{t("fx.land.chips.lieux")}</span>
+                <span className="fx-chip-strip-desc">{t("fx.land.chips.lieux_desc")}</span>
+                <span className="fx-chip-strip-arrow" aria-hidden="true">→</span>
+              </Link>
+            </li>
             <li>
               <Link href="/fr/city/paris/budget">
                 <span className="fx-chip-strip-title">{t("fx.land.chips.budget")}</span>
@@ -189,19 +196,16 @@ export default function LandingClient({ stats, posts }: Props) {
           </h2>
           <div className="fx-meth-cols">
             <div className="fx-meth-c">
-              <div className="fx-meth-n">{t("fx.land.meth.01.n")}</div>
               <h3>{t("fx.land.meth.01.h")}</h3>
               <p>{t("fx.land.meth.01.p")}</p>
               <Link href="/methode#sources">{t("fx.land.meth.01.cta")}</Link>
             </div>
             <div className="fx-meth-c">
-              <div className="fx-meth-n">{t("fx.land.meth.02.n")}</div>
               <h3>{t("fx.land.meth.02.h")}</h3>
               <p>{t("fx.land.meth.02.p")}</p>
               <Link href="/methode#construction">{t("fx.land.meth.02.cta")}</Link>
             </div>
             <div className="fx-meth-c">
-              <div className="fx-meth-n">{t("fx.land.meth.03.n")}</div>
               <h3>{t("fx.land.meth.03.h")}</h3>
               <p>{t("fx.land.meth.03.p")}</p>
               <a href="https://github.com/AbstractsMachine/france-open-data-pipeline" target="_blank" rel="noopener noreferrer">
