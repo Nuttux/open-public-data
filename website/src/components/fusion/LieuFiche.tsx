@@ -184,6 +184,39 @@ export default function LieuFiche({ lieu }: { lieu: LieuFicheData }) {
         </div>
       )}
 
+      {/* Décomposition du Dépensé : béton ou exploitation ? Une barre empilée
+       *  d'une ligne suffit pour 2 catégories — un graphe serait du bruit.
+       *  Le fonctionnement en régie n'apparaît pas : non publié par lieu. */}
+      {(() => {
+        const travaux = investTotal + (lieu.mandate?.total_eur ?? 0);
+        const subvT = subv?.total_eur ?? 0;
+        if (travaux <= 0 || subvT <= 0) return null;
+        const tot = travaux + subvT;
+        const ft = fmtEur(travaux); const fs = fmtEur(subvT);
+        const SEG = [
+          { k: "travaux", v: travaux, f: ft, c: "#1e45e4", label: t("fx.lieu.split.travaux") },
+          { k: "subv", v: subvT, f: fs, c: "#4a3aa7", label: t("fx.lieu.split.subv") },
+        ];
+        return (
+          <div style={{ margin: "-12px 0 24px" }}>
+            <div style={{ display: "flex", gap: 2, height: 10 }}>
+              {SEG.map((g) => (
+                <div key={g.k} title={`${g.label} — ${g.f.v} ${g.f.u}`}
+                     style={{ width: `${(g.v / tot) * 100}%`, background: g.c, minWidth: 6 }} />
+              ))}
+            </div>
+            <div style={{ display: "flex", gap: 18, marginTop: 6, flexWrap: "wrap" }}>
+              {SEG.map((g) => (
+                <span key={g.k} style={{ fontFamily: "var(--f-mono)", fontSize: 10, letterSpacing: ".04em", color: "var(--muted)", display: "inline-flex", alignItems: "center", gap: 5 }}>
+                  <span style={{ width: 7, height: 7, borderRadius: 2, background: g.c, display: "inline-block" }} />
+                  {g.label} <b className="tnum" style={{ color: "var(--ink)", fontWeight: 600 }}>{g.f.v} {g.f.u}</b>
+                </span>
+              ))}
+            </div>
+          </div>
+        );
+      })()}
+
       {/* Absence d'argent rattachable ≠ lieu gratuit. Le fonctionnement courant
        *  (entretien, personnel) n'est pas ventilé par lieu dans l'open data : on
        *  le dit, sinon le vide se lit comme « ne coûte rien ». */}
@@ -193,8 +226,9 @@ export default function LieuFiche({ lieu }: { lieu: LieuFicheData }) {
 
       {lieu.subventions_exploitant && (() => {
         const sub = lieu.subventions_exploitant;
-        const first = sub.rows.slice(0, 5);
-        const rest = sub.rows.slice(5);
+        // Total sur la période par défaut ; le détail annuel est à un clic.
+        // Un seul exercice → la ligne annuelle serait redondante avec le total.
+        const multi = sub.rows.length > 1;
         const Row = (r: (typeof sub.rows)[number]) => (
           <div key={r.annee} style={{ display: "flex", justifyContent: "space-between", gap: 12, padding: "11px 6px", borderBottom: "1px solid var(--rule)", alignItems: "baseline" }}>
             <span style={{ fontFamily: "var(--f-mono)", fontSize: 10.5, color: "var(--muted)" }}>{r.annee}</span>
@@ -204,7 +238,7 @@ export default function LieuFiche({ lieu }: { lieu: LieuFicheData }) {
         return (
           <section className="fx-fiche-section">
             <div className="fx-fiche-h fx-fiche-h--money">{t("fx.lieu.h.subv")}</div>
-            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", gap: 12, padding: "6px 6px 10px" }}>
+            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", gap: 12, padding: "6px 6px 14px", borderBottom: "1px solid var(--rule)" }}>
               <Link
                 href={`/fr/city/paris/subventions/association/${encodeURIComponent(sub.nom_fiche)}`}
                 className="fx-row-link"
@@ -214,16 +248,19 @@ export default function LieuFiche({ lieu }: { lieu: LieuFicheData }) {
               </Link>
               <span style={{ display: "inline-flex", alignItems: "baseline", gap: 6, whiteSpace: "nowrap" }}>
                 <Eur {...fmtEur(sub.total_eur)} size={15} />
-                <span style={{ fontFamily: "var(--f-mono)", fontWeight: 400, color: "var(--muted)", fontSize: 10.5 }}>{sub.annees[0]}–{sub.annees[1]}</span>
+                <span style={{ fontFamily: "var(--f-mono)", fontWeight: 400, color: "var(--muted)", fontSize: 10.5 }}>
+                  {multi
+                    ? fill(t("fx.lieu.subv_periode"), { n: sub.rows.length, a: `${sub.annees[0]}–${sub.annees[1]}` })
+                    : sub.annees[0]}
+                </span>
               </span>
             </div>
-            {first.map(Row)}
-            {rest.length > 0 && (
+            {multi && (
               <details>
                 <summary style={{ fontFamily: "var(--f-mono)", fontSize: 10, letterSpacing: ".07em", textTransform: "uppercase", color: "var(--bleu)", cursor: "pointer", padding: "10px 6px" }}>
-                  {fill(t("fx.lieu.subv_more"), { n: rest.length })}
+                  {fill(t("fx.lieu.subv_deplier"), { n: sub.rows.length })}
                 </summary>
-                {rest.map(Row)}
+                {sub.rows.map(Row)}
               </details>
             )}
             {/* Attribution honnête : un exploitant multi-lieu ne dépense pas tout ici. */}
