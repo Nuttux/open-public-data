@@ -383,56 +383,50 @@ export default function LieuFiche({ lieu }: { lieu: LieuFicheData }) {
        *  subventions et des investissements. Chaque ligne mène à sa fiche
        *  contrat (donc au fournisseur), ce qui referme la boucle lieu → marché
        *  → fournisseur. Rattachement jugé « au-lieu » en amont. */}
-      {(lieu.marches?.length ?? 0) > 0 && (
-        <section className="fx-fiche-section">
-          <div className="fx-fiche-h fx-fiche-h--money" style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", gap: 12 }}>
-            <span style={{ flex: 1, textAlign: "left" }}>{t("fx.lieu.h.marches")}</span>
-            <Eur {...fmtEur(engageTotal)} size={14} />
-          </div>
-          {lieu.marches!.slice(0, 6).map((m) => (
-            <Link
-              key={m.numero_marche}
-              href={`/fr/city/paris/marches/contrat/${encodeURIComponent(m.numero_marche)}`}
-              className="fx-row-link"
-              style={{ display: "flex", justifyContent: "space-between", gap: 12, padding: "11px 6px", borderBottom: "1px solid var(--rule)", alignItems: "baseline" }}
-            >
-              <span style={{ fontSize: 13, color: "var(--ink-2)", flex: 1 }}>
-                {m.objet_clair || normalizeObjet(m.objet)}
-                <span aria-hidden="true" style={{ color: "var(--muted)" }}> →</span>
-                {m.fournisseur && (
-                  <span style={{ display: "block", fontFamily: "var(--f-mono)", fontSize: 10, letterSpacing: ".04em", textTransform: "uppercase", color: "var(--muted)", marginTop: 2 }}>
-                    {m.fournisseur}
-                    {m.date_notification ? ` · ${m.date_notification.slice(0, 4)}` : ""}
-                  </span>
-                )}
-              </span>
-              <Eur {...fmtEur(m.montant_max)} size={13} />
-            </Link>
-          ))}
-          {lieu.marches!.length > 6 && (
-            <details>
-              <summary style={{ fontFamily: "var(--f-mono)", fontSize: 10, letterSpacing: ".07em", textTransform: "uppercase", color: "var(--bleu)", cursor: "pointer", padding: "10px 6px" }}>
-                {fill(t("fx.lieu.marches_more"), { n: lieu.marches!.length - 6 })}
-              </summary>
-              {lieu.marches!.slice(6).map((m) => (
-                <Link
-                  key={m.numero_marche}
-                  href={`/fr/city/paris/marches/contrat/${encodeURIComponent(m.numero_marche)}`}
-                  className="fx-row-link"
-                  style={{ display: "flex", justifyContent: "space-between", gap: 12, padding: "11px 6px", borderBottom: "1px solid var(--rule)", alignItems: "baseline" }}
-                >
-                  <span style={{ fontSize: 13, color: "var(--ink-2)", flex: 1 }}>
-                    {m.objet_clair || normalizeObjet(m.objet)}
-                    <span aria-hidden="true" style={{ color: "var(--muted)" }}> →</span>
-                  </span>
-                  <Eur {...fmtEur(m.montant_max)} size={13} />
-                </Link>
-              ))}
-            </details>
-          )}
-          <p className="fx-fiche-note">{t("fx.lieu.marches_note")}</p>
-        </section>
-      )}
+      {(lieu.marches?.length ?? 0) > 0 && (() => {
+        // Résumé + dépliant, comme les deux autres sections d'argent : le
+        // résumé d'une liste de contrats, ce sont ses plus gros — top 3
+        // visibles (tri par plafond), le reste replié à l'identique.
+        const marches = [...lieu.marches!].sort((a, b) => (b.montant_max || 0) - (a.montant_max || 0));
+        const MRow = (m: (typeof marches)[number]) => (
+          <Link
+            key={m.numero_marche}
+            href={`/fr/city/paris/marches/contrat/${encodeURIComponent(m.numero_marche)}`}
+            className="fx-row-link"
+            style={{ display: "flex", justifyContent: "space-between", gap: 12, padding: "11px 6px", borderBottom: "1px solid var(--rule)", alignItems: "baseline" }}
+          >
+            <span style={{ fontSize: 13, color: "var(--ink-2)", flex: 1 }}>
+              {m.objet_clair || normalizeObjet(m.objet)}
+              <span aria-hidden="true" style={{ color: "var(--muted)" }}> →</span>
+              {m.fournisseur && (
+                <span style={{ display: "block", fontFamily: "var(--f-mono)", fontSize: 10, letterSpacing: ".04em", textTransform: "uppercase", color: "var(--muted)", marginTop: 2 }}>
+                  {m.fournisseur}
+                  {m.date_notification ? ` · ${m.date_notification.slice(0, 4)}` : ""}
+                </span>
+              )}
+            </span>
+            <Eur {...fmtEur(m.montant_max)} size={13} />
+          </Link>
+        );
+        return (
+          <section className="fx-fiche-section">
+            <div className="fx-fiche-h fx-fiche-h--money" style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", gap: 12 }}>
+              <span style={{ flex: 1, textAlign: "left" }}>{t("fx.lieu.h.marches")}</span>
+              <Eur {...fmtEur(engageTotal)} size={14} />
+            </div>
+            {marches.slice(0, 3).map(MRow)}
+            {marches.length > 3 && (
+              <details>
+                <summary style={{ fontFamily: "var(--f-mono)", fontSize: 10, letterSpacing: ".07em", textTransform: "uppercase", color: "var(--bleu)", cursor: "pointer", padding: "10px 6px" }}>
+                  {fill(t(marches.length - 3 === 1 ? "fx.lieu.marches_more1" : "fx.lieu.marches_more"), { n: marches.length - 3 })}
+                </summary>
+                {marches.slice(3).map(MRow)}
+              </details>
+            )}
+            <p className="fx-fiche-note">{t("fx.lieu.marches_note")}</p>
+          </section>
+        );
+      })()}
 
       {/* Décisions — après l'argent (les gens viennent voir combien). On met en
        *  avant les moments JUGÉS MARQUANTS (saillance, nombre variable 3-6 selon
@@ -477,7 +471,7 @@ export default function LieuFiche({ lieu }: { lieu: LieuFicheData }) {
             {rest.length > 0 && (
               <details>
                 <summary style={{ fontFamily: "var(--f-mono)", fontSize: 10, letterSpacing: ".07em", textTransform: "uppercase", color: "var(--bleu)", cursor: "pointer", padding: "12px 6px" }}>
-                  {fill(t("fx.lieu.moments_more"), { n: rest.length })}
+                  {fill(t(rest.length === 1 ? "fx.lieu.moments_more1" : "fx.lieu.moments_more"), { n: rest.length })}
                 </summary>
                 {rest.map(Moment)}
               </details>
@@ -494,7 +488,27 @@ export default function LieuFiche({ lieu }: { lieu: LieuFicheData }) {
        *  le lecteur devait interpréter seul. La section n'apparaît que si
        *  l'archive raconte vraiment quelque chose (seuil à l'export). */}
       {bmo.length > 0 && (() => {
-        const annees = bmo.map((b) => parseInt(b.date.slice(0, 4), 10)).filter(Boolean).sort((a, b) => a - b);
+        // Récit visible, puis 2 extraits en texture (les plus anciens — l'ordre
+        // chronologique de l'export), le reste replié : résumé + dépliant,
+        // comme partout ailleurs sur la fiche.
+        const BRow = (b: (typeof bmo)[number], i: number) => (
+          <a
+            key={i}
+            className="fx-row-link"
+            href={b.source_url}
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{ display: "block", padding: "11px 6px", borderBottom: "1px solid var(--rule)" }}
+          >
+            <div style={{ display: "flex", gap: 12, alignItems: "baseline" }}>
+              <span className="tnum" style={{ fontFamily: "var(--f-mono)", fontSize: 10.5, color: "var(--rouge)", fontWeight: 600, whiteSpace: "nowrap", minWidth: 40 }}>
+                {b.date.slice(0, 4)}
+              </span>
+              <span style={{ fontSize: 13, lineHeight: 1.45, color: "var(--ink-2)", flex: 1 }}>« {b.extrait.slice(0, 160)}{b.extrait.length > 160 ? "…" : ""} »</span>
+              <span aria-hidden="true" style={{ fontFamily: "var(--f-mono)", fontSize: 12, color: "var(--muted)" }}>→</span>
+            </div>
+          </a>
+        );
         return (
           <section className="fx-fiche-section">
             <div className="fx-fiche-h fx-fiche-h--moments">{t("fx.lieu.h.bmo")}</div>
@@ -503,32 +517,15 @@ export default function LieuFiche({ lieu }: { lieu: LieuFicheData }) {
                 <Money text={lieu.bmo_recit} />
               </p>
             )}
-            <details>
-              <summary style={{ fontFamily: "var(--f-mono)", fontSize: 10, letterSpacing: ".07em", textTransform: "uppercase", color: "var(--bleu)", cursor: "pointer", padding: "10px 6px" }}>
-                {fill(t("fx.lieu.bmo_voir"), {
-                  n: bmo.length,
-                  a: annees.length ? `${annees[0]}–${annees[annees.length - 1]}` : "",
-                })}
-              </summary>
-              {bmo.map((b, i) => (
-                <a
-                  key={i}
-                  className="fx-row-link"
-                  href={b.source_url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  style={{ display: "block", padding: "11px 6px", borderBottom: "1px solid var(--rule)" }}
-                >
-                  <div style={{ display: "flex", gap: 12, alignItems: "baseline" }}>
-                    <span className="tnum" style={{ fontFamily: "var(--f-mono)", fontSize: 10.5, color: "var(--rouge)", fontWeight: 600, whiteSpace: "nowrap", minWidth: 40 }}>
-                      {b.date.slice(0, 4)}
-                    </span>
-                    <span style={{ fontSize: 13, lineHeight: 1.45, color: "var(--ink-2)", flex: 1 }}>« {b.extrait.slice(0, 160)}{b.extrait.length > 160 ? "…" : ""} »</span>
-                    <span aria-hidden="true" style={{ fontFamily: "var(--f-mono)", fontSize: 12, color: "var(--muted)" }}>→</span>
-                  </div>
-                </a>
-              ))}
-            </details>
+            {bmo.slice(0, 2).map(BRow)}
+            {bmo.length > 2 && (
+              <details>
+                <summary style={{ fontFamily: "var(--f-mono)", fontSize: 10, letterSpacing: ".07em", textTransform: "uppercase", color: "var(--bleu)", cursor: "pointer", padding: "10px 6px" }}>
+                  {fill(t(bmo.length - 2 === 1 ? "fx.lieu.bmo_more1" : "fx.lieu.bmo_more"), { n: bmo.length - 2 })}
+                </summary>
+                {bmo.slice(2).map(BRow)}
+              </details>
+            )}
             <p className="fx-fiche-note">{t("fx.lieu.bmo_note")}</p>
           </section>
         );
