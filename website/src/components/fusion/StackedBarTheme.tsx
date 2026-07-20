@@ -3,14 +3,9 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useT, useLocale } from "@/lib/localeContext";
+import { fill, numLocale } from "@/lib/fmt";
 import { trLabel } from "@/lib/label-translate";
 import { useTrack } from "@/lib/analyticsContext";
-
-const fill = (s: string, vars: Record<string, string | number>) => {
-  let r = s;
-  for (const [k, v] of Object.entries(vars)) r = r.split(`{${k}}`).join(String(v));
-  return r;
-};
 
 type Slice = {
   theme: string;
@@ -97,7 +92,7 @@ export default function StackedBarTheme({
   const { locale } = useLocale();
   const track = useTrack();
   const pathname = usePathname();
-  const locStr = locale === "en" ? "en-GB" : "fr-FR";
+  const locStr = numLocale(locale);
   const sep = locale === "en" ? "." : ",";
   const mdLabel = t("fx.s.md_eur");
   const mLabel = t("fx.s.m_eur");

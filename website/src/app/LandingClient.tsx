@@ -10,7 +10,7 @@ import ScopeDropdown from "@/components/fusion/ScopeDropdown";
 import HeroBg from "@/components/fusion/HeroBg";
 import HeroDeck from "@/components/fusion/HeroDeck";
 import HeroMarquee from "@/components/fusion/HeroMarquee";
-import { fmtInt, fmtBillions } from "@/lib/fmt";
+import { fmtInt, fmtBillions, numLocale } from "@/lib/fmt";
 import type { LandingStats } from "@/lib/fusion-data";
 import type { BlogPostMeta } from "@/lib/blog";
 import { useT, useLocale } from "@/lib/localeContext";
@@ -169,7 +169,7 @@ export default function LandingClient({ stats, posts }: Props) {
                     <div className="fx-analyses-foot">
                       <span>
                         {new Date(p.date).toLocaleDateString(
-                          locale === "en" ? "en-GB" : "fr-FR",
+                          numLocale(locale),
                           { day: "numeric", month: "long", year: "numeric" },
                         )}
                       </span>

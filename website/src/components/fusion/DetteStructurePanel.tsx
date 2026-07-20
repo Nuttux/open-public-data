@@ -2,16 +2,10 @@
 
 import { useState } from "react";
 import type { DetteInstrument, PatrimoineStructure } from "@/lib/fusion-data";
-import { fmtBillions, fmtDec, fmtMillions, fmtInt } from "@/lib/fmt";
+import { fill, fmtBillions, fmtDec, fmtMillions, fmtInt } from "@/lib/fmt";
 import InstrumentDetteFiche from "./InstrumentDetteFiche";
 import { useT, useLocale } from "@/lib/localeContext";
 import { trLabel } from "@/lib/label-translate";
-
-const fill = (s: string, vars: Record<string, string | number>) => {
-  let r = s;
-  for (const [k, v] of Object.entries(vars)) r = r.split(`{${k}}`).join(String(v));
-  return r;
-};
 
 type Props = {
   structure: PatrimoineStructure["structure_dette"];

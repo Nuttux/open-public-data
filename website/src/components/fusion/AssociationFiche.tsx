@@ -3,12 +3,8 @@
 import { Fragment, useState } from "react";
 import type { AssociationFiche as AssociationFicheType, BeneficiaireGrounded, SubventionVulgarization } from "@/lib/fusion-data";
 import { useT, useLocale } from "@/lib/localeContext";
-
-const fill = (s: string, vars: Record<string, string | number>) => {
-  let r = s;
-  for (const [k, v] of Object.entries(vars)) r = r.split(`{${k}}`).join(String(v));
-  return r;
-};
+import { cap, fill } from "@/lib/fmt";
+import { useFmtEur } from "@/lib/use-fmt";
 
 /** Source réelle des subventions : dataset "versées annexe CA" (les noms de
  * l'export en sont issus verbatim, le refine matche donc exactement).
@@ -41,28 +37,18 @@ export default function AssociationFiche({
 }) {
   const t = useT();
   const { locale } = useLocale();
-  const locStr = locale === "en" ? "en-GB" : "fr-FR";
   const [openLigne, setOpenLigne] = useState<number | null>(null);
   const [showAllLignes, setShowAllLignes] = useState(false);
   const [showAllYears, setShowAllYears] = useState(false);
   const LIGNES_PREVIEW = 5;
   const YEARS_PREVIEW = 5;
 
-  const fmtEur = (n: number) => {
-    if (n >= 1e9) return { v: new Intl.NumberFormat(locStr, { maximumFractionDigits: 2 }).format(n / 1e9), u: t("fx.s.md_eur") };
-    if (n >= 1e6) return { v: new Intl.NumberFormat(locStr, { maximumFractionDigits: 1 }).format(n / 1e6), u: t("fx.s.m_eur") };
-    if (n >= 1e3) return { v: new Intl.NumberFormat(locStr, { maximumFractionDigits: 0 }).format(n / 1e3), u: "k €" };
-    return { v: new Intl.NumberFormat(locStr).format(n), u: "€" };
-  };
+  const fmtEur = useFmtEur();
 
   const { v: vTot, u: uTot } = fmtEur(asso.totalAmount);
   const firstYear = asso.yearsActive[0];
   const lastYear = asso.yearsActive[asso.yearsActive.length - 1];
   const maxByYear = Math.max(...asso.byYear.map((y) => y.amount), 1);
-
-  // Capitalise la première lettre de chaque phrase (sortie LLM en lowercase).
-  const cap = (s?: string | null) =>
-    s ? s.replace(/(^|[.!?]\s+)([a-zà-ÿ])/g, (_, sep, c) => sep + c.toUpperCase()) : s;
 
   return (
     <div>

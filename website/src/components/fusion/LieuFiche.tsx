@@ -4,13 +4,8 @@ import type { ReactNode } from "react";
 import type { LieuFicheData } from "@/lib/lieux-data";
 import Link from "next/link";
 import { useT, useLocale } from "@/lib/localeContext";
+import { fill, numLocale } from "@/lib/fmt";
 import { normalizeObjet } from "@/lib/objet-normalizer";
-
-const fill = (s: string, vars: Record<string, string | number>) => {
-  let r = s;
-  for (const [k, v] of Object.entries(vars)) r = r.split(`{${k}}`).join(String(v));
-  return r;
-};
 
 const BMO_SHOWN = 5;
 
@@ -60,7 +55,7 @@ function Eur({ v, u, size = 13.5 }: { v: string; u: string; size?: number }) {
 export default function LieuFiche({ lieu }: { lieu: LieuFicheData }) {
   const t = useT();
   const { locale } = useLocale();
-  const locStr = locale === "en" ? "en-GB" : "fr-FR";
+  const locStr = numLocale(locale);
 
   const fmtEur = (n: number): { v: string; u: string } => {
     if (n >= 1e9) return { v: new Intl.NumberFormat(locStr, { maximumFractionDigits: 2 }).format(n / 1e9), u: t("fx.s.md_eur") };

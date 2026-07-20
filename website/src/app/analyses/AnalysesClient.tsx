@@ -5,12 +5,7 @@ import { useMemo, useState } from "react";
 import { useT, useLocale } from "@/lib/localeContext";
 import { useTrack } from "@/lib/analyticsContext";
 import Tip from "@/components/fusion/Tip";
-
-const fill = (s: string, vars: Record<string, string | number>) => {
-  let r = s;
-  for (const [k, v] of Object.entries(vars)) r = r.split(`{${k}}`).join(String(v));
-  return r;
-};
+import { fill, numLocale } from "@/lib/fmt";
 
 type Post = {
   slug: string;
@@ -66,7 +61,7 @@ export default function AnalysesClient({
 }) {
   const t = useT();
   const { locale } = useLocale();
-  const locStr = locale === "en" ? "en-GB" : "fr-FR";
+  const locStr = numLocale(locale);
 
   const CATEGORIES = [
     { key: "all", label: t("fx.analyses.cat.all"), raw: "Toutes", tip: null as string | null },

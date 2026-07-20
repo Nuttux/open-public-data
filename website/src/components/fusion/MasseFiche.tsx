@@ -2,16 +2,10 @@
 
 import { useEffect } from "react";
 import type { PatrimoineMasse } from "@/lib/fusion-data";
-import { fmtBillions, fmtDec, fmtInt, fmtMillions } from "@/lib/fmt";
+import { fill, fmtBillions, fmtDec, fmtInt, fmtMillions } from "@/lib/fmt";
 import { useT, useLocale } from "@/lib/localeContext";
 import { trLabel } from "@/lib/label-translate";
 import { PARIS_POPULATION } from "@/lib/methodology";
-
-const fill = (s: string, vars: Record<string, string | number>) => {
-  let r = s;
-  for (const [k, v] of Object.entries(vars)) r = r.split(`{${k}}`).join(String(v));
-  return r;
-};
 
 type Props = {
   masse: PatrimoineMasse | null;

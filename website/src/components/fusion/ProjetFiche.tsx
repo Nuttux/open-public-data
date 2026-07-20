@@ -4,14 +4,10 @@ import Link from "next/link";
 import type { ProjetFiche as ProjetFicheType, ProjetPhotoResolved } from "@/lib/fusion-data";
 import ProjetThumb from "./ProjetThumb";
 import { useT, useLocale } from "@/lib/localeContext";
+import { cap, fill, sufOrdinal } from "@/lib/fmt";
+import { useFmtEur } from "@/lib/use-fmt";
 import { trLabel } from "@/lib/label-translate";
 import { normalizeObjet } from "@/lib/objet-normalizer";
-
-const fill = (s: string, vars: Record<string, string | number>) => {
-  let r = s;
-  for (const [k, v] of Object.entries(vars)) r = r.split(`{${k}}`).join(String(v));
-  return r;
-};
 
 const TYPOLOGIE_LABELS_FR: Record<string, string> = {
   ecole: "École",
@@ -50,17 +46,9 @@ const TYPOLOGIE_LABELS_EN: Record<string, string> = {
 export default function ProjetFiche({ projet, photo }: { projet: ProjetFicheType; photo?: ProjetPhotoResolved }) {
   const t = useT();
   const { locale } = useLocale();
-  const locStr = locale === "en" ? "en-GB" : "fr-FR";
-
   const TYPOLOGIE_LABELS = locale === "en" ? TYPOLOGIE_LABELS_EN : TYPOLOGIE_LABELS_FR;
-  const suf = (n: number) => (locale === "en" ? (n === 1 ? "st" : "th") : n === 1 ? "er" : "ᵉ");
 
-  const fmtEur = (n: number) => {
-    if (n >= 1e9) return { v: new Intl.NumberFormat(locStr, { maximumFractionDigits: 2 }).format(n / 1e9), u: t("fx.s.md_eur") };
-    if (n >= 1e6) return { v: new Intl.NumberFormat(locStr, { maximumFractionDigits: 1 }).format(n / 1e6), u: t("fx.s.m_eur") };
-    if (n >= 1e3) return { v: new Intl.NumberFormat(locStr, { maximumFractionDigits: 0 }).format(n / 1e3), u: "k €" };
-    return { v: new Intl.NumberFormat(locStr).format(n), u: "€" };
-  };
+  const fmtEur = useFmtEur();
 
   const { v, u } = fmtEur(projet.montant);
   const mapUrl =
@@ -106,9 +94,6 @@ export default function ProjetFiche({ projet, photo }: { projet: ProjetFicheType
        * Ville, pas factuel. À garder en cache au cas où on en aurait besoin ailleurs, mais
        * pas dans la fiche projet. */}
       {vulg && (vulg.description_claire || vulg.quoi_concretement) && (() => {
-        // Capitalise la première lettre de chaque phrase (après "." ou en début de string).
-        const cap = (s?: string | null) =>
-          s ? s.replace(/(^|[.!?]\s+)([a-zà-ÿ])/g, (_, sep, c) => sep + c.toUpperCase()) : s;
         const descClair = cap(locale === "en" && vulg.description_claire_en ? vulg.description_claire_en : vulg.description_claire);
         const quoi = cap(locale === "en" && vulg.quoi_concretement_en ? vulg.quoi_concretement_en : vulg.quoi_concretement);
         return (
@@ -134,7 +119,7 @@ export default function ProjetFiche({ projet, photo }: { projet: ProjetFicheType
         <div className="fx-fiche-kpi">
           <div className="fx-fiche-kpi-label">{t("fx.fiche.shared.arrondissement")}</div>
           <div className="fx-fiche-kpi-value" style={{ fontSize: 20 }}>
-            {projet.arrondissement > 0 ? `${projet.arrondissement}${suf(projet.arrondissement)}` : t("fx.fiche.projet.transverse")}
+            {projet.arrondissement > 0 ? `${projet.arrondissement}${sufOrdinal(projet.arrondissement, locale)}` : t("fx.fiche.projet.transverse")}
           </div>
         </div>
         <div className="fx-fiche-kpi">
@@ -365,7 +350,7 @@ export default function ProjetFiche({ projet, photo }: { projet: ProjetFicheType
                     {locale === "en" && s.name_en ? s.name_en : s.name}
                     {s.arrondissement > 0 && (
                       <span className="muted" style={{ marginLeft: 8, fontSize: 11, fontFamily: "var(--f-mono)" }}>
-                        {s.arrondissement}{suf(s.arrondissement)}
+                        {s.arrondissement}{sufOrdinal(s.arrondissement, locale)}
                       </span>
                     )}
                   </span>

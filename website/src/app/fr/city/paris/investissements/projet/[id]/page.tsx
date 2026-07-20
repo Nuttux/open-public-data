@@ -9,6 +9,7 @@ import { loadProjet, resolveProjetPhoto } from "@/lib/fusion-data";
 import { lieuForProjet } from "@/lib/lieux-data";
 import VoirLeLieu from "@/components/fusion/VoirLeLieu";
 import { readLocale } from "@/lib/seo";
+import { numLocale } from "@/lib/fmt";
 import { trLabel } from "@/lib/label-translate";
 
 type Params = { id: string };
@@ -30,7 +31,7 @@ export async function generateMetadata({ params }: { params: Promise<Params> }):
   const title = locale === "en"
     ? `${projectName.slice(0, 60)} — Project · France Open Data`
     : `${projectName.slice(0, 60)} — Projet · France Open Data`;
-  const amountFmt = p.montant.toLocaleString(locale === "en" ? "en-GB" : "fr-FR");
+  const amountFmt = p.montant.toLocaleString(numLocale(locale));
   const chapitreLabel = trLabel(p.chapitre, locale);
   const description = locale === "en"
     ? `Investment project ${p.year} · €${amountFmt} · ${chapitreLabel}.`

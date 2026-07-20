@@ -8,6 +8,7 @@ import "../../fusion.css";
 import { Navbar, Footer, BlogTimeBars } from "@/components/fusion";
 import { getAllPostSlugs, getPostBySlug } from "@/lib/blog";
 import { readLocale } from "@/lib/seo";
+import { numLocale } from "@/lib/fmt";
 
 /** Lien interne → Next Link (déclenche les drawer intercepts au root).
  *  Lien externe / mailto → <a> classique avec target=_blank. */
@@ -61,7 +62,7 @@ export async function generateMetadata(
 
 function formatDate(iso: string, locale: "fr" | "en"): string {
   try {
-    return new Intl.DateTimeFormat(locale === "en" ? "en-GB" : "fr-FR", { day: "numeric", month: "long", year: "numeric" })
+    return new Intl.DateTimeFormat(numLocale(locale), { day: "numeric", month: "long", year: "numeric" })
       .format(new Date(iso));
   } catch {
     return iso;

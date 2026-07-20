@@ -17,7 +17,7 @@ import Tip from "@/components/fusion/Tip";
 import RelatedArticles, { type ArticlePlaceholder } from "@/components/fusion/RelatedArticles";
 import PageHook from "@/components/fusion/PageHook";
 import PageIntro, { IntroStat } from "@/components/fusion/PageIntro";
-import { fmtDec, fmtInt } from "@/lib/fmt";
+import { fill, fmtDec, fmtInt } from "@/lib/fmt";
 import type { BlogPostMeta } from "@/lib/blog";
 import type { LogementSocialData, SruArrondissementsData } from "@/lib/fusion-data";
 import { useT, useLocale } from "@/lib/localeContext";
@@ -25,11 +25,6 @@ import { trLabel } from "@/lib/label-translate";
 import { slugifyBailleur } from "@/lib/projet-utils";
 import { citySlugFromPathname } from "@/lib/methodology";
 
-const fill = (s: string, vars: Record<string, string | number>) => {
-  let r = s;
-  for (const [k, v] of Object.entries(vars)) r = r.split(`{${k}}`).join(String(v));
-  return r;
-};
 
 /** Produces 5-7 rounded Y-axis ticks covering [min, max] with a nice round
  *  step (1, 2, 5, 10, 25, 50, 100, 250, 500, 1000, …). Returned top→bottom. */

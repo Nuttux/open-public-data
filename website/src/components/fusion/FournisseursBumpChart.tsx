@@ -12,6 +12,7 @@ import { useMemo, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import { useLocale, useT } from "@/lib/localeContext";
 import type { FournisseurRankRow, FournisseursRankingData } from "@/lib/fusion-data";
+import { fill } from "@/lib/fmt";
 
 const GROUP_COLORS: Record<FournisseurRankRow["catGroup"], string> = {
   proprete: "#0a0a0a",
@@ -20,12 +21,6 @@ const GROUP_COLORS: Record<FournisseurRankRow["catGroup"], string> = {
   mobilier: "#c12323",
   it: "#4A7C59",
   autres: "#8a8577",
-};
-
-const fill = (s: string, vars: Record<string, string | number>) => {
-  let r = s;
-  for (const [k, v] of Object.entries(vars)) r = r.split(`{${k}}`).join(String(v));
-  return r;
 };
 
 function fmtM(v: number, locale: string): string {

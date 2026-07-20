@@ -6,6 +6,7 @@ import { Navbar, Footer, ChapitreFiche } from "@/components/fusion";
 import { InvestBackKicker } from "@/components/fusion/EntityPageHeaders";
 import { loadChapitre } from "@/lib/fusion-data";
 import { readLocale } from "@/lib/seo";
+import { numLocale } from "@/lib/fmt";
 import { trLabel } from "@/lib/label-translate";
 
 type Params = { slug: string };
@@ -22,7 +23,7 @@ export async function generateMetadata({ params }: { params: Promise<Params> }):
   }
   const canonical = `/fr/city/paris/investissements/chapitre/${c.slug}`;
   const labelEn = trLabel(c.label, locale);
-  const totalFmt = c.total.toLocaleString(locale === "en" ? "en-GB" : "fr-FR");
+  const totalFmt = c.total.toLocaleString(numLocale(locale));
   const title = locale === "en"
     ? `${labelEn} — Paris investments ${c.year} · France Open Data`
     : `${c.label} — Investissements ${c.year} · France Open Data`;

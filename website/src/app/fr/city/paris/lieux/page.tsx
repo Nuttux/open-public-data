@@ -6,6 +6,7 @@ import LieuxExplorer from "@/components/fusion/LieuxExplorer";
 import PageIntro, { IntroStat } from "@/components/fusion/PageIntro";
 import { loadLieuxIndex } from "@/lib/lieux-data";
 import { readLocale } from "@/lib/seo";
+import { numLocale } from "@/lib/fmt";
 
 export async function generateMetadata(): Promise<Metadata> {
   const locale = await readLocale();
@@ -29,7 +30,7 @@ export default async function LieuxPage() {
     (min, l) => (l.depuis && (min === null || l.depuis < min) ? l.depuis : min),
     null,
   );
-  const fmtM = (n: number) => (n / 1e6).toLocaleString(locale === "en" ? "en-GB" : "fr-FR", { maximumFractionDigits: 0 });
+  const fmtM = (n: number) => (n / 1e6).toLocaleString(numLocale(locale), { maximumFractionDigits: 0 });
 
   return (
     <div className="theme-fusion">

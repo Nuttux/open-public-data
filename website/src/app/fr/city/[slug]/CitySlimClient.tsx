@@ -5,29 +5,30 @@ import Footer from "@/components/fusion/Footer";
 import SectionHead from "@/components/fusion/SectionHead";
 import ChartSource from "@/components/fusion/ChartSource";
 import { useT, useLocale } from "@/lib/localeContext";
+import { numLocale } from "@/lib/fmt";
 import type { AllCommuneEntry } from "@/lib/all-communes";
 
 const fmtInt = (n: number, locale: string) =>
-  n.toLocaleString(locale === "en" ? "en-GB" : "fr-FR");
+  n.toLocaleString(numLocale(locale));
 
 const fmtMillions = (eur: number, locale: string) => {
   if (Math.abs(eur) >= 1e9) {
     return (
-      (eur / 1e9).toLocaleString(locale === "en" ? "en-GB" : "fr-FR", {
+      (eur / 1e9).toLocaleString(numLocale(locale), {
         maximumFractionDigits: 2,
         minimumFractionDigits: 2,
       }) + " Md€"
     );
   }
   return (
-    (eur / 1e6).toLocaleString(locale === "en" ? "en-GB" : "fr-FR", {
+    (eur / 1e6).toLocaleString(numLocale(locale), {
       maximumFractionDigits: 1,
     }) + " M€"
   );
 };
 
 const fmtSigned = (n: number, locale: string) =>
-  n.toLocaleString(locale === "en" ? "en-GB" : "fr-FR", {
+  n.toLocaleString(numLocale(locale), {
     maximumFractionDigits: 0,
     signDisplay: "exceptZero",
   });
@@ -126,7 +127,7 @@ export default function CitySlimClient({
           <section className="fx-wrap" style={{ padding: "0 0 36px" }}>
             <div className="fx-cap-desend">
               <div className="fx-cap-desend-num tnum">
-                {capDesend.toLocaleString(locale === "en" ? "en-GB" : "fr-FR", {
+                {capDesend.toLocaleString(numLocale(locale), {
                   maximumFractionDigits: 1,
                   minimumFractionDigits: 1,
                 })}

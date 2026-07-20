@@ -2,11 +2,12 @@
 
 import type { BudgetPosteFiche, BudgetPosteSubPoste } from "@/lib/fusion-data";
 import { useT, useLocale } from "@/lib/localeContext";
+import { fill, numLocale } from "@/lib/fmt";
 
 type Props = { poste: BudgetPosteFiche };
 
 function makeFmtEur(locale: "fr" | "en") {
-  const locStr = locale === "en" ? "en-GB" : "fr-FR";
+  const locStr = numLocale(locale);
   return (n: number) => {
     if (n >= 1e9) return `${new Intl.NumberFormat(locStr, { maximumFractionDigits: 2 }).format(n / 1e9)} Md €`;
     if (n >= 1e6) return `${Math.round(n / 1e6).toLocaleString(locStr)} M €`;
@@ -385,11 +386,6 @@ export default function PosteFiche({ poste }: Props) {
   const t = useT();
   const { locale } = useLocale();
   const fmtEur = makeFmtEur(locale);
-  const fill = (s: string, vars: Record<string, string | number>) => {
-    let r = s;
-    for (const [k, v] of Object.entries(vars)) r = r.split(`{${k}}`).join(String(v));
-    return r;
-  };
   const kindLabel = poste.kind === "depense" ? t("fx.poste.kind.depense") : t("fx.poste.kind.recette");
   const maxSub = poste.subPostes[0]?.value || 1;
 

@@ -3,14 +3,8 @@
 import Link from "next/link";
 
 import type { ThemeSubventionsFiche } from "@/lib/fusion-data";
-import { fmtCompactEur, fmtInt, fmtDec } from "@/lib/fmt";
+import { fill, fmtCompactEur, fmtInt, fmtDec } from "@/lib/fmt";
 import { useT } from "@/lib/localeContext";
-
-const fill = (s: string, vars: Record<string, string | number>) => {
-  let r = s;
-  for (const [k, v] of Object.entries(vars)) r = r.split(`{${k}}`).join(String(v));
-  return r;
-};
 
 const THEME_COLORS: Record<string, string> = {
   "Social": "#c12323",

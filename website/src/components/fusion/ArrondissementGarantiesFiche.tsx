@@ -2,15 +2,9 @@
 
 import { useEffect } from "react";
 import Link from "next/link";
-import { fmtBillions, fmtDec, fmtInt, fmtMillions } from "@/lib/fmt";
+import { fill, fmtBillions, fmtDec, fmtInt, fmtMillions } from "@/lib/fmt";
 import { slugifyBailleur } from "@/lib/projet-utils";
 import { useT } from "@/lib/localeContext";
-
-const fill = (s: string, vars: Record<string, string | number>) => {
-  let r = s;
-  for (const [k, v] of Object.entries(vars)) r = r.split(`{${k}}`).join(String(v));
-  return r;
-};
 
 type TopBenef = {
   name: string;

@@ -2,15 +2,10 @@
 
 import type { MarchesPageData } from "@/lib/fusion-data";
 import { useT, useLocale } from "@/lib/localeContext";
+import { fill, numLocale } from "@/lib/fmt";
 import ExempleCards, { type ExempleCardItem } from "./ExempleCards";
 
 type SigItem = MarchesPageData["signature"][number];
-
-const fill = (s: string, vars: Record<string, string | number>) => {
-  let r = s;
-  for (const [k, v] of Object.entries(vars)) r = r.split(`{${k}}`).join(String(v));
-  return r;
-};
 
 /** Statut de vie du contrat, précision au jour UTC (cf. ContratFiche :
  *  une milliseconde de différence SSR/client casse l'hydratation). */
@@ -26,7 +21,7 @@ function statut(dateNotification: string, dureeJours: number): "encours" | "term
 export default function MarchesSignature({ items }: { items: SigItem[] }) {
   const t = useT();
   const { locale } = useLocale();
-  const locStr = locale === "en" ? "en-GB" : "fr-FR";
+  const locStr = numLocale(locale);
 
   const fmtEur = (n: number) => {
     if (n >= 1e6) return { v: new Intl.NumberFormat(locStr, { maximumFractionDigits: 1 }).format(n / 1e6), u: t("fx.s.m_eur") };

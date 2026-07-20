@@ -11,6 +11,8 @@ import { trLabel } from "@/lib/label-translate";
 import { useTrack } from "@/lib/analyticsContext";
 import { useDebouncedTrack, hashQuery, queryShape } from "@/lib/analytics-helpers";
 import { normSearch, expandQuery, matchExpanded } from "@/lib/search-synonyms";
+import { fill, numLocale } from "@/lib/fmt";
+import { useFmtEur } from "@/lib/use-fmt";
 
 function themeColor(theme: string | null): string {
   if (!theme) return "#9099a6";
@@ -75,12 +77,6 @@ type Props = {
 const UNCLASSIFIED_THEME = "__unclassified__";
 const PAGE_SIZE = 48;
 
-const fill = (s: string, vars: Record<string, string | number>) => {
-  let r = s;
-  for (const [k, v] of Object.entries(vars)) r = r.split(`{${k}}`).join(String(v));
-  return r;
-};
-
 // Curated to span themes & scales: bailleur social, arts operator,
 // university, emergency ops, humanitarian NGO, theatre, foundation.
 // Verified against 2024 data.
@@ -104,7 +100,7 @@ export default function QuiRecoitExplorer({
 }: Props) {
   const t = useT();
   const { locale } = useLocale();
-  const locStr = locale === "en" ? "en-GB" : "fr-FR";
+  const locStr = numLocale(locale);
   const pathname = usePathname();
   const citySlug = citySlugFromPathname(pathname);
   const cityBasePath = `/fr/city/${citySlug}/subventions`;
@@ -112,12 +108,7 @@ export default function QuiRecoitExplorer({
     ? "/data/subventions/beneficiaires_search.json"
     : `/data/${citySlug}/subventions/beneficiaires_search.json`;
 
-  const fmtEur = (n: number) => {
-    if (n >= 1e9) return { v: new Intl.NumberFormat(locStr, { maximumFractionDigits: 2 }).format(n / 1e9), u: t("fx.s.md_eur") };
-    if (n >= 1e6) return { v: new Intl.NumberFormat(locStr, { maximumFractionDigits: 1 }).format(n / 1e6), u: t("fx.s.m_eur") };
-    if (n >= 1e3) return { v: new Intl.NumberFormat(locStr, { maximumFractionDigits: 0 }).format(n / 1e3), u: "k €" };
-    return { v: new Intl.NumberFormat(locStr).format(n), u: "€" };
-  };
+  const fmtEur = useFmtEur();
 
   const [query, setQuery] = useState("");
   const [theme, setTheme] = useState("");

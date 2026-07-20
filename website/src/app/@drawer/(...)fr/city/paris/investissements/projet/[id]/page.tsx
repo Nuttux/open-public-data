@@ -5,6 +5,7 @@ import VoirLeLieu from "@/components/fusion/VoirLeLieu";
 import { loadProjet, resolveProjetPhoto } from "@/lib/fusion-data";
 import { lieuForProjet } from "@/lib/lieux-data";
 import { readLocale } from "@/lib/seo";
+import { numLocale } from "@/lib/fmt";
 
 type Params = { id: string };
 
@@ -28,7 +29,7 @@ export default async function RootDrawerProjetPage({ params }: { params: Promise
 
   const montantStr = projet.montant >= 1e6
     ? `${(projet.montant / 1e6).toFixed(1).replace(".", ",")} ${locale === "en" ? "€M" : "M€"}`
-    : `${Math.round(projet.montant / 1000).toLocaleString(locale === "en" ? "en-GB" : "fr-FR")} ${locale === "en" ? "€k" : "k€"}`;
+    : `${Math.round(projet.montant / 1000).toLocaleString(numLocale(locale))} ${locale === "en" ? "€k" : "k€"}`;
 
   const shareText = locale === "en"
     ? `City of Paris investment ${projet.year} · ${displayName} · ${montantStr}`

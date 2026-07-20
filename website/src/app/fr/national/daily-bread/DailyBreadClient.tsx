@@ -5,6 +5,7 @@ import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import Navbar from "@/components/fusion/Navbar";
 import Footer from "@/components/fusion/Footer";
 import { useT, useLocale } from "@/lib/localeContext";
+import { numLocale } from "@/lib/fmt";
 import { useCountUp } from "@/lib/use-count-up";
 import { useRevealOnScroll } from "@/lib/use-reveal-on-scroll";
 import type { DailyBreadConstants } from "@/lib/national-data";
@@ -97,7 +98,7 @@ const PARTS_OPTIONS = [
 ];
 
 const fmtEur = (n: number, locale: string, decimals = 0) =>
-  n.toLocaleString(locale === "en" ? "en-GB" : "fr-FR", {
+  n.toLocaleString(numLocale(locale), {
     maximumFractionDigits: decimals,
     minimumFractionDigits: decimals,
   });
@@ -891,7 +892,7 @@ export default function DailyBreadClient({
         tagFr: "SANTÉ · SÉCURITÉ SOCIALE",
         tagEn: "HEALTH · SOCIAL SECURITY",
         number: (cnamPC / consult).toLocaleString(
-          locale === "en" ? "en-GB" : "fr-FR",
+          numLocale(locale),
           { maximumFractionDigits: 1 },
         ),
         claimAFr: "consultations généralistes",
@@ -905,7 +906,7 @@ export default function DailyBreadClient({
         viaDetailFr: `Branche maladie : ${fmtEur(cnamPC, locale, 0)} €/mois/habitant.`,
         viaDetailEn: `Health branch: €${fmtEur(cnamPC, locale, 0)}/month/inhabitant.`,
         headline: `≈ ${(cnamPC / consult).toLocaleString(
-          locale === "en" ? "en-GB" : "fr-FR",
+          numLocale(locale),
           { maximumFractionDigits: 1 },
         )}`,
         unitFr: "consultations / mois / hab",
@@ -921,7 +922,7 @@ export default function DailyBreadClient({
         tagFr: "RETRAITES · CNAV",
         tagEn: "PENSIONS · CNAV",
         number: `${((cnavPC / pension) * 100).toLocaleString(
-          locale === "en" ? "en-GB" : "fr-FR",
+          numLocale(locale),
           { maximumFractionDigits: 0 },
         )} %`,
         claimAFr: "d'une pension moyenne",
@@ -935,7 +936,7 @@ export default function DailyBreadClient({
         viaDetailFr: `Branche retraite : ${fmtEur(cnavPC, locale, 0)} €/mois/habitant.`,
         viaDetailEn: `Pension branch: €${fmtEur(cnavPC, locale, 0)}/month/inhabitant.`,
         headline: `≈ ${((cnavPC / pension) * 100).toLocaleString(
-          locale === "en" ? "en-GB" : "fr-FR",
+          numLocale(locale),
           { maximumFractionDigits: 0 },
         )} %`,
         unitFr: "d'une pension moyenne / hab",
@@ -951,7 +952,7 @@ export default function DailyBreadClient({
         tagFr: "ÉCOLE · ÉTAT",
         tagEn: "SCHOOL · STATE",
         number: (educPC / eleveJour).toLocaleString(
-          locale === "en" ? "en-GB" : "fr-FR",
+          numLocale(locale),
           { maximumFractionDigits: 2 },
         ),
         claimAFr: "jours d'école",
@@ -965,7 +966,7 @@ export default function DailyBreadClient({
         viaDetailFr: `Éducation État : ${fmtEur(educPC, locale, 0)} €/mois/habitant.`,
         viaDetailEn: `State education: €${fmtEur(educPC, locale, 0)}/month/inhab.`,
         headline: `≈ ${(educPC / eleveJour).toLocaleString(
-          locale === "en" ? "en-GB" : "fr-FR",
+          numLocale(locale),
           { maximumFractionDigits: 2 },
         )}`,
         unitFr: "jours d'école / mois / hab",
@@ -981,7 +982,7 @@ export default function DailyBreadClient({
         tagFr: "TRANSPORT · COLLECTIVITÉS",
         tagEn: "TRANSPORT · LOCAL",
         number: (blocPC / ticket).toLocaleString(
-          locale === "en" ? "en-GB" : "fr-FR",
+          numLocale(locale),
           { maximumFractionDigits: 0 },
         ),
         claimAFr: "trajets urbains",
@@ -995,7 +996,7 @@ export default function DailyBreadClient({
         viaDetailFr: `Bloc communal : ${fmtEur(blocPC, locale, 0)} €/mois/habitant.`,
         viaDetailEn: `Municipal block: €${fmtEur(blocPC, locale, 0)}/month/inhab.`,
         headline: `≈ ${(blocPC / ticket).toLocaleString(
-          locale === "en" ? "en-GB" : "fr-FR",
+          numLocale(locale),
           { maximumFractionDigits: 0 },
         )}`,
         unitFr: "tickets transport / mois / hab",
@@ -1169,7 +1170,7 @@ export default function DailyBreadClient({
                     }))}
                     ariaLabel={t("db.hero.editable.aria.salaire")}
                     pickerLabel={t("db.form.salaire_label")}
-                    locale={locale === "en" ? "en-GB" : "fr-FR"}
+                    locale={numLocale(locale)}
                   />
                   ,{" "}
                   <EditableSelect<number>
@@ -1216,7 +1217,7 @@ export default function DailyBreadClient({
                     }))}
                     ariaLabel={t("db.hero.editable.aria.salaire")}
                     pickerLabel={t("db.form.salaire_label")}
-                    locale={locale === "en" ? "en-GB" : "fr-FR"}
+                    locale={numLocale(locale)}
                   />
                 </>
               ) : (
@@ -2554,7 +2555,7 @@ function BarList({
                   )}
                   <span className="db-p-zoom-bar-natl-pct">
                     {(item.share * 100).toLocaleString(
-                      locale === "en" ? "en-GB" : "fr-FR",
+                      numLocale(locale),
                       { maximumFractionDigits: 0 },
                     )}{" "}
                     %

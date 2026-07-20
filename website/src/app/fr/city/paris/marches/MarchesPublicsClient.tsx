@@ -17,18 +17,13 @@ import MarchesSignature from "@/components/fusion/MarchesSignature";
 import RelatedArticles, { type ArticlePlaceholder } from "@/components/fusion/RelatedArticles";
 import PageHook from "@/components/fusion/PageHook";
 import PageIntro, { IntroStat } from "@/components/fusion/PageIntro";
-import { fmtBillions, fmtDec, fmtInt } from "@/lib/fmt";
+import { fill, fmtBillions, fmtDec, fmtInt } from "@/lib/fmt";
 import type { BlogPostMeta } from "@/lib/blog";
 import type { MarchesPageData , FournisseursRankingData } from "@/lib/fusion-data";
 import { useT } from "@/lib/localeContext";
 
 type MarchesIndex = { availableYears?: number[] };
 
-const fill = (s: string, vars: Record<string, string | number>) => {
-  let r = s;
-  for (const [k, v] of Object.entries(vars)) r = r.split(`{${k}}`).join(String(v));
-  return r;
-};
 
 const MP_PLACEHOLDERS: ArticlePlaceholder[] = [
   {

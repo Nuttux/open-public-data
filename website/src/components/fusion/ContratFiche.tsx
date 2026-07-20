@@ -4,6 +4,8 @@ import Link from "next/link";
 import type { ContratFiche as ContratFicheType, ContratProjetLink, ContratRanking, MarcheVulgarization, SireneCompany } from "@/lib/fusion-data";
 import { normalizeObjet } from "@/lib/objet-normalizer";
 import { useT, useLocale } from "@/lib/localeContext";
+import { cap, numLocale } from "@/lib/fmt";
+import { useFmtEur } from "@/lib/use-fmt";
 import { trLabel } from "@/lib/label-translate";
 import Tip from "./Tip";
 
@@ -22,14 +24,9 @@ export default function ContratFiche({
 }) {
   const t = useT();
   const { locale } = useLocale();
-  const locStr = locale === "en" ? "en-GB" : "fr-FR";
+  const locStr = numLocale(locale);
 
-  const fmtEur = (n: number) => {
-    if (n >= 1e9) return { v: new Intl.NumberFormat(locStr, { maximumFractionDigits: 2 }).format(n / 1e9), u: t("fx.s.md_eur") };
-    if (n >= 1e6) return { v: new Intl.NumberFormat(locStr, { maximumFractionDigits: 1 }).format(n / 1e6), u: t("fx.s.m_eur") };
-    if (n >= 1e3) return { v: new Intl.NumberFormat(locStr, { maximumFractionDigits: 0 }).format(n / 1e3), u: "k €" };
-    return { v: new Intl.NumberFormat(locStr).format(n), u: "€" };
-  };
+  const fmtEur = useFmtEur();
 
   const fmtDate = (iso: string) => {
     if (!iso) return "—";
@@ -39,10 +36,6 @@ export default function ContratFiche({
       return iso;
     }
   };
-
-  // Capitalise la première lettre de chaque phrase (sortie LLM en lowercase).
-  const cap = (s?: string | null) =>
-    s ? s.replace(/(^|[.!?]\s+)([a-zà-ÿ])/g, (_, sep, c) => sep + c.toUpperCase()) : s;
 
   const { v: vMax, u: uMax } = fmtEur(contrat.montantMax);
   const dureeAnnees = contrat.dureeJours > 0

@@ -14,6 +14,7 @@
 
 import Link from "next/link";
 import { useT, useLocale } from "@/lib/localeContext";
+import { sufOrdinal } from "@/lib/fmt";
 
 const fill = (s: string, vars: Record<string, string | number>) => {
   let r = s;
@@ -107,7 +108,7 @@ export function BailleurKickerText({ type }: { type?: string | null }) {
 export function ArrInvestTitleAndLede({ arr }: { arr: number }) {
   const t = useT();
   const { locale } = useLocale();
-  const suf = locale === "en" ? (arr === 1 ? "st" : "th") : arr === 1 ? "er" : "ᵉ";
+  const suf = sufOrdinal(arr, locale);
   return (
     <>
       <h1 className="fx-page-title">

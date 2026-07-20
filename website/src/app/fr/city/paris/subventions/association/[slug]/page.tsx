@@ -8,6 +8,7 @@ import { loadAssociation, loadSubventionVulgarization, loadBeneficiaireGrounded 
 import { lieuForBeneficiaire } from "@/lib/lieux-data";
 import VoirLeLieu from "@/components/fusion/VoirLeLieu";
 import { readLocale } from "@/lib/seo";
+import { numLocale } from "@/lib/fmt";
 
 type Params = { slug: string };
 
@@ -21,7 +22,7 @@ export async function generateMetadata({ params }: { params: Promise<Params> }):
       robots: { index: false },
     };
   }
-  const amountFmt = a.totalAmount.toLocaleString(locale === "en" ? "en-GB" : "fr-FR");
+  const amountFmt = a.totalAmount.toLocaleString(numLocale(locale));
   const title = locale === "en"
     ? `${a.name} — Beneficiary · France Open Data`
     : `${a.name} — Association · France Open Data`;

@@ -11,18 +11,19 @@ import CofogCompareBars, { type CofogCompareRow } from "@/components/fusion/Cofo
 import DebtLineChart, { type DebtSeriesProp } from "@/components/fusion/DebtLineChart";
 import FranceMacroNav from "@/components/fusion/FranceMacroNav";
 import { useT, useLocale } from "@/lib/localeContext";
+import { numLocale } from "@/lib/fmt";
 import type { EurostatFiscalite, FiscaliteRow } from "@/lib/national-data";
 
 type Unit = "pc_gdp" | "mio_eur";
 
 const fmtPct = (v: number, locale: string) =>
-  v.toLocaleString(locale === "en" ? "en-GB" : "fr-FR", {
+  v.toLocaleString(numLocale(locale), {
     maximumFractionDigits: 1,
     minimumFractionDigits: 1,
   });
 
 const fmtBillions = (mio: number, locale: string) =>
-  (mio / 1000).toLocaleString(locale === "en" ? "en-GB" : "fr-FR", {
+  (mio / 1000).toLocaleString(numLocale(locale), {
     maximumFractionDigits: 0,
   });
 

@@ -5,6 +5,7 @@ import { useState } from "react";
 
 import { ARRONDISSEMENT_PATHS, C_AR_BY_INDEX } from "./paris-arrondissements";
 import { useT, useLocale } from "@/lib/localeContext";
+import { numLocale } from "@/lib/fmt";
 import { useTrack } from "@/lib/analyticsContext";
 import { getClickCoords } from "@/lib/analytics-helpers";
 
@@ -59,7 +60,7 @@ export default function ParisChoropleth({
 }: Props) {
   const t = useT();
   const { locale } = useLocale();
-  const locStr = locale === "en" ? "en-GB" : "fr-FR";
+  const locStr = numLocale(locale);
   const suf = locale === "en" ? sufEn : sufFr;
   const mdLabel = t("fx.s.md_eur");
   const mLabel = t("fx.s.m_eur");

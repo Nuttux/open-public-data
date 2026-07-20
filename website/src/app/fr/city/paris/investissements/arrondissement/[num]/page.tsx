@@ -8,6 +8,7 @@ import LieuxLies from "@/components/fusion/LieuxLies";
 import { loadArrondissement } from "@/lib/fusion-data";
 import { loadLieuxIndex } from "@/lib/lieux-data";
 import { readLocale } from "@/lib/seo";
+import { numLocale } from "@/lib/fmt";
 
 type Params = { num: string };
 
@@ -34,7 +35,7 @@ export async function generateMetadata({ params }: { params: Promise<Params> }):
   const arrLabel = locale === "en"
     ? `${a.arr}${sufEn(a.arr)} arrondissement`
     : `${a.arr}${sufFr(a.arr)} arrondissement`;
-  const totalFmt = a.total.toLocaleString(locale === "en" ? "en-GB" : "fr-FR");
+  const totalFmt = a.total.toLocaleString(numLocale(locale));
   const title = locale === "en"
     ? `${arrLabel} — Paris investments ${a.year} · France Open Data`
     : `${arrLabel} — Investissements ${a.year} · France Open Data`;

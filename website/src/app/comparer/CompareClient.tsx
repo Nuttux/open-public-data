@@ -6,6 +6,7 @@ import Footer from "@/components/fusion/Footer";
 import SectionHead from "@/components/fusion/SectionHead";
 import ChartSource from "@/components/fusion/ChartSource";
 import { useT, useLocale } from "@/lib/localeContext";
+import { numLocale } from "@/lib/fmt";
 import type { City } from "@/lib/cities";
 import type { CommuneData } from "@/lib/commune-data";
 
@@ -63,19 +64,19 @@ type SearchHit = {
 };
 
 const fmtInt = (n: number, locale: string) =>
-  Math.round(n).toLocaleString(locale === "en" ? "en-GB" : "fr-FR");
+  Math.round(n).toLocaleString(numLocale(locale));
 
 const fmtMillions = (eur: number, locale: string) => {
   if (Math.abs(eur) >= 1e9) {
     return (
-      (eur / 1e9).toLocaleString(locale === "en" ? "en-GB" : "fr-FR", {
+      (eur / 1e9).toLocaleString(numLocale(locale), {
         maximumFractionDigits: 2,
         minimumFractionDigits: 2,
       }) + " Md€"
     );
   }
   return (
-    (eur / 1e6).toLocaleString(locale === "en" ? "en-GB" : "fr-FR", {
+    (eur / 1e6).toLocaleString(numLocale(locale), {
       maximumFractionDigits: 0,
     }) + " M€"
   );

@@ -8,6 +8,7 @@ import ChartSource from "@/components/fusion/ChartSource";
 import CofogCompareBars, { type CofogCompareRow } from "@/components/fusion/CofogCompareBars";
 import FranceMacroNav from "@/components/fusion/FranceMacroNav";
 import { useT, useLocale } from "@/lib/localeContext";
+import { numLocale } from "@/lib/fmt";
 import type { EurostatCofog } from "@/lib/national-data";
 
 export default function ApuClient({ cofog }: { cofog: EurostatCofog | null }) {
@@ -78,7 +79,7 @@ export default function ApuClient({ cofog }: { cofog: EurostatCofog | null }) {
                 <CountUpOnReveal
                   value={totalFr}
                   format={(n) =>
-                    n.toLocaleString(locale === "en" ? "en-GB" : "fr-FR", {
+                    n.toLocaleString(numLocale(locale), {
                       maximumFractionDigits: 1,
                       minimumFractionDigits: 1,
                     })
@@ -93,7 +94,7 @@ export default function ApuClient({ cofog }: { cofog: EurostatCofog | null }) {
                     {t("apu.hero.caption_eu")
                       .replace(
                         "{eu}",
-                        totalEu.toLocaleString(locale === "en" ? "en-GB" : "fr-FR", {
+                        totalEu.toLocaleString(numLocale(locale), {
                           maximumFractionDigits: 1,
                           minimumFractionDigits: 1,
                         }),
@@ -101,7 +102,7 @@ export default function ApuClient({ cofog }: { cofog: EurostatCofog | null }) {
                       .replace(
                         "{gap}",
                         (totalGap >= 0 ? "+" : "") +
-                          totalGap.toLocaleString(locale === "en" ? "en-GB" : "fr-FR", {
+                          totalGap.toLocaleString(numLocale(locale), {
                             maximumFractionDigits: 1,
                             minimumFractionDigits: 1,
                           }),

@@ -4,26 +4,13 @@ import Link from "next/link";
 import type { ChapitreFiche as ChapitreFicheType } from "@/lib/fusion-data";
 import ProjetThumb from "./ProjetThumb";
 import { useT, useLocale } from "@/lib/localeContext";
-
-const fill = (s: string, vars: Record<string, string | number>) => {
-  let r = s;
-  for (const [k, v] of Object.entries(vars)) r = r.split(`{${k}}`).join(String(v));
-  return r;
-};
+import { fill, sufOrdinal } from "@/lib/fmt";
+import { useFmtEur } from "@/lib/use-fmt";
 
 export default function ChapitreFiche({ chap }: { chap: ChapitreFicheType }) {
   const t = useT();
   const { locale } = useLocale();
-  const locStr = locale === "en" ? "en-GB" : "fr-FR";
-
-  const fmtEur = (n: number) => {
-    if (n >= 1e9) return { v: new Intl.NumberFormat(locStr, { maximumFractionDigits: 2 }).format(n / 1e9), u: t("fx.s.md_eur") };
-    if (n >= 1e6) return { v: new Intl.NumberFormat(locStr, { maximumFractionDigits: 1 }).format(n / 1e6), u: t("fx.s.m_eur") };
-    if (n >= 1e3) return { v: new Intl.NumberFormat(locStr, { maximumFractionDigits: 0 }).format(n / 1e3), u: "k €" };
-    return { v: new Intl.NumberFormat(locStr).format(n), u: "€" };
-  };
-
-  const suf = (n: number) => (locale === "en" ? (n === 1 ? "st" : "th") : n === 1 ? "er" : "ᵉ");
+  const fmtEur = useFmtEur();
 
   const { v, u } = fmtEur(chap.total);
   const decimal = locale === "en" ? "." : ",";
@@ -137,7 +124,7 @@ export default function ChapitreFiche({ chap }: { chap: ChapitreFicheType }) {
                   }}
                 >
                   <span style={{ fontFamily: "var(--f-mono)", fontSize: 12, color: "var(--ocre)", minWidth: 32 }}>
-                    {a.arr}{suf(a.arr)}
+                    {a.arr}{sufOrdinal(a.arr, locale)}
                   </span>
                   <span className="muted" style={{ fontFamily: "var(--f-mono)", fontSize: 11 }}>
                     {a.count} {a.count > 1 ? t("fx.fiche.chap.projet_p") : t("fx.fiche.chap.projet_s")}
@@ -179,7 +166,7 @@ export default function ChapitreFiche({ chap }: { chap: ChapitreFicheType }) {
                   <div className="fx-arr-top-name">{p.name.slice(0, 80)}</div>
                   <div className="fx-arr-top-amount">{f.v} <span className="u">{f.u}</span></div>
                   <div className="fx-arr-top-chap">
-                    {p.arr > 0 ? `${p.arr}${suf(p.arr)} arr.` : t("fx.fiche.chap.transverse")}
+                    {p.arr > 0 ? `${p.arr}${sufOrdinal(p.arr, locale)} arr.` : t("fx.fiche.chap.transverse")}
                   </div>
                 </div>
               </Link>

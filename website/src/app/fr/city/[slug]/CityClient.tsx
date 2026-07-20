@@ -8,6 +8,7 @@ import BarRow, { type BarRowItem } from "@/components/fusion/BarRow";
 import DebtLineChart, { type DebtSeriesProp } from "@/components/fusion/DebtLineChart";
 import FranceCitiesMap, { type FranceCityPoint } from "@/components/fusion/FranceCitiesMap";
 import { useT, useLocale } from "@/lib/localeContext";
+import { numLocale } from "@/lib/fmt";
 import type { City } from "@/lib/cities";
 import type { CommuneData, CommuneMarches, KpiPoint } from "@/lib/commune-data";
 
@@ -15,12 +16,12 @@ type Unit = "total" | "perhab";
 
 const fmtMillionsBig = (eur: number, locale: string) => {
   if (Math.abs(eur) >= 1e9) {
-    return (eur / 1e9).toLocaleString(locale === "en" ? "en-GB" : "fr-FR", {
+    return (eur / 1e9).toLocaleString(numLocale(locale), {
       maximumFractionDigits: 2,
       minimumFractionDigits: 2,
     });
   }
-  return (eur / 1e6).toLocaleString(locale === "en" ? "en-GB" : "fr-FR", {
+  return (eur / 1e6).toLocaleString(numLocale(locale), {
     maximumFractionDigits: 0,
   });
 };
@@ -31,10 +32,10 @@ const fmtUnitLabel = (eur: number, locale: string) => {
 };
 
 const fmtInt = (n: number, locale: string) =>
-  n.toLocaleString(locale === "en" ? "en-GB" : "fr-FR");
+  n.toLocaleString(numLocale(locale));
 
 const fmtSigned = (n: number, locale: string) =>
-  n.toLocaleString(locale === "en" ? "en-GB" : "fr-FR", {
+  n.toLocaleString(numLocale(locale), {
     maximumFractionDigits: 0,
     signDisplay: "exceptZero",
   });
@@ -363,7 +364,7 @@ export default function CityClient({
           <section className="fx-wrap" style={{ padding: "0 0 36px" }}>
             <div className="fx-cap-desend">
               <div className="fx-cap-desend-num tnum">
-                {capDesend.years.toLocaleString(locale === "en" ? "en-GB" : "fr-FR", {
+                {capDesend.years.toLocaleString(numLocale(locale), {
                   maximumFractionDigits: 1,
                   minimumFractionDigits: 1,
                 })}

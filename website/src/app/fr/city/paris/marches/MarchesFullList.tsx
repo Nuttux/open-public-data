@@ -6,12 +6,7 @@ import { trLabel } from "@/lib/label-translate";
 import { useTrack } from "@/lib/analyticsContext";
 import { useDebouncedTrack, hashQuery, queryShape } from "@/lib/analytics-helpers";
 import { normSearch, expandQuery, matchExpanded } from "@/lib/search-synonyms";
-
-const fill = (s: string, vars: Record<string, string | number>) => {
-  let r = s;
-  for (const [k, v] of Object.entries(vars)) r = r.split(`{${k}}`).join(String(v));
-  return r;
-};
+import { fill, numLocale } from "@/lib/fmt";
 
 type Item = {
   titulaire: string;
@@ -28,7 +23,7 @@ const PAGE_SIZE = 50;
 export default function MarchesFullList({ items }: { items: Item[] }) {
   const t = useT();
   const { locale } = useLocale();
-  const locStr = locale === "en" ? "en-GB" : "fr-FR";
+  const locStr = numLocale(locale);
 
   const fmtEur = (n: number) => {
     if (n >= 1e9) return new Intl.NumberFormat(locStr, { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(n / 1e9) + " " + t("fx.s.md_eur");

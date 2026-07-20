@@ -2,18 +2,8 @@
 
 import { useState } from "react";
 import type { BailleurFiche as BailleurFicheType } from "@/lib/fusion-data";
-import { fmtBillions, fmtDec, fmtInt, fmtMillions } from "@/lib/fmt";
+import { cap, fill, fmtBillions, fmtDec, fmtInt, fmtMillions } from "@/lib/fmt";
 import { useT } from "@/lib/localeContext";
-
-const fill = (s: string, vars: Record<string, string | number>) => {
-  let r = s;
-  for (const [k, v] of Object.entries(vars)) r = r.split(`{${k}}`).join(String(v));
-  return r;
-};
-
-// Capitalise la première lettre de chaque phrase (homogène avec les autres fiches).
-const cap = (s?: string | null) =>
-  s ? s.replace(/(^|[.!?]\s+)([a-zà-ÿ])/g, (_, sep, c) => sep + c.toUpperCase()) : s;
 
 const EMPRUNTS_PREVIEW = 10;
 

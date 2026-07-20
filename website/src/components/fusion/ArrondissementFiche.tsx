@@ -4,27 +4,14 @@ import Link from "next/link";
 import type { ArrondissementFiche as ArrondissementFicheType } from "@/lib/fusion-data";
 import ProjetThumb from "./ProjetThumb";
 import { useT, useLocale } from "@/lib/localeContext";
+import { fill } from "@/lib/fmt";
+import { useFmtEur } from "@/lib/use-fmt";
 import { trLabel } from "@/lib/label-translate";
-
-const fill = (s: string, vars: Record<string, string | number>) => {
-  let r = s;
-  for (const [k, v] of Object.entries(vars)) r = r.split(`{${k}}`).join(String(v));
-  return r;
-};
 
 export default function ArrondissementFiche({ arr }: { arr: ArrondissementFicheType }) {
   const t = useT();
   const { locale } = useLocale();
-  const locStr = locale === "en" ? "en-GB" : "fr-FR";
-
-  const fmtEur = (n: number) => {
-    if (n >= 1e9) return { v: new Intl.NumberFormat(locStr, { maximumFractionDigits: 2 }).format(n / 1e9), u: t("fx.s.md_eur") };
-    if (n >= 1e6) return { v: new Intl.NumberFormat(locStr, { maximumFractionDigits: 1 }).format(n / 1e6), u: t("fx.s.m_eur") };
-    if (n >= 1e3) return { v: new Intl.NumberFormat(locStr, { maximumFractionDigits: 0 }).format(n / 1e3), u: "k €" };
-    return { v: new Intl.NumberFormat(locStr).format(n), u: "€" };
-  };
-
-  const _suf = (n: number) => (locale === "en" ? (n === 1 ? "st" : "th") : n === 1 ? "er" : "ᵉ");
+  const fmtEur = useFmtEur();
 
   const { v, u } = fmtEur(arr.total);
 

@@ -8,6 +8,7 @@ import VoirLeLieu from "@/components/fusion/VoirLeLieu";
 import { loadContrat, loadContratProjet, loadContratRanking, loadMarcheVulgarization, loadSirene } from "@/lib/fusion-data";
 import { lieuForMarche, lieuForProjet } from "@/lib/lieux-data";
 import { readLocale } from "@/lib/seo";
+import { numLocale } from "@/lib/fmt";
 import { normalizeObjet } from "@/lib/objet-normalizer";
 
 type Params = { numero: string };
@@ -31,7 +32,7 @@ export async function generateMetadata({ params }: { params: Promise<Params> }):
   const title = locale === "en"
     ? `${objetSnippet} — Contract ${c.numero} · France Open Data`
     : `${objetSnippet} — Marché ${c.numero} · France Open Data`;
-  const amountFmt = c.montantMax.toLocaleString(locale === "en" ? "en-GB" : "fr-FR");
+  const amountFmt = c.montantMax.toLocaleString(numLocale(locale));
   const description = locale === "en"
     ? `Contract ${c.numero} notified in ${c.year} to ${c.fournisseur}. Max envelope €${amountFmt}.`
     : `Contrat ${c.numero} notifié en ${c.year} à ${c.fournisseur}. Enveloppe max ${amountFmt} €.`;

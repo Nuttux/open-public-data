@@ -7,6 +7,7 @@ import HeroNumber from "@/components/fusion/HeroNumber";
 import ChartSource from "@/components/fusion/ChartSource";
 import FranceMacroNav from "@/components/fusion/FranceMacroNav";
 import { useT, useLocale } from "@/lib/localeContext";
+import { numLocale } from "@/lib/fmt";
 import type { EtatLFI, EtatMission } from "@/lib/national-data";
 
 type Unit = "cp" | "ae";
@@ -14,19 +15,19 @@ type Unit = "cp" | "ae";
 const REMB_LABEL = "Remboursements et dégrèvements";
 
 const fmtBillions = (eur: number, locale: string) =>
-  (eur / 1e9).toLocaleString(locale === "en" ? "en-GB" : "fr-FR", {
+  (eur / 1e9).toLocaleString(numLocale(locale), {
     maximumFractionDigits: 1,
     minimumFractionDigits: 1,
   });
 
 const fmtMillions = (eur: number, locale: string) =>
-  (eur / 1e6).toLocaleString(locale === "en" ? "en-GB" : "fr-FR", {
+  (eur / 1e6).toLocaleString(numLocale(locale), {
     maximumFractionDigits: 0,
   });
 
 const fmtPct = (n: number, total: number, locale: string) => {
   if (!total) return "";
-  return ((n / total) * 100).toLocaleString(locale === "en" ? "en-GB" : "fr-FR", {
+  return ((n / total) * 100).toLocaleString(numLocale(locale), {
     maximumFractionDigits: 1,
     minimumFractionDigits: 1,
   });
@@ -174,7 +175,7 @@ export default function EtatClient({
                           "{delta}",
                           (totalYoyPct > 0 ? "+" : "") +
                             totalYoyPct.toLocaleString(
-                              locale === "en" ? "en-GB" : "fr-FR",
+                              numLocale(locale),
                               { maximumFractionDigits: 1, minimumFractionDigits: 1 },
                             ),
                         )
@@ -226,7 +227,7 @@ export default function EtatClient({
                               )}
                             >
                               {m.yoyPct > 0 ? "+" : ""}
-                              {m.yoyPct.toLocaleString(locale === "en" ? "en-GB" : "fr-FR", {
+                              {m.yoyPct.toLocaleString(numLocale(locale), {
                                 maximumFractionDigits: 1,
                                 minimumFractionDigits: 1,
                               })}{" %"}

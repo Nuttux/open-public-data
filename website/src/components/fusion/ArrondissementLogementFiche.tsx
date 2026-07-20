@@ -3,13 +3,7 @@
 import Link from "next/link";
 import type { ArrondissementLogementData } from "@/lib/fusion-data";
 import { useT } from "@/lib/localeContext";
-import { fmtDec, fmtInt } from "@/lib/fmt";
-
-const fill = (s: string, vars: Record<string, string | number>) => {
-  let r = s;
-  for (const [k, v] of Object.entries(vars)) r = r.split(`{${k}}`).join(String(v));
-  return r;
-};
+import { fill, fmtDec, fmtInt } from "@/lib/fmt";
 
 export default function ArrondissementLogementFiche({
   data,

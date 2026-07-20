@@ -18,7 +18,7 @@ import SubventionsBeeswarm from "@/components/fusion/SubventionsBeeswarm";
 import RelatedArticles, { type ArticlePlaceholder } from "@/components/fusion/RelatedArticles";
 import PageHook from "@/components/fusion/PageHook";
 import PageIntro, { IntroStat } from "@/components/fusion/PageIntro";
-import { fmtBillions, fmtDec, fmtInt, fmtMillions } from "@/lib/fmt";
+import { fill, fmtBillions, fmtDec, fmtInt, fmtMillions } from "@/lib/fmt";
 import type { BlogPostMeta } from "@/lib/blog";
 import type { QuiRecoitData } from "@/lib/fusion-data";
 import { slugifyLabel } from "@/lib/projet-utils";
@@ -26,11 +26,6 @@ import { useT } from "@/lib/localeContext";
 
 type QuiRecoitIndex = { availableYears: number[]; previewYears?: number[] };
 
-const fill = (s: string, vars: Record<string, string | number>) => {
-  let r = s;
-  for (const [k, v] of Object.entries(vars)) r = r.split(`{${k}}`).join(String(v));
-  return r;
-};
 
 const QR_PLACEHOLDERS: ArticlePlaceholder[] = [
   {

@@ -8,6 +8,7 @@ import VoirLeLieu from "@/components/fusion/VoirLeLieu";
 import { loadFournisseur, loadSirene } from "@/lib/fusion-data";
 import { lieuForBeneficiaire } from "@/lib/lieux-data";
 import { readLocale } from "@/lib/seo";
+import { numLocale } from "@/lib/fmt";
 
 type Params = { siren: string };
 
@@ -25,7 +26,7 @@ export async function generateMetadata({ params }: { params: Promise<Params> }):
   // même SIREN, donc l'URL stable est le SIREN, pas le SIRET du premier
   // établissement rencontré.
   const canonical = `/fr/city/paris/marches/fournisseur/${f.siren || f.siret}`;
-  const amountFmt = f.totalAmount.toLocaleString(locale === "en" ? "en-GB" : "fr-FR");
+  const amountFmt = f.totalAmount.toLocaleString(numLocale(locale));
   const title = locale === "en"
     ? `${f.nom} — Supplier · France Open Data`
     : `${f.nom} — Fournisseur · France Open Data`;

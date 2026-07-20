@@ -4,10 +4,11 @@ import { ArrondissementFiche, DetailDrawer } from "@/components/fusion";
 import LieuxLies from "@/components/fusion/LieuxLies";
 import { loadArrondissement } from "@/lib/fusion-data";
 import { loadLieuxIndex } from "@/lib/lieux-data";
+import { sufOrdinal } from "@/lib/fmt";
 
 type Params = { num: string };
 
-const suf = (n: number) => (n === 1 ? "er" : "ᵉ");
+const suf = (n: number) => sufOrdinal(n, "fr");
 
 const fmtEur = (n: number) => {
   if (n >= 1e9) return `${(n / 1e9).toFixed(2).replace(".", ",")} Md€`;

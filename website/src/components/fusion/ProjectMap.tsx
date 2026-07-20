@@ -6,6 +6,7 @@ import "leaflet/dist/leaflet.css";
 import "leaflet.markercluster/dist/MarkerCluster.css";
 import "leaflet.markercluster/dist/MarkerCluster.Default.css";
 import { useT, useLocale } from "@/lib/localeContext";
+import { numLocale } from "@/lib/fmt";
 import { TYPO_BUCKETS, type TypoBucket } from "@/lib/projet-utils";
 import { useTrack } from "@/lib/analyticsContext";
 import type { Map as LMap, MarkerClusterGroup } from "leaflet";
@@ -68,7 +69,7 @@ type Props = {
 export default function ProjectMap({ points, year, height = 620 }: Props) {
   const t = useT();
   const { locale } = useLocale();
-  const locStr = locale === "en" ? "en-GB" : "fr-FR";
+  const locStr = numLocale(locale);
   const router = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();

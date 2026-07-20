@@ -3,18 +3,13 @@
 import Link from "next/link";
 
 import type { MarcheCategorieFiche } from "@/lib/fusion-data";
-import { fmtCompactEur, fmtInt, fmtDec } from "@/lib/fmt";
+import { fill, fmtCompactEur, fmtInt, fmtDec } from "@/lib/fmt";
 import { normalizeObjet } from "@/lib/objet-normalizer";
 import { useT, useLocale } from "@/lib/localeContext";
 
 export default function CategorieMarcheFiche({ fiche }: { fiche: MarcheCategorieFiche }) {
   const t = useT();
   const { locale } = useLocale();
-  const fill = (s: string, vars: Record<string, string | number>) => {
-    let r = s;
-    for (const [k, v] of Object.entries(vars)) r = r.split(`{${k}}`).join(String(v));
-    return r;
-  };
   const total = fmtCompactEur(fiche.total);
 
   return (
