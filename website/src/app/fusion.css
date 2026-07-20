@@ -446,6 +446,29 @@ body:has(.theme-fusion) > div.pb-24 { padding-bottom: 0 !important; }
   font-size: 14px;
 }
 
+/* Entre le mobile (burger à 768px) et le grand écran, la barre ne tient plus :
+ * l'ajout de « Lieux » porte la rangée à ~1022px pour 898px disponibles à
+ * 1280px, et c'est la marque qui se fait rogner à gauche. On resserre les
+ * liens à mesure que la place manque plutôt que d'imposer un burger sur des
+ * écrans d'ordinateur. */
+@media (max-width: 1400px) {
+  .theme-fusion .fx-link { padding: 0 13px; font-size: 13px; }
+}
+@media (max-width: 1180px) {
+  .theme-fusion .fx-link { padding: 0 9px; font-size: 12.5px; }
+  .theme-fusion .fx-brand span { font-size: 15px; }
+}
+/* En dessous, la marque seule ne suffit plus à garder la rangée lisible :
+ * on bascule sur le menu en plein écran. */
+@media (max-width: 980px) {
+  .theme-fusion .fx-nav { grid-template-columns: 1fr auto; }
+  .theme-fusion .fx-links,
+  .theme-fusion .fx-scope-wrap:has(.fx-scope-nav),
+  .theme-fusion .fx-scope-nav,
+  .theme-fusion .fx-nav > .fx-lang { display: none; }
+  .theme-fusion .fx-menu-btn { display: flex; }
+}
+
 @media (max-width: 768px) {
   .theme-fusion .fx-nav { grid-template-columns: 1fr auto; }
   .theme-fusion .fx-links,
@@ -498,7 +521,7 @@ body:has(.theme-fusion) > div.pb-24 { padding-bottom: 0 !important; }
   letter-spacing: -0.035em;
   margin: 0 0 14px;
 }
-.theme-fusion .fx-sec-title em { font-style: italic; font-weight: 600; color: var(--rouge); }
+.theme-fusion .fx-sec-title em { font-style: italic; font-weight: 600; color: inherit; }
 .theme-fusion .fx-sec-sub {
   font-family: var(--f-ui);
   font-size: 17px;
@@ -2597,7 +2620,7 @@ body:has(.theme-fusion) > div.pb-24 { padding-bottom: 0 !important; }
   margin: 0 0 20px;
   max-width: 1100px;
 }
-.theme-fusion .fx-page-title em { font-style: italic; font-weight: 600; color: var(--bleu); padding-right: 0.08em; }
+.theme-fusion .fx-page-title em { font-style: italic; font-weight: 600; color: inherit; padding-right: 0.08em; }
 .theme-fusion .fx-page-title b { font-weight: 700; color: var(--rouge); }
 .theme-fusion .fx-page-lede {
   font-family: var(--f-ui);
@@ -5005,17 +5028,6 @@ body:has(.theme-fusion) > div.pb-24 { padding-bottom: 0 !important; }
   .theme-fusion .fx-drawer-kpis { grid-template-columns: 1fr 1fr; }
   .theme-fusion .fx-drawer-hrow { grid-template-columns: 46px 1fr 90px 60px; font-size: 13px; }
 }
-
-/* Movers — 2-col row grid (top hausses / top baisses) */
-.theme-fusion .fx-movers-muted {
-  margin-top: 16px;
-  padding: 18px 20px;
-  border: 1px dashed var(--ink);
-  color: var(--muted);
-  font-size: 13.5px;
-  line-height: 1.5;
-  max-width: 780px;
-}
 .theme-fusion .fx-timeline-preview-note {
   margin: 0 0 14px;
   padding: 10px 14px;
@@ -5026,75 +5038,6 @@ body:has(.theme-fusion) > div.pb-24 { padding-bottom: 0 !important; }
   font-size: 13px;
   color: var(--muted);
   max-width: 720px;
-}
-.theme-fusion .fx-movers {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1px;
-  background: var(--ink);
-  border: 1px solid var(--ink);
-  margin-top: 24px;
-}
-.theme-fusion .fx-movers-col { background: var(--bg); padding: 24px 28px; }
-.theme-fusion .fx-movers-head {
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-  padding-bottom: 14px;
-  border-bottom: 1px solid var(--ink);
-  margin-bottom: 6px;
-  font-family: var(--f-mono);
-  font-size: 11px;
-  color: var(--muted);
-  letter-spacing: .1em;
-  text-transform: uppercase;
-}
-.theme-fusion .fx-movers-head b { color: var(--ink); font-weight: 500; }
-.theme-fusion .fx-mover-row {
-  display: grid;
-  grid-template-columns: 1fr 90px 70px 80px;
-  gap: 12px;
-  padding: 10px 0;
-  border-bottom: 1px solid var(--rule);
-  align-items: baseline;
-  color: inherit;
-  text-decoration: none;
-  transition: background .12s;
-  position: relative;
-}
-.theme-fusion .fx-mover-row:last-child { border-bottom: 0; }
-.theme-fusion a.fx-mover-row { cursor: pointer; }
-.theme-fusion a.fx-mover-row:hover { background: var(--bg-hover); }
-.theme-fusion a.fx-mover-row:hover .l { color: var(--bleu-vif); }
-.theme-fusion a.fx-mover-row:hover .mfill { background: var(--bleu-vif); }
-.theme-fusion a.fx-mover-row:focus-visible {
-  outline: 2px solid var(--bleu-vif);
-  outline-offset: -2px;
-}
-.theme-fusion .fx-mover-row .l {
-  font-family: var(--f-ui);
-  font-size: 14px;
-  color: var(--ink);
-  font-weight: 500;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-.theme-fusion .fx-mover-row .v {
-  font-family: var(--f-disp);
-  font-weight: 700;
-  font-size: 14px;
-  text-align: right;
-}
-.theme-fusion .fx-mover-row .d {
-  font-family: var(--f-mono);
-  font-size: 11.5px;
-  text-align: right;
-}
-.theme-fusion .fx-mover-row .d.up { color: var(--rouge); }
-.theme-fusion .fx-mover-row .d.down { color: var(--bleu); }
-@media (max-width: 768px) {
-  .theme-fusion .fx-movers { grid-template-columns: 1fr; }
 }
 
 /* Filter row — search + dropdown filters + meta */
@@ -7730,89 +7673,6 @@ body:has(.theme-fusion) > div.pb-24 { padding-bottom: 0 !important; }
   .theme-fusion .fx-log-hook-item:last-child { border-bottom: 0; }
 }
 
-/* ───── Funnel + stat cards (logement social — tension locative) ── */
-.theme-fusion .fx-funnel-wrap {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-}
-.theme-fusion .fx-funnel-kicker {
-  font-family: var(--f-mono);
-  font-size: 11px;
-  color: var(--muted);
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  font-weight: 500;
-  margin-bottom: 24px;
-}
-.theme-fusion .fx-funnel {
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
-  width: 100%;
-}
-.theme-fusion .fx-funnel-step {
-  display: grid;
-  grid-template-columns: 1fr auto;
-  align-items: center;
-  gap: 14px;
-}
-.theme-fusion .fx-funnel-bar {
-  grid-column: 1 / -1;
-  position: relative;
-  height: 8px;
-  background: var(--rule);
-  overflow: hidden;
-}
-.theme-fusion .fx-funnel-bar-fill {
-  position: absolute;
-  top: 0; left: 0; bottom: 0;
-  background: #0a0a0a;
-  transition: width 220ms ease;
-}
-.theme-fusion .fx-funnel-step-2 .fx-funnel-bar-fill { background: #2a2f3a; }
-.theme-fusion .fx-funnel-step-3 .fx-funnel-bar-fill { background: var(--ocre); }
-.theme-fusion .fx-funnel-meta {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-  min-width: 0;
-}
-.theme-fusion .fx-funnel-v {
-  font-family: var(--f-disp);
-  font-size: clamp(28px, 3.6vw, 42px);
-  font-weight: 700;
-  letter-spacing: -0.028em;
-  line-height: 1;
-  color: var(--ink);
-}
-.theme-fusion .fx-funnel-lbl {
-  font-family: var(--f-mono);
-  font-size: 10px;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: var(--muted);
-  font-weight: 500;
-}
-.theme-fusion .fx-funnel-pct {
-  align-self: end;
-  font-family: var(--f-mono);
-  font-size: 12px;
-  letter-spacing: 0.08em;
-  color: var(--muted);
-  font-weight: 600;
-  white-space: nowrap;
-  padding-bottom: 2px;
-}
-.theme-fusion .fx-funnel-step-3 .fx-funnel-pct { color: var(--ocre); }
-.theme-fusion .fx-funnel-foot {
-  margin-top: 30px;
-  font-size: 12px;
-  color: var(--muted);
-  line-height: 1.55;
-}
-.theme-fusion .fx-funnel-foot b { color: var(--ink); font-weight: 600; }
-
 .theme-fusion .fx-stat-cards {
   display: flex;
   flex-direction: column;
@@ -8545,180 +8405,6 @@ body:has(.theme-fusion) > div.pb-24 { padding-bottom: 0 !important; }
   line-height: 1.55;
   max-width: 720px;
 }
-
-/* Teaser version (inline dans la page bilan) */
-.theme-fusion .fx-stress-teaser {
-  border: 1px solid var(--ink);
-  padding: 24px 28px;
-  background: var(--bg);
-}
-.theme-fusion .fx-stress-teaser-head {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
-  gap: 20px;
-  padding-bottom: 18px;
-  border-bottom: 1px solid var(--rule);
-  margin-bottom: 18px;
-}
-.theme-fusion .fx-stress-teaser-lbl {
-  font-family: var(--f-mono);
-  font-size: 11px;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: var(--muted);
-  margin-bottom: 4px;
-}
-.theme-fusion .fx-stress-teaser-val {
-  font-family: var(--f-disp);
-  font-weight: 700;
-  font-size: 52px;
-  letter-spacing: -0.03em;
-  line-height: 1;
-  color: var(--ink);
-  transition: color 0.18s;
-}
-.theme-fusion .fx-stress-teaser-val.attention { color: var(--ocre); }
-.theme-fusion .fx-stress-teaser-val.alerte { color: var(--rouge-vif); }
-.theme-fusion .fx-stress-teaser-val .u {
-  font-size: 0.34em;
-  color: var(--muted);
-  font-weight: 500;
-}
-.theme-fusion .fx-stress-teaser-cta {
-  font-family: var(--f-mono);
-  font-size: 11px;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  padding: 10px 14px;
-  border: 1px solid var(--ink);
-  color: var(--ink);
-  text-decoration: none;
-  background: transparent;
-  transition: background 0.12s, color 0.12s;
-  white-space: nowrap;
-}
-.theme-fusion .fx-stress-teaser-cta:hover { background: var(--ink); color: var(--bg); }
-.theme-fusion .fx-stress-teaser-scale {
-  margin-bottom: 22px;
-}
-.theme-fusion .fx-stress-teaser-track {
-  position: relative;
-  height: 20px;
-  border: 1px solid var(--ink);
-}
-.theme-fusion .fx-stress-teaser-track.crit {
-  background: linear-gradient(
-    to right,
-    rgba(10, 10, 10, 0.08) 0%,
-    rgba(10, 10, 10, 0.16) 40%,
-    rgba(166, 118, 56, 0.3) 40%,
-    rgba(166, 118, 56, 0.3) 66.6%,
-    rgba(225, 29, 29, 0.3) 66.6%,
-    rgba(225, 29, 29, 0.3) 100%
-  );
-}
-.theme-fusion .fx-stress-teaser-threshold {
-  position: absolute;
-  top: -4px;
-  bottom: -4px;
-  width: 2px;
-  background: var(--ocre);
-}
-.theme-fusion .fx-stress-teaser-critical {
-  position: absolute;
-  top: -4px;
-  bottom: -4px;
-  width: 2px;
-  background: var(--rouge-vif);
-}
-.theme-fusion .fx-stress-teaser-cursor {
-  position: absolute;
-  top: -5px;
-  bottom: -5px;
-  width: 4px;
-  background: var(--ink);
-  transform: translateX(-2px);
-  transition: left 0.35s cubic-bezier(.22, .61, .36, 1), background 0.18s;
-}
-.theme-fusion .fx-stress-teaser-cursor.attention { background: var(--ocre); }
-.theme-fusion .fx-stress-teaser-cursor.alerte { background: var(--ocre); }
-.theme-fusion .fx-stress-teaser-cursor.critique { background: var(--rouge-vif); }
-.theme-fusion .fx-stress-teaser-cursor.tutelle {
-  background: var(--rouge-vif);
-  box-shadow: 0 0 6px rgba(225, 29, 29, 0.6);
-}
-.theme-fusion .fx-stress-teaser-axis {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 6px;
-  font-family: var(--f-mono);
-  font-size: 10.5px;
-  color: var(--muted);
-  letter-spacing: 0.04em;
-}
-.theme-fusion .fx-stress-teaser-hint {
-  font-family: var(--f-mono);
-  font-size: 10.5px;
-  letter-spacing: 0.04em;
-  margin-bottom: 10px;
-}
-.theme-fusion .fx-stress-teaser-presets-grid {
-  display: grid;
-  grid-template-columns: repeat(6, 1fr);
-  gap: 0;
-  border: 1px solid var(--rule);
-}
-@media (max-width: 820px) {
-  .theme-fusion .fx-stress-teaser-presets-grid { grid-template-columns: repeat(2, 1fr); }
-}
-.theme-fusion .fx-stress-teaser-preset {
-  padding: 12px 14px;
-  border: 0;
-  border-right: 1px solid var(--rule);
-  background: var(--bg);
-  text-align: left;
-  cursor: pointer;
-  font: inherit;
-  color: inherit;
-  transition: background 0.12s;
-}
-.theme-fusion .fx-stress-teaser-preset:last-child { border-right: 0; }
-@media (max-width: 820px) {
-  .theme-fusion .fx-stress-teaser-preset:nth-child(2n) { border-right: 0; }
-  .theme-fusion .fx-stress-teaser-preset:not(:nth-last-child(-n+2)) { border-bottom: 1px solid var(--rule); }
-}
-.theme-fusion .fx-stress-teaser-preset:hover { background: var(--bg-hover); }
-.theme-fusion .fx-stress-teaser-preset.active { background: var(--ink); color: var(--bg); }
-.theme-fusion .fx-stress-teaser-preset.active .v.alerte { color: var(--bg); }
-.theme-fusion .fx-stress-teaser-preset .l {
-  font-family: var(--f-disp);
-  font-weight: 600;
-  font-size: 13px;
-  letter-spacing: -0.005em;
-}
-.theme-fusion .fx-stress-teaser-preset .v {
-  font-family: var(--f-mono);
-  font-size: 11px;
-  margin-top: 6px;
-  letter-spacing: 0.04em;
-}
-.theme-fusion .fx-stress-teaser-preset .v.alerte { color: var(--ocre); }
-.theme-fusion .fx-stress-teaser-preset .v.critique { color: var(--rouge-vif); font-weight: 600; }
-.theme-fusion .fx-stress-teaser-preset.active .v.alerte,
-.theme-fusion .fx-stress-teaser-preset.active .v.critique { color: var(--bg); }
-.theme-fusion .fx-stress-teaser-links {
-  margin-top: 14px;
-  min-height: 20px;
-}
-.theme-fusion .fx-stress-teaser-deeplink {
-  font-family: var(--f-mono);
-  font-size: 11px;
-  letter-spacing: 0.04em;
-  color: var(--bleu-vif);
-  text-decoration: none;
-}
-.theme-fusion .fx-stress-teaser-deeplink:hover { text-decoration: underline; }
 
 /* ───── Mini-comparateur inter-villes ───────────────────── */
 .theme-fusion .fx-city-compare {
@@ -15315,162 +15001,6 @@ body:has(.theme-db-scrolly) { background: #fafaf7 !important; color: var(--p-ink
 .fx-sru-row:hover { background: var(--bg-hover); }
 .fx-sru-row:focus-visible { outline: 2px solid var(--bleu-vif); outline-offset: 1px; }
 
-/* ── La frise des chantiers ────────────────────────────────────────────── */
-.theme-fusion .fx-frise-bleed {
-  position: relative;
-  width: 100vw;
-  margin-left: calc(50% - 50vw);
-  margin-top: 26px;
-}
-.theme-fusion .fx-frise-scroll {
-  overflow-x: auto;
-  overscroll-behavior-x: contain;
-  scroll-snap-type: x proximity;
-  -webkit-overflow-scrolling: touch;
-  scrollbar-width: none;
-  -webkit-mask-image: linear-gradient(to right, transparent 0, #000 3%, #000 97%, transparent 100%);
-          mask-image: linear-gradient(to right, transparent 0, #000 3%, #000 97%, transparent 100%);
-}
-.theme-fusion .fx-frise-scroll::-webkit-scrollbar { display: none; }
-.theme-fusion .fx-frise-scroll:focus-visible { outline: 2px solid var(--bleu-vif); outline-offset: -2px; }
-.theme-fusion .fx-frise-track {
-  display: inline-flex;
-  align-items: stretch;
-  gap: 0;
-  padding: 8px max(6vw, 40px) 0;
-}
-.theme-fusion .fx-frise-year {
-  position: relative;
-  padding: 44px 44px 30px 8px;
-  border-bottom: 2px solid var(--ink);
-}
-.theme-fusion .fx-frise-watermark {
-  position: absolute;
-  top: -14px;
-  left: -6px;
-  font-family: var(--f-disp);
-  font-size: 150px;
-  font-weight: 800;
-  letter-spacing: -0.04em;
-  color: rgba(10, 10, 10, 0.05);
-  pointer-events: none;
-  user-select: none;
-  line-height: 1;
-}
-.theme-fusion .fx-frise-yearhead {
-  display: flex;
-  align-items: baseline;
-  gap: 12px;
-  margin-bottom: 14px;
-  position: relative;
-}
-.theme-fusion .fx-frise-yearlabel {
-  font-family: var(--f-disp);
-  font-size: 26px;
-  font-weight: 800;
-  letter-spacing: -0.02em;
-}
-.theme-fusion .fx-frise-yeartotal {
-  font-family: var(--f-mono);
-  font-size: 11.5px;
-  color: var(--muted);
-}
-.theme-fusion .fx-frise-cards { display: flex; gap: 14px; }
-.theme-fusion .fx-frise-card {
-  width: 262px;
-  flex: 0 0 auto;
-  scroll-snap-align: center;
-  background: #fff;
-  border: 1px solid var(--ink);
-  box-shadow: 4px 4px 0 rgba(10, 10, 10, 0.10);
-  text-decoration: none;
-  color: inherit;
-  transition: transform 0.16s, box-shadow 0.16s;
-  position: relative;
-}
-.theme-fusion .fx-frise-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 6px 8px 0 rgba(10, 10, 10, 0.14);
-}
-@media (prefers-reduced-motion: reduce) {
-  .theme-fusion .fx-frise-card, .theme-fusion .fx-frise-card:hover { transition: none; transform: none; }
-}
-.theme-fusion .fx-frise-photo { position: relative; }
-.theme-fusion .fx-frise-photo img { pointer-events: none; }
-.theme-fusion .fx-frise-jo {
-  position: absolute;
-  top: 8px;
-  left: 8px;
-  background: var(--rouge);
-  color: #fff;
-  font-family: var(--f-mono);
-  font-size: 9.5px;
-  letter-spacing: 0.08em;
-  padding: 3px 7px;
-}
-.theme-fusion .fx-frise-cardbody { padding: 10px 12px 12px; }
-.theme-fusion .fx-frise-cardname {
-  font-family: var(--f-ui);
-  font-weight: 700;
-  font-size: 13.5px;
-  line-height: 1.3;
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-  min-height: 2.6em;
-}
-.theme-fusion .fx-frise-cardmeta {
-  margin-top: 6px;
-  font-family: var(--f-mono);
-  font-size: 11px;
-  color: var(--muted);
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-.theme-fusion .fx-frise-cardmeta b { color: var(--ink); font-weight: 600; }
-.theme-fusion .fx-frise-tick {
-  position: absolute;
-  left: 8px;
-  bottom: -7px;
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-  background: var(--ink);
-}
-.theme-fusion .fx-frise-nav {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  z-index: 3;
-  width: 42px;
-  height: 42px;
-  border: 1px solid var(--ink);
-  background: var(--bg);
-  color: var(--ink);
-  font-size: 22px;
-  line-height: 1;
-  cursor: pointer;
-  box-shadow: 3px 3px 0 rgba(10, 10, 10, 0.12);
-}
-.theme-fusion .fx-frise-nav:hover { background: var(--bg-hover); }
-.theme-fusion .fx-frise-nav-prev { left: 14px; }
-.theme-fusion .fx-frise-nav-next { right: 14px; }
-.theme-fusion .fx-frise-hint {
-  text-align: center;
-  font-family: var(--f-mono);
-  font-size: 11px;
-  color: var(--muted-2);
-  margin: 10px 0 0;
-}
-@media (max-width: 767px) {
-  .theme-fusion .fx-frise-nav { display: none; }
-  .theme-fusion .fx-frise-card { width: 218px; }
-  .theme-fusion .fx-frise-watermark { font-size: 96px; }
-  .theme-fusion .fx-frise-track { padding: 8px 18px 0; }
-}
-
 /* Carte des lieux — hauteur responsive : 560px en desktop est un piège sur
  * mobile (66 % de l'écran pour un amas illisible). Voir docs/paris-lieux. */
 .theme-fusion .fx-lieux-map { height: 560px; }
@@ -15569,45 +15099,31 @@ body:has(.theme-db-scrolly) { background: #fafaf7 !important; color: var(--p-ink
   font-size: 12.5px; color: var(--muted); margin: -4px 0 12px; line-height: 1.5;
 }
 
-/* Bandeau « ↗ Voir le lieu » — tissu conjonctif entre une fiche (subvention,
- * projet) et la fiche du lieu rattaché. Discret mais cliquable, en tête de fiche. */
+/* Carte « ↗ Voir le lieu » — tissu conjonctif entre une fiche (subvention,
+ * projet, contrat) et la fiche du lieu rattaché. Même grammaire que la carte
+ * « Chantier » de la fiche contrat : photo 104×70, kicker au-dessus du nom. */
 .theme-fusion .fx-voir-lieu {
-  display: flex; align-items: center; gap: 10px;
+  display: flex; align-items: center; gap: 14px;
   border: 1px solid var(--ink); background: var(--bg-warm);
   padding: 10px 14px; margin: 0 0 18px; text-decoration: none;
   transition: background .15s;
 }
 .theme-fusion .fx-voir-lieu:hover { background: var(--bg-hover); }
+.theme-fusion .fx-voir-lieu-img {
+  width: 104px; height: 70px; object-fit: cover; flex-shrink: 0; display: block;
+}
+.theme-fusion .fx-voir-lieu-body {
+  display: flex; flex-direction: column; gap: 3px; flex: 1; min-width: 0;
+}
 .theme-fusion .fx-voir-lieu-kicker {
   font-family: var(--f-mono); font-size: 9.5px; letter-spacing: .1em;
   text-transform: uppercase; color: var(--ocre); white-space: nowrap;
 }
 .theme-fusion .fx-voir-lieu-name {
   font-family: var(--f-disp); font-weight: 700; font-size: 15px;
-  letter-spacing: -.01em; color: var(--ink); flex: 1;
+  letter-spacing: -.01em; color: var(--ink);
 }
 .theme-fusion .fx-voir-lieu-arrow { font-family: var(--f-mono); color: var(--rouge); font-size: 15px; }
-
-/* Frise « mémoire d'un lieu » — la scène signature de la fiche. */
-.theme-fusion .fx-frise { margin: 20px 0 26px; }
-.theme-fusion .fx-frise-legend { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 12px; }
-.theme-fusion .fx-frise-leg {
-  display: inline-flex; align-items: center; gap: 6px;
-  font-family: var(--f-mono); font-size: 9.5px; letter-spacing: .06em;
-  text-transform: uppercase; color: var(--muted);
-}
-.theme-fusion .fx-frise-dot { width: 8px; height: 8px; border-radius: 50%; }
-.theme-fusion .fx-frise-n { color: var(--ink); font-weight: 600; }
-.theme-fusion .fx-frise-plot { padding-bottom: 4px; }
-.theme-fusion .fx-frise-tip {
-  position: absolute; top: -6px; transform: translateX(-50%);
-  background: var(--ink); color: var(--bg); padding: 7px 10px; max-width: 260px;
-  display: flex; flex-direction: column; gap: 2px; pointer-events: none; z-index: 5;
-  box-shadow: 0 4px 14px rgba(10,10,10,.25);
-}
-.theme-fusion .fx-frise-tip-y { font-family: var(--f-mono); font-size: 11px; font-weight: 700; }
-.theme-fusion .fx-frise-tip-l { font-size: 12px; line-height: 1.35; font-weight: 600; }
-.theme-fusion .fx-frise-tip-s { font-size: 11px; line-height: 1.35; opacity: .8; }
 
 /* Page /lieux — ligne stat d'accroche sous le chapô (matérialité en tête). */
 .theme-fusion .fx-lieux-hero-stats {
@@ -15618,3 +15134,168 @@ body:has(.theme-db-scrolly) { background: #fafaf7 !important; color: var(--p-ink
   font-family: var(--f-disp); font-weight: 700; font-size: 19px;
   letter-spacing: -.02em; color: var(--ink); margin-right: 2px;
 }
+
+/* ───── PageIntro — header compact des pages d'exploration ─────────────
+ * Remplace le trio fx-page-header (titre 84px) + PageHook interlude +
+ * premier SectionHead. Contrat : ≤ ~180px desktop, ≤ 1 écran mobile,
+ * la première donnée entre dans le premier écran. */
+.theme-fusion .fx-page-intro {
+  padding: 34px 0 26px;
+  border-bottom: 1px solid var(--ink);
+}
+.theme-fusion .fx-page-intro .fx-page-kicker { margin-bottom: 10px; }
+.theme-fusion .fx-intro-row {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 16px 32px;
+  flex-wrap: wrap;
+}
+.theme-fusion .fx-intro-title {
+  font-family: var(--f-disp);
+  font-weight: 700;
+  font-size: clamp(28px, 3.4vw, 46px);
+  line-height: 1;
+  letter-spacing: -0.03em;
+  margin: 0 0 10px;
+  max-width: 900px;
+}
+.theme-fusion .fx-intro-title em { font-style: italic; font-weight: 600; color: inherit; padding-right: 0.08em; }
+.theme-fusion .fx-intro-title b { font-weight: 700; color: inherit; }
+.theme-fusion .fx-intro-lede {
+  font-family: var(--f-ui);
+  font-size: 15px;
+  line-height: 1.5;
+  color: var(--ink-2);
+  max-width: 660px;
+  margin: 0 0 8px;
+}
+.theme-fusion .fx-intro-meta {
+  font-family: var(--f-mono);
+  font-size: 11.5px;
+  line-height: 1.6;
+  color: var(--muted);
+  letter-spacing: .01em;
+  max-width: 660px;
+  margin: 0;
+}
+.theme-fusion .fx-intro-actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  align-items: center;
+  padding-bottom: 4px;
+}
+.theme-fusion .fx-page-intro .fx-preview-banner { margin-top: 14px; }
+@media (max-width: 768px) {
+  .theme-fusion .fx-page-intro { padding: 20px 0 18px; }
+  .theme-fusion .fx-intro-row { flex-direction: column; align-items: stretch; }
+  .theme-fusion .fx-intro-lede { font-size: 14px; }
+  .theme-fusion .fx-intro-actions { padding-bottom: 0; }
+}
+
+/* ───── PageHook variant="card" — hook partageable sous la première viz ──
+ * Mêmes chiffres que l'ancien interlude, format carte dans le flux de la
+ * section (fx-wrap parent), plus léger : la donnée d'abord, le partage
+ * en légende. */
+.theme-fusion .fx-hook-card {
+  margin: 28px 0 0;
+  padding: 18px 22px 14px;
+  border: 1px solid var(--rule);
+  border-left: 3px solid var(--bleu);
+  background: rgba(59, 99, 173, 0.04);
+}
+.theme-fusion .fx-hook-card-quote.fx-pull-quote {
+  max-width: none;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+.theme-fusion .fx-hook-card-quote.fx-pull-quote::before { display: none; }
+.theme-fusion .fx-hook-card-quote.fx-pull-quote p {
+  font-size: clamp(15.5px, 1.5vw, 18px);
+  line-height: 1.5;
+  text-align: left;
+}
+.theme-fusion .fx-hook-card-quote.fx-pull-quote p b { white-space: nowrap; padding-left: 0.14em; }
+.theme-fusion .fx-hook-card-quote.fx-pull-quote cite {
+  display: block;
+  margin-top: 10px;
+  text-align: left;
+}
+.theme-fusion .fx-hook-card-actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 6px;
+}
+@media (max-width: 680px) {
+  .theme-fusion .fx-hook-card { padding: 14px 16px 12px; }
+}
+
+/* ───── Fiches — header compact ────────────────────────────────────────
+ * Les fiches d'entité (asso, fournisseur, bailleur, contrat, projet,
+ * chapitre, poste, thème, arrondissement) gardent le langage fx-page-header
+ * mais en format resserré : la zone titre ne doit plus coûter ~1/3 d'écran
+ * avant le premier bandeau KPI. */
+.theme-fusion .fx-page-header--fiche { padding: 36px 0 26px; }
+.theme-fusion .fx-page-header--fiche .fx-page-kicker { margin-bottom: 12px; }
+.theme-fusion .fx-page-header--fiche .fx-page-title {
+  font-size: clamp(28px, 3.6vw, 52px);
+  margin: 0 0 12px;
+}
+.theme-fusion .fx-page-header--fiche .fx-page-lede { font-size: 15px; margin-bottom: 8px; }
+.theme-fusion .fx-page-header--fiche .fx-page-source { margin-bottom: 0; }
+@media (max-width: 768px) {
+  .theme-fusion .fx-page-header--fiche { padding: 22px 0 18px; }
+}
+
+/* Après une intro compacte, la première section ne reprend pas le plein
+ * padding vertical — la donnée doit entrer dans le premier écran. */
+.theme-fusion .fx-page-intro + .fx-section { padding-top: 44px; }
+.theme-fusion .fx-page-intro + .fx-section .fx-sec-head { margin-bottom: 28px; }
+@media (max-width: 768px) {
+  .theme-fusion .fx-page-intro + .fx-section { padding-top: 28px; }
+}
+
+/* ───── Bande de chiffres clés de l'intro (style header Lieux) ─────────
+ * Remplace l'ancienne section « Vue d'ensemble » : les KPI vivent dans le
+ * header, la première section de page est la scène signature (viz). */
+.theme-fusion .fx-intro-stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 40px;
+  align-items: baseline;
+  margin-top: 20px;
+}
+.theme-fusion .fx-intro-stat {
+  font-family: var(--f-mono);
+  font-size: 11.5px;
+  letter-spacing: .05em;
+  text-transform: uppercase;
+  color: var(--muted);
+  white-space: nowrap;
+}
+.theme-fusion .fx-intro-stat b {
+  font-family: var(--f-disp);
+  font-weight: 700;
+  font-size: 27px;
+  letter-spacing: -.02em;
+  color: var(--ink);
+  margin-right: 7px;
+}
+.theme-fusion .fx-intro-stat b .fx-intro-stat-unit {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--ink-2);
+  margin-left: 3px;
+  letter-spacing: 0;
+}
+/* Header encore resserré maintenant que les stats y vivent. */
+.theme-fusion .fx-page-intro { padding: 26px 0 24px; }
+.theme-fusion .fx-intro-title { font-size: clamp(26px, 3vw, 40px); }
+@media (max-width: 768px) {
+  .theme-fusion .fx-intro-stats { gap: 10px 22px; margin-top: 14px; }
+  .theme-fusion .fx-intro-stat b { font-size: 21px; }
+  .theme-fusion .fx-page-intro { padding: 18px 0 16px; }
+}
+

@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T11:31:55.941392+00:00",
+ "generated_at": "2026-07-20T15:44:01.151982+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "parc-monceau",
  "name": "Parc Monceau",
@@ -31,7 +31,7 @@
    2025
   ],
   "n_bmo_brut": 1175,
-  "n_bmo_verifies": 7,
+  "n_bmo_verifies": 18,
   "invest_total_eur": 579659.28,
   "invest_annees": [
    "2023",
@@ -112,8 +112,29 @@
   }
  ],
  "montants": [],
- "bmo_extraits": [],
- "bmo_recit": null,
+ "bmo_extraits": [
+  {
+   "date": "1928-03-17",
+   "extrait": "En arrivant au Parc Monceau , nos regards sont attirés par des portes monumentales. surchargées d'ornements, s'élevant à l'entrée des trois avenues Van-Dyck, Ruysdaël et Velasquez: Elles sont là pour l'apparat et ne servent en aucune façon à la clôture du parc  … Pourquoi inter",
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k6430843h/f13.item"
+  },
+  {
+   "date": "1950-08-04",
+   "extrait": "roulettes est autorisé sur les points suivants : jardin des Tuileries (allée cimentée de 70 mètres de long sur 5 mètres de large), square de l'Observatoire (deux emplacements), jardin des Champs-Elysées (avenue Edward-Tuck), parc Monceau (allée reliant la Rotonde à l'avenue Ruy s",
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k96295752/f6.item"
+  },
+  {
+   "date": "1962-05-06",
+   "extrait": "Nf) 572. — Le parc de Monceau , qui est un des plus beaux jardins de Paris, mérite d'être aussi l'un de ceux où la propreté et l'esthétique sont constamment sauvegardées … La réfection du banc de pierre situé derrière la « Naumachie » au pare de Monceau , détruit au début de 19",
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k97320088/f2.item"
+  },
+  {
+   "date": "1968-02-17",
+   "extrait": "accès du parc de Monceau , ce stationnement est gênant … Afin de le restreindre, une signalisation faisant apparaître l'interdiction du stationnement va être mise en place en bordure du parc de Monceau et les infractions commises seront sévèrement réprimées",
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k9713172j/f6.item"
+  }
+ ],
+ "bmo_recit": "Dans le Bulletin municipal, le parc Monceau apparaît au fil de décisions de gestion quotidienne plutôt que de grands chantiers. En 1928, une évocation s'attarde sur les portes monumentales dressées à l'entrée des avenues Van-Dyck, Ruysdaël et Velasquez, « surchargées d'ornements », placées là pour l'apparat sans servir en aucune façon à la clôture du parc. En 1950, le patin à roulettes y est autorisé sur l'allée reliant la Rotonde à l'avenue Ruysdaël, comme sur quelques emplacements d'autres jardins parisiens. En 1962, à propos de la propreté d'un parc présenté comme l'un des plus beaux jardins de Paris, il est indiqué que la réfection du banc de pierre situé derrière la Naumachie, détruit au début de 1961, sera envisagée. Six ans plus tard, l'administration annonce qu'une signalisation interdisant le stationnement gênant va être mise en place en bordure du parc, les infractions devant être sévèrement réprimées.",
  "invest": [
   {
    "annee": 2023,

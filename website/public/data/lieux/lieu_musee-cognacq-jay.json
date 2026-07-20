@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T11:31:55.941392+00:00",
+ "generated_at": "2026-07-20T15:44:01.151982+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "musee-cognacq-jay",
  "name": "Musée Cognacq-Jay",
@@ -31,7 +31,7 @@
    2010
   ],
   "n_bmo_brut": 199,
-  "n_bmo_verifies": null,
+  "n_bmo_verifies": 9,
   "invest_total_eur": 0,
   "invest_annees": [],
   "lecture_mode": "titre nommant le lieu (2 trouvés)",
@@ -68,8 +68,24 @@
    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=85988"
   }
  ],
- "bmo_extraits": [],
- "bmo_recit": null,
+ "bmo_extraits": [
+  {
+   "date": "1936-07-08",
+   "extrait": "Certains de ces musées portent les noms des donateurs soit de leurs monuments, soit de leurs collections, mais ces noms par eux-mêmes ne disent pas au grand public le genre de collections que contiennent ces musées  …  musée Cognacq - Jay possède de rares collections de tableau",
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k64534908/f28.item"
+  },
+  {
+   "date": "1940-07-20",
+   "extrait": "gravures et moulages édités par les musées nationaux), qui se tient au Musée Cognacq - Jay , 25, boulevard des Capucines, est ouverte tous les jours de 14 heures à 18 heures",
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k63568584/f1.item"
+  },
+  {
+   "date": "1949-02-23",
+   "extrait": "Les mêmes réductions d'effectifs ont empêché d'assurer au musée Cognacq - Jay une surveillance efficace pendant la période des congés et il était alors indispensable d'interdire au public l'accès de certaines salles … Aussi, M. René Fiquet, conseiller municipal, a-t-il l'honneu",
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k96394913/f2.item"
+  }
+ ],
+ "bmo_recit": "Le musée Cognacq-Jay traverse le Bulletin municipal en trois moments, du milieu des années 1930 à l'après-guerre. En 1936, au détour d'une réflexion sur les noms des musées de la Ville, qui ne disent pas au public le genre de collections qu'ils abritent, il est présenté comme possédant de rares collections de tableaux et de meubles. En juillet 1940, le Bulletin annonce une exposition de gravures et de moulages édités par les musées nationaux, tenue au musée, alors au 25, boulevard des Capucines, et ouverte tous les jours de 14 à 18 heures. En 1949 enfin, le conseiller municipal René Fiquet pose une question à l'administration : selon lui, les réductions d'effectifs ont empêché d'assurer une surveillance efficace pendant la période des congés, au point qu'il a fallu interdire au public l'accès de certaines salles. L'archive ne conserve, pour ce lieu, que ces trois traces.",
  "invest": [],
  "marches": [
   {

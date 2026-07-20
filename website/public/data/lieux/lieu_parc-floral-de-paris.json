@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T11:31:55.941392+00:00",
+ "generated_at": "2026-07-20T15:44:01.151982+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "parc-floral-de-paris",
  "name": "Parc floral de Paris",
@@ -30,8 +30,8 @@
    1998,
    2011
   ],
-  "n_bmo_brut": 0,
-  "n_bmo_verifies": null,
+  "n_bmo_brut": 462,
+  "n_bmo_verifies": 7,
   "invest_total_eur": 0,
   "invest_annees": [],
   "lecture_mode": "titre nommant le lieu (22 trouvés)",
@@ -222,8 +222,29 @@
    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=46844"
   }
  ],
- "bmo_extraits": [],
- "bmo_recit": null,
+ "bmo_extraits": [
+  {
+   "date": "1970-06-07",
+   "extrait": "de l’ouverture permanente au public du parc floral de Vincennes … Aussi MM. Planchet, Salvinien, Joffre, Garnier et Maillet, conseillers de Paris , suggèrent-ils à M. le Préfet de Paris que la R.A.T.P. repousse le point terminal de la ligne n° 46 de la Demi-Lune jusqu’au parc f",
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k32103649/f4.item"
+  },
+  {
+   "date": "1975-01-15",
+   "extrait": "Tarif, 1 F. D. — Parc floral de, Paris (pendant les heures .normales d’ouverture … 4. — L’entrée du Parc floral de Paris est gratuite pendant les heures normales d’ouverture : 1° Pour les enfants de moins de 6 ans … réduction de 50 % sur la part du droit d’entrée au Parc flor",
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k32107564/f6.item"
+  },
+  {
+   "date": "1975-11-02",
+   "extrait": "Interdiction provisoire de la circulation rue Watt, à Paris (13 e … Interdiction partielle de la circulation rue de l’Ingénieur-Robert-Keller, à Paris (15 e … travaux de couverture, chevronnage et chéneaux tôle à exécuter pour la réfection de la couverture du hall de la Pinèd",
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k32116956/f6.item"
+  },
+  {
+   "date": "1978-06-22",
+   "extrait": "à Paris , du 25 au 29 septembre 1978, pour les deux concours … Ville, à Paris (4 e ) (tél. 277-15-40, poste 46-64 … juin au 16 juillet 1978, au Parc floral de Paris (Pavillon des Arts), route de la Pyramide, bois de Vincennes, à Paris (12 e … ",
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k3213370z/f3.item"
+  }
+ ],
+ "bmo_recit": "Le Parc floral apparaît dans le Bulletin municipal au tournant des années 1970, au moment de son ouverture permanente au public : en juin 1970, des conseillers de Paris suggèrent au Préfet que la R.A.T.P. repousse le terminus de la ligne d'autobus n° 46 de la Demi-Lune jusqu'au parc. Au milieu de la décennie, le Bulletin publie la règle du droit d'entrée — un tarif de 1 F, avec gratuité pour les enfants de moins de six ans pendant les heures normales d'ouverture — puis, fin 1975, annonce des travaux à exécuter pour la réfection de la couverture du hall de la Pinède, chevronnage et chéneaux en tôle compris. En 1978, le parc figure comme lieu d'exposition : le Pavillon des Arts, route de la Pyramide, doit accueillir une exposition de juin au 16 juillet. L'archive s'arrête là ; elle ne montre que cette première décennie, où le parc s'installe dans la vie municipale entre desserte, tarification, entretien et programmation.",
  "invest": [],
  "marches": [
   {
@@ -253,7 +274,7 @@
   },
   "bmo": {
    "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
-   "url": "https://gallica.bnf.fr/ark:/12148/cb343512457/date"
+   "url": "https://gallica.bnf.fr/services/engine/search/sru?operation=searchRetrieve&version=1.2&startRecord=0&maximumRecords=15&page=1&collapsing=disabled&query=arkPress+all+%22cb343512457_date%22+and+%28gallica+all+%22Parc+floral+de+Paris%22%29"
   },
   "invest": {
    "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",

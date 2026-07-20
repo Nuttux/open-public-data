@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T11:31:55.941392+00:00",
+ "generated_at": "2026-07-20T15:44:01.151982+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "bourse-de-commerce",
  "name": "Bourse de Commerce",
@@ -30,8 +30,8 @@
    2004,
    2018
   ],
-  "n_bmo_brut": 0,
-  "n_bmo_verifies": null,
+  "n_bmo_brut": 2000,
+  "n_bmo_verifies": 17,
   "invest_total_eur": 0,
   "invest_annees": [],
   "lecture_mode": "tête du classement Solr (527 documents au total)",
@@ -81,7 +81,7 @@
   },
   "bmo": {
    "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
-   "url": "https://gallica.bnf.fr/ark:/12148/cb343512457/date"
+   "url": "https://gallica.bnf.fr/services/engine/search/sru?operation=searchRetrieve&version=1.2&startRecord=0&maximumRecords=15&page=1&collapsing=disabled&query=arkPress+all+%22cb343512457_date%22+and+%28gallica+all+%22Bourse+de+Commerce%22%29"
   },
   "invest": {
    "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",

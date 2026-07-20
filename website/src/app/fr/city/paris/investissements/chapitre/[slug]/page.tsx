@@ -3,7 +3,7 @@ import { notFound } from "next/navigation";
 import "@/app/fusion.css";
 
 import { Navbar, Footer, ChapitreFiche } from "@/components/fusion";
-import { InvestBackKicker, ChapitreInvestLede } from "@/components/fusion/EntityPageHeaders";
+import { InvestBackKicker } from "@/components/fusion/EntityPageHeaders";
 import { loadChapitre } from "@/lib/fusion-data";
 import { readLocale } from "@/lib/seo";
 import { trLabel } from "@/lib/label-translate";
@@ -55,11 +55,10 @@ export default async function ChapitrePage({ params }: { params: Promise<Params>
     <div className="theme-fusion">
       <Navbar />
       <main id="main-content" tabIndex={-1}>
-      <section className="fx-page-header">
+      <section className="fx-page-header fx-page-header--fiche">
         <div className="fx-wrap">
           <InvestBackKicker />
           <h1 className="fx-page-title">{chap.label}</h1>
-          <ChapitreInvestLede year={chap.year} nbProjets={chap.nbProjets} />
         </div>
       </section>
       <div className="fx-fiche-wrap">

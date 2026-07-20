@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T11:31:55.941392+00:00",
+ "generated_at": "2026-07-20T15:44:01.151982+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "place-des-vosges",
  "name": "Place des Vosges",
@@ -30,8 +30,8 @@
    1996,
    2025
   ],
-  "n_bmo_brut": 0,
-  "n_bmo_verifies": null,
+  "n_bmo_brut": 2000,
+  "n_bmo_verifies": 18,
   "invest_total_eur": 894884.96,
   "invest_annees": [
    "2022",
@@ -197,8 +197,24 @@
    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=57488"
   }
  ],
- "bmo_extraits": [],
- "bmo_recit": null,
+ "bmo_extraits": [
+  {
+   "date": "1903-07-04",
+   "extrait": "Le 2 mars 1902, la ville de Paris avait organisé de brillantes fêtes sur notre si intéressante place des Vosges , en face de la maison où nous sommes en ce moment … Cette maison de la place des Vosges , Paris la consacre en effet dès ce jour au culte … Visiter le salon de la ",
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k6396061z/f2.item"
+  },
+  {
+   "date": "1908-11-14",
+   "extrait": "25. — Renvoi à la 3e Commission et à l'Administration d'une proposition de M. Henri Galli relative au bitumage de la place des Vosges . .26. — Ordre du jour sur une demande de souscription à deux ouvrages. v 27. — Souscription à un ouvrage de M. Wils … 29. — Création d'une stat",
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k63485912/f5.item"
+  },
+  {
+   "date": "1941-10-19",
+   "extrait": "La Place des Vosges », dessin de Georges Bruyer, gravé par Emile Feltesse",
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k6449456t/f1.item"
+  }
+ ],
+ "bmo_recit": "Dans le Bulletin municipal officiel, la place des Vosges apparaît d'abord à l'occasion d'une cérémonie : un discours reproduit en 1903 rappelle les fêtes que la Ville de Paris y avait organisées le 2 mars 1902, face à la maison de Victor Hugo, que Paris consacre ce jour-là. En 1908, le Conseil renvoie à sa 3e Commission et à l'Administration une proposition du conseiller Henri Galli relative au bitumage de la place — un renvoi pour examen, sans qu'une décision de travaux soit actée dans ces pages. En 1941, la place revient sous une autre forme : elle figure en couverture du Bulletin, dans un dessin de Georges Bruyer gravé par Émile Feltesse. L'archive ne livre ici que ces trois moments, espacés sur près de quarante ans.",
  "invest": [
   {
    "annee": 2022,
@@ -250,7 +266,7 @@
   },
   "bmo": {
    "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
-   "url": "https://gallica.bnf.fr/ark:/12148/cb343512457/date"
+   "url": "https://gallica.bnf.fr/services/engine/search/sru?operation=searchRetrieve&version=1.2&startRecord=0&maximumRecords=15&page=1&collapsing=disabled&query=arkPress+all+%22cb343512457_date%22+and+%28gallica+all+%22Place+des+Vosges%22%29"
   },
   "invest": {
    "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",

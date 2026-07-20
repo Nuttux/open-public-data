@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T11:31:55.941392+00:00",
+ "generated_at": "2026-07-20T15:44:01.151982+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "tour-saint-jacques",
  "name": "Tour Saint-Jacques",
@@ -31,7 +31,7 @@
    2023
   ],
   "n_bmo_brut": 2000,
-  "n_bmo_verifies": 13,
+  "n_bmo_verifies": 18,
   "invest_total_eur": 0,
   "invest_annees": [],
   "lecture_mode": "titre nommant le lieu (7 trouvés)",
@@ -109,8 +109,24 @@
    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=91566"
   }
  ],
- "bmo_extraits": [],
- "bmo_recit": null,
+ "bmo_extraits": [
+  {
+   "date": "1898-04-29",
+   "extrait": "Servatoire municipal de Montsouris et annexe de la Tour - Saint - Jacques . — Statistique C hebdomadaire (16\" semaine … Sa vitesse, d'une moyenne de 14 kilom. à l'heure, atteint son maximum, 29 kilom. à Montsouris et 24 kilom. à la Tour - Saint Jacques , le 19 de 4 à 5 h … le",
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k62630164/f1.item"
+  },
+  {
+   "date": "1902-09-03",
+   "extrait": "Le Service météorologique de l'Observatoire municipal (Montsouris et Tour - Saint - Jacques ) publie chaque jour un Bulletin résumant la situation du temps dans la région parisienne … tableaux sont placés : dans les cours de l'Hôtel de Ville, à la porte des mairies des vingt ar",
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k63349233/f3.item"
+  },
+  {
+   "date": "1923-10-18",
+   "extrait": "Saint -Denis, 0°\"0 … Parc Saint -Maur. gouttes … Vitesse maxima : 7 m. à l'Office national météorologique, 16 m. au Bourget, 10 m. au Parc Saint -Maur, 11 m. à Montsouris, 16 m. à la Tour Saint - Jacques , 18 m. à la Tour Eiffel",
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k6433620r/f4.item"
+  }
+ ],
+ "bmo_recit": "Dans le Bulletin municipal, la tour Saint-Jacques apparaît non comme un monument mais comme un instrument : annexe de l'Observatoire municipal de Montsouris, elle sert de station météorologique. En 1898, une statistique hebdomadaire y relève un vent atteignant 24 kilomètres à l'heure, contre 29 à Montsouris. En 1902, le Bulletin décrit le Service météorologique de l'Observatoire municipal — Montsouris et Tour Saint-Jacques — qui publie chaque jour un bulletin résumant le temps dans la région parisienne, affiché dans les cours de l'Hôtel de Ville et à la porte des mairies des vingt arrondissements. La tour figure encore en 1923 dans les relevés de vitesse du vent, aux côtés de la tour Eiffel. Sur cette période, l'archive ne montre d'elle que ce rôle : un point de mesure du ciel parisien, cité semaine après semaine parmi les stations de la région.",
  "invest": [],
  "marches": [],
  "mandate": {

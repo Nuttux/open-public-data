@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T11:31:55.941392+00:00",
+ "generated_at": "2026-07-20T15:44:01.151982+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "place-du-tertre",
  "name": "Place du Tertre",
@@ -30,8 +30,8 @@
    2000,
    2022
   ],
-  "n_bmo_brut": 0,
-  "n_bmo_verifies": null,
+  "n_bmo_brut": 546,
+  "n_bmo_verifies": 18,
   "invest_total_eur": 0,
   "invest_annees": [],
   "lecture_mode": "titre nommant le lieu (19 trouvés)",
@@ -145,8 +145,24 @@
    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=144059"
   }
  ],
- "bmo_extraits": [],
- "bmo_recit": null,
+ "bmo_extraits": [
+  {
+   "date": "1904-07-21",
+   "extrait": "6° De M. Le Grandais tendant à la pose d'un panneau pour l'affichage des actes administratifs place du Tertre (1904, C. 760 … tendant à l'établissement d'un poste-vigie place du Tertre (1904, C. 761 … Le Grandais demandant la mise en état de la place du Tertre et des rues voi",
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k64688039/f5.item"
+  },
+  {
+   "date": "1950-06-07",
+   "extrait": "En effet, en direction de la gare de Lyon, cet autobus s'arrête a l'angle du quai Saint-Bernard et de la place Valhubert, c'est-à-dire … N° 563. — Quatre bancs sont disposés place du Tertre",
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k96636673/f2.item"
+  },
+  {
+   "date": "1959-01-17",
+   "extrait": "2° de M. René Thomas sur la circulation et le stationnement place du Tertre et dans les rues avoisinantes. (Orateurs : MM. Camille Denis, le Directeur de la circulation, le Secrétaire général de la Seine, Pecastaing, René Thomas et Mme Valmier … Réponse de l'Administration à un",
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k9718134d/f78.item"
+  }
+ ],
+ "bmo_recit": "Dans le Bulletin municipal, la place du Tertre apparaît d'abord en 1904, quand le conseiller Le Grandais soumet au Conseil plusieurs propositions la concernant : la pose d'un panneau pour l'affichage des actes administratifs, l'établissement d'un poste-vigie, et la mise en état de la place et des rues voisines. Près d'un demi-siècle plus tard, en 1950, le Bulletin signale simplement que quatre bancs sont disposés sur la place. En 1959, elle revient devant le Conseil à l'occasion d'un débat sur la circulation et le stationnement sur la place et dans les rues avoisinantes, ouvert par une intervention de René Thomas et auquel prennent part plusieurs orateurs, dont le Directeur de la circulation. L'archive ne livre ainsi que quelques épisodes espacés, où le lieu se gère par petites touches : sa remise en état, son mobilier, la place laissée aux voitures.",
  "invest": [],
  "marches": [],
  "mandate": null,
@@ -157,7 +173,7 @@
   },
   "bmo": {
    "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
-   "url": "https://gallica.bnf.fr/ark:/12148/cb343512457/date"
+   "url": "https://gallica.bnf.fr/services/engine/search/sru?operation=searchRetrieve&version=1.2&startRecord=0&maximumRecords=15&page=1&collapsing=disabled&query=arkPress+all+%22cb343512457_date%22+and+%28gallica+all+%22Place+du+Tertre%22%29"
   },
   "invest": {
    "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",

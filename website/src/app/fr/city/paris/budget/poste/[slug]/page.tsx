@@ -5,7 +5,7 @@ import "@/app/fusion.css";
 import Navbar from "@/components/fusion/Navbar";
 import Footer from "@/components/fusion/Footer";
 import PosteFiche from "@/components/fusion/PosteFiche";
-import { BudgetBackKicker, PosteLede } from "@/components/fusion/EntityPageHeaders";
+import { BudgetBackKicker } from "@/components/fusion/EntityPageHeaders";
 import { loadBudgetPoste } from "@/lib/fusion-data";
 import { readLocale } from "@/lib/seo";
 import { trLabel } from "@/lib/label-translate";
@@ -76,15 +76,10 @@ export default async function PostePage({
     <div className="theme-fusion">
       <Navbar />
       <main id="main-content" tabIndex={-1}>
-      <section className="fx-page-header">
+      <section className="fx-page-header fx-page-header--fiche">
         <div className="fx-wrap">
           <BudgetBackKicker href={year ? `/fr/city/paris/budget?year=${year}` : "/fr/city/paris/budget"} />
           <h1 className="fx-page-title">{poste.label}</h1>
-          <PosteLede
-            kind={poste.kind}
-            year={poste.year}
-            nbSousPostes={poste.subPostes.length}
-          />
         </div>
       </section>
       <div className="fx-fiche-wrap">

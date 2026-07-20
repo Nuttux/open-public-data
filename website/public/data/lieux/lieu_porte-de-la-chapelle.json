@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T11:31:55.941392+00:00",
+ "generated_at": "2026-07-20T15:44:01.151982+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "porte-de-la-chapelle",
  "name": "Porte de la Chapelle",
@@ -31,7 +31,7 @@
    2025
   ],
   "n_bmo_brut": 2000,
-  "n_bmo_verifies": 12,
+  "n_bmo_verifies": 18,
   "invest_total_eur": 36762691.28,
   "invest_annees": [
    "2023",
@@ -215,8 +215,29 @@
    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=152432"
   }
  ],
- "bmo_extraits": [],
- "bmo_recit": null,
+ "bmo_extraits": [
+  {
+   "date": "1928-04-30",
+   "extrait": "CONSEIL GÉNÉRAL DE LA SEINE RÉPONSES AUX QUESTIONS ÉCRITES o 3. — 17 janvier 1928. — Ayant constaté plusieurs fois que le tramway n° 47 (Bicetre Porte de la Chapelle ) circulait aux heures d'affluence avec une seule voiture, M. Paul Fleurot, conseiller général, fait remarquer ( à",
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k63503203/f1.item"
+  },
+  {
+   "date": "1938-03-18",
+   "extrait": "N° 137. — 11 février 1938. — M. le Préfet de la Seine entend-il que se reconstitue, le long de l'avenue de la Porte -de. la- Chapelle , dans la zone qu'on va désaffecter, la semaine des quatre jeudis, le village de nomades disparu enfin, après beaucoup de traverses, de la porte d",
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k6481639m/f2.item"
+  },
+  {
+   "date": "1949-01-11",
+   "extrait": "Bassin Ouest et Est de la porte de la Chapelle . — Maçonnerie, canalisations. — Evaluation : 588.000 francs. — Adjudicataire proposé : société « Travaux et entreprises de la région parisienne », 52. rue Philippe-de- Girard, à Paris (18e). — Rabais : 11 0/0",
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k9639532k/f4.item"
+  },
+  {
+   "date": "1969-03-27",
+   "extrait": "entre la porte de la Chapelle , la porte d'Aubervilliers et la station de métro « Marx-Dormoy … Une parcelle de l'ordre de 25.000 mètres carrés a donc été réservée au sud de l'échangeur de la porte de la Chapelle en vue d'y établir un parc de stationnement d'une certaine import",
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k9704285j/f6.item"
+  }
+ ],
+ "bmo_recit": "La Porte de la Chapelle apparaît dans le Bulletin municipal dès l'entre-deux-guerres, par la voix des élus qui interpellent le Préfet de la Seine : en 1928, le conseiller général Paul Fleurot fait remarquer que le tramway n° 47, qui relie Bicêtre à la Porte de la Chapelle, circule aux heures d'affluence avec une seule voiture. Dix ans plus tard, en 1938, une question écrite demande au Préfet s'il entend laisser se reconstituer, le long de l'avenue de la Porte-de-la-Chapelle, dans une zone sur le point d'être désaffectée, le village de nomades qui venait de disparaître de la porte d'Aubervilliers. Après-guerre, l'archive garde la trace de travaux : en 1949, un marché de maçonnerie et de canalisations pour les bassins ouest et est de la porte, évalué à 588.000 francs, est présenté avec un adjudicataire proposé. En 1969 enfin, une parcelle d'environ 25.000 mètres carrés est réservée au sud de l'échangeur en vue d'y établir un parc de stationnement d'une certaine importance. Sur ces quatre décennies, la porte revient ainsi dans le Bulletin autour des transports, de l'habitat précaire de la zone et de l'aménagement routier.",
  "invest": [
   {
    "annee": 2023,

@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T11:31:55.941392+00:00",
+ "generated_at": "2026-07-20T15:44:01.151982+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "catacombes-de-paris",
  "name": "Catacombes de Paris",
@@ -31,7 +31,7 @@
    2013
   ],
   "n_bmo_brut": 294,
-  "n_bmo_verifies": 14,
+  "n_bmo_verifies": 18,
   "invest_total_eur": 0,
   "invest_annees": [],
   "lecture_mode": "titre nommant le lieu (9 trouvés)",
@@ -123,7 +123,23 @@
    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=80853"
   }
  ],
- "bmo_extraits": [],
+ "bmo_extraits": [
+  {
+   "date": "1927-01-26",
+   "extrait": "30. — Contribution du Département pour l'entretien des voies publiques de Paris formant le prolongement des routes départementales, 2.290.000 francs … 4. — Produit des droits d'entrée perçus pour la visite des catacombes de Paris , 14.000 francs … 1\". — Contribution de l'Etat",
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k6436004h/f27.item"
+  },
+  {
+   "date": "1931-07-09",
+   "extrait": "AVIS Les visites publiques des Catacombes de Paris ont lieu les premier et troisième samedis de chaque mois, du 16 octobre au 30 juin, et tous les samedis, du 1er juillet au 15 octobre … L'entrée des Catacombes se trouve dans la cour du pavillon situé place Denfert-Rochereau, n",
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k6431053f/f4.item"
+  },
+  {
+   "date": "1956-02-06",
+   "extrait": "4. — Produit des droits d'entrée perçus aux catacombes de Paris . — Vente de cartes postales et de guides, 340.000 francs … 4. — Contribution de l'Etat dans les frais d'entretien du pavé de Paris , 567.500.000 francs … 410. — Acquisitions immobilières pour l'application des d",
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k9713583q/f71.item"
+  }
+ ],
  "bmo_recit": null,
  "invest": [],
  "marches": [],

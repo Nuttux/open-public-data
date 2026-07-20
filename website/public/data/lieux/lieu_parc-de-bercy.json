@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T11:31:55.941392+00:00",
+ "generated_at": "2026-07-20T15:44:01.151982+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "parc-de-bercy",
  "name": "Parc de Bercy",
@@ -31,7 +31,7 @@
    2025
   ],
   "n_bmo_brut": 2000,
-  "n_bmo_verifies": null,
+  "n_bmo_verifies": 18,
   "invest_total_eur": 42850.0,
   "invest_annees": [
    "2022"
@@ -210,8 +210,29 @@
    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=152315"
   }
  ],
- "bmo_extraits": [],
- "bmo_recit": null,
+ "bmo_extraits": [
+  {
+   "date": "1892-03-24",
+   "extrait": "354. — Réglementation du travail dans les entrepôts de Bercy et Saint-Bernard … nO 29 de 1892), Délibère : Article premier. — Les ordres de service relatifs à l'ouverture des entrepôts de Bercy et Saint … 35 du règlement de l' entrepôt de Bercy",
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k64471172/f3.item"
+  },
+  {
+   "date": "1922-06-11",
+   "extrait": "2° A deux heures un quart : Entrepôts du Grand Bercy (aux magasins situés sur la berge, 87 à 92, et rue de Nuits, 35) : Environ 50,000 kilog. : cuivre, zinc, plomb, fer, fonte, tôle, caoutchouc, tapis, couvertures, vêtements, rideaux, baignoires, presses à copier, bois, fûts dive",
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k6447306z/f4.item"
+  },
+  {
+   "date": "1934-02-03",
+   "extrait": "Entrepôts de Bercy et Saint-Bernard. — Fourniture d'attèlages et enlèvement des ordures ménagères du 1er janvier 1934 au 31 décembre 1936",
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k6336212h/f8.item"
+  },
+  {
+   "date": "1934-07-02",
+   "extrait": "3. — Application de la majoration des baux consentis à l' entrepôt Saint-Bernard antérieurement au 24 octobre 1919 … 4. — Déduction sur le montant global des loyers perçus aux entrepôts de Bercy et de Saint-Bernard d'une somme égale à la valeur de la fourniture d'eau de rivière",
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k6520855p/f32.item"
+  }
+ ],
+ "bmo_recit": "Dans le Bulletin municipal, le lieu apparaît sous les traits des entrepôts de Bercy, dont le Conseil règle le fonctionnement quotidien. En 1892, il délibère ainsi sur la réglementation du travail dans les entrepôts de Bercy et Saint-Bernard, jusqu'aux ordres de service fixant leur ouverture. En 1922, le Bulletin annonce une vente aux enchères aux magasins du Grand Bercy, sur la berge et rue de Nuits : environ 50 000 kilos de cuivre, zinc, plomb, tapis, fûts et toiles goudronnées. En 1934, deux décisions d'intendance se succèdent : un marché de fourniture d'attelages et d'enlèvement des ordures ménagères des entrepôts pour les années 1934 à 1936, puis une déduction sur les loyers perçus aux entrepôts de Bercy et de Saint-Bernard, d'une somme égale à la valeur de la fourniture d'eau de rivière supprimée. Sur ce lieu, l'archive donne donc à voir l'ère des entrepôts, pas encore celle du parc.",
  "invest": [
   {
    "annee": 2022,

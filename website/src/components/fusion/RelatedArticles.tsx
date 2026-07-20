@@ -27,7 +27,8 @@ export default function RelatedArticles({
   maxItems = 3,
 }: {
   id?: string;
-  number: string;
+  /** Numéro de section legacy — omis sur les pages migrées PageIntro. */
+  number?: string;
   posts: BlogPostMeta[];
   placeholders?: ArticlePlaceholder[];
   /** Total maximum cards rendered (posts + placeholders). Defaults to 3 — the

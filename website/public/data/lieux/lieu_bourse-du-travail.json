@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T11:31:55.941392+00:00",
+ "generated_at": "2026-07-20T15:44:01.151982+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "bourse-du-travail",
  "name": "Bourse du Travail",
@@ -31,7 +31,7 @@
    2025
   ],
   "n_bmo_brut": 2000,
-  "n_bmo_verifies": 14,
+  "n_bmo_verifies": 18,
   "invest_total_eur": 0,
   "invest_annees": [],
   "lecture_mode": "titre nommant le lieu (1 trouvés)",
@@ -94,7 +94,28 @@
    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=179773"
   }
  ],
- "bmo_extraits": [],
+ "bmo_extraits": [
+  {
+   "date": "1890-12-28",
+   "extrait": "Exécution de travaux de viabilité et d'amélioration dans l'entrepôt de Bercy … Adoption d'une proposition de M. Albert Pétrot relative au dépôt d'exemplaires de la série des prix de la ville de Paris dans les mairies et à la Bourse du travail  … M. le Directeur des travaux . ",
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k6352063f/f17.item"
+  },
+  {
+   "date": "1891-06-13",
+   "extrait": "Question de M. Girou sur la date d'inauguration de la Bourse du travail  … Il y a des questions qui rentrent dans les attributions de la préfecture de Police, telles que l'inspection du travail des enfants dans les manufactures, questions dont nous … Cattiaux. — M. GrébauvaJ,",
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k6335137p/f5.item"
+  },
+  {
+   "date": "1901-11-09",
+   "extrait": "En effet, le décret qui a organisé la Bourse du travail a stipulé que les subventions attribuées aux syndicats qui ont leur siège à la Bourse du travail devraient être réparties entre ces syndicats, par la Commission administrative de la Bourse du travail",
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k6494632x/f13.item"
+  },
+  {
+   "date": "1905-07-22",
+   "extrait": "établissement d'un règlement intérieur de la Bourse du travail (M. Lajarrige, rapporteur) Le Conseil, Vu le rapport imprimé n° 34 de 1905 présenté par M. Lajarrige, au nom de la 2e Commission, Délibère : La Commission administrative de la Bourse du travail est invitée à élaborer ",
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k6334642d/f8.item"
+  }
+ ],
  "bmo_recit": null,
  "invest": [],
  "marches": [

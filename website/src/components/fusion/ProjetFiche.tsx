@@ -89,7 +89,7 @@ export default function ProjetFiche({ projet, photo }: { projet: ProjetFicheType
       {/* Tags typologie + statut — discrets (text style, pas bouton) */}
       <div style={{ display: "flex", gap: 14, flexWrap: "wrap", marginBottom: 14, fontFamily: "var(--f-mono)", fontSize: 10.5, letterSpacing: ".08em", textTransform: "uppercase", color: "var(--muted)" }}>
         {typoLabel && <span style={{ color: "var(--ink)", fontWeight: 600 }}>{typoLabel}</span>}
-        {projet.typeAp && <span>{trLabel(projet.typeAp, locale)}</span>}
+        {projet.typeAp && <span>{trLabel(projet.typeAp, locale).replace(/_/g, " ")}</span>}
         {projet.confidence != null && projet.confidence < 0.7 && (
           <span style={{ color: "var(--ocre)", fontWeight: 600 }} title={t("fx.fiche.projet.fiabilite_title")}>
             {fill(t("fx.fiche.projet.fiabilite"), { n: (projet.confidence * 100).toFixed(0) })}

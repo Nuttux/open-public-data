@@ -29,12 +29,10 @@ export default function ChapitreFiche({ chap }: { chap: ChapitreFicheType }) {
   const decimal = locale === "en" ? "." : ",";
   const coverageAmount = fmtEur(chap.coverage.amount);
   const hasProjets = chap.nbProjets > 0;
-  const coverageLine = hasProjets
-    ? fill(t("fx.fiche.chap.coverage"), {
-        pct: chap.coverage.pct.toFixed(chap.coverage.pct < 10 ? 1 : 0).replace(".", decimal),
-        amount: `${coverageAmount.v} ${coverageAmount.u}`,
-      })
-    : t("fx.fiche.chap.coverage_zero");
+  const coverageLine = fill(t("fx.fiche.chap.coverage"), {
+    pct: chap.coverage.pct.toFixed(chap.coverage.pct < 10 ? 1 : 0).replace(".", decimal),
+    amount: `${coverageAmount.v} ${coverageAmount.u}`,
+  });
 
   return (
     <div>
@@ -62,22 +60,24 @@ export default function ChapitreFiche({ chap }: { chap: ChapitreFicheType }) {
         </div>
       </div>
 
-      <div
-        style={{
-          marginTop: 8,
-          marginBottom: 18,
-          fontFamily: "var(--f-mono)",
-          fontSize: 11,
-          letterSpacing: 0.3,
-          color: "var(--muted)",
-          lineHeight: 1.5,
-        }}
-      >
-        {coverageLine}
-        <span style={{ marginLeft: 6, opacity: 0.75 }}>
-          · {fill(t("fx.fiche.chap.coverage_source"), { source: chap.coverage.sourceLabel })}
-        </span>
-      </div>
+      {hasProjets && (
+        <div
+          style={{
+            marginTop: 8,
+            marginBottom: 18,
+            fontFamily: "var(--f-mono)",
+            fontSize: 11,
+            letterSpacing: 0.3,
+            color: "var(--muted)",
+            lineHeight: 1.5,
+          }}
+        >
+          {coverageLine}
+          <span style={{ marginLeft: 6, opacity: 0.75 }}>
+            · {fill(t("fx.fiche.chap.coverage_source"), { source: chap.coverage.sourceLabel })}
+          </span>
+        </div>
+      )}
 
       {!hasProjets && (
         <section className="fx-fiche-section">

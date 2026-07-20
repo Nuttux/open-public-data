@@ -1,34 +1,33 @@
 "use client";
 
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 // Direct imports — the barrel pulls in server-only components (ProjetThumb,
 // ProjetFiche) that fail to bundle client-side (they read node:fs via
 // fusion-data).
 import Navbar from "@/components/fusion/Navbar";
 import Footer from "@/components/fusion/Footer";
-import Button from "@/components/fusion/Button";
 import SectionHead from "@/components/fusion/SectionHead";
 import ChartSource from "@/components/fusion/ChartSource";
 import PageTOC from "@/components/fusion/PageTOC";
 import HeroNumber from "@/components/fusion/HeroNumber";
 import KPIGrid from "@/components/fusion/KPIGrid";
 import AnimatedNumber from "@/components/fusion/AnimatedNumber";
-import TileCard from "@/components/fusion/TileCard";
 import YearPicker from "@/components/fusion/YearPicker";
 import ExportRow from "@/components/fusion/ExportRow";
-import EmptyState from "@/components/fusion/EmptyState";
 import DualFlowBars from "@/components/fusion/DualFlowBars";
 import Tip from "@/components/fusion/Tip";
 import BudgetTimeline from "@/components/fusion/BudgetTimeline";
 import RelatedArticles, { type ArticlePlaceholder } from "@/components/fusion/RelatedArticles";
 import PageHook from "@/components/fusion/PageHook";
+import PageIntro, { IntroStat } from "@/components/fusion/PageIntro";
 import { fmtBillions, fmtDec, fmtInt, fmtMillions } from "@/lib/fmt";
 import type { BlogPostMeta } from "@/lib/blog";
 import type { BudgetPageData, VoteExecuteData } from "@/lib/fusion-data";
 import { slugifyLabel } from "@/lib/projet-utils";
 import { useT, useLocale } from "@/lib/localeContext";
 import { trLabel } from "@/lib/label-translate";
-import { PARIS_POPULATION } from "@/lib/methodology";
+import { cityPopulation, citySlugFromPathname } from "@/lib/methodology";
 
 type BudgetIndexLite = {
   availableYears: number[];
@@ -62,6 +61,13 @@ const BUD_PLACEHOLDERS: ArticlePlaceholder[] = [
 export default function BudgetClient({ index, d, voteExec, posts }: Props) {
   const t = useT();
   const { locale } = useLocale();
+  // City-aware : le client est partagé avec Marseille (cf. fr/city/marseille/budget).
+  // Population et basePath dérivés de l'URL — un /hab calculé avec la population
+  // de Paris sur Marseille donnait 871 € au lieu de ~2 100 €.
+  const pathname = usePathname();
+  const citySlug = citySlugFromPathname(pathname);
+  const population = cityPopulation(citySlug);
+  const cityBasePath = `/fr/city/${citySlug}/budget`;
 
   const fill = (key: string, vars: Record<string, string | number>) => {
     let s = t(key);
@@ -88,184 +94,100 @@ export default function BudgetClient({ index, d, voteExec, posts }: Props) {
 
       <PageTOC
         items={[
-          { id: "sec-overview", label: t("fx.toc.chiffres") },
           { id: "sec-flux", label: t("fx.toc.flux") },
           { id: "sec-evolution", label: t("fx.toc.evolution") },
-          { id: "execution", label: t("fx.toc.execution") },
+          ...(hasExecution ? [{ id: "execution", label: t("fx.toc.execution") }] : []),
           { id: "sec-analyses", label: t("fx.toc.analyses") },
-          { id: "sec-explorer", label: t("fx.toc.explorer") },
           { id: "sec-sources", label: t("fx.toc.sources") },
         ]}
       />
 
-
-      <section className="fx-page-header">
-        <div className="fx-wrap">
-          <div className="fx-page-kicker">{t("fx.bud.kicker")}</div>
-          <h1 className="fx-page-title">
-            {t("fx.bud.title.before")}<em>{t("fx.bud.title.em")}</em>{t("fx.bud.title.after")}
-          </h1>
-          <p className="fx-page-lede">{t("fx.bud.lede.l1")}</p>
-          <p className="fx-page-source">
-            {t("fx.bud.lede.l2.prefix")}
-            <Tip label={t("fx.bud.lede.l2.ca.tip")}>{t("fx.bud.lede.l2.ca")}</Tip>
-            {t("fx.bud.lede.l2.sep1")}
-            <Tip label={t("fx.bud.s06.c1.m57.tip")}>M57</Tip>
-            {t("fx.bud.lede.l2.mid")}
-            <Tip label={t("fx.bud.lede.l2.delib.tip")}>{t("fx.bud.lede.l2.delib")}</Tip>
-            {t("fx.bud.lede.l2.suffix")}
-          </p>
-          <div className="fx-page-actions">
-            <YearPicker
-              years={index.availableYears.slice().sort((a, b) => a - b)}
-              votedYears={index.votedYears ?? []}
-              current={d.year}
-              basePath="/fr/city/paris/budget"
-              label={t("fx.bud.year_label")}
-            />
-          </div>
-          {isVoted && (() => {
-            const lastExecuted = index.summary
-              .filter((s) => s.type_budget === "execute" && s.year < d.year)
-              .map((s) => s.year)
-              .sort((a, b) => b - a)[0];
-            return (
-              <p style={{
-                marginTop: 18,
-                fontFamily: "var(--f-mono)",
-                fontSize: 11.5,
-                color: "var(--ink-2)",
-                letterSpacing: ".04em",
-                display: "flex",
-                gap: 14,
-                flexWrap: "wrap",
-                alignItems: "center",
-              }}>
-                <span>{fill("fx.bud.voted_notice", { year: d.year, next: d.year + 1 })}</span>
-                {lastExecuted && (
-                  <Link
-                    href={`/fr/city/paris/budget?year=${lastExecuted}`}
-                    style={{
-                      color: "var(--bleu)",
-                      borderBottom: "1px solid var(--bleu)",
-                      paddingBottom: 1,
-                      textDecoration: "none",
-                    }}
-                  >
-                    {fill("fx.bud.voted_notice_cta", { year: lastExecuted })}
-                  </Link>
-                )}
-              </p>
-            );
-          })()}
-        </div>
-      </section>
-
-      {(() => {
-        const parHab = d.depenses / PARIS_POPULATION;
-        const pctFonct = Math.round((d.fonctionnement / d.depenses) * 100);
-        const pctInvest = Math.round((d.investissement / d.depenses) * 100);
-        const vars = {
-          year: d.year,
-          depenses: fmtBillions(d.depenses),
-          perHab: fmtInt(parHab),
-          pctFonct,
-          pctInvest,
-        };
-        return (
-          <PageHook
-            cite={fill("fx.bud.hook.cite", { year: d.year })}
-            shareText={fill("fx.bud.hook.share", vars)}
-          >
-            <span dangerouslySetInnerHTML={{ __html: fill("fx.bud.hook.body.l1", vars) }} />
-            {" "}
-            <span dangerouslySetInnerHTML={{ __html: fill("fx.bud.hook.body.l2", vars) }} />
-          </PageHook>
-        );
-      })()}
-
-      <section className="fx-section" id="sec-overview">
-        <div className="fx-wrap">
-          <SectionHead
-            number="01"
-            kind={t("fx.bud.s01.kind")}
-            title={<>{t("fx.bud.s01.title.before")}<em>{t("fx.bud.s01.title.em")}</em>{t("fx.bud.s01.title.after")}</>}
+      <PageIntro
+        title={<>{t("fx.bud.title.before")}<em>{t("fx.bud.title.em")}</em>{t("fx.bud.title.after")}</>}
+        lede={t("fx.bud.lede.l1")}
+        actions={
+          <YearPicker
+            years={index.availableYears.slice().sort((a, b) => a - b)}
+            votedYears={index.votedYears ?? []}
+            current={d.year}
+            basePath={cityBasePath}
+            label={t("fx.bud.year_label")}
           />
-          <div className="fx-overview">
-            <HeroNumber
-              label={<>{fill("fx.bud.s01.hero.label", { year: d.year })}</>}
+        }
+        stats={
+          <>
+            <IntroStat
               value={<AnimatedNumber value={d.depenses} format={(n) => fmtBillions(n)} />}
               unit="Md €"
-              delta={{
-                direction: deltaDir,
-                value: <AnimatedNumber value={Math.abs(d.deltaDepensesPct)} format={(n) => `${fmtDec(n, 1)} %`} />,
-                base: fill("fx.bud.s01.hero.base", { year: d.previousYear }),
-              }}
-              caption={
+              label={
                 isVoted ? (
-                  <>
-                    {t("fx.bud.s01.hero.cap_voted.prefix")}
-                    <Tip label={t("fx.bud.s01.hero.cap_voted.voted.tip")}>{t("fx.bud.s01.hero.cap_voted.voted")}</Tip>
-                    {t("fx.bud.s01.hero.cap_voted.mid")}
-                    <Tip label={t("fx.bud.s01.hero.cap_voted.bp.tip")}>{t("fx.bud.s01.hero.cap_voted.bp")}</Tip>
-                    {t("fx.bud.s01.hero.cap_voted.suffix")}
-                  </>
+                  <Tip label={t("fx.bud.s01.hero.cap_voted.bp.tip")}>{fill("fx.bud.s01.hero.label", { year: d.year })}</Tip>
                 ) : (
-                  <>
-                    {t("fx.bud.s01.hero.cap_exec.prefix")}
-                    <Tip label={t("fx.bud.s01.hero.cap_exec.exec.tip")}>{t("fx.bud.s01.hero.cap_exec.exec")}</Tip>
-                    {t("fx.bud.s01.hero.cap_exec.mid")}
-                  </>
+                  <Tip label={t("fx.bud.s01.hero.cap_exec.exec.tip")}>{fill("fx.bud.s01.hero.label", { year: d.year })}</Tip>
                 )
               }
             />
-            <KPIGrid
-              cols={3}
-              items={[
-                {
-                  label: <Tip label={t("fx.bud.s01.kpi.per_hab.tip")}>{t("fx.bud.s01.kpi.per_hab")}</Tip>,
-                  value: <AnimatedNumber value={d.depenses / PARIS_POPULATION} format={(n) => fmtInt(n)} />,
-                  unit: "€",
-                  delta: fill("fx.bud.s01.kpi.per_hab.delta", { pop: "2,13 M" }),
-                },
-                {
-                  label: <Tip label={t("fx.bud.s01.kpi.recettes.tip")}>{t("fx.bud.s01.kpi.recettes")}</Tip>,
-                  value: <AnimatedNumber value={d.recettes} format={(n) => fmtBillions(n)} />,
-                  unit: "Md €",
-                  delta: isVoted ? t("fx.bud.s01.kpi.voted") : t("fx.bud.s01.kpi.executed"),
-                },
-                {
-                  label: <Tip label={t("fx.bud.s01.kpi.solde.tip")}>{t("fx.bud.s01.kpi.solde")}</Tip>,
-                  value: <AnimatedNumber value={d.solde} format={(n) => (n >= 0 ? "+ " : "− ") + fmtMillions(Math.abs(n))} />,
-                  unit: "M €",
-                  delta: d.solde < 0 ? t("fx.bud.s01.kpi.need") : t("fx.bud.s01.kpi.excess"),
-                },
-              ]}
+            <IntroStat
+              value={<AnimatedNumber value={d.depenses / population} format={(n) => fmtInt(n)} />}
+              unit="€"
+              label={<Tip label={t("fx.bud.s01.kpi.per_hab.tip")}>{t("fx.bud.s01.kpi.per_hab")}</Tip>}
             />
-          </div>
-        </div>
-      </section>
+            <IntroStat
+              value={<AnimatedNumber value={d.recettes} format={(n) => fmtBillions(n)} />}
+              unit="Md €"
+              label={<Tip label={t("fx.bud.s01.kpi.recettes.tip")}>{t("fx.bud.s01.kpi.recettes")}</Tip>}
+            />
+            <IntroStat
+              value={<AnimatedNumber value={d.solde} format={(n) => (n >= 0 ? "+ " : "− ") + fmtMillions(Math.abs(n))} />}
+              unit="M €"
+              label={<Tip label={t("fx.bud.s01.kpi.solde.tip")}>{t("fx.bud.s01.kpi.solde")}</Tip>}
+            />
+          </>
+        }
+      >
+        {isVoted && (() => {
+          const lastExecuted = index.summary
+            .filter((s) => s.type_budget === "execute" && s.year < d.year)
+            .map((s) => s.year)
+            .sort((a, b) => b - a)[0];
+          return (
+            <p style={{
+              marginTop: 14,
+              marginBottom: 0,
+              fontFamily: "var(--f-mono)",
+              fontSize: 11.5,
+              color: "var(--ink-2)",
+              letterSpacing: ".04em",
+              display: "flex",
+              gap: 14,
+              flexWrap: "wrap",
+              alignItems: "center",
+            }}>
+              <span>{fill("fx.bud.voted_notice", { year: d.year, next: d.year + 1 })}</span>
+              {lastExecuted && (
+                <Link
+                  href={`${cityBasePath}?year=${lastExecuted}`}
+                  style={{
+                    color: "var(--bleu)",
+                    borderBottom: "1px solid var(--bleu)",
+                    paddingBottom: 1,
+                    textDecoration: "none",
+                  }}
+                >
+                  {fill("fx.bud.voted_notice_cta", { year: lastExecuted })}
+                </Link>
+              )}
+            </p>
+          );
+        })()}
+      </PageIntro>
 
       <section className="fx-section" id="sec-flux">
         <div className="fx-wrap">
           <SectionHead
-            number="02"
-            kind={t("fx.bud.s02.kind")}
             title={<><em>{t("fx.bud.s02.title.em1")}</em>{t("fx.bud.s02.title.mid")}<em>{t("fx.bud.s02.title.em2")}</em>{t("fx.bud.s02.title.after")}</>}
             subtitle={t("fx.bud.s02.sub")}
           />
-
-          {/* Pareto line — one stat anchor above the symmetric DualFlowBars. */}
-          {(() => {
-            const depSum = d.topDepenses.reduce((s, x) => s + x.value, 0);
-            const top3Sum = d.topDepenses.slice(0, 3).reduce((s, x) => s + x.value, 0);
-            const top3Pct = depSum > 0 ? (top3Sum / depSum) * 100 : 0;
-            return (
-              <p className="fx-note" style={{ marginTop: 0, marginBottom: 22 }}>
-                {fill("fx.bud.s03.pareto_line", { year: d.year, pct: `${Math.round(top3Pct)} €` })}
-              </p>
-            );
-          })()}
 
           <DualFlowBars
             left={{
@@ -315,6 +237,29 @@ export default function BudgetClient({ index, d, voteExec, posts }: Props) {
               </>
             }
           />
+          {(() => {
+            const parHab = d.depenses / population;
+            const pctFonct = Math.round((d.fonctionnement / d.depenses) * 100);
+            const pctInvest = Math.round((d.investissement / d.depenses) * 100);
+            const vars = {
+              year: d.year,
+              depenses: fmtBillions(d.depenses),
+              perHab: fmtInt(parHab),
+              pctFonct,
+              pctInvest,
+            };
+            return (
+              <PageHook
+                variant="card"
+                cite={fill("fx.bud.hook.cite", { year: d.year })}
+                shareText={fill("fx.bud.hook.share", vars)}
+              >
+                <span dangerouslySetInnerHTML={{ __html: fill("fx.bud.hook.body.l1", vars) }} />
+                {" "}
+                <span dangerouslySetInnerHTML={{ __html: fill("fx.bud.hook.body.l2", vars) }} />
+              </PageHook>
+            );
+          })()}
           <ChartSource
             source={<>Ville de Paris · Comptes administratifs M57 {d.year}</>}
             dataHref="https://opendata.paris.fr/explore/dataset/comptes-administratifs-budgets-principaux-a-partir-de-2019-m57-ville-departement/"
@@ -326,8 +271,6 @@ export default function BudgetClient({ index, d, voteExec, posts }: Props) {
       <section className="fx-section" id="sec-evolution">
         <div className="fx-wrap">
           <SectionHead
-            number="04"
-            kind={t("fx.bud.s04.kind")}
             title={<>{t("fx.bud.s04.title.before")}<em>{t("fx.bud.s04.title.em")}</em>{t("fx.bud.s04.title.after")}</>}
             subtitle={t("fx.bud.s04.sub")}
           />
@@ -367,13 +310,32 @@ export default function BudgetClient({ index, d, voteExec, posts }: Props) {
             );
           })()}
         </div>
-      </section>
+              {!hasExecution && (
+          <div className="fx-wrap">
+            <p className="fx-note" style={{ marginTop: 18 }}>
+              {fill("fx.bud.s05.empty.title", { year: d.year, next: d.year + 1 })}{" "}
+              {voteExec.rows
+                .filter((r) => r.executed != null)
+                .slice(-3)
+                .reverse()
+                .map((r, i) => (
+                  <Link
+                    key={r.year}
+                    href={`${cityBasePath}?year=${r.year}#execution`}
+                    style={{ color: "var(--bleu)", borderBottom: "1px solid var(--bleu)", textDecoration: "none", marginLeft: i === 0 ? 8 : 12 }}
+                  >
+                    {fill("fx.bud.s05.empty.cta", { year: r.year })}
+                  </Link>
+                ))}
+            </p>
+          </div>
+        )}
+</section>
 
+      {hasExecution && (
       <section className="fx-section" id="execution">
         <div className="fx-wrap">
           <SectionHead
-            number="05"
-            kind={t("fx.bud.s05.kind")}
             title={
               <>
                 {t("fx.bud.s05.title.a")}
@@ -390,26 +352,7 @@ export default function BudgetClient({ index, d, voteExec, posts }: Props) {
             subtitle={<>{t("fx.bud.s05.sub")}</>}
           />
 
-          {!hasExecution ? (
-            <EmptyState
-              label={t("fx.bud.s05.empty.label")}
-              title={<>{fill("fx.bud.s05.empty.title", { year: d.year, next: d.year + 1 })}</>}
-              body={<>{t("fx.bud.s05.empty.body")}</>}
-              actions={
-                <>
-                  {voteExec.rows
-                    .filter((r) => r.executed != null)
-                    .slice(-3)
-                    .reverse()
-                    .map((r) => (
-                      <Button key={r.year} href={`/fr/city/paris/budget?year=${r.year}#execution`}>
-                        {fill("fx.bud.s05.empty.cta", { year: r.year })}
-                      </Button>
-                    ))}
-                </>
-              }
-            />
-          ) : (
+
             <>
               <div className="fx-overview">
                 <HeroNumber
@@ -484,67 +427,14 @@ export default function BudgetClient({ index, d, voteExec, posts }: Props) {
                 );
               })()}
             </>
-          )}
+
+
         </div>
       </section>
+      )}
 
-      <RelatedArticles number="06" posts={posts} placeholders={BUD_PLACEHOLDERS} />
+      <RelatedArticles posts={posts} placeholders={BUD_PLACEHOLDERS} />
 
-      <section className="fx-section" id="sec-explorer">
-        <div className="fx-wrap">
-          <SectionHead
-            number="07"
-            kind={t("fx.bud.s07.kind")}
-            subtitle={t("fx.bud.s07.sub")}
-          />
-          <div className="fx-grid-tiles fx-grid-tiles-4">
-            <TileCard
-              href="/fr/city/paris/subventions"
-              number={t("fx.bud.s07.t1.n")}
-              kind={t("fx.bud.s07.t1.kind")}
-              title={t("fx.bud.s07.t1.title")}
-              description={t("fx.bud.s07.t1.desc")}
-              preview={<SvgClassement />}
-              kpi="312"
-              kpiUnit="M €"
-              kpiDelta={<>{t("fx.bud.s07.t1.delta")}</>}
-            />
-            <TileCard
-              href="/fr/city/paris/investissements"
-              number={t("fx.bud.s07.t2.n")}
-              kind={t("fx.bud.s07.t2.kind")}
-              title={t("fx.bud.s07.t2.title")}
-              description={t("fx.bud.s07.t2.desc")}
-              preview={<SvgCarte />}
-              kpi="2,6"
-              kpiUnit="Md €"
-              kpiDelta={<>{t("fx.bud.s07.t2.delta")}</>}
-            />
-            <TileCard
-              href="/fr/city/paris/dette"
-              number={t("fx.bud.s07.t3.n")}
-              kind={t("fx.bud.s07.t3.kind")}
-              title={t("fx.bud.s07.t3.title")}
-              description={t("fx.bud.s07.t3.desc")}
-              preview={<SvgBilan />}
-              kpi="36"
-              kpiUnit="Md €"
-              kpiDelta={<>{t("fx.bud.s07.t3.delta")}</>}
-            />
-            <TileCard
-              href="/analyses"
-              number={t("fx.bud.s07.t4.n")}
-              kind={t("fx.bud.s07.t4.kind")}
-              title={t("fx.bud.s07.t4.title")}
-              description={t("fx.bud.s07.t4.desc")}
-              preview={<SvgAnalyses />}
-              kpi="2"
-              kpiUnit={t("fx.bud.s07.t4.unit")}
-              kpiDelta={<>{t("fx.bud.s07.t4.delta")}</>}
-            />
-          </div>
-        </div>
-      </section>
 
       <section className="fx-footer-sources" id="sec-sources">
         <div className="fx-wrap">

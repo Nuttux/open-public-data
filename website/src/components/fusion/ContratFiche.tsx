@@ -113,33 +113,30 @@ export default function ContratFiche({
         // Drop `pourquoi_ca_compte` (promo-y, cohérence avec ProjetFiche/AssoFiche).
         const objet = cap(locale === "en" && vulgarization.objet_clair_en ? vulgarization.objet_clair_en : vulgarization.objet_clair);
         const quoi = cap(locale === "en" && vulgarization.quoi_concretement_en ? vulgarization.quoi_concretement_en : vulgarization.quoi_concretement);
-        return (
+        // L'objet clair est déjà le titre de la page — seul le
+        // « quoi concrètement » apporte du neuf ici.
+        void objet;
+        return quoi ? (
           <div className="fx-fiche-lead">
-            {objet && (
-              <p style={{ margin: 0, fontWeight: 600, color: "var(--ink)", fontSize: 17, lineHeight: 1.45 }}>
-                {objet}
-              </p>
-            )}
-            {quoi && (
-              <p style={{ margin: "10px 0 0", fontSize: 14.5, color: "var(--ink-2)" }}>
-                {quoi}
-              </p>
-            )}
+            <p style={{ margin: 0, fontSize: 14.5, color: "var(--ink-2)" }}>
+              {quoi}
+            </p>
           </div>
-        );
+        ) : null;
       })() : (
-        <div className="fx-fiche-lead">
-          <p style={{ margin: 0, fontWeight: 600, color: "var(--ink)", fontSize: 17, lineHeight: 1.45 }}>
-            {normalizeObjet(contrat.objet)}
-          </p>
-          {/* Phrase italique → tag discret : même info, moins de texte. */}
-          <p
-            style={{ margin: "8px 0 0", fontFamily: "var(--f-mono)", fontSize: 10, letterSpacing: ".08em", textTransform: "uppercase", color: "var(--muted)", cursor: "help" }}
-            title={t("fx.fiche.contrat.libelle_reformat")}
-          >
-            {t("fx.fiche.contrat.libelle_reformat_tag")} ⓘ
-          </p>
-        </div>
+        normalizeObjet(contrat.objet) !== contrat.objet ? (
+          <div className="fx-fiche-lead">
+            <p style={{ margin: 0, fontSize: 14.5, color: "var(--ink-2)" }}>
+              {contrat.objet}
+            </p>
+            <p
+              style={{ margin: "8px 0 0", fontFamily: "var(--f-mono)", fontSize: 10, letterSpacing: ".08em", textTransform: "uppercase", color: "var(--muted)", cursor: "help" }}
+              title={t("fx.fiche.contrat.libelle_reformat")}
+            >
+              {t("fx.fiche.contrat.libelle_original_tag")} ⓘ
+            </p>
+          </div>
+        ) : null
       )}
 
       <div className="fx-fiche-kpis">

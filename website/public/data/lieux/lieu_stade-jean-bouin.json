@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T11:31:55.941392+00:00",
+ "generated_at": "2026-07-20T15:44:01.151982+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "stade-jean-bouin",
  "name": "Stade Jean-Bouin",
@@ -31,7 +31,7 @@
    2014
   ],
   "n_bmo_brut": 140,
-  "n_bmo_verifies": 7,
+  "n_bmo_verifies": 17,
   "invest_total_eur": 667533.71,
   "invest_annees": [
    "2022"
@@ -189,8 +189,39 @@
    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=4289"
   }
  ],
- "bmo_extraits": [],
- "bmo_recit": null,
+ "bmo_extraits": [
+  {
+   "date": "1929-04-21",
+   "extrait": "Exécution d'un mur de clôture au stade Jean - Bouin , 100.000 francs",
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k6429400w/f13.item"
+  },
+  {
+   "date": "1935-01-25",
+   "extrait": "Autorisation au Club athlétique de la Société générale de mettre le stade Jean - Bouin à la disposition des clubs amateurs utilisant des joueurs professionnels à raison de quinze réunions par an (1931, 1297 … ",
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k6450923n/f25.item"
+  },
+  {
+   "date": "1935-12-30",
+   "extrait": "Dans le but d'encourager la pratique de l'éducation physique, elle organise depuis deux ans, en plus de son concours de gymnastique annuel, un concours d'éducation physique et d'athlétisme qui a eu lieu cette année au stade Jean - Bouin (1935, P. 538 … Fondé en 1920, reconnu d'",
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k6481071r/f25.item"
+  },
+  {
+   "date": "1960-01-16",
+   "extrait": "168. — Nouvelle concession du stade Jean - Bouin au Club athlétique des sports généraux … Roger Pinoteau, au nom de la lra Commission. — Mesdames, Messieurs, par contrat du 11 avril 1927 et avenants des 21 juin 1959 et 10 septembre 1935, un emplacement d'une superficie de 55.50",
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k97132220/f30.item"
+  },
+  {
+   "date": "1965-12-13",
+   "extrait": "6. — Désignation des représentants du Conseil municipal à la Commission de contrôle de l'exploitation du stade Jean - Bouin  … intervenir entre la Ville de Paris et le Secrétariat d'Etat à la jeunesse et aux sports en vue de la transformation du stade Jean - Bouin en stade nati",
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k97079424/f2.item"
+  },
+  {
+   "date": "1971-07-03",
+   "extrait": "l’abattage d’une rangée d’arbres superbes, plantés entre l’avenue du Général-Sarrail et le stade Jean - Bouin , lesquels faisaient la joie des habitants de ladite avenue, dont les fenêtres donnent sur le stade  … Mais, entre la clôture du stade et la tranchée du périphérique es",
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k3211736p/f3.item"
+  }
+ ],
+ "bmo_recit": "Le stade Jean-Bouin apparaît dans le Bulletin municipal dès 1929, avec l'inscription de 100 000 francs pour l'exécution d'un mur de clôture. Au milieu des années 1930, le Conseil autorise le Club athlétique de la Société générale à mettre le stade à la disposition des clubs amateurs utilisant des joueurs professionnels, à raison de quinze réunions par an, et un concours d'éducation physique et d'athlétisme s'y tient en 1935. En 1960, le Conseil est saisi d'une nouvelle concession du stade au Club athlétique des sports généraux — présent sur le site depuis un contrat d'avril 1927 — portant sur une emprise d'environ 55 500 mètres carrés. En 1965, il désigne ses représentants à la commission de contrôle de l'exploitation du stade, dans le cadre d'une convention à conclure avec le Secrétariat d'État à la jeunesse et aux sports en vue d'une transformation en stade national d'athlétisme. L'archive s'achève en 1971 sur une intervention évoquant l'abattage d'une rangée d'arbres plantés entre l'avenue du Général-Sarrail et le stade, près de la tranchée du périphérique.",
  "invest": [
   {
    "annee": "2022",

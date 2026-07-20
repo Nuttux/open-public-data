@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T11:31:55.941392+00:00",
+ "generated_at": "2026-07-20T15:44:01.151982+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "place-de-la-nation",
  "name": "Place de la Nation",
@@ -30,8 +30,8 @@
    1995,
    2019
   ],
-  "n_bmo_brut": 2000,
-  "n_bmo_verifies": 10,
+  "n_bmo_brut": 2717,
+  "n_bmo_verifies": 18,
   "invest_total_eur": 0,
   "invest_annees": [],
   "lecture_mode": "titre nommant le lieu (15 trouvés)",

@@ -4,7 +4,7 @@ import "@/app/fusion.css";
 
 import { Navbar, Footer } from "@/components/fusion";
 import CategorieMarcheFiche from "@/components/fusion/CategorieMarcheFiche";
-import { MarchesBackKicker, CategorieLede } from "@/components/fusion/EntityPageHeaders";
+import { MarchesBackKicker } from "@/components/fusion/EntityPageHeaders";
 import { DataLabel } from "@/components/fusion/DataLabel";
 import { loadMarcheCategorie } from "@/lib/fusion-data";
 import { readLocale } from "@/lib/seo";
@@ -57,15 +57,10 @@ export default async function CategoriePage({ params }: { params: Promise<Params
     <div className="theme-fusion">
       <Navbar />
       <main id="main-content" tabIndex={-1}>
-      <section className="fx-page-header">
+      <section className="fx-page-header fx-page-header--fiche">
         <div className="fx-wrap">
           <MarchesBackKicker />
           <h1 className="fx-page-title"><DataLabel value={fiche.category} /></h1>
-          <CategorieLede
-            nbContrats={fiche.nbContrats}
-            nbTitulaires={fiche.nbTitulaires}
-            year={fiche.year}
-          />
         </div>
       </section>
       <div className="fx-fiche-wrap">

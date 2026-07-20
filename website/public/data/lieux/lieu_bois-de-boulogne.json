@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T11:31:55.941392+00:00",
+ "generated_at": "2026-07-20T15:44:01.151982+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "bois-de-boulogne",
  "name": "Bois de Boulogne",
@@ -30,8 +30,8 @@
    2005,
    2025
   ],
-  "n_bmo_brut": 0,
-  "n_bmo_verifies": null,
+  "n_bmo_brut": 2000,
+  "n_bmo_verifies": 18,
   "invest_total_eur": 57153.59,
   "invest_annees": [
    "2024"
@@ -196,8 +196,39 @@
    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=97785"
   }
  ],
- "bmo_extraits": [],
- "bmo_recit": null,
+ "bmo_extraits": [
+  {
+   "date": "1899-02-06",
+   "extrait": "pompes pour élever 780 litres d'eau de Seine par seconde, soit sur le réservoir de Passy, soit sur le bois de Boulogne",
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k6492545k/f3.item"
+  },
+  {
+   "date": "1936-02-14",
+   "extrait": "Terrains de jeux du champ d'entraînement de Bagatelle au bois de Boulogne , Paris (16e … Emplacements libres pour le tennis : au bois de Vincennes, au bois de Boulogne et au Champs-de-Mars … 5° Stades, vélodromes, piscines et autres établissements sportifs appartenant à des s",
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k62836583/f4.item"
+  },
+  {
+   "date": "1941-07-25",
+   "extrait": "AVIS La Préfecture de police communique : Il est porté à la connaissance du public que les présentations de véhicules qui devaient avoir lieu à Saint-Denis (parc des Sports), au bois de Boulogne (allée de Longchamp) ou à Vincennes (avenue de Nogent) auront lieu uniquement sur l'e",
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k64493715/f1.item"
+  },
+  {
+   "date": "1962-06-10",
+   "extrait": "Entreprises de locations de chaises dans les jardins publics et les bois de Boulogne et de Vincennes, du l*r avril au 30 octobre",
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k97319794/f3.item"
+  },
+  {
+   "date": "1962-11-22",
+   "extrait": "N° 1805. — Dans le bois de Boulogne , le maximum de la vitesse de tous les … mais, néanmoins, M, René Fayssat, conseiller municipal, a constaté, en bien des cas, que certains conducteurs n'hésitaient pas à considérer les allées du bois comme des autoroutes et à y lancer leurs v",
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k9700114w/f1.item"
+  },
+  {
+   "date": "1963-12-05",
+   "extrait": "Les bois de Boulogne et de Vincennes sont inclus dans cette agglomération et, par conséquent, les règles de la circulation urbaine y sont applicables, particulièrement au sujet de la priorité, à droite … N° 1682. — Le bois de Boulogne , qui offre aux promeneurs un air purifié, ",
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k97134322/f4.item"
+  }
+ ],
+ "bmo_recit": "Le bois de Boulogne apparaît dès 1899 dans le Bulletin municipal, à propos de pompes destinées à élever 780 litres d'eau de Seine par seconde, vers le réservoir de Passy ou vers le bois. Dans l'entre-deux-guerres, l'archive le montre en terrain de sport : en 1936, le Bulletin mentionne les terrains de jeux du champ d'entraînement de Bagatelle et des emplacements libres pour le tennis. En juillet 1941, un avis de la Préfecture de police annonce que des présentations de véhicules prévues allée de Longchamp sont déplacées vers l'esplanade des Invalides. Au début des années 1960, le bois revient par ses usages quotidiens : la location de chaises y est organisée du 1er avril au 30 octobre, tandis que le conseiller municipal René Fayssat affirme en 1962 que certains conducteurs traitent les allées du bois comme des autoroutes. En 1963, le Bulletin rappelle que le bois, inclus dans l'agglomération, relève des règles de la circulation urbaine, notamment la priorité à droite.",
  "invest": [
   {
    "annee": 2024,
@@ -432,7 +463,7 @@
   },
   "bmo": {
    "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
-   "url": "https://gallica.bnf.fr/ark:/12148/cb343512457/date"
+   "url": "https://gallica.bnf.fr/services/engine/search/sru?operation=searchRetrieve&version=1.2&startRecord=0&maximumRecords=15&page=1&collapsing=disabled&query=arkPress+all+%22cb343512457_date%22+and+%28gallica+all+%22Bois+de+Boulogne%22%29"
   },
   "invest": {
    "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",

@@ -67,7 +67,7 @@ export default async function BailleurPage({ params }: { params: Promise<Params>
     <div className="theme-fusion">
       <Navbar />
       <main id="main-content" tabIndex={-1}>
-      <section className="fx-page-header">
+      <section className="fx-page-header fx-page-header--fiche">
         <div className="fx-wrap">
           <div className="fx-kicker-mono" style={{ marginBottom: 10 }}>
             <BailleurKickerText type={bailleur.type} />

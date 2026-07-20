@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T11:31:55.941392+00:00",
+ "generated_at": "2026-07-20T15:44:01.151982+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "piscine-hebert",
  "name": "Piscine Hébert",
@@ -31,7 +31,7 @@
    2019
   ],
   "n_bmo_brut": 652,
-  "n_bmo_verifies": null,
+  "n_bmo_verifies": 18,
   "invest_total_eur": 0,
   "invest_annees": [],
   "lecture_mode": "titre nommant le lieu (3 trouvés)",
@@ -76,8 +76,44 @@
    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=148298"
   }
  ],
- "bmo_extraits": [],
- "bmo_recit": null,
+ "bmo_extraits": [
+  {
+   "date": "1894-02-27",
+   "extrait": "Travaux de construction d'une piscine sanitaire au puits artésien de la place Hébert",
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k6446898m/f4.item"
+  },
+  {
+   "date": "1911-01-22",
+   "extrait": "2115. — Exécution de travaux de grosses réparations à la piscine Hébert (M. Lemarchand, rapporteur … 1° D'autoriser, dans la limite d'une dépense totale de 7,830 francs, l'exécution de divers travaux de grosses réparations à la piscine Hébert  … de crédits relatifs à des opér",
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k6309618g/f11.item"
+  },
+  {
+   "date": "1928-11-05",
+   "extrait": "présentas à l'Académie de médecine sur la saleté de l'eau des piscines et les dangers de contamination qu'elle présente pour les baigneurs … Deux piscines municipales sont actuellement en service : la piscine de la Butte-auxCailles et celle de la rue Hébert  … sont prévues da",
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k64142078/f2.item"
+  },
+  {
+   "date": "1932-01-31",
+   "extrait": "Sur le rapport présenté par M. Adrien Oudin, au nom de la 3e Commission, Délibère : Article premier. — Les honoraires dus aux conseils de la Ville pour les opérations ciaprès sont réglés ainsi qu'il suit : I. — Agrandissement du square et de la piscine de la place Hébert : le 1° ",
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k64537605/f19.item"
+  },
+  {
+   "date": "1934-01-15",
+   "extrait": "58. — Agrandissement de l'établissement municipal de bains-douches annexé à la piscine Hébert  … renvoyé à l'Administration une proposition de MM. Joly et Louis Sellier tendant, d'une part, à augmenter le nombre des cabines de l'établissement municipal de bains-douches annexé à",
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k6336196v/f24.item"
+  },
+  {
+   "date": "1960-01-01",
+   "extrait": "Personnel. — Nomination d’un directeur à la piscine Hébert  … Cart-Grandjean (Paul), gérant de bains-douches, est nommé directeur- de la piscine Hébert en remplacement de M. Deville, retraité (arrêté du 25 février 1960 … ",
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k3200423f/f515.item"
+  },
+  {
+   "date": "1968-10-20",
+   "extrait": "piscines municipales, les enfants perdent leur temps dans les moyens de transport … C'est ce qui se produit notamment pour le 17° arrondissement dont les élèves sont obligés de se rendre soit à la piscine Hébert , soit à celle des Amiraux, toutes deux très distantes",
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k97038963/f1.item"
+  }
+ ],
+ "bmo_recit": "La piscine apparaît dans le Bulletin municipal dès 1894, à propos de travaux de construction d'une piscine sanitaire au puits artésien de la place Hébert. L'établissement revient ensuite régulièrement devant le Conseil : en 1911, celui-ci autorise de grosses réparations dans la limite d'une dépense de 7 830 francs ; en 1932, il règle des honoraires liés à l'agrandissement du square et de la piscine ; en 1934, une proposition d'augmenter le nombre de cabines des bains-douches annexés à la piscine est renvoyée à l'Administration. Entre-temps, en 1928, le Bulletin la présente comme l'une des deux seules piscines municipales alors en service, avec celle de la Butte-aux-Cailles. L'archive suit aussi la vie quotidienne de l'établissement : en 1960, un arrêté nomme un nouveau directeur, Paul Cart-Grandjean, en remplacement de M. Deville, parti en retraite. En 1968 encore, il se dit en séance que les élèves du 17e arrondissement sont obligés d'aller nager à Hébert ou aux Amiraux, jugées toutes deux très distantes.",
  "invest": [],
  "marches": [
   {

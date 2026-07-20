@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T11:31:55.941392+00:00",
+ "generated_at": "2026-07-20T15:44:01.151982+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "porte-de-montreuil",
  "name": "Porte de Montreuil",
@@ -31,7 +31,7 @@
    2025
   ],
   "n_bmo_brut": 2000,
-  "n_bmo_verifies": 14,
+  "n_bmo_verifies": 18,
   "invest_total_eur": 6089661.57,
   "invest_annees": [
    "2024"
@@ -217,8 +217,24 @@
    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=122386"
   }
  ],
- "bmo_extraits": [],
- "bmo_recit": null,
+ "bmo_extraits": [
+  {
+   "date": "1923-07-06",
+   "extrait": "117. - Renvoi à l'Administration d'une proposition de M. Hémard relative à l'élargissement de la porte de Montreuil  … Hémard. — Messieurs, à plusieurs reprises, j'ai demandé au Conseil général de voter l'élargissement de la porte de Montreuil , celle-ei étant absolument insuff",
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k6445772q/f8.item"
+  },
+  {
+   "date": "1963-04-19",
+   "extrait": "il n'est pas prévu de raccordement côté nord à cause de la proximité de l'ouvrage prévu porte de Montreuil  … 2° Le passage souterrain de la porte de Vincennes avec échangeur … Le passage souterrain sous le rond-point de la Porte -de-la-Plaine est à moitié construit et les tr",
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k97106337/f22.item"
+  },
+  {
+   "date": "1963-06-29",
+   "extrait": "N° 267. — Chaque semaine, les samedis et dimanches, se tient un marché dit « marché aux puces » à la limite de Paris, entre la place de la Porte -de- Montreuil et la rue Edouard-Vaillant, à Bagnolet …  Montreuil ainsi que les propriétés voisines … Pour éviter cet inconvénient",
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k97137627/f3.item"
+  }
+ ],
+ "bmo_recit": "La porte de Montreuil apparaît dans le Bulletin municipal en 1923, lorsque le conseiller Hémard, qui dit l'avoir déjà réclamé à plusieurs reprises, demande son élargissement, la jugeant « absolument insuffisante pour le trafic » — sa proposition est renvoyée à l'Administration, sans qu'une réalisation soit actée. Le lieu ne revient ensuite qu'en 1963, sous deux visages. D'un côté, une question au Conseil décrit le marché aux puces qui se tient chaque samedi et dimanche à la limite de Paris, entre la place de la Porte-de-Montreuil et la rue Édouard-Vaillant à Bagnolet, et cherche à éviter l'inconvénient qu'il cause aux propriétés voisines. De l'autre, dans un débat sur les passages souterrains et échangeurs des portes de l'Est parisien, un ouvrage prévu à la porte de Montreuil pèse déjà sur les plans : sa proximité conduit à renoncer à un raccordement côté nord. Entre ces deux moments, l'archive reste silencieuse sur la porte elle-même — quarante ans séparent la plainte sur le trafic des projets routiers qui la reprennent.",
  "invest": [
   {
    "annee": 2024,

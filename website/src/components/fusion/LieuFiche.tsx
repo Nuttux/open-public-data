@@ -488,9 +488,10 @@ export default function LieuFiche({ lieu }: { lieu: LieuFicheData }) {
        *  le lecteur devait interpréter seul. La section n'apparaît que si
        *  l'archive raconte vraiment quelque chose (seuil à l'export). */}
       {bmo.length > 0 && (() => {
-        // Récit visible, puis 2 extraits en texture (les plus anciens — l'ordre
-        // chronologique de l'export), le reste replié : résumé + dépliant,
-        // comme partout ailleurs sur la fiche.
+        // Récit visible ; les citations TOUTES repliées derrière « Lire les
+        // citations… » (choix user 2026-07-20) : l'OCR de 1900 en texture nuisait
+        // à la lecture, mais chaque citation reste la preuve du récit — dépliable
+        // sur place, chaque ligne renvoie à la page numérisée du fascicule.
         const BRow = (b: (typeof bmo)[number], i: number) => (
           <a
             key={i}
@@ -517,15 +518,12 @@ export default function LieuFiche({ lieu }: { lieu: LieuFicheData }) {
                 <Money text={lieu.bmo_recit} />
               </p>
             )}
-            {bmo.slice(0, 2).map(BRow)}
-            {bmo.length > 2 && (
-              <details>
-                <summary style={{ fontFamily: "var(--f-mono)", fontSize: 10, letterSpacing: ".07em", textTransform: "uppercase", color: "var(--bleu)", cursor: "pointer", padding: "10px 6px" }}>
-                  {fill(t(bmo.length - 2 === 1 ? "fx.lieu.bmo_more1" : "fx.lieu.bmo_more"), { n: bmo.length - 2 })}
-                </summary>
-                {bmo.slice(2).map(BRow)}
-              </details>
-            )}
+            <details>
+              <summary style={{ fontFamily: "var(--f-mono)", fontSize: 10, letterSpacing: ".07em", textTransform: "uppercase", color: "var(--bleu)", cursor: "pointer", padding: "10px 6px" }}>
+                {fill(t(bmo.length === 1 ? "fx.lieu.bmo_read1" : "fx.lieu.bmo_read"), { n: bmo.length })}
+              </summary>
+              {bmo.map(BRow)}
+            </details>
             <p className="fx-fiche-note">{t("fx.lieu.bmo_note")}</p>
           </section>
         );

@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T11:31:55.941392+00:00",
+ "generated_at": "2026-07-20T15:44:01.151982+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "pere-lachaise",
  "name": "Cimetière du Père-Lachaise",
@@ -30,8 +30,8 @@
    1996,
    2025
   ],
-  "n_bmo_brut": 0,
-  "n_bmo_verifies": null,
+  "n_bmo_brut": 3664,
+  "n_bmo_verifies": 18,
   "invest_total_eur": 0,
   "invest_annees": [],
   "lecture_mode": "titre nommant le lieu (50 trouvés)",
@@ -201,8 +201,24 @@
    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=47488"
   }
  ],
- "bmo_extraits": [],
- "bmo_recit": null,
+ "bmo_extraits": [
+  {
+   "date": "1888-03-28",
+   "extrait": "Cette pétition est extrêmement intéressante et l'Administration a depuis longtemps manifesté l'intention d'établir des trottoirs en asphalte sur les boulevards qui servent de lieu de passage aux personnes qui se rendent au cimetière du Père - Lachaise",
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k6440303j/f2.item"
+  },
+  {
+   "date": "1897-07-07",
+   "extrait": "Modification de la délibération du 19 juin 1896 attribuant à M. Gérard, ancien maire du 20e arrondissement, une concession de deux mètres dans le. cimetière du Père - Lachaise . - M. Patenne. — Le Conseil a accordé, le 19 juin 1896, à M. Gérard, ancien maire du 20e arrondissement",
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k6361952q/f6.item"
+  },
+  {
+   "date": "1911-11-20",
+   "extrait": "Au cimetière du Père - Lachaise , les discours suivants ont été prononcés : Discours de M. César",
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k64957404/f1.item"
+  }
+ ],
+ "bmo_recit": "Le cimetière du Père-Lachaise n'apparaît que ponctuellement dans le Bulletin municipal, à travers trois épisodes entre 1888 et 1911. En 1888, une pétition réclame des trottoirs en asphalte sur les boulevards qu'empruntent les personnes se rendant au cimetière ; il est répondu en séance que l'Administration a depuis longtemps manifesté l'intention de les établir, sans que le Bulletin dise si les travaux ont suivi. En 1897, le Conseil revient sur une délibération du 19 juin 1896 par laquelle il avait accordé à M. Gérard, ancien maire du 20e arrondissement, une concession de deux mètres dans le cimetière. En 1911 enfin, le Bulletin consigne les discours prononcés au cimetière lors d'une cérémonie. Trois traces brèves, entre l'entretien des abords, l'hommage à un ancien élu et la prise de parole publique.",
  "invest": [],
  "marches": [
   {
@@ -250,7 +266,7 @@
   },
   "bmo": {
    "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
-   "url": "https://gallica.bnf.fr/ark:/12148/cb343512457/date"
+   "url": "https://gallica.bnf.fr/services/engine/search/sru?operation=searchRetrieve&version=1.2&startRecord=0&maximumRecords=15&page=1&collapsing=disabled&query=arkPress+all+%22cb343512457_date%22+and+%28gallica+all+%22P%C3%A8re-Lachaise%22%29"
   },
   "invest": {
    "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",

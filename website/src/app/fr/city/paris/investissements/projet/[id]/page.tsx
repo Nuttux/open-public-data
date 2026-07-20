@@ -4,7 +4,7 @@ import "@/app/fusion.css";
 
 import { Navbar, Footer } from "@/components/fusion";
 import ProjetFiche from "@/components/fusion/ProjetFiche";
-import { InvestBackKicker, ProjetLede } from "@/components/fusion/EntityPageHeaders";
+import { InvestBackKicker } from "@/components/fusion/EntityPageHeaders";
 import { loadProjet, resolveProjetPhoto } from "@/lib/fusion-data";
 import { lieuForProjet } from "@/lib/lieux-data";
 import VoirLeLieu from "@/components/fusion/VoirLeLieu";
@@ -64,13 +64,12 @@ export default async function ProjetPage({ params }: { params: Promise<Params> }
     <div className="theme-fusion">
       <Navbar />
       <main id="main-content" tabIndex={-1}>
-      <section className="fx-page-header">
+      <section className="fx-page-header fx-page-header--fiche">
         <div className="fx-wrap">
           <InvestBackKicker />
           <h1 className="fx-page-title" style={{ fontSize: "clamp(28px, 4vw, 44px)" }}>
             {displayName}
           </h1>
-          <ProjetLede year={projet.year} chapitre={projet.chapitre} montant={projet.montant} />
         </div>
       </section>
       <div className="fx-fiche-wrap">

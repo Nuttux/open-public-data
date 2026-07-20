@@ -5,10 +5,7 @@ import Footer from "@/components/fusion/Footer";
 import SectionHead from "@/components/fusion/SectionHead";
 import ChartSource from "@/components/fusion/ChartSource";
 import PageTOC from "@/components/fusion/PageTOC";
-import HeroNumber from "@/components/fusion/HeroNumber";
-import KPIGrid from "@/components/fusion/KPIGrid";
 import AnimatedNumber from "@/components/fusion/AnimatedNumber";
-import TileCard from "@/components/fusion/TileCard";
 import YearPicker from "@/components/fusion/YearPicker";
 import ExportRow from "@/components/fusion/ExportRow";
 import ExpandableList from "@/components/fusion/ExpandableList";
@@ -20,6 +17,7 @@ import MarchesSearch from "./MarchesSearch";
 import MarchesSignature from "@/components/fusion/MarchesSignature";
 import RelatedArticles, { type ArticlePlaceholder } from "@/components/fusion/RelatedArticles";
 import PageHook from "@/components/fusion/PageHook";
+import PageIntro, { IntroStat } from "@/components/fusion/PageIntro";
 import { normalizeObjet } from "@/lib/objet-normalizer";
 import { fmtBillions, fmtDec, fmtInt, fmtMillions } from "@/lib/fmt";
 import type { BlogPostMeta } from "@/lib/blog";
@@ -76,30 +74,27 @@ export default function MarchesPublicsClient({
 
       <PageTOC
         items={[
-          { id: "sec-overview", label: t("fx.toc.chiffres") },
           { id: "sec-signature", label: t("fx.toc.signature") },
+          { id: "sec-procedure", label: t("fx.toc.procedure") },
           { id: "sec-categorie", label: t("fx.toc.categories") },
-          { id: "sec-titulaires", label: t("fx.toc.titulaires") },
           { id: "sec-classement", label: t("fx.toc.classement") },
           { id: "sec-recherche", label: t("fx.toc.recherche") },
-          { id: "sec-procedure", label: t("fx.toc.procedure") },
           { id: "sec-evolution", label: t("fx.toc.evolution") },
           { id: "sec-analyses", label: t("fx.toc.analyses") },
-          { id: "sec-explorer", label: t("fx.toc.explorer") },
           { id: "sec-sources", label: t("fx.toc.sources") },
         ]}
       />
 
-
-      <section className="fx-page-header">
-        <div className="fx-wrap">
-          <div className="fx-page-kicker">{t("fx.mp.kicker")}</div>
-          <h1 className="fx-page-title">
+      <PageIntro
+        title={
+          <>
             {t("fx.mp.title.before")}
             <em>{t("fx.mp.title.em")}</em>
             {t("fx.mp.title.after")}
-          </h1>
-          <p className="fx-page-lede">
+          </>
+        }
+        lede={
+          <>
             {fmtInt(d.nb)}{" "}
             <Tip label={t("fx.mp.lede.a.contrats.tip")}>{t("fx.mp.lede.a.contrats")}</Tip>
             {t("fx.mp.lede.a.notifies")}{d.year}{t("fx.mp.lede.b")}{fmtInt(d.nbTitulaires)}{" "}
@@ -109,120 +104,38 @@ export default function MarchesPublicsClient({
               <Tip label={t("fx.mp.lede.em.tip")}>{t("fx.mp.lede.em")}</Tip>
             </b>
             {t("fx.mp.lede.d")}
-          </p>
-          <div className="fx-page-actions">
-            <YearPicker
-              years={(idx.availableYears ?? []).slice().sort((a, b) => a - b)}
-              current={d.year}
-              basePath="/fr/city/paris/marches"
-              label={t("fx.s.year_label")}
-            />
-          </div>
-        </div>
-      </section>
-
-      {(() => {
-        const hookVars = {
-          year: d.year,
-          total: fmtBillions(d.total),
-          nb: fmtInt(d.nb),
-          nbT: fmtInt(d.nbTitulaires),
-          top10: fmtDec(top10Pct, 0),
-        };
-        return (
-          <PageHook
-            cite={fill(t("fx.mp.hook.cite"), { year: d.year })}
-            shareText={fill(t("fx.mp.hook.share"), hookVars)}
-          >
-            <span dangerouslySetInnerHTML={{ __html: fill(t("fx.mp.hook.body"), hookVars) }} />
-          </PageHook>
-        );
-      })()}
-
-      <section className="fx-section" id="sec-overview">
-        <div className="fx-wrap">
-          <SectionHead
-            number="01"
-            kind={t("fx.mp.s01.kind")}
-            title={
-              <>
-                {t("fx.mp.s01.title.before")}
-                <em>{t("fx.mp.s01.title.em")}</em>
-                {t("fx.mp.s01.title.after")}
-              </>
-            }
+          </>
+        }
+        actions={
+          <YearPicker
+            years={(idx.availableYears ?? []).slice().sort((a, b) => a - b)}
+            current={d.year}
+            basePath="/fr/city/paris/marches"
+            label={t("fx.s.year_label")}
           />
-          <div className="fx-overview">
-            <HeroNumber
-              label={fill(t("fx.mp.s01.hero_label"), { year: d.year })}
+        }
+        stats={
+          <>
+            <IntroStat
               value={<AnimatedNumber value={d.total} format={(n) => fmtBillions(n)} />}
               unit={t("fx.s.md_eur")}
-              caption={
-                <>
-                  {t("fx.mp.s01.hero_cap.a")}
-                  <b>
-                    <Tip label={t("fx.mp.s01.hero_cap.em.tip")}>{t("fx.mp.s01.hero_cap.em")}</Tip>
-                  </b>
-                  {t("fx.mp.s01.hero_cap.b")}
-                </>
-              }
+              label={<Tip label={t("fx.mp.s01.hero_cap.em.tip")}>{fill(t("fx.mp.s01.hero_label"), { year: d.year })}</Tip>}
             />
-            <KPIGrid
-              cols={2}
-              items={[
-                {
-                  label: <Tip label={t("fx.mp.s01.kpi.notifies.tip")}>{t("fx.mp.s01.kpi.notifies")}</Tip>,
-                  value: <AnimatedNumber value={d.nb} format={(n) => fmtInt(n)} />,
-                  delta: String(d.year),
-                },
-                {
-                  label: <Tip label={t("fx.mp.titulaire.tip")}>{t("fx.mp.s01.kpi.titulaires")}</Tip>,
-                  value: <AnimatedNumber value={d.nbTitulaires} format={(n) => fmtInt(n)} />,
-                  delta: t("fx.mp.s01.kpi.titulaires_delta"),
-                },
-                {
-                  label: (
-                    <Tip label={t("fx.mp.s01.kpi.concentration_tip")}>
-                      {t("fx.mp.s01.kpi.concentration")}
-                    </Tip>
-                  ),
-                  value: <AnimatedNumber value={top10Pct} format={(n) => `${fmtDec(n, 0)} %`} />,
-                  delta: t("fx.mp.s01.kpi.concentration_delta"),
-                },
-                {
-                  label: (
-                    <Tip label={t("fx.mp.s01.kpi.multi_tip")}>
-                      {t("fx.mp.s01.kpi.multi")}
-                    </Tip>
-                  ),
-                  value: <AnimatedNumber value={d.multiAttributaires.count} format={(n) => fmtInt(n)} />,
-                  delta: fill(t("fx.mp.s01.kpi.multi_delta"), { pct: fmtDec(multiPct, 0) }),
-                },
-              ]}
+            <IntroStat
+              value={<AnimatedNumber value={d.nb} format={(n) => fmtInt(n)} />}
+              label={<Tip label={t("fx.mp.s01.kpi.notifies.tip")}>{t("fx.mp.s01.kpi.notifies")}</Tip>}
             />
-          </div>
-          <div
-            style={{
-              marginTop: 24,
-              padding: "14px 18px",
-              border: "1px solid var(--line)",
-              background: "rgba(59, 99, 173, 0.04)",
-              fontFamily: "var(--f-ui)",
-              fontSize: 13,
-              lineHeight: 1.6,
-              color: "var(--ink-2)",
-            }}
-          >
-            <b style={{ color: "var(--ink)" }}>{t("fx.mp.s01.cross.title")}</b> {t("fx.mp.s01.cross.body")}
-            {" "}
-            <Link href="/fr/city/paris/budget" style={{ color: "var(--bleu)", borderBottom: "1px solid var(--bleu)" }}>{t("fx.mp.s01.cross.link_budget")}</Link>
-            {" · "}
-            <Link href="/fr/city/paris/investissements" style={{ color: "var(--bleu)", borderBottom: "1px solid var(--bleu)" }}>{t("fx.mp.s01.cross.link_invest")}</Link>
-            {" · "}
-            <Link href="/methode#marches-publics" style={{ color: "var(--bleu)", borderBottom: "1px solid var(--bleu)" }}>{t("fx.mp.s01.cross.link_methode")}</Link>
-          </div>
-        </div>
-      </section>
+            <IntroStat
+              value={<AnimatedNumber value={d.nbTitulaires} format={(n) => fmtInt(n)} />}
+              label={<Tip label={t("fx.mp.titulaire.tip")}>{t("fx.mp.s01.kpi.titulaires")}</Tip>}
+            />
+            <IntroStat
+              value={<AnimatedNumber value={top10Pct} format={(n) => `${fmtDec(n, 0)} %`} />}
+              label={<Tip label={t("fx.mp.s01.kpi.concentration_tip")}>{t("fx.mp.s01.kpi.concentration")}</Tip>}
+            />
+          </>
+        }
+      />
 
       {/* Scène signature — trois contrats réels de l'année, sélection par
        * règles fixes (cf. loadMarchesPageData). La page ne montrait que des
@@ -231,8 +144,6 @@ export default function MarchesPublicsClient({
         <section className="fx-section" id="sec-signature">
           <div className="fx-wrap">
             <SectionHead
-              number="02"
-              kind={t("fx.mp.sig.kind")}
               title={
                 <>
                   {fill(t("fx.mp.sig.title.before"), { year: d.year })}
@@ -252,293 +163,13 @@ export default function MarchesPublicsClient({
         </section>
       )}
 
-      <section className="fx-section" id="sec-categorie">
-        <div className="fx-wrap">
-          <SectionHead
-            number="03"
-            kind={<Tip label={t("fx.mp.s02.kind.tip")}>{t("fx.mp.s02.kind")}</Tip>}
-            title={
-              <>
-                {t("fx.mp.s02.title.before")}
-                <em>{t("fx.mp.s02.title.em")}</em>
-              </>
-            }
-            subtitle={t("fx.mp.s02.sub")}
-          />
-          <StackedBarTheme
-            items={d.byCategory.map((c) => ({ theme: c.category, amount: c.amount, count: c.count }))}
-            total={d.total}
-            concentrationTop10Pct={top10Pct}
-            year={d.year}
-            basePath="/fr/city/paris/marches"
-            kicker={fill(t("fx.mp.s02.kicker"), { year: d.year })}
-            entityNoun={t("fx.mp.s02.entity_noun")}
-            paretoContrast={t("fx.mp.s02.pareto_contrast")}
-          />
-          <ChartSource
-            source={t("fx.mp.s02.source.cite")}
-            dataHref="https://opendata.paris.fr/explore/dataset/liste-des-marches-de-la-collectivite-parisienne/"
-            methodAnchor="marches-publics"
-          />
-        </div>
-      </section>
-
-      <section className="fx-section" id="sec-titulaires">
-        <div className="fx-wrap">
-          <SectionHead
-            number="04"
-            kind={<Tip label={t("fx.mp.s03.kind.tip")}>{t("fx.mp.s03.kind")}</Tip>}
-            title={
-              <>
-                {t("fx.mp.s03.title.before")}
-                <em>{t("fx.mp.s03.title.em")}</em>
-                {t("fx.mp.s03.title.after")}
-              </>
-            }
-            subtitle={fill(t("fx.mp.s03.sub"), {
-              year: d.year,
-              n: fmtInt(d.multiAttributaires.count),
-              pct: fmtDec(multiPct, 0),
-            })}
-          />
-          <ExpandableList
-            header={{
-              left: <>{t("fx.mp.s03.list.header_left")}</>,
-              right: <>{fill(t("fx.mp.s03.list.header_right"), { year: d.year })}</>,
-            }}
-            items={d.top10.map((ti) => {
-              const refMax = d.top10[0].amount || 1;
-              // Lien canonique par SIREN (9 chars) — la liste est agrégée
-              // par SIREN, donc l'URL doit l'être aussi pour éviter les
-              // doublons selon quel SIRET du groupe est cliqué.
-              const ficheHref = ti.siret
-                ? `/fr/city/paris/marches/fournisseur/${encodeURIComponent(ti.siret.slice(0, 9))}`
-                : null;
-              return {
-                key: String(ti.rank),
-                label: (
-                  <span>
-                    <span
-                      style={{
-                        fontFamily: "var(--f-mono)",
-                        color: "var(--ocre)",
-                        marginRight: 8,
-                      }}
-                    >
-                      {String(ti.rank).padStart(2, "0")}
-                    </span>
-                    {cleanName(ti.name)}
-                  </span>
-                ),
-                barPct: (ti.amount / refMax) * 100,
-                meta: (
-                  <>
-                    {fill(t("fx.mp.s03.list.meta"), {
-                      n: fmtInt(ti.nbContrats),
-                      pct: fmtDec((ti.amount / d.total) * 100, 1),
-                    })}
-                  </>
-                ),
-                value: ti.amount >= 1e9 ? fmtBillions(ti.amount) : fmtMillions(ti.amount, 0),
-                unit: ti.amount >= 1e9 ? t("fx.s.md_eur") : t("fx.s.m_eur"),
-                children: (
-                  <div>
-                    <div
-                      style={{
-                        fontFamily: "var(--f-mono)",
-                        fontSize: 11,
-                        color: "var(--muted)",
-                        letterSpacing: ".08em",
-                        textTransform: "uppercase",
-                        marginBottom: 14,
-                      }}
-                    >
-                      {fill(t("fx.mp.s03.list.contrats_header"), {
-                        shown: ti.contrats.length,
-                        total: ti.nbContrats,
-                      })}
-                    </div>
-                    <table className="fx-table" style={{ borderTop: 0 }}>
-                      <thead>
-                        <tr>
-                          <th>{t("fx.mp.s03.list.col.objet")}</th>
-                          <th>{t("fx.mp.s03.list.col.categorie")}</th>
-                          <th>{t("fx.mp.s03.list.col.nature")}</th>
-                          <th>{t("fx.mp.s03.list.col.date")}</th>
-                          <th style={{ textAlign: "right" }}>{t("fx.mp.s03.list.col.enveloppe")}</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        {ti.contrats.map((c, i) => (
-                          <tr key={i}>
-                            <td style={{ fontWeight: 500, maxWidth: 360 }}>
-                              {(() => {
-                                const preferred = locale === "en" && c.objetClairEn ? c.objetClairEn : c.objetClair;
-                                const clean = preferred || normalizeObjet(c.objet);
-                                const shown = clean.length > 100 ? clean.slice(0, 100) + "…" : clean;
-                                return c.numero ? (
-                                  <Link
-                                    href={`/fr/city/paris/marches/contrat/${encodeURIComponent(c.numero)}`}
-                                    style={{ color: "var(--ink)" }}
-                                    scroll={false}
-                                  >
-                                    {shown}
-                                  </Link>
-                                ) : (
-                                  <span>{shown}</span>
-                                );
-                              })()}
-                            </td>
-                            <td className="muted" style={{ maxWidth: 160 }}>
-                              {(() => { const lbl = trL(c.categorie); return lbl.length > 30 ? lbl.slice(0, 30) + "…" : lbl; })()}
-                            </td>
-                            <td className="muted">{trL(c.nature)}</td>
-                            <td className="muted">
-                              {c.date
-                                ? new Intl.DateTimeFormat("fr-FR", {
-                                    day: "2-digit",
-                                    month: "2-digit",
-                                    year: "numeric",
-                                  }).format(new Date(c.date))
-                                : "—"}
-                            </td>
-                            <td className="num">
-                              {c.montant >= 1e6
-                                ? fmtMillions(c.montant, 1) + " M €"
-                                : fmtInt(c.montant / 1000) + " k €"}
-                            </td>
-                          </tr>
-                        ))}
-                      </tbody>
-                    </table>
-                    <div
-                      style={{
-                        display: "flex",
-                        justifyContent: "space-between",
-                        gap: 14,
-                        flexWrap: "wrap",
-                        marginTop: 14,
-                      }}
-                    >
-                      {ficheHref ? (
-                        <Link
-                          href={ficheHref}
-                          style={{
-                            fontFamily: "var(--f-mono)",
-                            fontSize: 12,
-                            color: "var(--bleu)",
-                            borderBottom: "1px solid var(--bleu)",
-                            paddingBottom: 1,
-                          }}
-                          scroll={false}
-                        >
-                          {t("fx.mp.s03.list.fiche_link")}
-                        </Link>
-                      ) : (
-                        <span />
-                      )}
-                      {ti.nbContrats > ti.contrats.length && (
-                        <span
-                          style={{
-                            fontFamily: "var(--f-mono)",
-                            fontSize: 11,
-                            color: "var(--muted)",
-                          }}
-                        >
-                          {fill(t("fx.mp.s03.list.more"), { n: ti.nbContrats - ti.contrats.length })}
-                        </span>
-                      )}
-                    </div>
-                  </div>
-                ),
-              };
-            })}
-          />
-          {(() => {
-            const total = d.total || 1;
-            const top1 = (d.top10.slice(0, 1).reduce((s, ti) => s + ti.amount, 0) / total) * 100;
-            const top3 = (d.top10.slice(0, 3).reduce((s, ti) => s + ti.amount, 0) / total) * 100;
-            const top5 = (d.top10.slice(0, 5).reduce((s, ti) => s + ti.amount, 0) / total) * 100;
-            const top10cum = (d.top10.reduce((s, ti) => s + ti.amount, 0) / total) * 100;
-            return (
-              <p className="fx-note" style={{ marginTop: 18 }}>
-                {fill(t("fx.mp.s03.concentration.note"), {
-                  total: fmtBillions(d.total),
-                  top1: fmtDec(top1, 0),
-                  top3: fmtDec(top3, 0),
-                  top5: fmtDec(top5, 0),
-                  top10: fmtDec(top10cum, 0),
-                })}
-              </p>
-            );
-          })()}
-        </div>
-      </section>
-
-      {ranking && (
-        <section className="fx-section" id="sec-classement">
-          <div className="fx-wrap">
-            <SectionHead
-              number="05"
-              kind={t("fx.mp.rank.kind")}
-              title={
-                <>
-                  {t("fx.mp.rank.title.before")}
-                  <em>{t("fx.mp.rank.title.em")}</em>
-                  {t("fx.mp.rank.title.after")}
-                </>
-              }
-              subtitle={fill(t("fx.mp.rank.sub"), {
-                n: ranking.rows.length,
-                from: ranking.years[0],
-                to: ranking.years[ranking.years.length - 1],
-                share: Math.round(ranking.topSharePct),
-              })}
-            />
-            <FournisseursBumpChart data={ranking} ficheBase="/fr/city/paris/marches" />
-            <p className="fx-note">{t("fx.mp.rank.note")}</p>
-            <ChartSource
-              source={fill(t("fx.mp.rank.source.cite"), { from: ranking.years[0], to: ranking.years[ranking.years.length - 1] })}
-              dataHref="https://opendata.paris.fr/explore/dataset/liste-des-marches-de-la-collectivite-parisienne/"
-              methodAnchor="marches"
-            />
-          </div>
-        </section>
-      )}
-
-      <section className="fx-section" id="sec-recherche">
-        <div className="fx-wrap">
-          <SectionHead
-            number="06"
-            kind={t("fx.mp.s04.kind")}
-            title={
-              <>
-                {t("fx.mp.s04.title.before")}
-                <em>{t("fx.mp.s04.title.em1")}</em>
-                {t("fx.mp.s04.title.mid")}
-                <em>{t("fx.mp.s04.title.em2")}</em>
-              </>
-            }
-            subtitle={fill(t("fx.mp.s04.sub"), { n: fmtInt(d.nb), year: d.year })}
-          />
-          <MarchesSearch
-            items={d.allMarches}
-            categories={d.byCategory.map((c) => c.category)}
-            natures={d.byNature.map((n) => n.nature)}
-            year={d.year}
-          />
-        </div>
-      </section>
-
       <section className="fx-section" id="sec-procedure">
         <div className="fx-wrap">
           <SectionHead
-            number="07"
-            kind={<Tip label={t("fx.mp.s05.kind.tip")}>{t("fx.mp.s05.kind")}</Tip>}
             title={
               <>
                 {t("fx.mp.s05.title.before")}
-                <em>{t("fx.mp.s05.title.em")}</em>
+                <em><Tip label={t("fx.mp.s05.kind.tip")}>{t("fx.mp.s05.title.em")}</Tip></em>
                 {t("fx.mp.s05.title.after")}
               </>
             }
@@ -777,11 +408,128 @@ export default function MarchesPublicsClient({
         </div>
       </section>
 
+      <section className="fx-section" id="sec-categorie">
+        <div className="fx-wrap">
+          <SectionHead
+            title={
+              <>
+                {t("fx.mp.s02.title.before")}
+                <em><Tip label={t("fx.mp.s02.kind.tip")}>{t("fx.mp.s02.title.em")}</Tip></em>
+              </>
+            }
+            subtitle={t("fx.mp.s02.sub")}
+          />
+          <StackedBarTheme
+            items={d.byCategory.map((c) => ({ theme: c.category, amount: c.amount, count: c.count }))}
+            total={d.total}
+            concentrationTop10Pct={top10Pct}
+            year={d.year}
+            basePath="/fr/city/paris/marches"
+            kicker={fill(t("fx.mp.s02.kicker"), { year: d.year })}
+            entityNoun={t("fx.mp.s02.entity_noun")}
+            paretoContrast={t("fx.mp.s02.pareto_contrast")}
+          />
+          <ChartSource
+            source={t("fx.mp.s02.source.cite")}
+            dataHref="https://opendata.paris.fr/explore/dataset/liste-des-marches-de-la-collectivite-parisienne/"
+            methodAnchor="marches-publics"
+          />
+          {(() => {
+            const hookVars = {
+              year: d.year,
+              total: fmtBillions(d.total),
+              nb: fmtInt(d.nb),
+              nbT: fmtInt(d.nbTitulaires),
+              top10: fmtDec(top10Pct, 0),
+            };
+            return (
+              <PageHook
+                variant="card"
+                cite={fill(t("fx.mp.hook.cite"), { year: d.year })}
+                shareText={fill(t("fx.mp.hook.share"), hookVars)}
+              >
+                <span dangerouslySetInnerHTML={{ __html: fill(t("fx.mp.hook.body"), hookVars) }} />
+              </PageHook>
+            );
+          })()}
+          <div
+            style={{
+              marginTop: 24,
+              padding: "14px 18px",
+              border: "1px solid var(--line)",
+              background: "rgba(59, 99, 173, 0.04)",
+              fontFamily: "var(--f-ui)",
+              fontSize: 13,
+              lineHeight: 1.6,
+              color: "var(--ink-2)",
+            }}
+          >
+            <b style={{ color: "var(--ink)" }}>{t("fx.mp.s01.cross.title")}</b> {t("fx.mp.s01.cross.body")}
+            {" "}
+            <Link href="/fr/city/paris/budget" style={{ color: "var(--bleu)", borderBottom: "1px solid var(--bleu)" }}>{t("fx.mp.s01.cross.link_budget")}</Link>
+            {" · "}
+            <Link href="/fr/city/paris/investissements" style={{ color: "var(--bleu)", borderBottom: "1px solid var(--bleu)" }}>{t("fx.mp.s01.cross.link_invest")}</Link>
+            {" · "}
+            <Link href="/methode#marches-publics" style={{ color: "var(--bleu)", borderBottom: "1px solid var(--bleu)" }}>{t("fx.mp.s01.cross.link_methode")}</Link>
+          </div>
+        </div>
+      </section>
+
+      {ranking && (
+        <section className="fx-section" id="sec-classement">
+          <div className="fx-wrap">
+            <SectionHead
+              title={
+                <>
+                  {t("fx.mp.rank.title.before")}
+                  <em>{t("fx.mp.rank.title.em")}</em>
+                  {t("fx.mp.rank.title.after")}
+                </>
+              }
+              subtitle={fill(t("fx.mp.rank.sub"), {
+                n: ranking.rows.length,
+                from: ranking.years[0],
+                to: ranking.years[ranking.years.length - 1],
+                share: Math.round(ranking.topSharePct),
+              })}
+            />
+            <FournisseursBumpChart data={ranking} ficheBase="/fr/city/paris/marches" />
+            <p className="fx-note">{t("fx.mp.rank.note")}</p>
+            <ChartSource
+              source={fill(t("fx.mp.rank.source.cite"), { from: ranking.years[0], to: ranking.years[ranking.years.length - 1] })}
+              dataHref="https://opendata.paris.fr/explore/dataset/liste-des-marches-de-la-collectivite-parisienne/"
+              methodAnchor="marches"
+            />
+          </div>
+        </section>
+      )}
+
+      <section className="fx-section" id="sec-recherche">
+        <div className="fx-wrap">
+          <SectionHead
+            title={
+              <>
+                {t("fx.mp.s04.title.before")}
+                <em>{t("fx.mp.s04.title.em1")}</em>
+                {t("fx.mp.s04.title.mid")}
+                <em>{t("fx.mp.s04.title.em2")}</em>
+              </>
+            }
+            subtitle={fill(t("fx.mp.s04.sub"), { n: fmtInt(d.nb), year: d.year })}
+          />
+          <MarchesSearch
+            items={d.allMarches}
+            categories={d.byCategory.map((c) => c.category)}
+            natures={d.byNature.map((n) => n.nature)}
+            year={d.year}
+          />
+        </div>
+      </section>
+
+
       <section className="fx-section" id="sec-evolution">
         <div className="fx-wrap">
           <SectionHead
-            number="08"
-            kind={t("fx.mp.s07.kind")}
             title={
               <>
                 {t("fx.mp.s07.title.before")}
@@ -812,88 +560,7 @@ export default function MarchesPublicsClient({
         </div>
       </section>
 
-      <RelatedArticles number="09" posts={posts} placeholders={MP_PLACEHOLDERS} />
-
-      <section className="fx-section" id="sec-explorer">
-        <div className="fx-wrap">
-          <SectionHead
-            number="10"
-            kind={t("fx.mp.s08.kind")}
-            subtitle={t("fx.mp.s08.sub")}
-          />
-          <div className="fx-grid-tiles">
-            <TileCard
-              href="/fr/city/paris/subventions"
-              number={t("fx.mp.s08.t1.n")}
-              kind={t("fx.mp.s08.t1.kind")}
-              title={t("fx.mp.s08.t1.title")}
-              description={t("fx.mp.s08.t1.desc")}
-              preview={
-                <svg viewBox="0 0 200 100">
-                  {[14, 28, 42, 56, 70, 84].map((y, i) => (
-                    <g key={y}>
-                      <rect x="10" y={y - 1} width="4" height="4" fill="#9099a6" />
-                      <rect x="20" y={y - 1} width={90 - i * 12} height="6" fill="#0a0a0a" />
-                    </g>
-                  ))}
-                </svg>
-              }
-              kpi="1,35"
-              kpiUnit={t("fx.s.md_eur")}
-              kpiDelta={String(d.year)}
-            />
-            <TileCard
-              href="/fr/city/paris/investissements"
-              number={t("fx.mp.s08.t2.n")}
-              kind={t("fx.mp.s08.t2.kind")}
-              title={t("fx.mp.s08.t2.title")}
-              description={t("fx.mp.s08.t2.desc")}
-              preview={
-                <svg viewBox="0 0 200 100">
-                  <path
-                    d="M 28 30 Q 36 14 70 12 Q 110 10 140 18 Q 172 26 184 48 Q 188 72 168 86 Q 130 94 90 92 Q 50 90 28 72 Q 18 52 28 30 Z"
-                    fill="none"
-                    stroke="#0a0a0a"
-                    strokeWidth="1.5"
-                  />
-                  {[
-                    [60, 34],
-                    [110, 30],
-                    [140, 36],
-                    [72, 70],
-                    [158, 68],
-                  ].map(([x, y]) => (
-                    <circle key={`${x}-${y}`} cx={x} cy={y} r="2.5" fill="#0a0a0a" />
-                  ))}
-                  <circle cx="118" cy="54" r="4" fill="#e11d1d" />
-                </svg>
-              }
-              kpi="2,6"
-              kpiUnit={t("fx.s.md_eur")}
-              kpiDelta={t("fx.mp.s08.t2.delta")}
-            />
-            <TileCard
-              href="/fr/city/paris/budget"
-              number={t("fx.mp.s08.t3.n")}
-              kind={t("fx.mp.s08.t3.kind")}
-              title={t("fx.mp.s08.t3.title")}
-              description={t("fx.mp.s08.t3.desc")}
-              preview={
-                <svg viewBox="0 0 200 100">
-                  <path d="M 6 30 C 70 30 90 46 94 46" stroke="#0a0a0a" strokeWidth="8" fill="none" />
-                  <path d="M 6 60 C 70 60 90 54 94 54" stroke="#0a0a0a" strokeWidth="6" fill="none" />
-                  <rect x="92" y="38" width="16" height="24" fill="#0a0a0a" />
-                  <path d="M 108 46 C 140 46 160 32 194 32" stroke="#0a0a0a" strokeWidth="8" fill="none" />
-                  <path d="M 108 58 C 140 58 160 74 194 74" stroke="#e11d1d" strokeWidth="6" fill="none" />
-                </svg>
-              }
-              kpi="11,7"
-              kpiUnit={t("fx.s.md_eur")}
-              kpiDelta={`Total ${d.year}`}
-            />
-          </div>
-        </div>
-      </section>
+      <RelatedArticles posts={posts} placeholders={MP_PLACEHOLDERS} />
 
       <section className="fx-footer-sources" id="sec-sources">
         <div className="fx-wrap">

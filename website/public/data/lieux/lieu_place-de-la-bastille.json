@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T11:31:55.941392+00:00",
+ "generated_at": "2026-07-20T15:44:01.151982+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "place-de-la-bastille",
  "name": "Place de la Bastille",
@@ -31,7 +31,7 @@
    2019
   ],
   "n_bmo_brut": 2000,
-  "n_bmo_verifies": 14,
+  "n_bmo_verifies": 18,
   "invest_total_eur": 0,
   "invest_annees": [],
   "lecture_mode": "titre nommant le lieu (20 trouvés)",
@@ -159,8 +159,29 @@
    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=70576"
   }
  ],
- "bmo_extraits": [],
- "bmo_recit": null,
+ "bmo_extraits": [
+  {
+   "date": "1888-06-22",
+   "extrait": "713. — Pétition de M. Neily, demandant a réfection du pavage de la place de la Bastille (renv. à l'Adm … ",
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k64403892/f3.item"
+  },
+  {
+   "date": "1909-05-04",
+   "extrait": "1 26. — Le profil sur le sol de la place de la Bastille , de l'ancienne forteresse. * » *r … M. Edgar Mareuse rappelle que, en 1880, fut établi dans la place de la Bastille , le profil, sur le sol, et avec des pavés différents, de l'ancienne forteresse, Aujourd'hui, le profil r",
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k6247480c/f16.item"
+  },
+  {
+   "date": "1920-04-27",
+   "extrait": "l'arc de triomphe du Carrousel (1806) marque, à l'ouest, l'extrémité de la rue Impériale qui doit se prolonger, dans l'axe de la colonnade du Louvre, jusqu'à la place de la Bastille où Napoléon a prescrit de construire un arc de triomphe à la gloire de ses armées … caractère de",
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k6356528z/f8.item"
+  },
+  {
+   "date": "1927-06-01",
+   "extrait": "395. — Amélioration des accès et intercommunications des stations du Métropolitain place de la Bastille (M. André Le Troquer, rapporteur … amélioration des accès et intercommunications des stations métropolitaines place de la Bastille , des lignes noï 1 et 5 … amélioration de",
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k6347423k/f16.item"
+  }
+ ],
+ "bmo_recit": "La place de la Bastille apparaît dans le Bulletin municipal dès 1888, lorsqu'un riverain, M. Neily, pétitionne pour la réfection de son pavage, demande renvoyée à l'Administration. En 1909, M. Edgar Mareuse rappelle en séance qu'en 1880 le profil de l'ancienne forteresse avait été tracé sur le sol de la place avec des pavés différents. Une notice publiée en 1920 évoque quant à elle le passé du site : Napoléon avait prescrit d'y construire un arc de triomphe à la gloire de ses armées, dans l'axe de la colonnade du Louvre. En 1927 enfin, le Conseil examine, sur le rapport d'André Le Troquer, l'amélioration des accès et des intercommunications des stations de métro de la place, sur les lignes 1 et 5. Sur ces quatre décennies, l'archive donne surtout à voir une place traitée comme sol et carrefour : le pavage qu'on répare, la mémoire qu'on y inscrit en pavés, les accès au métro qu'on cherche à améliorer.",
  "invest": [],
  "marches": [
   {

@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T11:31:55.941392+00:00",
+ "generated_at": "2026-07-20T15:44:01.151982+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "place-denfert-rochereau",
  "name": "Place Denfert-Rochereau",
@@ -30,8 +30,8 @@
    2003,
    2025
   ],
-  "n_bmo_brut": 0,
-  "n_bmo_verifies": null,
+  "n_bmo_brut": 2000,
+  "n_bmo_verifies": 18,
   "invest_total_eur": 901342.24,
   "invest_annees": [
    "2024"
@@ -126,8 +126,24 @@
    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=38479"
   }
  ],
- "bmo_extraits": [],
- "bmo_recit": null,
+ "bmo_extraits": [
+  {
+   "date": "1895-06-29",
+   "extrait": "17° Pavoisement et illumination de la place Denfert - Rochereau , 1,500 francs … 18e arrondissement. — Place de la MaIrie, 2,800 francs … Chaumont, place de la Nation et Butte-Mon martre, 19,000 francs",
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k6291396d/f20.item"
+  },
+  {
+   "date": "1931-10-17",
+   "extrait": "L'entrée des Catacombes se trouve dans la cour du pavillon situé place Denfert - Rochereau , n° 2 … Brouillard matinal, épais par places , en banlieue (Sevran, 50 m. à 7 h.) ainsi qu'à la porte d'Ivry (5J m. à 5 h. 30 … ",
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k63437508/f3.item"
+  },
+  {
+   "date": "1949-05-10",
+   "extrait": "Les plans édités par l'Inspection générale des Carrières sont en vente, 1, place Denfert Rochereau",
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k9639422v/f8.item"
+  }
+ ],
+ "bmo_recit": "La place Denfert-Rochereau n'apparaît que par touches dans le Bulletin municipal, mais toujours comme un lieu que la Ville pare ou fait visiter. En 1895, elle figure parmi les places à décorer pour les fêtes : 1.500 francs y sont inscrits pour son pavoisement et son illumination. En 1931, le Bulletin indique aux visiteurs que l'entrée des Catacombes se trouve dans la cour du pavillon situé au n° 2 de la place. En 1949 encore, c'est au pavillon du 1, place Denfert-Rochereau que sont mis en vente les plans édités par l'Inspection générale des Carrières. D'une décennie à l'autre, la place reste ainsi, dans l'archive, la porte officielle du sous-sol de Paris.",
  "invest": [
   {
    "annee": 2024,
@@ -201,7 +217,7 @@
   },
   "bmo": {
    "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
-   "url": "https://gallica.bnf.fr/ark:/12148/cb343512457/date"
+   "url": "https://gallica.bnf.fr/services/engine/search/sru?operation=searchRetrieve&version=1.2&startRecord=0&maximumRecords=15&page=1&collapsing=disabled&query=arkPress+all+%22cb343512457_date%22+and+%28gallica+all+%22Place+Denfert-Rochereau%22%29"
   },
   "invest": {
    "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",

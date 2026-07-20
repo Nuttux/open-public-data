@@ -10,7 +10,7 @@ import {
   loadMarcheVulgarization,
   loadSirene,
 } from "@/lib/fusion-data";
-import { lieuForProjet } from "@/lib/lieux-data";
+import { lieuForMarche, lieuForProjet } from "@/lib/lieux-data";
 import { normalizeObjet } from "@/lib/objet-normalizer";
 
 type Params = { numero: string };
@@ -43,8 +43,10 @@ export default async function DrawerContratPage({ params }: { params: Promise<Pa
   const label = vulgarization?.objet_clair || normalizeObjet(contrat.objet);
   const shareText = `Paris a notifié un marché de ${montantStr} à ${contrat.fournisseur} en ${contrat.year} — ${label}`;
 
+  // Rattachement direct du juge (marché « au-lieu ») d'abord, chaîne
+  // transitive contrat → projet → lieu sinon — même précédence que la page.
   const projetLink = loadContratProjet(contrat.numero);
-  const lieuLien = projetLink ? lieuForProjet(projetLink.nom) : null;
+  const lieuLien = lieuForMarche(contrat.numero) ?? (projetLink ? lieuForProjet(projetLink.nom) : null);
 
   return (
     <div className="theme-fusion">

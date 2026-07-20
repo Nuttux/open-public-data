@@ -96,20 +96,26 @@ def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--par-lieu", type=int, default=30, help="fascicules les plus anciens par lieu")
     ap.add_argument("--max-snippets", type=int, default=12, help="extraits gardés par lieu")
+    ap.add_argument("--only", help="slugs à traiter, séparés par des virgules")
+    ap.add_argument("--redo", action="store_true",
+                    help="retraite un lieu même si ses snippets existent (écrase)")
     args = ap.parse_args()
 
     seed = {r["slug"]: r for r in csv.DictReader(SEED.open())}
+    if args.only:
+        veut = {s.strip() for s in args.only.split(",") if s.strip()}
+        inconnus = veut - set(seed)
+        if inconnus:
+            print(f"ERR slugs absents du seed : {sorted(inconnus)}", file=sys.stderr)
+            return 1
+        seed = {k: v for k, v in seed.items() if k in veut}
     total_ok = 0
     for slug, row in seed.items():
         raw = CACHE / f"{slug}_bmo.jsonl"
         out_p = CACHE / f"{slug}_bmo_snippets.jsonl"
-        if not raw.exists() or out_p.exists():
+        if not raw.exists() or (out_p.exists() and not args.redo):
             continue
         query = (row.get("bmo_query") or row["name"]).strip()
-        req = mots_requis(query)
-        if not req:
-            print(f"--  {slug}: pas de mot distinctif", file=sys.stderr)
-            continue
         rows = [json.loads(l) for l in raw.open()]
         rows.sort(key=lambda r: r.get("issue_date") or "9999")
         # Échantillon ÉTALÉ sur toute la période, pas les N plus anciens : le BMO
@@ -121,13 +127,24 @@ def main() -> int:
             k = len(rows) / args.par_lieu
             rows = [rows[int(i * k)] for i in range(args.par_lieu)]
 
+        # Un fascicule trouvé au sync sous un nom d'époque (« place du Trône »,
+        # « Théâtre Sarah-Bernhardt ») ne contient PAS le nom moderne : on
+        # l'interroge sous le nom qui l'a fait matcher (champ `query` de la
+        # ligne raw), repli sur bmo_query pour les caches d'avant le multi-nom.
+        req_par_nom: dict[str, list[str]] = {}
         found: list[dict] = []
         for r in rows:
+            q = (r.get("query") or query).strip()
+            if q not in req_par_nom:
+                req_par_nom[q] = mots_requis(q)
+            req = req_par_nom[q]
+            if not req:
+                continue
             ark = (r.get("gallica_url") or "").split("gallica.bnf.fr/")[-1]
             if not ark.startswith("ark:"):
                 continue
             try:
-                snips = content_search(ark, query)
+                snips = content_search(ark, q)
             except Exception:
                 time.sleep(3)
                 continue
@@ -138,7 +155,7 @@ def main() -> int:
                 if not all(w in mots for w in req):
                     continue
                 found.append({
-                    "lieu_slug": slug, "term": query, "issue_date": r.get("issue_date"),
+                    "lieu_slug": slug, "term": q, "issue_date": r.get("issue_date"),
                     "ark": ark, "page": s["page"], "snippet": s["snippet"],
                     "page_url": f"https://gallica.bnf.fr/{ark}/f{s['page']}.item",
                     "source": r.get("source", "Gallica / BnF — Bulletin Municipal Officiel de la Ville de Paris"),

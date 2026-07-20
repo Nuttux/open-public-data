@@ -4,14 +4,11 @@ import { usePathname } from "next/navigation";
 import Navbar from "@/components/fusion/Navbar";
 import Footer from "@/components/fusion/Footer";
 import SectionHead from "@/components/fusion/SectionHead";
-import HeroNumber from "@/components/fusion/HeroNumber";
 import KPIGrid from "@/components/fusion/KPIGrid";
 import AnimatedNumber from "@/components/fusion/AnimatedNumber";
-import TileCard from "@/components/fusion/TileCard";
 import YearPicker from "@/components/fusion/YearPicker";
 import ExportRow from "@/components/fusion/ExportRow";
 import Tip from "@/components/fusion/Tip";
-import PullQuote from "@/components/fusion/PullQuote";
 import BilanBoard from "@/components/fusion/BilanBoard";
 import BudgetTimeline from "@/components/fusion/BudgetTimeline";
 import DetteStructurePanel from "@/components/fusion/DetteStructurePanel";
@@ -22,6 +19,7 @@ import HorsBilanMap from "@/components/fusion/HorsBilanMap";
 import ChartSource from "@/components/fusion/ChartSource";
 import RelatedArticles, { type ArticlePlaceholder } from "@/components/fusion/RelatedArticles";
 import PageHook from "@/components/fusion/PageHook";
+import PageIntro, { IntroStat } from "@/components/fusion/PageIntro";
 import { slugifyBailleur } from "@/lib/projet-utils";
 import { fmtBillions, fmtDec, fmtInt, fmtMillions } from "@/lib/fmt";
 import type { BlogPostMeta } from "@/lib/blog";
@@ -98,7 +96,6 @@ export default function DettePatrimoineClient({
 
       <PageTOC
         items={[
-          { id: "sec-overview", label: t("fx.det.toc.overview") },
           { id: "sec-bilan", label: t("fx.det.toc.bilan") },
           { id: "sec-actifs", label: t("fx.det.toc.actifs") },
           { id: "sec-dette", label: t("fx.det.toc.dette") },
@@ -106,24 +103,24 @@ export default function DettePatrimoineClient({
           { id: "sec-hors-bilan", label: t("fx.det.toc.hors_bilan") },
           { id: "sec-regles", label: t("fx.det.toc.regles") },
           { id: "sec-analyses", label: t("fx.toc.analyses") },
-          { id: "sec-explorer", label: t("fx.toc.explorer") },
           { id: "sec-sources", label: t("fx.det.toc.sources") },
         ]}
       />
 
-      <section className="fx-page-header">
-        <div className="fx-wrap">
-          <div className="fx-page-kicker">{t("fx.det.kicker")}</div>
-          <h1 className="fx-page-title">
+      <PageIntro
+        title={
+          <>
             {t("fx.det.title.before")}
             <em>{t("fx.det.title.em")}</em>
             {t("fx.det.title.mid")}
-            <br />
+            {" "}
             {t("fx.det.title.b")}
             <b>{t("fx.det.title.b_b")}</b>
             {t("fx.det.title.b_after")}
-          </h1>
-          <p className="fx-page-lede">
+          </>
+        }
+        lede={
+          <>
             <Tip label={t("fx.det.lede.bilan.tip")}>{t("fx.det.lede.bilan")}</Tip>
             {fill(t("fx.det.lede.consolid"), { year: d.year })}
             <Tip label={t("fx.det.lede.actif.tip")}>{t("fx.det.lede.actif")}</Tip>
@@ -134,139 +131,102 @@ export default function DettePatrimoineClient({
             {t("fx.det.lede.c3")}
             {t("fx.det.lede.regleor")}
             {t("fx.det.lede.post")}
-          </p>
-          <div className="fx-page-actions">
-            <YearPicker
-              years={d.availableYears}
-              current={d.year}
-              basePath={cityBasePath}
-              label={t("fx.s.year_label")}
-            />
-          </div>
-        </div>
-      </section>
-
-      <PageHook
-        cite={
-          <>
-            {fill(t("fx.dp.hook.cite.bilan"), { year: d.year })}
-            {crcSnap ? (
-              <>
-                {" · "}{t("fx.dp.hook.cite.crc")}
-              </>
-            ) : null}
           </>
         }
-        shareText={
-          fill(t("fx.dp.hook.share.head"), {
-            year: d.year,
-            total: fmtBillions(d.detteFinanciere),
-            perHab: fmtInt(detteParHab),
-          }) +
-          (deltaDetteDepuis2020Pct > 0
-            ? fill(t("fx.dp.hook.share.delta"), { pct: fmtDec(deltaDetteDepuis2020Pct, 0) })
-            : "") +
-          fill(t("fx.dp.hook.share.cap.ville"), { ans: fmtDec(d.capaciteDesendettement, 1).replace(".", ",") }) +
-          (crcSnap
-            ? fill(t("fx.dp.hook.share.cap.crc"), { ans: fmtDec(crcSnap.value_crc_ans, 1).replace(".", ",") })
-            : "") +
-          t("fx.dp.hook.share.tail")
-        }
-      >
-        {fill(t("fx.dp.hook.body.intro"), { year: d.year })}
-        <b>{fmtBillions(d.detteFinanciere)}{t("fx.dp.hook.body.md")}</b>
-        {t("fx.dp.hook.body.dette")}
-        <b>{fmtInt(detteParHab)}{t("fx.dp.hook.body.perhab")}</b>
-        {deltaDetteDepuis2020Pct > 0 ? (
-          <>{t("fx.dp.hook.body.delta.before")}<b>+{fmtDec(deltaDetteDepuis2020Pct, 0)}{t("fx.dp.hook.body.delta.after")}</b></>
-        ) : null}
-        {t("fx.dp.hook.body.cap.before")}
-        <b>{fmtDec(d.capaciteDesendettement, 1).replace(".", ",")}{t("fx.dp.hook.body.cap.ans")}</b>
-        {t("fx.dp.hook.body.cap.ville")}
-        {crcSnap ? (
-          <>
-            {t("fx.dp.hook.body.cap.crc.before")}
-            <b>{fmtDec(crcSnap.value_crc_ans, 1).replace(".", ",")}{t("fx.dp.hook.body.cap.ans")}</b>
-            {t("fx.dp.hook.body.cap.crc.after")}
-          </>
-        ) : null}
-        .
-      </PageHook>
-
-      <section className="fx-section" id="sec-overview">
-        <div className="fx-wrap">
-          <SectionHead
-            number="01"
-            kind={t("fx.det.s02.kind")}
-            title={
-              <>
-                {t("fx.det.s02.title.before")}
-                <em>{t("fx.det.s02.title.em")}</em>
-              </>
-            }
+        actions={
+          <YearPicker
+            years={d.availableYears}
+            current={d.year}
+            basePath={cityBasePath}
+            label={t("fx.s.year_label")}
           />
-          <div className="fx-overview">
-            <HeroNumber
-              label={fill(t("fx.det.s02.hero_label"), { year: d.year })}
+        }
+        stats={
+          <>
+            <IntroStat
               value={<AnimatedNumber value={net} format={(n) => fmtBillions(n)} />}
               unit={t("fx.s.md_eur")}
-              caption={
-                <>
-                  {t("fx.det.s02.hero_cap.per_hab").replace("{n}", fmtInt(net / population))}
-                </>
-              }
+              label={fill(t("fx.det.s02.hero_label"), { year: d.year })}
             />
-            <KPIGrid
-              cols={3}
-              items={[
-                {
-                  label: <Tip label={t("fx.det.s02.kpi.per_hab.tip")}>{t("fx.det.s02.kpi.per_hab")}</Tip>,
-                  value: <AnimatedNumber value={detteParHab} format={(n) => fmtInt(n)} />,
-                  unit: "€",
-                  delta: t("fx.det.s02.kpi.per_hab_delta"),
-                },
-                {
-                  label: <Tip label={t("fx.det.s02.kpi.dette_fin.tip")}>{t("fx.det.s02.kpi.dette_fin")}</Tip>,
-                  value: <AnimatedNumber value={d.detteFinanciere} format={(n) => fmtBillions(n)} />,
-                  unit: t("fx.s.md_eur"),
-                  delta: fill(t("fx.det.s02.kpi.dette_fin_delta"), { n: fmtInt(detteParHab) }),
-                },
-                {
-                  label: <Tip label={t("fx.det.s02.kpi.cap_desen.tip")}>{t("fx.det.s02.kpi.cap_desen")}</Tip>,
-                  value: <AnimatedNumber value={d.capaciteDesendettement} format={(n) => fmtDec(n, 1)} />,
-                  unit: t("fx.det.s02.kpi.ans"),
-                  delta: t("fx.det.s02.kpi.cap_desen_delta"),
-                },
-              ]}
+            <IntroStat
+              value={<AnimatedNumber value={d.detteFinanciere} format={(n) => fmtBillions(n)} />}
+              unit={t("fx.s.md_eur")}
+              label={<Tip label={t("fx.det.s02.kpi.dette_fin.tip")}>{t("fx.det.s02.kpi.dette_fin")}</Tip>}
             />
-          </div>
-
-          {citiesSnapshot.length > 0 && (
-            <>
-              <CityComparator cities={citiesSnapshot} highlightSlug={citySlug} />
-              <ChartSource
-                source={<>{t("fx.dp.cities.source")}</>}
-                methodAnchor="dette-patrimoine"
-              />
-            </>
-          )}
-        </div>
-      </section>
+            <IntroStat
+              value={<AnimatedNumber value={detteParHab} format={(n) => fmtInt(n)} />}
+              unit="€"
+              label={<Tip label={t("fx.det.s02.kpi.per_hab.tip")}>{t("fx.det.s02.kpi.per_hab")}</Tip>}
+            />
+            <IntroStat
+              value={<AnimatedNumber value={d.capaciteDesendettement} format={(n) => fmtDec(n, 1)} />}
+              unit={t("fx.det.s02.kpi.ans")}
+              label={<Tip label={t("fx.det.s02.kpi.cap_desen.tip")}>{t("fx.det.s02.kpi.cap_desen")}</Tip>}
+            />
+          </>
+        }
+      />
 
       <section className="fx-section" id="sec-bilan">
         <div className="fx-wrap">
           <SectionHead
-            number="03"
-            kind={<Tip label={t("fx.det.s03.kind.tip")}>{t("fx.det.s03.kind")}</Tip>}
             title={
               <>
-                <em>{t("fx.det.s03.title.em_a")}</em>
+                <em><Tip label={t("fx.det.s03.kind.tip")}>{t("fx.det.s03.title.em_a")}</Tip></em>
                 {t("fx.det.s03.title.and")}
                 <em>{t("fx.det.s03.title.b_b")}</em>
               </>
+
             }
             subtitle={t("fx.det.s03.sub")}
           />
+          <PageHook
+            variant="card"
+            cite={
+              <>
+                {fill(t("fx.dp.hook.cite.bilan"), { year: d.year })}
+                {crcSnap ? (
+                  <>
+                    {" · "}{t("fx.dp.hook.cite.crc")}
+                  </>
+                ) : null}
+              </>
+            }
+            shareText={
+              fill(t("fx.dp.hook.share.head"), {
+                year: d.year,
+                total: fmtBillions(d.detteFinanciere),
+                perHab: fmtInt(detteParHab),
+              }) +
+              (deltaDetteDepuis2020Pct > 0
+                ? fill(t("fx.dp.hook.share.delta"), { pct: fmtDec(deltaDetteDepuis2020Pct, 0) })
+                : "") +
+              fill(t("fx.dp.hook.share.cap.ville"), { ans: fmtDec(d.capaciteDesendettement, 1).replace(".", ",") }) +
+              (crcSnap
+                ? fill(t("fx.dp.hook.share.cap.crc"), { ans: fmtDec(crcSnap.value_crc_ans, 1).replace(".", ",") })
+                : "") +
+              t("fx.dp.hook.share.tail")
+            }
+          >
+            {fill(t("fx.dp.hook.body.intro"), { year: d.year })}
+            <b>{fmtBillions(d.detteFinanciere)}{t("fx.dp.hook.body.md")}</b>
+            {t("fx.dp.hook.body.dette")}
+            <b>{fmtInt(detteParHab)}{t("fx.dp.hook.body.perhab")}</b>
+            {deltaDetteDepuis2020Pct > 0 ? (
+              <>{t("fx.dp.hook.body.delta.before")}<b>+{fmtDec(deltaDetteDepuis2020Pct, 0)}{t("fx.dp.hook.body.delta.after")}</b></>
+            ) : null}
+            {t("fx.dp.hook.body.cap.before")}
+            <b>{fmtDec(d.capaciteDesendettement, 1).replace(".", ",")}{t("fx.dp.hook.body.cap.ans")}</b>
+            {t("fx.dp.hook.body.cap.ville")}
+            {crcSnap ? (
+              <>
+                {t("fx.dp.hook.body.cap.crc.before")}
+                <b>{fmtDec(crcSnap.value_crc_ans, 1).replace(".", ",")}{t("fx.dp.hook.body.cap.ans")}</b>
+                {t("fx.dp.hook.body.cap.crc.after")}
+              </>
+            ) : null}
+            .
+          </PageHook>
           {structure ? (
             <>
               <BilanBoard
@@ -290,12 +250,10 @@ export default function DettePatrimoineClient({
       <section className="fx-section fx-section-annexe" id="sec-actifs">
         <div className="fx-wrap">
           <SectionHead
-            number="05"
-            kind={<Tip label={t("fx.det.s04b.kind.tip")}>{t("fx.det.s04b.kind")}</Tip>}
             title={
               <>
                 {t("fx.det.s04b.title.before")}
-                <em>{t("fx.det.s04b.title.em")}</em>
+                <em><Tip label={t("fx.det.s04b.kind.tip")}>{t("fx.det.s04b.title.em")}</Tip></em>
                 {t("fx.det.s04b.title.after")}
               </>
             }
@@ -313,12 +271,10 @@ export default function DettePatrimoineClient({
       <section className="fx-section fx-section-annexe" id="sec-dette">
         <div className="fx-wrap">
           <SectionHead
-            number="06"
-            kind={<Tip label={t("fx.det.s04.kind.tip")}>{t("fx.det.s04.kind")}</Tip>}
             title={
               <>
                 {t("fx.det.s04.title.before")}
-                <em>{t("fx.det.s04.title.em")}</em>
+                <em><Tip label={t("fx.det.s04.kind.tip")}>{t("fx.det.s04.title.em")}</Tip></em>
                 {t("fx.det.s04.title.after")}
               </>
             }
@@ -342,8 +298,6 @@ export default function DettePatrimoineClient({
       <section className="fx-section" id="sec-trajectoire">
         <div className="fx-wrap">
           <SectionHead
-            number="04"
-            kind={t("fx.det.s04d.kind")}
             title={
               <>
                 {t("fx.det.s04d.title.before")}
@@ -427,8 +381,6 @@ export default function DettePatrimoineClient({
       <section className="fx-section" id="sec-hors-bilan">
         <div className="fx-wrap">
           <SectionHead
-            number="07"
-            kind={t("fx.det.s04c.kind")}
             title={
               <>
                 {t("fx.det.s04c.title.before")}
@@ -581,8 +533,6 @@ export default function DettePatrimoineClient({
       <section className="fx-section" id="sec-regles">
         <div className="fx-wrap">
           <SectionHead
-            number="08"
-            kind={t("fx.det.s01.kind")}
             title={
               <>
                 {t("fx.det.s01.title.before")}
@@ -591,9 +541,7 @@ export default function DettePatrimoineClient({
             }
             subtitle={t("fx.det.s01.sub")}
           />
-          <details className="fx-collapsible">
-            <summary>{t("fx.det.s01.show_rules")}</summary>
-            <div className="fx-sources fx-sources-2" style={{ marginTop: 18 }}>
+          <div className="fx-sources fx-sources-2">
               <div>
                 <div className="n">{t("fx.det.s01.r1.n")}</div>
                 <h3>{t("fx.det.s01.r1.h")}</h3>
@@ -618,94 +566,11 @@ export default function DettePatrimoineClient({
                 <p>{t("fx.det.s01.r4.p")}</p>
                 <span className="fx-rule-ref">Loi de programmation des finances publiques 2023-2027</span>
               </div>
-            </div>
-          </details>
-
-          <PullQuote cite={t("fx.det.s01.note.cite")}>
-            {t("fx.det.s01.note.before")}
-            <b>{t("fx.det.s01.note.em")}</b>
-            {t("fx.det.s01.note.after")}
-          </PullQuote>
-        </div>
-      </section>
-
-      <RelatedArticles number="10" posts={posts} placeholders={DET_PLACEHOLDERS} />
-
-      <section className="fx-section" id="sec-explorer">
-        <div className="fx-wrap">
-          <SectionHead number="11" kind={t("fx.det.s07.kind")} />
-          <div className="fx-grid-tiles">
-            <TileCard
-              href={`/fr/city/${citySlug}/budget`}
-              number={t("fx.det.s07.t1.n")}
-              kind={t("fx.det.s07.t1.kind")}
-              title={t("fx.det.s07.t1.title")}
-              description={t("fx.det.s07.t1.desc")}
-              preview={
-                <svg viewBox="0 0 200 100">
-                  <path d="M 6 30 C 70 30 90 46 94 46" stroke="#0a0a0a" strokeWidth="8" fill="none" />
-                  <path d="M 6 60 C 70 60 90 54 94 54" stroke="#0a0a0a" strokeWidth="6" fill="none" />
-                  <rect x="92" y="38" width="16" height="24" fill="#0a0a0a" />
-                  <path d="M 108 46 C 140 46 160 32 194 32" stroke="#0a0a0a" strokeWidth="8" fill="none" />
-                  <path d="M 108 58 C 140 58 160 74 194 74" stroke="#e11d1d" strokeWidth="6" fill="none" />
-                </svg>
-              }
-              kpi="11,7"
-              kpiUnit={t("fx.s.md_eur")}
-              kpiDelta={t("fx.det.s07.t1.delta")}
-            />
-            <TileCard
-              href={`/fr/city/${citySlug}/investissements`}
-              number={t("fx.det.s07.t2.n")}
-              kind={t("fx.det.s07.t2.kind")}
-              title={t("fx.det.s07.t2.title")}
-              description={t("fx.det.s07.t2.desc")}
-              preview={
-                <svg viewBox="0 0 200 100">
-                  <path
-                    d="M 28 30 Q 36 14 70 12 Q 110 10 140 18 Q 172 26 184 48 Q 188 72 168 86 Q 130 94 90 92 Q 50 90 28 72 Q 18 52 28 30 Z"
-                    fill="none"
-                    stroke="#0a0a0a"
-                    strokeWidth="1.5"
-                  />
-                  {[
-                    [60, 34],
-                    [110, 30],
-                    [140, 36],
-                    [72, 70],
-                    [158, 68],
-                  ].map(([x, y]) => (
-                    <circle key={`${x}-${y}`} cx={x} cy={y} r="2.5" fill="#0a0a0a" />
-                  ))}
-                  <circle cx="118" cy="54" r="4" fill="#e11d1d" />
-                </svg>
-              }
-              kpi="2,1"
-              kpiUnit={t("fx.s.md_eur")}
-              kpiDelta="2024"
-            />
-            <TileCard
-              href={`/fr/city/${citySlug}/logement`}
-              number={t("fx.det.s07.t3.n")}
-              kind={t("fx.det.s07.t3.kind")}
-              title={t("fx.det.s07.t3.title")}
-              description={t("fx.det.s07.t3.desc")}
-              preview={
-                <svg viewBox="0 0 200 100">
-                  <rect x="16" y="40" width="28" height="48" fill="#0a0a0a" />
-                  <rect x="52" y="28" width="28" height="60" fill="#0a0a0a" />
-                  <rect x="88" y="50" width="28" height="38" fill="#e11d1d" />
-                  <rect x="124" y="20" width="28" height="68" fill="#0a0a0a" />
-                  <rect x="160" y="36" width="28" height="52" fill="#0a0a0a" />
-                </svg>
-              }
-              kpi="258"
-              kpiUnit="k logements"
-              kpiDelta={t("fx.det.s07.t3.delta")}
-            />
           </div>
         </div>
       </section>
+
+      <RelatedArticles posts={posts} placeholders={DET_PLACEHOLDERS} />
 
       <section className="fx-footer-sources" id="sec-sources">
         <div className="fx-wrap">

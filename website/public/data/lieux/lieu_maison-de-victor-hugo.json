@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T11:31:55.941392+00:00",
+ "generated_at": "2026-07-20T15:44:01.151982+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "maison-de-victor-hugo",
  "name": "Maison de Victor Hugo",
@@ -31,7 +31,7 @@
    2007
   ],
   "n_bmo_brut": 2000,
-  "n_bmo_verifies": 4,
+  "n_bmo_verifies": 15,
   "invest_total_eur": 0,
   "invest_annees": [],
   "lecture_mode": "titre nommant le lieu (16 trouvés)",
@@ -208,7 +208,28 @@
    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=54453"
   }
  ],
- "bmo_extraits": [],
+ "bmo_extraits": [
+  {
+   "date": "1914-02-11",
+   "extrait": "Le Conseil, Vu la délibération, en date du 18 mars 1904, confiant à M. Poilpoi, artiste peintre, l'exécution d'un tableau destiné à la Maison de Victor Hugo et représentant « la Fête du centenaire de Victor Hugo », place des Vosges … Sur le rapport présenté par M. Lampué, au no",
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k64530541/f12.item"
+  },
+  {
+   "date": "1919-08-21",
+   "extrait": "414. — Travaux*de remise en état de la maison de Victor Hugo (M. d'Andigné. rapporteur). , Le Conseil, Sur le rapport présenté par M. d'Andigné. ,au nom de la 4e Commission, Délibère : Article premier. — Est … autorisée, dans la limite d'une dépense de 20,000 francs, l'exécutio",
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k6497986f/f10.item"
+  },
+  {
+   "date": "1927-12-10",
+   "extrait": "faits à la Maison de Victor Hugo M. d'Andigné, au nom de la 4e Commission. - Messieurs, nous vous proposons d'accepter, pour la Maison de Victor Hugo une série d'objets offerts par M. Jacque Devéria qui constitueront un précieux apport aux collections déjà réunies",
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k6435415c/f11.item"
+  },
+  {
+   "date": "1928-11-17",
+   "extrait": "15. — Agrandissement de la maison de Victor - Hugo  … M. d'Andigné, au nom de la 4e Commission. — Messieurs, l'Administration nous a saisis d'une demande d'ouverture de crédit pour l'achèvement des travaux d'agrandissements de la maison de Victor - Hugo et l'aménagement des nou",
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k6414217n/f7.item"
+  }
+ ],
  "bmo_recit": null,
  "invest": [],
  "marches": [],

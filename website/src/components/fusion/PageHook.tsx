@@ -13,17 +13,21 @@ type Props = {
   shareText: string;
   /** URL jointe au share ; défaut = window.location.href. */
   shareUrl?: string;
+  /**
+   * "card" : carte partageable compacte à placer DANS la première section
+   * de données, sous la viz (fx-wrap parent requis). Par défaut (interlude
+   * pleine largeur), réservé aux rares pages sans viz d'ouverture.
+   */
+  variant?: "card";
 };
 
 /**
- * Hook partageable d'une page thématique. Format PullQuote éditorial (italique
- * display, chiffres bolded bleu-vif), source datée dessous, bouton Partager
- * (navigator.share sur mobile, clipboard fallback sur desktop).
- *
- * À placer juste sous `<section className="fx-page-header">` et avant la
- * première `<section className="fx-section">` numérotée.
+ * Hook partageable d'une page thématique — mêmes chiffres calculés, bouton
+ * Partager (navigator.share sur mobile, clipboard fallback desktop).
+ * Depuis l'audit « temps-avant-la-donnée », le format nominal est la carte
+ * (`variant="card"`) sous la première visualisation, pas l'interlude.
  */
-export default function PageHook({ children, cite, shareText, shareUrl }: Props) {
+export default function PageHook({ children, cite, shareText, shareUrl, variant }: Props) {
   const t = useT();
   const [copied, setCopied] = useState(false);
 
@@ -50,6 +54,29 @@ export default function PageHook({ children, cite, shareText, shareUrl }: Props)
     }
   };
 
+  const share = (
+    <button
+      type="button"
+      className="fx-page-hook-share"
+      onClick={onShare}
+      aria-live="polite"
+    >
+      {copied ? t("fx.pagehook.copied") : t("fx.pagehook.share")}
+    </button>
+  );
+
+  if (variant === "card") {
+    return (
+      <aside className="fx-hook-card" aria-label={t("fx.pagehook.aria")}>
+        <blockquote className="fx-pull-quote fx-hook-card-quote">
+          <p>{children}</p>
+          <cite>{cite}</cite>
+        </blockquote>
+        <div className="fx-hook-card-actions">{share}</div>
+      </aside>
+    );
+  }
+
   return (
     <section className="fx-page-hook" aria-label={t("fx.pagehook.aria")}>
       <div className="fx-wrap">
@@ -57,16 +84,7 @@ export default function PageHook({ children, cite, shareText, shareUrl }: Props)
           <p>{children}</p>
           <cite>{cite}</cite>
         </blockquote>
-        <div className="fx-page-hook-actions">
-          <button
-            type="button"
-            className="fx-page-hook-share"
-            onClick={onShare}
-            aria-live="polite"
-          >
-            {copied ? t("fx.pagehook.copied") : t("fx.pagehook.share")}
-          </button>
-        </div>
+        <div className="fx-page-hook-actions">{share}</div>
       </div>
     </section>
   );

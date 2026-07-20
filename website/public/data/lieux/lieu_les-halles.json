@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T11:31:55.941392+00:00",
+ "generated_at": "2026-07-20T15:44:01.151982+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "les-halles",
  "name": "Les Halles",
@@ -30,8 +30,8 @@
    2007,
    2018
   ],
-  "n_bmo_brut": 1875,
-  "n_bmo_verifies": 5,
+  "n_bmo_brut": 2974,
+  "n_bmo_verifies": 18,
   "invest_total_eur": 0,
   "invest_annees": [],
   "lecture_mode": "titre nommant le lieu (41 trouvés)",
@@ -404,8 +404,44 @@
    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=21487"
   }
  ],
- "bmo_extraits": [],
- "bmo_recit": null,
+ "bmo_extraits": [
+  {
+   "date": "1888-07-22",
+   "extrait": "1170. — Installation d'un bureau pour les porteurs dans un des pavillons des Halles (M. Chabert, rapporteur … Chabert, au nom dé la Commission du travail, expose que les porteurs aux Halles demandent l'installation, pour leur usage, d'un bureau dans l'un des pavillons des Halle",
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k6329884q/f2.item"
+  },
+  {
+   "date": "1918-11-23",
+   "extrait": "Le marché des Halles a perdu par sa propre faute sa clientèle de province … Le système des Halles est désuet, c'est un organisme usé … imminente, déclare que la disette de beurre et d'œufs sous les pavillons des Halles « permet aux détaillants d'augmenter leurs prétentions et",
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k6331593f/f11.item"
+  },
+  {
+   "date": "1940-03-08",
+   "extrait": "SEINE Réduction de 50 %, à titre définitif, du tarif des droits de place pour les places prises en adjonction dans les pavillons de détail des Halles centrales … Vu l'arrêté préfectoral du 7 février 1938 fixant le tarif des droits et redevances perçus notamment dans les pavillo",
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k63567952/f2.item"
+  },
+  {
+   "date": "1941-02-18",
+   "extrait": "Le Comité a homologué un nouveau prix de vente en gros des champignons aux Halles centrales",
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k64492171/f1.item"
+  },
+  {
+   "date": "1960-01-06",
+   "extrait": "M. le Président. — Je mets maintenant aux voix, à main levée, les conclusions de M. Legaret sur les deux mémoires concernant la réfection du sol du pavillon IX et la réfection des peintures des fers des pavillons III, IV, V et VI des Halles centrales",
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k9713228g/f34.item"
+  },
+  {
+   "date": "1969-07-16",
+   "extrait": "Il nous faut sauver le 5 de l'avenue Van Dyck, le 68 de la rue de l'Université, le 52 de la rue de Varennes, sauver le quartiers des Halles y compris les pavillons Baltard … ",
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k9704274r/f12.item"
+  },
+  {
+   "date": "1970-03-15",
+   "extrait": "nombre des postes de grossistes à la section de la vente en gros de la triperie aux Halles centrales … Considérant que, dans ces conditions, il y a lieu de ramener de cinquante-cinq à cinquante-deux le nombre des postes de grossistes en abats exerçant dans les pavillons des Hal",
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k3210308p/f4.item"
+  }
+ ],
+ "bmo_recit": "Les Halles apparaissent dans le Bulletin municipal dès 1888, lorsque la Commission du travail expose la demande des porteurs d'installer, pour leur usage, un bureau dans l'un des pavillons des Halles centrales. Le lieu vit ensuite au rythme du marché : en 1918, des voix en séance jugent le système des Halles « désuet », un « organisme usé » qui aurait perdu sa clientèle de province, sur fond de disette de beurre et d'œufs sous les pavillons ; en 1940, le tarif des droits de place pour les places prises en adjonction dans les pavillons de détail est réduit de 50 % à titre définitif, et en 1941 le Comité homologue un nouveau prix de vente en gros des champignons. En 1960, le Conseil est appelé à se prononcer sur la réfection du sol du pavillon IX et des peintures des fers des pavillons III à VI. L'archive porte enfin la trace du basculement du quartier : en 1969, un appel est lancé en séance à « sauver le quartier des Halles, y compris les pavillons Baltard », puis en 1970 le nombre de postes de grossistes en abats exerçant dans les pavillons est ramené de cinquante-cinq à cinquante-deux.",
  "invest": [],
  "marches": [],
  "mandate": {

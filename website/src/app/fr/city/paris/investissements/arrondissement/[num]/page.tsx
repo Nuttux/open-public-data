@@ -76,10 +76,10 @@ export default async function ArrondissementPage({ params }: { params: Promise<P
     <div className="theme-fusion">
       <Navbar />
       <main id="main-content" tabIndex={-1}>
-      <section className="fx-page-header">
+      <section className="fx-page-header fx-page-header--fiche">
         <div className="fx-wrap">
           <InvestBackKicker />
-          <ArrInvestTitleAndLede arr={arr.arr} year={arr.year} nbProjets={arr.nbProjets} />
+          <ArrInvestTitleAndLede arr={arr.arr} />
         </div>
       </section>
       <div className="fx-fiche-wrap">

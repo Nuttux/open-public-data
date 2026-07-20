@@ -56,15 +56,9 @@ export default async function AssociationPage({ params }: { params: Promise<Para
     <div className="theme-fusion">
       <Navbar />
       <main id="main-content" tabIndex={-1}>
-      <section className="fx-page-header">
+      <section className="fx-page-header fx-page-header--fiche">
         <div className="fx-wrap">
-          <AssoPageHeader
-            theme={asso.theme}
-            count={asso.subventionCount}
-            firstYear={asso.yearsActive[0]}
-            lastYear={asso.yearsActive[asso.yearsActive.length - 1]}
-            totalM={asso.totalAmount / 1_000_000}
-          />
+          <AssoPageHeader theme={asso.theme} />
           <h1 className="fx-page-title" style={{ fontSize: "clamp(28px, 4vw, 48px)" }}>
             {asso.name}
           </h1>

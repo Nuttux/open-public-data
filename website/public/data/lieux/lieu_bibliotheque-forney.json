@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T11:31:55.941392+00:00",
+ "generated_at": "2026-07-20T15:44:01.151982+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "bibliotheque-forney",
  "name": "Bibliothèque Forney",
@@ -30,8 +30,8 @@
    2000,
    2025
   ],
-  "n_bmo_brut": 0,
-  "n_bmo_verifies": null,
+  "n_bmo_brut": 1272,
+  "n_bmo_verifies": 18,
   "invest_total_eur": 0,
   "invest_annees": [],
   "lecture_mode": "titre nommant le lieu (7 trouvés)",
@@ -109,8 +109,29 @@
    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=84874"
   }
  ],
- "bmo_extraits": [],
- "bmo_recit": null,
+ "bmo_extraits": [
+  {
+   "date": "1900-01-16",
+   "extrait": "prix de 10 francs l'un, quatre exemplaires de l'ouvrage de M. -Maurice Guillemet intitulé : « Entr'actes de pierres », qui seront répartis entre la bibliothèque du Conseil, la bibliothèque Le Peletier de Saint-Fargeau, la bibliothèque Forney et l'école Estienne",
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k6520356c/f13.item"
+  },
+  {
+   "date": "1928-09-06",
+   "extrait": "Les bibliothèques installées dans les mairies des arrondissements suivants : 4e, 6e, 10e, 12e, 13e, 14*, 15e, 18e 19 et 20e sont ouvertes en outre le samedi de 13 à 21 heures … 5° La bibliothèque centrale d'art appliqué et de technique industrielle, dite bibliothèque Forney , 1",
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k64975402/f3.item"
+  },
+  {
+   "date": "1966-07-04",
+   "extrait": "et M. Joseph Marquez, « Délibère : « M. le Préfet de la Seine est invité à hâter le transfert de ce qui reste de la bibliothèque Forney à l'Hôtel de Sens et à prévoir dans les locaux libérés l'aménagement de deux restaurants scolaires pour les besoins du groupe scolaire 12-14, ru",
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k9707832d/f25.item"
+  },
+  {
+   "date": "1969-02-19",
+   "extrait": "N° 1115. — En mars 1967, le Conseil municipal de Paris votait les crédits nécessaires à l'exécution de travaux à l'hôtel de Sens pour y transférer les revues de la Bibliothèque Forney , les locaux de cette bibliothèque devant servir à l'agrandissement du groupe scolaire Titon, en",
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k97105401/f3.item"
+  }
+ ],
+ "bmo_recit": "La bibliothèque Forney apparaît dans le Bulletin municipal dès 1900, lorsque la Ville lui attribue l'un des quatre exemplaires, achetés 10 francs l'un, d'un ouvrage de Maurice Guillemet répartis entre plusieurs bibliothèques et écoles. En 1928, elle figure dans la liste des bibliothèques municipales sous le nom de « bibliothèque centrale d'art appliqué et de technique industrielle », installée 12, rue Titon. Les années 1960 sont celles du déménagement : en 1966, le Conseil invite le Préfet de la Seine à hâter le transfert de ce qui reste de la bibliothèque vers l'Hôtel de Sens, les locaux libérés devant accueillir deux restaurants scolaires pour le groupe scolaire de la rue Titon. En 1969, le Bulletin rappelle que le Conseil municipal a voté en mars 1967 les crédits de travaux à l'hôtel de Sens pour y transférer les revues de Forney, les anciens locaux devant servir à l'agrandissement du groupe scolaire Titon.",
  "invest": [],
  "marches": [
   {
@@ -140,7 +161,7 @@
   },
   "bmo": {
    "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
-   "url": "https://gallica.bnf.fr/ark:/12148/cb343512457/date"
+   "url": "https://gallica.bnf.fr/services/engine/search/sru?operation=searchRetrieve&version=1.2&startRecord=0&maximumRecords=15&page=1&collapsing=disabled&query=arkPress+all+%22cb343512457_date%22+and+%28gallica+all+%22Biblioth%C3%A8que+Forney%22%29"
   },
   "invest": {
    "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",

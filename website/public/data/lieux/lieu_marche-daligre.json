@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T11:31:55.941392+00:00",
+ "generated_at": "2026-07-20T15:44:01.151982+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "marche-daligre",
  "name": "Marché d'Aligre",
@@ -30,8 +30,8 @@
    1996,
    2015
   ],
-  "n_bmo_brut": 978,
-  "n_bmo_verifies": null,
+  "n_bmo_brut": 1299,
+  "n_bmo_verifies": 14,
   "invest_total_eur": 0,
   "invest_annees": [],
   "lecture_mode": "titre nommant le lieu (12 trouvés)",
@@ -124,8 +124,29 @@
    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=4148"
   }
  ],
- "bmo_extraits": [],
- "bmo_recit": null,
+ "bmo_extraits": [
+  {
+   "date": "1897-12-30",
+   "extrait": "33, Marché Beauvau -Saint-Antoine (12e arrondissement), est ramené de 74,000 à 72,300 francs, et l'art …  Marché alimentaire de la rue de Tolbiac, de 2,250 à 2,200 francs … 50. — Marché de Joinville, à La Villette (19e arrondissement … ",
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k6362125c/f18.item"
+  },
+  {
+   "date": "1907-02-01",
+   "extrait": "Par M. Armand Grébauval : De commerçants de la rue d ' Aligre relative au maintien du marché Beauvau",
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k6466258k/f11.item"
+  },
+  {
+   "date": "1932-12-03",
+   "extrait": "Attendu que du 2 au 4 décembre 1932, se tient à Paris (12e arrondissement), dans le quartier des Quinze-Vingts, une fête destinée à commémorer le centenaire du marché d ' Aligre -Beauveau-Saint-Antoine",
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k63126672/f4.item"
+  },
+  {
+   "date": "1977-12-08",
+   "extrait": "330 Question de MM. Planchet, Pierre de Bénouville, Fernand Rombach, Paul Pernin, Jean-Pierre Burriez et Bernard Tieles à M. le Maire de Paris sur l’accès aux garages 6, 8 et 10, rue d ’ Aligre pendant les heures de marché",
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k3210473m/f2.item"
+  }
+ ],
+ "bmo_recit": "Le marché apparaît dans le Bulletin municipal dès la fin du XIXe siècle par le biais de sa gestion : en décembre 1897, le fermage du marché Beauvau-Saint-Antoine est ramené de 74 000 à 72 300 francs. En 1907, des commerçants de la rue d'Aligre adressent au Conseil, par la voix d'Armand Grébauval, une pétition demandant le maintien du marché. En décembre 1932, le Bulletin annonce une fête tenue du 2 au 4 décembre dans le quartier des Quinze-Vingts pour commémorer le centenaire du marché d'Aligre-Beauvau-Saint-Antoine. L'archive retrouve le lieu en 1977, quand plusieurs conseillers posent au Maire de Paris une question sur l'accès aux garages des 6, 8 et 10 rue d'Aligre pendant les heures de marché. Le Bulletin ne saisit ainsi le marché que par touches espacées — redevance, défense par ses commerçants, célébration, voisinage — mais sur quatre-vingts ans.",
  "invest": [],
  "marches": [
   {

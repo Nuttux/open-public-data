@@ -270,8 +270,6 @@ export default function QuiRecoitExplorer({
       <section className="fx-section" id="sec-top-benef">
         <div className="fx-wrap">
           <SectionHead
-            number="03"
-            kind={t("fx.qr.top.kind")}
             title={
               <>
                 {t("fx.qr.top.title.before")}
@@ -341,8 +339,6 @@ export default function QuiRecoitExplorer({
       <section className="fx-section" id="recherche" ref={searchRef}>
         <div className="fx-wrap">
           <SectionHead
-            number="04"
-            kind={t("fx.qr.search.kind")}
             title={
               <>
                 {t("fx.qr.search.title.before")}

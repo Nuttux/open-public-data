@@ -27,7 +27,6 @@ export default function ArrondissementFiche({ arr }: { arr: ArrondissementFicheT
   const _suf = (n: number) => (locale === "en" ? (n === 1 ? "st" : "th") : n === 1 ? "er" : "ᵉ");
 
   const { v, u } = fmtEur(arr.total);
-  const topChap = arr.byChapitre[0];
 
   return (
     <div>
@@ -54,21 +53,6 @@ export default function ArrondissementFiche({ arr }: { arr: ArrondissementFicheT
           </div>
         </div>
       </div>
-
-      {topChap && (
-        <div className="fx-fiche-rank">
-          <span className="fx-fiche-rank-num" style={{ color: "var(--ocre)" }}>{t("fx.fiche.arr.rank1")}</span>
-          <span>
-            {fill(t("fx.fiche.arr.top_chap"), {
-              label: trLabel(topChap.label, locale),
-              v: fmtEur(topChap.amount).v,
-              u: fmtEur(topChap.amount).u,
-              n: topChap.count,
-              s: topChap.count > 1 ? "s" : "",
-            })}
-          </span>
-        </div>
-      )}
 
       <section className="fx-fiche-section">
         <div className="fx-fiche-h">{fill(t("fx.fiche.arr.top_projets"), { year: arr.year })}</div>

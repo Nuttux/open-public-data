@@ -3,7 +3,7 @@ import { notFound } from "next/navigation";
 import "@/app/fusion.css";
 
 import { Navbar, Footer, FournisseurFiche } from "@/components/fusion";
-import { MarchesBackKicker, FournisseurLede } from "@/components/fusion/EntityPageHeaders";
+import { MarchesBackKicker } from "@/components/fusion/EntityPageHeaders";
 import VoirLeLieu from "@/components/fusion/VoirLeLieu";
 import { loadFournisseur, loadSirene } from "@/lib/fusion-data";
 import { lieuForBeneficiaire } from "@/lib/lieux-data";
@@ -61,17 +61,12 @@ export default async function FournisseurPage({ params }: { params: Promise<Para
     <div className="theme-fusion">
       <Navbar />
       <main id="main-content" tabIndex={-1}>
-      <section className="fx-page-header">
+      <section className="fx-page-header fx-page-header--fiche">
         <div className="fx-wrap">
           <MarchesBackKicker />
           <h1 className="fx-page-title" style={{ fontSize: "clamp(28px, 4vw, 52px)" }}>
             {fournisseur.nom}
           </h1>
-          <FournisseurLede
-            contratCount={fournisseur.contratCount}
-            yearsActive={fournisseur.yearsActive}
-            totalAmount={fournisseur.totalAmount}
-          />
         </div>
       </section>
       <div className="fx-fiche-wrap">

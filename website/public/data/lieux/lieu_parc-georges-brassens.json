@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T11:31:55.941392+00:00",
+ "generated_at": "2026-07-20T15:44:01.151982+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "parc-georges-brassens",
  "name": "Parc Georges-Brassens",
@@ -31,7 +31,7 @@
    2023
   ],
   "n_bmo_brut": 2000,
-  "n_bmo_verifies": 10,
+  "n_bmo_verifies": 17,
   "invest_total_eur": 183495.55,
   "invest_annees": [
    "2023"
@@ -154,8 +154,24 @@
    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=85486"
   }
  ],
- "bmo_extraits": [],
- "bmo_recit": null,
+ "bmo_extraits": [
+  {
+   "date": "1949-05-20",
+   "extrait": "Fermeture des abattoirs de la Villette et de Vaugirard pour la fête de l'Ascension … Les abattoirs de la Villette et de Vaugi- rard, à l'exception des marchés de rassortiment, seront fermés le jeudi 26 mai 1949, jour de l'Ascension",
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k9639413w/f4.item"
+  },
+  {
+   "date": "1950-04-29",
+   "extrait": "approuvant une délibération du Conseil municipal de Paris en date du 30 décembre 1948 portant fixation des tarifs des droits et taxes diverses perçus aux Halles centrales, sur les marchés de rassortiment des abattoirs de la Villette et de Vaugirard , dans ces mêmes abattoirs et s",
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k9663638c/f14.item"
+  },
+  {
+   "date": "1962-04-03",
+   "extrait": "j'ai eu l'honneur de vous informer des dispositions que j'envisageais de prendre pour améliorer les conditions de desserte des abattoirs de Vaugirard , conformément au vœu émis par le Conseil",
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k9711222c/f19.item"
+  }
+ ],
+ "bmo_recit": "Dans le Bulletin municipal, le site n'apparaît pas encore comme un parc : il y figure sous le nom des abattoirs de Vaugirard, parmi les équipements de ravitaillement que la Ville administre au quotidien. En 1949, un avis annonce la fermeture des abattoirs de la Villette et de Vaugirard le jour de l'Ascension, à l'exception des marchés de rassortiment ; en 1950, le Bulletin publie le texte approuvant une délibération du Conseil municipal de décembre 1948 fixant les tarifs des droits et taxes perçus aux Halles centrales et dans ces mêmes abattoirs. En 1962, un rapport fait état de dispositions envisagées pour améliorer les conditions de desserte des abattoirs, conformément à un vœu émis par le Conseil. L'archive ne livre que ces quelques traces de gestion courante — jours de fermeture, taxes, desserte — d'un établissement alors en activité.",
  "invest": [
   {
    "annee": 2023,

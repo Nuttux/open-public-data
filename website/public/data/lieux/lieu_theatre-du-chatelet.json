@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T11:31:55.941392+00:00",
+ "generated_at": "2026-07-20T15:44:01.151982+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "theatre-du-chatelet",
  "name": "Théâtre du Châtelet",
@@ -30,8 +30,8 @@
    1996,
    2023
   ],
-  "n_bmo_brut": 50,
-  "n_bmo_verifies": null,
+  "n_bmo_brut": 2738,
+  "n_bmo_verifies": 18,
   "invest_total_eur": 0,
   "invest_annees": [],
   "lecture_mode": "titre nommant le lieu (30 trouvés)",
@@ -325,8 +325,24 @@
    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=8506"
   }
  ],
- "bmo_extraits": [],
- "bmo_recit": null,
+ "bmo_extraits": [
+  {
+   "date": "1898-01-25",
+   "extrait": "Suivant procès-verbal reçu le 24 janvier 1898 par Me Mahot de la Quérantonnais, notaire, M. Émile Rochard, directeur du théâtre de l'Ambigu, s'est rendu … adjudicataire du droit au bail du théâtre du Châtelet , moyennant un loyer annuel de 150,100 francs sur la mise à prix de 1",
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k6262924g/f3.item"
+  },
+  {
+   "date": "1904-08-28",
+   "extrait": "Dépendances du théâtre du Châtelet . - A LOUER A BAIL Vastes locaux situés avenue Victoria, au rez-dechaussée, d'une superficie totale de 130 mètres carré, avec sous-sol d'une surface égale",
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k6468840k/f4.item"
+  },
+  {
+   "date": "1975-04-24",
+   "extrait": "A 15 heures (salle de la 6 e Commission). — Commission spéciale sur le théâtre du Châtelet",
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k3210825x/f1.item"
+  }
+ ],
+ "bmo_recit": "Le théâtre du Châtelet apparaît dans le Bulletin municipal dès la fin du XIXe siècle comme un bien que la Ville administre : en janvier 1898, Émile Rochard, directeur du théâtre de l'Ambigu, se rend adjudicataire du droit au bail du théâtre, moyennant un loyer annuel de 150 100 francs sur une mise à prix de 150 000 francs. En 1904, la Ville met en location à bail les dépendances du théâtre, avenue Victoria — de vastes locaux de 130 mètres carrés au rez-de-chaussée, avec un sous-sol de surface égale. L'archive ne livre ensuite qu'un épisode isolé, sept décennies plus tard : en avril 1975, le Conseil réunit une commission spéciale consacrée au théâtre du Châtelet, sans que le Bulletin en dise ici davantage. Sur près d'un siècle, le lieu y figure ainsi d'abord comme un patrimoine que la Ville loue, avant de devenir l'objet d'une séance de travail du Conseil.",
  "invest": [],
  "marches": [
   {

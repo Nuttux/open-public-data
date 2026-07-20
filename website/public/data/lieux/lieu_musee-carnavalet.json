@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T11:31:55.941392+00:00",
+ "generated_at": "2026-07-20T15:44:01.151982+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "musee-carnavalet",
  "name": "Musée Carnavalet",
@@ -31,7 +31,7 @@
    2018
   ],
   "n_bmo_brut": 1575,
-  "n_bmo_verifies": null,
+  "n_bmo_verifies": 18,
   "invest_total_eur": 0,
   "invest_annees": [],
   "lecture_mode": "titre nommant le lieu (47 trouvés)",
@@ -348,8 +348,24 @@
    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=46049"
   }
  ],
- "bmo_extraits": [],
- "bmo_recit": null,
+ "bmo_extraits": [
+  {
+   "date": "1902-04-04",
+   "extrait": "Conformément aux conclusions présentées par M. John Labusquière, au nom de la 4e Commission, Renvoie à l'Administration une pétition de M. Le Fustec proposant l'acquisition pour le musée Carnavalet d'un portrait du président Félix Faure, par Edouard Krug",
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k64533705/f14.item"
+  },
+  {
+   "date": "1905-12-16",
+   "extrait": "Achille, au nom de la 28 Commission. — Messieurs, la ville de Paris est propriétaire d'une maison située rue de Sévigné, n° 25, dont l'acquisition a été faite en vue de l'agrandissement du musée Carnavalet , auquel elle est",
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k6343248g/f7.item"
+  },
+  {
+   "date": "1926-03-20",
+   "extrait": "de M. Guillaumin, président 56. - Acceptation d'un don fait au musée Carnavalet par les héritiers de M. Ernest May … M. d'Andigné, au nom de la 4e Commission. — Messieurs, en exécution d'un désir exprimé par l'éminent collectionneur M. Ernest May, ses héritiers offrent à la Vil",
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k6291215m/f20.item"
+  }
+ ],
+ "bmo_recit": "Au début du XXe siècle, le musée apparaît dans le Bulletin municipal d'abord par ses collections : en 1902, le Conseil renvoie à l'Administration une pétition de M. Le Fustec proposant d'acquérir pour le musée un portrait du président Félix Faure peint par Édouard Krug — la question est transmise, non tranchée. En 1905, un rapport en séance rappelle que la Ville est propriétaire d'une maison au 25 rue de Sévigné, acquise en vue de l'agrandissement du musée. Deux décennies plus tard, en 1926, l'archive montre le Conseil saisi de l'acceptation d'un don : les héritiers du collectionneur Ernest May, en exécution d'un désir qu'il avait exprimé, offrent des œuvres à la Ville de Paris pour le musée. Sur près d'un quart de siècle, le Bulletin donne ainsi à voir ces épisodes ponctuels d'une même vie administrative : des murs qu'on prévoit d'étendre et des collections qui s'enrichissent par dons et propositions d'achat.",
  "invest": [],
  "marches": [
   {

@@ -6,7 +6,7 @@ import { Navbar, Footer, ContratFiche } from "@/components/fusion";
 import { MarchesBackKicker, ContratLede, ContratTitleFallback } from "@/components/fusion/EntityPageHeaders";
 import VoirLeLieu from "@/components/fusion/VoirLeLieu";
 import { loadContrat, loadContratProjet, loadContratRanking, loadMarcheVulgarization, loadSirene } from "@/lib/fusion-data";
-import { lieuForProjet } from "@/lib/lieux-data";
+import { lieuForMarche, lieuForProjet } from "@/lib/lieux-data";
 import { readLocale } from "@/lib/seo";
 import { normalizeObjet } from "@/lib/objet-normalizer";
 
@@ -64,11 +64,11 @@ export default async function ContratPage({ params }: { params: Promise<Params> 
   const fournisseurSirene = siren ? loadSirene(siren) : null;
   const ranking = loadContratRanking(contrat.numero, contrat.year, contrat.nature, contrat.montantMax);
   const locale = await readLocale();
-  // Lien transitif vers le lieu : ce contrat porte sur un projet, et le projet a
-  // été rattaché à un lieu par le juge — pas de nouvelle résolution, on suit la
-  // chaîne contrat → projet → lieu.
+  // Lien vers le lieu : d'abord le rattachement direct du juge (marché
+  // « au-lieu », symétrique de la liste marchés de la fiche lieu), sinon la
+  // chaîne transitive contrat → projet → lieu.
   const projetLink = loadContratProjet(contrat.numero);
-  const lieuLien = projetLink ? lieuForProjet(projetLink.nom) : null;
+  const lieuLien = lieuForMarche(contrat.numero) ?? (projetLink ? lieuForProjet(projetLink.nom) : null);
 
   // h1 keeps proper-noun data (objet_clair / normalizeObjet output) — already
   // FR but data-driven, not template text. Fallback uses a translation key.
@@ -78,19 +78,13 @@ export default async function ContratPage({ params }: { params: Promise<Params> 
     <div className="theme-fusion">
       <Navbar />
       <main id="main-content" tabIndex={-1}>
-      <section className="fx-page-header">
+      <section className="fx-page-header fx-page-header--fiche">
         <div className="fx-wrap">
           <MarchesBackKicker />
           <h1 className="fx-page-title" style={{ fontSize: "clamp(28px, 4vw, 44px)" }}>
             {titleText || <ContratTitleFallback />}
           </h1>
-          <ContratLede
-            numero={contrat.numero}
-            year={contrat.year}
-            nature={contrat.nature}
-            multiAttributaire={contrat.multiAttributaire}
-            fournisseur={contrat.fournisseur}
-          />
+          <ContratLede numero={contrat.numero} year={contrat.year} />
         </div>
       </section>
       <div className="fx-fiche-wrap">

@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T11:31:55.941392+00:00",
+ "generated_at": "2026-07-20T15:44:01.151982+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "musee-bourdelle",
  "name": "Musée Bourdelle",
@@ -31,7 +31,7 @@
    2011
   ],
   "n_bmo_brut": 253,
-  "n_bmo_verifies": null,
+  "n_bmo_verifies": 9,
   "invest_total_eur": 0,
   "invest_annees": [],
   "lecture_mode": "titre nommant le lieu (29 trouvés)",
@@ -271,8 +271,39 @@
    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=33303"
   }
  ],
- "bmo_extraits": [],
- "bmo_recit": null,
+ "bmo_extraits": [
+  {
+   "date": "1934-07-28",
+   "extrait": "4\" Musée Cernuschi : « Installation de l'éclairage dans les parties du musée qui n'en sont pas pourvues et modification de l'appareillage existant, 150.000 francs … ancienne par un bâtiment neuf à usage de musée  … c 6° Musée Bourdelle : « Travaux d'architecture, 4 millions",
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k6520876v/f16.item"
+  },
+  {
+   "date": "1960-01-06",
+   "extrait": "21. — Acquisition d'un pastel d'Antoine Bourdelle  … Minot, au nom de la 4e Commission. — Mes chers collègues, une proposition a été faite au musée Antoine Bourdelle d acquérir un - très beau pastel de l'artiste, représentant une vieille femme … importante collection en dessi",
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k9713228g/f10.item"
+  },
+  {
+   "date": "1960-07-21",
+   "extrait": "vente aux enchères, il a pu être acquis pour le musée Bourdelle un buste en plâtre de Coquelin Cadet … Le musée Galliera a continué à organiser des expositions temporaires : « Salon des Tuileries », « Gravures espagnoles contemporaines … Au musée Antoine- Bourdelle a été orga",
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k9713224t/f4.item"
+  },
+  {
+   "date": "1963-04-16",
+   "extrait": "7. — Programme d'équipement pour 1964. — Prise en considération d'uné troisième étape de travaux au musée Antoine- Bourdelle  … Mme Bécourt-Foch, au nom de la 48 Commission et de l'a Commission du budget. — Mes chers collègues, la réalisation du musée Antoine- Bourdelle a déjà ",
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k9710634n/f3.item"
+  },
+  {
+   "date": "1963-04-24",
+   "extrait": "considération l'ensemble du programme, sous réserve de quelques modifications minimes comme la réduction à 600.000 F de l'enveloppe de 1.022.000 F consacrée à l'achèvement du musée Bourdelle , la prise en considération de la construction d'une piscine à la Butte-aux-Cailles dans ",
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k9710632t/f24.item"
+  },
+  {
+   "date": "1964-02-03",
+   "extrait": "Inscription d'un crédit de 882.000 F pour l'exécution d'une troisième étape de travaux au musée Antoine-BourdeIle … Le second de ces mémoires relatif au musée Antoine- Bourdelle n'a pu être compris dans les opérations figurant sur la liste des autorisations de programme … par",
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k9732927q/f32.item"
+  }
+ ],
+ "bmo_recit": "Le musée Bourdelle apparaît dans le Bulletin municipal dès 1934, inscrit pour 4 millions de francs de travaux d'architecture dans un programme qui concerne plusieurs musées de la Ville. Il revient en 1960 par ses collections : le Conseil examine une proposition d'acquérir un pastel d'Antoine Bourdelle représentant une vieille femme, et le Bulletin rapporte qu'un buste en plâtre de Coquelin Cadet a pu être acquis en vente aux enchères pour le musée. Les années suivantes sont celles du chantier : en avril 1963, le Conseil prend en considération une troisième étape de travaux au programme d'équipement de 1964, tout en ramenant de 1.022.000 F à 600.000 F l'enveloppe consacrée à l'achèvement du musée. Début 1964, un crédit de 882.000 F est inscrit pour l'exécution de cette troisième étape.",
  "invest": [],
  "marches": [
   {

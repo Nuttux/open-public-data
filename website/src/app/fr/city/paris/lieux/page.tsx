@@ -3,6 +3,7 @@ import "@/app/fusion.css";
 
 import { Navbar, Footer } from "@/components/fusion";
 import LieuxExplorer from "@/components/fusion/LieuxExplorer";
+import PageIntro, { IntroStat } from "@/components/fusion/PageIntro";
 import { loadLieuxIndex } from "@/lib/lieux-data";
 import { readLocale } from "@/lib/seo";
 
@@ -34,32 +35,32 @@ export default async function LieuxPage() {
     <div className="theme-fusion">
       <Navbar />
       <main id="main-content" tabIndex={-1}>
-        <section className="fx-page-header">
-          <div className="fx-wrap">
-            <h1 className="fx-page-title">{locale === "en" ? "Places" : "Lieux"}</h1>
-            <p className="fx-page-lede">
-              {locale === "en"
-                ? "Pools, theatres, parks: for each place, what the Conseil de Paris decided, what the municipal bulletin recorded, what the City pays — every fact linked to its source."
-                : "Piscines, théâtres, parcs : pour chaque lieu, ce que le Conseil de Paris a décidé, ce que le Bulletin municipal a consigné, ce que la Ville paie — chaque fait relié à sa source."}
-            </p>
-            <div className="fx-lieux-hero-stats">
-              <span>
-                <b className="tnum">{lieux.length}</b> {locale === "en" ? "places" : "lieux"}
-              </span>
+        <PageIntro
+          title={locale === "en" ? "Places" : "Lieux"}
+          lede={
+            locale === "en"
+              ? "Pools, theatres, parks: for each place, what the Conseil de Paris decided, what the municipal bulletin recorded, what the City pays — every fact linked to its source."
+              : "Piscines, théâtres, parcs : pour chaque lieu, ce que le Conseil de Paris a décidé, ce que le Bulletin municipal a consigné, ce que la Ville paie — chaque fait relié à sa source."
+          }
+          stats={
+            <>
+              <IntroStat value={lieux.length} label={locale === "en" ? "places" : "lieux"} />
               {argentTotal > 0 && (
-                <span>
-                  <b className="tnum">{fmtM(argentTotal)} M€</b>{" "}
-                  {locale === "en" ? "public money identified" : "d’argent public identifié"}
-                </span>
+                <IntroStat
+                  value={fmtM(argentTotal)}
+                  unit="M€"
+                  label={locale === "en" ? "public money identified" : "d’argent public identifié"}
+                />
               )}
               {plusAncien && (
-                <span>
-                  {locale === "en" ? "archives since" : "archives depuis"} <b className="tnum">{plusAncien}</b>
-                </span>
+                <IntroStat
+                  value={plusAncien}
+                  label={locale === "en" ? "archives since" : "archives depuis"}
+                />
               )}
-            </div>
-          </div>
-        </section>
+            </>
+          }
+        />
 
         <section className="fx-section">
           <div className="fx-wrap">

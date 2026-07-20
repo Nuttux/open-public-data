@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T11:31:55.941392+00:00",
+ "generated_at": "2026-07-20T15:44:01.151982+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "piscine-butte-aux-cailles",
  "name": "Piscine de la Butte-aux-Cailles",
@@ -31,7 +31,7 @@
    2005
   ],
   "n_bmo_brut": 473,
-  "n_bmo_verifies": 7,
+  "n_bmo_verifies": 18,
   "invest_total_eur": 0,
   "invest_annees": [],
   "lecture_mode": "titre nommant le lieu (4 trouvés)",
@@ -77,8 +77,39 @@
    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=530"
   }
  ],
- "bmo_extraits": [],
- "bmo_recit": null,
+ "bmo_extraits": [
+  {
+   "date": "1926-03-07",
+   "extrait": "Les frais de cette installation, évalués à 500 francs pour deux pommes de douches et par piscine , seront faits, pour la piscine de la Butte -aux- Cailles , sur les reliquats de l'opération et, pour les deux autres, sur le crédit d'entretien …  piscine de la Butte -aux- Cailles",
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k6291204t/f9.item"
+  },
+  {
+   "date": "1929-10-16",
+   "extrait": "Les piscines Ledru-Rollin et Rouvet ont été démolies et sur leur emplacement des piscines modernes sont en construction … La piscine de la Butte -aux- Cailles , qui a été inaugurée en mai 1924 et a été la première mise en exploitation sur ce modèle, comporte un bassin d'une con",
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k6410284t/f2.item"
+  },
+  {
+   "date": "1938-01-10",
+   "extrait": "50. — Remplacement des châssis du hall de natation à la piscine de la Butte -aux- Cailles  … René Le Gall, au nom de la 6e Commission. — Messieurs, l'abondance des buées et les intempéries ont amené la détérioration des châssis des vitres donnant jour sur le hall de natation de",
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k6505960b/f13.item"
+  },
+  {
+   "date": "1952-07-26",
+   "extrait": "N° 911. — Pour des raisons de sécurité, le plongeoir de quatre mètres existant à la piscine municipale de la Butte -aux- Cailles a été supprimé … Seine s'il peut leur assurer que le plongeoir supprimé à la piscine municipale de la Butte -aux- Cailles sera bientôt remplacé. ( Qu",
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k9786689d/f3.item"
+  },
+  {
+   "date": "1963-04-19",
+   "extrait": "la procédure, qui normalement aurait dû être engagée dès le moment où le Conseil municipal a décidé de la création de cette piscine à la Butte -aux- Cailles , c'est-à-dire en mars 1961. aura donc demandé, de mars 1961 à la fin de 1964, trois longues années pendant lesquelles les ",
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k97106337/f42.item"
+  },
+  {
+   "date": "1975-05-11",
+   "extrait": "de la piscine de la Butte -aux- Cailles par un très grand nombre de lettres émanant d’usagers de cette piscine  … Cette piscine étant alimentée en eau par un puit artésien ne nécessite qu’un chauffage complémentaire pour atteindre la température idéale … L’eau de cette piscin",
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k3210836q/f2.item"
+  }
+ ],
+ "bmo_recit": "La piscine apparaît dans le Bulletin municipal dès l'entre-deux-guerres, par des questions d'équipement : en 1926, l'installation de pommes de douches, évaluée à 500 francs pour deux pommes, doit être financée sur les reliquats de l'opération, et en 1929 le Bulletin la présente comme inaugurée en mai 1924, première exploitée sur ce modèle, avec un bassin de 700 mètres cubes. L'entretien revient ensuite régulièrement : en 1938, les buées et les intempéries ayant détérioré les châssis vitrés du hall de natation, leur remplacement est rapporté au Conseil, et en 1952 le plongeoir de quatre mètres est supprimé pour des raisons de sécurité, une question adressée au préfet de la Seine demandant s'il sera bientôt remplacé. En 1963, un intervenant en séance déplore que la procédure liée à la création d'une piscine à la Butte-aux-Cailles, décidée en mars 1961, ait demandé trois longues années. En 1975 enfin, le Bulletin fait état d'un très grand nombre de lettres d'usagers et rappelle que la piscine, alimentée par un puits artésien, ne nécessite qu'un chauffage complémentaire.",
  "invest": [],
  "marches": [
   {

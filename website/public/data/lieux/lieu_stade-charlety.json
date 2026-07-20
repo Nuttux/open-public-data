@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T11:31:55.941392+00:00",
+ "generated_at": "2026-07-20T15:44:01.151982+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "stade-charlety",
  "name": "Stade Charléty",
@@ -31,7 +31,7 @@
    2024
   ],
   "n_bmo_brut": 145,
-  "n_bmo_verifies": 2,
+  "n_bmo_verifies": 18,
   "invest_total_eur": 0,
   "invest_annees": [],
   "lecture_mode": "titre nommant le lieu (76 trouvés)",
@@ -173,8 +173,39 @@
    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=74088"
   }
  ],
- "bmo_extraits": [],
- "bmo_recit": null,
+ "bmo_extraits": [
+  {
+   "date": "1948-01-10",
+   "extrait": "Sur une partie des terrains expropriés a été édifié le stade « Sébastien- Charléty  … Le stade , bien entretenu, est géré pour le compte de cette dernière par le « Paris-Universitaire Club » Les emplacements contigus au stade ont été débarrassés des ferrailles et des ordures(..",
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k9635246b/f3.item"
+  },
+  {
+   "date": "1954-07-01",
+   "extrait": "D’autre part, il avait été proposé qu’une partie du parc de Sceaux, qui est pratiquement inemployée, pourrait être utilisée pour l’édification d’un très vaste ensemble sportif réservé à l’Université de Paris, où pourrait être transféré l’actuel stade Charléty  … emplacement de ",
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k32013205/f1038.item"
+  },
+  {
+   "date": "1955-07-01",
+   "extrait": "N° 772. — Le stade Charléty , boulevard Kellermann, dont la réalisation est très avancée, s’avère une réussite certaine … afin de lui faire préciser ses intentions quant à une éventuelle piscine Charléty . ( Question du 21 mai 1955.) Deuxième réponse de M. le Préfet de la Seine",
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k32013257/f95.item"
+  },
+  {
+   "date": "1963-12-23",
+   "extrait": "c'est celui du stade Charlety  … Le stade Charlety , à l'heure actuelle, risque de se dégrader et le Ministère ne délègue pas les crédits suffisants pour son entretien … Malheureusement nous avons appris, lors de la dernière réunion du conseil d'administration du stade Charle",
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k97106159/f34.item"
+  },
+  {
+   "date": "1967-01-01",
+   "extrait": "13° arr. — 83, boulevard Kellermann. — Pét., stade Charléty , Université de Paris, même adresse (Por. 58-12). — Couverture de la tribune d'honneur du stade Charléty (bâtiment public … ",
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k9721812b/f846.item"
+  },
+  {
+   "date": "1968-07-24",
+   "extrait": "Beaucoup plus tard, lors de la manifestation en direction du stade Charléty ou lors du cortège de Montparnasse à Austerlitz, il n'y a pas eu de heurts parce qu'il n'y avait pas de police",
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k9713272w/f22.item"
+  }
+ ],
+ "bmo_recit": "Le stade Sébastien-Charléty apparaît dans le Bulletin municipal dès 1948 : édifié sur une partie de terrains expropriés, boulevard Kellermann, il est alors décrit comme bien entretenu et géré, pour le compte de l'Université de Paris, par le Paris-Universitaire Club. Dans les années 1950, son sort fait débat : une proposition de 1954 suggère de le transférer au parc de Sceaux, dans un vaste ensemble sportif réservé à l'Université, afin de libérer son emplacement, tandis qu'en 1955 une question au Conseil décrit sa réalisation comme « très avancée » et « une réussite certaine », tout en demandant au Ministre de l'Éducation nationale de préciser ses intentions sur une éventuelle piscine Charléty. En 1963, un intervenant alerte le Conseil : le stade risque de se dégrader, le Ministère ne déléguant pas les crédits suffisants pour son entretien. L'archive garde ensuite la trace, en 1967, d'une demande de permis de l'Université de Paris pour couvrir la tribune d'honneur, puis, en 1968, d'un débat où un orateur évoque la manifestation en direction du stade Charléty, restée selon lui sans heurts parce qu'il n'y avait pas de police.",
  "invest": [],
  "marches": [
   {

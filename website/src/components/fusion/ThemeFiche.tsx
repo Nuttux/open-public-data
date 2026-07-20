@@ -44,25 +44,6 @@ export default function ThemeFiche({ fiche }: { fiche: ThemeSubventionsFiche }) 
 
   return (
     <div>
-      <div
-        style={{
-          padding: "14px 18px",
-          background: color,
-          color: "#fff",
-          marginBottom: 18,
-          fontFamily: "var(--f-mono)",
-          fontSize: 11,
-          letterSpacing: ".08em",
-          textTransform: "uppercase",
-        }}
-      >
-        {fill(t("fx.fiche.theme.banner"), {
-          theme: trLabel(fiche.theme, locale),
-          benef: fmtInt(fiche.nbBeneficiaires),
-          subv: fmtInt(fiche.nbSubventions),
-        })}
-      </div>
-
       <div className="fx-fiche-kpis">
         <div className="fx-fiche-kpi">
           <div className="fx-fiche-kpi-label">{fill(t("fx.fiche.theme.kpi.montant"), { year: fiche.year })}</div>

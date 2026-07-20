@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T11:31:55.941392+00:00",
+ "generated_at": "2026-07-20T15:44:01.151982+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "gaite-lyrique",
  "name": "Gaîté-Lyrique",
@@ -31,7 +31,7 @@
    2025
   ],
   "n_bmo_brut": 1545,
-  "n_bmo_verifies": null,
+  "n_bmo_verifies": 18,
   "invest_total_eur": 0,
   "invest_annees": [],
   "lecture_mode": "titre nommant le lieu (55 trouvés)",
@@ -202,8 +202,39 @@
    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=8820"
   }
  ],
- "bmo_extraits": [],
- "bmo_recit": null,
+ "bmo_extraits": [
+  {
+   "date": "1889-12-06",
+   "extrait": "936. — Observations relatives à l'insuffisance des mesures de sécurité prises dans les théàtres municipaux (concl. mod … 937. — Travaux complémentaires à exécuter au théâtre de la Gaité . — Dépense : 27,690 francs (concl. mod … ",
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k62957768/f7.item"
+  },
+  {
+   "date": "1910-07-10",
+   "extrait": "Ouverture d'un crédit de 10,750 francs pour la construction d'une marquise au théâtre municipal de la Gaîté  …  théâtre de la Gaîté , et qui est souvent obligé de stationner à l'entrée comme à la sortie, audevant du théâtre  … il sera procédé pendant la clôture du théâtre lyr",
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k6465395w/f11.item"
+  },
+  {
+   "date": "1913-08-13",
+   "extrait": "919. — Approbation du programme de la saison théâtrale 19131914 au théâtre de la Gaîté et maintien des autorisations et concessions accordées à MM. Isola (M. Deville, rapporteur … Vu la convention du 24 janvier 1910 relative à l'organisation des représentations lyriques au théâ",
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k65107678/f9.item"
+  },
+  {
+   "date": "1917-01-10",
+   "extrait": "le Président : De M. Bernard sollicitant la direction du théâtre municipal de la Gaîté lyrique … De M. Feuillet sollicitant la direction du théâtre municipal de la Gaîté lyrique … De MM. Jean Billaud et Henri Matheissen sollicitant la concession du théâtre de la Gaîté",
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k6452933n/f22.item"
+  },
+  {
+   "date": "1922-03-27",
+   "extrait": "1 f MM. Maurice Quentin et Albert Bérard. — Question à M. le Préfet de la Seine sur l'exploitation du théâtre municipal de la Gaîté et sur l'exécution des clauses du cahier des charges … ",
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k6307703r/f1.item"
+  },
+  {
+   "date": "1926-07-12",
+   "extrait": "62. — Prolongation du bail du théâtre de la Gaîté  … de plus, il existe au théâtre de la Gaîté une société de secours mutuels pour tout le personnel et il devra être donné an bénéfice de cette société une matinée par an Une autre clause tout à fait importante en ce qui concerne",
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k6433348s/f20.item"
+  }
+ ],
+ "bmo_recit": "Le Bulletin municipal suit la Gaîté-Lyrique comme théâtre municipal, de la fin du XIXe siècle à l'entre-deux-guerres. Dès 1889, le Conseil examine des travaux complémentaires au théâtre, pour une dépense de 27 690 francs ; en 1910, un crédit de 10 750 francs est ouvert pour la construction d'une marquise. La Ville en règle aussi l'exploitation : en 1913, le programme de la saison théâtrale 1913-1914 est approuvé et les autorisations et concessions accordées à MM. Isola maintenues, tandis qu'en 1917 plusieurs candidats sollicitent la direction ou la concession du théâtre. En 1922, les conseillers Maurice Quentin et Albert Bérard interrogent le Préfet de la Seine sur l'exploitation du théâtre et l'exécution des clauses du cahier des charges. L'archive s'arrête en 1926, quand le Conseil examine la prolongation du bail, dont les clauses prévoient notamment une matinée annuelle au bénéfice de la société de secours mutuels du personnel.",
  "invest": [],
  "marches": [
   {

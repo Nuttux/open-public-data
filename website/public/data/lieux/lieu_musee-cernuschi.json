@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T11:31:55.941392+00:00",
+ "generated_at": "2026-07-20T15:44:01.151982+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "musee-cernuschi",
  "name": "Musée Cernuschi",
@@ -31,7 +31,7 @@
    2011
   ],
   "n_bmo_brut": 408,
-  "n_bmo_verifies": null,
+  "n_bmo_verifies": 18,
   "invest_total_eur": 0,
   "invest_annees": [],
   "lecture_mode": "titre nommant le lieu (35 trouvés)",
@@ -362,8 +362,39 @@
    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=80727"
   }
  ],
- "bmo_extraits": [],
- "bmo_recit": null,
+ "bmo_extraits": [
+  {
+   "date": "1899-02-17",
+   "extrait": "42 c. pour faire face aux dépenses occasionnées par l'inauguration du musée Cernuschi",
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k6492556c/f5.item"
+  },
+  {
+   "date": "1905-08-08",
+   "extrait": "service du Matériel d'objets mobiliers à fournir par l'école Boulle pour le musée Cernuschi (M. Chautard, rapporteur … Le Conseil, Vu deux états de meubles et objets mobiliers à fournir par l'école Boulle et à prendre en charge par le service du Matériel pour le musée Cernuschi",
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k6334659p/f6.item"
+  },
+  {
+   "date": "1906-12-31",
+   "extrait": "45. — Musées d'art de la ville de Paris … 2° Pour l'avancement de classe (1,000 fr.) du conservateur du musée Cernuschi  … si Cernuschi prépare un catalogue, lequel prouvera que ce musée possède des trésors de l'art de l'Extrême-Orient uniques au monde",
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k6453279j/f5.item"
+  },
+  {
+   "date": "1926-04-11",
+   "extrait": "1506. — Organisation d'une exposition de pierres dures chinoises au musée Cernuschi (M* d'Andigné, rapporteur … Sur le rapport présenté par M. d'Andigné, au nom de la 4e Commission, Délibère : Article premier. — Le musée Cernuschi organisera, en 1926, une exposition de pierres ",
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k6290514x/f18.item"
+  },
+  {
+   "date": "1960-07-21",
+   "extrait": "A la demande du conservateur du musée Cernuschi , il a été procédé à l'acquisition d'une grande statuette funéraire dont l'origine remonte au se siècle de notre ère, œuvre 'exceptionnelle par ses dimensions, son style et son état de conservation … Le musée Galliera a continué à",
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k9713224t/f4.item"
+  },
+  {
+   "date": "1976-10-23",
+   "extrait": "Musée Bourdelle, 16, rue Antoine-Bourdelle, à Paris (15*) (tél. 548-67-27 …  Musée Cernuschi ( Musée d’art chinois de la Ville de Paris), 7, avenue Velasquez, à Paris (8*) (tél. 522-23-31) (entrée par le 111, boulevard Malesherbes …  Musée d’art moderne : Pomodoro, jusqu’au 3",
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k32113154/f6.item"
+  }
+ ],
+ "bmo_recit": "Le musée Cernuschi apparaît dans le Bulletin municipal dès février 1899, à propos des dépenses occasionnées par son inauguration. Les premières années sont celles de l'installation : en 1905, le Conseil examine les meubles et objets mobiliers que l'école Boulle doit fournir au musée, et fin 1906, à l'occasion d'un avancement de classe (1.000 fr.) pour son conservateur, il est affirmé en séance qu'un catalogue en préparation prouvera que le musée possède des trésors de l'art de l'Extrême-Orient uniques au monde. En 1926, le Conseil décide que le musée organisera cette année-là une exposition de pierres dures chinoises. En 1960, l'archive rend compte de l'acquisition, à la demande du conservateur, d'une grande statuette funéraire ancienne, présentée comme exceptionnelle par ses dimensions, son style et son état de conservation. En 1976 encore, le Bulletin recense l'établissement comme « Musée d'art chinois de la Ville de Paris », au 7, avenue Velasquez (8e).",
  "invest": [],
  "marches": [],
  "mandate": {

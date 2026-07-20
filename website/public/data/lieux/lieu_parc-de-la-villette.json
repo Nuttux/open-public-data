@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T11:31:55.941392+00:00",
+ "generated_at": "2026-07-20T15:44:01.151982+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "parc-de-la-villette",
  "name": "Parc de la Villette",
@@ -31,7 +31,7 @@
    2022
   ],
   "n_bmo_brut": 2000,
-  "n_bmo_verifies": 14,
+  "n_bmo_verifies": 18,
   "invest_total_eur": 0,
   "invest_annees": [],
   "lecture_mode": "titre nommant le lieu (49 trouvés)",
@@ -222,8 +222,29 @@
    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=47966"
   }
  ],
- "bmo_extraits": [],
- "bmo_recit": null,
+ "bmo_extraits": [
+  {
+   "date": "1894-03-23",
+   "extrait": "proposition de M. Brard tendant à la réfection des postes d'octroi et de police aux abattoirs de La Villette (M. Foussier, rapporteur) M. Foussier expose que la 2e Commission a été saisie d'une proposition de M. Brard tendant à la transformation des postes d'octroi et de police a",
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k6446922t/f2.item"
+  },
+  {
+   "date": "1921-12-21",
+   "extrait": "16. — Mise au concours du projet de reconstruction des abattoirs de la Villette  … Délibère: « Les plans des abattoirs seront établis par les différents concurrents qui se seront fait inscrire et auront déposé leur projet avant le 1er mai 1922 … tS otl(r, « De deux délégués d",
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k65223597/f6.item"
+  },
+  {
+   "date": "1927-07-11",
+   "extrait": "106. — Question de M. Louis Sellier à M. le Préfet de police sur les manœuvres auxquelles se livrent les bénéficiaires actuels du traitement des sous-produits aux abattoirs de la Villette . pour conserver, contre les lois de l'hygiène et du progrès, le monopole qu'ils détiennent ",
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k6396624r/f16.item"
+  },
+  {
+   "date": "1973-05-20",
+   "extrait": "N° 914. — Mme Michèle Camous-Potier, MM. André Sibaud et Alain Lhostis, conseillers de Paris, viennent d’apprendre que, malgré les assurances qui avaient été données, des mesures de licenciement vont toucher quatre-vingt-deux travailleurs des abattoirs de la …  Villette d’ici à",
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k3211456d/f5.item"
+  }
+ ],
+ "bmo_recit": "Dans le Bulletin municipal, le parc de la Villette apparaît d'abord sous les traits des abattoirs qui occupaient le site. En 1894, une commission du Conseil examine une proposition de réfection des postes d'octroi et de police aux abattoirs de La Villette ; en 1921, le Conseil délibère la mise au concours du projet de reconstruction des abattoirs, les concurrents devant déposer leurs plans avant le 1er mai 1922. En 1927, le conseiller Louis Sellier interpelle le Préfet de police sur ce qu'il décrit comme des manœuvres des bénéficiaires du traitement des sous-produits pour conserver leur monopole. L'archive se referme en 1973 sur une question de trois conseillers de Paris signalant que, malgré les assurances données, des licenciements vont toucher quatre-vingt-deux travailleurs des abattoirs d'ici juillet.",
  "invest": [],
  "marches": [],
  "mandate": null,
