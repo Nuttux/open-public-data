@@ -218,8 +218,22 @@ export default function LieuxMap({
         markersRef.current[l.slug] = m;
       }
     })();
+
+    // Leaflet fige la taille du conteneur à la construction. Le drawer
+    // (DetailDrawer) verrouille le scroll du <body> en `position: fixed`,
+    // ce qui retire la scrollbar et élargit la page derrière lui — la carte
+    // ne le sait pas tant qu'on ne le lui dit pas, d'où un décalage
+    // marqueurs/tuiles qui ne se corrige qu'au prochain geste (le « saut »
+    // ressenti au clic). ProjectMap a ce correctif ; LieuxMap ne l'avait pas.
+    let ro: ResizeObserver | null = null;
+    if (divRef.current && typeof ResizeObserver !== "undefined") {
+      ro = new ResizeObserver(() => { mapRef.current?.invalidateSize(); });
+      ro.observe(divRef.current);
+    }
+
     return () => {
       cancelled = true;
+      ro?.disconnect();
       mapRef.current?.remove();
       mapRef.current = null;
       markersRef.current = {};
