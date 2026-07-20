@@ -59,7 +59,7 @@ export const PLACES: Place[] = [
     defaultLocale: "en",
     currency: "USD",
     dataNamespace: "us/sf",
-    hub: false,
+    hub: true,
     modules: [
       { slug: "budget", labelKey: "us.sf.nav.budget" },
       { slug: "who-gets-paid", labelKey: "us.sf.nav.who_gets_paid" },
