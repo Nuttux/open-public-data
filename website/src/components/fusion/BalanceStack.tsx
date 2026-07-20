@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import type { ReactNode } from "react";
 import { useT } from "@/lib/localeContext";
 
@@ -8,7 +9,9 @@ export type BalanceSegment = {
   label: ReactNode;
   value: number;
   display: ReactNode;
-  /** If provided, clicking opens a drawer. */
+  /** If provided, clicking navigates (drawer route) — preferred over onClick. */
+  href?: string;
+  /** If provided (and no href), clicking runs a local callback. */
   onClick?: () => void;
   /** Darker fill with white text. Default for high-rank segments. */
   filled?: boolean;
@@ -27,7 +30,7 @@ type ColumnProps = {
 
 function Column({ side, headLeft, headRight, total, segments, legend }: ColumnProps) {
   const t = useT();
-  const clickable = segments.some((s) => s.onClick);
+  const clickable = segments.some((s) => s.href || s.onClick);
   return (
     <div className="fx-balance-col">
       <div className="fx-bc-head">
@@ -43,7 +46,7 @@ function Column({ side, headLeft, headRight, total, segments, legend }: ColumnPr
             "fx-bc-seg",
             s.filled === false ? "light" : "",
             isTiny ? "tiny" : "",
-            s.onClick ? "clickable" : "",
+            s.href || s.onClick ? "clickable" : "",
           ]
             .filter(Boolean)
             .join(" ");
@@ -62,7 +65,18 @@ function Column({ side, headLeft, headRight, total, segments, legend }: ColumnPr
               <span className="fx-bc-seg-v tnum">{s.display}</span>
             </>
           );
-          return s.onClick ? (
+          return s.href ? (
+            <Link
+              key={s.key}
+              href={s.href}
+              scroll={false}
+              className={cls}
+              style={style}
+              aria-label={typeof s.label === "string" ? s.label : undefined}
+            >
+              {content}
+            </Link>
+          ) : s.onClick ? (
             <button
               key={s.key}
               type="button"

@@ -4,6 +4,7 @@ import { useState } from "react";
 import type { BailleurFiche as BailleurFicheType } from "@/lib/fusion-data";
 import { cap, fill, fmtBillions, fmtDec, fmtInt, fmtMillions } from "@/lib/fmt";
 import { useT } from "@/lib/localeContext";
+import EmpruntsTable from "./EmpruntsTable";
 import FicheKpis from "./FicheKpis";
 import ShowMoreButton from "./ShowMoreButton";
 
@@ -130,57 +131,10 @@ export default function BailleurFiche({ bailleur }: { bailleur: BailleurFicheTyp
               <p className="muted" style={{ fontSize: 12.5, margin: "0 0 10px" }}>
                 {t("fx.fiche.bg.emprunts_desc")}
               </p>
-              <table className="fx-fiche-table">
-                <thead>
-                  <tr>
-                    <th>{t("fx.fiche.bg.col.objet")}</th>
-                    <th>{t("fx.fiche.bg.col.preteur")}</th>
-                    <th className="num">{t("fx.fiche.bg.col.an")}</th>
-                    <th className="num">{t("fx.fiche.bg.col.capital")}</th>
-                    <th className="num">{t("fx.fiche.bg.col.taux")}</th>
-                    <th className="num">{t("fx.fiche.bg.col.duree")}</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {(showAllEmprunts ? g.emprunts_top : g.emprunts_top.slice(0, EMPRUNTS_PREVIEW)).map((e, i) => {
-                    const f = fmtAmount(e.capital_restant);
-                    const isFixed = e.taux_type.startsWith("F");
-                    return (
-                      <tr key={i}>
-                        <td>
-                          <div>{e.objet || "—"}</div>
-                          {e.montant_initial > 0 && (
-                            <div className="meta">
-                              {t("fx.fiche.bg.montant_init")} ·{" "}
-                              {fmtAmount(e.montant_initial).value}{" "}
-                              {fmtAmount(e.montant_initial).unit}
-                            </div>
-                          )}
-                        </td>
-                        <td>
-                          <div>{e.preteur || "—"}</div>
-                          {!isFixed && e.taux_index && (
-                            <div className="meta">{e.taux_index}</div>
-                          )}
-                        </td>
-                        <td className="num tnum mono">{e.annee_mobilisation ?? "—"}</td>
-                        <td className="num tnum">
-                          <b>{f.value}</b> <span className="muted">{f.unit}</span>
-                        </td>
-                        <td className="num tnum mono">
-                          {e.taux_actuariel != null ? `${fmtDec(e.taux_actuariel, 2)} %` : "—"}
-                          <div className="meta">
-                            {isFixed ? t("fx.fiche.bg.fixe") : t("fx.fiche.bg.variable")}
-                          </div>
-                        </td>
-                        <td className="num tnum mono">
-                          {e.duree_residuelle != null ? fmtDec(e.duree_residuelle, 1) : "—"}
-                        </td>
-                      </tr>
-                    );
-                  })}
-                </tbody>
-              </table>
+              <EmpruntsTable
+                variant="bailleur"
+                emprunts={showAllEmprunts ? g.emprunts_top : g.emprunts_top.slice(0, EMPRUNTS_PREVIEW)}
+              />
               {!showAllEmprunts && g.emprunts_top.length > EMPRUNTS_PREVIEW && (
                 <ShowMoreButton onClick={() => setShowAllEmprunts(true)}>
                   {fill(t("fx.fiche.bg.voir_autres_emprunts"), { n: g.emprunts_top.length - EMPRUNTS_PREVIEW })}

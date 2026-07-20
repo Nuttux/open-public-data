@@ -7820,7 +7820,8 @@ body:has(.theme-fusion) > div.pb-24 { padding-bottom: 0 !important; }
 }
 .theme-fusion .fx-bc-seg.tiny .fx-bc-seg-l,
 .theme-fusion .fx-bc-seg.tiny .fx-bc-seg-v { font-size: 10.5px; }
-.theme-fusion button.fx-bc-seg {
+.theme-fusion button.fx-bc-seg,
+.theme-fusion a.fx-bc-seg {
   border: 0;
   text-align: left;
   font: inherit;
@@ -7828,10 +7829,14 @@ body:has(.theme-fusion) > div.pb-24 { padding-bottom: 0 !important; }
   width: 100%;
   position: relative;
   transition: filter 0.12s;
+  text-decoration: none;
 }
-.theme-fusion button.fx-bc-seg:hover { filter: brightness(1.1); }
-.theme-fusion button.fx-bc-seg.light:hover { background: #eceae4; }
-.theme-fusion button.fx-bc-seg::after {
+.theme-fusion button.fx-bc-seg:hover,
+.theme-fusion a.fx-bc-seg:hover { filter: brightness(1.1); }
+.theme-fusion button.fx-bc-seg.light:hover,
+.theme-fusion a.fx-bc-seg.light:hover { background: #eceae4; }
+.theme-fusion button.fx-bc-seg::after,
+.theme-fusion a.fx-bc-seg::after {
   content: "→";
   position: absolute;
   right: 14px;
@@ -7842,11 +7847,13 @@ body:has(.theme-fusion) > div.pb-24 { padding-bottom: 0 !important; }
   font-size: 13px;
   transition: opacity 0.12s, transform 0.15s;
 }
-.theme-fusion button.fx-bc-seg:hover::after {
+.theme-fusion button.fx-bc-seg:hover::after,
+.theme-fusion a.fx-bc-seg:hover::after {
   opacity: 1;
   transform: translateY(-50%) translateX(2px);
 }
-.theme-fusion button.fx-bc-seg.tiny::after {
+.theme-fusion button.fx-bc-seg.tiny::after,
+.theme-fusion a.fx-bc-seg.tiny::after {
   right: 10px;
   font-size: 11px;
   opacity: 0.45;

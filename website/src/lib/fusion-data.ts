@@ -3501,6 +3501,80 @@ export function loadPatrimoineStructure(year: number, city: string = "paris"): P
   }
 }
 
+/** Résout l'année bilan effective (année demandée si publiée, sinon dernière). */
+function resolveBilanYear(requestedYear: number | undefined, city: string): number {
+  const idx = readJson<BilanIndex>(cityJsonPath(city, "bilan_index.json"));
+  return requestedYear && idx.availableYears.includes(requestedYear)
+    ? requestedYear
+    : idx.latestYear;
+}
+
+export type PatrimoineMasseFiche = {
+  /** Slug dérivé du label via `slugifyLabel` (convention thèmes/catégories). */
+  slug: string;
+  year: number;
+  masse: PatrimoineMasse;
+};
+
+/**
+ * Une masse du bilan (actif ou passif) adressée par slug + année — loader
+ * étroit pour la route /dette/masse/[slug]?year=. Même source que BilanBoard
+ * et PatrimoineDrillList (patrimoine_structure_YYYY.json).
+ */
+export function loadPatrimoineMasse(
+  slug: string,
+  requestedYear?: number,
+  city: string = "paris",
+): PatrimoineMasseFiche | null {
+  try {
+    const year = resolveBilanYear(requestedYear, city);
+    const structure = loadPatrimoineStructure(year, city);
+    if (!structure) return null;
+    const masse = [...structure.masses_actif, ...structure.masses_passif].find(
+      (m) => slugifyLabel(m.label) === slug,
+    );
+    if (!masse) return null;
+    return { slug, year, masse };
+  } catch {
+    return null;
+  }
+}
+
+export type InstrumentDetteFicheData = {
+  slug: string;
+  year: number;
+  instrument: DetteInstrument;
+  /** Lignes obligataires actives — affichées uniquement pour key "obligataire". */
+  bondIssuances: BondIssuance[];
+};
+
+/**
+ * Un instrument de dette (obligataire / bancaire / divers) par slug (= key du
+ * JSON) + année — loader étroit pour /dette/instrument/[slug]?year=. Même
+ * source que DetteStructurePanel (patrimoine_structure_YYYY.json).
+ */
+export function loadInstrumentDette(
+  slug: string,
+  requestedYear?: number,
+  city: string = "paris",
+): InstrumentDetteFicheData | null {
+  try {
+    const year = resolveBilanYear(requestedYear, city);
+    const structure = loadPatrimoineStructure(year, city);
+    if (!structure) return null;
+    const instrument = structure.structure_dette.instruments.find((i) => i.key === slug);
+    if (!instrument) return null;
+    return {
+      slug,
+      year,
+      instrument,
+      bondIssuances: structure.structure_dette.bond_issuances,
+    };
+  } catch {
+    return null;
+  }
+}
+
 // ─── Hors bilan · garanties d'emprunt ──────────────────────────────────────
 
 export type HorsBilanEmprunt = {
@@ -3616,6 +3690,89 @@ export type HorsBilanData = {
 export function loadHorsBilan(year: number, city: string = "paris"): HorsBilanData | null {
   try {
     return readJson<HorsBilanData>(cityJsonPath(city, `hors_bilan_${year}.json`));
+  } catch {
+    return null;
+  }
+}
+
+export type ArrondissementGaranties = HorsBilanData["by_arrondissement"][number];
+
+export type ArrondissementGarantiesFicheData = {
+  year: number;
+  arr: ArrondissementGaranties;
+};
+
+/** Arrondissements centraux (1-4) fusionnés en Paris Centre (num = 0). */
+const GARANTIES_CENTRAL_ARRS = [1, 2, 3, 4];
+
+/**
+ * Les garanties d'emprunt d'un arrondissement par numéro + année — loader
+ * étroit pour /dette/garanties/arrondissement/[num]?year=. Même source que
+ * HorsBilanMap (hors_bilan_index.json + hors_bilan_YYYY.json). num = 0 →
+ * fiche virtuelle « Paris Centre » : agrégation à la volée des arr 1-4,
+ * identique à celle que faisait la choroplèthe côté client.
+ */
+export function loadArrondissementGaranties(
+  num: number,
+  requestedYear?: number,
+  city: string = "paris",
+): ArrondissementGarantiesFicheData | null {
+  if (!Number.isInteger(num) || num < 0 || num > 20) return null;
+  try {
+    const idx = readJson<{ availableYears: number[]; latestYear: number }>(
+      cityJsonPath(city, "hors_bilan_index.json"),
+    );
+    const year = requestedYear && idx.availableYears.includes(requestedYear)
+      ? requestedYear
+      : idx.latestYear;
+    const hb = loadHorsBilan(year, city);
+    if (!hb) return null;
+
+    if (num === 0) {
+      const centraux = hb.by_arrondissement.filter((a) =>
+        GARANTIES_CENTRAL_ARRS.includes(a.arr),
+      );
+      const totalCrd = centraux.reduce((s, a) => s + a.capital_restant, 0);
+      const totalCount = centraux.reduce((s, a) => s + a.count_emprunts, 0);
+      if (totalCount === 0) return null;
+      // Fusion des top_beneficiaires
+      const benefMap = new Map<string, ArrondissementGaranties["top_beneficiaires"][number]>();
+      for (const c of centraux) {
+        for (const b of c.top_beneficiaires) {
+          const cur = benefMap.get(b.name);
+          if (cur) {
+            cur.capital_restant += b.capital_restant;
+            cur.count_emprunts += b.count_emprunts;
+          } else {
+            benefMap.set(b.name, { ...b });
+          }
+        }
+      }
+      const topBenefs = Array.from(benefMap.values())
+        .map((b) => ({ ...b, share_of_arr: totalCrd ? b.capital_restant / totalCrd : 0 }))
+        .sort((a, b) => b.capital_restant - a.capital_restant)
+        .slice(0, 3);
+      // Fusion des emprunts_top
+      const emprunts = centraux
+        .flatMap((c) => c.emprunts_top)
+        .sort((a, b) => b.capital_restant - a.capital_restant)
+        .slice(0, 15);
+      return {
+        year,
+        arr: {
+          arr: 0,
+          capital_restant: totalCrd,
+          count_emprunts: totalCount,
+          share_of_localized: centraux.reduce((s, a) => s + a.share_of_localized, 0),
+          top_beneficiaires: topBenefs,
+          emprunts_top: emprunts,
+        },
+      };
+    }
+
+    const match = hb.by_arrondissement.find((a) => a.arr === num);
+    if (!match || match.count_emprunts === 0) return null;
+    return { year, arr: match };
   } catch {
     return null;
   }

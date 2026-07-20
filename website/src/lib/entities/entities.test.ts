@@ -1,8 +1,11 @@
 import { describe, expect, it } from "vitest";
 
+import { arrondissementGarantiesConfig } from "./arrondissement-garanties";
 import { arrondissementInvestConfig } from "./arrondissement-invest";
 import { associationConfig } from "./association";
 import { bailleurConfig } from "./bailleur";
+import { instrumentDetteConfig } from "./instrument-dette";
+import { masseConfig } from "./masse";
 import { categorieConfig } from "./categorie";
 import { chapitreConfig } from "./chapitre";
 import { contratConfig } from "./contrat";
@@ -95,6 +98,42 @@ describe("entity configs load() against real corpus samples", () => {
     const d = await lieuConfig.load({ slug: "adidas-arena" }, {});
     expect(d).not.toBeNull();
     expect(d!.lieu.name.length).toBeGreaterThan(0);
+  });
+
+  it("masse — actif-immobilise (bilan)", async () => {
+    const d = await masseConfig.load({ slug: "actif-immobilise" }, {});
+    expect(d).not.toBeNull();
+    expect(d!.masse.label).toBe("Actif immobilisé");
+    expect(d!.masse.side).toBe("actif");
+  });
+
+  it("masse — dettes-financieres, ?year=2019", async () => {
+    const d = await masseConfig.load({ slug: "dettes-financieres" }, { year: "2019" });
+    expect(d).not.toBeNull();
+    expect(d!.year).toBe(2019);
+    expect(d!.masse.side).toBe("passif");
+  });
+
+  it("instrument — obligataire (avec émissions)", async () => {
+    const d = await instrumentDetteConfig.load({ slug: "obligataire" }, {});
+    expect(d).not.toBeNull();
+    expect(d!.instrument.key).toBe("obligataire");
+    expect(d!.bondIssuances.length).toBeGreaterThan(0);
+  });
+
+  it("garanties arrondissement — 12", async () => {
+    const d = await arrondissementGarantiesConfig.load({ num: "12" }, {});
+    expect(d).not.toBeNull();
+    expect(d!.arr.arr).toBe(12);
+    expect(d!.arr.count_emprunts).toBeGreaterThan(0);
+  });
+
+  it("garanties arrondissement — 0 (Paris Centre agrégé)", async () => {
+    const d = await arrondissementGarantiesConfig.load({ num: "0" }, {});
+    expect(d).not.toBeNull();
+    expect(d!.arr.arr).toBe(0);
+    expect(d!.arr.count_emprunts).toBeGreaterThan(0);
+    expect(d!.arr.top_beneficiaires.length).toBeGreaterThan(0);
   });
 });
 

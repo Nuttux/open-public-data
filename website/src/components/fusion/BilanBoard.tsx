@@ -1,10 +1,10 @@
 "use client";
 
-import { useState } from "react";
 import type { PatrimoineMasse } from "@/lib/fusion-data";
 import { fill, fmtBillions, fmtDec, fmtMillions } from "@/lib/fmt";
+import { slugifyLabel } from "@/lib/projet-utils";
 import BalanceStack, { type BalanceSegment } from "./BalanceStack";
-import MasseFiche from "./MasseFiche";
+import { useCity } from "./CityContext";
 import { useT, useLocale } from "@/lib/localeContext";
 import { trLabel } from "@/lib/label-translate";
 
@@ -27,18 +27,22 @@ type Props = {
 export default function BilanBoard({ year, actif, passif, totals }: Props) {
   const t = useT();
   const { locale } = useLocale();
-  const [openMasse, setOpenMasse] = useState<PatrimoineMasse | null>(null);
+  const { basePath } = useCity();
 
   const mdLabel = t("fx.s.md_eur");
   const mLabel = t("fx.s.m_eur");
   const fmt = (v: number) =>
     v >= 1e9 ? `${fmtBillions(v)} ${mdLabel}` : `${fmtMillions(v, 0)} ${mLabel}`;
 
+  // Ouvre la fiche masse en drawer (route interceptée) — URL partageable,
+  // remplace l'ancien modal local MasseFiche.
+  const masseHref = (m: PatrimoineMasse) =>
+    `${basePath}/dette/masse/${slugifyLabel(m.label)}?year=${year}`;
+
   function collapseTiny(
     masses: PatrimoineMasse[],
     total: number,
     threshold: number,
-    onClick: (m: PatrimoineMasse) => void,
   ): BalanceSegment[] {
     const big: BalanceSegment[] = [];
     const small: PatrimoineMasse[] = [];
@@ -50,7 +54,7 @@ export default function BilanBoard({ year, actif, passif, totals }: Props) {
           label: trLabel(m.label, locale),
           value: m.value,
           display: fmt(m.value),
-          onClick: () => onClick(m),
+          href: masseHref(m),
           filled: m.label !== "Fonds propres",
         });
       } else {
@@ -74,7 +78,7 @@ export default function BilanBoard({ year, actif, passif, totals }: Props) {
         label: trLabel(m.label, locale),
         value: m.value,
         display: fmt(m.value),
-        onClick: () => onClick(m),
+        href: masseHref(m),
         filled: m.label !== "Fonds propres",
         tiny: true,
       });
@@ -83,50 +87,46 @@ export default function BilanBoard({ year, actif, passif, totals }: Props) {
   }
 
   const THRESHOLD = 0.01;
-  const actifSegs = collapseTiny(actif, totals.actif, THRESHOLD, setOpenMasse);
+  const actifSegs = collapseTiny(actif, totals.actif, THRESHOLD);
 
   const passifSorted = passif.slice().sort((a, b) => {
     if (a.label === "Fonds propres") return -1;
     if (b.label === "Fonds propres") return 1;
     return b.value - a.value;
   });
-  const passifSegs = collapseTiny(passifSorted, totals.passif, THRESHOLD, setOpenMasse);
+  const passifSegs = collapseTiny(passifSorted, totals.passif, THRESHOLD);
 
   const detteFinanciere = passif.find((p) => p.label === "Dettes financières")?.value ?? 0;
   const fondsPropres = passif.find((p) => p.label === "Fonds propres")?.value ?? 0;
   const passifTotal = totals.passif || 1;
 
   return (
-    <>
-      <BalanceStack
-        actif={{
-          headLeft: <>{renderRich(t("fx.bb.actif_head_l"))}</>,
-          headRight: <>{fmtBillions(totals.actif)}<span className="u">{mdLabel}</span></>,
-          total: totals.actif,
-          segments: actifSegs,
-          legend: <>{renderRich(t("fx.bb.actif_legend"))}</>,
-        }}
-        passif={{
-          headLeft: <>{renderRich(t("fx.bb.passif_head_l"))}</>,
-          headRight: <>{fmtBillions(totals.passif)}<span className="u">{mdLabel}</span></>,
-          total: totals.passif,
-          segments: passifSegs,
-          legend: (
-            <>
-              {renderRich(
-                fill(t("fx.bb.passif_legend"), {
-                  fp: fmtBillions(fondsPropres),
-                  fpPct: fmtDec((fondsPropres / passifTotal) * 100, 0),
-                  dett: fmtBillions(detteFinanciere),
-                  dettPct: fmtDec((detteFinanciere / passifTotal) * 100, 0),
-                }),
-              )}
-            </>
-          ),
-        }}
-      />
-
-      <MasseFiche masse={openMasse} year={year} onClose={() => setOpenMasse(null)} />
-    </>
+    <BalanceStack
+      actif={{
+        headLeft: <>{renderRich(t("fx.bb.actif_head_l"))}</>,
+        headRight: <>{fmtBillions(totals.actif)}<span className="u">{mdLabel}</span></>,
+        total: totals.actif,
+        segments: actifSegs,
+        legend: <>{renderRich(t("fx.bb.actif_legend"))}</>,
+      }}
+      passif={{
+        headLeft: <>{renderRich(t("fx.bb.passif_head_l"))}</>,
+        headRight: <>{fmtBillions(totals.passif)}<span className="u">{mdLabel}</span></>,
+        total: totals.passif,
+        segments: passifSegs,
+        legend: (
+          <>
+            {renderRich(
+              fill(t("fx.bb.passif_legend"), {
+                fp: fmtBillions(fondsPropres),
+                fpPct: fmtDec((fondsPropres / passifTotal) * 100, 0),
+                dett: fmtBillions(detteFinanciere),
+                dettPct: fmtDec((detteFinanciere / passifTotal) * 100, 0),
+              }),
+            )}
+          </>
+        ),
+      }}
+    />
   );
 }

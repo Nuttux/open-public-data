@@ -1,9 +1,9 @@
 "use client";
 
-import { useState } from "react";
+import Link from "next/link";
 import type { DetteInstrument, PatrimoineStructure } from "@/lib/fusion-data";
 import { fill, fmtBillions, fmtDec, fmtMillions, fmtInt } from "@/lib/fmt";
-import InstrumentDetteFiche from "./InstrumentDetteFiche";
+import { useCity } from "./CityContext";
 import { useT, useLocale } from "@/lib/localeContext";
 import { trLabel } from "@/lib/label-translate";
 
@@ -14,10 +14,7 @@ type Props = {
 
 export default function DetteStructurePanel({ structure, year }: Props) {
   const t = useT();
-  const [openKey, setOpenKey] = useState<string | null>(null);
-  const open = openKey
-    ? structure.instruments.find((i) => i.key === openKey) ?? null
-    : null;
+  const { basePath } = useCity();
 
   const partFixePct = structure.taux.part_fixe * 100;
   const partVarPct = structure.taux.part_variable * 100;
@@ -78,7 +75,7 @@ export default function DetteStructurePanel({ structure, year }: Props) {
                 key={inst.key}
                 inst={inst}
                 maxValue={structure.instruments[0]?.encours ?? 1}
-                onClick={() => setOpenKey(inst.key)}
+                href={`${basePath}/dette/instrument/${inst.key}?year=${year}`}
                 first={i === 0}
               />
             ))}
@@ -90,13 +87,6 @@ export default function DetteStructurePanel({ structure, year }: Props) {
       </div>
 
       <p className="fx-ds-disclaimer">{t("fx.ds.ratios_indicatifs")}</p>
-
-      <InstrumentDetteFiche
-        instrument={open}
-        year={year}
-        bondIssuances={structure.bond_issuances}
-        onClose={() => setOpenKey(null)}
-      />
     </div>
   );
 }
@@ -104,21 +94,21 @@ export default function DetteStructurePanel({ structure, year }: Props) {
 type RowProps = {
   inst: DetteInstrument;
   maxValue: number;
-  onClick: () => void;
+  href: string;
   first: boolean;
 };
 
-function Row({ inst, maxValue, onClick, first }: RowProps) {
+function Row({ inst, maxValue, href, first }: RowProps) {
   const t = useT();
   const { locale } = useLocale();
   const pct = Math.max(0, Math.min(100, (inst.encours / maxValue) * 100));
   const unit = inst.encours >= 1e9 ? t("fx.s.md_eur") : t("fx.s.m_eur");
   const display = inst.encours >= 1e9 ? fmtBillions(inst.encours) : fmtMillions(inst.encours, 0);
   return (
-    <button
-      type="button"
+    <Link
+      href={href}
+      scroll={false}
       className={`fx-inst-row${first ? " first" : ""}`}
-      onClick={onClick}
       aria-label={fill(t("fx.ds.row_aria"), { label: trLabel(inst.label, locale) })}
     >
       <span className="l">
@@ -133,6 +123,6 @@ function Row({ inst, maxValue, onClick, first }: RowProps) {
         <span className="u">{unit}</span>
       </span>
       <span className="arrow">→</span>
-    </button>
+    </Link>
   );
 }
