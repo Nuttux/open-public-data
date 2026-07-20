@@ -100,6 +100,20 @@ def delibs_search_url(query: str) -> str:
     return ("https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?"
             + urllib.parse.urlencode({"page": "search-solr", "query": query}))
 
+
+def bmo_search_url(query: str) -> str:
+    """Recherche Gallica dans les numéros du BMO, pré-remplie — même prédicat que
+    sync_gallica_bmo.py (l'URL que produit la boîte « Rechercher dans tous les
+    numéros » du calendrier). Première visite : Gallica peut poser sa case
+    « je ne suis pas un robot », puis affiche les fascicules du lieu."""
+    return ("https://gallica.bnf.fr/services/engine/search/sru?"
+            + urllib.parse.urlencode({
+                "operation": "searchRetrieve", "version": "1.2",
+                "startRecord": "0", "maximumRecords": "15", "page": "1",
+                "collapsing": "disabled",
+                "query": f'arkPress all "cb343512457_date" and (gallica all "{query}")',
+            }))
+
 # Documents que la lecture a classés hors périmètre du lieu lui-même.
 OFF_CLASSES = {"hors-sujet", "mention-liste", "immeuble/rue", "abords"}
 
@@ -467,12 +481,18 @@ def main() -> int:
         invest = argent["investissements"]
         subv = argent["exploitant"]
         kpi = cfg.get("kpi_montant")
-        # Sources par fiche : le lien délibs mène à la recherche pré-remplie du
-        # lieu (la requête vit dans chaque ligne du cache sync), pas à la racine
-        # vide du portail.
+        # Sources par fiche : les liens délibs et BMO mènent à la recherche
+        # pré-remplie du lieu (la requête vit dans chaque ligne du cache sync),
+        # pas à la racine vide du portail ni au calendrier générique. Sans
+        # corpus BMO (cache vide : zéro fascicule), on garde le calendrier —
+        # une recherche à zéro résultat serait une suggestion morte.
         query = delibs[0].get("query")
-        sources = {**SOURCES, "delibs": {**SOURCES["delibs"],
-                                         **({"url": delibs_search_url(query)} if query else {})}}
+        bmo_query = bmo_raw[0].get("query") if bmo_raw else None
+        sources = {**SOURCES,
+                   "delibs": {**SOURCES["delibs"],
+                              **({"url": delibs_search_url(query)} if query else {})},
+                   "bmo": {**SOURCES["bmo"],
+                           **({"url": bmo_search_url(bmo_query)} if bmo_query else {})}}
 
         fiche = {
             "generated_at": generated,
