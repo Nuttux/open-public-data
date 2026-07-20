@@ -39,7 +39,7 @@ const SOURCE: Item[] = [
   { href: "/fr/city/paris/investissements/projet/2023_20_57_020", type: "projet", label_fr: "École Davout", label_en: "Davout School", amount_fr: "5,3 M€", amount_en: "€5.3M" },
   { href: "/fr/city/paris/investissements/projet/2024_18_51_017", type: "projet", label_fr: "Aréna 2 (porte de la Chapelle)", label_en: "Arena 2 (porte de la Chapelle)", amount_fr: "12 M€", amount_en: "€12M" },
   { href: "/fr/city/paris/investissements/projet/2024_16_45_010", type: "projet", label_fr: "Porte Maillot", label_en: "Porte Maillot", amount_fr: "7,1 M€", amount_en: "€7.1M" },
-  { href: "/fr/city/paris/investissements/projet/2024_20_60_006", type: "projet", label_fr: "Porte de Montreuil", label_en: "Porte de Montreuil", amount_fr: "6,1 M€", amount_en: "€6.1M" },
+  { href: "/fr/city/paris/investissements/projet/2024_20_57_022", type: "projet", label_fr: "Porte de Montreuil", label_en: "Porte de Montreuil", amount_fr: "6,1 M€", amount_en: "€6.1M" },
   { href: "/fr/city/paris/marches/fournisseur/750043937", type: "fournisseur", label_fr: "Polyreva (propreté)", label_en: "Polyreva (cleaning services)", amount_fr: "235 M€ cumulés", amount_en: "€235M cumulative" },
 
   // === ASSOS / INSTITUTIONS PUBLIQUES-PUBLIQUES ===
@@ -61,7 +61,7 @@ const SOURCE: Item[] = [
   { href: "/fr/city/paris/dette/bailleur/elogie-siemp", type: "bailleur", label_fr: "Elogie-Siemp", label_en: "Elogie-Siemp (social housing)", amount_fr: "1,68 Md€ garanties", amount_en: "€1.68Bn guarantees" },
   { href: "/fr/city/paris/dette/bailleur/3f-residences", type: "bailleur", label_fr: "Immobilière 3F", label_en: "Immobilière 3F", amount_fr: "560 M€ garanties", amount_en: "€560M guarantees" },
   { href: "/fr/city/paris/dette/bailleur/icf-habitat", type: "bailleur", label_fr: "ICF Habitat La Sablière", label_en: "ICF Habitat La Sablière", amount_fr: "510 M€ garanties", amount_en: "€510M guarantees" },
-  { href: "/fr/city/paris/dette/bailleur/batigere", type: "bailleur", label_fr: "Batigère Habitat IDF", label_en: "Batigère Habitat IDF", amount_fr: "420 M€ garanties", amount_en: "€420M guarantees" },
+  { href: "/fr/city/paris/dette/bailleur/batigere-habitat-ile-de-france", type: "bailleur", label_fr: "Batigère Habitat IDF", label_en: "Batigère Habitat IDF", amount_fr: "420 M€ garanties", amount_en: "€420M guarantees" },
 
   // === FOURNISSEURS NEUTRES CONSENSUELS ===
   { href: "/fr/city/paris/marches/fournisseur/622044501", type: "fournisseur", label_fr: "JCDecaux (mobilier urbain)", label_en: "JCDecaux (street furniture)", amount_fr: "314 M€ cumulés", amount_en: "€314M cumulative" },
@@ -76,8 +76,8 @@ const SOURCE: Item[] = [
 
   // === CATÉGORIES MARCHÉS ===
   { href: "/fr/city/paris/marches/categorie/entretien-des-espaces-verts", type: "categorie", label_fr: "Entretien espaces verts", label_en: "Green spaces maintenance", amount_fr: "44 M€ · 23 marchés", amount_en: "€44M · 23 contracts" },
-  { href: "/fr/city/paris/marches/categorie/travaux-d-am-nagement-de-voirie", type: "categorie", label_fr: "Travaux de voirie", label_en: "Roadworks", amount_fr: "30 marchés/an", amount_en: "30 contracts/yr" },
-  { href: "/fr/city/paris/marches/categorie/travaux-de-g-nie-climatique", type: "categorie", label_fr: "Génie climatique", label_en: "Climate engineering", amount_fr: "43 marchés/an", amount_en: "43 contracts/yr" },
+  { href: "/fr/city/paris/marches/categorie/travaux-d-amenagement-de-voirie", type: "categorie", label_fr: "Travaux de voirie", label_en: "Roadworks", amount_fr: "30 marchés/an", amount_en: "30 contracts/yr" },
+  { href: "/fr/city/paris/marches/categorie/travaux-de-genie-climatique", type: "categorie", label_fr: "Génie climatique", label_en: "Climate engineering", amount_fr: "43 marchés/an", amount_en: "43 contracts/yr" },
   { href: "/fr/city/paris/marches/categorie/prestations-intellectuelles", type: "categorie", label_fr: "Prestations intellectuelles", label_en: "Consulting services", amount_fr: "119 marchés/an", amount_en: "119 contracts/yr" },
   { href: "/fr/city/paris/marches/categorie/fournitures-courantes-et-services", type: "categorie", label_fr: "Fournitures courantes & services", label_en: "Office supplies & services", amount_fr: "126 marchés/an", amount_en: "126 contracts/yr" },
   { href: "/fr/city/paris/marches/categorie/maitrise-d-oeuvre-btp", type: "categorie", label_fr: "Maîtrise d'œuvre BTP", label_en: "Construction supervision", amount_fr: "54 marchés/an", amount_en: "54 contracts/yr" },
