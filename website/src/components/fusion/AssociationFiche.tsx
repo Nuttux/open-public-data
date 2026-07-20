@@ -5,6 +5,9 @@ import type { AssociationFiche as AssociationFicheType, BeneficiaireGrounded, Su
 import { useT, useLocale } from "@/lib/localeContext";
 import { cap, fill } from "@/lib/fmt";
 import { useFmtEur } from "@/lib/use-fmt";
+import FicheKpis from "./FicheKpis";
+import ShowMoreButton from "./ShowMoreButton";
+import YearBars from "./YearBars";
 
 /** Source réelle des subventions : dataset "versées annexe CA" (les noms de
  * l'export en sont issus verbatim, le refine matche donc exactement).
@@ -112,27 +115,14 @@ export default function AssociationFiche({
         );
       })() : null}
 
-      <div className="fx-fiche-kpis">
-        <div className="fx-fiche-kpi">
-          <div className="fx-fiche-kpi-label">{t("fx.fiche.asso.cumul")}</div>
-          <div className="fx-fiche-kpi-value tnum">
-            {vTot}
-            <span className="u">{uTot}</span>
-          </div>
-        </div>
-        <div className="fx-fiche-kpi">
-          <div className="fx-fiche-kpi-label">{t("fx.fiche.asso.subventions")}</div>
-          <div className="fx-fiche-kpi-value tnum">{asso.subventionCount}</div>
-        </div>
-        <div className="fx-fiche-kpi">
-          <div className="fx-fiche-kpi-label">{t("fx.fiche.asso.actif_depuis")}</div>
-          <div className="fx-fiche-kpi-value tnum">{firstYear ?? "—"}</div>
-        </div>
-        <div className="fx-fiche-kpi">
-          <div className="fx-fiche-kpi-label">{t("fx.fiche.asso.derniere_annee")}</div>
-          <div className="fx-fiche-kpi-value tnum">{lastYear ?? "—"}</div>
-        </div>
-      </div>
+      <FicheKpis
+        items={[
+          { label: t("fx.fiche.asso.cumul"), value: vTot, unit: uTot },
+          { label: t("fx.fiche.asso.subventions"), value: asso.subventionCount },
+          { label: t("fx.fiche.asso.actif_depuis"), value: firstYear ?? "—" },
+          { label: t("fx.fiche.asso.derniere_annee"), value: lastYear ?? "—" },
+        ]}
+      />
 
       {/* Historique année par année — promu juste après KPIs (différentiateur visuel).
        * Drop des arrow markers ↑/↓ % et de la footnote "Mouvements notables" : varie
@@ -143,70 +133,23 @@ export default function AssociationFiche({
        * éventuels skippés naturellement). */}
       <section className="fx-fiche-section">
         <div className="fx-fiche-h">{t("fx.fiche.asso.historique")}</div>
-        <div>
-          {(() => {
-            const reversed = asso.byYear.slice().reverse();
-            const shown = showAllYears ? reversed : reversed.slice(0, YEARS_PREVIEW);
-            return shown.map((y) => {
-              const { v, u } = fmtEur(y.amount);
-              const pct = (y.amount / maxByYear) * 100;
-              return (
-                <div
-                  key={y.year}
-                  style={{
-                    display: "grid",
-                    gridTemplateColumns: "56px 1fr 100px 80px",
-                    gap: 14,
-                    alignItems: "center",
-                    padding: "8px 0",
-                    borderBottom: "1px solid var(--rule)",
-                    fontFamily: "var(--f-ui)",
-                    fontSize: 13,
-                  }}
-                >
-                  <span style={{ fontFamily: "var(--f-mono)", color: "var(--ocre)" }}>{y.year}</span>
-                  <span style={{ position: "relative", height: 8 }}>
-                    <span
-                      style={{
-                        position: "absolute",
-                        left: 0,
-                        top: 1,
-                        height: 6,
-                        width: `${pct}%`,
-                        background: "var(--ink)",
-                      }}
-                    />
-                  </span>
-                  <span style={{ textAlign: "right", fontFamily: "var(--f-disp)", fontWeight: 700, fontSize: 14 }}>
-                    {v} <span style={{ fontSize: ".7em", color: "var(--muted)", fontWeight: 500 }}>{u}</span>
-                  </span>
-                  <span style={{ textAlign: "right", fontFamily: "var(--f-mono)", fontSize: 11 }}>
-                    <span className="muted">{y.count} {t("fx.fiche.asso.sub")}</span>
-                  </span>
-                </div>
-              );
-            });
-          })()}
-        </div>
+        {(() => {
+          const reversed = asso.byYear.slice().reverse();
+          const shown = showAllYears ? reversed : reversed.slice(0, YEARS_PREVIEW);
+          return (
+            <YearBars
+              rows={shown}
+              max={maxByYear}
+              countLabel={(y) => (
+                <span className="muted">{y.count} {t("fx.fiche.asso.sub")}</span>
+              )}
+            />
+          );
+        })()}
         {!showAllYears && asso.byYear.length > YEARS_PREVIEW && (
-          <button
-            type="button"
-            onClick={() => setShowAllYears(true)}
-            style={{
-              marginTop: 10,
-              background: "transparent",
-              border: "none",
-              padding: "8px 0",
-              cursor: "pointer",
-              fontFamily: "var(--f-mono)",
-              fontSize: 12.5,
-              color: "var(--bleu)",
-              borderBottom: "1px solid var(--bleu)",
-              letterSpacing: "0.02em",
-            }}
-          >
+          <ShowMoreButton onClick={() => setShowAllYears(true)}>
             {fill(t("fx.fiche.asso.voir_annees_avant"), { n: asso.byYear.length - YEARS_PREVIEW })}
-          </button>
+          </ShowMoreButton>
         )}
       </section>
 
@@ -327,24 +270,9 @@ export default function AssociationFiche({
             </tbody>
           </table>
           {!showAllLignes && asso.lignes.length > LIGNES_PREVIEW && (
-            <button
-              type="button"
-              onClick={() => setShowAllLignes(true)}
-              style={{
-                marginTop: 10,
-                background: "transparent",
-                border: "none",
-                padding: "8px 0",
-                cursor: "pointer",
-                fontFamily: "var(--f-mono)",
-                fontSize: 12.5,
-                color: "var(--bleu)",
-                borderBottom: "1px solid var(--bleu)",
-                letterSpacing: "0.02em",
-              }}
-            >
+            <ShowMoreButton onClick={() => setShowAllLignes(true)}>
               {fill(t("fx.fiche.asso.voir_autres"), { n: asso.lignes.length - LIGNES_PREVIEW })}
-            </button>
+            </ShowMoreButton>
           )}
           <p className="fx-fiche-note" style={{ marginTop: 10 }}>
             {t("fx.fiche.asso.note")}{" "}

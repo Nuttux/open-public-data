@@ -5,6 +5,8 @@ import Link from "next/link";
 import type { ThemeSubventionsFiche } from "@/lib/fusion-data";
 import { fill, fmtCompactEur, fmtInt, fmtDec } from "@/lib/fmt";
 import { useT } from "@/lib/localeContext";
+import { useCity } from "./CityContext";
+import FicheKpis from "./FicheKpis";
 
 const THEME_COLORS: Record<string, string> = {
   "Social": "#c12323",
@@ -30,36 +32,21 @@ function colorFor(theme: string): string {
 
 export default function ThemeFiche({ fiche }: { fiche: ThemeSubventionsFiche }) {
   const t = useT();
+  const { basePath } = useCity();
   const total = fmtCompactEur(fiche.total);
   const color = colorFor(fiche.theme);
   const maxEvol = Math.max(...fiche.evolution.map((e) => e.amount), 1);
 
   return (
     <div>
-      <div className="fx-fiche-kpis">
-        <div className="fx-fiche-kpi">
-          <div className="fx-fiche-kpi-label">{fill(t("fx.fiche.theme.kpi.montant"), { year: fiche.year })}</div>
-          <div className="fx-fiche-kpi-value tnum">
-            {total.value}
-            <span className="u">{total.unit}</span>
-          </div>
-        </div>
-        <div className="fx-fiche-kpi">
-          <div className="fx-fiche-kpi-label">{t("fx.fiche.theme.kpi.part")}</div>
-          <div className="fx-fiche-kpi-value tnum">
-            {fmtDec(fiche.shareOfTotalPct, 1)}
-            <span className="u">%</span>
-          </div>
-        </div>
-        <div className="fx-fiche-kpi">
-          <div className="fx-fiche-kpi-label">{t("fx.fiche.theme.kpi.benef")}</div>
-          <div className="fx-fiche-kpi-value tnum">{fmtInt(fiche.nbBeneficiaires)}</div>
-        </div>
-        <div className="fx-fiche-kpi">
-          <div className="fx-fiche-kpi-label">{t("fx.fiche.theme.kpi.subv")}</div>
-          <div className="fx-fiche-kpi-value tnum">{fmtInt(fiche.nbSubventions)}</div>
-        </div>
-      </div>
+      <FicheKpis
+        items={[
+          { label: fill(t("fx.fiche.theme.kpi.montant"), { year: fiche.year }), value: total.value, unit: total.unit },
+          { label: t("fx.fiche.theme.kpi.part"), value: fmtDec(fiche.shareOfTotalPct, 1), unit: "%" },
+          { label: t("fx.fiche.theme.kpi.benef"), value: fmtInt(fiche.nbBeneficiaires) },
+          { label: t("fx.fiche.theme.kpi.subv"), value: fmtInt(fiche.nbSubventions) },
+        ]}
+      />
 
       <section className="fx-fiche-section">
         <div className="fx-fiche-h">{fill(t("fx.fiche.theme.top10"), { year: fiche.year })}</div>
@@ -70,7 +57,7 @@ export default function ThemeFiche({ fiche }: { fiche: ThemeSubventionsFiche }) 
             return (
               <Link
                 key={b.name}
-                href={`/qui-recoit/association/${encodeURIComponent(b.name)}`}
+                href={`${basePath}/subventions/association/${encodeURIComponent(b.name)}`}
                 scroll={false}
                 className="fx-mini-row fx-mini-row-link"
                 style={{ gridTemplateColumns: "32px 1fr auto 90px" }}

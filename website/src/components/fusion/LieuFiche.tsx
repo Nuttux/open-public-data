@@ -6,6 +6,7 @@ import Link from "next/link";
 import { useT, useLocale } from "@/lib/localeContext";
 import { fill, numLocale } from "@/lib/fmt";
 import { normalizeObjet } from "@/lib/objet-normalizer";
+import { useCity } from "./CityContext";
 
 const BMO_SHOWN = 5;
 
@@ -55,6 +56,7 @@ function Eur({ v, u, size = 13.5 }: { v: string; u: string; size?: number }) {
 export default function LieuFiche({ lieu }: { lieu: LieuFicheData }) {
   const t = useT();
   const { locale } = useLocale();
+  const { basePath } = useCity();
   const locStr = numLocale(locale);
 
   const fmtEur = (n: number): { v: string; u: string } => {
@@ -238,7 +240,7 @@ export default function LieuFiche({ lieu }: { lieu: LieuFicheData }) {
             </div>
             <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", gap: 12, padding: "6px 6px 14px", borderBottom: "1px solid var(--rule)" }}>
               <Link
-                href={`/fr/city/paris/subventions/association/${encodeURIComponent(sub.nom_fiche)}`}
+                href={`${basePath}/subventions/association/${encodeURIComponent(sub.nom_fiche)}`}
                 className="fx-row-link"
                 style={{ fontSize: 13.5, fontWeight: 600 }}
               >
@@ -275,7 +277,7 @@ export default function LieuFiche({ lieu }: { lieu: LieuFicheData }) {
           {lieu.residents.map((r, i) => (
             <Link
               key={i}
-              href={`/fr/city/paris/subventions/association/${encodeURIComponent(r.beneficiaire)}`}
+              href={`${basePath}/subventions/association/${encodeURIComponent(r.beneficiaire)}`}
               className="fx-row-link"
               style={{ display: "flex", justifyContent: "space-between", gap: 12, padding: "10px 6px", borderBottom: "1px solid var(--rule)", alignItems: "baseline" }}
             >
@@ -364,7 +366,7 @@ export default function LieuFiche({ lieu }: { lieu: LieuFicheData }) {
             // Le projet a été rattaché au lieu par le juge : on le rend cliquable
             // vers sa fiche quand on a retrouvé son id (lien lieu → projet).
             return r.id ? (
-              <Link key={i} href={`/fr/city/paris/investissements/projet/${encodeURIComponent(r.id)}`} className="fx-row-link" style={rowStyle}>
+              <Link key={i} href={`${basePath}/investissements/projet/${encodeURIComponent(r.id)}`} className="fx-row-link" style={rowStyle}>
                 {body}
               </Link>
             ) : (
@@ -386,7 +388,7 @@ export default function LieuFiche({ lieu }: { lieu: LieuFicheData }) {
         const MRow = (m: (typeof marches)[number]) => (
           <Link
             key={m.numero_marche}
-            href={`/fr/city/paris/marches/contrat/${encodeURIComponent(m.numero_marche)}`}
+            href={`${basePath}/marches/contrat/${encodeURIComponent(m.numero_marche)}`}
             className="fx-row-link"
             style={{ display: "flex", justifyContent: "space-between", gap: 12, padding: "11px 6px", borderBottom: "1px solid var(--rule)", alignItems: "baseline" }}
           >

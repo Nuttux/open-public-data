@@ -1,8 +1,8 @@
 "use client";
 
-import Link from "next/link";
 import type { ArrondissementFiche as ArrondissementFicheType } from "@/lib/fusion-data";
-import ProjetThumb from "./ProjetThumb";
+import { useCity } from "./CityContext";
+import TopProjetsGrid from "./TopProjetsGrid";
 import { useT, useLocale } from "@/lib/localeContext";
 import { fill } from "@/lib/fmt";
 import { useFmtEur } from "@/lib/use-fmt";
@@ -11,6 +11,7 @@ import { trLabel } from "@/lib/label-translate";
 export default function ArrondissementFiche({ arr }: { arr: ArrondissementFicheType }) {
   const t = useT();
   const { locale } = useLocale();
+  const { basePath } = useCity();
   const fmtEur = useFmtEur();
 
   const { v, u } = fmtEur(arr.total);
@@ -43,29 +44,11 @@ export default function ArrondissementFiche({ arr }: { arr: ArrondissementFicheT
 
       <section className="fx-fiche-section">
         <div className="fx-fiche-h">{fill(t("fx.fiche.arr.top_projets"), { year: arr.year })}</div>
-        <div className="fx-arr-top-grid">
-          {arr.topProjets.map((p, i) => {
-            const f = fmtEur(p.amount);
-            return (
-              <Link
-                key={p.id}
-                href={`/fr/city/paris/investissements/projet/${encodeURIComponent(p.id)}`}
-                scroll={false}
-                className="fx-arr-top-item"
-              >
-                <div className="fx-arr-top-thumb">
-                  <ProjetThumb photo={p.photo.photo} generic={p.photo.generic} typologie={p.photo.typologie} aspectRatio="4 / 3" fallbackLabel={p.name} />
-                </div>
-                <div className="fx-arr-top-meta">
-                  <div className="fx-arr-top-rank">{String(i + 1).padStart(2, "0")}</div>
-                  <div className="fx-arr-top-name">{p.name.slice(0, 80)}</div>
-                  <div className="fx-arr-top-amount">{f.v} <span className="u">{f.u}</span></div>
-                  <div className="fx-arr-top-chap">{trLabel(p.chapitre, locale)}</div>
-                </div>
-              </Link>
-            );
-          })}
-        </div>
+        <TopProjetsGrid
+          items={arr.topProjets}
+          href={(p) => `${basePath}/investissements/projet/${encodeURIComponent(p.id)}`}
+          detail={(p) => trLabel(p.chapitre, locale)}
+        />
       </section>
 
       {arr.byChapitre.length > 1 && (

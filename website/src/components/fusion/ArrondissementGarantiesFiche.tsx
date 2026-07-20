@@ -118,7 +118,7 @@ export default function ArrondissementGarantiesFiche({ arr, year, onClose }: Pro
                       <tr key={i}>
                         <td>
                           <Link
-                            href={`/dette-patrimoine/bailleur/${encodeURIComponent(slug)}`}
+                            href={`/fr/city/paris/dette/bailleur/${encodeURIComponent(slug)}`}
                             scroll={false}
                             style={{ color: "var(--ink)", textDecoration: "none", borderBottom: "1px dotted var(--muted)" }}
                           >
@@ -165,7 +165,7 @@ export default function ArrondissementGarantiesFiche({ arr, year, onClose }: Pro
                         </td>
                         <td>
                           <Link
-                            href={`/dette-patrimoine/bailleur/${encodeURIComponent(slug)}`}
+                            href={`/fr/city/paris/dette/bailleur/${encodeURIComponent(slug)}`}
                             scroll={false}
                             style={{ color: "var(--ink)", textDecoration: "none" }}
                           >

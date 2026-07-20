@@ -7,6 +7,7 @@ import { useT, useLocale } from "@/lib/localeContext";
 import { cap, numLocale } from "@/lib/fmt";
 import { useFmtEur } from "@/lib/use-fmt";
 import { trLabel } from "@/lib/label-translate";
+import { useCity } from "./CityContext";
 import Tip from "./Tip";
 
 export default function ContratFiche({
@@ -24,6 +25,7 @@ export default function ContratFiche({
 }) {
   const t = useT();
   const { locale } = useLocale();
+  const { basePath } = useCity();
   const locStr = numLocale(locale);
 
   const fmtEur = useFmtEur();
@@ -252,7 +254,7 @@ export default function ContratFiche({
        * Rapprochement automatique (même hedge que la fiche projet, en tooltip). */}
       {projet && (
         <Link
-          href={`/fr/city/paris/investissements/projet/${projet.id}`}
+          href={`${basePath}/investissements/projet/${projet.id}`}
           scroll={false}
           title={t("fx.fiche.contrat.chantier.hedge")}
           style={{
@@ -454,7 +456,7 @@ export default function ContratFiche({
                 <dt>{t("fx.fiche.contrat.voir")}</dt>
                 <dd>
                   <Link
-                    href={`/fr/city/paris/marches/fournisseur/${contrat.fournisseurSiret.replace(/\s/g, "")}`}
+                    href={`${basePath}/marches/fournisseur/${contrat.fournisseurSiret.replace(/\s/g, "")}`}
                     style={{ fontFamily: "var(--f-mono)", fontSize: 12, color: "var(--bleu)", borderBottom: "1px solid var(--bleu)", paddingBottom: 1 }}
                     scroll={false}
                   >

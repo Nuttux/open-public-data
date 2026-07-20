@@ -4,6 +4,8 @@ import Link from "next/link";
 import type { ArrondissementLogementData } from "@/lib/fusion-data";
 import { useT } from "@/lib/localeContext";
 import { fill, fmtDec, fmtInt } from "@/lib/fmt";
+import { useCity } from "./CityContext";
+import FicheKpis from "./FicheKpis";
 
 export default function ArrondissementLogementFiche({
   data,
@@ -13,35 +15,20 @@ export default function ArrondissementLogementFiche({
   topN?: number;
 }) {
   const t = useT();
+  const { basePath } = useCity();
   const shown = data.projects.slice(0, topN);
   const remaining = data.projects.length - shown.length;
 
   return (
     <div className="fx-arr-log-fiche">
-      <div className="fx-fiche-kpis">
-        <div className="fx-fiche-kpi">
-          <div className="fx-fiche-kpi-label">
-            {fill(t("fx.arr_log.kpi.logements"), { year: data.year })}
-          </div>
-          <div className="fx-fiche-kpi-value tnum">
-            {fmtInt(data.totalLogements)}
-          </div>
-        </div>
-        <div className="fx-fiche-kpi">
-          <div className="fx-fiche-kpi-label">{t("fx.arr_log.kpi.operations")}</div>
-          <div className="fx-fiche-kpi-value tnum">{data.nbOperations}</div>
-        </div>
-        <div className="fx-fiche-kpi">
-          <div className="fx-fiche-kpi-label">{t("fx.arr_log.kpi.part_ville")}</div>
-          <div className="fx-fiche-kpi-value tnum">
-            {fmtDec(data.shareCity, 1)} <span className="u">%</span>
-          </div>
-        </div>
-        <div className="fx-fiche-kpi">
-          <div className="fx-fiche-kpi-label">{t("fx.arr_log.kpi.rang")}</div>
-          <div className="fx-fiche-kpi-value tnum">#{data.rank}</div>
-        </div>
-      </div>
+      <FicheKpis
+        items={[
+          { label: fill(t("fx.arr_log.kpi.logements"), { year: data.year }), value: fmtInt(data.totalLogements) },
+          { label: t("fx.arr_log.kpi.operations"), value: data.nbOperations },
+          { label: t("fx.arr_log.kpi.part_ville"), value: <>{fmtDec(data.shareCity, 1)}{" "}</>, unit: "%" },
+          { label: t("fx.arr_log.kpi.rang"), value: <>#{data.rank}</> },
+        ]}
+      />
 
       <section className="fx-fiche-section">
         <div className="fx-fiche-h">
@@ -70,7 +57,7 @@ export default function ArrondissementLogementFiche({
         </ul>
         {remaining > 0 && (
           <div className="fx-arr-log-more">
-            <Link href={`/logement-social/arrondissement/${data.slug}`} scroll={false}>
+            <Link href={`${basePath}/logement/arrondissement/${data.slug}`} scroll={false}>
               {fill(t("fx.arr_log.see_all"), { n: remaining })}
             </Link>
           </div>

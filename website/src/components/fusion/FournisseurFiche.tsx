@@ -8,6 +8,10 @@ import { useT, useLocale } from "@/lib/localeContext";
 import { fill, numLocale } from "@/lib/fmt";
 import { useFmtEur } from "@/lib/use-fmt";
 import { trLabel } from "@/lib/label-translate";
+import { useCity } from "./CityContext";
+import FicheKpis from "./FicheKpis";
+import ShowMoreButton from "./ShowMoreButton";
+import YearBars from "./YearBars";
 
 export default function FournisseurFiche({
   fournisseur,
@@ -18,6 +22,7 @@ export default function FournisseurFiche({
 }) {
   const t = useT();
   const { locale } = useLocale();
+  const { basePath } = useCity();
   const locStr = numLocale(locale);
   const [showAllYears, setShowAllYears] = useState(false);
   const YEARS_PREVIEW = 5;
@@ -97,27 +102,14 @@ export default function FournisseurFiche({
         </p>
       )}
 
-      <div className="fx-fiche-kpis">
-        <div className="fx-fiche-kpi">
-          <div className="fx-fiche-kpi-label">{t("fx.fiche.fourn.cumul")}</div>
-          <div className="fx-fiche-kpi-value tnum">
-            {vTot}
-            <span className="u">{uTot}</span>
-          </div>
-        </div>
-        <div className="fx-fiche-kpi">
-          <div className="fx-fiche-kpi-label">{t("fx.fiche.fourn.contrats")}</div>
-          <div className="fx-fiche-kpi-value tnum">{fournisseur.contratCount}</div>
-        </div>
-        <div className="fx-fiche-kpi">
-          <div className="fx-fiche-kpi-label">{t("fx.fiche.fourn.actif_depuis")}</div>
-          <div className="fx-fiche-kpi-value tnum">{firstYear ?? "—"}</div>
-        </div>
-        <div className="fx-fiche-kpi">
-          <div className="fx-fiche-kpi-label">{t("fx.fiche.fourn.annees")}</div>
-          <div className="fx-fiche-kpi-value tnum">{fournisseur.yearsActive.length}</div>
-        </div>
-      </div>
+      <FicheKpis
+        items={[
+          { label: t("fx.fiche.fourn.cumul"), value: vTot, unit: uTot },
+          { label: t("fx.fiche.fourn.contrats"), value: fournisseur.contratCount },
+          { label: t("fx.fiche.fourn.actif_depuis"), value: firstYear ?? "—" },
+          { label: t("fx.fiche.fourn.annees"), value: fournisseur.yearsActive.length },
+        ]}
+      />
 
       {/* Contrats notifiés promu en position 1 après KPIs — c'est THE différentiateur
        * FOD (qui touche combien chez la Ville) vs annuaire SIRENE standard.
@@ -152,7 +144,7 @@ export default function FournisseurFiche({
                       const shown = clean.length > 70 ? clean.slice(0, 70) + "…" : clean;
                       return c.numero ? (
                         <Link
-                          href={`/fr/city/paris/marches/contrat/${c.numero}`}
+                          href={`${basePath}/marches/contrat/${c.numero}`}
                           scroll={false}
                         >
                           {shown}
@@ -185,70 +177,23 @@ export default function FournisseurFiche({
       {fournisseur.byYear.length > 1 && (
         <section className="fx-fiche-section">
           <div className="fx-fiche-h">{t("fx.fiche.fourn.historique")}</div>
-          <div>
-            {(() => {
-              const reversed = fournisseur.byYear.slice().reverse();
-              const shown = showAllYears ? reversed : reversed.slice(0, YEARS_PREVIEW);
-              return shown.map((y) => {
-                const { v, u } = fmtEur(y.amount);
-                const pct = (y.amount / maxByYear) * 100;
-                return (
-                  <div
-                    key={y.year}
-                    style={{
-                      display: "grid",
-                      gridTemplateColumns: "56px 1fr 100px 80px",
-                      gap: 14,
-                      alignItems: "center",
-                      padding: "8px 0",
-                      borderBottom: "1px solid var(--rule)",
-                      fontFamily: "var(--f-ui)",
-                      fontSize: 13,
-                    }}
-                  >
-                    <span style={{ fontFamily: "var(--f-mono)", color: "var(--ocre)" }}>{y.year}</span>
-                    <span style={{ position: "relative", height: 8 }}>
-                      <span
-                        style={{
-                          position: "absolute",
-                          left: 0,
-                          top: 1,
-                          height: 6,
-                          width: `${pct}%`,
-                          background: "var(--ink)",
-                        }}
-                      />
-                    </span>
-                    <span style={{ textAlign: "right", fontFamily: "var(--f-disp)", fontWeight: 700, fontSize: 14 }}>
-                      {v} <span style={{ fontSize: ".7em", color: "var(--muted)", fontWeight: 500 }}>{u}</span>
-                    </span>
-                    <span className="muted" style={{ textAlign: "right", fontFamily: "var(--f-mono)", fontSize: 11 }}>
-                      {y.count} {t("fx.fiche.fourn.contrats_row")}
-                    </span>
-                  </div>
-                );
-              });
-            })()}
-          </div>
+          {(() => {
+            const reversed = fournisseur.byYear.slice().reverse();
+            const shown = showAllYears ? reversed : reversed.slice(0, YEARS_PREVIEW);
+            return (
+              <YearBars
+                rows={shown}
+                max={maxByYear}
+                countLabel={(y) => (
+                  <span className="muted">{y.count} {t("fx.fiche.fourn.contrats_row")}</span>
+                )}
+              />
+            );
+          })()}
           {!showAllYears && fournisseur.byYear.length > YEARS_PREVIEW && (
-            <button
-              type="button"
-              onClick={() => setShowAllYears(true)}
-              style={{
-                marginTop: 10,
-                background: "transparent",
-                border: "none",
-                padding: "8px 0",
-                cursor: "pointer",
-                fontFamily: "var(--f-mono)",
-                fontSize: 12.5,
-                color: "var(--bleu)",
-                borderBottom: "1px solid var(--bleu)",
-                letterSpacing: "0.02em",
-              }}
-            >
+            <ShowMoreButton onClick={() => setShowAllYears(true)}>
               {fill(t("fx.fiche.fourn.voir_annees_avant"), { n: fournisseur.byYear.length - YEARS_PREVIEW })}
-            </button>
+            </ShowMoreButton>
           )}
         </section>
       )}

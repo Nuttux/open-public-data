@@ -2,6 +2,8 @@
 
 import Link from "next/link";
 import type { ProjetFiche as ProjetFicheType, ProjetPhotoResolved } from "@/lib/fusion-data";
+import { useCity } from "./CityContext";
+import CoverageWarnBox from "./CoverageWarnBox";
 import ProjetThumb from "./ProjetThumb";
 import { useT, useLocale } from "@/lib/localeContext";
 import { cap, fill, sufOrdinal } from "@/lib/fmt";
@@ -46,6 +48,7 @@ const TYPOLOGIE_LABELS_EN: Record<string, string> = {
 export default function ProjetFiche({ projet, photo }: { projet: ProjetFicheType; photo?: ProjetPhotoResolved }) {
   const t = useT();
   const { locale } = useLocale();
+  const { basePath } = useCity();
   const TYPOLOGIE_LABELS = locale === "en" ? TYPOLOGIE_LABELS_EN : TYPOLOGIE_LABELS_FR;
 
   const fmtEur = useFmtEur();
@@ -135,43 +138,15 @@ export default function ProjetFiche({ projet, photo }: { projet: ProjetFicheType
       </div>
 
       {projet.marches.length === 0 && projet.marchesCoverage.total > 0 && (
-        <section className="fx-fiche-section">
-          <div
-            style={{
-              padding: "16px 18px",
-              border: "1px solid var(--rule)",
-              background: "rgba(166, 118, 56, 0.04)",
-              borderLeft: "3px solid var(--ocre)",
-              fontFamily: "var(--f-ui)",
-              fontSize: 13.5,
-              lineHeight: 1.55,
-              color: "var(--ink-2)",
-            }}
-          >
-            <div
-              style={{
-                fontFamily: "var(--f-mono)",
-                fontSize: 11,
-                letterSpacing: 1,
-                textTransform: "uppercase",
-                color: "var(--ocre)",
-                marginBottom: 8,
-                fontWeight: 600,
-              }}
-            >
-              {t("fx.fiche.projet.entreprises_empty_title")}
-            </div>
-            <p style={{ margin: 0 }}>
-              {fill(t("fx.fiche.projet.entreprises_empty_body"), {
-                pct: projet.marchesCoverage.pct.toFixed(0),
-                matched: new Intl.NumberFormat(locale === "en" ? "en-GB" : "fr-FR").format(projet.marchesCoverage.matched),
-                total: new Intl.NumberFormat(locale === "en" ? "en-GB" : "fr-FR").format(projet.marchesCoverage.total),
-                minYear: projet.marchesCoverage.scopeYears[0],
-                maxYear: projet.marchesCoverage.scopeYears[1],
-              })}
-            </p>
-          </div>
-        </section>
+        <CoverageWarnBox title={t("fx.fiche.projet.entreprises_empty_title")}>
+          {fill(t("fx.fiche.projet.entreprises_empty_body"), {
+            pct: projet.marchesCoverage.pct.toFixed(0),
+            matched: new Intl.NumberFormat(locale === "en" ? "en-GB" : "fr-FR").format(projet.marchesCoverage.matched),
+            total: new Intl.NumberFormat(locale === "en" ? "en-GB" : "fr-FR").format(projet.marchesCoverage.total),
+            minYear: projet.marchesCoverage.scopeYears[0],
+            maxYear: projet.marchesCoverage.scopeYears[1],
+          })}
+        </CoverageWarnBox>
       )}
 
       {projet.marches.length > 0 && (
@@ -208,7 +183,7 @@ export default function ProjetFiche({ projet, photo }: { projet: ProjetFicheType
               return (
                 <Link
                   key={m.numero_marche}
-                  href={`/fr/city/paris/marches/contrat/${encodeURIComponent(m.numero_marche)}`}
+                  href={`${basePath}/marches/contrat/${encodeURIComponent(m.numero_marche)}`}
                   scroll={false}
                   className="fx-row-link"
                   style={{
@@ -332,7 +307,7 @@ export default function ProjetFiche({ projet, photo }: { projet: ProjetFicheType
               return (
                 <Link
                   key={s.id}
-                  href={`/fr/city/paris/investissements/projet/${encodeURIComponent(s.id)}`}
+                  href={`${basePath}/investissements/projet/${encodeURIComponent(s.id)}`}
                   scroll={false}
                   className="fx-row-link"
                   style={{

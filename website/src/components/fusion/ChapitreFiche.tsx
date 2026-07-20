@@ -2,7 +2,9 @@
 
 import Link from "next/link";
 import type { ChapitreFiche as ChapitreFicheType } from "@/lib/fusion-data";
-import ProjetThumb from "./ProjetThumb";
+import { useCity } from "./CityContext";
+import CoverageWarnBox from "./CoverageWarnBox";
+import TopProjetsGrid from "./TopProjetsGrid";
 import { useT, useLocale } from "@/lib/localeContext";
 import { fill, sufOrdinal } from "@/lib/fmt";
 import { useFmtEur } from "@/lib/use-fmt";
@@ -10,6 +12,7 @@ import { useFmtEur } from "@/lib/use-fmt";
 export default function ChapitreFiche({ chap }: { chap: ChapitreFicheType }) {
   const t = useT();
   const { locale } = useLocale();
+  const { basePath } = useCity();
   const fmtEur = useFmtEur();
 
   const { v, u } = fmtEur(chap.total);
@@ -67,37 +70,9 @@ export default function ChapitreFiche({ chap }: { chap: ChapitreFicheType }) {
       )}
 
       {!hasProjets && (
-        <section className="fx-fiche-section">
-          <div
-            style={{
-              padding: "16px 18px",
-              border: "1px solid var(--rule)",
-              background: "rgba(166, 118, 56, 0.04)",
-              borderLeft: "3px solid var(--ocre)",
-              fontFamily: "var(--f-ui)",
-              fontSize: 13.5,
-              lineHeight: 1.55,
-              color: "var(--ink-2)",
-            }}
-          >
-            <div
-              style={{
-                fontFamily: "var(--f-mono)",
-                fontSize: 11,
-                letterSpacing: 1,
-                textTransform: "uppercase",
-                color: "var(--ocre)",
-                marginBottom: 8,
-                fontWeight: 600,
-              }}
-            >
-              {t("fx.fiche.chap.no_projets_title")}
-            </div>
-            <p style={{ margin: 0 }}>
-              {fill(t("fx.fiche.chap.no_projets_body"), { year: chap.year })}
-            </p>
-          </div>
-        </section>
+        <CoverageWarnBox title={t("fx.fiche.chap.no_projets_title")}>
+          {fill(t("fx.fiche.chap.no_projets_body"), { year: chap.year })}
+        </CoverageWarnBox>
       )}
 
       {hasProjets && chap.topArrondissements.length > 0 && (
@@ -109,7 +84,7 @@ export default function ChapitreFiche({ chap }: { chap: ChapitreFicheType }) {
               return (
                 <Link
                   key={a.arr}
-                  href={`/fr/city/paris/investissements/arrondissement/${a.arr}`}
+                  href={`${basePath}/investissements/arrondissement/${a.arr}`}
                   scroll={false}
                   className="fx-row-link"
                   style={{
@@ -142,37 +117,13 @@ export default function ChapitreFiche({ chap }: { chap: ChapitreFicheType }) {
       {hasProjets && (
       <section className="fx-fiche-section">
         <div className="fx-fiche-h">{fill(t("fx.fiche.chap.top_proj"), { label: chap.label.toLowerCase() })}</div>
-        <div className="fx-arr-top-grid">
-          {chap.topProjets.map((p, i) => {
-            const f = fmtEur(p.amount);
-            return (
-              <Link
-                key={p.id}
-                href={`/fr/city/paris/investissements/projet/${encodeURIComponent(p.id)}`}
-                scroll={false}
-                className="fx-arr-top-item"
-              >
-                <div className="fx-arr-top-thumb">
-                  <ProjetThumb
-                    photo={p.photo.photo}
-                    generic={p.photo.generic}
-                    typologie={p.photo.typologie}
-                    aspectRatio="4 / 3"
-                    fallbackLabel={p.name}
-                  />
-                </div>
-                <div className="fx-arr-top-meta">
-                  <div className="fx-arr-top-rank">{String(i + 1).padStart(2, "0")}</div>
-                  <div className="fx-arr-top-name">{p.name.slice(0, 80)}</div>
-                  <div className="fx-arr-top-amount">{f.v} <span className="u">{f.u}</span></div>
-                  <div className="fx-arr-top-chap">
-                    {p.arr > 0 ? `${p.arr}${sufOrdinal(p.arr, locale)} arr.` : t("fx.fiche.chap.transverse")}
-                  </div>
-                </div>
-              </Link>
-            );
-          })}
-        </div>
+        <TopProjetsGrid
+          items={chap.topProjets}
+          href={(p) => `${basePath}/investissements/projet/${encodeURIComponent(p.id)}`}
+          detail={(p) =>
+            p.arr > 0 ? `${p.arr}${sufOrdinal(p.arr, locale)} arr.` : t("fx.fiche.chap.transverse")
+          }
+        />
       </section>
       )}
 

@@ -4,6 +4,8 @@ import { useState } from "react";
 import type { BailleurFiche as BailleurFicheType } from "@/lib/fusion-data";
 import { cap, fill, fmtBillions, fmtDec, fmtInt, fmtMillions } from "@/lib/fmt";
 import { useT } from "@/lib/localeContext";
+import FicheKpis from "./FicheKpis";
+import ShowMoreButton from "./ShowMoreButton";
 
 const EMPRUNTS_PREVIEW = 10;
 
@@ -74,38 +76,18 @@ export default function BailleurFiche({ bailleur }: { bailleur: BailleurFicheTyp
             </a>
           </p>
 
-          <div className="fx-fiche-kpis">
-            <div className="fx-fiche-kpi">
-              <div className="fx-fiche-kpi-label">
-                {fill(t("fx.fiche.bg.capital"), { year: g.year })}
-              </div>
-              <div className="fx-fiche-kpi-value tnum">
-                {fmtAmount(g.capital_restant).value}
-                <span className="u">{fmtAmount(g.capital_restant).unit}</span>
-              </div>
-            </div>
-            <div className="fx-fiche-kpi">
-              <div className="fx-fiche-kpi-label">{t("fx.fiche.bg.taux")}</div>
-              <div className="fx-fiche-kpi-value tnum">
-                {fmtDec(g.taux_moyen_pondere_pct, 2)}
-                <span className="u">%</span>
-              </div>
-            </div>
-            <div className="fx-fiche-kpi">
-              <div className="fx-fiche-kpi-label">{t("fx.fiche.bg.duree")}</div>
-              <div className="fx-fiche-kpi-value tnum">
-                {fmtDec(g.duree_residuelle_moyenne_ans, 1)}
-                <span className="u">{t("fx.det.s02.kpi.ans")}</span>
-              </div>
-            </div>
-            <div className="fx-fiche-kpi">
-              <div className="fx-fiche-kpi-label">{t("fx.fiche.bg.part_fixe")}</div>
-              <div className="fx-fiche-kpi-value tnum">
-                {fmtInt(g.part_fixe * 100)}
-                <span className="u">%</span>
-              </div>
-            </div>
-          </div>
+          <FicheKpis
+            items={[
+              {
+                label: fill(t("fx.fiche.bg.capital"), { year: g.year }),
+                value: fmtAmount(g.capital_restant).value,
+                unit: fmtAmount(g.capital_restant).unit,
+              },
+              { label: t("fx.fiche.bg.taux"), value: fmtDec(g.taux_moyen_pondere_pct, 2), unit: "%" },
+              { label: t("fx.fiche.bg.duree"), value: fmtDec(g.duree_residuelle_moyenne_ans, 1), unit: t("fx.det.s02.kpi.ans") },
+              { label: t("fx.fiche.bg.part_fixe"), value: fmtInt(g.part_fixe * 100), unit: "%" },
+            ]}
+          />
 
           {g.preteurs.length > 0 && (
             <>
@@ -200,24 +182,9 @@ export default function BailleurFiche({ bailleur }: { bailleur: BailleurFicheTyp
                 </tbody>
               </table>
               {!showAllEmprunts && g.emprunts_top.length > EMPRUNTS_PREVIEW && (
-                <button
-                  type="button"
-                  onClick={() => setShowAllEmprunts(true)}
-                  style={{
-                    marginTop: 10,
-                    background: "transparent",
-                    border: "none",
-                    padding: "8px 0",
-                    cursor: "pointer",
-                    fontFamily: "var(--f-mono)",
-                    fontSize: 12.5,
-                    color: "var(--bleu)",
-                    borderBottom: "1px solid var(--bleu)",
-                    letterSpacing: "0.02em",
-                  }}
-                >
+                <ShowMoreButton onClick={() => setShowAllEmprunts(true)}>
                   {fill(t("fx.fiche.bg.voir_autres_emprunts"), { n: g.emprunts_top.length - EMPRUNTS_PREVIEW })}
-                </button>
+                </ShowMoreButton>
               )}
             </>
           )}

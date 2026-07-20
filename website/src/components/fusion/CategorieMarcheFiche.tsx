@@ -6,38 +6,25 @@ import type { MarcheCategorieFiche } from "@/lib/fusion-data";
 import { fill, fmtCompactEur, fmtInt, fmtDec } from "@/lib/fmt";
 import { normalizeObjet } from "@/lib/objet-normalizer";
 import { useT, useLocale } from "@/lib/localeContext";
+import { useCity } from "./CityContext";
+import FicheKpis from "./FicheKpis";
 
 export default function CategorieMarcheFiche({ fiche }: { fiche: MarcheCategorieFiche }) {
   const t = useT();
   const { locale } = useLocale();
+  const { basePath } = useCity();
   const total = fmtCompactEur(fiche.total);
 
   return (
     <div>
-      <div className="fx-fiche-kpis">
-        <div className="fx-fiche-kpi">
-          <div className="fx-fiche-kpi-label">{fill(t("fx.categorie.kpi.enveloppe_max"), { year: fiche.year })}</div>
-          <div className="fx-fiche-kpi-value tnum">
-            {total.value}
-            <span className="u">{total.unit}</span>
-          </div>
-        </div>
-        <div className="fx-fiche-kpi">
-          <div className="fx-fiche-kpi-label">{t("fx.categorie.kpi.share_paris")}</div>
-          <div className="fx-fiche-kpi-value tnum">
-            {fmtDec(fiche.shareOfTotalPct, 1)}
-            <span className="u">%</span>
-          </div>
-        </div>
-        <div className="fx-fiche-kpi">
-          <div className="fx-fiche-kpi-label">{t("fx.categorie.kpi.contrats")}</div>
-          <div className="fx-fiche-kpi-value tnum">{fmtInt(fiche.nbContrats)}</div>
-        </div>
-        <div className="fx-fiche-kpi">
-          <div className="fx-fiche-kpi-label">{t("fx.categorie.kpi.titulaires")}</div>
-          <div className="fx-fiche-kpi-value tnum">{fmtInt(fiche.nbTitulaires)}</div>
-        </div>
-      </div>
+      <FicheKpis
+        items={[
+          { label: fill(t("fx.categorie.kpi.enveloppe_max"), { year: fiche.year }), value: total.value, unit: total.unit },
+          { label: t("fx.categorie.kpi.share_paris"), value: fmtDec(fiche.shareOfTotalPct, 1), unit: "%" },
+          { label: t("fx.categorie.kpi.contrats"), value: fmtInt(fiche.nbContrats) },
+          { label: t("fx.categorie.kpi.titulaires"), value: fmtInt(fiche.nbTitulaires) },
+        ]}
+      />
 
       <section className="fx-fiche-section">
         <div className="fx-fiche-h">{fill(t("fx.categorie.top_contrats"), { year: fiche.year })}</div>
@@ -60,7 +47,7 @@ export default function CategorieMarcheFiche({ fiche }: { fiche: MarcheCategorie
                   <td style={{ maxWidth: 360 }}>
                     {c.numero ? (
                       <Link
-                        href={`/fr/city/paris/marches/contrat/${encodeURIComponent(c.numero)}`}
+                        href={`${basePath}/marches/contrat/${encodeURIComponent(c.numero)}`}
                         scroll={false}
 
                       >
@@ -73,7 +60,7 @@ export default function CategorieMarcheFiche({ fiche }: { fiche: MarcheCategorie
                   <td style={{ fontSize: 12 }}>
                     {c.fournisseurSiret ? (
                       <Link
-                        href={`/fr/city/paris/marches/fournisseur/${encodeURIComponent(c.fournisseurSiret)}`}
+                        href={`${basePath}/marches/fournisseur/${encodeURIComponent(c.fournisseurSiret)}`}
                         scroll={false}
 
                       >
@@ -99,7 +86,7 @@ export default function CategorieMarcheFiche({ fiche }: { fiche: MarcheCategorie
           {fiche.topTitulaires.map((tit, i) => {
             const { value, unit } = fmtCompactEur(tit.amount);
             const pct = (tit.amount / fiche.total) * 100;
-            const href = tit.siret ? `/fr/city/paris/marches/fournisseur/${encodeURIComponent(tit.siret)}` : null;
+            const href = tit.siret ? `${basePath}/marches/fournisseur/${encodeURIComponent(tit.siret)}` : null;
             const countLabel = fill(
               tit.nb > 1 ? t("fx.categorie.contrats_count_many") : t("fx.categorie.contrats_count_one"),
               { n: tit.nb },
