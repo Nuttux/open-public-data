@@ -1,9 +1,16 @@
 'use client';
 
-import { createContext, useContext, useState, useEffect, useCallback, type ReactNode } from 'react';
+import {
+  createContext,
+  useContext,
+  useState,
+  useEffect,
+  useCallback,
+  startTransition,
+  use,
+  type ReactNode,
+} from 'react';
 import { usePathname } from 'next/navigation';
-import fr from '@/i18n/fr';
-import en from '@/i18n/en';
 
 // City label rewriter — replaces hardcoded "Paris" forms with the current
 // city's label when navigating under /fr/city/[city]/*. Lets us reuse the Paris
@@ -42,7 +49,42 @@ function rewriteForCity(value: string, citySlug: string): string {
 
 export type Locale = 'fr' | 'en';
 
-const DICTIONARIES: Record<Locale, Record<string, string>> = { fr, en };
+type Dict = Record<string, string>;
+
+// Lazy dictionary loading — each locale is its own webpack chunk so a visitor
+// only downloads the active locale (~350 KB of source each). Module-level
+// caches keep the promise stable across renders (required for `use()`: an
+// uncached promise would re-suspend on every render) and let us read the
+// resolved dict synchronously once loaded.
+const dictCache: Partial<Record<Locale, Dict>> = {};
+const dictPromises: Partial<Record<Locale, Promise<Dict>>> = {};
+
+function loadDictionary(locale: Locale): Promise<Dict> {
+  const pending = dictPromises[locale];
+  if (pending) return pending;
+  const promise = (locale === 'en' ? import('@/i18n/en') : import('@/i18n/fr')).then((mod) => {
+    dictCache[locale] = mod.default;
+    return mod.default;
+  });
+  dictPromises[locale] = promise;
+  return promise;
+}
+
+/**
+ * Returns the active dict + the FR fallback dict, suspending until both are
+ * available. Suspending (via `use()`) is what guarantees "no flash of raw
+ * i18n keys": SSR streams already-translated HTML, and client hydration
+ * pauses on the dict chunk while the server HTML stays visible. FR visitors
+ * load only fr; EN needs fr too for the en→fr→key fallback chain.
+ */
+function useDictionaries(locale: Locale): { dict: Dict; frDict: Dict } {
+  // `use()` may be called conditionally — that is its documented difference
+  // from regular hooks — and short-circuits entirely once cached.
+  const dict = dictCache[locale] ?? use(loadDictionary(locale));
+  const frDict = locale === 'fr' ? dict : (dictCache.fr ?? use(loadDictionary('fr')));
+  return { dict, frDict };
+}
+
 const STORAGE_KEY = 'dl_locale';
 const COOKIE_KEY = 'dl_locale';
 
@@ -73,18 +115,20 @@ export function LocaleProvider({
   initialLocale?: Locale;
 }) {
   const [locale, setLocaleState] = useState<Locale>(initialLocale);
+  const { dict, frDict } = useDictionaries(locale);
 
   // Reconcile with localStorage on mount so a tab opened with a stale cookie still
   // honours the user's last explicit choice. Mirror back to cookie so SSR + future
-  // tabs stay in sync.
+  // tabs stay in sync. startTransition: switching locale may suspend on the other
+  // dict chunk — a transition keeps the current UI on screen instead of blanking.
   useEffect(() => {
     try {
       const stored = localStorage.getItem(STORAGE_KEY);
       if (stored === 'en' && locale !== 'en') {
-        setLocaleState('en');
+        startTransition(() => setLocaleState('en'));
         writeCookie('en');
       } else if (stored === 'fr' && locale !== 'fr') {
-        setLocaleState('fr');
+        startTransition(() => setLocaleState('fr'));
         writeCookie('fr');
       } else if (!stored) {
         // No localStorage choice yet: persist the SSR-determined locale so future
@@ -103,7 +147,10 @@ export function LocaleProvider({
   }, [locale]);
 
   const setLocale = useCallback((l: Locale) => {
-    setLocaleState(l);
+    // Transition: the new locale's dict chunk may not be downloaded yet, so the
+    // re-render suspends. Inside a transition React keeps showing the previous
+    // locale until the chunk arrives — never raw keys, never a blank page.
+    startTransition(() => setLocaleState(l));
     try { localStorage.setItem(STORAGE_KEY, l); } catch { /* ignore */ }
     writeCookie(l);
   }, []);
@@ -125,10 +172,10 @@ export function LocaleProvider({
 
   const t = useCallback(
     (key: string): string => {
-      const raw = DICTIONARIES[locale][key] ?? DICTIONARIES.fr[key] ?? key;
+      const raw = dict[key] ?? frDict[key] ?? key;
       return citySlug && citySlug !== 'paris' ? rewriteForCity(raw, citySlug) : raw;
     },
-    [locale, citySlug],
+    [dict, frDict, citySlug],
   );
 
   return (
@@ -162,9 +209,10 @@ export function ForcedLocale({
   locale: Locale;
   children: ReactNode;
 }) {
+  const { dict, frDict } = useDictionaries(locale);
   const t = useCallback(
-    (key: string): string => DICTIONARIES[locale][key] ?? DICTIONARIES.fr[key] ?? key,
-    [locale],
+    (key: string): string => dict[key] ?? frDict[key] ?? key,
+    [dict, frDict],
   );
   const setLocale = useCallback(() => {}, []);
   return (
