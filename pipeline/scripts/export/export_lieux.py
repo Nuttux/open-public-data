@@ -220,6 +220,79 @@ def fr_num(txt):
     return re.sub(r"(?<=\d)\.(?=\d{3}\b)", " ", txt) if isinstance(txt, str) else txt
 
 
+_LECTURE_MODE_PATTERNS = [
+    (re.compile(r"^titre nommant le lieu \((\d+) trouvés\)$"),
+     lambda m: f"title naming the place ({m.group(1)} found)"),
+    (re.compile(r"^tête du classement Solr \((\d+) documents au total\)$"),
+     lambda m: f"top of the Solr ranking ({m.group(1)} documents total)"),
+    (re.compile(r"^corpus complet \((\d+) documents\)$"),
+     lambda m: f"full corpus ({m.group(1)} documents)"),
+]
+
+
+def lecture_mode_en(mode_fr):
+    """Traduit la mini-phrase de couverture de lecture (prep_lieu_contexts.py) --
+    un jeu ferme de 3 gabarits, donc un template suffit, pas une traduction
+    par lieu. Repli sur le francais si un gabarit inconnu apparait."""
+    if not mode_fr:
+        return None
+    for pattern, render in _LECTURE_MODE_PATTERNS:
+        m = pattern.match(mode_fr)
+        if m:
+            return render(m)
+    return mode_fr
+
+
+def load_en_translations(slug: str) -> dict:
+    """Traductions editoriales anglaises, faites en session (meme convention que
+    la lecture/synthese elles-memes). Fichier optionnel : sans lui la fiche EN
+    replie sur le francais, comme n'importe quel champ _en absent ailleurs sur
+    le site."""
+    p = CACHE / f"{slug}_en.json"
+    if not p.exists():
+        return {}
+    try:
+        return json.load(open(p))
+    except Exception:
+        return {}
+
+
+def apply_en_translations(fiche: dict, slug: str) -> None:
+    """Fusionne les traductions anglaises dans la fiche deja assemblee. Cle sur
+    des identifiants stables (id de moment, date+source_url d'extrait BMO, nom
+    de beneficiaire) plutot que sur la position dans la liste : la fiche
+    francaise reste la seule verite pour l'ordre et le contenu, l'anglais ne
+    fait qu'ajouter un double _en a cote de chaque champ traduisible."""
+    en = load_en_translations(slug)
+    if not en:
+        return
+    if en.get("synthese_en"):
+        fiche["synthese_en"] = en["synthese_en"]
+    if en.get("wiki_extract_en") and fiche.get("wiki"):
+        fiche["wiki"]["extract_en"] = en["wiki_extract_en"]
+    if en.get("bmo_recit_en"):
+        fiche["bmo_recit_en"] = en["bmo_recit_en"]
+    if en.get("note_publique_en") and fiche.get("subventions_exploitant"):
+        fiche["subventions_exploitant"]["note_publique_en"] = en["note_publique_en"]
+    moments_en = en.get("moments_en") or {}
+    for m in fiche.get("moments", []):
+        me = moments_en.get(m["id"])
+        if me:
+            if me.get("fait_en"):
+                m["fait_en"] = me["fait_en"]
+            if me.get("pourquoi_en"):
+                m["pourquoi_en"] = me["pourquoi_en"]
+    bmo_en = en.get("bmo_extraits_en") or {}
+    for b in fiche.get("bmo_extraits", []):
+        key = f"{b['date']}|{b['source_url']}"
+        if bmo_en.get(key):
+            b["extrait_en"] = bmo_en[key]
+    residents_en = en.get("residents_en") or {}
+    for r in fiche.get("residents", []):
+        if residents_en.get(r["beneficiaire"]):
+            r["preuve_en"] = residents_en[r["beneficiaire"]]
+
+
 def subvention_par_annee(names: list[str]) -> dict | None:
     """Ventile par exercice les subventions versées à des bénéficiaires CONFIRMÉS
     (noms résolus par le juge). La confirmation est faite en amont — ici on ne
@@ -566,6 +639,7 @@ def main() -> int:
                 "invest_annees": sorted({str(r["annee"]) for r in invest}),
                 # Couverture de lecture : ce que l'agent a réellement lu sur le corpus.
                 "lecture_mode": ctx.get("selection_mode"),
+                "lecture_mode_en": lecture_mode_en(ctx.get("selection_mode")),
                 "n_lus": ctx.get("n_lus"),
                 "n_lieu": n_lieu,
             },
@@ -589,6 +663,7 @@ def main() -> int:
                         if argent["mandate_par_annee"] else None),
             "sources": sources,
         }
+        apply_en_translations(fiche, slug)
         (OUT / f"lieu_{slug}.json").write_text(json.dumps(fiche, ensure_ascii=False, indent=1))
         # Métrique citoyenne pour les cartes : l'argent si connu, sinon la
         # profondeur d'archive — pas « N délibérations » (jargon de process).

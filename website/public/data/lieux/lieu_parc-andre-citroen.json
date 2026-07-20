@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T15:44:01.151982+00:00",
+ "generated_at": "2026-07-20T19:58:00.007150+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "parc-andre-citroen",
  "name": "Parc André-Citroën",
@@ -38,6 +38,7 @@
    "2024"
   ],
   "lecture_mode": "titre nommant le lieu (57 trouvés)",
+  "lecture_mode_en": "title naming the place (57 found)",
   "n_lus": 45,
   "n_lieu": 37
  },
@@ -225,134 +226,7 @@
    "preuve": "L'objet nomme le lieu comme site de la prestation : « poste secours k-street festival les 22 et 23 juin 2024 parc André Citroën 75015 » — prestation qui se déroule dans le parc, pas un simple repère d'adresse."
   }
  ],
- "mandate": {
-  "par_annee": {
-   "2009": 19245.93,
-   "2010": 88864.37,
-   "2011": 23768.87,
-   "2012": 105586.36,
-   "2013": 1740662.56,
-   "2014": 2267559.59,
-   "2015": 641588.49,
-   "2016": 373351.31,
-   "2017": 307201.54
-  },
-  "total_eur": 5567829.02,
-  "operations": [
-   {
-    "ap_cle": "B100/0903980",
-    "ap_texte": "EXTENSION PARC ANDRE CITROEN (15E)",
-    "mandate_par_annee": {
-     "2009": 19245.93,
-     "2010": 88864.37,
-     "2011": 23768.87,
-     "2012": 26588.4,
-     "2013": 1343810.27
-    },
-    "total_mandate": 1502277.84,
-    "preuve": "Le libellé désigne ce lieu : « EXTENSION PARC ANDRE CITROEN (15E) », direction DEVE, mission « ESPACES VERTS ET ENV » — la DEVE est la direction gestionnaire du parc citée au Conseil de Paris (mars 2015).",
-    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/0903980"
-   },
-   {
-    "ap_cle": "1504712",
-    "ap_texte": "PARC ANDRE CITROEN RENOVATION  2e PHASE",
-    "mandate_par_annee": {
-     "2015": 559702.76,
-     "2016": 347938.45,
-     "2017": 307201.54
-    },
-    "total_mandate": 1214842.75,
-    "preuve": "Le libellé désigne ce lieu et l'opération : « PARC ANDRE CITROEN RENOVATION 2e PHASE » (DEVE). Cette deuxième phase de rénovation (budget 3,7 M€) est explicitement décrite aux Conseils de Paris de mars 2015 et février 2018 (« la programmation de la deuxième phase est prévue pour l'actuelle mandature »).",
-    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=1504712"
-   },
-   {
-    "ap_cle": "0903980",
-    "ap_texte": "EXTENSION PARC ANDRE CITROEN (15E)",
-    "mandate_par_annee": {
-     "2014": 1127173.3,
-     "2015": 12882.51,
-     "2016": 14424.9
-    },
-    "total_mandate": 1154480.71,
-    "preuve": "Le libellé désigne ce lieu : « EXTENSION PARC ANDRE CITROEN (15E) » (DEVE, ESPACES VERTS ET ENV).",
-    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=0903980"
-   },
-   {
-    "ap_cle": "1003980",
-    "ap_texte": "EXTENSION PARC ANDRE CITROËN",
-    "mandate_par_annee": {
-     "2014": 479805.42,
-     "2015": 45219.78,
-     "2016": 6813.59
-    },
-    "total_mandate": 531838.79,
-    "preuve": "Le libellé désigne ce lieu : « EXTENSION PARC ANDRE CITROËN » (DEVE, ESPACES VERTS ET ENV).",
-    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=1003980"
-   },
-   {
-    "ap_cle": "1203980",
-    "ap_texte": "EXTENSION PARC ANDRE CITROËN",
-    "mandate_par_annee": {
-     "2014": 432904.08,
-     "2015": 13987.15
-    },
-    "total_mandate": 446891.23,
-    "preuve": "Le libellé désigne ce lieu : « EXTENSION PARC ANDRE CITROËN » (DEVE, ESPACES VERTS ET ENV).",
-    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=1203980"
-   },
-   {
-    "ap_cle": "B100/1003980",
-    "ap_texte": "EXTENSION PARC ANDRE CITROËN",
-    "mandate_par_annee": {
-     "2013": 335482.27
-    },
-    "total_mandate": 335482.27,
-    "preuve": "Le libellé désigne ce lieu : « EXTENSION PARC ANDRE CITROËN » (DEVE, ESPACES VERTS ET ENV).",
-    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/1003980"
-   },
-   {
-    "ap_cle": "1303980",
-    "ap_texte": "EXTENSION PARC ANDRE CITROËN",
-    "mandate_par_annee": {
-     "2014": 227676.79,
-     "2015": 9796.29,
-     "2016": 4174.37
-    },
-    "total_mandate": 241647.45,
-    "preuve": "Le libellé désigne ce lieu : « EXTENSION PARC ANDRE CITROËN » (DEVE, ESPACES VERTS ET ENV).",
-    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=1303980"
-   },
-   {
-    "ap_cle": "B100/1203980",
-    "ap_texte": "EXTENSION PARC ANDRE CITROËN",
-    "mandate_par_annee": {
-     "2012": 78997.96,
-     "2013": 45992.06
-    },
-    "total_mandate": 124990.02,
-    "preuve": "Le libellé désigne ce lieu : « EXTENSION PARC ANDRE CITROËN » (DEVE, ESPACES VERTS ET ENV).",
-    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/1203980"
-   },
-   {
-    "ap_cle": "B100/1303980",
-    "ap_texte": "EXTENSION PARC ANDRE CITROËN",
-    "mandate_par_annee": {
-     "2013": 15377.96
-    },
-    "total_mandate": 15377.96,
-    "preuve": "Le libellé désigne ce lieu : « EXTENSION PARC ANDRE CITROËN » (DEVE, ESPACES VERTS ET ENV).",
-    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/1303980"
-   }
-  ],
-  "periode": [
-   "2009",
-   "2017"
-  ],
-  "source": {
-   "name": "Comptes administratifs — autorisations de programme, Ville de Paris",
-   "url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/"
-  }
- },
+ "mandate": null,
  "sources": {
   "delibs": {
    "name": "Débat-Délibs — Conseil de Paris",

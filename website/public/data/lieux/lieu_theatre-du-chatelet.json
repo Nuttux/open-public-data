@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T15:44:01.151982+00:00",
+ "generated_at": "2026-07-20T19:58:00.007150+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "theatre-du-chatelet",
  "name": "Théâtre du Châtelet",
@@ -35,6 +35,7 @@
   "invest_total_eur": 0,
   "invest_annees": [],
   "lecture_mode": "titre nommant le lieu (30 trouvés)",
+  "lecture_mode_en": "title naming the place (30 found)",
   "n_lus": 30,
   "n_lieu": 30
  },
@@ -508,116 +509,7 @@
    "preuve": "L'objet nomme le lieu et son code postal : \"REMPLACT CONTREPOIDS RIDEAU DE FER THÉÂTRE DU CHÂTELET 75001\" — rideau de fer, équipement de scène."
   }
  ],
- "mandate": {
-  "par_annee": {
-   "2009": 315863.99,
-   "2010": 393945.88,
-   "2011": 212721.7,
-   "2012": 3205508.39,
-   "2013": 1266459.3,
-   "2014": 719047.99,
-   "2015": 1029429.13,
-   "2016": 1588286.18,
-   "2017": 2438004.58
-  },
-  "total_eur": 11169267.14,
-  "operations": [
-   {
-    "ap_cle": "B100/0703714",
-    "ap_texte": "TMP CHATELET",
-    "mandate_par_annee": {
-     "2009": 315863.99,
-     "2010": 393945.88,
-     "2011": 163025.7,
-     "2012": 2033376.32,
-     "2013": 41024.8
-    },
-    "total_mandate": 2947236.69,
-    "preuve": "Le libellé \"TMP CHATELET\" désigne le Théâtre Musical de Paris - Théâtre du Châtelet : \"TMP\"/\"Théâtre Musical de Paris\" est le nom officiel du lieu (cf. délib. 2010 DAC 12 : \"l'association Théâtre Musical de Paris - Théâtre du Châtelet\"). Direction DAC, mission AFFAIRES CULTURELLES.",
-    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/0703714"
-   },
-   {
-    "ap_cle": "1604552",
-    "ap_texte": "TMP CHATELET - RENOVATION",
-    "mandate_par_annee": {
-     "2016": 965413.04,
-     "2017": 1896236.74
-    },
-    "total_mandate": 2861649.78,
-    "preuve": "Le libellé \"TMP CHATELET - RENOVATION\" désigne la rénovation du Théâtre du Châtelet (TMP = Théâtre Musical de Paris, nom officiel du lieu). Cohérent avec le programme de travaux confirmé en séance (vœu mars 2015 : travaux \"de l'été 2017 à l'été 2019 pour le Théâtre du Châtelet\"). Direction DAC, mission AFFAIRES CULTURELLES.",
-    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=1604552"
-   },
-   {
-    "ap_cle": "B100/1003714",
-    "ap_texte": "TMP CHATELET",
-    "mandate_par_annee": {
-     "2011": 49696.0,
-     "2012": 1172132.07,
-     "2013": 1225434.5
-    },
-    "total_mandate": 2447262.57,
-    "preuve": "Le libellé \"TMP CHATELET\" désigne le Théâtre Musical de Paris - Théâtre du Châtelet (nom officiel du lieu, cf. délib. 2010 DAC 12). Direction DAC, mission AFFAIRES CULTURELLES.",
-    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/1003714"
-   },
-   {
-    "ap_cle": "1103714",
-    "ap_texte": "Théâtre Chatelet - Sécurité",
-    "mandate_par_annee": {
-     "2014": 401626.91,
-     "2015": 905264.81,
-     "2016": 218096.14,
-     "2017": 120406.55
-    },
-    "total_mandate": 1645394.41,
-    "preuve": "Le libellé \"Théâtre Chatelet - Sécurité\" nomme explicitement le théâtre (travaux de sécurité sur le bâtiment). Direction DAC, mission AFFAIRES CULTURELLES.",
-    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=1103714"
-   },
-   {
-    "ap_cle": "1404552",
-    "ap_texte": "TMP CHATELET - RENOVATION",
-    "mandate_par_annee": {
-     "2014": 139134.61,
-     "2015": 38133.97,
-     "2016": 396666.89,
-     "2017": 169180.79
-    },
-    "total_mandate": 743116.26,
-    "preuve": "Le libellé \"TMP CHATELET - RENOVATION\" désigne la rénovation du Théâtre du Châtelet (TMP = Théâtre Musical de Paris, nom officiel du lieu). Direction DAC, mission AFFAIRES CULTURELLES.",
-    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=1404552"
-   },
-   {
-    "ap_cle": "1003714",
-    "ap_texte": "Théâtre Chatelet - Sécurité",
-    "mandate_par_annee": {
-     "2014": 178286.47,
-     "2015": 86030.35,
-     "2016": 8110.11,
-     "2017": 67734.72
-    },
-    "total_mandate": 340161.65,
-    "preuve": "Le libellé \"Théâtre Chatelet - Sécurité\" nomme explicitement le théâtre (travaux de sécurité sur le bâtiment). Direction DAC, mission AFFAIRES CULTURELLES.",
-    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=1003714"
-   },
-   {
-    "ap_cle": "1704552",
-    "ap_texte": "TMP CHATELET - RENOVATION",
-    "mandate_par_annee": {
-     "2017": 184445.78
-    },
-    "total_mandate": 184445.78,
-    "preuve": "Le libellé \"TMP CHATELET - RENOVATION\" désigne la rénovation du Théâtre du Châtelet (TMP = Théâtre Musical de Paris, nom officiel du lieu). Direction DAC, mission AFFAIRES CULTURELLES.",
-    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=1704552"
-   }
-  ],
-  "periode": [
-   "2009",
-   "2017"
-  ],
-  "source": {
-   "name": "Comptes administratifs — autorisations de programme, Ville de Paris",
-   "url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/"
-  }
- },
+ "mandate": null,
  "sources": {
   "delibs": {
    "name": "Débat-Délibs — Conseil de Paris",

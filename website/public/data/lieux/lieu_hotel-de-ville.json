@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T15:44:01.151982+00:00",
+ "generated_at": "2026-07-20T19:58:00.007150+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "hotel-de-ville",
  "name": "Hôtel de Ville",
@@ -35,6 +35,7 @@
   "invest_total_eur": 0,
   "invest_annees": [],
   "lecture_mode": "titre nommant le lieu (12 trouvés)",
+  "lecture_mode_en": "title naming the place (12 found)",
   "n_lus": 11,
   "n_lieu": 8
  },
@@ -276,156 +277,7 @@
    "preuve": "L'objet nomme le lieu entre parenthèses, verbatim : « SA2_ COMMÉMORATION_ABOLITION-ESCLAVAGE (HÔTEL DE VILLE) LOT1 ». Lecture la plus probable : la parenthèse désigne le lieu de la commémoration. Réserve : l'intitulé est un libellé interne abrégé, aucune source du dossier ne confirme que la cérémonie s'est tenue dans le bâtiment — d'où une confiance moyenne."
   }
  ],
- "mandate": {
-  "par_annee": {
-   "2009": 10555190.42,
-   "2010": 3448565.66,
-   "2011": 618507.62,
-   "2012": 1002132.06,
-   "2013": 1159545.3,
-   "2014": 10746.02,
-   "2015": 965573.09
-  },
-  "total_eur": 17760260.17,
-  "operations": [
-   {
-    "ap_cle": "B100/0700001",
-    "ap_texte": "HOTEL DE VILLE",
-    "mandate_par_annee": {
-     "2009": 9151845.89,
-     "2010": 2461903.03,
-     "2011": 571644.85,
-     "2012": 99489.35,
-     "2013": 1414.25
-    },
-    "total_mandate": 12286297.37,
-    "preuve": "Libellé verbatim : « HOTEL DE VILLE », mission « PATRIMOINE ET ARCHIT », direction DPA — opération patrimoniale désignant nommément le bâtiment, cohérente avec la charge d'entretien confirmée au Conseil de Paris (« La Mairie de Paris a la charge de son propre patrimoine », débat 2021 sur l'entretien de l'Hôtel de Ville).",
-    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/0700001"
-   },
-   {
-    "ap_cle": "B100/1000001",
-    "ap_texte": "HOTEL DE VILLE",
-    "mandate_par_annee": {
-     "2010": 14394.06,
-     "2012": 516446.86,
-     "2013": 995368.77
-    },
-    "total_mandate": 1526209.69,
-    "preuve": "Libellé verbatim : « HOTEL DE VILLE », mission « PATRIMOINE ET ARCHIT », direction DPA — opération patrimoniale désignant nommément le bâtiment.",
-    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/1000001"
-   },
-   {
-    "ap_cle": "1000001",
-    "ap_texte": "HOTEL DE VILLE",
-    "mandate_par_annee": {
-     "2014": 10746.02,
-     "2015": 965573.09
-    },
-    "total_mandate": 976319.11,
-    "preuve": "Libellé verbatim : « HOTEL DE VILLE », mission « PATRIMOINE ET ARCHIT », direction DPA — opération patrimoniale désignant nommément le bâtiment.",
-    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=1000001"
-   },
-   {
-    "ap_cle": "B100/0703136",
-    "ap_texte": "SECURISATION HOTEL DE VILLE",
-    "mandate_par_annee": {
-     "2009": 577193.24,
-     "2010": 37610.28,
-     "2011": 2920.72,
-     "2012": 6901.52
-    },
-    "total_mandate": 624625.76,
-    "preuve": "Libellé verbatim : « SECURISATION HOTEL DE VILLE », mission « PREVENTION ET PROTEC », direction DPP — travaux de sécurisation portant nommément sur le bâtiment.",
-    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/0703136"
-   },
-   {
-    "ap_cle": "B100/0600001",
-    "ap_texte": "HOTEL DE VILLE",
-    "mandate_par_annee": {
-     "2009": 579491.02,
-     "2010": 11770.96
-    },
-    "total_mandate": 591261.98,
-    "preuve": "Libellé verbatim : « HOTEL DE VILLE », mission « PATRIMOINE ET ARCHIT », direction DPA — opération patrimoniale désignant nommément le bâtiment.",
-    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/0600001"
-   },
-   {
-    "ap_cle": "B100/0903136",
-    "ap_texte": "SECURISATION HOTEL DE VILLE",
-    "mandate_par_annee": {
-     "2010": 527417.39,
-     "2012": 9139.11
-    },
-    "total_mandate": 536556.5,
-    "preuve": "Libellé verbatim : « SECURISATION HOTEL DE VILLE », mission « PREVENTION ET PROTEC », direction DPP — travaux de sécurisation portant nommément sur le bâtiment.",
-    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/0903136"
-   },
-   {
-    "ap_cle": "B100/1203136",
-    "ap_texte": "SECURISATION HOTEL DE VILLE",
-    "mandate_par_annee": {
-     "2012": 285991.1,
-     "2013": 93534.69
-    },
-    "total_mandate": 379525.79,
-    "preuve": "Libellé verbatim : « SECURISATION HOTEL DE VILLE », mission « PREVENTION ET PROTEC », direction DPP — travaux de sécurisation portant nommément sur le bâtiment.",
-    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/1203136"
-   },
-   {
-    "ap_cle": "B100/1003884",
-    "ap_texte": "ENTRETIEN HOTEL DE VILLE",
-    "mandate_par_annee": {
-     "2010": 201768.75,
-     "2011": 43890.14
-    },
-    "total_mandate": 245658.89,
-    "preuve": "Libellé verbatim : « ENTRETIEN HOTEL DE VILLE », mission « PATRIMOINE ET ARCHIT », direction DPA — pas une enveloppe générique d'entretien des bâtiments : le libellé désigne ce bâtiment.",
-    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/1003884"
-   },
-   {
-    "ap_cle": "B100/0500001",
-    "ap_texte": "HOTEL DE VILLE",
-    "mandate_par_annee": {
-     "2009": 91257.29,
-     "2010": 145330.13
-    },
-    "total_mandate": 236587.42,
-    "preuve": "Libellé verbatim : « HOTEL DE VILLE », mission « PATRIMOINE ET ARCHIT », direction DPA — opération patrimoniale désignant nommément le bâtiment.",
-    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/0500001"
-   },
-   {
-    "ap_cle": "B100/0903884",
-    "ap_texte": "ENTRETIEN HOTEL DE VILLE",
-    "mandate_par_annee": {
-     "2009": 155402.98,
-     "2010": 48371.06,
-     "2011": 51.91
-    },
-    "total_mandate": 203825.95,
-    "preuve": "Libellé verbatim : « ENTRETIEN HOTEL DE VILLE », mission « PATRIMOINE ET ARCHIT », direction DPA — pas une enveloppe générique : le libellé désigne ce bâtiment.",
-    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/0903884"
-   },
-   {
-    "ap_cle": "B100/1203884",
-    "ap_texte": "ENTRETIEN HOTEL DE VILLE",
-    "mandate_par_annee": {
-     "2012": 84164.12,
-     "2013": 69227.59
-    },
-    "total_mandate": 153391.71,
-    "preuve": "Libellé verbatim : « ENTRETIEN HOTEL DE VILLE », mission « PATRIMOINE ET ARCHIT », direction DPA — pas une enveloppe générique : le libellé désigne ce bâtiment.",
-    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/1203884"
-   }
-  ],
-  "periode": [
-   "2009",
-   "2015"
-  ],
-  "source": {
-   "name": "Comptes administratifs — autorisations de programme, Ville de Paris",
-   "url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/"
-  }
- },
+ "mandate": null,
  "sources": {
   "delibs": {
    "name": "Débat-Délibs — Conseil de Paris",

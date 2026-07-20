@@ -146,8 +146,16 @@ export function makeEntityDrawer<D>(cfg: EntityPageConfig<D>) {
       ? await readLocale()
       : "fr";
     const dr = cfg.drawer;
+    // `display: contents` : le wrapper ne génère aucune boîte. Sans ça, Next
+    // peut scroller la page d'arrière-plan vers ce div (vide, en fin de
+    // document) quand il applique son scroll de navigation — notamment sur
+    // les fiches avec ?year=, où un server-patch (Next 16.1, shouldScroll
+    // hardcodé à true dans server-patch-reducer) ignore le scroll={false} du
+    // Link. Une boîte à rect nul est ignorée par shouldSkipElement, donc
+    // aucun scroll n'est appliqué. Les sélecteurs `.theme-fusion .fx-drawer*`
+    // continuent de matcher (le matching CSS ne dépend pas des boîtes).
     return (
-      <div className="theme-fusion">
+      <div className="theme-fusion" style={{ display: "contents" }}>
         <DetailDrawer
           kicker={dr.kicker(d, locale)}
           title={dr.title(d, locale)}

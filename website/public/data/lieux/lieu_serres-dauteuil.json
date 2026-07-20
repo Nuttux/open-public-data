@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T15:44:01.151982+00:00",
+ "generated_at": "2026-07-20T19:58:00.007150+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "serres-dauteuil",
  "name": "Serres d'Auteuil",
@@ -37,6 +37,7 @@
    "2022"
   ],
   "lecture_mode": "titre nommant le lieu (13 trouvés)",
+  "lecture_mode_en": "title naming the place (13 found)",
   "n_lus": 13,
   "n_lieu": 11
  },
@@ -194,97 +195,7 @@
    "preuve": "Objet : « INSTALLATION DE CLAIES D'OMBRAGE SUR LES SERRES D'AUTEUIL » — équipement installé directement sur les serres du lieu."
   }
  ],
- "mandate": {
-  "par_annee": {
-   "2012": 316970.39,
-   "2013": 323231.9,
-   "2014": 2409764.66,
-   "2015": 2290019.67,
-   "2016": 1443610.95,
-   "2017": 1695735.59
-  },
-  "total_eur": 8479333.16,
-  "operations": [
-   {
-    "ap_cle": "1204298",
-    "ap_texte": "DEMENAGEMENT DES SERRES D'AUTEUIL",
-    "mandate_par_annee": {
-     "2014": 410736.9,
-     "2015": 481097.45,
-     "2016": 1219957.27,
-     "2017": 1482154.59
-    },
-    "total_mandate": 3593946.21,
-    "preuve": "Libellé : « DEMENAGEMENT DES SERRES D'AUTEUIL » (direction DEVE, mission Espaces verts) — opération nommant explicitement le lieu ; le déménagement des serres et des collections est documenté dans les délibérations du Conseil de Paris (dossier Roland-Garros, ex. 2012 DEVE 75).",
-    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=1204298"
-   },
-   {
-    "ap_cle": "1304298",
-    "ap_texte": "DEMENAGEMENT DES SERRES D'AUTEUIL",
-    "mandate_par_annee": {
-     "2014": 906910.2,
-     "2015": 1060679.24,
-     "2016": 91538.12,
-     "2017": 204192.31
-    },
-    "total_mandate": 2263319.87,
-    "preuve": "Libellé : « DEMENAGEMENT DES SERRES D'AUTEUIL » (DEVE, Espaces verts) — même opération nommant explicitement le lieu, confirmée par les délibérations du Conseil de Paris.",
-    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=1304298"
-   },
-   {
-    "ap_cle": "1104298",
-    "ap_texte": "DEMENAGEMENTS DES SERRES D'AUTEUIL",
-    "mandate_par_annee": {
-     "2014": 1092117.56,
-     "2015": 748242.98,
-     "2016": 132115.56,
-     "2017": 9388.69
-    },
-    "total_mandate": 1981864.79,
-    "preuve": "Libellé : « DEMENAGEMENTS DES SERRES D'AUTEUIL » (DEVE, Espaces verts) — opération nommant explicitement le lieu.",
-    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=1104298"
-   },
-   {
-    "ap_cle": "B100/1104298",
-    "ap_texte": "DEMENAGEMENTS DES SERRES D'AUTEUIL",
-    "mandate_par_annee": {
-     "2012": 316970.39,
-     "2013": 156454.6
-    },
-    "total_mandate": 473424.99,
-    "preuve": "Libellé : « DEMENAGEMENTS DES SERRES D'AUTEUIL » (DEVE, Espaces verts) — opération nommant explicitement le lieu.",
-    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/1104298"
-   },
-   {
-    "ap_cle": "B100/1204298",
-    "ap_texte": "DEMENAGEMENT DES SERRES D'AUTEUIL",
-    "mandate_par_annee": {
-     "2013": 150683.83
-    },
-    "total_mandate": 150683.83,
-    "preuve": "Libellé : « DEMENAGEMENT DES SERRES D'AUTEUIL » (DEVE, Espaces verts) — opération nommant explicitement le lieu.",
-    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/1204298"
-   },
-   {
-    "ap_cle": "B100/1304298",
-    "ap_texte": "DEMENAGEMENT DES SERRES D'AUTEUIL",
-    "mandate_par_annee": {
-     "2013": 16093.47
-    },
-    "total_mandate": 16093.47,
-    "preuve": "Libellé : « DEMENAGEMENT DES SERRES D'AUTEUIL » (DEVE, Espaces verts) — opération nommant explicitement le lieu.",
-    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/1304298"
-   }
-  ],
-  "periode": [
-   "2012",
-   "2017"
-  ],
-  "source": {
-   "name": "Comptes administratifs — autorisations de programme, Ville de Paris",
-   "url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/"
-  }
- },
+ "mandate": null,
  "sources": {
   "delibs": {
    "name": "Débat-Délibs — Conseil de Paris",

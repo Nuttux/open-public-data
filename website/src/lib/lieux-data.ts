@@ -13,7 +13,9 @@ export type LieuMoment = {
   id: string;
   seance: string;
   fait: string;
+  fait_en?: string | null;
   pourquoi?: string;
+  pourquoi_en?: string | null;
   source_url: string | null;
   /** Moment jugé marquant (saillance forte) — mis en avant ; les autres sont
    *  repliés. Absent/true si la fiche n'a pas encore de hiérarchisation. */
@@ -28,7 +30,7 @@ export type LieuMontant = {
   source_url: string | null;
 };
 
-export type LieuBmoExtrait = { date: string; extrait: string; source_url: string };
+export type LieuBmoExtrait = { date: string; extrait: string; extrait_en?: string | null; source_url: string };
 /** Dépense d'investissement RÉELLEMENT mandatée (comptes administratifs).
  *  Série par exercice fusionnant les opérations AP jugées « au-lieu »
  *  (2009-2017 — le niveau opération n'est plus publié après). */
@@ -55,6 +57,7 @@ export type LieuMarche = {
 /** Récit sourcé « ce que dit l'archive » — écrit à partir des extraits retenus.
  *  Les citations brutes restent dessous, dépliables, comme preuve. */
 export type LieuBmoRecit = string | null;
+export type LieuBmoRecitEn = string | null;
 
 export type LieuInvest = {
   annee: string | number;
@@ -79,7 +82,7 @@ export type LieuFicheData = {
   /** D'où vient la photo : vignette d'article (Wikipédia) ou repêchage Commons —
    *  licences et auteurs différents. */
   photo_credit: { licence: string | null; auteur: string | null; url: string | null; source: string } | null;
-  wiki: { extract: string | null; url: string | null; source: { name: string; url: string } };
+  wiki: { extract: string | null; extract_en?: string | null; url: string | null; source: { name: string; url: string } };
   famille: string;
   stats: {
     n_delibs: number;
@@ -91,6 +94,7 @@ export type LieuFicheData = {
     /** Couverture de lecture réelle : combien de documents l'agent a lus, et
      *  selon quelle règle de sélection (prep_lieu_contexts.py). */
     lecture_mode: string | null;
+    lecture_mode_en?: string | null;
     n_lus: number | null;
     /** Documents qui portent réellement sur le lieu (voir LieuIndexEntry). */
     n_lieu: number | null;
@@ -104,17 +108,20 @@ export type LieuFicheData = {
      *  (gère aussi d'autres sites — la subvention ne va pas qu'ici). */
     perimetre?: string;
     note_publique?: string | null;
+    note_publique_en?: string | null;
     autres_sites?: string[];
   } | null;
   /** Bénéficiaires qui reçoivent de l'argent pour une activité DANS le lieu sans
    *  le gérer (résidents) — affichés à part de l'exploitant. */
-  residents: { beneficiaire: string; montant_total: number; preuve?: string }[];
+  residents: { beneficiaire: string; montant_total: number; preuve?: string; preuve_en?: string | null }[];
   kpi_montant: { valeur: string; label_fr: string; label_en: string; source_url: string | null } | null;
   synthese_fr: string | null;
+  synthese_en?: string | null;
   moments: LieuMoment[];
   montants: LieuMontant[];
   bmo_extraits: LieuBmoExtrait[];
   bmo_recit?: LieuBmoRecit;
+  bmo_recit_en?: LieuBmoRecitEn;
   mandate?: LieuMandate | null;
   /** Marchés publics rattachés au lieu par le juge (rôle « au-lieu »). */
   marches?: LieuMarche[];

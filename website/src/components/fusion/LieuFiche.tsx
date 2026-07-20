@@ -108,8 +108,9 @@ export default function LieuFiche({ lieu }: { lieu: LieuFicheData }) {
   const kpis = kpiItems.slice(0, 2);
 
   const SRC = { color: "var(--bleu)", borderBottom: "1px solid var(--bleu)" } as const;
+  const wikiLabel = locale === "en" ? "Wikipedia ↗" : "Wikipédia ↗";
   // Lead = extrait Wikipédia, coupé à la première phrase / le reste en sub.
-  const extract = lieu.wiki.extract ?? "";
+  const extract = (locale === "en" ? lieu.wiki.extract_en : null) || lieu.wiki.extract || "";
   const cut = extract.indexOf(". ");
   const leadMain = cut > 0 ? extract.slice(0, cut + 1) : extract;
   const leadSub = cut > 0 ? extract.slice(cut + 2) : null;
@@ -155,7 +156,7 @@ export default function LieuFiche({ lieu }: { lieu: LieuFicheData }) {
                   rel="noopener noreferrer"
                   style={{ fontFamily: "var(--f-mono)", fontSize: 11, color: "var(--muted)" }}
                 >
-                  Wikipédia ↗
+                  {wikiLabel}
                 </a>
               )}
             </p>
@@ -241,6 +242,7 @@ export default function LieuFiche({ lieu }: { lieu: LieuFicheData }) {
             <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", gap: 12, padding: "6px 6px 14px", borderBottom: "1px solid var(--rule)" }}>
               <Link
                 href={`${basePath}/subventions/association/${encodeURIComponent(sub.nom_fiche)}`}
+                scroll={false}
                 className="fx-row-link"
                 style={{ fontSize: 13.5, fontWeight: 600 }}
               >
@@ -263,7 +265,11 @@ export default function LieuFiche({ lieu }: { lieu: LieuFicheData }) {
               </details>
             )}
             {/* Attribution honnête : un exploitant multi-lieu ne dépense pas tout ici. */}
-            {sub.note_publique && <p className="fx-fiche-note">{sub.note_publique}</p>}
+            {sub.note_publique && (
+              <p className="fx-fiche-note">
+                {(locale === "en" && sub.note_publique_en) || sub.note_publique}
+              </p>
+            )}
           </section>
         );
       })()}
@@ -278,6 +284,7 @@ export default function LieuFiche({ lieu }: { lieu: LieuFicheData }) {
             <Link
               key={i}
               href={`${basePath}/subventions/association/${encodeURIComponent(r.beneficiaire)}`}
+              scroll={false}
               className="fx-row-link"
               style={{ display: "flex", justifyContent: "space-between", gap: 12, padding: "10px 6px", borderBottom: "1px solid var(--rule)", alignItems: "baseline" }}
             >
@@ -366,7 +373,7 @@ export default function LieuFiche({ lieu }: { lieu: LieuFicheData }) {
             // Le projet a été rattaché au lieu par le juge : on le rend cliquable
             // vers sa fiche quand on a retrouvé son id (lien lieu → projet).
             return r.id ? (
-              <Link key={i} href={`${basePath}/investissements/projet/${encodeURIComponent(r.id)}`} className="fx-row-link" style={rowStyle}>
+              <Link key={i} href={`${basePath}/investissements/projet/${encodeURIComponent(r.id)}`} scroll={false} className="fx-row-link" style={rowStyle}>
                 {body}
               </Link>
             ) : (
@@ -389,6 +396,7 @@ export default function LieuFiche({ lieu }: { lieu: LieuFicheData }) {
           <Link
             key={m.numero_marche}
             href={`${basePath}/marches/contrat/${encodeURIComponent(m.numero_marche)}`}
+            scroll={false}
             className="fx-row-link"
             style={{ display: "flex", justifyContent: "space-between", gap: 12, padding: "11px 6px", borderBottom: "1px solid var(--rule)", alignItems: "baseline" }}
           >
@@ -446,10 +454,10 @@ export default function LieuFiche({ lieu }: { lieu: LieuFicheData }) {
               <span style={{ fontSize: 13.5, lineHeight: 1.45, flex: 1 }}>
                 {m.pourquoi && (
                   <span style={{ display: "block", fontFamily: "var(--f-mono)", fontSize: 10, letterSpacing: ".04em", textTransform: "uppercase", color: "var(--ocre)", marginBottom: 3 }}>
-                    {m.pourquoi}
+                    {(locale === "en" && m.pourquoi_en) || m.pourquoi}
                   </span>
                 )}
-                <Money text={m.fait} />
+                <Money text={(locale === "en" && m.fait_en) || m.fait} />
               </span>
               <span aria-hidden="true" style={{ fontFamily: "var(--f-mono)", fontSize: 12, color: "var(--muted)" }}>→</span>
             </div>
@@ -502,7 +510,14 @@ export default function LieuFiche({ lieu }: { lieu: LieuFicheData }) {
               <span className="tnum" style={{ fontFamily: "var(--f-mono)", fontSize: 10.5, color: "var(--rouge)", fontWeight: 600, whiteSpace: "nowrap", minWidth: 40 }}>
                 {b.date.slice(0, 4)}
               </span>
-              <span style={{ fontSize: 13, lineHeight: 1.45, color: "var(--ink-2)", flex: 1 }}>« {b.extrait.slice(0, 160)}{b.extrait.length > 160 ? "…" : ""} »</span>
+              <span style={{ fontSize: 13, lineHeight: 1.45, color: "var(--ink-2)", flex: 1 }}>
+                {(() => {
+                  const isEn = locale === "en" && !!b.extrait_en;
+                  const txt = (isEn && b.extrait_en) || b.extrait;
+                  const cut = txt.slice(0, 160) + (txt.length > 160 ? "…" : "");
+                  return isEn ? <>&ldquo;{cut}&rdquo;</> : <>« {cut} »</>;
+                })()}
+              </span>
               <span aria-hidden="true" style={{ fontFamily: "var(--f-mono)", fontSize: 12, color: "var(--muted)" }}>→</span>
             </div>
           </a>
@@ -512,7 +527,7 @@ export default function LieuFiche({ lieu }: { lieu: LieuFicheData }) {
             <div className="fx-fiche-h fx-fiche-h--moments">{t("fx.lieu.h.bmo")}</div>
             {lieu.bmo_recit && (
               <p style={{ fontSize: 14.5, lineHeight: 1.6, color: "var(--ink)", margin: "0 0 6px", padding: "0 6px" }}>
-                <Money text={lieu.bmo_recit} />
+                <Money text={(locale === "en" && lieu.bmo_recit_en) || lieu.bmo_recit} />
               </p>
             )}
             <details>

@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T15:44:01.151982+00:00",
+ "generated_at": "2026-07-20T19:58:00.007150+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "place-de-la-republique",
  "name": "Place de la République",
@@ -37,6 +37,7 @@
    "2023"
   ],
   "lecture_mode": "titre nommant le lieu (41 trouvés)",
+  "lecture_mode_en": "title naming the place (41 found)",
   "n_lus": 41,
   "n_lieu": 32
  },
@@ -155,147 +156,7 @@
    "preuve": "L'objet du marché nomme le lieu et porte sur la gestion et l'animation d'un équipement situé sur la place (verbatim : « CSP2-GESTION  ANIMATION LUDOKIOSQUE PLACE DE LA REPUBLIQUE ») : prestation qui s'y déroule, et non simple repère d'adresse ni marché-cadre de toute la Ville. SIRET du titulaire : 34852016400040. Réserves : aucune source consultée ne mentionne le ludokiosque ni son exploitation — les délibérations n'évoquent des « kiosques » que de façon générique dans le marché de maîtrise d'œuvre de la place (2010 DVD 112, autorisation de « déposer la demande de permis de construire pour la réalisation des kiosques »), sans qu'on puisse établir qu'il s'agit de celui-ci ; le rattachement repose sur l'objet seul. Le montant est un maximum contractuel, pas une dépense constatée."
   }
  ],
- "mandate": {
-  "par_annee": {
-   "2009": 23058.67,
-   "2010": 1048555.32,
-   "2011": 2222098.01,
-   "2012": 9365843.57,
-   "2013": 10185603.51,
-   "2014": 922941.72,
-   "2015": 74452.21,
-   "2016": 57605.38
-  },
-  "total_eur": 23900158.39,
-  "operations": [
-   {
-    "ap_cle": "B100/1103923",
-    "ap_texte": "PLACE DE LA REPUBLIQUE",
-    "mandate_par_annee": {
-     "2011": 1084753.75,
-     "2012": 8604869.33,
-     "2013": 4594851.13
-    },
-    "total_mandate": 14284474.21,
-    "preuve": "Libellé de l'opération verbatim « PLACE DE LA REPUBLIQUE », mission « VOIRIE ET DEPLACEMEN », direction DVD. Le calendrier des mandatements (2011-2013, pic de 8,6 M€ en 2012) coïncide avec le chantier de réaménagement de la place mené par la DVD et inauguré en juin 2013, attesté par les délibérations du Conseil de Paris (vœu 2009 « réaménagement de la place de la République », vœu mars 2010 sur le « projet d'aménagement de la place de la République », marché de maîtrise d'œuvre 2010 DVD 112 ; « la place de la République, qui a été inaugurée en juin 2013 », séance de mai 2015).",
-    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/1103923"
-   },
-   {
-    "ap_cle": "B100/1303923",
-    "ap_texte": "PLACE DE LA REPUBLIQUE",
-    "mandate_par_annee": {
-     "2013": 2749897.19
-    },
-    "total_mandate": 2749897.19,
-    "preuve": "Libellé verbatim « PLACE DE LA REPUBLIQUE », mission voirie, direction DVD ; mandatement 2013, année de livraison du réaménagement de la place (« inaugurée en juin 2013 » selon les délibérations). Même numéro d'opération racine (x03923) que les autres tranches du chantier.",
-    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/1303923"
-   },
-   {
-    "ap_cle": "B100/1203923",
-    "ap_texte": "PLACE DE LA REPUBLIQUE",
-    "mandate_par_annee": {
-     "2012": 151261.41,
-     "2013": 2536774.7
-    },
-    "total_mandate": 2688036.11,
-    "preuve": "Libellé verbatim « PLACE DE LA REPUBLIQUE », mission voirie, direction DVD ; mandatements 2012-2013, en plein chantier de réaménagement de la place (travaux DVD documentés par les délibérations, livraison juin 2013). Même racine d'opération x03923.",
-    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/1203923"
-   },
-   {
-    "ap_cle": "B100/0903923",
-    "ap_texte": "PLACE DE LA REPUBLIQUE",
-    "mandate_par_annee": {
-     "2009": 23058.67,
-     "2010": 986476.94,
-     "2011": 385686.49,
-     "2012": 193022.0,
-     "2013": 57441.28
-    },
-    "total_mandate": 1645685.38,
-    "preuve": "Libellé verbatim « PLACE DE LA REPUBLIQUE », mission voirie, direction DVD ; mandatements 2009-2013, cohérents avec la phase concertation/concours puis travaux du réaménagement (vœu juin 2009 « réaménagement de la place de la République : respect des engagements pris », vœu mars 2010 citant le « concours international d'architecture et d'urbanisme »).",
-    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/0903923"
-   },
-   {
-    "ap_cle": "B100/1003923",
-    "ap_texte": "PLACE DE LA REPUBLIQUE",
-    "mandate_par_annee": {
-     "2010": 62078.38,
-     "2011": 751657.77,
-     "2012": 416690.83,
-     "2013": 246639.21
-    },
-    "total_mandate": 1477066.19,
-    "preuve": "Libellé verbatim « PLACE DE LA REPUBLIQUE », mission voirie, direction DVD ; mandatements 2010-2013 couvrant la maîtrise d'œuvre (2010 DVD 112) et les travaux du réaménagement de la place. Même racine d'opération x03923.",
-    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/1003923"
-   },
-   {
-    "ap_cle": "1103923",
-    "ap_texte": "PLACE DE LA REPUBLIQUE",
-    "mandate_par_annee": {
-     "2014": 535130.71,
-     "2015": 67028.67,
-     "2016": 25348.63
-    },
-    "total_mandate": 627508.01,
-    "preuve": "Libellé verbatim « PLACE DE LA REPUBLIQUE », mission voirie, direction DVD ; même numéro d'opération 1103923 que B100/1103923 (série budgétaire différente), mandatements 2014-2016 correspondant au solde post-livraison du réaménagement inauguré en juin 2013.",
-    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=1103923"
-   },
-   {
-    "ap_cle": "1303923",
-    "ap_texte": "PLACE DE LA REPUBLIQUE",
-    "mandate_par_annee": {
-     "2014": 189615.48,
-     "2015": 6565.77,
-     "2016": 32530.14
-    },
-    "total_mandate": 228711.39,
-    "preuve": "Libellé verbatim « PLACE DE LA REPUBLIQUE », mission voirie, direction DVD ; même numéro d'opération 1303923 que B100/1303923, mandatements 2014-2016 (solde de la tranche 2013 du chantier).",
-    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=1303923"
-   },
-   {
-    "ap_cle": "1203923",
-    "ap_texte": "PLACE DE LA REPUBLIQUE",
-    "mandate_par_annee": {
-     "2014": 187377.39,
-     "2015": -6.03,
-     "2016": -273.39
-    },
-    "total_mandate": 187097.97,
-    "preuve": "Libellé verbatim « PLACE DE LA REPUBLIQUE », mission voirie, direction DVD ; même numéro d'opération 1203923 que B100/1203923, mandatements 2014-2016 dont régularisations négatives (solde de la tranche 2012 du chantier).",
-    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=1203923"
-   },
-   {
-    "ap_cle": "1003923",
-    "ap_texte": "PLACE DE LA REPUBLIQUE",
-    "mandate_par_annee": {
-     "2014": 7921.4,
-     "2015": 366.84
-    },
-    "total_mandate": 8288.24,
-    "preuve": "Libellé verbatim « PLACE DE LA REPUBLIQUE », mission voirie, direction DVD ; même numéro d'opération 1003923 que B100/1003923, solde 2014-2015 de la tranche 2010 du chantier de réaménagement.",
-    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=1003923"
-   },
-   {
-    "ap_cle": "0903923",
-    "ap_texte": "PLACE DE LA REPUBLIQUE",
-    "mandate_par_annee": {
-     "2014": 2896.74,
-     "2015": 496.96
-    },
-    "total_mandate": 3393.7,
-    "preuve": "Libellé verbatim « PLACE DE LA REPUBLIQUE », mission voirie, direction DVD ; même numéro d'opération 0903923 que B100/0903923, solde 2014-2015 de la tranche 2009 du chantier de réaménagement.",
-    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=0903923"
-   }
-  ],
-  "periode": [
-   "2009",
-   "2016"
-  ],
-  "source": {
-   "name": "Comptes administratifs — autorisations de programme, Ville de Paris",
-   "url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/"
-  }
- },
+ "mandate": null,
  "sources": {
   "delibs": {
    "name": "Débat-Délibs — Conseil de Paris",

@@ -262,6 +262,7 @@ export default function LogementSocialClient({
                   <Link
                     key={b.name}
                     href={`/fr/city/${citySlug}/dette/bailleur/${slugifyBailleur(b.name)}`}
+                    scroll={false}
                     className="fx-bailleur-card"
                   >
                     {cardContent}

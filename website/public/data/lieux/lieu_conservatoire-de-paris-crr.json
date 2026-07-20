@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T15:44:01.151982+00:00",
+ "generated_at": "2026-07-20T19:58:00.007150+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "conservatoire-de-paris-crr",
  "name": "Conservatoire de Paris (CRR)",
@@ -35,6 +35,7 @@
   "invest_total_eur": 0,
   "invest_annees": [],
   "lecture_mode": "tête du classement Solr (583 documents au total)",
+  "lecture_mode_en": "top of the Solr ranking (583 documents total)",
   "n_lus": 44,
   "n_lieu": 21
  },

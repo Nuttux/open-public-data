@@ -55,6 +55,7 @@ export default function DrilldownBreadcrumb({
               ) : (
                 <Link
                   href={crumb.href}
+                  scroll={false}
                   className="db-breadcrumb-link"
                   prefetch={false}
                 >

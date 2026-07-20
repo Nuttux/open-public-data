@@ -555,6 +555,7 @@ export default function BudgetDrilldownFiche(props: Props) {
                       <li key={child.key}>
                         <Link
                           href={href}
+                          scroll={false}
                           className="db-fiche-child"
                           prefetch={false}
                         >
@@ -779,6 +780,7 @@ function renderAggregation({
                 <li key={mission.key}>
                   <Link
                     href={href}
+                    scroll={false}
                     className="db-fiche-agg-card"
                     prefetch={false}
                   >
@@ -934,6 +936,7 @@ function renderScopeOverview({
               <li key={entry.key}>
                 <Link
                   href={buildHref(entry.key)}
+                  scroll={false}
                   className="db-fiche-agg-card"
                   prefetch={false}
                 >

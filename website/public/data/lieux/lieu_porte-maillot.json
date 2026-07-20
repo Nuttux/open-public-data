@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T15:44:01.151982+00:00",
+ "generated_at": "2026-07-20T19:58:00.007150+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "porte-maillot",
  "name": "Porte Maillot",
@@ -39,6 +39,7 @@
    "2024"
   ],
   "lecture_mode": "titre nommant le lieu (42 trouvés)",
+  "lecture_mode_en": "title naming the place (42 found)",
   "n_lus": 42,
   "n_lieu": 36
  },
@@ -272,32 +273,7 @@
    "preuve": "L'objet vise les sols du lieu lui-même : « CSP3-DÉPOLLUTION SOLS PORTE MAILLOT ET SES ABORDS 16E ET 17E ». Le périmètre 16e/17e correspond exactement à celui de la place tel que désigné par « 2021 DU 5 - Réaménagement de la place de la Porte Maillot (16e et 17e) »."
   }
  ],
- "mandate": {
-  "par_annee": {
-   "2017": 65197.46
-  },
-  "total_eur": 65197.46,
-  "operations": [
-   {
-    "ap_cle": "1705106",
-    "ap_texte": "PORTE MAILLOT (17e) - AMENAGEMENT",
-    "mandate_par_annee": {
-     "2017": 65197.46
-    },
-    "total_mandate": 65197.46,
-    "preuve": "Le libellé de l'opération désigne ce lieu : « PORTE MAILLOT (17e) - AMENAGEMENT », mission « VOIRIE ET DEPLACEMEN », direction DVD — dépense mandatée 2017, concomitante à la délibération « 2017 DVD 100 - Réaménagement de la porte Maillot. - Approbation du bilan de la concertation préalable ».",
-    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=1705106"
-   }
-  ],
-  "periode": [
-   "2017",
-   "2017"
-  ],
-  "source": {
-   "name": "Comptes administratifs — autorisations de programme, Ville de Paris",
-   "url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/"
-  }
- },
+ "mandate": null,
  "sources": {
   "delibs": {
    "name": "Débat-Délibs — Conseil de Paris",

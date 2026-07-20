@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T15:44:01.151982+00:00",
+ "generated_at": "2026-07-20T19:58:00.007150+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "theatre-du-rond-point",
  "name": "Théâtre du Rond-Point",
@@ -35,6 +35,7 @@
   "invest_total_eur": 0,
   "invest_annees": [],
   "lecture_mode": "titre nommant le lieu (43 trouvés)",
+  "lecture_mode_en": "title naming the place (43 found)",
   "n_lus": 43,
   "n_lieu": 26
  },
@@ -363,74 +364,7 @@
    "preuve": "L'objet du marché nomme le lieu et porte sur des travaux dans ce bâtiment, verbatim : « MODERNISATION DES INSTALLATIONS THÉÂTRE DU ROND POINT ». Le lieu n'est pas un simple repère d'adresse et il ne s'agit pas d'un marché-cadre citant le lieu en exemple. Cohérent avec la propriété municipale des murs (séance juillet 2020 : « les murs appartiennent à la Ville ») et avec l'historique de travaux au lieu (2009 DAC 304 « Demande de subvention à l'Etat pour la réalisation de travaux de rénovation au \"Théâtre du Rond-Point\" (8e) »)."
   }
  ],
- "mandate": {
-  "par_annee": {
-   "2009": 1222234.14,
-   "2010": 298082.49,
-   "2011": 88520.82,
-   "2012": 89192.19,
-   "2013": 949.09,
-   "2015": 110819.46,
-   "2017": 81560.46
-  },
-  "total_eur": 1891358.65,
-  "operations": [
-   {
-    "ap_cle": "B100/0902067",
-    "ap_texte": "THEATRE DU ROND POINT",
-    "mandate_par_annee": {
-     "2009": 730737.66,
-     "2010": 163489.25
-    },
-    "total_mandate": 894226.91,
-    "preuve": "Libellé de l'opération verbatim : « THEATRE DU ROND POINT », mission AFFAIRES CULTURELLES, direction DAC — désigne cet équipement culturel municipal du 8e (murs propriété de la Ville, séance juillet 2020) et non une enveloppe générique. Période cohérente avec 2009 DAC 304 « Demande de subvention à l'Etat pour la réalisation de travaux de rénovation au \"Théâtre du Rond-Point\" (8e) ».",
-    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/0902067"
-   },
-   {
-    "ap_cle": "B100/0702067",
-    "ap_texte": "THEATRE DU ROND POINT",
-    "mandate_par_annee": {
-     "2009": 491496.48,
-     "2010": 134593.24,
-     "2011": 88520.82,
-     "2012": 79.19
-    },
-    "total_mandate": 714689.73,
-    "preuve": "Libellé de l'opération verbatim : « THEATRE DU ROND POINT », mission AFFAIRES CULTURELLES, direction DAC — désigne cet équipement culturel municipal du 8e, pas d'homonyme théâtral à Paris ni d'enveloppe générique. Période cohérente avec les travaux de rénovation au lieu (2009 DAC 304).",
-    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/0702067"
-   },
-   {
-    "ap_cle": "1102067",
-    "ap_texte": "Théâtre du Rond-Point (8e)",
-    "mandate_par_annee": {
-     "2015": 110819.46,
-     "2017": 81560.46
-    },
-    "total_mandate": 192379.92,
-    "preuve": "Libellé de l'opération verbatim : « Théâtre du Rond-Point (8e) », mission AFFAIRES CULTURELLES, direction DAC — nomme le lieu avec son arrondissement, identique à l'intitulé des délibérations DAC visant ce théâtre.",
-    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=1102067"
-   },
-   {
-    "ap_cle": "B100/1102067",
-    "ap_texte": "THEATRE DU ROND POINT",
-    "mandate_par_annee": {
-     "2012": 89113.0,
-     "2013": 949.09
-    },
-    "total_mandate": 90062.09,
-    "preuve": "Libellé de l'opération verbatim : « THEATRE DU ROND POINT », mission AFFAIRES CULTURELLES, direction DAC — même numéro d'opération (1102067) que « Théâtre du Rond-Point (8e) », donc même équipement.",
-    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/1102067"
-   }
-  ],
-  "periode": [
-   "2009",
-   "2017"
-  ],
-  "source": {
-   "name": "Comptes administratifs — autorisations de programme, Ville de Paris",
-   "url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/"
-  }
- },
+ "mandate": null,
  "sources": {
   "delibs": {
    "name": "Débat-Délibs — Conseil de Paris",

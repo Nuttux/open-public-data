@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T15:44:01.151982+00:00",
+ "generated_at": "2026-07-20T19:58:00.007150+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "pavillon-de-larsenal",
  "name": "Pavillon de l'Arsenal",
@@ -37,6 +37,7 @@
    "2024"
   ],
   "lecture_mode": "titre nommant le lieu (28 trouvés)",
+  "lecture_mode_en": "title naming the place (28 found)",
   "n_lus": 27,
   "n_lieu": 26
  },

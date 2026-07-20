@@ -421,3 +421,15 @@ main#main-content:focus {
   letter-spacing: -0.01em;
   margin-bottom: 0.1rem;
 }
+
+/* Next injecte <next-route-announcer> (annonces a11y de navigation) en fin de
+   <body>. En position statique il peut devenir la cible du scroll automatique
+   du layout-router : quand le segment @drawer ne génère pas de boîte
+   (display: contents, cf. makeEntityDrawer), Next remonte les
+   nextElementSibling et scrolle la page d'arrière-plan jusqu'à l'annonceur —
+   c.-à-d. tout en bas. position: fixed le fait ignorer par shouldSkipElement.
+   Aucun impact visuel ni lecteur d'écran (contenu sr-only aria-live). */
+next-route-announcer {
+  /* !important : Next pose style="position: absolute" inline sur l'élément. */
+  position: fixed !important;
+}

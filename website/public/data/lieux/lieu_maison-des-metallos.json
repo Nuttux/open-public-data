@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T15:44:01.151982+00:00",
+ "generated_at": "2026-07-20T19:58:00.007150+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "maison-des-metallos",
  "name": "Maison des Métallos",
@@ -35,6 +35,7 @@
   "invest_total_eur": 0,
   "invest_annees": [],
   "lecture_mode": "titre nommant le lieu (69 trouvés)",
+  "lecture_mode_en": "title naming the place (69 found)",
   "n_lus": 42,
   "n_lieu": 42
  },
@@ -455,38 +456,7 @@
  "bmo_recit": null,
  "invest": [],
  "marches": [],
- "mandate": {
-  "par_annee": {
-   "2010": 21180.0,
-   "2011": 139828.26,
-   "2012": 155932.81,
-   "2013": 550.78
-  },
-  "total_eur": 317491.85,
-  "operations": [
-   {
-    "ap_cle": "B100/0701981",
-    "ap_texte": "MAISON DES METALLOS",
-    "mandate_par_annee": {
-     "2010": 21180.0,
-     "2011": 139828.26,
-     "2012": 155932.81,
-     "2013": 550.78
-    },
-    "total_mandate": 317491.85,
-    "preuve": "Libellé de l'opération = « MAISON DES METALLOS » (mission AFFAIRES CULTURELLES, direction DAC), désignant nommément ce lieu ; cohérent avec les travaux de restructuration attestés par délibération (« 2011 DAC 236 - Signature d'une transaction avec la société BACOTRA liée à la restructuration de la Maison des Métallos (11e) », visant les délibérations 2002 DAC 213 et suivantes sur la restructuration du 94, rue Jean-Pierre-Timbaud).",
-    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/0701981"
-   }
-  ],
-  "periode": [
-   "2010",
-   "2013"
-  ],
-  "source": {
-   "name": "Comptes administratifs — autorisations de programme, Ville de Paris",
-   "url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/"
-  }
- },
+ "mandate": null,
  "sources": {
   "delibs": {
    "name": "Débat-Délibs — Conseil de Paris",

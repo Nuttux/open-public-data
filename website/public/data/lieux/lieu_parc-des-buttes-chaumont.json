@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T15:44:01.151982+00:00",
+ "generated_at": "2026-07-20T19:58:00.007150+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "parc-des-buttes-chaumont",
  "name": "Parc des Buttes-Chaumont",
@@ -38,6 +38,7 @@
    "2024"
   ],
   "lecture_mode": "titre nommant le lieu (75 trouvés)",
+  "lecture_mode_en": "title naming the place (75 found)",
   "n_lus": 44,
   "n_lieu": 23
  },
@@ -259,113 +260,7 @@
    "preuve": "L'objet nomme explicitement le lieu : « dispositif de guidage pour les malvoyants au parc des Buttes Chaumont » — équipement installé dans le parc."
   }
  ],
- "mandate": {
-  "par_annee": {
-   "2009": 422470.19,
-   "2010": 1848160.19,
-   "2011": 1565676.0,
-   "2012": 369021.97,
-   "2013": 4911295.07,
-   "2014": 2013275.86,
-   "2015": 6005229.68,
-   "2016": 919502.84,
-   "2017": 500312.19
-  },
-  "total_eur": 18554943.99,
-  "operations": [
-   {
-    "ap_cle": "1001723",
-    "ap_texte": "PARC DES BUTTES CHAUMONT",
-    "mandate_par_annee": {
-     "2014": 2013275.86,
-     "2015": 3058613.4,
-     "2016": 927144.67,
-     "2017": 409391.23
-    },
-    "total_mandate": 6408425.16,
-    "preuve": "Libellé de l'opération : « PARC DES BUTTES CHAUMONT », mission « ESPACES VERTS ET ENV », direction DEVE — gestionnaire du parc confirmé en séance (« les jardiniers de la DEVE », octobre 2021). Cohérent avec les rénovations évoquées en mai 2022 (« réfection intégrale du réseau hydraulique ainsi que des allées, pour un montant déjà engagé de 12 millions d’euros »). L'opération couvre l'ensemble du site du parc.",
-    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=1001723"
-   },
-   {
-    "ap_cle": "B100/1001723",
-    "ap_texte": "PARC DES BUTTES CHAUMONT",
-    "mandate_par_annee": {
-     "2011": 261519.77,
-     "2012": 264330.93,
-     "2013": 4911030.24
-    },
-    "total_mandate": 5436880.94,
-    "preuve": "Libellé de l'opération : « PARC DES BUTTES CHAUMONT », mission « ESPACES VERTS ET ENV », direction DEVE (gestionnaire du parc). Opération d'investissement désignant ce lieu, mandatée 2011-2013 ; l'opération couvre l'ensemble du site du parc.",
-    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/1001723"
-   },
-   {
-    "ap_cle": "B100/0901723",
-    "ap_texte": "PARC DES BUTTES CHAUMONT",
-    "mandate_par_annee": {
-     "2009": 359823.34,
-     "2010": 1834108.42,
-     "2011": 1304156.23,
-     "2012": 104691.04,
-     "2013": 264.83
-    },
-    "total_mandate": 3603043.86,
-    "preuve": "Libellé de l'opération : « PARC DES BUTTES CHAUMONT », mission « ESPACES VERTS ET ENV », direction DEVE (gestionnaire du parc). Opération d'investissement désignant ce lieu, mandatée 2009-2013 ; l'opération couvre l'ensemble du site du parc.",
-    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/0901723"
-   },
-   {
-    "ap_cle": "1401723",
-    "ap_texte": "PARC DES BUTTES CHAUMONT",
-    "mandate_par_annee": {
-     "2015": 2910147.45,
-     "2016": -7641.83,
-     "2017": 90920.96
-    },
-    "total_mandate": 2993426.58,
-    "preuve": "Libellé de l'opération : « PARC DES BUTTES CHAUMONT », mission « ESPACES VERTS ET ENV », direction DEVE (gestionnaire du parc). Opération d'investissement désignant ce lieu, mandatée 2015-2017 ; l'opération couvre l'ensemble du site du parc.",
-    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=1401723"
-   },
-   {
-    "ap_cle": "B100/0701723",
-    "ap_texte": "PARC DES BUTTES CHAUMONT",
-    "mandate_par_annee": {
-     "2009": 33942.85,
-     "2010": 9387.37
-    },
-    "total_mandate": 43330.22,
-    "preuve": "Libellé de l'opération : « PARC DES BUTTES CHAUMONT », mission « ESPACES VERTS ET ENV », direction DEVE (gestionnaire du parc). Opération d'investissement désignant ce lieu, mandatée 2009-2010 ; l'opération couvre l'ensemble du site du parc.",
-    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/0701723"
-   },
-   {
-    "ap_cle": "0901723",
-    "ap_texte": "PARC DES BUTTES CHAUMONT",
-    "mandate_par_annee": {
-     "2015": 36468.83
-    },
-    "total_mandate": 36468.83,
-    "preuve": "Libellé de l'opération : « PARC DES BUTTES CHAUMONT », mission « ESPACES VERTS ET ENV », direction DEVE (gestionnaire du parc). Opération d'investissement désignant ce lieu, mandatée en 2015 ; l'opération couvre l'ensemble du site du parc.",
-    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=0901723"
-   },
-   {
-    "ap_cle": "B100/0601723",
-    "ap_texte": "PARC DES BUTTES CHAUMONT",
-    "mandate_par_annee": {
-     "2009": 28704.0,
-     "2010": 4664.4
-    },
-    "total_mandate": 33368.4,
-    "preuve": "Libellé de l'opération : « PARC DES BUTTES CHAUMONT », mission « ESPACES VERTS ET ENV », direction DEVE (gestionnaire du parc). Opération d'investissement désignant ce lieu, mandatée 2009-2010 ; l'opération couvre l'ensemble du site du parc.",
-    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/0601723"
-   }
-  ],
-  "periode": [
-   "2009",
-   "2017"
-  ],
-  "source": {
-   "name": "Comptes administratifs — autorisations de programme, Ville de Paris",
-   "url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/"
-  }
- },
+ "mandate": null,
  "sources": {
   "delibs": {
    "name": "Débat-Délibs — Conseil de Paris",

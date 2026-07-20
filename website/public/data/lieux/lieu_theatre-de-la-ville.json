@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T15:44:01.151982+00:00",
+ "generated_at": "2026-07-20T19:58:00.007150+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "theatre-de-la-ville",
  "name": "Théâtre de la Ville",
@@ -37,6 +37,7 @@
    "2022"
   ],
   "lecture_mode": "titre nommant le lieu (32 trouvés)",
+  "lecture_mode_en": "title naming the place (32 found)",
   "n_lus": 32,
   "n_lieu": 32
  },
@@ -586,111 +587,7 @@
    "preuve": "Objet nomme le lieu : « RESTAURATION MISE A DISPOSITION-MARCHES THEATRE DE LA VILLE » — libellé abrégé mais notifié pendant le chantier de restauration du théâtre (2020) ; nature exacte de la prestation moins explicite que les autres lots."
   }
  ],
- "mandate": {
-  "par_annee": {
-   "2009": 10395.09,
-   "2010": 675.81,
-   "2011": 82369.31,
-   "2012": 252831.31,
-   "2013": 742934.93,
-   "2014": 636451.14,
-   "2015": 1003945.93,
-   "2016": 1054804.97,
-   "2017": 1806281.38
-  },
-  "total_eur": 5590689.87,
-  "operations": [
-   {
-    "ap_cle": "1604553",
-    "ap_texte": "THEATRE DE LA VILLE - RENOVATION",
-    "mandate_par_annee": {
-     "2016": 663467.19,
-     "2017": 1763908.17
-    },
-    "total_mandate": 2427375.36,
-    "preuve": "Libellé nomme ce lieu et l'opération : « THEATRE DE LA VILLE - RENOVATION » (DAC, Affaires culturelles) — chantier de rénovation du bâtiment place du Châtelet acté par 2015 DPA 34.",
-    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=1604553"
-   },
-   {
-    "ap_cle": "1202065",
-    "ap_texte": "THEATRE DE LA VILLE",
-    "mandate_par_annee": {
-     "2014": 636451.14,
-     "2015": 602088.4,
-     "2016": 123150.98
-    },
-    "total_mandate": 1361690.52,
-    "preuve": "Libellé désigne ce lieu : « THEATRE DE LA VILLE » (DAC, Affaires culturelles). Enveloppe au nom du lieu, sans détail d'opération ; l'association exploitante gérant aussi le Théâtre des Abbesses, une part peut concerner l'établissement dans son ensemble.",
-    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=1202065"
-   },
-   {
-    "ap_cle": "B100/1202065",
-    "ap_texte": "THEATRE DE LA VILLE",
-    "mandate_par_annee": {
-     "2012": 213904.17,
-     "2013": 742235.93
-    },
-    "total_mandate": 956140.1,
-    "preuve": "Libellé désigne ce lieu : « THEATRE DE LA VILLE » (DAC, Affaires culturelles). Enveloppe au nom du lieu, sans détail d'opération ; peut couvrir l'établissement dans son ensemble (site des Abbesses inclus).",
-    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/1202065"
-   },
-   {
-    "ap_cle": "1404553",
-    "ap_texte": "THEATRE DE LA VILLE - RENOVATION",
-    "mandate_par_annee": {
-     "2015": 401857.53,
-     "2016": 268186.8,
-     "2017": 42373.21
-    },
-    "total_mandate": 712417.54,
-    "preuve": "Libellé nomme ce lieu et l'opération : « THEATRE DE LA VILLE - RENOVATION » (DAC) — correspond à la rénovation du bâtiment place du Châtelet (2015 DPA 34, mandats 2015-2017).",
-    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=1404553"
-   },
-   {
-    "ap_cle": "B100/0702065",
-    "ap_texte": "THEATRE DE LA VILLE",
-    "mandate_par_annee": {
-     "2009": 9321.46,
-     "2010": 252.16,
-     "2011": 82369.31,
-     "2012": 38927.14,
-     "2013": 699.0
-    },
-    "total_mandate": 131569.07,
-    "preuve": "Libellé désigne ce lieu : « THEATRE DE LA VILLE » (DAC, Affaires culturelles). Enveloppe au nom du lieu, sans détail d'opération ; peut couvrir l'établissement dans son ensemble (site des Abbesses inclus).",
-    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/0702065"
-   },
-   {
-    "ap_cle": "B100/0602065",
-    "ap_texte": "THEATRE DE LA VILLE",
-    "mandate_par_annee": {
-     "2009": 400.32,
-     "2010": 423.65
-    },
-    "total_mandate": 823.97,
-    "preuve": "Libellé désigne ce lieu : « THEATRE DE LA VILLE » (DAC, Affaires culturelles). Enveloppe au nom du lieu, sans détail d'opération ; peut couvrir l'établissement dans son ensemble (site des Abbesses inclus).",
-    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/0602065"
-   },
-   {
-    "ap_cle": "B100/0602938",
-    "ap_texte": "THEATRE DE LA VILLE FACADES",
-    "mandate_par_annee": {
-     "2009": 673.31
-    },
-    "total_mandate": 673.31,
-    "preuve": "Libellé nomme ce lieu et l'objet des travaux : « THEATRE DE LA VILLE FACADES » (DPA, Patrimoine et architecture) — façades du bâtiment place du Châtelet, dont la restauration est documentée par 2019 DAC 80.",
-    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/0602938"
-   }
-  ],
-  "periode": [
-   "2009",
-   "2017"
-  ],
-  "source": {
-   "name": "Comptes administratifs — autorisations de programme, Ville de Paris",
-   "url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/"
-  }
- },
+ "mandate": null,
  "sources": {
   "delibs": {
    "name": "Débat-Délibs — Conseil de Paris",
