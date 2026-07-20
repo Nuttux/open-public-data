@@ -78,3 +78,7 @@ website/data/conversations/
 # Python bytecode (pipeline scripts)
 __pycache__/
 *.pyc
+
+# build artifacts
+tsconfig.tsbuildinfo
+tmp-screenshots/
