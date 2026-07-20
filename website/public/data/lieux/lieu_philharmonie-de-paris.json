@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T11:24:28.927806+00:00",
+ "generated_at": "2026-07-20T11:31:55.941392+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "philharmonie-de-paris",
  "name": "Philharmonie de Paris",
@@ -32,10 +32,8 @@
   ],
   "n_bmo_brut": 46,
   "n_bmo_verifies": 12,
-  "invest_total_eur": 10997126.39,
-  "invest_annees": [
-   "2022"
-  ],
+  "invest_total_eur": 0,
+  "invest_annees": [],
   "lecture_mode": "titre nommant le lieu (35 trouvés)",
   "n_lus": 35,
   "n_lieu": 34
@@ -98,13 +96,7 @@
   ]
  },
  "residents": [],
- "kpi_montant": {
-  "valeur": "15,3 M€/an",
-  "label_fr": "Charge d’emprunt 2015–2028",
-  "label_en": "Loan burden 2015–2028",
-  "doc_id": "164316",
-  "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=164316"
- },
+ "kpi_montant": null,
  "synthese_fr": "De 2006 à 2014, la Ville de Paris subventionne l'association « Philharmonie de Paris » chargée transitoirement de la maîtrise d'ouvrage (240.000 € en 2006, puis des subventions annuelles croissantes de fonctionnement et d'équipement, jusqu'à 5.536.577 € d'équipement en 2008). En 2009, la Ville garantit les emprunts de l'association à hauteur de 117.167.610 €, garantie portée à 158.265.348 € en mars 2011, tandis que le coût du projet dérive selon les débats : estimé 118 à 175 M€ à l'origine, il est cité à 350 M€ en 2011, 381 M€ en 2014, puis 328 M€ « à la livraison » et jusqu'à 534 M€ dans les débats de 2022-2024. En octobre 2014, une convention (2014 DFA 33) organise le remboursement par la Ville de l'emprunt contracté par l'association au taux de 5,186 % (surcoût chiffré à 25 M€ par l'opposition) ; après des vœux répétés et le rapport de la Chambre régionale des comptes, le prêt obligataire Société Générale est réaménagé en septembre 2016 avec un taux abaissé à 4,7 %, soit 4,35 M€ de baisse. Depuis la substitution de l'établissement public à l'association le 1er octobre 2015, la Ville verse une subvention annuelle d'environ 15,3 à 15,7 M€ correspondant, selon l'Exécutif, à 152 M€ de capital et 62,40 M€ d'intérêts à rembourser de 2015 à 2028 (15,30 M€ par an). Après la livraison, des subventions d'équipement supplémentaires s'ajoutent : 3,5 M€ actés fin 2021 puis 7 M€ en mars 2022 à la suite de l'accord transactionnel du 20 octobre 2021 avec Jean Nouvel, dont le procès s'était soldé par 15 M€ de travaux supplémentaires et « un accord dont on ne connaît pas le montant ».",
  "moments": [
   {
@@ -666,42 +658,28 @@
  ],
  "bmo_extraits": [],
  "bmo_recit": null,
- "invest": [
-  {
-   "annee": "2022",
-   "montant_eur": 10997126.39,
-   "nom_projet": "PROV SUB EQUIP PHILHARMONIE DE PARIS",
-   "preuve": "Le nom du projet nomme CE lieu verbatim (« PHILHARMONIE DE PARIS »), distance 168 m, et correspond aux subventions d'équipement délibérées la même période : « 2022 DAC 105 - Subvention d'équipement (7.000.000 euros) et convention avec l'établissement public Cité de la Musique - Philharmonie de Paris (19e) ».",
-   "id": "2022_gen_dd1bcb2c"
-  }
- ],
+ "invest": [],
  "marches": [],
  "mandate": {
   "par_annee": {
-   "2014": 159688927.21,
-   "2015": 7599654.0,
-   "2016": 8064025.55,
-   "2017": 8673207.27
+   "2014": 159688927.21
   },
-  "total_eur": 184025814.03,
+  "total_eur": 159688927.21,
   "operations": [
    {
     "ap_cle": "1403721",
     "ap_texte": "PROV SUB EQUIP PHILHARMONIE DE PARIS",
     "mandate_par_annee": {
-     "2014": 159688927.21,
-     "2015": 7599654.0,
-     "2016": 8064025.55,
-     "2017": 8673207.27
+     "2014": 159688927.21
     },
-    "total_mandate": 184025814.03,
+    "total_mandate": 159688927.21,
     "preuve": "Le libellé de l'opération nomme CE lieu verbatim : « PROV SUB EQUIP PHILHARMONIE DE PARIS » (mission « SUBVENTIONS D'EQUIPE », direction DAC). Mandaté 2014-2017, période de construction et d'ouverture de la Philharmonie (janvier 2015), cohérent avec les délibérations DAC de subventions à l'association puis à l'établissement public Philharmonie de Paris (19e), ex. « 2014 DAC 1493 - Subvention (1.250.000 euros) et avenant à convention avec l'association Philharmonie de Paris (19e) », « 2015 DAC 602 - Subventions de fonctionnement et d'équipement (15.658.233 euros) ».",
     "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=1403721"
    }
   ],
   "periode": [
    "2014",
-   "2017"
+   "2014"
   ],
   "source": {
    "name": "Comptes administratifs — autorisations de programme, Ville de Paris",

@@ -47,22 +47,18 @@ KIND_EN = {
 # (ou une vérification) et ne peut pas être dérivé du seed.
 OVERRIDES: dict[str, dict] = {
     "piscine-des-amiraux": {
-        # KPI € : seul montant chiffré pour la piscine dans les débats (doc 143081)
-        "kpi_montant": {"valeur": "3,2 M€", "label_fr": "Rénovation 2018",
-                        "label_en": "2018 renovation", "doc_id": "143081"},
+        # KPI manuel retiré (était « seul montant chiffré » avant les vraies
+        # données ; la fiche a désormais mandaté 2013-2017 + marchés).
         "bmo_picks": [("1897-10-28", 22), ("1921-06-08", 6), ("1923-03-04", 11),
                       ("1926-01-08", 22), ("1927-04-29", 6), ("1928-01-01", 11),
                       ("1930-01-01", 16), ("1943-05-27", 2), ("1945-06-07", 3),
                       ("1948-08-28", 1)],
     },
     "philharmonie-de-paris": {
-        # KPI € : la charge annuelle jusqu'en 2028, chiffrée par l'Exécutif (doc 164316).
-        # Le montant investi des annexes CA (11 M€) sous-représenterait la réalité.
-        "kpi_montant": {"valeur": "15,3 M€/an", "label_fr": "Charge d’emprunt 2015–2028",
-                        "label_en": "Loan burden 2015–2028", "doc_id": "164316"},
-        # Résolution d'entité à la main : une recherche « philharmonie » dans les
-        # bénéficiaires renvoie « PHILHARMONIE DES ENFANTS » (faux positif) et rate
-        # l'exploitant réel. Voir docs/paris-lieux/PLAN.md — jointure à modéliser.
+        # KPI « charge d'emprunt » retiré : les vraies données couvrent désormais
+        # l'argent (construction mandatée 2014-2017, subventions 2018-2024), et ce
+        # KPI décrivait les remboursements 16x exclus du Dépensé — triple
+        # redondance. Le fait vit dans les moments (« la dette bascule »).
         "exploitant": ["LA CITE DE LA MUSIQUE", "CITE DE LA MUSIQUE"],
     },
     "theatre-de-la-ville": {
@@ -142,6 +138,20 @@ def vulgarisation_marches() -> dict:
         except Exception:
             _VULG_MARCHES = {}
     return _VULG_MARCHES
+
+
+_AP_MART: list | None = None
+
+
+def ap_operations_mart() -> list:
+    global _AP_MART
+    if _AP_MART is None:
+        p = ROOT / "website" / "public" / "data" / "ca" / "ap_operations.json"
+        try:
+            _AP_MART = json.load(open(p)).get("operations") or []
+        except Exception:
+            _AP_MART = []
+    return _AP_MART
 
 
 _PROJET_ID_INDEX: dict | None = None
@@ -271,6 +281,11 @@ def resolve_argent(slug: str) -> dict:
          "id": projet_id_for(p.get("nom_projet") or "", p.get("annee"))}
         for p in r.get("projets", [])
         if p.get("role") == "au-lieu" and (p.get("nom_projet") or "").strip()
+        # « PROV SUB EQUIP … » = subvention d'équipement : quand le lieu a un
+        # exploitant subventionné, cette ligne est DÉJÀ dans ses « subventions
+        # versées » (vérifié Philharmonie 2022 : 11,0 M€ ⊂ 11,1 M€) — la garder
+        # doublerait le même versement.
+        and not (exploitant and re.search(r"PROV\.?\s*SUB\.?\s*EQUIP", p.get("nom_projet") or "", re.I))
     ]
     invest.sort(key=lambda x: (str(x["annee"]), -x["montant_eur"]))
 
@@ -296,10 +311,16 @@ def resolve_argent(slug: str) -> dict:
     # mandatée, par exercice (2009-2017, niveau opération). C'est l'autre moitié
     # du diptyque payé/engagé — jamais sommée avec les plafonds de marchés.
     ap_ops = []
+    # Montants pris dans le MART (source unique de vérité), pas dans la copie du
+    # juge : un correctif amont (ex. exclusion des chapitres financiers) doit se
+    # propager sans re-jugement — le juge ne porte que le rattachement + preuve.
+    mart_ops = {o.get("ap_cle"): o for o in ap_operations_mart()}
     for a in r.get("ap", []):
         if a.get("role") != "au-lieu":
             continue
-        par_annee = {str(k): float(v) for k, v in (a.get("mandate_par_annee") or {}).items() if v}
+        m = mart_ops.get(a.get("ap_cle"))
+        par_annee = ({str(k): float(v) for k, v in (m.get("mandate_par_annee") or {}).items() if v}
+                     if m else {})
         if not par_annee:
             continue
         ap_ops.append({

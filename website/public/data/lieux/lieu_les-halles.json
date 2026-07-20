@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T11:24:28.927806+00:00",
+ "generated_at": "2026-07-20T11:31:55.941392+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "les-halles",
  "name": "Les Halles",
@@ -412,13 +412,13 @@
   "par_annee": {
    "2010": 87652060.21,
    "2011": 24109565.2,
-   "2012": 29748199.21,
-   "2013": 9450142.47,
+   "2012": 29736969.21,
+   "2013": 8562972.47,
    "2014": 4999689.1,
    "2015": 422955.22,
    "2016": 326851.61
   },
-  "total_eur": 156709463.02,
+  "total_eur": 155811063.02,
   "operations": [
    {
     "ap_cle": "B100/1004063",
@@ -434,10 +434,10 @@
     "ap_cle": "B100/1204063",
     "ap_texte": "COMPTE FONCIER - LES HALLES",
     "mandate_par_annee": {
-     "2012": 29748199.21,
+     "2012": 29736969.21,
      "2013": 419651.44
     },
-    "total_mandate": 30167850.65,
+    "total_mandate": 30156620.65,
     "preuve": "Libellé « COMPTE FONCIER - LES HALLES » (direction DU) : volet foncier du réaménagement du quartier des Halles (1er), cohérent avec les délibérations foncières du site (protocole foncier nov. 2010 ; 2011 SG 113 « déclassement des emprises de voirie, de jardin et des équipements publics municipaux »).",
     "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/1204063"
    },
@@ -455,9 +455,9 @@
     "ap_cle": "B100/1304063",
     "ap_texte": "COMPTE FONCIER - LES HALLES",
     "mandate_par_annee": {
-     "2013": 9030491.03
+     "2013": 8143321.03
     },
-    "total_mandate": 9030491.03,
+    "total_mandate": 8143321.03,
     "preuve": "Libellé « COMPTE FONCIER - LES HALLES » (direction DU) : volet foncier du réaménagement du quartier des Halles (1er), cohérent avec 2013 SG 144 « déclassement et cession de volumes des circulations verticales du Forum ».",
     "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/1304063"
    },

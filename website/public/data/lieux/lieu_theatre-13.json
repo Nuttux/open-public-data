@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T11:24:28.927806+00:00",
+ "generated_at": "2026-07-20T11:31:55.941392+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "theatre-13",
  "name": "Théâtre 13",
@@ -301,32 +301,7 @@
  "bmo_recit": null,
  "invest": [],
  "marches": [],
- "mandate": {
-  "par_annee": {
-   "2015": 6792084.0
-  },
-  "total_eur": 6792084.0,
-  "operations": [
-   {
-    "ap_cle": "1304489",
-    "ap_texte": "THÉÂTRE 13 SEINE ACQUISITION",
-    "mandate_par_annee": {
-     "2015": 6792084.0
-    },
-    "total_mandate": 6792084.0,
-    "preuve": "Libellé « THÉÂTRE 13 SEINE ACQUISITION » (mission AFFAIRES CULTURELLES, direction DAC) : désigne nommément le Théâtre 13 Seine, salle du Théâtre 13 rue du Chevaleret construite par la Ville dans la ZAC Paris Rive Gauche et attribuée au Théâtre 13 (délib. DAC 696, sept. 2011). L'opération porte sur la salle Seine du lieu, pas sur la salle historique du bd Auguste-Blanqui.",
-    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=1304489"
-   }
-  ],
-  "periode": [
-   "2015",
-   "2015"
-  ],
-  "source": {
-   "name": "Comptes administratifs — autorisations de programme, Ville de Paris",
-   "url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/"
-  }
- },
+ "mandate": null,
  "sources": {
   "delibs": {
    "name": "Débat-Délibs — Conseil de Paris",

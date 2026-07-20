@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T11:24:28.927806+00:00",
+ "generated_at": "2026-07-20T11:31:55.941392+00:00",
  "lieux": [
   {
    "slug": "piscine-des-amiraux",
@@ -27,8 +27,8 @@
    "lon": 2.3939,
    "n_lieu": 34,
    "n_moments": 8,
-   "argent_total_eur": 296140919,
-   "depense_reelle_eur": 296140919,
+   "argent_total_eur": 260806906,
+   "depense_reelle_eur": 260806906,
    "engage_eur": 0,
    "depuis": 2006,
    "photo": "/img/lieux/philharmonie-de-paris.jpg"
@@ -155,8 +155,8 @@
    "lon": 2.3454,
    "n_lieu": 40,
    "n_moments": 8,
-   "argent_total_eur": 156709463,
-   "depense_reelle_eur": 156709463,
+   "argent_total_eur": 155811063,
+   "depense_reelle_eur": 155811063,
    "engage_eur": 0,
    "depuis": 2007,
    "photo": "/img/lieux/les-halles.jpg"
@@ -299,8 +299,8 @@
    "lon": 2.3615,
    "n_lieu": 23,
    "n_moments": 8,
-   "argent_total_eur": 67148396,
-   "depense_reelle_eur": 58732249,
+   "argent_total_eur": 66638396,
+   "depense_reelle_eur": 58222249,
    "engage_eur": 8416148,
    "depuis": 1889,
    "photo": "/img/lieux/carreau-du-temple.jpg"
@@ -683,8 +683,8 @@
    "lon": 2.3562,
    "n_lieu": 16,
    "n_moments": 8,
-   "argent_total_eur": 6792084,
-   "depense_reelle_eur": 6792084,
+   "argent_total_eur": 0,
+   "depense_reelle_eur": 0,
    "engage_eur": 0,
    "depuis": 2002,
    "photo": null

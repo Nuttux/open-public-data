@@ -47,6 +47,15 @@ def stg_rows() -> list[dict]:
             continue
         if r.get("section_budgetaire_i_f") != "Investissement":
             continue
+        # Chapitres FINANCIERS exclus : les natures 16x (emprunts et dettes) sont
+        # des remboursements de capital, pas des dépenses d'équipement. Les
+        # compter en plus de la dépense qu'ils ont financée double le capital
+        # (vérifié sur la Philharmonie : 159,7 M€ de subvention d'équipement en
+        # 2014 PUIS 24,4 M€ de remboursements 16878 en 2015-2017 — mêmes euros).
+        # Idem 26x/27x (immobilisations financières).
+        nat = str(r.get("nature_budgetaire_cle") or "")
+        if nat[:2] in ("16", "26", "27"):
+            continue
         try:
             mandate = float(r.get("mandate_titre_apres_regul") or 0)
         except (TypeError, ValueError):

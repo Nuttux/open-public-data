@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T11:24:28.927806+00:00",
+ "generated_at": "2026-07-20T11:31:55.941392+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "carreau-du-temple",
  "name": "Carreau du Temple",
@@ -352,14 +352,14 @@
    "2009": 2723539.49,
    "2010": 3274492.7,
    "2011": 12477126.79,
-   "2012": 15321876.76,
+   "2012": 15021876.76,
    "2013": 15662813.1,
    "2014": 5002217.46,
-   "2015": 2349985.35,
+   "2015": 2139985.35,
    "2016": 1342231.1,
    "2017": 480715.96
   },
-  "total_eur": 58634998.71,
+  "total_eur": 58124998.71,
   "operations": [
    {
     "ap_cle": "B100/0903798",
@@ -466,26 +466,6 @@
     "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=0803798"
    },
    {
-    "ap_cle": "B100/1204402",
-    "ap_texte": "PARTICIPATION CARREAU DU TEMPLE",
-    "mandate_par_annee": {
-     "2012": 210000.0
-    },
-    "total_mandate": 210000.0,
-    "preuve": "Libellé « PARTICIPATION CARREAU DU TEMPLE » (DJS) : participation financière de la Ville désignant nommément le lieu, mandatée en 2012.",
-    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/1204402"
-   },
-   {
-    "ap_cle": "1504834",
-    "ap_texte": "CARREAU DU TEMPLE - RECAPITALISATION",
-    "mandate_par_annee": {
-     "2015": 210000.0
-    },
-    "total_mandate": 210000.0,
-    "preuve": "Libellé « CARREAU DU TEMPLE - RECAPITALISATION » (direction FIN) : recapitalisation de la structure exploitant le lieu (la SPL du Carreau du Temple, exploitant confirmé par les délibérations DSP), mandatée en 2015 — période où les délibérations 2016 DAC 43 et 2018 DAC 42 évoquent le redressement financier de la structure après un déficit initial.",
-    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=1504834"
-   },
-   {
     "ap_cle": "B100/1003798",
     "ap_texte": "CS CARREAU DU TEMPLE",
     "mandate_par_annee": {
@@ -494,16 +474,6 @@
     "total_mandate": 102465.48,
     "preuve": "Libellé « CS CARREAU DU TEMPLE » (DJS) : tranche AP 2010 de la même opération sur le bâtiment, mandatée en 2013 pendant le chantier.",
     "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/1003798"
-   },
-   {
-    "ap_cle": "B400/1204403",
-    "ap_texte": "PARTICIPATION CARREAU DU TEMPLE",
-    "mandate_par_annee": {
-     "2012": 90000.0
-    },
-    "total_mandate": 90000.0,
-    "preuve": "Libellé « PARTICIPATION CARREAU DU TEMPLE » (DJS) : participation financière de la Ville désignant nommément le lieu, mandatée en 2012.",
-    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B400/1204403"
    }
   ],
   "periode": [
