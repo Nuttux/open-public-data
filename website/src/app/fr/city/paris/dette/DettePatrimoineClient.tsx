@@ -14,7 +14,6 @@ import BudgetTimeline from "@/components/fusion/BudgetTimeline";
 import DetteStructurePanel from "@/components/fusion/DetteStructurePanel";
 import PageTOC from "@/components/fusion/PageTOC";
 import PatrimoineDrillList from "@/components/fusion/PatrimoineDrillList";
-import CityComparator from "@/components/fusion/CityComparator";
 import HorsBilanMap from "@/components/fusion/HorsBilanMap";
 import ChartSource from "@/components/fusion/ChartSource";
 import RelatedArticles, { type ArticlePlaceholder } from "@/components/fusion/RelatedArticles";
@@ -39,7 +38,6 @@ export default function DettePatrimoineClient({
   structure,
   horsBilan,
   horsBilanTrajectory,
-  citiesSnapshot,
   posts,
 }: {
   d: PatrimoineData;

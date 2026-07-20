@@ -14,7 +14,6 @@
 
 import Link from "next/link";
 import { useT, useLocale } from "@/lib/localeContext";
-import { trLabel } from "@/lib/label-translate";
 
 const fill = (s: string, vars: Record<string, string | number>) => {
   let r = s;

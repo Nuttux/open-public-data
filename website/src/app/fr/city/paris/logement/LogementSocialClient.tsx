@@ -82,7 +82,6 @@ export default function LogementSocialClient({
   const hasTension = tension !== null;
   const hasBailleurs = d.bailleurs.length > 0;
   const gap = d.sruRatio - d.sruTarget;
-  const gapDir: "up" | "down" | "flat" = gap > 0.1 ? "up" : gap < -0.1 ? "down" : "flat";
 
   return (
     <div className="theme-fusion">

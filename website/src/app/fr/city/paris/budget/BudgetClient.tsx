@@ -78,9 +78,6 @@ export default function BudgetClient({ index, d, voteExec, posts }: Props) {
   const yearType = index.summary.find((s) => s.year === d.year)?.type_budget ?? "execute";
   const isVoted = yearType === "vote";
 
-  const deltaDir: "up" | "down" | "flat" =
-    d.deltaDepensesPct > 0.1 ? "up" : d.deltaDepensesPct < -0.1 ? "down" : "flat";
-
   const topDep = d.topDepenses.slice(0, 7);
   const topRec = d.recettesBreakdown.slice(0, 6);
 
@@ -587,55 +584,5 @@ function _GroupedSubRows({
         );
       })}
     </div>
-  );
-}
-
-function SvgClassement() {
-  return (
-    <svg viewBox="0 0 200 100">
-      {[14, 28, 42, 56, 70, 84].map((y, i) => (
-        <g key={y}>
-          <rect x="10" y={y - 1} width="4" height="4" className="fill-muted" fill="#9099a6" />
-          <rect x="20" y={y - 1} width={90 - i * 12} height="6" className="fill" fill="#0a0a0a" />
-          <rect x="160" y={y - 1} width="30" height="6" className="fill-muted" fill="#9099a6" />
-        </g>
-      ))}
-    </svg>
-  );
-}
-
-function SvgCarte() {
-  return (
-    <svg viewBox="0 0 200 100">
-      <path d="M 28 30 Q 36 14 70 12 Q 110 10 140 18 Q 172 26 184 48 Q 188 72 168 86 Q 130 94 90 92 Q 50 90 28 72 Q 18 52 28 30 Z" className="stroke" fill="none" stroke="#0a0a0a" strokeWidth="1.5" />
-      {[[60, 34], [86, 42], [110, 30], [140, 36], [72, 70], [104, 78], [132, 72], [158, 68]].map(([x, y]) => (
-        <circle key={`${x}-${y}`} cx={x} cy={y} r="2.5" className="fill" fill="#0a0a0a" />
-      ))}
-      <circle cx="118" cy="54" r="4" className="fill-sig" fill="#e11d1d" />
-    </svg>
-  );
-}
-
-function SvgBilan() {
-  return (
-    <svg viewBox="0 0 200 100">
-      <rect x="32" y="10" width="60" height="40" className="fill" fill="#0a0a0a" />
-      <rect x="32" y="52" width="60" height="24" className="fill" fill="#0a0a0a" opacity=".75" />
-      <rect x="108" y="10" width="60" height="46" className="fill" fill="#0a0a0a" />
-      <rect x="108" y="58" width="60" height="32" className="fill-sig" fill="#e11d1d" />
-    </svg>
-  );
-}
-
-function SvgAnalyses() {
-  return (
-    <svg viewBox="0 0 200 100">
-      <rect x="10" y="14" width="180" height="4" className="fill" fill="#0a0a0a" />
-      <rect x="10" y="28" width="140" height="4" className="fill" fill="#0a0a0a" />
-      <rect x="10" y="42" width="160" height="4" className="fill-sig" fill="#e11d1d" />
-      <rect x="10" y="56" width="120" height="4" className="fill" fill="#0a0a0a" />
-      <rect x="10" y="70" width="150" height="4" className="fill" fill="#0a0a0a" />
-      <rect x="10" y="84" width="100" height="4" className="fill-muted" fill="#9099a6" />
-    </svg>
   );
 }

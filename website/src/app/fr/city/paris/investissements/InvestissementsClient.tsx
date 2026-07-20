@@ -64,16 +64,8 @@ export default function InvestissementsClient({
   const pathname = usePathname();
   const citySlug = citySlugFromPathname(pathname);
   const cityBasePath = `/fr/city/${citySlug}/investissements`;
-  const cityMarchesPath = `/fr/city/${citySlug}/marches`;
-  const cityLogementPath = `/fr/city/${citySlug}/logement`;
-  const cityDettePath = `/fr/city/${citySlug}/dette`;
   const isParis = citySlug === "paris";
   const ytrend = d.yearsSummary;
-  const delta5y =
-    ytrend.length >= 2
-      ? ((ytrend[ytrend.length - 1].total - ytrend[0].total) / ytrend[0].total) * 100
-      : 0;
-  const delta5yDir: "up" | "down" | "flat" = delta5y > 0.1 ? "up" : delta5y < -0.1 ? "down" : "flat";
 
   const arrSuf = (n: number) => (n === 1 ? t("fx.s.arr.1_suffix") : t("fx.s.arr.suffix"));
   // Paris has both a geolocated map (ProjectMap) and a SVG choropleth wired

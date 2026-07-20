@@ -4,8 +4,7 @@ import Link from "next/link";
 
 import type { ThemeSubventionsFiche } from "@/lib/fusion-data";
 import { fmtCompactEur, fmtInt, fmtDec } from "@/lib/fmt";
-import { useT, useLocale } from "@/lib/localeContext";
-import { trLabel } from "@/lib/label-translate";
+import { useT } from "@/lib/localeContext";
 
 const fill = (s: string, vars: Record<string, string | number>) => {
   let r = s;
@@ -37,7 +36,6 @@ function colorFor(theme: string): string {
 
 export default function ThemeFiche({ fiche }: { fiche: ThemeSubventionsFiche }) {
   const t = useT();
-  const { locale } = useLocale();
   const total = fmtCompactEur(fiche.total);
   const color = colorFor(fiche.theme);
   const maxEvol = Math.max(...fiche.evolution.map((e) => e.amount), 1);

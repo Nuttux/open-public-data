@@ -1,6 +1,5 @@
 "use client";
 import { Suspense } from "react";
-import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { citySlugFromPathname } from "@/lib/methodology";
 import Navbar from "@/components/fusion/Navbar";
@@ -65,12 +64,6 @@ export default function QuiRecoitClient({
     citySlug === "paris"
       ? "/data/subventions/beneficiaires_search.json"
       : `/data/${citySlug}/subventions/beneficiaires_search.json`;
-  const cityBudgetPath = `/fr/city/${citySlug}/budget`;
-  const cityMarchesPath = `/fr/city/${citySlug}/marches`;
-  const cityLogementPath = "/fr/city/paris/logement";
-  const dir: "up" | "down" | "flat" =
-    d.deltaMontantPct > 0.1 ? "up" : d.deltaMontantPct < -0.1 ? "down" : "flat";
-  const arrow = dir === "down" ? "↓" : dir === "flat" ? "→" : "↑";
 
   return (
     <div className="theme-fusion">

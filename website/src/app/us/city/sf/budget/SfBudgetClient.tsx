@@ -156,7 +156,6 @@ export default function SfBudgetClient({ d }: { d: SfBudgetPageData }) {
     ...d.years.filter((y) => d.statuses[String(y)] === "closed"),
   );
 
-  const spSideLabel = t("us.sf.side.spending");
   const dataWord = t("us.sf.budget.data_link");
   const srcLabel = t("us.sf.budget.source_label");
   const budgetLinks = [{ name: d.source.name, href: d.source.source_url }];

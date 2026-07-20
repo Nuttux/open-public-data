@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import type { LandingStats } from "@/lib/fusion-data";
-import { fmtInt, fmtDec, fmtMillions, fmtBillions } from "@/lib/fmt";
+import { fmtInt, fmtMillions, fmtBillions } from "@/lib/fmt";
 import { useT } from "@/lib/localeContext";
 
 type Props = { stats: LandingStats };

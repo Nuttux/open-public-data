@@ -3,7 +3,6 @@
 import { Fragment, useState } from "react";
 import type { AssociationFiche as AssociationFicheType, BeneficiaireGrounded, SubventionVulgarization } from "@/lib/fusion-data";
 import { useT, useLocale } from "@/lib/localeContext";
-import { trLabel } from "@/lib/label-translate";
 
 const fill = (s: string, vars: Record<string, string | number>) => {
   let r = s;

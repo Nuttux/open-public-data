@@ -8,7 +8,6 @@ import PageTOC from "@/components/fusion/PageTOC";
 import AnimatedNumber from "@/components/fusion/AnimatedNumber";
 import YearPicker from "@/components/fusion/YearPicker";
 import ExportRow from "@/components/fusion/ExportRow";
-import ExpandableList from "@/components/fusion/ExpandableList";
 import BudgetTimeline from "@/components/fusion/BudgetTimeline";
 import Tip from "@/components/fusion/Tip";
 import StackedBarTheme from "@/components/fusion/StackedBarTheme";
@@ -18,12 +17,10 @@ import MarchesSignature from "@/components/fusion/MarchesSignature";
 import RelatedArticles, { type ArticlePlaceholder } from "@/components/fusion/RelatedArticles";
 import PageHook from "@/components/fusion/PageHook";
 import PageIntro, { IntroStat } from "@/components/fusion/PageIntro";
-import { normalizeObjet } from "@/lib/objet-normalizer";
-import { fmtBillions, fmtDec, fmtInt, fmtMillions } from "@/lib/fmt";
+import { fmtBillions, fmtDec, fmtInt } from "@/lib/fmt";
 import type { BlogPostMeta } from "@/lib/blog";
 import type { MarchesPageData , FournisseursRankingData } from "@/lib/fusion-data";
-import { useT, useLocale } from "@/lib/localeContext";
-import { trLabel } from "@/lib/label-translate";
+import { useT } from "@/lib/localeContext";
 
 type MarchesIndex = { availableYears?: number[] };
 
@@ -32,8 +29,6 @@ const fill = (s: string, vars: Record<string, string | number>) => {
   for (const [k, v] of Object.entries(vars)) r = r.split(`{${k}}`).join(String(v));
   return r;
 };
-
-const cleanName = (n: string) => n.replace(/\s{2,}/g, " ").trim().slice(0, 60);
 
 const MP_PLACEHOLDERS: ArticlePlaceholder[] = [
   {
@@ -62,10 +57,7 @@ export default function MarchesPublicsClient({
   posts: BlogPostMeta[];
 }) {
   const t = useT();
-  const { locale } = useLocale();
-  const trL = (s: string | undefined) => trLabel(s, locale);
   const top10Pct = d.total > 0 ? (d.top10.reduce((s, ti) => s + ti.amount, 0) / d.total) * 100 : 0;
-  const multiPct = d.total > 0 ? (d.multiAttributaires.amount / d.total) * 100 : 0;
 
   return (
     <div className="theme-fusion">
