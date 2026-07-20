@@ -4,7 +4,7 @@ import type { ReactNode } from "react";
 import type { LieuFicheData } from "@/lib/lieux-data";
 import Link from "next/link";
 import { useT, useLocale } from "@/lib/localeContext";
-import { fill, numLocale } from "@/lib/fmt";
+import { fill, numLocale, seanceEn } from "@/lib/fmt";
 import { normalizeObjet } from "@/lib/objet-normalizer";
 import { useCity } from "./CityContext";
 
@@ -449,7 +449,7 @@ export default function LieuFiche({ lieu }: { lieu: LieuFicheData }) {
           >
             <div style={{ display: "flex", gap: 12, alignItems: "baseline" }}>
               <span className="tnum" style={{ fontFamily: "var(--f-mono)", fontSize: 10.5, color: "var(--rouge)", fontWeight: 600, whiteSpace: "nowrap", minWidth: 86 }}>
-                {m.seance}
+                {seanceEn(m.seance, locale)}
               </span>
               <span style={{ fontSize: 13.5, lineHeight: 1.45, flex: 1 }}>
                 {m.pourquoi && (

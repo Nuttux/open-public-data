@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T19:58:00.007150+00:00",
+ "generated_at": "2026-07-20T20:11:17.537074+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "carreau-du-temple",
  "name": "Carreau du Temple",
@@ -348,7 +348,144 @@
    "preuve": "Objet nomme le lieu et son adresse : « CARREAU DU TEMPLE 4 RUE EUGÈNE SPULLER AMO CVC » — assistance à maîtrise d'ouvrage CVC sur le bâtiment (adresse rue Eugène Spuller confirmée par le contexte)."
   }
  ],
- "mandate": null,
+ "mandate": {
+  "par_annee": {
+   "2009": 2723539.49,
+   "2010": 3274492.7,
+   "2011": 12477126.79,
+   "2012": 15021876.76,
+   "2013": 15662813.1,
+   "2014": 5002217.46,
+   "2015": 2139985.35,
+   "2016": 1342231.1,
+   "2017": 480715.96
+  },
+  "total_eur": 58124998.71,
+  "operations": [
+   {
+    "ap_cle": "B100/0903798",
+    "ap_texte": "CS CARREAU DU TEMPLE",
+    "mandate_par_annee": {
+     "2009": 94718.86,
+     "2010": 1927945.99,
+     "2011": 11411080.64,
+     "2012": 12913310.63,
+     "2013": 14937476.12
+    },
+    "total_mandate": 41284532.24,
+    "preuve": "Libellé « CS CARREAU DU TEMPLE » (DJS, mission Jeunesse et Sports) : opération de réhabilitation de l'équipement, cohérente avec la délibération 2009 DPA 56 (réhabilitation avec extension en sous-sol) et la livraison du bâtiment en 2014 ; pic de mandatement 2011-2013 pendant le chantier.",
+    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/0903798"
+   },
+   {
+    "ap_cle": "0903798",
+    "ap_texte": "CS CARREAU DU TEMPLE",
+    "mandate_par_annee": {
+     "2014": 3329995.32,
+     "2015": 1270412.19,
+     "2016": 848183.14,
+     "2017": 184286.21
+    },
+    "total_mandate": 5632876.86,
+    "preuve": "Libellé « CS CARREAU DU TEMPLE » (DJS) : suite 2014-2017 de la même opération 03798 sur le bâtiment, après la livraison de l'équipement en 2014.",
+    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=0903798"
+   },
+   {
+    "ap_cle": "B100/0803798",
+    "ap_texte": "CS CARREAU DU TEMPLE",
+    "mandate_par_annee": {
+     "2009": 1006790.71,
+     "2010": 997424.64,
+     "2011": 706500.9,
+     "2012": 403201.99,
+     "2013": 266736.89
+    },
+    "total_mandate": 3380655.13,
+    "preuve": "Libellé « CS CARREAU DU TEMPLE » (DJS) : tranche AP 2008 de l'opération de réhabilitation du bâtiment (opération confirmée par les délibérations DPA 2004-2009).",
+    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/0803798"
+   },
+   {
+    "ap_cle": "B100/0703798",
+    "ap_texte": "CS CARREAU DU TEMPLE",
+    "mandate_par_annee": {
+     "2009": 1622029.92,
+     "2010": 349122.07,
+     "2011": 359545.25,
+     "2012": 355364.14,
+     "2013": 356134.61
+    },
+    "total_mandate": 3042195.99,
+    "preuve": "Libellé « CS CARREAU DU TEMPLE » (DJS) : tranche AP 2007 de la même opération, année de la délibération 2007 DPA 331 approuvant la réhabilitation avec extension en sous-sol.",
+    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/0703798"
+   },
+   {
+    "ap_cle": "1003798",
+    "ap_texte": "CS CARREAU DU TEMPLE",
+    "mandate_par_annee": {
+     "2014": 926806.66,
+     "2015": 547348.61,
+     "2016": 397411.35,
+     "2017": 274700.32
+    },
+    "total_mandate": 2146266.94,
+    "preuve": "Libellé « CS CARREAU DU TEMPLE » (DJS) : tranche AP 2010 de la même opération sur le bâtiment, mandatée 2014-2017.",
+    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=1003798"
+   },
+   {
+    "ap_cle": "B100/1203798",
+    "ap_texte": "CS CARREAU DU TEMPLE",
+    "mandate_par_annee": {
+     "2012": 1350000.0
+    },
+    "total_mandate": 1350000.0,
+    "preuve": "Libellé « CS CARREAU DU TEMPLE » (DJS) : tranche AP 2012 de la même opération sur le bâtiment, mandatée pendant le chantier (2012).",
+    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/1203798"
+   },
+   {
+    "ap_cle": "0703798",
+    "ap_texte": "CS CARREAU DU TEMPLE",
+    "mandate_par_annee": {
+     "2014": 351836.16,
+     "2015": 228709.4,
+     "2016": 66178.68,
+     "2017": 329.58
+    },
+    "total_mandate": 647053.82,
+    "preuve": "Libellé « CS CARREAU DU TEMPLE » (DJS) : suite 2014-2017 de la tranche AP 2007 de la même opération sur le bâtiment.",
+    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=0703798"
+   },
+   {
+    "ap_cle": "0803798",
+    "ap_texte": "CS CARREAU DU TEMPLE",
+    "mandate_par_annee": {
+     "2014": 393579.32,
+     "2015": 93515.15,
+     "2016": 30457.93,
+     "2017": 21399.85
+    },
+    "total_mandate": 538952.25,
+    "preuve": "Libellé « CS CARREAU DU TEMPLE » (DJS) : suite 2014-2017 de la tranche AP 2008 de la même opération sur le bâtiment.",
+    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=0803798"
+   },
+   {
+    "ap_cle": "B100/1003798",
+    "ap_texte": "CS CARREAU DU TEMPLE",
+    "mandate_par_annee": {
+     "2013": 102465.48
+    },
+    "total_mandate": 102465.48,
+    "preuve": "Libellé « CS CARREAU DU TEMPLE » (DJS) : tranche AP 2010 de la même opération sur le bâtiment, mandatée en 2013 pendant le chantier.",
+    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/1003798"
+   }
+  ],
+  "periode": [
+   "2009",
+   "2017"
+  ],
+  "source": {
+   "name": "Comptes administratifs — autorisations de programme, Ville de Paris",
+   "url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/"
+  }
+ },
  "sources": {
   "delibs": {
    "name": "Débat-Délibs — Conseil de Paris",

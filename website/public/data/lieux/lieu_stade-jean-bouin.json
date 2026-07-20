@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T19:58:00.007150+00:00",
+ "generated_at": "2026-07-20T20:11:17.537074+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "stade-jean-bouin",
  "name": "Stade Jean-Bouin",
@@ -324,7 +324,146 @@
    "preuve": "L'objet porte sur une installation de ce lieu : « CONTROLE TECHNIQUE SYSTEME D'ECLAIRAGE STADE JEAN BOUIN ». Le site dispose bien d'installations d'éclairage sportif, documentées par deux délibérations : 1997 JS 170, « réfection de l'éclairage sportif du terrain de rugby du stade Jean-Bouin, 20 à 40, avenue du Général-Sarrail (16e) », et 2001 JS 101-1°, « réalisation de 2 mâts d'éclairage au stade de rugby du centre sportif Jean-Bouin, 20-40, avenue du Général-Sarrail (16e) »."
   }
  ],
- "mandate": null,
+ "mandate": {
+  "par_annee": {
+   "2009": 5200933.03,
+   "2010": 8139811.41,
+   "2011": 39986600.57,
+   "2012": 57220619.29,
+   "2013": 35965605.05,
+   "2014": 4785039.03,
+   "2015": 1666614.92,
+   "2016": 1407589.26,
+   "2017": 2711498.73
+  },
+  "total_eur": 157084311.29,
+  "operations": [
+   {
+    "ap_cle": "B100/0903877",
+    "ap_texte": "STADE JEAN BOUIN",
+    "mandate_par_annee": {
+     "2009": 94585.06,
+     "2010": 5856644.6,
+     "2011": 37334279.35,
+     "2012": 50023314.44,
+     "2013": 30557114.64
+    },
+    "total_mandate": 123865938.09,
+    "preuve": "Libellé de l'opération : « STADE JEAN BOUIN », mission « JEUNESSE ET SPORTS », direction DJS — désigne CE lieu et rien d'autre. Le profil de mandatement (pic 2011-2013 : 37,3 M€, 50,0 M€, 30,6 M€) correspond au chantier de reconstruction du stade documenté par les délibérations : 2010 DJS 394, « concession de travaux pour la rénovation et l'exploitation, à des fins privatives, du centre sportif Jean-Bouin, situé 20 à 40, avenue du Général Sarrail », et débats de juin 2010 sur le chantier (2010 DJS 372).",
+    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/0903877"
+   },
+   {
+    "ap_cle": "B100/0800869",
+    "ap_texte": "STADE JEAN BOUIN",
+    "mandate_par_annee": {
+     "2009": 4585775.12,
+     "2010": 1160632.16,
+     "2011": 1475213.69,
+     "2012": 4319467.51,
+     "2013": 2913054.26
+    },
+    "total_mandate": 14454142.74,
+    "preuve": "Libellé de l'opération : « STADE JEAN BOUIN », mission « JEUNESSE ET SPORTS », direction DJS — désigne CE lieu (équipement sportif DJS du 16e, 20-40 avenue du Général-Sarrail, confirmé par les délibérations).",
+    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/0800869"
+   },
+   {
+    "ap_cle": "B100/0700869",
+    "ap_texte": "STADE JEAN BOUIN",
+    "mandate_par_annee": {
+     "2009": 520572.85,
+     "2010": 1122534.65,
+     "2011": 1128103.1,
+     "2012": 1796118.3,
+     "2013": 1153618.14
+    },
+    "total_mandate": 5720947.04,
+    "preuve": "Libellé de l'opération : « STADE JEAN BOUIN », mission « JEUNESSE ET SPORTS », direction DJS — désigne CE lieu.",
+    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/0700869"
+   },
+   {
+    "ap_cle": "0903877",
+    "ap_texte": "STADE JEAN BOUIN",
+    "mandate_par_annee": {
+     "2014": 3560627.95,
+     "2015": 679866.29,
+     "2016": 741065.36,
+     "2017": 113461.74
+    },
+    "total_mandate": 5095021.34,
+    "preuve": "Libellé de l'opération : « STADE JEAN BOUIN », mission « JEUNESSE ET SPORTS », direction DJS — même numéro d'opération que B100/0903877 (suite 2014-2017 du chantier du stade).",
+    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=0903877"
+   },
+   {
+    "ap_cle": "1403877",
+    "ap_texte": "STADE JEAN BOUIN",
+    "mandate_par_annee": {
+     "2014": 159355.54,
+     "2015": 842326.89,
+     "2016": 534179.05,
+     "2017": 2598036.99
+    },
+    "total_mandate": 4133898.47,
+    "preuve": "Libellé de l'opération : « STADE JEAN BOUIN », mission « JEUNESSE ET SPORTS », direction DJS — désigne CE lieu.",
+    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=1403877"
+   },
+   {
+    "ap_cle": "B100/1004077",
+    "ap_texte": "STADE JEAN BOUIN - VOIES ET ABORDS",
+    "mandate_par_annee": {
+     "2011": 49004.43,
+     "2012": 1081719.04,
+     "2013": 1341818.01
+    },
+    "total_mandate": 2472541.48,
+    "preuve": "Libellé de l'opération : « STADE JEAN BOUIN - VOIES ET ABORDS », mission « VOIRIE ET DEPLACEMEN », direction DVD — aménagements de voirie sur les abords immédiats de CE lieu, mandatés 2011-2013 pendant le chantier de reconstruction du stade. L'opération porte sur les voies et abords, pas sur le bâtiment lui-même.",
+    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/1004077"
+   },
+   {
+    "ap_cle": "0800869",
+    "ap_texte": "STADE JEAN BOUIN",
+    "mandate_par_annee": {
+     "2014": 648573.1,
+     "2015": 81944.65,
+     "2016": 29435.49
+    },
+    "total_mandate": 759953.24,
+    "preuve": "Libellé de l'opération : « STADE JEAN BOUIN », mission « JEUNESSE ET SPORTS », direction DJS — même numéro d'opération que B100/0800869 (suite 2014-2016).",
+    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=0800869"
+   },
+   {
+    "ap_cle": "1004077",
+    "ap_texte": "STADE JEAN BOUIN - VOIES ET ABORDS",
+    "mandate_par_annee": {
+     "2014": 147797.08,
+     "2015": 60827.73,
+     "2016": 102789.76
+    },
+    "total_mandate": 311414.57,
+    "preuve": "Libellé de l'opération : « STADE JEAN BOUIN - VOIES ET ABORDS », mission « VOIRIE ET DEPLACEMEN », direction DVD — même numéro d'opération que B100/1004077 (suite 2014-2016) ; porte sur les voies et abords du stade, pas sur le bâtiment lui-même.",
+    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=1004077"
+   },
+   {
+    "ap_cle": "0700869",
+    "ap_texte": "STADE JEAN BOUIN",
+    "mandate_par_annee": {
+     "2014": 268685.36,
+     "2015": 1649.36,
+     "2016": 119.6
+    },
+    "total_mandate": 270454.32,
+    "preuve": "Libellé de l'opération : « STADE JEAN BOUIN », mission « JEUNESSE ET SPORTS », direction DJS — même numéro d'opération que B100/0700869 (suite 2014-2016).",
+    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=0700869"
+   }
+  ],
+  "periode": [
+   "2009",
+   "2017"
+  ],
+  "source": {
+   "name": "Comptes administratifs — autorisations de programme, Ville de Paris",
+   "url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/"
+  }
+ },
  "sources": {
   "delibs": {
    "name": "Débat-Délibs — Conseil de Paris",

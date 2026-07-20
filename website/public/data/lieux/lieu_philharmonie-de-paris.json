@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T19:58:00.007150+00:00",
+ "generated_at": "2026-07-20T20:11:17.537074+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "philharmonie-de-paris",
  "name": "Philharmonie de Paris",
@@ -661,7 +661,32 @@
  "bmo_recit": null,
  "invest": [],
  "marches": [],
- "mandate": null,
+ "mandate": {
+  "par_annee": {
+   "2014": 159688927.21
+  },
+  "total_eur": 159688927.21,
+  "operations": [
+   {
+    "ap_cle": "1403721",
+    "ap_texte": "PROV SUB EQUIP PHILHARMONIE DE PARIS",
+    "mandate_par_annee": {
+     "2014": 159688927.21
+    },
+    "total_mandate": 159688927.21,
+    "preuve": "Le libellé de l'opération nomme CE lieu verbatim : « PROV SUB EQUIP PHILHARMONIE DE PARIS » (mission « SUBVENTIONS D'EQUIPE », direction DAC). Mandaté 2014-2017, période de construction et d'ouverture de la Philharmonie (janvier 2015), cohérent avec les délibérations DAC de subventions à l'association puis à l'établissement public Philharmonie de Paris (19e), ex. « 2014 DAC 1493 - Subvention (1.250.000 euros) et avenant à convention avec l'association Philharmonie de Paris (19e) », « 2015 DAC 602 - Subventions de fonctionnement et d'équipement (15.658.233 euros) ».",
+    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=1403721"
+   }
+  ],
+  "periode": [
+   "2014",
+   "2014"
+  ],
+  "source": {
+   "name": "Comptes administratifs — autorisations de programme, Ville de Paris",
+   "url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/"
+  }
+ },
  "sources": {
   "delibs": {
    "name": "Débat-Délibs — Conseil de Paris",

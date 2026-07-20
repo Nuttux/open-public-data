@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T19:58:00.007150+00:00",
+ "generated_at": "2026-07-20T20:11:17.537074+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "adidas-arena",
  "name": "Adidas Arena",
@@ -22,7 +22,8 @@
   "source": {
    "name": "Wikipédia",
    "url": "https://fr.wikipedia.org/"
-  }
+  },
+  "extract_en": "The Adidas Arena is a multi-purpose, modular venue located in the Chapelle neighborhood of Paris, France. Inaugurated on 11 February 2024, it was built specifically for the 2024 Summer Olympic Games."
  },
  "stats": {
   "n_delibs": 85,
@@ -50,7 +51,9 @@
    "fait": "Le Conseil autorise les démarches d'urbanisme et une convention d'études avec la SOLIDEO pour construire l'Aréna II.",
    "pourquoi": "le premier vote qui engage le projet de l'Aréna",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=144041"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=144041",
+   "fait_en": "The Council authorized the planning procedures and a study agreement with SOLIDEO to build Aréna II.",
+   "pourquoi_en": "The first vote committing the Council to the Aréna project"
   },
   {
    "id": "156191",
@@ -58,7 +61,9 @@
    "fait": "Attribution du contrat de délégation de service public, avec 51 dates dont 16 réservées au sport imposées au délégataire.",
    "pourquoi": "ce que la Ville revendique comme une gestion publique",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=156191"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=156191",
+   "fait_en": "Awarding of the public service delegation contract, with 51 dates including 16 reserved for sport imposed on the delegatee.",
+   "pourquoi_en": "What the City claims as public-interest management"
   },
   {
    "id": "157759",
@@ -66,7 +71,9 @@
    "fait": "Création d'une filiale de la SAE POPB (gestionnaire de Bercy) pour exploiter l'Aréna 2, avec débat sur les garanties pour la Ville.",
    "pourquoi": "qui pilotera vraiment la salle après 2024",
    "vedette": false,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=157759"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=157759",
+   "fait_en": "Creation of a subsidiary of the SAE POPB (the operator of Bercy) to run Aréna 2, with debate over the guarantees for the City.",
+   "pourquoi_en": "Who will really run the venue after 2024"
   },
   {
    "id": "159173",
@@ -74,7 +81,9 @@
    "fait": "Avenants à la convention Ville–Paris 2024–Solideo ; l'opposition évoque une TVA de 25 M€ et un modèle jugé fragile.",
    "pourquoi": "l'argent public et le montage sous surveillance",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=159173"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=159173",
+   "fait_en": "Amendments to the City–Paris 2024–Solideo agreement; the opposition cited a VAT recovery of €25 million and a model it deemed fragile.",
+   "pourquoi_en": "Public money and the financing arrangement under scrutiny"
   },
   {
    "id": "164591",
@@ -82,7 +91,9 @@
    "fait": "Approbation d'une subvention de 600 000 euros de l'Agence nationale du sport pour les deux gymnases de quartier.",
    "pourquoi": "l'État participe aux gymnases populaires",
    "vedette": false,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=164591"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=164591",
+   "fait_en": "Approval of a 600,000-euro grant from the Agence nationale du sport for the two neighborhood gymnasiums.",
+   "pourquoi_en": "The State contributes to the neighborhood gymnasiums"
   },
   {
    "id": "165087",
@@ -90,7 +101,9 @@
    "fait": "Examen de l'agrément de la dénomination \"Adidas Arena\", combattu par les Écologistes au nom du féminisme.",
    "pourquoi": "la marque remplace le nom d'Alice Milliat",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=165087"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=165087",
+   "fait_en": "Review of the approval of the name \"Adidas Arena\", opposed by Les Écologistes in the name of feminism.",
+   "pourquoi_en": "The brand replaces the name of Alice Milliat"
   },
   {
    "id": "168522",
@@ -98,7 +111,9 @@
    "fait": "Attribution du nom de l'athlète Aimée Lallement au gymnase n° 1 intégré à l'Arena.",
    "pourquoi": "deux sportives entrent dans l'équipement",
    "vedette": false,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=168522"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=168522",
+   "fait_en": "Naming of gymnasium no. 1 within the Arena after athlete Aimée Lallement.",
+   "pourquoi_en": "Two sportswomen enter the facility"
   },
   {
    "id": "183569",
@@ -106,7 +121,9 @@
    "fait": "Un vœu écologiste dénonce une publicité Adidas de 650 m² jugée illégale ; l'Exécutif la déclare autorisée et conforme.",
    "pourquoi": "la façade publique devient-elle une vitrine",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=183569"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=183569",
+   "fait_en": "A motion from Les Écologistes denounced a 650 m² Adidas advertisement it deemed illegal; the executive declared it authorized and compliant.",
+   "pourquoi_en": "Is the public facade becoming a billboard"
   }
  ],
  "montants": [
@@ -292,5 +309,6 @@
    "name": "Wikipédia",
    "url": "https://fr.wikipedia.org/"
   }
- }
+ },
+ "synthese_en": "In July 2018, Conseil de Paris authorized the planning procedures and a study agreement with SOLIDEO to build Aréna II at Porte de la Chapelle, presented as the only Paris facility built for the 2024 Games. The following deliberations organized its management: launching the public service delegation for commercial operation and a protocol with Paris Basketball (2019), awarding the contract with a requirement of 51 dates including 16 reserved for sport (2020), then creating a subsidiary of the SAE POPB to operate it (2021). Financing was discussed on several occasions — a VAT recovery mentioned at 25 million euros (2021), a 600,000-euro grant from the Agence nationale du sport for the two neighborhood gymnasiums, and an amendment adding the forecourt and a street to the operating perimeter, an extension the opposition put at 2,065,000 euros (2022). The choice of a \"naming\" deal led in July 2022 to the name \"Adidas Arena\", opposed by Les Écologistes in the name of Alice Milliat, whose name was given to the forecourt, while two indoor gymnasiums were named Aimée Lallement and Alice Coachman (2023). Once the venue opened, debates turned to its uses — an equipment grant to resident club Paris Basketball (2024) — and to an Adidas advertisement that Les Écologistes deemed illegal, which the executive disputed (2025)."
 }

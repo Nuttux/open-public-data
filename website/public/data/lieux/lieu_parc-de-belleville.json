@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T19:58:00.007150+00:00",
+ "generated_at": "2026-07-20T20:11:17.537074+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "parc-de-belleville",
  "name": "Parc de Belleville",
@@ -22,7 +22,8 @@
   "source": {
    "name": "Wikipédia",
    "url": "https://fr.wikipedia.org/"
-  }
+  },
+  "extract_en": "The Parc de Belleville, also called the Jardin Belleville–Julien-Lacroix, is one of the parks and gardens of the 20th arrondissement of Paris (France)."
  },
  "stats": {
   "n_delibs": 448,
@@ -52,7 +53,9 @@
    "fait": "Le Conseil approuve le principe de la stabilisation d'un talus dans le cadre de l'extension du parc de Belleville et autorise le Maire à signer le marché.",
    "pourquoi": "aux origines : le parc s'étend, le terrain doit tenir",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=1179"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=1179",
+   "fait_en": "The Council approved the principle of stabilizing a slope as part of the extension of the Parc de Belleville and authorized the Mayor to sign the contract.",
+   "pourquoi_en": "At the origins: the park expands, the ground must hold"
   },
   {
    "id": "15945",
@@ -60,7 +63,9 @@
    "fait": "Le Conseil autorise le Maire à signer un marché pour la démolition des falaises artificielles du parc ; Laure Schneiter dénonce un « gaspillage financier ».",
    "pourquoi": "des falaises récentes déjà à démolir, dépense contestée",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=15945"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=15945",
+   "fait_en": "The Council authorized the Mayor to sign a contract for the demolition of the park's artificial cliffs; Laure Schneiter denounced a \"waste of money\".",
+   "pourquoi_en": "Recently built cliffs already being demolished, spending disputed"
   },
   {
    "id": "54882",
@@ -68,7 +73,9 @@
    "fait": "Le Conseil autorise le Maire à signer un avenant transférant le marché de rénovation de la grande aire de jeux de Quillery Environnement Urbain à Eiffage Travaux Publics Réseaux.",
    "pourquoi": "le chantier de l'aire de jeux change d'entreprise",
    "vedette": false,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=54882"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=54882",
+   "fait_en": "The Council authorized the Mayor to sign an amendment transferring the renovation contract for the large play area from Quillery Environnement Urbain to Eiffage Travaux Publics Réseaux.",
+   "pourquoi_en": "The play-area project changes contractor"
   },
   {
    "id": "138045",
@@ -76,7 +83,9 @@
    "fait": "Le Conseil examine une convention confiant pour un an le pavillon Maison de l'air (646 m²) à l'association « Les Halles civiques » ; des élus s'opposent à une future concession commerciale.",
    "pourquoi": "équipement citoyen ou future concession : le pavillon en débat",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=138045"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=138045",
+   "fait_en": "The Council examined an agreement entrusting the \"Maison de l'air\" pavilion (646 m²) to the association \"Les Halles civiques\" for one year; elected officials opposed a future commercial concession.",
+   "pourquoi_en": "Civic amenity or future concession: the pavilion in debate"
   },
   {
    "id": "157746",
@@ -84,7 +93,9 @@
    "fait": "Le Conseil examine une convention prolongeant de six mois l'occupation de la Maison de l'air par « Démocratie ouverte » et débat de deux vœux écologistes sur l'avenir du lieu.",
    "pourquoi": "la concertation sur l'avenir du pavillon est relancée",
    "vedette": false,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=157746"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=157746",
+   "fait_en": "The Council examined an agreement extending the occupation of the Maison de l'air by \"Démocratie ouverte\" by six months and debated two motions from Les Écologistes on the site's future.",
+   "pourquoi_en": "Consultation on the pavilion's future is relaunched"
   },
   {
    "id": "168281",
@@ -92,7 +103,9 @@
    "fait": "Le Conseil examine le renouvellement de la convention confiant la Maison de l'air au centre social Archipélia ; Antoinette Guhl fait état de 3,4 M€ d'investissement pour réhabiliter le pavillon.",
    "pourquoi": "3,4 M€ annoncés pour réhabiliter la Maison de l'air",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=168281"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=168281",
+   "fait_en": "The Council examined renewing the agreement entrusting the Maison de l'air to the Archipélia social centre; Antoinette Guhl reported €3.4 million in investment to renovate the pavilion.",
+   "pourquoi_en": "€3.4 million announced to renovate the Maison de l'air"
   },
   {
    "id": "171836",
@@ -100,7 +113,9 @@
    "fait": "Un vœu alerte sur un campement de jeunes sans-abri installé dans le parc et interpelle le Préfet de Région, le maire du 20e évoquant plus de 180 personnes.",
    "pourquoi": "un campement de jeunes sans-abri dans le parc",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=171836"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=171836",
+   "fait_en": "A motion raised the alarm over a homeless youth encampment set up in the park and called on the Prefect of the Region, with the mayor of the 20th arrondissement citing more than 180 people.",
+   "pourquoi_en": "A homeless youth encampment in the park"
   },
   {
    "id": "181237",
@@ -108,7 +123,9 @@
    "fait": "Le Conseil examine l'apposition d'une plaque commémorative en hommage au chanteur Rachid Taha sur l'amphithéâtre du parc de Belleville.",
    "pourquoi": "une plaque pour Rachid Taha sur l'amphithéâtre",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=181237"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=181237",
+   "fait_en": "The Council examined installing a commemorative plaque honoring the singer Rachid Taha on the amphitheatre of the Parc de Belleville.",
+   "pourquoi_en": "A plaque for Rachid Taha on the amphitheatre"
   }
  ],
  "montants": [
@@ -164,5 +181,6 @@
    "name": "Wikipédia",
    "url": "https://fr.wikipedia.org/"
   }
- }
+ },
+ "synthese_en": "The earliest deliberations concern the park's very ground: approval, in 1995, of the principle of stabilizing a slope as part of its extension, then, in 1998, of the principle of demolishing artificial cliffs. In the 2000s, the Council approved the principle and terms of redeveloping the play area (2005, then 2006), before authorizing in 2007 an amendment transferring the large play area's renovation contract from one company to another. From 2015 onward, and especially from 2017, attention shifted to the \"Maison de l'air\" pavilion at the top of the park: a one-year agreement entrusted this 646 m² space to the association \"Les Halles civiques\", and elected officials demanded that it not become a commercial concession. From 2021 to 2023, successive temporary agreements extended the occupancy (\"Démocratie ouverte\", then the Archipélia social centre), while Antoinette Guhl reported €3.4 million in investment allocated in the December budget to renovate the pavilion. In October 2023, a motion raised the alarm over a homeless youth encampment set up in the park, and in 2025 the Council examined installing a commemorative plaque honoring Rachid Taha on the amphitheatre."
 }

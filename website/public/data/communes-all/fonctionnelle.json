@@ -1,0 +1,76 @@
+{
+  "generated_at": "2026-05-06T13:50:26.234217+00:00",
+  "source": "DGCL/OFGL — Rapport annuel finances locales 2024",
+  "source_url": "https://www.collectivites-locales.gouv.fr/files/Finances%20locales/Rapports%20OFGL/2024/note_OFGL_finances_locales_2023.pdf",
+  "year": 2024,
+  "scope": "national_avg_weighted_only",
+  "scope_note_fr": "Le dataset OFGL ne publie pas la ventilation fonctionnelle au niveau de chaque commune (seul `departements-fonctionnelle` est exposé). Les valeurs ici sont les moyennes nationales du bloc communal (communes + EPCI) issues du rapport annuel OFGL/DGCL. L'overlay `by_insee_top_200` est laissé vide pour l'instant.",
+  "fonctions": [
+    "administration_generale",
+    "enseignement",
+    "culture_sport",
+    "amenagement_urbain",
+    "action_sociale",
+    "voirie",
+    "securite",
+    "proprete_dechets",
+    "autres"
+  ],
+  "national_avg_weighted": {
+    "administration_generale": {
+      "share": 0.32,
+      "eur_hab": 540.0,
+      "label_fr": "Administration générale",
+      "label_en": "General administration"
+    },
+    "enseignement": {
+      "share": 0.14,
+      "eur_hab": 230.0,
+      "label_fr": "Enseignement (écoles primaires)",
+      "label_en": "Education (primary schools)"
+    },
+    "culture_sport": {
+      "share": 0.12,
+      "eur_hab": 200.0,
+      "label_fr": "Culture, sport, loisirs",
+      "label_en": "Culture, sport, recreation"
+    },
+    "amenagement_urbain": {
+      "share": 0.11,
+      "eur_hab": 185.0,
+      "label_fr": "Aménagement urbain",
+      "label_en": "Urban planning"
+    },
+    "action_sociale": {
+      "share": 0.1,
+      "eur_hab": 170.0,
+      "label_fr": "Action sociale (CCAS)",
+      "label_en": "Social action (CCAS)"
+    },
+    "voirie": {
+      "share": 0.08,
+      "eur_hab": 135.0,
+      "label_fr": "Voirie communale",
+      "label_en": "Municipal roads"
+    },
+    "securite": {
+      "share": 0.06,
+      "eur_hab": 100.0,
+      "label_fr": "Sécurité (police municipale)",
+      "label_en": "Security (municipal police)"
+    },
+    "proprete_dechets": {
+      "share": 0.05,
+      "eur_hab": 85.0,
+      "label_fr": "Propreté + déchets",
+      "label_en": "Cleanliness + waste"
+    },
+    "autres": {
+      "share": 0.02,
+      "eur_hab": 35.0,
+      "label_fr": "Autres",
+      "label_en": "Other"
+    }
+  },
+  "by_insee_top_200": {}
+}

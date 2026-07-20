@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T19:58:00.007150+00:00",
+ "generated_at": "2026-07-20T20:11:17.537074+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "tour-saint-jacques",
  "name": "Tour Saint-Jacques",
@@ -130,7 +130,47 @@
  "bmo_recit": "Dans le Bulletin municipal, la tour Saint-Jacques apparaît non comme un monument mais comme un instrument : annexe de l'Observatoire municipal de Montsouris, elle sert de station météorologique. En 1898, une statistique hebdomadaire y relève un vent atteignant 24 kilomètres à l'heure, contre 29 à Montsouris. En 1902, le Bulletin décrit le Service météorologique de l'Observatoire municipal — Montsouris et Tour Saint-Jacques — qui publie chaque jour un bulletin résumant le temps dans la région parisienne, affiché dans les cours de l'Hôtel de Ville et à la porte des mairies des vingt arrondissements. La tour figure encore en 1923 dans les relevés de vitesse du vent, aux côtés de la tour Eiffel. Sur cette période, l'archive ne montre d'elle que ce rôle : un point de mesure du ciel parisien, cité semaine après semaine parmi les stations de la région.",
  "invest": [],
  "marches": [],
- "mandate": null,
+ "mandate": {
+  "par_annee": {
+   "2009": 253963.64,
+   "2010": 99259.48,
+   "2012": 61519.64
+  },
+  "total_eur": 414742.76,
+  "operations": [
+   {
+    "ap_cle": "B100/0700407",
+    "ap_texte": "RESTAURATION TOUR SAINT JACQUES",
+    "mandate_par_annee": {
+     "2009": 253963.64,
+     "2010": 65627.68,
+     "2012": 34247.81
+    },
+    "total_mandate": 353839.13,
+    "preuve": "Libellé de l'opération « RESTAURATION TOUR SAINT JACQUES » (mission AFFAIRES CULTURELLES, direction DAC) désigne explicitement ce monument ; cohérent avec l'opération de restauration des façades approuvée par le Conseil de Paris (délib. 2004 DAC 40 « restauration des façades de la Tour Saint-Jacques (4e) », 2005 DAC 39, 2008 DAC 338).",
+    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/0700407"
+   },
+   {
+    "ap_cle": "B100/0500407",
+    "ap_texte": "RESTAURATION DE LA TOUR SAINT JACQUES",
+    "mandate_par_annee": {
+     "2010": 33631.8,
+     "2012": 27271.83
+    },
+    "total_mandate": 60903.63,
+    "preuve": "Libellé de l'opération « RESTAURATION DE LA TOUR SAINT JACQUES » (mission AFFAIRES CULTURELLES, direction DAC) nomme le lieu ; correspond au chantier de restauration délibéré au Conseil de Paris (2004 DAC 40, 2005 DAC 39 « restauration des façades de la Tour Saint-Jacques de la Boucherie (4e) »).",
+    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/0500407"
+   }
+  ],
+  "periode": [
+   "2009",
+   "2012"
+  ],
+  "source": {
+   "name": "Comptes administratifs — autorisations de programme, Ville de Paris",
+   "url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/"
+  }
+ },
  "sources": {
   "delibs": {
    "name": "Débat-Délibs — Conseil de Paris",

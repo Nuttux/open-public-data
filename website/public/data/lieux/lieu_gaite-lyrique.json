@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T19:58:00.007150+00:00",
+ "generated_at": "2026-07-20T20:11:17.537074+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "gaite-lyrique",
  "name": "Gaîté-Lyrique",
@@ -115,7 +115,7 @@
    "pourquoi": "L'exécutif annonce l'abandon de la salle symphonique",
    "vedette": true,
    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=8820",
-   "fait_en": "The deputy for Culture laid out the grounds for abandoning the planned 2,100-seat symphony hall under the State-Region development contract, and disputed that the State's 22 million francs were earmarked for the Gaîté-Lyrique.",
+   "fait_en": "The deputy mayor for Culture laid out the grounds for abandoning the planned 2,100-seat symphony hall under the State-Region development contract, and disputed that the State's 22 million francs were earmarked for the Gaîté-Lyrique.",
    "pourquoi_en": "The executive announces abandoning the symphony hall"
   },
   {
@@ -125,7 +125,7 @@
    "pourquoi": "La gouvernance annoncée pour le projet",
    "vedette": false,
    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=7409",
-   "fait_en": "Asked about the members of the renovation's steering committee, the deputy for Culture replied that the project \"will be the subject of a steering committee\", which he would chair, to oversee the definition studies and organize public consultation.",
+   "fait_en": "Asked about the members of the renovation's steering committee, the deputy mayor for Culture replied that the project \"will be the subject of a steering committee\", which he would chair, to oversee the definition studies and organize public consultation.",
    "pourquoi_en": "The governance announced for the project"
   },
   {
@@ -135,7 +135,7 @@
    "pourquoi": "Autorisation de désigner la maîtrise d'œuvre et de déposer les permis",
    "vedette": true,
    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=33851",
-   "fait_en": "The Council was presented with a resolution authorizing the Mayor to sign the project management contract and to file the construction and demolition permit applications for the centre dedicated to contemporary music and digital arts.",
+   "fait_en": "The Council was presented with a deliberation authorizing the Mayor to sign the project management contract and to file the construction and demolition permit applications for the centre dedicated to contemporary music and digital arts.",
    "pourquoi_en": "Authorization to appoint the project managers and file the permits"
   },
   {
@@ -145,7 +145,7 @@
    "pourquoi": "Droits d'auteur sur une œuvre du hall",
    "vedette": false,
    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=72642",
-   "fait_en": "The Council was presented with a resolution authorizing the Mayor to sign a settlement agreement with Ms Isabel Michel, an artist, granting her compensation for the intellectual property rights to the work she created in the lobby.",
+   "fait_en": "The Council was presented with a deliberation authorizing the Mayor to sign a settlement agreement with Ms Isabel Michel, an artist, granting her compensation for the intellectual property rights to the work she created in the lobby.",
    "pourquoi_en": "Copyright over a lobby artwork"
   },
   {
@@ -155,7 +155,7 @@
    "pourquoi": "Vers une exploitation en gestion déléguée",
    "vedette": true,
    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=54389",
-   "fait_en": "The Council was presented with a resolution authorizing the Mayor to sign a public service delegation agreement with the Société de Gestion de la Gaîté Lyrique SAS (S.G.G.L) for operating the Gaîté Lyrique.",
+   "fait_en": "The Council was presented with a deliberation authorizing the Mayor to sign a public service delegation agreement with the Société de Gestion de la Gaîté Lyrique SAS (S.G.G.L) for operating the Gaîté Lyrique.",
    "pourquoi_en": "Toward operation under a delegated management contract"
   },
   {
@@ -319,7 +319,125 @@
    "preuve": "Objet nomme explicitement le lieu (« FOURNITURE DE PRODUITS DERIVES GAITE LYRIQUE ») et le fournisseur (SIRET 50290276000045) est la Société de Gestion de la Gaîté Lyrique, délégataire DSP du lieu (2007 DAC 698)"
   }
  ],
- "mandate": null,
+ "mandate": {
+  "par_annee": {
+   "2009": 31405427.82,
+   "2010": 20419295.37,
+   "2011": 4336796.69,
+   "2012": 3540719.32,
+   "2013": 1665017.34,
+   "2014": 49419.22,
+   "2015": 104831.19,
+   "2016": 2259.57,
+   "2017": 4155.22
+  },
+  "total_eur": 61527921.74,
+  "operations": [
+   {
+    "ap_cle": "B100/0701491",
+    "ap_texte": "GAITE LYRIQUE",
+    "mandate_par_annee": {
+     "2009": 28121579.48,
+     "2010": 19039976.64,
+     "2011": 3864090.02,
+     "2012": 2861127.04,
+     "2013": 882515.17
+    },
+    "total_mandate": 54769288.35,
+    "preuve": "Libellé AP « GAITE LYRIQUE » (mission AFFAIRES CULTURELLES, direction DAC) ; mandats 2009-2013 cohérents avec le chantier de « création d'un centre dédié aux musiques actuelles et aux arts numériques dans l'ancien théâtre de la Gaîté lyrique, 3 bis rue Papin (3e) » (délibérations DPA 2004-2011, ex. 2009 DPA 209)",
+    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/0701491"
+   },
+   {
+    "ap_cle": "B100/0801491",
+    "ap_texte": "GAITE LYRIQUE",
+    "mandate_par_annee": {
+     "2009": 1519253.06,
+     "2010": 188088.07,
+     "2011": 317552.41,
+     "2012": 650120.65,
+     "2013": 782502.17
+    },
+    "total_mandate": 3457516.36,
+    "preuve": "Libellé AP « GAITE LYRIQUE » (AFFAIRES CULTURELLES, DAC) ; même radical d'opération 01491 que l'AP principale du chantier de restructuration du lieu",
+    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/0801491"
+   },
+   {
+    "ap_cle": "B100/0401491",
+    "ap_texte": "GAITE LYRIQUE",
+    "mandate_par_annee": {
+     "2009": 1711134.86,
+     "2010": 1191230.66,
+     "2011": 155154.26,
+     "2012": 29471.63
+    },
+    "total_mandate": 3086991.41,
+    "preuve": "Libellé AP « GAITE LYRIQUE » (AFFAIRES CULTURELLES, DAC) ; millésime 2004 cohérent avec le lancement des travaux (2004 DPA 182 et 203 : marchés de démolitions dans l'ancien théâtre, rue Papin, 3e)",
+    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/0401491"
+   },
+   {
+    "ap_cle": "1001491",
+    "ap_texte": "GAITE LYRIQUE",
+    "mandate_par_annee": {
+     "2014": 4035.98,
+     "2015": 86067.0,
+     "2016": 2259.57,
+     "2017": 4155.22
+    },
+    "total_mandate": 96517.77,
+    "preuve": "Libellé AP « GAITE LYRIQUE » (AFFAIRES CULTURELLES, DAC) ; même radical d'opération 01491, mandats 2014-2017 sur l'équipement après son ouverture (2011)",
+    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=1001491"
+   },
+   {
+    "ap_cle": "0801491",
+    "ap_texte": "GAITE LYRIQUE",
+    "mandate_par_annee": {
+     "2014": 37851.5,
+     "2015": 18764.19
+    },
+    "total_mandate": 56615.69,
+    "preuve": "Libellé AP « GAITE LYRIQUE » (AFFAIRES CULTURELLES, DAC) ; même radical d'opération 01491",
+    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=0801491"
+   },
+   {
+    "ap_cle": "B100/0501491",
+    "ap_texte": "GAITE LYRIQUE",
+    "mandate_par_annee": {
+     "2009": 49232.97
+    },
+    "total_mandate": 49232.97,
+    "preuve": "Libellé AP « GAITE LYRIQUE » (AFFAIRES CULTURELLES, DAC) ; millésime 2005 cohérent avec 2005 DPA 215 : « Gaîté lyrique 3 bis, rue Papin (3e) […] Approbation du principe de réalisation des travaux principaux »",
+    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/0501491"
+   },
+   {
+    "ap_cle": "0701491",
+    "ap_texte": "GAITE LYRIQUE",
+    "mandate_par_annee": {
+     "2014": 7531.74
+    },
+    "total_mandate": 7531.74,
+    "preuve": "Libellé AP « GAITE LYRIQUE » (AFFAIRES CULTURELLES, DAC) ; même radical d'opération 01491",
+    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=0701491"
+   },
+   {
+    "ap_cle": "B100/0601491",
+    "ap_texte": "GAITE LYRIQUE",
+    "mandate_par_annee": {
+     "2009": 4227.45
+    },
+    "total_mandate": 4227.45,
+    "preuve": "Libellé AP « GAITE LYRIQUE » (AFFAIRES CULTURELLES, DAC) ; même radical d'opération 01491",
+    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/0601491"
+   }
+  ],
+  "periode": [
+   "2009",
+   "2017"
+  ],
+  "source": {
+   "name": "Comptes administratifs — autorisations de programme, Ville de Paris",
+   "url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/"
+  }
+ },
  "sources": {
   "delibs": {
    "name": "Débat-Délibs — Conseil de Paris",
@@ -338,6 +456,6 @@
    "url": "https://fr.wikipedia.org/"
   }
  },
- "synthese_en": "In May 1996, the Communist group questioned the City about a theatre that had been closed for five years, its question describing the interior as \"destroyed by the installation of a children's amusement centre\"; the City replied that it aimed to keep cultural activities going there and countered that the building \"has undergone alterations\": \"it is no longer a grand theatre, even though it still has two performance halls.\" In November 1996, the Council adopted, by a majority vote, 248,000 francs in operating funds for a preparatory association tasked with thinking through the site's future; during the debate, Ms Laure SCHNEITER put the guarantee that the Planète Magique's bankruptcy would leave the City holding at 180 million francs. In June 1999, the City stated that this association, headquartered at 3 bis rue Papin, had operated for two years and received two grants, while the Socialist group demanded an accounting of it. In May 2001, the deputy for Culture laid out the grounds for abandoning the planned 2,100-seat symphony concert hall, which he judged too costly and ill-suited; in passing, he disputed the question's reading of the 87 million francs under the State-Region development contract, which he said covered several halls \"but not only the Gaîté-Lyrique.\" In March 2002, asked about the steering committee's composition, he replied that the project \"will be the subject of a steering committee\" that he would chair to oversee the definition studies. From 2002 to 2011, the Council was presented with the successive steps of the works — definition contracts, a project management contract awarded to the team led by architect Manuelle GAUTRAND, demolitions, research into the building's original polychromy, terminations of the OPC and SPS oversight contracts, amendments, the \"Éclaireuses\" and \"Ruban Numérique\" furnishings — as well as several settlements and compensation payments (water pumping, climate engineering, an artist's work in the lobby, site works), and in December 2007 authorized the Mayor to sign a public service delegation agreement with the Société de Gestion de la Gaîté Lyrique SAS for operating the site. After a 2023 resolution amending the concession and settling with the SEGL, 2025 brought a topical question on the situation of unaccompanied minors at the Gaîté Lyrique and a series of motions — an exceptional grant, the site's future, damage sustained, suspending grants to associations that the Union Capitale group said had supported or facilitated the occupation, and the financial situation — before a settlement agreement with \"La Gaîté lyrique S.A.S.\" was put to the Council in December 2025.",
+ "synthese_en": "In May 1996, the Communist group questioned the City about a theatre that had been closed for five years, its question describing the interior as \"destroyed by the installation of a children's amusement centre\"; the City replied that it aimed to keep cultural activities going there and countered that the building \"has undergone alterations\": \"it is no longer a grand theatre, even though it still has two performance halls.\" In November 1996, the Council adopted, by a majority vote, 248,000 francs in operating funds for a preparatory association tasked with thinking through the site's future; during the debate, Ms Laure SCHNEITER put the guarantee that the Planète Magique's bankruptcy would leave the City holding at 180 million francs. In June 1999, the City stated that this association, headquartered at 3 bis rue Papin, had operated for two years and received two grants, while the Socialist group demanded an accounting of it. In May 2001, the deputy mayor for Culture laid out the grounds for abandoning the planned 2,100-seat symphony concert hall, which he judged too costly and ill-suited; in passing, he disputed the question's reading of the 87 million francs under the State-Region development contract, which he said covered several halls \"but not only the Gaîté-Lyrique.\" In March 2002, asked about the steering committee's composition, he replied that the project \"will be the subject of a steering committee\" that he would chair to oversee the definition studies. From 2002 to 2011, the Council was presented with the successive steps of the works — definition contracts, a project management contract awarded to the team led by architect Manuelle GAUTRAND, demolitions, research into the building's original polychromy, terminations of the OPC and SPS oversight contracts, amendments, the \"Éclaireuses\" and \"Ruban Numérique\" furnishings — as well as several settlements and compensation payments (water pumping, climate engineering, an artist's work in the lobby, site works), and in December 2007 authorized the Mayor to sign a public service delegation agreement with the Société de Gestion de la Gaîté Lyrique SAS for operating the site. After a 2023 deliberation amending the concession and settling with the SEGL, 2025 brought a topical question on the situation of unaccompanied minors at the Gaîté Lyrique and a series of motions — an exceptional grant, the site's future, damage sustained, suspending grants to associations that the Union Capitale group said had supported or facilitated the occupation, and the financial situation — before a settlement agreement with \"La Gaîté lyrique S.A.S.\" was put to the Council in December 2025.",
  "bmo_recit_en": "The municipal bulletin follows the Gaîté-Lyrique as a municipal theatre from the late 19th century to the interwar period. As early as 1889, the Council examined additional works at the theatre, at a cost of 27,690 francs; in 1910, a credit of 10,750 francs was opened for building a canopy. The City also regulated its operation: in 1913, the 1913-1914 theatre season programme was approved and the authorizations and concessions granted to Messrs Isola were maintained, while in 1917 several candidates applied for the theatre's management or concession. In 1922, councillors Maurice Quentin and Albert Bérard questioned the Prefect of the Seine about the theatre's operation and compliance with the terms of its specifications. The archive record stops in 1926, when the Council examined extending the lease, whose terms notably provided for an annual matinee for the benefit of the staff's mutual aid society."
 }

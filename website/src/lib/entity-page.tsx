@@ -20,6 +20,7 @@
  */
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
+import { cache } from "react";
 
 import { notFound } from "next/navigation";
 
@@ -89,11 +90,27 @@ type RouteProps = {
  * section header (si config.page.header) → fiche wrap → Footer.
  */
 export function makeEntityPage<D>(cfg: EntityPageConfig<D>) {
+  // generateMetadata et Page sont deux invocations SÉPARÉES de Next.js pour
+  // la même requête — sans dédup, cfg.load() (qui peut inclure un calcul non
+  // trivial, ex. loadContratRanking) tournait deux fois par requête. React
+  // cache() dédoublonne à condition d'avoir des arguments identiques ; params/
+  // searchParams ne sont pas garantis être le même objet entre les deux
+  // appels Next, donc on clé sur leur contenu sérialisé plutôt que la
+  // référence.
+  const cachedLoad = cache(
+    (key: string): D | null | Promise<D | null> => {
+      const { params, sp } = JSON.parse(key) as { params: EntityParams; sp: EntitySearchParams };
+      return cfg.load(params, sp);
+    },
+  );
+  const loadOnce = (params: EntityParams, sp: EntitySearchParams) =>
+    cachedLoad(JSON.stringify({ params, sp }));
+
   async function generateMetadata(props: RouteProps): Promise<Metadata> {
     const params = await props.params;
     const sp = (await props.searchParams) ?? {};
     const locale = await readLocale();
-    const d = await cfg.load(params, sp);
+    const d = await loadOnce(params, sp);
     if (!d) return cfg.notFoundMetadata(locale);
     return cfg.metadata(d, locale, params);
   }
@@ -101,7 +118,7 @@ export function makeEntityPage<D>(cfg: EntityPageConfig<D>) {
   async function Page(props: RouteProps) {
     const params = await props.params;
     const sp = (await props.searchParams) ?? {};
-    const d = await cfg.load(params, sp);
+    const d = await loadOnce(params, sp);
     if (!d) return notFound();
     const locale = await readLocale();
     const body = cfg.page.body(d, locale);

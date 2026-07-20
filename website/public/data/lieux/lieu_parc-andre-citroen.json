@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T19:58:00.007150+00:00",
+ "generated_at": "2026-07-20T20:11:17.537074+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "parc-andre-citroen",
  "name": "Parc André-Citroën",
@@ -22,7 +22,8 @@
   "source": {
    "name": "Wikipédia",
    "url": "https://fr.wikipedia.org/"
-  }
+  },
+  "extract_en": "The Parc André-Citroën is a public garden located in the 15th arrondissement of Paris, on the left bank of the Seine. Laid out on part of the former industrial site of the Citroën Javel factories, it was inaugurated in 1992 and is one of the major contemporary parks created in Paris at the end of the 20th century."
  },
  "stats": {
   "n_delibs": 346,
@@ -53,7 +54,9 @@
    "fait": "Vingt ans après le lancement du projet, le Conseil autorise la convention avec le Port autonome pour aménager le débouché du parc sur le port de Javel bas ; Laure SCHNEITER conteste le caractère minéral de cette troisième tranche, Françoise de PANAFIEU assume le choix de la pierre et des pavés contre la pelouse.",
    "pourquoi": "le parc rejoint la Seine, conception contestée",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=23136"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=23136",
+   "fait_en": "Twenty years after the project was launched, the Council authorized the agreement with the Port autonome to develop the park's link to the lower Javel port; Laure SCHNEITER challenged the hard, mineral character of this third section, Françoise de PANAFIEU stood by the choice of stone and paving over lawn.",
+   "pourquoi_en": "The park reaches the Seine, a contested design"
   },
   {
    "id": "7341",
@@ -61,7 +64,9 @@
    "fait": "Débat sur la convention Aéroparis : le ballon captif, installé pour le passage à l'an 2000 et déjà prolongé d'un an, est reconduit ; l'opposition demande le report faute de saisine du Conseil du 15e, et le mécénat passe à la société EUTELSAT.",
    "pourquoi": "l'éphémère de l'an 2000 devient durable",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=7341"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=7341",
+   "fait_en": "Debate over the Aéroparis agreement: the tethered balloon, installed for the turn of the millennium and already extended by a year, was renewed; the opposition asked for it to be postponed for lack of consultation with the 15th arrondissement council, and the sponsorship passed to the company EUTELSAT.",
+   "pourquoi_en": "The year 2000's temporary fixture becomes permanent"
   },
   {
    "id": "15172",
@@ -69,7 +74,9 @@
    "fait": "Interrogé sur les jeux du Jardin Blanc, l'adjoint rappelle que ce jardin est un hectare sur quatorze du parc, que ses concepteurs conservent un droit de propriété intellectuelle bloquant toute modification profonde, et chiffre la rénovation de l'aire de jeux à 150 000 euros.",
    "pourquoi": "les concepteurs gardent un droit de veto",
    "vedette": false,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=15172"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=15172",
+   "fait_en": "Asked about the play equipment in the Jardin Blanc, the deputy mayor recalled that this garden is one hectare out of the park's fourteen, that its designers retain an intellectual property right blocking any major modification, and put the cost of renovating the play area at €150,000.",
+   "pourquoi_en": "The designers retain a right of veto"
   },
   {
    "id": "14709",
@@ -77,7 +84,9 @@
    "fait": "Le Conseil affecte une parcelle du Jardin Blanc à un manège enfantin, réimplanté dans le 15e après l'opposition des riverains du square Maurice-Gardette (11e) ; un amendement du 15e prévoyant son déplacement en cas de nuisances est adopté.",
    "pourquoi": "un équipement placé sans concertation préalable",
    "vedette": false,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=14709"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=14709",
+   "fait_en": "The Council allocated a plot of the Jardin Blanc to a children's carousel, relocated to the 15th arrondissement after opposition from residents near the square Maurice-Gardette (11th arrondissement); an amendment from the 15th providing for its removal in case of nuisance was adopted.",
+   "pourquoi_en": "Equipment installed without prior consultation"
   },
   {
    "id": "96052",
@@ -85,7 +94,9 @@
    "fait": "Approbation de l'extension du parc : 4 000 m² gagnés et 6 000 m² rénovés, avec pelouses, aires de jeux, espace pour adolescents et petite restauration ; le coût est chiffré en débat à environ 3,6 millions d'euros, pour une ouverture annoncée au printemps 2013.",
    "pourquoi": "le plus gros investissement documenté du corpus",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=96052"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=96052",
+   "fait_en": "Approval of the park's extension: 4,000 m² gained and 6,000 m² renovated, with lawns, play areas, a teenage area and small-scale food service; the cost was put in debate at around €3.6 million, for an opening announced for spring 2013.",
+   "pourquoi_en": "The corpus's largest documented investment"
   },
   {
    "id": "129861",
@@ -93,7 +104,9 @@
    "fait": "Le groupe les Républicains demande l'annulation de l'ouverture du parc 24 heures sur 24 décidée par la Maire de Paris, en invoquant les plans d'eau, l'absence d'éclairage et les nuisances constatées, et propose une fermeture à 23 heures avec gardiennage.",
    "pourquoi": "conflit Ville et mairie d'arrondissement sur les horaires",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=129861"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=129861",
+   "fait_en": "The Les Républicains group asked for the cancellation of the round-the-clock opening of the park decided by the Mayor of Paris, citing the water features, the lack of lighting and the nuisances observed, and proposed closing at 11pm with a guard on duty.",
+   "pourquoi_en": "Conflict between the City and the district council over hours"
   },
   {
    "id": "143942",
@@ -101,7 +114,9 @@
    "fait": "Convention de transfert de maîtrise d'ouvrage entre la Ville et l'État pour réaménager le jardin Eugénie-Djendi et y installer le mémorial aux soldats morts en opérations extérieures ; le maire du 15e soutient le projet, Pascal JULIEN en conteste la portée symbolique.",
    "pourquoi": "le parc devient un lieu de mémoire nationale",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=143942"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=143942",
+   "fait_en": "An agreement transferring project ownership between the City and the State to redevelop the Eugénie-Djendi garden and install there the memorial to soldiers killed in overseas operations; the mayor of the 15th arrondissement supported the project, Pascal JULIEN disputed its symbolic scope.",
+   "pourquoi_en": "The park becomes a site of national remembrance"
   },
   {
    "id": "157113",
@@ -109,7 +124,9 @@
    "fait": "Vœu demandant un calendrier pour la réhabilitation du grand canal, à l'arrêt depuis 2002 ; l'adjoint répond que la rénovation engagée en 2015 se poursuit et que le grand canal y est intégré, au stade des diagnostics et des scénarios d'aménagement.",
    "pourquoi": "dix-huit ans d'attente sur un élément central",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=157113"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=157113",
+   "fait_en": "Motion asking for a timetable for the rehabilitation of the grand canal, out of service since 2002; the deputy mayor replied that the renovation undertaken in 2015 was continuing and that the grand canal was included in it, at the stage of diagnostics and development scenarios.",
+   "pourquoi_en": "Eighteen years of waiting on a central feature"
   }
  ],
  "montants": [
@@ -226,7 +243,134 @@
    "preuve": "L'objet nomme le lieu comme site de la prestation : « poste secours k-street festival les 22 et 23 juin 2024 parc André Citroën 75015 » — prestation qui se déroule dans le parc, pas un simple repère d'adresse."
   }
  ],
- "mandate": null,
+ "mandate": {
+  "par_annee": {
+   "2009": 19245.93,
+   "2010": 88864.37,
+   "2011": 23768.87,
+   "2012": 105586.36,
+   "2013": 1740662.56,
+   "2014": 2267559.59,
+   "2015": 641588.49,
+   "2016": 373351.31,
+   "2017": 307201.54
+  },
+  "total_eur": 5567829.02,
+  "operations": [
+   {
+    "ap_cle": "B100/0903980",
+    "ap_texte": "EXTENSION PARC ANDRE CITROEN (15E)",
+    "mandate_par_annee": {
+     "2009": 19245.93,
+     "2010": 88864.37,
+     "2011": 23768.87,
+     "2012": 26588.4,
+     "2013": 1343810.27
+    },
+    "total_mandate": 1502277.84,
+    "preuve": "Le libellé désigne ce lieu : « EXTENSION PARC ANDRE CITROEN (15E) », direction DEVE, mission « ESPACES VERTS ET ENV » — la DEVE est la direction gestionnaire du parc citée au Conseil de Paris (mars 2015).",
+    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/0903980"
+   },
+   {
+    "ap_cle": "1504712",
+    "ap_texte": "PARC ANDRE CITROEN RENOVATION  2e PHASE",
+    "mandate_par_annee": {
+     "2015": 559702.76,
+     "2016": 347938.45,
+     "2017": 307201.54
+    },
+    "total_mandate": 1214842.75,
+    "preuve": "Le libellé désigne ce lieu et l'opération : « PARC ANDRE CITROEN RENOVATION 2e PHASE » (DEVE). Cette deuxième phase de rénovation (budget 3,7 M€) est explicitement décrite aux Conseils de Paris de mars 2015 et février 2018 (« la programmation de la deuxième phase est prévue pour l'actuelle mandature »).",
+    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=1504712"
+   },
+   {
+    "ap_cle": "0903980",
+    "ap_texte": "EXTENSION PARC ANDRE CITROEN (15E)",
+    "mandate_par_annee": {
+     "2014": 1127173.3,
+     "2015": 12882.51,
+     "2016": 14424.9
+    },
+    "total_mandate": 1154480.71,
+    "preuve": "Le libellé désigne ce lieu : « EXTENSION PARC ANDRE CITROEN (15E) » (DEVE, ESPACES VERTS ET ENV).",
+    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=0903980"
+   },
+   {
+    "ap_cle": "1003980",
+    "ap_texte": "EXTENSION PARC ANDRE CITROËN",
+    "mandate_par_annee": {
+     "2014": 479805.42,
+     "2015": 45219.78,
+     "2016": 6813.59
+    },
+    "total_mandate": 531838.79,
+    "preuve": "Le libellé désigne ce lieu : « EXTENSION PARC ANDRE CITROËN » (DEVE, ESPACES VERTS ET ENV).",
+    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=1003980"
+   },
+   {
+    "ap_cle": "1203980",
+    "ap_texte": "EXTENSION PARC ANDRE CITROËN",
+    "mandate_par_annee": {
+     "2014": 432904.08,
+     "2015": 13987.15
+    },
+    "total_mandate": 446891.23,
+    "preuve": "Le libellé désigne ce lieu : « EXTENSION PARC ANDRE CITROËN » (DEVE, ESPACES VERTS ET ENV).",
+    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=1203980"
+   },
+   {
+    "ap_cle": "B100/1003980",
+    "ap_texte": "EXTENSION PARC ANDRE CITROËN",
+    "mandate_par_annee": {
+     "2013": 335482.27
+    },
+    "total_mandate": 335482.27,
+    "preuve": "Le libellé désigne ce lieu : « EXTENSION PARC ANDRE CITROËN » (DEVE, ESPACES VERTS ET ENV).",
+    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/1003980"
+   },
+   {
+    "ap_cle": "1303980",
+    "ap_texte": "EXTENSION PARC ANDRE CITROËN",
+    "mandate_par_annee": {
+     "2014": 227676.79,
+     "2015": 9796.29,
+     "2016": 4174.37
+    },
+    "total_mandate": 241647.45,
+    "preuve": "Le libellé désigne ce lieu : « EXTENSION PARC ANDRE CITROËN » (DEVE, ESPACES VERTS ET ENV).",
+    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=1303980"
+   },
+   {
+    "ap_cle": "B100/1203980",
+    "ap_texte": "EXTENSION PARC ANDRE CITROËN",
+    "mandate_par_annee": {
+     "2012": 78997.96,
+     "2013": 45992.06
+    },
+    "total_mandate": 124990.02,
+    "preuve": "Le libellé désigne ce lieu : « EXTENSION PARC ANDRE CITROËN » (DEVE, ESPACES VERTS ET ENV).",
+    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/1203980"
+   },
+   {
+    "ap_cle": "B100/1303980",
+    "ap_texte": "EXTENSION PARC ANDRE CITROËN",
+    "mandate_par_annee": {
+     "2013": 15377.96
+    },
+    "total_mandate": 15377.96,
+    "preuve": "Le libellé désigne ce lieu : « EXTENSION PARC ANDRE CITROËN » (DEVE, ESPACES VERTS ET ENV).",
+    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/1303980"
+   }
+  ],
+  "periode": [
+   "2009",
+   "2017"
+  ],
+  "source": {
+   "name": "Comptes administratifs — autorisations de programme, Ville de Paris",
+   "url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/"
+  }
+ },
  "sources": {
   "delibs": {
    "name": "Débat-Délibs — Conseil de Paris",
@@ -244,5 +388,6 @@
    "name": "Wikipédia",
    "url": "https://fr.wikipedia.org/"
   }
- }
+ },
+ "synthese_en": "Opened to the public in 1992 on the site of the former automobile factories, the 14-hectare park was the subject, from 1995 to 2002, of successive amendments to the project management contract awarded to Messrs PROVOST, VIGUIER, CLEMENT, BERGER, LLORCA and SGTE — including a 2002 amendment concerning \"the removal of unexecuted scope items\" — then, between 1998 and 1999, of the development and subsequent maintenance of its link to the lower Javel port, under agreements with the Port autonome de Paris. In parallel, the Council authorized a series of commercial occupations there: the tethered balloon operated by Aéroparis, installed for the year 2000 and then renewed through successive agreements up through the 2008-2012 seasons; the rental rate for the Orangerie greenhouse, set in 1999 at 100 francs including tax per square metre per day; a sales kiosk and deckchair rental in 2005, whose fee was set at 8% of turnover before tax; a children's carousel in the Jardin Blanc in 2008, whose degradation gave rise to a motion rejected in 2011. The park's extension was approved in February 2011, with a cost on the order of €3.6 million cited in debate, and a complete renovation was undertaken in 2015, whose second phase was presented in session with a budget of €3.7 million in both 2015 and 2018. The park has taken on new uses — a memorial to soldiers killed in overseas operations in the Eugénie-Djendi garden in 2018, a temporary Universcience structure in the Caroline-Aigle garden in 2019 — while its round-the-clock opening was contested in 2016 and the grand canal, out of service since 2002, was still the subject of a motion calling for its rehabilitation in December 2020. In June 2023, the Council examined terminating the works concession of 28 April 2015 covering a restaurant establishment in the park."
 }

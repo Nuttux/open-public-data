@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T19:58:00.007150+00:00",
+ "generated_at": "2026-07-20T20:11:17.537074+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "petite-ceinture",
  "name": "Petite Ceinture",
@@ -353,7 +353,148 @@
    "preuve": "Objet du marché : « construction d'un escalier métallique pour l'aménagement de la petite ceinture en promenade – Paris 19ème » — ouvrage nommément sur la Petite Ceinture (19e)."
   }
  ],
- "mandate": null,
+ "mandate": {
+  "par_annee": {
+   "2009": 61806.4,
+   "2010": 15167.55,
+   "2011": 800996.6,
+   "2012": 2444711.39,
+   "2013": 2600966.86,
+   "2014": 498221.36,
+   "2015": 1877165.02,
+   "2016": 1086374.89,
+   "2017": 956008.61
+  },
+  "total_eur": 10341418.68,
+  "operations": [
+   {
+    "ap_cle": "B100/1002630",
+    "ap_texte": "PETITE CEINTURE SECTEUR 15 - 1ERE PHASE",
+    "mandate_par_annee": {
+     "2011": 634182.75,
+     "2012": 2288433.22,
+     "2013": 917350.6
+    },
+    "total_mandate": 3839966.57,
+    "preuve": "Libellé : « PETITE CEINTURE SECTEUR 15 - 1ERE PHASE » (mission ESPACES VERTS ET ENV, direction DEVE) — opération d'aménagement nommément sur la Petite Ceinture, secteur du 15e.",
+    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/1002630"
+   },
+   {
+    "ap_cle": "1504722",
+    "ap_texte": "PETITE CEINTURE",
+    "mandate_par_annee": {
+     "2015": 1586162.3,
+     "2016": 804730.97,
+     "2017": 179183.85
+    },
+    "total_mandate": 2570077.12,
+    "preuve": "Libellé : « PETITE CEINTURE » (mission ESPACES VERTS ET ENV, direction DEVE) — opération nommément sur la Petite Ceinture ; libellé large, l'opération couvre l'ensemble du site.",
+    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=1504722"
+   },
+   {
+    "ap_cle": "B100/0702630",
+    "ap_texte": "PETITE CEINTURE SECTEUR 15 - 1ERE PHASE",
+    "mandate_par_annee": {
+     "2009": 61806.4,
+     "2010": 15167.55,
+     "2011": 166813.85,
+     "2012": 100316.02,
+     "2013": 1205015.09
+    },
+    "total_mandate": 1549118.91,
+    "preuve": "Libellé : « PETITE CEINTURE SECTEUR 15 - 1ERE PHASE » (DEVE, espaces verts) — opération nommément sur la Petite Ceinture, secteur du 15e.",
+    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/0702630"
+   },
+   {
+    "ap_cle": "1604952",
+    "ap_texte": "LA RECONQUETE DE LA PETITE CEINTURE",
+    "mandate_par_annee": {
+     "2016": 277398.52,
+     "2017": 771290.07
+    },
+    "total_mandate": 1048688.59,
+    "preuve": "Libellé : « LA RECONQUETE DE LA PETITE CEINTURE » (mission BUDGET PARTICIPATIF, direction DEVE) — opération nommément sur la Petite Ceinture ; cohérente avec les projets budget participatif du même nom.",
+    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=1604952"
+   },
+   {
+    "ap_cle": "1002630",
+    "ap_texte": "PETITE CEINTURE SECTEUR 15 - 1ERE PHASE",
+    "mandate_par_annee": {
+     "2014": 212441.91,
+     "2015": 179210.55
+    },
+    "total_mandate": 391652.46,
+    "preuve": "Libellé : « PETITE CEINTURE SECTEUR 15 - 1ERE PHASE » (DEVE, espaces verts) — opération nommément sur la Petite Ceinture, secteur du 15e.",
+    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=1002630"
+   },
+   {
+    "ap_cle": "B100/1202630",
+    "ap_texte": "PETITE CEINTURE SECTEUR 15 - 1ERE PHASE",
+    "mandate_par_annee": {
+     "2012": 55962.15,
+     "2013": 334865.51
+    },
+    "total_mandate": 390827.66,
+    "preuve": "Libellé : « PETITE CEINTURE SECTEUR 15 - 1ERE PHASE » (DEVE, espaces verts) — opération nommément sur la Petite Ceinture, secteur du 15e.",
+    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/1202630"
+   },
+   {
+    "ap_cle": "1302630",
+    "ap_texte": "PETITE CEINTURE SECTEUR 15 - 1ERE PHASE",
+    "mandate_par_annee": {
+     "2014": 170813.22,
+     "2015": 11675.34,
+     "2016": 2215.12,
+     "2017": 5530.13
+    },
+    "total_mandate": 190233.81,
+    "preuve": "Libellé : « PETITE CEINTURE SECTEUR 15 - 1ERE PHASE » (DEVE, espaces verts) — opération nommément sur la Petite Ceinture, secteur du 15e.",
+    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=1302630"
+   },
+   {
+    "ap_cle": "1202630",
+    "ap_texte": "PETITE CEINTURE SECTEUR 15 - 1ERE PHASE",
+    "mandate_par_annee": {
+     "2014": 114805.25,
+     "2015": 60421.96,
+     "2016": 2030.28,
+     "2017": 4.56
+    },
+    "total_mandate": 177262.05,
+    "preuve": "Libellé : « PETITE CEINTURE SECTEUR 15 - 1ERE PHASE » (DEVE, espaces verts) — opération nommément sur la Petite Ceinture, secteur du 15e.",
+    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=1202630"
+   },
+   {
+    "ap_cle": "B100/1302630",
+    "ap_texte": "PETITE CEINTURE SECTEUR 15 - 1ERE PHASE",
+    "mandate_par_annee": {
+     "2013": 143735.66
+    },
+    "total_mandate": 143735.66,
+    "preuve": "Libellé : « PETITE CEINTURE SECTEUR 15 - 1ERE PHASE » (DEVE, espaces verts) — opération nommément sur la Petite Ceinture, secteur du 15e.",
+    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/1302630"
+   },
+   {
+    "ap_cle": "0702630",
+    "ap_texte": "PETITE CEINTURE SECTEUR 15 - 1ERE PHASE",
+    "mandate_par_annee": {
+     "2014": 160.98,
+     "2015": 39694.87
+    },
+    "total_mandate": 39855.85,
+    "preuve": "Libellé : « PETITE CEINTURE SECTEUR 15 - 1ERE PHASE » (DEVE, espaces verts) — opération nommément sur la Petite Ceinture, secteur du 15e.",
+    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=0702630"
+   }
+  ],
+  "periode": [
+   "2009",
+   "2017"
+  ],
+  "source": {
+   "name": "Comptes administratifs — autorisations de programme, Ville de Paris",
+   "url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/"
+  }
+ },
  "sources": {
   "delibs": {
    "name": "Débat-Délibs — Conseil de Paris",

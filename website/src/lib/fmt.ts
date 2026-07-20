@@ -30,6 +30,22 @@ export function fmtCompactEur(n: number): { value: string; unit: string } {
 /** "fr" | "en" → Intl locale string used everywhere for number formatting. */
 export const numLocale = (locale: string) => (locale === "en" ? "en-GB" : "fr-FR");
 
+const MOIS_EN: Record<string, string> = {
+  JANVIER: "JANUARY", FEVRIER: "FEBRUARY", MARS: "MARCH", AVRIL: "APRIL",
+  MAI: "MAY", JUIN: "JUNE", JUILLET: "JULY", AOUT: "AUGUST",
+  SEPTEMBRE: "SEPTEMBER", OCTOBRE: "OCTOBER", NOVEMBRE: "NOVEMBER", DECEMBRE: "DECEMBER",
+};
+
+/** Séance du Conseil de Paris ("MAI 1996") → anglais ("MAY 1996") pour les
+ *  fiches lieu. Vocabulaire fermé (12 mois) : un lookup suffit, pas de
+ *  traduction par lieu. */
+export const seanceEn = (seance: string, locale: string) => {
+  if (locale !== "en") return seance;
+  const m = seance.match(/^([A-Z]+)(\s+\d{4})$/);
+  if (!m) return seance;
+  return (MOIS_EN[m[1]] ?? m[1]) + m[2];
+};
+
 /** Replace every `{key}` placeholder in a translated string. */
 export const fill = (s: string, vars: Record<string, string | number>) => {
   let r = s;

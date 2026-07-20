@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T19:58:00.007150+00:00",
+ "generated_at": "2026-07-20T20:11:17.537074+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "marche-des-enfants-rouges",
  "name": "Marché des Enfants-Rouges",
@@ -169,7 +169,45 @@
    "preuve": "L'objet nomme le lieu verbatim : « MOE RAVALEMENT MUR PIGNON MARCHÉ DES ENFANTS ROUGES 3ÈME ». Maîtrise d'œuvre pour le ravalement d'un mur pignon du bâtiment, donc prestation portant sur ce lieu précis ; l'arrondissement (3ÈME) concorde avec le marché couvert des Enfants-Rouges (3e), bâtiment inscrit en totalité à l'Inventaire supplémentaire des Monuments historiques par arrêté du 8 mars 1982 (rappelé en séance lors de la délib. 1996 D. 285)."
   }
  ],
- "mandate": null,
+ "mandate": {
+  "par_annee": {
+   "2014": 67106.58,
+   "2015": 100769.84
+  },
+  "total_eur": 167876.42,
+  "operations": [
+   {
+    "ap_cle": "1303515",
+    "ap_texte": "MARCHE DES ENFANTS ROUGES",
+    "mandate_par_annee": {
+     "2014": 56165.08,
+     "2015": 81480.25
+    },
+    "total_mandate": 137645.33,
+    "preuve": "Libellé de l'opération exactement « MARCHE DES ENFANTS ROUGES », portée par la DAE en mission « DEVELOPPEMENT ECO., » — la direction et la mission concordent avec un marché couvert municipal du 3e géré en DSP (délibérations 1997 DFAECG 8 « concession du marché couvert des Enfants-Rouges (3e) » et 2021 DAE 84 « Marché couvert des Enfants Rouges (3e). - Principe du renouvellement de la délégation de service public »).",
+    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=1303515"
+   },
+   {
+    "ap_cle": "0703515",
+    "ap_texte": "MARCHE DES ENFANTS ROUGES",
+    "mandate_par_annee": {
+     "2014": 10941.5,
+     "2015": 19289.59
+    },
+    "total_mandate": 30231.09,
+    "preuve": "Libellé de l'opération exactement « MARCHE DES ENFANTS ROUGES », portée par la DAE en mission « DEVELOPPEMENT ECO., » — la direction et la mission concordent avec un marché couvert municipal du 3e géré en DSP (délibérations 1997 DFAECG 8 « concession du marché couvert des Enfants-Rouges (3e) » et 2021 DAE 84 « Marché couvert des Enfants Rouges (3e). - Principe du renouvellement de la délégation de service public »).",
+    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=0703515"
+   }
+  ],
+  "periode": [
+   "2014",
+   "2015"
+  ],
+  "source": {
+   "name": "Comptes administratifs — autorisations de programme, Ville de Paris",
+   "url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/"
+  }
+ },
  "sources": {
   "delibs": {
    "name": "Débat-Délibs — Conseil de Paris",

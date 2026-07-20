@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T19:58:00.007150+00:00",
+ "generated_at": "2026-07-20T20:11:17.537074+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "stade-charlety",
  "name": "Stade Charléty",
@@ -390,7 +390,38 @@
    "preuve": "Objet nomme le lieu : « MOTEUR GROUPE ÉLECTROGENE STADE CHARLETY » — maintenance d'un équipement technique du stade."
   }
  ],
- "mandate": null,
+ "mandate": {
+  "par_annee": {
+   "2009": 2304080.69,
+   "2010": 652006.12,
+   "2011": 441512.06,
+   "2012": 3047.46
+  },
+  "total_eur": 3400646.33,
+  "operations": [
+   {
+    "ap_cle": "B100/0703636",
+    "ap_texte": "STADE CHARLETY",
+    "mandate_par_annee": {
+     "2009": 2304080.69,
+     "2010": 652006.12,
+     "2011": 441512.06,
+     "2012": 3047.46
+    },
+    "total_mandate": 3400646.33,
+    "preuve": "Libellé de l'opération = « STADE CHARLETY », mission « JEUNESSE ET SPORTS », direction DJS — l'opération désigne nommément ce stade, équipement sportif municipal du 13e géré par la DJS (cf. délibérations DJS du Conseil de Paris, ex. 2023 DJS 62 « PUC Social Club, Stade Charléty (13e) »).",
+    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/0703636"
+   }
+  ],
+  "periode": [
+   "2009",
+   "2012"
+  ],
+  "source": {
+   "name": "Comptes administratifs — autorisations de programme, Ville de Paris",
+   "url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/"
+  }
+ },
  "sources": {
   "delibs": {
    "name": "Débat-Délibs — Conseil de Paris",

@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T19:58:00.007150+00:00",
+ "generated_at": "2026-07-20T20:11:17.537074+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "bourse-du-travail",
  "name": "Bourse du Travail",
@@ -139,7 +139,173 @@
    "preuve": "L'objet nomme le lieu verbatim et porte sur des travaux dans le bâtiment : « BOURSE DU TRAVAIL RENOVATION HALL ACCUEIL » (mono-attributaire, opération unique — pas un marché-cadre de la Ville). Réserve explicite : l'objet ne précise aucun arrondissement, et l'institution se déploie sur trois bâtiments dans les 3e et 10e (vœu d'avril 2025) ; le bâtiment principal est celui du 10e et les autres sont des annexes, ce qui rend le « hall d'accueil » plus probablement celui du 10e, mais la source du marché ne le certifie pas. Confiance « moyenne » pour cette raison."
   }
  ],
- "mandate": null,
+ "mandate": {
+  "par_annee": {
+   "2009": 440276.07,
+   "2010": 130633.21,
+   "2011": 257181.72,
+   "2012": 673378.0,
+   "2013": 523946.16,
+   "2014": 139603.95,
+   "2015": 251704.35,
+   "2016": 651315.7,
+   "2017": 404013.33
+  },
+  "total_eur": 3472052.49,
+  "operations": [
+   {
+    "ap_cle": "B100/0702651",
+    "ap_texte": "BOURSE DU TRAVAIL",
+    "mandate_par_annee": {
+     "2009": 195166.07,
+     "2010": 96313.6,
+     "2011": 98106.01,
+     "2012": 176394.34,
+     "2013": 33259.83
+    },
+    "total_mandate": 599239.85,
+    "preuve": "Le libellé de l'opération désigne ce lieu verbatim : « BOURSE DU TRAVAIL » — ce n'est pas une enveloppe générique ni un autre équipement. Direction DDEEES (développement économique et emploi), cohérente avec l'institution. Note : l'opération couvre l'ensemble du site, réparti sur trois bâtiments (3e et 10e arr., vœu Conseil de Paris avril 2025), pas le seul bâtiment du 10e.",
+    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/0702651"
+   },
+   {
+    "ap_cle": "1502651",
+    "ap_texte": "BOURSE DU TRAVAIL",
+    "mandate_par_annee": {
+     "2016": 482836.6,
+     "2017": 116189.45
+    },
+    "total_mandate": 599026.05,
+    "preuve": "Libellé verbatim « BOURSE DU TRAVAIL », direction DAE, mission « ATTRACTIVITE ET EMPL » — cohérent avec l'institution, pas une enveloppe générique. L'opération couvre l'ensemble du site multi-bâtiments (3e et 10e arr.).",
+    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=1502651"
+   },
+   {
+    "ap_cle": "1402651",
+    "ap_texte": "BOURSE DU TRAVAIL",
+    "mandate_par_annee": {
+     "2014": 71349.88,
+     "2015": 240052.23,
+     "2016": 110613.28,
+     "2017": 14909.68
+    },
+    "total_mandate": 436925.07,
+    "preuve": "Libellé verbatim « BOURSE DU TRAVAIL », direction DAE. Pas une enveloppe générique ni un homonyme — Paris n'a qu'une Bourse du Travail, portée par les directions économie/emploi. L'opération couvre l'ensemble du site multi-bâtiments (3e et 10e arr.).",
+    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=1402651"
+   },
+   {
+    "ap_cle": "B100/1202651",
+    "ap_texte": "BOURSE DU TRAVAIL",
+    "mandate_par_annee": {
+     "2012": 271000.13,
+     "2013": 158322.18
+    },
+    "total_mandate": 429322.31,
+    "preuve": "Libellé verbatim « BOURSE DU TRAVAIL », direction DDEEES. L'opération couvre l'ensemble du site multi-bâtiments (3e et 10e arr.).",
+    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/1202651"
+   },
+   {
+    "ap_cle": "B100/0802651",
+    "ap_texte": "BOURSE DU TRAVAIL",
+    "mandate_par_annee": {
+     "2009": 178272.52,
+     "2010": 27914.49,
+     "2011": 135450.34,
+     "2012": 21450.22
+    },
+    "total_mandate": 363087.57,
+    "preuve": "Libellé verbatim « BOURSE DU TRAVAIL », direction DDEEES. L'opération couvre l'ensemble du site multi-bâtiments (3e et 10e arr.).",
+    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/0802651"
+   },
+   {
+    "ap_cle": "B100/1302651",
+    "ap_texte": "BOURSE DU TRAVAIL",
+    "mandate_par_annee": {
+     "2013": 332364.15
+    },
+    "total_mandate": 332364.15,
+    "preuve": "Libellé verbatim « BOURSE DU TRAVAIL », direction DDEEES. L'opération couvre l'ensemble du site multi-bâtiments (3e et 10e arr.).",
+    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/1302651"
+   },
+   {
+    "ap_cle": "B100/0602649",
+    "ap_texte": "BOURSE DU TRAVAIL-SALLE HENAFF",
+    "mandate_par_annee": {
+     "2009": 3227.01,
+     "2011": 222.43,
+     "2012": 166015.98
+    },
+    "total_mandate": 169465.42,
+    "preuve": "Le libellé nomme le lieu et une de ses salles verbatim : « BOURSE DU TRAVAIL-SALLE HENAFF » (direction DDEEES). Travaux/aménagements sur une salle appartenant à l'institution ; celle-ci étant répartie sur trois bâtiments (3e et 10e arr.), la salle peut se trouver dans une annexe — le libellé ne précise pas le bâtiment.",
+    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/0602649"
+   },
+   {
+    "ap_cle": "1602651",
+    "ap_texte": "BOURSE DU TRAVAIL",
+    "mandate_par_annee": {
+     "2016": 54138.8,
+     "2017": 112781.27
+    },
+    "total_mandate": 166920.07,
+    "preuve": "Libellé verbatim « BOURSE DU TRAVAIL », direction DAE. L'opération couvre l'ensemble du site multi-bâtiments (3e et 10e arr.).",
+    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=1602651"
+   },
+   {
+    "ap_cle": "B100/0702649",
+    "ap_texte": "BOURSE DU TRAVAIL-SALLE HENAFF",
+    "mandate_par_annee": {
+     "2009": 63610.47,
+     "2010": 6405.12,
+     "2011": 23402.94,
+     "2012": 38517.33
+    },
+    "total_mandate": 131935.86,
+    "preuve": "Libellé verbatim « BOURSE DU TRAVAIL-SALLE HENAFF » (direction DDEEES) : opération sur une salle de l'institution ; le libellé ne précise pas dans lequel des trois bâtiments (3e/10e) la salle se trouve.",
+    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/0702649"
+   },
+   {
+    "ap_cle": "1702651",
+    "ap_texte": "BOURSE DU TRAVAIL",
+    "mandate_par_annee": {
+     "2017": 92167.03
+    },
+    "total_mandate": 92167.03,
+    "preuve": "Libellé verbatim « BOURSE DU TRAVAIL », direction DAE. L'opération couvre l'ensemble du site multi-bâtiments (3e et 10e arr.).",
+    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=1702651"
+   },
+   {
+    "ap_cle": "1202651",
+    "ap_texte": "BOURSE DU TRAVAIL",
+    "mandate_par_annee": {
+     "2014": 14369.04,
+     "2015": 1702.62,
+     "2016": 2409.36,
+     "2017": 67965.9
+    },
+    "total_mandate": 86446.92,
+    "preuve": "Libellé verbatim « BOURSE DU TRAVAIL », direction DAE. L'opération couvre l'ensemble du site multi-bâtiments (3e et 10e arr.).",
+    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=1202651"
+   },
+   {
+    "ap_cle": "1302651",
+    "ap_texte": "BOURSE DU TRAVAIL",
+    "mandate_par_annee": {
+     "2014": 53885.03,
+     "2015": 9949.5,
+     "2016": 1317.66
+    },
+    "total_mandate": 65152.19,
+    "preuve": "Libellé verbatim « BOURSE DU TRAVAIL », direction DAE. L'opération couvre l'ensemble du site multi-bâtiments (3e et 10e arr.).",
+    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=1302651"
+   }
+  ],
+  "periode": [
+   "2009",
+   "2017"
+  ],
+  "source": {
+   "name": "Comptes administratifs — autorisations de programme, Ville de Paris",
+   "url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/"
+  }
+ },
  "sources": {
   "delibs": {
    "name": "Débat-Délibs — Conseil de Paris",

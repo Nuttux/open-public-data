@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T19:58:00.007150+00:00",
+ "generated_at": "2026-07-20T20:11:17.537074+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "bois-de-vincennes",
  "name": "Bois de Vincennes",
@@ -257,7 +257,171 @@
    "preuve": "L’objet nomme le lieu : « RESTAURATION DE LA PAGODE DU BOIS DE VINCENNES LOT 3 » — même chantier de restauration de la Pagode du bois de Vincennes."
   }
  ],
- "mandate": null,
+ "mandate": {
+  "par_annee": {
+   "2009": 1618398.29,
+   "2010": 1219935.44,
+   "2011": 2045857.45,
+   "2012": 799620.64,
+   "2013": 987734.11,
+   "2014": 1247676.33,
+   "2015": 715865.42,
+   "2016": 827396.56,
+   "2017": 1176805.59
+  },
+  "total_eur": 10639289.83,
+  "operations": [
+   {
+    "ap_cle": "B100/0800657",
+    "ap_texte": "BOIS DE VINCENNES",
+    "mandate_par_annee": {
+     "2009": 1076688.47,
+     "2010": 16835.72,
+     "2011": 1175857.16,
+     "2012": 518032.78,
+     "2013": 40326.26
+    },
+    "total_mandate": 2827740.39,
+    "preuve": "Libellé d’opération « BOIS DE VINCENNES », direction DEVE, mission « ESPACES VERTS ET ENV » — opération d’investissement désignant ce lieu ; enveloppe couvrant l’ensemble du site (~995 ha).",
+    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/0800657"
+   },
+   {
+    "ap_cle": "B100/0700657",
+    "ap_texte": "BOIS DE VINCENNES",
+    "mandate_par_annee": {
+     "2009": 501254.35,
+     "2010": 1201316.48,
+     "2011": 590609.56,
+     "2012": 37472.84
+    },
+    "total_mandate": 2330653.23,
+    "preuve": "Libellé d’opération « BOIS DE VINCENNES », direction DEVE, mission « ESPACES VERTS ET ENV » — opération d’investissement désignant ce lieu ; enveloppe couvrant l’ensemble du site.",
+    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/0700657"
+   },
+   {
+    "ap_cle": "1500657",
+    "ap_texte": "BOIS DE VINCENNES",
+    "mandate_par_annee": {
+     "2015": 563407.91,
+     "2016": 692675.42,
+     "2017": 385023.55
+    },
+    "total_mandate": 1641106.88,
+    "preuve": "Libellé d’opération « BOIS DE VINCENNES », direction DEVE, mission « ESPACES VERTS ET ENV » — opération d’investissement désignant ce lieu ; enveloppe couvrant l’ensemble du site.",
+    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=1500657"
+   },
+   {
+    "ap_cle": "1004006",
+    "ap_texte": "PAGODE DU BOIS DE VINCENNES",
+    "mandate_par_annee": {
+     "2014": 763852.47,
+     "2015": 69705.02,
+     "2016": 79977.14,
+     "2017": 24468.45
+    },
+    "total_mandate": 938003.08,
+    "preuve": "Libellé « PAGODE DU BOIS DE VINCENNES » (DAC, mission « AFFAIRES CULTURELLES ») — restauration d’un édifice du bois (enclos bouddhique, cf. délibération 2025 DAC 430) ; concorde avec les marchés de restauration de la Pagode notifiés 2013-2014.",
+    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=1004006"
+   },
+   {
+    "ap_cle": "1400657",
+    "ap_texte": "BOIS DE VINCENNES",
+    "mandate_par_annee": {
+     "2014": 483823.86,
+     "2015": 82752.49
+    },
+    "total_mandate": 566576.35,
+    "preuve": "Libellé d’opération « BOIS DE VINCENNES », direction DEVE, mission « ESPACES VERTS ET ENV » — opération d’investissement désignant ce lieu ; enveloppe couvrant l’ensemble du site.",
+    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=1400657"
+   },
+   {
+    "ap_cle": "B100/0900657",
+    "ap_texte": "BOIS DE VINCENNES",
+    "mandate_par_annee": {
+     "2009": 40455.47,
+     "2010": 1783.24,
+     "2011": 2520.82,
+     "2012": 228767.12,
+     "2013": 254258.24
+    },
+    "total_mandate": 527784.89,
+    "preuve": "Libellé d’opération « BOIS DE VINCENNES », direction DEVE, mission « ESPACES VERTS ET ENV » — opération d’investissement désignant ce lieu ; enveloppe couvrant l’ensemble du site.",
+    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/0900657"
+   },
+   {
+    "ap_cle": "B100/1100657",
+    "ap_texte": "BOIS DE VINCENNES",
+    "mandate_par_annee": {
+     "2011": 28903.65,
+     "2012": 11063.84,
+     "2013": 430451.55
+    },
+    "total_mandate": 470419.04,
+    "preuve": "Libellé d’opération « BOIS DE VINCENNES », direction DEVE, mission « ESPACES VERTS ET ENV » — opération d’investissement désignant ce lieu ; enveloppe couvrant l’ensemble du site.",
+    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/1100657"
+   },
+   {
+    "ap_cle": "1604915",
+    "ap_texte": "BAIGNADE DAUMESNIL - BOIS DE VINCENNES (",
+    "mandate_par_annee": {
+     "2016": 54744.0,
+     "2017": 356597.04
+    },
+    "total_mandate": 411341.04,
+    "preuve": "Libellé « BAIGNADE DAUMESNIL - BOIS DE VINCENNES » (DJS) — aménagement de la baignade du lac Daumesnil, plan d’eau situé dans le bois (cf. vœu Conseil de Paris oct. 2023 sur « la pollution des plans d’eau du bois de Vincennes »).",
+    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=1604915"
+   },
+   {
+    "ap_cle": "1700657",
+    "ap_texte": "BOIS DE VINCENNES",
+    "mandate_par_annee": {
+     "2017": 410716.55
+    },
+    "total_mandate": 410716.55,
+    "preuve": "Libellé d’opération « BOIS DE VINCENNES », direction DEVE, mission « ESPACES VERTS ET ENV » — opération d’investissement désignant ce lieu ; enveloppe couvrant l’ensemble du site.",
+    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=1700657"
+   },
+   {
+    "ap_cle": "B100/1000657",
+    "ap_texte": "BOIS DE VINCENNES",
+    "mandate_par_annee": {
+     "2011": 247966.26
+    },
+    "total_mandate": 247966.26,
+    "preuve": "Libellé d’opération « BOIS DE VINCENNES », direction DEVE, mission « ESPACES VERTS ET ENV » — opération d’investissement désignant ce lieu ; enveloppe couvrant l’ensemble du site.",
+    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/1000657"
+   },
+   {
+    "ap_cle": "B100/1200657",
+    "ap_texte": "BOIS DE VINCENNES",
+    "mandate_par_annee": {
+     "2013": 208778.01
+    },
+    "total_mandate": 208778.01,
+    "preuve": "Libellé d’opération « BOIS DE VINCENNES », direction DEVE, mission « ESPACES VERTS ET ENV » — opération d’investissement désignant ce lieu ; enveloppe couvrant l’ensemble du site.",
+    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/1200657"
+   },
+   {
+    "ap_cle": "B100/1004006",
+    "ap_texte": "PAGODE DU BOIS DE VINCENNES",
+    "mandate_par_annee": {
+     "2012": 4284.06,
+     "2013": 53920.05
+    },
+    "total_mandate": 58204.11,
+    "preuve": "Libellé « PAGODE DU BOIS DE VINCENNES » (DAC, mission « AFFAIRES CULTURELLES ») — restauration d’un édifice du bois (enclos bouddhique) ; concorde avec les marchés de restauration de la Pagode notifiés 2013-2014.",
+    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/1004006"
+   }
+  ],
+  "periode": [
+   "2009",
+   "2017"
+  ],
+  "source": {
+   "name": "Comptes administratifs — autorisations de programme, Ville de Paris",
+   "url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/"
+  }
+ },
  "sources": {
   "delibs": {
    "name": "Débat-Délibs — Conseil de Paris",
