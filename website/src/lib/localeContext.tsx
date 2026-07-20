@@ -57,6 +57,16 @@ type Dict = Record<string, string>;
 // uncached promise would re-suspend on every render) and let us read the
 // resolved dict synchronously once loaded.
 const dictCache: Partial<Record<Locale, Dict>> = {};
+
+// Tracked thenable (status/value/reason pre-attached): React's `use()` treats
+// it as an instrumented promise and takes the fast path — without this it
+// logs error #467 ("suspended by an uncached promise") whenever hydration
+// races the chunk download.
+type TrackedPromise<T> = Promise<T> & {
+  status: 'pending' | 'fulfilled' | 'rejected';
+  value?: T;
+  reason?: unknown;
+};
 const dictPromises: Partial<Record<Locale, Promise<Dict>>> = {};
 
 function loadDictionary(locale: Locale): Promise<Dict> {
@@ -65,7 +75,18 @@ function loadDictionary(locale: Locale): Promise<Dict> {
   const promise = (locale === 'en' ? import('@/i18n/en') : import('@/i18n/fr')).then((mod) => {
     dictCache[locale] = mod.default;
     return mod.default;
-  });
+  }) as TrackedPromise<Dict>;
+  promise.status = 'pending';
+  promise.then(
+    (v) => {
+      promise.status = 'fulfilled';
+      promise.value = v;
+    },
+    (e) => {
+      promise.status = 'rejected';
+      promise.reason = e;
+    },
+  );
   dictPromises[locale] = promise;
   return promise;
 }
