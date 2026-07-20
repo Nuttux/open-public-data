@@ -26,6 +26,7 @@ import type { PatrimoineData, PatrimoineStructure, HorsBilanData, CityDebtSnapsh
 import { useT, useLocale } from "@/lib/localeContext";
 import { trLabel } from "@/lib/label-translate";
 import { cityPopulation, citySlugFromPathname, crcDebtYearsFor } from "@/lib/methodology";
+import { cityDataUrl } from "@/lib/city-paths";
 
 
 export default function DettePatrimoineClient({
@@ -586,15 +587,15 @@ export default function DettePatrimoineClient({
               {
                 label: fill(t("fx.det.src.export.csv"), { year: d.year }),
                 primary: true,
-                href: `/data/${citySlug === "paris" ? "" : `${citySlug}/`}bilan_sankey_${d.year}.json`,
+                href: cityDataUrl(citySlug, `bilan_sankey_${d.year}.json`),
               },
               {
                 label: t("fx.det.src.export.json"),
-                href: `/data/${citySlug === "paris" ? "" : `${citySlug}/`}bilan_sankey_${d.year}.json`,
+                href: cityDataUrl(citySlug, `bilan_sankey_${d.year}.json`),
               },
               {
                 label: t("fx.det.src.export.index"),
-                href: `/data/${citySlug === "paris" ? "" : `${citySlug}/`}bilan_index.json`,
+                href: cityDataUrl(citySlug, "bilan_index.json"),
               },
               { label: t("fx.det.src.export.method"), href: "/methode?tool=dette-patrimoine#outils" },
             ]}

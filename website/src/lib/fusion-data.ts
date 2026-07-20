@@ -1,7 +1,6 @@
-import fs from "node:fs";
 import { loadLieuxIndex, loadLieu } from "./lieux-data";
-import path from "node:path";
 import { normalizeObjet } from "@/lib/objet-normalizer";
+import { readDataJson, readDataJsonOrNull, cityJsonPath } from "./data/read";
 
 export { PARIS_POPULATION } from "@/lib/methodology";
 import {
@@ -109,28 +108,11 @@ type BudgetSankey = {
   links: SankeyLink[];
 };
 
-const DATA_DIR = path.join(process.cwd(), "public", "data");
-
-function readJson<T>(file: string): T {
-  const raw = fs.readFileSync(path.join(DATA_DIR, file), "utf8");
-  return JSON.parse(raw) as T;
-}
-
-function readJsonOrNull<T>(file: string): T | null {
-  try {
-    return readJson<T>(file);
-  } catch {
-    return null;
-  }
-}
-
-// Helpers for multi-city data loading (cf. project_marseille_v1_decisions
-// P0.2). Paris keeps its files at data/ root for rétro-compat ; other cities
-// use data/[city]/. Hoisted to the top of the file so all loaders below can
-// reference it.
-function cityJsonPath(city: string, file: string): string {
-  return city === "paris" ? file : `${city}/${file}`;
-}
+// All IO goes through the shared memoized reader (lib/data/read.ts) — the
+// multi-year scan loaders below would otherwise re-parse the same 2-24 MB
+// vintage files on every request. cityJsonPath also lives there now.
+const readJson = readDataJson;
+const readJsonOrNull = readDataJsonOrNull;
 
 function centralNodeFor(city: string): string {
   if (city === "paris") return "Budget Paris";

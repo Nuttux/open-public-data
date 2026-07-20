@@ -2,6 +2,7 @@
 import { Suspense } from "react";
 import { usePathname } from "next/navigation";
 import { citySlugFromPathname } from "@/lib/methodology";
+import { cityDataUrl } from "@/lib/city-paths";
 import Navbar from "@/components/fusion/Navbar";
 import Footer from "@/components/fusion/Footer";
 import SectionHead from "@/components/fusion/SectionHead";
@@ -55,10 +56,7 @@ export default function QuiRecoitClient({
   const pathname = usePathname();
   const citySlug = citySlugFromPathname(pathname);
   const cityBasePath = `/fr/city/${citySlug}/subventions`;
-  const swarmIndexUrl =
-    citySlug === "paris"
-      ? "/data/subventions/beneficiaires_search.json"
-      : `/data/${citySlug}/subventions/beneficiaires_search.json`;
+  const swarmIndexUrl = cityDataUrl(citySlug, "subventions/beneficiaires_search.json");
 
   return (
     <div className="theme-fusion">
@@ -312,15 +310,11 @@ export default function QuiRecoitClient({
               {
                 label: fill(t("fx.qr.src.export.csv"), { year: d.year }),
                 primary: true,
-                href: citySlug === "paris"
-                  ? `/data/subventions/beneficiaires_${d.year}.json`
-                  : `/data/${citySlug}/subventions/beneficiaires_${d.year}.json`,
+                href: cityDataUrl(citySlug, `subventions/beneficiaires_${d.year}.json`),
               },
               {
                 label: t("fx.qr.src.export.json"),
-                href: citySlug === "paris"
-                  ? `/data/subventions/beneficiaires_${d.year}.json`
-                  : `/data/${citySlug}/subventions/beneficiaires_${d.year}.json`,
+                href: cityDataUrl(citySlug, `subventions/beneficiaires_${d.year}.json`),
               },
               ...(citySlug === "paris"
                 ? [{ label: t("fx.qr.src.export.treemap"), href: `/data/subventions/treemap_${d.year}.json` }]

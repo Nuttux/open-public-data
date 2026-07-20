@@ -6,6 +6,7 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import SectionHead from "@/components/fusion/SectionHead";
 import { THEME_COLOR } from "@/components/fusion/StackedBarTheme";
 import { citySlugFromPathname } from "@/lib/methodology";
+import { cityDataUrl } from "@/lib/city-paths";
 import { useT, useLocale } from "@/lib/localeContext";
 import { trLabel } from "@/lib/label-translate";
 import { useTrack } from "@/lib/analyticsContext";
@@ -104,9 +105,7 @@ export default function QuiRecoitExplorer({
   const pathname = usePathname();
   const citySlug = citySlugFromPathname(pathname);
   const cityBasePath = `/fr/city/${citySlug}/subventions`;
-  const searchIndexUrl = citySlug === "paris"
-    ? "/data/subventions/beneficiaires_search.json"
-    : `/data/${citySlug}/subventions/beneficiaires_search.json`;
+  const searchIndexUrl = cityDataUrl(citySlug, "subventions/beneficiaires_search.json");
 
   const fmtEur = useFmtEur();
 

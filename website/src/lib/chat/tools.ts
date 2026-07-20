@@ -1,19 +1,15 @@
-import fs from "node:fs";
-import path from "node:path";
 import { GENERATED_DATA_INVENTORY as INV } from "./dataContext.generated";
+import { readDataJsonOrNull } from "../data/read";
 
-const DATA_DIR = path.join(process.cwd(), "public", "data");
-
-// Les exports ne changent qu'au déploiement — cache mémoire process-wide.
-const fileCache = new Map<string, unknown>();
-
+// Les exports ne changent qu'au déploiement — le reader partagé
+// (lib/data/read.ts) mémoïse, y compris les résultats négatifs.
 function loadJson<T = unknown>(rel: string): T | null {
-  if (fileCache.has(rel)) return fileCache.get(rel) as T | null;
-  const p = path.join(DATA_DIR, rel);
-  const parsed = fs.existsSync(p) ? (JSON.parse(fs.readFileSync(p, "utf-8")) as T) : null;
-  fileCache.set(rel, parsed);
-  return parsed;
+  return readDataJsonOrNull<T>(rel);
 }
+
+/** Les années viennent des arguments du LLM — on ne les interpole dans un
+ *  chemin de fichier que si ce sont bien des entiers. */
+const isValidYear = (y: unknown): y is number => Number.isInteger(y);
 
 // Recherche insensible aux accents/majuscules, tous les mots requis.
 const fold = (s: string) => s.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
@@ -192,6 +188,7 @@ export function list_datasets() {
 }
 
 export function get_subventions_summary({ year, top_n = 10, thematique }: { year: number; top_n?: number; thematique?: string }) {
+  if (!isValidYear(year)) return { error: `année invalide: ${year}`, annees_disponibles: INV.subventions?.years };
   const d = loadJson<SubventionsYearFile>(`subventions/beneficiaires_${year}.json`);
   if (!d) return { error: `Pas de subventions pour ${year}`, annees_disponibles: INV.subventions?.years };
   const toks = thematique ? queryTokens(thematique) : null;
@@ -262,6 +259,7 @@ export function search_beneficiaire({ query, year, limit = 12 }: { query: string
 }
 
 export function get_marches_summary({ year, top_n = 10 }: { year: number; top_n?: number }) {
+  if (!isValidYear(year)) return { error: `année invalide: ${year}`, annees_disponibles: INV.marches?.years };
   const d = loadJson<MarchesYearFile>(`marches-publics/marches_${year}.json`);
   if (!d) return { error: `Pas de marchés pour ${year}`, annees_disponibles: INV.marches?.years };
   const trends = loadJson<MarchesTrendsFile>("marches-publics/marches_tendances.json");
@@ -287,6 +285,7 @@ export function get_marches_summary({ year, top_n = 10 }: { year: number; top_n?
 export function search_marches({ query, year, min_montant = 0, limit = 12 }: { query: string; year?: number; min_montant?: number; limit?: number }) {
   const toks = queryTokens(query);
   if (!toks.length) return { error: "requête trop courte" };
+  if (year != null && !isValidYear(year)) return { error: `année invalide: ${year}`, annees_disponibles: INV.marches?.years };
   const years = year ? [year] : [...(INV.marches?.years ?? [])].sort((a, b) => b - a);
   type Hit = { year: number; objet?: string; fournisseur?: string; nature?: string; montant_max?: number | null; date_notification?: string };
   const results: Hit[] = [];
@@ -334,6 +333,7 @@ export function get_marches_tendances() {
 }
 
 export function get_top_fournisseurs({ limit = 15, year }: { limit?: number; year?: number }) {
+  if (year != null && !isValidYear(year)) return { error: `année invalide: ${year}`, annees_disponibles: INV.marches?.years };
   const years = year ? [year] : [...(INV.marches?.years ?? [])];
   type Agg = { nom: string; total: number; nb: number; yMin: number; yMax: number };
   const bySupplier = new Map<string, Agg>();
@@ -375,6 +375,7 @@ export function get_top_fournisseurs({ limit = 15, year }: { limit?: number; yea
 }
 
 export function get_budget_sankey({ year }: { year: number }) {
+  if (!isValidYear(year)) return { error: `année invalide: ${year}`, annees_disponibles: INV.budget?.years };
   const d = loadJson<SankeyFile>(`budget_sankey_${year}.json`);
   if (!d) return { error: `Pas de budget sankey pour ${year}`, annees_disponibles: INV.budget?.years };
   const links = [...(d.links ?? [])].sort((a, b) => (b.value ?? 0) - (a.value ?? 0)).slice(0, 15);
@@ -389,6 +390,7 @@ export function get_budget_sankey({ year }: { year: number }) {
 }
 
 export function get_budget_nature({ year, nature }: { year: number; nature?: string }) {
+  if (!isValidYear(year)) return { error: `année invalide: ${year}`, annees_disponibles: INV.budget_nature.years };
   const d = loadJson<BudgetNatureFile>(`budget_nature_${year}.json`);
   if (!d) return { error: `Pas de budget par nature pour ${year}`, annees_disponibles: INV.budget_nature.years };
   if (nature) {
@@ -495,6 +497,7 @@ export function get_investissements({ year }: { year?: number }) {
 
 export function get_dette_structure({ year }: { year?: number }) {
   const years = INV.dette.years;
+  if (year != null && !isValidYear(year)) return { error: `année invalide: ${year}`, annees_disponibles: years };
   if (year == null) {
     return {
       note: "dette financière directe de la Ville (hors garanties données — voir get_hors_bilan)",
@@ -538,6 +541,7 @@ export function get_dette_structure({ year }: { year?: number }) {
 
 export function get_bilan({ year }: { year?: number }) {
   const years = INV.bilan.years;
+  if (year != null && !isValidYear(year)) return { error: `année invalide: ${year}`, annees_disponibles: years };
   if (year == null) {
     return {
       series: years
@@ -568,6 +572,7 @@ export function get_bilan({ year }: { year?: number }) {
 
 export function get_hors_bilan({ year }: { year?: number }) {
   const years = INV.hors_bilan.years;
+  if (year != null && !isValidYear(year)) return { error: `année invalide: ${year}`, annees_disponibles: years };
   if (year == null) {
     return {
       note: "garanties d'emprunt ACCORDÉES par la Ville (hors-bilan) — pas sa dette directe ; la Ville ne paie qu'en cas de défaut de l'emprunteur",

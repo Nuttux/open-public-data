@@ -1,15 +1,7 @@
-import fs from "node:fs";
-import path from "node:path";
-
-const DATA_DIR = path.join(process.cwd(), "public", "data", "communes");
+import { readDataJsonOrNull } from "./data/read";
 
 function readJsonOrNull<T>(file: string): T | null {
-  try {
-    const raw = fs.readFileSync(path.join(DATA_DIR, file), "utf8");
-    return JSON.parse(raw) as T;
-  } catch {
-    return null;
-  }
+  return readDataJsonOrNull<T>(`communes/${file}`);
 }
 
 export type KpiPoint = {

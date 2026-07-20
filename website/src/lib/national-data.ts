@@ -1,19 +1,7 @@
-import fs from "node:fs";
-import path from "node:path";
-
-const DATA_DIR = path.join(process.cwd(), "public", "data", "national");
-
-function readJson<T>(file: string): T {
-  const raw = fs.readFileSync(path.join(DATA_DIR, file), "utf8");
-  return JSON.parse(raw) as T;
-}
+import { readDataJsonOrNull } from "./data/read";
 
 function readJsonOrNull<T>(file: string): T | null {
-  try {
-    return readJson<T>(file);
-  } catch {
-    return null;
-  }
+  return readDataJsonOrNull<T>(`national/${file}`);
 }
 
 // ─── Eurostat COFOG (gov_10a_exp) ──────────────────────────────────────────

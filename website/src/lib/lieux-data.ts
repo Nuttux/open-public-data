@@ -1,5 +1,6 @@
 import fs from "node:fs";
 import path from "node:path";
+import { readDataJsonOrNull } from "./data/read";
 
 /**
  * Lieux v0 — chargement des fiches exportées par
@@ -144,11 +145,7 @@ export type LieuIndexEntry = {
 const DATA_DIR = path.join(process.cwd(), "public", "data", "lieux");
 
 function readJson<T>(file: string): T | null {
-  try {
-    return JSON.parse(fs.readFileSync(path.join(DATA_DIR, file), "utf-8")) as T;
-  } catch {
-    return null;
-  }
+  return readDataJsonOrNull<T>(`lieux/${file}`);
 }
 
 export function loadLieuxIndex(): LieuIndexEntry[] {
