@@ -4413,6 +4413,7 @@ const en: Record<string, string> = {
 
   // ── US · SF Payroll (/us/city/sf/payroll) — EN-only per ADR-0010 D3 ───────
   'us.sf.nav.payroll': 'Payroll',
+  'us.sf.nav.places': 'Places',
 
   'us.sf.payroll.kicker': 'United States · San Francisco — payroll, fiscal year {fy}',
   'us.sf.payroll.title.before': 'What city work ',

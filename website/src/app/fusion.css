@@ -15299,3 +15299,122 @@ body:has(.theme-db-scrolly) { background: #fafaf7 !important; color: var(--p-ink
   .theme-fusion .fx-page-intro { padding: 18px 0 16px; }
 }
 
+
+/* ── SF places feature (Block C) ─────────────────────────────────────────
+   Self-contained styles for the /us/city/sf/places explorer + fiche.
+   Scoped under .theme-fusion like the rest of the fusion system. */
+.theme-fusion .fx-fam-dot {
+  display: inline-block; width: 9px; height: 9px; border-radius: 50%;
+  margin-right: 7px; vertical-align: middle; flex: 0 0 auto;
+}
+.theme-fusion .fx-lieux-filters {
+  display: flex; flex-wrap: wrap; gap: 8px 14px; margin-bottom: 18px;
+}
+.theme-fusion .fx-lieux-fam-chip {
+  display: inline-flex; align-items: center; gap: 2px;
+  font-family: var(--f-mono); font-size: 11.5px; letter-spacing: .04em;
+  text-transform: uppercase; color: var(--ink-2);
+  background: none; border: 1px solid var(--rule); border-radius: 999px;
+  padding: 5px 12px; cursor: pointer; transition: opacity .15s;
+}
+.theme-fusion .fx-lieux-fam-chip[aria-pressed="true"] { border-color: var(--ink); }
+.theme-fusion .fx-lieux-split {
+  display: grid; grid-template-columns: 1.35fr 1fr; gap: 22px; align-items: start;
+}
+@media (max-width: 860px) { .theme-fusion .fx-lieux-split { grid-template-columns: 1fr; } }
+.theme-fusion .fx-lieux-map-col { position: sticky; top: 12px; }
+@media (max-width: 860px) { .theme-fusion .fx-lieux-map-col { position: static; } }
+.theme-fusion .fx-lieux-list {
+  list-style: none; margin: 0; padding: 0; max-height: 460px; overflow-y: auto;
+  border-top: 1px solid var(--rule);
+}
+.theme-fusion .fx-lieux-list-row { border-bottom: 1px solid var(--rule); }
+.theme-fusion .fx-lieux-list-row .fx-row-link {
+  display: flex; align-items: baseline; gap: 4px; flex-wrap: wrap;
+  padding: 10px 6px; text-decoration: none;
+}
+.theme-fusion .fx-lieux-list-name { font-weight: 600; font-size: 15px; color: var(--ink); }
+.theme-fusion .fx-lieux-list-meta {
+  font-family: var(--f-mono); font-size: 11px; letter-spacing: .03em; color: var(--muted);
+}
+
+/* fiche */
+.theme-fusion .fx-place-fiche { max-width: 760px; }
+.theme-fusion .fx-place-hero { margin: 0 0 22px; }
+.theme-fusion .fx-place-hero img {
+  width: 100%; height: auto; max-height: 460px; object-fit: cover;
+  border-radius: 2px; display: block;
+}
+.theme-fusion .fx-place-credit {
+  font-family: var(--f-mono); font-size: 10.5px; letter-spacing: .03em;
+  color: var(--muted); margin-top: 6px;
+}
+.theme-fusion .fx-place-credit a { color: var(--ink-2); }
+.theme-fusion .fx-place-summary {
+  font-size: 17px; line-height: 1.5; color: var(--ink); margin: 0 0 28px;
+}
+.theme-fusion .fx-place-block { margin: 0 0 30px; }
+.theme-fusion .fx-place-h2 {
+  font-size: 13px; font-family: var(--f-mono); letter-spacing: .08em;
+  text-transform: uppercase; color: var(--ink-2); margin: 0 0 12px;
+  padding-bottom: 6px; border-bottom: 1px solid var(--rule);
+}
+.theme-fusion .fx-place-sub { font-size: 13.5px; color: var(--ink-2); margin: 0 0 14px; }
+.theme-fusion .fx-place-money-line { font-size: 15.5px; line-height: 1.5; margin: 0 0 14px; }
+.theme-fusion .fx-place-contracts { list-style: none; margin: 0; padding: 0; }
+.theme-fusion .fx-place-contracts > li { padding: 9px 0; border-top: 1px solid var(--rule); }
+.theme-fusion .fx-place-contract-meta {
+  font-family: var(--f-mono); font-size: 11.5px; color: var(--muted);
+}
+
+/* archive documents */
+.theme-fusion .fx-doc-list { list-style: none; margin: 0; padding: 0; }
+.theme-fusion .fx-doc-list-compact .fx-doc-row { padding: 7px 0; }
+.theme-fusion .fx-doc-row { padding: 13px 0; border-top: 1px solid var(--rule); }
+.theme-fusion .fx-doc-title {
+  font-weight: 600; font-size: 15px; color: var(--ink); text-decoration: none;
+  border-bottom: 1px solid var(--bleu);
+}
+.theme-fusion .fx-doc-year { font-weight: 400; color: var(--muted); }
+.theme-fusion .fx-doc-creator {
+  font-size: 12.5px; color: var(--ink-2); margin-top: 3px;
+}
+.theme-fusion .fx-doc-snippet {
+  font-size: 13.5px; line-height: 1.5; color: var(--ink-2);
+  margin: 6px 0 5px; padding-left: 12px; border-left: 2px solid var(--rule);
+}
+.theme-fusion .fx-doc-hit { background: #fbe7a2; color: inherit; padding: 0 2px; }
+.theme-fusion .fx-doc-source {
+  display: block; font-family: var(--f-mono); font-size: 10.5px;
+  letter-spacing: .03em; color: var(--muted); margin-top: 4px;
+}
+.theme-fusion .fx-place-sources { margin-top: 26px; padding-top: 14px; border-top: 1px solid var(--rule); }
+
+/* ── SF payee fiche (Block A2) ──────────────────────────────────────────── */
+.theme-fusion .fx-payee-hero { margin: 0 0 26px; }
+.theme-fusion .fx-payee-hero-num {
+  font-family: var(--f-num); font-size: clamp(30px, 5vw, 46px); font-weight: 600;
+  line-height: 1; letter-spacing: -.01em;
+}
+.theme-fusion .fx-payee-hero-cap {
+  font-family: var(--f-mono); font-size: 12px; letter-spacing: .03em;
+  color: var(--ink-2); margin-top: 8px;
+}
+.theme-fusion .fx-payee-years {
+  display: flex; align-items: flex-end; gap: 3px; height: 90px; margin-top: 6px;
+}
+.theme-fusion .fx-payee-year { flex: 1 1 0; display: flex; flex-direction: column; align-items: center; }
+.theme-fusion .fx-payee-year-bar-wrap {
+  width: 100%; height: 74px; display: flex; align-items: flex-end;
+}
+.theme-fusion .fx-payee-year-bar {
+  width: 100%; background: var(--bleu); min-height: 2px; border-radius: 1px 1px 0 0;
+}
+.theme-fusion .fx-payee-year-label {
+  font-family: var(--f-mono); font-size: 8.5px; color: var(--muted); margin-top: 3px;
+}
+.theme-fusion .fx-payee-variants { list-style: none; margin: 0; padding: 0; }
+.theme-fusion .fx-payee-variants > li { padding: 5px 0; border-top: 1px solid var(--rule); }
+.theme-fusion .fx-payee-variant-name { font-size: 13.5px; }
+.theme-fusion .fx-payee-merges { list-style: none; margin: 10px 0 0; padding: 0; }
+.theme-fusion .fx-payee-merges > li { margin-bottom: 3px; }

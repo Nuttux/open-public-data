@@ -65,6 +65,7 @@ export const PLACES: Place[] = [
       { slug: "who-gets-paid", labelKey: "us.sf.nav.who_gets_paid" },
       { slug: "contracts", labelKey: "us.sf.nav.contracts" },
       { slug: "payroll", labelKey: "us.sf.nav.payroll" },
+      { slug: "places", labelKey: "us.sf.nav.places" },
     ],
   },
 ];
