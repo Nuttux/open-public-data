@@ -1,10 +1,9 @@
-"use client";
-
 import Navbar from "@/components/fusion/Navbar";
 import Footer from "@/components/fusion/Footer";
 import Button from "@/components/fusion/Button";
 import SectionHead from "@/components/fusion/SectionHead";
-import { useLocale } from "@/lib/localeContext";
+import LocaleRefresh from "@/components/LocaleRefresh";
+import { readLocale } from "@/lib/seo";
 
 // Modèle DINUM officiel — Décret n° 2019-768, arrêté du 20 sept. 2019.
 // Format obligatoire pour tout service à mission de service public en France.
@@ -15,12 +14,13 @@ const ESTABLISHED_DATE_EN = "May 7, 2026";
 const LAST_UPDATE_DATE = ESTABLISHED_DATE;
 const LAST_UPDATE_DATE_EN = ESTABLISHED_DATE_EN;
 
-export default function AccessibiliteClient() {
-  const { locale } = useLocale();
+export default async function AccessibiliteClient() {
+  const locale = await readLocale();
   const isFr = locale !== "en";
 
   return (
     <div className="theme-fusion">
+      <LocaleRefresh />
       <Navbar />
       <main id="main-content" tabIndex={-1}>
 

@@ -1,16 +1,22 @@
-"use client";
-
 import Navbar from "@/components/fusion/Navbar";
 import Footer from "@/components/fusion/Footer";
 import Button from "@/components/fusion/Button";
 import SectionHead from "@/components/fusion/SectionHead";
-import { useT } from "@/lib/localeContext";
+import LocaleRefresh from "@/components/LocaleRefresh";
+import { readLocale } from "@/lib/seo";
+import fr from "@/i18n/fr";
+import en from "@/i18n/en";
 
-export default function ContactClient() {
-  const t = useT();
+export default async function ContactClient() {
+  const locale = await readLocale();
+  // Same lookup as the context t(): active dictionary, FR fallback, then key.
+  // (The context's city-label rewrite is a no-op outside /fr/city/*.)
+  const dict = locale === "en" ? en : fr;
+  const t = (key: string): string => dict[key] ?? fr[key] ?? key;
 
   return (
     <div className="theme-fusion">
+      <LocaleRefresh />
       <Navbar />
       <main id="main-content" tabIndex={-1}>
 

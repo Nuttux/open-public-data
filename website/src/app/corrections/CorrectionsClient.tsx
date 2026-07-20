@@ -1,10 +1,9 @@
-"use client";
-
 import Navbar from "@/components/fusion/Navbar";
 import Footer from "@/components/fusion/Footer";
 import Button from "@/components/fusion/Button";
 import SectionHead from "@/components/fusion/SectionHead";
-import { useLocale } from "@/lib/localeContext";
+import LocaleRefresh from "@/components/LocaleRefresh";
+import { readLocale } from "@/lib/seo";
 import type { CorrectionsDoc, CorrectionEntry, CorrectionCategory } from "@/lib/corrections";
 
 const CATEGORY_LABELS: Record<CorrectionCategory, { fr: string; en: string }> = {
@@ -69,13 +68,14 @@ function CorrectionCard({ entry, isFr }: { entry: CorrectionEntry; isFr: boolean
   );
 }
 
-export default function CorrectionsClient({ doc }: { doc: CorrectionsDoc }) {
-  const { locale } = useLocale();
+export default async function CorrectionsClient({ doc }: { doc: CorrectionsDoc }) {
+  const locale = await readLocale();
   const isFr = locale !== "en";
   const lang = (isFr ? "fr" : "en") as "fr" | "en";
 
   return (
     <div className="theme-fusion">
+      <LocaleRefresh />
       <Navbar />
       <main id="main-content" tabIndex={-1}>
         <section className="fx-page-header">

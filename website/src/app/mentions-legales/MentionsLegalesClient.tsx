@@ -1,10 +1,9 @@
-"use client";
-
 import Navbar from "@/components/fusion/Navbar";
 import Footer from "@/components/fusion/Footer";
 import Button from "@/components/fusion/Button";
 import SectionHead from "@/components/fusion/SectionHead";
-import { useLocale } from "@/lib/localeContext";
+import LocaleRefresh from "@/components/LocaleRefresh";
+import { readLocale } from "@/lib/seo";
 
 // Mentions légales conformes LCEN art. 6-III-1.
 // À mettre à jour si statut juridique, hébergeur ou contact change.
@@ -42,12 +41,13 @@ const dtStyle: React.CSSProperties = {
 };
 const ddStyle: React.CSSProperties = { margin: 0 };
 
-export default function MentionsLegalesClient() {
-  const { locale } = useLocale();
+export default async function MentionsLegalesClient() {
+  const locale = await readLocale();
   const isFr = locale !== "en";
 
   return (
     <div className="theme-fusion">
+      <LocaleRefresh />
       <Navbar />
       <main id="main-content" tabIndex={-1}>
 

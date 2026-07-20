@@ -1,17 +1,17 @@
-"use client";
-
 import Navbar from "@/components/fusion/Navbar";
 import Footer from "@/components/fusion/Footer";
 import Button from "@/components/fusion/Button";
 import SectionHead from "@/components/fusion/SectionHead";
-import { useLocale } from "@/lib/localeContext";
+import LocaleRefresh from "@/components/LocaleRefresh";
+import { readLocale } from "@/lib/seo";
 
-export default function LicenceClient() {
-  const { locale } = useLocale();
+export default async function LicenceClient() {
+  const locale = await readLocale();
   const isFr = locale !== "en";
 
   return (
     <div className="theme-fusion">
+      <LocaleRefresh />
       <Navbar />
       <main id="main-content" tabIndex={-1}>
 

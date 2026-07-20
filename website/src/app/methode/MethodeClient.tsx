@@ -1,13 +1,12 @@
-"use client";
-
-import { useEffect, useState } from "react";
 import type { CSSProperties } from "react";
 import Navbar from "@/components/fusion/Navbar";
 import Footer from "@/components/fusion/Footer";
 import SectionHead from "@/components/fusion/SectionHead";
 import Button from "@/components/fusion/Button";
 import DataProvenance from "@/components/fusion/DataProvenance";
-import { useLocale } from "@/lib/localeContext";
+import LocaleRefresh from "@/components/LocaleRefresh";
+import AuditPanel from "./AuditPanel";
+import { readLocale } from "@/lib/seo";
 import { TIMELINE_AXIS_START, TIMELINE_AXIS_END } from "@/lib/methodology";
 
 type SourceRow = {
@@ -15,25 +14,6 @@ type SourceRow = {
   url: string;
   datasets: string;
   freshness: string;
-};
-
-type AuditCheck = {
-  id: string;
-  category: string;
-  label: string;
-  status: "pass" | "warn" | "fail";
-  threshold?: string;
-  actual?: string;
-  note?: string;
-  sources?: string[];
-};
-
-type AuditPayload = {
-  schema_version: number;
-  generated_at: string;
-  project: string;
-  summary: { total: number; pass: number; warn: number; fail: number };
-  checks: AuditCheck[];
 };
 
 type CoverageRow = {
@@ -129,19 +109,9 @@ const TOOLS_EN: ToolChip[] = [
 
 // ── Component ────────────────────────────────────────────────────────────────
 
-export default function MethodeClient() {
-  const { locale } = useLocale();
+export default async function MethodeClient() {
+  const locale = await readLocale();
   const isFr = locale === "fr";
-  const [audit, setAudit] = useState<AuditPayload | null>(null);
-
-  useEffect(() => {
-    let cancelled = false;
-    fetch("/data/data_quality_audit.json")
-      .then((r) => (r.ok ? r.json() : null))
-      .then((data) => { if (!cancelled && data) setAudit(data); })
-      .catch(() => {});
-    return () => { cancelled = true; };
-  }, []);
 
   const SOURCES = isFr ? SOURCES_FR : SOURCES_EN;
   const COVERAGE = isFr ? COVERAGE_FR : COVERAGE_EN;
@@ -152,6 +122,7 @@ export default function MethodeClient() {
 
   return (
     <div className="theme-fusion">
+      <LocaleRefresh />
       <Navbar />
       <main id="main-content" tabIndex={-1}>
 
@@ -360,76 +331,7 @@ export default function MethodeClient() {
               : <>On every update, automated checks replay the calculations and match the displayed totals against the raw sources, to the cent. Model-enriched information (categories, locations) must stay above documented reliability thresholds. And any gaps in the public sources are flagged as such on the relevant page. <b>No figure on this page is typed by hand.</b></>}
           </p>
 
-          {audit ? (
-            <>
-              <div className="fx-meth-stats" style={{ marginBottom: 16 }}>
-                <div className="fx-meth-stat">
-                  <span className="n">{isFr ? "Contrôles" : "Checks"}</span>
-                  <span className="v">{audit.summary.total}</span>
-                  <span className="c">{isFr ? "rejoués à chaque update" : "replayed on every update"}</span>
-                </div>
-                <div className="fx-meth-stat">
-                  <span className="n">{isFr ? "Réussis" : "Passing"}</span>
-                  <span className="v" style={{ color: "var(--fx-ok, #1e7e34)" }}>{audit.summary.pass}</span>
-                  <span className="c">{isFr ? "dans les seuils" : "within thresholds"}</span>
-                </div>
-                <div className="fx-meth-stat">
-                  <span className="n">{isFr ? "Warnings" : "Warnings"}</span>
-                  <span className="v" style={{ color: "var(--fx-warn, #b97400)" }}>{audit.summary.warn}</span>
-                  <span className="c">{isFr ? "limitations source documentées" : "documented source limitations"}</span>
-                </div>
-                <div className="fx-meth-stat">
-                  <span className="n">{isFr ? "Échecs" : "Failures"}</span>
-                  <span className="v" style={{ color: audit.summary.fail === 0 ? "var(--fx-ok, #1e7e34)" : "var(--fx-fail, #c0392b)" }}>{audit.summary.fail}</span>
-                  <span className="c">{isFr ? "bloquant pour la publication" : "blocking publication"}</span>
-                </div>
-              </div>
-
-              <p className="fx-note" style={{ marginBottom: 20 }}>
-                {isFr
-                  ? <>Dernier rejeu : <b>{new Date(audit.generated_at).toLocaleString("fr-FR", { dateStyle: "long", timeStyle: "short" })}</b>.</>
-                  : <>Last run: <b>{new Date(audit.generated_at).toLocaleString("en-GB", { dateStyle: "long", timeStyle: "short" })}</b>.</>}
-              </p>
-
-              <details className="fx-collapsible">
-                <summary>{isFr ? `Voir le détail des ${audit.summary.total} contrôles` : `View all ${audit.summary.total} checks`}</summary>
-                <div className="fx-audit-table" style={{ marginTop: 12 }}>
-                  <div className="fx-audit-table-head">
-                    <span>{isFr ? "Contrôle" : "Check"}</span>
-                    <span>{isFr ? "Catégorie" : "Category"}</span>
-                    <span>{isFr ? "Seuil" : "Threshold"}</span>
-                    <span>{isFr ? "Statut · mesure" : "Status · value"}</span>
-                  </div>
-                  {audit.checks.map((c) => (
-                    <div key={c.id} className="fx-audit-table-row">
-                      <span className="check-label">{c.label}</span>
-                      <span className="check-category">{c.category}</span>
-                      <span className="check-threshold">{c.threshold ?? "—"}</span>
-                      <span className="check-status">
-                        <span
-                          aria-label={c.status}
-                          style={{
-                            display: "inline-block",
-                            padding: "2px 8px",
-                            borderRadius: 4,
-                            fontWeight: 600,
-                            marginRight: 8,
-                            color: c.status === "pass" ? "var(--fx-ok, #1e7e34)" : c.status === "warn" ? "var(--fx-warn, #b97400)" : "var(--fx-fail, #c0392b)",
-                            background: c.status === "pass" ? "rgba(30, 126, 52, 0.10)" : c.status === "warn" ? "rgba(185, 116, 0, 0.10)" : "rgba(192, 57, 43, 0.10)",
-                          }}
-                        >
-                          {c.status === "pass" ? "✓" : c.status === "warn" ? "⚠" : "✗"} {c.status.toUpperCase()}
-                        </span>
-                        {c.actual}
-                      </span>
-                    </div>
-                  ))}
-                </div>
-              </details>
-            </>
-          ) : (
-            <p className="fx-note">{isFr ? "Chargement de l'audit…" : "Loading audit…"}</p>
-          )}
+          <AuditPanel isFr={isFr} />
 
           {/* Limites connues — fusion LLM confidence + divergences Ville ── */}
           <h3 style={{ marginTop: 48, marginBottom: 14, fontFamily: "var(--f-display)", fontSize: 22 }}>
