@@ -1,0 +1,173 @@
+{
+ "generated_at": "2026-07-20T22:34:47.738895+00:00",
+ "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
+ "as_of": "2026-07-13T13:40:40+00:00",
+ "unit": "USD",
+ "slug": "tides-center",
+ "name": "Tides Center",
+ "kind": "other",
+ "is_non_profit": false,
+ "total_paid_usd": 162749407.65,
+ "n_years": 21,
+ "first_year": 2007,
+ "last_year": 2027,
+ "by_year": {
+  "2007": 2118753.2,
+  "2008": 3885939.3,
+  "2009": 5098616.4,
+  "2010": 5298481.7,
+  "2011": 4134541.6,
+  "2012": 4689095.7,
+  "2013": 4968194.4,
+  "2014": 4528522.3,
+  "2015": 4970687.1,
+  "2016": 3810847.8,
+  "2017": 8975249.7,
+  "2018": 4603853.15,
+  "2019": 11111796.55,
+  "2020": 10432275.31,
+  "2021": 10145215.6,
+  "2022": 11430463.21,
+  "2023": 14470382.89,
+  "2024": 17213865.36,
+  "2025": 20645968.95,
+  "2026": 10094638.54,
+  "2027": 122018.89
+ },
+ "top_departments": [],
+ "contracts_held": [
+  {
+   "contract_no": "1000027666",
+   "title": "Tides - 1321 ML&PM",
+   "department": "HOM Homelessness Services",
+   "department_code": "HOM",
+   "agreed_usd": 19500000.0,
+   "paid_usd": 7343989.61,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000028213",
+   "title": "CERF Convener",
+   "department": "ECN Economic & Wrkfrce Dvlpmnt",
+   "department_code": "ECN",
+   "agreed_usd": 3612400.0,
+   "paid_usd": 2952400.0,
+   "sole_source": true
+  },
+  {
+   "contract_no": "1000034379",
+   "title": "Ta/Cb PSC FY24-25",
+   "department": "CHF Children;Youth & Families",
+   "department_code": "CHF",
+   "agreed_usd": 3285090.0,
+   "paid_usd": 1765280.72,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000032585",
+   "title": "GA-Productive Adult-24-29",
+   "department": "CHF Children;Youth & Families",
+   "department_code": "CHF",
+   "agreed_usd": 3679100.0,
+   "paid_usd": 1075397.78,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000032404",
+   "title": "Overdose Prevention",
+   "department": "DPH Public Health",
+   "department_code": "DPH",
+   "agreed_usd": 674523.0,
+   "paid_usd": 522891.47,
+   "sole_source": true
+  },
+  {
+   "contract_no": "1000032653",
+   "title": "GA-HS Arts Prog-24-29",
+   "department": "CHF Children;Youth & Families",
+   "department_code": "CHF",
+   "agreed_usd": 1752000.0,
+   "paid_usd": 500090.03,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000032555",
+   "title": "GA-Youth Env Ed-24-29",
+   "department": "CHF Children;Youth & Families",
+   "department_code": "CHF",
+   "agreed_usd": 1168200.0,
+   "paid_usd": 285448.23,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000035226",
+   "title": "CIP-25SPX03 Grant",
+   "department": "ART Arts Commission",
+   "department_code": "ART",
+   "agreed_usd": 350000.0,
+   "paid_usd": 245000.0,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000037795",
+   "title": "Hummingbird Urban Demo Farm",
+   "department": "PUC Public Utilities Commsn",
+   "department_code": "PUC",
+   "agreed_usd": 300000.0,
+   "paid_usd": 0.0,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000038148",
+   "title": "Hummingbird Farm Commun",
+   "department": "ADM GSA - City Administrator",
+   "department_code": "ADM",
+   "agreed_usd": 150000.0,
+   "paid_usd": 0.0,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000036195",
+   "title": "M. Youth Art Exchange (Tides)",
+   "department": "PUC Public Utilities Commsn",
+   "department_code": "PUC",
+   "agreed_usd": 130000.0,
+   "paid_usd": 0.0,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000036732",
+   "title": "D. Community Grows (Tides)",
+   "department": "PUC Public Utilities Commsn",
+   "department_code": "PUC",
+   "agreed_usd": 130000.0,
+   "paid_usd": 0.0,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000036624",
+   "title": "J. PODER (Tides Center)",
+   "department": "PUC Public Utilities Commsn",
+   "department_code": "PUC",
+   "agreed_usd": 95000.0,
+   "paid_usd": 0.0,
+   "sole_source": false
+  }
+ ],
+ "n_contracts_held": 13,
+ "variants": [
+  {
+   "name": "TIDES CENTER",
+   "total": 162749407.65
+  }
+ ],
+ "n_variants": 1,
+ "merges": [],
+ "source": {
+  "name": "Vendor Payments (Vouchers)",
+  "dataset_id": "n9pm-xkyq",
+  "source_url": "https://data.sfgov.org/d/n9pm-xkyq",
+  "attribution": "SF Controller's Office",
+  "rows_updated_at": "2026-07-13T13:40:40+00:00"
+ }
+}

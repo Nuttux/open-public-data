@@ -1,0 +1,87 @@
+{
+ "generated_at": "2026-07-20T22:34:47.741904+00:00",
+ "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
+ "as_of": "2026-07-13T13:40:40+00:00",
+ "unit": "USD",
+ "slug": "allied-universal-security-services",
+ "name": "Allied Universal Security Services",
+ "kind": "supplier",
+ "is_non_profit": false,
+ "total_paid_usd": 133046280.49,
+ "n_years": 14,
+ "first_year": 2008,
+ "last_year": 2026,
+ "by_year": {
+  "2008": 242182.5,
+  "2009": 65657.9,
+  "2015": 532.5,
+  "2016": 2423914.3,
+  "2017": 7022321.8,
+  "2018": 8496291.89,
+  "2019": 6695530.63,
+  "2020": 6299396.69,
+  "2021": 25232791.3,
+  "2022": 6785583.89,
+  "2023": 15675851.88,
+  "2024": 19661427.87,
+  "2025": 17361246.71,
+  "2026": 17083550.63
+ },
+ "top_departments": [
+  "HSA Human Services Agency"
+ ],
+ "contracts_held": [
+  {
+   "contract_no": "1000017705",
+   "title": "2018-48 - Security Svcs",
+   "department": "MTA Municipal Transprtn Agncy",
+   "department_code": "MTA",
+   "agreed_usd": 64940326.0,
+   "paid_usd": 50984904.17,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000028092",
+   "title": "TC86240 Security Guard SFGH",
+   "department": "ADM GSA - City Administrator",
+   "department_code": "ADM",
+   "agreed_usd": 15380000.0,
+   "paid_usd": 11190946.32,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000028093",
+   "title": "OCA|TC86240 Security Guard LHH",
+   "department": "ADM GSA - City Administrator",
+   "department_code": "ADM",
+   "agreed_usd": 9660000.0,
+   "paid_usd": 6906692.7,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000032789",
+   "title": "MST As-Needed Maint & Intg",
+   "department": "PUC Public Utilities Commsn",
+   "department_code": "PUC",
+   "agreed_usd": 1200000.0,
+   "paid_usd": 0.0,
+   "sole_source": false
+  }
+ ],
+ "n_contracts_held": 4,
+ "variants": [
+  {
+   "name": "ALLIED UNIVERSAL  SECURITY SERVICES",
+   "total": 133046280.49
+  }
+ ],
+ "n_variants": 1,
+ "merges": [],
+ "source": {
+  "name": "Vendor Payments (Vouchers)",
+  "dataset_id": "n9pm-xkyq",
+  "source_url": "https://data.sfgov.org/d/n9pm-xkyq",
+  "attribution": "SF Controller's Office",
+  "rows_updated_at": "2026-07-13T13:40:40+00:00"
+ }
+}

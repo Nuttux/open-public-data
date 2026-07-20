@@ -1,0 +1,84 @@
+{
+ "generated_at": "2026-07-20T22:34:47.740868+00:00",
+ "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
+ "as_of": "2026-07-13T13:40:40+00:00",
+ "unit": "USD",
+ "slug": "eviction-defense-collaborative-inc",
+ "name": "Eviction Defense Collaborative Inc",
+ "kind": "nonprofit",
+ "is_non_profit": true,
+ "total_paid_usd": 144833774.28,
+ "n_years": 20,
+ "first_year": 2007,
+ "last_year": 2026,
+ "by_year": {
+  "2007": 881021.8,
+  "2008": 967998.2,
+  "2009": 1079601.6,
+  "2010": 1121400.3,
+  "2011": 1872233.8,
+  "2012": 1626614.4,
+  "2013": 1861456.5,
+  "2014": 2533868.7,
+  "2015": 2321759.8,
+  "2016": 3306067.6,
+  "2017": 3675639.4,
+  "2018": 3384085.73,
+  "2019": 4424667.76,
+  "2020": 6251512.82,
+  "2021": 8120031.37,
+  "2022": 16499881.29,
+  "2023": 20854608.69,
+  "2024": 25021760.5,
+  "2025": 21621264.05,
+  "2026": 17408299.97
+ },
+ "top_departments": [
+  "MYR Mayor"
+ ],
+ "contracts_held": [
+  {
+   "contract_no": "1000033215",
+   "title": "Housing Subsidies 24-28",
+   "department": "HSA Human Services Agency",
+   "department_code": "HSA",
+   "agreed_usd": 11062913.0,
+   "paid_usd": 4000197.89,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000032314",
+   "title": "EDC - Temporary Shelter Advoca",
+   "department": "HOM Homelessness Services",
+   "department_code": "HOM",
+   "agreed_usd": 3557424.0,
+   "paid_usd": 908920.62,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000037081",
+   "title": "246266-25",
+   "department": "MYR Mayor",
+   "department_code": "MYR",
+   "agreed_usd": 400000.0,
+   "paid_usd": 105603.44,
+   "sole_source": false
+  }
+ ],
+ "n_contracts_held": 3,
+ "variants": [
+  {
+   "name": "EVICTION DEFENSE COLLABORATIVE INC",
+   "total": 144833774.28
+  }
+ ],
+ "n_variants": 1,
+ "merges": [],
+ "source": {
+  "name": "Vendor Payments (Vouchers)",
+  "dataset_id": "n9pm-xkyq",
+  "source_url": "https://data.sfgov.org/d/n9pm-xkyq",
+  "attribution": "SF Controller's Office",
+  "rows_updated_at": "2026-07-13T13:40:40+00:00"
+ }
+}

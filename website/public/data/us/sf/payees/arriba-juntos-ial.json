@@ -1,0 +1,92 @@
+{
+ "generated_at": "2026-07-20T22:34:47.744549+00:00",
+ "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
+ "as_of": "2026-07-13T13:40:40+00:00",
+ "unit": "USD",
+ "slug": "arriba-juntos-ial",
+ "name": "Arriba Juntos - Ial",
+ "kind": "other",
+ "is_non_profit": false,
+ "total_paid_usd": 108541686.22,
+ "n_years": 21,
+ "first_year": 2007,
+ "last_year": 2027,
+ "by_year": {
+  "2007": 1084530.3,
+  "2008": 2429043.9,
+  "2009": 2843276.3,
+  "2010": 3484287.8,
+  "2011": 3326013.9,
+  "2012": 3813939.8,
+  "2013": 4888175.2,
+  "2014": 4033872.1,
+  "2015": 5326608.2,
+  "2016": 5361210.3,
+  "2017": 6443335.8,
+  "2018": 5791668.92,
+  "2019": 6748839.03,
+  "2020": 6418552.72,
+  "2021": 6330620.56,
+  "2022": 7234544.89,
+  "2023": 8355153.82,
+  "2024": 8874188.4,
+  "2025": 10853915.86,
+  "2026": 4891768.42,
+  "2027": 8140.0
+ },
+ "top_departments": [],
+ "contracts_held": [
+  {
+   "contract_no": "1000029287",
+   "title": "TE FY23-27",
+   "department": "HSA Human Services Agency",
+   "department_code": "HSA",
+   "agreed_usd": 9134673.0,
+   "paid_usd": 3102204.43,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000029286",
+   "title": "HES FY24-27",
+   "department": "HSA Human Services Agency",
+   "department_code": "HSA",
+   "agreed_usd": 1779473.0,
+   "paid_usd": 754171.55,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000036532",
+   "title": "DSP 25-29",
+   "department": "HSA Human Services Agency",
+   "department_code": "HSA",
+   "agreed_usd": 1826000.0,
+   "paid_usd": 263940.0,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000030327",
+   "title": "Refugee Benefits Links FY23427",
+   "department": "HSA Human Services Agency",
+   "department_code": "HSA",
+   "agreed_usd": 420068.0,
+   "paid_usd": 223461.61,
+   "sole_source": false
+  }
+ ],
+ "n_contracts_held": 4,
+ "variants": [
+  {
+   "name": "ARRIBA JUNTOS - IAL",
+   "total": 108541686.22
+  }
+ ],
+ "n_variants": 1,
+ "merges": [],
+ "source": {
+  "name": "Vendor Payments (Vouchers)",
+  "dataset_id": "n9pm-xkyq",
+  "source_url": "https://data.sfgov.org/d/n9pm-xkyq",
+  "attribution": "SF Controller's Office",
+  "rows_updated_at": "2026-07-13T13:40:40+00:00"
+ }
+}

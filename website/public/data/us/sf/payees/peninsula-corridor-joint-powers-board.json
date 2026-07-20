@@ -1,0 +1,56 @@
+{
+ "generated_at": "2026-07-20T22:34:47.740955+00:00",
+ "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
+ "as_of": "2026-07-13T13:40:40+00:00",
+ "unit": "USD",
+ "slug": "peninsula-corridor-joint-powers-board",
+ "name": "Peninsula Corridor Joint Powers Board",
+ "kind": "other",
+ "is_non_profit": false,
+ "total_paid_usd": 144280861.33,
+ "n_years": 20,
+ "first_year": 2007,
+ "last_year": 2026,
+ "by_year": {
+  "2007": 6370612.7,
+  "2008": 7661018.2,
+  "2009": 7367166.0,
+  "2010": 7424416.0,
+  "2011": 6520251.0,
+  "2012": 4500001.0,
+  "2013": 6217630.0,
+  "2014": 4500882.0,
+  "2015": 5179325.0,
+  "2016": 5207755.0,
+  "2017": 6503488.6,
+  "2018": 10952590.78,
+  "2019": 24971914.43,
+  "2020": 10736341.83,
+  "2021": 8365507.22,
+  "2022": 7256521.91,
+  "2023": 4252208.03,
+  "2024": 2722278.2,
+  "2025": 6640270.8,
+  "2026": 930682.63
+ },
+ "top_departments": [
+  "MTA Municipal Transprtn Agncy"
+ ],
+ "contracts_held": [],
+ "n_contracts_held": 0,
+ "variants": [
+  {
+   "name": "PENINSULA CORRIDOR JOINT POWERS BOARD",
+   "total": 144280861.33
+  }
+ ],
+ "n_variants": 1,
+ "merges": [],
+ "source": {
+  "name": "Vendor Payments (Vouchers)",
+  "dataset_id": "n9pm-xkyq",
+  "source_url": "https://data.sfgov.org/d/n9pm-xkyq",
+  "attribution": "SF Controller's Office",
+  "rows_updated_at": "2026-07-13T13:40:40+00:00"
+ }
+}

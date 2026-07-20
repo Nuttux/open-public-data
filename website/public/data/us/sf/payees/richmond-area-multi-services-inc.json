@@ -1,0 +1,166 @@
+{
+ "generated_at": "2026-07-20T22:34:47.730930+00:00",
+ "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
+ "as_of": "2026-07-13T13:40:40+00:00",
+ "unit": "USD",
+ "slug": "richmond-area-multi-services-inc",
+ "name": "Richmond Area Multi-services Inc",
+ "kind": "nonprofit",
+ "is_non_profit": false,
+ "total_paid_usd": 355247746.43,
+ "n_years": 21,
+ "first_year": 2007,
+ "last_year": 2027,
+ "by_year": {
+  "2007": 5961812.1,
+  "2008": 8647668.4,
+  "2009": 8506478.6,
+  "2010": 7784199.3,
+  "2011": 8759845.5,
+  "2012": 9232818.9,
+  "2013": 8922892.3,
+  "2014": 11906709.3,
+  "2015": 14809179.4,
+  "2016": 16452044.5,
+  "2017": 20131808.0,
+  "2018": 14136798.03,
+  "2019": 20318884.55,
+  "2020": 18996379.52,
+  "2021": 22830460.13,
+  "2022": 24003794.11,
+  "2023": 26553802.98,
+  "2024": 31282662.75,
+  "2025": 35073800.12,
+  "2026": 40875517.31,
+  "2027": 60190.63
+ },
+ "top_departments": [
+  "DPH Public Health"
+ ],
+ "contracts_held": [
+  {
+   "contract_no": "1000010838",
+   "title": "RAMS-Adult 22-23 AM-2",
+   "department": "DPH Public Health",
+   "department_code": "DPH",
+   "agreed_usd": 61137386.0,
+   "paid_usd": 43314710.14,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000024553",
+   "title": "RAMS-Vocational 21-22 New",
+   "department": "DPH Public Health",
+   "department_code": "DPH",
+   "agreed_usd": 38083630.0,
+   "paid_usd": 19319354.33,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000029526",
+   "title": "Rfga 7089 - SCRT",
+   "department": "DPH Public Health",
+   "department_code": "DPH",
+   "agreed_usd": 9726995.0,
+   "paid_usd": 4457442.54,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000029527",
+   "title": "Rfga 7089 - Sort & Poet",
+   "department": "DPH Public Health",
+   "department_code": "DPH",
+   "agreed_usd": 9999999.0,
+   "paid_usd": 2219556.33,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000028960",
+   "title": "RFGA 7482",
+   "department": "DPH Public Health",
+   "department_code": "DPH",
+   "agreed_usd": 8919348.0,
+   "paid_usd": 1976259.43,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000034967",
+   "title": "PAES RFP9787",
+   "department": "DPH Public Health",
+   "department_code": "DPH",
+   "agreed_usd": 9989456.0,
+   "paid_usd": 1552990.3,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000032784",
+   "title": "RFP 8818 TAY Soc",
+   "department": "DPH Public Health",
+   "department_code": "DPH",
+   "agreed_usd": 4797616.0,
+   "paid_usd": 1299166.63,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000032783",
+   "title": "RFP 8705 ICM Outpatient",
+   "department": "DPH Public Health",
+   "department_code": "DPH",
+   "agreed_usd": 4140176.0,
+   "paid_usd": 897538.89,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000033881",
+   "title": "Wellness in Street RFP9383",
+   "department": "DPH Public Health",
+   "department_code": "DPH",
+   "agreed_usd": 2461903.0,
+   "paid_usd": 672159.5,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000032782",
+   "title": "RFP 8667 Mobile Clinicians",
+   "department": "DPH Public Health",
+   "department_code": "DPH",
+   "agreed_usd": 9999849.0,
+   "paid_usd": 603203.09,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000036206",
+   "title": "CW CJP FY26-29",
+   "department": "HSA Human Services Agency",
+   "department_code": "HSA",
+   "agreed_usd": 6600000.0,
+   "paid_usd": 557583.14,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000029525",
+   "title": "Rfga 7089 - Wpic",
+   "department": "DPH Public Health",
+   "department_code": "DPH",
+   "agreed_usd": 2973116.0,
+   "paid_usd": 424309.61,
+   "sole_source": false
+  }
+ ],
+ "n_contracts_held": 12,
+ "variants": [
+  {
+   "name": "RICHMOND AREA MULTI-SERVICES INC",
+   "total": 355247746.43
+  }
+ ],
+ "n_variants": 1,
+ "merges": [],
+ "source": {
+  "name": "Vendor Payments (Vouchers)",
+  "dataset_id": "n9pm-xkyq",
+  "source_url": "https://data.sfgov.org/d/n9pm-xkyq",
+  "attribution": "SF Controller's Office",
+  "rows_updated_at": "2026-07-13T13:40:40+00:00"
+ }
+}

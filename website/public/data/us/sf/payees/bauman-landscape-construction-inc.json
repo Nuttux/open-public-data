@@ -1,0 +1,62 @@
+{
+ "generated_at": "2026-07-20T22:34:47.741112+00:00",
+ "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
+ "as_of": "2026-07-13T13:40:40+00:00",
+ "unit": "USD",
+ "slug": "bauman-landscape-construction-inc",
+ "name": "Bauman Landscape & Construction Inc",
+ "kind": "supplier",
+ "is_non_profit": false,
+ "total_paid_usd": 141075041.55,
+ "n_years": 16,
+ "first_year": 2011,
+ "last_year": 2027,
+ "by_year": {
+  "2011": 6822613.3,
+  "2012": 8643339.3,
+  "2013": 12849398.0,
+  "2014": 7424576.3,
+  "2015": 6830530.4,
+  "2016": 10897930.2,
+  "2017": 14776731.8,
+  "2018": 4465340.64,
+  "2019": 5178693.51,
+  "2020": 7865781.37,
+  "2022": 795463.8,
+  "2023": 5802566.12,
+  "2024": 13281384.72,
+  "2025": 26253377.5,
+  "2026": 8950772.29,
+  "2027": 236542.3
+ },
+ "top_departments": [
+  "DPW GSA - Public Works"
+ ],
+ "contracts_held": [
+  {
+   "contract_no": "1000035420",
+   "title": "Minna STSCP PRJ Rebid",
+   "department": "DPW Public Works",
+   "department_code": "DPW",
+   "agreed_usd": 4534961.24,
+   "paid_usd": 1517427.16,
+   "sole_source": false
+  }
+ ],
+ "n_contracts_held": 1,
+ "variants": [
+  {
+   "name": "BAUMAN LANDSCAPE & CONSTRUCTION INC",
+   "total": 141075041.55
+  }
+ ],
+ "n_variants": 1,
+ "merges": [],
+ "source": {
+  "name": "Vendor Payments (Vouchers)",
+  "dataset_id": "n9pm-xkyq",
+  "source_url": "https://data.sfgov.org/d/n9pm-xkyq",
+  "attribution": "SF Controller's Office",
+  "rows_updated_at": "2026-07-13T13:40:40+00:00"
+ }
+}

@@ -1,0 +1,260 @@
+{
+ "generated_at": "2026-07-20T22:30:00.113000+00:00",
+ "source_pipeline": "sf_place_candidates.json → sync_ia_sf.py + link_sf_places.py + fetch_sf_place_photos.py → export_sf_places.py",
+ "unit": "USD",
+ "slug": "zuckerberg-sf-general-hospital",
+ "name": "Zuckerberg San Francisco General Hospital",
+ "kind": "Hospital",
+ "family": "health",
+ "address": "1001 Potrero Ave",
+ "lat": 37.7559,
+ "lon": -122.4048,
+ "owning_dept": {
+  "name": "Public Health",
+  "code": "DPH"
+ },
+ "photo": null,
+ "photo_credit": null,
+ "summary_en": null,
+ "published": false,
+ "money": {
+  "budget_line": {
+   "code": "DPH",
+   "name": "Public Health",
+   "total_usd": 3185025572.0,
+   "fiscal_year": 2025
+  },
+  "contracts": [],
+  "grants": []
+ },
+ "documents": [
+  {
+   "identifier": "sanfranciscogene2007sanf",
+   "title": "San Francisco General Hospital Medical Center institutional master plan : update",
+   "creator": "San Francisco General Hospital (Calif.),San Francisco (Calif.). Dept. of Public Health,Fong & Chan Architects",
+   "year": 2007,
+   "pool": "sfpl",
+   "matched_alias": "San Francisco General Hospital",
+   "snippet": "of 1985 «San Francisco General Hospital» Medical Center «San Francisco General Hospital» Medical",
+   "url": "https://archive.org/details/sanfranciscogene2007sanf",
+   "deep_link": "https://archive.org/details/sanfranciscogene2007sanf?q=San+Francisco+General+Hospital",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+  },
+  {
+   "identifier": "noticeofprepara2200sanf_0",
+   "title": "Notice of preparation of an environmental impact report : [San Francisco General Hospital--Seismic compliance, hospital replacement program]",
+   "creator": "San Francisco (Calif.). Planning Dept,San Francisco (Calif.). Dept. of Public Health",
+   "year": 2007,
+   "pool": "sfpl",
+   "matched_alias": "SFGH",
+   "snippet": "3,510 employees at «SFGH», one-third of which are UCSF employees. «SFGH» employs advance practice",
+   "url": "https://archive.org/details/noticeofprepara2200sanf_0",
+   "deep_link": "https://archive.org/details/noticeofprepara2200sanf_0?q=SFGH",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+  },
+  {
+   "identifier": "performanceeffic202008san",
+   "title": "Performance and efficiency review : Department of Public Health : Controller's Office analysis 2005-2008",
+   "creator": "San Francisco (Calif.). Office of the Controller. City Services Auditor Division",
+   "year": 2005,
+   "pool": "sfpl",
+   "matched_alias": "San Francisco General Hospital",
+   "snippet": "programs: «San Francisco General Hospital» Medical Center «San Francisco General Hospital» provides",
+   "url": "https://archive.org/details/performanceeffic202008san",
+   "deep_link": "https://archive.org/details/performanceeffic202008san?q=San+Francisco+General+Hospital",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+  },
+  {
+   "identifier": "sanfranciscogene4200sanf",
+   "title": "San Francisco General Hospital Medical Center air medical access needs and feasibility study : a report to the Health Commission of the City & County of San Francisco and the executive administrator of San Francisco General Hospital",
+   "creator": "San Francisco General Hospital (Calif.),Gerson/Overstreet Architects",
+   "year": 2003,
+   "pool": "sfpl",
+   "matched_alias": "San Francisco General Hospital",
+   "snippet": "Study E-1 «San Francisco General Hospital» Addition And Heliport «San Francisco General Hospital» is proceeding",
+   "url": "https://archive.org/details/sanfranciscogene4200sanf",
+   "deep_link": "https://archive.org/details/sanfranciscogene4200sanf?q=San+Francisco+General+Hospital",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+  },
+  {
+   "identifier": "citycountyofsa200910sanf",
+   "title": "City and County of San Francisco interim consolidated budget and annual appropriation ordinance",
+   "creator": "San Francisco (Calif.),San Francisco (Calif.). Board of Supervisors,San Francisco (Calif.). Office of the Mayor",
+   "year": 1998,
+   "pool": "sfpl",
+   "matched_alias": "SF General",
+   "snippet": "HEALTH SERVICE (AAO) 865HG EXP REC FR «SF GENERAL» HOSPITAL (AAO) 865HL EXP REC FR LAGUNA",
+   "url": "https://archive.org/details/citycountyofsa200910sanf",
+   "deep_link": "https://archive.org/details/citycountyofsa200910sanf?q=SF+General",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+  },
+  {
+   "identifier": "agenda2003sanf_3",
+   "title": "Agenda",
+   "creator": "San Francisco (Calif.). Immigrant Rights Commission",
+   "year": 1998,
+   "pool": "sfpl",
+   "matched_alias": "SF General",
+   "snippet": "translators in «SF General» Hospital. Ms. Quan is a patient in «SF General» Hospital, she is",
+   "url": "https://archive.org/details/agenda2003sanf_3",
+   "deep_link": "https://archive.org/details/agenda2003sanf_3?q=SF+General",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+  },
+  {
+   "identifier": "sanfranciscogene1519sanf",
+   "title": "San Francisco General Hospital parking garage, draft environmental impact report",
+   "creator": "San Francisco (Calif.). Dept. of City Planning",
+   "year": 1993,
+   "pool": "sfpl",
+   "matched_alias": "San Francisco General Hospital",
+   "snippet": "FIGURE 1 0 «San Francisco General Hospital» 35 ZONING «San Francisco General Hospital» Parking Garage",
+   "url": "https://archive.org/details/sanfranciscogene1519sanf",
+   "deep_link": "https://archive.org/details/sanfranciscogene1519sanf?q=San+Francisco+General+Hospital",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+  },
+  {
+   "identifier": "overtimepayexpen1519sanf",
+   "title": "Overtime pay expenditures for calendar year 1993 and January through June, 1994",
+   "creator": "San Francisco (Calif.). Board of Supervisors. Budget Analyst",
+   "year": 1993,
+   "pool": "sfpl",
+   "matched_alias": "SF General",
+   "snippet": "758,631 957,694 37,009,714 2.6% 23% 86 DPH -«SF General» 68,879315 856,743 967,084 1,823,827 67,055,488",
+   "url": "https://archive.org/details/overtimepayexpen1519sanf",
+   "deep_link": "https://archive.org/details/overtimepayexpen1519sanf?q=SF+General",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+  },
+  {
+   "identifier": "citycountyofsanf1996sanf",
+   "title": "City and County of San Francisco telephone directory",
+   "creator": "San Francisco (Calif.). Dept. of Electricity and Telecommunications,San Francisco (Calif.). Dept. of Telecommunications and Information Services",
+   "year": 1993,
+   "pool": "sfpl",
+   "matched_alias": "SFGH",
+   "snippet": "Diane «SFGH»/Administration 206-8100 Miller, Dorian DPH/Maxine Hall 292-1353 Miller, Eric «SFGH»/PlantServ",
+   "url": "https://archive.org/details/citycountyofsanf1996sanf",
+   "deep_link": "https://archive.org/details/citycountyofsanf1996sanf?q=SFGH",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+  },
+  {
+   "identifier": "sanfranciscogene1987sanf",
+   "title": "San Francisco General Hospital Medical Center institutional master plan",
+   "creator": "San Francisco General Hospital (Calif.),San Francisco (Calif.). Dept. of Public Health",
+   "year": 1987,
+   "pool": "sfpl",
+   "matched_alias": "San Francisco General Hospital",
+   "snippet": "Administrator «San Francisco General Hospital» PLANNING COMMITTEE «San Francisco General Hospital» Robert",
+   "url": "https://archive.org/details/sanfranciscogene1987sanf",
+   "deep_link": "https://archive.org/details/sanfranciscogene1987sanf?q=San+Francisco+General+Hospital",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+  },
+  {
+   "identifier": "healthcareforhom1984sanf",
+   "title": "[Health care for the homeless program]",
+   "creator": "San Francisco (Calif.). Dept. of Public Health",
+   "year": 1984,
+   "pool": "sfpl",
+   "matched_alias": "San Francisco General Hospital",
+   "snippet": "number of the persons admitted to «San Francisco General Hospital» are homeless. They require a",
+   "url": "https://archive.org/details/healthcareforhom1984sanf",
+   "deep_link": "https://archive.org/details/healthcareforhom1984sanf?q=San+Francisco+General+Hospital",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+  },
+  {
+   "identifier": "agenda19821984arts",
+   "title": "Agenda",
+   "creator": "Arts Commission of San Francisco. Visual Arts Committee",
+   "year": 1983,
+   "pool": "sfpl",
+   "matched_alias": "SF General",
+   "snippet": "FUNDS FROM «SF GENERAL» FOR CONSERVATION CHANGE IN ART PROGRAM AT «SF GENERAL» MURALIST PROPOSAL",
+   "url": "https://archive.org/details/agenda19821984arts",
+   "deep_link": "https://archive.org/details/agenda19821984arts?q=SF+General",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+  },
+  {
+   "identifier": "sanfranciscogene1619mona",
+   "title": "San Francisco General Hospital : report to the Honorable Mayor George Christopher : November 16, 1959",
+   "creator": "Monardo, George D.",
+   "year": 1959,
+   "pool": "sfpl",
+   "matched_alias": "San Francisco General Hospital",
+   "snippet": "ADMINISTRATION «SAN FRANCISCO GENERAL HOSPITAL» With regard to the «San Francisco General Hospital», the",
+   "url": "https://archive.org/details/sanfranciscogene1619mona",
+   "deep_link": "https://archive.org/details/sanfranciscogene1619mona?q=San+Francisco+General+Hospital",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+  },
+  {
+   "identifier": "annualreport196265sanf",
+   "title": "Annual report",
+   "creator": "San Francisco (Calif.). Dept. of Public Health",
+   "year": 1957,
+   "pool": "sfpl",
+   "matched_alias": "San Francisco General Hospital",
+   "snippet": "52- «SAN FRANCISCO GENERAL HOSPITAL» PURPOSE AND SCOPE The «San Francisco General Hospital» is",
+   "url": "https://archive.org/details/annualreport196265sanf",
+   "deep_link": "https://archive.org/details/annualreport196265sanf?q=San+Francisco+General+Hospital",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+  }
+ ],
+ "dept_shelf": [
+  {
+   "identifier": "performanceeffic202008san",
+   "title": "Performance and efficiency review : Department of Public Health : Controller's Office analysis 2005-2008",
+   "year": 2005,
+   "pool": "sfpl",
+   "url": "https://archive.org/details/performanceeffic202008san"
+  },
+  {
+   "identifier": "annualreportofde192425sanf",
+   "title": "Annual report of the Department of Public Health, San Francisco, California",
+   "year": 1925,
+   "pool": "sfpl",
+   "url": "https://archive.org/details/annualreportofde192425sanf"
+  },
+  {
+   "identifier": "annualsalaryord197879sanf",
+   "title": "Annual salary ordinance",
+   "year": null,
+   "pool": "sfpl",
+   "url": "https://archive.org/details/annualsalaryord197879sanf"
+  },
+  {
+   "identifier": "annualsalaryord197576sanf",
+   "title": "Annual salary ordinance",
+   "year": null,
+   "pool": "sfpl",
+   "url": "https://archive.org/details/annualsalaryord197576sanf"
+  },
+  {
+   "identifier": "weeklybulletin1968sanf",
+   "title": "Weekly bulletin",
+   "year": null,
+   "pool": "sfpl",
+   "url": "https://archive.org/details/weeklybulletin1968sanf"
+  },
+  {
+   "identifier": "15minutes1988sanf",
+   "title": "Minutes",
+   "year": null,
+   "pool": "sfpl",
+   "url": "https://archive.org/details/15minutes1988sanf"
+  }
+ ],
+ "sources": [
+  {
+   "label": "City budget & payments",
+   "note": "SF Controller open data (budget, vouchers, contracts)"
+  },
+  {
+   "label": "Historical documents",
+   "note": "Internet Archive — SFPL partnership scans + Democracy's Library"
+  }
+ ],
+ "_gate": {
+  "has_photo": false,
+  "n_documents": 14,
+  "n_money_links": 1,
+  "meets_pre_summary": false
+ }
+}

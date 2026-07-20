@@ -1,0 +1,82 @@
+{
+ "generated_at": "2026-07-20T22:34:47.725512+00:00",
+ "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
+ "as_of": "2026-07-13T13:40:40+00:00",
+ "unit": "USD",
+ "slug": "bank-of-new-york-mellon",
+ "name": "Bank of New York Mellon",
+ "kind": "fiscal_agent_debt_service",
+ "is_non_profit": false,
+ "total_paid_usd": 6792542584.63,
+ "n_years": 15,
+ "first_year": 2007,
+ "last_year": 2027,
+ "by_year": {
+  "2007": 580124.1,
+  "2008": 893134.4,
+  "2009": 426272.5,
+  "2010": 3080233.3,
+  "2013": 996200.0,
+  "2018": 588631522.98,
+  "2019": 614068262.61,
+  "2020": 709453920.28,
+  "2021": 802300139.96,
+  "2022": 742684063.3,
+  "2023": 647846953.51,
+  "2024": 643654601.73,
+  "2025": 662039813.29,
+  "2026": 661392342.67,
+  "2027": 714495000.0
+ },
+ "top_departments": [
+  "RET Retirement System"
+ ],
+ "contracts_held": [
+  {
+   "contract_no": "1000007858",
+   "title": "Financial Services-BNY Mellon",
+   "department": "RET Retirement System",
+   "department_code": "RET",
+   "agreed_usd": 50000000.0,
+   "paid_usd": 24442371.62,
+   "sole_source": false
+  }
+ ],
+ "n_contracts_held": 1,
+ "variants": [
+  {
+   "name": "THE BANK OF NEW YORK MELLON",
+   "total": 6786566620.33
+  },
+  {
+   "name": "THE BANK OF NEW YORK",
+   "total": 5246192.7
+  },
+  {
+   "name": "THE BANK OF NEW YORK CO INC",
+   "total": 729771.6
+  }
+ ],
+ "n_variants": 3,
+ "merges": [
+  {
+   "variant": "THE BANK OF NEW YORK MELLON",
+   "reason": "Bank of New York Mellon"
+  },
+  {
+   "variant": "THE BANK OF NEW YORK",
+   "reason": "Bank of New York (pre-Mellon merger) spelling"
+  },
+  {
+   "variant": "THE BANK OF NEW YORK CO INC",
+   "reason": "Bank of New York (pre-Mellon merger) spelling"
+  }
+ ],
+ "source": {
+  "name": "Vendor Payments (Vouchers)",
+  "dataset_id": "n9pm-xkyq",
+  "source_url": "https://data.sfgov.org/d/n9pm-xkyq",
+  "attribution": "SF Controller's Office",
+  "rows_updated_at": "2026-07-13T13:40:40+00:00"
+ }
+}

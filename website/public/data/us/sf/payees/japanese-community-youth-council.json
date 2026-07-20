@@ -1,0 +1,103 @@
+{
+ "generated_at": "2026-07-20T22:34:47.736199+00:00",
+ "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
+ "as_of": "2026-07-13T13:40:40+00:00",
+ "unit": "USD",
+ "slug": "japanese-community-youth-council",
+ "name": "Japanese Community Youth Council",
+ "kind": "nonprofit",
+ "is_non_profit": false,
+ "total_paid_usd": 193935017.19,
+ "n_years": 21,
+ "first_year": 2007,
+ "last_year": 2027,
+ "by_year": {
+  "2007": 7255722.0,
+  "2008": 8080503.2,
+  "2009": 8590904.7,
+  "2010": 8804595.1,
+  "2011": 6979052.7,
+  "2012": 6299763.6,
+  "2013": 5197409.2,
+  "2014": 6387821.2,
+  "2015": 7346119.7,
+  "2016": 8325569.8,
+  "2017": 9320938.6,
+  "2018": 6584529.26,
+  "2019": 8189153.88,
+  "2020": 10912224.02,
+  "2021": 10523574.56,
+  "2022": 11706068.75,
+  "2023": 14712901.07,
+  "2024": 15173726.47,
+  "2025": 15992161.71,
+  "2026": 15786583.14,
+  "2027": 1765694.53
+ },
+ "top_departments": [
+  "CHF Children;Youth & Families"
+ ],
+ "contracts_held": [
+  {
+   "contract_no": "1000033677",
+   "title": "OFA-100-JCYC",
+   "department": "HRC Human Rights Commission",
+   "department_code": "HRC",
+   "agreed_usd": 43214178.0,
+   "paid_usd": 13213022.11,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000032567",
+   "title": "GA-Productive Adult-24-29",
+   "department": "CHF Children;Youth & Families",
+   "department_code": "CHF",
+   "agreed_usd": 40386800.0,
+   "paid_usd": 10561641.8,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000028533",
+   "title": "Children SUD Tx",
+   "department": "DPH Public Health",
+   "department_code": "DPH",
+   "agreed_usd": 3697981.0,
+   "paid_usd": 2279363.13,
+   "sole_source": true
+  },
+  {
+   "contract_no": "1000024030",
+   "title": "PJT Pull Citywide Internsh",
+   "department": "PUC Public Utilities Commsn",
+   "department_code": "PUC",
+   "agreed_usd": 4000000.0,
+   "paid_usd": 1771558.45,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000034571",
+   "title": "And DCYF Partnership",
+   "department": "HRC Human Rights Commission",
+   "department_code": "HRC",
+   "agreed_usd": 43214178.0,
+   "paid_usd": 0.0,
+   "sole_source": false
+  }
+ ],
+ "n_contracts_held": 5,
+ "variants": [
+  {
+   "name": "JAPANESE COMMUNITY YOUTH COUNCIL",
+   "total": 193935017.19
+  }
+ ],
+ "n_variants": 1,
+ "merges": [],
+ "source": {
+  "name": "Vendor Payments (Vouchers)",
+  "dataset_id": "n9pm-xkyq",
+  "source_url": "https://data.sfgov.org/d/n9pm-xkyq",
+  "attribution": "SF Controller's Office",
+  "rows_updated_at": "2026-07-13T13:40:40+00:00"
+ }
+}

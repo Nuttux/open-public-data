@@ -1,0 +1,101 @@
+{
+ "generated_at": "2026-07-20T22:34:47.743535+00:00",
+ "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
+ "as_of": "2026-07-13T13:40:40+00:00",
+ "unit": "USD",
+ "slug": "community-forward-sf",
+ "name": "Community Forward SF",
+ "kind": "nonprofit",
+ "is_non_profit": true,
+ "total_paid_usd": 116701406.92,
+ "n_years": 10,
+ "first_year": 2018,
+ "last_year": 2027,
+ "by_year": {
+  "2018": 7299213.15,
+  "2019": 7866579.19,
+  "2020": 8098553.01,
+  "2021": 12060558.81,
+  "2022": 14870696.81,
+  "2023": 12832432.93,
+  "2024": 15675467.74,
+  "2025": 17197715.43,
+  "2026": 19735467.94,
+  "2027": 1064721.91
+ },
+ "top_departments": [
+  "DPH Public Health"
+ ],
+ "contracts_held": [
+  {
+   "contract_no": "1000010020",
+   "title": "2018-19 1000010020 Community Awareness & Teatment Orig Cert",
+   "department": "DPH Public Health",
+   "department_code": "DPH",
+   "agreed_usd": 42052558.0,
+   "paid_usd": 25782509.91,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000032803",
+   "title": "Respite",
+   "department": "DPH Public Health",
+   "department_code": "DPH",
+   "agreed_usd": 32262830.0,
+   "paid_usd": 9613744.5,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000017573",
+   "title": "CFSF - Supp Hsg ChronA Eddy St",
+   "department": "HOM Homelessness Services",
+   "department_code": "HOM",
+   "agreed_usd": 4559819.0,
+   "paid_usd": 3809357.91,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000025388",
+   "title": "CFSF - A Woman's Place Shelter",
+   "department": "HOM Homelessness Services",
+   "department_code": "HOM",
+   "agreed_usd": 3195345.0,
+   "paid_usd": 2184941.69,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000002678",
+   "title": "Residential Mental HLTH SVCS F",
+   "department": "DPH Public Health",
+   "department_code": "DPH",
+   "agreed_usd": 2408345.0,
+   "paid_usd": 1954914.38,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000033573",
+   "title": "24-25 Com Fwd SF PHACS Orig",
+   "department": "DPH Public Health",
+   "department_code": "DPH",
+   "agreed_usd": 8605530.0,
+   "paid_usd": 808379.62,
+   "sole_source": false
+  }
+ ],
+ "n_contracts_held": 6,
+ "variants": [
+  {
+   "name": "COMMUNITY FORWARD SF",
+   "total": 116701406.92
+  }
+ ],
+ "n_variants": 1,
+ "merges": [],
+ "source": {
+  "name": "Vendor Payments (Vouchers)",
+  "dataset_id": "n9pm-xkyq",
+  "source_url": "https://data.sfgov.org/d/n9pm-xkyq",
+  "attribution": "SF Controller's Office",
+  "rows_updated_at": "2026-07-13T13:40:40+00:00"
+ }
+}

@@ -1,0 +1,92 @@
+{
+ "generated_at": "2026-07-20T22:34:47.733858+00:00",
+ "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
+ "as_of": "2026-07-13T13:40:40+00:00",
+ "unit": "USD",
+ "slug": "nextera-energy-marketing-llc",
+ "name": "Nextera Energy Marketing LLC",
+ "kind": "supplier",
+ "is_non_profit": false,
+ "total_paid_usd": 233674241.43,
+ "n_years": 10,
+ "first_year": 2018,
+ "last_year": 2027,
+ "by_year": {
+  "2018": 6290362.5,
+  "2019": 6148800.0,
+  "2020": 3086200.0,
+  "2021": 443050.0,
+  "2022": 34957253.13,
+  "2023": 28921559.3,
+  "2024": 62724993.75,
+  "2025": 47351268.39,
+  "2026": 43255077.52,
+  "2027": 495676.84
+ },
+ "top_departments": [
+  "PUC Public Utilities Commsn"
+ ],
+ "contracts_held": [
+  {
+   "contract_no": "1000034485",
+   "title": "CLP Nextera RA 4122 FY25",
+   "department": "PUC Public Utilities Commsn",
+   "department_code": "PUC",
+   "agreed_usd": 21312000.0,
+   "paid_usd": 14208000.0,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000034538",
+   "title": "CLP NE RA 4602 FY25",
+   "department": "PUC Public Utilities Commsn",
+   "department_code": "PUC",
+   "agreed_usd": 13793850.0,
+   "paid_usd": 7232025.0,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000032122",
+   "title": "CPSF PPA801",
+   "department": "PUC Public Utilities Commsn",
+   "department_code": "PUC",
+   "agreed_usd": 121145868.07,
+   "paid_usd": 5639625.6,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000034630",
+   "title": "CLP NE PCC1 4662 FY25",
+   "department": "PUC Public Utilities Commsn",
+   "department_code": "PUC",
+   "agreed_usd": 5500000.0,
+   "paid_usd": 4670900.0,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000035839",
+   "title": "CLP Nextera RA 3942",
+   "department": "PUC Public Utilities Commsn",
+   "department_code": "PUC",
+   "agreed_usd": 221130000.0,
+   "paid_usd": 0.0,
+   "sole_source": false
+  }
+ ],
+ "n_contracts_held": 5,
+ "variants": [
+  {
+   "name": "NEXTERA ENERGY MARKETING LLC",
+   "total": 233674241.43
+  }
+ ],
+ "n_variants": 1,
+ "merges": [],
+ "source": {
+  "name": "Vendor Payments (Vouchers)",
+  "dataset_id": "n9pm-xkyq",
+  "source_url": "https://data.sfgov.org/d/n9pm-xkyq",
+  "attribution": "SF Controller's Office",
+  "rows_updated_at": "2026-07-13T13:40:40+00:00"
+ }
+}

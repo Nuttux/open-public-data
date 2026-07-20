@@ -1,0 +1,260 @@
+{
+ "generated_at": "2026-07-20T22:30:00.106066+00:00",
+ "source_pipeline": "sf_place_candidates.json → sync_ia_sf.py + link_sf_places.py + fetch_sf_place_photos.py → export_sf_places.py",
+ "unit": "USD",
+ "slug": "camp-mather",
+ "name": "Camp Mather",
+ "kind": "Camp",
+ "family": "park",
+ "address": "Mather, CA (Tuolumne County)",
+ "lat": 37.8794,
+ "lon": -119.856,
+ "owning_dept": {
+  "name": "Recreation and Park Department",
+  "code": "REC"
+ },
+ "photo": null,
+ "photo_credit": null,
+ "summary_en": null,
+ "published": false,
+ "money": {
+  "budget_line": {
+   "code": "REC",
+   "name": "Recreation & Parks",
+   "total_usd": 250373849.0,
+   "fiscal_year": 2025
+  },
+  "contracts": [],
+  "grants": []
+ },
+ "documents": [
+  {
+   "identifier": "civilgrandjuryre2002031cali",
+   "title": "Civil Grand Jury reports",
+   "creator": "California. Grand Jury (San Francisco)",
+   "year": 1977,
+   "pool": "sfpl",
+   "matched_alias": "Camp Mather",
+   "snippet": "accessibility to «Camp Mather». 2. Study and improve the usage of the «Camp Mather» facilities and",
+   "url": "https://archive.org/details/civilgrandjuryre2002031cali",
+   "deep_link": "https://archive.org/details/civilgrandjuryre2002031cali?q=Camp+Mather",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+  },
+  {
+   "identifier": "annualreport195861sanf",
+   "title": "Annual report",
+   "creator": "San Francisco (Calif.). Recreation and Park Dept",
+   "year": 1965,
+   "pool": "sfpl",
+   "matched_alias": "Camp Mather",
+   "snippet": "Centers Aquatics Special Activities «Camp Mather» «Camp Mather» Recapitulation Total Attendance 28,411",
+   "url": "https://archive.org/details/annualreport195861sanf",
+   "deep_link": "https://archive.org/details/annualreport195861sanf?q=Camp+Mather",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+  },
+  {
+   "identifier": "minutes199899sanf",
+   "title": "Minutes",
+   "creator": "San Francisco (Calif.). Recreation and Park Commission",
+   "year": null,
+   "pool": "sfpl",
+   "matched_alias": "Camp Mather",
+   "snippet": "of the «Camp Mather» Store and the production of two Music Festivals at «Camp Mather». F. MISSION",
+   "url": "https://archive.org/details/minutes199899sanf",
+   "deep_link": "https://archive.org/details/minutes199899sanf?q=Camp+Mather",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+  },
+  {
+   "identifier": "minutesrecreatio1987sanf",
+   "title": "Minutes / Recreation and Park Commission",
+   "creator": "San Francisco (Calif.). Recreation and Park Commission",
+   "year": null,
+   "pool": "sfpl",
+   "matched_alias": "Camp Mather",
+   "snippet": "at «Camp Mather» subject to conditions RES. 14649 - Emergency Contract Order «Camp Mather» Swimming",
+   "url": "https://archive.org/details/minutesrecreatio1987sanf",
+   "deep_link": "https://archive.org/details/minutesrecreatio1987sanf?q=Camp+Mather",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+  },
+  {
+   "identifier": "minutes199394sanf",
+   "title": "Minutes",
+   "creator": "San Francisco (Calif.). Recreation and Park Commission",
+   "year": null,
+   "pool": "sfpl",
+   "matched_alias": "Camp Mather",
+   "snippet": "the soil will be tested again. «CAMP MATHER» «Camp Mather» received a major upgrade to the",
+   "url": "https://archive.org/details/minutes199394sanf",
+   "deep_link": "https://archive.org/details/minutes199394sanf?q=Camp+Mather",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+  },
+  {
+   "identifier": "minutesrecreati1962sanf_0",
+   "title": "Minutes / Recreation and Park Commission",
+   "creator": "San Francisco (Calif.). Recreation and Park Commission",
+   "year": null,
+   "pool": "sfpl",
+   "matched_alias": "Camp Mather",
+   "snippet": "76 Materials & Supplies Equipment-«Camp Mather» «Camp Mather» B. Request for allotment of funds",
+   "url": "https://archive.org/details/minutesrecreati1962sanf_0",
+   "deep_link": "https://archive.org/details/minutesrecreati1962sanf_0?q=Camp+Mather",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+  },
+  {
+   "identifier": "minutesrecreatio1990sanf",
+   "title": "Minutes / Recreation and Park Commission",
+   "creator": "San Francisco (Calif.). Recreation and Park Commission",
+   "year": null,
+   "pool": "sfpl",
+   "matched_alias": "Camp Mather",
+   "snippet": "operation 35 of «Camp Mather» Saddle Horse Concession General Manager's Report: «Camp Mather» - Registration",
+   "url": "https://archive.org/details/minutesrecreatio1990sanf",
+   "deep_link": "https://archive.org/details/minutesrecreatio1990sanf?q=Camp+Mather",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+  },
+  {
+   "identifier": "minutesrecreatio1983sanf",
+   "title": "Minutes / Recreation and Park Commission",
+   "creator": "San Francisco (Calif.). Recreation and Park Commission",
+   "year": null,
+   "pool": "sfpl",
+   "matched_alias": "Camp Mather",
+   "snippet": "283 Department Retreat - «Camp Mather» Music Festival - «Camp Mather» - Report on Strawberry",
+   "url": "https://archive.org/details/minutesrecreatio1983sanf",
+   "deep_link": "https://archive.org/details/minutesrecreatio1983sanf?q=Camp+Mather",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+  },
+  {
+   "identifier": "minutesrecreatio1967sanf",
+   "title": "Minutes / Recreation and Park Commission",
+   "creator": "San Francisco (Calif.). Recreation and Park Commission",
+   "year": null,
+   "pool": "sfpl",
+   "matched_alias": "Camp Mather",
+   "snippet": "- «CAMP MATHER»: (CONTINUED) Allotment Of Funds to provide for the following «Camp Mather» Appropriations:",
+   "url": "https://archive.org/details/minutesrecreatio1967sanf",
+   "deep_link": "https://archive.org/details/minutesrecreatio1967sanf?q=Camp+Mather",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+  },
+  {
+   "identifier": "minutesrecreatio1966sanf",
+   "title": "Minutes / Recreation and Park Commission",
+   "creator": "San Francisco (Calif.). Recreation and Park Commission",
+   "year": null,
+   "pool": "sfpl",
+   "matched_alias": "Camp Mather",
+   "snippet": "APPROPRIATION - «CAMP MATHER»: Vice President Conway again referred to the need for a platform at «Camp Mather» to eliminate",
+   "url": "https://archive.org/details/minutesrecreatio1966sanf",
+   "deep_link": "https://archive.org/details/minutesrecreatio1966sanf?q=Camp+Mather",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+  },
+  {
+   "identifier": "minutesrecreatio1948sanf",
+   "title": "Minutes / Recreation Commission",
+   "creator": "San Francisco (Calif.). Recreation Commission",
+   "year": null,
+   "pool": "sfpl",
+   "matched_alias": "Camp Mather",
+   "snippet": "Cook(male) , «Camp Mather», thru 6/30/45,5312.00 per mo, Cook(male) , (2) ,«Camp Mather», thru 6/30/45",
+   "url": "https://archive.org/details/minutesrecreatio1948sanf",
+   "deep_link": "https://archive.org/details/minutesrecreatio1948sanf?q=Camp+Mather",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+  },
+  {
+   "identifier": "annualreport195558sanf",
+   "title": "Annual report",
+   "creator": "San Francisco (Calif.). Recreation and Park Dept",
+   "year": null,
+   "pool": "sfpl",
+   "matched_alias": "Camp Mather",
+   "snippet": "AQUATIC DIVISION SPECIAL ACTIVITIES «CAMP MATHER» «CAMP MATHER» RECAPITULATION TOTAL 25,424 4,325,^41",
+   "url": "https://archive.org/details/annualreport195558sanf",
+   "deep_link": "https://archive.org/details/annualreport195558sanf?q=Camp+Mather",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+  },
+  {
+   "identifier": "minutesrecreatio1955sanf",
+   "title": "Minutes / Recreation and Park Commission",
+   "creator": "San Francisco (Calif.). Recreation and Park Commission",
+   "year": null,
+   "pool": "sfpl",
+   "matched_alias": "Camp Mather",
+   "snippet": "(Temporary) -«Camp Mather» Contractual Serv.-«Camp Mather» Matls.& Supplies- «Camp Mather» Foodstuffs",
+   "url": "https://archive.org/details/minutesrecreatio1955sanf",
+   "deep_link": "https://archive.org/details/minutesrecreatio1955sanf?q=Camp+Mather",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+  },
+  {
+   "identifier": "summerprogram1946sanf",
+   "title": "Summer program",
+   "creator": "San Francisco (Calif.). Recreation and Park Dept,San Francisco (Calif.) Recreation Dept",
+   "year": null,
+   "pool": "sfpl",
+   "matched_alias": "Camp Mather",
+   "snippet": "Projects for more information. *«Camp Mather» — 558-4870 «Camp Mather» is a family camp in the High",
+   "url": "https://archive.org/details/summerprogram1946sanf",
+   "deep_link": "https://archive.org/details/summerprogram1946sanf?q=Camp+Mather",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+  }
+ ],
+ "dept_shelf": [
+  {
+   "identifier": "managementaudito2006sanf",
+   "title": "Management audit of the Recreation and Park Department",
+   "year": 2006,
+   "pool": "sfpl",
+   "url": "https://archive.org/details/managementaudito2006sanf"
+  },
+  {
+   "identifier": "newdeyoungmuseum2220sanf",
+   "title": "New de Young Museum project : environmental impact report : draft summary of comments and responses",
+   "year": 2000,
+   "pool": "sfpl",
+   "url": "https://archive.org/details/newdeyoungmuseum2220sanf"
+  },
+  {
+   "identifier": "0agenda19992002sanf",
+   "title": "Agenda",
+   "year": 1999,
+   "pool": "sfpl",
+   "url": "https://archive.org/details/0agenda19992002sanf"
+  },
+  {
+   "identifier": "reporttoboardofs1980sanf",
+   "title": "Report to the Board of Supervisors of the City and County of San Francisco : review of the operations of the San Francisco Recreation and Park Department",
+   "year": 1979,
+   "pool": "sfpl",
+   "url": "https://archive.org/details/reporttoboardofs1980sanf"
+  },
+  {
+   "identifier": "annualreport197277sanf",
+   "title": "Annual report of the San Francisco Recreation and Park Department",
+   "year": null,
+   "pool": "sfpl",
+   "url": "https://archive.org/details/annualreport197277sanf"
+  },
+  {
+   "identifier": "minutesrecreatio1960sanf",
+   "title": "Minutes / Recreation and Park Commission",
+   "year": null,
+   "pool": "sfpl",
+   "url": "https://archive.org/details/minutesrecreatio1960sanf"
+  }
+ ],
+ "sources": [
+  {
+   "label": "City budget & payments",
+   "note": "SF Controller open data (budget, vouchers, contracts)"
+  },
+  {
+   "label": "Historical documents",
+   "note": "Internet Archive — SFPL partnership scans + Democracy's Library"
+  }
+ ],
+ "_gate": {
+  "has_photo": false,
+  "n_documents": 14,
+  "n_money_links": 1,
+  "meets_pre_summary": false
+ }
+}

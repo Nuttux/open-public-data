@@ -1,0 +1,41 @@
+{
+ "generated_at": "2026-07-20T22:34:47.742968+00:00",
+ "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
+ "as_of": "2026-07-13T13:40:40+00:00",
+ "unit": "USD",
+ "slug": "stacy-witbeck-inc",
+ "name": "Stacy & Witbeck Inc",
+ "kind": "supplier",
+ "is_non_profit": false,
+ "total_paid_usd": 122727958.9,
+ "n_years": 5,
+ "first_year": 2007,
+ "last_year": 2017,
+ "by_year": {
+  "2007": 52323974.9,
+  "2008": 52452409.4,
+  "2009": 4221507.0,
+  "2010": 10330412.4,
+  "2017": 3399655.2
+ },
+ "top_departments": [
+  "MTA Municipal Transprtn Agncy"
+ ],
+ "contracts_held": [],
+ "n_contracts_held": 0,
+ "variants": [
+  {
+   "name": "STACY & WITBECK INC",
+   "total": 122727958.9
+  }
+ ],
+ "n_variants": 1,
+ "merges": [],
+ "source": {
+  "name": "Vendor Payments (Vouchers)",
+  "dataset_id": "n9pm-xkyq",
+  "source_url": "https://data.sfgov.org/d/n9pm-xkyq",
+  "attribution": "SF Controller's Office",
+  "rows_updated_at": "2026-07-13T13:40:40+00:00"
+ }
+}

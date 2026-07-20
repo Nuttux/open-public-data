@@ -1,0 +1,157 @@
+{
+ "generated_at": "2026-07-20T22:34:47.737418+00:00",
+ "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
+ "as_of": "2026-07-13T13:40:40+00:00",
+ "unit": "USD",
+ "slug": "regents-univ-of-ca-sfgh-psychiatry-dpt",
+ "name": "Regents Univ of Ca / Sfgh Psychiatry Dpt",
+ "kind": "healthcare",
+ "is_non_profit": false,
+ "total_paid_usd": 177427722.69,
+ "n_years": 21,
+ "first_year": 2007,
+ "last_year": 2027,
+ "by_year": {
+  "2007": 35000.0,
+  "2008": 5000.0,
+  "2009": 6223803.4,
+  "2010": 8283827.1,
+  "2011": 8086536.7,
+  "2012": 4719625.5,
+  "2013": 5209302.7,
+  "2014": 4806584.4,
+  "2015": 5877634.3,
+  "2016": 2313767.0,
+  "2017": 9652604.8,
+  "2018": 3599977.84,
+  "2019": 9318757.67,
+  "2020": 12286977.19,
+  "2021": 11894788.46,
+  "2022": 12084699.96,
+  "2023": 17083180.04,
+  "2024": 15413554.36,
+  "2025": 21031796.08,
+  "2026": 19039683.59,
+  "2027": 460621.6
+ },
+ "top_departments": [
+  "DPH Public Health"
+ ],
+ "contracts_held": [
+  {
+   "contract_no": "1000010136",
+   "title": "SUD Treatment Svcs",
+   "department": "DPH Public Health",
+   "department_code": "DPH",
+   "agreed_usd": 87031676.0,
+   "paid_usd": 57984214.48,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000010465",
+   "title": "Bhs-Aoa-Sud",
+   "department": "DPH Public Health",
+   "department_code": "DPH",
+   "agreed_usd": 45226998.0,
+   "paid_usd": 40876957.74,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000009127",
+   "title": "Day Care Consultants",
+   "department": "DPH Public Health",
+   "department_code": "DPH",
+   "agreed_usd": 14647481.0,
+   "paid_usd": 10677878.31,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000032775",
+   "title": "UCSF Ipp, Ecmhci",
+   "department": "DPH Public Health",
+   "department_code": "DPH",
+   "agreed_usd": 2251754.0,
+   "paid_usd": 360775.0,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000032063",
+   "title": "DBT Training",
+   "department": "DPH Public Health",
+   "department_code": "DPH",
+   "agreed_usd": 249534.0,
+   "paid_usd": 82459.51,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000035447",
+   "title": "UC Dsaam BHS Aoa/Sud Otop",
+   "department": "DPH Public Health",
+   "department_code": "DPH",
+   "agreed_usd": 9994866.0,
+   "paid_usd": 0.0,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000035448",
+   "title": "UC Dsaam Aoa Sud Obic Obot",
+   "department": "DPH Public Health",
+   "department_code": "DPH",
+   "agreed_usd": 9991253.0,
+   "paid_usd": 0.0,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000036900",
+   "title": "BHS UCSF Citywide Roving",
+   "department": "DPH Public Health",
+   "department_code": "DPH",
+   "agreed_usd": 9482010.0,
+   "paid_usd": 0.0,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000035379",
+   "title": "UCSF Citywide Minna",
+   "department": "DPH Public Health",
+   "department_code": "DPH",
+   "agreed_usd": 9100114.0,
+   "paid_usd": 0.0,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000035380",
+   "title": "UC Citywide STOP & SUD ICM",
+   "department": "DPH Public Health",
+   "department_code": "DPH",
+   "agreed_usd": 7813242.0,
+   "paid_usd": 0.0,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000032779",
+   "title": "UC Citywide NOVA and pre-Trial",
+   "department": "DPH Public Health",
+   "department_code": "DPH",
+   "agreed_usd": 2494169.0,
+   "paid_usd": 0.0,
+   "sole_source": false
+  }
+ ],
+ "n_contracts_held": 11,
+ "variants": [
+  {
+   "name": "REGENTS UNIV OF CA / SFGH PSYCHIATRY DPT",
+   "total": 177427722.69
+  }
+ ],
+ "n_variants": 1,
+ "merges": [],
+ "source": {
+  "name": "Vendor Payments (Vouchers)",
+  "dataset_id": "n9pm-xkyq",
+  "source_url": "https://data.sfgov.org/d/n9pm-xkyq",
+  "attribution": "SF Controller's Office",
+  "rows_updated_at": "2026-07-13T13:40:40+00:00"
+ }
+}

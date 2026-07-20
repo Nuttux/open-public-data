@@ -1,0 +1,52 @@
+{
+ "generated_at": "2026-07-20T22:34:47.738814+00:00",
+ "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
+ "as_of": "2026-07-13T13:40:40+00:00",
+ "unit": "USD",
+ "slug": "cross-country-staffing",
+ "name": "Cross Country Staffing",
+ "kind": "healthcare",
+ "is_non_profit": false,
+ "total_paid_usd": 163080176.96,
+ "n_years": 16,
+ "first_year": 2012,
+ "last_year": 2027,
+ "by_year": {
+  "2012": 1071123.1,
+  "2013": 2650927.8,
+  "2014": 3005787.0,
+  "2015": 5212054.7,
+  "2016": 3991477.8,
+  "2017": 12125938.9,
+  "2018": 9057343.32,
+  "2019": 13001308.51,
+  "2020": 23115036.0,
+  "2021": 15881463.39,
+  "2022": 5746170.76,
+  "2023": 22410802.58,
+  "2024": 38105293.94,
+  "2025": 5930875.83,
+  "2026": 1748096.33,
+  "2027": 26477.0
+ },
+ "top_departments": [
+  "DPH Public Health"
+ ],
+ "contracts_held": [],
+ "n_contracts_held": 0,
+ "variants": [
+  {
+   "name": "CROSS COUNTRY STAFFING",
+   "total": 163080176.96
+  }
+ ],
+ "n_variants": 1,
+ "merges": [],
+ "source": {
+  "name": "Vendor Payments (Vouchers)",
+  "dataset_id": "n9pm-xkyq",
+  "source_url": "https://data.sfgov.org/d/n9pm-xkyq",
+  "attribution": "SF Controller's Office",
+  "rows_updated_at": "2026-07-13T13:40:40+00:00"
+ }
+}

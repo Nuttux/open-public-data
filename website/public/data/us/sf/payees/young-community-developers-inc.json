@@ -1,0 +1,121 @@
+{
+ "generated_at": "2026-07-20T22:34:47.742528+00:00",
+ "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
+ "as_of": "2026-07-13T13:40:40+00:00",
+ "unit": "USD",
+ "slug": "young-community-developers-inc",
+ "name": "Young Community Developers Inc",
+ "kind": "nonprofit",
+ "is_non_profit": true,
+ "total_paid_usd": 125406334.2,
+ "n_years": 21,
+ "first_year": 2007,
+ "last_year": 2027,
+ "by_year": {
+  "2007": 297031.5,
+  "2008": 673810.4,
+  "2009": 483001.9,
+  "2010": 437739.7,
+  "2011": 390203.3,
+  "2012": 779353.6,
+  "2013": 1234322.0,
+  "2014": 2156895.7,
+  "2015": 2652366.1,
+  "2016": 3123634.1,
+  "2017": 4288187.7,
+  "2018": 4750662.95,
+  "2019": 6199223.44,
+  "2020": 8616439.68,
+  "2021": 12283796.72,
+  "2022": 14583327.87,
+  "2023": 17691556.93,
+  "2024": 17238898.41,
+  "2025": 15646599.06,
+  "2026": 11092940.92,
+  "2027": 786342.22
+ },
+ "top_departments": [
+  "CHF Children;Youth & Families"
+ ],
+ "contracts_held": [
+  {
+   "contract_no": "1000027661",
+   "title": "YCD - Homelessness Prev. Asst.",
+   "department": "HOM Homelessness Services",
+   "department_code": "HOM",
+   "agreed_usd": 8978925.0,
+   "paid_usd": 3868571.62,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000032647",
+   "title": "GA-NurturingFamilies-24-29",
+   "department": "CHF Children;Youth & Families",
+   "department_code": "CHF",
+   "agreed_usd": 12422660.0,
+   "paid_usd": 3034826.42,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000032646",
+   "title": "GA-Learn &Succeed-24-29",
+   "department": "CHF Children;Youth & Families",
+   "department_code": "CHF",
+   "agreed_usd": 7446100.0,
+   "paid_usd": 1623358.69,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000032649",
+   "title": "GA-Productive Adult-24-29",
+   "department": "CHF Children;Youth & Families",
+   "department_code": "CHF",
+   "agreed_usd": 8543900.0,
+   "paid_usd": 1540777.24,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000032591",
+   "title": "GA-Neighborhoods Unt-24-29",
+   "department": "CHF Children;Youth & Families",
+   "department_code": "CHF",
+   "agreed_usd": 1314500.0,
+   "paid_usd": 328143.67,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000036208",
+   "title": "CJP Non CW FY26-29",
+   "department": "HSA Human Services Agency",
+   "department_code": "HSA",
+   "agreed_usd": 3960000.0,
+   "paid_usd": 319962.04,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000038066",
+   "title": "234J Industries of Opp-Ed",
+   "department": "ECN Economic & Wrkfrce Dvlpmnt",
+   "department_code": "ECN",
+   "agreed_usd": 500000.0,
+   "paid_usd": 0.0,
+   "sole_source": false
+  }
+ ],
+ "n_contracts_held": 7,
+ "variants": [
+  {
+   "name": "YOUNG COMMUNITY DEVELOPERS INC",
+   "total": 125406334.2
+  }
+ ],
+ "n_variants": 1,
+ "merges": [],
+ "source": {
+  "name": "Vendor Payments (Vouchers)",
+  "dataset_id": "n9pm-xkyq",
+  "source_url": "https://data.sfgov.org/d/n9pm-xkyq",
+  "attribution": "SF Controller's Office",
+  "rows_updated_at": "2026-07-13T13:40:40+00:00"
+ }
+}

@@ -1,0 +1,53 @@
+{
+ "generated_at": "2026-07-20T22:34:47.730491+00:00",
+ "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
+ "as_of": "2026-07-13T13:40:40+00:00",
+ "unit": "USD",
+ "slug": "transdev-services-inc",
+ "name": "Transdev Services Inc",
+ "kind": "supplier",
+ "is_non_profit": false,
+ "total_paid_usd": 395971310.1,
+ "n_years": 17,
+ "first_year": 2010,
+ "last_year": 2026,
+ "by_year": {
+  "2010": 2683291.4,
+  "2011": 16780517.7,
+  "2012": 19350281.9,
+  "2013": 18919569.6,
+  "2014": 19027409.0,
+  "2015": 20231016.2,
+  "2016": 26225191.3,
+  "2017": 26817859.1,
+  "2018": 23848575.77,
+  "2019": 29778197.2,
+  "2020": 27197595.83,
+  "2021": 21617375.35,
+  "2022": 24869303.67,
+  "2023": 28111545.49,
+  "2024": 29518750.07,
+  "2025": 28366495.12,
+  "2026": 32628335.4
+ },
+ "top_departments": [
+  "MTA Municipal Transprtn Agncy"
+ ],
+ "contracts_held": [],
+ "n_contracts_held": 0,
+ "variants": [
+  {
+   "name": "TRANSDEV SERVICES INC",
+   "total": 395971310.1
+  }
+ ],
+ "n_variants": 1,
+ "merges": [],
+ "source": {
+  "name": "Vendor Payments (Vouchers)",
+  "dataset_id": "n9pm-xkyq",
+  "source_url": "https://data.sfgov.org/d/n9pm-xkyq",
+  "attribution": "SF Controller's Office",
+  "rows_updated_at": "2026-07-13T13:40:40+00:00"
+ }
+}

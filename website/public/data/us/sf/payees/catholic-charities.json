@@ -1,0 +1,301 @@
+{
+ "generated_at": "2026-07-20T22:34:47.731627+00:00",
+ "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
+ "as_of": "2026-07-13T13:40:40+00:00",
+ "unit": "USD",
+ "slug": "catholic-charities",
+ "name": "Catholic Charities",
+ "kind": "nonprofit",
+ "is_non_profit": false,
+ "total_paid_usd": 319544320.46,
+ "n_years": 21,
+ "first_year": 2007,
+ "last_year": 2027,
+ "by_year": {
+  "2007": 5775963.3,
+  "2008": 6259199.6,
+  "2009": 5350522.2,
+  "2010": 6680683.4,
+  "2011": 8627179.0,
+  "2012": 8182626.8,
+  "2013": 11009335.3,
+  "2014": 10502664.4,
+  "2015": 10790685.8,
+  "2016": 10933083.7,
+  "2017": 13701495.6,
+  "2018": 11761924.42,
+  "2019": 16302316.47,
+  "2020": 19430784.52,
+  "2021": 20665582.96,
+  "2022": 26526351.46,
+  "2023": 27817092.66,
+  "2024": 31116283.47,
+  "2025": 33407516.49,
+  "2026": 33302768.36,
+  "2027": 1400260.55
+ },
+ "top_departments": [
+  "HSA Human Services Agency"
+ ],
+ "contracts_held": [
+  {
+   "contract_no": "1000021763",
+   "title": "Cccyo - Fepco Hpa",
+   "department": "HOM Homelessness Services",
+   "department_code": "HOM",
+   "agreed_usd": 18459066.0,
+   "paid_usd": 9654186.81,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000021278",
+   "title": "CCCYO- St. Joseph's Family Ctr",
+   "department": "HOM Homelessness Services",
+   "department_code": "HOM",
+   "agreed_usd": 8791043.0,
+   "paid_usd": 5956738.43,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000012391",
+   "title": "CC - Mission Fam Access Point",
+   "department": "HOM Homelessness Services",
+   "department_code": "HOM",
+   "agreed_usd": 8058791.0,
+   "paid_usd": 5481493.12,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000020913",
+   "title": "HIV Rent Subsidies",
+   "department": "DPH Public Health",
+   "department_code": "DPH",
+   "agreed_usd": 13426414.0,
+   "paid_usd": 5311628.77,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000017198",
+   "title": "Peter Claver Community Residential Care",
+   "department": "DPH Public Health",
+   "department_code": "DPH",
+   "agreed_usd": 8578625.0,
+   "paid_usd": 4659012.97,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000029358",
+   "title": "CCCYO - Scattered Sites",
+   "department": "HOM Homelessness Services",
+   "department_code": "HOM",
+   "agreed_usd": 7119725.0,
+   "paid_usd": 3995856.34,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000024654",
+   "title": "CCCYO-Bayview Family Access Pt",
+   "department": "HOM Homelessness Services",
+   "department_code": "HOM",
+   "agreed_usd": 5350222.0,
+   "paid_usd": 2844148.83,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000020831",
+   "title": "Derek Silva Community",
+   "department": "DPH Public Health",
+   "department_code": "DPH",
+   "agreed_usd": 4908567.0,
+   "paid_usd": 2287778.77,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000017208",
+   "title": "CCCYO - 10th & Mission LOSP",
+   "department": "HOM Homelessness Services",
+   "department_code": "HOM",
+   "agreed_usd": 4003231.0,
+   "paid_usd": 2279731.15,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000017440",
+   "title": "CC - Rita da Cascia - SS+LS",
+   "department": "HOM Homelessness Services",
+   "department_code": "HOM",
+   "agreed_usd": 3477381.0,
+   "paid_usd": 2199043.03,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000033460",
+   "title": "Housing Subsidies",
+   "department": "HSA Human Services Agency",
+   "department_code": "HSA",
+   "agreed_usd": 4919902.0,
+   "paid_usd": 1816932.89,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000029865",
+   "title": "DAS Community Services FY23-27",
+   "department": "HSA Human Services Agency",
+   "department_code": "HSA",
+   "agreed_usd": 3081280.0,
+   "paid_usd": 1785371.59,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000025535",
+   "title": "CCCYO-CoC Housing Plus (SS&RA)",
+   "department": "HOM Homelessness Services",
+   "department_code": "HOM",
+   "agreed_usd": 3256782.0,
+   "paid_usd": 1682748.4,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000017566",
+   "title": "CC - ESG Homelessness Prevent",
+   "department": "HOM Homelessness Services",
+   "department_code": "HOM",
+   "agreed_usd": 2392977.0,
+   "paid_usd": 1375716.85,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000032518",
+   "title": "GA-Boys Home-24-29",
+   "department": "CHF Children;Youth & Families",
+   "department_code": "CHF",
+   "agreed_usd": 4672000.0,
+   "paid_usd": 1296263.64,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000024079",
+   "title": "CCCYO - EHV program",
+   "department": "HOM Homelessness Services",
+   "department_code": "HOM",
+   "agreed_usd": 1792335.0,
+   "paid_usd": 1173577.07,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000031642",
+   "title": "211949-23",
+   "department": "MYR Mayor",
+   "department_code": "MYR",
+   "agreed_usd": 1465375.0,
+   "paid_usd": 1167827.17,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000020832",
+   "title": "Rita da Cascia & Hazel Betsey",
+   "department": "DPH Public Health",
+   "department_code": "DPH",
+   "agreed_usd": 2195950.0,
+   "paid_usd": 1009841.64,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000013512",
+   "title": "CC - Edith Witt Sr Community",
+   "department": "HOM Homelessness Services",
+   "department_code": "HOM",
+   "agreed_usd": 1372217.0,
+   "paid_usd": 962591.62,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000037025",
+   "title": "CCCYO - Large Vehicle Outreach",
+   "department": "HOM Homelessness Services",
+   "department_code": "HOM",
+   "agreed_usd": 5654596.0,
+   "paid_usd": 883200.93,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000029864",
+   "title": "DAS Case Management FY23-27",
+   "department": "HSA Human Services Agency",
+   "department_code": "HSA",
+   "agreed_usd": 1382458.0,
+   "paid_usd": 739863.06,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000036645",
+   "title": "Cccyo - RV RRH",
+   "department": "HOM Homelessness Services",
+   "department_code": "HOM",
+   "agreed_usd": 9569299.0,
+   "paid_usd": 431190.36,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000033552",
+   "title": "ADP FY 24-28",
+   "department": "HSA Human Services Agency",
+   "department_code": "HSA",
+   "agreed_usd": 985923.0,
+   "paid_usd": 354990.05,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000033553",
+   "title": "ADCRC FY 24-28",
+   "department": "HSA Human Services Agency",
+   "department_code": "HSA",
+   "agreed_usd": 783918.0,
+   "paid_usd": 311162.9,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000025230",
+   "title": "DPH:",
+   "department": "DPH Public Health",
+   "department_code": "DPH",
+   "agreed_usd": 582400.0,
+   "paid_usd": 138814.34,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000037803",
+   "title": "CCCYO - Treasure Island",
+   "department": "HOM Homelessness Services",
+   "department_code": "HOM",
+   "agreed_usd": 3656257.0,
+   "paid_usd": 0.0,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000037666",
+   "title": "Cccyo - SF Home RRH",
+   "department": "HOM Homelessness Services",
+   "department_code": "HOM",
+   "agreed_usd": 3595588.0,
+   "paid_usd": 0.0,
+   "sole_source": false
+  }
+ ],
+ "n_contracts_held": 27,
+ "variants": [
+  {
+   "name": "CATHOLIC CHARITIES",
+   "total": 319544320.46
+  }
+ ],
+ "n_variants": 1,
+ "merges": [],
+ "source": {
+  "name": "Vendor Payments (Vouchers)",
+  "dataset_id": "n9pm-xkyq",
+  "source_url": "https://data.sfgov.org/d/n9pm-xkyq",
+  "attribution": "SF Controller's Office",
+  "rows_updated_at": "2026-07-13T13:40:40+00:00"
+ }
+}

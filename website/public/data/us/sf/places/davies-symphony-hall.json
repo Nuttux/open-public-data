@@ -1,0 +1,185 @@
+{
+ "generated_at": "2026-07-20T22:30:00.116147+00:00",
+ "source_pipeline": "sf_place_candidates.json → sync_ia_sf.py + link_sf_places.py + fetch_sf_place_photos.py → export_sf_places.py",
+ "unit": "USD",
+ "slug": "davies-symphony-hall",
+ "name": "Louise M. Davies Symphony Hall",
+ "kind": "Concert hall",
+ "family": "culture",
+ "address": "201 Van Ness Ave",
+ "lat": 37.7775,
+ "lon": -122.4204,
+ "owning_dept": {
+  "name": "War Memorial",
+  "code": "WAR"
+ },
+ "photo": "/img/us/sf/places/davies-symphony-hall.jpg",
+ "photo_credit": {
+  "photo": "/img/us/sf/places/davies-symphony-hall.jpg",
+  "source": "Wikimedia Commons",
+  "file": "File:Daviessymphonyhall.jpg",
+  "file_url": "https://commons.wikimedia.org/wiki/File:Daviessymphonyhall.jpg",
+  "license": "CC BY-SA 3.0",
+  "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
+  "author": "J. Ash Bowie",
+  "fetched_at": "2026-07-20T22:27:09.635873+00:00"
+ },
+ "summary_en": "Archived materials center on the Louise M. Davies Symphony Hall's place in the Civic Center performing-arts complex: a War Memorial Board of Trustees annual report noting the hall opened September 16, 1980, a 1994 Civic Center cultural facilities plan, a 1986 East/West notice of a concert held there, and multiple San Francisco Performing Arts Center calendars of events (2000-2012) listing its programming. The hall is operated by the War Memorial (WAR) department, which carried an FY2025 budget of $30M. The place file records no contracts naming it.",
+ "published": true,
+ "money": {
+  "budget_line": {
+   "code": "WAR",
+   "name": "War Memorial & Performing Arts",
+   "total_usd": 30226356.0,
+   "fiscal_year": 2025
+  },
+  "contracts": [],
+  "grants": []
+ },
+ "documents": [
+  {
+   "identifier": "schoolofartsmast1199sanf",
+   "title": "School of the Arts master plan : draft environmental impact report",
+   "creator": "San Francisco Unified School District",
+   "year": 1997,
+   "pool": "sfpl",
+   "matched_alias": "Louise M. Davies Symphony Hall",
+   "snippet": "Memorial Opera House Grove Street «Louise M. Davies Symphony Hall» Hayes Street Proposed %-*| Project",
+   "url": "https://archive.org/details/schoolofartsmast1199sanf",
+   "deep_link": "https://archive.org/details/schoolofartsmast1199sanf?q=Louise+M.+Davies+Symphony+Hall",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+  },
+  {
+   "identifier": "civiccenterstud1994sanf_0",
+   "title": "Civic Center study : cultural facilities plan, issues and finding report : draft for citizen review",
+   "creator": "San Francisco (Calif.). Dept. of City Planning",
+   "year": 1994,
+   "pool": "sfpl",
+   "matched_alias": "Louise M. Davies Symphony Hall",
+   "snippet": "War Memorial Opera House 3176 «Louise M. Davies Symphony Hall» 2743 Warfield Theater 2600 Orpheum",
+   "url": "https://archive.org/details/civiccenterstud1994sanf_0",
+   "deep_link": "https://archive.org/details/civiccenterstud1994sanf_0?q=Louise+M.+Davies+Symphony+Hall",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+  },
+  {
+   "identifier": "eastwest20east_7",
+   "title": "East/West",
+   "creator": "East/West Pub. Co.",
+   "year": 1986,
+   "pool": "sfpl",
+   "matched_alias": "Louise M. Davies Symphony Hall",
+   "snippet": "Symphonic Concert JI、to be held at the «Louise M. Davies Symphony Hall» on March 7and 8 at pm. Touted as “a",
+   "url": "https://archive.org/details/eastwest20east_7",
+   "deep_link": "https://archive.org/details/eastwest20east_7?q=Louise+M.+Davies+Symphony+Hall",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+  },
+  {
+   "identifier": "annualrprt1978798384warm",
+   "title": "Annual report",
+   "creator": "War Memorial (San Francisco, Calif.). Board of Trustees",
+   "year": null,
+   "pool": "sfpl",
+   "matched_alias": "Davies Symphony Hall",
+   "snippet": "completed in 79\"80. The Louise M. «Davies Symphony Hall» was opened September 16, 1980 and",
+   "url": "https://archive.org/details/annualrprt1978798384warm",
+   "deep_link": "https://archive.org/details/annualrprt1978798384warm?q=Davies+Symphony+Hall",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+  },
+  {
+   "identifier": "calendarofevents2012sanf",
+   "title": "Calendar of events",
+   "creator": "San Francisco Performing Arts Center",
+   "year": null,
+   "pool": "sfpl",
+   "matched_alias": "Davies Symphony Hall",
+   "snippet": "EVENTS War Memorial Opera House «Louise M. Davies Symphony Hall» Veterans Building Herbst Theatre",
+   "url": "https://archive.org/details/calendarofevents2012sanf",
+   "deep_link": "https://archive.org/details/calendarofevents2012sanf?q=Davies+Symphony+Hall",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+  },
+  {
+   "identifier": "calendarofevents2000sanf",
+   "title": "Calendar of events",
+   "creator": "San Francisco Performing Arts Center",
+   "year": null,
+   "pool": "sfpl",
+   "matched_alias": "Davies Symphony Hall",
+   "snippet": "94102 Telephone 415/ 621-6600 JANUARY 2000 «Davies Symphony Hall» Herbst T heal re Vfeterans Build ir\\g",
+   "url": "https://archive.org/details/calendarofevents2000sanf",
+   "deep_link": "https://archive.org/details/calendarofevents2000sanf?q=Davies+Symphony+Hall",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+  },
+  {
+   "identifier": "calendarofevents2006sanf",
+   "title": "Calendar of events",
+   "creator": "San Francisco Performing Arts Center",
+   "year": null,
+   "pool": "sfpl",
+   "matched_alias": "Davies Symphony Hall",
+   "snippet": "CENTER TOURS War Memorial Opera House, «Davies Symphony Hall» and Herbst Theatre: Every Monday from",
+   "url": "https://archive.org/details/calendarofevents2006sanf",
+   "deep_link": "https://archive.org/details/calendarofevents2006sanf?q=Davies+Symphony+Hall",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+  }
+ ],
+ "dept_shelf": [
+  {
+   "identifier": "opinion1985sanf",
+   "title": "Opinion",
+   "year": 1978,
+   "pool": "sfpl",
+   "url": "https://archive.org/details/opinion1985sanf"
+  },
+  {
+   "identifier": "opinion1987sanf",
+   "title": "Opinion",
+   "year": 1978,
+   "pool": "sfpl",
+   "url": "https://archive.org/details/opinion1987sanf"
+  },
+  {
+   "identifier": "sttmntsofact19631978warm",
+   "title": "Statements of activities, past fiscal year",
+   "year": 1975,
+   "pool": "sfpl",
+   "url": "https://archive.org/details/sttmntsofact19631978warm"
+  },
+  {
+   "identifier": "calendarofevents2008sanf",
+   "title": "Calendar of events",
+   "year": null,
+   "pool": "sfpl",
+   "url": "https://archive.org/details/calendarofevents2008sanf"
+  },
+  {
+   "identifier": "annualrepofpr19391946wa",
+   "title": "Annual report of the president of the Board of Trustees of the War Memorial of San Francisco",
+   "year": null,
+   "pool": "sfpl",
+   "url": "https://archive.org/details/annualrepofpr19391946wa"
+  },
+  {
+   "identifier": "agendasminutessa2010sanf",
+   "title": "Agendas and Minutes / San Francisco Veterans' Affairs Commission",
+   "year": null,
+   "pool": "sfpl",
+   "url": "https://archive.org/details/agendasminutessa2010sanf"
+  }
+ ],
+ "sources": [
+  {
+   "label": "City budget & payments",
+   "note": "SF Controller open data (budget, vouchers, contracts)"
+  },
+  {
+   "label": "Historical documents",
+   "note": "Internet Archive — SFPL partnership scans + Democracy's Library"
+  }
+ ],
+ "_gate": {
+  "has_photo": true,
+  "n_documents": 7,
+  "n_money_links": 1,
+  "meets_pre_summary": true
+ }
+}

@@ -1,0 +1,54 @@
+{
+ "generated_at": "2026-07-20T22:34:47.734069+00:00",
+ "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
+ "as_of": "2026-07-13T13:40:40+00:00",
+ "unit": "USD",
+ "slug": "skanska-usa-building-inc",
+ "name": "Skanska USA Building Inc",
+ "kind": "supplier",
+ "is_non_profit": false,
+ "total_paid_usd": 230552273.5,
+ "n_years": 8,
+ "first_year": 2018,
+ "last_year": 2026,
+ "by_year": {
+  "2018": 15313522.38,
+  "2019": 12092364.86,
+  "2020": 6951598.03,
+  "2021": 127997081.61,
+  "2022": 22562816.14,
+  "2023": 12597161.7,
+  "2025": 7916608.71,
+  "2026": 25121120.07
+ },
+ "top_departments": [
+  "AIR Airport Commission"
+ ],
+ "contracts_held": [
+  {
+   "contract_no": "1000032625",
+   "title": "11984.66-CargoBldg720.1&GS",
+   "department": "AIR Airport Commission",
+   "department_code": "AIR",
+   "agreed_usd": 108703274.5,
+   "paid_usd": 52649053.76,
+   "sole_source": false
+  }
+ ],
+ "n_contracts_held": 1,
+ "variants": [
+  {
+   "name": "SKANSKA USA BUILDING INC",
+   "total": 230552273.5
+  }
+ ],
+ "n_variants": 1,
+ "merges": [],
+ "source": {
+  "name": "Vendor Payments (Vouchers)",
+  "dataset_id": "n9pm-xkyq",
+  "source_url": "https://data.sfgov.org/d/n9pm-xkyq",
+  "attribution": "SF Controller's Office",
+  "rows_updated_at": "2026-07-13T13:40:40+00:00"
+ }
+}

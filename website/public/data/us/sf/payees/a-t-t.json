@@ -1,0 +1,75 @@
+{
+ "generated_at": "2026-07-20T22:34:47.733692+00:00",
+ "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
+ "as_of": "2026-07-13T13:40:40+00:00",
+ "unit": "USD",
+ "slug": "a-t-t",
+ "name": "A T & T",
+ "kind": "supplier",
+ "is_non_profit": false,
+ "total_paid_usd": 237396972.84,
+ "n_years": 20,
+ "first_year": 2007,
+ "last_year": 2026,
+ "by_year": {
+  "2007": 4130305.1,
+  "2008": 13939300.2,
+  "2009": 6145768.0,
+  "2010": 12308875.3,
+  "2011": 17613888.1,
+  "2012": 9115247.2,
+  "2013": 9927068.4,
+  "2014": 11650749.9,
+  "2015": 15549234.1,
+  "2016": 17470001.3,
+  "2017": 13954522.2,
+  "2018": 11626371.18,
+  "2019": 10530673.5,
+  "2020": 13692837.74,
+  "2021": 11710237.54,
+  "2022": 11148589.14,
+  "2023": 12227804.59,
+  "2024": 9722191.07,
+  "2025": 12405750.99,
+  "2026": 12527557.29
+ },
+ "top_departments": [
+  "DT GSA - Technology"
+ ],
+ "contracts_held": [
+  {
+   "contract_no": "1000023340",
+   "title": "CALNET Data&Voice Services",
+   "department": "DT  GSA - Technology",
+   "department_code": "TIS",
+   "agreed_usd": 80000000.0,
+   "paid_usd": 46951544.11,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000012863",
+   "title": "AIR11065 911 Emergency System",
+   "department": "AIR Airport Commission",
+   "department_code": "AIR",
+   "agreed_usd": 2250000.0,
+   "paid_usd": 1294278.62,
+   "sole_source": false
+  }
+ ],
+ "n_contracts_held": 2,
+ "variants": [
+  {
+   "name": "A T & T",
+   "total": 237396972.84
+  }
+ ],
+ "n_variants": 1,
+ "merges": [],
+ "source": {
+  "name": "Vendor Payments (Vouchers)",
+  "dataset_id": "n9pm-xkyq",
+  "source_url": "https://data.sfgov.org/d/n9pm-xkyq",
+  "attribution": "SF Controller's Office",
+  "rows_updated_at": "2026-07-13T13:40:40+00:00"
+ }
+}

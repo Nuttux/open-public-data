@@ -1,0 +1,76 @@
+{
+ "generated_at": "2026-07-20T22:34:47.739682+00:00",
+ "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
+ "as_of": "2026-07-13T13:40:40+00:00",
+ "unit": "USD",
+ "slug": "metropolitan-transportation-commission",
+ "name": "Metropolitan Transportation Commission",
+ "kind": "other",
+ "is_non_profit": false,
+ "total_paid_usd": 158193306.26,
+ "n_years": 21,
+ "first_year": 2007,
+ "last_year": 2027,
+ "by_year": {
+  "2007": 83334.0,
+  "2008": 8000.0,
+  "2009": 41126.0,
+  "2010": 8789012.4,
+  "2011": 19268218.3,
+  "2012": 13463286.0,
+  "2013": 12105283.9,
+  "2014": 11745658.5,
+  "2015": 11518520.7,
+  "2016": 6137328.2,
+  "2017": 8924518.5,
+  "2018": 7807705.02,
+  "2019": 9627255.38,
+  "2020": 8130131.49,
+  "2021": 5876158.22,
+  "2022": 6459268.37,
+  "2023": 6250779.63,
+  "2024": 9637924.2,
+  "2025": 7191627.76,
+  "2026": 5108169.69,
+  "2027": 20000.0
+ },
+ "top_departments": [
+  "MTA Municipal Transprtn Agncy"
+ ],
+ "contracts_held": [
+  {
+   "contract_no": "1000030493",
+   "title": "SFMTA/MTC Clipper MOU",
+   "department": "MTA Municipal Transprtn Agncy",
+   "department_code": "MTA",
+   "agreed_usd": 76070629.0,
+   "paid_usd": 10265111.4,
+   "sole_source": true
+  },
+  {
+   "contract_no": "1000034064",
+   "title": "AIR50393 Clipper BayPassPilot",
+   "department": "AIR Airport Commission",
+   "department_code": "AIR",
+   "agreed_usd": 2320000.0,
+   "paid_usd": 1332000.0,
+   "sole_source": false
+  }
+ ],
+ "n_contracts_held": 2,
+ "variants": [
+  {
+   "name": "METROPOLITAN TRANSPORTATION COMMISSION",
+   "total": 158193306.26
+  }
+ ],
+ "n_variants": 1,
+ "merges": [],
+ "source": {
+  "name": "Vendor Payments (Vouchers)",
+  "dataset_id": "n9pm-xkyq",
+  "source_url": "https://data.sfgov.org/d/n9pm-xkyq",
+  "attribution": "SF Controller's Office",
+  "rows_updated_at": "2026-07-13T13:40:40+00:00"
+ }
+}

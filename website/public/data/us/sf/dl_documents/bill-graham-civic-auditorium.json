@@ -1,0 +1,44 @@
+{
+ "generated_at": "2026-07-20T22:30:00.116713+00:00",
+ "slug": "bill-graham-civic-auditorium",
+ "name": "Bill Graham Civic Auditorium",
+ "note": "Archive documents linked to this place; source labels honour the SFPL-vs-Democracy's-Library distinction.",
+ "documents": [
+  {
+   "identifier": "3minutes2000sanf",
+   "title": "Minutes",
+   "creator": "San Francisco (Calif.). Board of Supervisors. Finance and Labor Committee",
+   "year": 1999,
+   "pool": "sfpl",
+   "matched_alias": "Bill Graham Civic Auditorium",
+   "snippet": "operate at Moscone Center or the «Bill Graham Civic Auditorium» and agree to comply with all",
+   "url": "https://archive.org/details/3minutes2000sanf",
+   "deep_link": "https://archive.org/details/3minutes2000sanf?q=Bill+Graham+Civic+Auditorium",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+  },
+  {
+   "identifier": "drafttransitionp1994sanf",
+   "title": "Draft transition plan for the Department of Convention Facilities : Civic Auditorium and Brooks Exhibit Hall sites",
+   "creator": "San Francisco (Calif.). Dept. of Convention Facilities,San Francisco (Calif.). Bureau of Architecture",
+   "year": 1994,
+   "pool": "sfpl",
+   "matched_alias": "Bill Graham Civic Auditorium",
+   "snippet": "DEPARTMENT OF CONVENTION FACILITIES «BILL GRAHAM CIVIC AUDITORIUM» AND BROOKS EXHIBIT HALL SITES jpartment",
+   "url": "https://archive.org/details/drafttransitionp1994sanf",
+   "deep_link": "https://archive.org/details/drafttransitionp1994sanf?q=Bill+Graham+Civic+Auditorium",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+  },
+  {
+   "identifier": "economicperforma1719sanf",
+   "title": "The Economic performance of public facilities in Yerba Buena Center",
+   "creator": "San Francisco Redevelopment Agency (San Francisco, Calif.),Economics Research Associates",
+   "year": 1965,
+   "pool": "sfpl",
+   "matched_alias": "Civic Auditorium",
+   "snippet": "Palace 111-28 «Civic Auditorium»-Brooks Hall Complex San Francisco «Civic Auditorium» \"has undergone",
+   "url": "https://archive.org/details/economicperforma1719sanf",
+   "deep_link": "https://archive.org/details/economicperforma1719sanf?q=Civic+Auditorium",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+  }
+ ]
+}

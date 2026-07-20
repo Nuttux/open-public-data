@@ -1,0 +1,57 @@
+{
+ "generated_at": "2026-07-20T22:34:47.732499+00:00",
+ "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
+ "as_of": "2026-07-13T13:40:40+00:00",
+ "unit": "USD",
+ "slug": "medline-industries-inc",
+ "name": "Medline Industries Inc",
+ "kind": "supplier",
+ "is_non_profit": false,
+ "total_paid_usd": 283741056.01,
+ "n_years": 21,
+ "first_year": 2007,
+ "last_year": 2027,
+ "by_year": {
+  "2007": 2665897.9,
+  "2008": 1474042.0,
+  "2009": 1547773.1,
+  "2010": 1733405.8,
+  "2011": 1637317.8,
+  "2012": 1687757.7,
+  "2013": 2127416.9,
+  "2014": 7742548.3,
+  "2015": 6839500.0,
+  "2016": 6340160.9,
+  "2017": 5700373.9,
+  "2018": 5737128.66,
+  "2019": 21203851.23,
+  "2020": 25340411.76,
+  "2021": 24927858.75,
+  "2022": 30072095.2,
+  "2023": 33229324.69,
+  "2024": 31009445.04,
+  "2025": 37010816.35,
+  "2026": 35531439.46,
+  "2027": 182490.57
+ },
+ "top_departments": [
+  "DPH Public Health"
+ ],
+ "contracts_held": [],
+ "n_contracts_held": 0,
+ "variants": [
+  {
+   "name": "MEDLINE INDUSTRIES INC",
+   "total": 283741056.01
+  }
+ ],
+ "n_variants": 1,
+ "merges": [],
+ "source": {
+  "name": "Vendor Payments (Vouchers)",
+  "dataset_id": "n9pm-xkyq",
+  "source_url": "https://data.sfgov.org/d/n9pm-xkyq",
+  "attribution": "SF Controller's Office",
+  "rows_updated_at": "2026-07-13T13:40:40+00:00"
+ }
+}

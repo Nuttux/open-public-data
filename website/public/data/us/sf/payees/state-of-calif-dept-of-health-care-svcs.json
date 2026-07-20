@@ -1,0 +1,56 @@
+{
+ "generated_at": "2026-07-20T22:34:47.726298+00:00",
+ "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
+ "as_of": "2026-07-13T13:40:40+00:00",
+ "unit": "USD",
+ "slug": "state-of-calif-dept-of-health-care-svcs",
+ "name": "State of Calif Dept of Health Care Svcs",
+ "kind": "other",
+ "is_non_profit": false,
+ "total_paid_usd": 2868783065.19,
+ "n_years": 20,
+ "first_year": 2007,
+ "last_year": 2026,
+ "by_year": {
+  "2007": 30948833.3,
+  "2008": 27102943.7,
+  "2009": 28666589.0,
+  "2010": 37426340.0,
+  "2011": 53801389.8,
+  "2012": 69469560.1,
+  "2013": 97682524.2,
+  "2014": 140377092.9,
+  "2015": 131554628.2,
+  "2016": 54324892.3,
+  "2017": 132749662.4,
+  "2018": 163693693.84,
+  "2019": 154601643.09,
+  "2020": 161600640.08,
+  "2021": 212336205.76,
+  "2022": 141158462.86,
+  "2023": 149500299.46,
+  "2024": 226829686.48,
+  "2025": 324790556.72,
+  "2026": 530167421.0
+ },
+ "top_departments": [
+  "DPH Public Health"
+ ],
+ "contracts_held": [],
+ "n_contracts_held": 0,
+ "variants": [
+  {
+   "name": "STATE OF CALIF DEPT OF HEALTH CARE SVCS",
+   "total": 2868783065.19
+  }
+ ],
+ "n_variants": 1,
+ "merges": [],
+ "source": {
+  "name": "Vendor Payments (Vouchers)",
+  "dataset_id": "n9pm-xkyq",
+  "source_url": "https://data.sfgov.org/d/n9pm-xkyq",
+  "attribution": "SF Controller's Office",
+  "rows_updated_at": "2026-07-13T13:40:40+00:00"
+ }
+}

@@ -1,0 +1,50 @@
+{
+ "generated_at": "2026-07-20T22:34:47.745214+00:00",
+ "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
+ "as_of": "2026-07-13T13:40:40+00:00",
+ "unit": "USD",
+ "slug": "serco-inc",
+ "name": "Serco Inc",
+ "kind": "other",
+ "is_non_profit": false,
+ "total_paid_usd": 103177189.29,
+ "n_years": 14,
+ "first_year": 2008,
+ "last_year": 2021,
+ "by_year": {
+  "2008": 3259024.1,
+  "2009": 6929159.1,
+  "2010": 7790504.9,
+  "2011": 17008976.2,
+  "2012": 17786043.2,
+  "2013": 11660235.4,
+  "2014": 11381150.2,
+  "2015": 5190971.8,
+  "2016": 2969315.9,
+  "2017": 3641644.8,
+  "2018": 2892773.92,
+  "2019": 4376042.69,
+  "2020": 4552714.78,
+  "2021": 3738632.3
+ },
+ "top_departments": [
+  "MTA Municipal Transprtn Agncy"
+ ],
+ "contracts_held": [],
+ "n_contracts_held": 0,
+ "variants": [
+  {
+   "name": "SERCO INC",
+   "total": 103177189.29
+  }
+ ],
+ "n_variants": 1,
+ "merges": [],
+ "source": {
+  "name": "Vendor Payments (Vouchers)",
+  "dataset_id": "n9pm-xkyq",
+  "source_url": "https://data.sfgov.org/d/n9pm-xkyq",
+  "attribution": "SF Controller's Office",
+  "rows_updated_at": "2026-07-13T13:40:40+00:00"
+ }
+}

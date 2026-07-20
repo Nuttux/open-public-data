@@ -1,0 +1,66 @@
+{
+ "generated_at": "2026-07-20T22:34:47.733253+00:00",
+ "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
+ "as_of": "2026-07-13T13:40:40+00:00",
+ "unit": "USD",
+ "slug": "golden-gate-petroleum",
+ "name": "Golden Gate Petroleum",
+ "kind": "supplier",
+ "is_non_profit": false,
+ "total_paid_usd": 246843596.53,
+ "n_years": 20,
+ "first_year": 2008,
+ "last_year": 2027,
+ "by_year": {
+  "2008": 78340.4,
+  "2009": 14443147.4,
+  "2010": 5569606.7,
+  "2011": 195008.5,
+  "2012": 59842.2,
+  "2013": 48728.6,
+  "2014": 20020860.5,
+  "2015": 21635249.4,
+  "2016": 17612242.3,
+  "2017": 17380894.5,
+  "2018": 17518449.9,
+  "2019": 18959086.43,
+  "2020": 12300614.07,
+  "2021": 10345735.03,
+  "2022": 16102463.12,
+  "2023": 20311633.98,
+  "2024": 18163785.22,
+  "2025": 15886294.54,
+  "2026": 20015636.75,
+  "2027": 195976.99
+ },
+ "top_departments": [
+  "MTA Municipal Transprtn Agncy"
+ ],
+ "contracts_held": [
+  {
+   "contract_no": "1000036825",
+   "title": "TC70888-Diesel City & Pen.PRIM",
+   "department": "ADM GSA - City Administrator",
+   "department_code": "ADM",
+   "agreed_usd": 195000000.0,
+   "paid_usd": 7058608.14,
+   "sole_source": false
+  }
+ ],
+ "n_contracts_held": 1,
+ "variants": [
+  {
+   "name": "GOLDEN GATE PETROLEUM",
+   "total": 246843596.53
+  }
+ ],
+ "n_variants": 1,
+ "merges": [],
+ "source": {
+  "name": "Vendor Payments (Vouchers)",
+  "dataset_id": "n9pm-xkyq",
+  "source_url": "https://data.sfgov.org/d/n9pm-xkyq",
+  "attribution": "SF Controller's Office",
+  "rows_updated_at": "2026-07-13T13:40:40+00:00"
+ }
+}

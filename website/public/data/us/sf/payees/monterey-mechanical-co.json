@@ -1,0 +1,56 @@
+{
+ "generated_at": "2026-07-20T22:34:47.736736+00:00",
+ "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
+ "as_of": "2026-07-13T13:40:40+00:00",
+ "unit": "USD",
+ "slug": "monterey-mechanical-co",
+ "name": "Monterey Mechanical Co",
+ "kind": "supplier",
+ "is_non_profit": false,
+ "total_paid_usd": 183318054.59,
+ "n_years": 20,
+ "first_year": 2007,
+ "last_year": 2026,
+ "by_year": {
+  "2007": 17438297.5,
+  "2008": 4542040.5,
+  "2009": 19134519.3,
+  "2010": 18545665.6,
+  "2011": 1841396.6,
+  "2012": 413045.7,
+  "2013": 5229312.4,
+  "2014": 13446648.9,
+  "2015": 6923011.5,
+  "2016": 5869533.9,
+  "2017": 18142091.6,
+  "2018": 613848.83,
+  "2019": 9600030.45,
+  "2020": 14084592.32,
+  "2021": 10810341.05,
+  "2022": 8998119.75,
+  "2023": 7507066.25,
+  "2024": 5609179.39,
+  "2025": 11174616.3,
+  "2026": 3394696.75
+ },
+ "top_departments": [
+  "WWE Wastewater Enterprise"
+ ],
+ "contracts_held": [],
+ "n_contracts_held": 0,
+ "variants": [
+  {
+   "name": "MONTEREY MECHANICAL CO",
+   "total": 183318054.59
+  }
+ ],
+ "n_variants": 1,
+ "merges": [],
+ "source": {
+  "name": "Vendor Payments (Vouchers)",
+  "dataset_id": "n9pm-xkyq",
+  "source_url": "https://data.sfgov.org/d/n9pm-xkyq",
+  "attribution": "SF Controller's Office",
+  "rows_updated_at": "2026-07-13T13:40:40+00:00"
+ }
+}

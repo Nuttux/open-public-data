@@ -1,0 +1,439 @@
+{
+ "generated_at": "2026-07-20T22:35:37.356302+00:00",
+ "count": 36,
+ "note": "Daytime worklist — candidate places that did not clear the gate, with the reason.",
+ "places": [
+  {
+   "slug": "alamo-square",
+   "name": "Alamo Square",
+   "family": "park",
+   "has_photo": false,
+   "n_documents": 14,
+   "n_money_links": 1,
+   "reasons": [
+    "no clean photo",
+    "no summary written"
+   ]
+  },
+  {
+   "slug": "asian-art-museum",
+   "name": "Asian Art Museum",
+   "family": "culture",
+   "has_photo": false,
+   "n_documents": 14,
+   "n_money_links": 1,
+   "reasons": [
+    "no clean photo",
+    "no summary written"
+   ]
+  },
+  {
+   "slug": "bayview-branch-library",
+   "name": "Bayview / Linda Brooks-Burton Branch Library",
+   "family": "library",
+   "has_photo": false,
+   "n_documents": 14,
+   "n_money_links": 1,
+   "reasons": [
+    "no clean photo",
+    "no summary written"
+   ]
+  },
+  {
+   "slug": "bernal-heights-branch-library",
+   "name": "Bernal Heights Branch Library",
+   "family": "library",
+   "has_photo": false,
+   "n_documents": 14,
+   "n_money_links": 1,
+   "reasons": [
+    "no clean photo",
+    "no summary written"
+   ]
+  },
+  {
+   "slug": "camp-mather",
+   "name": "Camp Mather",
+   "family": "park",
+   "has_photo": false,
+   "n_documents": 14,
+   "n_money_links": 1,
+   "reasons": [
+    "no clean photo",
+    "no summary written"
+   ]
+  },
+  {
+   "slug": "chinatown-branch-library",
+   "name": "Chinatown Branch Library",
+   "family": "library",
+   "has_photo": false,
+   "n_documents": 14,
+   "n_money_links": 1,
+   "reasons": [
+    "no clean photo",
+    "no summary written"
+   ]
+  },
+  {
+   "slug": "chinatown-public-health-center",
+   "name": "Chinatown Public Health Center",
+   "family": "health",
+   "has_photo": false,
+   "n_documents": 14,
+   "n_money_links": 1,
+   "reasons": [
+    "no clean photo",
+    "no summary written"
+   ]
+  },
+  {
+   "slug": "eureka-valley-harvey-milk-branch-library",
+   "name": "Eureka Valley / Harvey Milk Memorial Branch Library",
+   "family": "library",
+   "has_photo": false,
+   "n_documents": 14,
+   "n_money_links": 1,
+   "reasons": [
+    "no clean photo",
+    "no summary written"
+   ]
+  },
+  {
+   "slug": "excelsior-branch-library",
+   "name": "Excelsior Branch Library",
+   "family": "library",
+   "has_photo": false,
+   "n_documents": 14,
+   "n_money_links": 1,
+   "reasons": [
+    "no clean photo",
+    "no summary written"
+   ]
+  },
+  {
+   "slug": "fishermans-wharf",
+   "name": "Fisherman's Wharf",
+   "family": "port",
+   "has_photo": false,
+   "n_documents": 14,
+   "n_money_links": 1,
+   "reasons": [
+    "no clean photo",
+    "no summary written"
+   ]
+  },
+  {
+   "slug": "glen-park-branch-library",
+   "name": "Glen Park Branch Library",
+   "family": "library",
+   "has_photo": false,
+   "n_documents": 14,
+   "n_money_links": 1,
+   "reasons": [
+    "no clean photo",
+    "no summary written"
+   ]
+  },
+  {
+   "slug": "hall-of-justice",
+   "name": "Hall of Justice",
+   "family": "civic",
+   "has_photo": false,
+   "n_documents": 14,
+   "n_money_links": 1,
+   "reasons": [
+    "no clean photo",
+    "no summary written"
+   ]
+  },
+  {
+   "slug": "kezar-stadium",
+   "name": "Kezar Stadium",
+   "family": "park",
+   "has_photo": false,
+   "n_documents": 14,
+   "n_money_links": 1,
+   "reasons": [
+    "no clean photo",
+    "no summary written"
+   ]
+  },
+  {
+   "slug": "maxine-hall-health-center",
+   "name": "Maxine Hall Health Center",
+   "family": "health",
+   "has_photo": false,
+   "n_documents": 14,
+   "n_money_links": 1,
+   "reasons": [
+    "no clean photo",
+    "no summary written"
+   ]
+  },
+  {
+   "slug": "mission-branch-library",
+   "name": "Mission Branch Library",
+   "family": "library",
+   "has_photo": false,
+   "n_documents": 14,
+   "n_money_links": 1,
+   "reasons": [
+    "no clean photo",
+    "no summary written"
+   ]
+  },
+  {
+   "slug": "muni-presidio-division",
+   "name": "Muni Presidio Division",
+   "family": "transit",
+   "has_photo": false,
+   "n_documents": 14,
+   "n_money_links": 1,
+   "reasons": [
+    "no clean photo",
+    "no summary written"
+   ]
+  },
+  {
+   "slug": "muni-woods-division",
+   "name": "Muni Woods Division",
+   "family": "transit",
+   "has_photo": false,
+   "n_documents": 14,
+   "n_money_links": 1,
+   "reasons": [
+    "no clean photo",
+    "no summary written"
+   ]
+  },
+  {
+   "slug": "north-beach-branch-library",
+   "name": "North Beach Branch Library",
+   "family": "library",
+   "has_photo": false,
+   "n_documents": 14,
+   "n_money_links": 1,
+   "reasons": [
+    "no clean photo",
+    "no summary written"
+   ]
+  },
+  {
+   "slug": "pier-27-cruise-terminal",
+   "name": "James R. Herman Cruise Terminal (Pier 27)",
+   "family": "port",
+   "has_photo": false,
+   "n_documents": 14,
+   "n_money_links": 3,
+   "reasons": [
+    "no clean photo",
+    "no summary written"
+   ]
+  },
+  {
+   "slug": "randall-museum",
+   "name": "Randall Museum",
+   "family": "culture",
+   "has_photo": false,
+   "n_documents": 14,
+   "n_money_links": 1,
+   "reasons": [
+    "no clean photo",
+    "no summary written"
+   ]
+  },
+  {
+   "slug": "richmond-branch-library",
+   "name": "Richmond Branch Library",
+   "family": "library",
+   "has_photo": false,
+   "n_documents": 14,
+   "n_money_links": 1,
+   "reasons": [
+    "no clean photo",
+    "no summary written"
+   ]
+  },
+  {
+   "slug": "sf-city-hall",
+   "name": "San Francisco City Hall",
+   "family": "civic",
+   "has_photo": true,
+   "n_documents": 2,
+   "n_money_links": 2,
+   "reasons": [
+    "only 2 archive docs",
+    "no summary written"
+   ]
+  },
+  {
+   "slug": "sffd-division-of-training",
+   "name": "SFFD Division of Training",
+   "family": "fire",
+   "has_photo": false,
+   "n_documents": 14,
+   "n_money_links": 1,
+   "reasons": [
+    "no clean photo",
+    "no summary written"
+   ]
+  },
+  {
+   "slug": "sffd-headquarters",
+   "name": "SFFD Headquarters",
+   "family": "fire",
+   "has_photo": false,
+   "n_documents": 14,
+   "n_money_links": 1,
+   "reasons": [
+    "no clean photo",
+    "no summary written"
+   ]
+  },
+  {
+   "slug": "sffd-station-1",
+   "name": "SFFD Station 1",
+   "family": "fire",
+   "has_photo": false,
+   "n_documents": 14,
+   "n_money_links": 1,
+   "reasons": [
+    "no clean photo",
+    "no summary written"
+   ]
+  },
+  {
+   "slug": "southeast-health-center",
+   "name": "Southeast Health Center",
+   "family": "health",
+   "has_photo": false,
+   "n_documents": 14,
+   "n_money_links": 1,
+   "reasons": [
+    "no clean photo",
+    "no summary written"
+   ]
+  },
+  {
+   "slug": "southeast-treatment-plant",
+   "name": "Southeast Water Pollution Control Plant",
+   "family": "water",
+   "has_photo": false,
+   "n_documents": 14,
+   "n_money_links": 1,
+   "reasons": [
+    "no clean photo",
+    "no summary written"
+   ]
+  },
+  {
+   "slug": "stern-grove",
+   "name": "Sigmund Stern Grove",
+   "family": "park",
+   "has_photo": false,
+   "n_documents": 14,
+   "n_money_links": 2,
+   "reasons": [
+    "no clean photo",
+    "no summary written"
+   ]
+  },
+  {
+   "slug": "sunset-branch-library",
+   "name": "Sunset Branch Library",
+   "family": "library",
+   "has_photo": false,
+   "n_documents": 14,
+   "n_money_links": 1,
+   "reasons": [
+    "no clean photo",
+    "no summary written"
+   ]
+  },
+  {
+   "slug": "sunset-reservoir",
+   "name": "Sunset Reservoir",
+   "family": "water",
+   "has_photo": false,
+   "n_documents": 14,
+   "n_money_links": 1,
+   "reasons": [
+    "no clean photo",
+    "no summary written"
+   ]
+  },
+  {
+   "slug": "tom-waddell-clinic",
+   "name": "Tom Waddell Urban Health Clinic",
+   "family": "health",
+   "has_photo": false,
+   "n_documents": 14,
+   "n_money_links": 1,
+   "reasons": [
+    "no clean photo",
+    "no summary written"
+   ]
+  },
+  {
+   "slug": "university-mound-reservoir",
+   "name": "University Mound Reservoir",
+   "family": "water",
+   "has_photo": false,
+   "n_documents": 14,
+   "n_money_links": 1,
+   "reasons": [
+    "no clean photo",
+    "no summary written"
+   ]
+  },
+  {
+   "slug": "veterans-building",
+   "name": "Veterans Building (Herbst Theatre)",
+   "family": "culture",
+   "has_photo": false,
+   "n_documents": 14,
+   "n_money_links": 1,
+   "reasons": [
+    "no clean photo",
+    "no summary written"
+   ]
+  },
+  {
+   "slug": "war-memorial-opera-house",
+   "name": "War Memorial Opera House",
+   "family": "culture",
+   "has_photo": false,
+   "n_documents": 14,
+   "n_money_links": 3,
+   "reasons": [
+    "no clean photo",
+    "no summary written"
+   ]
+  },
+  {
+   "slug": "washington-square",
+   "name": "Washington Square",
+   "family": "park",
+   "has_photo": false,
+   "n_documents": 14,
+   "n_money_links": 1,
+   "reasons": [
+    "no clean photo",
+    "no summary written"
+   ]
+  },
+  {
+   "slug": "zuckerberg-sf-general-hospital",
+   "name": "Zuckerberg San Francisco General Hospital",
+   "family": "health",
+   "has_photo": false,
+   "n_documents": 14,
+   "n_money_links": 1,
+   "reasons": [
+    "no clean photo",
+    "no summary written"
+   ]
+  }
+ ]
+}

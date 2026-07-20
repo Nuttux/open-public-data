@@ -1,0 +1,108 @@
+{
+ "generated_at": "2026-07-20T22:34:47.745298+00:00",
+ "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
+ "as_of": "2026-07-13T13:40:40+00:00",
+ "unit": "USD",
+ "slug": "hamilton-families",
+ "name": "Hamilton Families",
+ "kind": "other",
+ "is_non_profit": false,
+ "total_paid_usd": 102737462.81,
+ "n_years": 10,
+ "first_year": 2018,
+ "last_year": 2027,
+ "by_year": {
+  "2018": 8953626.26,
+  "2019": 10971256.95,
+  "2020": 11764228.83,
+  "2021": 11183481.89,
+  "2022": 11845114.03,
+  "2023": 10358119.92,
+  "2024": 13471941.61,
+  "2025": 12195057.28,
+  "2026": 11771349.49,
+  "2027": 223286.55
+ },
+ "top_departments": [],
+ "contracts_held": [
+  {
+   "contract_no": "1000019042",
+   "title": "Hamilton - Housing Solutions",
+   "department": "HOM Homelessness Services",
+   "department_code": "HOM",
+   "agreed_usd": 21903359.0,
+   "paid_usd": 11314785.17,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000013716",
+   "title": "Hamilton - Transitional Hsing",
+   "department": "HOM Homelessness Services",
+   "department_code": "HOM",
+   "agreed_usd": 9299236.0,
+   "paid_usd": 6626635.72,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000016516",
+   "title": "Hamilton - HUD Rapid Rehousing",
+   "department": "HOM Homelessness Services",
+   "department_code": "HOM",
+   "agreed_usd": 9468743.0,
+   "paid_usd": 5197050.71,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000022895",
+   "title": "Hamilton - Prevention",
+   "department": "HOM Homelessness Services",
+   "department_code": "HOM",
+   "agreed_usd": 8363463.0,
+   "paid_usd": 4183158.32,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000024433",
+   "title": "Hamilton - EHV",
+   "department": "HOM Homelessness Services",
+   "department_code": "HOM",
+   "agreed_usd": 4286572.0,
+   "paid_usd": 2452113.49,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000036141",
+   "title": "Housing Support Progam",
+   "department": "HSA Human Services Agency",
+   "department_code": "HSA",
+   "agreed_usd": 4193564.0,
+   "paid_usd": 1282115.11,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000032562",
+   "title": "GA-Out of School-24-29",
+   "department": "CHF Children;Youth & Families",
+   "department_code": "CHF",
+   "agreed_usd": 2336100.0,
+   "paid_usd": 590296.13,
+   "sole_source": false
+  }
+ ],
+ "n_contracts_held": 7,
+ "variants": [
+  {
+   "name": "HAMILTON FAMILIES",
+   "total": 102737462.81
+  }
+ ],
+ "n_variants": 1,
+ "merges": [],
+ "source": {
+  "name": "Vendor Payments (Vouchers)",
+  "dataset_id": "n9pm-xkyq",
+  "source_url": "https://data.sfgov.org/d/n9pm-xkyq",
+  "attribution": "SF Controller's Office",
+  "rows_updated_at": "2026-07-13T13:40:40+00:00"
+ }
+}

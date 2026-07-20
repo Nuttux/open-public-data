@@ -1,0 +1,75 @@
+{
+ "generated_at": "2026-07-20T22:34:47.743206+00:00",
+ "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
+ "as_of": "2026-07-13T13:40:40+00:00",
+ "unit": "USD",
+ "slug": "intercare-holdings-insurance-svcs-inc",
+ "name": "Intercare Holdings Insurance Svcs Inc",
+ "kind": "supplier",
+ "is_non_profit": false,
+ "total_paid_usd": 117979823.14,
+ "n_years": 20,
+ "first_year": 2007,
+ "last_year": 2026,
+ "by_year": {
+  "2007": 15868205.2,
+  "2008": 18407428.0,
+  "2009": 5386080.9,
+  "2010": 2456844.3,
+  "2011": 2421682.6,
+  "2012": 2423651.3,
+  "2013": 3864175.4,
+  "2014": 4762462.6,
+  "2015": 4953576.4,
+  "2016": 4775077.7,
+  "2017": 5350135.8,
+  "2018": 4738881.22,
+  "2019": 4635789.82,
+  "2020": 5191864.65,
+  "2021": 5288952.96,
+  "2022": 4880165.73,
+  "2023": 5891432.57,
+  "2024": 4871982.14,
+  "2025": 6308815.75,
+  "2026": 5502618.1
+ },
+ "top_departments": [
+  "HRD Human Resources"
+ ],
+ "contracts_held": [
+  {
+   "contract_no": "1000028096",
+   "title": "2022-31 - WC TPA",
+   "department": "MTA Municipal Transprtn Agncy",
+   "department_code": "MTA",
+   "agreed_usd": 31617981.0,
+   "paid_usd": 11029320.19,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000026741",
+   "title": "WC 3rd Party Administrator",
+   "department": "HRD Human Resources",
+   "department_code": "HRD",
+   "agreed_usd": 29357361.0,
+   "paid_usd": 8287713.13,
+   "sole_source": false
+  }
+ ],
+ "n_contracts_held": 2,
+ "variants": [
+  {
+   "name": "INTERCARE HOLDINGS INSURANCE SVCS INC",
+   "total": 117979823.14
+  }
+ ],
+ "n_variants": 1,
+ "merges": [],
+ "source": {
+  "name": "Vendor Payments (Vouchers)",
+  "dataset_id": "n9pm-xkyq",
+  "source_url": "https://data.sfgov.org/d/n9pm-xkyq",
+  "attribution": "SF Controller's Office",
+  "rows_updated_at": "2026-07-13T13:40:40+00:00"
+ }
+}

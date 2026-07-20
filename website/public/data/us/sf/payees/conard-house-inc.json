@@ -1,0 +1,130 @@
+{
+ "generated_at": "2026-07-20T22:34:47.733581+00:00",
+ "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
+ "as_of": "2026-07-13T13:40:40+00:00",
+ "unit": "USD",
+ "slug": "conard-house-inc",
+ "name": "Conard House Inc",
+ "kind": "nonprofit",
+ "is_non_profit": false,
+ "total_paid_usd": 239430227.94,
+ "n_years": 21,
+ "first_year": 2007,
+ "last_year": 2027,
+ "by_year": {
+  "2007": 7194842.7,
+  "2008": 8257030.9,
+  "2009": 7663741.1,
+  "2010": 8042906.4,
+  "2011": 7845708.5,
+  "2012": 8280441.4,
+  "2013": 9384202.7,
+  "2014": 10105010.2,
+  "2015": 9988163.0,
+  "2016": 10773270.1,
+  "2017": 12421564.6,
+  "2018": 9164252.29,
+  "2019": 12007981.58,
+  "2020": 12339523.89,
+  "2021": 13624311.91,
+  "2022": 15177417.33,
+  "2023": 17401387.08,
+  "2024": 18236973.37,
+  "2025": 18457618.97,
+  "2026": 22986945.99,
+  "2027": 76933.93
+ },
+ "top_departments": [
+  "DPH Public Health"
+ ],
+ "contracts_held": [
+  {
+   "contract_no": "1000010463",
+   "title": "MH and SUD",
+   "department": "DPH Public Health",
+   "department_code": "DPH",
+   "agreed_usd": 92276312.0,
+   "paid_usd": 65760753.14,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000032692",
+   "title": "DPh MH and SUD Rep Payee",
+   "department": "DPH Public Health",
+   "department_code": "DPH",
+   "agreed_usd": 9916739.0,
+   "paid_usd": 3600064.35,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000032301",
+   "title": "Conard House - Lyric Hotel CoC",
+   "department": "HOM Homelessness Services",
+   "department_code": "HOM",
+   "agreed_usd": 5926344.0,
+   "paid_usd": 2067568.78,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000033231",
+   "title": "Conard - El Dorado/Midori",
+   "department": "HOM Homelessness Services",
+   "department_code": "HOM",
+   "agreed_usd": 2041634.0,
+   "paid_usd": 910069.86,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000033493",
+   "title": "DAS - FY25-27 Digital Literacy",
+   "department": "HSA Human Services Agency",
+   "department_code": "HSA",
+   "agreed_usd": 763169.0,
+   "paid_usd": 345603.11,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000029292",
+   "title": "Money management FY 23-27",
+   "department": "HSA Human Services Agency",
+   "department_code": "HSA",
+   "agreed_usd": 378981.0,
+   "paid_usd": 247974.46,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000037797",
+   "title": "Conard - McAllister - EMP",
+   "department": "HOM Homelessness Services",
+   "department_code": "HOM",
+   "agreed_usd": 122885.0,
+   "paid_usd": 0.0,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000037847",
+   "title": "Conard House - Lyric COP EMP",
+   "department": "HOM Homelessness Services",
+   "department_code": "HOM",
+   "agreed_usd": 98046.0,
+   "paid_usd": 0.0,
+   "sole_source": false
+  }
+ ],
+ "n_contracts_held": 8,
+ "variants": [
+  {
+   "name": "CONARD HOUSE INC",
+   "total": 239430227.94
+  }
+ ],
+ "n_variants": 1,
+ "merges": [],
+ "source": {
+  "name": "Vendor Payments (Vouchers)",
+  "dataset_id": "n9pm-xkyq",
+  "source_url": "https://data.sfgov.org/d/n9pm-xkyq",
+  "attribution": "SF Controller's Office",
+  "rows_updated_at": "2026-07-13T13:40:40+00:00"
+ }
+}

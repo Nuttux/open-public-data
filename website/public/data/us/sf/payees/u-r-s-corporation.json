@@ -1,0 +1,65 @@
+{
+ "generated_at": "2026-07-20T22:34:47.740408+00:00",
+ "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
+ "as_of": "2026-07-13T13:40:40+00:00",
+ "unit": "USD",
+ "slug": "u-r-s-corporation",
+ "name": "U R S Corporation",
+ "kind": "supplier",
+ "is_non_profit": false,
+ "total_paid_usd": 148370231.11,
+ "n_years": 19,
+ "first_year": 2007,
+ "last_year": 2025,
+ "by_year": {
+  "2007": 10262681.7,
+  "2008": 12335126.5,
+  "2009": 15470002.3,
+  "2010": 13356637.8,
+  "2011": 9757014.7,
+  "2012": 11381974.4,
+  "2013": 9200567.8,
+  "2014": 9545386.1,
+  "2015": 7342672.7,
+  "2016": 7024974.3,
+  "2017": 12486413.5,
+  "2018": 1691162.98,
+  "2019": 1274084.17,
+  "2020": 6058388.2,
+  "2021": 11111706.23,
+  "2022": 2933552.61,
+  "2023": 1391989.97,
+  "2024": 4469810.12,
+  "2025": 1276085.03
+ },
+ "top_departments": [
+  "PUB Public Utilities Bureaus"
+ ],
+ "contracts_held": [
+  {
+   "contract_no": "1000000101",
+   "title": "Spec & Tech SVCS, NR & LM",
+   "department": "PUC Public Utilities Commsn",
+   "department_code": "PUC",
+   "agreed_usd": 5722360.0,
+   "paid_usd": 2052183.3,
+   "sole_source": false
+  }
+ ],
+ "n_contracts_held": 1,
+ "variants": [
+  {
+   "name": "U R S CORPORATION",
+   "total": 148370231.11
+  }
+ ],
+ "n_variants": 1,
+ "merges": [],
+ "source": {
+  "name": "Vendor Payments (Vouchers)",
+  "dataset_id": "n9pm-xkyq",
+  "source_url": "https://data.sfgov.org/d/n9pm-xkyq",
+  "attribution": "SF Controller's Office",
+  "rows_updated_at": "2026-07-13T13:40:40+00:00"
+ }
+}

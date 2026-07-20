@@ -1,0 +1,75 @@
+{
+ "generated_at": "2026-07-20T22:34:47.732402+00:00",
+ "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
+ "as_of": "2026-07-13T13:40:40+00:00",
+ "unit": "USD",
+ "slug": "baker-places-inc",
+ "name": "Baker Places Inc",
+ "kind": "nonprofit",
+ "is_non_profit": false,
+ "total_paid_usd": 286658064.77,
+ "n_years": 20,
+ "first_year": 2007,
+ "last_year": 2026,
+ "by_year": {
+  "2007": 12177860.4,
+  "2008": 12917526.2,
+  "2009": 13051185.7,
+  "2010": 12037100.2,
+  "2011": 11463245.6,
+  "2012": 11654192.8,
+  "2013": 11980408.7,
+  "2014": 11841677.4,
+  "2015": 12185501.5,
+  "2016": 12119486.0,
+  "2017": 15788350.5,
+  "2018": 10286632.09,
+  "2019": 14591287.93,
+  "2020": 17707669.86,
+  "2021": 17970111.53,
+  "2022": 19443816.22,
+  "2023": 19731568.53,
+  "2024": 14884263.13,
+  "2025": 18100034.64,
+  "2026": 16726145.84
+ },
+ "top_departments": [
+  "DPH Public Health"
+ ],
+ "contracts_held": [
+  {
+   "contract_no": "1000009940",
+   "title": "Baker 2021-22 AM-1",
+   "department": "DPH Public Health",
+   "department_code": "DPH",
+   "agreed_usd": 120789738.0,
+   "paid_usd": 80743372.9,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000032796",
+   "title": "21.42",
+   "department": "DPH Public Health",
+   "department_code": "DPH",
+   "agreed_usd": 9985453.0,
+   "paid_usd": 5471181.88,
+   "sole_source": true
+  }
+ ],
+ "n_contracts_held": 2,
+ "variants": [
+  {
+   "name": "BAKER PLACES INC",
+   "total": 286658064.77
+  }
+ ],
+ "n_variants": 1,
+ "merges": [],
+ "source": {
+  "name": "Vendor Payments (Vouchers)",
+  "dataset_id": "n9pm-xkyq",
+  "source_url": "https://data.sfgov.org/d/n9pm-xkyq",
+  "attribution": "SF Controller's Office",
+  "rows_updated_at": "2026-07-13T13:40:40+00:00"
+ }
+}

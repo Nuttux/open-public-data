@@ -1,0 +1,76 @@
+{
+ "generated_at": "2026-07-20T22:34:47.731050+00:00",
+ "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
+ "as_of": "2026-07-13T13:40:40+00:00",
+ "unit": "USD",
+ "slug": "progress-foundation",
+ "name": "Progress Foundation",
+ "kind": "nonprofit",
+ "is_non_profit": false,
+ "total_paid_usd": 348123963.19,
+ "n_years": 21,
+ "first_year": 2007,
+ "last_year": 2027,
+ "by_year": {
+  "2007": 7746335.0,
+  "2008": 11763095.7,
+  "2009": 14504665.2,
+  "2010": 14993244.6,
+  "2011": 15896167.1,
+  "2012": 14408143.6,
+  "2013": 15386240.3,
+  "2014": 13533869.2,
+  "2015": 17244105.9,
+  "2016": 16871023.8,
+  "2017": 20202317.0,
+  "2018": 12967050.2,
+  "2019": 18485262.85,
+  "2020": 18921049.97,
+  "2021": 21621051.6,
+  "2022": 18460554.68,
+  "2023": 21360265.44,
+  "2024": 19463044.38,
+  "2025": 24583029.38,
+  "2026": 29336958.04,
+  "2027": 376489.25
+ },
+ "top_departments": [
+  "DPH Public Health"
+ ],
+ "contracts_held": [
+  {
+   "contract_no": "1000010016",
+   "title": "BHS",
+   "department": "DPH Public Health",
+   "department_code": "DPH",
+   "agreed_usd": 221847999.0,
+   "paid_usd": 167405016.67,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000032350",
+   "title": "BHS",
+   "department": "DPH Public Health",
+   "department_code": "DPH",
+   "agreed_usd": 7072405.0,
+   "paid_usd": 49334.94,
+   "sole_source": false
+  }
+ ],
+ "n_contracts_held": 2,
+ "variants": [
+  {
+   "name": "PROGRESS FOUNDATION",
+   "total": 348123963.19
+  }
+ ],
+ "n_variants": 1,
+ "merges": [],
+ "source": {
+  "name": "Vendor Payments (Vouchers)",
+  "dataset_id": "n9pm-xkyq",
+  "source_url": "https://data.sfgov.org/d/n9pm-xkyq",
+  "attribution": "SF Controller's Office",
+  "rows_updated_at": "2026-07-13T13:40:40+00:00"
+ }
+}

@@ -1,0 +1,218 @@
+{
+ "generated_at": "2026-07-20T22:34:47.737629+00:00",
+ "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
+ "as_of": "2026-07-13T13:40:40+00:00",
+ "unit": "USD",
+ "slug": "heluna-health",
+ "name": "Heluna Health",
+ "kind": "nonprofit",
+ "is_non_profit": true,
+ "total_paid_usd": 174006868.44,
+ "n_years": 10,
+ "first_year": 2018,
+ "last_year": 2027,
+ "by_year": {
+  "2018": 12440035.41,
+  "2019": 16574160.85,
+  "2020": 20169400.32,
+  "2021": 21538209.28,
+  "2022": 31170526.17,
+  "2023": 18437011.7,
+  "2024": 19219956.52,
+  "2025": 17758189.14,
+  "2026": 16050390.66,
+  "2027": 648988.39
+ },
+ "top_departments": [
+  "DPH Public Health"
+ ],
+ "contracts_held": [
+  {
+   "contract_no": "1000030849",
+   "title": "SFHOT",
+   "department": "HOM Homelessness Services",
+   "department_code": "HOM",
+   "agreed_usd": 36897380.0,
+   "paid_usd": 18012571.14,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000016119",
+   "title": "Prog Admin & Support Svcs",
+   "department": "DPH Public Health",
+   "department_code": "DPH",
+   "agreed_usd": 6287182.0,
+   "paid_usd": 3683522.13,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000012307",
+   "title": "Program Administration Service",
+   "department": "DPH Public Health",
+   "department_code": "DPH",
+   "agreed_usd": 4253638.0,
+   "paid_usd": 2946695.99,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000011928",
+   "title": "Prog Admin Supp Svcs",
+   "department": "DPH Public Health",
+   "department_code": "DPH",
+   "agreed_usd": 2932035.0,
+   "paid_usd": 2507232.34,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000016790",
+   "title": "Prof Research Develp",
+   "department": "DPH Public Health",
+   "department_code": "DPH",
+   "agreed_usd": 4243334.0,
+   "paid_usd": 2301705.69,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000026912",
+   "title": "Equity Based Community Dou",
+   "department": "DPH Public Health",
+   "department_code": "DPH",
+   "agreed_usd": 3402000.0,
+   "paid_usd": 1949157.26,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000022512",
+   "title": "Program Admin Services",
+   "department": "DPH Public Health",
+   "department_code": "DPH",
+   "agreed_usd": 2834781.0,
+   "paid_usd": 1692618.35,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000024450",
+   "title": "| Prog Admin - MMP",
+   "department": "DPH Public Health",
+   "department_code": "DPH",
+   "agreed_usd": 3280166.0,
+   "paid_usd": 1383828.83,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000028935",
+   "title": "NHBS",
+   "department": "DPH Public Health",
+   "department_code": "DPH",
+   "agreed_usd": 3944643.0,
+   "paid_usd": 1345387.32,
+   "sole_source": true
+  },
+  {
+   "contract_no": "1000016265",
+   "title": "Program Admin & Supp Svcs",
+   "department": "DPH Public Health",
+   "department_code": "DPH",
+   "agreed_usd": 2151749.0,
+   "paid_usd": 1131356.23,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000030086",
+   "title": "Project Invest",
+   "department": "DPH Public Health",
+   "department_code": "DPH",
+   "agreed_usd": 2234025.0,
+   "paid_usd": 680097.34,
+   "sole_source": true
+  },
+  {
+   "contract_no": "1000028127",
+   "title": "Program Admin - BLISS",
+   "department": "DPH Public Health",
+   "department_code": "DPH",
+   "agreed_usd": 1374966.0,
+   "paid_usd": 652528.74,
+   "sole_source": true
+  },
+  {
+   "contract_no": "1000037679",
+   "title": "DEM-Safety Ambassador",
+   "department": "HSA Human Services Agency",
+   "department_code": "HSA",
+   "agreed_usd": 3465000.0,
+   "paid_usd": 443448.27,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000035975",
+   "title": "Comm Wellness Health Promo",
+   "department": "DPH Public Health",
+   "department_code": "DPH",
+   "agreed_usd": 1792298.0,
+   "paid_usd": 411411.46,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000016120",
+   "title": "Prog Admin & Support Svcs",
+   "department": "DPH Public Health",
+   "department_code": "DPH",
+   "agreed_usd": 677378.0,
+   "paid_usd": 324620.37,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000025107",
+   "title": "| Program Admin Lactation",
+   "department": "DPH Public Health",
+   "department_code": "DPH",
+   "agreed_usd": 490000.0,
+   "paid_usd": 87339.11,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000028303",
+   "title": "Program Admin and Support",
+   "department": "DPH Public Health",
+   "department_code": "DPH",
+   "agreed_usd": 205345.0,
+   "paid_usd": 81486.93,
+   "sole_source": true
+  },
+  {
+   "contract_no": "1000023165",
+   "title": "BRACE",
+   "department": "DPH Public Health",
+   "department_code": "DPH",
+   "agreed_usd": 207301.0,
+   "paid_usd": 4223.76,
+   "sole_source": true
+  },
+  {
+   "contract_no": "1000015195",
+   "title": "OFE Fiscal Sponsor",
+   "department": "TTX Treasurer-Tax Collector",
+   "department_code": "TTX",
+   "agreed_usd": 500000.0,
+   "paid_usd": 0.0,
+   "sole_source": false
+  }
+ ],
+ "n_contracts_held": 19,
+ "variants": [
+  {
+   "name": "HELUNA HEALTH",
+   "total": 174006868.44
+  }
+ ],
+ "n_variants": 1,
+ "merges": [],
+ "source": {
+  "name": "Vendor Payments (Vouchers)",
+  "dataset_id": "n9pm-xkyq",
+  "source_url": "https://data.sfgov.org/d/n9pm-xkyq",
+  "attribution": "SF Controller's Office",
+  "rows_updated_at": "2026-07-13T13:40:40+00:00"
+ }
+}

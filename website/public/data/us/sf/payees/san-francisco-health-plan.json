@@ -1,0 +1,77 @@
+{
+ "generated_at": "2026-07-20T22:34:47.734157+00:00",
+ "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
+ "as_of": "2026-07-13T13:40:40+00:00",
+ "unit": "USD",
+ "slug": "san-francisco-health-plan",
+ "name": "San Francisco Health Plan",
+ "kind": "healthcare",
+ "is_non_profit": false,
+ "total_paid_usd": 230489219.39,
+ "n_years": 18,
+ "first_year": 2007,
+ "last_year": 2026,
+ "by_year": {
+  "2007": 309265.7,
+  "2008": 692405.5,
+  "2009": 922059.4,
+  "2010": 832085.4,
+  "2011": 866328.8,
+  "2012": 1031783.1,
+  "2013": 1100957.3,
+  "2014": 1040103.1,
+  "2015": 232037.0,
+  "2018": 4177106.37,
+  "2019": 12613926.67,
+  "2020": 20193515.54,
+  "2021": 13046792.96,
+  "2022": 44673622.79,
+  "2023": 45648909.7,
+  "2024": 40671682.02,
+  "2025": 25869568.66,
+  "2026": 16567069.38
+ },
+ "top_departments": [
+  "DPH Public Health"
+ ],
+ "contracts_held": [
+  {
+   "contract_no": "1000018922",
+   "title": "Healthcare service plan for temp. exempt as-needed City Work",
+   "department": "HRD Human Resources",
+   "department_code": "HRD",
+   "agreed_usd": 7028516.1,
+   "paid_usd": 3484460.25,
+   "sole_source": true
+  },
+  {
+   "contract_no": "1000037615",
+   "title": "Chinese Hospital",
+   "department": "DPH Public Health",
+   "department_code": "DPH",
+   "agreed_usd": 750000.0,
+   "paid_usd": 0.0,
+   "sole_source": false
+  }
+ ],
+ "n_contracts_held": 2,
+ "variants": [
+  {
+   "name": "San Francisco Health Plan",
+   "total": 223462194.09
+  },
+  {
+   "name": "SAN FRANCISCO HEALTH PLAN",
+   "total": 7027025.3
+  }
+ ],
+ "n_variants": 2,
+ "merges": [],
+ "source": {
+  "name": "Vendor Payments (Vouchers)",
+  "dataset_id": "n9pm-xkyq",
+  "source_url": "https://data.sfgov.org/d/n9pm-xkyq",
+  "attribution": "SF Controller's Office",
+  "rows_updated_at": "2026-07-13T13:40:40+00:00"
+ }
+}

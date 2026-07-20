@@ -1,0 +1,282 @@
+{
+ "golden-gate-park": {
+  "photo": "/img/us/sf/places/golden-gate-park.jpg",
+  "source": "Wikimedia Commons",
+  "file": "File:California-06241_-_In_front_of_museum_(20449897948).jpg",
+  "file_url": "https://commons.wikimedia.org/wiki/File:California-06241_-_In_front_of_museum_(20449897948).jpg",
+  "license": "CC BY-SA 2.0",
+  "license_url": "https://creativecommons.org/licenses/by-sa/2.0",
+  "author": "Dennis G. Jarvis",
+  "fetched_at": "2026-07-20T22:15:24.441064+00:00"
+ },
+ "coit-tower": {
+  "photo": "/img/us/sf/places/coit-tower.jpg",
+  "source": "Wikimedia Commons",
+  "file": "File:Coit_Tower_1.jpg",
+  "file_url": "https://commons.wikimedia.org/wiki/File:Coit_Tower_1.jpg",
+  "license": "CC0",
+  "license_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+  "author": "Ryan Schwark",
+  "fetched_at": "2026-07-20T22:15:26.184268+00:00"
+ },
+ "buena-vista-park": {
+  "photo": "/img/us/sf/places/buena-vista-park.jpg",
+  "source": "Wikimedia Commons",
+  "file": "File:View_of_San_Francisco_from_Buena_Vista_Park.jpg",
+  "file_url": "https://commons.wikimedia.org/wiki/File:View_of_San_Francisco_from_Buena_Vista_Park.jpg",
+  "license": "CC BY-SA 3.0",
+  "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
+  "author": "Guliolopez",
+  "fetched_at": "2026-07-20T22:16:02.919105+00:00"
+ },
+ "mclaren-park": {
+  "photo": "/img/us/sf/places/mclaren-park.jpg",
+  "source": "Wikimedia Commons",
+  "file": "File:2024_Aerial_of_San_Francisco_John_McLaren_Park_With_Boundary.jpg",
+  "file_url": "https://commons.wikimedia.org/wiki/File:2024_Aerial_of_San_Francisco_John_McLaren_Park_With_Boundary.jpg",
+  "license": "CC0",
+  "license_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+  "author": "SFHistoryNerd",
+  "fetched_at": "2026-07-20T22:16:04.748685+00:00"
+ },
+ "san-francisco-zoo": {
+  "photo": "/img/us/sf/places/san-francisco-zoo.jpg",
+  "source": "Wikimedia Commons",
+  "file": "File:San_Francisco_Zoo_logo.jpg",
+  "file_url": "https://commons.wikimedia.org/wiki/File:San_Francisco_Zoo_logo.jpg",
+  "license": "Public domain",
+  "license_url": "",
+  "author": "San Francisco Zoo",
+  "fetched_at": "2026-07-20T22:17:01.923198+00:00"
+ },
+ "marina-green": {
+  "photo": "/img/us/sf/places/marina-green.jpg",
+  "source": "Wikimedia Commons",
+  "file": "File:Marina_Gree_Kite_Festival.jpg",
+  "file_url": "https://commons.wikimedia.org/wiki/File:Marina_Gree_Kite_Festival.jpg",
+  "license": "CC BY 2.0",
+  "license_url": "https://creativecommons.org/licenses/by/2.0",
+  "author": "Lana",
+  "fetched_at": "2026-07-20T22:17:03.886604+00:00"
+ },
+ "laguna-honda-hospital": {
+  "photo": "/img/us/sf/places/laguna-honda-hospital.jpg",
+  "source": "Wikimedia Commons",
+  "file": "File:Laguna_Honda_Hospital_from_Forest_Hill_Extension,_August_2020_(cropped).JPG",
+  "file_url": "https://commons.wikimedia.org/wiki/File:Laguna_Honda_Hospital_from_Forest_Hill_Extension,_August_2020_(cropped).JPG",
+  "license": "CC BY-SA 4.0",
+  "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+  "author": "Pi.1415926535",
+  "fetched_at": "2026-07-20T22:18:06.469792+00:00"
+ },
+ "moscone-center": {
+  "photo": "/img/us/sf/places/moscone-center.jpg",
+  "source": "Wikimedia Commons",
+  "file": "File:Moscone_South_entrance_and_Howard_St._footbridge_-_Dec._2025.jpg",
+  "file_url": "https://commons.wikimedia.org/wiki/File:Moscone_South_entrance_and_Howard_St._footbridge_-_Dec._2025.jpg",
+  "license": "CC BY-SA 4.0",
+  "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+  "author": "9yz",
+  "fetched_at": "2026-07-20T22:19:03.724145+00:00"
+ },
+ "de-young-museum": {
+  "photo": "/img/us/sf/places/de-young-museum.jpg",
+  "source": "Wikimedia Commons",
+  "file": "File:Famsf-logo-2024.png",
+  "file_url": "https://commons.wikimedia.org/wiki/File:Famsf-logo-2024.png",
+  "license": "Public domain",
+  "license_url": "",
+  "author": "Fine Arts Museums of San Francisco (FAMSF)",
+  "fetched_at": "2026-07-20T22:19:05.809593+00:00"
+ },
+ "legion-of-honor": {
+  "photo": "/img/us/sf/places/legion-of-honor.jpg",
+  "source": "Wikimedia Commons",
+  "file": "File:Famsf-logo-2024.png",
+  "file_url": "https://commons.wikimedia.org/wiki/File:Famsf-logo-2024.png",
+  "license": "Public domain",
+  "license_url": "",
+  "author": "Fine Arts Museums of San Francisco (FAMSF)",
+  "fetched_at": "2026-07-20T22:19:07.090914+00:00"
+ },
+ "pier-70": {
+  "photo": "/img/us/sf/places/pier-70.jpg",
+  "source": "Wikimedia Commons",
+  "file": "File:Aerial_view_of_the_Union_Iron_Works,_San_Francisco,_California_(USA),_circa_in_1918_(NH_42535).jpg",
+  "file_url": "https://commons.wikimedia.org/wiki/File:Aerial_view_of_the_Union_Iron_Works,_San_Francisco,_California_(USA),_circa_in_1918_(NH_42535).jpg",
+  "license": "Public domain",
+  "license_url": "",
+  "author": "Unknown",
+  "fetched_at": "2026-07-20T22:20:02.170158+00:00"
+ },
+ "pier-39": {
+  "photo": "/img/us/sf/places/pier-39.jpg",
+  "source": "Wikimedia Commons",
+  "file": "File:Pier_39_in_2021.jpg",
+  "file_url": "https://commons.wikimedia.org/wiki/File:Pier_39_in_2021.jpg",
+  "license": "CC BY-SA 4.0",
+  "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+  "author": "Chris6d",
+  "fetched_at": "2026-07-20T22:20:03.993593+00:00"
+ },
+ "mission-dolores-park": {
+  "photo": "/img/us/sf/places/mission-dolores-park.jpg",
+  "source": "Wikimedia Commons",
+  "file": "File:Dolores_Park_May_2025.jpg",
+  "file_url": "https://commons.wikimedia.org/wiki/File:Dolores_Park_May_2025.jpg",
+  "license": "CC0",
+  "license_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+  "author": "Alexwennerberg",
+  "fetched_at": "2026-07-20T22:22:27.531216+00:00"
+ },
+ "union-square": {
+  "photo": "/img/us/sf/places/union-square.jpg",
+  "source": "Wikimedia Commons",
+  "file": "File:San_Francisco_Union_Square.jpg",
+  "file_url": "https://commons.wikimedia.org/wiki/File:San_Francisco_Union_Square.jpg",
+  "license": "CC BY-SA 4.0",
+  "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+  "author": "Lordsamp",
+  "fetched_at": "2026-07-20T22:22:30.366230+00:00"
+ },
+ "portsmouth-square": {
+  "photo": "/img/us/sf/places/portsmouth-square.jpg",
+  "source": "Wikimedia Commons",
+  "file": "File:Portsmouth_Square_1.JPG",
+  "file_url": "https://commons.wikimedia.org/wiki/File:Portsmouth_Square_1.JPG",
+  "license": "CC BY-SA 4.0",
+  "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+  "author": "BrokenSphere",
+  "fetched_at": "2026-07-20T22:23:07.114811+00:00"
+ },
+ "glen-canyon-park": {
+  "photo": "/img/us/sf/places/glen-canyon-park.jpg",
+  "source": "Wikimedia Commons",
+  "file": "File:GlenCanyonPark_Satellite_Photo.jpg",
+  "file_url": "https://commons.wikimedia.org/wiki/File:GlenCanyonPark_Satellite_Photo.jpg",
+  "license": "Public domain",
+  "license_url": "",
+  "author": "Unknown",
+  "fetched_at": "2026-07-20T22:23:09.978096+00:00"
+ },
+ "conservatory-of-flowers": {
+  "photo": "/img/us/sf/places/conservatory-of-flowers.jpg",
+  "source": "Wikimedia Commons",
+  "file": "File:Conservatory_of_Flowers_-_panoramio.jpg",
+  "file_url": "https://commons.wikimedia.org/wiki/File:Conservatory_of_Flowers_-_panoramio.jpg",
+  "license": "CC BY-SA 3.0",
+  "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
+  "author": "harley photo",
+  "fetched_at": "2026-07-20T22:23:17.122441+00:00"
+ },
+ "japanese-tea-garden": {
+  "photo": "/img/us/sf/places/japanese-tea-garden.jpg",
+  "source": "Wikimedia Commons",
+  "file": "File:Japanese_tea_garden_Golden_Gate_Park.JPG",
+  "file_url": "https://commons.wikimedia.org/wiki/File:Japanese_tea_garden_Golden_Gate_Park.JPG",
+  "license": "CC BY 3.0",
+  "license_url": "https://creativecommons.org/licenses/by/3.0",
+  "author": "Asamudra (talk)",
+  "fetched_at": "2026-07-20T22:24:05.142916+00:00"
+ },
+ "lake-merced": {
+  "photo": "/img/us/sf/places/lake-merced.jpg",
+  "source": "Wikimedia Commons",
+  "file": "File:Lake_Merced_at_SFSU.jpg",
+  "file_url": "https://commons.wikimedia.org/wiki/File:Lake_Merced_at_SFSU.jpg",
+  "license": "CC BY 2.0",
+  "license_url": "https://creativecommons.org/licenses/by/2.0",
+  "author": "Isabell Schulz",
+  "fetched_at": "2026-07-20T22:24:08.239351+00:00"
+ },
+ "sf-main-library": {
+  "photo": "/img/us/sf/places/sf-main-library.jpg",
+  "source": "Wikimedia Commons",
+  "file": "File:SFPL_Main_Library_Full_Exterior.jpg",
+  "file_url": "https://commons.wikimedia.org/wiki/File:SFPL_Main_Library_Full_Exterior.jpg",
+  "license": "CC BY-SA 3.0",
+  "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
+  "author": "J. Ash Bowie",
+  "fetched_at": "2026-07-20T22:24:13.527899+00:00"
+ },
+ "sf-city-hall": {
+  "photo": "/img/us/sf/places/sf-city-hall.jpg",
+  "source": "Wikimedia Commons",
+  "file": "File:San_Francisco_City_Hall_2.JPG",
+  "file_url": "https://commons.wikimedia.org/wiki/File:San_Francisco_City_Hall_2.JPG",
+  "license": "CC BY-SA 3.0",
+  "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
+  "author": "Sanfranman59",
+  "fetched_at": "2026-07-20T22:26:09.091646+00:00"
+ },
+ "davies-symphony-hall": {
+  "photo": "/img/us/sf/places/davies-symphony-hall.jpg",
+  "source": "Wikimedia Commons",
+  "file": "File:Daviessymphonyhall.jpg",
+  "file_url": "https://commons.wikimedia.org/wiki/File:Daviessymphonyhall.jpg",
+  "license": "CC BY-SA 3.0",
+  "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
+  "author": "J. Ash Bowie",
+  "fetched_at": "2026-07-20T22:27:09.635873+00:00"
+ },
+ "bill-graham-civic-auditorium": {
+  "photo": "/img/us/sf/places/bill-graham-civic-auditorium.jpg",
+  "source": "Wikimedia Commons",
+  "file": "File:Grahamauditorium.jpg",
+  "file_url": "https://commons.wikimedia.org/wiki/File:Grahamauditorium.jpg",
+  "license": "CC BY-SA 3.0",
+  "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
+  "author": "J. Ash Bowie",
+  "fetched_at": "2026-07-20T22:27:12.541191+00:00"
+ },
+ "hetch-hetchy": {
+  "photo": "/img/us/sf/places/hetch-hetchy.jpg",
+  "source": "Wikimedia Commons",
+  "file": "File:Hetch_Hetchy_Valley.jpg",
+  "file_url": "https://commons.wikimedia.org/wiki/File:Hetch_Hetchy_Valley.jpg",
+  "license": "Public domain",
+  "license_url": "",
+  "author": "Isaiah West Taber",
+  "fetched_at": "2026-07-20T22:28:02.825991+00:00"
+ },
+ "sunol-water-temple": {
+  "photo": "/img/us/sf/places/sunol-water-temple.jpg",
+  "source": "Wikimedia Commons",
+  "file": "File:Sunol_water_temple.JPG",
+  "file_url": "https://commons.wikimedia.org/wiki/File:Sunol_water_temple.JPG",
+  "license": "CC BY-SA 3.0",
+  "license_url": "http://creativecommons.org/licenses/by-sa/3.0/",
+  "author": "Ike9898 at English Wikipedia",
+  "fetched_at": "2026-07-20T22:28:05.679509+00:00"
+ },
+ "ferry-building": {
+  "photo": "/img/us/sf/places/ferry-building.jpg",
+  "source": "Wikimedia Commons",
+  "file": "File:San_Francisco_Ferry_Building_(cropped).jpg",
+  "file_url": "https://commons.wikimedia.org/wiki/File:San_Francisco_Ferry_Building_(cropped).jpg",
+  "license": "CC BY-SA 4.0",
+  "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+  "author": "JaGa",
+  "fetched_at": "2026-07-20T22:28:11.570622+00:00"
+ },
+ "cable-car-barn": {
+  "photo": "/img/us/sf/places/cable-car-barn.jpg",
+  "source": "Wikimedia Commons",
+  "file": "File:Exterior_of_the_Ferries_and_Cliff_House_Railway_Co._Building_Constructed_in_1887.jpg",
+  "file_url": "https://commons.wikimedia.org/wiki/File:Exterior_of_the_Ferries_and_Cliff_House_Railway_Co._Building_Constructed_in_1887.jpg",
+  "license": "CC BY-SA 4.0",
+  "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+  "author": "Jaredzimmerman (WMF)",
+  "fetched_at": "2026-07-20T22:29:06.096156+00:00"
+ },
+ "balboa-park-station": {
+  "photo": "/img/us/sf/places/balboa-park-station.jpg",
+  "source": "Wikimedia Commons",
+  "file": "File:Two_trains_at_Balboa_Park_station,_July_2023.jpg",
+  "file_url": "https://commons.wikimedia.org/wiki/File:Two_trains_at_Balboa_Park_station,_July_2023.jpg",
+  "license": "CC BY-SA 4.0",
+  "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+  "author": "Pi.1415926535",
+  "fetched_at": "2026-07-20T22:29:08.959216+00:00"
+ }
+}

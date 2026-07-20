@@ -1,0 +1,221 @@
+{
+ "generated_at": "2026-07-20T22:30:00.101446+00:00",
+ "source_pipeline": "sf_place_candidates.json → sync_ia_sf.py + link_sf_places.py + fetch_sf_place_photos.py → export_sf_places.py",
+ "unit": "USD",
+ "slug": "coit-tower",
+ "name": "Coit Tower",
+ "kind": "Monument / park",
+ "family": "park",
+ "address": "1 Telegraph Hill Blvd",
+ "lat": 37.8024,
+ "lon": -122.4058,
+ "owning_dept": {
+  "name": "Recreation and Park Department",
+  "code": "REC"
+ },
+ "photo": "/img/us/sf/places/coit-tower.jpg",
+ "photo_credit": {
+  "photo": "/img/us/sf/places/coit-tower.jpg",
+  "source": "Wikimedia Commons",
+  "file": "File:Coit_Tower_1.jpg",
+  "file_url": "https://commons.wikimedia.org/wiki/File:Coit_Tower_1.jpg",
+  "license": "CC0",
+  "license_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+  "author": "Ryan Schwark",
+  "fetched_at": "2026-07-20T22:15:26.184268+00:00"
+ },
+ "summary_en": "The Coit Tower record is built around its art and preservation history: a 1989 Historic Structure Report by the Arts Commission, city art-collection surveys from 1953 and 1975, and Art Commission minutes going back to 1934 documenting the tower's murals, plus a 1983 Board of Supervisors landmark ordinance for the Lillie Hitchcock Coit Tower. Later items track mural restoration and site management, including a Board resolution recording a $662,400 agreement with Coit Tower, LLC to operate and manage the site. Coit Tower is operated by the Recreation and Park Department, whose FY2025 budget line totals about $250M.",
+ "published": true,
+ "money": {
+  "budget_line": {
+   "code": "REC",
+   "name": "Recreation & Parks",
+   "total_usd": 250373849.0,
+   "fiscal_year": 2025
+  },
+  "contracts": [],
+  "grants": []
+ },
+ "documents": [
+  {
+   "identifier": "historicstructur01arts",
+   "title": "Historic structure report : Coit Tower, San Francisco, California",
+   "creator": "Arts Commission of San Francisco",
+   "year": 1989,
+   "pool": "sfpl",
+   "matched_alias": "Coit Tower",
+   "snippet": "became «Pioneer Park». In 1883 a company, headed by Gustav Sutro, erected the «Pioneer Park» Observatory",
+   "url": "https://archive.org/details/historicstructur01arts",
+   "deep_link": "https://archive.org/details/historicstructur01arts?q=Coit+Tower",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+  },
+  {
+   "identifier": "sanfranciscocivi00arts",
+   "title": "San Francisco civic art collection : a guided tour to publicly owned art of the City and County of San Francisco",
+   "creator": "Arts Commission of San Francisco",
+   "year": 1989,
+   "pool": "sfpl",
+   "matched_alias": "Coit Tower",
+   "snippet": "bordered by a marble ring. 36 «Coit Tower»: The murals of «Coit Tower» play a very important role",
+   "url": "https://archive.org/details/sanfranciscocivi00arts",
+   "deep_link": "https://archive.org/details/sanfranciscocivi00arts?q=Coit+Tower",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+  },
+  {
+   "identifier": "minutesrecreatio1986sanf",
+   "title": "Minutes / Recreation and Park Commission",
+   "creator": "San Francisco (Calif.). Recreation and Park Commission",
+   "year": 1986,
+   "pool": "sfpl",
+   "matched_alias": "Coit Tower",
+   "snippet": "State Bond Act funds for restoration of «Coit Tower» Murals BROOKS PARK RES. 14210 - Final Payment",
+   "url": "https://archive.org/details/minutesrecreatio1986sanf",
+   "deep_link": "https://archive.org/details/minutesrecreatio1986sanf?q=Coit+Tower",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+  },
+  {
+   "identifier": "journalofproceed78julydecsanfrich",
+   "title": "Journal of proceedings, Board of Supervisors, City and County of San Francisco",
+   "creator": "San Francisco (Calif.). Board of Supervisors",
+   "year": 1983,
+   "pool": "sfpl",
+   "matched_alias": "Lillie Hitchcock Coit",
+   "snippet": "[Landmark) Ordinance designating the «Lillie Hitchcock Coit» Tower, located on Telegraph Hill Boulevard",
+   "url": "https://archive.org/details/journalofproceed78julydecsanfrich",
+   "deep_link": "https://archive.org/details/journalofproceed78julydecsanfrich?q=Lillie+Hitchcock+Coit",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+  },
+  {
+   "identifier": "surveyofartworki1975snip",
+   "title": "A survey of art work in the City and County of San Francisco",
+   "creator": "Snipper, Martin, 1914-,Konigsberg, Joyce,San Francisco (Calif.). Art Commission",
+   "year": 1975,
+   "pool": "sfpl",
+   "matched_alias": "Coit Tower",
+   "snippet": "Street - outside wall of the building. «COIT TOWER» 254. CHRISTOPHER COLUMBUS Medium, Size and",
+   "url": "https://archive.org/details/surveyofartworki1975snip",
+   "deep_link": "https://archive.org/details/surveyofartworki1975snip?q=Coit+Tower",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+  },
+  {
+   "identifier": "surveyofartworki1953sanf",
+   "title": "A survey of art work in the City and County of San Francisco",
+   "creator": "San Francisco (Calif.). Art Commission,Snipper, Martin, 1914-",
+   "year": 1953,
+   "pool": "sfpl",
+   "matched_alias": "Coit Tower",
+   "snippet": "Camo to tho U.S. in 1920. Frescoes in «Coit Tower», TJhivorsi-ty of California Medical School",
+   "url": "https://archive.org/details/surveyofartworki1953sanf",
+   "deep_link": "https://archive.org/details/surveyofartworki1953sanf?q=Coit+Tower",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+  },
+  {
+   "identifier": "annualreportarts2012arts",
+   "title": "Annual report / Arts Commission of San Francisco",
+   "creator": "Arts Commission of San Francisco",
+   "year": null,
+   "pool": "sfpl",
+   "matched_alias": "Coit Tower",
+   "snippet": "(detail), «Coit Tower», 1934; fresco. Visit us at sfartscommission.org sfoc Saving the «Coit Tower» Murals",
+   "url": "https://archive.org/details/annualreportarts2012arts",
+   "deep_link": "https://archive.org/details/annualreportarts2012arts?q=Coit+Tower",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+  },
+  {
+   "identifier": "resolution2014sanf",
+   "title": "Resolution",
+   "creator": "San Francisco (Calif.). Board of Supervisors",
+   "year": null,
+   "pool": "sfpl",
+   "matched_alias": "Coit Tower",
+   "snippet": "$662,400, with «Coit Tower», LLC, for the operation and management of «Coit Tower» and reaffirming",
+   "url": "https://archive.org/details/resolution2014sanf",
+   "deep_link": "https://archive.org/details/resolution2014sanf?q=Coit+Tower",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+  },
+  {
+   "identifier": "minutesofartcomm1934sanf",
+   "title": "Minutes of Art Commission of the City and County of San Francisco",
+   "creator": "San Francisco (Calif.). Art Commission",
+   "year": null,
+   "pool": "sfpl",
+   "matched_alias": "Coit Tower",
+   "snippet": "Balboa High School. Tentatively approved. FOR «COIT TOWER» VESTIBULE. 4 Panels and 2 small lunetts",
+   "url": "https://archive.org/details/minutesofartcomm1934sanf",
+   "deep_link": "https://archive.org/details/minutesofartcomm1934sanf?q=Coit+Tower",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+  },
+  {
+   "identifier": "minutesrecreatio1982sanf",
+   "title": "Minutes / Recreation and Park Commission",
+   "creator": "San Francisco (Calif.). Recreation and Park Commission",
+   "year": null,
+   "pool": "sfpl",
+   "matched_alias": "Coit Tower",
+   "snippet": "the July Commission Meeting. «Coit Tower» Report - «Coit Tower» Gift Shop Mr. Malloy will present",
+   "url": "https://archive.org/details/minutesrecreatio1982sanf",
+   "deep_link": "https://archive.org/details/minutesrecreatio1982sanf?q=Coit+Tower",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+  }
+ ],
+ "dept_shelf": [
+  {
+   "identifier": "managementaudito2006sanf",
+   "title": "Management audit of the Recreation and Park Department",
+   "year": 2006,
+   "pool": "sfpl",
+   "url": "https://archive.org/details/managementaudito2006sanf"
+  },
+  {
+   "identifier": "newdeyoungmuseum2220sanf",
+   "title": "New de Young Museum project : environmental impact report : draft summary of comments and responses",
+   "year": 2000,
+   "pool": "sfpl",
+   "url": "https://archive.org/details/newdeyoungmuseum2220sanf"
+  },
+  {
+   "identifier": "0agenda19992002sanf",
+   "title": "Agenda",
+   "year": 1999,
+   "pool": "sfpl",
+   "url": "https://archive.org/details/0agenda19992002sanf"
+  },
+  {
+   "identifier": "reporttoboardofs1980sanf",
+   "title": "Report to the Board of Supervisors of the City and County of San Francisco : review of the operations of the San Francisco Recreation and Park Department",
+   "year": 1979,
+   "pool": "sfpl",
+   "url": "https://archive.org/details/reporttoboardofs1980sanf"
+  },
+  {
+   "identifier": "annualreport197277sanf",
+   "title": "Annual report of the San Francisco Recreation and Park Department",
+   "year": null,
+   "pool": "sfpl",
+   "url": "https://archive.org/details/annualreport197277sanf"
+  },
+  {
+   "identifier": "minutesrecreatio1960sanf",
+   "title": "Minutes / Recreation and Park Commission",
+   "year": null,
+   "pool": "sfpl",
+   "url": "https://archive.org/details/minutesrecreatio1960sanf"
+  }
+ ],
+ "sources": [
+  {
+   "label": "City budget & payments",
+   "note": "SF Controller open data (budget, vouchers, contracts)"
+  },
+  {
+   "label": "Historical documents",
+   "note": "Internet Archive — SFPL partnership scans + Democracy's Library"
+  }
+ ],
+ "_gate": {
+  "has_photo": true,
+  "n_documents": 10,
+  "n_money_links": 1,
+  "meets_pre_summary": true
+ }
+}

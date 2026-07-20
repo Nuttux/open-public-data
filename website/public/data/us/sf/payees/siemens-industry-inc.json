@@ -1,0 +1,148 @@
+{
+ "generated_at": "2026-07-20T22:34:47.733949+00:00",
+ "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
+ "as_of": "2026-07-13T13:40:40+00:00",
+ "unit": "USD",
+ "slug": "siemens-industry-inc",
+ "name": "Siemens Industry Inc",
+ "kind": "supplier",
+ "is_non_profit": false,
+ "total_paid_usd": 233100278.57,
+ "n_years": 21,
+ "first_year": 2007,
+ "last_year": 2027,
+ "by_year": {
+  "2007": 1022073.2,
+  "2008": 277793.5,
+  "2009": 883455.7,
+  "2010": 619406.2,
+  "2011": 1075809.4,
+  "2012": 6011516.0,
+  "2013": 4900453.9,
+  "2014": 2382725.3,
+  "2015": 1748678.5,
+  "2016": 13912778.0,
+  "2017": 21839895.1,
+  "2018": 104412954.31,
+  "2019": 60485000.2,
+  "2020": 2196830.8,
+  "2021": 1966540.25,
+  "2022": 1639307.62,
+  "2023": 1939163.17,
+  "2024": 1649902.31,
+  "2025": 2122845.03,
+  "2026": 2007593.1,
+  "2027": 5556.98
+ },
+ "top_departments": [
+  "MTA Municipal Transprtn Agncy"
+ ],
+ "contracts_held": [
+  {
+   "contract_no": "1000024497",
+   "title": "FP/FA System Eqpt Maint",
+   "department": "ADM GSA - City Administrator",
+   "department_code": "ADM",
+   "agreed_usd": 3109980.0,
+   "paid_usd": 977646.7,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000024801",
+   "title": "2021-69 - Siemens",
+   "department": "MTA Municipal Transprtn Agncy",
+   "department_code": "MTA",
+   "agreed_usd": 975000.0,
+   "paid_usd": 438774.56,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000033966",
+   "title": "Maintain Equip.Software",
+   "department": "DPH Public Health",
+   "department_code": "DPH",
+   "agreed_usd": 5809860.0,
+   "paid_usd": 346560.0,
+   "sole_source": true
+  },
+  {
+   "contract_no": "1000031698",
+   "title": "MST As-Needed Fire Protect",
+   "department": "PUC Public Utilities Commsn",
+   "department_code": "PUC",
+   "agreed_usd": 750000.0,
+   "paid_usd": 134180.93,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000030105",
+   "title": "OCME BMS Maintenance",
+   "department": "ADM GSA - City Administrator",
+   "department_code": "ADM",
+   "agreed_usd": 200450.0,
+   "paid_usd": 119008.65,
+   "sole_source": true
+  },
+  {
+   "contract_no": "1000033582",
+   "title": "SFPL Fire Sprinkler",
+   "department": "LIB Public Library",
+   "department_code": "LIB",
+   "agreed_usd": 400174.0,
+   "paid_usd": 90624.5,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000035239",
+   "title": "Life Safety System Mainten",
+   "department": "WAR War Memorial",
+   "department_code": "WAR",
+   "agreed_usd": 407516.0,
+   "paid_usd": 73017.0,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000036369",
+   "title": "FY26-FY27 Siemens Emergency",
+   "department": "WAR War Memorial",
+   "department_code": "WAR",
+   "agreed_usd": 80000.0,
+   "paid_usd": 16881.63,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000030529",
+   "title": "MST As-Needed Maint & Intg",
+   "department": "PUC Public Utilities Commsn",
+   "department_code": "PUC",
+   "agreed_usd": 2000000.0,
+   "paid_usd": 15586.87,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000034257",
+   "title": "As-Needed PWR Opertns Sprt",
+   "department": "PUC Public Utilities Commsn",
+   "department_code": "PUC",
+   "agreed_usd": 2000000.0,
+   "paid_usd": 0.0,
+   "sole_source": false
+  }
+ ],
+ "n_contracts_held": 10,
+ "variants": [
+  {
+   "name": "SIEMENS INDUSTRY INC",
+   "total": 233100278.57
+  }
+ ],
+ "n_variants": 1,
+ "merges": [],
+ "source": {
+  "name": "Vendor Payments (Vouchers)",
+  "dataset_id": "n9pm-xkyq",
+  "source_url": "https://data.sfgov.org/d/n9pm-xkyq",
+  "attribution": "SF Controller's Office",
+  "rows_updated_at": "2026-07-13T13:40:40+00:00"
+ }
+}

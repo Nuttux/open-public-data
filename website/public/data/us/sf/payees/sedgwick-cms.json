@@ -1,0 +1,45 @@
+{
+ "generated_at": "2026-07-20T22:34:47.740190+00:00",
+ "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
+ "as_of": "2026-07-13T13:40:40+00:00",
+ "unit": "USD",
+ "slug": "sedgwick-cms",
+ "name": "Sedgwick Cms",
+ "kind": "supplier",
+ "is_non_profit": false,
+ "total_paid_usd": 149913523.24,
+ "n_years": 9,
+ "first_year": 2007,
+ "last_year": 2024,
+ "by_year": {
+  "2007": 25110081.5,
+  "2008": 20733761.4,
+  "2009": 21800211.5,
+  "2010": 19431302.8,
+  "2011": 22098997.0,
+  "2012": 24075400.6,
+  "2013": 16269507.9,
+  "2014": 388486.1,
+  "2024": 5774.44
+ },
+ "top_departments": [
+  "MTA Municipal Transprtn Agncy"
+ ],
+ "contracts_held": [],
+ "n_contracts_held": 0,
+ "variants": [
+  {
+   "name": "SEDGWICK CMS",
+   "total": 149913523.24
+  }
+ ],
+ "n_variants": 1,
+ "merges": [],
+ "source": {
+  "name": "Vendor Payments (Vouchers)",
+  "dataset_id": "n9pm-xkyq",
+  "source_url": "https://data.sfgov.org/d/n9pm-xkyq",
+  "attribution": "SF Controller's Office",
+  "rows_updated_at": "2026-07-13T13:40:40+00:00"
+ }
+}

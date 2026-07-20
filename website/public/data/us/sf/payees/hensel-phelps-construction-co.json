@@ -1,0 +1,65 @@
+{
+ "generated_at": "2026-07-20T22:34:47.726394+00:00",
+ "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
+ "as_of": "2026-07-13T13:40:40+00:00",
+ "unit": "USD",
+ "slug": "hensel-phelps-construction-co",
+ "name": "Hensel Phelps Construction Co",
+ "kind": "supplier",
+ "is_non_profit": false,
+ "total_paid_usd": 2300929816.57,
+ "n_years": 19,
+ "first_year": 2008,
+ "last_year": 2027,
+ "by_year": {
+  "2008": 3674171.5,
+  "2009": 11685065.2,
+  "2011": 2030353.0,
+  "2012": 4385397.0,
+  "2013": 48186338.0,
+  "2014": 165889965.4,
+  "2015": 153079373.1,
+  "2016": 118383411.1,
+  "2017": 133768111.2,
+  "2018": 16378085.0,
+  "2019": 73245078.95,
+  "2020": 63769729.62,
+  "2021": 436479306.15,
+  "2022": 112019823.0,
+  "2023": 311021107.0,
+  "2024": 273985669.93,
+  "2025": 293545056.01,
+  "2026": 79191609.41,
+  "2027": 212166.0
+ },
+ "top_departments": [
+  "AIR Airport Commission"
+ ],
+ "contracts_held": [
+  {
+   "contract_no": "1000009505",
+   "title": "10072.66Courtyard Connecto",
+   "department": "AIR Airport Commission",
+   "department_code": "AIR",
+   "agreed_usd": 278072843.09,
+   "paid_usd": 346746961.3,
+   "sole_source": false
+  }
+ ],
+ "n_contracts_held": 1,
+ "variants": [
+  {
+   "name": "HENSEL PHELPS CONSTRUCTION CO",
+   "total": 2300929816.57
+  }
+ ],
+ "n_variants": 1,
+ "merges": [],
+ "source": {
+  "name": "Vendor Payments (Vouchers)",
+  "dataset_id": "n9pm-xkyq",
+  "source_url": "https://data.sfgov.org/d/n9pm-xkyq",
+  "attribution": "SF Controller's Office",
+  "rows_updated_at": "2026-07-13T13:40:40+00:00"
+ }
+}

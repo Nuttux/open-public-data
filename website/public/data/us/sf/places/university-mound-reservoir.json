@@ -1,0 +1,260 @@
+{
+ "generated_at": "2026-07-20T22:30:00.120578+00:00",
+ "source_pipeline": "sf_place_candidates.json → sync_ia_sf.py + link_sf_places.py + fetch_sf_place_photos.py → export_sf_places.py",
+ "unit": "USD",
+ "slug": "university-mound-reservoir",
+ "name": "University Mound Reservoir",
+ "kind": "Reservoir",
+ "family": "water",
+ "address": "770 Woolsey St",
+ "lat": 37.7248,
+ "lon": -122.4033,
+ "owning_dept": {
+  "name": "Public Utilities Commission",
+  "code": "PUC"
+ },
+ "photo": null,
+ "photo_credit": null,
+ "summary_en": null,
+ "published": false,
+ "money": {
+  "budget_line": {
+   "code": "PUC",
+   "name": "Public Utilities Commission (water, power, sewer)",
+   "total_usd": 1802973252.0,
+   "fiscal_year": 2025
+  },
+  "contracts": [],
+  "grants": []
+ },
+ "documents": [
+  {
+   "identifier": "facilitiesreliab2000wate",
+   "title": "Facilities reliability program : phase II : regional system overview",
+   "creator": "Water Reliability Partnership",
+   "year": 2000,
+   "pool": "sfpl",
+   "matched_alias": "University Mound Reservoir",
+   "snippet": "either «University Mound Reservoir» or Sunset Reservoir. «University Mound Reservoir» provides",
+   "url": "https://archive.org/details/facilitiesreliab2000wate",
+   "deep_link": "https://archive.org/details/facilitiesreliab2000wate?q=University+Mound+Reservoir",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+  },
+  {
+   "identifier": "sanfranciscowate1935sanf",
+   "title": "San Francisco water and power",
+   "creator": "San Francisco Public Utilities Commission,Cheminant, L",
+   "year": 1935,
+   "pool": "sfpl",
+   "matched_alias": "University Mound Reservoir",
+   "snippet": "Springs reservoir is transmitted to «University • Mound reservoir» in San Francisco, at elev. 172",
+   "url": "https://archive.org/details/sanfranciscowate1935sanf",
+   "deep_link": "https://archive.org/details/sanfranciscowate1935sanf?q=University+Mound+Reservoir",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+  },
+  {
+   "identifier": "sanfranciscowate00sanf",
+   "title": "San Francisco water and power",
+   "creator": "San Francisco Public Utilities Commission,Cheminant, L",
+   "year": 1935,
+   "pool": "sfpl",
+   "matched_alias": "University Mound Reservoir",
+   "snippet": "Springs reservoir is transmitted to «University Mound reservoir» in San Francisco, at elev. 172",
+   "url": "https://archive.org/details/sanfranciscowate00sanf",
+   "deep_link": "https://archive.org/details/sanfranciscowate00sanf?q=University+Mound+Reservoir",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+  },
+  {
+   "identifier": "reportofsanfranc1931sanf",
+   "title": "Report of the San Francisco Public Utilities Commission",
+   "creator": "San Francisco Public Utilities Commission,San Francisco (Calif.). Water Dept,Hetch Hetchy Water Supply,San Francisco (Calif.). Bureau of Light, Heat and Power,San Francisco Public Utilities Commission. Airport Dept,San Francisco (Calif.). Electric Power Bureau,San Francisco Municipal Railway,San Francisco (Calif.). Street and Public Building Lighting Dept",
+   "year": 1933,
+   "pool": "sfpl",
+   "matched_alias": "University Mound Reservoir",
+   "snippet": "Springs-University Mound Pipe Line 80 «University Mound Reservoir» Addition 81 Sunset Reservoir and",
+   "url": "https://archive.org/details/reportofsanfranc1931sanf",
+   "deep_link": "https://archive.org/details/reportofsanfranc1931sanf?q=University+Mound+Reservoir",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+  },
+  {
+   "identifier": "reportofsanfranc1936sanf",
+   "title": "Report of the San Francisco Public Utilities Commission",
+   "creator": "San Francisco Public Utilities Commission,San Francisco (Calif.). Water Dept,Hetch Hetchy Water Supply,San Francisco (Calif.). Bureau of Light, Heat and Power,San Francisco Public Utilities Commission. Airport Dept,San Francisco (Calif.). Electric Power Bureau,San Francisco Municipal Railway,San Francisco (Calif.). Street and Public Building Lighting Dept",
+   "year": 1933,
+   "pool": "sfpl",
+   "matched_alias": "University Mound Reservoir",
+   "snippet": "Springs-University Mound Pipe Line No. 2 34 «University Mound Reservoir» Addition 36 Sunset Reservoir and",
+   "url": "https://archive.org/details/reportofsanfranc1936sanf",
+   "deep_link": "https://archive.org/details/reportofsanfranc1936sanf?q=University+Mound+Reservoir",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+  },
+  {
+   "identifier": "reportofsanfranc1937sanf",
+   "title": "Report of the San Francisco Public Utilities Commission",
+   "creator": "San Francisco Public Utilities Commission,San Francisco (Calif.). Water Dept,Hetch Hetchy Water Supply,San Francisco (Calif.). Bureau of Light, Heat and Power,San Francisco Public Utilities Commission. Airport Dept,San Francisco (Calif.). Electric Power Bureau,San Francisco Municipal Railway,San Francisco (Calif.). Street and Public Building Lighting Dept",
+   "year": 1933,
+   "pool": "sfpl",
+   "matched_alias": "University Mound Reservoir",
+   "snippet": "Springs-University Mound Pipe Line No. 2 45 «University Mound Reservoir» Addition 46 Sunset Reservoir and",
+   "url": "https://archive.org/details/reportofsanfranc1937sanf",
+   "deep_link": "https://archive.org/details/reportofsanfranc1937sanf?q=University+Mound+Reservoir",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+  },
+  {
+   "identifier": "springvalleywate06spri",
+   "title": "Spring Valley Water Company, plaintiff, vs. City and County of San Francisco, et al., defendants. Nos. 14,735; 14,892; 15,131; 15,344; 15,569, Circuit Court of U.S., Ninth Judicial Circuit, Northern District of California, and 26 and 96 District Court of U.S., Northern District of California, second division. Abstract of testimony [and oral arguments] taken before Honorable H.M. Wright",
+   "creator": "Spring Valley Water Company (San Francisco, Calif.), plaintiff,San Francisco (Calif.), defendant",
+   "year": 1916,
+   "pool": "sfpl",
+   "matched_alias": "University Mound Reservoir",
+   "snippet": "marked ''Plaintiff's Exhibit 144\". «University Mound Reservoir» : On the excavation I used a",
+   "url": "https://archive.org/details/springvalleywate06spri",
+   "deep_link": "https://archive.org/details/springvalleywate06spri?q=University+Mound+Reservoir",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+  },
+  {
+   "identifier": "bulletinofdepart1909sanf",
+   "title": "Bulletin of the Department of Public Health",
+   "creator": "San Francisco (Calif.). Dept. of Public Health,Board of Health of the City and County of San Francisco",
+   "year": 1908,
+   "pool": "sfpl",
+   "matched_alias": "University Mound Reservoir",
+   "snippet": "intake 6 ft. below surface. 709 «University Mound Reservoir» Aug. 2 Clear 23 0.001 0.242 0.022",
+   "url": "https://archive.org/details/bulletinofdepart1909sanf",
+   "deep_link": "https://archive.org/details/bulletinofdepart1909sanf?q=University+Mound+Reservoir",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+  },
+  {
+   "identifier": "bulletin1907sanf",
+   "title": "Bulletin",
+   "creator": "San Francisco (Calif.). Health Dept,Board of Health of the City and County of San Francisco",
+   "year": 1908,
+   "pool": "sfpl",
+   "matched_alias": "University Mound Reservoir",
+   "snippet": "Ammonia -a l.S 11 = 1 & E 9 H a ■ 3 «University Mound Reservoir» Aug. 5 Clear with suspended matter",
+   "url": "https://archive.org/details/bulletin1907sanf",
+   "deep_link": "https://archive.org/details/bulletin1907sanf?q=University+Mound+Reservoir",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+  },
+  {
+   "identifier": "bulletin1908sanf",
+   "title": "Bulletin",
+   "creator": "San Francisco (Calif.). Health Dept,Board of Health of the City and County of San Francisco",
+   "year": 1908,
+   "pool": "sfpl",
+   "matched_alias": "University Mound Reservoir",
+   "snippet": "of Lake, 0 ft. below surface. 440 «University Mound Reservoir». ' Oct. 1 Clear. 268 93 175 26 0.008",
+   "url": "https://archive.org/details/bulletin1908sanf",
+   "deep_link": "https://archive.org/details/bulletin1908sanf?q=University+Mound+Reservoir",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+  },
+  {
+   "identifier": "annualreportofde190708sanf",
+   "title": "Annual report of the Department of Public Health, San Francisco, Cal",
+   "creator": "San Francisco (Calif.). Dept. of Public Health",
+   "year": 1906,
+   "pool": "sfpl",
+   "matched_alias": "University Mound Reservoir",
+   "snippet": "105 203 «University Mound Reservoir» «University Mound Reservoir» «University Mound Reservoir» University",
+   "url": "https://archive.org/details/annualreportofde190708sanf",
+   "deep_link": "https://archive.org/details/annualreportofde190708sanf?q=University+Mound+Reservoir",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+  },
+  {
+   "identifier": "annualreportofde190809sanf",
+   "title": "Annual report of the Department of Public Health, San Francisco, Cal",
+   "creator": "San Francisco (Calif.). Dept. of Public Health",
+   "year": 1906,
+   "pool": "sfpl",
+   "matched_alias": "University Mound Reservoir",
+   "snippet": "Tank «University Mound Reservoir». «University Mound Reservoir». «University Mound Reservoir». LTniversity",
+   "url": "https://archive.org/details/annualreportofde190809sanf",
+   "deep_link": "https://archive.org/details/annualreportofde190809sanf?q=University+Mound+Reservoir",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+  },
+  {
+   "identifier": "reportofsanfranc1953sanf",
+   "title": "Report of the San Francisco Water Department",
+   "creator": "San Francisco (Calif.). Water Dept",
+   "year": null,
+   "pool": "sfpl",
+   "matched_alias": "University Mound Reservoir",
+   "snippet": "3,104 million gallons from the «University Mound Reservoir» into the College Hill and Sunset",
+   "url": "https://archive.org/details/reportofsanfranc1953sanf",
+   "deep_link": "https://archive.org/details/reportofsanfranc1953sanf?q=University+Mound+Reservoir",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+  },
+  {
+   "identifier": "reportofsanfranc1935sanf",
+   "title": "Report of the San Francisco Public Utilities Commission",
+   "creator": "San Francisco Public Utilities Commission,San Francisco (Calif.). Water Dept,Hetch Hetchy Water Supply,San Francisco (Calif.). Bureau of Light, Heat and Power,San Francisco Public Utilities Commission. Airport Dept,San Francisco (Calif.). Electric Power Bureau,San Francisco Municipal Railway,San Francisco (Calif.). Street and Public Building Lighting Dept",
+   "year": null,
+   "pool": "sfpl",
+   "matched_alias": "University Mound Reservoir",
+   "snippet": "No. 2— Contract No. 90 34 3. «University Mound Reservoir» Addition — Contract No. 64 35 Concrete",
+   "url": "https://archive.org/details/reportofsanfranc1935sanf",
+   "deep_link": "https://archive.org/details/reportofsanfranc1935sanf?q=University+Mound+Reservoir",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+  }
+ ],
+ "dept_shelf": [
+  {
+   "identifier": "8minutes1989sanf",
+   "title": "Minutes",
+   "year": null,
+   "pool": "sfpl",
+   "url": "https://archive.org/details/8minutes1989sanf"
+  },
+  {
+   "identifier": "2minutes1987sanf",
+   "title": "Minutes",
+   "year": null,
+   "pool": "sfpl",
+   "url": "https://archive.org/details/2minutes1987sanf"
+  },
+  {
+   "identifier": "agendapublicutil1989sanf",
+   "title": "Agenda / Public Utilities Commission, City and County of San Francisco",
+   "year": null,
+   "pool": "sfpl",
+   "url": "https://archive.org/details/agendapublicutil1989sanf"
+  },
+  {
+   "identifier": "agendapublicutil2008sanf",
+   "title": "Agenda / Public Utilities Commission, City and County of San Francisco",
+   "year": null,
+   "pool": "sfpl",
+   "url": "https://archive.org/details/agendapublicutil2008sanf"
+  },
+  {
+   "identifier": "agendapublicutil1992sanf",
+   "title": "Agenda / Public Utilities Commission, City and County of San Francisco",
+   "year": null,
+   "pool": "sfpl",
+   "url": "https://archive.org/details/agendapublicutil1992sanf"
+  },
+  {
+   "identifier": "aminutes1994sanf",
+   "title": "Minutes",
+   "year": null,
+   "pool": "sfpl",
+   "url": "https://archive.org/details/aminutes1994sanf"
+  }
+ ],
+ "sources": [
+  {
+   "label": "City budget & payments",
+   "note": "SF Controller open data (budget, vouchers, contracts)"
+  },
+  {
+   "label": "Historical documents",
+   "note": "Internet Archive — SFPL partnership scans + Democracy's Library"
+  }
+ ],
+ "_gate": {
+  "has_photo": false,
+  "n_documents": 14,
+  "n_money_links": 1,
+  "meets_pre_summary": false
+ }
+}

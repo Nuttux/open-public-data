@@ -1,0 +1,45 @@
+{
+ "generated_at": "2026-07-20T22:34:47.733782+00:00",
+ "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
+ "as_of": "2026-07-13T13:40:40+00:00",
+ "unit": "USD",
+ "slug": "mccarthy-building-companies-inc",
+ "name": "Mccarthy Building Companies Inc",
+ "kind": "supplier",
+ "is_non_profit": false,
+ "total_paid_usd": 237211296.82,
+ "n_years": 9,
+ "first_year": 2013,
+ "last_year": 2027,
+ "by_year": {
+  "2013": 1275602.0,
+  "2014": 21524863.0,
+  "2015": 2553431.0,
+  "2021": 4333189.0,
+  "2023": 39155122.34,
+  "2024": 35117878.83,
+  "2025": 71980728.58,
+  "2026": 59564512.47,
+  "2027": 1705969.6
+ },
+ "top_departments": [
+  "AIR Airport Commission"
+ ],
+ "contracts_held": [],
+ "n_contracts_held": 0,
+ "variants": [
+  {
+   "name": "MCCARTHY BUILDING COMPANIES INC",
+   "total": 237211296.82
+  }
+ ],
+ "n_variants": 1,
+ "merges": [],
+ "source": {
+  "name": "Vendor Payments (Vouchers)",
+  "dataset_id": "n9pm-xkyq",
+  "source_url": "https://data.sfgov.org/d/n9pm-xkyq",
+  "attribution": "SF Controller's Office",
+  "rows_updated_at": "2026-07-13T13:40:40+00:00"
+ }
+}

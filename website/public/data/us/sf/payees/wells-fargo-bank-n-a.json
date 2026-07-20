@@ -1,0 +1,111 @@
+{
+ "generated_at": "2026-07-20T22:34:47.729552+00:00",
+ "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
+ "as_of": "2026-07-13T13:40:40+00:00",
+ "unit": "USD",
+ "slug": "wells-fargo-bank-n-a",
+ "name": "Wells Fargo Bank N a",
+ "kind": "fiscal_agent_debt_service",
+ "is_non_profit": false,
+ "total_paid_usd": 543092201.69,
+ "n_years": 20,
+ "first_year": 2007,
+ "last_year": 2026,
+ "by_year": {
+  "2007": 30758411.8,
+  "2008": 19351165.3,
+  "2009": 30414203.2,
+  "2010": 24424573.3,
+  "2011": 10061675.5,
+  "2012": 15448159.6,
+  "2013": 34069901.0,
+  "2014": 37168179.8,
+  "2015": 31576264.2,
+  "2016": 17034120.6,
+  "2017": 19552520.8,
+  "2018": 35546089.13,
+  "2019": 7865963.58,
+  "2020": 70891289.53,
+  "2021": 41822058.0,
+  "2022": 22836770.0,
+  "2023": 40405349.1,
+  "2024": 18360546.86,
+  "2025": 17300885.78,
+  "2026": 18204074.61
+ },
+ "top_departments": [
+  "MYR Mayor"
+ ],
+ "contracts_held": [
+  {
+   "contract_no": "1000009555",
+   "title": "HTF-COP/462 Duboce",
+   "department": "MYR Mayor",
+   "department_code": "MYR",
+   "agreed_usd": 8385005.0,
+   "paid_usd": 6793709.0,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000010315",
+   "title": "Soma Stabilization Small Sites funds for 104-106 S. Park St.",
+   "department": "MYR Mayor",
+   "department_code": "MYR",
+   "agreed_usd": 4662124.06,
+   "paid_usd": 4662124.06,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000009234",
+   "title": "Enc HOF COP funds for Disb of loan/subs/rehab of 227 Bay St.",
+   "department": "MYR Mayor",
+   "department_code": "MYR",
+   "agreed_usd": 2781173.0,
+   "paid_usd": 2434426.0,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000013453",
+   "title": "666 Ellis",
+   "department": "MYR Mayor",
+   "department_code": "MYR",
+   "agreed_usd": 1941615.0,
+   "paid_usd": 1941615.0,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000012296",
+   "title": "AHF loan for 490 SVN",
+   "department": "MYR Mayor",
+   "department_code": "MYR",
+   "agreed_usd": 1106376.66,
+   "paid_usd": 1106376.66,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000012873",
+   "title": "Enc amounts for wire out to Chicago Title via Wells Fargo",
+   "department": "MYR Mayor",
+   "department_code": "MYR",
+   "agreed_usd": 999620.36,
+   "paid_usd": 999620.36,
+   "sole_source": false
+  }
+ ],
+ "n_contracts_held": 6,
+ "variants": [
+  {
+   "name": "WELLS FARGO BANK N A",
+   "total": 543092201.69
+  }
+ ],
+ "n_variants": 1,
+ "merges": [],
+ "source": {
+  "name": "Vendor Payments (Vouchers)",
+  "dataset_id": "n9pm-xkyq",
+  "source_url": "https://data.sfgov.org/d/n9pm-xkyq",
+  "attribution": "SF Controller's Office",
+  "rows_updated_at": "2026-07-13T13:40:40+00:00"
+ }
+}

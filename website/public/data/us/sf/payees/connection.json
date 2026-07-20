@@ -1,0 +1,57 @@
+{
+ "generated_at": "2026-07-20T22:34:47.735915+00:00",
+ "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
+ "as_of": "2026-07-13T13:40:40+00:00",
+ "unit": "USD",
+ "slug": "connection",
+ "name": "Connection",
+ "kind": "supplier",
+ "is_non_profit": false,
+ "total_paid_usd": 198336092.83,
+ "n_years": 21,
+ "first_year": 2007,
+ "last_year": 2027,
+ "by_year": {
+  "2007": 97072.9,
+  "2008": 672602.3,
+  "2009": 1863184.3,
+  "2010": 3050423.4,
+  "2011": 5962767.9,
+  "2012": 3852792.8,
+  "2013": 3944831.6,
+  "2014": 4343619.5,
+  "2015": 10287267.3,
+  "2016": 13303278.4,
+  "2017": 14765935.5,
+  "2018": 10793354.64,
+  "2019": 14002775.19,
+  "2020": 9242058.81,
+  "2021": 11679928.53,
+  "2022": 12633558.61,
+  "2023": 19189562.78,
+  "2024": 27017674.94,
+  "2025": 15166545.11,
+  "2026": 16464679.37,
+  "2027": 2178.95
+ },
+ "top_departments": [
+  "DPH Public Health"
+ ],
+ "contracts_held": [],
+ "n_contracts_held": 0,
+ "variants": [
+  {
+   "name": "CONNECTION",
+   "total": 198336092.83
+  }
+ ],
+ "n_variants": 1,
+ "merges": [],
+ "source": {
+  "name": "Vendor Payments (Vouchers)",
+  "dataset_id": "n9pm-xkyq",
+  "source_url": "https://data.sfgov.org/d/n9pm-xkyq",
+  "attribution": "SF Controller's Office",
+  "rows_updated_at": "2026-07-13T13:40:40+00:00"
+ }
+}

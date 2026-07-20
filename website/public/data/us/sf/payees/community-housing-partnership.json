@@ -1,0 +1,148 @@
+{
+ "generated_at": "2026-07-20T22:34:47.742639+00:00",
+ "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
+ "as_of": "2026-07-13T13:40:40+00:00",
+ "unit": "USD",
+ "slug": "community-housing-partnership",
+ "name": "Community Housing Partnership",
+ "kind": "nonprofit",
+ "is_non_profit": false,
+ "total_paid_usd": 125021850.67,
+ "n_years": 21,
+ "first_year": 2007,
+ "last_year": 2027,
+ "by_year": {
+  "2007": 1226018.7,
+  "2008": 2561149.1,
+  "2009": 2912392.7,
+  "2010": 2587355.1,
+  "2011": 3197560.8,
+  "2012": 4070722.6,
+  "2013": 2617724.6,
+  "2014": 3569560.8,
+  "2015": 4528530.5,
+  "2016": 5428921.6,
+  "2017": 10212977.7,
+  "2018": 8910705.23,
+  "2019": 9019456.62,
+  "2020": 10445172.69,
+  "2021": 7430181.04,
+  "2022": 13075961.16,
+  "2023": 8365502.27,
+  "2024": 6307375.66,
+  "2025": 9531196.47,
+  "2026": 8739844.97,
+  "2027": 283540.36
+ },
+ "top_departments": [
+  "HOM HOMELESSNESS SERVICES"
+ ],
+ "contracts_held": [
+  {
+   "contract_no": "1000021501",
+   "title": "CHP - Scattered Sites - CoC",
+   "department": "HOM Homelessness Services",
+   "department_code": "HOM",
+   "agreed_usd": 8409234.0,
+   "paid_usd": 3745874.71,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000025915",
+   "title": "HomeRise - MBS9",
+   "department": "HOM Homelessness Services",
+   "department_code": "HOM",
+   "agreed_usd": 5074038.0,
+   "paid_usd": 2400623.69,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000025900",
+   "title": "HomeRise - 53 Colton",
+   "department": "HOM Homelessness Services",
+   "department_code": "HOM",
+   "agreed_usd": 3693826.0,
+   "paid_usd": 1510143.33,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000036025",
+   "title": "HomeRise - Tenant Services",
+   "department": "HOM Homelessness Services",
+   "department_code": "HOM",
+   "agreed_usd": 5443941.0,
+   "paid_usd": 1325338.06,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000010829",
+   "title": "MH service, SF",
+   "department": "DPH Public Health",
+   "department_code": "DPH",
+   "agreed_usd": 1104148.0,
+   "paid_usd": 454644.22,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000009321",
+   "title": "CDBG Loan Grants for San Cristina, 1000 Market Street",
+   "department": "MYR Mayor",
+   "department_code": "MYR",
+   "agreed_usd": 450000.0,
+   "paid_usd": 450000.0,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000007430",
+   "title": "Lmihaf Funds - Senator Hotel",
+   "department": "MYR Mayor",
+   "department_code": "MYR",
+   "agreed_usd": 262975.0,
+   "paid_usd": 262975.0,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000007822",
+   "title": "Prop A/1000 Market ST",
+   "department": "MYR Mayor",
+   "department_code": "MYR",
+   "agreed_usd": 197530.0,
+   "paid_usd": 197530.0,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000036979",
+   "title": "h",
+   "department": "MYR Mayor",
+   "department_code": "MYR",
+   "agreed_usd": 80000.0,
+   "paid_usd": 21438.0,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000037556",
+   "title": "h",
+   "department": "MYR Mayor",
+   "department_code": "MYR",
+   "agreed_usd": 80000.0,
+   "paid_usd": 11910.0,
+   "sole_source": false
+  }
+ ],
+ "n_contracts_held": 10,
+ "variants": [
+  {
+   "name": "COMMUNITY HOUSING PARTNERSHIP",
+   "total": 125021850.67
+  }
+ ],
+ "n_variants": 1,
+ "merges": [],
+ "source": {
+  "name": "Vendor Payments (Vouchers)",
+  "dataset_id": "n9pm-xkyq",
+  "source_url": "https://data.sfgov.org/d/n9pm-xkyq",
+  "attribution": "SF Controller's Office",
+  "rows_updated_at": "2026-07-13T13:40:40+00:00"
+ }
+}

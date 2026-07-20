@@ -1,0 +1,112 @@
+{
+ "generated_at": "2026-07-20T22:34:47.736372+00:00",
+ "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
+ "as_of": "2026-07-13T13:40:40+00:00",
+ "unit": "USD",
+ "slug": "granite-rock-co",
+ "name": "Granite Rock Co",
+ "kind": "supplier",
+ "is_non_profit": false,
+ "total_paid_usd": 192100881.74,
+ "n_years": 21,
+ "first_year": 2007,
+ "last_year": 2027,
+ "by_year": {
+  "2007": 25625082.8,
+  "2008": 20541644.8,
+  "2009": 15773833.2,
+  "2010": 19676557.4,
+  "2011": 21980881.9,
+  "2012": 8875579.3,
+  "2013": 17063969.0,
+  "2014": 13050169.3,
+  "2015": 5434813.3,
+  "2016": 4508035.9,
+  "2017": 3653599.3,
+  "2018": 4113949.43,
+  "2019": 3748518.29,
+  "2020": 3390594.02,
+  "2021": 2727429.08,
+  "2022": 2484244.3,
+  "2023": 5028431.47,
+  "2024": 4452053.55,
+  "2025": 4375250.55,
+  "2026": 5475723.76,
+  "2027": 120521.09
+ },
+ "top_departments": [
+  "AIR Airport Commission"
+ ],
+ "contracts_held": [
+  {
+   "contract_no": "1000016483",
+   "title": "TC 75955 Petroleum,Emulsions,",
+   "department": "ADM GSA - City Administrator",
+   "department_code": "ADM",
+   "agreed_usd": 23889728.0,
+   "paid_usd": 19046679.53,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000025787",
+   "title": "TC75973A  Asphalt Concrete",
+   "department": "ADM GSA - City Administrator",
+   "department_code": "ADM",
+   "agreed_usd": 9900000.0,
+   "paid_usd": 3386470.49,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000034204",
+   "title": "TC75947A - Rock, Gravel & Sand",
+   "department": "ADM GSA - City Administrator",
+   "department_code": "ADM",
+   "agreed_usd": 2160000.0,
+   "paid_usd": 425630.4,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000019352",
+   "title": "TC 75948 Street and Sewer Mate",
+   "department": "ADM GSA - City Administrator",
+   "department_code": "ADM",
+   "agreed_usd": 2000000.0,
+   "paid_usd": 249505.01,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000034207",
+   "title": "TC75947D - Asphalt Aggregates",
+   "department": "ADM GSA - City Administrator",
+   "department_code": "ADM",
+   "agreed_usd": 1175000.0,
+   "paid_usd": 85581.6,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000025307",
+   "title": "TC75973 Asphalt Paving Materia",
+   "department": "ADM GSA - City Administrator",
+   "department_code": "ADM",
+   "agreed_usd": 600000.0,
+   "paid_usd": 0.0,
+   "sole_source": false
+  }
+ ],
+ "n_contracts_held": 6,
+ "variants": [
+  {
+   "name": "GRANITE ROCK CO",
+   "total": 192100881.74
+  }
+ ],
+ "n_variants": 1,
+ "merges": [],
+ "source": {
+  "name": "Vendor Payments (Vouchers)",
+  "dataset_id": "n9pm-xkyq",
+  "source_url": "https://data.sfgov.org/d/n9pm-xkyq",
+  "attribution": "SF Controller's Office",
+  "rows_updated_at": "2026-07-13T13:40:40+00:00"
+ }
+}

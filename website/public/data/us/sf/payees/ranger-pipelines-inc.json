@@ -1,0 +1,66 @@
+{
+ "generated_at": "2026-07-20T22:34:47.730325+00:00",
+ "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
+ "as_of": "2026-07-13T13:40:40+00:00",
+ "unit": "USD",
+ "slug": "ranger-pipelines-inc",
+ "name": "Ranger Pipelines Inc",
+ "kind": "supplier",
+ "is_non_profit": false,
+ "total_paid_usd": 408750694.64,
+ "n_years": 20,
+ "first_year": 2007,
+ "last_year": 2026,
+ "by_year": {
+  "2007": 16342709.9,
+  "2008": 17926450.3,
+  "2009": 3042284.7,
+  "2010": 12229484.6,
+  "2011": 50495523.2,
+  "2012": 33130693.4,
+  "2013": 17200094.3,
+  "2014": 21557288.7,
+  "2015": 33217439.8,
+  "2016": 37451414.8,
+  "2017": 21679283.9,
+  "2018": 16909112.3,
+  "2019": 12364323.85,
+  "2020": 48196238.79,
+  "2021": 13694435.13,
+  "2022": 3870938.45,
+  "2023": 5540235.78,
+  "2024": 9994420.06,
+  "2025": 9513208.17,
+  "2026": 24395114.51
+ },
+ "top_departments": [
+  "PUB Public Utilities Bureaus"
+ ],
+ "contracts_held": [
+  {
+   "contract_no": "1000035760",
+   "title": "SJPV & Safe Impr: PH 2B&2C",
+   "department": "PUC Public Utilities Commsn",
+   "department_code": "PUC",
+   "agreed_usd": 47575436.33,
+   "paid_usd": 32714263.76,
+   "sole_source": false
+  }
+ ],
+ "n_contracts_held": 1,
+ "variants": [
+  {
+   "name": "RANGER PIPELINES INC",
+   "total": 408750694.64
+  }
+ ],
+ "n_variants": 1,
+ "merges": [],
+ "source": {
+  "name": "Vendor Payments (Vouchers)",
+  "dataset_id": "n9pm-xkyq",
+  "source_url": "https://data.sfgov.org/d/n9pm-xkyq",
+  "attribution": "SF Controller's Office",
+  "rows_updated_at": "2026-07-13T13:40:40+00:00"
+ }
+}

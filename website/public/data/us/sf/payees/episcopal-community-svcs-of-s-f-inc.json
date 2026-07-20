@@ -1,0 +1,310 @@
+{
+ "generated_at": "2026-07-20T22:34:47.728962+00:00",
+ "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
+ "as_of": "2026-07-13T13:40:40+00:00",
+ "unit": "USD",
+ "slug": "episcopal-community-svcs-of-s-f-inc",
+ "name": "Episcopal Community Svcs of S F Inc",
+ "kind": "nonprofit",
+ "is_non_profit": false,
+ "total_paid_usd": 610568044.06,
+ "n_years": 21,
+ "first_year": 2007,
+ "last_year": 2027,
+ "by_year": {
+  "2007": 12687453.9,
+  "2008": 14235158.9,
+  "2009": 13780580.2,
+  "2010": 13895712.8,
+  "2011": 13878636.2,
+  "2012": 14800247.7,
+  "2013": 14592231.9,
+  "2014": 15637599.6,
+  "2015": 15779416.6,
+  "2016": 19959966.3,
+  "2017": 25566885.9,
+  "2018": 22537798.14,
+  "2019": 30529082.16,
+  "2020": 37831880.78,
+  "2021": 49950605.72,
+  "2022": 58763529.43,
+  "2023": 51626701.13,
+  "2024": 54419008.29,
+  "2025": 59796894.27,
+  "2026": 68976876.17,
+  "2027": 1321777.97
+ },
+ "top_departments": [
+  "HSA Human Services Agency"
+ ],
+ "contracts_held": [
+  {
+   "contract_no": "1000019778",
+   "title": "ECS - Master Lease",
+   "department": "HOM Homelessness Services",
+   "department_code": "HOM",
+   "agreed_usd": 72297684.0,
+   "paid_usd": 55815668.78,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000023961",
+   "title": "ECS - Sanctuary Shelter",
+   "department": "HOM Homelessness Services",
+   "department_code": "HOM",
+   "agreed_usd": 40896141.0,
+   "paid_usd": 28956742.5,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000014089",
+   "title": "ECS - Henry Hotel GF",
+   "department": "HOM Homelessness Services",
+   "department_code": "HOM",
+   "agreed_usd": 20400596.0,
+   "paid_usd": 15010540.19,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000020987",
+   "title": "Ecs - Prop C FHSP",
+   "department": "HOM Homelessness Services",
+   "department_code": "HOM",
+   "agreed_usd": 29523174.0,
+   "paid_usd": 14587946.32,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000011165",
+   "title": "MH Out Pat",
+   "department": "DPH Public Health",
+   "department_code": "DPH",
+   "agreed_usd": 9978206.0,
+   "paid_usd": 7434094.56,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000021281",
+   "title": "ECS - Canon Kip",
+   "department": "HOM Homelessness Services",
+   "department_code": "HOM",
+   "agreed_usd": 9867442.0,
+   "paid_usd": 7128229.36,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000017313",
+   "title": "ECS - Canon Barcus RA & SS",
+   "department": "HOM Homelessness Services",
+   "department_code": "HOM",
+   "agreed_usd": 8334072.0,
+   "paid_usd": 6310435.85,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000017244",
+   "title": "ECS - Bishop Swing RA & SS",
+   "department": "HOM Homelessness Services",
+   "department_code": "HOM",
+   "agreed_usd": 8756998.0,
+   "paid_usd": 5916581.67,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000032448",
+   "title": "ECS - Post Hotel",
+   "department": "HOM Homelessness Services",
+   "department_code": "HOM",
+   "agreed_usd": 8840064.0,
+   "paid_usd": 5566677.22,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000025224",
+   "title": "ECS - 1064/66 Mission",
+   "department": "HOM Homelessness Services",
+   "department_code": "HOM",
+   "agreed_usd": 9941748.0,
+   "paid_usd": 4561058.7,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000017300",
+   "title": "ECS - Rose Hotel ISN & GF",
+   "department": "HOM Homelessness Services",
+   "department_code": "HOM",
+   "agreed_usd": 5730205.0,
+   "paid_usd": 4096054.22,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000020006",
+   "title": "ECS - Granada",
+   "department": "HOM Homelessness Services",
+   "department_code": "HOM",
+   "agreed_usd": 7296888.0,
+   "paid_usd": 4047708.43,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000021447",
+   "title": "ECS - Henry Hotel CoC",
+   "department": "HOM Homelessness Services",
+   "department_code": "HOM",
+   "agreed_usd": 6660651.0,
+   "paid_usd": 3917467.34,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000022709",
+   "title": "ECS - Tahanan LOSP",
+   "department": "HOM Homelessness Services",
+   "department_code": "HOM",
+   "agreed_usd": 5774635.0,
+   "paid_usd": 3236314.18,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000021212",
+   "title": "ECS - Interfaith Winter Shelte",
+   "department": "HOM Homelessness Services",
+   "department_code": "HOM",
+   "agreed_usd": 3827306.0,
+   "paid_usd": 3171290.75,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000020153",
+   "title": "ECS - Hotel Diva",
+   "department": "HOM Homelessness Services",
+   "department_code": "HOM",
+   "agreed_usd": 5208598.0,
+   "paid_usd": 2738724.96,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000020567",
+   "title": "ECS - Homeless Storage",
+   "department": "HOM Homelessness Services",
+   "department_code": "HOM",
+   "agreed_usd": 6462910.0,
+   "paid_usd": 2261992.64,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000031861",
+   "title": "ECS - 600 7th St",
+   "department": "HOM Homelessness Services",
+   "department_code": "HOM",
+   "agreed_usd": 4563224.0,
+   "paid_usd": 1117261.33,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000031860",
+   "title": "ECS - 1180 4th St",
+   "department": "HOM Homelessness Services",
+   "department_code": "HOM",
+   "agreed_usd": 4148358.0,
+   "paid_usd": 1021372.86,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000029980",
+   "title": "DAS ECS Case Mngmt FY23-27",
+   "department": "HSA Human Services Agency",
+   "department_code": "HSA",
+   "agreed_usd": 1593557.0,
+   "paid_usd": 903107.05,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000029981",
+   "title": "DAS ECS Comm Srvcs FY23-27",
+   "department": "HSA Human Services Agency",
+   "department_code": "HSA",
+   "agreed_usd": 1388891.0,
+   "paid_usd": 880120.81,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000029290",
+   "title": "HES FY24-27",
+   "department": "HSA Human Services Agency",
+   "department_code": "HSA",
+   "agreed_usd": 1940506.0,
+   "paid_usd": 702751.46,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000036301",
+   "title": "Das Enp Togo 25-29",
+   "department": "HSA Human Services Agency",
+   "department_code": "HSA",
+   "agreed_usd": 2117042.0,
+   "paid_usd": 399792.78,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000036303",
+   "title": "Das Awd Togo 25-29",
+   "department": "HSA Human Services Agency",
+   "department_code": "HSA",
+   "agreed_usd": 739829.0,
+   "paid_usd": 156750.48,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000036300",
+   "title": "DAS ENP Cong 25-29",
+   "department": "HSA Human Services Agency",
+   "department_code": "HSA",
+   "agreed_usd": 505098.0,
+   "paid_usd": 77413.64,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000032776",
+   "title": "RFP 8897 - Population #3",
+   "department": "DPH Public Health",
+   "department_code": "DPH",
+   "agreed_usd": 2576681.0,
+   "paid_usd": 73659.7,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000036302",
+   "title": "DAS AWD Cong 25-29",
+   "department": "HSA Human Services Agency",
+   "department_code": "HSA",
+   "agreed_usd": 63963.0,
+   "paid_usd": 8857.8,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000037554",
+   "title": "ECS - Lark Landing",
+   "department": "HOM Homelessness Services",
+   "department_code": "HOM",
+   "agreed_usd": 3581202.0,
+   "paid_usd": 0.0,
+   "sole_source": false
+  }
+ ],
+ "n_contracts_held": 28,
+ "variants": [
+  {
+   "name": "EPISCOPAL COMMUNITY SVCS OF S F INC",
+   "total": 610568044.06
+  }
+ ],
+ "n_variants": 1,
+ "merges": [],
+ "source": {
+  "name": "Vendor Payments (Vouchers)",
+  "dataset_id": "n9pm-xkyq",
+  "source_url": "https://data.sfgov.org/d/n9pm-xkyq",
+  "attribution": "SF Controller's Office",
+  "rows_updated_at": "2026-07-13T13:40:40+00:00"
+ }
+}

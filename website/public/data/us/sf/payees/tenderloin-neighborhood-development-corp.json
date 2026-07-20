@@ -1,0 +1,265 @@
+{
+ "generated_at": "2026-07-20T22:34:47.743773+00:00",
+ "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
+ "as_of": "2026-07-13T13:40:40+00:00",
+ "unit": "USD",
+ "slug": "tenderloin-neighborhood-development-corp",
+ "name": "Tenderloin Neighborhood Development Corp",
+ "kind": "nonprofit",
+ "is_non_profit": true,
+ "total_paid_usd": 115242708.49,
+ "n_years": 21,
+ "first_year": 2007,
+ "last_year": 2027,
+ "by_year": {
+  "2007": 898528.2,
+  "2008": 1460751.8,
+  "2009": 1615181.1,
+  "2010": 1315876.5,
+  "2011": 1742889.4,
+  "2012": 2638285.9,
+  "2013": 1104421.9,
+  "2014": 1310697.6,
+  "2015": 1184802.9,
+  "2016": 1261940.7,
+  "2017": 1912968.7,
+  "2018": 4730039.61,
+  "2019": 7823810.92,
+  "2020": 8930421.77,
+  "2021": 9568339.0,
+  "2022": 10368024.96,
+  "2023": 14107478.59,
+  "2024": 10665354.7,
+  "2025": 15009135.22,
+  "2026": 15177468.18,
+  "2027": 2416290.84
+ },
+ "top_departments": [
+  "HOM Homelessness Services"
+ ],
+ "contracts_held": [
+  {
+   "contract_no": "1000021454",
+   "title": "TNDC - 44 McAllister",
+   "department": "HOM Homelessness Services",
+   "department_code": "HOM",
+   "agreed_usd": 9290116.0,
+   "paid_usd": 5205000.49,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000017600",
+   "title": "TNDC - 626 Mission Bay",
+   "department": "HOM Homelessness Services",
+   "department_code": "HOM",
+   "agreed_usd": 9951596.0,
+   "paid_usd": 4062450.55,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000021889",
+   "title": "TNDC - Franciscan Towers 1",
+   "department": "HOM Homelessness Services",
+   "department_code": "HOM",
+   "agreed_usd": 6125434.0,
+   "paid_usd": 3758519.15,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000021374",
+   "title": "TNDC - W Senior Hsg & Prop 63",
+   "department": "HOM Homelessness Services",
+   "department_code": "HOM",
+   "agreed_usd": 9148553.0,
+   "paid_usd": 3722800.93,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000013545",
+   "title": "TNDC - Eddy and Taylor",
+   "department": "HOM Homelessness Services",
+   "department_code": "HOM",
+   "agreed_usd": 5628281.0,
+   "paid_usd": 3607481.79,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000021458",
+   "title": "TNDC - SS at Kelly Cullen",
+   "department": "HOM Homelessness Services",
+   "department_code": "HOM",
+   "agreed_usd": 9590502.0,
+   "paid_usd": 3592827.83,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000016457",
+   "title": "TNDC - 270 Turk Street",
+   "department": "HOM Homelessness Services",
+   "department_code": "HOM",
+   "agreed_usd": 8823125.0,
+   "paid_usd": 3311555.34,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000021482",
+   "title": "TNDC - Folsom Dore",
+   "department": "HOM Homelessness Services",
+   "department_code": "HOM",
+   "agreed_usd": 4861718.0,
+   "paid_usd": 2348838.38,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000031126",
+   "title": "TNDC - 180 Jones",
+   "department": "HOM Homelessness Services",
+   "department_code": "HOM",
+   "agreed_usd": 4450666.0,
+   "paid_usd": 1740886.35,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000026407",
+   "title": "TNDC - 681 Florida",
+   "department": "HOM Homelessness Services",
+   "department_code": "HOM",
+   "agreed_usd": 3213215.0,
+   "paid_usd": 1537392.0,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000008356",
+   "title": "Cii Tax Exempt BONDS/398 Haight ST",
+   "department": "MYR Mayor",
+   "department_code": "MYR",
+   "agreed_usd": 827613.0,
+   "paid_usd": 827613.0,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000032668",
+   "title": "GA-Tenderloin After-24-29",
+   "department": "CHF Children;Youth & Families",
+   "department_code": "CHF",
+   "agreed_usd": 2336100.0,
+   "paid_usd": 557330.17,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000035309",
+   "title": "TNDC -1036 Mission",
+   "department": "HOM Homelessness Services",
+   "department_code": "HOM",
+   "agreed_usd": 5595016.0,
+   "paid_usd": 549955.34,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000033434",
+   "title": "RAD-320-330 Clementina FY24-28",
+   "department": "HSA Human Services Agency",
+   "department_code": "HSA",
+   "agreed_usd": 1642984.0,
+   "paid_usd": 495929.43,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000035267",
+   "title": "TNDC - Scattered Sites",
+   "department": "HOM Homelessness Services",
+   "department_code": "HOM",
+   "agreed_usd": 8723364.0,
+   "paid_usd": 410200.69,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000035766",
+   "title": "TNDC - 4200 Geary",
+   "department": "HOM Homelessness Services",
+   "department_code": "HOM",
+   "agreed_usd": 4217827.0,
+   "paid_usd": 329498.96,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000033440",
+   "title": "RAD-Rosa Parks FY24-28",
+   "department": "HSA Human Services Agency",
+   "department_code": "HSA",
+   "agreed_usd": 798483.0,
+   "paid_usd": 208629.11,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000033436",
+   "title": "RAD-430 Turk FY24-28",
+   "department": "HSA Human Services Agency",
+   "department_code": "HSA",
+   "agreed_usd": 391763.0,
+   "paid_usd": 145886.41,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000033435",
+   "title": "RAD-350 Ellis FY24-28",
+   "department": "HSA Human Services Agency",
+   "department_code": "HSA",
+   "agreed_usd": 390159.0,
+   "paid_usd": 109099.96,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000035479",
+   "title": "TNDC - 730 Stanyan",
+   "department": "HOM Homelessness Services",
+   "department_code": "HOM",
+   "agreed_usd": 1465111.0,
+   "paid_usd": 105834.03,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000033439",
+   "title": "RAD-939-51 Eddy FY24-28",
+   "department": "HSA Human Services Agency",
+   "department_code": "HSA",
+   "agreed_usd": 219919.0,
+   "paid_usd": 73279.04,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000037455",
+   "title": "246313-25",
+   "department": "MYR Mayor",
+   "department_code": "MYR",
+   "agreed_usd": 375548.0,
+   "paid_usd": 41416.92,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000036621",
+   "title": "TNDC -2550 Irving",
+   "department": "HOM Homelessness Services",
+   "department_code": "HOM",
+   "agreed_usd": 1661929.0,
+   "paid_usd": 0.0,
+   "sole_source": false
+  }
+ ],
+ "n_contracts_held": 23,
+ "variants": [
+  {
+   "name": "TENDERLOIN NEIGHBORHOOD DEVELOPMENT CORP",
+   "total": 115242708.49
+  }
+ ],
+ "n_variants": 1,
+ "merges": [],
+ "source": {
+  "name": "Vendor Payments (Vouchers)",
+  "dataset_id": "n9pm-xkyq",
+  "source_url": "https://data.sfgov.org/d/n9pm-xkyq",
+  "attribution": "SF Controller's Office",
+  "rows_updated_at": "2026-07-13T13:40:40+00:00"
+ }
+}

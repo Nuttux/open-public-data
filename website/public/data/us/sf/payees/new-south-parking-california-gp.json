@@ -1,0 +1,53 @@
+{
+ "generated_at": "2026-07-20T22:34:47.731530+00:00",
+ "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
+ "as_of": "2026-07-13T13:40:40+00:00",
+ "unit": "USD",
+ "slug": "new-south-parking-california-gp",
+ "name": "New South Parking-california Gp",
+ "kind": "supplier",
+ "is_non_profit": false,
+ "total_paid_usd": 320972960.8,
+ "n_years": 17,
+ "first_year": 2008,
+ "last_year": 2024,
+ "by_year": {
+  "2008": 12216422.0,
+  "2009": 17354102.0,
+  "2010": 15921232.0,
+  "2011": 17455633.0,
+  "2012": 18186284.0,
+  "2013": 17331786.0,
+  "2014": 18666481.1,
+  "2015": 18890211.0,
+  "2016": 19364206.8,
+  "2017": 19521393.9,
+  "2018": 19951674.46,
+  "2019": 24743700.56,
+  "2020": 26498778.27,
+  "2021": 18682010.89,
+  "2022": 24066076.33,
+  "2023": 25361678.39,
+  "2024": 6761290.1
+ },
+ "top_departments": [
+  "AIR Airport Commission"
+ ],
+ "contracts_held": [],
+ "n_contracts_held": 0,
+ "variants": [
+  {
+   "name": "NEW SOUTH PARKING-CALIFORNIA GP",
+   "total": 320972960.8
+  }
+ ],
+ "n_variants": 1,
+ "merges": [],
+ "source": {
+  "name": "Vendor Payments (Vouchers)",
+  "dataset_id": "n9pm-xkyq",
+  "source_url": "https://data.sfgov.org/d/n9pm-xkyq",
+  "attribution": "SF Controller's Office",
+  "rows_updated_at": "2026-07-13T13:40:40+00:00"
+ }
+}

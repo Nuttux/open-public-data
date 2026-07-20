@@ -1,0 +1,1810 @@
+{
+ "generated_at": "2026-07-20T22:34:47.745562+00:00",
+ "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
+ "as_of": "2026-07-13T13:40:40+00:00",
+ "unit": "USD",
+ "count": 200,
+ "note": "Top payees by lifetime dollars paid, name-normalized (exact core match + curated JV/predecessor merges). Payees outside this set stay unkeyed and must render as plain text, never as links.",
+ "payees": [
+  {
+   "slug": "the-depository-trust-company",
+   "name": "The Depository Trust Company",
+   "kind": "fiscal_agent_debt_service",
+   "total_paid_usd": 10061579123.11,
+   "n_variants": 1,
+   "n_contracts_held": 0,
+   "last_year": 2026
+  },
+  {
+   "slug": "the-bank-of-new-york-mellon-trust-co-na",
+   "name": "The Bank of New York Mellon Trust Co Na",
+   "kind": "fiscal_agent_debt_service",
+   "total_paid_usd": 8628252320.37,
+   "n_variants": 1,
+   "n_contracts_held": 1,
+   "last_year": 2027
+  },
+  {
+   "slug": "bank-of-america-nt-sa",
+   "name": "Bank of America Nt & Sa",
+   "kind": "fiscal_agent_debt_service",
+   "total_paid_usd": 8034632091.61,
+   "n_variants": 1,
+   "n_contracts_held": 0,
+   "last_year": 2026
+  },
+  {
+   "slug": "bank-of-new-york-mellon",
+   "name": "Bank of New York Mellon",
+   "kind": "fiscal_agent_debt_service",
+   "total_paid_usd": 6792542584.63,
+   "n_variants": 3,
+   "n_contracts_held": 1,
+   "last_year": 2027
+  },
+  {
+   "slug": "j-p-morgan-chase-bank-na",
+   "name": "J P Morgan Chase Bank Na",
+   "kind": "fiscal_agent_debt_service",
+   "total_paid_usd": 6130532728.03,
+   "n_variants": 1,
+   "n_contracts_held": 0,
+   "last_year": 2027
+  },
+  {
+   "slug": "us-bank-national-association",
+   "name": "US Bank National Association",
+   "kind": "fiscal_agent_debt_service",
+   "total_paid_usd": 6093379887.96,
+   "n_variants": 1,
+   "n_contracts_held": 3,
+   "last_year": 2027
+  },
+  {
+   "slug": "kaiser-foundation-health-plan-inc",
+   "name": "Kaiser Foundation Health Plan Inc",
+   "kind": "healthcare",
+   "total_paid_usd": 4349277417.35,
+   "n_variants": 1,
+   "n_contracts_held": 0,
+   "last_year": 2027
+  },
+  {
+   "slug": "regents-of-the-university-of-california",
+   "name": "Regents of the University of California",
+   "kind": "healthcare",
+   "total_paid_usd": 3702235159.87,
+   "n_variants": 1,
+   "n_contracts_held": 33,
+   "last_year": 2027
+  },
+  {
+   "slug": "blue-shield-of-calif",
+   "name": "Blue Shield of Calif",
+   "kind": "healthcare",
+   "total_paid_usd": 3630892831.7,
+   "n_variants": 1,
+   "n_contracts_held": 0,
+   "last_year": 2027
+  },
+  {
+   "slug": "state-of-calif-dept-of-health-care-svcs",
+   "name": "State of Calif Dept of Health Care Svcs",
+   "kind": "other",
+   "total_paid_usd": 2868783065.19,
+   "n_variants": 1,
+   "n_contracts_held": 0,
+   "last_year": 2026
+  },
+  {
+   "slug": "hensel-phelps-construction-co",
+   "name": "Hensel Phelps Construction Co",
+   "kind": "supplier",
+   "total_paid_usd": 2300929816.57,
+   "n_variants": 1,
+   "n_contracts_held": 1,
+   "last_year": 2027
+  },
+  {
+   "slug": "city-college-of-san-francisco",
+   "name": "City College of San Francisco",
+   "kind": "other",
+   "total_paid_usd": 2149911984.83,
+   "n_variants": 1,
+   "n_contracts_held": 8,
+   "last_year": 2027
+  },
+  {
+   "slug": "mwh-constrs-webcor-bldrs-a-cnst-jv",
+   "name": "Mwh Constrs & Webcor Bldrs a Cnst JV",
+   "kind": "supplier",
+   "total_paid_usd": 1937844896.38,
+   "n_variants": 1,
+   "n_contracts_held": 1,
+   "last_year": 2027
+  },
+  {
+   "slug": "turner-construction-co",
+   "name": "Turner Construction Co",
+   "kind": "supplier",
+   "total_paid_usd": 1937420138.12,
+   "n_variants": 1,
+   "n_contracts_held": 1,
+   "last_year": 2026
+  },
+  {
+   "slug": "voya-institutional-plan-services-llc",
+   "name": "Voya Institutional Plan Services LLC",
+   "kind": "payroll_passthrough",
+   "total_paid_usd": 1808074286.86,
+   "n_variants": 1,
+   "n_contracts_held": 0,
+   "last_year": 2027
+  },
+  {
+   "slug": "u-s-bank",
+   "name": "U S Bank",
+   "kind": "fiscal_agent_debt_service",
+   "total_paid_usd": 1660425809.86,
+   "n_variants": 1,
+   "n_contracts_held": 0,
+   "last_year": 2018
+  },
+  {
+   "slug": "department-of-social-services",
+   "name": "Department of Social Services",
+   "kind": "other",
+   "total_paid_usd": 1555725637.05,
+   "n_variants": 1,
+   "n_contracts_held": 0,
+   "last_year": 2026
+  },
+  {
+   "slug": "tutor-perini",
+   "name": "Tutor Perini",
+   "kind": "supplier",
+   "total_paid_usd": 1401621377.34,
+   "n_variants": 2,
+   "n_contracts_held": 0,
+   "last_year": 2023
+  },
+  {
+   "slug": "webcor-builders",
+   "name": "Webcor Builders",
+   "kind": "supplier",
+   "total_paid_usd": 1299618906.92,
+   "n_variants": 1,
+   "n_contracts_held": 1,
+   "last_year": 2027
+  },
+  {
+   "slug": "children-s-council-of-san-francisco",
+   "name": "Children's Council of San Francisco",
+   "kind": "nonprofit",
+   "total_paid_usd": 1157215813.49,
+   "n_variants": 1,
+   "n_contracts_held": 6,
+   "last_year": 2027
+  },
+  {
+   "slug": "the-northern-trust-company",
+   "name": "The Northern Trust Company",
+   "kind": "fiscal_agent_debt_service",
+   "total_paid_usd": 1033716368.33,
+   "n_variants": 1,
+   "n_contracts_held": 2,
+   "last_year": 2026
+  },
+  {
+   "slug": "mckesson-corporation",
+   "name": "Mckesson Corporation",
+   "kind": "supplier",
+   "total_paid_usd": 991412066.52,
+   "n_variants": 1,
+   "n_contracts_held": 1,
+   "last_year": 2027
+  },
+  {
+   "slug": "austin-webcor-jv",
+   "name": "Austin Webcor JV",
+   "kind": "supplier",
+   "total_paid_usd": 959943489.96,
+   "n_variants": 1,
+   "n_contracts_held": 2,
+   "last_year": 2027
+  },
+  {
+   "slug": "san-francisco-county-transportation-auth",
+   "name": "San Francisco County Transportation Auth",
+   "kind": "other",
+   "total_paid_usd": 957334843.17,
+   "n_variants": 1,
+   "n_contracts_held": 5,
+   "last_year": 2027
+  },
+  {
+   "slug": "united-healthcare-insurance-company",
+   "name": "United Healthcare Insurance Company",
+   "kind": "healthcare",
+   "total_paid_usd": 896645899.64,
+   "n_variants": 1,
+   "n_contracts_held": 0,
+   "last_year": 2027
+  },
+  {
+   "slug": "new-flyer-of-america-inc",
+   "name": "New Flyer of America Inc",
+   "kind": "supplier",
+   "total_paid_usd": 875321397.28,
+   "n_variants": 2,
+   "n_contracts_held": 2,
+   "last_year": 2026
+  },
+  {
+   "slug": "sf-bay-area-rapid-transit-district",
+   "name": "SF Bay Area Rapid Transit District",
+   "kind": "other",
+   "total_paid_usd": 783026883.65,
+   "n_variants": 1,
+   "n_contracts_held": 5,
+   "last_year": 2026
+  },
+  {
+   "slug": "sf-in-home-spprtiv-svcs-ihss-publ-auth",
+   "name": "SF In-home Spprtiv Svcs (ihss) Publ Auth",
+   "kind": "payroll_passthrough",
+   "total_paid_usd": 763024633.36,
+   "n_variants": 1,
+   "n_contracts_held": 1,
+   "last_year": 2027
+  },
+  {
+   "slug": "siemens-mobility-inc",
+   "name": "Siemens Mobility Inc.",
+   "kind": "supplier",
+   "total_paid_usd": 735689199.62,
+   "n_variants": 1,
+   "n_contracts_held": 1,
+   "last_year": 2026
+  },
+  {
+   "slug": "u-s-bank-trust-n-a",
+   "name": "U S Bank Trust N a",
+   "kind": "fiscal_agent_debt_service",
+   "total_paid_usd": 735152870.12,
+   "n_variants": 1,
+   "n_contracts_held": 2,
+   "last_year": 2025
+  },
+  {
+   "slug": "a-p-x-inc",
+   "name": "A P X Inc",
+   "kind": "supplier",
+   "total_paid_usd": 721779751.45,
+   "n_variants": 1,
+   "n_contracts_held": 1,
+   "last_year": 2027
+  },
+  {
+   "slug": "healthright-360",
+   "name": "Healthright 360",
+   "kind": "nonprofit",
+   "total_paid_usd": 717753650.93,
+   "n_variants": 1,
+   "n_contracts_held": 6,
+   "last_year": 2027
+  },
+  {
+   "slug": "moscone-center-joint-venture",
+   "name": "Moscone Center Joint Venture",
+   "kind": "supplier",
+   "total_paid_usd": 684101944.37,
+   "n_variants": 1,
+   "n_contracts_held": 1,
+   "last_year": 2026
+  },
+  {
+   "slug": "tenderloin-housing-clinic-inc",
+   "name": "Tenderloin Housing Clinic Inc",
+   "kind": "nonprofit",
+   "total_paid_usd": 641864973.45,
+   "n_variants": 1,
+   "n_contracts_held": 4,
+   "last_year": 2026
+  },
+  {
+   "slug": "pacific-gas-electric-co",
+   "name": "Pacific Gas & Electric Co",
+   "kind": "supplier",
+   "total_paid_usd": 639883363.23,
+   "n_variants": 1,
+   "n_contracts_held": 19,
+   "last_year": 2027
+  },
+  {
+   "slug": "episcopal-community-svcs-of-s-f-inc",
+   "name": "Episcopal Community Svcs of S F Inc",
+   "kind": "nonprofit",
+   "total_paid_usd": 610568044.06,
+   "n_variants": 1,
+   "n_contracts_held": 28,
+   "last_year": 2027
+  },
+  {
+   "slug": "clark-construction-group-calif-lp",
+   "name": "Clark Construction Group - Calif Lp",
+   "kind": "supplier",
+   "total_paid_usd": 605818052.45,
+   "n_variants": 1,
+   "n_contracts_held": 7,
+   "last_year": 2027
+  },
+  {
+   "slug": "state-of-calif-state-treas-cash-mgt-div",
+   "name": "State of Calif State Treas Cash Mgt Div",
+   "kind": "other",
+   "total_paid_usd": 602718625.6,
+   "n_variants": 1,
+   "n_contracts_held": 0,
+   "last_year": 2026
+  },
+  {
+   "slug": "delta-dental-plan-of-california",
+   "name": "Delta Dental Plan of California",
+   "kind": "healthcare",
+   "total_paid_usd": 588008181.26,
+   "n_variants": 1,
+   "n_contracts_held": 0,
+   "last_year": 2027
+  },
+  {
+   "slug": "sundt-walsh-a-joint-venture",
+   "name": "Sundt/walsh a Joint Venture",
+   "kind": "supplier",
+   "total_paid_usd": 560440924.47,
+   "n_variants": 1,
+   "n_contracts_held": 1,
+   "last_year": 2027
+  },
+  {
+   "slug": "wells-fargo-bank-n-a",
+   "name": "Wells Fargo Bank N a",
+   "kind": "fiscal_agent_debt_service",
+   "total_paid_usd": 543092201.69,
+   "n_variants": 1,
+   "n_contracts_held": 6,
+   "last_year": 2026
+  },
+  {
+   "slug": "dragados-usa-flatiron-west-sukut-cnst-jv",
+   "name": "Dragados Usa/flatiron West/sukut Cnst JV",
+   "kind": "supplier",
+   "total_paid_usd": 535549476.33,
+   "n_variants": 1,
+   "n_contracts_held": 0,
+   "last_year": 2020
+  },
+  {
+   "slug": "golden-gate-constructors",
+   "name": "Golden Gate Constructors",
+   "kind": "supplier",
+   "total_paid_usd": 500254290.5,
+   "n_variants": 1,
+   "n_contracts_held": 0,
+   "last_year": 2025
+  },
+  {
+   "slug": "charles-pankow-builders-ltd",
+   "name": "Charles Pankow Builders Ltd",
+   "kind": "supplier",
+   "total_paid_usd": 497086480.63,
+   "n_variants": 1,
+   "n_contracts_held": 2,
+   "last_year": 2027
+  },
+  {
+   "slug": "chicago-title-company",
+   "name": "Chicago Title Company",
+   "kind": "supplier",
+   "total_paid_usd": 490489285.85,
+   "n_variants": 1,
+   "n_contracts_held": 5,
+   "last_year": 2026
+  },
+  {
+   "slug": "xtech",
+   "name": "Xtech",
+   "kind": "supplier",
+   "total_paid_usd": 478649212.96,
+   "n_variants": 1,
+   "n_contracts_held": 3,
+   "last_year": 2027
+  },
+  {
+   "slug": "s-j-amoroso-construction-co-llc",
+   "name": "S J Amoroso Construction Co LLC",
+   "kind": "supplier",
+   "total_paid_usd": 476941783.89,
+   "n_variants": 2,
+   "n_contracts_held": 0,
+   "last_year": 2026
+  },
+  {
+   "slug": "zb-national-association",
+   "name": "Zb National Association",
+   "kind": "fiscal_agent_debt_service",
+   "total_paid_usd": 413921615.52,
+   "n_variants": 1,
+   "n_contracts_held": 0,
+   "last_year": 2026
+  },
+  {
+   "slug": "ranger-pipelines-inc",
+   "name": "Ranger Pipelines Inc",
+   "kind": "supplier",
+   "total_paid_usd": 408750694.64,
+   "n_variants": 1,
+   "n_contracts_held": 1,
+   "last_year": 2026
+  },
+  {
+   "slug": "prudential-investment-management-inc",
+   "name": "Prudential Investment Management Inc",
+   "kind": "payroll_passthrough",
+   "total_paid_usd": 398448764.94,
+   "n_variants": 1,
+   "n_contracts_held": 0,
+   "last_year": 2020
+  },
+  {
+   "slug": "transdev-services-inc",
+   "name": "Transdev Services Inc",
+   "kind": "supplier",
+   "total_paid_usd": 395971310.1,
+   "n_variants": 1,
+   "n_contracts_held": 0,
+   "last_year": 2026
+  },
+  {
+   "slug": "calpers",
+   "name": "Calpers",
+   "kind": "payroll_passthrough",
+   "total_paid_usd": 375417655.04,
+   "n_variants": 1,
+   "n_contracts_held": 0,
+   "last_year": 2027
+  },
+  {
+   "slug": "walsh-construction-company-ii",
+   "name": "Walsh Construction Company Ii",
+   "kind": "supplier",
+   "total_paid_usd": 372854071.56,
+   "n_variants": 1,
+   "n_contracts_held": 1,
+   "last_year": 2026
+  },
+  {
+   "slug": "ccsf-hrd-workers-comp-division",
+   "name": "Ccsf Hrd Workers Comp Division",
+   "kind": "other",
+   "total_paid_usd": 367390098.08,
+   "n_variants": 1,
+   "n_contracts_held": 0,
+   "last_year": 2019
+  },
+  {
+   "slug": "calpine-energy-services-lp",
+   "name": "Calpine Energy Services Lp",
+   "kind": "supplier",
+   "total_paid_usd": 356629499.29,
+   "n_variants": 1,
+   "n_contracts_held": 4,
+   "last_year": 2026
+  },
+  {
+   "slug": "richmond-area-multi-services-inc",
+   "name": "Richmond Area Multi-services Inc",
+   "kind": "nonprofit",
+   "total_paid_usd": 355247746.43,
+   "n_variants": 1,
+   "n_contracts_held": 12,
+   "last_year": 2027
+  },
+  {
+   "slug": "progress-foundation",
+   "name": "Progress Foundation",
+   "kind": "nonprofit",
+   "total_paid_usd": 348123963.19,
+   "n_variants": 1,
+   "n_contracts_held": 2,
+   "last_year": 2027
+  },
+  {
+   "slug": "wilmington-trust-national-association",
+   "name": "Wilmington Trust National Association",
+   "kind": "fiscal_agent_debt_service",
+   "total_paid_usd": 333163900.71,
+   "n_variants": 1,
+   "n_contracts_held": 0,
+   "last_year": 2026
+  },
+  {
+   "slug": "wu-yee-children-s-services",
+   "name": "Wu Yee Children's Services",
+   "kind": "nonprofit",
+   "total_paid_usd": 329167242.49,
+   "n_variants": 1,
+   "n_contracts_held": 3,
+   "last_year": 2027
+  },
+  {
+   "slug": "san-francisco-unified-school-district",
+   "name": "San Francisco Unified School District",
+   "kind": "other",
+   "total_paid_usd": 328872141.59,
+   "n_variants": 1,
+   "n_contracts_held": 9,
+   "last_year": 2026
+  },
+  {
+   "slug": "kiewit-infrastructure-west-co",
+   "name": "Kiewit Infrastructure West Co",
+   "kind": "supplier",
+   "total_paid_usd": 324142525.0,
+   "n_variants": 1,
+   "n_contracts_held": 0,
+   "last_year": 2023
+  },
+  {
+   "slug": "new-south-parking-california-gp",
+   "name": "New South Parking-california Gp",
+   "kind": "supplier",
+   "total_paid_usd": 320972960.8,
+   "n_variants": 1,
+   "n_contracts_held": 0,
+   "last_year": 2024
+  },
+  {
+   "slug": "catholic-charities",
+   "name": "Catholic Charities",
+   "kind": "nonprofit",
+   "total_paid_usd": 319544320.46,
+   "n_variants": 1,
+   "n_contracts_held": 27,
+   "last_year": 2027
+  },
+  {
+   "slug": "shimmick-construction-co-inc",
+   "name": "Shimmick Construction Co Inc",
+   "kind": "supplier",
+   "total_paid_usd": 309198679.55,
+   "n_variants": 1,
+   "n_contracts_held": 0,
+   "last_year": 2026
+  },
+  {
+   "slug": "sf-tourism-improvement-dist-mgmt-corp",
+   "name": "SF Tourism Improvement Dist Mgmt Corp",
+   "kind": "other",
+   "total_paid_usd": 306420000.96,
+   "n_variants": 1,
+   "n_contracts_held": 0,
+   "last_year": 2027
+  },
+  {
+   "slug": "n-t-k-construction-inc",
+   "name": "N T K Construction Inc",
+   "kind": "supplier",
+   "total_paid_usd": 299455894.78,
+   "n_variants": 1,
+   "n_contracts_held": 4,
+   "last_year": 2026
+  },
+  {
+   "slug": "alliant-insurance-services-inc",
+   "name": "Alliant Insurance Services Inc",
+   "kind": "supplier",
+   "total_paid_usd": 288533580.83,
+   "n_variants": 1,
+   "n_contracts_held": 2,
+   "last_year": 2027
+  },
+  {
+   "slug": "felton-institute",
+   "name": "Felton Institute",
+   "kind": "nonprofit",
+   "total_paid_usd": 287264829.13,
+   "n_variants": 1,
+   "n_contracts_held": 26,
+   "last_year": 2027
+  },
+  {
+   "slug": "baker-places-inc",
+   "name": "Baker Places Inc",
+   "kind": "nonprofit",
+   "total_paid_usd": 286658064.77,
+   "n_variants": 1,
+   "n_contracts_held": 2,
+   "last_year": 2026
+  },
+  {
+   "slug": "medline-industries-inc",
+   "name": "Medline Industries Inc",
+   "kind": "supplier",
+   "total_paid_usd": 283741056.01,
+   "n_variants": 1,
+   "n_contracts_held": 0,
+   "last_year": 2027
+  },
+  {
+   "slug": "five-keys-schools-and-programs",
+   "name": "Five Keys Schools and Programs",
+   "kind": "nonprofit",
+   "total_paid_usd": 273189502.06,
+   "n_variants": 1,
+   "n_contracts_held": 13,
+   "last_year": 2027
+  },
+  {
+   "slug": "a-ruiz-construction-co-and-assoc-inc",
+   "name": "A Ruiz Construction Co and Assoc Inc",
+   "kind": "supplier",
+   "total_paid_usd": 268763515.62,
+   "n_variants": 1,
+   "n_contracts_held": 2,
+   "last_year": 2026
+  },
+  {
+   "slug": "goodwill-sf-urban-development-llc",
+   "name": "Goodwill SF Urban Development LLC",
+   "kind": "supplier",
+   "total_paid_usd": 267074661.17,
+   "n_variants": 1,
+   "n_contracts_held": 0,
+   "last_year": 2023
+  },
+  {
+   "slug": "homebridge-inc",
+   "name": "Homebridge Inc",
+   "kind": "nonprofit",
+   "total_paid_usd": 262501623.3,
+   "n_variants": 1,
+   "n_contracts_held": 1,
+   "last_year": 2026
+  },
+  {
+   "slug": "crestwood-behavioral-health-inc",
+   "name": "Crestwood Behavioral Health Inc",
+   "kind": "healthcare",
+   "total_paid_usd": 259699343.52,
+   "n_variants": 1,
+   "n_contracts_held": 1,
+   "last_year": 2027
+  },
+  {
+   "slug": "esquivel-grading-paving-inc",
+   "name": "Esquivel Grading & Paving Inc",
+   "kind": "supplier",
+   "total_paid_usd": 257137894.45,
+   "n_variants": 1,
+   "n_contracts_held": 7,
+   "last_year": 2027
+  },
+  {
+   "slug": "transbay-joint-powers-authority",
+   "name": "Transbay Joint Powers Authority",
+   "kind": "other",
+   "total_paid_usd": 254392729.81,
+   "n_variants": 1,
+   "n_contracts_held": 0,
+   "last_year": 2027
+  },
+  {
+   "slug": "golden-gate-petroleum",
+   "name": "Golden Gate Petroleum",
+   "kind": "supplier",
+   "total_paid_usd": 246843596.53,
+   "n_variants": 1,
+   "n_contracts_held": 1,
+   "last_year": 2027
+  },
+  {
+   "slug": "westside-community-mental-health-ctr-inc",
+   "name": "Westside Community Mental Health Ctr Inc",
+   "kind": "nonprofit",
+   "total_paid_usd": 243461618.73,
+   "n_variants": 1,
+   "n_contracts_held": 8,
+   "last_year": 2027
+  },
+  {
+   "slug": "anvil-builders-inc",
+   "name": "Anvil Builders Inc",
+   "kind": "supplier",
+   "total_paid_usd": 240941046.9,
+   "n_variants": 1,
+   "n_contracts_held": 10,
+   "last_year": 2027
+  },
+  {
+   "slug": "conard-house-inc",
+   "name": "Conard House Inc",
+   "kind": "nonprofit",
+   "total_paid_usd": 239430227.94,
+   "n_variants": 1,
+   "n_contracts_held": 8,
+   "last_year": 2027
+  },
+  {
+   "slug": "a-t-t",
+   "name": "A T & T",
+   "kind": "supplier",
+   "total_paid_usd": 237396972.84,
+   "n_variants": 1,
+   "n_contracts_held": 2,
+   "last_year": 2026
+  },
+  {
+   "slug": "mccarthy-building-companies-inc",
+   "name": "Mccarthy Building Companies Inc",
+   "kind": "supplier",
+   "total_paid_usd": 237211296.82,
+   "n_variants": 1,
+   "n_contracts_held": 0,
+   "last_year": 2027
+  },
+  {
+   "slug": "nextera-energy-marketing-llc",
+   "name": "Nextera Energy Marketing LLC",
+   "kind": "supplier",
+   "total_paid_usd": 233674241.43,
+   "n_variants": 1,
+   "n_contracts_held": 5,
+   "last_year": 2027
+  },
+  {
+   "slug": "siemens-industry-inc",
+   "name": "Siemens Industry Inc",
+   "kind": "supplier",
+   "total_paid_usd": 233100278.57,
+   "n_variants": 1,
+   "n_contracts_held": 10,
+   "last_year": 2027
+  },
+  {
+   "slug": "skanska-usa-building-inc",
+   "name": "Skanska USA Building Inc",
+   "kind": "supplier",
+   "total_paid_usd": 230552273.5,
+   "n_variants": 1,
+   "n_contracts_held": 1,
+   "last_year": 2026
+  },
+  {
+   "slug": "san-francisco-health-plan",
+   "name": "San Francisco Health Plan",
+   "kind": "healthcare",
+   "total_paid_usd": 230489219.39,
+   "n_variants": 2,
+   "n_contracts_held": 2,
+   "last_year": 2026
+  },
+  {
+   "slug": "precision-engineering-inc",
+   "name": "Precision Engineering Inc",
+   "kind": "supplier",
+   "total_paid_usd": 229909056.9,
+   "n_variants": 1,
+   "n_contracts_held": 3,
+   "last_year": 2027
+  },
+  {
+   "slug": "en-pointe-technologies-sales-inc",
+   "name": "En Pointe Technologies Sales Inc",
+   "kind": "supplier",
+   "total_paid_usd": 227311278.4,
+   "n_variants": 2,
+   "n_contracts_held": 0,
+   "last_year": 2022
+  },
+  {
+   "slug": "san-francisco-aids-foundation",
+   "name": "San Francisco Aids Foundation",
+   "kind": "nonprofit",
+   "total_paid_usd": 225850526.41,
+   "n_variants": 1,
+   "n_contracts_held": 4,
+   "last_year": 2027
+  },
+  {
+   "slug": "pcl-construction-inc",
+   "name": "Pcl Construction Inc.",
+   "kind": "supplier",
+   "total_paid_usd": 225486576.01,
+   "n_variants": 1,
+   "n_contracts_held": 1,
+   "last_year": 2027
+  },
+  {
+   "slug": "ucsf-clinic-prac-grp-sfgh-comm-focus-pgm",
+   "name": "UCSF Clinic Prac Grp Sfgh/comm Focus Pgm",
+   "kind": "healthcare",
+   "total_paid_usd": 225333005.94,
+   "n_variants": 1,
+   "n_contracts_held": 1,
+   "last_year": 2026
+  },
+  {
+   "slug": "cardinalhealth-medical-products-svcs",
+   "name": "Cardinalhealth Medical Products & Svcs",
+   "kind": "supplier",
+   "total_paid_usd": 224454092.64,
+   "n_variants": 1,
+   "n_contracts_held": 0,
+   "last_year": 2027
+  },
+  {
+   "slug": "alstom-transport-usa-inc",
+   "name": "Alstom Transport USA Inc",
+   "kind": "supplier",
+   "total_paid_usd": 222459297.98,
+   "n_variants": 1,
+   "n_contracts_held": 1,
+   "last_year": 2026
+  },
+  {
+   "slug": "barnard-impregilo-healy-jv",
+   "name": "Barnard Impregilo Healy JV",
+   "kind": "supplier",
+   "total_paid_usd": 218000917.2,
+   "n_variants": 1,
+   "n_contracts_held": 0,
+   "last_year": 2017
+  },
+  {
+   "slug": "computerland-silicon-valley",
+   "name": "Computerland Silicon Valley",
+   "kind": "supplier",
+   "total_paid_usd": 216004282.66,
+   "n_variants": 1,
+   "n_contracts_held": 1,
+   "last_year": 2026
+  },
+  {
+   "slug": "larkin-street-youth-services",
+   "name": "Larkin Street Youth Services",
+   "kind": "nonprofit",
+   "total_paid_usd": 210927463.4,
+   "n_variants": 1,
+   "n_contracts_held": 17,
+   "last_year": 2027
+  },
+  {
+   "slug": "san-francisco-community-health-authority",
+   "name": "San Francisco Community Health Authority",
+   "kind": "healthcare",
+   "total_paid_usd": 208691457.1,
+   "n_variants": 1,
+   "n_contracts_held": 0,
+   "last_year": 2017
+  },
+  {
+   "slug": "morgan-stanley-capital-group-inc",
+   "name": "Morgan Stanley Capital Group Inc.",
+   "kind": "supplier",
+   "total_paid_usd": 208644311.28,
+   "n_variants": 1,
+   "n_contracts_held": 6,
+   "last_year": 2026
+  },
+  {
+   "slug": "j-flores-construction-company-inc",
+   "name": "J Flores Construction Company Inc",
+   "kind": "supplier",
+   "total_paid_usd": 204810781.14,
+   "n_variants": 1,
+   "n_contracts_held": 4,
+   "last_year": 2027
+  },
+  {
+   "slug": "m-squared-construction-inc",
+   "name": "M Squared Construction Inc",
+   "kind": "supplier",
+   "total_paid_usd": 203934446.89,
+   "n_variants": 1,
+   "n_contracts_held": 3,
+   "last_year": 2026
+  },
+  {
+   "slug": "nibbi-bros-associates-inc",
+   "name": "Nibbi Bros Associates Inc",
+   "kind": "supplier",
+   "total_paid_usd": 203928483.47,
+   "n_variants": 1,
+   "n_contracts_held": 1,
+   "last_year": 2026
+  },
+  {
+   "slug": "michels-jay-dee-coluccio-joint-venture",
+   "name": "Michels/jay Dee/coluccio Joint Venture",
+   "kind": "supplier",
+   "total_paid_usd": 202921895.8,
+   "n_variants": 1,
+   "n_contracts_held": 0,
+   "last_year": 2017
+  },
+  {
+   "slug": "ymca-of-san-francisco",
+   "name": "YMCA of San Francisco",
+   "kind": "nonprofit",
+   "total_paid_usd": 201481092.2,
+   "n_variants": 1,
+   "n_contracts_held": 38,
+   "last_year": 2027
+  },
+  {
+   "slug": "connection",
+   "name": "Connection",
+   "kind": "supplier",
+   "total_paid_usd": 198336092.83,
+   "n_variants": 1,
+   "n_contracts_held": 0,
+   "last_year": 2027
+  },
+  {
+   "slug": "mitchell-engineering",
+   "name": "Mitchell Engineering",
+   "kind": "supplier",
+   "total_paid_usd": 195147503.63,
+   "n_variants": 1,
+   "n_contracts_held": 6,
+   "last_year": 2027
+  },
+  {
+   "slug": "schembri-construction-co-inc",
+   "name": "Schembri Construction Co Inc",
+   "kind": "supplier",
+   "total_paid_usd": 194350265.04,
+   "n_variants": 1,
+   "n_contracts_held": 4,
+   "last_year": 2027
+  },
+  {
+   "slug": "japanese-community-youth-council",
+   "name": "Japanese Community Youth Council",
+   "kind": "nonprofit",
+   "total_paid_usd": 193935017.19,
+   "n_variants": 1,
+   "n_contracts_held": 5,
+   "last_year": 2027
+  },
+  {
+   "slug": "mufg-union-bank-na",
+   "name": "Mufg Union Bank Na",
+   "kind": "fiscal_agent_debt_service",
+   "total_paid_usd": 193079292.44,
+   "n_variants": 1,
+   "n_contracts_held": 2,
+   "last_year": 2021
+  },
+  {
+   "slug": "granite-rock-co",
+   "name": "Granite Rock Co",
+   "kind": "supplier",
+   "total_paid_usd": 192100881.74,
+   "n_variants": 1,
+   "n_contracts_held": 6,
+   "last_year": 2027
+  },
+  {
+   "slug": "laz-parking-california-llc",
+   "name": "Laz Parking California LLC",
+   "kind": "supplier",
+   "total_paid_usd": 188085898.51,
+   "n_variants": 1,
+   "n_contracts_held": 2,
+   "last_year": 2026
+  },
+  {
+   "slug": "recology-sunset-scavenger-company",
+   "name": "Recology Sunset Scavenger Company",
+   "kind": "supplier",
+   "total_paid_usd": 185650998.32,
+   "n_variants": 1,
+   "n_contracts_held": 0,
+   "last_year": 2027
+  },
+  {
+   "slug": "imco-parking-llc",
+   "name": "Imco Parking LLC",
+   "kind": "supplier",
+   "total_paid_usd": 184699544.36,
+   "n_variants": 1,
+   "n_contracts_held": 3,
+   "last_year": 2026
+  },
+  {
+   "slug": "monterey-mechanical-co",
+   "name": "Monterey Mechanical Co",
+   "kind": "supplier",
+   "total_paid_usd": 183318054.59,
+   "n_variants": 1,
+   "n_contracts_held": 0,
+   "last_year": 2026
+  },
+  {
+   "slug": "western-water-constructors-inc",
+   "name": "Western Water Constructors Inc",
+   "kind": "supplier",
+   "total_paid_usd": 180981413.9,
+   "n_variants": 1,
+   "n_contracts_held": 4,
+   "last_year": 2026
+  },
+  {
+   "slug": "brown-caldwell",
+   "name": "Brown & Caldwell",
+   "kind": "supplier",
+   "total_paid_usd": 180425855.39,
+   "n_variants": 1,
+   "n_contracts_held": 1,
+   "last_year": 2026
+  },
+  {
+   "slug": "self-help-for-the-elderly",
+   "name": "Self-help for the Elderly",
+   "kind": "nonprofit",
+   "total_paid_usd": 179183051.13,
+   "n_variants": 2,
+   "n_contracts_held": 35,
+   "last_year": 2027
+  },
+  {
+   "slug": "bayview-hunters-pt-fndtn-for-comm-improv",
+   "name": "Bayview Hunters Pt Fndtn for Comm Improv",
+   "kind": "nonprofit",
+   "total_paid_usd": 177883174.96,
+   "n_variants": 1,
+   "n_contracts_held": 13,
+   "last_year": 2027
+  },
+  {
+   "slug": "regents-univ-of-ca-sfgh-psychiatry-dpt",
+   "name": "Regents Univ of Ca / Sfgh Psychiatry Dpt",
+   "kind": "healthcare",
+   "total_paid_usd": 177427722.69,
+   "n_variants": 1,
+   "n_contracts_held": 11,
+   "last_year": 2027
+  },
+  {
+   "slug": "department-of-general-services",
+   "name": "Department of General Services",
+   "kind": "other",
+   "total_paid_usd": 175000952.79,
+   "n_variants": 1,
+   "n_contracts_held": 1,
+   "last_year": 2026
+  },
+  {
+   "slug": "heluna-health",
+   "name": "Heluna Health",
+   "kind": "nonprofit",
+   "total_paid_usd": 174006868.44,
+   "n_variants": 1,
+   "n_contracts_held": 19,
+   "last_year": 2027
+  },
+  {
+   "slug": "sfo-hotel-shuttle-inc",
+   "name": "Sfo Hotel Shuttle Inc",
+   "kind": "supplier",
+   "total_paid_usd": 173024115.19,
+   "n_variants": 1,
+   "n_contracts_held": 1,
+   "last_year": 2026
+  },
+  {
+   "slug": "state-water-resources-control-board",
+   "name": "State Water Resources Control Board",
+   "kind": "other",
+   "total_paid_usd": 172694359.8,
+   "n_variants": 1,
+   "n_contracts_held": 1,
+   "last_year": 2026
+  },
+  {
+   "slug": "skanska-constructors",
+   "name": "Skanska Constructors",
+   "kind": "supplier",
+   "total_paid_usd": 172057200.78,
+   "n_variants": 1,
+   "n_contracts_held": 0,
+   "last_year": 2021
+  },
+  {
+   "slug": "jmb-construction-inc",
+   "name": "Jmb Construction Inc",
+   "kind": "supplier",
+   "total_paid_usd": 170527933.49,
+   "n_variants": 1,
+   "n_contracts_held": 5,
+   "last_year": 2027
+  },
+  {
+   "slug": "cal-state-constructors-inc",
+   "name": "Cal State Constructors Inc",
+   "kind": "supplier",
+   "total_paid_usd": 170436923.25,
+   "n_variants": 1,
+   "n_contracts_held": 3,
+   "last_year": 2027
+  },
+  {
+   "slug": "mckesson-plasma-and-biologics-llc",
+   "name": "Mckesson Plasma and Biologics LLC",
+   "kind": "supplier",
+   "total_paid_usd": 169446681.73,
+   "n_variants": 1,
+   "n_contracts_held": 1,
+   "last_year": 2027
+  },
+  {
+   "slug": "compass-family-services",
+   "name": "Compass Family Services",
+   "kind": "nonprofit",
+   "total_paid_usd": 168571735.59,
+   "n_variants": 1,
+   "n_contracts_held": 7,
+   "last_year": 2027
+  },
+  {
+   "slug": "edgewood-center-for-children-and-familes",
+   "name": "Edgewood Center for Children and Familes",
+   "kind": "nonprofit",
+   "total_paid_usd": 165611857.68,
+   "n_variants": 1,
+   "n_contracts_held": 7,
+   "last_year": 2027
+  },
+  {
+   "slug": "st-vincent-de-paul-society-of-sf",
+   "name": "St Vincent de Paul Society of SF",
+   "kind": "nonprofit",
+   "total_paid_usd": 165554223.58,
+   "n_variants": 1,
+   "n_contracts_held": 4,
+   "last_year": 2027
+  },
+  {
+   "slug": "cross-country-staffing",
+   "name": "Cross Country Staffing",
+   "kind": "healthcare",
+   "total_paid_usd": 163080176.96,
+   "n_variants": 1,
+   "n_contracts_held": 0,
+   "last_year": 2027
+  },
+  {
+   "slug": "tides-center",
+   "name": "Tides Center",
+   "kind": "other",
+   "total_paid_usd": 162749407.65,
+   "n_variants": 1,
+   "n_contracts_held": 13,
+   "last_year": 2027
+  },
+  {
+   "slug": "instituto-familiar-de-la-raza-inc",
+   "name": "Instituto Familiar de La Raza Inc",
+   "kind": "nonprofit",
+   "total_paid_usd": 162746892.63,
+   "n_variants": 1,
+   "n_contracts_held": 12,
+   "last_year": 2027
+  },
+  {
+   "slug": "nrg-business-marketing-llc",
+   "name": "Nrg Business Marketing LLC",
+   "kind": "supplier",
+   "total_paid_usd": 160203781.17,
+   "n_variants": 1,
+   "n_contracts_held": 1,
+   "last_year": 2026
+  },
+  {
+   "slug": "shaw-pipeline-inc",
+   "name": "Shaw Pipeline Inc",
+   "kind": "supplier",
+   "total_paid_usd": 159516656.46,
+   "n_variants": 1,
+   "n_contracts_held": 0,
+   "last_year": 2022
+  },
+  {
+   "slug": "meda-small-properties-llc",
+   "name": "Meda Small Properties LLC",
+   "kind": "nonprofit",
+   "total_paid_usd": 158695602.52,
+   "n_variants": 2,
+   "n_contracts_held": 43,
+   "last_year": 2026
+  },
+  {
+   "slug": "mountain-cascade-inc",
+   "name": "Mountain Cascade Inc",
+   "kind": "supplier",
+   "total_paid_usd": 158492885.86,
+   "n_variants": 1,
+   "n_contracts_held": 2,
+   "last_year": 2026
+  },
+  {
+   "slug": "metropolitan-transportation-commission",
+   "name": "Metropolitan Transportation Commission",
+   "kind": "other",
+   "total_paid_usd": 158193306.26,
+   "n_variants": 1,
+   "n_contracts_held": 2,
+   "last_year": 2027
+  },
+  {
+   "slug": "ccsf-tpa-workers-comp-division",
+   "name": "Ccsf Tpa Workers Comp Division",
+   "kind": "other",
+   "total_paid_usd": 154110354.67,
+   "n_variants": 1,
+   "n_contracts_held": 0,
+   "last_year": 2019
+  },
+  {
+   "slug": "bank-of-america-na",
+   "name": "Bank of America Na",
+   "kind": "fiscal_agent_debt_service",
+   "total_paid_usd": 153523278.62,
+   "n_variants": 2,
+   "n_contracts_held": 0,
+   "last_year": 2026
+  },
+  {
+   "slug": "meals-on-wheels",
+   "name": "Meals On Wheels",
+   "kind": "other",
+   "total_paid_usd": 151887789.37,
+   "n_variants": 1,
+   "n_contracts_held": 4,
+   "last_year": 2027
+  },
+  {
+   "slug": "bombardier-transprtn-holdings-usa-inc",
+   "name": "Bombardier Transprtn (holdings) USA Inc",
+   "kind": "supplier",
+   "total_paid_usd": 151556651.2,
+   "n_variants": 1,
+   "n_contracts_held": 0,
+   "last_year": 2017
+  },
+  {
+   "slug": "aecom-parsons-jv",
+   "name": "Aecom/parsons JV",
+   "kind": "supplier",
+   "total_paid_usd": 149999764.17,
+   "n_variants": 1,
+   "n_contracts_held": 0,
+   "last_year": 2024
+  },
+  {
+   "slug": "sedgwick-cms",
+   "name": "Sedgwick Cms",
+   "kind": "supplier",
+   "total_paid_usd": 149913523.24,
+   "n_variants": 1,
+   "n_contracts_held": 0,
+   "last_year": 2024
+  },
+  {
+   "slug": "aecom-technical-services-inc",
+   "name": "Aecom Technical Services Inc",
+   "kind": "supplier",
+   "total_paid_usd": 149100487.43,
+   "n_variants": 1,
+   "n_contracts_held": 16,
+   "last_year": 2027
+  },
+  {
+   "slug": "u-r-s-corporation",
+   "name": "U R S Corporation",
+   "kind": "supplier",
+   "total_paid_usd": 148370231.11,
+   "n_variants": 1,
+   "n_contracts_held": 1,
+   "last_year": 2025
+  },
+  {
+   "slug": "western-states-oil",
+   "name": "Western States Oil",
+   "kind": "supplier",
+   "total_paid_usd": 147880838.43,
+   "n_variants": 1,
+   "n_contracts_held": 3,
+   "last_year": 2027
+  },
+  {
+   "slug": "p-a-administrative-services-inc",
+   "name": "P&a Administrative Services Inc",
+   "kind": "payroll_passthrough",
+   "total_paid_usd": 147051028.13,
+   "n_variants": 1,
+   "n_contracts_held": 1,
+   "last_year": 2027
+  },
+  {
+   "slug": "city-national-bank",
+   "name": "City National Bank",
+   "kind": "fiscal_agent_debt_service",
+   "total_paid_usd": 146392014.25,
+   "n_variants": 1,
+   "n_contracts_held": 8,
+   "last_year": 2020
+  },
+  {
+   "slug": "stewart-title-guaranty-co",
+   "name": "Stewart Title Guaranty Co",
+   "kind": "supplier",
+   "total_paid_usd": 146166248.29,
+   "n_variants": 1,
+   "n_contracts_held": 1,
+   "last_year": 2026
+  },
+  {
+   "slug": "eviction-defense-collaborative-inc",
+   "name": "Eviction Defense Collaborative Inc",
+   "kind": "nonprofit",
+   "total_paid_usd": 144833774.28,
+   "n_variants": 1,
+   "n_contracts_held": 3,
+   "last_year": 2026
+  },
+  {
+   "slug": "peninsula-corridor-joint-powers-board",
+   "name": "Peninsula Corridor Joint Powers Board",
+   "kind": "other",
+   "total_paid_usd": 144280861.33,
+   "n_variants": 1,
+   "n_contracts_held": 0,
+   "last_year": 2026
+  },
+  {
+   "slug": "california-academy-of-sciences",
+   "name": "California Academy of Sciences",
+   "kind": "nonprofit",
+   "total_paid_usd": 144180324.81,
+   "n_variants": 1,
+   "n_contracts_held": 1,
+   "last_year": 2027
+  },
+  {
+   "slug": "bauman-landscape-construction-inc",
+   "name": "Bauman Landscape & Construction Inc",
+   "kind": "supplier",
+   "total_paid_usd": 141075041.55,
+   "n_variants": 1,
+   "n_contracts_held": 1,
+   "last_year": 2027
+  },
+  {
+   "slug": "complete-coach-works",
+   "name": "Complete Coach Works",
+   "kind": "supplier",
+   "total_paid_usd": 139598854.16,
+   "n_variants": 1,
+   "n_contracts_held": 3,
+   "last_year": 2027
+  },
+  {
+   "slug": "hunt-construction-group-inc",
+   "name": "Hunt Construction Group Inc",
+   "kind": "supplier",
+   "total_paid_usd": 138793364.19,
+   "n_variants": 1,
+   "n_contracts_held": 0,
+   "last_year": 2021
+  },
+  {
+   "slug": "brilliant-corners",
+   "name": "Brilliant Corners",
+   "kind": "nonprofit",
+   "total_paid_usd": 137887643.61,
+   "n_variants": 1,
+   "n_contracts_held": 1,
+   "last_year": 2027
+  },
+  {
+   "slug": "low-income-investment-fund",
+   "name": "Low Income Investment Fund",
+   "kind": "nonprofit",
+   "total_paid_usd": 136409293.92,
+   "n_variants": 1,
+   "n_contracts_held": 1,
+   "last_year": 2026
+  },
+  {
+   "slug": "mission-neighborhood-centers-inc",
+   "name": "Mission Neighborhood Centers Inc",
+   "kind": "nonprofit",
+   "total_paid_usd": 136260884.55,
+   "n_variants": 1,
+   "n_contracts_held": 7,
+   "last_year": 2026
+  },
+  {
+   "slug": "institute-on-aging",
+   "name": "Institute On Aging",
+   "kind": "other",
+   "total_paid_usd": 135690986.34,
+   "n_variants": 1,
+   "n_contracts_held": 9,
+   "last_year": 2027
+  },
+  {
+   "slug": "mission-action-inc",
+   "name": "Mission Action Inc",
+   "kind": "nonprofit",
+   "total_paid_usd": 135089516.4,
+   "n_variants": 1,
+   "n_contracts_held": 9,
+   "last_year": 2027
+  },
+  {
+   "slug": "allied-universal-security-services",
+   "name": "Allied Universal Security Services",
+   "kind": "supplier",
+   "total_paid_usd": 133046280.49,
+   "n_variants": 1,
+   "n_contracts_held": 4,
+   "last_year": 2026
+  },
+  {
+   "slug": "swinerton-builders",
+   "name": "Swinerton Builders",
+   "kind": "supplier",
+   "total_paid_usd": 132418020.54,
+   "n_variants": 1,
+   "n_contracts_held": 2,
+   "last_year": 2026
+  },
+  {
+   "slug": "y-m-c-a-of-san-francisco",
+   "name": "Y M C a of San Francisco",
+   "kind": "nonprofit",
+   "total_paid_usd": 129718885.3,
+   "n_variants": 1,
+   "n_contracts_held": 0,
+   "last_year": 2017
+  },
+  {
+   "slug": "yerba-buena-engineering-constrctn-inc",
+   "name": "Yerba Buena Engineering & Constrctn Inc",
+   "kind": "supplier",
+   "total_paid_usd": 128970105.13,
+   "n_variants": 1,
+   "n_contracts_held": 7,
+   "last_year": 2026
+  },
+  {
+   "slug": "epic-state-and-local-government-llc",
+   "name": "Epic State and Local Government LLC",
+   "kind": "supplier",
+   "total_paid_usd": 128503958.23,
+   "n_variants": 1,
+   "n_contracts_held": 1,
+   "last_year": 2026
+  },
+  {
+   "slug": "c-l-w-builders-inc",
+   "name": "C L W Builders Inc",
+   "kind": "supplier",
+   "total_paid_usd": 128478694.81,
+   "n_variants": 1,
+   "n_contracts_held": 1,
+   "last_year": 2027
+  },
+  {
+   "slug": "zones-llc",
+   "name": "Zones LLC",
+   "kind": "supplier",
+   "total_paid_usd": 127220234.79,
+   "n_variants": 1,
+   "n_contracts_held": 3,
+   "last_year": 2027
+  },
+  {
+   "slug": "young-community-developers-inc",
+   "name": "Young Community Developers Inc",
+   "kind": "nonprofit",
+   "total_paid_usd": 125406334.2,
+   "n_variants": 1,
+   "n_contracts_held": 7,
+   "last_year": 2027
+  },
+  {
+   "slug": "community-housing-partnership",
+   "name": "Community Housing Partnership",
+   "kind": "nonprofit",
+   "total_paid_usd": 125021850.67,
+   "n_variants": 1,
+   "n_contracts_held": 10,
+   "last_year": 2027
+  },
+  {
+   "slug": "community-youth-center-san-francisco",
+   "name": "Community Youth Center San Francisco",
+   "kind": "nonprofit",
+   "total_paid_usd": 124468987.98,
+   "n_variants": 1,
+   "n_contracts_held": 10,
+   "last_year": 2027
+  },
+  {
+   "slug": "national-park-service",
+   "name": "National Park Service",
+   "kind": "other",
+   "total_paid_usd": 123073372.17,
+   "n_variants": 1,
+   "n_contracts_held": 1,
+   "last_year": 2026
+  },
+  {
+   "slug": "stacy-witbeck-inc",
+   "name": "Stacy & Witbeck Inc",
+   "kind": "supplier",
+   "total_paid_usd": 122727958.9,
+   "n_variants": 1,
+   "n_contracts_held": 0,
+   "last_year": 2017
+  },
+  {
+   "slug": "asian-american-recovery-services-inc",
+   "name": "Asian American Recovery Services Inc",
+   "kind": "nonprofit",
+   "total_paid_usd": 119585302.4,
+   "n_variants": 1,
+   "n_contracts_held": 0,
+   "last_year": 2014
+  },
+  {
+   "slug": "vortech-industries",
+   "name": "Vortech Industries",
+   "kind": "other",
+   "total_paid_usd": 118592783.43,
+   "n_variants": 1,
+   "n_contracts_held": 0,
+   "last_year": 2027
+  },
+  {
+   "slug": "intercare-holdings-insurance-svcs-inc",
+   "name": "Intercare Holdings Insurance Svcs Inc",
+   "kind": "supplier",
+   "total_paid_usd": 117979823.14,
+   "n_variants": 1,
+   "n_contracts_held": 2,
+   "last_year": 2026
+  },
+  {
+   "slug": "darcy-harty-constr-inc",
+   "name": "Darcy & Harty Constr Inc",
+   "kind": "supplier",
+   "total_paid_usd": 117858427.48,
+   "n_variants": 1,
+   "n_contracts_held": 0,
+   "last_year": 2026
+  },
+  {
+   "slug": "ccsf-mta-workers-comp-intercare-ins-svc",
+   "name": "Ccsf/mta Workers' Comp/intercare Ins Svc",
+   "kind": "other",
+   "total_paid_usd": 117562256.44,
+   "n_variants": 1,
+   "n_contracts_held": 0,
+   "last_year": 2019
+  },
+  {
+   "slug": "sierra-mountain-construction-inc",
+   "name": "Sierra Mountain Construction Inc",
+   "kind": "supplier",
+   "total_paid_usd": 117135162.17,
+   "n_variants": 1,
+   "n_contracts_held": 3,
+   "last_year": 2026
+  },
+  {
+   "slug": "community-forward-sf",
+   "name": "Community Forward SF",
+   "kind": "nonprofit",
+   "total_paid_usd": 116701406.92,
+   "n_variants": 1,
+   "n_contracts_held": 6,
+   "last_year": 2027
+  },
+  {
+   "slug": "san-mateo-county",
+   "name": "San Mateo County",
+   "kind": "other",
+   "total_paid_usd": 115282952.3,
+   "n_variants": 1,
+   "n_contracts_held": 8,
+   "last_year": 2027
+  },
+  {
+   "slug": "tenderloin-neighborhood-development-corp",
+   "name": "Tenderloin Neighborhood Development Corp",
+   "kind": "nonprofit",
+   "total_paid_usd": 115242708.49,
+   "n_variants": 1,
+   "n_contracts_held": 23,
+   "last_year": 2027
+  },
+  {
+   "slug": "towne-ford-sales",
+   "name": "Towne Ford Sales",
+   "kind": "supplier",
+   "total_paid_usd": 114584040.92,
+   "n_variants": 1,
+   "n_contracts_held": 2,
+   "last_year": 2026
+  },
+  {
+   "slug": "homeless-prenatal-program",
+   "name": "Homeless Prenatal Program",
+   "kind": "nonprofit",
+   "total_paid_usd": 113142364.32,
+   "n_variants": 1,
+   "n_contracts_held": 8,
+   "last_year": 2027
+  },
+  {
+   "slug": "southern-california-edison-co",
+   "name": "Southern California Edison Co.",
+   "kind": "supplier",
+   "total_paid_usd": 112859879.25,
+   "n_variants": 1,
+   "n_contracts_held": 1,
+   "last_year": 2027
+  },
+  {
+   "slug": "black-veatch-corporation",
+   "name": "Black & Veatch Corporation",
+   "kind": "supplier",
+   "total_paid_usd": 111806571.23,
+   "n_variants": 1,
+   "n_contracts_held": 3,
+   "last_year": 2027
+  },
+  {
+   "slug": "ca-dept-of-tax-fee-admin-boe",
+   "name": "Ca Dept of Tax & Fee Admin (boe)",
+   "kind": "other",
+   "total_paid_usd": 111452544.79,
+   "n_variants": 1,
+   "n_contracts_held": 0,
+   "last_year": 2026
+  },
+  {
+   "slug": "addiction-research-treatment-inc",
+   "name": "Addiction Research & Treatment Inc",
+   "kind": "healthcare",
+   "total_paid_usd": 109581489.58,
+   "n_variants": 1,
+   "n_contracts_held": 1,
+   "last_year": 2027
+  },
+  {
+   "slug": "shell-energy-north-america-us-lp",
+   "name": "Shell Energy North America (us) Lp",
+   "kind": "supplier",
+   "total_paid_usd": 109200992.88,
+   "n_variants": 1,
+   "n_contracts_held": 2,
+   "last_year": 2026
+  },
+  {
+   "slug": "arriba-juntos-ial",
+   "name": "Arriba Juntos - Ial",
+   "kind": "other",
+   "total_paid_usd": 108541686.22,
+   "n_variants": 1,
+   "n_contracts_held": 4,
+   "last_year": 2027
+  },
+  {
+   "slug": "deutsche-bank-national-trust-co",
+   "name": "Deutsche Bank National Trust Co",
+   "kind": "fiscal_agent_debt_service",
+   "total_paid_usd": 107191167.1,
+   "n_variants": 1,
+   "n_contracts_held": 0,
+   "last_year": 2014
+  },
+  {
+   "slug": "san-francisco-food-bank",
+   "name": "San Francisco Food Bank",
+   "kind": "nonprofit",
+   "total_paid_usd": 107119352.02,
+   "n_variants": 1,
+   "n_contracts_held": 5,
+   "last_year": 2026
+  },
+  {
+   "slug": "hitachi-rail-usa-inc",
+   "name": "Hitachi Rail USA Inc",
+   "kind": "supplier",
+   "total_paid_usd": 106601520.53,
+   "n_variants": 1,
+   "n_contracts_held": 0,
+   "last_year": 2021
+  },
+  {
+   "slug": "galliera-inc-dba-trico-construction",
+   "name": "Galliera Inc DBA Trico Construction",
+   "kind": "supplier",
+   "total_paid_usd": 106032247.99,
+   "n_variants": 1,
+   "n_contracts_held": 2,
+   "last_year": 2027
+  },
+  {
+   "slug": "san-francisco-study-center-inc",
+   "name": "San Francisco Study Center Inc",
+   "kind": "nonprofit",
+   "total_paid_usd": 105441891.39,
+   "n_variants": 1,
+   "n_contracts_held": 6,
+   "last_year": 2027
+  },
+  {
+   "slug": "urban-alchemy",
+   "name": "Urban Alchemy",
+   "kind": "nonprofit",
+   "total_paid_usd": 104680339.67,
+   "n_variants": 1,
+   "n_contracts_held": 12,
+   "last_year": 2027
+  },
+  {
+   "slug": "serco-inc",
+   "name": "Serco Inc",
+   "kind": "other",
+   "total_paid_usd": 103177189.29,
+   "n_variants": 1,
+   "n_contracts_held": 0,
+   "last_year": 2021
+  },
+  {
+   "slug": "hamilton-families",
+   "name": "Hamilton Families",
+   "kind": "other",
+   "total_paid_usd": 102737462.81,
+   "n_variants": 1,
+   "n_contracts_held": 7,
+   "last_year": 2027
+  },
+  {
+   "slug": "parsons-water-infrastructure-inc",
+   "name": "Parsons Water & Infrastructure Inc",
+   "kind": "supplier",
+   "total_paid_usd": 100869654.13,
+   "n_variants": 1,
+   "n_contracts_held": 1,
+   "last_year": 2026
+  },
+  {
+   "slug": "alstom-transportation-inc",
+   "name": "Alstom Transportation Inc",
+   "kind": "other",
+   "total_paid_usd": 100067793.5,
+   "n_variants": 1,
+   "n_contracts_held": 0,
+   "last_year": 2026
+  }
+ ]
+}

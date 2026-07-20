@@ -1,0 +1,53 @@
+{
+ "generated_at": "2026-07-20T22:34:47.726967+00:00",
+ "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
+ "as_of": "2026-07-13T13:40:40+00:00",
+ "unit": "USD",
+ "slug": "department-of-social-services",
+ "name": "Department of Social Services",
+ "kind": "other",
+ "is_non_profit": false,
+ "total_paid_usd": 1555725637.05,
+ "n_years": 17,
+ "first_year": 2007,
+ "last_year": 2026,
+ "by_year": {
+  "2007": 2188.0,
+  "2008": 2188.0,
+  "2009": 2188.0,
+  "2010": 324278.0,
+  "2011": 2407.0,
+  "2012": 2623.0,
+  "2013": 1248.0,
+  "2015": 200.0,
+  "2018": 119188391.81,
+  "2019": 98369857.08,
+  "2020": 181519648.0,
+  "2021": 162705333.81,
+  "2022": 181500986.49,
+  "2023": 185284033.12,
+  "2024": 190163542.87,
+  "2025": 212433298.25,
+  "2026": 224223225.62
+ },
+ "top_departments": [
+  "HSA Human Services Agency"
+ ],
+ "contracts_held": [],
+ "n_contracts_held": 0,
+ "variants": [
+  {
+   "name": "DEPARTMENT OF SOCIAL SERVICES",
+   "total": 1555725637.05
+  }
+ ],
+ "n_variants": 1,
+ "merges": [],
+ "source": {
+  "name": "Vendor Payments (Vouchers)",
+  "dataset_id": "n9pm-xkyq",
+  "source_url": "https://data.sfgov.org/d/n9pm-xkyq",
+  "attribution": "SF Controller's Office",
+  "rows_updated_at": "2026-07-13T13:40:40+00:00"
+ }
+}

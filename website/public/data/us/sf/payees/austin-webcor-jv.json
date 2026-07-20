@@ -1,0 +1,67 @@
+{
+ "generated_at": "2026-07-20T22:34:47.727561+00:00",
+ "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
+ "as_of": "2026-07-13T13:40:40+00:00",
+ "unit": "USD",
+ "slug": "austin-webcor-jv",
+ "name": "Austin Webcor JV",
+ "kind": "supplier",
+ "is_non_profit": false,
+ "total_paid_usd": 959943489.96,
+ "n_years": 12,
+ "first_year": 2016,
+ "last_year": 2027,
+ "by_year": {
+  "2016": 15768966.0,
+  "2017": 60750836.8,
+  "2018": 167493884.34,
+  "2019": 318840786.43,
+  "2020": 134936343.11,
+  "2021": 124374035.99,
+  "2022": 32810746.71,
+  "2023": 313521.01,
+  "2024": 1353478.0,
+  "2025": 31391486.99,
+  "2026": 60305539.12,
+  "2027": 11603865.46
+ },
+ "top_departments": [
+  "AIR Airport Commission"
+ ],
+ "contracts_held": [
+  {
+   "contract_no": "1000031791",
+   "title": "11917.66-DB WFG 675",
+   "department": "AIR Airport Commission",
+   "department_code": "AIR",
+   "agreed_usd": 278575383.82,
+   "paid_usd": 635916676.7,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000035106",
+   "title": "11945.66-DB Boarding AreaG",
+   "department": "AIR Airport Commission",
+   "department_code": "AIR",
+   "agreed_usd": 164058205.0,
+   "paid_usd": 14784493.63,
+   "sole_source": false
+  }
+ ],
+ "n_contracts_held": 2,
+ "variants": [
+  {
+   "name": "AUSTIN WEBCOR JV",
+   "total": 959943489.96
+  }
+ ],
+ "n_variants": 1,
+ "merges": [],
+ "source": {
+  "name": "Vendor Payments (Vouchers)",
+  "dataset_id": "n9pm-xkyq",
+  "source_url": "https://data.sfgov.org/d/n9pm-xkyq",
+  "attribution": "SF Controller's Office",
+  "rows_updated_at": "2026-07-13T13:40:40+00:00"
+ }
+}

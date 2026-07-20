@@ -1,0 +1,292 @@
+{
+ "generated_at": "2026-07-20T22:34:47.732222+00:00",
+ "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
+ "as_of": "2026-07-13T13:40:40+00:00",
+ "unit": "USD",
+ "slug": "felton-institute",
+ "name": "Felton Institute",
+ "kind": "nonprofit",
+ "is_non_profit": false,
+ "total_paid_usd": 287264829.13,
+ "n_years": 21,
+ "first_year": 2007,
+ "last_year": 2027,
+ "by_year": {
+  "2007": 6221987.4,
+  "2008": 8136582.4,
+  "2009": 8377622.6,
+  "2010": 8904044.3,
+  "2011": 9367761.7,
+  "2012": 8333182.0,
+  "2013": 8739417.4,
+  "2014": 8378042.2,
+  "2015": 9638388.4,
+  "2016": 9439593.4,
+  "2017": 12575092.5,
+  "2018": 8183714.54,
+  "2019": 12971002.94,
+  "2020": 13027466.67,
+  "2021": 13560995.68,
+  "2022": 14959177.49,
+  "2023": 28003567.8,
+  "2024": 36105523.55,
+  "2025": 30586359.46,
+  "2026": 27594466.19,
+  "2027": 4160840.51
+ },
+ "top_departments": [
+  "DPH Public Health"
+ ],
+ "contracts_held": [
+  {
+   "contract_no": "1000009936",
+   "title": "Felton, 2021-22 AM-1",
+   "department": "DPH Public Health",
+   "department_code": "DPH",
+   "agreed_usd": 77605232.0,
+   "paid_usd": 68017947.99,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000026539",
+   "title": "Felton - Bayview Drop-in",
+   "department": "HOM Homelessness Services",
+   "department_code": "HOM",
+   "agreed_usd": 16854149.0,
+   "paid_usd": 9253585.56,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000032882",
+   "title": "TAY - RFP 8816",
+   "department": "DPH Public Health",
+   "department_code": "DPH",
+   "agreed_usd": 9999999.0,
+   "paid_usd": 4236024.41,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000028955",
+   "title": "Citywide Crisis Lines RFP 7310",
+   "department": "DPH Public Health",
+   "department_code": "DPH",
+   "agreed_usd": 9999999.0,
+   "paid_usd": 3861776.6,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000010831",
+   "title": "Felton-DCCS 21-22 AM-1",
+   "department": "DPH Public Health",
+   "department_code": "DPH",
+   "agreed_usd": 5211751.0,
+   "paid_usd": 3463764.05,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000032781",
+   "title": "RFP 8667",
+   "department": "DPH Public Health",
+   "department_code": "DPH",
+   "agreed_usd": 9999999.0,
+   "paid_usd": 2841637.24,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000030740",
+   "title": "RFGA 8342 - ICM",
+   "department": "DPH Public Health",
+   "department_code": "DPH",
+   "agreed_usd": 6159581.0,
+   "paid_usd": 2779153.81,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000031884",
+   "title": "Felton - Hope House HUD",
+   "department": "HOM Homelessness Services",
+   "department_code": "HOM",
+   "agreed_usd": 8693040.0,
+   "paid_usd": 2053339.23,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000024190",
+   "title": "Felton-NAMI,24-25 AM-2",
+   "department": "DPH Public Health",
+   "department_code": "DPH",
+   "agreed_usd": 2998782.0,
+   "paid_usd": 1801903.21,
+   "sole_source": true
+  },
+  {
+   "contract_no": "1000032550",
+   "title": "GA-Young Adult Court-24-29",
+   "department": "CHF Children;Youth & Families",
+   "department_code": "CHF",
+   "agreed_usd": 7592200.0,
+   "paid_usd": 1613220.23,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000027636",
+   "title": "I R & A for ESSS 22-25",
+   "department": "HSA Human Services Agency",
+   "department_code": "HSA",
+   "agreed_usd": 2529813.0,
+   "paid_usd": 1513035.05,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000029927",
+   "title": "DAS Comm Srvcs FY23-27",
+   "department": "HSA Human Services Agency",
+   "department_code": "HSA",
+   "agreed_usd": 1317228.0,
+   "paid_usd": 796753.33,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000032695",
+   "title": "POET",
+   "department": "DPH Public Health",
+   "department_code": "DPH",
+   "agreed_usd": 5234564.0,
+   "paid_usd": 750627.01,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000033029",
+   "title": "24-01 EISS Initiative",
+   "department": "DEC Dept of Early Childhood",
+   "department_code": "DEC",
+   "agreed_usd": 1469232.0,
+   "paid_usd": 748759.83,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000032712",
+   "title": "24-02 FRC Initiative",
+   "department": "DEC Dept of Early Childhood",
+   "department_code": "DEC",
+   "agreed_usd": 1371382.0,
+   "paid_usd": 718737.86,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000036756",
+   "title": "Felton - Adult UAV",
+   "department": "HOM Homelessness Services",
+   "department_code": "HOM",
+   "agreed_usd": 4074000.0,
+   "paid_usd": 684365.52,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000036423",
+   "title": "OCP-LTC-Ombudsman-FY25-29",
+   "department": "HSA Human Services Agency",
+   "department_code": "HSA",
+   "agreed_usd": 3287460.0,
+   "paid_usd": 530098.91,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000031883",
+   "title": "Felton - HH for Vets HUD",
+   "department": "HOM Homelessness Services",
+   "department_code": "HOM",
+   "agreed_usd": 4602374.0,
+   "paid_usd": 512459.32,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000029760",
+   "title": "Felton-Senior Comp 23-27",
+   "department": "HSA Human Services Agency",
+   "department_code": "HSA",
+   "agreed_usd": 436537.0,
+   "paid_usd": 335013.22,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000032777",
+   "title": "RFP 8897 - Population #3",
+   "department": "DPH Public Health",
+   "department_code": "DPH",
+   "agreed_usd": 2334016.0,
+   "paid_usd": 314682.83,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000033489",
+   "title": "DAS-FY25-27 -Digital Literacy",
+   "department": "HSA Human Services Agency",
+   "department_code": "HSA",
+   "agreed_usd": 495133.0,
+   "paid_usd": 235597.19,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000036604",
+   "title": "Felton - SS at 1633 Valencia",
+   "department": "HOM Homelessness Services",
+   "department_code": "HOM",
+   "agreed_usd": 3390814.0,
+   "paid_usd": 231972.14,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000035411",
+   "title": "Felton Institute - The Knox",
+   "department": "HOM Homelessness Services",
+   "department_code": "HOM",
+   "agreed_usd": 1139868.0,
+   "paid_usd": 187301.8,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000036771",
+   "title": "24-04 T&TA RFQ",
+   "department": "DEC Dept of Early Childhood",
+   "department_code": "DEC",
+   "agreed_usd": 177749.0,
+   "paid_usd": 122688.32,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000029925",
+   "title": "DAS Case Mngmt FY23-27",
+   "department": "HSA Human Services Agency",
+   "department_code": "HSA",
+   "agreed_usd": 604960.0,
+   "paid_usd": 65921.37,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000036764",
+   "title": "Mcah Tapp",
+   "department": "DPH Public Health",
+   "department_code": "DPH",
+   "agreed_usd": 1479994.0,
+   "paid_usd": 0.0,
+   "sole_source": false
+  }
+ ],
+ "n_contracts_held": 26,
+ "variants": [
+  {
+   "name": "FELTON INSTITUTE",
+   "total": 287264829.13
+  }
+ ],
+ "n_variants": 1,
+ "merges": [],
+ "source": {
+  "name": "Vendor Payments (Vouchers)",
+  "dataset_id": "n9pm-xkyq",
+  "source_url": "https://data.sfgov.org/d/n9pm-xkyq",
+  "attribution": "SF Controller's Office",
+  "rows_updated_at": "2026-07-13T13:40:40+00:00"
+ }
+}

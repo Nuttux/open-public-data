@@ -1,0 +1,43 @@
+{
+ "generated_at": "2026-07-20T22:34:47.743379+00:00",
+ "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
+ "as_of": "2026-07-13T13:40:40+00:00",
+ "unit": "USD",
+ "slug": "ccsf-mta-workers-comp-intercare-ins-svc",
+ "name": "Ccsf/mta Workers' Comp/intercare Ins Svc",
+ "kind": "other",
+ "is_non_profit": false,
+ "total_paid_usd": 117562256.44,
+ "n_years": 7,
+ "first_year": 2013,
+ "last_year": 2019,
+ "by_year": {
+  "2013": 4600617.2,
+  "2014": 18669866.3,
+  "2015": 22515124.5,
+  "2016": 24000355.2,
+  "2017": 24268152.4,
+  "2018": 22518261.34,
+  "2019": 989879.5
+ },
+ "top_departments": [
+  "MTA Municipal Transprtn Agncy"
+ ],
+ "contracts_held": [],
+ "n_contracts_held": 0,
+ "variants": [
+  {
+   "name": "CCSF/MTA WORKERS' COMP/INTERCARE INS SVC",
+   "total": 117562256.44
+  }
+ ],
+ "n_variants": 1,
+ "merges": [],
+ "source": {
+  "name": "Vendor Payments (Vouchers)",
+  "dataset_id": "n9pm-xkyq",
+  "source_url": "https://data.sfgov.org/d/n9pm-xkyq",
+  "attribution": "SF Controller's Office",
+  "rows_updated_at": "2026-07-13T13:40:40+00:00"
+ }
+}

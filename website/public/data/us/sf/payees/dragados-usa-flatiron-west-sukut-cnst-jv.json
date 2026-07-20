@@ -1,0 +1,45 @@
+{
+ "generated_at": "2026-07-20T22:34:47.729671+00:00",
+ "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
+ "as_of": "2026-07-13T13:40:40+00:00",
+ "unit": "USD",
+ "slug": "dragados-usa-flatiron-west-sukut-cnst-jv",
+ "name": "Dragados Usa/flatiron West/sukut Cnst JV",
+ "kind": "supplier",
+ "is_non_profit": false,
+ "total_paid_usd": 535549476.33,
+ "n_years": 9,
+ "first_year": 2012,
+ "last_year": 2020,
+ "by_year": {
+  "2012": 41380271.7,
+  "2013": 72873186.8,
+  "2014": 125364769.7,
+  "2015": 83653706.5,
+  "2016": 62041135.3,
+  "2017": 47655143.9,
+  "2018": 58624488.45,
+  "2019": 42263018.48,
+  "2020": 1693755.5
+ },
+ "top_departments": [
+  "PUB Public Utilities Bureaus"
+ ],
+ "contracts_held": [],
+ "n_contracts_held": 0,
+ "variants": [
+  {
+   "name": "DRAGADOS USA/FLATIRON WEST/SUKUT CNST JV",
+   "total": 535549476.33
+  }
+ ],
+ "n_variants": 1,
+ "merges": [],
+ "source": {
+  "name": "Vendor Payments (Vouchers)",
+  "dataset_id": "n9pm-xkyq",
+  "source_url": "https://data.sfgov.org/d/n9pm-xkyq",
+  "attribution": "SF Controller's Office",
+  "rows_updated_at": "2026-07-13T13:40:40+00:00"
+ }
+}

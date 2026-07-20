@@ -1,0 +1,112 @@
+{
+ "generated_at": "2026-07-20T22:34:47.727247+00:00",
+ "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
+ "as_of": "2026-07-13T13:40:40+00:00",
+ "unit": "USD",
+ "slug": "children-s-council-of-san-francisco",
+ "name": "Children's Council of San Francisco",
+ "kind": "nonprofit",
+ "is_non_profit": false,
+ "total_paid_usd": 1157215813.49,
+ "n_years": 21,
+ "first_year": 2007,
+ "last_year": 2027,
+ "by_year": {
+  "2007": 640608.8,
+  "2008": 3333419.3,
+  "2009": 7518858.1,
+  "2010": 9380533.8,
+  "2011": 10391402.8,
+  "2012": 11569759.1,
+  "2013": 13303275.0,
+  "2014": 15673173.1,
+  "2015": 18477840.0,
+  "2016": 21566531.0,
+  "2017": 20469820.1,
+  "2018": 42903275.41,
+  "2019": 65841480.91,
+  "2020": 84782637.05,
+  "2021": 86421716.59,
+  "2022": 98407074.77,
+  "2023": 166531872.38,
+  "2024": 114000753.24,
+  "2025": 149195033.94,
+  "2026": 173700112.94,
+  "2027": 43106635.16
+ },
+ "top_departments": [
+  "CFC Children & Families Commsn"
+ ],
+ "contracts_held": [
+  {
+   "contract_no": "1000028798",
+   "title": "Workforce Compensation & Admin",
+   "department": "DEC Dept of Early Childhood",
+   "department_code": "DEC",
+   "agreed_usd": 164346004.0,
+   "paid_usd": 142178536.4,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000036005",
+   "title": "ECE Access & Enrollment",
+   "department": "DEC Dept of Early Childhood",
+   "department_code": "DEC",
+   "agreed_usd": 436382686.0,
+   "paid_usd": 81512001.78,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000015894",
+   "title": "Nutrition",
+   "department": "DPH Public Health",
+   "department_code": "DPH",
+   "agreed_usd": 1299076.0,
+   "paid_usd": 849868.45,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000036768",
+   "title": "T&TA and Rating Assessment",
+   "department": "DEC Dept of Early Childhood",
+   "department_code": "DEC",
+   "agreed_usd": 1236000.0,
+   "paid_usd": 377332.64,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000033032",
+   "title": "24-01 EISS Initiative",
+   "department": "DEC Dept of Early Childhood",
+   "department_code": "DEC",
+   "agreed_usd": 565942.0,
+   "paid_usd": 276973.83,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000038383",
+   "title": "DKI-HW04-26-001ChildrensCo",
+   "department": "HRC Human Rights Commission",
+   "department_code": "HRC",
+   "agreed_usd": 400000.0,
+   "paid_usd": 0.0,
+   "sole_source": false
+  }
+ ],
+ "n_contracts_held": 6,
+ "variants": [
+  {
+   "name": "CHILDREN'S COUNCIL OF SAN FRANCISCO",
+   "total": 1157215813.49
+  }
+ ],
+ "n_variants": 1,
+ "merges": [],
+ "source": {
+  "name": "Vendor Payments (Vouchers)",
+  "dataset_id": "n9pm-xkyq",
+  "source_url": "https://data.sfgov.org/d/n9pm-xkyq",
+  "attribution": "SF Controller's Office",
+  "rows_updated_at": "2026-07-13T13:40:40+00:00"
+ }
+}

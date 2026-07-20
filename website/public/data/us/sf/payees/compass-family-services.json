@@ -1,0 +1,121 @@
+{
+ "generated_at": "2026-07-20T22:34:47.738376+00:00",
+ "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
+ "as_of": "2026-07-13T13:40:40+00:00",
+ "unit": "USD",
+ "slug": "compass-family-services",
+ "name": "Compass Family Services",
+ "kind": "nonprofit",
+ "is_non_profit": true,
+ "total_paid_usd": 168571735.59,
+ "n_years": 21,
+ "first_year": 2007,
+ "last_year": 2027,
+ "by_year": {
+  "2007": 1969437.7,
+  "2008": 3613148.2,
+  "2009": 3957731.0,
+  "2010": 3450796.8,
+  "2011": 4111893.5,
+  "2012": 3958505.7,
+  "2013": 4148863.1,
+  "2014": 4249760.6,
+  "2015": 4234473.0,
+  "2016": 4916582.4,
+  "2017": 5865795.8,
+  "2018": 4963378.63,
+  "2019": 7142501.87,
+  "2020": 5316351.8,
+  "2021": 8208514.66,
+  "2022": 10110249.78,
+  "2023": 7334651.93,
+  "2024": 16554607.21,
+  "2025": 29401651.72,
+  "2026": 34318505.53,
+  "2027": 744334.66
+ },
+ "top_departments": [
+  "HOM Homelessness Services"
+ ],
+ "contracts_held": [
+  {
+   "contract_no": "1000017660",
+   "title": "Compass - Family Shelter",
+   "department": "HOM Homelessness Services",
+   "department_code": "HOM",
+   "agreed_usd": 9993895.0,
+   "paid_usd": 7954749.9,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000016937",
+   "title": "Compass - Roving Clinical team",
+   "department": "HOM Homelessness Services",
+   "department_code": "HOM",
+   "agreed_usd": 9980000.0,
+   "paid_usd": 6916794.86,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000032115",
+   "title": "Compass - SF Home RRH",
+   "department": "HOM Homelessness Services",
+   "department_code": "HOM",
+   "agreed_usd": 9126274.0,
+   "paid_usd": 5538514.44,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000013685",
+   "title": "Compass - Clara House",
+   "department": "HOM Homelessness Services",
+   "department_code": "HOM",
+   "agreed_usd": 7530105.0,
+   "paid_usd": 5176265.31,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000022894",
+   "title": "Compass - Prevention",
+   "department": "HOM Homelessness Services",
+   "department_code": "HOM",
+   "agreed_usd": 8362796.0,
+   "paid_usd": 4806712.17,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000027456",
+   "title": "Compass - CoC RRH",
+   "department": "HOM Homelessness Services",
+   "department_code": "HOM",
+   "agreed_usd": 5386071.0,
+   "paid_usd": 2584588.96,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000032707",
+   "title": "24-02 FRC Initiative",
+   "department": "DEC Dept of Early Childhood",
+   "department_code": "DEC",
+   "agreed_usd": 1529116.0,
+   "paid_usd": 788618.25,
+   "sole_source": false
+  }
+ ],
+ "n_contracts_held": 7,
+ "variants": [
+  {
+   "name": "COMPASS FAMILY SERVICES",
+   "total": 168571735.59
+  }
+ ],
+ "n_variants": 1,
+ "merges": [],
+ "source": {
+  "name": "Vendor Payments (Vouchers)",
+  "dataset_id": "n9pm-xkyq",
+  "source_url": "https://data.sfgov.org/d/n9pm-xkyq",
+  "attribution": "SF Controller's Office",
+  "rows_updated_at": "2026-07-13T13:40:40+00:00"
+ }
+}

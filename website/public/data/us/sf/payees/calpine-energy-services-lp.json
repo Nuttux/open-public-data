@@ -1,0 +1,86 @@
+{
+ "generated_at": "2026-07-20T22:34:47.730832+00:00",
+ "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
+ "as_of": "2026-07-13T13:40:40+00:00",
+ "unit": "USD",
+ "slug": "calpine-energy-services-lp",
+ "name": "Calpine Energy Services Lp",
+ "kind": "supplier",
+ "is_non_profit": false,
+ "total_paid_usd": 356629499.29,
+ "n_years": 13,
+ "first_year": 2007,
+ "last_year": 2026,
+ "by_year": {
+  "2007": 1575900.0,
+  "2008": 5596425.0,
+  "2016": 1946304.0,
+  "2017": 13930340.8,
+  "2018": 16425346.0,
+  "2019": 29095746.97,
+  "2020": 25022636.8,
+  "2021": 24333889.0,
+  "2022": 30622534.0,
+  "2023": 30318241.0,
+  "2024": 60233477.75,
+  "2025": 60169775.39,
+  "2026": 57358882.58
+ },
+ "top_departments": [
+  "HHP Hetch Hetchy Water & Power"
+ ],
+ "contracts_held": [
+  {
+   "contract_no": "1000010115",
+   "title": "CLP Geyser Energy+Recs",
+   "department": "PUC Public Utilities Commsn",
+   "department_code": "PUC",
+   "agreed_usd": 242979816.75,
+   "paid_usd": 138040111.65,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000031639",
+   "title": "CPSF SYSTEMENERGY3923",
+   "department": "PUC Public Utilities Commsn",
+   "department_code": "PUC",
+   "agreed_usd": 57082284.0,
+   "paid_usd": 43046907.75,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000031726",
+   "title": "CPSF RA1441",
+   "department": "PUC Public Utilities Commsn",
+   "department_code": "PUC",
+   "agreed_usd": 59400000.0,
+   "paid_usd": 22275000.0,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000020547",
+   "title": "CLP Geysers RA 182",
+   "department": "PUC Public Utilities Commsn",
+   "department_code": "PUC",
+   "agreed_usd": 30240000.0,
+   "paid_usd": 14850000.0,
+   "sole_source": false
+  }
+ ],
+ "n_contracts_held": 4,
+ "variants": [
+  {
+   "name": "CALPINE ENERGY SERVICES LP",
+   "total": 356629499.29
+  }
+ ],
+ "n_variants": 1,
+ "merges": [],
+ "source": {
+  "name": "Vendor Payments (Vouchers)",
+  "dataset_id": "n9pm-xkyq",
+  "source_url": "https://data.sfgov.org/d/n9pm-xkyq",
+  "attribution": "SF Controller's Office",
+  "rows_updated_at": "2026-07-13T13:40:40+00:00"
+ }
+}

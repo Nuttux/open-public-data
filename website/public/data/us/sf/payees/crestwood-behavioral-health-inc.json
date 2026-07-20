@@ -1,0 +1,67 @@
+{
+ "generated_at": "2026-07-20T22:34:47.732970+00:00",
+ "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
+ "as_of": "2026-07-13T13:40:40+00:00",
+ "unit": "USD",
+ "slug": "crestwood-behavioral-health-inc",
+ "name": "Crestwood Behavioral Health Inc",
+ "kind": "healthcare",
+ "is_non_profit": false,
+ "total_paid_usd": 259699343.52,
+ "n_years": 21,
+ "first_year": 2007,
+ "last_year": 2027,
+ "by_year": {
+  "2007": 8889169.1,
+  "2008": 9404940.9,
+  "2009": 7432309.7,
+  "2010": 7216044.2,
+  "2011": 7874104.5,
+  "2012": 7723747.2,
+  "2013": 8194280.6,
+  "2014": 8015551.0,
+  "2015": 7699478.8,
+  "2016": 8075112.0,
+  "2017": 8674524.9,
+  "2018": 9168740.87,
+  "2019": 13192977.01,
+  "2020": 17539332.23,
+  "2021": 16703112.87,
+  "2022": 19285245.98,
+  "2023": 20139665.52,
+  "2024": 19614426.82,
+  "2025": 23036237.02,
+  "2026": 31232763.26,
+  "2027": 587579.04
+ },
+ "top_departments": [
+  "DPH Public Health"
+ ],
+ "contracts_held": [
+  {
+   "contract_no": "1000009324",
+   "title": "Skilled Nursing Facility",
+   "department": "DPH Public Health",
+   "department_code": "DPH",
+   "agreed_usd": 224216994.0,
+   "paid_usd": 147265422.93,
+   "sole_source": false
+  }
+ ],
+ "n_contracts_held": 1,
+ "variants": [
+  {
+   "name": "CRESTWOOD BEHAVIORAL HEALTH INC",
+   "total": 259699343.52
+  }
+ ],
+ "n_variants": 1,
+ "merges": [],
+ "source": {
+  "name": "Vendor Payments (Vouchers)",
+  "dataset_id": "n9pm-xkyq",
+  "source_url": "https://data.sfgov.org/d/n9pm-xkyq",
+  "attribution": "SF Controller's Office",
+  "rows_updated_at": "2026-07-13T13:40:40+00:00"
+ }
+}

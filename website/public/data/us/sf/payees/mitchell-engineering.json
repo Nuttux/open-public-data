@@ -1,0 +1,108 @@
+{
+ "generated_at": "2026-07-20T22:34:47.736001+00:00",
+ "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
+ "as_of": "2026-07-13T13:40:40+00:00",
+ "unit": "USD",
+ "slug": "mitchell-engineering",
+ "name": "Mitchell Engineering",
+ "kind": "supplier",
+ "is_non_profit": false,
+ "total_paid_usd": 195147503.63,
+ "n_years": 17,
+ "first_year": 2007,
+ "last_year": 2027,
+ "by_year": {
+  "2007": 1400776.7,
+  "2008": 2123178.0,
+  "2011": 415962.5,
+  "2012": 940029.3,
+  "2015": 52419.8,
+  "2016": 1201121.1,
+  "2017": 7775968.1,
+  "2018": 4258011.71,
+  "2019": 23756005.96,
+  "2020": 23812092.71,
+  "2021": 23339142.06,
+  "2022": 18836799.38,
+  "2023": 4791467.25,
+  "2024": 16091400.13,
+  "2025": 27625480.89,
+  "2026": 37909638.78,
+  "2027": 818009.26
+ },
+ "top_departments": [
+  "DPW Public Works"
+ ],
+ "contracts_held": [
+  {
+   "contract_no": "1000029566",
+   "title": "Folsom Imp - SOMA&Mis Rplc",
+   "department": "PUC Public Utilities Commsn",
+   "department_code": "PUC",
+   "agreed_usd": 6912421.38,
+   "paid_usd": 25656228.65,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000031384",
+   "title": "Folsom STRTSCP PRJ",
+   "department": "DPW Public Works",
+   "department_code": "DPW",
+   "agreed_usd": 17517740.82,
+   "paid_usd": 24376846.48,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000035209",
+   "title": "Sunol Pipeline Replacement",
+   "department": "PUC Public Utilities Commsn",
+   "department_code": "PUC",
+   "agreed_usd": 4787652.07,
+   "paid_usd": 4377509.05,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000034140",
+   "title": "As-Needed Main Sewer RP#10",
+   "department": "PUC Public Utilities Commsn",
+   "department_code": "PUC",
+   "agreed_usd": 13038674.5,
+   "paid_usd": 4137336.84,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000019955",
+   "title": "Aux WTR Sup SYS Clarendon",
+   "department": "PUC Public Utilities Commsn",
+   "department_code": "PUC",
+   "agreed_usd": 2160741.17,
+   "paid_usd": 3948075.52,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000036213",
+   "title": "SFPW Yard Fuel Station RPLC",
+   "department": "DPW Public Works",
+   "department_code": "DPW",
+   "agreed_usd": 3858550.0,
+   "paid_usd": 1682814.38,
+   "sole_source": false
+  }
+ ],
+ "n_contracts_held": 6,
+ "variants": [
+  {
+   "name": "MITCHELL ENGINEERING",
+   "total": 195147503.63
+  }
+ ],
+ "n_variants": 1,
+ "merges": [],
+ "source": {
+  "name": "Vendor Payments (Vouchers)",
+  "dataset_id": "n9pm-xkyq",
+  "source_url": "https://data.sfgov.org/d/n9pm-xkyq",
+  "attribution": "SF Controller's Office",
+  "rows_updated_at": "2026-07-13T13:40:40+00:00"
+ }
+}

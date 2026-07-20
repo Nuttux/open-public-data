@@ -1,0 +1,197 @@
+{
+ "generated_at": "2026-07-20T22:34:47.740271+00:00",
+ "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
+ "as_of": "2026-07-13T13:40:40+00:00",
+ "unit": "USD",
+ "slug": "aecom-technical-services-inc",
+ "name": "Aecom Technical Services Inc",
+ "kind": "supplier",
+ "is_non_profit": false,
+ "total_paid_usd": 149100487.43,
+ "n_years": 16,
+ "first_year": 2012,
+ "last_year": 2027,
+ "by_year": {
+  "2012": 3342132.3,
+  "2013": 4077895.3,
+  "2014": 3450670.8,
+  "2015": 1574304.5,
+  "2016": 3158898.5,
+  "2017": 3504952.1,
+  "2018": 2161014.01,
+  "2019": 3292328.82,
+  "2020": 5498822.49,
+  "2021": 10433693.54,
+  "2022": 11481875.06,
+  "2023": 17244558.09,
+  "2024": 22009563.6,
+  "2025": 35835919.84,
+  "2026": 21478342.04,
+  "2027": 555516.44
+ },
+ "top_departments": [
+  "PUC Public Utilities Commsn"
+ ],
+ "contracts_held": [
+  {
+   "contract_no": "1000015367",
+   "title": "Mt Tnnl Constrn Mngnt Srvs",
+   "department": "PUC Public Utilities Commsn",
+   "department_code": "PUC",
+   "agreed_usd": 24888173.0,
+   "paid_usd": 32555251.89,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000029994",
+   "title": "Wwe Cip - PRGM MGMT Conslt",
+   "department": "PUC Public Utilities Commsn",
+   "department_code": "PUC",
+   "agreed_usd": 49500000.0,
+   "paid_usd": 17532265.5,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000013299",
+   "title": "Natural Resources/Tech Svc",
+   "department": "PUC Public Utilities Commsn",
+   "department_code": "PUC",
+   "agreed_usd": 18620000.0,
+   "paid_usd": 13672452.97,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000018085",
+   "title": "Eng Srvs Dams Resvrs",
+   "department": "PUC Public Utilities Commsn",
+   "department_code": "PUC",
+   "agreed_usd": 17586360.82,
+   "paid_usd": 10565177.99,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000023152",
+   "title": "Eng Srvs Tranms Pipelines",
+   "department": "PUC Public Utilities Commsn",
+   "department_code": "PUC",
+   "agreed_usd": 10570000.0,
+   "paid_usd": 9498988.52,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000026118",
+   "title": "11699.41-PMSSAirfieldImpro",
+   "department": "AIR Airport Commission",
+   "department_code": "AIR",
+   "agreed_usd": 9950000.0,
+   "paid_usd": 8883027.44,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000023752",
+   "title": "Elctrl Eng Srvs HH Region",
+   "department": "PUC Public Utilities Commsn",
+   "department_code": "PUC",
+   "agreed_usd": 8446240.0,
+   "paid_usd": 3868972.5,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000028334",
+   "title": "As-Needed Envmntl Rv Srvs",
+   "department": "PUC Public Utilities Commsn",
+   "department_code": "PUC",
+   "agreed_usd": 7263393.0,
+   "paid_usd": 3728902.27,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000030996",
+   "title": "11752.41-PMSS for IMP",
+   "department": "AIR Airport Commission",
+   "department_code": "AIR",
+   "agreed_usd": 2817500.0,
+   "paid_usd": 2534170.09,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000021256",
+   "title": "/ As-Needed UD & A",
+   "department": "CPC City Planning",
+   "department_code": "CPC",
+   "agreed_usd": 761550.0,
+   "paid_usd": 850518.34,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000030831",
+   "title": "AsNeeded Racial EquityCnsl",
+   "department": "PUC Public Utilities Commsn",
+   "department_code": "PUC",
+   "agreed_usd": 3230000.0,
+   "paid_usd": 768982.82,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000027885",
+   "title": "Emrgcy Pln,Rsp,Trng,TechSr",
+   "department": "PUC Public Utilities Commsn",
+   "department_code": "PUC",
+   "agreed_usd": 2052000.0,
+   "paid_usd": 511605.33,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000031337",
+   "title": "TechSrvsRnwAdvceEngryGentn",
+   "department": "PUC Public Utilities Commsn",
+   "department_code": "PUC",
+   "agreed_usd": 3784000.0,
+   "paid_usd": 245693.31,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000035493",
+   "title": "Power Affordability Prj Pl",
+   "department": "PUC Public Utilities Commsn",
+   "department_code": "PUC",
+   "agreed_usd": 195300.0,
+   "paid_usd": 194036.79,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000035988",
+   "title": "Climate,Transport & Energy",
+   "department": "ENV Environment",
+   "department_code": "ENV",
+   "agreed_usd": 1000000.0,
+   "paid_usd": 64966.87,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000033628",
+   "title": "PUC/As-Needed Energy EngConSrv",
+   "department": "PUC Public Utilities Commsn",
+   "department_code": "PUC",
+   "agreed_usd": 2800000.0,
+   "paid_usd": 0.0,
+   "sole_source": false
+  }
+ ],
+ "n_contracts_held": 16,
+ "variants": [
+  {
+   "name": "AECOM TECHNICAL SERVICES INC",
+   "total": 149100487.43
+  }
+ ],
+ "n_variants": 1,
+ "merges": [],
+ "source": {
+  "name": "Vendor Payments (Vouchers)",
+  "dataset_id": "n9pm-xkyq",
+  "source_url": "https://data.sfgov.org/d/n9pm-xkyq",
+  "attribution": "SF Controller's Office",
+  "rows_updated_at": "2026-07-13T13:40:40+00:00"
+ }
+}

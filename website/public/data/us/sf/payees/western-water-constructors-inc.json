@@ -1,0 +1,90 @@
+{
+ "generated_at": "2026-07-20T22:34:47.736825+00:00",
+ "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
+ "as_of": "2026-07-13T13:40:40+00:00",
+ "unit": "USD",
+ "slug": "western-water-constructors-inc",
+ "name": "Western Water Constructors Inc",
+ "kind": "supplier",
+ "is_non_profit": false,
+ "total_paid_usd": 180981413.9,
+ "n_years": 17,
+ "first_year": 2010,
+ "last_year": 2026,
+ "by_year": {
+  "2010": 8716140.0,
+  "2011": 15148896.4,
+  "2012": 3616898.2,
+  "2013": 3922286.4,
+  "2014": 99812.0,
+  "2015": 677592.4,
+  "2016": 6059093.5,
+  "2017": 19476766.3,
+  "2018": 16732372.21,
+  "2019": 18980566.13,
+  "2020": 16233822.53,
+  "2021": 14759814.47,
+  "2022": 13459706.21,
+  "2023": 8947345.58,
+  "2024": 5926939.79,
+  "2025": 7541829.13,
+  "2026": 20681532.65
+ },
+ "top_departments": [
+  "WTR Water Enterprise"
+ ],
+ "contracts_held": [
+  {
+   "contract_no": "1000035875",
+   "title": "Seacliff 2 PS & Force Main",
+   "department": "PUC Public Utilities Commsn",
+   "department_code": "PUC",
+   "agreed_usd": 9106834.0,
+   "paid_usd": 9449044.71,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000032838",
+   "title": "CH Pump Bar Screen Replce",
+   "department": "PUC Public Utilities Commsn",
+   "department_code": "PUC",
+   "agreed_usd": 5024000.0,
+   "paid_usd": 5818711.62,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000035862",
+   "title": "SVWTP Short Term Improvmnt",
+   "department": "PUC Public Utilities Commsn",
+   "department_code": "PUC",
+   "agreed_usd": 34771198.4,
+   "paid_usd": 5275032.09,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000038470",
+   "title": "SE WPCP 516 516A Tank&Stat",
+   "department": "PUC Public Utilities Commsn",
+   "department_code": "PUC",
+   "agreed_usd": 8152502.0,
+   "paid_usd": 0.0,
+   "sole_source": false
+  }
+ ],
+ "n_contracts_held": 4,
+ "variants": [
+  {
+   "name": "WESTERN WATER CONSTRUCTORS INC",
+   "total": 180981413.9
+  }
+ ],
+ "n_variants": 1,
+ "merges": [],
+ "source": {
+  "name": "Vendor Payments (Vouchers)",
+  "dataset_id": "n9pm-xkyq",
+  "source_url": "https://data.sfgov.org/d/n9pm-xkyq",
+  "attribution": "SF Controller's Office",
+  "rows_updated_at": "2026-07-13T13:40:40+00:00"
+ }
+}

@@ -1,0 +1,135 @@
+{
+ "generated_at": "2026-07-20T22:30:00.115420+00:00",
+ "source_pipeline": "sf_place_candidates.json → sync_ia_sf.py + link_sf_places.py + fetch_sf_place_photos.py → export_sf_places.py",
+ "unit": "USD",
+ "slug": "sf-city-hall",
+ "name": "San Francisco City Hall",
+ "kind": "Civic building",
+ "family": "civic",
+ "address": "1 Dr Carlton B Goodlett Pl",
+ "lat": 37.7793,
+ "lon": -122.4193,
+ "owning_dept": {
+  "name": "City Administrator - Real Estate",
+  "code": "ADM"
+ },
+ "photo": "/img/us/sf/places/sf-city-hall.jpg",
+ "photo_credit": {
+  "photo": "/img/us/sf/places/sf-city-hall.jpg",
+  "source": "Wikimedia Commons",
+  "file": "File:San_Francisco_City_Hall_2.JPG",
+  "file_url": "https://commons.wikimedia.org/wiki/File:San_Francisco_City_Hall_2.JPG",
+  "license": "CC BY-SA 3.0",
+  "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
+  "author": "Sanfranman59",
+  "fetched_at": "2026-07-20T22:26:09.091646+00:00"
+ },
+ "summary_en": null,
+ "published": false,
+ "money": {
+  "budget_line": {
+   "code": "ADM",
+   "name": "City Administrator",
+   "total_usd": 287717708.0,
+   "fiscal_year": 2025
+  },
+  "contracts": [
+   {
+    "contract_no": "1000033228",
+    "title": "96105A City Hall Events Canon",
+    "prime": "CANON SOLUTIONS AMERICA INC",
+    "department_code": "ADM",
+    "agreed_usd": 5616.65,
+    "paid_usd": 3174.73,
+    "evidence": "96105A_City Hall Events Canon"
+   }
+  ],
+  "grants": []
+ },
+ "documents": [
+  {
+   "identifier": "2minutes1999sanf",
+   "title": "Minutes",
+   "creator": "San Francisco (Calif.). Board of Supervisors. Finance and Labor Committee",
+   "year": 1999,
+   "pool": "sfpl",
+   "matched_alias": "City Hall",
+   "snippet": "main floor of «City Hall») and the «City Hall» Cafe (on ground floor of «City Hall») Currently,",
+   "url": "https://archive.org/details/2minutes1999sanf",
+   "deep_link": "https://archive.org/details/2minutes1999sanf?q=City+Hall",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+  },
+  {
+   "identifier": "historicstructur1219care",
+   "title": "Historic structure report : San Francisco City Hall",
+   "creator": "Carey & Co,San Francisco (Calif.). Bureau of Architecture",
+   "year": 1993,
+   "pool": "sfpl",
+   "matched_alias": "San Francisco City Hall",
+   "snippet": "DEPA'^'^'^^^'^T HISTORIC STRUCTURES REPORT «SAN FRANCISCO CITY HALL» Prepared for CITY & COUNTY OF SAN",
+   "url": "https://archive.org/details/historicstructur1219care",
+   "deep_link": "https://archive.org/details/historicstructur1219care?q=San+Francisco+City+Hall",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+  }
+ ],
+ "dept_shelf": [
+  {
+   "identifier": "progressincitypl1948sanf",
+   "title": "Progress in city planning : a report to the people of San Francisco",
+   "year": 1948,
+   "pool": "sfpl",
+   "url": "https://archive.org/details/progressincitypl1948sanf"
+  },
+  {
+   "identifier": "64summaryofregular1979san",
+   "title": "Summary of the regular meeting",
+   "year": null,
+   "pool": "sfpl",
+   "url": "https://archive.org/details/64summaryofregular1979san"
+  },
+  {
+   "identifier": "southofmarketzon1988sanf",
+   "title": "South of Market zoning controls : proposal for adoption : with 12 month sunset clause",
+   "year": null,
+   "pool": "sfpl",
+   "url": "https://archive.org/details/southofmarketzon1988sanf"
+  },
+  {
+   "identifier": "38minutesofsanfran1979san",
+   "title": "Minutes of the San Francisco City Planning Commission regular meeting",
+   "year": null,
+   "pool": "sfpl",
+   "url": "https://archive.org/details/38minutesofsanfran1979san"
+  },
+  {
+   "identifier": "capitalimproveme1961sanf",
+   "title": "Capital Improvement Program recommended for fiscal year ... proposed for fiscal years ... through ..",
+   "year": null,
+   "pool": "sfpl",
+   "url": "https://archive.org/details/capitalimproveme1961sanf"
+  },
+  {
+   "identifier": "agendasanfrancis1992nfra",
+   "title": "Agenda / San Francisco City Planning Commission",
+   "year": null,
+   "pool": "sfpl",
+   "url": "https://archive.org/details/agendasanfrancis1992nfra"
+  }
+ ],
+ "sources": [
+  {
+   "label": "City budget & payments",
+   "note": "SF Controller open data (budget, vouchers, contracts)"
+  },
+  {
+   "label": "Historical documents",
+   "note": "Internet Archive — SFPL partnership scans + Democracy's Library"
+  }
+ ],
+ "_gate": {
+  "has_photo": true,
+  "n_documents": 2,
+  "n_money_links": 2,
+  "meets_pre_summary": true
+ }
+}

@@ -1,0 +1,102 @@
+{
+ "generated_at": "2026-07-20T22:34:47.744714+00:00",
+ "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
+ "as_of": "2026-07-13T13:40:40+00:00",
+ "unit": "USD",
+ "slug": "san-francisco-food-bank",
+ "name": "San Francisco Food Bank",
+ "kind": "nonprofit",
+ "is_non_profit": true,
+ "total_paid_usd": 107119352.02,
+ "n_years": 20,
+ "first_year": 2007,
+ "last_year": 2026,
+ "by_year": {
+  "2007": 885724.0,
+  "2008": 878196.8,
+  "2009": 1215857.0,
+  "2010": 1078815.3,
+  "2011": 967899.6,
+  "2012": 1342490.0,
+  "2013": 1440288.6,
+  "2014": 1573554.5,
+  "2015": 1543228.3,
+  "2016": 2542509.9,
+  "2017": 2787631.2,
+  "2018": 3444153.97,
+  "2019": 4534511.51,
+  "2020": 3843822.56,
+  "2021": 14426573.7,
+  "2022": 16789567.05,
+  "2023": 15387432.72,
+  "2024": 12274876.65,
+  "2025": 5701862.05,
+  "2026": 14460356.61
+ },
+ "top_departments": [
+  "HSA Human Services Agency"
+ ],
+ "contracts_held": [
+  {
+   "contract_no": "1000035494",
+   "title": "Food Assistance PrgFY25-29",
+   "department": "HSA Human Services Agency",
+   "department_code": "HSA",
+   "agreed_usd": 12604048.0,
+   "paid_usd": 2477289.26,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000020873",
+   "title": "SFFB - Housing First",
+   "department": "HOM Homelessness Services",
+   "department_code": "HOM",
+   "agreed_usd": 1857576.0,
+   "paid_usd": 1273763.02,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000035954",
+   "title": "HDG FY25-29",
+   "department": "HSA Human Services Agency",
+   "department_code": "HSA",
+   "agreed_usd": 3861295.0,
+   "paid_usd": 709556.84,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000030816",
+   "title": "HSA/CalFresh&MediCal Promotion",
+   "department": "HSA Human Services Agency",
+   "department_code": "HSA",
+   "agreed_usd": 1702197.0,
+   "paid_usd": 699767.35,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000036270",
+   "title": "Food Delivery Driver",
+   "department": "ENV Environment",
+   "department_code": "ENV",
+   "agreed_usd": 80982.0,
+   "paid_usd": 59612.28,
+   "sole_source": false
+  }
+ ],
+ "n_contracts_held": 5,
+ "variants": [
+  {
+   "name": "SAN FRANCISCO FOOD BANK",
+   "total": 107119352.02
+  }
+ ],
+ "n_variants": 1,
+ "merges": [],
+ "source": {
+  "name": "Vendor Payments (Vouchers)",
+  "dataset_id": "n9pm-xkyq",
+  "source_url": "https://data.sfgov.org/d/n9pm-xkyq",
+  "attribution": "SF Controller's Office",
+  "rows_updated_at": "2026-07-13T13:40:40+00:00"
+ }
+}

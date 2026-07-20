@@ -1,0 +1,46 @@
+{
+ "generated_at": "2026-07-20T22:34:47.731900+00:00",
+ "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
+ "as_of": "2026-07-13T13:40:40+00:00",
+ "unit": "USD",
+ "slug": "sf-tourism-improvement-dist-mgmt-corp",
+ "name": "SF Tourism Improvement Dist Mgmt Corp",
+ "kind": "other",
+ "is_non_profit": true,
+ "total_paid_usd": 306420000.96,
+ "n_years": 10,
+ "first_year": 2018,
+ "last_year": 2027,
+ "by_year": {
+  "2018": 54086208.99,
+  "2019": 49103918.39,
+  "2020": 32065339.7,
+  "2021": 2257511.04,
+  "2022": 13844004.55,
+  "2023": 28319725.92,
+  "2024": 28714210.01,
+  "2025": 34267177.94,
+  "2026": 59477531.9,
+  "2027": 4284372.52
+ },
+ "top_departments": [
+  "TTX Treasurer-Tax Collector"
+ ],
+ "contracts_held": [],
+ "n_contracts_held": 0,
+ "variants": [
+  {
+   "name": "SF TOURISM IMPROVEMENT DIST MGMT CORP",
+   "total": 306420000.96
+  }
+ ],
+ "n_variants": 1,
+ "merges": [],
+ "source": {
+  "name": "Vendor Payments (Vouchers)",
+  "dataset_id": "n9pm-xkyq",
+  "source_url": "https://data.sfgov.org/d/n9pm-xkyq",
+  "attribution": "SF Controller's Office",
+  "rows_updated_at": "2026-07-13T13:40:40+00:00"
+ }
+}

@@ -1,0 +1,120 @@
+{
+ "generated_at": "2026-07-20T22:34:47.742160+00:00",
+ "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
+ "as_of": "2026-07-13T13:40:40+00:00",
+ "unit": "USD",
+ "slug": "yerba-buena-engineering-constrctn-inc",
+ "name": "Yerba Buena Engineering & Constrctn Inc",
+ "kind": "supplier",
+ "is_non_profit": false,
+ "total_paid_usd": 128970105.13,
+ "n_years": 20,
+ "first_year": 2007,
+ "last_year": 2026,
+ "by_year": {
+  "2007": 4045961.5,
+  "2008": 5517979.7,
+  "2009": 4926670.7,
+  "2010": 9237703.0,
+  "2011": 9535006.0,
+  "2012": 6826230.0,
+  "2013": 15346335.2,
+  "2014": 10017625.9,
+  "2015": 4252345.4,
+  "2016": 2850228.4,
+  "2017": 4167075.0,
+  "2018": 1918650.69,
+  "2019": 1695893.22,
+  "2020": 4209036.77,
+  "2021": 6158918.0,
+  "2022": 4849421.04,
+  "2023": 2051492.77,
+  "2024": 13930258.68,
+  "2025": 14947269.51,
+  "2026": 2486003.65
+ },
+ "top_departments": [
+  "DPW GSA - Public Works"
+ ],
+ "contracts_held": [
+  {
+   "contract_no": "1000025381",
+   "title": "11689.56-As-NeededAgrmtCon",
+   "department": "AIR Airport Commission",
+   "department_code": "AIR",
+   "agreed_usd": 3531755.9,
+   "paid_usd": 1324182.37,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000032125",
+   "title": "12020.51 - As-Needed Envir",
+   "department": "AIR Airport Commission",
+   "department_code": "AIR",
+   "agreed_usd": 2250000.0,
+   "paid_usd": 1279748.53,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000028190",
+   "title": "Executed Contract",
+   "department": "MTA Municipal Transprtn Agncy",
+   "department_code": "MTA",
+   "agreed_usd": 5000000.0,
+   "paid_usd": 1019577.02,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000036282",
+   "title": "Ch 6 as-needed Concrete servic",
+   "department": "DPH Public Health",
+   "department_code": "DPH",
+   "agreed_usd": 750000.0,
+   "paid_usd": 128450.0,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000035476",
+   "title": "M23 General Eng Serv",
+   "department": "DPW Public Works",
+   "department_code": "DPW",
+   "agreed_usd": 3000000.0,
+   "paid_usd": 0.0,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000036592",
+   "title": "Ch. 6 Facilities - GC",
+   "department": "DPH Public Health",
+   "department_code": "DPH",
+   "agreed_usd": 1187500.0,
+   "paid_usd": 0.0,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000038077",
+   "title": "Eidem-CON26-0014 Seawall",
+   "department": "REC Recreation & Park Commsn",
+   "department_code": "REC",
+   "agreed_usd": 449000.0,
+   "paid_usd": 0.0,
+   "sole_source": false
+  }
+ ],
+ "n_contracts_held": 7,
+ "variants": [
+  {
+   "name": "YERBA BUENA ENGINEERING & CONSTRCTN INC",
+   "total": 128970105.13
+  }
+ ],
+ "n_variants": 1,
+ "merges": [],
+ "source": {
+  "name": "Vendor Payments (Vouchers)",
+  "dataset_id": "n9pm-xkyq",
+  "source_url": "https://data.sfgov.org/d/n9pm-xkyq",
+  "attribution": "SF Controller's Office",
+  "rows_updated_at": "2026-07-13T13:40:40+00:00"
+ }
+}

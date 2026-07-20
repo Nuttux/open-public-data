@@ -1,0 +1,81 @@
+{
+ "generated_at": "2026-07-20T22:34:47.743453+00:00",
+ "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
+ "as_of": "2026-07-13T13:40:40+00:00",
+ "unit": "USD",
+ "slug": "sierra-mountain-construction-inc",
+ "name": "Sierra Mountain Construction Inc",
+ "kind": "supplier",
+ "is_non_profit": false,
+ "total_paid_usd": 117135162.17,
+ "n_years": 17,
+ "first_year": 2008,
+ "last_year": 2026,
+ "by_year": {
+  "2008": 965575.5,
+  "2009": 300995.1,
+  "2012": 836218.9,
+  "2013": 862060.0,
+  "2014": 459118.2,
+  "2015": 28145.9,
+  "2016": 355991.2,
+  "2017": 7093858.6,
+  "2018": 1916534.64,
+  "2019": 3160319.45,
+  "2020": 14124739.92,
+  "2021": 11881520.03,
+  "2022": 2766488.76,
+  "2023": 7933397.02,
+  "2024": 31832841.16,
+  "2025": 20227803.14,
+  "2026": 12389554.65
+ },
+ "top_departments": [
+  "PUC Public Utilities Commsn"
+ ],
+ "contracts_held": [
+  {
+   "contract_no": "1000032745",
+   "title": "SJPV & Safe Ent Impr PH 2A",
+   "department": "PUC Public Utilities Commsn",
+   "department_code": "PUC",
+   "agreed_usd": 6567500.0,
+   "paid_usd": 14744983.33,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000030064",
+   "title": "O'Shaughnessy Valv Replcmt",
+   "department": "PUC Public Utilities Commsn",
+   "department_code": "PUC",
+   "agreed_usd": 5980465.75,
+   "paid_usd": 13305301.62,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000032943",
+   "title": "Moccasin WWE Treatment Rep",
+   "department": "PUC Public Utilities Commsn",
+   "department_code": "PUC",
+   "agreed_usd": 6568404.0,
+   "paid_usd": 7290081.87,
+   "sole_source": false
+  }
+ ],
+ "n_contracts_held": 3,
+ "variants": [
+  {
+   "name": "SIERRA MOUNTAIN CONSTRUCTION INC",
+   "total": 117135162.17
+  }
+ ],
+ "n_variants": 1,
+ "merges": [],
+ "source": {
+  "name": "Vendor Payments (Vouchers)",
+  "dataset_id": "n9pm-xkyq",
+  "source_url": "https://data.sfgov.org/d/n9pm-xkyq",
+  "attribution": "SF Controller's Office",
+  "rows_updated_at": "2026-07-13T13:40:40+00:00"
+ }
+}

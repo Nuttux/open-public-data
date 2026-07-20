@@ -1,0 +1,137 @@
+{
+ "generated_at": "2026-07-20T22:34:47.741686+00:00",
+ "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
+ "as_of": "2026-07-13T13:40:40+00:00",
+ "unit": "USD",
+ "slug": "institute-on-aging",
+ "name": "Institute On Aging",
+ "kind": "other",
+ "is_non_profit": false,
+ "total_paid_usd": 135690986.34,
+ "n_years": 21,
+ "first_year": 2007,
+ "last_year": 2027,
+ "by_year": {
+  "2007": 1116912.7,
+  "2008": 3015297.7,
+  "2009": 3996009.9,
+  "2010": 4946800.3,
+  "2011": 4273088.5,
+  "2012": 3915943.9,
+  "2013": 4420168.5,
+  "2014": 4190893.6,
+  "2015": 5527216.7,
+  "2016": 4998667.4,
+  "2017": 7293337.9,
+  "2018": 6080596.5,
+  "2019": 9193107.56,
+  "2020": 9254156.57,
+  "2021": 8255000.55,
+  "2022": 11473096.67,
+  "2023": 10350083.28,
+  "2024": 10287377.38,
+  "2025": 14219250.44,
+  "2026": 8835480.19,
+  "2027": 48500.1
+ },
+ "top_departments": [],
+ "contracts_held": [
+  {
+   "contract_no": "1000028610",
+   "title": "CLF-PG FY23-25",
+   "department": "HSA Human Services Agency",
+   "department_code": "HSA",
+   "agreed_usd": 25676683.0,
+   "paid_usd": 13955344.12,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000029576",
+   "title": "IOA Case Management 23-27",
+   "department": "HSA Human Services Agency",
+   "department_code": "HSA",
+   "agreed_usd": 3028054.0,
+   "paid_usd": 1756577.94,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000029577",
+   "title": "IOA Clinical Collab 23-27",
+   "department": "HSA Human Services Agency",
+   "department_code": "HSA",
+   "agreed_usd": 1478902.0,
+   "paid_usd": 801518.25,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000036323",
+   "title": "SuicidePrvtnSrvs-FY26-29",
+   "department": "HSA Human Services Agency",
+   "department_code": "HSA",
+   "agreed_usd": 2258903.0,
+   "paid_usd": 346925.02,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000033292",
+   "title": "Das Adcrc FY 24-28",
+   "department": "HSA Human Services Agency",
+   "department_code": "HSA",
+   "agreed_usd": 704317.0,
+   "paid_usd": 265182.91,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000036966",
+   "title": "EDAAP FY25-29",
+   "department": "HSA Human Services Agency",
+   "department_code": "HSA",
+   "agreed_usd": 2213750.0,
+   "paid_usd": 260076.01,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000033291",
+   "title": "Das Adp FY24-28",
+   "department": "HSA Human Services Agency",
+   "department_code": "HSA",
+   "agreed_usd": 597066.0,
+   "paid_usd": 224468.11,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000036898",
+   "title": "DAS-EACEO Veterans FY25-29",
+   "department": "HSA Human Services Agency",
+   "department_code": "HSA",
+   "agreed_usd": 397210.0,
+   "paid_usd": 24653.47,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000036899",
+   "title": "Das-Eaceo Aapi FY25-29",
+   "department": "HSA Human Services Agency",
+   "department_code": "HSA",
+   "agreed_usd": 264803.0,
+   "paid_usd": 14872.74,
+   "sole_source": false
+  }
+ ],
+ "n_contracts_held": 9,
+ "variants": [
+  {
+   "name": "INSTITUTE ON AGING",
+   "total": 135690986.34
+  }
+ ],
+ "n_variants": 1,
+ "merges": [],
+ "source": {
+  "name": "Vendor Payments (Vouchers)",
+  "dataset_id": "n9pm-xkyq",
+  "source_url": "https://data.sfgov.org/d/n9pm-xkyq",
+  "attribution": "SF Controller's Office",
+  "rows_updated_at": "2026-07-13T13:40:40+00:00"
+ }
+}

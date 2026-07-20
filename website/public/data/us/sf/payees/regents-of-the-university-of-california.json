@@ -1,0 +1,355 @@
+{
+ "generated_at": "2026-07-20T22:34:47.725959+00:00",
+ "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
+ "as_of": "2026-07-13T13:40:40+00:00",
+ "unit": "USD",
+ "slug": "regents-of-the-university-of-california",
+ "name": "Regents of the University of California",
+ "kind": "healthcare",
+ "is_non_profit": false,
+ "total_paid_usd": 3702235159.87,
+ "n_years": 21,
+ "first_year": 2007,
+ "last_year": 2027,
+ "by_year": {
+  "2007": 90236733.8,
+  "2008": 108099067.4,
+  "2009": 99928826.1,
+  "2010": 99250849.0,
+  "2011": 112816718.1,
+  "2012": 137278636.8,
+  "2013": 146667027.0,
+  "2014": 155178285.1,
+  "2015": 161844353.0,
+  "2016": 165445263.3,
+  "2017": 193154817.9,
+  "2018": 146595329.54,
+  "2019": 217867001.31,
+  "2020": 202156661.38,
+  "2021": 223702380.93,
+  "2022": 242037317.69,
+  "2023": 265241086.07,
+  "2024": 288698601.75,
+  "2025": 311061788.89,
+  "2026": 334541727.39,
+  "2027": 432687.42
+ },
+ "top_departments": [
+  "DPH Public Health"
+ ],
+ "contracts_held": [
+  {
+   "contract_no": "1000008646",
+   "title": "HIV Outpatient Mental Heal",
+   "department": "DPH Public Health",
+   "department_code": "DPH",
+   "agreed_usd": 28604583.0,
+   "paid_usd": 22041336.9,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000017143",
+   "title": "HIV Health Services",
+   "department": "DPH Public Health",
+   "department_code": "DPH",
+   "agreed_usd": 26481255.0,
+   "paid_usd": 12820809.85,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000028521",
+   "title": "HIV Positive PC",
+   "department": "DPH Public Health",
+   "department_code": "DPH",
+   "agreed_usd": 8172602.0,
+   "paid_usd": 4308282.44,
+   "sole_source": true
+  },
+  {
+   "contract_no": "1000017144",
+   "title": "HIV Health Services",
+   "department": "DPH Public Health",
+   "department_code": "DPH",
+   "agreed_usd": 8005851.0,
+   "paid_usd": 3729082.51,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000026141",
+   "title": "Bridge - NACCHO Grant",
+   "department": "DPH Public Health",
+   "department_code": "DPH",
+   "agreed_usd": 6435005.0,
+   "paid_usd": 3503116.06,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000029051",
+   "title": "Intensive case mngment",
+   "department": "DPH Public Health",
+   "department_code": "DPH",
+   "agreed_usd": 6024005.0,
+   "paid_usd": 3416692.03,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000032157",
+   "title": "HIV&STD Services",
+   "department": "DPH Public Health",
+   "department_code": "DPH",
+   "agreed_usd": 8387577.0,
+   "paid_usd": 3269154.16,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000024736",
+   "title": "Chep Hap Pwud/Id",
+   "department": "DPH Public Health",
+   "department_code": "DPH",
+   "agreed_usd": 4070804.0,
+   "paid_usd": 3059148.73,
+   "sole_source": true
+  },
+  {
+   "contract_no": "1000028962",
+   "title": "UC Embrace (RFGA 7482)",
+   "department": "DPH Public Health",
+   "department_code": "DPH",
+   "agreed_usd": 9859828.0,
+   "paid_usd": 2590191.59,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000023884",
+   "title": "UCSF Citywide FHSP",
+   "department": "HOM Homelessness Services",
+   "department_code": "HOM",
+   "agreed_usd": 8901914.0,
+   "paid_usd": 2433802.66,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000008790",
+   "title": "1000008790 Regents UCSF DSAAM",
+   "department": "DPH Public Health",
+   "department_code": "DPH",
+   "agreed_usd": 3496715.0,
+   "paid_usd": 2380005.63,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000033801",
+   "title": "UCSF Citywide- PSH Support Svc",
+   "department": "HOM Homelessness Services",
+   "department_code": "HOM",
+   "agreed_usd": 9999792.0,
+   "paid_usd": 2145268.44,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000024737",
+   "title": "Ahp Hap Api",
+   "department": "DPH Public Health",
+   "department_code": "DPH",
+   "agreed_usd": 3340834.0,
+   "paid_usd": 2117594.84,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000029474",
+   "title": "Primary Care Food Voucher",
+   "department": "DPH Public Health",
+   "department_code": "DPH",
+   "agreed_usd": 5872400.0,
+   "paid_usd": 1098500.08,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000035861",
+   "title": "LHH Clinical Practice Group",
+   "department": "DPH Public Health",
+   "department_code": "DPH",
+   "agreed_usd": 4729618.0,
+   "paid_usd": 1061383.4,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000012685",
+   "title": "Pediatric HIV Program",
+   "department": "DPH Public Health",
+   "department_code": "DPH",
+   "agreed_usd": 1192608.0,
+   "paid_usd": 988568.79,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000008731",
+   "title": "UCSF School of Dentistry",
+   "department": "DPH Public Health",
+   "department_code": "DPH",
+   "agreed_usd": 867116.0,
+   "paid_usd": 816329.74,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000013949",
+   "title": "UCSF HIV Global Health",
+   "department": "DPH Public Health",
+   "department_code": "DPH",
+   "agreed_usd": 1185215.0,
+   "paid_usd": 745027.99,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000008725",
+   "title": "360 PCC HIV Men of Color",
+   "department": "DPH Public Health",
+   "department_code": "DPH",
+   "agreed_usd": 1034538.0,
+   "paid_usd": 692105.91,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000028061",
+   "title": "Team Lily",
+   "department": "DPH Public Health",
+   "department_code": "DPH",
+   "agreed_usd": 708480.0,
+   "paid_usd": 474292.32,
+   "sole_source": true
+  },
+  {
+   "contract_no": "1000035503",
+   "title": "Regents-UCSF-Margot Support",
+   "department": "HOM Homelessness Services",
+   "department_code": "HOM",
+   "agreed_usd": 3282938.0,
+   "paid_usd": 465688.55,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000036861",
+   "title": "BHS CYF MH Services",
+   "department": "DPH Public Health",
+   "department_code": "DPH",
+   "agreed_usd": 1679591.0,
+   "paid_usd": 460401.45,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000027057",
+   "title": "UCSF TB Services",
+   "department": "DPH Public Health",
+   "department_code": "DPH",
+   "agreed_usd": 952000.0,
+   "paid_usd": 311825.85,
+   "sole_source": true
+  },
+  {
+   "contract_no": "1000012483",
+   "title": "Committee on Human Research IRB",
+   "department": "DPH Public Health",
+   "department_code": "DPH",
+   "agreed_usd": 896000.0,
+   "paid_usd": 310988.99,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000035859",
+   "title": "LHH Dental Services",
+   "department": "DPH Public Health",
+   "department_code": "DPH",
+   "agreed_usd": 1971451.0,
+   "paid_usd": 201004.51,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000035148",
+   "title": "UCSF- Citywide ISN Roving Team",
+   "department": "HOM Homelessness Services",
+   "department_code": "HOM",
+   "agreed_usd": 721026.0,
+   "paid_usd": 122639.95,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000035150",
+   "title": "St. Francis Visitation Svc",
+   "department": "DPH Public Health",
+   "department_code": "DPH",
+   "agreed_usd": 3577000.0,
+   "paid_usd": 114369.0,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000031853",
+   "title": "UCSF Trauma Recovery C",
+   "department": "DAT District Attorney",
+   "department_code": "DAT",
+   "agreed_usd": 489585.0,
+   "paid_usd": 91133.54,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000021750",
+   "title": "Maternity services at ZSFG",
+   "department": "DPH Public Health",
+   "department_code": "DPH",
+   "agreed_usd": 330400.0,
+   "paid_usd": 90420.73,
+   "sole_source": true
+  },
+  {
+   "contract_no": "1000036538",
+   "title": "HCV Navigation & Treatment",
+   "department": "DPH Public Health",
+   "department_code": "DPH",
+   "agreed_usd": 897116.0,
+   "paid_usd": 69778.03,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000028294",
+   "title": "PHD Center",
+   "department": "DPH Public Health",
+   "department_code": "DPH",
+   "agreed_usd": 75000.0,
+   "paid_usd": 40739.77,
+   "sole_source": true
+  },
+  {
+   "contract_no": "1000037259",
+   "title": "DSH Subaward Jail IST Services",
+   "department": "DPH Public Health",
+   "department_code": "DPH",
+   "agreed_usd": 9376440.51,
+   "paid_usd": 0.0,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000034366",
+   "title": "PSC Tacb FY2425",
+   "department": "CHF Children;Youth & Families",
+   "department_code": "CHF",
+   "agreed_usd": 1500000.0,
+   "paid_usd": 0.0,
+   "sole_source": false
+  }
+ ],
+ "n_contracts_held": 33,
+ "variants": [
+  {
+   "name": "REGENTS OF THE UNIVERSITY OF CALIFORNIA",
+   "total": 3702235159.87
+  }
+ ],
+ "n_variants": 1,
+ "merges": [],
+ "source": {
+  "name": "Vendor Payments (Vouchers)",
+  "dataset_id": "n9pm-xkyq",
+  "source_url": "https://data.sfgov.org/d/n9pm-xkyq",
+  "attribution": "SF Controller's Office",
+  "rows_updated_at": "2026-07-13T13:40:40+00:00"
+ }
+}

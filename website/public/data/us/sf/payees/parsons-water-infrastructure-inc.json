@@ -1,0 +1,62 @@
+{
+ "generated_at": "2026-07-20T22:34:47.745390+00:00",
+ "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
+ "as_of": "2026-07-13T13:40:40+00:00",
+ "unit": "USD",
+ "slug": "parsons-water-infrastructure-inc",
+ "name": "Parsons Water & Infrastructure Inc",
+ "kind": "supplier",
+ "is_non_profit": false,
+ "total_paid_usd": 100869654.13,
+ "n_years": 16,
+ "first_year": 2007,
+ "last_year": 2026,
+ "by_year": {
+  "2007": 17177417.8,
+  "2008": 13022520.0,
+  "2009": 7547271.3,
+  "2010": 6626830.9,
+  "2011": 6473679.4,
+  "2012": 3082955.5,
+  "2013": 1110154.4,
+  "2014": 592266.6,
+  "2015": 13009.1,
+  "2020": 4130154.38,
+  "2021": 4610377.04,
+  "2022": 7134817.6,
+  "2023": 7577630.93,
+  "2024": 8260712.85,
+  "2025": 12554974.76,
+  "2026": 954881.57
+ },
+ "top_departments": [
+  "PUB Public Utilities Bureaus"
+ ],
+ "contracts_held": [
+  {
+   "contract_no": "1000010961",
+   "title": "SEP Construction Mgmt Svcs",
+   "department": "PUC Public Utilities Commsn",
+   "department_code": "PUC",
+   "agreed_usd": 19580338.99,
+   "paid_usd": 47679580.26,
+   "sole_source": false
+  }
+ ],
+ "n_contracts_held": 1,
+ "variants": [
+  {
+   "name": "PARSONS WATER & INFRASTRUCTURE INC",
+   "total": 100869654.13
+  }
+ ],
+ "n_variants": 1,
+ "merges": [],
+ "source": {
+  "name": "Vendor Payments (Vouchers)",
+  "dataset_id": "n9pm-xkyq",
+  "source_url": "https://data.sfgov.org/d/n9pm-xkyq",
+  "attribution": "SF Controller's Office",
+  "rows_updated_at": "2026-07-13T13:40:40+00:00"
+ }
+}

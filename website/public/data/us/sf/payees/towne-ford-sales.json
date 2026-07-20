@@ -1,0 +1,70 @@
+{
+ "generated_at": "2026-07-20T22:34:47.743948+00:00",
+ "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
+ "as_of": "2026-07-13T13:40:40+00:00",
+ "unit": "USD",
+ "slug": "towne-ford-sales",
+ "name": "Towne Ford Sales",
+ "kind": "supplier",
+ "is_non_profit": false,
+ "total_paid_usd": 114584040.92,
+ "n_years": 15,
+ "first_year": 2012,
+ "last_year": 2026,
+ "by_year": {
+  "2012": 274820.6,
+  "2013": 3249192.4,
+  "2014": 2570221.4,
+  "2015": 5538170.6,
+  "2016": 9418787.9,
+  "2017": 10420275.3,
+  "2018": 5915196.64,
+  "2019": 8442194.85,
+  "2020": 10164215.89,
+  "2021": 7329197.8,
+  "2022": 9989325.74,
+  "2023": 4676687.7,
+  "2024": 11791308.13,
+  "2025": 11206312.16,
+  "2026": 13598133.81
+ },
+ "top_departments": [
+  "MTA Municipal Transprtn Agncy"
+ ],
+ "contracts_held": [
+  {
+   "contract_no": "1000035044",
+   "title": "Pickup Trucks & Vans",
+   "department": "ADM GSA - City Administrator",
+   "department_code": "ADM",
+   "agreed_usd": 9500000.0,
+   "paid_usd": 3842255.53,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000032276",
+   "title": "TC72308-Zero Emission Vehicles",
+   "department": "ADM GSA - City Administrator",
+   "department_code": "ADM",
+   "agreed_usd": 5000000.0,
+   "paid_usd": 1317474.37,
+   "sole_source": false
+  }
+ ],
+ "n_contracts_held": 2,
+ "variants": [
+  {
+   "name": "TOWNE FORD SALES",
+   "total": 114584040.92
+  }
+ ],
+ "n_variants": 1,
+ "merges": [],
+ "source": {
+  "name": "Vendor Payments (Vouchers)",
+  "dataset_id": "n9pm-xkyq",
+  "source_url": "https://data.sfgov.org/d/n9pm-xkyq",
+  "attribution": "SF Controller's Office",
+  "rows_updated_at": "2026-07-13T13:40:40+00:00"
+ }
+}

@@ -1,0 +1,411 @@
+{
+ "generated_at": "2026-07-20T22:34:47.739354+00:00",
+ "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
+ "as_of": "2026-07-13T13:40:40+00:00",
+ "unit": "USD",
+ "slug": "meda-small-properties-llc",
+ "name": "Meda Small Properties LLC",
+ "kind": "nonprofit",
+ "is_non_profit": true,
+ "total_paid_usd": 158695602.52,
+ "n_years": 10,
+ "first_year": 2017,
+ "last_year": 2026,
+ "by_year": {
+  "2017": 499019.7,
+  "2018": 2464880.3,
+  "2019": 7102788.57,
+  "2020": 43630532.2,
+  "2021": 14905958.53,
+  "2022": 15344293.58,
+  "2023": 33389708.29,
+  "2024": 16966898.93,
+  "2025": 22605337.08,
+  "2026": 1786185.34
+ },
+ "top_departments": [
+  "MYR Mayor"
+ ],
+ "contracts_held": [
+  {
+   "contract_no": "1000034059",
+   "title": "2901-2909 16th St",
+   "department": "MYR Mayor",
+   "department_code": "MYR",
+   "agreed_usd": 30000000.0,
+   "paid_usd": 21877935.29,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000015310",
+   "title": "4830 Mission",
+   "department": "MYR Mayor",
+   "department_code": "MYR",
+   "agreed_usd": 15520000.0,
+   "paid_usd": 15470000.0,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000028042",
+   "title": "3661-19th St",
+   "department": "MYR Mayor",
+   "department_code": "MYR",
+   "agreed_usd": 9822532.0,
+   "paid_usd": 9822532.0,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000015309",
+   "title": "3280 17th St",
+   "department": "MYR Mayor",
+   "department_code": "MYR",
+   "agreed_usd": 9452000.0,
+   "paid_usd": 9452000.0,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000026037",
+   "title": "3154-3158MissionSt PASSBMR",
+   "department": "MYR Mayor",
+   "department_code": "MYR",
+   "agreed_usd": 9439014.0,
+   "paid_usd": 9439014.0,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000022417",
+   "title": "369 3rd Ave loan",
+   "department": "MYR Mayor",
+   "department_code": "MYR",
+   "agreed_usd": 8716000.0,
+   "paid_usd": 8716000.0,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000029848",
+   "title": "2676-2682 Folsom St",
+   "department": "MYR Mayor",
+   "department_code": "MYR",
+   "agreed_usd": 6337000.0,
+   "paid_usd": 6337000.0,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000016455",
+   "title": "305 San Carlos",
+   "department": "MYR Mayor",
+   "department_code": "MYR",
+   "agreed_usd": 6133000.0,
+   "paid_usd": 6133000.0,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000029428",
+   "title": "239 Clayton St",
+   "department": "MYR Mayor",
+   "department_code": "MYR",
+   "agreed_usd": 5702000.0,
+   "paid_usd": 5702000.0,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000032302",
+   "title": "300 Ocean Ave",
+   "department": "MYR Mayor",
+   "department_code": "MYR",
+   "agreed_usd": 5600000.0,
+   "paid_usd": 5589749.2,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000021871",
+   "title": "3254-3264 23rd Street Loan",
+   "department": "MYR Mayor",
+   "department_code": "MYR",
+   "agreed_usd": 4827000.0,
+   "paid_usd": 4827000.0,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000018788",
+   "title": "1353 Stevenson loan",
+   "department": "MYR Mayor",
+   "department_code": "MYR",
+   "agreed_usd": 4278000.0,
+   "paid_usd": 4278000.0,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000022679",
+   "title": "2260-2262 Mission Loan",
+   "department": "MYR Mayor",
+   "department_code": "MYR",
+   "agreed_usd": 4166000.0,
+   "paid_usd": 4166000.0,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000031361",
+   "title": "566 Natoma St",
+   "department": "MYR Mayor",
+   "department_code": "MYR",
+   "agreed_usd": 3905000.0,
+   "paid_usd": 3905000.0,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000015305",
+   "title": "Meda",
+   "department": "MYR Mayor",
+   "department_code": "MYR",
+   "agreed_usd": 3765000.0,
+   "paid_usd": 3765000.0,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000016778",
+   "title": "65-69 Woodward St",
+   "department": "MYR Mayor",
+   "department_code": "MYR",
+   "agreed_usd": 3647000.0,
+   "paid_usd": 3647000.0,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000029443",
+   "title": "40-42 Sycamore/ 40 Clarion",
+   "department": "MYR Mayor",
+   "department_code": "MYR",
+   "agreed_usd": 3870000.0,
+   "paid_usd": 3370118.83,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000016838",
+   "title": "654-658 Capp St",
+   "department": "MYR Mayor",
+   "department_code": "MYR",
+   "agreed_usd": 4193000.0,
+   "paid_usd": 3217768.43,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000013887",
+   "title": "60 28th Street",
+   "department": "MYR Mayor",
+   "department_code": "MYR",
+   "agreed_usd": 3213000.0,
+   "paid_usd": 3213000.0,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000020173",
+   "title": "3544 Taraval",
+   "department": "MYR Mayor",
+   "department_code": "MYR",
+   "agreed_usd": 2600000.0,
+   "paid_usd": 2600000.0,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000026959",
+   "title": "4830 Mission St",
+   "department": "MYR Mayor",
+   "department_code": "MYR",
+   "agreed_usd": 2128000.0,
+   "paid_usd": 2126590.09,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000020699",
+   "title": "Loans",
+   "department": "MYR Mayor",
+   "department_code": "MYR",
+   "agreed_usd": 2062000.0,
+   "paid_usd": 2062000.0,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000026960",
+   "title": "3280-17th St",
+   "department": "MYR Mayor",
+   "department_code": "MYR",
+   "agreed_usd": 1716756.62,
+   "paid_usd": 1715774.76,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000012089",
+   "title": "2015 Gob Loan for Acq/Rehab of 3182-3198 24TH ST",
+   "department": "MYR Mayor",
+   "department_code": "MYR",
+   "agreed_usd": 1556896.0,
+   "paid_usd": 1556896.0,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000012091",
+   "title": "2015 Gob Loan for Acq/Rehab of 3800,3802 &3804 Mission ST",
+   "department": "MYR Mayor",
+   "department_code": "MYR",
+   "agreed_usd": 1091751.09,
+   "paid_usd": 1091751.09,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000013907",
+   "title": "3182-3198 24th Street",
+   "department": "MYR Mayor",
+   "department_code": "MYR",
+   "agreed_usd": 976729.17,
+   "paid_usd": 976729.17,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000017788",
+   "title": "654-658 Capp St",
+   "department": "MYR Mayor",
+   "department_code": "MYR",
+   "agreed_usd": 975231.57,
+   "paid_usd": 975231.57,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000012668",
+   "title": "3353 26th Street",
+   "department": "MYR Mayor",
+   "department_code": "MYR",
+   "agreed_usd": 861190.5,
+   "paid_usd": 861190.5,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000024781",
+   "title": "654-658 Capp St",
+   "department": "MYR Mayor",
+   "department_code": "MYR",
+   "agreed_usd": 800000.0,
+   "paid_usd": 800000.0,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000012119",
+   "title": "Acquisition and rehab of 3329-3333 20th Street",
+   "department": "MYR Mayor",
+   "department_code": "MYR",
+   "agreed_usd": 491737.97,
+   "paid_usd": 451884.03,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000012095",
+   "title": "Incl Small Sites-Loan for Acq & Rehab of 2217-2221 Mission",
+   "department": "MYR Mayor",
+   "department_code": "MYR",
+   "agreed_usd": 343848.23,
+   "paid_usd": 343847.89,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000012118",
+   "title": "Pmoiss Loan for 29-35 Fair Avenue",
+   "department": "MYR Mayor",
+   "department_code": "MYR",
+   "agreed_usd": 343619.0,
+   "paid_usd": 343619.0,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000024878",
+   "title": "305 San Carlos St",
+   "department": "MYR Mayor",
+   "department_code": "MYR",
+   "agreed_usd": 333000.0,
+   "paid_usd": 333000.0,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000024573",
+   "title": "65 Woodward St",
+   "department": "MYR Mayor",
+   "department_code": "MYR",
+   "agreed_usd": 307000.0,
+   "paid_usd": 307000.0,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000024561",
+   "title": "1411 Florida St",
+   "department": "MYR Mayor",
+   "department_code": "MYR",
+   "agreed_usd": 299000.0,
+   "paid_usd": 299000.0,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000012111",
+   "title": "HTF SS Loan Funds for 19-23 Precita Avenue",
+   "department": "MYR Mayor",
+   "department_code": "MYR",
+   "agreed_usd": 267469.0,
+   "paid_usd": 267468.99,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000024684",
+   "title": "60 28th Street",
+   "department": "MYR Mayor",
+   "department_code": "MYR",
+   "agreed_usd": 232000.0,
+   "paid_usd": 232000.0,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000012088",
+   "title": "2015-GOB Loan for Acq/Rehab OF63-67 Lapidge ST",
+   "department": "MYR Mayor",
+   "department_code": "MYR",
+   "agreed_usd": 115340.45,
+   "paid_usd": 115340.45,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000015908",
+   "title": "1411 Florida St-Affordable hsg",
+   "department": "MYR Mayor",
+   "department_code": "MYR",
+   "agreed_usd": 53312.0,
+   "paid_usd": 53312.0,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000017035",
+   "title": "4830 Mission",
+   "department": "MYR Mayor",
+   "department_code": "MYR",
+   "agreed_usd": 50000.0,
+   "paid_usd": 50000.0,
+   "sole_source": false
+  }
+ ],
+ "n_contracts_held": 43,
+ "variants": [
+  {
+   "name": "MEDA Small Properties LLC",
+   "total": 155662893.71
+  },
+  {
+   "name": "MEDA SMALL PROPERTIES LLC",
+   "total": 3032708.81
+  }
+ ],
+ "n_variants": 2,
+ "merges": [],
+ "source": {
+  "name": "Vendor Payments (Vouchers)",
+  "dataset_id": "n9pm-xkyq",
+  "source_url": "https://data.sfgov.org/d/n9pm-xkyq",
+  "attribution": "SF Controller's Office",
+  "rows_updated_at": "2026-07-13T13:40:40+00:00"
+ }
+}

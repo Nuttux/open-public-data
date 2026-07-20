@@ -1,0 +1,47 @@
+{
+ "generated_at": "2026-07-20T22:34:47.739779+00:00",
+ "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
+ "as_of": "2026-07-13T13:40:40+00:00",
+ "unit": "USD",
+ "slug": "ccsf-tpa-workers-comp-division",
+ "name": "Ccsf Tpa Workers Comp Division",
+ "kind": "other",
+ "is_non_profit": false,
+ "total_paid_usd": 154110354.67,
+ "n_years": 11,
+ "first_year": 2009,
+ "last_year": 2019,
+ "by_year": {
+  "2009": 14008047.9,
+  "2010": 17815828.0,
+  "2011": 18017055.5,
+  "2012": 17731971.5,
+  "2013": 14998956.6,
+  "2014": 16488280.8,
+  "2015": 16288805.3,
+  "2016": 13952844.2,
+  "2017": 12847796.8,
+  "2018": 11829804.37,
+  "2019": 130963.7
+ },
+ "top_departments": [
+  "HRD Human Resources"
+ ],
+ "contracts_held": [],
+ "n_contracts_held": 0,
+ "variants": [
+  {
+   "name": "CCSF TPA WORKERS COMP DIVISION",
+   "total": 154110354.67
+  }
+ ],
+ "n_variants": 1,
+ "merges": [],
+ "source": {
+  "name": "Vendor Payments (Vouchers)",
+  "dataset_id": "n9pm-xkyq",
+  "source_url": "https://data.sfgov.org/d/n9pm-xkyq",
+  "attribution": "SF Controller's Office",
+  "rows_updated_at": "2026-07-13T13:40:40+00:00"
+ }
+}

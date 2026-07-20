@@ -1,0 +1,103 @@
+{
+ "generated_at": "2026-07-20T22:34:47.727658+00:00",
+ "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
+ "as_of": "2026-07-13T13:40:40+00:00",
+ "unit": "USD",
+ "slug": "san-francisco-county-transportation-auth",
+ "name": "San Francisco County Transportation Auth",
+ "kind": "other",
+ "is_non_profit": false,
+ "total_paid_usd": 957334843.17,
+ "n_years": 21,
+ "first_year": 2007,
+ "last_year": 2027,
+ "by_year": {
+  "2007": 408582.2,
+  "2008": 578122.4,
+  "2009": 107937.3,
+  "2010": 45826.9,
+  "2011": 102928.3,
+  "2012": 292782.1,
+  "2013": 99394.9,
+  "2014": 975311.7,
+  "2015": 4078641.4,
+  "2016": 2187497.9,
+  "2017": 7283672.9,
+  "2018": 101607814.66,
+  "2019": 47959251.67,
+  "2020": 69804261.94,
+  "2021": 90699362.67,
+  "2022": 110689042.66,
+  "2023": 90080731.55,
+  "2024": 120795620.94,
+  "2025": 142347294.56,
+  "2026": 152190764.52,
+  "2027": 15000000.0
+ },
+ "top_departments": [
+  "CTA SF County Transprtn Auth"
+ ],
+ "contracts_held": [
+  {
+   "contract_no": "1000033424",
+   "title": "Hillcrest RD PRJ20/21-14",
+   "department": "ADM GSA - City Administrator",
+   "department_code": "ADM",
+   "agreed_usd": 30000000.0,
+   "paid_usd": 19924875.69,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000029460",
+   "title": "WSB Project",
+   "department": "ADM GSA - City Administrator",
+   "department_code": "ADM",
+   "agreed_usd": 3505000.0,
+   "paid_usd": 2249781.53,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000016549",
+   "title": "693JJ3185002",
+   "department": "MTA Municipal Transprtn Agncy",
+   "department_code": "MTA",
+   "agreed_usd": 19560556.58,
+   "paid_usd": 1798120.07,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000028849",
+   "title": "2023-49 - SF-CHAMP",
+   "department": "MTA Municipal Transprtn Agncy",
+   "department_code": "MTA",
+   "agreed_usd": 500000.0,
+   "paid_usd": 150000.0,
+   "sole_source": true
+  },
+  {
+   "contract_no": "1000036663",
+   "title": "MOU Timma Ferry (Ahsc)",
+   "department": "ADM GSA - City Administrator",
+   "department_code": "ADM",
+   "agreed_usd": 1000000.0,
+   "paid_usd": 0.0,
+   "sole_source": false
+  }
+ ],
+ "n_contracts_held": 5,
+ "variants": [
+  {
+   "name": "SAN FRANCISCO COUNTY TRANSPORTATION AUTH",
+   "total": 957334843.17
+  }
+ ],
+ "n_variants": 1,
+ "merges": [],
+ "source": {
+  "name": "Vendor Payments (Vouchers)",
+  "dataset_id": "n9pm-xkyq",
+  "source_url": "https://data.sfgov.org/d/n9pm-xkyq",
+  "attribution": "SF Controller's Office",
+  "rows_updated_at": "2026-07-13T13:40:40+00:00"
+ }
+}

@@ -1,0 +1,57 @@
+{
+ "generated_at": "2026-07-20T22:34:47.729462+00:00",
+ "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
+ "as_of": "2026-07-13T13:40:40+00:00",
+ "unit": "USD",
+ "slug": "sundt-walsh-a-joint-venture",
+ "name": "Sundt/walsh a Joint Venture",
+ "kind": "supplier",
+ "is_non_profit": false,
+ "total_paid_usd": 560440924.47,
+ "n_years": 11,
+ "first_year": 2017,
+ "last_year": 2027,
+ "by_year": {
+  "2017": 977804.9,
+  "2018": 4351557.0,
+  "2019": 22441019.21,
+  "2020": 57793056.99,
+  "2021": 75037877.64,
+  "2022": 75721586.03,
+  "2023": 171050241.54,
+  "2024": 86982778.49,
+  "2025": 46507623.47,
+  "2026": 19352328.68,
+  "2027": 225050.52
+ },
+ "top_departments": [
+  "PUC Public Utilities Commsn"
+ ],
+ "contracts_held": [
+  {
+   "contract_no": "1000000556",
+   "title": "Sewpcp New Headworks FCLTY",
+   "department": "PUC Public Utilities Commsn",
+   "department_code": "PUC",
+   "agreed_usd": 570380175.0,
+   "paid_usd": 667610375.31,
+   "sole_source": false
+  }
+ ],
+ "n_contracts_held": 1,
+ "variants": [
+  {
+   "name": "SUNDT/WALSH A JOINT VENTURE",
+   "total": 560440924.47
+  }
+ ],
+ "n_variants": 1,
+ "merges": [],
+ "source": {
+  "name": "Vendor Payments (Vouchers)",
+  "dataset_id": "n9pm-xkyq",
+  "source_url": "https://data.sfgov.org/d/n9pm-xkyq",
+  "attribution": "SF Controller's Office",
+  "rows_updated_at": "2026-07-13T13:40:40+00:00"
+ }
+}

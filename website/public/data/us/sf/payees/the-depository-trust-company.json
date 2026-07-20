@@ -1,0 +1,56 @@
+{
+ "generated_at": "2026-07-20T22:34:47.724760+00:00",
+ "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
+ "as_of": "2026-07-13T13:40:40+00:00",
+ "unit": "USD",
+ "slug": "the-depository-trust-company",
+ "name": "The Depository Trust Company",
+ "kind": "fiscal_agent_debt_service",
+ "is_non_profit": false,
+ "total_paid_usd": 10061579123.11,
+ "n_years": 20,
+ "first_year": 2007,
+ "last_year": 2026,
+ "by_year": {
+  "2007": 180051630.4,
+  "2008": 185325383.3,
+  "2009": 229653691.0,
+  "2010": 274444912.1,
+  "2011": 286809544.3,
+  "2012": 297184901.4,
+  "2013": 314034743.3,
+  "2014": 350774047.3,
+  "2015": 372373425.7,
+  "2016": 414399351.8,
+  "2017": 401115670.8,
+  "2018": 466034802.99,
+  "2019": 558585034.52,
+  "2020": 693727864.69,
+  "2021": 896998997.58,
+  "2022": 1329996407.81,
+  "2023": 556634634.93,
+  "2024": 575478226.05,
+  "2025": 1068683964.05,
+  "2026": 609271889.09
+ },
+ "top_departments": [
+  "GEN General City / Unallocated"
+ ],
+ "contracts_held": [],
+ "n_contracts_held": 0,
+ "variants": [
+  {
+   "name": "THE DEPOSITORY TRUST COMPANY",
+   "total": 10061579123.11
+  }
+ ],
+ "n_variants": 1,
+ "merges": [],
+ "source": {
+  "name": "Vendor Payments (Vouchers)",
+  "dataset_id": "n9pm-xkyq",
+  "source_url": "https://data.sfgov.org/d/n9pm-xkyq",
+  "attribution": "SF Controller's Office",
+  "rows_updated_at": "2026-07-13T13:40:40+00:00"
+ }
+}

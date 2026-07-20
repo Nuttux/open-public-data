@@ -1,0 +1,49 @@
+{
+ "generated_at": "2026-07-20T22:34:47.730743+00:00",
+ "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
+ "as_of": "2026-07-13T13:40:40+00:00",
+ "unit": "USD",
+ "slug": "ccsf-hrd-workers-comp-division",
+ "name": "Ccsf Hrd Workers Comp Division",
+ "kind": "other",
+ "is_non_profit": false,
+ "total_paid_usd": 367390098.08,
+ "n_years": 13,
+ "first_year": 2007,
+ "last_year": 2019,
+ "by_year": {
+  "2007": 27965319.4,
+  "2008": 30744223.7,
+  "2009": 26605183.3,
+  "2010": 26971177.5,
+  "2011": 28630202.9,
+  "2012": 27442583.2,
+  "2013": 25494259.5,
+  "2014": 28534185.5,
+  "2015": 31384270.0,
+  "2016": 34887637.5,
+  "2017": 38399566.0,
+  "2018": 39942016.28,
+  "2019": 389473.3
+ },
+ "top_departments": [
+  "HRD Human Resources"
+ ],
+ "contracts_held": [],
+ "n_contracts_held": 0,
+ "variants": [
+  {
+   "name": "CCSF HRD WORKERS COMP DIVISION",
+   "total": 367390098.08
+  }
+ ],
+ "n_variants": 1,
+ "merges": [],
+ "source": {
+  "name": "Vendor Payments (Vouchers)",
+  "dataset_id": "n9pm-xkyq",
+  "source_url": "https://data.sfgov.org/d/n9pm-xkyq",
+  "attribution": "SF Controller's Office",
+  "rows_updated_at": "2026-07-13T13:40:40+00:00"
+ }
+}

@@ -1,0 +1,52 @@
+{
+ "generated_at": "2026-07-20T22:34:47.739259+00:00",
+ "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
+ "as_of": "2026-07-13T13:40:40+00:00",
+ "unit": "USD",
+ "slug": "shaw-pipeline-inc",
+ "name": "Shaw Pipeline Inc",
+ "kind": "supplier",
+ "is_non_profit": false,
+ "total_paid_usd": 159516656.46,
+ "n_years": 16,
+ "first_year": 2007,
+ "last_year": 2022,
+ "by_year": {
+  "2007": 6615406.9,
+  "2008": 3672849.0,
+  "2009": 5864616.5,
+  "2010": 7909024.4,
+  "2011": 6154882.8,
+  "2012": 6886183.6,
+  "2013": 9007813.2,
+  "2014": 13665307.0,
+  "2015": 11686352.2,
+  "2016": 17324634.5,
+  "2017": 17983677.9,
+  "2018": 1621073.01,
+  "2019": 6471280.83,
+  "2020": 28160979.95,
+  "2021": 4336697.2,
+  "2022": 12155877.47
+ },
+ "top_departments": [
+  "WWE Wastewater Enterprise"
+ ],
+ "contracts_held": [],
+ "n_contracts_held": 0,
+ "variants": [
+  {
+   "name": "SHAW PIPELINE INC",
+   "total": 159516656.46
+  }
+ ],
+ "n_variants": 1,
+ "merges": [],
+ "source": {
+  "name": "Vendor Payments (Vouchers)",
+  "dataset_id": "n9pm-xkyq",
+  "source_url": "https://data.sfgov.org/d/n9pm-xkyq",
+  "attribution": "SF Controller's Office",
+  "rows_updated_at": "2026-07-13T13:40:40+00:00"
+ }
+}

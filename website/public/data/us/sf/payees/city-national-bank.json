@@ -1,0 +1,123 @@
+{
+ "generated_at": "2026-07-20T22:34:47.740682+00:00",
+ "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
+ "as_of": "2026-07-13T13:40:40+00:00",
+ "unit": "USD",
+ "slug": "city-national-bank",
+ "name": "City National Bank",
+ "kind": "fiscal_agent_debt_service",
+ "is_non_profit": false,
+ "total_paid_usd": 146392014.25,
+ "n_years": 14,
+ "first_year": 2007,
+ "last_year": 2020,
+ "by_year": {
+  "2007": 116903.9,
+  "2008": 1255539.1,
+  "2009": 712517.2,
+  "2010": 2845160.6,
+  "2011": 10210367.9,
+  "2012": 6225018.8,
+  "2013": 5744651.9,
+  "2014": 11731697.0,
+  "2015": 9847442.3,
+  "2016": 19484931.5,
+  "2017": 40497037.5,
+  "2018": 10979367.96,
+  "2019": 25568978.59,
+  "2020": 1172400.0
+ },
+ "top_departments": [
+  "MYR Mayor"
+ ],
+ "contracts_held": [
+  {
+   "contract_no": "1000013048",
+   "title": "500 Turk Street",
+   "department": "MYR Mayor",
+   "department_code": "MYR",
+   "agreed_usd": 12790690.99,
+   "paid_usd": 12790690.99,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000012825",
+   "title": "To encumber funds for 289 9th St.",
+   "department": "MYR Mayor",
+   "department_code": "MYR",
+   "agreed_usd": 3747877.54,
+   "paid_usd": 3747877.54,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000009929",
+   "title": "Contract and PO for 1990 Folsom Housing Assoc.",
+   "department": "MYR Mayor",
+   "department_code": "MYR",
+   "agreed_usd": 3492846.48,
+   "paid_usd": 3492846.48,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000008401",
+   "title": "For 3353 26th Street acquisition & rehab costs",
+   "department": "MYR Mayor",
+   "department_code": "MYR",
+   "agreed_usd": 1872809.5,
+   "paid_usd": 1872809.5,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000013022",
+   "title": "Inclusionary loan for 2060 folsom St.",
+   "department": "MYR Mayor",
+   "department_code": "MYR",
+   "agreed_usd": 1570153.24,
+   "paid_usd": 1570153.24,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000007796",
+   "title": "HTF-SS for 19-23 Precita Avenue",
+   "department": "MYR Mayor",
+   "department_code": "MYR",
+   "agreed_usd": 1200000.0,
+   "paid_usd": 932531.0,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000007798",
+   "title": "Ahf Incl SS -2976 23RD ST",
+   "department": "MYR Mayor",
+   "department_code": "MYR",
+   "agreed_usd": 1470000.0,
+   "paid_usd": 718105.0,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000012588",
+   "title": "AHF incl loan funds for const. of project at 800 Presidio Av",
+   "department": "MYR Mayor",
+   "department_code": "MYR",
+   "agreed_usd": 181582.62,
+   "paid_usd": 181581.62,
+   "sole_source": false
+  }
+ ],
+ "n_contracts_held": 8,
+ "variants": [
+  {
+   "name": "CITY NATIONAL BANK",
+   "total": 146392014.25
+  }
+ ],
+ "n_variants": 1,
+ "merges": [],
+ "source": {
+  "name": "Vendor Payments (Vouchers)",
+  "dataset_id": "n9pm-xkyq",
+  "source_url": "https://data.sfgov.org/d/n9pm-xkyq",
+  "attribution": "SF Controller's Office",
+  "rows_updated_at": "2026-07-13T13:40:40+00:00"
+ }
+}

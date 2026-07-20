@@ -1,0 +1,79 @@
+{
+ "generated_at": "2026-07-20T22:34:47.736653+00:00",
+ "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
+ "as_of": "2026-07-13T13:40:40+00:00",
+ "unit": "USD",
+ "slug": "imco-parking-llc",
+ "name": "Imco Parking LLC",
+ "kind": "supplier",
+ "is_non_profit": false,
+ "total_paid_usd": 184699544.36,
+ "n_years": 15,
+ "first_year": 2012,
+ "last_year": 2026,
+ "by_year": {
+  "2012": 842496.2,
+  "2013": 6493086.0,
+  "2014": 10118652.2,
+  "2015": 14211964.4,
+  "2016": 13056832.9,
+  "2017": 13848981.7,
+  "2018": 12431349.2,
+  "2019": 16386962.4,
+  "2020": 13776452.75,
+  "2021": 7951198.01,
+  "2022": 8312403.01,
+  "2023": 10599766.73,
+  "2024": 15741737.72,
+  "2025": 18011949.25,
+  "2026": 22915711.89
+ },
+ "top_departments": [
+  "MTA Municipal Transprtn Agncy"
+ ],
+ "contracts_held": [
+  {
+   "contract_no": "1000028028",
+   "title": "Management of Group B Parking",
+   "department": "MTA Municipal Transprtn Agncy",
+   "department_code": "MTA",
+   "agreed_usd": 219000000.0,
+   "paid_usd": 40024151.84,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000032470",
+   "title": "SFGovTV FY24-25 Production Van",
+   "department": "DT  GSA - Technology",
+   "department_code": "TIS",
+   "agreed_usd": 20000.0,
+   "paid_usd": 10176.0,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000037719",
+   "title": "Civic Center Parking",
+   "department": "DT  GSA - Technology",
+   "department_code": "TIS",
+   "agreed_usd": 20000.0,
+   "paid_usd": 2424.0,
+   "sole_source": false
+  }
+ ],
+ "n_contracts_held": 3,
+ "variants": [
+  {
+   "name": "IMCO PARKING LLC",
+   "total": 184699544.36
+  }
+ ],
+ "n_variants": 1,
+ "merges": [],
+ "source": {
+  "name": "Vendor Payments (Vouchers)",
+  "dataset_id": "n9pm-xkyq",
+  "source_url": "https://data.sfgov.org/d/n9pm-xkyq",
+  "attribution": "SF Controller's Office",
+  "rows_updated_at": "2026-07-13T13:40:40+00:00"
+ }
+}

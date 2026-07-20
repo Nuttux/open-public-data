@@ -1,0 +1,279 @@
+{
+ "generated_at": "2026-07-20T22:30:00.115778+00:00",
+ "source_pipeline": "sf_place_candidates.json → sync_ia_sf.py + link_sf_places.py + fetch_sf_place_photos.py → export_sf_places.py",
+ "unit": "USD",
+ "slug": "war-memorial-opera-house",
+ "name": "War Memorial Opera House",
+ "kind": "Opera house",
+ "family": "culture",
+ "address": "301 Van Ness Ave",
+ "lat": 37.7784,
+ "lon": -122.4207,
+ "owning_dept": {
+  "name": "War Memorial",
+  "code": "WAR"
+ },
+ "photo": null,
+ "photo_credit": null,
+ "summary_en": null,
+ "published": false,
+ "money": {
+  "budget_line": {
+   "code": "WAR",
+   "name": "War Memorial & Performing Arts",
+   "total_usd": 30226356.0,
+   "fiscal_year": 2025
+  },
+  "contracts": [
+   {
+    "contract_no": "1000036536",
+    "title": "WM Opera House RF RPLCMNT",
+    "prime": "PIONEER CONTRACTORS INC",
+    "department_code": "DPW",
+    "agreed_usd": 6795010.0,
+    "paid_usd": 342000.0,
+    "evidence": "PW WM OPERA HOUSE RF RPLCMNT"
+   },
+   {
+    "contract_no": "1000037638",
+    "title": "WM Opera House Elev MDRN",
+    "prime": "W.E. LYONS CONSTRUCTION CO.",
+    "department_code": "DPW",
+    "agreed_usd": 607576.0,
+    "paid_usd": 70786.86,
+    "evidence": "PW WM OPERA HOUSE ELEV MDRN"
+   }
+  ],
+  "grants": []
+ },
+ "documents": [
+  {
+   "identifier": "sttmntsofact19631978warm",
+   "title": "Statements of activities, past fiscal year",
+   "creator": "War Memorial (San Francisco, Calif.). Board of Trustees",
+   "year": 1975,
+   "pool": "sfpl",
+   "matched_alias": "War Memorial Opera House",
+   "snippet": "controls - «Opera House» Stage rigging - «Opera House» Backstage production areas - «Opera House» Elevator",
+   "url": "https://archive.org/details/sttmntsofact19631978warm",
+   "deep_link": "https://archive.org/details/sttmntsofact19631978warm?q=War+Memorial+Opera+House",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+  },
+  {
+   "identifier": "sanfranciscoperf1119sanf",
+   "title": "San Francisco Performing Arts Center : Van Ness Avenue and Grove, Franklin and Hayes Streets : final environmental impact report",
+   "creator": "San Francisco (Calif.). City Planning Commission,San Francisco (Calif.). Dept. of City Planning",
+   "year": 1975,
+   "pool": "sfpl",
+   "matched_alias": "Opera House",
+   "snippet": "existing «Opera House», opened in 1932, in the Civic Center. The present «Opera House» does",
+   "url": "https://archive.org/details/sanfranciscoperf1119sanf",
+   "deep_link": "https://archive.org/details/sanfranciscoperf1119sanf?q=Opera+House",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+  },
+  {
+   "identifier": "reportonrehabili1196publ",
+   "title": "Report on rehabilitation and modernization of San Francisco's War Memorial Center",
+   "creator": "Public Structures, Inc. (San Francisco, Calif.),Wurster, Bernardi, and Emmons,Skidmore, Owings & Merrill,War Memorial (San Francisco, Calif.). Board of Trustees",
+   "year": 1965,
+   "pool": "sfpl",
+   "matched_alias": "Opera House",
+   "snippet": "AND USE OF «OPERA HOUSE» AND VETERANS BUILDING III. CONDITION OF «OPERA HOUSE» AND VETERANS",
+   "url": "https://archive.org/details/reportonrehabili1196publ",
+   "deep_link": "https://archive.org/details/reportonrehabili1196publ?q=Opera+House",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+  },
+  {
+   "identifier": "anthologyofmusic00unit",
+   "title": "An anthology of music criticism",
+   "creator": "United States. Work Projects Administration (Calif.),History of Music Project",
+   "year": 1942,
+   "pool": "sfpl",
+   "matched_alias": "War Memorial Opera House",
+   "snippet": "oondnctor «War Memorial Opera House» «War Memorial Opera House» «War Memorial Opera House» Civic Auditorium",
+   "url": "https://archive.org/details/anthologyofmusic00unit",
+   "deep_link": "https://archive.org/details/anthologyofmusic00unit?q=War+Memorial+Opera+House",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+  },
+  {
+   "identifier": "sanfrancisc1119391940sanf",
+   "title": "San Francisco public schools bulletin",
+   "creator": "San Francisco (Calif.). Superintendent of Public Schools",
+   "year": 1930,
+   "pool": "sfpl",
+   "matched_alias": "War Memorial Opera House",
+   "snippet": "ap- pearance at annual Institute in «War Memorial Opera House» of Dr. Frank N. Freeman, recently",
+   "url": "https://archive.org/details/sanfrancisc1119391940sanf",
+   "deep_link": "https://archive.org/details/sanfrancisc1119391940sanf?q=War+Memorial+Opera+House",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+  },
+  {
+   "identifier": "annalsofsanfranc02fost",
+   "title": "Annals of the San Francisco stage, 1850-1880, Volume 1 p.2",
+   "creator": "Foster, Lois M,Federal Theatre Project (San Francisco, Calif.)",
+   "year": 1850,
+   "pool": "sfpl",
+   "matched_alias": "Opera House",
+   "snippet": "turn as: Shields «Opera House», Thguire's «Opera House», and Emerson* s «Opera House». Freshly painted",
+   "url": "https://archive.org/details/annalsofsanfranc02fost",
+   "deep_link": "https://archive.org/details/annalsofsanfranc02fost?q=Opera+House",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+  },
+  {
+   "identifier": "calendarofevents2008sanf",
+   "title": "Calendar of events",
+   "creator": "San Francisco Performing Arts Center",
+   "year": null,
+   "pool": "sfpl",
+   "matched_alias": "War Memorial Opera House",
+   "snippet": "Francisco CALENDAR OF EVENTS January 2008 «War Memorial Opera House» Lx)ulse M Davies Symphony Hall Veterans",
+   "url": "https://archive.org/details/calendarofevents2008sanf",
+   "deep_link": "https://archive.org/details/calendarofevents2008sanf?q=War+Memorial+Opera+House",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+  },
+  {
+   "identifier": "calendarofevents2002sanf",
+   "title": "Calendar of events",
+   "creator": "San Francisco Performing Arts Center",
+   "year": null,
+   "pool": "sfpl",
+   "matched_alias": "War Memorial Opera House",
+   "snippet": "7:00pm «OPERA HOUSE» 8:00pm 3 «OPERA HOUSE» Wed «OPERA HOUSE» «OPERA HOUSE» DAVIES HALL «OPERA HOUSE» 7:30pm",
+   "url": "https://archive.org/details/calendarofevents2002sanf",
+   "deep_link": "https://archive.org/details/calendarofevents2002sanf?q=War+Memorial+Opera+House",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+  },
+  {
+   "identifier": "calendarofevents2012sanf",
+   "title": "Calendar of events",
+   "creator": "San Francisco Performing Arts Center",
+   "year": null,
+   "pool": "sfpl",
+   "matched_alias": "War Memorial Opera House",
+   "snippet": "Lobby, «Opera House» Loggia, «Opera House» Main Lobby, «Opera House» North Box Bar, «Opera House» North",
+   "url": "https://archive.org/details/calendarofevents2012sanf",
+   "deep_link": "https://archive.org/details/calendarofevents2012sanf?q=War+Memorial+Opera+House",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+  },
+  {
+   "identifier": "calendarofevents2010sanf",
+   "title": "Calendar of events",
+   "creator": "San Francisco Performing Arts Center",
+   "year": null,
+   "pool": "sfpl",
+   "matched_alias": "War Memorial Opera House",
+   "snippet": "HALL red >4 «OPERA HOUSE» hu DAVIES HALL !5 «OPERA HOUSE» Fri DAVIES HALL !6 «OPERA HOUSE» at i DAVIES",
+   "url": "https://archive.org/details/calendarofevents2010sanf",
+   "deep_link": "https://archive.org/details/calendarofevents2010sanf?q=War+Memorial+Opera+House",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+  },
+  {
+   "identifier": "calendarofevents2004sanf",
+   "title": "Calendar of events",
+   "creator": "San Francisco Performing Arts Center",
+   "year": null,
+   "pool": "sfpl",
+   "matched_alias": "War Memorial Opera House",
+   "snippet": "•■'ff.ins Green Roofii Herbsi Theatre «War Memorial Opera House» Ixjuise M Davies Symphony Hall SAN",
+   "url": "https://archive.org/details/calendarofevents2004sanf",
+   "deep_link": "https://archive.org/details/calendarofevents2004sanf?q=War+Memorial+Opera+House",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+  },
+  {
+   "identifier": "annualrprt1978798384warm",
+   "title": "Annual report",
+   "creator": "War Memorial (San Francisco, Calif.). Board of Trustees",
+   "year": null,
+   "pool": "sfpl",
+   "matched_alias": "War Memorial Opera House",
+   "snippet": "accommodated be brought into the «Opera House». The comparative «Opera House» figures for the past thr<",
+   "url": "https://archive.org/details/annualrprt1978798384warm",
+   "deep_link": "https://archive.org/details/annualrprt1978798384warm?q=War+Memorial+Opera+House",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+  },
+  {
+   "identifier": "calendarofevents2006sanf",
+   "title": "Calendar of events",
+   "creator": "San Francisco Performing Arts Center",
+   "year": null,
+   "pool": "sfpl",
+   "matched_alias": "War Memorial Opera House",
+   "snippet": "Building Herbst Theatre / Green Room «War Memorial Opera House» Louise M Davies Symphony Kail Harold",
+   "url": "https://archive.org/details/calendarofevents2006sanf",
+   "deep_link": "https://archive.org/details/calendarofevents2006sanf?q=War+Memorial+Opera+House",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+  },
+  {
+   "identifier": "calendarofevents2000sanf",
+   "title": "Calendar of events",
+   "creator": "San Francisco Performing Arts Center",
+   "year": null,
+   "pool": "sfpl",
+   "matched_alias": "War Memorial Opera House",
+   "snippet": "HERBST THEATRE 8:00pm «OPERA HOUSE» «OPERA HOUSE» «OPERA HOUSE» «OPERA HOUSE» «OPERA HOUSE» 11:00am 4:00pm 2:00pm",
+   "url": "https://archive.org/details/calendarofevents2000sanf",
+   "deep_link": "https://archive.org/details/calendarofevents2000sanf?q=War+Memorial+Opera+House",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+  }
+ ],
+ "dept_shelf": [
+  {
+   "identifier": "opinion1985sanf",
+   "title": "Opinion",
+   "year": 1978,
+   "pool": "sfpl",
+   "url": "https://archive.org/details/opinion1985sanf"
+  },
+  {
+   "identifier": "opinion1987sanf",
+   "title": "Opinion",
+   "year": 1978,
+   "pool": "sfpl",
+   "url": "https://archive.org/details/opinion1987sanf"
+  },
+  {
+   "identifier": "sttmntsofact19631978warm",
+   "title": "Statements of activities, past fiscal year",
+   "year": 1975,
+   "pool": "sfpl",
+   "url": "https://archive.org/details/sttmntsofact19631978warm"
+  },
+  {
+   "identifier": "calendarofevents2008sanf",
+   "title": "Calendar of events",
+   "year": null,
+   "pool": "sfpl",
+   "url": "https://archive.org/details/calendarofevents2008sanf"
+  },
+  {
+   "identifier": "annualrepofpr19391946wa",
+   "title": "Annual report of the president of the Board of Trustees of the War Memorial of San Francisco",
+   "year": null,
+   "pool": "sfpl",
+   "url": "https://archive.org/details/annualrepofpr19391946wa"
+  },
+  {
+   "identifier": "agendasminutessa2010sanf",
+   "title": "Agendas and Minutes / San Francisco Veterans' Affairs Commission",
+   "year": null,
+   "pool": "sfpl",
+   "url": "https://archive.org/details/agendasminutessa2010sanf"
+  }
+ ],
+ "sources": [
+  {
+   "label": "City budget & payments",
+   "note": "SF Controller open data (budget, vouchers, contracts)"
+  },
+  {
+   "label": "Historical documents",
+   "note": "Internet Archive — SFPL partnership scans + Democracy's Library"
+  }
+ ],
+ "_gate": {
+  "has_photo": false,
+  "n_documents": 14,
+  "n_money_links": 3,
+  "meets_pre_summary": false
+ }
+}

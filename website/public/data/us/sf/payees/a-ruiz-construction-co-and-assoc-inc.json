@@ -1,0 +1,75 @@
+{
+ "generated_at": "2026-07-20T22:34:47.732723+00:00",
+ "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
+ "as_of": "2026-07-13T13:40:40+00:00",
+ "unit": "USD",
+ "slug": "a-ruiz-construction-co-and-assoc-inc",
+ "name": "A Ruiz Construction Co and Assoc Inc",
+ "kind": "supplier",
+ "is_non_profit": false,
+ "total_paid_usd": 268763515.62,
+ "n_years": 20,
+ "first_year": 2007,
+ "last_year": 2026,
+ "by_year": {
+  "2007": 8468829.5,
+  "2008": 11090148.4,
+  "2009": 13402973.6,
+  "2010": 8518919.9,
+  "2011": 13255168.5,
+  "2012": 12865403.2,
+  "2013": 17721041.3,
+  "2014": 16636676.6,
+  "2015": 13984946.3,
+  "2016": 17673264.7,
+  "2017": 20289540.3,
+  "2018": 7783114.03,
+  "2019": 1306460.82,
+  "2020": 3910561.14,
+  "2021": 7329526.1,
+  "2022": 2701729.11,
+  "2023": 42258576.24,
+  "2024": 17832755.89,
+  "2025": 25973823.18,
+  "2026": 5760056.81
+ },
+ "top_departments": [
+  "DPW GSA - Public Works"
+ ],
+ "contracts_held": [
+  {
+   "contract_no": "1000031792",
+   "title": "8” Diwm Replc Gold Mine DR",
+   "department": "PUC Public Utilities Commsn",
+   "department_code": "PUC",
+   "agreed_usd": 5250683.51,
+   "paid_usd": 16315705.68,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000036680",
+   "title": "Various Sewer Replac NO.18",
+   "department": "PUC Public Utilities Commsn",
+   "department_code": "PUC",
+   "agreed_usd": 5448874.2,
+   "paid_usd": 2694195.66,
+   "sole_source": false
+  }
+ ],
+ "n_contracts_held": 2,
+ "variants": [
+  {
+   "name": "A RUIZ CONSTRUCTION CO AND ASSOC INC",
+   "total": 268763515.62
+  }
+ ],
+ "n_variants": 1,
+ "merges": [],
+ "source": {
+  "name": "Vendor Payments (Vouchers)",
+  "dataset_id": "n9pm-xkyq",
+  "source_url": "https://data.sfgov.org/d/n9pm-xkyq",
+  "attribution": "SF Controller's Office",
+  "rows_updated_at": "2026-07-13T13:40:40+00:00"
+ }
+}

@@ -1,0 +1,54 @@
+{
+ "generated_at": "2026-07-20T22:34:47.728170+00:00",
+ "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
+ "as_of": "2026-07-13T13:40:40+00:00",
+ "unit": "USD",
+ "slug": "siemens-mobility-inc",
+ "name": "Siemens Mobility Inc.",
+ "kind": "supplier",
+ "is_non_profit": false,
+ "total_paid_usd": 735689199.62,
+ "n_years": 8,
+ "first_year": 2019,
+ "last_year": 2026,
+ "by_year": {
+  "2019": 60017081.85,
+  "2020": 33813425.61,
+  "2021": 29468650.05,
+  "2022": 81116732.44,
+  "2023": 134127535.07,
+  "2024": 139590288.87,
+  "2025": 142067212.53,
+  "2026": 115488273.2
+ },
+ "top_departments": [
+  "MTA Municipal Transprtn Agncy"
+ ],
+ "contracts_held": [
+  {
+   "contract_no": "1000012860",
+   "title": "Cont NO.SFMTA-2013-19,RES NO.1",
+   "department": "MTA Municipal Transprtn Agncy",
+   "department_code": "MTA",
+   "agreed_usd": 1013236845.46,
+   "paid_usd": 623494603.16,
+   "sole_source": false
+  }
+ ],
+ "n_contracts_held": 1,
+ "variants": [
+  {
+   "name": "Siemens Mobility Inc.",
+   "total": 735689199.62
+  }
+ ],
+ "n_variants": 1,
+ "merges": [],
+ "source": {
+  "name": "Vendor Payments (Vouchers)",
+  "dataset_id": "n9pm-xkyq",
+  "source_url": "https://data.sfgov.org/d/n9pm-xkyq",
+  "attribution": "SF Controller's Office",
+  "rows_updated_at": "2026-07-13T13:40:40+00:00"
+ }
+}

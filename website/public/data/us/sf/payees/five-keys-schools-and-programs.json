@@ -1,0 +1,164 @@
+{
+ "generated_at": "2026-07-20T22:34:47.732590+00:00",
+ "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
+ "as_of": "2026-07-13T13:40:40+00:00",
+ "unit": "USD",
+ "slug": "five-keys-schools-and-programs",
+ "name": "Five Keys Schools and Programs",
+ "kind": "nonprofit",
+ "is_non_profit": true,
+ "total_paid_usd": 273189502.06,
+ "n_years": 10,
+ "first_year": 2018,
+ "last_year": 2027,
+ "by_year": {
+  "2018": 738302.77,
+  "2019": 2610155.05,
+  "2020": 4703220.74,
+  "2021": 32311895.87,
+  "2022": 32631909.19,
+  "2023": 45465029.76,
+  "2024": 41889624.75,
+  "2025": 54277642.6,
+  "2026": 57292505.19,
+  "2027": 1269216.14
+ },
+ "top_departments": [
+  "HOM Homelessness Services"
+ ],
+ "contracts_held": [
+  {
+   "contract_no": "1000020047",
+   "title": "Five Keys- Next Door Site S",
+   "department": "HOM Homelessness Services",
+   "department_code": "HOM",
+   "agreed_usd": 59204930.0,
+   "paid_usd": 36745069.73,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000026026",
+   "title": "Five Keys - Baldwin SAFE Nav",
+   "department": "HOM Homelessness Services",
+   "department_code": "HOM",
+   "agreed_usd": 37072314.0,
+   "paid_usd": 30957715.33,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000019864",
+   "title": "Five Keys SIP Site H",
+   "department": "HOM Homelessness Services",
+   "department_code": "HOM",
+   "agreed_usd": 36621656.0,
+   "paid_usd": 25887658.72,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000021966",
+   "title": "Five Keys - Artmar",
+   "department": "HOM Homelessness Services",
+   "department_code": "HOM",
+   "agreed_usd": 13912633.0,
+   "paid_usd": 10395875.9,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000027874",
+   "title": "Five Keys - 835 Turk ML",
+   "department": "HOM Homelessness Services",
+   "department_code": "HOM",
+   "agreed_usd": 16682000.0,
+   "paid_usd": 8256671.49,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000033207",
+   "title": "Five Keys - Central Waterfront",
+   "department": "HOM Homelessness Services",
+   "department_code": "HOM",
+   "agreed_usd": 9971591.0,
+   "paid_usd": 4981324.49,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000034144",
+   "title": "Five Keys - 42 Otis PSH TAY",
+   "department": "HOM Homelessness Services",
+   "department_code": "HOM",
+   "agreed_usd": 7436154.0,
+   "paid_usd": 1576734.33,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000034423",
+   "title": "Residential Beds",
+   "department": "DPH Public Health",
+   "department_code": "DPH",
+   "agreed_usd": 4455850.0,
+   "paid_usd": 1414485.59,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000035536",
+   "title": "Five Keys - TAY RRH",
+   "department": "HOM Homelessness Services",
+   "department_code": "HOM",
+   "agreed_usd": 9988873.0,
+   "paid_usd": 789596.9,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000032563",
+   "title": "GA-Productive Adult-24-29",
+   "department": "CHF Children;Youth & Families",
+   "department_code": "CHF",
+   "agreed_usd": 1752300.0,
+   "paid_usd": 478791.92,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000034138",
+   "title": "Five Keys - 42 Otis PSH TAY",
+   "department": "HOM Homelessness Services",
+   "department_code": "HOM",
+   "agreed_usd": 1958099.0,
+   "paid_usd": 118770.8,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000037932",
+   "title": "Five Keys - 711 Post",
+   "department": "HOM Homelessness Services",
+   "department_code": "HOM",
+   "agreed_usd": 9847270.0,
+   "paid_usd": 0.0,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000037684",
+   "title": "Five Keys Schools and Programs",
+   "department": "PUC Public Utilities Commsn",
+   "department_code": "PUC",
+   "agreed_usd": 400000.0,
+   "paid_usd": 0.0,
+   "sole_source": false
+  }
+ ],
+ "n_contracts_held": 13,
+ "variants": [
+  {
+   "name": "FIVE KEYS SCHOOLS AND PROGRAMS",
+   "total": 273189502.06
+  }
+ ],
+ "n_variants": 1,
+ "merges": [],
+ "source": {
+  "name": "Vendor Payments (Vouchers)",
+  "dataset_id": "n9pm-xkyq",
+  "source_url": "https://data.sfgov.org/d/n9pm-xkyq",
+  "attribution": "SF Controller's Office",
+  "rows_updated_at": "2026-07-13T13:40:40+00:00"
+ }
+}

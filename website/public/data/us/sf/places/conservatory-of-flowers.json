@@ -1,0 +1,221 @@
+{
+ "generated_at": "2026-07-20T22:30:00.106772+00:00",
+ "source_pipeline": "sf_place_candidates.json → sync_ia_sf.py + link_sf_places.py + fetch_sf_place_photos.py → export_sf_places.py",
+ "unit": "USD",
+ "slug": "conservatory-of-flowers",
+ "name": "Conservatory of Flowers",
+ "kind": "Conservatory",
+ "family": "park",
+ "address": "100 John F Kennedy Dr",
+ "lat": 37.7726,
+ "lon": -122.4603,
+ "owning_dept": {
+  "name": "Recreation and Park Department",
+  "code": "REC"
+ },
+ "photo": "/img/us/sf/places/conservatory-of-flowers.jpg",
+ "photo_credit": {
+  "photo": "/img/us/sf/places/conservatory-of-flowers.jpg",
+  "source": "Wikimedia Commons",
+  "file": "File:Conservatory_of_Flowers_-_panoramio.jpg",
+  "file_url": "https://commons.wikimedia.org/wiki/File:Conservatory_of_Flowers_-_panoramio.jpg",
+  "license": "CC BY-SA 3.0",
+  "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
+  "author": "harley photo",
+  "fetched_at": "2026-07-20T22:23:17.122441+00:00"
+ },
+ "summary_en": "The archive record is dominated by Recreation and Park Commission minutes from 1979 through 1991 that track the Conservatory of Flowers — the long-awaited construction, donations of plants and orchids, interim building repairs, and an accepted $43,000 gift for the Conservatory Auxiliary. Late-1990s Parks and Recreation Committee minutes discuss renovation of the building, and 'What's doing in the parks' bulletins list it among Golden Gate Park attractions. The Conservatory is operated by the Recreation and Park Department, whose FY2025 budget line is about $250M. No contract in the data names it.",
+ "published": true,
+ "money": {
+  "budget_line": {
+   "code": "REC",
+   "name": "Recreation & Parks",
+   "total_usd": 250373849.0,
+   "fiscal_year": 2025
+  },
+  "contracts": [],
+  "grants": []
+ },
+ "documents": [
+  {
+   "identifier": "minutesrecreatio1982sanf",
+   "title": "Minutes / Recreation and Park Commission",
+   "creator": "San Francisco (Calif.). Recreation and Park Commission",
+   "year": null,
+   "pool": "sfpl",
+   "matched_alias": "Conservatory of Flowers",
+   "snippet": "for «Conservatory of Flowers» B. From Mrs. M. Owang, plants for «Conservatory of Flowers» C. From",
+   "url": "https://archive.org/details/minutesrecreatio1982sanf",
+   "deep_link": "https://archive.org/details/minutesrecreatio1982sanf?q=Conservatory+of+Flowers",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+  },
+  {
+   "identifier": "whatsdoinginpark1983sanf",
+   "title": "What's doing in the parks?",
+   "creator": "San Francisco (Calif.). Recreation and Park Department",
+   "year": null,
+   "pool": "sfpl",
+   "matched_alias": "Conservatory of Flowers",
+   "snippet": "Kennedy Drive in front of the «Conservatory of Flowers», Golden Gate Park. 1 p.m. -- \"Sound",
+   "url": "https://archive.org/details/whatsdoinginpark1983sanf",
+   "deep_link": "https://archive.org/details/whatsdoinginpark1983sanf?q=Conservatory+of+Flowers",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+  },
+  {
+   "identifier": "minutes198485sanf",
+   "title": "Minutes",
+   "creator": "San Francisco (Calif.). Recreation and Park Commission",
+   "year": null,
+   "pool": "sfpl",
+   "matched_alias": "Conservatory of Flowers",
+   "snippet": "$250 for the collection at the «Conservatory of Flowers». b. From Mr. Gary Turpin, orchid",
+   "url": "https://archive.org/details/minutes198485sanf",
+   "deep_link": "https://archive.org/details/minutes198485sanf?q=Conservatory+of+Flowers",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+  },
+  {
+   "identifier": "minutesrecreatio1991sanf",
+   "title": "Minutes / Recreation and Park Commission",
+   "creator": "San Francisco (Calif.). Recreation and Park Commission",
+   "year": null,
+   "pool": "sfpl",
+   "matched_alias": "Conservatory of Flowers",
+   "snippet": "$43,000 «CONSERVATORY OF FLOWERS» RES. 16003 - Accepted S.F. «Conservatory of Flowers» Auxiliary",
+   "url": "https://archive.org/details/minutesrecreatio1991sanf",
+   "deep_link": "https://archive.org/details/minutesrecreatio1991sanf?q=Conservatory+of+Flowers",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+  },
+  {
+   "identifier": "minutesrecreatio1984sanf",
+   "title": "Minutes / Recreation and Park Commission",
+   "creator": "San Francisco (Calif.). Recreation and Park Commission",
+   "year": null,
+   "pool": "sfpl",
+   "matched_alias": "Conservatory of Flowers",
+   "snippet": "Brown Electric 131 RES. 13761 - «Conservatory of Flowers», RP-1081, Kingston 131 RES. 13762",
+   "url": "https://archive.org/details/minutesrecreatio1984sanf",
+   "deep_link": "https://archive.org/details/minutesrecreatio1984sanf?q=Conservatory+of+Flowers",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+  },
+  {
+   "identifier": "meetingminutes19982001san",
+   "title": "Meeting minutes",
+   "creator": "San Francisco (Calif.). Board of Supervisors. Parks and Recreation Committee",
+   "year": null,
+   "pool": "sfpl",
+   "matched_alias": "Conservatory of Flowers",
+   "snippet": "the «Conservatory of Flowers» will be used for renovation of the «Conservatory of Flowers». 3.",
+   "url": "https://archive.org/details/meetingminutes19982001san",
+   "deep_link": "https://archive.org/details/meetingminutes19982001san?q=Conservatory+of+Flowers",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+  },
+  {
+   "identifier": "minutesrecreatio1981sanf",
+   "title": "Minutes / Recreation and Park Commission",
+   "creator": "San Francisco (Calif.). Recreation and Park Commission",
+   "year": null,
+   "pool": "sfpl",
+   "matched_alias": "Conservatory of Flowers",
+   "snippet": "see «Conservatory of Flowers» -$3,000 203 RES. 12551 - see «Conservatory of Flowers» 259 RES",
+   "url": "https://archive.org/details/minutesrecreatio1981sanf",
+   "deep_link": "https://archive.org/details/minutesrecreatio1981sanf?q=Conservatory+of+Flowers",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+  },
+  {
+   "identifier": "minutes96sanf",
+   "title": "Minutes",
+   "creator": "San Francisco (Calif.). Recreation and Park Commission",
+   "year": null,
+   "pool": "sfpl",
+   "matched_alias": "Conservatory of Flowers",
+   "snippet": "is presented for your information. «CONSERVATORY OF FLOWERS» The interim repairs to the building",
+   "url": "https://archive.org/details/minutes96sanf",
+   "deep_link": "https://archive.org/details/minutes96sanf?q=Conservatory+of+Flowers",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+  },
+  {
+   "identifier": "minutesrecreatio1983sanf",
+   "title": "Minutes / Recreation and Park Commission",
+   "creator": "San Francisco (Calif.). Recreation and Park Commission",
+   "year": null,
+   "pool": "sfpl",
+   "matched_alias": "Conservatory of Flowers",
+   "snippet": "(CONTINUED) 2. «CONSERVATORY OF FLOWERS» a . Status Report on «Conservatory of Flowers» Mr. Tom Bass",
+   "url": "https://archive.org/details/minutesrecreatio1983sanf",
+   "deep_link": "https://archive.org/details/minutesrecreatio1983sanf?q=Conservatory+of+Flowers",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+  },
+  {
+   "identifier": "minutes1979sanf",
+   "title": "Minutes",
+   "creator": "San Francisco (Calif.). Recreation and Park Commission",
+   "year": null,
+   "pool": "sfpl",
+   "matched_alias": "Conservatory of Flowers",
+   "snippet": "PARK «CONSERVATORY OF FLOWERS»: The long-awaited construction of the «Conservatory of Flowers» in",
+   "url": "https://archive.org/details/minutes1979sanf",
+   "deep_link": "https://archive.org/details/minutes1979sanf?q=Conservatory+of+Flowers",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+  }
+ ],
+ "dept_shelf": [
+  {
+   "identifier": "managementaudito2006sanf",
+   "title": "Management audit of the Recreation and Park Department",
+   "year": 2006,
+   "pool": "sfpl",
+   "url": "https://archive.org/details/managementaudito2006sanf"
+  },
+  {
+   "identifier": "newdeyoungmuseum2220sanf",
+   "title": "New de Young Museum project : environmental impact report : draft summary of comments and responses",
+   "year": 2000,
+   "pool": "sfpl",
+   "url": "https://archive.org/details/newdeyoungmuseum2220sanf"
+  },
+  {
+   "identifier": "0agenda19992002sanf",
+   "title": "Agenda",
+   "year": 1999,
+   "pool": "sfpl",
+   "url": "https://archive.org/details/0agenda19992002sanf"
+  },
+  {
+   "identifier": "reporttoboardofs1980sanf",
+   "title": "Report to the Board of Supervisors of the City and County of San Francisco : review of the operations of the San Francisco Recreation and Park Department",
+   "year": 1979,
+   "pool": "sfpl",
+   "url": "https://archive.org/details/reporttoboardofs1980sanf"
+  },
+  {
+   "identifier": "annualreport197277sanf",
+   "title": "Annual report of the San Francisco Recreation and Park Department",
+   "year": null,
+   "pool": "sfpl",
+   "url": "https://archive.org/details/annualreport197277sanf"
+  },
+  {
+   "identifier": "minutesrecreatio1960sanf",
+   "title": "Minutes / Recreation and Park Commission",
+   "year": null,
+   "pool": "sfpl",
+   "url": "https://archive.org/details/minutesrecreatio1960sanf"
+  }
+ ],
+ "sources": [
+  {
+   "label": "City budget & payments",
+   "note": "SF Controller open data (budget, vouchers, contracts)"
+  },
+  {
+   "label": "Historical documents",
+   "note": "Internet Archive — SFPL partnership scans + Democracy's Library"
+  }
+ ],
+ "_gate": {
+  "has_photo": true,
+  "n_documents": 10,
+  "n_money_links": 1,
+  "meets_pre_summary": true
+ }
+}

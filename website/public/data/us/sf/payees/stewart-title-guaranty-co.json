@@ -1,0 +1,56 @@
+{
+ "generated_at": "2026-07-20T22:34:47.740787+00:00",
+ "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
+ "as_of": "2026-07-13T13:40:40+00:00",
+ "unit": "USD",
+ "slug": "stewart-title-guaranty-co",
+ "name": "Stewart Title Guaranty Co",
+ "kind": "supplier",
+ "is_non_profit": false,
+ "total_paid_usd": 146166248.29,
+ "n_years": 10,
+ "first_year": 2008,
+ "last_year": 2026,
+ "by_year": {
+  "2008": 1000.0,
+  "2016": 11303510.2,
+  "2018": 9725000.0,
+  "2019": 2500.0,
+  "2021": 15900.0,
+  "2022": 57126695.04,
+  "2023": 19981487.75,
+  "2024": 14208410.75,
+  "2025": 13801744.55,
+  "2026": 20000000.0
+ },
+ "top_departments": [
+  "PUB Public Utilities Bureaus"
+ ],
+ "contracts_held": [
+  {
+   "contract_no": "1000030993",
+   "title": "Title & Escrow Services",
+   "department": "ADM GSA - City Administrator",
+   "department_code": "ADM",
+   "agreed_usd": 83333.0,
+   "paid_usd": 0.0,
+   "sole_source": false
+  }
+ ],
+ "n_contracts_held": 1,
+ "variants": [
+  {
+   "name": "STEWART TITLE GUARANTY CO",
+   "total": 146166248.29
+  }
+ ],
+ "n_variants": 1,
+ "merges": [],
+ "source": {
+  "name": "Vendor Payments (Vouchers)",
+  "dataset_id": "n9pm-xkyq",
+  "source_url": "https://data.sfgov.org/d/n9pm-xkyq",
+  "attribution": "SF Controller's Office",
+  "rows_updated_at": "2026-07-13T13:40:40+00:00"
+ }
+}

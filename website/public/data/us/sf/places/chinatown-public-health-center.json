@@ -1,0 +1,260 @@
+{
+ "generated_at": "2026-07-20T22:30:00.114333+00:00",
+ "source_pipeline": "sf_place_candidates.json → sync_ia_sf.py + link_sf_places.py + fetch_sf_place_photos.py → export_sf_places.py",
+ "unit": "USD",
+ "slug": "chinatown-public-health-center",
+ "name": "Chinatown Public Health Center",
+ "kind": "Health center",
+ "family": "health",
+ "address": "1490 Mason St",
+ "lat": 37.7973,
+ "lon": -122.411,
+ "owning_dept": {
+  "name": "Public Health",
+  "code": "DPH"
+ },
+ "photo": null,
+ "photo_credit": null,
+ "summary_en": null,
+ "published": false,
+ "money": {
+  "budget_line": {
+   "code": "DPH",
+   "name": "Public Health",
+   "total_usd": 3185025572.0,
+   "fiscal_year": 2025
+  },
+  "contracts": [],
+  "grants": []
+ },
+ "documents": [
+  {
+   "identifier": "agenda2003sanf_3",
+   "title": "Agenda",
+   "creator": "San Francisco (Calif.). Immigrant Rights Commission",
+   "year": 1998,
+   "pool": "sfpl",
+   "matched_alias": "Chinatown Public Health Center",
+   "snippet": "Community Health Network such as «Chinatown Public Health Center», and other District Health Centers",
+   "url": "https://archive.org/details/agenda2003sanf_3",
+   "deep_link": "https://archive.org/details/agenda2003sanf_3?q=Chinatown+Public+Health+Center",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+  },
+  {
+   "identifier": "sanfranciscochil1991ahma",
+   "title": "San Francisco childhood lead prevention program : data evaluation, 1991-1997",
+   "creator": "Ahmad, Haroon,Martin, Christine,San Francisco (Calif.). Dept. of Public Health",
+   "year": 1991,
+   "pool": "sfpl",
+   "matched_alias": "Chinatown Public Health Center",
+   "snippet": "was most successful in the «Chinatown Public Health Center», where the Asian immigrant community",
+   "url": "https://archive.org/details/sanfranciscochil1991ahma",
+   "deep_link": "https://archive.org/details/sanfranciscochil1991ahma?q=Chinatown+Public+Health+Center",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+  },
+  {
+   "identifier": "resourceguideofs1997sanf",
+   "title": "A resource guide of services for seniors in San Francisco",
+   "creator": "San Francisco, CA : Department of Public Health, Office of Senior Information, Referral and Health Promotion",
+   "year": null,
+   "pool": "sfpl",
+   "matched_alias": "Chinatown Public Health Center",
+   "snippet": "Beach Clinical Services C22 «Chinatown Public Health Center» C16 Chinese Newcomers Service",
+   "url": "https://archive.org/details/resourceguideofs1997sanf",
+   "deep_link": "https://archive.org/details/resourceguideofs1997sanf?q=Chinatown+Public+Health+Center",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+  },
+  {
+   "identifier": "sanfranciscodepa200003sanf",
+   "title": "The San Francisco Department of Public Health annual report",
+   "creator": "San Francisco (Calif.). Dept. of Public Health",
+   "year": null,
+   "pool": "sfpl",
+   "matched_alias": "Chinatown Public Health Center",
+   "snippet": "MeditalSeivice^/ Wedge Program/ Tobacco Control «Chinatown Public Health Center»/ Newcomers Program Chinatown/North",
+   "url": "https://archive.org/details/sanfranciscodepa200003sanf",
+   "deep_link": "https://archive.org/details/sanfranciscodepa200003sanf?q=Chinatown+Public+Health+Center",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+  },
+  {
+   "identifier": "sanfranciscodepa1997sanf",
+   "title": "The San Francisco Department of Public Health annual report",
+   "creator": "San Francisco (Calif.). Department of Public Health",
+   "year": null,
+   "pool": "sfpl",
+   "matched_alias": "Chinatown Public Health Center",
+   "snippet": "diabetes and hypertension. ♦ «Chinatown Public Health Center» published the bilingual Healthy",
+   "url": "https://archive.org/details/sanfranciscodepa1997sanf",
+   "deep_link": "https://archive.org/details/sanfranciscodepa1997sanf?q=Chinatown+Public+Health+Center",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+  },
+  {
+   "identifier": "sanfranciscodepa19962000sanf",
+   "title": "The San Francisco Department of Public Health annual report",
+   "creator": "San Francisco (Calif.). Dept. of Public Health",
+   "year": null,
+   "pool": "sfpl",
+   "matched_alias": "Chinatown Public Health Center",
+   "snippet": "community.\" Dr. Ron Lee, Dentist, «Chinatown Public Health Center» \"I love working at Laguna Honda",
+   "url": "https://archive.org/details/sanfranciscodepa19962000sanf",
+   "deep_link": "https://archive.org/details/sanfranciscodepa19962000sanf?q=Chinatown+Public+Health+Center",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+  },
+  {
+   "identifier": "minutes2000sanf",
+   "title": "Minutes",
+   "creator": "San Francisco (Calif.). Health Commission",
+   "year": null,
+   "pool": "sfpl",
+   "matched_alias": "Chinatown Public Health Center",
+   "snippet": "HEALTH NETWORK «Chinatown Public Health Center» «Chinatown Public Health Center» was well represented",
+   "url": "https://archive.org/details/minutes2000sanf",
+   "deep_link": "https://archive.org/details/minutes2000sanf?q=Chinatown+Public+Health+Center",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+  },
+  {
+   "identifier": "agenda2008sanf",
+   "title": "Agenda",
+   "creator": "San Francisco (Calif.). Health Commission",
+   "year": null,
+   "pool": "sfpl",
+   "matched_alias": "Chinatown Public Health Center",
+   "snippet": "this exciting event. WE CAN! «Chinatown Public Health Center» (CPHC) is kicking off WE CAN",
+   "url": "https://archive.org/details/agenda2008sanf",
+   "deep_link": "https://archive.org/details/agenda2008sanf?q=Chinatown+Public+Health+Center",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+  },
+  {
+   "identifier": "minutes2007sanf",
+   "title": "Minutes",
+   "creator": "San Francisco (Calif.). Health Commission",
+   "year": null,
+   "pool": "sfpl",
+   "matched_alias": "Chinatown Public Health Center",
+   "snippet": "Wong, nutrition manager from «Chinatown Public Health Center» has written a 50 page bilingual",
+   "url": "https://archive.org/details/minutes2007sanf",
+   "deep_link": "https://archive.org/details/minutes2007sanf?q=Chinatown+Public+Health+Center",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+  },
+  {
+   "identifier": "minutes2003sanf",
+   "title": "Minutes",
+   "creator": "San Francisco (Calif.). Health Commission",
+   "year": null,
+   "pool": "sfpl",
+   "matched_alias": "Chinatown Public Health Center",
+   "snippet": "Commission not to cut services at «Chinatown Public Health Center». Health Commission Minutes February",
+   "url": "https://archive.org/details/minutes2003sanf",
+   "deep_link": "https://archive.org/details/minutes2003sanf?q=Chinatown+Public+Health+Center",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+  },
+  {
+   "identifier": "minutes200002sanf",
+   "title": "Minutes",
+   "creator": "San Francisco (Calif.). Health Commission. Joint Conference Committee for Community Health Network",
+   "year": null,
+   "pool": "sfpl",
+   "matched_alias": "Chinatown Public Health Center",
+   "snippet": "Silver Avenue Family Health Center «Chinatown Public Health Center» Ocean Park Health Center Potrero",
+   "url": "https://archive.org/details/minutes200002sanf",
+   "deep_link": "https://archive.org/details/minutes200002sanf?q=Chinatown+Public+Health+Center",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+  },
+  {
+   "identifier": "agenda2010sanf_7",
+   "title": "Agenda",
+   "creator": "San Francisco (Calif.). Health Commission",
+   "year": null,
+   "pool": "sfpl",
+   "matched_alias": "Chinatown Public Health Center",
+   "snippet": "Tiger in a Healthy Way The «Chinatown Public Health Center» celebrated the Year of the Tiger",
+   "url": "https://archive.org/details/agenda2010sanf_7",
+   "deep_link": "https://archive.org/details/agenda2010sanf_7?q=Chinatown+Public+Health+Center",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+  },
+  {
+   "identifier": "citycountyofsanf5200sanf",
+   "title": "City and County of San Francisco voter information pamphlet and sample ballot",
+   "creator": "San Francisco, CA : Department of Elections, City and County of San Francisco",
+   "year": null,
+   "pool": "sfpl",
+   "matched_alias": "Chinatown Public Health Center",
+   "snippet": "682-1972 or 682-1963 in English. • «Chinatown Public Health Center»: Offers one to one assistance",
+   "url": "https://archive.org/details/citycountyofsanf5200sanf",
+   "deep_link": "https://archive.org/details/citycountyofsanf5200sanf?q=Chinatown+Public+Health+Center",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+  },
+  {
+   "identifier": "minutes99sanf",
+   "title": "Minutes",
+   "creator": "San Francisco (Calif.). Health Commission",
+   "year": null,
+   "pool": "sfpl",
+   "matched_alias": "Chinatown Public Health Center",
+   "snippet": "accomplishment. «Chinatown Public Health Center» CHN's «Chinatown Public Health Center» will be sponsoring",
+   "url": "https://archive.org/details/minutes99sanf",
+   "deep_link": "https://archive.org/details/minutes99sanf?q=Chinatown+Public+Health+Center",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+  }
+ ],
+ "dept_shelf": [
+  {
+   "identifier": "performanceeffic202008san",
+   "title": "Performance and efficiency review : Department of Public Health : Controller's Office analysis 2005-2008",
+   "year": 2005,
+   "pool": "sfpl",
+   "url": "https://archive.org/details/performanceeffic202008san"
+  },
+  {
+   "identifier": "annualreportofde192425sanf",
+   "title": "Annual report of the Department of Public Health, San Francisco, California",
+   "year": 1925,
+   "pool": "sfpl",
+   "url": "https://archive.org/details/annualreportofde192425sanf"
+  },
+  {
+   "identifier": "annualsalaryord197879sanf",
+   "title": "Annual salary ordinance",
+   "year": null,
+   "pool": "sfpl",
+   "url": "https://archive.org/details/annualsalaryord197879sanf"
+  },
+  {
+   "identifier": "annualsalaryord197576sanf",
+   "title": "Annual salary ordinance",
+   "year": null,
+   "pool": "sfpl",
+   "url": "https://archive.org/details/annualsalaryord197576sanf"
+  },
+  {
+   "identifier": "weeklybulletin1968sanf",
+   "title": "Weekly bulletin",
+   "year": null,
+   "pool": "sfpl",
+   "url": "https://archive.org/details/weeklybulletin1968sanf"
+  },
+  {
+   "identifier": "15minutes1988sanf",
+   "title": "Minutes",
+   "year": null,
+   "pool": "sfpl",
+   "url": "https://archive.org/details/15minutes1988sanf"
+  }
+ ],
+ "sources": [
+  {
+   "label": "City budget & payments",
+   "note": "SF Controller open data (budget, vouchers, contracts)"
+  },
+  {
+   "label": "Historical documents",
+   "note": "Internet Archive — SFPL partnership scans + Democracy's Library"
+  }
+ ],
+ "_gate": {
+  "has_photo": false,
+  "n_documents": 14,
+  "n_money_links": 1,
+  "meets_pre_summary": false
+ }
+}

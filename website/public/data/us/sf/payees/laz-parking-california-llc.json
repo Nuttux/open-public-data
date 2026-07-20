@@ -1,0 +1,70 @@
+{
+ "generated_at": "2026-07-20T22:34:47.736462+00:00",
+ "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
+ "as_of": "2026-07-13T13:40:40+00:00",
+ "unit": "USD",
+ "slug": "laz-parking-california-llc",
+ "name": "Laz Parking California LLC",
+ "kind": "supplier",
+ "is_non_profit": false,
+ "total_paid_usd": 188085898.51,
+ "n_years": 15,
+ "first_year": 2012,
+ "last_year": 2026,
+ "by_year": {
+  "2012": 1209379.7,
+  "2013": 5085004.7,
+  "2014": 8581846.1,
+  "2015": 8504520.6,
+  "2016": 8618504.7,
+  "2017": 9534784.9,
+  "2018": 8049834.59,
+  "2019": 13829720.27,
+  "2020": 11822986.96,
+  "2021": 7106291.52,
+  "2022": 10266821.91,
+  "2023": 13931728.86,
+  "2024": 27001096.23,
+  "2025": 26139444.44,
+  "2026": 28403933.03
+ },
+ "top_departments": [
+  "MTA Municipal Transprtn Agncy"
+ ],
+ "contracts_held": [
+  {
+   "contract_no": "1000028026",
+   "title": "Management of Group A Parking",
+   "department": "MTA Municipal Transprtn Agncy",
+   "department_code": "MTA",
+   "agreed_usd": 189000000.0,
+   "paid_usd": 47640270.26,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000026569",
+   "title": "2022-13-Coin Collection",
+   "department": "MTA Municipal Transprtn Agncy",
+   "department_code": "MTA",
+   "agreed_usd": 50798833.0,
+   "paid_usd": 16037089.79,
+   "sole_source": false
+  }
+ ],
+ "n_contracts_held": 2,
+ "variants": [
+  {
+   "name": "LAZ PARKING CALIFORNIA LLC",
+   "total": 188085898.51
+  }
+ ],
+ "n_variants": 1,
+ "merges": [],
+ "source": {
+  "name": "Vendor Payments (Vouchers)",
+  "dataset_id": "n9pm-xkyq",
+  "source_url": "https://data.sfgov.org/d/n9pm-xkyq",
+  "attribution": "SF Controller's Office",
+  "rows_updated_at": "2026-07-13T13:40:40+00:00"
+ }
+}

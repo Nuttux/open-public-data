@@ -1,0 +1,114 @@
+{
+ "generated_at": "2026-07-20T22:34:47.729159+00:00",
+ "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
+ "as_of": "2026-07-13T13:40:40+00:00",
+ "unit": "USD",
+ "slug": "clark-construction-group-calif-lp",
+ "name": "Clark Construction Group - Calif Lp",
+ "kind": "supplier",
+ "is_non_profit": false,
+ "total_paid_usd": 605818052.45,
+ "n_years": 14,
+ "first_year": 2014,
+ "last_year": 2027,
+ "by_year": {
+  "2014": 174574.9,
+  "2015": 763537.9,
+  "2016": 4199092.5,
+  "2017": 35902015.7,
+  "2018": 4407764.08,
+  "2019": 61711950.84,
+  "2020": 54917663.7,
+  "2021": 83074762.29,
+  "2022": 127564668.55,
+  "2023": 197842.87,
+  "2024": 644200.5,
+  "2025": 31400430.85,
+  "2026": 200389362.73,
+  "2027": 470185.04
+ },
+ "top_departments": [
+  "DPW GSA - Public Works"
+ ],
+ "contracts_held": [
+  {
+   "contract_no": "1000027086",
+   "title": "CDD Campus at 2000 Marin",
+   "department": "PUC Public Utilities Commsn",
+   "department_code": "PUC",
+   "agreed_usd": 305834818.0,
+   "paid_usd": 424617926.76,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000032477",
+   "title": "11918.66-DBCargoBldg626.1",
+   "department": "AIR Airport Commission",
+   "department_code": "AIR",
+   "agreed_usd": 104119390.0,
+   "paid_usd": 54690412.01,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000030850",
+   "title": "ZSFG Chlrs & Coolng Towers",
+   "department": "DPW Public Works",
+   "department_code": "DPW",
+   "agreed_usd": 39677214.39,
+   "paid_usd": 32277630.33,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000036059",
+   "title": "India Basin Shrln Prk",
+   "department": "DPW Public Works",
+   "department_code": "DPW",
+   "agreed_usd": 31978133.0,
+   "paid_usd": 28713857.84,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000032743",
+   "title": "SEWP Control Plant SEP-7",
+   "department": "PUC Public Utilities Commsn",
+   "department_code": "PUC",
+   "agreed_usd": 85677183.0,
+   "paid_usd": 11539266.33,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000030080",
+   "title": "Ingleside Police Stn Repl",
+   "department": "DPW Public Works",
+   "department_code": "DPW",
+   "agreed_usd": 67668300.0,
+   "paid_usd": 284506.0,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000035624",
+   "title": "Millbrae Campus Improvemnt",
+   "department": "PUC Public Utilities Commsn",
+   "department_code": "PUC",
+   "agreed_usd": 268907944.0,
+   "paid_usd": 76000.0,
+   "sole_source": false
+  }
+ ],
+ "n_contracts_held": 7,
+ "variants": [
+  {
+   "name": "CLARK CONSTRUCTION GROUP - CALIF LP",
+   "total": 605818052.45
+  }
+ ],
+ "n_variants": 1,
+ "merges": [],
+ "source": {
+  "name": "Vendor Payments (Vouchers)",
+  "dataset_id": "n9pm-xkyq",
+  "source_url": "https://data.sfgov.org/d/n9pm-xkyq",
+  "attribution": "SF Controller's Office",
+  "rows_updated_at": "2026-07-13T13:40:40+00:00"
+ }
+}

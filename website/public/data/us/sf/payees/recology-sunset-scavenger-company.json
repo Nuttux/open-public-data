@@ -1,0 +1,57 @@
+{
+ "generated_at": "2026-07-20T22:34:47.736570+00:00",
+ "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
+ "as_of": "2026-07-13T13:40:40+00:00",
+ "unit": "USD",
+ "slug": "recology-sunset-scavenger-company",
+ "name": "Recology Sunset Scavenger Company",
+ "kind": "supplier",
+ "is_non_profit": false,
+ "total_paid_usd": 185650998.32,
+ "n_years": 21,
+ "first_year": 2007,
+ "last_year": 2027,
+ "by_year": {
+  "2007": 6463615.7,
+  "2008": 9741091.0,
+  "2009": 8357923.4,
+  "2010": 7657979.5,
+  "2011": 7137443.5,
+  "2012": 8439449.0,
+  "2013": 7338238.9,
+  "2014": 8617571.3,
+  "2015": 7709761.5,
+  "2016": 8616846.6,
+  "2017": 10159124.8,
+  "2018": 8505859.16,
+  "2019": 12615320.98,
+  "2020": 12701561.71,
+  "2021": 11021474.96,
+  "2022": 7859784.26,
+  "2023": 16627157.14,
+  "2024": 13606266.89,
+  "2025": 10020124.34,
+  "2026": 2454127.98,
+  "2027": 275.7
+ },
+ "top_departments": [
+  "WWE Wastewater Enterprise"
+ ],
+ "contracts_held": [],
+ "n_contracts_held": 0,
+ "variants": [
+  {
+   "name": "RECOLOGY SUNSET SCAVENGER COMPANY",
+   "total": 185650998.32
+  }
+ ],
+ "n_variants": 1,
+ "merges": [],
+ "source": {
+  "name": "Vendor Payments (Vouchers)",
+  "dataset_id": "n9pm-xkyq",
+  "source_url": "https://data.sfgov.org/d/n9pm-xkyq",
+  "attribution": "SF Controller's Office",
+  "rows_updated_at": "2026-07-13T13:40:40+00:00"
+ }
+}

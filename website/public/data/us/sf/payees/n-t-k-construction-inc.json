@@ -1,0 +1,93 @@
+{
+ "generated_at": "2026-07-20T22:34:47.732010+00:00",
+ "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
+ "as_of": "2026-07-13T13:40:40+00:00",
+ "unit": "USD",
+ "slug": "n-t-k-construction-inc",
+ "name": "N T K Construction Inc",
+ "kind": "supplier",
+ "is_non_profit": false,
+ "total_paid_usd": 299455894.78,
+ "n_years": 20,
+ "first_year": 2007,
+ "last_year": 2026,
+ "by_year": {
+  "2007": 5471592.0,
+  "2008": 8605073.9,
+  "2009": 11371545.1,
+  "2010": 13600285.5,
+  "2011": 20909836.2,
+  "2012": 15975940.6,
+  "2013": 13934485.9,
+  "2014": 26440756.6,
+  "2015": 8069825.6,
+  "2016": 12474569.9,
+  "2017": 21843953.7,
+  "2018": 15696122.07,
+  "2019": 1217483.36,
+  "2020": 7190182.58,
+  "2021": 28599443.59,
+  "2022": 4386489.69,
+  "2023": 12213189.72,
+  "2024": 37947544.95,
+  "2025": 21851757.65,
+  "2026": 11655816.17
+ },
+ "top_departments": [
+  "WWE Wastewater Enterprise"
+ ],
+ "contracts_held": [
+  {
+   "contract_no": "1000023831",
+   "title": "1308R L Taraval Improvemen",
+   "department": "MTA Municipal Transprtn Agncy",
+   "department_code": "MTA",
+   "agreed_usd": 65195151.0,
+   "paid_usd": 63162012.15,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000034587",
+   "title": "Phase I ST Infrastructure",
+   "department": "DPW Public Works",
+   "department_code": "DPW",
+   "agreed_usd": 1908165.56,
+   "paid_usd": 1662886.53,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000034559",
+   "title": "13TH Safety Impr Proj",
+   "department": "DPW Public Works",
+   "department_code": "DPW",
+   "agreed_usd": 4080923.04,
+   "paid_usd": 1657103.59,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000028455",
+   "title": "1322 Job Order Contract",
+   "department": "MTA Municipal Transprtn Agncy",
+   "department_code": "MTA",
+   "agreed_usd": 5000000.0,
+   "paid_usd": 1571893.85,
+   "sole_source": false
+  }
+ ],
+ "n_contracts_held": 4,
+ "variants": [
+  {
+   "name": "N T K CONSTRUCTION INC",
+   "total": 299455894.78
+  }
+ ],
+ "n_variants": 1,
+ "merges": [],
+ "source": {
+  "name": "Vendor Payments (Vouchers)",
+  "dataset_id": "n9pm-xkyq",
+  "source_url": "https://data.sfgov.org/d/n9pm-xkyq",
+  "attribution": "SF Controller's Office",
+  "rows_updated_at": "2026-07-13T13:40:40+00:00"
+ }
+}

@@ -1,0 +1,377 @@
+{
+ "generated_at": "2026-07-20T22:34:47.737023+00:00",
+ "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
+ "as_of": "2026-07-13T13:40:40+00:00",
+ "unit": "USD",
+ "slug": "self-help-for-the-elderly",
+ "name": "Self-help for the Elderly",
+ "kind": "nonprofit",
+ "is_non_profit": true,
+ "total_paid_usd": 179183051.13,
+ "n_years": 21,
+ "first_year": 2007,
+ "last_year": 2027,
+ "by_year": {
+  "2007": 3175787.8,
+  "2008": 3938177.8,
+  "2009": 3672531.3,
+  "2010": 3056551.9,
+  "2011": 3661991.5,
+  "2012": 3923819.5,
+  "2013": 4008808.2,
+  "2014": 4244369.3,
+  "2015": 5400146.9,
+  "2016": 6308613.9,
+  "2017": 7152275.7,
+  "2018": 7407309.67,
+  "2019": 10466998.7,
+  "2020": 9158076.55,
+  "2021": 13278220.01,
+  "2022": 14390010.71,
+  "2023": 16919675.93,
+  "2024": 19515344.45,
+  "2025": 19541546.86,
+  "2026": 19893982.8,
+  "2027": 68811.65
+ },
+ "top_departments": [
+  "HSA Human Services Agency"
+ ],
+ "contracts_held": [
+  {
+   "contract_no": "1000036749",
+   "title": "HDM for Older Adults",
+   "department": "HSA Human Services Agency",
+   "department_code": "HSA",
+   "agreed_usd": 13871295.0,
+   "paid_usd": 2510283.1,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000035918",
+   "title": "Congregate Nutrition Services",
+   "department": "HSA Human Services Agency",
+   "department_code": "HSA",
+   "agreed_usd": 11125299.0,
+   "paid_usd": 2284147.32,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000029894",
+   "title": "Senior Escort Services",
+   "department": "HSA Human Services Agency",
+   "department_code": "HSA",
+   "agreed_usd": 3344000.0,
+   "paid_usd": 2083890.16,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000033480",
+   "title": "Housing Subsidies",
+   "department": "HSA Human Services Agency",
+   "department_code": "HSA",
+   "agreed_usd": 4931302.0,
+   "paid_usd": 1751241.1,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000029913",
+   "title": "Case Management",
+   "department": "HSA Human Services Agency",
+   "department_code": "HSA",
+   "agreed_usd": 2764445.0,
+   "paid_usd": 1745270.31,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000036311",
+   "title": "Support at Home",
+   "department": "HSA Human Services Agency",
+   "department_code": "HSA",
+   "agreed_usd": 8105662.0,
+   "paid_usd": 1218081.1,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000033300",
+   "title": "HICAP",
+   "department": "HSA Human Services Agency",
+   "department_code": "HSA",
+   "agreed_usd": 2022868.0,
+   "paid_usd": 763545.41,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000036464",
+   "title": "Com Centered Grocery Dis",
+   "department": "HSA Human Services Agency",
+   "department_code": "HSA",
+   "agreed_usd": 4405500.0,
+   "paid_usd": 763423.44,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000028966",
+   "title": "Workforce Support Program",
+   "department": "HSA Human Services Agency",
+   "department_code": "HSA",
+   "agreed_usd": 1141364.0,
+   "paid_usd": 661267.9,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000033479",
+   "title": "ADCRC",
+   "department": "HSA Human Services Agency",
+   "department_code": "HSA",
+   "agreed_usd": 680570.0,
+   "paid_usd": 643610.51,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000029579",
+   "title": "Residential Care Facilities",
+   "department": "HSA Human Services Agency",
+   "department_code": "HSA",
+   "agreed_usd": 860139.0,
+   "paid_usd": 590602.95,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000035920",
+   "title": "Choosing Healthy Appetizing Me",
+   "department": "HSA Human Services Agency",
+   "department_code": "HSA",
+   "agreed_usd": 2620371.0,
+   "paid_usd": 588381.08,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000033495",
+   "title": "DAS- FY25-27 - Digital Literacy Training",
+   "department": "HSA Human Services Agency",
+   "department_code": "HSA",
+   "agreed_usd": 1093326.0,
+   "paid_usd": 535256.22,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000029895",
+   "title": "Neighborhood Based Programs an",
+   "department": "HSA Human Services Agency",
+   "department_code": "HSA",
+   "agreed_usd": 638000.0,
+   "paid_usd": 407444.49,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000033482",
+   "title": "Naturalization 24-28",
+   "department": "HSA Human Services Agency",
+   "department_code": "HSA",
+   "agreed_usd": 964846.0,
+   "paid_usd": 346007.62,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000029963",
+   "title": "Community Services-Geneva",
+   "department": "HSA Human Services Agency",
+   "department_code": "HSA",
+   "agreed_usd": 539761.0,
+   "paid_usd": 341140.68,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000029946",
+   "title": "Community Services-Jackie Chan",
+   "department": "HSA Human Services Agency",
+   "department_code": "HSA",
+   "agreed_usd": 503791.0,
+   "paid_usd": 334615.36,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000029892",
+   "title": "Peer Ambassador",
+   "department": "HSA Human Services Agency",
+   "department_code": "HSA",
+   "agreed_usd": 744564.0,
+   "paid_usd": 319930.76,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000033464",
+   "title": "ADP",
+   "department": "HSA Human Services Agency",
+   "department_code": "HSA",
+   "agreed_usd": 1656524.0,
+   "paid_usd": 279938.46,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000029898",
+   "title": "Intergenerational",
+   "department": "HSA Human Services Agency",
+   "department_code": "HSA",
+   "agreed_usd": 420812.0,
+   "paid_usd": 273725.84,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000029962",
+   "title": "Community Services-John King",
+   "department": "HSA Human Services Agency",
+   "department_code": "HSA",
+   "agreed_usd": 439930.0,
+   "paid_usd": 269014.18,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000029957",
+   "title": "Community Services-SouthSunset",
+   "department": "HSA Human Services Agency",
+   "department_code": "HSA",
+   "agreed_usd": 435120.0,
+   "paid_usd": 259643.18,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000029960",
+   "title": "Community Services-West Portal",
+   "department": "HSA Human Services Agency",
+   "department_code": "HSA",
+   "agreed_usd": 439076.0,
+   "paid_usd": 252237.36,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000029958",
+   "title": "Community Services-Mendelsohn",
+   "department": "HSA Human Services Agency",
+   "department_code": "HSA",
+   "agreed_usd": 450886.0,
+   "paid_usd": 251020.58,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000029956",
+   "title": "Community Services-Manilatown",
+   "department": "HSA Human Services Agency",
+   "department_code": "HSA",
+   "agreed_usd": 409363.0,
+   "paid_usd": 247997.76,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000029959",
+   "title": "Community Services-Woolf House",
+   "department": "HSA Human Services Agency",
+   "department_code": "HSA",
+   "agreed_usd": 442196.0,
+   "paid_usd": 242538.68,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000029955",
+   "title": "Community Services-Lady Shaw",
+   "department": "HSA Human Services Agency",
+   "department_code": "HSA",
+   "agreed_usd": 363264.0,
+   "paid_usd": 229801.65,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000033301",
+   "title": "MIPPA-24-28",
+   "department": "HSA Human Services Agency",
+   "department_code": "HSA",
+   "agreed_usd": 337035.0,
+   "paid_usd": 124043.08,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000037291",
+   "title": "Community Engage&Support",
+   "department": "ADM GSA - City Administrator",
+   "department_code": "ADM",
+   "agreed_usd": 1200000.0,
+   "paid_usd": 92369.75,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000029642",
+   "title": "Free Video doorbells",
+   "department": "HSA Human Services Agency",
+   "department_code": "HSA",
+   "agreed_usd": 192500.0,
+   "paid_usd": 75655.7,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000036007",
+   "title": "242095-24",
+   "department": "MYR Mayor",
+   "department_code": "MYR",
+   "agreed_usd": 147205.0,
+   "paid_usd": 69248.17,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000035915",
+   "title": "Short-Term Homemaker Services",
+   "department": "HSA Human Services Agency",
+   "department_code": "HSA",
+   "agreed_usd": 320162.0,
+   "paid_usd": 53935.18,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000035914",
+   "title": "Short Term Homecare-CHORE",
+   "department": "HSA Human Services Agency",
+   "department_code": "HSA",
+   "agreed_usd": 316219.0,
+   "paid_usd": 48115.7,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000035917",
+   "title": "Short-Term Personal Care Servi",
+   "department": "HSA Human Services Agency",
+   "department_code": "HSA",
+   "agreed_usd": 290668.0,
+   "paid_usd": 45831.53,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000035919",
+   "title": "Congregate Nutrition Services",
+   "department": "HSA Human Services Agency",
+   "department_code": "HSA",
+   "agreed_usd": 85074.0,
+   "paid_usd": 7637.25,
+   "sole_source": false
+  }
+ ],
+ "n_contracts_held": 35,
+ "variants": [
+  {
+   "name": "SELF-HELP FOR THE ELDERLY",
+   "total": 130639977.33
+  },
+  {
+   "name": "SELF HELP FOR THE ELDERLY",
+   "total": 48543073.8
+  }
+ ],
+ "n_variants": 2,
+ "merges": [],
+ "source": {
+  "name": "Vendor Payments (Vouchers)",
+  "dataset_id": "n9pm-xkyq",
+  "source_url": "https://data.sfgov.org/d/n9pm-xkyq",
+  "attribution": "SF Controller's Office",
+  "rows_updated_at": "2026-07-13T13:40:40+00:00"
+ }
+}

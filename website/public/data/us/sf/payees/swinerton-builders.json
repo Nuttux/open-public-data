@@ -1,0 +1,68 @@
+{
+ "generated_at": "2026-07-20T22:34:47.741990+00:00",
+ "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
+ "as_of": "2026-07-13T13:40:40+00:00",
+ "unit": "USD",
+ "slug": "swinerton-builders",
+ "name": "Swinerton Builders",
+ "kind": "supplier",
+ "is_non_profit": false,
+ "total_paid_usd": 132418020.54,
+ "n_years": 13,
+ "first_year": 2007,
+ "last_year": 2026,
+ "by_year": {
+  "2007": 1171924.8,
+  "2008": 759064.2,
+  "2015": 21089.0,
+  "2017": 12818.9,
+  "2018": 43779.07,
+  "2019": 27044.29,
+  "2020": 301728.08,
+  "2021": 548766.52,
+  "2022": 435789.02,
+  "2023": 13799637.12,
+  "2024": 23174056.01,
+  "2025": 46637211.71,
+  "2026": 45485111.82
+ },
+ "top_departments": [
+  "DPW Public Works"
+ ],
+ "contracts_held": [
+  {
+   "contract_no": "1000026872",
+   "title": "Gene Friend Rcrtn Ctr Rbd",
+   "department": "REC Recreation & Park Commsn",
+   "department_code": "REC",
+   "agreed_usd": 140335045.23,
+   "paid_usd": 328712962.85,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000015811",
+   "title": "40201-1819-AS ND CM -Swin",
+   "department": "REC Recreation & Park Commsn",
+   "department_code": "REC",
+   "agreed_usd": 987500.0,
+   "paid_usd": 248837.54,
+   "sole_source": false
+  }
+ ],
+ "n_contracts_held": 2,
+ "variants": [
+  {
+   "name": "SWINERTON BUILDERS",
+   "total": 132418020.54
+  }
+ ],
+ "n_variants": 1,
+ "merges": [],
+ "source": {
+  "name": "Vendor Payments (Vouchers)",
+  "dataset_id": "n9pm-xkyq",
+  "source_url": "https://data.sfgov.org/d/n9pm-xkyq",
+  "attribution": "SF Controller's Office",
+  "rows_updated_at": "2026-07-13T13:40:40+00:00"
+ }
+}

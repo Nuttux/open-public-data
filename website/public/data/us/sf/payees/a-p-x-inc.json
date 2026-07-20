@@ -1,0 +1,67 @@
+{
+ "generated_at": "2026-07-20T22:34:47.728346+00:00",
+ "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
+ "as_of": "2026-07-13T13:40:40+00:00",
+ "unit": "USD",
+ "slug": "a-p-x-inc",
+ "name": "A P X Inc",
+ "kind": "supplier",
+ "is_non_profit": false,
+ "total_paid_usd": 721779751.45,
+ "n_years": 21,
+ "first_year": 2007,
+ "last_year": 2027,
+ "by_year": {
+  "2007": 3353059.6,
+  "2008": 4794921.6,
+  "2009": 4103102.9,
+  "2010": 4403459.8,
+  "2011": 4405613.9,
+  "2012": 3425328.4,
+  "2013": 3550398.6,
+  "2014": 4170298.7,
+  "2015": 4298672.1,
+  "2016": 20403615.0,
+  "2017": 21157462.7,
+  "2018": 28747447.45,
+  "2019": 36147047.22,
+  "2020": 43870964.26,
+  "2021": 47802718.62,
+  "2022": 104436314.34,
+  "2023": 161641691.12,
+  "2024": 80853096.66,
+  "2025": 68650278.05,
+  "2026": 69798173.17,
+  "2027": 1766087.26
+ },
+ "top_departments": [
+  "HHP Hetch Hetchy Water & Power"
+ ],
+ "contracts_held": [
+  {
+   "contract_no": "1000025516",
+   "title": "Cpsf-Schedul Coordin Ser",
+   "department": "PUC Public Utilities Commsn",
+   "department_code": "PUC",
+   "agreed_usd": 1261492021.8,
+   "paid_usd": 389541763.32,
+   "sole_source": false
+  }
+ ],
+ "n_contracts_held": 1,
+ "variants": [
+  {
+   "name": "A P X INC",
+   "total": 721779751.45
+  }
+ ],
+ "n_variants": 1,
+ "merges": [],
+ "source": {
+  "name": "Vendor Payments (Vouchers)",
+  "dataset_id": "n9pm-xkyq",
+  "source_url": "https://data.sfgov.org/d/n9pm-xkyq",
+  "attribution": "SF Controller's Office",
+  "rows_updated_at": "2026-07-13T13:40:40+00:00"
+ }
+}

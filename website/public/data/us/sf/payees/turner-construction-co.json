@@ -1,0 +1,66 @@
+{
+ "generated_at": "2026-07-20T22:34:47.726694+00:00",
+ "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
+ "as_of": "2026-07-13T13:40:40+00:00",
+ "unit": "USD",
+ "slug": "turner-construction-co",
+ "name": "Turner Construction Co",
+ "kind": "supplier",
+ "is_non_profit": false,
+ "total_paid_usd": 1937420138.12,
+ "n_years": 20,
+ "first_year": 2007,
+ "last_year": 2026,
+ "by_year": {
+  "2007": 79902427.1,
+  "2008": 60852598.8,
+  "2009": 135548536.0,
+  "2010": 132720720.7,
+  "2011": 178644865.4,
+  "2012": 33706724.7,
+  "2013": 72482934.3,
+  "2014": 35694252.2,
+  "2015": 25901985.3,
+  "2016": 46488151.3,
+  "2017": 83116159.3,
+  "2018": 22934261.85,
+  "2019": 29831935.37,
+  "2020": 40823315.92,
+  "2021": 95184519.72,
+  "2022": 1580866.98,
+  "2023": 7580365.76,
+  "2024": 108303533.61,
+  "2025": 306518262.04,
+  "2026": 439603721.77
+ },
+ "top_departments": [
+  "DPW GSA - Public Works"
+ ],
+ "contracts_held": [
+  {
+   "contract_no": "1000008346",
+   "title": "10071.76-DBT3West",
+   "department": "AIR Airport Commission",
+   "department_code": "AIR",
+   "agreed_usd": 1749812539.42,
+   "paid_usd": 1096240945.8,
+   "sole_source": false
+  }
+ ],
+ "n_contracts_held": 1,
+ "variants": [
+  {
+   "name": "TURNER CONSTRUCTION CO",
+   "total": 1937420138.12
+  }
+ ],
+ "n_variants": 1,
+ "merges": [],
+ "source": {
+  "name": "Vendor Payments (Vouchers)",
+  "dataset_id": "n9pm-xkyq",
+  "source_url": "https://data.sfgov.org/d/n9pm-xkyq",
+  "attribution": "SF Controller's Office",
+  "rows_updated_at": "2026-07-13T13:40:40+00:00"
+ }
+}

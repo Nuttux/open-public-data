@@ -1,0 +1,60 @@
+{
+ "generated_at": "2026-07-20T22:34:47.739859+00:00",
+ "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
+ "as_of": "2026-07-13T13:40:40+00:00",
+ "unit": "USD",
+ "slug": "bank-of-america-na",
+ "name": "Bank of America Na",
+ "kind": "fiscal_agent_debt_service",
+ "is_non_profit": false,
+ "total_paid_usd": 153523278.62,
+ "n_years": 20,
+ "first_year": 2007,
+ "last_year": 2026,
+ "by_year": {
+  "2007": 300416.1,
+  "2008": 1163856.0,
+  "2009": 2532945.4,
+  "2010": 8325236.1,
+  "2011": 3395903.3,
+  "2012": 5274009.1,
+  "2013": 5347610.7,
+  "2014": 7594290.0,
+  "2015": 8181075.8,
+  "2016": 54592570.9,
+  "2017": 30735276.5,
+  "2018": 3372824.52,
+  "2019": 3455990.36,
+  "2020": 3280190.75,
+  "2021": 3603233.8,
+  "2022": 2987341.58,
+  "2023": 2461006.1,
+  "2024": 2101031.54,
+  "2025": 2191418.77,
+  "2026": 2627051.3
+ },
+ "top_departments": [
+  "MYR Mayor"
+ ],
+ "contracts_held": [],
+ "n_contracts_held": 0,
+ "variants": [
+  {
+   "name": "BANK OF AMERICA NA",
+   "total": 149841289.62
+  },
+  {
+   "name": "BANK OF AMERICA",
+   "total": 3681989.0
+  }
+ ],
+ "n_variants": 2,
+ "merges": [],
+ "source": {
+  "name": "Vendor Payments (Vouchers)",
+  "dataset_id": "n9pm-xkyq",
+  "source_url": "https://data.sfgov.org/d/n9pm-xkyq",
+  "attribution": "SF Controller's Office",
+  "rows_updated_at": "2026-07-13T13:40:40+00:00"
+ }
+}

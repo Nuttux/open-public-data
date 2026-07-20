@@ -1,0 +1,51 @@
+{
+ "generated_at": "2026-07-20T22:34:47.733169+00:00",
+ "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
+ "as_of": "2026-07-13T13:40:40+00:00",
+ "unit": "USD",
+ "slug": "transbay-joint-powers-authority",
+ "name": "Transbay Joint Powers Authority",
+ "kind": "other",
+ "is_non_profit": false,
+ "total_paid_usd": 254392729.81,
+ "n_years": 15,
+ "first_year": 2010,
+ "last_year": 2027,
+ "by_year": {
+  "2010": 393679.3,
+  "2014": 2003542.0,
+  "2015": 2434044.0,
+  "2016": 1638599.6,
+  "2017": 8478761.5,
+  "2018": 14719030.38,
+  "2019": 12471534.53,
+  "2020": 22886472.98,
+  "2021": 39637588.59,
+  "2022": 29172212.27,
+  "2023": 28209557.78,
+  "2024": 30407912.33,
+  "2025": 26628076.78,
+  "2026": 25029986.83,
+  "2027": 10281730.94
+ },
+ "top_departments": [
+  "CII Commty Invest & Infrstrctr"
+ ],
+ "contracts_held": [],
+ "n_contracts_held": 0,
+ "variants": [
+  {
+   "name": "TRANSBAY JOINT POWERS AUTHORITY",
+   "total": 254392729.81
+  }
+ ],
+ "n_variants": 1,
+ "merges": [],
+ "source": {
+  "name": "Vendor Payments (Vouchers)",
+  "dataset_id": "n9pm-xkyq",
+  "source_url": "https://data.sfgov.org/d/n9pm-xkyq",
+  "attribution": "SF Controller's Office",
+  "rows_updated_at": "2026-07-13T13:40:40+00:00"
+ }
+}

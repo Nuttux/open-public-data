@@ -1,0 +1,48 @@
+{
+ "generated_at": "2026-07-20T22:34:47.725389+00:00",
+ "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
+ "as_of": "2026-07-13T13:40:40+00:00",
+ "unit": "USD",
+ "slug": "bank-of-america-nt-sa",
+ "name": "Bank of America Nt & Sa",
+ "kind": "fiscal_agent_debt_service",
+ "is_non_profit": false,
+ "total_paid_usd": 8034632091.61,
+ "n_years": 12,
+ "first_year": 2007,
+ "last_year": 2026,
+ "by_year": {
+  "2007": 2556614.7,
+  "2008": 1285607.8,
+  "2009": 1316580.4,
+  "2018": 1259934222.4,
+  "2019": 1240238794.08,
+  "2020": 1402058471.52,
+  "2021": 1372026371.14,
+  "2022": 1480139209.22,
+  "2023": 1264378790.49,
+  "2024": 4080246.83,
+  "2025": 3627821.3,
+  "2026": 2989361.73
+ },
+ "top_departments": [
+  "GEN General City - Unallocated"
+ ],
+ "contracts_held": [],
+ "n_contracts_held": 0,
+ "variants": [
+  {
+   "name": "BANK OF AMERICA NT & SA",
+   "total": 8034632091.61
+  }
+ ],
+ "n_variants": 1,
+ "merges": [],
+ "source": {
+  "name": "Vendor Payments (Vouchers)",
+  "dataset_id": "n9pm-xkyq",
+  "source_url": "https://data.sfgov.org/d/n9pm-xkyq",
+  "attribution": "SF Controller's Office",
+  "rows_updated_at": "2026-07-13T13:40:40+00:00"
+ }
+}

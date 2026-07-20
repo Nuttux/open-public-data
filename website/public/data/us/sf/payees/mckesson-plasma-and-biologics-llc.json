@@ -1,0 +1,54 @@
+{
+ "generated_at": "2026-07-20T22:34:47.738291+00:00",
+ "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
+ "as_of": "2026-07-13T13:40:40+00:00",
+ "unit": "USD",
+ "slug": "mckesson-plasma-and-biologics-llc",
+ "name": "Mckesson Plasma and Biologics LLC",
+ "kind": "supplier",
+ "is_non_profit": false,
+ "total_paid_usd": 169446681.73,
+ "n_years": 8,
+ "first_year": 2020,
+ "last_year": 2027,
+ "by_year": {
+  "2020": 13825.53,
+  "2021": 7175427.09,
+  "2022": 15415006.95,
+  "2023": 22853892.33,
+  "2024": 28547031.11,
+  "2025": 44567673.84,
+  "2026": 47294715.93,
+  "2027": 3579108.95
+ },
+ "top_departments": [
+  "DPH Public Health"
+ ],
+ "contracts_held": [
+  {
+   "contract_no": "1000013810",
+   "title": "Contracts, Pharmaceuticals",
+   "department": "DPH Public Health",
+   "department_code": "DPH",
+   "agreed_usd": 1466737824.0,
+   "paid_usd": 170303539.87,
+   "sole_source": false
+  }
+ ],
+ "n_contracts_held": 1,
+ "variants": [
+  {
+   "name": "MCKESSON PLASMA AND BIOLOGICS LLC",
+   "total": 169446681.73
+  }
+ ],
+ "n_variants": 1,
+ "merges": [],
+ "source": {
+  "name": "Vendor Payments (Vouchers)",
+  "dataset_id": "n9pm-xkyq",
+  "source_url": "https://data.sfgov.org/d/n9pm-xkyq",
+  "attribution": "SF Controller's Office",
+  "rows_updated_at": "2026-07-13T13:40:40+00:00"
+ }
+}

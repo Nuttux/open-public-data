@@ -1,0 +1,57 @@
+{
+ "generated_at": "2026-07-20T22:34:47.727772+00:00",
+ "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
+ "as_of": "2026-07-13T13:40:40+00:00",
+ "unit": "USD",
+ "slug": "united-healthcare-insurance-company",
+ "name": "United Healthcare Insurance Company",
+ "kind": "healthcare",
+ "is_non_profit": false,
+ "total_paid_usd": 896645899.64,
+ "n_years": 21,
+ "first_year": 2007,
+ "last_year": 2027,
+ "by_year": {
+  "2007": 2438971.2,
+  "2008": 2691298.9,
+  "2009": 2658121.7,
+  "2010": 2617481.7,
+  "2011": 2469185.6,
+  "2012": 2359560.6,
+  "2013": 2322965.3,
+  "2014": 2207622.1,
+  "2015": 2168998.3,
+  "2016": 2175815.3,
+  "2017": 1607356.1,
+  "2018": 101160149.75,
+  "2019": 111148452.32,
+  "2020": 117610270.01,
+  "2021": 128468525.76,
+  "2022": 119758403.0,
+  "2023": 103714574.5,
+  "2024": 121208266.96,
+  "2025": 67400429.51,
+  "2026": 429321.47,
+  "2027": 30129.56
+ },
+ "top_departments": [
+  "HSS Health Service System"
+ ],
+ "contracts_held": [],
+ "n_contracts_held": 0,
+ "variants": [
+  {
+   "name": "UNITED HEALTHCARE INSURANCE COMPANY",
+   "total": 896645899.64
+  }
+ ],
+ "n_variants": 1,
+ "merges": [],
+ "source": {
+  "name": "Vendor Payments (Vouchers)",
+  "dataset_id": "n9pm-xkyq",
+  "source_url": "https://data.sfgov.org/d/n9pm-xkyq",
+  "attribution": "SF Controller's Office",
+  "rows_updated_at": "2026-07-13T13:40:40+00:00"
+ }
+}

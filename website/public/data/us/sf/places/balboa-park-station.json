@@ -1,0 +1,221 @@
+{
+ "generated_at": "2026-07-20T22:30:00.123949+00:00",
+ "source_pipeline": "sf_place_candidates.json → sync_ia_sf.py + link_sf_places.py + fetch_sf_place_photos.py → export_sf_places.py",
+ "unit": "USD",
+ "slug": "balboa-park-station",
+ "name": "Balboa Park Station / Green Yard",
+ "kind": "Rail yard / station",
+ "family": "transit",
+ "address": "401 Geneva Ave",
+ "lat": 37.7216,
+ "lon": -122.4474,
+ "owning_dept": {
+  "name": "Municipal Transportation Agency",
+  "code": "MTA"
+ },
+ "photo": "/img/us/sf/places/balboa-park-station.jpg",
+ "photo_credit": {
+  "photo": "/img/us/sf/places/balboa-park-station.jpg",
+  "source": "Wikimedia Commons",
+  "file": "File:Two_trains_at_Balboa_Park_station,_July_2023.jpg",
+  "file_url": "https://commons.wikimedia.org/wiki/File:Two_trains_at_Balboa_Park_station,_July_2023.jpg",
+  "license": "CC BY-SA 4.0",
+  "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+  "author": "Pi.1415926535",
+  "fetched_at": "2026-07-20T22:29:08.959216+00:00"
+ },
+ "summary_en": "Archive documents cover Balboa Park Station and the adjacent Curtis E. Green (Light Rail) Center rail yard, including the Balboa Park Station Area Plan public review draft and DEIR comments-and-responses, a 2009 pedestrian and bicycle connection project, and Municipal Railway records placing the Green Light Rail Center at 425 Geneva Street (Geneva & San Jose Avenues). MTA notices reference Contract No. 1249 for Green Light Rail Center track replacement and an emergency switch replacement project, plus a 2011 notice on renaming the facility the Cameron Beach Yard. The station and yard are operated by the Municipal Transportation Agency, whose FY2025 budget line is $1.5B; no place-specific city contract appears in this data.",
+ "published": true,
+ "money": {
+  "budget_line": {
+   "code": "MTA",
+   "name": "Municipal Transportation Agency (Muni)",
+   "total_usd": 1517548716.0,
+   "fiscal_year": 2025
+  },
+  "contracts": [],
+  "grants": []
+ },
+ "documents": [
+  {
+   "identifier": "mitigatednegativ1820sanf",
+   "title": "Mitigated negative declaration : [1490 Ocean Avenue (aka 1446 Ocean Avenue)]",
+   "creator": "San Francisco (Calif.). Planning Dept",
+   "year": 2012,
+   "pool": "sfpl",
+   "matched_alias": "Balboa Park Station",
+   "snippet": "Avenue is within the «Balboa Park Station» Area Plan. The «Balboa Park Station» Area Plan area comprises",
+   "url": "https://archive.org/details/mitigatednegativ1820sanf",
+   "deep_link": "https://archive.org/details/mitigatednegativ1820sanf?q=Balboa+Park+Station",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+  },
+  {
+   "identifier": "balboaparkstatio2009sanf",
+   "title": "Balboa Park Station pedestrian and bicycle connection project : executive summary",
+   "creator": "San Francisco (Calif.). Municipal Transportation Agency,California. Metropolitan Transportation Commission,Bay Area Toll Authority (Calif.),Safe Routes to Transit",
+   "year": 2009,
+   "pool": "sfpl",
+   "matched_alias": "Balboa Park Station",
+   "snippet": "«Balboa Park Station» Pedestrian and Bicycle Connection Project This study was made possible",
+   "url": "https://archive.org/details/balboaparkstatio2009sanf",
+   "deep_link": "https://archive.org/details/balboaparkstatio2009sanf?q=Balboa+Park+Station",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+  },
+  {
+   "identifier": "balboaparkstatio2002sanf",
+   "title": "Balboa Park station area plan : public review draft",
+   "creator": "San Francisco (Calif.). Planning Dept",
+   "year": 2002,
+   "pool": "sfpl",
+   "matched_alias": "Balboa Park Station",
+   "snippet": "223 06333 5922 Public Review Draft «Balboa Park Station» Area Plan San Francisco Planning Department",
+   "url": "https://archive.org/details/balboaparkstatio2002sanf",
+   "deep_link": "https://archive.org/details/balboaparkstatio2002sanf?q=Balboa+Park+Station",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+  },
+  {
+   "identifier": "noticeofmeetingc2012sanf",
+   "title": "Notice of meeting and calendar",
+   "creator": "San Francisco (Calif.). Municipal Transportation Agency. Board of Directors,San Francisco (Calif.). Parking Authority",
+   "year": 2000,
+   "pool": "sfpl",
+   "matched_alias": "Green Light Rail Center",
+   "snippet": "Director to execute Contract No. 1249, «Green Light Rail Center» Track Replacement Project, with Proven",
+   "url": "https://archive.org/details/noticeofmeetingc2012sanf",
+   "deep_link": "https://archive.org/details/noticeofmeetingc2012sanf?q=Green+Light+Rail+Center",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+  },
+  {
+   "identifier": "minutes20022003sanf",
+   "title": "Minutes",
+   "creator": "San Francisco (Calif.). Municipal Transportation Agency. Board of Directors,San Francisco (Calif.). Parking Authority",
+   "year": 2000,
+   "pool": "sfpl",
+   "matched_alias": "Green Light Rail Center",
+   "snippet": "Contract No. MR-1 127, Curtis E. «Green Light Rail Center» Emergency Switch Replacement Project;",
+   "url": "https://archive.org/details/minutes20022003sanf",
+   "deep_link": "https://archive.org/details/minutes20022003sanf?q=Green+Light+Rail+Center",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+  },
+  {
+   "identifier": "noticeofmeetingc2011sanf",
+   "title": "Notice of meeting and calendar",
+   "creator": "San Francisco (Calif.). Municipal Transportation Agency. Board of Directors,San Francisco (Calif.). Parking Authority",
+   "year": 2000,
+   "pool": "sfpl",
+   "matched_alias": "Cameron Beach Yard",
+   "snippet": "permanently renaming the facility the «Cameron Beach Yard». (Explanatory documents include a staff",
+   "url": "https://archive.org/details/noticeofmeetingc2011sanf",
+   "deep_link": "https://archive.org/details/noticeofmeetingc2011sanf?q=Cameron+Beach+Yard",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+  },
+  {
+   "identifier": "3calendarmeetingo1994sanf",
+   "title": "Calendar : meeting of Budget Committee, Board of Supervisors, City and County of San Francisco",
+   "creator": "San Francisco (Calif.). Board of Supervisors. Budget Committee",
+   "year": 1993,
+   "pool": "sfpl",
+   "matched_alias": "Green Light Rail Center",
+   "snippet": "when the new LRVs arrive. The «Green Light Rail Center», located at 425 Geneva Street, is",
+   "url": "https://archive.org/details/3calendarmeetingo1994sanf",
+   "deep_link": "https://archive.org/details/3calendarmeetingo1994sanf?q=Green+Light+Rail+Center",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+  },
+  {
+   "identifier": "dataguide19901991990sanf",
+   "title": "The data guide, 1990-1991",
+   "creator": "San Francisco Municipal Railway. Community Affairs Dept",
+   "year": 1990,
+   "pool": "sfpl",
+   "matched_alias": "Green Light Rail Center",
+   "snippet": "vehicles. 72,255 sq. ft. Curtis E. «Green Light Rail Center» - Geneva & San Jose Aves. (425",
+   "url": "https://archive.org/details/dataguide19901991990sanf",
+   "deep_link": "https://archive.org/details/dataguide19901991990sanf?q=Green+Light+Rail+Center",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+  },
+  {
+   "identifier": "munimetroturnaro1988unit",
+   "title": "Muni Metro turnaround project : draft environmental impact statement",
+   "creator": "United States. Urban Mass Transportation Administration,San Francisco Municipal Railway",
+   "year": 1988,
+   "pool": "sfpl",
+   "matched_alias": "Green Light Rail Center",
+   "snippet": "with moving the vehicles to the «Green Light Rail Center». I 2. It is feasible to locate",
+   "url": "https://archive.org/details/munimetroturnaro1988unit",
+   "deep_link": "https://archive.org/details/munimetroturnaro1988unit?q=Green+Light+Rail+Center",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+  },
+  {
+   "identifier": "balboaparkstatio2008sanf",
+   "title": "Balboa Park station area plan : comments and response on DEIR",
+   "creator": "San Francisco (Calif.). Planning Dept",
+   "year": null,
+   "pool": "sfpl",
+   "matched_alias": "Balboa Park Station",
+   "snippet": "C&R-120 «Balboa Park Station» Area Plan COMMENTS AND RESPONSES Table 1: «Balboa Park Station» Area",
+   "url": "https://archive.org/details/balboaparkstatio2008sanf",
+   "deep_link": "https://archive.org/details/balboaparkstatio2008sanf?q=Balboa+Park+Station",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+  }
+ ],
+ "dept_shelf": [
+  {
+   "identifier": "financialreport1912sanf_0",
+   "title": "Financial report of the Municipal Railway of San Francisco",
+   "year": null,
+   "pool": "sfpl",
+   "url": "https://archive.org/details/financialreport1912sanf_0"
+  },
+  {
+   "identifier": "8minutes1989sanf",
+   "title": "Minutes",
+   "year": null,
+   "pool": "sfpl",
+   "url": "https://archive.org/details/8minutes1989sanf"
+  },
+  {
+   "identifier": "2minutes1987sanf",
+   "title": "Minutes",
+   "year": null,
+   "pool": "sfpl",
+   "url": "https://archive.org/details/2minutes1987sanf"
+  },
+  {
+   "identifier": "4minutes1991sanf",
+   "title": "Minutes",
+   "year": null,
+   "pool": "sfpl",
+   "url": "https://archive.org/details/4minutes1991sanf"
+  },
+  {
+   "identifier": "2minutes1986sanf",
+   "title": "Minutes",
+   "year": null,
+   "pool": "sfpl",
+   "url": "https://archive.org/details/2minutes1986sanf"
+  },
+  {
+   "identifier": "1minutes1983sanf",
+   "title": "Minutes",
+   "year": null,
+   "pool": "sfpl",
+   "url": "https://archive.org/details/1minutes1983sanf"
+  }
+ ],
+ "sources": [
+  {
+   "label": "City budget & payments",
+   "note": "SF Controller open data (budget, vouchers, contracts)"
+  },
+  {
+   "label": "Historical documents",
+   "note": "Internet Archive — SFPL partnership scans + Democracy's Library"
+  }
+ ],
+ "_gate": {
+  "has_photo": true,
+  "n_documents": 10,
+  "n_money_links": 1,
+  "meets_pre_summary": true
+ }
+}

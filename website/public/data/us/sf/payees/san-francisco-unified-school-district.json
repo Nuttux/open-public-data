@@ -1,0 +1,138 @@
+{
+ "generated_at": "2026-07-20T22:34:47.731330+00:00",
+ "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
+ "as_of": "2026-07-13T13:40:40+00:00",
+ "unit": "USD",
+ "slug": "san-francisco-unified-school-district",
+ "name": "San Francisco Unified School District",
+ "kind": "other",
+ "is_non_profit": false,
+ "total_paid_usd": 328872141.59,
+ "n_years": 20,
+ "first_year": 2007,
+ "last_year": 2026,
+ "by_year": {
+  "2007": 19663789.1,
+  "2008": 18839864.2,
+  "2009": 28233343.9,
+  "2010": 10227748.0,
+  "2011": 8131844.6,
+  "2012": 6531441.0,
+  "2013": 9341172.6,
+  "2014": 6507324.8,
+  "2015": 22606188.0,
+  "2016": 19735948.3,
+  "2017": 22833875.9,
+  "2018": 17177502.21,
+  "2019": 26957197.39,
+  "2020": 13143109.51,
+  "2021": 25684946.38,
+  "2022": 19494264.2,
+  "2023": 10656941.9,
+  "2024": 4190612.56,
+  "2025": 15006707.82,
+  "2026": 23908319.22
+ },
+ "top_departments": [
+  "CHF Children;Youth & Families"
+ ],
+ "contracts_held": [
+  {
+   "contract_no": "1000032701",
+   "title": "Everett Middle School",
+   "department": "PUC Public Utilities Commsn",
+   "department_code": "PUC",
+   "agreed_usd": 1874496.0,
+   "paid_usd": 530000.0,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000035017",
+   "title": "SFCOE Teacher Supports",
+   "department": "JUV Juvenile Probation",
+   "department_code": "JUV",
+   "agreed_usd": 700000.0,
+   "paid_usd": 105441.87,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000035317",
+   "title": "Ecoliteracy & Career Exposure",
+   "department": "PUC Public Utilities Commsn",
+   "department_code": "PUC",
+   "agreed_usd": 2228400.0,
+   "paid_usd": 0.0,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000034675",
+   "title": "Visitacion Valley Middle Schoo",
+   "department": "PUC Public Utilities Commsn",
+   "department_code": "PUC",
+   "agreed_usd": 1999967.0,
+   "paid_usd": 0.0,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000034676",
+   "title": "Thurgood Marshall High School",
+   "department": "PUC Public Utilities Commsn",
+   "department_code": "PUC",
+   "agreed_usd": 1999465.0,
+   "paid_usd": 0.0,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000035291",
+   "title": "El Dorado Elementary School",
+   "department": "PUC Public Utilities Commsn",
+   "department_code": "PUC",
+   "agreed_usd": 1412016.0,
+   "paid_usd": 0.0,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000035292",
+   "title": "Jefferson Elementary School",
+   "department": "PUC Public Utilities Commsn",
+   "department_code": "PUC",
+   "agreed_usd": 796670.0,
+   "paid_usd": 0.0,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000037992",
+   "title": "HHP Mission Bay Solar",
+   "department": "PUC Public Utilities Commsn",
+   "department_code": "PUC",
+   "agreed_usd": 653033.0,
+   "paid_usd": 0.0,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000034674",
+   "title": "Buena Vista Horace Mann K-8",
+   "department": "PUC Public Utilities Commsn",
+   "department_code": "PUC",
+   "agreed_usd": 629423.0,
+   "paid_usd": 0.0,
+   "sole_source": false
+  }
+ ],
+ "n_contracts_held": 9,
+ "variants": [
+  {
+   "name": "SAN FRANCISCO UNIFIED SCHOOL DISTRICT",
+   "total": 328872141.59
+  }
+ ],
+ "n_variants": 1,
+ "merges": [],
+ "source": {
+  "name": "Vendor Payments (Vouchers)",
+  "dataset_id": "n9pm-xkyq",
+  "source_url": "https://data.sfgov.org/d/n9pm-xkyq",
+  "attribution": "SF Controller's Office",
+  "rows_updated_at": "2026-07-13T13:40:40+00:00"
+ }
+}

@@ -1,0 +1,260 @@
+{
+ "generated_at": "2026-07-20T22:30:00.111928+00:00",
+ "source_pipeline": "sf_place_candidates.json → sync_ia_sf.py + link_sf_places.py + fetch_sf_place_photos.py → export_sf_places.py",
+ "unit": "USD",
+ "slug": "bayview-branch-library",
+ "name": "Bayview / Linda Brooks-Burton Branch Library",
+ "kind": "Branch library",
+ "family": "library",
+ "address": "5075 3rd St",
+ "lat": 37.7332,
+ "lon": -122.3917,
+ "owning_dept": {
+  "name": "Public Library",
+  "code": "LIB"
+ },
+ "photo": null,
+ "photo_credit": null,
+ "summary_en": null,
+ "published": false,
+ "money": {
+  "budget_line": {
+   "code": "LIB",
+   "name": "Public Library",
+   "total_usd": 187421705.0,
+   "fiscal_year": 2025
+  },
+  "contracts": [],
+  "grants": []
+ },
+ "documents": [
+  {
+   "identifier": "branchlibraryimp3200sanf",
+   "title": "Branch library improvement program : November 2000--general obligation bond program proposal",
+   "creator": "San Francisco (Calif.). Bureau of Architecture",
+   "year": 2000,
+   "pool": "sfpl",
+   "matched_alias": "Bayview Branch Library",
+   "snippet": "PROJECT COST 22 PROJECT SCHEDULE 22 «BAYVIEW BRANCH LIBRARY» 23 BACKGROUND 23 SCOPE OF WORK 23",
+   "url": "https://archive.org/details/branchlibraryimp3200sanf",
+   "deep_link": "https://archive.org/details/branchlibraryimp3200sanf?q=Bayview+Branch+Library",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+  },
+  {
+   "identifier": "sanfranciscopubl6199sanf",
+   "title": "The San Francisco Public Library : the San Francisco Public Library has poor controls over cash from fines and other revenues",
+   "creator": "San Francisco (Calif.). Office of the Controller",
+   "year": 1999,
+   "pool": "sfpl",
+   "matched_alias": "Bayview Branch Library",
+   "snippet": "allegation that employees of the «Bayview branch library» (Bayview) of the San Francisco Public",
+   "url": "https://archive.org/details/sanfranciscopubl6199sanf",
+   "deep_link": "https://archive.org/details/sanfranciscopubl6199sanf?q=Bayview+Branch+Library",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+  },
+  {
+   "identifier": "agenda2013arts",
+   "title": "Agenda",
+   "creator": "Arts Commission of San Francisco. Visual Arts Committee",
+   "year": 1983,
+   "pool": "sfpl",
+   "matched_alias": "Bayview Branch Library",
+   "snippet": "Poster Series b\\ Paul Madonna. 3. «Bayview Branch Library» Mary Chou Action Explanatory Document:",
+   "url": "https://archive.org/details/agenda2013arts",
+   "deep_link": "https://archive.org/details/agenda2013arts?q=Bayview+Branch+Library",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+  },
+  {
+   "identifier": "minutesofregula1119sanf_0",
+   "title": "Minutes of the regular meeting ... / San Francisco Public Library Commission",
+   "creator": "San Francisco Public Library. Commission",
+   "year": null,
+   "pool": "sfpl",
+   "matched_alias": "Bayview Branch Library",
+   "snippet": "the site selected for the proposed «Bayview Branch Library». Mr. Holman commented that he felt",
+   "url": "https://archive.org/details/minutesofregula1119sanf_0",
+   "deep_link": "https://archive.org/details/minutesofregula1119sanf_0?q=Bayview+Branch+Library",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+  },
+  {
+   "identifier": "annualreportdepa2010sanf",
+   "title": "Annual report / Department of Public Works, City and County of San Francisco",
+   "creator": "San Francisco (Calif.). Department of Public Works",
+   "year": null,
+   "pool": "sfpl",
+   "matched_alias": "Bayview Branch Library",
+   "snippet": "with the groundbreaking of the new «Bayview Branch Library» anticipated for July 201 1 . Th program",
+   "url": "https://archive.org/details/annualreportdepa2010sanf",
+   "deep_link": "https://archive.org/details/annualreportdepa2010sanf?q=Bayview+Branch+Library",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+  },
+  {
+   "identifier": "agendasanfranci2011sanf_6",
+   "title": "Agenda / San Francisco Public Library Commission",
+   "creator": "San Francisco Public Library. Commission",
+   "year": null,
+   "pool": "sfpl",
+   "matched_alias": "Bayview Branch Library",
+   "snippet": "Renaming Ceremony for the Bayview «Linda Brooks Burton Branch» Library. Explanatory document: none",
+   "url": "https://archive.org/details/agendasanfranci2011sanf_6",
+   "deep_link": "https://archive.org/details/agendasanfranci2011sanf_6?q=Bayview+Branch+Library",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+  },
+  {
+   "identifier": "agendasminutesc2014sanf_1",
+   "title": "Agendas and Minutes / City and County of San Francisco, Small Business Commission",
+   "creator": "San Francisco (Calif.). Small Business Commission",
+   "year": null,
+   "pool": "sfpl",
+   "matched_alias": "Bayview Branch Library",
+   "snippet": "97-10 relating to completion of the «Bayview Branch Library» Construction Project; and 12) make",
+   "url": "https://archive.org/details/agendasminutesc2014sanf_1",
+   "deep_link": "https://archive.org/details/agendasminutesc2014sanf_1?q=Bayview+Branch+Library",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+  },
+  {
+   "identifier": "minutesofregular2010sanf",
+   "title": "Minutes of the regular meeting ...",
+   "creator": "San Francisco Public Library. Commission",
+   "year": null,
+   "pool": "sfpl",
+   "matched_alias": "Bayview Branch Library",
+   "snippet": "approve the project budget for the «Bayview Branch Library». She said the approved budget for",
+   "url": "https://archive.org/details/minutesofregular2010sanf",
+   "deep_link": "https://archive.org/details/minutesofregular2010sanf?q=Bayview+Branch+Library",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+  },
+  {
+   "identifier": "minutesofregular2008sanf",
+   "title": "Minutes of the regular meeting ...",
+   "creator": "San Francisco Public Library. Commission",
+   "year": null,
+   "pool": "sfpl",
+   "matched_alias": "Bayview Branch Library",
+   "snippet": "draft minutes. 7. DESIGN OPTIONS FOR «BAYVIEW BRANCH LIBRARY» ACTION (Presentation, discussion and",
+   "url": "https://archive.org/details/minutesofregular2008sanf",
+   "deep_link": "https://archive.org/details/minutesofregular2008sanf?q=Bayview+Branch+Library",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+  },
+  {
+   "identifier": "agenda2012arts",
+   "title": "Agenda",
+   "creator": "Arts Commission of San Francisco",
+   "year": null,
+   "pool": "sfpl",
+   "matched_alias": "Bayview Branch Library",
+   "snippet": "designs for the artwork at the new «Bayview Branch Library» by artist Ron Saunders. 22. Motion",
+   "url": "https://archive.org/details/agenda2012arts",
+   "deep_link": "https://archive.org/details/agenda2012arts?q=Bayview+Branch+Library",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+  },
+  {
+   "identifier": "minutesofregular1996sanf",
+   "title": "Minutes of the regular meeting ...",
+   "creator": "San Francisco Public Library. Commission",
+   "year": null,
+   "pool": "sfpl",
+   "matched_alias": "Bayview Branch Library",
+   "snippet": "March 2, 1996 9:30 AM Anna E. Waden/«Bayview Branch Library» 5075 - 3rd Street (at Revere) ,rgaret",
+   "url": "https://archive.org/details/minutesofregular1996sanf",
+   "deep_link": "https://archive.org/details/minutesofregular1996sanf?q=Bayview+Branch+Library",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+  },
+  {
+   "identifier": "minutesofregular1219sanf",
+   "title": "Minutes of the regular meeting ... / San Francisco Public Library Commission",
+   "creator": "San Francisco Public Library. Commission",
+   "year": null,
+   "pool": "sfpl",
+   "matched_alias": "Bayview Branch Library",
+   "snippet": "appropriate site for the pro- posed «Bayview Branch Library», Chairman Fanucchi moved, Commissioner",
+   "url": "https://archive.org/details/minutesofregular1219sanf",
+   "deep_link": "https://archive.org/details/minutesofregular1219sanf?q=Bayview+Branch+Library",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+  },
+  {
+   "identifier": "annualreportdep2013sanf_0",
+   "title": "Annual report / Department of Public Works, City and County of San Francisco",
+   "creator": "San Francisco (Calif.). Department of Public Works",
+   "year": null,
+   "pool": "sfpl",
+   "matched_alias": "Bayview Branch Library",
+   "snippet": "AND PACIFIC REGION 2013 Merit Award «Bayview Branch Library» GENERAL SERVICES ADMINISTRATION’S CONTRACT",
+   "url": "https://archive.org/details/annualreportdep2013sanf_0",
+   "deep_link": "https://archive.org/details/annualreportdep2013sanf_0?q=Bayview+Branch+Library",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+  },
+  {
+   "identifier": "agendagovernment2013sanf",
+   "title": "Agenda / Government Audit and Oversight Committee",
+   "creator": "San Francisco (Calif.). Board of Supervisors. Government Audit and Oversight Committee",
+   "year": null,
+   "pool": "sfpl",
+   "matched_alias": "Bayview Branch Library",
+   "snippet": "97-10 relating to completion of the «Bayview Branch Library» Construction Project; and 12) make",
+   "url": "https://archive.org/details/agendagovernment2013sanf",
+   "deep_link": "https://archive.org/details/agendagovernment2013sanf?q=Bayview+Branch+Library",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+  }
+ ],
+ "dept_shelf": [
+  {
+   "identifier": "sanfranciscopubl7200sanf",
+   "title": "San Francisco Public Library strategic plan, 2003-2006 : July 7, 2003 draft",
+   "year": 2003,
+   "pool": "sfpl",
+   "url": "https://archive.org/details/sanfranciscopubl7200sanf"
+  },
+  {
+   "identifier": "sanfranciscopub4200ripl_0",
+   "title": "San Francisco Public Library Post Occupancy Evaluation",
+   "year": 2000,
+   "pool": "sfpl",
+   "url": "https://archive.org/details/sanfranciscopub4200ripl_0"
+  },
+  {
+   "identifier": "minutesofregula1619sanf_0",
+   "title": "Minutes of the regular meeting ... / San Francisco Public Library Commission",
+   "year": null,
+   "pool": "sfpl",
+   "url": "https://archive.org/details/minutesofregula1619sanf_0"
+  },
+  {
+   "identifier": "agenda1969sanf",
+   "title": "Agenda",
+   "year": null,
+   "pool": "sfpl",
+   "url": "https://archive.org/details/agenda1969sanf"
+  },
+  {
+   "identifier": "agendasminutessa1979sanf",
+   "title": "Agendas and Minutes / San Francisco Public Library Commission, Finance Committee",
+   "year": null,
+   "pool": "sfpl",
+   "url": "https://archive.org/details/agendasminutessa1979sanf"
+  },
+  {
+   "identifier": "requestforuseofp1998sanf",
+   "title": "Request for use of public meeting rooms / Branch meeting rooms summary",
+   "year": null,
+   "pool": "sfpl",
+   "url": "https://archive.org/details/requestforuseofp1998sanf"
+  }
+ ],
+ "sources": [
+  {
+   "label": "City budget & payments",
+   "note": "SF Controller open data (budget, vouchers, contracts)"
+  },
+  {
+   "label": "Historical documents",
+   "note": "Internet Archive — SFPL partnership scans + Democracy's Library"
+  }
+ ],
+ "_gate": {
+  "has_photo": false,
+  "n_documents": 14,
+  "n_money_links": 1,
+  "meets_pre_summary": false
+ }
+}

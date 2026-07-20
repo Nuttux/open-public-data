@@ -1,0 +1,50 @@
+{
+ "generated_at": "2026-07-20T22:34:47.730573+00:00",
+ "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
+ "as_of": "2026-07-13T13:40:40+00:00",
+ "unit": "USD",
+ "slug": "calpers",
+ "name": "Calpers",
+ "kind": "payroll_passthrough",
+ "is_non_profit": false,
+ "total_paid_usd": 375417655.04,
+ "n_years": 14,
+ "first_year": 2013,
+ "last_year": 2027,
+ "by_year": {
+  "2013": 300.0,
+  "2015": 84937.5,
+  "2016": 4347.0,
+  "2017": 7675.0,
+  "2018": 2427628.27,
+  "2019": 49094247.43,
+  "2020": 32467832.87,
+  "2021": 32934890.07,
+  "2022": 42593805.09,
+  "2023": 97129068.19,
+  "2024": 25009276.26,
+  "2025": 27681519.66,
+  "2026": 32051892.7,
+  "2027": 33930235.0
+ },
+ "top_departments": [
+  "USD County Education Office"
+ ],
+ "contracts_held": [],
+ "n_contracts_held": 0,
+ "variants": [
+  {
+   "name": "CALPERS",
+   "total": 375417655.04
+  }
+ ],
+ "n_variants": 1,
+ "merges": [],
+ "source": {
+  "name": "Vendor Payments (Vouchers)",
+  "dataset_id": "n9pm-xkyq",
+  "source_url": "https://data.sfgov.org/d/n9pm-xkyq",
+  "attribution": "SF Controller's Office",
+  "rows_updated_at": "2026-07-13T13:40:40+00:00"
+ }
+}

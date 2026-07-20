@@ -1,0 +1,240 @@
+{
+ "generated_at": "2026-07-20T22:30:00.113355+00:00",
+ "source_pipeline": "sf_place_candidates.json → sync_ia_sf.py + link_sf_places.py + fetch_sf_place_photos.py → export_sf_places.py",
+ "unit": "USD",
+ "slug": "laguna-honda-hospital",
+ "name": "Laguna Honda Hospital",
+ "kind": "Hospital",
+ "family": "health",
+ "address": "375 Laguna Honda Blvd",
+ "lat": 37.7503,
+ "lon": -122.4556,
+ "owning_dept": {
+  "name": "Public Health",
+  "code": "DPH"
+ },
+ "photo": "/img/us/sf/places/laguna-honda-hospital.jpg",
+ "photo_credit": {
+  "photo": "/img/us/sf/places/laguna-honda-hospital.jpg",
+  "source": "Wikimedia Commons",
+  "file": "File:Laguna_Honda_Hospital_from_Forest_Hill_Extension,_August_2020_(cropped).JPG",
+  "file_url": "https://commons.wikimedia.org/wiki/File:Laguna_Honda_Hospital_from_Forest_Hill_Extension,_August_2020_(cropped).JPG",
+  "license": "CC BY-SA 4.0",
+  "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+  "author": "Pi.1415926535",
+  "fetched_at": "2026-07-20T22:18:06.469792+00:00"
+ },
+ "summary_en": "Archive documents trace decades of planning at Laguna Honda Hospital and Rehabilitation Center, from a 1966 hospital cost-accounting report and Department of Public Health annual reports through the 1994 institutional master plan and the 2001-2002 hospital-replacement environmental impact and historic-background reports. The site is operated by Public Health (DPH), which carried an FY2025 budget of $3.2B. City payment records link two Mayor's Office contracts naming the location: \"250 Laguna Honda\" ($7.5M paid) and a \"375 Laguna Honda Blvd Loan\" ($1.4M paid).",
+ "published": true,
+ "money": {
+  "budget_line": {
+   "code": "DPH",
+   "name": "Public Health",
+   "total_usd": 3185025572.0,
+   "fiscal_year": 2025
+  },
+  "contracts": [
+   {
+    "contract_no": "1000032312",
+    "title": "250 Laguna Honda",
+    "prime": "250 Laguna Honda, LLC",
+    "department_code": "MYR",
+    "agreed_usd": 8000000.0,
+    "paid_usd": 7525127.13,
+    "evidence": "MYR 250 Laguna Honda"
+   },
+   {
+    "contract_no": "1000021904",
+    "title": "375 Laguna Honda Blvd Loan",
+    "prime": "Mercy Housing California 103, LP",
+    "department_code": "MYR",
+    "agreed_usd": 3000000.0,
+    "paid_usd": 1412096.39,
+    "evidence": "MYR-375 Laguna Honda Blvd Loan"
+   }
+  ],
+  "grants": []
+ },
+ "documents": [
+  {
+   "identifier": "assistedlivingf1200sanf_0",
+   "title": "Assisted living facility feasibility study : Laguna Honda Hospital and Rehabilitation Center : draft",
+   "creator": "San Francisco (Calif.). Planning Dept,Anshen & Allen,Gordon H. Chong + Associates",
+   "year": 2007,
+   "pool": "sfpl",
+   "matched_alias": "Laguna Honda",
+   "snippet": "BOOK Not to be taken from the Library «Laguna Honda» Hospital and Rehabilitation Center City",
+   "url": "https://archive.org/details/assistedlivingf1200sanf_0",
+   "deep_link": "https://archive.org/details/assistedlivingf1200sanf_0?q=Laguna+Honda",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+  },
+  {
+   "identifier": "lagunahondahospi2720sanf",
+   "title": "Laguna Honda Hospital replacement : final environmental impact report",
+   "creator": "San Francisco (Calif.). Planning Dept",
+   "year": 2002,
+   "pool": "sfpl",
+   "matched_alias": "Laguna Honda Hospital",
+   "snippet": "areas in the «Laguna Honda Hospital» and Rehabilitation Center («Laguna Honda hospital») does not",
+   "url": "https://archive.org/details/lagunahondahospi2720sanf",
+   "deep_link": "https://archive.org/details/lagunahondahospi2720sanf?q=Laguna+Honda+Hospital",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+  },
+  {
+   "identifier": "lagunahondahospi1720sanf",
+   "title": "Laguna Honda Hospital replacement : comments and responses",
+   "creator": "San Francisco (Calif.). Planning Dept",
+   "year": 2002,
+   "pool": "sfpl",
+   "matched_alias": "Laguna Honda Hospital",
+   "snippet": "Final EIR for the «Laguna Honda» Hospital Replacement project. C&R.1 «Laguna Honda» Hospital Replacement",
+   "url": "https://archive.org/details/lagunahondahospi1720sanf",
+   "deep_link": "https://archive.org/details/lagunahondahospi1720sanf?q=Laguna+Honda+Hospital",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+  },
+  {
+   "identifier": "lagunahondahospi2001impa",
+   "title": "Laguna Honda Hospital historic background report, October 2001",
+   "creator": "Impact Sciences, Inc,Architectural Resources Group",
+   "year": 2001,
+   "pool": "sfpl",
+   "matched_alias": "Laguna Honda",
+   "snippet": "and «Laguna Honda» hospital were consulted. Statement of Significance - «Laguna Honda» Hospital",
+   "url": "https://archive.org/details/lagunahondahospi2001impa",
+   "deep_link": "https://archive.org/details/lagunahondahospi2001impa?q=Laguna+Honda",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+  },
+  {
+   "identifier": "agenda1119lagu",
+   "title": "Agenda",
+   "creator": "Laguna Honda Hospital. Replacement Planning Committee,San Francisco (Calif.). Dept. of Public Health,San Francisco (Calif.). Health Commission",
+   "year": 1999,
+   "pool": "sfpl",
+   "matched_alias": "Laguna Honda Hospital",
+   "snippet": "Administrator, «Laguna Honda Hospital» June Grainger, Family member of «Laguna Honda Hospital» resident",
+   "url": "https://archive.org/details/agenda1119lagu",
+   "deep_link": "https://archive.org/details/agenda1119lagu?q=Laguna+Honda+Hospital",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+  },
+  {
+   "identifier": "lagunahondahospi1994kapl",
+   "title": "Laguna Honda Hospital institutional master plan",
+   "creator": "Kaplan McLaughlin Diaz,San Francisco (Calif.). Dept. of Public Health",
+   "year": 1994,
+   "pool": "sfpl",
+   "matched_alias": "Laguna Honda",
+   "snippet": "Francisco. «Laguna Honda» Hospital currently owns no other land. 2.1 «Laguna Honda» Hospital Master",
+   "url": "https://archive.org/details/lagunahondahospi1994kapl",
+   "deep_link": "https://archive.org/details/lagunahondahospi1994kapl?q=Laguna+Honda",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+  },
+  {
+   "identifier": "into21stcenturyb1819sanf",
+   "title": "Into the 21st century : building a new facility to continue Laguna Honda Hospital's mission",
+   "creator": "San Francisco (Calif.). Dept. of Public Health,San Francisco (Calif.). Dept. of Public Works,Kaplan McLaughlin Diaz,Gordon H. Chong + Associates",
+   "year": 1992,
+   "pool": "sfpl",
+   "matched_alias": "Laguna Honda Hospital",
+   "snippet": "health problems.\" SERVICES OF «LAGUNA HONDA» HOSPITAL Of «Laguna Honda» Hospital's 1147 operational",
+   "url": "https://archive.org/details/into21stcenturyb1819sanf",
+   "deep_link": "https://archive.org/details/into21stcenturyb1819sanf?q=Laguna+Honda+Hospital",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+  },
+  {
+   "identifier": "sanfranciscodepa19781983sanf",
+   "title": "The San Francisco Department of Public Health annual report",
+   "creator": "San Francisco (Calif.). Dept. of Public Health",
+   "year": 1979,
+   "pool": "sfpl",
+   "matched_alias": "Laguna Honda Hospital",
+   "snippet": "Project and «Laguna Honda» Hospital is expected to play a major role. «Laguna Honda» Hospital",
+   "url": "https://archive.org/details/sanfranciscodepa19781983sanf",
+   "deep_link": "https://archive.org/details/sanfranciscodepa19781983sanf?q=Laguna+Honda+Hospital",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+  },
+  {
+   "identifier": "civilgrandjuryre199899cali",
+   "title": "Civil Grand Jury reports",
+   "creator": "California. Grand Jury (San Francisco)",
+   "year": 1977,
+   "pool": "sfpl",
+   "matched_alias": "Laguna Honda",
+   "snippet": "Sheriffs Department Treasure Island «LAGUNA HONDA» HOSPITAL «LAGUNA HONDA» HOSPITAL SUMMARY The 1998 - 1999",
+   "url": "https://archive.org/details/civilgrandjuryre199899cali",
+   "deep_link": "https://archive.org/details/civilgrandjuryre199899cali?q=Laguna+Honda",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+  },
+  {
+   "identifier": "supplementaryrep166sanf",
+   "title": "Supplementary report on hospital cost accounting system at Laguna Honda Hospital",
+   "creator": "San Francisco (Calif.),Laguna Honda Hospital,John F. Forbes & Company",
+   "year": 1966,
+   "pool": "sfpl",
+   "matched_alias": "Laguna Honda Hospital",
+   "snippet": "ACCOUNTING SYSTEM AT «LAGUNA HONDA HOSPITAL» INTRODUCTION «Laguna Honda Hospital» is accredited as",
+   "url": "https://archive.org/details/supplementaryrep166sanf",
+   "deep_link": "https://archive.org/details/supplementaryrep166sanf?q=Laguna+Honda+Hospital",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+  }
+ ],
+ "dept_shelf": [
+  {
+   "identifier": "performanceeffic202008san",
+   "title": "Performance and efficiency review : Department of Public Health : Controller's Office analysis 2005-2008",
+   "year": 2005,
+   "pool": "sfpl",
+   "url": "https://archive.org/details/performanceeffic202008san"
+  },
+  {
+   "identifier": "annualreportofde192425sanf",
+   "title": "Annual report of the Department of Public Health, San Francisco, California",
+   "year": 1925,
+   "pool": "sfpl",
+   "url": "https://archive.org/details/annualreportofde192425sanf"
+  },
+  {
+   "identifier": "annualsalaryord197879sanf",
+   "title": "Annual salary ordinance",
+   "year": null,
+   "pool": "sfpl",
+   "url": "https://archive.org/details/annualsalaryord197879sanf"
+  },
+  {
+   "identifier": "annualsalaryord197576sanf",
+   "title": "Annual salary ordinance",
+   "year": null,
+   "pool": "sfpl",
+   "url": "https://archive.org/details/annualsalaryord197576sanf"
+  },
+  {
+   "identifier": "weeklybulletin1968sanf",
+   "title": "Weekly bulletin",
+   "year": null,
+   "pool": "sfpl",
+   "url": "https://archive.org/details/weeklybulletin1968sanf"
+  },
+  {
+   "identifier": "15minutes1988sanf",
+   "title": "Minutes",
+   "year": null,
+   "pool": "sfpl",
+   "url": "https://archive.org/details/15minutes1988sanf"
+  }
+ ],
+ "sources": [
+  {
+   "label": "City budget & payments",
+   "note": "SF Controller open data (budget, vouchers, contracts)"
+  },
+  {
+   "label": "Historical documents",
+   "note": "Internet Archive — SFPL partnership scans + Democracy's Library"
+  }
+ ],
+ "_gate": {
+  "has_photo": true,
+  "n_documents": 10,
+  "n_money_links": 3,
+  "meets_pre_summary": true
+ }
+}

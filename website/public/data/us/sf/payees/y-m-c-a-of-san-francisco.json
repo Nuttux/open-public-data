@@ -1,0 +1,47 @@
+{
+ "generated_at": "2026-07-20T22:34:47.742073+00:00",
+ "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
+ "as_of": "2026-07-13T13:40:40+00:00",
+ "unit": "USD",
+ "slug": "y-m-c-a-of-san-francisco",
+ "name": "Y M C a of San Francisco",
+ "kind": "nonprofit",
+ "is_non_profit": false,
+ "total_paid_usd": 129718885.3,
+ "n_years": 11,
+ "first_year": 2007,
+ "last_year": 2017,
+ "by_year": {
+  "2007": 5577139.4,
+  "2008": 7351845.1,
+  "2009": 10401956.4,
+  "2010": 9680785.9,
+  "2011": 9849797.5,
+  "2012": 10712559.2,
+  "2013": 13163817.3,
+  "2014": 14199731.2,
+  "2015": 15021545.3,
+  "2016": 14900093.9,
+  "2017": 18859614.1
+ },
+ "top_departments": [
+  "CHF Children;Youth & Families"
+ ],
+ "contracts_held": [],
+ "n_contracts_held": 0,
+ "variants": [
+  {
+   "name": "Y M C A OF SAN FRANCISCO",
+   "total": 129718885.3
+  }
+ ],
+ "n_variants": 1,
+ "merges": [],
+ "source": {
+  "name": "Vendor Payments (Vouchers)",
+  "dataset_id": "n9pm-xkyq",
+  "source_url": "https://data.sfgov.org/d/n9pm-xkyq",
+  "attribution": "SF Controller's Office",
+  "rows_updated_at": "2026-07-13T13:40:40+00:00"
+ }
+}

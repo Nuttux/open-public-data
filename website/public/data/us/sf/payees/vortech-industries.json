@@ -1,0 +1,50 @@
+{
+ "generated_at": "2026-07-20T22:34:47.743125+00:00",
+ "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
+ "as_of": "2026-07-13T13:40:40+00:00",
+ "unit": "USD",
+ "slug": "vortech-industries",
+ "name": "Vortech Industries",
+ "kind": "other",
+ "is_non_profit": false,
+ "total_paid_usd": 118592783.43,
+ "n_years": 16,
+ "first_year": 2012,
+ "last_year": 2027,
+ "by_year": {
+  "2012": 566697.4,
+  "2013": 1782242.3,
+  "2014": 3070786.5,
+  "2015": 3161654.2,
+  "2016": 4368611.8,
+  "2017": 5730565.7,
+  "2018": 6187324.77,
+  "2019": 10482030.3,
+  "2020": 12368749.57,
+  "2021": 9701298.27,
+  "2022": 8742222.16,
+  "2023": 10845586.99,
+  "2024": 14826989.68,
+  "2025": 14569996.46,
+  "2026": 12180008.71,
+  "2027": 8018.62
+ },
+ "top_departments": [],
+ "contracts_held": [],
+ "n_contracts_held": 0,
+ "variants": [
+  {
+   "name": "VORTECH INDUSTRIES",
+   "total": 118592783.43
+  }
+ ],
+ "n_variants": 1,
+ "merges": [],
+ "source": {
+  "name": "Vendor Payments (Vouchers)",
+  "dataset_id": "n9pm-xkyq",
+  "source_url": "https://data.sfgov.org/d/n9pm-xkyq",
+  "attribution": "SF Controller's Office",
+  "rows_updated_at": "2026-07-13T13:40:40+00:00"
+ }
+}

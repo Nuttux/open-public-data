@@ -1,0 +1,66 @@
+{
+ "generated_at": "2026-07-20T22:34:47.737534+00:00",
+ "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
+ "as_of": "2026-07-13T13:40:40+00:00",
+ "unit": "USD",
+ "slug": "department-of-general-services",
+ "name": "Department of General Services",
+ "kind": "other",
+ "is_non_profit": false,
+ "total_paid_usd": 175000952.79,
+ "n_years": 20,
+ "first_year": 2007,
+ "last_year": 2026,
+ "by_year": {
+  "2007": 11270880.1,
+  "2008": 11133341.4,
+  "2009": 13965513.0,
+  "2010": 8441787.0,
+  "2011": 7311834.7,
+  "2012": 6522970.3,
+  "2013": 5828226.3,
+  "2014": 5968709.9,
+  "2015": 5605602.0,
+  "2016": 4800320.0,
+  "2017": 5316255.6,
+  "2018": 5903302.6,
+  "2019": 7692520.52,
+  "2020": 7087877.9,
+  "2021": 7651783.51,
+  "2022": 10155254.95,
+  "2023": 18351221.2,
+  "2024": 9378297.98,
+  "2025": 11681792.13,
+  "2026": 10933461.7
+ },
+ "top_departments": [
+  "HHP Hetch Hetchy Water & Power"
+ ],
+ "contracts_held": [
+  {
+   "contract_no": "1000025957",
+   "title": "HHP Purchaseofgas",
+   "department": "PUC Public Utilities Commsn",
+   "department_code": "PUC",
+   "agreed_usd": 69000000.0,
+   "paid_usd": 47551839.93,
+   "sole_source": false
+  }
+ ],
+ "n_contracts_held": 1,
+ "variants": [
+  {
+   "name": "DEPARTMENT OF GENERAL SERVICES",
+   "total": 175000952.79
+  }
+ ],
+ "n_variants": 1,
+ "merges": [],
+ "source": {
+  "name": "Vendor Payments (Vouchers)",
+  "dataset_id": "n9pm-xkyq",
+  "source_url": "https://data.sfgov.org/d/n9pm-xkyq",
+  "attribution": "SF Controller's Office",
+  "rows_updated_at": "2026-07-13T13:40:40+00:00"
+ }
+}

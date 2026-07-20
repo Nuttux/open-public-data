@@ -1,0 +1,102 @@
+{
+ "generated_at": "2026-07-20T22:34:47.727974+00:00",
+ "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
+ "as_of": "2026-07-13T13:40:40+00:00",
+ "unit": "USD",
+ "slug": "sf-bay-area-rapid-transit-district",
+ "name": "SF Bay Area Rapid Transit District",
+ "kind": "other",
+ "is_non_profit": false,
+ "total_paid_usd": 783026883.65,
+ "n_years": 20,
+ "first_year": 2007,
+ "last_year": 2026,
+ "by_year": {
+  "2007": 10342058.5,
+  "2008": 13373978.8,
+  "2009": 13267480.3,
+  "2010": 13754050.5,
+  "2011": 7426808.0,
+  "2012": 3799149.8,
+  "2013": 2541084.7,
+  "2014": 33729257.4,
+  "2015": 10064103.3,
+  "2016": 9015011.4,
+  "2017": 15356927.7,
+  "2018": 41790287.59,
+  "2019": 52989688.21,
+  "2020": 64242736.98,
+  "2021": 64034266.56,
+  "2022": 51365670.64,
+  "2023": 72969212.4,
+  "2024": 83205482.57,
+  "2025": 126995107.09,
+  "2026": 92764521.21
+ },
+ "top_departments": [
+  "MTA Municipal Transprtn Agncy"
+ ],
+ "contracts_held": [
+  {
+   "contract_no": "1000033597",
+   "title": "2024-83-LOC-BART FP",
+   "department": "MTA Municipal Transprtn Agncy",
+   "department_code": "MTA",
+   "agreed_usd": 9800000.0,
+   "paid_usd": 2628473.33,
+   "sole_source": true
+  },
+  {
+   "contract_no": "1000027097",
+   "title": "Civic Center Bart",
+   "department": "MYR Mayor",
+   "department_code": "MYR",
+   "agreed_usd": 1000000.0,
+   "paid_usd": 1000000.0,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000036792",
+   "title": "Bart Elvtr Attndnt Agree",
+   "department": "MTA Municipal Transprtn Agncy",
+   "department_code": "MTA",
+   "agreed_usd": 9640000.0,
+   "paid_usd": 315000.0,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000017837",
+   "title": "Inspections MOU - Bart",
+   "department": "AIR Airport Commission",
+   "department_code": "AIR",
+   "agreed_usd": 990000.0,
+   "paid_usd": 109424.13,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000028599",
+   "title": "AIR50352 BART Incentive",
+   "department": "AIR Airport Commission",
+   "department_code": "AIR",
+   "agreed_usd": 845500.0,
+   "paid_usd": 0.0,
+   "sole_source": true
+  }
+ ],
+ "n_contracts_held": 5,
+ "variants": [
+  {
+   "name": "SF BAY AREA RAPID TRANSIT DISTRICT",
+   "total": 783026883.65
+  }
+ ],
+ "n_variants": 1,
+ "merges": [],
+ "source": {
+  "name": "Vendor Payments (Vouchers)",
+  "dataset_id": "n9pm-xkyq",
+  "source_url": "https://data.sfgov.org/d/n9pm-xkyq",
+  "attribution": "SF Controller's Office",
+  "rows_updated_at": "2026-07-13T13:40:40+00:00"
+ }
+}

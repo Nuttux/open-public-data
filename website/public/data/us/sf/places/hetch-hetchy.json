@@ -1,0 +1,231 @@
+{
+ "generated_at": "2026-07-20T22:30:00.118998+00:00",
+ "source_pipeline": "sf_place_candidates.json → sync_ia_sf.py + link_sf_places.py + fetch_sf_place_photos.py → export_sf_places.py",
+ "unit": "USD",
+ "slug": "hetch-hetchy",
+ "name": "Hetch Hetchy / O'Shaughnessy Dam",
+ "kind": "Reservoir / dam",
+ "family": "water",
+ "address": "Yosemite National Park, CA",
+ "lat": 37.9456,
+ "lon": -119.7873,
+ "owning_dept": {
+  "name": "Public Utilities Commission",
+  "code": "PUC"
+ },
+ "photo": "/img/us/sf/places/hetch-hetchy.jpg",
+ "photo_credit": {
+  "photo": "/img/us/sf/places/hetch-hetchy.jpg",
+  "source": "Wikimedia Commons",
+  "file": "File:Hetch_Hetchy_Valley.jpg",
+  "file_url": "https://commons.wikimedia.org/wiki/File:Hetch_Hetchy_Valley.jpg",
+  "license": "Public domain",
+  "license_url": "",
+  "author": "Isaiah West Taber",
+  "fetched_at": "2026-07-20T22:28:02.825991+00:00"
+ },
+ "summary_en": "The archive documents trace O'Shaughnessy Dam and the Hetch Hetchy reservoir from construction through operation, including a 1999 history noting the contract to build the dam was awarded in 1920, a 1935 report on \"San Francisco water and power,\" and 1930s Public Utilities Commission reports recording work such as the enlargement of O'Shaughnessy Dam. Later annual reports of the Hetch Hetchy Water and Power System document its budget and appropriations. The system is operated by the Public Utilities Commission, whose FY2025 budget line is $1.8B; a city contract for \"Auto Parts for Hetch Hetchy\" with Pine Mountain Auto Inc has been paid $29K to date.",
+ "published": true,
+ "money": {
+  "budget_line": {
+   "code": "PUC",
+   "name": "Public Utilities Commission (water, power, sewer)",
+   "total_usd": 1802973252.0,
+   "fiscal_year": 2025
+  },
+  "contracts": [
+   {
+    "contract_no": "1000033261",
+    "title": "Auto Parts for Hetch Hetchy",
+    "prime": "Pine Mountain Auto Inc",
+    "department_code": "ADM",
+    "agreed_usd": 300000.0,
+    "paid_usd": 28748.78,
+    "evidence": "Auto Parts for Hetch Hetchy"
+   }
+  ],
+  "grants": []
+ },
+ "documents": [
+  {
+   "identifier": "sanfranciscowate2005hans",
+   "title": "San Francisco water and power : a history of the Municipal Water Department & Hetch Hetchy system",
+   "creator": "Hanson, Warren D,Kukula, Frank,Nelson, Christopher,Williams, Mary",
+   "year": 2005,
+   "pool": "sfpl",
+   "matched_alias": "O'Shaughnessy Dam",
+   "snippet": "IN HIGH SIERRA «O'Shaughnessy Dam» being raised 1937 «O'SHAUGHNESSY DAM» AND HETCH HETCHY RESERVOIR",
+   "url": "https://archive.org/details/sanfranciscowate2005hans",
+   "deep_link": "https://archive.org/details/sanfranciscowate2005hans?q=O'Shaughnessy+Dam",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+  },
+  {
+   "identifier": "sanfranciscowate1999hans",
+   "title": "San Francisco water and power : a history of the Municipal Water Department and Hetch Hetchy system",
+   "creator": "Hanson, Warren D,Milner, Anne,Hansell, Franz T",
+   "year": 1999,
+   "pool": "sfpl",
+   "matched_alias": "O'Shaughnessy Dam",
+   "snippet": "awarded contract to build «O'Shaughnessy Dam» 1920 JAN 16 «O'Shaughnessy Dam» diversion tunnel completed",
+   "url": "https://archive.org/details/sanfranciscowate1999hans",
+   "deep_link": "https://archive.org/details/sanfranciscowate1999hans?q=O'Shaughnessy+Dam",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+  },
+  {
+   "identifier": "sanfranciscowate1985hans",
+   "title": "San Francisco water and power : a history of the Municipal Water Department and Hetch Hetchy System",
+   "creator": "Hanson, Warren D",
+   "year": 1985,
+   "pool": "sfpl",
+   "matched_alias": "O'Shaughnessy Dam",
+   "snippet": "contract to build «O'Shaughnessy Dam» 1920 Jan 16 «O'Shaughnessy Dam» diversion tunnel completed",
+   "url": "https://archive.org/details/sanfranciscowate1985hans",
+   "deep_link": "https://archive.org/details/sanfranciscowate1985hans?q=O'Shaughnessy+Dam",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+  },
+  {
+   "identifier": "sanfranciscowate1979leon",
+   "title": "San Francisco water and power",
+   "creator": "Leonard, James H,Hetch Hetchy Water and Power System",
+   "year": 1979,
+   "pool": "sfpl",
+   "matched_alias": "Hetch Hetchy",
+   "snippet": "February, formally abandoning «Hetch Hetchy». Enthusiastic «Hetch Hetchy» sponsors were becoming accustomed",
+   "url": "https://archive.org/details/sanfranciscowate1979leon",
+   "deep_link": "https://archive.org/details/sanfranciscowate1979leon?q=Hetch+Hetchy",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+  },
+  {
+   "identifier": "4annualreportsanf",
+   "title": "Annual report",
+   "creator": "San Francisco Public Utilities Commission. Hetch Hetchy Water and Power System,San Francisco Public Utilities Commission. Bureau of Light, Heat and Power",
+   "year": 1976,
+   "pool": "sfpl",
+   "matched_alias": "Hetch Hetchy Water and Power",
+   "snippet": "follows: Budget «Hetch Hetchy Water and Power» «Hetch Hetchy Water and Power» (Transit Power Division)",
+   "url": "https://archive.org/details/4annualreportsanf",
+   "deep_link": "https://archive.org/details/4annualreportsanf?q=Hetch+Hetchy+Water+and+Power",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+  },
+  {
+   "identifier": "2annualreportsanf",
+   "title": "Annual report",
+   "creator": "San Francisco Public Utilities Commission. Hetch Hetchy Water and Power Dept",
+   "year": 1975,
+   "pool": "sfpl",
+   "matched_alias": "Hetch Hetchy Water and Power",
+   "snippet": "Appropriated «Hetch Hetchy Water and Power» 194 $ 16,922,725 «Hetch Hetchy Water and Power» (Transit",
+   "url": "https://archive.org/details/2annualreportsanf",
+   "deep_link": "https://archive.org/details/2annualreportsanf?q=Hetch+Hetchy+Water+and+Power",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+  },
+  {
+   "identifier": "sanfranciscowate1935sanf",
+   "title": "San Francisco water and power",
+   "creator": "San Francisco Public Utilities Commission,Cheminant, L",
+   "year": 1935,
+   "pool": "sfpl",
+   "matched_alias": "O'Shaughnessy Dam",
+   "snippet": "SAWMILL AT MATHER STATION «O'SHAUGHNESSY DAM» 15 «O'SHAUGHNESSY DAM» AT HETCH HETCHY closer than",
+   "url": "https://archive.org/details/sanfranciscowate1935sanf",
+   "deep_link": "https://archive.org/details/sanfranciscowate1935sanf?q=O'Shaughnessy+Dam",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+  },
+  {
+   "identifier": "annualreportofco1933sanf",
+   "title": "Annual report of the Controller of the City and County of San Francisco for the fiscal year ended June 30, ...",
+   "creator": "San Francisco (Calif.). Office of the Controller",
+   "year": 1933,
+   "pool": "sfpl",
+   "matched_alias": "Hetch Hetchy",
+   "snippet": "000 1932 «Hetch Hetchy» 260,000 1932 «Hetch Hetchy» 143,000 1932 «Hetch Hetchy» 26,000",
+   "url": "https://archive.org/details/annualreportofco1933sanf",
+   "deep_link": "https://archive.org/details/annualreportofco1933sanf?q=Hetch+Hetchy",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+  },
+  {
+   "identifier": "reportofsanfranc1938sanf",
+   "title": "Report of the San Francisco Public Utilities Commission",
+   "creator": "San Francisco Public Utilities Commission,San Francisco (Calif.). Water Dept,Hetch Hetchy Water Supply,San Francisco (Calif.). Bureau of Light, Heat and Power,San Francisco Public Utilities Commission. Airport Dept,San Francisco (Calif.). Electric Power Bureau,San Francisco Municipal Railway,San Francisco (Calif.). Street and Public Building Lighting Dept",
+   "year": 1933,
+   "pool": "sfpl",
+   "matched_alias": "O'Shaughnessy Dam",
+   "snippet": "from Foot of «O'Shaughnessy Dam». . 1,736.93 Enlargement of «O'Shaughnessy Dam» 4,224,977.33 Ventilation",
+   "url": "https://archive.org/details/reportofsanfranc1938sanf",
+   "deep_link": "https://archive.org/details/reportofsanfranc1938sanf?q=O'Shaughnessy+Dam",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+  },
+  {
+   "identifier": "reportofsanfranc1936sanf",
+   "title": "Report of the San Francisco Public Utilities Commission",
+   "creator": "San Francisco Public Utilities Commission,San Francisco (Calif.). Water Dept,Hetch Hetchy Water Supply,San Francisco (Calif.). Bureau of Light, Heat and Power,San Francisco Public Utilities Commission. Airport Dept,San Francisco (Calif.). Electric Power Bureau,San Francisco Municipal Railway,San Francisco (Calif.). Street and Public Building Lighting Dept",
+   "year": 1933,
+   "pool": "sfpl",
+   "matched_alias": "O'Shaughnessy Dam",
+   "snippet": "Impounding Reservoirs 93 «O'Shaughnessy Dam» 95 Enlargement of «O'Shaughnessy Dam» 96 Lower Cherry River",
+   "url": "https://archive.org/details/reportofsanfranc1936sanf",
+   "deep_link": "https://archive.org/details/reportofsanfranc1936sanf?q=O'Shaughnessy+Dam",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+  }
+ ],
+ "dept_shelf": [
+  {
+   "identifier": "8minutes1989sanf",
+   "title": "Minutes",
+   "year": null,
+   "pool": "sfpl",
+   "url": "https://archive.org/details/8minutes1989sanf"
+  },
+  {
+   "identifier": "2minutes1987sanf",
+   "title": "Minutes",
+   "year": null,
+   "pool": "sfpl",
+   "url": "https://archive.org/details/2minutes1987sanf"
+  },
+  {
+   "identifier": "agendapublicutil1989sanf",
+   "title": "Agenda / Public Utilities Commission, City and County of San Francisco",
+   "year": null,
+   "pool": "sfpl",
+   "url": "https://archive.org/details/agendapublicutil1989sanf"
+  },
+  {
+   "identifier": "agendapublicutil2008sanf",
+   "title": "Agenda / Public Utilities Commission, City and County of San Francisco",
+   "year": null,
+   "pool": "sfpl",
+   "url": "https://archive.org/details/agendapublicutil2008sanf"
+  },
+  {
+   "identifier": "agendapublicutil1992sanf",
+   "title": "Agenda / Public Utilities Commission, City and County of San Francisco",
+   "year": null,
+   "pool": "sfpl",
+   "url": "https://archive.org/details/agendapublicutil1992sanf"
+  },
+  {
+   "identifier": "aminutes1994sanf",
+   "title": "Minutes",
+   "year": null,
+   "pool": "sfpl",
+   "url": "https://archive.org/details/aminutes1994sanf"
+  }
+ ],
+ "sources": [
+  {
+   "label": "City budget & payments",
+   "note": "SF Controller open data (budget, vouchers, contracts)"
+  },
+  {
+   "label": "Historical documents",
+   "note": "Internet Archive — SFPL partnership scans + Democracy's Library"
+  }
+ ],
+ "_gate": {
+  "has_photo": true,
+  "n_documents": 10,
+  "n_money_links": 2,
+  "meets_pre_summary": true
+ }
+}

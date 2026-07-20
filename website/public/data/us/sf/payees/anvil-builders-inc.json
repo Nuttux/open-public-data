@@ -1,0 +1,142 @@
+{
+ "generated_at": "2026-07-20T22:34:47.733467+00:00",
+ "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
+ "as_of": "2026-07-13T13:40:40+00:00",
+ "unit": "USD",
+ "slug": "anvil-builders-inc",
+ "name": "Anvil Builders Inc",
+ "kind": "supplier",
+ "is_non_profit": false,
+ "total_paid_usd": 240941046.9,
+ "n_years": 15,
+ "first_year": 2013,
+ "last_year": 2027,
+ "by_year": {
+  "2013": 519455.6,
+  "2014": 1787572.3,
+  "2015": 2930164.0,
+  "2016": 4641510.2,
+  "2017": 7685596.2,
+  "2018": 1338170.01,
+  "2019": 21309143.28,
+  "2020": 9944347.45,
+  "2021": 12385957.17,
+  "2022": 20113998.59,
+  "2023": 45976163.98,
+  "2024": 45560470.77,
+  "2025": 32218993.39,
+  "2026": 32572338.45,
+  "2027": 1957165.51
+ },
+ "top_departments": [
+  "PUC Public Utilities Commsn"
+ ],
+ "contracts_held": [
+  {
+   "contract_no": "1000029283",
+   "title": "Channel Force Main Interti",
+   "department": "PUC Public Utilities Commsn",
+   "department_code": "PUC",
+   "agreed_usd": 14918571.0,
+   "paid_usd": 72631164.61,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000021241",
+   "title": "Westside Pump Reliab Imprv",
+   "department": "PUC Public Utilities Commsn",
+   "department_code": "PUC",
+   "agreed_usd": 28861656.73,
+   "paid_usd": 40776580.26,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000024321",
+   "title": "Stern Grove Emerg Site Res",
+   "department": "PUC Public Utilities Commsn",
+   "department_code": "PUC",
+   "agreed_usd": 22010994.0,
+   "paid_usd": 19954597.21,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000034131",
+   "title": "Sewpcp 040/041/043 Imprmnt",
+   "department": "PUC Public Utilities Commsn",
+   "department_code": "PUC",
+   "agreed_usd": 10770215.0,
+   "paid_usd": 13498826.48,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000034336",
+   "title": "JOC-108 Gnrl Eng (A-Licen)",
+   "department": "PUC Public Utilities Commsn",
+   "department_code": "PUC",
+   "agreed_usd": 6292500.0,
+   "paid_usd": 3554014.34,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000026612",
+   "title": "MST As-Needed Tree Srvs-HH",
+   "department": "PUC Public Utilities Commsn",
+   "department_code": "PUC",
+   "agreed_usd": 1746000.0,
+   "paid_usd": 1417719.85,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000035010",
+   "title": "Sunnydale PS Safety Improv",
+   "department": "PUC Public Utilities Commsn",
+   "department_code": "PUC",
+   "agreed_usd": 4921244.0,
+   "paid_usd": 1262096.97,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000024929",
+   "title": "Master As-Needed Tree Srvs",
+   "department": "PUC Public Utilities Commsn",
+   "department_code": "PUC",
+   "agreed_usd": 500000.0,
+   "paid_usd": 426845.0,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000037194",
+   "title": "SEWPCP 940 Maint Bldg&Renv",
+   "department": "PUC Public Utilities Commsn",
+   "department_code": "PUC",
+   "agreed_usd": 8165435.05,
+   "paid_usd": 409500.0,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000035483",
+   "title": "Procuremt & Install Valves",
+   "department": "PUC Public Utilities Commsn",
+   "department_code": "PUC",
+   "agreed_usd": 5288360.0,
+   "paid_usd": 388911.0,
+   "sole_source": false
+  }
+ ],
+ "n_contracts_held": 10,
+ "variants": [
+  {
+   "name": "ANVIL BUILDERS INC",
+   "total": 240941046.9
+  }
+ ],
+ "n_variants": 1,
+ "merges": [],
+ "source": {
+  "name": "Vendor Payments (Vouchers)",
+  "dataset_id": "n9pm-xkyq",
+  "source_url": "https://data.sfgov.org/d/n9pm-xkyq",
+  "attribution": "SF Controller's Office",
+  "rows_updated_at": "2026-07-13T13:40:40+00:00"
+ }
+}

@@ -1,0 +1,45 @@
+{
+ "generated_at": "2026-07-20T22:34:47.730252+00:00",
+ "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
+ "as_of": "2026-07-13T13:40:40+00:00",
+ "unit": "USD",
+ "slug": "zb-national-association",
+ "name": "Zb National Association",
+ "kind": "fiscal_agent_debt_service",
+ "is_non_profit": false,
+ "total_paid_usd": 413921615.52,
+ "n_years": 9,
+ "first_year": 2018,
+ "last_year": 2026,
+ "by_year": {
+  "2018": 938606.9,
+  "2019": 15463798.28,
+  "2020": 23541155.66,
+  "2021": 35013818.87,
+  "2022": 50464546.6,
+  "2023": 66104248.35,
+  "2024": 68302485.93,
+  "2025": 78226102.84,
+  "2026": 75866852.09
+ },
+ "top_departments": [
+  "GEN General City - Unallocated"
+ ],
+ "contracts_held": [],
+ "n_contracts_held": 0,
+ "variants": [
+  {
+   "name": "ZB National Association",
+   "total": 413921615.52
+  }
+ ],
+ "n_variants": 1,
+ "merges": [],
+ "source": {
+  "name": "Vendor Payments (Vouchers)",
+  "dataset_id": "n9pm-xkyq",
+  "source_url": "https://data.sfgov.org/d/n9pm-xkyq",
+  "attribution": "SF Controller's Office",
+  "rows_updated_at": "2026-07-13T13:40:40+00:00"
+ }
+}

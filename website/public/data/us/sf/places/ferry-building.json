@@ -1,0 +1,161 @@
+{
+ "generated_at": "2026-07-20T22:30:00.120976+00:00",
+ "source_pipeline": "sf_place_candidates.json → sync_ia_sf.py + link_sf_places.py + fetch_sf_place_photos.py → export_sf_places.py",
+ "unit": "USD",
+ "slug": "ferry-building",
+ "name": "Ferry Building",
+ "kind": "Terminal / market",
+ "family": "port",
+ "address": "1 Ferry Building",
+ "lat": 37.7955,
+ "lon": -122.3937,
+ "owning_dept": {
+  "name": "Port of San Francisco",
+  "code": "PRT"
+ },
+ "photo": "/img/us/sf/places/ferry-building.jpg",
+ "photo_credit": {
+  "photo": "/img/us/sf/places/ferry-building.jpg",
+  "source": "Wikimedia Commons",
+  "file": "File:San_Francisco_Ferry_Building_(cropped).jpg",
+  "file_url": "https://commons.wikimedia.org/wiki/File:San_Francisco_Ferry_Building_(cropped).jpg",
+  "license": "CC BY-SA 4.0",
+  "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+  "author": "JaGa",
+  "fetched_at": "2026-07-20T22:28:11.570622+00:00"
+ },
+ "summary_en": "Archive documents cover the Ferry Building as a Port of San Francisco property, including a 1983 final environmental impact report on the Ferry Building complex (the Embarcadero, World Trade Center, Agriculture Building and Pier One), a 1971 northern-waterfront comprehensive plan, and Port Commission minutes on repairs to correct damage sustained by the building, on plaza planting, and on grant funds for the Ferry Building renovation and restoration project. The building is operated by the Port of San Francisco, whose FY2025 budget line is $156M; no place-specific city contract appears in this data.",
+ "published": true,
+ "money": {
+  "budget_line": {
+   "code": "PRT",
+   "name": "Port",
+   "total_usd": 156434885.0,
+   "fiscal_year": 2025
+  },
+  "contracts": [],
+  "grants": []
+ },
+ "documents": [
+  {
+   "identifier": "ferrybuildingcom2919sanf",
+   "title": "Ferry Building complex : the Embarcadero, Ferry Building/World Trade Center, Agriculture Building, Pier One : final environmental impact report",
+   "creator": "San Francisco (Calif.). Dept. of City Planning",
+   "year": 1983,
+   "pool": "sfpl",
+   "matched_alias": "Ferry Building",
+   "snippet": "3 1223 03559 3046 «FERRY BUILDING» COMPLEX The Embarcadero «Ferry Building»/World Trade Center Agriculture",
+   "url": "https://archive.org/details/ferrybuildingcom2919sanf",
+   "deep_link": "https://archive.org/details/ferrybuildingcom2919sanf?q=Ferry+Building",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+  },
+  {
+   "identifier": "comprehensivepla2219sanf",
+   "title": "The comprehensive plan : northern waterfront",
+   "creator": "San Francisco (Calif.). Dept. of City Planning",
+   "year": 1971,
+   "pool": "sfpl",
+   "matched_alias": "Ferry Building",
+   "snippet": "front of the «Ferry Building». Second, uses in the area north of the «Ferry Building» should be",
+   "url": "https://archive.org/details/comprehensivepla2219sanf",
+   "deep_link": "https://archive.org/details/comprehensivepla2219sanf?q=Ferry+Building",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+  },
+  {
+   "identifier": "minutes1993sanf_0",
+   "title": "Minutes",
+   "creator": "San Francisco Port Commission",
+   "year": null,
+   "pool": "sfpl",
+   "matched_alias": "Ferry Building",
+   "snippet": "of the «Ferry Building». These repairs are to correct damage to the «Ferry Building» sustained",
+   "url": "https://archive.org/details/minutes1993sanf_0",
+   "deep_link": "https://archive.org/details/minutes1993sanf_0?q=Ferry+Building",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+  },
+  {
+   "identifier": "minutes2219sanf",
+   "title": "Minutes",
+   "creator": "San Francisco Port Commission",
+   "year": null,
+   "pool": "sfpl",
+   "matched_alias": "Ferry Building",
+   "snippet": "planted in the center «Ferry Building» plaza and adjacent to the «Ferry Building» drop-off areas.",
+   "url": "https://archive.org/details/minutes2219sanf",
+   "deep_link": "https://archive.org/details/minutes2219sanf?q=Ferry+Building",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+  },
+  {
+   "identifier": "minutes1995sanf_0",
+   "title": "Minutes",
+   "creator": "San Francisco Port Commission",
+   "year": null,
+   "pool": "sfpl",
+   "matched_alias": "Ferry Building",
+   "snippet": "GRANT FUNDS FOR THE «FERRY BUILDING» RENOVATION PROJECT. The «Ferry Building» Restoration Project",
+   "url": "https://archive.org/details/minutes1995sanf_0",
+   "deep_link": "https://archive.org/details/minutes1995sanf_0?q=Ferry+Building",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+  }
+ ],
+ "dept_shelf": [
+  {
+   "identifier": "economicimpactso2000port",
+   "title": "The economic impacts of Port of San Francisco",
+   "year": 2000,
+   "pool": "sfpl",
+   "url": "https://archive.org/details/economicimpactso2000port"
+  },
+  {
+   "identifier": "biennialreportof1938cali_0",
+   "title": "Biennial report of the Board of State Harbor Commissioners for ..",
+   "year": 1865,
+   "pool": "sfpl",
+   "url": "https://archive.org/details/biennialreportof1938cali_0"
+  },
+  {
+   "identifier": "financialstateme1971sanf",
+   "title": "Financial statements and independent auditors' report",
+   "year": null,
+   "pool": "sfpl",
+   "url": "https://archive.org/details/financialstateme1971sanf"
+  },
+  {
+   "identifier": "wharfside1986sanf",
+   "title": "Wharfside",
+   "year": null,
+   "pool": "sfpl",
+   "url": "https://archive.org/details/wharfside1986sanf"
+  },
+  {
+   "identifier": "minutes2000sanf_1",
+   "title": "Minutes",
+   "year": null,
+   "pool": "sfpl",
+   "url": "https://archive.org/details/minutes2000sanf_1"
+  },
+  {
+   "identifier": "financialstateme1999sanf",
+   "title": "Financial statements and independent auditors' report",
+   "year": null,
+   "pool": "sfpl",
+   "url": "https://archive.org/details/financialstateme1999sanf"
+  }
+ ],
+ "sources": [
+  {
+   "label": "City budget & payments",
+   "note": "SF Controller open data (budget, vouchers, contracts)"
+  },
+  {
+   "label": "Historical documents",
+   "note": "Internet Archive — SFPL partnership scans + Democracy's Library"
+  }
+ ],
+ "_gate": {
+  "has_photo": true,
+  "n_documents": 5,
+  "n_money_links": 1,
+  "meets_pre_summary": true
+ }
+}

@@ -1,0 +1,48 @@
+{
+ "generated_at": "2026-07-20T22:34:47.729788+00:00",
+ "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
+ "as_of": "2026-07-13T13:40:40+00:00",
+ "unit": "USD",
+ "slug": "golden-gate-constructors",
+ "name": "Golden Gate Constructors",
+ "kind": "supplier",
+ "is_non_profit": false,
+ "total_paid_usd": 500254290.5,
+ "n_years": 12,
+ "first_year": 2014,
+ "last_year": 2025,
+ "by_year": {
+  "2014": 38311257.3,
+  "2015": 54364514.3,
+  "2016": 27593.2,
+  "2017": 35359691.7,
+  "2018": 37514073.05,
+  "2019": 1394154.49,
+  "2020": 21711293.07,
+  "2021": 73698381.28,
+  "2022": 100996738.14,
+  "2023": 31244907.53,
+  "2024": 52717798.58,
+  "2025": 52913887.86
+ },
+ "top_departments": [
+  "AIR Airport Commission"
+ ],
+ "contracts_held": [],
+ "n_contracts_held": 0,
+ "variants": [
+  {
+   "name": "GOLDEN GATE CONSTRUCTORS",
+   "total": 500254290.5
+  }
+ ],
+ "n_variants": 1,
+ "merges": [],
+ "source": {
+  "name": "Vendor Payments (Vouchers)",
+  "dataset_id": "n9pm-xkyq",
+  "source_url": "https://data.sfgov.org/d/n9pm-xkyq",
+  "attribution": "SF Controller's Office",
+  "rows_updated_at": "2026-07-13T13:40:40+00:00"
+ }
+}

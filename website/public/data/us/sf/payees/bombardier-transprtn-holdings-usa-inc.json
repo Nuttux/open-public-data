@@ -1,0 +1,47 @@
+{
+ "generated_at": "2026-07-20T22:34:47.740039+00:00",
+ "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
+ "as_of": "2026-07-13T13:40:40+00:00",
+ "unit": "USD",
+ "slug": "bombardier-transprtn-holdings-usa-inc",
+ "name": "Bombardier Transprtn (holdings) USA Inc",
+ "kind": "supplier",
+ "is_non_profit": false,
+ "total_paid_usd": 151556651.2,
+ "n_years": 11,
+ "first_year": 2007,
+ "last_year": 2017,
+ "by_year": {
+  "2007": 7774446.7,
+  "2008": 9802735.1,
+  "2009": 12282981.8,
+  "2010": 12260656.4,
+  "2011": 13330111.5,
+  "2012": 12340271.2,
+  "2013": 12976345.2,
+  "2014": 13773088.7,
+  "2015": 13162637.4,
+  "2016": 14403350.8,
+  "2017": 29450026.4
+ },
+ "top_departments": [
+  "AIR Airport Commission"
+ ],
+ "contracts_held": [],
+ "n_contracts_held": 0,
+ "variants": [
+  {
+   "name": "BOMBARDIER TRANSPRTN (HOLDINGS) USA INC",
+   "total": 151556651.2
+  }
+ ],
+ "n_variants": 1,
+ "merges": [],
+ "source": {
+  "name": "Vendor Payments (Vouchers)",
+  "dataset_id": "n9pm-xkyq",
+  "source_url": "https://data.sfgov.org/d/n9pm-xkyq",
+  "attribution": "SF Controller's Office",
+  "rows_updated_at": "2026-07-13T13:40:40+00:00"
+ }
+}

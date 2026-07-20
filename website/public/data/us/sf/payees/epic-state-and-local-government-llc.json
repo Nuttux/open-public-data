@@ -1,0 +1,55 @@
+{
+ "generated_at": "2026-07-20T22:34:47.742273+00:00",
+ "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
+ "as_of": "2026-07-13T13:40:40+00:00",
+ "unit": "USD",
+ "slug": "epic-state-and-local-government-llc",
+ "name": "Epic State and Local Government LLC",
+ "kind": "supplier",
+ "is_non_profit": false,
+ "total_paid_usd": 128503958.23,
+ "n_years": 9,
+ "first_year": 2018,
+ "last_year": 2026,
+ "by_year": {
+  "2018": 4100272.97,
+  "2019": 19476095.33,
+  "2020": 26839368.13,
+  "2021": 15000540.7,
+  "2022": 12617124.3,
+  "2023": 10662822.31,
+  "2024": 12053152.04,
+  "2025": 13320027.93,
+  "2026": 14434554.52
+ },
+ "top_departments": [
+  "DPH Public Health"
+ ],
+ "contracts_held": [
+  {
+   "contract_no": "1000008047",
+   "title": "EPIC Electronic Health Records",
+   "department": "DPH Public Health",
+   "department_code": "DPH",
+   "agreed_usd": 167384597.0,
+   "paid_usd": 127997399.23,
+   "sole_source": false
+  }
+ ],
+ "n_contracts_held": 1,
+ "variants": [
+  {
+   "name": "Epic State and Local Government LLC",
+   "total": 128503958.23
+  }
+ ],
+ "n_variants": 1,
+ "merges": [],
+ "source": {
+  "name": "Vendor Payments (Vouchers)",
+  "dataset_id": "n9pm-xkyq",
+  "source_url": "https://data.sfgov.org/d/n9pm-xkyq",
+  "attribution": "SF Controller's Office",
+  "rows_updated_at": "2026-07-13T13:40:40+00:00"
+ }
+}

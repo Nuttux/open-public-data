@@ -1,0 +1,94 @@
+{
+ "generated_at": "2026-07-20T22:34:47.734482+00:00",
+ "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
+ "as_of": "2026-07-13T13:40:40+00:00",
+ "unit": "USD",
+ "slug": "san-francisco-aids-foundation",
+ "name": "San Francisco Aids Foundation",
+ "kind": "nonprofit",
+ "is_non_profit": false,
+ "total_paid_usd": 225850526.41,
+ "n_years": 21,
+ "first_year": 2007,
+ "last_year": 2027,
+ "by_year": {
+  "2007": 4885447.1,
+  "2008": 6900878.4,
+  "2009": 7320753.1,
+  "2010": 5543501.1,
+  "2011": 6581988.0,
+  "2012": 7011290.0,
+  "2013": 10282771.2,
+  "2014": 9279542.6,
+  "2015": 10697061.7,
+  "2016": 9875190.2,
+  "2017": 14096874.9,
+  "2018": 11149352.76,
+  "2019": 13370203.32,
+  "2020": 15703911.27,
+  "2021": 15050450.09,
+  "2022": 13289091.84,
+  "2023": 16531522.49,
+  "2024": 15390736.04,
+  "2025": 15361148.98,
+  "2026": 17338905.52,
+  "2027": 189905.8
+ },
+ "top_departments": [
+  "DPH Public Health"
+ ],
+ "contracts_held": [
+  {
+   "contract_no": "1000020925",
+   "title": "HIV Rental Subsidies",
+   "department": "DPH Public Health",
+   "department_code": "DPH",
+   "agreed_usd": 51075213.0,
+   "paid_usd": 22157352.58,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000011493",
+   "title": "HIV & Beh/ SA Treatment",
+   "department": "DPH Public Health",
+   "department_code": "DPH",
+   "agreed_usd": 19635695.0,
+   "paid_usd": 10412428.02,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000032060",
+   "title": "Naloxone Dist and Educat",
+   "department": "DPH Public Health",
+   "department_code": "DPH",
+   "agreed_usd": 1545600.0,
+   "paid_usd": 736378.8,
+   "sole_source": true
+  },
+  {
+   "contract_no": "1000032800",
+   "title": "RFGA 9075",
+   "department": "DPH Public Health",
+   "department_code": "DPH",
+   "agreed_usd": 2640560.0,
+   "paid_usd": 171091.35,
+   "sole_source": false
+  }
+ ],
+ "n_contracts_held": 4,
+ "variants": [
+  {
+   "name": "SAN FRANCISCO AIDS FOUNDATION",
+   "total": 225850526.41
+  }
+ ],
+ "n_variants": 1,
+ "merges": [],
+ "source": {
+  "name": "Vendor Payments (Vouchers)",
+  "dataset_id": "n9pm-xkyq",
+  "source_url": "https://data.sfgov.org/d/n9pm-xkyq",
+  "attribution": "SF Controller's Office",
+  "rows_updated_at": "2026-07-13T13:40:40+00:00"
+ }
+}

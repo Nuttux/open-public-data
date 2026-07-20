@@ -1,0 +1,166 @@
+{
+ "generated_at": "2026-07-20T22:34:47.739026+00:00",
+ "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
+ "as_of": "2026-07-13T13:40:40+00:00",
+ "unit": "USD",
+ "slug": "instituto-familiar-de-la-raza-inc",
+ "name": "Instituto Familiar de La Raza Inc",
+ "kind": "nonprofit",
+ "is_non_profit": true,
+ "total_paid_usd": 162746892.63,
+ "n_years": 21,
+ "first_year": 2007,
+ "last_year": 2027,
+ "by_year": {
+  "2007": 3796162.9,
+  "2008": 3845330.9,
+  "2009": 4349597.8,
+  "2010": 4677384.0,
+  "2011": 5031129.4,
+  "2012": 4642592.9,
+  "2013": 4800095.2,
+  "2014": 5405499.6,
+  "2015": 5734328.6,
+  "2016": 6981386.6,
+  "2017": 10058515.3,
+  "2018": 7842374.0,
+  "2019": 9533240.89,
+  "2020": 9954120.73,
+  "2021": 11987651.9,
+  "2022": 12394766.17,
+  "2023": 12745206.92,
+  "2024": 12068416.7,
+  "2025": 12312291.72,
+  "2026": 14067931.58,
+  "2027": 518868.82
+ },
+ "top_departments": [
+  "CHF Children;Youth & Families"
+ ],
+ "contracts_held": [
+  {
+   "contract_no": "1000024733",
+   "title": "Chep Lhap",
+   "department": "DPH Public Health",
+   "department_code": "DPH",
+   "agreed_usd": 7845600.0,
+   "paid_usd": 5736291.73,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000032613",
+   "title": "GA-NurturingFamilies-24-29",
+   "department": "CHF Children;Youth & Families",
+   "department_code": "CHF",
+   "agreed_usd": 12929020.0,
+   "paid_usd": 3183248.8,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000032710",
+   "title": "24-02 FRC Initiative",
+   "department": "DEC Dept of Early Childhood",
+   "department_code": "DEC",
+   "agreed_usd": 5729749.0,
+   "paid_usd": 3027874.09,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000033948",
+   "title": "IFR Adult Outpatient",
+   "department": "DPH Public Health",
+   "department_code": "DPH",
+   "agreed_usd": 4344991.0,
+   "paid_usd": 1581876.49,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000033949",
+   "title": "Child Outpatient BH Clin",
+   "department": "DPH Public Health",
+   "department_code": "DPH",
+   "agreed_usd": 5267107.0,
+   "paid_usd": 1285847.08,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000008117",
+   "title": "IMCM",
+   "department": "DPH Public Health",
+   "department_code": "DPH",
+   "agreed_usd": 1441899.0,
+   "paid_usd": 1225454.42,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000009028",
+   "title": "IFR HIV Outpatient Health",
+   "department": "DPH Public Health",
+   "department_code": "DPH",
+   "agreed_usd": 1424528.0,
+   "paid_usd": 1066160.65,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000032575",
+   "title": "GA-Latinxs Adelante-24-29",
+   "department": "CHF Children;Youth & Families",
+   "department_code": "CHF",
+   "agreed_usd": 2686300.0,
+   "paid_usd": 740002.16,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000033487",
+   "title": "DPG - RFP 8816 - TAY Engagemen",
+   "department": "DPH Public Health",
+   "department_code": "DPH",
+   "agreed_usd": 2484051.0,
+   "paid_usd": 735113.08,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000032772",
+   "title": "RFP 8897 - Population #1",
+   "department": "DPH Public Health",
+   "department_code": "DPH",
+   "agreed_usd": 2522166.0,
+   "paid_usd": 707984.27,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000028957",
+   "title": "RFGA 7781",
+   "department": "DPH Public Health",
+   "department_code": "DPH",
+   "agreed_usd": 1310390.0,
+   "paid_usd": 610861.76,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000032576",
+   "title": "GA-Promesa-24-29",
+   "department": "CHF Children;Youth & Families",
+   "department_code": "CHF",
+   "agreed_usd": 1460000.0,
+   "paid_usd": 369883.0,
+   "sole_source": false
+  }
+ ],
+ "n_contracts_held": 12,
+ "variants": [
+  {
+   "name": "INSTITUTO FAMILIAR DE LA RAZA INC",
+   "total": 162746892.63
+  }
+ ],
+ "n_variants": 1,
+ "merges": [],
+ "source": {
+  "name": "Vendor Payments (Vouchers)",
+  "dataset_id": "n9pm-xkyq",
+  "source_url": "https://data.sfgov.org/d/n9pm-xkyq",
+  "attribution": "SF Controller's Office",
+  "rows_updated_at": "2026-07-13T13:40:40+00:00"
+ }
+}

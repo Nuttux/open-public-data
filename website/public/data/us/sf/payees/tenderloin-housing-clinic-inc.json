@@ -1,0 +1,93 @@
+{
+ "generated_at": "2026-07-20T22:34:47.728644+00:00",
+ "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
+ "as_of": "2026-07-13T13:40:40+00:00",
+ "unit": "USD",
+ "slug": "tenderloin-housing-clinic-inc",
+ "name": "Tenderloin Housing Clinic Inc",
+ "kind": "nonprofit",
+ "is_non_profit": false,
+ "total_paid_usd": 641864973.45,
+ "n_years": 20,
+ "first_year": 2007,
+ "last_year": 2026,
+ "by_year": {
+  "2007": 12666941.5,
+  "2008": 16408712.2,
+  "2009": 15265878.6,
+  "2010": 14349404.4,
+  "2011": 18066378.1,
+  "2012": 16054202.2,
+  "2013": 16783557.8,
+  "2014": 17547893.8,
+  "2015": 18360321.5,
+  "2016": 22869807.4,
+  "2017": 25915314.3,
+  "2018": 30397463.95,
+  "2019": 37496858.17,
+  "2020": 38431787.09,
+  "2021": 46212972.87,
+  "2022": 45710734.22,
+  "2023": 53957958.3,
+  "2024": 57856107.25,
+  "2025": 70327805.75,
+  "2026": 67184874.05
+ },
+ "top_departments": [
+  "HSA Human Services Agency"
+ ],
+ "contracts_held": [
+  {
+   "contract_no": "1000033372",
+   "title": "Transitional Housing/THC",
+   "department": "ADP Adult Probation",
+   "department_code": "ADP",
+   "agreed_usd": 7360191.0,
+   "paid_usd": 3799607.15,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000036989",
+   "title": "CNW CoC Rental Assistance",
+   "department": "HOM Homelessness Services",
+   "department_code": "HOM",
+   "agreed_usd": 9756673.0,
+   "paid_usd": 1022307.41,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000036917",
+   "title": "Garland CoC Rental Assist",
+   "department": "HOM Homelessness Services",
+   "department_code": "HOM",
+   "agreed_usd": 6833020.0,
+   "paid_usd": 903812.86,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000013284",
+   "title": "1049 Market St",
+   "department": "MYR Mayor",
+   "department_code": "MYR",
+   "agreed_usd": 60000.0,
+   "paid_usd": 0.0,
+   "sole_source": false
+  }
+ ],
+ "n_contracts_held": 4,
+ "variants": [
+  {
+   "name": "TENDERLOIN HOUSING CLINIC INC",
+   "total": 641864973.45
+  }
+ ],
+ "n_variants": 1,
+ "merges": [],
+ "source": {
+  "name": "Vendor Payments (Vouchers)",
+  "dataset_id": "n9pm-xkyq",
+  "source_url": "https://data.sfgov.org/d/n9pm-xkyq",
+  "attribution": "SF Controller's Office",
+  "rows_updated_at": "2026-07-13T13:40:40+00:00"
+ }
+}

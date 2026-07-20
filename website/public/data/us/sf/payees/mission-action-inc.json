@@ -1,0 +1,128 @@
+{
+ "generated_at": "2026-07-20T22:34:47.741802+00:00",
+ "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
+ "as_of": "2026-07-13T13:40:40+00:00",
+ "unit": "USD",
+ "slug": "mission-action-inc",
+ "name": "Mission Action Inc",
+ "kind": "nonprofit",
+ "is_non_profit": true,
+ "total_paid_usd": 135089516.4,
+ "n_years": 10,
+ "first_year": 2018,
+ "last_year": 2027,
+ "by_year": {
+  "2018": 4842921.77,
+  "2019": 6546809.28,
+  "2020": 7052369.67,
+  "2021": 10588700.97,
+  "2022": 13146231.03,
+  "2023": 21453512.38,
+  "2024": 19441947.79,
+  "2025": 26593105.29,
+  "2026": 24480596.27,
+  "2027": 943321.95
+ },
+ "top_departments": [
+  "HOM Homelessness Services"
+ ],
+ "contracts_held": [
+  {
+   "contract_no": "1000022325",
+   "title": "DSCS - Emergency Shelter",
+   "department": "HOM Homelessness Services",
+   "department_code": "HOM",
+   "agreed_usd": 18529877.0,
+   "paid_usd": 11731037.72,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000027873",
+   "title": "Dolores - Mission Inn ML",
+   "department": "HOM Homelessness Services",
+   "department_code": "HOM",
+   "agreed_usd": 10741000.0,
+   "paid_usd": 4933249.55,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000021933",
+   "title": "Mission Action - Adult Access",
+   "department": "HOM Homelessness Services",
+   "department_code": "HOM",
+   "agreed_usd": 5906405.0,
+   "paid_usd": 4013120.76,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000027872",
+   "title": "Dolores - Casa Esperanza ML",
+   "department": "HOM Homelessness Services",
+   "department_code": "HOM",
+   "agreed_usd": 7147000.0,
+   "paid_usd": 3535968.57,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000013523",
+   "title": "DSCS - Casa Quezada",
+   "department": "HOM Homelessness Services",
+   "department_code": "HOM",
+   "agreed_usd": 4558680.0,
+   "paid_usd": 2942516.56,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000017199",
+   "title": "Facility base health care and supportive services.",
+   "department": "DPH Public Health",
+   "department_code": "DPH",
+   "agreed_usd": 2612600.0,
+   "paid_usd": 1499150.31,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000035725",
+   "title": "Mission Action - Stay Over",
+   "department": "HOM Homelessness Services",
+   "department_code": "HOM",
+   "agreed_usd": 8360615.0,
+   "paid_usd": 1293573.46,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000036462",
+   "title": "Com Ctrd Groc Dist/El Merc",
+   "department": "HSA Human Services Agency",
+   "department_code": "HSA",
+   "agreed_usd": 7480000.0,
+   "paid_usd": 949078.39,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000036461",
+   "title": "Com Ctrd Groc Dist/Arcoiri",
+   "department": "HSA Human Services Agency",
+   "department_code": "HSA",
+   "agreed_usd": 1540000.0,
+   "paid_usd": 245235.56,
+   "sole_source": false
+  }
+ ],
+ "n_contracts_held": 9,
+ "variants": [
+  {
+   "name": "MISSION ACTION INC",
+   "total": 135089516.4
+  }
+ ],
+ "n_variants": 1,
+ "merges": [],
+ "source": {
+  "name": "Vendor Payments (Vouchers)",
+  "dataset_id": "n9pm-xkyq",
+  "source_url": "https://data.sfgov.org/d/n9pm-xkyq",
+  "attribution": "SF Controller's Office",
+  "rows_updated_at": "2026-07-13T13:40:40+00:00"
+ }
+}

@@ -1,0 +1,58 @@
+{
+ "generated_at": "2026-07-20T22:34:47.740592+00:00",
+ "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
+ "as_of": "2026-07-13T13:40:40+00:00",
+ "unit": "USD",
+ "slug": "p-a-administrative-services-inc",
+ "name": "P&a Administrative Services Inc",
+ "kind": "payroll_passthrough",
+ "is_non_profit": false,
+ "total_paid_usd": 147051028.13,
+ "n_years": 12,
+ "first_year": 2016,
+ "last_year": 2027,
+ "by_year": {
+  "2016": 208052.2,
+  "2017": 332526.0,
+  "2018": 10809061.28,
+  "2019": 13866126.31,
+  "2020": 13226070.21,
+  "2021": 14019170.38,
+  "2022": 15641799.29,
+  "2023": 16082863.77,
+  "2024": 18640282.33,
+  "2025": 20964332.88,
+  "2026": 22318408.08,
+  "2027": 942335.4
+ },
+ "top_departments": [
+  "HSS Health Service System"
+ ],
+ "contracts_held": [
+  {
+   "contract_no": "1000009802",
+   "title": "FSA and COBRA Admin Services",
+   "department": "HSS Health Service System",
+   "department_code": "HSS",
+   "agreed_usd": 4667457.0,
+   "paid_usd": 3635315.76,
+   "sole_source": false
+  }
+ ],
+ "n_contracts_held": 1,
+ "variants": [
+  {
+   "name": "P&A ADMINISTRATIVE SERVICES INC",
+   "total": 147051028.13
+  }
+ ],
+ "n_variants": 1,
+ "merges": [],
+ "source": {
+  "name": "Vendor Payments (Vouchers)",
+  "dataset_id": "n9pm-xkyq",
+  "source_url": "https://data.sfgov.org/d/n9pm-xkyq",
+  "attribution": "SF Controller's Office",
+  "rows_updated_at": "2026-07-13T13:40:40+00:00"
+ }
+}

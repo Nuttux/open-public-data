@@ -1,0 +1,260 @@
+{
+ "generated_at": "2026-07-20T22:30:00.123600+00:00",
+ "source_pipeline": "sf_place_candidates.json → sync_ia_sf.py + link_sf_places.py + fetch_sf_place_photos.py → export_sf_places.py",
+ "unit": "USD",
+ "slug": "muni-presidio-division",
+ "name": "Muni Presidio Division",
+ "kind": "Trolley yard",
+ "family": "transit",
+ "address": "949 Presidio Ave",
+ "lat": 37.7859,
+ "lon": -122.4468,
+ "owning_dept": {
+  "name": "Municipal Transportation Agency",
+  "code": "MTA"
+ },
+ "photo": null,
+ "photo_credit": null,
+ "summary_en": null,
+ "published": false,
+ "money": {
+  "budget_line": {
+   "code": "MTA",
+   "name": "Municipal Transportation Agency (Muni)",
+   "total_usd": 1517548716.0,
+   "fiscal_year": 2025
+  },
+  "contracts": [],
+  "grants": []
+ },
+ "documents": [
+  {
+   "identifier": "strategicplan2001199sanf",
+   "title": "Strategic plan 2000 : short range transit plan : draft for public review and comment / San Francisco Municipal Railway",
+   "creator": "San Francisco Municipal Railway",
+   "year": 2000,
+   "pool": "sfpl",
+   "matched_alias": "Presidio Trolley Coach Division",
+   "snippet": "strategy have been developed. «Presidio Trolley Coach Division» Reconstruction Rehabilitate and",
+   "url": "https://archive.org/details/strategicplan2001199sanf",
+   "deep_link": "https://archive.org/details/strategicplan2001199sanf?q=Presidio+Trolley+Coach+Division",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+  },
+  {
+   "identifier": "7minutes1998sanf",
+   "title": "Minutes",
+   "creator": "San Francisco (Calif.). Board of Supervisors. Finance Committee",
+   "year": 1997,
+   "pool": "sfpl",
+   "matched_alias": "Presidio Division",
+   "snippet": "implementation activities for the renovation of «Presidio Division» Operator Training Facilities. (Public",
+   "url": "https://archive.org/details/7minutes1998sanf",
+   "deep_link": "https://archive.org/details/7minutes1998sanf?q=Presidio+Division",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+  },
+  {
+   "identifier": "dataguide19901991990sanf",
+   "title": "The data guide, 1990-1991",
+   "creator": "San Francisco Municipal Railway. Community Affairs Dept",
+   "year": 1990,
+   "pool": "sfpl",
+   "matched_alias": "Presidio Trolley Coach Division",
+   "snippet": "183 buses. 256,876 sq. ft. 43 «Presidio Trolley Coach Division» and Muni Headquarters - Presidio",
+   "url": "https://archive.org/details/dataguide19901991990sanf",
+   "deep_link": "https://archive.org/details/dataguide19901991990sanf?q=Presidio+Trolley+Coach+Division",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+  },
+  {
+   "identifier": "coordinatedtrans1967simp",
+   "title": "Coordinated transit for the San Francisco Bay area--now to 1975 ; final report of Northern California Transit Demonstration Project",
+   "creator": "Simpson & Curtin, Inc.",
+   "year": 1975,
+   "pool": "sfpl",
+   "matched_alias": "Presidio Trolley Coach Division",
+   "snippet": "present trolley coach use. • «Presidio Trolley Coach Division» needs improvements to existing",
+   "url": "https://archive.org/details/coordinatedtrans1967simp",
+   "deep_link": "https://archive.org/details/coordinatedtrans1967simp?q=Presidio+Trolley+Coach+Division",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+  },
+  {
+   "identifier": "trolleytopics19501952sanf",
+   "title": "Trolley topics",
+   "creator": "San Francisco Municipal Railway,San Francisco Public Utilities Commission",
+   "year": 1946,
+   "pool": "sfpl",
+   "matched_alias": "Presidio Division",
+   "snippet": "Mike Carpine, «Presidio Division». Alm;i Mae Casaday, «Presidio, Division». Harry .1",
+   "url": "https://archive.org/details/trolleytopics19501952sanf",
+   "deep_link": "https://archive.org/details/trolleytopics19501952sanf?q=Presidio+Division",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+  },
+  {
+   "identifier": "bidcontractoppor1987sanf",
+   "title": "Bid and contract opportunities / by the Purchasing Department of the City and County of San Francisco Purchasing Department",
+   "creator": "San Francisco (Calif.). Purchasing Department",
+   "year": null,
+   "pool": "sfpl",
+   "matched_alias": "Presidio Division",
+   "snippet": "February 10, 1987 N/A Municipal Railway, «Presidio Division», 949 Presidio Ave. San Francisco Municipal",
+   "url": "https://archive.org/details/bidcontractoppor1987sanf",
+   "deep_link": "https://archive.org/details/bidcontractoppor1987sanf?q=Presidio+Division",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+  },
+  {
+   "identifier": "munimemo1984sanf",
+   "title": "The Muni memo",
+   "creator": "San Francisco Municipal Railway. Community Affairs Dept",
+   "year": null,
+   "pool": "sfpl",
+   "matched_alias": "Presidio Division",
+   "snippet": "good about change. In supervisor at «Presidio Division» Electrical Maintenance Shop. \"By his",
+   "url": "https://archive.org/details/munimemo1984sanf",
+   "deep_link": "https://archive.org/details/munimemo1984sanf?q=Presidio+Division",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+  },
+  {
+   "identifier": "managementaudito1996budg",
+   "title": "Management audit of the San Francisco Municipal Railway",
+   "creator": "Budget Analyst of the City and County of San Francisco",
+   "year": null,
+   "pool": "sfpl",
+   "matched_alias": "Presidio Division",
+   "snippet": "Trolley Cars Potrero Division, «Presidio Division» • «Presidio Division» has no maintenance bays for",
+   "url": "https://archive.org/details/managementaudito1996budg",
+   "deep_link": "https://archive.org/details/managementaudito1996budg?q=Presidio+Division",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+  },
+  {
+   "identifier": "agendapublicutil1988sanf",
+   "title": "Agenda / Public Utilities Commission, City and County of San Francisco",
+   "creator": "San Francisco Public Utilities Commission",
+   "year": null,
+   "pool": "sfpl",
+   "matched_alias": "Presidio Division",
+   "snippet": "Municipal Railway Contract No. MR-977, «Presidio Division»: Modifications to HVAC System, Transportation",
+   "url": "https://archive.org/details/agendapublicutil1988sanf",
+   "deep_link": "https://archive.org/details/agendapublicutil1988sanf?q=Presidio+Division",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+  },
+  {
+   "identifier": "3minutes1978sanf",
+   "title": "Minutes",
+   "creator": "San Francisco Public Utilities Commission",
+   "year": null,
+   "pool": "sfpl",
+   "matched_alias": "Presidio Division",
+   "snippet": "reason for development of «Presidio Division». 3y using «Presidio Division» $120,000 per year would",
+   "url": "https://archive.org/details/3minutes1978sanf",
+   "deep_link": "https://archive.org/details/3minutes1978sanf?q=Presidio+Division",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+  },
+  {
+   "identifier": "munimemo1987sanf",
+   "title": "The Muni memo",
+   "creator": "San Francisco Municipal Railway. Community Affairs Dept",
+   "year": null,
+   "pool": "sfpl",
+   "matched_alias": "Presidio Division",
+   "snippet": "Maintenance Worker of- the Month Patrick Ho of «Presidio Division». MUNI's most recent Operator Graduating",
+   "url": "https://archive.org/details/munimemo1987sanf",
+   "deep_link": "https://archive.org/details/munimemo1987sanf?q=Presidio+Division",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+  },
+  {
+   "identifier": "trolleytopics19731980sanf",
+   "title": "Trolley topics",
+   "creator": "San Francisco Municipal Railway,San Francisco Public Utilities Commission",
+   "year": null,
+   "pool": "sfpl",
+   "matched_alias": "Presidio Division",
+   "snippet": "Service following renovation of space at «Presidio Division» and actual acquisition of new personnel",
+   "url": "https://archive.org/details/trolleytopics19731980sanf",
+   "deep_link": "https://archive.org/details/trolleytopics19731980sanf?q=Presidio+Division",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+  },
+  {
+   "identifier": "2minutes1985sanf",
+   "title": "Minutes",
+   "creator": "San Francisco Public Utilities Commission",
+   "year": null,
+   "pool": "sfpl",
+   "matched_alias": "Presidio Division",
+   "snippet": "Municipal Railway Contract No. MR-907, «Presidio Division», Shop Heating and Ventilation Modification",
+   "url": "https://archive.org/details/2minutes1985sanf",
+   "deep_link": "https://archive.org/details/2minutes1985sanf?q=Presidio+Division",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+  },
+  {
+   "identifier": "citycountyofsan1979sanf_7",
+   "title": "City and County of San Francisco Capital Improvement and Facilities Maintenance Program ... / submitted by the Capital Improvement Advisory Committee pursuant to Administrative Code Section 3.09",
+   "creator": "San Francisco (Calif.). Capital Improvement Advisory Committee",
+   "year": null,
+   "pool": "sfpl",
+   "matched_alias": "Presidio Division",
+   "snippet": "Funding Code: a -X- 7,0-'^ ■5'- --- * «Presidio Division», shop area, provide door for steam",
+   "url": "https://archive.org/details/citycountyofsan1979sanf_7",
+   "deep_link": "https://archive.org/details/citycountyofsan1979sanf_7?q=Presidio+Division",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+  }
+ ],
+ "dept_shelf": [
+  {
+   "identifier": "financialreport1912sanf_0",
+   "title": "Financial report of the Municipal Railway of San Francisco",
+   "year": null,
+   "pool": "sfpl",
+   "url": "https://archive.org/details/financialreport1912sanf_0"
+  },
+  {
+   "identifier": "8minutes1989sanf",
+   "title": "Minutes",
+   "year": null,
+   "pool": "sfpl",
+   "url": "https://archive.org/details/8minutes1989sanf"
+  },
+  {
+   "identifier": "2minutes1987sanf",
+   "title": "Minutes",
+   "year": null,
+   "pool": "sfpl",
+   "url": "https://archive.org/details/2minutes1987sanf"
+  },
+  {
+   "identifier": "4minutes1991sanf",
+   "title": "Minutes",
+   "year": null,
+   "pool": "sfpl",
+   "url": "https://archive.org/details/4minutes1991sanf"
+  },
+  {
+   "identifier": "2minutes1986sanf",
+   "title": "Minutes",
+   "year": null,
+   "pool": "sfpl",
+   "url": "https://archive.org/details/2minutes1986sanf"
+  },
+  {
+   "identifier": "1minutes1983sanf",
+   "title": "Minutes",
+   "year": null,
+   "pool": "sfpl",
+   "url": "https://archive.org/details/1minutes1983sanf"
+  }
+ ],
+ "sources": [
+  {
+   "label": "City budget & payments",
+   "note": "SF Controller open data (budget, vouchers, contracts)"
+  },
+  {
+   "label": "Historical documents",
+   "note": "Internet Archive — SFPL partnership scans + Democracy's Library"
+  }
+ ],
+ "_gate": {
+  "has_photo": false,
+  "n_documents": 14,
+  "n_money_links": 1,
+  "meets_pre_summary": false
+ }
+}

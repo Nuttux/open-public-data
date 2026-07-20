@@ -1,0 +1,57 @@
+{
+ "generated_at": "2026-07-20T22:34:47.734392+00:00",
+ "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
+ "as_of": "2026-07-13T13:40:40+00:00",
+ "unit": "USD",
+ "slug": "en-pointe-technologies-sales-inc",
+ "name": "En Pointe Technologies Sales Inc",
+ "kind": "supplier",
+ "is_non_profit": false,
+ "total_paid_usd": 227311278.4,
+ "n_years": 16,
+ "first_year": 2007,
+ "last_year": 2022,
+ "by_year": {
+  "2007": 9429005.8,
+  "2008": 10290266.7,
+  "2009": 11487402.2,
+  "2010": 12933697.4,
+  "2011": 11090476.4,
+  "2012": 12687915.3,
+  "2013": 14920342.5,
+  "2014": 19010656.7,
+  "2015": 19275367.3,
+  "2016": 26540074.4,
+  "2017": 26346072.3,
+  "2018": 14227672.1,
+  "2019": 21183375.14,
+  "2020": 15950974.9,
+  "2021": 1827645.21,
+  "2022": 110334.05
+ },
+ "top_departments": [
+  "DPH Public Health",
+  "DT GSA - Technology"
+ ],
+ "contracts_held": [],
+ "n_contracts_held": 0,
+ "variants": [
+  {
+   "name": "EN POINTE TECHNOLOGIES SALES INC",
+   "total": 157008373.9
+  },
+  {
+   "name": "EN POINTE TECHNOLOGIES SALES LLC",
+   "total": 70302904.5
+  }
+ ],
+ "n_variants": 2,
+ "merges": [],
+ "source": {
+  "name": "Vendor Payments (Vouchers)",
+  "dataset_id": "n9pm-xkyq",
+  "source_url": "https://data.sfgov.org/d/n9pm-xkyq",
+  "attribution": "SF Controller's Office",
+  "rows_updated_at": "2026-07-13T13:40:40+00:00"
+ }
+}

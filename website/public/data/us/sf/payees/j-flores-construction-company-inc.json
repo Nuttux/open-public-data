@@ -1,0 +1,94 @@
+{
+ "generated_at": "2026-07-20T22:34:47.735367+00:00",
+ "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
+ "as_of": "2026-07-13T13:40:40+00:00",
+ "unit": "USD",
+ "slug": "j-flores-construction-company-inc",
+ "name": "J Flores Construction Company Inc",
+ "kind": "supplier",
+ "is_non_profit": false,
+ "total_paid_usd": 204810781.14,
+ "n_years": 21,
+ "first_year": 2007,
+ "last_year": 2027,
+ "by_year": {
+  "2007": 4133885.3,
+  "2008": 4657926.0,
+  "2009": 4419583.8,
+  "2010": 4484736.0,
+  "2011": 4194100.4,
+  "2012": 10289195.7,
+  "2013": 11449758.7,
+  "2014": 10213295.3,
+  "2015": 11402227.4,
+  "2016": 11471587.3,
+  "2017": 14920212.9,
+  "2018": 1738744.59,
+  "2019": 15726768.68,
+  "2020": 9206635.5,
+  "2021": 12878384.2,
+  "2022": 8828055.08,
+  "2023": 6891090.0,
+  "2024": 22815588.57,
+  "2025": 22038893.82,
+  "2026": 12521521.97,
+  "2027": 528589.93
+ },
+ "top_departments": [
+  "PUB Public Utilities Bureaus"
+ ],
+ "contracts_held": [
+  {
+   "contract_no": "1000029917",
+   "title": "As-Needed Sewer RPLC NO.44",
+   "department": "PUC Public Utilities Commsn",
+   "department_code": "PUC",
+   "agreed_usd": 9537768.52,
+   "paid_usd": 21466361.0,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000024712",
+   "title": "As-Needed Sewer Replc No43",
+   "department": "PUC Public Utilities Commsn",
+   "department_code": "PUC",
+   "agreed_usd": 8887220.47,
+   "paid_usd": 19952074.02,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000035396",
+   "title": "Various Sewer Replac NO.17",
+   "department": "PUC Public Utilities Commsn",
+   "department_code": "PUC",
+   "agreed_usd": 6935822.2,
+   "paid_usd": 3405656.13,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000036783",
+   "title": "As-Needed Spot SWR Repl 47",
+   "department": "PUC Public Utilities Commsn",
+   "department_code": "PUC",
+   "agreed_usd": 11365968.8,
+   "paid_usd": 0.0,
+   "sole_source": false
+  }
+ ],
+ "n_contracts_held": 4,
+ "variants": [
+  {
+   "name": "J FLORES CONSTRUCTION COMPANY INC",
+   "total": 204810781.14
+  }
+ ],
+ "n_variants": 1,
+ "merges": [],
+ "source": {
+  "name": "Vendor Payments (Vouchers)",
+  "dataset_id": "n9pm-xkyq",
+  "source_url": "https://data.sfgov.org/d/n9pm-xkyq",
+  "attribution": "SF Controller's Office",
+  "rows_updated_at": "2026-07-13T13:40:40+00:00"
+ }
+}

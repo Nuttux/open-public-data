@@ -1,0 +1,121 @@
+{
+ "generated_at": "2026-07-20T22:34:47.733058+00:00",
+ "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
+ "as_of": "2026-07-13T13:40:40+00:00",
+ "unit": "USD",
+ "slug": "esquivel-grading-paving-inc",
+ "name": "Esquivel Grading & Paving Inc",
+ "kind": "supplier",
+ "is_non_profit": false,
+ "total_paid_usd": 257137894.45,
+ "n_years": 21,
+ "first_year": 2007,
+ "last_year": 2027,
+ "by_year": {
+  "2007": 3172566.2,
+  "2008": 3648361.2,
+  "2009": 4038742.0,
+  "2010": 4263680.8,
+  "2011": 5673639.3,
+  "2012": 11524641.0,
+  "2013": 14142689.4,
+  "2014": 6438905.6,
+  "2015": 12332236.9,
+  "2016": 9768527.8,
+  "2017": 18601139.1,
+  "2018": 1196047.52,
+  "2019": 869730.24,
+  "2020": 12421855.49,
+  "2021": 14572369.03,
+  "2022": 25899721.54,
+  "2023": 19679442.92,
+  "2024": 33907639.14,
+  "2025": 35279169.1,
+  "2026": 19326032.12,
+  "2027": 380758.05
+ },
+ "top_departments": [
+  "DPW GSA - Public Works"
+ ],
+ "contracts_held": [
+  {
+   "contract_no": "1000012553",
+   "title": "Bttr Mkt St",
+   "department": "DPW GSA - Public Works",
+   "department_code": "DPW",
+   "agreed_usd": 28042151.29,
+   "paid_usd": 28856486.31,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000015023",
+   "title": "6th St Pdstrn Sfty Prj",
+   "department": "DPW GSA - Public Works",
+   "department_code": "DPW",
+   "agreed_usd": 9184838.78,
+   "paid_usd": 6807567.87,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000015751",
+   "title": "Safer Taylor St.",
+   "department": "DPW GSA - Public Works",
+   "department_code": "DPW",
+   "agreed_usd": 5955235.87,
+   "paid_usd": 6800679.3,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000036599",
+   "title": "Transbay Howard STSCP Proj",
+   "department": "DPW Public Works",
+   "department_code": "DPW",
+   "agreed_usd": 13179003.08,
+   "paid_usd": 3507637.5,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000034721",
+   "title": "VL Pave Renov No.71A & Swr",
+   "department": "DPW Public Works",
+   "department_code": "DPW",
+   "agreed_usd": 6149364.4,
+   "paid_usd": 1728587.09,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000037543",
+   "title": "VL Pave Renov NO.80 & SWR",
+   "department": "DPW Public Works",
+   "department_code": "DPW",
+   "agreed_usd": 4783132.1,
+   "paid_usd": 0.0,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000037110",
+   "title": "VL Pave Renov NO.81 & SWR",
+   "department": "DPW Public Works",
+   "department_code": "DPW",
+   "agreed_usd": 3534144.31,
+   "paid_usd": 0.0,
+   "sole_source": false
+  }
+ ],
+ "n_contracts_held": 7,
+ "variants": [
+  {
+   "name": "ESQUIVEL GRADING & PAVING INC",
+   "total": 257137894.45
+  }
+ ],
+ "n_variants": 1,
+ "merges": [],
+ "source": {
+  "name": "Vendor Payments (Vouchers)",
+  "dataset_id": "n9pm-xkyq",
+  "source_url": "https://data.sfgov.org/d/n9pm-xkyq",
+  "attribution": "SF Controller's Office",
+  "rows_updated_at": "2026-07-13T13:40:40+00:00"
+ }
+}

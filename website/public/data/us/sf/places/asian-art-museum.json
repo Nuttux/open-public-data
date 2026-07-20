@@ -1,0 +1,217 @@
+{
+ "generated_at": "2026-07-20T22:30:00.117599+00:00",
+ "source_pipeline": "sf_place_candidates.json → sync_ia_sf.py + link_sf_places.py + fetch_sf_place_photos.py → export_sf_places.py",
+ "unit": "USD",
+ "slug": "asian-art-museum",
+ "name": "Asian Art Museum",
+ "kind": "Museum",
+ "family": "culture",
+ "address": "200 Larkin St",
+ "lat": 37.7801,
+ "lon": -122.4163,
+ "owning_dept": {
+  "name": "Asian Art Museum",
+  "code": "AAM"
+ },
+ "photo": null,
+ "photo_credit": null,
+ "summary_en": null,
+ "published": false,
+ "money": {
+  "budget_line": {
+   "code": "AAM",
+   "name": "Asian Art Museum",
+   "total_usd": 11814506.0,
+   "fiscal_year": 2025
+  },
+  "contracts": [],
+  "grants": []
+ },
+ "documents": [
+  {
+   "identifier": "asianartmuseumfi1019sanf",
+   "title": "Asian Art Museum : final supplemental environmental impact report",
+   "creator": "San Francisco (Calif.). Planning Dept",
+   "year": 1998,
+   "pool": "sfpl",
+   "matched_alias": "Asian Art Museum",
+   "snippet": "accommodate the 97.750E 1 «Asian Art Museum» INTRODUCTION «Asian Art Museum» were based on a 1988",
+   "url": "https://archive.org/details/asianartmuseumfi1019sanf",
+   "deep_link": "https://archive.org/details/asianartmuseumfi1019sanf?q=Asian+Art+Museum",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+  },
+  {
+   "identifier": "asianartmuseumdr1819sanf",
+   "title": "Asian Art Museum : draft supplemental environmental impact report",
+   "creator": "San Francisco (Calif.). Planning Dept",
+   "year": 1998,
+   "pool": "sfpl",
+   "matched_alias": "Asian Art Museum",
+   "snippet": "accommodate the 97.750E 1 «Asian Art Museum» INTRODUCTION «Asian Art Museum» were based on a 1988",
+   "url": "https://archive.org/details/asianartmuseumdr1819sanf",
+   "deep_link": "https://archive.org/details/asianartmuseumdr1819sanf?q=Asian+Art+Museum",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+  },
+  {
+   "identifier": "asianartmuseumpr1199sanf",
+   "title": "Asian Art Museum project : EIR addendum to the San Francisco Main Library FEIR",
+   "creator": "San Francisco (Calif.). Planning Dept",
+   "year": 1996,
+   "pool": "sfpl",
+   "matched_alias": "Asian Art Museum",
+   "snippet": "Library/«Asian Art Museum» FEIR. Since certification of the Main Library/«Asian Art Museum» FEIR",
+   "url": "https://archive.org/details/asianartmuseumpr1199sanf",
+   "deep_link": "https://archive.org/details/asianartmuseumpr1199sanf?q=Asian+Art+Museum",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+  },
+  {
+   "identifier": "agenda1997sanf_0",
+   "title": "Agenda",
+   "creator": "San Francisco (Calif.). Asian Art Commission. Executive Committee",
+   "year": null,
+   "pool": "sfpl",
+   "matched_alias": "Asian Art Museum",
+   "snippet": "Emily Sano 6. «Asian Art Museum» Foundation Report Note: The «Asian Art Museum» Foundation Meeting",
+   "url": "https://archive.org/details/agenda1997sanf_0",
+   "deep_link": "https://archive.org/details/agenda1997sanf_0?q=Asian+Art+Museum",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+  },
+  {
+   "identifier": "agenda1990sanf_1",
+   "title": "Agenda",
+   "creator": "San Francisco (Calif.). Asian Art Commission. Executive Committee",
+   "year": null,
+   "pool": "sfpl",
+   "matched_alias": "Asian Art Museum",
+   "snippet": "The «Asian Art Museum» Foundation serves as the fiscal agent for the «Asian Art Museum» in",
+   "url": "https://archive.org/details/agenda1990sanf_1",
+   "deep_link": "https://archive.org/details/agenda1990sanf_1?q=Asian+Art+Museum",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+  },
+  {
+   "identifier": "agenda1989sanf",
+   "title": "Agenda",
+   "creator": "San Francisco (Calif.). Asian Art Commission",
+   "year": null,
+   "pool": "sfpl",
+   "matched_alias": "Asian Art Museum",
+   "snippet": "000 («Asian Art Museum» Registration Number R87-44.2); and WHEREAS, The «Asian Art Museum» Foundation",
+   "url": "https://archive.org/details/agenda1989sanf",
+   "deep_link": "https://archive.org/details/agenda1989sanf?q=Asian+Art+Museum",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+  },
+  {
+   "identifier": "agenda1989sanf_0",
+   "title": "Agenda",
+   "creator": "San Francisco (Calif.). Asian Art Commission. Acquisitions and Loans Committee",
+   "year": null,
+   "pool": "sfpl",
+   "matched_alias": "Asian Art Museum",
+   "snippet": "Loans Committee of the «Asian Art Museum»; 5. The «Asian Art Museum» will have the right to",
+   "url": "https://archive.org/details/agenda1989sanf_0",
+   "deep_link": "https://archive.org/details/agenda1989sanf_0?q=Asian+Art+Museum",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+  },
+  {
+   "identifier": "agenda1994sanf_0",
+   "title": "Agenda",
+   "creator": "San Francisco (Calif.). Asian Art Commission",
+   "year": null,
+   "pool": "sfpl",
+   "matched_alias": "Asian Art Museum",
+   "snippet": "the «Asian Art Museum», hereby designate him Senior Councellor to the «Asian Art Museum». September",
+   "url": "https://archive.org/details/agenda1994sanf_0",
+   "deep_link": "https://archive.org/details/agenda1994sanf_0?q=Asian+Art+Museum",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+  },
+  {
+   "identifier": "agenda1992sanf_10",
+   "title": "Agenda",
+   "creator": "San Francisco (Calif.). Asian Art Commission",
+   "year": null,
+   "pool": "sfpl",
+   "matched_alias": "Asian Art Museum",
+   "snippet": "the «Asian Art Museum» of San Francisco; and WHEREAS, The staff of the «Asian Art Museum» wishes",
+   "url": "https://archive.org/details/agenda1992sanf_10",
+   "deep_link": "https://archive.org/details/agenda1992sanf_10?q=Asian+Art+Museum",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+  },
+  {
+   "identifier": "agenda1984sanf",
+   "title": "Agenda",
+   "creator": "San Francisco (Calif.). Asian Art Commission",
+   "year": null,
+   "pool": "sfpl",
+   "matched_alias": "Asian Art Museum",
+   "snippet": "MEMBERS of the «ASIAN ART MUSEUM» 1. Appointment of Curators of the «Asian Art Museum» are non-civil",
+   "url": "https://archive.org/details/agenda1984sanf",
+   "deep_link": "https://archive.org/details/agenda1984sanf?q=Asian+Art+Museum",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+  },
+  {
+   "identifier": "agenda1989sanf_1",
+   "title": "Agenda",
+   "creator": "San Francisco (Calif.). Asian Art Commission. Exhibitions and Publications Committee",
+   "year": null,
+   "pool": "sfpl",
+   "matched_alias": "Asian Art Museum",
+   "snippet": "1989 - 10:30 A.M. Conference Room - «Asian Art Museum» There will be an opportunity for public",
+   "url": "https://archive.org/details/agenda1989sanf_1",
+   "deep_link": "https://archive.org/details/agenda1989sanf_1?q=Asian+Art+Museum",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+  },
+  {
+   "identifier": "publicprogrammin1998asia",
+   "title": "Public programming",
+   "creator": "Asian Art Museum of San Francisco. Avery Brundage Collection,Asian Art Museum--Chong-Moon Lee Center for Asian Art and Culture",
+   "year": null,
+   "pool": "sfpl",
+   "matched_alias": "Asian Art Museum",
+   "snippet": "(415)379-8895. «Asian Art Museum» General Visitor Information: The «Asian Art Museum» of San Francisco",
+   "url": "https://archive.org/details/publicprogrammin1998asia",
+   "deep_link": "https://archive.org/details/publicprogrammin1998asia?q=Asian+Art+Museum",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+  },
+  {
+   "identifier": "annualreport1980asia",
+   "title": "Annual report",
+   "creator": "Asian Art Museum of San Francisco. Avery Brundage Collection",
+   "year": null,
+   "pool": "sfpl",
+   "matched_alias": "Asian Art Museum",
+   "snippet": "the «Asian Art Museum»,\" public lecture, The Society for Asian Art, «Asian Art Museum» of San",
+   "url": "https://archive.org/details/annualreport1980asia",
+   "deep_link": "https://archive.org/details/annualreport1980asia?q=Asian+Art+Museum",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+  },
+  {
+   "identifier": "agenda1992sanf_11",
+   "title": "Agenda",
+   "creator": "San Francisco (Calif.). Asian Art Commission. Executive Committee",
+   "year": null,
+   "pool": "sfpl",
+   "matched_alias": "Asian Art Museum",
+   "snippet": "Chairman, «Asian Art Museum» Foundation Neil D. Chaitin, Vice Chairman, «Asian Art Museum» Foundation",
+   "url": "https://archive.org/details/agenda1992sanf_11",
+   "deep_link": "https://archive.org/details/agenda1992sanf_11?q=Asian+Art+Museum",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+  }
+ ],
+ "dept_shelf": [],
+ "sources": [
+  {
+   "label": "City budget & payments",
+   "note": "SF Controller open data (budget, vouchers, contracts)"
+  },
+  {
+   "label": "Historical documents",
+   "note": "Internet Archive — SFPL partnership scans + Democracy's Library"
+  }
+ ],
+ "_gate": {
+  "has_photo": false,
+  "n_documents": 14,
+  "n_money_links": 1,
+  "meets_pre_summary": false
+ }
+}

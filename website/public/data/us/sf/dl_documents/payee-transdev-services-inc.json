@@ -1,0 +1,48 @@
+{
+ "generated_at": "2026-07-20T22:33:29.198767+00:00",
+ "slug": "transdev-services-inc",
+ "matched_alias": "Transdev Services",
+ "note": "Where this vendor appears in SF's digitized public record.",
+ "documents": [
+  {
+   "identifier": "resolution2016sanf",
+   "title": "Resolution",
+   "year": null,
+   "pool": "sfpl",
+   "snippet": "[Paratransit Broker Agreement Amendment - «Transdev Services», Inc. - Not to Exceed $125,443,773]",
+   "url": "https://archive.org/details/resolution2016sanf",
+   "deep_link": "https://archive.org/details/resolution2016sanf?q=Transdev+Services",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+  },
+  {
+   "identifier": "meetingminutesbo2016sanf",
+   "title": "Meeting minutes / Board of Supervisors, City and County of San Francisco",
+   "year": null,
+   "pool": "sfpl",
+   "snippet": "[Paratransit Broker Agreement Amendment - «Transdev Services», Inc. - Not to Exceed $125,443,773]",
+   "url": "https://archive.org/details/meetingminutesbo2016sanf",
+   "deep_link": "https://archive.org/details/meetingminutesbo2016sanf?q=Transdev+Services",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+  },
+  {
+   "identifier": "resolution2016sanf_1",
+   "title": "Resolution",
+   "year": null,
+   "pool": "sfpl",
+   "snippet": "[Paratransit Broker and Operating Agreement - «Transdev Services», Inc. - Not to Exceed $142,902,104]",
+   "url": "https://archive.org/details/resolution2016sanf_1",
+   "deep_link": "https://archive.org/details/resolution2016sanf_1?q=Transdev+Services",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+  },
+  {
+   "identifier": "meetingminutesb2016sanf_0",
+   "title": "Meeting minutes / Board of Supervisors, City and County of San Francisco",
+   "year": null,
+   "pool": "sfpl",
+   "snippet": "[Paratransit Broker and Operating Agreement - «Transdev Services», Inc. - Not to Exceed $142,902,104]",
+   "url": "https://archive.org/details/meetingminutesb2016sanf_0",
+   "deep_link": "https://archive.org/details/meetingminutesb2016sanf_0?q=Transdev+Services",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+  }
+ ]
+}

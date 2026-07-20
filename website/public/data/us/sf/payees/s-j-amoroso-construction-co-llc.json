@@ -1,0 +1,61 @@
+{
+ "generated_at": "2026-07-20T22:34:47.730167+00:00",
+ "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
+ "as_of": "2026-07-13T13:40:40+00:00",
+ "unit": "USD",
+ "slug": "s-j-amoroso-construction-co-llc",
+ "name": "S J Amoroso Construction Co LLC",
+ "kind": "supplier",
+ "is_non_profit": false,
+ "total_paid_usd": 476941783.89,
+ "n_years": 20,
+ "first_year": 2007,
+ "last_year": 2026,
+ "by_year": {
+  "2007": 6205002.4,
+  "2008": 10809441.5,
+  "2009": 7928677.0,
+  "2010": 15605445.8,
+  "2011": 29668048.2,
+  "2012": 18381490.9,
+  "2013": 13761353.0,
+  "2014": 12011210.9,
+  "2015": 10041246.9,
+  "2016": 8808212.0,
+  "2017": 25383598.7,
+  "2018": 35565039.89,
+  "2019": 42703492.02,
+  "2020": 45970901.64,
+  "2021": 49560156.35,
+  "2022": 26304548.69,
+  "2023": 5526638.57,
+  "2024": 25539797.96,
+  "2025": 48525937.06,
+  "2026": 38641544.41
+ },
+ "top_departments": [
+  "PUC Public Utilities Commsn",
+  "DPW GSA - Public Works"
+ ],
+ "contracts_held": [],
+ "n_contracts_held": 0,
+ "variants": [
+  {
+   "name": "S J AMOROSO CONSTRUCTION CO LLC",
+   "total": 318338056.59
+  },
+  {
+   "name": "S J AMOROSO CONSTRUCTION CO INC",
+   "total": 158603727.3
+  }
+ ],
+ "n_variants": 2,
+ "merges": [],
+ "source": {
+  "name": "Vendor Payments (Vouchers)",
+  "dataset_id": "n9pm-xkyq",
+  "source_url": "https://data.sfgov.org/d/n9pm-xkyq",
+  "attribution": "SF Controller's Office",
+  "rows_updated_at": "2026-07-13T13:40:40+00:00"
+ }
+}

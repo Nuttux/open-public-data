@@ -1,0 +1,53 @@
+{
+ "generated_at": "2026-07-20T22:34:47.731814+00:00",
+ "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
+ "as_of": "2026-07-13T13:40:40+00:00",
+ "unit": "USD",
+ "slug": "shimmick-construction-co-inc",
+ "name": "Shimmick Construction Co Inc",
+ "kind": "supplier",
+ "is_non_profit": false,
+ "total_paid_usd": 309198679.55,
+ "n_years": 17,
+ "first_year": 2007,
+ "last_year": 2026,
+ "by_year": {
+  "2007": 18515545.4,
+  "2008": 32085968.7,
+  "2009": 17413852.0,
+  "2010": 16667096.6,
+  "2011": 38386851.6,
+  "2012": 44794485.3,
+  "2013": 42971144.9,
+  "2014": 19365566.1,
+  "2015": 13947019.8,
+  "2016": 6547422.3,
+  "2017": 24261525.3,
+  "2018": 1513512.81,
+  "2019": 2409002.13,
+  "2020": 15627872.44,
+  "2022": 14664456.36,
+  "2024": 24962.15,
+  "2026": 2395.66
+ },
+ "top_departments": [
+  "PUB Public Utilities Bureaus"
+ ],
+ "contracts_held": [],
+ "n_contracts_held": 0,
+ "variants": [
+  {
+   "name": "SHIMMICK CONSTRUCTION CO INC",
+   "total": 309198679.55
+  }
+ ],
+ "n_variants": 1,
+ "merges": [],
+ "source": {
+  "name": "Vendor Payments (Vouchers)",
+  "dataset_id": "n9pm-xkyq",
+  "source_url": "https://data.sfgov.org/d/n9pm-xkyq",
+  "attribution": "SF Controller's Office",
+  "rows_updated_at": "2026-07-13T13:40:40+00:00"
+ }
+}

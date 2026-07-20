@@ -1,0 +1,64 @@
+{
+ "generated_at": "2026-07-20T22:34:47.741364+00:00",
+ "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
+ "as_of": "2026-07-13T13:40:40+00:00",
+ "unit": "USD",
+ "slug": "brilliant-corners",
+ "name": "Brilliant Corners",
+ "kind": "nonprofit",
+ "is_non_profit": true,
+ "total_paid_usd": 137887643.61,
+ "n_years": 18,
+ "first_year": 2010,
+ "last_year": 2027,
+ "by_year": {
+  "2010": 1379329.0,
+  "2011": 1674878.8,
+  "2012": 2088116.3,
+  "2013": 2340366.1,
+  "2014": 2501688.0,
+  "2015": 2878371.8,
+  "2016": 2759976.7,
+  "2017": 3556246.3,
+  "2018": 2328571.39,
+  "2019": 4234992.36,
+  "2020": 7423064.76,
+  "2021": 9667320.38,
+  "2022": 11011125.39,
+  "2023": 18724016.04,
+  "2024": 19193142.69,
+  "2025": 22448543.88,
+  "2026": 22290148.09,
+  "2027": 1387745.63
+ },
+ "top_departments": [
+  "HOM Homelessness Services"
+ ],
+ "contracts_held": [
+  {
+   "contract_no": "1000028386",
+   "title": "Das-Sshrsa FY23-27",
+   "department": "HSA Human Services Agency",
+   "department_code": "HSA",
+   "agreed_usd": 15036591.0,
+   "paid_usd": 9412536.83,
+   "sole_source": false
+  }
+ ],
+ "n_contracts_held": 1,
+ "variants": [
+  {
+   "name": "BRILLIANT CORNERS",
+   "total": 137887643.61
+  }
+ ],
+ "n_variants": 1,
+ "merges": [],
+ "source": {
+  "name": "Vendor Payments (Vouchers)",
+  "dataset_id": "n9pm-xkyq",
+  "source_url": "https://data.sfgov.org/d/n9pm-xkyq",
+  "attribution": "SF Controller's Office",
+  "rows_updated_at": "2026-07-13T13:40:40+00:00"
+ }
+}

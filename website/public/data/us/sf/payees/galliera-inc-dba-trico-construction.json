@@ -1,0 +1,76 @@
+{
+ "generated_at": "2026-07-20T22:34:47.744907+00:00",
+ "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
+ "as_of": "2026-07-13T13:40:40+00:00",
+ "unit": "USD",
+ "slug": "galliera-inc-dba-trico-construction",
+ "name": "Galliera Inc DBA Trico Construction",
+ "kind": "supplier",
+ "is_non_profit": false,
+ "total_paid_usd": 106032247.99,
+ "n_years": 21,
+ "first_year": 2007,
+ "last_year": 2027,
+ "by_year": {
+  "2007": 5449355.8,
+  "2008": 10365035.4,
+  "2009": 2332607.0,
+  "2010": 8442296.8,
+  "2011": 6801888.5,
+  "2012": 4091931.6,
+  "2013": 1072072.4,
+  "2014": 11852988.2,
+  "2015": 8969530.4,
+  "2016": 10466536.5,
+  "2017": 2936971.2,
+  "2018": 977215.38,
+  "2019": 2113311.47,
+  "2020": 690409.99,
+  "2021": 820259.02,
+  "2022": 1707295.62,
+  "2023": 1241272.93,
+  "2024": 13873954.7,
+  "2025": 8600767.22,
+  "2026": 3224245.75,
+  "2027": 2302.11
+ },
+ "top_departments": [
+  "DPW GSA - Public Works"
+ ],
+ "contracts_held": [
+  {
+   "contract_no": "1000025378",
+   "title": "11689.53-As-NeededAgrmtCon",
+   "department": "AIR Airport Commission",
+   "department_code": "AIR",
+   "agreed_usd": -112100.0,
+   "paid_usd": 2315939.94,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000034868",
+   "title": "11076.61-DBB-Smart Water",
+   "department": "AIR Airport Commission",
+   "department_code": "AIR",
+   "agreed_usd": 2354872.0,
+   "paid_usd": 426660.45,
+   "sole_source": false
+  }
+ ],
+ "n_contracts_held": 2,
+ "variants": [
+  {
+   "name": "GALLIERA INC DBA TRICO CONSTRUCTION",
+   "total": 106032247.99
+  }
+ ],
+ "n_variants": 1,
+ "merges": [],
+ "source": {
+  "name": "Vendor Payments (Vouchers)",
+  "dataset_id": "n9pm-xkyq",
+  "source_url": "https://data.sfgov.org/d/n9pm-xkyq",
+  "attribution": "SF Controller's Office",
+  "rows_updated_at": "2026-07-13T13:40:40+00:00"
+ }
+}

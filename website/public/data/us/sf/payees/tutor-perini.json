@@ -1,0 +1,63 @@
+{
+ "generated_at": "2026-07-20T22:34:47.727064+00:00",
+ "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
+ "as_of": "2026-07-13T13:40:40+00:00",
+ "unit": "USD",
+ "slug": "tutor-perini",
+ "name": "Tutor Perini",
+ "kind": "supplier",
+ "is_non_profit": false,
+ "total_paid_usd": 1401621377.34,
+ "n_years": 13,
+ "first_year": 2011,
+ "last_year": 2023,
+ "by_year": {
+  "2011": 42239127.9,
+  "2012": 80025817.8,
+  "2013": 67666546.6,
+  "2014": 112838373.8,
+  "2015": 131466550.0,
+  "2016": 134268653.2,
+  "2017": 109737247.0,
+  "2018": 117507443.41,
+  "2019": 97754182.95,
+  "2020": 135384101.4,
+  "2021": 261522717.24,
+  "2022": 33047812.95,
+  "2023": 78162803.09
+ },
+ "top_departments": [
+  "MTA Municipal Transprtn Agncy",
+  "PUB Public Utilities Bureaus"
+ ],
+ "contracts_held": [],
+ "n_contracts_held": 0,
+ "variants": [
+  {
+   "name": "TUTOR PERINI CORPORATION",
+   "total": 1136103075.83
+  },
+  {
+   "name": "SOUTHLAND TUTOR PERINI JV",
+   "total": 265518301.51
+  }
+ ],
+ "n_variants": 2,
+ "merges": [
+  {
+   "variant": "TUTOR PERINI CORPORATION",
+   "reason": "Tutor Perini Corporation"
+  },
+  {
+   "variant": "SOUTHLAND TUTOR PERINI JV",
+   "reason": "Southland / Tutor Perini joint venture (e.g. Central Subway)"
+  }
+ ],
+ "source": {
+  "name": "Vendor Payments (Vouchers)",
+  "dataset_id": "n9pm-xkyq",
+  "source_url": "https://data.sfgov.org/d/n9pm-xkyq",
+  "attribution": "SF Controller's Office",
+  "rows_updated_at": "2026-07-13T13:40:40+00:00"
+ }
+}

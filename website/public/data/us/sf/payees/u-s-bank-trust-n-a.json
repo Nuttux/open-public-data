@@ -1,0 +1,73 @@
+{
+ "generated_at": "2026-07-20T22:34:47.728251+00:00",
+ "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
+ "as_of": "2026-07-13T13:40:40+00:00",
+ "unit": "USD",
+ "slug": "u-s-bank-trust-n-a",
+ "name": "U S Bank Trust N a",
+ "kind": "fiscal_agent_debt_service",
+ "is_non_profit": false,
+ "total_paid_usd": 735152870.12,
+ "n_years": 18,
+ "first_year": 2007,
+ "last_year": 2025,
+ "by_year": {
+  "2007": 117877408.4,
+  "2008": 130394313.1,
+  "2009": 159469251.6,
+  "2010": 115640093.3,
+  "2011": 27974287.5,
+  "2012": 21979049.3,
+  "2013": 37420079.8,
+  "2014": 28284697.5,
+  "2015": 32755652.7,
+  "2016": 31310465.0,
+  "2017": 31559857.8,
+  "2018": 754.5,
+  "2019": 1139.94,
+  "2021": 129.12,
+  "2022": 260539.61,
+  "2023": 212445.86,
+  "2024": 7064.88,
+  "2025": 5640.21
+ },
+ "top_departments": [
+  "WWE Wastewater Enterprise"
+ ],
+ "contracts_held": [
+  {
+   "contract_no": "1000030449",
+   "title": "FA-Special Fund P70/28acre",
+   "department": "PRT Port",
+   "department_code": "PRT",
+   "agreed_usd": 200000.0,
+   "paid_usd": 0.0,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000035560",
+   "title": "U S Bank Trust N a",
+   "department": "PRT Port",
+   "department_code": "PRT",
+   "agreed_usd": 200000.0,
+   "paid_usd": 0.0,
+   "sole_source": false
+  }
+ ],
+ "n_contracts_held": 2,
+ "variants": [
+  {
+   "name": "U S BANK TRUST N A",
+   "total": 735152870.12
+  }
+ ],
+ "n_variants": 1,
+ "merges": [],
+ "source": {
+  "name": "Vendor Payments (Vouchers)",
+  "dataset_id": "n9pm-xkyq",
+  "source_url": "https://data.sfgov.org/d/n9pm-xkyq",
+  "attribution": "SF Controller's Office",
+  "rows_updated_at": "2026-07-13T13:40:40+00:00"
+ }
+}

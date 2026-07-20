@@ -1,0 +1,66 @@
+{
+ "generated_at": "2026-07-20T22:34:47.744473+00:00",
+ "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
+ "as_of": "2026-07-13T13:40:40+00:00",
+ "unit": "USD",
+ "slug": "shell-energy-north-america-us-lp",
+ "name": "Shell Energy North America (us) Lp",
+ "kind": "supplier",
+ "is_non_profit": false,
+ "total_paid_usd": 109200992.88,
+ "n_years": 11,
+ "first_year": 2013,
+ "last_year": 2026,
+ "by_year": {
+  "2013": 9094.4,
+  "2017": 628352.5,
+  "2018": 2328801.5,
+  "2019": 21042766.5,
+  "2020": 30852382.03,
+  "2021": 24207030.25,
+  "2022": 10332346.25,
+  "2023": 14117477.8,
+  "2024": 310996.65,
+  "2025": 50000.0,
+  "2026": 5321745.0
+ },
+ "top_departments": [
+  "PUC Public Utilities Commsn"
+ ],
+ "contracts_held": [
+  {
+   "contract_no": "1000034495",
+   "title": "CLP SE Ghg-Free 5542 FY25",
+   "department": "PUC Public Utilities Commsn",
+   "department_code": "PUC",
+   "agreed_usd": 4533750.0,
+   "paid_usd": 2797908.75,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000038161",
+   "title": "CLP Shell Carbon Free FY26",
+   "department": "PUC Public Utilities Commsn",
+   "department_code": "PUC",
+   "agreed_usd": 404000.0,
+   "paid_usd": 0.0,
+   "sole_source": false
+  }
+ ],
+ "n_contracts_held": 2,
+ "variants": [
+  {
+   "name": "SHELL ENERGY NORTH AMERICA (US) LP",
+   "total": 109200992.88
+  }
+ ],
+ "n_variants": 1,
+ "merges": [],
+ "source": {
+  "name": "Vendor Payments (Vouchers)",
+  "dataset_id": "n9pm-xkyq",
+  "source_url": "https://data.sfgov.org/d/n9pm-xkyq",
+  "attribution": "SF Controller's Office",
+  "rows_updated_at": "2026-07-13T13:40:40+00:00"
+ }
+}

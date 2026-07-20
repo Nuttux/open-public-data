@@ -1,0 +1,54 @@
+{
+ "generated_at": "2026-07-20T22:34:47.739155+00:00",
+ "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
+ "as_of": "2026-07-13T13:40:40+00:00",
+ "unit": "USD",
+ "slug": "nrg-business-marketing-llc",
+ "name": "Nrg Business Marketing LLC",
+ "kind": "supplier",
+ "is_non_profit": false,
+ "total_paid_usd": 160203781.17,
+ "n_years": 8,
+ "first_year": 2019,
+ "last_year": 2026,
+ "by_year": {
+  "2019": 14716463.0,
+  "2020": 27045043.6,
+  "2021": 36158008.9,
+  "2022": 28661913.41,
+  "2023": 17333059.46,
+  "2024": 4085815.2,
+  "2025": 17661035.4,
+  "2026": 14542442.2
+ },
+ "top_departments": [
+  "PUC Public Utilities Commsn"
+ ],
+ "contracts_held": [
+  {
+   "contract_no": "1000038290",
+   "title": "CLP Sysenergy 7502 FY26",
+   "department": "PUC Public Utilities Commsn",
+   "department_code": "PUC",
+   "agreed_usd": 8046312.5,
+   "paid_usd": 0.0,
+   "sole_source": false
+  }
+ ],
+ "n_contracts_held": 1,
+ "variants": [
+  {
+   "name": "NRG Business Marketing LLC",
+   "total": 160203781.17
+  }
+ ],
+ "n_variants": 1,
+ "merges": [],
+ "source": {
+  "name": "Vendor Payments (Vouchers)",
+  "dataset_id": "n9pm-xkyq",
+  "source_url": "https://data.sfgov.org/d/n9pm-xkyq",
+  "attribution": "SF Controller's Office",
+  "rows_updated_at": "2026-07-13T13:40:40+00:00"
+ }
+}

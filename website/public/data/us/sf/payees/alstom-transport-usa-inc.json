@@ -1,0 +1,55 @@
+{
+ "generated_at": "2026-07-20T22:34:47.734797+00:00",
+ "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
+ "as_of": "2026-07-13T13:40:40+00:00",
+ "unit": "USD",
+ "slug": "alstom-transport-usa-inc",
+ "name": "Alstom Transport USA Inc",
+ "kind": "supplier",
+ "is_non_profit": false,
+ "total_paid_usd": 222459297.98,
+ "n_years": 9,
+ "first_year": 2018,
+ "last_year": 2026,
+ "by_year": {
+  "2018": 14145530.23,
+  "2019": 17335607.61,
+  "2020": 19759821.1,
+  "2021": 38872928.76,
+  "2022": 43556659.23,
+  "2023": 21106141.4,
+  "2024": 26697848.62,
+  "2025": 22272095.86,
+  "2026": 18712665.17
+ },
+ "top_departments": [
+  "AIR Airport Commission"
+ ],
+ "contracts_held": [
+  {
+   "contract_no": "1000014594",
+   "title": "AIR50175 AirTrain",
+   "department": "AIR Airport Commission",
+   "department_code": "AIR",
+   "agreed_usd": 208564613.1,
+   "paid_usd": 142600277.13,
+   "sole_source": false
+  }
+ ],
+ "n_contracts_held": 1,
+ "variants": [
+  {
+   "name": "Alstom Transport USA Inc",
+   "total": 222459297.98
+  }
+ ],
+ "n_variants": 1,
+ "merges": [],
+ "source": {
+  "name": "Vendor Payments (Vouchers)",
+  "dataset_id": "n9pm-xkyq",
+  "source_url": "https://data.sfgov.org/d/n9pm-xkyq",
+  "attribution": "SF Controller's Office",
+  "rows_updated_at": "2026-07-13T13:40:40+00:00"
+ }
+}

@@ -1,0 +1,83 @@
+{
+ "generated_at": "2026-07-20T22:34:47.735467+00:00",
+ "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
+ "as_of": "2026-07-13T13:40:40+00:00",
+ "unit": "USD",
+ "slug": "m-squared-construction-inc",
+ "name": "M Squared Construction Inc",
+ "kind": "supplier",
+ "is_non_profit": false,
+ "total_paid_usd": 203934446.89,
+ "n_years": 19,
+ "first_year": 2008,
+ "last_year": 2026,
+ "by_year": {
+  "2008": 641917.5,
+  "2009": 2414084.9,
+  "2010": 1470290.1,
+  "2011": 4740326.5,
+  "2012": 3613749.0,
+  "2013": 6424718.6,
+  "2014": 11520963.4,
+  "2015": 13798764.4,
+  "2016": 13577120.0,
+  "2017": 16553289.2,
+  "2018": 2494298.71,
+  "2019": 1730705.99,
+  "2020": 15057901.37,
+  "2021": 45000956.53,
+  "2022": 20994237.61,
+  "2023": 8088501.37,
+  "2024": 21129419.5,
+  "2025": 10944404.88,
+  "2026": 3738797.33
+ },
+ "top_departments": [
+  "DPW GSA - Public Works"
+ ],
+ "contracts_held": [
+  {
+   "contract_no": "1000032008",
+   "title": "8' & 12' Diwm Replc Vari",
+   "department": "PUC Public Utilities Commsn",
+   "department_code": "PUC",
+   "agreed_usd": 5006367.14,
+   "paid_usd": 11848531.9,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000034056",
+   "title": "8'&16' Diwm Replc Vari Loc",
+   "department": "PUC Public Utilities Commsn",
+   "department_code": "PUC",
+   "agreed_usd": 9772739.0,
+   "paid_usd": 7331390.82,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000038065",
+   "title": "WTR SWR RPLC 3RD to Griffi",
+   "department": "PUC Public Utilities Commsn",
+   "department_code": "PUC",
+   "agreed_usd": 11016657.0,
+   "paid_usd": 0.0,
+   "sole_source": false
+  }
+ ],
+ "n_contracts_held": 3,
+ "variants": [
+  {
+   "name": "M SQUARED CONSTRUCTION INC",
+   "total": 203934446.89
+  }
+ ],
+ "n_variants": 1,
+ "merges": [],
+ "source": {
+  "name": "Vendor Payments (Vouchers)",
+  "dataset_id": "n9pm-xkyq",
+  "source_url": "https://data.sfgov.org/d/n9pm-xkyq",
+  "attribution": "SF Controller's Office",
+  "rows_updated_at": "2026-07-13T13:40:40+00:00"
+ }
+}

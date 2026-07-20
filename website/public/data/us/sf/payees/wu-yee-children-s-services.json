@@ -1,0 +1,85 @@
+{
+ "generated_at": "2026-07-20T22:34:47.731226+00:00",
+ "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
+ "as_of": "2026-07-13T13:40:40+00:00",
+ "unit": "USD",
+ "slug": "wu-yee-children-s-services",
+ "name": "Wu Yee Children's Services",
+ "kind": "nonprofit",
+ "is_non_profit": false,
+ "total_paid_usd": 329167242.49,
+ "n_years": 21,
+ "first_year": 2007,
+ "last_year": 2027,
+ "by_year": {
+  "2007": 5745266.9,
+  "2008": 6868341.0,
+  "2009": 7528854.5,
+  "2010": 4885047.8,
+  "2011": 3107623.7,
+  "2012": 2676975.9,
+  "2013": 1989638.5,
+  "2014": 352327.5,
+  "2015": 420644.7,
+  "2016": 541956.0,
+  "2017": 2219462.2,
+  "2018": 11839903.34,
+  "2019": 19678074.19,
+  "2020": 19108475.74,
+  "2021": 21251824.52,
+  "2022": 25745045.28,
+  "2023": 36427488.52,
+  "2024": 64134365.86,
+  "2025": 26112366.24,
+  "2026": 54510172.49,
+  "2027": 14023387.61
+ },
+ "top_departments": [
+  "CFC Children & Families Commsn"
+ ],
+ "contracts_held": [
+  {
+   "contract_no": "1000036193",
+   "title": "Access & Enrollment",
+   "department": "DEC Dept of Early Childhood",
+   "department_code": "DEC",
+   "agreed_usd": 237770265.0,
+   "paid_usd": 34739507.96,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000033034",
+   "title": "24-02 FRC Initiative",
+   "department": "DEC Dept of Early Childhood",
+   "department_code": "DEC",
+   "agreed_usd": 1409330.0,
+   "paid_usd": 716025.6,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000037477",
+   "title": "FRC Cross Sector Grants",
+   "department": "DEC Dept of Early Childhood",
+   "department_code": "DEC",
+   "agreed_usd": 350000.0,
+   "paid_usd": 50638.87,
+   "sole_source": false
+  }
+ ],
+ "n_contracts_held": 3,
+ "variants": [
+  {
+   "name": "WU YEE CHILDREN'S SERVICES",
+   "total": 329167242.49
+  }
+ ],
+ "n_variants": 1,
+ "merges": [],
+ "source": {
+  "name": "Vendor Payments (Vouchers)",
+  "dataset_id": "n9pm-xkyq",
+  "source_url": "https://data.sfgov.org/d/n9pm-xkyq",
+  "attribution": "SF Controller's Office",
+  "rows_updated_at": "2026-07-13T13:40:40+00:00"
+ }
+}

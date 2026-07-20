@@ -1,0 +1,112 @@
+{
+ "generated_at": "2026-07-20T22:34:47.745000+00:00",
+ "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
+ "as_of": "2026-07-13T13:40:40+00:00",
+ "unit": "USD",
+ "slug": "san-francisco-study-center-inc",
+ "name": "San Francisco Study Center Inc",
+ "kind": "nonprofit",
+ "is_non_profit": false,
+ "total_paid_usd": 105441891.39,
+ "n_years": 21,
+ "first_year": 2007,
+ "last_year": 2027,
+ "by_year": {
+  "2007": 4511595.4,
+  "2008": 3719906.0,
+  "2009": 3979583.5,
+  "2010": 3580091.7,
+  "2011": 3370772.7,
+  "2012": 3845813.6,
+  "2013": 3704197.0,
+  "2014": 3801199.7,
+  "2015": 4726281.3,
+  "2016": 3948029.8,
+  "2017": 6331380.6,
+  "2018": 3796838.85,
+  "2019": 6555561.47,
+  "2020": 5637970.06,
+  "2021": 3968127.64,
+  "2022": 5340978.5,
+  "2023": 7551004.1,
+  "2024": 7604841.06,
+  "2025": 9376494.04,
+  "2026": 9517691.25,
+  "2027": 573533.12
+ },
+ "top_departments": [
+  "DPH Public Health"
+ ],
+ "contracts_held": [
+  {
+   "contract_no": "1000017548",
+   "title": "SFSC Program Admin",
+   "department": "DPH Public Health",
+   "department_code": "DPH",
+   "agreed_usd": 5738935.0,
+   "paid_usd": 3889946.37,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000032785",
+   "title": "JEDI RFP 8571",
+   "department": "DPH Public Health",
+   "department_code": "DPH",
+   "agreed_usd": 9999253.0,
+   "paid_usd": 2405377.49,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000032651",
+   "title": "GA-Youth 1st-24-29",
+   "department": "CHF Children;Youth & Families",
+   "department_code": "CHF",
+   "agreed_usd": 5127200.0,
+   "paid_usd": 1536314.45,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000029560",
+   "title": "Peer Advocate for MH",
+   "department": "DPH Public Health",
+   "department_code": "DPH",
+   "agreed_usd": 3302073.0,
+   "paid_usd": 1453145.25,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000024824",
+   "title": "| Program Admin & Support",
+   "department": "DPH Public Health",
+   "department_code": "DPH",
+   "agreed_usd": 1978456.0,
+   "paid_usd": 1173074.46,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000032859",
+   "title": "Calle Limpia",
+   "department": "ECN Economic & Wrkfrce Dvlpmnt",
+   "department_code": "ECN",
+   "agreed_usd": 60000.0,
+   "paid_usd": 34090.91,
+   "sole_source": false
+  }
+ ],
+ "n_contracts_held": 6,
+ "variants": [
+  {
+   "name": "SAN FRANCISCO STUDY CENTER INC",
+   "total": 105441891.39
+  }
+ ],
+ "n_variants": 1,
+ "merges": [],
+ "source": {
+  "name": "Vendor Payments (Vouchers)",
+  "dataset_id": "n9pm-xkyq",
+  "source_url": "https://data.sfgov.org/d/n9pm-xkyq",
+  "attribution": "SF Controller's Office",
+  "rows_updated_at": "2026-07-13T13:40:40+00:00"
+ }
+}

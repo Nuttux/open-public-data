@@ -1,0 +1,260 @@
+{
+ "generated_at": "2026-07-20T22:30:00.103221+00:00",
+ "source_pipeline": "sf_place_candidates.json → sync_ia_sf.py + link_sf_places.py + fetch_sf_place_photos.py → export_sf_places.py",
+ "unit": "USD",
+ "slug": "alamo-square",
+ "name": "Alamo Square",
+ "kind": "Park",
+ "family": "park",
+ "address": "Steiner St & Hayes St",
+ "lat": 37.7764,
+ "lon": -122.4346,
+ "owning_dept": {
+  "name": "Recreation and Park Department",
+  "code": "REC"
+ },
+ "photo": null,
+ "photo_credit": null,
+ "summary_en": null,
+ "published": false,
+ "money": {
+  "budget_line": {
+   "code": "REC",
+   "name": "Recreation & Parks",
+   "total_usd": 250373849.0,
+   "fiscal_year": 2025
+  },
+  "contracts": [],
+  "grants": []
+ },
+ "documents": [
+  {
+   "identifier": "minutes1998sanf_5",
+   "title": "Minutes",
+   "creator": "San Francisco Open Space/Park Renovation Citizens Advisory Committee",
+   "year": 2000,
+   "pool": "sfpl",
+   "matched_alias": "Alamo Square",
+   "snippet": "Committee January 13, 1998 Page 2 Seed Category «Alamo Square» Playground Duboce Play Area Koshland Park",
+   "url": "https://archive.org/details/minutes1998sanf_5",
+   "deep_link": "https://archive.org/details/minutes1998sanf_5?q=Alamo+Square",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+  },
+  {
+   "identifier": "minutes1990sanf_2",
+   "title": "Minutes",
+   "creator": "San Francisco Open Space/Park Renovation Citizens Advisory Committee",
+   "year": 2000,
+   "pool": "sfpl",
+   "matched_alias": "Alamo Square",
+   "snippet": "PUBLIC COMMENT «Alamo Square» — Request for $103,000 to renovate «Alamo Square» according to",
+   "url": "https://archive.org/details/minutes1990sanf_2",
+   "deep_link": "https://archive.org/details/minutes1990sanf_2?q=Alamo+Square",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+  },
+  {
+   "identifier": "finalenvironment2197sanf",
+   "title": "Final environmental impact report and statement for the Rehabilitation Assistance Program for the Upper Ashbury",
+   "creator": "San Francisco (Calif.). Dept. of City Planning",
+   "year": 1976,
+   "pool": "sfpl",
+   "matched_alias": "Alamo Square",
+   "snippet": "1968-75 32a 13c. Real Estate Sales in «Alamo Square», 1963-1975 32a 13d. Real Estate Sales in",
+   "url": "https://archive.org/details/finalenvironment2197sanf",
+   "deep_link": "https://archive.org/details/finalenvironment2197sanf?q=Alamo+Square",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+  },
+  {
+   "identifier": "generalmanagersr1975sanf",
+   "title": "General manager's report : Open Space Acquisition and Park Renovation Fund",
+   "creator": "San Francisco (Calif.). Recreation and Park Department,San Francisco (Calif.). Dept. of City Planning,San Francisco (Calif.). Open Space Acquisition and Park Renovation Fund",
+   "year": 1975,
+   "pool": "sfpl",
+   "matched_alias": "Alamo Square",
+   "snippet": "Renovation - Estimated Budget: $750,000 «Alamo Square»* Buena Vista Park Douglas Playground Eureka",
+   "url": "https://archive.org/details/generalmanagersr1975sanf",
+   "deep_link": "https://archive.org/details/generalmanagersr1975sanf?q=Alamo+Square",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+  },
+  {
+   "identifier": "codeenforcementf1968sanf",
+   "title": "Code enforcement feasibility study : a joint study",
+   "creator": "San Francisco (Calif.). Dept. of City Planning,San Francisco (Calif.). Dept. of Public Works",
+   "year": 1968,
+   "pool": "sfpl",
+   "matched_alias": "Alamo Square",
+   "snippet": "DEPARTMENT OF PUBLIC WORKS OF A BLOCK IN THE «ALAMO SQUARE» NEIGHBORHOOD. ft REF 3ITY AND COUNTY OF",
+   "url": "https://archive.org/details/codeenforcementf1968sanf",
+   "deep_link": "https://archive.org/details/codeenforcementf1968sanf?q=Alamo+Square",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+  },
+  {
+   "identifier": "section312loanli1968lync",
+   "title": "Section 312 loan limits : the implications for federally assisted code enforcement (FACE) in San Francisco",
+   "creator": "Lynch, Judith,San Francisco (Calif.). Dept. of Public Works,San Francisco (Calif.). Dept. of City Planning",
+   "year": 1968,
+   "pool": "sfpl",
+   "matched_alias": "Alamo Square",
+   "snippet": "owners in the three proposed FACE areas, «Alamo Square», Bernal Heights and Duboce Triangle. Open",
+   "url": "https://archive.org/details/section312loanli1968lync",
+   "deep_link": "https://archive.org/details/section312loanli1968lync?q=Alamo+Square",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+  },
+  {
+   "identifier": "59minutesregula199697sanf",
+   "title": "Minutes of a regular meeting of the Redevelopment Agency of the City and County of San Francisco",
+   "creator": "San Francisco Redevelopment Agency (San Francisco, Calif.)",
+   "year": null,
+   "pool": "sfpl",
+   "matched_alias": "Alamo Square",
+   "snippet": "Christopher Andrews; Bonnie Spindler, President, «Alamo Square» Neighborhood Association; William Margails",
+   "url": "https://archive.org/details/59minutesregula199697sanf",
+   "deep_link": "https://archive.org/details/59minutesregula199697sanf?q=Alamo+Square",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+  },
+  {
+   "identifier": "excerptsrelating19721973s",
+   "title": "Excerpts relating to the FACE program from the Annual report of the Department of Public Works, City and County of San Francisco",
+   "creator": "San Francisco (Calif.). Dept. of Public Works,San Francisco (Calif.). Bureau of Engineering",
+   "year": null,
+   "pool": "sfpl",
+   "matched_alias": "Alamo Square",
+   "snippet": "(Roberts) Clk-Typist (Buvala) BLDG. INSP. (12) «ALAMO SQUARE» (Borovkoff) (Greene) (Larsen) (Nelson) (Selby)",
+   "url": "https://archive.org/details/excerptsrelating19721973s",
+   "deep_link": "https://archive.org/details/excerptsrelating19721973s?q=Alamo+Square",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+  },
+  {
+   "identifier": "annualreportofd1972sanf_0",
+   "title": "Annual report of the Department of Public Works, City and County of San Francisco",
+   "creator": "San Francisco (Calif.). Dept. of Public Works",
+   "year": null,
+   "pool": "sfpl",
+   "matched_alias": "Alamo Square",
+   "snippet": "various stages of completion. In Areas 5-7 («Alamo Square», Bernal Heights, and Duboce Triangle)",
+   "url": "https://archive.org/details/annualreportofd1972sanf_0",
+   "deep_link": "https://archive.org/details/annualreportofd1972sanf_0?q=Alamo+Square",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+  },
+  {
+   "identifier": "annualreportofd1973sanf_1",
+   "title": "Annual report of the Department of Public Works, City and County of San Francisco",
+   "creator": "San Francisco (Calif.). Dept. of Public Works",
+   "year": null,
+   "pool": "sfpl",
+   "matched_alias": "Alamo Square",
+   "snippet": "stages of completion. in Areas 5-7 ((05) «Alamo Square», (06) Bernal Heights, and (07) Ouboce",
+   "url": "https://archive.org/details/annualreportofd1973sanf_1",
+   "deep_link": "https://archive.org/details/annualreportofd1973sanf_1?q=Alamo+Square",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+  },
+  {
+   "identifier": "housingprograms1971sanf_0",
+   "title": "Housing programs : recommendations for carrying out the Plan for residence",
+   "creator": "San Francisco (Calif.). Department of City Planning",
+   "year": null,
+   "pool": "sfpl",
+   "matched_alias": "Alamo Square",
+   "snippet": "Inner Richmond I - Arguello Park 5 «Alamo Square» 6 Duboce Triangle 7 Bernal Heights I",
+   "url": "https://archive.org/details/housingprograms1971sanf_0",
+   "deep_link": "https://archive.org/details/housingprograms1971sanf_0?q=Alamo+Square",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+  },
+  {
+   "identifier": "capitalplanann200405sanf",
+   "title": "Capital plan ... annual update",
+   "creator": "San Francisco (Calif.). Recreation and Park Dept. Capital Improvement Division",
+   "year": null,
+   "pool": "sfpl",
+   "matched_alias": "Alamo Square",
+   "snippet": "APPROP. «Alamo Square» Play Area Renovation RJ Spjut & JS Valentine 8,000 «Alamo Square» Play Area",
+   "url": "https://archive.org/details/capitalplanann200405sanf",
+   "deep_link": "https://archive.org/details/capitalplanann200405sanf?q=Alamo+Square",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+  },
+  {
+   "identifier": "annualreportofd1973sanf_2",
+   "title": "Annual report of the Department of Public Works, City and County of San Francisco",
+   "creator": "San Francisco (Calif.). Dept. of Public Works",
+   "year": null,
+   "pool": "sfpl",
+   "matched_alias": "Alamo Square",
+   "snippet": "currently active 3 remaining FACE areas ((05) «Alamo Square», (06) Bernal Heights, and (07) Duboce",
+   "url": "https://archive.org/details/annualreportofd1973sanf_2",
+   "deep_link": "https://archive.org/details/annualreportofd1973sanf_2?q=Alamo+Square",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+  },
+  {
+   "identifier": "minutes1994sanf_6",
+   "title": "Minutes",
+   "creator": "San Francisco (Calif.). Board of Supervisors. Housing and Land Use Committee",
+   "year": null,
+   "pool": "sfpl",
+   "matched_alias": "Alamo Square",
+   "snippet": "street lights in the «Alamo Square» Historic District. 2. «Alamo Square» is an historical district",
+   "url": "https://archive.org/details/minutes1994sanf_6",
+   "deep_link": "https://archive.org/details/minutes1994sanf_6?q=Alamo+Square",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+  }
+ ],
+ "dept_shelf": [
+  {
+   "identifier": "managementaudito2006sanf",
+   "title": "Management audit of the Recreation and Park Department",
+   "year": 2006,
+   "pool": "sfpl",
+   "url": "https://archive.org/details/managementaudito2006sanf"
+  },
+  {
+   "identifier": "newdeyoungmuseum2220sanf",
+   "title": "New de Young Museum project : environmental impact report : draft summary of comments and responses",
+   "year": 2000,
+   "pool": "sfpl",
+   "url": "https://archive.org/details/newdeyoungmuseum2220sanf"
+  },
+  {
+   "identifier": "0agenda19992002sanf",
+   "title": "Agenda",
+   "year": 1999,
+   "pool": "sfpl",
+   "url": "https://archive.org/details/0agenda19992002sanf"
+  },
+  {
+   "identifier": "reporttoboardofs1980sanf",
+   "title": "Report to the Board of Supervisors of the City and County of San Francisco : review of the operations of the San Francisco Recreation and Park Department",
+   "year": 1979,
+   "pool": "sfpl",
+   "url": "https://archive.org/details/reporttoboardofs1980sanf"
+  },
+  {
+   "identifier": "annualreport197277sanf",
+   "title": "Annual report of the San Francisco Recreation and Park Department",
+   "year": null,
+   "pool": "sfpl",
+   "url": "https://archive.org/details/annualreport197277sanf"
+  },
+  {
+   "identifier": "minutesrecreatio1960sanf",
+   "title": "Minutes / Recreation and Park Commission",
+   "year": null,
+   "pool": "sfpl",
+   "url": "https://archive.org/details/minutesrecreatio1960sanf"
+  }
+ ],
+ "sources": [
+  {
+   "label": "City budget & payments",
+   "note": "SF Controller open data (budget, vouchers, contracts)"
+  },
+  {
+   "label": "Historical documents",
+   "note": "Internet Archive — SFPL partnership scans + Democracy's Library"
+  }
+ ],
+ "_gate": {
+  "has_photo": false,
+  "n_documents": 14,
+  "n_money_links": 1,
+  "meets_pre_summary": false
+ }
+}

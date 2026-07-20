@@ -1,0 +1,56 @@
+{
+ "generated_at": "2026-07-20T22:34:47.729278+00:00",
+ "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
+ "as_of": "2026-07-13T13:40:40+00:00",
+ "unit": "USD",
+ "slug": "state-of-calif-state-treas-cash-mgt-div",
+ "name": "State of Calif State Treas Cash Mgt Div",
+ "kind": "other",
+ "is_non_profit": false,
+ "total_paid_usd": 602718625.6,
+ "n_years": 20,
+ "first_year": 2007,
+ "last_year": 2026,
+ "by_year": {
+  "2007": 22419117.2,
+  "2008": 22419117.2,
+  "2009": 22915330.4,
+  "2010": 24504412.0,
+  "2011": 24141741.9,
+  "2012": 24123583.1,
+  "2013": 24146133.7,
+  "2014": 24142159.6,
+  "2015": 23710335.3,
+  "2016": 24142419.6,
+  "2017": 24573230.2,
+  "2018": 40979592.16,
+  "2019": 42362266.42,
+  "2020": 39847533.11,
+  "2021": 35420563.5,
+  "2022": 35268470.91,
+  "2023": 38251569.24,
+  "2024": 35228691.0,
+  "2025": 35992628.92,
+  "2026": 38129730.14
+ },
+ "top_departments": [
+  "CRT Superior Court"
+ ],
+ "contracts_held": [],
+ "n_contracts_held": 0,
+ "variants": [
+  {
+   "name": "STATE OF CALIF STATE TREAS CASH MGT DIV",
+   "total": 602718625.6
+  }
+ ],
+ "n_variants": 1,
+ "merges": [],
+ "source": {
+  "name": "Vendor Payments (Vouchers)",
+  "dataset_id": "n9pm-xkyq",
+  "source_url": "https://data.sfgov.org/d/n9pm-xkyq",
+  "attribution": "SF Controller's Office",
+  "rows_updated_at": "2026-07-13T13:40:40+00:00"
+ }
+}

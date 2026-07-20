@@ -1,0 +1,260 @@
+{
+ "generated_at": "2026-07-20T22:30:00.105714+00:00",
+ "source_pipeline": "sf_place_candidates.json → sync_ia_sf.py + link_sf_places.py + fetch_sf_place_photos.py → export_sf_places.py",
+ "unit": "USD",
+ "slug": "kezar-stadium",
+ "name": "Kezar Stadium",
+ "kind": "Stadium",
+ "family": "park",
+ "address": "755 Stanyan St",
+ "lat": 37.7669,
+ "lon": -122.4547,
+ "owning_dept": {
+  "name": "Recreation and Park Department",
+  "code": "REC"
+ },
+ "photo": null,
+ "photo_credit": null,
+ "summary_en": null,
+ "published": false,
+ "money": {
+  "budget_line": {
+   "code": "REC",
+   "name": "Recreation & Parks",
+   "total_usd": 250373849.0,
+   "fiscal_year": 2025
+  },
+  "contracts": [],
+  "grants": []
+ },
+ "documents": [
+  {
+   "identifier": "greaterhaightash2819sanf",
+   "title": "Greater Haight-Ashbury cumulative assessment report",
+   "creator": "San Francisco (Calif.). Dept. of City Planning",
+   "year": 1984,
+   "pool": "sfpl",
+   "matched_alias": "Kezar Stadium",
+   "snippet": "park open space. «Kezar Stadium» During the early life of «Kezar Stadium» it was used mostly",
+   "url": "https://archive.org/details/greaterhaightash2819sanf",
+   "deep_link": "https://archive.org/details/greaterhaightash2819sanf?q=Kezar+Stadium",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+  },
+  {
+   "identifier": "greaterhaightas2819sanf_0",
+   "title": "Greater Haight-Ashbury cumulative assessment report",
+   "creator": "San Francisco (Calif.). Dept. of City Planning",
+   "year": 1984,
+   "pool": "sfpl",
+   "matched_alias": "Kezar Stadium",
+   "snippet": "park open space. «Kezar Stadium» During the early life of «Kezar Stadium» it was used mostly",
+   "url": "https://archive.org/details/greaterhaightas2819sanf_0",
+   "deep_link": "https://archive.org/details/greaterhaightas2819sanf_0?q=Kezar+Stadium",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+  },
+  {
+   "identifier": "agenda19912006sanf",
+   "title": "Agenda",
+   "creator": "San Francisco (Calif.). Recreation and Park Dept. Kezar Stadium Advisory Committee",
+   "year": null,
+   "pool": "sfpl",
+   "matched_alias": "Kezar Stadium",
+   "snippet": "opposition to the closure of «Kezar Stadium» on Mondays. 7. «KEZAR STADIUM» GROUNDSKEEPER. Eamon Bowler",
+   "url": "https://archive.org/details/agenda19912006sanf",
+   "deep_link": "https://archive.org/details/agenda19912006sanf?q=Kezar+Stadium",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+  },
+  {
+   "identifier": "indextominuteso1947sanf_0",
+   "title": "Index to Minutes of the Recreation and Park Commission",
+   "creator": "San Francisco (Calif.). Recreation and Park Commission",
+   "year": null,
+   "pool": "sfpl",
+   "matched_alias": "Kezar Stadium",
+   "snippet": "recommendation. «Kezar Stadium». The Bay Area Sports Association's application for use of «Kezar Stadium» on Christmas",
+   "url": "https://archive.org/details/indextominuteso1947sanf_0",
+   "deep_link": "https://archive.org/details/indextominuteso1947sanf_0?q=Kezar+Stadium",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+  },
+  {
+   "identifier": "minutesboardofpa1928sanf",
+   "title": "Minutes / Board of Park Commissioners",
+   "creator": "San Francisco (Calif.). Board of Park Commissioners",
+   "year": null,
+   "pool": "sfpl",
+   "matched_alias": "Kezar Stadium",
+   "snippet": "Enlargement - «Kezar Stadium» - Protest 34 - Enlargement - «Kezar Stadium» 27 - Entrance",
+   "url": "https://archive.org/details/minutesboardofpa1928sanf",
+   "deep_link": "https://archive.org/details/minutesboardofpa1928sanf?q=Kezar+Stadium",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+  },
+  {
+   "identifier": "minutes199394sanf",
+   "title": "Minutes",
+   "creator": "San Francisco (Calif.). Recreation and Park Commission",
+   "year": null,
+   "pool": "sfpl",
+   "matched_alias": "Kezar Stadium",
+   "snippet": "(Continued) «KEZAR STADIUM» An existing sewer on the north side of «Kezar Stadium», adjacent",
+   "url": "https://archive.org/details/minutes199394sanf",
+   "deep_link": "https://archive.org/details/minutes199394sanf?q=Kezar+Stadium",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+  },
+  {
+   "identifier": "whatsdoinginpark1983sanf",
+   "title": "What's doing in the parks?",
+   "creator": "San Francisco (Calif.). Recreation and Park Department",
+   "year": null,
+   "pool": "sfpl",
+   "matched_alias": "Kezar Stadium",
+   "snippet": "School Soccer: Sacred Heart vs Serra, «Kezar Stadium», Frederick & Willard Streets. 6 p.m. -",
+   "url": "https://archive.org/details/whatsdoinginpark1983sanf",
+   "deep_link": "https://archive.org/details/whatsdoinginpark1983sanf?q=Kezar+Stadium",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+  },
+  {
+   "identifier": "minutesrecreatio1955sanf",
+   "title": "Minutes / Recreation and Park Commission",
+   "creator": "San Francisco (Calif.). Recreation and Park Commission",
+   "year": null,
+   "pool": "sfpl",
+   "matched_alias": "Kezar Stadium",
+   "snippet": "$13*700.00 supp. approp. for painting. «KEZAR STADIUM», Golden Gate Park Res. 1785 Comm, accepts",
+   "url": "https://archive.org/details/minutesrecreatio1955sanf",
+   "deep_link": "https://archive.org/details/minutesrecreatio1955sanf?q=Kezar+Stadium",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+  },
+  {
+   "identifier": "minutesboardofpa1926sanf",
+   "title": "Minutes / Board of Park Commissioners",
+   "creator": "San Francisco (Calif.). Board of Park Commissioners",
+   "year": null,
+   "pool": "sfpl",
+   "matched_alias": "Kezar Stadium",
+   "snippet": "Street Entrance 173 - Club House - «Kezar Stadium» 170 - Club House - Yacht Harbor -",
+   "url": "https://archive.org/details/minutesboardofpa1926sanf",
+   "deep_link": "https://archive.org/details/minutesboardofpa1926sanf?q=Kezar+Stadium",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+  },
+  {
+   "identifier": "minutesrecreatio1960sanf",
+   "title": "Minutes / Recreation and Park Commission",
+   "creator": "San Francisco (Calif.). Recreation and Park Commission",
+   "year": null,
+   "pool": "sfpl",
+   "matched_alias": "Kezar Stadium",
+   "snippet": "Res. 4043; «Kezar Stadium»-49er 10 yr. contract appvd. Res. 4044; «Kezar Stadium»; Oakland Raiders",
+   "url": "https://archive.org/details/minutesrecreatio1960sanf",
+   "deep_link": "https://archive.org/details/minutesrecreatio1960sanf?q=Kezar+Stadium",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+  },
+  {
+   "identifier": "minutesrecreatio1994sanf",
+   "title": "Minutes / Recreation and Park Commission",
+   "creator": "San Francisco (Calif.). Recreation and Park Commission",
+   "year": null,
+   "pool": "sfpl",
+   "matched_alias": "Kezar Stadium",
+   "snippet": "directly across from «Kezar Stadium», was pleased with the way «Kezar Stadium» was being used.",
+   "url": "https://archive.org/details/minutesrecreatio1994sanf",
+   "deep_link": "https://archive.org/details/minutesrecreatio1994sanf?q=Kezar+Stadium",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+  },
+  {
+   "identifier": "annualreportofpo193538sanf",
+   "title": "Annual report of the Police Department of the City and County of San Francisco, California",
+   "creator": "San Francisco (Calif.). Police Dept",
+   "year": null,
+   "pool": "sfpl",
+   "matched_alias": "Kezar Stadium",
+   "snippet": "Football — «Kezar Stadium» 20 Football— «Kezar Stadium» 22 Football— «Kezar Stadium» 14 Football",
+   "url": "https://archive.org/details/annualreportofpo193538sanf",
+   "deep_link": "https://archive.org/details/annualreportofpo193538sanf?q=Kezar+Stadium",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+  },
+  {
+   "identifier": "annualreportofpo1935sanf",
+   "title": "Annual report of the Police Department of the City and County of San Francisco, California",
+   "creator": "San Francisco (Calif.). Police Dept",
+   "year": null,
+   "pool": "sfpl",
+   "matched_alias": "Kezar Stadium",
+   "snippet": "Football — «Kezar Stadium» 20 9 Football — «Kezar Stadium» 22 11 Football — «Kezar Stadium»",
+   "url": "https://archive.org/details/annualreportofpo1935sanf",
+   "deep_link": "https://archive.org/details/annualreportofpo1935sanf?q=Kezar+Stadium",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+  },
+  {
+   "identifier": "minutesrecreatio1947sanf",
+   "title": "Minutes / Recreation and Park Commission",
+   "creator": "San Francisco (Calif.). Recreation and Park Commission",
+   "year": null,
+   "pool": "sfpl",
+   "matched_alias": "Kezar Stadium",
+   "snippet": "granted . «Kezar Stadium». The Sixth Army's request for permission to use «Kezar Stadium», Saturday",
+   "url": "https://archive.org/details/minutesrecreatio1947sanf",
+   "deep_link": "https://archive.org/details/minutesrecreatio1947sanf?q=Kezar+Stadium",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+  }
+ ],
+ "dept_shelf": [
+  {
+   "identifier": "managementaudito2006sanf",
+   "title": "Management audit of the Recreation and Park Department",
+   "year": 2006,
+   "pool": "sfpl",
+   "url": "https://archive.org/details/managementaudito2006sanf"
+  },
+  {
+   "identifier": "newdeyoungmuseum2220sanf",
+   "title": "New de Young Museum project : environmental impact report : draft summary of comments and responses",
+   "year": 2000,
+   "pool": "sfpl",
+   "url": "https://archive.org/details/newdeyoungmuseum2220sanf"
+  },
+  {
+   "identifier": "0agenda19992002sanf",
+   "title": "Agenda",
+   "year": 1999,
+   "pool": "sfpl",
+   "url": "https://archive.org/details/0agenda19992002sanf"
+  },
+  {
+   "identifier": "reporttoboardofs1980sanf",
+   "title": "Report to the Board of Supervisors of the City and County of San Francisco : review of the operations of the San Francisco Recreation and Park Department",
+   "year": 1979,
+   "pool": "sfpl",
+   "url": "https://archive.org/details/reporttoboardofs1980sanf"
+  },
+  {
+   "identifier": "annualreport197277sanf",
+   "title": "Annual report of the San Francisco Recreation and Park Department",
+   "year": null,
+   "pool": "sfpl",
+   "url": "https://archive.org/details/annualreport197277sanf"
+  },
+  {
+   "identifier": "minutesrecreatio1960sanf",
+   "title": "Minutes / Recreation and Park Commission",
+   "year": null,
+   "pool": "sfpl",
+   "url": "https://archive.org/details/minutesrecreatio1960sanf"
+  }
+ ],
+ "sources": [
+  {
+   "label": "City budget & payments",
+   "note": "SF Controller open data (budget, vouchers, contracts)"
+  },
+  {
+   "label": "Historical documents",
+   "note": "Internet Archive — SFPL partnership scans + Democracy's Library"
+  }
+ ],
+ "_gate": {
+  "has_photo": false,
+  "n_documents": 14,
+  "n_money_links": 1,
+  "meets_pre_summary": false
+ }
+}

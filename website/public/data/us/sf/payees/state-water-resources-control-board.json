@@ -1,0 +1,66 @@
+{
+ "generated_at": "2026-07-20T22:34:47.737969+00:00",
+ "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
+ "as_of": "2026-07-13T13:40:40+00:00",
+ "unit": "USD",
+ "slug": "state-water-resources-control-board",
+ "name": "State Water Resources Control Board",
+ "kind": "other",
+ "is_non_profit": false,
+ "total_paid_usd": 172694359.8,
+ "n_years": 20,
+ "first_year": 2007,
+ "last_year": 2026,
+ "by_year": {
+  "2007": 20478277.8,
+  "2008": 16831976.1,
+  "2009": 16813201.6,
+  "2010": 16840524.7,
+  "2011": 16927725.5,
+  "2012": 11199501.8,
+  "2013": 9626754.0,
+  "2014": 1371528.3,
+  "2015": 1353437.4,
+  "2016": 1133475.6,
+  "2017": 1188599.6,
+  "2018": 1161802.27,
+  "2019": 2808294.33,
+  "2020": 4011135.58,
+  "2021": 4321358.72,
+  "2022": 6418416.65,
+  "2023": 7438399.01,
+  "2024": 5988562.94,
+  "2025": 13355239.74,
+  "2026": 13426148.16
+ },
+ "top_departments": [
+  "WWE Wastewater Enterprise"
+ ],
+ "contracts_held": [
+  {
+   "contract_no": "1000036869",
+   "title": "Scott-Marina East Harbor",
+   "department": "REC Recreation & Park Commsn",
+   "department_code": "REC",
+   "agreed_usd": 70500.0,
+   "paid_usd": 16503.78,
+   "sole_source": false
+  }
+ ],
+ "n_contracts_held": 1,
+ "variants": [
+  {
+   "name": "STATE WATER RESOURCES CONTROL BOARD",
+   "total": 172694359.8
+  }
+ ],
+ "n_variants": 1,
+ "merges": [],
+ "source": {
+  "name": "Vendor Payments (Vouchers)",
+  "dataset_id": "n9pm-xkyq",
+  "source_url": "https://data.sfgov.org/d/n9pm-xkyq",
+  "attribution": "SF Controller's Office",
+  "rows_updated_at": "2026-07-13T13:40:40+00:00"
+ }
+}

@@ -1,0 +1,153 @@
+{
+ "generated_at": "2026-07-20T22:34:47.745106+00:00",
+ "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
+ "as_of": "2026-07-13T13:40:40+00:00",
+ "unit": "USD",
+ "slug": "urban-alchemy",
+ "name": "Urban Alchemy",
+ "kind": "nonprofit",
+ "is_non_profit": true,
+ "total_paid_usd": 104680339.67,
+ "n_years": 8,
+ "first_year": 2020,
+ "last_year": 2027,
+ "by_year": {
+  "2020": 3061532.2,
+  "2021": 10483948.93,
+  "2022": 11895603.83,
+  "2023": 14981264.8,
+  "2024": 15305176.82,
+  "2025": 18419525.98,
+  "2026": 29983578.22,
+  "2027": 549708.89
+ },
+ "top_departments": [
+  "HSA Human Services Agency"
+ ],
+ "contracts_held": [
+  {
+   "contract_no": "1000028758",
+   "title": "Community Response svcs",
+   "department": "DEM Emergency Management",
+   "department_code": "DEM",
+   "agreed_usd": 9000000.0,
+   "paid_usd": 6817797.56,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000028823",
+   "title": "Street Safety FY23-27",
+   "department": "HSA Human Services Agency",
+   "department_code": "HSA",
+   "agreed_usd": 8286320.0,
+   "paid_usd": 4194920.14,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000035227",
+   "title": "Urban Alchemy - 33 Gough",
+   "department": "HOM Homelessness Services",
+   "department_code": "HOM",
+   "agreed_usd": 7954329.0,
+   "paid_usd": 3479549.76,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000022761",
+   "title": "Workforce Dev Main Library",
+   "department": "LIB Public Library",
+   "department_code": "LIB",
+   "agreed_usd": 5011265.61,
+   "paid_usd": 2702896.81,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000037675",
+   "title": "DEM-Tenderloin FY26-27",
+   "department": "HSA Human Services Agency",
+   "department_code": "HSA",
+   "agreed_usd": 4455000.0,
+   "paid_usd": 584340.86,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000037676",
+   "title": "DEM-South Market FY26-27",
+   "department": "HSA Human Services Agency",
+   "department_code": "HSA",
+   "agreed_usd": 4455000.0,
+   "paid_usd": 583212.22,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000037677",
+   "title": "DEM-AM Mid-Market FY26-27",
+   "department": "HSA Human Services Agency",
+   "department_code": "HSA",
+   "agreed_usd": 3547500.0,
+   "paid_usd": 495595.11,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000037673",
+   "title": "DEM-AM CityWideDep FY26-27",
+   "department": "HSA Human Services Agency",
+   "department_code": "HSA",
+   "agreed_usd": 3547500.0,
+   "paid_usd": 464173.52,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000037674",
+   "title": "DEM-PM CityWideDep FY26-27",
+   "department": "HSA Human Services Agency",
+   "department_code": "HSA",
+   "agreed_usd": 3547500.0,
+   "paid_usd": 440024.16,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000037678",
+   "title": "DEM-PM Mid-Market FY26-27",
+   "department": "HSA Human Services Agency",
+   "department_code": "HSA",
+   "agreed_usd": 2805000.0,
+   "paid_usd": 343113.85,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000037672",
+   "title": "DEM-CommCorridor FY26-27",
+   "department": "HSA Human Services Agency",
+   "department_code": "HSA",
+   "agreed_usd": 1815000.0,
+   "paid_usd": 224451.21,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000026824",
+   "title": "UA - Emergency Pop Up",
+   "department": "HOM Homelessness Services",
+   "department_code": "HOM",
+   "agreed_usd": 2278523.0,
+   "paid_usd": 208818.81,
+   "sole_source": false
+  }
+ ],
+ "n_contracts_held": 12,
+ "variants": [
+  {
+   "name": "URBAN ALCHEMY",
+   "total": 104680339.67
+  }
+ ],
+ "n_variants": 1,
+ "merges": [],
+ "source": {
+  "name": "Vendor Payments (Vouchers)",
+  "dataset_id": "n9pm-xkyq",
+  "source_url": "https://data.sfgov.org/d/n9pm-xkyq",
+  "attribution": "SF Controller's Office",
+  "rows_updated_at": "2026-07-13T13:40:40+00:00"
+ }
+}

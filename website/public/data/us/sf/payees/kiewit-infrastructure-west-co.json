@@ -1,0 +1,44 @@
+{
+ "generated_at": "2026-07-20T22:34:47.731448+00:00",
+ "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
+ "as_of": "2026-07-13T13:40:40+00:00",
+ "unit": "USD",
+ "slug": "kiewit-infrastructure-west-co",
+ "name": "Kiewit Infrastructure West Co",
+ "kind": "supplier",
+ "is_non_profit": false,
+ "total_paid_usd": 324142525.0,
+ "n_years": 8,
+ "first_year": 2011,
+ "last_year": 2023,
+ "by_year": {
+  "2011": 9214447.1,
+  "2012": 69640344.5,
+  "2013": 70408598.0,
+  "2014": 99718874.6,
+  "2015": 51526659.7,
+  "2016": 7658194.4,
+  "2017": 15949251.7,
+  "2023": 26155.0
+ },
+ "top_departments": [
+  "PUB Public Utilities Bureaus"
+ ],
+ "contracts_held": [],
+ "n_contracts_held": 0,
+ "variants": [
+  {
+   "name": "KIEWIT INFRASTRUCTURE WEST CO",
+   "total": 324142525.0
+  }
+ ],
+ "n_variants": 1,
+ "merges": [],
+ "source": {
+  "name": "Vendor Payments (Vouchers)",
+  "dataset_id": "n9pm-xkyq",
+  "source_url": "https://data.sfgov.org/d/n9pm-xkyq",
+  "attribution": "SF Controller's Office",
+  "rows_updated_at": "2026-07-13T13:40:40+00:00"
+ }
+}

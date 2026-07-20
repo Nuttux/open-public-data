@@ -1,0 +1,148 @@
+{
+ "generated_at": "2026-07-20T22:34:47.742758+00:00",
+ "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
+ "as_of": "2026-07-13T13:40:40+00:00",
+ "unit": "USD",
+ "slug": "community-youth-center-san-francisco",
+ "name": "Community Youth Center San Francisco",
+ "kind": "nonprofit",
+ "is_non_profit": true,
+ "total_paid_usd": 124468987.98,
+ "n_years": 21,
+ "first_year": 2007,
+ "last_year": 2027,
+ "by_year": {
+  "2007": 1035966.6,
+  "2008": 1966875.1,
+  "2009": 1983014.3,
+  "2010": 2099934.5,
+  "2011": 1635459.9,
+  "2012": 2259584.6,
+  "2013": 1989047.4,
+  "2014": 3182559.2,
+  "2015": 2744838.5,
+  "2016": 2951978.0,
+  "2017": 3782306.7,
+  "2018": 3857344.47,
+  "2019": 7089210.98,
+  "2020": 8247614.07,
+  "2021": 8632521.02,
+  "2022": 11303906.47,
+  "2023": 14722739.33,
+  "2024": 14926811.48,
+  "2025": 15560140.68,
+  "2026": 13910403.86,
+  "2027": 586730.82
+ },
+ "top_departments": [
+  "CHF Children;Youth & Families"
+ ],
+ "contracts_held": [
+  {
+   "contract_no": "1000010830",
+   "title": "Mental Health Serv. at SF",
+   "department": "DPH Public Health",
+   "department_code": "DPH",
+   "agreed_usd": 9999999.0,
+   "paid_usd": 8392373.95,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000032545",
+   "title": "GA-Learn and Succeed-24-29",
+   "department": "CHF Children;Youth & Families",
+   "department_code": "CHF",
+   "agreed_usd": 13724500.0,
+   "paid_usd": 3552181.43,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000032554",
+   "title": "GA-Productive Adult-24-29",
+   "department": "CHF Children;Youth & Families",
+   "department_code": "CHF",
+   "agreed_usd": 11730000.0,
+   "paid_usd": 2908171.03,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000032548",
+   "title": "GA-NurturingFamilies-24-29",
+   "department": "CHF Children;Youth & Families",
+   "department_code": "CHF",
+   "agreed_usd": 9769820.0,
+   "paid_usd": 2326060.49,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000036271",
+   "title": "Trash Can Steam FY26",
+   "department": "DPW Public Works",
+   "department_code": "DPW",
+   "agreed_usd": 1679528.0,
+   "paid_usd": 940362.8,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000033294",
+   "title": "GA-Sports & Wellness-24-29",
+   "department": "CHF Children;Youth & Families",
+   "department_code": "CHF",
+   "agreed_usd": 3503900.0,
+   "paid_usd": 933372.69,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000031191",
+   "title": "VCSS",
+   "department": "DAT District Attorney",
+   "department_code": "DAT",
+   "agreed_usd": 495000.0,
+   "paid_usd": 311217.95,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000027857",
+   "title": "2023-08 - BV Shuttle Pro",
+   "department": "MTA Municipal Transprtn Agncy",
+   "department_code": "MTA",
+   "agreed_usd": 663300.0,
+   "paid_usd": 306877.26,
+   "sole_source": true
+  },
+  {
+   "contract_no": "1000032305",
+   "title": "Chinatown Cultural Activat",
+   "department": "ECN Economic & Wrkfrce Dvlpmnt",
+   "department_code": "ECN",
+   "agreed_usd": 533600.0,
+   "paid_usd": 88270.0,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000036168",
+   "title": "C.Community Youth Center of SF",
+   "department": "PUC Public Utilities Commsn",
+   "department_code": "PUC",
+   "agreed_usd": 130000.0,
+   "paid_usd": 0.0,
+   "sole_source": false
+  }
+ ],
+ "n_contracts_held": 10,
+ "variants": [
+  {
+   "name": "COMMUNITY YOUTH CENTER SAN FRANCISCO",
+   "total": 124468987.98
+  }
+ ],
+ "n_variants": 1,
+ "merges": [],
+ "source": {
+  "name": "Vendor Payments (Vouchers)",
+  "dataset_id": "n9pm-xkyq",
+  "source_url": "https://data.sfgov.org/d/n9pm-xkyq",
+  "attribution": "SF Controller's Office",
+  "rows_updated_at": "2026-07-13T13:40:40+00:00"
+ }
+}

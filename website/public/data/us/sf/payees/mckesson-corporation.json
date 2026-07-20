@@ -1,0 +1,67 @@
+{
+ "generated_at": "2026-07-20T22:34:47.727468+00:00",
+ "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
+ "as_of": "2026-07-13T13:40:40+00:00",
+ "unit": "USD",
+ "slug": "mckesson-corporation",
+ "name": "Mckesson Corporation",
+ "kind": "supplier",
+ "is_non_profit": false,
+ "total_paid_usd": 991412066.52,
+ "n_years": 21,
+ "first_year": 2007,
+ "last_year": 2027,
+ "by_year": {
+  "2007": 28597822.7,
+  "2008": 31704322.2,
+  "2009": 33437304.7,
+  "2010": 33853940.8,
+  "2011": 34405824.9,
+  "2012": 35130043.3,
+  "2013": 37799206.7,
+  "2014": 40372936.1,
+  "2015": 37251724.8,
+  "2016": 40409660.4,
+  "2017": 47101701.7,
+  "2018": 51192890.85,
+  "2019": 58616284.76,
+  "2020": 65920303.87,
+  "2021": 49581342.34,
+  "2022": 60012606.57,
+  "2023": 64760191.68,
+  "2024": 69563316.61,
+  "2025": 82759702.79,
+  "2026": 84560790.92,
+  "2027": 4380147.83
+ },
+ "top_departments": [
+  "DPH Public Health"
+ ],
+ "contracts_held": [
+  {
+   "contract_no": "1000013809",
+   "title": "Pharmaceuticals",
+   "department": "DPH Public Health",
+   "department_code": "DPH",
+   "agreed_usd": 977652155.0,
+   "paid_usd": 429626938.93,
+   "sole_source": false
+  }
+ ],
+ "n_contracts_held": 1,
+ "variants": [
+  {
+   "name": "MCKESSON CORPORATION",
+   "total": 991412066.52
+  }
+ ],
+ "n_variants": 1,
+ "merges": [],
+ "source": {
+  "name": "Vendor Payments (Vouchers)",
+  "dataset_id": "n9pm-xkyq",
+  "source_url": "https://data.sfgov.org/d/n9pm-xkyq",
+  "attribution": "SF Controller's Office",
+  "rows_updated_at": "2026-07-13T13:40:40+00:00"
+ }
+}

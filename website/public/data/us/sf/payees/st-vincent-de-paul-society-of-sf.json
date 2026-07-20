@@ -1,0 +1,94 @@
+{
+ "generated_at": "2026-07-20T22:34:47.738608+00:00",
+ "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
+ "as_of": "2026-07-13T13:40:40+00:00",
+ "unit": "USD",
+ "slug": "st-vincent-de-paul-society-of-sf",
+ "name": "St Vincent de Paul Society of SF",
+ "kind": "nonprofit",
+ "is_non_profit": true,
+ "total_paid_usd": 165554223.58,
+ "n_years": 21,
+ "first_year": 2007,
+ "last_year": 2027,
+ "by_year": {
+  "2007": 2449189.3,
+  "2008": 2982182.5,
+  "2009": 3695624.0,
+  "2010": 3968482.2,
+  "2011": 4034416.0,
+  "2012": 3988901.9,
+  "2013": 3944923.5,
+  "2014": 3690747.1,
+  "2015": 4730965.9,
+  "2016": 5355027.5,
+  "2017": 5499927.2,
+  "2018": 7690329.77,
+  "2019": 9168582.0,
+  "2020": 9049155.52,
+  "2021": 12933377.92,
+  "2022": 13208541.67,
+  "2023": 13387864.01,
+  "2024": 13864738.52,
+  "2025": 22583687.45,
+  "2026": 19316813.56,
+  "2027": 10746.06
+ },
+ "top_departments": [
+  "HOM Homelessness Services"
+ ],
+ "contracts_held": [
+  {
+   "contract_no": "1000029006",
+   "title": "SVDP - TAY Uav",
+   "department": "HOM Homelessness Services",
+   "department_code": "HOM",
+   "agreed_usd": 2880000.0,
+   "paid_usd": 1578073.28,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000029007",
+   "title": "SVDP - DV Uav",
+   "department": "HOM Homelessness Services",
+   "department_code": "HOM",
+   "agreed_usd": 1440000.0,
+   "paid_usd": 904548.74,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000025317",
+   "title": "SVDP - Housing for Survivors",
+   "department": "HOM Homelessness Services",
+   "department_code": "HOM",
+   "agreed_usd": 1235917.0,
+   "paid_usd": 545331.64,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000024141",
+   "title": "SVDP - Riley Center DV CE",
+   "department": "HOM Homelessness Services",
+   "department_code": "HOM",
+   "agreed_usd": 603432.0,
+   "paid_usd": 303454.46,
+   "sole_source": false
+  }
+ ],
+ "n_contracts_held": 4,
+ "variants": [
+  {
+   "name": "ST VINCENT DE PAUL SOCIETY OF SF",
+   "total": 165554223.58
+  }
+ ],
+ "n_variants": 1,
+ "merges": [],
+ "source": {
+  "name": "Vendor Payments (Vouchers)",
+  "dataset_id": "n9pm-xkyq",
+  "source_url": "https://data.sfgov.org/d/n9pm-xkyq",
+  "attribution": "SF Controller's Office",
+  "rows_updated_at": "2026-07-13T13:40:40+00:00"
+ }
+}

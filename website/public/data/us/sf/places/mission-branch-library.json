@@ -1,0 +1,260 @@
+{
+ "generated_at": "2026-07-20T22:30:00.109468+00:00",
+ "source_pipeline": "sf_place_candidates.json → sync_ia_sf.py + link_sf_places.py + fetch_sf_place_photos.py → export_sf_places.py",
+ "unit": "USD",
+ "slug": "mission-branch-library",
+ "name": "Mission Branch Library",
+ "kind": "Branch library",
+ "family": "library",
+ "address": "300 Bartlett St",
+ "lat": 37.7527,
+ "lon": -122.42,
+ "owning_dept": {
+  "name": "Public Library",
+  "code": "LIB"
+ },
+ "photo": null,
+ "photo_credit": null,
+ "summary_en": null,
+ "published": false,
+ "money": {
+  "budget_line": {
+   "code": "LIB",
+   "name": "Public Library",
+   "total_usd": 187421705.0,
+   "fiscal_year": 2025
+  },
+  "contracts": [],
+  "grants": []
+ },
+ "documents": [
+  {
+   "identifier": "6minutes1997sanf",
+   "title": "Minutes",
+   "creator": "San Francisco (Calif.). Board of Supervisors. Finance Committee",
+   "year": 1997,
+   "pool": "sfpl",
+   "matched_alias": "Mission Branch Library",
+   "snippet": "renovation of the «Mission Branch Library». The «Mission Branch Library» is currently located",
+   "url": "https://archive.org/details/6minutes1997sanf",
+   "deep_link": "https://archive.org/details/6minutes1997sanf?q=Mission+Branch+Library",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+  },
+  {
+   "identifier": "5minutes1997sanf",
+   "title": "Minutes",
+   "creator": "San Francisco (Calif.). Board of Supervisors. Finance Committee",
+   "year": 1997,
+   "pool": "sfpl",
+   "matched_alias": "Mission Branch Library",
+   "snippet": "location for the «Mission Branch Library» while the «Mission Branch Library» undergoes seismic",
+   "url": "https://archive.org/details/5minutes1997sanf",
+   "deep_link": "https://archive.org/details/5minutes1997sanf?q=Mission+Branch+Library",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+  },
+  {
+   "identifier": "3calendarmeetingo1995sanf",
+   "title": "Calendar : meeting of Budget Committee, Board of Supervisors, City and County of San Francisco",
+   "creator": "San Francisco (Calif.). Board of Supervisors. Budget Committee",
+   "year": 1993,
+   "pool": "sfpl",
+   "matched_alias": "Mission Branch Library",
+   "snippet": "$584,250, for the renovation of «Mission Branch Library». (Public Library) e) File 101-94-89",
+   "url": "https://archive.org/details/3calendarmeetingo1995sanf",
+   "deep_link": "https://archive.org/details/3calendarmeetingo1995sanf?q=Mission+Branch+Library",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+  },
+  {
+   "identifier": "agenda19arts_13",
+   "title": "Agenda",
+   "creator": "Arts Commission of San Francisco. Civic Design Review Committee",
+   "year": 1988,
+   "pool": "sfpl",
+   "matched_alias": "Mission Branch Library",
+   "snippet": "introduced the «Mission Branch library» renovation. The «Mission Branch library» was designed by",
+   "url": "https://archive.org/details/agenda19arts_13",
+   "deep_link": "https://archive.org/details/agenda19arts_13?q=Mission+Branch+Library",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+  },
+  {
+   "identifier": "agenda19921995arts",
+   "title": "Agenda",
+   "creator": "Arts Commission of San Francisco. Civic Design Review Committee",
+   "year": 1988,
+   "pool": "sfpl",
+   "matched_alias": "Mission Branch Library",
+   "snippet": "introduced the «Mission Branch library» renovation. The «Mission Branch library» was designed by",
+   "url": "https://archive.org/details/agenda19921995arts",
+   "deep_link": "https://archive.org/details/agenda19921995arts?q=Mission+Branch+Library",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+  },
+  {
+   "identifier": "agenda19921993arts",
+   "title": "Agenda",
+   "creator": "Arts Commission of San Francisco. Visual Arts Committee",
+   "year": 1983,
+   "pool": "sfpl",
+   "matched_alias": "Mission Branch Library",
+   "snippet": "following as a selection panelist for «Mission Branch Library»: Carmen Lomas Garza, Lorraine Garcia",
+   "url": "https://archive.org/details/agenda19921993arts",
+   "deep_link": "https://archive.org/details/agenda19921993arts?q=Mission+Branch+Library",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+  },
+  {
+   "identifier": "agenda19arts_24",
+   "title": "Agenda",
+   "creator": "Arts Commission of San Francisco. Visual Arts Committee",
+   "year": 1983,
+   "pool": "sfpl",
+   "matched_alias": "Mission Branch Library",
+   "snippet": "4-1 5. Chinatown Branch Library 6. «Mission Branch Library» 7. Hospital Services Building (General",
+   "url": "https://archive.org/details/agenda19arts_24",
+   "deep_link": "https://archive.org/details/agenda19arts_24?q=Mission+Branch+Library",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+  },
+  {
+   "identifier": "minutes1993arts",
+   "title": "Minutes",
+   "creator": "Arts Commission of San Francisco",
+   "year": 1983,
+   "pool": "sfpl",
+   "matched_alias": "Mission Branch Library",
+   "snippet": "44 5. Chinatown Branch Library 6. «Mission Branch Library» 7. Hospital Services Building (General",
+   "url": "https://archive.org/details/minutes1993arts",
+   "deep_link": "https://archive.org/details/minutes1993arts?q=Mission+Branch+Library",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+  },
+  {
+   "identifier": "adultcalendarofp1997sanf",
+   "title": "Adult calendar of programs and events",
+   "creator": "San Francisco Public Library",
+   "year": null,
+   "pool": "sfpl",
+   "matched_alias": "Mission Branch Library",
+   "snippet": "TO 8 - Call for an appointment. «Mission Branch Library», 3359 - 24th St. (at Bartlett),",
+   "url": "https://archive.org/details/adultcalendarofp1997sanf",
+   "deep_link": "https://archive.org/details/adultcalendarofp1997sanf?q=Mission+Branch+Library",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+  },
+  {
+   "identifier": "adultcalendarofp1996sanf",
+   "title": "Adult calendar of programs and events",
+   "creator": "San Francisco Public Library",
+   "year": null,
+   "pool": "sfpl",
+   "matched_alias": "Mission Branch Library",
+   "snippet": "HOMEWORK HELP - Free one-on-one tutoring «Mission Branch Library», 3359 24th St. (at Bartlett), (415)",
+   "url": "https://archive.org/details/adultcalendarofp1996sanf",
+   "deep_link": "https://archive.org/details/adultcalendarofp1996sanf?q=Mission+Branch+Library",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+  },
+  {
+   "identifier": "agendasanfrancis1996sanf",
+   "title": "Agenda / San Francisco Public Library Commission, Finance, Operations and Building Committee",
+   "creator": "San Francisco Public Library. Commission. Finance, Operations and Building Committee",
+   "year": null,
+   "pool": "sfpl",
+   "matched_alias": "Mission Branch Library",
+   "snippet": "closure period. 2 «Mission Branch Library» Renovation Project Team «Mission Branch Library» Renovation Project",
+   "url": "https://archive.org/details/agendasanfrancis1996sanf",
+   "deep_link": "https://archive.org/details/agendasanfrancis1996sanf?q=Mission+Branch+Library",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+  },
+  {
+   "identifier": "agendasminutessa1993sanf",
+   "title": "Agendas and Minutes / San Francisco Public Library Commission, Building and Facilities Committee",
+   "creator": "San Francisco Public Library. Commission. Building and Facilities Committee",
+   "year": null,
+   "pool": "sfpl",
+   "matched_alias": "Mission Branch Library",
+   "snippet": "3. Update on Temporary site for «Mission Branch Library»: Neel Parikh, Chief of Branches 4",
+   "url": "https://archive.org/details/agendasminutessa1993sanf",
+   "deep_link": "https://archive.org/details/agendasminutessa1993sanf?q=Mission+Branch+Library",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+  },
+  {
+   "identifier": "resolution1999401500sanf",
+   "title": "Resolution",
+   "creator": "San Francisco (Calif.). Board of Supervisors",
+   "year": null,
+   "pool": "sfpl",
+   "matched_alias": "Mission Branch Library",
+   "snippet": "~_f_j_ [«MISSION BRANCH LIBRARY» LANDMARK STATUS] ACKNOWLEDGING THAT THE «MISSION BRANCH LIBRARY» DESERVES",
+   "url": "https://archive.org/details/resolution1999401500sanf",
+   "deep_link": "https://archive.org/details/resolution1999401500sanf?q=Mission+Branch+Library",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+  },
+  {
+   "identifier": "minutesofregular1997sanf",
+   "title": "Minutes of the regular meeting ...",
+   "creator": "San Francisco Public Library. Commission",
+   "year": null,
+   "pool": "sfpl",
+   "matched_alias": "Mission Branch Library",
+   "snippet": "and Branch Library Capital Projects «Mission Branch Library» Capital Projects History. In 1988",
+   "url": "https://archive.org/details/minutesofregular1997sanf",
+   "deep_link": "https://archive.org/details/minutesofregular1997sanf?q=Mission+Branch+Library",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+  }
+ ],
+ "dept_shelf": [
+  {
+   "identifier": "sanfranciscopubl7200sanf",
+   "title": "San Francisco Public Library strategic plan, 2003-2006 : July 7, 2003 draft",
+   "year": 2003,
+   "pool": "sfpl",
+   "url": "https://archive.org/details/sanfranciscopubl7200sanf"
+  },
+  {
+   "identifier": "sanfranciscopub4200ripl_0",
+   "title": "San Francisco Public Library Post Occupancy Evaluation",
+   "year": 2000,
+   "pool": "sfpl",
+   "url": "https://archive.org/details/sanfranciscopub4200ripl_0"
+  },
+  {
+   "identifier": "minutesofregula1619sanf_0",
+   "title": "Minutes of the regular meeting ... / San Francisco Public Library Commission",
+   "year": null,
+   "pool": "sfpl",
+   "url": "https://archive.org/details/minutesofregula1619sanf_0"
+  },
+  {
+   "identifier": "agenda1969sanf",
+   "title": "Agenda",
+   "year": null,
+   "pool": "sfpl",
+   "url": "https://archive.org/details/agenda1969sanf"
+  },
+  {
+   "identifier": "agendasminutessa1979sanf",
+   "title": "Agendas and Minutes / San Francisco Public Library Commission, Finance Committee",
+   "year": null,
+   "pool": "sfpl",
+   "url": "https://archive.org/details/agendasminutessa1979sanf"
+  },
+  {
+   "identifier": "requestforuseofp1998sanf",
+   "title": "Request for use of public meeting rooms / Branch meeting rooms summary",
+   "year": null,
+   "pool": "sfpl",
+   "url": "https://archive.org/details/requestforuseofp1998sanf"
+  }
+ ],
+ "sources": [
+  {
+   "label": "City budget & payments",
+   "note": "SF Controller open data (budget, vouchers, contracts)"
+  },
+  {
+   "label": "Historical documents",
+   "note": "Internet Archive — SFPL partnership scans + Democracy's Library"
+  }
+ ],
+ "_gate": {
+  "has_photo": false,
+  "n_documents": 14,
+  "n_money_links": 1,
+  "meets_pre_summary": false
+ }
+}

@@ -1,0 +1,67 @@
+{
+ "generated_at": "2026-07-20T22:34:47.744393+00:00",
+ "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
+ "as_of": "2026-07-13T13:40:40+00:00",
+ "unit": "USD",
+ "slug": "addiction-research-treatment-inc",
+ "name": "Addiction Research & Treatment Inc",
+ "kind": "healthcare",
+ "is_non_profit": false,
+ "total_paid_usd": 109581489.58,
+ "n_years": 21,
+ "first_year": 2007,
+ "last_year": 2027,
+ "by_year": {
+  "2007": 4514785.3,
+  "2008": 4297181.0,
+  "2009": 4911152.6,
+  "2010": 4707423.2,
+  "2011": 4447979.1,
+  "2012": 4538831.8,
+  "2013": 4470156.2,
+  "2014": 3880275.9,
+  "2015": 7492279.2,
+  "2016": 7211204.0,
+  "2017": 8054217.6,
+  "2018": 3575519.39,
+  "2019": 9172500.57,
+  "2020": 4579000.82,
+  "2021": 4374061.46,
+  "2022": 3907189.31,
+  "2023": 4657055.07,
+  "2024": 3433977.07,
+  "2025": 9351792.92,
+  "2026": 7782210.64,
+  "2027": 222696.43
+ },
+ "top_departments": [
+  "DPH Public Health"
+ ],
+ "contracts_held": [
+  {
+   "contract_no": "1000009821",
+   "title": "Methadone Services",
+   "department": "DPH Public Health",
+   "department_code": "DPH",
+   "agreed_usd": 98283105.0,
+   "paid_usd": 39934029.58,
+   "sole_source": false
+  }
+ ],
+ "n_contracts_held": 1,
+ "variants": [
+  {
+   "name": "ADDICTION RESEARCH & TREATMENT INC",
+   "total": 109581489.58
+  }
+ ],
+ "n_variants": 1,
+ "merges": [],
+ "source": {
+  "name": "Vendor Payments (Vouchers)",
+  "dataset_id": "n9pm-xkyq",
+  "source_url": "https://data.sfgov.org/d/n9pm-xkyq",
+  "attribution": "SF Controller's Office",
+  "rows_updated_at": "2026-07-13T13:40:40+00:00"
+ }
+}

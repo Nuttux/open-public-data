@@ -1,0 +1,44 @@
+{
+ "generated_at": "2026-07-20T22:34:47.743046+00:00",
+ "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
+ "as_of": "2026-07-13T13:40:40+00:00",
+ "unit": "USD",
+ "slug": "asian-american-recovery-services-inc",
+ "name": "Asian American Recovery Services Inc",
+ "kind": "nonprofit",
+ "is_non_profit": false,
+ "total_paid_usd": 119585302.4,
+ "n_years": 8,
+ "first_year": 2007,
+ "last_year": 2014,
+ "by_year": {
+  "2007": 8329109.2,
+  "2008": 7289103.9,
+  "2009": 7643062.3,
+  "2010": 18436370.6,
+  "2011": 19645138.6,
+  "2012": 20563946.5,
+  "2013": 21629128.0,
+  "2014": 16049443.3
+ },
+ "top_departments": [
+  "DPH Public Health"
+ ],
+ "contracts_held": [],
+ "n_contracts_held": 0,
+ "variants": [
+  {
+   "name": "ASIAN AMERICAN RECOVERY SERVICES INC",
+   "total": 119585302.4
+  }
+ ],
+ "n_variants": 1,
+ "merges": [],
+ "source": {
+  "name": "Vendor Payments (Vouchers)",
+  "dataset_id": "n9pm-xkyq",
+  "source_url": "https://data.sfgov.org/d/n9pm-xkyq",
+  "attribution": "SF Controller's Office",
+  "rows_updated_at": "2026-07-13T13:40:40+00:00"
+ }
+}

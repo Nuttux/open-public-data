@@ -1,0 +1,130 @@
+{
+ "generated_at": "2026-07-20T22:34:47.744049+00:00",
+ "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
+ "as_of": "2026-07-13T13:40:40+00:00",
+ "unit": "USD",
+ "slug": "homeless-prenatal-program",
+ "name": "Homeless Prenatal Program",
+ "kind": "nonprofit",
+ "is_non_profit": true,
+ "total_paid_usd": 113142364.32,
+ "n_years": 21,
+ "first_year": 2007,
+ "last_year": 2027,
+ "by_year": {
+  "2007": 1674110.9,
+  "2008": 2085981.4,
+  "2009": 2033403.1,
+  "2010": 2120693.3,
+  "2011": 2473448.8,
+  "2012": 2260859.9,
+  "2013": 2330178.9,
+  "2014": 2817457.9,
+  "2015": 2874738.9,
+  "2016": 3553088.7,
+  "2017": 4155662.4,
+  "2018": 3724171.79,
+  "2019": 6077307.29,
+  "2020": 6976943.94,
+  "2021": 9120324.08,
+  "2022": 10813533.2,
+  "2023": 10414311.16,
+  "2024": 12120257.16,
+  "2025": 11750863.49,
+  "2026": 13053324.54,
+  "2027": 711703.47
+ },
+ "top_departments": [
+  "HOM Homelessness Services"
+ ],
+ "contracts_held": [
+  {
+   "contract_no": "1000012859",
+   "title": "HPP - Homelessness Prevention",
+   "department": "HOM Homelessness Services",
+   "department_code": "HOM",
+   "agreed_usd": 23461035.0,
+   "paid_usd": 15227181.18,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000021498",
+   "title": "HPP - SHARE Subsidies",
+   "department": "HOM Homelessness Services",
+   "department_code": "HOM",
+   "agreed_usd": 22627326.0,
+   "paid_usd": 9194763.93,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000028617",
+   "title": "FCS-BFH 23-27",
+   "department": "HSA Human Services Agency",
+   "department_code": "HSA",
+   "agreed_usd": 8870749.0,
+   "paid_usd": 5243368.92,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000025293",
+   "title": "HPP - PATH",
+   "department": "HOM Homelessness Services",
+   "department_code": "HOM",
+   "agreed_usd": 6732469.0,
+   "paid_usd": 2614640.14,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000032709",
+   "title": "24-02 FRC Initiative",
+   "department": "DEC Dept of Early Childhood",
+   "department_code": "DEC",
+   "agreed_usd": 2805003.0,
+   "paid_usd": 1643386.23,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000027642",
+   "title": "Homeless Prenatal Prgrm",
+   "department": "DPH Public Health",
+   "department_code": "DPH",
+   "agreed_usd": 1357564.0,
+   "paid_usd": 1105859.63,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000035557",
+   "title": "TAY - RRH",
+   "department": "HOM Homelessness Services",
+   "department_code": "HOM",
+   "agreed_usd": 6131147.0,
+   "paid_usd": 266721.2,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000038366",
+   "title": "DKI-HW05-26-002HomelessPre",
+   "department": "HRC Human Rights Commission",
+   "department_code": "HRC",
+   "agreed_usd": 300000.0,
+   "paid_usd": 0.0,
+   "sole_source": false
+  }
+ ],
+ "n_contracts_held": 8,
+ "variants": [
+  {
+   "name": "HOMELESS PRENATAL PROGRAM",
+   "total": 113142364.32
+  }
+ ],
+ "n_variants": 1,
+ "merges": [],
+ "source": {
+  "name": "Vendor Payments (Vouchers)",
+  "dataset_id": "n9pm-xkyq",
+  "source_url": "https://data.sfgov.org/d/n9pm-xkyq",
+  "attribution": "SF Controller's Office",
+  "rows_updated_at": "2026-07-13T13:40:40+00:00"
+ }
+}

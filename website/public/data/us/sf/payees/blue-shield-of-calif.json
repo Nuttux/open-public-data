@@ -1,0 +1,51 @@
+{
+ "generated_at": "2026-07-20T22:34:47.726184+00:00",
+ "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
+ "as_of": "2026-07-13T13:40:40+00:00",
+ "unit": "USD",
+ "slug": "blue-shield-of-calif",
+ "name": "Blue Shield of Calif",
+ "kind": "healthcare",
+ "is_non_profit": false,
+ "total_paid_usd": 3630892831.7,
+ "n_years": 15,
+ "first_year": 2013,
+ "last_year": 2027,
+ "by_year": {
+  "2013": 8575257.9,
+  "2014": 21489054.7,
+  "2015": 27608883.4,
+  "2016": 29228384.5,
+  "2017": 24281652.7,
+  "2018": 279956874.13,
+  "2019": 316659101.14,
+  "2020": 313494049.01,
+  "2021": 327237701.76,
+  "2022": 355998186.46,
+  "2023": 386152934.81,
+  "2024": 399118055.28,
+  "2025": 493032806.49,
+  "2026": 628763004.51,
+  "2027": 19296884.91
+ },
+ "top_departments": [
+  "HSS Health Service System"
+ ],
+ "contracts_held": [],
+ "n_contracts_held": 0,
+ "variants": [
+  {
+   "name": "BLUE SHIELD OF CALIF",
+   "total": 3630892831.7
+  }
+ ],
+ "n_variants": 1,
+ "merges": [],
+ "source": {
+  "name": "Vendor Payments (Vouchers)",
+  "dataset_id": "n9pm-xkyq",
+  "source_url": "https://data.sfgov.org/d/n9pm-xkyq",
+  "attribution": "SF Controller's Office",
+  "rows_updated_at": "2026-07-13T13:40:40+00:00"
+ }
+}

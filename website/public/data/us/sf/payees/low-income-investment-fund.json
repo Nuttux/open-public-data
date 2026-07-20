@@ -1,0 +1,66 @@
+{
+ "generated_at": "2026-07-20T22:34:47.741452+00:00",
+ "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
+ "as_of": "2026-07-13T13:40:40+00:00",
+ "unit": "USD",
+ "slug": "low-income-investment-fund",
+ "name": "Low Income Investment Fund",
+ "kind": "nonprofit",
+ "is_non_profit": false,
+ "total_paid_usd": 136409293.92,
+ "n_years": 20,
+ "first_year": 2007,
+ "last_year": 2026,
+ "by_year": {
+  "2007": 441559.8,
+  "2008": 1924174.7,
+  "2009": 5735141.0,
+  "2010": 3672041.1,
+  "2011": 4773867.9,
+  "2012": 1397137.1,
+  "2013": 810862.2,
+  "2014": 1517009.8,
+  "2015": 1047972.5,
+  "2016": 1838217.2,
+  "2017": 1441360.6,
+  "2018": 2732922.33,
+  "2019": 4496815.63,
+  "2020": 4453238.18,
+  "2021": 22803066.86,
+  "2022": 3733383.47,
+  "2023": 14803158.46,
+  "2024": 27961000.37,
+  "2025": 10580625.77,
+  "2026": 20245738.95
+ },
+ "top_departments": [
+  "HSA Human Services Agency"
+ ],
+ "contracts_held": [
+  {
+   "contract_no": "1000034737",
+   "title": "CC Facilities & TA FY25",
+   "department": "DEC Dept of Early Childhood",
+   "department_code": "DEC",
+   "agreed_usd": 67715789.0,
+   "paid_usd": 24686503.95,
+   "sole_source": true
+  }
+ ],
+ "n_contracts_held": 1,
+ "variants": [
+  {
+   "name": "LOW INCOME INVESTMENT FUND",
+   "total": 136409293.92
+  }
+ ],
+ "n_variants": 1,
+ "merges": [],
+ "source": {
+  "name": "Vendor Payments (Vouchers)",
+  "dataset_id": "n9pm-xkyq",
+  "source_url": "https://data.sfgov.org/d/n9pm-xkyq",
+  "attribution": "SF Controller's Office",
+  "rows_updated_at": "2026-07-13T13:40:40+00:00"
+ }
+}

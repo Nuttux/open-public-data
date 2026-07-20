@@ -1,0 +1,76 @@
+{
+ "generated_at": "2026-07-20T22:34:47.732114+00:00",
+ "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
+ "as_of": "2026-07-13T13:40:40+00:00",
+ "unit": "USD",
+ "slug": "alliant-insurance-services-inc",
+ "name": "Alliant Insurance Services Inc",
+ "kind": "supplier",
+ "is_non_profit": false,
+ "total_paid_usd": 288533580.83,
+ "n_years": 21,
+ "first_year": 2007,
+ "last_year": 2027,
+ "by_year": {
+  "2007": 4456700.4,
+  "2008": 4786620.9,
+  "2009": 4644599.0,
+  "2010": 5476826.7,
+  "2011": 6396844.3,
+  "2012": 6727649.8,
+  "2013": 7523266.2,
+  "2014": 9199415.6,
+  "2015": 10591330.2,
+  "2016": 12148520.5,
+  "2017": 12141193.9,
+  "2018": 11281342.66,
+  "2019": 13023074.0,
+  "2020": 14257526.77,
+  "2021": 21906994.53,
+  "2022": 26299276.96,
+  "2023": 22590729.48,
+  "2024": 28318341.57,
+  "2025": 25489723.96,
+  "2026": 23032836.09,
+  "2027": 18240767.31
+ },
+ "top_departments": [
+  "ADM Gen Svcs Agency-City Admin"
+ ],
+ "contracts_held": [
+  {
+   "contract_no": "1000036331",
+   "title": "Citywide Insurance",
+   "department": "ADM GSA - City Administrator",
+   "department_code": "ADM",
+   "agreed_usd": 85000000.0,
+   "paid_usd": 20781668.17,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000025904",
+   "title": "Work of Arts Insurance",
+   "department": "ADM GSA - City Administrator",
+   "department_code": "ADM",
+   "agreed_usd": 9750000.0,
+   "paid_usd": 7166682.05,
+   "sole_source": false
+  }
+ ],
+ "n_contracts_held": 2,
+ "variants": [
+  {
+   "name": "ALLIANT INSURANCE SERVICES INC",
+   "total": 288533580.83
+  }
+ ],
+ "n_variants": 1,
+ "merges": [],
+ "source": {
+  "name": "Vendor Payments (Vouchers)",
+  "dataset_id": "n9pm-xkyq",
+  "source_url": "https://data.sfgov.org/d/n9pm-xkyq",
+  "attribution": "SF Controller's Office",
+  "rows_updated_at": "2026-07-13T13:40:40+00:00"
+ }
+}

@@ -1,0 +1,121 @@
+{
+ "generated_at": "2026-07-20T22:34:47.738491+00:00",
+ "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
+ "as_of": "2026-07-13T13:40:40+00:00",
+ "unit": "USD",
+ "slug": "edgewood-center-for-children-and-familes",
+ "name": "Edgewood Center for Children and Familes",
+ "kind": "nonprofit",
+ "is_non_profit": false,
+ "total_paid_usd": 165611857.68,
+ "n_years": 21,
+ "first_year": 2007,
+ "last_year": 2027,
+ "by_year": {
+  "2007": 5607329.0,
+  "2008": 5695469.8,
+  "2009": 5376104.2,
+  "2010": 6148270.7,
+  "2011": 6302937.6,
+  "2012": 5755835.9,
+  "2013": 6197233.4,
+  "2014": 6035305.0,
+  "2015": 10267318.0,
+  "2016": 10513106.3,
+  "2017": 12007292.1,
+  "2018": 9033978.57,
+  "2019": 10295708.27,
+  "2020": 7340701.65,
+  "2021": 7855218.29,
+  "2022": 8931223.74,
+  "2023": 10868781.88,
+  "2024": 10076653.6,
+  "2025": 9851928.14,
+  "2026": 10728015.45,
+  "2027": 723446.09
+ },
+ "top_departments": [
+  "DPH Public Health"
+ ],
+ "contracts_held": [
+  {
+   "contract_no": "1000010030",
+   "title": "MH Services for CYF",
+   "department": "DPH Public Health",
+   "department_code": "DPH",
+   "agreed_usd": 57298967.0,
+   "paid_usd": 43018688.38,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000030382",
+   "title": "Crisis Stabilization",
+   "department": "DPH Public Health",
+   "department_code": "DPH",
+   "agreed_usd": 26855548.0,
+   "paid_usd": 9605085.09,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000013721",
+   "title": "Edgewood - THP-Plus",
+   "department": "HOM Homelessness Services",
+   "department_code": "HOM",
+   "agreed_usd": 2424688.0,
+   "paid_usd": 1450602.08,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000032720",
+   "title": "24-02 FRC Initiative",
+   "department": "DEC Dept of Early Childhood",
+   "department_code": "DEC",
+   "agreed_usd": 2936710.0,
+   "paid_usd": 1446202.15,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000035562",
+   "title": "Wraparound services",
+   "department": "DPH Public Health",
+   "department_code": "DPH",
+   "agreed_usd": 6345956.0,
+   "paid_usd": 758967.29,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000014415",
+   "title": "TIS CBO Lead Agency",
+   "department": "DPH Public Health",
+   "department_code": "DPH",
+   "agreed_usd": 1989738.0,
+   "paid_usd": 645076.12,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000028954",
+   "title": "RFGA 7781",
+   "department": "DPH Public Health",
+   "department_code": "DPH",
+   "agreed_usd": 1406742.0,
+   "paid_usd": 621773.93,
+   "sole_source": false
+  }
+ ],
+ "n_contracts_held": 7,
+ "variants": [
+  {
+   "name": "EDGEWOOD CENTER FOR CHILDREN AND FAMILES",
+   "total": 165611857.68
+  }
+ ],
+ "n_variants": 1,
+ "merges": [],
+ "source": {
+  "name": "Vendor Payments (Vouchers)",
+  "dataset_id": "n9pm-xkyq",
+  "source_url": "https://data.sfgov.org/d/n9pm-xkyq",
+  "attribution": "SF Controller's Office",
+  "rows_updated_at": "2026-07-13T13:40:40+00:00"
+ }
+}

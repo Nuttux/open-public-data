@@ -1,0 +1,211 @@
+{
+ "generated_at": "2026-07-20T22:34:47.735026+00:00",
+ "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
+ "as_of": "2026-07-13T13:40:40+00:00",
+ "unit": "USD",
+ "slug": "larkin-street-youth-services",
+ "name": "Larkin Street Youth Services",
+ "kind": "nonprofit",
+ "is_non_profit": false,
+ "total_paid_usd": 210927463.4,
+ "n_years": 21,
+ "first_year": 2007,
+ "last_year": 2027,
+ "by_year": {
+  "2007": 4902740.4,
+  "2008": 4959686.6,
+  "2009": 5968712.6,
+  "2010": 6359286.7,
+  "2011": 6583807.3,
+  "2012": 5583489.4,
+  "2013": 6603757.0,
+  "2014": 6653852.4,
+  "2015": 7038235.6,
+  "2016": 7220040.5,
+  "2017": 10936526.1,
+  "2018": 8677946.95,
+  "2019": 10742431.46,
+  "2020": 13201059.37,
+  "2021": 20344945.63,
+  "2022": 14672400.77,
+  "2023": 14444063.67,
+  "2024": 17810085.33,
+  "2025": 18200643.06,
+  "2026": 18975025.68,
+  "2027": 1048726.88
+ },
+ "top_departments": [
+  "HSA Human Services Agency"
+ ],
+ "contracts_held": [
+  {
+   "contract_no": "1000017436",
+   "title": "Lark Inn (GF & ESG)",
+   "department": "HOM Homelessness Services",
+   "department_code": "HOM",
+   "agreed_usd": 9915387.0,
+   "paid_usd": 8737381.39,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000012315",
+   "title": "Larkin - Aarti Support Svcs",
+   "department": "HOM Homelessness Services",
+   "department_code": "HOM",
+   "agreed_usd": 8972417.0,
+   "paid_usd": 7122493.59,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000013600",
+   "title": "Larkin - Suppt Svcs at G-House",
+   "department": "HOM Homelessness Services",
+   "department_code": "HOM",
+   "agreed_usd": 8574662.0,
+   "paid_usd": 5863303.37,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000012894",
+   "title": "Larkin - Youth Coord Entry",
+   "department": "HOM Homelessness Services",
+   "department_code": "HOM",
+   "agreed_usd": 7533915.0,
+   "paid_usd": 5578298.42,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000021361",
+   "title": "Larkin - 1020 Haight Street",
+   "department": "HOM Homelessness Services",
+   "department_code": "HOM",
+   "agreed_usd": 4524435.0,
+   "paid_usd": 3223099.0,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000031544",
+   "title": "Larkin - Pathways I & II",
+   "department": "HOM Homelessness Services",
+   "department_code": "HOM",
+   "agreed_usd": 4655976.0,
+   "paid_usd": 2783222.5,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000032582",
+   "title": "GA-Academic Supports-24-29",
+   "department": "CHF Children;Youth & Families",
+   "department_code": "CHF",
+   "agreed_usd": 6190500.0,
+   "paid_usd": 1870773.22,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000024464",
+   "title": "Larkin - Mission Inn",
+   "department": "HOM Homelessness Services",
+   "department_code": "HOM",
+   "agreed_usd": 3194932.0,
+   "paid_usd": 1617863.99,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000020688",
+   "title": "Larkin - Edward II",
+   "department": "HOM Homelessness Services",
+   "department_code": "HOM",
+   "agreed_usd": 2796004.0,
+   "paid_usd": 1574578.0,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000019172",
+   "title": "Support Services @ 2060 Folsom",
+   "department": "HOM Homelessness Services",
+   "department_code": "HOM",
+   "agreed_usd": 2801924.0,
+   "paid_usd": 1468217.72,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000027315",
+   "title": "Larkin - YHDP - YAC",
+   "department": "HOM Homelessness Services",
+   "department_code": "HOM",
+   "agreed_usd": 2589762.0,
+   "paid_usd": 1236558.34,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000024908",
+   "title": "Larkin - SS at Casa Esperanza",
+   "department": "HOM Homelessness Services",
+   "department_code": "HOM",
+   "agreed_usd": 1709021.0,
+   "paid_usd": 994864.0,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000035530",
+   "title": "Larkin - TL to RRH & Rising Up",
+   "department": "HOM Homelessness Services",
+   "department_code": "HOM",
+   "agreed_usd": 9952741.0,
+   "paid_usd": 965142.0,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000033477",
+   "title": "RFP 8816-BHS TAY",
+   "department": "DPH Public Health",
+   "department_code": "DPH",
+   "agreed_usd": 2776218.0,
+   "paid_usd": 745486.92,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000035531",
+   "title": "SS for TAY at 78 Haight",
+   "department": "HOM Homelessness Services",
+   "department_code": "HOM",
+   "agreed_usd": 1671972.0,
+   "paid_usd": 254725.0,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000035751",
+   "title": "Larkin - YAC FHSP Expansion",
+   "department": "HOM Homelessness Services",
+   "department_code": "HOM",
+   "agreed_usd": 744786.0,
+   "paid_usd": 9498.83,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000036407",
+   "title": "Rent Fstr Prnt Resrce Hub",
+   "department": "HSA Human Services Agency",
+   "department_code": "HSA",
+   "agreed_usd": 6000.0,
+   "paid_usd": 5000.0,
+   "sole_source": false
+  }
+ ],
+ "n_contracts_held": 17,
+ "variants": [
+  {
+   "name": "LARKIN STREET YOUTH SERVICES",
+   "total": 210927463.4
+  }
+ ],
+ "n_variants": 1,
+ "merges": [],
+ "source": {
+  "name": "Vendor Payments (Vouchers)",
+  "dataset_id": "n9pm-xkyq",
+  "source_url": "https://data.sfgov.org/d/n9pm-xkyq",
+  "attribution": "SF Controller's Office",
+  "rows_updated_at": "2026-07-13T13:40:40+00:00"
+ }
+}

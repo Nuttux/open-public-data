@@ -1,0 +1,229 @@
+{
+ "generated_at": "2026-07-20T22:34:47.728759+00:00",
+ "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
+ "as_of": "2026-07-13T13:40:40+00:00",
+ "unit": "USD",
+ "slug": "pacific-gas-electric-co",
+ "name": "Pacific Gas & Electric Co",
+ "kind": "supplier",
+ "is_non_profit": false,
+ "total_paid_usd": 639883363.23,
+ "n_years": 21,
+ "first_year": 2007,
+ "last_year": 2027,
+ "by_year": {
+  "2007": 27356571.7,
+  "2008": 23305365.4,
+  "2009": 26055805.1,
+  "2010": 26628947.5,
+  "2011": 23632063.0,
+  "2012": 24329350.3,
+  "2013": 19932448.9,
+  "2014": 26428724.6,
+  "2015": 19731939.0,
+  "2016": 15032575.1,
+  "2017": 20975484.6,
+  "2018": 19576414.6,
+  "2019": 25437838.16,
+  "2020": 32763937.34,
+  "2021": 42194934.93,
+  "2022": 49788462.11,
+  "2023": 41376798.06,
+  "2024": 49473681.59,
+  "2025": 75943998.91,
+  "2026": 49321648.99,
+  "2027": 596373.34
+ },
+ "top_departments": [
+  "HHP Hetch Hetchy Water & Power"
+ ],
+ "contracts_held": [
+  {
+   "contract_no": "1000018475",
+   "title": "Power Transmission & Distribut",
+   "department": "PUC Public Utilities Commsn",
+   "department_code": "PUC",
+   "agreed_usd": 195000000.0,
+   "paid_usd": 126329943.28,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000018483",
+   "title": "HHP-SFAC21.04 Gas Purchase",
+   "department": "PUC Public Utilities Commsn",
+   "department_code": "PUC",
+   "agreed_usd": 43000000.0,
+   "paid_usd": 29128650.36,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000000378",
+   "title": "Power Transmission & Distribut",
+   "department": "PUC Public Utilities Commsn",
+   "department_code": "PUC",
+   "agreed_usd": 112737220.0,
+   "paid_usd": 29119232.75,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000018476",
+   "title": "PG&E- Streetlight Maintenance",
+   "department": "PUC Public Utilities Commsn",
+   "department_code": "PUC",
+   "agreed_usd": 13500000.0,
+   "paid_usd": 9634988.81,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000018474",
+   "title": "HHP-SFAC21.04 Service Conn",
+   "department": "PUC Public Utilities Commsn",
+   "department_code": "PUC",
+   "agreed_usd": 10000000.0,
+   "paid_usd": 9228674.88,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000018679",
+   "title": "Cca Billing Administration",
+   "department": "PUC Public Utilities Commsn",
+   "department_code": "PUC",
+   "agreed_usd": 20000000.0,
+   "paid_usd": 9171228.65,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000031766",
+   "title": "PG&E 23-28",
+   "department": "PUC Public Utilities Commsn",
+   "department_code": "PUC",
+   "agreed_usd": 6000000.0,
+   "paid_usd": 5516312.36,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000026362",
+   "title": "HHP Purchaseofpowermultipl",
+   "department": "PUC Public Utilities Commsn",
+   "department_code": "PUC",
+   "agreed_usd": 4008100.0,
+   "paid_usd": 1929667.44,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000035357",
+   "title": "StndRnwl Gas Intrcnt Agmnt",
+   "department": "PUC Public Utilities Commsn",
+   "department_code": "PUC",
+   "agreed_usd": 5137312.0,
+   "paid_usd": 1612000.0,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000019199",
+   "title": "PG&E NCJPA Pole Replacement",
+   "department": "DT  GSA - Technology",
+   "department_code": "TIS",
+   "agreed_usd": 2000000.0,
+   "paid_usd": 1415661.0,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000036263",
+   "title": "2025-93-FTA 2500Mariposa",
+   "department": "MTA Municipal Transprtn Agncy",
+   "department_code": "MTA",
+   "agreed_usd": 600800.0,
+   "paid_usd": 600800.0,
+   "sole_source": true
+  },
+  {
+   "contract_no": "1000036707",
+   "title": "Sullivan-77Harriett",
+   "department": "REC Recreation & Park Commsn",
+   "department_code": "REC",
+   "agreed_usd": 480230.24,
+   "paid_usd": 480230.24,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000027880",
+   "title": "2023-36 PG&E TrafficSgnl",
+   "department": "MTA Municipal Transprtn Agncy",
+   "department_code": "MTA",
+   "agreed_usd": 9000000.0,
+   "paid_usd": 431582.5,
+   "sole_source": true
+  },
+  {
+   "contract_no": "1000034288",
+   "title": "2025-15-PG&E 1301CChavez",
+   "department": "MTA Municipal Transprtn Agncy",
+   "department_code": "MTA",
+   "agreed_usd": 463702.16,
+   "paid_usd": 420965.29,
+   "sole_source": true
+  },
+  {
+   "contract_no": "1000036340",
+   "title": "RE-Utility Cost",
+   "department": "PRT Port",
+   "department_code": "PRT",
+   "agreed_usd": 500000.0,
+   "paid_usd": 198702.29,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000033633",
+   "title": "MTL PG&E",
+   "department": "DPW Public Works",
+   "department_code": "DPW",
+   "agreed_usd": 200000.0,
+   "paid_usd": 91062.14,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000036710",
+   "title": "Froehlich-India Basin",
+   "department": "REC Recreation & Park Commsn",
+   "department_code": "REC",
+   "agreed_usd": 57768.18,
+   "paid_usd": 57768.18,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000037521",
+   "title": "1300-1330 Fillmore",
+   "department": "MYR Mayor",
+   "department_code": "MYR",
+   "agreed_usd": 50000.0,
+   "paid_usd": 20871.17,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000024749",
+   "title": "PG&E 2022-2027",
+   "department": "PUC Public Utilities Commsn",
+   "department_code": "PUC",
+   "agreed_usd": 2000000.0,
+   "paid_usd": 0.0,
+   "sole_source": false
+  }
+ ],
+ "n_contracts_held": 19,
+ "variants": [
+  {
+   "name": "PACIFIC GAS & ELECTRIC CO",
+   "total": 639883363.23
+  }
+ ],
+ "n_variants": 1,
+ "merges": [],
+ "source": {
+  "name": "Vendor Payments (Vouchers)",
+  "dataset_id": "n9pm-xkyq",
+  "source_url": "https://data.sfgov.org/d/n9pm-xkyq",
+  "attribution": "SF Controller's Office",
+  "rows_updated_at": "2026-07-13T13:40:40+00:00"
+ }
+}

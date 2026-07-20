@@ -1,0 +1,92 @@
+{
+ "generated_at": "2026-07-20T22:34:47.739944+00:00",
+ "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
+ "as_of": "2026-07-13T13:40:40+00:00",
+ "unit": "USD",
+ "slug": "meals-on-wheels",
+ "name": "Meals On Wheels",
+ "kind": "other",
+ "is_non_profit": false,
+ "total_paid_usd": 151887789.37,
+ "n_years": 21,
+ "first_year": 2007,
+ "last_year": 2027,
+ "by_year": {
+  "2007": 3019443.2,
+  "2008": 2543785.6,
+  "2009": 3284804.5,
+  "2010": 2919478.4,
+  "2011": 2924370.3,
+  "2012": 2832680.5,
+  "2013": 3055542.7,
+  "2014": 3379229.9,
+  "2015": 4504579.6,
+  "2016": 5407507.1,
+  "2017": 7336222.8,
+  "2018": 7080414.11,
+  "2019": 10132698.99,
+  "2020": 9638227.86,
+  "2021": 12627677.26,
+  "2022": 13111931.64,
+  "2023": 11846186.84,
+  "2024": 15339956.8,
+  "2025": 16224926.38,
+  "2026": 14481736.5,
+  "2027": 196388.39
+ },
+ "top_departments": [],
+ "contracts_held": [
+  {
+   "contract_no": "1000032405",
+   "title": "MOWSF - Hot and Frozen Meals",
+   "department": "HOM Homelessness Services",
+   "department_code": "HOM",
+   "agreed_usd": 49737600.0,
+   "paid_usd": 11593007.99,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000035930",
+   "title": "ENP-NCQA",
+   "department": "HSA Human Services Agency",
+   "department_code": "HSA",
+   "agreed_usd": 37127237.0,
+   "paid_usd": 5256928.97,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000036278",
+   "title": "Nutrition HDM AWD",
+   "department": "HSA Human Services Agency",
+   "department_code": "HSA",
+   "agreed_usd": 6457986.0,
+   "paid_usd": 843598.0,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000036279",
+   "title": "Nutrition HDM ER",
+   "department": "HSA Human Services Agency",
+   "department_code": "HSA",
+   "agreed_usd": 895663.0,
+   "paid_usd": 88583.16,
+   "sole_source": false
+  }
+ ],
+ "n_contracts_held": 4,
+ "variants": [
+  {
+   "name": "MEALS ON WHEELS",
+   "total": 151887789.37
+  }
+ ],
+ "n_variants": 1,
+ "merges": [],
+ "source": {
+  "name": "Vendor Payments (Vouchers)",
+  "dataset_id": "n9pm-xkyq",
+  "source_url": "https://data.sfgov.org/d/n9pm-xkyq",
+  "attribution": "SF Controller's Office",
+  "rows_updated_at": "2026-07-13T13:40:40+00:00"
+ }
+}

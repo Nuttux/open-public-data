@@ -1,0 +1,120 @@
+{
+ "generated_at": "2026-07-20T22:34:47.741572+00:00",
+ "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
+ "as_of": "2026-07-13T13:40:40+00:00",
+ "unit": "USD",
+ "slug": "mission-neighborhood-centers-inc",
+ "name": "Mission Neighborhood Centers Inc",
+ "kind": "nonprofit",
+ "is_non_profit": true,
+ "total_paid_usd": 136260884.55,
+ "n_years": 20,
+ "first_year": 2007,
+ "last_year": 2026,
+ "by_year": {
+  "2007": 2031771.6,
+  "2008": 2785452.5,
+  "2009": 2919866.2,
+  "2010": 2439533.5,
+  "2011": 2218528.8,
+  "2012": 2874612.0,
+  "2013": 2472832.2,
+  "2014": 3097840.4,
+  "2015": 2956784.9,
+  "2016": 3263840.5,
+  "2017": 4558098.6,
+  "2018": 5486725.95,
+  "2019": 8445480.18,
+  "2020": 7102031.48,
+  "2021": 10114141.7,
+  "2022": 12119502.74,
+  "2023": 17872290.1,
+  "2024": 16049874.49,
+  "2025": 14797594.1,
+  "2026": 12654082.61
+ },
+ "top_departments": [
+  "MYR Mayor"
+ ],
+ "contracts_held": [
+  {
+   "contract_no": "1000025883",
+   "title": "MNC - Hom Preven Assist",
+   "department": "HOM Homelessness Services",
+   "department_code": "HOM",
+   "agreed_usd": 20633600.0,
+   "paid_usd": 12341688.07,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000032619",
+   "title": "GA-Productive Adult-24-29",
+   "department": "CHF Children;Youth & Families",
+   "department_code": "CHF",
+   "agreed_usd": 9433600.0,
+   "paid_usd": 2712524.38,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000029950",
+   "title": "Community Services",
+   "department": "HSA Human Services Agency",
+   "department_code": "HSA",
+   "agreed_usd": 2976973.0,
+   "paid_usd": 1883675.2,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000033046",
+   "title": "24-02 FRC Initiative",
+   "department": "DEC Dept of Early Childhood",
+   "department_code": "DEC",
+   "agreed_usd": 2362079.0,
+   "paid_usd": 1296455.92,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000032595",
+   "title": "GA-Out of SchoolTime-24-29",
+   "department": "CHF Children;Youth & Families",
+   "department_code": "CHF",
+   "agreed_usd": 3503900.0,
+   "paid_usd": 872876.33,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000029836",
+   "title": "Intergenerational FY23-27",
+   "department": "HSA Human Services Agency",
+   "department_code": "HSA",
+   "agreed_usd": 775289.0,
+   "paid_usd": 536805.75,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000036770",
+   "title": "24-04 RFQ",
+   "department": "DEC Dept of Early Childhood",
+   "department_code": "DEC",
+   "agreed_usd": 162732.0,
+   "paid_usd": 110656.99,
+   "sole_source": false
+  }
+ ],
+ "n_contracts_held": 7,
+ "variants": [
+  {
+   "name": "MISSION NEIGHBORHOOD CENTERS INC",
+   "total": 136260884.55
+  }
+ ],
+ "n_variants": 1,
+ "merges": [],
+ "source": {
+  "name": "Vendor Payments (Vouchers)",
+  "dataset_id": "n9pm-xkyq",
+  "source_url": "https://data.sfgov.org/d/n9pm-xkyq",
+  "attribution": "SF Controller's Office",
+  "rows_updated_at": "2026-07-13T13:40:40+00:00"
+ }
+}

@@ -1,0 +1,130 @@
+{
+ "generated_at": "2026-07-20T22:34:47.726490+00:00",
+ "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
+ "as_of": "2026-07-13T13:40:40+00:00",
+ "unit": "USD",
+ "slug": "city-college-of-san-francisco",
+ "name": "City College of San Francisco",
+ "kind": "other",
+ "is_non_profit": true,
+ "total_paid_usd": 2149911984.83,
+ "n_years": 21,
+ "first_year": 2007,
+ "last_year": 2027,
+ "by_year": {
+  "2007": 332237.7,
+  "2008": 425244.7,
+  "2009": 926295.5,
+  "2010": 549586.9,
+  "2011": 1200940.3,
+  "2012": 2208191.6,
+  "2013": 2065695.8,
+  "2014": 2067507.3,
+  "2015": 1210329.3,
+  "2016": 2059378.2,
+  "2017": 3986429.7,
+  "2018": 177266167.4,
+  "2019": 226851540.18,
+  "2020": 202727757.71,
+  "2021": 197989162.15,
+  "2022": 205288790.71,
+  "2023": 210069952.96,
+  "2024": 308491401.83,
+  "2025": 338186512.39,
+  "2026": 265862701.39,
+  "2027": 146161.11
+ },
+ "top_departments": [
+  "CCD SF Communtiy College Dist"
+ ],
+ "contracts_held": [
+  {
+   "contract_no": "1000016488",
+   "title": "MOU-Free City",
+   "department": "CHF Children;Youth & Families",
+   "department_code": "CHF",
+   "agreed_usd": 179852347.0,
+   "paid_usd": 105986520.52,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000027344",
+   "title": "Title IV-E Training 22-27",
+   "department": "HSA Human Services Agency",
+   "department_code": "HSA",
+   "agreed_usd": 6716716.0,
+   "paid_usd": 2865630.66,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000021463",
+   "title": "Prof Cert MH&SA Counseling",
+   "department": "DPH Public Health",
+   "department_code": "DPH",
+   "agreed_usd": 4078761.0,
+   "paid_usd": 2131167.39,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000026105",
+   "title": "Academy Training Svcs",
+   "department": "POL Police",
+   "department_code": "POL",
+   "agreed_usd": 4560101.0,
+   "paid_usd": 1001897.82,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000032802",
+   "title": "ARC, Drug and Alc CERT Prog",
+   "department": "DPH Public Health",
+   "department_code": "DPH",
+   "agreed_usd": 1835568.0,
+   "paid_usd": 305783.18,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000035623",
+   "title": "Academy Instructional Svcs",
+   "department": "FIR Fire Department",
+   "department_code": "FIR",
+   "agreed_usd": 500000.0,
+   "paid_usd": 92265.0,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000035199",
+   "title": "On-Site Credit Courses",
+   "department": "JUV Juvenile Probation",
+   "department_code": "JUV",
+   "agreed_usd": 150000.0,
+   "paid_usd": 28158.7,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000035356",
+   "title": "CCSF Rerp CPL",
+   "department": "ECN Economic & Wrkfrce Dvlpmnt",
+   "department_code": "ECN",
+   "agreed_usd": 195000.0,
+   "paid_usd": 0.0,
+   "sole_source": false
+  }
+ ],
+ "n_contracts_held": 8,
+ "variants": [
+  {
+   "name": "CITY COLLEGE OF SAN FRANCISCO",
+   "total": 2149911984.83
+  }
+ ],
+ "n_variants": 1,
+ "merges": [],
+ "source": {
+  "name": "Vendor Payments (Vouchers)",
+  "dataset_id": "n9pm-xkyq",
+  "source_url": "https://data.sfgov.org/d/n9pm-xkyq",
+  "attribution": "SF Controller's Office",
+  "rows_updated_at": "2026-07-13T13:40:40+00:00"
+ }
+}

@@ -1,0 +1,260 @@
+{
+ "generated_at": "2026-07-20T22:30:00.113785+00:00",
+ "source_pipeline": "sf_place_candidates.json → sync_ia_sf.py + link_sf_places.py + fetch_sf_place_photos.py → export_sf_places.py",
+ "unit": "USD",
+ "slug": "southeast-health-center",
+ "name": "Southeast Health Center",
+ "kind": "Health center",
+ "family": "health",
+ "address": "2401 Keith St",
+ "lat": 37.7346,
+ "lon": -122.3899,
+ "owning_dept": {
+  "name": "Public Health",
+  "code": "DPH"
+ },
+ "photo": null,
+ "photo_credit": null,
+ "summary_en": null,
+ "published": false,
+ "money": {
+  "budget_line": {
+   "code": "DPH",
+   "name": "Public Health",
+   "total_usd": 3185025572.0,
+   "fiscal_year": 2025
+  },
+  "contracts": [],
+  "grants": []
+ },
+ "documents": [
+  {
+   "identifier": "bayviewhunterspo2004sanf",
+   "title": "Bayview Hunters Point redevelopment projects and zoning : draft environmental impact report",
+   "creator": "San Francisco Redevelopment Agency (San Francisco, Calif.),San Francisco (Calif.). Planning Dept",
+   "year": 2004,
+   "pool": "sfpl",
+   "matched_alias": "Southeast Health Center",
+   "snippet": "entire Bayview Hunters Point. The «Southeast Health Center», which is owned by the Department",
+   "url": "https://archive.org/details/bayviewhunterspo2004sanf",
+   "deep_link": "https://archive.org/details/bayviewhunterspo2004sanf?q=Southeast+Health+Center",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+  },
+  {
+   "identifier": "agenda200507sanf",
+   "title": "Agenda",
+   "creator": "San Francisco (Calif.). Health Commission. Joint Conference Committee for Community Programs and Services",
+   "year": 2004,
+   "pool": "sfpl",
+   "matched_alias": "Southeast Health Center",
+   "snippet": "the State Office of AIDS SFDPH/CHN/«Southeast Health Center» (SEHC) has been selected to serve",
+   "url": "https://archive.org/details/agenda200507sanf",
+   "deep_link": "https://archive.org/details/agenda200507sanf?q=Southeast+Health+Center",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+  },
+  {
+   "identifier": "bayviewhunterspo2002bayv",
+   "title": "Bayview Hunters Point Project Area Committee community revitilization concept plan",
+   "creator": "Bayview Hunters Point Project Area Committee",
+   "year": 2002,
+   "pool": "sfpl",
+   "matched_alias": "Southeast Health Center",
+   "snippet": "the expanded «Southeast Health Center» and Aging Campus. The «Southeast Health Center» can act as",
+   "url": "https://archive.org/details/bayviewhunterspo2002bayv",
+   "deep_link": "https://archive.org/details/bayviewhunterspo2002bayv?q=Southeast+Health+Center",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+  },
+  {
+   "identifier": "sanfranciscochil1991ahma",
+   "title": "San Francisco childhood lead prevention program : data evaluation, 1991-1997",
+   "creator": "Ahmad, Haroon,Martin, Christine,San Francisco (Calif.). Dept. of Public Health",
+   "year": 1991,
+   "pool": "sfpl",
+   "matched_alias": "Southeast Health Center",
+   "snippet": "Potrero Hill Health Center (PHHC) and «Southeast Health Center» (SEHC). Between 1994 and 1995, the",
+   "url": "https://archive.org/details/sanfranciscochil1991ahma",
+   "deep_link": "https://archive.org/details/sanfranciscochil1991ahma?q=Southeast+Health+Center",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+  },
+  {
+   "identifier": "agenda2003bayv_4",
+   "title": "Agenda",
+   "creator": "Bayview Hunters Point Project Area Committee. Health and Environment Committee",
+   "year": null,
+   "pool": "sfpl",
+   "matched_alias": "Southeast Health Center",
+   "snippet": "Triangle Redevelopment Plan Amendment B. «Southeast Health Center» Development Program Update C. Aging",
+   "url": "https://archive.org/details/agenda2003bayv_4",
+   "deep_link": "https://archive.org/details/agenda2003bayv_4?q=Southeast+Health+Center",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+  },
+  {
+   "identifier": "agenda2002bayv",
+   "title": "Agenda",
+   "creator": "Bayview Hunters Point Project Area Committee. Executive Committee",
+   "year": null,
+   "pool": "sfpl",
+   "matched_alias": "Southeast Health Center",
+   "snippet": "Business A. Presentation on the «Southeast Health Center» B. Department of Environment Air",
+   "url": "https://archive.org/details/agenda2002bayv",
+   "deep_link": "https://archive.org/details/agenda2002bayv?q=Southeast+Health+Center",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+  },
+  {
+   "identifier": "budgetasapproved2002sanf",
+   "title": "Budget as approved by the Board of Supervisors / San Francisco Redevelopment Agency",
+   "creator": "San Francisco Redevelopment Agency (San Francisco, Calif.)",
+   "year": null,
+   "pool": "sfpl",
+   "matched_alias": "Southeast Health Center",
+   "snippet": "studies for the expansion of the «Southeast Health Center» in the Health Center Activity Node",
+   "url": "https://archive.org/details/budgetasapproved2002sanf",
+   "deep_link": "https://archive.org/details/budgetasapproved2002sanf?q=Southeast+Health+Center",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+  },
+  {
+   "identifier": "minutes2001sanf_2",
+   "title": "Minutes",
+   "creator": "San Francisco Port Commission",
+   "year": null,
+   "pool": "sfpl",
+   "matched_alias": "Southeast Health Center",
+   "snippet": "pos- sible. Expanded «Southeast Health Center»: The «Southeast Health Center» is located on the",
+   "url": "https://archive.org/details/minutes2001sanf_2",
+   "deep_link": "https://archive.org/details/minutes2001sanf_2?q=Southeast+Health+Center",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+  },
+  {
+   "identifier": "2minutes200102sanf",
+   "title": "Minutes",
+   "creator": "San Francisco (Calif.). Southeast Community Facility Commission",
+   "year": null,
+   "pool": "sfpl",
+   "matched_alias": "Southeast Health Center",
+   "snippet": "Presentation: Freddie Smith, Exec. Dir., «Southeast Health Center» - Public Health Programs and Services",
+   "url": "https://archive.org/details/2minutes200102sanf",
+   "deep_link": "https://archive.org/details/2minutes200102sanf?q=Southeast+Health+Center",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+  },
+  {
+   "identifier": "agenda2003bayv",
+   "title": "Agenda",
+   "creator": "Bayview Hunters Point Project Area Committee",
+   "year": null,
+   "pool": "sfpl",
+   "matched_alias": "Southeast Health Center",
+   "snippet": "New Business • Presentation on the «Southeast Health Center» 7. Matters of Unfinished Business",
+   "url": "https://archive.org/details/agenda2003bayv",
+   "deep_link": "https://archive.org/details/agenda2003bayv?q=Southeast+Health+Center",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+  },
+  {
+   "identifier": "minutes93sanf",
+   "title": "Minutes",
+   "creator": "San Francisco (Calif.). Health Commission",
+   "year": null,
+   "pool": "sfpl",
+   "matched_alias": "Southeast Health Center",
+   "snippet": "832 Potrero Hill Health Center: 407 «Southeast Health Center»: 524 Special Programs for Youth:",
+   "url": "https://archive.org/details/minutes93sanf",
+   "deep_link": "https://archive.org/details/minutes93sanf?q=Southeast+Health+Center",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+  },
+  {
+   "identifier": "memorandum1994sanf_0",
+   "title": "Memorandum",
+   "creator": "San Francisco (Calif.). Childhood Lead Prevention Program",
+   "year": null,
+   "pool": "sfpl",
+   "matched_alias": "Southeast Health Center",
+   "snippet": "1995 Location: «Southeast Health Center» Location: «Southeast Health Center» Time: 2:00 p.m.",
+   "url": "https://archive.org/details/memorandum1994sanf_0",
+   "deep_link": "https://archive.org/details/memorandum1994sanf_0?q=Southeast+Health+Center",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+  },
+  {
+   "identifier": "1minutes199596sanf",
+   "title": "Minutes",
+   "creator": "San Francisco (Calif.). Southeast Community Facility Commission",
+   "year": null,
+   "pool": "sfpl",
+   "matched_alias": "Southeast Health Center",
+   "snippet": "Ms. Cynthia Selmar, Director of «Southeast Health Center» regretted not being present during",
+   "url": "https://archive.org/details/1minutes199596sanf",
+   "deep_link": "https://archive.org/details/1minutes199596sanf?q=Southeast+Health+Center",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+  },
+  {
+   "identifier": "sanfranciscodepa200003sanf",
+   "title": "The San Francisco Department of Public Health annual report",
+   "creator": "San Francisco (Calif.). Dept. of Public Health",
+   "year": null,
+   "pool": "sfpl",
+   "matched_alias": "Southeast Health Center",
+   "snippet": "Hospital Potrero Hill Health Center «Southeast Health Center» OMI Family Center Special Programs",
+   "url": "https://archive.org/details/sanfranciscodepa200003sanf",
+   "deep_link": "https://archive.org/details/sanfranciscodepa200003sanf?q=Southeast+Health+Center",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+  }
+ ],
+ "dept_shelf": [
+  {
+   "identifier": "performanceeffic202008san",
+   "title": "Performance and efficiency review : Department of Public Health : Controller's Office analysis 2005-2008",
+   "year": 2005,
+   "pool": "sfpl",
+   "url": "https://archive.org/details/performanceeffic202008san"
+  },
+  {
+   "identifier": "annualreportofde192425sanf",
+   "title": "Annual report of the Department of Public Health, San Francisco, California",
+   "year": 1925,
+   "pool": "sfpl",
+   "url": "https://archive.org/details/annualreportofde192425sanf"
+  },
+  {
+   "identifier": "annualsalaryord197879sanf",
+   "title": "Annual salary ordinance",
+   "year": null,
+   "pool": "sfpl",
+   "url": "https://archive.org/details/annualsalaryord197879sanf"
+  },
+  {
+   "identifier": "annualsalaryord197576sanf",
+   "title": "Annual salary ordinance",
+   "year": null,
+   "pool": "sfpl",
+   "url": "https://archive.org/details/annualsalaryord197576sanf"
+  },
+  {
+   "identifier": "weeklybulletin1968sanf",
+   "title": "Weekly bulletin",
+   "year": null,
+   "pool": "sfpl",
+   "url": "https://archive.org/details/weeklybulletin1968sanf"
+  },
+  {
+   "identifier": "15minutes1988sanf",
+   "title": "Minutes",
+   "year": null,
+   "pool": "sfpl",
+   "url": "https://archive.org/details/15minutes1988sanf"
+  }
+ ],
+ "sources": [
+  {
+   "label": "City budget & payments",
+   "note": "SF Controller open data (budget, vouchers, contracts)"
+  },
+  {
+   "label": "Historical documents",
+   "note": "Internet Archive — SFPL partnership scans + Democracy's Library"
+  }
+ ],
+ "_gate": {
+  "has_photo": false,
+  "n_documents": 14,
+  "n_money_links": 1,
+  "meets_pre_summary": false
+ }
+}

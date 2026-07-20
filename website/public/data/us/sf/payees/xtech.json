@@ -1,0 +1,85 @@
+{
+ "generated_at": "2026-07-20T22:34:47.730074+00:00",
+ "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
+ "as_of": "2026-07-13T13:40:40+00:00",
+ "unit": "USD",
+ "slug": "xtech",
+ "name": "Xtech",
+ "kind": "supplier",
+ "is_non_profit": false,
+ "total_paid_usd": 478649212.96,
+ "n_years": 21,
+ "first_year": 2007,
+ "last_year": 2027,
+ "by_year": {
+  "2007": 15169860.0,
+  "2008": 15986828.5,
+  "2009": 20947808.2,
+  "2010": 23377263.0,
+  "2011": 25449869.4,
+  "2012": 26596919.5,
+  "2013": 30570923.8,
+  "2014": 27508262.9,
+  "2015": 21692102.5,
+  "2016": 22060736.1,
+  "2017": 31412311.9,
+  "2018": 32456728.31,
+  "2019": 30614909.71,
+  "2020": 34739640.29,
+  "2021": 26252191.57,
+  "2022": 21382568.67,
+  "2023": 22280287.36,
+  "2024": 20658172.02,
+  "2025": 14930370.89,
+  "2026": 14017162.46,
+  "2027": 544295.88
+ },
+ "top_departments": [
+  "DT GSA - Technology"
+ ],
+ "contracts_held": [
+  {
+   "contract_no": "1000031412",
+   "title": "Tech Marketplace 3.0 $20 mil",
+   "department": "ADM GSA - City Administrator",
+   "department_code": "ADM",
+   "agreed_usd": 81414000.0,
+   "paid_usd": 26712991.32,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000038378",
+   "title": "Air-Tableau Server Administrat",
+   "department": "AIR Airport Commission",
+   "department_code": "AIR",
+   "agreed_usd": 3000.0,
+   "paid_usd": 0.0,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000038341",
+   "title": "Tableau Server Administrat",
+   "department": "AIR Airport Commission",
+   "department_code": "AIR",
+   "agreed_usd": 3000.0,
+   "paid_usd": 0.0,
+   "sole_source": false
+  }
+ ],
+ "n_contracts_held": 3,
+ "variants": [
+  {
+   "name": "XTECH",
+   "total": 478649212.96
+  }
+ ],
+ "n_variants": 1,
+ "merges": [],
+ "source": {
+  "name": "Vendor Payments (Vouchers)",
+  "dataset_id": "n9pm-xkyq",
+  "source_url": "https://data.sfgov.org/d/n9pm-xkyq",
+  "attribution": "SF Controller's Office",
+  "rows_updated_at": "2026-07-13T13:40:40+00:00"
+ }
+}

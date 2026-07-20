@@ -1,0 +1,92 @@
+{
+ "generated_at": "2026-07-20T22:35:37.356161+00:00",
+ "note": "Maps money entities to PUBLISHED places only (publication guard). A chip renders only if its target slug is in `places`.",
+ "places": [
+  "balboa-park-station",
+  "bill-graham-civic-auditorium",
+  "buena-vista-park",
+  "cable-car-barn",
+  "coit-tower",
+  "conservatory-of-flowers",
+  "davies-symphony-hall",
+  "de-young-museum",
+  "ferry-building",
+  "glen-canyon-park",
+  "golden-gate-park",
+  "hetch-hetchy",
+  "japanese-tea-garden",
+  "laguna-honda-hospital",
+  "lake-merced",
+  "legion-of-honor",
+  "marina-green",
+  "mclaren-park",
+  "mission-dolores-park",
+  "moscone-center",
+  "pier-39",
+  "pier-70",
+  "portsmouth-square",
+  "san-francisco-zoo",
+  "sf-main-library",
+  "sunol-water-temple",
+  "union-square"
+ ],
+ "by_contract": {
+  "1000024234": "bill-graham-civic-auditorium",
+  "1000033261": "hetch-hetchy",
+  "1000032312": "laguna-honda-hospital",
+  "1000021904": "laguna-honda-hospital",
+  "1000025304": "mission-dolores-park",
+  "1000036809": "portsmouth-square",
+  "1000036810": "portsmouth-square",
+  "1000022761": "sf-main-library",
+  "1000034564": "union-square",
+  "1000038257": "union-square"
+ },
+ "by_dept": {
+  "MTA": [
+   "balboa-park-station",
+   "cable-car-barn"
+  ],
+  "ADM": [
+   "bill-graham-civic-auditorium",
+   "moscone-center"
+  ],
+  "REC": [
+   "buena-vista-park",
+   "coit-tower",
+   "conservatory-of-flowers",
+   "glen-canyon-park",
+   "golden-gate-park",
+   "japanese-tea-garden",
+   "lake-merced",
+   "marina-green",
+   "mclaren-park",
+   "mission-dolores-park",
+   "portsmouth-square",
+   "san-francisco-zoo",
+   "union-square"
+  ],
+  "WAR": [
+   "davies-symphony-hall"
+  ],
+  "FAM": [
+   "de-young-museum",
+   "legion-of-honor"
+  ],
+  "PRT": [
+   "ferry-building",
+   "pier-39",
+   "pier-70"
+  ],
+  "PUC": [
+   "hetch-hetchy",
+   "sunol-water-temple"
+  ],
+  "DPH": [
+   "laguna-honda-hospital"
+  ],
+  "LIB": [
+   "sf-main-library"
+  ]
+ }
+}

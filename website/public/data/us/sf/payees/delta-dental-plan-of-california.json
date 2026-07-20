@@ -1,0 +1,57 @@
+{
+ "generated_at": "2026-07-20T22:34:47.729369+00:00",
+ "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
+ "as_of": "2026-07-13T13:40:40+00:00",
+ "unit": "USD",
+ "slug": "delta-dental-plan-of-california",
+ "name": "Delta Dental Plan of California",
+ "kind": "healthcare",
+ "is_non_profit": true,
+ "total_paid_usd": 588008181.26,
+ "n_years": 21,
+ "first_year": 2007,
+ "last_year": 2027,
+ "by_year": {
+  "2007": 1601738.4,
+  "2008": 1454738.1,
+  "2009": 1477426.6,
+  "2010": 1335619.6,
+  "2011": 1307872.4,
+  "2012": 1538680.8,
+  "2013": 1433714.1,
+  "2014": 1319816.8,
+  "2015": 1478420.9,
+  "2016": 1670134.2,
+  "2017": 1597659.5,
+  "2018": 58774628.07,
+  "2019": 62225619.2,
+  "2020": 54425684.39,
+  "2021": 63492487.56,
+  "2022": 61448964.53,
+  "2023": 62581109.02,
+  "2024": 65607297.7,
+  "2025": 68762431.3,
+  "2026": 70420179.41,
+  "2027": 4053958.68
+ },
+ "top_departments": [
+  "HSS Health Service System"
+ ],
+ "contracts_held": [],
+ "n_contracts_held": 0,
+ "variants": [
+  {
+   "name": "DELTA DENTAL PLAN OF CALIFORNIA",
+   "total": 588008181.26
+  }
+ ],
+ "n_variants": 1,
+ "merges": [],
+ "source": {
+  "name": "Vendor Payments (Vouchers)",
+  "dataset_id": "n9pm-xkyq",
+  "source_url": "https://data.sfgov.org/d/n9pm-xkyq",
+  "attribution": "SF Controller's Office",
+  "rows_updated_at": "2026-07-13T13:40:40+00:00"
+ }
+}

@@ -1,0 +1,85 @@
+{
+ "generated_at": "2026-07-20T22:34:47.740490+00:00",
+ "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
+ "as_of": "2026-07-13T13:40:40+00:00",
+ "unit": "USD",
+ "slug": "western-states-oil",
+ "name": "Western States Oil",
+ "kind": "supplier",
+ "is_non_profit": false,
+ "total_paid_usd": 147880838.43,
+ "n_years": 21,
+ "first_year": 2007,
+ "last_year": 2027,
+ "by_year": {
+  "2007": 282342.0,
+  "2008": 355549.9,
+  "2009": 240106.8,
+  "2010": 15494890.4,
+  "2011": 24910396.6,
+  "2012": 28196643.9,
+  "2013": 29542643.8,
+  "2014": 8220015.7,
+  "2015": 1179286.3,
+  "2016": 933324.9,
+  "2017": 742544.7,
+  "2018": 824091.26,
+  "2019": 3962675.66,
+  "2020": 5801366.76,
+  "2021": 5351371.68,
+  "2022": 8043827.54,
+  "2023": 8245380.96,
+  "2024": 4443995.39,
+  "2025": 446293.09,
+  "2026": 660118.13,
+  "2027": 3972.96
+ },
+ "top_departments": [
+  "MTA Municipal Transprtn Agncy"
+ ],
+ "contracts_held": [
+  {
+   "contract_no": "1000036829",
+   "title": "TC70888-DEF City & Peninsula",
+   "department": "ADM GSA - City Administrator",
+   "department_code": "ADM",
+   "agreed_usd": 8000000.0,
+   "paid_usd": 86338.35,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000037156",
+   "title": "TC70888-Diesel City Secondary",
+   "department": "ADM GSA - City Administrator",
+   "department_code": "ADM",
+   "agreed_usd": 9000000.0,
+   "paid_usd": 13528.43,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000036822",
+   "title": "TC70888-Gas City & Penin. 2nd",
+   "department": "ADM GSA - City Administrator",
+   "department_code": "ADM",
+   "agreed_usd": 8000000.0,
+   "paid_usd": 0.0,
+   "sole_source": false
+  }
+ ],
+ "n_contracts_held": 3,
+ "variants": [
+  {
+   "name": "WESTERN STATES OIL",
+   "total": 147880838.43
+  }
+ ],
+ "n_variants": 1,
+ "merges": [],
+ "source": {
+  "name": "Vendor Payments (Vouchers)",
+  "dataset_id": "n9pm-xkyq",
+  "source_url": "https://data.sfgov.org/d/n9pm-xkyq",
+  "attribution": "SF Controller's Office",
+  "rows_updated_at": "2026-07-13T13:40:40+00:00"
+ }
+}

@@ -1,0 +1,128 @@
+{
+ "generated_at": "2026-07-20T22:34:47.743628+00:00",
+ "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
+ "as_of": "2026-07-13T13:40:40+00:00",
+ "unit": "USD",
+ "slug": "san-mateo-county",
+ "name": "San Mateo County",
+ "kind": "other",
+ "is_non_profit": false,
+ "total_paid_usd": 115282952.3,
+ "n_years": 21,
+ "first_year": 2007,
+ "last_year": 2027,
+ "by_year": {
+  "2007": 2260933.0,
+  "2008": 1546387.0,
+  "2009": 1999976.0,
+  "2010": 2088013.0,
+  "2011": 2862629.6,
+  "2012": 3722593.5,
+  "2013": 2156465.0,
+  "2014": 2222357.4,
+  "2015": 1244769.5,
+  "2016": 2293063.5,
+  "2017": 6239996.0,
+  "2018": 5088329.34,
+  "2019": 10852549.73,
+  "2020": 9976871.82,
+  "2021": 9868164.94,
+  "2022": 10020443.45,
+  "2023": 9623121.56,
+  "2024": 7579630.85,
+  "2025": 13607658.36,
+  "2026": 10024998.75,
+  "2027": 4000.0
+ },
+ "top_departments": [],
+ "contracts_held": [
+  {
+   "contract_no": "1000028223",
+   "title": "Federal Pass-Through Funding",
+   "department": "DPH Public Health",
+   "department_code": "DPH",
+   "agreed_usd": 8559404.0,
+   "paid_usd": 4413299.0,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000029018",
+   "title": "AIR50350 San Mateo County",
+   "department": "AIR Airport Commission",
+   "department_code": "AIR",
+   "agreed_usd": 7000000.0,
+   "paid_usd": 3301512.05,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000020992",
+   "title": "AIR50266DISPATCH911",
+   "department": "AIR Airport Commission",
+   "department_code": "AIR",
+   "agreed_usd": 2500000.0,
+   "paid_usd": 1843404.2,
+   "sole_source": true
+  },
+  {
+   "contract_no": "1000035768",
+   "title": "FY24 UASI MOU San Mateo SO",
+   "department": "DEM Emergency Management",
+   "department_code": "DEM",
+   "agreed_usd": 976990.0,
+   "paid_usd": 650000.0,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000036171",
+   "title": "AIR50384 SMC Roundtable",
+   "department": "AIR Airport Commission",
+   "department_code": "AIR",
+   "agreed_usd": 1100000.0,
+   "paid_usd": 440000.0,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000037233",
+   "title": "Rent for training range at San",
+   "department": "ADP Adult Probation",
+   "department_code": "ADP",
+   "agreed_usd": 40000.0,
+   "paid_usd": 25320.0,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000027897",
+   "title": "Public healthLab Services",
+   "department": "DPH Public Health",
+   "department_code": "DPH",
+   "agreed_usd": 199000.0,
+   "paid_usd": 16424.7,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000037426",
+   "title": "Air-SanMateo EMS Accreditation",
+   "department": "AIR Airport Commission",
+   "department_code": "AIR",
+   "agreed_usd": 2000.0,
+   "paid_usd": 0.0,
+   "sole_source": false
+  }
+ ],
+ "n_contracts_held": 8,
+ "variants": [
+  {
+   "name": "SAN MATEO COUNTY",
+   "total": 115282952.3
+  }
+ ],
+ "n_variants": 1,
+ "merges": [],
+ "source": {
+  "name": "Vendor Payments (Vouchers)",
+  "dataset_id": "n9pm-xkyq",
+  "source_url": "https://data.sfgov.org/d/n9pm-xkyq",
+  "attribution": "SF Controller's Office",
+  "rows_updated_at": "2026-07-13T13:40:40+00:00"
+ }
+}

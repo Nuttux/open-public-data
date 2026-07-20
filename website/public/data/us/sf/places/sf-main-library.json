@@ -1,0 +1,231 @@
+{
+ "generated_at": "2026-07-20T22:30:00.109048+00:00",
+ "source_pipeline": "sf_place_candidates.json → sync_ia_sf.py + link_sf_places.py + fetch_sf_place_photos.py → export_sf_places.py",
+ "unit": "USD",
+ "slug": "sf-main-library",
+ "name": "San Francisco Main Library",
+ "kind": "Library",
+ "family": "library",
+ "address": "100 Larkin St",
+ "lat": 37.779,
+ "lon": -122.4157,
+ "owning_dept": {
+  "name": "Public Library",
+  "code": "LIB"
+ },
+ "photo": "/img/us/sf/places/sf-main-library.jpg",
+ "photo_credit": {
+  "photo": "/img/us/sf/places/sf-main-library.jpg",
+  "source": "Wikimedia Commons",
+  "file": "File:SFPL_Main_Library_Full_Exterior.jpg",
+  "file_url": "https://commons.wikimedia.org/wiki/File:SFPL_Main_Library_Full_Exterior.jpg",
+  "license": "CC BY-SA 3.0",
+  "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
+  "author": "J. Ash Bowie",
+  "fetched_at": "2026-07-20T22:24:13.527899+00:00"
+ },
+ "summary_en": "Documents trace the Main Library's planning and buildings — a 1991 draft environmental impact report for the new Main Library, 1979 and 1990 commission agendas on the new building, a 1998 historic structure report on the Old Main Library, a 2000 post-occupancy evaluation, and a 2003 strategic plan — plus a facility assessment noting its 110-year history and 1998 minutes calling it the City's largest branch. The library is operated by the Public Library, whose FY2025 budget line is about $187M; a 'Workforce Dev Main Library' contract with Urban Alchemy has paid about $2.7M against an agreed $5M.",
+ "published": true,
+ "money": {
+  "budget_line": {
+   "code": "LIB",
+   "name": "Public Library",
+   "total_usd": 187421705.0,
+   "fiscal_year": 2025
+  },
+  "contracts": [
+   {
+    "contract_no": "1000022761",
+    "title": "Workforce Dev Main Library",
+    "prime": "URBAN ALCHEMY",
+    "department_code": "LIB",
+    "agreed_usd": 5011265.61,
+    "paid_usd": 2702896.81,
+    "evidence": "Workforce Dev Main Library"
+   }
+  ],
+  "grants": []
+ },
+ "documents": [
+  {
+   "identifier": "sanfranciscopubl7200sanf",
+   "title": "San Francisco Public Library strategic plan, 2003-2006 : July 7, 2003 draft",
+   "creator": "San Francisco Public Library",
+   "year": 2003,
+   "pool": "sfpl",
+   "matched_alias": "San Francisco Public Library",
+   "snippet": "2003 «SAN FRANCISCO PUBLIC LIBRARY» «San Francisco Public Library» «SAN FRANCISCO PUBLIC LIBRARY» STRATEGIC",
+   "url": "https://archive.org/details/sanfranciscopubl7200sanf",
+   "deep_link": "https://archive.org/details/sanfranciscopubl7200sanf?q=San+Francisco+Public+Library",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+  },
+  {
+   "identifier": "sanfranciscopub4200ripl_0",
+   "title": "San Francisco Public Library Post Occupancy Evaluation",
+   "creator": "Ripley, Cynthia,Mason, Florence, librarian,Kent, Susan,Ripley Architects",
+   "year": 2000,
+   "pool": "sfpl",
+   "matched_alias": "San Francisco Public Library",
+   "snippet": "RIPLEY I «SAN FRANCISCO PUBLIC LIBRARY» 3 1223 05308 2278 «San Francisco Public Library» Post Occupancy",
+   "url": "https://archive.org/details/sanfranciscopub4200ripl_0",
+   "deep_link": "https://archive.org/details/sanfranciscopub4200ripl_0?q=San+Francisco+Public+Library",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+  },
+  {
+   "identifier": "historicstructur02page",
+   "title": "Historic structure report, Old Main Library",
+   "creator": "Page & Turnbull,Porter, William A., photographer,Piazzoni, Gottardo,Asian Art Museum--Chong-Moon Lee Center for Asian Art and Culture",
+   "year": 1998,
+   "pool": "sfpl",
+   "matched_alias": "Main Library",
+   "snippet": "Libre I [istoric Structure Report < >ld «Main Library» Volume II A^ian Art Museum Jul; : PAGE&Tl",
+   "url": "https://archive.org/details/historicstructur02page",
+   "deep_link": "https://archive.org/details/historicstructur02page?q=Main+Library",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+  },
+  {
+   "identifier": "sanfranciscomain7199sanf",
+   "title": "San Francisco Main Library : draft environmental impact report",
+   "creator": "San Francisco (Calif.). Dept. of City Planning",
+   "year": 1991,
+   "pool": "sfpl",
+   "matched_alias": "Main Library",
+   "snippet": "available from the New «Main Library». Renovation of the existing «Main Library» would not result",
+   "url": "https://archive.org/details/sanfranciscomain7199sanf",
+   "deep_link": "https://archive.org/details/sanfranciscomain7199sanf?q=Main+Library",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+  },
+  {
+   "identifier": "noticecommunityg2014sanf",
+   "title": "Notice, community groups meeting in the Branch and Main Libraries",
+   "creator": "San Francisco Public Library",
+   "year": null,
+   "pool": "sfpl",
+   "matched_alias": "Main Library",
+   "snippet": "2014 College Class - scottd2@miamioh.edu «Main Library», 10:00-12:00 PM Stong Room - Floor 1",
+   "url": "https://archive.org/details/noticecommunityg2014sanf",
+   "deep_link": "https://archive.org/details/noticecommunityg2014sanf?q=Main+Library",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+  },
+  {
+   "identifier": "release1991sanf",
+   "title": "[Release]",
+   "creator": "San Francisco Public Library",
+   "year": null,
+   "pool": "sfpl",
+   "matched_alias": "Main Library",
+   "snippet": "branch libraries, the «Main Library» circulating collection, the «Main Library» video collection,",
+   "url": "https://archive.org/details/release1991sanf",
+   "deep_link": "https://archive.org/details/release1991sanf?q=Main+Library",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+  },
+  {
+   "identifier": "minutesofregular1998sanf",
+   "title": "Minutes of the regular meeting ...",
+   "creator": "San Francisco Public Library. Commission",
+   "year": null,
+   "pool": "sfpl",
+   "matched_alias": "Main Library",
+   "snippet": "111,000 children/youth N.A. 186,000 «Main Library»: The «Main Library» is the City's largest \"branch\"",
+   "url": "https://archive.org/details/minutesofregular1998sanf",
+   "deep_link": "https://archive.org/details/minutesofregular1998sanf?q=Main+Library",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+  },
+  {
+   "identifier": "sanfranciscomain1419rand",
+   "title": "The San Francisco main public library : an assessment of the existing facility and its ability to meet future library needs",
+   "creator": "Randall Rice and Joseph Becker,with Hellmuth, Obata, and Kassabaum",
+   "year": null,
+   "pool": "sfpl",
+   "matched_alias": "Main Library",
+   "snippet": "Role of the «Main Library» Throughout its 110-year history, the «Main Library» has always been",
+   "url": "https://archive.org/details/sanfranciscomain1419rand",
+   "deep_link": "https://archive.org/details/sanfranciscomain1419rand?q=Main+Library",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+  },
+  {
+   "identifier": "agendasanfranci1990sanf_3",
+   "title": "Agenda / San Francisco Public Library Commission, Finance and Operations Committee",
+   "creator": "San Francisco Public Library. Commission. Finance and Operations Committee",
+   "year": null,
+   "pool": "sfpl",
+   "matched_alias": "Main Library",
+   "snippet": "3 . Ipdate on new «main library» and branch renovations . «Main Library», Civic Center San Francisco",
+   "url": "https://archive.org/details/agendasanfranci1990sanf_3",
+   "deep_link": "https://archive.org/details/agendasanfranci1990sanf_3?q=Main+Library",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+  },
+  {
+   "identifier": "agendasminutess1979sanf_1",
+   "title": "Agendas and Minutes / San Francisco Public Library Commission, Personnel Committee",
+   "creator": "San Francisco Public Library. Commission. Personnel Committee",
+   "year": null,
+   "pool": "sfpl",
+   "matched_alias": "Main Library",
+   "snippet": "for a new «main library». Evaluation of City Librarian and Secretary. «Main Library», Civic Center",
+   "url": "https://archive.org/details/agendasminutess1979sanf_1",
+   "deep_link": "https://archive.org/details/agendasminutess1979sanf_1?q=Main+Library",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+  }
+ ],
+ "dept_shelf": [
+  {
+   "identifier": "sanfranciscopubl7200sanf",
+   "title": "San Francisco Public Library strategic plan, 2003-2006 : July 7, 2003 draft",
+   "year": 2003,
+   "pool": "sfpl",
+   "url": "https://archive.org/details/sanfranciscopubl7200sanf"
+  },
+  {
+   "identifier": "sanfranciscopub4200ripl_0",
+   "title": "San Francisco Public Library Post Occupancy Evaluation",
+   "year": 2000,
+   "pool": "sfpl",
+   "url": "https://archive.org/details/sanfranciscopub4200ripl_0"
+  },
+  {
+   "identifier": "minutesofregula1619sanf_0",
+   "title": "Minutes of the regular meeting ... / San Francisco Public Library Commission",
+   "year": null,
+   "pool": "sfpl",
+   "url": "https://archive.org/details/minutesofregula1619sanf_0"
+  },
+  {
+   "identifier": "agenda1969sanf",
+   "title": "Agenda",
+   "year": null,
+   "pool": "sfpl",
+   "url": "https://archive.org/details/agenda1969sanf"
+  },
+  {
+   "identifier": "agendasminutessa1979sanf",
+   "title": "Agendas and Minutes / San Francisco Public Library Commission, Finance Committee",
+   "year": null,
+   "pool": "sfpl",
+   "url": "https://archive.org/details/agendasminutessa1979sanf"
+  },
+  {
+   "identifier": "requestforuseofp1998sanf",
+   "title": "Request for use of public meeting rooms / Branch meeting rooms summary",
+   "year": null,
+   "pool": "sfpl",
+   "url": "https://archive.org/details/requestforuseofp1998sanf"
+  }
+ ],
+ "sources": [
+  {
+   "label": "City budget & payments",
+   "note": "SF Controller open data (budget, vouchers, contracts)"
+  },
+  {
+   "label": "Historical documents",
+   "note": "Internet Archive — SFPL partnership scans + Democracy's Library"
+  }
+ ],
+ "_gate": {
+  "has_photo": true,
+  "n_documents": 10,
+  "n_money_links": 2,
+  "meets_pre_summary": true
+ }
+}

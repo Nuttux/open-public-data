@@ -1,0 +1,63 @@
+{
+ "generated_at": "2026-07-20T22:34:47.732889+00:00",
+ "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
+ "as_of": "2026-07-13T13:40:40+00:00",
+ "unit": "USD",
+ "slug": "homebridge-inc",
+ "name": "Homebridge Inc",
+ "kind": "nonprofit",
+ "is_non_profit": true,
+ "total_paid_usd": 262501623.3,
+ "n_years": 17,
+ "first_year": 2007,
+ "last_year": 2026,
+ "by_year": {
+  "2007": 16930.9,
+  "2011": 5000.0,
+  "2012": 41929.9,
+  "2013": 48508.6,
+  "2014": 92118.6,
+  "2015": 169211.2,
+  "2016": 173418.8,
+  "2017": 206454.7,
+  "2018": 20593682.42,
+  "2019": 26243250.24,
+  "2020": 26779826.87,
+  "2021": 26492511.37,
+  "2022": 29496101.57,
+  "2023": 26660209.47,
+  "2024": 33559842.02,
+  "2025": 35716562.2,
+  "2026": 36206064.44
+ },
+ "top_departments": [
+  "HSA Human Services Agency"
+ ],
+ "contracts_held": [
+  {
+   "contract_no": "1000029585",
+   "title": "Homebridge Case Mgmt 23-27",
+   "department": "HSA Human Services Agency",
+   "department_code": "HSA",
+   "agreed_usd": 568322.0,
+   "paid_usd": 390488.8,
+   "sole_source": false
+  }
+ ],
+ "n_contracts_held": 1,
+ "variants": [
+  {
+   "name": "HOMEBRIDGE INC",
+   "total": 262501623.3
+  }
+ ],
+ "n_variants": 1,
+ "merges": [],
+ "source": {
+  "name": "Vendor Payments (Vouchers)",
+  "dataset_id": "n9pm-xkyq",
+  "source_url": "https://data.sfgov.org/d/n9pm-xkyq",
+  "attribution": "SF Controller's Office",
+  "rows_updated_at": "2026-07-13T13:40:40+00:00"
+ }
+}

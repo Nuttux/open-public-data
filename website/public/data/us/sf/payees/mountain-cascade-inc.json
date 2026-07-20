@@ -1,0 +1,65 @@
+{
+ "generated_at": "2026-07-20T22:34:47.739586+00:00",
+ "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
+ "as_of": "2026-07-13T13:40:40+00:00",
+ "unit": "USD",
+ "slug": "mountain-cascade-inc",
+ "name": "Mountain Cascade Inc",
+ "kind": "supplier",
+ "is_non_profit": false,
+ "total_paid_usd": 158492885.86,
+ "n_years": 10,
+ "first_year": 2008,
+ "last_year": 2026,
+ "by_year": {
+  "2008": 7697960.6,
+  "2009": 44827.7,
+  "2010": 17034402.0,
+  "2011": 34030416.5,
+  "2012": 64006839.0,
+  "2013": 9780179.5,
+  "2014": 409586.8,
+  "2024": 12213827.43,
+  "2025": 10863755.09,
+  "2026": 2411091.24
+ },
+ "top_departments": [
+  "WWE Wastewater Enterprise"
+ ],
+ "contracts_held": [
+  {
+   "contract_no": "1000032174",
+   "title": "SJPL Valve Improve: P3 Twr",
+   "department": "PUC Public Utilities Commsn",
+   "department_code": "PUC",
+   "agreed_usd": 10062535.5,
+   "paid_usd": 22906851.62,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000037857",
+   "title": "SEWPCP Boost Station Impr",
+   "department": "PUC Public Utilities Commsn",
+   "department_code": "PUC",
+   "agreed_usd": 8338362.5,
+   "paid_usd": 988427.5,
+   "sole_source": false
+  }
+ ],
+ "n_contracts_held": 2,
+ "variants": [
+  {
+   "name": "MOUNTAIN CASCADE INC",
+   "total": 158492885.86
+  }
+ ],
+ "n_variants": 1,
+ "merges": [],
+ "source": {
+  "name": "Vendor Payments (Vouchers)",
+  "dataset_id": "n9pm-xkyq",
+  "source_url": "https://data.sfgov.org/d/n9pm-xkyq",
+  "attribution": "SF Controller's Office",
+  "rows_updated_at": "2026-07-13T13:40:40+00:00"
+ }
+}

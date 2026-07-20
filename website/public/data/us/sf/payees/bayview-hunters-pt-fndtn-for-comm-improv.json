@@ -1,0 +1,175 @@
+{
+ "generated_at": "2026-07-20T22:34:47.737248+00:00",
+ "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
+ "as_of": "2026-07-13T13:40:40+00:00",
+ "unit": "USD",
+ "slug": "bayview-hunters-pt-fndtn-for-comm-improv",
+ "name": "Bayview Hunters Pt Fndtn for Comm Improv",
+ "kind": "nonprofit",
+ "is_non_profit": false,
+ "total_paid_usd": 177883174.96,
+ "n_years": 21,
+ "first_year": 2007,
+ "last_year": 2027,
+ "by_year": {
+  "2007": 5772842.0,
+  "2008": 5987613.3,
+  "2009": 5201377.5,
+  "2010": 6019444.9,
+  "2011": 6551570.5,
+  "2012": 7268472.5,
+  "2013": 7516141.9,
+  "2014": 8183353.1,
+  "2015": 8186553.8,
+  "2016": 6557707.5,
+  "2017": 8061214.1,
+  "2018": 4103238.91,
+  "2019": 4325508.87,
+  "2020": 4221504.03,
+  "2021": 6743570.51,
+  "2022": 16431559.44,
+  "2023": 16025780.11,
+  "2024": 14896955.07,
+  "2025": 17840139.66,
+  "2026": 17517927.08,
+  "2027": 470700.18
+ },
+ "top_departments": [
+  "DPH Public Health"
+ ],
+ "contracts_held": [
+  {
+   "contract_no": "1000011308",
+   "title": "MH and SA Services",
+   "department": "DPH Public Health",
+   "department_code": "DPH",
+   "agreed_usd": 25611719.0,
+   "paid_usd": 18622202.92,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000008696",
+   "title": "Methadone Services",
+   "department": "DPH Public Health",
+   "department_code": "DPH",
+   "agreed_usd": 15938048.0,
+   "paid_usd": 13276502.91,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000035389",
+   "title": "BVHPF - Safe Nav",
+   "department": "HOM Homelessness Services",
+   "department_code": "HOM",
+   "agreed_usd": 9989926.0,
+   "paid_usd": 4162115.92,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000023497",
+   "title": "BVHPF Arlington Support Svcs",
+   "department": "HOM Homelessness Services",
+   "department_code": "HOM",
+   "agreed_usd": 4972371.0,
+   "paid_usd": 3104885.87,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000032307",
+   "title": "BVHPF - FHSP",
+   "department": "HOM Homelessness Services",
+   "department_code": "HOM",
+   "agreed_usd": 5861960.0,
+   "paid_usd": 2521689.59,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000032308",
+   "title": "BVHPF - Ehv",
+   "department": "HOM Homelessness Services",
+   "department_code": "HOM",
+   "agreed_usd": 3079555.0,
+   "paid_usd": 1473951.79,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000032801",
+   "title": "Jelani Housing",
+   "department": "DPH Public Health",
+   "department_code": "DPH",
+   "agreed_usd": 4018743.0,
+   "paid_usd": 1005722.02,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000033501",
+   "title": "Holloway House 24-28",
+   "department": "HSA Human Services Agency",
+   "department_code": "HSA",
+   "agreed_usd": 2358470.0,
+   "paid_usd": 799211.5,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000032306",
+   "title": "BVHPF - RRH",
+   "department": "HOM Homelessness Services",
+   "department_code": "HOM",
+   "agreed_usd": 1030247.0,
+   "paid_usd": 601098.68,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000028951",
+   "title": "RFGA 7781",
+   "department": "DPH Public Health",
+   "department_code": "DPH",
+   "agreed_usd": 1240148.0,
+   "paid_usd": 531137.0,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000033834",
+   "title": "Nova Case Management",
+   "department": "SHF Sheriff",
+   "department_code": "SHF",
+   "agreed_usd": 724315.0,
+   "paid_usd": 300411.0,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000036835",
+   "title": "BVHPF - RV RRH",
+   "department": "HOM Homelessness Services",
+   "department_code": "HOM",
+   "agreed_usd": 4186990.0,
+   "paid_usd": 167358.69,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000023498",
+   "title": "BVHPF Monterey Blvd SS",
+   "department": "HOM Homelessness Services",
+   "department_code": "HOM",
+   "agreed_usd": 271026.0,
+   "paid_usd": 109047.73,
+   "sole_source": false
+  }
+ ],
+ "n_contracts_held": 13,
+ "variants": [
+  {
+   "name": "BAYVIEW HUNTERS PT FNDTN FOR COMM IMPROV",
+   "total": 177883174.96
+  }
+ ],
+ "n_variants": 1,
+ "merges": [],
+ "source": {
+  "name": "Vendor Payments (Vouchers)",
+  "dataset_id": "n9pm-xkyq",
+  "source_url": "https://data.sfgov.org/d/n9pm-xkyq",
+  "attribution": "SF Controller's Office",
+  "rows_updated_at": "2026-07-13T13:40:40+00:00"
+ }
+}

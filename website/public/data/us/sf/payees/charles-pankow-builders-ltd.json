@@ -1,0 +1,72 @@
+{
+ "generated_at": "2026-07-20T22:34:47.729875+00:00",
+ "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
+ "as_of": "2026-07-13T13:40:40+00:00",
+ "unit": "USD",
+ "slug": "charles-pankow-builders-ltd",
+ "name": "Charles Pankow Builders Ltd",
+ "kind": "supplier",
+ "is_non_profit": false,
+ "total_paid_usd": 497086480.63,
+ "n_years": 17,
+ "first_year": 2011,
+ "last_year": 2027,
+ "by_year": {
+  "2011": 365700.0,
+  "2012": 6504416.4,
+  "2013": 39845942.1,
+  "2014": 121246787.0,
+  "2015": 96919586.0,
+  "2016": 28166979.6,
+  "2017": 3148180.3,
+  "2018": 192583.0,
+  "2019": 201580.12,
+  "2020": 6509697.23,
+  "2021": 53219308.61,
+  "2022": 42228847.56,
+  "2023": 23599076.9,
+  "2024": 26002388.34,
+  "2025": 29040601.05,
+  "2026": 19729362.13,
+  "2027": 165444.29
+ },
+ "top_departments": [
+  "DPW GSA - Public Works"
+ ],
+ "contracts_held": [
+  {
+   "contract_no": "1000027846",
+   "title": "PW CMA Assignment 49 SVN Door",
+   "department": "ADM GSA - City Administrator",
+   "department_code": "ADM",
+   "agreed_usd": 2936768.0,
+   "paid_usd": 1623579.72,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000035223",
+   "title": "ZSFG BLD 5 BHS Early Demo",
+   "department": "DPW Public Works",
+   "department_code": "DPW",
+   "agreed_usd": 675306.29,
+   "paid_usd": 682886.28,
+   "sole_source": false
+  }
+ ],
+ "n_contracts_held": 2,
+ "variants": [
+  {
+   "name": "CHARLES PANKOW BUILDERS LTD",
+   "total": 497086480.63
+  }
+ ],
+ "n_variants": 1,
+ "merges": [],
+ "source": {
+  "name": "Vendor Payments (Vouchers)",
+  "dataset_id": "n9pm-xkyq",
+  "source_url": "https://data.sfgov.org/d/n9pm-xkyq",
+  "attribution": "SF Controller's Office",
+  "rows_updated_at": "2026-07-13T13:40:40+00:00"
+ }
+}

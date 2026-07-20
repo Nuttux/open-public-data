@@ -1,0 +1,65 @@
+{
+ "generated_at": "2026-07-20T22:34:47.734646+00:00",
+ "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
+ "as_of": "2026-07-13T13:40:40+00:00",
+ "unit": "USD",
+ "slug": "ucsf-clinic-prac-grp-sfgh-comm-focus-pgm",
+ "name": "UCSF Clinic Prac Grp Sfgh/comm Focus Pgm",
+ "kind": "healthcare",
+ "is_non_profit": false,
+ "total_paid_usd": 225333005.94,
+ "n_years": 19,
+ "first_year": 2007,
+ "last_year": 2026,
+ "by_year": {
+  "2007": 4573938.5,
+  "2008": 7970018.0,
+  "2009": 10516066.7,
+  "2010": 12246812.5,
+  "2011": 10679724.6,
+  "2012": 10711818.0,
+  "2013": 10384137.1,
+  "2014": 6180350.5,
+  "2015": 16102199.2,
+  "2016": 11022781.8,
+  "2017": 16369341.9,
+  "2018": 7317673.69,
+  "2019": 8152796.73,
+  "2020": 18391413.67,
+  "2021": 10370413.75,
+  "2022": 9874935.0,
+  "2023": 2392573.25,
+  "2025": 37558940.05,
+  "2026": 14517071.0
+ },
+ "top_departments": [
+  "DPH Public Health"
+ ],
+ "contracts_held": [
+  {
+   "contract_no": "1000010331",
+   "title": "IntCseMgmt-Focus/Forensics",
+   "department": "DPH Public Health",
+   "department_code": "DPH",
+   "agreed_usd": 133397493.0,
+   "paid_usd": 92886986.05,
+   "sole_source": false
+  }
+ ],
+ "n_contracts_held": 1,
+ "variants": [
+  {
+   "name": "UCSF CLINIC PRAC GRP SFGH/COMM FOCUS PGM",
+   "total": 225333005.94
+  }
+ ],
+ "n_variants": 1,
+ "merges": [],
+ "source": {
+  "name": "Vendor Payments (Vouchers)",
+  "dataset_id": "n9pm-xkyq",
+  "source_url": "https://data.sfgov.org/d/n9pm-xkyq",
+  "attribution": "SF Controller's Office",
+  "rows_updated_at": "2026-07-13T13:40:40+00:00"
+ }
+}

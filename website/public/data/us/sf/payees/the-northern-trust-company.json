@@ -1,0 +1,72 @@
+{
+ "generated_at": "2026-07-20T22:34:47.727352+00:00",
+ "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
+ "as_of": "2026-07-13T13:40:40+00:00",
+ "unit": "USD",
+ "slug": "the-northern-trust-company",
+ "name": "The Northern Trust Company",
+ "kind": "fiscal_agent_debt_service",
+ "is_non_profit": false,
+ "total_paid_usd": 1033716368.33,
+ "n_years": 17,
+ "first_year": 2007,
+ "last_year": 2026,
+ "by_year": {
+  "2007": 1684.0,
+  "2009": 1544.5,
+  "2012": 167714.8,
+  "2013": 127503.6,
+  "2014": 125743.6,
+  "2015": 228693.2,
+  "2016": 195945.2,
+  "2017": 188676.3,
+  "2018": 71551884.3,
+  "2019": 85922640.85,
+  "2020": 101942360.95,
+  "2021": 103504037.03,
+  "2022": 109185249.52,
+  "2023": 126687242.55,
+  "2024": 140579617.78,
+  "2025": 142544046.56,
+  "2026": 150761783.59
+ },
+ "top_departments": [
+  "RET Retirement System"
+ ],
+ "contracts_held": [
+  {
+   "contract_no": "1000036583",
+   "title": "Grantor Trust Agreement",
+   "department": "RET Retirement System",
+   "department_code": "RET",
+   "agreed_usd": 1000000.0,
+   "paid_usd": 109633.19,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000036503",
+   "title": "Master Custody Account",
+   "department": "RET Retirement System",
+   "department_code": "RET",
+   "agreed_usd": 400000.0,
+   "paid_usd": 18575.0,
+   "sole_source": false
+  }
+ ],
+ "n_contracts_held": 2,
+ "variants": [
+  {
+   "name": "THE NORTHERN TRUST COMPANY",
+   "total": 1033716368.33
+  }
+ ],
+ "n_variants": 1,
+ "merges": [],
+ "source": {
+  "name": "Vendor Payments (Vouchers)",
+  "dataset_id": "n9pm-xkyq",
+  "source_url": "https://data.sfgov.org/d/n9pm-xkyq",
+  "attribution": "SF Controller's Office",
+  "rows_updated_at": "2026-07-13T13:40:40+00:00"
+ }
+}

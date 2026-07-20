@@ -1,0 +1,108 @@
+{
+ "generated_at": "2026-07-20T22:33:29.194663+00:00",
+ "slug": "chicago-title-company",
+ "matched_alias": "Chicago Title",
+ "note": "Where this vendor appears in SF's digitized public record.",
+ "documents": [
+  {
+   "identifier": "650690fourthstre8200sanf",
+   "title": "650-690 Fourth Street : draft environmental impact report",
+   "year": 2000,
+   "pool": "sfpl",
+   "snippet": "1525 Grant Avenue San Francisco, CA 94133 «Chicago Title» 388 Market Street, 13th Floor San Francisco",
+   "url": "https://archive.org/details/650690fourthstre8200sanf",
+   "deep_link": "https://archive.org/details/650690fourthstre8200sanf?q=Chicago+Title",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+  },
+  {
+   "identifier": "650690fourthstre6200sanf",
+   "title": "650-690 Fourth Street : final environmental impact report",
+   "year": 2000,
+   "pool": "sfpl",
+   "snippet": "1525 Grant Avenue San Francisco, CA 94133 «Chicago Title» 388 Market Street. 13th Floor San Francisco",
+   "url": "https://archive.org/details/650690fourthstre6200sanf",
+   "deep_link": "https://archive.org/details/650690fourthstre6200sanf?q=Chicago+Title",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+  },
+  {
+   "identifier": "116124maidenlane8199sanf",
+   "title": "116-124 Maiden Lane : draft environmental impact report",
+   "year": 1999,
+   "pool": "sfpl",
+   "snippet": "Francisco, Ca 94105 Attn: Susan R. Diamond «Chicago Title» 388 Market Street, 13th Floor San Francisco",
+   "url": "https://archive.org/details/116124maidenlane8199sanf",
+   "deep_link": "https://archive.org/details/116124maidenlane8199sanf?q=Chicago+Title",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+  },
+  {
+   "identifier": "299doloresstreet1119sanf",
+   "title": "299 Dolores Street : draft environmental impact report",
+   "year": 1998,
+   "pool": "sfpl",
+   "snippet": "San Francisco, CA 94104 Arm: Jay Cahill «Chicago Title» 388 Market Street. 13th Floor San Francisco",
+   "url": "https://archive.org/details/299doloresstreet1119sanf",
+   "deep_link": "https://archive.org/details/299doloresstreet1119sanf?q=Chicago+Title",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+  },
+  {
+   "identifier": "lesbiangaybisexu8199sanf",
+   "title": "Lesbian, Gay, Bisexual, Transgender Community Center (1800-1814 Market Street) : draft environmental impact report",
+   "year": 1998,
+   "pool": "sfpl",
+   "snippet": "San Francisco, CA 94104 Attn: Jay Cahill «Chicago Title» 388 Market Street, 13th Floor San Francisco",
+   "url": "https://archive.org/details/lesbiangaybisexu8199sanf",
+   "deep_link": "https://archive.org/details/lesbiangaybisexu8199sanf?q=Chicago+Title",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+  },
+  {
+   "identifier": "16678townsendstr2419sanf",
+   "title": "166-78 Townsend Street : draft environmental impact report",
+   "year": 1995,
+   "pool": "sfpl",
+   "snippet": "San Francisco, CA 94104 Attn: Jay Cahill «Chicago Title» 388 Market Street, 13th Floor San Francisco",
+   "url": "https://archive.org/details/16678townsendstr2419sanf",
+   "deep_link": "https://archive.org/details/16678townsendstr2419sanf?q=Chicago+Title",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+  },
+  {
+   "identifier": "sanfranciscogene1119sanf",
+   "title": "San Francisco General Hospital parking garage, draft supplemental environmental impact report",
+   "year": 1994,
+   "pool": "sfpl",
+   "snippet": "San Francisco, CA 94104 Attn: Jay Cahiil «Chicago Title» 388 Market Street, 1 3th Floor San Francisco",
+   "url": "https://archive.org/details/sanfranciscogene1119sanf",
+   "deep_link": "https://archive.org/details/sanfranciscogene1119sanf?q=Chicago+Title",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+  },
+  {
+   "identifier": "agenda19sanf_40",
+   "title": "Agenda",
+   "year": 1991,
+   "pool": "sfpl",
+   "snippet": "Advertising 3,455.65 DP53958 «Chicago Title» Company 20,000.00 DP53961 «Chicago Title» Company 5,930.00 DP54128",
+   "url": "https://archive.org/details/agenda19sanf_40",
+   "deep_link": "https://archive.org/details/agenda19sanf_40?q=Chicago+Title",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+  },
+  {
+   "identifier": "sanfranciscosanf1974rlpo",
+   "title": "San Francisco (San Francisco County, Calif.) city directory",
+   "year": 1974,
+   "pool": "sfpl",
+   "snippet": "STATEWIDE TITLE SERVICE AFFILIATED WITH «CHICAGO TITLE» INSURANCE COMPANY (CAPITAL SURPLUS AND",
+   "url": "https://archive.org/details/sanfranciscosanf1974rlpo",
+   "deep_link": "https://archive.org/details/sanfranciscosanf1974rlpo?q=Chicago+Title",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+  },
+  {
+   "identifier": "polkssanfrancisc196970rlpo",
+   "title": "Polk's San Francisco (San Francisco County, Calif.) city directory",
+   "year": 1953,
+   "pool": "sfpl",
+   "snippet": "PERSONAL TITLE SERVICE AFFILIATED WITH «CHICAGO TITLE» INSURANCE COMPANY (Capital Surplus and",
+   "url": "https://archive.org/details/polkssanfrancisc196970rlpo",
+   "deep_link": "https://archive.org/details/polkssanfrancisc196970rlpo?q=Chicago+Title",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+  }
+ ]
+}

@@ -1,0 +1,130 @@
+{
+ "generated_at": "2026-07-20T22:34:47.733347+00:00",
+ "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
+ "as_of": "2026-07-13T13:40:40+00:00",
+ "unit": "USD",
+ "slug": "westside-community-mental-health-ctr-inc",
+ "name": "Westside Community Mental Health Ctr Inc",
+ "kind": "nonprofit",
+ "is_non_profit": false,
+ "total_paid_usd": 243461618.73,
+ "n_years": 21,
+ "first_year": 2007,
+ "last_year": 2027,
+ "by_year": {
+  "2007": 11106843.5,
+  "2008": 13490438.1,
+  "2009": 11377076.1,
+  "2010": 10760358.3,
+  "2011": 10857059.7,
+  "2012": 9797823.6,
+  "2013": 8861991.2,
+  "2014": 8584756.6,
+  "2015": 8134089.3,
+  "2016": 9329820.6,
+  "2017": 11805451.5,
+  "2018": 6665393.86,
+  "2019": 9132332.59,
+  "2020": 9244620.53,
+  "2021": 9014937.79,
+  "2022": 12591001.25,
+  "2023": 16626238.62,
+  "2024": 18144272.52,
+  "2025": 18876014.05,
+  "2026": 28049259.18,
+  "2027": 1011839.84
+ },
+ "top_departments": [
+  "DPH Public Health"
+ ],
+ "contracts_held": [
+  {
+   "contract_no": "1000025153",
+   "title": "Minna Project",
+   "department": "ADP Adult Probation",
+   "department_code": "ADP",
+   "agreed_usd": 18336834.0,
+   "paid_usd": 12197626.55,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000030265",
+   "title": "OP and Crisis Clinic",
+   "department": "DPH Public Health",
+   "department_code": "DPH",
+   "agreed_usd": 9999993.0,
+   "paid_usd": 6811265.95,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000017192",
+   "title": "HIV Health Services",
+   "department": "DPH Public Health",
+   "department_code": "DPH",
+   "agreed_usd": 7914974.0,
+   "paid_usd": 4002932.3,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000035327",
+   "title": "Westside - Sober Living TH",
+   "department": "HOM Homelessness Services",
+   "department_code": "HOM",
+   "agreed_usd": 9300000.0,
+   "paid_usd": 2767324.99,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000033705",
+   "title": "NoVA Project Support",
+   "department": "SHF Sheriff",
+   "department_code": "SHF",
+   "agreed_usd": 2901265.0,
+   "paid_usd": 1531637.0,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000030266",
+   "title": "Child and Adolescent OP",
+   "department": "DPH Public Health",
+   "department_code": "DPH",
+   "agreed_usd": 2790741.0,
+   "paid_usd": 1253294.73,
+   "sole_source": true
+  },
+  {
+   "contract_no": "1000033839",
+   "title": "Nova Case Management",
+   "department": "SHF Sheriff",
+   "department_code": "SHF",
+   "agreed_usd": 1476459.0,
+   "paid_usd": 727304.0,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000033361",
+   "title": "Transitional Housing",
+   "department": "ADP Adult Probation",
+   "department_code": "ADP",
+   "agreed_usd": 1326000.0,
+   "paid_usd": 689118.88,
+   "sole_source": false
+  }
+ ],
+ "n_contracts_held": 8,
+ "variants": [
+  {
+   "name": "WESTSIDE COMMUNITY MENTAL HEALTH CTR INC",
+   "total": 243461618.73
+  }
+ ],
+ "n_variants": 1,
+ "merges": [],
+ "source": {
+  "name": "Vendor Payments (Vouchers)",
+  "dataset_id": "n9pm-xkyq",
+  "source_url": "https://data.sfgov.org/d/n9pm-xkyq",
+  "attribution": "SF Controller's Office",
+  "rows_updated_at": "2026-07-13T13:40:40+00:00"
+ }
+}

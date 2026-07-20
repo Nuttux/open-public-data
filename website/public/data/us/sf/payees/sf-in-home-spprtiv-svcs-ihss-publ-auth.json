@@ -1,0 +1,65 @@
+{
+ "generated_at": "2026-07-20T22:34:47.728079+00:00",
+ "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
+ "as_of": "2026-07-13T13:40:40+00:00",
+ "unit": "USD",
+ "slug": "sf-in-home-spprtiv-svcs-ihss-publ-auth",
+ "name": "SF In-home Spprtiv Svcs (ihss) Publ Auth",
+ "kind": "payroll_passthrough",
+ "is_non_profit": false,
+ "total_paid_usd": 763024633.36,
+ "n_years": 19,
+ "first_year": 2007,
+ "last_year": 2027,
+ "by_year": {
+  "2007": 1226613.0,
+  "2010": 53000.0,
+  "2011": 197834.0,
+  "2012": 207165.0,
+  "2013": 236674.4,
+  "2014": 186293.5,
+  "2015": 194401.3,
+  "2016": 252400.4,
+  "2017": 179354.3,
+  "2018": 42418447.6,
+  "2019": 69541929.8,
+  "2020": 71557944.28,
+  "2021": 75466229.7,
+  "2022": 81789144.47,
+  "2023": 96647015.41,
+  "2024": 105888543.05,
+  "2025": 96349651.68,
+  "2026": 120604373.7,
+  "2027": 27617.77
+ },
+ "top_departments": [
+  "HSA Human Services Agency"
+ ],
+ "contracts_held": [
+  {
+   "contract_no": "1000028867",
+   "title": "IHSS Bups FY23-27",
+   "department": "HSA Human Services Agency",
+   "department_code": "HSA",
+   "agreed_usd": 1432548.0,
+   "paid_usd": 850554.93,
+   "sole_source": false
+  }
+ ],
+ "n_contracts_held": 1,
+ "variants": [
+  {
+   "name": "SF IN-HOME SPPRTIV SVCS (IHSS) PUBL AUTH",
+   "total": 763024633.36
+  }
+ ],
+ "n_variants": 1,
+ "merges": [],
+ "source": {
+  "name": "Vendor Payments (Vouchers)",
+  "dataset_id": "n9pm-xkyq",
+  "source_url": "https://data.sfgov.org/d/n9pm-xkyq",
+  "attribution": "SF Controller's Office",
+  "rows_updated_at": "2026-07-13T13:40:40+00:00"
+ }
+}

@@ -1,0 +1,54 @@
+{
+ "generated_at": "2026-07-20T22:34:47.735553+00:00",
+ "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
+ "as_of": "2026-07-13T13:40:40+00:00",
+ "unit": "USD",
+ "slug": "nibbi-bros-associates-inc",
+ "name": "Nibbi Bros Associates Inc",
+ "kind": "supplier",
+ "is_non_profit": false,
+ "total_paid_usd": 203928483.47,
+ "n_years": 8,
+ "first_year": 2016,
+ "last_year": 2026,
+ "by_year": {
+  "2016": 2994025.0,
+  "2017": 25948818.6,
+  "2018": 55097058.79,
+  "2019": 62737474.59,
+  "2020": 7375505.34,
+  "2024": 28156.2,
+  "2025": 6579977.72,
+  "2026": 43167467.23
+ },
+ "top_departments": [
+  "AIR Airport Commission"
+ ],
+ "contracts_held": [
+  {
+   "contract_no": "1000033473",
+   "title": "11921.66-WFUtilitiesPaving",
+   "department": "AIR Airport Commission",
+   "department_code": "AIR",
+   "agreed_usd": -24436078.0,
+   "paid_usd": 81475484.9,
+   "sole_source": false
+  }
+ ],
+ "n_contracts_held": 1,
+ "variants": [
+  {
+   "name": "NIBBI BROS ASSOCIATES INC",
+   "total": 203928483.47
+  }
+ ],
+ "n_variants": 1,
+ "merges": [],
+ "source": {
+  "name": "Vendor Payments (Vouchers)",
+  "dataset_id": "n9pm-xkyq",
+  "source_url": "https://data.sfgov.org/d/n9pm-xkyq",
+  "attribution": "SF Controller's Office",
+  "rows_updated_at": "2026-07-13T13:40:40+00:00"
+ }
+}

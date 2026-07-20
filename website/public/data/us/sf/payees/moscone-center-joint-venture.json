@@ -1,0 +1,66 @@
+{
+ "generated_at": "2026-07-20T22:34:47.728551+00:00",
+ "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
+ "as_of": "2026-07-13T13:40:40+00:00",
+ "unit": "USD",
+ "slug": "moscone-center-joint-venture",
+ "name": "Moscone Center Joint Venture",
+ "kind": "supplier",
+ "is_non_profit": false,
+ "total_paid_usd": 684101944.37,
+ "n_years": 20,
+ "first_year": 2007,
+ "last_year": 2026,
+ "by_year": {
+  "2007": 21523052.1,
+  "2008": 26049019.0,
+  "2009": 27045593.8,
+  "2010": 25158085.2,
+  "2011": 27843970.1,
+  "2012": 24601369.1,
+  "2013": 32698894.6,
+  "2014": 30725595.2,
+  "2015": 32636772.3,
+  "2016": 33910035.6,
+  "2017": 30815415.7,
+  "2018": 29993453.99,
+  "2019": 41696946.09,
+  "2020": 40019061.17,
+  "2021": 38690615.59,
+  "2022": 27708812.52,
+  "2023": 36756893.53,
+  "2024": 53634484.76,
+  "2025": 50240560.77,
+  "2026": 52353313.25
+ },
+ "top_departments": [
+  "ADM Gen Svcs Agency-City Admin"
+ ],
+ "contracts_held": [
+  {
+   "contract_no": "1000002234",
+   "title": "Moscone Management",
+   "department": "ADM GSA - City Administrator",
+   "department_code": "ADM",
+   "agreed_usd": 776309499.0,
+   "paid_usd": 360587812.82,
+   "sole_source": false
+  }
+ ],
+ "n_contracts_held": 1,
+ "variants": [
+  {
+   "name": "MOSCONE CENTER JOINT VENTURE",
+   "total": 684101944.37
+  }
+ ],
+ "n_variants": 1,
+ "merges": [],
+ "source": {
+  "name": "Vendor Payments (Vouchers)",
+  "dataset_id": "n9pm-xkyq",
+  "source_url": "https://data.sfgov.org/d/n9pm-xkyq",
+  "attribution": "SF Controller's Office",
+  "rows_updated_at": "2026-07-13T13:40:40+00:00"
+ }
+}

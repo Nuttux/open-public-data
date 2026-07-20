@@ -1,0 +1,57 @@
+{
+ "generated_at": "2026-07-20T22:34:47.734723+00:00",
+ "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
+ "as_of": "2026-07-13T13:40:40+00:00",
+ "unit": "USD",
+ "slug": "cardinalhealth-medical-products-svcs",
+ "name": "Cardinalhealth Medical Products & Svcs",
+ "kind": "supplier",
+ "is_non_profit": false,
+ "total_paid_usd": 224454092.64,
+ "n_years": 21,
+ "first_year": 2007,
+ "last_year": 2027,
+ "by_year": {
+  "2007": 13395742.6,
+  "2008": 14029720.8,
+  "2009": 13755532.9,
+  "2010": 14676100.7,
+  "2011": 14643569.9,
+  "2012": 14899159.4,
+  "2013": 15667364.5,
+  "2014": 17627894.4,
+  "2015": 18684357.8,
+  "2016": 19839967.0,
+  "2017": 20908958.8,
+  "2018": 21355057.07,
+  "2019": 8896893.75,
+  "2020": 3716136.88,
+  "2021": 3007887.82,
+  "2022": 2319180.61,
+  "2023": 1715520.61,
+  "2024": 1622098.41,
+  "2025": 2086870.0,
+  "2026": 1604572.84,
+  "2027": 1505.85
+ },
+ "top_departments": [
+  "DPH Public Health"
+ ],
+ "contracts_held": [],
+ "n_contracts_held": 0,
+ "variants": [
+  {
+   "name": "CARDINALHEALTH MEDICAL PRODUCTS & SVCS",
+   "total": 224454092.64
+  }
+ ],
+ "n_variants": 1,
+ "merges": [],
+ "source": {
+  "name": "Vendor Payments (Vouchers)",
+  "dataset_id": "n9pm-xkyq",
+  "source_url": "https://data.sfgov.org/d/n9pm-xkyq",
+  "attribution": "SF Controller's Office",
+  "rows_updated_at": "2026-07-13T13:40:40+00:00"
+ }
+}

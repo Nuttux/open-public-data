@@ -1,0 +1,81 @@
+{
+ "generated_at": "2026-07-20T22:34:47.734261+00:00",
+ "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
+ "as_of": "2026-07-13T13:40:40+00:00",
+ "unit": "USD",
+ "slug": "precision-engineering-inc",
+ "name": "Precision Engineering Inc",
+ "kind": "supplier",
+ "is_non_profit": false,
+ "total_paid_usd": 229909056.9,
+ "n_years": 17,
+ "first_year": 2011,
+ "last_year": 2027,
+ "by_year": {
+  "2011": 1926059.7,
+  "2012": 4279717.0,
+  "2013": 7187516.2,
+  "2014": 12185098.8,
+  "2015": 9509953.1,
+  "2016": 6742507.0,
+  "2017": 11501202.3,
+  "2018": 2566376.51,
+  "2019": 10048389.01,
+  "2020": 15631783.27,
+  "2021": 21506378.71,
+  "2022": 9903378.78,
+  "2023": 23003218.7,
+  "2024": 52439894.85,
+  "2025": 22287552.64,
+  "2026": 17009503.51,
+  "2027": 2180526.82
+ },
+ "top_departments": [
+  "PUB Public Utilities Bureaus"
+ ],
+ "contracts_held": [
+  {
+   "contract_no": "1000036387",
+   "title": "Wsoma/Panh/Ss Sewer Imrpmt",
+   "department": "PUC Public Utilities Commsn",
+   "department_code": "PUC",
+   "agreed_usd": 10029859.4,
+   "paid_usd": 11186874.58,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000030008",
+   "title": "VL Pave Renov No.60 & SWR",
+   "department": "DPW Public Works",
+   "department_code": "DPW",
+   "agreed_usd": 8569336.0,
+   "paid_usd": 7572749.68,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000035085",
+   "title": "4th St Bulbouts (Rebid)",
+   "department": "DPW Public Works",
+   "department_code": "DPW",
+   "agreed_usd": 1058475.0,
+   "paid_usd": 1882504.16,
+   "sole_source": false
+  }
+ ],
+ "n_contracts_held": 3,
+ "variants": [
+  {
+   "name": "PRECISION ENGINEERING INC",
+   "total": 229909056.9
+  }
+ ],
+ "n_variants": 1,
+ "merges": [],
+ "source": {
+  "name": "Vendor Payments (Vouchers)",
+  "dataset_id": "n9pm-xkyq",
+  "source_url": "https://data.sfgov.org/d/n9pm-xkyq",
+  "attribution": "SF Controller's Office",
+  "rows_updated_at": "2026-07-13T13:40:40+00:00"
+ }
+}

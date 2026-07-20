@@ -1,0 +1,83 @@
+{
+ "generated_at": "2026-07-20T22:34:47.744243+00:00",
+ "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
+ "as_of": "2026-07-13T13:40:40+00:00",
+ "unit": "USD",
+ "slug": "black-veatch-corporation",
+ "name": "Black & Veatch Corporation",
+ "kind": "supplier",
+ "is_non_profit": false,
+ "total_paid_usd": 111806571.23,
+ "n_years": 19,
+ "first_year": 2009,
+ "last_year": 2027,
+ "by_year": {
+  "2009": 358480.3,
+  "2010": 1512917.4,
+  "2011": 2658381.9,
+  "2012": 9637983.7,
+  "2013": 11066049.4,
+  "2014": 14455701.9,
+  "2015": 14613712.0,
+  "2016": 11311371.2,
+  "2017": 12863529.7,
+  "2018": 7269190.62,
+  "2019": 9814285.02,
+  "2020": 4786520.27,
+  "2021": 4107145.56,
+  "2022": 2657078.38,
+  "2023": 1440592.11,
+  "2024": 1360736.96,
+  "2025": 1026892.92,
+  "2026": 853607.29,
+  "2027": 12394.6
+ },
+ "top_departments": [
+  "PUB Public Utilities Bureaus"
+ ],
+ "contracts_held": [
+  {
+   "contract_no": "1000000333",
+   "title": "HHWP Power TRNSM Line CLRNC MI",
+   "department": "PUC Public Utilities Commsn",
+   "department_code": "PUC",
+   "agreed_usd": 12000000.0,
+   "paid_usd": 7458372.64,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000000314",
+   "title": "O'Shaughnessy Outlet Works",
+   "department": "PUC Public Utilities Commsn",
+   "department_code": "PUC",
+   "agreed_usd": 4074600.0,
+   "paid_usd": 2823095.97,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000000327",
+   "title": "HHWP Power TRNSM Line CLRNC MI",
+   "department": "PUC Public Utilities Commsn",
+   "department_code": "PUC",
+   "agreed_usd": 2100000.0,
+   "paid_usd": 740568.11,
+   "sole_source": false
+  }
+ ],
+ "n_contracts_held": 3,
+ "variants": [
+  {
+   "name": "BLACK & VEATCH CORPORATION",
+   "total": 111806571.23
+  }
+ ],
+ "n_variants": 1,
+ "merges": [],
+ "source": {
+  "name": "Vendor Payments (Vouchers)",
+  "dataset_id": "n9pm-xkyq",
+  "source_url": "https://data.sfgov.org/d/n9pm-xkyq",
+  "attribution": "SF Controller's Office",
+  "rows_updated_at": "2026-07-13T13:40:40+00:00"
+ }
+}

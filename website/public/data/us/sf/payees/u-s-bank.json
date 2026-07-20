@@ -1,0 +1,48 @@
+{
+ "generated_at": "2026-07-20T22:34:47.726879+00:00",
+ "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
+ "as_of": "2026-07-13T13:40:40+00:00",
+ "unit": "USD",
+ "slug": "u-s-bank",
+ "name": "U S Bank",
+ "kind": "fiscal_agent_debt_service",
+ "is_non_profit": false,
+ "total_paid_usd": 1660425809.86,
+ "n_years": 12,
+ "first_year": 2007,
+ "last_year": 2018,
+ "by_year": {
+  "2007": 3589142.2,
+  "2008": 3621261.8,
+  "2009": 5081810.7,
+  "2010": 39864748.9,
+  "2011": 152483195.7,
+  "2012": 176071182.9,
+  "2013": 175677389.7,
+  "2014": 220286207.8,
+  "2015": 263909681.2,
+  "2016": 303911446.9,
+  "2017": 312694507.2,
+  "2018": 3235234.86
+ },
+ "top_departments": [
+  "WTR Water Enterprise"
+ ],
+ "contracts_held": [],
+ "n_contracts_held": 0,
+ "variants": [
+  {
+   "name": "U S BANK",
+   "total": 1660425809.86
+  }
+ ],
+ "n_variants": 1,
+ "merges": [],
+ "source": {
+  "name": "Vendor Payments (Vouchers)",
+  "dataset_id": "n9pm-xkyq",
+  "source_url": "https://data.sfgov.org/d/n9pm-xkyq",
+  "attribution": "SF Controller's Office",
+  "rows_updated_at": "2026-07-13T13:40:40+00:00"
+ }
+}

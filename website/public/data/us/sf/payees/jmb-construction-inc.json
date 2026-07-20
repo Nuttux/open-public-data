@@ -1,0 +1,92 @@
+{
+ "generated_at": "2026-07-20T22:34:47.738114+00:00",
+ "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
+ "as_of": "2026-07-13T13:40:40+00:00",
+ "unit": "USD",
+ "slug": "jmb-construction-inc",
+ "name": "Jmb Construction Inc",
+ "kind": "supplier",
+ "is_non_profit": false,
+ "total_paid_usd": 170527933.49,
+ "n_years": 10,
+ "first_year": 2018,
+ "last_year": 2027,
+ "by_year": {
+  "2018": 3611901.87,
+  "2019": 1157032.41,
+  "2020": 33741635.55,
+  "2021": 15467067.83,
+  "2022": 32562754.31,
+  "2023": 28966700.39,
+  "2024": 13829919.86,
+  "2025": 23389706.59,
+  "2026": 17613333.18,
+  "2027": 187881.5
+ },
+ "top_departments": [
+  "PUC Public Utilities Commsn"
+ ],
+ "contracts_held": [
+  {
+   "contract_no": "1000028756",
+   "title": "8' 12' 16' Diwm Replc Inst",
+   "department": "PUC Public Utilities Commsn",
+   "department_code": "PUC",
+   "agreed_usd": 14355242.41,
+   "paid_usd": 35354639.2,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000028394",
+   "title": "AS Needed WTR SVS Line Rep",
+   "department": "PUC Public Utilities Commsn",
+   "department_code": "PUC",
+   "agreed_usd": 30289670.5,
+   "paid_usd": 23967784.34,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000023858",
+   "title": "1313R1 16th Street Improve",
+   "department": "MTA Municipal Transprtn Agncy",
+   "department_code": "MTA",
+   "agreed_usd": 16269609.0,
+   "paid_usd": 15262629.14,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000035408",
+   "title": "Infrastructure Serving Amador",
+   "department": "PRT Port",
+   "department_code": "PRT",
+   "agreed_usd": 7406799.0,
+   "paid_usd": 6469770.91,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000033099",
+   "title": "Reg GW Storage/Recover P2B",
+   "department": "PUC Public Utilities Commsn",
+   "department_code": "PUC",
+   "agreed_usd": 5094479.0,
+   "paid_usd": 3783416.04,
+   "sole_source": false
+  }
+ ],
+ "n_contracts_held": 5,
+ "variants": [
+  {
+   "name": "JMB CONSTRUCTION INC",
+   "total": 170527933.49
+  }
+ ],
+ "n_variants": 1,
+ "merges": [],
+ "source": {
+  "name": "Vendor Payments (Vouchers)",
+  "dataset_id": "n9pm-xkyq",
+  "source_url": "https://data.sfgov.org/d/n9pm-xkyq",
+  "attribution": "SF Controller's Office",
+  "rows_updated_at": "2026-07-13T13:40:40+00:00"
+ }
+}

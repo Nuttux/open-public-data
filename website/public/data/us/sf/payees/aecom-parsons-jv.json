@@ -1,0 +1,49 @@
+{
+ "generated_at": "2026-07-20T22:34:47.740114+00:00",
+ "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
+ "as_of": "2026-07-13T13:40:40+00:00",
+ "unit": "USD",
+ "slug": "aecom-parsons-jv",
+ "name": "Aecom/parsons JV",
+ "kind": "supplier",
+ "is_non_profit": false,
+ "total_paid_usd": 149999764.17,
+ "n_years": 13,
+ "first_year": 2012,
+ "last_year": 2024,
+ "by_year": {
+  "2012": 5392572.0,
+  "2013": 16964134.7,
+  "2014": 19079349.6,
+  "2015": 20292134.1,
+  "2016": 16224409.7,
+  "2017": 18162167.1,
+  "2018": 13853028.73,
+  "2019": 11340741.77,
+  "2020": 7583282.63,
+  "2021": 7773476.36,
+  "2022": 8773502.34,
+  "2023": 4476116.98,
+  "2024": 84848.16
+ },
+ "top_departments": [
+  "PUB Public Utilities Bureaus"
+ ],
+ "contracts_held": [],
+ "n_contracts_held": 0,
+ "variants": [
+  {
+   "name": "AECOM/PARSONS JV",
+   "total": 149999764.17
+  }
+ ],
+ "n_variants": 1,
+ "merges": [],
+ "source": {
+  "name": "Vendor Payments (Vouchers)",
+  "dataset_id": "n9pm-xkyq",
+  "source_url": "https://data.sfgov.org/d/n9pm-xkyq",
+  "attribution": "SF Controller's Office",
+  "rows_updated_at": "2026-07-13T13:40:40+00:00"
+ }
+}

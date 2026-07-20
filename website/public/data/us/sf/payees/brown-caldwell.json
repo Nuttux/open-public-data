@@ -1,0 +1,61 @@
+{
+ "generated_at": "2026-07-20T22:34:47.736922+00:00",
+ "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
+ "as_of": "2026-07-13T13:40:40+00:00",
+ "unit": "USD",
+ "slug": "brown-caldwell",
+ "name": "Brown & Caldwell",
+ "kind": "supplier",
+ "is_non_profit": false,
+ "total_paid_usd": 180425855.39,
+ "n_years": 15,
+ "first_year": 2008,
+ "last_year": 2026,
+ "by_year": {
+  "2008": 5781.0,
+  "2009": 10993.8,
+  "2014": 3475857.8,
+  "2015": 14642015.7,
+  "2016": 17517165.9,
+  "2017": 29292568.8,
+  "2018": 23982662.64,
+  "2019": 26727815.4,
+  "2020": 14822354.68,
+  "2021": 14077248.55,
+  "2022": 4097588.02,
+  "2023": 5526118.54,
+  "2024": 8089400.47,
+  "2025": 9954780.39,
+  "2026": 8203503.7
+ },
+ "top_departments": [
+  "PUB Public Utilities Bureaus"
+ ],
+ "contracts_held": [
+  {
+   "contract_no": "1000000113",
+   "title": "Pl/Eng Sep Biosolid Digest",
+   "department": "PUC Public Utilities Commsn",
+   "department_code": "PUC",
+   "agreed_usd": 103271760.0,
+   "paid_usd": 109677283.91,
+   "sole_source": false
+  }
+ ],
+ "n_contracts_held": 1,
+ "variants": [
+  {
+   "name": "BROWN & CALDWELL",
+   "total": 180425855.39
+  }
+ ],
+ "n_variants": 1,
+ "merges": [],
+ "source": {
+  "name": "Vendor Payments (Vouchers)",
+  "dataset_id": "n9pm-xkyq",
+  "source_url": "https://data.sfgov.org/d/n9pm-xkyq",
+  "attribution": "SF Controller's Office",
+  "rows_updated_at": "2026-07-13T13:40:40+00:00"
+ }
+}

@@ -1,0 +1,47 @@
+{
+ "generated_at": "2026-07-20T22:34:47.725850+00:00",
+ "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
+ "as_of": "2026-07-13T13:40:40+00:00",
+ "unit": "USD",
+ "slug": "kaiser-foundation-health-plan-inc",
+ "name": "Kaiser Foundation Health Plan Inc",
+ "kind": "healthcare",
+ "is_non_profit": true,
+ "total_paid_usd": 4349277417.35,
+ "n_years": 11,
+ "first_year": 2017,
+ "last_year": 2027,
+ "by_year": {
+  "2017": 161546.7,
+  "2018": 372859255.21,
+  "2019": 420937006.97,
+  "2020": 400803069.25,
+  "2021": 501207696.0,
+  "2022": 472800940.82,
+  "2023": 480069600.0,
+  "2024": 517929641.99,
+  "2025": 523342909.82,
+  "2026": 605976050.33,
+  "2027": 53189700.26
+ },
+ "top_departments": [
+  "HSS Health Service System"
+ ],
+ "contracts_held": [],
+ "n_contracts_held": 0,
+ "variants": [
+  {
+   "name": "KAISER FOUNDATION HEALTH PLAN INC",
+   "total": 4349277417.35
+  }
+ ],
+ "n_variants": 1,
+ "merges": [],
+ "source": {
+  "name": "Vendor Payments (Vouchers)",
+  "dataset_id": "n9pm-xkyq",
+  "source_url": "https://data.sfgov.org/d/n9pm-xkyq",
+  "attribution": "SF Controller's Office",
+  "rows_updated_at": "2026-07-13T13:40:40+00:00"
+ }
+}

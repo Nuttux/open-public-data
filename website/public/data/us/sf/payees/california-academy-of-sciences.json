@@ -1,0 +1,67 @@
+{
+ "generated_at": "2026-07-20T22:34:47.741032+00:00",
+ "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
+ "as_of": "2026-07-13T13:40:40+00:00",
+ "unit": "USD",
+ "slug": "california-academy-of-sciences",
+ "name": "California Academy of Sciences",
+ "kind": "nonprofit",
+ "is_non_profit": false,
+ "total_paid_usd": 144180324.81,
+ "n_years": 21,
+ "first_year": 2007,
+ "last_year": 2027,
+ "by_year": {
+  "2007": 68651625.8,
+  "2008": 20508635.0,
+  "2009": 6169747.9,
+  "2010": 2495682.9,
+  "2011": 2487886.8,
+  "2012": 2678498.8,
+  "2013": 2358302.2,
+  "2014": 2589127.2,
+  "2015": 2810512.9,
+  "2016": 3293813.0,
+  "2017": 3977161.5,
+  "2018": 2317156.82,
+  "2019": 4763016.08,
+  "2020": 3780336.32,
+  "2021": 2536892.18,
+  "2022": 2579717.19,
+  "2023": 2738093.97,
+  "2024": 2730196.95,
+  "2025": 2315380.98,
+  "2026": 2380070.97,
+  "2027": 18469.35
+ },
+ "top_departments": [
+  "DPW GSA - Public Works"
+ ],
+ "contracts_held": [
+  {
+   "contract_no": "1000032533",
+   "title": "GA-Careers Science-24-29",
+   "department": "CHF Children;Youth & Families",
+   "department_code": "CHF",
+   "agreed_usd": 2336100.0,
+   "paid_usd": 655122.65,
+   "sole_source": false
+  }
+ ],
+ "n_contracts_held": 1,
+ "variants": [
+  {
+   "name": "CALIFORNIA ACADEMY OF SCIENCES",
+   "total": 144180324.81
+  }
+ ],
+ "n_variants": 1,
+ "merges": [],
+ "source": {
+  "name": "Vendor Payments (Vouchers)",
+  "dataset_id": "n9pm-xkyq",
+  "source_url": "https://data.sfgov.org/d/n9pm-xkyq",
+  "attribution": "SF Controller's Office",
+  "rows_updated_at": "2026-07-13T13:40:40+00:00"
+ }
+}

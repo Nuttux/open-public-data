@@ -1,0 +1,389 @@
+{
+ "generated_at": "2026-07-20T22:34:47.735704+00:00",
+ "source_pipeline": "payees_search.json + top_payees.json + contracts_active.json → normalize_sf_payees.py",
+ "as_of": "2026-07-13T13:40:40+00:00",
+ "unit": "USD",
+ "slug": "ymca-of-san-francisco",
+ "name": "YMCA of San Francisco",
+ "kind": "nonprofit",
+ "is_non_profit": true,
+ "total_paid_usd": 201481092.2,
+ "n_years": 10,
+ "first_year": 2018,
+ "last_year": 2027,
+ "by_year": {
+  "2018": 13966336.2,
+  "2019": 18070687.01,
+  "2020": 20245307.77,
+  "2021": 19194889.33,
+  "2022": 22710416.71,
+  "2023": 29800290.32,
+  "2024": 28382879.27,
+  "2025": 23270835.79,
+  "2026": 24745082.91,
+  "2027": 1094366.89
+ },
+ "top_departments": [
+  "CHF Children;Youth & Families"
+ ],
+ "contracts_held": [
+  {
+   "contract_no": "1000010841",
+   "title": "CYF MH & Sud",
+   "department": "DPH Public Health",
+   "department_code": "DPH",
+   "agreed_usd": 11577751.0,
+   "paid_usd": 9249888.7,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000033035",
+   "title": "24-02 FRC Initiative",
+   "department": "DEC Dept of Early Childhood",
+   "department_code": "DEC",
+   "agreed_usd": 9449087.0,
+   "paid_usd": 4574476.39,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000033033",
+   "title": "24-02 FRC Initiative",
+   "department": "DEC Dept of Early Childhood",
+   "department_code": "DEC",
+   "agreed_usd": 3981567.0,
+   "paid_usd": 1846195.03,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000029556",
+   "title": "FCS-Parent Partner 23-28",
+   "department": "HSA Human Services Agency",
+   "department_code": "HSA",
+   "agreed_usd": 5017656.0,
+   "paid_usd": 1593110.46,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000032517",
+   "title": "GA-BHPY Learn Succeed-2429",
+   "department": "CHF Children;Youth & Families",
+   "department_code": "CHF",
+   "agreed_usd": 5694400.0,
+   "paid_usd": 1546362.11,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000032523",
+   "title": "GA-Productive Adult-24-29",
+   "department": "CHF Children;Youth & Families",
+   "department_code": "CHF",
+   "agreed_usd": 5255900.0,
+   "paid_usd": 1449370.15,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000032531",
+   "title": "GA-BucY Learn Succeed-2429",
+   "department": "CHF Children;Youth & Families",
+   "department_code": "CHF",
+   "agreed_usd": 4672100.0,
+   "paid_usd": 1322024.0,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000032638",
+   "title": "GA-UrbY Learn Succed-24-29",
+   "department": "CHF Children;Youth & Families",
+   "department_code": "CHF",
+   "agreed_usd": 5256200.0,
+   "paid_usd": 1271885.47,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000028623",
+   "title": "SA srvcs students & caregivers",
+   "department": "DPH Public Health",
+   "department_code": "DPH",
+   "agreed_usd": 2020148.0,
+   "paid_usd": 1225629.21,
+   "sole_source": true
+  },
+  {
+   "contract_no": "1000032664",
+   "title": "GA-Youth EmpowerFund-24-29",
+   "department": "CHF Children;Youth & Families",
+   "department_code": "CHF",
+   "agreed_usd": 4964300.0,
+   "paid_usd": 1205174.87,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000032588",
+   "title": "GA-MissY Learn& Succ-24-29",
+   "department": "CHF Children;Youth & Families",
+   "department_code": "CHF",
+   "agreed_usd": 4672100.0,
+   "paid_usd": 1087797.65,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000032586",
+   "title": "GA-CTownY Learn&Succ-24-29",
+   "department": "CHF Children;Youth & Families",
+   "department_code": "CHF",
+   "agreed_usd": 4088000.0,
+   "paid_usd": 958774.75,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000032667",
+   "title": "GA-Tailor Made-24-29",
+   "department": "CHF Children;Youth & Families",
+   "department_code": "CHF",
+   "agreed_usd": 3503900.0,
+   "paid_usd": 951545.52,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000029907",
+   "title": "DAS ComServ-Stonestown FY23-27",
+   "department": "HSA Human Services Agency",
+   "department_code": "HSA",
+   "agreed_usd": 1544313.0,
+   "paid_usd": 917287.99,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000032579",
+   "title": "GA-EmbarcY TI OST-24-29",
+   "department": "CHF Children;Youth & Families",
+   "department_code": "CHF",
+   "agreed_usd": 3075650.0,
+   "paid_usd": 915149.82,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000032607",
+   "title": "GA-PresY Marina Beac-24-29",
+   "department": "CHF Children;Youth & Families",
+   "department_code": "CHF",
+   "agreed_usd": 3066100.0,
+   "paid_usd": 820130.78,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000033306",
+   "title": "GA-BayviewY-Egnyte-24-29",
+   "department": "CHF Children;Youth & Families",
+   "department_code": "CHF",
+   "agreed_usd": 2628000.0,
+   "paid_usd": 761324.52,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000033242",
+   "title": "GA-EmbarY-YouthChance-2429",
+   "department": "CHF Children;Youth & Families",
+   "department_code": "CHF",
+   "agreed_usd": 2628010.0,
+   "paid_usd": 719502.38,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000032661",
+   "title": "GA-StonestownY Aquat-24-29",
+   "department": "CHF Children;Youth & Families",
+   "department_code": "CHF",
+   "agreed_usd": 2482000.0,
+   "paid_usd": 710968.12,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000032659",
+   "title": "GA-StonestownY Compr-24-29",
+   "department": "CHF Children;Youth & Families",
+   "department_code": "CHF",
+   "agreed_usd": 2336100.0,
+   "paid_usd": 699197.4,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000032627",
+   "title": "GA-RichmondY LEAP-24-29",
+   "department": "CHF Children;Youth & Families",
+   "department_code": "CHF",
+   "agreed_usd": 2628000.0,
+   "paid_usd": 672349.82,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000033241",
+   "title": "GA-BucY-CARE-24-29",
+   "department": "CHF Children;Youth & Families",
+   "department_code": "CHF",
+   "agreed_usd": 2628010.0,
+   "paid_usd": 590297.17,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000029905",
+   "title": "DAS Comm Serv-Richmond FY23-27",
+   "department": "HSA Human Services Agency",
+   "department_code": "HSA",
+   "agreed_usd": 638933.0,
+   "paid_usd": 414734.69,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000029881",
+   "title": "DAS Comm Serv-Bayview FY 23-27",
+   "department": "HSA Human Services Agency",
+   "department_code": "HSA",
+   "agreed_usd": 660000.0,
+   "paid_usd": 388828.09,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000029882",
+   "title": "DAS CommServ-Buchanan FY 23-27",
+   "department": "HSA Human Services Agency",
+   "department_code": "HSA",
+   "agreed_usd": 585200.0,
+   "paid_usd": 379218.2,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000033293",
+   "title": "GA-Girls Outdoor Adventure",
+   "department": "CHF Children;Youth & Families",
+   "department_code": "CHF",
+   "agreed_usd": 1548900.0,
+   "paid_usd": 371957.33,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000032652",
+   "title": "GA-Shih Yu Y Boeddek-24-29",
+   "department": "CHF Children;Youth & Families",
+   "department_code": "CHF",
+   "agreed_usd": 1168200.0,
+   "paid_usd": 342619.26,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000032527",
+   "title": "GA-ChinatownY Leader-24-29",
+   "department": "CHF Children;Youth & Families",
+   "department_code": "CHF",
+   "agreed_usd": 1168200.0,
+   "paid_usd": 311569.38,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000029884",
+   "title": "DAS Comm Serv-Mission FY23-27",
+   "department": "HSA Human Services Agency",
+   "department_code": "HSA",
+   "agreed_usd": 477444.0,
+   "paid_usd": 305146.63,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000029883",
+   "title": "DASComm Serv-Chinatown FY23-27",
+   "department": "HSA Human Services Agency",
+   "department_code": "HSA",
+   "agreed_usd": 466382.0,
+   "paid_usd": 303843.45,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000029885",
+   "title": "DASComServ-Parkmerced FY23-27",
+   "department": "HSA Human Services Agency",
+   "department_code": "HSA",
+   "agreed_usd": 486178.0,
+   "paid_usd": 296337.28,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000036466",
+   "title": "Com Centered Grocery Dis",
+   "department": "HSA Human Services Agency",
+   "department_code": "HSA",
+   "agreed_usd": 1980000.0,
+   "paid_usd": 233503.0,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000036467",
+   "title": "Com Centered Grocery Dis",
+   "department": "HSA Human Services Agency",
+   "department_code": "HSA",
+   "agreed_usd": 1328800.0,
+   "paid_usd": 184506.77,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000036448",
+   "title": "HSA/CFAT/Community Meal Progs",
+   "department": "HSA Human Services Agency",
+   "department_code": "HSA",
+   "agreed_usd": 1188000.0,
+   "paid_usd": 175113.57,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000031737",
+   "title": "Diabetes Prevention Program",
+   "department": "HSS Health Service System",
+   "department_code": "HSS",
+   "agreed_usd": 240340.0,
+   "paid_usd": 142791.55,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000033305",
+   "title": "MCAH Perinatal Services",
+   "department": "DPH Public Health",
+   "department_code": "DPH",
+   "agreed_usd": 560000.0,
+   "paid_usd": 71506.66,
+   "sole_source": false
+  },
+  {
+   "contract_no": "1000037628",
+   "title": "2025-43-LOC-Bike Educati",
+   "department": "MTA Municipal Transprtn Agncy",
+   "department_code": "MTA",
+   "agreed_usd": 371390.0,
+   "paid_usd": 0.0,
+   "sole_source": true
+  },
+  {
+   "contract_no": "1000037958",
+   "title": "Bayview Activation",
+   "department": "ADM GSA - City Administrator",
+   "department_code": "ADM",
+   "agreed_usd": 150000.0,
+   "paid_usd": 0.0,
+   "sole_source": false
+  }
+ ],
+ "n_contracts_held": 38,
+ "variants": [
+  {
+   "name": "YMCA OF SAN FRANCISCO",
+   "total": 201481092.2
+  }
+ ],
+ "n_variants": 1,
+ "merges": [],
+ "source": {
+  "name": "Vendor Payments (Vouchers)",
+  "dataset_id": "n9pm-xkyq",
+  "source_url": "https://data.sfgov.org/d/n9pm-xkyq",
+  "attribution": "SF Controller's Office",
+  "rows_updated_at": "2026-07-13T13:40:40+00:00"
+ }
+}
