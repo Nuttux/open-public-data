@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T20:11:17.537074+00:00",
+ "generated_at": "2026-07-20T20:28:18.117255+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "place-de-la-madeleine",
  "name": "Place de la Madeleine",
@@ -22,7 +22,8 @@
   "source": {
    "name": "Wikipédia",
    "url": "https://fr.wikipedia.org/"
-  }
+  },
+  "extract_en": "The place de la Madeleine is a square in the 8th arrondissement of Paris."
  },
  "stats": {
   "n_delibs": 1146,
@@ -50,7 +51,9 @@
    "fait": "Mme SCHNEITER propose en séance de transformer la place en vaste zone piétonnière ; le maire du 8e M. LEBEL rejette vivement l'idée.",
    "pourquoi": "quand la place piétonne divise déjà",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=17683"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=17683",
+   "fait_en": "Ms SCHNEITER proposed during the session turning the square into a large pedestrian zone; the mayor of the 8th arrondissement, Mr LEBEL, firmly rejected the idea.",
+   "pourquoi_en": "when the pedestrian square already divides opinion"
   },
   {
    "id": "56089",
@@ -58,7 +61,9 @@
    "fait": "Un avenant à la convention avec la R.A.T.P. ramène la dépense inscrite de 9 000 000 F à 7 700 000 F et vise la rénovation du passage Tronchet.",
    "pourquoi": "la facture RATP revue à la baisse",
    "vedette": false,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=56089"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=56089",
+   "fait_en": "An amendment to the agreement with the R.A.T.P. reduced the budgeted expenditure from 9,000,000 F to 7,700,000 F and covered the renovation of the passage Tronchet.",
+   "pourquoi_en": "the RATP bill revised downward"
   },
   {
    "id": "31083",
@@ -66,7 +71,9 @@
    "fait": "Le Conseil approuve le principe de la 2e phase d'aménagement de la place et autorise le Maire à signer le marché de travaux.",
    "pourquoi": "le grand chantier de la place voté",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=31083"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=31083",
+   "fait_en": "The Council approved the principle of the square's second redevelopment phase and authorized the Mayor to sign the works contract.",
+   "pourquoi_en": "the square's major works approved"
   },
   {
    "id": "10026",
@@ -74,7 +81,9 @@
    "fait": "Interpellé sur le retard des travaux de voirie, M. PLASAIT détaille un planning établi en concertation avec les commerçants pour limiter la gêne.",
    "pourquoi": "les commerçants craignent le chantier de rentrée",
    "vedette": false,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=10026"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=10026",
+   "fait_en": "Questioned about the delay in road works, Mr PLASAIT detailed a schedule drawn up in consultation with shopkeepers to limit disruption.",
+   "pourquoi_en": "shopkeepers fear the back-to-school works"
   },
   {
    "id": "43845",
@@ -82,7 +91,9 @@
    "fait": "Le Conseil autorise un contrat reliant par un couloir piétonnier un garage privé au parc de stationnement public situé sous la place.",
    "pourquoi": "sous la place, un parking et ses passages",
    "vedette": false,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=43845"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=43845",
+   "fait_en": "The Council authorized a contract linking a private garage to the public parking facility beneath the square by a pedestrian corridor.",
+   "pourquoi_en": "beneath the square, a car park and its passageways"
   },
   {
    "id": "63123",
@@ -90,7 +101,9 @@
    "fait": "Le Conseil fixe à 0,64 € par m² et par jour le droit de place du marché aux fleurs de la Madeleine.",
    "pourquoi": "le tarif du marché aux fleurs fixé",
    "vedette": false,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=63123"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=63123",
+   "fait_en": "The Council set the pitch fee for the Madeleine flower market at €0.64 per m² per day.",
+   "pourquoi_en": "the flower market's rate set"
   },
   {
    "id": "133321",
@@ -98,7 +111,9 @@
    "fait": "Un vœu alerte sur la dégradation des lavatories Art nouveau, classés depuis 2011, et demande la restauration de leurs parements avant réouverture.",
    "pourquoi": "l'avenir des lavatories Art nouveau classés",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=133321"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=133321",
+   "fait_en": "A motion warned of the deterioration of the Art Nouveau public toilets, listed since 2011, and called for their facings to be restored before reopening.",
+   "pourquoi_en": "the future of the listed Art Nouveau public toilets"
   },
   {
    "id": "152719",
@@ -106,7 +121,9 @@
    "fait": "L'adjoint NAJDOVSKI présente le réaménagement de la place comme achevé et conteste tout lien avec les pertes commerciales ; le vœu du groupe LRI est rejeté.",
    "pourquoi": "la place rénovée, les commerçants pas convaincus",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=152719"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=152719",
+   "fait_en": "Deputy mayor NAJDOVSKI presented the square's redevelopment as completed and disputed any link to commercial losses; the motion from the LRI group was rejected.",
+   "pourquoi_en": "the square renovated, shopkeepers unconvinced"
   }
  ],
  "montants": [
@@ -173,5 +190,6 @@
    "name": "Wikipédia",
    "url": "https://fr.wikipedia.org/"
   }
- }
+ },
+ "synthese_en": "In January 1996, the City put a municipally owned unit in a building on the square up for sale by auction; that same year, an order approved the principle of its full renovation, and in November the Council authorized an agreement with the R.A.T.P. on the transit authority's contribution to the works. Over nearly twenty-five years, the Council of Paris approved successive phases of redevelopment — the eastern median in 1998, the principle of a second phase in March 2000 — culminating in an overall redevelopment that deputy mayor Christophe NAJDOVSKI described as \"completed\" in November 2019. On several occasions, elected officials relayed shopkeepers' concerns about the impact of the works: as early as 2000 through a question from Mr Georges SARRE, then in 2019 with two motions from the LRI group, one withdrawn and the other rejected. At the same time, the square was the subject of heritage and economic deliberations: protection of the buildings under the Plan d'occupation des sols in 1999, pricing for the flower market in 2005, and repeated debates on restoring the Art Nouveau public toilets, listed since 2011."
 }

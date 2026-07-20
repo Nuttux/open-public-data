@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T20:11:17.537074+00:00",
+ "generated_at": "2026-07-20T20:28:18.117255+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "porte-de-montreuil",
  "name": "Porte de Montreuil",
@@ -22,7 +22,8 @@
   "source": {
    "name": "Wikipédia",
    "url": "https://fr.wikipedia.org/"
-  }
+  },
+  "extract_en": "The Porte de Montreuil is one of the seventeen gates cut into the Thiers wall in the mid-19th century to protect Paris, France."
  },
  "stats": {
   "n_delibs": 1176,
@@ -52,7 +53,9 @@
    "fait": "Le Conseil approuve le « Projet de Territoire » du GPRU de la Porte de Montreuil.",
    "pourquoi": "le premier acte officiel du réaménagement",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=47568"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=47568",
+   "fait_en": "The Council approved the \"Projet de Territoire\" of the GPRU for the Porte de Montreuil.",
+   "pourquoi_en": "the first official act of the redevelopment"
   },
   {
    "id": "54261",
@@ -60,7 +63,9 @@
    "fait": "Le Conseil érige la couverture du périphérique en condition de la transformation de la porte et demande à l'État et à la Région d'en cofinancer les travaux.",
    "pourquoi": "couvrir le périphérique, clé de tout le projet",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=54261"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=54261",
+   "fait_en": "The Council made covering the ring road a condition for transforming the gate and asked the State and the Region to co-finance the works.",
+   "pourquoi_en": "covering the ring road, key to the whole project"
   },
   {
    "id": "8622",
@@ -68,7 +73,9 @@
    "fait": "L'Exécutif fait adopter un vœu contre l'occupation illégale de l'espace public à la Porte de Montreuil ; la maire du 20e distingue ventes à la sauvette et puces historiques.",
    "pourquoi": "les ventes à la sauvette exaspèrent les riverains",
    "vedette": false,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=8622"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=8622",
+   "fait_en": "The executive had a motion adopted against the illegal occupation of public space at the Porte de Montreuil; the mayor of the 20th arrondissement distinguished between unauthorized street vending and the historic flea market.",
+   "pourquoi_en": "unauthorized street vending exasperates local residents"
   },
   {
    "id": "164469",
@@ -76,7 +83,9 @@
    "fait": "Le Conseil approuve le principe de renouvellement de la DSP des puces ; le maire du 20e chiffre le projet global à 97 M€, dont 26 M€ pour le marché aux puces.",
    "pourquoi": "un chiffrage public : 97 millions d'euros",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=164469"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=164469",
+   "fait_en": "The Council approved the principle of renewing the flea market's public service delegation; the mayor of the 20th arrondissement put the overall project at €97 million, of which €26 million for the flea market.",
+   "pourquoi_en": "a public figure: 97 million euros"
   },
   {
    "id": "167254",
@@ -84,7 +93,9 @@
    "fait": "Les Ecologistes déposent un vœu contre le projet Nexity, dénonçant « une muraille de 60 000 m² de bureaux » ; l'Exécutif dépose un vœu concurrent.",
    "pourquoi": "les écologistes contre la muraille de bureaux",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=167254"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=167254",
+   "fait_en": "Les Écologistes filed a motion against the Nexity project, denouncing \"a 60,000 m² wall of offices\"; the executive filed a competing motion.",
+   "pourquoi_en": "the Greens against the wall of offices"
   },
   {
    "id": "168416",
@@ -92,7 +103,9 @@
    "fait": "En réponse aux Ecologistes, le Préfet de police décrit un rond-point dégradé par le stationnement sauvage, aménagé après l'accident mortel d'une cycliste le 2 juillet 2021.",
    "pourquoi": "un carrefour dangereux, une cycliste tuée",
    "vedette": false,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=168416"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=168416",
+   "fait_en": "In response to Les Écologistes, the Prefect of Police described a roundabout degraded by illegal parking, redesigned after the fatal accident of a cyclist on 2 July 2021.",
+   "pourquoi_en": "a dangerous intersection, a cyclist killed"
   },
   {
    "id": "174161",
@@ -100,7 +113,9 @@
    "fait": "Après l'accord de majorité de juillet 2023, la Ville déclare sans suite la procédure de DSP et prolonge le contrat pour assurer la continuité du marché aux puces en plein air.",
    "pourquoi": "les puces maintenues en plein air",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=174161"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=174161",
+   "fait_en": "Following the July 2023 majority agreement, the City declared the public service delegation procedure void and extended the contract to ensure the continuity of the open-air flea market.",
+   "pourquoi_en": "the flea market kept in the open air"
   },
   {
    "id": "179991",
@@ -108,7 +123,9 @@
    "fait": "Le Conseil examine le déclassement d'emprises et l'acquisition d'un volume d'environ 1 000 m² destiné à un futur centre municipal de santé ; un élu y relève la confirmation de l'abandon des immeubles-ponts.",
    "pourquoi": "un centre de santé, la fin annoncée des immeubles-ponts",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=179991"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=179991",
+   "fait_en": "The Council examined declassifying land parcels and acquiring a space of around 1,000 m² intended for a future municipal health centre; one councillor noted this as confirmation that the \"bridge buildings\" had been abandoned.",
+   "pourquoi_en": "a health centre, the announced end of the \"bridge buildings\""
   }
  ],
  "montants": [
@@ -222,17 +239,20 @@
   {
    "date": "1923-07-06",
    "extrait": "117. - Renvoi à l'Administration d'une proposition de M. Hémard relative à l'élargissement de la porte de Montreuil  … Hémard. — Messieurs, à plusieurs reprises, j'ai demandé au Conseil général de voter l'élargissement de la porte de Montreuil , celle-ei étant absolument insuff",
-   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k6445772q/f8.item"
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k6445772q/f8.item",
+   "extrait_en": "117. — Referral to the Administration of a proposal by Mr Hémard concerning the widening of the Porte de Montreuil … Hémard. — Gentlemen, on several occasions, I have asked the General Council to vote for the widening of the Porte de Montreuil, it being absolutely inadequate"
   },
   {
    "date": "1963-04-19",
    "extrait": "il n'est pas prévu de raccordement côté nord à cause de la proximité de l'ouvrage prévu porte de Montreuil  … 2° Le passage souterrain de la porte de Vincennes avec échangeur … Le passage souterrain sous le rond-point de la Porte -de-la-Plaine est à moitié construit et les tr",
-   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k97106337/f22.item"
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k97106337/f22.item",
+   "extrait_en": "no connection is planned on the north side owing to the proximity of the structure planned at the Porte de Montreuil … 2° The underpass at the Porte de Vincennes with an interchange … The underpass beneath the roundabout at the Porte-de-la-Plaine is half built and the works"
   },
   {
    "date": "1963-06-29",
    "extrait": "N° 267. — Chaque semaine, les samedis et dimanches, se tient un marché dit « marché aux puces » à la limite de Paris, entre la place de la Porte -de- Montreuil et la rue Edouard-Vaillant, à Bagnolet …  Montreuil ainsi que les propriétés voisines … Pour éviter cet inconvénient",
-   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k97137627/f3.item"
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k97137627/f3.item",
+   "extrait_en": "No. 267. — Every week, on Saturdays and Sundays, a market known as the \"flea market\" is held at the edge of Paris, between the Place de la Porte-de-Montreuil and the Rue Édouard-Vaillant, in Bagnolet … Montreuil as well as the neighbouring properties … To avoid this inconvenience"
   }
  ],
  "bmo_recit": "La porte de Montreuil apparaît dans le Bulletin municipal en 1923, lorsque le conseiller Hémard, qui dit l'avoir déjà réclamé à plusieurs reprises, demande son élargissement, la jugeant « absolument insuffisante pour le trafic » — sa proposition est renvoyée à l'Administration, sans qu'une réalisation soit actée. Le lieu ne revient ensuite qu'en 1963, sous deux visages. D'un côté, une question au Conseil décrit le marché aux puces qui se tient chaque samedi et dimanche à la limite de Paris, entre la place de la Porte-de-Montreuil et la rue Édouard-Vaillant à Bagnolet, et cherche à éviter l'inconvénient qu'il cause aux propriétés voisines. De l'autre, dans un débat sur les passages souterrains et échangeurs des portes de l'Est parisien, un ouvrage prévu à la porte de Montreuil pèse déjà sur les plans : sa proximité conduit à renoncer à un raccordement côté nord. Entre ces deux moments, l'archive reste silencieuse sur la porte elle-même — quarante ans séparent la plainte sur le trafic des projets routiers qui la reprennent.",
@@ -337,5 +357,7 @@
    "name": "Wikipédia",
    "url": "https://fr.wikipedia.org/"
   }
- }
+ },
+ "synthese_en": "Since the \"Projet de Territoire\" of the GPRU (Grand Projet de Renouvellement Urbain) was approved in 2003, the Porte de Montreuil has been the subject of a redevelopment project for which covering the ring road (périphérique) has, since 2007, been presented as the key move. From 2019, the operation took the form of a real-estate project entrusted, via \"Reinventing Cities\", to the group led by Nexity, contested by Green councillors who denounced \"a wall of offices\" and a reduction in the number of stalls promised to the flea-market traders. In February 2022, the Council examined acquiring the space intended to house the reconstituted flea market, and the mayor of the 20th arrondissement put the overall cost of the project at 97 million euros, of which 26 million for the flea market alone; after a majority agreement reached in July 2023, the City declared the public service delegation procedure void and extended the contract to ensure the continuity of the open-air flea market. In 2024, an amendment to the concession with SEMAPA reduced the buildable floor area to 26,000 m² and removed the planned hotel, before the 2025 deliberation dealt with acquiring a space intended for a future municipal health centre — with one councillor noting this as confirmation that the \"bridge buildings\" (immeubles-ponts) had been abandoned. Throughout the period, the debates mixed the future of the century-old flea market, nuisances and unauthorized street vending reported nearby, and the preservation of trees.",
+ "bmo_recit_en": "The Porte de Montreuil appears in the municipal bulletin in 1923, when councillor Hémard, who says he has already called for it several times, asked for it to be widened, judging it \"absolutely inadequate for traffic\" — his proposal is referred to the Administration, with no work recorded as carried out. The place then does not come back until 1963, under two guises. On one side, a question to the Council describes the flea market held every Saturday and Sunday at the edge of Paris, between the Place de la Porte-de-Montreuil and the Rue Édouard-Vaillant in Bagnolet, and seeks to avoid the inconvenience it causes to neighbouring properties. On the other, in a debate on underpasses and interchanges at the gates of eastern Paris, a structure planned at the Porte de Montreuil already weighs on the plans: its proximity leads to abandoning a connection on the north side. Between these two moments, the archive stays silent on the gate itself — forty years separate the complaint about traffic from the road projects that take it up again."
 }

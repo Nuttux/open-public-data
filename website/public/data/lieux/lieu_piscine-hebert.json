@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T20:11:17.537074+00:00",
+ "generated_at": "2026-07-20T20:28:18.117255+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "piscine-hebert",
  "name": "Piscine Hébert",
@@ -22,7 +22,8 @@
   "source": {
    "name": "Wikipédia",
    "url": "https://fr.wikipedia.org/"
-  }
+  },
+  "extract_en": "The Piscine Hébert is a swimming pool located in Paris, at 2 Rue des Fillettes, near Place Hébert."
  },
  "stats": {
   "n_delibs": 44,
@@ -50,7 +51,9 @@
    "fait": "Interrogé par Mme Roxane DECORTE sur une ouverture estivale « à 8 heures au lieu de 7 heures », M. Pascal CHERKI, adjoint, répond que les horaires de l'été 2002 de la piscine Hébert ont été fixés « du lundi au dimanche de 8 heures à 18 heures », en invoquant « l'absence d'une partie des personnels spécialisés tenue de prendre leurs congés en dehors des périodes scolaires » et le « décret n° 2000-15 du 25 août 2000 » sur l'aménagement et la réduction du temps de travail.",
    "pourquoi": "Registre des usages et du personnel : l'amplitude d'ouverture de l'équipement se règle ici au croisement du droit du travail et de l'offre voisine, la réponse renvoyant les nageurs matinaux vers la piscine des Amiraux, « ouverte de 7 heures à 17 heures du mardi au samedi ».",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=5985"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=5985",
+   "fait_en": "Questioned by Ms Roxane DECORTE about a summer opening 'at 8 a.m. instead of 7 a.m.,' Mr Pascal CHERKI, deputy mayor, replied that the summer 2002 hours of the Piscine Hébert had been set 'from Monday to Sunday, 8 a.m. to 6 p.m.,' citing 'the absence of some specialized staff required to take their leave outside school holiday periods' and 'decree No. 2000-15 of 25 August 2000' on the organization and reduction of working time.",
+   "pourquoi_en": "A matter of usage and staffing: the facility's opening hours are settled here at the crossroads of labor law and nearby alternatives, the reply directing early-morning swimmers to the Amiraux pool, 'open from 7 a.m. to 5 p.m., Tuesday to Saturday.'"
   },
   {
    "id": "148298",
@@ -58,7 +61,9 @@
    "fait": "Mme Danièle PREMEL, pour le groupe Communiste - Front de Gauche, demande « une programmation de travaux à moyen terme pour une réhabilitation lourde » de la piscine Hébert et que « les autres piscines du 18e arrondissement, Dauvin, Amiraux, puissent bénéficier d'horaires élargis » ; M. Jean-François MARTINS, adjoint, répond avoir déposé un vœu bis de l'Exécutif « pour repréciser que les travaux à Hébert sont évidemment nécessaires et attendus dès cet été ».",
    "pourquoi": "Registre gouvernance et travaux : demande d'une réhabilitation lourde et annonce d'un chantier d'été coexistent dans la même séance, M. Jean-François MARTINS situant « la structure du bassin et la structure de la toiture » dans la prochaine mandature et évoquant « un sujet RH dans cette piscine », selon lui « lié à un problème de relation entre un chef de bassin et les agents qui y travaillent ».",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=148298"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=148298",
+   "fait_en": "Ms Danièle PREMEL, for the Communist - Front de Gauche group, requested 'a medium-term works schedule for a major renovation' of the Piscine Hébert and that 'the other pools in the 18th arrondissement, Dauvin, Amiraux, be able to benefit from extended hours'; Mr Jean-François MARTINS, deputy mayor, replied that he had filed a companion motion from the executive 'to clarify that the works at Hébert are obviously necessary and expected as early as this summer.'",
+   "pourquoi_en": "A matter of governance and works: a request for a major renovation and the announcement of a summer construction project coexist in the same session, with Mr Jean-François MARTINS placing 'the structure of the pool basin and the structure of the roof' within the next term of office, and referring to 'an HR issue at this pool,' which he said was 'linked to a relationship problem between a pool supervisor and the staff working there.'"
   }
  ],
  "montants": [
@@ -81,37 +86,44 @@
   {
    "date": "1894-02-27",
    "extrait": "Travaux de construction d'une piscine sanitaire au puits artésien de la place Hébert",
-   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k6446898m/f4.item"
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k6446898m/f4.item",
+   "extrait_en": "Construction works for a sanitary swimming pool at the artesian well of Place Hébert"
   },
   {
    "date": "1911-01-22",
    "extrait": "2115. — Exécution de travaux de grosses réparations à la piscine Hébert (M. Lemarchand, rapporteur … 1° D'autoriser, dans la limite d'une dépense totale de 7,830 francs, l'exécution de divers travaux de grosses réparations à la piscine Hébert  … de crédits relatifs à des opér",
-   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k6309618g/f11.item"
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k6309618g/f11.item",
+   "extrait_en": "2115. — Carrying out major repair works at the Piscine Hébert (Mr Lemarchand, rapporteur … 1° To authorize, within a total expenditure limit of 7,830 francs, the carrying out of various major repair works at the Piscine Hébert … credits relating to oper"
   },
   {
    "date": "1928-11-05",
    "extrait": "présentas à l'Académie de médecine sur la saleté de l'eau des piscines et les dangers de contamination qu'elle présente pour les baigneurs … Deux piscines municipales sont actuellement en service : la piscine de la Butte-auxCailles et celle de la rue Hébert  … sont prévues da",
-   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k64142078/f2.item"
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k64142078/f2.item",
+   "extrait_en": "presented to the Academy of Medicine on the dirtiness of pool water and the contamination hazards it poses for bathers … Two municipal pools are currently in service: the Butte-aux-Cailles pool and the one on Rue Hébert … are planned for"
   },
   {
    "date": "1932-01-31",
    "extrait": "Sur le rapport présenté par M. Adrien Oudin, au nom de la 3e Commission, Délibère : Article premier. — Les honoraires dus aux conseils de la Ville pour les opérations ciaprès sont réglés ainsi qu'il suit : I. — Agrandissement du square et de la piscine de la place Hébert : le 1° ",
-   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k64537605/f19.item"
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k64537605/f19.item",
+   "extrait_en": "On the report presented by Mr Adrien Oudin, on behalf of the 3rd Commission, Resolves: Article one. — The fees owed to the City's advisers for the following operations are settled as follows: I. — Enlargement of the square and the pool at Place Hébert: the 1° "
   },
   {
    "date": "1934-01-15",
    "extrait": "58. — Agrandissement de l'établissement municipal de bains-douches annexé à la piscine Hébert  … renvoyé à l'Administration une proposition de MM. Joly et Louis Sellier tendant, d'une part, à augmenter le nombre des cabines de l'établissement municipal de bains-douches annexé à",
-   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k6336196v/f24.item"
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k6336196v/f24.item",
+   "extrait_en": "58. — Enlargement of the municipal bath-house establishment annexed to the Piscine Hébert … referred to the Administration a proposal from Messrs Joly and Louis Sellier seeking, on the one hand, to increase the number of cubicles at the municipal bath-house establishment annexed to"
   },
   {
    "date": "1960-01-01",
    "extrait": "Personnel. — Nomination d’un directeur à la piscine Hébert  … Cart-Grandjean (Paul), gérant de bains-douches, est nommé directeur- de la piscine Hébert en remplacement de M. Deville, retraité (arrêté du 25 février 1960 … ",
-   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k3200423f/f515.item"
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k3200423f/f515.item",
+   "extrait_en": "Staff. — Appointment of a director at the Piscine Hébert … Cart-Grandjean (Paul), bath-house manager, is appointed director of the Piscine Hébert in replacement of Mr Deville, retired (order of 25 February 1960 … "
   },
   {
    "date": "1968-10-20",
    "extrait": "piscines municipales, les enfants perdent leur temps dans les moyens de transport … C'est ce qui se produit notamment pour le 17° arrondissement dont les élèves sont obligés de se rendre soit à la piscine Hébert , soit à celle des Amiraux, toutes deux très distantes",
-   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k97038963/f1.item"
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k97038963/f1.item",
+   "extrait_en": "municipal pools, children lose time in transit … This is notably the case for the 17th arrondissement, whose pupils are obliged to go either to the Piscine Hébert or to the Amiraux pool, both very far away"
   }
  ],
  "bmo_recit": "La piscine apparaît dans le Bulletin municipal dès 1894, à propos de travaux de construction d'une piscine sanitaire au puits artésien de la place Hébert. L'établissement revient ensuite régulièrement devant le Conseil : en 1911, celui-ci autorise de grosses réparations dans la limite d'une dépense de 7 830 francs ; en 1932, il règle des honoraires liés à l'agrandissement du square et de la piscine ; en 1934, une proposition d'augmenter le nombre de cabines des bains-douches annexés à la piscine est renvoyée à l'Administration. Entre-temps, en 1928, le Bulletin la présente comme l'une des deux seules piscines municipales alors en service, avec celle de la Butte-aux-Cailles. L'archive suit aussi la vie quotidienne de l'établissement : en 1960, un arrêté nomme un nouveau directeur, Paul Cart-Grandjean, en remplacement de M. Deville, parti en retraite. En 1968 encore, il se dit en séance que les élèves du 17e arrondissement sont obligés d'aller nager à Hébert ou aux Amiraux, jugées toutes deux très distantes.",
@@ -163,5 +175,7 @@
    "name": "Wikipédia",
    "url": "https://fr.wikipedia.org/"
   }
- }
+ },
+ "synthese_en": "In September 2002, the Piscine Hébert was the subject of a question from Ms Roxane DECORTE and the 'Rassemblement pour la République et apparentés' group about pushing back its summer opening time to 8 a.m.: Mr Pascal CHERKI, deputy mayor, replied that the summer 2002 hours had been set there 'from Monday to Sunday, 8 a.m. to 6 p.m.,' citing the leave of specialized staff and a decree stating that 'the daily working time may not exceed 10 hours,' and referred early-morning swimmers to the Amiraux pool, 'located less than a kilometer away.' In April 2019, two motions were filed on the facility, one by the Communist - Front de Gauche group, the other by the executive. In the first, Ms Danièle PREMEL stated that the pool 'has experienced too many closures in recent months,' which she attributed to 'social, regulatory, or technical difficulties,' and requested 'a medium-term works schedule for a major renovation' as well as extended hours at the other pools in the 18th arrondissement. In response, Mr Jean-François MARTINS, deputy mayor, stated that he had filed a companion motion from the executive 'to clarify that the works at Hébert are obviously necessary and expected as early as this summer,' listed interventions concerning reception areas, changing rooms, and filtration installations, and placed 'the structure of the pool basin and the structure of the roof' within the next term of office; he also referred to 'an HR issue at this pool,' which he said was 'linked to a relationship problem between a pool supervisor and the staff working there.' The two figures he cited at that point — €150 million to build new pools, €50 million for 'major maintenance and renovations' — concerned the Nager à Paris plan as a whole and not the Piscine Hébert specifically; the session record does not report what became of the two motions.",
+ "bmo_recit_en": "The pool appears in the Bulletin municipal as early as 1894, in connection with construction works for a sanitary swimming pool at the artesian well of Place Hébert. The establishment then regularly came before the Council: in 1911, it authorized major repairs within an expenditure limit of 7,830 francs; in 1932, it settled fees related to the enlargement of the square and the pool; in 1934, a proposal to increase the number of cubicles at the bath-house annexed to the pool was referred to the Administration. In the meantime, in 1928, the Bulletin presented it as one of only two municipal pools then in service, along with the Butte-aux-Cailles pool. The archive also follows the establishment's daily life: in 1960, an order appointed a new director, Paul Cart-Grandjean, replacing Mr Deville, who had retired. As late as 1968, it was said in session that pupils from the 17th arrondissement were obliged to go swimming at Hébert or at Amiraux, both considered very far away."
 }

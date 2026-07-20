@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T20:11:17.537074+00:00",
+ "generated_at": "2026-07-20T20:28:18.117255+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "pavillon-de-larsenal",
  "name": "Pavillon de l'Arsenal",
@@ -22,7 +22,8 @@
   "source": {
    "name": "Wikipédia",
    "url": "https://fr.wikipedia.org/"
-  }
+  },
+  "extract_en": "The Pavillon de l'Arsenal is the \"Centre d'information, de documentation et d'exposition d'urbanisme et d'architecture de Paris et de la métropole parisienne.\" It is located at 21, boulevard Morland in the 4th arrondissement of Paris, within the Arsenal neighborhood."
  },
  "stats": {
   "n_delibs": 187,
@@ -97,7 +98,8 @@
   "autres_sites": [
    "Locaux communaux 21-27, rue des Blancs-Manteaux (Paris Centre) — mise à disposition temporaire pendant la rénovation",
    "Expositions « hors les murs » dans des lieux culturels métropolitains, tiers-lieux et écoles d'architecture (programmation 2026)"
-  ]
+  ],
+  "note_publique_en": "The Pavillon de l'Arsenal is a single, unified facility: the two addresses that appear in the deliberations, 21 boulevard Morland and 7/9 rue Agrippa d'Aubigné (4th arrondissement), designate the same building. The association bearing the place's name is its sole occupant and does not operate any other facility. One caveat, however, concerns the recent period: the Morland site is under renovation, the City has temporarily made premises available to the association at 21-27 rue des Blancs-Manteaux (Paris Centre), and programming is being deployed \"outside the walls.\" The operating grants paid during this period therefore fund an activity that is not held entirely within this building."
  },
  "residents": [],
  "kpi_montant": null,
@@ -109,7 +111,9 @@
    "fait": "Le Conseil autorise la signature de trois conventions fondatrices avec le Pavillon (objectifs et missions avec subvention, mise a disposition de personnel, mise a disposition de locaux municipaux).",
    "pourquoi": "socle fondateur : missions, personnel et locaux",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=92506"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=92506",
+   "fait_en": "The Council authorized the signing of three founding agreements with the Pavillon (objectives and missions with a grant, provision of staff, provision of municipal premises).",
+   "pourquoi_en": "Founding framework: missions, staff and premises"
   },
   {
    "id": "43243",
@@ -117,7 +121,9 @@
    "fait": "Le Conseil approuve le principe de travaux de depose de couverture et de nouveaux revetements sur le batiment administratif du Pavillon (7-9 rue Agrippa-d'Aubigne) et autorise la signature du marche correspondant.",
    "pourquoi": "refection de la toiture du batiment administratif",
    "vedette": false,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=43243"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=43243",
+   "fait_en": "The Council approved the principle of works to remove the roof covering and install new coverings on the Pavillon's administrative building (7-9 rue Agrippa-d'Aubigné) and authorized the signing of the corresponding contract.",
+   "pourquoi_en": "Repairing the administrative building's roof"
   },
   {
    "id": "55641",
@@ -125,7 +131,9 @@
    "fait": "Le Conseil approuve les nouveaux statuts de l'association et acte que la presidence du Pavillon de l'Arsenal sera assuree par la Ville de Paris.",
    "pourquoi": "la Ville prend la presidence de l'association",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=55641"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=55641",
+   "fait_en": "The Council approved the association's new bylaws and recorded that the presidency of the Pavillon de l'Arsenal would be held by the City of Paris.",
+   "pourquoi_en": "The City takes over the association's presidency"
   },
   {
    "id": "87664",
@@ -133,7 +141,9 @@
    "fait": "Le Conseil attribue au Pavillon une subvention de fonctionnement de 70 000 euros et une subvention d'equipement exceptionnelle de 30 000 euros.",
    "pourquoi": "appui ponctuel en equipement et fonctionnement",
    "vedette": false,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=87664"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=87664",
+   "fait_en": "The Council awarded the Pavillon an operating grant of 70,000 euros and an exceptional equipment grant of 30,000 euros.",
+   "pourquoi_en": "One-off support for equipment and operations"
   },
   {
    "id": "16916",
@@ -141,7 +151,9 @@
    "fait": "A l'occasion de la modification de la convention pluriannuelle d'objectifs, Laurent Dominati juge le Pavillon indigne d'une capitale, quand Christian Sautter lui repond en avancant 180 000 visiteurs recus en 2005.",
    "pourquoi": "un elu tacle le Pavillon, 180.000 visiteurs en reponse",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=16916"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=16916",
+   "fait_en": "On the occasion of amending the multi-year objectives agreement, Laurent Dominati judged the Pavillon unworthy of a capital city, while Christian Sautter responded by citing 180,000 visitors received in 2005.",
+   "pourquoi_en": "A councillor takes a jab at the Pavillon, 180,000 visitors in response"
   },
   {
    "id": "38650",
@@ -149,7 +161,9 @@
    "fait": "Le Conseil autorise la signature d'une convention pluriannuelle modifiee integrant une nouvelle mission « qualite et creation architecturale ».",
    "pourquoi": "une mission creation architecturale entre dans la convention",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=38650"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=38650",
+   "fait_en": "The Council authorized the signing of an amended multi-year agreement incorporating a new \"quality and architectural creation\" mission.",
+   "pourquoi_en": "An architectural creation mission enters the agreement"
   },
   {
    "id": "61977",
@@ -157,7 +171,9 @@
    "fait": "Le Conseil autorise la signature d'une nouvelle convention d'occupation faisant supporter a l'association les charges de ses locaux et mettant a jour les surfaces occupees (Morland et Agrippa d'Aubigne).",
    "pourquoi": "l'association appelee a supporter les charges de son occupation",
    "vedette": false,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=61977"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=61977",
+   "fait_en": "The Council authorized the signing of a new occupancy agreement making the association bear the costs of its premises and updating the surface areas occupied (Morland and Agrippa d'Aubigné).",
+   "pourquoi_en": "The association called on to bear the costs of its occupancy"
   },
   {
    "id": "183748",
@@ -165,7 +181,9 @@
    "fait": "En decembre 2025, le Conseil examine la subvention 2026 au Pavillon de l'Arsenal, decrit en seance comme un lieu de reference sur l'histoire urbaine du Grand Paris, tandis qu'est evoquee la renovation du site Morland et un deploiement « hors les murs » de la programmation 2026.",
    "pourquoi": "renovation Morland, la programmation part hors les murs",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=183748"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=183748",
+   "fait_en": "In December 2025, the Council examined the 2026 grant to the Pavillon de l'Arsenal, described in session as a reference site on the urban history of Greater Paris, while the Morland site renovation and an \"outside the walls\" deployment of the 2026 programming were mentioned.",
+   "pourquoi_en": "Morland renovation, programming moves outside the walls"
   }
  ],
  "montants": [
@@ -321,5 +339,6 @@
    "name": "Wikipédia",
    "url": "https://fr.wikipedia.org/"
   }
- }
+ },
+ "synthese_en": "Since 1998, the City of Paris has governed the Pavillon de l'Arsenal through a series of agreements — the association's missions, the provision of staff and premises on boulevard Morland — and pays it an operating grant each year on the order of two million euros. In 2002, the Council approved new bylaws for the association and recorded that its presidency would be held by the City. The building comes back regularly in session for works and operating contracts — roof covering on the administrative building, maintenance of security installations, site surveillance — and its condition was debated in 2006, when Laurent Dominati judged it unworthy of a capital city and Christian Sautter countered with 180,000 visitors received in 2005. That same year, the Council authorized an amended agreement incorporating a new \"quality and architectural creation\" mission; starting in 2008, a new agreement provided for the association to bear the costs of its occupancy, before a supplementary grant of 326,500 euros was awarded to it in 2009 for rental charges. In 2024-2025, the City temporarily made premises available to it on rue des Blancs-Manteaux, and the 2026 programming plans a deployment \"outside the walls,\" for the duration of the Morland site renovation mentioned in session."
 }

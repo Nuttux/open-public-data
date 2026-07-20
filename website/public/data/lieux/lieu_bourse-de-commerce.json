@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T20:11:17.537074+00:00",
+ "generated_at": "2026-07-20T20:28:18.117255+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "bourse-de-commerce",
  "name": "Bourse de Commerce",
@@ -50,7 +50,9 @@
    "fait": "Une question orale interroge le Préfet de police sur les mesures prises après une détection de légionellose dans une tour aéroréfrigérante de la Bourse du Commerce.",
    "pourquoi": "Quand la santé publique s'invite dans le bâtiment",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=11898"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=11898",
+   "fait_en": "An oral question asked the Prefect of Police about the measures taken after Legionella was detected in a cooling tower at the Bourse du Commerce.",
+   "pourquoi_en": "When public health enters the building"
   },
   {
    "id": "129956",
@@ -58,7 +60,9 @@
    "fait": "Le devenir du bâtiment fait débat : le vœu de Mme Simonnet reçoit un avis défavorable, M. Legaret le disant « très largement inutilisé » et défendant un projet culturel.",
    "pourquoi": "Le sort du bâtiment divise le Conseil",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=129956"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=129956",
+   "fait_en": "The building's future was debated: Ms Simonnet's motion received an unfavorable opinion, with Mr Legaret calling it \"very largely unused\" and defending a cultural project.",
+   "pourquoi_en": "The building's fate divides the Council"
   },
   {
    "id": "140891",
@@ -66,7 +70,9 @@
    "fait": "Mme Danielle Simonnet dépose un vœu relatif à la cession de la Bourse du commerce.",
    "pourquoi": "La cession du bâtiment revient au Conseil",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=140891"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=140891",
+   "fait_en": "Ms Danielle Simonnet filed a motion concerning the sale of the Bourse du Commerce.",
+   "pourquoi_en": "The building's sale comes back before the Council"
   }
  ],
  "montants": [],
@@ -92,5 +98,6 @@
    "name": "Wikipédia",
    "url": "https://fr.wikipedia.org/"
   }
- }
+ },
+ "synthese_en": "In March 2004, an oral question addressed to the Prefect of Police concerned the measures taken after Legionella was detected in a cooling tower at the Bourse du Commerce. In May 2016, the building's future was debated at the Council: a motion from Ms Danielle Simonnet received an unfavorable opinion and a suggestion that it be withdrawn, with its examination postponed to July, while Mr Jean-François Legaret, mayor of the 1st arrondissement, described the building as \"very largely unused\" and defended the arrival of a cultural project. In February 2018, Ms Simonnet filed a new motion, this time concerning the sale of the Bourse du Commerce."
 }

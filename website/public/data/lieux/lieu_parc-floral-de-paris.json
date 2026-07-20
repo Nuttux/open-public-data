@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T20:11:17.537074+00:00",
+ "generated_at": "2026-07-20T20:28:18.117255+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "parc-floral-de-paris",
  "name": "Parc floral de Paris",
@@ -50,7 +50,9 @@
    "fait": "Le Conseil autorise le Maire à signer une convention concédant à l'Association pour l'animation et la promotion du Parc floral le droit d'occuper certains bâtiments du parc.",
    "pourquoi": "La Ville confie l'animation du parc à une association",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=48411"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=48411",
+   "fait_en": "The Council authorized the Mayor to sign an agreement granting the Association pour l'animation et la promotion du Parc floral the right to occupy certain buildings in the park.",
+   "pourquoi_en": "The City entrusts running the park's events to an association"
   },
   {
    "id": "18168",
@@ -58,7 +60,9 @@
    "fait": "Le débat sur cette convention voit le groupe socialiste invoquer la loi Sapin ; le projet est adopté à la majorité, ce groupe votant contre.",
    "pourquoi": "La gestion sans appel d'offres contestée en séance",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=18168"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=18168",
+   "fait_en": "The debate on this agreement saw the Socialist group invoke the Sapin law; the measure was adopted by a majority vote, with that group voting against.",
+   "pourquoi_en": "Management without a tender contested in session"
   },
   {
    "id": "5523",
@@ -66,7 +70,9 @@
    "fait": "Interrogée par le groupe socialiste, Mme de PANAFIEU chiffre les recettes que la Ville tire du parc à près de 3,3 millions de francs dès 1999.",
    "pourquoi": "Ce que le parc rapporte à la Ville, questionné",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=5523"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=5523",
+   "fait_en": "Questioned by the Socialist group, Ms de PANAFIEU put the revenue the City draws from the park at close to 3.3 million francs as early as 1999.",
+   "pourquoi_en": "What the park brings in for the City, questioned"
   },
   {
    "id": "28331",
@@ -74,7 +80,9 @@
    "fait": "Le Conseil approuve le principe d'un espace paysager dans l'aire de jeux du Parc Floral, chantier qui se déroulera en cinq tranches jusqu'en 2004.",
    "pourquoi": "Une aire de jeux repensée en cinq tranches",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=28331"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=28331",
+   "fait_en": "The Council approved the principle of a landscaped area within the Parc Floral's play area, a project to be carried out in five phases through 2004.",
+   "pourquoi_en": "A play area redesigned in five phases"
   },
   {
    "id": "94201",
@@ -82,7 +90,9 @@
    "fait": "Le Conseil autorise trois marchés pour les festivals de jazz, de musique classique et de spectacles pour enfants, pour une dépense globale d'un million d'euros.",
    "pourquoi": "Un million d'euros pour les festivals du parc",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=94201"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=94201",
+   "fait_en": "The Council authorized three contracts for the jazz festival, the classical music festival and children's shows, for an overall expenditure of one million euros.",
+   "pourquoi_en": "One million euros for the park's festivals"
   },
   {
    "id": "21407",
@@ -90,7 +100,9 @@
    "fait": "Un conseiller met en cause l'usage du parc comme centre d'expositions et de congrès, jusqu'aux salons de voitures d'occasion, au regard de la Charte du bois de Vincennes.",
    "pourquoi": "Des salons de voitures en plein bois, dénoncés",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=21407"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=21407",
+   "fait_en": "A councillor questioned the park's use as an exhibition and conference centre, down to used-car shows, with respect to the Charte du bois de Vincennes.",
+   "pourquoi_en": "Car shows in the middle of the woods, denounced"
   },
   {
    "id": "54262",
@@ -98,7 +110,9 @@
    "fait": "Le Conseil approuve le principe des travaux de confortation des structures et de modernisation de la couverture du Hall de la Pinède.",
    "pourquoi": "Moderniser la couverture du Hall de la Pinède",
    "vedette": false,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=54262"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=54262",
+   "fait_en": "The Council approved the principle of works to reinforce the structure and modernize the roofing of the Hall de la Pinède.",
+   "pourquoi_en": "Modernizing the roofing of the Hall de la Pinède"
   },
   {
    "id": "93302",
@@ -106,7 +120,9 @@
    "fait": "Le Conseil autorise un appel à candidatures pour deux points de vente de glaces et de boissons dans le parc, avec une redevance de 8 % du chiffre d'affaires.",
    "pourquoi": "Deux points de vente de glaces mis en concurrence",
    "vedette": false,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=93302"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=93302",
+   "fait_en": "The Council authorized a call for candidates for two ice-cream and drink stands in the park, with a fee of 8% of turnover.",
+   "pourquoi_en": "Two ice-cream stands put out to competition"
   }
  ],
  "montants": [
@@ -227,22 +243,26 @@
   {
    "date": "1970-06-07",
    "extrait": "de l’ouverture permanente au public du parc floral de Vincennes … Aussi MM. Planchet, Salvinien, Joffre, Garnier et Maillet, conseillers de Paris , suggèrent-ils à M. le Préfet de Paris que la R.A.T.P. repousse le point terminal de la ligne n° 46 de la Demi-Lune jusqu’au parc f",
-   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k32103649/f4.item"
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k32103649/f4.item",
+   "extrait_en": "on the permanent opening to the public of the Parc floral de Vincennes … Also, Messrs Planchet, Salvinien, Joffre, Garnier and Maillet, Paris councillors, suggest to the Prefect of Paris that the R.A.T.P. push back the terminus of line no. 46 from the Demi-Lune to the f"
   },
   {
    "date": "1975-01-15",
    "extrait": "Tarif, 1 F. D. — Parc floral de, Paris (pendant les heures .normales d’ouverture … 4. — L’entrée du Parc floral de Paris est gratuite pendant les heures normales d’ouverture : 1° Pour les enfants de moins de 6 ans … réduction de 50 % sur la part du droit d’entrée au Parc flor",
-   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k32107564/f6.item"
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k32107564/f6.item",
+   "extrait_en": "Rate, 1 franc. D. — Parc floral de Paris (during normal opening hours … 4. — Admission to the Parc floral de Paris is free during normal opening hours: 1° For children under 6 … 50% reduction on the entry fee to the Parc flor"
   },
   {
    "date": "1975-11-02",
    "extrait": "Interdiction provisoire de la circulation rue Watt, à Paris (13 e … Interdiction partielle de la circulation rue de l’Ingénieur-Robert-Keller, à Paris (15 e … travaux de couverture, chevronnage et chéneaux tôle à exécuter pour la réfection de la couverture du hall de la Pinèd",
-   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k32116956/f6.item"
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k32116956/f6.item",
+   "extrait_en": "Temporary ban on traffic on rue Watt, in Paris (13th) … Partial ban on traffic on rue de l'Ingénieur-Robert-Keller, in Paris (15th) … roofing works, rafters and sheet-metal gutters to be carried out for repairing the roofing of the Pinède hall"
   },
   {
    "date": "1978-06-22",
    "extrait": "à Paris , du 25 au 29 septembre 1978, pour les deux concours … Ville, à Paris (4 e ) (tél. 277-15-40, poste 46-64 … juin au 16 juillet 1978, au Parc floral de Paris (Pavillon des Arts), route de la Pyramide, bois de Vincennes, à Paris (12 e … ",
-   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k3213370z/f3.item"
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k3213370z/f3.item",
+   "extrait_en": "in Paris, from 25 to 29 September 1978, for the two competitions … Ville, Paris (4th) (tel. 277-15-40, ext. 46-64 … from June to 16 July 1978, at the Parc floral de Paris (Pavillon des Arts), route de la Pyramide, bois de Vincennes, Paris (12th) …"
   }
  ],
  "bmo_recit": "Le Parc floral apparaît dans le Bulletin municipal au tournant des années 1970, au moment de son ouverture permanente au public : en juin 1970, des conseillers de Paris suggèrent au Préfet que la R.A.T.P. repousse le terminus de la ligne d'autobus n° 46 de la Demi-Lune jusqu'au parc. Au milieu de la décennie, le Bulletin publie la règle du droit d'entrée — un tarif de 1 F, avec gratuité pour les enfants de moins de six ans pendant les heures normales d'ouverture — puis, fin 1975, annonce des travaux à exécuter pour la réfection de la couverture du hall de la Pinède, chevronnage et chéneaux en tôle compris. En 1978, le parc figure comme lieu d'exposition : le Pavillon des Arts, route de la Pyramide, doit accueillir une exposition de juin au 16 juillet. L'archive s'arrête là ; elle ne montre que cette première décennie, où le parc s'installe dans la vie municipale entre desserte, tarification, entretien et programmation.",
@@ -285,5 +305,7 @@
    "name": "Wikipédia",
    "url": "https://fr.wikipedia.org/"
   }
- }
+ },
+ "synthese_en": "In the late 1990s, the City of Paris entrusted an association with running events at the Parc Floral and occupying some of its buildings, through a public-domain occupancy agreement; the Socialist group challenged this management choice with respect to the Sapin law and questioned the revenue the City drew from the park. From the late 1990s through the 2000s, the Council approved the principle of a long series of works: automatic watering, redevelopment of the entrances, creation of a landscaped area within the play area carried out in five phases, electrical code compliance work, then renovation of the Hall de la Pinède. In parallel, it regularly authorized contracts for music festivals and children's shows (Paris Jazz Festival, Classique au Vert), whose overall cost approached one million euros in 2003. That same year, a councillor questioned the park's use as an exhibition and conference centre, down to used-car shows, in the name of the Charte d'aménagement durable du bois de Vincennes. Until the late 2000s, the management of the park's commercial activities, from ice-cream stands to rides, regularly came back before the Council.",
+ "bmo_recit_en": "The Parc Floral appears in the Bulletin municipal at the turn of the 1970s, at the time of its permanent opening to the public: in June 1970, Paris councillors suggested to the Prefect that the RATP extend the terminus of bus line no. 46 from the Demi-Lune to the park. In the middle of the decade, the Bulletin published the entry-fee rule — a rate of 1 franc, with free admission for children under six during normal opening hours — then, at the end of 1975, announced works to be carried out for repairing the roofing of the Hall de la Pinède, including rafters and sheet-metal gutters. In 1978, the park appears as an exhibition venue: the Pavillon des Arts, on the route de la Pyramide, was to host an exhibition from June through 16 July. The archive stops there; it shows only this first decade, in which the park found its place in municipal life between transport links, pricing, maintenance and programming."
 }

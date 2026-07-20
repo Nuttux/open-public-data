@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T20:11:17.537074+00:00",
+ "generated_at": "2026-07-20T20:28:18.117255+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "marche-des-enfants-rouges",
  "name": "Marché des Enfants-Rouges",
@@ -22,7 +22,8 @@
   "source": {
    "name": "Wikipédia",
    "url": "https://fr.wikipedia.org/"
-  }
+  },
+  "extract_en": "The Marché des Enfants-Rouges is the oldest covered market in Paris. It is located at 39 rue de Bretagne, in the 3rd arrondissement of Paris."
  },
  "stats": {
   "n_delibs": 1270,
@@ -50,7 +51,9 @@
    "fait": "Le Conseil débat du principe de la concession : Mme Liliane CAPELLE (Mouvement des citoyens) affirme que la Ville envisageait encore l'année précédente la destruction du marché, inscrit à l'Inventaire supplémentaire des Monuments historiques par arrêté du 8 mars 1982, au profit d'une opération immobilière avec parc de stationnement souterrain ; l'intervention du maire du 3e, M. Pierre AIDENBAUM, soulève de vives protestations sur les bancs « Rassemblement pour Paris » et « Paris-Libertés ».",
    "pourquoi": "Le passé du dossier est contesté en séance",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=7510"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=7510",
+   "fait_en": "The Council debated the principle of the concession: Ms Liliane CAPELLE (Mouvement des citoyens) stated that as recently as the previous year the City had still been considering demolishing the market, listed on the Supplementary Inventory of Historic Monuments by order of 8 March 1982, in favor of a property development with an underground parking structure; the remarks of the mayor of the 3rd arrondissement, Mr Pierre AIDENBAUM, prompted vigorous protests from the \"Rassemblement pour Paris\" and \"Paris-Libertés\" benches.",
+   "pourquoi_en": "the case's history is disputed in session"
   },
   {
    "id": "13085",
@@ -58,7 +61,9 @@
    "fait": "Question du groupe socialiste sur les trois maisons murées en devanture du marché, où le maire du 3e propose un équipement socioculturel : l'adjointe répond qu'un centre d'animation n'est pas viable financièrement en deçà d'une certaine surface et que ces maisons ne dépassent pas 400 mètres carrés ; la question situe la réouverture « probablement à la mi-1997 ».",
    "pourquoi": "La Ville oppose la surface des locaux au projet d'équipement",
    "vedette": false,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=13085"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=13085",
+   "fait_en": "A question from the Socialist group about the three boarded-up houses at the market's front, where the mayor of the 3rd arrondissement proposed a socio-cultural facility: the deputy mayor replied that a community center was not financially viable below a certain floor area and that these houses did not exceed 400 square meters; the question placed the reopening \"probably in mid-1997.\"",
+   "pourquoi_en": "the City counters the facility project with the premises' floor area"
   },
   {
    "id": "4586",
@@ -66,7 +71,9 @@
    "fait": "Débat sur la concession à « Promo métro » : le maire du 3e invite l'Assemblée à voter unanimement, tandis que Mme Martine DURLACH dit voter le projet tout en jugeant que l'attribution à une société privée n'est pas le meilleur mode de gestion et relève que les trois maisons murées devant le marché ne font pas partie de la concession.",
    "pourquoi": "Un vote convergent, avec une réserve sur la gestion privée",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=4586"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=4586",
+   "fait_en": "Debate on the concession to \"Promo métro\": the mayor of the 3rd arrondissement invited the Assembly to vote unanimously, while Ms Martine DURLACH said she was voting for the project while judging that awarding it to a private company was not the best management method, and noted that the three boarded-up houses in front of the market were not part of the concession.",
+   "pourquoi_en": "a convergent vote, with a reservation about private management"
   },
   {
    "id": "40194",
@@ -74,7 +81,9 @@
    "fait": "Le Conseil fixe les droits du marché à compter du 1er mai 1997 : droit de place de 90,50 F par mètre carré et par mois, contre 44,85 F dans les autres marchés couverts.",
    "pourquoi": "Le marché entre dans le barème haut",
    "vedette": false,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=40194"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=40194",
+   "fait_en": "The Council set the market's fees effective from 1 May 1997: a stall fee of 90.50 francs per square meter per month, against 44.85 francs in the other covered markets.",
+   "pourquoi_en": "the market enters the higher fee bracket"
   },
   {
    "id": "85707",
@@ -82,7 +91,9 @@
    "fait": "Le Conseil autorise le Maire de Paris à signer avec « Promo métro » un contrat de transaction visant à l'indemniser de 3 247 000 F H.T. au titre de travaux de confortation du sous-sol, hors du champ de la convention du 8 avril 1997.",
    "pourquoi": "Une indemnisation hors du champ de la convention",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=85707"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=85707",
+   "fait_en": "The Council authorized the Mayor of Paris to sign with \"Promo métro\" a settlement contract to compensate it 3,247,000 francs excluding tax for basement reinforcement works, outside the scope of the 8 April 1997 agreement.",
+   "pourquoi_en": "compensation outside the scope of the agreement"
   },
   {
    "id": "6043",
@@ -90,7 +101,9 @@
    "fait": "Interrogée sur le devenir du marché, la Ville indique qu'une modification du règlement est à l'étude pour autoriser la vente sur le site par des producteurs fermiers que la Fédération des C.I.V.A.M., installée par bail dans l'immeuble communal mitoyen, s'est engagée à recruter.",
    "pourquoi": "La Ville envisage d'ouvrir le marché à des producteurs fermiers",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=6043"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=6043",
+   "fait_en": "Asked about the market's future, the City indicated that an amendment to the regulations was under study to authorize sales on site by farming producers whom the Fédération des C.I.V.A.M., installed under lease in the adjoining municipal building, had committed to recruit.",
+   "pourquoi_en": "the City considers opening the market to farming producers"
   },
   {
    "id": "43685",
@@ -98,7 +111,9 @@
    "fait": "Une délibération, connue par son seul intitulé, porte sur l'autorisation accordée à Promo Métro de céder la convention de délégation de service public à un nouveau gestionnaire, la société E.G.S.",
    "pourquoi": "Un changement de délégataire est mis en délibération",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=43685"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=43685",
+   "fait_en": "A deliberation, known only by its title, concerned the authorization granted to Promo Métro to transfer the public service delegation agreement to a new operator, the company E.G.S.",
+   "pourquoi_en": "a change of delegate operator is put to deliberation"
   },
   {
    "id": "158547",
@@ -106,7 +121,9 @@
    "fait": "Le Conseil examine le principe du renouvellement de la délégation de service public ; Mme Alice TIMSIT (groupe Ecologiste de Paris) indique que la nouvelle convention précise des missions de sortie du plastique à usage unique et de valorisation des déchets.",
    "pourquoi": "Des missions environnementales sont mises en avant en séance",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=158547"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=158547",
+   "fait_en": "The Council examined the principle of renewing the public service delegation; Ms Alice TIMSIT (Groupe Ecologiste de Paris) indicated that the new agreement specified obligations on phasing out single-use plastic and on waste recovery.",
+   "pourquoi_en": "environmental obligations are highlighted in session"
   }
  ],
  "montants": [
@@ -225,5 +242,6 @@
    "name": "Wikipédia",
    "url": "https://fr.wikipedia.org/"
   }
- }
+ },
+ "synthese_en": "In March 1996, Conseil de Paris approved the principle of granting a concession for the Marché des Enfants-Rouges covered market and authorized the Mayor of Paris to advertise a call for candidates for carrying out improvements and managing the market. Debate was heated: Ms Liliane CAPELLE (Mouvement des citoyens) stated that as recently as the previous year the City had still been considering the demolition of this market, founded in 1615 and listed on the Supplementary Inventory of Historic Monuments by order of 8 March 1982, in favor of a property development including an underground parking structure, and the remarks of the mayor of the 3rd arrondissement, Mr Pierre AIDENBAUM, prompted vigorous protests from the \"Rassemblement pour Paris\" and \"Paris-Libertés\" benches. In March 1997, the Council authorized the Mayor of Paris to sign with the company \"Promo métro\" a 20-year concession agreement covering the market's rehabilitation and management: the mayor of the 3rd arrondissement invited the Assembly to vote unanimously, and Ms Martine DURLACH said she was voting for the project \"although the management method chosen, that is, awarding it to a private company, is not the best one,\" saying she preferred direct management by the district town hall or by the G.I.E. of covered markets. In April 1997, the market's stall fee was set at 90.50 francs per square meter per month, a scale applied only to the Secrétan and Enfants-Rouges markets, against 44.85 francs for the other covered markets. In July 1999, the Council authorized the Mayor of Paris to sign with Promo métro a settlement contract to compensate it up to 3,247,000 francs excluding tax for costs incurred for basement reinforcement works, outside the scope of the 8 April 1997 agreement. In September 2002, asked about the market's future, deputy mayor Ms Lyne COHEN-SOLAL indicated that an amendment to the regulations was under study to allow sales there by farming producers whom the Fédération des C.I.V.A.M. had committed to recruit, in exchange for the nine-year lease the City had granted it on the adjoining municipal building at 39 rue de Bretagne. Four other deliberations are known only by their title, which does not indicate how the vote went: an amendment to the settlement contract entered into with Promo Métro (September 2001), an agreement with the Prefect of Paris to collect the grant awarded under the FISAC scheme for the market's rehabilitation (September 2004), the transfer by Promo Métro of the public service delegation agreement to the company E.G.S. (April 2005), and new market regulations (May 2015). In April 2021, the Council examined the principle of renewing the public service delegation; Ms Alice TIMSIT (Groupe Ecologiste de Paris) noted in session that the new agreement specified obligations on phasing out single-use plastic and on waste recovery."
 }

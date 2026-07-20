@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T20:11:17.537074+00:00",
+ "generated_at": "2026-07-20T20:28:18.117255+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "gymnase-japy",
  "name": "Gymnase Japy",
@@ -22,7 +22,8 @@
   "source": {
    "name": "Wikipédia",
    "url": "https://fr.wikipedia.org/"
-  }
+  },
+  "extract_en": "The Gymnase Japy is a multi-sport hall in the 11th arrondissement of Paris, France."
  },
  "stats": {
   "n_delibs": 34,
@@ -50,7 +51,9 @@
    "fait": "Le Conseil approuve le principe de la réfection du parquet sportif de la salle et autorise le Maire à signer le marché.",
    "pourquoi": "le parquet sportif de la salle à refaire",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=55120"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=55120",
+   "fait_en": "The Council approved the principle of resurfacing the hall's sports flooring and authorized the Mayor to sign the contract.",
+   "pourquoi_en": "The hall's sports flooring in need of resurfacing"
   },
   {
    "id": "4454",
@@ -58,7 +61,9 @@
    "fait": "En séance, Patrick Bloche demande le report du chantier à juillet 1997 et s'inquiète du surcoût ; Dominique Cane confirme une plus-value sans la chiffrer.",
    "pourquoi": "report du chantier demandé, surcoût admis mais non chiffré",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=4454"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=4454",
+   "fait_en": "During the session, Patrick Bloche asked for the works to be postponed to July 1997 and raised concerns about a cost overrun; Dominique Cane confirmed an added cost without specifying a figure.",
+   "pourquoi_en": "Postponement requested, cost overrun acknowledged but not quantified"
   },
   {
    "id": "84073",
@@ -66,7 +71,9 @@
    "fait": "Le Conseil approuve le principe de travaux de renforcement de structure des planchers et des tribunes.",
    "pourquoi": "planchers et tribunes du gymnase à renforcer",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=84073"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=84073",
+   "fait_en": "The Council approved the principle of works to reinforce the structure of the floors and stands.",
+   "pourquoi_en": "The gym's floors and stands in need of reinforcement"
   },
   {
    "id": "27101",
@@ -74,7 +81,9 @@
    "fait": "Le Conseil approuve le principe de travaux de mise aux normes de la verrière et autorise le Maire à signer les marchés.",
    "pourquoi": "la verrière du gymnase à mettre aux normes",
    "vedette": false,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=27101"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=27101",
+   "fait_en": "The Council approved the principle of works to bring the glass roof up to code and authorized the Mayor to sign the contracts.",
+   "pourquoi_en": "The gym's glass roof needing to be brought up to code"
   }
  ],
  "montants": [
@@ -90,27 +99,32 @@
   {
    "date": "1885-09-25",
    "extrait": "N° 1037. — Les conseillers ci-dessous désignés sont intervenus à plusieurs reprises pour que des travaux indispensables soient entrepris au gymnase Japy  … De ce fait, les sociétés et ligues sportives",
-   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k96204481/f1.item"
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k96204481/f1.item",
+   "extrait_en": "No. 1037. — The councillors named below have intervened on several occasions to have essential works carried out at the Gymnase Japy … As a result, sports societies and leagues"
   },
   {
    "date": "1903-11-10",
    "extrait": "habitants voisins du gymnase Japy (Il e) qui s'affirment fort incommodés par le tumulte qui résulte des fêtes nocturnes organisées dans ce local … Le principe de ces fêtes, presque toutes destinées",
-   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k9619849b/f3.item"
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k9619849b/f3.item",
+   "extrait_en": "local residents near the Gymnase Japy (11th arrondissement) who say they are greatly inconvenienced by the din resulting from the nightly festivities held on the premises … The purpose of these festivities, almost all intended"
   },
   {
    "date": "1914-07-09",
    "extrait": "N° 276. — Le Conseil municipal de Paris a adopté une proposition des auteurs de cette question tendant à l'aménagement d'un cabinet médico-sportif dans le gymnase Japy  … mais pourrait égalem",
-   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k9622861w/f404.item"
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k9622861w/f404.item",
+   "extrait_en": "No. 276. — The Conseil municipal de Paris adopted a proposal by the authors of this question calling for a sports-medicine office to be set up in the Gymnase Japy … but could also"
   },
   {
    "date": "1922-05-03",
    "extrait": "réfection du gymnase Japy et les retards constamment apportés à l'exécution des travaux et demandant à M. le Préfet de la Seine : 1° Quand ces travaux seront enfin terminés … Les travaux comp",
-   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k6491532n/f2.item"
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k6491532n/f2.item",
+   "extrait_en": "repair of the Gymnase Japy and the constant delays in carrying out the works, and asking the Prefect of the Seine: 1° When these works will finally be completed … The works incl"
   },
   {
    "date": "1931-08-13",
    "extrait": "N° 82. — 12 février 1932. — Le transfert des services de chômage du 11e arrondissement au gymnase Japy répond au but de la question n° 34, posée par M. René Fiquet, et constitue une séri",
-   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k6453804w/f1.item"
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k6453804w/f1.item",
+   "extrait_en": "No. 82. — 12 February 1932. — The transfer of the 11th arrondissement's unemployment services to the Gymnase Japy answers the purpose of question No. 34, raised by Mr René Fiquet, and constitutes a seri"
   }
  ],
  "bmo_recit": "Le gymnase Japy, dans le 11e arrondissement, apparaît dans le Bulletin municipal dès 1885, lorsque des conseillers signalent être intervenus à plusieurs reprises pour que des travaux jugés indispensables y soient entrepris. En 1903, ce sont les habitants voisins qui se manifestent : ils s'affirment fort incommodés par le tumulte des fêtes nocturnes organisées dans ce local. En 1914, le Conseil municipal adopte une proposition tendant à l'aménagement d'un cabinet médico-sportif dans le gymnase. En 1922, une question demande au préfet de la Seine quand seront enfin terminés les travaux de réfection du gymnase, dont les retards constants sont relevés. Au début des années 1930, le lieu change d'usage : les services de chômage du 11e arrondissement y sont transférés, en réponse à une question posée par M. René Fiquet.",
@@ -144,5 +158,7 @@
    "name": "Wikipédia",
    "url": "https://fr.wikipedia.org/"
   }
- }
+ },
+ "synthese_en": "Between 1996 and 2002, the Gymnase Japy, at 2 rue Japy (11th arrondissement), came before Conseil de Paris three times for successive works. In October 1996, the Council approved the principle of resurfacing the hall's sports flooring and authorized the Mayor to sign the contract; during the session, councillor Patrick Bloche noted that the works planned for July 1996 had not started and asked for them to be postponed to July 1997, questioning a cost overrun that Dominique Cane confirmed without specifying a figure. In September 1999, the Council approved the principle of works to reinforce the structure of the floors and stands. In January 2002, it approved the principle of works to bring the glass roof up to code. Each deliberation authorized the Mayor to sign the corresponding contracts, the only figure stated being a projected cost of 1.2 million francs mentioned during the session for the 1996 flooring work.",
+ "bmo_recit_en": "The Gymnase Japy, in the 11th arrondissement, appears in the Bulletin municipal as early as 1885, when councillors reported having intervened repeatedly to have works deemed essential carried out there. In 1903, it was the neighboring residents who spoke up: they said they were greatly inconvenienced by the din of the nightly festivities held on the premises. In 1914, the Conseil municipal adopted a proposal to set up a sports-medicine office in the gym. In 1922, a question asked the Prefect of the Seine when the gym's repair works would finally be completed, noting their constant delays. In the early 1930s, the site's use changed: the unemployment services of the 11th arrondissement were transferred there, in response to a question raised by Mr René Fiquet."
 }

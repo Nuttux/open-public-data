@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T20:11:17.537074+00:00",
+ "generated_at": "2026-07-20T20:28:18.117255+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "square-du-vert-galant",
  "name": "Square du Vert-Galant",
@@ -50,7 +50,9 @@
    "fait": "Le Conseil examine l'autorisation au Maire de signer un marché d'illumination du pont Neuf et du square du Vert-Galant, projet chiffré à 13 millions de francs et contesté en séance pour son coût.",
    "pourquoi": "Éclairer le square, une dépense jugée « énorme »",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=397"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=397",
+   "fait_en": "The Council examined authorizing the Mayor to sign a contract to illuminate the Pont Neuf and the Square du Vert-Galant, a project costed at 13 million francs and challenged in session over its cost.",
+   "pourquoi_en": "Lighting the square, an expense judged \"enormous\""
   }
  ],
  "montants": [
@@ -91,5 +93,6 @@
    "name": "Wikipédia",
    "url": "https://fr.wikipedia.org/"
   }
- }
+ },
+ "synthese_en": "The Square du Vert-Galant appears in Conseil de Paris deliberations in July 1995 regarding a lighting project. A draft deliberation was submitted to the Council authorizing the Mayor to sign a contract, following a call for tenders, to light the Pont Neuf and the square (project D. 1100), for an announced amount of 13 million francs; a second contract concerned the Pont d'Arcole and the Pont Louis-Philippe (4.5 million), for a total of 17.5 million. In session, Ms Yvette DAVANT called the sum \"enormous\" and questioned \"the wisdom of such an expense\" \"in the current context of budgetary austerity,\" comparing it to the 568,000 francs voted the same day for summer prevention programmes and distributed among 46 associations."
 }

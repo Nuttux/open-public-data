@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T20:11:17.537074+00:00",
+ "generated_at": "2026-07-20T20:28:18.117255+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "les-halles",
  "name": "Les Halles",
@@ -22,7 +22,8 @@
   "source": {
    "name": "Wikipédia",
    "url": "https://fr.wikipedia.org/"
-  }
+  },
+  "extract_en": "The Forum des Halles is a French shopping center built on the site of the former central market halls of Paris."
  },
  "stats": {
   "n_delibs": 105,
@@ -50,7 +51,9 @@
    "fait": "Le Conseil approuve le principe de construction du Carreau des Halles et le marché de maîtrise d'œuvre, après le choix du projet Berger-Anziutti par un jury fin juin 2007.",
    "pourquoi": "Le point de départ voté de l'opération",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=25024"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=25024",
+   "fait_en": "The Council approved the principle of building the Carreau des Halles and the project management contract, following the selection of the Berger-Anziutti project by a jury in late June 2007.",
+   "pourquoi_en": "The vote that launched the operation"
   },
   {
    "id": "17270",
@@ -58,7 +61,9 @@
    "fait": "À l'occasion des contrats d'assurance du site, le débat acte la disparition de l'auditorium de 350 places du conservatoire, qui « impactait de 11 millions d'euros le coût total », au profit de surfaces commerciales.",
    "pourquoi": "La programmation publique rabotée avant le chantier",
    "vedette": false,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=17270"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=17270",
+   "fait_en": "During discussion of the site's insurance contracts, the debate confirmed the disappearance of the conservatory's 350-seat auditorium, which \"added 11 million euros to the total cost,\" in favor of commercial space.",
+   "pourquoi_en": "Public programming trimmed before construction began"
   },
   {
    "id": "21487",
@@ -66,7 +71,9 @@
    "fait": "La Ville propose de céder à Unibail la propriété des espaces commerciaux pour 238 millions d'euros, le bail de 1976 ne rapportant qu'une redevance annuelle de 1,8 million d'euros.",
    "pourquoi": "La vente du Forum, pivot financier du projet",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=21487"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=21487",
+   "fait_en": "The City proposed transferring ownership of the commercial spaces to Unibail for 238 million euros, with the 1976 lease yielding only an annual rent of 1.8 million euros.",
+   "pourquoi_en": "The sale of the Forum, the project's financial pivot"
   },
   {
    "id": "95771",
@@ -74,7 +81,9 @@
    "fait": "Le don des grumes issues de l'abattage à cinq associations (345 euros) déclenche un conflit sur l'état phytosanitaire des 343 arbres du jardin, dont 260 abattus le 16 février.",
    "pourquoi": "Le conflit du jardin, hors enjeu budgétaire",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=95771"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=95771",
+   "fait_en": "The donation of logs from the felling to five associations (345 euros) triggered a dispute over the health condition of the garden's 343 trees, 260 of which were felled on 16 February.",
+   "pourquoi_en": "The garden dispute, outside the budgetary stakes"
   },
   {
    "id": "104597",
@@ -82,7 +91,9 @@
    "fait": "Après l'annulation de l'avenant n° 3 pour une dérive de 28,5 %, le Conseil approuve une transaction de 2,4 millions avec la maîtrise d'œuvre de la Canopée.",
    "pourquoi": "Le juge sanctionne la dérive des honoraires",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=104597"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=104597",
+   "fait_en": "After the annulment of amendment No. 3 over a 28.5 percent overrun, the Council approved a settlement of 2.4 million with the Canopée's project managers.",
+   "pourquoi_en": "The judge penalizes the overrun in fees"
   },
   {
    "id": "116757",
@@ -90,7 +101,9 @@
    "fait": "Sept délibérations règlent le partage des charges et des surfaces avec Unibail-Rodamco en cours de chantier, et le patio du forum est dénommé place Pina Bausch.",
    "pourquoi": "La négociation permanente avec l'exploitant privé",
    "vedette": false,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=116757"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=116757",
+   "fait_en": "Seven deliberations settled the sharing of costs and floor space with Unibail-Rodamco during construction, and the forum's patio was named place Pina Bausch.",
+   "pourquoi_en": "The ongoing negotiation with the private operator"
   },
   {
    "id": "131234",
@@ -98,7 +111,9 @@
    "fait": "Deux mois après l'inauguration, un vœu demande qu'Unibail, gestionnaire du Forum sous la canopée, tienne compte des usagers des transports : escalators tardifs, ascenseurs en panne, fuites d'eau.",
    "pourquoi": "L'équipement ouvert, vu par ses usagers",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=131234"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=131234",
+   "fait_en": "Two months after the opening, a motion called on Unibail, manager of the Forum under the canopy, to take transit users into account: escalators starting late, elevators out of service, water leaks.",
+   "pourquoi_en": "The facility, now open, as seen by its users"
   },
   {
    "id": "146662",
@@ -106,7 +121,9 @@
    "fait": "La communication du rapport de la Chambre régionale des comptes chiffre à 142 millions d'euros le prix réellement payé par Unibail pour un bien déclaré 752 millions, et les élus citent le parapluie de 1 195 374 euros HT posé sur une Canopée non étanche.",
    "pourquoi": "Le contrôle externe, huit ans après la vente",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=146662"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=146662",
+   "fait_en": "The presentation of the Chambre régionale des comptes report put at 142 million euros the price actually paid by Unibail for an asset declared to be worth 752 million, and councillors cited the umbrella structure costing 1,195,374 euros excluding tax installed over a leaking Canopée.",
+   "pourquoi_en": "External oversight, eight years after the sale"
   }
  ],
  "montants": [
@@ -409,37 +426,44 @@
   {
    "date": "1888-07-22",
    "extrait": "1170. — Installation d'un bureau pour les porteurs dans un des pavillons des Halles (M. Chabert, rapporteur … Chabert, au nom dé la Commission du travail, expose que les porteurs aux Halles demandent l'installation, pour leur usage, d'un bureau dans l'un des pavillons des Halle",
-   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k6329884q/f2.item"
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k6329884q/f2.item",
+   "extrait_en": "1170. — Installation of an office for the porters in one of the pavilions of Les Halles (Mr Chabert, rapporteur … Chabert, on behalf of the Commission du travail, sets out that the porters at Les Halles are requesting the installation, for their use, of an office in one of the pavilions of Les Halle"
   },
   {
    "date": "1918-11-23",
    "extrait": "Le marché des Halles a perdu par sa propre faute sa clientèle de province … Le système des Halles est désuet, c'est un organisme usé … imminente, déclare que la disette de beurre et d'œufs sous les pavillons des Halles « permet aux détaillants d'augmenter leurs prétentions et",
-   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k6331593f/f11.item"
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k6331593f/f11.item",
+   "extrait_en": "The Halles market has, through its own fault, lost its provincial clientele … The Halles system is obsolete, it is a worn-out organism … imminent, states that the shortage of butter and eggs under the pavilions of Les Halles \"allows retailers to raise their demands and"
   },
   {
    "date": "1940-03-08",
    "extrait": "SEINE Réduction de 50 %, à titre définitif, du tarif des droits de place pour les places prises en adjonction dans les pavillons de détail des Halles centrales … Vu l'arrêté préfectoral du 7 février 1938 fixant le tarif des droits et redevances perçus notamment dans les pavillo",
-   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k63567952/f2.item"
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k63567952/f2.item",
+   "extrait_en": "SEINE Permanent 50% reduction in the stallage rate for additional stalls taken in the retail pavilions of the central market halls … Having regard to the prefectoral order of 7 February 1938 setting the rate of fees and charges collected notably in the pavil"
   },
   {
    "date": "1941-02-18",
    "extrait": "Le Comité a homologué un nouveau prix de vente en gros des champignons aux Halles centrales",
-   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k64492171/f1.item"
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k64492171/f1.item",
+   "extrait_en": "The Committee approved a new wholesale price for mushrooms at the central market halls"
   },
   {
    "date": "1960-01-06",
    "extrait": "M. le Président. — Je mets maintenant aux voix, à main levée, les conclusions de M. Legaret sur les deux mémoires concernant la réfection du sol du pavillon IX et la réfection des peintures des fers des pavillons III, IV, V et VI des Halles centrales",
-   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k9713228g/f34.item"
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k9713228g/f34.item",
+   "extrait_en": "The Chairman. — I shall now put to a show-of-hands vote Mr Legaret's conclusions on the two reports concerning the resurfacing of the floor of pavilion IX and the repainting of the ironwork of pavilions III, IV, V, and VI of the central market halls"
   },
   {
    "date": "1969-07-16",
    "extrait": "Il nous faut sauver le 5 de l'avenue Van Dyck, le 68 de la rue de l'Université, le 52 de la rue de Varennes, sauver le quartiers des Halles y compris les pavillons Baltard … ",
-   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k9704274r/f12.item"
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k9704274r/f12.item",
+   "extrait_en": "We must save No. 5 avenue Van Dyck, No. 68 rue de l'Université, No. 52 rue de Varennes, save the Les Halles district including the Baltard pavilions … "
   },
   {
    "date": "1970-03-15",
    "extrait": "nombre des postes de grossistes à la section de la vente en gros de la triperie aux Halles centrales … Considérant que, dans ces conditions, il y a lieu de ramener de cinquante-cinq à cinquante-deux le nombre des postes de grossistes en abats exerçant dans les pavillons des Hal",
-   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k3210308p/f4.item"
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k3210308p/f4.item",
+   "extrait_en": "number of wholesaler posts in the wholesale offal section at the central market halls … Considering that, under these conditions, the number of wholesale offal posts operating in the pavilions of Les Hal"
   }
  ],
  "bmo_recit": "Les Halles apparaissent dans le Bulletin municipal dès 1888, lorsque la Commission du travail expose la demande des porteurs d'installer, pour leur usage, un bureau dans l'un des pavillons des Halles centrales. Le lieu vit ensuite au rythme du marché : en 1918, des voix en séance jugent le système des Halles « désuet », un « organisme usé » qui aurait perdu sa clientèle de province, sur fond de disette de beurre et d'œufs sous les pavillons ; en 1940, le tarif des droits de place pour les places prises en adjonction dans les pavillons de détail est réduit de 50 % à titre définitif, et en 1941 le Comité homologue un nouveau prix de vente en gros des champignons. En 1960, le Conseil est appelé à se prononcer sur la réfection du sol du pavillon IX et des peintures des fers des pavillons III à VI. L'archive porte enfin la trace du basculement du quartier : en 1969, un appel est lancé en séance à « sauver le quartier des Halles, y compris les pavillons Baltard », puis en 1970 le nombre de postes de grossistes en abats exerçant dans les pavillons est ramené de cinquante-cinq à cinquante-deux.",
@@ -587,5 +611,7 @@
    "name": "Wikipédia",
    "url": "https://fr.wikipedia.org/"
   }
- }
+ },
+ "synthese_en": "In November 2007, Conseil de Paris approved the principle of building the Carreau des Halles and the corresponding project management contract, following the selection of the project by Patrick Berger and Jacques Anziutti — the Canopée — by a jury in late June 2007; the final project file was settled in April 2009, the operation's public-interest status was declared in March 2010, and the land agreement of November 2010 transferred ownership of the commercial spaces to Unibail for 238 million euros, whereas the 1976 lease had provided only for an annual rent of 1.8 million euros. The announced cost evolved from session to session: 200 million cited for 2004, 680 then 760 million in 2009, 802 million in 2010, an additional 6.7 million in 2011, a budget updated to 918 million excluding tax in 2014, still presented as being respected in 2017. The Canopée's project management contract was challenged in court: the Tribunal administratif annulled amendment No. 3 in January 2012 over a cost overrun put at 28.5 percent, a settlement of 2.4 million was approved in March 2012, and the Cour administrative d'appel then suspended that annulment in July 2012. The construction site produced its own disputes: the felling of 260 trees on 16 February, lightening work on the Forum omitted by the garden's architect, 2 million euros to remove asbestos from the former Willerval pavilions, and a leaking roof that required an umbrella structure costing 1,195,374 euros excluding tax. In November 2018, the report of the Chambre régionale des comptes was presented to the Council: according to the councillors who cited it, Unibail actually paid 142 million euros for a shopping center the company had declared to be worth 752 million.",
+ "bmo_recit_en": "Les Halles appear in the Bulletin municipal as early as 1888, when the Commission du travail set out the porters' request to have an office installed, for their own use, in one of the pavilions of the central market halls. The site then lived to the rhythm of the market: in 1918, voices during the session judged the Halles system \"obsolete,\" a \"worn-out organism\" said to have lost its provincial clientele, against a backdrop of butter and egg shortages under the pavilions; in 1940, the stallage rate for additional stalls taken in the retail pavilions was cut by 50 percent on a permanent basis, and in 1941 the Committee approved a new wholesale price for mushrooms. In 1960, the Council was asked to rule on resurfacing the floor of pavilion IX and repainting the ironwork of pavilions III to VI. The archive finally bears the trace of the district's turning point: in 1969, an appeal was made during the session to \"save the Les Halles district, including the Baltard pavilions,\" and in 1970 the number of wholesale offal posts operating in the pavilions was reduced from fifty-five to fifty-two."
 }

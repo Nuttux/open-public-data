@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T20:11:17.537074+00:00",
+ "generated_at": "2026-07-20T20:28:18.117255+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "stade-charlety",
  "name": "Stade Charléty",
@@ -22,7 +22,8 @@
   "source": {
    "name": "Wikipédia",
    "url": "https://fr.wikipedia.org/"
-  }
+  },
+  "extract_en": "Stade Charléty, officially Stade Sébastien-Charléty, is a multi-sport complex in Paris, comprising a stadium with a seating capacity of 19,151, a training pitch, the Pierre Charpy multi-sport hall, specialized rooms, and tennis and squash courts. It also houses the Maison du sport français, with the offices of the French National Olympic and Sports Committee and the French Athletics Federation."
  },
  "stats": {
   "n_delibs": 267,
@@ -50,7 +51,9 @@
    "fait": "Le Conseil de Paris autorise le Maire à signer avec la Société d'exploitation du stade Charléty une convention de délégation de service public pour la gestion du stade.",
    "pourquoi": "Le point de départ de la gestion déléguée",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=51253"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=51253",
+   "fait_en": "The Conseil de Paris authorized the Mayor to sign a public service delegation agreement with the Société d'exploitation du stade Charléty for managing the stadium.",
+   "pourquoi_en": "The starting point of delegated management"
   },
   {
    "id": "10320",
@@ -58,7 +61,9 @@
    "fait": "En séance, M. Najdovski dénonce la sous-utilisation chronique du stade et interroge le million d'euros dépensé chaque année par la Ville.",
    "pourquoi": "Le coût du stade, questionné en séance",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=10320"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=10320",
+   "fait_en": "In session, Mr Najdovski denounced the stadium's chronic underuse and questioned the one million euros spent each year by the City.",
+   "pourquoi_en": "The stadium's cost, questioned in session"
   },
   {
    "id": "19344",
@@ -66,7 +71,9 @@
    "fait": "Un vœu des Verts demande que Charléty devienne le stade résidant du Stade français ; l'Exécutif y répond par un vœu proposant un groupe de travail sur la complémentarité avec Jean-Bouin.",
    "pourquoi": "La bataille sur la vocation du stade",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=19344"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=19344",
+   "fait_en": "A motion from the Greens asked that Charléty become the resident stadium of the Stade Français; the executive responded with a motion proposing a working group on complementarity with Jean-Bouin.",
+   "pourquoi_en": "The battle over the stadium's purpose"
   },
   {
    "id": "25380",
@@ -74,7 +81,9 @@
    "fait": "Le Conseil approuve un contrat d'occupation avec le Paris Université Club (bureaux, club house, tennis) pour une redevance annuelle de 20 000 euros.",
    "pourquoi": "Le PUC ancré durablement dans le stade",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=25380"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=25380",
+   "fait_en": "The Council approved an occupancy contract with the Paris Université Club (offices, clubhouse, tennis) for an annual fee of 20,000 euros.",
+   "pourquoi_en": "The PUC durably anchored in the stadium"
   },
   {
    "id": "74088",
@@ -82,7 +91,9 @@
    "fait": "La Ville attribue 115 000 euros à la Fédération française d'athlétisme pour le DecaNation tenu au stade le 26 août 2006.",
    "pourquoi": "Le retour de l'athlétisme au grand stade, le temps d'un meeting",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=74088"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=74088",
+   "fait_en": "The City granted 115,000 euros to the French Athletics Federation for the DecaNation meeting held at the stadium on 26 August 2006.",
+   "pourquoi_en": "Athletics returns to the big stadium, for the length of a meeting"
   },
   {
    "id": "18119",
@@ -90,7 +101,9 @@
    "fait": "Le Conseil approuve le principe de la réfection de la pelouse ; M. Vuillermoz indique en séance qu'elle date de 1994 et n'a pas été rénovée depuis.",
    "pourquoi": "Refaire la pelouse, sur fond de polémique",
    "vedette": false,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=18119"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=18119",
+   "fait_en": "The Council approved the principle of resurfacing the lawn; Mr Vuillermoz noted in session that it dated from 1994 and had not been renovated since.",
+   "pourquoi_en": "Resurfacing the lawn, against a backdrop of controversy"
   },
   {
    "id": "96512",
@@ -98,7 +111,9 @@
    "fait": "Le Conseil approuve une transaction avec la société Reflex pour régler un litige sur le dispositif de stadiers de la retransmission de la Coupe du monde 2010 au stade.",
    "pourquoi": "Quand le stade devient écran géant",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=96512"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=96512",
+   "fait_en": "The Council approved a settlement with the company Reflex to resolve a dispute over the stewarding arrangements for the broadcast of the 2010 World Cup at the stadium.",
+   "pourquoi_en": "When the stadium becomes a giant screen"
   },
   {
    "id": "176505",
@@ -106,7 +121,9 @@
    "fait": "Le groupe Paris en commun dépose un vœu relatif au fonctionnement du stade et aux nuisances sonores.",
    "pourquoi": "Le stade face à son voisinage, en 2024",
    "vedette": false,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=176505"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=176505",
+   "fait_en": "The Paris en commun group filed a motion on the stadium's operation and noise nuisance.",
+   "pourquoi_en": "The stadium facing its neighbors, in 2024"
   }
  ],
  "montants": [
@@ -178,32 +195,38 @@
   {
    "date": "1948-01-10",
    "extrait": "Sur une partie des terrains expropriés a été édifié le stade « Sébastien- Charléty  … Le stade , bien entretenu, est géré pour le compte de cette dernière par le « Paris-Universitaire Club » Les emplacements contigus au stade ont été débarrassés des ferrailles et des ordures(..",
-   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k9635246b/f3.item"
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k9635246b/f3.item",
+   "extrait_en": "On part of the expropriated land was built the \"Sébastien-Charléty\" stadium … The stadium, well maintained, is managed on behalf of the latter by the \"Paris-Universitaire Club.\" The plots adjoining the stadium have been cleared of scrap metal and rubbish (.."
   },
   {
    "date": "1954-07-01",
    "extrait": "D’autre part, il avait été proposé qu’une partie du parc de Sceaux, qui est pratiquement inemployée, pourrait être utilisée pour l’édification d’un très vaste ensemble sportif réservé à l’Université de Paris, où pourrait être transféré l’actuel stade Charléty  … emplacement de ",
-   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k32013205/f1038.item"
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k32013205/f1038.item",
+   "extrait_en": "Moreover, it had been proposed that part of the Parc de Sceaux, which is practically unused, could be used for building a very large sports complex reserved for the University of Paris, to which the current Stade Charléty could be transferred … location of"
   },
   {
    "date": "1955-07-01",
    "extrait": "N° 772. — Le stade Charléty , boulevard Kellermann, dont la réalisation est très avancée, s’avère une réussite certaine … afin de lui faire préciser ses intentions quant à une éventuelle piscine Charléty . ( Question du 21 mai 1955.) Deuxième réponse de M. le Préfet de la Seine",
-   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k32013257/f95.item"
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k32013257/f95.item",
+   "extrait_en": "No. 772. — Stade Charléty, boulevard Kellermann, whose construction is very advanced, is proving to be a definite success … in order to have him clarify his intentions regarding a possible Charléty swimming pool. (Question of 21 May 1955.) Second reply from the Prefect of the Seine"
   },
   {
    "date": "1963-12-23",
    "extrait": "c'est celui du stade Charlety  … Le stade Charlety , à l'heure actuelle, risque de se dégrader et le Ministère ne délègue pas les crédits suffisants pour son entretien … Malheureusement nous avons appris, lors de la dernière réunion du conseil d'administration du stade Charle",
-   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k97106159/f34.item"
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k97106159/f34.item",
+   "extrait_en": "it is that of Stade Charléty … Stade Charléty, at present, risks deteriorating and the Ministry is not allocating sufficient funds for its upkeep … Unfortunately we learned, at the last meeting of the board of Stade Charlé"
   },
   {
    "date": "1967-01-01",
    "extrait": "13° arr. — 83, boulevard Kellermann. — Pét., stade Charléty , Université de Paris, même adresse (Por. 58-12). — Couverture de la tribune d'honneur du stade Charléty (bâtiment public … ",
-   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k9721812b/f846.item"
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k9721812b/f846.item",
+   "extrait_en": "13th arr. — 83, boulevard Kellermann. — Applicant, Stade Charléty, University of Paris, same address (Por. 58-12). — Covering of the main grandstand of Stade Charléty (public building) … "
   },
   {
    "date": "1968-07-24",
    "extrait": "Beaucoup plus tard, lors de la manifestation en direction du stade Charléty ou lors du cortège de Montparnasse à Austerlitz, il n'y a pas eu de heurts parce qu'il n'y avait pas de police",
-   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k9713272w/f22.item"
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k9713272w/f22.item",
+   "extrait_en": "Much later, during the demonstration heading toward Stade Charléty or during the procession from Montparnasse to Austerlitz, there were no clashes because there was no police presence"
   }
  ],
  "bmo_recit": "Le stade Sébastien-Charléty apparaît dans le Bulletin municipal dès 1948 : édifié sur une partie de terrains expropriés, boulevard Kellermann, il est alors décrit comme bien entretenu et géré, pour le compte de l'Université de Paris, par le Paris-Universitaire Club. Dans les années 1950, son sort fait débat : une proposition de 1954 suggère de le transférer au parc de Sceaux, dans un vaste ensemble sportif réservé à l'Université, afin de libérer son emplacement, tandis qu'en 1955 une question au Conseil décrit sa réalisation comme « très avancée » et « une réussite certaine », tout en demandant au Ministre de l'Éducation nationale de préciser ses intentions sur une éventuelle piscine Charléty. En 1963, un intervenant alerte le Conseil : le stade risque de se dégrader, le Ministère ne déléguant pas les crédits suffisants pour son entretien. L'archive garde ensuite la trace, en 1967, d'une demande de permis de l'Université de Paris pour couvrir la tribune d'honneur, puis, en 1968, d'un débat où un orateur évoque la manifestation en direction du stade Charléty, restée selon lui sans heurts parce qu'il n'y avait pas de police.",
@@ -439,5 +462,7 @@
    "name": "Wikipédia",
    "url": "https://fr.wikipedia.org/"
   }
- }
+ },
+ "synthese_en": "In February 2000, the Conseil de Paris approved a public service delegation agreement for managing the stadium and authorized the Mayor to sign it with the Société d'exploitation du stade Charléty, a delegation extended by one year in 2005. From 2005-2006, the City replaced this delegation with comprehensive technical management contracts and set a schedule of usage fees, while several councillors described in session a large stadium underused since athletics moved to the Stade de France. The same period opened a recurring debate on the site's purpose: a motion from the Greens (2005) asked that Charléty become the resident stadium of the Stade Français, to which the executive responded with a motion proposing a working group on complementarity with Jean-Bouin. From 2004 to 2011, the Council approved a long series of works principles and contracts (bringing the annex pitch up to standard, resurfacing the lawn, changing rooms, guardrails, fire safety, structural inspections) and granted subsidies to federations for events held on site, such as the DecaNation athletics meeting and a rugby sevens tournament. The stadium also hosted a broadcast of the 2010 World Cup, which gave rise to a dispute settled by a transaction in 2011, and in 2022-2024 remained the subject of motions on the state of its lawn and on noise nuisance.",
+ "bmo_recit_en": "Stade Sébastien-Charléty appears in the municipal bulletin as early as 1948: built on part of expropriated land, boulevard Kellermann, it was then described as well maintained and managed, on behalf of the University of Paris, by the Paris-Universitaire Club. In the 1950s, its fate was debated: a 1954 proposal suggested transferring it to the Parc de Sceaux, as part of a vast sports complex reserved for the University, in order to free up its location, while a 1955 question to the Council described its construction as \"very advanced\" and \"a definite success,\" while asking the Minister of National Education to clarify his intentions regarding a possible Charléty swimming pool. In 1963, a speaker alerted the Council: the stadium risked deteriorating, as the Ministry was not allocating sufficient funds for its upkeep. The archive then records, in 1967, a permit application from the University of Paris to cover the grandstand, and then, in 1968, a debate in which a speaker referred to the demonstration heading toward Stade Charléty, which he said remained without clashes because there was no police presence."
 }

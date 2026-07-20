@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T20:11:17.537074+00:00",
+ "generated_at": "2026-07-20T20:28:18.117255+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "maison-de-balzac",
  "name": "Maison de Balzac",
@@ -22,7 +22,8 @@
   "source": {
    "name": "Wikipédia",
    "url": "https://fr.wikipedia.org/"
-  }
+  },
+  "extract_en": "The Maison de Balzac is a pavilion housing a museum dedicated to Honoré de Balzac, located in the 16th arrondissement of Paris. The writer lived in an apartment in this pavilion from 1840 to 1847."
  },
  "stats": {
   "n_delibs": 309,
@@ -50,7 +51,9 @@
    "fait": "Le Conseil attribue 10 000 F à la Société des amis d'Honoré de Balzac et de la Maison de Balzac, domiciliée à l'adresse du musée.",
    "pourquoi": "premier soutien municipal à la société d'amis",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=1372"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=1372",
+   "fait_en": "The Council granted 10,000 francs to the Société des amis d'Honoré de Balzac et de la Maison de Balzac, based at the museum's address.",
+   "pourquoi_en": "first municipal support for the friends' society"
   },
   {
    "id": "31125",
@@ -58,7 +61,9 @@
    "fait": "Le Maire est autorisé à signer une convention d'objectifs avec la Société des amis d'Honoré de Balzac et de la maison de Balzac.",
    "pourquoi": "cadre conventionnel avec la société d'amis",
    "vedette": false,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=31125"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=31125",
+   "fait_en": "The Mayor was authorized to sign an objectives agreement with the Société des amis d'Honoré de Balzac et de la maison de Balzac.",
+   "pourquoi_en": "a contractual framework with the friends' society"
   },
   {
    "id": "28266",
@@ -66,7 +71,9 @@
    "fait": "Le Maire est autorisé à acquérir un manuscrit de Balzac pour la Maison de Balzac, pour 350 000 F.",
    "pourquoi": "la Ville enrichit les collections du musée",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=28266"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=28266",
+   "fait_en": "The Mayor was authorized to acquire a Balzac manuscript for the Maison de Balzac, for 350,000 francs.",
+   "pourquoi_en": "the City enriches the museum's collections"
   },
   {
    "id": "30554",
@@ -74,7 +81,9 @@
    "fait": "Le Conseil approuve le principe de fouilles archéologiques préventives dans le jardin de la Maison de Balzac et autorise deux conventions.",
    "pourquoi": "des fouilles préventives dans le jardin",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=30554"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=30554",
+   "fait_en": "The Council approved the principle of preventive archaeological excavations in the Maison de Balzac's garden and authorized two agreements.",
+   "pourquoi_en": "preventive excavations in the garden"
   },
   {
    "id": "37399",
@@ -82,7 +91,9 @@
    "fait": "Le Maire est autorisé à acquérir pour le musée l'édition de 1826 de La physiologie du mariage imprimée par Balzac, pour 130 000 euros.",
    "pourquoi": "une édition de 1826 imprimée par Balzac",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=37399"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=37399",
+   "fait_en": "The Mayor was authorized to acquire for the museum the 1826 edition of La Physiologie du mariage printed by Balzac, for €130,000.",
+   "pourquoi_en": "an 1826 edition printed by Balzac"
   },
   {
    "id": "102024",
@@ -90,7 +101,9 @@
    "fait": "Le groupe UMPPA dépose un vœu demandant au Maire de renoncer à vendre les maisons jouxtant le musée, jugées nécessaires à son extension.",
    "pourquoi": "l'extension du musée devient un enjeu politique",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=102024"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=102024",
+   "fait_en": "The UMPPA group filed a motion asking the Mayor to abandon the sale of the houses adjoining the museum, deemed necessary for its expansion.",
+   "pourquoi_en": "the museum's expansion becomes a political issue"
   },
   {
    "id": "104651",
@@ -98,7 +111,9 @@
    "fait": "Sur le projet de cession de l'ensemble mitoyen 43-45, rue Raynouard, MM. Alphand et Dreyfuss déposent un vœu pour la sauvegarde de la Maison de Balzac.",
    "pourquoi": "vendre les maisons voisines fâche le 16e",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=104651"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=104651",
+   "fait_en": "On the project to sell the adjoining property at 43-45 rue Raynouard, Mr Alphand and Mr Dreyfuss filed a motion for the safeguarding of the Maison de Balzac.",
+   "pourquoi_en": "selling the neighboring houses angers the 16th arrondissement"
   }
  ],
  "montants": [
@@ -142,22 +157,26 @@
   {
    "date": "1921-08-12",
    "extrait": "rue Raynouard (n° 1 du plan), mais qu'elle possède la totalité du n° 147, dans lequel se trouvent la maison et le jardin de Balzac",
-   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k6293783s/f10.item"
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k6293783s/f10.item",
+   "extrait_en": "rue Raynouard (no. 1 on the plan), but that it owns the entirety of no. 147, in which the house and garden of Balzac are located"
   },
   {
    "date": "1934-07-20",
    "extrait": "acquisition de l'aile de la maison de Balzac occupée par M. Drugeon (orateurs : MM. Minot, René Fayssat, Taittinger, Louis Baillot, Victor Bucaille, Griotteray, le Préfet de la Seine et le Directeur des beaux-arts … ",
-   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k9710433j/f107.item"
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k9710433j/f107.item",
+   "extrait_en": "acquisition of the wing of the Maison de Balzac occupied by Mr Drugeon (speakers: Mr Minot, René Fayssat, Taittinger, Louis Baillot, Victor Bucaille, Griotteray, the Prefect of the Seine, and the Director of Fine Arts … "
   },
   {
    "date": "1960-01-06",
    "extrait": "Subvention à la maison de Balzac , 7.500 francs",
-   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k6441260j/f29.item"
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k6441260j/f29.item",
+   "extrait_en": "Grant to the Maison de Balzac, 7,500 francs"
   },
   {
    "date": "1972-10-06",
    "extrait": "81. — Programme d'équipement pour 1967. — Prise en consideration de projets de remise en état de l'aile gauche de la Maison de Balzac et d'aménagement des salles du rez-de-chaussée haut au Mu",
-   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k9707851r/f35.item"
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k9707851r/f35.item",
+   "extrait_en": "81. — Equipment programme for 1967. — Consideration of projects to restore the left wing of the Maison de Balzac and to fit out the upper ground-floor rooms at the Mu"
   }
  ],
  "bmo_recit": "Dans le Bulletin municipal, la maison apparaît d'abord comme une emprise foncière : en 1921, il est relevé que la Ville possède en totalité le numéro de la rue Raynouard où se trouvent la maison et le jardin de Balzac. En 1934, l'acquisition de l'aile occupée par M. Drugeon vient en séance, débattue par plusieurs orateurs, le Préfet de la Seine et le Directeur des beaux-arts, sans que l'issue en soit consignée. Le lieu revient ensuite par le budget : une subvention de 7.500 francs à la maison de Balzac en 1960, puis, dans un numéro de 1972 et au titre d'un programme d'équipement pour 1967, la prise en considération de projets de remise en état de l'aile gauche et d'aménagement des salles du rez-de-chaussée haut — des intentions actées en séance, non des travaux constatés. Ce sont là quelques passages ponctuels, étalés sur un demi-siècle : une propriété établie, une aile dont l'acquisition se discute, puis l'entretien et la subvention.",
@@ -191,5 +210,7 @@
    "name": "Wikipédia",
    "url": "https://fr.wikipedia.org/"
   }
- }
+ },
+ "synthese_en": "Between 1995 and 2004, Conseil de Paris repeatedly supported the Maison de Balzac, a municipal museum housed at 47 rue Raynouard (16th arrondissement), in the house where the writer lived. It subsidized the museum's friends' society (10,000 francs in 1995, 30,000 francs in 1998), authorized the Mayor to sign an objectives agreement with it in 2000, then to acquire two items for its collections — a Balzac manuscript (350,000 francs, 2000) and the 1826 edition of La Physiologie du mariage printed by Balzac (€130,000, 2004). In 2001, it approved the principle of preventive archaeological excavations in the museum's garden. Starting in 2011, the City's project to sell the houses neighboring the museum became a point of conflict: opposition councillors from the 16th arrondissement (the UMPPA group in 2011, then Mr Alphand and Mr Dreyfuss in 2012) filed motions asking the Mayor to abandon these sales, on the grounds that these houses would be necessary for the Maison de Balzac's expansion. These texts are motions — requests addressed to the Mayor — not sale decisions.",
+ "bmo_recit_en": "In the municipal bulletin, the house first appears as a landed property: in 1921, it is noted that the City owns in full the rue Raynouard address where Balzac's house and garden are located. In 1934, the acquisition of the wing occupied by Mr Drugeon comes before the Council, debated by several speakers, the Prefect of the Seine, and the Director of Fine Arts, without the outcome being recorded. The place then reappears through the budget: a grant of 7,500 francs to the Maison de Balzac in 1960, then, in a 1972 issue and under an equipment programme for 1967, the consideration of projects to restore the left wing and fit out the upper ground-floor rooms — intentions recorded in session, not works observed. These are a few scattered passages, spread over half a century: an established property, a wing whose acquisition is under discussion, then upkeep and grants."
 }

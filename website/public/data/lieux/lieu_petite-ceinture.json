@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T20:11:17.537074+00:00",
+ "generated_at": "2026-07-20T20:28:18.117255+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "petite-ceinture",
  "name": "Petite Ceinture",
@@ -22,7 +22,8 @@
   "source": {
    "name": "Wikipédia",
    "url": "https://fr.wikipedia.org/"
-  }
+  },
+  "extract_en": "The Petite Ceinture line of Paris, commonly known as the Petite Ceinture, is a 32-kilometer double-track railway line encircling Paris inside the boulevards des Maréchaux. Although it is still part of the national rail network, it is today unused over most of its route."
  },
  "stats": {
   "n_delibs": 642,
@@ -47,12 +48,14 @@
   {
    "beneficiaire": "HALAGE",
    "montant_total": 358108.0,
-   "preuve": "Objet : « Chantier d¿insertion entretien de la Petite Ceinture ferroviaire PC18, PC19, PC20) » — nomme explicitement le lieu et ses tronçons (18e, 19e, 20e) ; SIRET 40116107000032. Corroboré par la délibération 2023 DEVE 20 (Conseil de Paris, juin 2023) : « Subventions (410.676 euros) à 5 associations pour des projets d'insertion professionnelle par l'entretien de la petite ceinture ferroviaire ». L'association réalise un chantier d'insertion SUR le site sous convention, elle ne gère pas la Petite Ceinture."
+   "preuve": "Objet : « Chantier d¿insertion entretien de la Petite Ceinture ferroviaire PC18, PC19, PC20) » — nomme explicitement le lieu et ses tronçons (18e, 19e, 20e) ; SIRET 40116107000032. Corroboré par la délibération 2023 DEVE 20 (Conseil de Paris, juin 2023) : « Subventions (410.676 euros) à 5 associations pour des projets d'insertion professionnelle par l'entretien de la petite ceinture ferroviaire ». L'association réalise un chantier d'insertion SUR le site sous convention, elle ne gère pas la Petite Ceinture.",
+   "preuve_en": "Purpose: \"Integration project maintaining the Petite Ceinture railway (PC18, PC19, PC20)\" — explicitly names the place and its sections (18th, 19th, 20th arrondissements); SIRET 40116107000032. Corroborated by deliberation 2023 DEVE 20 (Conseil de Paris, June 2023): \"Grants (410,676 euros) to 5 associations for professional integration projects through the maintenance of the Petite Ceinture railway.\" The association carries out an integration project ON the site under an agreement; it does not manage the Petite Ceinture."
   },
   {
    "beneficiaire": "INTERFACE FORMATION",
    "montant_total": 96300.0,
-   "preuve": "Objet : « Chantier d'insertion Petite ceinture ferroviaire 12e et 20e association Interface Formation-Fonctionnement » — nomme explicitement le lieu et les tronçons (12e et 20e) ; SIRET 40218568000020. Corroboré par la délibération 2023 DEVE 20 (Conseil de Paris, juin 2023) sur les chantiers d'insertion d'entretien de la petite ceinture ferroviaire. Activité d'entretien sur le lieu, pas de gestion du site."
+   "preuve": "Objet : « Chantier d'insertion Petite ceinture ferroviaire 12e et 20e association Interface Formation-Fonctionnement » — nomme explicitement le lieu et les tronçons (12e et 20e) ; SIRET 40218568000020. Corroboré par la délibération 2023 DEVE 20 (Conseil de Paris, juin 2023) sur les chantiers d'insertion d'entretien de la petite ceinture ferroviaire. Activité d'entretien sur le lieu, pas de gestion du site.",
+   "preuve_en": "Purpose: \"Integration project, Petite Ceinture railway, 12th and 20th arrondissements, association Interface Formation - Operations\" — explicitly names the place and its sections (12th and 20th arrondissements); SIRET 40218568000020. Corroborated by deliberation 2023 DEVE 20 (Conseil de Paris, June 2023) on integration-project maintenance work on the Petite Ceinture railway. Maintenance activity at the site, not management of the site."
   }
  ],
  "kpi_montant": null,
@@ -64,7 +67,9 @@
    "fait": "Vœu accompagnant le protocole Ville-RFF conclu pour cinq ans : le Conseil constate qu'aucun projet ferroviaire n'est avéré et demande le lancement rapide des sentiers, jardins et usages ludiques prévus sur les surlargeurs et la plateforme.",
    "pourquoi": "Le cadre contractuel qui rend la reconversion possible",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=89213"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=89213",
+   "fait_en": "A motion accompanying the City-RFF protocol concluded for five years: the Council noted that no railway project had been confirmed and called for the swift launch of the paths, gardens and recreational uses planned on the extra-width strips and the track bed.",
+   "pourquoi_en": "The contractual framework that makes reconversion possible"
   },
   {
    "id": "100826",
@@ -72,7 +77,9 @@
    "fait": "Signature avec RFF d'une convention d'occupation temporaire sur le tronçon Balard-Olivier de Serres (15e) et prorogation de la convention-cadre ; le maire du 15e rappelle une concertation ayant réuni 300 riverains et un retard sur le calendrier.",
    "pourquoi": "Premier tronçon conventionné puis aménagé",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=100826"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=100826",
+   "fait_en": "Signing with RFF of a temporary occupancy agreement on the Balard-Olivier de Serres stretch (15th arrondissement) and extension of the framework agreement; the mayor of the 15th arrondissement recalled a consultation process that had brought together 300 residents, and a delay in the schedule.",
+   "pourquoi_en": "First section placed under agreement, then developed"
   },
   {
    "id": "109566",
@@ -80,7 +87,9 @@
    "fait": "Question d'actualité sur la conférence de consensus votée un an plus tôt et toujours pas lancée : 80 000 euros ont été inscrits au budget supplémentaire pour une assistance à maîtrise d'ouvrage, après une projection ramenée de 150 000 euros.",
    "pourquoi": "Ce que coûte, et retarde, la concertation",
    "vedette": false,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=109566"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=109566",
+   "fait_en": "A topical question on the consensus conference, adopted a year earlier and still not launched: 80,000 euros had been entered in the supplementary budget for project owner assistance, after a projection had been brought down from 150,000 euros.",
+   "pourquoi_en": "What consultation costs, and what delays it"
   },
   {
    "id": "116504",
@@ -88,7 +97,9 @@
    "fait": "Avenant au marché de travaux du 15e pour des panneaux pédagogiques et une liaison vers un court de tennis ; le débat porte sur les tags, les jets de cailloux vers les riverains, l'expérimentation sans poubelle et l'heure de fermeture le week-end.",
    "pourquoi": "La promenade ouverte, ses usages et ses conflits",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=116504"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=116504",
+   "fait_en": "An amendment to the 15th arrondissement's works contract for educational panels and a link to a tennis court; the debate covered graffiti, stones thrown at residents, the no-bin experiment, and the weekend closing time.",
+   "pourquoi_en": "The promenade open, its uses and its conflicts"
   },
   {
    "id": "140877",
@@ -96,7 +107,9 @@
    "fait": "Convention de transfert de gestion de la PC 17 : la Ville s'engage à assumer l'entretien, la gestion courante et la surveillance de plus de 16 000 m², ce que le maire du 17e juge sans garantie de moyens.",
    "pourquoi": "La Ville devient gestionnaire, pas seulement occupante",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=140877"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=140877",
+   "fait_en": "A management-transfer agreement for PC 17: the City committed to taking on the maintenance, day-to-day management and surveillance of more than 16,000 m², which the mayor of the 17th arrondissement judged to lack any guarantee of resources.",
+   "pourquoi_en": "The City becomes manager, not just occupant"
   },
   {
    "id": "146651",
@@ -104,7 +117,9 @@
    "fait": "Vœu déposé après le retrait d'un projet de société par actions simplifiée Ville-SNCF sur le devenir des bâtiments de la Petite Ceinture, qualifié de « machine à cash » et critiqué pour sa gouvernance ; avis défavorable de l'Exécutif.",
    "pourquoi": "Le conflit sur qui décide du patrimoine bâti",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=146651"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=146651",
+   "fait_en": "A motion filed after the withdrawal of a plan for a City-SNCF simplified joint-stock company (SAS) on the future of the Petite Ceinture's buildings, which had been called a \"cash machine\" and criticized for its governance; unfavorable opinion from the executive.",
+   "pourquoi_en": "The conflict over who decides on the built heritage"
   },
   {
    "id": "152497",
@@ -112,7 +127,9 @@
    "fait": "Refus d'autoriser les chiens tenus en laisse sur la coulée verte Pereire, ouverte en août : l'adjointe assume le choix de ne pas multiplier poubelles, cendriers et bancs pour préserver le caractère du site.",
    "pourquoi": "Les règles d'usage d'un site volontairement nu",
    "vedette": false,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=152497"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=152497",
+   "fait_en": "Refusal to allow leashed dogs on the coulée verte Pereire, opened in August: the deputy mayor stood by the choice not to add more bins, ashtrays and benches, in order to preserve the site's character.",
+   "pourquoi_en": "The rules of use for a deliberately bare site"
   },
   {
    "id": "179740",
@@ -120,7 +137,9 @@
    "fait": "Subventions aux cinq associations d'insertion qui entretiennent la ligne et vœu communiste sur le renouvellement de la convention-cadre de 2015, arrivée à son terme ; la Ville annonce 11,5 kilomètres accessibles en 2026 dans 9 arrondissements.",
    "pourquoi": "L'échéance contractuelle et le bilan chiffré",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=179740"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=179740",
+   "fait_en": "Grants to the five integration associations that maintain the line, and a Communist motion on renewing the 2015 framework agreement, which had reached its term; the City announced 11.5 kilometers accessible in 2026 across 9 arrondissements.",
+   "pourquoi_en": "The contractual deadline and the figures in the record"
   }
  ],
  "montants": [
@@ -192,17 +211,20 @@
   {
    "date": "1894-07-07",
    "extrait": "CONTRIBUTION SUPPLÉMENTAIRE DE LA VILLE DANS LA SUPPRESSION DES PASSAGES A NIVEAU DU CHEMIN DE FER DE CEINTURE ENTRE LE TUNNEL DE CHARONNE ET'LA SEINE. v M. Vauthier. — Le Conseil a déci",
-   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k6452799q/f9.item"
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k6452799q/f9.item",
+   "extrait_en": "ADDITIONAL CONTRIBUTION FROM THE CITY TOWARD THE REMOVAL OF LEVEL CROSSINGS ON THE CHEMIN DE FER DE CEINTURE BETWEEN THE CHARONNE TUNNEL AND THE SEINE. Mr Vauthier. — The Council has deci"
   },
   {
    "date": "1923-03-17",
    "extrait": "154. — Couverture du chemin de fer de Ceinture , rues Sorbier et de la Bidassoa, en vue de l'aménagement d'un Square … de francs pour la couverture du chemin</sp",
-   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k6430871t/f25.item"
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k6430871t/f25.item",
+   "extrait_en": "154. — Covering of the Chemin de fer de Ceinture, rues Sorbier and de la Bidassoa, with a view to laying out a Square … francs for covering the railway"
   },
   {
    "date": "1932-04-14",
    "extrait": "Lajarrige. — Les rues de Cambrai et de Flandre sont traversées par des ponts sur lesquels passe le chemin de fer de Ceinture  … honneur d'attirer l'attention de l'Administration &#",
-   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k6435687j/f30.item"
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k6435687j/f30.item",
+   "extrait_en": "Lajarrige. — Rues de Cambrai and de Flandre are crossed by bridges over which the Chemin de fer de Ceinture runs … honor of drawing the Administration's attention"
   }
  ],
  "bmo_recit": "Dans le Bulletin municipal officiel, le chemin de fer de Ceinture apparaît surtout par ses points de contact avec la voirie. En juillet 1894, le Conseil examine une contribution supplémentaire de la Ville dans la suppression des passages à niveau de la ligne, entre le tunnel de Charonne et la Seine ; M. Vauthier y prend la parole. En mars 1923, une délibération porte sur la couverture de la ligne, rues Sorbier et de la Bidassoa, en vue de l'aménagement d'un square, pour une somme en francs. En avril 1932, M. Lajarrige attire l'attention de l'Administration sur les ponts qui font passer la ligne au-dessus des rues de Cambrai et de Flandre. Sur près de quarante ans, la ligne revient ainsi en séance moins pour son trafic que pour ses croisements avec la rue : passages à niveau, couverture, ponts.",
@@ -512,5 +534,7 @@
    "name": "Wikipédia",
    "url": "https://fr.wikipedia.org/"
   }
- }
+ },
+ "synthese_en": "The oldest documents in the corpus (2005) show the Conseil de Paris asking RFF and SNCF to respond to its proposals for landscaping work on the Petite Ceinture, whose upkeep was judged inadequate; a City-RFF framework protocol was signed in June 2006 for five years, providing for reversible developments for recreational and leisure purposes. The first sections were placed under agreement and then opened in the 15th arrondissement (a temporary occupancy agreement for the Balard-Olivier de Serres stretch in 2011, the promenade having been open for three months at the time of the November 2013 debate), while the consensus conference, adopted unanimously in November 2011, was allocated 80,000 euros in the supplementary budget, after a projection had been brought down from 150,000 euros. Starting in 2018, the City took on, by agreement, the maintenance, management and surveillance of sections (PC 17), and recurring debates concerned safety, accessibility for people with reduced mobility, fencing, the absence of benches, bins and ashtrays, and the banning of dogs, requested in 2019 then again in 2023 and refused both times. The amounts voted mostly concern integration-program grants for maintenance (18,635 euros in 2016, 31,217 euros in 2019, 410,676 euros in 2023) and external co-financing: the Île-de-France Region in 2017, the Métropole du Grand Paris and the Nature 2050 fund for 500,000 euros in 2023, the Fonds vert (green fund) and the Agence de l'Eau Seine-Normandie in 2024, with the buyback from SNCF of the plot for the future Bois de Charonne put at 11.5 million euros by the mayor of the 20th arrondissement in session. The principle of railway reversibility, written into the 2015 framework protocol, was disputed in both directions — the Communist group demanding that the tracks not be removed, the Union Capitale group demanding that the clause be lifted — and this framework agreement reached its term in 2025, as the City announced 11.5 kilometers accessible to the public in 2026 across 9 arrondissements.",
+ "bmo_recit_en": "In the official municipal bulletin, the Chemin de fer de Ceinture appears mainly through its points of contact with the road network. In July 1894, the Council examined an additional contribution from the City toward removing the line's level crossings, between the Charonne tunnel and the Seine; Mr Vauthier spoke on the matter. In March 1923, a deliberation concerned covering the line on rues Sorbier and de la Bidassoa, with a view to laying out a square, for a sum in francs. In April 1932, Mr Lajarrige drew the Administration's attention to the bridges carrying the line over rues de Cambrai and de Flandre. Over nearly forty years, the line thus came up in session less for its traffic than for its crossings with the street: level crossings, covering, bridges."
 }

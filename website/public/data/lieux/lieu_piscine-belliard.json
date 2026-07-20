@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T20:11:17.537074+00:00",
+ "generated_at": "2026-07-20T20:28:18.117255+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "piscine-belliard",
  "name": "Piscine Belliard",
@@ -48,7 +48,9 @@
    "fait": "Le Conseil approuve le principe de l'aménagement du mail Leibniz-Belliard et de la rue Belliard et autorise le Maire à signer le marché de travaux.",
    "pourquoi": "premier aménagement d'espace public voté sur la rue",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=88125"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=88125",
+   "fait_en": "The Council approved the principle of developing the Leibniz-Belliard mall and Rue Belliard and authorized the Mayor to sign the works contract.",
+   "pourquoi_en": "First public-space development voted on the street"
   },
   {
    "id": "24873",
@@ -56,7 +58,9 @@
    "fait": "Un vœu adopté demande une étude de faisabilité pour reconvertir en local commercial un ancien édicule E.D.F. du mail Belliard.",
    "pourquoi": "que faire d'un vieil édicule EDF",
    "vedette": false,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=24873"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=24873",
+   "fait_en": "An adopted motion requested a feasibility study to convert a former E.D.F. utility kiosk on the Belliard mall into commercial premises.",
+   "pourquoi_en": "What to do with an old EDF kiosk"
   },
   {
    "id": "74035",
@@ -64,7 +68,9 @@
    "fait": "Le Conseil approuve le principe des travaux de modernisation des menuiseries de l'école élémentaire du 129, rue Belliard.",
    "pourquoi": "moderniser les fenêtres de l'école voisine",
    "vedette": false,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=74035"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=74035",
+   "fait_en": "The Council approved the principle of modernizing the window frames of the elementary school at 129 Rue Belliard.",
+   "pourquoi_en": "Modernizing the windows of the neighboring school"
   },
   {
    "id": "134505",
@@ -72,7 +78,9 @@
    "fait": "Au titre du Plan « Nager à Paris », le Conseil se prononce sur la poursuite de l'opération d'aménagement d'une piscine aux 133 et 133 bis, rue Belliard, malgré des inquiétudes d'élus sur l'ensoleillement et le sous-sol gypseux.",
    "pourquoi": "l'enquête publique passée, le Conseil se prononce pour la poursuite du projet",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=134505"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=134505",
+   "fait_en": "Under the 'Nager à Paris' plan, the Council ruled on continuing the development of a swimming pool at 133 and 133 bis Rue Belliard, despite councillors' concerns about sunlight and the gypsum-bearing subsoil.",
+   "pourquoi_en": "With the public inquiry completed, the Council rules to proceed with the project"
   },
   {
    "id": "136838",
@@ -80,7 +88,9 @@
    "fait": "Un vœu Les Républicains rapporte des campements et nuisances rue Belliard ; le premier adjoint répond que des maraudes hebdomadaires interviennent sur le secteur.",
    "pourquoi": "tensions de voisinage sur la rue",
    "vedette": false,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=136838"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=136838",
+   "fait_en": "A motion from Les Républicains reported encampments and disturbances on Rue Belliard; the first deputy mayor replied that weekly outreach patrols were operating in the area.",
+   "pourquoi_en": "Neighborhood tensions on the street"
   },
   {
    "id": "175648",
@@ -88,7 +98,9 @@
    "fait": "Un vœu écologiste sur le projet de la R.A.T.P. au dépôt Belliard (≈ 25 000 m², 450 logements) demande d'en réduire la densité ; il reçoit un avis favorable de l'adjoint J.-L. MISSIKA.",
    "pourquoi": "alerte sur la densité du dépôt voisin",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=175648"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=175648",
+   "fait_en": "An ecologist motion on the R.A.T.P.'s project at the Belliard depot (≈25,000 m², 450 housing units) called for reducing its density; it received a favorable opinion from deputy mayor J.-L. MISSIKA.",
+   "pourquoi_en": "Warning about the density of the neighboring depot"
   },
   {
    "id": "156476",
@@ -96,7 +108,9 @@
    "fait": "Sur l'étude d'impact de la « Halte urbaine Belliard », quatre amendements écologistes (jardins, espaces verts, E.S.S.) sont adoptés ; le groupe Changer Paris annonce voter contre le projet.",
    "pourquoi": "béton contre nature, le vote clive",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=156476"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=156476",
+   "fait_en": "On the impact study of the 'Halte urbaine Belliard', four ecologist amendments (gardens, green spaces, social and solidarity economy) were adopted; the Changer Paris group announced it would vote against the project.",
+   "pourquoi_en": "Concrete versus nature, the vote splits the Council"
   },
   {
    "id": "181254",
@@ -104,7 +118,9 @@
    "fait": "Le Conseil adopte l'attribution de la dénomination « Solita Salgado » à la piscine Belliard (18e).",
    "pourquoi": "la piscine reçoit enfin un nom",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=181254"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=181254",
+   "fait_en": "The Council adopted the naming of the Belliard swimming pool (18th arrondissement) as 'Solita Salgado'.",
+   "pourquoi_en": "The swimming pool finally gets a name"
   }
  ],
  "montants": [],
@@ -155,5 +171,6 @@
    "name": "Wikipédia",
    "url": "https://fr.wikipedia.org/"
   }
- }
+ },
+ "synthese_en": "On the long Rue Belliard, in the 18th arrondissement, public space first comes before the Council: in 2002, it approved the principle of developing the Leibniz-Belliard mall and Rue Belliard, between Rue du Poteau and Rue Agutte, and authorized the Mayor to sign the works contract. In December 2016, under the 'Nager à Paris' plan, it ruled on continuing the development of a swimming pool at 133 and 133 bis Rue Belliard, a project about which councillors raised, during the session, concerns over the sunlight reaching neighboring schools and the gypsum-bearing subsoil. At the same time, the future of the nearby bus depot stirred up the neighborhood: in 2019 and then in 2020, councillors warned about the density of the 'Halte urbaine Belliard' real-estate project carried by the R.A.T.P. (approximately 25,000 m² for 450 housing units) and had amendments adopted on green spaces and opening the gardens to the public. In June 2025, the Council adopted the naming of the Belliard swimming pool as 'Solita Salgado'. Most of the deliberations in which the word 'Belliard' appears, however, concern other matters — deputy mayor David Belliard, the Mission locale Belliard, or separate addresses on the same street — unrelated to the sports facility."
 }

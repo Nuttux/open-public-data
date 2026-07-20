@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T20:11:17.537074+00:00",
+ "generated_at": "2026-07-20T20:28:18.117255+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "maison-de-la-poesie",
  "name": "Maison de la Poésie",
@@ -101,7 +101,9 @@
    "fait": "Le Conseil autorise le Maire à signer une convention mettant un fonctionnaire titulaire de la Commune de Paris à disposition de l'association.",
    "pourquoi": "un agent de la Ville mis à disposition de la maison",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=85479"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=85479",
+   "fait_en": "The Council authorized the Mayor to sign an agreement placing a permanent civil servant of the City of Paris at the association's disposal.",
+   "pourquoi_en": "a City employee made available to the venue"
   },
   {
    "id": "71606",
@@ -109,7 +111,9 @@
    "fait": "Trois compagnies programmées à la Maison de la Poésie sont subventionnées, dont l'Athanor (20 000 €) pour 85 représentations de spectacles autour de Victor Hugo.",
    "pourquoi": "la scène accueille 85 représentations Hugo",
    "vedette": false,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=71606"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=71606",
+   "fait_en": "Three companies scheduled to perform at the Maison de la Poésie received grants, including l'Athanor (€20,000) for 85 performances of shows about Victor Hugo.",
+   "pourquoi_en": "the venue hosts 85 Hugo performances"
   },
   {
    "id": "9016",
@@ -117,7 +121,9 @@
    "fait": "Lors du vote de la subvention de 920 000 €, le maire du 3e (P. Aidenbaum) juge le lieu trop peu ouvert au public ; l'exécutif soutient son vœu et écarte l'amendement relevant la somme.",
    "pourquoi": "l'établissement jugé trop peu ouvert",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=9016"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=9016",
+   "fait_en": "During the vote on the €920,000 grant, the mayor of the 3rd arrondissement (P. Aidenbaum) judged the venue insufficiently open to the public; the executive backed his motion and rejected the amendment to raise the amount.",
+   "pourquoi_en": "the venue judged insufficiently open"
   },
   {
    "id": "10505",
@@ -125,7 +131,9 @@
    "fait": "Le directeur historique Michel de Maulne (depuis 1982) quitte la direction, remplacé par Claude Guerre élu en février ; l'opposition s'alarme d'une hausse de 130 000 € des charges de personnel.",
    "pourquoi": "passage de témoin à la direction, tensions",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=10505"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=10505",
+   "fait_en": "Long-time director Michel de Maulne (in post since 1982) left the leadership, replaced by Claude Guerre, elected in February; the opposition raised alarm over a €130,000 rise in staff costs.",
+   "pourquoi_en": "a change of leadership, and tensions"
   },
   {
    "id": "53115",
@@ -133,7 +141,9 @@
    "fait": "Le Conseil autorise une convention d'occupation d'un an du Théâtre Molière – Maison de la Poésie ; la valeur locative du lieu est estimée à 46 900 € par la direction de l'urbanisme.",
    "pourquoi": "la Ville chiffre l'occupation des murs",
    "vedette": false,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=53115"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=53115",
+   "fait_en": "The Council authorized a one-year occupancy agreement for the Théâtre Molière – Maison de la Poésie; the venue's rental value is estimated at €46,900 by the planning department.",
+   "pourquoi_en": "the City puts a figure on occupancy of the premises"
   },
   {
    "id": "39906",
@@ -141,7 +151,9 @@
    "fait": "Le Conseil autorise un avenant portant la subvention de fonctionnement 2010 de 460 000 € à 940 000 €, soit 480 000 € de dépense complémentaire.",
    "pourquoi": "le soutien annuel atteint 940 000 €",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=39906"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=39906",
+   "fait_en": "The Council authorized an amendment raising the 2010 operating grant from €460,000 to €940,000, i.e. an additional expenditure of €480,000.",
+   "pourquoi_en": "annual support reaches €940,000"
   },
   {
    "id": "152587",
@@ -149,7 +161,9 @@
    "fait": "Le Conseil vote une subvention d'équipement de 8 000 € ; en séance, une administratrice indique que l'ex-ministre Françoise Nyssen a succédé à Bernard Comment à la présidence du conseil d'administration.",
    "pourquoi": "une ex-ministre à la présidence",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=152587"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=152587",
+   "fait_en": "The Council voted an equipment grant of €8,000; in session, a board member noted that former minister Françoise Nyssen had succeeded Bernard Comment as chair of the board of directors.",
+   "pourquoi_en": "a former minister becomes chair"
   },
   {
    "id": "184371",
@@ -157,7 +171,9 @@
    "fait": "Le Conseil vote une subvention de 776 000 € à l'association, assortie d'un premier avenant à la convention.",
    "pourquoi": "dernier soutien en date : 776 000 €",
    "vedette": false,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=184371"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=184371",
+   "fait_en": "The Council voted a €776,000 grant to the association, together with a first amendment to the agreement.",
+   "pourquoi_en": "the latest support to date: €776,000"
   }
  ],
  "montants": [
@@ -376,5 +392,6 @@
    "name": "Wikipédia",
    "url": "https://fr.wikipedia.org/"
   }
- }
+ },
+ "synthese_en": "The City of Paris has long supported the Maison de la Poésie association, housed at the Théâtre Molière, 161 rue Saint-Martin (3rd arrondissement): an agreement making a civil servant available in 1999, then annual operating agreements (€976,000 in 2002, €950,000 in 2003, then €920,000 from 2004 to 2009). In the mid-2000s, these grants fed recurring debates at the Council, where the opposition and the mayor of the 3rd arrondissement questioned staff costs, a chronically mentioned deficit, and the extent to which the venue was open to the Paris public. Governance changed several times: the departure of director Michel de Maulne (who had led the venue since 1982) and the arrival of Claude Guerre in 2006, then the appointment of former minister Françoise Nyssen as chair, announced in session in 2019. In parallel, the City formalized occupancy of the premises through one-year agreements (rental value estimated at €46,900) and funded the venue's equipment (€20,000 on several occasions, €8,000 in 2019, €150,000 in investment in 2021). The operating grant rose back up to €940,000 in 2010 and, more recently, an amendment came with a €776,000 grant in 2026."
 }

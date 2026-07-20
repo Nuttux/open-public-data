@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T20:11:17.537074+00:00",
+ "generated_at": "2026-07-20T20:28:18.117255+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "bois-de-vincennes",
  "name": "Bois de Vincennes",
@@ -46,7 +46,8 @@
   {
    "beneficiaire": "CABANES",
    "montant_total": 5000.0,
-   "preuve": "Objet de la subvention (verbatim) : « Mois d’août de la culture 2020 - Concerts, lectures musicales et art dans le bois de Vincennes » — aide à une activité culturelle ponctuelle DANS le bois ; rien dans l’objet n’indique une mission de gestion du site (le bois est géré en régie par la DEVE, cf. délibérations « gestion globale du bois de Vincennes », Conseil de Paris mai 2022)."
+   "preuve": "Objet de la subvention (verbatim) : « Mois d’août de la culture 2020 - Concerts, lectures musicales et art dans le bois de Vincennes » — aide à une activité culturelle ponctuelle DANS le bois ; rien dans l’objet n’indique une mission de gestion du site (le bois est géré en régie par la DEVE, cf. délibérations « gestion globale du bois de Vincennes », Conseil de Paris mai 2022).",
+   "preuve_en": "Purpose of the grant (verbatim): \"Mois d'août de la culture 2020 - Concerts, musical readings and art in the Bois de Vincennes\" — support for a one-off cultural activity held INSIDE the woodland; nothing in the purpose indicates a role in managing the site (the woodland is managed directly by the DEVE, see the deliberations on \"overall management of the Bois de Vincennes\", Conseil de Paris, May 2022)."
   }
  ],
  "kpi_montant": null,
@@ -58,7 +59,9 @@
    "fait": "Un voeu affirme l'opposition de la Ville a la reduction de 10,3 hectares d'espace boise classe pour le doublement des autoroutes A4/A86.",
    "pourquoi": "La Ville refuse d'amputer le bois pour l'autoroute",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=92878"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=92878",
+   "fait_en": "A motion affirmed the City's opposition to a 10.3-hectare reduction of classified woodland for the doubling of the A4/A86 motorways.",
+   "pourquoi_en": "The City refuses to cut into the woodland for the motorway"
   },
   {
    "id": "90056",
@@ -66,7 +69,9 @@
    "fait": "La convention DF 52 porte la redevance annuelle du Chalet de la Porte Jaune a 627 750 euros ; un voeu demande le reamenagement cyclable du site.",
    "pourquoi": "La redevance du Chalet quadruple a 627.750 euros",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=90056"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=90056",
+   "fait_en": "The DF 52 agreement raised the annual fee for the Chalet de la Porte Jaune to €627,750; a motion called for the cycling redevelopment of the site.",
+   "pourquoi_en": "The Chalet's fee quadruples to €627,750"
   },
   {
    "id": "35566",
@@ -74,7 +79,9 @@
    "fait": "Un voeu demande la mise en oeuvre avant l'ete 2010 des cinq voies vertes classees par arretes de 2007 et 2008.",
    "pourquoi": "Cinq voies rendues aux pietons et cyclistes",
    "vedette": false,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=35566"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=35566",
+   "fait_en": "A motion called for implementing, before summer 2010, the five green ways classified by orders of 2007 and 2008.",
+   "pourquoi_en": "Five lanes given back to pedestrians and cyclists"
   },
   {
    "id": "146566",
@@ -82,7 +89,9 @@
    "fait": "Le Conseil est consulte sur un reglement dedie aux bois de Boulogne et de Vincennes, jusque-la rattaches au reglement des parcs et jardins.",
    "pourquoi": "Un reglement enfin propre aux deux bois",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=146566"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=146566",
+   "fait_en": "The Council was consulted on a set of regulations dedicated to the Bois de Boulogne and Bois de Vincennes, until then attached to the parks-and-gardens regulations.",
+   "pourquoi_en": "Regulations finally specific to the two bois"
   },
   {
    "id": "175604",
@@ -90,7 +99,9 @@
    "fait": "L'anneau cyclable du Polygone, reamenage l'ete 2019 avec un nouveau revetement, recoit un avis favorable pour etre denomme Raymond-Poulidor.",
    "pourquoi": "L'anneau cyclable renove prend le nom de Poulidor",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=175604"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=175604",
+   "fait_en": "The Polygone cycling loop, redeveloped in summer 2019 with a new surface, received a favorable opinion to be named Raymond-Poulidor.",
+   "pourquoi_en": "The renovated cycling loop takes the name of Poulidor"
   },
   {
    "id": "163807",
@@ -98,7 +109,9 @@
    "fait": "Une convention d'occupation precaire avec l'association Erinaceus doit permettre l'ouverture d'un refuge de soins pour herissons au coeur du bois.",
    "pourquoi": "Un refuge pour herissons ouvre dans le bois",
    "vedette": false,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=163807"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=163807",
+   "fait_en": "A precarious occupancy agreement with the association Erinaceus was to allow the opening of a hedgehog care sanctuary at the heart of the woodland.",
+   "pourquoi_en": "A hedgehog sanctuary opens in the woodland"
   },
   {
    "id": "164729",
@@ -106,7 +119,9 @@
    "fait": "Repondant a une question de l'opposition sur l'abattage de 200 arbres pour une zone de reboisement, l'adjoint invoque le plan de gestion arboricole et la securite du public.",
    "pourquoi": "L'abattage de 200 arbres declenche la polemique",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=164729"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=164729",
+   "fait_en": "Responding to a question from the opposition about the felling of 200 trees for a reforestation zone, the deputy mayor cited the tree management plan and public safety.",
+   "pourquoi_en": "The felling of 200 trees sparks controversy"
   },
   {
    "id": "176209",
@@ -114,7 +129,9 @@
    "fait": "Le Conseil examine le rapport de la mission d'information et d'evaluation sur les deux bois (68 preconisations) ; le voeu LR rattache est retire.",
    "pourquoi": "Une mission d'evaluation rend 68 preconisations",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=176209"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=176209",
+   "fait_en": "The Council examined the report of the fact-finding and evaluation mission on the two bois (68 recommendations); the related Les Républicains motion was withdrawn.",
+   "pourquoi_en": "An evaluation mission delivers 68 recommendations"
   }
  ],
  "montants": [
@@ -439,5 +456,6 @@
    "name": "Wikipédia",
    "url": "https://fr.wikipedia.org/"
   }
- }
+ },
+ "synthese_en": "Since the mid-2000s, the Bois de Vincennes has regularly come before Conseil de Paris, first over vehicle pressure and the protection of its status as a classified woodland: opposition to doubling the A4/A86 motorways (2006), the classification of five lanes as green ways by orders of the Mayor of Paris (2007-2008), and the continuation of the Paris Respire scheme. In parallel, the City has regulated occupations of the public domain — the Chalet de la Porte Jaune, beehives, Cirque Ici at the Jardin d'agronomie tropicale, a hedgehog sanctuary, the We Love Green festival — approved the principle of maintaining the water networks of the two bois (2006), and redeveloped the Polygone cycling loop (summer 2019). On governance, the Council was consulted in 2018 on adopting a set of regulations dedicated to the two bois, until then attached to the parks-and-gardens regulations, then examined in 2024 a report from a fact-finding and evaluation mission setting out 68 recommendations. Several matters remain contentious — sites for Travellers, tree felling for reforestation zones, the scale of music events — with the opposition recalling that the woodland has been classified since 1960 and, in its view, is not meant to serve as a land reserve."
 }

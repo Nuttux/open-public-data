@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T20:11:17.537074+00:00",
+ "generated_at": "2026-07-20T20:28:18.117255+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "parc-monceau",
  "name": "Parc Monceau",
@@ -22,7 +22,8 @@
   "source": {
    "name": "Wikipédia",
    "url": "https://fr.wikipedia.org/"
-  }
+  },
+  "extract_en": "Parc Monceau is a pleasure garden located in the Europe neighborhood of the 8th arrondissement of Paris."
  },
  "stats": {
   "n_delibs": 108,
@@ -53,7 +54,9 @@
    "fait": "Le Conseil approuve le principe de la rénovation des 2 allées principales et le marché de travaux correspondant, imputé au budget d'investissement (chapitre 901) sans montant affiché.",
    "pourquoi": "Seul marché de travaux du corpus",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=33376"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=33376",
+   "fait_en": "The Council approved the principle of renovating the two main paths and the corresponding works contract, charged to the capital budget (chapter 901) with no amount shown.",
+   "pourquoi_en": "The only works contract in the corpus"
   },
   {
    "id": "19591",
@@ -61,7 +64,9 @@
    "fait": "Delanoë, Bertinotti, Schapira et le groupe socialiste demandent l'ouverture des pelouses ; la réponse municipale la refuse, le parc ayant « dès l'origine » été classé parmi ceux dont les pelouses restent fermées.",
    "pourquoi": "État initial : pelouses fermées, demande refusée",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=19591"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=19591",
+   "fait_en": "Delanoë, Bertinotti, Schapira and the Socialist group requested that the lawns be opened; the municipal response refused, the park having \"from the outset\" been classified among those whose lawns remain closed.",
+   "pourquoi_en": "Starting point: closed lawns, request refused"
   },
   {
    "id": "6381",
@@ -69,7 +74,9 @@
    "fait": "Les pelouses ayant été ouvertes en juin 2001, le maire du 8e François Lebel en demande la fermeture hivernale ; Yves Contassot confirme que Monceau était le seul grand jardin totalement fermé et annonce des réfections en 2002.",
    "pourquoi": "Inversion politique exacte de 1998",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=6381"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=6381",
+   "fait_en": "The lawns having been opened in June 2001, the mayor of the 8th arrondissement, François Lebel, requested their winter closure; Yves Contassot confirmed that Monceau had been the only major garden entirely closed and announced repairs for 2002.",
+   "pourquoi_en": "The exact political reversal of 1998"
   },
   {
    "id": "6268",
@@ -77,7 +84,9 @@
    "fait": "Interrogé sur l'insécurité, le Préfet de police reconnaît une hausse de la délinquance en 2001 « même si les chiffres restent faibles » : 24 plaintes, 5 mains courantes, 328 passages en V.T.T.",
    "pourquoi": "Registre police, seuls chiffres vérifiés du corpus",
    "vedette": false,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=6268"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=6268",
+   "fait_en": "Questioned about insecurity, the Prefect of Police acknowledged a rise in crime in 2001 \"even though the figures remain low\": 24 complaints, 5 incident reports, 328 mountain-bike patrols.",
+   "pourquoi_en": "Police record, the only verified figures in the corpus"
   },
   {
    "id": "11314",
@@ -85,7 +94,9 @@
    "fait": "Deux questions jointes dénoncent la vétusté de l'aire de jeux et relèvent qu'une requalification inscrite à un budget précédent n'a jamais été réalisée ; un contrôle est annoncé pour fin 2004.",
    "pourquoi": "Requalification budgétée mais jamais réalisée",
    "vedette": false,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=11314"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=11314",
+   "fait_en": "Two joint questions denounced the playground's dilapidated state and noted that an upgrade budgeted in a previous year had never been carried out; an inspection was announced for the end of 2004.",
+   "pourquoi_en": "An upgrade budgeted but never carried out"
   },
   {
    "id": "34604",
@@ -93,7 +104,9 @@
    "fait": "Le Conseil autorise une convention avec le Syndicat National d'Apiculture pour installer des ruches dans le parc, pour trois ans maximum tacitement renouvelable.",
    "pourquoi": "Occupation par un tiers, version consensuelle",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=34604"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=34604",
+   "fait_en": "The Council authorized an agreement with the Syndicat National d'Apiculture to install beehives in the park, for a maximum of three years, tacitly renewable.",
+   "pourquoi_en": "Third-party occupation, a consensual version"
   },
   {
    "id": "100754",
@@ -101,7 +114,9 @@
    "fait": "Permis de construire et de démolir pour les locaux des jardiniers et des agents d'accueil : Lebel y voit le « lotissement » d'un parc classé monument historique, Giboudeaux invoque des locaux « indignes, parfois en sous-sol ».",
    "pourquoi": "Conflit patrimoine contre conditions de travail",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=100754"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=100754",
+   "fait_en": "A building and demolition permit for the gardeners' and reception staff's premises: Lebel saw it as the \"parceling out\" of a park listed as a historic monument, while Giboudeaux cited premises that were \"unfit, sometimes underground.\"",
+   "pourquoi_en": "Heritage conflict versus working conditions"
   },
   {
    "id": "131397",
@@ -109,7 +124,9 @@
    "fait": "Vœu contre la « privatisation » du parc, fermé au public une nuit pour 2 000 campeurs invités par Michel et Augustin ; l'opposition réclame les termes du contrat et la redevance, non chiffrée en séance.",
    "pourquoi": "Gouvernance : convention hors délibération",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=131397"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=131397",
+   "fait_en": "A motion against the \"privatization\" of the park, closed to the public for one night for 2,000 campers invited by Michel et Augustin; the opposition demanded the terms of the contract and the fee, which was not given a figure in session.",
+   "pourquoi_en": "Governance: an agreement outside the deliberation process"
   }
  ],
  "montants": [],
@@ -117,22 +134,26 @@
   {
    "date": "1928-03-17",
    "extrait": "En arrivant au Parc Monceau , nos regards sont attirés par des portes monumentales. surchargées d'ornements, s'élevant à l'entrée des trois avenues Van-Dyck, Ruysdaël et Velasquez: Elles sont là pour l'apparat et ne servent en aucune façon à la clôture du parc  … Pourquoi inter",
-   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k6430843h/f13.item"
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k6430843h/f13.item",
+   "extrait_en": "On arriving at Parc Monceau, our eyes are drawn to monumental gates, overladen with ornamentation, rising at the entrance of the three avenues Van-Dyck, Ruysdaël and Velasquez: they are there for show and serve in no way to enclose the park … Why forbid"
   },
   {
    "date": "1950-08-04",
    "extrait": "roulettes est autorisé sur les points suivants : jardin des Tuileries (allée cimentée de 70 mètres de long sur 5 mètres de large), square de l'Observatoire (deux emplacements), jardin des Champs-Elysées (avenue Edward-Tuck), parc Monceau (allée reliant la Rotonde à l'avenue Ruy s",
-   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k96295752/f6.item"
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k96295752/f6.item",
+   "extrait_en": "roller skating is authorized at the following locations: Jardin des Tuileries (a cemented path 70 meters long by 5 meters wide), Square de l'Observatoire (two locations), Jardin des Champs-Élysées (avenue Edward-Tuck), Parc Monceau (the path linking the Rotonde to avenue Ruy s"
   },
   {
    "date": "1962-05-06",
    "extrait": "Nf) 572. — Le parc de Monceau , qui est un des plus beaux jardins de Paris, mérite d'être aussi l'un de ceux où la propreté et l'esthétique sont constamment sauvegardées … La réfection du banc de pierre situé derrière la « Naumachie » au pare de Monceau , détruit au début de 19",
-   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k97320088/f2.item"
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k97320088/f2.item",
+   "extrait_en": "Nf) 572. — Parc Monceau, which is one of the most beautiful gardens in Paris, deserves also to be one of those where cleanliness and aesthetics are constantly safeguarded … The repair of the stone bench located behind the \"Naumachie\" at Parc Monceau, destroyed at the start of 19"
   },
   {
    "date": "1968-02-17",
    "extrait": "accès du parc de Monceau , ce stationnement est gênant … Afin de le restreindre, une signalisation faisant apparaître l'interdiction du stationnement va être mise en place en bordure du parc de Monceau et les infractions commises seront sévèrement réprimées",
-   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k9713172j/f6.item"
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k9713172j/f6.item",
+   "extrait_en": "access to Parc Monceau, this parking is a nuisance … In order to restrict it, signage indicating the parking ban will be put in place along the edge of Parc Monceau and offenses committed will be severely punished"
   }
  ],
  "bmo_recit": "Dans le Bulletin municipal, le parc Monceau apparaît au fil de décisions de gestion quotidienne plutôt que de grands chantiers. En 1928, une évocation s'attarde sur les portes monumentales dressées à l'entrée des avenues Van-Dyck, Ruysdaël et Velasquez, « surchargées d'ornements », placées là pour l'apparat sans servir en aucune façon à la clôture du parc. En 1950, le patin à roulettes y est autorisé sur l'allée reliant la Rotonde à l'avenue Ruysdaël, comme sur quelques emplacements d'autres jardins parisiens. En 1962, à propos de la propreté d'un parc présenté comme l'un des plus beaux jardins de Paris, il est indiqué que la réfection du banc de pierre situé derrière la Naumachie, détruit au début de 1961, sera envisagée. Six ans plus tard, l'administration annonce qu'une signalisation interdisant le stationnement gênant va être mise en place en bordure du parc, les infractions devant être sévèrement réprimées.",
@@ -195,5 +216,7 @@
    "name": "Wikipédia",
    "url": "https://fr.wikipedia.org/"
   }
- }
+ },
+ "synthese_en": "Of the 108 Conseil de Paris documents mentioning \"Monceau,\" the 13 whose title names the place span 1996-2025 and contain no figures. In May 1996 the Council approved the principle of renovating the two main paths and the corresponding works contract — the expenditure was charged to chapter 901 of the capital budget, with no amount given in the extracts — then, in October 1998, an amendment substituting \"Entreprise Jean Lefèbvre Ile-de-France S.A.\" for the original contractor. The opening of the lawns produced two reversed sequences: in October 1998, Bertrand Delanoë and the Socialist group requested that they be opened, which the municipal response refused on the grounds of the garden's \"particularly prestigious character\"; in January 2002, the lawns having been opened in June 2001, the mayor of the 8th arrondissement, François Lebel, requested their winter closure and questioned the Prefect of Police about insecurity, who recorded 24 complaints and 328 mountain-bike patrols by officers for 2001. There followed queries about the playground, whose planned upgrade under a previous budget had never been carried out (2004), an agreement to install beehives with the Syndicat National d'Apiculture (2009), a building permit for the gardeners' and reception staff's premises, which François Lebel called the \"parceling out\" of a park listed as a historic monument, while Fabienne Giboudeaux cited premises she called \"unfit\" (2011), and a motion against the \"privatization\" of the park for one night of a private event bringing together 2,000 participants, whose fee, demanded by the opposition, was not given a figure in session (2016). Since 2018, the only documents whose title names the park concern the naming of paths: France Gall, next to the allée Michel Berger inaugurated in 2012, then Nicolae Titulescu in 2025.",
+ "bmo_recit_en": "In the municipal bulletin, Parc Monceau appears through day-to-day management decisions rather than major works. In 1928, an account lingers on the monumental gates erected at the entrance of avenues Van-Dyck, Ruysdaël and Velasquez, \"overladen with ornamentation,\" placed there for show without serving in any way to enclose the park. In 1950, roller skating was authorized there on the path linking the Rotonde to avenue Ruysdaël, as at a few locations in other Parisian gardens. In 1962, regarding the cleanliness of a park presented as one of the most beautiful gardens in Paris, it was noted that the repair of the stone bench located behind the Naumachie, destroyed at the start of 1961, would be considered. Six years later, the administration announced that signage banning nuisance parking would be put in place along the edge of the park, with offenses to be severely punished."
 }

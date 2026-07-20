@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T20:11:17.537074+00:00",
+ "generated_at": "2026-07-20T20:28:18.117255+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "marche-saint-quentin",
  "name": "Marché Saint-Quentin",
@@ -22,7 +22,8 @@
   "source": {
    "name": "Wikipédia",
    "url": "https://fr.wikipedia.org/"
-  }
+  },
+  "extract_en": "The Marché Saint-Quentin is a Parisian covered market, located at 85 bis boulevard de Magenta in the 10th arrondissement."
  },
  "stats": {
   "n_delibs": 1752,
@@ -50,7 +51,9 @@
    "fait": "Le Conseil approuve les modalités de deux marchés d'animations pour promouvoir Saint-Quentin et Ternes comme vitrine du terroir français.",
    "pourquoi": "Promouvoir le marché comme vitrine du terroir",
    "vedette": false,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=50983"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=50983",
+   "fait_en": "The Council approved the terms of two contracts for promotional events to promote Saint-Quentin and Ternes as a showcase for French regional produce.",
+   "pourquoi_en": "promoting the market as a showcase for regional produce"
   },
   {
    "id": "28624",
@@ -58,7 +61,9 @@
    "fait": "Le Conseil attribue 30 000 F à l'association des commerçants pour des animations commerciales tenues en avril et mai 2000.",
    "pourquoi": "30 000 F pour animer le marché",
    "vedette": false,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=28624"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=28624",
+   "fait_en": "The Council granted 30,000 francs to the merchants' association for promotional events held in April and May 2000.",
+   "pourquoi_en": "30,000 francs to liven up the market"
   },
   {
    "id": "33529",
@@ -66,7 +71,9 @@
    "fait": "Le Conseil approuve le principe de la réfection des peintures intérieures et autorise le Maire à signer les marchés.",
    "pourquoi": "Feu vert au principe de rénovation du bâti",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=33529"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=33529",
+   "fait_en": "The Council approved the principle of redoing the interior paintwork and authorized the Mayor to sign the contracts.",
+   "pourquoi_en": "green light for the building's renovation, in principle"
   },
   {
    "id": "6001",
@@ -74,7 +81,9 @@
    "fait": "M. Le Goff dénonce un chantier engagé selon les commerçants sans concertation ; l'adjointe retrace un calendrier décalé.",
    "pourquoi": "Travaux contestés en pleine activité",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=6001"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=6001",
+   "fait_en": "Mr Le Goff denounced works undertaken, according to the merchants, without consultation; the deputy mayor retraced a shifted timeline.",
+   "pourquoi_en": "works disputed while the market is in full operation"
   },
   {
    "id": "11019",
@@ -82,7 +91,9 @@
    "fait": "MM. Toubon et Le Goff signalent que les nouvelles verrières laissent, selon eux, le soleil frapper les étals alimentaires.",
    "pourquoi": "Verrières neuves accusées de surchauffer les étals",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=11019"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=11019",
+   "fait_en": "Mr Toubon and Mr Le Goff reported that the new skylights, in their view, let the sun beat down on the food stalls.",
+   "pourquoi_en": "new skylights accused of overheating the stalls"
   },
   {
    "id": "11665",
@@ -90,7 +101,9 @@
    "fait": "M. Le Goff relaie des commerçants dits au bord de la faillite à cause du chantier Magenta et demande une exonération de loyer.",
    "pourquoi": "Baisse d'activité imputée aux travaux du boulevard Magenta",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=11665"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=11665",
+   "fait_en": "Mr Le Goff relayed merchants said to be on the verge of bankruptcy because of the Magenta works and asked for a rent exemption.",
+   "pourquoi_en": "drop in business blamed on the boulevard Magenta works"
   }
  ],
  "montants": [
@@ -124,5 +137,6 @@
    "name": "Wikipédia",
    "url": "https://fr.wikipedia.org/"
   }
- }
+ },
+ "synthese_en": "At the turn of the 2000s, Conseil de Paris first treated the Marché Saint-Quentin covered market as a commercial showcase: in April 2000, it approved the terms of two contracts for promotional campaigns at the Saint-Quentin and Ternes markets \"aimed at promoting them as a showcase for French regional produce,\" then granted, in September 2000, a subsidy of 30,000 francs to the neighborhood merchants' association. From 2001 onward, attention shifted to the building itself: in October 2001, the Council approved the principle of works to redo the market's interior paintwork, at 85 boulevard Magenta, and authorized the Mayor to sign the corresponding contracts. This project fed a question in September 2002 from Mr René LE GOFF, who reported that works had been undertaken, according to the merchants, \"without any prior consultation,\" while Ms Cohen-Solal replied by retracing a timeline that had shifted several times. Tensions then continued: in July 2004, Mr Toubon and Mr Le Goff reported that, in their view, the replaced overhead skylights let the sun beat down on the food stalls, and in October 2005 Mr Le Goff relayed merchants described as \"on the verge of collective bankruptcy\" because of the boulevard Magenta works, demanding a rent exemption."
 }

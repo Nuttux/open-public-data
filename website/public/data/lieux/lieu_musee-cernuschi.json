@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T20:11:17.537074+00:00",
+ "generated_at": "2026-07-20T20:28:18.117255+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "musee-cernuschi",
  "name": "Musée Cernuschi",
@@ -22,7 +22,8 @@
   "source": {
    "name": "Wikipédia",
    "url": "https://fr.wikipedia.org/"
-  }
+  },
+  "extract_en": "The Musée Cernuschi is a City of Paris museum devoted to Asian arts, and more specifically to those of the Far East: China, Japan, Korea, and Vietnam. It is the second museum devoted to Asian arts in France and the fifth devoted to Chinese art in Europe."
  },
  "stats": {
   "n_delibs": 120,
@@ -50,7 +51,9 @@
    "fait": "Le Conseil approuve le principe du réaménagement du musée et attribue la maîtrise d'œuvre.",
    "pourquoi": "le grand chantier de rénovation est lancé",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=83817"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=83817",
+   "fait_en": "The Council approved the principle of refurbishing the museum and awarded the project management contract.",
+   "pourquoi_en": "The major renovation project is launched"
   },
   {
    "id": "30642",
@@ -58,7 +61,9 @@
    "fait": "Le Conseil autorise l'acquisition d'un grand chameau Tang en terre cuite pour 1 200 000 F.",
    "pourquoi": "l'une des acquisitions les plus coûteuses de la période",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=30642"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=30642",
+   "fait_en": "The Council authorized the acquisition of a large Tang-dynasty terracotta camel for 1,200,000 francs.",
+   "pourquoi_en": "One of the most expensive acquisitions of the period"
   },
   {
    "id": "13428",
@@ -66,7 +71,9 @@
    "fait": "En séance, l'élue Soizik MOREAU juge le bâtiment plus que centenaire inadapté et appelle à une rénovation d'envergure.",
    "pourquoi": "un élu alerte sur l'état du bâtiment",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=13428"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=13428",
+   "fait_en": "In session, councillor Soizik MOREAU judged the more-than-century-old building unfit for purpose and called for a major renovation.",
+   "pourquoi_en": "A councillor raises the alarm over the building's condition"
   },
   {
    "id": "30277",
@@ -74,7 +81,9 @@
    "fait": "Le Conseil approuve le principe et les modalités d'un marché pour déménager l'ensemble des collections vers des réserves provisoires.",
    "pourquoi": "les collections quittent le musée pour le chantier",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=30277"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=30277",
+   "fait_en": "The Council approved the principle and terms of a contract to move the entire collection to temporary storage.",
+   "pourquoi_en": "The collections leave the museum for the works"
   },
   {
    "id": "63222",
@@ -82,7 +91,9 @@
    "fait": "La Société des Amis du musée donne un récipient en bronze Zun estimé à 1 500 000 euros.",
    "pourquoi": "les Amis offrent un bronze majeur",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=63222"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=63222",
+   "fait_en": "The Société des Amis du musée donated a bronze Zun vessel valued at 1,500,000 euros.",
+   "pourquoi_en": "The Friends association gives a major bronze"
   },
   {
    "id": "80727",
@@ -90,7 +101,9 @@
    "fait": "Le Conseil autorise cinq avenants n°2 relevant le montant des marchés de travaux de réaménagement.",
    "pourquoi": "les marchés de travaux augmentent par avenants successifs",
    "vedette": false,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=80727"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=80727",
+   "fait_en": "The Council authorized five amendment no. 2's raising the amount of the refurbishment works contracts.",
+   "pourquoi_en": "The works contracts increase through successive amendments"
   },
   {
    "id": "91337",
@@ -98,7 +111,9 @@
    "fait": "Le Conseil approuve le principe d'indemniser l'Entreprise CHEVALIER pour des préjudices subis pendant le chantier.",
    "pourquoi": "le chantier laisse des litiges à indemniser",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=91337"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=91337",
+   "fait_en": "The Council approved the principle of compensating the company CHEVALIER for damages sustained during the works.",
+   "pourquoi_en": "The works leave disputes to be settled"
   },
   {
    "id": "59515",
@@ -106,7 +121,9 @@
    "fait": "Le Conseil subventionne un colloque sur la peinture chinoise organisé en partenariat avec le musée.",
    "pourquoi": "le musée porte une programmation scientifique",
    "vedette": false,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=59515"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=59515",
+   "fait_en": "The Council granted funding for a symposium on Chinese painting organized in partnership with the museum.",
+   "pourquoi_en": "The museum carries out scholarly programming"
   }
  ],
  "montants": [
@@ -367,32 +384,38 @@
   {
    "date": "1899-02-17",
    "extrait": "42 c. pour faire face aux dépenses occasionnées par l'inauguration du musée Cernuschi",
-   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k6492556c/f5.item"
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k6492556c/f5.item",
+   "extrait_en": "42 c. to cover the expenses incurred by the inauguration of the Musée Cernuschi"
   },
   {
    "date": "1905-08-08",
    "extrait": "service du Matériel d'objets mobiliers à fournir par l'école Boulle pour le musée Cernuschi (M. Chautard, rapporteur … Le Conseil, Vu deux états de meubles et objets mobiliers à fournir par l'école Boulle et à prendre en charge par le service du Matériel pour le musée Cernuschi",
-   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k6334659p/f6.item"
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k6334659p/f6.item",
+   "extrait_en": "the Furnishings Department for movable objects to be supplied by the École Boulle for the Musée Cernuschi (Mr Chautard, rapporteur … The Council, having examined two inventories of furniture and movable objects to be supplied by the École Boulle and taken in charge by the Furnishings Department for the Musée Cernuschi"
   },
   {
    "date": "1906-12-31",
    "extrait": "45. — Musées d'art de la ville de Paris … 2° Pour l'avancement de classe (1,000 fr.) du conservateur du musée Cernuschi  … si Cernuschi prépare un catalogue, lequel prouvera que ce musée possède des trésors de l'art de l'Extrême-Orient uniques au monde",
-   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k6453279j/f5.item"
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k6453279j/f5.item",
+   "extrait_en": "45. — Art museums of the city of Paris … 2° For the grade advancement (1,000 francs) of the curator of the Musée Cernuschi … if Cernuschi is preparing a catalogue, which will prove that this museum possesses treasures of Far Eastern art unique in the world"
   },
   {
    "date": "1926-04-11",
    "extrait": "1506. — Organisation d'une exposition de pierres dures chinoises au musée Cernuschi (M* d'Andigné, rapporteur … Sur le rapport présenté par M. d'Andigné, au nom de la 4e Commission, Délibère : Article premier. — Le musée Cernuschi organisera, en 1926, une exposition de pierres ",
-   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k6290514x/f18.item"
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k6290514x/f18.item",
+   "extrait_en": "1506. — Organizing an exhibition of Chinese hardstones at the Musée Cernuschi (Mr d'Andigné, rapporteur … On the report presented by Mr d'Andigné, on behalf of the 4th Commission, Resolves: Article one. — The Musée Cernuschi will organize, in 1926, an exhibition of ha"
   },
   {
    "date": "1960-07-21",
    "extrait": "A la demande du conservateur du musée Cernuschi , il a été procédé à l'acquisition d'une grande statuette funéraire dont l'origine remonte au se siècle de notre ère, œuvre 'exceptionnelle par ses dimensions, son style et son état de conservation … Le musée Galliera a continué à",
-   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k9713224t/f4.item"
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k9713224t/f4.item",
+   "extrait_en": "At the request of the curator of the Musée Cernuschi, the acquisition was made of a large funerary statuette dating back to the [xx]th century of our era, a work exceptional for its dimensions, its style, and its state of preservation … The Musée Galliera continued to"
   },
   {
    "date": "1976-10-23",
    "extrait": "Musée Bourdelle, 16, rue Antoine-Bourdelle, à Paris (15*) (tél. 548-67-27 …  Musée Cernuschi ( Musée d’art chinois de la Ville de Paris), 7, avenue Velasquez, à Paris (8*) (tél. 522-23-31) (entrée par le 111, boulevard Malesherbes …  Musée d’art moderne : Pomodoro, jusqu’au 3",
-   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k32113154/f6.item"
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k32113154/f6.item",
+   "extrait_en": "Musée Bourdelle, 16 rue Antoine-Bourdelle, Paris (15th) (tel. 548-67-27) … Musée Cernuschi (Musée d'art chinois de la Ville de Paris), 7 avenue Velasquez, Paris (8th) (tel. 522-23-31) (entrance at 111 boulevard Malesherbes) … Musée d'Art moderne: Pomodoro, until the 3"
   }
  ],
  "bmo_recit": "Le musée Cernuschi apparaît dans le Bulletin municipal dès février 1899, à propos des dépenses occasionnées par son inauguration. Les premières années sont celles de l'installation : en 1905, le Conseil examine les meubles et objets mobiliers que l'école Boulle doit fournir au musée, et fin 1906, à l'occasion d'un avancement de classe (1.000 fr.) pour son conservateur, il est affirmé en séance qu'un catalogue en préparation prouvera que le musée possède des trésors de l'art de l'Extrême-Orient uniques au monde. En 1926, le Conseil décide que le musée organisera cette année-là une exposition de pierres dures chinoises. En 1960, l'archive rend compte de l'acquisition, à la demande du conservateur, d'une grande statuette funéraire ancienne, présentée comme exceptionnelle par ses dimensions, son style et son état de conservation. En 1976 encore, le Bulletin recense l'établissement comme « Musée d'art chinois de la Ville de Paris », au 7, avenue Velasquez (8e).",
@@ -441,5 +464,7 @@
    "name": "Wikipédia",
    "url": "https://fr.wikipedia.org/"
   }
- }
+ },
+ "synthese_en": "Between 1995 and 2011, Conseil de Paris deliberated on numerous occasions about the Musée Cernuschi, the City's museum of Asian arts, located at 7 avenue Vélasquez (8th arrondissement). Most of these deliberations authorized the Mayor to enrich the collections: acquisitions of Asian artworks, acceptance of bequests and donations, sponsorship agreements with the Daum company, and objectives agreements with the Société des amis du musée. From 1999, the Council approved the principle of refurbishing the building and awarded the project management contract, then approved the principle and terms of the contracts to move the collections into temporary storage (2001) and later bring them back (2004). This project continued through amendments that raised the amount of the works contracts, leading the Council, in 2008, to approve the principle of compensating companies for damages sustained during the works. During the 2001 debate on the objectives agreement with the Société des amis, councillor Soizik MOREAU described a building more than a century old that no longer met conservation requirements and called for a major renovation.",
+ "bmo_recit_en": "The Musée Cernuschi appears in the municipal bulletin as early as February 1899, in connection with the expenses incurred by its inauguration. The early years were those of setting up the museum: in 1905, the Council examined the furniture and movable objects that the École Boulle was to supply to the museum, and at the end of 1906, on the occasion of a grade advancement (1,000 francs) for its curator, it was stated in session that a catalogue in preparation would prove that the museum possessed treasures of Far Eastern art unique in the world. In 1926, the Council decided that the museum would organize, that year, an exhibition of Chinese hardstones. In 1960, the archive records the acquisition, at the curator's request, of a large ancient funerary statuette, presented as exceptional for its dimensions, its style, and its state of preservation. As late as 1976, the bulletin still lists the establishment as the \"Musée d'art chinois de la Ville de Paris,\" at 7 avenue Velasquez (8th arrondissement)."
 }

@@ -274,9 +274,21 @@ def apply_en_translations(fiche: dict, slug: str) -> None:
         fiche["bmo_recit_en"] = en["bmo_recit_en"]
     if en.get("note_publique_en") and fiche.get("subventions_exploitant"):
         fiche["subventions_exploitant"]["note_publique_en"] = en["note_publique_en"]
+    # Certains lieux ont plusieurs moments qui PARTAGENT le même id (même
+    # délibération source, plusieurs faits distincts jugés marquants
+    # séparément — ex. fontaine-saint-michel : 4 moments, un seul id). Le
+    # traducteur peut alors fournir une LISTE de traductions sous cet id, une
+    # par occurrence dans l'ordre où elles apparaissent — on consomme un
+    # élément de la liste par occurrence rencontrée. Repli sur le dict simple
+    # (un seul moment pour cet id) partout ailleurs.
     moments_en = en.get("moments_en") or {}
+    moment_occurrence: dict[str, int] = {}
     for m in fiche.get("moments", []):
         me = moments_en.get(m["id"])
+        if isinstance(me, list):
+            i = moment_occurrence.get(m["id"], 0)
+            moment_occurrence[m["id"]] = i + 1
+            me = me[i] if i < len(me) else None
         if me:
             if me.get("fait_en"):
                 m["fait_en"] = me["fait_en"]

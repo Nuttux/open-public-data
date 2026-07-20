@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T20:11:17.537074+00:00",
+ "generated_at": "2026-07-20T20:28:18.117255+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "hotel-de-ville",
  "name": "Hôtel de Ville",
@@ -22,7 +22,8 @@
   "source": {
    "name": "Wikipédia",
    "url": "https://fr.wikipedia.org/"
-  }
+  },
+  "extract_en": "The Hôtel de Ville de Paris, commonly known as the Hôtel de Ville, is the building that has housed the City of Paris's municipal institutions since 1357."
  },
  "stats": {
   "n_delibs": 1027,
@@ -50,7 +51,9 @@
    "fait": "Le Conseil approuve le principe de la réfection à l'identique de la couverture de l'Hôtel de Ville et autorise le Maire à signer le marché de travaux.",
    "pourquoi": "refaire à l'identique sa propre toiture",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=42178"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=42178",
+   "fait_en": "The Council approved the principle of repairing the Hôtel de Ville's roof in kind and authorized the Mayor to sign the works contract.",
+   "pourquoi_en": "Restoring its own roof exactly as it was"
   },
   {
    "id": "16103",
@@ -58,7 +61,9 @@
    "fait": "Le Conseil adopte un vœu demandant qu'un passage soit réservé au personnel lors des manifestations festives ou associatives sur le parvis.",
    "pourquoi": "un passage pour les agents du « 9 » les jours de fête",
    "vedette": false,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=16103"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=16103",
+   "fait_en": "The Council adopted a motion calling for a passage to be reserved for staff during festive or community events held on the forecourt.",
+   "pourquoi_en": "A passage for staff of the \"9\" on festival days"
   },
   {
    "id": "48126",
@@ -66,7 +71,9 @@
    "fait": "Le Conseil approuve le principe de modernisation et de création d'ascenseurs et de monte-charge et autorise le Maire à signer le marché.",
    "pourquoi": "moderniser les ascenseurs d'un monument classé",
    "vedette": false,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=48126"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=48126",
+   "fait_en": "The Council approved the principle of modernizing and creating elevators and freight lifts, and authorized the Mayor to sign the contract.",
+   "pourquoi_en": "Modernizing the elevators of a listed monument"
   },
   {
    "id": "8682",
@@ -74,7 +81,9 @@
    "fait": "Le groupe U.M.P.P.A., par la voix de Patrick Trémège, dénonce un « flicage » et refuse de voter les dispositifs de sécurisation incendie présentés par l'Exécutif.",
    "pourquoi": "le badgeage anti-incendie dénoncé comme flicage",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=8682"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=8682",
+   "fait_en": "The U.M.P.P.A. group, through Patrick Trémège, denounced \"surveillance\" and refused to vote for the fire-safety devices presented by the executive.",
+   "pourquoi_en": "The fire-safety badge system denounced as surveillance"
   },
   {
    "id": "109706",
@@ -82,7 +91,9 @@
    "fait": "Le vœu demandant des plantations d'arbres place de l'Hôtel de Ville est repoussé, l'adjointe opposant la présence d'un parking sous la place.",
    "pourquoi": "des arbres jugés impossibles au-dessus d'un parking",
    "vedette": false,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=109706"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=109706",
+   "fait_en": "The motion calling for trees to be planted on place de l'Hôtel de Ville was rejected, with the deputy mayor citing the presence of a parking garage beneath the square.",
+   "pourquoi_en": "Trees deemed impossible above a parking garage"
   },
   {
    "id": "134628",
@@ -90,7 +101,9 @@
    "fait": "Un vœu du groupe LR pour réinstaller une crèche de Noël sur le parvis reçoit un avis défavorable du premier adjoint Bruno Julliard.",
    "pourquoi": "la crèche de Noël qui divise le Conseil",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=134628"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=134628",
+   "fait_en": "A motion from the LR group to reinstall a Christmas nativity scene on the forecourt received an unfavorable opinion from first deputy mayor Bruno Julliard.",
+   "pourquoi_en": "The Christmas nativity scene that divides the Council"
   },
   {
    "id": "160949",
@@ -98,7 +111,9 @@
    "fait": "Face à un vœu Changer Paris sur l'entretien, l'adjoint Patrick Bloche annonce des études lancées et un marché Monuments historiques attendu pour 2022.",
    "pourquoi": "l'entretien du bâtiment revient à l'agenda",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=160949"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=160949",
+   "fait_en": "In response to a Changer Paris motion on upkeep, deputy mayor Patrick Bloche announced that studies had been launched and that a Historic Monuments contract was expected in 2022.",
+   "pourquoi_en": "Building upkeep returns to the agenda"
   },
   {
    "id": "174352",
@@ -106,7 +121,9 @@
    "fait": "Une convention met des espaces de l'Hôtel de Ville à disposition de la Halte des Femmes, au profit du Samu social de Paris.",
    "pourquoi": "des espaces prêtés à la Halte des Femmes",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=174352"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=174352",
+   "fait_en": "An agreement made spaces within the Hôtel de Ville available to the Halte des Femmes, on behalf of the Samu social de Paris.",
+   "pourquoi_en": "Spaces lent to the Halte des Femmes"
   }
  ],
  "montants": [],
@@ -444,5 +461,6 @@
    "name": "Wikipédia",
    "url": "https://fr.wikipedia.org/"
   }
- }
+ },
+ "synthese_en": "Across these deliberations, the Hôtel de Ville first appears as a building the City maintains: the Council approved, in 1997, the principle of repairing its roof, in 2003 that of modernizing its elevators, and authorized the Mayor that same year to sign an amendment to the maintenance contract for the alarm and fire-detection systems. A security audit launched in 2003 led to a fire-safety plan whose works were nearing completion in 2010, not without debate over the entry/exit counting devices, which the U.M.P.P.A. group called \"surveillance.\" The monument is also a square and a forecourt: a 2002 motion on traffic during demonstrations was adopted, while those calling for trees (2012) or a Christmas nativity scene (2016) received an unfavorable opinion. In 2021, a motion from the Changer Paris group revived the question of maintenance and heritage enhancement, and deputy mayor Patrick Bloche announced that studies had been launched and that a contract would be awarded in 2022 to a group with expertise in historic monuments. In 2024, spaces within the Hôtel de Ville became the subject of an agreement making them available to the Halte des Femmes, run by the Samu social, and a new motion concerned restoration commitments."
 }

@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T20:11:17.537074+00:00",
+ "generated_at": "2026-07-20T20:28:18.117255+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "theatre-silvia-monfort",
  "name": "Théâtre Silvia Monfort",
@@ -22,7 +22,8 @@
   "source": {
    "name": "Wikipédia",
    "url": "https://fr.wikipedia.org/"
-  }
+  },
+  "extract_en": "The Théâtre Silvia-Monfort is a cultural institution of the City of Paris, located in the Parc Georges-Brassens, 106 rue Brancion, in the 15th arrondissement of Paris."
  },
  "stats": {
   "n_delibs": 187,
@@ -65,12 +66,14 @@
   {
    "beneficiaire": "HYBRIDITES FRANCE CHINE",
    "montant_total": 8000.0,
-   "preuve": "Objet « SV24RES2  Moi, Elles de Jing WANG - Théâtre Silvia Monfort  / Théâtre de l'Opprimé » : aide de résidence nommant explicitement le lieu, sans gestion du théâtre. Confiance moyenne car le spectacle est aussi présenté au Théâtre de l'Opprimé : le montant de 8 000 € couvre les deux salles et n'est pas dédié à ce seul lieu."
+   "preuve": "Objet « SV24RES2  Moi, Elles de Jing WANG - Théâtre Silvia Monfort  / Théâtre de l'Opprimé » : aide de résidence nommant explicitement le lieu, sans gestion du théâtre. Confiance moyenne car le spectacle est aussi présenté au Théâtre de l'Opprimé : le montant de 8 000 € couvre les deux salles et n'est pas dédié à ce seul lieu.",
+   "preuve_en": "Grant purpose \"SV24RES2 Moi, Elles by Jing WANG – Théâtre Silvia Monfort / Théâtre de l'Opprimé\": a residency grant explicitly naming the site, without operating the theatre. Medium confidence, since the show is also presented at the Théâtre de l'Opprimé: the 8,000 € amount covers both venues and is not dedicated to this site alone."
   },
   {
    "beneficiaire": "GROUPE CHIENDENT",
    "montant_total": 7000.0,
-   "preuve": "Objet « Diffusion en serie d'un spectacle (théâtre) au Théâtre Silvia Monfort automne 2024 - SV24DIF2 » : aide à la diffusion nommant explicitement et uniquement le lieu ; le bénéficiaire y accueille un spectacle sans gérer le théâtre."
+   "preuve": "Objet « Diffusion en serie d'un spectacle (théâtre) au Théâtre Silvia Monfort automne 2024 - SV24DIF2 » : aide à la diffusion nommant explicitement et uniquement le lieu ; le bénéficiaire y accueille un spectacle sans gérer le théâtre.",
+   "preuve_en": "Grant purpose \"Series run of a play (theatre) at the Théâtre Silvia Monfort, autumn 2024 – SV24DIF2\": a staging grant explicitly and solely naming the site; the beneficiary presented a show there without operating the theatre."
   }
  ],
  "kpi_montant": null,
@@ -82,7 +85,9 @@
    "fait": "Le théâtre fête ses dix ans ; le Conseil examine sa subvention de fonctionnement 2002 de 750 000 €, que M. Alayrac juge en baisse de 7 % et Mme Macé de Lépinay insuffisante pour la survie du théâtre.",
    "pourquoi": "Le théâtre fête ses dix ans",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=7470"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=7470",
+   "fait_en": "The theatre celebrated its tenth anniversary; the Council examined its 2002 operating grant of 750,000 €, which Mr Alayrac considered a 7% decrease and Ms Macé de Lépinay considered insufficient for the theatre's survival.",
+   "pourquoi_en": "The theatre celebrates its tenth anniversary"
   },
   {
    "id": "18521",
@@ -90,7 +95,9 @@
    "fait": "Le Conseil vote 850 000 € pour 2003 ; Mme Macé de Lépinay reproche à la Ville un versement trop tardif et rappelle que le théâtre emploie dix personnes.",
    "pourquoi": "Subvention votée, mais versée trop tard",
    "vedette": false,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=18521"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=18521",
+   "fait_en": "The Council voted 850,000 € for 2003; Ms Macé de Lépinay criticized the City for paying it out too late and noted that the theatre employed ten people.",
+   "pourquoi_en": "Grant approved, but paid out too late"
   },
   {
    "id": "16897",
@@ -98,7 +105,9 @@
    "fait": "Lors du débat sur la subvention 2006, Mme Taïeb rapporte un déficit de plus de 100 000 € et des fuites dans la salle, disant le théâtre « en danger de fermeture ».",
    "pourquoi": "Fuites dans la salle, fermeture redoutée",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=16897"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=16897",
+   "fait_en": "During the debate on the 2006 grant, Ms Taïeb reported a deficit of more than 100,000 € and leaks in the auditorium, saying the theatre was \"at risk of closing.\"",
+   "pourquoi_en": "Leaks in the auditorium, closure feared"
   },
   {
    "id": "72278",
@@ -106,7 +115,9 @@
    "fait": "Le Conseil émet un vœu réclamant la publication du rapport Faivre d'Arcier sur le théâtre et le versement rapide de la subvention, le vœu évoquant des travaux sur la cage de scène.",
    "pourquoi": "Un rapport réclamé, des travaux sur scène",
    "vedette": false,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=72278"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=72278",
+   "fait_en": "The Council passed a motion demanding the publication of the Faivre d'Arcier report on the theatre and the prompt payment of the grant, the motion also mentioning work on the stage tower.",
+   "pourquoi_en": "A report demanded, work on the stage"
   },
   {
    "id": "18137",
@@ -114,7 +125,9 @@
    "fait": "L'opposition dénonce le « quasi-limogeage » du directeur Régis Santon ; M. Girard confirme un changement de direction après dix-sept ans et dit la subvention (900 000 €) maintenue.",
    "pourquoi": "Le départ du directeur enflamme le Conseil",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=18137"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=18137",
+   "fait_en": "The opposition denounced the \"near-dismissal\" of director Régis Santon; Mr Girard confirmed a change of leadership after seventeen years and said the grant (900,000 €) was maintained.",
+   "pourquoi_en": "The director's departure inflames the Council"
   },
   {
    "id": "20604",
@@ -122,7 +135,9 @@
    "fait": "À l'occasion de l'avenant portant la subvention 2009 à 1 242 000 €, Mme Macé de Lépinay rappelle que Santon quitte le théâtre après dix-huit saisons et 750 000 spectateurs, remplacé par de Magalhaès et Ricordel.",
    "pourquoi": "Dix-huit saisons, 750 000 spectateurs, un adieu",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=20604"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=20604",
+   "fait_en": "On the occasion of the amendment raising the 2009 grant to 1,242,000 €, Ms Macé de Lépinay noted that Santon was leaving the theatre after eighteen seasons and 750,000 spectators, replaced by de Magalhaès and Ricordel.",
+   "pourquoi_en": "Eighteen seasons, 750,000 spectators, a farewell"
   },
   {
    "id": "39467",
@@ -130,7 +145,9 @@
    "fait": "Le Conseil attribue une subvention exceptionnelle de 440 000 € (portant le fonctionnement 2010 à 1 440 000 €) et 240 000 € d'équipement pour rétablir la situation financière.",
    "pourquoi": "La Ville renfloue le théâtre en 2010",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=39467"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=39467",
+   "fait_en": "The Council awarded an exceptional grant of 440,000 € (raising the 2010 operating total to 1,440,000 €) and 240,000 € in equipment funding to restore the financial situation.",
+   "pourquoi_en": "The City bails out the theatre in 2010"
   },
   {
    "id": "183301",
@@ -138,7 +155,9 @@
    "fait": "Le Conseil adopte la dénomination « Alexis Grüss » pour l'allée du parc Georges Brassens qui relie la rue Brancion au théâtre Silvia Monfort.",
    "pourquoi": "Une allée mène désormais au théâtre",
    "vedette": false,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=183301"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=183301",
+   "fait_en": "The Council adopted the name \"Alexis Grüss\" for the path in the Parc Georges Brassens connecting rue Brancion to the Théâtre Silvia Monfort.",
+   "pourquoi_en": "A path now leads to the theatre"
   }
  ],
  "montants": [
@@ -389,5 +408,6 @@
    "name": "Wikipédia",
    "url": "https://fr.wikipedia.org/"
   }
- }
+ },
+ "synthese_en": "Opened in 1992 in a building by architect Claude Parent, at the far end of the Parc Georges Brassens, the Théâtre Silvia Monfort is run by an association that the City of Paris subsidizes every year — 750,000 € in 2002, then 850,000 € from 2003 to 2006. In the mid-2000s, Council debates focused on its financial difficulties: councillor Karen Taïeb reported in 2006 a deficit of more than 100,000 € and leaks in the auditorium, and an exceptional grant of 90,000 € was voted at the end of 2006. In 2008-2009, the departure of director Régis Santon after seventeen years sparked heated exchanges, with the opposition denouncing a \"near-dismissal\" while deputy mayor Christophe Girard spoke of a leadership renewal decided by the association's board, which chose Laurence de Magalhaès and Stéphane Ricordel. In 2010, the City raised the operating grant to 1,440,000 € and added 240,000 € in equipment funding to restore the theatre's financial situation; in 2025, the Council named the Parc Georges Brassens path leading to the theatre \"Alexis Grüss.\""
 }

@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T20:11:17.537074+00:00",
+ "generated_at": "2026-07-20T20:28:18.117255+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "place-d-italie",
  "name": "Place d'Italie",
@@ -22,7 +22,8 @@
   "source": {
    "name": "Wikipédia",
    "url": "https://fr.wikipedia.org/"
-  }
+  },
+  "extract_en": "The place d'Italie is a square in the 13th arrondissement of Paris."
  },
  "stats": {
   "n_delibs": 1055,
@@ -50,7 +51,9 @@
    "fait": "Le Conseil general autorise la signature d'une convention avec l'Etat et la Mission locale \"Soleil\" pour un \"Point Info Jeunes\" a la station de metro place d'Italie, avec 120 000 F a la Mission locale.",
    "pourquoi": "Un guichet jeunesse au hub metro",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=56746"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=56746",
+   "fait_en": "The Conseil général authorized signing an agreement with the State and the Mission locale \"Soleil\" for a \"Point Info Jeunes\" at the place d'Italie metro station, with 120,000 F going to the Mission locale.",
+   "pourquoi_en": "A youth information point at the metro hub"
   },
   {
    "id": "58847",
@@ -58,7 +61,9 @@
    "fait": "Le Conseil approuve le principe de modernisation de la climatisation des combles de la mairie du 13e (place d'Italie) et autorise le Maire a signer les marches.",
    "pourquoi": "Entretenir le batiment-phare de la place",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=58847"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=58847",
+   "fait_en": "The Council approved the principle of modernizing the air conditioning in the attic of the 13th arrondissement town hall (place d'Italie) and authorized the Mayor to sign the contracts.",
+   "pourquoi_en": "Maintaining the square's landmark building"
   },
   {
    "id": "71521",
@@ -66,7 +71,9 @@
    "fait": "Le Conseil autorise la signature d'une convention avec le Comite des Fetes du 13e et lui attribue 70 927 EUR, dont 10 000 EUR pour un projet \"Festival italien\".",
    "pourquoi": "La place fete son nom italien",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=71521"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=71521",
+   "fait_en": "The Council authorized signing an agreement with the Comité des Fêtes of the 13th arrondissement and awarded it €70,927, including €10,000 for a \"Festival italien\" project.",
+   "pourquoi_en": "The square celebrates its Italian name"
   },
   {
    "id": "41692",
@@ -74,7 +81,9 @@
    "fait": "Le Conseil approuve le principe de travaux de modernisation des menuiseries exterieures de la mairie du 13e, place d'Italie, et autorise le Maire a signer le marche.",
    "pourquoi": "Refaire les fenetres de la mairie",
    "vedette": false,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=41692"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=41692",
+   "fait_en": "The Council approved the principle of modernization works on the exterior joinery of the 13th arrondissement town hall, place d'Italie, and authorized the Mayor to sign the contract.",
+   "pourquoi_en": "Redoing the town hall's windows"
   },
   {
    "id": "68932",
@@ -82,7 +91,9 @@
    "fait": "Le Conseil attribue 534 EUR au Comite d'entente des Anciens Combattants et Victimes de Guerre du 13e, domicilie a la mairie, place d'Italie.",
    "pourquoi": "La memoire combattante logee a la mairie",
    "vedette": false,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=68932"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=68932",
+   "fait_en": "The Council awarded €534 to the Comité d'entente des Anciens Combattants et Victimes de Guerre of the 13th arrondissement, based at the town hall, place d'Italie.",
+   "pourquoi_en": "Veterans' memory housed at the town hall"
   },
   {
    "id": "64254",
@@ -90,7 +101,9 @@
    "fait": "Le Conseil attribue 3 000 EUR au Cercle Municipal des Gobelins et des Beaux-Arts, domicilie a la mairie du 13e, place d'Italie.",
    "pourquoi": "Le cercle des beaux-arts, adresse mairie",
    "vedette": false,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=64254"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=64254",
+   "fait_en": "The Council awarded €3,000 to the Cercle Municipal des Gobelins et des Beaux-Arts, based at the 13th arrondissement town hall, place d'Italie.",
+   "pourquoi_en": "The fine arts circle, town hall address"
   },
   {
    "id": "146582",
@@ -98,7 +111,9 @@
    "fait": "Voeu du maire du 13e Jerome Coumet : des cyclistes ont ete verbalises place d'Italie ; le representant du Prefet reconnait des PV \"au mépris du Code de la route\".",
    "pourquoi": "Quand la place se conteste a velo",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=146582"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=146582",
+   "fait_en": "Motion from the mayor of the 13th arrondissement, Jérôme Coumet: cyclists had been ticketed at place d'Italie; the Prefect's representative acknowledged that the tickets had been issued \"in disregard of the Highway Code.\"",
+   "pourquoi_en": "When the square is contested on two wheels"
   }
  ],
  "montants": [],
@@ -152,5 +167,6 @@
    "name": "Wikipédia",
    "url": "https://fr.wikipedia.org/"
   }
- }
+ },
+ "synthese_en": "Over nearly twenty years, \"place d'Italie\" comes up before the Council of Paris mainly as the address of the 13th arrondissement's town hall, 1 place d'Italie, where several of the arrondissement's associations are based: the Council votes operating grants there to the Société d'Histoire et d'Archéologie (€4,573 in 2002), to the Comité des Fêtes (€70,927 in 2002, including €10,000 for a \"Festival italien\"), to the Anciens Combattants du 13e (€534 in 2002), and to the Cercle des Beaux-Arts (€3,000 in 2004). As early as 1998, the Conseil général authorized signing agreements for setting up a \"Point Info Jeunes\" at the place d'Italie metro station, with a grant of 120,000 F to the Mission locale \"Soleil\". In 2000 and then 2003, it approved the principle of works on the town hall building — air conditioning in the attic, exterior joinery — and authorized the Mayor to sign the contracts, without any amount being specified in these deliberations. In 2018, a motion from the mayor of the 13th arrondissement, Jérôme Coumet, addressed the square itself for once: he denounced tickets issued to cyclists, which the Prefect of Police's representative acknowledged during the session had been issued \"in disregard of the Highway Code,\" while Coumet spoke of a \"future for the place d'Italie\" not expected before 2020."
 }

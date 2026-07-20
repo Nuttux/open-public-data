@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T20:11:17.537074+00:00",
+ "generated_at": "2026-07-20T20:28:18.117255+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "carreau-du-temple",
  "name": "Carreau du Temple",
@@ -22,7 +22,8 @@
   "source": {
    "name": "Wikipédia",
    "url": "https://fr.wikipedia.org/"
-  }
+  },
+  "extract_en": "The Carreau du Temple, located in the 3rd arrondissement of Paris, is a former 19th-century covered market. Saved from demolition following a citizens' mobilization, it is now a cultural and sporting venue built on a mixed public-private economic model."
  },
  "stats": {
   "n_delibs": 140,
@@ -62,27 +63,32 @@
   {
    "beneficiaire": "CINECARO",
    "montant_total": 18000.0,
-   "preuve": "Objet : « Soutien en fonctionnement sur CREDITS BLOCHE, de la 8e saison de CineCaro au Carreau du Temple ». Le contexte (2021 DAC 57) confirme les « séances de ciné-Carreau, ciné-club local » dans l'auditorium du lieu. Activité dans le lieu sans le gérer."
+   "preuve": "Objet : « Soutien en fonctionnement sur CREDITS BLOCHE, de la 8e saison de CineCaro au Carreau du Temple ». Le contexte (2021 DAC 57) confirme les « séances de ciné-Carreau, ciné-club local » dans l'auditorium du lieu. Activité dans le lieu sans le gérer.",
+   "preuve_en": "Purpose: \"Operating support under CREDITS BLOCHE, for the 8th season of CineCaro at the Carreau du Temple.\" The context (2021 DAC 57) confirms the \"Ciné-Carreau screenings, a local film club\" in the venue's auditorium. Activity held at the venue without operating it."
   },
   {
    "beneficiaire": "MAMAMA",
    "montant_total": 9180.0,
-   "preuve": "Objet : « Subvention pour distributions de colis d'urgence bébés au Carreau du Temple pendant le confinement ». Le contexte (2021 DAC 57) confirme que l'association « MaMaMa » fournissait des colis alimentaires et d'hygiène aux mères isolées au Carreau pendant le dispositif d'accueil du confinement."
+   "preuve": "Objet : « Subvention pour distributions de colis d'urgence bébés au Carreau du Temple pendant le confinement ». Le contexte (2021 DAC 57) confirme que l'association « MaMaMa » fournissait des colis alimentaires et d'hygiène aux mères isolées au Carreau pendant le dispositif d'accueil du confinement.",
+   "preuve_en": "Purpose: \"Grant for distributing emergency baby-supply parcels at the Carreau du Temple during the lockdown.\" The context (2021 DAC 57) confirms that the association \"MaMaMa\" supplied food and hygiene parcels to isolated mothers at the Carreau during the lockdown shelter program."
   },
   {
    "beneficiaire": "ARTINCIDENCE",
    "montant_total": 4500.0,
-   "preuve": "Objet : « AIDE A LA DIFFUSION \"I'M A BRUJA\" FESTIVAL EVERYBODY au Carreau du Temple » — diffusion d'un spectacle dans le lieu, sans le gérer."
+   "preuve": "Objet : « AIDE A LA DIFFUSION \"I'M A BRUJA\" FESTIVAL EVERYBODY au Carreau du Temple » — diffusion d'un spectacle dans le lieu, sans le gérer.",
+   "preuve_en": "Purpose: \"DISTRIBUTION SUPPORT FOR 'I'M A BRUJA' FESTIVAL EVERYBODY at the Carreau du Temple\" — staging a show at the venue, without operating it."
   },
   {
    "beneficiaire": "DEFRACTO",
    "montant_total": 4000.0,
-   "preuve": "Objet : « Aide à la Diffusion ¿ DAC ¿ Arts du Cirque et Arts de la Rue - Dystonie au Carreau du Temple » — diffusion d'un spectacle dans le lieu, sans le gérer."
+   "preuve": "Objet : « Aide à la Diffusion ¿ DAC ¿ Arts du Cirque et Arts de la Rue - Dystonie au Carreau du Temple » — diffusion d'un spectacle dans le lieu, sans le gérer.",
+   "preuve_en": "Purpose: \"Distribution support – DAC – Circus Arts and Street Arts – Dystonie at the Carreau du Temple\" — staging a show at the venue, without operating it."
   },
   {
    "beneficiaire": "LES SENS DES MOTS",
    "montant_total": 4000.0,
-   "preuve": "Objet : « AAPCS18 - binôme spectacles arts/sciences au Carreau du Temple » — spectacles dans le lieu, sans le gérer."
+   "preuve": "Objet : « AAPCS18 - binôme spectacles arts/sciences au Carreau du Temple » — spectacles dans le lieu, sans le gérer.",
+   "preuve_en": "Purpose: \"AAPCS18 - arts/sciences show duo at the Carreau du Temple\" — shows at the venue, without operating it."
   }
  ],
  "kpi_montant": null,
@@ -94,7 +100,9 @@
    "fait": "Interrogé sur la responsabilité de la gestion du Carreau après que des commerçants ont été priés de cesser leur activité pendant des défilés de haute couture, l'exécutif rappelle que le marché est géré par la Mairie de Paris, constate que son évolution commerciale « est en régression depuis plusieurs années » et indique qu'une réhabilitation est envisagée.",
    "pourquoi": "Le déclin du marché est acté publiquement",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=21663"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=21663",
+   "fait_en": "Asked about who was responsible for managing the Carreau after traders were asked to stop their activity during haute couture fashion shows, the executive recalled that the market was run by the City of Paris, noted that its commercial trajectory \"has been declining for several years,\" and indicated that a renovation was being considered.",
+   "pourquoi_en": "The market's decline is publicly acknowledged"
   },
   {
    "id": "54449",
@@ -102,7 +110,9 @@
    "fait": "Le Conseil approuve le principe des travaux de réhabilitation avec extension en sous-sol et attribue la maîtrise d'œuvre, à l'issue d'un concours, au groupement mené par STUDIO MILOU Architecture ; les permis de démolir et de construire sont autorisés.",
    "pourquoi": "L'architecte et le sous-sol contesté sont actés",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=54449"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=54449",
+   "fait_en": "The Council approved the principle of renovation works with a basement extension and, following a competition, awarded project management to the group led by STUDIO MILOU Architecture; demolition and building permits were authorized.",
+   "pourquoi_en": "The architect and the disputed basement are approved"
   },
   {
    "id": "50062",
@@ -110,7 +120,9 @@
    "fait": "La Ville résilie le marché d'assistance à maîtrise d'ouvrage attribué à la société GUIGUES SA, relance deux marchés d'AMO et constate une recette de 655 032 € au titre du remboursement de l'avance forfaitaire.",
    "pourquoi": "Rupture contractuelle chiffrée sur le chantier",
    "vedette": false,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=50062"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=50062",
+   "fait_en": "The City terminated the project-owner assistance contract awarded to the company GUIGUES SA, relaunched two project-owner assistance contracts, and recorded revenue of 655,032 € from the refund of the flat-rate advance.",
+   "pourquoi_en": "A costed contractual break on the construction project"
   },
   {
    "id": "5669",
@@ -118,7 +130,9 @@
    "fait": "En séance, un élu du groupe U.M.P. juge le projet « trop long, trop coûteux », rappelle qu'une livraison avait été promise pour 2008 alors que les travaux ne commenceront qu'en septembre 2009, et affirme que le coût est passé de 30 millions d'euros au double avant le premier coup de pioche ; l'adjoint aux sports répond que la halle était jusque-là sous-occupée.",
    "pourquoi": "Le coût et le calendrier contestés en séance",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=5669"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=5669",
+   "fait_en": "In session, a councillor from the U.M.P. group judged the project \"too long, too costly,\" recalled that delivery had been promised for 2008 even though works would not start until September 2009, and stated that the cost had gone from 30 million euros to double that before the first pickaxe blow; the deputy mayor for sports replied that the hall had until then been under-used.",
+   "pourquoi_en": "Cost and timeline disputed in session"
   },
   {
    "id": "75089",
@@ -126,7 +140,9 @@
    "fait": "La Ville indemnise les commerçants du marché, contraints de partir au plus tard le 20 août 2009, selon un barème combinant 200 € par année d'ancienneté, 100 € par m² de surface de vente et 10 000 € forfaitaires, duquel sont déduits les loyers impayés ; ceux qui ne signent pas partent sans indemnité.",
    "pourquoi": "La fermeture du marché et son prix humain",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=75089"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=75089",
+   "fait_en": "The City compensated the market's traders, who were required to leave by 20 August 2009 at the latest, according to a scale combining 200 € per year of seniority, 100 € per m² of sales floor space, and a flat 10,000 €, from which unpaid rent was deducted; those who did not sign left without compensation.",
+   "pourquoi_en": "The market's closure and its human cost"
   },
   {
    "id": "129289",
@@ -134,7 +150,9 @@
    "fait": "Subventions d'équipement à la société publique locale exploitante : le titre annonce 260 000 €, le maire du 3e détaille 150 000 € en 2016 et 100 000 € en 2017, le premier adjoint évoque 300 000 €. Le même débat annonce 425 000 visiteurs en 2015 et évoque « une période de rodage parfois un peu compliquée ».",
    "pourquoi": "Trois chiffres pour une même subvention",
    "vedette": false,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=129289"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=129289",
+   "fait_en": "Equipment grants to the operating local public company: the title announces 260,000 €, the mayor of the 3rd arrondissement itemizes 150,000 € in 2016 and 100,000 € in 2017, the first deputy mayor mentions 300,000 €. The same debate announces 425,000 visitors in 2015 and refers to \"a break-in period that was sometimes a bit difficult.\"",
+   "pourquoi_en": "Three figures for the same grant"
   },
   {
    "id": "143187",
@@ -142,7 +160,9 @@
    "fait": "Nouvelle délégation de service public de gré à gré à la S.P.L., avec entrée de la commune de La Courneuve au capital, Paris ne pouvant plus y siéger à la fois comme Ville et comme Département. En séance : 400 000 visiteurs sur 300 jours d'ouverture pour 270 exigés, premier compte administratif à l'équilibre, et un élu regrette que la subvention soit limitée au tiers des dépenses.",
    "pourquoi": "Gouvernance élargie, modèle économique discuté",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=143187"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=143187",
+   "fait_en": "A new public service delegation was awarded directly (without competitive tender) to the S.P.L., with the town of La Courneuve entering as a shareholder, since Paris could no longer sit on it as both City and Département at once. In session: 400,000 visitors over 300 days of opening against 270 required, a first balanced administrative account, and a councillor regretted that the grant was limited to a third of expenses.",
+   "pourquoi_en": "Broadened governance, economic model debated"
   },
   {
    "id": "164061",
@@ -150,7 +170,9 @@
    "fait": "Avenant à la DSP et 50 000 € de subventions d'investissement à la S.P.L. ; fermé par la crise sanitaire, l'équipement a accueilli l'association Aurore du 24 mars au 30 juin 2020, puis la halte femmes du 12e arrondissement, près de 130 femmes par jour d'octobre 2020 au 30 avril 2021.",
    "pourquoi": "La halle fermée devient accueil de jour",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=164061"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=164061",
+   "fait_en": "An amendment to the public service delegation and 50,000 € in investment grants to the S.P.L.; closed by the health crisis, the facility hosted the association Aurore from 24 March to 30 June 2020, then the 12th arrondissement's women's day shelter, with close to 130 women a day from October 2020 to 30 April 2021.",
+   "pourquoi_en": "The closed hall becomes a day shelter"
   }
  ],
  "montants": [
@@ -250,17 +272,20 @@
   {
    "date": "1889-02-12",
    "extrait": "Le Conseil, Vu la pétition de l'Union syndicale des marchands brocanteurs concernant l'organisation de la vente au carreau du Temple  … accès du carreau du Temple",
-   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k6291240p/f2.item"
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k6291240p/f2.item",
+   "extrait_en": "The Council, Having regard to the petition from the Union syndicale des marchands brocanteurs concerning the organization of sales at the carreau du Temple … access to the carreau du Temple"
   },
   {
    "date": "1889-08-19",
    "extrait": "Dans le même temps, le terrain communal dit « Carreau du Temple » comporte, en plein cœur du quartier, une superficie de 3.900 mètres carrés fort mal utilisée",
-   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k97195840/f1.item"
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k97195840/f1.item",
+   "extrait_en": "At the same time, the municipal plot known as the \"Carreau du Temple\" comprises, right in the heart of the district, an area of 3,900 square meters that is very poorly used"
   },
   {
    "date": "1891-11-22",
    "extrait": "80. — Renvoi à l'Administration d'un mémoire de M le Préfet de la Seine relatif à la concession du hall du Carreau du Temple",
-   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k64185242/f16.item"
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k64185242/f16.item",
+   "extrait_en": "80. — Referral to the Administration of a memorandum from the Prefect of the Seine concerning the concession of the Carreau du Temple hall"
   }
  ],
  "bmo_recit": "Le Carreau du Temple apparaît dans le Bulletin municipal officiel à la fin des années 1880, comme une affaire de commerce et de terrain. En février 1889, le Conseil est saisi d'une pétition de l'Union syndicale des marchands brocanteurs portant sur l'organisation de la vente et sur l'accès au carreau. En août de la même année, le Bulletin décrit ce terrain communal de 3.900 mètres carrés, situé en plein cœur du quartier, comme une superficie « fort mal utilisée ». En novembre 1891, un mémoire du Préfet de la Seine relatif à la concession du hall du Carreau du Temple est renvoyé à l'Administration. L'archive ne retient que ces trois moments, resserrés sur trois ans.",
@@ -503,5 +528,7 @@
    "name": "Wikipédia",
    "url": "https://fr.wikipedia.org/"
   }
- }
+ },
+ "synthese_en": "Until the 2000s, the Carreau du Temple was a covered market run by the City, which subsidized the commercial promotion events of its traders' union for three consecutive years (1995-1997), 10,000 francs a year, and set its market fees, 11.36 € per square meter per month for the \"Temple friperie\" shops in 2006. In 2001, a question at the Council raised the conflict between the traders and the fashion shows held in the hall, and the deputy mayor replied that the market was in decline and that a renovation was being considered. In 2004 the City decided to turn it into a \"major neighborhood facility for sports and cultural use,\" then followed with an archaeological survey, project management awarded to Studio Milou (2007), termination of the project-owner assistance contract held by the company GUIGUES SA with 655,032 € in advance payment refunded (2009), and works and excavation contracts; in July 2009 the traders were compensated according to a scale (200 € per year of seniority, 100 € per m², a flat 10,000 €, with unpaid rent deducted) and had to leave by 20 August at the latest, while in June an opposition councillor stated in session that the project, costed at 30 million euros at the outset, now cost \"double that\" before the first pickaxe blow. After delivery in 2014, operation was handed to a local public company (société publique locale): equipment grants in 2016 for an amount announced differently depending on the speaker (260,000 € per the project's title, 250,000 € according to the mayor of the 3rd arrondissement, 300,000 € according to the first deputy mayor), a new public service delegation in 2018 with the town of La Courneuve entering as a shareholder and 400,000 visitors announced, then an amendment with 50,000 € in 2021, after a period in which the closed hall had served as a day shelter.",
+ "bmo_recit_en": "The Carreau du Temple appears in the Bulletin municipal officiel in the late 1880s, as a matter of trade and land. In February 1889, the Council was presented with a petition from the Union syndicale des marchands brocanteurs (secondhand dealers' union) concerning the organization of sales and access to the carreau. In August of the same year, the Bulletin described this 3,900-square-meter municipal plot, located right in the heart of the district, as a space \"very poorly used.\" In November 1891, a memorandum from the Prefect of the Seine concerning the concession of the Carreau du Temple hall was referred to the Administration. The archive retains only these three moments, clustered within three years."
 }

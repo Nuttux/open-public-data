@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T20:11:17.537074+00:00",
+ "generated_at": "2026-07-20T20:28:18.117255+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "halle-saint-pierre",
  "name": "Halle Saint-Pierre",
@@ -22,7 +22,8 @@
   "source": {
    "name": "Wikipédia",
    "url": "https://fr.wikipedia.org/"
-  }
+  },
+  "extract_en": "The Halle Saint-Pierre is a museum devoted to naive art, art brut, art singulier, and outsider art. It is located in Paris, at the foot of the Montmartre hill, in a former Baltard-style market hall that once housed a market, then a school, and later a garage for the City's cleaning department."
  },
  "stats": {
   "n_delibs": 473,
@@ -65,7 +66,9 @@
    "fait": "Le Conseil autorise le Maire à signer avec l'association une convention d'objectifs et une convention d'occupation du domaine public pour les locaux du 2, rue Ronsard.",
    "pourquoi": "le cadre fondateur : la Ville héberge, l'association occupe",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=33683"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=33683",
+   "fait_en": "The Council authorized the Mayor to sign with the association an objectives agreement and an agreement for occupying the public domain covering the premises at 2 rue Ronsard.",
+   "pourquoi_en": "The founding framework: the City hosts, the association occupies"
   },
   {
    "id": "12228",
@@ -73,7 +76,9 @@
    "fait": "Autour de la subvention de 680 000 euros, M. Garel indique que les fonctionnaires chargés de l'audit ont transmis des remarques au Procureur et qu'une information judiciaire est ouverte, et demande un versement fractionné.",
    "pourquoi": "un audit de gestion vire au judiciaire",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=12228"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=12228",
+   "fait_en": "Around the grant of 680,000 euros, Mr Garel stated that the officials in charge of the audit had forwarded findings to the Public Prosecutor and that a judicial inquiry had been opened, and requested that payment be split.",
+   "pourquoi_en": "A management audit turns into a judicial matter"
   },
   {
    "id": "20577",
@@ -81,7 +86,9 @@
    "fait": "Le débat porte sur un projet de suppression du service d'animation inscrit à l'ordre du jour du conseil d'administration, que plusieurs élus contestent au nom de la médiation jeunesse.",
    "pourquoi": "faut-il sacrifier la médiation pour les scolaires",
    "vedette": false,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=20577"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=20577",
+   "fait_en": "The debate concerned a proposal to eliminate the outreach service, placed on the board's agenda, which several councillors opposed in the name of youth outreach.",
+   "pourquoi_en": "Should outreach to schoolchildren be sacrificed"
   },
   {
    "id": "21508",
@@ -89,7 +96,9 @@
    "fait": "La subvention passe de 680 000 à 650 000 euros ; les élus annoncent un redressement des comptes en 2009 et un changement de présidence après le départ de M. Riglet.",
    "pourquoi": "sortie de crise : comptes et présidence renouvelés",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=21508"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=21508",
+   "fait_en": "The grant fell from 680,000 to 650,000 euros; councillors announced that the accounts had been turned around in 2009 and that there had been a change of chairmanship following Mr Riglet's departure.",
+   "pourquoi_en": "Out of the crisis: accounts and leadership renewed"
   },
   {
    "id": "140032",
@@ -97,7 +106,9 @@
    "fait": "M. Julliard signale que la halle vient de subir un feu de façade parti d'un tas d'ordures et un cambriolage, tout en réaffirmant le soutien de la Ville.",
    "pourquoi": "incendie et cambriolage frappent le musée",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=140032"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=140032",
+   "fait_en": "Mr Julliard reported that the hall had just suffered a facade fire started by a pile of rubbish and a burglary, while reaffirming the City's support.",
+   "pourquoi_en": "Fire and burglary strike the museum"
   },
   {
    "id": "150078",
@@ -105,7 +116,9 @@
    "fait": "Mme Mées affirme qu'en 2018 la Ville a mené d'importants travaux sur le bâtiment (toiture, auditorium, chauffage, aération) pour améliorer l'accueil du public.",
    "pourquoi": "la Ville dit avoir rénové toiture et chauffage",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=150078"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=150078",
+   "fait_en": "Ms Mées stated that in 2018 the City had carried out major works on the building (roof, auditorium, heating, ventilation) to improve conditions for visitors.",
+   "pourquoi_en": "The City says it renovated the roof and heating"
   },
   {
    "id": "169860",
@@ -113,7 +126,9 @@
    "fait": "Le groupe Changer Paris relaie un « appel au secours » des personnels sur leurs conditions de travail, après un afflux de visiteurs lié à une story Instagram vue plusieurs millions de fois.",
    "pourquoi": "un pic viral expose la détresse des salariés",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=169860"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=169860",
+   "fait_en": "The Changer Paris group relayed a \"cry for help\" from staff over their working conditions, following a surge of visitors linked to an Instagram story viewed several million times.",
+   "pourquoi_en": "A viral spike exposes staff distress"
   },
   {
    "id": "170392",
@@ -121,7 +136,9 @@
    "fait": "Le projet DAC 143 est adopté : la subvention est fixée à 380 000 euros et Mme Rolland dit avoir engagé un plan pluriannuel de travaux sur la « structure Eiffel ».",
    "pourquoi": "subvention en baisse, travaux enfin promis",
    "vedette": false,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=170392"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=170392",
+   "fait_en": "Draft deliberation DAC 143 was adopted: the grant was set at 380,000 euros, and Ms Rolland said she had launched a multi-year works plan on the \"Eiffel structure.\"",
+   "pourquoi_en": "Grant down, works finally promised"
   }
  ],
  "montants": [
@@ -358,5 +375,6 @@
    "name": "Wikipédia",
    "url": "https://fr.wikipedia.org/"
   }
- }
+ },
+ "synthese_en": "In October 2001, the City authorized an objectives agreement and an agreement for occupying the public domain that governed the association's presence in the municipal building at 2 rue Ronsard. For a decade, the annual grant remained high, generally around 680,000 euros, but starting in 2006-2007 it was accompanied by management difficulties: an audit by the Inspection générale pointing to dysfunctions, then a Council motion calling for payment in two installments conditional on implementing its recommendations, and, according to councillors, a judicial inquiry and the chairman's departure. From 2010, the City's contribution declined (650,000 euros), then 470,000 in 2017, 450,000 in 2019, and 380,000 in 2023, against a backdrop of recurring debates over youth outreach, the building's poor thermal comfort, and incidents (a facade fire and a burglary mentioned in 2017). In 2023, a \"cry for help\" from staff, amplified by a surge of visitors following an Instagram story, revived the question of working conditions, and the deputy mayor for Culture said she had launched a multi-year works plan. Separately, four motions from 2009 concerned not the Halle itself but its surroundings, where a support committee for a couple dismissed from the neighboring Marché Saint-Pierre was distributing leaflets."
 }

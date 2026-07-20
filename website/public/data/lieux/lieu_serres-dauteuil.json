@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T20:11:17.537074+00:00",
+ "generated_at": "2026-07-20T20:28:18.117255+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "serres-dauteuil",
  "name": "Serres d'Auteuil",
@@ -22,7 +22,8 @@
   "source": {
    "name": "Wikipédia",
    "url": "https://fr.wikipedia.org/"
-  }
+  },
+  "extract_en": "The Jardin des Serres d'Auteuil is a botanical garden open to the public, located on the edge of the Bois de Boulogne in Paris, France. It is one of the four sites of the City of Paris's botanical garden. Redeveloped at the end of the 19th century under the direction of Jean Camille Formigé, it features large cast-iron greenhouses painted turquoise blue, built by the French architect in 1898, a fountain by Jules Dalou, and mascarons by Auguste Rodin."
  },
  "stats": {
   "n_delibs": 107,
@@ -46,7 +47,8 @@
   {
    "beneficiaire": "ARS MOBILIS",
    "montant_total": 4500.0,
-   "preuve": "Objet de la subvention : « Les Solistes à l'Orangerie des Serres d'Auteuil » — concerts donnés à l'Orangerie, dans le jardin ; l'association ne gère pas le lieu (site en régie Ville de Paris / DEVE : « les jardiniers qui sont en charge des serres d'Auteuil » sont des agents de la Ville, délibération 2012 DEVE 75 ; adresse confirmée 3 avenue de la Porte-d'Auteuil, 16e)."
+   "preuve": "Objet de la subvention : « Les Solistes à l'Orangerie des Serres d'Auteuil » — concerts donnés à l'Orangerie, dans le jardin ; l'association ne gère pas le lieu (site en régie Ville de Paris / DEVE : « les jardiniers qui sont en charge des serres d'Auteuil » sont des agents de la Ville, délibération 2012 DEVE 75 ; adresse confirmée 3 avenue de la Porte-d'Auteuil, 16e).",
+   "preuve_en": "Grant purpose: \"Les Solistes à l'Orangerie des Serres d'Auteuil\" — concerts given at the Orangerie, within the garden; the association does not manage the place (the site is run directly by the City of Paris / DEVE: \"the gardeners in charge of the Serres d'Auteuil\" are City staff, deliberation 2012 DEVE 75; address confirmed as 3 Avenue de la Porte-d'Auteuil, 16th)."
   }
  ],
  "kpi_montant": null,
@@ -58,7 +60,9 @@
    "fait": "Le Conseil autorise le Maire à déposer un permis de démolir visant les conduits de fumée de l'ancienne chaufferie des serres d'Auteuil.",
    "pourquoi": "Premier permis de démolir sur l'ancienne chaufferie",
    "vedette": false,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=2201"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=2201",
+   "fait_en": "The Council authorized the Mayor to file a demolition permit for the flues of the former boiler house at the Serres d'Auteuil.",
+   "pourquoi_en": "First demolition permit, on the former boiler house"
   },
   {
    "id": "5349",
@@ -66,7 +70,9 @@
    "fait": "Pour le centenaire du jardin, le Conseil débat de l'autorisation de signer des conventions de mécénat (Gaz de France, Carrefour) finançant l'exposition « Palmiers entre soleil et ombre ».",
    "pourquoi": "Le centenaire du jardin ouvre la porte au mécénat privé",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=5349"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=5349",
+   "fait_en": "For the garden's centenary, the Council debated authorizing the signing of sponsorship agreements (Gaz de France, Carrefour) financing the exhibition \"Palmiers entre soleil et ombre\".",
+   "pourquoi_en": "The garden's centenary opens the door to private sponsorship"
   },
   {
    "id": "20770",
@@ -74,7 +80,9 @@
    "fait": "Des élus U.M.P. interrogent le Maire sur une suppression, signalée par des correspondants, de la gratuité d'accès aux serres pour les titulaires de la carte « Paris-Famille », qui passeraient au demi-tarif ; la réponse n'est pas parvenue.",
    "pourquoi": "Une gratuité pour les familles signalée comme supprimée",
    "vedette": false,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=20770"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=20770",
+   "fait_en": "U.M.P. councillors questioned the Mayor about the ending, reported by correspondents, of free access to the greenhouses for holders of the \"Paris-Famille\" card, who would move to half price; the reply had not been received.",
+   "pourquoi_en": "Free access for families reported as ended"
   },
   {
    "id": "38548",
@@ -82,7 +90,9 @@
    "fait": "Le Conseil autorise le Maire à déposer une demande de permis de démolir un groupe de serres dites « couloir A » dans le jardin des serres d'Auteuil.",
    "pourquoi": "Feu vert à une demande de permis de démolir un groupe de serres",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=38548"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=38548",
+   "fait_en": "The Council authorized the Mayor to file a demolition-permit application for a group of greenhouses known as \"Corridor A\" in the Jardin des Serres d'Auteuil.",
+   "pourquoi_en": "Green light for a demolition-permit application for a group of greenhouses"
   },
   {
    "id": "25483",
@@ -90,7 +100,9 @@
    "fait": "L'U.M.P.P.A. demande par vœu que le comité de concertation de la Porte d'Auteuil, promis en 2008 mais jamais réuni, se tienne avant toute délibération d'urbanisme ; Anne Hidalgo propose de retirer le vœu.",
    "pourquoi": "Un comité de concertation promis mais jamais réuni",
    "vedette": false,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=25483"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=25483",
+   "fait_en": "The U.M.P.P.A. asked, via a motion, that the Porte d'Auteuil consultation committee, promised in 2008 but never convened, meet before any planning deliberation; Anne Hidalgo proposed withdrawing the motion.",
+   "pourquoi_en": "A consultation committee promised but never convened"
   },
   {
    "id": "20427",
@@ -98,7 +110,9 @@
    "fait": "Le Maire présente un vœu pour maintenir Roland-Garros à Paris et défend l'extension ; le groupe E.E.L.V.A. dépose un vœu concurrent pour la préservation des serres d'Auteuil.",
    "pourquoi": "Roland-Garros contre les serres : le conflit s'ouvre",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=20427"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=20427",
+   "fait_en": "The Mayor presented a motion to keep Roland-Garros in Paris and defended the extension; the E.E.L.V.A. group filed a competing motion for preserving the Serres d'Auteuil.",
+   "pourquoi_en": "Roland-Garros versus the greenhouses: the conflict opens"
   },
   {
    "id": "107297",
@@ -106,7 +120,9 @@
    "fait": "La délibération DEVE 75 engage les demandes d'autorisations d'urbanisme pour les serres et le réseau de chauffage ; le débat porte sur le terrain de tennis prévu sur les serres chaudes.",
    "pourquoi": "Les autorisations d'urbanisme actent le projet contesté",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=107297"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=107297",
+   "fait_en": "Deliberation DEVE 75 launched the planning-authorization requests for the greenhouses and the heating network; the debate concerned the tennis court planned on the site of the hot greenhouses.",
+   "pourquoi_en": "The planning authorizations formalize the contested project"
   }
  ],
  "montants": [
@@ -303,5 +319,6 @@
    "name": "Wikipédia",
    "url": "https://fr.wikipedia.org/"
   }
- }
+ },
+ "synthese_en": "As early as the mid-1990s, Conseil de Paris regularly authorized the Mayor to file permits to demolish, rebuild, or restructure greenhouses at the Jardin des Serres d'Auteuil, from the permit for the flues of the former boiler house (1995) to the rebuilding of greenhouses (1997-2000). In 1999, for the garden's centenary, the City presented the exhibition \"Palmiers entre soleil et ombre\" (\"Palm Trees Between Sun and Shade\"), and the Council authorized signing partnership agreements with Gaz de France and Carrefour, whose late regularization was criticized in session. From 2010, the site tipped into a development conflict: facing the Roland-Garros extension project carried by the F.F.T. (French Tennis Federation), the Mayor backed a motion asserting that only recent \"working greenhouses\" would be affected, while the E.E.L.V.A. group filed a competing motion for preserving the greenhouses. In 2012, deliberation DEVE 75 launched the planning-authorization requests linked to this project, including a new tennis court, amid a debate in which councillors challenged the cost and the method."
 }

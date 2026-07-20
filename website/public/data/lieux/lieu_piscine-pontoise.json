@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T20:11:17.537074+00:00",
+ "generated_at": "2026-07-20T20:28:18.117255+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "piscine-pontoise",
  "name": "Piscine Pontoise",
@@ -22,7 +22,8 @@
   "source": {
    "name": "Wikipédia",
    "url": "https://fr.wikipedia.org/"
-  }
+  },
+  "extract_en": "The Piscine Pontoise is a swimming pool located at 19 rue de Pontoise in the 5th arrondissement of Paris (France)."
  },
  "stats": {
   "n_delibs": 71,
@@ -53,7 +54,9 @@
    "fait": "Le Conseil autorise M. le Maire de Paris a signer une convention de delegation de service public pour la gestion de la piscine : Alain MORELL y voit « la privatisation renforcee des activites sportives » et demande le montant des redevances versees depuis cinq ans, que le rapporteur Dominique CANE ne communique pas dans sa reponse ; celui-ci indique que 27 des 33 piscines publiques parisiennes sont gerees en regie directe et que le squash et le fitness representent « plus de la moitie des recettes ». Le projet est adopte a la majorite, les groupes communiste et du Mouvement des citoyens votant contre.",
    "pourquoi": "Le mode de gestion en debat : delegation ou regie",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=19351"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=19351",
+   "fait_en": "The Council authorized the Mayor of Paris to sign a public service delegation agreement for management of the pool: Alain MORELL saw it as \"the intensified privatization of sporting activities\" and asked for the amount of royalties paid over the previous five years, which rapporteur Dominique CANE did not provide in his reply; he stated that 27 of the 33 public pools in Paris were run under direct public management and that squash and fitness accounted for \"more than half of the revenue.\" The plan was adopted by majority vote, with the Communist group and the Mouvement des citoyens group voting against.",
+   "pourquoi_en": "The management model in debate: delegation or direct management"
   },
   {
    "id": "29974",
@@ -61,7 +64,9 @@
    "fait": "Le Conseil approuve les tarifs d'acces des usagers individuels applicables au 1er janvier 2002 et autorise le Maire a souscrire un avenant a la convention de delegation, suite a ces modifications tarifaires et a la conversion en euro des montants du contrat.",
    "pourquoi": "En 2001, les tarifs d'acces passent par une deliberation du Conseil",
    "vedette": false,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=29974"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=29974",
+   "fait_en": "The Council approved the individual admission rates applicable from 1 January 2002 and authorized the Mayor to sign an amendment to the delegation agreement, following these rate changes and the conversion of the contract's amounts to euros.",
+   "pourquoi_en": "In 2001, admission rates go through a Council deliberation"
   },
   {
    "id": "70942",
@@ -69,7 +74,9 @@
    "fait": "Le Conseil autorise la cession a l'Association Diocesaine de Paris d'un volume en trefonds de 249 m2 sous la parcelle de la piscine, au prix de 68 750 euros, plus 40 000 euros pour une tolerance de passage et 72 000 euros pour l'implantation de micropieux ; le volume est soustrait de la concession de l'exploitant. La deliberation indique une valeur comptable de 9 346 euros et une plus-value previsionnelle de 59 404 euros.",
    "pourquoi": "Ce que la Ville tire du sous-sol de la piscine",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=70942"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=70942",
+   "fait_en": "The Council authorized the sale to the Association Diocésaine de Paris of a 249 m² subsurface volume beneath the pool's plot, for €68,750, plus €40,000 for a right of passage and €72,000 for the installation of micropiles; the volume is carved out of the operator's concession. The deliberation states a book value of €9,346 and a projected capital gain of €59,404.",
+   "pourquoi_en": "What the City gets out of the pool's subsoil"
   },
   {
    "id": "147487",
@@ -77,7 +84,9 @@
    "fait": "Apres la fermeture du 21 decembre, decidee selon l'adjoint Jean-Francois MARTINS « par anticipation pour des raisons de securite », celui-ci annonce en seance un budget d'operation « releve de 3,2 millions a 5,6 millions d'euros T.T.C. » et indique que l'exploitation des autres surfaces sportives sera assuree durant les travaux. Le voeu du groupe les Republicains et Independants, qui demandait un budget supplementaire, est adopte avec un avis favorable de l'Executif.",
    "pourquoi": "Le budget de l'operation passe de 3,2 a 5,6 millions d'euros en seance",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=147487"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=147487",
+   "fait_en": "After the 21 December closure, decided according to deputy mayor Jean-François MARTINS \"as a precaution for safety reasons,\" he announced during the session an operating budget \"raised from €3.2 million to €5.6 million including tax\" and stated that the other sports facilities' operation would be maintained during the works. The motion from the Republicans and Independents group, which had called for an additional budget, was adopted with a favorable opinion from the executive.",
+   "pourquoi_en": "The operating budget rises from €3.2 to €5.6 million during the session"
   },
   {
    "id": "156230",
@@ -85,7 +94,9 @@
    "fait": "La delegation accordee a S3P s'acheve le 30 juin 2020 sans etre prolongee : l'adjoint Karim ZIADY explique qu'une nouvelle prolongation « n'aurait pas pu passer le controle de legalite ». Selon la maire du 5e, les salaries se sont vu signifier en fevrier 2020 qu'ils seraient « soit reclasses, soit licencies » ; son voeu demande la reprise en regie directe de l'activite et des personnels qui le souhaitent et, a defaut (« un amendement de repli »), que le prochain appel d'offres impose au futur delegataire de reprendre « les anciens salaries licencies au 30 juin 2020 qui le souhaitent avec leur ancien contrat de travail ».",
    "pourquoi": "Ce que devient le personnel quand la delegation s'arrete",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=156230"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=156230",
+   "fait_en": "The delegation granted to S3P ended on 30 June 2020 without being extended: deputy mayor Karim ZIADY explained that a further extension \"could not have passed the legality review.\" According to the mayor of the 5th arrondissement, staff were informed in February 2020 that they would be \"either redeployed or laid off\"; her motion called for the activity and any staff who wished it to be brought back under direct public management, and failing that (a \"fallback amendment\"), for the next call for tenders to require the future delegate to take back \"the former employees laid off as of 30 June 2020 who wish it, with their former employment contract.\"",
+   "pourquoi_en": "What becomes of the staff when the delegation ends"
   },
   {
    "id": "157590",
@@ -93,7 +104,9 @@
    "fait": "La maire du 5e Florence BERTHOUT declare avoir decouvert le 16 decembre 2020 que les travaux ne seraient pas acheves « avant a minima septembre 2022 » et que le programme ne prevoyait que la verriere, sans traiter le bassin ni les toitures des salles de sport adjacentes ; son voeu demande le lancement en urgence d'une etude de structure du bassin. L'adjoint Pierre RABADAN evoque « de nombreux affrontements administratifs » entre les services de l'Etat et ceux de la Ville, et repond que « l'ensemble des considerants que vous demandez sont maintenant inclus dans les etudes en cours ».",
    "pourquoi": "Le perimetre du chantier en debat : la verriere seule ou aussi le bassin",
    "vedette": false,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=157590"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=157590",
+   "fait_en": "The mayor of the 5th arrondissement, Florence BERTHOUT, stated that she had discovered on 16 December 2020 that the works would not be completed \"before September 2022 at the earliest\" and that the programme only covered the glass roof, without addressing the pool basin or the roofs of the adjacent sports halls; her motion called for an urgent structural study of the pool basin to be launched. Deputy mayor Pierre RABADAN referred to \"numerous administrative clashes\" between the State's departments and the City's, and replied that \"all the considerations you are asking for are now included in the ongoing studies.\"",
+   "pourquoi_en": "The scope of the works in debate: the glass roof alone, or the pool basin too"
   },
   {
    "id": "164582",
@@ -101,7 +114,9 @@
    "fait": "Le Conseil examine la restructuration partielle de la piscine, chiffree en seance a 14,50 millions d'euros par l'adjoint Jacques BAUDRIER apres la decouverte, durant les travaux sur la verriere, de « problemes de structure du bassin et des plages ». La maire du 5e Florence BERTHOUT declare que le Conseil vote « avec 3 ans de retard » ; Anne BIRABEN affirme que la verriere d'origine « a ete entierement deposee » et remplacee par des fermes « plus hautes, plus minces, rehaussant la hauteur du batiment d'environ 1,50 metre ».",
    "pourquoi": "Le chiffrage du chantier et le sort de la verriere d'origine",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=164582"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=164582",
+   "fait_en": "The Council examined the partial restructuring of the pool, put at €14.50 million during the session by deputy mayor Jacques BAUDRIER after \"structural problems in the pool basin and surrounding decks\" were discovered during work on the glass roof. The mayor of the 5th arrondissement, Florence BERTHOUT, stated that the Council was voting \"three years late\"; Anne BIRABEN asserted that the original glass roof \"was entirely removed\" and replaced by trusses \"taller, thinner, raising the building's height by about 1.50 metres.\"",
+   "pourquoi_en": "Costing the works and the fate of the original glass roof"
   },
   {
    "id": "171859",
@@ -109,7 +124,9 @@
    "fait": "Le Conseil approuve le contrat de delegation confie a Prestalis a compter du 1er decembre, cinq ans apres la fermeture de l'equipement. Le groupe ecologiste s'abstient : Lea VASA juge qu'il s'agit d'« une delegation de service public sur une piscine qui est rentable » ; l'adjoint Pierre RABADAN indique que le contrat imposait au delegataire un tarif « entre 4 et 6 euros » et que celui-ci « est arrive sur 5,20 euros ».",
    "pourquoi": "Le retour de l'equipement et le prix d'entree en debat",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=171859"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=171859",
+   "fait_en": "The Council approved the delegation contract awarded to Prestalis effective 1 December, five years after the facility closed. The Green group abstained: Léa VASA argued that this amounted to \"a public service delegation over a pool that is profitable\"; deputy mayor Pierre RABADAN stated that the contract required the delegate to set a rate \"between €4 and €6\" and that it had \"come out at €5.20.\"",
+   "pourquoi_en": "The facility's return and the admission price in debate"
   }
  ],
  "montants": [
@@ -328,5 +345,6 @@
    "name": "Wikipédia",
    "url": "https://fr.wikipedia.org/"
   }
- }
+ },
+ "synthese_en": "The Council of Paris entrusts management of the Piscine Pontoise (19 rue de Pontoise, 5th arrondissement) through a public service delegation: the principle was approved in April 1997 under the Sapin law, the agreement with \"Les piscines de France\" in January 1998, extended in 2002, renewed in February 2004, and extended again in February 2010; the delegation granted to S3P ended on 30 June 2020 without being extended, and a new contract was awarded to Prestalis in October 2023. The management model repeatedly resurfaced in debate: in 1997, Alain MORELL saw it as \"the intensified privatization of the Piscine Pontoise's sporting activities,\" while rapporteur Dominique CANE stated that 27 of the 33 public swimming pools in Paris were then run under direct public management, that the Piscine Pontoise had been entrusted to the Société des piscines de France in 1978, and that squash and fitness there accounted for \"more than half of the revenue\"; in 2022 and then 2023, the Green group announced it would vote against and then abstain, Léa VASA arguing that this amounted to \"a public service delegation over a pool that is profitable.\" Between 1996 and 2001, the Council approved a succession of specific works in principle — fireproofing the metal frame, heating and ventilation, filtration on two occasions, securing the windows — with no amount recorded in the texts. In 2002, it approved the decommissioning and then the declassification of a 249 m² subsurface volume beneath the pool's plot, carved out of the operator's concession, before authorizing its sale to the Association Diocésaine de Paris for €68,750, along with two tolerances granted for €40,000 and €72,000. Closed on 21 December 2018 for safety reasons related to its glass roof, the pool became the subject of an operating budget announced during the session by deputy mayor Jean-François MARTINS as \"raised from €3.2 million to €5.6 million including tax\" in February 2019, then put at €14.50 million by deputy mayor Jacques BAUDRIER in February 2022, after structural problems in the pool basin and surrounding decks were discovered during work on the glass roof; according to the mayor of the 5th arrondissement, the sports centre's staff were redeployed or laid off by the delegate as of 30 June 2020. Reopening of the pool basin was announced for 1 December 2023, five years after the closure."
 }

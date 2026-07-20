@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T20:11:17.537074+00:00",
+ "generated_at": "2026-07-20T20:28:18.117255+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "parc-georges-brassens",
  "name": "Parc Georges-Brassens",
@@ -22,7 +22,8 @@
   "source": {
    "name": "Wikipédia",
    "url": "https://fr.wikipedia.org/"
-  }
+  },
+  "extract_en": "Parc Georges-Brassens is located in the 15th arrondissement of Paris, on the site of the former Vaugirard slaughterhouses. Opened in 1985, it covers 8.7 hectares of sloping ground that, in the 18th century, held the Périchaux vineyard."
  },
  "stats": {
   "n_delibs": 221,
@@ -52,7 +53,9 @@
    "fait": "Répondant à une question écrite de l'élue Laure Schneiter, l'adjointe Françoise de Panafieu indique que la fermeture estivale du parc a été ramenée de 22 h à 21 h 30 depuis 1996, pour des raisons de sécurité.",
    "pourquoi": "pourquoi le parc ferme plus tôt l'été",
    "vedette": false,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=15544"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=15544",
+   "fait_en": "Responding to a written question from councillor Laure Schneiter, deputy mayor Françoise de Panafieu stated that the park's summer closing time had been moved from 10:00 pm to 9:30 pm since 1996, for security reasons.",
+   "pourquoi_en": "Why the park closes earlier in summer"
   },
   {
    "id": "41516",
@@ -60,7 +63,9 @@
    "fait": "Le Conseil de Paris modifie la convention de 1989 pour autoriser le GIPPE à occuper aussi la partie basse de la Halle aux Chevaux, chaque samedi et dimanche, pour le marché du livre ancien et d'occasion.",
    "pourquoi": "le marché du livre ancien gagne toute la halle",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=41516"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=41516",
+   "fait_en": "The Conseil de Paris amended the 1989 agreement to authorize GIPPE to also occupy the lower part of the Halle aux Chevaux, every Saturday and Sunday, for the antiquarian and second-hand book market.",
+   "pourquoi_en": "The antiquarian book market takes over the whole hall"
   },
   {
    "id": "63126",
@@ -68,7 +73,9 @@
    "fait": "Le Conseil approuve une convention de six ans autorisant la Société centrale d'apiculture à occuper une partie du parc pour y exploiter un rucher, moyennant une redevance annuelle de 100 euros, et autorise le Maire à la signer.",
    "pourquoi": "le rucher pédagogique obtient un bail de six ans",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=63126"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=63126",
+   "fait_en": "The Council approved a six-year agreement authorizing the Société centrale d'apiculture to occupy part of the park to operate an apiary there, in exchange for an annual fee of 100 euros, and authorized the Mayor to sign it.",
+   "pourquoi_en": "The educational apiary gets a six-year lease"
   },
   {
    "id": "19766",
@@ -76,7 +83,9 @@
    "fait": "Lors du débat sur la création du marché « Georges Brassens », l'élue Claire de Clermont-Tonnerre conteste son implantation place Jacques Marette, à l'entrée du parc, estimant qu'elle ne répond pas à la demande initiale d'un marché sous la halle aux chevaux.",
    "pourquoi": "la localisation du nouveau marché fait débat",
    "vedette": false,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=19766"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=19766",
+   "fait_en": "During the debate on creating the \"Georges Brassens\" market, councillor Claire de Clermont-Tonnerre disputed its location on place Jacques Marette, at the park's entrance, arguing that it did not meet the original request for a market under the Halle aux Chevaux.",
+   "pourquoi_en": "The new market's location sparks debate"
   },
   {
    "id": "85962",
@@ -84,7 +93,9 @@
    "fait": "Le Conseil autorise le Maire à signer une convention accordant à l'association « Le Club Vaugirard » 800 bouteilles de vin issues des vignes du parc, à vendre au profit des œuvres sociales de l'arrondissement.",
    "pourquoi": "le vin des vignes du parc pour les œuvres sociales",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=85962"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=85962",
+   "fait_en": "The Council authorized the Mayor to sign an agreement granting the association \"Le Club Vaugirard\" 800 bottles of wine from the park's vineyards, to be sold in aid of the arrondissement's social welfare work.",
+   "pourquoi_en": "Wine from the park's vineyards for social welfare work"
   },
   {
    "id": "8637",
@@ -92,7 +103,9 @@
    "fait": "Le vœu demandant un arbre du souvenir pour Malik, adolescent tué, est adopté à l'unanimité, après que le maire du 15e eut, selon l'adjointe Fabienne Giboudeaux citant sa lettre du 18 février, d'abord jugé que le parc ne s'y prêtait pas.",
    "pourquoi": "un arbre du souvenir, malgré une réticence initiale",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=8637"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=8637",
+   "fait_en": "The motion requesting a memorial tree for Malik, a teenager who had been killed, was adopted unanimously, after the mayor of the 15th arrondissement had, according to deputy mayor Fabienne Giboudeaux citing his letter of February 18, initially judged the park unsuitable for it.",
+   "pourquoi_en": "A memorial tree, despite initial reluctance"
   },
   {
    "id": "172005",
@@ -100,7 +113,9 @@
    "fait": "Sur un vœu de l'Exécutif, l'adjoint Christophe Najdovski confirme que des études sont en cours pour améliorer les locaux du rucher pédagogique, en précisant que le classement du parc en espace boisé classé au P.L.U. y interdit toute construction.",
    "pourquoi": "agrandir le rucher, mais le parc est protégé",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=172005"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=172005",
+   "fait_en": "On a motion from the executive, deputy mayor Christophe Najdovski confirmed that studies were under way to improve the educational apiary's facilities, specifying that the park's classification as a protected woodland area under the local urban plan (P.L.U.) prohibits any construction there.",
+   "pourquoi_en": "Expanding the apiary, but the park is protected"
   },
   {
    "id": "183343",
@@ -108,7 +123,9 @@
    "fait": "Le Conseil de Paris adopte la dénomination « allée Raymond Devos » pour l'allée du parc donnant sur la place Jacques Marette, en hommage à l'humoriste ami de Georges Brassens.",
    "pourquoi": "une allée du parc nommée d'après Raymond Devos",
    "vedette": false,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=183343"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=183343",
+   "fait_en": "The Conseil de Paris adopted the name \"allée Raymond Devos\" for the park path opening onto place Jacques Marette, in tribute to the comedian and friend of Georges Brassens.",
+   "pourquoi_en": "A park path named after Raymond Devos"
   }
  ],
  "montants": [
@@ -159,17 +176,20 @@
   {
    "date": "1949-05-20",
    "extrait": "Fermeture des abattoirs de la Villette et de Vaugirard pour la fête de l'Ascension … Les abattoirs de la Villette et de Vaugi- rard, à l'exception des marchés de rassortiment, seront fermés le jeudi 26 mai 1949, jour de l'Ascension",
-   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k9639413w/f4.item"
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k9639413w/f4.item",
+   "extrait_en": "Closure of the Villette and Vaugirard slaughterhouses for Ascension Day … The Villette and Vaugi- rard slaughterhouses, with the exception of the wholesale resupply markets, will be closed on Thursday, May 26, 1949, Ascension Day"
   },
   {
    "date": "1950-04-29",
    "extrait": "approuvant une délibération du Conseil municipal de Paris en date du 30 décembre 1948 portant fixation des tarifs des droits et taxes diverses perçus aux Halles centrales, sur les marchés de rassortiment des abattoirs de la Villette et de Vaugirard , dans ces mêmes abattoirs et s",
-   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k9663638c/f14.item"
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k9663638c/f14.item",
+   "extrait_en": "approving a deliberation of the Conseil municipal de Paris dated December 30, 1948 setting the rates of various duties and taxes collected at the Halles centrales, at the wholesale resupply markets of the Villette and Vaugirard slaughterhouses, at these same slaughterhouses and s"
   },
   {
    "date": "1962-04-03",
    "extrait": "j'ai eu l'honneur de vous informer des dispositions que j'envisageais de prendre pour améliorer les conditions de desserte des abattoirs de Vaugirard , conformément au vœu émis par le Conseil",
-   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k9711222c/f19.item"
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k9711222c/f19.item",
+   "extrait_en": "I had the honor of informing you of the measures I intended to take to improve the service conditions of the Vaugirard slaughterhouses, in accordance with the motion issued by the Council"
   }
  ],
  "bmo_recit": "Dans le Bulletin municipal, le site n'apparaît pas encore comme un parc : il y figure sous le nom des abattoirs de Vaugirard, parmi les équipements de ravitaillement que la Ville administre au quotidien. En 1949, un avis annonce la fermeture des abattoirs de la Villette et de Vaugirard le jour de l'Ascension, à l'exception des marchés de rassortiment ; en 1950, le Bulletin publie le texte approuvant une délibération du Conseil municipal de décembre 1948 fixant les tarifs des droits et taxes perçus aux Halles centrales et dans ces mêmes abattoirs. En 1962, un rapport fait état de dispositions envisagées pour améliorer les conditions de desserte des abattoirs, conformément à un vœu émis par le Conseil. L'archive ne livre que ces quelques traces de gestion courante — jours de fermeture, taxes, desserte — d'un établissement alors en activité.",
@@ -201,5 +221,7 @@
    "name": "Wikipédia",
    "url": "https://fr.wikipedia.org/"
   }
- }
+ },
+ "synthese_en": "Across a quarter-century of Conseil de Paris sessions, Parc Georges-Brassens appears in small touches. In 1997, deputy mayor Françoise de Panafieu explained a reduction in summer opening hours for security reasons; in 2003, the City extended the occupation of its Halle aux Chevaux to include the antiquarian and second-hand book market; and in 2005 it regulated by agreement the Société centrale d'apiculture's educational apiary, in exchange for an annual fee of 100 euros. The park also reads as a place of life and memory: a memorial tree voted unanimously in 2010 for a teenager who had been killed, 800 bottles of wine from its vineyards granted by agreement that same year to an association for the arrondissement's social welfare work, a food market created at its entrance in 2007 despite debate over its location. More recently, the executive stated that studies were continuing on expanding the apiary, in keeping with the park's classification as a protected woodland area (2023), while its paths were honored in 2025, with the adoption of the name \"allée Raymond Devos\" and a tribute to Alexis Grüss.",
+ "bmo_recit_en": "In the municipal bulletin, the site does not yet appear as a park: it is listed under the name of the Vaugirard slaughterhouses, among the supply facilities that the City administered day to day. In 1949, a notice announced the closure of the Villette and Vaugirard slaughterhouses on Ascension Day, with the exception of the wholesale resupply markets; in 1950, the Bulletin published the text approving a December 1948 deliberation of the Conseil municipal setting the rates of duties and taxes collected at the Halles centrales and at these same slaughterhouses. In 1962, a report noted measures planned to improve the slaughterhouses' service conditions, in accordance with a motion issued by the Council. The archive offers only these few traces of day-to-day management — closing days, taxes, service conditions — of a facility then in operation."
 }

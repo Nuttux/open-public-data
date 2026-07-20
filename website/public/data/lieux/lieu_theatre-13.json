@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T20:11:17.537074+00:00",
+ "generated_at": "2026-07-20T20:28:18.117255+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "theatre-13",
  "name": "Théâtre 13",
@@ -17,7 +17,8 @@
   "source": {
    "name": "Wikipédia",
    "url": "https://fr.wikipedia.org/"
-  }
+  },
+  "extract_en": "Théâtre 13, historically located at 103A boulevard Auguste-Blanqui in the 13th arrondissement of Paris, is a district theatre created in 1981 and subsidized by the City of Paris. Since November 2011, a second venue has been added at 30 rue du Chevaleret, also in the 13th arrondissement, under the name \"Théâtre 13 / Bibliothèque,\" with the historic venue consequently renamed \"Théâtre 13 / Glacière.\""
  },
  "stats": {
   "n_delibs": 1006,
@@ -39,32 +40,38 @@
   {
    "beneficiaire": "LES MILLE PRINTEMPS",
    "montant_total": 9000.0,
-   "preuve": "Objet : « Aide à la diffusion pour 16 représentations du spectacle BIQUES au Théâtre 13 » — aide à une compagnie pour un spectacle joué au lieu, pas de gestion du lieu."
+   "preuve": "Objet : « Aide à la diffusion pour 16 représentations du spectacle BIQUES au Théâtre 13 » — aide à une compagnie pour un spectacle joué au lieu, pas de gestion du lieu.",
+   "preuve_en": "Purpose: \"Distribution support for 16 performances of the show BIQUES at Théâtre 13\" — support for a company for a show performed at the venue, not management of the venue."
   },
   {
    "beneficiaire": "TEATRO PICARO",
    "montant_total": 5000.0,
-   "preuve": "Objet : « LA FUITE d'après Luigi PIRANDELLO au Théâtre 13 à Paris. » — spectacle présenté au lieu."
+   "preuve": "Objet : « LA FUITE d'après Luigi PIRANDELLO au Théâtre 13 à Paris. » — spectacle présenté au lieu.",
+   "preuve_en": "Purpose: \"LA FUITE after Luigi PIRANDELLO at Théâtre 13 in Paris.\" — show presented at the venue."
   },
   {
    "beneficiaire": "COMPAGNIE DTM 9.4",
    "montant_total": 5000.0,
-   "preuve": "Objet : « Viril(e.s) - reprise au Théâtre 13-AAP-SV22DIF2 » — reprise d'un spectacle au lieu."
+   "preuve": "Objet : « Viril(e.s) - reprise au Théâtre 13-AAP-SV22DIF2 » — reprise d'un spectacle au lieu.",
+   "preuve_en": "Purpose: \"Viril(e.s) - revival at Théâtre 13-AAP-SV22DIF2\" — revival of a show at the venue."
   },
   {
    "beneficiaire": "COMPAGNIE EULALIE",
    "montant_total": 5000.0,
-   "preuve": "Objet : « Aide à la diffusion NOS EDUCATIONS SENTIMENTALES texte et Mes : Sophie Lecarpentier THEATRE 13 PARIS » — la compagnie est déjà attestée au Théâtre 13 par délibération (2009 DAC 423 : « Le jour de l'italienne présenté au Théâtre 13 »)."
+   "preuve": "Objet : « Aide à la diffusion NOS EDUCATIONS SENTIMENTALES texte et Mes : Sophie Lecarpentier THEATRE 13 PARIS » — la compagnie est déjà attestée au Théâtre 13 par délibération (2009 DAC 423 : « Le jour de l'italienne présenté au Théâtre 13 »).",
+   "preuve_en": "Purpose: \"Distribution support NOS EDUCATIONS SENTIMENTALES text and direction: Sophie Lecarpentier THEATRE 13 PARIS\" — the company is already attested at Théâtre 13 by a deliberation (2009 DAC 423: \"Le jour de l'italienne performed at Théâtre 13\")."
   },
   {
    "beneficiaire": "COMPAGNIE MESDEN",
    "montant_total": 5000.0,
-   "preuve": "Objet : « Aide à la diffusion Spectacle 3 contrefaçons, Bucarest, Ibiza, Venise au Théâtre 13 » — spectacle diffusé au lieu."
+   "preuve": "Objet : « Aide à la diffusion Spectacle 3 contrefaçons, Bucarest, Ibiza, Venise au Théâtre 13 » — spectacle diffusé au lieu.",
+   "preuve_en": "Purpose: \"Distribution support for the show 3 contrefaçons, Bucarest, Ibiza, Venise at Théâtre 13\" — show performed at the venue."
   },
   {
    "beneficiaire": "LE TEMPS DES POSSIBLES",
    "montant_total": 4000.0,
-   "preuve": "Objet : « Dispositif d'aide à la création et à la diffusion de la pièce de G. Calderon au Théâtre 13 Seine » — le « Théâtre 13 Seine » est la salle rue du Chevaleret du Théâtre 13 (délib. DAC 696, sept. 2011 : « le nouveau théâtre de la rue du Chevaleret qui devient le Théâtre 13 Seine »)."
+   "preuve": "Objet : « Dispositif d'aide à la création et à la diffusion de la pièce de G. Calderon au Théâtre 13 Seine » — le « Théâtre 13 Seine » est la salle rue du Chevaleret du Théâtre 13 (délib. DAC 696, sept. 2011 : « le nouveau théâtre de la rue du Chevaleret qui devient le Théâtre 13 Seine »).",
+   "preuve_en": "Purpose: \"Creation and distribution support scheme for the play by G. Calderon at Théâtre 13 Seine\" — \"Théâtre 13 Seine\" is the rue du Chevaleret venue of Théâtre 13 (deliberation DAC 696, Sept. 2011: \"the new theatre on rue du Chevaleret which becomes Théâtre 13 Seine\")."
   }
  ],
  "kpi_montant": null,
@@ -76,7 +83,9 @@
    "fait": "Le Conseil autorise une convention de fonctionnement du Théâtre 13, dotée de 500 000 euros pour 2002.",
    "pourquoi": "le soutien municipal au fonctionnement du théâtre",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=58004"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=58004",
+   "fait_en": "The Council authorized an operating agreement for Théâtre 13, funded with 500,000 euros for 2002.",
+   "pourquoi_en": "municipal support for the theatre's operations"
   },
   {
    "id": "29656",
@@ -84,7 +93,9 @@
    "fait": "Un avenant porte la subvention 2002 de 500 000 à 561 000 euros pour intégrer les « scènes d'été du 13 ».",
    "pourquoi": "un complément pour les scènes d'été",
    "vedette": false,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=29656"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=29656",
+   "fait_en": "An amendment raised the 2002 subsidy from 500,000 to 561,000 euros to fold in the \"scènes d'été du 13.\"",
+   "pourquoi_en": "a supplement for the summer stages"
   },
   {
    "id": "18544",
@@ -92,7 +103,9 @@
    "fait": "Le Conseil vote la subvention 2003 (561 000 euros) ; le débat présente le théâtre comme occupant sans titre du centre Daviel, une convention d'occupation étant annoncée en préparation et l'association appelée à payer un loyer.",
    "pourquoi": "la question du statut d'occupant du théâtre dans un bâtiment municipal",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=18544"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=18544",
+   "fait_en": "The Council voted the 2003 subsidy (561,000 euros); the debate presented the theatre as occupying the Centre Daviel without title, with an occupancy agreement announced as being prepared and the association expected to pay rent.",
+   "pourquoi_en": "the question of the theatre's occupancy status in a municipal building"
   },
   {
    "id": "46808",
@@ -100,7 +113,9 @@
    "fait": "Une subvention d'équipement de 20 000 euros participe au financement de l'acquisition de matériels scéniques, lumière et son.",
    "pourquoi": "financer la scène, la lumière et le son",
    "vedette": false,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=46808"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=46808",
+   "fait_en": "An equipment subsidy of 20,000 euros contributed to financing the acquisition of stage, lighting, and sound equipment.",
+   "pourquoi_en": "financing the stage, lighting, and sound"
   },
   {
    "id": "10561",
@@ -108,7 +123,9 @@
    "fait": "Au vote des subventions 2006, l'opposition regrette une subvention de fonctionnement identique depuis cinq ans et réclame le rapport Faivre d'Arcier sur les théâtres d'arrondissement.",
    "pourquoi": "l'opposition dénonce une subvention gelée",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=10561"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=10561",
+   "fait_en": "During the vote on the 2006 subsidies, the opposition regretted an operating subsidy that had remained identical for five years and demanded the Faivre d'Arcier report on district theatres.",
+   "pourquoi_en": "the opposition denounces a frozen subsidy"
   },
   {
    "id": "53115",
@@ -116,7 +133,9 @@
    "fait": "Le Conseil autorise une convention d'occupation d'un an du Théâtre 13, valeur locative estimée à 26 000 euros, chauffage et électricité restant à la charge de la DJS.",
    "pourquoi": "un bail d'un an, chauffage payé par la Ville",
    "vedette": false,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=53115"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=53115",
+   "fait_en": "The Council authorized a one-year occupancy agreement for Théâtre 13, with an estimated rental value of 26,000 euros, heating and electricity remaining chargeable to the DJS (Department of Youth and Sports).",
+   "pourquoi_en": "a one-year lease, with heating paid by the City"
   },
   {
    "id": "37246",
@@ -124,7 +143,9 @@
    "fait": "La subvention de fonctionnement 2009 est portée à 576 000 euros, complétée d'une subvention d'équipement de 20 000 euros.",
    "pourquoi": "la subvention de fonctionnement portée à 576.000 euros, plus 20.000 d'équipement",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=37246"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=37246",
+   "fait_en": "The 2009 operating subsidy was raised to 576,000 euros, supplemented by an equipment subsidy of 20,000 euros.",
+   "pourquoi_en": "the operating subsidy raised to 576,000 euros, plus 20,000 for equipment"
   },
   {
    "id": "102037",
@@ -132,7 +153,9 @@
    "fait": "Le Conseil accorde 430 000 euros (50 000 de fonctionnement, 380 000 d'équipement) pour la gestion et l'équipement d'une nouvelle salle rue du Chevaleret, le théâtre gérant transitoirement deux salles.",
    "pourquoi": "une deuxième salle rue du Chevaleret",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=102037"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=102037",
+   "fait_en": "The Council granted 430,000 euros (50,000 for operations, 380,000 for equipment) for managing and equipping a new venue on rue du Chevaleret, with the theatre managing two venues on a transitional basis.",
+   "pourquoi_en": "a second venue on rue du Chevaleret"
   }
  ],
  "montants": [
@@ -320,5 +343,6 @@
    "name": "Wikipédia",
    "url": "https://fr.wikipedia.org/"
   }
- }
+ },
+ "synthese_en": "Run by the Association pour l'animation sportive et culturelle du Sud parisien, Théâtre 13 — a venue integrated into the Centre d'animation Daviel — receives an annual municipal operating subsidy, raised from 500,000 euros in 2002 to 561,000 euros after an amendment intended to fold in the \"scènes d'été du 13,\" an amount then held unchanged through 2007. In 2003, the debate highlighted the theatre's property status, presented in session as occupying a City building without title and expected to pay rent, with deputy mayor Christophe Girard announcing that an occupancy agreement was being prepared; the Council then authorized, in 2007 and again in 2008, the signing of one-year occupancy agreements whose rental value was estimated at 26,000 euros. The City supplemented this support with equipment subsidies of 20,000 euros (2004, 2006, 2009). After the opposition criticized an operating subsidy left unchanged \"for five years\" (2006), it was raised, to 576,000 euros in 2009 and then 596,000 euros in 2010. In 2011, the management of a new venue on rue du Chevaleret (in the Paris Rive Gauche district) came with a subsidy of 430,000 euros (50,000 for operations, 380,000 for equipment), the theatre then having to manage, on a transitional basis, two venues named \"Théâtre 13 Jardin\" and \"Théâtre 13 Seine.\""
 }

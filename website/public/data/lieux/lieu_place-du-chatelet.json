@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T20:11:17.537074+00:00",
+ "generated_at": "2026-07-20T20:28:18.117255+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "place-du-chatelet",
  "name": "Place du Châtelet",
@@ -22,7 +22,8 @@
   "source": {
    "name": "Wikipédia",
    "url": "https://fr.wikipedia.org/"
-  }
+  },
+  "extract_en": "The Place du Châtelet straddles the 1st and 4th arrondissements of Paris, on the banks of the Seine, at the entrance to the Pont au Change."
  },
  "stats": {
   "n_delibs": 1097,
@@ -50,7 +51,9 @@
    "fait": "Le Conseil autorise le Maire à déposer les permis pour rénover le hall d'accès principal (façade place du Châtelet) et améliorer l'accès des personnes handicapées au Théâtre musical de Paris.",
    "pourquoi": "Le plus ancien acte : accessibilité et façade",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=44178"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=44178",
+   "fait_en": "The Council authorized the Mayor to file permits to renovate the main entrance hall (façade on the Place du Châtelet) and improve access for people with disabilities at the Théâtre musical de Paris.",
+   "pourquoi_en": "The oldest act: accessibility and façade"
   },
   {
    "id": "38934",
@@ -58,7 +61,9 @@
    "fait": "Le Conseil approuve le principe de restauration des façades du Théâtre de la Ville et attribue le marché de maîtrise d'œuvre à Marc Ferauge.",
    "pourquoi": "Un maître d'œuvre nommé pour les façades",
    "vedette": false,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=38934"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=38934",
+   "fait_en": "The Council approved the principle of restoring the Théâtre de la Ville's façades and awarded the project management contract to Marc Ferauge.",
+   "pourquoi_en": "A project manager named for the façades"
   },
   {
    "id": "89595",
@@ -66,7 +71,9 @@
    "fait": "Le Conseil approuve la passation du marché de travaux de restauration des façades du Théâtre de la Ville et autorise le Maire à le signer.",
    "pourquoi": "Du projet de 2002 au marché de travaux",
    "vedette": false,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=89595"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=89595",
+   "fait_en": "The Council approved awarding the works contract for restoring the Théâtre de la Ville's façades and authorized the Mayor to sign it.",
+   "pourquoi_en": "From the 2002 project to the works contract"
   },
   {
    "id": "24809",
@@ -74,7 +81,9 @@
    "fait": "La place du Châtelet est présentée en séance comme le point de départ du premier axe du « réseau vert » vers le canal Saint-Martin, dont l'itinéraire est débattu.",
    "pourquoi": "La place, tête d'un axe vélo débattu",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=24809"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=24809",
+   "fait_en": "The Place du Châtelet is presented in session as the starting point of the first stretch of the \"green network\" toward the Canal Saint-Martin, whose route is debated.",
+   "pourquoi_en": "The square, head of a debated cycling route"
   },
   {
    "id": "72231",
@@ -82,7 +91,9 @@
    "fait": "Le Conseil approuve le principe de modernisation des cellules haute tension du Théâtre du Châtelet et le lancement du marché de travaux.",
    "pourquoi": "Une longue série d'entretiens techniques des théâtres",
    "vedette": false,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=72231"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=72231",
+   "fait_en": "The Council approved the principle of modernizing the Théâtre du Châtelet's high-voltage switchgear and the launch of the works contract.",
+   "pourquoi_en": "A long series of technical maintenance works on the theatres"
   },
   {
    "id": "170563",
@@ -90,7 +101,9 @@
    "fait": "Le Conseil attribue la dénomination « théâtre Sarah Bernhardt » au théâtre situé 2, place du Châtelet.",
    "pourquoi": "Le Théâtre de la Ville change de nom",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=170563"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=170563",
+   "fait_en": "The Council gave the name \"Théâtre Sarah Bernhardt\" to the theatre located at 2, Place du Châtelet.",
+   "pourquoi_en": "The Théâtre de la Ville changes its name"
   },
   {
    "id": "172018",
@@ -98,7 +111,9 @@
    "fait": "Une délibération d'octobre 2023 porte sur la transformation de la place du Châtelet elle-même.",
    "pourquoi": "La place elle-même entre en projet",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=172018"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=172018",
+   "fait_en": "An October 2023 deliberation concerns the transformation of the Place du Châtelet itself.",
+   "pourquoi_en": "The square itself becomes a project"
   }
  ],
  "montants": [],
@@ -134,5 +149,6 @@
    "name": "Wikipédia",
    "url": "https://fr.wikipedia.org/"
   }
- }
+ },
+ "synthese_en": "The deliberations that name the Place du Châtelet almost all concern the two theatres that line it — the Théâtre du Châtelet (1, place) and the Théâtre de la Ville (2, place). From 2002 to 2007, Conseil de Paris approved a series of work principles and authorized the Mayor to sign the corresponding contracts: restoration of the Théâtre de la Ville's façades (project management awarded in 2002 to Marc Ferauge), the stage floor and seating of the Théâtre du Châtelet, high-voltage substations and switchgear, and stage lighting. The oldest document, from 1998, authorized filing permits to renovate the main entrance hall on the Place du Châtelet side and to improve access for people with disabilities. In January 2006, the square is presented as the starting point — debated in session — of the first stretch of a \"green network\" of streets reserved for cyclists, pedestrians, and local traffic toward the Canal Saint-Martin. Twenty years later, in 2023, the Council gave the theatre at 2, Place du Châtelet the name \"Théâtre Sarah Bernhardt\" and deliberated on the transformation of the square itself."
 }

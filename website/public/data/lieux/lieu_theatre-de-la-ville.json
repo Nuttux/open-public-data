@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T20:11:17.537074+00:00",
+ "generated_at": "2026-07-20T20:28:18.117255+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "theatre-de-la-ville",
  "name": "Théâtre de la Ville",
@@ -22,7 +22,8 @@
   "source": {
    "name": "Wikipédia",
    "url": "https://fr.wikipedia.org/"
-  }
+  },
+  "extract_en": "Théâtre de la Ville - Sarah-Bernhardt is a Parisian theatre located at 2, place du Châtelet in the 4th arrondissement. From the early 1980s onward, it became a major venue for promoting contemporary dance and its young creators and securing their international recognition. Since 1996, it has also had a second venue in northern Paris, the Théâtre des Abbesses."
  },
  "stats": {
   "n_delibs": 310,
@@ -97,7 +98,8 @@
   "autres_sites": [
    "Théâtre des Abbesses (18e)",
    "site du 8e arrondissement cité dans les délibérations 2021 DAC 58 et 2022 DAC 58"
-  ]
+  ],
+  "note_publique_en": "The association \"Théâtre de la Ville\" does not manage only the venue at 2 place du Châtelet: it also operates the Théâtre des Abbesses (18th arrondissement) and, according to recent deliberations, a site in the 8th arrondissement. The subsidy shown covers all of these sites, not this building alone. The works contracts listed, however, do concern this venue in the 4th arrondissement: their purpose names \"Théâtre de la Ville\" and several specify \"75004\" or \"4ÈME.\""
  },
  "residents": [],
  "kpi_montant": null,
@@ -109,7 +111,9 @@
    "fait": "Le vote d'une subvention d'équipement de 243 919 euros donne lieu à un débat sur l'audit du cabinet Arthur Andersen, l'Exécutif confirmant le maintien de Jean Maheu à la présidence du conseil d'administration.",
    "pourquoi": "gouvernance associative sous tension",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=7459"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=7459",
+   "fait_en": "The vote on an equipment subsidy of 243,919 euros gave rise to a debate on the Arthur Andersen firm's audit, with the executive confirming that Jean Maheu would remain chairman of the board.",
+   "pourquoi_en": "association governance under strain"
   },
   {
    "id": "13772",
@@ -117,7 +121,9 @@
    "fait": "Le vote des subventions accompagne la passation de direction entre Gérard Violette et Emmanuel Demarcy-Mota, l'opposition critiquant une subvention gelée pour la troisième année consécutive.",
    "pourquoi": "changement de direction historique",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=13772"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=13772",
+   "fait_en": "The subsidy vote accompanied the handover of leadership between Gérard Violette and Emmanuel Demarcy-Mota, with the opposition criticizing a subsidy frozen for the third consecutive year.",
+   "pourquoi_en": "a historic change of leadership"
   },
   {
    "id": "21020",
@@ -125,7 +131,9 @@
    "fait": "La subvention de 10,4 millions d'euros est débattue au regard d'une coproduction passée de 840 000 à 600 000 euros et d'une subvention municipale représentant 77 % des produits.",
    "pourquoi": "poids de l'argent public chiffré",
    "vedette": false,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=21020"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=21020",
+   "fait_en": "The 10.4 million euro subsidy was debated in light of a co-production budget reduced from 840,000 to 600,000 euros and a municipal subsidy representing 77% of revenues.",
+   "pourquoi_en": "the weight of public funding quantified"
   },
   {
    "id": "116546",
@@ -133,7 +141,9 @@
    "fait": "En votant 300 000 euros d'équipement, l'Exécutif admet qu'une réfection globale du théâtre devra intervenir à la mandature suivante.",
    "pourquoi": "première annonce de la rénovation",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=116546"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=116546",
+   "fait_en": "In voting 300,000 euros for equipment, the executive admitted that a comprehensive renovation of the theatre would have to take place in the following term.",
+   "pourquoi_en": "the first announcement of the renovation"
   },
   {
    "id": "121345",
@@ -141,7 +151,9 @@
    "fait": "Le rapport de la Chambre régionale des comptes salue publics et programmation mais pointe un cadre statutaire lacunaire et des instances au rôle secondaire.",
    "pourquoi": "contrôle externe avant le chantier",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=121345"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=121345",
+   "fait_en": "The Chambre régionale des comptes report praised audiences and programming but pointed to a deficient statutory framework and governing bodies with a secondary role.",
+   "pourquoi_en": "external oversight ahead of the works"
   },
   {
    "id": "125471",
@@ -149,7 +161,9 @@
    "fait": "Le Conseil fixe la subvention 2015 à 10,9 millions d'euros et examine la rénovation du site (DPA 34), avec fermeture et programmation « hors les murs » de septembre 2016 à l'été 2018.",
    "pourquoi": "lancement du chantier, calendrier initial",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=125471"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=125471",
+   "fait_en": "The Council set the 2015 subsidy at 10.9 million euros and examined the site's renovation (DPA 34), with closure and \"off-site\" programming from September 2016 to summer 2018.",
+   "pourquoi_en": "the works launched, initial schedule"
   },
   {
    "id": "152349",
@@ -157,7 +171,9 @@
    "fait": "Le chantier étant toujours en cours, une bâche publicitaire aux recettes attendues de 3 à 5 millions d'euros doit financer la restauration des façades, phase non budgétée initialement.",
    "pourquoi": "financement inédit, chantier prolongé",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=152349"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=152349",
+   "fait_en": "With the works still under way, an advertising banner expected to bring in 3 to 5 million euros in revenue was to finance the restoration of the facades, a phase not originally budgeted.",
+   "pourquoi_en": "an unprecedented funding source, works prolonged"
   },
   {
    "id": "176363",
@@ -165,7 +181,9 @@
    "fait": "Le Conseil reçoit un nouveau rapport de la Chambre régionale des comptes consacré au Théâtre de la Ville.",
    "pourquoi": "second contrôle externe en dix ans",
    "vedette": false,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=176363"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=176363",
+   "fait_en": "The Council received a new Chambre régionale des comptes report devoted to the Théâtre de la Ville.",
+   "pourquoi_en": "a second external audit in ten years"
   }
  ],
  "montants": [
@@ -709,5 +727,6 @@
    "name": "Wikipédia",
    "url": "https://fr.wikipedia.org/"
   }
- }
+ },
+ "synthese_en": "From 1996 to 2006, the Conseil de Paris voted recurring investment subsidies (1,200,000 francs in 1996 and 1997, then 200,000 to 300,000 euros) and a series of deliberations on one-off works at the building at 2, place du Châtelet: facades (quai de Gesvres, 1999; all facades, 2002-2005), stage machinery (2000), fire safety (1998), glazed structures (2004), the high-voltage substation (2004), and stage lighting (2006). At the same time, the annual operating subsidy paid to the managing association — presented in session as the City's second-largest cultural subsidy — rose from 9,895,868 euros (2002) to 10 million (2004) and then 10.4 million (2009), amid debates over the Arthur Andersen audit (2002), Emmanuel Demarcy-Mota's succession to Gérard Violette (2008), and the weight of the subsidy in revenues (77%, according to a 2007 Inspection générale report cited in session). In November 2013, the executive acknowledged that a \"comprehensive renovation\" would have to take place in the following term, and the Chambre régionale des comptes report submitted in November 2014 praised the audience policy while pointing to gaps in the statutory and contractual framework. In May 2015, the Council examined the authorization to renovate the site (DPA 34), with an \"off-site\" programme announced over two seasons, from September 2016 to summer 2018; by September 2019, the works were still under way, their phases had been regrouped, and the restoration of the facades, a \"phase not originally budgeted,\" was financed by an advertising banner expected to bring in between 3 and 5 million euros in revenue. The 2021-2024 deliberations — investment subsidies of 600,000 then 850,000 euros, operating subsidies from 11,595,000 to 13,650,000 then 13,500,000 euros, occupancy agreements and a civil lease with the association (2023), a new C.R.C. report (2024) — are known here only by their titles."
 }

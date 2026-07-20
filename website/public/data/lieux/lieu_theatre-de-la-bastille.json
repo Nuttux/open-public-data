@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T20:11:17.537074+00:00",
+ "generated_at": "2026-07-20T20:28:18.117255+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "theatre-de-la-bastille",
  "name": "Théâtre de la Bastille",
@@ -22,7 +22,8 @@
   "source": {
    "name": "Wikipédia",
    "url": "https://fr.wikipedia.org/"
-  }
+  },
+  "extract_en": "Théâtre de la Bastille is a performance venue located at 76, rue de la Roquette in the 11th arrondissement of Paris. Its programme is mainly devoted to contemporary theatre and contemporary dance. Having become a public theatre in 2023, it has since been run by Claire Dupont."
  },
  "stats": {
   "n_delibs": 835,
@@ -50,7 +51,9 @@
    "fait": "Le Conseil de Paris attribue 100 000 F au Théâtre de la Bastille pour des spectacles d'un cycle de théâtre russe.",
    "pourquoi": "la plus ancienne trace, encore en francs",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=49812"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=49812",
+   "fait_en": "The Conseil de Paris granted 100,000 francs to the Théâtre de la Bastille for shows in a season of Russian theatre.",
+   "pourquoi_en": "the earliest record found, still in francs"
   },
   {
    "id": "70269",
@@ -58,7 +61,9 @@
    "fait": "Le Maire est autorisé à signer une subvention d'équipement de 50 154 euros pour les travaux de rénovation de la scène.",
    "pourquoi": "la Ville finance la rénovation de la scène",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=70269"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=70269",
+   "fait_en": "The Mayor was authorized to sign an equipment subsidy of 50,154 euros for renovation works on the stage.",
+   "pourquoi_en": "the City finances the stage's renovation"
   },
   {
    "id": "15576",
@@ -66,7 +71,9 @@
    "fait": "Un amendement augmente la subvention de 20 000 euros ; M. Girard annonce un courrier au directeur pour clarifier une aide exceptionnelle.",
    "pourquoi": "un courrier au directeur pour clarifier l'aide",
    "vedette": false,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=15576"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=15576",
+   "fait_en": "An amendment increased the subsidy by 20,000 euros; Mr Girard announced a letter to the director to clarify an exceptional grant.",
+   "pourquoi_en": "a letter to the director to clarify the grant"
   },
   {
    "id": "4708",
@@ -74,7 +81,9 @@
    "fait": "Un vœu réclame 150 000 euros exceptionnels ; M. Girard propose 50 000 euros, montant finalement retenu.",
    "pourquoi": "150.000 demandés, 50.000 accordés en séance",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=4708"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=4708",
+   "fait_en": "A motion called for 150,000 euros in exceptional funding; Mr Girard proposed 50,000 euros, the amount ultimately adopted.",
+   "pourquoi_en": "150,000 requested, 50,000 granted in session"
   },
   {
    "id": "11142",
@@ -82,7 +91,9 @@
    "fait": "En séance, le théâtre est décrit comme « sorte de théâtre privé » dirigé par Jean-Marie Hordé depuis 21 ans, cofinancé Ville-État.",
    "pourquoi": "portrait du théâtre et de son directeur",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=11142"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=11142",
+   "fait_en": "In session, the theatre was described as a \"sort of private theatre\" run by Jean-Marie Hordé for 21 years, co-financed by the City and the State.",
+   "pourquoi_en": "portrait of the theatre and its director"
   },
   {
    "id": "96125",
@@ -90,7 +101,9 @@
    "fait": "Un avenant porte la subvention 2011 de 307 500 à 615 000 euros.",
    "pourquoi": "la subvention portée du simple au double",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=96125"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=96125",
+   "fait_en": "An amendment raised the 2011 subsidy from 307,500 to 615,000 euros.",
+   "pourquoi_en": "the subsidy doubled"
   },
   {
    "id": "156063",
@@ -98,7 +111,9 @@
    "fait": "Lors du vote de 900 000 euros pour trois théâtres, une élue soulève le sexisme des programmations culturelles.",
    "pourquoi": "la parité s'invite dans les subventions",
    "vedette": false,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=156063"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=156063",
+   "fait_en": "During the vote on 900,000 euros for three theatres, a councillor raised the sexism of cultural programming.",
+   "pourquoi_en": "gender parity enters the subsidy debate"
   },
   {
    "id": "159161",
@@ -106,7 +121,9 @@
    "fait": "L'adjointe à la culture reconnaît une programmation très masculine tout en l'imputant à une saison amputée par la pandémie.",
    "pourquoi": "parité et saison tronquée par la pandémie",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=159161"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=159161",
+   "fait_en": "The deputy mayor for Culture acknowledged a very male-dominated programme while attributing it in part to a season curtailed by the pandemic.",
+   "pourquoi_en": "parity and a season cut short by the pandemic"
   }
  ],
  "montants": [
@@ -343,5 +360,6 @@
    "name": "Wikipédia",
    "url": "https://fr.wikipedia.org/"
   }
- }
+ },
+ "synthese_en": "Since 1997, when the Conseil de Paris voted 100,000 francs for a season of Russian theatre, the City has subsidized the Théâtre de la Bastille, operated by the SARL La Manufacture at 76, rue de la Roquette (11th arrondissement). Operating subsidies rose from 470,000 euros in 2002-2003 to 520,000 euros from 2004 to 2007, supplemented by equipment subsidies for renovating the stage and stage equipment (76,834 euros in 2002, 50,154 euros in 2003). Financial difficulties recurred regularly: in December 2007, a motion requested an exceptional grant of 150,000 euros, reduced in session to 50,000 euros. In 2010, councillors described a \"private\" theatre run by Jean-Marie Hordé and co-financed by the City and the State; in 2011, the annual subsidy was raised to 615,000 euros. In 2020 and 2021, debates focused on a programme judged to be very male-dominated, which the deputy mayor for Culture partly attributed to a season curtailed by the pandemic."
 }

@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T20:11:17.537074+00:00",
+ "generated_at": "2026-07-20T20:28:18.117255+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "place-denfert-rochereau",
  "name": "Place Denfert-Rochereau",
@@ -22,7 +22,8 @@
   "source": {
    "name": "Wikipédia",
    "url": "https://fr.wikipedia.org/"
-  }
+  },
+  "extract_en": "The place Denfert-Rochereau is a square in the south of Paris, formerly called \"place d'Enfer,\" located in the city's 14th arrondissement, in the Montparnasse neighbourhood."
  },
  "stats": {
   "n_delibs": 1097,
@@ -52,7 +53,9 @@
    "fait": "Le Conseil déclasse une parcelle de 15 m² à l'angle du boulevard Saint-Jacques et en autorise la cession au Syndicat des Transports parisiens (192 000 F), pour un projet d'édicule RATP.",
    "pourquoi": "un coin de la place quitte le domaine public",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=64887"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=64887",
+   "fait_en": "The Council declassified a 15 m² plot at the corner of the boulevard Saint-Jacques and authorized its sale to the Syndicat des Transports parisiens (192,000 F), for an RATP kiosk project.",
+   "pourquoi_en": "a corner of the square leaves the public domain"
   },
   {
    "id": "7018",
@@ -60,7 +63,9 @@
    "fait": "Une question orale du groupe UDF relaie l'inquiétude de riverains non consultés sur la déviation du bus 38 en contre-allée entre la place et la rue Cassini.",
    "pourquoi": "des riverains inquiets d'un couloir de bus",
    "vedette": false,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=7018"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=7018",
+   "fait_en": "An oral question from the UDF group relayed the concern of local residents, who had not been consulted, over the diversion of bus route 38 onto the side lane between the square and the rue Cassini.",
+   "pourquoi_en": "local residents worried about a bus lane"
   },
   {
    "id": "47317",
@@ -68,7 +73,9 @@
    "fait": "Le Conseil approuve le principe du remplacement des grilles du circuit de visite des Catacombes et autorise le Maire à signer le marché.",
    "pourquoi": "réparer l'accès du musée souterrain",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=47317"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=47317",
+   "fait_en": "The Council approved the principle of replacing the gates on the Catacombs visitor circuit and authorized the Mayor to sign the contract.",
+   "pourquoi_en": "repairing access to the underground museum"
   },
   {
    "id": "59761",
@@ -76,7 +83,9 @@
    "fait": "Le Conseil autorise une subvention de fonctionnement de 20 000 € au cinéma Le Denfert, 24 place Denfert-Rochereau, pour sa programmation.",
    "pourquoi": "la Ville soutient le cinéma de la place",
    "vedette": false,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=59761"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=59761",
+   "fait_en": "The Council authorized an operating grant of €20,000 to the Le Denfert cinema, 24 place Denfert-Rochereau, for its programming.",
+   "pourquoi_en": "the City supports the square's cinema"
   },
   {
    "id": "38479",
@@ -84,7 +93,9 @@
    "fait": "Le Conseil autorise une subvention d'investissement de 40 000 € au cinéma Le Denfert, présentée pour sa rénovation et sa modernisation.",
    "pourquoi": "aider à rénover le cinéma",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=38479"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=38479",
+   "fait_en": "The Council authorized an investment grant of €40,000 to the Le Denfert cinema, presented for its renovation and modernization.",
+   "pourquoi_en": "helping renovate the cinema"
   },
   {
    "id": "129302",
@@ -92,7 +103,9 @@
    "fait": "Dans le débat sur le réaménagement de sept places, un vœu des Républicains vise la place ; Mme Kosciusko-Morizet la juge « sacrifiée » et écartée du projet.",
    "pourquoi": "le réaménagement de la place, attendu puis contesté",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=129302"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=129302",
+   "fait_en": "In the debate on the redevelopment of seven squares, a motion from Les Républicains targeted the square; Ms Kosciusko-Morizet judged it \"sacrificed\" and left out of the project.",
+   "pourquoi_en": "the square's redevelopment, awaited then contested"
   },
   {
    "id": "179200",
@@ -100,7 +113,9 @@
    "fait": "Le vœu du groupe Les Écologistes sur la transformation de la place est retiré de l'ordre du jour.",
    "pourquoi": "une transformation qui revient puis se retire",
    "vedette": false,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=179200"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=179200",
+   "fait_en": "The motion from the Les Écologistes group on the square's transformation was withdrawn from the agenda.",
+   "pourquoi_en": "a transformation that comes up, then is withdrawn"
   },
   {
    "id": "182326",
@@ -108,7 +123,9 @@
    "fait": "Le groupe Changer Paris dépose un vœu relatif à l'aménagement de la place.",
    "pourquoi": "l'aménagement toujours en débat",
    "vedette": false,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=182326"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=182326",
+   "fait_en": "The Changer Paris group filed a motion concerning the square's layout.",
+   "pourquoi_en": "the layout still under debate"
   }
  ],
  "montants": [
@@ -131,17 +148,20 @@
   {
    "date": "1895-06-29",
    "extrait": "17° Pavoisement et illumination de la place Denfert - Rochereau , 1,500 francs … 18e arrondissement. — Place de la MaIrie, 2,800 francs … Chaumont, place de la Nation et Butte-Mon martre, 19,000 francs",
-   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k6291396d/f20.item"
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k6291396d/f20.item",
+   "extrait_en": "17° Bunting and illumination of the place Denfert-Rochereau, 1,500 francs … 18th arrondissement. — Place de la Mairie, 2,800 francs … Chaumont, place de la Nation and Butte-Montmartre, 19,000 francs"
   },
   {
    "date": "1931-10-17",
    "extrait": "L'entrée des Catacombes se trouve dans la cour du pavillon situé place Denfert - Rochereau , n° 2 … Brouillard matinal, épais par places , en banlieue (Sevran, 50 m. à 7 h.) ainsi qu'à la porte d'Ivry (5J m. à 5 h. 30 … ",
-   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k63437508/f3.item"
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k63437508/f3.item",
+   "extrait_en": "The entrance to the Catacombs is in the courtyard of the pavilion located at place Denfert-Rochereau, No. 2 … Morning fog, dense in places, in the suburbs (Sevran, 50 m at 7 a.m.) as well as at the Porte d'Ivry (50 m at 5:30 a.m. … "
   },
   {
    "date": "1949-05-10",
    "extrait": "Les plans édités par l'Inspection générale des Carrières sont en vente, 1, place Denfert Rochereau",
-   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k9639422v/f8.item"
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k9639422v/f8.item",
+   "extrait_en": "The maps published by the Inspection générale des Carrières are on sale at 1 place Denfert-Rochereau"
   }
  ],
  "bmo_recit": "La place Denfert-Rochereau n'apparaît que par touches dans le Bulletin municipal, mais toujours comme un lieu que la Ville pare ou fait visiter. En 1895, elle figure parmi les places à décorer pour les fêtes : 1.500 francs y sont inscrits pour son pavoisement et son illumination. En 1931, le Bulletin indique aux visiteurs que l'entrée des Catacombes se trouve dans la cour du pavillon situé au n° 2 de la place. En 1949 encore, c'est au pavillon du 1, place Denfert-Rochereau que sont mis en vente les plans édités par l'Inspection générale des Carrières. D'une décennie à l'autre, la place reste ainsi, dans l'archive, la porte officielle du sous-sol de Paris.",
@@ -228,5 +248,7 @@
    "name": "Wikipédia",
    "url": "https://fr.wikipedia.org/"
   }
- }
+ },
+ "synthese_en": "Over nearly thirty years, the place Denfert-Rochereau comes up before the Council of Paris mainly through its edges and facilities. In 1998, the Council declassified a plot of about 15 m² at the corner of the boulevard Saint-Jacques and authorized its sale to the Syndicat des Transports parisiens, where the R.A.T.P. was planning a kiosk for a bus service to Orly. In the early 2000s, the square was a point of friction over mobility — an oral question relayed local residents' concern over the diversion of bus route 38 onto the side lane (2003) — and the subject of one-off measures: approval of the principle of replacing the gates on the Catacombs visitor circuit (2003), then grants to the Le Denfert cinema, €20,000 in operating funds (2004) and €40,000 in investment funds (2006). In 2016, the overall redevelopment appeared in a communication on seven squares, in which the opposition judged the square \"sacrificed\" and left out of the project. The matter remains open: a motion from Les Écologistes on its transformation was withdrawn in 2024, and a motion from the Changer Paris group on its layout came back in 2025.",
+ "bmo_recit_en": "The place Denfert-Rochereau appears only in scattered mentions in the Bulletin municipal, but always as a place the City adorns or opens to visitors. In 1895, it is listed among the squares to be decorated for festivities: 1,500 francs are allocated for its bunting and illumination. In 1931, the Bulletin tells visitors that the entrance to the Catacombs is in the courtyard of the pavilion at No. 2 of the square. In 1949, it is again at the pavilion at 1 place Denfert-Rochereau that the maps published by the Inspection générale des Carrières are put on sale. From one decade to the next, the square thus remains, in the archive, the official gateway to the underground of Paris."
 }

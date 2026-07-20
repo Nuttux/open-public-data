@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T20:11:17.537074+00:00",
+ "generated_at": "2026-07-20T20:28:18.117255+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "philharmonie-de-paris",
  "name": "Philharmonie de Paris",
@@ -22,7 +22,8 @@
   "source": {
    "name": "Wikipédia",
    "url": "https://fr.wikipedia.org/"
-  }
+  },
+  "extract_en": "The Philharmonie de Paris, inaugurated on 14 January 2015, is a French cultural centre comprising a 2,400-seat concert hall known as the 'Pierre Boulez' hall, exhibition spaces, educational workshops, and rehearsal rooms."
  },
  "stats": {
   "n_delibs": 178,
@@ -94,7 +95,8 @@
   "note_publique": "Cette subvention finance l'établissement public Cité de la musique - Philharmonie de Paris, né de la fusion de la Cité de la musique et de la Philharmonie : elle couvre les deux sites voisins de La Villette (19e), pas uniquement la Philharmonie.",
   "autres_sites": [
    "Cité de la musique (19e)"
-  ]
+  ],
+  "note_publique_en": "This grant funds the public establishment Cité de la musique - Philharmonie de Paris, created by the merger of the Cité de la musique and the Philharmonie: it covers both neighboring sites at La Villette (19th arrondissement), not just the Philharmonie."
  },
  "residents": [],
  "kpi_montant": null,
@@ -106,7 +108,9 @@
    "fait": "Première subvention municipale (240 000 €) à l'association chargée transitoirement de la maîtrise d'ouvrage du grand auditorium.",
    "pourquoi": "point de départ",
    "vedette": false,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=92379"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=92379",
+   "fait_en": "First municipal grant (€240,000) to the association temporarily responsible for project ownership of the grand auditorium.",
+   "pourquoi_en": "Starting point"
   },
   {
    "id": "90357",
@@ -114,7 +118,9 @@
    "fait": "Le Conseil décide de créer avec l'État et la Région l'établissement public « Philharmonie de Paris », chargé de construire le grand auditorium.",
    "pourquoi": "acte de naissance institutionnel",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=90357"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=90357",
+   "fait_en": "The Council decided to create, together with the State and the Region, the public establishment 'Philharmonie de Paris', tasked with building the grand auditorium.",
+   "pourquoi_en": "The institution's founding act"
   },
   {
    "id": "74657",
@@ -122,7 +128,9 @@
    "fait": "La Ville garantit les emprunts de l'association jusqu'à 117 167 610 €, s'engageant à payer en cas de défaillance.",
    "pourquoi": "la Ville s'expose",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=74657"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=74657",
+   "fait_en": "The City guaranteed the association's loans up to €117,167,610, committing to pay in the event of default.",
+   "pourquoi_en": "The City takes on exposure"
   },
   {
    "id": "121130",
@@ -130,7 +138,9 @@
    "fait": "Convention pour le remboursement par la Ville de l'emprunt de l'association ; l'opposition chiffre le coût à 381 M€ contre 118 M€ estimés.",
    "pourquoi": "la dette bascule sur la Ville",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=121130"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=121130",
+   "fait_en": "Agreement for the City to repay the association's loan; the opposition put the cost at €381 million against the €118 million originally estimated.",
+   "pourquoi_en": "The debt shifts onto the City"
   },
   {
    "id": "121312",
@@ -138,7 +148,9 @@
    "fait": "Dernière subvention à l'association avant l'ouverture au public, le 14 janvier 2015.",
    "pourquoi": "l'ouverture",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=121312"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=121312",
+   "fait_en": "Last grant to the association before opening to the public on 14 January 2015.",
+   "pourquoi_en": "The opening"
   },
   {
    "id": "132294",
@@ -146,7 +158,9 @@
    "fait": "Rapport de la Chambre régionale des comptes sur la construction ; le prêt Société Générale est renégocié de 5,186 % à 4,7 %, soit 4,35 M€ de baisse.",
    "pourquoi": "critique officielle puis renégociation",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=132294"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=132294",
+   "fait_en": "Report by the regional audit chamber (Chambre régionale des comptes) on the construction; the Société Générale loan was renegotiated from 5.186% to 4.7%, a €4.35 million reduction.",
+   "pourquoi_en": "Official criticism followed by renegotiation"
   },
   {
    "id": "142377",
@@ -154,7 +168,9 @@
    "fait": "Avec la subvention annuelle, le Conseil adopte un vœu pour une exposition Pierre Henry, programmée du 9 avril au 11 août 2019.",
    "pourquoi": "la vie culturelle entre en séance",
    "vedette": false,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=142377"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=142377",
+   "fait_en": "Alongside the annual grant, the Council adopted a motion for a Pierre Henry exhibition, scheduled from 9 April to 11 August 2019.",
+   "pourquoi_en": "Cultural life enters the Council chamber"
   },
   {
    "id": "174216",
@@ -162,7 +178,9 @@
    "fait": "Au vote de la subvention annuelle, l'Exécutif salue plus de 1 400 000 visiteurs en 2023 et un public de moins de 28 ans en hausse de 57 %.",
    "pourquoi": "l'équipement trouve son public",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=174216"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=174216",
+   "fait_en": "At the vote on the annual grant, the executive highlighted more than 1,400,000 visitors in 2023 and a 57% increase in the under-28 audience.",
+   "pourquoi_en": "The venue finds its audience"
   }
  ],
  "montants": [
@@ -704,5 +722,6 @@
    "name": "Wikipédia",
    "url": "https://fr.wikipedia.org/"
   }
- }
+ },
+ "synthese_en": "From 2006 to 2014, the City of Paris granted funding to the 'Philharmonie de Paris' association, which was temporarily responsible for project ownership (€240,000 in 2006, then growing annual operating and equipment grants, rising to €5,536,577 in equipment funding in 2008). In 2009, the City guaranteed the association's loans up to €117,167,610, a guarantee raised to €158,265,348 in March 2011, while the project's cost drifted according to the debates: initially estimated at €118 to 175 million, it was cited at €350 million in 2011, €381 million in 2014, then €328 million 'on delivery' and up to €534 million in the 2022-2024 debates. In October 2014, an agreement (2014 DFA 33) arranged for the City to repay the loan taken out by the association at a rate of 5.186% (an extra cost put at €25 million by the opposition); after repeated motions and the report of the regional audit chamber (Chambre régionale des comptes), the Société Générale bond loan was restructured in September 2016 with the rate lowered to 4.7%, a €4.35 million reduction. Since the public establishment replaced the association on 1 October 2015, the City has paid an annual grant of about €15.3 to 15.7 million corresponding, according to the executive, to €152 million in principal and €62.40 million in interest to be repaid from 2015 to 2028 (€15.30 million per year). After delivery, additional equipment grants were added: €3.5 million approved at the end of 2021, then €7 million in March 2022 following the settlement agreement of 20 October 2021 with Jean Nouvel, whose lawsuit had ended with €15 million in extra works and 'an agreement whose amount is not known.'"
 }

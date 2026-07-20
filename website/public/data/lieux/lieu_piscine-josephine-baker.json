@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T20:11:17.537074+00:00",
+ "generated_at": "2026-07-20T20:28:18.117255+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "piscine-josephine-baker",
  "name": "Piscine Joséphine-Baker",
@@ -22,7 +22,8 @@
   "source": {
    "name": "Wikipédia",
    "url": "https://fr.wikipedia.org/"
-  }
+  },
+  "extract_en": "The Piscine Joséphine-Baker, or Paris 13 pool: Joséphine Baker, is a floating swimming pool moored on the banks of the Seine in Paris, at the Quai François-Mauriac in the 13th arrondissement. It was inaugurated in July 2006, and named in tribute to the centenary of the birth of the Franco-American Parisian singer Joséphine Baker."
  },
  "stats": {
   "n_delibs": 36,
@@ -50,7 +51,9 @@
    "fait": "Le Conseil attribue la dénomination « Piscine Joséphine Baker » au nouvel équipement balnéaire du quai François Mauriac (13e).",
    "pourquoi": "Acte de nommage officiel du lieu",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=81170"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=81170",
+   "fait_en": "The Council named the new bathing facility on Quai François Mauriac (13th arrondissement) the 'Piscine Joséphine Baker'.",
+   "pourquoi_en": "The official naming of the place"
   },
   {
    "id": "22450",
@@ -58,7 +61,9 @@
    "fait": "En débat, il est indiqué qu'après un incendie dans un sauna l'exploitant n'avait pas les assurances nécessaires ; l'équipement est décrit comme « d'abord un bateau » et comme la seule piscine de Paris ouverte deux soirs jusqu'à minuit.",
    "pourquoi": "Incident révélant un défaut de couverture d'assurance",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=22450"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=22450",
+   "fait_en": "During the debate, it was stated that after a fire in a sauna the operator did not have the necessary insurance; the facility was described as 'first and foremost a boat' and as the only pool in Paris open two evenings a week until midnight.",
+   "pourquoi_en": "An incident reveals a gap in insurance coverage"
   },
   {
    "id": "31838",
@@ -66,7 +71,9 @@
    "fait": "Approbation de l'avenant n° 1 de résiliation amiable du marché d'exploitation passé avec Vert Marine un an plus tôt.",
    "pourquoi": "Le premier exploitant quitte l'équipement",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=31838"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=31838",
+   "fait_en": "Approval of amendment No. 1 for the amicable termination of the operating contract signed with Vert Marine a year earlier.",
+   "pourquoi_en": "The first operator leaves the facility"
   },
   {
    "id": "31509",
@@ -74,7 +81,9 @@
    "fait": "Approbation du principe d'un nouveau marché de prestation de services pour l'exploitation de la piscine amarrée au port de la Gare.",
    "pourquoi": "La Ville reconduit une exploitation externalisée",
    "vedette": false,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=31509"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=31509",
+   "fait_en": "Approval of the principle of a new services contract for operating the pool moored at the Port de la Gare.",
+   "pourquoi_en": "The City renews an outsourced operating arrangement"
   },
   {
    "id": "128423",
@@ -82,7 +91,9 @@
    "fait": "Rejet du vœu n° 163 demandant l'alignement tarifaire sur les piscines en gestion municipale et l'étude d'une municipalisation.",
    "pourquoi": "Le mode de gestion reste contesté neuf ans après",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=128423"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=128423",
+   "fait_en": "Rejection of motion No. 163 requesting rate alignment with municipally managed pools and a study into bringing management under municipal control.",
+   "pourquoi_en": "The management arrangement remains contested nine years on"
   }
  ],
  "montants": [],
@@ -136,5 +147,6 @@
    "name": "Wikipédia",
    "url": "https://fr.wikipedia.org/"
   }
- }
+ },
+ "synthese_en": "In July 2006, Conseil de Paris named the new bathing facility located on Quai François Mauriac (13th arrondissement) the 'Piscine Joséphine Baker'; its operation had been entrusted to the company Vert Marine through a contract authorized on 27 and 28 February 2006 (2006 DJS 237) and which took effect on 7 March 2006. In March 2007, following a fire that had broken out in one of the saunas 'on 25 November last,' it emerged in session that the operator did not have the necessary insurance coverage: the Council approved amendment No. 1 for the amicable termination of that contract (2007 DJS 295). On the same day, it approved the principle of a new services contract for operating the pool moored at the Port de la Gare (2007 DJS 312), with two changes announced during the debate — the City would insure the facility itself, and a technical inspection agreement had been concluded — ; both deliberations were adopted, with some councillors announcing they would vote against turning to a new private operator. In December 2015, a motion requesting that rates be aligned with those of municipally managed pools, and that a study be launched into bringing management under municipal control, was rejected with an unfavorable opinion from the executive, the debate on the management arrangement being described in session as 'well known.' None of the six documents read contains any figure relating to the facility."
 }

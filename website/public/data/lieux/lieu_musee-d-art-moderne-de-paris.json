@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T20:11:17.537074+00:00",
+ "generated_at": "2026-07-20T20:28:18.117255+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "musee-d-art-moderne-de-paris",
  "name": "Musée d'Art moderne de Paris",
@@ -22,7 +22,8 @@
   "source": {
    "name": "Wikipédia",
    "url": "https://fr.wikipedia.org/"
-  }
+  },
+  "extract_en": "The Musée d'Art Moderne de Paris, or MAM Paris, located at 11 avenue du Président-Wilson in the 16th arrondissement of Paris, is a French art museum."
  },
  "stats": {
   "n_delibs": 1242,
@@ -50,7 +51,9 @@
    "fait": "Le Conseil autorise la concession du café-restaurant « Café du musée » à la SARL « Driver's », au sein du musée.",
    "pourquoi": "Un café-restaurant concédé dans le musée",
    "vedette": false,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=42446"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=42446",
+   "fait_en": "The Council authorized the concession of the café-restaurant \"Café du musée\" to the SARL \"Driver's\", within the museum.",
+   "pourquoi_en": "A café-restaurant granted a concession inside the museum"
   },
   {
    "id": "16080",
@@ -58,7 +61,9 @@
    "fait": "Le débat sur l'achat d'une œuvre de Broodthaers (un perroquet vivant) tourne à la controverse sur l'indépendance de la commission d'achat.",
    "pourquoi": "Un perroquet vivant enflamme le Conseil",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=16080"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=16080",
+   "fait_en": "The debate over the purchase of a work by Broodthaers (a live parrot) turned into a controversy over the independence of the acquisitions committee.",
+   "pourquoi_en": "A live parrot ignites the Council"
   },
   {
    "id": "47867",
@@ -66,7 +71,9 @@
    "fait": "Le Conseil autorise l'acquisition d'œuvres surréalistes préemptées aux ventes André Breton, dont un Picabia à 1 799 732 €.",
    "pourquoi": "Préemptions surréalistes à la vente Breton",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=47867"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=47867",
+   "fait_en": "The Council authorized the acquisition of Surrealist works preempted at the André Breton sales, including a Picabia for 1,799,732 euros.",
+   "pourquoi_en": "Surrealist preemptions at the Breton sale"
   },
   {
    "id": "63652",
@@ -74,7 +81,9 @@
    "fait": "Le Conseil autorise le marché de travaux d'aménagement du parcours muséographique des collections permanentes.",
    "pourquoi": "Un marché pour réaménager le parcours des collections",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=63652"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=63652",
+   "fait_en": "The Council authorized the works contract for the fit-out of the permanent-collection museography layout.",
+   "pourquoi_en": "A contract to redesign the collection layout"
   },
   {
    "id": "92276",
@@ -82,7 +91,9 @@
    "fait": "Le Conseil crée un emploi de Délégué à l'art moderne et contemporain chargé d'assurer la direction du musée.",
    "pourquoi": "Un poste créé pour diriger le musée",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=92276"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=92276",
+   "fait_en": "The Council created a position of Delegate for Modern and Contemporary Art responsible for directing the museum.",
+   "pourquoi_en": "A position created to direct the museum"
   },
   {
    "id": "67572",
@@ -90,7 +101,9 @@
    "fait": "Le Conseil autorise la convention de mécénat par laquelle L'Oréal donne au musée quinze sculptures d'Etienne Martin (1 367 000 €).",
    "pourquoi": "L'Oréal donne quinze sculptures d'Etienne Martin",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=67572"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=67572",
+   "fait_en": "The Council authorized the sponsorship agreement by which L'Oréal gave the museum fifteen sculptures by Étienne Martin (1,367,000 euros).",
+   "pourquoi_en": "L'Oréal gives fifteen sculptures by Étienne Martin"
   },
   {
    "id": "35899",
@@ -98,7 +111,9 @@
    "fait": "Le Conseil approuve la grille tarifaire de l'exposition « Dynasty », coprésentée avec le Palais de Tokyo.",
    "pourquoi": "Tarifs fixés pour l'exposition Dynasty",
    "vedette": false,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=35899"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=35899",
+   "fait_en": "The Council approved the pricing schedule for the exhibition \"Dynasty,\" co-presented with the Palais de Tokyo.",
+   "pourquoi_en": "Prices set for the Dynasty exhibition"
   },
   {
    "id": "108500",
@@ -106,7 +121,9 @@
    "fait": "Un vœu réclame un audit du musée après le vol de 2010 et l'accident d'un agent ; l'adjoint fait état de travaux de sécurité.",
    "pourquoi": "Après vol et accident, un audit réclamé",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=108500"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=108500",
+   "fait_en": "A motion demanded an audit of the museum following the 2010 theft and an employee's accident; the deputy mayor cited security works.",
+   "pourquoi_en": "After a theft and an accident, an audit is demanded"
   }
  ],
  "montants": [
@@ -392,5 +409,6 @@
    "name": "Wikipédia",
    "url": "https://fr.wikipedia.org/"
   }
- }
+ },
+ "synthese_en": "In Conseil de Paris deliberations, the Musée d'Art Moderne de la Ville de Paris — 11 avenue du Président-Wilson (16th arrondissement) — first appears as the recipient of artworks: acquisitions authorized on a recurring basis between 1995 and 2011 (from Arman to Hervé Télémaque), gifts from the Museu de Arte Moderna de São Paulo and the Sankei Shimbun, bequests from private individuals, and sponsorships, including L'Oréal's gift of fifteen sculptures by Étienne Martin valued at 1,367,000 euros in 2008. The place's material life also passed through the Council: the concession of the \"Café du musée\" in 1999, a works contract for the permanent-collection museography layout in 2005, an occupancy agreement for its bookshop in 2011. In 2006, the Council created a position of Delegate for Modern and Contemporary Art responsible for directing the museum. In 2002, the acquisition of a work by Marcel Broodthaers led, in session, to a debate on the independence of the museum's acquisitions committee from elected officials. In 2011 and then 2012, councillors questioned the executive about the institution's security — fire safety, then, after the theft of five canvases raised in session and a workplace accident, a request for an audit to which deputy mayor Bruno Julliard responded by citing security works."
 }

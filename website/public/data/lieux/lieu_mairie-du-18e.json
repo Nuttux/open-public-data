@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T20:11:17.537074+00:00",
+ "generated_at": "2026-07-20T20:28:18.117255+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "mairie-du-18e",
  "name": "Mairie du 18e",
@@ -53,7 +53,9 @@
    "fait": "Le Conseil approuve le principe de créer un poste de commandement des îlotiers dans la mairie et autorise une convention de mandat de maîtrise d'ouvrage avec l'État (Ministère de l'Intérieur).",
    "pourquoi": "Un poste de commandement des îlotiers, au financement partagé avec l'État",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=55056"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=55056",
+   "fait_en": "The Council approved the principle of creating a neighborhood police command post inside the town hall and authorized a project-management delegation agreement with the State (Ministry of the Interior).",
+   "pourquoi_en": "A neighborhood police command post, jointly funded with the State"
   },
   {
    "id": "84611",
@@ -61,7 +63,9 @@
    "fait": "Le Conseil approuve le principe d'améliorer l'accueil et l'accessibilité du public, attribue la maîtrise d'œuvre à l'agence B+M Architecture et autorise le dépôt des permis de démolir et de construire.",
    "pourquoi": "Le lancement du grand chantier d'accessibilité, permis compris",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=84611"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=84611",
+   "fait_en": "The Council approved the principle of improving public reception and accessibility, awarded project management to the B+M Architecture firm, and authorized filing the demolition and construction permits.",
+   "pourquoi_en": "Launch of the major accessibility project, permits included"
   },
   {
    "id": "34012",
@@ -69,7 +73,9 @@
    "fait": "Le Conseil autorise un avenant n°2 au marché de maîtrise d'œuvre avec B+M Architecture, portant ce marché à 187 978,51 € TTC.",
    "pourquoi": "La maîtrise d'œuvre ajustée par un deuxième avenant",
    "vedette": false,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=34012"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=34012",
+   "fait_en": "The Council authorized amendment no. 2 to the project management contract with B+M Architecture, raising this contract to €187,978.51 including tax.",
+   "pourquoi_en": "Project management adjusted by a second amendment"
   },
   {
    "id": "46449",
@@ -77,7 +83,9 @@
    "fait": "Le Conseil autorise un avenant n°1 au marché de travaux avec la SNC Sachet et Brulet, portant ce marché à 654 353,79 € TTC et le délai d'exécution à 8 mois.",
    "pourquoi": "Coût et délai du chantier de restructuration révisés",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=46449"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=46449",
+   "fait_en": "The Council authorized amendment no. 1 to the works contract with SNC Sachet et Brulet, raising this contract to €654,353.79 including tax and the execution period to 8 months.",
+   "pourquoi_en": "Cost and timeline of the restructuring works revised"
   },
   {
    "id": "38600",
@@ -85,7 +93,9 @@
    "fait": "Le Conseil approuve le principe de remplacer l'alarme incendie et l'asservissement de la mairie.",
    "pourquoi": "Renouveler l'alarme incendie de la mairie",
    "vedette": false,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=38600"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=38600",
+   "fait_en": "The Council approved the principle of replacing the town hall's fire alarm and its control system.",
+   "pourquoi_en": "Renewing the town hall's fire alarm"
   },
   {
    "id": "74488",
@@ -93,7 +103,9 @@
    "fait": "Le Conseil approuve le principe de travaux d'aménagement et de modernisation de la salle Poulbot, à l'intérieur de la mairie.",
    "pourquoi": "Aménager et moderniser la salle Poulbot",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=74488"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=74488",
+   "fait_en": "The Council approved the principle of fitting-out and modernization works for the Poulbot room, inside the town hall.",
+   "pourquoi_en": "Fitting out and modernizing the Poulbot room"
   },
   {
    "id": "66147",
@@ -101,7 +113,9 @@
    "fait": "Le Conseil approuve le principe d'améliorer l'accueil du public dans le hall de la mairie.",
    "pourquoi": "Repenser l'accueil du public dans le hall",
    "vedette": false,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=66147"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=66147",
+   "fait_en": "The Council approved the principle of improving public reception in the town hall's lobby.",
+   "pourquoi_en": "Rethinking public reception in the lobby"
   },
   {
    "id": "49940",
@@ -109,7 +123,9 @@
    "fait": "Le Conseil approuve le principe de travaux de sécurité faisant suite à la Commission de Sécurité.",
    "pourquoi": "La sécurité du bâtiment après la Commission de Sécurité",
    "vedette": false,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=49940"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=49940",
+   "fait_en": "The Council approved the principle of security works following the Safety Commission's review.",
+   "pourquoi_en": "Building security after the Safety Commission's review"
   }
  ],
  "montants": [
@@ -290,5 +306,6 @@
    "name": "Wikipédia",
    "url": "https://fr.wikipedia.org/"
   }
- }
+ },
+ "synthese_en": "From 1996 to 2009, Conseil de Paris repeatedly ruled on the upkeep and transformation of the town hall of the 18th arrondissement, at 1 place Jules-Joffrin. In October 1996, the Council approved the principle of creating a neighborhood police command post inside the building and authorized a project-management delegation agreement with the State (Ministry of the Interior), under shared funding. Starting in September 2001, it approved the principle of improving public reception and accessibility: project management was awarded to the B+M Architecture firm and the Mayor was authorized to file the demolition and construction permits. The project continued through works contracts — including a first phase of electrical modernization approved in 2002 — and through two 2004 amendments raising the project management contract to €187,978.51 including tax and the works contract to €654,353.79 including tax. From 2006 to 2009, the Council separately approved several works principles: fire alarm, the Poulbot room, reception area and hall skylight, electrical code compliance, then security works following the Safety Commission's review."
 }

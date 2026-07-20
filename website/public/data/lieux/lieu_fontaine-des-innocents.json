@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T20:11:17.537074+00:00",
+ "generated_at": "2026-07-20T20:28:18.117255+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "fontaine-des-innocents",
  "name": "Fontaine des Innocents",
@@ -22,7 +22,8 @@
   "source": {
    "name": "Wikipédia",
    "url": "https://fr.wikipedia.org/"
-  }
+  },
+  "extract_en": "The Fontaine des Innocents, originally called the Fontaine des Nymphes, is a fountain located in the 1st arrondissement of Paris, on the present-day place Joachim-du-Bellay in the Les Halles neighborhood. Built in the Renaissance style, it has undergone various alterations and has been relocated twice. It has been listed as a historic monument since 1862."
  },
  "stats": {
   "n_delibs": 681,
@@ -50,7 +51,9 @@
    "fait": "Le Conseil de Paris adopte à l'unanimité un vœu du groupe UMP pour la sauvegarde de la fontaine ; l'Exécutif est favorable et Bruno Julliard dit vouloir l'inscrire au plan d'investissement de la mandature.",
    "pourquoi": "L'engagement de principe qui lance tout",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=121333"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=121333",
+   "fait_en": "Conseil de Paris unanimously adopted a motion from the UMP group for the fountain's rescue; the executive was in favor, and Bruno Julliard said he wanted to include it in the term's investment plan.",
+   "pourquoi_en": "The initial commitment in principle that set everything in motion"
   },
   {
    "id": "135790",
@@ -58,7 +61,9 @@
    "fait": "Le groupe les Républicains redépose un vœu ; Jean-François LEGARET affirme que rien n'a été entamé et qu'aucun budget n'a été mobilisé, malgré 4 M€ qu'aurait inscrits la Direction du Patrimoine et de l'Architecture.",
    "pourquoi": "Deux ans et demi après, l'opposition affirme que rien n'a avancé",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=135790"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=135790",
+   "fait_en": "The Les Républicains group filed a new motion; Jean-François LEGARET stated that nothing had begun and that no budget had been committed, despite the 4 million euros the Direction du Patrimoine et de l'Architecture had reportedly allocated.",
+   "pourquoi_en": "Two and a half years later, the opposition claims nothing has moved forward"
   }
  ],
  "montants": [
@@ -120,5 +125,6 @@
    "name": "Wikipédia",
    "url": "https://fr.wikipedia.org/"
   }
- }
+ },
+ "synthese_en": "In November 2014, Conseil de Paris unanimously adopted a motion from the UMP group calling for a rescue operation for the Fontaine des Innocents, which Jean-François LEGARET, mayor of the 1st arrondissement, described as a major monument in the center of Paris in very poor condition. The executive issued a favorable opinion, and Bruno Julliard said he intended to propose to the Mayor of Paris that the fountain be included in the term's investment plan. Two and a half years later, in May 2017, the Les Républicains group filed a new motion: LEGARET stated that nothing had begun and that no budget had been committed for preliminary studies and works, even though the Direction du Patrimoine et de l'Architecture had, according to him, allocated 4 million euros in localized investments. This second motion asked the Mayor to clarify her financial commitment, launch the restoration and modernization operation, and update the timetable."
 }

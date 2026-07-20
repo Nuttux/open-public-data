@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T20:11:17.537074+00:00",
+ "generated_at": "2026-07-20T20:28:18.117255+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "parc-montsouris",
  "name": "Parc Montsouris",
@@ -22,7 +22,8 @@
   "source": {
    "name": "Wikipédia",
    "url": "https://fr.wikipedia.org/"
-  }
+  },
+  "extract_en": "Parc Montsouris is a public garden located in the neighborhood of the same name, in the south of Paris, in the 14th arrondissement. Laid out at the end of the 19th century like Parc des Buttes-Chaumont, this English-style park covers 15 hectares. The park is home to a large number of bird species and many trees."
  },
  "stats": {
   "n_delibs": 423,
@@ -53,7 +54,9 @@
    "fait": "La concession du Pavillon Montsouris est attribuée alors que tous les candidats autres que l'occupant en place se sont retirés ; un amendement est déposé pour que la fonction « café » et une terrasse soient ouvertes aux usagers du parc.",
    "pourquoi": "Concession attribuée face à un candidat unique",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=7581"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=7581",
+   "fait_en": "The concession for the Pavillon Montsouris was awarded after all candidates other than the incumbent occupant had withdrawn; an amendment was filed so that a \"café\" function and a terrace would be open to park users.",
+   "pourquoi_en": "Concession awarded against a single remaining candidate"
   },
   {
    "id": "37424",
@@ -61,7 +64,9 @@
    "fait": "Le Conseil approuve la rénovation des locaux sociaux du parc, en marché sur appel d'offres ouvert en 8 lots indissociables.",
    "pourquoi": "Le parc côté coulisses : les locaux du personnel",
    "vedette": false,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=37424"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=37424",
+   "fait_en": "The Council approved the renovation of the park's staff facilities, through a contract under an open call for tenders in 8 inseparable lots.",
+   "pourquoi_en": "The park behind the scenes: staff facilities"
   },
   {
    "id": "35261",
@@ -69,7 +74,9 @@
    "fait": "Les locaux de l'ancien Observatoire du parc sont confiés par convention à l'Association française d'astronomie, avec droit de déposer permis de construire et de démolir.",
    "pourquoi": "Un équipement du parc confié à une association",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=35261"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=35261",
+   "fait_en": "The premises of the park's former Observatory were entrusted by agreement to the Association française d'astronomie, with the right to file building and demolition permits.",
+   "pourquoi_en": "A facility in the park entrusted to an association"
   },
   {
    "id": "53253",
@@ -77,7 +84,9 @@
    "fait": "Le principe des travaux de reconstruction des voiries du parc est approuvé, sous forme de marché négocié en deux tranches.",
    "pourquoi": "Première approbation du chantier des voiries",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=53253"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=53253",
+   "fait_en": "The principle of works to reconstruct the park's roadways was approved, as a negotiated contract in two phases.",
+   "pourquoi_en": "First approval of the roadworks project"
   },
   {
    "id": "75117",
@@ -85,7 +94,9 @@
    "fait": "Les travaux de reconstruction des voiries du parc sont approuvés une seconde fois, cette fois par appel d'offres en deux tranches.",
    "pourquoi": "Même chantier relancé deux ans après, autre procédure",
    "vedette": false,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=75117"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=75117",
+   "fait_en": "The works to reconstruct the park's roadways were approved a second time, this time through a call for tenders in two phases.",
+   "pourquoi_en": "The same project relaunched two years later, under a different procedure"
   },
   {
    "id": "123609",
@@ -93,7 +104,9 @@
    "fait": "Le vœu demandant la simplification des six horaires d'ouverture du parc est retiré, l'adjointe subordonnant toute extension à une discussion avec les personnels.",
    "pourquoi": "L'usage du parc bute sur l'organisation du travail",
    "vedette": false,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=123609"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=123609",
+   "fait_en": "The motion requesting the simplification of the park's six opening-hours schedules was withdrawn, with the deputy mayor making any extension conditional on discussion with staff.",
+   "pourquoi_en": "Use of the park runs up against work organization"
   },
   {
    "id": "147624",
@@ -101,7 +114,9 @@
    "fait": "Le Conseil examine la dénomination « Allée Jacques Higelin » pour une allée de la partie nord-est du parc.",
    "pourquoi": "Le parc inscrit une mémoire dans ses allées",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=147624"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=147624",
+   "fait_en": "The Council examined the name \"Allée Jacques Higelin\" for a path in the northeast part of the park.",
+   "pourquoi_en": "The park inscribes memory into its paths"
   },
   {
    "id": "148321",
@@ -109,7 +124,9 @@
    "fait": "Une convention d'occupation de dix ans désigne un nouvel opérateur du Pavillon Montsouris ; le groupe Communiste annonce son abstention, jugeant les tarifs annexés réservés aux plus hauts revenus.",
    "pourquoi": "Le restaurant du parc contesté comme enclave sociale",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=148321"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=148321",
+   "fait_en": "A ten-year occupancy agreement designated a new operator for the Pavillon Montsouris; the Communist group announced it would abstain, judging the attached price list reserved for the highest incomes.",
+   "pourquoi_en": "The park's restaurant disputed as a social enclave"
   }
  ],
  "montants": [
@@ -191,5 +208,6 @@
    "name": "Wikipédia",
    "url": "https://fr.wikipedia.org/"
   }
- }
+ },
+ "synthese_en": "Of the 45 deliberations picked up by the word \"Montsouris,\" nine actually concern the park: the rest relate to homonyms in the 14th arrondissement — the \"Alésia-Montsouris\" development zone (ZAC) opened along the RER B line, the Bièvre-Montsouris bus crosstown route, the Ferme Montsouris on rue de la Tombe-Issoire, the Institut mutualiste Montsouris — or simply the registered addresses of associations' headquarters. The most continuous thread is that of the park's restaurant: in December 2001, the concession for the Pavillon Montsouris was awarded after all candidates other than the incumbent occupant had withdrawn, and René DUTREY filed an amendment so that a terrace would be open to park users; a further amendment followed in July 2005; in April 2019, a ten-year occupancy agreement designated a new operator and the Communist group announced it would abstain, arguing that the attached price list (49 and 51 euros) reserved the establishment for the highest incomes. The second thread is maintenance: renovation of the staff facilities approved in November 2004, then reconstruction of the roadways approved in October 2007 as a two-phase negotiated contract and approved again in July 2009 as a two-phase call for tenders — the extracts do not say what happened in between, and none of these acts gives a figure for the expenditure. The park finally appears through its own life: the premises of the former Observatory were entrusted to the Association française d'astronomie in October 2006; in March 2015, a motion on the park's six different opening-hours schedules was withdrawn after the deputy mayor made any extension conditional on discussion with staff; in February 2019, the Council examined the name \"Allée Jacques Higelin\" for a path in the northeast part of the park."
 }

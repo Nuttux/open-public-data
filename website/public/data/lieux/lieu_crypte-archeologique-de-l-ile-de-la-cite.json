@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T20:11:17.537074+00:00",
+ "generated_at": "2026-07-20T20:28:18.117255+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "crypte-archeologique-de-l-ile-de-la-cite",
  "name": "Crypte archéologique de l'île de la Cité",
@@ -22,7 +22,8 @@
   "source": {
    "name": "Wikipédia",
    "url": "https://fr.wikipedia.org/"
-  }
+  },
+  "extract_en": "The crypte archéologique de l'île de la Cité, formerly the crypte archéologique du parvis Notre-Dame, is a City of Paris museum, located just beneath the square in front of Notre-Dame cathedral, in the Notre-Dame district of the 4th arrondissement. The site displays archaeological remains from Antiquity to the 19th century, discovered during excavations carried out in the 1960s-1970s, prior to the construction of an underground parking garage."
  },
  "stats": {
   "n_delibs": 166,
@@ -50,7 +51,9 @@
    "fait": "Le Conseil approuve le principe d'une délégation de service public pour la gestion de la crypte.",
    "pourquoi": "Paris envisage de déléguer la gestion de la crypte",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=62381"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=62381",
+   "fait_en": "The Council approved the principle of a public service delegation for managing the crypt.",
+   "pourquoi_en": "Paris considers delegating management of the crypt"
   },
   {
    "id": "83954",
@@ -58,7 +61,9 @@
    "fait": "Fixation des tarifs d'entrée du public : 33 francs plein tarif individuel, 600 francs par groupe, au 1er octobre 1999.",
    "pourquoi": "Ce que coûte l'entrée du monument au public",
    "vedette": false,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=83954"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=83954",
+   "fait_en": "Setting of public admission prices: 33 francs full individual price, 600 francs per group, effective 1 October 1999.",
+   "pourquoi_en": "What admission to the monument costs the public"
   },
   {
    "id": "50462",
@@ -66,7 +71,9 @@
    "fait": "Le Conseil décide de ne pas donner suite à la procédure de délégation lancée en 1998.",
    "pourquoi": "La procédure de délégation est finalement abandonnée deux ans après",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=50462"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=50462",
+   "fait_en": "The Council decided not to proceed with the delegation procedure launched in 1998.",
+   "pourquoi_en": "The delegation procedure is ultimately abandoned two years later"
   },
   {
    "id": "50516",
@@ -74,7 +81,9 @@
    "fait": "Modification des tarifs à la baisse : plein tarif individuel ramené de 33 à 22 francs, au 1er août 2000.",
    "pourquoi": "Le tarif d'entrée est revu nettement à la baisse",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=50516"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=50516",
+   "fait_en": "Downward revision of rates: full individual price brought down from 33 to 22 francs, effective 1 August 2000.",
+   "pourquoi_en": "The admission price is revised sharply downward"
   }
  ],
  "montants": [
@@ -143,5 +152,6 @@
    "name": "Wikipédia",
    "url": "https://fr.wikipedia.org/"
   }
- }
+ },
+ "synthese_en": "In November 1998, the Conseil de Paris approved the principle of a public service delegation for managing the archaeological crypt of the parvis Notre-Dame, and authorized the Mayor to launch the procedure. In September 1999, it set public admission prices: 33 francs (5.03 euros) full individual price, 600 francs per group. In July 2000, the Council ultimately decided not to proceed with the delegation procedure launched two years earlier, and authorized the Mayor to notify the candidates accordingly. The same month, it revised the rates downward, bringing the full individual price down to 22 francs (3.35 euros)."
 }

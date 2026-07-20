@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T20:11:17.537074+00:00",
+ "generated_at": "2026-07-20T20:28:18.117255+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "fontaine-saint-michel",
  "name": "Fontaine Saint-Michel",
@@ -50,7 +50,9 @@
    "fait": "Le Conseil de Paris approuve le principe de la restauration de la fontaine et autorise le Maire à signer le marché de travaux correspondant.",
    "pourquoi": "le premier feu vert, il y a un quart de siècle",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=92631"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=92631",
+   "fait_en": "Conseil de Paris approved the principle of restoring the fountain and authorized the Mayor to sign the corresponding works contract.",
+   "pourquoi_en": "The first green light, a quarter of a century ago"
   },
   {
    "id": "178355",
@@ -58,7 +60,9 @@
    "fait": "Selon Mme Hervieu, la nouvelle rénovation doit débuter en 2025 et porter sur les pierres, les statues, les bassins et la mise en lumière du monument.",
    "pourquoi": "le monument emblématique repart en chantier",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=178355"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=178355",
+   "fait_en": "According to Ms Hervieu, the new renovation is due to begin in 2025 and will cover the stonework, statues, basins, and lighting of the monument.",
+   "pourquoi_en": "The emblematic monument goes back under scaffolding"
   },
   {
    "id": "178355",
@@ -66,7 +70,9 @@
    "fait": "Une convention d'occupation du domaine public prévoit une bâche publicitaire sur l'échafaudage, présentée comme un moyen d'autofinancer la restauration.",
    "pourquoi": "la publicité pour payer la pierre",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=178355"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=178355",
+   "fait_en": "A public-domain occupancy agreement provides for an advertising tarpaulin on the scaffolding, presented as a way to help self-finance the restoration.",
+   "pourquoi_en": "Advertising to pay for the stonework"
   },
   {
    "id": "178355",
@@ -74,7 +80,9 @@
    "fait": "Le recours à la publicité divise le Conseil : dénonciation d'une « pub » géante et d'une « pollution visuelle » contre défense d'une opportunité de financement.",
    "pourquoi": "faut-il vendre le décor pour le sauver",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=178355"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=178355",
+   "fait_en": "Resorting to advertising divided the Council: denunciations of a giant \"ad\" and \"visual pollution\" versus a defense of it as a financing opportunity.",
+   "pourquoi_en": "Must the decor be sold off to save it?"
   },
   {
    "id": "178355",
@@ -82,7 +90,9 @@
    "fait": "Selon Mme Primet, l'échafaudage couvrira 686 m² pendant dix mois, la bâche pouvant occuper jusqu'à 50 % de l'édifice.",
    "pourquoi": "l'ampleur physique du dispositif temporaire",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=178355"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=178355",
+   "fait_en": "According to Ms Primet, the scaffolding will cover 686 m² for ten months, with the tarpaulin able to occupy up to 50% of the building.",
+   "pourquoi_en": "The physical scale of the temporary setup"
   }
  ],
  "montants": [
@@ -144,5 +154,6 @@
    "name": "Wikipédia",
    "url": "https://fr.wikipedia.org/"
   }
- }
+ },
+ "synthese_en": "In September 1998, Conseil de Paris approved the principle of restoring the Fontaine Saint-Michel, place Saint-Michel (6th arrondissement), approved the terms of the corresponding works contract, and authorized the Mayor to sign it, with the expenditure charged to the City's investment budget; the text did not specify any amount. Twenty-six years later, in October 2024, as a new restoration was being prepared, the Council debated an agreement for occupying the public domain covering an advertising tarpaulin installed on the site's scaffolding. According to Ms Céline Hervieu (Paris en commun), this renovation was to begin in 2025 and cover the stonework, statues, basins, and lighting of the monument, which is listed as a historic monument. The use of advertising to help finance the works was divisive: Mr Meunier (Les Écologistes) denounced it as \"visual pollution,\" Mr Sorel called it a giant \"ad,\" and Ms Primet (Communiste et Citoyen) opposed the principle while announcing she would abstain, whereas Ms Hervieu (Paris en commun) saw it as an opportunity to help self-finance a heritage project amid a tight budgetary context."
 }

@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T20:11:17.537074+00:00",
+ "generated_at": "2026-07-20T20:28:18.117255+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "musee-de-la-vie-romantique",
  "name": "Musée de la Vie romantique",
@@ -22,7 +22,8 @@
   "source": {
    "name": "Wikipédia",
    "url": "https://fr.wikipedia.org/"
-  }
+  },
+  "extract_en": "The Musée de la Vie Romantique is located in the Nouvelle Athènes district of the 9th arrondissement of Paris. It is housed at 16 rue Chaptal, in the Hôtel Scheffer-Renan, the former home of the Dutch-born painter Ary Scheffer and a hub of Romantic inspiration during the first part of the 19th century."
  },
  "stats": {
   "n_delibs": 1211,
@@ -50,7 +51,9 @@
    "fait": "Le Conseil autorise le Maire à signer une convention d'objectifs avec l'Association des amis du musée de la Vie romantique.",
    "pourquoi": "Premier lien formel avec l'association des amis du musée",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=42611"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=42611",
+   "fait_en": "The Council authorized the Mayor to sign an objectives agreement with the Association des amis du musée de la Vie Romantique.",
+   "pourquoi_en": "First formal tie with the museum's friends association"
   },
   {
    "id": "89723",
@@ -58,7 +61,9 @@
    "fait": "Le Conseil autorise l'acquisition d'une huile d'Ary Schaeffer, « Portrait de Marguerite au rouet », pour 106 714,31 €.",
    "pourquoi": "Une œuvre d'Ary Scheffer destinée à l'enrichissement des collections",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=89723"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=89723",
+   "fait_en": "The Council authorized the acquisition of an oil painting by Ary Scheffer, \"Portrait de Marguerite au rouet,\" for 106,714.31 euros.",
+   "pourquoi_en": "A work by Ary Scheffer for the enrichment of the collections"
   },
   {
    "id": "32765",
@@ -66,7 +71,9 @@
    "fait": "Le Conseil approuve le principe du ravalement des bâtiments annexes et autorise le dépôt du permis de construire.",
    "pourquoi": "La Ville engage le principe des travaux",
    "vedette": false,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=32765"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=32765",
+   "fait_en": "The Council approved the principle of resurfacing the annex buildings and authorized filing the building permit application.",
+   "pourquoi_en": "The City commits to the principle of the works"
   },
   {
    "id": "74278",
@@ -74,7 +81,9 @@
    "fait": "Le Conseil émet le vœu que le musée soit examiné en priorité pour la mise aux normes d'accessibilité des personnes handicapées.",
    "pourquoi": "L'accès des personnes handicapées en question",
    "vedette": false,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=74278"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=74278",
+   "fait_en": "The Council passed a motion that the museum be examined as a priority for accessibility upgrades for people with disabilities.",
+   "pourquoi_en": "Access for people with disabilities in question"
   },
   {
    "id": "10807",
@@ -82,7 +91,9 @@
    "fait": "En séance, l'adjointe Moïra Guilmart présente le ravalement et la rénovation de la verrière comme urgents et en estime le coût à 220 000 €.",
    "pourquoi": "Un chantier dit urgent, chiffré en séance",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=10807"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=10807",
+   "fait_en": "In session, deputy mayor Moïra Guilmart described the resurfacing and the renovation of the glass roof as urgent and estimated their cost at 220,000 euros.",
+   "pourquoi_en": "A project called urgent, costed in session"
   },
   {
    "id": "73843",
@@ -90,7 +101,9 @@
    "fait": "Le Conseil autorise la signature d'une convention d'occupation du domaine public pour le salon de thé « Un Thé dans le Jardin ».",
    "pourquoi": "Un salon de thé dans le jardin du musée",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=73843"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=73843",
+   "fait_en": "The Council authorized signing an agreement for occupancy of the public domain for the tea room \"Un Thé dans le Jardin.\"",
+   "pourquoi_en": "A tea room in the museum's garden"
   },
   {
    "id": "52412",
@@ -98,7 +111,9 @@
    "fait": "Le Conseil autorise le Maire à signer la convention par laquelle l'État transfère à la Ville la propriété de l'Hôtel Renan-Scheffer.",
    "pourquoi": "L'État cède les murs à la Ville",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=52412"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=52412",
+   "fait_en": "The Council authorized the Mayor to sign the agreement by which the State transferred ownership of the Hôtel Renan-Scheffer to the City.",
+   "pourquoi_en": "The State cedes the building to the City"
   },
   {
    "id": "39344",
@@ -106,7 +121,9 @@
    "fait": "Le Conseil autorise la signature d'une convention de mécénat avec le cabinet d'avocats SALANS, pour une recette de 10 000 €.",
    "pourquoi": "Un cabinet d'avocats devient mécène",
    "vedette": false,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=39344"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=39344",
+   "fait_en": "The Council authorized signing a sponsorship agreement with the law firm SALANS, for revenue of 10,000 euros.",
+   "pourquoi_en": "A law firm becomes a sponsor"
   }
  ],
  "montants": [
@@ -168,5 +185,6 @@
    "name": "Wikipédia",
    "url": "https://fr.wikipedia.org/"
   }
- }
+ },
+ "synthese_en": "As early as 1999, Conseil de Paris authorized a first objectives agreement with the association of friends of the Musée de la Vie Romantique, 16 rue Chaptal (9th arrondissement), then authorized the acquisition of paintings by Ary Scheffer for its collections (106,714.31 euros in 2003, 200,000 euros in 2005). In 2005 and then 2006, it approved the principle of the resurfacing of the annex buildings and the awarding of the works contracts, including the renovation of the winter garden's glass roof; in session, deputy mayor Moïra Guilmart presented these operations as urgent and estimated their cost at 220,000 euros. In 2006, it authorized signing the agreement by which the State transferred ownership of the Hôtel Renan-Scheffer, which houses the museum, to the City, and a motion asked that its accessibility upgrade for people with disabilities be examined as a priority. That same year, it authorized signing an agreement for occupancy of the public domain for the tea room \"Un Thé dans le Jardin,\" at the museum. Support then continued through new agreements with the museum's friends association (2007, 2011) and a sponsorship agreement with the law firm SALANS (2010, revenue of 10,000 euros)."
 }

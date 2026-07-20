@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T20:11:17.537074+00:00",
+ "generated_at": "2026-07-20T20:28:18.117255+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "theatre-paris-villette",
  "name": "Théâtre Paris-Villette",
@@ -22,7 +22,8 @@
   "source": {
    "name": "Wikipédia",
    "url": "https://fr.wikipedia.org/"
-  }
+  },
+  "extract_en": "The Théâtre Paris-Villette is a theatre founded in 1986 in the Parc de la Villette, in Paris. It has been directed since 2013 by Valérie Dassonville and Adrien de Van."
  },
  "stats": {
   "n_delibs": 794,
@@ -94,18 +95,21 @@
   "note_publique": "L'association qui gère le Théâtre Paris-Villette (19e) gère aussi le centre culturel « Grand Parquet » (18e). La subvention de fonctionnement couvre donc les deux sites et ne finance pas uniquement ce bâtiment.",
   "autres_sites": [
    "Grand Parquet (18e)"
-  ]
+  ],
+  "note_publique_en": "The association that runs the Théâtre Paris-Villette (19th arrondissement) also runs the \"Grand Parquet\" cultural centre (18th arrondissement). The operating grant therefore covers both sites and does not fund this building alone."
  },
  "residents": [
   {
    "beneficiaire": "MADANI COMPAGNIE",
    "montant_total": 6000.0,
-   "preuve": "Objet verbatim : « Aide à la diffusion du spectacle Incandescences au Théâtre Paris-Villette » — l'objet nomme explicitement et uniquement le lieu ; aide à une activité DANS le lieu, sans gestion."
+   "preuve": "Objet verbatim : « Aide à la diffusion du spectacle Incandescences au Théâtre Paris-Villette » — l'objet nomme explicitement et uniquement le lieu ; aide à une activité DANS le lieu, sans gestion.",
+   "preuve_en": "Grant purpose, verbatim: \"Support for staging the show Incandescences at the Théâtre Paris-Villette\" — the purpose explicitly and solely names the site; support for an activity held INSIDE the site, without operating it."
   },
   {
    "beneficiaire": "COMPAGNIE MARIZIBILL",
    "montant_total": 5000.0,
-   "preuve": "Objet verbatim : « Théâtre Paris-Villette - spectacle \"Luce\" » — l'objet nomme explicitement le lieu ; aide à un spectacle DANS le lieu, sans gestion."
+   "preuve": "Objet verbatim : « Théâtre Paris-Villette - spectacle \"Luce\" » — l'objet nomme explicitement le lieu ; aide à un spectacle DANS le lieu, sans gestion.",
+   "preuve_en": "Grant purpose, verbatim: \"Théâtre Paris-Villette – show 'Luce'\" — the purpose explicitly names the site; support for a show held INSIDE the site, without operating it."
   }
  ],
  "kpi_montant": null,
@@ -117,7 +121,9 @@
    "fait": "Le Conseil adopte la délibération DAC 35 accordant des subventions (582 500 €), une convention et un avenant à l'association Théâtre Paris Villette, dans le cadre du transfert de la gestion du Grand Parquet.",
    "pourquoi": "L'argent qui acte la reprise du Grand Parquet",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=129306"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=129306",
+   "fait_en": "The Council adopted deliberation DAC 35 granting subsidies (582,500 €), an agreement, and an amendment to the Théâtre Paris Villette association, as part of transferring management of the Grand Parquet.",
+   "pourquoi_en": "The funding that seals the takeover of the Grand Parquet"
   },
   {
    "id": "147425",
@@ -125,7 +131,9 @@
    "fait": "Le Conseil adopte la délibération DAC 9, une convention d'occupation du domaine public mettant, selon Christophe GIRARD, les espaces du Grand Parquet à disposition de l'association du théâtre Paris-Villette.",
    "pourquoi": "Le sort du local des petits-déjeuners solidaires",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=147425"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=147425",
+   "fait_en": "The Council adopted deliberation DAC 9, a public-domain occupancy agreement making, according to Christophe GIRARD, the Grand Parquet spaces available to the Théâtre Paris-Villette association.",
+   "pourquoi_en": "The fate of the solidarity-breakfast room"
   }
  ],
  "montants": [
@@ -178,5 +186,6 @@
    "name": "Wikipédia",
    "url": "https://fr.wikipedia.org/"
   }
- }
+ },
+ "synthese_en": "In March 2016, the Conseil de Paris adopted deliberation DAC 35 granting subsidies, an agreement, and an amendment to the Théâtre Paris Villette association, as part of transferring management of the Grand Parquet to this team. The debate at the time centred on the decision to entrust it with the Grand Parquet without a competitive tender — which Mr Pascal JULIEN described as a choice made \"without a transparent procedure\" — and on a monitoring committee demanded by Ms Danièle PREMEL and Mr Julien. In February 2019, the Council adopted deliberation DAC 9, a public-domain occupancy agreement whose purpose, according to deputy mayor Christophe GIRARD, was to make the spaces of the Grand Parquet cultural centre available to the association running the Théâtre Paris-Villette. This session was dominated by the fate of a Grand Parquet room used by the association \"Petit Déj' solidaire\" to store and prepare breakfasts distributed to migrants: Mr Julien warned that the agreement would cause it to lose this room, while Mr Girard said he was working with Ms Dominique VERSINI to find a nearby relocation solution."
 }

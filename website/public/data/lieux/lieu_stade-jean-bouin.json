@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T20:11:17.537074+00:00",
+ "generated_at": "2026-07-20T20:28:18.117255+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "stade-jean-bouin",
  "name": "Stade Jean-Bouin",
@@ -22,7 +22,8 @@
   "source": {
    "name": "Wikipédia",
    "url": "https://fr.wikipedia.org/"
-  }
+  },
+  "extract_en": "Stade Jean-Bouin is a stadium inaugurated in 1928, located in the 16th arrondissement of Paris. It is mainly used for rugby union and football. Its current capacity is 19,607 seats."
  },
  "stats": {
   "n_delibs": 1619,
@@ -52,7 +53,9 @@
    "fait": "Le Conseil autorise un avenant à la convention d'occupation du stade avec le CASG, destiné à participer au plan de redressement financier du club pour éviter sa cessation d'activité.",
    "pourquoi": "éviter la cessation d'activité du club occupant historique",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=91683"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=91683",
+   "fait_en": "The Council authorized an amendment to the stadium's occupancy agreement with the CASG, intended to contribute to the club's financial recovery plan and prevent it from ceasing operations.",
+   "pourquoi_en": "preventing the historic occupant club from ceasing operations"
   },
   {
    "id": "65055",
@@ -60,7 +63,9 @@
    "fait": "Le Conseil approuve le principe de la rénovation des tribunes couvertes et de la mise aux normes du stade, et autorise le Maire à signer les marchés de travaux.",
    "pourquoi": "rénover et mettre aux normes de vieilles tribunes",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=65055"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=65055",
+   "fait_en": "The Council approved the principle of renovating the covered stands and bringing the stadium up to standard, and authorized the Mayor to sign the works contracts.",
+   "pourquoi_en": "renovating and upgrading old stands to standard"
   },
   {
    "id": "8105",
@@ -68,7 +73,9 @@
    "fait": "En réponse à M. GOASGUEN, l'adjoint M. BAUPIN indique qu'un projet de parc de stationnement d'environ 450 places sous le terrain de hockey a été étudié, puis retiré et à réexaminer.",
    "pourquoi": "un parking souterrain sous le terrain de hockey",
    "vedette": false,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=8105"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=8105",
+   "fait_en": "In response to Mr GOASGUEN, deputy mayor Mr BAUPIN stated that a project for a parking facility of around 450 spaces beneath the hockey pitch had been studied, then withdrawn, and was to be reconsidered.",
+   "pourquoi_en": "an underground car park beneath the hockey pitch"
   },
   {
    "id": "60162",
@@ -76,7 +83,9 @@
    "fait": "Le Conseil approuve le contrat d'occupation du domaine public du stade et des tennis du bois de Boulogne, et autorise le Maire à le signer avec l'association Paris Jean-Bouin CASG.",
    "pourquoi": "le bail d'occupation qui encadre tout le site",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=60162"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=60162",
+   "fait_en": "The Council approved the public domain occupancy contract for the stadium and the Bois de Boulogne tennis courts, and authorized the Mayor to sign it with the association Paris Jean-Bouin CASG.",
+   "pourquoi_en": "the occupancy lease governing the whole site"
   },
   {
    "id": "90839",
@@ -84,7 +93,9 @@
    "fait": "Le Conseil émet le vœu que la Ville crée un groupe de travail sur la rénovation de Jean-Bouin, l'évolution de Charléty et leur complémentarité.",
    "pourquoi": "repenser Jean-Bouin après l'échec des JO 2012",
    "vedette": false,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=90839"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=90839",
+   "fait_en": "The Council passed a motion for the City to create a working group on renovating Jean-Bouin, the development of Charléty, and their complementarity.",
+   "pourquoi_en": "rethinking Jean-Bouin after the failed 2012 Olympic bid"
   },
   {
    "id": "61916",
@@ -92,7 +103,9 @@
    "fait": "Le Conseil autorise le Maire à résilier, pour motif d'intérêt général, la convention de 2004, en vue de l'opération de démolition puis de reconstruction du stade.",
    "pourquoi": "résilier le bail pour démolir puis reconstruire",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=61916"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=61916",
+   "fait_en": "The Council authorized the Mayor to terminate, on grounds of public interest, the 2004 agreement, with a view to the operation to demolish and then rebuild the stadium.",
+   "pourquoi_en": "terminating the lease to demolish and then rebuild"
   },
   {
    "id": "12976",
@@ -100,7 +113,9 @@
    "fait": "Lors du débat sur le renouvellement des autorisations d'occupation, des élus qualifient le projet d'« inutile » et dénoncent des menaces d'abattage d'arbres autour de l'enceinte (37 troncs marqués selon M. ALPHAND).",
    "pourquoi": "les arbres marqués cristallisent la contestation",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=12976"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=12976",
+   "fait_en": "During the debate on renewing the occupancy authorizations, councillors called the project \"pointless\" and denounced threats to fell trees around the stadium (37 trunks marked, according to Mr ALPHAND).",
+   "pourquoi_en": "the marked trees crystallize the opposition"
   },
   {
    "id": "11100",
@@ -108,7 +123,9 @@
    "fait": "Lors du débat sur la concession de travaux, l'opposition met en cause la transparence financière, une redevance jugée faible et l'investissement de la F.F.T. (3,1 M€ selon M. ALPHAND), y voyant un montage lié à Roland-Garros.",
    "pourquoi": "la concession tennis attribuée à la Fédération de tennis",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=11100"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=11100",
+   "fait_en": "During the debate on the works concession, the opposition challenged the financial transparency, a fee it considered low, and the F.F.T.'s investment (3.1 million euros according to Mr ALPHAND), seeing in it an arrangement linked to Roland-Garros.",
+   "pourquoi_en": "the tennis concession awarded to the Tennis Federation"
   }
  ],
  "montants": [
@@ -194,32 +211,38 @@
   {
    "date": "1929-04-21",
    "extrait": "Exécution d'un mur de clôture au stade Jean - Bouin , 100.000 francs",
-   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k6429400w/f13.item"
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k6429400w/f13.item",
+   "extrait_en": "Construction of a boundary wall at Stade Jean-Bouin, 100,000 francs"
   },
   {
    "date": "1935-01-25",
    "extrait": "Autorisation au Club athlétique de la Société générale de mettre le stade Jean - Bouin à la disposition des clubs amateurs utilisant des joueurs professionnels à raison de quinze réunions par an (1931, 1297 … ",
-   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k6450923n/f25.item"
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k6450923n/f25.item",
+   "extrait_en": "Authorization for the Club athlétique de la Société générale to make Stade Jean-Bouin available to amateur clubs using professional players at a rate of fifteen meetings per year (1931, 1297 … "
   },
   {
    "date": "1935-12-30",
    "extrait": "Dans le but d'encourager la pratique de l'éducation physique, elle organise depuis deux ans, en plus de son concours de gymnastique annuel, un concours d'éducation physique et d'athlétisme qui a eu lieu cette année au stade Jean - Bouin (1935, P. 538 … Fondé en 1920, reconnu d'",
-   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k6481071r/f25.item"
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k6481071r/f25.item",
+   "extrait_en": "In order to encourage the practice of physical education, it has organized for the past two years, in addition to its annual gymnastics competition, a physical education and athletics competition that took place this year at Stade Jean-Bouin (1935, p. 538 … Founded in 1920, recognized as"
   },
   {
    "date": "1960-01-16",
    "extrait": "168. — Nouvelle concession du stade Jean - Bouin au Club athlétique des sports généraux … Roger Pinoteau, au nom de la lra Commission. — Mesdames, Messieurs, par contrat du 11 avril 1927 et avenants des 21 juin 1959 et 10 septembre 1935, un emplacement d'une superficie de 55.50",
-   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k97132220/f30.item"
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k97132220/f30.item",
+   "extrait_en": "168. — New concession of Stade Jean-Bouin to the Club athlétique des sports généraux … Roger Pinoteau, on behalf of the 1st Commission. — Ladies and Gentlemen, under a contract of 11 April 1927 and amendments of 21 June 1959 and 10 September 1935, a site with an area of 55.50"
   },
   {
    "date": "1965-12-13",
    "extrait": "6. — Désignation des représentants du Conseil municipal à la Commission de contrôle de l'exploitation du stade Jean - Bouin  … intervenir entre la Ville de Paris et le Secrétariat d'Etat à la jeunesse et aux sports en vue de la transformation du stade Jean - Bouin en stade nati",
-   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k97079424/f2.item"
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k97079424/f2.item",
+   "extrait_en": "6. — Appointment of Municipal Council representatives to the Committee overseeing the operation of Stade Jean-Bouin … to be concluded between the City of Paris and the State Secretariat for Youth and Sports with a view to converting Stade Jean-Bouin into a national sta"
   },
   {
    "date": "1971-07-03",
    "extrait": "l’abattage d’une rangée d’arbres superbes, plantés entre l’avenue du Général-Sarrail et le stade Jean - Bouin , lesquels faisaient la joie des habitants de ladite avenue, dont les fenêtres donnent sur le stade  … Mais, entre la clôture du stade et la tranchée du périphérique es",
-   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k3211736p/f3.item"
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k3211736p/f3.item",
+   "extrait_en": "the felling of a row of magnificent trees, planted between avenue du Général-Sarrail and Stade Jean-Bouin, which delighted the residents of that avenue, whose windows look out onto the stadium … But, between the stadium's boundary fence and the ring-road cutting is"
   }
  ],
  "bmo_recit": "Le stade Jean-Bouin apparaît dans le Bulletin municipal dès 1929, avec l'inscription de 100 000 francs pour l'exécution d'un mur de clôture. Au milieu des années 1930, le Conseil autorise le Club athlétique de la Société générale à mettre le stade à la disposition des clubs amateurs utilisant des joueurs professionnels, à raison de quinze réunions par an, et un concours d'éducation physique et d'athlétisme s'y tient en 1935. En 1960, le Conseil est saisi d'une nouvelle concession du stade au Club athlétique des sports généraux — présent sur le site depuis un contrat d'avril 1927 — portant sur une emprise d'environ 55 500 mètres carrés. En 1965, il désigne ses représentants à la commission de contrôle de l'exploitation du stade, dans le cadre d'une convention à conclure avec le Secrétariat d'État à la jeunesse et aux sports en vue d'une transformation en stade national d'athlétisme. L'archive s'achève en 1971 sur une intervention évoquant l'abattage d'une rangée d'arbres plantés entre l'avenue du Général-Sarrail et le stade, près de la tranchée du périphérique.",
@@ -481,5 +504,7 @@
    "name": "Wikipédia",
    "url": "https://fr.wikipedia.org/"
   }
- }
+ },
+ "synthese_en": "In the 1990s, Stade Jean-Bouin (20-40, avenue du Général-Sarrail, 16th arrondissement) was the subject of successive works contracts — repairing the concrete framework of the stands, renovating the covered stands, bringing the facility up to standard, resurfacing the rugby pitch's lighting — while the City financially supported its historic occupant, the Club athlétique des sports généraux (CASG), even taking part in 1996 in its recovery plan to prevent it from ceasing operations. In 2004, the Council approved a new occupancy contract with the association Paris Jean-Bouin CASG, before approving in 2007 the principle of demolishing and rebuilding the stadium and authorizing, in 2008, the termination of this agreement on grounds of public interest; the executive presented the operation as the response to the Stade Français's need for a genuine rugby stadium, and planned to relocate the sports and school sections to the Auteuil racecourse. The operation prompted strong opposition in session — the project was called \"pointless,\" trees were marked with white paint, and the fee was disputed. In 2010, the City declared the tender launched in 2009 unsuccessful, approved bringing the site back under direct municipal management, then authorized signing an occupancy agreement — a works concession awarded to the Fédération Française de Tennis, whose investment (3.1 million euros according to the opposition) and fee were disputed; at the same time, it paid operating subsidies to the association Paris Jean-Bouin (91,470 euros in 2006, 71,470 euros in 2007, 40,000 euros in 2010, 50,000 euros in 2014).",
+ "bmo_recit_en": "Stade Jean-Bouin appears in the municipal bulletin as early as 1929, with an allocation of 100,000 francs for building a boundary wall. In the mid-1930s, the Council authorized the Club athlétique de la Société générale to make the stadium available to amateur clubs using professional players, at a rate of fifteen meetings per year, and a physical education and athletics competition was held there in 1935. In 1960, the Council was presented with a new concession of the stadium to the Club athlétique des sports généraux — present on the site since an April 1927 contract — covering an area of around 55,500 square metres. In 1965, it appointed its representatives to the committee overseeing the stadium's operation, as part of an agreement to be concluded with the State Secretariat for Youth and Sports with a view to converting it into a national athletics stadium. The archive record ends in 1971 with a statement referring to the felling of a row of trees planted between avenue du Général-Sarrail and the stadium, near the ring road cutting."
 }

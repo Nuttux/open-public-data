@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T20:11:17.537074+00:00",
+ "generated_at": "2026-07-20T20:28:18.117255+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "arenes-de-lutece",
  "name": "Arènes de Lutèce",
@@ -22,7 +22,8 @@
   "source": {
    "name": "Wikipédia",
    "url": "https://fr.wikipedia.org/"
-  }
+  },
+  "extract_en": "The arènes de Lutèce, built in the 2nd century, are a Gallo-Roman amphitheater located in Paris. It is a hybrid complex, of the \"stage amphitheater\" or \"amphitheater-theater\" type, featuring both a stage for theatrical performances and an arena for gladiator combats and other amphitheater games."
  },
  "stats": {
   "n_delibs": 58,
@@ -44,7 +45,8 @@
   {
    "beneficiaire": "ESCRIME DES QUAIS DE SEINE",
    "montant_total": 1400.0,
-   "preuve": "Objet verbatim : \"FSF05 : animation d'escrime aux Arènes de Lutéce\" — l'association reçoit une aide pour une activité DANS le lieu, elle ne le gère pas (le square/monument est géré par la Ville, DEVE)."
+   "preuve": "Objet verbatim : \"FSF05 : animation d'escrime aux Arènes de Lutéce\" — l'association reçoit une aide pour une activité DANS le lieu, elle ne le gère pas (le square/monument est géré par la Ville, DEVE).",
+   "preuve_en": "Verbatim purpose: \"FSF05: fencing activity at the Arènes de Lutèce\" — the association receives support for an activity held INSIDE the site, it does not manage it (the square/monument is managed by the City, DEVE)."
   }
  ],
  "kpi_montant": null,
@@ -56,7 +58,9 @@
    "fait": "Le Conseil approuve le principe de la rénovation des Arènes et autorise le Maire à signer les marchés (appel d'offres ouvert, 3 lots séparés).",
    "pourquoi": "point de départ officiel du chantier",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=75993"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=75993",
+   "fait_en": "The Council approved the principle of renovating the Arènes and authorized the Mayor to sign the contracts (open tender, 3 separate lots).",
+   "pourquoi_en": "Official starting point of the works"
   },
   {
    "id": "5434",
@@ -64,7 +68,9 @@
    "fait": "En séance, Mme de Panafieu détaille les travaux — allées en béton désactivé, sans dallage, nouveau caniveau — et la délibération est adoptée.",
    "pourquoi": "à quoi ressembleront les allées",
    "vedette": false,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=5434"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=5434",
+   "fait_en": "During the session, Ms de Panafieu detailed the works — pathways in exposed-aggregate concrete, without paving, new gutter — and the deliberation was adopted.",
+   "pourquoi_en": "What the pathways will look like"
   },
   {
    "id": "147519",
@@ -72,7 +78,9 @@
    "fait": "Un vœu demande de classer les Arènes en refuge L.P.O. ; l'Exécutif propose par amendement de labelliser plutôt le parc Saint-Médard, au motif — selon Mme Komitès — des animations qui ont lieu dans les Arènes.",
    "pourquoi": "quand l'argument des animations écarte les Arènes du label nature",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=147519"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=147519",
+   "fait_en": "A motion asked that the Arènes be classified as an L.P.O. sanctuary; the executive proposed by amendment to instead label the Parc Saint-Médard, on the grounds — according to Ms Komitès — of the events held in the Arènes.",
+   "pourquoi_en": "When the argument of events rules the Arènes out of the nature label"
   },
   {
    "id": "178225",
@@ -80,7 +88,9 @@
    "fait": "Un vœu du groupe Union Capitale demande de pérenniser les Arènes comme site de festivités estivales de proximité.",
    "pourquoi": "faire des festivités estivales un rendez-vous durable",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=178225"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=178225",
+   "fait_en": "A motion from the Union Capitale group asked that the Arènes be made a permanent site for local summer festivities.",
+   "pourquoi_en": "Making summer festivities a lasting fixture"
   }
  ],
  "montants": [
@@ -96,37 +106,44 @@
   {
    "date": "1883-09-21",
    "extrait": "terrains renfermant les arènes de Lutèce (M. Cernesson, rapporteur … Le Conseil, Vu les diverses propositions faites au sein du Conseil municipal, en vue de la conservation des vestiges des, arènes de Lutece",
-   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k62481953/f3.item"
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k62481953/f3.item",
+   "extrait_en": "land containing the arènes de Lutèce (Mr Cernesson, rapporteur … The Council, Having regard to the various proposals made within the Conseil municipal, with a view to preserving the remains of the arènes de Lutèce"
   },
   {
    "date": "1907-03-06",
    "extrait": "28. — Observation au sujet des Arènes de Lutèce  … Lucien Augé de Lassus entretient la Commission de la partie des Arènes de Lutèce qui est recouverte par les constructions légères de la Compagnie des Omnibus … M Edgar Mareuse rappelle qu'autrefois l'on avait projeté d'agrand",
-   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k64662916/f19.item"
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k64662916/f19.item",
+   "extrait_en": "28. — Remarks concerning the Arènes de Lutèce … Lucien Augé de Lassus informs the Commission about the part of the Arènes de Lutèce covered by the light structures of the Compagnie des Omnibus … Mr Edgar Mareuse recalls that in the past there had been a plan to expand"
   },
   {
    "date": "1910-08-11",
    "extrait": "761. — Organisation de représentations théâtrales aux arènes de Lutèce (M. Deville, rapporteur) Le Conseil, Vu le mémoire, en date du 10 juin 1910, par lequel M. le Sénateur, Préfet de la Seine, lui soumet une demande de M. Luc de Vos en autorisation d'organiser aux arènes de Lut",
-   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k64654260/f7.item"
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k64654260/f7.item",
+   "extrait_en": "761. — Organizing theatrical performances at the arènes de Lutèce (Mr Deville, rapporteur) The Council, Having regard to the memorandum of 10 June 1910, by which the Senator, Prefect of the Seine, submits to it a request from Mr Luc de Vos for authorization to organize at the arènes de Lut"
   },
   {
    "date": "1913-07-25",
    "extrait": "représentations cinématographiques aux Arènes de Lutèce (M. Rollin, rapporteur … Le Conseil, Vu la pétition par laquelle Mme CaristieMartel sollicite l'autorisation d'organiser des représentations cinématographiques aux Arènes de Lutèce pendant les mois de juillet, août et sept",
-   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k6510748x/f14.item"
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k6510748x/f14.item",
+   "extrait_en": "cinematographic performances at the Arènes de Lutèce (Mr Rollin, rapporteur … The Council, Having regard to the petition by which Ms Caristie-Martel requests authorization to organize cinematographic performances at the Arènes de Lutèce during the months of July, August and Sept"
   },
   {
    "date": "1914-07-27",
    "extrait": "Travaux de terrasse et maçonnerie nécessaires pour le dégagement et la reconstitution d'une nouvelle partie des Arènes de Lutèce",
-   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k6452859j/f4.item"
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k6452859j/f4.item",
+   "extrait_en": "Earthwork and masonry works necessary for clearing and reconstructing a new part of the Arènes de Lutèce"
   },
   {
    "date": "1916-04-23",
    "extrait": "97 c. pour le dégagement et la reconstitution d'une partie des arènes de Lutèce  … Sur le rapport présenté par M. Adolphe Chérioux, au nom de la 3a Commission, Délibère : Article premier, y- Il est ouvert par provision un crédit de 14,000 francs pour les travaux complémentaires",
-   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k6468655b/f11.item"
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k6468655b/f11.item",
+   "extrait_en": "97 c. for clearing and reconstructing part of the arènes de Lutèce … On the report presented by Mr Adolphe Chérioux, on behalf of the 3rd Commission, Resolves: Article one, — a provisional credit of 14,000 francs is opened for the additional works"
   },
   {
    "date": "1930-05-03",
    "extrait": "arènes de Lutèce pour des fêtes et spectacles (M. Paul Fleurot, rapporteur … Vu le mémoire en date du 25 novembre 1929, par lequel M. le Préfet de la Seine lui propose d'excepter de cette mesure générale la promenade dite « square des Arènes de Lutèce », en raison de son caract",
-   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k6334144h/f15.item"
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k6334144h/f15.item",
+   "extrait_en": "arènes de Lutèce for festivities and performances (Mr Paul Fleurot, rapporteur … Having regard to the memorandum of 25 November 1929, by which the Prefect of the Seine proposes to exempt from this general measure the promenade known as the \"square des Arènes de Lutèce\", on account of its particular char"
   }
  ],
  "bmo_recit": "Les arènes de Lutèce entrent dans le Bulletin municipal dès 1883, quand le Conseil examine diverses propositions faites en son sein pour la conservation des vestiges que renferment les terrains. Le sujet n'est pas clos pour autant : en 1907, Lucien Augé de Lassus entretient encore la Commission de la partie des arènes recouverte par les constructions légères de la Compagnie des Omnibus. Dans le même temps, le lieu devient une scène : le Conseil est saisi de demandes d'y organiser des représentations théâtrales en 1910, puis des représentations cinématographiques pour l'été 1913. Le chantier se poursuit jusque pendant la guerre, avec des travaux de terrasse et de maçonnerie pour dégager et reconstituer une nouvelle partie des arènes en 1914, puis, en 1916, l'ouverture par provision d'un crédit de 14 000 francs pour des travaux complémentaires de dégagement et de reconstitution. En 1930 enfin, le Préfet de la Seine propose au Conseil d'excepter d'une mesure générale la promenade dite « square des Arènes de Lutèce », en raison de son caractère particulier.",
@@ -150,5 +167,7 @@
    "name": "Wikipédia",
    "url": "https://fr.wikipedia.org/"
   }
- }
+ },
+ "synthese_en": "In June 1999, Conseil de Paris approved the principle of renovating the Arènes de Lutèce and authorized the Mayor to sign the works contracts, awarded through an open tender in three separate lots. During the session, Ms de Panafieu specified that the pathways, damaged by the weight of maintenance and delivery vehicles (for the garden and occasional performance activities), would be resurfaced in exposed-aggregate concrete with an unchanged appearance, without paving, and with a new gutter. In February 2019, a motion from Les Républicains et Indépendants asked that the green space of the Arènes be classified as a bird sanctuary by the Ligue de protection des oiseaux; the executive proposed by amendment to instead label the Parc Saint-Médard, given — according to Ms Komitès — the events that take place in the Arènes. In October 2024, a motion from the Union Capitale group asked that the Arènes be made a permanent site for local summer festivities, with cultural and sports events and workshops. From material renovation of the pathways to the place given to events, the square's event life comes back at every session.",
+ "bmo_recit_en": "The arènes de Lutèce enter the municipal bulletin as early as 1883, when the Council examines various proposals made within it for preserving the remains contained in the land. The matter was not closed there: in 1907, Lucien Augé de Lassus was still informing the Commission about the part of the arènes covered by the light structures of the Compagnie des Omnibus. At the same time, the site became a stage: the Council received requests to organize theatrical performances there in 1910, then cinematographic performances for the summer of 1913. The works continued even during the war, with earthwork and masonry works to clear and reconstruct a new part of the arènes in 1914, then, in 1916, the opening of a provisional credit of 14,000 francs for additional clearing and reconstruction works. Finally in 1930, the Prefect of the Seine proposed to the Council that the promenade known as the \"square des Arènes de Lutèce\" be exempted from a general measure, on account of its particular character."
 }

@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T20:11:17.537074+00:00",
+ "generated_at": "2026-07-20T20:28:18.117255+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "conservatoire-de-paris-crr",
  "name": "Conservatoire de Paris (CRR)",
@@ -50,7 +50,9 @@
    "fait": "Une subvention a l'Association du conservatoire superieur de Paris - C.N.R. (8e) est mise en deliberation.",
    "pourquoi": "la Ville soutient tot l'association du conservatoire",
    "vedette": false,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=742"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=742",
+   "fait_en": "A grant to the Association du conservatoire supérieur de Paris - C.N.R. (8th arrondissement) was put to deliberation.",
+   "pourquoi_en": "The City supports the conservatoire's association early on"
   },
   {
    "id": "95383",
@@ -58,7 +60,9 @@
    "fait": "Le Conseil autorise le Maire a accepter le don de la Fondation de France au Conservatoire superieur de Paris CNR : les livres et partitions edites par le Centre de musique baroque de Versailles.",
    "pourquoi": "un fonds de partitions baroques destine au conservatoire",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=95383"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=95383",
+   "fait_en": "The Council authorized the Mayor to accept the Fondation de France's donation to the Conservatoire supérieur de Paris CNR: the books and scores published by the Centre de musique baroque de Versailles.",
+   "pourquoi_en": "A collection of baroque scores intended for the conservatoire"
   },
   {
    "id": "46091",
@@ -66,7 +70,9 @@
    "fait": "Le Conseil accepte un legs particulier consenti a la Ville pour le Conservatoire superieur de Paris par Mlle Francoise Milde.",
    "pourquoi": "un legs prive revient au conservatoire",
    "vedette": false,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=46091"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=46091",
+   "fait_en": "The Council accepted a private bequest made to the City for the Conservatoire supérieur de Paris by Ms Françoise Milde.",
+   "pourquoi_en": "A private bequest goes to the conservatoire"
   },
   {
    "id": "74126",
@@ -74,7 +80,9 @@
    "fait": "La deliberation autorise le Maire a solliciter aupres de la Commission europeenne une subvention Erasmus pour le Conservatoire national de region de Paris et porte sur l'adhesion de la Ville a l'association europeenne des conservatoires.",
    "pourquoi": "le conservatoire s'inscrit dans un reseau europeen",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=74126"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=74126",
+   "fait_en": "The deliberation authorized the Mayor to apply to the European Commission for an Erasmus grant for the Conservatoire national de région de Paris, and concerned the City's membership in the European association of conservatoires.",
+   "pourquoi_en": "The conservatoire joins a European network"
   },
   {
    "id": "54631",
@@ -82,7 +90,9 @@
    "fait": "La deliberation cree un conseil d'etablissement au sein du Conservatoire national de region de Paris.",
    "pourquoi": "l'etablissement se dote d'une instance de gouvernance",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=54631"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=54631",
+   "fait_en": "The deliberation created a governing council (conseil d'établissement) within the Conservatoire national de région de Paris.",
+   "pourquoi_en": "The institution establishes a governing body"
   },
   {
    "id": "42720",
@@ -90,7 +100,9 @@
    "fait": "Le Conseil autorise le Maire a solliciter de l'Etat (DRAC) une subvention annuelle de fonctionnement pour le CRR de Paris (2008).",
    "pourquoi": "financer le fonctionnement via une aide de l'Etat",
    "vedette": false,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=42720"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=42720",
+   "fait_en": "The Council authorized the Mayor to request an annual operating grant from the State (DRAC) for the CRR de Paris (2008).",
+   "pourquoi_en": "Funding operations through State support"
   },
   {
    "id": "171892",
@@ -98,7 +110,9 @@
    "fait": "La deliberation porte sur le renouvellement de l'agrement du CRR comme etablissement preparant a l'entree dans l'enseignement superieur de la creation artistique.",
    "pourquoi": "garder le statut de tremplin vers le superieur",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=171892"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=171892",
+   "fait_en": "The deliberation concerned the renewal of the CRR's accreditation as an institution preparing students for entry into higher education in artistic creation.",
+   "pourquoi_en": "Keeping its status as a springboard to higher education"
   },
   {
    "id": "176404",
@@ -106,7 +120,9 @@
    "fait": "La deliberation porte sur l'attribution de la denomination « Ida Rubinstein » au Conservatoire a rayonnement regional de Paris.",
    "pourquoi": "le conservatoire recoit le nom d'Ida Rubinstein",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=176404"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=176404",
+   "fait_en": "The deliberation concerned awarding the name \"Ida Rubinstein\" to the Conservatoire à rayonnement régional de Paris.",
+   "pourquoi_en": "The conservatoire receives the name of Ida Rubinstein"
   }
  ],
  "montants": [],
@@ -132,5 +148,6 @@
    "name": "Wikipédia",
    "url": "https://fr.wikipedia.org/"
   }
- }
+ },
+ "synthese_en": "In the deliberations of the Conseil de Paris, the institution appears under successive names — Conservatoire supérieur de Paris, Conservatoire national de région (CNR), then Conservatoire à rayonnement régional (CRR). The oldest files concern its funding and its holdings: a grant to the conservatoire's association (8th arrondissement) in 1995, authorized acceptance of a donation of books and scores from the Fondation de France in 2002, then of a private bequest in 2004. From 2006 to 2011, the Council repeatedly authorized the Mayor to request an annual operating grant from the State (DRAC), and applied almost every year for a European grant under the Erasmus program, with a 2006 deliberation adding the City's membership in the European association of conservatoires. The institution's governance was organized through the creation of a governing council (conseil d'établissement) in 2007, whose bylaws were amended in 2009. Recent files concern its status and identity: renewal of its accreditation as an institution preparing students for higher education (2023), a request to renew its classification with the Ministry (2024), and the awarding of the name \"Ida Rubinstein\" (June 2024)."
 }

@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T20:11:17.537074+00:00",
+ "generated_at": "2026-07-20T20:28:18.117255+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "parc-de-bercy",
  "name": "Parc de Bercy",
@@ -22,7 +22,8 @@
   "source": {
    "name": "Wikipédia",
    "url": "https://fr.wikipedia.org/"
-  }
+  },
+  "extract_en": "The Parc de Bercy is a set of three gardens located in the Bercy neighbourhood of the 12th arrondissement of Paris, between the Palais omnisports de Paris-Bercy and the Bercy Village shopping and dining centre, on the site of the former Bercy warehouses."
  },
  "stats": {
   "n_delibs": 683,
@@ -52,7 +53,9 @@
    "fait": "Le Conseil équipe le dépôt archéologique « Les jardins de la Mémoire », sous la grande terrasse, qui abrite les vestiges des fouilles néolithiques de Bercy.",
    "pourquoi": "Des pirogues de 6 500 ans sous le parc",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=5328"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=5328",
+   "fait_en": "The Council fitted out the archaeological repository \"Les jardins de la Mémoire\", beneath the great terrace, which houses the remains of the Neolithic excavations at Bercy.",
+   "pourquoi_en": "6,500-year-old dugout canoes beneath the park"
   },
   {
    "id": "13359",
@@ -60,7 +63,9 @@
    "fait": "L'ascenseur d'accessibilité voté en 1997 n'est toujours pas construit : trois appels d'offres ont déjà échoué faute d'offres acceptables, et un quatrième vient d'être lancé.",
    "pourquoi": "Quatre appels d'offres pour un ascenseur",
    "vedette": false,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=13359"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=13359",
+   "fait_en": "The accessibility lift approved in 1997 still had not been built: three tenders had already failed for lack of acceptable bids, and a fourth had just been launched.",
+   "pourquoi_en": "Four tenders for a lift"
   },
   {
    "id": "7073",
@@ -68,7 +73,9 @@
    "fait": "L'adjoint Denis Baupin annonce le calendrier de la passerelle vers le quai François-Mauriac (chantier 2004, livraison début 2006), confiée à l'architecte Dietmar Feichtinger.",
    "pourquoi": "La passerelle signature enfin datée",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=7073"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=7073",
+   "fait_en": "Deputy mayor Denis Baupin announced the timetable for the footbridge to the quai François-Mauriac (construction in 2004, delivery in early 2006), entrusted to architect Dietmar Feichtinger.",
+   "pourquoi_en": "The signature footbridge finally gets a date"
   },
   {
    "id": "22434",
@@ -76,7 +83,9 @@
    "fait": "Le Conseil autorise la couverture du roller park et adopte un vœu pour étudier une aire de jeux de ballons, le terrain de basket ayant cédé la place au roller.",
    "pourquoi": "Le roller gagne, le basket perd",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=22434"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=22434",
+   "fait_en": "The Council authorized covering the roller park and adopted a motion to study a ball-games area, after the basketball court gave way to rollerskating.",
+   "pourquoi_en": "Rollerskating wins, basketball loses"
   },
   {
    "id": "138128",
@@ -84,7 +93,9 @@
    "fait": "Un vœu de Danielle Simonnet demande une alternative à l'« Arena 2 », qui amputerait selon elle 2,5 hectares du parc pour les Jeux ; l'Exécutif y est défavorable.",
    "pourquoi": "2,5 hectares de parc dans la balance",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=138128"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=138128",
+   "fait_en": "A motion by Danielle Simonnet asked for an alternative to the \"Arena 2\", which she said would take 2.5 hectares from the park for the Games; the executive opposed it.",
+   "pourquoi_en": "2.5 hectares of parkland at stake"
   },
   {
    "id": "144116",
@@ -92,7 +103,9 @@
    "fait": "Le Conseil renouvelle à titre gratuit la convention de la ferme en container « Agricool », que les élus écologistes accusent de ne pas tenir ses promesses.",
    "pourquoi": "Une ferme-vitrine gratuite qui fait débat",
    "vedette": false,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=144116"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=144116",
+   "fait_en": "The Council renewed, free of charge, the agreement for the container farm \"Agricool\", which the Green-party elected officials accused of not keeping its promises.",
+   "pourquoi_en": "A free showcase farm sparks debate"
   },
   {
    "id": "152315",
@@ -100,7 +113,9 @@
    "fait": "Un vœu, rejeté, dénonce le parc « devenu un hall de gare » depuis le transfert des autocars à Bercy-Seine ; la Ville dit avoir investi plus de 1 million d'euros dans sa rénovation.",
    "pourquoi": "Le parc transformé en salle d'attente",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=152315"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=152315",
+   "fait_en": "A rejected motion denounced the park having \"become a train-station concourse\" since the coaches were moved to Bercy-Seine; the City said it had invested more than €1 million in its renovation.",
+   "pourquoi_en": "The park turned into a waiting room"
   },
   {
    "id": "176389",
@@ -108,7 +123,9 @@
    "fait": "À l'approche des Jeux, l'adjoint David Belliard indique que la Ville a décidé de fermer la gare Bercy-Seine, dont les flux dégradaient le parc.",
    "pourquoi": "La Ville acte la fermeture de la gare",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=176389"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=176389",
+   "fait_en": "Ahead of the Games, deputy mayor David Belliard stated that the City had decided to close the Bercy-Seine coach station, whose traffic was degrading the park.",
+   "pourquoi_en": "The City decides to close the coach station"
   }
  ],
  "montants": [
@@ -215,22 +232,26 @@
   {
    "date": "1892-03-24",
    "extrait": "354. — Réglementation du travail dans les entrepôts de Bercy et Saint-Bernard … nO 29 de 1892), Délibère : Article premier. — Les ordres de service relatifs à l'ouverture des entrepôts de Bercy et Saint … 35 du règlement de l' entrepôt de Bercy",
-   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k64471172/f3.item"
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k64471172/f3.item",
+   "extrait_en": "354. — Regulation of work at the Bercy and Saint-Bernard warehouses … no. 29 of 1892), Resolves: Article one. — The service orders concerning the opening of the Bercy and Saint … 35 of the Bercy warehouse regulations"
   },
   {
    "date": "1922-06-11",
    "extrait": "2° A deux heures un quart : Entrepôts du Grand Bercy (aux magasins situés sur la berge, 87 à 92, et rue de Nuits, 35) : Environ 50,000 kilog. : cuivre, zinc, plomb, fer, fonte, tôle, caoutchouc, tapis, couvertures, vêtements, rideaux, baignoires, presses à copier, bois, fûts dive",
-   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k6447306z/f4.item"
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k6447306z/f4.item",
+   "extrait_en": "2° At a quarter past two: Grand Bercy warehouses (at the premises located on the riverbank, 87 to 92, and rue de Nuits, 35): About 50,000 kilograms: copper, zinc, lead, iron, cast iron, sheet metal, rubber, carpets, blankets, clothing, curtains, bathtubs, copying presses, wood, various barrel"
   },
   {
    "date": "1934-02-03",
    "extrait": "Entrepôts de Bercy et Saint-Bernard. — Fourniture d'attèlages et enlèvement des ordures ménagères du 1er janvier 1934 au 31 décembre 1936",
-   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k6336212h/f8.item"
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k6336212h/f8.item",
+   "extrait_en": "Bercy and Saint-Bernard warehouses. — Supply of draught teams and removal of household waste from 1 January 1934 to 31 December 1936"
   },
   {
    "date": "1934-07-02",
    "extrait": "3. — Application de la majoration des baux consentis à l' entrepôt Saint-Bernard antérieurement au 24 octobre 1919 … 4. — Déduction sur le montant global des loyers perçus aux entrepôts de Bercy et de Saint-Bernard d'une somme égale à la valeur de la fourniture d'eau de rivière",
-   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k6520855p/f32.item"
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k6520855p/f32.item",
+   "extrait_en": "3. — Application of the increase in rents granted at the Saint-Bernard warehouse prior to 24 October 1919 … 4. — Deduction from the total amount of rents collected at the Bercy and Saint-Bernard warehouses of a sum equal to the value of the river-water supply"
   }
  ],
  "bmo_recit": "Dans le Bulletin municipal, le lieu apparaît sous les traits des entrepôts de Bercy, dont le Conseil règle le fonctionnement quotidien. En 1892, il délibère ainsi sur la réglementation du travail dans les entrepôts de Bercy et Saint-Bernard, jusqu'aux ordres de service fixant leur ouverture. En 1922, le Bulletin annonce une vente aux enchères aux magasins du Grand Bercy, sur la berge et rue de Nuits : environ 50 000 kilos de cuivre, zinc, plomb, tapis, fûts et toiles goudronnées. En 1934, deux décisions d'intendance se succèdent : un marché de fourniture d'attelages et d'enlèvement des ordures ménagères des entrepôts pour les années 1934 à 1936, puis une déduction sur les loyers perçus aux entrepôts de Bercy et de Saint-Bernard, d'une somme égale à la valeur de la fourniture d'eau de rivière supprimée. Sur ce lieu, l'archive donne donc à voir l'ère des entrepôts, pas encore celle du parc.",
@@ -317,5 +338,7 @@
    "name": "Wikipédia",
    "url": "https://fr.wikipedia.org/"
   }
- }
+ },
+ "synthese_en": "Council deliberations have tracked the Parc de Bercy since its construction in the 1990s, laid out on former wine warehouses: the Council voted series after series of amendments there, compensated for contracts annulled or reassigned (the Orangerie, the Falleau turfing), and was told by the executive that the initial envelope of 399.7 million francs (1992 value) \"had not been exceeded\". Around the great terrace, further additions include an archaeological repository named \"Les jardins de la Mémoire\", accessibility features for people with reduced mobility including a lift delayed by successive unsuccessful tenders, and the footbridge to the quai François-Mauriac entrusted to architect Dietmar Feichtinger. Uses took shape vote after vote: a carousel, an exhibition, a covered roller park (compensated €22,487.19 for additional works), a refreshment stand, then the container farm \"Agricool\", renewed free of charge despite opposition from the Greens. From 2017 onward, the park became a point of conflict: a motion challenged the \"Arena 2\", which it said would take 2.5 hectares from the park, and the installation of a coach station at Bercy-Seine turned the park, according to some elected officials, into a \"train-station concourse\" with degraded lawns. The City announced in 2023 that it wanted to close this coach station and relocate the coaches, folded the park's maintenance and the Canyoneaustrate fountain into the Accor Arena concession in 2024, and in 2025 gave the names of composers Michel Magne and Georges Delerue to two footpaths.",
+ "bmo_recit_en": "In the Bulletin municipal, the place first appears in the guise of the Bercy warehouses that occupied the site. In 1892, the Council thus deliberated on regulating work at the Bercy and Saint-Bernard warehouses, down to the service orders setting their opening hours. In 1922, the Bulletin announced an auction at the Grand Bercy warehouses, on the riverbank and rue de Nuits: about 50,000 kilograms of copper, zinc, lead, carpets, barrels and tarred canvas. In 1934, two administrative decisions followed one another: a contract for supplying draught teams and collecting household waste from the warehouses for the years 1934 to 1936, then a deduction from the rents collected at the Bercy and Saint-Bernard warehouses, equal to the value of the river-water supply that had been discontinued. On this site, then, the archive shows us the era of the warehouses, not yet that of the park."
 }

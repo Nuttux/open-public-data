@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T20:11:17.537074+00:00",
+ "generated_at": "2026-07-20T20:28:18.117255+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "pere-lachaise",
  "name": "Cimetière du Père-Lachaise",
@@ -22,7 +22,8 @@
   "source": {
    "name": "Wikipédia",
    "url": "https://fr.wikipedia.org/"
-  }
+  },
+  "extract_en": "The Père-Lachaise cemetery is the largest cemetery within intramural Paris and one of the most famous in the world. Located in the 20th arrondissement and holding 70,000 graves, it is the burial place of many famous people. It welcomes more than three and a half million visitors each year, making it the most visited cemetery in the world."
  },
  "stats": {
   "n_delibs": 1039,
@@ -50,7 +51,9 @@
    "fait": "Le Conseil approuve le principe de déléguer la gestion du crématorium à un opérateur via une délégation de service public.",
    "pourquoi": "Le crématorium bascule en gestion déléguée",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=78776"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=78776",
+   "fait_en": "The Council approved the principle of delegating management of the crematorium to an operator through a public service delegation.",
+   "pourquoi_en": "The crematorium shifts to delegated management"
   },
   {
    "id": "38191",
@@ -58,7 +61,9 @@
    "fait": "La S.A.E.M.P.F. est désignée délégataire du crématorium ; la Ville fixe les sommes qu'elle versera pour la crémation des personnes sans ressources.",
    "pourquoi": "La Ville paie la crémation des indigents",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=38191"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=38191",
+   "fait_en": "The S.A.E.M.P.F. was designated as delegate operator of the crematorium; the City set the sums it would pay for the cremation of people without resources.",
+   "pourquoi_en": "The City pays for the cremation of the destitute"
   },
   {
    "id": "76582",
@@ -66,7 +71,9 @@
    "fait": "La Ville garantit à 50 % un emprunt de 11 millions de francs destiné à financer la rénovation des installations du crématorium.",
    "pourquoi": "11 millions de francs garantis pour rénover",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=76582"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=76582",
+   "fait_en": "The City guaranteed 50% of a loan of 11 million francs intended to finance the renovation of the crematorium's facilities.",
+   "pourquoi_en": "11 million francs guaranteed for renovation"
   },
   {
    "id": "42188",
@@ -74,7 +81,9 @@
    "fait": "Le Conseil approuve le principe de reconstruire les locaux sociaux du cimetière et autorise le Maire à signer le marché.",
    "pourquoi": "Reconstruire les locaux du personnel du cimetière",
    "vedette": false,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=42188"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=42188",
+   "fait_en": "The Council approved the principle of rebuilding the cemetery's staff facilities and authorized the Mayor to sign the contract.",
+   "pourquoi_en": "Rebuilding the cemetery's staff facilities"
   },
   {
    "id": "3799",
@@ -82,7 +91,9 @@
    "fait": "Le Conseil autorise le marché pour un mémorial aux 670 jeunes Parisiens morts en Algérie et lors des combats du Maroc et de la Tunisie.",
    "pourquoi": "Un mémorial voté après des années de demandes",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=3799"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=3799",
+   "fait_en": "The Council authorized the contract for a memorial to the 670 young Parisians who died in Algeria and during the fighting in Morocco and Tunisia.",
+   "pourquoi_en": "A memorial passed after years of requests"
   },
   {
    "id": "44742",
@@ -90,7 +101,9 @@
    "fait": "Le Conseil approuve un dédommagement amiable de 9 795 € à une famille dont la concession avait été reprise illégalement et détruite en 1984.",
    "pourquoi": "Réparer une concession reprise et détruite illégalement",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=44742"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=44742",
+   "fait_en": "The Council approved an amicable settlement of €9,795 for a family whose plot had been illegally reclaimed and destroyed in 1984.",
+   "pourquoi_en": "Making amends for a plot illegally reclaimed and destroyed"
   },
   {
    "id": "103157",
@@ -98,7 +111,9 @@
    "fait": "Un vœu demande de préserver en priorité le caractère historique des visites guidées, ses auteurs redoutant leur remplacement par des visites centrées sur la biodiversité.",
    "pourquoi": "Préserver le caractère historique des visites guidées",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=103157"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=103157",
+   "fait_en": "A motion called for prioritizing the preservation of the historical character of guided tours, its authors fearing they would be replaced by tours centered on biodiversity.",
+   "pourquoi_en": "Preserving the historical character of guided tours"
   },
   {
    "id": "134743",
@@ -106,7 +121,9 @@
    "fait": "Le Conseil engage, avec l'École Boulle, l'étude d'un mémorial cinéraire pour repenser l'accueil du Jardin du Souvenir.",
    "pourquoi": "Repenser le Jardin du Souvenir avec l'École Boulle",
    "vedette": false,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=134743"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=134743",
+   "fait_en": "The Council initiated, with the École Boulle, a study for a cinerary memorial to rethink the reception area of the Jardin du Souvenir.",
+   "pourquoi_en": "Rethinking the Jardin du Souvenir with the École Boulle"
   }
  ],
  "montants": [
@@ -206,17 +223,20 @@
   {
    "date": "1888-03-28",
    "extrait": "Cette pétition est extrêmement intéressante et l'Administration a depuis longtemps manifesté l'intention d'établir des trottoirs en asphalte sur les boulevards qui servent de lieu de passage aux personnes qui se rendent au cimetière du Père - Lachaise",
-   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k6440303j/f2.item"
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k6440303j/f2.item",
+   "extrait_en": "This petition is extremely interesting and the Administration has for a long time expressed its intention to lay asphalt sidewalks on the boulevards that serve as a thoroughfare for people going to the Père-Lachaise cemetery"
   },
   {
    "date": "1897-07-07",
    "extrait": "Modification de la délibération du 19 juin 1896 attribuant à M. Gérard, ancien maire du 20e arrondissement, une concession de deux mètres dans le. cimetière du Père - Lachaise . - M. Patenne. — Le Conseil a accordé, le 19 juin 1896, à M. Gérard, ancien maire du 20e arrondissement",
-   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k6361952q/f6.item"
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k6361952q/f6.item",
+   "extrait_en": "Amendment of the deliberation of June 19, 1896 granting Mr Gérard, former mayor of the 20th arrondissement, a two-meter plot in the Père-Lachaise cemetery. — Mr Patenne. — The Council granted, on June 19, 1896, to Mr Gérard, former mayor of the 20th arrondissement"
   },
   {
    "date": "1911-11-20",
    "extrait": "Au cimetière du Père - Lachaise , les discours suivants ont été prononcés : Discours de M. César",
-   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k64957404/f1.item"
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k64957404/f1.item",
+   "extrait_en": "At the Père-Lachaise cemetery, the following speeches were given: Speech by Mr César"
   }
  ],
  "bmo_recit": "Le cimetière du Père-Lachaise n'apparaît que ponctuellement dans le Bulletin municipal, à travers trois épisodes entre 1888 et 1911. En 1888, une pétition réclame des trottoirs en asphalte sur les boulevards qu'empruntent les personnes se rendant au cimetière ; il est répondu en séance que l'Administration a depuis longtemps manifesté l'intention de les établir, sans que le Bulletin dise si les travaux ont suivi. En 1897, le Conseil revient sur une délibération du 19 juin 1896 par laquelle il avait accordé à M. Gérard, ancien maire du 20e arrondissement, une concession de deux mètres dans le cimetière. En 1911 enfin, le Bulletin consigne les discours prononcés au cimetière lors d'une cérémonie. Trois traces brèves, entre l'entretien des abords, l'hommage à un ancien élu et la prise de parole publique.",
@@ -277,5 +297,7 @@
    "name": "Wikipédia",
    "url": "https://fr.wikipedia.org/"
   }
- }
+ },
+ "synthese_en": "The Conseil de Paris's decisions on Père-Lachaise follow two constant threads: the crematorium and the cemetery's maintenance. Starting in 1997, management of the crematorium moved to a public service delegation: the principle was approved in 1997, the municipal semi-public company was designated in 1998 — along with the sums the City committed to pay for the cremation of people without resources —, the City guaranteed a loan of 11 million francs for its renovation in 1999, followed by successive amendments up to a new delegation procedure launched in 2025. In parallel, the Council approved the principle of maintenance works at the cemetery — rebuilding staff premises, repairing walls and graves, bringing the columbarium and restrooms up to code — and compensated, through amicable settlements, families whose plots had been reclaimed by mistake or illegally destroyed. It also granted, free of charge, plots of land for commemorative monuments — to deportees, to Polish combatants — and, after years of requests, voted in 2001 for a contract to erect a memorial to the 670 young Parisians who died during the Algerian War and the fighting in Morocco and Tunisia. More recently, it has turned to the site's public life: a motion on the balance between historical tours and biodiversity tours in 2011, then a study for a cinerary memorial at the Jardin du Souvenir with the École Boulle in 2017.",
+ "bmo_recit_en": "The Père-Lachaise cemetery appears only occasionally in the municipal bulletin, across three episodes between 1888 and 1911. In 1888, a petition demanded asphalt sidewalks on the boulevards used by people going to the cemetery; it was answered in session that the Administration had long expressed its intention to lay them, though the Bulletin does not say whether the works followed. In 1897, the Council revisited a deliberation of June 19, 1896 by which it had granted Mr Gérard, former mayor of the 20th arrondissement, a two-meter plot in the cemetery. Finally, in 1911, the Bulletin recorded the speeches given at the cemetery during a ceremony. Three brief traces, spanning the maintenance of the surroundings, a tribute to a former councillor, and a public address."
 }

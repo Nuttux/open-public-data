@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T20:11:17.537074+00:00",
+ "generated_at": "2026-07-20T20:28:18.117255+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "place-de-la-republique",
  "name": "Place de la République",
@@ -22,7 +22,8 @@
   "source": {
    "name": "Wikipédia",
    "url": "https://fr.wikipedia.org/"
-  }
+  },
+  "extract_en": "The place de la République is a 3.4-hectare square located on the boundary between the 3rd, 10th and 11th arrondissements of Paris."
  },
  "stats": {
   "n_delibs": 1591,
@@ -52,7 +53,9 @@
    "fait": "Le Conseil autorise la restauration du monument à la gloire de la République, au centre de la place, et adopte deux vœux demandant d'étudier sa fermeture à la circulation automobile.",
    "pourquoi": "Restaurer Marianne, premier appel à écarter les voitures",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=3359"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=3359",
+   "fait_en": "The Council authorized the restoration of the monument to the glory of the Republic, at the centre of the square, and adopted two motions calling for a study on closing it to car traffic.",
+   "pourquoi_en": "Restoring Marianne, the first call to keep out cars"
   },
   {
    "id": "13258",
@@ -60,7 +63,9 @@
    "fait": "Un jardin de la place reçoit le nom de square André Tollet, en hommage au président du Comité parisien de la Libération.",
    "pourquoi": "La Résistance entre dans le sol de la place",
    "vedette": false,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=13258"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=13258",
+   "fait_en": "A garden on the square was named square André Tollet, in tribute to the chairman of the Comité parisien de la Libération.",
+   "pourquoi_en": "The Resistance enters the square's very ground"
   },
   {
    "id": "5678",
@@ -68,7 +73,9 @@
    "fait": "Mme Annick LEPETIT annonce l'installation du premier jury et le choix de cinq équipes d'architectes, parmi 72 candidatures, pour esquisser le réaménagement.",
    "pourquoi": "Le concours d'architectes s'ouvre, 72 candidatures reçues",
    "vedette": false,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=5678"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=5678",
+   "fait_en": "Ms Annick LEPETIT announced the appointment of the first jury and the selection of five architectural teams, out of 72 applications, to sketch out the redevelopment.",
+   "pourquoi_en": "The architectural competition opens, 72 applications received"
   },
   {
    "id": "8614",
@@ -76,7 +83,9 @@
    "fait": "Le Conseil autorise la signature du marché de maîtrise d'œuvre avec l'équipe TVK ; le projet doit transformer le rond-point autour de la statue en espace piétonnier.",
    "pourquoi": "TVK va refondre l'une des plus grandes places d'Europe",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=8614"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=8614",
+   "fait_en": "The Council authorized signing the project management contract with the TVK team; the project was to transform the roundabout around the statue into a pedestrian space.",
+   "pourquoi_en": "TVK to redesign one of Europe's largest squares"
   },
   {
    "id": "12990",
@@ -84,7 +93,9 @@
    "fait": "En approuvant les objectifs et la concertation, le Conseil affronte l'opposition, qui conteste le coût de 17,5 millions d'euros avancé en séance et réclame une expérimentation préalable.",
    "pourquoi": "L'opposition conteste les 17,5 millions d'euros",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=12990"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=12990",
+   "fait_en": "In approving the objectives and the consultation process, the Council faced down the opposition, which disputed the €17.5 million cost put forward during the session and demanded a prior trial run.",
+   "pourquoi_en": "The opposition disputes the €17.5 million"
   },
   {
    "id": "111210",
@@ -92,7 +103,9 @@
    "fait": "Le Conseil confie au groupe S.O.S. le café-pavillon « Monde et Médias », qui doit ouvrir au printemps 2013 avec la livraison de la place.",
    "pourquoi": "Animer la place neuve pour éviter un « lieu mort »",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=111210"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=111210",
+   "fait_en": "The Council entrusted the \"Monde et Médias\" café pavilion to the S.O.S. group, due to open in spring 2013 when the square was handed over.",
+   "pourquoi_en": "Bringing the new square to life to avoid a \"dead space\""
   },
   {
    "id": "129889",
@@ -100,7 +113,9 @@
    "fait": "Face au mouvement Nuit Debout installé depuis le 31 mars, plusieurs vœux cherchent à concilier droit de manifester et nuisances signalées par les riverains.",
    "pourquoi": "Nuit Debout : manifester sans confisquer la place",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=129889"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=129889",
+   "fait_en": "Faced with the Nuit Debout movement, which had been camped there since 31 March, several motions sought to reconcile the right to demonstrate with the nuisances reported by local residents.",
+   "pourquoi_en": "Nuit Debout: demonstrating without taking over the square"
   },
   {
    "id": "157211",
@@ -108,7 +123,9 @@
    "fait": "Plusieurs vœux dénoncent l'évacuation, le 23 novembre 2020, d'un campement de migrants installé place de la République et demandent une mise à l'abri systématique.",
    "pourquoi": "Un campement de migrants évacué sous tension",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=157211"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=157211",
+   "fait_en": "Several motions denounced the eviction, on 23 November 2020, of a migrant camp set up at the place de la République, and called for systematic emergency shelter.",
+   "pourquoi_en": "A migrant camp evicted amid tension"
   }
  ],
  "montants": [
@@ -314,5 +331,6 @@
    "name": "Wikipédia",
    "url": "https://fr.wikipedia.org/"
   }
- }
+ },
+ "synthese_en": "In 2003, the Council of Paris authorized the restoration of the monument to the glory of the Republic, at the centre of the square, at a time when elected officials were already calling for cars to be kept away from it. From 2009, the City launched the redevelopment: a jury was appointed, a consultation was presented as extensive, and in 2010 the project management contract was awarded to the TVK team, for a project meant to transform the roundabout around the statue into a pedestrian space; a cost of €17.5 million, put forward in the deliberation, was disputed during the session by the opposition. Inaugurated in 2013, the square gained a café pavilion intended to bring it to life, and saw its symbolic weight reinforced by the large gatherings that followed the January 2015 attacks. It then became the scene of tensions — the Nuit Debout movement in 2016, the eviction of a migrant camp in 2020 — and was the subject of repeated requests, up to 2025, concerning its upkeep, lighting, and greening."
 }

@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T20:11:17.537074+00:00",
+ "generated_at": "2026-07-20T20:28:18.117255+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "theatre-14",
  "name": "Théâtre 14",
@@ -17,7 +17,8 @@
   "source": {
    "name": "Wikipédia",
    "url": "https://fr.wikipedia.org/"
-  }
+  },
+  "extract_en": "Théâtre 14 Jean-Marie-Serreau is a municipal theatre located at 20 avenue Marc-Sangnier in the 14th arrondissement of Paris."
  },
  "stats": {
   "n_delibs": 348,
@@ -39,7 +40,8 @@
   {
    "beneficiaire": "UNIVERSITES POPULAIRES DU THEATRE",
    "montant_total": 1000.0,
-   "preuve": "Objet de subvention verbatim : « Université Populaire du Théâtre au Théâtre 14 en mai 2018 » — nomme explicitement le lieu. Activité accueillie DANS le lieu, sans le gérer : les délibérations montrent que le fonctionnement et l'occupation du « Théâtre 14 situé 20, avenue Marc Sangnier (14e) » relèvent de l'association « Théâtre Paris 14 » (2002 DAC 39, 2007 DAC 612, 2009 DAC 169), qui n'est pas ce bénéficiaire (SIRET 79961225400018)."
+   "preuve": "Objet de subvention verbatim : « Université Populaire du Théâtre au Théâtre 14 en mai 2018 » — nomme explicitement le lieu. Activité accueillie DANS le lieu, sans le gérer : les délibérations montrent que le fonctionnement et l'occupation du « Théâtre 14 situé 20, avenue Marc Sangnier (14e) » relèvent de l'association « Théâtre Paris 14 » (2002 DAC 39, 2007 DAC 612, 2009 DAC 169), qui n'est pas ce bénéficiaire (SIRET 79961225400018).",
+   "preuve_en": "Verbatim subsidy purpose: \"Université Populaire du Théâtre at Théâtre 14 in May 2018\" — explicitly names the venue. Activity hosted INSIDE the venue, without managing it: the deliberations show that the operation and occupancy of \"Théâtre 14 located at 20, avenue Marc Sangnier (14th)\" fall to the association \"Théâtre Paris 14\" (2002 DAC 39, 2007 DAC 612, 2009 DAC 169), which is not this beneficiary (SIRET 79961225400018)."
   }
  ],
  "kpi_montant": null,
@@ -51,7 +53,9 @@
    "fait": "Le Conseil de Paris approuve le principe de la rénovation du Théâtre 14 et autorise la signature du marché de travaux correspondant.",
    "pourquoi": "Le point de départ : rénover la salle municipale",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=83744"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=83744",
+   "fait_en": "The Conseil de Paris approved the principle of renovating Théâtre 14 and authorized the signing of the corresponding works contract.",
+   "pourquoi_en": "The starting point: renovating the municipal venue"
   },
   {
    "id": "58038",
@@ -59,7 +63,9 @@
    "fait": "La Ville autorise une convention relative au fonctionnement du théâtre avec l'association Théâtre Paris 14, pour une dépense de 500 000 euros.",
    "pourquoi": "500 000 euros pour le fonctionnement du théâtre",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=58038"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=58038",
+   "fait_en": "The City authorized an agreement on the theatre's operations with the association Théâtre Paris 14, for an expenditure of 500,000 euros.",
+   "pourquoi_en": "500,000 euros for the theatre's operations"
   },
   {
    "id": "95269",
@@ -67,7 +73,9 @@
    "fait": "La Ville autorise un avenant portant le marché de rénovation, signé avec la SNC SNSH, à 397 177,50 euros H.T. (475 024,29 euros T.T.C.).",
    "pourquoi": "Le montant du marché de rénovation porté à 397 177 euros H.T.",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=95269"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=95269",
+   "fait_en": "The City authorized an amendment raising the renovation contract, signed with SNC SNSH, to 397,177.50 euros excluding tax (475,024.29 euros including tax).",
+   "pourquoi_en": "The renovation contract raised to 397,177 euros excluding tax"
   },
   {
    "id": "24846",
@@ -75,7 +83,9 @@
    "fait": "Lors du débat sur les conventions d'occupation des théâtres, Mme Hélène Macé de Lépinay juge « bien court » leur renouvellement annuel.",
    "pourquoi": "Des conventions d'un an jugées trop courtes",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=24846"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=24846",
+   "fait_en": "During the debate on theatre occupancy agreements, Ms Hélène Macé de Lépinay judged their annual renewal \"quite short.\"",
+   "pourquoi_en": "One-year agreements judged too short"
   },
   {
    "id": "53115",
@@ -83,7 +93,9 @@
    "fait": "La Ville autorise une convention d'un an pour l'occupation du Théâtre 14, dont la valeur locative est estimée à 26 500 euros.",
    "pourquoi": "L'occupation du lieu formalisée par convention",
    "vedette": false,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=53115"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=53115",
+   "fait_en": "The City authorized a one-year agreement for the occupancy of Théâtre 14, whose rental value was estimated at 26,500 euros.",
+   "pourquoi_en": "The venue's occupancy formalized by agreement"
   },
   {
    "id": "91336",
@@ -91,7 +103,9 @@
    "fait": "Une subvention de 30 000 euros est attribuée à l'association GRRR pour la 7e édition d'« En compagnie(s) d'été » au Théâtre 14.",
    "pourquoi": "Un festival d'été récurrent dans la salle",
    "vedette": false,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=91336"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=91336",
+   "fait_en": "A subsidy of 30,000 euros was granted to the association GRRR for the 7th edition of \"En compagnie(s) d'été\" at Théâtre 14.",
+   "pourquoi_en": "A recurring summer festival at the venue"
   },
   {
    "id": "36500",
@@ -99,7 +113,9 @@
    "fait": "Une subvention de 12 000 euros soutient « Les Femmes savantes » de Molière, présenté au Théâtre 14 Jean-Marie Serreau.",
    "pourquoi": "Molière à l'affiche, salle Jean-Marie Serreau",
    "vedette": false,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=36500"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=36500",
+   "fait_en": "A subsidy of 12,000 euros supported \"Les Femmes savantes\" by Molière, presented at Théâtre 14 Jean-Marie Serreau.",
+   "pourquoi_en": "Molière on the bill, at the Jean-Marie Serreau venue"
   }
  ],
  "montants": [
@@ -235,5 +251,6 @@
    "name": "Wikipédia",
    "url": "https://fr.wikipedia.org/"
   }
- }
+ },
+ "synthese_en": "In September 1999, the Conseil de Paris approved the principle of renovation works at Théâtre 14, avenue Marc-Sangnier (14th arrondissement), and authorized the signing of the corresponding contract; the principle of resurfacing the facades was approved in the same way in December 2001. In February 2002, the City authorized an agreement on the theatre's operations with the association Théâtre Paris 14, for an expenditure of 500,000 euros, then, in October 2002, an amendment raising the renovation contract, signed with SNC SNSH, to 397,177.50 euros excluding tax. From 2006, the City authorized, year by year, one-year occupancy agreements for the theatre — a term judged \"quite short\" in session by Ms Hélène Macé de Lépinay — accompanied by an estimated rental value of 26,500 euros that the association was to record in its accounts. Between 2006 and 2010, several subsidies financed shows hosted in the venue, including successive editions of the summer operation \"En compagnie(s) d'été\" run by the association GRRR (30,000 euros in both 2008 and 2010)."
 }

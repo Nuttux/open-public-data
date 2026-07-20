@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T20:11:17.537074+00:00",
+ "generated_at": "2026-07-20T20:28:18.117255+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "place-des-vosges",
  "name": "Place des Vosges",
@@ -22,7 +22,8 @@
   "source": {
    "name": "Wikipédia",
    "url": "https://fr.wikipedia.org/"
-  }
+  },
+  "extract_en": "The Place des Vosges, formerly Place Royale — initially dedicated to King Henri IV and, after the King's assassination by François Ravaillac, ultimately dedicated to his son Louis XIII — is a square in Paris in the Marais district, spanning the 3rd and 4th arrondissements."
  },
  "stats": {
   "n_delibs": 1106,
@@ -53,7 +54,9 @@
    "fait": "Le Conseil approuve le principe des travaux d'eclairage des fontaines du square Louis XIII et autorise le Maire a signer le marche.",
    "pourquoi": "Eclairer les fontaines du square Louis XIII",
    "vedette": false,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=84921"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=84921",
+   "fait_en": "The Council approved the principle of lighting works for the fountains of the Square Louis XIII and authorized the Mayor to sign the contract.",
+   "pourquoi_en": "Lighting the fountains of the Square Louis XIII"
   },
   {
    "id": "28786",
@@ -61,7 +64,9 @@
    "fait": "Le Conseil approuve le principe d'une subvention de 900 000 F et autorise le Maire a signer une convention pour restaurer la facade classee du 20.",
    "pourquoi": "La Ville subventionne une facade classee",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=28786"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=28786",
+   "fait_en": "The Council approved the principle of a 900,000-franc grant and authorized the Mayor to sign an agreement to restore the listed façade at number 20.",
+   "pourquoi_en": "The City subsidizes a listed façade"
   },
   {
    "id": "44371",
@@ -69,7 +74,9 @@
    "fait": "Le Conseil attribue la denomination \"synagogue Charles Liche\" a la synagogue du 14, place des Vosges.",
    "pourquoi": "Une synagogue nommee en hommage a un rabbin",
    "vedette": false,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=44371"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=44371",
+   "fait_en": "The Council gave the name \"synagogue Charles Liché\" to the synagogue at 14, Place des Vosges.",
+   "pourquoi_en": "A synagogue named in tribute to a rabbi"
   },
   {
    "id": "82165",
@@ -77,7 +84,9 @@
    "fait": "Le Conseil exprime son soutien a l'occupation, par \"Jeudi Noir\", de l'hotel du 1, place des Vosges, vacant depuis 1965.",
    "pourquoi": "Le Conseil soutient l'occupation d'un hotel vide",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=82165"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=82165",
+   "fait_en": "The Council expressed its support for the occupation, by \"Jeudi Noir\", of the mansion at 1, Place des Vosges, vacant since 1965.",
+   "pourquoi_en": "The Council supports the occupation of a vacant mansion"
   },
   {
    "id": "79290",
@@ -85,7 +94,9 @@
    "fait": "Le Conseil emet le voeu que la Prefecture ne procede a aucune expulsion sans relogement des occupants du 1 bis.",
    "pourquoi": "Pas d'expulsion sans relogement des occupants",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=79290"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=79290",
+   "fait_en": "The Council passed a motion asking that the Prefecture carry out no eviction without rehousing the occupants of 1 bis.",
+   "pourquoi_en": "No eviction without rehousing the occupants"
   },
   {
    "id": "132298",
@@ -93,7 +104,9 @@
    "fait": "Mme Simonnet demande par voeu que la regle de 30 % de logements sociaux s'applique au 1 bis (hotel Coulanges) et la levee des poursuites contre les anciens occupants.",
    "pourquoi": "Du logement social exige dans l'hotel Coulanges",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=132298"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=132298",
+   "fait_en": "Ms Simonnet, via a motion, asked that the 30% social-housing rule apply to 1 bis (Hôtel de Coulanges) and that proceedings against the former occupants be dropped.",
+   "pourquoi_en": "Social housing demanded at the Hôtel de Coulanges"
   },
   {
    "id": "152764",
@@ -101,7 +114,9 @@
    "fait": "Le Conseil designe le laureat \"Reinventer Paris\" pour l'hotel de Fourcy (8) et autorise le declassement par anticipation et la signature du bail a construction.",
    "pourquoi": "Un laureat pour reinventer l'hotel de Fourcy",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=152764"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=152764",
+   "fait_en": "The Council designated the \"Reinventer Paris\" winner for the Hôtel de Fourcy (8) and authorized the advance declassification and the signing of the building lease.",
+   "pourquoi_en": "A winner to reinvent the Hôtel de Fourcy"
   },
   {
    "id": "184653",
@@ -109,7 +124,9 @@
    "fait": "Deux deliberations prevoient la location de l'hotel de Fourcy (8) a CDC Habitat social et un programme de 17 logements sociaux, avec une subvention de 2 300 101 euros ; le debat est vif.",
    "pourquoi": "17 logements sociaux, debat tres vif",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=184653"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=184653",
+   "fait_en": "Two deliberations provided for leasing the Hôtel de Fourcy (8) to CDC Habitat social and a programme of 17 social housing units, with a grant of 2,300,101 euros; the debate was heated.",
+   "pourquoi_en": "17 social housing units, a very heated debate"
   }
  ],
  "montants": [
@@ -202,17 +219,20 @@
   {
    "date": "1903-07-04",
    "extrait": "Le 2 mars 1902, la ville de Paris avait organisé de brillantes fêtes sur notre si intéressante place des Vosges , en face de la maison où nous sommes en ce moment … Cette maison de la place des Vosges , Paris la consacre en effet dès ce jour au culte … Visiter le salon de la ",
-   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k6396061z/f2.item"
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k6396061z/f2.item",
+   "extrait_en": "On 2 March 1902, the City of Paris had organized brilliant festivities on our so interesting Place des Vosges, facing the house where we now stand … This house on the Place des Vosges, Paris consecrates it indeed from this day to the cult … Visit the drawing room of the"
   },
   {
    "date": "1908-11-14",
    "extrait": "25. — Renvoi à la 3e Commission et à l'Administration d'une proposition de M. Henri Galli relative au bitumage de la place des Vosges . .26. — Ordre du jour sur une demande de souscription à deux ouvrages. v 27. — Souscription à un ouvrage de M. Wils … 29. — Création d'une stat",
-   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k63485912/f5.item"
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k63485912/f5.item",
+   "extrait_en": "25. — Referral to the 3rd Commission and to the Administration of a proposal by Mr Henri Galli concerning the paving of the Place des Vosges. 26. — Order of business on a request for subscription to two works. 27. — Subscription to a work by Mr Wils … 29. — Creation of a stat"
   },
   {
    "date": "1941-10-19",
    "extrait": "La Place des Vosges », dessin de Georges Bruyer, gravé par Emile Feltesse",
-   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k6449456t/f1.item"
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k6449456t/f1.item",
+   "extrait_en": "\"The Place des Vosges\", a drawing by Georges Bruyer, engraved by Émile Feltesse"
   }
  ],
  "bmo_recit": "Dans le Bulletin municipal officiel, la place des Vosges apparaît d'abord à l'occasion d'une cérémonie : un discours reproduit en 1903 rappelle les fêtes que la Ville de Paris y avait organisées le 2 mars 1902, face à la maison de Victor Hugo, que Paris consacre ce jour-là. En 1908, le Conseil renvoie à sa 3e Commission et à l'Administration une proposition du conseiller Henri Galli relative au bitumage de la place — un renvoi pour examen, sans qu'une décision de travaux soit actée dans ces pages. En 1941, la place revient sous une autre forme : elle figure en couverture du Bulletin, dans un dessin de Georges Bruyer gravé par Émile Feltesse. L'archive ne livre ici que ces trois moments, espacés sur près de quarante ans.",
@@ -277,5 +297,7 @@
    "name": "Wikipédia",
    "url": "https://fr.wikipedia.org/"
   }
- }
+ },
+ "synthese_en": "At Conseil de Paris, the Place des Vosges first comes up for the upkeep of its heritage, building by building: grants whose principle is approved to restore the façades and roofs of numbers 15 and 20 (1998, 2001), lighting for the fountains of the Square Louis XIII, and works at the Lycée Théophile-Gautier and the Musée Victor-Hugo (2001-2002). From 2009, the Council takes up the case of a private mansion at 1 / 1 bis, vacant since 1965 and occupied by the \"Jeudi Noir\" collective: it adopts motions of support, calls for mediation, then, after the 2010 eviction, demands rehousing for the occupants. In 2016, a motion asks that the 30% social-housing rule be applied to this same Hôtel de Coulanges, which Ms Simonnet says was bought by Xavier Niel and Delphine Arnault. The debate then shifts to the Hôtel de Fourcy (8): a winner of the \"Reinventer Paris\" competition is designated in 2019, then in 2025 two deliberations grant a long lease (bail emphytéotique) to CDC Habitat social and a programme of 17 social housing units (a grant of 2,300,101 euros), hotly debated in session.",
+ "bmo_recit_en": "In the official municipal bulletin, the Place des Vosges first appears on the occasion of a ceremony: a speech reproduced in 1903 recalls the festivities that the City of Paris had organized there on 2 March 1902, facing the house of Victor Hugo, which Paris consecrated that day. In 1908, the Council referred to its 3rd Commission and to the Administration a proposal by councillor Henri Galli concerning the paving of the square — a referral for examination, with no decision on works recorded in these pages. In 1941, the square returns in another form: it appears on the cover of the Bulletin, in a drawing by Georges Bruyer engraved by Émile Feltesse. The archive here offers only these three moments, spread out over nearly forty years."
 }

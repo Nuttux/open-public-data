@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T20:11:17.537074+00:00",
+ "generated_at": "2026-07-20T20:28:18.117255+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "petit-palais",
  "name": "Petit Palais",
@@ -22,7 +22,8 @@
   "source": {
    "name": "Wikipédia",
    "url": "https://fr.wikipedia.org/"
-  }
+  },
+  "extract_en": "The Petit Palais, built for the 1900 Universal Exposition by architect Charles Girault, houses the City of Paris's Museum of Fine Arts. It is located in the 8th arrondissement of Paris, avenue Winston-Churchill, facing the Grand Palais and bordered by the Seine and avenue des Champs-Élysées. It was erected partly on the site of the Palais de l'Industrie, demolished in 1896. The building was listed as a historic monument in 1975."
  },
  "stats": {
   "n_delibs": 1187,
@@ -50,7 +51,9 @@
    "fait": "Un vœu demande le démontage de l'installation publicitaire géante dressée devant le Petit Palais, alors en travaux.",
    "pourquoi": "une pub géante masque le monument en chantier",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=55737"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=55737",
+   "fait_en": "A motion called for the removal of the giant advertising installation erected in front of the Petit Palais, then under renovation.",
+   "pourquoi_en": "A giant ad hides the monument under renovation"
   },
   {
    "id": "9317",
@@ -58,7 +61,9 @@
    "fait": "Le groupe communiste dépose un vœu s'opposant à l'externalisation du poste de sécurité du musée.",
    "pourquoi": "l'externalisation de la sécurité contestée en séance",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=9317"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=9317",
+   "fait_en": "The Communist group filed a motion opposing the outsourcing of the museum's security post.",
+   "pourquoi_en": "Security outsourcing disputed in session"
   },
   {
    "id": "16875",
@@ -66,7 +71,9 @@
    "fait": "En séance, un vœu réclame plus d'agents titulaires de surveillance ; l'adjointe conteste les effectifs avancés.",
    "pourquoi": "bataille de chiffres sur les gardiens du musée",
    "vedette": false,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=16875"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=16875",
+   "fait_en": "In session, a motion called for more permanent surveillance staff; the deputy mayor disputed the staffing figures put forward.",
+   "pourquoi_en": "A battle of figures over the museum's guards"
   },
   {
    "id": "35186",
@@ -74,7 +81,9 @@
    "fait": "Le Conseil approuve le principe d'indemniser les sociétés SCOP UTB et Crystal pour préjudices subis pendant le chantier.",
    "pourquoi": "le chantier de rénovation finit en indemnités",
    "vedette": false,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=35186"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=35186",
+   "fait_en": "The Council approved the principle of compensating the companies SCOP UTB and Crystal for damages suffered during the works.",
+   "pourquoi_en": "The renovation project ends in compensation payments"
   },
   {
    "id": "72489",
@@ -82,7 +91,9 @@
    "fait": "Le Maire est autorisé à signer une convention avec l'association DAÏKA pour l'exposition « Petit Palais intime ou l'étoffe des héroïnes ».",
    "pourquoi": "une exposition co-construite avec une association",
    "vedette": false,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=72489"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=72489",
+   "fait_en": "The Mayor was authorized to sign an agreement with the association DAÏKA for the exhibition \"Petit Palais intime ou l'étoffe des héroïnes.\"",
+   "pourquoi_en": "An exhibition co-built with an association"
   },
   {
    "id": "68536",
@@ -90,7 +101,9 @@
    "fait": "Le Conseil autorise un avenant n°3 portant le marché de maîtrise d'œuvre de la rénovation à 5 951 996,93 € HT.",
    "pourquoi": "le coût de la maîtrise d'œuvre relevé",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=68536"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=68536",
+   "fait_en": "The Council authorized amendment no. 3 raising the renovation's project management contract to €5,951,996.93 excluding tax.",
+   "pourquoi_en": "The cost of project management is raised"
   },
   {
    "id": "3972",
@@ -98,7 +111,9 @@
    "fait": "En séance, la concession des librairies-boutiques du Petit Palais et de Carnavalet à la RMN est débattue.",
    "pourquoi": "à qui confier la boutique du musée",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=3972"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=3972",
+   "fait_en": "In session, the concession of the Petit Palais's and Carnavalet's bookshop-boutiques to the RMN (Réunion des musées nationaux) was debated.",
+   "pourquoi_en": "Who should run the museum shop"
   },
   {
    "id": "39739",
@@ -106,7 +121,9 @@
    "fait": "Le Maire est autorisé à signer deux conventions de mécénat avec SAMSUNG au profit du musée (valeur estimée 650 000 €).",
    "pourquoi": "le mécénat privé entre au musée",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=39739"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=39739",
+   "fait_en": "The Mayor was authorized to sign two sponsorship agreements with SAMSUNG for the museum's benefit (estimated value €650,000).",
+   "pourquoi_en": "Private sponsorship enters the museum"
   }
  ],
  "montants": [
@@ -317,5 +334,6 @@
    "name": "Wikipédia",
    "url": "https://fr.wikipedia.org/"
   }
- }
+ },
+ "synthese_en": "Over fifteen years, the Conseil de Paris's deliberations follow the Petit Palais through a major renovation project and its daily life. In the late 1990s, the Council authorized the acquisition of works to enrich the museum's collections, drawn from the income of the Dutuit bequest. Starting in 1999, a modernization and restoration project structured the record: works contracts, an amendment raising the project management contract to nearly 6 million euros excluding tax, then several deliberations approving the principle of compensating companies for damages suffered during the works. The reopening, around 2005-2006, opened debates on staffing: a Communist motion opposed the outsourcing of the security post, another demanded more permanent surveillance staff, with figures disputed in session. The following years covered day-to-day operations (bookshops, the garden café, maintenance) and private resources: sponsorship agreements with SAMSUNG, Studio Philippe Apeloig and the Fondation Hermès, Epson sponsorship, and new acquisitions such as a René Lalique pendant."
 }

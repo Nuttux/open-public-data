@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T20:11:17.537074+00:00",
+ "generated_at": "2026-07-20T20:28:18.117255+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "marche-daligre",
  "name": "Marché d'Aligre",
@@ -22,7 +22,8 @@
   "source": {
    "name": "Wikipédia",
    "url": "https://fr.wikipedia.org/"
-  }
+  },
+  "extract_en": "The Marché d'Aligre is held every morning except Monday on place d'Aligre and rue d'Aligre, in the 12th arrondissement of Paris."
  },
  "stats": {
   "n_delibs": 97,
@@ -50,7 +51,9 @@
    "fait": "Le Conseil autorise le Maire à souscrire un avenant prolongeant de six mois la convention d'affermage du marché découvert Beauvau avec le G.I.E. du quartier d'Aligre.",
    "pourquoi": "gérer la transition avant le nouveau contrat",
    "vedette": false,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=82881"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=82881",
+   "fait_en": "The Council authorized the Mayor to enter into an amendment extending by six months the leasing agreement for the Beauvau open-air market with the G.I.E. du quartier d'Aligre.",
+   "pourquoi_en": "managing the transition before the new contract"
   },
   {
    "id": "4148",
@@ -58,7 +61,9 @@
    "fait": "Débat sur l'affermage du marché : le conseiller Gérard REY conteste l'attribution au G.I.E. du quartier d'Aligre après le retrait d'un concurrent et annonce voter contre.",
    "pourquoi": "la concession du marché attribuée malgré la contestation de M. REY",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=4148"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=4148",
+   "fait_en": "Debate over the market's lease: councillor Gérard REY disputed the award to the G.I.E. du quartier d'Aligre after a competitor's withdrawal and announced he would vote against.",
+   "pourquoi_en": "the market concession awarded despite Mr REY's objection"
   },
   {
    "id": "24047",
@@ -66,7 +71,9 @@
    "fait": "Le maire du 12e interroge le Préfet de police sur l'occupation illégale d'un immeuble du 5 rue d'Aligre par environ 200 personnes.",
    "pourquoi": "un immeuble voisin occupé, préserver la bonne marche du marché",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=24047"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=24047",
+   "fait_en": "The mayor of the 12th arrondissement questioned the Prefect of Police about the illegal occupation of a building at 5 rue d'Aligre by around 200 people.",
+   "pourquoi_en": "a neighboring building occupied, preserving the market's smooth running"
   },
   {
    "id": "39040",
@@ -74,7 +81,9 @@
    "fait": "Le Conseil approuve le principe de travaux de protection anti-pigeons au marché couvert Beauvau et autorise le Maire à signer le marché.",
    "pourquoi": "protéger la halle Beauvau des pigeons",
    "vedette": false,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=39040"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=39040",
+   "fait_en": "The Council approved the principle of anti-pigeon protection works at the Beauvau covered market and authorized the Mayor to sign the contract.",
+   "pourquoi_en": "protecting the Beauvau hall from pigeons"
   },
   {
    "id": "22697",
@@ -82,7 +91,9 @@
    "fait": "En réponse à une question sur la malpropreté du quartier, la Ville détaille le nettoyage spécifique imposé par la tenue quasi quotidienne du marché.",
    "pourquoi": "la propreté du marché mise en question",
    "vedette": false,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=22697"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=22697",
+   "fait_en": "In response to a question about the neighborhood's uncleanliness, the City detailed the specific cleaning required by the market's near-daily operation.",
+   "pourquoi_en": "the market's cleanliness called into question"
   },
   {
    "id": "80464",
@@ -90,7 +101,9 @@
    "fait": "Le Conseil approuve le principe et les modalités de passation de deux marchés de travaux de voirie et d'électricité pour aménager la place d'Aligre et les rues de Cotte et d'Aligre.",
    "pourquoi": "réaménager la place et ses rues",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=80464"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=80464",
+   "fait_en": "The Council approved the principle and the award procedures for two works contracts, for road works and electrical works, to redevelop the place d'Aligre and the rues de Cotte and d'Aligre.",
+   "pourquoi_en": "redeveloping the square and its streets"
   },
   {
    "id": "128239",
@@ -98,7 +111,9 @@
    "fait": "Après un incendie ayant fermé la halle l'été, l'adjointe fait état d'une réouverture au 1er octobre ; un vœu d'opposition demande un concours d'architectes pour un étage de convivialité.",
    "pourquoi": "après l'incendie, rouvrir et rêver un étage",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=128239"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=128239",
+   "fait_en": "After a fire had closed the hall for the summer, the deputy mayor reported a reopening on 1 October; an opposition motion asked for an architectural competition for a communal upper floor.",
+   "pourquoi_en": "after the fire, reopening and dreaming up an upper floor"
   },
   {
    "id": "169929",
@@ -106,7 +121,9 @@
    "fait": "Un vœu d'opposition demandant de végétaliser et d'ombrager la place d'Aligre est rejeté, l'Exécutif invoquant la concertation de 2022 et les contraintes du marché.",
    "pourquoi": "végétaliser la place, un vœu rejeté",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=169929"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=169929",
+   "fait_en": "An opposition motion asking to add greenery and shade to the place d'Aligre was rejected, with the Executive citing the 2022 consultation and the market's constraints.",
+   "pourquoi_en": "adding greenery to the square, a rejected motion"
   }
  ],
  "montants": [
@@ -129,22 +146,26 @@
   {
    "date": "1897-12-30",
    "extrait": "33, Marché Beauvau -Saint-Antoine (12e arrondissement), est ramené de 74,000 à 72,300 francs, et l'art …  Marché alimentaire de la rue de Tolbiac, de 2,250 à 2,200 francs … 50. — Marché de Joinville, à La Villette (19e arrondissement … ",
-   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k6362125c/f18.item"
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k6362125c/f18.item",
+   "extrait_en": "33, Marché Beauvau-Saint-Antoine (12th arrondissement), is brought down from 74,000 to 72,300 francs, and art. …  Food market of rue de Tolbiac, from 2,250 to 2,200 francs … 50. — Marché de Joinville, in La Villette (19th arrondissement … "
   },
   {
    "date": "1907-02-01",
    "extrait": "Par M. Armand Grébauval : De commerçants de la rue d ' Aligre relative au maintien du marché Beauvau",
-   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k6466258k/f11.item"
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k6466258k/f11.item",
+   "extrait_en": "From Mr Armand Grébauval: From merchants of the rue d'Aligre concerning the maintenance of the Marché Beauvau"
   },
   {
    "date": "1932-12-03",
    "extrait": "Attendu que du 2 au 4 décembre 1932, se tient à Paris (12e arrondissement), dans le quartier des Quinze-Vingts, une fête destinée à commémorer le centenaire du marché d ' Aligre -Beauveau-Saint-Antoine",
-   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k63126672/f4.item"
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k63126672/f4.item",
+   "extrait_en": "Whereas from 2 to 4 December 1932, a celebration is being held in Paris (12th arrondissement), in the Quinze-Vingts neighborhood, to commemorate the centenary of the Marché d'Aligre-Beauveau-Saint-Antoine"
   },
   {
    "date": "1977-12-08",
    "extrait": "330 Question de MM. Planchet, Pierre de Bénouville, Fernand Rombach, Paul Pernin, Jean-Pierre Burriez et Bernard Tieles à M. le Maire de Paris sur l’accès aux garages 6, 8 et 10, rue d ’ Aligre pendant les heures de marché",
-   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k3210473m/f2.item"
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k3210473m/f2.item",
+   "extrait_en": "330 Question from Mr Planchet, Pierre de Bénouville, Fernand Rombach, Paul Pernin, Jean-Pierre Burriez, and Bernard Tieles to the Mayor of Paris on access to the garages at 6, 8, and 10 rue d'Aligre during market hours"
   }
  ],
  "bmo_recit": "Le marché apparaît dans le Bulletin municipal dès la fin du XIXe siècle par le biais de sa gestion : en décembre 1897, le fermage du marché Beauvau-Saint-Antoine est ramené de 74 000 à 72 300 francs. En 1907, des commerçants de la rue d'Aligre adressent au Conseil, par la voix d'Armand Grébauval, une pétition demandant le maintien du marché. En décembre 1932, le Bulletin annonce une fête tenue du 2 au 4 décembre dans le quartier des Quinze-Vingts pour commémorer le centenaire du marché d'Aligre-Beauvau-Saint-Antoine. L'archive retrouve le lieu en 1977, quand plusieurs conseillers posent au Maire de Paris une question sur l'accès aux garages des 6, 8 et 10 rue d'Aligre pendant les heures de marché. Le Bulletin ne saisit ainsi le marché que par touches espacées — redevance, défense par ses commerçants, célébration, voisinage — mais sur quatre-vingts ans.",
@@ -215,5 +236,7 @@
    "name": "Wikipédia",
    "url": "https://fr.wikipedia.org/"
   }
- }
+ },
+ "synthese_en": "Conseil de Paris deliberations trace the Marché Beauvau, also known as the Marché d'Aligre, first through its management: in 1996, after an amendment extending the current agreement by six months, the Council authorized the Mayor to sign a new leasing contract for the open-air market with the Groupement d'intérêt économique du quartier d'Aligre, a choice that councillor Gérard REY disputed in the name of the City's finances. The 2000s were marked by works approved in principle: anti-pigeon protection for the covered hall (2002), road works for the place d'Aligre and the rues de Cotte and d'Aligre (2005), and the Maison des Ensembles at 3-5 rue d'Aligre, whose principle and project management were approved in 2005, then the terms of the works contract in 2006. The neighborhood's cleanliness was the subject of a question in 2003, with the City detailing the specific cleaning required by holding the market. In 2015, according to deputy mayor Olivia POLSKI, the Beauvau hall, hit by a fire in July, closed for the summer then reopened on 1 October, with a second phase of works planned for the summers of 2016 and 2017, while an opposition motion asked for an architectural competition to design a communal upper floor. In 2023, a motion asking to add greenery to the place d'Aligre was rejected, with the Executive citing the 2022 consultation and the market's operating constraints.",
+ "bmo_recit_en": "The market appears in the municipal bulletin as early as the end of the 19th century through its management: in December 1897, the lease fee for the Marché Beauvau-Saint-Antoine was brought down from 74,000 to 72,300 francs. In 1907, merchants from the rue d'Aligre sent the Council, through Armand Grébauval, a petition asking for the market to be maintained. In December 1932, the bulletin announced a celebration held from 2 to 4 December in the Quinze-Vingts neighborhood to commemorate the centenary of the Marché d'Aligre-Beauvau-Saint-Antoine. The archive picks up the place again in 1977, when several councillors put a question to the Mayor of Paris on access to the garages at 6, 8, and 10 rue d'Aligre during market hours. The bulletin thus captures the market only in scattered glimpses — lease fee, defense by its merchants, celebration, neighborhood relations — but spread over eighty years."
 }

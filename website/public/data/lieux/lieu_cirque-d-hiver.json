@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T20:11:17.537074+00:00",
+ "generated_at": "2026-07-20T20:28:18.117255+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "cirque-d-hiver",
  "name": "Cirque d'Hiver",
@@ -22,7 +22,8 @@
   "source": {
    "name": "Wikipédia",
    "url": "https://fr.wikipedia.org/"
-  }
+  },
+  "extract_en": "The cirque d'hiver de Paris, often simply called the Cirque d'Hiver, or the Cirque d'hiver Bouglione since its purchase by the Bouglione family in 1934, is a performance venue located at 110 rue Amelot in the 11th arrondissement of Paris. Built in 1852 by architect Jacques Hittorff, it was successively called \"cirque Napoléon\" and then \"Cirque national.\" It has been listed as a historic monument since 10 February 1975."
  },
  "stats": {
   "n_delibs": 431,
@@ -50,7 +51,9 @@
    "fait": "Subvention à l’Association Académie de musique des grandes écoles et universités (16e) pour l’organisation d’un concert au Cirque d’Hiver en avril 2008.",
    "pourquoi": "seule mention du lieu, comme salle de concert",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=62009"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=62009",
+   "fait_en": "Grant to the Association Académie de musique des grandes écoles et universités (16th arrondissement) for organizing a concert at the Cirque d'Hiver in April 2008.",
+   "pourquoi_en": "The venue's only mention, as a concert hall"
   }
  ],
  "montants": [],
@@ -58,17 +61,20 @@
   {
    "date": "1887-07-07",
    "extrait": "Dausset, président du Conseil municipal. — Demain, nous avons plusieurs réunions de Commissions : les 38 et 4e Commissions examineront la location du Cirque d ' hiver et à cinq heures",
-   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k62539804/f18.item"
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k62539804/f18.item",
+   "extrait_en": "Dausset, chairman of the Conseil municipal. — Tomorrow, we have several Commission meetings: the 3rd and 4th Commissions will examine the leasing of the Cirque d'hiver, and at five o'clock"
   },
   {
    "date": "1898-07-02",
    "extrait": "Matinées organisées pour les délégations des écoles primaires de Paris, à une heure : Au Cirque d'été … Au Cirque d ' hiver (..",
-   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k6413848z/f2.item"
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k6413848z/f2.item",
+   "extrait_en": "Matinees organized for delegations from Paris's primary schools, at one o'clock: At the Cirque d'été … At the Cirque d'hiver (.."
   },
   {
    "date": "1907-07-02",
    "extrait": "dont la première est cette inauguration et qui se terminera le Dimanche 17 Mai dans la soirée par un Gala organisé au Cirque d ' Hiver au profit de l'Association' Mutuelle des Mut",
-   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k6431063t/f6.item"
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k6431063t/f6.item",
+   "extrait_en": "of which the first is this inauguration, and which will end on Sunday 17 May in the evening with a Gala organized at the Cirque d'Hiver for the benefit of the Association Mutuelle des Mut"
   }
  ],
  "bmo_recit": "Le Cirque d'Hiver ne traverse le Bulletin municipal officiel que par trois passages, entre 1887 et 1907. En juillet 1887, le président du Conseil municipal annonce en séance que deux commissions se réuniront le lendemain pour examiner la location du Cirque d'hiver ; l'archive n'en donne pas l'issue. Onze ans plus tard, la salle figure au programme des matinées organisées à une heure pour les délégations des écoles primaires de Paris, aux côtés du Cirque d'été. En 1907, elle apparaît une dernière fois comme lieu du gala qui clôt une série de manifestations, donné au profit d'une association mutuelle.",
@@ -92,5 +98,7 @@
    "name": "Wikipédia",
    "url": "https://fr.wikipedia.org/"
   }
- }
+ },
+ "synthese_en": "The Cirque d'Hiver appears in the title of only one deliberation of the Conseil de Paris. In November 2008, this deliberation (2008 DAC 537) concerned a grant to the Association Académie de musique des grandes écoles et universités (16th arrondissement) for organizing a concert at the Cirque d'Hiver in April 2008, reported by Christophe Girard and Didier Guillot. The amount of this grant does not appear in the deliberation's title, and no element concerns the management, works, or ownership of the venue itself.",
+ "bmo_recit_en": "The Cirque d'Hiver crosses the Bulletin municipal officiel in only three passages, between 1887 and 1907. In July 1887, the chairman of the Conseil municipal announced in session that two commissions would meet the next day to examine the leasing of the Cirque d'hiver; the archive does not give the outcome. Eleven years later, the hall appears in the program of one o'clock matinees organized for delegations from Paris's primary schools, alongside the Cirque d'été. In 1907, it appears one last time as the venue for the gala that closed a series of events, given for the benefit of a mutual aid association."
 }

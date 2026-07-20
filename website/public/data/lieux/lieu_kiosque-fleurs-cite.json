@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T20:11:17.537074+00:00",
+ "generated_at": "2026-07-20T20:28:18.117255+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "kiosque-fleurs-cite",
  "name": "Marché aux fleurs de la Cité",
@@ -52,7 +52,9 @@
    "fait": "Deux vœux U.D.F.-U.M.P. s'inquiètent du démontage des halles pour les travaux d'étanchéité du métro Cité et réclament des garanties pour les fleuristes.",
    "pourquoi": "Un chantier de métro inquiète les fleuristes",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=8368"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=8368",
+   "fait_en": "Two motions from the U.D.F.-U.M.P. group raised concerns about the dismantling of the market halls for the Cité metro's waterproofing works and demanded guarantees for the flower vendors.",
+   "pourquoi_en": "A metro construction project worries the flower vendors"
   },
   {
    "id": "88833",
@@ -60,7 +62,9 @@
    "fait": "Le Conseil fixe en euros les droits de place du marché aux fleurs de la Cité, de 0,32 à 2,74 euros selon la place.",
    "pourquoi": "Ce que paient les fleuristes à la Ville",
    "vedette": false,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=88833"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=88833",
+   "fait_en": "The Council set the stallage fees for the Cité flower market in euros, ranging from 0.32 to 2.74 euros depending on the stall.",
+   "pourquoi_en": "What the flower vendors pay the City"
   },
   {
    "id": "143989",
@@ -68,7 +72,9 @@
    "fait": "Un vœu UDI-MODEM, amendé et adopté, demande des études complémentaires sur la rénovation et l'idée d'une vitrine de la biodiversité.",
    "pourquoi": "Faire du marché une vitrine végétale",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=143989"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=143989",
+   "fait_en": "A UDI-MODEM motion, amended and adopted, called for further studies on the renovation and on the idea of a biodiversity showcase.",
+   "pourquoi_en": "Turning the market into a showcase for plant life"
   },
   {
    "id": "157263",
@@ -76,7 +82,9 @@
    "fait": "Le projet de délibération DCPA 24 porte la rénovation patrimoniale des halles et le réaménagement de l'espace public alentour.",
    "pourquoi": "La rénovation attendue arrive en délibération",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=157263"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=157263",
+   "fait_en": "Draft deliberation DCPA 24 covered the heritage renovation of the market halls and the redevelopment of the surrounding public space.",
+   "pourquoi_en": "The long-awaited renovation reaches deliberation"
   },
   {
    "id": "157579",
@@ -84,7 +92,9 @@
    "fait": "Un vœu de l'Exécutif demande l'arrêt de la vente d'oiseaux et d'animaux à la réouverture des halles rénovées ; l'adjoint s'engage à modifier le règlement.",
    "pourquoi": "La fin annoncée du marché aux oiseaux",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=157579"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=157579",
+   "fait_en": "A motion from the executive called for an end to the sale of birds and animals when the renovated halls reopened; the deputy mayor committed to amending the regulations.",
+   "pourquoi_en": "The announced end of the bird market"
   },
   {
    "id": "168328",
@@ -92,7 +102,9 @@
    "fait": "Un vœu 'relatif à la préservation du Marché aux Fleurs' est déposé.",
    "pourquoi": "La préservation du marché revient au Conseil",
    "vedette": false,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=168328"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=168328",
+   "fait_en": "A motion \"concerning the preservation of the Marché aux Fleurs\" was filed.",
+   "pourquoi_en": "The market's preservation comes back before the Council"
   }
  ],
  "montants": [],
@@ -126,5 +138,6 @@
    "name": "Wikipédia",
    "url": "https://fr.wikipedia.org/"
   }
- }
+ },
+ "synthese_en": "The flower market on the Île de la Cité came before Conseil de Paris starting in 2003, when waterproofing works at the Cité metro station led councillors to raise concerns, through two motions, about the dismantling of the market halls and the resettlement of the traders. In 2006, a deliberation converted into euros the stallage fees charged at this market, among other Parisian markets. In 2018, a motion from the UDI-MODEM group, amended by the executive and adopted, called for further studies on the renovation, with a deputy mayor stating that a 2016-2017 assessment had found structural defects. In December 2020, draft deliberation DCPA 24 covered the heritage renovation of the late-19th-century market halls and a project to redevelop the surrounding public space; in February 2021, a motion from the executive called for an end to animal sales when the renovated halls reopened, with deputy mayor Christophe Najdovski committing to amend the regulations to ban the sale of birds and animals, while a motion in March 2023 concerned the preservation of the market."
 }

@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T20:11:17.537074+00:00",
+ "generated_at": "2026-07-20T20:28:18.117255+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "parc-de-la-villette",
  "name": "Parc de la Villette",
@@ -22,7 +22,8 @@
   "source": {
    "name": "Wikipédia",
    "url": "https://fr.wikipedia.org/"
-  }
+  },
+  "extract_en": "The Parc de la Villette is a public park located in the 19th arrondissement of Paris, in a north-eastern sector of Paris, in the Île-de-France region of France. It was inaugurated on 12 October 1987, in the presence of President François Mitterrand."
  },
  "stats": {
   "n_delibs": 537,
@@ -50,7 +51,9 @@
    "fait": "La Ville subventionne l'EPPGHV pour amenager un nouveau centre de creation des arts du cirque et de la rue sur l'ancienne ecole Annie Fratellini.",
    "pourquoi": "naissance de l'Espace Peripherique, fabrique du cirque",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=29532"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=29532",
+   "fait_en": "The City subsidized the EPPGHV to set up a new creation centre for circus and street arts on the site of the former École Annie Fratellini.",
+   "pourquoi_en": "Birth of the Espace Périphérique, a circus workshop"
   },
   {
    "id": "70600",
@@ -58,7 +61,9 @@
    "fait": "Le Conseil autorise une subvention d'equipement de 137 000 EUR a l'EPPGHV pour le Pavillon de la Bourse, ou est installe le Theatre Paris-Villette.",
    "pourquoi": "la Ville entretient un batiment-theatre du parc",
    "vedette": false,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=70600"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=70600",
+   "fait_en": "The Council authorized an equipment grant of €137,000 to the EPPGHV for the Pavillon de la Bourse, where the Théâtre Paris-Villette is housed.",
+   "pourquoi_en": "The City maintains a theatre building in the park"
   },
   {
    "id": "90357",
@@ -66,7 +71,9 @@
    "fait": "Le Conseil autorise le Maire a negocier la creation d'un etablissement public pour construire un grand auditorium (Philharmonie de Paris) sur le site du parc.",
    "pourquoi": "le parc appele a accueillir la Philharmonie",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=90357"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=90357",
+   "fait_en": "The Council authorized the Mayor to negotiate the creation of a public body to build a large auditorium (Philharmonie de Paris) on the park site.",
+   "pourquoi_en": "The park called on to host the Philharmonie"
   },
   {
    "id": "22457",
@@ -74,7 +81,9 @@
    "fait": "En attribuant 165 000 EUR a l'EPPGHV, un elu interroge en seance le statut d'EPIC national de la Grande Halle et le cumul de fonctions de sa future directrice.",
    "pourquoi": "tension Ville / Etat sur la gouvernance du site",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=22457"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=22457",
+   "fait_en": "In allocating €165,000 to the EPPGHV, an elected official questioned in session the Grande Halle's national EPIC status and the future director's holding of multiple roles.",
+   "pourquoi_en": "Tension between the City and the State over the site's governance"
   },
   {
    "id": "61438",
@@ -82,7 +91,9 @@
    "fait": "Le Conseil autorise une convention d'occupation du domaine public de l'EPPGHV pour installer des stations de velos en libre service dans l'enceinte du parc.",
    "pourquoi": "le Velib entre dans l'enceinte du parc",
    "vedette": false,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=61438"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=61438",
+   "fait_en": "The Council authorized an agreement for occupancy of the public domain with the EPPGHV to install bike-share stations within the grounds of the park.",
+   "pourquoi_en": "Vélib' enters the park's grounds"
   },
   {
    "id": "105362",
@@ -90,7 +101,9 @@
    "fait": "Un voeu s'inquiete de l'avenir du Theatre Paris-Villette, implante sur le site depuis plus de 25 ans ; ses auteurs font etat d'une petition de plus de 6 000 personnes.",
    "pourquoi": "mobilisation citoyenne autour de l'avenir d'un theatre du parc",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=105362"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=105362",
+   "fait_en": "A motion raised concerns about the future of the Théâtre Paris-Villette, based on the site for more than 25 years; its authors cited a petition with more than 6,000 signatures.",
+   "pourquoi_en": "Citizen mobilization around the future of a theatre in the park"
   },
   {
    "id": "148328",
@@ -98,7 +111,9 @@
    "fait": "La Ville vote 124 000 EUR pour l'Association de prevention du site de la Villette, qui agit aupres des jeunes frequentant le parc.",
    "pourquoi": "le parc comme terrain de prevention sociale",
    "vedette": false,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=148328"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=148328",
+   "fait_en": "The City voted €124,000 for the Association de prévention du site de la Villette, which works with young people who frequent the park.",
+   "pourquoi_en": "The park as a site for social prevention work"
   },
   {
    "id": "165091",
@@ -106,7 +121,9 @@
    "fait": "Le Conseil approuve des echanges de propriete Etat/Ville (darse et halle du Rouvray) pour permettre a l'EPPGHV d'amenager et d'ouvrir la zone Rouvray, au sud-ouest du parc.",
    "pourquoi": "le parc s'etend vers une reserve de biodiversite",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=165091"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=165091",
+   "fait_en": "The Council approved State/City property exchanges (the Rouvray dock and hall) to allow the EPPGHV to develop and open the Rouvray zone, in the south-west of the park.",
+   "pourquoi_en": "The park expands toward a biodiversity reserve"
   }
  ],
  "montants": [
@@ -227,22 +244,26 @@
   {
    "date": "1894-03-23",
    "extrait": "proposition de M. Brard tendant à la réfection des postes d'octroi et de police aux abattoirs de La Villette (M. Foussier, rapporteur) M. Foussier expose que la 2e Commission a été saisie d'une proposition de M. Brard tendant à la transformation des postes d'octroi et de police a",
-   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k6446922t/f2.item"
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k6446922t/f2.item",
+   "extrait_en": "proposal by Mr Brard for the refurbishment of the toll and police posts at the La Villette abattoirs (Mr Foussier, rapporteur) Mr Foussier explains that the 2nd Committee was referred a proposal by Mr Brard for converting the toll and police posts a"
   },
   {
    "date": "1921-12-21",
    "extrait": "16. — Mise au concours du projet de reconstruction des abattoirs de la Villette  … Délibère: « Les plans des abattoirs seront établis par les différents concurrents qui se seront fait inscrire et auront déposé leur projet avant le 1er mai 1922 … tS otl(r, « De deux délégués d",
-   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k65223597/f6.item"
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k65223597/f6.item",
+   "extrait_en": "16. — Putting the reconstruction project for the La Villette abattoirs out to competition … Resolves: \"The plans for the abattoirs shall be drawn up by the various competitors who have registered and submitted their project before 1 May 1922 … tS otl(r, \"Of two delegates d"
   },
   {
    "date": "1927-07-11",
    "extrait": "106. — Question de M. Louis Sellier à M. le Préfet de police sur les manœuvres auxquelles se livrent les bénéficiaires actuels du traitement des sous-produits aux abattoirs de la Villette . pour conserver, contre les lois de l'hygiène et du progrès, le monopole qu'ils détiennent ",
-   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k6396624r/f16.item"
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k6396624r/f16.item",
+   "extrait_en": "106. — Question from Mr Louis Sellier to the Prefect of Police on the manoeuvres engaged in by the current beneficiaries of the by-product processing trade at the La Villette abattoirs to preserve, against the laws of hygiene and progress, the monopoly they hold"
   },
   {
    "date": "1973-05-20",
    "extrait": "N° 914. — Mme Michèle Camous-Potier, MM. André Sibaud et Alain Lhostis, conseillers de Paris, viennent d’apprendre que, malgré les assurances qui avaient été données, des mesures de licenciement vont toucher quatre-vingt-deux travailleurs des abattoirs de la …  Villette d’ici à",
-   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k3211456d/f5.item"
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k3211456d/f5.item",
+   "extrait_en": "No. 914. — Ms Michèle Camous-Potier, Mr André Sibaud and Mr Alain Lhostis, Paris councillors, have just learned that, despite the assurances that had been given, layoff measures will affect eighty-two workers at the … Villette abattoirs by"
   }
  ],
  "bmo_recit": "Dans le Bulletin municipal, le parc de la Villette apparaît d'abord sous les traits des abattoirs qui occupaient le site. En 1894, une commission du Conseil examine une proposition de réfection des postes d'octroi et de police aux abattoirs de La Villette ; en 1921, le Conseil délibère la mise au concours du projet de reconstruction des abattoirs, les concurrents devant déposer leurs plans avant le 1er mai 1922. En 1927, le conseiller Louis Sellier interpelle le Préfet de police sur ce qu'il décrit comme des manœuvres des bénéficiaires du traitement des sous-produits pour conserver leur monopole. L'archive se referme en 1973 sur une question de trois conseillers de Paris signalant que, malgré les assurances données, des licenciements vont toucher quatre-vingt-deux travailleurs des abattoirs d'ici juillet.",
@@ -266,5 +287,7 @@
    "name": "Wikipédia",
    "url": "https://fr.wikipedia.org/"
   }
- }
+ },
+ "synthese_en": "Since the early 2000s, the Council has regularly voted operating and equipment grants to the Établissement public du parc et de la grande halle de la Villette (EPPGHV), which manages the site. Part of this funding supports the Espace Périphérique, a residency and production space for circus, street and puppetry arts set up on the site of the former École Annie Fratellini, as well as the Pavillon de la Bourse, which houses the Théâtre Paris-Villette. The site also hosts major projects: in 2007, the Council authorized the Mayor to negotiate the creation of a public body for a large auditorium (Philharmonie de Paris) on the park site, and authorized improvements to the grounds (connection to the district heating network, installation of bike-share stations within the grounds). Social actors also operate around the park, such as the Association de prévention du site de la Villette, based in the park and subsidized for its work with young people. In 2022, the Council approved property transfers between the State and the City (the Rouvray dock and hall) to allow the EPPGHV to develop and open to the public the Rouvray zone, in the south-west of the park.",
+ "bmo_recit_en": "In the Bulletin municipal, the Parc de la Villette first appears in the guise of the abattoirs that occupied the site. In 1894, a Council committee examined a proposal to refurbish the toll and police posts at the La Villette abattoirs; in 1921, the Council deliberated on putting the reconstruction of the abattoirs out to competition, with entrants required to submit their plans by 1 May 1922. In 1927, councillor Louis Sellier questioned the Prefect of Police about what he described as manoeuvres by the beneficiaries of the by-product processing trade to preserve their monopoly. The archive closes in 1973 with a question from three Paris councillors reporting that, despite assurances given, layoffs would affect eighty-two workers at the abattoirs by July."
 }

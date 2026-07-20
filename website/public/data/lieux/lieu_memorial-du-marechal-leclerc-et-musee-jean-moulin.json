@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T20:11:17.537074+00:00",
+ "generated_at": "2026-07-20T20:28:18.117255+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "memorial-du-marechal-leclerc-et-musee-jean-moulin",
  "name": "Mémorial du Maréchal Leclerc et musée Jean Moulin",
@@ -50,7 +50,9 @@
    "fait": "Le Conseil autorise le Maire à défendre en appel le droit de la Ville de créer le musée Jean-Moulin, issu du legs Sasse, dans des locaux distincts de ceux du testament.",
    "pourquoi": "la bataille judiciaire qui fonde le musée",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=548"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=548",
+   "fait_en": "The Council authorized the Mayor to defend on appeal the City's right to create the Musée Jean-Moulin, arising from the Sasse bequest, in premises other than those specified in the will.",
+   "pourquoi_en": "The legal battle that founded the museum"
   },
   {
    "id": "47346",
@@ -58,7 +60,9 @@
    "fait": "Le Conseil approuve le principe de travaux d'extension des locaux du Mémorial Leclerc et Musée Jean Moulin, au Jardin Atlantique (15e), et autorise le Maire à signer le marché.",
    "pourquoi": "agrandir le musée au Jardin Atlantique",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=47346"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=47346",
+   "fait_en": "The Council approved the principle of extension works to the premises of the Mémorial Leclerc et Musée Jean Moulin, at the Jardin Atlantique (15th arrondissement), and authorized the Mayor to sign the contract.",
+   "pourquoi_en": "Expanding the museum at the Jardin Atlantique"
   },
   {
    "id": "17312",
@@ -66,7 +70,9 @@
    "fait": "Le Conseil adopte la demande d'une subvention de 31 490 euros de la réserve parlementaire du sénateur David Assouline pour numériser le fonds d'archives audiovisuelles du musée.",
    "pourquoi": "un sénateur finance le sauvetage des archives",
    "vedette": false,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=17312"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=17312",
+   "fait_en": "The Council adopted the request for a 31,490-euro grant from Senator David Assouline's parliamentary reserve to digitize the museum's audiovisual archive collection.",
+   "pourquoi_en": "A senator funds the rescue of the archives"
   },
   {
    "id": "39519",
@@ -74,7 +80,9 @@
    "fait": "Le Conseil autorise le Maire à demander 9 155 euros à l'État (réserve parlementaire) pour déplacer le comptoir de vente et la caisse du musée.",
    "pourquoi": "réaménager l'accueil et la boutique du musée",
    "vedette": false,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=39519"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=39519",
+   "fait_en": "The Council authorized the Mayor to request 9,155 euros from the State (parliamentary reserve) to relocate the museum's sales counter and till.",
+   "pourquoi_en": "Refitting the museum's reception area and shop"
   },
   {
    "id": "109475",
@@ -82,7 +90,9 @@
    "fait": "Le Conseil accepte le legs particulier de Mme Escoffier, décrit en séance comme sept mètres linéaires d'archives dont les fonds Jean Moulin.",
    "pourquoi": "sept mètres d'archives Jean Moulin entrent au musée",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=109475"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=109475",
+   "fait_en": "The Council accepted the specific bequest of Ms Escoffier, described in session as seven linear meters of archives including the Jean Moulin papers.",
+   "pourquoi_en": "Seven meters of Jean Moulin archives enter the museum"
   },
   {
    "id": "118689",
@@ -90,7 +100,9 @@
    "fait": "Un vœu du groupe UMPPA demande le maintien du musée à la gare Montparnasse ; il reçoit un avis défavorable de l'Exécutif.",
    "pourquoi": "premier vœu contre le départ de Montparnasse",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=118689"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=118689",
+   "fait_en": "A motion from the UMPPA group called for the museum to remain at the Gare Montparnasse; it received an unfavorable opinion from the executive.",
+   "pourquoi_en": "First motion against leaving Montparnasse"
   },
   {
    "id": "123715",
@@ -98,7 +110,9 @@
    "fait": "Le vœu UMP demandant de garder le musée à Montparnasse est repoussé ; Bruno Julliard défend un déplacement face aux catacombes, non une fermeture.",
    "pourquoi": "déplacement ou fermeture, le vœu repoussé",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=123715"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=123715",
+   "fait_en": "The UMP motion calling for the museum to stay at Montparnasse was rejected; Bruno Julliard defended a relocation facing the Catacombs, not a closure.",
+   "pourquoi_en": "Relocation or closure, the motion is rejected"
   },
   {
    "id": "125443",
@@ -106,7 +120,9 @@
    "fait": "Le Conseil examine l'apposition au musée d'une plaque en hommage aux résistants du lycée Buffon et de la Rose Blanche de Munich ; selon Mme Vieu-Charier, elle suivra le déménagement.",
    "pourquoi": "une plaque franco-allemande de la Résistance",
    "vedette": false,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=125443"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=125443",
+   "fait_en": "The Council examined installing a plaque at the museum honoring the Resistance fighters of the Lycée Buffon and of the White Rose group in Munich; according to Ms Vieu-Charier, it would follow the move.",
+   "pourquoi_en": "A Franco-German Resistance plaque"
   }
  ],
  "montants": [
@@ -168,5 +184,6 @@
    "name": "Wikipédia",
    "url": "https://fr.wikipedia.org/"
   }
- }
+ },
+ "synthese_en": "In 1995, Conseil de Paris authorized the Mayor to defend in court the City's right to create, from the Antoinette Sasse bequest, a museum devoted to Jean Moulin in premises other than those specified in the will. Located above the Gare Montparnasse, in the 15th arrondissement, the Mémorial Leclerc - Musée Jean Moulin subsequently came before the Council regularly for its management: maintenance of audiovisual equipment (2002), the principle of extension works (2003), and grants requested from the State under the parliamentary reserve (31,490 euros in 2009 to digitize its archives, 9,155 euros in 2010 to relocate its sales counter). In 2012, the Council accepted the Escoffier bequest, described in session as seven linear meters of archives including the papers of Jean Moulin and his family. From 2014-2015, the project to transfer the museum to Denfert-Rochereau (14th arrondissement) prompted opposition motions calling for it to remain at Montparnasse: deputy mayor Bruno Julliard replied by describing it as a relocation, not a closure; the 2014 motion received an unfavorable opinion and the 2015 one was rejected. Several deliberations mentioning \"Jean Moulin\" actually concern other locations in the 14th arrondissement — a secondary school, an avenue, a sheltered workshop — unrelated to the museum."
 }

@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T20:11:17.537074+00:00",
+ "generated_at": "2026-07-20T20:28:18.117255+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "maison-des-metallos",
  "name": "Maison des Métallos",
@@ -22,7 +22,8 @@
   "source": {
    "name": "Wikipédia",
    "url": "https://fr.wikipedia.org/"
-  }
+  },
+  "extract_en": "The Maison des Métallos is a building located at 94 rue Jean-Pierre-Timbaud in the 11th arrondissement of Paris, France."
  },
  "stats": {
   "n_delibs": 299,
@@ -104,7 +105,9 @@
    "fait": "Martine BILLARD demande à la Ville de préempter le bâtiment que la Fédération C.G.T. métaux met en vente depuis juin 1998 ; un collectif inter-associatif propose d'en faire quatre équipements sur 4 000 mètres carrés, et la question relate qu'aucun engagement de la Ville n'a suivi à cette date.",
    "pourquoi": "point de départ : la vente et la préemption demandée",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=25067"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=25067",
+   "fait_en": "Martine BILLARD asked the City to pre-empt the building that the Fédération C.G.T. métaux had had up for sale since June 1998; an inter-association collective proposed turning it into four facilities across 4,000 square meters, and the question notes that no City commitment had followed as of that date.",
+   "pourquoi_en": "starting point: the sale and the requested pre-emption"
   },
   {
    "id": "7996",
@@ -112,7 +115,9 @@
    "fait": "Le Conseil approuve le principe des travaux de restructuration et un marché d'études ; Christophe GIRARD résume l'enjeu par « il faut sauver ce lieu » et évoque des travaux d'urgence de sécurité, tandis que le comité de pilotage a fixé quatre axes et confié la préfiguration à Gérard PAQUET.",
    "pourquoi": "la Ville engage la transformation du bâtiment",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=7996"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=7996",
+   "fait_en": "The Council approved the principle of restructuring works and a studies contract; Christophe GIRARD summed up the stakes with \"this place must be saved\" and mentioned urgent safety works, while the steering committee had set four focus areas and entrusted the prefiguration work to Gérard PAQUET.",
+   "pourquoi_en": "the City commits to transforming the building"
   },
   {
    "id": "10946",
@@ -120,7 +125,9 @@
    "fait": "Sur le marché de maîtrise d'œuvre, Khédija BOURCART relaie les inquiétudes du Comité des métallos sur les projets architecturaux et pose le conflit de vocation : ni « petit Opéra Bastille au cœur du Bas-Belleville », ni « garage associatif ».",
    "pourquoi": "conflit ouvert sur la vocation du lieu",
    "vedette": false,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=10946"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=10946",
+   "fait_en": "On the project management contract, Khédija BOURCART relayed the Comité des Métallos's concerns about the architectural plans and framed the conflict over the venue's purpose: neither a \"little Opéra Bastille in the heart of Bas-Belleville\" nor an \"association garage.\"",
+   "pourquoi_en": "open conflict over the venue's purpose"
   },
   {
    "id": "90967",
@@ -128,7 +135,9 @@
    "fait": "Le Conseil crée une régie personnalisée pour la gestion de la Maison des métallos, approuve ses statuts, fixe sa dotation initiale et désigne son directeur général : la structure qui exploitera le lieu naît pendant les travaux.",
    "pourquoi": "naissance de la structure qui gère le lieu",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=90967"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=90967",
+   "fait_en": "The Council created a personalized public agency (régie personnalisée) to manage the Maison des Métallos, approved its bylaws, set its initial funding, and appointed its director general: the structure that would operate the venue was born during the works.",
+   "pourquoi_en": "birth of the structure that manages the venue"
   },
   {
    "id": "72728",
@@ -136,7 +145,9 @@
    "fait": "Des avenants réévaluent les quatre lots de travaux : le lot n°1 tous corps d'état (BACOTRA) passe de 8 325 434.93 à 8 697 162.82 euros TTC, avec un délai prolongé jusqu'au 30 septembre 2007 pour les ravalements.",
    "pourquoi": "le chantier coûte plus cher à son terme",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=72728"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=72728",
+   "fait_en": "Amendments reassessed the four works lots: lot no. 1, all trades (BACOTRA), went from €8,325,434.93 to €8,697,162.82 including tax, with the deadline extended to 30 September 2007 for the facade cleaning works.",
+   "pourquoi_en": "the project costs more by its completion"
   },
   {
    "id": "20549",
@@ -144,7 +155,9 @@
    "fait": "Philippe DUCLOUX rappelle une inauguration en novembre 2007 par Bertrand DELANOË après trois ans de préfiguration, situe le fonctionnement à 2 millions d'euros comme en 2008, première année pleine, et annonce le départ à la retraite du directeur Gérard PAQUET.",
    "pourquoi": "le lieu ouvert trouve son régime de croisière",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=20549"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=20549",
+   "fait_en": "Philippe DUCLOUX recalled an inauguration in November 2007 by Bertrand DELANOË after three years of prefiguration, put operating costs at €2 million as in 2008, the first full year, and announced the retirement of director Gérard PAQUET.",
+   "pourquoi_en": "the open venue finds its cruising speed"
   },
   {
    "id": "100773",
@@ -152,7 +165,9 @@
    "fait": "David ALPHAND conteste le pilotage financier — « on est en train de lâcher les vannes financières sur la Maison des Métallos pour essayer de sauver un projet culturellement en péril » — et Christophe GIRARD répond par une résorption du déficit de 50 000 euros pour l'exercice 2011.",
    "pourquoi": "premier examen contradictoire de la gestion",
    "vedette": false,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=100773"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=100773",
+   "fait_en": "David ALPHAND disputed the financial management — \"the financial floodgates are being opened on the Maison des Métallos to try to save a project in cultural peril\" — and Christophe GIRARD responded with a €50,000 reduction of the deficit for the 2011 financial year.",
+   "pourquoi_en": "first adversarial review of the management"
   },
   {
    "id": "176047",
@@ -160,7 +175,9 @@
    "fait": "Le groupe « Les Ecologistes » dépose un vœu relatif à la mise à l'abri pérenne des « jeunes de la Maison des Métallos » et des jeunes mineurs en situation de rue ; la même année, la contribution à l'établissement passe de 2 000 000 euros en mai à 2 235 000 euros en novembre.",
    "pourquoi": "l'équipement culturel devient un enjeu d'hébergement",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=176047"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=176047",
+   "fait_en": "The \"Les Ecologistes\" group filed a motion on the lasting sheltering of the \"young people of the Maison des Métallos\" and homeless minors; that same year, the contribution to the institution rose from €2,000,000 in May to €2,235,000 in November.",
+   "pourquoi_en": "the cultural venue becomes a housing issue"
   }
  ],
  "montants": [
@@ -505,5 +522,6 @@
    "name": "Wikipédia",
    "url": "https://fr.wikipedia.org/"
   }
- }
+ },
+ "synthese_en": "The record opens in January 1999: the Fédération C.G.T. métaux had put 94 rue Jean-Pierre Timbaud up for sale since June 1998, an inter-association collective proposed installing four facilities there, and Martine BILLARD asked for a pre-emption to which the City had not, at that point, committed; in June 2002, a motion noted that the building had been \"saved and bought back by the City of Paris.\" The City approved the principle of the works in July 2002 (2002 DAC 213), entrusted the project-management delegation to SEMAEST and the project management itself to architect Vincent Brossy (contract signed on 9 July 2004), closed the venue in late June 2005 for works, and created in November 2005 a personalized public agency (régie personnalisée) to manage it; in June 2007, amendments raised lot no. 1 of the works from €8,325,434.93 to €8,697,162.82 including tax, and a settlement with its holder, BACOTRA, was approved again in March 2011. The venue opened in 2007 — Philippe DUCLOUX called it \"inaugurated in November 2007 by Bertrand DELANOË\" — and its operating grant was voted in two stages, an advance in December then a supplement in the summer, for a total close to €2,000,000 in 2008 (€420,000 then €1,580,000), 2009 (€1,000,000 then €1,000,000), and 2010 (raised to €2,020,000), to which repeated equipment grants were added (€300,000 in 2007, €150,000 in 2008, €100,000 in 2009, €150,000 in 2010). This level was disputed in July 2011 by David ALPHAND, for whom \"the financial floodgates are being opened on the Maison des Métallos to try to save a project in cultural peril,\" while Christophe GIRARD replied with a €50,000 reduction of the deficit for the 2011 financial year; in parallel, and on an entirely different scale, the City subsidized the Comité Métallos association, based at the venue and sitting on its board since 2006 (€40,000 in 2004 and 2005, €15,000 per year from 2008 to 2011, €13,000 in 2021). The contribution to the public cultural cooperation institution (établissement public de coopération culturelle) was €2,000,000 in 2022, 2023, and May 2024, then raised to €2,235,000 in November 2024; that same year, a motion from the \"Les Ecologistes\" group addressed the lasting sheltering of the \"young people of the Maison des Métallos.\""
 }

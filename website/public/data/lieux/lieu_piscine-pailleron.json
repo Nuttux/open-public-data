@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T20:11:17.537074+00:00",
+ "generated_at": "2026-07-20T20:28:18.117255+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "piscine-pailleron",
  "name": "Piscine Pailleron",
@@ -22,7 +22,8 @@
   "source": {
    "name": "Wikipédia",
    "url": "https://fr.wikipedia.org/"
-  }
+  },
+  "extract_en": "The Espace sportif Pailleron is a sports complex located on rue Édouard-Pailleron in the 19th arrondissement of Paris (France). Fully renovated, it reopened in October 2006. It comprises three areas: a swimming pool, an ice rink, and a fitness and wellness space."
  },
  "stats": {
   "n_delibs": 101,
@@ -50,7 +51,9 @@
    "fait": "Cinq orateurs débattent du réaménagement de l'emprise Pailleron : plusieurs contestent la démolition-reconstruction de la piscine Art Déco de 1933, fermée depuis 1991, et plaident la réhabilitation ; Gisèle STIEVENARD reproche à la Ville de ne pas avoir entretenu les bâtiments.",
    "pourquoi": "Point de départ : le Conseil est saisi d'un permis de démolir",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=19722"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=19722",
+   "fait_en": "Five speakers debated the redevelopment of the Pailleron site: several objected to demolishing and rebuilding the 1933 Art Deco swimming pool, closed since 1991, and argued for rehabilitation; Gisèle STIEVENARD blamed the City for having failed to maintain the buildings.",
+   "pourquoi_en": "Starting point: the Council was presented with a demolition permit"
   },
   {
    "id": "17574",
@@ -58,7 +61,9 @@
    "fait": "En réponse au groupe « Rassemblement pour Paris », la Ville expose que l'inscription en totalité aux Monuments historiques, par arrêté du 19 juin 1998, a remis en cause l'opération au moment où le lauréat du concours allait être désigné : aucune suite donnée au concours, candidats indemnisés, complexe muré.",
    "pourquoi": "La Ville impute à l'inscription l'arrêt d'un projet déjà financé",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=17574"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=17574",
+   "fait_en": "In response to the \"Rassemblement pour Paris\" group, the City explained that the listing of the building in its entirety on the Historic Monuments register, by order of 19 June 1998, had called the project into question just as the competition's winner was about to be named: no further action was taken on the competition, candidates were compensated, and the complex was boarded up.",
+   "pourquoi_en": "The City attributes the halt of an already-funded project to the listing"
   },
   {
    "id": "62768",
@@ -66,7 +71,9 @@
    "fait": "Le Conseil approuve le principe de la rénovation de la piscine et de la reconstruction de la patinoire, avec un bassin d'initiation, fixe le coût d'investissement à 135 000 000 F TTC et autorise le Maire à signer la convention de mandat de maîtrise d'ouvrage avec la SEMAVIP.",
    "pourquoi": "Le principe passe de la démolition à la rénovation",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=62768"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=62768",
+   "fait_en": "The Council approved the principle of renovating the pool and rebuilding the ice rink, with a learners' pool, set the investment cost at 135,000,000 F including tax, and authorized the Mayor to sign the project-management delegation agreement with SEMAVIP.",
+   "pourquoi_en": "The approach shifts from demolition to renovation"
   },
   {
    "id": "3330",
@@ -74,7 +81,9 @@
    "fait": "Débat sur l'avenant n° 2 : BLET demande que l'esprit de l'architecture Art Déco soit réellement respecté, MADEC attribue l'avenant aux exigences de l'architecte des Bâtiments de France, CHERKI défend l'usage et chiffre le projet à plus de 20 millions d'euros en séance.",
    "pourquoi": "Coût et respect du bâti d'origine discutés ensemble",
    "vedette": false,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=3330"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=3330",
+   "fait_en": "Debate on Amendment No. 2: BLET asked that the spirit of the Art Deco architecture be genuinely respected, MADEC attributed the amendment to the requirements of the Architecte des Bâtiments de France, and CHERKI defended the plan and put the project's cost at over €20 million during the session.",
+   "pourquoi_en": "Cost and respect for the original building discussed together"
   },
   {
    "id": "81132",
@@ -82,7 +91,9 @@
    "fait": "Le Conseil approuve la convention de délégation de service public confiant la gestion de la piscine-patinoire à l'association UCPA et autorise le Maire à la signer.",
    "pourquoi": "L'exploitation passe en gestion déléguée",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=81132"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=81132",
+   "fait_en": "The Council approved the public service delegation agreement entrusting management of the pool and ice rink complex to the UCPA association, and authorized the Mayor to sign it.",
+   "pourquoi_en": "Operation moves to delegated management"
   },
   {
    "id": "125479",
@@ -90,7 +101,9 @@
    "fait": "Au renouvellement de la DSP, Sergio TINTI avance 600 000 entrées en 2014 et le label QualiParis obtenu en 2013 et 2014, tandis que Danielle SIMONNET déplore la disparité tarifaire entre piscines, le ticket étant à 3,50 euros à Pailleron.",
    "pourquoi": "Fréquentation et tarifs au cœur du renouvellement",
    "vedette": false,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=125479"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=125479",
+   "fait_en": "When the public service delegation was renewed, Sergio TINTI cited 600,000 admissions in 2014 and the QualiParis label obtained in 2013 and 2014, while Danielle SIMONNET deplored the disparity in pricing between pools, the ticket at Pailleron being €3.50.",
+   "pourquoi_en": "Attendance and pricing at the heart of the renewal"
   },
   {
    "id": "167353",
@@ -98,7 +111,9 @@
    "fait": "Après l'annonce de Vert Marine de ne pas ouvrir le site le 8 septembre, Karim ZIADY annonce que la Ville applique les pénalités contractuelles, de l'ordre de 1 000 euros par jour de fermeture ; le vœu demande un conseil des usagers et le dédommagement des usagers lésés.",
    "pourquoi": "La Ville annonce des pénalités contre son délégataire",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=167353"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=167353",
+   "fait_en": "After Vert Marine announced it would not open the site on 8 September, Karim ZIADY announced that the City would apply the contractual penalties, in the order of €1,000 per day of closure; the motion called for a users' council and compensation for affected users.",
+   "pourquoi_en": "The City announces penalties against its delegate"
   },
   {
    "id": "183699",
@@ -106,7 +121,9 @@
    "fait": "Le Conseil examine le principe et les modalités de passation d'une nouvelle DSP, auquel est rattaché un vœu du groupe Communiste et Citoyen demandant la municipalisation de l'espace sportif Pailleron.",
    "pourquoi": "Le mode de gestion toujours en débat",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=183699"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=183699",
+   "fait_en": "The Council examined the principle and terms for awarding a new public service delegation, to which was attached a motion from the Communist and Citizen group calling for the municipalization of the Espace sportif Pailleron.",
+   "pourquoi_en": "The management model still under debate"
   }
  ],
  "montants": [
@@ -231,5 +248,6 @@
    "name": "Wikipédia",
    "url": "https://fr.wikipedia.org/"
   }
- }
+ },
+ "synthese_en": "In September 1997, the Council of Paris took note of the outcome of the consultation on the 20-38 rue Édouard-Pailleron municipal site and authorized the Mayor of Paris to sign the application for a permit to demolish the swimming pool, built in 1933 by Lucien Pollet, and the ice rink, both closed since 1991; during the session, several speakers argued for rehabilitation and Gisèle STIEVENARD blamed the City for having failed to maintain the buildings. The following month, the Council approved the terms of the demolition works ahead of a later reconstruction. Questioned repeatedly between 1998 and 2000 by Georges SARRE and then Michel BULTÉ, the City replied that the listing of the pool in its entirety on the Supplementary Inventory of Historic Monuments, decided on 19 June 1998, called the project into question just as the studies and the first phase of works had been funded: no further action was taken on the architectural competition, the candidates were compensated, the façades were stripped and the complex boarded up, and the 23 million francs budgeted in 1998 was deferred after deducting compensation to the designers and the cost of safety works. In July 2001, the Council approved the principle of renovating the pool, rebuilding a leisure ice rink and a learners' pool, set the investment cost at 135,000,000 F including tax, and authorized signing a project-management delegation agreement with SEMAVIP; the Marc Mimram team was selected as project manager in July 2002. Amendments No. 2 (September 2003), No. 3 (March 2004) and No. 4 (May 2005) successively raised the investment cost to €22,058,339.89 at June 2001 value, then €27,205,000 at October 2003 value, then €29,766,056.97 including tax; delivery, scheduled for December 2005 under Amendment No. 3, gave way to a forecast schedule setting completion of the works for March 2006. Respect for the original architecture kept resurfacing in the debates, from the \"Les Verts\" group's amendment on the roof to the motion asking for a study on restoring the chimney. In July 2006, the Council approved the public service delegation agreement entrusting management to UCPA; in May 2015, when the delegation was renewed, Sergio TINTI cited 600,000 admissions in 2014 and the QualiParis label obtained in 2013 and 2014. An amendment extended the contract by eight months at the end of 2021, after which operation passed to Vert Marine, whose announcement that it would not open the facility on 8 September 2022 led the City to announce during the session that it would apply the penalties provided for in the contract. The management model was debated throughout the period, from the call for direct public management made as early as 1997 by Gisèle STIEVENARD to the motion for municipalization attached, in December 2025, to the draft deliberation on the principle and terms for awarding a new public service delegation."
 }

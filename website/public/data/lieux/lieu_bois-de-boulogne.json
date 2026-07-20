@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T20:11:17.537074+00:00",
+ "generated_at": "2026-07-20T20:28:18.117255+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "bois-de-boulogne",
  "name": "Bois de Boulogne",
@@ -22,7 +22,8 @@
   "source": {
    "name": "Wikipédia",
    "url": "https://fr.wikipedia.org/"
-  }
+  },
+  "extract_en": "The Bois de Boulogne is a wooded area located in the 16th arrondissement of Paris."
  },
  "stats": {
   "n_delibs": 828,
@@ -52,7 +53,9 @@
    "fait": "Le Conseil examine un vœu demandant l'abandon du projet d'extension de Roland-Garros, qui aurait pris environ un hectare du bois.",
    "pourquoi": "Les Verts contre l'extension de Roland-Garros",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=87249"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=87249",
+   "fait_en": "The Council examined a motion calling for the abandonment of the Roland-Garros extension project, which would have taken about one hectare of the woodland.",
+   "pourquoi_en": "Les Verts oppose the Roland-Garros extension"
   },
   {
    "id": "106208",
@@ -60,7 +63,9 @@
    "fait": "Après un arrêté préfectoral du 1er mars, l'Exécutif demande au Préfet que la réglementation ne serve pas à réprimer les travailleuses et travailleurs du sexe du bois.",
    "pourquoi": "Ville et police s'opposent sur la prostitution",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=106208"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=106208",
+   "fait_en": "Following a prefectural order of 1 March, the executive asked the Prefect that the regulation not be used to crack down on the sex workers of the woodland.",
+   "pourquoi_en": "City and police clash over prostitution"
   },
   {
    "id": "138151",
@@ -68,7 +73,9 @@
    "fait": "Le Conseil débat du rapport de la Chambre régionale des comptes sur la gestion des deux bois, où des élus dénoncent un contrôle trop faible des concessions privées.",
    "pourquoi": "Le rapport de la Chambre des comptes en débat",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=138151"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=138151",
+   "fait_en": "The Council debated the report by the Chambre régionale des comptes on the management of the two bois, in which councillors denounced overly weak oversight of private concessions.",
+   "pourquoi_en": "The Court of Auditors' report under debate"
   },
   {
    "id": "163913",
@@ -76,7 +83,9 @@
    "fait": "Un vœu réclame l'entretien régulier des lacs et la protection de leur biodiversité, après des morts d'animaux attribuées au botulisme.",
    "pourquoi": "Cygnes morts, lac jamais curé depuis 1941",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=163913"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=163913",
+   "fait_en": "A motion called for regular maintenance of the lakes and protection of their biodiversity, after animal deaths attributed to botulism.",
+   "pourquoi_en": "Dead swans, a lake never dredged since 1941"
   },
   {
    "id": "176209",
@@ -84,7 +93,9 @@
    "fait": "Le Conseil débat du rapport de la Mission d'information et d'évaluation sur les deux bois, présenté comme une mission record aux 68 recommandations.",
    "pourquoi": "Le grand bilan des deux bois parisiens",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=176209"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=176209",
+   "fait_en": "The Council debated the report of the fact-finding and evaluation mission on the two bois, presented as a record mission with 68 recommendations.",
+   "pourquoi_en": "The big review of Paris's two woodlands"
   },
   {
    "id": "178369",
@@ -92,7 +103,9 @@
    "fait": "Après le meurtre de Philippine, des vœux demandent d'appliquer les préconisations de sécurité et de créer une brigade de police municipale dédiée au bois.",
    "pourquoi": "Après le meurtre de Philippine, la sécurité",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=178369"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=178369",
+   "fait_en": "Following the murder of Philippine, motions called for implementing the security recommendations and creating a dedicated municipal police brigade for the woodland.",
+   "pourquoi_en": "After the murder of Philippine, security"
   },
   {
    "id": "181370",
@@ -100,7 +113,9 @@
    "fait": "Le Conseil donne à une partie du chemin des Réservoirs le nom d'allée Albert Ouzoulias, résistant communiste, près du monument aux fusillés de la cascade.",
    "pourquoi": "Un résistant honoré au cœur du bois",
    "vedette": false,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=181370"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=181370",
+   "fait_en": "The Council gave part of the Chemin des Réservoirs the name allée Albert Ouzoulias, after the Communist Resistance fighter, near the monument to those executed at the cascade.",
+   "pourquoi_en": "A Resistance fighter honored at the heart of the woodland"
   },
   {
    "id": "182210",
@@ -108,7 +123,9 @@
    "fait": "Le Conseil prolonge de deux ans le contrat du centre hippique, les clubs s'engageant à 226 000 € de travaux, le temps d'études sur le bien-être animal et le bâti napoléonien.",
    "pourquoi": "Le centre équestre prolongé pour deux ans",
    "vedette": false,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=182210"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=182210",
+   "fait_en": "The Council extended the equestrian center's contract by two years, with the clubs committing to €226,000 in works, while studies were carried out on animal welfare and the Napoleonic-era buildings.",
+   "pourquoi_en": "The equestrian center extended for two years"
   }
  ],
  "montants": [
@@ -201,32 +218,38 @@
   {
    "date": "1899-02-06",
    "extrait": "pompes pour élever 780 litres d'eau de Seine par seconde, soit sur le réservoir de Passy, soit sur le bois de Boulogne",
-   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k6492545k/f3.item"
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k6492545k/f3.item",
+   "extrait_en": "pumps to raise 780 liters of Seine water per second, either to the Passy reservoir or to the Bois de Boulogne"
   },
   {
    "date": "1936-02-14",
    "extrait": "Terrains de jeux du champ d'entraînement de Bagatelle au bois de Boulogne , Paris (16e … Emplacements libres pour le tennis : au bois de Vincennes, au bois de Boulogne et au Champs-de-Mars … 5° Stades, vélodromes, piscines et autres établissements sportifs appartenant à des s",
-   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k62836583/f4.item"
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k62836583/f4.item",
+   "extrait_en": "Playing fields of the Bagatelle training ground in the Bois de Boulogne, Paris (16th arrondissement) … Free spaces for tennis: at the Bois de Vincennes, the Bois de Boulogne and the Champ-de-Mars … 5° Stadiums, velodromes, swimming pools and other sports facilities belonging to s"
   },
   {
    "date": "1941-07-25",
    "extrait": "AVIS La Préfecture de police communique : Il est porté à la connaissance du public que les présentations de véhicules qui devaient avoir lieu à Saint-Denis (parc des Sports), au bois de Boulogne (allée de Longchamp) ou à Vincennes (avenue de Nogent) auront lieu uniquement sur l'e",
-   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k64493715/f1.item"
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k64493715/f1.item",
+   "extrait_en": "NOTICE The Préfecture de police announces: the public is informed that the vehicle displays that were to take place at Saint-Denis (parc des Sports), at the Bois de Boulogne (allée de Longchamp) or at Vincennes (avenue de Nogent) will take place only on the e"
   },
   {
    "date": "1962-06-10",
    "extrait": "Entreprises de locations de chaises dans les jardins publics et les bois de Boulogne et de Vincennes, du l*r avril au 30 octobre",
-   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k97319794/f3.item"
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k97319794/f3.item",
+   "extrait_en": "Chair-rental businesses in the public gardens and the Bois de Boulogne and Bois de Vincennes, from 1 April to 30 October"
   },
   {
    "date": "1962-11-22",
    "extrait": "N° 1805. — Dans le bois de Boulogne , le maximum de la vitesse de tous les … mais, néanmoins, M, René Fayssat, conseiller municipal, a constaté, en bien des cas, que certains conducteurs n'hésitaient pas à considérer les allées du bois comme des autoroutes et à y lancer leurs v",
-   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k9700114w/f1.item"
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k9700114w/f1.item",
+   "extrait_en": "No. 1805. — In the Bois de Boulogne, the maximum speed of all … but, nevertheless, Mr René Fayssat, municipal councillor, observed that in many cases certain drivers did not hesitate to treat the woodland's lanes as highways and to drive their v"
   },
   {
    "date": "1963-12-05",
    "extrait": "Les bois de Boulogne et de Vincennes sont inclus dans cette agglomération et, par conséquent, les règles de la circulation urbaine y sont applicables, particulièrement au sujet de la priorité, à droite … N° 1682. — Le bois de Boulogne , qui offre aux promeneurs un air purifié, ",
-   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k97134322/f4.item"
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k97134322/f4.item",
+   "extrait_en": "The Bois de Boulogne and Bois de Vincennes are included within this urban area and, consequently, urban traffic rules apply there, particularly regarding right-of-way … No. 1682. — The Bois de Boulogne, which offers strollers purified air, "
   }
  ],
  "bmo_recit": "Le bois de Boulogne apparaît dès 1899 dans le Bulletin municipal, à propos de pompes destinées à élever 780 litres d'eau de Seine par seconde, vers le réservoir de Passy ou vers le bois. Dans l'entre-deux-guerres, l'archive le montre en terrain de sport : en 1936, le Bulletin mentionne les terrains de jeux du champ d'entraînement de Bagatelle et des emplacements libres pour le tennis. En juillet 1941, un avis de la Préfecture de police annonce que des présentations de véhicules prévues allée de Longchamp sont déplacées vers l'esplanade des Invalides. Au début des années 1960, le bois revient par ses usages quotidiens : la location de chaises y est organisée du 1er avril au 30 octobre, tandis que le conseiller municipal René Fayssat affirme en 1962 que certains conducteurs traitent les allées du bois comme des autoroutes. En 1963, le Bulletin rappelle que le bois, inclus dans l'agglomération, relève des règles de la circulation urbaine, notamment la priorité à droite.",
@@ -474,5 +497,7 @@
    "name": "Wikipédia",
    "url": "https://fr.wikipedia.org/"
   }
- }
+ },
+ "synthese_en": "Since 2005, the Bois de Boulogne has regularly come before Conseil de Paris, first through one-off matters: a motion calling for the abandonment of the Roland-Garros extension, which would have taken about one hectare of the woodland (2005), concessions and their access, the sustainable development charter signed in 2003, or the 2012 prefectural order and the sex workers of the woodland. In 2017, a report by the Chambre régionale des comptes on the management of the two bois fueled a debate in which councillors denounced overly weak oversight of private concessions. Starting in 2023, the Council created a fact-finding and evaluation mission on the two bois, whose May 2024 report set out more than 68 recommendations. The murder of Philippine in September 2024 made security the dominant topic — motions on staffing levels, a request for a dedicated brigade, then, at the end of 2025, a deliberation allowing the Garde républicaine to consolidate and expand its premises in the woodland — while more routine matters continued: maintenance of the lakes, paid parking, the naming of a lane, and the extension of the equestrian center's contract.",
+ "bmo_recit_en": "The Bois de Boulogne appears as early as 1899 in the municipal bulletin, in connection with pumps intended to raise 780 liters of Seine water per second, toward the Passy reservoir or toward the woodland. In the interwar period, the archive shows it as a sports ground: in 1936, the bulletin mentions the playing fields of the Bagatelle training ground and free spaces for tennis. In July 1941, a notice from the Préfecture de police announces that vehicle displays planned for the allée de Longchamp are moved to the esplanade des Invalides. In the early 1960s, the woodland comes back through its everyday uses: chair rental is organized there from 1 April to 30 October, while municipal councillor René Fayssat states in 1962 that certain drivers treat the woodland's lanes as highways. In 1963, the bulletin recalls that the woodland, included within the urban area, is subject to urban traffic rules, particularly the right-of-way rule."
 }

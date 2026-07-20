@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T20:11:17.537074+00:00",
+ "generated_at": "2026-07-20T20:28:18.117255+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "porte-maillot",
  "name": "Porte Maillot",
@@ -22,7 +22,8 @@
   "source": {
    "name": "Wikipédia",
    "url": "https://fr.wikipedia.org/"
-  }
+  },
+  "extract_en": "The Porte Maillot, located along Paris's historical axis, is one of the western entrances to Paris and forms an interchange between the ring road (boulevard périphérique), the Étoile, and La Défense, via the Avenue Charles-de-Gaulle in Neuilly-sur-Seine."
  },
  "stats": {
   "n_delibs": 325,
@@ -54,7 +55,9 @@
    "fait": "Le Conseil autorise les permis de démolir et de construire de l'extension du Palais des Congrès et la modification du parc de stationnement ; une élue demande l'assurance que le Palais est sorti de la Z.A.C. et que l'opération ne sera pas financée par les contribuables.",
    "pourquoi": "Le point de départ, déjà contesté",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=207"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=207",
+   "fait_en": "The Council authorized the demolition and building permits for the Palais des Congrès extension and the modification of the car park; one councillor asked for assurance that the Palais had been taken out of the ZAC and that the operation would not be funded by taxpayers.",
+   "pourquoi_en": "The starting point, already contested"
   },
   {
    "id": "7223",
@@ -62,7 +65,9 @@
    "fait": "Déclassement d'emprises aux abords du Palais des Congrès et avenants aux conventions de 1970 : la Ville est interrogée sur l'abandon annoncé de la Z.A.C. « Maillot » et la Chambre de commerce abandonne ses droits sur le terrain Pershing, alors utilisé pour le stationnement des autocars.",
    "pourquoi": "La ZAC abandonnée, le foncier rendu",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=7223"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=7223",
+   "fait_en": "Declassification of land around the Palais des Congrès and amendments to the 1970 agreements: the City is questioned on the announced abandonment of the \"Maillot\" ZAC, and the Chamber of Commerce gives up its rights over the Pershing plot, then used for coach parking.",
+   "pourquoi_en": "The ZAC abandoned, the land handed back"
   },
   {
    "id": "3703",
@@ -70,7 +75,9 @@
    "fait": "Marchés de définition pour une œuvre d'art, son environnement végétal et la mise en lumière du jardin central : un élu approuve les 7 millions de francs investis, une autre demande que la priorité financière aille au jardin dégradé plutôt qu'à l'œuvre d'art.",
    "pourquoi": "L'argent de l'embellissement mis en débat",
    "vedette": false,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=3703"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=3703",
+   "fait_en": "Design contracts for an artwork, its planting, and the lighting of the central garden: one councillor endorsed the 7 million francs invested, while another asked that financial priority go to the deteriorated garden rather than to the artwork.",
+   "pourquoi_en": "The money for beautification put up for debate"
   },
   {
    "id": "2490",
@@ -78,7 +85,9 @@
    "fait": "Marché d'expertise ordonné par la Cour administrative d'appel après l'abandon de la Z.A.C. : l'arrêt du 28 février 2002 retient la responsabilité de la Ville aux trois quarts pour deux des quatre sociétés requérantes.",
    "pourquoi": "Le prix juridique d'un projet abandonné",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=2490"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=2490",
+   "fait_en": "Expert appraisal contract ordered by the Administrative Court of Appeal after the ZAC was abandoned: the ruling of 28 February 2002 found the City three-quarters liable toward two of the four claimant companies.",
+   "pourquoi_en": "The legal price of an abandoned project"
   },
   {
    "id": "87616",
@@ -86,7 +95,9 @@
    "fait": "Le Conseil autorise la reprise de 39 725 590 euros sur la provision de 40 000 000 euros constituée au titre du contentieux de la Porte Maillot.",
    "pourquoi": "Le contentieux soldé dans les comptes",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=87616"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=87616",
+   "fait_en": "The Council authorized releasing 39,725,590 euros from the 40,000,000-euro provision set aside for the Porte Maillot litigation.",
+   "pourquoi_en": "The litigation settled in the accounts"
   },
   {
    "id": "103917",
@@ -94,7 +105,9 @@
    "fait": "Attribution de la dénomination « jardin Alexandre Soljenitsyne » au jardin de la place, contestée en séance sur les positions de l'écrivain, l'adjointe rappelant que le choix a été arrêté en commission.",
    "pourquoi": "Le jardin nommé, la mémoire disputée",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=103917"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=103917",
+   "fait_en": "The naming of the square's garden as \"Jardin Alexandre Soljenitsyne\", contested in session over the writer's political positions, with the deputy mayor recalling that the choice had been settled in committee.",
+   "pourquoi_en": "The garden named, the memory disputed"
   },
   {
    "id": "138065",
@@ -102,7 +115,9 @@
    "fait": "Approbation du bilan de la concertation préalable au réaménagement, avec trois vœux sur un coordinateur général, les commerces impactés et des points de vigilance ; les élues décrivent des chantiers imbriqués prévus pour plus de six ans.",
    "pourquoi": "Le chantier total et sa coordination",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=138065"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=138065",
+   "fait_en": "Approval of the outcome of the public consultation preceding the redevelopment, with three motions on a general coordinator, affected businesses, and points requiring vigilance; the councillors described interlocking works planned to last more than six years.",
+   "pourquoi_en": "The whole construction project and its coordination"
   },
   {
    "id": "178258",
@@ -110,7 +125,9 @@
    "fait": "Vœu sur la vélo-station : l'Exécutif indique que les études de faisabilité sont toujours en cours, que l'implantation se fera au niveau -1 du parking pour plus de 700 places, avec une ouverture visée à la rentrée 2025.",
    "pourquoi": "Le hub achevé, l'équipement encore attendu",
    "vedette": false,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=178258"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=178258",
+   "fait_en": "A motion on the bike station: the executive stated that feasibility studies were still under way, that it would be installed on level -1 of the car park with more than 700 spaces, with an opening targeted for autumn 2025.",
+   "pourquoi_en": "The hub completed, the facility still awaited"
   }
  ],
  "montants": [
@@ -175,22 +192,26 @@
   {
    "date": "1889-11-27",
    "extrait": "De MM. Massilon et Biraud soumettant un projet de concession d'une ligne métropolitaine de la porte Maillot à la porte de Picpus",
-   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k64532161/f20.item"
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k64532161/f20.item",
+   "extrait_en": "From Messrs Massilon and Biraud, submitting a project for the concession of a métro line from the Porte Maillot to the Porte de Picpus"
   },
   {
    "date": "1905-12-04",
    "extrait": "L'aspect futur de la porte Maillot et les abords du bois de Boulogne ne sauraient être envisagés non pas seulement sous l'angle de la commodité pour l",
-   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k97866242/f4.item"
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k97866242/f4.item",
+   "extrait_en": "The future look of the Porte Maillot and the edges of the Bois de Boulogne cannot be considered solely from the standpoint of convenience for th"
   },
   {
    "date": "1924-02-21",
    "extrait": "Il n’existe en effet, actuellement, aucune liaison directe, ni par métro ni par autobus, entre les transports en commun de banlieue qui ont leur terminus et leur point de départ à la porte Maillot et les gares du Nord",
-   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k3210683p/f1.item"
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k3210683p/f1.item",
+   "extrait_en": "Indeed, there is currently no direct connection, whether by métro or bus, between the suburban public transport lines that have their terminus and starting point at the Porte Maillot and the Gare du Nord"
   },
   {
    "date": "1957-07-01",
    "extrait": "N° 1498. — M. Pozza, conseiller municipal, appelle l’attention de M. le Préfet de la Seine sur l’état du bâtiment réservé aux gardiens dans le nouveau square de la porte Maillot  … terrasse",
-   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k3200811m/f36.item"
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k3200811m/f36.item",
+   "extrait_en": "No. 1498. — Mr Pozza, municipal councillor, draws the attention of the Prefect of the Seine to the condition of the building reserved for caretakers in the new square at the Porte Maillot … terrace"
   }
  ],
  "bmo_recit": "Dans le Bulletin municipal, la porte Maillot apparaît d'abord comme un point de départ : en novembre 1889, MM. Massilon et Biraud soumettent un projet de concession d'une ligne métropolitaine qui irait de la porte Maillot à la porte de Picpus. En décembre 1905, la discussion porte sur l'aspect futur de la porte et des abords du bois de Boulogne, dont il est soutenu en séance qu'ils ne sauraient être envisagés sous le seul angle de la commodité. En février 1924, c'est la desserte qui revient : il est relevé qu'aucune liaison directe, ni par métro ni par autobus, n'existe entre les transports de banlieue qui ont là leur terminus et les gares. En juillet 1957, l'échelle change — le conseiller municipal Pozza appelle l'attention du préfet de la Seine sur l'état du bâtiment réservé aux gardiens dans le nouveau square de la porte Maillot. L'archive ne garde que ces quatre moments, échelonnés sur près de soixante-dix ans, qui vont des projets de liaison à l'entretien du square.",
@@ -316,5 +337,7 @@
    "name": "Wikipédia",
    "url": "https://fr.wikipedia.org/"
   }
- }
+ },
+ "synthese_en": "The corpus opens in 1995-1996 with the extension of the Palais des Congrès and the underground car park, granted to the Paris Chamber of Commerce and Industry under the agreements of 19 January and 16 June 1970, and with the abandonment, announced on 15 April 1996, of the \"Maillot\" ZAC (mixed development zone), whose founding deliberations of 1988 had been annulled by the administrative court in 1991, a decision upheld by the Conseil d'État in 1993. This abandonment led to compensation litigation: a ruling of 28 February 2002 by the Administrative Court of Appeal found the City three-quarters liable toward two of the four claimant companies, and the Council, after setting aside a provision of 40,000,000 euros in 2002-2003, released 39,725,590 euros of that provision in December 2004. Between 1996 and 2005, the deliberations concerned specific interventions — road works, a pedestrian walkway south of the square, an artwork and the central garden, the car park's lifts, advertising, and the renovation of the underground passage to the métro, valued at 900,000 euros — while councillors and residents' associations objected to a square that had become a road interchange. From 2010 and 2014, the Council voted on studies for the Étoile-Pont de Neuilly axis and the Maillot-Grande Armée sector, then, from 2016 to 2021, an amendment on the studies for the T3 extension, the exemption from fees for the Eole works, and the declaration of public interest for the redevelopment project, presented in session as the future venue to host the International Olympic Committee in 2024. The motions from 2016 to 2024 track the site's practical life: a coach parking area with no services, coordination of the works sites, a meeting of the Porte Maillot committee, and a bike station whose feasibility studies were still under way in October 2024.",
+ "bmo_recit_en": "In the municipal bulletin, the Porte Maillot first appears as a starting point: in November 1889, Messrs Massilon and Biraud submitted a project for a concession of a métro line that would run from the Porte Maillot to the Porte de Picpus. In December 1905, the discussion concerned the future look of the gate and the edges of the Bois de Boulogne, of which it is argued in session that they cannot be considered from the standpoint of convenience alone. In February 1924, it is transport links that come back: it is noted that no direct connection, whether by métro or bus, exists between the suburban transport lines that terminate there and the train stations. In July 1957, the scale changes — municipal councillor Pozza draws the Prefect of the Seine's attention to the condition of the building reserved for caretakers in the new square at the Porte Maillot. The archive keeps only these four moments, spread out over nearly seventy years, ranging from connection projects to the upkeep of the square."
 }

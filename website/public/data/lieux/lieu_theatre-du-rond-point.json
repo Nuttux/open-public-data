@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T20:11:17.537074+00:00",
+ "generated_at": "2026-07-20T20:28:18.117255+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "theatre-du-rond-point",
  "name": "Théâtre du Rond-Point",
@@ -22,7 +22,8 @@
   "source": {
    "name": "Wikipédia",
    "url": "https://fr.wikipedia.org/"
-  }
+  },
+  "extract_en": "The Théâtre du Rond-Point is a Parisian theatre located in the 8th arrondissement, 2bis avenue Franklin-D.-Roosevelt, near the Champs-Élysées."
  },
  "stats": {
   "n_delibs": 1434,
@@ -95,7 +96,8 @@
   {
    "beneficiaire": "COMPAGNIE 7BIS",
    "montant_total": 3000.0,
-   "preuve": "Objet de subvention verbatim : « diffusion DIPTYQUE au Théâtre du Rond-Point » (SIRET 85048147400045). Aide de 3 000 € à une compagnie pour une diffusion DANS le lieu, sans le gérer → résident."
+   "preuve": "Objet de subvention verbatim : « diffusion DIPTYQUE au Théâtre du Rond-Point » (SIRET 85048147400045). Aide de 3 000 € à une compagnie pour une diffusion DANS le lieu, sans le gérer → résident.",
+   "preuve_en": "Grant purpose, verbatim: \"diffusion DIPTYQUE at the Théâtre du Rond-Point\" (SIRET 85048147400045). A 3,000 € grant to a company for a performance held INSIDE the site, without operating it — hence classified as a resident."
   }
  ],
  "kpi_montant": null,
@@ -107,7 +109,9 @@
    "fait": "La Ville attribue 100 000 F au Théâtre du Rond-Point – Compagnie Marcel-Maréchal pour la pièce « Rêver peut être » de Jean-Claude Grumberg.",
    "pourquoi": "L'ère Marcel-Maréchal, une décennie avant Ribes",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=59148"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=59148",
+   "fait_en": "The City awarded 100,000 francs to the Théâtre du Rond-Point – Compagnie Marcel-Maréchal for the play \"Rêver peut être\" by Jean-Claude Grumberg.",
+   "pourquoi_en": "The Marcel-Maréchal era, a decade before Ribes"
   },
   {
    "id": "7935",
@@ -115,7 +119,9 @@
    "fait": "Sur l'avenant DAC 259, l'adjoint Christophe Girard dit vouloir rouvrir le théâtre avec Jean-Michel Ribes, tandis que le maire du 8e dénonce l'absence de saisine du conseil d'arrondissement.",
    "pourquoi": "Rouvrir avec Jean-Michel Ribes, sous tension d'arrondissement",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=7935"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=7935",
+   "fait_en": "On amendment DAC 259, deputy mayor Christophe Girard said he wanted to reopen the theatre with Jean-Michel Ribes, while the mayor of the 8th arrondissement denounced the failure to consult the arrondissement council.",
+   "pourquoi_en": "Reopening with Jean-Michel Ribes, amid arrondissement tension"
   },
   {
    "id": "43876",
@@ -123,7 +129,9 @@
    "fait": "Le Conseil approuve, et autorise le Maire à signer, une convention d'occupation et une convention d'exploitation du théâtre liant la Ville, la SARL et l'État.",
    "pourquoi": "Le triangle Ville–SARL–État qui régit le théâtre",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=43876"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=43876",
+   "fait_en": "The Council approved, and authorized the Mayor to sign, an occupancy agreement and an operating agreement for the theatre binding the City, the SARL, and the State.",
+   "pourquoi_en": "The City–SARL–State triangle governing the theatre"
   },
   {
    "id": "92228",
@@ -131,7 +139,9 @@
    "fait": "Le Conseil vote une subvention de 35 340 € au théâtre dans le cadre de l'opération « Rond-Point Paris Beyrouth Ville Ouverte ».",
    "pourquoi": "Quand la subvention finance un pont vers Beyrouth",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=92228"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=92228",
+   "fait_en": "The Council voted a grant of 35,340 € to the theatre as part of the \"Rond-Point Paris Beyrouth Ville Ouverte\" operation.",
+   "pourquoi_en": "When the grant funds a bridge to Beirut"
   },
   {
    "id": "14766",
@@ -139,7 +149,9 @@
    "fait": "Sur la demande de subvention à l'État (DAC 352), le maire du 8e réclame l'engagement que les travaux de rénovation — clos et couvert, cuisines, électricité — commencent pendant la fermeture estivale.",
    "pourquoi": "Le maire du 8e presse pour des travaux urgents",
    "vedette": false,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=14766"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=14766",
+   "fait_en": "On the request for a State subsidy (DAC 352), the mayor of the 8th arrondissement demanded a commitment that renovation work — building envelope and roofing, kitchens, electrical wiring — would begin during the summer closure.",
+   "pourquoi_en": "The mayor of the 8th arrondissement pushes for urgent works"
   },
   {
    "id": "17429",
@@ -147,7 +159,9 @@
    "fait": "Un vœu demande la remise en état des six fontaines du rond-point des Champs-Elysées, à l'arrêt depuis plusieurs années; le devis est évalué à environ 800 000 € par le maire du 8e.",
    "pourquoi": "Les fontaines voisines, à sec depuis des années",
    "vedette": false,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=17429"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=17429",
+   "fait_en": "A motion called for restoring the six fountains at the Rond-Point des Champs-Élysées, which had been out of service for several years; the mayor of the 8th arrondissement estimated the cost at around 800,000 €.",
+   "pourquoi_en": "The nearby fountains, dry for years"
   },
   {
    "id": "156121",
@@ -155,7 +169,9 @@
    "fait": "Le Conseil vote 2 350 000 € pour le théâtre; en séance, l'adjointe Carine Rolland évoque « entre 150 000 et 200 000 spectateurs » par an et écarte le critère de rentabilité.",
    "pourquoi": "2,35 M€ et un débat sur la fréquentation",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=156121"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=156121",
+   "fait_en": "The Council voted 2,350,000 € for the theatre; during the session, deputy mayor Carine Rolland cited \"between 150,000 and 200,000 spectators\" a year and dismissed profitability as a criterion.",
+   "pourquoi_en": "€2.35 million and a debate over attendance"
   },
   {
    "id": "176056",
@@ -163,7 +179,9 @@
    "fait": "Le Conseil adopte la délibération DAC 9 attribuant 2 190 000 € (subvention et avenant) au théâtre du Rond-Point.",
    "pourquoi": "Le soutien le plus récent voté : 2,19 M€",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=176056"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=176056",
+   "fait_en": "The Council adopted deliberation DAC 9 awarding 2,190,000 € (grant and amendment) to the Théâtre du Rond-Point.",
+   "pourquoi_en": "The most recent support voted: €2.19 million"
   }
  ],
  "montants": [
@@ -449,5 +467,6 @@
    "name": "Wikipédia",
    "url": "https://fr.wikipedia.org/"
   }
- }
+ },
+ "synthese_en": "The Théâtre du Rond-Point, 2 bis avenue Franklin D. Roosevelt (8th arrondissement), is occupied and operated by the SARL \"Théâtre du Rond-Point\" under agreements with the City of Paris and with the State (Ministry of Culture, agreement of 2 June 1980), which the Conseil de Paris extended several times around 1999-2001 — deputy mayor Carine Rolland recalling in 2020 that \"the walls belong to the City.\" In 1999, the City was still subsidizing the theatre under the Compagnie Marcel-Maréchal; in the early 2000s, deputy mayor Christophe Girard said he wanted to reopen the theatre with Jean-Michel Ribes. Year after year, the Council voted operating grants (1,300,000 € in 2002, 1,525,000 € in 2003, 1,675,000 € in 2004 and 2005, 1,775,000 € in 2007), supplemented by equipment grants (a mixing console for the Renaud-Barrault hall, a scenery hoist, locksmithing work) and by requests for State subsidies for renovation and code-compliance work (2005, 2008, 2009). Support continued in the most recent deliberations, with 2,350,000 € voted in 2020 and 2,190,000 € in 2024. Around the theatre, other deliberations concerned the surroundings of the Rond-Point des Champs-Élysées — the car park, the shopping arcade, and the six fountains, out of service for a long time before new fountains were inaugurated in 2019."
 }

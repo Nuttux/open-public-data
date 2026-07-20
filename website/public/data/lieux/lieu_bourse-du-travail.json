@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T20:11:17.537074+00:00",
+ "generated_at": "2026-07-20T20:28:18.117255+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "bourse-du-travail",
  "name": "Bourse du Travail",
@@ -22,7 +22,8 @@
   "source": {
    "name": "Wikipédia",
    "url": "https://fr.wikipedia.org/"
-  }
+  },
+  "extract_en": "The Bourse du Travail de Paris is a public administrative establishment of the City of Paris. It serves as a hub for workers, providing venues for union meetings and professional information. It consists of a main building, located in the 10th arrondissement at 3 rue du Château-d'Eau, and two annexes located in the 3rd arrondissement."
  },
  "stats": {
   "n_delibs": 1,
@@ -65,13 +66,15 @@
   "autres_sites": [
    "Annexe de la Bourse du Travail, 67 rue de Turbigo (3e arrondissement)",
    "Seconde annexe de la Bourse du Travail dans le 3e arrondissement (adresse non précisée par les sources consultées)"
-  ]
+  ],
+  "note_publique_en": "The Bourse du Travail de Paris is spread across three City-owned buildings located in the 3rd and 10th arrondissements — the main building at 3 rue du Château-d'Eau (10th), and two annexes in the 3rd, including the one at 67 rue de Turbigo — for a total of around 13,000 m². The amounts attached here (grants as well as investment operations) concern the institution as a whole, not only the 10th-arrondissement building."
  },
  "residents": [
   {
    "beneficiaire": "ASSOCIATION DES ORGANISATIONS SYNDICALES DE LA BOURSE DU TRAVAIL DE PARIS",
    "montant_total": 91000.0,
-   "preuve": "La dénomination du bénéficiaire nomme explicitement l'institution du lieu (« … DE LA BOURSE DU TRAVAIL DE PARIS », signal=nom ; objet_principal et SIRET absents de la source subventions). Rôle « resident » et non « exploitant » : il s'agit des organisations syndicales occupantes, et le vœu d'avril 2025 atteste cette occupation — « l'annexe Turbigo est occupée d'ores et déjà par plusieurs organisations syndicales, notamment Force ouvrière et la C.G.T. » ; aucune pièce du dossier ne prouve que l'association gère le bâti. Réserves : faute d'objet, la source ne dit pas quelle activité les 91 000 € financent ; et la seule occupation documentée par le vœu concerne l'annexe du 3e, pas le bâtiment du 10e — l'institution étant répartie sur trois bâtiments (cf. bourse-du-travail_perimetre.json), le montant ne finance pas le seul bâtiment du 10e."
+   "preuve": "La dénomination du bénéficiaire nomme explicitement l'institution du lieu (« … DE LA BOURSE DU TRAVAIL DE PARIS », signal=nom ; objet_principal et SIRET absents de la source subventions). Rôle « resident » et non « exploitant » : il s'agit des organisations syndicales occupantes, et le vœu d'avril 2025 atteste cette occupation — « l'annexe Turbigo est occupée d'ores et déjà par plusieurs organisations syndicales, notamment Force ouvrière et la C.G.T. » ; aucune pièce du dossier ne prouve que l'association gère le bâti. Réserves : faute d'objet, la source ne dit pas quelle activité les 91 000 € financent ; et la seule occupation documentée par le vœu concerne l'annexe du 3e, pas le bâtiment du 10e — l'institution étant répartie sur trois bâtiments (cf. bourse-du-travail_perimetre.json), le montant ne finance pas le seul bâtiment du 10e.",
+   "preuve_en": "The beneficiary's name explicitly names the site's institution (\"… DE LA BOURSE DU TRAVAIL DE PARIS\", signal=name; objet_principal and SIRET absent from the grants source). Role \"resident\" rather than \"operator\": these are the occupying union organizations, and the April 2025 motion attests to this occupancy — \"the Turbigo annex is already occupied by several union organizations, notably Force ouvrière and the CGT\"; no document in the file proves that the association manages the building. Caveats: for lack of a stated purpose, the source does not say what activity the €91,000 finances; and the only occupancy documented by the motion concerns the 3rd-arrondissement annex, not the 10th-arrondissement building — since the institution is spread across three buildings (see bourse-du-travail_perimetre.json), the amount does not finance the 10th-arrondissement building alone."
   }
  ],
  "kpi_montant": null,
@@ -83,7 +86,9 @@
    "fait": "Le groupe Communiste et Citoyen dépose un vœu demandant que les trois bâtiments de la Bourse du Travail soient préservés et rénovés ; l'adjointe Afaf Gabelotaud estime le coût des travaux à plusieurs dizaines de millions d'euros.",
    "pourquoi": "selon Ian Brossat, des organisations syndicales ont alerté sur un projet de cession de l'annexe Turbigo",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=179773"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=179773",
+   "fait_en": "The Communist and Citizen group filed a motion asking that the three Bourse du Travail buildings be preserved and renovated; deputy mayor Afaf Gabelotaud estimated the cost of the works at several tens of millions of euros.",
+   "pourquoi_en": "According to Ian Brossat, union organizations had raised the alarm about a plan to sell the Turbigo annex"
   }
  ],
  "montants": [
@@ -99,22 +104,26 @@
   {
    "date": "1890-12-28",
    "extrait": "Exécution de travaux de viabilité et d'amélioration dans l'entrepôt de Bercy … Adoption d'une proposition de M. Albert Pétrot relative au dépôt d'exemplaires de la série des prix de la ville de Paris dans les mairies et à la Bourse du travail  … M. le Directeur des travaux . ",
-   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k6352063f/f17.item"
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k6352063f/f17.item",
+   "extrait_en": "Execution of roadworks and improvement works at the Bercy warehouse … Adoption of a proposal by Mr Albert Pétrot regarding the deposit of copies of the City of Paris's series of prizes in the town halls and at the Bourse du Travail … The Director of works."
   },
   {
    "date": "1891-06-13",
    "extrait": "Question de M. Girou sur la date d'inauguration de la Bourse du travail  … Il y a des questions qui rentrent dans les attributions de la préfecture de Police, telles que l'inspection du travail des enfants dans les manufactures, questions dont nous … Cattiaux. — M. GrébauvaJ,",
-   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k6335137p/f5.item"
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k6335137p/f5.item",
+   "extrait_en": "Question from Mr Girou on the inauguration date of the Bourse du Travail … There are matters that fall within the remit of the Préfecture de Police, such as the inspection of child labor in factories, matters that we … Cattiaux. — Mr Grébauval,"
   },
   {
    "date": "1901-11-09",
    "extrait": "En effet, le décret qui a organisé la Bourse du travail a stipulé que les subventions attribuées aux syndicats qui ont leur siège à la Bourse du travail devraient être réparties entre ces syndicats, par la Commission administrative de la Bourse du travail",
-   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k6494632x/f13.item"
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k6494632x/f13.item",
+   "extrait_en": "Indeed, the decree that organized the Bourse du Travail stipulated that the grants awarded to the unions headquartered at the Bourse du Travail should be distributed among these unions by the Bourse du Travail's Administrative Commission"
   },
   {
    "date": "1905-07-22",
    "extrait": "établissement d'un règlement intérieur de la Bourse du travail (M. Lajarrige, rapporteur) Le Conseil, Vu le rapport imprimé n° 34 de 1905 présenté par M. Lajarrige, au nom de la 2e Commission, Délibère : La Commission administrative de la Bourse du travail est invitée à élaborer ",
-   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k6334642d/f8.item"
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k6334642d/f8.item",
+   "extrait_en": "establishing internal regulations for the Bourse du Travail (Mr Lajarrige, rapporteur) The Council, Having regard to the printed report no. 34 of 1905 presented by Mr Lajarrige, on behalf of the 2nd Commission, Resolves: The Bourse du Travail's Administrative Commission is invited to draw up "
   }
  ],
  "bmo_recit": null,
@@ -323,5 +332,6 @@
    "name": "Wikipédia",
    "url": "https://fr.wikipedia.org/"
   }
- }
+ },
+ "synthese_en": "In April 2025, the Communist and Citizen group filed a motion with Conseil de Paris regarding the renovation of the Bourse du Travail buildings. Presenting the text, Senator Ian Brossat stated that union organizations had raised the alarm about a plan to sell the annex at 67 rue de Turbigo (3rd arrondissement) with a view to converting it into social housing, and asked that the three sites making up the Bourse du Travail be both preserved and renovated. Responding on behalf of the executive, deputy mayor Afaf Gabelotaud described a Bourse du Travail spread across three City-owned buildings in the 3rd and 10th arrondissements, totaling 13,000 square meters, which she described as being in a very degraded state for lack of major works over several decades. She estimated the cost of the necessary works at several tens of millions of euros and stated that the Paris Centre sector council had passed a motion that the conversion of the Turbigo building into social housing be studied, with a transitional phase as emergency accommodation."
 }

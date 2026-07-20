@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T20:11:17.537074+00:00",
+ "generated_at": "2026-07-20T20:28:18.117255+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "tour-saint-jacques",
  "name": "Tour Saint-Jacques",
@@ -22,7 +22,8 @@
   "source": {
    "name": "Wikipédia",
    "url": "https://fr.wikipedia.org/"
-  }
+  },
+  "extract_en": "The Tour Saint-Jacques is the former bell tower, built between 1509 and 1523, of Saint-Jacques-de-la-Boucherie, a church of which this tower is the sole remaining trace. Today it stands in the middle of the square that bears its name, in the 4th arrondissement of Paris."
  },
  "stats": {
   "n_delibs": 1499,
@@ -50,7 +51,9 @@
    "fait": "Le principe du réaménagement du square est approuvé, les travaux prévus en six lots séparés, et le Maire autorisé à signer avec la R.A.T.P. une convention fixant les conditions de la participation de celle-ci à la remise en état du square.",
    "pourquoi": "La R.A.T.P. doit participer à la remise en état du square ; la délibération renvoie les conditions à une convention jointe et ne dit ni la nature ni le montant de cet apport.",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=1097"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=1097",
+   "fait_en": "The principle of redeveloping the square was approved, the works planned in six separate lots, and the Mayor authorized to sign an agreement with the R.A.T.P. setting the terms of its contribution to restoring the square.",
+   "pourquoi_en": "The R.A.T.P. was to contribute to restoring the square; the deliberation left the terms to an attached agreement and stated neither the nature nor the amount of that contribution."
   },
   {
    "id": "42556",
@@ -58,7 +61,9 @@
    "fait": "Le principe de la fourniture et de la mise en place d'un échafaudage sur la tour est approuvé, le marché prévu en appel d'offres ouvert à tranche et lot uniques, et le Maire autorisé à le signer.",
    "pourquoi": "L'échafaudage est voté en 1999 ; le principe de la restauration des façades ne le sera qu'en mars 2004.",
    "vedette": false,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=42556"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=42556",
+   "fait_en": "The principle of supplying and erecting scaffolding on the tower was approved, the contract planned as an open tender with a single tranche and single lot, and the Mayor authorized to sign it.",
+   "pourquoi_en": "The scaffolding was approved in 1999; the principle of restoring the façades would not be approved until March 2004."
   },
   {
    "id": "57691",
@@ -66,7 +71,9 @@
    "fait": "Le principe de l'opération de restauration des façades est approuvé ; le Maire est autorisé à signer le marché de maîtrise d'œuvre, négocié en quatre tranches, avec Jean-François LAGNEAU, mandataire, et Jacques DESMARQUEST, co-traitant.",
    "pourquoi": "Avant tout marché de travaux, l'opération reçoit son cadre : une maîtrise d'œuvre en quatre tranches, dont trois conditionnelles.",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=57691"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=57691",
+   "fait_en": "The principle of the façade-restoration operation was approved; the Mayor was authorized to sign the project-management contract, negotiated in four tranches, with Jean-François LAGNEAU, lead contractor, and Jacques DESMARQUEST, co-contractor.",
+   "pourquoi_en": "Before any works contract, the operation received its framework: project management in four tranches, three of them conditional."
   },
   {
    "id": "82386",
@@ -74,7 +81,9 @@
    "fait": "La passation du lot n° 1 « pierre de taille ; sculpture ; restauration de sculpture » est approuvée : appel d'offres ouvert européen, une tranche ferme et deux tranches conditionnelles.",
    "pourquoi": "Sur les trois tranches du lot de pierre et de sculpture, une seule est ferme.",
    "vedette": false,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=82386"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=82386",
+   "fait_en": "Awarding lot no. 1, \"cut stone; sculpture; sculpture restoration,\" was approved: an open European tender, one firm tranche and two conditional tranches.",
+   "pourquoi_en": "Of the three tranches in the stone-and-sculpture lot, only one is firm."
   },
   {
    "id": "91566",
@@ -82,7 +91,9 @@
    "fait": "Le Maire est autorisé à signer le lot n° 5 « espaces verts » — remise en état du square — d'un montant de 397 976,42 euros TTC, avec la société CERCIS.",
    "pourquoi": "397.976,42 euros TTC pour les espaces verts du square : le chiffrage porte sur les abords, pas sur la pierre de la tour.",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=91566"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=91566",
+   "fait_en": "The Mayor was authorized to sign lot no. 5, \"green spaces\" — restoring the square — for an amount of 397,976.42 euros including tax, with the company CERCIS.",
+   "pourquoi_en": "397,976.42 euros including tax for the square's green spaces: the costing covers the surroundings, not the tower's stonework."
   },
   {
    "id": "118841",
@@ -90,7 +101,9 @@
    "fait": "Une convention d'occupation temporaire du domaine public est examinée ; le maire du 4e, Christophe GIRARD, la soutient et rattache l'ouverture de la tour à la visite aux travaux de restauration de la statuaire et au souhait du conseil de quartier Saint-Merri.",
    "pourquoi": "Selon le maire du 4e, l'ouverture du site à la visite fait suite aux travaux de restauration de la statuaire.",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=118841"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=118841",
+   "fait_en": "A temporary public-domain occupancy agreement was examined; the mayor of the 4th arrondissement, Christophe GIRARD, supported it and linked the tower's opening to visitors to the statuary restoration work and to a request from the Saint-Merri neighbourhood council.",
+   "pourquoi_en": "According to the mayor of the 4th arrondissement, opening the site to visitors followed the statuary restoration work."
   },
   {
    "id": "170467",
@@ -98,7 +111,9 @@
    "fait": "Vœu de Maud GATEL demandant le maintien des grilles du square : l'adjoint Christophe NAJDOVSKI défend l'étude de leur retrait, tandis qu'Ariel WEIL, maire de Paris Centre, situe l'urgence ailleurs et évoque des grilles ôtées en 1969 puis remises en 1995.",
    "pourquoi": "Le retrait des grilles n'est qu'à l'étude ; l'adjoint et le maire de Paris Centre divergent sur la priorité à lui donner.",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=170467"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=170467",
+   "fait_en": "Motion by Maud GATEL asking that the square's railings be kept: deputy mayor Christophe NAJDOVSKI defended studying their removal, while Ariel WEIL, mayor of Paris Centre, placed the urgency elsewhere and mentioned railings removed in 1969 and put back in 1995.",
+   "pourquoi_en": "Removing the railings is only under study; the deputy mayor and the mayor of Paris Centre disagree on the priority to give it."
   }
  ],
  "montants": [
@@ -114,17 +129,20 @@
   {
    "date": "1898-04-29",
    "extrait": "Servatoire municipal de Montsouris et annexe de la Tour - Saint - Jacques . — Statistique C hebdomadaire (16\" semaine … Sa vitesse, d'une moyenne de 14 kilom. à l'heure, atteint son maximum, 29 kilom. à Montsouris et 24 kilom. à la Tour - Saint Jacques , le 19 de 4 à 5 h … le",
-   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k62630164/f1.item"
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k62630164/f1.item",
+   "extrait_en": "-servatory of Montsouris and annex of the Tour Saint-Jacques. — C weekly statistic (16th week … Its speed, averaging 14 kilom. per hour, reaches its maximum, 29 kilom. at Montsouris and 24 kilom. at the Tour Saint-Jacques, on the 19th from 4 to 5 h … the"
   },
   {
    "date": "1902-09-03",
    "extrait": "Le Service météorologique de l'Observatoire municipal (Montsouris et Tour - Saint - Jacques ) publie chaque jour un Bulletin résumant la situation du temps dans la région parisienne … tableaux sont placés : dans les cours de l'Hôtel de Ville, à la porte des mairies des vingt ar",
-   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k63349233/f3.item"
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k63349233/f3.item",
+   "extrait_en": "The weather service of the municipal observatory (Montsouris and Tour Saint-Jacques) publishes a daily Bulletin summarizing the weather situation in the Paris region … tables are posted: in the courtyards of the Hôtel de Ville, at the doors of the town halls of the twenty ar"
   },
   {
    "date": "1923-10-18",
    "extrait": "Saint -Denis, 0°\"0 … Parc Saint -Maur. gouttes … Vitesse maxima : 7 m. à l'Office national météorologique, 16 m. au Bourget, 10 m. au Parc Saint -Maur, 11 m. à Montsouris, 16 m. à la Tour Saint - Jacques , 18 m. à la Tour Eiffel",
-   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k6433620r/f4.item"
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k6433620r/f4.item",
+   "extrait_en": "Saint-Denis, 0°0 … Parc Saint-Maur. drops … Maximum speed: 7 m. at the Office national météorologique, 16 m. at Le Bourget, 10 m. at Parc Saint-Maur, 11 m. at Montsouris, 16 m. at the Tour Saint-Jacques, 18 m. at the Eiffel Tower"
   }
  ],
  "bmo_recit": "Dans le Bulletin municipal, la tour Saint-Jacques apparaît non comme un monument mais comme un instrument : annexe de l'Observatoire municipal de Montsouris, elle sert de station météorologique. En 1898, une statistique hebdomadaire y relève un vent atteignant 24 kilomètres à l'heure, contre 29 à Montsouris. En 1902, le Bulletin décrit le Service météorologique de l'Observatoire municipal — Montsouris et Tour Saint-Jacques — qui publie chaque jour un bulletin résumant le temps dans la région parisienne, affiché dans les cours de l'Hôtel de Ville et à la porte des mairies des vingt arrondissements. La tour figure encore en 1923 dans les relevés de vitesse du vent, aux côtés de la tour Eiffel. Sur cette période, l'archive ne montre d'elle que ce rôle : un point de mesure du ciel parisien, cité semaine après semaine parmi les stations de la région.",
@@ -188,5 +206,7 @@
    "name": "Wikipédia",
    "url": "https://fr.wikipedia.org/"
   }
- }
+ },
+ "synthese_en": "In October 1995, the Conseil de Paris approved the principle of redeveloping the Square de la Tour Saint-Jacques, planned for contracts split into six separate lots, and authorized the Mayor to sign an agreement with the R.A.T.P. setting the terms of its contribution to restoring the square; the deliberation specified neither the nature nor the amount of that contribution, leaving it to the text of the agreement. Decisions concerning the monument then followed one after another: approval of the principle of scaffolding on the tower in October 1999, then, in March 2004, approval of the principle of restoring the façades and authorization for the Mayor to sign the project-management contract with Jean-François LAGNEAU and Jacques DESMARQUEST. The works contracts then went before the Council lot by lot: in February 2005, lot no. 1, \"cut stone; sculpture; sculpture restoration,\" was put out to open European tender with only one firm tranche out of three; in July 2008, the Council authorized the Mayor to sign lot no. 5, \"green spaces,\" corresponding to restoring the square, for 397,976.42 euros including tax, with the company CERCIS. In June 2014, the Council examined a temporary public-domain occupancy agreement; Christophe GIRARD, mayor of the 4th arrondissement, supported it and linked the site's opening to visitors to the \"extensive restoration work on the statuary.\" In July 2023, Maud GATEL filed a motion asking the City to abandon plans to remove the square's railings: deputy mayor Christophe NAJDOVSKI defended studying that removal in the name of greening and opening up green spaces, while Ariel WEIL, mayor of Paris Centre, judged that \"there is certainly no urgency about removing the railings\" and placed the priority elsewhere, stating that the railings had been removed in 1969 and, he believed, put back in 1995.",
+ "bmo_recit_en": "In the municipal bulletin, the Tour Saint-Jacques appears not as a monument but as an instrument: an annex of the Montsouris municipal observatory, it served as a weather station. In 1898, a weekly statistic there recorded wind reaching 24 kilometres per hour, against 29 at Montsouris. In 1902, the Bulletin described the weather service of the municipal observatory — Montsouris and Tour Saint-Jacques — which published a daily bulletin summarizing the weather in the Paris region, posted in the courtyards of the Hôtel de Ville and at the doors of the town halls of the twenty arrondissements. The tower still appears in 1923 in wind-speed readings, alongside the Eiffel Tower. Over this period, the archive shows it only in this role: a measuring point for the Parisian sky, cited week after week among the region's stations."
 }

@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T20:11:17.537074+00:00",
+ "generated_at": "2026-07-20T20:28:18.117255+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "musee-cognacq-jay",
  "name": "Musée Cognacq-Jay",
@@ -22,7 +22,8 @@
   "source": {
    "name": "Wikipédia",
    "url": "https://fr.wikipedia.org/"
-  }
+  },
+  "extract_en": "The Musée Cognacq-Jay is a City of Paris municipal museum presenting a collection of 18th-century works and art objects from the bequest of Ernest Cognacq."
  },
  "stats": {
   "n_delibs": 49,
@@ -50,7 +51,9 @@
    "fait": "Le Conseil approuve le principe d'une transaction et autorise le Maire à signer un contrat indemnisant une usagère de 8 125 euros après un accident survenu au sein du musée.",
    "pourquoi": "Accident au musée : transaction à 8 125 euros",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=85988"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=85988",
+   "fait_en": "The Council approved the principle of a settlement and authorized the Mayor to sign a contract compensating a visitor 8,125 euros following an accident at the museum.",
+   "pourquoi_en": "Accident at the museum: 8,125-euro settlement"
   }
  ],
  "montants": [
@@ -73,17 +76,20 @@
   {
    "date": "1936-07-08",
    "extrait": "Certains de ces musées portent les noms des donateurs soit de leurs monuments, soit de leurs collections, mais ces noms par eux-mêmes ne disent pas au grand public le genre de collections que contiennent ces musées  …  musée Cognacq - Jay possède de rares collections de tableau",
-   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k64534908/f28.item"
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k64534908/f28.item",
+   "extrait_en": "Some of these museums bear the names of the donors of either their buildings or their collections, but these names by themselves do not tell the general public what kind of collections these museums contain … the Musée Cognacq-Jay possesses rare collections of painting"
   },
   {
    "date": "1940-07-20",
    "extrait": "gravures et moulages édités par les musées nationaux), qui se tient au Musée Cognacq - Jay , 25, boulevard des Capucines, est ouverte tous les jours de 14 heures à 18 heures",
-   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k63568584/f1.item"
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k63568584/f1.item",
+   "extrait_en": "engravings and casts published by the national museums), which is being held at the Musée Cognacq-Jay, 25 boulevard des Capucines, is open every day from 2 p.m. to 6 p.m."
   },
   {
    "date": "1949-02-23",
    "extrait": "Les mêmes réductions d'effectifs ont empêché d'assurer au musée Cognacq - Jay une surveillance efficace pendant la période des congés et il était alors indispensable d'interdire au public l'accès de certaines salles … Aussi, M. René Fiquet, conseiller municipal, a-t-il l'honneu",
-   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k96394913/f2.item"
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k96394913/f2.item",
+   "extrait_en": "The same staff cuts made it impossible to ensure effective supervision at the Musée Cognacq-Jay during the vacation period, and it then became necessary to close certain rooms to the public … Accordingly, Mr René Fiquet, municipal councillor, has the hono"
   }
  ],
  "bmo_recit": "Le musée Cognacq-Jay traverse le Bulletin municipal en trois moments, du milieu des années 1930 à l'après-guerre. En 1936, au détour d'une réflexion sur les noms des musées de la Ville, qui ne disent pas au public le genre de collections qu'ils abritent, il est présenté comme possédant de rares collections de tableaux et de meubles. En juillet 1940, le Bulletin annonce une exposition de gravures et de moulages édités par les musées nationaux, tenue au musée, alors au 25, boulevard des Capucines, et ouverte tous les jours de 14 à 18 heures. En 1949 enfin, le conseiller municipal René Fiquet pose une question à l'administration : selon lui, les réductions d'effectifs ont empêché d'assurer une surveillance efficace pendant la période des congés, au point qu'il a fallu interdire au public l'accès de certaines salles. L'archive ne conserve, pour ce lieu, que ces trois traces.",
@@ -126,5 +132,7 @@
    "name": "Wikipédia",
    "url": "https://fr.wikipedia.org/"
   }
- }
+ },
+ "synthese_en": "At Conseil de Paris, the Musée Cognacq-Jay, 8 rue Elzévir (4th arrondissement), appears notably in November 2010: the Council approved the principle of a settlement following an accident suffered by a visitor at the museum and authorized the Mayor of Paris to sign a contract providing for payment of compensation of 8,125 euros, in exchange for the visitor's waiver of any further action against the City. This expenditure was to be charged to the City's 2010 operating budget, subject to the corresponding funding decision. At this stage, the deliberation approves only the principle and the authorization to sign, not a payment already made. A second text, from May 2024, does not concern this museum but rather the rue Cognacq-Jay (7th arrondissement), on the Left Bank: it concerns the installation of a plaque commemorating the first French television news broadcast, a namesake not to be confused with the museum in the Marais.",
+ "bmo_recit_en": "The Musée Cognacq-Jay passes through the municipal bulletin at three moments, from the mid-1930s to the postwar period. In 1936, in the course of a reflection on the names of the City's museums, which do not tell the public what kind of collections they house, it is presented as possessing rare collections of paintings and furniture. In July 1940, the bulletin announces an exhibition of engravings and casts published by the national museums, held at the museum, then at 25 boulevard des Capucines, and open every day from 2 to 6 p.m. Finally, in 1949, municipal councillor René Fiquet raises a question with the administration: according to him, staff cuts had made it impossible to ensure effective supervision during the vacation period, to the point that certain rooms had to be closed to the public. The archive preserves only these three traces for this location."
 }

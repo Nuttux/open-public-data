@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T20:11:17.537074+00:00",
+ "generated_at": "2026-07-20T20:28:18.117255+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "porte-de-la-chapelle",
  "name": "Porte de la Chapelle",
@@ -22,7 +22,8 @@
   "source": {
    "name": "Wikipédia",
    "url": "https://fr.wikipedia.org/"
-  }
+  },
+  "extract_en": "The Porte de la Chapelle, whose full name is Porte de la Chapelle-Saint-Denis, is one of the 17 gates cut into the Thiers wall in the mid-19th century to protect Paris, France."
  },
  "stats": {
   "n_delibs": 1156,
@@ -47,12 +48,14 @@
   {
    "beneficiaire": "ASSOCIATION AURORE",
    "montant_total": 4108195.0,
-   "preuve": "Signal exact : l'objet de la subvention, écrit par la Ville, nomme le lieu — « Fonctionnement Espace d'accueil et de repos à Porte de la Chapelle » (ligne 2024, SIRET 77568497003594). La délibération 2019 DASES 238 - DLH corrobore l'implantation et le montage : « Conventions avec l'association AURORE - Mise à disposition par la Ville de Paris de l'espace de repos et de répit Porte de la Chapelle (18e) et subventions de fonctionnement et d'équipements (145.000 euros) » — la Ville met le site à disposition, AURORE y exploite l'espace d'accueil mais ne gère pas la porte elle-même (voirie et espace public de la Ville), d'où le rôle « résident ». RÉSERVE SUR LE MONTANT : les 4 108 195 € sont le total versé par la Ville à ASSOCIATION AURORE en 2024, tous dossiers confondus — ce n'est pas le budget de l'espace de repos. L'export des bénéficiaires a pour grain (année × bénéficiaire) et son champ objet_principal ne retient que l'objet du plus gros dossier de l'année : les années précédentes, ce même champ désigne d'autres actions d'AURORE sans lien avec la porte (« Accueil espace Prague » en 2019, « Aide alimentaire Urgence Covid 19 » en 2020, « ASSORE » en 2021 et 2022). Le champ nb_subventions ne permet pas de conclure à l'absence d'agrégation : il vaut 1 sur 5 919 des 5 948 lignes de 2024, y compris pour le CASVP à 416,5 M€. La part revenant réellement à l'espace de repos n'est donc pas isolable dans la source ; le seul montant sourcé propre à cet équipement est celui de 2019 DASES 238 (145 000 € de fonctionnement et d'équipement). Voir porte-de-la-chapelle_perimetre.json."
+   "preuve": "Signal exact : l'objet de la subvention, écrit par la Ville, nomme le lieu — « Fonctionnement Espace d'accueil et de repos à Porte de la Chapelle » (ligne 2024, SIRET 77568497003594). La délibération 2019 DASES 238 - DLH corrobore l'implantation et le montage : « Conventions avec l'association AURORE - Mise à disposition par la Ville de Paris de l'espace de repos et de répit Porte de la Chapelle (18e) et subventions de fonctionnement et d'équipements (145.000 euros) » — la Ville met le site à disposition, AURORE y exploite l'espace d'accueil mais ne gère pas la porte elle-même (voirie et espace public de la Ville), d'où le rôle « résident ». RÉSERVE SUR LE MONTANT : les 4 108 195 € sont le total versé par la Ville à ASSOCIATION AURORE en 2024, tous dossiers confondus — ce n'est pas le budget de l'espace de repos. L'export des bénéficiaires a pour grain (année × bénéficiaire) et son champ objet_principal ne retient que l'objet du plus gros dossier de l'année : les années précédentes, ce même champ désigne d'autres actions d'AURORE sans lien avec la porte (« Accueil espace Prague » en 2019, « Aide alimentaire Urgence Covid 19 » en 2020, « ASSORE » en 2021 et 2022). Le champ nb_subventions ne permet pas de conclure à l'absence d'agrégation : il vaut 1 sur 5 919 des 5 948 lignes de 2024, y compris pour le CASVP à 416,5 M€. La part revenant réellement à l'espace de repos n'est donc pas isolable dans la source ; le seul montant sourcé propre à cet équipement est celui de 2019 DASES 238 (145 000 € de fonctionnement et d'équipement). Voir porte-de-la-chapelle_perimetre.json.",
+   "preuve_en": "Exact signal: the grant's stated purpose, written by the City, names the place — \"Operation of the reception and rest space at Porte de la Chapelle\" (2024 line, SIRET 77568497003594). Deliberation 2019 DASES 238 - DLH corroborates the location and the arrangement: \"Agreements with the AURORE association — the City of Paris makes available the Porte de la Chapelle (18th) rest and respite space, and operating and equipment grants (145,000 euros)\" — the City makes the site available, and AURORE operates the reception space there but does not manage the gate itself (the City's roadway and public space), hence the \"resident\" role. RESERVATION ON THE AMOUNT: the €4,108,195 is the total paid by the City to ASSOCIATION AURORE in 2024, across all its grant files combined — it is not the rest space's budget. The beneficiary export has a grain of (year × beneficiary), and its objet_principal field records only the purpose of the year's largest grant file: in previous years, this same field names other AURORE activities unrelated to the gate (\"Accueil espace Prague\" in 2019, \"Aide alimentaire Urgence Covid 19\" in 2020, \"ASSORE\" in 2021 and 2022). The nb_subventions field does not allow one to conclude there is no aggregation: it equals 1 for 5,919 of the 5,948 lines in 2024, including for the CASVP at €416.5 million. The share actually going to the rest space cannot therefore be isolated in the source; the only amount sourced specifically for this facility is the one from 2019 DASES 238 (€145,000 in operating and equipment funds). See porte-de-la-chapelle_perimetre.json."
   },
   {
    "beneficiaire": "L'INTESTINE",
    "montant_total": 21450.0,
-   "preuve": "Signal exact : l'objet nomme le lieu, sur les deux exercices retenus — « CPO SPV LA PERMANENCE CHORÉGRAPHIQUE PORTE DE LA CHAPELLE 2022 // CARNAVALER PARIS 18 » (2022) et « LA PERMANENCE CHOREGRAPHIQUE PORTE DE LA CHAPELLE 2019 // EPANOUISSEMENT DES FORMES POUR VIVRE L'ENV » (2019). Activité artistique accueillie sur le lieu, sans gestion de celui-ci → résident. RÉSERVE SUR LE MONTANT : les 21 450 € additionnent deux totaux annuels de l'association (9 650 € en 2019, SIRET 47890755300042, et 11 800 € en 2022, SIRET 47890755300059 — même association, établissements différents). Comme toute ligne de cet export, chacun est un total (année × bénéficiaire) dont l'objet affiché est celui du plus gros dossier ; chaque objet couple d'ailleurs la permanence chorégraphique à une seconde action, si bien que la part revenant strictement au lieu n'est pas isolable dans la source. Aucune délibération du contexte ne mentionne cette permanence."
+   "preuve": "Signal exact : l'objet nomme le lieu, sur les deux exercices retenus — « CPO SPV LA PERMANENCE CHORÉGRAPHIQUE PORTE DE LA CHAPELLE 2022 // CARNAVALER PARIS 18 » (2022) et « LA PERMANENCE CHOREGRAPHIQUE PORTE DE LA CHAPELLE 2019 // EPANOUISSEMENT DES FORMES POUR VIVRE L'ENV » (2019). Activité artistique accueillie sur le lieu, sans gestion de celui-ci → résident. RÉSERVE SUR LE MONTANT : les 21 450 € additionnent deux totaux annuels de l'association (9 650 € en 2019, SIRET 47890755300042, et 11 800 € en 2022, SIRET 47890755300059 — même association, établissements différents). Comme toute ligne de cet export, chacun est un total (année × bénéficiaire) dont l'objet affiché est celui du plus gros dossier ; chaque objet couple d'ailleurs la permanence chorégraphique à une seconde action, si bien que la part revenant strictement au lieu n'est pas isolable dans la source. Aucune délibération du contexte ne mentionne cette permanence.",
+   "preuve_en": "Exact signal: the stated purpose names the place, for both years retained — \"CPO SPV LA PERMANENCE CHORÉGRAPHIQUE PORTE DE LA CHAPELLE 2022 // CARNAVALER PARIS 18\" (2022) and \"LA PERMANENCE CHOREGRAPHIQUE PORTE DE LA CHAPELLE 2019 // EPANOUISSEMENT DES FORMES POUR VIVRE L'ENV\" (2019). An artistic activity hosted at the place, without managing it → resident. RESERVATION ON THE AMOUNT: the €21,450 adds together two annual totals for the association (€9,650 in 2019, SIRET 47890755300042, and €11,800 in 2022, SIRET 47890755300059 — the same association, different establishments). As with every line in this export, each is a total (year × beneficiary) whose displayed purpose is that of the largest grant file; moreover, each stated purpose pairs the choreographic residency with a second activity, so the share going strictly to the place cannot be isolated in the source. No deliberation in the context mentions this residency."
   }
  ],
  "kpi_montant": null,
@@ -64,7 +67,9 @@
    "fait": "Le Conseil émet le vœu que la Ville examine, avec le conseil de quartier, un aménagement à court terme de la Porte de la Chapelle, « l'une des principales portes de Paris ».",
    "pourquoi": "dès 2003, la porte réclame déjà un réaménagement",
    "vedette": false,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=69035"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=69035",
+   "fait_en": "The Council passed a motion asking that the City examine, together with the neighbourhood council, a short-term redevelopment of the Porte de la Chapelle, \"one of the main gateways of Paris.\"",
+   "pourquoi_en": "as early as 2003, the gate already calls for redevelopment"
   },
   {
    "id": "101094",
@@ -72,7 +77,9 @@
    "fait": "Le Conseil débat de la convention de financement des études d'extension du T3 au-delà de la porte de la Chapelle ; Mme Gachet juge « scandaleuse » la part de l'État, 20 M€ sur un coût global estimé à ~300 M€.",
    "pourquoi": "tram : l'État jugé quasi absent du financement",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=101094"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=101094",
+   "fait_en": "The Council debated the financing agreement for studies to extend the T3 beyond the Porte de la Chapelle; Ms Gachet called the State's share \"scandalous\" — €20 million out of a total cost estimated at around €300 million.",
+   "pourquoi_en": "tramway: the State judged nearly absent from the financing"
   },
   {
    "id": "133318",
@@ -80,7 +87,9 @@
    "fait": "En réponse à deux questions d'actualité, l'Exécutif annonce l'ouverture imminente du Centre de premier accueil humanitaire porte de la Chapelle pour les migrants primo-arrivants.",
    "pourquoi": "2016 : la Ville ouvre le centre humanitaire",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=133318"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=133318",
+   "fait_en": "In response to two topical questions, the executive announced the imminent opening of the first-reception humanitarian centre at the Porte de la Chapelle for newly-arrived migrants.",
+   "pourquoi_en": "2016: the City opens the humanitarian centre"
   },
   {
    "id": "144041",
@@ -88,7 +97,9 @@
    "fait": "Le Conseil approuve les autorisations d'urbanisme et une convention d'études, avec la SOLIDEO, pour la construction de l'Arena II sur le site de la Porte de la Chapelle.",
    "pourquoi": "feu vert aux études de l'Arena olympique",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=144041"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=144041",
+   "fait_en": "The Council approved the planning authorizations and a studies agreement, with SOLIDEO, for the construction of the Arena II on the Porte de la Chapelle site.",
+   "pourquoi_en": "green light for studies on the Olympic Arena"
   },
   {
    "id": "152432",
@@ -96,7 +107,9 @@
    "fait": "Le Conseil approuve des conventions avec l'association Aurore (subventions 145 000 €) pour un espace de repos et de répit destiné aux consommateurs de crack, porte de la Chapelle.",
    "pourquoi": "un espace de répit face au crack",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=152432"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=152432",
+   "fait_en": "The Council approved agreements with the Aurore association (grants of €145,000) for a rest and respite space for crack users, at the Porte de la Chapelle.",
+   "pourquoi_en": "a respite space in response to crack use"
   },
   {
    "id": "157791",
@@ -104,7 +117,9 @@
    "fait": "Le Conseil approuve le bilan de la concertation, les objectifs et le programme du réaménagement de la Porte de la Chapelle ; l'opposition conteste la concertation (92 % des participants disant ne pas s'y sentir en sécurité).",
    "pourquoi": "le grand réaménagement de la porte est programmé",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=157791"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=157791",
+   "fait_en": "The Council approved the outcome of the public consultation, the objectives, and the programme for redeveloping the Porte de la Chapelle; the opposition challenged the consultation (92% of participants saying they did not feel safe there).",
+   "pourquoi_en": "the gate's major redevelopment is scheduled"
   },
   {
    "id": "165087",
@@ -112,7 +127,9 @@
    "fait": "Le Conseil approuve la nouvelle dénomination de l'Arena en « Adidas Arena » (naming) ; l'Exécutif met en avant un coût de ~100 M€ (moitié Ville, moitié Solideo) et un versement de 180 000 €/an pour des actions locales.",
    "pourquoi": "l'Arena rebaptisée « Adidas Arena »",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=165087"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=165087",
+   "fait_en": "The Council approved renaming the Arena \"Adidas Arena\" (naming rights); the executive highlighted a cost of around €100 million (half City, half Solideo) and a payment of €180,000 per year for local initiatives.",
+   "pourquoi_en": "the Arena renamed \"Adidas Arena\""
   },
   {
    "id": "183569",
@@ -120,7 +137,9 @@
    "fait": "Le groupe Les Écologistes dépose un vœu réclamant le retrait de ce qu'il qualifie de publicité illégale (650 m² Adidas) sur la façade de l'Arena Alice Milliat, porte de la Chapelle.",
    "pourquoi": "polémique sur 650 m² de pub Adidas",
    "vedette": false,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=183569"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=183569",
+   "fait_en": "The Les Écologistes group filed a motion demanding the removal of what it described as illegal advertising (650 m² for Adidas) on the façade of the Arena Alice Milliat, at the Porte de la Chapelle.",
+   "pourquoi_en": "controversy over 650 m² of Adidas advertising"
   }
  ],
  "montants": [
@@ -220,22 +239,26 @@
   {
    "date": "1928-04-30",
    "extrait": "CONSEIL GÉNÉRAL DE LA SEINE RÉPONSES AUX QUESTIONS ÉCRITES o 3. — 17 janvier 1928. — Ayant constaté plusieurs fois que le tramway n° 47 (Bicetre Porte de la Chapelle ) circulait aux heures d'affluence avec une seule voiture, M. Paul Fleurot, conseiller général, fait remarquer ( à",
-   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k63503203/f1.item"
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k63503203/f1.item",
+   "extrait_en": "GENERAL COUNCIL OF THE SEINE REPLIES TO WRITTEN QUESTIONS No. 3. — 17 January 1928. — Having observed several times that tramway line 47 (Bicêtre-Porte de la Chapelle) ran with only a single car during rush hour, Mr Paul Fleurot, general councillor, points out (to"
   },
   {
    "date": "1938-03-18",
    "extrait": "N° 137. — 11 février 1938. — M. le Préfet de la Seine entend-il que se reconstitue, le long de l'avenue de la Porte -de. la- Chapelle , dans la zone qu'on va désaffecter, la semaine des quatre jeudis, le village de nomades disparu enfin, après beaucoup de traverses, de la porte d",
-   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k6481639m/f2.item"
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k6481639m/f2.item",
+   "extrait_en": "No. 137. — 11 February 1938. — Does the Prefect of the Seine intend to let there re-form, along the Avenue de la Porte-de-la-Chapelle, in the zone about to be decommissioned, on the week of the four Thursdays, the nomads' village that has finally disappeared, after much difficulty, from the Porte d"
   },
   {
    "date": "1949-01-11",
    "extrait": "Bassin Ouest et Est de la porte de la Chapelle . — Maçonnerie, canalisations. — Evaluation : 588.000 francs. — Adjudicataire proposé : société « Travaux et entreprises de la région parisienne », 52. rue Philippe-de- Girard, à Paris (18e). — Rabais : 11 0/0",
-   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k9639532k/f4.item"
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k9639532k/f4.item",
+   "extrait_en": "West and East Basin of the Porte de la Chapelle. — Masonry, piping. — Valuation: 588,000 francs. — Proposed successful bidder: the company \"Travaux et entreprises de la région parisienne\", 52 Rue Philippe-de-Girard, Paris (18th). — Discount: 11%"
   },
   {
    "date": "1969-03-27",
    "extrait": "entre la porte de la Chapelle , la porte d'Aubervilliers et la station de métro « Marx-Dormoy … Une parcelle de l'ordre de 25.000 mètres carrés a donc été réservée au sud de l'échangeur de la porte de la Chapelle en vue d'y établir un parc de stationnement d'une certaine import",
-   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k9704285j/f6.item"
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k9704285j/f6.item",
+   "extrait_en": "between the Porte de la Chapelle, the Porte d'Aubervilliers, and the \"Marx-Dormoy\" métro station … A plot of around 25,000 square metres has therefore been reserved south of the Porte de la Chapelle interchange with a view to establishing a car park of some size"
   }
  ],
  "bmo_recit": "La Porte de la Chapelle apparaît dans le Bulletin municipal dès l'entre-deux-guerres, par la voix des élus qui interpellent le Préfet de la Seine : en 1928, le conseiller général Paul Fleurot fait remarquer que le tramway n° 47, qui relie Bicêtre à la Porte de la Chapelle, circule aux heures d'affluence avec une seule voiture. Dix ans plus tard, en 1938, une question écrite demande au Préfet s'il entend laisser se reconstituer, le long de l'avenue de la Porte-de-la-Chapelle, dans une zone sur le point d'être désaffectée, le village de nomades qui venait de disparaître de la porte d'Aubervilliers. Après-guerre, l'archive garde la trace de travaux : en 1949, un marché de maçonnerie et de canalisations pour les bassins ouest et est de la porte, évalué à 588.000 francs, est présenté avec un adjudicataire proposé. En 1969 enfin, une parcelle d'environ 25.000 mètres carrés est réservée au sud de l'échangeur en vue d'y établir un parc de stationnement d'une certaine importance. Sur ces quatre décennies, la porte revient ainsi dans le Bulletin autour des transports, de l'habitat précaire de la zone et de l'aménagement routier.",
@@ -336,5 +359,7 @@
    "name": "Wikipédia",
    "url": "https://fr.wikipedia.org/"
   }
- }
+ },
+ "synthese_en": "As early as 2003, Conseil de Paris passed a motion to redevelop the Porte de la Chapelle in the short term, described as one of the main gateways of Paris. From 2009-2011, most of the deliberations concerned the arrival and then the extension of the T3 tramway — the second section reached the gate in 2012 — against a backdrop of tension with the State, whose contribution was judged very low by several councillors. In the mid-2010s, several deliberations concerned migrant encampments and crack use at the gate: the City opened a first-reception humanitarian centre (2016), then made available a rest space run by the Aurore association (2019), while opposition motions warned of the deteriorating quality of life. At the same time, the City and SOLIDEO undertook the Arena II, presented as the only venue built for the 2024 Olympics: studies and planning authorizations in 2018, a public service delegation under public management in 2020, and the name \"Adidas Arena\" approved in 2022 despite opposition from some councillors. The outcome of the public consultation and the programme for redeveloping the gate's public spaces were approved in 2021, and the advertising placed on the Arena was still being debated in 2025.",
+ "bmo_recit_en": "The Porte de la Chapelle appears in the municipal bulletin as early as the interwar period, through councillors questioning the Prefect of the Seine: in 1928, general councillor Paul Fleurot pointed out that tramway line 47, linking Bicêtre to the Porte de la Chapelle, ran with only a single car during rush hour. Ten years later, in 1938, a written question asked the Prefect whether he intended to allow the nomads' village, which had just disappeared from the Porte d'Aubervilliers, to re-form along the Avenue de la Porte-de-la-Chapelle, in a zone about to be decommissioned. After the war, the archive keeps a record of works: in 1949, a contract for masonry and piping work on the gate's west and east basins, valued at 588,000 francs, is presented along with a proposed successful bidder. Finally, in 1969, a plot of around 25,000 square metres is reserved south of the interchange for building a car park of some size. Over these four decades, the gate thus comes back in the Bulletin around transport, the area's makeshift housing, and road development."
 }

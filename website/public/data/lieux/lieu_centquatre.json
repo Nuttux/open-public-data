@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T20:11:17.537074+00:00",
+ "generated_at": "2026-07-20T20:28:18.117255+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "centquatre",
  "name": "Le Centquatre",
@@ -22,7 +22,8 @@
   "source": {
    "name": "Wikipédia",
    "url": "https://fr.wikipedia.org/"
-  }
+  },
+  "extract_en": "Centquatre-Paris is a Parisian public establishment for cultural cooperation, open since 11 October 2008 on the site of the former municipal funeral services department of the City of Paris, located at 5 rue Curial in the 19th arrondissement of Paris."
  },
  "stats": {
   "n_delibs": 141,
@@ -50,7 +51,9 @@
    "fait": "600 000 euros d'investissement pour aménager une pépinière d'entreprises dans l'établissement culturel.",
    "pourquoi": "Le lieu n'est pas seulement culturel",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=50264"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=50264",
+   "fait_en": "600,000 euros in investment to fit out a business incubator within the cultural establishment.",
+   "pourquoi_en": "The venue is not only a cultural one"
   },
   {
    "id": "12913",
@@ -58,7 +61,9 @@
    "fait": "Débat sur le renouvellement de la direction : 56 candidatures dont 10 de femmes, liste non établie par le conseil d'administration selon une de ses membres, audit non rendu.",
    "pourquoi": "Crise de direction dès la deuxième année",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=12913"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=12913",
+   "fait_en": "Debate on renewing the leadership: 56 applications, of which 10 from women, a shortlist not drawn up by the board of directors according to one of its members, and an audit not yet delivered.",
+   "pourquoi_en": "A leadership crisis as early as the second year"
   },
   {
    "id": "85906",
@@ -66,7 +71,9 @@
    "fait": "Compte de liquidation de l'établissement public local créé en 2007 ; actif, passif et résultat transférés à l'EPCC sans passage par les écritures de la Ville.",
    "pourquoi": "Le premier montage juridique abandonné",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=85906"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=85906",
+   "fait_en": "Liquidation account of the local public establishment created in 2007; assets, liabilities and results transferred to the EPCC without passing through the City's accounts.",
+   "pourquoi_en": "The first legal structure abandoned"
   },
   {
    "id": "140956",
@@ -74,7 +81,9 @@
    "fait": "Examen du rapport de la Chambre régionale des comptes sur la gestion depuis 2006 : service public jugé absent la première année, réorientation ultérieure jugée réussie, subventions portées à 8,8 millions d'euros en 2016.",
    "pourquoi": "Seul regard extérieur sur la gestion",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=140956"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=140956",
+   "fait_en": "Review of the Chambre régionale des comptes' report on management since 2006: public service judged to be absent in the first year, the subsequent change of direction judged a success, grants raised to 8.8 million euros in 2016.",
+   "pourquoi_en": "The only outside look at the management"
   },
   {
    "id": "150036",
@@ -82,7 +91,9 @@
    "fait": "Contribution de 8 900 000 euros votée ; une élue conteste l'ouverture réelle sur le quartier et interroge le rôle du lieu dans la gentrification.",
    "pourquoi": "Le conflit sur le public visé",
    "vedette": false,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=150036"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=150036",
+   "fait_en": "A contribution of 8,900,000 euros was voted; a councillor disputed the venue's actual openness to the neighborhood and questioned its role in gentrification.",
+   "pourquoi_en": "The dispute over the intended audience"
   },
   {
    "id": "163796",
@@ -90,7 +101,9 @@
    "fait": "149 705 euros pour les frais d'hébergement d'un centre de vaccination Covid installé dans l'établissement de janvier à août 2021.",
    "pourquoi": "L'équipement culturel devient centre sanitaire",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=163796"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=163796",
+   "fait_en": "149,705 euros for the hosting costs of a Covid vaccination center set up at the establishment from January to August 2021.",
+   "pourquoi_en": "The cultural venue becomes a health center"
   },
   {
    "id": "164633",
@@ -98,7 +111,9 @@
    "fait": "Modification des statuts pour dispenser des formations certifiantes, votée pendant la grève des salariés et intermittents engagée le 31 janvier.",
    "pourquoi": "Conflit social au coeur de l'équipement",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=164633"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=164633",
+   "fait_en": "Amendment of the bylaws to allow offering certifying training programs, voted during the strike by employees and freelance performers that began on 31 January.",
+   "pourquoi_en": "Labor conflict at the heart of the venue"
   },
   {
    "id": "184682",
@@ -106,7 +121,9 @@
    "fait": "Subvention complémentaire portant la contribution municipale à 8,8 millions d'euros, présentée en débat comme comblant un déficit de fonctionnement.",
    "pourquoi": "La question du modèle reste ouverte",
    "vedette": false,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=184682"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=184682",
+   "fait_en": "A supplementary grant bringing the municipal contribution to 8.8 million euros, presented in debate as covering an operating deficit.",
+   "pourquoi_en": "The question of the economic model remains open"
   }
  ],
  "montants": [
@@ -280,5 +297,6 @@
    "name": "Wikipédia",
    "url": "https://fr.wikipedia.org/"
   }
- }
+ },
+ "synthese_en": "The Conseil de Paris created a local public establishment to run the 104 rue d'Aubervilliers site in March 2007, then a public establishment for cultural cooperation (EPCC) in July 2008; it gave up operating the former in May 2009 and approved its liquidation account in November 2010, transferring the assets, liabilities, loan, and public-domain occupancy agreement to the EPCC. The early years brought a series of top-ups — 600,000 euros \"as a supplementary, exceptional measure\" at the end of 2009, the 2010 grant raised from 2,000,000 to 3,880,000 euros — along with a leadership crisis: in June 2010, the Council settled on a shortlist of four candidates out of 56 applications, of which a councillor sitting on the board noted that it had not been drawn up by the board itself and that it included only 10 women. In February 2018, the Council examined the Chambre régionale des comptes' report on management since 2006: in session, a councillor took from it that public service had not been delivered after the first year, that the shift in direction led by director José-Manuel Gonçalvès was a success, and that total grants had reached 8.8 million euros in 2016. The debates that followed concerned the venue's roots in the neighborhood and gentrification (2019), attendance and the clarity of the accounts (a 2020 motion citing 703,000 visitors in 2017 and 585,000 in 2019), hosting a vaccination center (149,705 euros then 30,434 euros), and the strike by employees and freelance performers (\"intermittents\") that began on 31 January 2022, at the very moment when the bylaws were amended to allow certifying training programs. In 2025, after fifteen years under the direction of José-Manuel Gonçalvès, the Council approved three candidacies for the new leadership, then a supplementary grant of 8,800,000 euros that the opposition linked to an operating deficit."
 }

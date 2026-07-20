@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T20:11:17.537074+00:00",
+ "generated_at": "2026-07-20T20:28:18.117255+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "musee-carnavalet",
  "name": "Musée Carnavalet",
@@ -22,7 +22,8 @@
   "source": {
    "name": "Wikipédia",
    "url": "https://fr.wikipedia.org/"
-  }
+  },
+  "extract_en": "The Musée Carnavalet - Histoire de Paris is the Paris municipal museum devoted to the history of Paris from the city's origins to the present day. Located in the Marais district at 23 rue Madame-de-Sévigné in Paris, in the 3rd arrondissement, it presents collections on varied themes: mementos of the French Revolution, historical paintings, sculptures, 17th- and 18th-century furniture and interior decor, art objects, prints, etc."
  },
  "stats": {
   "n_delibs": 242,
@@ -50,7 +51,9 @@
    "fait": "Le Conseil approuve le programme de l'opération archéologique de Bercy et le transfert des fouilles au musée Carnavalet, et autorise le Maire à signer la convention avec l'État.",
    "pourquoi": "Les fouilles de Bercy rejoignent le musée",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=55014"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=55014",
+   "fait_en": "The Council approved the program for the Bercy archaeological operation and the transfer of the excavation finds to the Musée Carnavalet, and authorized the Mayor to sign the agreement with the State.",
+   "pourquoi_en": "The Bercy excavation finds join the museum"
   },
   {
    "id": "27459",
@@ -58,7 +61,9 @@
    "fait": "Le Conseil approuve le principe des travaux de restauration et d'aménagement intérieur de l'Orangerie de l'hôtel Le Peletier-de-Saint-Fargeau et autorise deux marchés de maîtrise d'œuvre.",
    "pourquoi": "Premiers grands travaux sur le bâtiment",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=27459"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=27459",
+   "fait_en": "The Council approved the principle of restoration and interior fit-out works at the Orangery of the Hôtel Le Peletier-de-Saint-Fargeau and authorized two project management contracts.",
+   "pourquoi_en": "First major works on the building"
   },
   {
    "id": "84343",
@@ -66,7 +71,9 @@
    "fait": "Le Conseil autorise le Maire à acquérir le portrait de Madame Tallien par le baron François Gérard pour 5 000 000 F, avec une convention associant la Société des Amis du musée et la baronne Elie de Rothschild.",
    "pourquoi": "Cinq millions de francs pour un portrait révolutionnaire",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=84343"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=84343",
+   "fait_en": "The Council authorized the Mayor to acquire the portrait of Madame Tallien by Baron François Gérard for 5,000,000 francs, with an agreement involving the Société des Amis du musée and the Baroness Elie de Rothschild.",
+   "pourquoi_en": "Five million francs for a Revolutionary-era portrait"
   },
   {
    "id": "8366",
@@ -74,7 +81,9 @@
    "fait": "Lors de l'examen d'une acquisition d'œuvre d'art, Yves POZZO di BORGO conteste le manque d'informations sur l'expertise et l'historique du tableau.",
    "pourquoi": "Un élu doute de l'authenticité d'un achat",
    "vedette": false,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=8366"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=8366",
+   "fait_en": "During the examination of an art acquisition, Yves POZZO di BORGO challenged the lack of information on the painting's expert appraisal and provenance.",
+   "pourquoi_en": "A councillor doubts the authenticity of a purchase"
   },
   {
    "id": "42905",
@@ -82,7 +91,9 @@
    "fait": "Le Conseil autorise le Maire à signer une convention avec la Getty Foundation finançant la restauration des boiseries de l'ancien hôtel du duc de Richelieu, pour une recette de 170 500 euros.",
    "pourquoi": "Une fondation américaine finance les boiseries",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=42905"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=42905",
+   "fait_en": "The Council authorized the Mayor to sign an agreement with the Getty Foundation funding the restoration of the paneling in the former Hôtel du duc de Richelieu, for revenue of 170,500 euros.",
+   "pourquoi_en": "An American foundation funds the paneling"
   },
   {
    "id": "3972",
@@ -90,7 +101,9 @@
    "fait": "Pendant le débat sur les librairies, Hélène MACÉ de LÉPINAY critique l'état architectural des musées municipaux ; Danièle POURTAUD défend la politique de la Ville.",
    "pourquoi": "L'opposition dénonce l'état des musées",
    "vedette": false,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=3972"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=3972",
+   "fait_en": "During the debate on bookshops, Hélène MACÉ de LÉPINAY criticized the architectural condition of the City's museums; Danièle POURTAUD defended the City's policy.",
+   "pourquoi_en": "The opposition denounces the condition of the museums"
   },
   {
    "id": "111201",
@@ -98,7 +111,9 @@
    "fait": "Le Conseil adopte à l'unanimité le lancement d'un marché d'assistance à maîtrise d'ouvrage (350 000 euros) pour l'étude de programmation de la rénovation globale.",
    "pourquoi": "Le coup d'envoi de la rénovation globale",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=111201"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=111201",
+   "fait_en": "The Council unanimously adopted the launch of a project-owner assistance contract (350,000 euros) for the programming study of the comprehensive renovation.",
+   "pourquoi_en": "The starting signal for the comprehensive renovation"
   },
   {
    "id": "142467",
@@ -106,7 +121,9 @@
    "fait": "Un vœu du groupe PPCI demande un point d'étape sur les travaux, la programmation et les objectifs du nouveau musée Carnavalet avant sa réouverture.",
    "pourquoi": "Avant la réouverture, un vœu réclame des comptes",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=142467"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=142467",
+   "fait_en": "A motion from the PPCI group called for a progress report on the works, programming, and objectives of the new Musée Carnavalet ahead of its reopening.",
+   "pourquoi_en": "Before the reopening, a motion demands accountability"
   }
  ],
  "montants": [
@@ -353,17 +370,20 @@
   {
    "date": "1902-04-04",
    "extrait": "Conformément aux conclusions présentées par M. John Labusquière, au nom de la 4e Commission, Renvoie à l'Administration une pétition de M. Le Fustec proposant l'acquisition pour le musée Carnavalet d'un portrait du président Félix Faure, par Edouard Krug",
-   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k64533705/f14.item"
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k64533705/f14.item",
+   "extrait_en": "In accordance with the findings presented by Mr John Labusquière, on behalf of the 4th Commission, refers to the Administration a petition from Mr Le Fustec proposing the acquisition for the Musée Carnavalet of a portrait of President Félix Faure, by Édouard Krug"
   },
   {
    "date": "1905-12-16",
    "extrait": "Achille, au nom de la 28 Commission. — Messieurs, la ville de Paris est propriétaire d'une maison située rue de Sévigné, n° 25, dont l'acquisition a été faite en vue de l'agrandissement du musée Carnavalet , auquel elle est",
-   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k6343248g/f7.item"
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k6343248g/f7.item",
+   "extrait_en": "Achille, on behalf of the 28th Commission. — Gentlemen, the city of Paris owns a house located at 25 rue de Sévigné, which was purchased with a view to the expansion of the Musée Carnavalet, to which it is"
   },
   {
    "date": "1926-03-20",
    "extrait": "de M. Guillaumin, président 56. - Acceptation d'un don fait au musée Carnavalet par les héritiers de M. Ernest May … M. d'Andigné, au nom de la 4e Commission. — Messieurs, en exécution d'un désir exprimé par l'éminent collectionneur M. Ernest May, ses héritiers offrent à la Vil",
-   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k6291215m/f20.item"
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k6291215m/f20.item",
+   "extrait_en": "by Mr Guillaumin, chairman 56. — Acceptance of a gift made to the Musée Carnavalet by the heirs of Mr Ernest May … Mr d'Andigné, on behalf of the 4th Commission. — Gentlemen, in fulfillment of a wish expressed by the eminent collector Mr Ernest May, his heirs are offering to the Ci"
   }
  ],
  "bmo_recit": "Au début du XXe siècle, le musée apparaît dans le Bulletin municipal d'abord par ses collections : en 1902, le Conseil renvoie à l'Administration une pétition de M. Le Fustec proposant d'acquérir pour le musée un portrait du président Félix Faure peint par Édouard Krug — la question est transmise, non tranchée. En 1905, un rapport en séance rappelle que la Ville est propriétaire d'une maison au 25 rue de Sévigné, acquise en vue de l'agrandissement du musée. Deux décennies plus tard, en 1926, l'archive montre le Conseil saisi de l'acceptation d'un don : les héritiers du collectionneur Ernest May, en exécution d'un désir qu'il avait exprimé, offrent des œuvres à la Ville de Paris pour le musée. Sur près d'un quart de siècle, le Bulletin donne ainsi à voir ces épisodes ponctuels d'une même vie administrative : des murs qu'on prévoit d'étendre et des collections qui s'enrichissent par dons et propositions d'achat.",
@@ -621,5 +641,7 @@
    "name": "Wikipédia",
    "url": "https://fr.wikipedia.org/"
   }
- }
+ },
+ "synthese_en": "Between 1995 and 2018, the Musée Carnavalet came before Conseil de Paris on many occasions, most often to enrich its collections: acquisitions of works — from the Recueil Marigny (1,000,000 francs, 1995) to the portrait of Madame Tallien by Baron Gérard (5,000,000 francs, 2001) — and the acceptance of bequests and donations from private individuals, ranging from a few hundred to over 100,000 euros. The City also undertook works on the building, from the principle of restoring the Orangery of the Hôtel Le Peletier-de-Saint-Fargeau (1999) to the restoration of the gilded cabinet of the La Rivière salons (401,980 euros including tax, 2004), and in 1996 approved the program for the Bercy archaeological operation and the transfer of the excavation finds to the museum. These deliberations most often authorized the Mayor to sign or accept, and approved principles or agreements, without the text confirming that they were carried out. The museum was also a site of debate: in 2003, a councillor questioned the expertise behind, and the authenticity of, a painting being acquired; in 2010, the opposition criticized the architectural condition of the City's museums. From 2013, the Council launched the programming study (350,000 euros) for the comprehensive renovation, and a 2018 motion demanded a progress report ahead of the announced reopening.",
+ "bmo_recit_en": "At the start of the 20th century, the museum appears in the municipal bulletin first through its collections: in 1902, the Council referred to the Administration a petition from Mr Le Fustec proposing to acquire for the museum a portrait of President Félix Faure painted by Édouard Krug — the matter was forwarded, not settled. In 1905, a report given in session recalled that the City owned a house at 25 rue de Sévigné, acquired with a view to expanding the museum. Two decades later, in 1926, the archive shows the Council taking up the acceptance of a gift: the heirs of the collector Ernest May, in fulfillment of a wish he had expressed, offered works to the City of Paris for the museum. Over nearly a quarter of a century, the bulletin thus gives a glimpse of these occasional episodes in the same administrative life: walls due to be extended, and collections enriched through gifts and purchase proposals."
 }

@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T20:11:17.537074+00:00",
+ "generated_at": "2026-07-20T20:28:18.117255+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "parc-martin-luther-king",
  "name": "Parc Martin Luther King",
@@ -52,7 +52,9 @@
    "fait": "Un vœu propose de nommer le futur parc « parc Martin Luther King » ; l'Exécutif y est favorable mais diffère la décision finale à une concertation.",
    "pourquoi": "L'acte de baptême, différé pour concertation",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=14093"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=14093",
+   "fait_en": "A motion proposed naming the future park \"Parc Martin Luther King\"; the executive was in favor but deferred the final decision to a consultation process.",
+   "pourquoi_en": "The naming, deferred for consultation"
   },
   {
    "id": "20579",
@@ -60,7 +62,9 @@
    "fait": "Des élus du 17e demandent un gardiennage renforcé face à l'insécurité ; l'adjoint reconnaît de « vrais problèmes » mais renvoie à la police nationale.",
    "pourquoi": "Dès l'ouverture, la sécurité fait débat",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=20579"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=20579",
+   "fait_en": "Councillors from the 17th arrondissement called for increased guarding in the face of insecurity; the deputy mayor acknowledged \"real problems\" but referred the matter to the national police.",
+   "pourquoi_en": "Security is debated from the moment the park opens"
   },
   {
    "id": "129862",
@@ -68,7 +72,9 @@
    "fait": "Une question écrite réclame le coût de l'ouverture 24h/24 du parc, en investissement et fonctionnement ; la réponse n'est pas parvenue.",
    "pourquoi": "Combien coûte un parc ouvert nuit et jour ?",
    "vedette": false,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=129862"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=129862",
+   "fait_en": "A written question requested the cost of keeping the park open 24 hours a day, in both capital and operating expenditure; no response was received.",
+   "pourquoi_en": "How much does a park open day and night cost?"
   },
   {
    "id": "134780",
@@ -76,7 +82,9 @@
    "fait": "Une subvention proposée de 30 000 euros accompagne l'installation d'un cabinet médical de secteur 1 portant le nom du parc, via « Paris Med' ».",
    "pourquoi": "30 000 € pour un cabinet médical de proximité",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=134780"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=134780",
+   "fait_en": "A proposed grant of 30,000 euros accompanied the installation of a secteur 1 medical practice bearing the park's name, via \"Paris Med'\".",
+   "pourquoi_en": "30,000 euros for a local medical practice"
   },
   {
    "id": "135834",
@@ -84,7 +92,9 @@
    "fait": "Deux vœux des Républicains demandant la fermeture nocturne estivale du parc et plus d'effectifs DPP sont repoussés, avis défavorable de l'Exécutif.",
    "pourquoi": "Fermer le parc la nuit ? Rejeté",
    "vedette": false,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=135834"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=135834",
+   "fait_en": "Two motions from Les Républicains requesting the park's nighttime closure in summer and more DPP staff were rejected, with an unfavorable opinion from the executive.",
+   "pourquoi_en": "Close the park at night? Rejected"
   },
   {
    "id": "138068",
@@ -92,7 +102,9 @@
    "fait": "Vœux sur la tranquillité des riverains et la remise en exploitation de « La Forge » et « Le Belvédère » ; l'adjointe dit avoir éteint « Le Belvédère » à l'essai.",
    "pourquoi": "Deux locaux inoccupés, la tranquillité en question",
    "vedette": false,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=138068"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=138068",
+   "fait_en": "Motions on residents' peace and quiet and on bringing \"La Forge\" and \"Le Belvédère\" back into use; the deputy mayor said she had shut down \"Le Belvédère\" on a trial basis.",
+   "pourquoi_en": "Two vacant premises, residents' peace and quiet in question"
   },
   {
    "id": "157802",
@@ -100,7 +112,9 @@
    "fait": "Un vœu réclame un franchissement piéton des voies ferrées ; l'adjoint annonce la livraison de la dernière tranche du parc de 10 hectares.",
    "pourquoi": "Le parc s'achève, encore coupé par le rail",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=157802"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=157802",
+   "fait_en": "A motion called for a pedestrian crossing over the rail tracks; the deputy mayor announced the delivery of the final phase of the 10-hectare park.",
+   "pourquoi_en": "The park nears completion, still cut off by the railway"
   },
   {
    "id": "179866",
@@ -108,7 +122,9 @@
    "fait": "Le Conseil adopte la dénomination de six allées du parc, issue d'une démarche participative de féminisation menée par la mairie du 17e.",
    "pourquoi": "Six allées nommées, choisies par les habitants",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=179866"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=179866",
+   "fait_en": "The Council adopted the naming of six paths in the park, resulting from a participatory initiative to give more places women's names, led by the mairie of the 17th arrondissement.",
+   "pourquoi_en": "Six paths named, chosen by residents"
   }
  ],
  "montants": [],
@@ -142,5 +158,6 @@
    "name": "Wikipédia",
    "url": "https://fr.wikipedia.org/"
   }
- }
+ },
+ "synthese_en": "In 2007, a motion proposed naming the future Parc Clichy-Batignolles \"Parc Martin Luther King\"; the executive said it was in favor while deferring the final decision to a consultation process. From the moment it opened, security dominated the debates: guarding judged insufficient in 2009, a question on the cost of a 24-hour opening left unanswered in 2016, motions for nighttime closure rejected in 2017, while a secteur 1 medical practice bearing the park's name was the subject of a proposed grant of 30,000 euros. That same year, bringing the \"La Forge\" and \"Le Belvédère\" premises back into use and local residents' peace and quiet came up in session, with the deputy mayor saying she had shut down \"Le Belvédère\" on an experimental basis. In 2021, the deputy mayor announced the delivery of the final phase of this 10-hectare park, still cut off by a rail corridor for which a motion demanded a pedestrian crossing. In 2025, the Council adopted the naming of six paths, chosen by residents through a participatory process."
 }

@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T20:11:17.537074+00:00",
+ "generated_at": "2026-07-20T20:28:18.117255+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "piscine-molitor",
  "name": "Piscine Molitor",
@@ -22,7 +22,8 @@
   "source": {
    "name": "Wikipédia",
    "url": "https://fr.wikipedia.org/"
-  }
+  },
+  "extract_en": "The Piscine Molitor is an aquatic and hotel complex bordering the Bois de Boulogne, between the Roland-Garros stadium and the Parc des Princes, in the 16th arrondissement of Paris. Inaugurated in 1929 by Olympic medal-winning swimmers Aileen Riggin Soule and Johnny Weissmuller, it remained famous for its Art Deco décor and for events such as the first appearance of the bikini after 1945. Nicknamed 'the white ocean liner,' it closed its doors in 1989."
  },
  "stats": {
   "n_delibs": 1308,
@@ -50,7 +51,9 @@
    "fait": "Le Conseil autorise le Maire à défendre la Ville devant le tribunal administratif dans l'instance engagée par l'association Piscine Molitor, qui demande l'annulation de la délibération de 1997 relative à la restructuration du site.",
    "pourquoi": "les riverains attaquent le projet en justice",
    "vedette": false,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=25120"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=25120",
+   "fait_en": "The Council authorized the Mayor to defend the City before the administrative court in the proceedings brought by the association Piscine Molitor, which sought the annulment of the 1997 deliberation on restructuring the site.",
+   "pourquoi_en": "Local residents take the project to court"
   },
   {
    "id": "24570",
@@ -58,7 +61,9 @@
    "fait": "Le Conseil vote le réaménagement du site : la Ville cède à Meunier Promotion des droits à construire pour financer la réhabilitation d'un des deux bassins, l'opposition dénonçant un bradage du patrimoine.",
    "pourquoi": "vendre des droits à bâtir pour payer un bassin",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=24570"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=24570",
+   "fait_en": "The Council voted on the redevelopment of the site: the City transferred building rights to Meunier Promotion to finance the rehabilitation of one of the two pools, with the opposition denouncing a sell-off of heritage.",
+   "pourquoi_en": "Selling building rights to pay for a pool"
   },
   {
    "id": "10141",
@@ -66,7 +71,9 @@
    "fait": "La Ville indique que la ministre de la Culture Catherine Tasca a refusé, le 3 août 2000, l'autorisation nécessaire au permis de démolir, ce qui bloque le projet de réhabilitation partielle.",
    "pourquoi": "la ministre de la Culture bloque la démolition",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=10141"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=10141",
+   "fait_en": "The City stated that the Minister of Culture, Catherine Tasca, had refused, on 3 August 2000, the authorization needed for the demolition permit, which blocked the partial rehabilitation project.",
+   "pourquoi_en": "The Minister of Culture blocks the demolition"
   },
   {
    "id": "8751",
@@ -74,7 +81,9 @@
    "fait": "Le représentant du préfet de police détaille la rave party du 15 avril 2001, qui a réuni environ 2 000 personnes dans la piscine désaffectée et fermée depuis 1989.",
    "pourquoi": "deux mille personnes dans la piscine murée",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=8751"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=8751",
+   "fait_en": "The representative of the Prefect of Police described in detail the rave party of 15 April 2001, which brought together about 2,000 people in the disused pool, closed since 1989.",
+   "pourquoi_en": "Two thousand people in the boarded-up pool"
   },
   {
    "id": "2484",
@@ -82,7 +91,9 @@
    "fait": "L'adjoint indique que trois études concordantes jugent l'état du béton « extrêmement préoccupant », rendant incertaine une remise en état à l'identique de la piscine.",
    "pourquoi": "trois expertises jugent le béton « extrêmement préoccupant »",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=2484"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=2484",
+   "fait_en": "The deputy mayor stated that three consistent studies judged the state of the concrete to be 'extremely worrying,' making an identical restoration of the pool uncertain.",
+   "pourquoi_en": "Three expert assessments call the concrete 'extremely worrying'"
   },
   {
    "id": "6406",
@@ -90,7 +101,9 @@
    "fait": "Le Conseil examine l'indemnisation des architectes Reichen et Robert et Mimram, dont les marchés de maîtrise d'œuvre de 1997 sont résolus après l'abandon du projet hôtelier.",
    "pourquoi": "le projet abandonné oblige à indemniser les architectes",
    "vedette": false,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=6406"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=6406",
+   "fait_en": "The Council examined compensation for architects Reichen et Robert and Mimram, whose 1997 project-management contracts were terminated after the hotel project was abandoned.",
+   "pourquoi_en": "The abandoned project requires compensating the architects"
   },
   {
    "id": "61964",
@@ -98,7 +111,9 @@
    "fait": "Le Conseil approuve le bail emphytéotique administratif et autorise le Maire à le signer avec ColSpa SAS (groupement Colony Capital) pour une durée de 54 ans.",
    "pourquoi": "Molitor confiée au privé pour cinquante-quatre ans",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=61964"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=61964",
+   "fait_en": "The Council approved the administrative long lease (bail emphytéotique administratif) and authorized the Mayor to sign it with ColSpa SAS (a Colony Capital group) for a term of 54 years.",
+   "pourquoi_en": "Molitor entrusted to a private operator for fifty-four years"
   },
   {
    "id": "158419",
@@ -106,7 +121,9 @@
    "fait": "L'adjoint oppose un avis défavorable à un vœu réclamant des créneaux scolaires à Molitor, expliquant que le bail n'impose aucune obligation d'accueil scolaire et que le site s'est révélé inadapté.",
    "pourquoi": "la Ville refuse de rétablir les créneaux scolaires",
    "vedette": false,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=158419"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=158419",
+   "fait_en": "The deputy mayor issued an unfavorable opinion on a motion demanding school time slots at Molitor, explaining that the lease imposes no obligation to accommodate schools and that the site had proven unsuitable.",
+   "pourquoi_en": "The City refuses to reinstate school time slots"
   }
  ],
  "montants": [
@@ -259,5 +276,6 @@
    "name": "Wikipédia",
    "url": "https://fr.wikipedia.org/"
   }
- }
+ },
+ "synthese_en": "Closed in 1989 after the non-renewal of the concession held by the Société des piscines de France, the Piscine Molitor, listed as a historic monument in 1990, went through nearly twenty years of thwarted plans. An initial arrangement combining a public pool with a private real-estate program entrusted to Meunier Promotion (two hotels and housing) was approved in 1997 and again in 1999, but it was blocked by the refusal to authorize demolition issued by the Minister of Culture in 2000, then challenged before the administrative court, forcing the City to compensate its architects. Following 2001-2002 expert assessments concluding that the concrete was beyond repair, the City abandoned an identical restoration and relaunched definition studies. In 2008, it opted for a 54-year administrative long lease (bail emphytéotique administratif) entrusting the renovation and private operation of the site to ColSpa SAS (a Colony Capital group), an arrangement that subsequently fed recurring debates over rates, public access, and, until 2021, time slots reserved for schools."
 }

@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T20:11:17.537074+00:00",
+ "generated_at": "2026-07-20T20:28:18.117255+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "theatre-du-chatelet",
  "name": "Théâtre du Châtelet",
@@ -22,7 +22,8 @@
   "source": {
    "name": "Wikipédia",
    "url": "https://fr.wikipedia.org/"
-  }
+  },
+  "extract_en": "Théâtre du Châtelet is a theatre located on place du Châtelet in the 1st arrondissement of Paris, inaugurated in 1862. Directed by Olivier Py since 2023, it presents musicals, operas, classical concerts, jazz, recitals, and dance. From 2002 to 2016, it hosted the César Award ceremony for cinema. Théâtre du Châtelet is also a member of the European Network for Opera and Dance Education (RESEO)."
  },
  "stats": {
   "n_delibs": 329,
@@ -104,7 +105,9 @@
    "fait": "Une subvention d'equipement de 1 200 000 F et une operation de travaux de securite de 3 530 000 F sont votees le meme soir. Alain Le Garrec juge qu'il n'est pas possible de voter au coup par coup faute de vue globale des investissements ; le president de seance repond avoir deja donne un etat recapitulatif des depenses des dix dernieres annees.",
    "pourquoi": "la lisibilite des depenses contestee en seance",
    "vedette": false,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=8506"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=8506",
+   "fait_en": "An equipment subsidy of 1,200,000 francs and a safety-works operation of 3,530,000 francs were voted on the same evening. Alain Le Garrec argued that it was not possible to vote item by item for lack of an overall view of investments; the chair of the session replied that he had already provided a summary statement of expenditure for the past ten years.",
+   "pourquoi_en": "the clarity of spending disputed in session"
   },
   {
    "id": "17525",
@@ -112,7 +115,9 @@
    "fait": "L'avenant au marche de la cage de scene (800 000 F, soit 1,4 % du budget global des travaux selon Alain Le Garrec) est conteste ; un elu annonce son abstention a titre personnel. La rapporteure Helene Mace de Lepinay indique que le chantier s'est acheve le 1er juillet 1999 dans les delais prevus et que la reouverture est prevue le 8 octobre 1999.",
    "pourquoi": "achevement annonce en seance, avenant conteste",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=17525"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=17525",
+   "fait_en": "The amendment to the stage-tower contract (800,000 francs, or 1.4% of the overall works budget according to Alain Le Garrec) was contested; one councillor announced his personal abstention. Rapporteur Hélène Macé de Lépinay stated that the works had been completed on 1 July 1999 within the planned schedule and that reopening was planned for 8 October 1999.",
+   "pourquoi_en": "completion announced in session, amendment contested"
   },
   {
    "id": "69983",
@@ -120,7 +125,9 @@
    "fait": "Le Conseil approuve le principe d'extension du theatre dans l'ancien Hotel du Palais, 2 quai de la Megisserie, les modalites de passation du marche de maitrise d'oeuvre et le depot des demandes de permis de demolir et de construire.",
    "pourquoi": "le principe de l'extension entre au Conseil",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=69983"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=69983",
+   "fait_en": "The Council approved the principle of extending the theatre into the former Hôtel du Palais, 2 quai de la Mégisserie, the procedures for awarding the project-management contract, and the filing of demolition and construction permit applications.",
+   "pourquoi_en": "the extension principle comes before the Council"
   },
   {
    "id": "5727",
@@ -128,7 +135,9 @@
    "fait": "Le projet de deliberation reunit un avenant de subvention de fonctionnement et une convention d'equipement pour un montant total de 9 273 000 euros. Danielle Fournier indique que le soutien de la Ville a l'institution atteint ainsi 17 746 000 euros pour l'annee ; Christophe Girard fait etat de plus de 300 000 visiteurs par an.",
    "pourquoi": "presente en seance comme l'aide la plus importante de la Ville",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=5727"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=5727",
+   "fait_en": "The deliberation draft combined an operating-subsidy amendment and an equipment agreement for a total amount of 9,273,000 euros. Danielle Fournier stated that the City's support for the institution thus reached 17,746,000 euros for the year; Christophe Girard reported more than 300,000 visitors per year.",
+   "pourquoi_en": "presented in session as the City's largest grant"
   },
   {
    "id": "123735",
@@ -136,7 +145,9 @@
    "fait": "Voeu sur les renovations prevues : Jean-Francois Legaret, maire du 1er arrondissement, expose le calendrier tel qu'il indique en avoir connaissance - de l'ete 2017 a l'ete 2019, soit deux saisons et demie - et pose la question du sort des 143 membres du personnel et de la continuite de la programmation.",
    "pourquoi": "calendrier des travaux et sort des salaries en question",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=123735"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=123735",
+   "fait_en": "A motion on the planned renovations: Jean-François Legaret, mayor of the 1st arrondissement, laid out the schedule as he said he understood it — from summer 2017 to summer 2019, i.e. two and a half seasons — and raised the question of the fate of the 143 staff members and the continuity of programming.",
+   "pourquoi_en": "the works schedule and staff's fate in question"
   },
   {
    "id": "135753",
@@ -144,7 +155,9 @@
    "fait": "Le Conseil adopte la convention d'occupation du domaine public pour un espace d'affichage sur l'echafaudage, malgre les elus ecologistes qui demandent un vote contre. Bruno Julliard indique que Decaux a fait la meilleure offre et estime qu'elle pourra permettre de financer 2,7 millions de travaux supplementaires.",
    "pourquoi": "la publicite comme recette de chantier, en debat",
    "vedette": false,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=135753"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=135753",
+   "fait_en": "The Council adopted the public domain occupancy agreement for an advertising display space on the scaffolding, despite the Green councillors calling for a vote against it. Bruno Julliard stated that Decaux had made the best offer and estimated that it could help finance 2.7 million euros of additional works.",
+   "pourquoi_en": "advertising as a source of works funding, debated"
   },
   {
    "id": "146544",
@@ -152,7 +165,9 @@
    "fait": "Convention tripartite de mecenat avec la Fondation du Patrimoine et l'association pour financer les travaux. Danielle Simonnet conteste le projet : selon elle, la Ville va demander a Total un soutien de 250 000 euros et la Fondation Total sera signalee sur une plaque apposee sur l'operation d'un grand foyer.",
    "pourquoi": "le mecenat prive conteste en seance",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=146544"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=146544",
+   "fait_en": "A tripartite sponsorship agreement with the Fondation du Patrimoine and the association to finance the works. Danielle Simonnet contested the project: according to her, the City was going to ask Total for support of 250,000 euros, and the Fondation Total would be acknowledged on a plaque affixed to the grand foyer project.",
+   "pourquoi_en": "private sponsorship contested in session"
   },
   {
    "id": "156363",
@@ -160,7 +175,9 @@
    "fait": "Le projet de subvention de 15 800 000 euros est examine avec deux voeux du groupe Changer Paris, l'un demandant la publication de l'audit sur la gestion du theatre, l'autre portant sur son avenir. Catherine Dumas declare en seance que le conseil d'administration a revoque la directrice artistique Ruth Mackenzie fin aout 2020 a la suite d'un audit.",
    "pourquoi": "l'opposition demande la publication de l'audit",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=156363"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=156363",
+   "fait_en": "The subsidy draft of 15,800,000 euros was examined alongside two motions from the Changer Paris group, one calling for publication of the audit on the theatre's management, the other on its future. Catherine Dumas stated in session that the board had revoked artistic director Ruth Mackenzie's position in late August 2020 following an audit.",
+   "pourquoi_en": "the opposition calls for the audit's publication"
   }
  ],
  "montants": [
@@ -330,17 +347,20 @@
   {
    "date": "1898-01-25",
    "extrait": "Suivant procès-verbal reçu le 24 janvier 1898 par Me Mahot de la Quérantonnais, notaire, M. Émile Rochard, directeur du théâtre de l'Ambigu, s'est rendu … adjudicataire du droit au bail du théâtre du Châtelet , moyennant un loyer annuel de 150,100 francs sur la mise à prix de 1",
-   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k6262924g/f3.item"
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k6262924g/f3.item",
+   "extrait_en": "Under a report received on 24 January 1898 by Me Mahot de la Quérantonnais, notary, Mr Émile Rochard, director of the Théâtre de l'Ambigu, was awarded … the leasehold rights to the Théâtre du Châtelet, for an annual rent of 150,100 francs on a starting price of 1"
   },
   {
    "date": "1904-08-28",
    "extrait": "Dépendances du théâtre du Châtelet . - A LOUER A BAIL Vastes locaux situés avenue Victoria, au rez-dechaussée, d'une superficie totale de 130 mètres carré, avec sous-sol d'une surface égale",
-   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k6468840k/f4.item"
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k6468840k/f4.item",
+   "extrait_en": "Outbuildings of the Théâtre du Châtelet. — TO LET Large premises located on avenue Victoria, on the ground floor, with a total area of 130 square metres, with a basement of equal area"
   },
   {
    "date": "1975-04-24",
    "extrait": "A 15 heures (salle de la 6 e Commission). — Commission spéciale sur le théâtre du Châtelet",
-   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k3210825x/f1.item"
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k3210825x/f1.item",
+   "extrait_en": "At 3 p.m. (6th Commission room). — Special committee on the Théâtre du Châtelet"
   }
  ],
  "bmo_recit": "Le théâtre du Châtelet apparaît dans le Bulletin municipal dès la fin du XIXe siècle comme un bien que la Ville administre : en janvier 1898, Émile Rochard, directeur du théâtre de l'Ambigu, se rend adjudicataire du droit au bail du théâtre, moyennant un loyer annuel de 150 100 francs sur une mise à prix de 150 000 francs. En 1904, la Ville met en location à bail les dépendances du théâtre, avenue Victoria — de vastes locaux de 130 mètres carrés au rez-de-chaussée, avec un sous-sol de surface égale. L'archive ne livre ensuite qu'un épisode isolé, sept décennies plus tard : en avril 1975, le Conseil réunit une commission spéciale consacrée au théâtre du Châtelet, sans que le Bulletin en dise ici davantage. Sur près d'un siècle, le lieu y figure ainsi d'abord comme un patrimoine que la Ville loue, avant de devenir l'objet d'une séance de travail du Conseil.",
@@ -636,5 +656,7 @@
    "name": "Wikipédia",
    "url": "https://fr.wikipedia.org/"
   }
- }
+ },
+ "synthese_en": "From 1996 to 2001, the Conseil de Paris approved the principle and the procedures for awarding several contracts at the theatre: climate engineering carried out with the mayor's office of the 1st arrondissement, fire safety, refurbishment of the stage tower, resurfacing of the facades on avenue Victoria and rue Édouard-Colonne, securing of the emergency exits, modernization of the elevator, and works on the Nijinski foyer. The stage-tower works, whose contract award was approved in September 1997, came back before the Council in September 1999 with an amendment contested in session: Alain Le Garrec saw in it only underestimates in the specifications rather than genuine contingencies, one councillor announced his personal abstention, and rapporteur Hélène Macé de Lépinay stated that the works had been completed on 1 July 1999 within the planned schedule, with reopening planned for 8 October 1999. The 2000s brought further contracts: resurfacing of the stage floor in March 2003, modernization of the seats and floors in December 2003, seats for the balconies and upper tiers, then high-voltage cells in 2007. In parallel, the Council authorized the signing of agreements with the association Théâtre Musical de Paris: an operating subsidy of 16,460,000 euros planned for the 2002 artistic project, then, in June 2009, an amendment and an equipment agreement for a total amount of 9,273,000 euros, including 300,000 euros for equipment; Danielle Fournier then stated in session that the City's support for the institution reached 17,746,000 euros for the year, and Hermano Sanches Ruivo presented the theatre as the institution receiving the City's largest grant, for a structural budget he estimated at more than 26 million euros. Two later deliberation drafts carried a subsidy of 15,800,000 euros in 2020 and 14,192,000 euros in 2022. The principle of extending the theatre into the former Hôtel du Palais, which Danielle Fournier linked to the fire of December 2001, was approved in May 2008; in February 2012, the Council adopted the signing of amendment No. 1 to the project-management contract, which the same councillor said notably covered the study of programme-reduction variants intended to lower the projected cost of the works. In March 2015, a motion from the UMP group addressed the planned renovations: Jean-François Legaret, mayor of the 1st arrondissement, laid out the schedule as he said he understood it — works from summer 2017 to summer 2019, i.e. two and a half seasons — and raised the question of the fate of the 143 staff members and the continuity of programming, while Bruno Julliard replied that the theatre's survival was not at stake and that the works had to be carried out urgently. In May 2017, the Council adopted a public domain occupancy agreement for an advertising display space on the restoration scaffolding, despite the Green councillors calling for a vote against it: the first deputy mayor stated that Decaux had made the best offer and estimated that it could help finance 2.7 million euros of additional works. In November 2018, a tripartite sponsorship agreement with the Fondation du Patrimoine and the association was contested by Danielle Simonnet, according to whom the City was going to ask Total for support of 250,000 euros; Christophe Girard replied to her. From 2019 onward, governance and programming came back before the Council: a motion from the Démocrates et Progressistes group on the artistic project, a motion from the UDI-MODEM group on the activity of the \"Joséphine\" club, two motions from the Changer Paris group in October 2020 — one calling for publication of the audit on the theatre's management, the other on its future, with Catherine Dumas stating in session that the board had revoked artistic director Ruth Mackenzie's position in late August 2020 — then a motion on artistic direction in 2022 and an update on the procedure for appointing the new director in 2023. In October 2023, a Chambre régionale des comptes report on the association's management was placed on the agenda.",
+ "bmo_recit_en": "Théâtre du Châtelet appears in the municipal bulletin as early as the end of the 19th century as a property administered by the City: in January 1898, Émile Rochard, director of the Théâtre de l'Ambigu, was awarded the leasehold rights to the theatre, for an annual rent of 150,100 francs on a starting price of 150,000 francs. In 1904, the City leased out the theatre's outbuildings on avenue Victoria — large premises of 130 square metres on the ground floor, with a basement of equal size. The archive record then offers only one isolated episode, seven decades later: in April 1975, the Council convened a special committee devoted to the Théâtre du Châtelet, without the bulletin saying more on the matter here. Over nearly a century, the venue thus appears first as a property leased out by the City, before becoming the subject of a Council working session."
 }

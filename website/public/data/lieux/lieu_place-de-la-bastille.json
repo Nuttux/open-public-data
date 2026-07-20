@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T20:11:17.537074+00:00",
+ "generated_at": "2026-07-20T20:28:18.117255+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "place-de-la-bastille",
  "name": "Place de la Bastille",
@@ -22,7 +22,8 @@
   "source": {
    "name": "Wikipédia",
    "url": "https://fr.wikipedia.org/"
-  }
+  },
+  "extract_en": "The place de la Bastille is a square in Paris, a symbolic site of the French Revolution, where the former Bastille fortress was demolished between 14 July 1789 and 14 July 1790."
  },
  "stats": {
   "n_delibs": 497,
@@ -50,7 +51,9 @@
    "fait": "Le Préfet de police justifie devant le Conseil d'avoir laissé se tenir place de la Bastille le rassemblement du 25 novembre pour les droits des femmes malgré une contre-manifestation.",
    "pourquoi": "Ordre public : manif et contre-manif",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=57"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=57",
+   "fait_en": "The Prefect of Police justified before the Council having allowed the 25 November gathering for women's rights to take place at the place de la Bastille despite a counter-demonstration.",
+   "pourquoi_en": "Public order: demonstration and counter-demonstration"
   },
   {
    "id": "19615",
@@ -58,7 +61,9 @@
    "fait": "Le Préfet de police annonce information et contrôles face au rassemblement hebdomadaire de 100 à 150 motos place de la Bastille le vendredi soir.",
    "pourquoi": "Les motards du vendredi soir",
    "vedette": false,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=19615"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=19615",
+   "fait_en": "The Prefect of Police announced information campaigns and checks in response to the weekly gathering of 100 to 150 motorcycles at the place de la Bastille on Friday evenings.",
+   "pourquoi_en": "The Friday-night bikers"
   },
   {
    "id": "37198",
@@ -66,7 +71,9 @@
    "fait": "Le Conseil autorise une convention pour un salon d'antiquités-brocante place de la Bastille, générant 165 000 euros de redevance pour la Ville.",
    "pourquoi": "La place qui rapporte à la Ville",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=37198"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=37198",
+   "fait_en": "The Council authorized an agreement for an antiques and flea-market fair at the place de la Bastille, generating €165,000 in fees for the City.",
+   "pourquoi_en": "The square that brings in money for the City"
   },
   {
    "id": "45889",
@@ -74,7 +81,9 @@
    "fait": "Le Conseil approuve le principe d'un marché de 1 177 404,60 euros TTC (Luna Production) et en autorise la signature, pour un spectacle commémorant le 60e anniversaire de la Libération de Paris.",
    "pourquoi": "Un marché bien plus lourd que les bals du 13 juillet",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=45889"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=45889",
+   "fait_en": "The Council approved the principle of a contract worth €1,177,404.60 including tax (Luna Production) and authorized its signing, for a show commemorating the 60th anniversary of the Liberation of Paris.",
+   "pourquoi_en": "A contract far larger than the 13 July dances"
   },
   {
    "id": "12925",
@@ -82,7 +91,9 @@
    "fait": "Le Conseil adopte un vœu de soutien aux travailleurs sans-papiers en grève qui occupaient les marches de l'Opéra Bastille depuis le 27 mai.",
    "pourquoi": "Quand la place devient tribune sociale",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=12925"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=12925",
+   "fait_en": "The Council adopted a motion of support for the undocumented workers on strike who had been occupying the steps of the Opéra Bastille since 27 May.",
+   "pourquoi_en": "When the square becomes a platform for social protest"
   },
   {
    "id": "123627",
@@ -90,7 +101,9 @@
    "fait": "Répondant à un vœu du groupe UMP dénonçant la dégradation de la place, l'adjoint Mao Peninou détaille l'entretien quotidien assuré par la Ville et fait valoir que le nettoyage des marches de l'Opéra relève de l'État.",
    "pourquoi": "Qui nettoie, qui entretient la place",
    "vedette": false,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=123627"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=123627",
+   "fait_en": "Responding to a motion from the UMP group denouncing the square's deterioration, deputy mayor Mao Peninou detailed the daily upkeep provided by the City and pointed out that cleaning the Opéra's steps was the State's responsibility.",
+   "pourquoi_en": "Who cleans, who maintains the square"
   },
   {
    "id": "129302",
@@ -98,7 +111,9 @@
    "fait": "Une communication sur le réaménagement de sept places présente la fin de la circulation circulaire de la Bastille au profit d'un axe Nord-Sud vers le bassin de l'Arsenal.",
    "pourquoi": "Le projet qui redessine la place",
    "vedette": true,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=129302"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=129302",
+   "fait_en": "A communication on the redevelopment of seven squares presented the end of the Bastille's circular traffic flow in favor of a North-South axis toward the Bassin de l'Arsenal.",
+   "pourquoi_en": "The project that redraws the square"
   },
   {
    "id": "147430",
@@ -106,7 +121,9 @@
    "fait": "Mme Montandon reproche à la Ville, par un vœu, de ne pas avoir consulté la RATP et Île-de-France Mobilités sur l'aménagement de la place et la circulation des bus.",
    "pourquoi": "Bus oubliés : le reproche de l'opposition",
    "vedette": false,
-   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=147430"
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=147430",
+   "fait_en": "Ms Montandon, in a motion, criticized the City for not having consulted the RATP and Île-de-France Mobilités on the square's layout and bus routes.",
+   "pourquoi_en": "Buses forgotten: the opposition's criticism"
   }
  ],
  "montants": [
@@ -164,22 +181,26 @@
   {
    "date": "1888-06-22",
    "extrait": "713. — Pétition de M. Neily, demandant a réfection du pavage de la place de la Bastille (renv. à l'Adm … ",
-   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k64403892/f3.item"
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k64403892/f3.item",
+   "extrait_en": "713. — Petition from Mr Neily, requesting the repair of the paving of the place de la Bastille (referred to the Adm… "
   },
   {
    "date": "1909-05-04",
    "extrait": "1 26. — Le profil sur le sol de la place de la Bastille , de l'ancienne forteresse. * » *r … M. Edgar Mareuse rappelle que, en 1880, fut établi dans la place de la Bastille , le profil, sur le sol, et avec des pavés différents, de l'ancienne forteresse, Aujourd'hui, le profil r",
-   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k6247480c/f16.item"
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k6247480c/f16.item",
+   "extrait_en": "126. — The outline, on the ground of the place de la Bastille, of the former fortress. * » *r … Mr Edgar Mareuse recalls that, in 1880, the outline of the former fortress was traced on the ground of the place de la Bastille, using different paving stones. Today, the outline r"
   },
   {
    "date": "1920-04-27",
    "extrait": "l'arc de triomphe du Carrousel (1806) marque, à l'ouest, l'extrémité de la rue Impériale qui doit se prolonger, dans l'axe de la colonnade du Louvre, jusqu'à la place de la Bastille où Napoléon a prescrit de construire un arc de triomphe à la gloire de ses armées … caractère de",
-   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k6356528z/f8.item"
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k6356528z/f8.item",
+   "extrait_en": "the Arc de Triomphe du Carrousel (1806) marks, to the west, the end of the rue Impériale, which was to extend, in line with the Louvre's colonnade, as far as the place de la Bastille, where Napoleon ordered a triumphal arch to be built in honour of his armies … character of"
   },
   {
    "date": "1927-06-01",
    "extrait": "395. — Amélioration des accès et intercommunications des stations du Métropolitain place de la Bastille (M. André Le Troquer, rapporteur … amélioration des accès et intercommunications des stations métropolitaines place de la Bastille , des lignes noï 1 et 5 … amélioration de",
-   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k6347423k/f16.item"
+   "source_url": "https://gallica.bnf.fr/ark:/12148/bpt6k6347423k/f16.item",
+   "extrait_en": "395. — Improvement of the access points and interconnections of the Métropolitain stations at the place de la Bastille (Mr André Le Troquer, rapporteur … improvement of the access points and interconnections of the metro stations at the place de la Bastille, on lines 1 and 5 … improvement of"
   }
  ],
  "bmo_recit": "La place de la Bastille apparaît dans le Bulletin municipal dès 1888, lorsqu'un riverain, M. Neily, pétitionne pour la réfection de son pavage, demande renvoyée à l'Administration. En 1909, M. Edgar Mareuse rappelle en séance qu'en 1880 le profil de l'ancienne forteresse avait été tracé sur le sol de la place avec des pavés différents. Une notice publiée en 1920 évoque quant à elle le passé du site : Napoléon avait prescrit d'y construire un arc de triomphe à la gloire de ses armées, dans l'axe de la colonnade du Louvre. En 1927 enfin, le Conseil examine, sur le rapport d'André Le Troquer, l'amélioration des accès et des intercommunications des stations de métro de la place, sur les lignes 1 et 5. Sur ces quatre décennies, l'archive donne surtout à voir une place traitée comme sol et carrefour : le pavage qu'on répare, la mémoire qu'on y inscrit en pavés, les accès au métro qu'on cherche à améliorer.",
@@ -240,5 +261,7 @@
    "name": "Wikipédia",
    "url": "https://fr.wikipedia.org/"
   }
- }
+ },
+ "synthese_en": "In the deliberations of the Council of Paris, the place de la Bastille first appears as a space of public order and everyday uses: Friday-evening motorcycle gatherings (1997-1998), a redeveloped taxi rank, demonstrations and counter-demonstrations (1995), begging reported (2013). From 2002 to 2007, it is above all the site of the City-funded 13 July shows and dances (in the range of €120,000 to €195,000 including tax); markedly more costly, the show commemorating the 60th anniversary of the Liberation of Paris (25 August 2004) called on a contract worth €1,177,404.60 including tax. In 2009, an art and antiques fair generated €165,000 in fees for the City. In June 2010, the Council adopted a motion of support for the undocumented workers who were occupying the steps of the Opéra Bastille. From 2015 on, the square becomes the subject of redevelopment: a 2016 communication on seven squares announces the end of its circular traffic flow in favor of a North-South axis opening onto the Bassin de l'Arsenal. The opposition then files several motions — on cleanliness (2015), on consultation and a pilot test (2017), and on bus routes and consulting the RATP and Île-de-France Mobilités (2019).",
+ "bmo_recit_en": "The place de la Bastille appears in the Bulletin municipal as early as 1888, when a local resident, Mr Neily, petitioned for the repair of its paving, a request referred to the Administration. In 1909, Mr Edgar Mareuse recalled during the session that in 1880 the outline of the former fortress had been traced on the ground of the square using different paving stones. A notice published in 1920 recounted the site's past: Napoleon had ordered a triumphal arch to be built there in honour of his armies, aligned with the Louvre's colonnade. In 1927, finally, the Council examined, on the report of André Le Troquer, improvements to the access points and interconnections of the square's metro stations, on lines 1 and 5. Across these four decades, the archive mainly shows a square treated as ground and crossroads: the paving that gets repaired, the memory inscribed there in paving stones, the metro access points that are sought to be improved."
 }
