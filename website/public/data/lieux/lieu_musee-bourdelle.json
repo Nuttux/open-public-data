@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T10:03:14.731611+00:00",
+ "generated_at": "2026-07-20T11:16:58.583958+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "musee-bourdelle",
  "name": "Musée Bourdelle",
@@ -292,8 +292,64 @@
    "montant_max": 605241.8,
    "date_notification": "2014-02-10",
    "preuve": "L'objet nomme le lieu et désigne un lot de travaux de la même opération : « CSP5 MUSEE BOURDELLE RESTRUCTURATION ELECTRICITE LOT 2 ». Même préfixe d'opération (« CSP5 MUSEE BOURDELLE RESTRUCTURATION ») et même date de notification (2014-02-10) que le lot TCE, rattachés à la restructuration partielle du musée votée par la délibération 2011 DPA 7 (16, rue Antoine Bourdelle, 15e)."
+  },
+  {
+   "numero_marche": "20141210011260",
+   "objet": "SOUS-STATIONS VAPEURS E TANDOU MUSEE BOURDELLE 19E LOT 21",
+   "objet_clair": null,
+   "fournisseur": "CELSIO",
+   "montant_max": 324635.65,
+   "date_notification": "2014-05-06",
+   "preuve": "L'objet du marché nomme le lieu verbatim (« … MUSEE BOURDELLE … ») pour des travaux sur sous-stations vapeur. L'objet couvre toutefois deux sites — « E TANDOU … 19E » (site rue Tandou, 19e) et le Musée Bourdelle (15e, 16 rue Antoine Bourdelle) — le montant_max ne porte donc pas exclusivement sur ce lieu."
   }
  ],
+ "mandate": {
+  "par_annee": {
+   "2011": 12672.09,
+   "2012": 19561.16,
+   "2013": 65631.07,
+   "2014": 996527.23,
+   "2015": 961974.83,
+   "2016": 235521.66,
+   "2017": 24685.32
+  },
+  "total_eur": 2316573.36,
+  "operations": [
+   {
+    "ap_cle": "1104244",
+    "ap_texte": "DONS ET LEGS - MUSEE BOURDELLE",
+    "mandate_par_annee": {
+     "2014": 996527.23,
+     "2015": 961974.83,
+     "2016": 235521.66,
+     "2017": 24685.32
+    },
+    "total_mandate": 2218709.04,
+    "preuve": "Le libellé de l'opération nomme le lieu verbatim : « DONS ET LEGS - MUSEE BOURDELLE » (direction DAC). Correspond au « legs universel consenti à la Ville de Paris - Musée BOURDELLE - par Madame Rodia DUFET-BOURDELLE » accepté par la délibération 2002 DVLR 193 ; la délibération 2009 DAC 725 précise que le produit rattaché au legs est « affecté exclusivement aux dépenses du musée conformément aux volontés de la légatrice ».",
+    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=1104244"
+   },
+   {
+    "ap_cle": "B100/1104244",
+    "ap_texte": "DONS ET LEGS - MUSEE BOURDELLE",
+    "mandate_par_annee": {
+     "2011": 12672.09,
+     "2012": 19561.16,
+     "2013": 65631.07
+    },
+    "total_mandate": 97864.32,
+    "preuve": "Même opération « DONS ET LEGS - MUSEE BOURDELLE » (direction DAC, clé B100/1104244, mandats 2011-2013) : libellé nommant le lieu, rattachée au legs universel Dufet-Bourdelle en faveur du Musée Bourdelle (délibération 2002 DVLR 193), dont le produit est affecté exclusivement aux dépenses du musée.",
+    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/1104244"
+   }
+  ],
+  "periode": [
+   "2011",
+   "2017"
+  ],
+  "source": {
+   "name": "Comptes administratifs — autorisations de programme, Ville de Paris",
+   "url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/"
+  }
+ },
  "sources": {
   "delibs": {
    "name": "Débat-Délibs — Conseil de Paris",

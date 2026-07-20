@@ -78,6 +78,11 @@ export default function LieuFiche({ lieu }: { lieu: LieuFicheData }) {
   // exploitant peut couvrir plusieurs lieux — la note publique le précise plus bas).
   const investTotal = lieu.invest.reduce((a, r) => a + r.montant_eur, 0);
   const subv = lieu.subventions_exploitant;
+  // Le diptyque payé/engagé : « Dépensé » = versé (subventions) + mandaté (CA,
+  // opérations 2009-2017 + projets d'annexes 2019-2024) ; « Engagé » = plafonds
+  // de marchés notifiés. Deux grandeurs, jamais sommées.
+  const reelTotal = (subv?.total_eur ?? 0) + investTotal + (lieu.mandate?.total_eur ?? 0);
+  const engageTotal = (lieu.marches ?? []).reduce((a, m) => a + (m.montant_max || 0), 0);
   const kpiItems: { label: ReactNode; value: ReactNode; href?: string }[] = [];
   if (lieu.kpi_montant) {
     kpiItems.push({
@@ -85,16 +90,14 @@ export default function LieuFiche({ lieu }: { lieu: LieuFicheData }) {
       value: lieu.kpi_montant.valeur,
       href: lieu.kpi_montant.source_url ?? undefined,
     });
-  } else if (subv) {
-    const f = fmtEur(subv.total_eur);
-    kpiItems.push({
-      label: `${t("fx.lieu.kpi.subv_hero")} ${subv.annees[0]}–${subv.annees[1]}`,
-      value: <>{f.v}<span className="u">{f.u}</span></>,
-      href: `/fr/city/paris/subventions/association/${encodeURIComponent(subv.nom_fiche)}`,
-    });
-  } else if (investTotal > 0) {
-    const f = fmtEur(investTotal);
-    kpiItems.push({ label: t("fx.lieu.kpi.invest_hero"), value: <>{f.v}<span className="u">{f.u}</span></> });
+  }
+  if (reelTotal > 0) {
+    const f = fmtEur(reelTotal);
+    kpiItems.push({ label: t("fx.lieu.kpi.reel"), value: <>{f.v}<span className="u">{f.u}</span></> });
+  }
+  if (engageTotal > 0) {
+    const f = fmtEur(engageTotal);
+    kpiItems.push({ label: t("fx.lieu.kpi.engage"), value: <>{f.v}<span className="u">{f.u}</span></> });
   }
   if (bmo.length > 0) {
     kpiItems.push({ label: t("fx.lieu.kpi.bmo_since"), value: bmo[0].date.slice(0, 4) });
@@ -249,9 +252,66 @@ export default function LieuFiche({ lieu }: { lieu: LieuFicheData }) {
         </section>
       )}
 
-      {lieu.invest.length > 0 && (
+      {(lieu.invest.length > 0 || lieu.mandate) && (
         <section className="fx-fiche-section">
           <div className="fx-fiche-h fx-fiche-h--money">{t("fx.lieu.h.invest")}</div>
+          {lieu.mandate && (() => {
+            // Série annuelle fusionnée : opérations AP (2009-2017) + projets
+            // d'annexes (2019-2024). Le trou 2018 est réel (non publié) et
+            // laissé visible. Barres fines, une teinte, libellé direct sur le pic.
+            const serie: Record<string, number> = { ...lieu.mandate!.par_annee };
+            for (const r of lieu.invest) {
+              const a = String(r.annee);
+              serie[a] = (serie[a] ?? 0) + r.montant_eur;
+            }
+            const presentes = Object.keys(serie).sort();
+            const a0 = parseInt(presentes[0], 10);
+            const a1 = parseInt(presentes[presentes.length - 1], 10);
+            // Axe du temps CONTINU : les années sans donnée (dont le trou 2018,
+            // non publié) restent des colonnes vides — compresser l'axe fausserait
+            // la lecture (2014 collé à 2022).
+            const annees = Array.from({ length: a1 - a0 + 1 }, (_, i) => String(a0 + i));
+            const max = Math.max(...presentes.map((a) => serie[a]));
+            const pic = presentes.find((a) => serie[a] === max)!;
+            return (
+              <div style={{ padding: "4px 6px 0" }}>
+                <div style={{ display: "flex", alignItems: "flex-end", gap: 3, height: 74 }}>
+                  {annees.map((a) => {
+                    const v = serie[a] ?? 0;
+                    const f = fmtEur(v);
+                    return (
+                      <div key={a} title={v ? `${a} — ${f.v} ${f.u}` : `${a} — ${t("fx.lieu.mandate_vide")}`}
+                           style={{ flex: 1, display: "flex", flexDirection: "column", alignItems: "center", gap: 3 }}>
+                        {a === pic && (
+                          <span className="tnum" style={{ fontFamily: "var(--f-mono)", fontSize: 9, color: "var(--ink-2)", whiteSpace: "nowrap" }}>
+                            {f.v} {f.u}
+                          </span>
+                        )}
+                        <div style={{ width: "100%", maxWidth: 26, height: v ? Math.max(3, Math.round((v / max) * 52)) : 1, background: v ? "var(--bleu)" : "var(--rule)" }} />
+                        <span className="tnum" style={{ fontFamily: "var(--f-mono)", fontSize: 8.5, color: "var(--muted)" }}>{a.slice(2)}</span>
+                      </div>
+                    );
+                  })}
+                </div>
+                <details>
+                  <summary style={{ fontFamily: "var(--f-mono)", fontSize: 10, letterSpacing: ".07em", textTransform: "uppercase", color: "var(--bleu)", cursor: "pointer", padding: "10px 0" }}>
+                    {fill(t(lieu.mandate!.operations.length === 1 ? "fx.lieu.mandate_op1" : "fx.lieu.mandate_ops"), { n: lieu.mandate!.operations.length, a: `${lieu.mandate!.periode[0]}–${lieu.mandate!.periode[1]}` })}
+                  </summary>
+                  {lieu.mandate!.operations.map((o) => (
+                    <a key={o.ap_cle ?? o.ap_texte} className="fx-row-link" href={o.source_url} target="_blank" rel="noopener noreferrer"
+                       style={{ display: "flex", justifyContent: "space-between", gap: 12, padding: "10px 6px", borderBottom: "1px solid var(--rule)", alignItems: "baseline" }}>
+                      <span style={{ fontSize: 12.5, color: "var(--ink-2)", flex: 1 }}>
+                        {o.ap_texte}
+                        <span aria-hidden="true" style={{ fontFamily: "var(--f-mono)", fontSize: 11, color: "var(--muted)" }}> ↗</span>
+                      </span>
+                      <Eur {...fmtEur(o.total_mandate)} size={12.5} />
+                    </a>
+                  ))}
+                </details>
+                <p className="fx-fiche-note" style={{ marginTop: 2 }}>{t("fx.lieu.mandate_note")}</p>
+              </div>
+            );
+          })()}
           {lieu.invest.map((r, i) => {
             const rowStyle = { display: "flex", justifyContent: "space-between", gap: 12, padding: "11px 6px", borderBottom: "1px solid var(--rule)", alignItems: "baseline" } as const;
             const body = (

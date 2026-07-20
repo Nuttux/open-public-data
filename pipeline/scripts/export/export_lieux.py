@@ -244,7 +244,8 @@ def resolve_argent(slug: str) -> dict:
     rp = CACHE / f"{slug}_money_resolved.json"
     if not rp.exists():
         return {"exploitant": None, "residents": [], "investissements": [], "invest_total_eur": 0,
-                "marches": [], "marches_total_eur": 0}
+                "marches": [], "marches_total_eur": 0,
+                "ap_operations": [], "mandate_par_annee": {}, "mandate_total_eur": 0}
     r = json.load(open(rp))
 
     exploitant_names = [s["beneficiaire"] for s in r.get("subventions", []) if s.get("role") == "exploitant"]
@@ -290,9 +291,38 @@ def resolve_argent(slug: str) -> dict:
         if m.get("role") == "au-lieu" and m.get("numero_marche")
     ]
     marches.sort(key=lambda m: -(m["montant_max"] or 0))
+
+    # Opérations AP/CP jugées « au-lieu » : la dépense d'investissement RÉELLEMENT
+    # mandatée, par exercice (2009-2017, niveau opération). C'est l'autre moitié
+    # du diptyque payé/engagé — jamais sommée avec les plafonds de marchés.
+    ap_ops = []
+    for a in r.get("ap", []):
+        if a.get("role") != "au-lieu":
+            continue
+        par_annee = {str(k): float(v) for k, v in (a.get("mandate_par_annee") or {}).items() if v}
+        if not par_annee:
+            continue
+        ap_ops.append({
+            "ap_cle": a.get("ap_cle"), "ap_texte": a.get("ap_texte"),
+            "mandate_par_annee": par_annee,
+            "total_mandate": round(sum(par_annee.values()), 2),
+            "preuve": a.get("preuve"),
+            "source_url": ("https://opendata.paris.fr/explore/dataset/"
+                           "comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/"
+                           "?refine.autorisation_de_programme_cle=" + urllib.parse.quote(str(a.get("ap_cle") or ""))),
+        })
+    ap_ops.sort(key=lambda o: -o["total_mandate"])
+    mandate_par_annee: dict[str, float] = {}
+    for o in ap_ops:
+        for an, v in o["mandate_par_annee"].items():
+            mandate_par_annee[an] = round(mandate_par_annee.get(an, 0) + v, 2)
+
     return {"exploitant": exploitant, "residents": residents[:8],
             "investissements": invest, "invest_total_eur": sum(p["montant_eur"] for p in invest),
-            "marches": marches, "marches_total_eur": sum(m["montant_max"] or 0 for m in marches)}
+            "marches": marches, "marches_total_eur": sum(m["montant_max"] or 0 for m in marches),
+            "ap_operations": ap_ops,
+            "mandate_par_annee": dict(sorted(mandate_par_annee.items())),
+            "mandate_total_eur": round(sum(mandate_par_annee.values()), 2)}
     # NB : on publie TOUS les marchés jugés. Tronquer la liste à 10 tout en
     # sommant la liste complète rendait le total invérifiable depuis la fiche
     # (Charléty : carte 31,0 M€, lignes visibles 27,2 M€). Le repli visuel
@@ -529,6 +559,13 @@ def main() -> int:
             "bmo_recit": bmo_recit,
             "invest": invest,
             "marches": argent["marches"],
+            "mandate": ({"par_annee": argent["mandate_par_annee"],
+                         "total_eur": argent["mandate_total_eur"],
+                         "operations": argent["ap_operations"],
+                         "periode": [min(argent["mandate_par_annee"]), max(argent["mandate_par_annee"])],
+                         "source": {"name": "Comptes administratifs — autorisations de programme, Ville de Paris",
+                                    "url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/"}}
+                        if argent["mandate_par_annee"] else None),
             "sources": sources,
         }
         (OUT / f"lieu_{slug}.json").write_text(json.dumps(fiche, ensure_ascii=False, indent=1))
@@ -540,7 +577,12 @@ def main() -> int:
                       "famille": seed_row["famille"], "arrondissement": int(seed_row["arr"]),
                       "lat": float(seed_row["lat"]), "lon": float(seed_row["lon"]),
                       "n_lieu": n_lieu, "n_moments": len(moments),
-                      "argent_total_eur": round(argent_total), "depuis": depuis, "photo": photo})
+                      "argent_total_eur": round(argent_total),
+                      "depense_reelle_eur": round((subv["total_eur"] if subv else 0)
+                                                  + argent["invest_total_eur"]
+                                                  + argent["mandate_total_eur"]),
+                      "engage_eur": round(argent["marches_total_eur"]),
+                      "depuis": depuis, "photo": photo})
         print(f"{slug:<30} {len(delibs):>4} délibs | {len(moments)} moments | {len(montants)} montants | "
               f"{len(bmo_extraits)} BMO | {len(invest)} invest")
 

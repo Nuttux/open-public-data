@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T10:03:14.731611+00:00",
+ "generated_at": "2026-07-20T11:16:58.583958+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "parc-de-bercy",
  "name": "Parc de Bercy",
@@ -217,7 +217,7 @@
    "annee": 2022,
    "montant_eur": 42850.0,
    "nom_projet": "Parc de Bercy - Rénovation de la Roseraie",
-   "preuve": "Le nom du projet nomme le lieu verbatim : « Parc de Bercy - Rénovation de la Roseraie » (signal: nom). La roseraie est un jardin situé dans le parc de Bercy ; la distance de 671 m s'explique par la taille du parc (~14 ha), le nom prime.",
+   "preuve": "Le nom du projet nomme le lieu verbatim : « Parc de Bercy - Rénovation de la Roseraie » (signal : nom). La roseraie est un aménagement du parc ; la distance de 671 m s'explique par l'étendue du parc, le nom prime.",
    "id": "2022_12_34_012"
   }
  ],
@@ -229,7 +229,7 @@
    "fournisseur": "SPL PARISEINE",
    "montant_max": 190000.0,
    "date_notification": "2023-10-03",
-   "preuve": "L'objet du marché nomme le lieu verbatim : « MANDAT MAÎTRISE D'OUVRAGE COUVERTURE EGP 12 PARC DE BERCY ». Mandat de maîtrise d'ouvrage pour une couverture d'équipement située dans le parc. Le Conseil de Paris documente une opération de couverture d'équipement dans ce parc : « création de la couverture du roller park du parc de Bercy (12e) » (2007 DJS 231) puis contrat de transaction avec la société SMC2 SARL pour « les travaux de création de la couverture du roller park du Parc de Bercy (12e) » (2008 DJS 339). Le sigle « EGP 12 » n'apparaît pas dans les sources consultées : l'équipement précis n'est pas identifié ici, mais le marché porte bien sur le parc de Bercy."
+   "preuve": "L'objet nomme le lieu verbatim : « COUVERTURE EGP 12 PARC DE BERCY ». Le Conseil de Paris documente la couverture d'un équipement de glisse dans ce parc : « création de la couverture du roller park du parc de Bercy (12e) » (2007 DJS 231) et contrat de transaction avec SMC2 SARL pour « les travaux de création de la couverture du roller park du Parc de Bercy (12e) » (ctx doc 91131). Le sigle « EGP 12 » (espace de glisse parisien, 12e) n'est pas explicité dans les sources consultées, mais le marché porte bien sur le parc de Bercy."
   },
   {
    "numero_marche": "20212021S02444",
@@ -238,7 +238,7 @@
    "fournisseur": "YLE",
    "montant_max": 159595.0,
    "date_notification": "2021-05-04",
-   "preuve": "L'objet nomme le lieu verbatim : « MOE RÉNOVATION ÉNERGÉTIQUE MAISON DU LAC PARC DE BERCY SAMO ». La Maison du Lac est un bâtiment situé dans le parc de Bercy : la délibération 1997 PJEV 26 (travaux d'adaptation du parc de Bercy à la circulation des personnes à mobilité réduite) mentionne « un élévateur desservant les salles de conférences de la Maison du Lac ». Maîtrise d'œuvre de rénovation énergétique portant sur ce bâtiment du parc."
+   "preuve": "L'objet nomme le lieu verbatim : « MAISON DU LAC PARC DE BERCY ». La Maison du Lac est un bâtiment situé dans le parc de Bercy, attesté par la délibération 1997 PJEV 26 (travaux d'adaptation du parc de Bercy aux personnes à mobilité réduite) : « Quant à la Maison du Lac, un ascenseur est déjà prévu… »."
   },
   {
    "numero_marche": "20212021S03024",
@@ -247,9 +247,37 @@
    "fournisseur": "AREP",
    "montant_max": 109425.0,
    "date_notification": "2021-05-31",
-   "preuve": "L'objet nomme le lieu verbatim : « SA5 AMO AMELIORATION SECURITAIRE PARC DE BERCY ». Assistance à maîtrise d'ouvrage pour l'amélioration sécuritaire du parc lui-même ; sujet corroboré par le vœu de l'Exécutif « relatif à la sécurité dans le parc de Bercy et au déplacement de la gare routière »."
+   "preuve": "L'objet nomme le lieu verbatim : « AMELIORATION SECURITAIRE PARC DE BERCY ». Sujet corroboré par le vœu de l'Exécutif au Conseil de Paris (février 2022) « relatif à la sécurité dans le parc de Bercy et au déplacement de la gare routière »."
   }
  ],
+ "mandate": {
+  "par_annee": {
+   "2015": 30747.11,
+   "2016": 31532.26
+  },
+  "total_eur": 62279.37,
+  "operations": [
+   {
+    "ap_cle": "1504705",
+    "ap_texte": "PARC DE BERCY (12E) - RENOVATION",
+    "mandate_par_annee": {
+     "2015": 30747.11,
+     "2016": 31532.26
+    },
+    "total_mandate": 62279.37,
+    "preuve": "Le libellé de l'opération désigne ce lieu verbatim : « PARC DE BERCY (12E) - RENOVATION », mission « ESPACES VERTS ET ENV », direction DEVE (espaces verts), cohérent avec ce parc du 12e arrondissement.",
+    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=1504705"
+   }
+  ],
+  "periode": [
+   "2015",
+   "2016"
+  ],
+  "source": {
+   "name": "Comptes administratifs — autorisations de programme, Ville de Paris",
+   "url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/"
+  }
+ },
  "sources": {
   "delibs": {
    "name": "Débat-Délibs — Conseil de Paris",

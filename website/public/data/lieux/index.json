@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T10:03:14.731611+00:00",
+ "generated_at": "2026-07-20T11:16:58.583958+00:00",
  "lieux": [
   {
    "slug": "piscine-des-amiraux",
@@ -12,6 +12,8 @@
    "n_lieu": 13,
    "n_moments": 6,
    "argent_total_eur": 7970280,
+   "depense_reelle_eur": 13256218,
+   "engage_eur": 7970280,
    "depuis": 1965,
    "photo": "/img/lieux/piscine-des-amiraux.jpg"
   },
@@ -26,6 +28,8 @@
    "n_lieu": 34,
    "n_moments": 8,
    "argent_total_eur": 112115105,
+   "depense_reelle_eur": 296140919,
+   "engage_eur": 0,
    "depuis": 2006,
    "photo": "/img/lieux/philharmonie-de-paris.jpg"
   },
@@ -40,6 +44,8 @@
    "n_lieu": 32,
    "n_moments": 8,
    "argent_total_eur": 125487090,
+   "depense_reelle_eur": 103017200,
+   "engage_eur": 28060580,
    "depuis": 1996,
    "photo": "/img/lieux/theatre-de-la-ville.jpg"
   },
@@ -54,6 +60,8 @@
    "n_lieu": 36,
    "n_moments": 8,
    "argent_total_eur": 17908153,
+   "depense_reelle_eur": 15165289,
+   "engage_eur": 2808061,
    "depuis": 1889,
    "photo": "/img/lieux/porte-maillot.jpg"
   },
@@ -68,6 +76,8 @@
    "n_lieu": 3,
    "n_moments": 3,
    "argent_total_eur": 42761,
+   "depense_reelle_eur": 0,
+   "engage_eur": 42761,
    "depuis": 1995,
    "photo": "/img/lieux/piscine-butte-aux-cailles.jpg"
   },
@@ -82,6 +92,8 @@
    "n_lieu": 23,
    "n_moments": 8,
    "argent_total_eur": 97867515,
+   "depense_reelle_eur": 20964901,
+   "engage_eur": 95457558,
    "depuis": 1898,
    "photo": "/img/lieux/parc-des-buttes-chaumont.jpg"
   },
@@ -96,6 +108,8 @@
    "n_lieu": 7,
    "n_moments": 7,
    "argent_total_eur": 0,
+   "depense_reelle_eur": 414743,
+   "engage_eur": 0,
    "depuis": 1995,
    "photo": "/img/lieux/tour-saint-jacques.jpg"
   },
@@ -110,6 +124,8 @@
    "n_lieu": 12,
    "n_moments": 8,
    "argent_total_eur": 99552,
+   "depense_reelle_eur": 167876,
+   "engage_eur": 99552,
    "depuis": 1996,
    "photo": "/img/lieux/marche-des-enfants-rouges.jpg"
   },
@@ -124,6 +140,8 @@
    "n_lieu": 43,
    "n_moments": 8,
    "argent_total_eur": 8105054,
+   "depense_reelle_eur": 12581203,
+   "engage_eur": 5865270,
    "depuis": 1894,
    "photo": "/img/lieux/petite-ceinture.jpg"
   },
@@ -138,6 +156,8 @@
    "n_lieu": 40,
    "n_moments": 8,
    "argent_total_eur": 0,
+   "depense_reelle_eur": 156709463,
+   "engage_eur": 0,
    "depuis": 2007,
    "photo": "/img/lieux/les-halles.jpg"
   },
@@ -152,6 +172,8 @@
    "n_lieu": 22,
    "n_moments": 8,
    "argent_total_eur": 17304827,
+   "depense_reelle_eur": 6218253,
+   "engage_eur": 11086574,
    "depuis": 1996,
    "photo": "/img/lieux/piscine-pontoise.jpg"
   },
@@ -166,6 +188,8 @@
    "n_lieu": 13,
    "n_moments": 8,
    "argent_total_eur": 3133698,
+   "depense_reelle_eur": 0,
+   "engage_eur": 3133698,
    "depuis": 1997,
    "photo": "/img/lieux/piscine-georges-vallerey.jpg"
   },
@@ -180,6 +204,8 @@
    "n_lieu": 5,
    "n_moments": 5,
    "argent_total_eur": 15991584,
+   "depense_reelle_eur": 0,
+   "engage_eur": 15991584,
    "depuis": 2006,
    "photo": "/img/lieux/piscine-josephine-baker.jpg"
   },
@@ -194,6 +220,8 @@
    "n_lieu": 2,
    "n_moments": 2,
    "argent_total_eur": 711422,
+   "depense_reelle_eur": 0,
+   "engage_eur": 711422,
    "depuis": 2002,
    "photo": "/img/lieux/piscine-hebert.jpg"
   },
@@ -208,6 +236,8 @@
    "n_lieu": 26,
    "n_moments": 8,
    "argent_total_eur": 0,
+   "depense_reelle_eur": 0,
+   "engage_eur": 0,
    "depuis": 1997,
    "photo": "/img/lieux/piscine-pailleron.jpg"
   },
@@ -222,6 +252,8 @@
    "n_lieu": 30,
    "n_moments": 8,
    "argent_total_eur": 132001148,
+   "depense_reelle_eur": 117232870,
+   "engage_eur": 25937545,
    "depuis": 1996,
    "photo": "/img/lieux/theatre-du-chatelet.jpg"
   },
@@ -236,6 +268,8 @@
    "n_lieu": 43,
    "n_moments": 9,
    "argent_total_eur": 945886,
+   "depense_reelle_eur": 61642062,
+   "engage_eur": 831746,
    "depuis": 1996,
    "photo": "/img/lieux/gaite-lyrique.jpg"
   },
@@ -250,6 +284,8 @@
    "n_lieu": 20,
    "n_moments": 8,
    "argent_total_eur": 0,
+   "depense_reelle_eur": 0,
+   "engage_eur": 0,
    "depuis": 2009,
    "photo": "/img/lieux/centquatre.jpg"
   },
@@ -264,6 +300,8 @@
    "n_lieu": 23,
    "n_moments": 8,
    "argent_total_eur": 8513398,
+   "depense_reelle_eur": 58732249,
+   "engage_eur": 8416148,
    "depuis": 1889,
    "photo": "/img/lieux/carreau-du-temple.jpg"
   },
@@ -278,6 +316,8 @@
    "n_lieu": 42,
    "n_moments": 8,
    "argent_total_eur": 14568999,
+   "depense_reelle_eur": 14886491,
+   "engage_eur": 0,
    "depuis": 1999,
    "photo": "/img/lieux/maison-des-metallos.jpg"
   },
@@ -292,6 +332,8 @@
    "n_lieu": 9,
    "n_moments": 8,
    "argent_total_eur": 227914,
+   "depense_reelle_eur": 166735,
+   "engage_eur": 61179,
    "depuis": 2001,
    "photo": "/img/lieux/parc-montsouris.jpg"
   },
@@ -306,6 +348,8 @@
    "n_lieu": 12,
    "n_moments": 8,
    "argent_total_eur": 725844,
+   "depense_reelle_eur": 579659,
+   "engage_eur": 146185,
    "depuis": 1996,
    "photo": "/img/lieux/parc-monceau.jpg"
   },
@@ -320,6 +364,8 @@
    "n_lieu": 37,
    "n_moments": 8,
    "argent_total_eur": 6245720,
+   "depense_reelle_eur": 9111788,
+   "engage_eur": 2701761,
    "depuis": 1995,
    "photo": "/img/lieux/parc-andre-citroen.jpg"
   },
@@ -334,6 +380,8 @@
    "n_lieu": 31,
    "n_moments": 8,
    "argent_total_eur": 501870,
+   "depense_reelle_eur": 105129,
+   "engage_eur": 459020,
    "depuis": 1996,
    "photo": "/img/lieux/parc-de-bercy.jpg"
   },
@@ -348,6 +396,8 @@
    "n_lieu": 19,
    "n_moments": 8,
    "argent_total_eur": 0,
+   "depense_reelle_eur": 0,
+   "engage_eur": 0,
    "depuis": 2000,
    "photo": "/img/lieux/parc-de-la-villette.jpg"
   },
@@ -362,6 +412,8 @@
    "n_lieu": 11,
    "n_moments": 8,
    "argent_total_eur": 183496,
+   "depense_reelle_eur": 183496,
+   "engage_eur": 0,
    "depuis": 1997,
    "photo": "/img/lieux/parc-georges-brassens.jpg"
   },
@@ -376,6 +428,8 @@
    "n_lieu": 14,
    "n_moments": 8,
    "argent_total_eur": 216838,
+   "depense_reelle_eur": 216838,
+   "engage_eur": 0,
    "depuis": 1995,
    "photo": "/img/lieux/parc-de-belleville.jpg"
   },
@@ -390,6 +444,8 @@
    "n_lieu": 32,
    "n_moments": 8,
    "argent_total_eur": 637864,
+   "depense_reelle_eur": 23938022,
+   "engage_eur": 600000,
    "depuis": 2003,
    "photo": "/img/lieux/place-de-la-republique.jpg"
   },
@@ -404,6 +460,8 @@
    "n_lieu": 19,
    "n_moments": 8,
    "argent_total_eur": 770454,
+   "depense_reelle_eur": 0,
+   "engage_eur": 770454,
    "depuis": 1995,
    "photo": "/img/lieux/place-de-la-bastille.jpg"
   },
@@ -418,6 +476,8 @@
    "n_lieu": 11,
    "n_moments": 8,
    "argent_total_eur": 1510132,
+   "depense_reelle_eur": 0,
+   "engage_eur": 1510132,
    "depuis": 1995,
    "photo": "/img/lieux/place-de-la-nation.jpg"
   },
@@ -431,7 +491,9 @@
    "lon": 2.3785,
    "n_lieu": 6,
    "n_moments": 8,
-   "argent_total_eur": 0,
+   "argent_total_eur": 72770,
+   "depense_reelle_eur": 1427209,
+   "engage_eur": 72770,
    "depuis": 1996,
    "photo": "/img/lieux/marche-daligre.jpg"
   },
@@ -446,6 +508,8 @@
    "n_lieu": 5,
    "n_moments": 6,
    "argent_total_eur": 0,
+   "depense_reelle_eur": 0,
+   "engage_eur": 0,
    "depuis": 2000,
    "photo": "/img/lieux/marche-saint-quentin.jpg"
   },
@@ -460,6 +524,8 @@
    "n_lieu": 8,
    "n_moments": 8,
    "argent_total_eur": 2257938,
+   "depense_reelle_eur": 17760260,
+   "engage_eur": 2257938,
    "depuis": 1997,
    "photo": "/img/lieux/hotel-de-ville.jpg"
   },
@@ -474,6 +540,8 @@
    "n_lieu": 25,
    "n_moments": 8,
    "argent_total_eur": 538400,
+   "depense_reelle_eur": 11921302,
+   "engage_eur": 538400,
    "depuis": 1883,
    "photo": "/img/lieux/canal-saint-martin.jpg"
   },
@@ -488,6 +556,8 @@
    "n_lieu": 26,
    "n_moments": 8,
    "argent_total_eur": 16913369,
+   "depense_reelle_eur": 15769449,
+   "engage_eur": 1143920,
    "depuis": 1998,
    "photo": "/img/lieux/pavillon-de-larsenal.jpg"
   },
@@ -502,6 +572,8 @@
    "n_lieu": 11,
    "n_moments": 7,
    "argent_total_eur": 1212350,
+   "depense_reelle_eur": 8602947,
+   "engage_eur": 1088736,
    "depuis": 1995,
    "photo": "/img/lieux/serres-dauteuil.jpg"
   },
@@ -516,6 +588,8 @@
    "n_lieu": 33,
    "n_moments": 8,
    "argent_total_eur": 764026,
+   "depense_reelle_eur": 0,
+   "engage_eur": 764026,
    "depuis": 1996,
    "photo": "/img/lieux/pere-lachaise.jpg"
   },
@@ -530,6 +604,8 @@
    "n_lieu": 4,
    "n_moments": 4,
    "argent_total_eur": 128392,
+   "depense_reelle_eur": 0,
+   "engage_eur": 128392,
    "depuis": 1885,
    "photo": "/img/lieux/gymnase-japy.jpg"
   },
@@ -544,6 +620,8 @@
    "n_lieu": 1,
    "n_moments": 1,
    "argent_total_eur": 874336,
+   "depense_reelle_eur": 4206800,
+   "engage_eur": 139588,
    "depuis": 2025,
    "photo": "/img/lieux/bourse-du-travail.jpg"
   },
@@ -558,6 +636,8 @@
    "n_lieu": 12,
    "n_moments": 8,
    "argent_total_eur": 1633824,
+   "depense_reelle_eur": 811731,
+   "engage_eur": 822092,
    "depuis": 1996,
    "photo": "/img/lieux/mairie-du-18e.jpg"
   },
@@ -572,6 +652,8 @@
    "n_lieu": 0,
    "n_moments": 1,
    "argent_total_eur": 0,
+   "depense_reelle_eur": 0,
+   "engage_eur": 0,
    "depuis": 1997,
    "photo": "/img/lieux/bibliotheque-historique.jpg"
   },
@@ -586,6 +668,8 @@
    "n_lieu": 25,
    "n_moments": 8,
    "argent_total_eur": 400000,
+   "depense_reelle_eur": 400000,
+   "engage_eur": 0,
    "depuis": 2001,
    "photo": "/img/lieux/halle-saint-pierre.jpg"
   },
@@ -600,6 +684,8 @@
    "n_lieu": 16,
    "n_moments": 8,
    "argent_total_eur": 0,
+   "depense_reelle_eur": 6792084,
+   "engage_eur": 0,
    "depuis": 2002,
    "photo": null
   },
@@ -614,6 +700,8 @@
    "n_lieu": 5,
    "n_moments": 6,
    "argent_total_eur": 97211,
+   "depense_reelle_eur": 97211,
+   "engage_eur": 0,
    "depuis": 2003,
    "photo": "/img/lieux/kiosque-fleurs-cite.jpg"
   },
@@ -628,6 +716,8 @@
    "n_lieu": 36,
    "n_moments": 8,
    "argent_total_eur": 10889618,
+   "depense_reelle_eur": 157751845,
+   "engage_eur": 10222084,
    "depuis": 1996,
    "photo": "/img/lieux/stade-jean-bouin.jpg"
   },
@@ -642,6 +732,8 @@
    "n_lieu": 1,
    "n_moments": 1,
    "argent_total_eur": 0,
+   "depense_reelle_eur": 0,
+   "engage_eur": 0,
    "depuis": 1995,
    "photo": "/img/lieux/square-du-vert-galant.jpg"
   },
@@ -656,6 +748,8 @@
    "n_lieu": 2,
    "n_moments": 5,
    "argent_total_eur": 33880,
+   "depense_reelle_eur": 0,
+   "engage_eur": 33880,
    "depuis": 1998,
    "photo": "/img/lieux/fontaine-saint-michel.jpg"
   },
@@ -670,6 +764,8 @@
    "n_lieu": 43,
    "n_moments": 8,
    "argent_total_eur": 39775385,
+   "depense_reelle_eur": 4840182,
+   "engage_eur": 39775385,
    "depuis": 1995,
    "photo": "/img/lieux/musee-carnavalet.jpg"
   },
@@ -684,6 +780,8 @@
    "n_lieu": 38,
    "n_moments": 8,
    "argent_total_eur": 0,
+   "depense_reelle_eur": 832805,
+   "engage_eur": 0,
    "depuis": 1996,
    "photo": "/img/lieux/petit-palais.jpg"
   },
@@ -698,6 +796,8 @@
    "n_lieu": 41,
    "n_moments": 8,
    "argent_total_eur": 0,
+   "depense_reelle_eur": 0,
+   "engage_eur": 0,
    "depuis": 1995,
    "photo": "/img/lieux/musee-d-art-moderne-de-paris.jpg"
   },
@@ -712,6 +812,8 @@
    "n_lieu": 8,
    "n_moments": 7,
    "argent_total_eur": 0,
+   "depense_reelle_eur": 0,
+   "engage_eur": 0,
    "depuis": 1999,
    "photo": "/img/lieux/catacombes-de-paris.jpg"
   },
@@ -726,6 +828,8 @@
    "n_lieu": 14,
    "n_moments": 8,
    "argent_total_eur": 0,
+   "depense_reelle_eur": 0,
+   "engage_eur": 0,
    "depuis": 1997,
    "photo": "/img/lieux/maison-de-victor-hugo.jpg"
   },
@@ -740,6 +844,8 @@
    "n_lieu": 12,
    "n_moments": 8,
    "argent_total_eur": 0,
+   "depense_reelle_eur": 0,
+   "engage_eur": 0,
    "depuis": 1999,
    "photo": "/img/lieux/musee-de-la-vie-romantique.jpg"
   },
@@ -754,6 +860,8 @@
    "n_lieu": 1,
    "n_moments": 1,
    "argent_total_eur": 263333,
+   "depense_reelle_eur": 0,
+   "engage_eur": 263333,
    "depuis": 2010,
    "photo": "/img/lieux/musee-cognacq-jay.jpg"
   },
@@ -767,7 +875,9 @@
    "lon": 2.31859,
    "n_lieu": 19,
    "n_moments": 8,
-   "argent_total_eur": 1737902,
+   "argent_total_eur": 2062537,
+   "depense_reelle_eur": 2316573,
+   "engage_eur": 2062537,
    "depuis": 1996,
    "photo": "/img/lieux/musee-bourdelle.jpg"
   },
@@ -782,6 +892,8 @@
    "n_lieu": 10,
    "n_moments": 8,
    "argent_total_eur": 0,
+   "depense_reelle_eur": 0,
+   "engage_eur": 0,
    "depuis": 1997,
    "photo": "/img/lieux/musee-zadkine.jpg"
   },
@@ -796,6 +908,8 @@
    "n_lieu": 7,
    "n_moments": 7,
    "argent_total_eur": 48689,
+   "depense_reelle_eur": 0,
+   "engage_eur": 48689,
    "depuis": 1921,
    "photo": "/img/lieux/maison-de-balzac.jpg"
   },
@@ -810,6 +924,8 @@
    "n_lieu": 34,
    "n_moments": 8,
    "argent_total_eur": 0,
+   "depense_reelle_eur": 90780,
+   "engage_eur": 0,
    "depuis": 1995,
    "photo": "/img/lieux/musee-cernuschi.jpg"
   },
@@ -824,6 +940,8 @@
    "n_lieu": 20,
    "n_moments": 8,
    "argent_total_eur": 1660825,
+   "depense_reelle_eur": 0,
+   "engage_eur": 1660825,
    "depuis": 1997,
    "photo": "/img/lieux/palais-galliera.jpg"
   },
@@ -838,6 +956,8 @@
    "n_lieu": 10,
    "n_moments": 8,
    "argent_total_eur": 0,
+   "depense_reelle_eur": 0,
+   "engage_eur": 0,
    "depuis": 1995,
    "photo": "/img/lieux/memorial-du-marechal-leclerc-et-musee-jean-moulin.jpg"
   },
@@ -852,6 +972,8 @@
    "n_lieu": 4,
    "n_moments": 4,
    "argent_total_eur": 0,
+   "depense_reelle_eur": 0,
+   "engage_eur": 0,
    "depuis": 1998,
    "photo": "/img/lieux/crypte-archeologique-de-l-ile-de-la-cite.jpg"
   },
@@ -866,6 +988,8 @@
    "n_lieu": 26,
    "n_moments": 8,
    "argent_total_eur": 15834346,
+   "depense_reelle_eur": 17433705,
+   "engage_eur": 292000,
    "depuis": 1999,
    "photo": "/img/lieux/theatre-du-rond-point.jpg"
   },
@@ -880,6 +1004,8 @@
    "n_lieu": 23,
    "n_moments": 8,
    "argent_total_eur": 2959000,
+   "depense_reelle_eur": 2959000,
+   "engage_eur": 0,
    "depuis": 2002,
    "photo": "/img/lieux/theatre-silvia-monfort.jpg"
   },
@@ -894,6 +1020,8 @@
    "n_lieu": 2,
    "n_moments": 2,
    "argent_total_eur": 7626181,
+   "depense_reelle_eur": 7455500,
+   "engage_eur": 170681,
    "depuis": 2016,
    "photo": "/img/lieux/theatre-paris-villette.jpg"
   },
@@ -908,6 +1036,8 @@
    "n_lieu": 13,
    "n_moments": 7,
    "argent_total_eur": 407259,
+   "depense_reelle_eur": 0,
+   "engage_eur": 407259,
    "depuis": 1999,
    "photo": null
   },
@@ -922,6 +1052,8 @@
    "n_lieu": 13,
    "n_moments": 8,
    "argent_total_eur": 589379,
+   "depense_reelle_eur": 0,
+   "engage_eur": 589379,
    "depuis": 2018,
    "photo": "/img/lieux/adidas-arena.jpg"
   },
@@ -936,6 +1068,8 @@
    "n_lieu": 26,
    "n_moments": 8,
    "argent_total_eur": 39946553,
+   "depense_reelle_eur": 36762691,
+   "engage_eur": 3183862,
    "depuis": 2003,
    "photo": "/img/lieux/porte-de-la-chapelle.jpg"
   },
@@ -950,6 +1084,8 @@
    "n_lieu": 30,
    "n_moments": 8,
    "argent_total_eur": 7779956,
+   "depense_reelle_eur": 6237327,
+   "engage_eur": 1690294,
    "depuis": 2003,
    "photo": "/img/lieux/porte-de-montreuil.jpg"
   },
@@ -964,6 +1100,8 @@
    "n_lieu": 2,
    "n_moments": 8,
    "argent_total_eur": 15559538,
+   "depense_reelle_eur": 14867538,
+   "engage_eur": 692000,
    "depuis": 2016,
    "photo": null
   },
@@ -978,6 +1116,8 @@
    "n_lieu": 2,
    "n_moments": 2,
    "argent_total_eur": 13162651,
+   "depense_reelle_eur": 13162651,
+   "engage_eur": 0,
    "depuis": 2019,
    "photo": "/img/lieux/mediatheque-james-baldwin.jpg"
   },
@@ -991,7 +1131,9 @@
    "lon": 2.34555,
    "n_lieu": 42,
    "n_moments": 8,
-   "argent_total_eur": 30975989,
+   "argent_total_eur": 32956748,
+   "depense_reelle_eur": 3400646,
+   "engage_eur": 32956748,
    "depuis": 2000,
    "photo": "/img/lieux/stade-charlety.jpg"
   },
@@ -1006,6 +1148,8 @@
    "n_lieu": 1,
    "n_moments": 1,
    "argent_total_eur": 0,
+   "depense_reelle_eur": 0,
+   "engage_eur": 0,
    "depuis": 1887,
    "photo": "/img/lieux/cirque-d-hiver.jpg"
   },
@@ -1020,6 +1164,8 @@
    "n_lieu": 7,
    "n_moments": 7,
    "argent_total_eur": 835426,
+   "depense_reelle_eur": 0,
+   "engage_eur": 835426,
    "depuis": 2000,
    "photo": "/img/lieux/bibliotheque-forney.jpg"
   },
@@ -1034,6 +1180,8 @@
    "n_lieu": 19,
    "n_moments": 8,
    "argent_total_eur": 7524100,
+   "depense_reelle_eur": 7259100,
+   "engage_eur": 265000,
    "depuis": 1999,
    "photo": "/img/lieux/maison-de-la-poesie.jpg"
   },
@@ -1048,6 +1196,8 @@
    "n_lieu": 21,
    "n_moments": 8,
    "argent_total_eur": 0,
+   "depense_reelle_eur": 0,
+   "engage_eur": 0,
    "depuis": 1995,
    "photo": "/img/lieux/conservatoire-de-paris-crr.jpg"
   },
@@ -1062,6 +1212,8 @@
    "n_lieu": 20,
    "n_moments": 8,
    "argent_total_eur": 0,
+   "depense_reelle_eur": 0,
+   "engage_eur": 0,
    "depuis": 1997,
    "photo": "/img/lieux/theatre-de-la-bastille.jpg"
   },
@@ -1076,6 +1228,8 @@
    "n_lieu": 9,
    "n_moments": 8,
    "argent_total_eur": 0,
+   "depense_reelle_eur": 0,
+   "engage_eur": 0,
    "depuis": 2002,
    "photo": "/img/lieux/theatre-de-la-cite-internationale.jpg"
   },
@@ -1090,6 +1244,8 @@
    "n_lieu": 39,
    "n_moments": 8,
    "argent_total_eur": 0,
+   "depense_reelle_eur": 0,
+   "engage_eur": 0,
    "depuis": 1995,
    "photo": "/img/lieux/piscine-molitor.jpg"
   },
@@ -1104,6 +1260,8 @@
    "n_lieu": 8,
    "n_moments": 8,
    "argent_total_eur": 208011,
+   "depense_reelle_eur": 208011,
+   "engage_eur": 0,
    "depuis": 2007,
    "photo": "/img/lieux/parc-martin-luther-king.jpg"
   },
@@ -1118,6 +1276,8 @@
    "n_lieu": 22,
    "n_moments": 8,
    "argent_total_eur": 8414,
+   "depense_reelle_eur": 0,
+   "engage_eur": 8414,
    "depuis": 1998,
    "photo": "/img/lieux/parc-floral-de-paris.jpg"
   },
@@ -1131,7 +1291,9 @@
    "lon": 2.404955,
    "n_lieu": 42,
    "n_moments": 8,
-   "argent_total_eur": 3910649,
+   "argent_total_eur": 3790649,
+   "depense_reelle_eur": 10834266,
+   "engage_eur": 3595673,
    "depuis": 2005,
    "photo": "/img/lieux/bois-de-vincennes.jpg"
   },
@@ -1145,7 +1307,9 @@
    "lon": 2.286939,
    "n_lieu": 44,
    "n_moments": 8,
-   "argent_total_eur": 13673682,
+   "argent_total_eur": 4544045,
+   "depense_reelle_eur": 13001831,
+   "engage_eur": 4486891,
    "depuis": 2005,
    "photo": "/img/lieux/bois-de-boulogne.jpg"
   },
@@ -1160,6 +1324,8 @@
    "n_lieu": 10,
    "n_moments": 8,
    "argent_total_eur": 0,
+   "depense_reelle_eur": 0,
+   "engage_eur": 0,
    "depuis": 1999,
    "photo": "/img/lieux/jardin-du-ranelagh.jpg"
   },
@@ -1174,6 +1340,8 @@
    "n_lieu": 3,
    "n_moments": 4,
    "argent_total_eur": 0,
+   "depense_reelle_eur": 0,
+   "engage_eur": 0,
    "depuis": 2000,
    "photo": "/img/lieux/coulee-verte-rene-dumont.jpg"
   },
@@ -1188,6 +1356,8 @@
    "n_lieu": 23,
    "n_moments": 8,
    "argent_total_eur": 1276945,
+   "depense_reelle_eur": 894885,
+   "engage_eur": 382060,
    "depuis": 1996,
    "photo": "/img/lieux/place-des-vosges.jpg"
   },
@@ -1202,6 +1372,8 @@
    "n_lieu": 1,
    "n_moments": 7,
    "argent_total_eur": 1278005,
+   "depense_reelle_eur": 0,
+   "engage_eur": 1278005,
    "depuis": 2018,
    "photo": "/img/lieux/place-d-italie.jpg"
   },
@@ -1216,6 +1388,8 @@
    "n_lieu": 12,
    "n_moments": 8,
    "argent_total_eur": 0,
+   "depense_reelle_eur": 0,
+   "engage_eur": 0,
    "depuis": 2000,
    "photo": "/img/lieux/place-du-tertre.jpg"
   },
@@ -1230,6 +1404,8 @@
    "n_lieu": 4,
    "n_moments": 4,
    "argent_total_eur": 0,
+   "depense_reelle_eur": 0,
+   "engage_eur": 0,
    "depuis": 1999,
    "photo": "/img/lieux/arenes-de-lutece.jpg"
   },
@@ -1244,6 +1420,8 @@
    "n_lieu": 6,
    "n_moments": 8,
    "argent_total_eur": 10920465,
+   "depense_reelle_eur": 901342,
+   "engage_eur": 10019122,
    "depuis": 2003,
    "photo": "/img/lieux/place-denfert-rochereau.jpg"
   },
@@ -1258,6 +1436,8 @@
    "n_lieu": 2,
    "n_moments": 2,
    "argent_total_eur": 1710941,
+   "depense_reelle_eur": 0,
+   "engage_eur": 1710941,
    "depuis": 2014,
    "photo": "/img/lieux/fontaine-des-innocents.jpg"
   },
@@ -1272,6 +1452,8 @@
    "n_lieu": 12,
    "n_moments": 7,
    "argent_total_eur": 85310,
+   "depense_reelle_eur": 0,
+   "engage_eur": 85310,
    "depuis": 1998,
    "photo": "/img/lieux/place-du-chatelet.jpg"
   },
@@ -1286,6 +1468,8 @@
    "n_lieu": 15,
    "n_moments": 8,
    "argent_total_eur": 1490043,
+   "depense_reelle_eur": 0,
+   "engage_eur": 1490043,
    "depuis": 1996,
    "photo": "/img/lieux/place-de-la-madeleine.jpg"
   },
@@ -1300,6 +1484,8 @@
    "n_lieu": 3,
    "n_moments": 3,
    "argent_total_eur": 0,
+   "depense_reelle_eur": 0,
+   "engage_eur": 0,
    "depuis": 2004,
    "photo": "/img/lieux/bourse-de-commerce.jpg"
   }

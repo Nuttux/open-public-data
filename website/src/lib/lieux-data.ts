@@ -28,6 +28,17 @@ export type LieuMontant = {
 };
 
 export type LieuBmoExtrait = { date: string; extrait: string; source_url: string };
+/** Dépense d'investissement RÉELLEMENT mandatée (comptes administratifs).
+ *  Série par exercice fusionnant les opérations AP jugées « au-lieu »
+ *  (2009-2017 — le niveau opération n'est plus publié après). */
+export type LieuMandate = {
+  par_annee: Record<string, number>;
+  total_eur: number;
+  periode: [string, string];
+  operations: { ap_cle: string | null; ap_texte: string; mandate_par_annee: Record<string, number>;
+                total_mandate: number; preuve?: string | null; source_url: string }[];
+  source: { name: string; url: string };
+};
 /** Marché public rattaché au lieu — même statut d'argent public qu'une
  *  subvention ou un investissement. `numero_marche` mène à la fiche contrat. */
 export type LieuMarche = {
@@ -103,6 +114,7 @@ export type LieuFicheData = {
   montants: LieuMontant[];
   bmo_extraits: LieuBmoExtrait[];
   bmo_recit?: LieuBmoRecit;
+  mandate?: LieuMandate | null;
   /** Marchés publics rattachés au lieu par le juge (rôle « au-lieu »). */
   marches?: LieuMarche[];
   invest: LieuInvest[];
@@ -150,7 +162,7 @@ export function loadLieu(slug: string): LieuFicheData | null {
 }
 
 
-export type LieuLien = { slug: string; lieu: string; role?: string };
+export type LieuLien = { slug: string; lieu: string; role?: string; photo?: string | null };
 
 let _revCache: { beneficiaires: Record<string, LieuLien>; projets: Record<string, LieuLien> } | null = null;
 function loadReverse() {
@@ -164,14 +176,54 @@ function normKey(s: string): string {
   return s.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().replace(/[^a-z0-9]+/g, " ").trim();
 }
 
+let _indexBySlug: Map<string, LieuIndexEntry> | null = null;
+function indexBySlug(): Map<string, LieuIndexEntry> {
+  if (!_indexBySlug) _indexBySlug = new Map(loadLieuxIndex().map((l) => [l.slug, l]));
+  return _indexBySlug;
+}
+
+/** Garde anti-lien-mort + jointure photo : un lien n'est rendu que si le lieu
+ *  est réellement publié (présent dans l'index ET fiche sur disque — même
+ *  prédicat que la page lieu, qui 404 sans fichier). La photo vient de
+ *  l'index, jamais d'un rapprochement de nom. */
+function resolveLien(lien: LieuLien | null | undefined): LieuLien | null {
+  if (!lien) return null;
+  const idx = indexBySlug().get(lien.slug);
+  if (!idx || !fs.existsSync(path.join(DATA_DIR, `lieu_${lien.slug}.json`))) return null;
+  return { ...lien, photo: idx.photo ?? null };
+}
+
 /** Le lieu dont ce bénéficiaire de subvention est l'exploitant ou un résident
  *  (index inverse issu du juge). Sert le lien « ↗ Voir le lieu » sur les fiches
  *  subvention/association. */
 export function lieuForBeneficiaire(name: string): LieuLien | null {
-  return loadReverse().beneficiaires[normKey(name)] ?? null;
+  return resolveLien(loadReverse().beneficiaires[normKey(name)]);
 }
 
 /** Le lieu auquel ce projet d'investissement se rattache. */
 export function lieuForProjet(nomProjet: string): LieuLien | null {
-  return loadReverse().projets[normKey(nomProjet)] ?? null;
+  return resolveLien(loadReverse().projets[normKey(nomProjet)]);
+}
+
+let _marcheCache: Map<string, LieuLien> | null = null;
+
+/** Le lieu auquel ce marché public a été rattaché par le juge (rôle
+ *  « au-lieu »). Dérivé des fiches lieu publiées elles-mêmes — pas d'index
+ *  séparé qui pourrait dériver : le lien contrat → lieu existe exactement
+ *  quand la fiche lieu affiche ce marché (symétrie garantie par construction). */
+export function lieuForMarche(numero: string): LieuLien | null {
+  if (!_marcheCache) {
+    _marcheCache = new Map();
+    for (const entry of loadLieuxIndex()) {
+      const lieu = loadLieu(entry.slug);
+      for (const m of lieu?.marches ?? []) {
+        // Un marché rattaché à plusieurs lieux : premier de l'index gagne
+        // (cas non observé sur le corpus courant).
+        if (!_marcheCache.has(m.numero_marche)) {
+          _marcheCache.set(m.numero_marche, { slug: entry.slug, lieu: entry.name, role: "au-lieu", photo: entry.photo ?? null });
+        }
+      }
+    }
+  }
+  return _marcheCache.get(numero) ?? null;
 }

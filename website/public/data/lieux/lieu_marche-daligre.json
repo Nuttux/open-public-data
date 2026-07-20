@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T10:03:14.731611+00:00",
+ "generated_at": "2026-07-20T11:16:58.583958+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "marche-daligre",
  "name": "Marché d'Aligre",
@@ -127,7 +127,55 @@
  "bmo_extraits": [],
  "bmo_recit": null,
  "invest": [],
- "marches": [],
+ "marches": [
+  {
+   "numero_marche": "20161210000303",
+   "objet": "MOE RESTAURATION APRÈS SINISTRE DU MARCHÉ BEAUVAU",
+   "objet_clair": null,
+   "fournisseur": "LAGNEAU ARCHITECTES",
+   "montant_max": 72770.0,
+   "date_notification": "2016-03-25",
+   "preuve": "Objet nomme le lieu par son alias officiel : « MOE RESTAURATION APRÈS SINISTRE DU MARCHÉ BEAUVAU » — le marché Beauvau est le nom de la halle du marché d'Aligre (alias du lieu). Le Conseil de Paris (vœu n°178, déc. 2015) confirme le sinistre : « La halle Beauvau du marché d'Aligre a été malheureusement touchée au début de mois de juillet par un incendie », avec « une seconde phase de travaux au niveau de la structure principale et de la couverture » pendant les étés 2016 et 2017 — cohérent avec la notification du 2016-03-25."
+  }
+ ],
+ "mandate": {
+  "par_annee": {
+   "2016": 29807.31,
+   "2017": 1397401.45
+  },
+  "total_eur": 1427208.76,
+  "operations": [
+   {
+    "ap_cle": "1704842",
+    "ap_texte": "MARCHE D'ALIGRE - HALLE BEAUVAU (12e)",
+    "mandate_par_annee": {
+     "2017": 1309661.8
+    },
+    "total_mandate": 1309661.8,
+    "preuve": "Libellé de l'opération nomme explicitement CE lieu : « MARCHE D'ALIGRE - HALLE BEAUVAU (12e) » (direction DAE). Mandaté en 2017, année de la seconde phase des travaux de restauration après l'incendie de juillet 2015 évoquée au Conseil de Paris (déc. 2015) : « travaux en deux phases pendant les mois d'été 2016 et 2017 ».",
+    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=1704842"
+   },
+   {
+    "ap_cle": "1604842",
+    "ap_texte": "MARCHE D'ALIGRE - HALLE BEAUVAU (12e)",
+    "mandate_par_annee": {
+     "2016": 29807.31,
+     "2017": 87739.65
+    },
+    "total_mandate": 117546.96,
+    "preuve": "Libellé de l'opération nomme explicitement CE lieu : « MARCHE D'ALIGRE - HALLE BEAUVAU (12e) » (direction DAE). Mandaté en 2016 et 2017, calendrier cohérent avec les travaux post-incendie de la halle Beauvau confirmés au Conseil de Paris (déc. 2015).",
+    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=1604842"
+   }
+  ],
+  "periode": [
+   "2016",
+   "2017"
+  ],
+  "source": {
+   "name": "Comptes administratifs — autorisations de programme, Ville de Paris",
+   "url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/"
+  }
+ },
  "sources": {
   "delibs": {
    "name": "Débat-Délibs — Conseil de Paris",

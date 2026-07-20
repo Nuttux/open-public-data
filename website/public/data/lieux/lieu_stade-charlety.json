@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T10:03:14.731611+00:00",
+ "generated_at": "2026-07-20T11:16:58.583958+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "stade-charlety",
  "name": "Stade Charléty",
@@ -184,7 +184,7 @@
    "fournisseur": "ENGIE ENERGIE SERVICES",
    "montant_max": 5112609.99,
    "date_notification": "2020-06-15",
-   "preuve": "objet verbatim « SA4.MAINTENANCE MULTI TECHNIQUE,COORDINAT°STADE CHARLETY V.P » : l'objet nomme le stade et porte sur sa maintenance technique (exploitation du bâtiment), pas sur un simple repère d'adresse."
+   "preuve": "Objet nomme le lieu : « MAINTENANCE MULTI TECHNIQUE,COORDINAT°STADE CHARLETY » — prestation de maintenance du stade lui-même."
   },
   {
    "numero_marche": "20242024S10144",
@@ -193,7 +193,7 @@
    "fournisseur": "EIFFAGE ENERGIE SYSTEMES",
    "montant_max": 4530785.0,
    "date_notification": "2024-10-04",
-   "preuve": "objet verbatim « SA4_ACBC_MAINTENANCE MULTI-TECHNIQUE DU STADE CHARLÉTY 75013 » : nomme le stade et son code postal 75013, cohérent avec l'adresse 99 boulevard Kellermann (13e) confirmée par la délibération 2009 DPA 253."
+   "preuve": "Objet nomme le lieu et son arrondissement : « MAINTENANCE MULTI-TECHNIQUE DU STADE CHARLÉTY 75013 »."
   },
   {
    "numero_marche": "20161410000951",
@@ -202,7 +202,7 @@
    "fournisseur": "ENGIE ENERGIE SERVICES",
    "montant_max": 3116568.0,
    "date_notification": "2016-07-11",
-   "preuve": "objet verbatim « CSP5 MAINTENANCE MULTITECHNIQUE ET COORD STADE CHARLETY LOT1 » : maintenance technique du stade lui-même."
+   "preuve": "Objet nomme le lieu : « MAINTENANCE MULTITECHNIQUE ET COORD STADE CHARLETY LOT1 »."
   },
   {
    "numero_marche": "20161410000975",
@@ -211,7 +211,7 @@
    "fournisseur": "CHALLANCIN PREVENTION ET SECURITE",
    "montant_max": 3081210.4,
    "date_notification": "2016-07-11",
-   "preuve": "objet verbatim « CSP1 LOT 3 SECURITE INCENDIE ET ACCUEIL DU STADE CHARLETY » : prestation de sécurité incendie et d'accueil qui s'exécute dans l'enceinte du stade."
+   "preuve": "Objet nomme le lieu : « SECURITE INCENDIE ET ACCUEIL DU STADE CHARLETY » — prestation exécutée dans le stade."
   },
   {
    "numero_marche": "20242024F11836",
@@ -220,7 +220,7 @@
    "fournisseur": "FRANCE SECURITY PRIVEE",
    "montant_max": 3013824.82,
    "date_notification": "2024-12-03",
-   "preuve": "objet verbatim « SA1_SECURITE INCENDIE ACCEUIL STADE CHARLETY_LOT 1 » : prestation d'exploitation (sécurité incendie, accueil) au stade. Doublon écarté : la ligne DECP « decp-2024S11836 » (même lot 1, même date de notification 2024-12-03, montant notifié 1 356 912,41 €) décrit ce même marché depuis la source DECP — non retenue pour éviter un double compte."
+   "preuve": "Objet nomme le lieu : « SECURITE INCENDIE ACCEUIL STADE CHARLETY_LOT 1 »."
   },
   {
    "numero_marche": "20202020S08283",
@@ -229,7 +229,7 @@
    "fournisseur": "VIGI-SECURITE",
    "montant_max": 2481469.99,
    "date_notification": "2021-01-15",
-   "preuve": "objet verbatim « SA1 ACBC SECURITE INCENDIE ACCUEIL STADE CHARLETY LOT 1 » : prestation de sécurité incendie et d'accueil au stade."
+   "preuve": "Objet nomme le lieu : « SECURITE INCENDIE ACCUEIL STADE CHARLETY LOT 1 »."
   },
   {
    "numero_marche": "20242024F11837",
@@ -238,7 +238,7 @@
    "fournisseur": "REKEEP FACILITY SAS",
    "montant_max": 1847694.68,
    "date_notification": "2024-12-03",
-   "preuve": "objet verbatim « SA1_NETTOYAGE STADE CHARLETY_LOT2 » : nettoyage de l'équipement lui-même. Doublon écarté : la ligne DECP « decp-2024S11837 » (même titulaire REKEEP FACILITY SAS, SIRET 83991160900015, même date 2024-12-03, montant notifié 623 847,34 €) décrit ce même marché depuis la source DECP — non retenue pour éviter un double compte."
+   "preuve": "Objet nomme le lieu : « NETTOYAGE STADE CHARLETY_LOT2 »."
   },
   {
    "numero_marche": "20201410000480",
@@ -247,7 +247,7 @@
    "fournisseur": "BOTANICA JARDINS SERVICES",
    "montant_max": 1400009.99,
    "date_notification": "2020-07-03",
-   "preuve": "objet verbatim « SA4 ENTRETIEN PELOUSE TERRAIN D'HONNEUR STADE CHARLETY -LOT2 » : entretien de la pelouse du terrain d'honneur, élément physique du stade."
+   "preuve": "Objet nomme le lieu : « ENTRETIEN PELOUSE TERRAIN D'HONNEUR STADE CHARLETY » — entretien d'un équipement du stade."
   },
   {
    "numero_marche": "20161410000974",
@@ -256,7 +256,16 @@
    "fournisseur": "ELIOR SERVICES PROPRETE ET SANTE",
    "montant_max": 1379461.08,
    "date_notification": "2016-07-12",
-   "preuve": "objet verbatim « CSP1 LOT 2 NETTOYAGE DU STADE CHARLETY » : nettoyage de l'équipement lui-même."
+   "preuve": "Objet nomme le lieu : « NETTOYAGE DU STADE CHARLETY »."
+  },
+  {
+   "numero_marche": "decp-2024S11836",
+   "objet": "Marchés publics pour la sécurité incendie-accueil, et pour le nettoyage du stade CHARLETY en 2 lots séparés - Sécurité incendie accueil du stade CHARLETY",
+   "objet_clair": null,
+   "fournisseur": null,
+   "montant_max": 1356912.41,
+   "date_notification": "2024-12-03",
+   "preuve": "Objet DECP nomme le lieu : « Sécurité incendie accueil du stade CHARLETY » ; le lieu_execution « Paris » est large mais l'objet est explicite."
   },
   {
    "numero_marche": "20202020S08284",
@@ -265,7 +274,7 @@
    "fournisseur": "ELIOR SERVICES PROPRETE ET SANTE",
    "montant_max": 1252459.99,
    "date_notification": "2021-01-07",
-   "preuve": "objet verbatim « SA1 ACBC NETTOYAGE DU STADE CHARLETY - LOT2 » : nettoyage de l'équipement lui-même."
+   "preuve": "Objet nomme le lieu : « NETTOYAGE DU STADE CHARLETY - LOT2 »."
   },
   {
    "numero_marche": "20232023T04176",
@@ -274,7 +283,7 @@
    "fournisseur": "TERIDEAL SPARFEL NORMANDIE",
    "montant_max": 1145308.85,
    "date_notification": "2023-06-05",
-   "preuve": "objet verbatim « SA4 REFECTION DU GAZON DU STADE CHARLETY » : travaux sur le gazon du stade."
+   "preuve": "Objet nomme le lieu : « REFECTION DU GAZON DU STADE CHARLETY » — travaux sur la pelouse du stade (cohérent avec le vœu du Conseil de Paris de mars 2023 sur « l'état récent de la pelouse du stade Charléty »)."
   },
   {
    "numero_marche": "20191070000122",
@@ -283,7 +292,7 @@
    "fournisseur": "IDVERDE",
    "montant_max": 1086404.5,
    "date_notification": "2019-01-30",
-   "preuve": "objet verbatim « CSP5 STADE CHARLETY - LOT1 : RENOV INSFRASTRUCTURES PISTES » : rénovation des infrastructures des pistes d'athlétisme du stade."
+   "preuve": "Objet nomme le lieu : « STADE CHARLETY - LOT1 : RENOV INSFRASTRUCTURES PISTES » — rénovation des pistes d'athlétisme du stade."
   },
   {
    "numero_marche": "20191070000123",
@@ -292,7 +301,16 @@
    "fournisseur": "ART-DAN ILE-DE-FRANCE",
    "montant_max": 889289.46,
    "date_notification": "2019-01-31",
-   "preuve": "objet verbatim « CSP5 STADE CHARLETY LOT2 : RENOVATION REVETEMENT DES PISTES » : rénovation du revêtement des pistes du stade."
+   "preuve": "Objet nomme le lieu : « STADE CHARLETY LOT2 : RENOVATION REVETEMENT DES PISTES »."
+  },
+  {
+   "numero_marche": "decp-2024S11837",
+   "objet": "Marchés publics pour la sécurité incendie-accueil, et pour le nettoyage du stade CHARLETY en 2 lots séparés - Nettoyage du stade CHARLETY",
+   "objet_clair": null,
+   "fournisseur": "REKEEP FACILITY SAS",
+   "montant_max": 623847.34,
+   "date_notification": "2024-12-03",
+   "preuve": "Objet DECP nomme le lieu : « Nettoyage du stade CHARLETY » ; même consultation que le lot notifié 20242024F11837 (même fournisseur REKEEP FACILITY SAS, SIRET 83991160900015, même date 2024-12-03)."
   },
   {
    "numero_marche": "20161410000690",
@@ -301,7 +319,7 @@
    "fournisseur": "ART-DAN ILE-DE-FRANCE",
    "montant_max": 287130.97,
    "date_notification": "2016-06-10",
-   "preuve": "objet verbatim « CSP5 TRAVAUX TERRAIN DE FOOT ANNEXE STADE CHARLETY EN GAZON » : le terrain annexe fait partie du complexe, comme l'atteste la délibération d'octobre 2004 « mise aux normes du terrain annexe du stade Charléty, 99 boulevard Kellermann »."
+   "preuve": "Objet nomme le lieu : « TRAVAUX TERRAIN DE FOOT ANNEXE STADE CHARLETY EN GAZON » — terrain annexe du complexe Charléty."
   },
   {
    "numero_marche": "20232023T01624",
@@ -310,7 +328,7 @@
    "fournisseur": "ENTREPRISE CONSTRUCTION BATIMENT",
    "montant_max": 108511.8,
    "date_notification": "2023-02-20",
-   "preuve": "objet verbatim « MISE EN ACCESSIBILITÉ PMR DE TRIBUNES DU STADE CHARLÉTY » : travaux sur les tribunes du stade."
+   "preuve": "Objet nomme le lieu : « MISE EN ACCESSIBILITÉ PMR DE TRIBUNES DU STADE CHARLÉTY » — travaux sur les tribunes du stade."
   },
   {
    "numero_marche": "20171410001564",
@@ -319,7 +337,7 @@
    "fournisseur": "PARC ET JARDINS FRASNIER",
    "montant_max": 90000.0,
    "date_notification": "2017-10-03",
-   "preuve": "objet verbatim « AC À BC ENTRETIEN GAZON SYNTHÉTIQUE STADE CHARLETY 75013 » : entretien du gazon synthétique du stade, code postal 75013 concordant."
+   "preuve": "Objet nomme le lieu et son arrondissement : « ENTRETIEN GAZON SYNTHÉTIQUE STADE CHARLETY 75013 »."
   },
   {
    "numero_marche": "20222022T05601",
@@ -328,7 +346,7 @@
    "fournisseur": "FELIX & CO",
    "montant_max": 85859.0,
    "date_notification": "2022-07-19",
-   "preuve": "objet verbatim « TRAVAUX GRILLES STADE CHARLETY 75013 » : travaux sur les grilles du stade, code postal 75013 concordant."
+   "preuve": "Objet nomme le lieu et son arrondissement : « TRAVAUX GRILLES STADE CHARLETY 75013 »."
   },
   {
    "numero_marche": "20181410001348",
@@ -337,9 +355,41 @@
    "fournisseur": "ENGIE ENERGIE SERVICES",
    "montant_max": 67390.02,
    "date_notification": "2018-10-08",
-   "preuve": "objet verbatim « MAINTEN. CONSTRUCT. MOTEUR GROUPE ÉLECTROGENE STADE CHARLETY » : maintenance d'un équipement technique installé au stade."
+   "preuve": "Objet nomme le lieu : « MOTEUR GROUPE ÉLECTROGENE STADE CHARLETY » — maintenance d'un équipement technique du stade."
   }
  ],
+ "mandate": {
+  "par_annee": {
+   "2009": 2304080.69,
+   "2010": 652006.12,
+   "2011": 441512.06,
+   "2012": 3047.46
+  },
+  "total_eur": 3400646.33,
+  "operations": [
+   {
+    "ap_cle": "B100/0703636",
+    "ap_texte": "STADE CHARLETY",
+    "mandate_par_annee": {
+     "2009": 2304080.69,
+     "2010": 652006.12,
+     "2011": 441512.06,
+     "2012": 3047.46
+    },
+    "total_mandate": 3400646.33,
+    "preuve": "Libellé de l'opération = « STADE CHARLETY », mission « JEUNESSE ET SPORTS », direction DJS — l'opération désigne nommément ce stade, équipement sportif municipal du 13e géré par la DJS (cf. délibérations DJS du Conseil de Paris, ex. 2023 DJS 62 « PUC Social Club, Stade Charléty (13e) »).",
+    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/0703636"
+   }
+  ],
+  "periode": [
+   "2009",
+   "2012"
+  ],
+  "source": {
+   "name": "Comptes administratifs — autorisations de programme, Ville de Paris",
+   "url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/"
+  }
+ },
  "sources": {
   "delibs": {
    "name": "Débat-Délibs — Conseil de Paris",

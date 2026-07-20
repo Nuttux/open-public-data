@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T10:03:14.731611+00:00",
+ "generated_at": "2026-07-20T11:16:58.583958+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "les-halles",
  "name": "Les Halles",
@@ -408,6 +408,131 @@
  "bmo_recit": null,
  "invest": [],
  "marches": [],
+ "mandate": {
+  "par_annee": {
+   "2010": 87652060.21,
+   "2011": 24109565.2,
+   "2012": 29748199.21,
+   "2013": 9450142.47,
+   "2014": 4999689.1,
+   "2015": 422955.22,
+   "2016": 326851.61
+  },
+  "total_eur": 156709463.02,
+  "operations": [
+   {
+    "ap_cle": "B100/1004063",
+    "ap_texte": "LES HALLES - COMPTE FONCIER",
+    "mandate_par_annee": {
+     "2010": 87652060.21
+    },
+    "total_mandate": 87652060.21,
+    "preuve": "Libellé « LES HALLES - COMPTE FONCIER » (direction DU) : opérations foncières du réaménagement du quartier des Halles, confirmées par les délibérations SG 95 (nov. 2010, « protocole foncier entre la Ville de Paris et la Société Civile du Forum des Halles », « résiliation partielle des baux à construction des 22 juillet 1976 et 29 novembre 1976 ») et 2013 SG 144 (« déclassement et cession de volumes… du Forum »).",
+    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/1004063"
+   },
+   {
+    "ap_cle": "B100/1204063",
+    "ap_texte": "COMPTE FONCIER - LES HALLES",
+    "mandate_par_annee": {
+     "2012": 29748199.21,
+     "2013": 419651.44
+    },
+    "total_mandate": 30167850.65,
+    "preuve": "Libellé « COMPTE FONCIER - LES HALLES » (direction DU) : volet foncier du réaménagement du quartier des Halles (1er), cohérent avec les délibérations foncières du site (protocole foncier nov. 2010 ; 2011 SG 113 « déclassement des emprises de voirie, de jardin et des équipements publics municipaux »).",
+    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/1204063"
+   },
+   {
+    "ap_cle": "B100/1104063",
+    "ap_texte": "COMPTE FONCIER -  LES HALLES",
+    "mandate_par_annee": {
+     "2011": 24109565.2
+    },
+    "total_mandate": 24109565.2,
+    "preuve": "Libellé « COMPTE FONCIER - LES HALLES » (direction DU) : volet foncier du réaménagement du quartier des Halles (1er), cohérent avec 2011 SG 113 « déclassement des emprises de voirie, de jardin et des équipements publics municipaux » du quartier des Halles.",
+    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/1104063"
+   },
+   {
+    "ap_cle": "B100/1304063",
+    "ap_texte": "COMPTE FONCIER - LES HALLES",
+    "mandate_par_annee": {
+     "2013": 9030491.03
+    },
+    "total_mandate": 9030491.03,
+    "preuve": "Libellé « COMPTE FONCIER - LES HALLES » (direction DU) : volet foncier du réaménagement du quartier des Halles (1er), cohérent avec 2013 SG 144 « déclassement et cession de volumes des circulations verticales du Forum ».",
+    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/1304063"
+   },
+   {
+    "ap_cle": "1404063",
+    "ap_texte": "COMPTE FONCIER - LES HALLES",
+    "mandate_par_annee": {
+     "2014": 3982448.31
+    },
+    "total_mandate": 3982448.31,
+    "preuve": "Libellé « COMPTE FONCIER - LES HALLES » (direction DU) : volet foncier du réaménagement du quartier des Halles (1er), même série d'opérations x04063 que les comptes fonciers Halles 2010-2013.",
+    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=1404063"
+   },
+   {
+    "ap_cle": "1304063",
+    "ap_texte": "COMPTE FONCIER - LES HALLES",
+    "mandate_par_annee": {
+     "2014": 1017240.79,
+     "2015": 39670.33
+    },
+    "total_mandate": 1056911.12,
+    "preuve": "Libellé « COMPTE FONCIER - LES HALLES » (direction DU) : volet foncier du réaménagement du quartier des Halles (1er), même série d'opérations x04063.",
+    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=1304063"
+   },
+   {
+    "ap_cle": "1504063",
+    "ap_texte": "COMPTE FONCIER - LES HALLES",
+    "mandate_par_annee": {
+     "2015": 183284.89,
+     "2016": 56573.67
+    },
+    "total_mandate": 239858.56,
+    "preuve": "Libellé « COMPTE FONCIER - LES HALLES » (direction DU) : volet foncier du réaménagement du quartier des Halles (1er), même série d'opérations x04063.",
+    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=1504063"
+   },
+   {
+    "ap_cle": "1604063",
+    "ap_texte": "COMPTE FONCIER - LES HALLES",
+    "mandate_par_annee": {
+     "2016": 203691.0
+    },
+    "total_mandate": 203691.0,
+    "preuve": "Libellé « COMPTE FONCIER - LES HALLES » (direction DU) : volet foncier du réaménagement du quartier des Halles (1er), même série d'opérations x04063.",
+    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=1604063"
+   },
+   {
+    "ap_cle": "1504807",
+    "ap_texte": "PEPINIERE HIP HOP LES HALLES",
+    "mandate_par_annee": {
+     "2015": 200000.0
+    },
+    "total_mandate": 200000.0,
+    "preuve": "Libellé « PEPINIERE HIP HOP LES HALLES » (direction DAE, mission Développement éco.) : le libellé de l'opération nomme explicitement le lieu.",
+    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=1504807"
+   },
+   {
+    "ap_cle": "1404111",
+    "ap_texte": "MOUVEMENTS D'ORDRE - LES HALLES",
+    "mandate_par_annee": {
+     "2016": 66586.94
+    },
+    "total_mandate": 66586.94,
+    "preuve": "Libellé « MOUVEMENTS D'ORDRE - LES HALLES » (direction DPA, mission Patrimoine et architecture) : opération explicitement rattachée au site des Halles ; confiance moyenne car il s'agit de mouvements d'ordre comptables, sans détail de travaux dans le libellé.",
+    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=1404111"
+   }
+  ],
+  "periode": [
+   "2010",
+   "2016"
+  ],
+  "source": {
+   "name": "Comptes administratifs — autorisations de programme, Ville de Paris",
+   "url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/"
+  }
+ },
  "sources": {
   "delibs": {
    "name": "Débat-Délibs — Conseil de Paris",

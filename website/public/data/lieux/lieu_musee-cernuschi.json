@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T10:03:14.731611+00:00",
+ "generated_at": "2026-07-20T11:16:58.583958+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "musee-cernuschi",
  "name": "Musée Cernuschi",
@@ -366,6 +366,32 @@
  "bmo_recit": null,
  "invest": [],
  "marches": [],
+ "mandate": {
+  "par_annee": {
+   "2009": 90780.48
+  },
+  "total_eur": 90780.48,
+  "operations": [
+   {
+    "ap_cle": "B100/0500134",
+    "ap_texte": "MUSEE CERNUSCHI",
+    "mandate_par_annee": {
+     "2009": 90780.48
+    },
+    "total_mandate": 90780.48,
+    "preuve": "Libellé de l'opération « MUSEE CERNUSCHI » (direction DAC, mission AFFAIRES CULTURELLES) désigne nommément ce lieu ; identité et adresse confirmées par les délibérations du Conseil de Paris (ex. 2008 DPA 150/151 : « travaux de réaménagement réalisés au Musée Cernuschi, 7, avenue Vélasquez (8ème) », période cohérente avec le mandaté 2009).",
+    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/0500134"
+   }
+  ],
+  "periode": [
+   "2009",
+   "2009"
+  ],
+  "source": {
+   "name": "Comptes administratifs — autorisations de programme, Ville de Paris",
+   "url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/"
+  }
+ },
  "sources": {
   "delibs": {
    "name": "Débat-Délibs — Conseil de Paris",

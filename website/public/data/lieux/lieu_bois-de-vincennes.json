@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T10:03:14.731611+00:00",
+ "generated_at": "2026-07-20T11:16:58.583958+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "bois-de-vincennes",
  "name": "Bois de Vincennes",
@@ -45,7 +45,7 @@
   {
    "beneficiaire": "CABANES",
    "montant_total": 5000.0,
-   "preuve": "Objet de la subvention (verbatim) : « Mois d’août de la culture 2020 - Concerts, lectures musicales et art dans le bois de Vincennes ». L’objet nomme explicitement le lieu et décrit une programmation culturelle ponctuelle qui s’y déroule (août 2020) : aide à une activité DANS le bois, aucun élément de l’objet n’indique une mission de gestion ou d’entretien du site — rôle « resident », pas exploitant."
+   "preuve": "Objet de la subvention (verbatim) : « Mois d’août de la culture 2020 - Concerts, lectures musicales et art dans le bois de Vincennes » — aide à une activité culturelle ponctuelle DANS le bois ; rien dans l’objet n’indique une mission de gestion du site (le bois est géré en régie par la DEVE, cf. délibérations « gestion globale du bois de Vincennes », Conseil de Paris mai 2022)."
   }
  ],
  "kpi_montant": null,
@@ -172,7 +172,7 @@
    "fournisseur": "LES PAVEURS DE MONTROUGE/SETHY",
    "montant_max": 847455.03,
    "date_notification": "2018-11-14",
-   "preuve": "L’objet nomme le lieu et porte sur des travaux qui s’y déroulent : « TRAVAUX D'AMENAGEMENT LE BOIS DE VINCENNES PARIS 12ÈME »."
+   "preuve": "L’objet nomme le lieu et porte sur des travaux qui s’y déroulent : « TRAVAUX D'AMENAGEMENT LE BOIS DE VINCENNES PARIS 12ÈME », arrondissement concordant (12e)."
   },
   {
    "numero_marche": "20151400000759",
@@ -199,7 +199,7 @@
    "fournisseur": "ESPACE DECO",
    "montant_max": 400000.0,
    "date_notification": "2025-08-19",
-   "preuve": "Objet entièrement dédié au lieu : « Entretien des jeunes peuplements forestiers dans le bois de Vincennes (12ème) »."
+   "preuve": "Objet entièrement dédié au lieu : « Entretien des jeunes peuplements forestiers dans le bois de Vincennes (12ème) », arrondissement concordant."
   },
   {
    "numero_marche": "20212021T01103",
@@ -208,7 +208,7 @@
    "fournisseur": "DARRAS ET JOUANIN",
    "montant_max": 390751.46,
    "date_notification": "2021-03-05",
-   "preuve": "L’objet nomme le lieu et porte sur ses bâtiments d’exploitation forestière : « RESTRUCTURATION LOCAUX BÛCHERONS-BOIS DE VINCENNES 75012 »."
+   "preuve": "L’objet nomme le lieu et porte sur ses bâtiments d’exploitation forestière : « RESTRUCTURATION LOCAUX BÛCHERONS-BOIS DE VINCENNES 75012 », code postal 12e concordant."
   },
   {
    "numero_marche": "20212021S05431",
@@ -226,7 +226,7 @@
    "fournisseur": "SERRURERIE MENUISERIE",
    "montant_max": 123889.95,
    "date_notification": "2013-11-27",
-   "preuve": "L’objet nomme le lieu et porte sur la restauration d’un édifice qui s’y trouve : « RESTAURATION PAGODE BOIS DE VINCENNES LOT 4 » (lot 4 d’un chantier dont les lots 2 et 3 figurent aussi aux candidats)."
+   "preuve": "L’objet nomme le lieu et porte sur la restauration d’un édifice qui s’y trouve : « RESTAURATION PAGODE BOIS DE VINCENNES LOT 4 » — la Pagode fait partie du bois (enclos bouddhique, cf. délibération 2025 DAC 430 « dans l’enclos bouddhique du bois de Vincennes (12e) ») ; concorde avec l’AP DAC « PAGODE DU BOIS DE VINCENNES » mandatée 2012-2017."
   },
   {
    "numero_marche": "20131320010654",
@@ -244,16 +244,7 @@
    "fournisseur": "A.D.N",
    "montant_max": 120000.0,
    "date_notification": "2026-03-27",
-   "preuve": "L’objet désigne nommément le lieu comme site de la prestation : « … fauchage de prairies et pelouses, de débroussaillage de bords de voies et de taillage de haies pour les bois de Vincennes (12ème arrondissement) … ». Réserve : marché multi-sites (bois de Boulogne 16e et un autre domaine), le montant maximum n’est pas dépensé au seul bois de Vincennes — voir bois-de-vincennes_perimetre.json."
-  },
-  {
-   "numero_marche": "decp-2026S01626",
-   "objet": "Prestations de fauchage de prairies et pelouses, de débroussaillage de bords de voies et de taillage de haies pour les bois de Vincennes (12ème arrondissement) et Boulogne (16ème arrondissement), ains",
-   "objet_clair": null,
-   "fournisseur": "ROBERT PAYSAGE",
-   "montant_max": 120000.0,
-   "date_notification": "2026-03-27",
-   "preuve": "Même objet, autre attributaire : « … pour les bois de Vincennes (12ème arrondissement) et Boulogne (16ème arrondissement) … ». Le lieu est nommé comme site de la prestation. Réserve : marché multi-sites, le montant maximum n’est pas dépensé au seul bois de Vincennes — voir bois-de-vincennes_perimetre.json."
+   "preuve": "L’objet (verbatim, tronqué dans la source) nomme explicitement ce lieu : « Prestations de fauchage… pour les bois de Vincennes (12ème arrondissement) et Boulogne (16ème arrondissement)… » — prestation qui s’y déroule. Réserve : marché multi-sites (Vincennes, Boulogne et un domaine hors Paris) ; la répartition par lot n’est pas vérifiable dans la source, le montant maximum n’est donc pas dépensé au seul bois de Vincennes."
   },
   {
    "numero_marche": "20131320010652",
@@ -262,9 +253,174 @@
    "fournisseur": "UNION TECHNIQUE DU BATIMENT",
    "montant_max": 99373.0,
    "date_notification": "2014-01-09",
-   "preuve": "L’objet nomme le lieu : « RESTAURATION DE LA PAGODE DU BOIS DE VINCENNES LOT 3 »."
+   "preuve": "L’objet nomme le lieu : « RESTAURATION DE LA PAGODE DU BOIS DE VINCENNES LOT 3 » — même chantier de restauration de la Pagode du bois de Vincennes."
   }
  ],
+ "mandate": {
+  "par_annee": {
+   "2009": 1618398.29,
+   "2010": 1219935.44,
+   "2011": 2045857.45,
+   "2012": 799620.64,
+   "2013": 987734.11,
+   "2014": 1247676.33,
+   "2015": 715865.42,
+   "2016": 827396.56,
+   "2017": 1176805.59
+  },
+  "total_eur": 10639289.83,
+  "operations": [
+   {
+    "ap_cle": "B100/0800657",
+    "ap_texte": "BOIS DE VINCENNES",
+    "mandate_par_annee": {
+     "2009": 1076688.47,
+     "2010": 16835.72,
+     "2011": 1175857.16,
+     "2012": 518032.78,
+     "2013": 40326.26
+    },
+    "total_mandate": 2827740.39,
+    "preuve": "Libellé d’opération « BOIS DE VINCENNES », direction DEVE, mission « ESPACES VERTS ET ENV » — opération d’investissement désignant ce lieu ; enveloppe couvrant l’ensemble du site (~995 ha).",
+    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/0800657"
+   },
+   {
+    "ap_cle": "B100/0700657",
+    "ap_texte": "BOIS DE VINCENNES",
+    "mandate_par_annee": {
+     "2009": 501254.35,
+     "2010": 1201316.48,
+     "2011": 590609.56,
+     "2012": 37472.84
+    },
+    "total_mandate": 2330653.23,
+    "preuve": "Libellé d’opération « BOIS DE VINCENNES », direction DEVE, mission « ESPACES VERTS ET ENV » — opération d’investissement désignant ce lieu ; enveloppe couvrant l’ensemble du site.",
+    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/0700657"
+   },
+   {
+    "ap_cle": "1500657",
+    "ap_texte": "BOIS DE VINCENNES",
+    "mandate_par_annee": {
+     "2015": 563407.91,
+     "2016": 692675.42,
+     "2017": 385023.55
+    },
+    "total_mandate": 1641106.88,
+    "preuve": "Libellé d’opération « BOIS DE VINCENNES », direction DEVE, mission « ESPACES VERTS ET ENV » — opération d’investissement désignant ce lieu ; enveloppe couvrant l’ensemble du site.",
+    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=1500657"
+   },
+   {
+    "ap_cle": "1004006",
+    "ap_texte": "PAGODE DU BOIS DE VINCENNES",
+    "mandate_par_annee": {
+     "2014": 763852.47,
+     "2015": 69705.02,
+     "2016": 79977.14,
+     "2017": 24468.45
+    },
+    "total_mandate": 938003.08,
+    "preuve": "Libellé « PAGODE DU BOIS DE VINCENNES » (DAC, mission « AFFAIRES CULTURELLES ») — restauration d’un édifice du bois (enclos bouddhique, cf. délibération 2025 DAC 430) ; concorde avec les marchés de restauration de la Pagode notifiés 2013-2014.",
+    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=1004006"
+   },
+   {
+    "ap_cle": "1400657",
+    "ap_texte": "BOIS DE VINCENNES",
+    "mandate_par_annee": {
+     "2014": 483823.86,
+     "2015": 82752.49
+    },
+    "total_mandate": 566576.35,
+    "preuve": "Libellé d’opération « BOIS DE VINCENNES », direction DEVE, mission « ESPACES VERTS ET ENV » — opération d’investissement désignant ce lieu ; enveloppe couvrant l’ensemble du site.",
+    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=1400657"
+   },
+   {
+    "ap_cle": "B100/0900657",
+    "ap_texte": "BOIS DE VINCENNES",
+    "mandate_par_annee": {
+     "2009": 40455.47,
+     "2010": 1783.24,
+     "2011": 2520.82,
+     "2012": 228767.12,
+     "2013": 254258.24
+    },
+    "total_mandate": 527784.89,
+    "preuve": "Libellé d’opération « BOIS DE VINCENNES », direction DEVE, mission « ESPACES VERTS ET ENV » — opération d’investissement désignant ce lieu ; enveloppe couvrant l’ensemble du site.",
+    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/0900657"
+   },
+   {
+    "ap_cle": "B100/1100657",
+    "ap_texte": "BOIS DE VINCENNES",
+    "mandate_par_annee": {
+     "2011": 28903.65,
+     "2012": 11063.84,
+     "2013": 430451.55
+    },
+    "total_mandate": 470419.04,
+    "preuve": "Libellé d’opération « BOIS DE VINCENNES », direction DEVE, mission « ESPACES VERTS ET ENV » — opération d’investissement désignant ce lieu ; enveloppe couvrant l’ensemble du site.",
+    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/1100657"
+   },
+   {
+    "ap_cle": "1604915",
+    "ap_texte": "BAIGNADE DAUMESNIL - BOIS DE VINCENNES (",
+    "mandate_par_annee": {
+     "2016": 54744.0,
+     "2017": 356597.04
+    },
+    "total_mandate": 411341.04,
+    "preuve": "Libellé « BAIGNADE DAUMESNIL - BOIS DE VINCENNES » (DJS) — aménagement de la baignade du lac Daumesnil, plan d’eau situé dans le bois (cf. vœu Conseil de Paris oct. 2023 sur « la pollution des plans d’eau du bois de Vincennes »).",
+    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=1604915"
+   },
+   {
+    "ap_cle": "1700657",
+    "ap_texte": "BOIS DE VINCENNES",
+    "mandate_par_annee": {
+     "2017": 410716.55
+    },
+    "total_mandate": 410716.55,
+    "preuve": "Libellé d’opération « BOIS DE VINCENNES », direction DEVE, mission « ESPACES VERTS ET ENV » — opération d’investissement désignant ce lieu ; enveloppe couvrant l’ensemble du site.",
+    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=1700657"
+   },
+   {
+    "ap_cle": "B100/1000657",
+    "ap_texte": "BOIS DE VINCENNES",
+    "mandate_par_annee": {
+     "2011": 247966.26
+    },
+    "total_mandate": 247966.26,
+    "preuve": "Libellé d’opération « BOIS DE VINCENNES », direction DEVE, mission « ESPACES VERTS ET ENV » — opération d’investissement désignant ce lieu ; enveloppe couvrant l’ensemble du site.",
+    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/1000657"
+   },
+   {
+    "ap_cle": "B100/1200657",
+    "ap_texte": "BOIS DE VINCENNES",
+    "mandate_par_annee": {
+     "2013": 208778.01
+    },
+    "total_mandate": 208778.01,
+    "preuve": "Libellé d’opération « BOIS DE VINCENNES », direction DEVE, mission « ESPACES VERTS ET ENV » — opération d’investissement désignant ce lieu ; enveloppe couvrant l’ensemble du site.",
+    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/1200657"
+   },
+   {
+    "ap_cle": "B100/1004006",
+    "ap_texte": "PAGODE DU BOIS DE VINCENNES",
+    "mandate_par_annee": {
+     "2012": 4284.06,
+     "2013": 53920.05
+    },
+    "total_mandate": 58204.11,
+    "preuve": "Libellé « PAGODE DU BOIS DE VINCENNES » (DAC, mission « AFFAIRES CULTURELLES ») — restauration d’un édifice du bois (enclos bouddhique) ; concorde avec les marchés de restauration de la Pagode notifiés 2013-2014.",
+    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/1004006"
+   }
+  ],
+  "periode": [
+   "2009",
+   "2017"
+  ],
+  "source": {
+   "name": "Comptes administratifs — autorisations de programme, Ville de Paris",
+   "url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/"
+  }
+ },
  "sources": {
   "delibs": {
    "name": "Débat-Délibs — Conseil de Paris",

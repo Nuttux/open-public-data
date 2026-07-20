@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T10:03:14.731611+00:00",
+ "generated_at": "2026-07-20T11:16:58.583958+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "theatre-de-la-ville",
  "name": "Théâtre de la Ville",
@@ -400,7 +400,7 @@
    "annee": "2022",
    "montant_eur": 9655229.389999999,
    "nom_projet": "THEATRE DE LA VILLE - RENOVATION",
-   "preuve": "le nom du projet nomme ce lieu : « THEATRE DE LA VILLE - RENOVATION », à 96 m. Confirmé par 2015 DPA 34 « Théâtre de la Ville 2, place du Châtelet (4e) - Rénovation partielle » et par le débat de septembre 2019 : « le chantier de rénovation du théâtre de la Ville ».",
+   "preuve": "Le nom du projet nomme ce lieu : « THEATRE DE LA VILLE - RENOVATION », à 96 m du point du lieu. Confirmé par 2015 DPA 34 « Théâtre de la Ville 2, place du Châtelet (4e) - Rénovation partielle » et par le débat de septembre 2019 : « le chantier de rénovation du théâtre de la Ville ».",
    "id": "2022_gen_9d45860f"
   }
  ],
@@ -412,7 +412,7 @@
    "fournisseur": "COLAS FRANCE",
    "montant_max": 14657894.43,
    "date_notification": "2018-12-18",
-   "preuve": "objet verbatim « CSP5 RENOVATION THEATRE DE LA VILLE - LOT 2 : TVX BAT. TCE » : travaux du bâtiment de ce théâtre."
+   "preuve": "Objet nomme le lieu et l'opération : « RENOVATION THEATRE DE LA VILLE - LOT 2 : TVX BAT. TCE » — lot travaux bâtiment du chantier de rénovation acté par 2015 DPA 34."
   },
   {
    "numero_marche": "20181210001697",
@@ -421,7 +421,7 @@
    "fournisseur": "A M G  FECHOZ",
    "montant_max": 4832500.0,
    "date_notification": "2018-12-18",
-   "preuve": "objet verbatim « CSP5 RENOVATION THEATRE DE LA VILLE - LOT 3 : SCENOGRAPHIE » : lot scénographie de la rénovation de ce théâtre."
+   "preuve": "Objet nomme le lieu : « RENOVATION THEATRE DE LA VILLE - LOT 3 : SCENOGRAPHIE » — lot scénographie du même chantier."
   },
   {
    "numero_marche": "20151210001173",
@@ -430,7 +430,7 @@
    "fournisseur": "BLOND ET ROUX ARCHITECTES",
    "montant_max": 3093225.14,
    "date_notification": "2015-06-30",
-   "preuve": "objet verbatim « RÉNOVATION PARTIELLE THÉÂTRE DE LA VILLE 75004   MOE » : nomme le lieu ET le code postal 75004 (2 place du Châtelet)."
+   "preuve": "Objet nomme le lieu et son code postal : « RÉNOVATION PARTIELLE THÉÂTRE DE LA VILLE 75004 » (4e arr. du lieu) — même intitulé que 2015 DPA 34 « Rénovation partielle »."
   },
   {
    "numero_marche": "20181210001036",
@@ -439,7 +439,7 @@
    "fournisseur": "SUPRAMIANTE",
    "montant_max": 1377686.05,
    "date_notification": "2018-07-16",
-   "preuve": "objet verbatim « CSP5 TVX DE CURAGE & DEPOLLUTION THEATRE DE LA VILLE 4ÈME » : nomme le lieu et l'arrondissement (4e)."
+   "preuve": "Objet nomme le lieu et l'arrondissement : « TVX DE CURAGE & DEPOLLUTION THEATRE DE LA VILLE 4ÈME »."
   },
   {
    "numero_marche": "20191210001361",
@@ -448,7 +448,7 @@
    "fournisseur": "STE LOUIS GENESTE ET SES FILS",
    "montant_max": 1080033.02,
    "date_notification": "2019-11-14",
-   "preuve": "objet verbatim « SA4 DEPLOMBAGE/RESTAURATION THEATRE DE LA VILLE » : travaux de déplombage/restauration sur ce bâtiment."
+   "preuve": "Objet nomme le lieu : « DEPLOMBAGE/RESTAURATION THEATRE DE LA VILLE » — travaux sur le bâtiment pendant le chantier de rénovation en cours en 2019."
   },
   {
    "numero_marche": "20191210020021",
@@ -457,7 +457,7 @@
    "fournisseur": "JEZET SEATING SA",
    "montant_max": 499825.0,
    "date_notification": "2019-08-29",
-   "preuve": "objet verbatim « SA4 TVX RÉNOVATION THÉÂTRE DE LA VILLE LOT4 FAUTEUILS » : lot fauteuils de la rénovation de la salle."
+   "preuve": "Objet nomme le lieu : « TVX RÉNOVATION THÉÂTRE DE LA VILLE LOT4 FAUTEUILS » — fauteuils de la salle rénovée."
   },
   {
    "numero_marche": "20151210000972",
@@ -466,7 +466,7 @@
    "fournisseur": "SN ERCT CONSTRUCTION",
    "montant_max": 494514.82,
    "date_notification": "2015-06-10",
-   "preuve": "objet verbatim « REMPLACEMENT DU MONTE-DÉCOR THÉÂTRE DE LA VILLE 75004 » : équipement scénique du bâtiment, code postal 75004."
+   "preuve": "Objet nomme le lieu et son code postal : « REMPLACEMENT DU MONTE-DÉCOR THÉÂTRE DE LA VILLE 75004 » — équipement scénique du bâtiment du 4e."
   },
   {
    "numero_marche": "20131210008861",
@@ -475,7 +475,7 @@
    "fournisseur": "A M G  FECHOZ",
    "montant_max": 488292.0,
    "date_notification": "2013-03-29",
-   "preuve": "objet verbatim « REMPLACT DU PROSCENIUM ET DE L'ÉCLAIRAGE THÉÂTRE DE LA VILLE » : équipement de la scène de ce théâtre ; cohérent avec 2006 DPA 59 « travaux de mise aux normes de la gradation de l'éclairage scénique au Théâtre de la Ville sis 2, place du Châtelet (4e) »."
+   "preuve": "Objet nomme le lieu : « REMPLACT DU PROSCENIUM ET DE L'ÉCLAIRAGE THÉÂTRE DE LA VILLE » — équipement de scène du théâtre."
   },
   {
    "numero_marche": "20141210011769",
@@ -484,7 +484,7 @@
    "fournisseur": "AC2P",
    "montant_max": 483079.65,
    "date_notification": "2014-07-10",
-   "preuve": "objet verbatim « MODERNISATION LOCAUX ET SSI THÉÂTRE DE LA VILLE » : locaux et système de sécurité incendie de ce bâtiment."
+   "preuve": "Objet nomme le lieu : « MODERNISATION LOCAUX ET SSI THÉÂTRE DE LA VILLE » (système de sécurité incendie) ; cohérent avec 2013 DAC 673 qui finance équipements et « système de sécurité » du théâtre."
   },
   {
    "numero_marche": "20202020S07442",
@@ -493,7 +493,7 @@
    "fournisseur": "IPCS",
    "montant_max": 209950.0,
    "date_notification": "2020-11-20",
-   "preuve": "objet verbatim « OPC RÉNOVATION THÉÂTRE DE LA VILLE 75004 » : pilotage du chantier de rénovation, code postal 75004."
+   "preuve": "Objet nomme le lieu et son code postal : « OPC RÉNOVATION THÉÂTRE DE LA VILLE 75004 » — ordonnancement-pilotage du chantier."
   },
   {
    "numero_marche": "20232023T07085",
@@ -502,7 +502,7 @@
    "fournisseur": "GUILLET",
    "montant_max": 174000.0,
    "date_notification": "2023-07-31",
-   "preuve": "objet verbatim « FABRICATION GRADIN SPECIFIQUE COUPOLE THEATRE DE LA VILLE » : équipement de gradin nommant ce théâtre (l'espace « Coupole » désigné n'est pas décrit ailleurs dans les sources consultées)."
+   "preuve": "Objet nomme le lieu : « FABRICATION GRADIN SPECIFIQUE COUPOLE THEATRE DE LA VILLE » — gradin pour une salle (coupole) du théâtre."
   },
   {
    "numero_marche": "20232023F02219",
@@ -511,7 +511,7 @@
    "fournisseur": "SOCIETE NOUVELLE LEBLANC SCENIQUE",
    "montant_max": 147943.0,
    "date_notification": "2023-04-05",
-   "preuve": "objet verbatim « FOURNITURE INSTALLATION DRAPERIES THEATRE DE LA VILLE » : installation de draperies dans ce théâtre."
+   "preuve": "Objet nomme le lieu : « FOURNITURE INSTALLATION DRAPERIES THEATRE DE LA VILLE » — draperies scéniques installées au théâtre."
   },
   {
    "numero_marche": "20181210001512",
@@ -520,7 +520,7 @@
    "fournisseur": "BLOND ET ROUX ARCHITECTES",
    "montant_max": 137995.0,
    "date_notification": "2018-11-29",
-   "preuve": "objet verbatim « MOE RESTAURATION DES FAÇADES THÉÂTRE DE LA VILLE 75004 » : façades de ce bâtiment ; confirmé par le débat 2019 DAC 80 sur « l'échafaudage de restauration du Théâtre de la Ville (4e) » dont les recettes « permettront la rénovation des façades du bâtiment »."
+   "preuve": "Objet nomme le lieu et son code postal : « RESTAURATION DES FAÇADES THÉÂTRE DE LA VILLE 75004 » ; opération confirmée par 2019 DAC 80 « l'échafaudage de restauration du Théâtre de la Ville (4e) »."
   },
   {
    "numero_marche": "20151210001777",
@@ -529,7 +529,7 @@
    "fournisseur": "BTP CONSULTANTS",
    "montant_max": 98950.0,
    "date_notification": "2015-11-20",
-   "preuve": "objet verbatim « CSP5 BCT RENOVATION PARTIELLE THEATRE DE LA VILLE LOT1 » : contrôle technique de la rénovation partielle actée par 2015 DPA 34."
+   "preuve": "Objet nomme le lieu et l'opération : « BCT RENOVATION PARTIELLE THEATRE DE LA VILLE LOT1 » — contrôle technique du chantier 2015 DPA 34."
   },
   {
    "numero_marche": "20212021S00647",
@@ -538,7 +538,7 @@
    "fournisseur": "BLOND ET ROUX ARCHITECTES",
    "montant_max": 89995.83,
    "date_notification": "2021-02-12",
-   "preuve": "objet verbatim « MOE SCÉNOGRAPHIE HALL THÉÂTRE DE LA VILLE » : maîtrise d'œuvre sur le hall de ce théâtre."
+   "preuve": "Objet nomme le lieu : « MOE SCÉNOGRAPHIE HALL THÉÂTRE DE LA VILLE » — hall du théâtre, même maître d'œuvre que la rénovation (Blond et Roux Architectes)."
   },
   {
    "numero_marche": "20141210000160",
@@ -547,7 +547,7 @@
    "fournisseur": "ABCD",
    "montant_max": 47375.0,
    "date_notification": "2014-12-01",
-   "preuve": "objet verbatim « AMO RÉNOVATION PARTIELLE DU THÉÂTRE DE LA VILLE » : assistance à maîtrise d'ouvrage sur la rénovation partielle de ce théâtre."
+   "preuve": "Objet nomme le lieu et l'opération : « AMO RÉNOVATION PARTIELLE DU THÉÂTRE DE LA VILLE » — assistance à maîtrise d'ouvrage du chantier 2015 DPA 34."
   },
   {
    "numero_marche": "20151210001796",
@@ -556,7 +556,7 @@
    "fournisseur": "QUALICONSULT SECURITE",
    "montant_max": 45640.01,
    "date_notification": "2015-11-26",
-   "preuve": "objet verbatim « CSP5 PI CSPS RENOVATION PARTIELLE THEATRE DE LA VILLE LOT 2 » : coordination sécurité du chantier de rénovation partielle."
+   "preuve": "Objet nomme le lieu et l'opération : « CSPS RENOVATION PARTIELLE THEATRE DE LA VILLE LOT 2 » — coordination sécurité-santé du chantier."
   },
   {
    "numero_marche": "20232023T05623",
@@ -565,7 +565,7 @@
    "fournisseur": "ATELIER MOSC",
    "montant_max": 39999.0,
    "date_notification": "2023-06-29",
-   "preuve": "objet verbatim « MEUBLES SUR MESURE LIBRAIRIE THEATRE DE LA VILLE 4EME » : mobilier de la librairie du théâtre, arrondissement 4e."
+   "preuve": "Objet nomme le lieu et l'arrondissement : « MEUBLES SUR MESURE LIBRAIRIE THEATRE DE LA VILLE 4EME » — aménagement de la librairie du théâtre."
   },
   {
    "numero_marche": "20201210020001",
@@ -574,7 +574,7 @@
    "fournisseur": "PROJECTIO",
    "montant_max": 32832.0,
    "date_notification": "2020-01-28",
-   "preuve": "objet verbatim « SUBSÉQUENT SPS RÉNOVATION ET FAÇADES THÉÂTRE DE LA VILLE » : sécurité du chantier de rénovation et de façades de ce théâtre."
+   "preuve": "Objet nomme le lieu et les deux opérations menées sur le bâtiment : « SPS RÉNOVATION ET FAÇADES THÉÂTRE DE LA VILLE »."
   },
   {
    "numero_marche": "20201320000606",
@@ -583,9 +583,114 @@
    "fournisseur": "SAS 2GUEUDRY CONSTRUCTIONS",
    "montant_max": 28850.0,
    "date_notification": "2020-09-29",
-   "preuve": "objet verbatim « RESTAURATION MISE A DISPOSITION-MARCHES THEATRE DE LA VILLE » : le libellé nomme ce théâtre et non une autre adresse, et le titulaire est une entreprise de construction (SAS 2GUEUDRY CONSTRUCTIONS), cohérent avec le chantier de restauration en cours en 2020. Libellé abrégé : la nature exacte de la prestation n'est pas établie par les sources consultées, d'où une confiance moyenne."
+   "preuve": "Objet nomme le lieu : « RESTAURATION MISE A DISPOSITION-MARCHES THEATRE DE LA VILLE » — libellé abrégé mais notifié pendant le chantier de restauration du théâtre (2020) ; nature exacte de la prestation moins explicite que les autres lots."
   }
  ],
+ "mandate": {
+  "par_annee": {
+   "2009": 10395.09,
+   "2010": 675.81,
+   "2011": 82369.31,
+   "2012": 252831.31,
+   "2013": 742934.93,
+   "2014": 636451.14,
+   "2015": 1003945.93,
+   "2016": 1054804.97,
+   "2017": 1806281.38
+  },
+  "total_eur": 5590689.87,
+  "operations": [
+   {
+    "ap_cle": "1604553",
+    "ap_texte": "THEATRE DE LA VILLE - RENOVATION",
+    "mandate_par_annee": {
+     "2016": 663467.19,
+     "2017": 1763908.17
+    },
+    "total_mandate": 2427375.36,
+    "preuve": "Libellé nomme ce lieu et l'opération : « THEATRE DE LA VILLE - RENOVATION » (DAC, Affaires culturelles) — chantier de rénovation du bâtiment place du Châtelet acté par 2015 DPA 34.",
+    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=1604553"
+   },
+   {
+    "ap_cle": "1202065",
+    "ap_texte": "THEATRE DE LA VILLE",
+    "mandate_par_annee": {
+     "2014": 636451.14,
+     "2015": 602088.4,
+     "2016": 123150.98
+    },
+    "total_mandate": 1361690.52,
+    "preuve": "Libellé désigne ce lieu : « THEATRE DE LA VILLE » (DAC, Affaires culturelles). Enveloppe au nom du lieu, sans détail d'opération ; l'association exploitante gérant aussi le Théâtre des Abbesses, une part peut concerner l'établissement dans son ensemble.",
+    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=1202065"
+   },
+   {
+    "ap_cle": "B100/1202065",
+    "ap_texte": "THEATRE DE LA VILLE",
+    "mandate_par_annee": {
+     "2012": 213904.17,
+     "2013": 742235.93
+    },
+    "total_mandate": 956140.1,
+    "preuve": "Libellé désigne ce lieu : « THEATRE DE LA VILLE » (DAC, Affaires culturelles). Enveloppe au nom du lieu, sans détail d'opération ; peut couvrir l'établissement dans son ensemble (site des Abbesses inclus).",
+    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/1202065"
+   },
+   {
+    "ap_cle": "1404553",
+    "ap_texte": "THEATRE DE LA VILLE - RENOVATION",
+    "mandate_par_annee": {
+     "2015": 401857.53,
+     "2016": 268186.8,
+     "2017": 42373.21
+    },
+    "total_mandate": 712417.54,
+    "preuve": "Libellé nomme ce lieu et l'opération : « THEATRE DE LA VILLE - RENOVATION » (DAC) — correspond à la rénovation du bâtiment place du Châtelet (2015 DPA 34, mandats 2015-2017).",
+    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=1404553"
+   },
+   {
+    "ap_cle": "B100/0702065",
+    "ap_texte": "THEATRE DE LA VILLE",
+    "mandate_par_annee": {
+     "2009": 9321.46,
+     "2010": 252.16,
+     "2011": 82369.31,
+     "2012": 38927.14,
+     "2013": 699.0
+    },
+    "total_mandate": 131569.07,
+    "preuve": "Libellé désigne ce lieu : « THEATRE DE LA VILLE » (DAC, Affaires culturelles). Enveloppe au nom du lieu, sans détail d'opération ; peut couvrir l'établissement dans son ensemble (site des Abbesses inclus).",
+    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/0702065"
+   },
+   {
+    "ap_cle": "B100/0602065",
+    "ap_texte": "THEATRE DE LA VILLE",
+    "mandate_par_annee": {
+     "2009": 400.32,
+     "2010": 423.65
+    },
+    "total_mandate": 823.97,
+    "preuve": "Libellé désigne ce lieu : « THEATRE DE LA VILLE » (DAC, Affaires culturelles). Enveloppe au nom du lieu, sans détail d'opération ; peut couvrir l'établissement dans son ensemble (site des Abbesses inclus).",
+    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/0602065"
+   },
+   {
+    "ap_cle": "B100/0602938",
+    "ap_texte": "THEATRE DE LA VILLE FACADES",
+    "mandate_par_annee": {
+     "2009": 673.31
+    },
+    "total_mandate": 673.31,
+    "preuve": "Libellé nomme ce lieu et l'objet des travaux : « THEATRE DE LA VILLE FACADES » (DPA, Patrimoine et architecture) — façades du bâtiment place du Châtelet, dont la restauration est documentée par 2019 DAC 80.",
+    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/0602938"
+   }
+  ],
+  "periode": [
+   "2009",
+   "2017"
+  ],
+  "source": {
+   "name": "Comptes administratifs — autorisations de programme, Ville de Paris",
+   "url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/"
+  }
+ },
  "sources": {
   "delibs": {
    "name": "Débat-Délibs — Conseil de Paris",

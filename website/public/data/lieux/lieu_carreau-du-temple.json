@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T10:03:14.731611+00:00",
+ "generated_at": "2026-07-20T11:16:58.583958+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "carreau-du-temple",
  "name": "Carreau du Temple",
@@ -61,27 +61,27 @@
   {
    "beneficiaire": "CINECARO",
    "montant_total": 18000.0,
-   "preuve": "Objet verbatim : « Soutien en fonctionnement sur CREDITS BLOCHE, de la 8e saison de CineCaro au Carreau du Temple » (SIRET 80447765100017). Ciné-club programmé DANS l'auditorium — 2021 DAC 57 : « un auditorium de 250 places dans lequel se déroulent entre autres des séances de ciné-Carreau, ciné-club local ». Le « fonctionnement » vise la saison de CineCaro, pas la gestion du lieu."
+   "preuve": "Objet : « Soutien en fonctionnement sur CREDITS BLOCHE, de la 8e saison de CineCaro au Carreau du Temple ». Le contexte (2021 DAC 57) confirme les « séances de ciné-Carreau, ciné-club local » dans l'auditorium du lieu. Activité dans le lieu sans le gérer."
   },
   {
    "beneficiaire": "MAMAMA",
    "montant_total": 9180.0,
-   "preuve": "Objet verbatim : « Subvention pour distributions de colis d'urgence bébés au Carreau du Temple pendant le confinement » (SIRET 88342586000011). Confirmé par 2021 DAC 57 : « \"La Fabrique de la solidarité\" et l'association \"MaMaMa\" fournissent aux mères isolées des vêtements chauds et des colis alimentaires et d'hygiène », dans le dispositif d'accueil installé au Carreau du Temple."
+   "preuve": "Objet : « Subvention pour distributions de colis d'urgence bébés au Carreau du Temple pendant le confinement ». Le contexte (2021 DAC 57) confirme que l'association « MaMaMa » fournissait des colis alimentaires et d'hygiène aux mères isolées au Carreau pendant le dispositif d'accueil du confinement."
   },
   {
    "beneficiaire": "ARTINCIDENCE",
    "montant_total": 4500.0,
-   "preuve": "Objet verbatim : « AIDE A LA DIFFUSION \"I'M A BRUJA\" FESTIVAL EVERYBODY au Carreau du Temple » (SIRET 45094968000067) — aide à la diffusion d'un spectacle joué dans le lieu, sans rôle de gestion."
+   "preuve": "Objet : « AIDE A LA DIFFUSION \"I'M A BRUJA\" FESTIVAL EVERYBODY au Carreau du Temple » — diffusion d'un spectacle dans le lieu, sans le gérer."
   },
   {
    "beneficiaire": "DEFRACTO",
    "montant_total": 4000.0,
-   "preuve": "Objet verbatim : « Aide à la Diffusion ¿ DAC ¿ Arts du Cirque et Arts de la Rue - Dystonie au Carreau du Temple » (SIRET 52748129500014) — aide à la diffusion d'un spectacle joué dans le lieu, sans rôle de gestion."
+   "preuve": "Objet : « Aide à la Diffusion ¿ DAC ¿ Arts du Cirque et Arts de la Rue - Dystonie au Carreau du Temple » — diffusion d'un spectacle dans le lieu, sans le gérer."
   },
   {
    "beneficiaire": "LES SENS DES MOTS",
    "montant_total": 4000.0,
-   "preuve": "Objet verbatim : « AAPCS18 - binôme spectacles arts/sciences au Carreau du Temple » (SIRET 51386558400025) — activité programmée dans le lieu, sans rôle de gestion."
+   "preuve": "Objet : « AAPCS18 - binôme spectacles arts/sciences au Carreau du Temple » — spectacles dans le lieu, sans le gérer."
   }
  ],
  "kpi_montant": null,
@@ -272,7 +272,7 @@
    "fournisseur": "SOC PUBLIQUE LOCALE CARREAU TEMPLE",
    "montant_max": 5834850.0,
    "date_notification": "2024-12-05",
-   "preuve": "Objet portant sur l'exploitation du lieu lui-même : « CONCESSION GESTION CARREAU DU TEMPLE ». Titulaire SIRET 78977257100020 = la SPL exploitante identifiée par les délibérations (2018 DAC 42, DSP d'exploitation ; « Ce contrat s'achèvera en 2024 », d'où la nouvelle concession notifiée le 2024-12-05)."
+   "preuve": "Objet « CONCESSION GESTION CARREAU DU TEMPLE » attribué à la SPL Carreau du Temple (SIRET 78977257100020), exploitant confirmé par les délibérations DSP (2018 DAC 42) ; le contrat DSP précédent s'achevait en 2024."
   },
   {
    "numero_marche": "20131210009282",
@@ -281,7 +281,7 @@
    "fournisseur": "D B S",
    "montant_max": 980620.0,
    "date_notification": "2013-05-22",
-   "preuve": "Objet nommant le bâtiment et ses travaux : « CARREAU DU TEMPLE REHABILITATION EXTENSION EN SOUS-SOL ». Correspond à l'opération délibérée en 2007 DPA 331 : « réalisation des travaux de réhabilitation avec extension en sous sol du Carreau du Temple, 4 rue Eugène Spuller, 1 rue Dupetit Thouars (3e) »."
+   "preuve": "Objet nomme le lieu et l'opération : « CARREAU DU TEMPLE REHABILITATION EXTENSION EN SOUS-SOL », opération confirmée par la délibération 2009 DPA 56 (« réhabilitation et l'extension en sous-sol du Carreau du Temple »)."
   },
   {
    "numero_marche": "20232023T04109",
@@ -290,7 +290,7 @@
    "fournisseur": "PROCHALOR",
    "montant_max": 752885.54,
    "date_notification": "2023-05-24",
-   "preuve": "Objet nommant le lieu et son arrondissement : « RAFRAISSEMENT COMPLEMENTAIRES CARREAU DU TEMPLE 3EME » — travaux portant sur ce bâtiment, la nature exacte n'étant pas détaillée par l'objet ; le 3e correspond à la localisation du lieu."
+   "preuve": "Objet nomme le lieu et l'arrondissement : « RAFRAISSEMENT COMPLEMENTAIRES CARREAU DU TEMPLE 3EME » — travaux sur le bâtiment."
   },
   {
    "numero_marche": "20242024T00240",
@@ -299,7 +299,7 @@
    "fournisseur": "EIFFAGE ENERGIE SYSTEMES",
    "montant_max": 385285.5,
    "date_notification": "2024-01-18",
-   "preuve": "Objet nommant le lieu : « MODERNISATION INSTAL. RAFRAÎCHISSEMENT CARREAU DU TEMPLE » — modernisation d'une installation technique du bâtiment."
+   "preuve": "Objet nomme le lieu : « MODERNISATION INSTAL. RAFRAÎCHISSEMENT CARREAU DU TEMPLE » — travaux sur les installations du bâtiment."
   },
   {
    "numero_marche": "20141210011779",
@@ -308,7 +308,7 @@
    "fournisseur": "BRUNET",
    "montant_max": 119757.6,
    "date_notification": "2014-07-07",
-   "preuve": "Objet nommant le lieu : « TRAVAUX SYSTÈME DE VERROUILLAGE CARREAU DU TEMPLE » — travaux sur le bâtiment, notifiés l'année de sa livraison (2021 DAC 57 : « L'équipement, livré en 2014 »)."
+   "preuve": "Objet nomme le lieu : « TRAVAUX SYSTÈME DE VERROUILLAGE CARREAU DU TEMPLE » — travaux sur le bâtiment, l'année de sa livraison (2014)."
   },
   {
    "numero_marche": "20151210000961",
@@ -317,7 +317,7 @@
    "fournisseur": "LOISON",
    "montant_max": 116393.5,
    "date_notification": "2015-06-10",
-   "preuve": "Objet nommant le lieu et son code postal : « CRÉATION D'UN SAS POUR LE CARREAU DU TEMPLE  75003 » — ouvrage créé sur le bâtiment ; 75003 conforme au 3e arrondissement."
+   "preuve": "Objet nomme le lieu et le code postal du 3e : « CRÉATION D'UN SAS POUR LE CARREAU DU TEMPLE 75003 » — aménagement du bâtiment."
   },
   {
    "numero_marche": "20202020T01920",
@@ -326,7 +326,7 @@
    "fournisseur": "LOISON",
    "montant_max": 104767.0,
    "date_notification": "2020-04-13",
-   "preuve": "Objet nommant le lieu et l'arrondissement : « REMPLACMENT DE VITRAGES EN TOITURE CARREAU DU TEMPLE PARIS 3 » — travaux sur la toiture de la halle."
+   "preuve": "Objet nomme le lieu et l'arrondissement : « REMPLACMENT DE VITRAGES EN TOITURE CARREAU DU TEMPLE PARIS 3 » — travaux sur la verrière du bâtiment."
   },
   {
    "numero_marche": "20141210010724",
@@ -335,7 +335,7 @@
    "fournisseur": "CLEMENT ARNAUD ET DELPIERRE YANN",
    "montant_max": 81188.54,
    "date_notification": "2014-01-21",
-   "preuve": "Objet nommant le lieu : « ASSURANCE CCRD RÉHABILITATION DU CARREAU DU TEMPLE » — assurance attachée au chantier de réhabilitation de ce bâtiment (opération 2007 DPA 331, livraison 2014)."
+   "preuve": "Objet nomme le lieu et l'opération : « ASSURANCE CCRD RÉHABILITATION DU CARREAU DU TEMPLE » — assurance liée aux travaux de réhabilitation du bâtiment (opération confirmée par 2009 DPA 56)."
   },
   {
    "numero_marche": "20232023S05787",
@@ -344,9 +344,177 @@
    "fournisseur": "SPHERE INGENIERIE",
    "montant_max": 40400.0,
    "date_notification": "2023-06-30",
-   "preuve": "Objet nommant le lieu ET son adresse : « CARREAU DU TEMPLE 4 RUE EUGÈNE SPULLER AMO CVC ». Adresse identique à celle des délibérations (2007 DPA 9 : « réhabilitation du Carreau du Temple, 4, rue Eugène-Spuller (3e) »)."
+   "preuve": "Objet nomme le lieu et son adresse : « CARREAU DU TEMPLE 4 RUE EUGÈNE SPULLER AMO CVC » — assistance à maîtrise d'ouvrage CVC sur le bâtiment (adresse rue Eugène Spuller confirmée par le contexte)."
   }
  ],
+ "mandate": {
+  "par_annee": {
+   "2009": 2723539.49,
+   "2010": 3274492.7,
+   "2011": 12477126.79,
+   "2012": 15321876.76,
+   "2013": 15662813.1,
+   "2014": 5002217.46,
+   "2015": 2349985.35,
+   "2016": 1342231.1,
+   "2017": 480715.96
+  },
+  "total_eur": 58634998.71,
+  "operations": [
+   {
+    "ap_cle": "B100/0903798",
+    "ap_texte": "CS CARREAU DU TEMPLE",
+    "mandate_par_annee": {
+     "2009": 94718.86,
+     "2010": 1927945.99,
+     "2011": 11411080.64,
+     "2012": 12913310.63,
+     "2013": 14937476.12
+    },
+    "total_mandate": 41284532.24,
+    "preuve": "Libellé « CS CARREAU DU TEMPLE » (DJS, mission Jeunesse et Sports) : opération de réhabilitation de l'équipement, cohérente avec la délibération 2009 DPA 56 (réhabilitation avec extension en sous-sol) et la livraison du bâtiment en 2014 ; pic de mandatement 2011-2013 pendant le chantier.",
+    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/0903798"
+   },
+   {
+    "ap_cle": "0903798",
+    "ap_texte": "CS CARREAU DU TEMPLE",
+    "mandate_par_annee": {
+     "2014": 3329995.32,
+     "2015": 1270412.19,
+     "2016": 848183.14,
+     "2017": 184286.21
+    },
+    "total_mandate": 5632876.86,
+    "preuve": "Libellé « CS CARREAU DU TEMPLE » (DJS) : suite 2014-2017 de la même opération 03798 sur le bâtiment, après la livraison de l'équipement en 2014.",
+    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=0903798"
+   },
+   {
+    "ap_cle": "B100/0803798",
+    "ap_texte": "CS CARREAU DU TEMPLE",
+    "mandate_par_annee": {
+     "2009": 1006790.71,
+     "2010": 997424.64,
+     "2011": 706500.9,
+     "2012": 403201.99,
+     "2013": 266736.89
+    },
+    "total_mandate": 3380655.13,
+    "preuve": "Libellé « CS CARREAU DU TEMPLE » (DJS) : tranche AP 2008 de l'opération de réhabilitation du bâtiment (opération confirmée par les délibérations DPA 2004-2009).",
+    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/0803798"
+   },
+   {
+    "ap_cle": "B100/0703798",
+    "ap_texte": "CS CARREAU DU TEMPLE",
+    "mandate_par_annee": {
+     "2009": 1622029.92,
+     "2010": 349122.07,
+     "2011": 359545.25,
+     "2012": 355364.14,
+     "2013": 356134.61
+    },
+    "total_mandate": 3042195.99,
+    "preuve": "Libellé « CS CARREAU DU TEMPLE » (DJS) : tranche AP 2007 de la même opération, année de la délibération 2007 DPA 331 approuvant la réhabilitation avec extension en sous-sol.",
+    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/0703798"
+   },
+   {
+    "ap_cle": "1003798",
+    "ap_texte": "CS CARREAU DU TEMPLE",
+    "mandate_par_annee": {
+     "2014": 926806.66,
+     "2015": 547348.61,
+     "2016": 397411.35,
+     "2017": 274700.32
+    },
+    "total_mandate": 2146266.94,
+    "preuve": "Libellé « CS CARREAU DU TEMPLE » (DJS) : tranche AP 2010 de la même opération sur le bâtiment, mandatée 2014-2017.",
+    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=1003798"
+   },
+   {
+    "ap_cle": "B100/1203798",
+    "ap_texte": "CS CARREAU DU TEMPLE",
+    "mandate_par_annee": {
+     "2012": 1350000.0
+    },
+    "total_mandate": 1350000.0,
+    "preuve": "Libellé « CS CARREAU DU TEMPLE » (DJS) : tranche AP 2012 de la même opération sur le bâtiment, mandatée pendant le chantier (2012).",
+    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/1203798"
+   },
+   {
+    "ap_cle": "0703798",
+    "ap_texte": "CS CARREAU DU TEMPLE",
+    "mandate_par_annee": {
+     "2014": 351836.16,
+     "2015": 228709.4,
+     "2016": 66178.68,
+     "2017": 329.58
+    },
+    "total_mandate": 647053.82,
+    "preuve": "Libellé « CS CARREAU DU TEMPLE » (DJS) : suite 2014-2017 de la tranche AP 2007 de la même opération sur le bâtiment.",
+    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=0703798"
+   },
+   {
+    "ap_cle": "0803798",
+    "ap_texte": "CS CARREAU DU TEMPLE",
+    "mandate_par_annee": {
+     "2014": 393579.32,
+     "2015": 93515.15,
+     "2016": 30457.93,
+     "2017": 21399.85
+    },
+    "total_mandate": 538952.25,
+    "preuve": "Libellé « CS CARREAU DU TEMPLE » (DJS) : suite 2014-2017 de la tranche AP 2008 de la même opération sur le bâtiment.",
+    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=0803798"
+   },
+   {
+    "ap_cle": "B100/1204402",
+    "ap_texte": "PARTICIPATION CARREAU DU TEMPLE",
+    "mandate_par_annee": {
+     "2012": 210000.0
+    },
+    "total_mandate": 210000.0,
+    "preuve": "Libellé « PARTICIPATION CARREAU DU TEMPLE » (DJS) : participation financière de la Ville désignant nommément le lieu, mandatée en 2012.",
+    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/1204402"
+   },
+   {
+    "ap_cle": "1504834",
+    "ap_texte": "CARREAU DU TEMPLE - RECAPITALISATION",
+    "mandate_par_annee": {
+     "2015": 210000.0
+    },
+    "total_mandate": 210000.0,
+    "preuve": "Libellé « CARREAU DU TEMPLE - RECAPITALISATION » (direction FIN) : recapitalisation de la structure exploitant le lieu (la SPL du Carreau du Temple, exploitant confirmé par les délibérations DSP), mandatée en 2015 — période où les délibérations 2016 DAC 43 et 2018 DAC 42 évoquent le redressement financier de la structure après un déficit initial.",
+    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=1504834"
+   },
+   {
+    "ap_cle": "B100/1003798",
+    "ap_texte": "CS CARREAU DU TEMPLE",
+    "mandate_par_annee": {
+     "2013": 102465.48
+    },
+    "total_mandate": 102465.48,
+    "preuve": "Libellé « CS CARREAU DU TEMPLE » (DJS) : tranche AP 2010 de la même opération sur le bâtiment, mandatée en 2013 pendant le chantier.",
+    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/1003798"
+   },
+   {
+    "ap_cle": "B400/1204403",
+    "ap_texte": "PARTICIPATION CARREAU DU TEMPLE",
+    "mandate_par_annee": {
+     "2012": 90000.0
+    },
+    "total_mandate": 90000.0,
+    "preuve": "Libellé « PARTICIPATION CARREAU DU TEMPLE » (DJS) : participation financière de la Ville désignant nommément le lieu, mandatée en 2012.",
+    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B400/1204403"
+   }
+  ],
+  "periode": [
+   "2009",
+   "2017"
+  ],
+  "source": {
+   "name": "Comptes administratifs — autorisations de programme, Ville de Paris",
+   "url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/"
+  }
+ },
  "sources": {
   "delibs": {
    "name": "Débat-Délibs — Conseil de Paris",

@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T10:03:14.731611+00:00",
+ "generated_at": "2026-07-20T11:16:58.583958+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "piscine-belliard",
  "name": "Piscine Belliard",
@@ -136,6 +136,7 @@
    "preuve": "L'objet du marché nomme le lieu verbatim : « FUTURE PISCINE BELLIARD ». L'identification est confirmée par les délibérations du Conseil de Paris : 2016 DU 249, « Plan \"Nager à Paris\". - Projet d'aménagement du 133 et 133 bis, rue Belliard (18e) », dont le débat évoque « les cours des écoles maternelle et primaire de la rue Belliard, mitoyennes de la future piscine » (l'objet du marché cite pour sa part l'« ECOLE ELÉM BELLIARD » voisine) ; et 2025 DJS 96, « Attribution de la dénomination Solita Salgado à la piscine Belliard (18e) ». Réserve : le marché porte sur trois sites voisins du même îlot (TEP Jesse Owens, école élémentaire Belliard, future piscine Belliard) ; les 692 000 € ne vont donc pas à la seule piscine et aucune ventilation par site n'est disponible dans la source."
   }
  ],
+ "mandate": null,
  "sources": {
   "delibs": {
    "name": "Débat-Délibs — Conseil de Paris",

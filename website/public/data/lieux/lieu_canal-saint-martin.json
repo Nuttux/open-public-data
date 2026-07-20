@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T10:03:14.731611+00:00",
+ "generated_at": "2026-07-20T11:16:58.583958+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "canal-saint-martin",
  "name": "Canal Saint-Martin",
@@ -156,6 +156,118 @@
    "preuve": "L'objet du marché nomme le lieu et porte sur une prestation qui s'y déroule : « BAIGNADE CANAL SAINT MARTIN » (SIRET fournisseur 81096330600016). Contexte corroborant l'existence d'une baignade au canal Saint-Martin à cette période, sans lien établi avec ce marché : délibération 2024 DJS 94 (Conseil de Paris, mai 2024), « Gratuité d'utilisation pendant l'été 2024 des bassins éphémères implantés dans les centres sportifs et les baignades dans l'espace naturel délimité du canal Saint-Martin et de La Villette »."
   }
  ],
+ "mandate": {
+  "par_annee": {
+   "2010": 40837.76,
+   "2011": 1926299.66,
+   "2012": 901352.66,
+   "2013": 230679.96,
+   "2014": 146819.36,
+   "2015": 1103645.61,
+   "2016": 6972920.39,
+   "2017": 598746.75
+  },
+  "total_eur": 11921302.15,
+  "operations": [
+   {
+    "ap_cle": "1404078",
+    "ap_texte": "CHOMAGE CANAL SAINT MARTIN",
+    "mandate_par_annee": {
+     "2015": 1014517.16,
+     "2016": 6808003.0,
+     "2017": 434428.17
+    },
+    "total_mandate": 8256948.33,
+    "preuve": "Libellé verbatim « CHOMAGE CANAL SAINT MARTIN » (direction DVD, mission « VOIRIE ET DEPLACEMEN ») : mise en chômage (vidange pour entretien) de ce canal. Corroboré au Conseil de Paris (vœu septembre 2019, algues) : « l'opération importante de chômage qu'on a eue il y a quelques années et qui nous a permis d'évacuer les vases » — cohérent avec le mandaté 2015-2017.",
+    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=1404078"
+   },
+   {
+    "ap_cle": "B100/1004080",
+    "ap_texte": "TELECOMMANDE DU CANAL SAINT MARTIN",
+    "mandate_par_annee": {
+     "2011": 1898603.69,
+     "2012": 810821.7,
+     "2013": 185616.06
+    },
+    "total_mandate": 2895041.45,
+    "preuve": "Libellé verbatim « TELECOMMANDE DU CANAL SAINT MARTIN » (direction DVD, gestionnaire des canaux parisiens) : équipement de télécommande des ouvrages de ce canal.",
+    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/1004080"
+   },
+   {
+    "ap_cle": "1004078",
+    "ap_texte": "CHOMAGE CANAL SAINT MARTIN",
+    "mandate_par_annee": {
+     "2014": 20299.68,
+     "2015": 89128.45,
+     "2016": 164917.39
+    },
+    "total_mandate": 274345.52,
+    "preuve": "Libellé verbatim « CHOMAGE CANAL SAINT MARTIN » (direction DVD) : opération d'entretien par mise en chômage de ce canal.",
+    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=1004078"
+   },
+   {
+    "ap_cle": "B100/1004078",
+    "ap_texte": "CHOMAGE CANAL SAINT MARTIN",
+    "mandate_par_annee": {
+     "2010": 40837.76,
+     "2011": 27695.97,
+     "2012": 65008.32,
+     "2013": 45063.9
+    },
+    "total_mandate": 178605.95,
+    "preuve": "Libellé verbatim « CHOMAGE CANAL SAINT MARTIN » (direction DVD) : opération d'entretien par mise en chômage de ce canal.",
+    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/1004078"
+   },
+   {
+    "ap_cle": "1604184",
+    "ap_texte": "VOUTE DU CANAL SAINT MARTIN",
+    "mandate_par_annee": {
+     "2017": 164318.58
+    },
+    "total_mandate": 164318.58,
+    "preuve": "Libellé verbatim « VOUTE DU CANAL SAINT MARTIN » (direction DVD) : travaux sur la voûte (partie couverte) de ce canal.",
+    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=1604184"
+   },
+   {
+    "ap_cle": "1104184",
+    "ap_texte": "VOUTE CANAL SAINT MARTIN",
+    "mandate_par_annee": {
+     "2014": 126479.71
+    },
+    "total_mandate": 126479.71,
+    "preuve": "Libellé verbatim « VOUTE CANAL SAINT MARTIN » (direction DVD) : travaux sur la voûte (partie couverte) de ce canal.",
+    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=1104184"
+   },
+   {
+    "ap_cle": "B100/1104184",
+    "ap_texte": "VOUTE CANAL SAINT MARTIN",
+    "mandate_par_annee": {
+     "2012": 25522.64
+    },
+    "total_mandate": 25522.64,
+    "preuve": "Libellé verbatim « VOUTE CANAL SAINT MARTIN » (direction DVD) : travaux sur la voûte (partie couverte) de ce canal.",
+    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/1104184"
+   },
+   {
+    "ap_cle": "1004080",
+    "ap_texte": "TELECOMMANDE DU CANAL SAINT MARTIN",
+    "mandate_par_annee": {
+     "2014": 39.97
+    },
+    "total_mandate": 39.97,
+    "preuve": "Libellé verbatim « TELECOMMANDE DU CANAL SAINT MARTIN » (direction DVD) : équipement de télécommande des ouvrages de ce canal.",
+    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=1004080"
+   }
+  ],
+  "periode": [
+   "2010",
+   "2017"
+  ],
+  "source": {
+   "name": "Comptes administratifs — autorisations de programme, Ville de Paris",
+   "url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/"
+  }
+ },
  "sources": {
   "delibs": {
    "name": "Débat-Délibs — Conseil de Paris",

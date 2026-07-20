@@ -25,6 +25,7 @@ const REGLES = `RÈGLES DE RATTACHEMENT (raison d'être de la vérif) :
 - EXPLOITANT vs RÉSIDENT : exploitant = gère/fait fonctionner le lieu (subvention de fonctionnement au nom du lieu). résident = reçoit une aide pour une activité DANS le lieu (objet « … au Théâtre X », « diffusion … à … ») sans le gérer.
 - HOMONYME / SANS-RAPPORT : un bénéficiaire au nom voisin mais SIRET/objet incompatibles = homonyme → écarté. Un objet qui ne parle pas du lieu = sans-rapport → écarté.
 - PROJET au-lieu vs VOISIN : un projet <200 m dont le NOM nomme un AUTRE lieu (ex. « PHILHARMONIE » à 93 m d'un théâtre voisin) = voisin → écarté. "au-lieu" seulement si le nom du projet nomme CE lieu, ou si le contexte le prouve.
+- OPÉRATION AP au-lieu vs SANS-RAPPORT : une opération compte si son libellé désigne CE lieu ou des travaux/aménagements SUR ce lieu. Écarter : les opérations dont le libellé désigne un AUTRE équipement du même quartier, les enveloppes génériques (« entretien des bâtiments », « subventions d'équipement ») qui ne font que citer une direction, et les homonymes. Un libellé large mais clairement centré sur le lieu (« BOIS DE BOULOGNE ») = au-lieu, en notant dans la preuve que l'opération couvre l'ensemble du site.
 - MARCHÉ au-lieu vs SANS-RAPPORT : un marché compte si son OBJET porte sur CE lieu (travaux, entretien, exploitation, équipement, prestation qui s'y déroule). Écarter quand le lieu n'est qu'un REPÈRE D'ADRESSE (« voirie rue X, face au théâtre Y »), quand l'objet vise un marché-cadre de toute la Ville qui cite le lieu en exemple, et quand c'est un homonyme. Le champ « lieu_execution » (DECP) est un indice utile mais un lieu d'exécution large (« Paris ») ne prouve rien.
 - MULTI-LIEU : si l'exploitant gère plusieurs sites (le total ne va pas à ce seul bâtiment), écrire {slug}_perimetre.json avec une note_publique honnête ("… gère aussi …").
 - CONFIANCE : "haute" seulement si la preuve est explicite ; sinon "moyenne" et, si trop faible, ne pas rattacher.
@@ -33,26 +34,26 @@ const REGLES = `RÈGLES DE RATTACHEMENT (raison d'être de la vérif) :
 function promptJuge(slug) {
   return `Tu rattaches l'argent public à un lieu parisien pour un site de transparence. RÈGLE ABSOLUE : aucune attribution sans preuve concrète citée.
 
-Lis ${CACHE}/${slug}_money_candidates.json : {slug, name, kind_fr, arrondissement, aliases, subventions_candidates:[{beneficiaire, siret, objet_principal, montant_total, signal}], projets_candidats:[{annee, montant_eur, nom_projet, distance_m}], marches_candidats:[{numero_marche, objet, fournisseur, fournisseur_siret, montant_max, date_notification, lieu_execution, signal}]}.
+Lis ${CACHE}/${slug}_money_candidates.json : {slug, name, kind_fr, arrondissement, aliases, subventions_candidates:[{beneficiaire, siret, objet_principal, montant_total, signal}], projets_candidats:[{annee, montant_eur, nom_projet, distance_m}], marches_candidats:[{numero_marche, objet, fournisseur, fournisseur_siret, montant_max, date_notification, lieu_execution, signal}], ap_candidats:[{ap_cle, ap_texte, mission_texte, direction, mandate_par_annee, total_mandate}]}.
 Lis aussi ${CACHE}/${slug}_ctx.json (fenêtres de délibérations autour du lieu) pour CONFIRMER l'identité et l'adresse du lieu, et distinguer un exploitant réel d'un homonyme.
 
-Pour CHAQUE subvention_candidate : classe "exploitant" / "resident" / "homonyme" / "sans-rapport". Pour CHAQUE projet_candidat : classe "au-lieu" / "voisin". Pour CHAQUE marche_candidat : classe "au-lieu" / "sans-rapport". Ne garde QUE les exploitant/resident (subv), au-lieu (projets) et au-lieu (marchés), chacun avec une "preuve" concrète (cite l'objet, le SIRET, le nom du projet, la distance — verbatim quand possible) et "confiance".
+Pour CHAQUE subvention_candidate : classe "exploitant" / "resident" / "homonyme" / "sans-rapport". Pour CHAQUE projet_candidat : classe "au-lieu" / "voisin". Pour CHAQUE marche_candidat : classe "au-lieu" / "sans-rapport". Pour CHAQUE ap_candidat (opération budgétaire, dépense réelle mandatée 2009-2017) : classe "au-lieu" / "sans-rapport". Ne garde QUE les exploitant/resident (subv), au-lieu (projets) et au-lieu (marchés), chacun avec une "preuve" concrète (cite l'objet, le SIRET, le nom du projet, la distance — verbatim quand possible) et "confiance".
 
 ${REGLES}
 
 ÉCRIS ${CACHE}/${slug}_money_resolved.json :
-{"slug":"${slug}","subventions":[{"beneficiaire","role":"exploitant|resident","preuve","confiance":"haute|moyenne","montant_total":<number>,"siret":<string|null>}],"projets":[{"nom_projet","annee","montant_eur":<number>,"role":"au-lieu","preuve","confiance"}],"marches":[{"numero_marche","objet","fournisseur","montant_max":<number>,"date_notification","role":"au-lieu","preuve","confiance"}]}
+{"slug":"${slug}","subventions":[{"beneficiaire","role":"exploitant|resident","preuve","confiance":"haute|moyenne","montant_total":<number>,"siret":<string|null>}],"projets":[{"nom_projet","annee","montant_eur":<number>,"role":"au-lieu","preuve","confiance"}],"marches":[{"numero_marche","objet","fournisseur","montant_max":<number>,"date_notification","role":"au-lieu","preuve","confiance"}],"ap":[{"ap_cle","ap_texte","role":"au-lieu","preuve","confiance","mandate_par_annee":<objet {annee: montant} recopié du candidat>,"total_mandate":<number>}]}
 Si l'exploitant gère plusieurs sites, ÉCRIS AUSSI ${CACHE}/${slug}_perimetre.json : {"slug":"${slug}","perimetre":"multi","autres_sites":[...],"note_publique":"…","preuve":"…"}. Sinon ne crée pas ce fichier.
 Si RIEN n'est rattachable, écris quand même le resolved avec des tableaux vides.
 
-Réponds en JSON strict : {"slug":"${slug}","n_subv":N,"n_projets":N,"n_marches":N,"ecartes":N,"note":"une phrase"}`
+Réponds en JSON strict : {"slug":"${slug}","n_subv":N,"n_projets":N,"n_marches":N,"n_ap":N,"ecartes":N,"note":"une phrase"}`
 }
 
 function promptVerif(slug) {
   return `Contrôle adverse PUIS correction du rattachement d'argent d'un lieu, en une passe. Sois sévère : en cas de doute sur une preuve, RETIRE l'attribution.
 
 Compare ${CACHE}/${slug}_money_resolved.json avec ses candidats ${CACHE}/${slug}_money_candidates.json et le contexte ${CACHE}/${slug}_ctx.json.
-1. Pour chaque subvention/projet/marché retenu : la preuve cite-t-elle un signal EXACT (objet nommant le lieu, SIRET de l'exploitant, nom de projet nommant le lieu) ? Un montant provient-il bien d'un candidat (jamais inventé) ? Un projet retenu nomme-t-il un AUTRE lieu (voisin déguisé en au-lieu) ? Un "exploitant" est-il en fait un homonyme (SIRET/objet incompatibles) ? Un marché retenu ne fait-il que citer le lieu comme repère d'adresse, ou est-ce un marché-cadre de toute la Ville ?
+1. Pour chaque subvention/projet/marché retenu : la preuve cite-t-elle un signal EXACT (objet nommant le lieu, SIRET de l'exploitant, nom de projet nommant le lieu) ? Un montant provient-il bien d'un candidat (jamais inventé) ? Un projet retenu nomme-t-il un AUTRE lieu (voisin déguisé en au-lieu) ? Un "exploitant" est-il en fait un homonyme (SIRET/objet incompatibles) ? Un marché retenu ne fait-il que citer le lieu comme repère d'adresse, ou est-ce un marché-cadre de toute la Ville ? Une opération AP retenue est-elle une enveloppe générique de direction plutôt qu'une opération du lieu ? Les mandate_par_annee recopiés sont-ils STRICTEMENT identiques au candidat ?
 
 ${REGLES}
 

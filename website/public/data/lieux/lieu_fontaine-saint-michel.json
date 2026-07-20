@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T10:03:14.731611+00:00",
+ "generated_at": "2026-07-20T11:16:58.583958+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "fontaine-saint-michel",
  "name": "Fontaine Saint-Michel",
@@ -125,6 +125,7 @@
    "preuve": "L'objet nomme le lieu et son adresse verbatim : « l’opération de travaux de restauration de la Fontaine Saint-Michel, place Saint-Michel 75006 Paris ». Marché subséquent de coordination sécurité et protection de la santé rattaché à cette opération précise, notifié en mai 2025, cohérent avec la délibération 2024 DCPA 12 qui annonce que « sa rénovation débutera en 2025 »."
   }
  ],
+ "mandate": null,
  "sources": {
   "delibs": {
    "name": "Débat-Délibs — Conseil de Paris",

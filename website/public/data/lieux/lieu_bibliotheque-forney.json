@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T10:03:14.731611+00:00",
+ "generated_at": "2026-07-20T11:16:58.583958+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "bibliotheque-forney",
  "name": "Bibliothèque Forney",
@@ -132,6 +132,7 @@
    "preuve": "L'objet du marché nomme le lieu et son bâtiment verbatim : « TRAVAUX SSI BIBLIOTHÈQUE FORNEY - HÔTEL DE SENS 75004 ». Travaux de système de sécurité incendie sur le bâtiment lui-même, aucun autre site cité. L'identité Forney = Hôtel de Sens, 4e, est confirmée par la délibération 2007 DPA 96 : « travaux de restructuration des salles d'exposition à la Bibliothèque Forney (Hôtel de Sens) sise 3, rue du Figuier (4e) »."
   }
  ],
+ "mandate": null,
  "sources": {
   "delibs": {
    "name": "Débat-Délibs — Conseil de Paris",

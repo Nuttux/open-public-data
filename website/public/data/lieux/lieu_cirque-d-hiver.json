@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T10:03:14.731611+00:00",
+ "generated_at": "2026-07-20T11:16:58.583958+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "cirque-d-hiver",
  "name": "Cirque d'Hiver",
@@ -73,6 +73,7 @@
  "bmo_recit": "Le Cirque d'Hiver ne traverse le Bulletin municipal officiel que par trois passages, entre 1887 et 1907. En juillet 1887, le président du Conseil municipal annonce en séance que deux commissions se réuniront le lendemain pour examiner la location du Cirque d'hiver ; l'archive n'en donne pas l'issue. Onze ans plus tard, la salle figure au programme des matinées organisées à une heure pour les délégations des écoles primaires de Paris, aux côtés du Cirque d'été. En 1907, elle apparaît une dernière fois comme lieu du gala qui clôt une série de manifestations, donné au profit d'une association mutuelle.",
  "invest": [],
  "marches": [],
+ "mandate": null,
  "sources": {
   "delibs": {
    "name": "Débat-Délibs — Conseil de Paris",

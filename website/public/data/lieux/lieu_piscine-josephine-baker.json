@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T10:03:14.731611+00:00",
+ "generated_at": "2026-07-20T11:16:58.583958+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "piscine-josephine-baker",
  "name": "Piscine Joséphine-Baker",
@@ -117,6 +117,7 @@
    "preuve": "L'objet nomme le lieu et son arrondissement : « CSP2 - L'EXPLOITATION DE LA PISCINE JOSEPHINE BAKER 13ÈME ». Marché d'exploitation de cet équipement précis, dans la continuité des marchés d'exploitation déléguée successifs (Vert Marine à partir de 2006, relance après résiliation amiable : 2007 DJS 295 / DJS 312). Fournisseur SIRET 43368104600036."
   }
  ],
+ "mandate": null,
  "sources": {
   "delibs": {
    "name": "Débat-Délibs — Conseil de Paris",

@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T10:03:14.731611+00:00",
+ "generated_at": "2026-07-20T11:16:58.583958+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "porte-de-montreuil",
  "name": "Porte de Montreuil",
@@ -275,6 +275,34 @@
    "preuve": "L'objet nomme le lieu comme localisation de l'équipement : « Assistance à maitrise d'ouvrage pour le centre de santé de la porte de Montreuil » (SIRET fournisseur 78972947200025). Ce centre de santé est rattaché à l'opération sur ce lieu par la délibération 2024 DU 21 « Opération Porte de Montreuil (20e) », dont le titre inclut le « Vœu déposé par le groupe Communiste et Citoyen relatif à la création d'un centre municipal de santé d'innovation Porte de Montreuil ». Confiance moyenne : le marché porte sur un équipement implanté à la porte et non sur l'aménagement de la place elle-même, et le lieu_execution DECP (« Paris ») ne prouve rien à lui seul."
   }
  ],
+ "mandate": {
+  "par_annee": {
+   "2016": 26695.1,
+   "2017": 120970.15
+  },
+  "total_eur": 147665.25,
+  "operations": [
+   {
+    "ap_cle": "1604922",
+    "ap_texte": "PORTE DE MONTREUIL (20e)",
+    "mandate_par_annee": {
+     "2016": 26695.1,
+     "2017": 120970.15
+    },
+    "total_mandate": 147665.25,
+    "preuve": "Le libellé de l'opération désigne ce lieu même : « PORTE DE MONTREUIL (20e) », mission « VOIRIE ET DEPLACEMEN », direction DVD. Dépenses de voirie mandatées en 2016-2017, contemporaines des marchés d'études de l'aménagement du lieu (études urbaines TVK notifiées 2016-11-14, études d'impact et qualité de l'air notifiées 2017-04-04) et cohérentes avec l'implication historique de la DVD sur ce site (délib. 2007 DVD 177 et 2007 DVD 248, GPRU « Porte de Montreuil » 20e).",
+    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=1604922"
+   }
+  ],
+  "periode": [
+   "2016",
+   "2017"
+  ],
+  "source": {
+   "name": "Comptes administratifs — autorisations de programme, Ville de Paris",
+   "url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/"
+  }
+ },
  "sources": {
   "delibs": {
    "name": "Débat-Délibs — Conseil de Paris",

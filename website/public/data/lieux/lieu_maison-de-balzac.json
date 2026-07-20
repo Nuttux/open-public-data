@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T10:03:14.731611+00:00",
+ "generated_at": "2026-07-20T11:16:58.583958+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "maison-de-balzac",
  "name": "Maison de Balzac",
@@ -172,6 +172,7 @@
    "preuve": "L'objet du marche nomme le lieu verbatim : « CAMPAGNE REOUVERTURE MUSEE DE LA MAISON DE BALZAC ». Il s'agit d'une prestation de communication portant sur ce musee precis, et non d'un marche-cadre citant le lieu en exemple. Les deliberations du Conseil de Paris confirment que la Maison de Balzac est un musee de la Ville situe 47, rue Raynouard (16e) (« M. le Maire de Paris est autorise a acquerir un manuscrit de Balzac, pour la Maison de Balzac, 47, rue Raynouard (16e) », 2000 DAC 125). Les homonymes du corpus sont exclus : le cinema Le Balzac exploite par la SA Cinelba est « sise 1, rue Balzac (8e) » et le lycee-college Honore-de-Balzac est « 118, boulevard Bessieres (17e) » ; ni l'un ni l'autre n'est un musee."
   }
  ],
+ "mandate": null,
  "sources": {
   "delibs": {
    "name": "Débat-Délibs — Conseil de Paris",

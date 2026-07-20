@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T10:03:14.731611+00:00",
+ "generated_at": "2026-07-20T11:16:58.583958+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "piscine-des-amiraux",
  "name": "Piscine des Amiraux",
@@ -139,7 +139,7 @@
    "fournisseur": "BOUYGUES BATIMENT ILE DE FRANCE",
    "montant_max": 6350625.71,
    "date_notification": "2015-06-10",
-   "preuve": "L'objet du marché nomme le lieu verbatim : « CSP5 TCE PISCINE DES AMIRAUX LOT 1 » (marché de travaux tous corps d'état). Il correspond à la délibération 2014 DPA 1 « Modalités de passation des marchés de travaux relatifs à la restructuration et à la mise aux normes de la piscine des Amiraux, 6 rue Hermann Lachapelle (18e) » (Conseil de Paris, février 2014), même adresse que « 6 RUE HERMANN-LACHAPELLE - PISCINE DES AMIRAUX » à l'inventaire des équipements du 18e (2003 DDATC 319). Notification 2015-06-10, cohérente avec la rénovation évoquée en séance : « Le 18e arrondissement a bénéficié du Plan Nager à Paris avec la rénovation intégrale de la piscine des Amiraux »."
+   "preuve": "L'objet du marché nomme le lieu verbatim : « CSP5 TCE PISCINE DES AMIRAUX LOT 1 » (marché de travaux tous corps d'état). Il correspond à la délibération 2014 DPA 1 « Modalités de passation des marchés de travaux relatifs à la restructuration et à la mise aux normes de la piscine des Amiraux, 6 rue Hermann Lachapelle (18e) » (Conseil de Paris, février 2014), même équipement que « 13 RUE AMIRAUX - PISCINE DES AMIRAUX » à l'inventaire des équipements du 18e (2002 DVLR 126). Notification 2015-06-10, cohérente avec la rénovation évoquée en séance : « Le 18e arrondissement a bénéficié du Plan Nager à Paris avec la rénovation intégrale de la piscine des Amiraux »."
   },
   {
    "numero_marche": "20131210008827",
@@ -148,9 +148,75 @@
    "fournisseur": "CHATILLON ARCHITECTES",
    "montant_max": 1619654.5,
    "date_notification": "2013-03-01",
-   "preuve": "L'objet nomme le lieu et son arrondissement verbatim : « MOE RESTAURATION ET MISE NORMES PISCINE DES AMIRAUX 75018 » (maîtrise d'œuvre). Il correspond à la délibération 2012 DPA 65 « Approbation du principe des travaux de restauration et de mise aux normes de la piscine des Amiraux 6, rue Hermann Lachapelle (18e) et des modalités de passation du marché de maîtrise d'oeuvre et dépôt des demandes d'autorisations correspondantes sur les édifices classés monuments historiques » (Conseil de Paris, juillet 2012), antérieure de quelques mois à la notification du 2013-03-01."
+   "preuve": "L'objet nomme le lieu et son arrondissement verbatim : « MOE RESTAURATION ET MISE NORMES PISCINE DES AMIRAUX 75018 » (maîtrise d'œuvre de la restauration et mise aux normes). Même opération que la délibération 2014 DPA 1 « restructuration et à la mise aux normes de la piscine des Amiraux, 6 rue Hermann Lachapelle (18e) », notification 2013-03-01 en amont des marchés de travaux."
   }
  ],
+ "mandate": {
+  "par_annee": {
+   "2013": 723058.78,
+   "2014": 487903.61,
+   "2015": 2084038.12,
+   "2016": 6743845.55,
+   "2017": 3217372.02
+  },
+  "total_eur": 13256218.08,
+  "operations": [
+   {
+    "ap_cle": "1404024",
+    "ap_texte": "Piscine des Amiraux - réhabilitation",
+    "mandate_par_annee": {
+     "2015": 1642105.03,
+     "2016": 6377355.35,
+     "2017": 2893039.21
+    },
+    "total_mandate": 10912499.59,
+    "preuve": "Le libellé de l'opération désigne ce lieu verbatim : « Piscine des Amiraux - réhabilitation » (mission JEUNESSE ET SPORTS, direction DJS). Cohérent avec le calendrier du chantier (marchés de travaux notifiés en 2015) et avec « la rénovation intégrale de la piscine des Amiraux » citée au Conseil de Paris (Plan Nager à Paris) ; le budget supplémentaire 2018 mentionne « 3,2 millions d'euros pour la piscine des Amiraux dans le 18e arrondissement ».",
+    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=1404024"
+   },
+   {
+    "ap_cle": "1004024",
+    "ap_texte": "Piscine des Amiraux - réhabilitation",
+    "mandate_par_annee": {
+     "2014": 487903.61,
+     "2015": 112764.42,
+     "2016": 366490.2,
+     "2017": 302188.0
+    },
+    "total_mandate": 1269346.23,
+    "preuve": "Le libellé de l'opération désigne ce lieu verbatim : « Piscine des Amiraux - réhabilitation » (mission JEUNESSE ET SPORTS, direction DJS), même opération de réhabilitation que les marchés MOE (2013) et travaux (2015) portant sur la piscine des Amiraux (18e).",
+    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=1004024"
+   },
+   {
+    "ap_cle": "B100/1004024",
+    "ap_texte": "Piscine des Amiraux - réhabilitation",
+    "mandate_par_annee": {
+     "2013": 723058.78
+    },
+    "total_mandate": 723058.78,
+    "preuve": "Le libellé de l'opération désigne ce lieu verbatim : « Piscine des Amiraux - réhabilitation » (mission JEUNESSE ET SPORTS, direction DJS) ; mandaté en 2013, année de notification du marché de maîtrise d'œuvre « MOE RESTAURATION ET MISE NORMES PISCINE DES AMIRAUX 75018 ».",
+    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/1004024"
+   },
+   {
+    "ap_cle": "1204024",
+    "ap_texte": "Piscine des Amiraux - réhabilitation",
+    "mandate_par_annee": {
+     "2015": 329168.67,
+     "2017": 22144.81
+    },
+    "total_mandate": 351313.48,
+    "preuve": "Le libellé de l'opération désigne ce lieu verbatim : « Piscine des Amiraux - réhabilitation » (mission JEUNESSE ET SPORTS, direction DJS), même opération de réhabilitation que les marchés MOE (2013) et travaux (2015) portant sur la piscine des Amiraux (18e).",
+    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=1204024"
+   }
+  ],
+  "periode": [
+   "2013",
+   "2017"
+  ],
+  "source": {
+   "name": "Comptes administratifs — autorisations de programme, Ville de Paris",
+   "url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/"
+  }
+ },
  "sources": {
   "delibs": {
    "name": "Débat-Délibs — Conseil de Paris",

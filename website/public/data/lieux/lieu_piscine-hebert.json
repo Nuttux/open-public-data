@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T10:03:14.731611+00:00",
+ "generated_at": "2026-07-20T11:16:58.583958+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "piscine-hebert",
  "name": "Piscine Hébert",
@@ -108,6 +108,7 @@
    "preuve": "L'objet du marché nomme le lieu et son arrondissement verbatim : « RÉNOVATION SSI PISCINE HÉBERT, 750018 ». Le code 750018 concorde avec l'arrondissement du lieu (18e), confirmé par le vœu du Conseil de Paris d'avril 2019 « relatif à la piscine Hébert (18e) » (doc 148298). Rénovation du système de sécurité incendie du bâtiment."
   }
  ],
+ "mandate": null,
  "sources": {
   "delibs": {
    "name": "Débat-Délibs — Conseil de Paris",

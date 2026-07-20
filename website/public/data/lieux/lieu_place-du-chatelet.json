@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T10:03:14.731611+00:00",
+ "generated_at": "2026-07-20T11:16:58.583958+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "place-du-chatelet",
  "name": "Place du Châtelet",
@@ -115,6 +115,7 @@
    "preuve": "L'objet du marché nomme explicitement le lieu : « MOE RESTAURATION FONTAINE DU PALMIER PLACE DU CHÂTELET 1ER ». La prestation (maîtrise d'œuvre de restauration) porte sur la Fontaine du Palmier, ouvrage de la place elle-même — la place n'est pas ici un simple repère d'adresse, et il ne s'agit pas d'un marché-cadre de toute la Ville. Signal du candidat : « objet ». Fournisseur DE BERGEVIN, SIRET 38125680900058."
   }
  ],
+ "mandate": null,
  "sources": {
   "delibs": {
    "name": "Débat-Délibs — Conseil de Paris",

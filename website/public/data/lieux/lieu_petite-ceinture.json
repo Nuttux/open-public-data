@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T10:03:14.731611+00:00",
+ "generated_at": "2026-07-20T11:16:58.583958+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "petite-ceinture",
  "name": "Petite Ceinture",
@@ -46,12 +46,12 @@
   {
    "beneficiaire": "HALAGE",
    "montant_total": 358108.0,
-   "preuve": "Objet de la subvention verbatim : « Chantier d¿insertion entretien de la Petite Ceinture ferroviaire PC18, PC19, PC20) » — l'objet nomme le lieu et désigne l'entretien de trois tronçons (18e, 19e, 20e). SIRET 40116107000032. Le débat de la délibération 2023 DEVE 20, « Subventions (410.676 euros) à 5 associations pour des projets d'insertion professionnelle par l'entretien de la petite ceinture ferroviaire », cite nommément « Halage » parmi ces structures d'insertion. Rôle « resident » et non « exploitant » : l'association réalise un chantier d'insertion SUR le site, elle ne gère pas la Petite Ceinture — la Ville conventionne 5 associations pour cet entretien (2023 DEVE 20, 2025 DEVE 26, 2025 DEVE 88) et l'infrastructure appartient à S.N.C.F. Réseau (2026 DEVE 16, « Conventions de financement de travaux de mise en sécurité sur la Petite Ceinture du 15e avec S.N.C.F. Réseau »)."
+   "preuve": "Objet : « Chantier d¿insertion entretien de la Petite Ceinture ferroviaire PC18, PC19, PC20) » — nomme explicitement le lieu et ses tronçons (18e, 19e, 20e) ; SIRET 40116107000032. Corroboré par la délibération 2023 DEVE 20 (Conseil de Paris, juin 2023) : « Subventions (410.676 euros) à 5 associations pour des projets d'insertion professionnelle par l'entretien de la petite ceinture ferroviaire ». L'association réalise un chantier d'insertion SUR le site sous convention, elle ne gère pas la Petite Ceinture."
   },
   {
    "beneficiaire": "INTERFACE FORMATION",
    "montant_total": 96300.0,
-   "preuve": "Objet de la subvention verbatim : « Chantier d'insertion Petite ceinture ferroviaire 12e et 20e association Interface Formation-Fonctionnement » — l'objet nomme le lieu et précise les tronçons (12e et 20e). SIRET 40218568000020. Rôle « resident » et non « exploitant » : le terme « Fonctionnement » qualifie le type de subvention versée à l'association, pas la gestion du lieu ; l'association mène un chantier d'insertion sur le site sans le gérer, la Ville conventionnant 5 associations pour cet entretien (2023 DEVE 20, 2025 DEVE 26, 2025 DEVE 88). Confiance « moyenne » : contrairement à Halage, l'association n'est nommée dans aucun débat du contexte de délibérations ; seule la preuve par l'objet la relie au lieu."
+   "preuve": "Objet : « Chantier d'insertion Petite ceinture ferroviaire 12e et 20e association Interface Formation-Fonctionnement » — nomme explicitement le lieu et les tronçons (12e et 20e) ; SIRET 40218568000020. Corroboré par la délibération 2023 DEVE 20 (Conseil de Paris, juin 2023) sur les chantiers d'insertion d'entretien de la petite ceinture ferroviaire. Activité d'entretien sur le lieu, pas de gestion du site."
   }
  ],
  "kpi_montant": null,
@@ -210,35 +210,35 @@
    "annee": 2022,
    "montant_eur": 113923.0,
    "nom_projet": "Reconquête de la Petite Ceinture",
-   "preuve": "Le nom du projet nomme explicitement CE lieu : « Reconquête de la Petite Ceinture » — intitulé identique au programme de la délibération 2019 DEVE 104 (« B.P. 2015 \"Reconquête de la Petite Ceinture\" »).",
+   "preuve": "Le nom du projet nomme explicitement le lieu : « Reconquête de la Petite Ceinture ».",
    "id": "2022_19_59_023"
   },
   {
    "annee": 2024,
    "montant_eur": 1563987.69,
    "nom_projet": "Poursuivre l'ouverture de la Petite Ceinture",
-   "preuve": "Le nom du projet nomme explicitement CE lieu : « Poursuivre l'ouverture de la Petite Ceinture ». La distance centroïde (2 950 m) n'est pas significative pour une infrastructure linéaire multi-arrondissements ; c'est le nom qui fait preuve. L'« ouverture » de tronçons est corroborée par le débat 2023 DEVE 20 (« l'ouverture imminente de la portion de la petite c[einture] »).",
+   "preuve": "Le nom du projet nomme explicitement le lieu : « Poursuivre l'ouverture de la Petite Ceinture ». La distance (2 950 m) n'est pas disqualifiante : la Petite Ceinture est une infrastructure linéaire traversant Paris.",
    "id": "2024_18_51_025"
   },
   {
    "annee": 2024,
    "montant_eur": 384785.93,
    "nom_projet": "Quartiers populaires : reconquête de la Petite Ceinture",
-   "preuve": "Le nom du projet nomme explicitement CE lieu : « Quartiers populaires : reconquête de la Petite Ceinture ». L'intitulé « Reconquête de la Petite Ceinture » est celui d'un programme municipal documenté par la délibération 2019 DEVE 104 (« B.P. 2015 \"Reconquête de la Petite Ceinture\" »).",
+   "preuve": "Le nom du projet nomme explicitement le lieu : « Quartiers populaires : reconquête de la Petite Ceinture ».",
    "id": "2024_18_51_024"
   },
   {
    "annee": 2024,
    "montant_eur": 125688.21,
    "nom_projet": "La reconquête de la petite ceinture",
-   "preuve": "Le nom du projet nomme explicitement CE lieu : « La reconquête de la petite ceinture ». Même programme « Reconquête de la Petite Ceinture » que la délibération 2019 DEVE 104 (« B.P. 2015 \"Reconquête de la Petite Ceinture\" »).",
+   "preuve": "Le nom du projet nomme explicitement le lieu : « La reconquête de la petite ceinture ».",
    "id": "2024_19_54_022"
   },
   {
    "annee": 2024,
    "montant_eur": 51399.06,
    "nom_projet": "Poursuivre l'ouverture de la Petite Ceinture",
-   "preuve": "Le nom du projet nomme explicitement CE lieu : « Poursuivre l'ouverture de la Petite Ceinture » (seconde ligne 2024 du même intitulé, montant distinct).",
+   "preuve": "Le nom du projet nomme explicitement le lieu : « Poursuivre l'ouverture de la Petite Ceinture ».",
    "id": "2024_18_51_025"
   }
  ],
@@ -250,7 +250,7 @@
    "fournisseur": "ENTREPRISE DE TRAVAUX PUBLICS EGA",
    "montant_max": 1580837.76,
    "date_notification": "2023-06-14",
-   "preuve": "L'objet porte explicitement sur le lieu : « AMENAGEMENT PROMENADE PETITE CEINTURE 20EME LOT 1 » (travaux d'aménagement du tronçon du 20e)."
+   "preuve": "Objet du marché : « AMENAGEMENT PROMENADE PETITE CEINTURE 20EME LOT 1 » — travaux d'aménagement portant nommément sur la promenade de la Petite Ceinture (20e)."
   },
   {
    "numero_marche": "20222022T06773",
@@ -259,7 +259,7 @@
    "fournisseur": "TERIDEAL",
    "montant_max": 1299402.1,
    "date_notification": "2022-09-28",
-   "preuve": "L'objet porte explicitement sur le lieu : « TVX PROMENADE PETITE CEINTURE - GENIE CIVIL/VRD - LOT1 » (travaux de génie civil sur la promenade de la Petite Ceinture)."
+   "preuve": "Objet du marché : « TVX PROMENADE PETITE CEINTURE - GENIE CIVIL/VRD - LOT1 » — travaux nommément sur la promenade de la Petite Ceinture."
   },
   {
    "numero_marche": "20191230000954",
@@ -268,7 +268,7 @@
    "fournisseur": "ENVIRONNEMENT SERVICES",
    "montant_max": 612466.34,
    "date_notification": "2019-07-11",
-   "preuve": "L'objet porte explicitement sur le lieu : « TVX AMENAGT PETITE CEINTURE TRONCON PC -LOT2:SERRURER » (travaux d'aménagement d'un tronçon, lot serrurerie)."
+   "preuve": "Objet du marché : « TVX AMENAGT PETITE CEINTURE TRONCON PC - LOT2 : SERRURER[IE] » — travaux d'aménagement d'un tronçon de la Petite Ceinture."
   },
   {
    "numero_marche": "decp-2025T10219",
@@ -277,7 +277,7 @@
    "fournisseur": "ARTOPIA",
    "montant_max": 588319.43,
    "date_notification": "2025-10-08",
-   "preuve": "L'objet nomme le lieu et localise le chantier : « aménagement d’une promenade de la Petite Ceinture dans le secteur compris entre la gare Masséna et le pont de Patay à Paris 13ème ». Lieu d'exécution DECP : « Paris »."
+   "preuve": "Objet du marché : « aménagement d'une promenade de la Petite Ceinture dans le secteur compris entre la gare Masséna et le pont de Patay à Paris 13ème » — tronçon précis de la Petite Ceinture nommé dans l'objet."
   },
   {
    "numero_marche": "20222022F06774",
@@ -286,7 +286,7 @@
    "fournisseur": "SERRURERIE MENUISERIE",
    "montant_max": 557679.27,
    "date_notification": "2022-09-27",
-   "preuve": "L'objet porte explicitement sur le lieu : « TVX PROMENADE PETITE CEINTURE - SERRURERIE/METALL - LOT2 » (lot serrurerie/métallerie de la promenade)."
+   "preuve": "Objet du marché : « TVX PROMENADE PETITE CEINTURE - SERRURERIE/METALL - LOT2 » — travaux nommément sur la promenade de la Petite Ceinture."
   },
   {
    "numero_marche": "20232023T03963",
@@ -295,7 +295,7 @@
    "fournisseur": "ENVIRONNEMENT SERVICES",
    "montant_max": 499985.92,
    "date_notification": "2023-06-14",
-   "preuve": "L'objet porte explicitement sur le lieu : « AMENAGEMENT PROMENADE PETITE CEINTURE 20EME LOT 2 » (lot 2 du même aménagement du tronçon du 20e)."
+   "preuve": "Objet du marché : « AMENAGEMENT PROMENADE PETITE CEINTURE 20EME LOT 2 » — travaux d'aménagement portant nommément sur la promenade de la Petite Ceinture (20e)."
   },
   {
    "numero_marche": "20232023T11232",
@@ -304,7 +304,7 @@
    "fournisseur": "URBAINE DE TRAVAUX",
    "montant_max": 179510.48,
    "date_notification": "2023-12-30",
-   "preuve": "L'objet nomme le lieu : « TVX AMENAGMT ACCES A LA PROMENADE (PETITE CEINTURE) » — travaux d'aménagement des accès à la promenade."
+   "preuve": "Objet du marché : « TVX AMENAGMT ACCES A LA PROMENADE (PETITE CEINTURE) » — aménagement des accès à la promenade de la Petite Ceinture."
   },
   {
    "numero_marche": "20242024T04674",
@@ -313,7 +313,7 @@
    "fournisseur": "ENVIRONNEMENT SERVICES",
    "montant_max": 165554.51,
    "date_notification": "2024-06-17",
-   "preuve": "L'objet nomme le lieu et le tronçon : « TRAVAUX DE SERRURERIE_PETITE CEINTURE 15E _LOT 2 ». Cohérent avec la délibération 2026 DEVE 16, « Conventions de financement de travaux de mise en sécurité sur la Petite Ceinture du 15e avec S.N.C.F. Réseau »."
+   "preuve": "Objet du marché : « TRAVAUX DE SERRURERIE_PETITE CEINTURE 15E _LOT 2 » — travaux nommément sur la Petite Ceinture (15e)."
   },
   {
    "numero_marche": "20191210001317",
@@ -322,7 +322,7 @@
    "fournisseur": "YVES COUGNAUD",
    "montant_max": 163000.0,
    "date_notification": "2019-10-10",
-   "preuve": "L'objet nomme le lieu et le tronçon : « FOURNITURE ET POSE MODULES PRÉFABRIQUÉS PETITE CEINTURE 13E » (équipement posé sur le site)."
+   "preuve": "Objet du marché : « FOURNITURE ET POSE MODULES PRÉFABRIQUÉS PETITE CEINTURE 13E » — équipement installé nommément sur la Petite Ceinture (13e)."
   },
   {
    "numero_marche": "20232023S03133",
@@ -331,7 +331,7 @@
    "fournisseur": "ETUDES PLURIDISCIPLIN ET CONSEILS",
    "montant_max": 148462.0,
    "date_notification": "2023-04-26",
-   "preuve": "L'objet porte sur ce lieu : « ETUDE TECH OPERAT AMENAGEMENT PETITE CEINTURE » (étude technique opérationnelle d'aménagement de la Petite Ceinture)."
+   "preuve": "Objet du marché : « ETUDE TECH OPERAT AMENAGEMENT PETITE CEINTURE » — étude technique portant nommément sur l'aménagement de la Petite Ceinture."
   },
   {
    "numero_marche": "20161230010127",
@@ -340,7 +340,7 @@
    "fournisseur": "ETUDES PLURIDISCIPLIN ET CONSEILS",
    "montant_max": 52345.0,
    "date_notification": "2016-11-04",
-   "preuve": "L'objet nomme le lieu et les tronçons concernés : « AMÉNAGEMENT PROMENADE PETITE CEINTURE 14,17,20 » (mission de maîtrise d'œuvre sur les tronçons des 14e, 17e et 20e)."
+   "preuve": "Objet du marché : « AMÉNAGEMENT PROMENADE PETITE CEINTURE 14,17,20 » — aménagement de la promenade de la Petite Ceinture (14e, 17e, 20e)."
   },
   {
    "numero_marche": "decp-2024S06938",
@@ -349,9 +349,151 @@
    "fournisseur": "WAO",
    "montant_max": 17707.0,
    "date_notification": "2024-07-15",
-   "preuve": "L'objet nomme le lieu et le tronçon : « construction d’un escalier métallique pour l’aménagement de la petite ceinture en promenade – Paris 19ème ». Lieu d'exécution DECP : « Paris »."
+   "preuve": "Objet du marché : « construction d'un escalier métallique pour l'aménagement de la petite ceinture en promenade – Paris 19ème » — ouvrage nommément sur la Petite Ceinture (19e)."
   }
  ],
+ "mandate": {
+  "par_annee": {
+   "2009": 61806.4,
+   "2010": 15167.55,
+   "2011": 800996.6,
+   "2012": 2444711.39,
+   "2013": 2600966.86,
+   "2014": 498221.36,
+   "2015": 1877165.02,
+   "2016": 1086374.89,
+   "2017": 956008.61
+  },
+  "total_eur": 10341418.68,
+  "operations": [
+   {
+    "ap_cle": "B100/1002630",
+    "ap_texte": "PETITE CEINTURE SECTEUR 15 - 1ERE PHASE",
+    "mandate_par_annee": {
+     "2011": 634182.75,
+     "2012": 2288433.22,
+     "2013": 917350.6
+    },
+    "total_mandate": 3839966.57,
+    "preuve": "Libellé : « PETITE CEINTURE SECTEUR 15 - 1ERE PHASE » (mission ESPACES VERTS ET ENV, direction DEVE) — opération d'aménagement nommément sur la Petite Ceinture, secteur du 15e.",
+    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/1002630"
+   },
+   {
+    "ap_cle": "1504722",
+    "ap_texte": "PETITE CEINTURE",
+    "mandate_par_annee": {
+     "2015": 1586162.3,
+     "2016": 804730.97,
+     "2017": 179183.85
+    },
+    "total_mandate": 2570077.12,
+    "preuve": "Libellé : « PETITE CEINTURE » (mission ESPACES VERTS ET ENV, direction DEVE) — opération nommément sur la Petite Ceinture ; libellé large, l'opération couvre l'ensemble du site.",
+    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=1504722"
+   },
+   {
+    "ap_cle": "B100/0702630",
+    "ap_texte": "PETITE CEINTURE SECTEUR 15 - 1ERE PHASE",
+    "mandate_par_annee": {
+     "2009": 61806.4,
+     "2010": 15167.55,
+     "2011": 166813.85,
+     "2012": 100316.02,
+     "2013": 1205015.09
+    },
+    "total_mandate": 1549118.91,
+    "preuve": "Libellé : « PETITE CEINTURE SECTEUR 15 - 1ERE PHASE » (DEVE, espaces verts) — opération nommément sur la Petite Ceinture, secteur du 15e.",
+    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/0702630"
+   },
+   {
+    "ap_cle": "1604952",
+    "ap_texte": "LA RECONQUETE DE LA PETITE CEINTURE",
+    "mandate_par_annee": {
+     "2016": 277398.52,
+     "2017": 771290.07
+    },
+    "total_mandate": 1048688.59,
+    "preuve": "Libellé : « LA RECONQUETE DE LA PETITE CEINTURE » (mission BUDGET PARTICIPATIF, direction DEVE) — opération nommément sur la Petite Ceinture ; cohérente avec les projets budget participatif du même nom.",
+    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=1604952"
+   },
+   {
+    "ap_cle": "1002630",
+    "ap_texte": "PETITE CEINTURE SECTEUR 15 - 1ERE PHASE",
+    "mandate_par_annee": {
+     "2014": 212441.91,
+     "2015": 179210.55
+    },
+    "total_mandate": 391652.46,
+    "preuve": "Libellé : « PETITE CEINTURE SECTEUR 15 - 1ERE PHASE » (DEVE, espaces verts) — opération nommément sur la Petite Ceinture, secteur du 15e.",
+    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=1002630"
+   },
+   {
+    "ap_cle": "B100/1202630",
+    "ap_texte": "PETITE CEINTURE SECTEUR 15 - 1ERE PHASE",
+    "mandate_par_annee": {
+     "2012": 55962.15,
+     "2013": 334865.51
+    },
+    "total_mandate": 390827.66,
+    "preuve": "Libellé : « PETITE CEINTURE SECTEUR 15 - 1ERE PHASE » (DEVE, espaces verts) — opération nommément sur la Petite Ceinture, secteur du 15e.",
+    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/1202630"
+   },
+   {
+    "ap_cle": "1302630",
+    "ap_texte": "PETITE CEINTURE SECTEUR 15 - 1ERE PHASE",
+    "mandate_par_annee": {
+     "2014": 170813.22,
+     "2015": 11675.34,
+     "2016": 2215.12,
+     "2017": 5530.13
+    },
+    "total_mandate": 190233.81,
+    "preuve": "Libellé : « PETITE CEINTURE SECTEUR 15 - 1ERE PHASE » (DEVE, espaces verts) — opération nommément sur la Petite Ceinture, secteur du 15e.",
+    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=1302630"
+   },
+   {
+    "ap_cle": "1202630",
+    "ap_texte": "PETITE CEINTURE SECTEUR 15 - 1ERE PHASE",
+    "mandate_par_annee": {
+     "2014": 114805.25,
+     "2015": 60421.96,
+     "2016": 2030.28,
+     "2017": 4.56
+    },
+    "total_mandate": 177262.05,
+    "preuve": "Libellé : « PETITE CEINTURE SECTEUR 15 - 1ERE PHASE » (DEVE, espaces verts) — opération nommément sur la Petite Ceinture, secteur du 15e.",
+    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=1202630"
+   },
+   {
+    "ap_cle": "B100/1302630",
+    "ap_texte": "PETITE CEINTURE SECTEUR 15 - 1ERE PHASE",
+    "mandate_par_annee": {
+     "2013": 143735.66
+    },
+    "total_mandate": 143735.66,
+    "preuve": "Libellé : « PETITE CEINTURE SECTEUR 15 - 1ERE PHASE » (DEVE, espaces verts) — opération nommément sur la Petite Ceinture, secteur du 15e.",
+    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/1302630"
+   },
+   {
+    "ap_cle": "0702630",
+    "ap_texte": "PETITE CEINTURE SECTEUR 15 - 1ERE PHASE",
+    "mandate_par_annee": {
+     "2014": 160.98,
+     "2015": 39694.87
+    },
+    "total_mandate": 39855.85,
+    "preuve": "Libellé : « PETITE CEINTURE SECTEUR 15 - 1ERE PHASE » (DEVE, espaces verts) — opération nommément sur la Petite Ceinture, secteur du 15e.",
+    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=0702630"
+   }
+  ],
+  "periode": [
+   "2009",
+   "2017"
+  ],
+  "source": {
+   "name": "Comptes administratifs — autorisations de programme, Ville de Paris",
+   "url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/"
+  }
+ },
  "sources": {
   "delibs": {
    "name": "Débat-Délibs — Conseil de Paris",

@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T10:03:14.731611+00:00",
+ "generated_at": "2026-07-20T11:16:58.583958+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "maison-de-la-poesie",
  "name": "Maison de la Poésie",
@@ -357,6 +357,7 @@
    "preuve": "L'objet du marché nomme le lieu verbatim et porte sur le bâtiment lui-même : 'Marché de travaux de mise à niveau des équipements de machinerie scénique de la Maison de la Poésie, sise 157 rue Saint Martin à Paris 3ème'. Il s'agit de travaux sur l'équipement scénique du lieu, et non d'un repère d'adresse ni d'un marché-cadre de toute la Ville. L'arrondissement cité dans l'objet (3e) correspond à celui du lieu. L'objet indique le 157 rue Saint-Martin, alors que les délibérations du Conseil de Paris citent le 161 / 161 bis rue Saint-Martin : cet écart de numéro n'est pas tranché par les sources disponibles, mais l'objet désigne nommément la Maison de la Poésie dans le 3e arrondissement, seul établissement de ce nom à cette adresse. Cohérent avec les travaux scéniques déjà financés par la Ville sur ce lieu : la Maison de la Poésie a réalisé en 2019 des investissements pour 'la sécurité du bâtiment et la mise aux normes de certains dispositifs scéniques' (2019 DAC 83, doc 152587). Montant repris tel quel du candidat."
   }
  ],
+ "mandate": null,
  "sources": {
   "delibs": {
    "name": "Débat-Délibs — Conseil de Paris",

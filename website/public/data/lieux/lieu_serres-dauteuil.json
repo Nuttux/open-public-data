@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T10:03:14.731611+00:00",
+ "generated_at": "2026-07-20T11:16:58.583958+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "serres-dauteuil",
  "name": "Serres d'Auteuil",
@@ -32,7 +32,7 @@
   ],
   "n_bmo_brut": 1554,
   "n_bmo_verifies": null,
-  "invest_total_eur": 123614,
+  "invest_total_eur": 123614.0,
   "invest_annees": [
    "2022"
   ],
@@ -44,8 +44,8 @@
  "residents": [
   {
    "beneficiaire": "ARS MOBILIS",
-   "montant_total": 4500,
-   "preuve": "Objet de la subvention verbatim : « Les Solistes à l'Orangerie des Serres d'Auteuil » — l'objet nomme le lieu (l'Orangerie du jardin des Serres d'Auteuil, 16e) comme lieu de la programmation. C'est une aide à une activité musicale accueillie DANS le lieu, pas une subvention de fonctionnement du jardin : le personnel du site est employé par la Ville (2012 DEVE 75 : « les jardiniers qui sont en charge des serres d'Auteuil »), et rien dans l'objet n'indique qu'ARS MOBILIS gère le jardin. Rattaché en résident, pas en exploitant."
+   "montant_total": 4500.0,
+   "preuve": "Objet de la subvention : « Les Solistes à l'Orangerie des Serres d'Auteuil » — concerts donnés à l'Orangerie, dans le jardin ; l'association ne gère pas le lieu (site en régie Ville de Paris / DEVE : « les jardiniers qui sont en charge des serres d'Auteuil » sont des agents de la Ville, délibération 2012 DEVE 75 ; adresse confirmée 3 avenue de la Porte-d'Auteuil, 16e)."
   }
  ],
  "kpi_montant": null,
@@ -150,9 +150,9 @@
  "invest": [
   {
    "annee": 2022,
-   "montant_eur": 123614,
+   "montant_eur": 123614.0,
    "nom_projet": "Jardin des Serres d'Auteuil - Réfection de la couverture du local du personnel",
-   "preuve": "Le nom du projet nomme CE lieu verbatim : « Jardin des Serres d'Auteuil - Réfection de la couverture du local du personnel » — travaux sur un bâtiment du jardin (local du personnel ; le site emploie du personnel municipal, cf. 2012 DEVE 75 : « plus d'une centaine de personnes qui travaillent aujourd'hui sur le site des serres d'Auteuil »). La distance de 1944 m vient d'un point de géocodage imprécis ; le nom explicite du lieu prime, aucun homonyme possible.",
+   "preuve": "Le nom du projet nomme explicitement le lieu : « Jardin des Serres d'Auteuil - Réfection de la couverture du local du personnel ». La distance géocodée (1944 m) n'est pas retenue comme critère : le nom prime.",
    "id": "2022_16_48_025"
   }
  ],
@@ -164,7 +164,7 @@
    "fournisseur": "TERIDEAL SEGEX",
    "montant_max": 536757.3,
    "date_notification": "2015-03-18",
-   "preuve": "L'objet nomme le lieu verbatim : « TVX D'AMENAGEMENT PAYSAGER -SERRES D'AUTEUIL,PARC FLORAL ». Montant partagé : l'objet vise deux sites du Jardin botanique de Paris (Serres d'Auteuil ET Parc Floral), ce que confirme le Conseil de Paris (« le Jardin botanique de Paris se développe sur plusieurs sites : le jardin des serres d'Auteuil, le jardin du Parc floral, le jardin de Bagatelle et l'arboretum », 2012 DEVE 75). La part revenant aux seules Serres d'Auteuil n'est pas connue : les 536 757,30 € ne peuvent pas être attribués en totalité à ce lieu."
+   "preuve": "Objet : « TVX D'AMENAGEMENT PAYSAGER -SERRES D'AUTEUIL,PARC FLORAL » — travaux nommant explicitement les Serres d'Auteuil. Attention : le marché couvre aussi le Parc Floral (12e), le montant_max ne va donc pas à ce seul site."
   },
   {
    "numero_marche": "20141230010731",
@@ -173,7 +173,7 @@
    "fournisseur": "CONSTRUCTIONS METALLIQUES FLORENTAI",
    "montant_max": 327836.65,
    "date_notification": "2014-02-04",
-   "preuve": "L'objet du marché nomme le lieu verbatim : « TVX RENOVATION SERRES D'AUTEUIL(6-17)-LOT1:VITRAG,PEINT » — travaux de rénovation (vitrage, peinture) portant sur les serres elles-mêmes, désignées par numéros (6 à 17). Le lieu n'est pas un simple repère d'adresse : il est l'objet des travaux. (Le Conseil de Paris a par ailleurs autorisé en 2012 des travaux dans ce jardin — 2012 DEVE 75, « réaménagement et rénovation des serres \"exposition\" et \"Azalée\" […] dans le jardin des Serres d'Auteuil (16e) » — sans qu'on puisse affirmer qu'il s'agit de la même opération que ce marché de 2014.)"
+   "preuve": "Objet : « TVX RENOVATION SERRES D'AUTEUIL(6-17)-LOT1:VITRAG,PEINT » — rénovation (vitrage, peinture) des serres 6 à 17, sur le lieu même."
   },
   {
    "numero_marche": "20141230010732",
@@ -182,7 +182,7 @@
    "fournisseur": "SARL CLAIE",
    "montant_max": 152596.73,
    "date_notification": "2014-02-03",
-   "preuve": "L'objet nomme le lieu verbatim : « TVX RENOVATION SERRES D'AUTEUIL(6-17)-LOT2:EQU.HORTICOL » — lot 2 (équipement horticole) de la même opération de rénovation des serres 6 à 17 que le marché 20141230010731, notifié à un jour d'intervalle."
+   "preuve": "Objet : « TVX RENOVATION SERRES D'AUTEUIL(6-17)-LOT2:EQU.HORTICOL » — lot 2 (équipement horticole) de la rénovation des serres 6 à 17, sur le lieu même."
   },
   {
    "numero_marche": "20161230001333",
@@ -191,9 +191,100 @@
    "fournisseur": "CONSTRUCTIONS METALLIQUES FLORENTAI",
    "montant_max": 71544.88,
    "date_notification": "2016-09-16",
-   "preuve": "L'objet nomme le lieu verbatim et désigne l'équipement posé sur le bâti : « INSTALLATION DE CLAIES D'OMBRAGE SUR LES SERRES D'AUTEUIL ». Prestation exécutée sur les serres du jardin."
+   "preuve": "Objet : « INSTALLATION DE CLAIES D'OMBRAGE SUR LES SERRES D'AUTEUIL » — équipement installé directement sur les serres du lieu."
   }
  ],
+ "mandate": {
+  "par_annee": {
+   "2012": 316970.39,
+   "2013": 323231.9,
+   "2014": 2409764.66,
+   "2015": 2290019.67,
+   "2016": 1443610.95,
+   "2017": 1695735.59
+  },
+  "total_eur": 8479333.16,
+  "operations": [
+   {
+    "ap_cle": "1204298",
+    "ap_texte": "DEMENAGEMENT DES SERRES D'AUTEUIL",
+    "mandate_par_annee": {
+     "2014": 410736.9,
+     "2015": 481097.45,
+     "2016": 1219957.27,
+     "2017": 1482154.59
+    },
+    "total_mandate": 3593946.21,
+    "preuve": "Libellé : « DEMENAGEMENT DES SERRES D'AUTEUIL » (direction DEVE, mission Espaces verts) — opération nommant explicitement le lieu ; le déménagement des serres et des collections est documenté dans les délibérations du Conseil de Paris (dossier Roland-Garros, ex. 2012 DEVE 75).",
+    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=1204298"
+   },
+   {
+    "ap_cle": "1304298",
+    "ap_texte": "DEMENAGEMENT DES SERRES D'AUTEUIL",
+    "mandate_par_annee": {
+     "2014": 906910.2,
+     "2015": 1060679.24,
+     "2016": 91538.12,
+     "2017": 204192.31
+    },
+    "total_mandate": 2263319.87,
+    "preuve": "Libellé : « DEMENAGEMENT DES SERRES D'AUTEUIL » (DEVE, Espaces verts) — même opération nommant explicitement le lieu, confirmée par les délibérations du Conseil de Paris.",
+    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=1304298"
+   },
+   {
+    "ap_cle": "1104298",
+    "ap_texte": "DEMENAGEMENTS DES SERRES D'AUTEUIL",
+    "mandate_par_annee": {
+     "2014": 1092117.56,
+     "2015": 748242.98,
+     "2016": 132115.56,
+     "2017": 9388.69
+    },
+    "total_mandate": 1981864.79,
+    "preuve": "Libellé : « DEMENAGEMENTS DES SERRES D'AUTEUIL » (DEVE, Espaces verts) — opération nommant explicitement le lieu.",
+    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=1104298"
+   },
+   {
+    "ap_cle": "B100/1104298",
+    "ap_texte": "DEMENAGEMENTS DES SERRES D'AUTEUIL",
+    "mandate_par_annee": {
+     "2012": 316970.39,
+     "2013": 156454.6
+    },
+    "total_mandate": 473424.99,
+    "preuve": "Libellé : « DEMENAGEMENTS DES SERRES D'AUTEUIL » (DEVE, Espaces verts) — opération nommant explicitement le lieu.",
+    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/1104298"
+   },
+   {
+    "ap_cle": "B100/1204298",
+    "ap_texte": "DEMENAGEMENT DES SERRES D'AUTEUIL",
+    "mandate_par_annee": {
+     "2013": 150683.83
+    },
+    "total_mandate": 150683.83,
+    "preuve": "Libellé : « DEMENAGEMENT DES SERRES D'AUTEUIL » (DEVE, Espaces verts) — opération nommant explicitement le lieu.",
+    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/1204298"
+   },
+   {
+    "ap_cle": "B100/1304298",
+    "ap_texte": "DEMENAGEMENT DES SERRES D'AUTEUIL",
+    "mandate_par_annee": {
+     "2013": 16093.47
+    },
+    "total_mandate": 16093.47,
+    "preuve": "Libellé : « DEMENAGEMENT DES SERRES D'AUTEUIL » (DEVE, Espaces verts) — opération nommant explicitement le lieu.",
+    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/1304298"
+   }
+  ],
+  "periode": [
+   "2012",
+   "2017"
+  ],
+  "source": {
+   "name": "Comptes administratifs — autorisations de programme, Ville de Paris",
+   "url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/"
+  }
+ },
  "sources": {
   "delibs": {
    "name": "Débat-Délibs — Conseil de Paris",

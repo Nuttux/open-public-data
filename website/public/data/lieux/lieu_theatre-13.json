@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T10:03:14.731611+00:00",
+ "generated_at": "2026-07-20T11:16:58.583958+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "theatre-13",
  "name": "Théâtre 13",
@@ -37,33 +37,33 @@
  "residents": [
   {
    "beneficiaire": "LES MILLE PRINTEMPS",
-   "montant_total": 9000,
-   "preuve": "Objet nomme le lieu verbatim : \"Aide à la diffusion pour 16 représentations du spectacle BIQUES au Théâtre 13\". Aide à un spectacle diffusé dans le lieu, pas à sa gestion."
+   "montant_total": 9000.0,
+   "preuve": "Objet : « Aide à la diffusion pour 16 représentations du spectacle BIQUES au Théâtre 13 » — aide à une compagnie pour un spectacle joué au lieu, pas de gestion du lieu."
   },
   {
    "beneficiaire": "TEATRO PICARO",
-   "montant_total": 5000,
-   "preuve": "Objet nomme le lieu verbatim : \"LA FUITE d'après Luigi PIRANDELLO au Théâtre 13 à Paris.\". Diffusion d'un spectacle dans le lieu."
+   "montant_total": 5000.0,
+   "preuve": "Objet : « LA FUITE d'après Luigi PIRANDELLO au Théâtre 13 à Paris. » — spectacle présenté au lieu."
   },
   {
    "beneficiaire": "COMPAGNIE DTM 9.4",
-   "montant_total": 5000,
-   "preuve": "Objet nomme le lieu verbatim : \"Viril(e.s) - reprise au Théâtre 13-AAP-SV22DIF2\". Aide à la diffusion (AAP-SV DIF) d'une reprise dans le lieu."
+   "montant_total": 5000.0,
+   "preuve": "Objet : « Viril(e.s) - reprise au Théâtre 13-AAP-SV22DIF2 » — reprise d'un spectacle au lieu."
   },
   {
    "beneficiaire": "COMPAGNIE EULALIE",
-   "montant_total": 5000,
-   "preuve": "Objet nomme le lieu verbatim : \"Aide à la diffusion NOS EDUCATIONS SENTIMENTALES ... THEATRE 13 PARIS\". Compagnie déjà accueillie au Théâtre 13 (délib. 2009 DAC 423, \"Le jour de l'italienne présenté au Théâtre 13\")."
+   "montant_total": 5000.0,
+   "preuve": "Objet : « Aide à la diffusion NOS EDUCATIONS SENTIMENTALES texte et Mes : Sophie Lecarpentier THEATRE 13 PARIS » — la compagnie est déjà attestée au Théâtre 13 par délibération (2009 DAC 423 : « Le jour de l'italienne présenté au Théâtre 13 »)."
   },
   {
    "beneficiaire": "COMPAGNIE MESDEN",
-   "montant_total": 5000,
-   "preuve": "Objet nomme le lieu verbatim : \"Aide à la diffusion Spectacle 3 contrefaçons, Bucarest, Ibiza, Venise au Théâtre 13\". Diffusion d'un spectacle dans le lieu."
+   "montant_total": 5000.0,
+   "preuve": "Objet : « Aide à la diffusion Spectacle 3 contrefaçons, Bucarest, Ibiza, Venise au Théâtre 13 » — spectacle diffusé au lieu."
   },
   {
    "beneficiaire": "LE TEMPS DES POSSIBLES",
-   "montant_total": 4000,
-   "preuve": "Objet nomme une salle du lieu verbatim : \"... de la pièce de G. Calderon au Théâtre 13 Seine\". Le Théâtre 13 Seine (rue du Chevaleret) est l'une des deux salles du Théâtre 13, confirmée par la délib. 2011 DAC 696."
+   "montant_total": 4000.0,
+   "preuve": "Objet : « Dispositif d'aide à la création et à la diffusion de la pièce de G. Calderon au Théâtre 13 Seine » — le « Théâtre 13 Seine » est la salle rue du Chevaleret du Théâtre 13 (délib. DAC 696, sept. 2011 : « le nouveau théâtre de la rue du Chevaleret qui devient le Théâtre 13 Seine »)."
   }
  ],
  "kpi_montant": null,
@@ -301,6 +301,32 @@
  "bmo_recit": null,
  "invest": [],
  "marches": [],
+ "mandate": {
+  "par_annee": {
+   "2015": 6792084.0
+  },
+  "total_eur": 6792084.0,
+  "operations": [
+   {
+    "ap_cle": "1304489",
+    "ap_texte": "THÉÂTRE 13 SEINE ACQUISITION",
+    "mandate_par_annee": {
+     "2015": 6792084.0
+    },
+    "total_mandate": 6792084.0,
+    "preuve": "Libellé « THÉÂTRE 13 SEINE ACQUISITION » (mission AFFAIRES CULTURELLES, direction DAC) : désigne nommément le Théâtre 13 Seine, salle du Théâtre 13 rue du Chevaleret construite par la Ville dans la ZAC Paris Rive Gauche et attribuée au Théâtre 13 (délib. DAC 696, sept. 2011). L'opération porte sur la salle Seine du lieu, pas sur la salle historique du bd Auguste-Blanqui.",
+    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=1304489"
+   }
+  ],
+  "periode": [
+   "2015",
+   "2015"
+  ],
+  "source": {
+   "name": "Comptes administratifs — autorisations de programme, Ville de Paris",
+   "url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/"
+  }
+ },
  "sources": {
   "delibs": {
    "name": "Débat-Délibs — Conseil de Paris",

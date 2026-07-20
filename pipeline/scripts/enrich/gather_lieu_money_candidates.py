@@ -43,6 +43,7 @@ RAYON_M = 200          # projets candidats dans ce rayon
 MAX_SUBV = 25          # plafond de candidats subvention par lieu
 MAX_PROJ = 20
 MAX_MARCHE = 20        # plafond de candidats marché public par lieu
+MAX_AP = 12            # plafond de candidats opération AP/CP par lieu
 
 # Alias : un lieu peut porter plusieurs noms (nom historique, exploitant connu).
 ALIAS = {
@@ -178,6 +179,32 @@ def marche_candidats(needles: list[str]) -> list[dict]:
     return out[:MAX_MARCHE]
 
 
+def ap_candidats(needles: list[str]) -> list[dict]:
+    """Opérations budgétaires (AP/CP) dont le libellé nomme le lieu.
+
+    C'est la DÉPENSE RÉELLE mandatée (2009-2017, niveau opération) — la seule
+    exécution d'investissement publiée à une maille rapprochable d'un lieu.
+    Candidat, pas preuve : « BOIS DE BOULOGNE » peut couvrir l'hippodrome comme
+    les allées ; le juge tranche avec le contexte des délibérations."""
+    src = WEB / "ca" / "ap_operations.json"
+    if not src.exists():
+        return []
+    keys = [norm(n) for n in needles]
+    out = []
+    for o in json.load(open(src)).get("operations", []):
+        hay = norm(f"{o.get('ap_texte') or ''} {o.get('mission_texte') or ''}")
+        if not any(k in hay for k in keys):
+            continue
+        out.append({
+            "ap_cle": o.get("ap_cle"), "ap_texte": o.get("ap_texte"),
+            "mission_texte": o.get("mission_texte"), "direction": o.get("direction"),
+            "mandate_par_annee": o.get("mandate_par_annee"),
+            "total_mandate": o.get("total_mandate"),
+        })
+    out.sort(key=lambda r: -(r["total_mandate"] or 0))
+    return out[:MAX_AP]
+
+
 def main() -> int:
     for seed in csv.DictReader(SEED.open()):
         slug = seed["slug"]
@@ -195,12 +222,13 @@ def main() -> int:
         subv = subvention_candidats(needles)
         proj = projet_candidats(float(seed["lat"]), float(seed["lon"]), needles)
         marches = marche_candidats(needles)
+        aps = ap_candidats(needles)
         out = {"slug": slug, "name": seed["name"], "kind_fr": seed["kind_fr"],
                "arrondissement": int(seed["arr"]), "aliases": needles,
                "subventions_candidates": subv, "projets_candidats": proj,
-               "marches_candidats": marches}
+               "marches_candidats": marches, "ap_candidats": aps}
         (CACHE / f"{slug}_money_candidates.json").write_text(json.dumps(out, ensure_ascii=False, indent=1))
-        print(f"{slug:<40} {len(subv):>2} subv · {len(proj):>2} projets · {len(marches):>2} marchés")
+        print(f"{slug:<40} {len(subv):>2} subv · {len(proj):>2} projets · {len(marches):>2} marchés · {len(aps):>2} AP")
     return 0
 
 

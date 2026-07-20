@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T10:03:14.731611+00:00",
+ "generated_at": "2026-07-20T11:16:58.583958+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "place-de-la-madeleine",
  "name": "Place de la Madeleine",
@@ -154,6 +154,7 @@
    "preuve": "L'objet nomme le lieu verbatim et décrit une mission de maîtrise d'œuvre dédiée à ce site : « CSP4:MA SUB_AC:MISSION MOE AMENAGEMENT PLACE DE LA MADELEINE » (SIRET fournisseur 38400090700020). Notifié le 2017-01-23, il précède de vingt mois le marché de travaux 20181370001240 portant sur le même aménagement, séquence cohérente avec le chantier confirmé par les délibérations de 2018-2019."
   }
  ],
+ "mandate": null,
  "sources": {
   "delibs": {
    "name": "Débat-Délibs — Conseil de Paris",

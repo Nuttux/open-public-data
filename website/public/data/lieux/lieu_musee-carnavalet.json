@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T10:03:14.731611+00:00",
+ "generated_at": "2026-07-20T11:16:58.583958+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "musee-carnavalet",
  "name": "Musée Carnavalet",
@@ -359,7 +359,7 @@
    "fournisseur": "BOUYGUES BATIMENT ILE DE FRANCE",
    "montant_max": 25957872.68,
    "date_notification": "2017-11-27",
-   "preuve": "L'objet du marche nomme explicitement le lieu : « CSP5 RENOVATION PARTIELLE MUSEE CARNAVALET-LOT3 BATIMENT TCE »."
+   "preuve": "Objet nomme le lieu : \"RENOVATION PARTIELLE MUSEE CARNAVALET-LOT3 BATIMENT TCE\" ; correspond au chantier de rénovation du musée (délib 2013 DPA 3, travaux estimés 30-40 M EUR ; vœu mai 2018 : \"musée en travaux, qui va rouvrir l'année prochaine\")."
   },
   {
    "numero_marche": "20181210020013",
@@ -368,7 +368,7 @@
    "fournisseur": "VITRINEN-UND",
    "montant_max": 3605352.0,
    "date_notification": "2018-06-18",
-   "preuve": "L'objet du marche nomme explicitement le lieu : « CSP5 RENOV PARTIELLE MUSEE CARNAVALET AMENAGT MUSEOGRAPHIQUE »."
+   "preuve": "Objet nomme le lieu : \"RENOV PARTIELLE MUSEE CARNAVALET AMENAGT MUSEOGRAPHIQUE\" ; le réaménagement muséographique est un axe explicite de la rénovation (débat 2013 DPA 3 : \"repenser le circuit muséographique\")."
   },
   {
    "numero_marche": "20161210000654",
@@ -377,7 +377,7 @@
    "fournisseur": "CHATILLON ARCHITECTES",
    "montant_max": 3253221.47,
    "date_notification": "2016-05-25",
-   "preuve": "L'objet du marche nomme explicitement le lieu : « MARCHÉ SUBSÉQUENT 2 MOE RENOVATION MUSEE CARNAVALET 3EME ». Arrondissement (3e) coherent avec l'adresse du musee, 23-29 rue de Sevigne (3e)."
+   "preuve": "Objet nomme le lieu et l'arrondissement : \"MOE RENOVATION MUSEE CARNAVALET 3EME\" — le musée est bien dans le 3e (23 rue de Sévigné, délib 2008 DAC 664)."
   },
   {
    "numero_marche": "20151210020012",
@@ -386,7 +386,7 @@
    "fournisseur": "CHATILLON ARCHITECTES",
    "montant_max": 1896816.68,
    "date_notification": "2015-12-17",
-   "preuve": "L'objet du marche nomme explicitement le lieu : « MARCHÉ SUBSÉQUENT MOE RÉNOVATION DU MUSÉE CARNAVALET 75003 ». Code postal 75003 coherent avec l'adresse du musee, 23-29 rue de Sevigne (3e)."
+   "preuve": "Objet nomme le lieu et le code postal : \"MOE RÉNOVATION DU MUSÉE CARNAVALET 75003\"."
   },
   {
    "numero_marche": "20171210000854",
@@ -395,7 +395,7 @@
    "fournisseur": "AVENIR DECONSTRUCTION",
    "montant_max": 783890.0,
    "date_notification": "2017-06-02",
-   "preuve": "L'objet du marche nomme explicitement le lieu : « CSP5 TVX RENOVATION PARTIELLE MUSEE CARNAVALET LOT1 »."
+   "preuve": "Objet nomme le lieu : \"TVX RENOVATION PARTIELLE MUSEE CARNAVALET LOT1\"."
   },
   {
    "numero_marche": "20181210000996",
@@ -404,7 +404,7 @@
    "fournisseur": "ARTECHNIC",
    "montant_max": 602809.73,
    "date_notification": "2018-07-10",
-   "preuve": "L'objet du marche nomme explicitement le lieu : « CSP5 RENOVATION PARTIELLE DU MUSEE CARNAVALET LOT 07 »."
+   "preuve": "Objet nomme le lieu : \"RENOVATION PARTIELLE DU MUSEE CARNAVALET LOT 07\"."
   },
   {
    "numero_marche": "20181210000994",
@@ -413,7 +413,7 @@
    "fournisseur": "ENVIRONNEMENT SERVICES CONSTRUCTION",
    "montant_max": 562142.19,
    "date_notification": "2018-07-10",
-   "preuve": "L'objet du marche nomme explicitement le lieu : « CSP5 RENOVATION PARTIELLE DU MUSEE CARNAVALET LOT 05 »."
+   "preuve": "Objet nomme le lieu : \"RENOVATION PARTIELLE DU MUSEE CARNAVALET LOT 05\"."
   },
   {
    "numero_marche": "20171210003002",
@@ -422,7 +422,7 @@
    "fournisseur": "CHATILLON ARCHITECTES",
    "montant_max": 555100.0,
    "date_notification": "2017-02-16",
-   "preuve": "L'objet du marche nomme explicitement le lieu : « MARCHÉ SUSÉQUENT 3 MOE RENOVATION MUSEE CARNAVALET 3EME ». Arrondissement (3e) coherent avec l'adresse du musee, 23-29 rue de Sevigne (3e)."
+   "preuve": "Objet nomme le lieu et l'arrondissement : \"MOE RENOVATION MUSEE CARNAVALET 3EME\" ; même titulaire (CHATILLON ARCHITECTES, SIRET 51747325200057) que les autres marchés subséquents de MOE du chantier."
   },
   {
    "numero_marche": "20141210010908",
@@ -431,7 +431,7 @@
    "fournisseur": "EIFFAGE CONSTRUCTION EQUIPEMENTS",
    "montant_max": 498319.04,
    "date_notification": "2014-03-07",
-   "preuve": "L'objet du marche nomme explicitement le lieu : « CSP5 TX FACADES MUSEE CARNAVALET LOT 1 »."
+   "preuve": "Objet nomme le lieu : \"TX FACADES MUSEE CARNAVALET LOT 1\" (travaux sur les façades du bâtiment)."
   },
   {
    "numero_marche": "20181210000995",
@@ -440,7 +440,7 @@
    "fournisseur": "VIDELIO IEC",
    "montant_max": 337165.24,
    "date_notification": "2018-07-10",
-   "preuve": "L'objet du marche nomme explicitement le lieu : « CSP5 RENOVATION PARTIELLE DU MUSEE CARNAVALET LOT 06 »."
+   "preuve": "Objet nomme le lieu : \"RENOVATION PARTIELLE DU MUSEE CARNAVALET LOT 06\"."
   },
   {
    "numero_marche": "20141210010910",
@@ -449,7 +449,7 @@
    "fournisseur": "LES ETABLISSEMENTS GIFFARD",
    "montant_max": 314035.05,
    "date_notification": "2014-03-05",
-   "preuve": "L'objet du marche nomme explicitement le lieu : « CSP5 TX MENUISERIE MUSEE CARNAVALET LOT 4 »."
+   "preuve": "Objet nomme le lieu : \"TX MENUISERIE MUSEE CARNAVALET LOT 4\"."
   },
   {
    "numero_marche": "20202020S03798",
@@ -458,7 +458,7 @@
    "fournisseur": "CHATILLON ARCHITECTES",
    "montant_max": 219148.88,
    "date_notification": "2020-07-02",
-   "preuve": "L'objet du marche nomme explicitement le lieu : « SUBSÉQUENT RÉNOVATION MUSÉE CARNAVALET 23 RUE DE SÉVIGNÉ 3È ». Adresse exacte du musee confirmee par la deliberation 2008 DAC 664 : « situe 23 rue de Sevigne (3e) »."
+   "preuve": "Objet nomme le lieu ET son adresse exacte : \"MUSÉE CARNAVALET 23 RUE DE SÉVIGNÉ 3È\" — adresse confirmée par la délibération 2008 DAC 664 (\"Musée Carnavalet situé 23 rue de Sévigné (3e)\")."
   },
   {
    "numero_marche": "20191210000082",
@@ -467,7 +467,7 @@
    "fournisseur": "MEDICIS",
    "montant_max": 214086.7,
    "date_notification": "2019-01-14",
-   "preuve": "L'objet du marche nomme explicitement le lieu : « CSP5 RENOV PARTIELLE MUSEE CARNAVALET - LOT8 GRAPH MUSEOGRAP »."
+   "preuve": "Objet nomme le lieu : \"RENOV PARTIELLE MUSEE CARNAVALET - LOT8 GRAPH MUSEOGRAP\" (graphisme muséographique du même chantier)."
   },
   {
    "numero_marche": "20141210010907",
@@ -476,7 +476,7 @@
    "fournisseur": "BALAS",
    "montant_max": 213983.84,
    "date_notification": "2014-03-07",
-   "preuve": "L'objet du marche nomme explicitement le lieu : « CSP5 TX FACADE MUSEE CARNAVALET LOT 3 »."
+   "preuve": "Objet nomme le lieu : \"TX FACADE MUSEE CARNAVALET LOT 3\"."
   },
   {
    "numero_marche": "20191210000654",
@@ -485,7 +485,7 @@
    "fournisseur": "ARTELIA",
    "montant_max": 203950.0,
    "date_notification": "2019-06-12",
-   "preuve": "L'objet du marche nomme explicitement le lieu : « SUBSÉQUENT RESTRUCTURATION MUSÉE CARNAVALET 75003 SAMO ». Code postal 75003 coherent avec l'adresse du musee, 23-29 rue de Sevigne (3e)."
+   "preuve": "Objet nomme le lieu et le code postal : \"RESTRUCTURATION MUSÉE CARNAVALET 75003\"."
   },
   {
    "numero_marche": "20202020S04397",
@@ -494,7 +494,7 @@
    "fournisseur": "CHATILLON ARCHITECTES",
    "montant_max": 178702.52,
    "date_notification": "2020-09-22",
-   "preuve": "L'objet du marche nomme explicitement le lieu : « SUBSÉQUENT N°5 MOE ÉTUDES MUSÉOGRAPHIQUES MUSÉE CARNAVALET »."
+   "preuve": "Objet nomme le lieu : \"MOE ÉTUDES MUSÉOGRAPHIQUES MUSÉE CARNAVALET\"."
   },
   {
    "numero_marche": "20131210012301",
@@ -503,7 +503,7 @@
    "fournisseur": "SEBAN",
    "montant_max": 155575.09,
    "date_notification": "2014-01-09",
-   "preuve": "L'objet du marche nomme explicitement le lieu : « ÉTUDE DE PROGRAMMATION RÉNOVATION GLOBALE MUSÉE CARNAVALET ». Corrobore par la deliberation 2013 DPA 3, « etude de programmation pour la renovation globale du musee Carnavalet (3e) »."
+   "preuve": "Objet nomme le lieu : \"ÉTUDE DE PROGRAMMATION RÉNOVATION GLOBALE MUSÉE CARNAVALET\" ; correspond à la délibération 2013 DPA 3 (\"étude de programmation pour la rénovation globale du musée Carnavalet (3e)\")."
   },
   {
    "numero_marche": "20161210005701",
@@ -512,7 +512,7 @@
    "fournisseur": "QUALICONSULT",
    "montant_max": 100982.5,
    "date_notification": "2016-11-15",
-   "preuve": "L'objet du marche nomme explicitement le lieu : « MARCHÉ SUBSÉQUENT BCT RESTRUCTURATION MUSÉE CARNAVALET »."
+   "preuve": "Objet nomme le lieu : \"BCT RESTRUCTURATION MUSÉE CARNAVALET\" (bureau de contrôle technique du chantier)."
   },
   {
    "numero_marche": "20141210010911",
@@ -521,7 +521,7 @@
    "fournisseur": "LITHOS FRANCE",
    "montant_max": 62571.0,
    "date_notification": "2014-03-06",
-   "preuve": "L'objet du marche nomme explicitement le lieu : « CSP5 TX MACONNERIE FACADE MUSEE CARNAVALET LOT 2 »."
+   "preuve": "Objet nomme le lieu : \"TX MACONNERIE FACADE MUSEE CARNAVALET LOT 2\"."
   },
   {
    "numero_marche": "20181210001002",
@@ -530,9 +530,63 @@
    "fournisseur": "COORDEF INGENIERIE",
    "montant_max": 59660.0,
    "date_notification": "2018-07-10",
-   "preuve": "L'objet du marche nomme explicitement le lieu : « CSPS  RENOVATION /RESTRUCTURATION PARTIELLE MUSEE CARNAVALET »."
+   "preuve": "Objet nomme le lieu : \"CSPS RENOVATION /RESTRUCTURATION PARTIELLE MUSEE CARNAVALET\" (coordination sécurité-protection-santé du même chantier)."
   }
  ],
+ "mandate": {
+  "par_annee": {
+   "2014": 101338.89,
+   "2015": 120886.59,
+   "2016": 2091437.4,
+   "2017": 2526518.72
+  },
+  "total_eur": 4840181.6,
+  "operations": [
+   {
+    "ap_cle": "1604484",
+    "ap_texte": "EP MUSEES: MUSEE CARNAVALET ACCESSIBILIT",
+    "mandate_par_annee": {
+     "2016": 1863625.22,
+     "2017": 2524920.7
+    },
+    "total_mandate": 4388545.92,
+    "preuve": "Libellé nomme le lieu : \"EP MUSEES: MUSEE CARNAVALET ACCESSIBILIT\" (direction DPA, opérations sous mandat pour l'EP Paris Musées) ; la mise en accessibilité est un axe cité en Conseil de Paris (débat 2013 DPA 3 : \"la nécessaire mise en accessibilité handicapés de tout le musée\").",
+    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=1604484"
+   },
+   {
+    "ap_cle": "1304484",
+    "ap_texte": "EP MUSEES: MUSEE CARNAVALET ACCESSIBILIT",
+    "mandate_par_annee": {
+     "2014": 101338.89,
+     "2015": 120886.59,
+     "2016": 74076.1,
+     "2017": 1602.02
+    },
+    "total_mandate": 297903.6,
+    "preuve": "Libellé nomme le lieu : \"EP MUSEES: MUSEE CARNAVALET ACCESSIBILIT\" (direction DPA) ; même opération d'accessibilité du musée que l'AP 1604484, millésime antérieur.",
+    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=1304484"
+   },
+   {
+    "ap_cle": "1504484",
+    "ap_texte": "EPM : MUSEE CARNAVALET ACCESSIBILITE",
+    "mandate_par_annee": {
+     "2016": 153736.08,
+     "2017": -4.0
+    },
+    "total_mandate": 153732.08,
+    "preuve": "Libellé nomme le lieu : \"EPM : MUSEE CARNAVALET ACCESSIBILITE\" (direction DPA, opérations sous mandat pour l'EP Paris Musées), autre millésime de la même opération d'accessibilité.",
+    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=1504484"
+   }
+  ],
+  "periode": [
+   "2014",
+   "2017"
+  ],
+  "source": {
+   "name": "Comptes administratifs — autorisations de programme, Ville de Paris",
+   "url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/"
+  }
+ },
  "sources": {
   "delibs": {
    "name": "Débat-Délibs — Conseil de Paris",
