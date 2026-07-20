@@ -56,7 +56,7 @@ export default function QuiRecoitClient({
   const pathname = usePathname();
   const citySlug = citySlugFromPathname(pathname);
   const cityBasePath = `/fr/city/${citySlug}/subventions`;
-  const swarmIndexUrl = cityDataUrl(citySlug, "subventions/beneficiaires_search.json");
+  const swarmUrl = cityDataUrl(citySlug, `subventions/swarm_${d.year}.json`);
 
   return (
     <div className="theme-fusion">
@@ -154,7 +154,7 @@ export default function QuiRecoitClient({
             }
             subtitle={fill(t("fx.qr.swarm.sub"), { year: d.year, nb: fmtInt(d.nbBeneficiaires) })}
           />
-          <SubventionsBeeswarm year={d.year} searchIndexUrl={swarmIndexUrl} ficheBase={cityBasePath} />
+          <SubventionsBeeswarm year={d.year} swarmUrl={swarmUrl} ficheBase={cityBasePath} />
           {(() => {
             const medianStr = d.medianSubvention >= 1_000_000
               ? `${fmtMillions(d.medianSubvention, 1)} M€`

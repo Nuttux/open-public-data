@@ -1,5 +1,7 @@
 "use client";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { citySlugFromPathname } from "@/lib/methodology";
 import Navbar from "@/components/fusion/Navbar";
 import Footer from "@/components/fusion/Footer";
 import SectionHead from "@/components/fusion/SectionHead";
@@ -52,6 +54,10 @@ export default function MarchesPublicsClient({
   posts: BlogPostMeta[];
 }) {
   const t = useT();
+  // Marseille reuses this client with its own data but without extra props —
+  // derive the city from the URL so the lazy contract fetch hits the right
+  // /data/<city>/marches-publics/ files.
+  const citySlug = citySlugFromPathname(usePathname());
   const top10Pct = d.total > 0 ? (d.top10.reduce((s, ti) => s + ti.amount, 0) / d.total) * 100 : 0;
 
   return (
@@ -505,7 +511,7 @@ export default function MarchesPublicsClient({
             subtitle={fill(t("fx.mp.s04.sub"), { n: fmtInt(d.nb), year: d.year })}
           />
           <MarchesSearch
-            items={d.allMarches}
+            citySlug={citySlug}
             categories={d.byCategory.map((c) => c.category)}
             natures={d.byNature.map((n) => n.nature)}
             year={d.year}

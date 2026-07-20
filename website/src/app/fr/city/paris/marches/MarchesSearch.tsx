@@ -10,29 +10,24 @@ import { useDebouncedTrack, hashQuery, queryShape } from "@/lib/analytics-helper
 import { normSearch, expandQuery, matchExpanded } from "@/lib/search-synonyms";
 import { fill, numLocale } from "@/lib/fmt";
 import { useFmtEur } from "@/lib/use-fmt";
+import { useLazyMarches } from "@/lib/use-lazy-marches";
+import type { ShapedMarche } from "@/lib/marches-shape";
 
-type Item = {
-  titulaire: string;
-  titulaireSiret?: string;
-  numeroMarche?: string;
-  objet: string;
-  objetClair?: string | null;
-  objetClairEn?: string | null;
-  montant: number;
-  categorie: string;
-  nature: string;
-  date: string;
-  multiAttributaire: boolean;
-  /** Offres reçues (DECP) — null hors millésimes 2024+. */
-  offres?: number | null;
-};
+// La liste complète n'arrive plus dans les props serveur (~700 kB de payload
+// RSC pour Paris) : elle est lazy-fetchée depuis le fichier public
+// /data/<city>/marches-publics/marches_<year>.json via useLazyMarches, avec
+// le même shaping que celui que le serveur appliquait (lib/marches-shape).
+type Item = ShapedMarche;
 
 type Props = {
-  items: Item[];
+  citySlug: string;
   categories: string[];
   natures: string[];
   year: number;
 };
+
+// Référence stable pour les useMemo tant que la liste n'est pas chargée.
+const EMPTY_ITEMS: Item[] = [];
 
 // Suggestions à trois étages, tous CANDIDATS seulement — `visibleSeeds` ne
 // retient que ce qui donne ≥1 résultat dans le corpus de l'année affichée,
@@ -71,10 +66,21 @@ function titleCaseName(raw: string): string {
     .join(" ");
 }
 
-export default function MarchesSearch({ items, categories, natures, year }: Props) {
+export default function MarchesSearch({ citySlug, categories, natures, year }: Props) {
   const t = useT();
   const { locale } = useLocale();
   const locStr = numLocale(locale);
+
+  // Fetch lazy : à l'approche du viewport (IntersectionObserver) ou à la
+  // première interaction (focus/saisie), même patron que QuiRecoitExplorer.
+  const {
+    containerRef,
+    items: loadedItems,
+    error: loadError,
+    ensureFetch,
+  } = useLazyMarches(citySlug, year);
+  const items = loadedItems ?? EMPTY_ITEMS;
+  const isLoaded = loadedItems !== null;
 
   const fmtAmount = useFmtEur();
 
@@ -116,9 +122,11 @@ export default function MarchesSearch({ items, categories, natures, year }: Prop
 
   // Track search après recalcul de filtered, pour envoyer results_count
   // (les requêtes zéro-résultat guident le dictionnaire de synonymes).
+  // Attend la liste chargée pour ne pas compter un faux 0 pendant le fetch —
+  // isLoaded est dans les deps pour re-tirer quand la donnée arrive.
   useEffect(() => {
     const q = query.trim();
-    if (q.length < 2) return;
+    if (q.length < 2 || !isLoaded) return;
     let cancelled = false;
     (async () => {
       const qHash = await hashQuery(q);
@@ -133,8 +141,8 @@ export default function MarchesSearch({ items, categories, natures, year }: Prop
     return () => {
       cancelled = true;
     };
-    // eslint-disable-next-line react-hooks/exhaustive-deps -- filtered est frais dans la closure ; ne refire que sur query.
-  }, [query]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps -- filtered est frais dans la closure ; ne refire que sur query/chargement.
+  }, [query, isLoaded]);
 
   const isQueryActive = query.trim().length >= 2;
   const isFilterActive = Boolean(category) || Boolean(nature) || !hideMulti;
@@ -145,6 +153,9 @@ export default function MarchesSearch({ items, categories, natures, year }: Prop
   // filtres par défaut (les chips ne s'affichent que quand aucun filtre
   // n'est actif, donc hideMulti vaut sa valeur par défaut).
   const visibleSeeds = useMemo(() => {
+    // Corpus pas encore chargé : aucun chip plutôt que des chips non validés
+    // (un chip mort au clic est pire que pas de chip).
+    if (!isLoaded) return [];
     const alive = (s: string) => {
       const exp = expandQuery(s);
       return items.some((it, idx) => {
@@ -178,7 +189,7 @@ export default function MarchesSearch({ items, categories, natures, year }: Prop
       .slice(0, Math.max(0, 7 - brands.length - themes.length));
 
     return [...brands, ...themes, ...computed];
-  }, [items, hayNorms, hideMulti, locale]);
+  }, [isLoaded, items, hayNorms, hideMulti, locale]);
 
   const displayCap = hasActiveSelection ? 24 : 3;
   const displayed = filtered.slice(0, displayCap);
@@ -199,7 +210,7 @@ export default function MarchesSearch({ items, categories, natures, year }: Prop
   })();
 
   return (
-    <div className="fx-search-wrap">
+    <div className="fx-search-wrap" ref={containerRef}>
       <div className="fx-search-inner">
         <div className="fx-search-label">{t("fx.mp.search.label")}</div>
         <div className="fx-search-input-wrap">
@@ -214,7 +225,11 @@ export default function MarchesSearch({ items, categories, natures, year }: Prop
             type="search"
             placeholder={t("fx.mp.search.placeholder")}
             value={query}
-            onChange={(e) => setQuery(e.target.value)}
+            onFocus={ensureFetch}
+            onChange={(e) => {
+              ensureFetch();
+              setQuery(e.target.value);
+            }}
           />
         </div>
         <div className="fx-search-filters">
@@ -223,6 +238,7 @@ export default function MarchesSearch({ items, categories, natures, year }: Prop
             value={category}
             aria-label={t("fx.mp.search.cat_aria")}
             onChange={(e) => {
+              ensureFetch();
               setCategory(e.target.value);
               track("filter_change", { page: "marches-publics", field: "category", value: e.target.value || "all" });
             }}
@@ -241,6 +257,7 @@ export default function MarchesSearch({ items, categories, natures, year }: Prop
             value={nature}
             aria-label={t("fx.mp.search.nat_aria")}
             onChange={(e) => {
+              ensureFetch();
               setNature(e.target.value);
               track("filter_change", { page: "marches-publics", field: "nature", value: e.target.value || "all" });
             }}
@@ -257,6 +274,7 @@ export default function MarchesSearch({ items, categories, natures, year }: Prop
               type="checkbox"
               checked={hideMulti}
               onChange={(e) => {
+                ensureFetch();
                 setHideMulti(e.target.checked);
                 track("filter_change", { page: "marches-publics", field: "hide_multi", value: e.target.checked });
               }}
@@ -298,14 +316,30 @@ export default function MarchesSearch({ items, categories, natures, year }: Prop
         )}
       </div>
 
-      <div className="fx-search-meta">
-        <span>
-          {contextLabel} · <b>{new Intl.NumberFormat(locStr).format(filtered.length)} {filtered.length > 1 ? t("fx.mp.search.contract_p") : t("fx.mp.search.contract_s")}</b> {filtered.length > 1 ? t("fx.mp.search.match_p") : t("fx.mp.search.match_s")}
-        </span>
-        <span>{fill(t("fx.mp.search.sorted"), { year })}</span>
-      </div>
+      {isLoaded && (
+        <div className="fx-search-meta">
+          <span>
+            {contextLabel} · <b>{new Intl.NumberFormat(locStr).format(filtered.length)} {filtered.length > 1 ? t("fx.mp.search.contract_p") : t("fx.mp.search.contract_s")}</b> {filtered.length > 1 ? t("fx.mp.search.match_p") : t("fx.mp.search.match_s")}
+          </span>
+          <span>{fill(t("fx.mp.search.sorted"), { year })}</span>
+        </div>
+      )}
 
-      {displayed.length > 0 ? (
+      {/* Liste lazy-fetchée : états chargement/erreur avant la grille — même
+        * langage que l'index de recherche de QuiRecoitExplorer. */}
+      {!isLoaded && loadError && (
+        <div className="fx-search-placeholder">
+          <p>{locale === "en" ? `Contract list failed to load: ${loadError}` : `Erreur de chargement des contrats : ${loadError}`}</p>
+        </div>
+      )}
+
+      {!isLoaded && !loadError && (
+        <div className="fx-search-placeholder">
+          <p>{locale === "en" ? "Loading contracts…" : "Chargement des contrats…"}</p>
+        </div>
+      )}
+
+      {isLoaded && displayed.length > 0 ? (
         <div className="fx-results-grid">
           {displayed.map(({ it, via }, i) => {
             const { v, u } = fmtAmount(it.montant);
@@ -377,7 +411,7 @@ export default function MarchesSearch({ items, categories, natures, year }: Prop
             </div>
           )}
         </div>
-      ) : (
+      ) : isLoaded ? (
         <div className="fx-search-placeholder">
           <p>{t("fx.mp.search.empty")}</p>
           <button
@@ -391,7 +425,7 @@ export default function MarchesSearch({ items, categories, natures, year }: Prop
             {t("fx.mp.search.reset")}
           </button>
         </div>
-      )}
+      ) : null}
     </div>
   );
 }

@@ -1792,21 +1792,10 @@ export type MarchesPageData = {
     avgOffres: number;           // moyenne des offres reçues (sur les couverts)
     buckets: { bucket: "1" | "2-3" | "4-5" | "6+"; count: number; amount: number }[];
   };
-  allMarches: {
-    numeroMarche: string;
-    titulaire: string;
-    titulaireSiret: string;
-    objet: string;
-    objetClair: string | null;
-    objetClairEn: string | null;
-    montant: number;
-    categorie: string;
-    nature: string;
-    date: string;
-    multiAttributaire: boolean;
-    /** Offres reçues (DECP) — null hors millésimes 2024+. */
-    offres: number | null;
-  }[];
+  // NOTE: the full contract list is intentionally NOT part of the server
+  // props anymore — it weighed ~700 kB of RSC payload for Paris. The client
+  // lazy-fetches /data/<city>/marches-publics/marches_<year>.json and shapes
+  // it with lib/marches-shape (same shaping as before, shared pure module).
   yearsSummary: { year: number; total: number; count: number }[];
   /** Scène signature : trois contrats réels de l'année, choisis par des
    *  règles fixes (jamais à la main) — le plus gros marché adossé à un
@@ -2507,27 +2496,6 @@ export function loadMarchesPageData(requestedYear?: number, city: string = "pari
     })),
   };
 
-  const allMarches = marches
-    .map((m) => {
-      const r = m as MarcheRow & { numero_marche?: string; fournisseur_siret?: string; is_multiattributaire?: boolean };
-      const numeroMarche = r.numero_marche ?? "";
-      return {
-        numeroMarche,
-        titulaire: r.fournisseur_nom || "Non précisé",
-        titulaireSiret: (r.fournisseur_siret ?? "").replace(/\s/g, ""),
-        objet: r.objet || "",
-        objetClair: (numeroMarche && vulgMap[numeroMarche]?.objet_clair) || null,
-        objetClairEn: (numeroMarche && vulgMap[numeroMarche]?.objet_clair_en) || null,
-        montant: Number(r.montant_max ?? r.montant_min ?? 0),
-        categorie: r.categorie_libelle || r.nature || "Autres",
-        nature: r.nature || "Autres",
-        date: r.date_notification || "",
-        multiAttributaire: r.fournisseur_nom === MULTI_NAME || Boolean(r.is_multiattributaire),
-        offres: r.decp_offres_recues != null ? Number(r.decp_offres_recues) : null,
-      };
-    })
-    .sort((a, b) => b.montant - a.montant);
-
   const yearsSummary: MarchesPageData["yearsSummary"] = years.map((y) => {
     const t = indexRaw.totalsByYear?.[String(y)];
     return {
@@ -2641,7 +2609,6 @@ export function loadMarchesPageData(requestedYear?: number, city: string = "pari
     byCategory,
     byNature,
     concurrence,
-    allMarches,
     yearsSummary,
     signature,
   };

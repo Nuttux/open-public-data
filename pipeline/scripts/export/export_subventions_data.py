@@ -385,6 +385,25 @@ def export_beneficiaires_search(years: list):
     size_kb = output_file.stat().st_size / 1024
     print(f"    → {output_file.name} ({len(data)} bénéficiaires uniques, {size_kb:.0f} Ko)")
 
+    # Extraits par année pour le beeswarm (swarm_<year>.json) : le composant
+    # n'a besoin que de {name, amount, theme} pour UNE année — pas question de
+    # faire télécharger l'index de recherche complet (2,5 Mo) à chaque visite.
+    for year in sorted(years_seen):
+        points = [
+            {"name": r["name"], "amount": r["byYear"][str(year)], "theme": r["theme"]}
+            for r in data
+            if r["byYear"].get(str(year), 0) > 0
+        ]
+        swarm_file = OUTPUT_DIR / f"swarm_{year}.json"
+        with swarm_file.open("w", encoding="utf-8") as f:
+            json.dump(
+                {"year": year, "source": "subventions/beneficiaires_search.json", "points": points},
+                f,
+                ensure_ascii=False,
+                separators=(",", ":"),
+            )
+        print(f"    → {swarm_file.name} ({len(points)} points)")
+
 
 def export_tendances(client: bigquery.Client, years: list, limit: int | None = None):
     """
