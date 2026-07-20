@@ -1,40 +1,4 @@
-import { notFound } from "next/navigation";
+import { makeEntityDrawer } from "@/lib/entity-page";
+import { fournisseurConfig } from "@/lib/entities/fournisseur";
 
-import { DetailDrawer, FournisseurFiche } from "@/components/fusion";
-import VoirLeLieu from "@/components/fusion/VoirLeLieu";
-import { loadFournisseur, loadSirene } from "@/lib/fusion-data";
-import { lieuForBeneficiaire } from "@/lib/lieux-data";
-
-type Params = { siren: string };
-
-export default async function DrawerFournisseurPage({ params }: { params: Promise<Params> }) {
-  const { siren } = await params;
-  const fournisseur = loadFournisseur(siren);
-  if (!fournisseur) return notFound();
-
-  const sirene = loadSirene(fournisseur.siren);
-
-  const montantStr = fournisseur.totalAmount >= 1e9
-    ? `${(fournisseur.totalAmount / 1e9).toFixed(2).replace(".", ",")} Md€`
-    : `${(fournisseur.totalAmount / 1e6).toFixed(1).replace(".", ",")} M€`;
-  const years = fournisseur.yearsActive.length
-    ? `${Math.min(...fournisseur.yearsActive)}-${Math.max(...fournisseur.yearsActive)}`
-    : "";
-  const shareText = `${fournisseur.nom} a reçu ${montantStr} de la Ville de Paris via ${fournisseur.contratCount} marchés${years ? ` (${years})` : ""}`;
-
-  return (
-    <div className="theme-fusion">
-      <DetailDrawer
-        kicker={<>Fournisseur · {fournisseur.contratCount} contrats</>}
-        title={fournisseur.nom}
-        shareUrl={`/fr/city/paris/marches/fournisseur/${fournisseur.siren || fournisseur.siret}`}
-        shareText={shareText}
-        backHref="/fr/city/paris/marches"
-        breadcrumbLabel={fournisseur.nom}
-      >
-        <VoirLeLieu lien={lieuForBeneficiaire(fournisseur.nom)} locale={"fr"} />
-        <FournisseurFiche fournisseur={fournisseur} sirene={sirene} />
-      </DetailDrawer>
-    </div>
-  );
-}
+export default makeEntityDrawer(fournisseurConfig);
