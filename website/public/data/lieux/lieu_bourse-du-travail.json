@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T11:16:58.583958+00:00",
+ "generated_at": "2026-07-20T11:24:28.927806+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "bourse-du-travail",
  "name": "Bourse du Travail",
