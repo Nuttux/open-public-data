@@ -237,7 +237,10 @@ export default function LieuFiche({ lieu }: { lieu: LieuFicheData }) {
         );
         return (
           <section className="fx-fiche-section">
-            <div className="fx-fiche-h fx-fiche-h--money">{t("fx.lieu.h.subv")}</div>
+            <div className="fx-fiche-h fx-fiche-h--money" style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", gap: 12 }}>
+              <span style={{ flex: 1, textAlign: "left" }}>{t("fx.lieu.h.subv")}</span>
+              <Eur {...fmtEur(sub.total_eur)} size={14} />
+            </div>
             <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", gap: 12, padding: "6px 6px 14px", borderBottom: "1px solid var(--rule)" }}>
               <Link
                 href={`/fr/city/paris/subventions/association/${encodeURIComponent(sub.nom_fiche)}`}
@@ -247,7 +250,6 @@ export default function LieuFiche({ lieu }: { lieu: LieuFicheData }) {
                 {sub.nom_fiche} →
               </Link>
               <span style={{ display: "inline-flex", alignItems: "baseline", gap: 6, whiteSpace: "nowrap" }}>
-                <Eur {...fmtEur(sub.total_eur)} size={15} />
                 <span style={{ fontFamily: "var(--f-mono)", fontWeight: 400, color: "var(--muted)", fontSize: 10.5 }}>
                   {multi
                     ? fill(t("fx.lieu.subv_periode"), { n: sub.rows.length, a: `${sub.annees[0]}–${sub.annees[1]}` })
@@ -291,7 +293,10 @@ export default function LieuFiche({ lieu }: { lieu: LieuFicheData }) {
 
       {(lieu.invest.length > 0 || lieu.mandate) && (
         <section className="fx-fiche-section">
-          <div className="fx-fiche-h fx-fiche-h--money">{t("fx.lieu.h.invest")}</div>
+          <div className="fx-fiche-h fx-fiche-h--money" style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", gap: 12 }}>
+            <span style={{ flex: 1, textAlign: "left" }}>{t("fx.lieu.h.invest")}</span>
+            <Eur {...fmtEur(investTotal + (lieu.mandate?.total_eur ?? 0))} size={14} />
+          </div>
           {lieu.mandate && (() => {
             // Série annuelle fusionnée : opérations AP (2009-2017) + projets
             // d'annexes (2019-2024). Le trou 2018 est réel (non publié) et
@@ -380,7 +385,10 @@ export default function LieuFiche({ lieu }: { lieu: LieuFicheData }) {
        *  → fournisseur. Rattachement jugé « au-lieu » en amont. */}
       {(lieu.marches?.length ?? 0) > 0 && (
         <section className="fx-fiche-section">
-          <div className="fx-fiche-h fx-fiche-h--money">{t("fx.lieu.h.marches")}</div>
+          <div className="fx-fiche-h fx-fiche-h--money" style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", gap: 12 }}>
+            <span style={{ flex: 1, textAlign: "left" }}>{t("fx.lieu.h.marches")}</span>
+            <Eur {...fmtEur(engageTotal)} size={14} />
+          </div>
           {lieu.marches!.slice(0, 6).map((m) => (
             <Link
               key={m.numero_marche}
