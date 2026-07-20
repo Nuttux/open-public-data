@@ -8,6 +8,7 @@ import {
   useCallback,
   startTransition,
   use,
+  Suspense,
   type ReactNode,
 } from 'react';
 import { usePathname } from 'next/navigation';
@@ -140,7 +141,35 @@ export function LocaleProvider({
   children: ReactNode;
   initialLocale?: Locale;
 }) {
+  // `locale` state lives in a component that never suspends itself. Everything
+  // that touches `useDictionaries` (which calls `use()`, conditionally, and can
+  // suspend) lives in LocaleProviderInner below, wrapped in its own Suspense
+  // boundary — isolating the suspending read from the plain hooks that used to
+  // sit after it in this same function. Mixing them caused an intermittent
+  // "change in the order of Hooks" crash (React error #467-adjacent): when
+  // useDictionaries suspended, every hook after it in the function body never
+  // ran on that attempt, and the retry's hook count no longer lined up.
   const [locale, setLocaleState] = useState<Locale>(initialLocale);
+  return (
+    <Suspense fallback={null}>
+      <LocaleProviderInner locale={locale} setLocaleState={setLocaleState}>
+        {children}
+      </LocaleProviderInner>
+    </Suspense>
+  );
+}
+
+function LocaleProviderInner({
+  locale,
+  setLocaleState,
+  children,
+}: {
+  locale: Locale;
+  setLocaleState: (l: Locale) => void;
+  children: ReactNode;
+}) {
+  // Suspending call goes FIRST, before any other hook in this component, so a
+  // suspended attempt never leaves a partial hook list to compare against.
   const { dict, frDict } = useDictionaries(locale);
 
   // Reconcile with localStorage on mount so a tab opened with a stale cookie still
@@ -163,7 +192,7 @@ export function LocaleProvider({
         writeCookie(locale);
       }
     } catch { /* SSR / private browsing */ }
-  }, [locale]);
+  }, [locale, setLocaleState]);
 
   // Keep <html lang> in sync with the active locale: SSR only knows the cookie,
   // so a client-side toggle would otherwise leave a stale lang attribute —
@@ -179,7 +208,7 @@ export function LocaleProvider({
     startTransition(() => setLocaleState(l));
     try { localStorage.setItem(STORAGE_KEY, l); } catch { /* ignore */ }
     writeCookie(l);
-  }, []);
+  }, [setLocaleState]);
 
   // One-shot on mount: an explicit ?lang= in the URL wins over any stored
   // preference, so shared links (QR codes, printed material) land directly in
@@ -229,6 +258,23 @@ export function useT() {
  * pages must apply this wrapper themselves.
  */
 export function ForcedLocale({
+  locale,
+  children,
+}: {
+  locale: Locale;
+  children: ReactNode;
+}) {
+  // Same suspending-read isolation as LocaleProviderInner above — useDictionaries
+  // is the only hook here, but wrapping it keeps the same safe shape everywhere
+  // this pattern is used rather than relying on there being nothing after it.
+  return (
+    <Suspense fallback={null}>
+      <ForcedLocaleInner locale={locale}>{children}</ForcedLocaleInner>
+    </Suspense>
+  );
+}
+
+function ForcedLocaleInner({
   locale,
   children,
 }: {
