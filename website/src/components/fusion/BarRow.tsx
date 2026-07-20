@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState, type ReactNode } from "react";
 import Link from "next/link";
 import { useRevealOnScroll } from "@/lib/use-reveal-on-scroll";
+import BarTrack from "./BarTrack";
 
 export type BarRowItem = {
   label: ReactNode;
@@ -104,19 +105,18 @@ export default function BarRow({
       )}
       <div className="fx-breakdown">
         {items.map((row, i) => {
-          const pct = Math.max(0, Math.min(100, (row.value / refValue) * 100));
           const body = (
             <>
               <span className="fx-br-label">
                 {row.label}
                 {row.sub && <span className="fx-br-sub">{row.sub}</span>}
               </span>
-              <span className="fx-br-bar">
-                <span
-                  className="fx-br-fill"
-                  style={{ width: `${pct}%` }}
-                />
-              </span>
+              <BarTrack
+                value={row.value}
+                max={refValue}
+                trackClassName="fx-br-bar"
+                fillClassName="fx-br-fill"
+              />
               <span className="fx-br-val tnum">
                 {row.display ?? fr.format(row.value)}
                 {row.unit && <span className="fx-br-unit">{row.unit}</span>}

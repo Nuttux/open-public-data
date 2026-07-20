@@ -1,6 +1,7 @@
 "use client";
 
 import type { ReactNode } from "react";
+import BarTrack from "./BarTrack";
 
 export type CofogCompareRow = {
   code: string;
@@ -62,8 +63,6 @@ export default function CofogCompareBars({
       )}
       <div className="fx-cofog-list">
         {rows.map((r) => {
-          const frPct = Math.max(0, Math.min(100, (r.fr / ref) * 100));
-          const euPct = Math.max(0, Math.min(100, (r.eu / ref) * 100));
           const gap = r.fr - r.eu;
           return (
             <div key={r.code} className="fx-cofog-row">
@@ -71,12 +70,12 @@ export default function CofogCompareBars({
               <div className="fx-cofog-pair">
                 <div className="fx-cofog-line">
                   <span className="fx-cofog-tag">{frLabel}</span>
-                  <span className="fx-cofog-bar">
-                    <span
-                      className="fx-cofog-fill fx-cofog-fill-fr"
-                      style={{ width: `${frPct}%` }}
-                    />
-                  </span>
+                  <BarTrack
+                    value={r.fr}
+                    max={ref}
+                    trackClassName="fx-cofog-bar"
+                    fillClassName="fx-cofog-fill fx-cofog-fill-fr"
+                  />
                   <span className="fx-cofog-val tnum">
                     {fmt.format(r.fr)}
                     {unit && <span className="fx-cofog-unit">{unit}</span>}
@@ -84,12 +83,12 @@ export default function CofogCompareBars({
                 </div>
                 <div className="fx-cofog-line">
                   <span className="fx-cofog-tag fx-cofog-tag-eu">{euLabel}</span>
-                  <span className="fx-cofog-bar">
-                    <span
-                      className="fx-cofog-fill fx-cofog-fill-eu"
-                      style={{ width: `${euPct}%` }}
-                    />
-                  </span>
+                  <BarTrack
+                    value={r.eu}
+                    max={ref}
+                    trackClassName="fx-cofog-bar"
+                    fillClassName="fx-cofog-fill fx-cofog-fill-eu"
+                  />
                   <span className="fx-cofog-val tnum">
                     {fmt.format(r.eu)}
                     {unit && <span className="fx-cofog-unit">{unit}</span>}

@@ -1,5 +1,6 @@
 import type { ReactNode } from "react";
 import Link from "next/link";
+import BarTrack from "./BarTrack";
 
 export type FlowRow = {
   label: ReactNode;
@@ -49,9 +50,7 @@ export default function DualFlowBars({ left, right, center, callout }: Props) {
         const body = (
           <>
             <span className="l">{r.label}</span>
-            <span className="track">
-              <span className="fill" style={{ width: `${(r.value / globalMax) * 100}%` }} />
-            </span>
+            <BarTrack value={r.value} max={globalMax} trackClassName="track" fillClassName="fill" />
             <span className="v tnum">{r.display ?? `${fmtBillions(r.value)} Md €`}</span>
           </>
         );

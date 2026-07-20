@@ -27,7 +27,6 @@ export { default as ExportRow } from "./ExportRow";
 export { default as EmptyState } from "./EmptyState";
 export { default as ExpandableList } from "./ExpandableList";
 export type { ExpandableItem } from "./ExpandableList";
-export { default as BudgetSankey } from "./BudgetSankey";
 export { default as DualFlowBars } from "./DualFlowBars";
 export type { FlowRow } from "./DualFlowBars";
 export { default as Tip } from "./Tip";

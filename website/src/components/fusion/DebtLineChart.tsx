@@ -1,9 +1,8 @@
 "use client";
 
-import dynamic from "next/dynamic";
 import { useMemo } from "react";
 
-const ReactECharts = dynamic(() => import("echarts-for-react"), { ssr: false });
+import ReactECharts from "./EChart";
 
 export type DebtSeriesProp = {
   code: string;

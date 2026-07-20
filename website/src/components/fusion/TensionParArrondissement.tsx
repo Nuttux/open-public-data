@@ -3,6 +3,7 @@
 import { fill, fmtDec, fmtInt } from "@/lib/fmt";
 import { useT } from "@/lib/localeContext";
 import Tip from "@/components/fusion/Tip";
+import BarTrack from "./BarTrack";
 
 type ArrRow = {
   arr: number;
@@ -114,12 +115,13 @@ export default function TensionParArrondissement({
                   : fill(t("fx.tension.arr_label_other"), { n: a.arr })}
               </span>
             </div>
-            <div className="fx-tension-arr-bar-wrap">
-              <div
-                className="fx-tension-arr-bar"
-                style={{ width: `${(a.ratio / maxRatio) * 100}%` }}
-              />
-            </div>
+            <BarTrack
+              value={a.ratio}
+              max={maxRatio}
+              as="div"
+              trackClassName="fx-tension-arr-bar-wrap"
+              fillClassName="fx-tension-arr-bar"
+            />
             <div className="fx-tension-arr-ratio tnum">
               {fmtDec(a.ratio, 0)}
             </div>

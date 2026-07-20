@@ -13,6 +13,7 @@ import { useRouter } from "next/navigation";
 import { useLocale, useT } from "@/lib/localeContext";
 import type { FournisseurRankRow, FournisseursRankingData } from "@/lib/fusion-data";
 import { fill } from "@/lib/fmt";
+import { ChartTip, useChartTip } from "./ChartTip";
 
 const GROUP_COLORS: Record<FournisseurRankRow["catGroup"], string> = {
   proprete: "#0a0a0a",
@@ -53,7 +54,7 @@ export default function FournisseursBumpChart({
   const { locale } = useLocale();
   const wrapRef = useRef<HTMLDivElement>(null);
   const [hover, setHover] = useState<{ row: FournisseurRankRow; year: number } | null>(null);
-  const [tipPos, setTipPos] = useState({ x: 0, y: 0 });
+  const { pos: tipPos, moveTo: moveTip } = useChartTip(wrapRef);
 
   const { years, rows, topN } = data;
   const H = PAD_T + (topN + 1) * SLOT + PAD_B;
@@ -80,7 +81,7 @@ export default function FournisseursBumpChart({
       }
     }
     setHover({ row, year: best.year });
-    setTipPos({ x: e.clientX - rect.left, y: e.clientY - rect.top });
+    moveTip(e);
   };
   const go = (row: FournisseurRankRow) => {
     if (row.siren) router.push(`${ficheBase}/fournisseur/${row.siren}`, { scroll: false });
@@ -209,18 +210,15 @@ export default function FournisseursBumpChart({
         })}
       </svg>
       {hover && (
-        <div
-          style={{
-            position: "absolute",
-            left: Math.min(Math.max(tipPos.x - 120, 0), Math.max(0, (wrapRef.current?.clientWidth ?? 300) - 260)),
-            top: tipPos.y + 16,
-            width: 250,
-            background: "var(--ink)",
-            color: "var(--bg)",
-            padding: "9px 11px",
-            pointerEvents: "none",
-            zIndex: 4,
-          }}
+        <ChartTip
+          x={tipPos.x}
+          y={tipPos.y}
+          containerWidth={wrapRef.current?.clientWidth ?? 300}
+          width={250}
+          clampWidth={260}
+          offsetX={-120}
+          offsetY={16}
+          padding="9px 11px"
         >
           <div style={{ fontFamily: "var(--f-ui)", fontWeight: 700, fontSize: 13, lineHeight: 1.3 }}>
             {hover.row.name}
@@ -244,7 +242,7 @@ export default function FournisseursBumpChart({
               {t("fx.mp.rank.tip_click")}
             </div>
           )}
-        </div>
+        </ChartTip>
       )}
     </div>
   );
