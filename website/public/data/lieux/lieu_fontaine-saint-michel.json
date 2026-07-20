@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T09:55:29.047171+00:00",
+ "generated_at": "2026-07-20T10:03:14.731611+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "fontaine-saint-michel",
  "name": "Fontaine Saint-Michel",
@@ -132,7 +132,7 @@
   },
   "bmo": {
    "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
-   "url": "https://gallica.bnf.fr/ark:/12148/cb343512457/date"
+   "url": "https://gallica.bnf.fr/services/engine/search/sru?operation=searchRetrieve&version=1.2&startRecord=0&maximumRecords=15&page=1&collapsing=disabled&query=arkPress+all+%22cb343512457_date%22+and+%28gallica+all+%22fontaine+Saint-Michel%22%29"
   },
   "invest": {
    "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
