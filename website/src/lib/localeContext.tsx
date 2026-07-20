@@ -21,7 +21,12 @@ const CITY_LABELS: Record<string, { nom: string; adj_m: string; adj_f: string }>
 };
 
 function detectCityFromPath(pathname: string | null): string | null {
-  if (!pathname) return null;
+  // usePathname() can momentarily hand back something other than a plain
+  // string during a cold Turbopack dev compile (observed: an object without
+  // .match, first request after a server restart only) — never on a warm
+  // server. Guard defensively rather than crash the render; the next render
+  // a few ms later gets a proper string and the city label rewrite applies.
+  if (typeof pathname !== 'string') return null;
   const m = pathname.match(/^\/fr\/city\/([^/]+)/);
   return m ? m[1] : null;
 }
