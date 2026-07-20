@@ -1,6 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
+import Link from "next/link";
 import SectionHead from "@/components/fusion/SectionHead";
 import KPIGrid from "@/components/fusion/KPIGrid";
 import { useT } from "@/lib/localeContext";
@@ -71,12 +72,14 @@ function PayeeRow({
   refMax,
   expanded,
   onToggle,
+  payeeSlug,
 }: {
   p: WgpPayee;
   fy: number;
   refMax: number;
   expanded: boolean;
   onToggle: () => void;
+  payeeSlug: string | null;
 }) {
   const t = useT();
   const color = bucketColor(p.bucket);
@@ -237,6 +240,17 @@ function PayeeRow({
             <div style={{ fontSize: 12.5, color: "var(--muted-2)" }}>
               <b style={{ color: "var(--ink-2)" }}>{t("us.sf.wgp.exp.bucket_note")}</b>{" "}
               {p.bucket_note}
+            </div>
+          )}
+          {payeeSlug && (
+            <div style={{ marginTop: 4 }}>
+              <Link
+                href={`/us/city/sf/who-gets-paid/payee/${payeeSlug}`}
+                className="fx-row-link"
+                style={{ fontWeight: 600, borderBottom: "1px solid var(--bleu)" }}
+              >
+                Full payee page — every year, department and contract →
+              </Link>
             </div>
           )}
         </div>
@@ -447,10 +461,12 @@ export default function TopPayeesSection({
   fy,
   yearData,
   meta,
+  vendorSlugMap,
 }: {
   fy: number;
   yearData: WgpYear;
   meta: WgpMeta;
+  vendorSlugMap: Record<string, string>;
 }) {
   const t = useT();
   const [tab, setTab] = useState<"all" | "np">("all");
@@ -614,6 +630,7 @@ export default function TopPayeesSection({
                   onToggle={() =>
                     setExpandedVendor(expandedVendor === p.vendor ? null : p.vendor)
                   }
+                  payeeSlug={vendorSlugMap[p.vendor] ?? null}
                 />
               ))}
             </div>

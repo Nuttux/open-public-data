@@ -38,12 +38,14 @@ export default function WhoGetsPaidClient({
   years,
   meta,
   materiality,
+  vendorSlugMap,
 }: {
   fy: number;
   yearData: WgpYear;
   years: WgpYearStatus[];
   meta: WgpMeta;
   materiality: WgpFile["materiality"];
+  vendorSlugMap: Record<string, string>;
 }) {
   const t = useT();
   const basePath = "/us/city/sf/who-gets-paid";
@@ -136,7 +138,7 @@ export default function WhoGetsPaidClient({
       </PageIntro>
 
       {/* ── Signature: the ranked payees (tabs + toggle) ── */}
-      <TopPayeesSection fy={fy} yearData={yearData} meta={meta} />
+      <TopPayeesSection fy={fy} yearData={yearData} meta={meta} vendorSlugMap={vendorSlugMap} />
 
       {/* ── 03 · Materiality strip ── */}
       <MaterialityStrip materiality={materiality} />

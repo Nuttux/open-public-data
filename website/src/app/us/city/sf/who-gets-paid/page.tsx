@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import "@/app/fusion.css";
-import { readDataJson } from "@/lib/data/read";
+import { readDataJson, readDataJsonOrNull } from "@/lib/data/read";
 import WhoGetsPaidClient from "./WhoGetsPaidClient";
 import type { WgpFile, WgpMeta, WgpYearStatus } from "./wgp-types";
 
@@ -31,6 +31,10 @@ export default async function WhoGetsPaidPage({
   searchParams: Promise<{ year?: string }>;
 }) {
   const file = readJson<WgpFile>("top_payees.json");
+  // Raw vendor string → normalized payee slug, so a top-payee row can open
+  // its fiche (only for the keyed top ~200; everything else stays plain text).
+  const vendorSlugMap =
+    readDataJsonOrNull<Record<string, string>>("us/sf/payees/_vendor_slug_map.json") ?? {};
   const sp = await searchParams;
 
   const years: WgpYearStatus[] = Object.entries(file.years)
@@ -66,6 +70,7 @@ export default async function WhoGetsPaidPage({
       years={years}
       meta={meta}
       materiality={file.materiality}
+      vendorSlugMap={vendorSlugMap}
     />
   );
 }
