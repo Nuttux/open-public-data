@@ -1,95 +1,101 @@
 # France Open Data
 
-> Transparence des finances publiques de Paris — [franceopendata.org](https://franceopendata.org)
+> Public finance transparency, built on open data — [franceopendata.org](https://franceopendata.org)
 
 [![CI](https://github.com/Nuttux/open-public-data/actions/workflows/ci.yml/badge.svg)](https://github.com/Nuttux/open-public-data/actions/workflows/ci.yml)
 [![Next.js](https://img.shields.io/badge/Next.js-16-black)](https://nextjs.org/)
 [![dbt](https://img.shields.io/badge/dbt-BigQuery-orange)](https://www.getdbt.com/)
-[![License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
-[![Open Data](https://img.shields.io/badge/Source-OpenData%20Paris-green)](https://opendata.paris.fr/)
+[![License](https://img.shields.io/badge/Code-AGPL--3.0-blue.svg)](LICENSE)
+[![Open Data](https://img.shields.io/badge/Data-Etalab%202.0-green)](https://opendata.paris.fr/)
 
-## Le projet
+## The project
 
-Dashboard interactif pour explorer les finances de la Ville de Paris (~11 Md/an), construit entièrement sur des données publiques.
+An interactive explorer for public money — where it comes from, where it goes, and who receives it — built entirely on open data. Started as a Paris-only budget dashboard; now covers several French cities, national (France) macro finances, and an early English-language preview of a US city (San Francisco).
 
-### Pages
+### What's on the site
 
-| Page | Description |
-|------|-------------|
-| **Accueil** | Vue d'ensemble, KPI, navigation |
-| **Budget** | Sankey recettes/dépenses, drill-down par chapitre, donut par nature |
-| **Patrimoine** | Bilan Actif/Passif, dette, ratios financiers, épargne brute |
-| **Investissements** | Projets par arrondissement (carte, liste, choropleth), tendances par secteur |
-| **Logements** | Logements sociaux financés (carte, liste, choropleth par arrondissement) |
-| **Subventions** | 40k+ bénéficiaires, treemap par thématique, table filtrable |
-| **Prevision** | Comparaison Budget Voté vs Exécuté, estimations 2025-2026 |
-| **Blog** | Articles sur les données et la méthodologie |
+| Scope | Pages |
+|---|---|
+| **Paris** (`/fr/city/paris`) | Budget, Investments, Subsidies (recipients), Public procurement, Social housing, Debt & assets, Places (`/lieux` — per-venue fiches linking deliberations, official bulletin archives, and spend) |
+| **Marseille** (`/fr/city/marseille`) | Same page family, work in progress |
+| **French communes** (`/fr/city/[slug]`) | ~35,000 communes via OFGL data — 10 flagship cities get a rich page, the rest a slim comparison view |
+| **National** (`/fr/national`) | Federal-level budget, state (État) accounts, receipts breakdown, fiscal drilldown, personalized "daily bread" tax calculator |
+| **United States (preview)** (`/us`) | Federal budget/debt; San Francisco budget, contracts, payroll, and payee search — English-only, brand/naming not finalized |
+| **Cross-cutting** | AI chat assistant (data Q&A), editorial articles, city comparator, corrections log, public error-report form |
 
-Chaque page thématique suit une architecture en 3 onglets : **Annuel**, **Tendances**, **Explorer**.
+Every entity (an association, a contract, a supplier, a place…) gets both a full page and a slide-over drawer, so exploring stays fluid without losing your place in a list.
 
 ## Structure
 
 ```
 open-public-data/
-├── pipeline/                    # Pipeline dbt (BigQuery)
+├── pipeline/                       # dbt pipeline (BigQuery)
 │   ├── models/
-│   │   ├── staging/             # 9 modèles — nettoyage, typage
-│   │   ├── intermediate/        # Enrichissement (LLM, géoloc)
-│   │   ├── core/                # 6 tables OBT dénormalisées
-│   │   └── marts/               # 10 vues d'agrégation métier
-│   ├── seeds/                   # Mappings + caches enrichissement (CSV)
-│   ├── scripts/                 # Sync, export, enrichissement, extraction PDF
-│   └── tests/                   # 42 tests qualité (7 catégories)
+│   │   ├── staging/                # Cleaning, typing
+│   │   ├── intermediate/           # Enrichment (LLM, geocoding)
+│   │   ├── core/                   # ~15 denormalized one-big-tables (budget, subsidies,
+│   │   │                           #   procurement, debt guarantees, deliberations, Sirene…)
+│   │   ├── marts/                  # Business-facing aggregation views
+│   │   ├── national/               # France macro (État, APU sub-sectors, Eurostat)
+│   │   └── us/                     # US federal + San Francisco (dbt_us_* family)
+│   ├── seeds/                      # Mappings + enrichment caches (CSV)
+│   ├── scripts/                    # Sync, export, enrichment, PDF/archive extraction
+│   └── tests/                      # dbt tests across 9 categories (referential integrity,
+│                                    #   accounting balance, freshness, completeness, anomalies…)
 │
-├── website/                     # Next.js 16 (App Router, Turbopack)
+├── website/                        # Next.js 16 (App Router)
 │   ├── src/
-│   │   ├── app/                 # Pages (10 routes)
-│   │   ├── components/          # 40+ composants React (ECharts, Leaflet)
-│   │   └── lib/                 # Utils, hooks, types, API loaders
-│   └── public/data/             # JSON pré-calculés (budget, carte, subventions)
+│   │   ├── app/                    # Routes: fr/city/{ville}, fr/national, us/*, root drawer slot
+│   │   ├── components/fusion/      # ~110 shared React components (charts, fiche primitives)
+│   │   ├── lib/
+│   │   │   ├── entities/           # One config per entity type (association, contrat, projet…)
+│   │   │   ├── entity-page.tsx     # Shared page + drawer factory built from those configs
+│   │   │   ├── data/read.ts        # Single memoized filesystem entry point for public/data
+│   │   │   └── og.tsx              # Shared social-preview (OpenGraph) image factory
+│   │   └── i18n/                   # fr.ts / en.ts dictionaries, lazy-loaded per locale
+│   └── public/data/                # Pre-computed JSON (budget, map, subsidies, per-entity fiches)
 │
-├── scripts/                     # Scripts utilitaires
-│   └── sync-to-public.sh        # Sync vers le repo public
+├── scripts/
+│   └── sync-to-public.sh           # Mirrors pipeline + components to the public sibling repo
 │
-└── docs/                        # Documentation
-    ├── architecture-modelling.md # Pipeline, règles métier, qualité
-    ├── architecture-frontend.md  # Composants, design system
-    └── data-quality.md           # Limites et pistes d'amélioration
+└── docs/                           # Architecture, data quality, ADRs, runbooks, replicability
 ```
 
 ## Pipeline
 
-Architecture en couches : `OpenData Paris API → BigQuery (raw) → staging → intermediate → core → marts → JSON`
+Layered architecture: `Open data APIs → BigQuery (raw) → staging → intermediate → core → marts → JSON`.
 
-### Entités
+### Core entities
 
-| Core table | Description | Années |
-|------------|-------------|--------|
-| `core_budget` | Budget exécuté (Compte Administratif) | 2019-2024 |
-| `core_budget_vote` | Budget prévisionnel (Budget Primitif, PDFs) | 2023-2026 |
-| `core_bilan_comptable` | Actif/Passif, dette, épargne | 2019-2024 |
-| `core_subventions` | Subventions enrichies (thématique LLM) | 2018-2024 |
-| `core_ap_projets` | Investissements géolocalisés | 2018-2022 |
-| `core_logements_sociaux` | Logements sociaux financés | 2001-2024 |
+| Core table | What it covers |
+|---|---|
+| `core_budget` / `core_budget_vote` | Executed budget (Compte Administratif) / voted budget (Budget Primitif) |
+| `core_bilan_comptable` | Balance sheet, debt, savings ratios |
+| `core_dette_garantie` | Guaranteed debt (off-balance-sheet commitments) |
+| `core_subventions` | Subsidies, enriched with LLM-assigned themes |
+| `core_marches_publics` | Public procurement contracts |
+| `core_ap_projets` / `core_pdf_investissements_localises` | Geolocated capital projects |
+| `core_logements_sociaux`, `core_logement_sru_arr`, `core_logement_attente_arr` | Social housing stock, SRU quota gap, waiting lists |
+| `core_deliberations` | City council deliberations (linked to places, contracts, subsidies) |
+| `core_sirene_companies` | Company registry cross-reference |
+| `core_marseille_budget` | Marseille's budget (nature-based, unlike Paris' function-based reporting) |
+| `core_enrichment_caches` | Cached LLM enrichment (thematic tagging, plain-language summaries, translations) |
 
-### Tests qualité
+### Data quality
 
-42 tests dbt organisés en 7 catégories :
-- Intégrité référentielle, équilibres comptables, fraîcheur, complétude, cross-layer, anomalies, qualité des seeds
+dbt tests across 9 categories (referential integrity, accounting balances, freshness, completeness, cross-layer consistency, anomaly detection, seed quality…), plus a **replayable audit** (reconciliation + completeness + freshness checks) consumed by [`/methode#audit`](https://franceopendata.org/methode#audit) — see [`pipeline/scripts/audit/run_data_quality_audit.py`](pipeline/scripts/audit/run_data_quality_audit.py).
 
-Plus un **audit re-jouable** (19 checks réconciliation + complétude + freshness) consommé par [`/methode#audit`](https://franceopendata.org/methode#audit) — voir [`pipeline/scripts/audit/run_data_quality_audit.py`](pipeline/scripts/audit/run_data_quality_audit.py).
+## New-machine / new-contributor setup
 
-## Setup nouvel ordi / nouveau contributeur
-
-Tout le state lourd (données BigQuery, IAM/auth, secrets CI, cron) vit dans le cloud (GCP + GitHub). Le clone local est juste un workstation jetable.
+All the heavy state (BigQuery data, IAM/auth, CI secrets, cron) lives in the cloud (GCP + GitHub). A local clone is a disposable workstation.
 
 ```bash
-# 1. Outils
+# 1. Tools
 brew install gcloud gh git python@3.11 node
 
-# 2. Auth (web sign-in, à faire 1 fois par ordi)
+# 2. Auth (web sign-in, once per machine)
 gcloud auth login
-gcloud auth application-default login   # ADC pour les scripts Python
+gcloud auth application-default login   # ADC for Python scripts
 gh auth login
 
 # 3. Clone + venv
@@ -99,49 +105,47 @@ python3 -m venv .venv && source .venv/bin/activate && pip install -r requirement
 cd website && npm install
 ```
 
-Tu retombes sur tes pieds sans rien re-configurer côté CI : BQ-CI continue de tourner tous les lundis indépendamment de ton matos.
+Nothing to reconfigure on the CI side — the scheduled pipeline keeps running independently of your machine.
 
-## CI / Automatisation
+## CI / Automation
 
-| Workflow | Cadence | Ce que ça fait |
+| Workflow | Cadence | What it does |
 |---|---|---|
-| `data-platform-audit.yml` | À chaque PR + push sur `main` | Layering audit, dbt parse, schema completeness, **dbt test (data + freshness)**, **verify_export**, **data-quality-audit (19 checks)** |
-| `enrich-pipeline.yml` | **Lundi 6h UTC** + manuel | Pipeline complète : sync OpenData → dbt → export JSON → enrichissement LLM, auto-commit si diff |
+| `ci.yml` | Every PR + push to `main` | website: lint, typecheck, vitest, build · pipeline: Python syntax check |
+| `data-platform-audit.yml` | Every PR + push to `main` | Layering audit, dbt parse, schema completeness, dbt test (data + freshness), export verification, data-quality audit |
+| `enrich-pipeline.yml` | Weekly + manual | Full pipeline: sync open data → dbt → export JSON → LLM enrichment, auto-commit on diff |
+| `bq-snapshots.yml` / `snapshots.yml` | Scheduled | Historical BigQuery table snapshots for sources without a stable key |
+| `sync-public-pipeline.yml` | Manual | Mirrors pipeline + shared components to the public sibling repo |
 
-**Auth GCP en CI** : Workload Identity Federation (WIF), zéro clé statique. Voir [`docs/runbooks/enable-bq-ci.md`](docs/runbooks/enable-bq-ci.md) si tu dois ré-activer ou déplacer le setup ailleurs.
+**GCP auth in CI**: Workload Identity Federation (WIF), no static keys. See [`docs/runbooks/enable-bq-ci.md`](docs/runbooks/enable-bq-ci.md).
 
-Activé par les variables/secrets de repo (à ne jamais commit) :
-- `vars.ENABLE_BQ_CI` (`true` = jobs BQ-dependent actifs)
-- `secrets.GCP_WORKLOAD_IDENTITY_PROVIDER` + `secrets.GCP_SERVICE_ACCOUNT`
+Enabled via repo variables/secrets (never committed): `vars.ENABLE_BQ_CI`, `secrets.GCP_WORKLOAD_IDENTITY_PROVIDER`, `secrets.GCP_SERVICE_ACCOUNT`.
 
-Pour déclencher un sync manuellement (sans attendre lundi) :
+Trigger a sync manually without waiting for the schedule:
 
 ```bash
-gh workflow run enrich-pipeline.yml -R Nuttux/open-public-data \
-  -f phases=auto -f commit=true
+gh workflow run enrich-pipeline.yml -R Nuttux/open-public-data -f phases=auto -f commit=true
 ```
-
-L'audit data quality est consommé par `/methode#audit` (snapshot JSON public + script re-jouable). Voir [`docs/data-quality.md`](docs/data-quality.md) pour les 19 checks.
 
 ## Quickstart (local dev)
 
-### Prérequis
+### Prerequisites
 - Python 3.10+
 - Node.js 20+
-- Accès GCP (BigQuery)
+- GCP access (BigQuery)
 
-### Configuration env
+### Environment setup
 
-Avant de lancer pipeline ou website, copier les fichiers `.env.example` :
+Before running the pipeline or the website, copy the `.env.example` files:
 
 ```bash
 cp website/.env.example website/.env.local
 cp pipeline/.env.example pipeline/.env
 ```
 
-Puis remplir les vraies valeurs. Les fichiers `.env*` sont déjà en `.gitignore` — ils ne quittent jamais ta machine. Détail des variables et leur usage : commentaires dans chaque `.env.example`.
+Then fill in real values (`.env*` files are already gitignored — they never leave your machine; see the comments in each `.env.example` for what each variable does).
 
-Sans clés API, les enrichissements LLM et photo sont sautés (le pipeline reste fonctionnel sur le coeur). Sans `ANTHROPIC_API_KEY` côté website, le chat assistant renvoie 500.
+Without API keys, LLM/photo enrichment steps are skipped (the pipeline's core still works). Without `ANTHROPIC_API_KEY` on the website side, the chat assistant returns a 500.
 
 ### Pipeline
 
@@ -161,26 +165,18 @@ npm run dev
 # → http://localhost:3000
 ```
 
-### CI
+### Before pushing
 
-PR vers `main` déclenche [`.github/workflows/ci.yml`](.github/workflows/ci.yml) :
-
-| Job | Étapes |
-|-----|--------|
-| **website** | `npm ci` → `npm run lint` → `npm run typecheck` → `npm run build` |
-| **pipeline-python** | `python -m compileall pipeline/scripts/` (sanity check syntaxe) |
-
-À reproduire en local avant de pousser :
 ```bash
-cd website && npm run lint && npm run typecheck && npm run build
+cd website && npm run lint && npm run typecheck && npm test && npm run build
 python3 -m compileall -q pipeline/scripts/
 ```
 
-Tests unitaires à venir — voir [`docs/testing.md`](docs/testing.md) pour la liste priorisée.
+100+ unit tests (Vitest) cover pure data-shaping functions and per-entity config validation against real corpus data; Playwright covers smoke + a11y flows. See [`docs/testing.md`](docs/testing.md).
 
-### Sync vers le repo public
+### Sync to the public repo
 
-Le pipeline et les composants de visualisation sont open source dans [Nuttux/france-open-data](https://github.com/Nuttux/france-open-data).
+The pipeline and shared visualization components are open-sourced in [Nuttux/france-open-data](https://github.com/Nuttux/france-open-data).
 
 ```bash
 ./scripts/sync-to-public.sh
@@ -188,21 +184,29 @@ Le pipeline et les composants de visualisation sont open source dans [Nuttux/fra
 
 ## Documentation
 
-| Document | Contenu |
-|----------|---------|
-| [`docs/architecture-modelling.md`](docs/architecture-modelling.md) | Pipeline dbt, règles métier, qualité données |
-| [`docs/architecture-frontend.md`](docs/architecture-frontend.md) | Composants React, design system |
-| [`docs/data-quality.md`](docs/data-quality.md) | Limites connues, pistes d'amélioration |
-| [`pipeline/README.md`](pipeline/README.md) | Commandes dbt, enrichissement |
-| [`docs/runbooks/`](docs/runbooks/) | Runbooks ops : rollback, promotion WIP |
+| Document | Contents |
+|---|---|
+| [`docs/architecture-modelling.md`](docs/architecture-modelling.md) | dbt pipeline, business rules, data quality |
+| [`docs/architecture-frontend.md`](docs/architecture-frontend.md) | React components, design system |
+| [`docs/data-quality.md`](docs/data-quality.md) | Known limitations, improvement ideas |
+| [`docs/replicability.md`](docs/replicability.md) / [`docs/city-replication-playbook.md`](docs/city-replication-playbook.md) | Adding a new city |
+| [`docs/decisions/`](docs/decisions/) | Architecture decision records (ADRs) |
+| [`pipeline/README.md`](pipeline/README.md) | dbt commands, enrichment |
+| [`docs/runbooks/`](docs/runbooks/) | Ops runbooks: rollback, promoting WIP content |
 
-## Deploiement
+## Deployment
 
-- **Hosting** : Vercel (CDG1 region)
-- **Domaine** : [franceopendata.org](https://franceopendata.org)
-- **Deploiement auto** : push sur `main` → build Vercel
-- **Rollback en cas de prod cassée** : voir [`docs/runbooks/rollback.md`](docs/runbooks/rollback.md) — procédure 1 minute via Vercel dashboard, sans toucher au code source.
+- **Hosting**: Vercel
+- **Domain**: [franceopendata.org](https://franceopendata.org)
+- **Auto-deploy**: push to `main` → Vercel build
+- **Rollback**: see [`docs/runbooks/rollback.md`](docs/runbooks/rollback.md) — a one-minute procedure via the Vercel dashboard, no code changes needed
 
 ## License
 
-MIT
+Three licenses, one project — each production is covered by the license that fits its nature:
+
+- **Code**: [AGPL-3.0](LICENSE) — if you run a modified version on a publicly accessible server, you must publish your changes under AGPL-3.0 too
+- **Derived datasets**: [Etalab Open License 2.0](https://www.data.gouv.fr/pages/legal/licences/etalab-2.0) — same terms as the source open data
+- **Editorial content** (articles, methodology writeups): CC BY 4.0
+
+See [`/licence`](https://franceopendata.org/licence) for the full terms.
