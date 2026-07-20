@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-18T14:53:30.492622+00:00",
+ "generated_at": "2026-07-20T09:55:29.047171+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "hotel-de-ville",
  "name": "Hôtel de Ville",
@@ -202,12 +202,84 @@
    "montant_max": 38295.0,
    "date_notification": "2021-11-18",
    "preuve": "L'objet localise l'animation sur le parvis avec le code postal du lieu, verbatim : « ANIMATION LUGE PARVIS HÔTEL DE VILLE 75004 »."
+  },
+  {
+   "numero_marche": "20232023S11631",
+   "objet": "MS MUR ESCALADE PARVIS HOTEL DE VILLE DECEMBRE 2023",
+   "objet_clair": null,
+   "fournisseur": "PRISME EVENTS",
+   "montant_max": 37811.0,
+   "date_notification": "2023-12-12",
+   "preuve": "L'objet localise l'animation sur le parvis, verbatim : « MS MUR ESCALADE PARVIS HOTEL DE VILLE DECEMBRE 2023 ». Contexte deliberations (place de l'Hotel de Ville) : « il y a très souvent des installations éphémères ou provisoires qui sont installées sur cette place, des animations type patinoire, courts de tennis »."
+  },
+  {
+   "numero_marche": "decp-2025F03310",
+   "objet": "Fourniture de systèmes de retenue de terre pour la réalisation de l’extension de la forêt urbaine sur le parvis de l’hôtel de Ville",
+   "objet_clair": null,
+   "fournisseur": "PLANTCO FRANCE",
+   "montant_max": 36988.86,
+   "date_notification": "2025-03-31",
+   "preuve": "L'objet localise les travaux sur le parvis, verbatim : « Fourniture de systèmes de retenue de terre pour la réalisation de l’extension de la forêt urbaine sur le parvis de l’hôtel de Ville »."
+  },
+  {
+   "numero_marche": "20212021S08997",
+   "objet": "MISE EN PLACE ANIM.ESCALADE PARVIS HOTEL DE VILLE DEC 2021",
+   "objet_clair": null,
+   "fournisseur": "PRISME EVENTS",
+   "montant_max": 34944.0,
+   "date_notification": "2021-11-23",
+   "preuve": "L'objet localise l'animation sur le parvis, verbatim : « MISE EN PLACE ANIM.ESCALADE PARVIS HOTEL DE VILLE DEC 2021 »."
+  },
+  {
+   "numero_marche": "decp-2025F12262",
+   "objet": "Marché relatif à la mise à disposition d'un manège type carrousel sur le parvis de l’Hôtel de Ville / esplanade de la Libération, 75004 PARIS dans le cadre des animations de Noël 2025 organisées par l",
+   "objet_clair": null,
+   "fournisseur": "CARROUSEL LA BELLE EPOQUE",
+   "montant_max": 34309.6,
+   "date_notification": "2025-11-20",
+   "preuve": "L'objet localise précisément la prestation, verbatim : « mise à disposition d'un manège type carrousel sur le parvis de l’Hôtel de Ville / esplanade de la Libération, 75004 PARIS dans le cadre des animations de Noël 2025 ». Contexte deliberations (place de l'Hotel de Ville) : « il y a très souvent des installations éphémères ou provisoires qui sont installées sur cette place, des animations type patinoire, courts de tennis »."
+  },
+  {
+   "numero_marche": "20161060000342",
+   "objet": "SCENOGRAPHIE EXPOSITION COLUCHE HOTEL DE VILLE DE PARIS",
+   "objet_clair": null,
+   "fournisseur": "RODRIGUEZ",
+   "montant_max": 33000.0,
+   "date_notification": "2016-03-29",
+   "preuve": "L'objet nomme le lieu, verbatim : « SCENOGRAPHIE EXPOSITION COLUCHE HOTEL DE VILLE DE PARIS ». Le rattachement repose sur ce seul objet ; le lien avec le marché 20161060001301 (salle Saint-Jean, 2016) n'est pas établi par les sources et n'est pas utilisé comme preuve."
+  },
+  {
+   "numero_marche": "20131410009854",
+   "objet": "LOCATION DE PATINS À GLACE PATINOIRE HOTEL DE VILLE",
+   "objet_clair": null,
+   "fournisseur": "BRAULENE",
+   "montant_max": 32550.0,
+   "date_notification": "2013-07-30",
+   "preuve": "L'objet nomme l'équipement installé au lieu, verbatim : « LOCATION DE PATINS À GLACE PATINOIRE HOTEL DE VILLE ». Contexte deliberations (place de l'Hotel de Ville) : « il y a très souvent des installations éphémères ou provisoires qui sont installées sur cette place, des animations type patinoire, courts de tennis »."
+  },
+  {
+   "numero_marche": "20191060001527",
+   "objet": "DISTRIBUTION ELECTRIQUE ECLAIRAGE PARVIS HÔTEL DE VILLE NOËL",
+   "objet_clair": null,
+   "fournisseur": "VIDELIO EVENTS",
+   "montant_max": 31010.7,
+   "date_notification": "2019-12-03",
+   "preuve": "L'objet localise la prestation sur le parvis, verbatim : « DISTRIBUTION ELECTRIQUE ECLAIRAGE PARVIS HÔTEL DE VILLE NOËL »."
+  },
+  {
+   "numero_marche": "20191120001440",
+   "objet": "SA2_ COMMÉMORATION_ABOLITION-ESCLAVAGE (HÔTEL DE VILLE) LOT1",
+   "objet_clair": null,
+   "fournisseur": "FEDERATION PARIS LIGUE DE L ENSEIGN",
+   "montant_max": 29650.0,
+   "date_notification": "2019-11-18",
+   "preuve": "L'objet nomme le lieu entre parenthèses, verbatim : « SA2_ COMMÉMORATION_ABOLITION-ESCLAVAGE (HÔTEL DE VILLE) LOT1 ». Lecture la plus probable : la parenthèse désigne le lieu de la commémoration. Réserve : l'intitulé est un libellé interne abrégé, aucune source du dossier ne confirme que la cérémonie s'est tenue dans le bâtiment — d'où une confiance moyenne."
   }
  ],
  "sources": {
   "delibs": {
    "name": "Débat-Délibs — Conseil de Paris",
-   "url": "https://a06-v7.apps.paris.fr/a06/"
+   "url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=search-solr&query=H%C3%B4tel+AND+Ville+AND+b%C3%A2timent"
   },
   "bmo": {
    "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",

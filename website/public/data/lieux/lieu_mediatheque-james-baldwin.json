@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-18T14:53:30.492622+00:00",
+ "generated_at": "2026-07-20T09:55:29.047171+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "mediatheque-james-baldwin",
  "name": "Médiathèque James Baldwin",
@@ -32,8 +32,11 @@
   ],
   "n_bmo_brut": 0,
   "n_bmo_verifies": null,
-  "invest_total_eur": 0,
-  "invest_annees": [],
+  "invest_total_eur": 13162650.58,
+  "invest_annees": [
+   "2023",
+   "2024"
+  ],
   "lecture_mode": "titre nommant le lieu (2 trouvés)",
   "n_lus": 2,
   "n_lieu": 2
@@ -63,12 +66,27 @@
  "montants": [],
  "bmo_extraits": [],
  "bmo_recit": null,
- "invest": [],
+ "invest": [
+  {
+   "annee": 2023,
+   "montant_eur": 6540634.64,
+   "nom_projet": "Médiathèque James Baldwin et Maison des Réfugiés Création",
+   "preuve": "Nom du projet verbatim « Médiathèque James Baldwin et Maison des Réfugiés Création » : il nomme explicitement ce lieu. Mais l'opération couvre aussi la Maison des Réfugiés, donc le montant de 6 540 634,64 € ne porte pas sur la seule médiathèque — confiance moyenne sur la part attribuable à ce lieu. Rattachement fondé sur le nom, pas sur la distance (point géocodé à 2 129 m).",
+   "id": "2023_19_54_016"
+  },
+  {
+   "annee": 2024,
+   "montant_eur": 6622015.94,
+   "nom_projet": "Médiathèque James Baldwin",
+   "preuve": "Nom du projet verbatim « Médiathèque James Baldwin » : il nomme explicitement CE lieu. Identité confirmée par la délibération 2021 DAC 346 « Attribution de la dénomination James Baldwin à la médiathèque de la rue Jean-Quarré (19e) » — unique médiathèque parisienne portant ce nom. Le rattachement repose sur le nom, pas sur la distance (point géocodé à 1 112 m, imprécision de géolocalisation du projet).",
+   "id": "2024_19_54_014"
+  }
+ ],
  "marches": [],
  "sources": {
   "delibs": {
    "name": "Débat-Délibs — Conseil de Paris",
-   "url": "https://a06-v7.apps.paris.fr/a06/"
+   "url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=search-solr&query=James+Baldwin"
   },
   "bmo": {
    "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",

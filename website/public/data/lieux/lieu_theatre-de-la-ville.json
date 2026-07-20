@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-18T14:53:30.492622+00:00",
+ "generated_at": "2026-07-20T09:55:29.047171+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "theatre-de-la-ville",
  "name": "Théâtre de la Ville",
@@ -494,12 +494,102 @@
    "montant_max": 209950.0,
    "date_notification": "2020-11-20",
    "preuve": "objet verbatim « OPC RÉNOVATION THÉÂTRE DE LA VILLE 75004 » : pilotage du chantier de rénovation, code postal 75004."
+  },
+  {
+   "numero_marche": "20232023T07085",
+   "objet": "FABRICATION GRADIN SPECIFIQUE COUPOLE THEATRE DE LA VILLE",
+   "objet_clair": null,
+   "fournisseur": "GUILLET",
+   "montant_max": 174000.0,
+   "date_notification": "2023-07-31",
+   "preuve": "objet verbatim « FABRICATION GRADIN SPECIFIQUE COUPOLE THEATRE DE LA VILLE » : équipement de gradin nommant ce théâtre (l'espace « Coupole » désigné n'est pas décrit ailleurs dans les sources consultées)."
+  },
+  {
+   "numero_marche": "20232023F02219",
+   "objet": "FOURNITURE INSTALLATION DRAPERIES THEATRE DE LA VILLE",
+   "objet_clair": null,
+   "fournisseur": "SOCIETE NOUVELLE LEBLANC SCENIQUE",
+   "montant_max": 147943.0,
+   "date_notification": "2023-04-05",
+   "preuve": "objet verbatim « FOURNITURE INSTALLATION DRAPERIES THEATRE DE LA VILLE » : installation de draperies dans ce théâtre."
+  },
+  {
+   "numero_marche": "20181210001512",
+   "objet": "MOE RESTAURATION DES FAÇADES THÉÂTRE DE LA VILLE 75004",
+   "objet_clair": null,
+   "fournisseur": "BLOND ET ROUX ARCHITECTES",
+   "montant_max": 137995.0,
+   "date_notification": "2018-11-29",
+   "preuve": "objet verbatim « MOE RESTAURATION DES FAÇADES THÉÂTRE DE LA VILLE 75004 » : façades de ce bâtiment ; confirmé par le débat 2019 DAC 80 sur « l'échafaudage de restauration du Théâtre de la Ville (4e) » dont les recettes « permettront la rénovation des façades du bâtiment »."
+  },
+  {
+   "numero_marche": "20151210001777",
+   "objet": "CSP5 BCT RENOVATION PARTIELLE THEATRE DE LA VILLE LOT1",
+   "objet_clair": null,
+   "fournisseur": "BTP CONSULTANTS",
+   "montant_max": 98950.0,
+   "date_notification": "2015-11-20",
+   "preuve": "objet verbatim « CSP5 BCT RENOVATION PARTIELLE THEATRE DE LA VILLE LOT1 » : contrôle technique de la rénovation partielle actée par 2015 DPA 34."
+  },
+  {
+   "numero_marche": "20212021S00647",
+   "objet": "MOE SCÉNOGRAPHIE HALL THÉÂTRE DE LA VILLE",
+   "objet_clair": null,
+   "fournisseur": "BLOND ET ROUX ARCHITECTES",
+   "montant_max": 89995.83,
+   "date_notification": "2021-02-12",
+   "preuve": "objet verbatim « MOE SCÉNOGRAPHIE HALL THÉÂTRE DE LA VILLE » : maîtrise d'œuvre sur le hall de ce théâtre."
+  },
+  {
+   "numero_marche": "20141210000160",
+   "objet": "AMO RÉNOVATION PARTIELLE DU THÉÂTRE DE LA VILLE",
+   "objet_clair": null,
+   "fournisseur": "ABCD",
+   "montant_max": 47375.0,
+   "date_notification": "2014-12-01",
+   "preuve": "objet verbatim « AMO RÉNOVATION PARTIELLE DU THÉÂTRE DE LA VILLE » : assistance à maîtrise d'ouvrage sur la rénovation partielle de ce théâtre."
+  },
+  {
+   "numero_marche": "20151210001796",
+   "objet": "CSP5 PI CSPS RENOVATION PARTIELLE THEATRE DE LA VILLE LOT 2",
+   "objet_clair": null,
+   "fournisseur": "QUALICONSULT SECURITE",
+   "montant_max": 45640.01,
+   "date_notification": "2015-11-26",
+   "preuve": "objet verbatim « CSP5 PI CSPS RENOVATION PARTIELLE THEATRE DE LA VILLE LOT 2 » : coordination sécurité du chantier de rénovation partielle."
+  },
+  {
+   "numero_marche": "20232023T05623",
+   "objet": "MEUBLES SUR MESURE LIBRAIRIE THEATRE DE LA VILLE 4EME",
+   "objet_clair": null,
+   "fournisseur": "ATELIER MOSC",
+   "montant_max": 39999.0,
+   "date_notification": "2023-06-29",
+   "preuve": "objet verbatim « MEUBLES SUR MESURE LIBRAIRIE THEATRE DE LA VILLE 4EME » : mobilier de la librairie du théâtre, arrondissement 4e."
+  },
+  {
+   "numero_marche": "20201210020001",
+   "objet": "SUBSÉQUENT SPS RÉNOVATION ET FAÇADES THÉÂTRE DE LA VILLE",
+   "objet_clair": null,
+   "fournisseur": "PROJECTIO",
+   "montant_max": 32832.0,
+   "date_notification": "2020-01-28",
+   "preuve": "objet verbatim « SUBSÉQUENT SPS RÉNOVATION ET FAÇADES THÉÂTRE DE LA VILLE » : sécurité du chantier de rénovation et de façades de ce théâtre."
+  },
+  {
+   "numero_marche": "20201320000606",
+   "objet": "RESTAURATION MISE A DISPOSITION-MARCHES THEATRE DE LA VILLE",
+   "objet_clair": null,
+   "fournisseur": "SAS 2GUEUDRY CONSTRUCTIONS",
+   "montant_max": 28850.0,
+   "date_notification": "2020-09-29",
+   "preuve": "objet verbatim « RESTAURATION MISE A DISPOSITION-MARCHES THEATRE DE LA VILLE » : le libellé nomme ce théâtre et non une autre adresse, et le titulaire est une entreprise de construction (SAS 2GUEUDRY CONSTRUCTIONS), cohérent avec le chantier de restauration en cours en 2020. Libellé abrégé : la nature exacte de la prestation n'est pas établie par les sources consultées, d'où une confiance moyenne."
   }
  ],
  "sources": {
   "delibs": {
    "name": "Débat-Délibs — Conseil de Paris",
-   "url": "https://a06-v7.apps.paris.fr/a06/"
+   "url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=search-solr&query=Th%C3%A9%C3%A2tre+AND+Ville+AND+Ch%C3%A2telet"
   },
   "bmo": {
    "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",

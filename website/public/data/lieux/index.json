@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-18T14:53:30.492622+00:00",
+ "generated_at": "2026-07-20T09:55:29.047171+00:00",
  "lieux": [
   {
    "slug": "piscine-des-amiraux",
@@ -123,7 +123,7 @@
    "lon": 2.3906,
    "n_lieu": 43,
    "n_moments": 8,
-   "argent_total_eur": 5865270,
+   "argent_total_eur": 8105054,
    "depuis": 1894,
    "photo": "/img/lieux/petite-ceinture.jpg"
   },
@@ -319,7 +319,7 @@
    "lon": 2.2746,
    "n_lieu": 37,
    "n_moments": 8,
-   "argent_total_eur": 5879230,
+   "argent_total_eur": 6245720,
    "depuis": 1995,
    "photo": "/img/lieux/parc-andre-citroen.jpg"
   },
@@ -333,7 +333,7 @@
    "lon": 2.3826,
    "n_lieu": 31,
    "n_moments": 8,
-   "argent_total_eur": 459020,
+   "argent_total_eur": 501870,
    "depuis": 1996,
    "photo": "/img/lieux/parc-de-bercy.jpg"
   },
@@ -361,7 +361,7 @@
    "lon": 2.2999,
    "n_lieu": 11,
    "n_moments": 8,
-   "argent_total_eur": 0,
+   "argent_total_eur": 183496,
    "depuis": 1997,
    "photo": "/img/lieux/parc-georges-brassens.jpg"
   },
@@ -487,7 +487,7 @@
    "lon": 2.362,
    "n_lieu": 26,
    "n_moments": 8,
-   "argent_total_eur": 16763561,
+   "argent_total_eur": 16913369,
    "depuis": 1998,
    "photo": "/img/lieux/pavillon-de-larsenal.jpg"
   },
@@ -501,7 +501,7 @@
    "lon": 2.2523,
    "n_lieu": 11,
    "n_moments": 7,
-   "argent_total_eur": 1088736,
+   "argent_total_eur": 1212350,
    "depuis": 1995,
    "photo": "/img/lieux/serres-dauteuil.jpg"
   },
@@ -557,7 +557,7 @@
    "lon": 2.3444,
    "n_lieu": 12,
    "n_moments": 8,
-   "argent_total_eur": 702092,
+   "argent_total_eur": 1633824,
    "depuis": 1996,
    "photo": "/img/lieux/mairie-du-18e.jpg"
   },
@@ -949,7 +949,7 @@
    "lon": 2.41427,
    "n_lieu": 30,
    "n_moments": 8,
-   "argent_total_eur": 1690294,
+   "argent_total_eur": 7779956,
    "depuis": 2003,
    "photo": "/img/lieux/porte-de-montreuil.jpg"
   },
@@ -963,7 +963,7 @@
    "lon": 2.33473,
    "n_lieu": 2,
    "n_moments": 8,
-   "argent_total_eur": 692000,
+   "argent_total_eur": 15559538,
    "depuis": 2016,
    "photo": null
   },
@@ -977,7 +977,7 @@
    "lon": 2.3686,
    "n_lieu": 2,
    "n_moments": 2,
-   "argent_total_eur": 0,
+   "argent_total_eur": 13162651,
    "depuis": 2019,
    "photo": "/img/lieux/mediatheque-james-baldwin.jpg"
   },
@@ -1103,7 +1103,7 @@
    "lon": 2.316,
    "n_lieu": 8,
    "n_moments": 8,
-   "argent_total_eur": 0,
+   "argent_total_eur": 208011,
    "depuis": 2007,
    "photo": "/img/lieux/parc-martin-luther-king.jpg"
   },
@@ -1131,7 +1131,7 @@
    "lon": 2.404955,
    "n_lieu": 42,
    "n_moments": 8,
-   "argent_total_eur": 3715673,
+   "argent_total_eur": 3910649,
    "depuis": 2005,
    "photo": "/img/lieux/bois-de-vincennes.jpg"
   },
@@ -1145,7 +1145,7 @@
    "lon": 2.286939,
    "n_lieu": 44,
    "n_moments": 8,
-   "argent_total_eur": 13616528,
+   "argent_total_eur": 13673682,
    "depuis": 2005,
    "photo": "/img/lieux/bois-de-boulogne.jpg"
   },

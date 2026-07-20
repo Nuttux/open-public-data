@@ -5114,8 +5114,8 @@ const fr: Record<string, string> = {
   'fx.lieu.marches_note': 'Montant maximum du marché (plafond notifié), pas la dépense constatée. Chaque ligne mène à la fiche du contrat.',
   'fx.lieu.bmo_voir': 'Voir les {n} extraits d’archive ({a})',
   'fx.lieu.bmo_note': 'Récit établi par IA à partir des extraits retenus du Bulletin municipal officiel — chaque extrait renvoie à la page numérisée sur Gallica.',
-  'fx.lieu.argent_absent': 'Aucune dépense n’est rattachable à ce lieu dans les données ouvertes : le fonctionnement courant (entretien, personnel) n’y est pas ventilé par lieu. N’apparaissent ici que les subventions à un exploitant, les projets d’investissement et les marchés publics qui nomment le lieu.',
-  'fx.lieu.moments_note': 'Lecture IA des {n} documents trouvés — chaque ligne renvoie à sa délibération.',
+  'fx.lieu.argent_absent': 'Aucune subvention, aucun investissement ni marché public n’a pu être rattaché à ce lieu dans les données ouvertes : le fonctionnement courant (entretien, personnel) n’y est pas ventilé par lieu. N’apparaissent ici que les subventions à un exploitant, les projets d’investissement et les marchés publics qui nomment le lieu.',
+  'fx.lieu.moments_note': 'Lecture IA de {lus} documents sur les {trouves} remontés par la recherche — chaque ligne renvoie à sa délibération.',
   'fx.lieu.src_invest': 'Annexes CA, Ville de Paris',
   'fx.lieu.presentation_src': 'Présentation :',
   'fx.lieu.h.delibs': 'Ce que disent les délibérations',
@@ -5125,6 +5125,7 @@ const fr: Record<string, string> = {
   'fx.lieu.montants_more': 'Et {n} autres montants dans les documents liés.',
   'fx.lieu.h.subv': 'Fonctionnement · subvention à l’exploitant',
   'fx.lieu.subv_more': 'Afficher les {n} exercices précédents',
+  'fx.lieu.marches_more': 'Voir les {n} autres marchés',
   'fx.lieu.h.invest': 'Investissement dans le bâtiment',
   'fx.lieu.h.bmo': 'Dans le Bulletin municipal officiel',
   'fx.lieu.bmo_encours': '{n} fascicules mentionnent ce lieu — extraits en cours de vérification (les termes voisins gonflent le compte brut).',
@@ -5158,7 +5159,7 @@ const fr: Record<string, string> = {
   'fx.lieu.frise.argent': 'Argent',
   'fx.lieu.frise.aria': 'Frise chronologique du lieu : archives, décisions et argent public de 1882 à aujourd\'hui.',
   'fx.lieu.moments_more': 'Voir les {n} autres moments',
-  'fx.lieux.card_argent': 'argent public',
+  'fx.lieux.card_argent': 'argent public identifié',
   'fx.lieux.card_depuis': 'archives depuis',
 };
 

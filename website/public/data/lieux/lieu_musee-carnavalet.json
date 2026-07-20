@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-18T14:53:30.492622+00:00",
+ "generated_at": "2026-07-20T09:55:29.047171+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "musee-carnavalet",
  "name": "Musée Carnavalet",
@@ -441,12 +441,102 @@
    "montant_max": 337165.24,
    "date_notification": "2018-07-10",
    "preuve": "L'objet du marche nomme explicitement le lieu : « CSP5 RENOVATION PARTIELLE DU MUSEE CARNAVALET LOT 06 »."
+  },
+  {
+   "numero_marche": "20141210010910",
+   "objet": "CSP5 TX MENUISERIE MUSEE CARNAVALET LOT 4",
+   "objet_clair": null,
+   "fournisseur": "LES ETABLISSEMENTS GIFFARD",
+   "montant_max": 314035.05,
+   "date_notification": "2014-03-05",
+   "preuve": "L'objet du marche nomme explicitement le lieu : « CSP5 TX MENUISERIE MUSEE CARNAVALET LOT 4 »."
+  },
+  {
+   "numero_marche": "20202020S03798",
+   "objet": "SUBSÉQUENT RÉNOVATION MUSÉE CARNAVALET 23 RUE DE SÉVIGNÉ 3È",
+   "objet_clair": null,
+   "fournisseur": "CHATILLON ARCHITECTES",
+   "montant_max": 219148.88,
+   "date_notification": "2020-07-02",
+   "preuve": "L'objet du marche nomme explicitement le lieu : « SUBSÉQUENT RÉNOVATION MUSÉE CARNAVALET 23 RUE DE SÉVIGNÉ 3È ». Adresse exacte du musee confirmee par la deliberation 2008 DAC 664 : « situe 23 rue de Sevigne (3e) »."
+  },
+  {
+   "numero_marche": "20191210000082",
+   "objet": "CSP5 RENOV PARTIELLE MUSEE CARNAVALET - LOT8 GRAPH MUSEOGRAP",
+   "objet_clair": null,
+   "fournisseur": "MEDICIS",
+   "montant_max": 214086.7,
+   "date_notification": "2019-01-14",
+   "preuve": "L'objet du marche nomme explicitement le lieu : « CSP5 RENOV PARTIELLE MUSEE CARNAVALET - LOT8 GRAPH MUSEOGRAP »."
+  },
+  {
+   "numero_marche": "20141210010907",
+   "objet": "CSP5 TX FACADE MUSEE CARNAVALET LOT 3",
+   "objet_clair": null,
+   "fournisseur": "BALAS",
+   "montant_max": 213983.84,
+   "date_notification": "2014-03-07",
+   "preuve": "L'objet du marche nomme explicitement le lieu : « CSP5 TX FACADE MUSEE CARNAVALET LOT 3 »."
+  },
+  {
+   "numero_marche": "20191210000654",
+   "objet": "SUBSÉQUENT RESTRUCTURATION MUSÉE CARNAVALET 75003 SAMO",
+   "objet_clair": null,
+   "fournisseur": "ARTELIA",
+   "montant_max": 203950.0,
+   "date_notification": "2019-06-12",
+   "preuve": "L'objet du marche nomme explicitement le lieu : « SUBSÉQUENT RESTRUCTURATION MUSÉE CARNAVALET 75003 SAMO ». Code postal 75003 coherent avec l'adresse du musee, 23-29 rue de Sevigne (3e)."
+  },
+  {
+   "numero_marche": "20202020S04397",
+   "objet": "SUBSÉQUENT N°5 MOE ÉTUDES MUSÉOGRAPHIQUES MUSÉE CARNAVALET",
+   "objet_clair": null,
+   "fournisseur": "CHATILLON ARCHITECTES",
+   "montant_max": 178702.52,
+   "date_notification": "2020-09-22",
+   "preuve": "L'objet du marche nomme explicitement le lieu : « SUBSÉQUENT N°5 MOE ÉTUDES MUSÉOGRAPHIQUES MUSÉE CARNAVALET »."
+  },
+  {
+   "numero_marche": "20131210012301",
+   "objet": "ÉTUDE DE PROGRAMMATION RÉNOVATION GLOBALE MUSÉE CARNAVALET",
+   "objet_clair": null,
+   "fournisseur": "SEBAN",
+   "montant_max": 155575.09,
+   "date_notification": "2014-01-09",
+   "preuve": "L'objet du marche nomme explicitement le lieu : « ÉTUDE DE PROGRAMMATION RÉNOVATION GLOBALE MUSÉE CARNAVALET ». Corrobore par la deliberation 2013 DPA 3, « etude de programmation pour la renovation globale du musee Carnavalet (3e) »."
+  },
+  {
+   "numero_marche": "20161210005701",
+   "objet": "MARCHÉ SUBSÉQUENT BCT RESTRUCTURATION MUSÉE CARNAVALET",
+   "objet_clair": null,
+   "fournisseur": "QUALICONSULT",
+   "montant_max": 100982.5,
+   "date_notification": "2016-11-15",
+   "preuve": "L'objet du marche nomme explicitement le lieu : « MARCHÉ SUBSÉQUENT BCT RESTRUCTURATION MUSÉE CARNAVALET »."
+  },
+  {
+   "numero_marche": "20141210010911",
+   "objet": "CSP5 TX MACONNERIE FACADE MUSEE CARNAVALET LOT 2",
+   "objet_clair": null,
+   "fournisseur": "LITHOS FRANCE",
+   "montant_max": 62571.0,
+   "date_notification": "2014-03-06",
+   "preuve": "L'objet du marche nomme explicitement le lieu : « CSP5 TX MACONNERIE FACADE MUSEE CARNAVALET LOT 2 »."
+  },
+  {
+   "numero_marche": "20181210001002",
+   "objet": "CSPS  RENOVATION /RESTRUCTURATION PARTIELLE MUSEE CARNAVALET",
+   "objet_clair": null,
+   "fournisseur": "COORDEF INGENIERIE",
+   "montant_max": 59660.0,
+   "date_notification": "2018-07-10",
+   "preuve": "L'objet du marche nomme explicitement le lieu : « CSPS  RENOVATION /RESTRUCTURATION PARTIELLE MUSEE CARNAVALET »."
   }
  ],
  "sources": {
   "delibs": {
    "name": "Débat-Délibs — Conseil de Paris",
-   "url": "https://a06-v7.apps.paris.fr/a06/"
+   "url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=search-solr&query=Carnavalet"
   },
   "bmo": {
    "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",

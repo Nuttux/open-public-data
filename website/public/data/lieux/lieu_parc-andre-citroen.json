@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-18T14:53:30.492622+00:00",
+ "generated_at": "2026-07-20T09:55:29.047171+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "parc-andre-citroen",
  "name": "Parc André-Citroën",
@@ -32,8 +32,9 @@
   ],
   "n_bmo_brut": 0,
   "n_bmo_verifies": null,
-  "invest_total_eur": 3177469.13,
+  "invest_total_eur": 3543959.13,
   "invest_annees": [
+   "2022",
    "2024"
   ],
   "lecture_mode": "titre nommant le lieu (57 trouvés)",
@@ -165,17 +166,24 @@
  "bmo_recit": null,
  "invest": [
   {
+   "annee": 2022,
+   "montant_eur": 366490.0,
+   "nom_projet": "Parc André Citroën - Travaux de rénovation",
+   "preuve": "Le nom du projet nomme le lieu : « Parc André Citroën - Travaux de rénovation ». Corroboré par la deuxième phase de rénovation du parc (budget de 3,7 millions) citée aux Conseils de Paris de mars 2015 et février 2018.",
+   "id": "2022_15_45_017"
+  },
+  {
    "annee": 2024,
    "montant_eur": 2967076.57,
    "nom_projet": "Parc Andre Citroen - Rénovation du Grand Canal",
-   "preuve": "Le nom du projet nomme explicitement le lieu : « Parc Andre Citroen - Rénovation du Grand Canal » (distance 120 m). Confirmé par les délibérations : vœu de DECEMBRE 2020 « relatif à la réhabilitation du grand canal parc André Citroën », où l'adjoint Christophe NAJDOVSKI indique que « la rénovation du grand canal [...] est également intégrée à ce programme de travaux ».",
+   "preuve": "Le nom du projet nomme le lieu : « Parc Andre Citroen - Rénovation du Grand Canal » (120 m). Corroboré par les délibérations : vœu n° 195 (décembre 2020) « relatif à la réhabilitation du grand canal parc André Citroën » et vœu n° 102 (février 2018) demandant « les travaux de réfection du Grand Canal ».",
    "id": "2024_15_42_015"
   },
   {
    "annee": 2024,
    "montant_eur": 210392.56,
    "nom_projet": "Parc Andre Citroen - Rénovation",
-   "preuve": "Le nom du projet nomme explicitement le lieu : « Parc Andre Citroen - Rénovation » (distance 120 m). Le parc fait l'objet d'un programme de rénovation pluriannuel documenté en Conseil (FEVRIER 2018 : « La programmation de la deuxième phase est prévue pour l'actuelle mandature, avec un budget de 3,7 millions »), mais aucun élément ne rattache ce montant 2024 à cette phase précise : le rattachement au lieu repose sur le nom du projet.",
+   "preuve": "Le nom du projet nomme le lieu : « Parc Andre Citroen - Rénovation » (120 m). Corroboré par le programme de rénovation du parc évoqué en Conseil de Paris (« une rénovation complète a en effet dû être engagée en 2015 », décembre 2020).",
    "id": "2024_15_42_014"
   }
  ],
@@ -187,7 +195,7 @@
    "fournisseur": "TERIDEAL",
    "montant_max": 2399279.62,
    "date_notification": "2023-08-31",
-   "preuve": "L'objet du marché nomme le lieu et porte sur des travaux qui s'y exécutent : « TRVX RENOV (FONTAINERIE SERRURIE)PARC ANDRE CITROEN ». Le rattachement repose sur ce seul objet ; il n'est pas rapproché de la réfection des fontaines sérielles évoquée en DECEMBRE 2020, annoncée comme achevée au premier semestre 2021, soit avant la notification de ce marché (2023-08-31)."
+   "preuve": "L'objet nomme le lieu et porte sur des travaux dans le parc : « TRVX RENOV (FONTAINERIE SERRURIE)PARC ANDRE CITROEN ». Corroboré par le programme de rénovation des fontaines du parc (réfection des fontaines sérielles, Fontaine Magnolia) débattu en Conseil de Paris."
   },
   {
    "numero_marche": "20121230008269",
@@ -196,7 +204,7 @@
    "fournisseur": "AUBRILAM",
    "montant_max": 247703.5,
    "date_notification": "2013-01-21",
-   "preuve": "L'objet nomme le lieu et décrit des travaux d'aménagement sur place : « TVX REAMENAGEMENT PARC ANDRE CITROEN -LOT 5:OSSATURE BOIS ». Cohérent avec la première phase de rénovation du parc menée sous la mandature précédente (MARS 2015 : « la rénovation de la fontaine lisière, la rénovation de la fontaine aquaculture [...] et des travaux de dallage »)."
+   "preuve": "L'objet nomme le lieu et porte sur des travaux dans le parc : « TVX REAMENAGEMENT PARC ANDRE CITROEN -LOT 5:OSSATURE BOIS »."
   },
   {
    "numero_marche": "20191230000871",
@@ -205,7 +213,7 @@
    "fournisseur": "OMNIUM GENERAL D'INGENIERIE",
    "montant_max": 54070.0,
    "date_notification": "2019-06-20",
-   "preuve": "L'objet nomme le lieu : « MISSIONS ÉTUD TECH RÉNOV°FONTAINE PARC ANDRÉ CITROEN » — études techniques portant sur les fontaines de ce parc. Le rattachement repose sur ce seul objet ; les études de maîtrise d'ouvrage du grand canal citées en DECEMBRE 2020 portent sur un autre ouvrage du parc et ne sont pas retenues comme preuve."
+   "preuve": "L'objet nomme le lieu et porte sur une prestation pour le parc : « MISSIONS ÉTUD TECH RÉNOV°FONTAINE PARC ANDRÉ CITROEN ». Corroboré par les délibérations sur la rénovation des fontaines du parc (réfection des fontaines sérielles prévue pour 2019, Conseil de février 2018)."
   },
   {
    "numero_marche": "decp-2024S05301",
@@ -214,13 +222,13 @@
    "fournisseur": "CROIX ROUGE FRANCAISE",
    "montant_max": 708.0,
    "date_notification": "2024-06-17",
-   "preuve": "L'objet situe la prestation dans le parc, avec dates et adresse : « poste secours k-street festival les 22 et 23 juin 2024 parc André Citroën 75015 ». Le poste de secours est déployé dans le parc pour un évènement qui s'y tient : le lieu n'est pas un simple repère d'adresse. Le lieu_execution DECP (« Paris ») est trop large et n'est pas retenu comme preuve."
+   "preuve": "L'objet nomme le lieu comme site de la prestation : « poste secours k-street festival les 22 et 23 juin 2024 parc André Citroën 75015 » — prestation qui se déroule dans le parc, pas un simple repère d'adresse."
   }
  ],
  "sources": {
   "delibs": {
    "name": "Débat-Délibs — Conseil de Paris",
-   "url": "https://a06-v7.apps.paris.fr/a06/"
+   "url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=search-solr&query=parc+AND+Citro%C3%ABn"
   },
   "bmo": {
    "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",

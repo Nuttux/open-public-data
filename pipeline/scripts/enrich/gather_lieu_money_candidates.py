@@ -96,20 +96,43 @@ def subvention_candidats(needles: list[str]) -> list[dict]:
     return rows[:MAX_SUBV]
 
 
-def projet_candidats(lat: float, lon: float) -> list[dict]:
-    """Projets d'investissement géolocalisés dans le rayon."""
+def projet_candidats(lat: float, lon: float, needles: list[str]) -> list[dict]:
+    """Projets d'investissement candidats : proximité géographique OU nom.
+
+    Le NOM manquait, et ça coûtait cher. La médiathèque James-Baldwin a deux
+    lignes d'investissement nommées exactement comme le lieu (6,5 M€ en 2023 et
+    6,6 M€ en 2024) — mais géocodées à 1,1 km et 2,1 km du bâtiment
+    (geo_source=api_lieu, approximatif). Avec un rayon de 200 m, ces 13 M€
+    n'étaient jamais proposés au juge : on jetait une correspondance de nom
+    PARFAITE parce qu'une seule coordonnée imprécise disait non.
+
+    Règle : l'étape « flou » doit être GÉNÉREUSE et multi-signal — c'est le juge
+    qui tranche ensuite. Un candidat trouvé par le nom est conservé quelle que
+    soit la distance ; la distance reste transmise comme indice."""
+    keys = [norm(n) for n in needles]
     out = []
     for f in sorted(glob.glob(str(WEB / "map/investissements_complet_*.json"))):
+        if "index" in f:
+            continue
         year = f[-9:-5]
         for r in json.load(open(f)).get("data") or []:
-            if not (r.get("lat") and r.get("montant")):
+            if not r.get("montant"):
                 continue
-            d = haversine_m(lat, lon, r["lat"], r["lon"])
-            if d <= RAYON_M:
-                out.append({"annee": r.get("annee") or year, "montant_eur": r["montant"],
-                            "nom_projet": str(r.get("nom_projet") or "")[:90],
-                            "distance_m": round(d)})
-    out.sort(key=lambda r: (r["distance_m"], -r["montant_eur"]))
+            nom = str(r.get("nom_projet") or "")
+            hit_nom = bool(nom) and any(k in norm(nom) for k in keys)
+            d = (haversine_m(lat, lon, r["lat"], r["lon"])
+                 if (r.get("lat") and r.get("lon")) else None)
+            hit_geo = d is not None and d <= RAYON_M
+            if not (hit_nom or hit_geo):
+                continue
+            out.append({"annee": r.get("annee") or year, "montant_eur": r["montant"],
+                        "nom_projet": nom[:90],
+                        "distance_m": round(d) if d is not None else None,
+                        "signal": "nom+proximite" if (hit_nom and hit_geo) else ("nom" if hit_nom else "proximite")})
+    # Le nom d'abord : c'est le signal fort. La proximité seule vient après.
+    out.sort(key=lambda r: (0 if r["signal"].startswith("nom") else 1,
+                            r["distance_m"] if r["distance_m"] is not None else 10**6,
+                            -r["montant_eur"]))
     return out[:MAX_PROJ]
 
 
@@ -160,9 +183,17 @@ def main() -> int:
         slug = seed["slug"]
         if not (CACHE / f"{slug}_delibs.jsonl").exists():
             continue
-        needles = ALIAS.get(slug, [seed["name"]])
+        needles = list(ALIAS.get(slug, [seed["name"]]))
+        # Les noms historiques du seed servent enfin : un lieu rebaptisé garde
+        # son ancien nom dans les données d'époque (place du Trône, Théâtre
+        # Sarah-Bernhardt, marché Beauvau…). La colonne existait, personne ne
+        # la lisait.
+        for alt in (seed.get("noms_historiques") or "").split(";"):
+            alt = alt.strip()
+            if alt and alt not in needles:
+                needles.append(alt)
         subv = subvention_candidats(needles)
-        proj = projet_candidats(float(seed["lat"]), float(seed["lon"]))
+        proj = projet_candidats(float(seed["lat"]), float(seed["lon"]), needles)
         marches = marche_candidats(needles)
         out = {"slug": slug, "name": seed["name"], "kind_fr": seed["kind_fr"],
                "arrondissement": int(seed["arr"]), "aliases": needles,

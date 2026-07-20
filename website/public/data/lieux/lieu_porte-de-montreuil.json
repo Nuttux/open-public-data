@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-18T14:53:30.492622+00:00",
+ "generated_at": "2026-07-20T09:55:29.047171+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "porte-de-montreuil",
  "name": "Porte de Montreuil",
@@ -32,8 +32,10 @@
   ],
   "n_bmo_brut": 2000,
   "n_bmo_verifies": 14,
-  "invest_total_eur": 0,
-  "invest_annees": [],
+  "invest_total_eur": 6089661.57,
+  "invest_annees": [
+   "2024"
+  ],
   "lecture_mode": "titre nommant le lieu (81 trouvés)",
   "n_lus": 44,
   "n_lieu": 30
@@ -217,7 +219,15 @@
  ],
  "bmo_extraits": [],
  "bmo_recit": null,
- "invest": [],
+ "invest": [
+  {
+   "annee": 2024,
+   "montant_eur": 6089661.57,
+   "nom_projet": "Porte de Montreuil",
+   "preuve": "Le nom du projet est exactement « Porte de Montreuil » (signal : nom), c'est-à-dire ce lieu même, et les délibérations confirment une opération d'aménagement active portant ce nom : 2024 DU 21 « Opération Porte de Montreuil (20e). - Avenant au traité de concession conclu avec la SEMAPA. - Rétrocession du volume E3 » et 2025 DU 100 « Opération \"Porte de Montreuil\" (20e). - Déclassement d'emprises du domaine public routier. - Cessions et acquisitions ». La distance (270 m) est cohérente avec le périmètre d'une opération d'aménagement de porte.",
+   "id": "2024_20_57_022"
+  }
+ ],
  "marches": [
   {
    "numero_marche": "20161360001610",
@@ -226,7 +236,7 @@
    "fournisseur": "TVK",
    "montant_max": 1147590.0,
    "date_notification": "2016-11-14",
-   "preuve": "L'objet nomme le lieu et en fait l'objet même du marché : « ETUDES URBAINES-OP AMENAGEMENT PORTE DE MONTREUIL » — études urbaines de l'opération d'aménagement de la Porte de Montreuil (SIRET fournisseur 80804880500028). Le débat du Conseil de Paris confirme une opération portant sur la place elle-même : « il y a la requalification urbaine de la porte de Montreuil elle-même, de transformer cet échangeur en grand jardin public place, qui soit vraiment requalifié de façon exceptionnelle » (vœu du groupe Écologiste de Paris relatif à l'aménagement de la Porte de Montreuil)."
+   "preuve": "L'objet nomme le lieu et en fait l'objet même du marché : « ETUDES URBAINES-OP AMENAGEMENT PORTE DE MONTREUIL » (SIRET fournisseur 80804880500028). L'opération d'aménagement de ce lieu est confirmée par les délibérations 2024 DU 21 « Opération Porte de Montreuil (20e) » et 2025 DU 100 « Opération \"Porte de Montreuil\" (20e) », ainsi que par plusieurs vœux du Conseil de Paris « relatifs à l'aménagement de la Porte de Montreuil » (2021, 2022)."
   },
   {
    "numero_marche": "20191370000735",
@@ -235,7 +245,7 @@
    "fournisseur": "SETEC TRAVAUX PUBLICS ET INDUSTRIEL",
    "montant_max": 355910.0,
    "date_notification": "2019-05-22",
-   "preuve": "Maîtrise d'œuvre du réaménagement du lieu lui-même, nommé verbatim dans l'objet : « MOE RÉAMÉNAGEMENT PORTE DE MONTREUIL » (SIRET fournisseur 67203828800060). Cohérent avec la délibération 2024 DU 21 « Opération Porte de Montreuil (20e) », où il est rappelé que ce projet « remplace la délibération de 2019 qui portait sur le réaménagement de la porte de Montreuil »."
+   "preuve": "Maîtrise d'œuvre du réaménagement du lieu lui-même, nommé verbatim dans l'objet : « MOE RÉAMÉNAGEMENT PORTE DE MONTREUIL » (SIRET fournisseur 67203828800060). Cohérent avec l'opération d'aménagement confirmée par les délibérations 2024 DU 21 et 2025 DU 100 (« Opération Porte de Montreuil (20e) »)."
   },
   {
    "numero_marche": "20171360000389",
@@ -244,7 +254,7 @@
    "fournisseur": "EGIS STRUCTURES ET ENVIRONNEMENT",
    "montant_max": 100294.0,
    "date_notification": "2017-04-04",
-   "preuve": "Étude réalisée sur le site même, nommé dans l'objet : « ETUDE QUALITÉ DE L'AIR PORTE DE MONTREUIL - LOT 4 » (SIRET fournisseur 49338967000164). Le lieu n'est pas un repère d'adresse : il est le périmètre mesuré. Notifiée le même jour (2017-04-04) que l'étude d'impact de l'opération d'aménagement de la Porte de Montreuil (marché 20171360000386)."
+   "preuve": "Étude réalisée sur le site même, nommé dans l'objet : « ETUDE QUALITÉ DE L'AIR PORTE DE MONTREUIL - LOT 4 » (SIRET fournisseur 49338967000164). Le lieu n'est pas un repère d'adresse : il est le périmètre étudié. Notifiée le même jour (2017-04-04) que l'étude d'impact de l'aménagement de la Porte de Montreuil (marché 20171360000386), dans la séquence d'études de l'opération d'aménagement."
   },
   {
    "numero_marche": "20171360000386",
@@ -262,13 +272,13 @@
    "fournisseur": "ATIXIS",
    "montant_max": 10800.0,
    "date_notification": "2025-03-06",
-   "preuve": "L'objet nomme le lieu, qui est aussi le nom de l'équipement : « Assistance à maitrise d'ouvrage pour le centre de santé de la porte de Montreuil » (SIRET fournisseur 78972947200025). Cet équipement est rattaché à l'opération sur ce lieu par la délibération 2024 DU 21 « Opération Porte de Montreuil (20e) », à laquelle est joint le « Vœu déposé par le groupe Communiste et Citoyen relatif à la création d'un centre municipal de santé d'innovation Porte de Montreuil ». Confiance moyenne : le marché porte sur un équipement implanté à la porte et non sur l'aménagement de la place elle-même, et le lieu_execution DECP (« Paris ») ne prouve rien à lui seul."
+   "preuve": "L'objet nomme le lieu comme localisation de l'équipement : « Assistance à maitrise d'ouvrage pour le centre de santé de la porte de Montreuil » (SIRET fournisseur 78972947200025). Ce centre de santé est rattaché à l'opération sur ce lieu par la délibération 2024 DU 21 « Opération Porte de Montreuil (20e) », dont le titre inclut le « Vœu déposé par le groupe Communiste et Citoyen relatif à la création d'un centre municipal de santé d'innovation Porte de Montreuil ». Confiance moyenne : le marché porte sur un équipement implanté à la porte et non sur l'aménagement de la place elle-même, et le lieu_execution DECP (« Paris ») ne prouve rien à lui seul."
   }
  ],
  "sources": {
   "delibs": {
    "name": "Débat-Délibs — Conseil de Paris",
-   "url": "https://a06-v7.apps.paris.fr/a06/"
+   "url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=search-solr&query=Porte+de+Montreuil"
   },
   "bmo": {
    "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",

@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-18T14:53:30.492622+00:00",
+ "generated_at": "2026-07-20T09:55:29.047171+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "mairie-du-18e",
  "name": "Mairie du 18e",
@@ -32,8 +32,11 @@
   ],
   "n_bmo_brut": 0,
   "n_bmo_verifies": null,
-  "invest_total_eur": 0,
-  "invest_annees": [],
+  "invest_total_eur": 811731.45,
+  "invest_annees": [
+   "2023",
+   "2024"
+  ],
   "lecture_mode": "titre nommant le lieu (12 trouvés)",
   "n_lus": 12,
   "n_lieu": 12
@@ -126,7 +129,29 @@
  ],
  "bmo_extraits": [],
  "bmo_recit": null,
- "invest": [],
+ "invest": [
+  {
+   "annee": 2023,
+   "montant_eur": 559882.61,
+   "nom_projet": "Mairie du 18ème arrondissement - Travaux de restructuration",
+   "preuve": "Le nom du projet nomme CE lieu verbatim : « Mairie du 18ème arrondissement - Travaux de restructuration » (signal: nom). La distance (956 m) reflète une géolocalisation imprécise, mais le nom lève l'ambiguïté : il n'y a qu'une mairie du 18e.",
+   "id": "2023_18_51_020"
+  },
+  {
+   "annee": 2023,
+   "montant_eur": 125019.08,
+   "nom_projet": "Mairie du 18ème arrondissement - Travaux dans le cadre du Schéma fonctionel et immobilier,",
+   "preuve": "Le nom du projet nomme CE lieu verbatim : « Mairie du 18ème arrondissement - Travaux dans le cadre du Schéma fonctionel et immobilier, » (signal: nom).",
+   "id": null
+  },
+  {
+   "annee": 2024,
+   "montant_eur": 126829.76,
+   "nom_projet": "Mairie du 18e arrondissement - Schéma fonctionel et immobilier",
+   "preuve": "Le nom du projet nomme CE lieu verbatim : « Mairie du 18e arrondissement - Schéma fonctionel et immobilier » (signal: nom). Identité et adresse du lieu confirmées par les délibérations (« Mairie du 18e sise 1, place Jules-Joffrin (18e) », 2006 DPA 191).",
+   "id": "2024_18_51_004"
+  }
+ ],
  "marches": [
   {
    "numero_marche": "20181210001165",
@@ -144,7 +169,7 @@
    "fournisseur": "KARDEX FRANCE",
    "montant_max": 135000.0,
    "date_notification": "2025-01-28",
-   "preuve": "Équipement installé dans le bâtiment : « fourniture, l’installation, la mise en service, la maintenance de 2 nouveaux classeurs rotatifs destinés à la mairie du 18ème arrondissement ». Corroboré par le marché decp-2024T08025 qui porte sur le renforcement du plancher de l'état civil « dans le cadre du remplacement des classeurs rotatifs de la Mairie du 18ème arrondissement - 1 Place Jules Joffrin 75018 Paris »."
+   "preuve": "Équipement installé dans le bâtiment : « 2 nouveaux classeurs rotatifs destinés à la mairie du 18ème arrondissement ». Corroboré par le marché decp-2024T08025 : « renforcement du plancher de l'état civil dans le cadre du remplacement des classeurs rotatifs de la Mairie du 18ème arrondissement - 1 Place Jules Joffrin 75018 Paris »."
   },
   {
    "numero_marche": "20181210000233",
@@ -153,7 +178,7 @@
    "fournisseur": "SOC ETUDES REALIS INSTALLATIONS SEC",
    "montant_max": 106948.0,
    "date_notification": "2018-02-21",
-   "preuve": "Travaux sur l'installation de sécurité incendie du bâtiment : « MODERNISATION DU SSI MAIRIE DU 18E ». Cohérent avec la délibération 2006 DPA 70, « travaux de remplacement de l’alarme incendie et asservissement de la Mairie du 18e arrondissement »."
+   "preuve": "Travaux sur l'installation de sécurité incendie du bâtiment : « MODERNISATION DU SSI MAIRIE DU 18E ». Cohérent avec la délibération 2006 DPA 70 (« remplacement de l’alarme incendie et asservissement de la Mairie du 18e arrondissement sise 1, place Jules-Joffrin »)."
   },
   {
    "numero_marche": "20181210029805",
@@ -162,7 +187,25 @@
    "fournisseur": "CELSIO",
    "montant_max": 75695.55,
    "date_notification": "2018-06-04",
-   "preuve": "L'objet nomme le lieu ET son adresse : « MS DIVERS TRX GÉNIE CLIMATIQUE MAIRIE DU 18E PL J.JOFFRIN », soit la place Jules-Joffrin confirmée par les délibérations (« la Mairie du 18e arrondissement sise 1, place Jules Joffrin (18e) », 2002 DPA 256)."
+   "preuve": "L'objet nomme le lieu ET son adresse : « MAIRIE DU 18E PL J.JOFFRIN », soit la place Jules-Joffrin confirmée par les délibérations (« Mairie du 18e arrondissement sise 1, place Jules Joffrin (18e) », 2002 DPA 256)."
+  },
+  {
+   "numero_marche": "20191680000073",
+   "objet": "REPAS SIMPLE ET REPAS ELABORE POUR LA MAIRIE DU 18EME",
+   "objet_clair": null,
+   "fournisseur": "SOCIETE SEILLER",
+   "montant_max": 50000.02,
+   "date_notification": "2018-12-11",
+   "preuve": "Prestation de restauration destinée au lieu : « REPAS SIMPLE ET REPAS ELABORE POUR LA MAIRIE DU 18EME » — réceptions de la mairie d'arrondissement ; le service sur place n'est pas explicité dans l'objet."
+  },
+  {
+   "numero_marche": "20191680000072",
+   "objet": "BUFFET SIMPLE ET BUFFET ELABORE POUR LA MAIRIE DU 18E",
+   "objet_clair": null,
+   "fournisseur": "LA RESIDENCE SOCIALE",
+   "montant_max": 50000.0,
+   "date_notification": "2018-12-11",
+   "preuve": "Prestation de réception destinée au lieu : « BUFFET SIMPLE ET BUFFET ELABORE POUR LA MAIRIE DU 18E » — buffets des réceptions de la mairie ; le service sur place n'est pas explicité dans l'objet."
   },
   {
    "numero_marche": "20141210000222",
@@ -171,7 +214,7 @@
    "fournisseur": "ERI",
    "montant_max": 48250.0,
    "date_notification": "2014-12-12",
-   "preuve": "Travaux sur le tableau général basse tension du bâtiment : « MODERNISATION DU TGBT MAIRIE DU 18E ». Cohérent avec les délibérations sur les installations électriques du site : « modernisation des installations électriques ... à la Mairie du 18e arrondissement sise 1, place Jules Joffrin (18e) » (2002 DPA 256) et « travaux de mise aux normes des installations électriques à la mairie du 18ème arrondissement » (2007 DPA 246)."
+   "preuve": "Travaux sur le tableau général basse tension du bâtiment : « MODERNISATION DU TGBT MAIRIE DU 18E ». Cohérent avec les délibérations sur les installations électriques du site (2002 DPA 256 ; 2007 DPA 246 « mise aux normes des installations électriques à la mairie du 18ème arrondissement »)."
   },
   {
    "numero_marche": "20171210001833",
@@ -189,7 +232,7 @@
    "fournisseur": "ERI",
    "montant_max": 42481.1,
    "date_notification": "2026-01-28",
-   "preuve": "L'objet donne l'adresse exacte du lieu : « Travaux de modernisation des anciens bureaux de l'antenne logement (DLH) à la Mairie du 18ème Arrondissement - 1 place Jules Juffrin 75018 Paris »."
+   "preuve": "L'objet donne l'adresse exacte du lieu : « à la Mairie du 18ème Arrondissement - 1 place Jules Juffrin 75018 Paris » (« Juffrin » sic pour Joffrin, adresse confirmée par les délibérations)."
   },
   {
    "numero_marche": "20161210001390",
@@ -210,6 +253,15 @@
    "preuve": "Travaux sur un local du bâtiment : « MODERNISATION DU LOCAL PRESSOIR DE LA MAIRIE DU 18E. »"
   },
   {
+   "numero_marche": "decp-2024S12980",
+   "objet": "Conception et organisation de la cérémonie des voeux de la Mairie du 18ème",
+   "objet_clair": null,
+   "fournisseur": "TWOBEVENTS TRAVEL SAS",
+   "montant_max": 20000.0,
+   "date_notification": "2024-12-12",
+   "preuve": "Événement propre au lieu : « Conception et organisation de la cérémonie des voeux de la Mairie du 18ème » — cérémonie de la mairie d'arrondissement ; la salle exacte n'est pas explicitée dans l'objet (lieu_execution : « Paris »)."
+  },
+  {
    "numero_marche": "decp-2024T08025",
    "objet": "Mission de BET pour le renforcement du plancher de l'état civil dans le cadre du remplacement des classeurs rotatifs de la Mairie du 18ème arrondissement - 1 Place Jules Joffrin 75018 Paris",
    "objet_clair": null,
@@ -222,7 +274,7 @@
  "sources": {
   "delibs": {
    "name": "Débat-Délibs — Conseil de Paris",
-   "url": "https://a06-v7.apps.paris.fr/a06/"
+   "url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=search-solr&query=mairie+AND+18e+AND+Jules-Joffrin"
   },
   "bmo": {
    "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",

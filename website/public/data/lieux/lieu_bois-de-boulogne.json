@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-18T14:53:30.492622+00:00",
+ "generated_at": "2026-07-20T09:55:29.047171+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "bois-de-boulogne",
  "name": "Bois de Boulogne",
@@ -32,8 +32,10 @@
   ],
   "n_bmo_brut": 0,
   "n_bmo_verifies": null,
-  "invest_total_eur": 0,
-  "invest_annees": [],
+  "invest_total_eur": 57153.59,
+  "invest_annees": [
+   "2024"
+  ],
   "lecture_mode": "titre nommant le lieu (203 trouvés)",
   "n_lus": 45,
   "n_lieu": 44
@@ -196,16 +198,24 @@
  ],
  "bmo_extraits": [],
  "bmo_recit": null,
- "invest": [],
+ "invest": [
+  {
+   "annee": 2024,
+   "montant_eur": 57153.59,
+   "nom_projet": "Améliorer le cadre de vie Bois de Boulogne",
+   "preuve": "Le nom du projet nomme explicitement le lieu : « Améliorer le cadre de vie Bois de Boulogne ». La distance au point de référence (2 132 m) n'est pas disqualifiante : le bois couvre ~846 ha.",
+   "id": "2024_16_45_021"
+  }
+ ],
  "marches": [
   {
    "numero_marche": "decp-2026T01251",
-   "objet": "Travaux de fontainerie, d’entretien, de réparation et d’extension des réseaux d’adduction d’eau dans les bois, espaces verts et cimetières de la ville de Paris.\n\n - Travaux de fontainerie, d’entretien",
+   "objet": "Travaux de fontainerie, d’entretien, de réparation et d’extension des réseaux d’adduction d’eau dans les bois, espaces verts et cimetières de la ville de Paris. - Travaux de fontainerie, d’entretien, ",
    "objet_clair": null,
    "fournisseur": "EIFFAGE GENIE CIVIL RESEAUX",
    "montant_max": 6000000.0,
    "date_notification": "2026-03-10",
-   "preuve": "Objet complet du lot (source DECP decp_2026_paris.json) : « Travaux de fontainerie, d’entretien, de réparation et d’extension des réseaux d’adduction d’eau dans les bois de Boulogne (16ème) et de Vincennes (12ème) et de l’École du Breuil. » Le lot nomme explicitement le bois de Boulogne et son arrondissement (16ème). Périmètre partagé avec le bois de Vincennes et l’École du Breuil : le montant maximum ne porte pas sur ce seul lieu."
+   "preuve": "Lot dédié aux bois — objet complet (DECP) : « … dans les bois de Boulogne (16ème) et de Vincennes (12ème) et de l’École du Breuil ». Le lot jumeau decp-2026T01252 est explicitement « hors bois de Boulogne et bois de Vincennes », confirmant que ce lot-ci couvre le bois. Montant max partagé avec Vincennes et l’École du Breuil, pas ce seul lieu."
   },
   {
    "numero_marche": "decp-2025T02922",
@@ -214,7 +224,7 @@
    "fournisseur": "UNIVERSAL PAYSAGE",
    "montant_max": 2010000.0,
    "date_notification": "2025-06-05",
-   "preuve": "Objet complet du lot (source DECP decp_2025_paris.json) : « Travaux de fouilles et de plantations d’arbres pour le bois de Boulogne, le bois de Vincennes et le domaine de Beauregard (78) de la Ville de Paris et le parc de la résidence de Saint-Vrain (91) du CAS-VP. » Le bois de Boulogne est nommé en premier périmètre du lot. Périmètre partagé (Vincennes, Beauregard, Saint-Vrain) : le montant maximum ne porte pas sur ce seul lieu."
+   "preuve": "Lot dédié aux bois — objet complet (DECP) : « … pour le bois de Boulogne, le bois de Vincennes et le domaine de Beauregard (78) … et le parc de la résidence de Saint-Vrain (91) du CAS-VP ». Le lot voirie/parcs de la même série (decp-2025T02917) exclut explicitement le bois (« 16ème (hors bois de Boulogne) »). Montant max partagé avec les autres sites du lot."
   },
   {
    "numero_marche": "20212021T00511",
@@ -223,7 +233,7 @@
    "fournisseur": "UNIVERSAL PAYSAGE",
    "montant_max": 1920009.99,
    "date_notification": "2021-03-17",
-   "preuve": "L’objet verbatim « SA3 AC BC LOT4 TRAVAVAUX DE FOUILLES - BOIS DE BOULOGNE » désigne un lot dédié au bois de Boulogne, nommé en toutes lettres comme seul périmètre du lot. Le marché est classé « travaux de plantation » (nature TRAVAUX) dans l’export marchés de la Ville (marches_2021.json), cohérent avec des fouilles de plantation dans le bois."
+   "preuve": "Objet verbatim : « SA3 AC BC LOT4 TRAVAVAUX DE FOUILLES - BOIS DE BOULOGNE » — lot nommant ce lieu comme seul périmètre."
   },
   {
    "numero_marche": "decp-2025T05384",
@@ -232,7 +242,7 @@
    "fournisseur": "ACTIV TP",
    "montant_max": 999637.0,
    "date_notification": "2025-07-01",
-   "preuve": "Objet complet du lot (source DECP decp_2025_paris.json) : « Travaux d’entretien des sols (voirie, réseaux et travaux divers) dans les espaces verts du bois de Boulogne, le Domaine de Beauregard (78) et les centres horticoles de Rungis (94) et d’Achères (78). » Le bois de Boulogne est le premier périmètre nommé du lot. Périmètre partagé : le montant maximum ne porte pas sur ce seul lieu."
+   "preuve": "Objet complet (DECP) : « … dans les espaces verts du bois de Boulogne, le Domaine de Beauregard (78) et les centres horticoles de Rungis (94) et d’Achères (78) » — le bois est le premier périmètre nommé et le seul site parisien du lot. Montant max partagé avec les sites extramuros."
   },
   {
    "numero_marche": "20161230001022",
@@ -241,7 +251,7 @@
    "fournisseur": "TERIDEAL SEGEX",
    "montant_max": 996122.96,
    "date_notification": "2016-07-25",
-   "preuve": "L’objet verbatim « CSP5 - VRD ET ESPACES VERTS - AAGV BOIS DE BOULOGNE LOT 2 » nomme le bois de Boulogne comme seul site, pour des travaux de voirie-réseaux-divers et d’espaces verts à l’aire d’accueil des gens du voyage (AAGV). L’existence de cette aire dans le bois est confirmée par une délibération du contexte : « Vœu déposé par les groupes les Républicains et Indépendants, Parisiens Progressistes, Constructifs et Indépendants et UDI-MODEM relatif à l’aire d’accueil des gens du voyage du bois de Boulogne » (séance de février 2019)."
+   "preuve": "Objet verbatim : « AAGV BOIS DE BOULOGNE LOT 2 » — travaux VRD/espaces verts pour l’aire d’accueil des gens du voyage située dans le bois, nommé en toutes lettres."
   },
   {
    "numero_marche": "20151400000758",
@@ -250,7 +260,7 @@
    "fournisseur": "TRANSPORTS PIERRE ROSSION",
    "montant_max": 800000.0,
    "date_notification": "2015-07-06",
-   "preuve": "L’objet verbatim « CSP2-BUNGALOWS-CELLES-ST-CLOUD/BOIS DE BOULOGNE-LOT 1 » nomme le bois de Boulogne comme site du lot ; l’export marchés de la Ville (marches_2015.json) classe ce marché en « Structures provisoires, accueil d’été des centres de loisirs ». Confiance moyenne : l’objet abrégé sépare par une barre oblique deux sites (La Celle-Saint-Cloud et le bois de Boulogne) sans permettre de savoir quelle part revient au bois."
+   "preuve": "Objet verbatim : « CSP2-BUNGALOWS-CELLES-ST-CLOUD/BOIS DE BOULOGNE-LOT 1 » — le lieu est nommé dans l’objet ; libellé abrégé et périmètre partagé avec La Celle-Saint-Cloud (78)."
   },
   {
    "numero_marche": "decp-2025S07121",
@@ -259,7 +269,7 @@
    "fournisseur": "ESPACE DECO",
    "montant_max": 400000.0,
    "date_notification": "2025-08-19",
-   "preuve": "L’objet verbatim « Entretien des jeunes peuplements forestiers dans le bois de Boulogne (16ème) et le Domaine de Beauregard (78) » nomme le lieu et son arrondissement, et décrit une prestation sylvicole qui s’y déroule. Périmètre partagé avec le Domaine de Beauregard (78) : le montant maximum ne porte pas sur ce seul lieu."
+   "preuve": "Objet verbatim : « Entretien des jeunes peuplements forestiers dans le bois de Boulogne (16ème) et le Domaine de Beauregard (78) » — prestation forestière dans le bois ; montant max partagé avec Beauregard (78)."
   },
   {
    "numero_marche": "20212021T02137",
@@ -268,7 +278,7 @@
    "fournisseur": "PROCHALOR",
    "montant_max": 338189.48,
    "date_notification": "2021-04-26",
-   "preuve": "L’objet verbatim « BAT DEVE 93W AVENUE DE L'HIPPODROME BOIS DE BOULOGNE » situe le bâtiment concerné dans le bois de Boulogne, nommé comme seul site après l’adresse. L’export marchés de la Ville (marches_2021.json) classe le marché en « Travaux de génie climatique » (nature TRAVAUX) : il s’agit de travaux sur un bâtiment situé dans le bois, pas d’un lieu cité comme simple repère."
+   "preuve": "Objet verbatim : « BAT DEVE 93W AVENUE DE L'HIPPODROME BOIS DE BOULOGNE » — travaux sur un bâtiment de la DEVE (direction gestionnaire du bois) à une adresse située dans le bois (avenue de l’Hippodrome)."
   },
   {
    "numero_marche": "decp-2026S01626",
@@ -277,7 +287,7 @@
    "fournisseur": "ROBERT PAYSAGE",
    "montant_max": 120000.0,
    "date_notification": "2026-03-27",
-   "preuve": "Objet complet (source DECP decp_2026_paris.json) : le lot retenu est « Lot 2 : Bois de Boulogne (16ème arrondissement) et domaine de Beauregard (78) » — le lot nomme explicitement ce lieu et son arrondissement pour des prestations de fauchage, débroussaillage et taillage qui s’y déroulent. Périmètre partagé avec le domaine de Beauregard (78) : le montant maximum ne porte pas sur ce seul lieu."
+   "preuve": "Objet complet (DECP) : « Lot 2 : Bois de Boulogne (16ème arrondissement) et domaine de Beauregard (78) » — lot dédié à ce lieu ; montant max partagé avec Beauregard (78)."
   },
   {
    "numero_marche": "decp-2025S03215",
@@ -286,13 +296,13 @@
    "fournisseur": "CONTRASTE PRO",
    "montant_max": 32569.0,
    "date_notification": "2025-03-28",
-   "preuve": "L’objet verbatim situe la prestation « vers le Kiosque de l’Empereur situé sur l’ile du lac intérieur du Bois de Boulogne, 75016 Paris » : la totalité du marché s’exécute à l’intérieur du lieu, à une adresse précise du bois."
+   "preuve": "Objet verbatim : « … vers le Kiosque de l’Empereur situé sur l’ile du lac intérieur du Bois de Boulogne, 75016 Paris » — prestation se déroulant dans le bois."
   }
  ],
  "sources": {
   "delibs": {
    "name": "Débat-Délibs — Conseil de Paris",
-   "url": "https://a06-v7.apps.paris.fr/a06/"
+   "url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=search-solr&query=Bois+de+Boulogne"
   },
   "bmo": {
    "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",

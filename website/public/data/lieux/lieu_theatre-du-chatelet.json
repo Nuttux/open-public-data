@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-18T14:53:30.492622+00:00",
+ "generated_at": "2026-07-20T09:55:29.047171+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "theatre-du-chatelet",
  "name": "Théâtre du Châtelet",
@@ -418,12 +418,84 @@
    "montant_max": 290761.53,
    "date_notification": "2015-07-27",
    "preuve": "L'objet nomme le lieu et son code postal : \"INSTALLATIONS ÉLECTRIQUES THÉÂTRE DU CHÂTELET 75001\"."
+  },
+  {
+   "numero_marche": "20191210000186",
+   "objet": "CSP5 TVX RESTAURATION FACADE PRINCIPALE THEATRE CHATELET 1ER",
+   "objet_clair": null,
+   "fournisseur": "STE LOUIS GENESTE ET SES FILS",
+   "montant_max": 281363.12,
+   "date_notification": "2019-02-19",
+   "preuve": "L'objet nomme le lieu et l'arrondissement : \"CSP5 TVX RESTAURATION FACADE PRINCIPALE THEATRE CHATELET 1ER\"."
+  },
+  {
+   "numero_marche": "20141210011579",
+   "objet": "REMPLACEMENT ARMOIRES ÉLECTRIQUES TH.CHATELET 75001 M.S",
+   "objet_clair": null,
+   "fournisseur": "TRAVAUX BATIMENTS ELECTRICITE SECUR",
+   "montant_max": 184089.27,
+   "date_notification": "2014-07-01",
+   "preuve": "L'objet nomme le lieu et son code postal : \"REMPLACEMENT ARMOIRES ÉLECTRIQUES TH.CHATELET 75001 M.S\"."
+  },
+  {
+   "numero_marche": "20181210001328",
+   "objet": "CSP5 RESTAURATION STATUES DU THEATRE CHATELET LOT 7",
+   "objet_clair": null,
+   "fournisseur": "ATELIERS ENACHE",
+   "montant_max": 132386.88,
+   "date_notification": "2018-10-01",
+   "preuve": "L'objet nomme le lieu : \"CSP5 RESTAURATION STATUES DU THEATRE CHATELET LOT 7\" — statuaire du bâtiment."
+  },
+  {
+   "numero_marche": "20191210000232",
+   "objet": "CSP5 RESTAUR FACADE THEATRE CHATELET LOT9:CANDELABRES/LANTER",
+   "objet_clair": null,
+   "fournisseur": "EIFFAGE ENERGIE SYSTEMES IDF",
+   "montant_max": 117646.5,
+   "date_notification": "2019-02-27",
+   "preuve": "L'objet nomme le lieu : \"CSP5 RESTAUR FACADE THEATRE CHATELET LOT9:CANDELABRES/LANTER\" — candélabres et lanternes de la façade du théâtre."
+  },
+  {
+   "numero_marche": "20151210001978",
+   "objet": "CSP5 BCT RESTAURATION PARTIELLE DECOR THEATRE CHATELET LOT1",
+   "objet_clair": null,
+   "fournisseur": "QUALICONSULT",
+   "montant_max": 104030.0,
+   "date_notification": "2016-01-08",
+   "preuve": "L'objet nomme le lieu : \"CSP5 BCT RESTAURATION PARTIELLE DECOR THEATRE CHATELET LOT1\" — bureau de contrôle technique du chantier du théâtre. Réserve de double comptage : le candidat 20161210001978 porte un objet identique, le même numéro de séquence (1978) et la même date de notification (2016-01-08), pour un montant très proche (100 430 € contre 104 030 €). Les deux lignes portent des SIRET fournisseurs distincts (40144985500261 / 40320025600440), ce qui plaide pour deux missions réelles, mais un doublon de source n'est pas exclu — le rattachement au lieu, lui, est certain."
+  },
+  {
+   "numero_marche": "20161210001978",
+   "objet": "CSP5 BCT RESTAURATION PARTIELLE DECOR THEATRE CHATELET LOT1",
+   "objet_clair": null,
+   "fournisseur": "QUALICONSULT SECURITE",
+   "montant_max": 100430.0,
+   "date_notification": "2016-01-08",
+   "preuve": "L'objet nomme le lieu : \"CSP5 BCT RESTAURATION PARTIELLE DECOR THEATRE CHATELET LOT1\" — mission de contrôle sur le même chantier, notifiée le même jour à QUALICONSULT SECURITE (SIRET 40320025600440, distinct de QUALICONSULT). Réserve de double comptage : objet, numéro de séquence (1978) et date de notification identiques à ceux du candidat 20151210001978 (104 030 €) ; les SIRET distincts plaident pour deux missions réelles, mais un doublon de source n'est pas exclu — le rattachement au lieu, lui, est certain."
+  },
+  {
+   "numero_marche": "20141210012045",
+   "objet": "MOE ET CSSI INSTALLATIONS ÉLECTRIQUES THÉÂTRE DU CHÂTELET",
+   "objet_clair": null,
+   "fournisseur": "SOC INT DE TECH AVANCEES ET DE SECU",
+   "montant_max": 84910.0,
+   "date_notification": "2014-09-05",
+   "preuve": "L'objet nomme le lieu : \"MOE ET CSSI INSTALLATIONS ÉLECTRIQUES THÉÂTRE DU CHÂTELET\"."
+  },
+  {
+   "numero_marche": "20151210001156",
+   "objet": "REMPLACT CONTREPOIDS RIDEAU DE FER THÉÂTRE DU CHÂTELET 75001",
+   "objet_clair": null,
+   "fournisseur": "A M G  FECHOZ",
+   "montant_max": 80577.0,
+   "date_notification": "2015-07-09",
+   "preuve": "L'objet nomme le lieu et son code postal : \"REMPLACT CONTREPOIDS RIDEAU DE FER THÉÂTRE DU CHÂTELET 75001\" — rideau de fer, équipement de scène."
   }
  ],
  "sources": {
   "delibs": {
    "name": "Débat-Délibs — Conseil de Paris",
-   "url": "https://a06-v7.apps.paris.fr/a06/"
+   "url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=search-solr&query=Th%C3%A9%C3%A2tre+AND+Ch%C3%A2telet"
   },
   "bmo": {
    "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",

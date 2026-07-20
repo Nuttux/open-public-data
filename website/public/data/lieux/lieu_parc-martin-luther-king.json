@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-18T14:53:30.492622+00:00",
+ "generated_at": "2026-07-20T09:55:29.047171+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "parc-martin-luther-king",
  "name": "Parc Martin Luther King",
@@ -32,8 +32,10 @@
   ],
   "n_bmo_brut": 0,
   "n_bmo_verifies": null,
-  "invest_total_eur": 0,
-  "invest_annees": [],
+  "invest_total_eur": 208011.0,
+  "invest_annees": [
+   "2022"
+  ],
   "lecture_mode": "titre nommant le lieu (9 trouvés)",
   "n_lus": 9,
   "n_lieu": 8
@@ -111,12 +113,20 @@
  "montants": [],
  "bmo_extraits": [],
  "bmo_recit": null,
- "invest": [],
+ "invest": [
+  {
+   "annee": 2022,
+   "montant_eur": 208011.0,
+   "nom_projet": "Parc Martin Luther King - Aménagement (phase 3)",
+   "preuve": "Le nom du projet nomme explicitement ce lieu : « Parc Martin Luther King - Aménagement (phase 3) ». La distance de 656 m au point de référence est cohérente avec l'emprise du parc, décrit en séance du Conseil de Paris (mars 2021) comme « ce parc de 10 hectares », et l'aménagement par phases est confirmé par la même séance : « Nous allons livrer, dans les semaines qui viennent, la dernière tranche de ce parc de 10 hectares ».",
+   "id": "2022_17_52_018"
+  }
+ ],
  "marches": [],
  "sources": {
   "delibs": {
    "name": "Débat-Délibs — Conseil de Paris",
-   "url": "https://a06-v7.apps.paris.fr/a06/"
+   "url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=search-solr&query=Parc+Martin+Luther+King"
   },
   "bmo": {
    "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",

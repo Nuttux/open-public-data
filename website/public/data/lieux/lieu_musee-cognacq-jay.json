@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-18T14:53:30.492622+00:00",
+ "generated_at": "2026-07-20T09:55:29.047171+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "musee-cognacq-jay",
  "name": "Musée Cognacq-Jay",
@@ -41,12 +41,12 @@
  "subventions_exploitant": null,
  "residents": [],
  "kpi_montant": null,
- "synthese_fr": "Au Conseil de Paris, le musée Cognacq-Jay, 8 rue Elzévir (4e), apparaît notamment en novembre 2010 : le Conseil approuve le principe d'une transaction après un accident survenu à Madame EDE au sein du musée et autorise le Maire de Paris à signer un contrat prévoyant le versement d'une indemnité de 8 125 euros, en échange de la renonciation à tout recours contre la Ville. Cette dépense serait imputée sur le budget de fonctionnement 2010 de la Ville, sous réserve de la décision de financement correspondante. La délibération n'approuve à ce stade que le principe et l'autorisation de signer, non un versement déjà effectué. Un second texte, de mai 2024, ne concerne pas ce musée mais la rue Cognacq-Jay (7e), rive gauche : il porte sur l'apposition d'une plaque en souvenir du premier journal télévisé français, un homonyme à ne pas confondre avec le musée du Marais.",
+ "synthese_fr": "Au Conseil de Paris, le musée Cognacq-Jay, 8 rue Elzévir (4e), apparaît notamment en novembre 2010 : le Conseil approuve le principe d'une transaction après un accident survenu à une usagère au sein du musée et autorise le Maire de Paris à signer un contrat prévoyant le versement d'une indemnité de 8 125 euros, en échange de la renonciation à tout recours contre la Ville. Cette dépense serait imputée sur le budget de fonctionnement 2010 de la Ville, sous réserve de la décision de financement correspondante. La délibération n'approuve à ce stade que le principe et l'autorisation de signer, non un versement déjà effectué. Un second texte, de mai 2024, ne concerne pas ce musée mais la rue Cognacq-Jay (7e), rive gauche : il porte sur l'apposition d'une plaque en souvenir du premier journal télévisé français, un homonyme à ne pas confondre avec le musée du Marais.",
  "moments": [
   {
    "id": "85988",
    "seance": "NOVEMBRE 2010",
-   "fait": "Le Conseil approuve le principe d'une transaction et autorise le Maire à signer un contrat indemnisant Madame EDE de 8 125 euros après un accident survenu au sein du musée.",
+   "fait": "Le Conseil approuve le principe d'une transaction et autorise le Maire à signer un contrat indemnisant une usagère de 8 125 euros après un accident survenu au sein du musée.",
    "pourquoi": "Accident au musée : transaction à 8 125 euros",
    "vedette": true,
    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=85988"
@@ -56,7 +56,7 @@
   {
    "seance": "NOVEMBRE 2010",
    "montant": "8 125 euros",
-   "objet": "Indemnité que la Ville verserait à Madame EDE au titre du contrat de transaction, contre renonciation à tout recours",
+   "objet": "Indemnité que la Ville verserait à une usagère au titre du contrat de transaction, contre renonciation à tout recours",
    "citation": "prévoyant le versement par la Ville d?une indemnité de 8.125 euros et la renonciation à tout recours ultérieur contre la Ville",
    "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=85988"
   },
@@ -94,7 +94,7 @@
  "sources": {
   "delibs": {
    "name": "Débat-Délibs — Conseil de Paris",
-   "url": "https://a06-v7.apps.paris.fr/a06/"
+   "url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=search-solr&query=Cognacq-Jay"
   },
   "bmo": {
    "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",

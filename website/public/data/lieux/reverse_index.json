@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-18T14:53:30.492622+00:00",
+ "generated_at": "2026-07-20T09:55:29.047171+00:00",
  "beneficiaires": {
   "la cite de la musique": {
    "slug": "philharmonie-de-paris",
@@ -241,6 +241,22 @@
    "slug": "parc-des-buttes-chaumont",
    "lieu": "Parc des Buttes-Chaumont"
   },
+  "poursuivre l ouverture de la petite ceinture": {
+   "slug": "petite-ceinture",
+   "lieu": "Petite Ceinture"
+  },
+  "quartiers populaires reconquete de la petite ceinture": {
+   "slug": "petite-ceinture",
+   "lieu": "Petite Ceinture"
+  },
+  "la reconquete de la petite ceinture": {
+   "slug": "petite-ceinture",
+   "lieu": "Petite Ceinture"
+  },
+  "reconquete de la petite ceinture": {
+   "slug": "petite-ceinture",
+   "lieu": "Petite Ceinture"
+  },
   "piscine 19 rue de pontoise travaux de renovation": {
    "slug": "piscine-pontoise",
    "lieu": "Piscine Pontoise"
@@ -281,6 +297,18 @@
    "slug": "parc-andre-citroen",
    "lieu": "Parc André-Citroën"
   },
+  "parc andre citroen travaux de renovation": {
+   "slug": "parc-andre-citroen",
+   "lieu": "Parc André-Citroën"
+  },
+  "parc de bercy renovation de la roseraie": {
+   "slug": "parc-de-bercy",
+   "lieu": "Parc de Bercy"
+  },
+  "parc georges brassens renovation des allees": {
+   "slug": "parc-georges-brassens",
+   "lieu": "Parc Georges-Brassens"
+  },
   "maison de l air": {
    "slug": "parc-de-belleville",
    "lieu": "Parc de Belleville"
@@ -288,6 +316,26 @@
   "place de la republique refection des trottoirs": {
    "slug": "place-de-la-republique",
    "lieu": "Place de la République"
+  },
+  "renovation partielle pavillon de l arsenal": {
+   "slug": "pavillon-de-larsenal",
+   "lieu": "Pavillon de l'Arsenal"
+  },
+  "jardin des serres d auteuil refection de la couverture du local du personnel": {
+   "slug": "serres-dauteuil",
+   "lieu": "Serres d'Auteuil"
+  },
+  "mairie du 18e arrondissement schema fonctionel et immobilier": {
+   "slug": "mairie-du-18e",
+   "lieu": "Mairie du 18e"
+  },
+  "mairie du 18eme arrondissement travaux de restructuration": {
+   "slug": "mairie-du-18e",
+   "lieu": "Mairie du 18e"
+  },
+  "mairie du 18eme arrondissement travaux dans le cadre du schema fonctionel et immobilier": {
+   "slug": "mairie-du-18e",
+   "lieu": "Mairie du 18e"
   },
   "marche couvert 21 place louis lepine rehabilitation des pavillons": {
    "slug": "kiosque-fleurs-cite",
@@ -308,6 +356,38 @@
   "porte de la chapelle rue de la chapelle rue marx dormoy rond point": {
    "slug": "porte-de-la-chapelle",
    "lieu": "Porte de la Chapelle"
+  },
+  "porte de montreuil": {
+   "slug": "porte-de-montreuil",
+   "lieu": "Porte de Montreuil"
+  },
+  "piscine belliard": {
+   "slug": "piscine-belliard",
+   "lieu": "Piscine Belliard"
+  },
+  "piscine belliard construction": {
+   "slug": "piscine-belliard",
+   "lieu": "Piscine Belliard"
+  },
+  "mediatheque james baldwin": {
+   "slug": "mediatheque-james-baldwin",
+   "lieu": "Médiathèque James Baldwin"
+  },
+  "mediatheque james baldwin et maison des refugies creation": {
+   "slug": "mediatheque-james-baldwin",
+   "lieu": "Médiathèque James Baldwin"
+  },
+  "parc martin luther king amenagement phase 3": {
+   "slug": "parc-martin-luther-king",
+   "lieu": "Parc Martin Luther King"
+  },
+  "ameliorons l environnement des usages du bois de vincennes": {
+   "slug": "bois-de-vincennes",
+   "lieu": "Bois de Vincennes"
+  },
+  "ameliorer le cadre de vie bois de boulogne": {
+   "slug": "bois-de-boulogne",
+   "lieu": "Bois de Boulogne"
   },
   "place des vosges": {
    "slug": "place-des-vosges",

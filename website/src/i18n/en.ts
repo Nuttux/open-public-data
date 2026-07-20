@@ -5105,8 +5105,8 @@ const en: Record<string, string> = {
   'fx.lieu.marches_note': 'Contract ceiling as notified, not actual spend. Each line links to the contract record.',
   'fx.lieu.bmo_voir': 'See the {n} archive extracts ({a})',
   'fx.lieu.bmo_note': 'Account written by AI from the selected extracts of the city’s official bulletin — each extract links to the scanned page on Gallica.',
-  'fx.lieu.argent_absent': 'No spending can be tied to this place in the open data: day-to-day running costs (upkeep, staff) are not broken down by place. Only subsidies to an operator, investment projects and public contracts that name the place appear here.',
-  'fx.lieu.moments_note': 'AI reading of the {n} documents found — each line links to its deliberation.',
+  'fx.lieu.argent_absent': 'No subsidy, investment or public contract could be tied to this place in the open data: day-to-day running costs (upkeep, staff) are not broken down by place. Only subsidies to an operator, investment projects and public contracts that name the place appear here.',
+  'fx.lieu.moments_note': 'AI reading of {lus} documents out of the {trouves} returned by the search — each line links to its deliberation.',
   'fx.lieu.src_invest': 'CA annexes, Ville de Paris',
   'fx.lieu.presentation_src': 'About:',
   'fx.lieu.h.delibs': 'What the deliberations say',
@@ -5116,6 +5116,7 @@ const en: Record<string, string> = {
   'fx.lieu.montants_more': 'And {n} more amounts in the linked documents.',
   'fx.lieu.h.subv': 'Operating · subsidy to the operator',
   'fx.lieu.subv_more': 'Show the {n} previous years',
+  'fx.lieu.marches_more': 'See the {n} other contracts',
   'fx.lieu.h.invest': 'Investment in the building',
   'fx.lieu.h.bmo': 'In the Municipal Bulletin',
   'fx.lieu.bmo_encours': '{n} issues mention this place — extracts under verification (nearby terms inflate the raw count).',
@@ -5149,7 +5150,7 @@ const en: Record<string, string> = {
   'fx.lieu.frise.argent': 'Money',
   'fx.lieu.frise.aria': 'Timeline of the place: archives, decisions and public money from 1882 to today.',
   'fx.lieu.moments_more': 'See {n} more moments',
-  'fx.lieux.card_argent': 'public money',
+  'fx.lieux.card_argent': 'public money identified',
   'fx.lieux.card_depuis': 'archives since',
 };
 

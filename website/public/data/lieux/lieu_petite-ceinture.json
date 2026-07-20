@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-18T14:53:30.492622+00:00",
+ "generated_at": "2026-07-20T09:55:29.047171+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "petite-ceinture",
  "name": "Petite Ceinture",
@@ -32,8 +32,11 @@
   ],
   "n_bmo_brut": 1525,
   "n_bmo_verifies": 10,
-  "invest_total_eur": 0,
-  "invest_annees": [],
+  "invest_total_eur": 2239783.89,
+  "invest_annees": [
+   "2022",
+   "2024"
+  ],
   "lecture_mode": "titre nommant le lieu (105 trouvés)",
   "n_lus": 43,
   "n_lieu": 43
@@ -43,12 +46,12 @@
   {
    "beneficiaire": "HALAGE",
    "montant_total": 358108.0,
-   "preuve": "Objet de la subvention verbatim : « Chantier d¿insertion entretien de la Petite Ceinture ferroviaire PC18, PC19, PC20) » — l'objet nomme le lieu et désigne l'entretien de trois tronçons (18e, 19e, 20e). SIRET 40116107000032. Le débat de la délibération 2023 DEVE 20, « Subventions (410.676 euros) à 5 associations pour des projets d'insertion professionnelle par l'entretien de la petite ceinture ferroviaire », cite nommément « Halage » parmi ces structures d'insertion. Rôle « resident » et non « exploitant » : l'association réalise un chantier d'insertion SUR le site, elle ne gère pas la Petite Ceinture — la Ville conventionne 5 associations pour cet entretien (2023 DEVE 20, 2025 DEVE 26, 2025 DEVE 88) et l'infrastructure appartient à S.N.C.F. Réseau (2026 DEVE 16, « Conventions de financement de travaux de mise en sécurité sur la Petite Ceinture du 15e avec S.N.C.F. Réseau »). Réserve sur le montant : 255 258 € (2024) proviennent d'une subvention unique dont l'objet nomme la Petite Ceinture ; les 102 850 € restants (2018) proviennent d'une ligne agrégeant 2 subventions dont seul l'objet principal nomme le lieu."
+   "preuve": "Objet de la subvention verbatim : « Chantier d¿insertion entretien de la Petite Ceinture ferroviaire PC18, PC19, PC20) » — l'objet nomme le lieu et désigne l'entretien de trois tronçons (18e, 19e, 20e). SIRET 40116107000032. Le débat de la délibération 2023 DEVE 20, « Subventions (410.676 euros) à 5 associations pour des projets d'insertion professionnelle par l'entretien de la petite ceinture ferroviaire », cite nommément « Halage » parmi ces structures d'insertion. Rôle « resident » et non « exploitant » : l'association réalise un chantier d'insertion SUR le site, elle ne gère pas la Petite Ceinture — la Ville conventionne 5 associations pour cet entretien (2023 DEVE 20, 2025 DEVE 26, 2025 DEVE 88) et l'infrastructure appartient à S.N.C.F. Réseau (2026 DEVE 16, « Conventions de financement de travaux de mise en sécurité sur la Petite Ceinture du 15e avec S.N.C.F. Réseau »)."
   },
   {
    "beneficiaire": "INTERFACE FORMATION",
    "montant_total": 96300.0,
-   "preuve": "Objet de la subvention verbatim : « Chantier d'insertion Petite ceinture ferroviaire 12e et 20e association Interface Formation-Fonctionnement » — l'objet nomme le lieu et précise les tronçons (12e et 20e). SIRET 40218568000020. Rôle « resident » et non « exploitant » : le terme « Fonctionnement » qualifie le type de subvention versée à l'association, pas la gestion du lieu ; l'association mène un chantier d'insertion sur le site sans le gérer, la Ville conventionnant 5 associations pour cet entretien (2023 DEVE 20, 2025 DEVE 26, 2025 DEVE 88). Confiance « moyenne » : l'association n'est nommée dans aucune délibération ni aucun débat du contexte, et la totalité du montant provient d'une seule ligne (2018) agrégeant 2 subventions dont seul l'objet principal nomme la Petite Ceinture."
+   "preuve": "Objet de la subvention verbatim : « Chantier d'insertion Petite ceinture ferroviaire 12e et 20e association Interface Formation-Fonctionnement » — l'objet nomme le lieu et précise les tronçons (12e et 20e). SIRET 40218568000020. Rôle « resident » et non « exploitant » : le terme « Fonctionnement » qualifie le type de subvention versée à l'association, pas la gestion du lieu ; l'association mène un chantier d'insertion sur le site sans le gérer, la Ville conventionnant 5 associations pour cet entretien (2023 DEVE 20, 2025 DEVE 26, 2025 DEVE 88). Confiance « moyenne » : contrairement à Halage, l'association n'est nommée dans aucun débat du contexte de délibérations ; seule la preuve par l'objet la relie au lieu."
   }
  ],
  "kpi_montant": null,
@@ -202,7 +205,43 @@
   }
  ],
  "bmo_recit": "Dans le Bulletin municipal officiel, le chemin de fer de Ceinture apparaît surtout par ses points de contact avec la voirie. En juillet 1894, le Conseil examine une contribution supplémentaire de la Ville dans la suppression des passages à niveau de la ligne, entre le tunnel de Charonne et la Seine ; M. Vauthier y prend la parole. En mars 1923, une délibération porte sur la couverture de la ligne, rues Sorbier et de la Bidassoa, en vue de l'aménagement d'un square, pour une somme en francs. En avril 1932, M. Lajarrige attire l'attention de l'Administration sur les ponts qui font passer la ligne au-dessus des rues de Cambrai et de Flandre. Sur près de quarante ans, la ligne revient ainsi en séance moins pour son trafic que pour ses croisements avec la rue : passages à niveau, couverture, ponts.",
- "invest": [],
+ "invest": [
+  {
+   "annee": 2022,
+   "montant_eur": 113923.0,
+   "nom_projet": "Reconquête de la Petite Ceinture",
+   "preuve": "Le nom du projet nomme explicitement CE lieu : « Reconquête de la Petite Ceinture » — intitulé identique au programme de la délibération 2019 DEVE 104 (« B.P. 2015 \"Reconquête de la Petite Ceinture\" »).",
+   "id": "2022_19_59_023"
+  },
+  {
+   "annee": 2024,
+   "montant_eur": 1563987.69,
+   "nom_projet": "Poursuivre l'ouverture de la Petite Ceinture",
+   "preuve": "Le nom du projet nomme explicitement CE lieu : « Poursuivre l'ouverture de la Petite Ceinture ». La distance centroïde (2 950 m) n'est pas significative pour une infrastructure linéaire multi-arrondissements ; c'est le nom qui fait preuve. L'« ouverture » de tronçons est corroborée par le débat 2023 DEVE 20 (« l'ouverture imminente de la portion de la petite c[einture] »).",
+   "id": "2024_18_51_025"
+  },
+  {
+   "annee": 2024,
+   "montant_eur": 384785.93,
+   "nom_projet": "Quartiers populaires : reconquête de la Petite Ceinture",
+   "preuve": "Le nom du projet nomme explicitement CE lieu : « Quartiers populaires : reconquête de la Petite Ceinture ». L'intitulé « Reconquête de la Petite Ceinture » est celui d'un programme municipal documenté par la délibération 2019 DEVE 104 (« B.P. 2015 \"Reconquête de la Petite Ceinture\" »).",
+   "id": "2024_18_51_024"
+  },
+  {
+   "annee": 2024,
+   "montant_eur": 125688.21,
+   "nom_projet": "La reconquête de la petite ceinture",
+   "preuve": "Le nom du projet nomme explicitement CE lieu : « La reconquête de la petite ceinture ». Même programme « Reconquête de la Petite Ceinture » que la délibération 2019 DEVE 104 (« B.P. 2015 \"Reconquête de la Petite Ceinture\" »).",
+   "id": "2024_19_54_022"
+  },
+  {
+   "annee": 2024,
+   "montant_eur": 51399.06,
+   "nom_projet": "Poursuivre l'ouverture de la Petite Ceinture",
+   "preuve": "Le nom du projet nomme explicitement CE lieu : « Poursuivre l'ouverture de la Petite Ceinture » (seconde ligne 2024 du même intitulé, montant distinct).",
+   "id": "2024_18_51_025"
+  }
+ ],
  "marches": [
   {
    "numero_marche": "20232023T03892",
@@ -293,12 +332,30 @@
    "montant_max": 148462.0,
    "date_notification": "2023-04-26",
    "preuve": "L'objet porte sur ce lieu : « ETUDE TECH OPERAT AMENAGEMENT PETITE CEINTURE » (étude technique opérationnelle d'aménagement de la Petite Ceinture)."
+  },
+  {
+   "numero_marche": "20161230010127",
+   "objet": "CSP4 MET AMÉNAGEMENT PROMENADE PETITE CEINTURE 14,17,20",
+   "objet_clair": null,
+   "fournisseur": "ETUDES PLURIDISCIPLIN ET CONSEILS",
+   "montant_max": 52345.0,
+   "date_notification": "2016-11-04",
+   "preuve": "L'objet nomme le lieu et les tronçons concernés : « AMÉNAGEMENT PROMENADE PETITE CEINTURE 14,17,20 » (mission de maîtrise d'œuvre sur les tronçons des 14e, 17e et 20e)."
+  },
+  {
+   "numero_marche": "decp-2024S06938",
+   "objet": "Maîtrise d’œuvre relative à la construction d’un escalier métallique pour l’aménagement de la petite ceinture en promenade – Paris 19ème",
+   "objet_clair": null,
+   "fournisseur": "WAO",
+   "montant_max": 17707.0,
+   "date_notification": "2024-07-15",
+   "preuve": "L'objet nomme le lieu et le tronçon : « construction d’un escalier métallique pour l’aménagement de la petite ceinture en promenade – Paris 19ème ». Lieu d'exécution DECP : « Paris »."
   }
  ],
  "sources": {
   "delibs": {
    "name": "Débat-Délibs — Conseil de Paris",
-   "url": "https://a06-v7.apps.paris.fr/a06/"
+   "url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=search-solr&query=Petite+AND+Ceinture"
   },
   "bmo": {
    "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",

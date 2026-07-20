@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-18T14:53:30.492622+00:00",
+ "generated_at": "2026-07-20T09:55:29.047171+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "parc-de-bercy",
  "name": "Parc de Bercy",
@@ -32,8 +32,10 @@
   ],
   "n_bmo_brut": 2000,
   "n_bmo_verifies": null,
-  "invest_total_eur": 0,
-  "invest_annees": [],
+  "invest_total_eur": 42850.0,
+  "invest_annees": [
+   "2022"
+  ],
   "lecture_mode": "titre nommant le lieu (86 trouvés)",
   "n_lus": 45,
   "n_lieu": 31
@@ -210,7 +212,15 @@
  ],
  "bmo_extraits": [],
  "bmo_recit": null,
- "invest": [],
+ "invest": [
+  {
+   "annee": 2022,
+   "montant_eur": 42850.0,
+   "nom_projet": "Parc de Bercy - Rénovation de la Roseraie",
+   "preuve": "Le nom du projet nomme le lieu verbatim : « Parc de Bercy - Rénovation de la Roseraie » (signal: nom). La roseraie est un jardin situé dans le parc de Bercy ; la distance de 671 m s'explique par la taille du parc (~14 ha), le nom prime.",
+   "id": "2022_12_34_012"
+  }
+ ],
  "marches": [
   {
    "numero_marche": "20232023S08935",
@@ -219,7 +229,7 @@
    "fournisseur": "SPL PARISEINE",
    "montant_max": 190000.0,
    "date_notification": "2023-10-03",
-   "preuve": "L'objet du marché nomme le lieu verbatim : « MANDAT MAÎTRISE D'OUVRAGE COUVERTURE EGP 12 PARC DE BERCY ». Mandat de maîtrise d'ouvrage pour une couverture d'équipement située dans le parc. Le Conseil de Paris documente une opération de couverture d'équipement dans ce parc : « création de la couverture du roller park du parc de Bercy (12e) » (2007 DJS 231, mars 2007) puis contrat de transaction avec la société SMC2 SARL pour « les travaux de création de la couverture du roller park du Parc de Bercy (12e) » (2008 DJS 339, juillet 2008). Le sigle « EGP 12 » n'apparaît pas dans les sources consultées : l'équipement précis n'est pas identifié ici, mais le marché porte bien sur le parc de Bercy."
+   "preuve": "L'objet du marché nomme le lieu verbatim : « MANDAT MAÎTRISE D'OUVRAGE COUVERTURE EGP 12 PARC DE BERCY ». Mandat de maîtrise d'ouvrage pour une couverture d'équipement située dans le parc. Le Conseil de Paris documente une opération de couverture d'équipement dans ce parc : « création de la couverture du roller park du parc de Bercy (12e) » (2007 DJS 231) puis contrat de transaction avec la société SMC2 SARL pour « les travaux de création de la couverture du roller park du Parc de Bercy (12e) » (2008 DJS 339). Le sigle « EGP 12 » n'apparaît pas dans les sources consultées : l'équipement précis n'est pas identifié ici, mais le marché porte bien sur le parc de Bercy."
   },
   {
    "numero_marche": "20212021S02444",
@@ -228,7 +238,7 @@
    "fournisseur": "YLE",
    "montant_max": 159595.0,
    "date_notification": "2021-05-04",
-   "preuve": "L'objet nomme le lieu verbatim : « MOE RÉNOVATION ÉNERGÉTIQUE MAISON DU LAC PARC DE BERCY SAMO ». La Maison du Lac est un bâtiment situé dans le parc de Bercy : la délibération 1997 PJEV 26 (mars 1997, travaux d'adaptation du parc de Bercy à la circulation des personnes à mobilité réduite) mentionne « un élévateur desservant les salles de conférences de la Maison du Lac ». Maîtrise d'œuvre de rénovation énergétique portant sur ce bâtiment du parc."
+   "preuve": "L'objet nomme le lieu verbatim : « MOE RÉNOVATION ÉNERGÉTIQUE MAISON DU LAC PARC DE BERCY SAMO ». La Maison du Lac est un bâtiment situé dans le parc de Bercy : la délibération 1997 PJEV 26 (travaux d'adaptation du parc de Bercy à la circulation des personnes à mobilité réduite) mentionne « un élévateur desservant les salles de conférences de la Maison du Lac ». Maîtrise d'œuvre de rénovation énergétique portant sur ce bâtiment du parc."
   },
   {
    "numero_marche": "20212021S03024",
@@ -237,13 +247,13 @@
    "fournisseur": "AREP",
    "montant_max": 109425.0,
    "date_notification": "2021-05-31",
-   "preuve": "L'objet nomme le lieu verbatim : « SA5 AMO AMELIORATION SECURITAIRE PARC DE BERCY ». Assistance à maîtrise d'ouvrage pour l'amélioration sécuritaire du parc lui-même ; sujet corroboré par le vœu de l'Exécutif de février 2022 « relatif à la sécurité dans le parc de Bercy et au déplacement de la gare routière »."
+   "preuve": "L'objet nomme le lieu verbatim : « SA5 AMO AMELIORATION SECURITAIRE PARC DE BERCY ». Assistance à maîtrise d'ouvrage pour l'amélioration sécuritaire du parc lui-même ; sujet corroboré par le vœu de l'Exécutif « relatif à la sécurité dans le parc de Bercy et au déplacement de la gare routière »."
   }
  ],
  "sources": {
   "delibs": {
    "name": "Débat-Délibs — Conseil de Paris",
-   "url": "https://a06-v7.apps.paris.fr/a06/"
+   "url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=search-solr&query=parc+AND+Bercy"
   },
   "bmo": {
    "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",

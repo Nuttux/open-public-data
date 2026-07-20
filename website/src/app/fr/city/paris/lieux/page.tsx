@@ -49,7 +49,7 @@ export default async function LieuxPage() {
               {argentTotal > 0 && (
                 <span>
                   <b className="tnum">{fmtM(argentTotal)} M€</b>{" "}
-                  {locale === "en" ? "public money traced" : "d’argent public retracé"}
+                  {locale === "en" ? "public money identified" : "d’argent public identifié"}
                 </span>
               )}
               {plusAncien && (

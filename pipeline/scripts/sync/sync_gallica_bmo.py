@@ -83,26 +83,48 @@ def search_all(query: str, hard_cap: int = 2000) -> tuple[list[dict], int]:
 
 def main() -> int:
     ap = argparse.ArgumentParser()
-    ap.add_argument("--query")
+    # --query répétable : un lieu change de nom, et l'archive emploie le nom de
+    # SON époque. Chercher « place de la Nation » dans un bulletin de 1890 ne
+    # donne rien : le document dit « place du Trône ». On interroge donc Gallica
+    # sous TOUS les noms connus du lieu et on fusionne (dédoublonnage par ark).
+    ap.add_argument("--query", action="append")
     ap.add_argument("--slug", default="adhoc")
     args = ap.parse_args()
 
-    targets = {args.slug: args.query} if args.query else LIEUX_V0
+    targets = {args.slug: args.query} if args.query else {k: [v] for k, v in LIEUX_V0.items()}
     OUT_DIR.mkdir(parents=True, exist_ok=True)
     synced_at = datetime.now(timezone.utc).isoformat()
 
-    for slug, query in targets.items():
-        try:
-            rows, total = search_all(query)
-        except Exception as exc:
-            print(f"ERR {slug}: {type(exc).__name__} {exc}", file=sys.stderr)
+    for slug, queries in targets.items():
+        if isinstance(queries, str):
+            queries = [queries]
+        rows, total, vus = [], 0, set()
+        echec = None
+        for q in queries:
+            try:
+                r_q, t_q = search_all(q)
+            except Exception as exc:
+                echec = exc
+                continue
+            total += t_q
+            for r in r_q:
+                cle = r.get("gallica_url") or json.dumps(r, sort_keys=True)
+                if cle in vus:
+                    continue
+                vus.add(cle)
+                r["query"] = q            # trace : sous quel nom ce fascicule a été trouvé
+                rows.append(r)
+        if not rows and echec is not None:
+            print(f"ERR {slug}: {type(echec).__name__} {echec}", file=sys.stderr)
             continue
+        query = " | ".join(queries)
         out = OUT_DIR / f"{slug}_bmo.jsonl"
         with out.open("w") as f:
             for r in rows:
                 r.update({
                     "lieu_slug": slug,
-                    "query": query,
+                    "query": r.get("query") or query,
+                    "queries": queries,
                     "source": "Gallica / BnF — Bulletin Municipal Officiel de la Ville de Paris (1882–1985)",
                     "source_periodical": f"https://gallica.bnf.fr/ark:/12148/{BMO_ARK.split('_')[0]}/date",
                     "_synced_at": synced_at,

@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-18T14:53:30.492622+00:00",
+ "generated_at": "2026-07-20T09:55:29.047171+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "porte-maillot",
  "name": "Porte Maillot",
@@ -198,21 +198,21 @@
    "annee": 2022,
    "montant_eur": 7097978.0,
    "nom_projet": "Porte Maillot - Réaménagement",
-   "preuve": "Le nom du projet nomme le lieu : « Porte Maillot - Réaménagement ». Confirmé par « 2017 DVD 100 - DEVE - DU - Réaménagement de la porte Maillot. - Approbation du bilan de la concertation préalable » et « 2019 DU 162 - Réaménagement de la place de la Porte Maillot (16e et 17e) ».",
+   "preuve": "Le nom du projet nomme explicitement le lieu : « Porte Maillot - Réaménagement » (105 m). Même opération que « 2017 DVD 100 - DEVE - DU - Réaménagement de la porte Maillot. - Approbation du bilan de la concertation préalable » et « 2019 DU 162 - Réaménagement de la place de la Porte Maillot (16e et 17e) ».",
    "id": "2022_17_52_019"
   },
   {
    "annee": 2023,
    "montant_eur": 893581.82,
    "nom_projet": "Parcs de stationnememnt Porte Maillot",
-   "preuve": "Le nom du projet nomme le lieu. Le parc de stationnement public est un équipement de la place, à l'adresse « 2, place de la Porte-Maillot (17e) », attenant au Palais des Congrès (avis du Conseil de Paris sur l'exploitation du parc souterrain), et fait l'objet de la délibération « 2018 DVD 103 - Parc de stationnement porte Maillot (17e). - Avenant n° 3 à la convention de concession du parc public. - Convention relative aux travaux préparatoires à la construction de la gare EOLE ».",
+   "preuve": "Le nom du projet nomme le lieu : « Parcs de stationnememnt Porte Maillot » (105 m). Le parc public de stationnement est un équipement de la place, attesté par « 2018 DVD 103 - Parc de stationnement porte Maillot (17e). - Avenant n° 3 à la convention de concession du parc public. - Convention relative aux travaux préparatoires à la construction de la gare EOLE ».",
    "id": "2023_17_48_027"
   },
   {
    "annee": 2024,
    "montant_eur": 7108531.73,
    "nom_projet": "Porte Maillot - Réaménagement",
-   "preuve": "Le nom du projet nomme le lieu : « Porte Maillot - Réaménagement ». Confirmé par les délibérations « 2021 DU 5 - Réaménagement de la place de la Porte Maillot (16e et 17e) » et « 2019 DU 201 - Réaménagement de la place de la Porte Maillot (16e et 17e). - Avis favorable du Conseil de Paris sur l'étude d'impact et la demande de permis d'aménager ».",
+   "preuve": "Le nom du projet nomme explicitement le lieu : « Porte Maillot - Réaménagement » (105 m). Opération confirmée par les délibérations « 2021 DU 5 - Réaménagement de la place de la Porte Maillot (16e et 17e) » et « 2019 DU 201 - Réaménagement de la place de la Porte Maillot (16e et 17e). - Avis favorable du Conseil de Paris sur l'étude d'impact ».",
    "id": "2024_16_45_019"
   }
  ],
@@ -224,7 +224,7 @@
    "fournisseur": "SPL PARISEINE",
    "montant_max": 1093031.0,
    "date_notification": "2018-05-31",
-   "preuve": "L'objet porte sur le lieu : « MANDAT DE MAITRISE D'OUVRAGE REAMENAGEMENT PORTE MAILLOT ». La S.P.L. PariSeine est bien l'opérateur des travaux sur la place : « 2021 DVD 55 - Prolongement du RER E Eole à l'Ouest et aménagement de la place Porte Maillot (17e). - Exonération de S.N.C.F. Réseau et la S.P.L. PariSeine des redevances d'occupation du domaine public pour les travaux » (SIRET fournisseur 83942912300020)."
+   "preuve": "L'objet porte sur ce lieu : « MANDAT DE MAITRISE D'OUVRAGE REAMENAGEMENT PORTE MAILLOT ». La S.P.L. PariSeine (SIRET 83942912300020) est bien l'opérateur des travaux sur la place : « 2021 DVD 55 - Prolongement du RER E Eole à l'Ouest et aménagement de la place Porte Maillot (17e). - Exonération de S.N.C.F. Réseau et la S.P.L. PariSeine des redevances d'occupation du domaine public »."
   },
   {
    "numero_marche": "20151380000359",
@@ -233,7 +233,7 @@
    "fournisseur": "SADE CGTH",
    "montant_max": 997653.0,
    "date_notification": "2016-07-28",
-   "preuve": "L'objet nomme explicitement l'emprise : « CREATION D'UN EGOUT PLACE DE LA PORTE MAILLOT ». Le volet EOLE est confirmé par « 2021 DVD 55 - Prolongement du RER E Eole à l'Ouest et aménagement de la place Porte Maillot (17e) » et par les « travaux préparatoires à la construction de la gare EOLE » (2018 DVD 103)."
+   "preuve": "L'objet nomme explicitement l'emprise : « CREATION D'UN EGOUT PLACE DE LA PORTE MAILLOT - EOLE ». Le volet EOLE sur la place est confirmé par « 2021 DVD 55 - Prolongement du RER E Eole à l'Ouest et aménagement de la place Porte Maillot (17e) » et par les « travaux préparatoires à la construction de la gare EOLE » (2018 DVD 103)."
   },
   {
    "numero_marche": "20181370090079",
@@ -242,7 +242,7 @@
    "fournisseur": "SPL PARISEINE",
    "montant_max": 608311.0,
    "date_notification": "2018-09-28",
-   "preuve": "L'objet porte sur la coordination des projets du secteur du lieu. Correspond à la délibération « DVD 17. Place de la Porte Maillot (16e et 17e). - Conventions liées à la coordination des projets dans le cadre de son réaménagement » (séance de mai 2020), même mandataire S.P.L. PariSeine (SIRET 83942912300020)."
+   "preuve": "L'objet porte sur la coordination des projets du secteur de ce lieu : « MANDAT D'ETUDE COORDINATION PROJETS SECTEUR PORTE MAILLOT ». Correspond à la délibération « DVD 17. Place de la Porte Maillot (16e et 17e). - Conventions liées à la coordination des projets dans le cadre de son réaménagement » (séance de mai 2020), même mandataire S.P.L. PariSeine (SIRET 83942912300020)."
   },
   {
    "numero_marche": "20161360001632",
@@ -251,7 +251,7 @@
    "fournisseur": "ATELIER PARISIEN D'URBANISME",
    "montant_max": 45000.0,
    "date_notification": "2016-12-02",
-   "preuve": "L'objet porte sur le dossier de concertation du lieu. La concertation préalable au réaménagement de la place est attestée : « 2017 DVD 100 - Réaménagement de la porte Maillot. - Approbation du bilan de la concertation préalable » et « 2019 DU 162 - Réaménagement de la place de la Porte Maillot (16e et 17e). - Mise en compatibilité du Plan Local d'Urbanisme. - Concertation »."
+   "preuve": "L'objet porte sur le dossier de concertation de ce lieu : « QUASI-REGIE CONSTITUTION DOSSIER CONNCERTATION PORTE MAILLOT ». La concertation préalable au réaménagement de la place est attestée : « 2017 DVD 100 - Réaménagement de la porte Maillot. - Approbation du bilan de la concertation préalable » et « 2019 DU 162 - ... Mise en compatibilité du Plan Local d'Urbanisme. - Concertation »."
   },
   {
    "numero_marche": "20171360001600",
@@ -269,13 +269,13 @@
    "fournisseur": "HPC ENVIROTEC",
    "montant_max": 29066.0,
    "date_notification": "2015-06-08",
-   "preuve": "L'objet vise les sols du lieu lui-même : « DÉPOLLUTION SOLS PORTE MAILLOT ET SES ABORDS 16E ET 17E ». Le périmètre 16e/17e correspond exactement à celui de la place tel que désigné par « 2021 DU 5 - Réaménagement de la place de la Porte Maillot (16e et 17e) »."
+   "preuve": "L'objet vise les sols du lieu lui-même : « CSP3-DÉPOLLUTION SOLS PORTE MAILLOT ET SES ABORDS 16E ET 17E ». Le périmètre 16e/17e correspond exactement à celui de la place tel que désigné par « 2021 DU 5 - Réaménagement de la place de la Porte Maillot (16e et 17e) »."
   }
  ],
  "sources": {
   "delibs": {
    "name": "Débat-Délibs — Conseil de Paris",
-   "url": "https://a06-v7.apps.paris.fr/a06/"
+   "url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=search-solr&query=Porte+AND+Maillot"
   },
   "bmo": {
    "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",

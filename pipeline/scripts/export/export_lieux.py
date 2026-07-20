@@ -22,6 +22,7 @@ import glob
 import json
 import re
 import shutil
+import urllib.parse
 from datetime import datetime, timezone
 from pathlib import Path
 
@@ -80,6 +81,10 @@ OVERRIDES: dict[str, dict] = {
 }
 
 SOURCES = {
+    # La racine du portail (a06-v7.apps.paris.fr/a06/) est un formulaire de
+    # recherche sans résultats — une page vide pour le lecteur. L'URL réelle
+    # est posée par fiche dans main() : la recherche pré-remplie avec la
+    # requête du sync, donc le corpus exact dont sortent les lignes affichées.
     "delibs": {"name": "Débat-Délibs — Conseil de Paris",
                "url": "https://a06-v7.apps.paris.fr/a06/"},
     "bmo": {"name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
@@ -88,6 +93,12 @@ SOURCES = {
                "url": "https://opendata.paris.fr/"},
     "wiki": {"name": "Wikipédia", "url": "https://fr.wikipedia.org/"},
 }
+
+
+def delibs_search_url(query: str) -> str:
+    """Recherche Débat-Délib pré-remplie — même prédicat que sync_debat_delibs.py."""
+    return ("https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?"
+            + urllib.parse.urlencode({"page": "search-solr", "query": query}))
 
 # Documents que la lecture a classés hors périmètre du lieu lui-même.
 OFF_CLASSES = {"hors-sujet", "mention-liste", "immeuble/rue", "abords"}
@@ -267,7 +278,11 @@ def resolve_argent(slug: str) -> dict:
     marches.sort(key=lambda m: -(m["montant_max"] or 0))
     return {"exploitant": exploitant, "residents": residents[:8],
             "investissements": invest, "invest_total_eur": sum(p["montant_eur"] for p in invest),
-            "marches": marches[:10], "marches_total_eur": sum(m["montant_max"] or 0 for m in marches)}
+            "marches": marches, "marches_total_eur": sum(m["montant_max"] or 0 for m in marches)}
+    # NB : on publie TOUS les marchés jugés. Tronquer la liste à 10 tout en
+    # sommant la liste complète rendait le total invérifiable depuis la fiche
+    # (Charléty : carte 31,0 M€, lignes visibles 27,2 M€). Le repli visuel
+    # au-delà de 6 lignes est fait côté fiche, pas côté données.
 
 
 # Types de lieux : un projet « Gymnase … rue des Amiraux » nomme la rue, pas la
@@ -452,6 +467,12 @@ def main() -> int:
         invest = argent["investissements"]
         subv = argent["exploitant"]
         kpi = cfg.get("kpi_montant")
+        # Sources par fiche : le lien délibs mène à la recherche pré-remplie du
+        # lieu (la requête vit dans chaque ligne du cache sync), pas à la racine
+        # vide du portail.
+        query = delibs[0].get("query")
+        sources = {**SOURCES, "delibs": {**SOURCES["delibs"],
+                                         **({"url": delibs_search_url(query)} if query else {})}}
 
         fiche = {
             "generated_at": generated,
@@ -488,7 +509,7 @@ def main() -> int:
             "bmo_recit": bmo_recit,
             "invest": invest,
             "marches": argent["marches"],
-            "sources": SOURCES,
+            "sources": sources,
         }
         (OUT / f"lieu_{slug}.json").write_text(json.dumps(fiche, ensure_ascii=False, indent=1))
         # Métrique citoyenne pour les cartes : l'argent si connu, sinon la

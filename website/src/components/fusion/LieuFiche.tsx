@@ -284,7 +284,7 @@ export default function LieuFiche({ lieu }: { lieu: LieuFicheData }) {
       {(lieu.marches?.length ?? 0) > 0 && (
         <section className="fx-fiche-section">
           <div className="fx-fiche-h fx-fiche-h--money">{t("fx.lieu.h.marches")}</div>
-          {lieu.marches!.map((m) => (
+          {lieu.marches!.slice(0, 6).map((m) => (
             <Link
               key={m.numero_marche}
               href={`/fr/city/paris/marches/contrat/${encodeURIComponent(m.numero_marche)}`}
@@ -304,6 +304,27 @@ export default function LieuFiche({ lieu }: { lieu: LieuFicheData }) {
               <Eur {...fmtEur(m.montant_max)} size={13} />
             </Link>
           ))}
+          {lieu.marches!.length > 6 && (
+            <details>
+              <summary style={{ fontFamily: "var(--f-mono)", fontSize: 10, letterSpacing: ".07em", textTransform: "uppercase", color: "var(--bleu)", cursor: "pointer", padding: "10px 6px" }}>
+                {fill(t("fx.lieu.marches_more"), { n: lieu.marches!.length - 6 })}
+              </summary>
+              {lieu.marches!.slice(6).map((m) => (
+                <Link
+                  key={m.numero_marche}
+                  href={`/fr/city/paris/marches/contrat/${encodeURIComponent(m.numero_marche)}`}
+                  className="fx-row-link"
+                  style={{ display: "flex", justifyContent: "space-between", gap: 12, padding: "11px 6px", borderBottom: "1px solid var(--rule)", alignItems: "baseline" }}
+                >
+                  <span style={{ fontSize: 13, color: "var(--ink-2)", flex: 1 }}>
+                    {m.objet_clair || normalizeObjet(m.objet)}
+                    <span aria-hidden="true" style={{ color: "var(--muted)" }}> →</span>
+                  </span>
+                  <Eur {...fmtEur(m.montant_max)} size={13} />
+                </Link>
+              ))}
+            </details>
+          )}
           <p className="fx-fiche-note">{t("fx.lieu.marches_note")}</p>
         </section>
       )}
@@ -357,7 +378,7 @@ export default function LieuFiche({ lieu }: { lieu: LieuFicheData }) {
               </details>
             )}
             <p className="fx-fiche-note">
-              {fill(t("fx.lieu.moments_note"), { n: s.n_lus ?? s.n_lieu ?? 0 })}
+              {fill(t("fx.lieu.moments_note"), { lus: s.n_lus ?? 0, trouves: s.n_delibs ?? s.n_lus ?? 0 })}
             </p>
           </section>
         );
