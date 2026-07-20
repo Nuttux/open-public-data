@@ -4,6 +4,7 @@ import Link from "next/link";
 // Direct imports only — no fusion barrel (node:fs leak precedent, ADR-0010 D3).
 import SectionHead from "@/components/fusion/SectionHead";
 import PageTOC from "@/components/fusion/PageTOC";
+import PageIntro, { IntroStat } from "@/components/fusion/PageIntro";
 import HeroNumber from "@/components/fusion/HeroNumber";
 import KPIGrid from "@/components/fusion/KPIGrid";
 import AnimatedNumber from "@/components/fusion/AnimatedNumber";
@@ -21,7 +22,6 @@ import {
   fmtUsdCompact,
   fmtShare,
   fmtYoy,
-  fmtPctAbs,
   fmtDateLong,
 } from "@/lib/us/format";
 import type {
@@ -216,7 +216,6 @@ export default function SfBudgetClient({ d }: { d: SfBudgetPageData }) {
     <main id="main-content" tabIndex={-1} style={{ overflowX: "clip" }}>
       <PageTOC
         items={[
-          { id: "sec-overview", label: t("us.sf.budget.toc.overview") },
           { id: "sec-services", label: t("us.sf.budget.toc.services") },
           { id: "sec-types", label: t("us.sf.budget.toc.types") },
           { id: "sec-revenue", label: t("us.sf.budget.toc.revenue") },
@@ -225,211 +224,124 @@ export default function SfBudgetClient({ d }: { d: SfBudgetPageData }) {
         ]}
       />
 
-      {/* ── Page header ── */}
-      <section className="fx-page-header">
-        <div className="fx-wrap">
-          <div className="fx-page-kicker">
-            {fill(t("us.sf.budget.kicker"), { fy })}
-          </div>
-          <h1 className="fx-page-title">
+      {/* ── Opener: signature stat band (folds the former "01 Overview") ── */}
+      <PageIntro
+        kicker={fill(t("us.sf.budget.kicker"), { fy })}
+        title={
+          <>
             {t("us.sf.budget.title.before")}
             <em>{t("us.sf.budget.title.em")}</em>
             {t("us.sf.budget.title.after")}
-          </h1>
-          <p className="fx-page-lede">{t("us.sf.budget.lede")}</p>
-          <div className="fx-page-actions">
-            <YearPicker
-              years={d.years}
-              votedYears={votedYears}
-              previewYears={previewYears}
-              current={fy}
-              basePath="/us/city/sf/budget"
-              label={t("us.sf.budget.year_label")}
-              previewTitle={t("us.sf.budget.year_preview_title")}
-            />
-          </div>
-          {statusNoticeKey && spendingPoint && (
-            <p
-              style={{
-                marginTop: 18,
-                fontFamily: "var(--f-mono)",
-                fontSize: 11.5,
-                color: "var(--ink-2)",
-                letterSpacing: ".04em",
-                display: "flex",
-                gap: 14,
-                flexWrap: "wrap",
-                alignItems: "center",
-              }}
-            >
-              <span>
-                {fill(t(statusNoticeKey), {
-                  fy,
-                  n_lines: spendingPoint.n_lines.toLocaleString("en-US"),
-                  n_lines_y1: (
-                    d.points.spending.find((p) => p.fiscal_year === fy - 1)?.n_lines ?? 0
-                  ).toLocaleString("en-US"),
-                })}
-              </span>
-              <Link
-                href={`/us/city/sf/budget?year=${lastClosed}`}
-                style={{
-                  color: "var(--bleu)",
-                  borderBottom: "1px solid var(--bleu)",
-                  paddingBottom: 1,
-                  textDecoration: "none",
-                }}
-              >
-                {fill(t("us.sf.budget.notice.cta"), { fy: lastClosed })}
-              </Link>
-            </p>
-          )}
-        </div>
-      </section>
-
-      {/* ── 01 · Overview ── */}
-      <section className="fx-section" id="sec-overview">
-        <div className="fx-wrap">
-          <SectionHead
-            number="01"
-            kind={t("us.sf.budget.s01.kind")}
-            title={
-              <>
-                {t("us.sf.budget.s01.title.before")}
-                <em>{t("us.sf.budget.s01.title.em")}</em>
-              </>
-            }
+          </>
+        }
+        lede={t("us.sf.budget.lede")}
+        actions={
+          <YearPicker
+            years={d.years}
+            votedYears={votedYears}
+            previewYears={previewYears}
+            current={fy}
+            basePath="/us/city/sf/budget"
+            label={t("us.sf.budget.year_label")}
+            previewTitle={t("us.sf.budget.year_preview_title")}
           />
-          <div className="fx-overview">
-            {/* containerType: inline-size — the 15-glyph exact figure must
-                never inflate its grid column (it pushed the KPI grid off-
-                canvas at 1440); with size containment the column keeps its
-                1.15fr share and the cqi font-size resolves against it. */}
-            <div style={{ containerType: "inline-size" }}>
-            <HeroNumber
-              label={fill(t("us.sf.budget.s01.hero.label"), { fy })}
+        }
+        stats={
+          <>
+            <IntroStat
               value={
-                /* Exact dollar figure (acceptance: all 11 digits), capped
-                   against the pane width at every breakpoint. */
-                <span style={{ fontSize: "min(1em, 11cqi)" }}>
+                <AnimatedNumber
+                  value={bd.totals.spending.total_usd}
+                  format={(n) => fmtUsdCompact(n)}
+                />
+              }
+              label={
+                <Tip label={t("us.sf.budget.s01.hero.net_tip")}>
+                  {fill(t("us.sf.budget.s01.hero.label"), { fy })}
+                  {yoy != null ? ` · ${fmtYoy(yoy)}` : ""}
+                </Tip>
+              }
+            />
+            <IntroStat
+              value={
+                bd.totals.spending.per_resident_usd != null ? (
                   <AnimatedNumber
-                    value={bd.totals.spending.total_usd}
+                    value={bd.totals.spending.per_resident_usd}
                     format={(n) => fmtUsd(n)}
                   />
-                </span>
+                ) : (
+                  "—"
+                )
               }
-              delta={
-                yoy != null
-                  ? {
-                      direction: yoy >= 0.001 ? "up" : yoy <= -0.001 ? "down" : "flat",
-                      value: fmtPctAbs(yoy),
-                      base: fill(t("us.sf.budget.s01.hero.delta_base"), { fy: fy - 1 }),
-                    }
-                  : undefined
+              label={t("us.sf.budget.s01.kpi.per_resident")}
+            />
+            <IntroStat
+              value={
+                revenuePoint ? (
+                  <AnimatedNumber
+                    value={revenuePoint.total_usd}
+                    format={(n) => fmtUsdCompact(n)}
+                  />
+                ) : (
+                  "—"
+                )
               }
-              caption={
-                <>
-                  {t("us.sf.budget.s01.hero.cap.a")}
-                  <Tip label={t("us.sf.budget.s01.hero.net_tip")}>
-                    {t("us.sf.budget.s01.hero.net_word")}
-                  </Tip>
-                  {fill(t("us.sf.budget.s01.hero.cap.b"), {
-                    ta: fmtUsdCompact(Math.abs(bd.totals.spending.transfer_adjustment_usd)),
-                  })}
-                </>
+              label={t("us.sf.budget.s01.kpi.revenue")}
+            />
+            <IntroStat
+              value={fmtUsdCompact(bd.totals.spending.transfer_adjustment_usd)}
+              label={
+                <Tip label={t("us.sf.budget.s01.kpi.ta_tip")}>
+                  {t("us.sf.budget.s01.kpi.ta")}
+                </Tip>
               }
             />
-            </div>
-            <KPIGrid
-              cols={3}
-              items={[
-                {
-                  label: t("us.sf.budget.s01.kpi.per_resident"),
-                  value:
-                    bd.totals.spending.per_resident_usd != null ? (
-                      <AnimatedNumber
-                        value={bd.totals.spending.per_resident_usd}
-                        format={(n) => fmtUsd(n)}
-                      />
-                    ) : (
-                      "—"
-                    ),
-                  delta:
-                    bd.totals.spending.per_resident_usd != null
-                      ? fill(t("us.sf.budget.s01.kpi.per_resident_note"), {
-                          year: bd.totals.spending.population_year ?? "",
-                        })
-                      : fill(t("us.sf.budget.s01.kpi.per_resident_missing"), {
-                          latest: d.population.year,
-                        }),
-                },
-                {
-                  label: t("us.sf.budget.s01.kpi.revenue"),
-                  value: revenuePoint ? (
-                    <AnimatedNumber
-                      value={revenuePoint.total_usd}
-                      format={(n) => fmtUsdCompact(n)}
-                    />
-                  ) : (
-                    "—"
-                  ),
-                  delta: t("us.sf.budget.s01.kpi.revenue_note"),
-                },
-                {
-                  label: (
-                    <Tip label={t("us.sf.budget.s01.kpi.ta_tip")}>
-                      {t("us.sf.budget.s01.kpi.ta")}
-                    </Tip>
-                  ),
-                  value: fmtUsdCompact(bd.totals.spending.transfer_adjustment_usd),
-                  delta: t("us.sf.budget.s01.kpi.ta_note"),
-                },
-              ]}
-            />
-          </div>
-
-          {bd.program_strip.available && bd.program_strip.rows.length > 0 && (
-            <div
+          </>
+        }
+      >
+        {statusNoticeKey && spendingPoint && (
+          <p
+            style={{
+              marginTop: 14,
+              marginBottom: 0,
+              fontFamily: "var(--f-mono)",
+              fontSize: 11.5,
+              color: "var(--ink-2)",
+              letterSpacing: ".04em",
+              display: "flex",
+              gap: 14,
+              flexWrap: "wrap",
+              alignItems: "center",
+            }}
+          >
+            <span>
+              {fill(t(statusNoticeKey), {
+                fy,
+                n_lines: spendingPoint.n_lines.toLocaleString("en-US"),
+                n_lines_y1: (
+                  d.points.spending.find((p) => p.fiscal_year === fy - 1)?.n_lines ?? 0
+                ).toLocaleString("en-US"),
+              })}
+            </span>
+            <Link
+              href={`/us/city/sf/budget?year=${lastClosed}`}
               style={{
-                marginTop: 26,
-                paddingTop: 18,
-                borderTop: "1px solid var(--rule)",
-                display: "flex",
-                flexWrap: "wrap",
-                gap: "10px 28px",
+                color: "var(--bleu)",
+                borderBottom: "1px solid var(--bleu)",
+                paddingBottom: 1,
+                textDecoration: "none",
               }}
             >
-              <span
-                style={{
-                  fontFamily: "var(--f-mono)",
-                  fontSize: 11,
-                  letterSpacing: ".08em",
-                  textTransform: "uppercase",
-                  color: "var(--muted)",
-                  alignSelf: "center",
-                }}
-              >
-                {t("us.sf.budget.s01.strip.label")}
-              </span>
-              {bd.program_strip.rows.slice(0, 4).map((r) => (
-                <span key={r.program} style={{ fontSize: 13.5 }}>
-                  <b>{r.program}</b>{" "}
-                  <span className="tnum" style={{ fontFamily: "var(--f-mono)", fontSize: 12 }}>
-                    {fmtUsdCompact(r.total_usd)} · {fmtShare(r.share_of_side)}
-                  </span>
-                </span>
-              ))}
-            </div>
-          )}
-          <SourceLine label={srcLabel} links={budgetLinks} dataWord={dataWord} />
-        </div>
-      </section>
+              {fill(t("us.sf.budget.notice.cta"), { fy: lastClosed })}
+            </Link>
+          </p>
+        )}
+      </PageIntro>
 
-      {/* ── 02 · By service (org groups → departments) ── */}
+      {/* ── Signature: where the money goes, by service ── */}
       <section className="fx-section" id="sec-services">
         <div className="fx-wrap">
           <SectionHead
-            number="02"
             kind={t("us.sf.budget.s02.kind")}
             title={
               <>
@@ -519,15 +431,48 @@ export default function SfBudgetClient({ d }: { d: SfBudgetPageData }) {
               />
             </div>
           )}
+
+          {bd.program_strip.available && bd.program_strip.rows.length > 0 && (
+            <div
+              style={{
+                marginTop: 26,
+                paddingTop: 18,
+                borderTop: "1px solid var(--rule)",
+                display: "flex",
+                flexWrap: "wrap",
+                gap: "10px 28px",
+              }}
+            >
+              <span
+                style={{
+                  fontFamily: "var(--f-mono)",
+                  fontSize: 11,
+                  letterSpacing: ".08em",
+                  textTransform: "uppercase",
+                  color: "var(--muted)",
+                  alignSelf: "center",
+                }}
+              >
+                {t("us.sf.budget.s01.strip.label")}
+              </span>
+              {bd.program_strip.rows.slice(0, 4).map((r) => (
+                <span key={r.program} style={{ fontSize: 13.5 }}>
+                  <b>{r.program}</b>{" "}
+                  <span className="tnum" style={{ fontFamily: "var(--f-mono)", fontSize: 12 }}>
+                    {fmtUsdCompact(r.total_usd)} · {fmtShare(r.share_of_side)}
+                  </span>
+                </span>
+              ))}
+            </div>
+          )}
           <SourceLine label={srcLabel} links={budgetLinks} dataWord={dataWord} />
         </div>
       </section>
 
-      {/* ── 03 · By type of spending (characters) ── */}
+      {/* ── By type of spending (characters) ── */}
       <section className="fx-section" id="sec-types">
         <div className="fx-wrap">
           <SectionHead
-            number="03"
             kind={t("us.sf.budget.s03.kind")}
             title={
               <>
@@ -601,7 +546,6 @@ export default function SfBudgetClient({ d }: { d: SfBudgetPageData }) {
       <section className="fx-section" id="sec-revenue">
         <div className="fx-wrap">
           <SectionHead
-            number="04"
             kind={t("us.sf.budget.s04.kind")}
             title={
               <>
@@ -686,7 +630,6 @@ export default function SfBudgetClient({ d }: { d: SfBudgetPageData }) {
       <section className="fx-section" id="sec-execution">
         <div className="fx-wrap">
           <SectionHead
-            number="05"
             kind={t("us.sf.budget.s05.kind")}
             title={
               <>

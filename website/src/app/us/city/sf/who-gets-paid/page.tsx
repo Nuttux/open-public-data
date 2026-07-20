@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
-import fs from "node:fs";
-import path from "node:path";
 import "@/app/fusion.css";
+import { readDataJson } from "@/lib/data/read";
 import WhoGetsPaidClient from "./WhoGetsPaidClient";
 import type { WgpFile, WgpMeta, WgpYearStatus } from "./wgp-types";
 
@@ -22,11 +21,8 @@ export const metadata: Metadata = {
     "Every payment through San Francisco's financial system, ranked and classified: service providers, nonprofits, fiscal agents, grant-funded dollars — from the Controller's weekly vendor-payments ledger.",
 };
 
-const DATA_DIR = path.join(process.cwd(), "public", "data", "us", "sf");
-
 function readJson<T>(file: string): T {
-  const raw = fs.readFileSync(path.join(DATA_DIR, file), "utf8");
-  return JSON.parse(raw) as T;
+  return readDataJson<T>(`us/sf/${file}`);
 }
 
 export default async function WhoGetsPaidPage({

@@ -1,6 +1,7 @@
 "use client";
 
 import SectionHead from "@/components/fusion/SectionHead";
+import PageIntro, { IntroStat } from "@/components/fusion/PageIntro";
 import HeroNumber from "@/components/fusion/HeroNumber";
 import KPIGrid from "@/components/fusion/KPIGrid";
 import AnimatedNumber from "@/components/fusion/AnimatedNumber";
@@ -14,7 +15,6 @@ import {
   fmtUsdBn,
   fmtShare,
   fmtYoy,
-  fmtPctAbs,
   fmtDateLong,
   fmtMonthYear,
 } from "@/lib/us/format";
@@ -103,101 +103,144 @@ export default function UsNationalClient({
   return (
     <div className="theme-fusion">
       <main id="main-content" tabIndex={-1}>
-        {/* ── Page header ── */}
-        <section className="fx-page-header">
-          <div className="fx-wrap">
-            <div className="fx-page-kicker">
-              {fill(t("us.national.kicker"), { fy: db.fiscal_year })}
-            </div>
-            <h1 className="fx-page-title">
+        {/* ── Opener: signature stat band (folds the former "01 Overview") ── */}
+        <PageIntro
+          kicker={fill(t("us.national.kicker"), { fy: db.fiscal_year })}
+          title={
+            <>
               {t("us.national.title.before")}
               <em>{t("us.national.title.em")}</em>
               {t("us.national.title.after")}
-            </h1>
-            <p className="fx-page-lede">{t("us.national.lede")}</p>
-            <p className="fx-page-source">{completenessLine}</p>
-          </div>
-        </section>
-
-        {/* ── 01 · Overview ── */}
-        <section className="fx-section" id="sec-overview">
-          <div className="fx-wrap">
-            <SectionHead
-              number="01"
-              kind={t("us.national.s01.kind")}
-              title={
-                <>
-                  {t("us.national.s01.title.before")}
-                  <em>{t("us.national.s01.title.em")}</em>
-                </>
-              }
-            />
-            <div className="fx-overview">
-              <HeroNumber
-                label={fill(t("us.national.s01.hero.label"), { fy: db.fiscal_year })}
+            </>
+          }
+          lede={t("us.national.lede")}
+          meta={completenessLine}
+          stats={
+            <>
+              <IntroStat
                 value={
                   <AnimatedNumber
                     value={out.total.per_resident_fytd_usd}
                     format={(n) => fmtUsd(n)}
                   />
                 }
-                delta={{
-                  direction: out.total.yoy_fytd_pct >= 0 ? "up" : "down",
-                  value: fmtPctAbs(out.total.yoy_fytd_pct),
-                  base: fill(t("us.national.s01.hero.delta_base"), {
-                    fy: db.fiscal_year - 1,
-                  }),
-                }}
-                caption={fill(t("us.national.s01.hero.cap"), {
-                  date: fmtDateLong(comp.fytd_through),
-                  m: comp.months_into_fiscal_year,
-                  n: comp.fiscal_year_months,
-                  fy: db.fiscal_year,
-                })}
+                label={
+                  <>
+                    {fill(t("us.national.s01.hero.label"), { fy: db.fiscal_year })}
+                    {` · ${fmtYoy(out.total.yoy_fytd_pct)}`}
+                  </>
+                }
               />
-              <KPIGrid
-                cols={3}
-                items={[
-                  {
-                    label: t("us.national.s01.kpi.outlays"),
-                    value: (
-                      <AnimatedNumber
-                        value={out.total.current_fytd_usd}
-                        format={(n) => fmtUsdCompact(n)}
-                      />
-                    ),
-                    delta: fill(t("us.national.s01.kpi.yoy_note"), {
-                      yoy: fmtYoy(out.total.yoy_fytd_pct),
-                      fy: db.fiscal_year - 1,
-                    }),
-                  },
-                  {
-                    label: t("us.national.s01.kpi.receipts"),
-                    value: (
-                      <AnimatedNumber
-                        value={rec.total.current_fytd_usd}
-                        format={(n) => fmtUsdCompact(n)}
-                      />
-                    ),
-                    delta: fill(t("us.national.s01.kpi.yoy_note"), {
-                      yoy: fmtYoy(rec.total.yoy_fytd_pct),
-                      fy: db.fiscal_year - 1,
-                    }),
-                  },
-                  {
-                    label: t("us.national.s01.kpi.balance"),
-                    value: (
-                      <AnimatedNumber
-                        value={deficitFytd}
-                        format={(n) => fmtUsdCompact(n)}
-                      />
-                    ),
-                    delta: t("us.national.s01.kpi.deficit_note"),
-                  },
-                ]}
+              <IntroStat
+                value={
+                  <AnimatedNumber
+                    value={out.total.current_fytd_usd}
+                    format={(n) => fmtUsdCompact(n)}
+                  />
+                }
+                label={t("us.national.s01.kpi.outlays")}
+              />
+              <IntroStat
+                value={
+                  <AnimatedNumber
+                    value={rec.total.current_fytd_usd}
+                    format={(n) => fmtUsdCompact(n)}
+                  />
+                }
+                label={t("us.national.s01.kpi.receipts")}
+              />
+              <IntroStat
+                value={
+                  <AnimatedNumber
+                    value={deficitFytd}
+                    format={(n) => fmtUsdCompact(n)}
+                  />
+                }
+                label={t("us.national.s01.kpi.balance")}
+              />
+            </>
+          }
+        />
+
+        {/* ── Signature: the debt, 1790 → today ── */}
+        <section className="fx-section" id="sec-debt">
+          <div className="fx-wrap">
+            <SectionHead
+              kind={t("us.national.s05.kind")}
+              title={
+                <>
+                  {t("us.national.s05.title.before")}
+                  <em>
+                    {fill(t("us.national.s05.title.em"), {
+                      y0: debt.annual.points[0]?.fiscal_year ?? "",
+                    })}
+                  </em>
+                </>
+              }
+              subtitle={fill(t("us.national.s05.sub"), {
+                y0: debt.annual.points[0]?.fiscal_year ?? "",
+              })}
+            />
+            <KPIGrid
+              cols={4}
+              items={[
+                {
+                  label: t("us.national.s05.kpi.total"),
+                  value: (
+                    <AnimatedNumber
+                      value={debt.latest.tot_pub_debt_out_usd}
+                      format={(n) => fmtUsdCompact(n)}
+                    />
+                  ),
+                  delta: fill(t("us.national.s05.kpi.asof"), {
+                    date: fmtDateLong(debt.latest.record_date),
+                  }),
+                },
+                {
+                  label: t("us.national.s05.kpi.pr"),
+                  value: (
+                    <AnimatedNumber
+                      value={debt.latest.per_resident_usd}
+                      format={(n) => fmtUsd(n)}
+                    />
+                  ),
+                  delta: fill(t("us.national.s05.kpi.pr_note"), {
+                    pop: new Intl.NumberFormat("en-US").format(db.population.value),
+                  }),
+                },
+                {
+                  label: t("us.national.s05.kpi.public"),
+                  value: fmtUsdCompact(debt.latest.debt_held_public_usd),
+                },
+                {
+                  label: t("us.national.s05.kpi.intra"),
+                  value: fmtUsdCompact(debt.latest.intragov_hold_usd),
+                },
+              ]}
+            />
+            <div style={{ marginTop: 26 }}>
+              <UsDebtChart
+                annual={debt.annual.points}
+                latest={{
+                  record_date: debt.latest.record_date,
+                  tot_pub_debt_out_usd: debt.latest.tot_pub_debt_out_usd,
+                }}
+                annualLabel={t("us.national.s05.series.annual")}
+                latestLabel={t("us.national.s05.series.latest")}
+                ariaLabel={t("us.national.s05.aria")}
               />
             </div>
-            <SourceLine label={srcLabel} links={mtsLinks} dataWord={dataWord} />
+            <p className="fx-note">
+              {t("us.national.s05.caption")} {debt.notes}
+            </p>
+            <SourceLine
+              label={srcLabel}
+              links={[
+                { name: debt.annual.source.name, href: debt.annual.source.source_url },
+                { name: debt.latest.source.name, href: debt.latest.source.source_url },
+              ]}
+              dataWord={dataWord}
+            />
           </div>
         </section>
 
@@ -205,7 +248,6 @@ export default function UsNationalClient({
         <section className="fx-section" id="sec-receipts">
           <div className="fx-wrap">
             <SectionHead
-              number="02"
               kind={t("us.national.s02.kind")}
               title={
                 <>
@@ -244,7 +286,6 @@ export default function UsNationalClient({
         <section className="fx-section" id="sec-outlays">
           <div className="fx-wrap">
             <SectionHead
-              number="03"
               kind={t("us.national.s03.kind")}
               title={
                 <>
@@ -316,7 +357,6 @@ export default function UsNationalClient({
         <section className="fx-section" id="sec-balance">
           <div className="fx-wrap">
             <SectionHead
-              number="04"
               kind={t("us.national.s04.kind")}
               title={
                 <>
@@ -419,89 +459,6 @@ export default function UsNationalClient({
               )}
             </p>
             <SourceLine label={srcLabel} links={mtsLinks} dataWord={dataWord} />
-          </div>
-        </section>
-
-        {/* ── 05 · The debt ── */}
-        <section className="fx-section" id="sec-debt">
-          <div className="fx-wrap">
-            <SectionHead
-              number="05"
-              kind={t("us.national.s05.kind")}
-              title={
-                <>
-                  {t("us.national.s05.title.before")}
-                  <em>
-                    {fill(t("us.national.s05.title.em"), {
-                      y0: debt.annual.points[0]?.fiscal_year ?? "",
-                    })}
-                  </em>
-                </>
-              }
-              subtitle={fill(t("us.national.s05.sub"), {
-                y0: debt.annual.points[0]?.fiscal_year ?? "",
-              })}
-            />
-            <KPIGrid
-              cols={4}
-              items={[
-                {
-                  label: t("us.national.s05.kpi.total"),
-                  value: (
-                    <AnimatedNumber
-                      value={debt.latest.tot_pub_debt_out_usd}
-                      format={(n) => fmtUsdCompact(n)}
-                    />
-                  ),
-                  delta: fill(t("us.national.s05.kpi.asof"), {
-                    date: fmtDateLong(debt.latest.record_date),
-                  }),
-                },
-                {
-                  label: t("us.national.s05.kpi.pr"),
-                  value: (
-                    <AnimatedNumber
-                      value={debt.latest.per_resident_usd}
-                      format={(n) => fmtUsd(n)}
-                    />
-                  ),
-                  delta: fill(t("us.national.s05.kpi.pr_note"), {
-                    pop: new Intl.NumberFormat("en-US").format(db.population.value),
-                  }),
-                },
-                {
-                  label: t("us.national.s05.kpi.public"),
-                  value: fmtUsdCompact(debt.latest.debt_held_public_usd),
-                },
-                {
-                  label: t("us.national.s05.kpi.intra"),
-                  value: fmtUsdCompact(debt.latest.intragov_hold_usd),
-                },
-              ]}
-            />
-            <div style={{ marginTop: 26 }}>
-              <UsDebtChart
-                annual={debt.annual.points}
-                latest={{
-                  record_date: debt.latest.record_date,
-                  tot_pub_debt_out_usd: debt.latest.tot_pub_debt_out_usd,
-                }}
-                annualLabel={t("us.national.s05.series.annual")}
-                latestLabel={t("us.national.s05.series.latest")}
-                ariaLabel={t("us.national.s05.aria")}
-              />
-            </div>
-            <p className="fx-note">
-              {t("us.national.s05.caption")} {debt.notes}
-            </p>
-            <SourceLine
-              label={srcLabel}
-              links={[
-                { name: debt.annual.source.name, href: debt.annual.source.source_url },
-                { name: debt.latest.source.name, href: debt.latest.source.source_url },
-              ]}
-              dataWord={dataWord}
-            />
           </div>
         </section>
 

@@ -2,7 +2,7 @@
 
 import { useMemo, useState } from "react";
 import SectionHead from "@/components/fusion/SectionHead";
-import HeroNumber from "@/components/fusion/HeroNumber";
+import PageIntro, { IntroStat } from "@/components/fusion/PageIntro";
 import KPIGrid from "@/components/fusion/KPIGrid";
 import AnimatedNumber from "@/components/fusion/AnimatedNumber";
 import BarRow from "@/components/fusion/BarRow";
@@ -13,7 +13,6 @@ import {
   fmtUsd,
   fmtUsdCompact,
   fmtShare,
-  fmtYoy,
   fmtDateLong,
 } from "@/lib/us/format";
 import UsOtChart from "./UsOtChart";
@@ -92,7 +91,7 @@ export default function PayrollClient({
   const first = points[0];
   const fy = latest.fiscal_year;
 
-  // ── 02 · departments & org groups (latest FY) ──
+  // ── departments & org groups (latest FY) ──
   const deptLatest = useMemo(
     () =>
       byDept.departments
@@ -125,7 +124,7 @@ export default function PayrollClient({
     [byDept, fy, metric],
   );
 
-  // ── 03 · overtime ──
+  // ── overtime ──
   const otLatest = overtime.citywide[overtime.citywide.length - 1];
   const otFirst = overtime.citywide[0];
   const police = overtime.departments.find((d) => d.department_code === "POL");
@@ -140,7 +139,7 @@ export default function PayrollClient({
     [overtime, fy],
   );
 
-  // ── 04 · distribution ──
+  // ── distribution ──
   const distPoints = distribution.points.map((p) => ({
     year: p.fiscal_year,
     n_employees: p.n_employees,
@@ -184,223 +183,74 @@ export default function PayrollClient({
   return (
     <div className="theme-fusion">
       <main id="main-content" tabIndex={-1}>
-        {/* ── Page header ── */}
-        <section className="fx-page-header">
-          <div className="fx-wrap">
-            <div className="fx-page-kicker">
-              {fill(t("us.sf.payroll.kicker"), { fy })}
-            </div>
-            <h1 className="fx-page-title">
+        {/* ── Opener: signature stat band (folds the former "01 · The typical employee") ── */}
+        <PageIntro
+          kicker={fill(t("us.sf.payroll.kicker"), { fy })}
+          title={
+            <>
               {t("us.sf.payroll.title.before")}
               <em>{t("us.sf.payroll.title.em")}</em>
               {t("us.sf.payroll.title.after")}
-            </h1>
-            <p className="fx-page-lede">{t("us.sf.payroll.lede")}</p>
-            <p className="fx-page-source">
-              {fill(t("us.sf.payroll.asof"), {
-                date: byYear.as_of ? fmtDateLong(byYear.as_of.slice(0, 10)) : "",
-                y0: first.fiscal_year,
-                y1: fy,
-              })}
-            </p>
-          </div>
-        </section>
-
-        {/* ── 01 · The typical employee ── */}
-        <section className="fx-section" id="sec-typical">
-          <div className="fx-wrap">
-            <SectionHead
-              number="01"
-              kind={t("us.sf.payroll.s01.kind")}
-              title={
-                <>
-                  {t("us.sf.payroll.s01.title.before")}
-                  <em>{t("us.sf.payroll.s01.title.em")}</em>
-                </>
-              }
-              subtitle={fill(t("us.sf.payroll.s01.sub"), {
-                n: nfInt.format(latest.n_employees),
-                fy,
-              })}
-            />
-            <div className="fx-overview">
-              <HeroNumber
-                label={fill(t("us.sf.payroll.s01.hero.label"), { fy })}
+            </>
+          }
+          lede={t("us.sf.payroll.lede")}
+          meta={fill(t("us.sf.payroll.asof"), {
+            date: byYear.as_of ? fmtDateLong(byYear.as_of.slice(0, 10)) : "",
+            y0: first.fiscal_year,
+            y1: fy,
+          })}
+          stats={
+            <>
+              <IntroStat
                 value={
                   <AnimatedNumber
                     value={latest.median_total_comp_usd}
                     format={(n) => fmtUsd(n)}
                   />
                 }
-                delta={{
-                  direction: "up",
-                  value: fmtYoy(
-                    latest.median_total_comp_usd / first.median_total_comp_usd - 1,
-                  ),
-                  base: fill(t("us.sf.payroll.s01.hero.delta_base"), {
-                    y0: first.fiscal_year,
-                    median0: fmtUsd(first.median_total_comp_usd),
-                  }),
-                }}
-                caption={t("us.sf.payroll.s01.hero.cap")}
+                label={fill(t("us.sf.payroll.s01.hero.label"), { fy })}
               />
-              <KPIGrid
-                cols={3}
-                items={[
-                  {
-                    label: fill(t("us.sf.payroll.s01.kpi.total"), { fy }),
-                    value: (
-                      <AnimatedNumber
-                        value={latest.total_compensation_usd}
-                        format={(n) => fmtUsdCompact(n)}
-                      />
-                    ),
-                    delta: fill(t("us.sf.payroll.s01.kpi.total_note"), {
-                      growth: fmtYoy(
-                        latest.total_compensation_usd / first.total_compensation_usd - 1,
-                      ),
-                      y0: first.fiscal_year,
-                    }),
-                  },
-                  {
-                    label: t("us.sf.payroll.s01.kpi.people"),
-                    value: (
-                      <AnimatedNumber
-                        value={latest.n_employees}
-                        format={(n) => nfInt.format(n)}
-                      />
-                    ),
-                    delta: fill(t("us.sf.payroll.s01.kpi.people_note"), {
-                      growth: fmtYoy(latest.n_employees / first.n_employees - 1),
-                      y0: first.fiscal_year,
-                    }),
-                  },
-                  {
-                    label: t("us.sf.payroll.s01.kpi.pr"),
-                    value:
-                      latest.per_resident_usd != null ? (
-                        <AnimatedNumber
-                          value={latest.per_resident_usd}
-                          format={(n) => fmtUsd(n)}
-                        />
-                      ) : (
-                        "—"
-                      ),
-                    delta:
-                      latest.employees_per_1k_residents != null
-                        ? fill(t("us.sf.payroll.s01.kpi.pr_note"), {
-                            per1k: latest.employees_per_1k_residents.toFixed(0),
-                          })
-                        : undefined,
-                  },
-                ]}
+              <IntroStat
+                value={
+                  <AnimatedNumber
+                    value={latest.total_compensation_usd}
+                    format={(n) => fmtUsdCompact(n)}
+                  />
+                }
+                label={fill(t("us.sf.payroll.s01.kpi.total"), { fy })}
               />
-            </div>
-            <p className="fx-note">{byYear.perimeter}</p>
-            <SourceLine label={srcLabel} links={mtLinks} dataWord={dataWord} />
-          </div>
-        </section>
+              <IntroStat
+                value={
+                  <AnimatedNumber
+                    value={latest.n_employees}
+                    format={(n) => nfInt.format(n)}
+                  />
+                }
+                label={t("us.sf.payroll.s01.kpi.people")}
+              />
+              <IntroStat
+                value={
+                  latest.per_resident_usd != null ? (
+                    <AnimatedNumber
+                      value={latest.per_resident_usd}
+                      format={(n) => fmtUsd(n)}
+                    />
+                  ) : (
+                    "—"
+                  )
+                }
+                label={t("us.sf.payroll.s01.kpi.pr")}
+              />
+            </>
+          }
+        >
+          <p className="fx-note">{byYear.perimeter}</p>
+        </PageIntro>
 
-        {/* ── 02 · Where the people are ── */}
-        <section className="fx-section" id="sec-departments">
-          <div className="fx-wrap">
-            <SectionHead
-              number="02"
-              kind={t("us.sf.payroll.s02.kind")}
-              title={
-                <>
-                  {t("us.sf.payroll.s02.title.before")}
-                  <em>{t("us.sf.payroll.s02.title.em")}</em>
-                </>
-              }
-              subtitle={fill(t("us.sf.payroll.s02.sub"), {
-                nDepts: deptLatest.length,
-                nGroups: orgLatest.length,
-                fy,
-              })}
-            />
-            <div style={{ display: "flex", gap: 6, marginBottom: 18 }}>
-              {toggleBtn("usd", t("us.sf.payroll.s02.toggle.usd"))}
-              {toggleBtn("headcount", t("us.sf.payroll.s02.toggle.headcount"))}
-            </div>
-            <BarRow
-              header={{
-                left: t("us.sf.payroll.s02.orghead.left"),
-                right:
-                  metric === "usd"
-                    ? t("us.sf.payroll.s02.orghead.right_usd")
-                    : t("us.sf.payroll.s02.orghead.right_n"),
-              }}
-              items={orgLatest.map((g) => ({
-                label: g.organization_group,
-                value:
-                  metric === "usd"
-                    ? g.y.total_compensation_usd
-                    : g.y.n_employees_listed,
-                display:
-                  metric === "usd"
-                    ? fmtUsdCompact(g.y.total_compensation_usd)
-                    : nfInt.format(g.y.n_employees_listed),
-                sub: fill(
-                  t(
-                    g.y.n_departments === 1
-                      ? "us.sf.payroll.s02.org.sub_one"
-                      : "us.sf.payroll.s02.org.sub",
-                  ),
-                  {
-                    nDepts: g.y.n_departments,
-                    other:
-                      metric === "usd"
-                        ? nfInt.format(g.y.n_employees_listed)
-                        : fmtUsdCompact(g.y.total_compensation_usd),
-                  },
-                ),
-              }))}
-            />
-            <div style={{ marginTop: 30 }}>
-              <BarRow
-                reveal
-                header={{
-                  left: t("us.sf.payroll.s02.depthead.left"),
-                  right:
-                    metric === "usd"
-                      ? t("us.sf.payroll.s02.orghead.right_usd")
-                      : t("us.sf.payroll.s02.orghead.right_n"),
-                }}
-                items={rankedDepts.slice(0, 15).map((d) => ({
-                  label: d.department,
-                  value:
-                    metric === "usd"
-                      ? d.p.total_compensation_usd
-                      : d.p.n_employees,
-                  display:
-                    metric === "usd"
-                      ? fmtUsdCompact(d.p.total_compensation_usd)
-                      : nfInt.format(d.p.n_employees),
-                  sub: fill(t("us.sf.payroll.s02.dept.sub"), {
-                    group: d.organization_group,
-                    n: nfInt.format(d.p.n_employees),
-                    median: fmtUsd(d.p.median_total_comp_usd),
-                  }),
-                }))}
-              />
-            </div>
-            <p className="fx-note">
-              {fill(t("us.sf.payroll.s02.more"), {
-                shown: Math.min(15, rankedDepts.length),
-                total: deptLatest.length,
-              })}{" "}
-              {byDept.fold_note}
-            </p>
-            <SourceLine label={srcLabel} links={mtLinks} dataWord={dataWord} />
-          </div>
-        </section>
-
-        {/* ── 03 · The overtime lens ── */}
+        {/* ── Signature: the overtime lens ── */}
         <section className="fx-section" id="sec-overtime">
           <div className="fx-wrap">
             <SectionHead
-              number="03"
               kind={t("us.sf.payroll.s03.kind")}
               title={
                 <>
@@ -534,11 +384,104 @@ export default function PayrollClient({
           </div>
         </section>
 
-        {/* ── 04 · What city work pays ── */}
+        {/* ── Where the people are ── */}
+        <section className="fx-section" id="sec-departments">
+          <div className="fx-wrap">
+            <SectionHead
+              kind={t("us.sf.payroll.s02.kind")}
+              title={
+                <>
+                  {t("us.sf.payroll.s02.title.before")}
+                  <em>{t("us.sf.payroll.s02.title.em")}</em>
+                </>
+              }
+              subtitle={fill(t("us.sf.payroll.s02.sub"), {
+                nDepts: deptLatest.length,
+                nGroups: orgLatest.length,
+                fy,
+              })}
+            />
+            <div style={{ display: "flex", gap: 6, marginBottom: 18 }}>
+              {toggleBtn("usd", t("us.sf.payroll.s02.toggle.usd"))}
+              {toggleBtn("headcount", t("us.sf.payroll.s02.toggle.headcount"))}
+            </div>
+            <BarRow
+              header={{
+                left: t("us.sf.payroll.s02.orghead.left"),
+                right:
+                  metric === "usd"
+                    ? t("us.sf.payroll.s02.orghead.right_usd")
+                    : t("us.sf.payroll.s02.orghead.right_n"),
+              }}
+              items={orgLatest.map((g) => ({
+                label: g.organization_group,
+                value:
+                  metric === "usd"
+                    ? g.y.total_compensation_usd
+                    : g.y.n_employees_listed,
+                display:
+                  metric === "usd"
+                    ? fmtUsdCompact(g.y.total_compensation_usd)
+                    : nfInt.format(g.y.n_employees_listed),
+                sub: fill(
+                  t(
+                    g.y.n_departments === 1
+                      ? "us.sf.payroll.s02.org.sub_one"
+                      : "us.sf.payroll.s02.org.sub",
+                  ),
+                  {
+                    nDepts: g.y.n_departments,
+                    other:
+                      metric === "usd"
+                        ? nfInt.format(g.y.n_employees_listed)
+                        : fmtUsdCompact(g.y.total_compensation_usd),
+                  },
+                ),
+              }))}
+            />
+            <div style={{ marginTop: 30 }}>
+              <BarRow
+                reveal
+                header={{
+                  left: t("us.sf.payroll.s02.depthead.left"),
+                  right:
+                    metric === "usd"
+                      ? t("us.sf.payroll.s02.orghead.right_usd")
+                      : t("us.sf.payroll.s02.orghead.right_n"),
+                }}
+                items={rankedDepts.slice(0, 15).map((d) => ({
+                  label: d.department,
+                  value:
+                    metric === "usd"
+                      ? d.p.total_compensation_usd
+                      : d.p.n_employees,
+                  display:
+                    metric === "usd"
+                      ? fmtUsdCompact(d.p.total_compensation_usd)
+                      : nfInt.format(d.p.n_employees),
+                  sub: fill(t("us.sf.payroll.s02.dept.sub"), {
+                    group: d.organization_group,
+                    n: nfInt.format(d.p.n_employees),
+                    median: fmtUsd(d.p.median_total_comp_usd),
+                  }),
+                }))}
+              />
+            </div>
+            <p className="fx-note">
+              {fill(t("us.sf.payroll.s02.more"), {
+                shown: Math.min(15, rankedDepts.length),
+                total: deptLatest.length,
+              })}{" "}
+              {byDept.fold_note}
+            </p>
+            <SourceLine label={srcLabel} links={mtLinks} dataWord={dataWord} />
+          </div>
+        </section>
+
+        {/* ── What city work pays ── */}
         <section className="fx-section" id="sec-distribution">
           <div className="fx-wrap">
             <SectionHead
-              number="04"
               kind={t("us.sf.payroll.s04.kind")}
               title={
                 <>
@@ -625,11 +568,10 @@ export default function PayrollClient({
           </div>
         </section>
 
-        {/* ── 05 · Salary, overtime, benefits ── */}
+        {/* ── Salary, overtime, benefits ── */}
         <section className="fx-section" id="sec-split">
           <div className="fx-wrap">
             <SectionHead
-              number="05"
               kind={t("us.sf.payroll.s05.kind")}
               title={
                 <>

@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
-import fs from "node:fs";
-import path from "node:path";
 import "@/app/fusion.css";
+import { readDataJson } from "@/lib/data/read";
 import PayrollClient from "./PayrollClient";
 import type {
   PayrollByYear,
@@ -32,11 +31,8 @@ export const metadata: Metadata = {
     "data, aggregates only (no group under 5 people).",
 };
 
-const DATA_DIR = path.join(process.cwd(), "public", "data", "us", "sf");
-
 function readJson<T>(file: string): T {
-  const raw = fs.readFileSync(path.join(DATA_DIR, file), "utf8");
-  return JSON.parse(raw) as T;
+  return readDataJson<T>(`us/sf/${file}`);
 }
 
 export default function SfPayrollPage() {

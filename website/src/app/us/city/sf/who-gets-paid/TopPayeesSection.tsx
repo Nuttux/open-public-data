@@ -512,7 +512,6 @@ export default function TopPayeesSection({
       `}</style>
       <div className="fx-wrap">
         <SectionHead
-          number="02"
           kind={t("us.sf.wgp.s02.kind")}
           title={
             <>

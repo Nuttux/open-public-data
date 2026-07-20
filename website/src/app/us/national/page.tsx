@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
-import fs from "node:fs";
-import path from "node:path";
 import "@/app/fusion.css";
+import { readDataJson } from "@/lib/data/read";
 import UsNationalClient from "./UsNationalClient";
 import type { UsDailyBread, UsDebtSeriesFile, UsDebtSlim } from "./us-types";
 
@@ -20,11 +19,8 @@ export const metadata: Metadata = {
     "Federal receipts by source, outlays by budget function, the deficit and the national debt since 1790 — from the U.S. Treasury's Monthly Treasury Statement, Debt to the Penny and Census Bureau population estimates.",
 };
 
-const DATA_DIR = path.join(process.cwd(), "public", "data", "us", "national");
-
 function readJson<T>(file: string): T {
-  const raw = fs.readFileSync(path.join(DATA_DIR, file), "utf8");
-  return JSON.parse(raw) as T;
+  return readDataJson<T>(`us/national/${file}`);
 }
 
 export default function UsNationalPage() {

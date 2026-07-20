@@ -4,8 +4,7 @@ import Link from "next/link";
 import SectionHead from "@/components/fusion/SectionHead";
 import PageTOC from "@/components/fusion/PageTOC";
 import PageHook from "@/components/fusion/PageHook";
-import HeroNumber from "@/components/fusion/HeroNumber";
-import KPIGrid from "@/components/fusion/KPIGrid";
+import PageIntro, { IntroStat } from "@/components/fusion/PageIntro";
 import AnimatedNumber from "@/components/fusion/AnimatedNumber";
 import BarRow from "@/components/fusion/BarRow";
 import ExpandableList from "@/components/fusion/ExpandableList";
@@ -94,9 +93,8 @@ export default function SfContractsClient({
       <main id="main-content" tabIndex={-1}>
         <PageTOC
           items={[
-            { id: "sec-portfolio", label: t("us.sf.contracts.toc.portfolio") },
-            { id: "sec-landscape", label: t("us.sf.contracts.toc.landscape") },
             { id: "sec-sole-source", label: t("us.sf.contracts.toc.sole") },
+            { id: "sec-landscape", label: t("us.sf.contracts.toc.landscape") },
             { id: "sec-lbe", label: t("us.sf.contracts.toc.lbe") },
             { id: "sec-search", label: t("us.sf.contracts.toc.search") },
             { id: "sec-authorities", label: t("us.sf.contracts.toc.authorities") },
@@ -104,21 +102,61 @@ export default function SfContractsClient({
           ]}
         />
 
-        <section className="fx-page-header">
-          <div className="fx-wrap">
-            <div className="fx-page-kicker">{t("us.sf.contracts.kicker")}</div>
-            <h1 className="fx-page-title">
+        {/* ── Opener: folds the former "01 active portfolio" overview ── */}
+        <PageIntro
+          kicker={t("us.sf.contracts.kicker")}
+          title={
+            <>
               {t("us.sf.contracts.title.before")}
               <em>{t("us.sf.contracts.title.em")}</em>
-            </h1>
-            <p className="fx-page-lede">
-              {fill(t("us.sf.contracts.lede"), {
-                n: nfInt.format(hero.register.n_contracts),
-                nActive: heroVars.nActive,
-              })}
-            </p>
-          </div>
-        </section>
+            </>
+          }
+          lede={fill(t("us.sf.contracts.lede"), {
+            n: nfInt.format(hero.register.n_contracts),
+            nActive: heroVars.nActive,
+          })}
+          stats={
+            <>
+              <IntroStat
+                value={<AnimatedNumber value={hero.active.agreed_usd} format={(n) => fmtUsdCompact(n)} />}
+                label={fill(t("us.sf.contracts.s01.hero_label"), { n: heroVars.nActive })}
+              />
+              <IntroStat
+                value={<AnimatedNumber value={hero.register.n_contracts} format={(n) => nfInt.format(Math.round(n))} />}
+                label={
+                  <Tip label={t("us.sf.contracts.s01.kpi.register.tip")}>
+                    {t("us.sf.contracts.s01.kpi.register")}
+                  </Tip>
+                }
+              />
+              <IntroStat
+                value={<AnimatedNumber value={sole.share_of_contracts * 100} format={(n) => n.toFixed(1)} />}
+                unit="%"
+                label={
+                  <Tip label={sole.flag_definition}>
+                    {t("us.sf.contracts.s01.kpi.sole")}
+                  </Tip>
+                }
+              />
+              <IntroStat
+                value={<AnimatedNumber value={lbe.prime.agreed_usd} format={(n) => fmtUsdCompact(n)} />}
+                label={
+                  <Tip label={t("us.sf.contracts.s01.kpi.lbe.tip")}>
+                    {t("us.sf.contracts.s01.kpi.lbe")}
+                  </Tip>
+                }
+              />
+              <IntroStat
+                value={<AnimatedNumber value={overview.non_profit.n_contracts} format={(n) => nfInt.format(Math.round(n))} />}
+                label={
+                  <Tip label={overview.non_profit.flag_definition}>
+                    {t("us.sf.contracts.s01.kpi.np")}
+                  </Tip>
+                }
+              />
+            </>
+          }
+        />
 
         <PageHook
           cite={t("us.sf.contracts.hook.cite")}
@@ -127,191 +165,10 @@ export default function SfContractsClient({
           <span dangerouslySetInnerHTML={{ __html: fill(t("us.sf.contracts.hook.body"), heroVars) }} />
         </PageHook>
 
-        {/* 01 — active portfolio */}
-        <section className="fx-section" id="sec-portfolio">
-          <div className="fx-wrap">
-            <SectionHead
-              number="01"
-              kind={t("us.sf.contracts.s01.kind")}
-              title={
-                <>
-                  {t("us.sf.contracts.s01.title.before")}
-                  <em>{t("us.sf.contracts.s01.title.em")}</em>
-                </>
-              }
-            />
-            <div className="fx-overview">
-              <HeroNumber
-                label={fill(t("us.sf.contracts.s01.hero_label"), { n: heroVars.nActive })}
-                value={<AnimatedNumber value={hero.active.agreed_usd} format={(n) => fmtUsdCompact(n)} />}
-                caption={
-                  <>
-                    {fill(t("us.sf.contracts.s01.hero_cap.a"), { paid: heroVars.paid })}{" "}
-                    <Tip label={overview.hero.active_definition}>
-                      {t("us.sf.contracts.s01.hero_cap.active_word")}
-                    </Tip>
-                    {t("us.sf.contracts.s01.hero_cap.b")}
-                  </>
-                }
-              />
-              <KPIGrid
-                cols={2}
-                items={[
-                  {
-                    label: (
-                      <Tip label={t("us.sf.contracts.s01.kpi.register.tip")}>
-                        {t("us.sf.contracts.s01.kpi.register")}
-                      </Tip>
-                    ),
-                    value: <AnimatedNumber value={hero.register.n_contracts} format={(n) => nfInt.format(Math.round(n))} />,
-                    delta: fill(t("us.sf.contracts.s01.kpi.register.delta"), {
-                      agreed: fmtUsdCompact(hero.register.agreed_usd),
-                    }),
-                  },
-                  {
-                    label: (
-                      <Tip label={sole.flag_definition}>
-                        {t("us.sf.contracts.s01.kpi.sole")}
-                      </Tip>
-                    ),
-                    value: <AnimatedNumber value={sole.share_of_contracts * 100} format={(n) => `${n.toFixed(1)}%`} />,
-                    delta: fill(t("us.sf.contracts.s01.kpi.sole.delta"), {
-                      agreed: fmtUsdCompact(sole.agreed_usd),
-                    }),
-                  },
-                  {
-                    label: (
-                      <Tip label={t("us.sf.contracts.s01.kpi.lbe.tip")}>
-                        {t("us.sf.contracts.s01.kpi.lbe")}
-                      </Tip>
-                    ),
-                    value: <AnimatedNumber value={lbe.prime.agreed_usd} format={(n) => fmtUsdCompact(n)} />,
-                    delta: fill(t("us.sf.contracts.s01.kpi.lbe.delta"), {
-                      sub: fmtUsdCompact(lbe.team.attached_usd),
-                    }),
-                  },
-                  {
-                    label: (
-                      <Tip label={overview.non_profit.flag_definition}>
-                        {t("us.sf.contracts.s01.kpi.np")}
-                      </Tip>
-                    ),
-                    value: <AnimatedNumber value={overview.non_profit.n_contracts} format={(n) => nfInt.format(Math.round(n))} />,
-                    delta: fill(t("us.sf.contracts.s01.kpi.np.delta"), {
-                      agreed: fmtUsdCompact(overview.non_profit.agreed_usd),
-                    }),
-                  },
-                ]}
-              />
-            </div>
-            <SourceLine
-              label={t("us.sf.contracts.source_label")}
-              dataWord={t("us.sf.contracts.source_data_word")}
-              links={[{ name: overview.source.name, href: overview.source.source_url }]}
-            />
-          </div>
-        </section>
-
-        {/* 02 — landscape by type */}
-        <section className="fx-section" id="sec-landscape">
-          <div className="fx-wrap">
-            <SectionHead
-              number="02"
-              kind={t("us.sf.contracts.s02.kind")}
-              title={
-                <>
-                  {t("us.sf.contracts.s02.title.before")}
-                  <em>{t("us.sf.contracts.s02.title.em")}</em>
-                </>
-              }
-              subtitle={t("us.sf.contracts.s02.sub")}
-            />
-            <BarRow
-              reveal
-              header={{
-                left: t("us.sf.contracts.s02.header.left"),
-                right: t("us.sf.contracts.s02.header.right"),
-              }}
-              items={[
-                ...typesShown.map((r) => ({
-                  label: (
-                    <span title={r.contract_type}>{typeLabel(r.contract_type)}</span>
-                  ),
-                  value: r.agreed_usd,
-                  display: fmtUsdCompact(r.agreed_usd),
-                  sub: fill(t("us.sf.contracts.s02.row_sub"), {
-                    n: nfInt.format(r.n_contracts),
-                    paid: fmtUsdCompact(r.paid_usd),
-                    share: fmtShare(r.share_of_register_agreed),
-                  }),
-                })),
-                ...(typesRest.length > 0
-                  ? [{
-                      label: <span>{fill(t("us.sf.contracts.s02.rest"), { n: typesRest.length })}</span>,
-                      value: restAgreed,
-                      display: fmtUsdCompact(restAgreed),
-                      sub: fill(t("us.sf.contracts.s02.rest_sub"), { n: nfInt.format(restN) }),
-                    }]
-                  : []),
-              ]}
-            />
-            {overview.landscape.grants && (
-              <div
-                style={{
-                  marginTop: 24,
-                  padding: "16px 20px",
-                  border: "1px solid var(--ink)",
-                  background: "rgba(59, 99, 173, 0.04)",
-                  fontFamily: "var(--f-ui)",
-                  fontSize: 14,
-                  lineHeight: 1.6,
-                  color: "var(--ink-2)",
-                }}
-              >
-                <b style={{ color: "var(--ink)" }}>{t("us.sf.contracts.s02.grants.title")}</b>{" "}
-                {fill(t("us.sf.contracts.s02.grants.body"), {
-                  agreed: fmtUsdCompact(overview.landscape.grants.agreed_usd),
-                  n: nfInt.format(overview.landscape.grants.n_contracts),
-                  share: fmtShare(overview.landscape.grants.share_of_register_agreed),
-                })}{" "}
-                <Link
-                  href="/us/city/sf/who-gets-paid"
-                  style={{ color: "var(--bleu)", borderBottom: "1px solid var(--bleu)" }}
-                >
-                  {t("us.sf.contracts.s02.grants.link")}
-                </Link>
-              </div>
-            )}
-            <div style={{ marginTop: 34 }}>
-              <BarRow
-                header={{
-                  left: t("us.sf.contracts.s02.dept.left"),
-                  right: t("us.sf.contracts.s02.dept.right"),
-                }}
-                items={overview.departments.slice(0, 8).map((d) => ({
-                  label: d.department,
-                  value: d.agreed_usd,
-                  display: fmtUsdCompact(d.agreed_usd),
-                  sub: fill(t("us.sf.contracts.s02.dept.row_sub"), {
-                    n: nfInt.format(d.n_contracts),
-                    paid: fmtUsdCompact(d.paid_usd),
-                  }),
-                }))}
-              />
-            </div>
-            <SourceLine
-              label={t("us.sf.contracts.source_label")}
-              dataWord={t("us.sf.contracts.source_data_word")}
-              links={[{ name: overview.source.name, href: overview.source.source_url }]}
-            />
-          </div>
-        </section>
-
-        {/* 03 — sole-source lens (signature) */}
+        {/* Signature — sole-source lens (hoisted to first) */}
         <section className="fx-section" id="sec-sole-source">
           <div className="fx-wrap">
             <SectionHead
-              number="03"
               kind={t("us.sf.contracts.s03.kind")}
               title={
                 <>
@@ -487,11 +344,104 @@ export default function SfContractsClient({
           </div>
         </section>
 
-        {/* 04 — LBE */}
+        {/* landscape by type */}
+        <section className="fx-section" id="sec-landscape">
+          <div className="fx-wrap">
+            <SectionHead
+              kind={t("us.sf.contracts.s02.kind")}
+              title={
+                <>
+                  {t("us.sf.contracts.s02.title.before")}
+                  <em>{t("us.sf.contracts.s02.title.em")}</em>
+                </>
+              }
+              subtitle={t("us.sf.contracts.s02.sub")}
+            />
+            <BarRow
+              reveal
+              header={{
+                left: t("us.sf.contracts.s02.header.left"),
+                right: t("us.sf.contracts.s02.header.right"),
+              }}
+              items={[
+                ...typesShown.map((r) => ({
+                  label: (
+                    <span title={r.contract_type}>{typeLabel(r.contract_type)}</span>
+                  ),
+                  value: r.agreed_usd,
+                  display: fmtUsdCompact(r.agreed_usd),
+                  sub: fill(t("us.sf.contracts.s02.row_sub"), {
+                    n: nfInt.format(r.n_contracts),
+                    paid: fmtUsdCompact(r.paid_usd),
+                    share: fmtShare(r.share_of_register_agreed),
+                  }),
+                })),
+                ...(typesRest.length > 0
+                  ? [{
+                      label: <span>{fill(t("us.sf.contracts.s02.rest"), { n: typesRest.length })}</span>,
+                      value: restAgreed,
+                      display: fmtUsdCompact(restAgreed),
+                      sub: fill(t("us.sf.contracts.s02.rest_sub"), { n: nfInt.format(restN) }),
+                    }]
+                  : []),
+              ]}
+            />
+            {overview.landscape.grants && (
+              <div
+                style={{
+                  marginTop: 24,
+                  padding: "16px 20px",
+                  border: "1px solid var(--ink)",
+                  background: "rgba(59, 99, 173, 0.04)",
+                  fontFamily: "var(--f-ui)",
+                  fontSize: 14,
+                  lineHeight: 1.6,
+                  color: "var(--ink-2)",
+                }}
+              >
+                <b style={{ color: "var(--ink)" }}>{t("us.sf.contracts.s02.grants.title")}</b>{" "}
+                {fill(t("us.sf.contracts.s02.grants.body"), {
+                  agreed: fmtUsdCompact(overview.landscape.grants.agreed_usd),
+                  n: nfInt.format(overview.landscape.grants.n_contracts),
+                  share: fmtShare(overview.landscape.grants.share_of_register_agreed),
+                })}{" "}
+                <Link
+                  href="/us/city/sf/who-gets-paid"
+                  style={{ color: "var(--bleu)", borderBottom: "1px solid var(--bleu)" }}
+                >
+                  {t("us.sf.contracts.s02.grants.link")}
+                </Link>
+              </div>
+            )}
+            <div style={{ marginTop: 34 }}>
+              <BarRow
+                header={{
+                  left: t("us.sf.contracts.s02.dept.left"),
+                  right: t("us.sf.contracts.s02.dept.right"),
+                }}
+                items={overview.departments.slice(0, 8).map((d) => ({
+                  label: d.department,
+                  value: d.agreed_usd,
+                  display: fmtUsdCompact(d.agreed_usd),
+                  sub: fill(t("us.sf.contracts.s02.dept.row_sub"), {
+                    n: nfInt.format(d.n_contracts),
+                    paid: fmtUsdCompact(d.paid_usd),
+                  }),
+                }))}
+              />
+            </div>
+            <SourceLine
+              label={t("us.sf.contracts.source_label")}
+              dataWord={t("us.sf.contracts.source_data_word")}
+              links={[{ name: overview.source.name, href: overview.source.source_url }]}
+            />
+          </div>
+        </section>
+
+        {/* LBE */}
         <section className="fx-section" id="sec-lbe">
           <div className="fx-wrap">
             <SectionHead
-              number="04"
               kind={t("us.sf.contracts.s04.kind")}
               title={
                 <>
@@ -549,7 +499,6 @@ export default function SfContractsClient({
         <section className="fx-section" id="sec-search">
           <div className="fx-wrap">
             <SectionHead
-              number="05"
               kind={t("us.sf.contracts.s05.kind")}
               title={
                 <>
@@ -578,7 +527,6 @@ export default function SfContractsClient({
         <section className="fx-section" id="sec-authorities">
           <div className="fx-wrap">
             <SectionHead
-              number="06"
               kind={t("us.sf.contracts.s06.kind")}
               title={
                 <>

@@ -1,21 +1,18 @@
 import "server-only";
-import fs from "node:fs";
-import path from "node:path";
+import { readDataJson } from "@/lib/data/read";
 
 /**
  * Server-side loaders for the /us/city/sf/budget exports
  * (public/data/us/sf/*, written by pipeline/scripts/export/export_us_sf.py).
  *
- * Mirrors lib/fusion-data.ts: fs reads at render time, typed 1:1 with the
- * export JSON. No arithmetic beyond reshaping — every number rendered comes
- * from the pipeline (rollups are dbt marts, identity-tested).
+ * Mirrors lib/fusion-data.ts, but reads through the shared memoized
+ * public/data entry point (lib/data/read.ts) instead of a local fs helper.
+ * No arithmetic beyond reshaping — every number rendered comes from the
+ * pipeline (rollups are dbt marts, identity-tested).
  */
 
-const DATA_DIR = path.join(process.cwd(), "public", "data", "us", "sf");
-
 function readJson<T>(file: string): T {
-  const raw = fs.readFileSync(path.join(DATA_DIR, file), "utf8");
-  return JSON.parse(raw) as T;
+  return readDataJson<T>(`us/sf/${file}`);
 }
 
 // ─── budget_by_year.json ────────────────────────────────────────────────────

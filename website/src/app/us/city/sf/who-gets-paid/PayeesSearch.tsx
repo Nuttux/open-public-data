@@ -161,7 +161,6 @@ export default function PayeesSearch({ fy }: { fy: number }) {
     <section className="fx-section" id="sec-search">
       <div className="fx-wrap">
         <SectionHead
-          number="04"
           kind={t("us.sf.wgp.s04.kind")}
           title={
             <>

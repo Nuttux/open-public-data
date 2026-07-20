@@ -1,19 +1,16 @@
 "use client";
 
 import { Suspense } from "react";
-import SectionHead from "@/components/fusion/SectionHead";
-import HeroNumber from "@/components/fusion/HeroNumber";
-import KPIGrid from "@/components/fusion/KPIGrid";
+import PageIntro, { IntroStat } from "@/components/fusion/PageIntro";
 import AnimatedNumber from "@/components/fusion/AnimatedNumber";
 import YearPicker from "@/components/fusion/YearPicker";
 import ExportRow from "@/components/fusion/ExportRow";
 import Fy2018Note from "@/components/us/Fy2018Note";
 import { useT } from "@/lib/localeContext";
-import { fmtUsdCompact, fmtShare, fmtDateLong } from "@/lib/us/format";
+import { fmtUsdCompact, fmtDateLong } from "@/lib/us/format";
 import TopPayeesSection from "./TopPayeesSection";
 import MaterialityStrip from "./MaterialityStrip";
 import PayeesSearch from "./PayeesSearch";
-import { deptDisplay } from "./bucket";
 import type { WgpFile, WgpMeta, WgpYear, WgpYearStatus } from "./wgp-types";
 
 /**
@@ -54,11 +51,6 @@ export default function WhoGetsPaidClient({
   const status = yearData.execution_status;
   const tot = yearData.totals;
 
-  const relatedList = yearData.related_top_departments
-    .slice(0, 3)
-    .map((d) => `${deptDisplay(d.department)} ${fmtUsdCompact(d.usd)}`)
-    .join(" · ");
-
   const sourceLinks = (
     <>
       {meta.source.name}{" "}
@@ -70,115 +62,80 @@ export default function WhoGetsPaidClient({
 
   return (
     <main id="main-content" tabIndex={-1}>
-      {/* ── Page header ── */}
-      <section className="fx-page-header">
-        <div className="fx-wrap">
-          <div className="fx-page-kicker">{fill(t("us.sf.wgp.kicker"), { fy })}</div>
-          <h1 className="fx-page-title">
+      {/* ── Opener: signature stat band (folds the former "01 Perimeter") ── */}
+      <PageIntro
+        kicker={fill(t("us.sf.wgp.kicker"), { fy })}
+        title={
+          <>
             {t("us.sf.wgp.title.before")}
             <em>{t("us.sf.wgp.title.em")}</em>
             {t("us.sf.wgp.title.after")}
-          </h1>
-          <p className="fx-page-lede">
-            {fill(t("us.sf.wgp.lede"), {
-              nVouchers: nfInt.format(yearData.n_vouchers),
-              nVendors: nfInt.format(yearData.n_vendors),
-              fy,
-            })}
-          </p>
-          <div className="fx-page-actions">
-            <YearPicker
-              years={years.map((y) => y.fy)}
-              previewYears={previewYears}
-              current={fy}
-              basePath={basePath}
-              label={t("us.sf.wgp.year_label")}
-            />
-          </div>
-          {status !== "closed" && (
-            <div className="fx-preview-banner" role="note">
-              <span className="fx-preview-tag">
-                {status === "in_progress" ? "in progress" : "preliminary"}
-              </span>
-              <span>
-                {status === "in_progress"
-                  ? fill(t("us.sf.wgp.status.in_progress"), { fy, y0: fy - 1, y1: fy })
-                  : fill(t("us.sf.wgp.status.preliminary"), { fy })}
-              </span>
-            </div>
-          )}
-        </div>
-      </section>
-
-      {/* ── 01 · Perimeter ── */}
-      <section className="fx-section" id="sec-overview">
-        <div className="fx-wrap">
-          <SectionHead
-            number="01"
-            kind={t("us.sf.wgp.s01.kind")}
-            title={
-              <>
-                {t("us.sf.wgp.s01.title.before")}
-                <em>{t("us.sf.wgp.s01.title.em")}</em>
-              </>
-            }
+          </>
+        }
+        lede={fill(t("us.sf.wgp.lede"), {
+          nVouchers: nfInt.format(yearData.n_vouchers),
+          nVendors: nfInt.format(yearData.n_vendors),
+          fy,
+        })}
+        actions={
+          <YearPicker
+            years={years.map((y) => y.fy)}
+            previewYears={previewYears}
+            current={fy}
+            basePath={basePath}
+            label={t("us.sf.wgp.year_label")}
           />
-          <div className="fx-overview">
-            <HeroNumber
-              label={fill(t("us.sf.wgp.s01.hero.label"), { fy })}
+        }
+        stats={
+          <>
+            <IntroStat
               value={
                 <AnimatedNumber value={tot.all_usd} format={(n) => fmtUsdCompact(n)} />
               }
-              caption={
-                <>
-                  {t("us.sf.wgp.s01.hero.cap.pre")}
-                  <b>{fmtUsdCompact(tot.related_govt_units_usd)}</b>
-                  {t("us.sf.wgp.s01.hero.cap.post")}
-                  {relatedList}.
-                </>
+              label={fill(t("us.sf.wgp.s01.hero.label"), { fy })}
+            />
+            <IntroStat
+              value={
+                <AnimatedNumber value={tot.city_usd} format={(n) => fmtUsdCompact(n)} />
               }
+              label={t("us.sf.wgp.s01.kpi.city")}
             />
-            <KPIGrid
-              cols={3}
-              items={[
-                {
-                  label: t("us.sf.wgp.s01.kpi.city"),
-                  value: (
-                    <AnimatedNumber value={tot.city_usd} format={(n) => fmtUsdCompact(n)} />
-                  ),
-                  delta: t("us.sf.wgp.s01.kpi.city_note"),
-                },
-                {
-                  label: t("us.sf.wgp.s01.kpi.related"),
-                  value: (
-                    <AnimatedNumber
-                      value={tot.related_govt_units_usd}
-                      format={(n) => fmtUsdCompact(n)}
-                    />
-                  ),
-                  delta: fill(t("us.sf.wgp.s01.kpi.related_note"), {
-                    share: fmtShare(tot.related_share_of_total ?? 0),
-                  }),
-                },
-                {
-                  label: t("us.sf.wgp.s01.kpi.vendors"),
-                  value: (
-                    <AnimatedNumber value={yearData.n_vendors} format={(n) => nfInt.format(Math.round(n))} />
-                  ),
-                  delta: fill(t("us.sf.wgp.s01.kpi.vendors_note"), {
-                    n: nfInt.format(yearData.n_vouchers),
-                  }),
-                },
-              ]}
+            <IntroStat
+              value={
+                <AnimatedNumber
+                  value={tot.related_govt_units_usd}
+                  format={(n) => fmtUsdCompact(n)}
+                />
+              }
+              label={t("us.sf.wgp.s01.kpi.related")}
             />
+            <IntroStat
+              value={
+                <AnimatedNumber
+                  value={yearData.n_vendors}
+                  format={(n) => nfInt.format(Math.round(n))}
+                />
+              }
+              label={t("us.sf.wgp.s01.kpi.vendors")}
+            />
+          </>
+        }
+      >
+        {status !== "closed" && (
+          <div className="fx-preview-banner" role="note">
+            <span className="fx-preview-tag">
+              {status === "in_progress" ? "in progress" : "preliminary"}
+            </span>
+            <span>
+              {status === "in_progress"
+                ? fill(t("us.sf.wgp.status.in_progress"), { fy, y0: fy - 1, y1: fy })
+                : fill(t("us.sf.wgp.status.preliminary"), { fy })}
+            </span>
           </div>
-          <figcaption className="fx-chart-source">
-            <b>{t("us.sf.wgp.s05.source_label")}:</b> {sourceLinks}
-          </figcaption>
-        </div>
-      </section>
+        )}
+      </PageIntro>
 
-      {/* ── 02 · Top payees (tabs + toggle) ── */}
+      {/* ── Signature: the ranked payees (tabs + toggle) ── */}
       <TopPayeesSection fy={fy} yearData={yearData} meta={meta} />
 
       {/* ── 03 · Materiality strip ── */}

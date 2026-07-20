@@ -1,5 +1,5 @@
-import fs from "node:fs";
 import path from "node:path";
+import { readDataJson } from "@/lib/data/read";
 import type {
   SfContractFiche,
   SfContractsActive,
@@ -7,18 +7,15 @@ import type {
 } from "./us-sf-contracts-types";
 
 /**
- * Server-side loaders for the SF contracts exports (same fs pattern as
- * /us/national and the France pages). Fiches are one JSON per contract_no
- * (a true key — Paris never had this luxury); a missing file means the
- * contract is outside the exported corpus (active ∪ sole-source ∪ top-500)
- * and the route 404s.
+ * Server-side loaders for the SF contracts exports, reading through the
+ * shared memoized public/data entry point (lib/data/read.ts). Fiches are
+ * one JSON per contract_no (a true key — Paris never had this luxury); a
+ * missing file means the contract is outside the exported corpus
+ * (active ∪ sole-source ∪ top-500) and the route 404s.
  */
 
-const DATA_DIR = path.join(process.cwd(), "public", "data", "us", "sf");
-
 function readJson<T>(file: string): T {
-  const raw = fs.readFileSync(path.join(DATA_DIR, file), "utf8");
-  return JSON.parse(raw) as T;
+  return readDataJson<T>(`us/sf/${file}`);
 }
 
 export function loadSfContractsOverview(): SfContractsOverview {
