@@ -8,6 +8,7 @@ import {
   projectMarseille,
 } from "./marseille-arrondissements";
 import { useLocale } from "@/lib/localeContext";
+import { CHOROPLETH_PALETTE as PALETTE } from "./choropleth-palette";
 
 const fmtEur = (n: number, locStr: string) => {
   const sep = locStr === "en-GB" ? "." : ",";
@@ -16,9 +17,6 @@ const fmtEur = (n: number, locStr: string) => {
   if (n >= 1e3) return `${Math.round(n / 1e3).toLocaleString(locStr)} k €`;
   return `${Math.round(n).toLocaleString(locStr)} €`;
 };
-
-/** Palette 5 paliers : pale ocre → ink (aligné sur ParisChoropleth). */
-const PALETTE = ["#f0e3c9", "#d8b88a", "#b88856", "#6d4a1c", "#2b1a08"];
 
 type Bucket = { arr: number; amount: number; count: number };
 

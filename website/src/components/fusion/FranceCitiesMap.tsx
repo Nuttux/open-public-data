@@ -3,6 +3,8 @@
 import Link from "next/link";
 import { useState } from "react";
 
+import { CHOROPLETH_PALETTE as PALETTE } from "./choropleth-palette";
+
 export type FranceCityPoint = {
   slug: string;
   nom: string;
@@ -69,8 +71,6 @@ const FR_OUTLINE: Array<[number, number]> = [
   [2.85, 50.85],   // Lille
   [2.55, 51.07],   // back to start
 ];
-
-const PALETTE = ["#f0e3c9", "#d8b88a", "#b88856", "#6d4a1c", "#2b1a08"];
 
 const fmtInt = (n: number, locale: string) =>
   Math.round(n).toLocaleString(locale === "en" ? "en-GB" : "fr-FR");

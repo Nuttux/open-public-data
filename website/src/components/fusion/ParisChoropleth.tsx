@@ -4,6 +4,7 @@ import { useRouter, usePathname } from "next/navigation";
 import { useState } from "react";
 
 import { ARRONDISSEMENT_PATHS, C_AR_BY_INDEX } from "./paris-arrondissements";
+import { CHOROPLETH_PALETTE as PALETTE } from "./choropleth-palette";
 import { useT, useLocale } from "@/lib/localeContext";
 import { numLocale } from "@/lib/fmt";
 import { useTrack } from "@/lib/analyticsContext";
@@ -22,9 +23,6 @@ const fmtEurLocale = (n: number, locStr: string, mdLabel: string, mLabel: string
   if (n >= 1e3) return `${Math.round(n / 1e3).toLocaleString(locStr)} k €`;
   return `${Math.round(n).toLocaleString(locStr)} €`;
 };
-
-/** Palette 5 paliers : pale ocre → ink. */
-const PALETTE = ["#f0e3c9", "#d8b88a", "#b88856", "#6d4a1c", "#2b1a08"];
 
 type Item = { arr: number; amount: number; count: number };
 
