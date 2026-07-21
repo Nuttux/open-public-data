@@ -1,0 +1,137 @@
+{
+ "generated_at": "2026-07-21T17:04:41.999226+00:00",
+ "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
+ "slug": "piscine-bernard-lafay",
+ "name": "Piscine Bernard-Lafay",
+ "kind_fr": "Piscine",
+ "kind_en": "Swimming pool",
+ "famille": "sport",
+ "arrondissement": 17,
+ "lat": 48.85317,
+ "lon": 2.331623,
+ "photo": "/img/lieux/piscine-bernard-lafay.jpg",
+ "photo_credit": {
+  "licence": "CC0",
+  "auteur": "Benoît Prieur",
+  "url": "https://commons.wikimedia.org/wiki/File:Piscine_Bernard_Lafay,_rue_de_la_Jonqui%C3%A8re.JPG",
+  "source": "Wikimedia Commons"
+ },
+ "wiki": {
+  "extract": null,
+  "url": null,
+  "source": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ },
+ "stats": {
+  "n_delibs": 1828,
+  "delibs_span": [
+   2002,
+   2007
+  ],
+  "n_bmo_brut": 0,
+  "n_bmo_verifies": null,
+  "invest_total_eur": 0,
+  "invest_annees": [],
+  "lecture_mode": "tête du classement Solr (1828 documents au total)",
+  "lecture_mode_en": "top of the Solr ranking (1828 documents total)",
+  "n_lus": 42,
+  "n_lieu": 3
+ },
+ "subventions_exploitant": null,
+ "residents": [],
+ "kpi_montant": null,
+ "synthese_fr": "En octobre 2002, le Conseil de Paris approuve le principe de modernisation des baies du solarium et de l'étanchéité de la toiture-terrasse du logement de la piscine Bernard-Lafay, au 79 rue de la Jonquière (17e), et autorise le maire à signer le marché de travaux correspondant (2002 DPA 357). Cinq ans plus tard, en décembre 2007, le Conseil autorise le lancement d'une nouvelle procédure de marché négocié en deux lots pour des travaux de mise en conformité de la filtration et de la ventilation de l'équipement (2007 DJS 546). Les deux délibérations retrouvées portent sur des travaux de maintenance et de mise aux normes techniques du bâtiment, sans qu'aucune ne documente sa construction, sa gestion quotidienne ou son coût de fonctionnement.",
+ "moments": [
+  {
+   "id": "95358",
+   "seance": "OCTOBRE 2002",
+   "fait": "Le Conseil approuve le principe de modernisation des baies du solarium et de l'étanchéité de la toiture-terrasse du logement, et autorise la signature du marché de travaux.",
+   "pourquoi": "premier chantier documenté sur le bâtiment",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=95358",
+   "fait_en": "The Council approves the principle of modernizing the solarium bay windows and the roof-terrace waterproofing of the housing unit, and authorizes the signing of the works contract.",
+   "pourquoi_en": "first documented project on the building"
+  },
+  {
+   "id": "54648",
+   "seance": "DECEMBRE 2007",
+   "fait": "Le Conseil autorise le lancement d'une procédure de marché négocié pour la mise en conformité de la filtration et de la ventilation.",
+   "pourquoi": "second chantier, cinq ans après le premier",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=54648",
+   "fait_en": "The Council authorizes the launch of a negotiated procurement procedure for bringing the filtration and ventilation systems up to code.",
+   "pourquoi_en": "second project, five years after the first"
+  }
+ ],
+ "montants": [],
+ "bmo_extraits": [],
+ "bmo_recit": null,
+ "invest": [],
+ "marches": [
+  {
+   "numero_marche": "20232023T01632",
+   "objet": "SA4 TVX DE REFECTION COUVERTURE PISCINE BERNARD LAFAY",
+   "objet_clair": null,
+   "fournisseur": "ENTREPRISE MEDERREG",
+   "montant_max": 255139.4,
+   "date_notification": "2023-03-30",
+   "preuve": "Objet du marché : \"SA4 TVX DE REFECTION COUVERTURE PISCINE BERNARD LAFAY\" — nomme explicitement le lieu (travaux de réfection de couverture)."
+  },
+  {
+   "numero_marche": "decp-2025S01877",
+   "objet": "Réalisation d'un audit complet des systèmes de filtration de la piscine Bernard Lafay",
+   "objet_clair": null,
+   "fournisseur": "BUREAU D'ETUDES ALAIN GARNIER",
+   "montant_max": 19650.0,
+   "date_notification": "2025-03-17",
+   "preuve": "Objet du marché : \"Réalisation d'un audit complet des systèmes de filtration de la piscine Bernard Lafay\" — nomme explicitement le lieu."
+  }
+ ],
+ "mandate": {
+  "par_annee": {
+   "2009": 1338853.79
+  },
+  "total_eur": 1338853.79,
+  "operations": [
+   {
+    "ap_cle": "B100/0803757",
+    "ap_texte": "PISCINE BERNARD LAFAY REHABILITATION COM",
+    "mandate_par_annee": {
+     "2009": 1338853.79
+    },
+    "total_mandate": 1338853.79,
+    "preuve": "Libellé de l'opération : \"PISCINE BERNARD LAFAY REHABILITATION COM\" — nomme explicitement le lieu (direction DJS, mission Jeunesse et Sports).",
+    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/0803757"
+   }
+  ],
+  "periode": [
+   "2009",
+   "2009"
+  ],
+  "source": {
+   "name": "Comptes administratifs — autorisations de programme, Ville de Paris",
+   "url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/"
+  }
+ },
+ "sources": {
+  "delibs": {
+   "name": "Débat-Délibs — Conseil de Paris",
+   "url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=search-solr&query=Piscine+Bernard-Lafay"
+  },
+  "bmo": {
+   "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
+   "url": "https://gallica.bnf.fr/ark:/12148/cb343512457/date"
+  },
+  "invest": {
+   "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
+   "url": "https://opendata.paris.fr/"
+  },
+  "wiki": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ },
+ "synthese_en": "In October 2002, the Paris Council approved the principle of modernizing the solarium bay windows and the roof-terrace waterproofing of the housing unit at the Bernard-Lafay swimming pool, at 79 rue de la Jonquière (17th arrondissement), and authorized the mayor to sign the corresponding works contract (2002 DPA 357). Five years later, in December 2007, the Council authorized the launch of a new negotiated procurement procedure in two lots for works to bring the facility's filtration and ventilation systems up to code (2007 DJS 546). The two deliberations found relate to maintenance and technical code-compliance works on the building, with neither documenting its construction, day-to-day management, or operating cost."
+}

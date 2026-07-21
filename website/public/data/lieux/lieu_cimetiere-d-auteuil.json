@@ -1,0 +1,84 @@
+{
+ "generated_at": "2026-07-21T17:04:41.999226+00:00",
+ "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
+ "slug": "cimetiere-d-auteuil",
+ "name": "Cimetière d'Auteuil",
+ "kind_fr": "Cimetière",
+ "kind_en": "Cemetery",
+ "famille": "vert",
+ "arrondissement": 16,
+ "lat": 48.847744,
+ "lon": 2.264724,
+ "photo": "/img/lieux/cimetiere-d-auteuil.jpg",
+ "photo_credit": {
+  "licence": null,
+  "auteur": null,
+  "url": "https://fr.wikipedia.org/wiki/Cimeti%C3%A8re_d'Auteuil",
+  "source": "Wikipédia"
+ },
+ "wiki": {
+  "extract": "Le cimetière d'Auteuil est un cimetière parisien, situé dans le 16e arrondissement.",
+  "url": "https://fr.wikipedia.org/wiki/Cimeti%C3%A8re_d'Auteuil",
+  "source": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  },
+  "extract_en": "Auteuil cemetery is a Parisian cemetery located in the 16th arrondissement."
+ },
+ "stats": {
+  "n_delibs": 438,
+  "delibs_span": [
+   2008,
+   2008
+  ],
+  "n_bmo_brut": 0,
+  "n_bmo_verifies": null,
+  "invest_total_eur": 0,
+  "invest_annees": [],
+  "lecture_mode": "tête du classement Solr (438 documents au total)",
+  "lecture_mode_en": "top of the Solr ranking (438 documents total)",
+  "n_lus": 44,
+  "n_lieu": 1
+ },
+ "subventions_exploitant": null,
+ "residents": [],
+ "kpi_montant": null,
+ "synthese_fr": "En décembre 2008, le Conseil de Paris a autorisé le lancement d'un marché négocié pour restructurer la conservation, un logement, les locaux sociaux et les sanitaires publics du cimetière d'Auteuil (16e), sur rapport de Mme Fabienne Giboudeaux. Cette délibération porte sur l'engagement d'une procédure de marché, pas sur la réalisation des travaux eux-mêmes, et n'indique aucun montant. Aucune autre délibération ne concerne spécifiquement ce cimetière : les autres textes portent sur d'autres cimetières parisiens (Père Lachaise, Montmartre, Batignolles, Ivry, Bagneux, Thiais) ou sur d'autres équipements du quartier Auteuil (église Notre-Dame d'Auteuil, hippodrome, piscine, gare, immeubles rue d'Auteuil) sans rapport avec ce cimetière.",
+ "moments": [
+  {
+   "id": "78243",
+   "seance": "DECEMBRE 2008",
+   "fait": "Lancement d'un marché négocié pour restructurer la conservation, un logement, les locaux sociaux et les sanitaires publics du cimetière d'Auteuil (16e).",
+   "pourquoi": "seule délibération retrouvée spécifique à ce cimetière",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=78243",
+   "fait_en": "Launch of a negotiated procurement procedure to restructure the cemetery office, a residence unit, staff facilities and public restrooms at the Auteuil cemetery (16th arrondissement).",
+   "pourquoi_en": "only resolution found specific to this cemetery"
+  }
+ ],
+ "montants": [],
+ "bmo_extraits": [],
+ "bmo_recit": null,
+ "invest": [],
+ "marches": [],
+ "mandate": null,
+ "sources": {
+  "delibs": {
+   "name": "Débat-Délibs — Conseil de Paris",
+   "url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=search-solr&query=Cimeti%C3%A8re+d%27Auteuil"
+  },
+  "bmo": {
+   "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
+   "url": "https://gallica.bnf.fr/ark:/12148/cb343512457/date"
+  },
+  "invest": {
+   "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
+   "url": "https://opendata.paris.fr/"
+  },
+  "wiki": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ },
+ "synthese_en": "In December 2008, the Paris Council authorized the launch of a negotiated procurement procedure to restructure the cemetery office, a residence unit, staff facilities and public restrooms at the Auteuil cemetery (16th arrondissement), based on the report by Ms. Fabienne Giboudeaux. This resolution concerns the launch of a procurement procedure, not the execution of the work itself, and does not indicate any amount. No other resolution specifically concerns this cemetery: the other texts concern other Parisian cemeteries (Père Lachaise, Montmartre, Batignolles, Ivry, Bagneux, Thiais) or other facilities in the Auteuil neighborhood (Notre-Dame d'Auteuil church, the racecourse, the swimming pool, the train station, buildings on rue d'Auteuil) unrelated to this cemetery."
+}

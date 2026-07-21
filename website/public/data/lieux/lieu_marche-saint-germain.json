@@ -1,0 +1,94 @@
+{
+ "generated_at": "2026-07-21T17:04:41.999226+00:00",
+ "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
+ "slug": "marche-saint-germain",
+ "name": "Marché Saint-Germain",
+ "kind_fr": "Marché couvert",
+ "kind_en": "Covered market",
+ "famille": "services",
+ "arrondissement": 6,
+ "lat": 48.848177,
+ "lon": 2.375373,
+ "photo": "/img/lieux/marche-saint-germain.jpg",
+ "photo_credit": {
+  "licence": "CC BY 3.0",
+  "auteur": "Mbzt",
+  "url": "https://commons.wikimedia.org/wiki/File:P1020096_Paris_VI_March%C3%A9_Saint-Germain_reductwk.JPG",
+  "source": "Wikimedia Commons"
+ },
+ "wiki": {
+  "extract": "Le marché Saint-Germain est un marché couvert construit entre 1813 et 1817 et situé à Paris dans le quartier de l'Odéon.",
+  "url": "https://fr.wikipedia.org/wiki/March%C3%A9_Saint-Germain",
+  "source": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  },
+  "extract_en": "The Marché Saint-Germain is a covered market built between 1813 and 1817, located in Paris in the Odéon quarter."
+ },
+ "stats": {
+  "n_delibs": 648,
+  "delibs_span": [
+   2014,
+   2014
+  ],
+  "n_bmo_brut": 0,
+  "n_bmo_verifies": null,
+  "invest_total_eur": 0,
+  "invest_annees": [],
+  "lecture_mode": "titre nommant le lieu (1 trouvés)",
+  "lecture_mode_en": "title naming the place (1 found)",
+  "n_lus": 1,
+  "n_lieu": 1
+ },
+ "subventions_exploitant": null,
+ "residents": [],
+ "kpi_montant": null,
+ "synthese_fr": "En novembre 2014, le Conseil de Paris autorise la signature d'un avenant au protocole d'aménagement de la galerie commerciale du marché Saint-Germain (6e), conclu avec la société Paris Marché Saint-Germain. Le maire du 6e arrondissement, Jean-Pierre Lecoq, décrit un site qui associe un centre commercial privé à plusieurs équipements publics de la Ville — piscine, gymnase, crèche, auditorium, conservatoire, foyer pour personnes handicapées — et indique que la galerie doit accueillir un troisième « Apple Center » à l'horizon du 1er septembre 2016. Selon l'adjointe Olivia Polski, l'avenant encadre les nuisances du chantier de rénovation : mesures contre le bruit, les vibrations et les poussières, procédure de contrôle dédiée, et comité de suivi associant les directions de la Ville et l'entreprise. Une rénovation de la crèche du site est également annoncée à cette occasion. Le projet de délibération est adopté à main levée.",
+ "moments": [
+  {
+   "id": "121398",
+   "seance": "NOVEMBRE 2014",
+   "fait": "Avenant au protocole d'aménagement de la galerie commerciale, mesures anti-nuisances du chantier de rénovation",
+   "pourquoi": "un avenant pour encadrer le chantier au milieu des équipements publics du site",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=121398",
+   "fait_en": "Amendment to the development agreement for the shopping arcade, anti-nuisance measures for the renovation work",
+   "pourquoi_en": "an amendment to manage the construction work amid the site's public facilities"
+  }
+ ],
+ "montants": [],
+ "bmo_extraits": [],
+ "bmo_recit": null,
+ "invest": [],
+ "marches": [
+  {
+   "numero_marche": "20171210001042",
+   "objet": "RESTAURATION DE LA FONTAINE DU MARCHÉ SAINT GERMAIN",
+   "objet_clair": null,
+   "fournisseur": "LAGNEAU ARCHITECTES",
+   "montant_max": 34440.0,
+   "date_notification": "2017-06-29",
+   "preuve": "Objet du marché : « RESTAURATION DE LA FONTAINE DU MARCHÉ SAINT GERMAIN » — nomme explicitement le lieu, ce n'est pas un simple repère d'adresse."
+  }
+ ],
+ "mandate": null,
+ "sources": {
+  "delibs": {
+   "name": "Débat-Délibs — Conseil de Paris",
+   "url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=search-solr&query=March%C3%A9+Saint-Germain"
+  },
+  "bmo": {
+   "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
+   "url": "https://gallica.bnf.fr/ark:/12148/cb343512457/date"
+  },
+  "invest": {
+   "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
+   "url": "https://opendata.paris.fr/"
+  },
+  "wiki": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ },
+ "synthese_en": "In November 2014, the Council of Paris authorized the signing of an amendment to the development agreement for the shopping arcade of the Marché Saint-Germain (6th arrondissement), concluded with the company Paris Marché Saint-Germain. The mayor of the 6th arrondissement, Jean-Pierre Lecoq, described a site that combines a private shopping center with several public facilities run by the City — a swimming pool, a gymnasium, a daycare center, an auditorium, a conservatory, a residential facility for people with disabilities — and stated that the arcade is set to house a third \"Apple Center\" by September 1, 2016. According to Deputy Mayor Olivia Polski, the amendment sets out measures to limit the nuisances of the renovation work: measures against noise, vibration and dust, a dedicated inspection procedure, and a monitoring committee bringing together the City's departments and the company. A renovation of the site's daycare center was also announced on this occasion. The bill was adopted by a show of hands."
+}

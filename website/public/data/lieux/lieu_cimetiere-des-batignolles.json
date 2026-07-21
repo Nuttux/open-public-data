@@ -1,0 +1,149 @@
+{
+ "generated_at": "2026-07-21T17:04:41.999226+00:00",
+ "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
+ "slug": "cimetiere-des-batignolles",
+ "name": "Cimetière des Batignolles",
+ "kind_fr": "Cimetière",
+ "kind_en": "Cemetery",
+ "famille": "vert",
+ "arrondissement": 17,
+ "lat": 48.897719,
+ "lon": 2.316717,
+ "photo": "/img/lieux/cimetiere-des-batignolles.jpg",
+ "photo_credit": {
+  "licence": "CC BY-SA 4.0",
+  "auteur": "Chabe01",
+  "url": "https://commons.wikimedia.org/wiki/File:Avenue_Cimeti%C3%A8re_Batignolles_-_Paris_XVII_(FR75)_-_2021-08-20_-_1.jpg",
+  "source": "Wikimedia Commons"
+ },
+ "wiki": {
+  "extract": "Le cimetière des Batignolles  est un cimetière parisien, dont l'entrée est située au 8 rue Saint-Just, 17e arrondissement de Paris, dans le quartier des Épinettes.",
+  "url": "https://fr.wikipedia.org/wiki/Cimeti%C3%A8re_des_Batignolles",
+  "source": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  },
+  "extract_en": "The Batignolles cemetery is a Parisian cemetery, whose entrance is located at 8 rue Saint-Just, in the 17th arrondissement of Paris, in the Épinettes neighborhood."
+ },
+ "stats": {
+  "n_delibs": 665,
+  "delibs_span": [
+   2000,
+   2023
+  ],
+  "n_bmo_brut": 0,
+  "n_bmo_verifies": null,
+  "invest_total_eur": 0,
+  "invest_annees": [],
+  "lecture_mode": "titre nommant le lieu (6 trouvés)",
+  "lecture_mode_en": "title naming the place (6 found)",
+  "n_lus": 6,
+  "n_lieu": 6
+ },
+ "subventions_exploitant": null,
+ "residents": [
+  {
+   "beneficiaire": "LES ALIENNES",
+   "montant_total": 100.0,
+   "preuve": "Objet de la subvention : \"Visite guidée au cimetière des Batignolles : les femmes sur le devant de la scène-PDC2022\" — nomme explicitement le lieu, activité ponctuelle (visite guidée) qui s'y déroule sans que l'association ne le gère.",
+   "preuve_en": "Grant purpose: \"Guided tour at the Batignolles cemetery: women in the spotlight-PDC2022\" — explicitly names the site, a one-off activity (guided tour) that takes place there without the association managing it."
+  }
+ ],
+ "kpi_montant": null,
+ "synthese_fr": "Depuis les années 2000, plusieurs délibérations du Conseil de Paris portent sur la gestion et l'entretien du cimetière des Batignolles, dans le 17e arrondissement. En 2000, le Conseil approuve le principe de la création de guérites pour ce cimetière ainsi que pour ceux d'Ivry et de Bagneux, puis en 2008 il autorise le Maire à lancer un marché de travaux pour restructurer la conservation et un logement du site. En 2009, le Conseil autorise le Maire à signer une convention permettant à la SEMAVIP, à Paris Habitat-OPH et à la SCI Paris ZAC Porte Pouchet d'occuper à titre gratuit une portion du cimetière pour l'installation d'une partie d'un chantier voisin. En 2015, un vœu du groupe UMP réclame une meilleure valorisation patrimoniale du lieu, ouvert depuis 1833 selon Geoffroy Boulard ; l'exécutif, par la voix de Colombe Brossel, situe alors sa fréquentation autour de 50 000 visiteurs par an, loin des plus de 3,5 millions du Père-Lachaise, et annonce un travail de labellisation et de signalétique. En 2022 puis 2023, un vœu et une délibération portent respectivement sur un hommage aux morts pour la France qui y sont enterrés et sur une ouverture côté boulevard Victor-Hugo à Clichy-la-Garenne.",
+ "moments": [
+  {
+   "id": "28526",
+   "seance": "SEPTEMBRE 2000",
+   "fait": "Le Conseil approuve le principe de la création de guérites au cimetière des Batignolles.",
+   "pourquoi": "création de guérites, décision partagée avec 2 autres cimetières",
+   "vedette": false,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=28526",
+   "fait_en": "The Council approved the principle of building gatehouses at the Batignolles cemetery.",
+   "pourquoi_en": "gatehouse construction, decision shared with 2 other cemeteries"
+  },
+  {
+   "id": "66904",
+   "seance": "SEPTEMBRE 2008",
+   "fait": "Le Conseil autorise le Maire à lancer un marché de travaux pour restructurer la conservation et un logement du cimetière.",
+   "pourquoi": "marché de travaux pour le bâtiment d'accueil et un logement",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=66904",
+   "fait_en": "The Council authorized the Mayor to launch a works contract to restructure the caretaker's building and a residence at the cemetery.",
+   "pourquoi_en": "works contract for the reception building and a residence"
+  },
+  {
+   "id": "75157",
+   "seance": "JUILLET 2009",
+   "fait": "Le Conseil autorise le Maire à signer une convention permettant qu'une portion du cimetière soit prêtée gratuitement pour l'emprise d'un chantier voisin (ZAC Porte Pouchet).",
+   "pourquoi": "portion du site prêtée gratuitement à un chantier voisin",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=75157",
+   "fait_en": "The Council authorized the Mayor to sign an agreement allowing a portion of the cemetery to be lent free of charge for a nearby construction site (ZAC Porte Pouchet).",
+   "pourquoi_en": "portion of the site lent free of charge to a nearby construction site"
+  },
+  {
+   "id": "125350",
+   "seance": "MAI 2015",
+   "fait": "Vœu adopté avec avis favorable de l'exécutif pour valoriser le patrimoine du cimetière (déjà adopté à l'unanimité par le conseil du 17e arrondissement) ; débat sur sa fréquentation comparée aux autres grands cimetières parisiens.",
+   "pourquoi": "vœu de valorisation, débat sur la fréquentation comparée",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=125350",
+   "fait_en": "Motion adopted with a favorable opinion from the executive to promote the cemetery's heritage (already adopted unanimously by the 17th arrondissement council); debate on its attendance compared with other major Parisian cemeteries.",
+   "pourquoi_en": "motion for heritage promotion, debate on comparative attendance"
+  },
+  {
+   "id": "165234",
+   "seance": "JUILLET 2022",
+   "fait": "Vœu du groupe Changer Paris pour un hommage aux morts pour la France enterrés au cimetière.",
+   "pourquoi": "hommage demandé aux morts pour la France",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=165234",
+   "fait_en": "Motion from the Changer Paris group for a tribute to those who died for France buried at the cemetery.",
+   "pourquoi_en": "tribute requested for those who died for France"
+  },
+  {
+   "id": "170423",
+   "seance": "JUILLET 2023",
+   "fait": "Délibération relative à une ouverture du cimetière côté boulevard Victor-Hugo, à Clichy-la-Garenne.",
+   "pourquoi": "nouvelle ouverture côté Clichy-la-Garenne",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=170423",
+   "fait_en": "Deliberation concerning an opening of the cemetery on the boulevard Victor-Hugo side, toward Clichy-la-Garenne.",
+   "pourquoi_en": "new opening on the Clichy-la-Garenne side"
+  }
+ ],
+ "montants": [
+  {
+   "seance": "JUILLET 2009",
+   "montant": "gratuit, sans redevance",
+   "objet": "occupation temporaire d'une portion du cimetière par la convention d'emprise de chantier (SEMAVIP / Paris Habitat-OPH / SCI Paris ZAC Porte Pouchet)",
+   "citation": "la présente convention d?occupation est consentie à titre gratuit, sans redevance, taxes et frais autres que ceux liés à la remise en état du site.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=75157"
+  }
+ ],
+ "bmo_extraits": [],
+ "bmo_recit": null,
+ "invest": [],
+ "marches": [],
+ "mandate": null,
+ "sources": {
+  "delibs": {
+   "name": "Débat-Délibs — Conseil de Paris",
+   "url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=search-solr&query=Cimeti%C3%A8re+des+Batignolles"
+  },
+  "bmo": {
+   "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
+   "url": "https://gallica.bnf.fr/ark:/12148/cb343512457/date"
+  },
+  "invest": {
+   "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
+   "url": "https://opendata.paris.fr/"
+  },
+  "wiki": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ },
+ "synthese_en": "Since the 2000s, several deliberations of the Paris Council have addressed the management and upkeep of the Batignolles cemetery, in the 17th arrondissement. In 2000, the Council approved the principle of building gatehouses for this cemetery as well as for the Ivry and Bagneux cemeteries, and in 2008 it authorized the Mayor to launch a works contract to restructure the caretaker's building and a residence on the site. In 2009, the Council authorized the Mayor to sign an agreement allowing SEMAVIP, Paris Habitat-OPH and SCI Paris ZAC Porte Pouchet to occupy a portion of the cemetery free of charge to install part of a nearby construction site. In 2015, a motion from the UMP group called for better heritage promotion of the site, open since 1833 according to Geoffroy Boulard; the executive, through Colombe Brossel, put its attendance at around 50,000 visitors a year at the time, far below the more than 3.5 million at Père-Lachaise, and announced work on labeling and signage. In 2022 and then 2023, a motion and a deliberation addressed, respectively, a tribute to those who died for France buried there and an opening on the boulevard Victor-Hugo side toward Clichy-la-Garenne."
+}

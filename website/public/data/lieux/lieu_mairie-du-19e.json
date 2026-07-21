@@ -1,0 +1,126 @@
+{
+ "generated_at": "2026-07-21T17:04:41.999226+00:00",
+ "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
+ "slug": "mairie-du-19e",
+ "name": "Mairie du 19e",
+ "kind_fr": "Mairie",
+ "kind_en": "Town hall",
+ "famille": "services",
+ "arrondissement": 19,
+ "lat": 48.8836,
+ "lon": 2.3831,
+ "photo": "/img/lieux/mairie-du-19e.jpg",
+ "photo_credit": {
+  "licence": "CC BY 2.0",
+  "auteur": "Guillaume Baviere",
+  "url": "https://commons.wikimedia.org/wiki/File:La_mairie_du_19e_arrondissement_2010.jpg",
+  "source": "Wikimedia Commons"
+ },
+ "wiki": {
+  "extract": null,
+  "url": null,
+  "source": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ },
+ "stats": {
+  "n_delibs": 865,
+  "delibs_span": [
+   1995,
+   2026
+  ],
+  "n_bmo_brut": 0,
+  "n_bmo_verifies": null,
+  "invest_total_eur": 0,
+  "invest_annees": [],
+  "lecture_mode": "titre nommant le lieu (23 trouvés)",
+  "lecture_mode_en": "title naming the place (23 found)",
+  "n_lus": 0,
+  "n_lieu": null
+ },
+ "subventions_exploitant": null,
+ "residents": [],
+ "kpi_montant": null,
+ "synthese_fr": null,
+ "moments": [],
+ "montants": [],
+ "bmo_extraits": [],
+ "bmo_recit": null,
+ "invest": [],
+ "marches": [
+  {
+   "numero_marche": "20191210000395",
+   "objet": "REMPLACEMENT DE L'ASCENSEUR B MAIRIE DU 19ÈME",
+   "objet_clair": null,
+   "fournisseur": "L2V ASCENSEURS",
+   "montant_max": 56770.0,
+   "date_notification": "2019-05-07",
+   "preuve": "Objet du marché : \"REMPLACEMENT DE L'ASCENSEUR B MAIRIE DU 19ÈME\" — nomme explicitement le lieu."
+  },
+  {
+   "numero_marche": "20191210001439",
+   "objet": "FOURNITURE ET POSE DE PORTES COULISSANTES MAIRIE DU 19ÈME",
+   "objet_clair": null,
+   "fournisseur": "PORTALP FRANCE",
+   "montant_max": 32500.0,
+   "date_notification": "2019-11-20",
+   "preuve": "Objet du marché : \"FOURNITURE ET POSE DE PORTES COULISSANTES MAIRIE DU 19ÈME\" — nomme explicitement le lieu."
+  }
+ ],
+ "mandate": {
+  "par_annee": {
+   "2010": 3123.17,
+   "2017": 73272.23
+  },
+  "total_eur": 76395.4,
+  "operations": [
+   {
+    "ap_cle": "1604876",
+    "ap_texte": "MAIRIE DU 19e - ACCESSIBILITE",
+    "mandate_par_annee": {
+     "2017": 73272.23
+    },
+    "total_mandate": 73272.23,
+    "preuve": "Libellé de l'opération : \"MAIRIE DU 19e - ACCESSIBILITE\" — nomme explicitement le lieu (direction DDCT).",
+    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=1604876"
+   },
+   {
+    "ap_cle": "B100/0500013",
+    "ap_texte": "MAIRIE DU 19EME  - TRAVAUX",
+    "mandate_par_annee": {
+     "2010": 3123.17
+    },
+    "total_mandate": 3123.17,
+    "preuve": "Libellé de l'opération : \"MAIRIE DU 19EME - TRAVAUX\" — nomme explicitement le lieu (direction DPA).",
+    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/0500013"
+   }
+  ],
+  "periode": [
+   "2010",
+   "2017"
+  ],
+  "source": {
+   "name": "Comptes administratifs — autorisations de programme, Ville de Paris",
+   "url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/"
+  }
+ },
+ "sources": {
+  "delibs": {
+   "name": "Débat-Délibs — Conseil de Paris",
+   "url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=search-solr&query=Mairie+du+19e"
+  },
+  "bmo": {
+   "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
+   "url": "https://gallica.bnf.fr/ark:/12148/cb343512457/date"
+  },
+  "invest": {
+   "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
+   "url": "https://opendata.paris.fr/"
+  },
+  "wiki": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ }
+}

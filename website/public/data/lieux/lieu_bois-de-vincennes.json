@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T20:28:18.117255+00:00",
+ "generated_at": "2026-07-21T17:04:41.999226+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "bois-de-vincennes",
  "name": "Bois de Vincennes",
@@ -17,8 +17,8 @@
   "source": "Wikimedia Commons"
  },
  "wiki": {
-  "extract": null,
-  "url": null,
+  "extract": "Le bois de Vincennes est un bois situé dans le 12e arrondissement de Paris. Avec une superficie de 995 hectares, dont plus de la moitié boisée, c'est le premier espace vert parisien, devant le bois de Boulogne à l'ouest de la capitale. De nombreuses infrastructures occupent le site, limitrophe de la commune de Vincennes.",
+  "url": "https://fr.wikipedia.org/wiki/Bois_de_Vincennes",
   "source": {
    "name": "Wikipédia",
    "url": "https://fr.wikipedia.org/"

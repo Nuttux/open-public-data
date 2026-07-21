@@ -1,0 +1,122 @@
+{
+ "generated_at": "2026-07-21T17:04:41.999226+00:00",
+ "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
+ "slug": "port-de-l-arsenal",
+ "name": "Port de l'Arsenal",
+ "kind_fr": "Infrastructure",
+ "kind_en": "Infrastructure",
+ "famille": "services",
+ "arrondissement": 12,
+ "lat": 48.8494,
+ "lon": 2.3673,
+ "photo": "/img/lieux/port-de-l-arsenal.jpg",
+ "photo_credit": {
+  "licence": null,
+  "auteur": null,
+  "url": "https://fr.wikipedia.org/wiki/Port_de_l'Arsenal",
+  "source": "Wikipédia"
+ },
+ "wiki": {
+  "extract": "Le port de l'Arsenal ou bassin de l'Arsenal, est situé à Paris.",
+  "url": "https://fr.wikipedia.org/wiki/Port_de_l'Arsenal",
+  "source": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  },
+  "extract_en": "The Port de l'Arsenal, or Bassin de l'Arsenal, is located in Paris."
+ },
+ "stats": {
+  "n_delibs": 593,
+  "delibs_span": [
+   2001,
+   2001
+  ],
+  "n_bmo_brut": 0,
+  "n_bmo_verifies": null,
+  "invest_total_eur": 138601.7,
+  "invest_annees": [
+   "2023"
+  ],
+  "lecture_mode": "titre nommant le lieu (5 trouvés)",
+  "lecture_mode_en": "title naming the place (5 found)",
+  "n_lus": 3,
+  "n_lieu": 1
+ },
+ "subventions_exploitant": null,
+ "residents": [],
+ "kpi_montant": null,
+ "synthese_fr": "En 2001, le Conseil de Paris attribue une subvention de 100 000 F (15 244,90 €) à l'association Evénement Scène pour organiser au port de l'Arsenal la troisième édition du festival « Musique sur Seine », les 7, 8 et 9 septembre. Quatorze ans plus tard, en décembre 2015, le port de l'Arsenal n'est pas l'objet direct de la délibération examinée par le Conseil, consacrée à l'aménagement des berges de Seine entre Bastille et la Tour Eiffel : il apparaît en marge, dans le titre d'un vœu du groupe Les Républicains demandant une étude sur une promenade de Bercy au port de l'Arsenal, sans que le texte de ce vœu ait été retrouvé. Dans le débat qui suit, Mme Valérie Montandon défend ce vœu n° 112 en proposant une étude sur l'aménagement des berges du port de l'Arsenal jusqu'à Bercy/Charenton, afin selon elle de supprimer les discontinuités et de permettre l'accès du public à l'ensemble des berges. On ignore si ce vœu a été adopté et si une étude a été engagée.",
+ "moments": [
+  {
+   "id": "33555",
+   "seance": "OCTOBRE 2001",
+   "fait": "Subvention de 100 000 F à l'association Evénement Scène pour le festival « Musique sur Seine » au port de l'Arsenal",
+   "pourquoi": "quand la Ville finance un festival sur le port",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=33555",
+   "fait_en": "A grant of 100,000 francs to the association Evénement Scène for the « Musique sur Seine » festival at the port de l'Arsenal",
+   "pourquoi_en": "when the City funds a festival at the port"
+  },
+  {
+   "id": "128287",
+   "seance": "DECEMBRE 2015",
+   "fait": "Un vœu du groupe Les Républicains réclame une étude sur une promenade de Bercy au port de l'Arsenal, texte non disponible",
+   "pourquoi": "l'opposition réclame une étude, sans détails accessibles",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=128287",
+   "fait_en": "A motion by the Les Républicains group calls for a study on a promenade from Bercy to the port de l'Arsenal; the text is not available",
+   "pourquoi_en": "the opposition calls for a study, with no accessible details"
+  },
+  {
+   "id": "128437",
+   "seance": "DECEMBRE 2015",
+   "fait": "Mme Montandon défend en séance ce vœu réclamant une étude sur le prolongement des berges jusqu'à Bercy/Charenton",
+   "pourquoi": "le débat en séance derrière ce vœu",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=128437",
+   "fait_en": "Ms. Montandon defends this motion in session, calling for a study on extending the riverbanks to Bercy/Charenton",
+   "pourquoi_en": "the floor debate behind this motion"
+  }
+ ],
+ "montants": [
+  {
+   "seance": "OCTOBRE 2001",
+   "montant": "100.000 F (15.244,90 euros)",
+   "objet": "Subvention à l'association Evénement Scène pour le festival « Musique sur Seine » au port de l'Arsenal (2001)",
+   "citation": "Une subvention de 100.000 F (15244,90 euros) est attribuée à l'association Evénement Scène (D6081) dont le siège social est situé 2 rue Dampierre (19e) pour la réalisation de la troisième édition du festival \"Musique sur Seine\"",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=33555"
+  }
+ ],
+ "bmo_extraits": [],
+ "bmo_recit": null,
+ "invest": [
+  {
+   "annee": 2023,
+   "montant_eur": 138601.7,
+   "nom_projet": "Jardin du port de l'Arsenal - Rénovation de l'aire de jeux",
+   "preuve": "Nom du projet : \"Jardin du port de l'Arsenal - Rénovation de l'aire de jeux\" — nomme explicitement le lieu (signal=\"nom\"). Le Jardin du port de l'Arsenal longe le bassin et fait partie du même ensemble.",
+   "id": "2023_12_33_006"
+  }
+ ],
+ "marches": [],
+ "mandate": null,
+ "sources": {
+  "delibs": {
+   "name": "Débat-Délibs — Conseil de Paris",
+   "url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=search-solr&query=Port+de+l%27Arsenal"
+  },
+  "bmo": {
+   "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
+   "url": "https://gallica.bnf.fr/ark:/12148/cb343512457/date"
+  },
+  "invest": {
+   "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
+   "url": "https://opendata.paris.fr/"
+  },
+  "wiki": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ },
+ "synthese_en": "In 2001, the Conseil de Paris awarded a grant of 100,000 francs (€15,244.90) to the association Evénement Scène to organize the third edition of the « Musique sur Seine » festival at the port de l'Arsenal, on September 7, 8 and 9. Fourteen years later, in December 2015, the port de l'Arsenal was not the direct subject of the resolution before the Conseil, which concerned the redevelopment of the Seine riverbanks between Bastille and the Eiffel Tower: it appears only incidentally, in the title of a motion by the Les Républicains group calling for a study on a promenade from Bercy to the port de l'Arsenal, the text of which could not be found. In the ensuing debate, Ms. Valérie Montandon defended this motion no. 112, proposing a study on redeveloping the banks of the port de l'Arsenal as far as Bercy/Charenton, in order, in her words, to eliminate discontinuities and allow public access to the entire length of the riverbanks. It is not known whether this motion was adopted or whether a study was launched."
+}

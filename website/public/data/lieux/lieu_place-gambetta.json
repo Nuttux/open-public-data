@@ -1,0 +1,134 @@
+{
+ "generated_at": "2026-07-21T17:04:41.999226+00:00",
+ "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
+ "slug": "place-gambetta",
+ "name": "Place Gambetta",
+ "kind_fr": "Place",
+ "kind_en": "Square",
+ "famille": "urbain",
+ "arrondissement": 20,
+ "lat": 48.864886,
+ "lon": 2.398475,
+ "photo": "/img/lieux/place-gambetta.jpg",
+ "photo_credit": {
+  "licence": "CC BY 2.0",
+  "auteur": "Guilhem Vellut from Paris, France",
+  "url": "https://commons.wikimedia.org/wiki/File:Place_Gambetta_@_Paris_20_(25764255675).jpg",
+  "source": "Wikimedia Commons"
+ },
+ "wiki": {
+  "extract": "La place Gambetta est une voie située dans le quartier du Père-Lachaise du 20e arrondissement de Paris.",
+  "url": "https://fr.wikipedia.org/wiki/Place_Gambetta_(Paris)",
+  "source": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  },
+  "extract_en": "Place Gambetta is a street located in the Père-Lachaise quarter of the 20th arrondissement of Paris."
+ },
+ "stats": {
+  "n_delibs": 1065,
+  "delibs_span": [
+   2001,
+   2008
+  ],
+  "n_bmo_brut": 0,
+  "n_bmo_verifies": null,
+  "invest_total_eur": 0,
+  "invest_annees": [],
+  "lecture_mode": "titre nommant le lieu (6 trouvés)",
+  "lecture_mode_en": "title naming the place (6 found)",
+  "n_lus": 6,
+  "n_lieu": 5
+ },
+ "subventions_exploitant": null,
+ "residents": [],
+ "kpi_montant": null,
+ "synthese_fr": "Entre 2001 et 2008, les délibérations du Conseil de Paris relatives au 6, place Gambetta portent presque exclusivement sur la mairie du 20e arrondissement qui y est installée. Dès septembre 2001, le Conseil approuve le principe de travaux d'accessibilité aux personnes handicapées, suivi en novembre 2001 par l'approbation des modalités d'attribution d'un marché de mise en conformité électrique et incendie et l'autorisation donnée au Maire de le signer. En avril 2002, il approuve le principe et les modalités d'attribution de marchés pour la rénovation de la lustrerie et des parquets de la salle des fêtes ainsi que l'isolation des combles et des archives. En 2003, le Maire de Paris est autorisé à accorder au ministère de la Justice les autorisations de déposer des permis pour restructurer le tribunal d'instance du 20e, également logé dans la mairie. La réhabilitation-restructuration plus large du bâtiment se poursuit avec un avenant au marché de maîtrise d'œuvre dont la signature est autorisée en 2008. En parallèle, en 2005, l'adresse sert aussi de siège social à une association subventionnée par la Ville, sans lien direct avec ces travaux.",
+ "moments": [
+  {
+   "id": "84335",
+   "seance": "SEPTEMBRE 2001",
+   "fait": "Principe de travaux d'accessibilité handicapés approuvé à la mairie du 20e",
+   "pourquoi": "premier chantier connu, mise aux normes accessibilité",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=84335",
+   "fait_en": "Principle of accessibility works for people with disabilities approved at the 20th arrondissement town hall",
+   "pourquoi_en": "first known project, accessibility compliance"
+  },
+  {
+   "id": "30556",
+   "seance": "NOVEMBRE 2001",
+   "fait": "Marché de mise en conformité électrique et incendie autorisé",
+   "pourquoi": "sécurité du bâtiment, signature du marché autorisée",
+   "vedette": false,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=30556",
+   "fait_en": "Contract for electrical and fire safety compliance works authorized",
+   "pourquoi_en": "building safety, contract signature authorized"
+  },
+  {
+   "id": "73765",
+   "seance": "AVRIL 2002",
+   "fait": "Principe de rénovation de la salle des fêtes et des archives approuvé",
+   "pourquoi": "travaux de rénovation intérieure, salle des fêtes",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=73765",
+   "fait_en": "Principle of renovation of the ceremonial hall and archives approved",
+   "pourquoi_en": "interior renovation works, ceremonial hall"
+  },
+  {
+   "id": "89491",
+   "seance": "AVRIL 2003",
+   "fait": "Autorisation donnée au ministère de la Justice pour restructurer le tribunal d'instance",
+   "pourquoi": "un tribunal cohabite dans la mairie, acteur État",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=89491",
+   "fait_en": "Authorization granted to the Ministry of Justice to restructure the district court",
+   "pourquoi_en": "a court shares the building with the town hall, State actor"
+  },
+  {
+   "id": "80407",
+   "seance": "MAI 2005",
+   "fait": "Subvention de 10 000 € à l'association Culture 20/21 domiciliée sur place",
+   "pourquoi": "usage associatif de l'adresse, hors travaux",
+   "vedette": false,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=80407",
+   "fait_en": "€10,000 subsidy to the association Culture 20/21, registered at the address",
+   "pourquoi_en": "associative use of the address, unrelated to the works"
+  },
+  {
+   "id": "77911",
+   "seance": "DECEMBRE 2008",
+   "fait": "Avenant n°1 au marché de maîtrise d'œuvre pour la réhabilitation du bâtiment",
+   "pourquoi": "chantier de réhabilitation se poursuit, signature de l'avenant autorisée",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=77911",
+   "fait_en": "Amendment No. 1 to the project management contract for the building's rehabilitation",
+   "pourquoi_en": "rehabilitation project continues, signature of the amendment authorized"
+  }
+ ],
+ "montants": [],
+ "bmo_extraits": [],
+ "bmo_recit": null,
+ "invest": [],
+ "marches": [],
+ "mandate": null,
+ "sources": {
+  "delibs": {
+   "name": "Débat-Délibs — Conseil de Paris",
+   "url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=search-solr&query=Place+Gambetta"
+  },
+  "bmo": {
+   "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
+   "url": "https://gallica.bnf.fr/ark:/12148/cb343512457/date"
+  },
+  "invest": {
+   "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
+   "url": "https://opendata.paris.fr/"
+  },
+  "wiki": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ },
+ "synthese_en": "Between 2001 and 2008, Paris Council resolutions concerning 6, place Gambetta deal almost exclusively with the 20th arrondissement town hall located there. As early as September 2001, the Council approved the principle of works to improve accessibility for people with disabilities, followed in November 2001 by approval of the terms for awarding a contract to bring the electrical and fire safety installations into compliance, and authorization for the Mayor to sign it. In April 2002, it approved the principle and the terms for awarding contracts for the renovation of the chandeliers and parquet flooring of the ceremonial hall (salle des fêtes) as well as insulation of the attic and archive rooms. In 2003, the Mayor of Paris was authorized to grant the Ministry of Justice the authorizations to file demolition and building permits to restructure the 20th arrondissement's district court (tribunal d'instance), also housed in the town hall. The broader rehabilitation-restructuring of the building continued with an amendment (avenant) to the project management contract, authorized for signature in 2008. At the same time, in 2005, the address also served as the registered office of an association subsidized by the City, unrelated to these works."
+}

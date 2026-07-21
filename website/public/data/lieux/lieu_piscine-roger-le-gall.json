@@ -1,0 +1,236 @@
+{
+ "generated_at": "2026-07-21T17:04:41.999226+00:00",
+ "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
+ "slug": "piscine-roger-le-gall",
+ "name": "Piscine Roger-Le-Gall",
+ "kind_fr": "Piscine",
+ "kind_en": "Swimming pool",
+ "famille": "sport",
+ "arrondissement": 12,
+ "lat": 48.841792,
+ "lon": 2.412495,
+ "photo": "/img/lieux/piscine-roger-le-gall.jpg",
+ "photo_credit": {
+  "licence": "CC BY-SA 4.0",
+  "auteur": "LPLT",
+  "url": "https://commons.wikimedia.org/wiki/File:Vue_d%27ensemble_de_la_piscine_Roger-Le_Gall_2.jpg",
+  "source": "Wikimedia Commons"
+ },
+ "wiki": {
+  "extract": "La piscine Roger-Le-Gall ou piscine Carnot est un complexe aquatique situé boulevard Carnot, entre la porte de Saint-Mandé et la porte de Montempoivre, dans le 12e arrondissement de Paris. Œuvre de l'architecte Roger Taillibert, elle présente depuis son ouverture en avril 1967, la particularité d'avoir un toit amovible baché.",
+  "url": "https://fr.wikipedia.org/wiki/Piscine_Roger-Le-Gall",
+  "source": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  },
+  "extract_en": "The Roger-Le-Gall swimming pool, also known as Piscine Carnot, is an aquatic complex located on boulevard Carnot, between the Porte de Saint-Mandé and the Porte de Montempoivre, in the 12th arrondissement of Paris. Designed by architect Roger Taillibert, it has featured, since its opening in April 1967, a retractable canvas roof."
+ },
+ "stats": {
+  "n_delibs": 1222,
+  "delibs_span": [
+   2001,
+   2005
+  ],
+  "n_bmo_brut": 0,
+  "n_bmo_verifies": null,
+  "invest_total_eur": 0,
+  "invest_annees": [],
+  "lecture_mode": "titre nommant le lieu (3 trouvés)",
+  "lecture_mode_en": "title naming the place (3 found)",
+  "n_lus": 2,
+  "n_lieu": 2
+ },
+ "subventions_exploitant": null,
+ "residents": [],
+ "kpi_montant": null,
+ "synthese_fr": "Depuis le 5 novembre 1999, date d'entrée en vigueur de la convention de délégation, la gestion de la piscine Roger-Le Gall (12e) est confiée par la Ville de Paris au Club des nageurs de Paris, dans le cadre d'un contrat de délégation de service public. En décembre 2001, le Conseil de Paris approuve de nouveaux tarifs d'accès pour les usagers individuels à compter du 1er janvier 2002 et autorise le Maire à signer un avenant actant la conversion en euro des montants du contrat. En octobre 2005, à l'approche de l'échéance du contrat, le Conseil de Paris reporte sa clôture au 31 décembre 2005 et autorise le Maire à signer un avenant de prolongation, le temps d'achever des travaux de mise en conformité aux prescriptions de sécurité.",
+ "moments": [
+  {
+   "id": "29790",
+   "seance": "DECEMBRE 2001",
+   "fait": "Tarifs 2002 approuvés et avenant de conversion en euro autorisé",
+   "pourquoi": "premier acte connu sur la gestion tarifaire de la piscine",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=29790",
+   "fait_en": "2002 rates approved and euro-conversion amendment authorized",
+   "pourquoi_en": "first known record concerning the pool's rate-setting"
+  },
+  {
+   "id": "25925",
+   "seance": "OCTOBRE 2005",
+   "fait": "Contrat de délégation prolongé jusqu'au 31 décembre 2005",
+   "pourquoi": "clôture repoussée pour travaux de sécurité",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=25925",
+   "fait_en": "Delegation contract extended until 31 December 2005",
+   "pourquoi_en": "closure postponed for safety works"
+  }
+ ],
+ "montants": [],
+ "bmo_extraits": [],
+ "bmo_recit": null,
+ "invest": [],
+ "marches": [
+  {
+   "numero_marche": "20191410000956",
+   "objet": "CSP2 EXPLOIT. PISCINE ROGER LE GALL BD CARNOT",
+   "objet_clair": null,
+   "fournisseur": "LSU ROGER LEGALL",
+   "montant_max": 9480448.8,
+   "date_notification": "2019-06-28",
+   "preuve": "Objet du marché : \"CSP2 EXPLOIT. PISCINE ROGER LE GALL BD CARNOT\" — nomme explicitement le lieu et son exploitation ; fournisseur \"LSU ROGER LEGALL\" au nom du lieu."
+  },
+  {
+   "numero_marche": "decp-2025S04326",
+   "objet": "Exploitation de la piscine Roger Le Gall située au 34, boulevard Carnot dans le 12ème arrondissement de Paris",
+   "objet_clair": null,
+   "fournisseur": "ASSOCIATION UCPA SPORT LOISIRS",
+   "montant_max": 1573994.0,
+   "date_notification": "2025-05-13",
+   "preuve": "Objet du marché nomme le lieu et son adresse exacte : \"Exploitation de la piscine Roger Le Gall située au 34, boulevard Carnot dans le 12ème arrondissement de Paris\" (adresse confirmée par les délibérations 2005 DJS 422 et 2001 JS 565)."
+  },
+  {
+   "numero_marche": "20131410010516",
+   "objet": "CSP5 TRAITEMENT DE L'AIR LOT 4 PISCINE ROGER LE GALL",
+   "objet_clair": null,
+   "fournisseur": "EIFFAGE ENERGIE SYSTEMES",
+   "montant_max": 369365.0,
+   "date_notification": "2014-01-09",
+   "preuve": "Objet du marché : \"CSP5 TRAITEMENT DE L'AIR LOT 4 PISCINE ROGER LE GALL\" — travaux nommément sur le lieu."
+  },
+  {
+   "numero_marche": "20131410009328",
+   "objet": "CSP5 TX FILTRATION PISCINE ROGER LE GALL LOT 2",
+   "objet_clair": null,
+   "fournisseur": "EIFFAGE ENERGIE SYSTEMES",
+   "montant_max": 337500.0,
+   "date_notification": "2013-06-05",
+   "preuve": "Objet du marché : \"CSP5 TX FILTRATION PISCINE ROGER LE GALL LOT 2\" — travaux nommément sur le lieu."
+  },
+  {
+   "numero_marche": "20131410009326",
+   "objet": "CSP5 PISCINE ROGER LE GALL - LOT 1 MACONNERIE",
+   "objet_clair": null,
+   "fournisseur": "CONSTRUCTION BRACAL MICHEL 75",
+   "montant_max": 220714.62,
+   "date_notification": "2013-06-04",
+   "preuve": "Objet du marché : \"CSP5 PISCINE ROGER LE GALL - LOT 1 MACONNERIE\" — travaux nommément sur le lieu."
+  },
+  {
+   "numero_marche": "20171410001189",
+   "objet": "CSP5 MOE RENOVATION DE LA PISCINE ROGER LE GALL PARIS 12",
+   "objet_clair": null,
+   "fournisseur": "GRUET INGENIERIE",
+   "montant_max": 152960.0,
+   "date_notification": "2017-07-26",
+   "preuve": "Objet du marché : \"CSP5 MOE RENOVATION DE LA PISCINE ROGER LE GALL PARIS 12\" — maîtrise d'œuvre de rénovation nommément sur le lieu."
+  },
+  {
+   "numero_marche": "20131410009327",
+   "objet": "CSP5 PISCINE ROGER LE GALL LOT 3 SERRURERIE",
+   "objet_clair": null,
+   "fournisseur": "LABER METAL",
+   "montant_max": 55139.0,
+   "date_notification": "2013-06-10",
+   "preuve": "Objet du marché : \"CSP5 PISCINE ROGER LE GALL LOT 3 SERRURERIE\" — travaux nommément sur le lieu."
+  }
+ ],
+ "mandate": {
+  "par_annee": {
+   "2010": 53882.24,
+   "2011": 813585.23,
+   "2012": 50655.42,
+   "2013": 38606.31,
+   "2014": 966987.02,
+   "2015": 58578.43,
+   "2016": 53930.95,
+   "2017": 74186.01
+  },
+  "total_eur": 2110411.61,
+  "operations": [
+   {
+    "ap_cle": "1003913",
+    "ap_texte": "PISCINE ROGER LE GALL",
+    "mandate_par_annee": {
+     "2014": 966987.02,
+     "2015": 58578.43,
+     "2016": 53930.95,
+     "2017": 31520.99
+    },
+    "total_mandate": 1111017.39,
+    "preuve": "Libellé d'opération \"PISCINE ROGER LE GALL\", direction DJS (Jeunesse et Sports) — désigne nommément le lieu.",
+    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=1003913"
+   },
+   {
+    "ap_cle": "B100/1003913",
+    "ap_texte": "PISCINE ROGER LE GALL",
+    "mandate_par_annee": {
+     "2010": 53882.24,
+     "2011": 813585.23,
+     "2012": 50655.42,
+     "2013": 26709.26
+    },
+    "total_mandate": 944832.15,
+    "preuve": "Libellé d'opération \"PISCINE ROGER LE GALL\", direction DJS (Jeunesse et Sports) — désigne nommément le lieu.",
+    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/1003913"
+   },
+   {
+    "ap_cle": "1503913",
+    "ap_texte": "PISCINE ROGER LE GALL",
+    "mandate_par_annee": {
+     "2017": 41883.28
+    },
+    "total_mandate": 41883.28,
+    "preuve": "Libellé d'opération \"PISCINE ROGER LE GALL\", direction DJS (Jeunesse et Sports) — désigne nommément le lieu.",
+    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=1503913"
+   },
+   {
+    "ap_cle": "B100/1203913",
+    "ap_texte": "PISCINE ROGER LE GALL",
+    "mandate_par_annee": {
+     "2013": 11897.05
+    },
+    "total_mandate": 11897.05,
+    "preuve": "Libellé d'opération \"PISCINE ROGER LE GALL\", direction DJS (Jeunesse et Sports) — désigne nommément le lieu.",
+    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/1203913"
+   },
+   {
+    "ap_cle": "1705113",
+    "ap_texte": "PISCINE ROGER LE GALL",
+    "mandate_par_annee": {
+     "2017": 781.74
+    },
+    "total_mandate": 781.74,
+    "preuve": "Libellé d'opération \"PISCINE ROGER LE GALL\", direction DJS (Jeunesse et Sports) — désigne nommément le lieu.",
+    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=1705113"
+   }
+  ],
+  "periode": [
+   "2010",
+   "2017"
+  ],
+  "source": {
+   "name": "Comptes administratifs — autorisations de programme, Ville de Paris",
+   "url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/"
+  }
+ },
+ "sources": {
+  "delibs": {
+   "name": "Débat-Délibs — Conseil de Paris",
+   "url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=search-solr&query=Piscine+Roger-Le+Gall"
+  },
+  "bmo": {
+   "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
+   "url": "https://gallica.bnf.fr/ark:/12148/cb343512457/date"
+  },
+  "invest": {
+   "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
+   "url": "https://opendata.paris.fr/"
+  },
+  "wiki": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ },
+ "synthese_en": "Since 5 November 1999, when the delegation agreement took effect, management of the Roger-Le Gall swimming pool (12th arrondissement) has been entrusted by the City of Paris to the Club des nageurs de Paris, under a public service delegation contract. In December 2001, the Council of Paris approved new individual access rates effective 1 January 2002 and authorized the Mayor to sign an amendment converting the contract's amounts to euros. In October 2005, as the contract's expiry approached, the Council of Paris postponed its closure to 31 December 2005 and authorized the Mayor to sign an extension amendment, to allow time to complete works bringing the facility into compliance with safety requirements."
+}

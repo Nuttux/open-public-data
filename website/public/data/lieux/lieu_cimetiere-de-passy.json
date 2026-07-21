@@ -1,0 +1,84 @@
+{
+ "generated_at": "2026-07-21T17:04:41.999226+00:00",
+ "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
+ "slug": "cimetiere-de-passy",
+ "name": "Cimetière de Passy",
+ "kind_fr": "Cimetière",
+ "kind_en": "Cemetery",
+ "famille": "vert",
+ "arrondissement": 16,
+ "lat": 48.8625,
+ "lon": 2.285278,
+ "photo": "/img/lieux/cimetiere-de-passy.jpg",
+ "photo_credit": {
+  "licence": null,
+  "auteur": null,
+  "url": "https://fr.wikipedia.org/wiki/Cimeti%C3%A8re_de_Passy",
+  "source": "Wikipédia"
+ },
+ "wiki": {
+  "extract": "Le cimetière de Passy est un cimetière de Paris, dans le quartier de la Muette du 16e arrondissement.",
+  "url": "https://fr.wikipedia.org/wiki/Cimeti%C3%A8re_de_Passy",
+  "source": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  },
+  "extract_en": "The Cimetière de Passy is a cemetery in Paris, in the Muette quarter of the 16th arrondissement."
+ },
+ "stats": {
+  "n_delibs": 212,
+  "delibs_span": [
+   1995,
+   2026
+  ],
+  "n_bmo_brut": 0,
+  "n_bmo_verifies": null,
+  "invest_total_eur": 0,
+  "invest_annees": [],
+  "lecture_mode": "titre nommant le lieu (1 trouvés)",
+  "lecture_mode_en": "title naming the place (1 found)",
+  "n_lus": 1,
+  "n_lieu": 0
+ },
+ "subventions_exploitant": null,
+ "residents": [],
+ "kpi_montant": null,
+ "synthese_fr": "En décembre 2008, le groupe U.M.P.P.A. dépose un vœu demandant l'installation d'un mur végétal sur le mur d'enceinte du cimetière de Passy, côté place du Trocadéro, présenté par ses auteurs comme un lieu très fréquenté par les touristes. L'adjointe Fabienne Giboudeaux répond que des murs végétalisés existent déjà dans le 16e arrondissement depuis la mandature précédente et qu'un bilan de ces réalisations a été dressé. Elle indique que la décision sur de nouveaux murs végétalisés n'a pas encore été prise. L'échange porte sur le mur d'enceinte extérieur du cimetière, visible depuis le Trocadéro, et non sur le fonctionnement interne du cimetière lui-même.",
+ "moments": [
+  {
+   "id": "4992",
+   "seance": "DECEMBRE 2008",
+   "fait": "Vœu U.M.P.P.A. pour un mur végétal sur le mur d'enceinte du cimetière, côté Trocadéro",
+   "pourquoi": "seule mention du lieu identifiée au Conseil de Paris",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=4992",
+   "fait_en": "U.M.P.P.A. motion for a green wall on the cemetery's boundary wall, on the Trocadéro side",
+   "pourquoi_en": "only mention of the site identified at the Conseil de Paris"
+  }
+ ],
+ "montants": [],
+ "bmo_extraits": [],
+ "bmo_recit": null,
+ "invest": [],
+ "marches": [],
+ "mandate": null,
+ "sources": {
+  "delibs": {
+   "name": "Débat-Délibs — Conseil de Paris",
+   "url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=search-solr&query=Cimeti%C3%A8re+de+Passy"
+  },
+  "bmo": {
+   "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
+   "url": "https://gallica.bnf.fr/ark:/12148/cb343512457/date"
+  },
+  "invest": {
+   "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
+   "url": "https://opendata.paris.fr/"
+  },
+  "wiki": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ },
+ "synthese_en": "In December 2008, the U.M.P.P.A. group tabled a motion (voeu) calling for a green wall to be installed on the cemetery's boundary wall, on the Place du Trocadéro side, presented by its authors as a spot heavily frequented by tourists. Deputy mayor Fabienne Giboudeaux replied that green walls already existed in the 16th arrondissement from the previous mandate and that an assessment of these installations had been drawn up. She stated that no decision on new green walls had yet been made. The exchange concerned the cemetery's outer boundary wall, visible from the Trocadéro, not the cemetery's internal operations."
+}

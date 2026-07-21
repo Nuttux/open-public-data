@@ -1,0 +1,163 @@
+{
+ "generated_at": "2026-07-21T17:04:41.999226+00:00",
+ "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
+ "slug": "place-charles-de-gaulle-etoile",
+ "name": "Place Charles-de-Gaulle (Étoile)",
+ "kind_fr": "Place",
+ "kind_en": "Square",
+ "famille": "urbain",
+ "arrondissement": 8,
+ "lat": 48.872916,
+ "lon": 2.29402,
+ "photo": "/img/lieux/place-charles-de-gaulle-etoile.jpg",
+ "photo_credit": {
+  "licence": "CC BY-SA 4.0",
+  "auteur": "Chabe01",
+  "url": "https://commons.wikimedia.org/wiki/File:Acc%C3%A8s_Station_Charles_Gaulle_%C3%89toile_M%C3%A9tro_Paris_Place_Charles_Gaulle_-_Paris_XVII_(FR75)_-_2026-02-24_-_2.jpg",
+  "source": "Wikimedia Commons"
+ },
+ "wiki": {
+  "extract": null,
+  "url": null,
+  "source": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ },
+ "stats": {
+  "n_delibs": 1005,
+  "delibs_span": [
+   1998,
+   2016
+  ],
+  "n_bmo_brut": 0,
+  "n_bmo_verifies": null,
+  "invest_total_eur": 224597.0,
+  "invest_annees": [
+   "2022"
+  ],
+  "lecture_mode": "tête du classement Solr (1005 documents au total)",
+  "lecture_mode_en": "top of the Solr ranking (1005 documents total)",
+  "n_lus": 43,
+  "n_lieu": 11
+ },
+ "subventions_exploitant": null,
+ "residents": [],
+ "kpi_montant": null,
+ "synthese_fr": "Entre décembre 1998 et 2009, le Conseil de Paris approuve à plusieurs reprises des marchés d'entretien du passage souterrain piéton de la place : un premier marché en 1998, un nouveau marché en 2001, puis un autre en 2004, modifié par un avenant en 2005 passé avec la société COFRANETH Île-de-France. En parallèle, la réfection du pavage de la place fait l'objet d'une série d'approbations distinctes portant sur les 8e, 16e et 17e arrondissements : approbation du principe et autorisation de signer un marché de travaux en mai 2004, poursuite des travaux en avril 2005, puis une nouvelle vague de travaux approuvée en 2008 et en 2009, cette fois limitée aux 8e et 17e arrondissements ; la délibération de 2008 s'accompagne d'un vœu du groupe U.M.P.P.A. Un vœu déposé en 2016 par le groupe Les Républicains porte sur le tunnel de l'Étoile. Aucun montant chiffré n'apparaît dans les intitulés de ces délibérations. La grande majorité des autres documents trouvés mentionnant \"Charles de Gaulle\" concernent en réalité d'autres entités sans rapport avec la place — la Fondation Charles de Gaulle, la liaison ferroviaire Charles-de-Gaulle Express, l'aéroport de Roissy, le porte-avions, ou d'autres rues et places portant un nom proche.",
+ "moments": [
+  {
+   "id": "57267",
+   "seance": "DECEMBRE 1998",
+   "fait": "Premier marché d'entretien du passage souterrain piéton de la place approuvé.",
+   "pourquoi": "point de départ documenté de l'entretien du lieu",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=57267",
+   "fait_en": "First contract for the maintenance of the square's underground pedestrian passage approved.",
+   "pourquoi_en": "documented starting point for the site's maintenance"
+  },
+  {
+   "id": "33781",
+   "seance": "OCTOBRE 2001",
+   "fait": "Nouveau marché de nettoiement du passage souterrain piéton approuvé, trois ans après le premier.",
+   "pourquoi": "montre la récurrence des marchés d'entretien",
+   "vedette": false,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=33781",
+   "fait_en": "New cleaning contract for the underground pedestrian passage approved, three years after the first.",
+   "pourquoi_en": "shows the recurring nature of maintenance contracts"
+  },
+  {
+   "id": "45719",
+   "seance": "MAI 2004",
+   "fait": "Approbation des travaux de réfection du pavage et autorisation de signer le marché correspondant.",
+   "pourquoi": "premier grand chantier de réfection identifié",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=45719",
+   "fait_en": "Approval of the paving resurfacing works and authorization to sign the corresponding contract.",
+   "pourquoi_en": "first major resurfacing project identified"
+  },
+  {
+   "id": "46401",
+   "seance": "SEPTEMBRE 2004",
+   "fait": "Nouveau marché sur appel d'offres pour le nettoiement du passage souterrain piéton.",
+   "pourquoi": "entretien du souterrain relancé la même année",
+   "vedette": false,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=46401",
+   "fait_en": "New contract awarded via call for tenders for cleaning the underground pedestrian passage.",
+   "pourquoi_en": "maintenance of the underpass relaunched the same year"
+  },
+  {
+   "id": "63594",
+   "seance": "SEPTEMBRE 2005",
+   "fait": "Avenant au marché de nettoiement du passage souterrain, passé avec la société COFRANETH Île-de-France.",
+   "pourquoi": "modification du marché d'entretien en cours",
+   "vedette": false,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=63594",
+   "fait_en": "Amendment (avenant) to the underground passage cleaning contract, awarded to the company COFRANETH Île-de-France.",
+   "pourquoi_en": "modification of the ongoing maintenance contract"
+  },
+  {
+   "id": "43539",
+   "seance": "AVRIL 2005",
+   "fait": "Poursuite des travaux de réfection du pavage, sur les mêmes trois arrondissements qu'en 2004 (8e, 16e et 17e).",
+   "pourquoi": "continuité du chantier de pavage lancé l'année précédente",
+   "vedette": false,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=43539",
+   "fait_en": "Continuation of the paving resurfacing works, in the same three arrondissements as in 2004 (8th, 16th and 17th).",
+   "pourquoi_en": "continuity of the paving project launched the previous year"
+  },
+  {
+   "id": "6721",
+   "seance": "MAI 2008",
+   "fait": "Vœu déposé par le groupe U.M.P.P.A. à l'occasion de la délibération sur la réfection du pavage.",
+   "pourquoi": "un vœu accompagne l'approbation de cette nouvelle vague de travaux",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=6721",
+   "fait_en": "Wish (vœu) filed by the U.M.P.P.A. group in connection with the deliberation on paving resurfacing.",
+   "pourquoi_en": "a wish accompanies the approval of this new round of works"
+  },
+  {
+   "id": "34363",
+   "seance": "SEPTEMBRE 2009",
+   "fait": "Nouvelle approbation de travaux de réfection du pavage de la place.",
+   "pourquoi": "troisième vague de travaux de pavage en cinq ans",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=34363",
+   "fait_en": "New approval of paving resurfacing works for the square.",
+   "pourquoi_en": "third round of paving works in five years"
+  }
+ ],
+ "montants": [],
+ "bmo_extraits": [],
+ "bmo_recit": null,
+ "invest": [
+  {
+   "annee": 2022,
+   "montant_eur": 224597.0,
+   "nom_projet": "Place Charles de Gaulle - Réfection des trottoirs",
+   "preuve": "Nom du projet : \"Place Charles de Gaulle - Réfection des trottoirs\" — nomme explicitement le lieu ; distance_m=0.",
+   "id": "2022_16_48_022"
+  }
+ ],
+ "marches": [],
+ "mandate": null,
+ "sources": {
+  "delibs": {
+   "name": "Débat-Délibs — Conseil de Paris",
+   "url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=search-solr&query=Place+Charles-de-Gaulle+%28%C3%89toile%29"
+  },
+  "bmo": {
+   "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
+   "url": "https://gallica.bnf.fr/ark:/12148/cb343512457/date"
+  },
+  "invest": {
+   "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
+   "url": "https://opendata.paris.fr/"
+  },
+  "wiki": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ },
+ "synthese_en": "Between December 1998 and 2009, the Conseil de Paris repeatedly approved contracts for the maintenance of the square's underground pedestrian passage: a first contract in 1998, a new contract in 2001, then another in 2004, amended by a rider in 2005 awarded to the company COFRANETH Île-de-France. In parallel, the resurfacing of the square's paving was the subject of a separate series of approvals covering the 8th, 16th and 17th arrondissements: approval of the principle and authorization to sign a works contract in May 2004, continuation of the works in April 2005, then a new round of works approved in 2008 and 2009, this time limited to the 8th and 17th arrondissements; the 2008 deliberation was accompanied by a wish (vœu) from the U.M.P.P.A. group. A wish (vœu) filed in 2016 by the Les Républicains group concerns the Étoile tunnel. No specific amounts appear in the titles of these deliberations. The large majority of the other documents found mentioning \"Charles de Gaulle\" in fact concern other entities unrelated to the square — the Fondation Charles de Gaulle, the Charles-de-Gaulle Express rail link, Roissy airport, the aircraft carrier, or other streets and squares with a similar name."
+}

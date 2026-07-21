@@ -1,0 +1,72 @@
+{
+ "generated_at": "2026-07-21T17:04:41.999226+00:00",
+ "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
+ "slug": "marche-grenelle",
+ "name": "Marché Grenelle",
+ "kind_fr": "Marché",
+ "kind_en": "Market",
+ "famille": "services",
+ "arrondissement": 15,
+ "lat": 48.856278,
+ "lon": 2.317069,
+ "photo": "/img/lieux/marche-grenelle.jpg",
+ "photo_credit": {
+  "licence": null,
+  "auteur": null,
+  "url": "https://fr.wikipedia.org/wiki/March%C3%A9_Grenelle",
+  "source": "Wikipédia"
+ },
+ "wiki": {
+  "extract": "Le marché de Grenelle est un marché principalement de fruits et légumes situé dans le 15e arrondissement de Paris.",
+  "url": "https://fr.wikipedia.org/wiki/March%C3%A9_Grenelle",
+  "source": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  },
+  "extract_en": "The Grenelle market is a market selling mainly fruit and vegetables, located in the 15th arrondissement of Paris."
+ },
+ "stats": {
+  "n_delibs": 716,
+  "delibs_span": [
+   1995,
+   2025
+  ],
+  "n_bmo_brut": 0,
+  "n_bmo_verifies": null,
+  "invest_total_eur": 0,
+  "invest_annees": [],
+  "lecture_mode": "tête du classement Solr (716 documents au total)",
+  "lecture_mode_en": "top of the Solr ranking (716 documents total)",
+  "n_lus": 0,
+  "n_lieu": null
+ },
+ "subventions_exploitant": null,
+ "residents": [],
+ "kpi_montant": null,
+ "synthese_fr": null,
+ "moments": [],
+ "montants": [],
+ "bmo_extraits": [],
+ "bmo_recit": null,
+ "invest": [],
+ "marches": [],
+ "mandate": null,
+ "sources": {
+  "delibs": {
+   "name": "Débat-Délibs — Conseil de Paris",
+   "url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=search-solr&query=March%C3%A9+Grenelle"
+  },
+  "bmo": {
+   "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
+   "url": "https://gallica.bnf.fr/ark:/12148/cb343512457/date"
+  },
+  "invest": {
+   "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
+   "url": "https://opendata.paris.fr/"
+  },
+  "wiki": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ }
+}

@@ -1,0 +1,134 @@
+{
+ "generated_at": "2026-07-21T17:04:41.999226+00:00",
+ "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
+ "slug": "place-leon-blum",
+ "name": "Place Léon-Blum",
+ "kind_fr": "Place",
+ "kind_en": "Square",
+ "famille": "urbain",
+ "arrondissement": 11,
+ "lat": 48.858045,
+ "lon": 2.380503,
+ "photo": "/img/lieux/place-leon-blum.jpg",
+ "photo_credit": {
+  "licence": "CC BY 3.0",
+  "auteur": "Mbzt",
+  "url": "https://commons.wikimedia.org/wiki/File:P1020902_Paris_XI_Place_L%C3%A9on_Blum_rwk.JPG",
+  "source": "Wikimedia Commons"
+ },
+ "wiki": {
+  "extract": "La place Léon-Blum, anciennement mais encore parfois dénommée dans l'usage place Voltaire, est une voie située dans les quartiers de la Roquette et Saint-Ambroise du 11e arrondissement de Paris, en France.",
+  "url": "https://fr.wikipedia.org/wiki/Place_L%C3%A9on-Blum",
+  "source": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  },
+  "extract_en": "Place Léon-Blum, formerly — and still sometimes referred to in common usage — as place Voltaire, is a street located in the Roquette and Saint-Ambroise districts of the 11th arrondissement of Paris, France."
+ },
+ "stats": {
+  "n_delibs": 1017,
+  "delibs_span": [
+   1999,
+   2005
+  ],
+  "n_bmo_brut": 0,
+  "n_bmo_verifies": null,
+  "invest_total_eur": 0,
+  "invest_annees": [],
+  "lecture_mode": "titre nommant le lieu (7 trouvés)",
+  "lecture_mode_en": "title naming the place (7 found)",
+  "n_lus": 6,
+  "n_lieu": 2
+ },
+ "subventions_exploitant": null,
+ "residents": [],
+ "kpi_montant": null,
+ "synthese_fr": "En 1999, en réponse à une question du Conseil du 11e arrondissement, l'adjoint Bernard Plasait indique que l'état général de la place est alors jugé moyen, notamment pour ses revêtements, et qu'un réaménagement complet n'est pas budgété mais qu'une étude détaillée est prévue. Entre 2001 et 2005, les délibérations portent surtout sur des sujets connexes domiciliés sur la place : le principe de travaux de climatisation de l'état civil à la mairie du 11e, puis des subventions annuelles à deux associations locales (11ème Evénements pour le festival \"Onze bouge\" en 2002, Comité Municipal des Fêtes du 11e arrondissement en 2004 et 2005) pour l'animation de l'arrondissement. En novembre 2005, le Conseil approuve enfin le principe d'un réaménagement de la place elle-même, portant sur la voirie et l'éclairage, après une concertation avec les conseils de quartier que Georges Sarre, maire du 11e, décrit comme longue et complète.",
+ "moments": [
+  {
+   "id": "5438",
+   "seance": "JUIN 1999",
+   "fait": "Question au Maire sur l'état de la place et un futur aménagement",
+   "pourquoi": "état jugé moyen, réaménagement pas encore budgété",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=5438",
+   "fait_en": "Question to the mayor about the condition of the square and a future redevelopment",
+   "pourquoi_en": "condition considered average, redevelopment not yet budgeted"
+  },
+  {
+   "id": "71797",
+   "seance": "DECEMBRE 2001",
+   "fait": "Approbation du principe de travaux de climatisation à l'état civil de la mairie",
+   "pourquoi": "travaux approuvés en principe dans le bâtiment attenant à la place",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=71797",
+   "fait_en": "Approval in principle of air-conditioning works for the civil registry office at the town hall",
+   "pourquoi_en": "works approved in principle in the building adjoining the square"
+  },
+  {
+   "id": "88362",
+   "seance": "JUILLET 2002",
+   "fait": "Subvention de 30 000 euros à l'association 11ème Evénements",
+   "pourquoi": "financement du festival Onze bouge, association domiciliée place",
+   "vedette": false,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=88362",
+   "fait_en": "Grant of 30,000 euros to the association 11ème Evénements",
+   "pourquoi_en": "funding for the Onze bouge festival, association based on the square"
+  },
+  {
+   "id": "59955",
+   "seance": "JUILLET 2004",
+   "fait": "Subvention de 38 000 euros au Comité Municipal des Fêtes du 11e",
+   "pourquoi": "aide annuelle à l'animation locale, association sise place",
+   "vedette": false,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=59955",
+   "fait_en": "Grant of 38,000 euros to the Comité Municipal des Fêtes du 11e arrondissement",
+   "pourquoi_en": "annual support for local events, association located on the square"
+  },
+  {
+   "id": "83264",
+   "seance": "JUIN 2005",
+   "fait": "Reconduction de la subvention au Comité municipal des fêtes (34 000 euros)",
+   "pourquoi": "reconduction de l'aide annuelle à l'animation locale",
+   "vedette": false,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=83264",
+   "fait_en": "Renewal of the grant to the Comité municipal des fêtes (34,000 euros)",
+   "pourquoi_en": "renewal of annual support for local events"
+  },
+  {
+   "id": "19260",
+   "seance": "NOVEMBRE 2005",
+   "fait": "Approbation du principe de réaménagement de la place (voirie, éclairage)",
+   "pourquoi": "aboutissement d'une concertation avec les conseils de quartier, décrite par le maire du 11e comme longue et complète",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=19260",
+   "fait_en": "Approval in principle of the redevelopment of the square (roadworks, lighting)",
+   "pourquoi_en": "outcome of consultation with the neighborhood councils, described by the mayor of the 11th arrondissement as long and thorough"
+  }
+ ],
+ "montants": [],
+ "bmo_extraits": [],
+ "bmo_recit": null,
+ "invest": [],
+ "marches": [],
+ "mandate": null,
+ "sources": {
+  "delibs": {
+   "name": "Débat-Délibs — Conseil de Paris",
+   "url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=search-solr&query=Place+L%C3%A9on-Blum"
+  },
+  "bmo": {
+   "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
+   "url": "https://gallica.bnf.fr/ark:/12148/cb343512457/date"
+  },
+  "invest": {
+   "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
+   "url": "https://opendata.paris.fr/"
+  },
+  "wiki": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ },
+ "synthese_en": "In 1999, responding to a question from the 11th arrondissement council, deputy mayor Bernard Plasait stated that the square's overall condition was considered average, particularly its surfacing, and that a full redevelopment was not budgeted but that a detailed study was planned. Between 2001 and 2005, the deliberations mainly concerned related matters located on the square: the approval in principle of air-conditioning works for the civil registry office at the 11th arrondissement town hall, followed by annual grants to two local associations (11ème Evénements for the \"Onze bouge\" festival in 2002, and the Comité Municipal des Fêtes du 11e arrondissement in 2004 and 2005) to support activities in the arrondissement. In November 2005, the council finally approved the principle of a redevelopment of the square itself, covering roadworks and lighting, following consultation with the neighborhood councils that Georges Sarre, mayor of the 11th arrondissement, described as long and thorough."
+}

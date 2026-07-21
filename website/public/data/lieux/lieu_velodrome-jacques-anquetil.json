@@ -1,0 +1,104 @@
+{
+ "generated_at": "2026-07-21T17:04:41.999226+00:00",
+ "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
+ "slug": "velodrome-jacques-anquetil",
+ "name": "Vélodrome Jacques-Anquetil",
+ "kind_fr": "Vélodrome",
+ "kind_en": "Vélodrome",
+ "famille": "sport",
+ "arrondissement": 12,
+ "lat": 48.82596,
+ "lon": 2.41173,
+ "photo": "/img/lieux/velodrome-jacques-anquetil.jpg",
+ "photo_credit": {
+  "licence": null,
+  "auteur": null,
+  "url": "https://fr.wikipedia.org/wiki/V%C3%A9lodrome_Jacques-Anquetil",
+  "source": "Wikipédia"
+ },
+ "wiki": {
+  "extract": "Le vélodrome Jacques-Anquetil, anciennement vélodrome de la Cipale ou la Cipale, est un vélodrome situé à Paris, dans le Bois de Vincennes depuis 1896. Il a accueilli l'arrivée de plusieurs étapes finales du Tour de France entre 1968 et 1974.",
+  "url": "https://fr.wikipedia.org/wiki/V%C3%A9lodrome_Jacques-Anquetil",
+  "source": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  },
+  "extract_en": "The Vélodrome Jacques-Anquetil, formerly known as the Vélodrome de la Cipale or La Cipale, is a velodrome located in Paris, in the Bois de Vincennes, since 1896. It hosted the finish of several final stages of the Tour de France between 1968 and 1974."
+ },
+ "stats": {
+  "n_delibs": 930,
+  "delibs_span": [
+   1998,
+   1998
+  ],
+  "n_bmo_brut": 0,
+  "n_bmo_verifies": null,
+  "invest_total_eur": 0,
+  "invest_annees": [],
+  "lecture_mode": "titre nommant le lieu (2 trouvés)",
+  "lecture_mode_en": "title naming the place (2 found)",
+  "n_lus": 2,
+  "n_lieu": 2
+ },
+ "subventions_exploitant": null,
+ "residents": [],
+ "kpi_montant": null,
+ "synthese_fr": "En juin 1998, le Conseil de Paris examine puis adopte l'autorisation donnée au Maire de signer avec la société « l'Orchidée » une convention d'occupation du domaine public pour le chalet-restaurant « La Cipale », situé dans les dépendances du vélodrome Jacques-Anquetil, 49 avenue de Gravelle (12e), dans le bois de Vincennes. En séance, M. Gérard Rey conteste la qualification retenue pour cette convention : selon lui, la prorogation de sa durée liée à l'augmentation des investissements du concessionnaire, ainsi que le versement à la Ville de droits fonction des résultats financiers de l'établissement, en font en réalité une délégation de service public, dont la procédure ne serait pas conforme à la jurisprudence de la loi « Sapin ». La délibération prévoit par ailleurs que la redevance versée à la Ville sera constatée chaque année sur une ligne dédiée du budget de fonctionnement, sans en fixer le montant.",
+ "moments": [
+  {
+   "id": "83621",
+   "seance": "JUIN 1998",
+   "fait": "Le Conseil autorise le Maire à signer une convention d'occupation du domaine public avec la société l'Orchidée pour le chalet-restaurant La Cipale, dans les dépendances du vélodrome.",
+   "pourquoi": "premier acte officiel concernant le vélodrome",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=83621",
+   "fait_en": "The Council authorizes the Mayor to sign an agreement for occupation of public land with the company l'Orchidée for the chalet-restaurant La Cipale, within the grounds of the velodrome.",
+   "pourquoi_en": "first official act concerning the velodrome"
+  },
+  {
+   "id": "22501",
+   "seance": "JUIN 1998",
+   "fait": "Un conseiller, M. Gérard Rey, conteste en séance la qualification juridique de la convention, estimant qu'elle relève en réalité d'une délégation de service public.",
+   "pourquoi": "un élu conteste le montage juridique retenu",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=22501",
+   "fait_en": "A council member, Mr. Gérard Rey, contests during the session the legal qualification of the agreement, arguing that it is in fact a public service delegation.",
+   "pourquoi_en": "a council member contests the legal arrangement adopted"
+  }
+ ],
+ "montants": [],
+ "bmo_extraits": [],
+ "bmo_recit": null,
+ "invest": [],
+ "marches": [
+  {
+   "numero_marche": "decp-2024S10382",
+   "objet": "Mission de maîtrise d'œuvre dans le cadre de la réhabilitation des tribunes du Vélodrome Jacques Anquetil, Paris 12ème",
+   "objet_clair": null,
+   "fournisseur": "SCHEMA ARCHITECTES",
+   "montant_max": 268300.0,
+   "date_notification": "2024-01-01",
+   "preuve": "Objet du marché : « Mission de maîtrise d'œuvre dans le cadre de la réhabilitation des tribunes du Vélodrome Jacques Anquetil, Paris 12ème » — nomme explicitement le lieu et porte sur des travaux sur site (réhabilitation des tribunes)."
+  }
+ ],
+ "mandate": null,
+ "sources": {
+  "delibs": {
+   "name": "Débat-Délibs — Conseil de Paris",
+   "url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=search-solr&query=V%C3%A9lodrome+Jacques-Anquetil"
+  },
+  "bmo": {
+   "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
+   "url": "https://gallica.bnf.fr/ark:/12148/cb343512457/date"
+  },
+  "invest": {
+   "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
+   "url": "https://opendata.paris.fr/"
+  },
+  "wiki": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ },
+ "synthese_en": "In June 1998, the Paris Council examined and then adopted the authorization for the Mayor to sign an agreement with the company \"l'Orchidée\" for occupation of public land for the chalet-restaurant \"La Cipale,\" located within the grounds of the Vélodrome Jacques-Anquetil, 49 avenue de Gravelle (12th arrondissement), in the Bois de Vincennes. During the session, Mr. Gérard Rey contested the legal qualification given to this agreement: in his view, the extension of its duration linked to the increase in the concessionaire's investments, together with the payment to the City of fees based on the establishment's financial results, in fact made it a public service delegation, whose procedure would not comply with the case law under the \"Sapin\" law. The resolution also provides that the fee paid to the City will be recorded each year on a dedicated line of the operating budget, without setting its amount."
+}

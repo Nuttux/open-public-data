@@ -1,0 +1,107 @@
+{
+ "generated_at": "2026-07-21T17:04:41.999226+00:00",
+ "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
+ "slug": "piscine-dunois",
+ "name": "Piscine Dunois",
+ "kind_fr": "Piscine",
+ "kind_en": "Swimming pool",
+ "famille": "sport",
+ "arrondissement": 13,
+ "lat": 48.831667,
+ "lon": 2.368401,
+ "photo": null,
+ "photo_credit": null,
+ "wiki": {
+  "extract": null,
+  "url": null,
+  "source": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ },
+ "stats": {
+  "n_delibs": 1365,
+  "delibs_span": [
+   2002,
+   2003
+  ],
+  "n_bmo_brut": 0,
+  "n_bmo_verifies": null,
+  "invest_total_eur": 0,
+  "invest_annees": [],
+  "lecture_mode": "titre nommant le lieu (2 trouvés)",
+  "lecture_mode_en": "title naming the place (2 found)",
+  "n_lus": 2,
+  "n_lieu": 2
+ },
+ "subventions_exploitant": null,
+ "residents": [],
+ "kpi_montant": null,
+ "synthese_fr": "Les deux délibérations retrouvées pour la piscine Dunois (13e) concernent des travaux de mise aux normes de l'équipement, portés par M. Pascal Cherki au nom de la 7e Commission. En novembre 2002, le Conseil de Paris approuve le principe de trois marchés pour la mise aux normes de l'alarme incendie, la création d'un dépotage acide-chlore et la protection cathodique des filtres. Un an plus tard, en décembre 2003, une nouvelle série de trois marchés porte sur la mise aux normes des installations électriques, l'amélioration de la filtration et du réseau de plomberie. Dans les deux cas, le Conseil approuve seulement le principe des marchés et autorise le Maire de Paris à les souscrire après appel d'offres ; le montant de la dépense n'est pas précisé dans ces délibérations.",
+ "moments": [
+  {
+   "id": "45419",
+   "seance": "NOVEMBRE 2002",
+   "fait": "Le Conseil approuve le principe de trois marchés et autorise le Maire à les souscrire, pour la mise aux normes incendie et le traitement de l'eau (chlore) des filtres.",
+   "pourquoi": "premiers travaux connus, sécurité et traitement de l'eau",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=45419",
+   "fait_en": "The Council approves the principle of three procurement contracts and authorizes the Mayor to enter into them, for bringing the fire alarm up to code and treating the filter water (chlorine).",
+   "pourquoi_en": "first known works, safety and water treatment"
+  },
+  {
+   "id": "69221",
+   "seance": "DECEMBRE 2003",
+   "fait": "Le Conseil approuve le principe de trois nouveaux marchés et autorise le Maire à les souscrire, pour l'électricité, la filtration et la plomberie.",
+   "pourquoi": "second chantier, un an après, rénovation technique",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=69221",
+   "fait_en": "The Council approves the principle of three new procurement contracts and authorizes the Mayor to enter into them, for electrical work, filtration, and plumbing.",
+   "pourquoi_en": "second phase of works, one year later, technical renovation"
+  }
+ ],
+ "montants": [],
+ "bmo_extraits": [],
+ "bmo_recit": null,
+ "invest": [],
+ "marches": [
+  {
+   "numero_marche": "20151410001233",
+   "objet": "CSP5 TCE PISCINE DUNOIS LOT 1",
+   "objet_clair": null,
+   "fournisseur": "ATELIER DES COMPAGNONS",
+   "montant_max": 498478.11,
+   "date_notification": "2015-07-09",
+   "preuve": "Objet du marché : \"CSP5 TCE PISCINE DUNOIS LOT 1\" — nomme explicitement la Piscine Dunois (70 rue Dunois, 13e), cohérent avec les délibérations 2002 DJS 568 et 2003 JS 631 autorisant des marchés de travaux sur cette même piscine."
+  },
+  {
+   "numero_marche": "20151410001234",
+   "objet": "CSP5 TX PISCINE DUNOIS LOT 2",
+   "objet_clair": null,
+   "fournisseur": "BOUYGUES ENERGIES & SERVICES",
+   "montant_max": 66518.0,
+   "date_notification": "2015-07-09",
+   "preuve": "Objet du marché : \"CSP5 TX PISCINE DUNOIS LOT 2\" — nomme explicitement la Piscine Dunois, second lot du même programme de travaux que le marché 20151410001233."
+  }
+ ],
+ "mandate": null,
+ "sources": {
+  "delibs": {
+   "name": "Débat-Délibs — Conseil de Paris",
+   "url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=search-solr&query=Piscine+Dunois"
+  },
+  "bmo": {
+   "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
+   "url": "https://gallica.bnf.fr/ark:/12148/cb343512457/date"
+  },
+  "invest": {
+   "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
+   "url": "https://opendata.paris.fr/"
+  },
+  "wiki": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ },
+ "synthese_en": "The two council decisions found for the Piscine Dunois (13th arrondissement) concern upgrading work on the facility, brought by Mr. Pascal Cherki on behalf of the 7th Commission. In November 2002, the Council of Paris approved the principle of three procurement contracts for bringing the fire alarm up to code, creating an acid-chlorine unloading facility, and cathodic protection of the filters. A year later, in December 2003, a new set of three contracts covered bringing the electrical installations up to code and improving the filtration and plumbing systems. In both cases, the Council approved only the principle of the contracts and authorized the Mayor of Paris to enter into them following a call for tenders; the amount of the expenditure is not specified in these council decisions."
+}

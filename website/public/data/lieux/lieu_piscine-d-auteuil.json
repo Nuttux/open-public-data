@@ -1,0 +1,140 @@
+{
+ "generated_at": "2026-07-21T17:04:41.999226+00:00",
+ "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
+ "slug": "piscine-d-auteuil",
+ "name": "Piscine d'Auteuil",
+ "kind_fr": "Piscine",
+ "kind_en": "Swimming pool",
+ "famille": "sport",
+ "arrondissement": 16,
+ "lat": 48.847744,
+ "lon": 2.264724,
+ "photo": "/img/lieux/piscine-d-auteuil.jpg",
+ "photo_credit": {
+  "licence": "Public domain",
+  "auteur": "\nAgence Rol. Agence photographique (commanditaire)",
+  "url": "https://commons.wikimedia.org/wiki/File:13-8-29,_plage_(de_la_nouvelle)_piscine_d%27Auteuil_-_btv1b532188053.jpg",
+  "source": "Wikimedia Commons"
+ },
+ "wiki": {
+  "extract": null,
+  "url": null,
+  "source": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ },
+ "stats": {
+  "n_delibs": 842,
+  "delibs_span": [
+   1996,
+   2018
+  ],
+  "n_bmo_brut": 0,
+  "n_bmo_verifies": null,
+  "invest_total_eur": 0,
+  "invest_annees": [],
+  "lecture_mode": "titre nommant le lieu (3 trouvés)",
+  "lecture_mode_en": "title naming the place (3 found)",
+  "n_lus": 3,
+  "n_lieu": 3
+ },
+ "subventions_exploitant": null,
+ "residents": [],
+ "kpi_montant": null,
+ "synthese_fr": "En avril 1996, le Conseil de Paris approuve le principe de travaux de génie climatique dans la piscine d'Auteuil (16e) et autorise le Maire à signer le marché correspondant ; la dépense inscrite au budget d'investissement reste sous réserve de la décision de financement. En juillet 1998, il approuve le principe d'une réfection partielle des installations de filtration et d'électricité de l'équipement, répartie en deux marchés sur appel d'offres. Vingt ans plus tard, en juillet 2018, plusieurs élus du 16e arrondissement déposent un vœu relatif à la rénovation de la piscine d'Auteuil.",
+ "moments": [
+  {
+   "id": "68292",
+   "seance": "AVRIL 1996",
+   "fait": "Le Conseil approuve le principe de travaux de génie climatique dans la piscine et autorise le Maire à signer le marché.",
+   "pourquoi": "premier chantier technique voté sur l'équipement",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=68292",
+   "fait_en": "The Council approves the principle of climate-engineering works at the pool and authorizes the Mayor to sign the contract.",
+   "pourquoi_en": "first technical works project voted on the facility"
+  },
+  {
+   "id": "82793",
+   "seance": "JUILLET 1998",
+   "fait": "Le Conseil approuve le principe de réfection de la filtration et de l'électricité, deux marchés autorisés.",
+   "pourquoi": "deuxième chantier technique deux ans après",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=82793",
+   "fait_en": "The Council approves the principle of refurbishing the filtration and electrical systems, two contracts authorized.",
+   "pourquoi_en": "second technical works project two years later"
+  },
+  {
+   "id": "143970",
+   "seance": "JUILLET 2018",
+   "fait": "Plusieurs élus du 16e déposent un vœu relatif à la rénovation de la piscine.",
+   "pourquoi": "vingt ans plus tard, nouvel appel d'élus",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=143970",
+   "fait_en": "Several elected officials from the 16th arrondissement table a motion (vœu) concerning the renovation of the pool.",
+   "pourquoi_en": "twenty years later, a new call from elected officials"
+  }
+ ],
+ "montants": [],
+ "bmo_extraits": [],
+ "bmo_recit": null,
+ "invest": [],
+ "marches": [
+  {
+   "numero_marche": "20232023T01429",
+   "objet": "MODERNISATION TOTAL DES LOCAUX PISCINE D'AUTEUIL",
+   "objet_clair": null,
+   "fournisseur": "LA LOUISIANE",
+   "montant_max": 805043.21,
+   "date_notification": "2023-03-01",
+   "preuve": "Objet du marché : « MODERNISATION TOTAL DES LOCAUX PISCINE D'AUTEUIL » — nomme explicitement le lieu."
+  },
+  {
+   "numero_marche": "20222022S06349",
+   "objet": "VENTILATION PISCINE D'AUTEUIL 1 RTE DES LACS DE PASSY",
+   "objet_clair": null,
+   "fournisseur": "THERMI FLUIDES",
+   "montant_max": 51590.0,
+   "date_notification": "2022-08-22",
+   "preuve": "Objet du marché : « VENTILATION PISCINE D'AUTEUIL 1 RTE DES LACS DE PASSY » — nomme le lieu et son adresse exacte (1, route des Lacs à Passy), confirmée par la délibération 1998 JS 140 (« piscine d'Auteuil, 1, route des Lacs à Passy (16e) »)."
+  },
+  {
+   "numero_marche": "20212021T01077",
+   "objet": "RÉNOVATION DU SYSTÈME SSI À LA PISCINE D'AUTEUIL 75016",
+   "objet_clair": null,
+   "fournisseur": "AMPERELEC",
+   "montant_max": 33490.3,
+   "date_notification": "2021-03-10",
+   "preuve": "Objet du marché : « RÉNOVATION DU SYSTÈME SSI À LA PISCINE D'AUTEUIL 75016 » — nomme explicitement le lieu."
+  },
+  {
+   "numero_marche": "decp-2025T10330",
+   "objet": "Marché de travaux pour la modernisation d'un compresseur de plongée à la piscine d'Auteuil dans le 16ème",
+   "objet_clair": null,
+   "fournisseur": "BCH COMPRESSEURS",
+   "montant_max": 20210.0,
+   "date_notification": "2025-09-29",
+   "preuve": "Objet du marché : « … modernisation d'un compresseur de plongée à la piscine d'Auteuil dans le 16ème » — nomme explicitement le lieu (lieu_execution DECP générique « Paris », non probant seul, mais l'objet suffit)."
+  }
+ ],
+ "mandate": null,
+ "sources": {
+  "delibs": {
+   "name": "Débat-Délibs — Conseil de Paris",
+   "url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=search-solr&query=Piscine+d%27Auteuil"
+  },
+  "bmo": {
+   "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
+   "url": "https://gallica.bnf.fr/ark:/12148/cb343512457/date"
+  },
+  "invest": {
+   "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
+   "url": "https://opendata.paris.fr/"
+  },
+  "wiki": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ },
+ "synthese_en": "In April 1996, the Paris Council approved the principle of climate-engineering works at the Piscine d'Auteuil (16th arrondissement) and authorized the Mayor to sign the corresponding contract; the expenditure entered in the investment budget remained subject to the financing decision. In July 1998, it approved the principle of a partial refurbishment of the filtration and electrical installations of the facility, split into two contracts under open tender. Twenty years later, in July 2018, several elected officials from the 16th arrondissement tabled a motion (vœu) concerning the renovation of the Piscine d'Auteuil."
+}

@@ -1,0 +1,286 @@
+{
+ "generated_at": "2026-07-21T17:04:41.999226+00:00",
+ "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
+ "slug": "place-des-fetes",
+ "name": "Place des Fêtes",
+ "kind_fr": "Place",
+ "kind_en": "Square",
+ "famille": "urbain",
+ "arrondissement": 19,
+ "lat": 48.877435,
+ "lon": 2.393049,
+ "photo": "/img/lieux/place-des-fetes.jpg",
+ "photo_credit": {
+  "licence": "CC BY 3.0",
+  "auteur": "Mbzt",
+  "url": "https://commons.wikimedia.org/wiki/File:P1200479_Paris_XIX_place_des_Fetes_parvis_central_rwk.jpg",
+  "source": "Wikimedia Commons"
+ },
+ "wiki": {
+  "extract": "La place des Fêtes est une vaste place de l'est du 19e arrondissement de Paris, qui a donné son nom au quartier qui l'entoure.",
+  "url": "https://fr.wikipedia.org/wiki/Place_des_F%C3%AAtes_(Paris)",
+  "source": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  },
+  "extract_en": "Place des Fêtes is a large square in the eastern part of Paris's 19th arrondissement, which gave its name to the surrounding neighborhood."
+ },
+ "stats": {
+  "n_delibs": 1035,
+  "delibs_span": [
+   1995,
+   2015
+  ],
+  "n_bmo_brut": 0,
+  "n_bmo_verifies": null,
+  "invest_total_eur": 0,
+  "invest_annees": [],
+  "lecture_mode": "titre nommant le lieu (27 trouvés)",
+  "lecture_mode_en": "title naming the place (27 found)",
+  "n_lus": 27,
+  "n_lieu": 8
+ },
+ "subventions_exploitant": null,
+ "residents": [
+  {
+   "beneficiaire": "LES MERES EN PLACE",
+   "montant_total": 10000.0,
+   "preuve": "Objet de subvention : \"Lien social : Favoriser les lien et l'entraide entre les famille de la place des Fêtes\" — nomme explicitement la place des Fêtes comme périmètre d'action de l'association.",
+   "preuve_en": "Grant purpose: \"Social ties: fostering bonds and mutual support among families of the Place des Fêtes\" — explicitly names the Place des Fêtes as the association's area of action."
+  }
+ ],
+ "kpi_montant": null,
+ "synthese_fr": "Entre 1995 et 2015, les délibérations relatives à la place des Fêtes portent en grande partie sur des équipements et associations installés à proximité immédiate : un avenant à un marché de travaux d'aménagement en 1995, un débat sur la densification du quartier lors d'une modification du plan d'occupation des sols en 1997, l'annonce, contestée par des élus communistes, de la fermeture programmée pour 1999 d'une agence de service public de proximité, puis une longue série de subventions à des associations domiciliées sur ou près de la place (maison de quartier, commerçants, Advocacy Paris Île-de-France). Les commerçants de la place reçoivent à plusieurs reprises entre 1996 et 2010 une subvention pour les illuminations de fin d'année ; quand la délibération précise une base de calcul, la subvention versée reste inférieure aux dépenses prévisionnelles retenues. En 2015, un vœu porté par les élus du 19e arrondissement appelle à accélérer la concrétisation du réaménagement participatif de la place, engagé depuis 2012 et tranché par une votation citoyenne en décembre 2014, et il est adopté avec l'avis favorable de l'Exécutif.",
+ "moments": [
+  {
+   "id": "1084",
+   "seance": "OCTOBRE 1995",
+   "fait": "Le Maire de Paris est autorisé à souscrire un avenant au marché de travaux d'aménagement de la place avec l'entreprise Cochery-Bourdin-Chaussé, augmentant la tranche ferme et le délai.",
+   "pourquoi": "premier chantier documenté d'aménagement de la place",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=1084",
+   "fait_en": "The Mayor of Paris is authorized to sign an amendment to the square's redevelopment works contract with the firm Cochery-Bourdin-Chaussé, increasing the firm tranche and the deadline.",
+   "pourquoi_en": "the first documented construction project to redevelop the square"
+  },
+  {
+   "id": "24472",
+   "seance": "OCTOBRE 1997",
+   "fait": "En séance, une élue (Mme Schneiter) dénonce la surdensification du secteur lors du débat sur le classement voisin en zone UH, propos que l'adjointe à l'Urbanisme reconnaît en partie.",
+   "pourquoi": "un débat contradictoire sur la densification du quartier",
+   "vedette": false,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=24472",
+   "fait_en": "During the session, a councillor (Ms. Schneiter) denounces the area's overdensification during the debate on the neighboring rezoning to zone UH, a claim the deputy mayor for urban planning partly acknowledges.",
+   "pourquoi_en": "a contentious debate over the neighborhood's densification"
+  },
+  {
+   "id": "24483",
+   "seance": "OCTOBRE 1997",
+   "fait": "Des élus socialistes interrogent la Ville sur l'avancement du projet de \"Maison de la place des Fêtes\" ; la réponse annonce un centre d'animation de 1 000 m² après enquête publique favorable.",
+   "pourquoi": "la genèse du futur équipement socio-culturel du quartier",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=24483",
+   "fait_en": "Socialist councillors question the City on the progress of the \"Maison de la place des Fêtes\" project; the response announces a 1,000 m² community center following a favorable public inquiry.",
+   "pourquoi_en": "the origins of the neighborhood's future socio-cultural facility"
+  },
+  {
+   "id": "15883",
+   "seance": "NOVEMBRE 1998",
+   "fait": "Des conseillers communistes interpellent le Maire sur la fermeture programmée de l'agence EDF-GDF de la place, remplacée par une petite unité mutualisée pour tout le 19e.",
+   "pourquoi": "un service public de proximité menacé de fermeture",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=15883",
+   "fait_en": "Communist councillors question the Mayor about the planned closure of the square's EDF-GDF office, to be replaced by a small unit shared across the entire 19th arrondissement.",
+   "pourquoi_en": "a local public service under threat of closure"
+  },
+  {
+   "id": "2905",
+   "seance": "FEVRIER 2000",
+   "fait": "Un élu du Front national interroge le Préfet de police sur la délinquance dans le quartier ; la réponse rappelle que les statistiques ne sont établies qu'au niveau de l'arrondissement.",
+   "pourquoi": "une question sensible sur la sécurité du quartier",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=2905",
+   "fait_en": "A Front National councillor questions the Prefect of Police about crime in the neighborhood; the response notes that statistics are only compiled at the arrondissement level.",
+   "pourquoi_en": "a sensitive question about the neighborhood's safety"
+  },
+  {
+   "id": "73286",
+   "seance": "DECEMBRE 2007",
+   "fait": "Le Conseil annule et remplace une délibération d'octobre 2007 pour corriger une erreur matérielle et confirme 20 000 euros à l'association Advocacy Paris Île-de-France.",
+   "pourquoi": "une délibération corrigée après une erreur de montant",
+   "vedette": false,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=73286",
+   "fait_en": "The Council annuls and replaces an October 2007 resolution to correct a clerical error and confirms 20,000 euros for the association Advocacy Paris Île-de-France.",
+   "pourquoi_en": "a resolution corrected after an error in the amount"
+  },
+  {
+   "id": "79150",
+   "seance": "FEVRIER 2010",
+   "fait": "Le Conseil subventionne l'association des commerçants à hauteur de 5 500 euros pour les illuminations de fin d'année 2009, sur des dépenses prévisionnelles de 12 000 euros.",
+   "pourquoi": "le financement récurrent des illuminations de fin d'année",
+   "vedette": false,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=79150",
+   "fait_en": "The Council grants the shopkeepers' association 5,500 euros for the 2009 end-of-year illuminations, against projected expenses of 12,000 euros.",
+   "pourquoi_en": "the recurring funding of end-of-year illuminations"
+  },
+  {
+   "id": "128253",
+   "seance": "DECEMBRE 2015",
+   "fait": "Le Conseil adopte un vœu appelant à accélérer le réaménagement participatif de la place, engagé depuis 2012 et validé par une votation citoyenne en décembre 2014.",
+   "pourquoi": "le vote qui relance le réaménagement participatif de la place",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=128253",
+   "fait_en": "The Council adopts a resolution calling for the participatory redevelopment of the square — under way since 2012 and approved by a citizen vote in December 2014 — to be accelerated.",
+   "pourquoi_en": "the vote that revives the square's participatory redevelopment"
+  }
+ ],
+ "montants": [
+  {
+   "seance": "FEVRIER 2010",
+   "montant": "5.500 euros",
+   "objet": "illuminations de fin d'année 2009",
+   "citation": "Une subvention de 5.500 euros est attribuée à l?association des commerçants pour l?animation de la place des fêtes située 10, rue Augustin Thierry (19e)",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=79150"
+  },
+  {
+   "seance": "FEVRIER 2010",
+   "montant": "12.000 euros",
+   "objet": "dépenses prévisionnelles des illuminations 2009",
+   "citation": "Cette subvention a été arrêtée sur la base de dépenses prévisionnelles évaluées à 12.000 euros.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=79150"
+  },
+  {
+   "seance": "OCTOBRE 2008",
+   "montant": "7.000 euros",
+   "objet": "illuminations de fin d'année 2007",
+   "citation": "Une subvention d?un montant de 7.000 euros est attribuée à ?l?Association des Commerçants pour l?animation de la place des Fêtes? sise 10 rue Augustin Thierry (19e)",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=42792"
+  },
+  {
+   "seance": "OCTOBRE 2008",
+   "montant": "15.500 euros",
+   "objet": "dépenses prévisionnelles des illuminations 2007",
+   "citation": "Cette subvention a été arrêtée sur la base de dépenses prévisionnelles évaluées à 15.500 euros.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=42792"
+  },
+  {
+   "seance": "DECEMBRE 1996",
+   "montant": "37.000 F",
+   "objet": "illuminations de fin d'année 1996",
+   "citation": "Une subvention de 37.000 F est attribuée à l'Association des commerçants de la place des Fêtes (19e), pour la mise en place d'illuminations à l'occasion des fêtes de fin d'année 1996.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=66664"
+  },
+  {
+   "seance": "JUILLET 1996",
+   "montant": "10.000 F",
+   "objet": "animation commerciale \"Paris Fleuri, Paris Courtois\" (juin 1996)",
+   "citation": "Une subvention de 10.000 F est attribuée à l'Association des commerçants pour l'animation de la place des Fêtes, 5-7, rue Louise-Thuliez (19e), pour l'organisation de \"Paris Fleuri, Paris Courtois\"",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=58513"
+  }
+ ],
+ "bmo_extraits": [],
+ "bmo_recit": null,
+ "invest": [],
+ "marches": [
+  {
+   "numero_marche": "20161370090027",
+   "objet": "CSP4- TX AMÉNAGEMENT PLACE DES FÊTES",
+   "objet_clair": null,
+   "fournisseur": "FAYOLLE ET FILS",
+   "montant_max": 924443.08,
+   "date_notification": "2016-08-25",
+   "preuve": "Objet du marché : \"CSP4- TX AMÉNAGEMENT PLACE DES FÊTES\" — travaux d'aménagement portant explicitement sur la place, cohérent avec le programme de réaménagement participatif engagé dès 2012 (voeu Conseil de Paris décembre 2015)."
+  },
+  {
+   "numero_marche": "20191370090074",
+   "objet": "MANDAT MOE CONSTRUCTION CAPLA PLACE DES FÊTES",
+   "objet_clair": null,
+   "fournisseur": "SPL PARISEINE",
+   "montant_max": 819746.51,
+   "date_notification": "2019-05-06",
+   "preuve": "Objet du marché : \"MANDAT MOE CONSTRUCTION CAPLA PLACE DES FÊTES\" — mandat de maîtrise d'ouvrage pour une construction sur le site, nommant explicitement la place des Fêtes."
+  },
+  {
+   "numero_marche": "20191370000124",
+   "objet": "SA4 _TRAVAUX D'ESPACES VERTS _PLACE DES FÊTES    LOT2",
+   "objet_clair": null,
+   "fournisseur": "LACHAUX PAYSAGE",
+   "montant_max": 273469.55,
+   "date_notification": "2019-02-18",
+   "preuve": "Objet du marché : \"SA4 _TRAVAUX D'ESPACES VERTS _PLACE DES FÊTES LOT2\" — travaux d'espaces verts nommant explicitement la place des Fêtes."
+  },
+  {
+   "numero_marche": "20131370010309",
+   "objet": "ÉTUDE PROGRAM° PR AMÉNAGTS ESPACES OUVERTS PLACE DES FÊTES",
+   "objet_clair": null,
+   "fournisseur": "A M ENVIRONNEMENT",
+   "montant_max": 56300.0,
+   "date_notification": "2013-11-13",
+   "preuve": "Objet du marché : \"ÉTUDE PROGRAM° PR AMÉNAGTS ESPACES OUVERTS PLACE DES FÊTES\" — étude de programmation pour l'aménagement des espaces ouverts de la place, en amont du chantier de réaménagement."
+  },
+  {
+   "numero_marche": "20242024T01492",
+   "objet": "RENOVATION DU SSI CPA PLACE DES FÊTES PARIS 75019",
+   "objet_clair": "Rénovation du système de sécurité incendie du centre d'animation Place des Fêtes.",
+   "fournisseur": "SOC. D'ETUDES ET DE REALISATION",
+   "montant_max": 43094.54,
+   "date_notification": "2024-03-06",
+   "preuve": "Objet du marché : \"RENOVATION DU SSI CPA PLACE DES FÊTES\" — rénovation du système de sécurité incendie du Centre Paris Anim' Place des Fêtes, équipement municipal du site (cf. DSP centres d'animation Clavel/Curial/Mathis/Rébeval/Place des Fêtes, 2011 DJS 399). Confiance moyenne car il s'agit du bâtiment d'équipement, pas de la place ouverte elle-même."
+  },
+  {
+   "numero_marche": "20201410000477",
+   "objet": "RÉFECTION SIÈGES PARIS ANIM PLACE DES FÊTES",
+   "objet_clair": null,
+   "fournisseur": "JEZET",
+   "montant_max": 31257.0,
+   "date_notification": "2020-06-16",
+   "preuve": "Objet du marché : \"RÉFECTION SIÈGES PARIS ANIM PLACE DES FÊTES\" — mobilier du Centre Paris Anim' Place des Fêtes, même équipement municipal que le marché SSI ci-dessus. Confiance moyenne pour la même raison (bâtiment, pas la place ouverte)."
+  },
+  {
+   "numero_marche": "20161370090008",
+   "objet": "CSP4 MA SUB_AC : M.E.T. - AMENAGEMENT PLACE DES FETES",
+   "objet_clair": null,
+   "fournisseur": "ATEVE INGENIERIE",
+   "montant_max": 27718.22,
+   "date_notification": "2016-02-11",
+   "preuve": "Objet du marché : \"CSP4 MA SUB_AC : M.E.T. - AMENAGEMENT PLACE DES FETES\" — mission d'ingénierie liée au même chantier d'aménagement de la place (cf. marché 20161370090027)."
+  },
+  {
+   "numero_marche": "decp-2024S03792",
+   "objet": "Régie évènementielle pour l'événement « festival du Mieux Manger 2024 » sur le marché de la place des fêtes à Paris 19ème",
+   "objet_clair": null,
+   "fournisseur": "EQUI CONCEPT",
+   "montant_max": 13722.41,
+   "date_notification": "2024-05-15",
+   "preuve": "Objet du marché : \"... sur le marché de la place des fêtes à Paris 19ème\" — prestation événementielle se déroulant physiquement sur le marché tenu sur la place."
+  },
+  {
+   "numero_marche": "decp-2025S03740",
+   "objet": "Régie évènementielle pour l'événement « festival du Mieux Manger 2025 » sur le marché de la place des fêtes à Paris 19ème",
+   "objet_clair": null,
+   "fournisseur": "EQUI CONCEPT",
+   "montant_max": 10948.76,
+   "date_notification": "2025-04-09",
+   "preuve": "Objet du marché : \"... sur le marché de la place des fêtes à Paris 19ème\" — même festival récurrent, édition 2025, prestation sur le marché tenu sur la place."
+  }
+ ],
+ "mandate": null,
+ "sources": {
+  "delibs": {
+   "name": "Débat-Délibs — Conseil de Paris",
+   "url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=search-solr&query=Place+des+F%C3%AAtes"
+  },
+  "bmo": {
+   "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
+   "url": "https://gallica.bnf.fr/ark:/12148/cb343512457/date"
+  },
+  "invest": {
+   "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
+   "url": "https://opendata.paris.fr/"
+  },
+  "wiki": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ },
+ "synthese_en": "Between 1995 and 2015, council resolutions concerning the Place des Fêtes deal largely with facilities and associations located in its immediate vicinity: an amendment to a redevelopment works contract in 1995, a debate over the neighborhood's densification during a 1997 revision of the local land-use plan, the announcement — contested by Communist councillors — of the planned 1999 closure of a local public-service office, and then a long series of grants to associations based on or near the square (a neighborhood center, shopkeepers, Advocacy Paris Île-de-France). Shopkeepers on the square repeatedly received grants between 1996 and 2010 for end-of-year illuminations; whenever the resolution specifies a basis for the calculation, the grant actually paid remains lower than the projected expenses used as the reference. In 2015, a resolution put forward by councillors from the 19th arrondissement calls for speeding up the completion of the square's participatory redevelopment, under way since 2012 and settled by a citizen vote in December 2014, and it is adopted with the Executive's favorable opinion."
+}

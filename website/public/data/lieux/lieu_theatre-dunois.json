@@ -1,0 +1,304 @@
+{
+ "generated_at": "2026-07-21T17:04:41.999226+00:00",
+ "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
+ "slug": "theatre-dunois",
+ "name": "Théâtre Dunois",
+ "kind_fr": "Théâtre",
+ "kind_en": "Theatre",
+ "famille": "culture",
+ "arrondissement": 13,
+ "lat": 48.831667,
+ "lon": 2.368401,
+ "photo": "/img/lieux/theatre-dunois.jpg",
+ "photo_credit": {
+  "licence": "CC0",
+  "auteur": "Draner (Liège, 11–11–1833 - Paris, 1926), dessinateur-lithographe",
+  "url": "https://commons.wikimedia.org/wiki/File:Au_th%C3%A9%C3%A2tre_des_Vari%C3%A9t%C3%A9s,_par_DranerLe_beau_Dunois._Paris_Mus%C3%A9es_20230818171655.jpg",
+  "source": "Wikimedia Commons"
+ },
+ "wiki": {
+  "extract": null,
+  "url": null,
+  "source": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ },
+ "stats": {
+  "n_delibs": 1242,
+  "delibs_span": [
+   1996,
+   2022
+  ],
+  "n_bmo_brut": 0,
+  "n_bmo_verifies": null,
+  "invest_total_eur": 0,
+  "invest_annees": [],
+  "lecture_mode": "titre nommant le lieu (9 trouvés)",
+  "lecture_mode_en": "title naming the place (9 found)",
+  "n_lus": 9,
+  "n_lieu": 9
+ },
+ "subventions_exploitant": {
+  "nom_fiche": "LA MAISON OUVERTE",
+  "total_eur": 1210000.0,
+  "annees": [
+   "2018",
+   "2024"
+  ],
+  "rows": [
+   {
+    "annee": "2024",
+    "montant_eur": 190000.0,
+    "beneficiaire": "LA MAISON OUVERTE",
+    "thematique": "Culture"
+   },
+   {
+    "annee": "2023",
+    "montant_eur": 196000.0,
+    "beneficiaire": "LA MAISON OUVERTE",
+    "thematique": "Culture"
+   },
+   {
+    "annee": "2022",
+    "montant_eur": 171000.0,
+    "beneficiaire": "LA MAISON OUVERTE",
+    "thematique": "Culture"
+   },
+   {
+    "annee": "2021",
+    "montant_eur": 163230.53,
+    "beneficiaire": "LA MAISON OUVERTE",
+    "thematique": "Social - Petite enfance"
+   },
+   {
+    "annee": "2020",
+    "montant_eur": 213769.47,
+    "beneficiaire": "LA MAISON OUVERTE",
+    "thematique": "Social - Petite enfance"
+   },
+   {
+    "annee": "2019",
+    "montant_eur": 145000.0,
+    "beneficiaire": "LA MAISON OUVERTE",
+    "thematique": "Culture"
+   },
+   {
+    "annee": "2018",
+    "montant_eur": 131000.0,
+    "beneficiaire": "LA MAISON OUVERTE",
+    "thematique": "Social - Petite enfance"
+   }
+  ],
+  "perimetre": "multi",
+  "note_publique": "L'association La Maison ouverte, qui exploite le Théâtre Dunois (13e), gère aussi le Théâtre Astral (12e). Certaines subventions de fonctionnement peuvent couvrir les deux salles : le total versé à l'association ne va donc pas intégralement à ce seul bâtiment.",
+  "autres_sites": [
+   "Théâtre Astral (12e)"
+  ]
+ },
+ "residents": [
+  {
+   "beneficiaire": "LA S.O.U.P.E.",
+   "montant_total": 6000,
+   "preuve": "Objet: «Diffusion du spectacle ET PUIS au Théâtre Dunois» — aide pour une diffusion DANS le lieu, sans le gérer. SIRET 47868750200037.",
+   "preuve_en": "Purpose: \"Diffusion du spectacle ET PUIS au Théâtre Dunois\" (staging of the show ET PUIS at the Théâtre Dunois) — support for a performance held AT the venue, without operating it. SIRET 47868750200037."
+  },
+  {
+   "beneficiaire": "LTK PRODUCTION",
+   "montant_total": 6000,
+   "preuve": "Objet: «\"Avril\" au Théâtre Dunois» — spectacle présenté DANS le lieu. SIRET 40163902600061.",
+   "preuve_en": "Purpose: \"'Avril' au Théâtre Dunois\" (\"Avril\" at the Théâtre Dunois) — show presented AT the venue. SIRET 40163902600061."
+  },
+  {
+   "beneficiaire": "LE JOLI COLLECTIF",
+   "montant_total": 5000,
+   "preuve": "Objet: «Moi, canard et J'ai écrit une chanson pour Mac Gyver au Théâtre Dunois» — spectacles présentés DANS le lieu. SIRET 45405131900035.",
+   "preuve_en": "Purpose: \"Moi, canard et J'ai écrit une chanson pour Mac Gyver au Théâtre Dunois\" (Moi, canard and J'ai écrit une chanson pour Mac Gyver at the Théâtre Dunois) — shows presented AT the venue. SIRET 45405131900035."
+  },
+  {
+   "beneficiaire": "COMPAGNIE BOOM",
+   "montant_total": 4000,
+   "preuve": "Objet: «SV24DIF2 L'Univers a un goût de framboise au Théâtre Dunois» — diffusion DANS le lieu. SIRET 87926046100014.",
+   "preuve_en": "Purpose: \"SV24DIF2 L'Univers a un goût de framboise au Théâtre Dunois\" (SV24DIF2 L'Univers a un goût de framboise at the Théâtre Dunois) — performance held AT the venue. SIRET 87926046100014."
+  },
+  {
+   "beneficiaire": "L'YEUSE",
+   "montant_total": 4000,
+   "preuve": "Objet: «Diffusion du spectacle de danse jeune public Saccadit au Théâtre Dunois» — diffusion DANS le lieu. SIRET 43352009500020.",
+   "preuve_en": "Purpose: \"Diffusion du spectacle de danse jeune public Saccadit au Théâtre Dunois\" (staging of the young-audience dance show Saccadit at the Théâtre Dunois) — performance held AT the venue. SIRET 43352009500020."
+  }
+ ],
+ "kpi_montant": null,
+ "synthese_fr": "Le théâtre Dunois (13e), au 108 rue du Chevaleret, est animé par l'association La Maison ouverte, qui reçoit dès 1996 puis 1998 une subvention de fonctionnement de 150.000 F au titre des spectacles de musique, théâtre et danse proposés aux Parisiens. Entre 2006 et 2009, plusieurs compagnies extérieures à La Maison ouverte - Ensemble Aleph, Centre d'Action Culturelle Georges Brassens, La Métonymie, Agitez le Bestiaire, Atelier Anna Weill - reçoivent chacune des subventions de 3.000 à 6.000 euros pour des spectacles jeune public, des concerts ou une résidence accueillis dans la salle. En 2022, La Maison ouverte obtient une subvention de 129.000 euros assortie d'un avenant à convention, portant cette fois conjointement sur le théâtre Dunois et le théâtre Astral (12e), sans que le titre de la délibération ne précise la répartition du montant entre les deux salles.",
+ "moments": [
+  {
+   "id": "66643",
+   "seance": "DECEMBRE 1996",
+   "fait": "Subvention de 150 000 F à l'association Maison ouverte (Théâtre Dunois).",
+   "pourquoi": "première subvention repérée pour la salle",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=66643",
+   "fait_en": "Grant of 150,000 F to the association Maison ouverte (Théâtre Dunois).",
+   "pourquoi_en": "first grant identified for the venue"
+  },
+  {
+   "id": "57328",
+   "seance": "DECEMBRE 1998",
+   "fait": "Subvention de 150 000 F reconduite pour les spectacles de musique, théâtre et danse proposés en 1998.",
+   "pourquoi": "même montant qu'en 1996, le soutien à la salle se confirme deux ans plus tard",
+   "vedette": false,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=57328",
+   "fait_en": "Grant of 150,000 F renewed for the music, theatre and dance performances offered in 1998.",
+   "pourquoi_en": "same amount as in 1996, confirming support for the venue two years later"
+  },
+  {
+   "id": "73968",
+   "seance": "SEPTEMBRE 2006",
+   "fait": "Subvention de 3 000 euros à l'Ensemble Aleph au titre de sa résidence au théâtre Dunois.",
+   "pourquoi": "une compagnie s'installe en résidence",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=73968",
+   "fait_en": "Grant of 3,000 euros to Ensemble Aleph for its residency at the Théâtre Dunois.",
+   "pourquoi_en": "a company takes up residency"
+  },
+  {
+   "id": "54758",
+   "seance": "DECEMBRE 2007",
+   "fait": "Subvention de 3 000 euros à l'Ensemble Aleph pour une série de concerts au théâtre Dunois.",
+   "pourquoi": "la salle accueille aussi des concerts",
+   "vedette": false,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=54758",
+   "fait_en": "Grant of 3,000 euros to Ensemble Aleph for a series of concerts at the Théâtre Dunois.",
+   "pourquoi_en": "the venue also hosts concerts"
+  },
+  {
+   "id": "68658",
+   "seance": "JUIN 2008",
+   "fait": "Subvention de 6 000 euros pour le spectacle jeune public Déguisé en homme diffusé au théâtre Dunois.",
+   "pourquoi": "programmation jeune public financée ponctuellement",
+   "vedette": false,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=68658",
+   "fait_en": "Grant of 6,000 euros for the young-audience show Déguisé en homme, staged at the Théâtre Dunois.",
+   "pourquoi_en": "young-audience programming funded on a one-off basis"
+  },
+  {
+   "id": "59558",
+   "seance": "MAI 2009",
+   "fait": "Subvention de 6 000 euros pour le spectacle jeune public A mi-chemin, 21 représentations au théâtre Dunois.",
+   "pourquoi": "même format de soutien, nouvelle compagnie",
+   "vedette": false,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=59558",
+   "fait_en": "Grant of 6,000 euros for the young-audience show A mi-chemin, 21 performances at the Théâtre Dunois.",
+   "pourquoi_en": "same form of support, a new company"
+  },
+  {
+   "id": "74628",
+   "seance": "JUILLET 2009",
+   "fait": "Subvention de 6 000 euros pour le spectacle Pour une Alouette, 12 représentations en janvier 2009.",
+   "pourquoi": "même format de soutien ponctuel, cette fois pour un spectacle de danse",
+   "vedette": false,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=74628",
+   "fait_en": "Grant of 6,000 euros for the show Pour une Alouette, 12 performances in January 2009.",
+   "pourquoi_en": "same form of one-off support, this time for a dance performance"
+  },
+  {
+   "id": "164862",
+   "seance": "MAI 2022",
+   "fait": "Subvention de 129 000 euros et avenant à convention avec La Maison ouverte, pour le théâtre Dunois et le théâtre Astral.",
+   "pourquoi": "montant très supérieur, la même délibération couvre aussi le théâtre Astral",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=164862",
+   "fait_en": "Grant of 129,000 euros and an amendment to the agreement with La Maison ouverte, for the Théâtre Dunois and the Théâtre Astral.",
+   "pourquoi_en": "much higher amount, the same deliberation also covers the Théâtre Astral"
+  }
+ ],
+ "montants": [
+  {
+   "seance": "DECEMBRE 1996",
+   "montant": "150.000 F",
+   "objet": "subvention à l'association Maison ouverte (Théâtre Dunois)",
+   "citation": "Une subvention de 150.000 F est attribuée à l'association \"Maison ouverte\" (Théâtre Dunois), dont le siège social est situé 108, rue du Chevaleret (13e).",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=66643"
+  },
+  {
+   "seance": "DECEMBRE 1998",
+   "montant": "150.000 F",
+   "objet": "subvention de fonctionnement à La Maison ouverte (théâtre Dunois) au titre des spectacles de musique, théâtre et danse proposés en 1998",
+   "citation": "Une subvention de 150.000 F est attribuée à l'association \"La Maison ouverte\" (théâtre Dunois) située 108, rue du Chevaleret (13e), au titre des spectacles de musique, théâtre et danse proposés aux Parisiens pour l'année 1998.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=57328"
+  },
+  {
+   "seance": "SEPTEMBRE 2006",
+   "montant": "3.000 euros",
+   "objet": "subvention de fonctionnement à l'Ensemble Aleph au titre de sa résidence au théâtre Dunois",
+   "citation": "Une subvention de 3.000 euros est attribuée, au titre de sa résidence au théâtre Dunois, à l?association ?Ensemble Aleph?, dont le siège social est situé 121, avenue La Bruyère (94400 Vitry-sur-Seine)",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=73968"
+  },
+  {
+   "seance": "DECEMBRE 2007",
+   "montant": "3.000 euros",
+   "objet": "subvention à l'Ensemble Aleph pour une série de concerts au théâtre Dunois",
+   "citation": "Une subvention de 3.000 euros est attribuée, pour une série de concerts au théâtre Dunois, à l?association Ensemble Aleph, dont le siège social est situé 121, avenue La Bruyère (94400 Vitry-sur-Seine)",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=54758"
+  },
+  {
+   "seance": "JUIN 2008",
+   "montant": "6.000 euros",
+   "objet": "subvention à l'association La Métonymie pour le spectacle jeune public Déguisé en homme, diffusé au Théâtre Dunois",
+   "citation": "La dépense correspondante, soit 6.000 euros, sera imputée sur le budget de fonctionnement de la Ville de Paris de 2008",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=68658"
+  },
+  {
+   "seance": "NOVEMBRE 2008",
+   "montant": "4.000 euros",
+   "objet": "subvention au Centre d'Action Culturelle Georges Brassens pour le spectacle jeune public Debout, présenté au Théâtre Dunois",
+   "citation": "La dépense correspondante, soit 4.000 euros, sera imputée sur le budget de fonctionnement de la Ville de Paris de 2008",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=61832"
+  },
+  {
+   "seance": "MAI 2009",
+   "montant": "6.000 euros",
+   "objet": "subvention à l'association Agitez le Bestiaire pour le spectacle jeune public A mi-chemin, présenté au Théâtre Dunois",
+   "citation": "La dépense correspondante, soit 6.000 euros, sera imputée sur le budget de fonctionnement de la Ville de Paris de 2009",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=59558"
+  },
+  {
+   "seance": "JUILLET 2009",
+   "montant": "6.000 euros",
+   "objet": "subvention à l'association Atelier Anna Weill pour le spectacle Pour une Alouette, présenté au Théâtre Dunois",
+   "citation": "Une subvention de 6.000 euros est attribuée à l?association ?Atelier Anna Weill? sise 2 place Aristide Briand 86000 Poitiers, pour le spectacle Pour une Alouette de la chorégraphe Odile Azagury, présenté au Théâtre Dunois (13e)",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=74628"
+  },
+  {
+   "seance": "MAI 2022",
+   "montant": "129.000 euros",
+   "objet": "subvention et avenant à convention avec La Maison ouverte, pour le théâtre Dunois et le théâtre Astral (montant non ventilé entre les deux salles selon le titre de la délibération)",
+   "citation": "Subvention (129.000 euros) et avenant à convention avec l’association \"La Maison ouverte\" pour le théâtre Dunois (13e) et le théâtre Astral (12e).",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=164862"
+  }
+ ],
+ "bmo_extraits": [],
+ "bmo_recit": null,
+ "invest": [],
+ "marches": [],
+ "mandate": null,
+ "sources": {
+  "delibs": {
+   "name": "Débat-Délibs — Conseil de Paris",
+   "url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=search-solr&query=Th%C3%A9%C3%A2tre+Dunois"
+  },
+  "bmo": {
+   "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
+   "url": "https://gallica.bnf.fr/ark:/12148/cb343512457/date"
+  },
+  "invest": {
+   "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
+   "url": "https://opendata.paris.fr/"
+  },
+  "wiki": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ },
+ "synthese_en": "The Théâtre Dunois (13th arrondissement), at 108 rue du Chevaleret, is run by the association La Maison ouverte, which received an operating grant of 150,000 F in 1996 and again in 1998 for the music, theatre and dance performances offered to Parisians. Between 2006 and 2009, several companies outside La Maison ouverte — Ensemble Aleph, Centre d'Action Culturelle Georges Brassens, La Métonymie, Agitez le Bestiaire, Atelier Anna Weill — each received grants of 3,000 to 6,000 euros for young-audience shows, concerts or a residency hosted at the venue. In 2022, La Maison ouverte obtained a grant of 129,000 euros along with an amendment to its agreement, this time covering jointly the Théâtre Dunois and the Théâtre Astral (12th arrondissement), with the deliberation's title not specifying how the amount was split between the two venues."
+}

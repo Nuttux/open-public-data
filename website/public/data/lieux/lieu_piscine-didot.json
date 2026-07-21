@@ -1,0 +1,132 @@
+{
+ "generated_at": "2026-07-21T17:04:41.999226+00:00",
+ "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
+ "slug": "piscine-didot",
+ "name": "Piscine Didot",
+ "kind_fr": "Piscine",
+ "kind_en": "Swimming pool",
+ "famille": "sport",
+ "arrondissement": 14,
+ "lat": 48.830064,
+ "lon": 2.317899,
+ "photo": null,
+ "photo_credit": null,
+ "wiki": {
+  "extract": null,
+  "url": null,
+  "source": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ },
+ "stats": {
+  "n_delibs": 1403,
+  "delibs_span": [
+   2022,
+   2022
+  ],
+  "n_bmo_brut": 0,
+  "n_bmo_verifies": null,
+  "invest_total_eur": 0,
+  "invest_annees": [],
+  "lecture_mode": "titre nommant le lieu (1 trouvés)",
+  "lecture_mode_en": "title naming the place (1 found)",
+  "n_lus": 1,
+  "n_lieu": 1
+ },
+ "subventions_exploitant": null,
+ "residents": [],
+ "kpi_montant": null,
+ "synthese_fr": "En février 2022, le Conseil de Paris examine la signature de deux conventions de versement de subventions au titre du Fonds d'investissement métropolitain, l'une pour la Piscine Didot (14e), l'autre pour la Piscine La Plaine (15e). Selon M. Jérôme Loriau, qui prend la parole en séance sur ce projet de délibération, ces subventions visent à améliorer les performances énergétiques des deux équipements, avec une réduction de la consommation d'énergie et d'eau de l'ordre de 30 % et une réduction des émissions de gaz à effet de serre de 40 %. Il salue cette subvention métropolitaine mais regrette que le budget détaillé des dépenses prévues, qu'il évalue à près de 500 000 euros pour chaque équipement, n'ait pas été joint au dossier soumis au Conseil.",
+ "moments": [
+  {
+   "id": "164531",
+   "seance": "FEVRIER 2022",
+   "fait": "Le Conseil examine la signature d'une convention de subvention métropolitaine visant à améliorer la performance énergétique de la Piscine Didot (réduction visée de la consommation d'énergie/eau et des émissions de gaz à effet de serre).",
+   "pourquoi": "premier et seul document identifié sur ce lieu",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=164531",
+   "fait_en": "The Council examines the signing of a metropolitan subsidy agreement aimed at improving the energy performance of the Piscine Didot (targeted reduction in energy/water consumption and greenhouse gas emissions).",
+   "pourquoi_en": "first and only document identified for this location"
+  }
+ ],
+ "montants": [
+  {
+   "seance": "FEVRIER 2022",
+   "montant": "près de 500 000 euros chacun",
+   "objet": "budget de dépenses prévues dans les équipements (Piscine Didot et Piscine La Plaine) — selon M. Loriau, qui regrette que ce budget ne soit pas joint au projet de délibération",
+   "citation": "il eut Ã©tÃ© souhaitable de disposer, joint au projet de dÃ©libÃ©ration, du budget de dÃ©penses prÃ©vues dans ces Ã©quipements, pour prÃ¨s de 500.000 euros chacun.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=164531"
+  }
+ ],
+ "bmo_extraits": [],
+ "bmo_recit": null,
+ "invest": [],
+ "marches": [
+  {
+   "numero_marche": "20131410009064",
+   "objet": "CSP5 TX DE REFECTION DU CARRELAGE DE LA PISCINE DIDOT",
+   "objet_clair": null,
+   "fournisseur": "ENTREPRISE BAILLE",
+   "montant_max": 239571.1,
+   "date_notification": "2013-05-29",
+   "preuve": "Objet du marché : \"CSP5 TX DE REFECTION DU CARRELAGE DE LA PISCINE DIDOT\" — nomme explicitement la Piscine Didot (travaux de carrelage sur place)."
+  },
+  {
+   "numero_marche": "20131410009549",
+   "objet": "M.SUBS TRAVAUX MISE CONFORMITE FILTRATION PISCINE DIDOT",
+   "objet_clair": null,
+   "fournisseur": "TECHNIQUE FRANCAISE DE L EAU",
+   "montant_max": 75170.0,
+   "date_notification": "2013-06-18",
+   "preuve": "Objet du marché : \"M.SUBS TRAVAUX MISE CONFORMITE FILTRATION PISCINE DIDOT\" — mise en conformité de la filtration de la piscine, nomme le lieu."
+  },
+  {
+   "numero_marche": "20131410009729",
+   "objet": "CSP5 DECAPAGE SUPPORTS BASSIN PISCINE DIDOT 14EME",
+   "objet_clair": null,
+   "fournisseur": "ENTREPRISE BAILLE",
+   "montant_max": 60118.0,
+   "date_notification": "2013-07-12",
+   "preuve": "Objet du marché : \"CSP5 DECAPAGE SUPPORTS BASSIN PISCINE DIDOT 14EME\" — décapage des supports du bassin, nomme le lieu et l'arrondissement."
+  },
+  {
+   "numero_marche": "20131410009859",
+   "objet": "M. SUBS. CHLORAMINES PISCINE DIDOT",
+   "objet_clair": null,
+   "fournisseur": "TECHNIQUE FRANCAISE DE L EAU",
+   "montant_max": 57414.96,
+   "date_notification": "2013-07-31",
+   "preuve": "Objet du marché : \"M. SUBS. CHLORAMINES PISCINE DIDOT\" — traitement des chloramines de la piscine, nomme le lieu."
+  },
+  {
+   "numero_marche": "20161410000817",
+   "objet": "LOT 1 : REMPLACEMENT CASIERS VESTIAIRES PISCINE DIDOT 75014",
+   "objet_clair": null,
+   "fournisseur": "NAVIC",
+   "montant_max": 47931.0,
+   "date_notification": "2016-06-22",
+   "preuve": "Objet du marché : \"LOT 1 : REMPLACEMENT CASIERS VESTIAIRES PISCINE DIDOT 75014\" — remplacement des casiers vestiaires de la piscine, nomme le lieu et le code postal."
+  }
+ ],
+ "mandate": null,
+ "sources": {
+  "delibs": {
+   "name": "Débat-Délibs — Conseil de Paris",
+   "url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=search-solr&query=Piscine+Didot"
+  },
+  "bmo": {
+   "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
+   "url": "https://gallica.bnf.fr/ark:/12148/cb343512457/date"
+  },
+  "invest": {
+   "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
+   "url": "https://opendata.paris.fr/"
+  },
+  "wiki": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ },
+ "synthese_en": "In February 2022, the Council of Paris examines the signing of two subsidy agreements under the Metropolitan Investment Fund, one for the Piscine Didot (14th arrondissement), the other for the Piscine La Plaine (15th arrondissement). According to Mr. Jérôme Loriau, who speaks in session on this draft resolution, these subsidies aim to improve the energy performance of the two facilities, with a targeted reduction in energy and water consumption of around 30% and a reduction in greenhouse gas emissions of 40%. He welcomes this metropolitan subsidy but regrets that the detailed budget of planned expenditure, which he estimates at nearly 500,000 euros for each facility, was not attached to the file submitted to the Council."
+}

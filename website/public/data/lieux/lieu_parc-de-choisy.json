@@ -1,0 +1,162 @@
+{
+ "generated_at": "2026-07-21T17:04:41.999226+00:00",
+ "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
+ "slug": "parc-de-choisy",
+ "name": "Parc de Choisy",
+ "kind_fr": "Parc",
+ "kind_en": "Park",
+ "famille": "vert",
+ "arrondissement": 13,
+ "lat": 48.825771,
+ "lon": 2.359572,
+ "photo": "/img/lieux/parc-de-choisy.jpg",
+ "photo_credit": {
+  "licence": null,
+  "auteur": null,
+  "url": "https://fr.wikipedia.org/wiki/Parc_de_Choisy",
+  "source": "Wikipédia"
+ },
+ "wiki": {
+  "extract": "Le parc de Choisy, également nommé square de Choisy, est un jardin public situé dans le 13e arrondissement de Paris. Important espace vert du quartier chinois, il est ouvert en 1937 et s'étend sur 4,3 hectares.",
+  "url": "https://fr.wikipedia.org/wiki/Parc_de_Choisy",
+  "source": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  },
+  "extract_en": "The Parc de Choisy, also known as the Square de Choisy, is a public garden located in the 13th arrondissement of Paris. A major green space in the Chinese quarter, it opened in 1937 and covers 4.3 hectares."
+ },
+ "stats": {
+  "n_delibs": 1327,
+  "delibs_span": [
+   2005,
+   2017
+  ],
+  "n_bmo_brut": 0,
+  "n_bmo_verifies": null,
+  "invest_total_eur": 130317.16,
+  "invest_annees": [
+   "2023"
+  ],
+  "lecture_mode": "titre nommant le lieu (5 trouvés)",
+  "lecture_mode_en": "title naming the place (5 found)",
+  "n_lus": 5,
+  "n_lieu": 5
+ },
+ "subventions_exploitant": null,
+ "residents": [],
+ "kpi_montant": null,
+ "synthese_fr": "Entre 2005 et 2009, plusieurs vœux du Conseil de Paris portent sur le centre équestre éphémère « Un cheval dans la ville », installé dans le parc de Choisy depuis 2004 : leurs auteurs demandent son retour puis sa pérennisation, mais l'exécutif renvoie systématiquement la décision à l'arbitrage budgétaire, et le vœu de 2009 est retiré après qu'un adjoint a proposé d'en étudier d'abord le coût. En 2011, le Conseil de Paris autorise le maire à signer une convention avec l'association Jardin Partagé Choisi, mettant à sa disposition une parcelle du parc rue Georges Eastman pour un usage de jardin partagé, reconductible jusqu'à six ans. En 2017, le Conseil adopte l'installation d'une stèle commémorative aux victimes du régime des Khmers Rouges au Cambodge, faisant de Paris, selon l'adjoint Patrick Klugman, la seule ville avec Phnom Penh à porter un tel hommage. Ces cinq textes ne portent ni sur des travaux d'aménagement ni sur des montants chiffrés, mais sur des usages successifs du parc : sport équestre pour enfants, jardinage partagé, mémoire.",
+ "moments": [
+  {
+   "id": "63675",
+   "seance": "SEPTEMBRE 2005",
+   "fait": "Vœu demandant le retour du centre équestre éphémère de 2004",
+   "pourquoi": "un centre équestre pour enfants avait déjà eu lieu",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=63675",
+   "fait_en": "Motion calling for the return of the temporary riding centre from 2004",
+   "pourquoi_en": "a riding centre for children had already been held there"
+  },
+  {
+   "id": "10376",
+   "seance": "SEPTEMBRE 2005",
+   "fait": "Le vœu est débattu ; l'adjoint Pascal Cherki se dit favorable sur le principe mais renvoie la décision au budget",
+   "pourquoi": "l'exécutif renvoie la décision du retour à l'arbitrage budgétaire",
+   "vedette": false,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=10376",
+   "fait_en": "The motion is debated; deputy mayor Pascal Cherki says he is favorable in principle but defers the decision to the budget",
+   "pourquoi_en": "the executive defers the decision on its return to the budget process"
+  },
+  {
+   "id": "15395",
+   "seance": "NOVEMBRE 2009",
+   "fait": "Vœu pour pérenniser le centre équestre, débattu puis retiré après proposition d'étude de coût",
+   "pourquoi": "cinq éditions plus tard, la pérennisation bute sur le coût",
+   "vedette": false,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=15395",
+   "fait_en": "Motion to make the riding centre permanent, debated then withdrawn after a proposal to study its cost first",
+   "pourquoi_en": "five editions later, making it permanent runs up against the cost"
+  },
+  {
+   "id": "97209",
+   "seance": "FEVRIER 2011",
+   "fait": "Autorisation de signer une convention avec l'association Jardin Partagé Choisi pour une parcelle du parc",
+   "pourquoi": "un jardin partagé s'installe dans le parc, pour une durée reconductible jusqu'à six ans",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=97209",
+   "fait_en": "Authorization to sign an agreement with the association Jardin Partagé Choisi for a plot of the park",
+   "pourquoi_en": "a shared garden is set up in the park, for a term renewable for up to six years"
+  },
+  {
+   "id": "138174",
+   "seance": "SEPTEMBRE 2017",
+   "fait": "Adoption de l'installation d'une stèle commémorative aux victimes des Khmers Rouges",
+   "pourquoi": "selon l'adjoint Patrick Klugman, Paris devient la seule ville avec Phnom Penh à honorer ce génocide",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=138174",
+   "fait_en": "Adoption of the installation of a memorial stele to the victims of the Khmer Rouge",
+   "pourquoi_en": "according to deputy mayor Patrick Klugman, Paris becomes the only city besides Phnom Penh to honor this genocide"
+  }
+ ],
+ "montants": [],
+ "bmo_extraits": [],
+ "bmo_recit": null,
+ "invest": [
+  {
+   "annee": 2023,
+   "montant_eur": 130317.16,
+   "nom_projet": "Parc de Choisy - Rénovation des griles (2ème tranche)",
+   "preuve": "Nom du projet d'investissement : \"Parc de Choisy - Rénovation des griles (2ème tranche)\" — nomme explicitement le lieu.",
+   "id": "2023_13_36_008"
+  }
+ ],
+ "marches": [
+  {
+   "numero_marche": "20242024T08961",
+   "objet": "SA3.MS_AC.TRAVAUX D'EXTENSION DU PARC DE CHOISY À PARIS 13ÈM",
+   "objet_clair": "Agrandissement du parc de Choisy dans le 13e arrondissement",
+   "fournisseur": "MARCEL VILLETTE",
+   "montant_max": 1073752.18,
+   "date_notification": "2024-08-21",
+   "preuve": "Objet du marché : \"TRAVAUX D'EXTENSION DU PARC DE CHOISY À PARIS 13ÈM\" — nomme explicitement le lieu et sa localisation (Paris 13e)."
+  },
+  {
+   "numero_marche": "20131410009954",
+   "objet": "CSP2 OPERATION PARIS PONEY 2013 PARC DE CHOISY",
+   "objet_clair": null,
+   "fournisseur": "UCPA SPORT VACANCES",
+   "montant_max": 157551.4,
+   "date_notification": "2013-08-27",
+   "preuve": "Objet du marché : \"OPERATION PARIS PONEY 2013 PARC DE CHOISY\" — nomme explicitement le lieu ; cohérent avec le centre équestre du Parc de Choisy évoqué en Conseil (vœu septembre 2005 sur le centre équestre au Parc de Choisy)."
+  },
+  {
+   "numero_marche": "20141120012110",
+   "objet": "CSP2 - PARIS PONEYS 2014 - PARC DE CHOISY 75013",
+   "objet_clair": null,
+   "fournisseur": "UCPA SPORT VACANCES",
+   "montant_max": 115000.0,
+   "date_notification": "2014-09-24",
+   "preuve": "Objet du marché : \"PARIS PONEYS 2014 - PARC DE CHOISY 75013\" — nomme explicitement le lieu et son code postal."
+  }
+ ],
+ "mandate": null,
+ "sources": {
+  "delibs": {
+   "name": "Débat-Délibs — Conseil de Paris",
+   "url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=search-solr&query=Parc+de+Choisy"
+  },
+  "bmo": {
+   "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
+   "url": "https://gallica.bnf.fr/ark:/12148/cb343512457/date"
+  },
+  "invest": {
+   "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
+   "url": "https://opendata.paris.fr/"
+  },
+  "wiki": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ },
+ "synthese_en": "Between 2005 and 2009, several motions before the Conseil de Paris concerned the temporary riding centre \"Un cheval dans la ville\" (\"A horse in the city\"), set up in the Parc de Choisy since 2004: their sponsors called for its return and then for it to be made permanent, but the executive systematically deferred the decision to the budget process, and the 2009 motion was withdrawn after a deputy mayor proposed first studying its cost. In 2011, the Conseil de Paris authorized the mayor to sign an agreement with the association Jardin Partagé Choisi, making a plot of the park on rue Georges Eastman available to it for use as a shared garden, renewable for up to six years. In 2017, the Council adopted the installation of a memorial stele to the victims of the Khmer Rouge regime in Cambodia, making Paris, according to deputy mayor Patrick Klugman, the only city besides Phnom Penh to pay such tribute. These five texts concern neither redevelopment works nor budgeted amounts, but successive uses of the park: equestrian sport for children, shared gardening, remembrance."
+}

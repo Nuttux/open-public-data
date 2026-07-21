@@ -1,0 +1,94 @@
+{
+ "generated_at": "2026-07-21T17:04:41.999226+00:00",
+ "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
+ "slug": "jardin-nelson-mandela",
+ "name": "Jardin Nelson Mandela",
+ "kind_fr": "Jardin",
+ "kind_en": "Garden",
+ "famille": "vert",
+ "arrondissement": 1,
+ "lat": 48.8625,
+ "lon": 2.344722,
+ "photo": "/img/lieux/jardin-nelson-mandela.jpg",
+ "photo_credit": {
+  "licence": "CC BY-SA 4.0",
+  "auteur": "Chabe01",
+  "url": "https://commons.wikimedia.org/wiki/File:Jardin_Mandela_Paris_2.jpg",
+  "source": "Wikimedia Commons"
+ },
+ "wiki": {
+  "extract": "Le jardin Nelson-Mandela, anciennement jardin des Halles, est un espace vert d'environ quatre hectares au milieu du quartier des Halles du 1er arrondissement, au centre de la ville de Paris, en France. Il a été créé dans les années 1980 sur l'emplacement des anciennes Halles de Paris. Le jardin repose sur la dalle qui recouvre le Forum des Halles, un centre commercial abritant également quelques activités culturelles. Le jardin comprend plusieurs pelouses et de nombreuses plantations d'arbres et d'arbustes. Parmi les éléments remarquables figurent le jardin des Enfants, une serre tropicale enfouie dans le sous-sol et la place René-Cassin qui forme un petit amphithéâtre. Une refonte du jardin, menée en parallèle à celle du Forum, a débuté en 2010 et s'achève en 2018.",
+  "url": "https://fr.wikipedia.org/wiki/Jardin_Nelson-Mandela",
+  "source": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  },
+  "extract_en": "The Jardin Nelson-Mandela, formerly the Jardin des Halles, is a green space of about four hectares in the middle of the Les Halles neighborhood of the 1st arrondissement, at the center of the city of Paris, France. It was created in the 1980s on the site of the former Halles de Paris market. The garden sits on the slab covering the Forum des Halles, a shopping center that also houses a few cultural activities. The garden includes several lawns and numerous plantings of trees and shrubs. Notable features include the Jardin des Enfants (children's garden), a tropical greenhouse buried underground, and the Place René-Cassin, which forms a small amphitheater. A redesign of the garden, carried out in parallel with that of the Forum, began in 2010 and was completed in 2018."
+ },
+ "stats": {
+  "n_delibs": 1077,
+  "delibs_span": [
+   2014,
+   2015
+  ],
+  "n_bmo_brut": 0,
+  "n_bmo_verifies": null,
+  "invest_total_eur": 0,
+  "invest_annees": [],
+  "lecture_mode": "tête du classement Solr (1077 documents au total)",
+  "lecture_mode_en": "top of the Solr ranking (1077 documents total)",
+  "n_lus": 45,
+  "n_lieu": 2
+ },
+ "subventions_exploitant": null,
+ "residents": [],
+ "kpi_montant": null,
+ "synthese_fr": "Le jardin Nelson-Mandela se situe rue Berger, dans le 1er arrondissement de Paris. En mai 2014, la délibération 2014 DEVE 1008 porte sur la dénomination « Elsa Triolet » de son allée nord-sud. En septembre 2015, le groupe Les Républicains dépose un vœu relatif à la propreté du jardin.",
+ "moments": [
+  {
+   "id": "118733",
+   "seance": "MAI 2014",
+   "fait": "La délibération 2014 DEVE 1008 porte sur la dénomination « Elsa Triolet » de l'allée nord-sud du jardin, rue Berger (1er).",
+   "pourquoi": "dénomination d'une allée du jardin",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=118733",
+   "fait_en": "Decision 2014 DEVE 1008 concerns the naming \"Elsa Triolet\" of the garden's north-south path, rue Berger (1st arrondissement).",
+   "pourquoi_en": "naming of a path in the garden"
+  },
+  {
+   "id": "126670",
+   "seance": "SEPTEMBRE 2015",
+   "fait": "Le groupe Les Républicains dépose un vœu relatif à la propreté du jardin Nelson-Mandela.",
+   "pourquoi": "la propreté du jardin arrive en séance",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=126670",
+   "fait_en": "The Les Républicains group filed a motion regarding the cleanliness of the Jardin Nelson-Mandela.",
+   "pourquoi_en": "the cleanliness of the garden comes up in session"
+  }
+ ],
+ "montants": [],
+ "bmo_extraits": [],
+ "bmo_recit": null,
+ "invest": [],
+ "marches": [],
+ "mandate": null,
+ "sources": {
+  "delibs": {
+   "name": "Débat-Délibs — Conseil de Paris",
+   "url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=search-solr&query=Jardin+Nelson-Mandela"
+  },
+  "bmo": {
+   "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
+   "url": "https://gallica.bnf.fr/ark:/12148/cb343512457/date"
+  },
+  "invest": {
+   "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
+   "url": "https://opendata.paris.fr/"
+  },
+  "wiki": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ },
+ "synthese_en": "The Jardin Nelson-Mandela is located on rue Berger, in the 1st arrondissement of Paris. In May 2014, decision 2014 DEVE 1008 concerns the naming of its north-south path \"Elsa Triolet\". In September 2015, the Les Républicains group filed a motion regarding the cleanliness of the garden."
+}

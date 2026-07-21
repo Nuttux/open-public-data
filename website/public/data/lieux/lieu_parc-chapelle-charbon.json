@@ -1,0 +1,117 @@
+{
+ "generated_at": "2026-07-21T17:04:41.999226+00:00",
+ "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
+ "slug": "parc-chapelle-charbon",
+ "name": "Parc Chapelle-Charbon",
+ "kind_fr": "Parc",
+ "kind_en": "Park",
+ "famille": "vert",
+ "arrondissement": 18,
+ "lat": 48.861094,
+ "lon": 2.40379,
+ "photo": "/img/lieux/parc-chapelle-charbon.jpg",
+ "photo_credit": {
+  "licence": "CC BY-SA 4.0",
+  "auteur": "Rc1959",
+  "url": "https://commons.wikimedia.org/wiki/File:Parc_Chapelle-Charbon.20201017_144019.jpg",
+  "source": "Wikimedia Commons"
+ },
+ "wiki": {
+  "extract": null,
+  "url": null,
+  "source": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ },
+ "stats": {
+  "n_delibs": 1075,
+  "delibs_span": [
+   1995,
+   2026
+  ],
+  "n_bmo_brut": 0,
+  "n_bmo_verifies": null,
+  "invest_total_eur": 0,
+  "invest_annees": [],
+  "lecture_mode": "titre nommant le lieu (1 trouvés)",
+  "lecture_mode_en": "title naming the place (1 found)",
+  "n_lus": 0,
+  "n_lieu": null
+ },
+ "subventions_exploitant": null,
+ "residents": [],
+ "kpi_montant": null,
+ "synthese_fr": null,
+ "moments": [],
+ "montants": [],
+ "bmo_extraits": [],
+ "bmo_recit": null,
+ "invest": [],
+ "marches": [
+  {
+   "numero_marche": "20191230000147",
+   "objet": "CSP4 LOT 1 TVX GENIE CIVIL AMENAGEMENT PARC CHAPELLE CHARBON",
+   "objet_clair": null,
+   "fournisseur": "COLAS FRANCE",
+   "montant_max": 5982760.21,
+   "date_notification": "2019-02-21",
+   "preuve": "Objet du marché : \"CSP4 LOT 1 TVX GENIE CIVIL AMENAGEMENT PARC CHAPELLE CHARBON\" — nomme explicitement le lieu."
+  },
+  {
+   "numero_marche": "decp-2025S13426",
+   "objet": "Maîtrise d'œuvre pour l'aménagement du parc Chapelle Charbon à Paris 18è",
+   "objet_clair": null,
+   "fournisseur": "PROJET BASE",
+   "montant_max": 4000000.0,
+   "date_notification": "2026-01-06",
+   "preuve": "Objet du marché : \"Maîtrise d'œuvre pour l'aménagement du parc Chapelle Charbon à Paris 18è\" — nomme explicitement le lieu, arrondissement cohérent (18e)."
+  },
+  {
+   "numero_marche": "20191230000504",
+   "objet": "CSP4 AMENAGNT PARC CHAPELLE CHARBON (REHAB CHARPENTE/CONSTRU",
+   "objet_clair": null,
+   "fournisseur": "UNION TECHNIQUE DU BATIMENT",
+   "montant_max": 1522762.25,
+   "date_notification": "2019-05-06",
+   "preuve": "Objet du marché : \"CSP4 AMENAGNT PARC CHAPELLE CHARBON (REHAB CHARPENTE/CONSTRU\" — nomme explicitement le lieu."
+  },
+  {
+   "numero_marche": "20171230001291",
+   "objet": "CSP4: MOE AMENAGEMENT PARC CHAPELLE-CHARBON",
+   "objet_clair": null,
+   "fournisseur": "AGENCE LAVERNE",
+   "montant_max": 1329900.0,
+   "date_notification": "2017-08-10",
+   "preuve": "Objet du marché : \"CSP4: MOE AMENAGEMENT PARC CHAPELLE-CHARBON\" — nomme explicitement le lieu (maîtrise d'œuvre de l'aménagement)."
+  },
+  {
+   "numero_marche": "20191230000148",
+   "objet": "CSP4 LOT2 TVX ESPACES VERTS PARC CHAPELLE CHARBON 8EME",
+   "objet_clair": null,
+   "fournisseur": "IDVERDE",
+   "montant_max": 754391.35,
+   "date_notification": "2019-02-21",
+   "preuve": "Objet du marché : \"CSP4 LOT2 TVX ESPACES VERTS PARC CHAPELLE CHARBON 8EME\" — nomme explicitement le lieu (travaux espaces verts)."
+  }
+ ],
+ "mandate": null,
+ "sources": {
+  "delibs": {
+   "name": "Débat-Délibs — Conseil de Paris",
+   "url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=search-solr&query=Parc+Chapelle-Charbon"
+  },
+  "bmo": {
+   "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
+   "url": "https://gallica.bnf.fr/ark:/12148/cb343512457/date"
+  },
+  "invest": {
+   "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
+   "url": "https://opendata.paris.fr/"
+  },
+  "wiki": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ }
+}

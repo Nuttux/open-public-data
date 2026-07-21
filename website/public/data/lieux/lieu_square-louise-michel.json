@@ -1,0 +1,84 @@
+{
+ "generated_at": "2026-07-21T17:04:41.999226+00:00",
+ "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
+ "slug": "square-louise-michel",
+ "name": "Square Louise-Michel",
+ "kind_fr": "Square",
+ "kind_en": "Square",
+ "famille": "urbain",
+ "arrondissement": 18,
+ "lat": 48.885,
+ "lon": 2.343333,
+ "photo": "/img/lieux/square-louise-michel.jpg",
+ "photo_credit": {
+  "licence": null,
+  "auteur": null,
+  "url": "https://fr.wikipedia.org/wiki/Square_Louise-Michel_(Paris)",
+  "source": "Wikipédia"
+ },
+ "wiki": {
+  "extract": "Le square Louise-Michel est un square du 18e arrondissement de Paris (France), dans le quartier des Grandes-Carrières.",
+  "url": "https://fr.wikipedia.org/wiki/Square_Louise-Michel_(Paris)",
+  "source": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  },
+  "extract_en": "The Square Louise-Michel is a square in the 18th arrondissement of Paris (France), in the Grandes-Carrières neighborhood."
+ },
+ "stats": {
+  "n_delibs": 1610,
+  "delibs_span": [
+   2022,
+   2022
+  ],
+  "n_bmo_brut": 0,
+  "n_bmo_verifies": null,
+  "invest_total_eur": 0,
+  "invest_annees": [],
+  "lecture_mode": "titre nommant le lieu (1 trouvés)",
+  "lecture_mode_en": "title naming the place (1 found)",
+  "n_lus": 1,
+  "n_lieu": 1
+ },
+ "subventions_exploitant": null,
+ "residents": [],
+ "kpi_montant": null,
+ "synthese_fr": "En octobre 2022, le Conseil de Paris a examiné un projet de délibération (DAC 511) proposant le classement au titre des monuments historiques de la basilique du Sacré-Cœur, de ses annexes et du square Louise-Michel, dans le 18e arrondissement. Selon l'adjointe Karen TAÏEB, il s'agissait d'un « triple classement » englobant la basilique, ses annexes (grilles, trois escaliers) et le square, la basilique ayant déjà bénéficié d'une inscription au titre des monuments historiques en octobre 2020. Le maire du 18e, Eric LEJOINDRE, a rappelé que le square s'appelait auparavant Adolphe-Willette avant d'être rebaptisé Louise-Michel, et a décrit ses aménagements paysagers et ses trois escaliers monumentaux. La conseillère Raphaëlle PRIMET s'est opposée au texte, estimant que le projet de délibération faisait, selon elle, abstraction de la dimension mémorielle liée à la Commune de Paris, tandis que le groupe Changer Paris a annoncé voter favorablement pour des raisons patrimoniales et touristiques.",
+ "moments": [
+  {
+   "id": "167358",
+   "seance": "OCTOBRE 2022",
+   "fait": "Le Conseil de Paris propose le classement du square Louise-Michel au titre des monuments historiques, aux côtés de la basilique du Sacré-Cœur et de ses annexes.",
+   "pourquoi": "seul document nommant explicitement le square",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=167358",
+   "fait_en": "The Conseil de Paris proposes listing the Square Louise-Michel as a historic monument, alongside the basilica of Sacré-Cœur and its annexes.",
+   "pourquoi_en": "the only document explicitly naming the square"
+  }
+ ],
+ "montants": [],
+ "bmo_extraits": [],
+ "bmo_recit": null,
+ "invest": [],
+ "marches": [],
+ "mandate": null,
+ "sources": {
+  "delibs": {
+   "name": "Débat-Délibs — Conseil de Paris",
+   "url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=search-solr&query=Square+Louise-Michel"
+  },
+  "bmo": {
+   "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
+   "url": "https://gallica.bnf.fr/ark:/12148/cb343512457/date"
+  },
+  "invest": {
+   "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
+   "url": "https://opendata.paris.fr/"
+  },
+  "wiki": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ },
+ "synthese_en": "In October 2022, the Conseil de Paris examined a draft deliberation (DAC 511) proposing the listing as a historic monument of the basilica of Sacré-Cœur, its annexes, and the Square Louise-Michel, in the 18th arrondissement. According to deputy mayor Karen TAÏEB, this was a \"triple listing\" encompassing the basilica, its annexes (the railings, three staircases), and the square, the basilica having already been granted inscription as a historic monument in October 2020. The mayor of the 18th arrondissement, Eric LEJOINDRE, recalled that the square was previously named Adolphe-Willette before being renamed Louise-Michel, and described its landscaped grounds and its three monumental staircases. Council member Raphaëlle PRIMET opposed the text, arguing that, in her view, the draft deliberation disregarded the memorial dimension linked to the Paris Commune, while the Changer Paris group announced it would vote in favor for heritage and tourism reasons."
+}

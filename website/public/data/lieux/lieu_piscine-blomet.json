@@ -1,0 +1,140 @@
+{
+ "generated_at": "2026-07-21T17:04:41.999226+00:00",
+ "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
+ "slug": "piscine-blomet",
+ "name": "Piscine Blomet",
+ "kind_fr": "Piscine",
+ "kind_en": "Swimming pool",
+ "famille": "sport",
+ "arrondissement": 15,
+ "lat": 48.841024,
+ "lon": 2.301268,
+ "photo": "/img/lieux/piscine-blomet.jpg",
+ "photo_credit": {
+  "licence": "CC BY-SA 3.0",
+  "auteur": "Celette",
+  "url": "https://commons.wikimedia.org/wiki/File:Piscine_Blomet_(Paris).jpg",
+  "source": "Wikimedia Commons"
+ },
+ "wiki": {
+  "extract": null,
+  "url": null,
+  "source": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ },
+ "stats": {
+  "n_delibs": 1237,
+  "delibs_span": [
+   1996,
+   1998
+  ],
+  "n_bmo_brut": 0,
+  "n_bmo_verifies": null,
+  "invest_total_eur": 0,
+  "invest_annees": [],
+  "lecture_mode": "titre nommant le lieu (3 trouvés)",
+  "lecture_mode_en": "title naming the place (3 found)",
+  "n_lus": 3,
+  "n_lieu": 3
+ },
+ "subventions_exploitant": null,
+ "residents": [],
+ "kpi_montant": null,
+ "synthese_fr": "Entre avril 1996 et juin 1998, le Conseil de Paris approuve à trois reprises le principe de travaux à la piscine Blomet, 17 rue Blomet (15e). En avril 1996, deux délibérations distinctes portent l'une sur des travaux de génie climatique, l'autre sur la réfection des installations hydrauliques et électriques ; en juin 1998, une troisième porte sur la restructuration du hall d'accueil et des sanitaires. Dans chaque cas, le Conseil approuve le principe des travaux, valide les modalités d'attribution du marché correspondant sur appel d'offres ouvert, et autorise le Maire de Paris à signer ce marché. M. Dominique CANE est rapporteur des trois délibérations, présentées au nom de la 4e Commission après avis du Conseil du 15e arrondissement. Aucune des trois délibérations ne chiffre le montant des travaux : la dépense y est seulement rattachée à une ligne budgétaire du budget d'investissement de la Ville, sous réserve de la décision de financement.",
+ "moments": [
+  {
+   "id": "68269",
+   "seance": "AVRIL 1996",
+   "fait": "Approbation du principe de travaux de génie climatique à la piscine Blomet",
+   "pourquoi": "premier des trois marchés de travaux identifiés sur ce lieu",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=68269",
+   "fait_en": "Approval of the principle of climate engineering works at the Piscine Blomet",
+   "pourquoi_en": "first of the three works contracts identified for this site"
+  },
+  {
+   "id": "68340",
+   "seance": "AVRIL 1996",
+   "fait": "Approbation du principe de la réfection des installations hydrauliques et électriques",
+   "pourquoi": "même mois, second marché de travaux techniques",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=68340",
+   "fait_en": "Approval of the principle of the refurbishment of the hydraulic and electrical installations",
+   "pourquoi_en": "same month, second technical works contract"
+  },
+  {
+   "id": "83486",
+   "seance": "JUIN 1998",
+   "fait": "Approbation du principe de la restructuration du hall d'accueil et des sanitaires",
+   "pourquoi": "deux ans après, principe de rénovation de l'espace d'accueil",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=83486",
+   "fait_en": "Approval of the principle of the restructuring of the entrance hall and sanitary facilities",
+   "pourquoi_en": "two years later, principle of renovation of the entrance area"
+  }
+ ],
+ "montants": [],
+ "bmo_extraits": [],
+ "bmo_recit": null,
+ "invest": [],
+ "marches": [
+  {
+   "numero_marche": "20171210000876",
+   "objet": "MARCHÉ SUBSÉQUENT AMO COMMISSIONNEMENT PISCINE BLOMET 75015",
+   "objet_clair": null,
+   "fournisseur": "GEO ENERGIE ET SERVICES",
+   "montant_max": 65280.0,
+   "date_notification": "2017-06-12",
+   "preuve": "Objet du marché nomme explicitement le lieu : \"MARCHÉ SUBSÉQUENT AMO COMMISSIONNEMENT PISCINE BLOMET 75015\" (fournisseur GEO ENERGIE ET SERVICES, SIRET 80007383500061)."
+  }
+ ],
+ "mandate": {
+  "par_annee": {
+   "2016": 17767.48,
+   "2017": 95965.34
+  },
+  "total_eur": 113732.82,
+  "operations": [
+   {
+    "ap_cle": "1504769",
+    "ap_texte": "PISCINE BLOMET (15e) - RENOVATION",
+    "mandate_par_annee": {
+     "2016": 17767.48,
+     "2017": 95965.34
+    },
+    "total_mandate": 113732.82,
+    "preuve": "Libellé de l'opération nomme explicitement le lieu : \"PISCINE BLOMET (15e) - RENOVATION\" (direction DJS, mission Jeunesse et Sports).",
+    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=1504769"
+   }
+  ],
+  "periode": [
+   "2016",
+   "2017"
+  ],
+  "source": {
+   "name": "Comptes administratifs — autorisations de programme, Ville de Paris",
+   "url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/"
+  }
+ },
+ "sources": {
+  "delibs": {
+   "name": "Débat-Délibs — Conseil de Paris",
+   "url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=search-solr&query=Piscine+Blomet"
+  },
+  "bmo": {
+   "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
+   "url": "https://gallica.bnf.fr/ark:/12148/cb343512457/date"
+  },
+  "invest": {
+   "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
+   "url": "https://opendata.paris.fr/"
+  },
+  "wiki": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ },
+ "synthese_en": "Between April 1996 and June 1998, the Council of Paris approved the principle of works at the Piscine Blomet, 17 rue Blomet (15th arrondissement), on three occasions. In April 1996, two separate resolutions dealt respectively with climate engineering works and with the refurbishment of the hydraulic and electrical installations; in June 1998, a third dealt with the restructuring of the entrance hall and sanitary facilities. In each case, the Council approved the principle of the works, validated the terms of award of the corresponding works contract via open competitive tender, and authorized the Mayor of Paris to sign that contract. Mr. Dominique CANE was the rapporteur for all three resolutions, presented on behalf of the 4th Commission after the opinion of the 15th arrondissement Council. None of the three resolutions specifies the amount of the works: the expenditure is only attached to a budget line of the City's investment budget, subject to the funding decision."
+}

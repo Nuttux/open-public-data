@@ -1,0 +1,246 @@
+{
+ "generated_at": "2026-07-21T17:04:41.999226+00:00",
+ "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
+ "slug": "mairie-du-17e",
+ "name": "Mairie du 17e",
+ "kind_fr": "Mairie",
+ "kind_en": "Town hall",
+ "famille": "services",
+ "arrondissement": 17,
+ "lat": 48.8874,
+ "lon": 2.3079,
+ "photo": "/img/lieux/mairie-du-17e.jpg",
+ "photo_credit": {
+  "licence": "CC BY 4.0",
+  "auteur": "Mbzt",
+  "url": "https://commons.wikimedia.org/wiki/File:CF0199_Paris_17e_place_Richard_Baret_entree_mairie_17e_rwk.jpg",
+  "source": "Wikimedia Commons"
+ },
+ "wiki": {
+  "extract": null,
+  "url": null,
+  "source": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ },
+ "stats": {
+  "n_delibs": 855,
+  "delibs_span": [
+   1995,
+   2026
+  ],
+  "n_bmo_brut": 0,
+  "n_bmo_verifies": null,
+  "invest_total_eur": 1060588.36,
+  "invest_annees": [
+   "2022",
+   "2024"
+  ],
+  "lecture_mode": "titre nommant le lieu (37 trouvés)",
+  "lecture_mode_en": "title naming the place (37 found)",
+  "n_lus": 0,
+  "n_lieu": null
+ },
+ "subventions_exploitant": null,
+ "residents": [],
+ "kpi_montant": null,
+ "synthese_fr": null,
+ "moments": [],
+ "montants": [],
+ "bmo_extraits": [],
+ "bmo_recit": null,
+ "invest": [
+  {
+   "annee": 2022,
+   "montant_eur": 99957.0,
+   "nom_projet": "Mairie du 17ème arrondissement - Modernisation et aménagement de différents locaux",
+   "preuve": "Nom du projet nommant explicitement le lieu : \"Mairie du 17ème arrondissement - Modernisation et aménagement de différents locaux\" (signal nom).",
+   "id": "2022_17_52_005"
+  },
+  {
+   "annee": 2024,
+   "montant_eur": 761241.92,
+   "nom_projet": "Mairie du 17e arrondissement - Aménagement de l'accueil du RDC",
+   "preuve": "Nom du projet nommant explicitement le lieu : \"Mairie du 17e arrondissement - Aménagement de l'accueil du RDC\" (signal nom).",
+   "id": "2024_17_48_004"
+  },
+  {
+   "annee": 2024,
+   "montant_eur": 199389.44,
+   "nom_projet": "Mairie du 17e Arrondissement - Modernisation de la fonction réception",
+   "preuve": "Nom du projet nommant explicitement le lieu : \"Mairie du 17e Arrondissement - Modernisation de la fonction réception\" (signal nom).",
+   "id": "2024_17_48_005"
+  }
+ ],
+ "marches": [
+  {
+   "numero_marche": "20212021T02387",
+   "objet": "MODERNISATION VENTILATION MAIRIE DU 17E RUE DES BATIGNOLLES",
+   "objet_clair": null,
+   "fournisseur": "EIFFAGE ENERGIE SYSTEMES",
+   "montant_max": 305000.0,
+   "date_notification": "2021-04-30",
+   "preuve": "Objet du marché nommant le lieu et son adresse : \"MODERNISATION VENTILATION MAIRIE DU 17E RUE DES BATIGNOLLES\" — travaux techniques sur le bâtiment."
+  },
+  {
+   "numero_marche": "20191670000058",
+   "objet": "MARCHE COCKTAILS MAIRIE DU 17EME",
+   "objet_clair": null,
+   "fournisseur": "TENDANCES SUCREES",
+   "montant_max": 221000.0,
+   "date_notification": "2019-01-07",
+   "preuve": "Objet du marché nommant le lieu : \"MARCHE COCKTAILS MAIRIE DU 17EME\" — prestation de réception se déroulant dans le bâtiment."
+  },
+  {
+   "numero_marche": "20181670000213",
+   "objet": "MARCHE BUFFETS MAIRIE DU 17EME",
+   "objet_clair": null,
+   "fournisseur": "SOCIETE SEILLER",
+   "montant_max": 195000.0,
+   "date_notification": "2018-01-08",
+   "preuve": "Objet du marché nommant le lieu : \"MARCHE BUFFETS MAIRIE DU 17EME\" — prestation de réception se déroulant dans le bâtiment."
+  },
+  {
+   "numero_marche": "20141210011192",
+   "objet": "LOT 11 MODERN SOUS-STATION VAPEUR MAIRIE DU 17EME",
+   "objet_clair": null,
+   "fournisseur": "EIFFAGE ENERGIE SYSTEMES",
+   "montant_max": 181214.18,
+   "date_notification": "2014-04-11",
+   "preuve": "Objet du marché nommant le lieu : \"LOT 11 MODERN SOUS-STATION VAPEUR MAIRIE DU 17EME\" — travaux techniques sur le bâtiment."
+  },
+  {
+   "numero_marche": "20121670008517",
+   "objet": "COCKTAILS, BUFFETS-REPAS MAIRIE DU 17ÈME",
+   "objet_clair": null,
+   "fournisseur": "SOCIETE SEILLER",
+   "montant_max": 150000.0,
+   "date_notification": "2013-01-02",
+   "preuve": "Objet du marché nommant le lieu : \"COCKTAILS, BUFFETS-REPAS MAIRIE DU 17ÈME\" — prestation de réception se déroulant dans le bâtiment."
+  },
+  {
+   "numero_marche": "20141670010719",
+   "objet": "FOURNITURE DE REPAS POUR LA MAIRIE DU 17EME",
+   "objet_clair": null,
+   "fournisseur": "SOCIETE SEILLER",
+   "montant_max": 80000.0,
+   "date_notification": "2014-01-09",
+   "preuve": "Objet du marché nommant le lieu : \"FOURNITURE DE REPAS POUR LA MAIRIE DU 17EME\" — prestation se déroulant dans le bâtiment."
+  },
+  {
+   "numero_marche": "20131670009243",
+   "objet": "EVÈNEMENTIEL 2013 MAIRIE DU 17ÈME",
+   "objet_clair": null,
+   "fournisseur": "IDS ANIMATIONS",
+   "montant_max": 60000.0,
+   "date_notification": "2013-05-02",
+   "preuve": "Objet du marché nommant le lieu : \"EVÈNEMENTIEL 2013 MAIRIE DU 17ÈME\" — prestation événementielle liée au bâtiment."
+  },
+  {
+   "numero_marche": "20141670010720",
+   "objet": "FOURNITURE DE COCKTAILS POUR LA MAIRIE DU 17EME",
+   "objet_clair": null,
+   "fournisseur": "SOCIETE SEILLER",
+   "montant_max": 60000.0,
+   "date_notification": "2014-01-09",
+   "preuve": "Objet du marché nommant le lieu : \"FOURNITURE DE COCKTAILS POUR LA MAIRIE DU 17EME\" — prestation de réception se déroulant dans le bâtiment."
+  },
+  {
+   "numero_marche": "20151670000005",
+   "objet": "MARCHE REPAS 2015-16 MAIRIE DU 17EME",
+   "objet_clair": null,
+   "fournisseur": "SOCIETE SEILLER",
+   "montant_max": 35000.0,
+   "date_notification": "2015-04-17",
+   "preuve": "Objet du marché nommant le lieu : \"MARCHE REPAS 2015-16 MAIRIE DU 17EME\" — prestation se déroulant dans le bâtiment."
+  },
+  {
+   "numero_marche": "decp-2025S08294",
+   "objet": "Mission de la refonte de la signalétique de la Mairie du 17ème arrondissement de Paris située 16 rue des Batignolles 75017 PARIS",
+   "objet_clair": null,
+   "fournisseur": "CL DESIGN",
+   "montant_max": 27000.0,
+   "date_notification": "2025-08-01",
+   "preuve": "Objet du marché nommant le lieu et son adresse exacte : \"...Mairie du 17ème arrondissement de Paris située 16 rue des Batignolles 75017 PARIS\"."
+  },
+  {
+   "numero_marche": "20171670000200",
+   "objet": "MARCHE BOULANGERIE MAIRIE DU 17EME",
+   "objet_clair": null,
+   "fournisseur": "LA FILLE DU BOULANGER",
+   "montant_max": 25000.0,
+   "date_notification": "2017-02-02",
+   "preuve": "Objet du marché nommant le lieu : \"MARCHE BOULANGERIE MAIRIE DU 17EME\" — prestation de fourniture liée au fonctionnement du bâtiment."
+  }
+ ],
+ "mandate": {
+  "par_annee": {
+   "2009": 36352.39,
+   "2010": 89249.01,
+   "2011": 809986.63,
+   "2012": 1960153.26,
+   "2013": 86836.51,
+   "2014": 77718.44,
+   "2015": 20817.89,
+   "2016": 157380.61,
+   "2017": 233083.24
+  },
+  "total_eur": 3471577.98,
+  "operations": [
+   {
+    "ap_cle": "B100/0903920",
+    "ap_texte": "MAIRIE DU 17EME",
+    "mandate_par_annee": {
+     "2009": 36352.39,
+     "2010": 89249.01,
+     "2011": 809986.63,
+     "2012": 1960153.26,
+     "2013": 86836.51
+    },
+    "total_mandate": 2982577.8,
+    "preuve": "Libellé d'opération nommant explicitement le lieu (\"MAIRIE DU 17EME\"), mission \"PATRIMOINE ET ARCHIT\", direction DPA (Direction du Patrimoine et de l'Architecture) — travaux sur le bâtiment.",
+    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/0903920"
+   },
+   {
+    "ap_cle": "0903920",
+    "ap_texte": "MAIRIE DU 17EME",
+    "mandate_par_annee": {
+     "2014": 77718.44,
+     "2015": 20817.89,
+     "2016": 157380.61,
+     "2017": 233083.24
+    },
+    "total_mandate": 489000.18,
+    "preuve": "Libellé d'opération nommant explicitement le lieu (\"MAIRIE DU 17EME\"), mission \"PATRIMOINE ET ARCHIT\", direction DPA — continuité de l'opération B100/0903920 (même code d'opération 0903920) sur 2014-2017.",
+    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=0903920"
+   }
+  ],
+  "periode": [
+   "2009",
+   "2017"
+  ],
+  "source": {
+   "name": "Comptes administratifs — autorisations de programme, Ville de Paris",
+   "url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/"
+  }
+ },
+ "sources": {
+  "delibs": {
+   "name": "Débat-Délibs — Conseil de Paris",
+   "url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=search-solr&query=Mairie+du+17e"
+  },
+  "bmo": {
+   "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
+   "url": "https://gallica.bnf.fr/ark:/12148/cb343512457/date"
+  },
+  "invest": {
+   "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
+   "url": "https://opendata.paris.fr/"
+  },
+  "wiki": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ }
+}

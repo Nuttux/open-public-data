@@ -1,0 +1,82 @@
+{
+ "generated_at": "2026-07-21T17:04:41.999226+00:00",
+ "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
+ "slug": "cimetiere-saint-vincent",
+ "name": "Cimetière Saint-Vincent",
+ "kind_fr": "Cimetière",
+ "kind_en": "Cemetery",
+ "famille": "vert",
+ "arrondissement": 18,
+ "lat": 48.888964,
+ "lon": 2.339222,
+ "photo": "/img/lieux/cimetiere-saint-vincent.jpg",
+ "photo_credit": {
+  "licence": null,
+  "auteur": null,
+  "url": "https://fr.wikipedia.org/wiki/Cimeti%C3%A8re_Saint-Vincent",
+  "source": "Wikipédia"
+ },
+ "wiki": {
+  "extract": "Le cimetière Saint-Vincent est un cimetière parisien situé 6 rue Lucien-Gaulard, dans le quartier de Montmartre.",
+  "url": "https://fr.wikipedia.org/wiki/Cimeti%C3%A8re_Saint-Vincent",
+  "source": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  },
+  "extract_en": "The Cimetière Saint-Vincent is a Parisian cemetery located at 6 rue Lucien-Gaulard, in the Montmartre district."
+ },
+ "stats": {
+  "n_delibs": 579,
+  "delibs_span": [
+   1995,
+   2026
+  ],
+  "n_bmo_brut": 0,
+  "n_bmo_verifies": null,
+  "invest_total_eur": 0,
+  "invest_annees": [],
+  "lecture_mode": "tête du classement Solr (579 documents au total)",
+  "lecture_mode_en": "top of the Solr ranking (579 documents total)",
+  "n_lus": 0,
+  "n_lieu": null
+ },
+ "subventions_exploitant": null,
+ "residents": [],
+ "kpi_montant": null,
+ "synthese_fr": null,
+ "moments": [],
+ "montants": [],
+ "bmo_extraits": [],
+ "bmo_recit": null,
+ "invest": [],
+ "marches": [
+  {
+   "numero_marche": "20181230000962",
+   "objet": "CSP4 TVX REHABILITATION PORTION MUR CIMETIERE SAINT VINCENT",
+   "objet_clair": null,
+   "fournisseur": "T.P. GEO",
+   "montant_max": 594893.0,
+   "date_notification": "2018-07-27",
+   "preuve": "Objet du marché : « CSP4 TVX REHABILITATION PORTION MUR CIMETIERE SAINT VINCENT » — nomme explicitement le cimetière et porte sur la réhabilitation d'une portion de son mur."
+  }
+ ],
+ "mandate": null,
+ "sources": {
+  "delibs": {
+   "name": "Débat-Délibs — Conseil de Paris",
+   "url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=search-solr&query=Cimeti%C3%A8re+Saint-Vincent"
+  },
+  "bmo": {
+   "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
+   "url": "https://gallica.bnf.fr/ark:/12148/cb343512457/date"
+  },
+  "invest": {
+   "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
+   "url": "https://opendata.paris.fr/"
+  },
+  "wiki": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ }
+}

@@ -1,0 +1,133 @@
+{
+ "generated_at": "2026-07-21T17:04:41.999226+00:00",
+ "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
+ "slug": "cimetiere-du-montparnasse",
+ "name": "Cimetière du Montparnasse",
+ "kind_fr": "Cimetière",
+ "kind_en": "Cemetery",
+ "famille": "vert",
+ "arrondissement": 14,
+ "lat": 48.837778,
+ "lon": 2.328333,
+ "photo": "/img/lieux/cimetiere-du-montparnasse.jpg",
+ "photo_credit": {
+  "licence": null,
+  "auteur": null,
+  "url": "https://fr.wikipedia.org/wiki/Cimeti%C3%A8re_du_Montparnasse",
+  "source": "Wikipédia"
+ },
+ "wiki": {
+  "extract": "Le cimetière du Montparnasse est situé dans le 14e arrondissement de Paris. À l'origine, il se nommait cimetière du Sud. Il a été créé en 1824 lors de la mise en œuvre des premières politiques d'urbanisme et plus particulièrement à l'occasion de la mise en place d'un réseau de cimetières parisiens en dehors des anciennes limites de la capitale.",
+  "url": "https://fr.wikipedia.org/wiki/Cimeti%C3%A8re_du_Montparnasse",
+  "source": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  },
+  "extract_en": "The Montparnasse Cemetery is located in the 14th arrondissement of Paris. It was originally named the Cimetière du Sud (South Cemetery). It was created in 1824 as part of the implementation of the first urban planning policies, and in particular the establishment of a network of Parisian cemeteries outside the former boundaries of the capital."
+ },
+ "stats": {
+  "n_delibs": 696,
+  "delibs_span": [
+   2001,
+   2022
+  ],
+  "n_bmo_brut": 0,
+  "n_bmo_verifies": null,
+  "invest_total_eur": 0,
+  "invest_annees": [],
+  "lecture_mode": "titre nommant le lieu (4 trouvés)",
+  "lecture_mode_en": "title naming the place (4 found)",
+  "n_lus": 4,
+  "n_lieu": 4
+ },
+ "subventions_exploitant": null,
+ "residents": [],
+ "kpi_montant": null,
+ "synthese_fr": "Le cimetière du Montparnasse apparaît dans les délibérations du Conseil de Paris pour des éléments funéraires ou fonciers ponctuels, plutôt que pour le cimetière dans son ensemble. En 2001, le Conseil de Paris modifie le Plan d'occupation des sols pour reclasser une parcelle dépendant du cimetière, à l'arrière de la rue de la Gaîté, et réduire la hauteur des bâtiments voisins. En 2009, il autorise le Maire à signer une convention de mécénat avec la Fondation du Patrimoine pour lancer une souscription en vue de financer la restauration du monument funéraire de Jacques Lisfranc. En 2021, un vœu du groupe Changer Paris demande à la Ville de défendre juridiquement la sculpture \"Le Baiser\" de Brancusi, ornant une tombe du cimetière, après l'annulation en justice de son classement aux monuments historiques. En 2022, le groupe Changer Paris dépose, d'après son intitulé, un vœu relatif à un monument dédié aux policiers municipaux au cimetière.",
+ "moments": [
+  {
+   "id": "62519",
+   "seance": "JUILLET 2001",
+   "fait": "Modification du POS reclassant une parcelle dépendant du cimetière (zone UHb, rue de la Gaîté)",
+   "pourquoi": "touche directement au foncier du cimetière",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=62519",
+   "fait_en": "Amendment of the Land Use Plan (POS) reclassifying a parcel belonging to the cemetery (zone UHb, Rue de la Gaîté)",
+   "pourquoi_en": "directly concerns the cemetery's land"
+  },
+  {
+   "id": "34416",
+   "seance": "SEPTEMBRE 2009",
+   "fait": "Convention de mécénat autorisée pour financer la restauration du monument funéraire de Jacques Lisfranc",
+   "pourquoi": "financement privé pour un patrimoine funéraire",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=34416",
+   "fait_en": "Patronage agreement authorized to finance the restoration of the funerary monument of Jacques Lisfranc",
+   "pourquoi_en": "private funding for funerary heritage"
+  },
+  {
+   "id": "157817",
+   "seance": "MARS 2021",
+   "fait": "Vœu pour protéger juridiquement le \"Baiser\" de Brancusi après annulation de son classement",
+   "pourquoi": "bataille juridique autour d'une œuvre du cimetière",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=157817",
+   "fait_en": "Motion (vœu) to legally protect Brancusi's \"The Kiss\" after the annulment of its listing",
+   "pourquoi_en": "legal battle over a work of art in the cemetery"
+  },
+  {
+   "id": "165086",
+   "seance": "JUILLET 2022",
+   "fait": "Vœu, d'après son intitulé, sur un monument dédié aux policiers municipaux au cimetière",
+   "pourquoi": "mémoire et hommage aux policiers municipaux",
+   "vedette": false,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=165086",
+   "fait_en": "Motion (vœu), according to its title, concerning a monument dedicated to municipal police officers at the cemetery",
+   "pourquoi_en": "remembrance and tribute to municipal police officers"
+  }
+ ],
+ "montants": [],
+ "bmo_extraits": [],
+ "bmo_recit": null,
+ "invest": [],
+ "marches": [
+  {
+   "numero_marche": "decp-2025T04037",
+   "objet": "Restauration du Moulin de la Charité et aménagement de columbariums au Cimetière du Montparnasse, 3 Boulevard Edgard Quinet 75014 Paris - opération en 3 lots juridiques lot 1 Gros œuvre – maçonnerie –",
+   "objet_clair": null,
+   "fournisseur": null,
+   "montant_max": 155279.38,
+   "date_notification": "2025-05-12",
+   "preuve": "L'objet du marché nomme explicitement le lieu : « Restauration du Moulin de la Charité et aménagement de columbariums au Cimetière du Montparnasse, 3 Boulevard Edgard Quinet 75014 Paris »."
+  },
+  {
+   "numero_marche": "decp-2025T04038",
+   "objet": "Restauration du Moulin de la Charité et aménagement de columbariums au Cimetière du Montparnasse, 3 Boulevard Edgard Quinet 75014 Paris - opération en 3 lots juridiques lot 1 Gros œuvre – maçonnerie –",
+   "objet_clair": null,
+   "fournisseur": "BALAS",
+   "montant_max": 110000.0,
+   "date_notification": "2025-05-12",
+   "preuve": "L'objet du marché nomme explicitement le lieu : « Restauration du Moulin de la Charité et aménagement de columbariums au Cimetière du Montparnasse, 3 Boulevard Edgard Quinet 75014 Paris » ; fournisseur BALAS, SIRET 56207779200058."
+  }
+ ],
+ "mandate": null,
+ "sources": {
+  "delibs": {
+   "name": "Débat-Délibs — Conseil de Paris",
+   "url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=search-solr&query=Cimeti%C3%A8re+du+Montparnasse"
+  },
+  "bmo": {
+   "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
+   "url": "https://gallica.bnf.fr/ark:/12148/cb343512457/date"
+  },
+  "invest": {
+   "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
+   "url": "https://opendata.paris.fr/"
+  },
+  "wiki": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ },
+ "synthese_en": "The Montparnasse Cemetery appears in Paris Council deliberations for isolated funerary or land-related matters, rather than for the cemetery as a whole. In 2001, the Paris Council amended the Land Use Plan (POS) to reclassify a parcel belonging to the cemetery, behind Rue de la Gaîté, and to reduce the height of neighboring buildings. In 2009, it authorized the Mayor to sign a patronage agreement with the Fondation du Patrimoine to launch a fundraising campaign to finance the restoration of the funerary monument of Jacques Lisfranc. In 2021, a motion (vœu) from the Changer Paris group asked the City to legally defend the sculpture \"The Kiss\" by Brancusi, adorning a tomb in the cemetery, after a court annulled its listing as a historic monument. In 2022, the Changer Paris group filed, according to its title, a motion concerning a monument dedicated to municipal police officers at the cemetery."
+}

@@ -1,0 +1,135 @@
+{
+ "generated_at": "2026-07-21T17:04:41.999226+00:00",
+ "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
+ "slug": "mairie-du-1er",
+ "name": "Mairie du 1er",
+ "kind_fr": "Mairie",
+ "kind_en": "Town hall",
+ "famille": "services",
+ "arrondissement": 1,
+ "lat": 48.8605,
+ "lon": 2.3396,
+ "photo": "/img/lieux/mairie-du-1er.jpg",
+ "photo_credit": {
+  "licence": "CC0",
+  "auteur": "Lansiaux, Charles Joseph Antoine (Aniche, 09–03–1855 - Paris, après 06–04–1939),",
+  "url": "https://commons.wikimedia.org/wiki/File:Mairie_et_beffroi,_place_du_Louvre,_1er_arrondissement,_Paris._PH20617.jpg",
+  "source": "Wikimedia Commons"
+ },
+ "wiki": {
+  "extract": null,
+  "url": null,
+  "source": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ },
+ "stats": {
+  "n_delibs": 1047,
+  "delibs_span": [
+   1995,
+   2026
+  ],
+  "n_bmo_brut": 0,
+  "n_bmo_verifies": null,
+  "invest_total_eur": 0,
+  "invest_annees": [],
+  "lecture_mode": "titre nommant le lieu (18 trouvés)",
+  "lecture_mode_en": "title naming the place (18 found)",
+  "n_lus": 0,
+  "n_lieu": null
+ },
+ "subventions_exploitant": null,
+ "residents": [],
+ "kpi_montant": null,
+ "synthese_fr": null,
+ "moments": [],
+ "montants": [],
+ "bmo_extraits": [],
+ "bmo_recit": null,
+ "invest": [],
+ "marches": [
+  {
+   "numero_marche": "20151210001862",
+   "objet": "RESTAURATION ESCALIER D'HONNEUR MAIRIE DU 1ER ARRDT",
+   "objet_clair": null,
+   "fournisseur": "PIERRENOEL",
+   "montant_max": 198941.84,
+   "date_notification": "2015-12-15",
+   "preuve": "Objet du marché : « RESTAURATION ESCALIER D'HONNEUR MAIRIE DU 1ER ARRDT » — nomme explicitement le lieu et porte sur des travaux sur le bâtiment."
+  },
+  {
+   "numero_marche": "20141210000216",
+   "objet": "MODERNISATION DES GRILLES ET DES PORTAILS MAIRIE DU 1ER",
+   "objet_clair": null,
+   "fournisseur": "ESPACES TP",
+   "montant_max": 168509.32,
+   "date_notification": "2014-12-10",
+   "preuve": "Objet du marché : « MODERNISATION DES GRILLES ET DES PORTAILS MAIRIE DU 1ER » — nomme explicitement le lieu et porte sur des travaux sur le bâtiment."
+  },
+  {
+   "numero_marche": "20171210000706",
+   "objet": "RESTAURATION DE LA TERRASSE DE LA MAIRIE DU 1ER ARRT",
+   "objet_clair": null,
+   "fournisseur": "ENTREPRISE GUY BROUSSAIL ET CIE SAR",
+   "montant_max": 124942.8,
+   "date_notification": "2017-05-16",
+   "preuve": "Objet du marché : « RESTAURATION DE LA TERRASSE DE LA MAIRIE DU 1ER ARRT » — nomme explicitement le lieu et porte sur des travaux sur le bâtiment."
+  },
+  {
+   "numero_marche": "20181210000643",
+   "objet": "RÉNOVATION CIRCULATIONS MAIRIE DU 1ER ARRDT - LOT N°1",
+   "objet_clair": null,
+   "fournisseur": "BATIMYD'L",
+   "montant_max": 98180.94,
+   "date_notification": "2018-05-22",
+   "preuve": "Objet du marché : « RÉNOVATION CIRCULATIONS MAIRIE DU 1ER ARRDT - LOT N°1 » — nomme explicitement le lieu et porte sur des travaux sur le bâtiment."
+  },
+  {
+   "numero_marche": "20131210009849",
+   "objet": "MODERNISATION SANITAIRES ET CUISINE MAIRIE DU 1ER ARRDT",
+   "objet_clair": null,
+   "fournisseur": "ERI",
+   "montant_max": 95020.7,
+   "date_notification": "2013-08-02",
+   "preuve": "Objet du marché : « MODERNISATION SANITAIRES ET CUISINE MAIRIE DU 1ER ARRDT » — nomme explicitement le lieu et porte sur des travaux sur le bâtiment."
+  },
+  {
+   "numero_marche": "20181210000644",
+   "objet": "RÉNOVATION CIRCULATIONS 2ÈME ÉTAGE MAIRIE DU 1ER ARRDT LOT 2",
+   "objet_clair": null,
+   "fournisseur": "LES ETABLISSEMENTS GIFFARD",
+   "montant_max": 55311.21,
+   "date_notification": "2018-05-14",
+   "preuve": "Objet du marché : « RÉNOVATION CIRCULATIONS 2ÈME ÉTAGE MAIRIE DU 1ER ARRDT LOT 2 » — nomme explicitement le lieu et porte sur des travaux sur le bâtiment."
+  },
+  {
+   "numero_marche": "20181210000645",
+   "objet": "RÉNOVATION CIRCULATIONS MAIRIE DU 1ER ARRDT - LOT N°3",
+   "objet_clair": null,
+   "fournisseur": "OCS TECHNOLOGY(OPEN CABLING SYSTEM)",
+   "montant_max": 25406.65,
+   "date_notification": "2018-05-22",
+   "preuve": "Objet du marché : « RÉNOVATION CIRCULATIONS MAIRIE DU 1ER ARRDT - LOT N°3 » — nomme explicitement le lieu et porte sur des travaux sur le bâtiment."
+  }
+ ],
+ "mandate": null,
+ "sources": {
+  "delibs": {
+   "name": "Débat-Délibs — Conseil de Paris",
+   "url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=search-solr&query=Mairie+du+1er"
+  },
+  "bmo": {
+   "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
+   "url": "https://gallica.bnf.fr/ark:/12148/cb343512457/date"
+  },
+  "invest": {
+   "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
+   "url": "https://opendata.paris.fr/"
+  },
+  "wiki": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ }
+}

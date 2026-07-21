@@ -1,0 +1,104 @@
+{
+ "generated_at": "2026-07-21T17:04:41.999226+00:00",
+ "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
+ "slug": "square-du-temple",
+ "name": "Square du Temple",
+ "kind_fr": "Square",
+ "kind_en": "Square",
+ "famille": "urbain",
+ "arrondissement": 3,
+ "lat": 48.863651,
+ "lon": 2.358599,
+ "photo": "/img/lieux/square-du-temple.jpg",
+ "photo_credit": {
+  "licence": null,
+  "auteur": null,
+  "url": "https://fr.wikipedia.org/wiki/Square_du_Temple_-_Elie-Wiesel",
+  "source": "Wikipédia"
+ },
+ "wiki": {
+  "extract": "Le square du Temple - Elie-Wiesel est un jardin parisien du 3e arrondissement, créé en 1857.",
+  "url": "https://fr.wikipedia.org/wiki/Square_du_Temple_-_Elie-Wiesel",
+  "source": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  },
+  "extract_en": "Square du Temple - Elie-Wiesel is a Parisian garden in the 3rd arrondissement, created in 1857."
+ },
+ "stats": {
+  "n_delibs": 1049,
+  "delibs_span": [
+   2013,
+   2016
+  ],
+  "n_bmo_brut": 0,
+  "n_bmo_verifies": null,
+  "invest_total_eur": 36681.19,
+  "invest_annees": [
+   "2023"
+  ],
+  "lecture_mode": "titre nommant le lieu (2 trouvés)",
+  "lecture_mode_en": "title naming the place (2 found)",
+  "n_lus": 2,
+  "n_lieu": 2
+ },
+ "subventions_exploitant": null,
+ "residents": [],
+ "kpi_montant": null,
+ "synthese_fr": "En novembre 2013, un meurtre nocturne survenu fin octobre au square du Temple pousse un groupe d'élus à déposer un vœu réclamant un renforcement de la sécurité nocturne. Le maire du 3e arrondissement conteste plusieurs affirmations du vœu, notamment sur le nombre de caméras autour du square, et défend la rapidité de l'intervention policière. L'exécutif municipal, tout en confirmant l'existence de squats nocturnes récurrents avant cet événement, décrit un jardin par ailleurs bien fréquenté et entretenu, et donne un avis défavorable au vœu ; le représentant du préfet de police précise pour sa part que le contrôle d'accès à cet espace vert géré par la Ville ne relève pas de la compétence de la préfecture. En décembre 2016, le Conseil de Paris adopte la dénomination \"Square du Temple - Elie Wiesel\" pour l'espace vert du 3e arrondissement, choix justifié en séance par le lien entre cet arrondissement, fortement touché par la déportation, et l'accueil d'Elie Wiesel à sa sortie des camps par l'Œuvre de secours aux enfants. Un élu écologiste conteste toutefois la méthode, estimant que la décision de dénomination s'est faite sans concertation avec les élus d'arrondissement. Le projet de délibération est finalement adopté à main levée.",
+ "moments": [
+  {
+   "id": "116492",
+   "seance": "NOVEMBRE 2013",
+   "fait": "Un meurtre nocturne fin octobre 2013 déclenche un vœu réclamant un renforcement de la sécurité au square, qui reçoit un avis défavorable de l'exécutif municipal.",
+   "pourquoi": "un fait divers qui interroge la sécurité et l'usage nocturne du square",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=116492",
+   "fait_en": "A nighttime murder in late October 2013 triggered a wish calling for stronger security at the square, which received an unfavorable opinion from the municipal executive.",
+   "pourquoi_en": "a news event that raises questions about safety and nighttime use of the square"
+  },
+  {
+   "id": "134515",
+   "seance": "DECEMBRE 2016",
+   "fait": "Le Conseil de Paris adopte la dénomination \"Square du Temple - Elie Wiesel\", en dépit d'une critique sur l'absence de concertation.",
+   "pourquoi": "un geste de mémoire contesté sur la méthode de décision",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=134515",
+   "fait_en": "The Council of Paris adopted the name \"Square du Temple - Elie Wiesel\", despite criticism over the lack of consultation.",
+   "pourquoi_en": "a memorial gesture whose decision-making method was contested"
+  }
+ ],
+ "montants": [],
+ "bmo_extraits": [],
+ "bmo_recit": null,
+ "invest": [
+  {
+   "annee": 2023,
+   "montant_eur": 36681.19,
+   "nom_projet": "Square du Temple - Rénovation des sols",
+   "preuve": "Nom du projet : « Square du Temple - Rénovation des sols » — nomme explicitement le lieu.",
+   "id": "2023_00_9_014"
+  }
+ ],
+ "marches": [],
+ "mandate": null,
+ "sources": {
+  "delibs": {
+   "name": "Débat-Délibs — Conseil de Paris",
+   "url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=search-solr&query=Square+du+Temple"
+  },
+  "bmo": {
+   "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
+   "url": "https://gallica.bnf.fr/ark:/12148/cb343512457/date"
+  },
+  "invest": {
+   "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
+   "url": "https://opendata.paris.fr/"
+  },
+  "wiki": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ },
+ "synthese_en": "In November 2013, a nighttime murder that took place in late October at Square du Temple prompted a group of elected officials to file a formal wish (voeu) calling for stronger nighttime security. The mayor of the 3rd arrondissement disputed several claims made in the wish, notably regarding the number of cameras around the square, and defended the speed of the police response. The municipal executive, while confirming the existence of recurring nighttime squatting before this event, described a garden that was otherwise well-used and well-maintained, and issued an unfavorable opinion on the wish; the representative of the Prefect of Police stated for his part that access control at this green space, which is managed by the City, does not fall under the Prefecture's authority. In December 2016, the Council of Paris adopted the name \"Square du Temple - Elie Wiesel\" for the green space in the 3rd arrondissement, a choice justified during the session by the link between this arrondissement, heavily affected by deportation, and the reception of Elie Wiesel by the Œuvre de secours aux enfants upon his release from the camps. A Green party elected official nonetheless disputed the method, arguing that the naming decision was made without consultation with arrondissement councillors. The draft resolution was ultimately adopted by a show of hands."
+}

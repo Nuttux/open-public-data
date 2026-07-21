@@ -1,0 +1,104 @@
+{
+ "generated_at": "2026-07-21T17:04:41.999226+00:00",
+ "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
+ "slug": "jardin-anne-frank",
+ "name": "Jardin Anne-Frank",
+ "kind_fr": "Jardin",
+ "kind_en": "Garden",
+ "famille": "vert",
+ "arrondissement": 3,
+ "lat": 48.8636,
+ "lon": 2.3616,
+ "photo": "/img/lieux/jardin-anne-frank.jpg",
+ "photo_credit": {
+  "licence": null,
+  "auteur": null,
+  "url": "https://fr.wikipedia.org/wiki/Jardin_Anne-Frank",
+  "source": "Wikipédia"
+ },
+ "wiki": {
+  "extract": "Le jardin Anne-Frank est un espace vert du quartier Sainte-Avoye du 3e arrondissement de Paris, au 14, impasse Berthaud.",
+  "url": "https://fr.wikipedia.org/wiki/Jardin_Anne-Frank",
+  "source": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  },
+  "extract_en": "The Jardin Anne-Frank is a green space in the Sainte-Avoye quarter of the 3rd arrondissement of Paris, at 14, impasse Berthaud."
+ },
+ "stats": {
+  "n_delibs": 1392,
+  "delibs_span": [
+   2006,
+   2007
+  ],
+  "n_bmo_brut": 0,
+  "n_bmo_verifies": null,
+  "invest_total_eur": 67212.62,
+  "invest_annees": [
+   "2023"
+  ],
+  "lecture_mode": "tête du classement Solr (1392 documents au total)",
+  "lecture_mode_en": "top of the Solr ranking (1392 documents total)",
+  "n_lus": 41,
+  "n_lieu": 3
+ },
+ "subventions_exploitant": null,
+ "residents": [],
+ "kpi_montant": null,
+ "synthese_fr": "En septembre 2006, le Conseil de Paris attribue la dénomination \"Jardin Anne Frank\" à un jardin à créer derrière le musée d'Art et d'Histoire du Judaïsme, dans le 3e arrondissement (délibération 2006 DPJEV 98, rapportée par Yves Contassot). Un an plus tard, en octobre 2007, le Maire de Paris est autorisé à signer avec l'association \"1001 Feuilles\" une convention d'occupation mettant à disposition une parcelle de 75 m² au sein de ce jardin, impasse Berthaud, pour y établir un jardin partagé (2007 DEVE 131). Aucune autre décision du Conseil de Paris concernant spécifiquement ce jardin n'a été identifiée au-delà de ces deux délibérations.",
+ "moments": [
+  {
+   "id": "74385",
+   "seance": "SEPTEMBRE 2006",
+   "fait": "Le Conseil de Paris attribue la dénomination \"Jardin Anne Frank\" au jardin à créer derrière le musée d'Art et d'Histoire du Judaïsme (3e).",
+   "pourquoi": "naissance officielle du nom du lieu",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=74385",
+   "fait_en": "The Paris Council grants the name \"Jardin Anne Frank\" to the garden to be created behind the Museum of Jewish Art and History (3rd arrondissement).",
+   "pourquoi_en": "official birth of the place's name"
+  },
+  {
+   "id": "53677",
+   "seance": "OCTOBRE 2007",
+   "fait": "Autorisation de signer une convention avec l'association \"1001 Feuilles\" pour un jardin partagé de 75 m² dans le jardin.",
+   "pourquoi": "premier usage citoyen encadré du jardin",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=53677",
+   "fait_en": "Authorization to sign an agreement with the association \"1001 Feuilles\" for a 75 m² shared garden within the garden.",
+   "pourquoi_en": "first regulated citizen use of the garden"
+  }
+ ],
+ "montants": [],
+ "bmo_extraits": [],
+ "bmo_recit": null,
+ "invest": [
+  {
+   "annee": 2023,
+   "montant_eur": 67212.62,
+   "nom_projet": "Jardin Anne Frank - Rénovation de la structure de la pergola",
+   "preuve": "nom_projet = \"Jardin Anne Frank - Rénovation de la structure de la pergola\" nomme explicitement le lieu",
+   "id": "2023_00_9_011"
+  }
+ ],
+ "marches": [],
+ "mandate": null,
+ "sources": {
+  "delibs": {
+   "name": "Débat-Délibs — Conseil de Paris",
+   "url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=search-solr&query=Jardin+Anne-Frank"
+  },
+  "bmo": {
+   "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
+   "url": "https://gallica.bnf.fr/ark:/12148/cb343512457/date"
+  },
+  "invest": {
+   "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
+   "url": "https://opendata.paris.fr/"
+  },
+  "wiki": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ },
+ "synthese_en": "In September 2006, the Paris Council granted the name \"Jardin Anne Frank\" to a garden to be created behind the Museum of Jewish Art and History, in the 3rd arrondissement (resolution 2006 DPJEV 98, reported by Yves Contassot). A year later, in October 2007, the Mayor of Paris was authorized to sign an occupancy agreement with the association \"1001 Feuilles,\" granting it a 75 m² plot within this garden, impasse Berthaud, to establish a shared garden (2007 DEVE 131). No other Paris Council decision specifically concerning this garden has been identified beyond these two resolutions."
+}

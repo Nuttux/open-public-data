@@ -1,0 +1,113 @@
+{
+ "generated_at": "2026-07-21T17:04:41.999226+00:00",
+ "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
+ "slug": "musee-de-la-liberation-de-paris",
+ "name": "Musée de la Libération de Paris",
+ "kind_fr": "Musée",
+ "kind_en": "Musée",
+ "famille": "culture",
+ "arrondissement": 14,
+ "lat": 48.856772,
+ "lon": 2.351429,
+ "photo": "/img/lieux/musee-de-la-liberation-de-paris.jpg",
+ "photo_credit": {
+  "licence": "CC0",
+  "auteur": "Pinches, John Harvey (Londres, en 1852 - Grande-Bretagne, en 1941), fabricant",
+  "url": "https://commons.wikimedia.org/wiki/File:Croix_de_Compagnon_de_l%27Ordre_de_la_Lib%C3%A9ration_d%C3%A9cern%C3%A9e_%C3%A0_la_Ville_de_Paris,_2005.7(2).jpg",
+  "source": "Wikimedia Commons"
+ },
+ "wiki": {
+  "extract": null,
+  "url": null,
+  "source": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ },
+ "stats": {
+  "n_delibs": 618,
+  "delibs_span": [
+   2012,
+   2015
+  ],
+  "n_bmo_brut": 0,
+  "n_bmo_verifies": null,
+  "invest_total_eur": 0,
+  "invest_annees": [],
+  "lecture_mode": "tête du classement Solr (618 documents au total)",
+  "lecture_mode_en": "top of the Solr ranking (618 documents total)",
+  "n_lus": 44,
+  "n_lieu": 3
+ },
+ "subventions_exploitant": null,
+ "residents": [],
+ "kpi_montant": null,
+ "synthese_fr": "En octobre 2012, le Conseil de Paris accepte un legs de Mme Andrée Escoffier en faveur du Musée du Général Leclerc de Hauteclocque et de la Libération de Paris - Musée Jean Moulin. En février 2014 puis en mars 2015, les groupes UMPPA puis UMP déposent des vœux relatifs à ce musée, celui de 2015 portant explicitement sur son devenir. En juillet 2019, dans le cadre de l'appel à projets urbains « Réinventer Paris - Les dessous de Paris », le Conseil approuve la désignation d'un lauréat puis la vente des espaces en sous-sol du site musée de la Libération, 23 allée de la 2e Division Blindée.",
+ "moments": [
+  {
+   "id": "109475",
+   "seance": "OCTOBRE 2012",
+   "fait": "Le Conseil accepte un legs particulier en faveur du musée.",
+   "pourquoi": "un don recensé au bénéfice du musée",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=109475",
+   "fait_en": "The Council accepts a private bequest for the benefit of the museum.",
+   "pourquoi_en": "a donation recorded for the museum's benefit"
+  },
+  {
+   "id": "118689",
+   "seance": "FEVRIER 2014",
+   "fait": "Vœu du groupe UMPPA relatif au musée.",
+   "pourquoi": "un groupe interpelle sur le musée",
+   "vedette": false,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=118689",
+   "fait_en": "Motion (vœu) from the UMPPA group concerning the museum.",
+   "pourquoi_en": "a political group raises the issue of the museum"
+  },
+  {
+   "id": "123715",
+   "seance": "MARS 2015",
+   "fait": "Vœu du groupe UMP relatif au devenir du musée.",
+   "pourquoi": "le devenir du musée questionné en séance",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=123715",
+   "fait_en": "Motion (vœu) from the UMP group concerning the museum's future.",
+   "pourquoi_en": "the museum's future questioned in council session"
+  },
+  {
+   "id": "150376",
+   "seance": "JUILLET 2019",
+   "fait": "Vente des espaces souterrains du site musée de la Libération via Réinventer Paris.",
+   "pourquoi": "le sous-sol du site cédé dans le cadre de l'appel à projets",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=150376",
+   "fait_en": "Sale of the underground spaces at the Musée de la Libération site through Réinventer Paris.",
+   "pourquoi_en": "the site's basement sold as part of the call for projects"
+  }
+ ],
+ "montants": [],
+ "bmo_extraits": [],
+ "bmo_recit": null,
+ "invest": [],
+ "marches": [],
+ "mandate": null,
+ "sources": {
+  "delibs": {
+   "name": "Débat-Délibs — Conseil de Paris",
+   "url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=search-solr&query=Mus%C3%A9e+de+la+Lib%C3%A9ration+de+Paris"
+  },
+  "bmo": {
+   "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
+   "url": "https://gallica.bnf.fr/ark:/12148/cb343512457/date"
+  },
+  "invest": {
+   "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
+   "url": "https://opendata.paris.fr/"
+  },
+  "wiki": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ },
+ "synthese_en": "In October 2012, the Paris Council accepted a bequest from Mrs. Andrée Escoffier for the benefit of the Musée du Général Leclerc de Hauteclocque et de la Libération de Paris - Musée Jean Moulin. In February 2014 and then in March 2015, the UMPPA and UMP groups respectively filed motions (vœux) concerning this museum, with the 2015 motion explicitly addressing its future. In July 2019, as part of the \"Réinventer Paris - Les dessous de Paris\" urban call for projects, the Council approved the selection of a winning bidder and then the sale of the underground spaces at the Musée de la Libération site, 23 allée de la 2e Division Blindée."
+}

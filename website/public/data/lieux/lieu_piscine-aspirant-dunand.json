@@ -1,0 +1,116 @@
+{
+ "generated_at": "2026-07-21T17:04:41.999226+00:00",
+ "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
+ "slug": "piscine-aspirant-dunand",
+ "name": "Piscine Aspirant-Dunand",
+ "kind_fr": "Piscine",
+ "kind_en": "Swimming pool",
+ "famille": "sport",
+ "arrondissement": 14,
+ "lat": 48.822832,
+ "lon": 2.364085,
+ "photo": null,
+ "photo_credit": null,
+ "wiki": {
+  "extract": null,
+  "url": null,
+  "source": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ },
+ "stats": {
+  "n_delibs": 1130,
+  "delibs_span": [
+   2002,
+   2003
+  ],
+  "n_bmo_brut": 0,
+  "n_bmo_verifies": null,
+  "invest_total_eur": 0,
+  "invest_annees": [],
+  "lecture_mode": "titre nommant le lieu (2 trouvés)",
+  "lecture_mode_en": "title naming the place (2 found)",
+  "n_lus": 2,
+  "n_lieu": 2
+ },
+ "subventions_exploitant": null,
+ "residents": [],
+ "kpi_montant": null,
+ "synthese_fr": "En avril 2002, le Conseil de Paris approuve le principe d'une mise en sécurité et d'une amélioration de la piscine Aspirant-Dunand (14e) et autorise le Maire à signer trois marchés de travaux, sur rapport de Pascal Cherki. Moins d'un an plus tard, en janvier 2003, une nouvelle délibération porte sur trois marchés complémentaires : la mise aux normes des carrelages du bassin et des circulations/vestiaires, et l'installation d'un système de surveillance assistée par ordinateur pour la prévention des noyades. Les deux délibérations n'approuvent que le principe des travaux et autorisent leur signature par le Maire ; elles n'indiquent ni que les travaux aient été réalisés, ni leur coût.",
+ "moments": [
+  {
+   "id": "73461",
+   "seance": "AVRIL 2002",
+   "fait": "Le Conseil approuve le principe de la mise en sécurité et de l'amélioration de la piscine et autorise le Maire à signer 3 marchés de travaux.",
+   "pourquoi": "premier chantier de sécurité connu de la piscine",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=73461",
+   "fait_en": "The Council approves the principle of safety upgrades and improvements to the pool and authorizes the Mayor to sign 3 works contracts.",
+   "pourquoi_en": "first known safety project at the pool"
+  },
+  {
+   "id": "41579",
+   "seance": "JANVIER 2003",
+   "fait": "Le Conseil approuve le principe de 3 nouveaux marchés : mise aux normes des carrelages et vestiaires, et système anti-noyade assisté par ordinateur.",
+   "pourquoi": "second volet, sécurité anti-noyade renforcée",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=41579",
+   "fait_en": "The Council approves the principle of 3 new contracts: bringing the tiling and changing rooms up to standard, and a computer-assisted anti-drowning system.",
+   "pourquoi_en": "second phase, enhanced anti-drowning safety"
+  }
+ ],
+ "montants": [],
+ "bmo_extraits": [],
+ "bmo_recit": null,
+ "invest": [],
+ "marches": [
+  {
+   "numero_marche": "20181210001242",
+   "objet": "MO CHANGT NRJ  MODERNISATION VENTIL PISCINE ASPIRANT DUNAND",
+   "objet_clair": null,
+   "fournisseur": "SARL AGATHE",
+   "montant_max": 94300.0,
+   "date_notification": "2018-09-13",
+   "preuve": "Objet du marché : \"MO CHANGT NRJ MODERNISATION VENTIL PISCINE ASPIRANT DUNAND\" — nomme explicitement la Piscine Aspirant-Dunand."
+  },
+  {
+   "numero_marche": "decp-2024S07632",
+   "objet": "Marché subséquent de prestations de sécurité et protection de la santé de catégories 1 et 2 en 5 lots séparés  Rénovation de la Piscine Aspirant Dunand, 20 rue Saillard, 75014 Paris",
+   "objet_clair": null,
+   "fournisseur": "4G INGENIERIE & CONSULTING",
+   "montant_max": 18450.0,
+   "date_notification": "2024-07-25",
+   "preuve": "Objet du marché cite \"Rénovation de la Piscine Aspirant Dunand, 20 rue Saillard, 75014 Paris\" — adresse identique à celle confirmée dans les délibérations (2002 JS 85, 2003 JS 2 : \"piscine Aspirant-Dunand, 20, rue Saillard (14e)\")."
+  },
+  {
+   "numero_marche": "decp-2024S07633",
+   "objet": "Contrôle technique de la construction pour des opérations nécessitant un coordinateur de sécurité et protection de la santé de catégories 1 ou 2  Rénovation de la Piscine Aspirant Dunand, 20 rue Saill",
+   "objet_clair": null,
+   "fournisseur": "POINT CONTROLES",
+   "montant_max": 15986.0,
+   "date_notification": "2024-07-25",
+   "preuve": "Objet du marché cite \"Rénovation de la Piscine Aspirant Dunand, 20 rue Saillard, 75014 Paris\" — même adresse que confirmée par les délibérations 2002 JS 85 et 2003 JS 2."
+  }
+ ],
+ "mandate": null,
+ "sources": {
+  "delibs": {
+   "name": "Débat-Délibs — Conseil de Paris",
+   "url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=search-solr&query=Piscine+Aspirant-Dunand"
+  },
+  "bmo": {
+   "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
+   "url": "https://gallica.bnf.fr/ark:/12148/cb343512457/date"
+  },
+  "invest": {
+   "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
+   "url": "https://opendata.paris.fr/"
+  },
+  "wiki": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ },
+ "synthese_en": "In April 2002, the Council of Paris approved the principle of safety upgrades and improvements to the Aspirant-Dunand pool (14th arrondissement) and authorized the Mayor to sign three works contracts, on the report of Pascal Cherki. Less than a year later, in January 2003, a further deliberation covered three additional contracts: bringing the pool tiling and the corridors/changing rooms up to standard, and installing a computer-assisted surveillance system for drowning prevention. Both deliberations approve only the principle of the works and authorize their signature by the Mayor; they do not indicate whether the works were carried out, nor their cost."
+}

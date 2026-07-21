@@ -1,0 +1,91 @@
+{
+ "generated_at": "2026-07-21T17:04:41.999226+00:00",
+ "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
+ "slug": "bibliotheque-de-l-heure-joyeuse",
+ "name": "Bibliothèque de l'Heure joyeuse",
+ "kind_fr": "Bibliothèque",
+ "kind_en": "Library",
+ "famille": "culture",
+ "arrondissement": 5,
+ "lat": 48.852064,
+ "lon": 2.345104,
+ "photo": "/img/lieux/bibliotheque-de-l-heure-joyeuse.jpg",
+ "photo_credit": {
+  "licence": "CC BY-SA 4.0",
+  "auteur": "Pierre Tribhou",
+  "url": "https://commons.wikimedia.org/wiki/File:Chaise_biblioth%C3%A8que_Heure_joyeuse.jpg",
+  "source": "Wikimedia Commons"
+ },
+ "wiki": {
+  "extract": null,
+  "url": null,
+  "source": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ },
+ "stats": {
+  "n_delibs": 772,
+  "delibs_span": [
+   2003,
+   2003
+  ],
+  "n_bmo_brut": 1885,
+  "n_bmo_verifies": null,
+  "invest_total_eur": 0,
+  "invest_annees": [],
+  "lecture_mode": "titre nommant le lieu (1 trouvés)",
+  "lecture_mode_en": "title naming the place (1 found)",
+  "n_lus": 1,
+  "n_lieu": 1
+ },
+ "subventions_exploitant": null,
+ "residents": [],
+ "kpi_montant": null,
+ "synthese_fr": "En mars 2003, le Conseil de Paris autorise le Maire à accepter, au nom de la Ville, une donation faite à la Bibliothèque de l'Heure Joyeuse par M. et Mme Glenisson, domiciliés à Jonzac. Il s'agit d'une collection d'environ un millier de livres anciens de littérature d'enfance et de jeunesse, pour beaucoup des livres de prix édités entre 1850 et 1914, valorisée 12 200 €. La délibération organise aussi l'enregistrement comptable du don : inscription de la valeur en recette d'investissement puis, en miroir, d'une dépense d'égal montant pour constater l'entrée des ouvrages dans le patrimoine de la Ville.",
+ "moments": [
+  {
+   "id": "68970",
+   "seance": "MARS 2003",
+   "fait": "Le Conseil autorise le Maire à accepter une donation de livres anciens de littérature jeunesse (env. 1000 ouvrages, 1850-1914) valorisée 12 200 €, en faveur de la bibliothèque.",
+   "pourquoi": "don de livres anciens (1850-1914) entrant dans le patrimoine de la bibliothèque",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=68970",
+   "fait_en": "The Council authorizes the Mayor to accept a donation of antique children's literature books (approx. 1,000 volumes, 1850-1914) valued at €12,200, for the library.",
+   "pourquoi_en": "donation of antique books (1850-1914) added to the library's collection"
+  }
+ ],
+ "montants": [
+  {
+   "seance": "MARS 2003",
+   "montant": "12 200 €",
+   "objet": "valeur globale de la collection de livres anciens donnée à la bibliothèque",
+   "citation": "composée en majorité de livres de prix édités entre 1850 et 1914, d'une valeur globale de 12.200 euros.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=68970"
+  }
+ ],
+ "bmo_extraits": [],
+ "bmo_recit": null,
+ "invest": [],
+ "marches": [],
+ "mandate": null,
+ "sources": {
+  "delibs": {
+   "name": "Débat-Délibs — Conseil de Paris",
+   "url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=search-solr&query=Biblioth%C3%A8que+de+l%27Heure+joyeuse"
+  },
+  "bmo": {
+   "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
+   "url": "https://gallica.bnf.fr/services/engine/search/sru?operation=searchRetrieve&version=1.2&startRecord=0&maximumRecords=15&page=1&collapsing=disabled&query=arkPress+all+%22cb343512457_date%22+and+%28gallica+all+%22Biblioth%C3%A8que+de+l%27Heure+joyeuse%22%29"
+  },
+  "invest": {
+   "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
+   "url": "https://opendata.paris.fr/"
+  },
+  "wiki": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ },
+ "synthese_en": "In March 2003, the Conseil de Paris authorized the Mayor to accept, on behalf of the City, a donation made to the Bibliothèque de l'Heure Joyeuse by Mr. and Mrs. Glenisson, residents of Jonzac. The donation consists of a collection of around a thousand antique children's and youth literature books, mostly prize books published between 1850 and 1914, valued at €12,200. The resolution also sets out the accounting treatment of the donation: recording the value as investment revenue, then, as a mirror entry, an expense of the same amount to record the books' entry into the City's assets."
+}

@@ -1,0 +1,127 @@
+{
+ "generated_at": "2026-07-21T17:04:41.999226+00:00",
+ "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
+ "slug": "mairie-du-15e",
+ "name": "Mairie du 15e",
+ "kind_fr": "Mairie",
+ "kind_en": "Town hall",
+ "famille": "services",
+ "arrondissement": 15,
+ "lat": 48.8412,
+ "lon": 2.2999,
+ "photo": "/img/lieux/mairie-du-15e.jpg",
+ "photo_credit": {
+  "licence": "CC BY-SA 3.0",
+  "auteur": "DXR",
+  "url": "https://commons.wikimedia.org/wiki/File:Mairie_du_15e_140201_1.jpg",
+  "source": "Wikimedia Commons"
+ },
+ "wiki": {
+  "extract": null,
+  "url": null,
+  "source": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ },
+ "stats": {
+  "n_delibs": 871,
+  "delibs_span": [
+   1995,
+   2026
+  ],
+  "n_bmo_brut": 0,
+  "n_bmo_verifies": null,
+  "invest_total_eur": 221659.51,
+  "invest_annees": [
+   "2024"
+  ],
+  "lecture_mode": "titre nommant le lieu (13 trouvés)",
+  "lecture_mode_en": "title naming the place (13 found)",
+  "n_lus": 0,
+  "n_lieu": null
+ },
+ "subventions_exploitant": null,
+ "residents": [],
+ "kpi_montant": null,
+ "synthese_fr": null,
+ "moments": [],
+ "montants": [],
+ "bmo_extraits": [],
+ "bmo_recit": null,
+ "invest": [
+  {
+   "annee": 2024,
+   "montant_eur": 221659.51,
+   "nom_projet": "Mairie Du 15e arrondissement - Eclairage des façades",
+   "preuve": "Nom du projet : « Mairie Du 15e arrondissement - Eclairage des façades » (à 84 m) — désigne explicitement les façades du bâtiment de la mairie.",
+   "id": "2024_15_42_003"
+  }
+ ],
+ "marches": [
+  {
+   "numero_marche": "20181210001527",
+   "objet": "AMÉLIORATION SÉCURITÉ INCENDIE DE LA MAIRIE DU 15È",
+   "objet_clair": null,
+   "fournisseur": "TRAVAUX BATIMENTS ELECTRICITE SECUR",
+   "montant_max": 616841.91,
+   "date_notification": "2019-02-08",
+   "preuve": "Objet du marché : « AMÉLIORATION SÉCURITÉ INCENDIE DE LA MAIRIE DU 15È » — travaux de sécurité incendie sur le bâtiment lui-même."
+  },
+  {
+   "numero_marche": "20181650000189",
+   "objet": "PRESTATIONS TRAITEURS POUR LA MAIRIE DU 15ÈME (LOT2 BUFFETS)",
+   "objet_clair": null,
+   "fournisseur": "SOCIETE SEILLER",
+   "montant_max": 135000.0,
+   "date_notification": "2018-01-15",
+   "preuve": "Objet : « PRESTATIONS TRAITEURS POUR LA MAIRIE DU 15ÈME (LOT2 BUFFETS) » — prestation commandée pour la mairie elle-même."
+  },
+  {
+   "numero_marche": "20181650000188",
+   "objet": "PRESTATIONS TRAITEURS POUR MAIRIE DU 15ÈME (LOT 1 COCKTAILS)",
+   "objet_clair": null,
+   "fournisseur": "SOCIETE SEILLER",
+   "montant_max": 60000.0,
+   "date_notification": "2018-01-15",
+   "preuve": "Objet : « PRESTATIONS TRAITEURS POUR MAIRIE DU 15ÈME (LOT 1 COCKTAILS) » — prestation commandée pour la mairie elle-même."
+  },
+  {
+   "numero_marche": "decp-2025F03714",
+   "objet": "Marché pour la fourniture et la mise en service de 2 classeurs rotatifs destinés à la Mairie du 15ème arrondissement de Paris.",
+   "objet_clair": null,
+   "fournisseur": "KARDEX FRANCE",
+   "montant_max": 59675.0,
+   "date_notification": "2025-04-14",
+   "preuve": "Objet : équipement (classeurs rotatifs) « destinés à la Mairie du 15ème arrondissement de Paris » — livraison et installation dans le bâtiment."
+  },
+  {
+   "numero_marche": "decp-2024S12503",
+   "objet": "Poste de secours à l'occasion de la fête de Noël le 14 décembre 2024 au parvis de la Mairie du 15ème arrondissement de Paris",
+   "objet_clair": null,
+   "fournisseur": "CROIX ROUGE FRANCAISE",
+   "montant_max": 316.0,
+   "date_notification": "2024-11-22",
+   "preuve": "Objet : poste de secours « au parvis de la Mairie du 15ème arrondissement de Paris » — lieu d'exécution explicite et précis (le parvis du bâtiment)."
+  }
+ ],
+ "mandate": null,
+ "sources": {
+  "delibs": {
+   "name": "Débat-Délibs — Conseil de Paris",
+   "url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=search-solr&query=Mairie+du+15e"
+  },
+  "bmo": {
+   "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
+   "url": "https://gallica.bnf.fr/ark:/12148/cb343512457/date"
+  },
+  "invest": {
+   "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
+   "url": "https://opendata.paris.fr/"
+  },
+  "wiki": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ }
+}

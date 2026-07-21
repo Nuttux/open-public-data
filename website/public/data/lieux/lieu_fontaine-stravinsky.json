@@ -1,0 +1,127 @@
+{
+ "generated_at": "2026-07-21T17:04:41.999226+00:00",
+ "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
+ "slug": "fontaine-stravinsky",
+ "name": "Fontaine Stravinsky",
+ "kind_fr": "Monument",
+ "kind_en": "Monument",
+ "famille": "urbain",
+ "arrondissement": 4,
+ "lat": 48.8595,
+ "lon": 2.3515,
+ "photo": "/img/lieux/fontaine-stravinsky.jpg",
+ "photo_credit": {
+  "licence": null,
+  "auteur": null,
+  "url": "https://fr.wikipedia.org/wiki/Fontaine_Stravinsky",
+  "source": "Wikipédia"
+ },
+ "wiki": {
+  "extract": "La fontaine Stravinsky, ou fontaine des Automates, réalisée en 1983, est l'œuvre conjointe de Jean Tinguely et Niki de Saint Phalle. Elle est créée dans le cadre du pourcentage du budget de la construction du Centre national d'art et de culture Georges-Pompidou. C'est une commande publique entre la ville de Paris, le ministère de la Culture et le Centre Pompidou. L'œuvre est la propriété de la ville de Paris qui se charge de son entretien.",
+  "url": "https://fr.wikipedia.org/wiki/Fontaine_Stravinsky",
+  "source": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  },
+  "extract_en": "The Stravinsky Fountain, also known as the Fontaine des Automates, completed in 1983, is the joint work of Jean Tinguely and Niki de Saint Phalle. It was created as part of the percent-for-art budget for the construction of the Centre national d'art et de culture Georges-Pompidou. It is a public commission between the City of Paris, the Ministry of Culture, and the Centre Pompidou. The work is owned by the City of Paris, which is responsible for its upkeep."
+ },
+ "stats": {
+  "n_delibs": 1292,
+  "delibs_span": [
+   2019,
+   2019
+  ],
+  "n_bmo_brut": 0,
+  "n_bmo_verifies": null,
+  "invest_total_eur": 0,
+  "invest_annees": [],
+  "lecture_mode": "titre nommant le lieu (1 trouvés)",
+  "lecture_mode_en": "title naming the place (1 found)",
+  "n_lus": 1,
+  "n_lieu": 1
+ },
+ "subventions_exploitant": null,
+ "residents": [],
+ "kpi_montant": null,
+ "synthese_fr": "En novembre 2019, le Conseil de Paris examine le projet de délibération DAC 774, une convention de mécénat de compétence avec Eau de Paris pour restaurer l'œuvre communément appelée fontaine Stravinsky, dans le 4e arrondissement. Mme Fadila Méhal (groupe DP) décrit en séance une fontaine selon elle souvent à l'arrêt et dégradée, et indique un calendrier annoncé par la Ville : lancement des études le mois suivant, publication des marchés publics en mai 2020, travaux à partir de novembre 2020 et réception prévue en avril 2021, pour un coût total présenté comme supérieur à 900 000 euros dont plus de 316 000 euros pour l'électricité, l'étanchéité des bassins et la réfection des abords. L'adjoint Christophe Girard corrige en séance le nom usuel de l'œuvre : il ne s'agit pas d'une représentation d'Igor Stravinsky mais d'une création de Niki de Saint Phalle, avec la participation de son compagnon Jean Tinguely, ce qui l'amène à parler de fontaine Niki-de-Saint-Phalle. Mme Méhal annonce, avant cet échange, un vote favorable de son groupe.",
+ "moments": [
+  {
+   "id": "152742",
+   "seance": "NOVEMBRE 2019",
+   "fait": "Convention de mécénat avec Eau de Paris pour restaurer la fontaine, débattue en Conseil de Paris (DAC 774)",
+   "pourquoi": "seul document disponible sur cette fontaine, débat fondateur du chantier de restauration",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=152742",
+   "fait_en": "Skills-based sponsorship agreement with Eau de Paris to restore the fountain, debated in the Council of Paris (DAC 774)",
+   "pourquoi_en": "only document available on this fountain, the founding debate for the restoration project"
+  }
+ ],
+ "montants": [
+  {
+   "seance": "NOVEMBRE 2019",
+   "montant": "plus de 900 000 euros",
+   "objet": "coût total de l'opération de restauration, chiffre donné par la Ville et cité par Mme Méhal (DP)",
+   "citation": "Les chiffres de l?opération totale donnés par la Ville sont de plus de 900.000 euros",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=152742"
+  },
+  {
+   "seance": "NOVEMBRE 2019",
+   "montant": "plus de 316 000 euros",
+   "objet": "part électricité, étanchéité des bassins et réfection des abords, estimation citée en séance",
+   "citation": "le montant des travaux d?électricité et d?étanchéité des bassins et la réfection des abords étant estimés à plus de 316.000 euros",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=152742"
+  }
+ ],
+ "bmo_extraits": [],
+ "bmo_recit": null,
+ "invest": [],
+ "marches": [
+  {
+   "numero_marche": "20222022T04126",
+   "objet": "SA4 TVX RENOVATION FONTAINE STRAVINSKY",
+   "objet_clair": null,
+   "fournisseur": "BELLE ENVIRONNEMENT",
+   "montant_max": 756258.28,
+   "date_notification": "2022-06-15",
+   "preuve": "Objet du marché : \"SA4 TVX RENOVATION FONTAINE STRAVINSKY\" — nomme explicitement le lieu ; cohérent avec la délibération DAC 774 (novembre 2019) actant la restauration de la fontaine Stravinsky (Niki de Saint Phalle), 4e arrondissement, pour un budget d'opération annoncé \">900 000 €\"."
+  },
+  {
+   "numero_marche": "20141210020009",
+   "objet": "RESTAURATION ET ENTRETIEN SCULPTURES FONTAINE STRAVINSKY",
+   "objet_clair": null,
+   "fournisseur": "CLAUDE CHANTIN CONSTRUC METAL MECAN",
+   "montant_max": 53360.0,
+   "date_notification": "2014-09-22",
+   "preuve": "Objet du marché : \"RESTAURATION ET ENTRETIEN SCULPTURES FONTAINE STRAVINSKY\" — nomme explicitement le lieu et son objet (restauration des sculptures de la fontaine)."
+  },
+  {
+   "numero_marche": "20161210001232",
+   "objet": "AMO DIAGNOSTIC FONTAINE STRAVINSKY 75004",
+   "objet_clair": null,
+   "fournisseur": "DILUVIAL",
+   "montant_max": 39200.0,
+   "date_notification": "2016-10-01",
+   "preuve": "Objet du marché : \"AMO DIAGNOSTIC FONTAINE STRAVINSKY 75004\" — nomme explicitement le lieu et le code postal 75004, cohérent avec le 4e arrondissement du lieu."
+  }
+ ],
+ "mandate": null,
+ "sources": {
+  "delibs": {
+   "name": "Débat-Délibs — Conseil de Paris",
+   "url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=search-solr&query=Fontaine+Stravinsky"
+  },
+  "bmo": {
+   "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
+   "url": "https://gallica.bnf.fr/ark:/12148/cb343512457/date"
+  },
+  "invest": {
+   "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
+   "url": "https://opendata.paris.fr/"
+  },
+  "wiki": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ },
+ "synthese_en": "In November 2019, the Council of Paris examined draft resolution DAC 774, a skills-based sponsorship agreement (convention de mécénat de compétence) with Eau de Paris to restore the work commonly known as the Stravinsky Fountain, in the 4th arrondissement. Ms. Fadila Méhal (DP group) described the fountain in session as, in her account, often out of service and deteriorated, and set out a timeline announced by the City: studies to launch the following month, public tenders published in May 2020, works starting from November 2020, and completion expected in April 2021, for a total cost presented as more than 900,000 euros, including more than 316,000 euros for electrical work, waterproofing of the basins, and refurbishment of the surrounding area. Deputy mayor Christophe Girard corrected the work's usual name during the session: it is not a depiction of Igor Stravinsky but a creation by Niki de Saint Phalle, with the participation of her partner Jean Tinguely, which led him to refer to it as the Niki-de-Saint-Phalle fountain. Before this exchange, Ms. Méhal announced a favorable vote from her group."
+}

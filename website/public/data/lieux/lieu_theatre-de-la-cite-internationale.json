@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T20:28:18.117255+00:00",
+ "generated_at": "2026-07-21T17:04:41.999226+00:00",
  "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
  "slug": "theatre-de-la-cite-internationale",
  "name": "Théâtre de la Cité internationale",

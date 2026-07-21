@@ -1,0 +1,106 @@
+{
+ "generated_at": "2026-07-21T17:04:41.999226+00:00",
+ "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
+ "slug": "mairie-du-14e",
+ "name": "Mairie du 14e",
+ "kind_fr": "Mairie",
+ "kind_en": "Town hall",
+ "famille": "services",
+ "arrondissement": 14,
+ "lat": 48.8332,
+ "lon": 2.3255,
+ "photo": "/img/lieux/mairie-du-14e.jpg",
+ "photo_credit": {
+  "licence": "CC BY-SA 4.0",
+  "auteur": "Chabe01",
+  "url": "https://commons.wikimedia.org/wiki/File:Arr%C3%AAt_Bus_Mairie_14e_Avenue_Maine_-_Paris_XIV_(FR75)_-_2025-01-18_-_6.jpg",
+  "source": "Wikimedia Commons"
+ },
+ "wiki": {
+  "extract": null,
+  "url": null,
+  "source": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ },
+ "stats": {
+  "n_delibs": 831,
+  "delibs_span": [
+   1995,
+   2026
+  ],
+  "n_bmo_brut": 0,
+  "n_bmo_verifies": null,
+  "invest_total_eur": 319645.41,
+  "invest_annees": [
+   "2024"
+  ],
+  "lecture_mode": "titre nommant le lieu (18 trouvés)",
+  "lecture_mode_en": "title naming the place (18 found)",
+  "n_lus": 0,
+  "n_lieu": null
+ },
+ "subventions_exploitant": null,
+ "residents": [
+  {
+   "beneficiaire": "C14-PARIS",
+   "montant_total": 13000.0,
+   "preuve": "objet_principal: \"C14-PARISSalon de céramique ContemporaineMairie du 14ème arrondissement de Paris\" — l'objet nomme explicitement la Mairie du 14ème arrondissement de Paris comme lieu de l'activité subventionnée (salon de céramique), sans indiquer que l'association gère le bâtiment."
+  }
+ ],
+ "kpi_montant": null,
+ "synthese_fr": null,
+ "moments": [],
+ "montants": [],
+ "bmo_extraits": [],
+ "bmo_recit": null,
+ "invest": [
+  {
+   "annee": 2024,
+   "montant_eur": 319645.41,
+   "nom_projet": "Mairie Du 14e arrondissement - Réaménagement de l'accueil du RDC",
+   "preuve": "nom_projet: \"Mairie Du 14e arrondissement - Réaménagement de l'accueil du RDC\" (distance 112 m) — le nom du projet nomme explicitement la Mairie du 14e.",
+   "id": "2024_14_39_003"
+  }
+ ],
+ "marches": [
+  {
+   "numero_marche": "20131640009317",
+   "objet": "PRESTATIONS TRAITEUR POUR LA MAIRIE DU 14ÈME",
+   "objet_clair": null,
+   "fournisseur": "MAISON THIELEN",
+   "montant_max": 280000.0,
+   "date_notification": "2013-05-17",
+   "preuve": "objet: \"PRESTATIONS TRAITEUR POUR LA MAIRIE DU 14ÈME\" — l'objet du marché nomme explicitement la Mairie du 14ème."
+  },
+  {
+   "numero_marche": "20222022T00410",
+   "objet": "TVX MENUISERIES EXTÉRIEURES MAIRIE DU 14ÈME LOT 2",
+   "objet_clair": null,
+   "fournisseur": "SOC COOP PRODUCT",
+   "montant_max": 155691.72,
+   "date_notification": "2022-01-26",
+   "preuve": "objet: \"TVX MENUISERIES EXTÉRIEURES MAIRIE DU 14ÈME LOT 2\" — travaux de menuiseries extérieures dont l'objet nomme explicitement la Mairie du 14ème."
+  }
+ ],
+ "mandate": null,
+ "sources": {
+  "delibs": {
+   "name": "Débat-Délibs — Conseil de Paris",
+   "url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=search-solr&query=Mairie+du+14e"
+  },
+  "bmo": {
+   "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
+   "url": "https://gallica.bnf.fr/ark:/12148/cb343512457/date"
+  },
+  "invest": {
+   "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
+   "url": "https://opendata.paris.fr/"
+  },
+  "wiki": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ }
+}

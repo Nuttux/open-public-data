@@ -1,0 +1,94 @@
+{
+ "generated_at": "2026-07-21T17:04:41.999226+00:00",
+ "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
+ "slug": "halle-georges-carpentier",
+ "name": "Halle Georges-Carpentier",
+ "kind_fr": "Salle sportive",
+ "kind_en": "Salle sportive",
+ "famille": "sport",
+ "arrondissement": 13,
+ "lat": 48.85976,
+ "lon": 2.346704,
+ "photo": "/img/lieux/halle-georges-carpentier.jpg",
+ "photo_credit": {
+  "licence": null,
+  "auteur": null,
+  "url": "https://fr.wikipedia.org/wiki/Halle_Georges-Carpentier",
+  "source": "Wikipédia"
+ },
+ "wiki": {
+  "extract": "La halle Georges-Carpentier est une salle polyvalente de 4 800 places, 5 009 en configuration basket-ball, située dans le 13e arrondissement de Paris, au 81, boulevard Masséna. Elle fait partie d'un centre sportif important qui comprend un gymnase, des terrains de football, de rugby et d'athlétisme.",
+  "url": "https://fr.wikipedia.org/wiki/Halle_Georges-Carpentier",
+  "source": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  },
+  "extract_en": "The Halle Georges-Carpentier is a multi-purpose venue with 4,800 seats (5,009 in basketball configuration), located in the 13th arrondissement of Paris, at 81 boulevard Masséna. It is part of a major sports center that includes a gymnasium and football, rugby, and athletics grounds."
+ },
+ "stats": {
+  "n_delibs": 1664,
+  "delibs_span": [
+   1995,
+   2001
+  ],
+  "n_bmo_brut": 0,
+  "n_bmo_verifies": null,
+  "invest_total_eur": 0,
+  "invest_annees": [],
+  "lecture_mode": "titre nommant le lieu (2 trouvés)",
+  "lecture_mode_en": "title naming the place (2 found)",
+  "n_lus": 2,
+  "n_lieu": 2
+ },
+ "subventions_exploitant": null,
+ "residents": [],
+ "kpi_montant": null,
+ "synthese_fr": "En novembre 1995, le Conseil de Paris autorise le Maire à souscrire un avenant à la convention conclue avec la société Games S.A.R.L. pour l'exploitation commerciale des espaces publicitaires intérieurs du stade Pierre-de-Coubertin, avenant qui étend ce dispositif à la Halle Georges-Carpentier pour une durée expérimentale de 3 ans, jusqu'au 31 juillet 2000. En janvier 2001, après l'expiration de cette période, le Conseil autorise le Maire à signer une nouvelle convention avec la même société pour l'exploitation commerciale des espaces publicitaires intérieurs des deux équipements, le stade Pierre-de-Coubertin et la Halle Georges-Carpentier. Les deux délibérations ne portent que sur la gestion publicitaire intérieure de la halle, sans mention de travaux, de programmation sportive ou d'incidents relatifs au bâtiment lui-même.",
+ "moments": [
+  {
+   "id": "1330",
+   "seance": "NOVEMBRE 1995",
+   "fait": "Le Conseil autorise le Maire à souscrire un avenant qui étend à la Halle Georges-Carpentier la gestion des espaces publicitaires intérieurs confiée à Games S.A.R.L., pour 3 ans jusqu'en juillet 2000.",
+   "pourquoi": "première mention identifiée reliant la halle à ce contrat",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=1330",
+   "fait_en": "The Council authorizes the Mayor to sign an amendment extending to the Halle Georges-Carpentier the management of indoor advertising spaces entrusted to Games S.A.R.L., for 3 years until July 2000.",
+   "pourquoi_en": "first identified mention linking the hall to this contract"
+  },
+  {
+   "id": "85311",
+   "seance": "JANVIER 2001",
+   "fait": "Le Conseil autorise le Maire à signer une nouvelle convention avec Games S.A.R.L. pour couvrir à nouveau l'exploitation publicitaire intérieure du stade et de la halle.",
+   "pourquoi": "renouvellement après l'expiration de l'avenant de 1995",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=85311",
+   "fait_en": "The Council authorizes the Mayor to sign a new agreement with Games S.A.R.L. to again cover the indoor advertising operation of the stadium and the hall.",
+   "pourquoi_en": "renewal after the expiration of the 1995 amendment"
+  }
+ ],
+ "montants": [],
+ "bmo_extraits": [],
+ "bmo_recit": null,
+ "invest": [],
+ "marches": [],
+ "mandate": null,
+ "sources": {
+  "delibs": {
+   "name": "Débat-Délibs — Conseil de Paris",
+   "url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=search-solr&query=Halle+Georges-Carpentier"
+  },
+  "bmo": {
+   "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
+   "url": "https://gallica.bnf.fr/ark:/12148/cb343512457/date"
+  },
+  "invest": {
+   "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
+   "url": "https://opendata.paris.fr/"
+  },
+  "wiki": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ },
+ "synthese_en": "In November 1995, the Council of Paris authorized the Mayor to sign an amendment to the agreement with the company Games S.A.R.L. for the commercial operation of indoor advertising spaces at the Pierre-de-Coubertin stadium, an amendment that extended this arrangement to the Halle Georges-Carpentier for an experimental period of 3 years, until 31 July 2000. In January 2001, after this period expired, the Council authorized the Mayor to sign a new agreement with the same company for the commercial operation of indoor advertising spaces at both facilities, the Pierre-de-Coubertin stadium and the Halle Georges-Carpentier. Both resolutions concern only the indoor advertising management of the hall, with no mention of works, sports programming, or incidents relating to the building itself."
+}

@@ -1,0 +1,88 @@
+{
+ "generated_at": "2026-07-21T17:04:41.999226+00:00",
+ "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
+ "slug": "piscine-rouvet",
+ "name": "Piscine Rouvet",
+ "kind_fr": "Piscine",
+ "kind_en": "Swimming pool",
+ "famille": "sport",
+ "arrondissement": 19,
+ "lat": 48.893986,
+ "lon": 2.383671,
+ "photo": null,
+ "photo_credit": null,
+ "wiki": {
+  "extract": null,
+  "url": null,
+  "source": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ },
+ "stats": {
+  "n_delibs": 1138,
+  "delibs_span": [
+   2003,
+   2004
+  ],
+  "n_bmo_brut": 0,
+  "n_bmo_verifies": null,
+  "invest_total_eur": 0,
+  "invest_annees": [],
+  "lecture_mode": "titre nommant le lieu (2 trouvés)",
+  "lecture_mode_en": "title naming the place (2 found)",
+  "n_lus": 2,
+  "n_lieu": 2
+ },
+ "subventions_exploitant": null,
+ "residents": [],
+ "kpi_montant": null,
+ "synthese_fr": "En septembre 2003, le Conseil de Paris autorise le Maire à souscrire un marché d'appel d'offres ouvert, réparti en cinq lots (menuiserie, électricité, peinture, serrurerie, traitement d'eau), pour la réfection du hall bassin, la mise aux normes des installations électriques et l'amélioration du traitement d'eau à la piscine Rouvet, dans le 19e arrondissement. Un an plus tard, en septembre 2004, le Conseil autorise le Maire à souscrire deux avenants à ce marché, portant sur les lots menuiserie et peinture. Les deux délibérations, rapportées par Pascal Cherki, ne précisent pas de montants chiffrés : la dépense de 2004 est seulement imputée au chapitre budgétaire d'investissement dédié, sans somme indiquée dans le texte disponible.",
+ "moments": [
+  {
+   "id": "47794",
+   "seance": "SEPTEMBRE 2003",
+   "fait": "Le Conseil autorise le lancement d'un marché de travaux en cinq lots pour rénover le hall bassin, l'électricité et le traitement d'eau de la piscine Rouvet.",
+   "pourquoi": "première délibération autorisant le marché de rénovation",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=47794",
+   "fait_en": "The Council authorizes the launch of a works contract in five lots to renovate the pool hall, electrical systems, and water treatment at the Rouvet swimming pool.",
+   "pourquoi_en": "first deliberation authorizing the renovation contract"
+  },
+  {
+   "id": "46399",
+   "seance": "SEPTEMBRE 2004",
+   "fait": "Le Conseil autorise deux avenants (menuiserie, peinture) au marché de travaux autorisé un an plus tôt.",
+   "pourquoi": "le marché initial est complété par avenants",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=46399",
+   "fait_en": "The Council authorizes two amendments (carpentry, painting) to the works contract authorized a year earlier.",
+   "pourquoi_en": "the initial contract is supplemented by amendments"
+  }
+ ],
+ "montants": [],
+ "bmo_extraits": [],
+ "bmo_recit": null,
+ "invest": [],
+ "marches": [],
+ "mandate": null,
+ "sources": {
+  "delibs": {
+   "name": "Débat-Délibs — Conseil de Paris",
+   "url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=search-solr&query=Piscine+Rouvet"
+  },
+  "bmo": {
+   "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
+   "url": "https://gallica.bnf.fr/ark:/12148/cb343512457/date"
+  },
+  "invest": {
+   "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
+   "url": "https://opendata.paris.fr/"
+  },
+  "wiki": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ },
+ "synthese_en": "In September 2003, the Council of Paris authorized the Mayor to award an open tender contract, split into five lots (carpentry, electrical work, painting, locksmithing, water treatment), for the renovation of the pool hall, bringing the electrical installations up to code, and improving water treatment at the Rouvet swimming pool, in the 19th arrondissement. A year later, in September 2004, the Council authorized the Mayor to sign two amendments to this contract, covering the carpentry and painting lots. Both deliberations, reported by Pascal Cherki, do not specify monetary amounts: the 2004 expenditure is merely charged to the relevant capital investment budget chapter, with no sum stated in the available text."
+}

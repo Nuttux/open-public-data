@@ -1,0 +1,145 @@
+{
+ "generated_at": "2026-07-21T17:04:41.999226+00:00",
+ "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
+ "slug": "mairie-du-7e",
+ "name": "Mairie du 7e",
+ "kind_fr": "Mairie",
+ "kind_en": "Town hall",
+ "famille": "services",
+ "arrondissement": 7,
+ "lat": 48.8558,
+ "lon": 2.3129,
+ "photo": null,
+ "photo_credit": null,
+ "wiki": {
+  "extract": null,
+  "url": null,
+  "source": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ },
+ "stats": {
+  "n_delibs": 775,
+  "delibs_span": [
+   1995,
+   2026
+  ],
+  "n_bmo_brut": 0,
+  "n_bmo_verifies": null,
+  "invest_total_eur": 0,
+  "invest_annees": [],
+  "lecture_mode": "titre nommant le lieu (9 trouvés)",
+  "lecture_mode_en": "title naming the place (9 found)",
+  "n_lus": 0,
+  "n_lieu": null
+ },
+ "subventions_exploitant": null,
+ "residents": [
+  {
+   "beneficiaire": "INTEMPORELLES UN TEMPS POUR ELLES",
+   "montant_total": 2000.0,
+   "preuve": "Objet de la subvention : \"Animation d'évènements culturels pour la Mairie du 7ème\" (prestation d'animation décrite directement pour la Mairie du 7e, sans mention d'un dispositif de financement générique — mais \"pour\" reste ambigu quant au lieu réel de l'évènement)"
+  }
+ ],
+ "kpi_montant": null,
+ "synthese_fr": null,
+ "moments": [],
+ "montants": [],
+ "bmo_extraits": [],
+ "bmo_recit": null,
+ "invest": [],
+ "marches": [
+  {
+   "numero_marche": "20232023S03197",
+   "objet": "TRAITEUR 2023 MAIRIE DU 7EME ARDT LOT1 BUFFETS-BPU",
+   "objet_clair": null,
+   "fournisseur": "SOCIETE SEILLER",
+   "montant_max": 150000.0,
+   "date_notification": "2023-05-02",
+   "preuve": "Objet du marché nomme explicitement \"MAIRIE DU 7EME ARDT\" — prestation traiteur (buffets) pour les réceptions de la mairie"
+  },
+  {
+   "numero_marche": "20232023S03196",
+   "objet": "TRAITEUR 2023 MAIRIE DU 7E ARDT LOT2 COCKTAILS/COCKTAILS DEJ",
+   "objet_clair": null,
+   "fournisseur": "SOCIETE SEILLER",
+   "montant_max": 150000.0,
+   "date_notification": "2023-05-02",
+   "preuve": "Objet du marché nomme explicitement \"MAIRIE DU 7E ARDT\" — prestation traiteur (cocktails) pour les réceptions de la mairie"
+  },
+  {
+   "numero_marche": "20181570001250",
+   "objet": "FOURNITURES DE MOBILIER POUR LA MAIRIE DU 7EME ARRDT",
+   "objet_clair": null,
+   "fournisseur": "EXPLOITATION BLANCHET DHUISMES",
+   "montant_max": 89999.0,
+   "date_notification": "2018-10-08",
+   "preuve": "Objet du marché : \"FOURNITURES DE MOBILIER POUR LA MAIRIE DU 7EME ARRDT\" — équipement destiné au bâtiment"
+  },
+  {
+   "numero_marche": "20201570000100",
+   "objet": "ACQUISITION DE MASQUES MAIRIE DU 7EME",
+   "objet_clair": null,
+   "fournisseur": "GRAND STAR",
+   "montant_max": 40000.0,
+   "date_notification": "2020-04-25",
+   "preuve": "Objet du marché : \"ACQUISITION DE MASQUES MAIRIE DU 7EME\" — achat pour cette mairie précise (nommée), et non un marché-cadre ville"
+  },
+  {
+   "numero_marche": "20222022F00063",
+   "objet": "LIVRES NON SCOLAIRES MAIRIE DU 7E ARRDT",
+   "objet_clair": null,
+   "fournisseur": "AGENCE LUDIQUE",
+   "montant_max": 40000.0,
+   "date_notification": "2022-01-11",
+   "preuve": "Objet du marché : \"LIVRES NON SCOLAIRES MAIRIE DU 7E ARRDT\" — fourniture destinée à cette mairie précise"
+  },
+  {
+   "numero_marche": "20222022F08850",
+   "objet": "COLIS DE NOEL 2022  MAIRIE DU 7EME ARRDT",
+   "objet_clair": null,
+   "fournisseur": "LES DUCS DE GASCOGNE",
+   "montant_max": 40000.0,
+   "date_notification": "2022-11-02",
+   "preuve": "Objet du marché : \"COLIS DE NOEL 2022 MAIRIE DU 7EME ARRDT\" — colis achetés pour cette mairie précise"
+  },
+  {
+   "numero_marche": "20222022F00079",
+   "objet": "COLIS ALIMENTAIRES MAIRIE DU 7E ARRDT",
+   "objet_clair": null,
+   "fournisseur": "OOKIES",
+   "montant_max": 40000.0,
+   "date_notification": "2022-01-11",
+   "preuve": "Objet du marché : \"COLIS ALIMENTAIRES MAIRIE DU 7E ARRDT\" — colis achetés pour cette mairie précise"
+  },
+  {
+   "numero_marche": "20201570000105",
+   "objet": "COLIS DE NOEL 2020 GARDIENNES ET AGENTS MAIRIE DU 7EME",
+   "objet_clair": null,
+   "fournisseur": "SOC EXPLOITA GRANDE EPICERIE PARIS",
+   "montant_max": 27097.71,
+   "date_notification": "2020-11-24",
+   "preuve": "Objet du marché : \"COLIS DE NOEL 2020 GARDIENNES ET AGENTS MAIRIE DU 7EME\" — colis destinés aux gardiennes et agents de cette mairie précise"
+  }
+ ],
+ "mandate": null,
+ "sources": {
+  "delibs": {
+   "name": "Débat-Délibs — Conseil de Paris",
+   "url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=search-solr&query=Mairie+du+7e"
+  },
+  "bmo": {
+   "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
+   "url": "https://gallica.bnf.fr/ark:/12148/cb343512457/date"
+  },
+  "invest": {
+   "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
+   "url": "https://opendata.paris.fr/"
+  },
+  "wiki": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ }
+}

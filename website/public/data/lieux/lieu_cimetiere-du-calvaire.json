@@ -1,0 +1,83 @@
+{
+ "generated_at": "2026-07-21T17:04:41.999226+00:00",
+ "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
+ "slug": "cimetiere-du-calvaire",
+ "name": "Cimetière du Calvaire",
+ "kind_fr": "Cimetière",
+ "kind_en": "Cemetery",
+ "famille": "vert",
+ "arrondissement": 18,
+ "lat": 48.886234,
+ "lon": 2.340523,
+ "photo": "/img/lieux/cimetiere-du-calvaire.jpg",
+ "photo_credit": {
+  "licence": "CC BY-SA 4.0",
+  "auteur": "X-Javier",
+  "url": "https://commons.wikimedia.org/wiki/File:Toussaint_2016_-_Cimeti%C3%A8re_du_Calvaire_(Paris)_000.jpg",
+  "source": "Wikimedia Commons"
+ },
+ "wiki": {
+  "extract": null,
+  "url": null,
+  "source": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ },
+ "stats": {
+  "n_delibs": 634,
+  "delibs_span": [
+   1995,
+   2026
+  ],
+  "n_bmo_brut": 0,
+  "n_bmo_verifies": null,
+  "invest_total_eur": 0,
+  "invest_annees": [],
+  "lecture_mode": "tête du classement Solr (634 documents au total)",
+  "lecture_mode_en": "top of the Solr ranking (634 documents total)",
+  "n_lus": 40,
+  "n_lieu": 0
+ },
+ "subventions_exploitant": null,
+ "residents": [],
+ "kpi_montant": null,
+ "synthese_fr": "Le Cimetière du Calvaire n'apparaît qu'une fois avec certitude dans les délibérations examinées : une autorisation de lancement et de signature d'appel d'offres, en octobre 2009, pour la fourniture et la pose de rambardes, qui l'associe à cinq autres cimetières parisiens — Père-Lachaise, Montmartre, Saint-Vincent, Montparnasse et Passy — sans détail budgétaire propre à ce site. Les autres délibérations relevées sous le terme « Calvaire » concernent des lieux distincts : la chapelle du Calvaire de l'église Saint-Roch (1er), la rue et le boulevard des Filles-du-Calvaire (3e), la place du Calvaire, ou l'association des Dames du Calvaire. Aucune délibération identifiée ne porte spécifiquement sur des travaux, une subvention ou une occupation propres au Cimetière du Calvaire lui-même.",
+ "moments": [
+  {
+   "id": "93267",
+   "seance": "OCTOBRE 2009",
+   "fait": "Une autorisation de lancement et de signature d'appel d'offres pour la fourniture et pose de rambardes associe le Cimetière du Calvaire à cinq autres cimetières parisiens, sans détail budgétaire propre au site.",
+   "pourquoi": "seule mention documentée du lieu identifiée",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=93267",
+   "fait_en": "An authorization to launch and sign a call for tenders for the supply and installation of railings links the Cimetière du Calvaire to five other Paris cemeteries, with no budget detail specific to this site.",
+   "pourquoi_en": "only documented mention of the site identified"
+  }
+ ],
+ "montants": [],
+ "bmo_extraits": [],
+ "bmo_recit": null,
+ "invest": [],
+ "marches": [],
+ "mandate": null,
+ "sources": {
+  "delibs": {
+   "name": "Débat-Délibs — Conseil de Paris",
+   "url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=search-solr&query=Cimeti%C3%A8re+du+Calvaire"
+  },
+  "bmo": {
+   "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
+   "url": "https://gallica.bnf.fr/ark:/12148/cb343512457/date"
+  },
+  "invest": {
+   "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
+   "url": "https://opendata.paris.fr/"
+  },
+  "wiki": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ },
+ "synthese_en": "The Cimetière du Calvaire appears with certainty only once in the deliberations examined: an authorization to launch and sign a call for tenders, in October 2009, for the supply and installation of railings, which links it to five other Paris cemeteries — Père-Lachaise, Montmartre, Saint-Vincent, Montparnasse and Passy — with no budget detail specific to this site. The other deliberations found under the term \"Calvaire\" concern distinct locations: the Chapelle du Calvaire at the Saint-Roch church (1st arrondissement), the Rue and Boulevard des Filles-du-Calvaire (3rd arrondissement), the Place du Calvaire, or the association Dames du Calvaire. No deliberation identified deals specifically with works, a subsidy, or an occupation pertaining to the Cimetière du Calvaire itself."
+}

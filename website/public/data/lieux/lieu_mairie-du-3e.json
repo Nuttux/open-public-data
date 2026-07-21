@@ -1,0 +1,94 @@
+{
+ "generated_at": "2026-07-21T17:04:41.999226+00:00",
+ "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
+ "slug": "mairie-du-3e",
+ "name": "Mairie du 3e",
+ "kind_fr": "Mairie",
+ "kind_en": "Town hall",
+ "famille": "services",
+ "arrondissement": 3,
+ "lat": 48.8626,
+ "lon": 2.3616,
+ "photo": null,
+ "photo_credit": null,
+ "wiki": {
+  "extract": null,
+  "url": null,
+  "source": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ },
+ "stats": {
+  "n_delibs": 734,
+  "delibs_span": [
+   1995,
+   2026
+  ],
+  "n_bmo_brut": 0,
+  "n_bmo_verifies": null,
+  "invest_total_eur": 0,
+  "invest_annees": [],
+  "lecture_mode": "titre nommant le lieu (17 trouvés)",
+  "lecture_mode_en": "title naming the place (17 found)",
+  "n_lus": 0,
+  "n_lieu": null
+ },
+ "subventions_exploitant": null,
+ "residents": [],
+ "kpi_montant": null,
+ "synthese_fr": null,
+ "moments": [],
+ "montants": [],
+ "bmo_extraits": [],
+ "bmo_recit": null,
+ "invest": [],
+ "marches": [
+  {
+   "numero_marche": "20141210012121",
+   "objet": "TRAVAUX RESTRUCTURATION 4E ÉTAGE DE LA MAIRIE DU 3E",
+   "objet_clair": null,
+   "fournisseur": "EDILE CONSTRUCTION",
+   "montant_max": 789552.17,
+   "date_notification": "2014-10-08",
+   "preuve": "Objet du marché : « TRAVAUX RESTRUCTURATION 4E ÉTAGE DE LA MAIRIE DU 3E » — nomme explicitement le lieu et porte sur des travaux réalisés dans le bâtiment."
+  },
+  {
+   "numero_marche": "20161210001707",
+   "objet": "RESTRUCTURATION ACCUEIL ET LOCAUX E.P.N. MAIRIE DU 3ÈME ARRT",
+   "objet_clair": null,
+   "fournisseur": "EZEL",
+   "montant_max": 199000.0,
+   "date_notification": "2016-12-05",
+   "preuve": "Objet du marché : « RESTRUCTURATION ACCUEIL ET LOCAUX E.P.N. MAIRIE DU 3ÈME ARRT » — nomme explicitement le lieu et porte sur des travaux d'accueil/locaux du bâtiment."
+  },
+  {
+   "numero_marche": "20161210000636",
+   "objet": "CRÉATION D'UN ORGANIGRAMME DE CLÉS MAIRIE DU 3ÈME",
+   "objet_clair": null,
+   "fournisseur": "DISTRIBUTION SURETE PROTECTION",
+   "montant_max": 47240.76,
+   "date_notification": "2016-05-20",
+   "preuve": "Objet du marché : « CRÉATION D'UN ORGANIGRAMME DE CLÉS MAIRIE DU 3ÈME » — prestation de serrurerie/organigramme de clés réalisée pour ce bâtiment précis."
+  }
+ ],
+ "mandate": null,
+ "sources": {
+  "delibs": {
+   "name": "Débat-Délibs — Conseil de Paris",
+   "url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=search-solr&query=Mairie+du+3e"
+  },
+  "bmo": {
+   "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
+   "url": "https://gallica.bnf.fr/ark:/12148/cb343512457/date"
+  },
+  "invest": {
+   "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
+   "url": "https://opendata.paris.fr/"
+  },
+  "wiki": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ }
+}

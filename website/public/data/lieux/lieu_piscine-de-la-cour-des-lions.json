@@ -1,0 +1,78 @@
+{
+ "generated_at": "2026-07-21T17:04:41.999226+00:00",
+ "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
+ "slug": "piscine-de-la-cour-des-lions",
+ "name": "Piscine de la Cour des Lions",
+ "kind_fr": "Piscine",
+ "kind_en": "Swimming pool",
+ "famille": "sport",
+ "arrondissement": 11,
+ "lat": 48.890099,
+ "lon": 2.392991,
+ "photo": null,
+ "photo_credit": null,
+ "wiki": {
+  "extract": null,
+  "url": null,
+  "source": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ },
+ "stats": {
+  "n_delibs": 836,
+  "delibs_span": [
+   2000,
+   2000
+  ],
+  "n_bmo_brut": 0,
+  "n_bmo_verifies": null,
+  "invest_total_eur": 0,
+  "invest_annees": [],
+  "lecture_mode": "titre nommant le lieu (1 trouvés)",
+  "lecture_mode_en": "title naming the place (1 found)",
+  "n_lus": 1,
+  "n_lieu": 1
+ },
+ "subventions_exploitant": null,
+ "residents": [],
+ "kpi_montant": null,
+ "synthese_fr": "En novembre 2000, une question orale au Conseil de Paris porte sur le créneau horaire réservé à la piscine de la Cour des Lions, dans le 11e arrondissement. M. Georges Sarre et les élus du Mouvement des citoyens interpellent le Maire sur la modification envisagée du créneau du jeudi soir attribué depuis 1981 à l'association \"Bahamas\", un club de natation accueillant des enfants et des adultes en situation de handicap mental, en s'inquiétant qu'un horaire plus tardif empêche certains adhérents de rejoindre leur foyer d'hébergement avant la fermeture. Dans sa réponse, l'adjoint chargé des sports, M. Dominique Cané, indique que le calendrier d'utilisation de la piscine fait l'objet d'une étude visant une ouverture en soirée au profit du public, menée en concertation avec chaque association concernée. Il précise que l'association \"Bahamas\", aidée financièrement par la Ville, a fait valoir des arguments en faveur du maintien de son créneau avec occupation totale du bassin, et a été rassurée par courrier du 8 novembre sur le maintien de sa situation.",
+ "moments": [
+  {
+   "id": "17121",
+   "seance": "NOVEMBRE 2000",
+   "fait": "Question orale sur le maintien du créneau de l'association \"Bahamas\" à la piscine",
+   "pourquoi": "conflit d'usage entre public et association handicap",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=17121",
+   "fait_en": "Oral question on maintaining the \"Bahamas\" association's time slot at the pool",
+   "pourquoi_en": "usage conflict between the public and the disability association"
+  }
+ ],
+ "montants": [],
+ "bmo_extraits": [],
+ "bmo_recit": null,
+ "invest": [],
+ "marches": [],
+ "mandate": null,
+ "sources": {
+  "delibs": {
+   "name": "Débat-Délibs — Conseil de Paris",
+   "url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=search-solr&query=Piscine+de+la+Cour+des+Lions"
+  },
+  "bmo": {
+   "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
+   "url": "https://gallica.bnf.fr/ark:/12148/cb343512457/date"
+  },
+  "invest": {
+   "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
+   "url": "https://opendata.paris.fr/"
+  },
+  "wiki": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ },
+ "synthese_en": "In November 2000, an oral question at the Paris Council concerned the time slot reserved at the Cour des Lions swimming pool, in the 11th arrondissement. Georges Sarre and elected officials from the Mouvement des citoyens questioned the Mayor about the planned change to the Thursday evening slot that had been assigned since 1981 to the \"Bahamas\" association, a swimming club for children and adults with intellectual disabilities, expressing concern that a later time slot would prevent some members from reaching their residential care facility before closing time. In his response, the deputy mayor for sports, Dominique Cané, stated that the pool's usage schedule was under review with a view to enabling evening opening hours for the public, conducted in consultation with each association concerned. He specified that the \"Bahamas\" association, which receives financial support from the City, had put forward arguments in favor of keeping its slot with full use of the pool, and had been reassured by letter dated November 8 that its situation would be maintained."
+}

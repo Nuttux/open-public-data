@@ -1,0 +1,105 @@
+{
+ "generated_at": "2026-07-21T17:04:41.999226+00:00",
+ "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
+ "slug": "piscine-la-plaine",
+ "name": "Piscine La Plaine",
+ "kind_fr": "Piscine",
+ "kind_en": "Swimming pool",
+ "famille": "sport",
+ "arrondissement": 15,
+ "lat": 48.850114,
+ "lon": 2.403267,
+ "photo": null,
+ "photo_credit": null,
+ "wiki": {
+  "extract": null,
+  "url": null,
+  "source": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ },
+ "stats": {
+  "n_delibs": 894,
+  "delibs_span": [
+   2022,
+   2022
+  ],
+  "n_bmo_brut": 0,
+  "n_bmo_verifies": null,
+  "invest_total_eur": 0,
+  "invest_annees": [],
+  "lecture_mode": "titre nommant le lieu (1 trouvés)",
+  "lecture_mode_en": "title naming the place (1 found)",
+  "n_lus": 1,
+  "n_lieu": 1
+ },
+ "subventions_exploitant": null,
+ "residents": [],
+ "kpi_montant": null,
+ "synthese_fr": "En février 2022, le Conseil de Paris examine un projet de délibération autorisant la signature d'une convention de subvention au titre du Fonds d'investissement métropolitain pour la Piscine La Plaine (15e), présenté conjointement avec un projet similaire pour la piscine Didot (14e). Selon les propos tenus en séance, l'objet de ces deux conventions est d'améliorer la performance énergétique des équipements. L'élu Jérôme Loriau, s'exprimant en séance, accueille favorablement ce financement métropolitain mais regrette l'absence, jointe au projet de délibération, d'un budget détaillé des travaux prévus, qu'il évalue à près de 500 000 euros pour chaque équipement. Le contenu précis des travaux et la suite donnée à cette convention ne ressortent pas de cet extrait.",
+ "moments": [
+  {
+   "id": "164531",
+   "seance": "FEVRIER 2022",
+   "fait": "Le Conseil examine l'autorisation de signer une convention de subvention du Fonds d'investissement métropolitain pour l'amélioration de la performance énergétique de la piscine.",
+   "pourquoi": "financement métropolitain mentionné en séance pour la performance énergétique de l'équipement",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=164531",
+   "fait_en": "The Council examines the authorization to sign a subsidy agreement under the Metropolitan Investment Fund for improving the pool's energy performance.",
+   "pourquoi_en": "metropolitan funding mentioned during the session for the facility's energy performance"
+  }
+ ],
+ "montants": [
+  {
+   "seance": "FEVRIER 2022",
+   "montant": "environ 500 000 euros (chacun des deux équipements)",
+   "objet": "budget de travaux évoqué en séance par l'élu Jérôme Loriau, qu'il regrette de ne pas trouver joint au projet de délibération",
+   "citation": "il eut Ã©tÃ© souhaitable de disposer, joint au projet de dÃ©libÃ©ration, du budget de dÃ©penses prÃ©vues dans ces Ã©quipements, pour prÃ¨s de 500.000 euros chacun.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=164531"
+  }
+ ],
+ "bmo_extraits": [],
+ "bmo_recit": null,
+ "invest": [],
+ "marches": [
+  {
+   "numero_marche": "20181410000292",
+   "objet": "CSP5 REFECTIONS DIVERSES A LA PISCINE LA PLAINE",
+   "objet_clair": null,
+   "fournisseur": "2 AC",
+   "montant_max": 182408.6,
+   "date_notification": "2018-03-15",
+   "preuve": "Objet du marché : \"CSP5 REFECTIONS DIVERSES A LA PISCINE LA PLAINE\" — nomme explicitement le lieu."
+  },
+  {
+   "numero_marche": "20141410011366",
+   "objet": "INSTALLATION LOCAL COMPRESSEUR PISCINE LA PLAINE",
+   "objet_clair": null,
+   "fournisseur": "BCH COMPRESSEURS",
+   "montant_max": 63980.0,
+   "date_notification": "2014-05-22",
+   "preuve": "Objet du marché : \"INSTALLATION LOCAL COMPRESSEUR PISCINE LA PLAINE\" — nomme explicitement le lieu."
+  }
+ ],
+ "mandate": null,
+ "sources": {
+  "delibs": {
+   "name": "Débat-Délibs — Conseil de Paris",
+   "url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=search-solr&query=Piscine+La+Plaine"
+  },
+  "bmo": {
+   "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
+   "url": "https://gallica.bnf.fr/ark:/12148/cb343512457/date"
+  },
+  "invest": {
+   "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
+   "url": "https://opendata.paris.fr/"
+  },
+  "wiki": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ },
+ "synthese_en": "In February 2022, the Paris Council examines a draft resolution authorizing the signing of a subsidy agreement under the Metropolitan Investment Fund for the Piscine La Plaine (15th arrondissement), presented jointly with a similar draft for the Piscine Didot (14th arrondissement). According to statements made during the session, the purpose of these two agreements is to improve the energy performance of the facilities. Council member Jérôme Loriau, speaking during the session, welcomes this metropolitan funding but regrets the absence, from the draft resolution, of a detailed budget for the planned works, which he estimates at close to 500,000 euros for each facility. The precise content of the works and the follow-up given to this agreement do not emerge from this excerpt."
+}

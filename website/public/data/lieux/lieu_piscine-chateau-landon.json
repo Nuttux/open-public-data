@@ -1,0 +1,139 @@
+{
+ "generated_at": "2026-07-21T17:04:41.999226+00:00",
+ "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
+ "slug": "piscine-chateau-landon",
+ "name": "Piscine Château-Landon",
+ "kind_fr": "Piscine",
+ "kind_en": "Swimming pool",
+ "famille": "sport",
+ "arrondissement": 10,
+ "lat": 48.883254,
+ "lon": 2.363742,
+ "photo": "/img/lieux/piscine-chateau-landon.jpg",
+ "photo_credit": {
+  "licence": null,
+  "auteur": null,
+  "url": "https://fr.wikipedia.org/wiki/Piscine_Ch%C3%A2teau-Landon",
+  "source": "Wikipédia"
+ },
+ "wiki": {
+  "extract": "La piscine Château-Landon est une piscine parisienne, située 31 rue du Château-Landon, dans le 10e arrondissement de Paris.",
+  "url": "https://fr.wikipedia.org/wiki/Piscine_Ch%C3%A2teau-Landon",
+  "source": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  },
+  "extract_en": "The Château-Landon swimming pool is a public pool in Paris, located at 31 rue du Château-Landon, in the 10th arrondissement of Paris."
+ },
+ "stats": {
+  "n_delibs": 1388,
+  "delibs_span": [
+   2000,
+   2000
+  ],
+  "n_bmo_brut": 0,
+  "n_bmo_verifies": null,
+  "invest_total_eur": 1720639.67,
+  "invest_annees": [
+   "2023",
+   "2024"
+  ],
+  "lecture_mode": "titre nommant le lieu (1 trouvés)",
+  "lecture_mode_en": "title naming the place (1 found)",
+  "n_lus": 1,
+  "n_lieu": 1
+ },
+ "subventions_exploitant": null,
+ "residents": [],
+ "kpi_montant": null,
+ "synthese_fr": "En mars 2000, le Conseil de Paris approuve le principe de la mise aux normes de la filtration de la piscine Château-Landon (10e). Il approuve également les modalités d'attribution du marché de travaux correspondant, à passer sur appel d'offres ouvert, ainsi que le règlement de la consultation, l'acte d'engagement et le cahier des clauses administratives particulières. Le Maire de Paris est autorisé à signer ce marché, ou un marché négocié en cas d'appel d'offres infructueux et après avis favorable de la Commission d'appel d'offres. La dépense doit être imputée au chapitre 23 du budget d'investissement de la Ville de 2000, sans montant chiffré précisé dans la délibération. Le Conseil du 10e arrondissement avait rendu un avis préalable le 13 mars 2000.",
+ "moments": [
+  {
+   "id": "31041",
+   "seance": "MARS 2000",
+   "fait": "Approbation du principe de mise aux normes de la filtration et autorisation de signer le marché de travaux",
+   "pourquoi": "seule délibération portant directement sur des travaux à la piscine",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=31041",
+   "fait_en": "Approval of the principle of upgrading the filtration system to meet standards and authorization to sign the works contract",
+   "pourquoi_en": "the only deliberation directly concerning works at the pool"
+  }
+ ],
+ "montants": [],
+ "bmo_extraits": [],
+ "bmo_recit": null,
+ "invest": [
+  {
+   "annee": 2023,
+   "montant_eur": 271874.5,
+   "nom_projet": "Piscine Château Landon - Travaux de rénovation",
+   "preuve": "Nom du projet \"Piscine Château Landon - Travaux de rénovation\" nomme explicitement le lieu, même opération de rénovation que le projet 2024.",
+   "id": "2023_10_27_014"
+  },
+  {
+   "annee": 2024,
+   "montant_eur": 1448765.17,
+   "nom_projet": "Piscine Chateau Landon - Travaux de rénovation",
+   "preuve": "Nom du projet \"Piscine Chateau Landon - Travaux de rénovation\" nomme explicitement le lieu (adresse confirmée par la délibération 2000 JS 19 : 31, rue du Château-Landon, 10e).",
+   "id": "2024_10_27_016"
+  }
+ ],
+ "marches": [
+  {
+   "numero_marche": "20242024T03749",
+   "objet": "SA4-TRVX DE RENOVATION DE LA PISCINE CHATEAU LANDON PARIS 10",
+   "objet_clair": "Rénovation complète de la piscine Château-Landon dans le 10e arrondissement",
+   "fournisseur": "BOUYGUES BATIMENT ILE DE FRANCE",
+   "montant_max": 8461700.12,
+   "date_notification": "2024-06-18",
+   "preuve": "Objet du marché \"SA4-TRVX DE RENOVATION DE LA PISCINE CHATEAU LANDON PARIS 10\" désigne explicitement le lieu."
+  },
+  {
+   "numero_marche": "decp-2025S13023",
+   "objet": "Exploitation de deux piscines dans le 15ème et 10ème arrondissement de Paris - Exploitation de la piscine Château Landon située 31 rue du Château-Landon dans le 10ème arrondissement de Paris",
+   "objet_clair": null,
+   "fournisseur": "ASSOCIATION UCPA SPORT LOISIRS",
+   "montant_max": 1084182.08,
+   "date_notification": "2025-12-11",
+   "preuve": "Objet du marché cite l'adresse exacte du lieu (\"31 rue du Château-Landon\") mais couvre un lot conjoint avec une seconde piscine du 15e arrondissement : le montant_max de 1 084 182,08 € correspond aux DEUX piscines, pas uniquement à Château-Landon (voir périmètre)."
+  },
+  {
+   "numero_marche": "20222022S02060",
+   "objet": "AMO RÉNOVATION PISCINE CHÂTEAU LANDON PARIS 75010",
+   "objet_clair": null,
+   "fournisseur": "UBIQUE",
+   "montant_max": 106360.0,
+   "date_notification": "2022-04-14",
+   "preuve": "Objet du marché \"AMO RÉNOVATION PISCINE CHÂTEAU LANDON PARIS 75010\" désigne explicitement le lieu."
+  },
+  {
+   "numero_marche": "decp-2026T00376",
+   "objet": "Réfection de l’étanchéité du bac tampon du bassin sportif de la Piscine Château-Landon, 31 rue du Château Landon, 75010 Paris",
+   "objet_clair": null,
+   "fournisseur": "SEL-TECH",
+   "montant_max": 24032.56,
+   "date_notification": "2026-01-14",
+   "preuve": "Objet du marché nomme explicitement le lieu et son adresse exacte (\"31 rue du Château Landon, 75010 Paris\")."
+  }
+ ],
+ "mandate": null,
+ "sources": {
+  "delibs": {
+   "name": "Débat-Délibs — Conseil de Paris",
+   "url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=search-solr&query=Piscine+Ch%C3%A2teau-Landon"
+  },
+  "bmo": {
+   "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
+   "url": "https://gallica.bnf.fr/ark:/12148/cb343512457/date"
+  },
+  "invest": {
+   "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
+   "url": "https://opendata.paris.fr/"
+  },
+  "wiki": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ },
+ "synthese_en": "In March 2000, the Paris Council approved the principle of upgrading the filtration system at the Château-Landon swimming pool (10th arrondissement) to meet standards. It also approved the terms for awarding the corresponding public works contract, to be issued via open call for tenders, as well as the consultation rules, the contract agreement (acte d'engagement), and the special administrative terms and conditions (cahier des clauses administratives particulières). The Mayor of Paris was authorized to sign this contract, or a negotiated contract in the event the call for tenders proved unsuccessful and following a favorable opinion from the Contracts Award Commission (Commission d'appel d'offres). The expenditure was to be charged to chapter 23 of the City's 2000 investment budget, with no specific amount stated in the deliberation. The 10th arrondissement Council had issued a prior opinion on 13 March 2000."
+}

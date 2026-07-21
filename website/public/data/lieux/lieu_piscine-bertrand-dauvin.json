@@ -1,0 +1,97 @@
+{
+ "generated_at": "2026-07-21T17:04:41.999226+00:00",
+ "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
+ "slug": "piscine-bertrand-dauvin",
+ "name": "Piscine Bertrand-Dauvin",
+ "kind_fr": "Piscine",
+ "kind_en": "Swimming pool",
+ "famille": "sport",
+ "arrondissement": 18,
+ "lat": 48.864229,
+ "lon": 2.382149,
+ "photo": null,
+ "photo_credit": null,
+ "wiki": {
+  "extract": null,
+  "url": null,
+  "source": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ },
+ "stats": {
+  "n_delibs": 1559,
+  "delibs_span": [
+   1996,
+   1996
+  ],
+  "n_bmo_brut": 0,
+  "n_bmo_verifies": null,
+  "invest_total_eur": 0,
+  "invest_annees": [],
+  "lecture_mode": "titre nommant le lieu (1 trouvés)",
+  "lecture_mode_en": "title naming the place (1 found)",
+  "n_lus": 1,
+  "n_lieu": 1
+ },
+ "subventions_exploitant": null,
+ "residents": [],
+ "kpi_montant": null,
+ "synthese_fr": "En avril 1996, le Conseil de Paris approuve le principe de travaux de génie climatique dans la piscine Bertrand-Dauvin, au 12 rue René-Binet dans le 18e arrondissement. Ces travaux doivent faire l'objet d'un marché sur appel d'offres ouvert, dont le Conseil approuve le règlement de consultation et le cahier des clauses administratives particulières. Le Maire de Paris est autorisé à signer ce marché, ou un marché négocié en cas d'appel d'offres infructueux après avis favorable de la Commission d'appel d'offres. La dépense doit être imputée au chapitre 909, sous-chapitre 909-10, article 2311 du budget d'investissement, sous réserve de la décision de financement — aucun montant chiffré n'est mentionné dans cette délibération.",
+ "moments": [
+  {
+   "id": "68257",
+   "seance": "AVRIL 1996",
+   "fait": "Le Conseil approuve le principe de travaux de génie climatique et autorise la signature du marché correspondant.",
+   "pourquoi": "seule délibération identifiée nommant explicitement ce lieu",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=68257",
+   "fait_en": "The Council approves the principle of climate engineering works and authorizes the signing of the corresponding contract.",
+   "pourquoi_en": "only deliberation identified that explicitly names this location"
+  }
+ ],
+ "montants": [],
+ "bmo_extraits": [],
+ "bmo_recit": null,
+ "invest": [],
+ "marches": [
+  {
+   "numero_marche": "20222022T05365",
+   "objet": "SA4-LOT6-DGJOPGE TRAITEMENT DE L'EAU PISCINE BERTRAND DAUVIN",
+   "objet_clair": null,
+   "fournisseur": "EIFFAGE ENERGIE SYSTEMES-CLEVIA IDF",
+   "montant_max": 408000.0,
+   "date_notification": "2022-07-20",
+   "preuve": "Objet du marché : \"SA4-LOT6-DGJOPGE TRAITEMENT DE L'EAU PISCINE BERTRAND DAUVIN\" — nomme explicitement le lieu."
+  },
+  {
+   "numero_marche": "20151410000364",
+   "objet": "LOCAUX DE STOCKAGE DE LA PISCINE BERTRAND DAUVIN",
+   "objet_clair": null,
+   "fournisseur": "TECHNIQUE FRANCAISE DE L EAU",
+   "montant_max": 101872.0,
+   "date_notification": "2015-01-28",
+   "preuve": "Objet du marché : \"LOCAUX DE STOCKAGE DE LA PISCINE BERTRAND DAUVIN\" — nomme explicitement le lieu."
+  }
+ ],
+ "mandate": null,
+ "sources": {
+  "delibs": {
+   "name": "Débat-Délibs — Conseil de Paris",
+   "url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=search-solr&query=Piscine+Bertrand-Dauvin"
+  },
+  "bmo": {
+   "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
+   "url": "https://gallica.bnf.fr/ark:/12148/cb343512457/date"
+  },
+  "invest": {
+   "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
+   "url": "https://opendata.paris.fr/"
+  },
+  "wiki": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ },
+ "synthese_en": "In April 1996, the Paris Council approved the principle of climate engineering works at the Bertrand-Dauvin swimming pool, at 12 rue René-Binet in the 18th arrondissement. These works were to be procured through an open call for tenders, for which the Council approved the consultation rules and the special administrative clauses. The Mayor of Paris was authorized to sign this contract, or a negotiated contract in the event of an unsuccessful call for tenders after a favorable opinion from the Contracts Award Commission. The expenditure was to be charged to chapter 909, sub-chapter 909-10, article 2311 of the capital budget, subject to the financing decision — no specific amount is mentioned in this deliberation."
+}

@@ -1,0 +1,255 @@
+{
+ "generated_at": "2026-07-21T17:04:41.999226+00:00",
+ "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
+ "slug": "mairie-du-11e",
+ "name": "Mairie du 11e",
+ "kind_fr": "Mairie",
+ "kind_en": "Town hall",
+ "famille": "services",
+ "arrondissement": 11,
+ "lat": 48.858,
+ "lon": 2.3805,
+ "photo": "/img/lieux/mairie-du-11e.jpg",
+ "photo_credit": {
+  "licence": "CC BY-SA 3.0",
+  "auteur": "FLLL",
+  "url": "https://commons.wikimedia.org/wiki/File:Mairie_du_11e-Commemorative_plate_for_its_inauguration_by_Napoleon_3.JPG",
+  "source": "Wikimedia Commons"
+ },
+ "wiki": {
+  "extract": null,
+  "url": null,
+  "source": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ },
+ "stats": {
+  "n_delibs": 860,
+  "delibs_span": [
+   1998,
+   2011
+  ],
+  "n_bmo_brut": 0,
+  "n_bmo_verifies": null,
+  "invest_total_eur": 2586402.02,
+  "invest_annees": [
+   "2022",
+   "2024"
+  ],
+  "lecture_mode": "titre nommant le lieu (34 trouvés)",
+  "lecture_mode_en": "title naming the place (34 found)",
+  "n_lus": 33,
+  "n_lieu": 28
+ },
+ "subventions_exploitant": null,
+ "residents": [],
+ "kpi_montant": null,
+ "synthese_fr": "Entre 1998 et 2011, le Conseil de Paris a approuvé une trentaine de délibérations concernant la mairie du 11e arrondissement, place Léon Blum, essentiellement des marchés de travaux d'entretien et de mise aux normes : réseaux de chauffage, électricité, incendie, ascenseurs, menuiseries, façades. En juillet 1998, à l'occasion du vote de la réfection de la façade Voltaire, une élue du 11e a interpellé le Maire sur la nécessité de restructurer les locaux libérés par le départ de plusieurs services (action sociale, police) et sur l'absence de budget programmé pour cette restructuration ; l'adjoint rapporteur des dossiers de patrimoine lui a répondu que des travaux importants, étalés dans le temps, étaient prévus et que des études étaient en cours. Ce chantier de restauration des façades s'est étalé sur plusieurs années, avec un marché de maîtrise d'œuvre attribué en 2002, puis un avenant autorisé en 2004 pour établir le coût prévisionnel définitif des travaux à 803 878,90 euros HT. Le bâtiment a aussi hébergé, par subvention, des associations d'arrondissement comme « 11ème Evénements » ou l'Association des Artistes et Artisans d'Art du 11e ; en sens inverse, une convention a été autorisée en 2011 avec l'association France Energie Emploi dans le cadre du transfert de la permanence emploi de la mairie du 11e vers la Maison des Entreprises et de l'Emploi du 20e arrondissement.",
+ "moments": [
+  {
+   "id": "24332",
+   "seance": "JUILLET 1998",
+   "fait": "Une élue interpelle le Maire en séance sur la nécessité de restructurer les locaux libérés par le départ de plusieurs services et sur l'absence de budget programmé pour cette restructuration, lors du vote de la réfection de la façade Voltaire.",
+   "pourquoi": "débat en séance sur l'entretien du patrimoine",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=24332",
+   "fait_en": "A councilwoman questions the Mayor in session on the need to restructure the premises vacated by the departure of several services and on the absence of a budget planned for this restructuring, during the vote on the restoration of the Voltaire façade.",
+   "pourquoi_en": "council debate on heritage maintenance"
+  },
+  {
+   "id": "82764",
+   "seance": "JUILLET 1998",
+   "fait": "Le Conseil approuve le principe de la réfection de pierres de taille sur la façade Voltaire.",
+   "pourquoi": "première tranche de travaux de façade votée",
+   "vedette": false,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=82764",
+   "fait_en": "The Council approves the principle of repairing the cut-stone masonry on the Voltaire façade.",
+   "pourquoi_en": "first phase of façade works approved"
+  },
+  {
+   "id": "57981",
+   "seance": "FEVRIER 2002",
+   "fait": "Le marché de maîtrise d'œuvre pour la restauration des façades est attribué au groupement Joudinaud/Architectes Associés.",
+   "pourquoi": "lancement du chantier pluriannuel de façades",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=57981",
+   "fait_en": "The project management contract for the façade restoration is awarded to the Joudinaud/Architectes Associés consortium.",
+   "pourquoi_en": "launch of the multi-year façade project"
+  },
+  {
+   "id": "45596",
+   "seance": "MAI 2004",
+   "fait": "Le Conseil autorise un avenant ayant pour effet d'établir le coût prévisionnel définitif des travaux de façades à 803 878,90 euros HT.",
+   "pourquoi": "le montant réel du chantier de façades apparaît",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=45596",
+   "fait_en": "The Council authorizes an amendment setting the final estimated cost of the façade works at 803,878.90 euros excl. tax.",
+   "pourquoi_en": "the actual cost of the façade project comes to light"
+  },
+  {
+   "id": "71576",
+   "seance": "DECEMBRE 2002",
+   "fait": "Une subvention de 10 000 euros est votée pour l'association 11ème Evénements, domiciliée à la mairie.",
+   "pourquoi": "une association d'arrondissement logée dans les murs",
+   "vedette": false,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=71576",
+   "fait_en": "A grant of 10,000 euros is voted for the association 11ème Événements, based at the town hall.",
+   "pourquoi_en": "an arrondissement association housed within the building"
+  },
+  {
+   "id": "98224",
+   "seance": "MAI 2011",
+   "fait": "Le Conseil autorise la signature d'une convention avec l'association France Energie Emploi, dans le cadre du transfert de la permanence emploi de la mairie du 11e vers la Maison des Entreprises et de l'Emploi du 20e.",
+   "pourquoi": "un service public quitte la mairie",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=98224",
+   "fait_en": "The Council authorizes the signing of an agreement with the association France Energie Emploi, as part of the transfer of the town hall's employment support office from the 11th arrondissement to the Maison des Entreprises et de l'Emploi of the 20th arrondissement.",
+   "pourquoi_en": "a public service leaves the town hall"
+  },
+  {
+   "id": "17585",
+   "seance": "SEPTEMBRE 1999",
+   "fait": "Une question du Conseil du 11e révèle qu'aucune décision budgétaire n'a permis d'équiper la mairie d'un système de gestion informatisée de l'état spécial.",
+   "pourquoi": "un projet d'informatisation resté sans suite",
+   "vedette": false,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=17585",
+   "fait_en": "A question from the 11th arrondissement Council reveals that no budget decision has allowed the town hall to be equipped with a computerized management system for the special account (\"état spécial\").",
+   "pourquoi_en": "a digitization project that went nowhere"
+  },
+  {
+   "id": "95495",
+   "seance": "OCTOBRE 2002",
+   "fait": "La Ville indemnise à l'amiable une visiteuse dont un tableau exposé dans la salle des fêtes de la mairie a été détérioré.",
+   "pourquoi": "un incident lors d'une exposition dans la mairie",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=95495",
+   "fait_en": "The City compensates, through an out-of-court settlement, a visitor whose painting exhibited in the town hall's ceremonial hall was damaged.",
+   "pourquoi_en": "an incident during an exhibition at the town hall"
+  }
+ ],
+ "montants": [
+  {
+   "seance": "MAI 2011",
+   "montant": "5 100 €",
+   "objet": "subvention annuelle à l'association France Energie Emploi liée au transfert de la permanence emploi hors de la mairie",
+   "citation": "Une subvention annuelle de 5.100 euros sera versée à l?association.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=98224"
+  },
+  {
+   "seance": "SEPTEMBRE 2003",
+   "montant": "68 510,59 € HT → 80 836,59 € HT (104 066,95 € TTC valeur juillet 2003)",
+   "objet": "avenant n°1 au marché de travaux avec ANSINELLI Industries, portes pare-flammes 2e étage",
+   "citation": "portant le marché de 68.510,59 euros HT à 80.836,59 euros HT, soit 96.680,56 euros TTC valeur juin 2001, soit un montant de 104.066,95 euros TTC valeur juillet 2003",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=48114"
+  },
+  {
+   "seance": "MAI 2004",
+   "montant": "803 878,90 € HT (coût prévisionnel des travaux)",
+   "objet": "coût prévisionnel définitif des travaux de restauration des façades, avenant n°1 marché de maîtrise d'œuvre",
+   "citation": "ayant pour effet d'établir le coût prévisionnel définitif des travaux à 803.878,90 euros H.T.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=45596"
+  },
+  {
+   "seance": "MAI 2004",
+   "montant": "132 935,54 € TTC (rémunération du maître d'œuvre, inchangée)",
+   "objet": "forfait de rémunération du maître d'œuvre (Joudinaud/Gachet)",
+   "citation": "de fixer le forfait définitif de rémunération qui reste inchangé à 132.935,54 euros T.T.C.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=45596"
+  }
+ ],
+ "bmo_extraits": [],
+ "bmo_recit": null,
+ "invest": [
+  {
+   "annee": 2022,
+   "montant_eur": 859892.0,
+   "nom_projet": "Mairie du 11ème arrondissement - Ravalement et couverture",
+   "preuve": "nom_projet nomme explicitement le lieu : \"Mairie du 11ème arrondissement - Ravalement et couverture\" (signal nom). Malgré une distance_m de 906 m (géocodage de tranche budgétaire imprécis), le nom du projet désigne sans ambiguïté ce lieu et correspond à la même opération de ravalement/couverture que le projet 2024 et aux marchés SPS/façades de 2021.",
+   "id": "2022_11_31_016"
+  },
+  {
+   "annee": 2024,
+   "montant_eur": 1726510.02,
+   "nom_projet": "Mairie Du 11e Arrondissement - Ravalement et couverture",
+   "preuve": "nom_projet nomme explicitement le lieu : \"Mairie Du 11e Arrondissement - Ravalement et couverture\" (102 m, signal nom+proximite). Corroboré par deux marchés DECP portant sur la même opération : \"SPS RELATIF AU RAVALEMT ET COUVERTURE DE LA MAIRIE DU 11ÈME\" (COORDINATION SANTE SECURITE, notifié 2021-06-24) et \"MODERNISATION DES FAÇADES ET COUVERTURE DE LA MAIRIE DU 11È\" (ATELIER ARCHIT DIMITRI TOROSSIAN, notifié 2021-01-20).",
+   "id": "2024_11_30_017"
+  }
+ ],
+ "marches": [
+  {
+   "numero_marche": "20181210000322",
+   "objet": "MODERENISAT° DES MENUISERIES EXTÉR MAIRIE DU 11ÈME",
+   "objet_clair": null,
+   "fournisseur": "ART ET TECHNIQUE DE LA MENUISERIE",
+   "montant_max": 331566.0,
+   "date_notification": "2018-04-05",
+   "preuve": "Objet du marché : \"MODERENISAT° DES MENUISERIES EXTÉR MAIRIE DU 11ÈME\" — nomme explicitement le lieu, travaux réalisés sur le bâtiment."
+  },
+  {
+   "numero_marche": "20181210003424",
+   "objet": "MS TRX MODERNISATION CT GAZ MAIRIE DU 11E AU 12 PL LÉON BLUM",
+   "objet_clair": null,
+   "fournisseur": "DALKIA",
+   "montant_max": 278200.0,
+   "date_notification": "2018-05-25",
+   "preuve": "Objet du marché : \"MS TRX MODERNISATION CT GAZ MAIRIE DU 11E AU 12 PL LÉON BLUM\" — nomme le lieu et son adresse exacte (12 place Léon Blum, confirmée par les délibérations de contexte), travaux de chaufferie gaz sur le bâtiment."
+  },
+  {
+   "numero_marche": "20161210000045",
+   "objet": "REFECTION ET ACCESSIBILITE ESCALIERS MAIRIE DU 11ÈME",
+   "objet_clair": null,
+   "fournisseur": "ERI",
+   "montant_max": 255174.03,
+   "date_notification": "2016-02-02",
+   "preuve": "Objet du marché : \"REFECTION ET ACCESSIBILITE ESCALIERS MAIRIE DU 11ÈME\" — nomme explicitement le lieu, travaux d'accessibilité sur le bâtiment."
+  },
+  {
+   "numero_marche": "20141610000039",
+   "objet": "FOURNITURE DE CHAMPAGNE POUR LA MAIRIE DU 11ÈME ARRONDISSEME",
+   "objet_clair": null,
+   "fournisseur": "EARL B FERY BERTIN ET FILS",
+   "montant_max": 80000.0,
+   "date_notification": "2014-11-06",
+   "preuve": "Objet du marché : \"FOURNITURE DE CHAMPAGNE POUR LA MAIRIE DU 11ÈME ARRONDISSEME\" — nomme explicitement le lieu comme destinataire de la fourniture."
+  },
+  {
+   "numero_marche": "20212021S04670",
+   "objet": "SPS RELATIF AU RAVALEMT ET COUVERTURE DE LA MAIRIE DU 11ÈME",
+   "objet_clair": null,
+   "fournisseur": "COORDINATION SANTE SECURITE",
+   "montant_max": 33192.0,
+   "date_notification": "2021-06-24",
+   "preuve": "Objet du marché : \"SPS RELATIF AU RAVALEMT ET COUVERTURE DE LA MAIRIE DU 11ÈME\" — coordination sécurité du chantier de ravalement/couverture du bâtiment, corrobore les projets d'investissement 2022/2024 de même nom."
+  },
+  {
+   "numero_marche": "20202020S00025",
+   "objet": "MODERNISATION DES FAÇADES ET COUVERTURE DE LA MAIRIE DU 11È",
+   "objet_clair": null,
+   "fournisseur": "ATELIER ARCHIT DIMITRI TOROSSIAN",
+   "montant_max": 31548.0,
+   "date_notification": "2021-01-20",
+   "preuve": "Objet du marché : \"MODERNISATION DES FAÇADES ET COUVERTURE DE LA MAIRIE DU 11È\" — maîtrise d'œuvre architecte pour le même chantier de ravalement/couverture, corrobore les projets d'investissement 2022/2024 de même nom."
+  }
+ ],
+ "mandate": null,
+ "sources": {
+  "delibs": {
+   "name": "Débat-Délibs — Conseil de Paris",
+   "url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=search-solr&query=Mairie+du+11e"
+  },
+  "bmo": {
+   "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
+   "url": "https://gallica.bnf.fr/ark:/12148/cb343512457/date"
+  },
+  "invest": {
+   "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
+   "url": "https://opendata.paris.fr/"
+  },
+  "wiki": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ },
+ "synthese_en": "Between 1998 and 2011, the Council of Paris approved around thirty resolutions concerning the town hall of the 11th arrondissement, place Léon Blum, mostly works contracts for maintenance and code compliance: heating networks, electrical systems, fire safety, elevators, joinery, façades. In July 1998, during the vote on the restoration of the Voltaire façade, a councilwoman from the 11th questioned the Mayor on the need to restructure the premises vacated by the departure of several services (social services, police) and on the absence of a budget planned for this restructuring; the deputy mayor in charge of heritage matters replied that major works, spread out over time, were planned and that studies were under way. This façade restoration project extended over several years, with a project management contract awarded in 2002, then an amendment authorized in 2004 setting the final estimated cost of the works at 803,878.90 euros excl. tax. The building also hosted, through grants, arrondissement associations such as \"11ème Événements\" and the Association des Artistes et Artisans d'Art du 11e (Association of Artists and Craftspeople of the 11th); conversely, an agreement was authorized in 2011 with the association France Energie Emploi as part of the transfer of the town hall's employment support office from the 11th arrondissement to the Maison des Entreprises et de l'Emploi (Business and Employment Center) of the 20th arrondissement."
+}

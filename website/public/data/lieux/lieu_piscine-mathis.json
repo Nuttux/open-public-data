@@ -1,0 +1,141 @@
+{
+ "generated_at": "2026-07-21T17:04:41.999226+00:00",
+ "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
+ "slug": "piscine-mathis",
+ "name": "Piscine Mathis",
+ "kind_fr": "Piscine",
+ "kind_en": "Swimming pool",
+ "famille": "sport",
+ "arrondissement": 19,
+ "lat": 48.890926,
+ "lon": 2.374429,
+ "photo": null,
+ "photo_credit": null,
+ "wiki": {
+  "extract": null,
+  "url": null,
+  "source": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ },
+ "stats": {
+  "n_delibs": 1340,
+  "delibs_span": [
+   2005,
+   2012
+  ],
+  "n_bmo_brut": 0,
+  "n_bmo_verifies": null,
+  "invest_total_eur": 120584.0,
+  "invest_annees": [
+   "2022"
+  ],
+  "lecture_mode": "titre nommant le lieu (3 trouvés)",
+  "lecture_mode_en": "title naming the place (3 found)",
+  "n_lus": 3,
+  "n_lieu": 3
+ },
+ "subventions_exploitant": null,
+ "residents": [
+  {
+   "beneficiaire": "LA SEPTIEME COMPAGNIE",
+   "montant_total": 3000.0,
+   "preuve": "Objet de la subvention : \"Renouvellement indispensable du matériel plongée, abimé par 3 ans de fermeture de la piscine Mathis\" — nomme explicitement la piscine Mathis comme lieu de pratique du club, sans en être l'exploitant."
+  }
+ ],
+ "kpi_montant": null,
+ "synthese_fr": "En avril 2005, le Conseil de Paris autorise le lancement d'un appel d'offres pour mettre aux normes les vestiaires, les douches et les installations électriques de la piscine Mathis (19e). En juin 2007, il approuve un contrat de transaction de 25 065,29 euros TTC avec l'entreprise T.R.D., pour l'indemniser de travaux supplémentaires survenus dans le cadre de ce chantier, et autorise le Maire à le signer. En février 2012, le groupe UMPPA dépose un vœu relayant, pétition à l'appui, l'exaspération d'usagers face à l'état de la piscine (hygiène, ventilation, fermetures liées à des problèmes d'effectifs) ; en réponse, l'adjoint aux sports Jean Vuillermoz reconnaît que l'équipement « subit les effets du temps » et cite des interventions déjà menées, dont la rénovation des vestiaires en 2007 et le renforcement de la ventilation à l'été 2011. Il indique par ailleurs qu'une chaise de mise à l'eau hors service sera prochainement remplacée.",
+ "moments": [
+  {
+   "id": "43761",
+   "seance": "AVRIL 2005",
+   "fait": "Le Conseil autorise le lancement d'un appel d'offres pour la mise aux normes des vestiaires, douches et installations électriques.",
+   "pourquoi": "premier chantier documenté de mise aux normes",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=43761",
+   "fait_en": "The Council authorizes the launch of a call for tenders to bring the changing rooms, showers and electrical installations up to code.",
+   "pourquoi_en": "first documented code-compliance project"
+  },
+  {
+   "id": "72689",
+   "seance": "JUIN 2007",
+   "fait": "Le Conseil approuve un contrat de transaction de 25 065,29 € TTC avec l'entreprise T.R.D. pour des travaux supplémentaires.",
+   "pourquoi": "litige chiffré sur le même chantier de travaux",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=72689",
+   "fait_en": "The Council approves a settlement contract for 25,065.29 euros including tax with the company T.R.D. for additional work.",
+   "pourquoi_en": "quantified dispute over the same construction project"
+  },
+  {
+   "id": "103913",
+   "seance": "FEVRIER 2012",
+   "fait": "Vœu UMPPA relayant une pétition d'usagers sur l'état de la piscine ; réponse de l'adjoint aux sports détaillant les interventions passées.",
+   "pourquoi": "conflit politique et bilan d'usage en séance",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=103913",
+   "fait_en": "UMPPA resolution relaying a petition from users about the state of the pool; the deputy mayor for sports responds by detailing past interventions.",
+   "pourquoi_en": "political conflict and usage record aired in council session"
+  }
+ ],
+ "montants": [
+  {
+   "seance": "JUIN 2007",
+   "montant": "25 065,29 € TTC",
+   "objet": "indemnisation de la société T.R.D. pour travaux supplémentaires réalisés lors de la mise aux normes des vestiaires, douches et installations électriques",
+   "citation": "La dépense d?un montant total de 25.065,29 euros TTC sera imputée au budget de fonctionnement 2007 de la Ville de Paris au chapitre 67, nature 678, fonction 40.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=72689"
+  }
+ ],
+ "bmo_extraits": [],
+ "bmo_recit": null,
+ "invest": [
+  {
+   "annee": 2022,
+   "montant_eur": 120584.0,
+   "nom_projet": "Rénovation de la piscine Mathis",
+   "preuve": "Nom du projet \"Rénovation de la piscine Mathis\" nomme directement le lieu ; distance 20 m.",
+   "id": "2022_19_59_028"
+  }
+ ],
+ "marches": [
+  {
+   "numero_marche": "20212021T05722",
+   "objet": "MODERNIST° DES LOCAUX ET VENTILAT° ASCEN PISCINE MATHIS",
+   "objet_clair": null,
+   "fournisseur": "ENGIE ENERGIE SERVICES",
+   "montant_max": 90514.1,
+   "date_notification": "2021-07-07",
+   "preuve": "Objet du marché nomme explicitement \"PISCINE MATHIS\" (modernisation des locaux et de la ventilation/ascenseur)."
+  },
+  {
+   "numero_marche": "20161410001835",
+   "objet": "RÉNOVATION VESTIAIRES ET DOUCHES PISCINE MATHIS 75019",
+   "objet_clair": null,
+   "fournisseur": "NORPANO",
+   "montant_max": 74886.89,
+   "date_notification": "2016-12-15",
+   "preuve": "Objet du marché nomme explicitement \"PISCINE MATHIS 75019\" (rénovation vestiaires et douches), cohérent avec les délibérations 2005 DJS 120 et 2007 DJS 353 sur la mise aux normes des vestiaires/douches au 11-13 rue Mathis."
+  }
+ ],
+ "mandate": null,
+ "sources": {
+  "delibs": {
+   "name": "Débat-Délibs — Conseil de Paris",
+   "url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=search-solr&query=Piscine+Mathis"
+  },
+  "bmo": {
+   "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
+   "url": "https://gallica.bnf.fr/ark:/12148/cb343512457/date"
+  },
+  "invest": {
+   "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
+   "url": "https://opendata.paris.fr/"
+  },
+  "wiki": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ },
+ "synthese_en": "In April 2005, the Conseil de Paris authorized the launch of a call for tenders to bring the changing rooms, showers and electrical installations of the Piscine Mathis (19th arrondissement) up to code. In June 2007, it approved a settlement contract for 25,065.29 euros including tax with the company T.R.D., to compensate it for additional work carried out during this project, and authorized the Mayor to sign it. In February 2012, the UMPPA group tabled a resolution relaying, supported by a petition, users' exasperation with the state of the pool (hygiene, ventilation, closures linked to staffing problems); in response, the deputy mayor for sports Jean Vuillermoz acknowledged that the facility \"is showing the effects of time\" and cited interventions already carried out, including the renovation of the changing rooms in 2007 and the strengthening of ventilation in summer 2011. He also stated that an out-of-service pool lift chair would soon be replaced."
+}

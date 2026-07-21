@@ -1,0 +1,193 @@
+{
+ "generated_at": "2026-07-21T17:04:41.999226+00:00",
+ "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
+ "slug": "jardin-atlantique",
+ "name": "Jardin Atlantique",
+ "kind_fr": "Jardin",
+ "kind_en": "Garden",
+ "famille": "vert",
+ "arrondissement": 15,
+ "lat": 48.842,
+ "lon": 2.3195,
+ "photo": "/img/lieux/jardin-atlantique.jpg",
+ "photo_credit": {
+  "licence": "CC BY 2.0",
+  "auteur": "Jim Linwood from London",
+  "url": "https://commons.wikimedia.org/wiki/File:Jardin_Atlantique_2010-04-23.jpg",
+  "source": "Wikimedia Commons"
+ },
+ "wiki": {
+  "extract": "Le jardin Atlantique est un jardin parisien du quartier Necker du 15e arrondissement.",
+  "url": "https://fr.wikipedia.org/wiki/Jardin_Atlantique",
+  "source": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  },
+  "extract_en": "The Jardin Atlantique is a Parisian garden in the Necker quarter of the 15th arrondissement."
+ },
+ "stats": {
+  "n_delibs": 1085,
+  "delibs_span": [
+   2002,
+   2007
+  ],
+  "n_bmo_brut": 0,
+  "n_bmo_verifies": null,
+  "invest_total_eur": 103809.94,
+  "invest_annees": [
+   "2023"
+  ],
+  "lecture_mode": "titre nommant le lieu (10 trouvés)",
+  "lecture_mode_en": "title naming the place (10 found)",
+  "n_lus": 9,
+  "n_lieu": 6
+ },
+ "subventions_exploitant": null,
+ "residents": [],
+ "kpi_montant": null,
+ "synthese_fr": "Le Jardin Atlantique, aménagé sur la dalle au-dessus des voies de la gare Montparnasse dans le cadre de la Z.A.C. Pasteur-Montparnasse, fait l'objet dès janvier 2001 d'une autorisation donnée au Maire de signer avec le Groupement foncier français - Institutionnels une convention réglant la gestion technique et financière de ses accès. En 2003, le Conseil de Paris approuve le principe des travaux d'extension du Mémorial Leclerc et du Musée Jean Moulin, bâtiments intégrés au jardin, et autorise la passation du marché de travaux correspondant. Les usages du jardin se diversifient ensuite : en 2005, le Maire est autorisé à pérenniser une concession de location de chaises longues et de vente de denrées alimentaires, contre une redevance de 8 % du chiffre d'affaires hors taxes ; en 2006, il est autorisé à conclure un marché avec l'association GAREF pour la gestion d'un centre d'animation scientifique ; en 2007, il est autorisé à signer la mise à disposition de locaux du bâtiment Nord à la Maison des Anciens Combattants de la 2e D.B., assortie d'une aide indirecte annuelle de 53 200 euros. En 2002, une question orale relaie, sans confirmation municipale au dossier consulté, un projet de couverture de deux des cinq courts de tennis du jardin présenté comme au point mort.",
+ "moments": [
+  {
+   "id": "85031",
+   "seance": "JANVIER 2001",
+   "fait": "Maire de Paris autorisé à signer une convention avec le Groupement foncier français pour la gestion technique et financière des accès à la dalle du jardin",
+   "pourquoi": "un jardin construit sur une dalle, aux accès négociés",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=85031",
+   "fait_en": "Mayor of Paris authorized to sign an agreement with the Groupement foncier français for the technical and financial management of access to the garden's deck",
+   "pourquoi_en": "a garden built on a deck, with negotiated access"
+  },
+  {
+   "id": "5883",
+   "seance": "SEPTEMBRE 2002",
+   "fait": "Question orale sur un projet de couverture de courts de tennis présenté comme au point mort",
+   "pourquoi": "un dossier sportif présenté comme au point mort, selon la question déposée en Conseil",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=5883",
+   "fait_en": "Oral question about a project to cover tennis courts, described as stalled",
+   "pourquoi_en": "a sports project described as stalled, according to the question submitted to the Council"
+  },
+  {
+   "id": "47346",
+   "seance": "OCTOBRE 2003",
+   "fait": "Principe des travaux d'extension du Mémorial Leclerc et Musée Jean Moulin approuvé, marché de travaux autorisé",
+   "pourquoi": "un musée s'agrandit dans le jardin",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=47346",
+   "fait_en": "Principle of extension works for the Mémorial Leclerc and Musée Jean Moulin approved, public works contract authorized",
+   "pourquoi_en": "a museum expands within the garden"
+  },
+  {
+   "id": "43665",
+   "seance": "AVRIL 2005",
+   "fait": "Maire de Paris autorisé à pérenniser pour 10 ans une concession de chaises longues et vente alimentaire, contre 8 % du chiffre d'affaires",
+   "pourquoi": "le jardin génère une recette commerciale récurrente",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=43665",
+   "fait_en": "Mayor of Paris authorized to make permanent, for 10 years, a concession for deck chairs and food sales, in exchange for 8% of revenue",
+   "pourquoi_en": "the garden generates recurring commercial revenue"
+  },
+  {
+   "id": "87256",
+   "seance": "JUILLET 2005",
+   "fait": "Subvention de fonctionnement à la Maison des Anciens Combattants de la 2e D.B., domiciliée dans le jardin",
+   "pourquoi": "un second soutien financier au même occupant",
+   "vedette": false,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=87256",
+   "fait_en": "Operating subsidy to the Maison des Anciens Combattants de la 2e D.B., domiciled in the garden",
+   "pourquoi_en": "a second financial support to the same occupant"
+  },
+  {
+   "id": "80994",
+   "seance": "JUILLET 2006",
+   "fait": "Maire de Paris autorisé à conclure un marché avec le GAREF pour gérer le centre d'animation océanographique sur la dalle du jardin",
+   "pourquoi": "un centre scientifique pour jeunes niché dans le jardin",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=80994",
+   "fait_en": "Mayor of Paris authorized to conclude a contract with GAREF to manage the oceanographic activity center on the garden's deck",
+   "pourquoi_en": "a science center for young people tucked into the garden"
+  },
+  {
+   "id": "53852",
+   "seance": "OCTOBRE 2007",
+   "fait": "Maire de Paris autorisé à mettre à disposition les locaux du bâtiment Nord à la Maison des Anciens Combattants de la 2e D.B., aide indirecte de 53 200 euros par an",
+   "pourquoi": "une association logée quasi gratuitement dans le jardin",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=53852",
+   "fait_en": "Mayor of Paris authorized to make premises in the North building available to the Maison des Anciens Combattants de la 2e D.B., with an indirect subsidy of 53,200 euros per year",
+   "pourquoi_en": "an association housed almost free of charge in the garden"
+  }
+ ],
+ "montants": [
+  {
+   "seance": "AVRIL 2005",
+   "montant": "8 % du chiffre d'affaires hors taxes",
+   "objet": "redevance due à la Ville par les exploitants des emplacements de chaises longues et de vente de denrées alimentaires",
+   "citation": "Leurs montants s?élèveront à 8 % du chiffre d?affaires hors taxes dégagés par les exploitations",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=43665"
+  },
+  {
+   "seance": "OCTOBRE 2007",
+   "montant": "1 euro",
+   "objet": "recette annuelle constatée pour la mise à disposition des locaux à l'association",
+   "citation": "La recette correspondante, soit un euro, sera constatée sur le chapitre 70, nature 70323, rubrique 322, du budget de fonctionnement de la Ville de Paris",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=53852"
+  },
+  {
+   "seance": "OCTOBRE 2007",
+   "montant": "6 710 euros",
+   "objet": "dépense de la Ville pour eau, électricité et nettoyage des vitres des locaux mis à disposition",
+   "citation": "La dépense correspondante, soit 6 710 euros, sera imputée sur le chapitre 011, natures 60611, 60612 et 6283 (eau, électricité, nettoyage des vitres)",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=53852"
+  },
+  {
+   "seance": "OCTOBRE 2007",
+   "montant": "53 200 euros par an",
+   "objet": "aide indirecte correspondant à la valeur locative des locaux accordée à l'association",
+   "citation": "Une aide indirecte d?un montant annuel de 53 200 euros, correspondant à la valeur locative des locaux, est accordée à l?association",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=53852"
+  }
+ ],
+ "bmo_extraits": [],
+ "bmo_recit": null,
+ "invest": [
+  {
+   "annee": 2023,
+   "montant_eur": 103809.94,
+   "nom_projet": "Jardin Atlantique - Rénovation des aires de jeux",
+   "preuve": "Le nom du projet nomme explicitement le lieu : « Jardin Atlantique - Rénovation des aires de jeux » (la distance de 1515 m dans le candidat n'est pas fiable ici, le signal retenu est le nom du projet, pas la distance).",
+   "id": "2023_15_42_008"
+  }
+ ],
+ "marches": [
+  {
+   "numero_marche": "20242024S00382",
+   "objet": "ANALYSE DOCS ARCHIVES PORTANCE DALLE JARDIN ATLANTIQUE 14°",
+   "objet_clair": "Étude de la solidité de la dalle supportant le Jardin Atlantique",
+   "fournisseur": "ARCADIS ESG",
+   "montant_max": 27072.0,
+   "date_notification": "2024-01-24",
+   "preuve": "L'objet du marché nomme explicitement le lieu et porte sur la dalle du Jardin Atlantique : « ANALYSE DOCS ARCHIVES PORTANCE DALLE JARDIN ATLANTIQUE 14° » (étude technique de portance de la dalle du jardin, fournisseur ARCADIS ESG, SIRET 40150379200533)."
+  }
+ ],
+ "mandate": null,
+ "sources": {
+  "delibs": {
+   "name": "Débat-Délibs — Conseil de Paris",
+   "url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=search-solr&query=Jardin+Atlantique"
+  },
+  "bmo": {
+   "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
+   "url": "https://gallica.bnf.fr/ark:/12148/cb343512457/date"
+  },
+  "invest": {
+   "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
+   "url": "https://opendata.paris.fr/"
+  },
+  "wiki": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ },
+ "synthese_en": "The Jardin Atlantique, built on the deck above the tracks of Gare Montparnasse as part of the Pasteur-Montparnasse urban development zone (Z.A.C.), was the subject as early as January 2001 of an authorization given to the Mayor to sign an agreement with the Groupement foncier français - Institutionnels governing the technical and financial management of its access points. In 2003, the Council of Paris approved the principle of extension works for the Mémorial Leclerc and Musée Jean Moulin, buildings integrated into the garden, and authorized the corresponding public works contract. The garden's uses then diversified: in 2005, the Mayor was authorized to make permanent a concession for renting deck chairs and selling food, in exchange for a fee of 8% of pre-tax revenue; in 2006, he was authorized to conclude a contract with the GAREF association for the management of a science activity center; in 2007, he was authorized to sign the agreement making premises in the North building available to the Maison des Anciens Combattants de la 2e D.B. [House of Veterans of the 2nd Armored Division], accompanied by an annual indirect subsidy of 53,200 euros. In 2002, an oral question raised - without municipal confirmation in the file reviewed - a project to cover two of the garden's five tennis courts, described as stalled."
+}

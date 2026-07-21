@@ -1,0 +1,99 @@
+{
+ "generated_at": "2026-07-21T17:04:41.999226+00:00",
+ "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
+ "slug": "mairie-du-10e",
+ "name": "Mairie du 10e",
+ "kind_fr": "Mairie",
+ "kind_en": "Town hall",
+ "famille": "services",
+ "arrondissement": 10,
+ "lat": 48.876,
+ "lon": 2.36,
+ "photo": "/img/lieux/mairie-du-10e.jpg",
+ "photo_credit": {
+  "licence": "CC BY-SA 4.0",
+  "auteur": "Coyau\n",
+  "url": "https://commons.wikimedia.org/wiki/File:Paris,_mairie_du_10e_arrdt,_hall_04.jpg",
+  "source": "Wikimedia Commons"
+ },
+ "wiki": {
+  "extract": null,
+  "url": null,
+  "source": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ },
+ "stats": {
+  "n_delibs": 716,
+  "delibs_span": [
+   1995,
+   2026
+  ],
+  "n_bmo_brut": 0,
+  "n_bmo_verifies": null,
+  "invest_total_eur": 2660989.56,
+  "invest_annees": [
+   "2023",
+   "2024"
+  ],
+  "lecture_mode": "titre nommant le lieu (17 trouvés)",
+  "lecture_mode_en": "title naming the place (17 found)",
+  "n_lus": 0,
+  "n_lieu": null
+ },
+ "subventions_exploitant": null,
+ "residents": [],
+ "kpi_montant": null,
+ "synthese_fr": "",
+ "moments": [],
+ "montants": [],
+ "bmo_extraits": [],
+ "bmo_recit": null,
+ "invest": [
+  {
+   "annee": 2023,
+   "montant_eur": 1079899.85,
+   "nom_projet": "Mairie du 10ème arrondissement - Restauration des façades et des menuiseries",
+   "preuve": "Nom du projet nomme explicitement le lieu : \"Mairie du 10ème arrondissement - Restauration des façades et des menuiseries\" (signal=nom).",
+   "id": "2023_10_27_012"
+  },
+  {
+   "annee": 2024,
+   "montant_eur": 1581089.71,
+   "nom_projet": "Mairie Du 10e Arrondissement - Restauration des façades et menuiseries",
+   "preuve": "Nom du projet nomme explicitement le lieu : \"Mairie Du 10e Arrondissement - Restauration des façades et menuiseries\" (signal=nom).",
+   "id": "2024_10_27_014"
+  }
+ ],
+ "marches": [
+  {
+   "numero_marche": "decp-2025T00528",
+   "objet": "Marché de travaux relatif de regroupement des services à la population de la Mairie du 10e arrdt située 72, rue du Faubourg Saint Martin 75010 Paris - TRAVAUX DE MENUISERIE INTERIEURE BOIS-AGENCEMENT",
+   "objet_clair": null,
+   "fournisseur": "ANTOINE AGENCEMENT - MENUISERIE",
+   "montant_max": 148250.3,
+   "date_notification": "2025-02-11",
+   "preuve": "Objet du marché nomme explicitement le lieu et son adresse : \"Marché de travaux relatif de regroupement des services à la population de la Mairie du 10e arrdt située 72, rue du Faubourg Saint Martin 75010 Paris\"."
+  }
+ ],
+ "mandate": null,
+ "sources": {
+  "delibs": {
+   "name": "Débat-Délibs — Conseil de Paris",
+   "url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=search-solr&query=Mairie+du+10e"
+  },
+  "bmo": {
+   "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
+   "url": "https://gallica.bnf.fr/ark:/12148/cb343512457/date"
+  },
+  "invest": {
+   "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
+   "url": "https://opendata.paris.fr/"
+  },
+  "wiki": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ }
+}

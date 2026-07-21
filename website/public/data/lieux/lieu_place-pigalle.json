@@ -1,0 +1,112 @@
+{
+ "generated_at": "2026-07-21T17:04:41.999226+00:00",
+ "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
+ "slug": "place-pigalle",
+ "name": "Place Pigalle",
+ "kind_fr": "Place",
+ "kind_en": "Square",
+ "famille": "urbain",
+ "arrondissement": 18,
+ "lat": 48.881997,
+ "lon": 2.337318,
+ "photo": "/img/lieux/place-pigalle.jpg",
+ "photo_credit": {
+  "licence": null,
+  "auteur": null,
+  "url": "https://fr.wikipedia.org/wiki/Place_Pigalle",
+  "source": "Wikipédia"
+ },
+ "wiki": {
+  "extract": "La place Pigalle est une place située dans le 9e arrondissement de Paris.",
+  "url": "https://fr.wikipedia.org/wiki/Place_Pigalle",
+  "source": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  },
+  "extract_en": "Place Pigalle is a square located in the 9th arrondissement of Paris."
+ },
+ "stats": {
+  "n_delibs": 1098,
+  "delibs_span": [
+   1997,
+   2026
+  ],
+  "n_bmo_brut": 0,
+  "n_bmo_verifies": null,
+  "invest_total_eur": 1778088.3699999999,
+  "invest_annees": [
+   "2023",
+   "2024"
+  ],
+  "lecture_mode": "tête du classement Solr (1098 documents au total)",
+  "lecture_mode_en": "top of the Solr ranking (1098 documents total)",
+  "n_lus": 39,
+  "n_lieu": 0
+ },
+ "subventions_exploitant": null,
+ "residents": [],
+ "kpi_montant": null,
+ "synthese_fr": "Aucun des 39 documents du Conseil de Paris examinés ne traite de la Place Pigalle elle-même : ils portent sur d'autres places parisiennes (dénominations, aménagements financés par le \"Fonds vert\", plaques commémoratives, vœux d'aménagement ou de sécurité), sur une rue homonyme (rue Jean-Baptiste Pigalle, 9e) ou sur une association nommée \"La Place\" sans lien avec le lieu. Le seul document évoquant Pigalle par son nom est un vœu de 2009 sur l'insécurité au nord du 9e arrondissement, dont le titre cite \"le secteur de Pigalle\" sans qu'aucune occurrence de \"Place Pigalle\" n'apparaisse dans le document ni de détail exploitable sur la place. Sur la base des documents disponibles, aucune délibération substantielle sur l'aménagement, le budget, la gestion ou la programmation de la Place Pigalle n'a pu être identifiée.",
+ "moments": [],
+ "montants": [],
+ "bmo_extraits": [],
+ "bmo_recit": null,
+ "invest": [
+  {
+   "annee": 2023,
+   "montant_eur": 142730.24,
+   "nom_projet": "Place Pigalle - Travaux d'aménagement",
+   "preuve": "Nom du projet \"Place Pigalle - Travaux d'aménagement\" nomme explicitement le lieu ; distance 5 m.",
+   "id": "2023_09_24_013"
+  },
+  {
+   "annee": 2024,
+   "montant_eur": 1000000.0,
+   "nom_projet": "Diversifier les commerces de la place Pigalle",
+   "preuve": "Nom du projet \"Diversifier les commerces de la place Pigalle\" nomme explicitement le lieu ; distance 5 m.",
+   "id": "2024_09_24_019"
+  },
+  {
+   "annee": 2024,
+   "montant_eur": 327324.98,
+   "nom_projet": "Aménagement de la place Pigalle",
+   "preuve": "Nom du projet \"Aménagement de la place Pigalle\" nomme explicitement le lieu ; distance 5 m.",
+   "id": "2024_09_24_010"
+  },
+  {
+   "annee": 2024,
+   "montant_eur": 225881.9,
+   "nom_projet": "Aménagement de la place Pigalle",
+   "preuve": "Nom du projet \"Aménagement de la place Pigalle\" nomme explicitement le lieu ; distance 5 m.",
+   "id": "2024_09_24_010"
+  },
+  {
+   "annee": 2024,
+   "montant_eur": 82151.25,
+   "nom_projet": "Aménagement de la place Pigalle",
+   "preuve": "Nom du projet \"Aménagement de la place Pigalle\" nomme explicitement le lieu ; distance 5 m.",
+   "id": "2024_09_24_010"
+  }
+ ],
+ "marches": [],
+ "mandate": null,
+ "sources": {
+  "delibs": {
+   "name": "Débat-Délibs — Conseil de Paris",
+   "url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=search-solr&query=Place+Pigalle"
+  },
+  "bmo": {
+   "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
+   "url": "https://gallica.bnf.fr/ark:/12148/cb343512457/date"
+  },
+  "invest": {
+   "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
+   "url": "https://opendata.paris.fr/"
+  },
+  "wiki": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ },
+ "synthese_en": "None of the 39 Paris Council documents examined deal with Place Pigalle itself: they concern other Paris squares (namings, developments funded by the \"Fonds vert\" [Green Fund], commemorative plaques, motions on development or security), a street of the same name (rue Jean-Baptiste Pigalle, 9th arrondissement), or an association named \"La Place\" unrelated to the site. The only document mentioning Pigalle by name is a 2009 motion on insecurity in the north of the 9th arrondissement, whose title cites \"the Pigalle area\" though the document contains no occurrence of \"Place Pigalle\" nor any usable detail about the square. Based on the available documents, no substantial deliberation on the development, budget, management, or programming of Place Pigalle could be identified."
+}

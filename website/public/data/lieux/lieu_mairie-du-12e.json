@@ -1,0 +1,265 @@
+{
+ "generated_at": "2026-07-21T17:04:41.999226+00:00",
+ "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
+ "slug": "mairie-du-12e",
+ "name": "Mairie du 12e",
+ "kind_fr": "Mairie",
+ "kind_en": "Town hall",
+ "famille": "services",
+ "arrondissement": 12,
+ "lat": 48.8412,
+ "lon": 2.3877,
+ "photo": "/img/lieux/mairie-du-12e.jpg",
+ "photo_credit": {
+  "licence": "CC BY 2.0",
+  "auteur": "Guilhem Vellut from Paris, France",
+  "url": "https://commons.wikimedia.org/wiki/File:Mairie_du_12e_@_Paris_(33646244256).jpg",
+  "source": "Wikimedia Commons"
+ },
+ "wiki": {
+  "extract": null,
+  "url": null,
+  "source": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ },
+ "stats": {
+  "n_delibs": 819,
+  "delibs_span": [
+   1998,
+   2025
+  ],
+  "n_bmo_brut": 0,
+  "n_bmo_verifies": null,
+  "invest_total_eur": 712156.56,
+  "invest_annees": [
+   "2023",
+   "2024"
+  ],
+  "lecture_mode": "titre nommant le lieu (17 trouvés)",
+  "lecture_mode_en": "title naming the place (17 found)",
+  "n_lus": 15,
+  "n_lieu": 12
+ },
+ "subventions_exploitant": null,
+ "residents": [],
+ "kpi_montant": null,
+ "synthese_fr": "Entre 1998 et 2007, le Conseil de Paris a approuvé le principe d'une série de travaux sur la mairie du 12e arrondissement, 130 avenue Daumesnil, et autorisé leur marché : encloisonnement d'escaliers rue Descos, restructuration des services de l'état civil, réfection de couverture, modernisation des menuiseries, puis un chantier d'accessibilité (accès handicapés et ascenseur) mené en plusieurs délibérations de 2004 à 2007, marché finalement attribué à la SNC SRC pour 882 408,80 euros TTC après un premier appel d'offres infructueux. Un véhicule d'élu endommagé en mai 2002 par un plot hydraulique du parking du bâtiment a donné lieu, en 2004, à un remboursement d'assurance de 4 854,16 euros. Ponctuellement, la mairie sert aussi d'adresse de domiciliation pour de petites subventions à des associations d'anciens combattants (3 000 F en 1998, 610 euros en 2002). En avril 2025, le Conseil de Paris a approuvé le principe d'une collecte de dons pour financer la reconstruction de la mairie après l'incendie du 26 janvier, qui a touché, selon un élu en séance, une partie de la toiture et le beffroi ; plusieurs élus ont aussi interrogé l'exécutif sur la traçabilité des donateurs et sur le calendrier des travaux.",
+ "moments": [
+  {
+   "id": "38100",
+   "seance": "MAI 1998",
+   "fait": "Principe des travaux d'encloisonnement des escaliers rue Descos approuvé",
+   "pourquoi": "premier chantier connu sur le bâtiment",
+   "vedette": false,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=38100",
+   "fait_en": "Principle of the stairwell enclosure works on rue Descos approved",
+   "pourquoi_en": "first known construction project on the building"
+  },
+  {
+   "id": "59134",
+   "seance": "FEVRIER 1999",
+   "fait": "Principe de la restructuration des locaux de l'état civil approuvé",
+   "pourquoi": "réorganisation d'un service public clé",
+   "vedette": false,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=59134",
+   "fait_en": "Principle of the restructuring of the civil registry offices approved",
+   "pourquoi_en": "reorganization of a key public service"
+  },
+  {
+   "id": "25060",
+   "seance": "JANVIER 1999",
+   "fait": "Marché d'un élévateur handicapé débattu en séance, jugé trop flou par Mme Schneiter",
+   "pourquoi": "accessibilité, débat en séance sur le flou du projet",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=25060",
+   "fait_en": "Contract for a disabled-access elevator debated in session, deemed too vague by Ms. Schneiter",
+   "pourquoi_en": "accessibility, in-session debate over the project's vagueness"
+  },
+  {
+   "id": "34009",
+   "seance": "FEVRIER 2004",
+   "fait": "Remboursement de 4 854,16 euros après un incident dans le parking",
+   "pourquoi": "incident matériel rare, aux abords du bâtiment",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=34009",
+   "fait_en": "Reimbursement of 4,854.16 euros after an incident in the car park",
+   "pourquoi_en": "rare material incident, on the grounds surrounding the building"
+  },
+  {
+   "id": "26415",
+   "seance": "MARS 2005",
+   "fait": "Principe d'un ascenseur et d'un accès handicapés approuvé",
+   "pourquoi": "chantier d'accessibilité, plusieurs années de suivi",
+   "vedette": false,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=26415",
+   "fait_en": "Principle of an elevator and disabled access approved",
+   "pourquoi_en": "accessibility project, followed over several years"
+  },
+  {
+   "id": "26685",
+   "seance": "FEVRIER 2007",
+   "fait": "Marché d'ascenseur attribué à la SNC SRC pour 882 408,80 euros après appel d'offres infructueux",
+   "pourquoi": "seul montant chiffré du dossier, procédure difficile",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=26685",
+   "fait_en": "Elevator contract awarded to SNC SRC for 882,408.80 euros after an unsuccessful call for tenders",
+   "pourquoi_en": "only figure quoted in the file, a difficult procurement process"
+  },
+  {
+   "id": "179742",
+   "seance": "AVRIL 2025",
+   "fait": "Incendie du 26 janvier 2025 et collecte de dons pour la reconstruction",
+   "pourquoi": "événement le plus récent, débat sur la transparence des dons",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=179742",
+   "fait_en": "Fire of January 26, 2025 and donation drive for the reconstruction",
+   "pourquoi_en": "most recent event, debate over the transparency of donations"
+  }
+ ],
+ "montants": [
+  {
+   "seance": "FEVRIER 2007",
+   "montant": "882.408,80 euros T.T.C.",
+   "objet": "Marché de travaux d'amélioration de l'accès handicapés et de création d'un ascenseur, attribué à la SNC SRC",
+   "citation": "M. le Maire de Paris est autorisé à signer le marché de travaux avec la SNC SRC pour un montant de 882.408,80 euros T.T.C.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=26685"
+  },
+  {
+   "seance": "JANVIER 1999",
+   "montant": "400.000 F T.T.C.",
+   "objet": "Coût prévisionnel de l'élévateur pour personnes handicapées du hall (valeur mars 1999), selon M. Legaret en séance",
+   "citation": "le coût prévisionnel est évalué, comme indiqué dans le projet de délibération, à 400.000 F T.T.C., valeur mars 1999.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=25060"
+  }
+ ],
+ "bmo_extraits": [],
+ "bmo_recit": null,
+ "invest": [
+  {
+   "annee": 2023,
+   "montant_eur": 120962.32,
+   "nom_projet": "Mairie du 12ème arrondissement - Travaux d'aménagement de la terrasse du niveau R+1",
+   "preuve": "Nom du projet: \"Mairie du 12ème arrondissement - Travaux d'aménagement de la terrasse du niveau R+1\" — nomme explicitement le lieu (272 m, mais le nom suffit à confirmer).",
+   "id": "2023_12_33_005"
+  },
+  {
+   "annee": 2024,
+   "montant_eur": 391194.25,
+   "nom_projet": "Mairie Du 12e Arrondissement - Modernisation de la couverture de la salle des fetes",
+   "preuve": "Nom du projet: \"Mairie Du 12e Arrondissement - Modernisation de la couverture de la salle des fetes\" (70 m) — nomme explicitement le lieu.",
+   "id": "2024_12_33_002"
+  },
+  {
+   "annee": 2024,
+   "montant_eur": 199999.99,
+   "nom_projet": "Mairie Du 12e Arrondissement -Modernisation de la couverture de la salle des fetes",
+   "preuve": "Nom du projet: \"Mairie Du 12e Arrondissement -Modernisation de la couverture de la salle des fetes\" (70 m) — deuxième tranche/ligne du même projet de couverture, nomme explicitement le lieu.",
+   "id": "2024_12_33_002"
+  }
+ ],
+ "marches": [
+  {
+   "numero_marche": "20181210003628",
+   "objet": "MS MODERNISATION CT VAPEUR ET VENTILATION MAIRIE DU 12ÈME",
+   "objet_clair": null,
+   "fournisseur": "LA LOUISIANE",
+   "montant_max": 289861.5,
+   "date_notification": "2018-04-04",
+   "preuve": "Objet: \"MS MODERNISATION CT VAPEUR ET VENTILATION MAIRIE DU 12ÈME\" — travaux techniques sur le bâtiment de la mairie, confirmé par les délibérations de travaux (DPA) au 130 avenue Daumesnil."
+  },
+  {
+   "numero_marche": "20191210000443",
+   "objet": "RÉAMÉNAGEMENT PARTIEL DU REZ DE CHAUSSÉE DE LA MAIRIE DU 12È",
+   "objet_clair": null,
+   "fournisseur": "APPROCHE BATIMENT ASS TECHNOLOGIES",
+   "montant_max": 262379.3,
+   "date_notification": "2019-05-10",
+   "preuve": "Objet: \"RÉAMÉNAGEMENT PARTIEL DU REZ DE CHAUSSÉE DE LA MAIRIE DU 12È\" — aménagement du bâtiment lui-même."
+  },
+  {
+   "numero_marche": "20191210029814",
+   "objet": "VENTILATION ET RAFRAÎCHISSEMENT MAIRIE DU 12ÈME AV DAUMESNIL",
+   "objet_clair": null,
+   "fournisseur": "SOCIETE AURION ET COMPAGNIE",
+   "montant_max": 132118.34,
+   "date_notification": "2019-08-20",
+   "preuve": "Objet: \"VENTILATION ET RAFRAÎCHISSEMENT MAIRIE DU 12ÈME AV DAUMESNIL\" — nomme le lieu et son adresse (avenue Daumesnil)."
+  },
+  {
+   "numero_marche": "decp-2025T07942",
+   "objet": "Audits des installations électriques, du système de sécurité incendie et sécurisation des accès de la mairie du 12ème -130 avenue  Daumesnil 75012 paris Opération n° 202501521",
+   "objet_clair": null,
+   "fournisseur": "ABCD TELECOM",
+   "montant_max": 41059.0,
+   "date_notification": "2025-07-24",
+   "preuve": "Objet cite l'adresse exacte \"130 avenue Daumesnil 75012 paris\" — travaux post-incendie de janvier 2025 confirmés par les délibérations (DDCT 86 avril 2025) sur la reconstruction de la mairie du 12e."
+  },
+  {
+   "numero_marche": "20161620011700",
+   "objet": "ACCORD CADRE DE PRESTATION DE TRAITEUR POUR LE MAIRIE DU 12E",
+   "objet_clair": null,
+   "fournisseur": "DOMINIQUE THOMINE TRAITEUR",
+   "montant_max": 40000.0,
+   "date_notification": "2016-11-18",
+   "preuve": "Objet: \"ACCORD CADRE DE PRESTATION DE TRAITEUR POUR LE MAIRIE DU 12E\" — prestation destinée à la mairie elle-même (réceptions/événements sur place)."
+  },
+  {
+   "numero_marche": "decp-2025S06433",
+   "objet": "Mission d'ordonnancement, pilotage et Coordination pour les travaux de sécurisation avant réouverture de la mairie du 12ème 130 avenue Daumesnil 75012 Paris GO n° 202501521",
+   "objet_clair": null,
+   "fournisseur": "PLANETE MANAGEMENT",
+   "montant_max": 39988.0,
+   "date_notification": "2025-06-27",
+   "preuve": "Objet cite l'adresse exacte \"130 avenue Daumesnil 75012 Paris\" et le chantier de réouverture après l'incendie de janvier 2025 (confirmé par DDCT 86 avril 2025)."
+  },
+  {
+   "numero_marche": "decp-2025S02424",
+   "objet": "Mission d'assistance à maîtrise d'ouvrage en vue de définir la faisabilité de la restitution partielle du dernier étage et du campanile de la mairie du 12ème arrondissement de Paris ",
+   "objet_clair": null,
+   "fournisseur": null,
+   "montant_max": 17600.0,
+   "date_notification": "2025-03-05",
+   "preuve": "Objet: \"...restitution partielle du dernier étage et du campanile de la mairie du 12ème arrondissement de Paris\" — désigne explicitement des éléments du bâtiment (campanile) touchés par l'incendie."
+  },
+  {
+   "numero_marche": "decp-2025S08421",
+   "objet": "Marché de maitrise d'œuvre en vue d'assurer un accompagnement pour le traitement des bois structure de la mairie du 12ème arrondissement de Paris Opération n° 202501521",
+   "objet_clair": null,
+   "fournisseur": "L3A DIAG",
+   "montant_max": 11900.0,
+   "date_notification": "2025-08-26",
+   "preuve": "Objet: \"...traitement des bois structure de la mairie du 12ème arrondissement de Paris\" — même opération n° 202501521 que les autres marchés post-incendie de la mairie."
+  },
+  {
+   "numero_marche": "decp-2026T00984",
+   "objet": "Marché de travaux pour l'installation d'une protection contre la foudre suite à incendie à la mairie du 12ème, 130 avenue Daumesnil 75012 Paris",
+   "objet_clair": null,
+   "fournisseur": "SOC ALSACIENNE DE PARATONNERRES",
+   "montant_max": 10910.0,
+   "date_notification": "2026-01-29",
+   "preuve": "Objet cite l'adresse exacte \"130 avenue Daumesnil 75012 Paris\" et l'incendie de la mairie."
+  }
+ ],
+ "mandate": null,
+ "sources": {
+  "delibs": {
+   "name": "Débat-Délibs — Conseil de Paris",
+   "url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=search-solr&query=Mairie+du+12e"
+  },
+  "bmo": {
+   "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
+   "url": "https://gallica.bnf.fr/ark:/12148/cb343512457/date"
+  },
+  "invest": {
+   "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
+   "url": "https://opendata.paris.fr/"
+  },
+  "wiki": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ },
+ "synthese_en": "Between 1998 and 2007, the Council of Paris approved a series of works on the 12th arrondissement town hall, 130 avenue Daumesnil, and authorized their contracts: enclosure of the stairwells on rue Descos, restructuring of the civil registry services, roof repairs, modernization of the window and door frames, then an accessibility project (disabled access and an elevator) carried out through several deliberations from 2004 to 2007, with the contract ultimately awarded to SNC SRC for 882,408.80 euros including tax after an initial call for tenders was declared unsuccessful. A council member's vehicle, damaged in May 2002 by a hydraulic bollard in the building's car park, led to an insurance reimbursement of 4,854.16 euros in 2004. On occasion, the town hall also serves as a registered address for small grants to veterans' associations (3,000 francs in 1998, 610 euros in 2002). In April 2025, the Council of Paris approved the principle of a donation drive to fund the town hall's reconstruction after the fire of January 26, which, according to one council member speaking in session, affected part of the roof and the bell tower; several council members also questioned the executive about the traceability of donors and the timeline for the works."
+}

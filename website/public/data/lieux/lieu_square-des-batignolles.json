@@ -1,0 +1,124 @@
+{
+ "generated_at": "2026-07-21T17:04:41.999226+00:00",
+ "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
+ "slug": "square-des-batignolles",
+ "name": "Square des Batignolles",
+ "kind_fr": "Square",
+ "kind_en": "Square",
+ "famille": "urbain",
+ "arrondissement": 17,
+ "lat": 48.8875,
+ "lon": 2.316389,
+ "photo": "/img/lieux/square-des-batignolles.jpg",
+ "photo_credit": {
+  "licence": "CC BY-SA 3.0",
+  "auteur": "Georges Seguin (Okki)",
+  "url": "https://commons.wikimedia.org/wiki/File:Square_des_Batignolles_20060815_05.jpg",
+  "source": "Wikimedia Commons"
+ },
+ "wiki": {
+  "extract": "Le square des Batignolles est un espace vert situé dans le 17e arrondissement à Paris dans le quartier des Batignolles non loin du nouveau parc Martin-Luther-King.",
+  "url": "https://fr.wikipedia.org/wiki/Square_des_Batignolles",
+  "source": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  },
+  "extract_en": "The Square des Batignolles is a green space located in the 17th arrondissement of Paris, in the Batignolles neighborhood, not far from the new Martin Luther King park."
+ },
+ "stats": {
+  "n_delibs": 1025,
+  "delibs_span": [
+   1997,
+   2018
+  ],
+  "n_bmo_brut": 0,
+  "n_bmo_verifies": null,
+  "invest_total_eur": 168646.0,
+  "invest_annees": [
+   "2022"
+  ],
+  "lecture_mode": "titre nommant le lieu (3 trouvés)",
+  "lecture_mode_en": "title naming the place (3 found)",
+  "n_lus": 3,
+  "n_lieu": 3
+ },
+ "subventions_exploitant": null,
+ "residents": [],
+ "kpi_montant": null,
+ "synthese_fr": "En 1997, le Conseil de Paris approuve le principe de construire un kiosque de garde et un abri au square des Batignolles et autorise le Maire à signer le marché de travaux correspondant. En 2004, l'allée centrale du square reçoit le nom d'\"Allée Barbara\", après avis du Conseil du 17e arrondissement. En février 2018, des élus du 17e arrondissement portent un vœu demandant une indemnisation exceptionnelle pour le gérant du manège du square, percuté par la chute d'un orme centenaire le 26 décembre précédent ; l'adjointe en charge répond qu'il faut d'abord laisser les assurances et les services juridiques déterminer les responsabilités et les modalités d'indemnisation.",
+ "moments": [
+  {
+   "id": "75419",
+   "seance": "SEPTEMBRE 1997",
+   "fait": "Le Conseil approuve le principe d'un kiosque de garde et d'un abri au square, et autorise le Maire à signer le marché de travaux.",
+   "pourquoi": "premier aménagement du square documenté",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=75419",
+   "fait_en": "The Council approved the principle of a guard kiosk and a shelter at the square, and authorized the Mayor to sign the works contract.",
+   "pourquoi_en": "first documented development of the square"
+  },
+  {
+   "id": "87546",
+   "seance": "DECEMBRE 2004",
+   "fait": "L'allée centrale du square est nommée \"Allée Barbara\".",
+   "pourquoi": "hommage rendu dans l'allée centrale du square",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=87546",
+   "fait_en": "The square's central path was named \"Allée Barbara.\"",
+   "pourquoi_en": "tribute paid in the square's central path"
+  },
+  {
+   "id": "140865",
+   "seance": "FEVRIER 2018",
+   "fait": "Un vœu réclame une indemnisation pour le gérant du manège après la chute d'un arbre centenaire sur son manège.",
+   "pourquoi": "chute d'arbre sur un manège du square, indemnisation en débat",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=140865",
+   "fait_en": "A motion (vœu) called for compensation for the carousel operator after a century-old tree fell on his carousel.",
+   "pourquoi_en": "a tree fell on one of the square's carousels, compensation under debate"
+  }
+ ],
+ "montants": [],
+ "bmo_extraits": [],
+ "bmo_recit": null,
+ "invest": [
+  {
+   "annee": 2022,
+   "montant_eur": 168646.0,
+   "nom_projet": "Square des Batignolles - Rénovation de l'aire de jeux",
+   "preuve": "Nom du projet : \"Square des Batignolles - Rénovation de l'aire de jeux\" (nomme explicitement le lieu)",
+   "id": "2022_17_52_008"
+  }
+ ],
+ "marches": [
+  {
+   "numero_marche": "decp-2025T02477",
+   "objet": "Réfection et restructuration de l'atelier et des locaux sociaux du Square des Batignolles situé 114 rue Cardinet 75017 Paris",
+   "objet_clair": null,
+   "fournisseur": "REOLIAN MULTITEC",
+   "montant_max": 234200.02,
+   "date_notification": "2025-03-07",
+   "preuve": "Objet du marché nomme explicitement le lieu et son adresse : \"Réfection et restructuration de l'atelier et des locaux sociaux du Square des Batignolles situé 114 rue Cardinet 75017 Paris\""
+  }
+ ],
+ "mandate": null,
+ "sources": {
+  "delibs": {
+   "name": "Débat-Délibs — Conseil de Paris",
+   "url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=search-solr&query=Square+des+Batignolles"
+  },
+  "bmo": {
+   "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
+   "url": "https://gallica.bnf.fr/ark:/12148/cb343512457/date"
+  },
+  "invest": {
+   "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
+   "url": "https://opendata.paris.fr/"
+  },
+  "wiki": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ },
+ "synthese_en": "In 1997, the Council of Paris approved the principle of building a guard kiosk and a shelter at the Square des Batignolles and authorized the Mayor to sign the corresponding works contract. In 2004, the square's central path was named \"Allée Barbara,\" following an opinion from the 17th arrondissement council. In February 2018, elected officials from the 17th arrondissement put forward a motion (vœu) requesting exceptional compensation for the operator of the square's carousel, which had been struck by a fallen century-old elm tree on the preceding December 26. The deputy mayor in charge responded that insurers and legal services would first need to determine liability and the terms of compensation."
+}

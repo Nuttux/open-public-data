@@ -1,0 +1,113 @@
+{
+ "generated_at": "2026-07-21T17:04:41.999226+00:00",
+ "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
+ "slug": "mediatheque-marguerite-yourcenar",
+ "name": "Médiathèque Marguerite Yourcenar",
+ "kind_fr": "Médiathèque",
+ "kind_en": "Médiathèque",
+ "famille": "culture",
+ "arrondissement": 15,
+ "lat": 48.852563,
+ "lon": 2.294426,
+ "photo": "/img/lieux/mediatheque-marguerite-yourcenar.jpg",
+ "photo_credit": {
+  "licence": "CC BY-SA 2.0",
+  "auteur": "Pedro Layant",
+  "url": "https://commons.wikimedia.org/wiki/File:Mediath%C3%A8que_Marguerite_Yourcenar,_Paris_September_2009_n1.jpg",
+  "source": "Wikimedia Commons"
+ },
+ "wiki": {
+  "extract": null,
+  "url": null,
+  "source": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ },
+ "stats": {
+  "n_delibs": 566,
+  "delibs_span": [
+   2007,
+   2007
+  ],
+  "n_bmo_brut": 0,
+  "n_bmo_verifies": null,
+  "invest_total_eur": 0,
+  "invest_annees": [],
+  "lecture_mode": "titre nommant le lieu (3 trouvés)",
+  "lecture_mode_en": "title naming the place (3 found)",
+  "n_lus": 3,
+  "n_lieu": 3
+ },
+ "subventions_exploitant": null,
+ "residents": [],
+ "kpi_montant": null,
+ "synthese_fr": "En mars 2007, le Conseil de Paris approuve le principe et les modalités d'un marché à prix globaux forfaitaires, en deux lots et après appel d'offres ouvert européen, pour la fourniture de mobiliers de la future médiathèque Marguerite Yourcenar (15e arrondissement). Lors de cette même séance, une conseillère du 15e arrondissement (Mme Macé de Lépinay) se félicite de l'avancée du projet mais relève qu'il n'a pas été soumis au conseil d'arrondissement et interroge la date d'ouverture, qu'elle juge optimiste ; elle demande aussi si la bibliothèque Vaugirard, voisine, fermerait, ce à quoi M. Girard répond en évoquant des discussions en cours entre plusieurs élus du 15e arrondissement. Trois mois plus tard, en juin 2007, le Conseil examine un avenant n° 2 au marché de maîtrise d'œuvre pour la réalisation du bâtiment, situé 41 rue d'Alleray, signe que la conception ou la construction se poursuit à cette date.",
+ "moments": [
+  {
+   "id": "31291",
+   "seance": "MARS 2007",
+   "fait": "Le Conseil approuve le principe d'un marché à prix globaux forfaitaires, en deux lots, pour le mobilier de la médiathèque.",
+   "pourquoi": "premier acte formel d'équipement du futur bâtiment",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=31291",
+   "fait_en": "The Council approved the principle of a fixed lump-sum contract, in two lots, for the médiathèque's furniture.",
+   "pourquoi_en": "first formal act of equipping the future building"
+  },
+  {
+   "id": "22422",
+   "seance": "MARS 2007",
+   "fait": "Une conseillère du 15e signale en séance l'absence de consultation du conseil d'arrondissement et interroge la date d'ouverture.",
+   "pourquoi": "tension gouvernance locale vs pilotage municipal",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=22422",
+   "fait_en": "A councillor from the 15th arrondissement noted in session the lack of consultation with the arrondissement council and questioned the opening date.",
+   "pourquoi_en": "tension between local governance and municipal oversight"
+  },
+  {
+   "id": "72582",
+   "seance": "JUIN 2007",
+   "fait": "Le Conseil examine un avenant n° 2 au marché de maîtrise d'œuvre pour la réalisation du bâtiment.",
+   "pourquoi": "chantier encore en évolution trois mois après le vote mobilier",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=72582",
+   "fait_en": "The Council examined amendment no. 2 to the project management contract for the construction of the building.",
+   "pourquoi_en": "construction still ongoing three months after the furniture vote"
+  }
+ ],
+ "montants": [],
+ "bmo_extraits": [],
+ "bmo_recit": null,
+ "invest": [],
+ "marches": [
+  {
+   "numero_marche": "20212020T00001",
+   "objet": "RAFRAÎCHISSEMENT MÉDIATHÈQUE MARGUERITE YOURCENAR",
+   "objet_clair": null,
+   "fournisseur": "BALAS",
+   "montant_max": 112591.25,
+   "date_notification": "2021-01-11",
+   "preuve": "Objet du marché : \"RAFRAÎCHISSEMENT MÉDIATHÈQUE MARGUERITE YOURCENAR\" — nomme explicitement le lieu."
+  }
+ ],
+ "mandate": null,
+ "sources": {
+  "delibs": {
+   "name": "Débat-Délibs — Conseil de Paris",
+   "url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=search-solr&query=M%C3%A9diath%C3%A8que+Marguerite+Yourcenar"
+  },
+  "bmo": {
+   "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
+   "url": "https://gallica.bnf.fr/ark:/12148/cb343512457/date"
+  },
+  "invest": {
+   "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
+   "url": "https://opendata.paris.fr/"
+  },
+  "wiki": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ },
+ "synthese_en": "In March 2007, the Paris Council approved the principle and terms of a fixed lump-sum contract, in two lots and following a European open call for tenders, for the furniture of the future Médiathèque Marguerite Yourcenar (15th arrondissement). At the same session, a councillor from the 15th arrondissement (Ms Macé de Lépinay) welcomed the project's progress but noted that it had not been submitted to the arrondissement council and questioned the opening date, which she considered optimistic; she also asked whether the neighboring Vaugirard library would close, to which Mr Girard responded by referring to ongoing discussions among several elected officials of the 15th arrondissement. Three months later, in June 2007, the Council examined amendment no. 2 to the project management contract for the construction of the building, located at 41 rue d'Alleray, a sign that design or construction was still ongoing at that time."
+}

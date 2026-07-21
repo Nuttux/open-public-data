@@ -1,0 +1,322 @@
+{
+ "generated_at": "2026-07-21T17:04:41.999226+00:00",
+ "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
+ "slug": "mairie-du-20e",
+ "name": "Mairie du 20e",
+ "kind_fr": "Mairie",
+ "kind_en": "Town hall",
+ "famille": "services",
+ "arrondissement": 20,
+ "lat": 48.8636,
+ "lon": 2.4009,
+ "photo": "/img/lieux/mairie-du-20e.jpg",
+ "photo_credit": {
+  "licence": "CC BY-SA 4.0",
+  "auteur": "Chabe01",
+  "url": "https://commons.wikimedia.org/wiki/File:Mairie_20e_arrondissement_Paris_4.jpg",
+  "source": "Wikimedia Commons"
+ },
+ "wiki": {
+  "extract": null,
+  "url": null,
+  "source": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ },
+ "stats": {
+  "n_delibs": 837,
+  "delibs_span": [
+   1998,
+   2025
+  ],
+  "n_bmo_brut": 0,
+  "n_bmo_verifies": null,
+  "invest_total_eur": 249518.38,
+  "invest_annees": [
+   "2023"
+  ],
+  "lecture_mode": "titre nommant le lieu (22 trouvés)",
+  "lecture_mode_en": "title naming the place (22 found)",
+  "n_lus": 21,
+  "n_lieu": 18
+ },
+ "subventions_exploitant": null,
+ "residents": [
+  {
+   "beneficiaire": "LES CHEMINS DE LA DANSE",
+   "montant_total": 27200,
+   "preuve": "L'objet nomme le lieu physique verbatim : « Performance / bal pour les olympiades culturelles et le Mois Parisien du Handicap. Mairie du 20ème ». L'association organise un bal/performance DANS la mairie sans la gérer (le fonctionnement de la mairie relève des services de la Ville) : rôle résident. Le ctx confirme que la Mairie du 20e (6 place Gambetta) accueille bien ce type d'événements culturels et handicap (résidence accessibilité Sensecube, exposition « Regards de Gaza »).",
+   "preuve_en": "The purpose names the physical site verbatim: \"Performance / ball for the cultural Olympiad and Paris Disability Month. Mairie du 20ème.\" The association organizes a ball/performance INSIDE the mairie without running it (the mairie's operations fall under the City's services): resident role. The context confirms that the Mairie du 20e (6 place Gambetta) does host this type of cultural and disability-related event (Sensecube accessibility residency, \"Regards de Gaza\" exhibition)."
+  }
+ ],
+ "kpi_montant": null,
+ "synthese_fr": "Dès la fin des années 1990 et au début des années 2000, le Conseil de Paris approuve une série de travaux de mise aux normes et de sécurité pour la mairie du 20e arrondissement : mise en conformité des locaux en sous-sol, des installations électriques et incendie, puis accessibilité aux personnes handicapées entre 2001 et 2002. Une réhabilitation-restructuration plus large de l'ensemble du bâtiment est engagée par la suite, avec un avenant au marché de maîtrise d'œuvre voté en 2008, année où des élus demandent d'en faire une rénovation pilote au titre du Plan Climat. En 2014, un vœu, motivé selon son auteur par des actions environnementales déjà menées depuis 2010, propose une certification ISO 14001 pour le bâtiment. En 2018, une question d'actualité de Mme Simonnet porte sur une enquête de l'Inspection générale des services ouverte à la mairie du 20e après des accusations de harcèlement visant le directeur général des services. Plus récemment, en novembre 2025, le Conseil approuve la mise à disposition gratuite de 341 m² et une subvention à l'association Sensecube pour sa résidence accessibilité, tandis qu'une exposition co-organisée avec l'UNRWA, \"Regards de Gaza\", y est accueillie fin octobre.",
+ "moments": [
+  {
+   "id": "146664",
+   "seance": "NOVEMBRE 2018",
+   "fait": "Question d'actualité sur une enquête de l'Inspection générale des services ouverte à la mairie du 20e après des accusations de harcèlement visant le D.G.S.",
+   "pourquoi": "accusations de harcèlement dans l'administration du lieu",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=146664",
+   "fait_en": "Topical question on an inquiry by the Inspection générale des services opened at the mairie of the 20th arrondissement following harassment allegations against the director general of services (D.G.S.).",
+   "pourquoi_en": "harassment allegations within the site's administration"
+  },
+  {
+   "id": "184569",
+   "seance": "NOVEMBRE 2025",
+   "fait": "341 m² mis à disposition gratuite et subvention de 50 000 euros à l'association Sensecube pour sa résidence accessibilité.",
+   "pourquoi": "341 m² gratuits pour l'inclusion et le handicap",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=184569",
+   "fait_en": "341 m² made available free of charge and a grant of 50,000 euros to the association Sensecube for its accessibility residency.",
+   "pourquoi_en": "341 m² free of charge for inclusion and disability"
+  },
+  {
+   "id": "184499",
+   "seance": "NOVEMBRE 2025",
+   "fait": "Convention avec l'UNRWA pour accueillir l'exposition \"Regards de Gaza\" à la mairie du 20e fin octobre 2025.",
+   "pourquoi": "exposition photographique sur Gaza accueillie dans la mairie",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=184499",
+   "fait_en": "Agreement with UNRWA to host the exhibition \"Regards de Gaza\" at the mairie of the 20th arrondissement in late October 2025.",
+   "pourquoi_en": "photography exhibition on Gaza hosted at the mairie"
+  },
+  {
+   "id": "5015",
+   "seance": "DECEMBRE 2008",
+   "fait": "Avenant au marché de maîtrise d'œuvre de la réhabilitation-restructuration ; un vœu du groupe des élus Verts proposant d'en faire une rénovation pilote Plan Climat est retiré, et le Conseil adopte à la place un vœu de l'Exécutif pour que les travaux privilégient la performance énergétique et les énergies renouvelables.",
+   "pourquoi": "vœu de l'Exécutif pour des travaux plus économes en énergie",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=5015",
+   "fait_en": "Amendment to the project-management contract for the rehabilitation-restructuring; a motion from the Green group of elected officials proposing to make it a pilot renovation under the Climate Plan was withdrawn, and the Council instead adopted a motion from the Executive for the works to prioritize energy performance and renewable energy.",
+   "pourquoi_en": "Executive motion for more energy-efficient works"
+  },
+  {
+   "id": "121207",
+   "seance": "OCTOBRE 2014",
+   "fait": "Vœu, adopté à l'unanimité, pour engager la mairie du 20e vers la certification environnementale ISO 14001.",
+   "pourquoi": "vœu pour certifier le bâtiment ISO 14001",
+   "vedette": false,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=121207",
+   "fait_en": "Motion, adopted unanimously, to commit the mairie of the 20th arrondissement to ISO 14001 environmental certification.",
+   "pourquoi_en": "motion to have the building ISO 14001 certified"
+  },
+  {
+   "id": "84335",
+   "seance": "SEPTEMBRE 2001",
+   "fait": "Approbation du principe des travaux d'amélioration de l'accessibilité aux personnes handicapées et autorisation de déposer les permis correspondants.",
+   "pourquoi": "premiers travaux d'accessibilité pour personnes handicapées",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=84335",
+   "fait_en": "Approval in principle of works to improve accessibility for people with disabilities and authorization to file the corresponding building permits.",
+   "pourquoi_en": "first accessibility works for people with disabilities"
+  },
+  {
+   "id": "82644",
+   "seance": "JUILLET 1998",
+   "fait": "Indemnisation amiable d'une usagère après une chute dans l'enceinte du bâtiment en 1996, responsabilité imputée à la Ville.",
+   "pourquoi": "indemnisation d'une chute dans l'enceinte du bâtiment",
+   "vedette": false,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=82644",
+   "fait_en": "Out-of-court compensation for a member of the public after a fall on the building's premises in 1996, with liability attributed to the City.",
+   "pourquoi_en": "compensation for a fall on the building's premises"
+  },
+  {
+   "id": "104684",
+   "seance": "MARS 2012",
+   "fait": "Vœu du groupe E.E.L.V.A. demandant à la mairie du 20e de réduire ses délais de paiement aux associations locales.",
+   "pourquoi": "vœu pour accélérer les paiements aux associations",
+   "vedette": false,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=104684",
+   "fait_en": "Motion from the E.E.L.V.A. group asking the mairie of the 20th arrondissement to reduce its payment times to local associations.",
+   "pourquoi_en": "motion to speed up payments to associations"
+  }
+ ],
+ "montants": [
+  {
+   "seance": "NOVEMBRE 2025",
+   "montant": "40.000 euros annuels",
+   "objet": "aide en nature : mise à disposition gratuite de 341 m² à Sensecube",
+   "citation": "la mise Ã disposition gratuite de 341 mÃ¨tres carrÃ©s au sein de la mairie du 20e, ce qui reprÃ©sente une aide en nature de 40.000 euros annuels",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=184569"
+  },
+  {
+   "seance": "NOVEMBRE 2025",
+   "montant": "50.000 euros",
+   "objet": "subvention de fonctionnement à Sensecube",
+   "citation": "le versement d'une subvention de fonctionnement de 50.000 euros rÃ©partie entre la direction des solidaritÃ©s et la direction de l'attractivitÃ© et de l'emploi",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=184569"
+  },
+  {
+   "seance": "DECEMBRE 2007",
+   "montant": "3.278,08 euros",
+   "objet": "remboursement forfaitaire à la GMF suite à un accident de véhicule à la mairie du 20e",
+   "citation": "verser à cette dernière la somme de 3.278,08 euros au titre du remboursement forfaitaire, global et définitif de l?indemnité qu?elle a versée à Mme Marie-France GOURIOU CHARZAT",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=54470"
+  },
+  {
+   "seance": "JUILLET 1998",
+   "montant": "25.739,35 F",
+   "objet": "indemnisation amiable de Mme D'Arco pour une chute dans l'enceinte de la mairie du 20e",
+   "citation": "M. le Maire de Paris est autorisé à procéder à l'indemnisation amiable Mme Patricia D'ARCO, à hauteur de 25.739,35 F, en réparation du dommage subi",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=82644"
+  },
+  {
+   "seance": "JUILLET 1998",
+   "montant": "20.985,87 F",
+   "objet": "remboursement de la créance de la Caisse primaire d'assurance maladie",
+   "citation": "M. le Maire de Paris est autorisé à procéder au remboursement de la créance de la Caisse primaire d'assurance maladie pour un montant total de 20.985,87 F.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=82644"
+  },
+  {
+   "seance": "JUILLET 1998",
+   "montant": "46.725,22 F",
+   "objet": "total des dépenses imputées au budget de fonctionnement de la Ville pour 1998",
+   "citation": "Les dépenses correspondantes, d'un montant total de 46.725,22 F, seront imputées au chapitre 67, nature 678, rubrique 022, du budget de fonctionnement de la Ville de Paris de 1998",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=82644"
+  }
+ ],
+ "bmo_extraits": [],
+ "bmo_recit": null,
+ "invest": [
+  {
+   "annee": 2023,
+   "montant_eur": 249518.38,
+   "nom_projet": "Mairie du 20ème arrondissement - Travaux divers",
+   "preuve": "Nom du projet d'investissement : « Mairie du 20ème arrondissement - Travaux divers » (à 179 m, signal nom+proximite) — nomme explicitement le lieu.",
+   "id": "2023_20_57_004"
+  }
+ ],
+ "marches": [
+  {
+   "numero_marche": "20242024T03726",
+   "objet": "MAIRIE DU 20ÈME 6 PLACE GAMBETTA CHAUFFAGE ET VENTILATION",
+   "objet_clair": "Rénovation du chauffage et de la ventilation de la mairie du 20e arrondissement",
+   "fournisseur": "PROCHALOR",
+   "montant_max": 574267.86,
+   "date_notification": "2024-05-28",
+   "preuve": "Objet du marché : « MAIRIE DU 20ÈME 6 PLACE GAMBETTA CHAUFFAGE ET VENTILATION » — nomme le lieu et son adresse exacte (6 place Gambetta), confirmée par le ctx (avenant DPA 210 de réhabilitation-restructuration de la mairie du 20e)."
+  },
+  {
+   "numero_marche": "20121210008551",
+   "objet": "MODERNISATION MENUISERIES EXTERNES MAIRIE DU 20E PL.GAMBETTA",
+   "objet_clair": null,
+   "fournisseur": "MENUISERIE THAREAUT",
+   "montant_max": 93796.08,
+   "date_notification": "2013-01-16",
+   "preuve": "Objet du marché : « MODERNISATION MENUISERIES EXTERNES MAIRIE DU 20E PL.GAMBETTA » — nomme le lieu et son adresse (place Gambetta)."
+  },
+  {
+   "numero_marche": "20202020T07005",
+   "objet": "REMPLACEMENT DU SYSTEME INCENDIE MAIRIE DU 20EME",
+   "objet_clair": null,
+   "fournisseur": "ERI",
+   "montant_max": 88654.8,
+   "date_notification": "2020-11-12",
+   "preuve": "Objet du marché : « REMPLACEMENT DU SYSTEME INCENDIE MAIRIE DU 20EME » — nomme explicitement le lieu."
+  },
+  {
+   "numero_marche": "20232023S07765",
+   "objet": "MAIRIE DU 20E 6 PLACE GAMBETTA MODERNISATION CHAUF ET VENTIL",
+   "objet_clair": null,
+   "fournisseur": "SOREIB",
+   "montant_max": 86960.0,
+   "date_notification": "2023-08-28",
+   "preuve": "Objet du marché : « MAIRIE DU 20E 6 PLACE GAMBETTA MODERNISATION CHAUF ET VENTIL » — nomme le lieu et son adresse exacte."
+  },
+  {
+   "numero_marche": "20161210000890",
+   "objet": "RÉNOVATION DU SERVICE DE L'ETAT CIVIL DE LA MAIRIE DU 20ÈME",
+   "objet_clair": null,
+   "fournisseur": "MENUISERIE THAREAUT",
+   "montant_max": 50332.23,
+   "date_notification": "2016-06-27",
+   "preuve": "Objet du marché : « RÉNOVATION DU SERVICE DE L'ETAT CIVIL DE LA MAIRIE DU 20ÈME » — nomme explicitement le lieu."
+  },
+  {
+   "numero_marche": "20232023S08258",
+   "objet": "MISSION REFONTE SIGNALÉTIQUE MAIRIE DU 20ÈME ARRONDISSEMENT",
+   "objet_clair": null,
+   "fournisseur": "CL DESIGN",
+   "montant_max": 27000.0,
+   "date_notification": "2023-09-14",
+   "preuve": "Objet du marché : « MISSION REFONTE SIGNALÉTIQUE MAIRIE DU 20ÈME ARRONDISSEMENT » — nomme explicitement le lieu."
+  }
+ ],
+ "mandate": {
+  "par_annee": {
+   "2010": 226501.23,
+   "2011": 35933.29,
+   "2012": 55141.52,
+   "2013": 1246.13,
+   "2014": 79099.79,
+   "2015": 199279.27
+  },
+  "total_eur": 597201.23,
+  "operations": [
+   {
+    "ap_cle": "B100/0903653",
+    "ap_texte": "MAIRIE DU 20EME",
+    "mandate_par_annee": {
+     "2010": 226501.23,
+     "2011": 35933.29,
+     "2012": 55141.52,
+     "2013": 1246.13
+    },
+    "total_mandate": 318822.17,
+    "preuve": "Libellé d'opération « MAIRIE DU 20EME », direction DPA (Patrimoine et Architecture) — désigne explicitement le lieu ; cohérent avec le marché DPA 210 (2008) de réhabilitation-restructuration de la mairie du 20e cité dans le ctx.",
+    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/0903653"
+   },
+   {
+    "ap_cle": "0903653",
+    "ap_texte": "MAIRIE DU 20EME",
+    "mandate_par_annee": {
+     "2014": 79099.79,
+     "2015": 81279.28
+    },
+    "total_mandate": 160379.07,
+    "preuve": "Libellé d'opération « MAIRIE DU 20EME », direction DPA (Patrimoine et Architecture) — désigne explicitement le lieu ; poursuite de la même opération d'investissement (2014-2015).",
+    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=0903653"
+   },
+   {
+    "ap_cle": "0803653",
+    "ap_texte": "MAIRIE DU 20EME ARDT",
+    "mandate_par_annee": {
+     "2015": 117999.99
+    },
+    "total_mandate": 117999.99,
+    "preuve": "Libellé d'opération « MAIRIE DU 20EME ARDT », direction DPA (Patrimoine et Architecture) — désigne explicitement le lieu.",
+    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=0803653"
+   }
+  ],
+  "periode": [
+   "2010",
+   "2015"
+  ],
+  "source": {
+   "name": "Comptes administratifs — autorisations de programme, Ville de Paris",
+   "url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/"
+  }
+ },
+ "sources": {
+  "delibs": {
+   "name": "Débat-Délibs — Conseil de Paris",
+   "url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=search-solr&query=Mairie+du+20e"
+  },
+  "bmo": {
+   "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
+   "url": "https://gallica.bnf.fr/ark:/12148/cb343512457/date"
+  },
+  "invest": {
+   "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
+   "url": "https://opendata.paris.fr/"
+  },
+  "wiki": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ },
+ "synthese_en": "From the late 1990s and early 2000s, the Council of Paris approved a series of code-compliance and safety works for the mairie of the 20th arrondissement: bringing the basement premises, electrical and fire-safety installations up to code, then disability accessibility works between 2001 and 2002. A broader rehabilitation-restructuring of the whole building was launched afterward, with an amendment to the project-management contract voted in 2008, the year in which some elected officials called for it to become a pilot renovation under the Climate Plan. In 2014, a motion — motivated, according to its author, by environmental actions already carried out since 2010 — proposed ISO 14001 environmental certification for the building. In 2018, a topical question from Ms. Simonnet concerned an inquiry by the Inspection générale des services opened at the mairie of the 20th arrondissement following harassment allegations against the director general of services. More recently, in November 2025, the Council approved the free provision of 341 m² and a grant to the association Sensecube for its accessibility residency, while an exhibition co-organized with UNRWA, \"Regards de Gaza,\" was hosted there in late October."
+}

@@ -1,0 +1,187 @@
+{
+ "generated_at": "2026-07-21T17:04:41.999226+00:00",
+ "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
+ "slug": "le-mur-pour-la-paix",
+ "name": "Le Mur pour la Paix",
+ "kind_fr": "Monument",
+ "kind_en": "Monument",
+ "famille": "urbain",
+ "arrondissement": 7,
+ "lat": 48.853444,
+ "lon": 2.301986,
+ "photo": "/img/lieux/le-mur-pour-la-paix.jpg",
+ "photo_credit": {
+  "licence": "CC BY 3.0",
+  "auteur": "Bohao Zhao",
+  "url": "https://commons.wikimedia.org/wiki/File:Le_Mur_pour_la_Paix_-_panoramio.jpg",
+  "source": "Wikimedia Commons"
+ },
+ "wiki": {
+  "extract": null,
+  "url": null,
+  "source": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ },
+ "stats": {
+  "n_delibs": 406,
+  "delibs_span": [
+   2001,
+   2020
+  ],
+  "n_bmo_brut": 0,
+  "n_bmo_verifies": null,
+  "invest_total_eur": 0,
+  "invest_annees": [],
+  "lecture_mode": "tête du classement Solr (406 documents au total)",
+  "lecture_mode_en": "top of the Solr ranking (406 documents total)",
+  "n_lus": 43,
+  "n_lieu": 9
+ },
+ "subventions_exploitant": null,
+ "residents": [],
+ "kpi_montant": null,
+ "synthese_fr": "Installé au Champ-de-Mars en 1999-2000 à titre provisoire pour les célébrations du passage au troisième millénaire, le Mur pour la Paix, propriété de l'association \"Le Mur pour la Paix 2000 par Clara Halter\" présidée par Pierre Bergé, s'est maintenu bien au-delà de sa durée annoncée sur un site classé, malgré l'avis très réservé de l'architecte des Bâtiments de France sur son implantation. Dès 2001, des élus du 7e arrondissement réclament son déplacement hors de l'arrondissement. En 2003, la Ville reconnaît que l'œuvre a subi d'importantes dégradations et évoque une possible pérennisation soumise à permis de construire ; en 2004, elle indique avoir étudié plusieurs sites de report (dont la place Léonard-Bernstein, 12e) et chiffre à 1,1 million d'euros le coût d'un transfert et d'une restauration pérenne, en précisant que cette charge incombe à l'association propriétaire, non à la collectivité. La maintenance n'étant plus assurée par l'association, la Ville se limite à des interventions ponctuelles d'entretien dans un cadre juridique qu'elle qualifie elle-même d'inapproprié. En 2016, le débat perdure : un vœu du groupe GEP propose que la Ville continue d'entretenir l'espace vert en attendant une solution de déplacement, mais des élus du 7e (Républicains, UDI) annoncent voter contre, rappelant que les riverains réclament ce déplacement depuis 16 ans et citant une déclaration de l'architecte des Bâtiments de France selon laquelle l'œuvre n'a pas vocation à rester sur le Champ-de-Mars. Des vœux sur son déplacement, notamment vers l'avenue de Breteuil, sont encore déposés en décembre 2020.",
+ "moments": [
+  {
+   "id": "21650",
+   "seance": "OCTOBRE 2001",
+   "fait": "Première question d'élus du 7e demandant le déplacement du \"Mur de la Paix\" hors du Champ-de-Mars.",
+   "pourquoi": "premier signal politique du conflit d'implantation",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=21650",
+   "fait_en": "First question from councillors of the 7th arrondissement asking for the \"Wall for Peace\" to be moved out of the Champ-de-Mars.",
+   "pourquoi_en": "first political signal of the siting conflict"
+  },
+  {
+   "id": "14555",
+   "seance": "MAI 2003",
+   "fait": "La Ville répond assurer des interventions d'entretien ponctuelles sans en être propriétaire.",
+   "pourquoi": "révèle le flou juridique de la prise en charge",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=14555",
+   "fait_en": "The City responds that it carries out occasional upkeep interventions without being the owner.",
+   "pourquoi_en": "reveals the legal uncertainty over responsibility"
+  },
+  {
+   "id": "11885",
+   "seance": "MARS 2004",
+   "fait": "La Ville chiffre à 1,1 M€ le coût d'un transfert pérenne, à la charge de l'association propriétaire.",
+   "pourquoi": "premier montant chiffré du dossier",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=11885",
+   "fait_en": "The City puts the cost of a permanent transfer at 1.1 million euros, to be borne by the owning association.",
+   "pourquoi_en": "first costed figure in the case"
+  },
+  {
+   "id": "10885",
+   "seance": "JUILLET 2004",
+   "fait": "La Ville confirme être prête à stocker l'œuvre après démontage mais refuse d'en payer le transfert.",
+   "pourquoi": "la collectivité pose une limite financière claire",
+   "vedette": false,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=10885",
+   "fait_en": "The City confirms it is ready to store the work after dismantling but refuses to pay for its transfer.",
+   "pourquoi_en": "the local authority sets a clear financial limit"
+  },
+  {
+   "id": "103190",
+   "seance": "DECEMBRE 2011",
+   "fait": "Vœu des groupes U.M.P.P.A. et Centre et Indépendants relatif au \"Mur de la Paix\".",
+   "pourquoi": "le dossier revient au Conseil sept ans plus tard",
+   "vedette": false,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=103190",
+   "fait_en": "Motion from the U.M.P.P.A. and Centre et Indépendants groups concerning the \"Wall for Peace\".",
+   "pourquoi_en": "the matter returns to the Council seven years later"
+  },
+  {
+   "id": "129955",
+   "seance": "MAI 2016",
+   "fait": "Vœu du GEP sur l'entretien de l'espace vert, combattu en séance par des élus du 7e (Républicains, UDI) qui annoncent voter contre, après 16 ans de réclamations des riverains.",
+   "pourquoi": "l'A.B.F. réaffirme publiquement l'absence d'autorisation d'occupation du domaine public",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=129955",
+   "fait_en": "Motion from the GEP group on maintaining the green space, opposed in session by councillors from the 7th arrondissement (Républicains, UDI), who announce they will vote against it, after 16 years of residents' complaints.",
+   "pourquoi_en": "the Architecte des Bâtiments de France publicly reaffirms the absence of authorization to occupy public land"
+  },
+  {
+   "id": "157165",
+   "seance": "DECEMBRE 2020",
+   "fait": "Vœu du groupe \"Indépendants et Progressistes\" et vœu de l'Exécutif sur le déplacement du Mur.",
+   "pourquoi": "l'Exécutif dépose son propre vœu sur le sujet",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=157165",
+   "fait_en": "Motion from the \"Indépendants et Progressistes\" group and a motion from the Executive on relocating the Wall.",
+   "pourquoi_en": "the Executive files its own motion on the matter"
+  },
+  {
+   "id": "157207",
+   "seance": "DECEMBRE 2020",
+   "fait": "Vœu du groupe Écologiste de Paris sur le déplacement du Mur vers l'avenue de Breteuil.",
+   "pourquoi": "une destination précise est enfin évoquée",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=157207",
+   "fait_en": "Motion from the Écologiste de Paris group on relocating the Wall to Avenue de Breteuil.",
+   "pourquoi_en": "a specific destination is finally proposed"
+  }
+ ],
+ "montants": [
+  {
+   "seance": "MARS 2004",
+   "montant": "1,1 million d'euros",
+   "objet": "estimation du coût de transfert et de restauration du monument pour lui assurer une existence pérenne",
+   "citation": "Le transfert et la restauration du monument, pour lui assurer une existence pérenne, ont été estimés à 1,1 million d'euros.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=11885"
+  },
+  {
+   "seance": "JUILLET 2004",
+   "montant": "1,1 million d'euros",
+   "objet": "coût de transfert de l'œuvre estimé, selon la question de M. Michel DUMONT",
+   "citation": "Michel DUMONT s'interroge sur les modalités du transfert de cette ?uvre privée dont le coût est estimé à 1,1 million d'euros.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=10885"
+  }
+ ],
+ "bmo_extraits": [],
+ "bmo_recit": null,
+ "invest": [],
+ "marches": [
+  {
+   "numero_marche": "20201070000448",
+   "objet": "SA3_ TRAVAUX _ LE MUR POUR LA PAIX II (PARIS 15ÈME)",
+   "objet_clair": null,
+   "fournisseur": "SOGEA ILE DE FRANCE",
+   "montant_max": 769801.73,
+   "date_notification": "2020-12-03",
+   "preuve": "Objet du marché : \"SA3_ TRAVAUX _ LE MUR POUR LA PAIX II (PARIS 15ÈME)\", nomme explicitement le monument. Notifié le 2020-12-03, juste après le vœu de décembre 2020 sur le déplacement du \"Mur pour la Paix\" avenue de Breteuil (limite 7e/15e) confirmé par les délibérations du contexte."
+  },
+  {
+   "numero_marche": "20191070001406",
+   "objet": "ACQUISITION OEUVRE D'ART \"LE MUR POUR LA PAIX\"",
+   "objet_clair": null,
+   "fournisseur": "WILMOTTE & ASSOCIES",
+   "montant_max": 75000.0,
+   "date_notification": "2019-11-05",
+   "preuve": "Objet du marché : \"ACQUISITION OEUVRE D'ART \\\"LE MUR POUR LA PAIX\\\"\", nomme explicitement l'œuvre/monument."
+  }
+ ],
+ "mandate": null,
+ "sources": {
+  "delibs": {
+   "name": "Débat-Délibs — Conseil de Paris",
+   "url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=search-solr&query=Le+Mur+pour+la+Paix"
+  },
+  "bmo": {
+   "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
+   "url": "https://gallica.bnf.fr/ark:/12148/cb343512457/date"
+  },
+  "invest": {
+   "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
+   "url": "https://opendata.paris.fr/"
+  },
+  "wiki": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ },
+ "synthese_en": "Installed at the Champ-de-Mars in 1999-2000 on a provisional basis for the celebrations marking the turn of the third millennium, the Wall for Peace, owned by the association \"Le Mur pour la Paix 2000 par Clara Halter\" chaired by Pierre Bergé, remained in place well beyond its announced duration on a listed heritage site, despite the very reserved opinion of the Architecte des Bâtiments de France on its siting. From 2001 onward, councillors from the 7th arrondissement called for it to be moved out of the arrondissement. In 2003, the City acknowledged that the work had suffered significant damage and mentioned a possible permanent installation subject to a building permit; in 2004, it stated it had studied several relocation sites (including Place Léonard-Bernstein, 12th arrondissement) and put the cost of a transfer and permanent restoration at 1.1 million euros, specifying that this cost fell to the owning association, not to the local authority. With maintenance no longer carried out by the association, the City limited itself to occasional upkeep interventions in a legal framework it itself described as inappropriate. In 2016, the debate continued: a motion from the GEP group proposed that the City keep maintaining the surrounding green space while awaiting a relocation solution, but councillors from the 7th arrondissement (Républicains, UDI) announced they would vote against it, recalling that local residents had been calling for this relocation for 16 years and citing a statement by the Architecte des Bâtiments de France that the work was not meant to remain at the Champ-de-Mars. Motions on its relocation, notably to Avenue de Breteuil, were still being tabled in December 2020."
+}

@@ -1,0 +1,194 @@
+{
+ "generated_at": "2026-07-21T17:04:41.999226+00:00",
+ "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
+ "slug": "mairie-du-5e",
+ "name": "Mairie du 5e",
+ "kind_fr": "Mairie",
+ "kind_en": "Town hall",
+ "famille": "services",
+ "arrondissement": 5,
+ "lat": 48.8459,
+ "lon": 2.3462,
+ "photo": null,
+ "photo_credit": null,
+ "wiki": {
+  "extract": null,
+  "url": null,
+  "source": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ },
+ "stats": {
+  "n_delibs": 773,
+  "delibs_span": [
+   1997,
+   2015
+  ],
+  "n_bmo_brut": 0,
+  "n_bmo_verifies": null,
+  "invest_total_eur": 951476.86,
+  "invest_annees": [
+   "2022",
+   "2024"
+  ],
+  "lecture_mode": "titre nommant le lieu (15 trouvés)",
+  "lecture_mode_en": "title naming the place (15 found)",
+  "n_lus": 15,
+  "n_lieu": 14
+ },
+ "subventions_exploitant": null,
+ "residents": [],
+ "kpi_montant": null,
+ "synthese_fr": "Entre 1997 et 2001, le Conseil de Paris approuve une longue série de travaux d'entretien et de rénovation à la mairie du 5e arrondissement, sise place du Panthéon : pavage de la cour d'honneur, installations électriques, ravalement de façade (avec autorisation de dépôt d'un permis de construire), ascenseurs, éclairage, peintures (dont menuiseries extérieures), puis travaux de sécurité et grosses réparations — chaque délibération se limitant à approuver un principe de travaux et à autoriser le maire de Paris à signer les marchés correspondants, sans qu'aucun montant chiffré n'apparaisse dans le texte. En novembre 2010, l'usage des locaux devient un sujet de tension politique : deux vœux réclament un local permanent en mairie pour les élus d'opposition, le second donnant lieu à un débat où l'adjointe Lyne Cohen-Solal évoque des témoignages faisant état, selon elle, d'un usage privé de bureaux par le maire du 5e Jean Tibéri, ce que l'élue Marie-Chantal Bach conteste en séance ; l'adjointe Maïté Errecart indique en séance que des réorganisations de locaux sont prévues en 2011. En 2015, un vœu du groupe UMP porte sur les normes de sécurité et d'accessibilité de la mairie, sans que son contenu soit documenté au-delà du titre.",
+ "moments": [
+  {
+   "id": "50164",
+   "seance": "FEVRIER 1998",
+   "fait": "Le Conseil approuve le principe de la réfection du pavage de la cour d'honneur de la mairie du 5e.",
+   "pourquoi": "premier chantier documenté, le pavage de la cour d'honneur",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=50164",
+   "fait_en": "The Conseil approves the principle of repaving the honour courtyard of the mairie of the 5th arrondissement.",
+   "pourquoi_en": "first documented project, the paving of the honour courtyard"
+  },
+  {
+   "id": "44018",
+   "seance": "AVRIL 1998",
+   "fait": "Le Conseil approuve le principe de la réfection des installations électriques de la mairie du 5e.",
+   "pourquoi": "réfection électrique du bâtiment",
+   "vedette": false,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=44018",
+   "fait_en": "The Conseil approves the principle of renovating the electrical installations of the mairie of the 5th arrondissement.",
+   "pourquoi_en": "electrical renovation of the building"
+  },
+  {
+   "id": "92757",
+   "seance": "SEPTEMBRE 1998",
+   "fait": "Le Conseil approuve le principe du ravalement et autorise le dépôt d'un permis de construire.",
+   "pourquoi": "ravalement de façade, dépôt de permis autorisé",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=92757",
+   "fait_en": "The Conseil approves the principle of the facade renovation and authorizes the filing of a building permit application.",
+   "pourquoi_en": "facade renovation, building permit filing authorized"
+  },
+  {
+   "id": "62325",
+   "seance": "NOVEMBRE 1998",
+   "fait": "Le Conseil approuve le principe de la rénovation des ascenseurs et de l'éclairage.",
+   "pourquoi": "rénovation des ascenseurs et de l'éclairage approuvée conjointement",
+   "vedette": false,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=62325",
+   "fait_en": "The Conseil approves the principle of renovating the elevators and lighting.",
+   "pourquoi_en": "renovation of elevators and lighting approved jointly"
+  },
+  {
+   "id": "28619",
+   "seance": "SEPTEMBRE 2000",
+   "fait": "Le Conseil approuve le principe de travaux de sécurité à la mairie du 5e.",
+   "pourquoi": "travaux de sécurité approuvés en 2000",
+   "vedette": false,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=28619",
+   "fait_en": "The Conseil approves the principle of security works at the mairie of the 5th arrondissement.",
+   "pourquoi_en": "security works approved in 2000"
+  },
+  {
+   "id": "84419",
+   "seance": "SEPTEMBRE 2001",
+   "fait": "Le Conseil approuve le principe de travaux de grosses réparations à la mairie du 5e, 21 place du Panthéon.",
+   "pourquoi": "adresse officielle : 21 place du Panthéon",
+   "vedette": false,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=84419",
+   "fait_en": "The Conseil approves the principle of major repair works at the mairie of the 5th arrondissement, 21 Place du Panthéon.",
+   "pourquoi_en": "official address: 21 Place du Panthéon"
+  },
+  {
+   "id": "86060",
+   "seance": "NOVEMBRE 2010",
+   "fait": "Vœu réclamant un local permanent en mairie du 5e pour les élus d'opposition, après un refus du maire du 5e.",
+   "pourquoi": "l'opposition réclame un bureau permanent",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=86060",
+   "fait_en": "Motion (vœu) calling for a permanent office in the mairie of the 5th arrondissement for opposition councillors, after a refusal by the mayor of the 5th.",
+   "pourquoi_en": "the opposition calls for a permanent office"
+  },
+  {
+   "id": "21478",
+   "seance": "NOVEMBRE 2010",
+   "fait": "Débat contradictoire sur l'usage passé des bureaux de la mairie, entre Cohen-Solal et Bach.",
+   "pourquoi": "débat tendu sur l'usage des bureaux",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=21478",
+   "fait_en": "Contradictory debate on the past use of the mairie's offices, between Cohen-Solal and Bach.",
+   "pourquoi_en": "tense debate over the use of the offices"
+  }
+ ],
+ "montants": [],
+ "bmo_extraits": [],
+ "bmo_recit": null,
+ "invest": [
+  {
+   "annee": 2022,
+   "montant_eur": 850890.0,
+   "nom_projet": "Mairie du 5ème arrondissement - Schéma directeur sécurité-accessibilité",
+   "preuve": "Nom du projet : « Mairie du 5ème arrondissement - Schéma directeur sécurité-accessibilité » — nomme explicitement le bâtiment (distance 550 m due à un géocodage éloigné, mais le nom est sans ambiguïté : une seule mairie du 5e existe). Corroboré par un vœu de mars 2015 « relatif aux normes de sécurité et d'accessibilité de la mairie du 5e ».",
+   "id": "2022_05_12_013"
+  },
+  {
+   "annee": 2024,
+   "montant_eur": 100586.86,
+   "nom_projet": "Mairie du 5e arrondissement - Transformation en salle d’exposition",
+   "preuve": "Nom du projet : « Mairie du 5e arrondissement - Transformation en salle d'exposition », à 18 m du lieu — nomme explicitement le bâtiment.",
+   "id": "2024_05_12_004"
+  }
+ ],
+ "marches": [
+  {
+   "numero_marche": "20201210000300",
+   "objet": "SA4 TVX ELECTRICITE MAIRIE DU 5ÈME LOT3",
+   "objet_clair": null,
+   "fournisseur": "ERI",
+   "montant_max": 518764.16,
+   "date_notification": "2020-05-28",
+   "preuve": "Objet du marché : « SA4 TVX ELECTRICITE MAIRIE DU 5ÈME LOT3 » — travaux électriques nommant explicitement la mairie du 5e."
+  },
+  {
+   "numero_marche": "20151210000984",
+   "objet": "LOT N° 31-MAIRIE DU 5EME ARRONDISSEMENT",
+   "objet_clair": null,
+   "fournisseur": "SANICLIMA",
+   "montant_max": 340000.0,
+   "date_notification": "2015-06-18",
+   "preuve": "Objet du marché : « LOT N° 31-MAIRIE DU 5EME ARRONDISSEMENT » — lot de travaux nommant explicitement la mairie du 5e."
+  },
+  {
+   "numero_marche": "20181210001114",
+   "objet": "REMPLACEMENT ASCENSEURS E ET C MAIRIE DU 5E ARRDT.",
+   "objet_clair": null,
+   "fournisseur": "KONE",
+   "montant_max": 165443.83,
+   "date_notification": "2018-08-01",
+   "preuve": "Objet du marché : « REMPLACEMENT ASCENSEURS E ET C MAIRIE DU 5E ARRDT. » — remplacement d'ascenseurs nommant explicitement la mairie du 5e ; cohérent avec les délibérations historiques sur la modernisation des ascenseurs de ce bâtiment."
+  }
+ ],
+ "mandate": null,
+ "sources": {
+  "delibs": {
+   "name": "Débat-Délibs — Conseil de Paris",
+   "url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=search-solr&query=Mairie+du+5e"
+  },
+  "bmo": {
+   "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
+   "url": "https://gallica.bnf.fr/ark:/12148/cb343512457/date"
+  },
+  "invest": {
+   "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
+   "url": "https://opendata.paris.fr/"
+  },
+  "wiki": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ },
+ "synthese_en": "Between 1997 and 2001, the Conseil de Paris approved a long series of maintenance and renovation works at the mairie of the 5th arrondissement, located on Place du Panthéon: paving of the honour courtyard, electrical installations, facade renovation (with authorization to file a building permit application), elevators, lighting, painting (including exterior woodwork), followed by security works and major repairs — each deliberation limited to approving the principle of works and authorizing the mayor of Paris to sign the corresponding contracts, with no monetary amount appearing in the text. In November 2010, the use of the premises became a source of political tension: two motions (vœux) called for a permanent office in the mairie for opposition councillors, the second giving rise to a debate in which deputy mayor Lyne Cohen-Solal referred to testimonies alleging, in her account, private use of offices by the mayor of the 5th, Jean Tibéri — a claim contested in session by councillor Marie-Chantal Bach; deputy mayor Maïté Errecart stated in session that a reorganization of the premises was planned for 2011. In 2015, a motion from the UMP group concerned safety and accessibility standards at the mairie, its content undocumented beyond the title."
+}

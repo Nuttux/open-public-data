@@ -1,0 +1,308 @@
+{
+ "generated_at": "2026-07-21T17:04:41.999226+00:00",
+ "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
+ "slug": "bassin-de-la-villette",
+ "name": "Bassin de la Villette",
+ "kind_fr": "Infrastructure",
+ "kind_en": "Infrastructure",
+ "famille": "services",
+ "arrondissement": 19,
+ "lat": 48.8861,
+ "lon": 2.375,
+ "photo": "/img/lieux/bassin-de-la-villette.jpg",
+ "photo_credit": {
+  "licence": null,
+  "auteur": null,
+  "url": "https://fr.wikipedia.org/wiki/Bassin_de_la_Villette",
+  "source": "Wikipédia"
+ },
+ "wiki": {
+  "extract": "Le bassin de la Villette est le plus grand plan d'eau artificiel de Paris. Il a été mis en eau le 2 décembre 1808. Situé dans le 19e arrondissement de la capitale, il relie le canal de l'Ourcq et le canal Saint-Denis au canal Saint-Martin et constitue l'un des éléments du réseau des canaux parisiens.",
+  "url": "https://fr.wikipedia.org/wiki/Bassin_de_la_Villette",
+  "source": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  },
+  "extract_en": "The Bassin de la Villette is the largest artificial body of water in Paris. It was filled with water on 2 December 1808. Located in the 19th arrondissement of the capital, it connects the Canal de l'Ourcq and the Canal Saint-Denis to the Canal Saint-Martin and is one of the elements of the Parisian canal network."
+ },
+ "stats": {
+  "n_delibs": 824,
+  "delibs_span": [
+   1996,
+   2023
+  ],
+  "n_bmo_brut": 0,
+  "n_bmo_verifies": null,
+  "invest_total_eur": 0,
+  "invest_annees": [],
+  "lecture_mode": "titre nommant le lieu (70 trouvés)",
+  "lecture_mode_en": "title naming the place (70 found)",
+  "n_lus": 42,
+  "n_lieu": 40
+ },
+ "subventions_exploitant": null,
+ "residents": [
+  {
+   "beneficiaire": "ZERO WASTE PARIS",
+   "montant_total": 15000.0,
+   "preuve": "Objet de la subvention : « Territoire zéro déchet Bassin de la Villette 2024 » — le lieu est nommé explicitement dans l'objet ; il s'agit d'une action associative menée sur le site, pas d'une gestion du plan d'eau lui-même.",
+   "preuve_en": "Grant purpose: \"Territoire zéro déchet Bassin de la Villette 2024\" [Zero-waste territory, Bassin de la Villette 2024] — the site is named explicitly in the purpose; this is an association-led action carried out at the site, not management of the basin itself."
+  }
+ ],
+ "kpi_montant": null,
+ "synthese_fr": "Le bassin de la Villette est d'abord, dans les années 1990-2000, le théâtre d'une zone d'aménagement concerté (ZAC) conflictuelle : les élus et riverains du 19e arrondissement dénoncent un urbanisme jugé par eux surdensifié et sans équipements de proximité, avant qu'une douzaine d'avenants successifs entre la Ville et la SEMAVIP n'ajustent, année après année, le programme et la participation municipale (arrêtée à plus de 18 millions d'euros au 31 décembre 2005). Les années 2000 voient s'installer les usages qui font aujourd'hui la notoriété du site — complexe cinéma MK2, halte nautique et port géré en délégation de service public, un projet de convention pour transformer la Rotonde de Ledoux en café-restaurant, débattu et contesté par l'opposition qui y voit une privatisation, avec un chantier de remise en état estimé à 4,5 millions d'euros — puis l'extension de « Paris Plages » au bassin à partir de 2006, avec des marchés d'animations dont les montants (autour de 270 000 à 305 000 euros TTC selon les années) sont votés chaque saison. En 2016, le Conseil autorise la réalisation d'une baignade publique gratuite au bassin, présentée comme le premier espace de baignade urbain ouvert à tous à Paris, dans le cadre du plan « Nager à Paris » ; son succès est régulièrement rappelé lors des reconductions estivales suivantes. En parallèle, le site cristallise des tensions récurrentes entre fréquentation festive et vie riveraine — nuisances sonores signalées dès 2015, vœu sur la pollution sonore en 2018, alertes sur la gestion d'une concession commerciale de location de bateaux en 2023 — ainsi que des débats sur l'accessibilité (vœu de 2007 sur la traversée du bassin pour les personnes à mobilité réduite) et sur l'attribution contestée d'emplacements (péniches culturelles en 2017). En 2022, le Conseil adopte à l'unanimité un vœu demandant un renforcement des moyens du Service des canaux, qui évacue environ 180 tonnes de déchets flottants par an sur le bassin et les canaux attenants.",
+ "moments": [
+  {
+   "id": "24107",
+   "seance": "DECEMBRE 1996",
+   "fait": "Question d'actualité des élus du 19e sur le déséquilibre de la ZAC « Bassin de la Villette » (chantier arrêté par des riverains mobilisés)",
+   "pourquoi": "conflit fondateur sur l'urbanisme du site",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=24107",
+   "fait_en": "Topical question from elected officials of the 19th arrondissement on the imbalance of the \"Bassin de la Villette\" ZAC (construction site halted by mobilized residents)",
+   "pourquoi_en": "founding conflict over the site's urban planning"
+  },
+  {
+   "id": "8337",
+   "seance": "JUILLET 2003",
+   "fait": "Débat sur la durée de l'amodiation (50 ans) du complexe cinéma MK2 quai de la Loire",
+   "pourquoi": "première grande implantation commerciale du bassin",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=8337",
+   "fait_en": "Debate over the duration (50 years) of the lease for the MK2 cinema complex on quai de la Loire",
+   "pourquoi_en": "first major commercial development on the basin"
+  },
+  {
+   "id": "66193",
+   "seance": "NOVEMBRE 2007",
+   "fait": "Autorisation donnée au Maire de signer une délégation de service public de 15 ans pour la halte nautique du bassin et le port de l'Arsenal",
+   "pourquoi": "gouvernance déléguée des activités nautiques",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=66193",
+   "fait_en": "Authorization given to the Mayor to sign a 15-year public service delegation for the basin's boating stopover and the Port de l'Arsenal",
+   "pourquoi_en": "delegated governance of boating activities"
+  },
+  {
+   "id": "17909",
+   "seance": "DECEMBRE 2006",
+   "fait": "Débat contradictoire sur la convention d'occupation de la Rotonde de Ledoux par un exploitant privé (café-restaurant), chantier à 4,5 millions d'euros, que Violette Baranda qualifie de privatisation",
+   "pourquoi": "conflit patrimoine public vs. concession privée",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=17909",
+   "fait_en": "Contradictory debate over the occupancy agreement for the Rotonde de Ledoux by a private operator (café-restaurant), a 4.5 million euro restoration project, which Violette Baranda called a privatization",
+   "pourquoi_en": "conflict between public heritage and private concession"
+  },
+  {
+   "id": "133186",
+   "seance": "NOVEMBRE 2016",
+   "fait": "Autorisation de la baignade publique gratuite en eau libre du bassin, présentée comme la première du genre à Paris, dans le plan « Nager à Paris »",
+   "pourquoi": "moment fondateur de la baignade urbaine à Paris",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=133186",
+   "fait_en": "Authorization of free public open-water bathing at the basin, presented as the first of its kind in Paris, under the \"Nager à Paris\" plan",
+   "pourquoi_en": "founding moment for urban bathing in Paris"
+  },
+  {
+   "id": "138032",
+   "seance": "SEPTEMBRE 2017",
+   "fait": "Question d'actualité de Mme Simonnet sur l'éviction de péniches culturelles après un appel d'offres contesté",
+   "pourquoi": "conflit sur l'attribution des emplacements",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=138032",
+   "fait_en": "Topical question from Ms Simonnet on the eviction of cultural barges following a contested tender",
+   "pourquoi_en": "conflict over the allocation of moorings"
+  },
+  {
+   "id": "142455",
+   "seance": "MAI 2018",
+   "fait": "Vœu du 19e demandant un dispositif de mesure du bruit (Bruitparif) face à la fréquentation festive du bassin",
+   "pourquoi": "tension usages festifs vs. riverains",
+   "vedette": false,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=142455",
+   "fait_en": "Motion from the 19th arrondissement calling for a noise-measurement mechanism (Bruitparif) in response to the basin's festive attendance",
+   "pourquoi_en": "tension between festive uses and residents"
+  },
+  {
+   "id": "170625",
+   "seance": "JUILLET 2023",
+   "fait": "Gratuité de la baignade 2023 votée, avec alerte sur les mésusages attribués au concessionnaire de location de bateaux",
+   "pourquoi": "programmation estivale et conflit d'usage récent",
+   "vedette": false,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=170625",
+   "fait_en": "Free bathing for 2023 approved, with a warning about misuse attributed to the boat-rental concession holder",
+   "pourquoi_en": "summer programming and a recent usage conflict"
+  }
+ ],
+ "montants": [
+  {
+   "seance": "SEPTEMBRE 2017",
+   "montant": "environ 1 000 euros par mois",
+   "objet": "loyer mensuel d'un emplacement de péniche sur le bassin, selon Mme Simonnet",
+   "citation": "on a ainsi découvert qu?en plus du prix du loyer mensuel d?à peu près 1.000 euros par mois",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=138032"
+  },
+  {
+   "seance": "SEPTEMBRE 2017",
+   "montant": "environ 5 % du chiffre d'affaires",
+   "objet": "redevance additionnelle indexée sur le chiffre d'affaires des péniches, selon Mme Simonnet",
+   "citation": "les projets sélectionnés devaient s'acquitter d'une redevance indexée sur leur chiffre d'affaires, environ 5 % il me semble",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=138032"
+  },
+  {
+   "seance": "NOVEMBRE 2016",
+   "montant": "154 millions d'euros",
+   "objet": "budget global du plan « Nager à Paris » (104 mesures) dont relève ce projet, selon François Dagnaud",
+   "citation": "avec ses 104 mesures et son budget de 154 millions d'euros",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=133186"
+  },
+  {
+   "seance": "NOVEMBRE 2016",
+   "montant": "150 millions d'euros",
+   "objet": "budget du plan « Nager à Paris », selon Sergio Tinti (groupe Communiste - Front de Gauche)",
+   "citation": "Ce plan, doté de 104 mesures et financé à hauteur de 150 millions d'euros",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=133186"
+  },
+  {
+   "seance": "JUILLET 2010",
+   "montant": "6.600 euros",
+   "objet": "redevance forfaitaire buvette, exploitant commercial",
+   "citation": "à 6.600 euros. La redevance forfaitaire est rapportée à 2.200 euros si le candidat est une association.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=79405"
+  },
+  {
+   "seance": "JUILLET 2010",
+   "montant": "2.200 euros",
+   "objet": "redevance forfaitaire buvette (association) ou glacier",
+   "citation": "La redevance forfaitaire est rapportée à 2.200 euros si le candidat est une association.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=79405"
+  },
+  {
+   "seance": "JUIN 2009",
+   "montant": "270 000 euros TTC",
+   "objet": "estimation totale du marché de 17 lots d'animations Paris Plages 2009 (voie Georges-Pompidou + bassin de la Villette)",
+   "citation": "TOTAL ESTIMATION TTC 270 000",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=77434"
+  },
+  {
+   "seance": "JUILLET 2010",
+   "montant": "293.126,60 euros TTC",
+   "objet": "total des 17 marchés d'animations Paris Plages 2010 (dont lots du bassin de la Villette)",
+   "citation": "TOTAL TTC 293.126,60",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=79529"
+  },
+  {
+   "seance": "JUILLET 2008",
+   "montant": "305.006,89 euros TTC",
+   "objet": "total des 15 lots du marché d'animations Paris Plage 2008 (voie Georges-Pompidou + bassin de la Villette)",
+   "citation": "Total 305.006,89",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=91354"
+  },
+  {
+   "seance": "DECEMBRE 2006",
+   "montant": "4,5 millions d'euros hors taxe",
+   "objet": "montant prévisionnel des travaux de remise en état du bâtiment de la Rotonde de Ledoux, cité par Roger Madec",
+   "citation": "montant prévisionnel des travaux de remise en état du bâtiment (4,5 millions d?euros hors taxe)",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=17909"
+  },
+  {
+   "seance": "DECEMBRE 2006",
+   "montant": "17 euros HT (déjeuner) / 30 euros HT (soir)",
+   "objet": "ticket moyen envisagé au restaurant de la Rotonde de Ledoux, selon Violette Baranda",
+   "citation": "Le ticket moyen serait de 17 euros hors taxes pour le déjeuner et de 30 euros hors taxe pour le soir.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=17909"
+  },
+  {
+   "seance": "JUILLET 2003",
+   "montant": "3.709,44 euros",
+   "objet": "participation de la SOFERIM au coût d'équipement de la ZAC Bassin de la Villette",
+   "citation": "est fixé à trois mille sept cent neuf euros et quarante quatre centimes (3.709,44 euros)",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=70064"
+  },
+  {
+   "seance": "DECEMBRE 2006",
+   "montant": "18.229.650 euros HT (contre 19.081.211 euros TTC initialement fixés)",
+   "objet": "participation municipale au coût de l'opération ZAC Bassin de la Villette, arrêtée au 31 décembre 2005",
+   "citation": "préalablement fixé à 19.081.211 euros TTC est dorénavant arrêté à 18.229.650 euros HT",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=92392"
+  }
+ ],
+ "bmo_extraits": [],
+ "bmo_recit": null,
+ "invest": [],
+ "marches": [
+  {
+   "numero_marche": "20151410001059",
+   "objet": "CSP2 PARIS PLAGES 2015 2018 LOT6 DIRT BASSIN DE LA VILLETTE",
+   "objet_clair": null,
+   "fournisseur": "HOVERALL",
+   "montant_max": 220000.0,
+   "date_notification": "2015-06-22",
+   "preuve": "Objet nomme explicitement « BASSIN DE LA VILLETTE » — lot Paris Plages (mise en place de la plage/dirt) sur le site."
+  },
+  {
+   "numero_marche": "decp-2025S05489",
+   "objet": "Animations nautiques au bassin de la Villette  2025",
+   "objet_clair": null,
+   "fournisseur": "CONTRASTE",
+   "montant_max": 185092.0,
+   "date_notification": "2025-07-01",
+   "preuve": "Objet verbatim : « Animations nautiques au bassin de la Villette 2025 » — le lieu est le site d'exécution nommé, pas un simple repère."
+  },
+  {
+   "numero_marche": "decp-2025S06690",
+   "objet": "Mise en place d’une animation Tyrolienne sur le bassin de la Villette pour l’opération Paris Plages 2025",
+   "objet_clair": null,
+   "fournisseur": "PRISME EVENTS",
+   "montant_max": 126880.0,
+   "date_notification": "2025-07-03",
+   "preuve": "Objet verbatim : « ... tyrolienne sur le bassin de la Villette pour l'opération Paris Plages 2025 » — installation physique sur le site."
+  },
+  {
+   "numero_marche": "20171060021501",
+   "objet": "CSP2 MS OPÉRATION PARIS-PLAGES 2017-BASSIN DE LA VILLETTE",
+   "objet_clair": null,
+   "fournisseur": "GL EVENTS LIVE",
+   "montant_max": 114324.5,
+   "date_notification": "2017-06-21",
+   "preuve": "Objet nomme explicitement « BASSIN DE LA VILLETTE » comme site de l'opération Paris Plages 2017."
+  },
+  {
+   "numero_marche": "20191060020019",
+   "objet": "CONCEPTION ET ORGA SPECTACLE VIVANT BASSIN DE LA VILLETTE",
+   "objet_clair": null,
+   "fournisseur": "ILOTOPIE INVENT INTERV ARTISTI",
+   "montant_max": 90000.0,
+   "date_notification": "2019-06-05",
+   "preuve": "Objet nomme explicitement « BASSIN DE LA VILLETTE » — spectacle vivant conçu et organisé sur le site."
+  },
+  {
+   "numero_marche": "decp-2025S05529",
+   "objet": "Marché subséquent à l'accord-cadre n° 20212021S03792 LOT 1- relatif à l’organisation et mise en place d’un dispositif de premiers secours pour l’opération Paris Plages 2025 – Bassin de la Villette",
+   "objet_clair": null,
+   "fournisseur": "CROIX ROUGE FRANCAISE",
+   "montant_max": 69674.0,
+   "date_notification": "2025-06-12",
+   "preuve": "Objet se termine par « ... pour l'opération Paris Plages 2025 – Bassin de la Villette » — dispositif de premiers secours positionné sur le site."
+  }
+ ],
+ "mandate": null,
+ "sources": {
+  "delibs": {
+   "name": "Débat-Délibs — Conseil de Paris",
+   "url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=search-solr&query=Bassin+de+la+Villette"
+  },
+  "bmo": {
+   "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
+   "url": "https://gallica.bnf.fr/ark:/12148/cb343512457/date"
+  },
+  "invest": {
+   "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
+   "url": "https://opendata.paris.fr/"
+  },
+  "wiki": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ },
+ "synthese_en": "In the 1990s and 2000s, the Bassin de la Villette was first the setting for a contentious concerted development zone (ZAC): elected officials and residents of the 19th arrondissement denounced urban planning they considered overdensified and lacking local amenities, before some twelve successive riders between the City and SEMAVIP adjusted, year after year, the programme and the municipal contribution (set at over 18 million euros as of 31 December 2005). The 2000s saw the establishment of the uses that give the site its notoriety today — the MK2 cinema complex, a boating stopover and port managed under a public service delegation, a draft agreement to turn the Rotonde de Ledoux into a café-restaurant, debated and contested by the opposition, who saw it as a privatization, with restoration works estimated at 4.5 million euros — followed by the extension of \"Paris Plages\" to the basin starting in 2006, with entertainment contracts whose amounts (around 270,000 to 305,000 euros including tax depending on the year) were voted each season. In 2016, the Council authorized a free public open-water bathing area at the basin, presented as the first urban bathing space open to all in Paris, as part of the \"Nager à Paris\" [Swimming in Paris] plan; its success was regularly recalled at subsequent summer renewals. At the same time, the site has crystallized recurring tensions between festive attendance and residents' quality of life — noise nuisances reported as early as 2015, a motion on noise pollution in 2018, alerts about the management of a commercial boat-rental concession in 2023 — as well as debates over accessibility (a 2007 motion about crossing the basin for people with reduced mobility) and over the contested allocation of moorings (cultural barges in 2017). In 2022, the Council unanimously adopted a motion calling for reinforced resources for the Canal Service, which removes about 180 tonnes of floating waste per year from the basin and adjacent canals."
+}

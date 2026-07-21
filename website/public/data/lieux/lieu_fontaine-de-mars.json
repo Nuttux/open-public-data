@@ -1,0 +1,73 @@
+{
+ "generated_at": "2026-07-21T17:04:41.999226+00:00",
+ "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
+ "slug": "fontaine-de-mars",
+ "name": "Fontaine de Mars",
+ "kind_fr": "Monument",
+ "kind_en": "Monument",
+ "famille": "urbain",
+ "arrondissement": 7,
+ "lat": 48.8584,
+ "lon": 2.3024,
+ "photo": "/img/lieux/fontaine-de-mars.jpg",
+ "photo_credit": {
+  "licence": "CC BY-SA 3.0",
+  "auteur": "Moonik",
+  "url": "https://commons.wikimedia.org/wiki/File:Boucherie_de_la_Fontaine_de_Mars,_112_rue_Saint-Dominique_Paris_7e.jpg",
+  "source": "Wikimedia Commons"
+ },
+ "wiki": {
+  "extract": "La fontaine de Mars, également appelée fontaine du Gros-Caillou, est une fontaine du 7e arrondissement de Paris, en France.",
+  "url": "https://fr.wikipedia.org/wiki/Fontaine_de_Mars",
+  "source": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  },
+  "extract_en": "The Fontaine de Mars, also known as the Fontaine du Gros-Caillou, is a fountain in the 7th arrondissement of Paris, France."
+ },
+ "stats": {
+  "n_delibs": 812,
+  "delibs_span": [
+   1995,
+   2026
+  ],
+  "n_bmo_brut": 0,
+  "n_bmo_verifies": null,
+  "invest_total_eur": 0,
+  "invest_annees": [],
+  "lecture_mode": "tête du classement Solr (812 documents au total)",
+  "lecture_mode_en": "top of the Solr ranking (812 documents total)",
+  "n_lus": 42,
+  "n_lieu": 0
+ },
+ "subventions_exploitant": null,
+ "residents": [],
+ "kpi_montant": null,
+ "synthese_fr": "Aucune des délibérations, vœux ou questions du Conseil de Paris examinés ne porte sur la Fontaine de Mars proprement dite. Les documents identifiés concernent presque tous le Champ de Mars voisin (évènementiel, sécurité, stationnement, arbres, aménagement du site Tour Eiffel), ou d'autres fontaines parisiennes sans rapport direct — celles de Varsovie, Saint-Michel, Wallace, des Innocents, de la Croix-du-Trahoir ou de la place Victor Hugo. Quelques occurrences supplémentaires tiennent à de simples homonymies (une association \"L'Atelier de Mars\", la rue Jean-de-La Fontaine, une date \"26 mars 2019\", le nom \"Fontaine\" du footballeur Just Fontaine). Il n'existe donc pas, parmi les documents examinés, de dossier municipal identifié consacré spécifiquement à ce site.",
+ "moments": [],
+ "montants": [],
+ "bmo_extraits": [],
+ "bmo_recit": null,
+ "invest": [],
+ "marches": [],
+ "mandate": null,
+ "sources": {
+  "delibs": {
+   "name": "Débat-Délibs — Conseil de Paris",
+   "url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=search-solr&query=Fontaine+de+Mars"
+  },
+  "bmo": {
+   "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
+   "url": "https://gallica.bnf.fr/ark:/12148/cb343512457/date"
+  },
+  "invest": {
+   "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
+   "url": "https://opendata.paris.fr/"
+  },
+  "wiki": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ },
+ "synthese_en": "None of the Paris Council deliberations, motions, or written questions examined concern the Fontaine de Mars itself. The documents identified are almost all about the neighboring Champ de Mars (events, security, parking, trees, redevelopment of the Eiffel Tower site), or other Paris fountains with no direct connection — those of Varsovie, Saint-Michel, Wallace, des Innocents, de la Croix-du-Trahoir, or place Victor Hugo. A few further occurrences are mere homonyms (an association called \"L'Atelier de Mars\", rue Jean-de-La Fontaine, a date \"26 March 2019\", the name \"Fontaine\" of footballer Just Fontaine). Among the documents examined, there is therefore no municipal record identified as specifically dedicated to this site."
+}

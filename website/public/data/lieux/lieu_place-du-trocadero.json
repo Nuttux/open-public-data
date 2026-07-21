@@ -1,0 +1,154 @@
+{
+ "generated_at": "2026-07-21T17:04:41.999226+00:00",
+ "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
+ "slug": "place-du-trocadero",
+ "name": "Place du Trocadéro",
+ "kind_fr": "Place",
+ "kind_en": "Square",
+ "famille": "urbain",
+ "arrondissement": 16,
+ "lat": 48.862539,
+ "lon": 2.282334,
+ "photo": "/img/lieux/place-du-trocadero.jpg",
+ "photo_credit": {
+  "licence": null,
+  "auteur": null,
+  "url": "https://fr.wikipedia.org/wiki/Place_du_Trocad%C3%A9ro-et-du-11-Novembre",
+  "source": "Wikipédia"
+ },
+ "wiki": {
+  "extract": "La place du Trocadéro-et-du-11-Novembre est une place du 16e arrondissement de Paris.",
+  "url": "https://fr.wikipedia.org/wiki/Place_du_Trocad%C3%A9ro-et-du-11-Novembre",
+  "source": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  },
+  "extract_en": "Place du Trocadéro-et-du-11-Novembre is a square in the 16th arrondissement of Paris."
+ },
+ "stats": {
+  "n_delibs": 1119,
+  "delibs_span": [
+   2000,
+   2024
+  ],
+  "n_bmo_brut": 0,
+  "n_bmo_verifies": null,
+  "invest_total_eur": 0,
+  "invest_annees": [],
+  "lecture_mode": "titre nommant le lieu (8 trouvés)",
+  "lecture_mode_en": "title naming the place (8 found)",
+  "n_lus": 8,
+  "n_lieu": 6
+ },
+ "subventions_exploitant": null,
+ "residents": [],
+ "kpi_montant": null,
+ "synthese_fr": "Entre 1999 et 2000, plusieurs questions orales interpellent la Ville et la Préfecture de police sur les usages de la place du Trocadéro : l'installation d'un marchand ambulant alimenté par un câble électrique de fortune, encore signalée en 2000 malgré de précédents signalements, puis le stationnement de nombreux autocars de tourisme, auquel la Préfecture répond avoir matérialisé des zones dédiées. En 1999 toujours, le Conseil approuve un marché distinct pour la restructuration du \"lieu d'appel\" nommé Trocadéro, rattaché au budget annexe de l'assainissement. En 2006, le Conseil approuve le principe et les modalités des travaux de réfection du pavage de la place. En 2024, deux vœux sur la piétonisation de la place du Trocadéro et du pont d'Iéna sont déposés à huit mois d'écart : celui de l'Exécutif, en février, propose aussi la végétalisation ; celui du groupe Union Capitale, en octobre, étend la demande à la place de Varsovie.",
+ "moments": [
+  {
+   "id": "15095",
+   "seance": "AVRIL 1999",
+   "fait": "Question orale sur un marchand ambulant installé aux abords de la place depuis 1998, alimenté par un câble électrique de fortune ; la Ville répond qu'une étude est en cours.",
+   "pourquoi": "nouveau signalement d'un marchand ambulant mal alimenté, la situation étant déjà connue depuis 1998",
+   "vedette": false,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=15095",
+   "fait_en": "Oral question about a street vendor operating near the square since 1998, supplied by a makeshift electrical cable; the City responds that a study is underway.",
+   "pourquoi_en": "a new report of a poorly wired street vendor, a situation already known since 1998"
+  },
+  {
+   "id": "27528",
+   "seance": "AVRIL 1999",
+   "fait": "Le Conseil approuve les modalités d'un marché pour la restructuration du \"lieu d'appel\" Trocadéro, imputé au budget annexe de l'assainissement, et autorise le Maire à le signer.",
+   "pourquoi": "un marché distinct pour une infrastructure d'assainissement portant le nom \"Trocadéro\"",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=27528",
+   "fait_en": "The Council approves the terms of a contract for the restructuring of the \"lieu d'appel\" Trocadéro, charged to the sanitation annex budget, and authorizes the Mayor to sign it.",
+   "pourquoi_en": "a separate contract for a sanitation infrastructure facility bearing the name \"Trocadéro\""
+  },
+  {
+   "id": "16426",
+   "seance": "MARS 2000",
+   "fait": "Nouvelle question orale : le stand de confiserie et son câble électrique sont toujours installés sur le trottoir de la place, près de deux ans après son installation et malgré deux précédents signalements au Conseil de Paris.",
+   "pourquoi": "un an plus tard, le problème persiste",
+   "vedette": false,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=16426",
+   "fait_en": "New oral question: the confectionery stand and its electrical cable are still in place on the square's sidewalk, nearly two years after it was set up and despite two previous reports to the Conseil de Paris.",
+   "pourquoi_en": "a year later, the problem persists"
+  },
+  {
+   "id": "18760",
+   "seance": "MAI 2000",
+   "fait": "Question sur le stationnement de nombreux autocars de tourisme place du Trocadéro ; la Préfecture de police répond que des zones de stationnement dédiées y ont été matérialisées.",
+   "pourquoi": "de nombreux autocars de tourisme stationnent sur la place",
+   "vedette": false,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=18760",
+   "fait_en": "Question about the parking of numerous tour buses at Place du Trocadéro; the Police Prefecture responds that dedicated parking zones have been marked out there.",
+   "pourquoi_en": "numerous tour buses park on the square"
+  },
+  {
+   "id": "88918",
+   "seance": "MAI 2006",
+   "fait": "Le Conseil approuve le principe et les modalités des travaux de réfection du pavage de la place.",
+   "pourquoi": "le principe des travaux de réfection du pavage de la place est approuvé",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=88918",
+   "fait_en": "The Council approves the principle and terms of resurfacing works on the square's paving.",
+   "pourquoi_en": "the principle of resurfacing works on the square's paving is approved"
+  },
+  {
+   "id": "174507",
+   "seance": "FEVRIER 2024",
+   "fait": "L'Exécutif dépose un vœu proposant la piétonisation et la végétalisation de la place du Trocadéro et du pont d'Iéna.",
+   "pourquoi": "l'Exécutif propose de piétonniser et végétaliser la place",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=174507",
+   "fait_en": "The Executive files a motion proposing the pedestrianization and greening of Place du Trocadéro and Pont d'Iéna.",
+   "pourquoi_en": "the Executive proposes to pedestrianize and green the square"
+  },
+  {
+   "id": "174281",
+   "seance": "FEVRIER 2024",
+   "fait": "Poursuite de l'examen du vœu de l'Exécutif sur la piétonisation et la végétalisation de la place.",
+   "pourquoi": "le débat sur la piétonisation se poursuit",
+   "vedette": false,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=174281",
+   "fait_en": "Continuation of the review of the Executive's motion on the pedestrianization and greening of the square.",
+   "pourquoi_en": "the debate over pedestrianization continues"
+  },
+  {
+   "id": "178297",
+   "seance": "OCTOBRE 2024",
+   "fait": "Le groupe Union Capitale dépose à son tour un vœu relatif à la piétonisation du pont d'Iéna, de la place du Trocadéro et de la place de Varsovie.",
+   "pourquoi": "le groupe Union Capitale relance le sujet de la piétonisation huit mois après",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=178297",
+   "fait_en": "The Union Capitale group in turn files a motion regarding the pedestrianization of Pont d'Iéna, Place du Trocadéro, and Place de Varsovie.",
+   "pourquoi_en": "the Union Capitale group revives the pedestrianization issue eight months later"
+  }
+ ],
+ "montants": [],
+ "bmo_extraits": [],
+ "bmo_recit": null,
+ "invest": [],
+ "marches": [],
+ "mandate": null,
+ "sources": {
+  "delibs": {
+   "name": "Débat-Délibs — Conseil de Paris",
+   "url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=search-solr&query=Place+du+Trocad%C3%A9ro"
+  },
+  "bmo": {
+   "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
+   "url": "https://gallica.bnf.fr/ark:/12148/cb343512457/date"
+  },
+  "invest": {
+   "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
+   "url": "https://opendata.paris.fr/"
+  },
+  "wiki": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ },
+ "synthese_en": "Between 1999 and 2000, several oral questions raised issues with the City and the Police Prefecture over uses of Place du Trocadéro: a street vendor supplied by a makeshift electrical cable, still reported in 2000 despite earlier reports, then the parking of numerous tour buses, to which the Prefecture responded that dedicated parking zones had been marked out. Also in 1999, the Council approved a separate contract for the restructuring of the \"lieu d'appel\" named Trocadéro, charged to the sanitation annex budget. In 2006, the Council approved the principle and terms of resurfacing works on the square's paving. In 2024, two motions on the pedestrianization of Place du Trocadéro and Pont d'Iéna were filed eight months apart: the Executive's, in February, also proposed greening; that of the Union Capitale group, in October, extended the request to Place de Varsovie."
+}

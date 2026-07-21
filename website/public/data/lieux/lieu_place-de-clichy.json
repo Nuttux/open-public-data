@@ -1,0 +1,162 @@
+{
+ "generated_at": "2026-07-21T17:04:41.999226+00:00",
+ "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
+ "slug": "place-de-clichy",
+ "name": "Place de Clichy",
+ "kind_fr": "Place",
+ "kind_en": "Square",
+ "famille": "urbain",
+ "arrondissement": 17,
+ "lat": 48.88352,
+ "lon": 2.32739,
+ "photo": "/img/lieux/place-de-clichy.jpg",
+ "photo_credit": {
+  "licence": "CC BY 4.0",
+  "auteur": "Exilexi",
+  "url": "https://commons.wikimedia.org/wiki/File:Place_de_Clichy_2.jpg",
+  "source": "Wikimedia Commons"
+ },
+ "wiki": {
+  "extract": "La place de Clichy se trouve dans le nord-ouest de la ville de Paris.",
+  "url": "https://fr.wikipedia.org/wiki/Place_de_Clichy",
+  "source": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  },
+  "extract_en": "The place de Clichy is located in the north-west of the city of Paris."
+ },
+ "stats": {
+  "n_delibs": 1073,
+  "delibs_span": [
+   2004,
+   2025
+  ],
+  "n_bmo_brut": 0,
+  "n_bmo_verifies": null,
+  "invest_total_eur": 0,
+  "invest_annees": [],
+  "lecture_mode": "titre nommant le lieu (12 trouvés)",
+  "lecture_mode_en": "title naming the place (12 found)",
+  "n_lus": 11,
+  "n_lieu": 9
+ },
+ "subventions_exploitant": null,
+ "residents": [],
+ "kpi_montant": null,
+ "synthese_fr": "En octobre 2004, un vœu du Conseil de Paris demande au maire d'engager la concertation sur le réaménagement de la place de Clichy, carrefour à la croisée de quatre arrondissements ; le débat en séance révèle déjà des tensions politiques sur la paternité du projet, ainsi que des propos de M. Caresche selon lesquels le financement des aménagements n'est alors pas une priorité budgétaire de la Ville. En septembre 2005, le Conseil approuve le principe d'aménagement de la place ainsi que le principe et les modalités de passation d'un marché de maîtrise d'œuvre, avec un débat en séance sur l'extension du périmètre à l'avenue de Clichy. En mai 2008, l'opposition dénonce un projet en panne depuis 2004 ; l'exécutif indique que des travaux réalisés en 2006 ont coûté environ 800.000 euros. En juillet 2009, le Conseil approuve le principe d'aménagement ainsi que le principe et les modalités de passation de deux marchés de travaux de voirie et d'éclairage public, puis en 2010 le Conseil autorise le maire à signer plusieurs avenants aux marchés de maîtrise d'œuvre et de travaux, tandis que des réserves sont exprimées en séance sur la sécurité des cyclistes dans le nouvel aménagement. En juillet 2025, des travaux menés par la RATP pour moderniser les lignes de métro 2 et 13 provoquent de nouvelles perturbations, motivant un vœu de l'opposition sur les embouteillages et l'impact sur les commerces.",
+ "moments": [
+  {
+   "id": "64205",
+   "seance": "OCTOBRE 2004",
+   "fait": "Vœu demandant l'engagement de la concertation sur le réaménagement de la place",
+   "pourquoi": "point de départ officiel du projet de réaménagement",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=64205",
+   "fait_en": "Resolution (vœu) calling for the launch of consultation on the redevelopment of the square",
+   "pourquoi_en": "official starting point of the redevelopment project"
+  },
+  {
+   "id": "18926",
+   "seance": "OCTOBRE 2004",
+   "fait": "Dispute politique sur la paternité du projet et propos de M. Caresche sur la non-priorité budgétaire",
+   "pourquoi": "révèle les tensions politiques dès l'origine du dossier",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=18926",
+   "fait_en": "Political dispute over the paternity of the project, and remarks by Mr. Caresche on its lack of budgetary priority",
+   "pourquoi_en": "reveals political tensions from the very origin of the case"
+  },
+  {
+   "id": "63450",
+   "seance": "SEPTEMBRE 2005",
+   "fait": "Approbation du principe d'aménagement et du principe de passation du marché de maîtrise d'œuvre",
+   "pourquoi": "décision formelle qui lance juridiquement le projet",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=63450",
+   "fait_en": "Approval of the principle of development and of the principle for awarding the project management contract",
+   "pourquoi_en": "formal decision that legally launches the project"
+  },
+  {
+   "id": "6810",
+   "seance": "MAI 2008",
+   "fait": "L'opposition dénonce un projet à l'arrêt depuis 2004, coût des travaux 2006 révélé",
+   "pourquoi": "seul montant chiffré retrouvé sur ce dossier, projet perçu comme bloqué par l'opposition",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=6810",
+   "fait_en": "The opposition denounces a project stalled since 2004; the cost of the 2006 works is disclosed",
+   "pourquoi_en": "only figure found on this case; project perceived by the opposition as stalled"
+  },
+  {
+   "id": "74770",
+   "seance": "JUILLET 2009",
+   "fait": "Approbation du principe d'aménagement et du principe de passation des marchés de travaux de voirie et d'éclairage public",
+   "pourquoi": "bascule du projet vers les travaux concrets",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=74770",
+   "fait_en": "Approval of the principle of development and of the principle for awarding the road works and public lighting contracts",
+   "pourquoi_en": "project shifts toward concrete works"
+  },
+  {
+   "id": "4075",
+   "seance": "FEVRIER 2010",
+   "fait": "Réserves exprimées en séance sur la sécurité des cyclistes du nouvel aménagement",
+   "pourquoi": "seule voix critique sur le contenu même du projet",
+   "vedette": false,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=4075",
+   "fait_en": "Reservations expressed in session about cyclist safety in the new layout",
+   "pourquoi_en": "only critical voice on the actual content of the project"
+  },
+  {
+   "id": "86022",
+   "seance": "NOVEMBRE 2010",
+   "fait": "Autorisation donnée au maire de signer un avenant au marché de travaux de voirie",
+   "pourquoi": "clôture administrative de la phase travaux 2005-2010",
+   "vedette": false,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=86022",
+   "fait_en": "Authorization given to the mayor to sign an amendment to the road works contract",
+   "pourquoi_en": "administrative closure of the 2005-2010 works phase"
+  },
+  {
+   "id": "182224",
+   "seance": "JUILLET 2025",
+   "fait": "Perturbations dues aux travaux RATP sur les lignes 2 et 13",
+   "pourquoi": "quinze ans plus tard, la place reste un chantier disputé",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=182224",
+   "fait_en": "Disruptions caused by RATP works on metro lines 2 and 13",
+   "pourquoi_en": "fifteen years later, the square remains a contested construction site"
+  }
+ ],
+ "montants": [
+  {
+   "seance": "MAI 2008",
+   "montant": "800.000 euros",
+   "objet": "coût des travaux réalisés en 2006 autour de la place de Clichy (entrées/sorties, abaissements de trottoirs), selon Mme Lepetit",
+   "citation": "Les ?mini travaux? ont coûté à notre collectivité à peu près 800.000 euros.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=6810"
+  }
+ ],
+ "bmo_extraits": [],
+ "bmo_recit": null,
+ "invest": [],
+ "marches": [],
+ "mandate": null,
+ "sources": {
+  "delibs": {
+   "name": "Débat-Délibs — Conseil de Paris",
+   "url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=search-solr&query=Place+de+Clichy"
+  },
+  "bmo": {
+   "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
+   "url": "https://gallica.bnf.fr/ark:/12148/cb343512457/date"
+  },
+  "invest": {
+   "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
+   "url": "https://opendata.paris.fr/"
+  },
+  "wiki": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ },
+ "synthese_en": "In October 2004, a resolution (vœu) of the Conseil de Paris asked the mayor to launch consultation on the redevelopment of place de Clichy, a crossroads at the junction of four arrondissements; the debate in session already revealed political tensions over the paternity of the project, as well as remarks by Mr. Caresche stating that, at the time, financing the redevelopment was not a budgetary priority for the City. In September 2005, the Council approved the principle of the square's development as well as the principle and terms for awarding a project management contract, with a debate in session over extending the scope to avenue de Clichy. In May 2008, the opposition denounced a project stalled since 2004; the executive stated that works carried out in 2006 had cost approximately 800,000 euros. In July 2009, the Council approved the principle of development as well as the principle and terms for awarding two works contracts, for road works and public lighting, then in 2010 the Council authorized the mayor to sign several amendments to the project management and works contracts, while reservations were expressed in session about cyclist safety in the new layout. In July 2025, works carried out by the RATP to modernize metro lines 2 and 13 caused new disruptions, prompting a resolution from the opposition on traffic congestion and the impact on local businesses."
+}

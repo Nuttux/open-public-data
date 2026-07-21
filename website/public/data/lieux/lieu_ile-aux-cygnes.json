@@ -1,0 +1,175 @@
+{
+ "generated_at": "2026-07-21T17:04:41.999226+00:00",
+ "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
+ "slug": "ile-aux-cygnes",
+ "name": "Île aux Cygnes",
+ "kind_fr": "Promenade",
+ "kind_en": "Promenade",
+ "famille": "vert",
+ "arrondissement": 15,
+ "lat": 48.855335,
+ "lon": 2.287308,
+ "photo": "/img/lieux/ile-aux-cygnes.jpg",
+ "photo_credit": {
+  "licence": "Public domain",
+  "auteur": "Taken by Adrian Pingstone in June 2002 and released to the public domain.",
+  "url": "https://commons.wikimedia.org/wiki/File:Paris_View_from_the_Eiffel_Tower_third_floor_Ile_aux_Cygnes.jpg",
+  "source": "Wikimedia Commons"
+ },
+ "wiki": {
+  "extract": null,
+  "url": null,
+  "source": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ },
+ "stats": {
+  "n_delibs": 510,
+  "delibs_span": [
+   2004,
+   2023
+  ],
+  "n_bmo_brut": 0,
+  "n_bmo_verifies": null,
+  "invest_total_eur": 1405829.85,
+  "invest_annees": [
+   "2023",
+   "2024"
+  ],
+  "lecture_mode": "titre nommant le lieu (6 trouvés)",
+  "lecture_mode_en": "title naming the place (6 found)",
+  "n_lus": 6,
+  "n_lieu": 6
+ },
+ "subventions_exploitant": null,
+ "residents": [],
+ "kpi_montant": null,
+ "synthese_fr": "Depuis 2004, l'île aux Cygnes revient régulièrement devant le Conseil de Paris par la voie de vœux d'élus. En 2004, un vœu propose d'étudier — sans financer — un arboretum pédagogique sur cette promenade de 9 700 mètres carrés plantée de 322 arbres ; l'adjoint Yves Contassot souligne que la sécurisation du site représente un enjeu budgétaire non programmé. En 2011, le Conseil adopte, avec deux abstentions, la dénomination d'une portion de l'île en hommage à la poétesse Andrée Chedid. En 2018, un débat sur la protection UNESCO des rives de Seine est l'occasion d'un nouveau vœu sur la mise en valeur de l'île, où l'exécutif fait remplacer l'engagement de \"poursuivre la réhabilitation\" par la formule plus prudente \"envisage de poursuivre la réhabilitation totale\". En 2021 puis en 2023, deux nouveaux vœux portent encore sur l'île, l'un l'associant à la Statue de la Liberté, l'autre à des travaux de rénovation.",
+ "moments": [
+  {
+   "id": "11199",
+   "seance": "SEPTEMBRE 2004",
+   "fait": "Vœu pour étudier (sans financer) un arboretum pédagogique sur l'île",
+   "pourquoi": "premier débat conservé sur l'avenir du site",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=11199",
+   "fait_en": "Motion to study (without funding) an educational arboretum on the island",
+   "pourquoi_en": "first recorded debate on the site's future"
+  },
+  {
+   "id": "96823",
+   "seance": "MARS 2011",
+   "fait": "Vœu pour nommer une portion de l'île en hommage à Andrée Chedid",
+   "pourquoi": "hommage littéraire proposé par des élus du 15e",
+   "vedette": false,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=96823",
+   "fait_en": "Motion to name a portion of the island in tribute to Andrée Chedid",
+   "pourquoi_en": "literary tribute proposed by councillors from the 15th arrondissement"
+  },
+  {
+   "id": "95828",
+   "seance": "MARS 2011",
+   "fait": "Le Conseil adopte, avec deux abstentions, le vœu de dénomination Andrée Chédid",
+   "pourquoi": "vote effectif, écarte l'idée de bibliothèque flottante",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=95828",
+   "fait_en": "The Council adopts, with two abstentions, the motion naming the site after Andrée Chédid",
+   "pourquoi_en": "actual vote, rules out the idea of a floating library"
+  },
+  {
+   "id": "146755",
+   "seance": "NOVEMBRE 2018",
+   "fait": "L'exécutif amende un vœu : \"poursuit\" la réhabilitation devient \"envisage de poursuivre\"",
+   "pourquoi": "glissement d'un engagement vers une intention",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=146755",
+   "fait_en": "The executive amends a motion: \"continues\" the rehabilitation becomes \"is considering continuing\"",
+   "pourquoi_en": "shift from a commitment to a stated intention"
+  },
+  {
+   "id": "163845",
+   "seance": "JUILLET 2021",
+   "fait": "Vœu du groupe Changer Paris sur l'île et la Statue de la Liberté",
+   "pourquoi": "nouvelle alerte politique, détail non conservé",
+   "vedette": false,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=163845",
+   "fait_en": "Motion from the Changer Paris group on the island and the Statue of Liberty",
+   "pourquoi_en": "new political alert, details not preserved"
+  },
+  {
+   "id": "171887",
+   "seance": "OCTOBRE 2023",
+   "fait": "Vœu du groupe Indépendants et Progressistes sur des travaux de rénovation",
+   "pourquoi": "dernier signal connu, contenu non détaillé",
+   "vedette": false,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=171887",
+   "fait_en": "Motion from the Indépendants et Progressistes group on renovation works",
+   "pourquoi_en": "latest known signal, content not detailed"
+  }
+ ],
+ "montants": [],
+ "bmo_extraits": [],
+ "bmo_recit": null,
+ "invest": [
+  {
+   "annee": 2023,
+   "montant_eur": 555303.55,
+   "nom_projet": "Rénovation de l'Île aux cygnes",
+   "preuve": "Nom du projet d'investissement 2023 : « Rénovation de l'Île aux cygnes » — nomme explicitement le lieu, cohérent avec les vœux de conseil municipal (2018, 2021, 2023) réclamant des travaux de rénovation sur l'Île aux Cygnes.",
+   "id": "2023_15_42_030"
+  },
+  {
+   "annee": 2023,
+   "montant_eur": 255352.31,
+   "nom_projet": "Rénovation de l’Île aux Cygnes",
+   "preuve": "Nom du projet d'investissement 2023 : « Rénovation de l'Île aux Cygnes » — nomme explicitement le lieu.",
+   "id": "2023_15_42_030"
+  },
+  {
+   "annee": 2024,
+   "montant_eur": 350653.73,
+   "nom_projet": "Ile aux cygnes - Rénovation",
+   "preuve": "Nom du projet d'investissement 2024 : « Ile aux cygnes - Rénovation » — nomme explicitement le lieu.",
+   "id": "2024_15_42_016"
+  },
+  {
+   "annee": 2024,
+   "montant_eur": 244520.26,
+   "nom_projet": "Rénovation de l'ïle aux Cygnes",
+   "preuve": "Nom du projet d'investissement 2024 : « Rénovation de l'ïle aux Cygnes » — nomme explicitement le lieu (variante orthographique).",
+   "id": "2024_15_42_025"
+  }
+ ],
+ "marches": [
+  {
+   "numero_marche": "20161410000540",
+   "objet": "RÉNOVATION DE L'AIRE SPORTIVE DE L'ILE AUX CYGNES 75015",
+   "objet_clair": null,
+   "fournisseur": "COCHERY ILE DE FRANCE",
+   "montant_max": 51583.2,
+   "date_notification": "2016-05-11",
+   "preuve": "Objet du marché : « RÉNOVATION DE L'AIRE SPORTIVE DE L'ILE AUX CYGNES 75015 » — nomme explicitement le lieu et l'arrondissement, correspond aux équipements sportifs de la promenade évoqués dans les débats du Conseil de Paris."
+  }
+ ],
+ "mandate": null,
+ "sources": {
+  "delibs": {
+   "name": "Débat-Délibs — Conseil de Paris",
+   "url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=search-solr&query=%C3%8Ele+aux+Cygnes"
+  },
+  "bmo": {
+   "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
+   "url": "https://gallica.bnf.fr/ark:/12148/cb343512457/date"
+  },
+  "invest": {
+   "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
+   "url": "https://opendata.paris.fr/"
+  },
+  "wiki": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ },
+ "synthese_en": "Since 2004, the Île aux Cygnes has regularly come before the Paris Council through motions (vœux) filed by elected officials. In 2004, a motion proposed studying — without funding — an educational arboretum on this 9,700-square-metre promenade planted with 322 trees; deputy mayor Yves Contassot noted that securing the site represented an unbudgeted, significant financial issue. In 2011, the Council adopted, with two abstentions, the naming of a portion of the island in tribute to the poet Andrée Chedid. In 2018, a debate on extending UNESCO protection to the banks of the Seine prompted a new motion on enhancing the island, in which the executive had the wording changed from a commitment to \"continue the rehabilitation\" to the more cautious phrase \"is considering continuing the full rehabilitation.\" In 2021 and again in 2023, two further motions concerned the island, one linking it to the Statue of Liberty, the other to renovation works."
+}

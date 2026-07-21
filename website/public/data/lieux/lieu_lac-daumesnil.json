@@ -1,0 +1,172 @@
+{
+ "generated_at": "2026-07-21T17:04:41.999226+00:00",
+ "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
+ "slug": "lac-daumesnil",
+ "name": "Lac Daumesnil",
+ "kind_fr": "Infrastructure",
+ "kind_en": "Infrastructure",
+ "famille": "vert",
+ "arrondissement": 12,
+ "lat": 48.830556,
+ "lon": 2.415556,
+ "photo": "/img/lieux/lac-daumesnil.jpg",
+ "photo_credit": {
+  "licence": "CC BY-SA 4.0",
+  "auteur": "Chabe01",
+  "url": "https://commons.wikimedia.org/wiki/File:Lac_Daumesnil_Paris_6.jpg",
+  "source": "Wikimedia Commons"
+ },
+ "wiki": {
+  "extract": "Le lac Daumesnil est un lac artificiel situé dans le bois de Vincennes dans le 12e arrondissement à l'est de Paris, en France.",
+  "url": "https://fr.wikipedia.org/wiki/Lac_Daumesnil",
+  "source": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  },
+  "extract_en": "Lac Daumesnil is an artificial lake located in the Bois de Vincennes in the 12th arrondissement in eastern Paris, France."
+ },
+ "stats": {
+  "n_delibs": 642,
+  "delibs_span": [
+   1997,
+   2021
+  ],
+  "n_bmo_brut": 0,
+  "n_bmo_verifies": null,
+  "invest_total_eur": 0,
+  "invest_annees": [],
+  "lecture_mode": "titre nommant le lieu (11 trouvés)",
+  "lecture_mode_en": "title naming the place (11 found)",
+  "n_lus": 11,
+  "n_lieu": 5
+ },
+ "subventions_exploitant": null,
+ "residents": [],
+ "kpi_montant": null,
+ "synthese_fr": "Historiquement, le lac Daumesnil est d'abord un lieu qu'on gère au quotidien : une concession de navigation renouvelée en 1997, un marché de réhabilitation du réseau d'assainissement du secteur voté en 2002. À partir de 2003, sa route de ceinture devient un point de friction récurrent entre élus écologistes et Préfecture de police autour de l'opération 'Paris Respire', régulièrement suspendue lors de la Foire du Trône malgré plusieurs vœux réclamant son maintien toute l'année. En 2016, le Conseil autorise un projet plus ambitieux : une baignade publique gratuite de 8 000 m² dans le lac ; lors du bilan d'avancement de 2017, un conseiller d'opposition chiffre le projet à 9,5 millions d'euros et relaie des réserves environnementales de la DRIEE ainsi qu'un avis défavorable initial de la Préfecture de police. En 2021, un vœu sur le nourrissage et le déséquilibre des sexes chez les oiseaux du lac reçoit un avis défavorable de l'exécutif, qui invoque le caractère sauvage à préserver de la faune. En 2024, le Conseil finance, avec le concours du Fonds vert de l'État, la renaturation d'une partie de la ceinture nord du lac pour réduire la place du bitume au profit de la promenade et de la biodiversité.",
+ "moments": [
+  {
+   "id": "52849",
+   "seance": "OCTOBRE 1997",
+   "fait": "Renouvellement de la convention d'exploitation de la navigation sur le lac avec M. Claude Eskenazi.",
+   "pourquoi": "gestion la plus ancienne retrouvée du plan d'eau",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=52849",
+   "fait_en": "Renewal of the navigation operating agreement for the lake with Mr. Claude Eskenazi.",
+   "pourquoi_en": "the earliest management record found for the lake."
+  },
+  {
+   "id": "55902",
+   "seance": "JUIN 2002",
+   "fait": "Marché sur appel d'offres pour la réhabilitation du réseau d'assainissement du secteur du lac.",
+   "pourquoi": "travaux techniques invisibles mais fondateurs",
+   "vedette": false,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=55902",
+   "fait_en": "Public tender contract for the rehabilitation of the sewer network in the lake's area.",
+   "pourquoi_en": "invisible but foundational technical works."
+  },
+  {
+   "id": "8405",
+   "seance": "JUILLET 2003",
+   "fait": "Vœu amendé sur l'extension de 'Paris Respire' à la ceinture du lac, adopté après ajout d'une concertation avec les communes limitrophes.",
+   "pourquoi": "premier conflit d'usage récurrent sur la ceinture",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=8405",
+   "fait_en": "Amended motion on extending 'Paris Respire' to the lake's ring road, adopted after adding a requirement for consultation with neighboring municipalities.",
+   "pourquoi_en": "the first recurring conflict over use of the ring road."
+  },
+  {
+   "id": "6734",
+   "seance": "MAI 2008",
+   "fait": "Vœu des Verts contre la suspension de 'Paris Respire' pendant neuf semaines lors de la Foire du Trône.",
+   "pourquoi": "tension répétée entre foire et circulation douce",
+   "vedette": false,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=6734",
+   "fait_en": "Green party motion against the nine-week suspension of 'Paris Respire' during the Foire du Trône funfair.",
+   "pourquoi_en": "recurring tension between the funfair and car-free traffic."
+  },
+  {
+   "id": "132334",
+   "seance": "SEPTEMBRE 2016",
+   "fait": "Autorisation d'engager une baignade publique gratuite de 8 000 m² dans le lac, malgré des réserves écologistes sur le calendrier de l'étude environnementale.",
+   "pourquoi": "bascule vers un usage nouveau, la baignade",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=132334",
+   "fait_en": "Authorization to launch a free public 8,000 m² swimming area in the lake, despite ecologist reservations about the timeline of the environmental study.",
+   "pourquoi_en": "a shift toward a new use: swimming."
+  },
+  {
+   "id": "140076",
+   "seance": "NOVEMBRE 2017",
+   "fait": "Bilan d'avancement de la baignade : coût annoncé de 9,5 M€ et réserves de la DRIEE relayées par un conseiller d'opposition.",
+   "pourquoi": "l'argent et la controverse environnementale surgissent",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=140076",
+   "fait_en": "Progress review of the swimming area: announced cost of €9.5 million and DRIEE reservations relayed by an opposition councillor.",
+   "pourquoi_en": "money and environmental controversy come to the fore."
+  },
+  {
+   "id": "159141",
+   "seance": "JUIN 2021",
+   "fait": "Vœu sur le bien-être des oiseaux du lac (mangeoires, déséquilibre des sexes) recevant un avis défavorable de l'exécutif.",
+   "pourquoi": "la faune du lac comme sujet politique à part entière",
+   "vedette": false,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=159141",
+   "fait_en": "Motion on the welfare of the lake's birds (feeders, sex-ratio imbalance) that received an unfavorable opinion from the executive.",
+   "pourquoi_en": "the lake's wildlife as a political issue in its own right."
+  },
+  {
+   "id": "176660",
+   "seance": "JUIN 2024",
+   "fait": "Convention avec l'AESN pour financer, via le Fonds vert, la renaturation de la ceinture nord du lac (800 000 € dont 264 000 € de l'État).",
+   "pourquoi": "dernier chapitre daté, retour à la renaturation",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=176660",
+   "fait_en": "Agreement with the Seine-Normandie water agency (AESN) to fund, via the Fonds vert, the renaturation of the lake's northern ring road (€800,000, including €264,000 from the State).",
+   "pourquoi_en": "the latest dated chapter, a return to renaturation."
+  }
+ ],
+ "montants": [
+  {
+   "seance": "NOVEMBRE 2017",
+   "montant": "9,5 millions d'euros",
+   "objet": "coût de l'aménagement de la baignade publique, selon M. Eric Azière",
+   "citation": "Il est évalué à 9,5 millions d'euros pour accueillir, selon les prévisions de la Ville, environ 75.000 baigneurs par an entre juin et septembre.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=140076"
+  }
+ ],
+ "bmo_extraits": [],
+ "bmo_recit": null,
+ "invest": [],
+ "marches": [
+  {
+   "numero_marche": "20161230001750",
+   "objet": "CSP4: MISSIONS MOE ET AMO - BAIGNADE BIO LAC DAUMESNIL DU BV",
+   "objet_clair": null,
+   "fournisseur": "SETEC HYDRATEC",
+   "montant_max": 395940.5,
+   "date_notification": "2016-12-21",
+   "preuve": "Objet du marché nomme explicitement le lieu : \"BAIGNADE BIO LAC DAUMESNIL DU BV\" (mission MOE/AMO pour l'aménagement de la baignade). Confirmé par la délibération 2016 DEVE 101 (conseil de septembre 2016) qui autorise la Maire de Paris à réaliser l'aménagement d'une baignade publique dans le lac Daumesnil (12e) — le marché, notifié le 2016-12-21, suit directement cette autorisation."
+  }
+ ],
+ "mandate": null,
+ "sources": {
+  "delibs": {
+   "name": "Débat-Délibs — Conseil de Paris",
+   "url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=search-solr&query=Lac+Daumesnil"
+  },
+  "bmo": {
+   "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
+   "url": "https://gallica.bnf.fr/ark:/12148/cb343512457/date"
+  },
+  "invest": {
+   "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
+   "url": "https://opendata.paris.fr/"
+  },
+  "wiki": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ },
+ "synthese_en": "Historically, Lac Daumesnil was above all a place managed as day-to-day infrastructure: a navigation concession renewed in 1997, and a contract to rehabilitate the area's sewer network approved in 2002. From 2003 onward, its ring road became a recurring flashpoint between Green party councillors and the police prefecture over the 'Paris Respire' scheme, which was repeatedly suspended during the Foire du Trône funfair despite several council motions calling for it to be maintained year-round. In 2016, the Council authorized a more ambitious project: a free public 8,000 m² swimming area in the lake; at the 2017 progress review, an opposition councillor put the project's cost at €9.5 million and relayed environmental reservations from the regional environment agency (DRIEE) as well as an initial unfavorable opinion from the police prefecture. In 2021, a motion on bird feeding and the sex-ratio imbalance among the lake's birds received an unfavorable opinion from the executive, which invoked the need to preserve the wildlife's wild character. In 2024, the Council funded, with support from the State's Fonds vert, the renaturation of part of the lake's northern ring road to reduce the space given to asphalt in favor of walking paths and biodiversity."
+}

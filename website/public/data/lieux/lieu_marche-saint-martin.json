@@ -1,0 +1,82 @@
+{
+ "generated_at": "2026-07-21T17:04:41.999226+00:00",
+ "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
+ "slug": "marche-saint-martin",
+ "name": "Marché Saint-Martin",
+ "kind_fr": "Marché couvert",
+ "kind_en": "Covered market",
+ "famille": "services",
+ "arrondissement": 10,
+ "lat": 48.848177,
+ "lon": 2.375373,
+ "photo": "/img/lieux/marche-saint-martin.jpg",
+ "photo_credit": {
+  "licence": "CC BY-SA 3.0",
+  "auteur": "FredoB",
+  "url": "https://commons.wikimedia.org/wiki/File:Marche-saint-martin-paris10.jpg",
+  "source": "Wikimedia Commons"
+ },
+ "wiki": {
+  "extract": null,
+  "url": null,
+  "source": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ },
+ "stats": {
+  "n_delibs": 648,
+  "delibs_span": [
+   1995,
+   2026
+  ],
+  "n_bmo_brut": 0,
+  "n_bmo_verifies": null,
+  "invest_total_eur": 0,
+  "invest_annees": [],
+  "lecture_mode": "tête du classement Solr (648 documents au total)",
+  "lecture_mode_en": "top of the Solr ranking (648 documents total)",
+  "n_lus": 43,
+  "n_lieu": 0
+ },
+ "subventions_exploitant": null,
+ "residents": [],
+ "kpi_montant": null,
+ "synthese_fr": "Aucune délibération ne porte sur un marché portant le nom de Marché Saint-Martin à Paris. Le nom \"Saint-Martin\" renvoie ici à des adresses et voies homonymes — la rue Saint-Martin, le faubourg Saint-Martin, le canal Saint-Martin — ou au quartier politique de la ville Porte Saint-Denis-Porte Saint-Martin (10e), ainsi qu'à des entités sans rapport comme le parc Martin-Luther-King, l'île de Saint-Martin aux Caraïbes, le club du Paris Saint-Germain ou des personnes nommées Martin. D'autres marchés parisiens sont mentionnés — Saint-Honoré, Saint-Germain, Saint-Eustache — mais aucun marché Saint-Martin. Ces textes couvrent des baux emphytéotiques, des subventions associatives, du logement social, l'entretien des canaux ou des hommages, mais aucun ne désigne ni ne décide quoi que ce soit sur un marché Saint-Martin.",
+ "moments": [],
+ "montants": [],
+ "bmo_extraits": [],
+ "bmo_recit": null,
+ "invest": [],
+ "marches": [
+  {
+   "numero_marche": "20131210010121",
+   "objet": "MARCHE SAINT-MARTIN FACADES EXTERIEURES",
+   "objet_clair": null,
+   "fournisseur": "CIF REHABILITATION",
+   "montant_max": 150568.36,
+   "date_notification": "2013-10-18",
+   "preuve": "Objet du marché DECP : \"MARCHE SAINT-MARTIN FACADES EXTERIEURES\" — nomme explicitement le lieu, travaux de façades sur le bâtiment du marché couvert."
+  }
+ ],
+ "mandate": null,
+ "sources": {
+  "delibs": {
+   "name": "Débat-Délibs — Conseil de Paris",
+   "url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=search-solr&query=March%C3%A9+Saint-Martin"
+  },
+  "bmo": {
+   "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
+   "url": "https://gallica.bnf.fr/ark:/12148/cb343512457/date"
+  },
+  "invest": {
+   "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
+   "url": "https://opendata.paris.fr/"
+  },
+  "wiki": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ },
+ "synthese_en": "No council resolution deals with a market called Marché Saint-Martin in Paris. Here, the name \"Saint-Martin\" refers to homonymous addresses and streets — Rue Saint-Martin, Faubourg Saint-Martin, Canal Saint-Martin — or to the Porte Saint-Denis-Porte Saint-Martin priority urban policy district (10th arrondissement), as well as to unrelated entities such as Parc Martin-Luther-King, the island of Saint-Martin in the Caribbean, the Paris Saint-Germain football club, or people named Martin. Other Paris markets are mentioned — Saint-Honoré, Saint-Germain, Saint-Eustache — but no Marché Saint-Martin. These texts cover long-term leases, grants to associations, social housing, canal maintenance, or tributes, but none of them designates or decides anything about a Marché Saint-Martin."
+}

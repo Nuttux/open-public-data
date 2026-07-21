@@ -1,0 +1,350 @@
+{
+ "generated_at": "2026-07-21T17:04:41.999226+00:00",
+ "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
+ "slug": "place-de-la-concorde",
+ "name": "Place de la Concorde",
+ "kind_fr": "Place",
+ "kind_en": "Square",
+ "famille": "urbain",
+ "arrondissement": 8,
+ "lat": 48.867063,
+ "lon": 2.321554,
+ "photo": "/img/lieux/place-de-la-concorde.jpg",
+ "photo_credit": {
+  "licence": null,
+  "auteur": null,
+  "url": "https://fr.wikipedia.org/wiki/Place_de_la_Concorde",
+  "source": "Wikipédia"
+ },
+ "wiki": {
+  "extract": "La place de la Concorde, qui s’étend sur 7,56 hectares, est la plus grande place de Paris. Elle est située dans le 8e arrondissement.",
+  "url": "https://fr.wikipedia.org/wiki/Place_de_la_Concorde",
+  "source": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  },
+  "extract_en": "Place de la Concorde, which covers 7.56 hectares, is the largest square in Paris. It is located in the 8th arrondissement."
+ },
+ "stats": {
+  "n_delibs": 1135,
+  "delibs_span": [
+   1998,
+   2026
+  ],
+  "n_bmo_brut": 0,
+  "n_bmo_verifies": null,
+  "invest_total_eur": 106818.0,
+  "invest_annees": [
+   "2022"
+  ],
+  "lecture_mode": "titre nommant le lieu (38 trouvés)",
+  "lecture_mode_en": "title naming the place (38 found)",
+  "n_lus": 36,
+  "n_lieu": 35
+ },
+ "subventions_exploitant": null,
+ "residents": [],
+ "kpi_montant": null,
+ "synthese_fr": "Depuis la fin des années 1990, la place de la Concorde a fait l'objet de délibérations répétées portant sur sa réhabilitation, ses fontaines historiques classées et le partage de son espace entre voitures et piétons, avec un projet d'aménagement d'ensemble associant la place aux jardins des Champs-Élysées déjà porté devant le Conseil de Paris en 1999-2001. Entre 2009 et 2017, la place a accueilli chaque hiver une grande roue exploitée par des sociétés privées moyennant des redevances croissantes, dont l'attribution sans mise en concurrence a été critiquée en séance avant que la Ville ne renonce à la reconduire en 2017. Elle a aussi servi de cadre à des occupations commerciales temporaires — salons de mode facturés à tarif dérogatoire, exposition Saint-Gobain accordée à titre gracieux — qui ont suscité des débats sur la transparence des conditions financières d'occupation du domaine public. En 2024, le Conseil de Paris a approuvé un nouveau projet de réaménagement d'ensemble, dont le coût annoncé de près de 36 millions d'euros et le calendrier ont été contestés par l'opposition, avant qu'une convention de transfert de gestion des fossés Est avec l'État ne soit signée en 2026 pour permettre la poursuite des travaux.",
+ "moments": [
+  {
+   "id": "9816",
+   "seance": "NOVEMBRE 1999",
+   "fait": "Le Conseil approuve les objectifs et les modalités de la concertation préalable à la réhabilitation de la place ; en séance, l'opposition dénonce un projet trop sommaire et propose un aménagement d'ensemble avec la place et les Champs-Élysées.",
+   "pourquoi": "point de départ du grand chantier de réhabilitation de la place",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=9816",
+   "fait_en": "The Council approves the objectives and terms of the preliminary consultation for the rehabilitation of the square; in session, the opposition denounces an overly sketchy project and proposes a comprehensive redevelopment combining the square and the Champs-Élysées.",
+   "pourquoi_en": "starting point of the major project to rehabilitate the square"
+  },
+  {
+   "id": "33684",
+   "seance": "OCTOBRE 2001",
+   "fait": "Le Conseil approuve le principe et les marchés de travaux d'entretien périodique, de maintenance et de réparations urgentes des deux fontaines historiques de la place.",
+   "pourquoi": "restaurer les fontaines classées de la place, un chantier récurrent",
+   "vedette": false,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=33684",
+   "fait_en": "The Council approves the principle and the works contracts for periodic maintenance, upkeep, and urgent repairs of the square's two historic fountains.",
+   "pourquoi_en": "restoring the square's listed fountains, a recurring project"
+  },
+  {
+   "id": "13329",
+   "seance": "JANVIER 2001",
+   "fait": "En séance, une élue avance que la concertation a recueilli 84% d'avis favorables à la réduction de la circulation automobile sur la place, tandis que le maire du 8e demande le rejet du projet faute d'étude d'impact.",
+   "pourquoi": "les Parisiens consultés se disent favorables à moins de voitures",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=13329",
+   "fait_en": "In session, one councillor states that the consultation gathered 84% favorable opinions on reducing car traffic on the square, while the mayor of the 8th arrondissement calls for the project to be rejected for lack of an impact study.",
+   "pourquoi_en": "Parisians consulted say they favor fewer cars"
+  },
+  {
+   "id": "3786",
+   "seance": "SEPTEMBRE 2001",
+   "fait": "En réponse à une question écrite, la Ville reconnaît que la Grande Roue de Paris occupe la place sans convention légale signée et la déclare en situation irrégulière au regard de l'autorisation du ministère de la Culture.",
+   "pourquoi": "la Ville qualifie elle-même la grande roue d'occupation illégale",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=3786",
+   "fait_en": "In response to a written question, the City acknowledges that the Grande Roue de Paris occupies the square without a signed legal agreement and declares it to be in an irregular situation with regard to the Ministry of Culture's authorization.",
+   "pourquoi_en": "the City itself calls the Ferris wheel's occupation illegal"
+  },
+  {
+   "id": "79596",
+   "seance": "JUILLET 2010",
+   "fait": "Le Conseil autorise la signature d'une convention avec la société Loisirs associés pour la grande roue et quatre points de vente, moyennant une redevance de 400 000 euros plus 50 000 euros pour les points de vente annexes.",
+   "pourquoi": "la grande roue rapporte 400 000 euros de redevance à la Ville, plus 50 000 euros pour les points de vente annexes",
+   "vedette": false,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=79596",
+   "fait_en": "The Council authorizes the signing of an agreement with the company Loisirs associés for the Ferris wheel and four sales points, for a fee of €400,000 plus €50,000 for the adjoining sales points.",
+   "pourquoi_en": "the Ferris wheel brings the City €400,000 in fees, plus €50,000 for the adjoining sales points"
+  },
+  {
+   "id": "133272",
+   "seance": "NOVEMBRE 2016",
+   "fait": "Le Conseil adopte un vœu, amendé par l'Exécutif, demandant qu'un débat ait lieu à l'automne 2017 sur la reconduction de la convention de la grande roue, après la mise en examen de la société exploitante Fêtes Loisirs.",
+   "pourquoi": "l'exploitant de la grande roue mis en examen, la Ville s'inquiète",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=133272",
+   "fait_en": "The Council adopts a motion, amended by the Executive, calling for a debate to be held in autumn 2017 on renewing the Ferris wheel agreement, following the operating company Fêtes Loisirs being placed under formal investigation.",
+   "pourquoi_en": "with the Ferris wheel operator placed under formal investigation, the City grows concerned"
+  },
+  {
+   "id": "140120",
+   "seance": "NOVEMBRE 2017",
+   "fait": "Le Conseil adopte le vœu bis de l'Exécutif actant la non-reconduction de la convention d'occupation avec la société Fêtes Loisirs pour la grande roue, avec recherche d'un autre emplacement pour une future attraction.",
+   "pourquoi": "la Ville renonce à reconduire la grande roue place de la Concorde",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=140120",
+   "fait_en": "The Council adopts the Executive's revised motion recording the non-renewal of the occupation agreement with the company Fêtes Loisirs for the Ferris wheel, with a search for another location for a future attraction.",
+   "pourquoi_en": "the City chooses not to renew the Ferris wheel on place de la Concorde"
+  },
+  {
+   "id": "184353",
+   "seance": "FEVRIER 2026",
+   "fait": "Le Conseil approuve la signature d'une convention de transfert de gestion des fossés Est entre l'État et la Ville, dernière étape juridique avant les travaux du projet d'aménagement confié à l'architecte Philippe Prost.",
+   "pourquoi": "la Ville obtient la pleine gestion foncière de la place",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=184353",
+   "fait_en": "The Council approves the signing of an agreement transferring management of the Eastern ditches (fossés Est) between the State and the City, the final legal step before work begins on the redevelopment project entrusted to architect Philippe Prost.",
+   "pourquoi_en": "the City gains full land management of the square"
+  }
+ ],
+ "montants": [
+  {
+   "seance": "JUIN 2024",
+   "montant": "près de 36 millions d'euros",
+   "objet": "coût de l'opération de réaménagement annoncé, mis en doute par l'opposition en question d'actualité",
+   "citation": "le coÃ»t de l'opÃ©ration annoncÃ© Ã prÃ¨s de 36 millions d'eurosÂ : nous nous permettons d'Ãªtre interrogatifs quant au montant prÃ©vu de ce projet.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=176476"
+  },
+  {
+   "seance": "SEPTEMBRE 2017",
+   "montant": "83 000 euros",
+   "objet": "redevance d'occupation versée par WSN Développement pour 7 jours sur plus de 2 500 m² (Fashion Week, septembre 2017)",
+   "citation": "pour sept jours d?occupation sur la place de la Concorde et dans plus de 2.500 mètres carrés, les organisateurs s?acquitteront d?une somme faible de 83.000 euros.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=138024"
+  },
+  {
+   "seance": "SEPTEMBRE 2017",
+   "montant": "4,78 euros/m²/jour (dérogatoire) contre 6,24 euros/m²/jour (tarif normal)",
+   "objet": "tarif de redevance appliqué à WSN Développement comparé au tarif normal",
+   "citation": "tarif est donc dérogatoire puisque dans la convention, nous vous proposons un tarif de 4,78 euros par mètre carré et par jour. Le tarif normal étant de 6,24 euros par mètre carré e",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=138024"
+  },
+  {
+   "seance": "FEVRIER 2018",
+   "montant": "205 000 euros",
+   "objet": "redevance totale versée à la Ville pour le salon de prêt-à-porter WSN sur la place (février 2018)",
+   "citation": "le tarif appliqué qui est de 4,60 euros le mètre carré par jour, ce qui portera à 205.000 euros le tarif qui est fixé.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=140802"
+  },
+  {
+   "seance": "SEPTEMBRE 2016",
+   "montant": "180 600 euros",
+   "objet": "redevance versée par WSN Développement pour le salon Who's Next sur 4 200 m² de la place (septembre 2016)",
+   "citation": "la redevance versée pour cette manifestation s?élèvera à 180.600 euros pour être précis.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=132273"
+  },
+  {
+   "seance": "SEPTEMBRE 2009",
+   "montant": "250 000 euros",
+   "objet": "redevance fixe pour l'installation et l'exploitation de la Grande Roue (2009-2010)",
+   "citation": "occupation sont de 250.000 euros et 8 % du chiffre d?affaires hors taxes réalisé pour l?exploitation d?un emplacement de vente.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=36558"
+  },
+  {
+   "seance": "NOVEMBRE 2010",
+   "montant": "20 000 euros",
+   "objet": "redevance complémentaire pour 5 jours supplémentaires d'occupation (avenant n°2, Grande Roue 2010)",
+   "citation": "redevance complémentaire de 20.000 euros sera perçue pour les 5 jours complémentaires.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=85917"
+  },
+  {
+   "seance": "JUILLET 2010",
+   "montant": "environ un demi-million d'euros, soit 4 000 euros par jour (estimation orale contestée en séance)",
+   "objet": "montant de la redevance de la grande roue tel que critiqué en séance comme opaque et non mis en concurrence",
+   "citation": "tout de même sur un demi million d?euros, soit 4.000 euros par jour.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=13639"
+  },
+  {
+   "seance": "JUILLET 2010",
+   "montant": "100 000 francs par jour (référence citée par l'orateur)",
+   "objet": "astreinte évoquée par un tribunal au début des années 2000 en cas de maintien de la roue, citée en comparaison",
+   "citation": "se montait à 100.000 francs par jour ?",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=13639"
+  },
+  {
+   "seance": "JUILLET 2010",
+   "montant": "400 000 euros",
+   "objet": "redevance pour l'installation et l'exploitation de la grande roue (2010-2011)",
+   "citation": "d?occupation est de 400.000 euros pour la grande roue et de 50.000 euros pour les quatre points de vente annexes",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=79596"
+  },
+  {
+   "seance": "OCTOBRE 2010",
+   "montant": "1 559,46 euros",
+   "objet": "redevance pour l'installation d'un distributeur automatique de billets dans l'enceinte de la grande roue (2010)",
+   "citation": "maine public est de 1.559,46 euros.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=23406"
+  },
+  {
+   "seance": "OCTOBRE 2010",
+   "montant": "1 559,46 euros",
+   "objet": "redevance pour l'installation d'un distributeur automatique de billets dans l'enceinte de la grande roue (2010)",
+   "citation": "maine public est de 1.559,46 euros.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=86536"
+  },
+  {
+   "seance": "NOVEMBRE 2000",
+   "montant": "638 750 francs",
+   "objet": "recette perçue par la Ville pour l'installation de la grande roue (an 2000), comparée à la Foire du Trône",
+   "citation": "tarification appliquée à la grande roue de la Concorde a gênéré une recette pour la Ville de 638.750 F.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=17035"
+  },
+  {
+   "seance": "NOVEMBRE 2000",
+   "montant": "environ 440 000 francs (estimation)",
+   "objet": "recette qu'aurait générée, selon la réponse de la Ville, un emplacement comparable en zone 1 de la Foire du Trône sur un an",
+   "citation": "la Ville d'environ 440.000 F, charges comprises. O",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=17035"
+  },
+  {
+   "seance": "NOVEMBRE 2000",
+   "montant": "3,50 F/m² en semaine et 4,50 F/m² le dimanche",
+   "objet": "tarif de redevance appliqué à l'occupation par la grande roue (an 2000)",
+   "citation": "occupé à raison de 3,50 F le mètre carré en semaine et 4,50 F le dimanche. ",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=17035"
+  },
+  {
+   "seance": "MARS 2016",
+   "montant": "gratuit (aucune redevance versée)",
+   "objet": "occupation temporaire de la place par Saint-Gobain pour l'exposition 'Sensations futures', accordée à titre gracieux",
+   "citation": "cette entreprise privée a pu bénéficier d?une valorisation de son image au travers de cette exposition gratuite,",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=129368"
+  }
+ ],
+ "bmo_extraits": [],
+ "bmo_recit": null,
+ "invest": [
+  {
+   "annee": 2022,
+   "montant_eur": 106818.0,
+   "nom_projet": "Place de la Concorde - Travaux d'entretien",
+   "preuve": "Nom du projet : \"Place de la Concorde - Travaux d'entretien\" (nomme explicitement le lieu), distance 32 m, signal nom+proximite.",
+   "id": "2022_08_21_011"
+  }
+ ],
+ "marches": [
+  {
+   "numero_marche": "decp-2025S03223",
+   "objet": "Accord-cadre mono-attributaire à bons de commandes et à marchés subséquents de maitrise d’œuvre pour le réaménagement de la place de la Concorde, à Paris 8ème",
+   "objet_clair": null,
+   "fournisseur": "PHILIPPE PROST - AAPP. ATELIER D'ARCHITECTURE PHILIPPE PROST",
+   "montant_max": 8000000.0,
+   "date_notification": "2025-04-29",
+   "preuve": "Objet nomme explicitement \"le réaménagement de la place de la Concorde\" ; confirmé par délibération 2024 SG 4 (\"Projet d'aménagement de la place de la Concorde (8e)\") trouvée dans le contexte."
+  },
+  {
+   "numero_marche": "20222022T10211",
+   "objet": "MS RESTAURATION DEUX GUERITES PLACE DE LA CONCORDE",
+   "objet_clair": null,
+   "fournisseur": "H. CHEVALIER",
+   "montant_max": 181965.03,
+   "date_notification": "2022-12-16",
+   "preuve": "Objet : \"MS RESTAURATION DEUX GUERITES PLACE DE LA CONCORDE\" — travaux de restauration sur des éléments bâtis du lieu lui-même."
+  },
+  {
+   "numero_marche": "20242024S13140",
+   "objet": "MS LUGE PLACE DE LA CONCORDE LOT 1",
+   "objet_clair": "Installation d'une piste de luge sur la place de la Concorde",
+   "fournisseur": "PRISME EVENTS",
+   "montant_max": 44864.0,
+   "date_notification": "2024-12-11",
+   "preuve": "Objet : \"MS LUGE PLACE DE LA CONCORDE LOT 1\" — installation événementielle (luge) montée sur la place elle-même."
+  },
+  {
+   "numero_marche": "20232023S06869",
+   "objet": "CAMPAGNE PLAN MEDIA VILLAGE RUGBY PLACE DE LA CONCORDE",
+   "objet_clair": null,
+   "fournisseur": "O CONNECTION",
+   "montant_max": 41040.0,
+   "date_notification": "2023-11-21",
+   "preuve": "Objet : \"CAMPAGNE PLAN MEDIA VILLAGE RUGBY PLACE DE LA CONCORDE\" — campagne de communication pour le village rugby installé physiquement sur la place (Coupe du monde de rugby 2023)."
+  },
+  {
+   "numero_marche": "20181060020024",
+   "objet": "ECLAIRAGE SONO BALS PLACE DE LA CONCORDE 28/29/30-12-2018",
+   "objet_clair": null,
+   "fournisseur": "VIDELIO EVENTS",
+   "montant_max": 39931.5,
+   "date_notification": "2018-12-18",
+   "preuve": "Objet : \"ECLAIRAGE SONO BALS PLACE DE LA CONCORDE 28/29/30-12-2018\" — prestation technique (éclairage/sonorisation) pour un événement (bals) sur la place, dates précises."
+  },
+  {
+   "numero_marche": "20232023S09931",
+   "objet": "REALISATION STAND SALON PPE PLACE DE LA CONCORDE 23-24-11-23",
+   "objet_clair": null,
+   "fournisseur": "ACTIVISE",
+   "montant_max": 37275.92,
+   "date_notification": "2023-11-17",
+   "preuve": "Objet : \"REALISATION STAND SALON PPE PLACE DE LA CONCORDE 23-24-11-23\" — construction d'un stand physiquement sur la place, dates précises."
+  },
+  {
+   "numero_marche": "20222022S07564",
+   "objet": "REALISATION STAND SALON PPE PLACE DE LA CONCORDE 6-7-10-2022",
+   "objet_clair": null,
+   "fournisseur": "ACTIVISE",
+   "montant_max": 35671.5,
+   "date_notification": "2022-09-28",
+   "preuve": "Objet : \"REALISATION STAND SALON PPE PLACE DE LA CONCORDE 6-7-10-2022\" — construction d'un stand physiquement sur la place, dates précises."
+  },
+  {
+   "numero_marche": "20181060020012",
+   "objet": "STAND PARISPOUR L'EMPLOI PLACE DE LA CONCORDE 4-5 OCT 2018",
+   "objet_clair": null,
+   "fournisseur": "ACTIVISE",
+   "montant_max": 26672.5,
+   "date_notification": "2018-09-20",
+   "preuve": "Objet : \"STAND PARISPOUR L'EMPLOI PLACE DE LA CONCORDE 4-5 OCT 2018\" — construction d'un stand physiquement sur la place, dates précises."
+  }
+ ],
+ "mandate": null,
+ "sources": {
+  "delibs": {
+   "name": "Débat-Délibs — Conseil de Paris",
+   "url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=search-solr&query=Place+de+la+Concorde"
+  },
+  "bmo": {
+   "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
+   "url": "https://gallica.bnf.fr/ark:/12148/cb343512457/date"
+  },
+  "invest": {
+   "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
+   "url": "https://opendata.paris.fr/"
+  },
+  "wiki": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ },
+ "synthese_en": "Since the late 1990s, place de la Concorde has been the subject of repeated Council deliberations on its rehabilitation, its listed historic fountains, and the sharing of its space between cars and pedestrians, with a comprehensive redevelopment project linking the square to the Champs-Élysées gardens already brought before the Conseil de Paris in 1999-2001. Between 2009 and 2017, the square hosted a large Ferris wheel each winter, operated by private companies for growing fees, whose award without competitive tendering was criticized in session before the City chose not to renew it in 2017. It has also served as the setting for temporary commercial occupations — fashion trade shows billed at discounted rates, a Saint-Gobain exhibition granted free of charge — which sparked debate over the transparency of the financial terms for occupying public space. In 2024, the Conseil de Paris approved a new comprehensive redevelopment project, whose announced cost of nearly €36 million and timeline were contested by the opposition, before an agreement transferring management of the Eastern ditches (fossés Est) to the City was signed with the State in 2026 to allow work to proceed."
+}

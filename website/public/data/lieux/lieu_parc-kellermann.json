@@ -1,0 +1,120 @@
+{
+ "generated_at": "2026-07-21T17:04:41.999226+00:00",
+ "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
+ "slug": "parc-kellermann",
+ "name": "Parc Kellermann",
+ "kind_fr": "Parc",
+ "kind_en": "Park",
+ "famille": "vert",
+ "arrondissement": 13,
+ "lat": 48.820195,
+ "lon": 2.351967,
+ "photo": "/img/lieux/parc-kellermann.jpg",
+ "photo_credit": {
+  "licence": "CC BY-SA 4.0",
+  "auteur": "Remi Mathis",
+  "url": "https://commons.wikimedia.org/wiki/File:Parc_Kellermann_2024_Paris_02.jpg",
+  "source": "Wikimedia Commons"
+ },
+ "wiki": {
+  "extract": null,
+  "url": null,
+  "source": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ },
+ "stats": {
+  "n_delibs": 1295,
+  "delibs_span": [
+   2002,
+   2005
+  ],
+  "n_bmo_brut": 0,
+  "n_bmo_verifies": null,
+  "invest_total_eur": 0,
+  "invest_annees": [],
+  "lecture_mode": "titre nommant le lieu (2 trouvés)",
+  "lecture_mode_en": "title naming the place (2 found)",
+  "n_lus": 2,
+  "n_lieu": 2
+ },
+ "subventions_exploitant": null,
+ "residents": [],
+ "kpi_montant": null,
+ "synthese_fr": "En juin 2002, le Conseil de Paris autorise le Maire à implanter un stand de vente à emporter au parc Kellermann (13e) ; l'éventaire doit être exploité conformément au règlement municipal des parcs et jardins et au régime des chalets de vente dans les promenades municipales, et le Maire est autorisé à attribuer, par arrêté, le droit de l'exploiter à titre précaire et révocable. En février 2005, le Conseil autorise le Maire à signer une convention avec l'association L'Abeille Parisienne pour occuper une partie du parc et y installer un rucher. Selon le projet, cette convention doit être conclue pour six ans, non reconductible tacitement, moyennant une redevance annuelle de 100 euros versée à la Ville de Paris.",
+ "moments": [
+  {
+   "id": "55768",
+   "seance": "JUIN 2002",
+   "fait": "Autorisation d'implanter un stand de vente à emporter dans le parc",
+   "pourquoi": "première décision connue sur ce lieu",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=55768",
+   "fait_en": "Authorization to set up a takeaway food stand in the park",
+   "pourquoi_en": "first known decision concerning this site"
+  },
+  {
+   "id": "82282",
+   "seance": "FEVRIER 2005",
+   "fait": "Autorisation de signer une convention avec L'Abeille Parisienne pour un rucher dans le parc",
+   "pourquoi": "usage associatif et apicole, redevance annuelle fixée",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=82282",
+   "fait_en": "Authorization to sign an agreement with L'Abeille Parisienne for a beehive apiary in the park",
+   "pourquoi_en": "nonprofit-association and beekeeping use, with an annual fee set"
+  }
+ ],
+ "montants": [
+  {
+   "seance": "FEVRIER 2005",
+   "montant": "100 euros annuels",
+   "objet": "redevance d'occupation versée par l'association L'Abeille Parisienne pour le rucher",
+   "citation": "Cette convention donnera lieu au versement d?une redevance de 100 euros annuels à la Ville de Paris.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=82282"
+  }
+ ],
+ "bmo_extraits": [],
+ "bmo_recit": null,
+ "invest": [],
+ "marches": [
+  {
+   "numero_marche": "20216000000028",
+   "objet": "MGP ACBC ETUDE RESTAURATION PARC KELLERMANN LOT 5",
+   "objet_clair": null,
+   "fournisseur": "IRH INGENIEUR CONSEIL",
+   "montant_max": 148460.0,
+   "date_notification": "2021-07-30",
+   "preuve": "Objet du marché : « MGP ACBC ETUDE RESTAURATION PARC KELLERMANN LOT 5 » — nomme explicitement le parc Kellermann (étude de restauration)."
+  },
+  {
+   "numero_marche": "decp-2025S10997",
+   "objet": "Marché portant sur une étude de faisabilité pour le raccordement en amont et en aval de la Bièvre dans le parc Kellermann à Paris 13ème",
+   "objet_clair": null,
+   "fournisseur": "PROLOG INGENIERIE",
+   "montant_max": 30375.0,
+   "date_notification": "2025-10-07",
+   "preuve": "Objet du marché : « … le raccordement en amont et en aval de la Bièvre dans le parc Kellermann à Paris 13ème » — désigne explicitement le parc Kellermann."
+  }
+ ],
+ "mandate": null,
+ "sources": {
+  "delibs": {
+   "name": "Débat-Délibs — Conseil de Paris",
+   "url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=search-solr&query=Parc+Kellermann"
+  },
+  "bmo": {
+   "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
+   "url": "https://gallica.bnf.fr/ark:/12148/cb343512457/date"
+  },
+  "invest": {
+   "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
+   "url": "https://opendata.paris.fr/"
+  },
+  "wiki": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ },
+ "synthese_en": "In June 2002, the Paris Council authorized the Mayor to set up a takeaway food stand in Parc Kellermann (13th arrondissement); the stand must be operated in accordance with the municipal regulations for parks and gardens and the rules governing sales chalets in municipal promenades, and the Mayor was authorized to grant, by decree, the right to operate it on a precarious and revocable basis. In February 2005, the Council authorized the Mayor to sign an agreement with the association L'Abeille Parisienne to occupy part of the park and install a beehive apiary there. According to the draft resolution, this agreement was to be concluded for six years, not tacitly renewable, in exchange for an annual fee of 100 euros paid to the City of Paris."
+}

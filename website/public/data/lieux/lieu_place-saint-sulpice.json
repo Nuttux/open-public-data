@@ -1,0 +1,104 @@
+{
+ "generated_at": "2026-07-21T17:04:41.999226+00:00",
+ "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
+ "slug": "place-saint-sulpice",
+ "name": "Place Saint-Sulpice",
+ "kind_fr": "Place",
+ "kind_en": "Square",
+ "famille": "urbain",
+ "arrondissement": 6,
+ "lat": 48.85083,
+ "lon": 2.33333,
+ "photo": "/img/lieux/place-saint-sulpice.jpg",
+ "photo_credit": {
+  "licence": "CC BY-SA 3.0",
+  "auteur": "Coyau",
+  "url": "https://commons.wikimedia.org/wiki/File:Fontaine_Saint-Sulpice_Paris_2008-03-14.jpg",
+  "source": "Wikimedia Commons"
+ },
+ "wiki": {
+  "extract": "La place Saint-Sulpice est une place du 6e arrondissement de Paris.",
+  "url": "https://fr.wikipedia.org/wiki/Place_Saint-Sulpice",
+  "source": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  },
+  "extract_en": "Place Saint-Sulpice is a square in the 6th arrondissement of Paris."
+ },
+ "stats": {
+  "n_delibs": 558,
+  "delibs_span": [
+   2004,
+   2011
+  ],
+  "n_bmo_brut": 0,
+  "n_bmo_verifies": null,
+  "invest_total_eur": 0,
+  "invest_annees": [],
+  "lecture_mode": "titre nommant le lieu (4 trouvés)",
+  "lecture_mode_en": "title naming the place (4 found)",
+  "n_lus": 3,
+  "n_lieu": 3
+ },
+ "subventions_exploitant": null,
+ "residents": [],
+ "kpi_montant": null,
+ "synthese_fr": "En novembre 2004, le Conseil de Paris approuve le principe d'une délégation de service public de six ans pour l'exploitation et l'entretien du parking souterrain situé sous la place Saint-Sulpice et autorise le Maire à lancer la consultation. En mars 2011, le Conseil examine l'autorisation donnée au Maire de signer avec la société Joël Garcia Organisation une convention d'occupation domaniale de la place pour l'organisation de marchés et salons du 30 mai au 3 juillet 2011. Cette attribution fait suite à un appel à projets lancé début 2011, après des années de tensions rapportées entre le maire du 6e arrondissement et l'association Foire Saint-Germain, qui occupait la place depuis plusieurs décennies ; selon la rapporteure Lyne Cohen-Solal, la candidature retenue a été jugée la meilleure au regard de trois critères -- programmation culturelle, qualité d'installation, progression de la redevance versée à la Ville. En séance, l'élue Geneviève Bertrand conteste ce choix, qu'elle qualifie d'éviction de la Foire Saint-Germain et décrit comme une perte pour la vie culturelle du 6e arrondissement. La délibération formelle autorise ensuite la signature de la convention et inscrit la recette correspondante au budget de fonctionnement 2011 de la Ville de Paris.",
+ "moments": [
+  {
+   "id": "37700",
+   "seance": "NOVEMBRE 2004",
+   "fait": "Le Conseil approuve le principe d'une DSP de 6 ans pour le parking sous la place.",
+   "pourquoi": "une infrastructure souterraine scellée pour six ans",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=37700",
+   "fait_en": "The Council approves the principle of a 6-year public service delegation (DSP) for the car park beneath the square.",
+   "pourquoi_en": "an underground infrastructure locked in for six years"
+  },
+  {
+   "id": "95950",
+   "seance": "MARS 2011",
+   "fait": "Débat contesté sur l'attribution de l'occupation de la place à Joël Garcia Organisation, qui succède à la Foire Saint-Germain.",
+   "pourquoi": "quand une foire de plusieurs décennies perd sa place",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=95950",
+   "fait_en": "Contested debate over awarding occupation of the square to Joël Garcia Organisation, which succeeds the Foire Saint-Germain.",
+   "pourquoi_en": "when a decades-old fair loses its place"
+  },
+  {
+   "id": "96694",
+   "seance": "MARS 2011",
+   "fait": "La délibération formelle autorise le Maire à signer la convention d'occupation, recette inscrite au budget 2011.",
+   "pourquoi": "la décision actée malgré la contestation en séance",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=96694",
+   "fait_en": "The formal deliberation authorizes the Mayor to sign the occupation agreement, with revenue recorded in the 2011 budget.",
+   "pourquoi_en": "the decision enacted despite the contestation in session"
+  }
+ ],
+ "montants": [],
+ "bmo_extraits": [],
+ "bmo_recit": null,
+ "invest": [],
+ "marches": [],
+ "mandate": null,
+ "sources": {
+  "delibs": {
+   "name": "Débat-Délibs — Conseil de Paris",
+   "url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=search-solr&query=Place+Saint-Sulpice"
+  },
+  "bmo": {
+   "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
+   "url": "https://gallica.bnf.fr/ark:/12148/cb343512457/date"
+  },
+  "invest": {
+   "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
+   "url": "https://opendata.paris.fr/"
+  },
+  "wiki": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ },
+ "synthese_en": "In November 2004, the Conseil de Paris approved the principle of a six-year public service delegation (DSP) for the operation and maintenance of the underground car park beneath Place Saint-Sulpice, and authorized the Mayor to launch the consultation. In March 2011, the Council examined the authorization for the Mayor to sign an agreement with the company Joël Garcia Organisation for domanial occupation of the square, for the organization of markets and fairs from May 30 to July 3, 2011. This award followed a call for projects launched in early 2011, after years of reported tensions between the mayor of the 6th arrondissement and the Foire Saint-Germain association, which had occupied the square for several decades; according to rapporteur Lyne Cohen-Solal, the selected candidacy was judged the best against three criteria — cultural programming, quality of installation, and growth in the fee paid to the City. In session, council member Geneviève Bertrand contested this choice, calling it an eviction of the Foire Saint-Germain and describing it as a loss for cultural life in the 6th arrondissement. The formal deliberation then authorized the signing of the agreement and recorded the corresponding revenue in the City of Paris's 2011 operating budget."
+}

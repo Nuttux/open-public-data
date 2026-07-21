@@ -1,0 +1,73 @@
+{
+ "generated_at": "2026-07-21T17:04:41.999226+00:00",
+ "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
+ "slug": "square-rene-viviani",
+ "name": "Square René-Viviani",
+ "kind_fr": "Square",
+ "kind_en": "Square",
+ "famille": "urbain",
+ "arrondissement": 5,
+ "lat": 48.852209,
+ "lon": 2.347579,
+ "photo": "/img/lieux/square-rene-viviani.jpg",
+ "photo_credit": {
+  "licence": "CC BY-SA 4.0",
+  "auteur": "Celette",
+  "url": "https://commons.wikimedia.org/wiki/File:Square_Ren%C3%A9-Viviani,_Paris_5e_7.jpg",
+  "source": "Wikimedia Commons"
+ },
+ "wiki": {
+  "extract": "Le square René-Viviani est un espace vert situé dans le 5e arrondissement de Paris, près de la Seine.",
+  "url": "https://fr.wikipedia.org/wiki/Square_Ren%C3%A9-Viviani",
+  "source": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  },
+  "extract_en": "The square René-Viviani is a green space located in the 5th arrondissement of Paris, near the Seine."
+ },
+ "stats": {
+  "n_delibs": 1239,
+  "delibs_span": [
+   1995,
+   2026
+  ],
+  "n_bmo_brut": 0,
+  "n_bmo_verifies": null,
+  "invest_total_eur": 0,
+  "invest_annees": [],
+  "lecture_mode": "tête du classement Solr (1239 documents au total)",
+  "lecture_mode_en": "top of the Solr ranking (1239 documents total)",
+  "n_lus": 41,
+  "n_lieu": 0
+ },
+ "subventions_exploitant": null,
+ "residents": [],
+ "kpi_montant": null,
+ "synthese_fr": "Aucune des délibérations du Conseil de Paris examinées ne porte sur le Square René-Viviani (5e arrondissement). Les documents renvoyés par la recherche concernent des lieux et personnes qui partagent seulement une partie du nom : d'autres squares parisiens (René Le Gall dans le 13e, René-Parodi dans le 16e, Moncey, Ornano, Saint-Médard, entre autres), une avenue et divers équipements portant le nom René-Coty (14e), ou des hommages à des personnalités prénommées René (Galy-Dejean, Le Prévost, Maran, Crevel, Perrouault) sans rapport avec ce square. Aucun fait vérifiable sur l'aménagement, le budget, la gouvernance ou la programmation du Square René-Viviani lui-même ne peut donc être établi à partir de ces documents.",
+ "moments": [],
+ "montants": [],
+ "bmo_extraits": [],
+ "bmo_recit": null,
+ "invest": [],
+ "marches": [],
+ "mandate": null,
+ "sources": {
+  "delibs": {
+   "name": "Débat-Délibs — Conseil de Paris",
+   "url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=search-solr&query=Square+Ren%C3%A9-Viviani"
+  },
+  "bmo": {
+   "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
+   "url": "https://gallica.bnf.fr/ark:/12148/cb343512457/date"
+  },
+  "invest": {
+   "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
+   "url": "https://opendata.paris.fr/"
+  },
+  "wiki": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ },
+ "synthese_en": "None of the Paris Council deliberations examined concern the Square René-Viviani (5th arrondissement). The documents returned by the search relate to places and people that share only part of the name: other Parisian squares (René Le Gall in the 13th, René-Parodi in the 16th, Moncey, Ornano, Saint-Médard, among others), an avenue and various facilities bearing the name René-Coty (14th), or tributes to public figures named René (Galy-Dejean, Le Prévost, Maran, Crevel, Perrouault) unrelated to this square. No verifiable fact about the layout, budget, governance, or programming of the Square René-Viviani itself can therefore be established from these documents."
+}

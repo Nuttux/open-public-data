@@ -1,0 +1,140 @@
+{
+ "generated_at": "2026-07-21T17:04:41.999226+00:00",
+ "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
+ "slug": "mairie-du-8e",
+ "name": "Mairie du 8e",
+ "kind_fr": "Mairie",
+ "kind_en": "Town hall",
+ "famille": "services",
+ "arrondissement": 8,
+ "lat": 48.8722,
+ "lon": 2.3161,
+ "photo": null,
+ "photo_credit": null,
+ "wiki": {
+  "extract": null,
+  "url": null,
+  "source": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ },
+ "stats": {
+  "n_delibs": 750,
+  "delibs_span": [
+   1995,
+   2026
+  ],
+  "n_bmo_brut": 0,
+  "n_bmo_verifies": null,
+  "invest_total_eur": 316280.22,
+  "invest_annees": [
+   "2023"
+  ],
+  "lecture_mode": "titre nommant le lieu (5 trouvés)",
+  "lecture_mode_en": "title naming the place (5 found)",
+  "n_lus": 0,
+  "n_lieu": null
+ },
+ "subventions_exploitant": null,
+ "residents": [],
+ "kpi_montant": null,
+ "synthese_fr": null,
+ "moments": [],
+ "montants": [],
+ "bmo_extraits": [],
+ "bmo_recit": null,
+ "invest": [
+  {
+   "annee": 2023,
+   "montant_eur": 316280.22,
+   "nom_projet": "Mairie du 8ème arrondissement - Réaménagement des locaux",
+   "preuve": "Nom du projet nomme explicitement le lieu : \"Mairie du 8ème arrondissement - Réaménagement des locaux\" (2023, 316 280,22 €).",
+   "id": "2023_08_21_005"
+  }
+ ],
+ "marches": [
+  {
+   "numero_marche": "decp-2025T03444",
+   "objet": "Aménagement des locaux de la police municipale dans la mairie du 8ème arrondissement, opération traitée en 5 lots juridiques - Gros oeuvre - Doublage - Sols souples - installation de chanteir - Peintu",
+   "objet_clair": null,
+   "fournisseur": "ERI",
+   "montant_max": 328313.41,
+   "date_notification": "2025-04-25",
+   "preuve": "Objet du marché nomme explicitement \"la mairie du 8ème arrondissement\" (lot Gros oeuvre/Doublage/Sols souples/Peinture/Etanchéité, notifié 2025-04-25)."
+  },
+  {
+   "numero_marche": "decp-2025T03445",
+   "objet": "Aménagement des locaux de la police municipale dans la mairie du 8ème arrondissement, opération traitée en 5 lots juridiques - Menuiserie - Aménagement",
+   "objet_clair": null,
+   "fournisseur": "LES ETABLISSEMENTS GIFFARD",
+   "montant_max": 248594.85,
+   "date_notification": "2025-04-25",
+   "preuve": "Objet du marché nomme explicitement \"la mairie du 8ème arrondissement\" (lot Menuiserie/Aménagement, notifié 2025-04-25)."
+  },
+  {
+   "numero_marche": "decp-2025T03446",
+   "objet": "Aménagement des locaux de la police municipale dans la mairie du 8ème arrondissement, opération traitée en 5 lots juridiques - Courant fort - Courant faible - Contrôle d'accès",
+   "objet_clair": null,
+   "fournisseur": null,
+   "montant_max": 123079.2,
+   "date_notification": "2025-04-25",
+   "preuve": "Objet du marché nomme explicitement \"la mairie du 8ème arrondissement\" (lot Courant fort/Courant faible/Contrôle d'accès, notifié 2025-04-25)."
+  },
+  {
+   "numero_marche": "decp-2025T03447",
+   "objet": "Aménagement des locaux de la police municipale dans la mairie du 8ème arrondissement, opération traitée en 5 lots juridiques - Plomberie - Chauffage Ventilation Climatisation",
+   "objet_clair": null,
+   "fournisseur": "CLIMERSON",
+   "montant_max": 98000.0,
+   "date_notification": "2025-04-25",
+   "preuve": "Objet du marché nomme explicitement \"la mairie du 8ème arrondissement\" (lot Plomberie/CVC, notifié 2025-04-25)."
+  },
+  {
+   "numero_marche": "20141580000004",
+   "objet": "TRAITEUR PRESTIGE MAIRIE DU 8EME ARRONDISSEMENT",
+   "objet_clair": null,
+   "fournisseur": "SAS AUTRET TRAITEUR",
+   "montant_max": 81000.0,
+   "date_notification": "2014-11-14",
+   "preuve": "Objet du marché nomme explicitement \"MAIRIE DU 8EME ARRONDISSEMENT\" (prestation traiteur prestige, notifié 2014-11-14)."
+  },
+  {
+   "numero_marche": "20141580000003",
+   "objet": "COCKTAIL MAIRIE DU 8ÈME ARRONDISSEMENT",
+   "objet_clair": null,
+   "fournisseur": "SAS AUTRET TRAITEUR",
+   "montant_max": 76800.0,
+   "date_notification": "2014-11-14",
+   "preuve": "Objet du marché nomme explicitement \"MAIRIE DU 8ÈME ARRONDISSEMENT\" (cocktail, notifié 2014-11-14)."
+  },
+  {
+   "numero_marche": "decp-2025T03443",
+   "objet": "Aménagement des locaux de la police municipale dans la mairie du 8ème arrondissement, opération traitée en 5 lots juridiques - Déplombage",
+   "objet_clair": null,
+   "fournisseur": "AXE AMIANTE DEMOLITION",
+   "montant_max": 25874.17,
+   "date_notification": "2025-04-25",
+   "preuve": "Objet du marché nomme explicitement \"la mairie du 8ème arrondissement\" (lot Déplombage, notifié 2025-04-25)."
+  }
+ ],
+ "mandate": null,
+ "sources": {
+  "delibs": {
+   "name": "Débat-Délibs — Conseil de Paris",
+   "url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=search-solr&query=Mairie+du+8e"
+  },
+  "bmo": {
+   "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
+   "url": "https://gallica.bnf.fr/ark:/12148/cb343512457/date"
+  },
+  "invest": {
+   "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
+   "url": "https://opendata.paris.fr/"
+  },
+  "wiki": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ }
+}

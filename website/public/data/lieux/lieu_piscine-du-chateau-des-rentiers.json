@@ -1,0 +1,78 @@
+{
+ "generated_at": "2026-07-21T17:04:41.999226+00:00",
+ "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
+ "slug": "piscine-du-chateau-des-rentiers",
+ "name": "Piscine du Château des Rentiers",
+ "kind_fr": "Piscine",
+ "kind_en": "Swimming pool",
+ "famille": "sport",
+ "arrondissement": 13,
+ "lat": 48.827556,
+ "lon": 2.366605,
+ "photo": null,
+ "photo_credit": null,
+ "wiki": {
+  "extract": null,
+  "url": null,
+  "source": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ },
+ "stats": {
+  "n_delibs": 946,
+  "delibs_span": [
+   2004,
+   2004
+  ],
+  "n_bmo_brut": 0,
+  "n_bmo_verifies": null,
+  "invest_total_eur": 0,
+  "invest_annees": [],
+  "lecture_mode": "tête du classement Solr (946 documents au total)",
+  "lecture_mode_en": "top of the Solr ranking (946 documents total)",
+  "n_lus": 41,
+  "n_lieu": 1
+ },
+ "subventions_exploitant": null,
+ "residents": [],
+ "kpi_montant": null,
+ "synthese_fr": "En septembre 2004, le Conseil de Paris autorise le Maire à lancer quatre marchés sur appel d'offres pour restructurer les vestiaires-douches de la piscine et du gymnase, et améliorer la salle de sport du CS Château des Rentiers, 184 rue du Château des Rentiers (13e). Aucune autre délibération identifiée ne porte sur cet équipement sportif : les autres textes visés par cette même rue concernent des adresses distinctes — logements sociaux, associations subventionnées, écoles, la ZAC Château-des-Rentiers ou un immeuble de bureaux. Deux textes de novembre 2025 sur des cessions de « châteaux » en Dordogne et en Indre-et-Loire ne désignent pas non plus la piscine parisienne, malgré l'homonymie. L'historique délibératif connu de la piscine se limite donc, à ce stade, à cette autorisation de travaux de 2004.",
+ "moments": [
+  {
+   "id": "46066",
+   "seance": "SEPTEMBRE 2004",
+   "fait": "Autorisation de lancer 4 marchés pour restructurer les vestiaires-douches de la piscine et du gymnase, 184 rue du Château des Rentiers.",
+   "pourquoi": "seule autorisation de travaux identifiée sur l'équipement (la délibération autorise le lancement des marchés, pas la réalisation des travaux)",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=46066",
+   "fait_en": "Authorization to launch 4 tenders under open call for bids to restructure the locker rooms and showers of the swimming pool and gymnasium, 184 rue du Château des Rentiers.",
+   "pourquoi_en": "the only works authorization identified for this facility (the deliberation authorizes the launch of the tenders, not the execution of the works)"
+  }
+ ],
+ "montants": [],
+ "bmo_extraits": [],
+ "bmo_recit": null,
+ "invest": [],
+ "marches": [],
+ "mandate": null,
+ "sources": {
+  "delibs": {
+   "name": "Débat-Délibs — Conseil de Paris",
+   "url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=search-solr&query=Piscine+du+Ch%C3%A2teau+des+Rentiers"
+  },
+  "bmo": {
+   "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
+   "url": "https://gallica.bnf.fr/ark:/12148/cb343512457/date"
+  },
+  "invest": {
+   "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
+   "url": "https://opendata.paris.fr/"
+  },
+  "wiki": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ },
+ "synthese_en": "In September 2004, the Paris Council authorized the Mayor to launch four tenders under open call for bids to restructure the locker rooms and showers of the swimming pool and gymnasium, and to improve the sports hall of the CS Château des Rentiers, 184 rue du Château des Rentiers (13th arrondissement). No other identified deliberation concerns this sports facility: other texts referencing this same street concern distinct addresses — social housing, subsidized associations, schools, the Château-des-Rentiers development zone (ZAC), or an office building. Two texts from November 2025 concerning the disposal of \"châteaux\" in Dordogne and Indre-et-Loire likewise do not refer to the Paris swimming pool, despite the shared name. The known deliberative history of the swimming pool is therefore limited, at this stage, to this 2004 authorization of works."
+}

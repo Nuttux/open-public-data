@@ -1,0 +1,108 @@
+{
+ "generated_at": "2026-07-21T17:04:41.999226+00:00",
+ "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
+ "slug": "cimetiere-de-charonne",
+ "name": "Cimetière de Charonne",
+ "kind_fr": "Cimetière",
+ "kind_en": "Cemetery",
+ "famille": "vert",
+ "arrondissement": 20,
+ "lat": 48.854371,
+ "lon": 2.38358,
+ "photo": "/img/lieux/cimetiere-de-charonne.jpg",
+ "photo_credit": {
+  "licence": "CC BY-SA 3.0",
+  "auteur": "Wikimedia Commons / Mu",
+  "url": "https://commons.wikimedia.org/wiki/File:Tombe_Maurice_Bard%C3%A8che,_Cimeti%C3%A8re_de_Charonne,_Paris.jpg",
+  "source": "Wikimedia Commons"
+ },
+ "wiki": {
+  "extract": null,
+  "url": null,
+  "source": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ },
+ "stats": {
+  "n_delibs": 433,
+  "delibs_span": [
+   2007,
+   2007
+  ],
+  "n_bmo_brut": 0,
+  "n_bmo_verifies": null,
+  "invest_total_eur": 0,
+  "invest_annees": [],
+  "lecture_mode": "titre nommant le lieu (2 trouvés)",
+  "lecture_mode_en": "title naming the place (2 found)",
+  "n_lus": 2,
+  "n_lieu": 2
+ },
+ "subventions_exploitant": null,
+ "residents": [
+  {
+   "beneficiaire": "ORNATUS",
+   "montant_total": 300.0,
+   "preuve": "objet_principal: \"Promenade au cimetière de Charonne dans le cadre du Printemps des cimetières de la Mairie de Paris\" — activité ponctuelle au lieu, ORNATUS n'est pas l'exploitant du cimetière",
+   "preuve_en": "objet_principal: \"Walk at the Charonne cemetery as part of the City of Paris's Printemps des cimetières\" — one-off activity at the site, ORNATUS is not the cemetery's operator"
+  }
+ ],
+ "kpi_montant": null,
+ "synthese_fr": "En février 2007, le Conseil de Paris approuve le projet de délibération DAC 479 proposant l'apposition d'une plaque commémorative à la mémoire des Fédérés fusillés en 1871, au cimetière de Charonne (20e). Le texte gravé indique que ces combattants furent réinhumés sans épitaphe en 1897, à l'emplacement des actuels réservoirs du cimetière. La dépense correspondante, estimée à 2 621 euros, est imputée sur le budget d'investissement 2006 de la Ville. Lors du débat en séance de février 2007, Mme Karen TAÏEB, du groupe M.R.C., salue l'initiative portée par Mme Odette CHRISTIENNE et exprime le souhait qu'une commémoration annuelle se tienne au cimetière au-delà du dévoilement de la plaque. Le projet de délibération est adopté.",
+ "moments": [
+  {
+   "id": "26642",
+   "seance": "FEVRIER 2007",
+   "fait": "Le Conseil approuve l'apposition d'une plaque commémorative aux Fédérés au cimetière, pour une dépense estimée à 2 621 euros.",
+   "pourquoi": "délibération formelle, dépense estimée approuvée",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=26642",
+   "fait_en": "The Council approves the installation of a commemorative plaque for the Fédérés at the cemetery, for an estimated expenditure of 2,621 euros.",
+   "pourquoi_en": "formal resolution, estimated expenditure approved"
+  },
+  {
+   "id": "9700",
+   "seance": "FEVRIER 2007",
+   "fait": "En séance, Mme TAÏEB salue l'initiative et espère une commémoration annuelle au cimetière.",
+   "pourquoi": "prise de parole, mémoire de la Commune",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=9700",
+   "fait_en": "During the session, Ms. Taïeb welcomes the initiative and hopes for an annual commemoration at the cemetery.",
+   "pourquoi_en": "floor statement, memory of the Commune"
+  }
+ ],
+ "montants": [
+  {
+   "seance": "FEVRIER 2007",
+   "montant": "2 621 euros",
+   "objet": "apposition d'une plaque commémorative aux Fédérés au cimetière de Charonne",
+   "citation": "La dépense correspondante, estimée à 2.621 euros sera imputée sur le budget d?investissement de la Ville de Paris, exercice 2006",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=26642"
+  }
+ ],
+ "bmo_extraits": [],
+ "bmo_recit": null,
+ "invest": [],
+ "marches": [],
+ "mandate": null,
+ "sources": {
+  "delibs": {
+   "name": "Débat-Délibs — Conseil de Paris",
+   "url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=search-solr&query=Cimeti%C3%A8re+de+Charonne"
+  },
+  "bmo": {
+   "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
+   "url": "https://gallica.bnf.fr/ark:/12148/cb343512457/date"
+  },
+  "invest": {
+   "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
+   "url": "https://opendata.paris.fr/"
+  },
+  "wiki": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ },
+ "synthese_en": "In February 2007, the Paris Council approved draft resolution DAC 479 proposing the installation of a commemorative plaque in memory of the Fédérés shot in 1871, at the Charonne cemetery (20th arrondissement). The engraved text states that these fighters were reburied without an epitaph in 1897, on the site of the cemetery's current water reservoirs. The corresponding expenditure, estimated at 2,621 euros, is charged to the City's 2006 investment budget. During the February 2007 session debate, Ms. Karen Taïeb, of the M.R.C. group, welcomed the initiative led by Ms. Odette Christienne and expressed the hope that an annual commemoration would be held at the cemetery beyond the unveiling of the plaque. The draft resolution was adopted."
+}

@@ -1,0 +1,220 @@
+{
+ "generated_at": "2026-07-21T17:04:41.999226+00:00",
+ "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
+ "slug": "piscine-suzanne-berlioux",
+ "name": "Piscine Suzanne-Berlioux",
+ "kind_fr": "Piscine",
+ "kind_en": "Swimming pool",
+ "famille": "sport",
+ "arrondissement": 1,
+ "lat": 48.88826,
+ "lon": 2.371955,
+ "photo": null,
+ "photo_credit": null,
+ "wiki": {
+  "extract": "La piscine Suzanne-Berlioux est une piscine parisienne, située dans le Forum des Halles dans le 1er arrondissement de Paris.",
+  "url": "https://fr.wikipedia.org/wiki/Piscine_Suzanne-Berlioux",
+  "source": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  },
+  "extract_en": "The Suzanne-Berlioux swimming pool is a Paris swimming pool, located in the Forum des Halles in the 1st arrondissement of Paris."
+ },
+ "stats": {
+  "n_delibs": 1682,
+  "delibs_span": [
+   1998,
+   2021
+  ],
+  "n_bmo_brut": 0,
+  "n_bmo_verifies": null,
+  "invest_total_eur": 0,
+  "invest_annees": [],
+  "lecture_mode": "titre nommant le lieu (14 trouvés)",
+  "lecture_mode_en": "title naming the place (14 found)",
+  "n_lus": 14,
+  "n_lieu": 14
+ },
+ "subventions_exploitant": null,
+ "residents": [],
+ "kpi_montant": null,
+ "synthese_fr": "Gérée par délégation de service public depuis son ouverture en 1985 selon les débats de 2021, la piscine Suzanne-Berlioux, au Forum des Halles, voit ce choix régulièrement contesté en Conseil de Paris face à la régie directe. En 1998, le Conseil approuve le principe du renouvellement du contrat de délégation ; France Patinoires S.A. signe la convention en 1999, dans un climat de suspicion en séance sur ses comptes. Selon les débats de 2012, cette société - rebaptisée depuis Carilis - signe les conventions suivantes en 2006 et 2007. Entre 2000 et 2001, la Ville engage des travaux d'amélioration et de sécurité, dont la mise en sécurité de la serre tropicale ; en 2004, une question orale relève un vieillissement des installations malgré une fréquentation record de 328.000 entrées en 2003, et la Ville annonce plus de 0,5 million d'euros de travaux sur les vestiaires. En 2021, le contrat est renouvelé avec le même exploitant, la société Espace (groupe Récréa depuis 2019), dans un débat qui oppose les partisans du maintien en DSP à des élus dénonçant des écarts tarifaires importants avec d'autres piscines parisiennes.",
+ "moments": [
+  {
+   "id": "92768",
+   "seance": "SEPTEMBRE 1998",
+   "fait": "Le Conseil approuve le principe de passation d'une nouvelle convention de DSP pour la piscine, dans le cadre du renouvellement du contrat de délégation existant.",
+   "pourquoi": "renouvellement du contrat de délégation, la piscine étant déjà en DSP depuis son ouverture en 1985",
+   "vedette": false,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=92768",
+   "fait_en": "The Council approves the principle of entering into a new DSP agreement for the pool, as part of the renewal of the existing delegation contract.",
+   "pourquoi_en": "renewal of the delegation contract, the pool having already been under DSP since it opened in 1985"
+  },
+  {
+   "id": "9568",
+   "seance": "SEPTEMBRE 1998",
+   "fait": "Le texte est adopté à la majorité après un débat où l'opposition dénonce des dégradations et l'absence de cahier des charges partagé.",
+   "pourquoi": "débat contradictoire régie directe contre délégation",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=9568",
+   "fait_en": "The text is adopted by a majority after a debate in which the opposition denounces deterioration and the absence of a shared specifications document.",
+   "pourquoi_en": "adversarial debate over direct municipal management versus delegation"
+  },
+  {
+   "id": "20084",
+   "seance": "JUIN 1999",
+   "fait": "Le Conseil autorise le Maire à signer la DSP avec France Patinoires S.A., malgré des comptes du délégataire contestés en séance.",
+   "pourquoi": "attribution contestée pour opacité des comptes",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=20084",
+   "fait_en": "The Council authorizes the Mayor to sign the DSP with France Patinoires S.A., despite the delegate's accounts being contested in session.",
+   "pourquoi_en": "contested award over the opacity of the accounts"
+  },
+  {
+   "id": "51061",
+   "seance": "AVRIL 2000",
+   "fait": "Le Conseil approuve le principe de travaux d'amélioration et de sécurité, répartis en trois marchés sur appel d'offres.",
+   "pourquoi": "premiers travaux de sécurité après l'attribution",
+   "vedette": false,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=51061",
+   "fait_en": "The Council approves the principle of improvement and safety works, split into three contracts put out to tender.",
+   "pourquoi_en": "first safety works following the award"
+  },
+  {
+   "id": "85341",
+   "seance": "JANVIER 2001",
+   "fait": "Le Conseil approuve le principe de travaux de mise en sécurité des couvre-joints de la serre tropicale.",
+   "pourquoi": "sécurisation de la serre, élément architectural signature",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=85341",
+   "fait_en": "The Council approves the principle of safety works on the expansion joint covers of the tropical greenhouse.",
+   "pourquoi_en": "securing the greenhouse, a signature architectural feature"
+  },
+  {
+   "id": "11045",
+   "seance": "JUILLET 2004",
+   "fait": "La Ville répond à une question orale en reconnaissant le vieillissement des installations et annonce plus de 0,5 M€ de travaux sur les vestiaires.",
+   "pourquoi": "alerte sur l'entretien malgré une fréquentation record",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=11045",
+   "fait_en": "The City responds to an oral question by acknowledging the ageing of the facilities and announces more than €0.5 million of works on the changing rooms.",
+   "pourquoi_en": "warning about maintenance despite record attendance"
+  },
+  {
+   "id": "72376",
+   "seance": "JUIN 2007",
+   "fait": "Le Conseil approuve la nouvelle convention de DSP et autorise le Maire à la signer avec la société Carilis.",
+   "pourquoi": "renouvellement du contrat de délégation",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=72376",
+   "fait_en": "The Council approves the new DSP agreement and authorizes the Mayor to sign it with the company Carilis.",
+   "pourquoi_en": "renewal of the delegation contract"
+  },
+  {
+   "id": "158515",
+   "seance": "AVRIL 2021",
+   "fait": "Le Conseil approuve le contrat de DSP avec Espace Récréa et autorise le Maire à le signer, après un débat sur les écarts tarifaires entre piscines parisiennes.",
+   "pourquoi": "renouvellement de la DSP avec le même exploitant (Espace, groupe Récréa depuis 2019) et débat sur les tarifs",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=158515",
+   "fait_en": "The Council approves the DSP contract with Espace Récréa and authorizes the Mayor to sign it, after a debate on price gaps between Paris pools.",
+   "pourquoi_en": "renewal of the DSP with the same operator (Espace, part of the Récréa group since 2019) and a debate over pricing"
+  }
+ ],
+ "montants": [
+  {
+   "seance": "AVRIL 2021",
+   "montant": "entre 4 et 5 euros",
+   "objet": "prix d'entrée cité en séance par M. Bonnet-Oulaldj, en comparaison avec la piscine Édouard-Pailleron (2,80 euros)",
+   "citation": "il vous en coûtera entre 4 et 5 euros",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=158515"
+  },
+  {
+   "seance": "AVRIL 2021",
+   "montant": "39,50 euros à 45 euros",
+   "objet": "abonnement 10 entrées cité en séance par M. Bonnet-Oulaldj, comparé aux 28 euros d'Édouard-Pailleron",
+   "citation": "Mais l?abonnement 10 places sera à 39,50 euros, si je ne m?abuse, à 45 euros dans le 1er arrondissement",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=158515"
+  },
+  {
+   "seance": "JUILLET 2004",
+   "montant": "plus de 0,5 million d'euros",
+   "objet": "améliorations des vestiaires et des structures d'accueil (travaux annoncés)",
+   "citation": "des améliorations des vestiaires et des structures d'accueil dont les principes d'organisation sont obsolètes, seront également entreprises pour plus de 0,5 million d'euros.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=11045"
+  },
+  {
+   "seance": "JUIN 1999",
+   "montant": "700.000 F",
+   "objet": "participation d'équilibre versée par la Ville en 1997, citée en séance par M. Le Garrec, qui relève l'absence de trace de bénéfices dans les comptes du délégataire",
+   "citation": "la Ville versait en 1997, 700.000 F d'équilibre",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=20084"
+  },
+  {
+   "seance": "JUIN 1999",
+   "montant": "70 F la demi-heure",
+   "objet": "tarif des cours de natation collectifs et particuliers, cité en séance par M. Le Garrec",
+   "citation": "70 F la demi-heure",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=20084"
+  }
+ ],
+ "bmo_extraits": [],
+ "bmo_recit": null,
+ "invest": [],
+ "marches": [],
+ "mandate": {
+  "par_annee": {
+   "2009": 10380.48
+  },
+  "total_eur": 10380.48,
+  "operations": [
+   {
+    "ap_cle": "B100/0502251",
+    "ap_texte": "PISCINE SUZANNE BERLIOUX",
+    "mandate_par_annee": {
+     "2009": 5320.48
+    },
+    "total_mandate": 5320.48,
+    "preuve": "Libellé de l'opération d'équipement : \"PISCINE SUZANNE BERLIOUX\" (direction DJS, mission Jeunesse et Sports) — nomme directement le lieu, confirmé par les délibérations de la fenêtre de contexte qui désignent la même piscine 10, place de la Rotonde, Forum des Halles (1er), gérée en DSP.",
+    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/0502251"
+   },
+   {
+    "ap_cle": "B100/0702251",
+    "ap_texte": "PISCINE SUZANNE BERLIOUX",
+    "mandate_par_annee": {
+     "2009": 5060.0
+    },
+    "total_mandate": 5060.0,
+    "preuve": "Libellé de l'opération d'équipement : \"PISCINE SUZANNE BERLIOUX\" (direction DJS, mission Jeunesse et Sports) — nomme directement le lieu ; seconde ligne budgétaire distincte de la première mais désignant le même équipement.",
+    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/0702251"
+   }
+  ],
+  "periode": [
+   "2009",
+   "2009"
+  ],
+  "source": {
+   "name": "Comptes administratifs — autorisations de programme, Ville de Paris",
+   "url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/"
+  }
+ },
+ "sources": {
+  "delibs": {
+   "name": "Débat-Délibs — Conseil de Paris",
+   "url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=search-solr&query=Piscine+Suzanne-Berlioux"
+  },
+  "bmo": {
+   "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
+   "url": "https://gallica.bnf.fr/ark:/12148/cb343512457/date"
+  },
+  "invest": {
+   "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
+   "url": "https://opendata.paris.fr/"
+  },
+  "wiki": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ },
+ "synthese_en": "Run under a delegated public service contract (DSP) since it opened in 1985 according to the 2021 debates, the Suzanne-Berlioux swimming pool, at the Forum des Halles, sees this arrangement regularly contested in the Council of Paris against direct municipal management. In 1998, the Council approves the principle of renewing the delegation contract; France Patinoires S.A. signs the agreement in 1999, amid suspicion voiced in session about its accounts. According to the 2012 debates, this company - renamed Carilis since then - signs the following agreements in 2006 and 2007. Between 2000 and 2001, the City carries out improvement and safety works, including securing the tropical greenhouse; in 2004, an oral question notes the ageing of the facilities despite a record attendance of 328,000 entries in 2003, and the City announces more than 0.5 million euros of works on the changing rooms. In 2021, the contract is renewed with the same operator, the company Espace (part of the Récréa group since 2019), in a debate that pits supporters of keeping the DSP model against council members denouncing significant price gaps with other Paris pools."
+}

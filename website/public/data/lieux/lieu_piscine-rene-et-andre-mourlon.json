@@ -1,0 +1,78 @@
+{
+ "generated_at": "2026-07-21T17:04:41.999226+00:00",
+ "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
+ "slug": "piscine-rene-et-andre-mourlon",
+ "name": "Piscine René-et-André-Mourlon",
+ "kind_fr": "Piscine",
+ "kind_en": "Swimming pool",
+ "famille": "sport",
+ "arrondissement": 15,
+ "lat": 48.899342,
+ "lon": 2.340003,
+ "photo": null,
+ "photo_credit": null,
+ "wiki": {
+  "extract": null,
+  "url": null,
+  "source": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ },
+ "stats": {
+  "n_delibs": 1174,
+  "delibs_span": [
+   2001,
+   2001
+  ],
+  "n_bmo_brut": 0,
+  "n_bmo_verifies": null,
+  "invest_total_eur": 0,
+  "invest_annees": [],
+  "lecture_mode": "titre nommant le lieu (1 trouvés)",
+  "lecture_mode_en": "title naming the place (1 found)",
+  "n_lus": 1,
+  "n_lieu": 1
+ },
+ "subventions_exploitant": null,
+ "residents": [],
+ "kpi_montant": null,
+ "synthese_fr": "En mai 2001, le Conseil de Paris a approuvé le principe du désamiantage de la piscine René-et-André-Mourlon, dans le 15e arrondissement. Il a également approuvé les modalités d'attribution du marché de travaux correspondant. Le Maire de Paris a été autorisé à signer ce marché, sous le rapport de Pascal Cherki.",
+ "moments": [
+  {
+   "id": "89909",
+   "seance": "MAI 2001",
+   "fait": "Approbation du principe du désamiantage, des modalités d'attribution du marché de travaux correspondant, et autorisation donnée au Maire de le signer",
+   "pourquoi": "premier acte connu de rénovation de l'équipement",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=89909",
+   "fait_en": "Approval of the principle of asbestos removal, of the terms for awarding the corresponding works contract, and authorization given to the Mayor to sign it",
+   "pourquoi_en": "first known act of renovation of the facility"
+  }
+ ],
+ "montants": [],
+ "bmo_extraits": [],
+ "bmo_recit": null,
+ "invest": [],
+ "marches": [],
+ "mandate": null,
+ "sources": {
+  "delibs": {
+   "name": "Débat-Délibs — Conseil de Paris",
+   "url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=search-solr&query=Piscine+Ren%C3%A9-et-Andr%C3%A9-Mourlon"
+  },
+  "bmo": {
+   "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
+   "url": "https://gallica.bnf.fr/ark:/12148/cb343512457/date"
+  },
+  "invest": {
+   "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
+   "url": "https://opendata.paris.fr/"
+  },
+  "wiki": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ },
+ "synthese_en": "In May 2001, the Paris Council approved the principle of asbestos removal at the René-et-André-Mourlon swimming pool, in the 15th arrondissement. It also approved the terms for awarding the corresponding works contract. The Mayor of Paris was authorized to sign this contract, under the report of Pascal Cherki."
+}

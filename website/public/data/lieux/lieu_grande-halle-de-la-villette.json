@@ -1,0 +1,267 @@
+{
+ "generated_at": "2026-07-21T17:04:41.999226+00:00",
+ "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
+ "slug": "grande-halle-de-la-villette",
+ "name": "Grande Halle de la Villette",
+ "kind_fr": "Équipement culturel",
+ "kind_en": "Cultural venue",
+ "famille": "culture",
+ "arrondissement": 19,
+ "lat": 48.886111,
+ "lon": 2.376389,
+ "photo": "/img/lieux/grande-halle-de-la-villette.jpg",
+ "photo_credit": {
+  "licence": null,
+  "auteur": null,
+  "url": "https://fr.wikipedia.org/wiki/Grande_halle_de_la_Villette",
+  "source": "Wikipédia"
+ },
+ "wiki": {
+  "extract": "La grande halle de la Villette, pouvant éventuellement être abrégée en « Grande Halle », est un bâtiment des anciens abattoirs composé de structures en charpente métalliques construit dans le quartier du Pont-de-Flandre à Paris. Elle se trouve actuellement place de la Fontaine-aux-Lions à l'entrée Sud du parc de la Villette.",
+  "url": "https://fr.wikipedia.org/wiki/Grande_halle_de_la_Villette",
+  "source": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  },
+  "extract_en": "The Grande Halle de la Villette, sometimes shortened to \"Grande Halle,\" is a building from the former abattoirs made up of metal-frame structures, built in the Pont-de-Flandre neighborhood of Paris. It is now located at Place de la Fontaine-aux-Lions, at the southern entrance to the Parc de la Villette."
+ },
+ "stats": {
+  "n_delibs": 898,
+  "delibs_span": [
+   2000,
+   2010
+  ],
+  "n_bmo_brut": 0,
+  "n_bmo_verifies": null,
+  "invest_total_eur": 0,
+  "invest_annees": [],
+  "lecture_mode": "titre nommant le lieu (17 trouvés)",
+  "lecture_mode_en": "title naming the place (17 found)",
+  "n_lus": 17,
+  "n_lieu": 13
+ },
+ "subventions_exploitant": null,
+ "residents": [],
+ "kpi_montant": null,
+ "synthese_fr": "Entre 2000 et 2010, le Conseil de Paris multiplie les conventions avec l'Établissement Public du Parc et de la Grande Halle de la Villette (EPPGHV), qui gère l'ensemble du site avenue Jean-Jaurès (19e). La Ville finance chaque année l'Espace Périphérique, un lieu de résidence pour les arts du cirque, de la rue et de la marionnette né en 2002 sur l'ancien site de l'école de cirque Annie Fratellini, avec une subvention de fonctionnement qui passe de 53.500 euros en 2002 à 165.000 euros en 2007, puis se maintient autour de ce montant (162.525 euros en 2010) via des avenants qui portent en cours d'année la base initiale de 82.500 euros. Des subventions d'équipement s'y ajoutent ponctuellement, comme les 137.000 euros votés en 2003 pour rénover le Pavillon de la Bourse occupé par le Théâtre Paris-Villette. Le domaine du Parc sert aussi de cadre à d'autres usages municipaux sans lien avec le financement de la programmation — installation de stations Vélib' en 2008, raccordement d'un bâtiment municipal voisin au réseau de chaleur la même année. En mars 2007, la nomination de la nouvelle direction de l'établissement public donne lieu à un débat en séance, un élu s'interrogeant sur le cumul d'un mandat électif et de la direction de l'établissement.",
+ "moments": [
+  {
+   "id": "88618",
+   "seance": "NOVEMBRE 2000",
+   "fait": "Le Conseil autorise le Maire à souscrire un avenant dont l'objet est de prolonger jusqu'en 2009 la convention d'occupation du Pavillon de la Bourse et de modifier le calcul des charges communes.",
+   "pourquoi": "gouvernance du bail avant même l'Espace Périphérique",
+   "vedette": false,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=88618",
+   "fait_en": "The Council authorizes the Mayor to sign a rider extending the occupancy agreement for the Pavillon de la Bourse until 2009 and changing how shared charges are calculated.",
+   "pourquoi_en": "lease governance predating the Espace Périphérique itself"
+  },
+  {
+   "id": "29532",
+   "seance": "SEPTEMBRE 2002",
+   "fait": "La Ville subventionne (53 500 euros) le nouvel \"Espace de création\" sur l'ancien site de l'école de cirque Annie Fratellini.",
+   "pourquoi": "naissance du futur Espace Périphérique",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=29532",
+   "fait_en": "The City grants a subsidy (53,500 euros) to the new \"Espace de création\" on the former site of the Annie Fratellini circus school.",
+   "pourquoi_en": "birth of the future Espace Périphérique"
+  },
+  {
+   "id": "70600",
+   "seance": "JUILLET 2003",
+   "fait": "Une subvention exceptionnelle de 137 000 euros cofinance des travaux de grosses réparations sur le Pavillon de la Bourse.",
+   "pourquoi": "premiers gros travaux financés sur le site",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=70600",
+   "fait_en": "An exceptional subsidy of 137,000 euros co-finances major repair works on the Pavillon de la Bourse.",
+   "pourquoi_en": "first major works funded on the site"
+  },
+  {
+   "id": "35269",
+   "seance": "OCTOBRE 2006",
+   "fait": "Le Maire est autorisé à signer, avec le département de la Seine-Saint-Denis et l'EPPGHV parmi d'autres entités, une convention tripartite de 20 ans pour l'implantation de bornes touristiques sur le domaine public fluvial.",
+   "pourquoi": "le site s'insère dans un aménagement touristique du canal",
+   "vedette": false,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=35269",
+   "fait_en": "The Mayor is authorized to sign, with the Seine-Saint-Denis department and the EPPGHV among other parties, a 20-year tripartite agreement for installing tourist information points on the public waterway domain.",
+   "pourquoi_en": "the site is part of a tourism development along the canal"
+  },
+  {
+   "id": "22457",
+   "seance": "MARS 2007",
+   "fait": "En séance, un élu interroge la Ville sur le cumul, par la nouvelle directrice de l'EPIC, d'un mandat électif et de la direction de l'établissement.",
+   "pourquoi": "seul débat conflictuel du corpus sur la gouvernance",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=22457",
+   "fait_en": "In session, a council member questions the City about the new EPIC director combining an elected mandate with running the establishment.",
+   "pourquoi_en": "the only contentious governance debate in the corpus"
+  },
+  {
+   "id": "67633",
+   "seance": "SEPTEMBRE 2008",
+   "fait": "Un avenant double en cours d'année la subvention de fonctionnement (82 500 à 165 000 euros) et ajoute 21 500 euros d'équipement.",
+   "pourquoi": "mécanique récurrente de l'avenant qui double la subvention",
+   "vedette": false,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=67633",
+   "fait_en": "A rider doubles the operating subsidy partway through the year (from 82,500 to 165,000 euros) and adds 21,500 euros in equipment funding.",
+   "pourquoi_en": "recurring mechanism of the rider that doubles the subsidy"
+  },
+  {
+   "id": "61438",
+   "seance": "NOVEMBRE 2008",
+   "fait": "Le Conseil approuve et autorise le Maire à signer avec l'EPPGHV une convention d'occupation du domaine public du Parc pour l'installation de stations Vélib'.",
+   "pourquoi": "un nouvel usage urbain s'installe dans le parc",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=61438",
+   "fait_en": "The Council approves and authorizes the Mayor to sign an occupancy agreement with the EPPGHV for the Park's public domain, for the installation of Vélib' bike-share stations.",
+   "pourquoi_en": "a new urban use moves into the park"
+  },
+  {
+   "id": "10626",
+   "seance": "AVRIL 2009",
+   "fait": "En séance, une élue salue l'Espace Périphérique comme un lieu de résidence important pour le cirque et les arts de la rue.",
+   "pourquoi": "seule prise de parole valorisant la programmation du lieu",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=10626",
+   "fait_en": "In session, a council member praises the Espace Périphérique as an important residency space for circus and street arts.",
+   "pourquoi_en": "the only remark in the corpus that highlights the site's programming"
+  }
+ ],
+ "montants": [
+  {
+   "seance": "SEPTEMBRE 2002",
+   "montant": "53.500 euros",
+   "objet": "subvention de fonctionnement 2002 du nouvel \"Espace de création\" (ancien site École Annie Fratellini)",
+   "citation": "La dépense correspondante, soit 53.500 euros, sera imputée sur le budget de fonctionnement de la Ville de Paris de 2002",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=29532"
+  },
+  {
+   "seance": "JUILLET 2003",
+   "montant": "137.000 euros",
+   "objet": "subvention exceptionnelle d'équipement, cofinancement des travaux de grosses réparations du Pavillon de la Bourse",
+   "citation": "La dépense correspondante, soit 137.000 euros, sera imputée sur le budget de fonctionnement de la Ville de Paris, rubrique 33, nature 6745",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=70600"
+  },
+  {
+   "seance": "SEPTEMBRE 2003",
+   "montant": "130.000 euros",
+   "objet": "subvention de fonctionnement 2003 de l'Espace périphérique",
+   "citation": "La dépense correspondante, soit 130.000 euros, sera imputée sur le budget de fonctionnement de la Ville de Paris de 2003",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=47966"
+  },
+  {
+   "seance": "FEVRIER 2004",
+   "montant": "150.000 euros",
+   "objet": "subvention de fonctionnement 2004 de l'Espace Périphérique",
+   "citation": "La dépense correspondante, soit 150.000 euros, sera imputée sur le budget de fonctionnement de la Ville de Paris de 2004",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=33938"
+  },
+  {
+   "seance": "AVRIL 2005",
+   "montant": "150.000 euros",
+   "objet": "subvention de fonctionnement 2005 pour l'Espace Périphérique",
+   "citation": "La dépense correspondante, soit 150.000 euros, sera imputée sur le budget de fonctionnement de la Ville de Paris 2005",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=43682"
+  },
+  {
+   "seance": "JUIN 2006",
+   "montant": "165.000 euros",
+   "objet": "subvention de fonctionnement 2006 pour l'Espace Périphérique",
+   "citation": "La dépense correspondante, soit 165.000 euros, sera imputée sur le budget de fonctionnement de la Ville de Paris 2006",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=44441"
+  },
+  {
+   "seance": "MARS 2007",
+   "montant": "165.000 euros",
+   "objet": "subvention de fonctionnement 2007 citée en séance (DAC 156)",
+   "citation": "relatif à l?attribution d?une subvention de fonctionnement de 165.000 euros à l?établissement public du parc de la Grande Halle de la Villette",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=22457"
+  },
+  {
+   "seance": "MARS 2007",
+   "montant": "plus de 70 millions d'euros",
+   "objet": "bilan global de l'EPIC selon M. Alain LE GARREC (élu) en séance — non un montant approuvé par la délibération",
+   "citation": "la nouvelle Directrice de la Grande Halle de la Villette, au bilan de plus de 70 millions d?euros et près de 50 millions de travaux",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=22457"
+  },
+  {
+   "seance": "MARS 2007",
+   "montant": "165.000 euros",
+   "objet": "subvention de fonctionnement 2007 pour l'Espace Périphérique",
+   "citation": "La dépense correspondante, soit 165.000 euros, sera imputée sur le budget de fonctionnement de la Ville de Paris 2007",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=31754"
+  },
+  {
+   "seance": "SEPTEMBRE 2008",
+   "montant": "de 82.500 à 165.000 euros",
+   "objet": "subvention de fonctionnement 2008 (portée par avenant)",
+   "citation": "La subvention de fonctionnement attribuée à l?Etablissement Public du Parc et de la Grande Halle de la Villette situé 211, avenue Jean Jaurès (19e), au titre de l?année 2008 est portée de 82.500 euros à 165.000 euros.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=67633"
+  },
+  {
+   "seance": "SEPTEMBRE 2008",
+   "montant": "21.500 euros",
+   "objet": "subvention d'équipement 2008",
+   "citation": "Une subvention d?équipement de 21.500 euros est également attribuée à l?Etablissement Public du Parc et de la Grande Halle de la Villette.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=67633"
+  },
+  {
+   "seance": "SEPTEMBRE 2008",
+   "montant": "104.000 euros",
+   "objet": "total des dépenses (fonctionnement + équipement) 2008",
+   "citation": "Les dépenses correspondantes, soit 104.000 euros, seront imputées comme suit",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=67633"
+  },
+  {
+   "seance": "AVRIL 2009",
+   "montant": "de 82.500 à 165.000 euros",
+   "objet": "subvention de fonctionnement 2009 (portée par avenant)",
+   "citation": "La subvention de fonctionnement attribuée à l?Etablissement Public du Parc et de la Grande Halle de la Villette situé 211, avenue Jean Jaurès (19e), au titre de l?année 2009 est portée de 82.500 euros à 165.000 euros.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=64532"
+  },
+  {
+   "seance": "SEPTEMBRE 2010",
+   "montant": "de 82.500 à 162.525 euros",
+   "objet": "subvention de fonctionnement 2010 pour l'Espace Périphérique (portée par avenant)",
+   "citation": "La subvention de fonctionnement attribuée pour l?Espace Périphérique à l?Etablissement Public du Parc et de la Grande Halle de la Villette - 211, avenue Jean Jaurès (19e), au titre de l?année 2010 est portée de 82.500 euros à 162.525 euros",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=39608"
+  },
+  {
+   "seance": "SEPTEMBRE 2010",
+   "montant": "8.711 euros",
+   "objet": "subvention d'équipement 2010 pour l'Espace Périphérique",
+   "citation": "La subvention d?équipement attribuée pour l?Espace Périphérique à l?EPPGHV est de 8.711 euros",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=39608"
+  },
+  {
+   "seance": "SEPTEMBRE 2010",
+   "montant": "88.736 euros",
+   "objet": "total des dépenses imputées (fonctionnement + équipement) 2010",
+   "citation": "Les dépenses correspondantes, soit 88.736 euros, seront imputées comme suit",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=39608"
+  }
+ ],
+ "bmo_extraits": [],
+ "bmo_recit": null,
+ "invest": [],
+ "marches": [],
+ "mandate": null,
+ "sources": {
+  "delibs": {
+   "name": "Débat-Délibs — Conseil de Paris",
+   "url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=search-solr&query=Grande+Halle+de+la+Villette"
+  },
+  "bmo": {
+   "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
+   "url": "https://gallica.bnf.fr/ark:/12148/cb343512457/date"
+  },
+  "invest": {
+   "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
+   "url": "https://opendata.paris.fr/"
+  },
+  "wiki": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ },
+ "synthese_en": "Between 2000 and 2010, the Paris Council entered into a series of agreements with the Établissement Public du Parc et de la Grande Halle de la Villette (EPPGHV), which manages the entire site on Avenue Jean-Jaurès (19th arrondissement). The City funded the Espace Périphérique every year — a residency space for circus, street and puppetry arts created in 2002 on the former site of the Annie Fratellini circus school — with an operating subsidy that rose from 53,500 euros in 2002 to 165,000 euros in 2007, then held around that level (162,525 euros in 2010) through riders that raised the initial base of 82,500 euros partway through each year. Equipment subsidies were added on occasion, such as the 137,000 euros voted in 2003 to renovate the Pavillon de la Bourse, occupied by the Théâtre Paris-Villette. The Park grounds also hosted other municipal uses unrelated to funding the programming — the installation of Vélib' bike-share stations in 2008, and the connection of a neighboring municipal building to the district heating network that same year. In March 2007, the appointment of the public establishment's new management sparked a debate in session, with one council member questioning the combination of an elected mandate with running the establishment."
+}

@@ -1,0 +1,141 @@
+{
+ "generated_at": "2026-07-21T17:04:41.999226+00:00",
+ "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
+ "slug": "stade-pierre-de-coubertin",
+ "name": "Stade Pierre-de-Coubertin",
+ "kind_fr": "Stade",
+ "kind_en": "Stadium",
+ "famille": "sport",
+ "arrondissement": 16,
+ "lat": 48.81796,
+ "lon": 2.344472,
+ "photo": "/img/lieux/stade-pierre-de-coubertin.jpg",
+ "photo_credit": {
+  "licence": "CC BY 2.0",
+  "auteur": "Guilhem Vellut from Paris, France",
+  "url": "https://commons.wikimedia.org/wiki/File:Stade_Pierre_de_Coubertin,_Paris_6_November_2016_001.jpg",
+  "source": "Wikimedia Commons"
+ },
+ "wiki": {
+  "extract": null,
+  "url": null,
+  "source": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ },
+ "stats": {
+  "n_delibs": 1525,
+  "delibs_span": [
+   1995,
+   2001
+  ],
+  "n_bmo_brut": 0,
+  "n_bmo_verifies": null,
+  "invest_total_eur": 0,
+  "invest_annees": [],
+  "lecture_mode": "titre nommant le lieu (5 trouvés)",
+  "lecture_mode_en": "title naming the place (5 found)",
+  "n_lus": 5,
+  "n_lieu": 3
+ },
+ "subventions_exploitant": null,
+ "residents": [],
+ "kpi_montant": null,
+ "synthese_fr": "Entre 1995 et 2001, les délibérations du Conseil de Paris concernant le stade Pierre-de-Coubertin portent sur deux volets distincts. D'un côté, la Ville encadre par convention l'exploitation commerciale des espaces publicitaires intérieurs du stade, confiée à la société Games S.A.R.L. depuis 1992 : un avenant en novembre 1995 étend ce dispositif à la Halle Georges-Carpentier pour une durée expérimentale de 3 ans, puis le Maire est autorisé à signer une nouvelle convention couvrant les deux sites en janvier 2001. De l'autre côté, une parcelle de terrain contiguë au stade est mise à disposition du Tennis Club de Paris par convention ; en juin 1996, le Maire est autorisé à souscrire un avenant n° 8 ayant pour objet la baisse de la redevance due à la Ville. En janvier 2000, le Conseil approuve le principe de travaux de rénovation portant sur la chaufferie de la mairie du 16e arrondissement et sur la ventilation du stade, et autorise le Maire à signer les marchés correspondants. Aucun de ces documents ne mentionne de montant chiffré : les redevances et dépenses y sont renvoyées à des lignes budgétaires sans valeur en euros ou en francs.",
+ "moments": [
+  {
+   "id": "1330",
+   "seance": "NOVEMBRE 1995",
+   "fait": "Avenant à la convention Games S.A.R.L. étendant la gestion publicitaire à la Halle Georges-Carpentier pour 3 ans.",
+   "pourquoi": "premier élargissement connu du dispositif publicitaire",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=1330",
+   "fait_en": "Amendment to the agreement with Games S.A.R.L. extending advertising management to the Halle Georges-Carpentier for 3 years.",
+   "pourquoi_en": "first known expansion of the advertising arrangement"
+  },
+  {
+   "id": "67860",
+   "seance": "JUIN 1996",
+   "fait": "Avenant n° 8 à la convention avec le Tennis Club de Paris sur une parcelle contiguë au stade, ayant pour objet la baisse de la redevance.",
+   "pourquoi": "les abords du stade aussi négociés avec un club privé",
+   "vedette": false,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=67860",
+   "fait_en": "Amendment no. 8 to the agreement with the Tennis Club de Paris on a plot adjoining the stadium, aimed at lowering the fee.",
+   "pourquoi_en": "the stadium's surroundings also negotiated with a private club"
+  },
+  {
+   "id": "48498",
+   "seance": "JANVIER 2000",
+   "fait": "Principe de rénovation de la ventilation du stade approuvé, marchés de travaux autorisés.",
+   "pourquoi": "seul chantier technique identifié sur le stade",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=48498",
+   "fait_en": "Principle of renovating the stadium's ventilation approved, works contracts authorized.",
+   "pourquoi_en": "only technical works project identified at the stadium"
+  },
+  {
+   "id": "85311",
+   "seance": "JANVIER 2001",
+   "fait": "Le Maire est autorisé à signer une nouvelle convention avec Games S.A.R.L. pour l'exploitation publicitaire du stade et de la Halle Georges-Carpentier.",
+   "pourquoi": "renouvellement du montage commercial vieux de plus de huit ans",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=85311",
+   "fait_en": "The Mayor is authorized to sign a new agreement with Games S.A.R.L. for the advertising operation of the stadium and the Halle Georges-Carpentier.",
+   "pourquoi_en": "renewal of a commercial arrangement more than eight years old"
+  }
+ ],
+ "montants": [],
+ "bmo_extraits": [],
+ "bmo_recit": null,
+ "invest": [],
+ "marches": [
+  {
+   "numero_marche": "20222022T05959",
+   "objet": "SA4 TVX RENOVATION CADRE JO STADE PIERRE DE COUBERTIN",
+   "objet_clair": null,
+   "fournisseur": "LES ETABLISSEMENTS GIFFARD",
+   "montant_max": 816101.45,
+   "date_notification": "2022-08-03",
+   "preuve": "Objet du marché : \"SA4 TVX RENOVATION CADRE JO STADE PIERRE DE COUBERTIN\" — nomme explicitement le stade, travaux de rénovation dans le cadre des JO."
+  },
+  {
+   "numero_marche": "20141410012048",
+   "objet": "CSP5 TX RENOVATION PARQUET STADE PIERRE DE COUBERTIN 16E",
+   "objet_clair": null,
+   "fournisseur": "ART-DAN ILE-DE-FRANCE",
+   "montant_max": 138549.88,
+   "date_notification": "2014-09-25",
+   "preuve": "Objet du marché : \"CSP5 TX RENOVATION PARQUET STADE PIERRE DE COUBERTIN 16E\" — travaux de rénovation du parquet du stade, lieu et arrondissement nommés."
+  },
+  {
+   "numero_marche": "20131410009203",
+   "objet": "RÉNOVATION DE LA SONORISATION - STADE PIERRE DE COUBERTIN",
+   "objet_clair": null,
+   "fournisseur": "ALIDIA",
+   "montant_max": 82547.4,
+   "date_notification": "2013-05-24",
+   "preuve": "Objet du marché : \"RÉNOVATION DE LA SONORISATION - STADE PIERRE DE COUBERTIN\" — nomme explicitement le stade."
+  }
+ ],
+ "mandate": null,
+ "sources": {
+  "delibs": {
+   "name": "Débat-Délibs — Conseil de Paris",
+   "url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=search-solr&query=Stade+Pierre-de-Coubertin"
+  },
+  "bmo": {
+   "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
+   "url": "https://gallica.bnf.fr/ark:/12148/cb343512457/date"
+  },
+  "invest": {
+   "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
+   "url": "https://opendata.paris.fr/"
+  },
+  "wiki": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ },
+ "synthese_en": "Between 1995 and 2001, Paris Council resolutions concerning the Stade Pierre-de-Coubertin cover two distinct areas. On one hand, the City regulates by agreement the commercial operation of the stadium's indoor advertising spaces, entrusted to the company Games S.A.R.L. since 1992: an amendment in November 1995 extends this arrangement to the Halle Georges-Carpentier for an experimental period of 3 years, and the Mayor is then authorized to sign a new agreement covering both sites in January 2001. On the other hand, a plot of land adjoining the stadium is made available to the Tennis Club de Paris by agreement; in June 1996, the Mayor is authorized to enter into amendment no. 8, the purpose of which is to lower the fee owed to the City. In January 2000, the Council approves the principle of renovation work on the heating system of the 16th arrondissement town hall and on the stadium's ventilation, and authorizes the Mayor to sign the corresponding works contracts. None of these documents mentions a specific amount: the fees and expenses are referred to budget lines with no value stated in euros or francs."
+}

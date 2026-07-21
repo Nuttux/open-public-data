@@ -1,0 +1,392 @@
+{
+ "generated_at": "2026-07-21T17:04:41.999226+00:00",
+ "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
+ "slug": "piscine-keller",
+ "name": "Piscine Keller",
+ "kind_fr": "Piscine",
+ "kind_en": "Swimming pool",
+ "famille": "sport",
+ "arrondissement": 15,
+ "lat": 48.854624,
+ "lon": 2.375991,
+ "photo": "/img/lieux/piscine-keller.jpg",
+ "photo_credit": {
+  "licence": null,
+  "auteur": null,
+  "url": "https://fr.wikipedia.org/wiki/Piscine_Keller",
+  "source": "Wikipédia"
+ },
+ "wiki": {
+  "extract": "La piscine Keller est l'une des 39 piscines municipales à Paris. Elle est située 14 rue de l'Ingénieur-Robert-Keller, dans le quartier de Beaugrenelle, dans le 15e arrondissement.",
+  "url": "https://fr.wikipedia.org/wiki/Piscine_Keller",
+  "source": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  },
+  "extract_en": "The Keller pool is one of 39 municipal swimming pools in Paris. It is located at 14 rue de l'Ingénieur-Robert-Keller, in the Beaugrenelle neighborhood, in the 15th arrondissement."
+ },
+ "stats": {
+  "n_delibs": 1296,
+  "delibs_span": [
+   2000,
+   2009
+  ],
+  "n_bmo_brut": 0,
+  "n_bmo_verifies": null,
+  "invest_total_eur": 0,
+  "invest_annees": [],
+  "lecture_mode": "titre nommant le lieu (29 trouvés)",
+  "lecture_mode_en": "title naming the place (29 found)",
+  "n_lus": 28,
+  "n_lieu": 23
+ },
+ "subventions_exploitant": null,
+ "residents": [],
+ "kpi_montant": null,
+ "synthese_fr": "La Ville de Paris acquiert la piscine Keller auprès de La Poste fin 2000 pour treize millions de francs, avant d'engager en 2001 une procédure de délégation de service public pour sa gestion. Cette procédure est finalement abandonnée en 2002 au profit d'un marché de prestations de services confié à la société Vert Marine, tandis que le Conseil approuve le même mois le principe d'une rénovation complète pour un coût alors fixé à 6,921 millions d'euros. Des élus interpellent ensuite la Ville, en 2003, sur des problèmes d'hygiène et de propreté du bassin. Le chantier de restructuration, confié en mandat à la SEMEA XV, voit son coût d'investissement porté à 9 millions d'euros en 2005 puis à 9,3 millions d'euros en 2006, avec dix-huit mois de travaux ; en 2008, un vœu du Conseil porte sur les désagréments et les problèmes de sécurité signalés autour du passage aménagé en bordure de la piscine pendant les travaux. Les travaux se soldent en 2009 par l'autorisation donnée à la SEMPARISEINE de transiger avec cinq entreprises pour régler leurs réclamations.",
+ "moments": [
+  {
+   "id": "40733",
+   "seance": "DECEMBRE 2000",
+   "fait": "Le Conseil autorise le Maire à signer la promesse de vente avec La Poste pour l'acquisition de la piscine Keller, au prix de treize millions de francs.",
+   "pourquoi": "la Ville engage le rachat de la piscine à La Poste",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=40733",
+   "fait_en": "The Council authorizes the Mayor to sign the sale agreement with La Poste for the acquisition of the Keller pool, at a price of thirteen million francs.",
+   "pourquoi_en": "the City initiates the purchase of the pool from La Poste"
+  },
+  {
+   "id": "84933",
+   "seance": "JANVIER 2001",
+   "fait": "Le Conseil approuve le principe d'une délégation de service public pour la gestion de la piscine Keller.",
+   "pourquoi": "gouvernance : une DSP préparée pour gérer la piscine",
+   "vedette": false,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=84933",
+   "fait_en": "The Council approves the principle of a public service delegation for the management of the Keller pool.",
+   "pourquoi_en": "governance: a public service delegation prepared to manage the pool"
+  },
+  {
+   "id": "88208",
+   "seance": "JUILLET 2002",
+   "fait": "Le Conseil abandonne la procédure de délégation de service public et autorise le Maire à souscrire un marché avec la société Vert Marine pour l'exploitation de la piscine Keller.",
+   "pourquoi": "la DSP échoue, un marché autorisé avec Vert Marine",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=88208",
+   "fait_en": "The Council abandons the public service delegation procedure and authorizes the Mayor to enter into a contract with the company Vert Marine for the operation of the Keller pool.",
+   "pourquoi_en": "the delegation procedure fails, a contract is authorized with Vert Marine"
+  },
+  {
+   "id": "88133",
+   "seance": "JUILLET 2002",
+   "fait": "Le Conseil approuve le principe de la rénovation de la piscine Keller pour un coût fixé à 6,921 millions d'euros.",
+   "pourquoi": "premier budget voté pour rénover la piscine",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=88133",
+   "fait_en": "The Council approves the principle of the renovation of the Keller pool at a cost set at 6.921 million euros.",
+   "pourquoi_en": "first budget voted to renovate the pool"
+  },
+  {
+   "id": "21319",
+   "seance": "NOVEMBRE 2003",
+   "fait": "Des élus interpellent la Ville sur l'hygiène et la propreté de la piscine Keller ; la Ville répond en détaillant les contrôles en place.",
+   "pourquoi": "conflit d'usage : hygiène contestée par des élus",
+   "vedette": false,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=21319",
+   "fait_en": "Elected officials question the City about hygiene and cleanliness at the Keller pool; the City responds by detailing the checks in place.",
+   "pourquoi_en": "usage conflict: hygiene disputed by elected officials"
+  },
+  {
+   "id": "63188",
+   "seance": "SEPTEMBRE 2005",
+   "fait": "Le Conseil porte le coût de la restructuration de la piscine Keller à 9 millions d'euros et fixe la durée des travaux à dix-huit mois.",
+   "pourquoi": "le chantier démarre, budget porté à 9 M€",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=63188",
+   "fait_en": "The Council raises the cost of the Keller pool's restructuring to 9 million euros and sets the duration of the works at eighteen months.",
+   "pourquoi_en": "the project begins, budget raised to €9 million"
+  },
+  {
+   "id": "13760",
+   "seance": "JUILLET 2008",
+   "fait": "Le Conseil adopte un vœu sur l'insécurité du passage attenant à la piscine Keller ; la SEM Paris-Seine, propriétaire du passage, s'engage à renforcer le contrôle du nettoyage, tandis que des mesures d'éclairage sont en cours pour évaluer un éventuel renforcement.",
+   "pourquoi": "conflit riverains : sécurité du passage contestée",
+   "vedette": false,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=13760",
+   "fait_en": "The Council adopts a motion on the insecurity of the passage adjoining the Keller pool; the SEM Paris-Seine, owner of the passage, commits to strengthening cleaning oversight, while lighting measurements are underway to assess a possible reinforcement.",
+   "pourquoi_en": "conflict with residents: security of the passage disputed"
+  },
+  {
+   "id": "74890",
+   "seance": "JUILLET 2009",
+   "fait": "Le Conseil autorise la SEMPARISEINE à transiger avec cinq entreprises pour régler les réclamations liées aux travaux de restructuration.",
+   "pourquoi": "clôture financière du chantier, litiges d'entreprises",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=74890",
+   "fait_en": "The Council authorizes SEMPARISEINE to settle with five companies to resolve claims related to the restructuring works.",
+   "pourquoi_en": "financial closure of the project, disputes with companies"
+  }
+ ],
+ "montants": [
+  {
+   "seance": "MARS 2007",
+   "montant": "65.958,12 euros TTC",
+   "objet": "avenant n°1 au marché de travaux lot 3.1 (chauffage/ventilation-plomberie/sanitaire), titulaire Société PILLIOT",
+   "citation": "l?avenant n° 1, joint, au marché de travaux, lot 3.1, dont le titulaire est la Société PILLIOT pour un montant de 65.958,12 euros TTC",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=31293"
+  },
+  {
+   "seance": "MARS 2007",
+   "montant": "1.544.302,15 euros TTC (valeur mai 2005)",
+   "objet": "montant total du marché de travaux lot 3.1 après avenant",
+   "citation": "portant le montant du marché à 1.544.302,15 euros TTC (valeur mai 2005)",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=31293"
+  },
+  {
+   "seance": "AVRIL 2004",
+   "montant": "608.036,84 euros TTC",
+   "objet": "marché de maîtrise d'œuvre attribué à l'équipe ARCOS pour l'étude et la rénovation de la piscine Keller",
+   "citation": "à l'équipe ARCOS pour un montant de 608.036,84 euros TTC.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=51989"
+  },
+  {
+   "seance": "DECEMBRE 2006",
+   "montant": "173.185,94 euros TTC",
+   "objet": "avenant n°1 au marché de travaux lot 1.1 (désamiantage-démolitions-gros œuvre-maçonnerie), titulaire Société CHANIN",
+   "citation": "dont le titulaire est la Société CHANIN, approuvé par la Commission d?appel d?offres de la Ville de Paris du 25 octobre 2006, pour un montant de 173.185,94 euros TTC",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=92212"
+  },
+  {
+   "seance": "DECEMBRE 2006",
+   "montant": "1.505.690,20 euros TTC (valeur mai 2005)",
+   "objet": "montant total du marché de travaux lot 1.1 après avenant",
+   "citation": "portant le montant du marché à 1.505.690,20 euros TTC (valeur mai 2005)",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=92212"
+  },
+  {
+   "seance": "DECEMBRE 2000",
+   "montant": "20 millions de francs",
+   "objet": "estimation, selon M. Guelton, du coût des travaux de rénovation nécessaires à la piscine avant son acquisition",
+   "citation": "qui exigera des travaux de rénovation qui sont évalués à 20 millions de francs",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=23081"
+  },
+  {
+   "seance": "DECEMBRE 2000",
+   "montant": "13 millions de francs",
+   "objet": "prix de vente de la piscine Keller fixé compte tenu des travaux à prévoir, selon M. Guelton",
+   "citation": "le prix de vente de la piscine est fixé à 13 millions de francs",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=23081"
+  },
+  {
+   "seance": "AVRIL 2006",
+   "montant": "259.793,54 euros TTC",
+   "objet": "avenant n°1 au marché de filtration et traitement de l'eau (lot 3.2), titulaire Société Imatec",
+   "citation": "à la Société Imatec, pour un montant de 259.793,54 euros T.T.C.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=38713"
+  },
+  {
+   "seance": "JUILLET 2002",
+   "montant": "6.921.000 euros TTC (valeur 1er trimestre 2002)",
+   "objet": "coût total fixé pour le principe de rénovation de la piscine Keller",
+   "citation": "Le coût total est fixé à 6.921.000 euros T.T.C. valeur 1er trimestre 2002",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=88133"
+  },
+  {
+   "seance": "JUILLET 2002",
+   "montant": "304.898 euros",
+   "objet": "part du coût financée sur le budget 2001-2002",
+   "citation": "financé sur le budget 2001-2002 à hauteur de 304.898 euros",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=88133"
+  },
+  {
+   "seance": "JUILLET 2002",
+   "montant": "2.900.000 euros",
+   "objet": "montant inscrit au budget primitif 2003 pour l'opération",
+   "citation": "il a été inscrit au budget primitif 2003 un montant de 2.900.000 euros",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=88133"
+  },
+  {
+   "seance": "OCTOBRE 2007",
+   "montant": "67.407,86 euros TTC",
+   "objet": "avenant n°1 au marché de travaux carrelages (lot 1.2), titulaire Société France SOLS",
+   "citation": "dont le titulaire est la Société France SOLS, pour un montant de 67.407,86 euros TTC",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=53755"
+  },
+  {
+   "seance": "OCTOBRE 2007",
+   "montant": "12.558,00 euros TTC",
+   "objet": "avenant n°2 au marché de travaux désamiantage-démolitions-gros œuvre-maçonnerie (lot 1.1), titulaire Société CHANIN",
+   "citation": "dont le titulaire est la Société CHANIN, pour un montant de 12.558,00 euros TTC",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=53755"
+  },
+  {
+   "seance": "OCTOBRE 2007",
+   "montant": "85.125,16 euros TTC",
+   "objet": "avenant n°1 au marché de maîtrise d'œuvre, titulaire Atelier ARCOS architecture",
+   "citation": "dont le titulaire est l?Atelier ARCOS architecture, pour un montant de 85.125,16 euros TTC",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=53755"
+  },
+  {
+   "seance": "SEPTEMBRE 2005",
+   "montant": "9.000.000 euros TTC (valeur mai 2005)",
+   "objet": "coût d'investissement de l'opération de restructuration de la piscine Keller",
+   "citation": "Le coût d?investissement de l?opération est fixé à 9.000.000 euros TTC (valeur mai 2005)",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=63188"
+  },
+  {
+   "seance": "SEPTEMBRE 2005",
+   "montant": "de 231.000 à 275.218 euros TTC (valeur mai 2005)",
+   "objet": "rémunération forfaitaire du mandataire SEMEA XV, revalorisée",
+   "citation": "la rémunération forfaitaire du mandataire qui est portée de 231.000 euros TTC (valeur mars 2002) à 275.218 euros TTC (valeur mai 2005)",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=63188"
+  },
+  {
+   "seance": "SEPTEMBRE 2005",
+   "montant": "9 millions d'euros",
+   "objet": "budget de travaux de restructuration de la piscine Keller, selon M. Cherki",
+   "citation": "on a beaucoup travaillé avec Anne HIDALGO - pour 9 millions d?euros de travaux.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=10316"
+  },
+  {
+   "seance": "SEPTEMBRE 2006",
+   "montant": "de 9.000.000 à 9.300.000 euros TTC (valeur mai 2005)",
+   "objet": "coût d'investissement définitif de l'opération de rénovation de la piscine Keller, révisé à la hausse",
+   "citation": "est porté de 9.000.000 euros TTC (valeur mai 2005) à 9.300.000 euros TTC (valeur mai 2005), hors révisions",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=74425"
+  },
+  {
+   "seance": "SEPTEMBRE 2003",
+   "montant": "11.134,76 euros TTC",
+   "objet": "dépense liée à l'avenant n°1 au marché d'exploitation (extension chaufferie), signé avec Vert Marine",
+   "citation": "d'un montant de 11.134,76 euros toutes taxes comprises, est imputée sur le budget de fonctionnement de la Ville de Paris",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=47801"
+  },
+  {
+   "seance": "DECEMBRE 2000",
+   "montant": "treize millions de francs (13.000.000 F)",
+   "objet": "prix d'acquisition de la piscine Keller par la Ville de Paris",
+   "citation": "L'acquisition visée à l'article premier aura lieu au prix de treize millions de francs.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=40733"
+  },
+  {
+   "seance": "OCTOBRE 2007",
+   "montant": "13.359,55 euros TTC",
+   "objet": "avenant n°1 au marché de travaux menuiseries bois, isolation et traitement acoustique (lot 1.3), titulaire Société NORMEN",
+   "citation": "dont le titulaire est la Société NORMEN, pour un montant de 13.359,55 euros TTC",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=53542"
+  },
+  {
+   "seance": "OCTOBRE 2007",
+   "montant": "5.967,12 euros TTC",
+   "objet": "avenant n°1 au marché de travaux métallerie (lot 1.4), titulaire Société SMF",
+   "citation": "dont le titulaire est la Société SMF, pour un montant de 5.967,12 euros TTC",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=53542"
+  },
+  {
+   "seance": "OCTOBRE 2007",
+   "montant": "2.511,60 euros TTC",
+   "objet": "avenant n°1 au marché de travaux peinture (lot 1.6), titulaire Société FPRS",
+   "citation": "dont le titulaire est la Société FPRS, pour un montant de 2.511,60 euros TTC",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=53542"
+  },
+  {
+   "seance": "OCTOBRE 2007",
+   "montant": "-15.406,80 euros TTC",
+   "objet": "avenant n°1 au marché de travaux électricité courants forts/faibles (lot 4), titulaire Société SGTE (réduction du marché)",
+   "citation": "dont le titulaire est la Société SGTE, pour un montant de - 15.406,80 euros TTC",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=53542"
+  }
+ ],
+ "bmo_extraits": [],
+ "bmo_recit": null,
+ "invest": [],
+ "marches": [
+  {
+   "numero_marche": "20141410010855",
+   "objet": "CSP2 - L'EXPLOITATION DE LA PISCINE KELLER, PARIS 15ÈME",
+   "objet_clair": null,
+   "fournisseur": "LSU KELLER LOISIRS SPORTI URBAI KEL",
+   "montant_max": 10892510.19,
+   "date_notification": "2014-02-20",
+   "preuve": "Objet du marché : « CSP2 - L'EXPLOITATION DE LA PISCINE KELLER, PARIS 15ÈME » — nomme explicitement le lieu. Cohérent avec l'historique des délibérations (marchés d'exploitation de la piscine Keller renouvelés en 2002, 2004, 2007, 2014, 2020)."
+  },
+  {
+   "numero_marche": "20201410000291",
+   "objet": "SA2 EXPLOITATION PISCINE KELLER 15E",
+   "objet_clair": null,
+   "fournisseur": "VERT MARINE",
+   "montant_max": 10207235.24,
+   "date_notification": "2020-04-14",
+   "preuve": "Objet du marché : « SA2 EXPLOITATION PISCINE KELLER 15E » — nomme explicitement le lieu. Vert Marine est l'exploitant historique de la piscine Keller depuis 2002 (délibérations 2002 JS 65 et 2004 DJS 510 : marchés d'exploitation attribués nommément à la société Vert Marine, 575 avenue du Maréchal-Juin, Bois-Guillaume)."
+  }
+ ],
+ "mandate": {
+  "par_annee": {
+   "2009": 50725.08,
+   "2010": 10582.89,
+   "2012": 76547.67,
+   "2013": 5196.02
+  },
+  "total_eur": 143051.66,
+  "operations": [
+   {
+    "ap_cle": "B100/0601633",
+    "ap_texte": "PISCINE KELLER",
+    "mandate_par_annee": {
+     "2009": 17207.53,
+     "2010": 10582.89,
+     "2012": 76547.67
+    },
+    "total_mandate": 104338.09,
+    "preuve": "Libellé d'opération « PISCINE KELLER », direction DJS, mission Jeunesse et Sports — correspond à la rénovation de la piscine Keller documentée par les délibérations 2006 DJS 538 et 2007 DJS 220 (avenants au marché de travaux de rénovation, 2006-2007), avec mandatements 2009-2012.",
+    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/0601633"
+   },
+   {
+    "ap_cle": "B100/0701633",
+    "ap_texte": "PISCINE KELLER",
+    "mandate_par_annee": {
+     "2009": 33517.55
+    },
+    "total_mandate": 33517.55,
+    "preuve": "Libellé d'opération « PISCINE KELLER », direction DJS, mission Jeunesse et Sports — même opération de rénovation que B100/0601633 (chantier suivi dans les délibérations 2006-2009), mandatement 2009.",
+    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/0701633"
+   },
+   {
+    "ap_cle": "B100/0801633",
+    "ap_texte": "PISCINE KELLER",
+    "mandate_par_annee": {
+     "2013": 5196.02
+    },
+    "total_mandate": 5196.02,
+    "preuve": "Libellé d'opération « PISCINE KELLER », direction DJS, mission Jeunesse et Sports — solde de l'opération de rénovation, mandatement 2013 (cf. 2009 DJS 396 : contrats de transaction avec les entreprises de travaux pour régler les réclamations liées à la restructuration de la piscine Keller).",
+    "source_url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/table/?refine.autorisation_de_programme_cle=B100/0801633"
+   }
+  ],
+  "periode": [
+   "2009",
+   "2013"
+  ],
+  "source": {
+   "name": "Comptes administratifs — autorisations de programme, Ville de Paris",
+   "url": "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-ap-ville-departement/"
+  }
+ },
+ "sources": {
+  "delibs": {
+   "name": "Débat-Délibs — Conseil de Paris",
+   "url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=search-solr&query=Piscine+Keller"
+  },
+  "bmo": {
+   "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
+   "url": "https://gallica.bnf.fr/ark:/12148/cb343512457/date"
+  },
+  "invest": {
+   "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
+   "url": "https://opendata.paris.fr/"
+  },
+  "wiki": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ },
+ "synthese_en": "The City of Paris acquired the Keller pool from La Poste at the end of 2000 for thirteen million francs, before launching a public service delegation procedure for its management in 2001. This procedure was ultimately abandoned in 2002 in favor of a services contract awarded to the company Vert Marine, while the Council approved, that same month, the principle of a complete renovation at a cost then set at 6.921 million euros. Elected officials subsequently questioned the City, in 2003, about hygiene and cleanliness issues at the pool. The restructuring project, entrusted under mandate to SEMEA XV, saw its investment cost raised to 9 million euros in 2005 and then to 9.3 million euros in 2006, with eighteen months of works; in 2008, a Council motion addressed the disturbances and security problems reported around the passage laid out alongside the pool during the works. The works concluded in 2009 with the authorization granted to SEMPARISEINE to settle with five companies to resolve their claims."
+}

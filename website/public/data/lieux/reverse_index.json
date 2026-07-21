@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T20:28:18.117255+00:00",
+ "generated_at": "2026-07-21T17:04:41.999226+00:00",
  "beneficiaires": {
   "la cite de la musique": {
    "slug": "philharmonie-de-paris",
@@ -210,6 +210,96 @@
    "slug": "arenes-de-lutece",
    "lieu": "Arènes de Lutèce",
    "role": "resident"
+  },
+  "zero waste paris": {
+   "slug": "bassin-de-la-villette",
+   "lieu": "Bassin de la Villette",
+   "role": "resident"
+  },
+  "les aliennes": {
+   "slug": "cimetiere-des-batignolles",
+   "lieu": "Cimetière des Batignolles",
+   "role": "resident"
+  },
+  "les meres en place": {
+   "slug": "place-des-fetes",
+   "lieu": "Place des Fêtes",
+   "role": "resident"
+  },
+  "les chemins de la danse": {
+   "slug": "mairie-du-20e",
+   "lieu": "Mairie du 20e",
+   "role": "resident"
+  },
+  "la maison ouverte": {
+   "slug": "theatre-dunois",
+   "lieu": "Théâtre Dunois",
+   "role": "exploitant"
+  },
+  "la s o u p e": {
+   "slug": "theatre-dunois",
+   "lieu": "Théâtre Dunois",
+   "role": "resident"
+  },
+  "ltk production": {
+   "slug": "theatre-dunois",
+   "lieu": "Théâtre Dunois",
+   "role": "resident"
+  },
+  "le joli collectif": {
+   "slug": "theatre-dunois",
+   "lieu": "Théâtre Dunois",
+   "role": "resident"
+  },
+  "compagnie boom": {
+   "slug": "theatre-dunois",
+   "lieu": "Théâtre Dunois",
+   "role": "resident"
+  },
+  "l yeuse": {
+   "slug": "theatre-dunois",
+   "lieu": "Théâtre Dunois",
+   "role": "resident"
+  },
+  "theatre du soleil": {
+   "slug": "theatre-du-soleil",
+   "lieu": "Théâtre du Soleil",
+   "role": "exploitant"
+  },
+  "le bal rebondissant": {
+   "slug": "theatre-du-soleil",
+   "lieu": "Théâtre du Soleil",
+   "role": "resident"
+  },
+  "compagnie des cinq roues": {
+   "slug": "theatre-du-soleil",
+   "lieu": "Théâtre du Soleil",
+   "role": "resident"
+  },
+  "la septieme compagnie": {
+   "slug": "piscine-mathis",
+   "lieu": "Piscine Mathis",
+   "role": "resident"
+  },
+  "ornatus": {
+   "slug": "cimetiere-de-charonne",
+   "lieu": "Cimetière de Charonne",
+   "role": "resident"
+  },
+  "intemporelles un temps pour elles": {
+   "slug": "mairie-du-7e",
+   "lieu": "Mairie du 7e",
+   "role": "resident"
+  },
+  "paris artistes": {
+   "slug": "mairie-du-9e",
+   "lieu": "Mairie du 9e",
+   "role": "resident"
+  },
+  "c14 paris": {
+   "slug": "mairie-du-14e",
+   "lieu": "Mairie du 14e",
+   "role": "resident"
   }
  },
  "projets": {
@@ -404,6 +494,154 @@
   "place denfert rocherau amenagement": {
    "slug": "place-denfert-rochereau",
    "lieu": "Place Denfert-Rochereau"
+  },
+  "jardin du port de l arsenal renovation de l aire de jeux": {
+   "slug": "port-de-l-arsenal",
+   "lieu": "Port de l'Arsenal"
+  },
+  "renovation de l ile aux cygnes": {
+   "slug": "ile-aux-cygnes",
+   "lieu": "Île aux Cygnes"
+  },
+  "ile aux cygnes renovation": {
+   "slug": "ile-aux-cygnes",
+   "lieu": "Île aux Cygnes"
+  },
+  "place de la concorde travaux d entretien": {
+   "slug": "place-de-la-concorde",
+   "lieu": "Place de la Concorde"
+  },
+  "place charles de gaulle refection des trottoirs": {
+   "slug": "place-charles-de-gaulle-etoile",
+   "lieu": "Place Charles-de-Gaulle (Étoile)"
+  },
+  "diversifier les commerces de la place pigalle": {
+   "slug": "place-pigalle",
+   "lieu": "Place Pigalle"
+  },
+  "amenagement de la place pigalle": {
+   "slug": "place-pigalle",
+   "lieu": "Place Pigalle"
+  },
+  "place pigalle travaux d amenagement": {
+   "slug": "place-pigalle",
+   "lieu": "Place Pigalle"
+  },
+  "square du temple renovation des sols": {
+   "slug": "square-du-temple",
+   "lieu": "Square du Temple"
+  },
+  "square des batignolles renovation de l aire de jeux": {
+   "slug": "square-des-batignolles",
+   "lieu": "Square des Batignolles"
+  },
+  "mairie du 5e arrondissement transformation en salle d exposition": {
+   "slug": "mairie-du-5e",
+   "lieu": "Mairie du 5e"
+  },
+  "mairie du 5eme arrondissement schema directeur securite accessibilite": {
+   "slug": "mairie-du-5e",
+   "lieu": "Mairie du 5e"
+  },
+  "mairie du 11e arrondissement ravalement et couverture": {
+   "slug": "mairie-du-11e",
+   "lieu": "Mairie du 11e"
+  },
+  "mairie du 11eme arrondissement ravalement et couverture": {
+   "slug": "mairie-du-11e",
+   "lieu": "Mairie du 11e"
+  },
+  "mairie du 20eme arrondissement travaux divers": {
+   "slug": "mairie-du-20e",
+   "lieu": "Mairie du 20e"
+  },
+  "jardin atlantique renovation des aires de jeux": {
+   "slug": "jardin-atlantique",
+   "lieu": "Jardin Atlantique"
+  },
+  "jardin anne frank renovation de la structure de la pergola": {
+   "slug": "jardin-anne-frank",
+   "lieu": "Jardin Anne-Frank"
+  },
+  "piscine chateau landon travaux de renovation": {
+   "slug": "piscine-chateau-landon",
+   "lieu": "Piscine Château-Landon"
+  },
+  "renovation de la piscine mathis": {
+   "slug": "piscine-mathis",
+   "lieu": "Piscine Mathis"
+  },
+  "parc de choisy renovation des griles 2eme tranche": {
+   "slug": "parc-de-choisy",
+   "lieu": "Parc de Choisy"
+  },
+  "mairie du 6e arrondissement renovation des stores rue madame": {
+   "slug": "mairie-du-6e",
+   "lieu": "Mairie du 6e"
+  },
+  "mairie du 8eme arrondissement reamenagement des locaux": {
+   "slug": "mairie-du-8e",
+   "lieu": "Mairie du 8e"
+  },
+  "mairie du 9eme arrondissement refection facade rossini de la salle polyvalente": {
+   "slug": "mairie-du-9e",
+   "lieu": "Mairie du 9e"
+  },
+  "mairie du 9e salle des fetes rossini restauration de la facade": {
+   "slug": "mairie-du-9e",
+   "lieu": "Mairie du 9e"
+  },
+  "mairie du 10e arrondissement restauration des facades et menuiseries": {
+   "slug": "mairie-du-10e",
+   "lieu": "Mairie du 10e"
+  },
+  "mairie du 10eme arrondissement restauration des facades et des menuiseries": {
+   "slug": "mairie-du-10e",
+   "lieu": "Mairie du 10e"
+  },
+  "mairie du 12e arrondissement modernisation de la couverture de la salle des fetes": {
+   "slug": "mairie-du-12e",
+   "lieu": "Mairie du 12e"
+  },
+  "mairie du 12eme arrondissement travaux d amenagement de la terrasse du niveau r 1": {
+   "slug": "mairie-du-12e",
+   "lieu": "Mairie du 12e"
+  },
+  "mairie du 13e arrondissement renovation interieure de la salle des fetes": {
+   "slug": "mairie-du-13e",
+   "lieu": "Mairie du 13e"
+  },
+  "mairie du 13e arrondissement ravalement des facades": {
+   "slug": "mairie-du-13e",
+   "lieu": "Mairie du 13e"
+  },
+  "mairie du 13eme arrondissement ravalement des facades": {
+   "slug": "mairie-du-13e",
+   "lieu": "Mairie du 13e"
+  },
+  "mairie du 14e arrondissement reamenagement de l accueil du rdc": {
+   "slug": "mairie-du-14e",
+   "lieu": "Mairie du 14e"
+  },
+  "mairie du 15e arrondissement eclairage des facades": {
+   "slug": "mairie-du-15e",
+   "lieu": "Mairie du 15e"
+  },
+  "mairie du 16e arrondissement transformation d un logement en bureaux": {
+   "slug": "mairie-du-16e",
+   "lieu": "Mairie du 16e"
+  },
+  "mairie du 17e arrondissement amenagement de l accueil du rdc": {
+   "slug": "mairie-du-17e",
+   "lieu": "Mairie du 17e"
+  },
+  "mairie du 17e arrondissement modernisation de la fonction reception": {
+   "slug": "mairie-du-17e",
+   "lieu": "Mairie du 17e"
+  },
+  "mairie du 17eme arrondissement modernisation et amenagement de differents locaux": {
+   "slug": "mairie-du-17e",
+   "lieu": "Mairie du 17e"
   }
  }
 }

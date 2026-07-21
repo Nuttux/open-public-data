@@ -1,0 +1,293 @@
+{
+ "generated_at": "2026-07-21T17:04:41.999226+00:00",
+ "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
+ "slug": "theatre-du-soleil",
+ "name": "Théâtre du Soleil",
+ "kind_fr": "Théâtre",
+ "kind_en": "Theatre",
+ "famille": "culture",
+ "arrondissement": 12,
+ "lat": 48.874297,
+ "lon": 2.394923,
+ "photo": "/img/lieux/theatre-du-soleil.jpg",
+ "photo_credit": {
+  "licence": "CC BY-SA 4.0",
+  "auteur": "Wikinade",
+  "url": "https://commons.wikimedia.org/wiki/File:La_Justice_(dos)_-_Th%C3%A9%C3%A2tre_du_Soleil_-_Manifestation_du_11_f%C3%A9vrier_2023_%C3%A0_Paris.jpg",
+  "source": "Wikimedia Commons"
+ },
+ "wiki": {
+  "extract": null,
+  "url": null,
+  "source": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ },
+ "stats": {
+  "n_delibs": 1172,
+  "delibs_span": [
+   2002,
+   2025
+  ],
+  "n_bmo_brut": 0,
+  "n_bmo_verifies": null,
+  "invest_total_eur": 0,
+  "invest_annees": [],
+  "lecture_mode": "titre nommant le lieu (10 trouvés)",
+  "lecture_mode_en": "title naming the place (10 found)",
+  "n_lus": 10,
+  "n_lieu": 8
+ },
+ "subventions_exploitant": {
+  "nom_fiche": "THEATRE DU SOLEIL",
+  "total_eur": 554686.0,
+  "annees": [
+   "2018",
+   "2024"
+  ],
+  "rows": [
+   {
+    "annee": "2024",
+    "montant_eur": 195000.0,
+    "beneficiaire": "THEATRE DU SOLEIL",
+    "thematique": "Culture"
+   },
+   {
+    "annee": "2023",
+    "montant_eur": 132142.0,
+    "beneficiaire": "THEATRE DU SOLEIL",
+    "thematique": "Culture"
+   },
+   {
+    "annee": "2022",
+    "montant_eur": 67044.0,
+    "beneficiaire": "THEATRE DU SOLEIL",
+    "thematique": "Culture"
+   },
+   {
+    "annee": "2021",
+    "montant_eur": 17500.0,
+    "beneficiaire": "THEATRE DU SOLEIL",
+    "thematique": "Culture"
+   },
+   {
+    "annee": "2020",
+    "montant_eur": 65000.0,
+    "beneficiaire": "THEATRE DU SOLEIL",
+    "thematique": "Culture"
+   },
+   {
+    "annee": "2019",
+    "montant_eur": 70000.0,
+    "beneficiaire": "THEATRE DU SOLEIL",
+    "thematique": "Culture"
+   },
+   {
+    "annee": "2018",
+    "montant_eur": 8000.0,
+    "beneficiaire": "THEATRE DU SOLEIL",
+    "thematique": "Culture"
+   }
+  ]
+ },
+ "residents": [
+  {
+   "beneficiaire": "LE BAL REBONDISSANT",
+   "montant_total": 20000.0,
+   "preuve": "Objet de la subvention : \"Résidence artistique et culturelle au Théâtre du Soleil - Paris.\" — nomme explicitement le lieu.",
+   "preuve_en": "Grant purpose: \"Artistic and cultural residency at the Théâtre du Soleil - Paris.\" — explicitly names the site."
+  },
+  {
+   "beneficiaire": "COMPAGNIE DES CINQ ROUES",
+   "montant_total": 8000.0,
+   "preuve": "Objet de la subvention : \"'Au-delà des ténèbres' : un diptyque de Simon Abkarian au Théâtre du Soleil\" — nomme explicitement le lieu.",
+   "preuve_en": "Grant purpose: \"'Au-delà des ténèbres': a diptych by Simon Abkarian at the Théâtre du Soleil\" — explicitly names the site."
+  }
+ ],
+ "kpi_montant": null,
+ "synthese_fr": "Installé à la Cartoucherie du bois de Vincennes (12e), le Théâtre du Soleil, structuré en SCOP, reçoit à plusieurs reprises entre 2002 et 2010 des subventions de la Ville de Paris, votées aux côtés des autres théâtres du site (Aquarium, Chaudron, Épée de Bois, Tempête) sous forme de subventions compensatrices de loyer puis de fonctionnement. En 2010, le Conseil de Paris lui attribue en plus une subvention d'équipement de 120 000 euros dans le cadre d'une convention annuelle, après avis du Conseil du 12e arrondissement. D'autres subventions financent des projets spécifiques, comme l'accueil de la compagnie afghane le Théâtre Aftaab en 2009. En 2011, un vœu du groupe PSRGA porte sur les difficultés d'accès au théâtre par le bus 112, du fait d'un changement de zone tarifaire jugé pénalisant par plusieurs élus en séance. Deux délibérations plus récentes, dont seul le titre est disponible ici, portent sur une subvention et une convention pour une école nomade à Kyiv en 2023, puis sur une nouvelle subvention de fonctionnement de 75 000 euros en 2025.",
+ "moments": [
+  {
+   "id": "71459",
+   "seance": "DECEMBRE 2002",
+   "fait": "Le Conseil attribue une subvention compensatrice de loyer de 36 566 euros au Théâtre du Soleil et autorise le Maire à signer une convention de subvention de fonctionnement avec la SCOP.",
+   "pourquoi": "premier accord subvention-convention documenté ici",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=71459",
+   "fait_en": "The Council awards a rent-compensation grant of 36,566 euros to the Théâtre du Soleil and authorizes the Mayor to sign an operating-grant agreement with the SCOP.",
+   "pourquoi_en": "first grant-and-agreement documented here"
+  },
+  {
+   "id": "67357",
+   "seance": "SEPTEMBRE 2008",
+   "fait": "Le Conseil approuve une subvention de 20 000 euros au profit du Théâtre du Soleil Cartoucherie, financée à parts égales par la DGRI et la DAC.",
+   "pourquoi": "subvention conjointe de deux directions de la Ville",
+   "vedette": false,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=67357",
+   "fait_en": "The Council approves a grant of 20,000 euros for the Théâtre du Soleil Cartoucherie, funded equally by the DGRI and the DAC.",
+   "pourquoi_en": "joint grant from two City departments"
+  },
+  {
+   "id": "74724",
+   "seance": "JUILLET 2009",
+   "fait": "Une subvention de 15 000 euros est attribuée au Théâtre du Soleil pour l'accueil de la compagnie afghane Théâtre Aftaab.",
+   "pourquoi": "finance un accueil de compagnie étrangère",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=74724",
+   "fait_en": "A grant of 15,000 euros is awarded to the Théâtre du Soleil to host the Afghan company Théâtre Aftaab.",
+   "pourquoi_en": "funds the hosting of a foreign company"
+  },
+  {
+   "id": "82251",
+   "seance": "NOVEMBRE 2009",
+   "fait": "Une subvention complémentaire de 2 500 euros est attribuée au Théâtre du Soleil au titre des relations internationales.",
+   "pourquoi": "subvention complémentaire la même année",
+   "vedette": false,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=82251",
+   "fait_en": "A supplementary grant of 2,500 euros is awarded to the Théâtre du Soleil under international relations funding.",
+   "pourquoi_en": "supplementary grant in the same year"
+  },
+  {
+   "id": "44802",
+   "seance": "MARS 2010",
+   "fait": "Le Conseil attribue une subvention d'équipement de 120 000 euros à la SCOP Théâtre du Soleil, après avis du Conseil du 12e arrondissement.",
+   "pourquoi": "plus grosse subvention et avis de l'arrondissement",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=44802",
+   "fait_en": "The Council awards an equipment grant of 120,000 euros to the SCOP Théâtre du Soleil, following an opinion from the 12th arrondissement council.",
+   "pourquoi_en": "largest grant, with an arrondissement opinion"
+  },
+  {
+   "id": "102092",
+   "seance": "SEPTEMBRE 2011",
+   "fait": "Le Conseil examine un vœu sur les difficultés d'accès au théâtre par le bus 112, liées à un changement de zone tarifaire.",
+   "pourquoi": "seul débat porté sur l'accès au lieu",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=102092",
+   "fait_en": "The Council examines a motion on difficulties accessing the theater via bus line 112, linked to a fare-zone change.",
+   "pourquoi_en": "the only debate concerning access to the site"
+  },
+  {
+   "id": "170393",
+   "seance": "JUILLET 2023",
+   "fait": "La délibération porte sur une subvention de 32 200 euros et une convention avec le Théâtre du Soleil pour l'organisation d'une école nomade à Kyiv ; seul le titre de la délibération est disponible ici.",
+   "pourquoi": "projet international, à Kyiv",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=170393",
+   "fait_en": "The resolution concerns a grant of 32,200 euros and an agreement with the Théâtre du Soleil for organizing a traveling school ('école nomade') in Kyiv; only the title of the resolution is available here.",
+   "pourquoi_en": "international project, in Kyiv"
+  },
+  {
+   "id": "184676",
+   "seance": "NOVEMBRE 2025",
+   "fait": "La délibération porte sur une subvention de fonctionnement de 75 000 euros et une convention avec le Théâtre du Soleil ; seul le titre de la délibération est disponible ici.",
+   "pourquoi": "subvention de fonctionnement la plus récente",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=184676",
+   "fait_en": "The resolution concerns an operating grant of 75,000 euros and an agreement with the Théâtre du Soleil; only the title of the resolution is available here.",
+   "pourquoi_en": "most recent operating grant"
+  }
+ ],
+ "montants": [
+  {
+   "seance": "NOVEMBRE 2025",
+   "montant": "75.000 euros",
+   "objet": "subvention de fonctionnement",
+   "citation": "Subvention de fonctionnement (75.000 euros) et convention avec le Théâtre du Soleil (12e).",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=184676"
+  },
+  {
+   "seance": "JUILLET 2023",
+   "montant": "32.200 euros",
+   "objet": "subvention et convention pour une école nomade à Kyiv",
+   "citation": "Subvention (32.200 euros) au Théâtre du Soleil et convention pour l’organisation d’une école nomade à Kyiv.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=170393"
+  },
+  {
+   "seance": "NOVEMBRE 2009",
+   "montant": "2.500 euros",
+   "objet": "subvention complémentaire, relations internationales",
+   "citation": "Une subvention complémentaire d?un montant de 2.500 euros est attribuée au Théâtre du Soleil.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=82251"
+  },
+  {
+   "seance": "SEPTEMBRE 2008",
+   "montant": "20.000 euros",
+   "objet": "subvention (DGRI + DAC, à parts égales)",
+   "citation": "Est approuvé l?octroi d?une subvention d?un montant de 20.000 euros au profit du Théâtre du Soleil Cartoucherie (12e)",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=67357"
+  },
+  {
+   "seance": "MARS 2010",
+   "montant": "120.000 euros",
+   "objet": "subvention d'équipement",
+   "citation": "Une subvention d?équipement de 120.000 euros est attribuée, dans le cadre d?une convention annuelle relative à l?attribution d?équipement, à la SCOP Théâtre du Soleil, située à la Cartoucherie",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=44802"
+  },
+  {
+   "seance": "JUILLET 2009",
+   "montant": "15.000 euros",
+   "objet": "subvention pour l'accueil de la compagnie afghane Théâtre Aftaab",
+   "citation": "Une subvention d?un montant de 15.000 euros est attribuée au Théâtre du Soleil, dont le siège social est situé à La Cartoucherie (12e), pour l?accueil de la compagnie afghane, le Théâtre Aftaab",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=74724"
+  },
+  {
+   "seance": "DECEMBRE 2002",
+   "montant": "36.566,00 euros",
+   "objet": "subvention compensatrice de loyer (Cartoucherie de Vincennes)",
+   "citation": "Théâtre du Soleil 36.566,00 D 1394",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=71459"
+  },
+  {
+   "seance": "NOVEMBRE 2003",
+   "montant": "34.660 euros",
+   "objet": "subvention de fonctionnement (Cartoucherie du bois de Vincennes)",
+   "citation": "Théâtre du Soleil 34.660 D01394",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=94364"
+  }
+ ],
+ "bmo_extraits": [],
+ "bmo_recit": null,
+ "invest": [],
+ "marches": [
+  {
+   "numero_marche": "20141210011467",
+   "objet": "MODERNISATION DES SANITAIRES THÉÂTRE DU SOLEIL-CARTOUCHERIE",
+   "objet_clair": null,
+   "fournisseur": "PRESTATIONS SERVICES RENOVATION",
+   "montant_max": 83025.0,
+   "date_notification": "2014-06-19",
+   "preuve": "Objet du marché nomme explicitement le lieu : \"MODERNISATION DES SANITAIRES THÉÂTRE DU SOLEIL-CARTOUCHERIE\"."
+  },
+  {
+   "numero_marche": "decp-2025S05513",
+   "objet": "Marché de maitrise d’œuvre pour la consolidation structurelle, le confortement du sol et des fondation du Théâtre du soleil, 2 rue du champ de manœuvre, bois de Vincennes 75012 Paris ",
+   "objet_clair": null,
+   "fournisseur": "G2TEC",
+   "montant_max": 26320.0,
+   "date_notification": "2025-03-03",
+   "preuve": "Objet du marché nomme explicitement le lieu et son adresse (\"2 rue du champ de manœuvre, bois de Vincennes\"), cohérente avec l'adresse du siège social confirmée par le contexte (\"Cartoucherie, Route du champ de manœuvre (12e)\") : \"Marché de maitrise d'œuvre pour la consolidation structurelle, le confortement du sol et des fondation du Théâtre du soleil...\"."
+  }
+ ],
+ "mandate": null,
+ "sources": {
+  "delibs": {
+   "name": "Débat-Délibs — Conseil de Paris",
+   "url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=search-solr&query=Th%C3%A9%C3%A2tre+du+Soleil"
+  },
+  "bmo": {
+   "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
+   "url": "https://gallica.bnf.fr/ark:/12148/cb343512457/date"
+  },
+  "invest": {
+   "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
+   "url": "https://opendata.paris.fr/"
+  },
+  "wiki": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ },
+ "synthese_en": "Located at the Cartoucherie in the Bois de Vincennes (12th arrondissement), the Théâtre du Soleil, organized as a workers' cooperative (SCOP), repeatedly received grants from the City of Paris between 2002 and 2010, voted alongside the other theaters on the site (Aquarium, Chaudron, Épée de Bois, Tempête), first as rent-compensation grants and later as operating grants. In 2010, the Conseil de Paris also awarded it an equipment grant of 120,000 euros as part of an annual agreement, following an opinion from the 12th arrondissement council. Other grants funded specific projects, such as hosting the Afghan company Théâtre Aftaab in 2009. In 2011, a motion from the PSRGA group addressed difficulties accessing the theater via bus line 112, resulting from a fare-zone change that several elected officials deemed penalizing during the session. Two more recent resolutions, for which only the title is available here, concern a grant and agreement for a traveling school ('école nomade') in Kyiv in 2023, and a new operating grant of 75,000 euros in 2025."
+}

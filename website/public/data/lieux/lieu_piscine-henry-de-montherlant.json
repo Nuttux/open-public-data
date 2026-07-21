@@ -1,0 +1,134 @@
+{
+ "generated_at": "2026-07-21T17:04:41.999226+00:00",
+ "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
+ "slug": "piscine-henry-de-montherlant",
+ "name": "Piscine Henry-de-Montherlant",
+ "kind_fr": "Piscine",
+ "kind_en": "Swimming pool",
+ "famille": "sport",
+ "arrondissement": 16,
+ "lat": 48.860262,
+ "lon": 2.326601,
+ "photo": "/img/lieux/piscine-henry-de-montherlant.jpg",
+ "photo_credit": {
+  "licence": null,
+  "auteur": null,
+  "url": "https://fr.wikipedia.org/wiki/Piscine_Henry-de-Montherlant",
+  "source": "Wikipédia"
+ },
+ "wiki": {
+  "extract": "La piscine Henry-de-Montherlant est une piscine du 16e arrondissement de Paris, située au 32, boulevard Lannes.",
+  "url": "https://fr.wikipedia.org/wiki/Piscine_Henry-de-Montherlant",
+  "source": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  },
+  "extract_en": "The Henry-de-Montherlant pool is a swimming pool in the 16th arrondissement of Paris, located at 32 boulevard Lannes."
+ },
+ "stats": {
+  "n_delibs": 398,
+  "delibs_span": [
+   1998,
+   2003
+  ],
+  "n_bmo_brut": 0,
+  "n_bmo_verifies": null,
+  "invest_total_eur": 0,
+  "invest_annees": [],
+  "lecture_mode": "tête du classement Solr (398 documents au total)",
+  "lecture_mode_en": "top of the Solr ranking (398 documents total)",
+  "n_lus": 42,
+  "n_lieu": 5
+ },
+ "subventions_exploitant": null,
+ "residents": [],
+ "kpi_montant": null,
+ "synthese_fr": "Les délibérations retrouvées sous ce nom concernent en réalité, dans leur immense majorité, d'autres piscines parisiennes ou des hommages à des personnalités prénommées Henry, sans lien avec l'équipement du 16e arrondissement. Seuls cinq documents, tous antérieurs à 2004, portent effectivement sur la piscine couverte Henry-de-Montherlant (aussi désignée \"centre sportif Montherlant\"), 32 boulevard Lannes. Entre 1998 et 2003, le Conseil de Paris y traite à plusieurs reprises de travaux d'entretien et de mise aux normes : réaménagement des vestiaires (1998), rénovation des filtres à sable et remplacement des clôtures des tennis (1999), aménagement d'un hall d'accueil commun (2002), adaptation des locaux aux personnes handicapées (2002) et modernisation du centre thermique (2003). Selon les cas, le Conseil approuve un principe de travaux ou les modalités d'attribution d'un marché, et autorise le Maire de Paris à signer ou souscrire le marché correspondant, sans que les délibérations retrouvées ne précisent de montant chiffré.",
+ "moments": [
+  {
+   "id": "64986",
+   "seance": "OCTOBRE 1998",
+   "fait": "Le Conseil approuve le principe du réaménagement des vestiaires pour améliorer l'accueil du public.",
+   "pourquoi": "premier chantier retrouvé sur l'équipement",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=64986",
+   "fait_en": "The Council approves the principle of refurbishing the changing rooms to improve visitor reception.",
+   "pourquoi_en": "first project found for this facility"
+  },
+  {
+   "id": "27514",
+   "seance": "AVRIL 1999",
+   "fait": "Le Conseil approuve les modalités d'attribution de deux marchés pour rénover les filtres à sable et remplacer les clôtures des tennis.",
+   "pourquoi": "entretien technique et espaces sportifs annexes",
+   "vedette": false,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=27514",
+   "fait_en": "The Council approves the terms for awarding two contracts to renovate the sand filters and replace the tennis court fencing.",
+   "pourquoi_en": "technical maintenance and adjoining sports facilities"
+  },
+  {
+   "id": "38979",
+   "seance": "MARS 2002",
+   "fait": "Le Maire est autorisé à signer un marché pour aménager un hall d'accueil commun au centre sportif.",
+   "pourquoi": "réorganisation de l'accueil du public",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=38979",
+   "fait_en": "The Mayor is authorized to sign a contract to develop a shared reception hall for the sports centre.",
+   "pourquoi_en": "reorganization of visitor reception"
+  },
+  {
+   "id": "71277",
+   "seance": "DECEMBRE 2002",
+   "fait": "Le Maire est autorisé à souscrire deux marchés pour adapter les locaux aux personnes handicapées.",
+   "pourquoi": "mise aux normes accessibilité",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=71277",
+   "fait_en": "The Mayor is authorized to subscribe to two contracts to adapt the premises for people with disabilities.",
+   "pourquoi_en": "accessibility compliance"
+  },
+  {
+   "id": "94120",
+   "seance": "NOVEMBRE 2003",
+   "fait": "Le Conseil approuve le principe de travaux de modernisation du centre thermique de la piscine.",
+   "pourquoi": "dernier chantier retrouvé, équipement technique",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=94120",
+   "fait_en": "The Council approves the principle of modernization work on the pool's heating plant.",
+   "pourquoi_en": "last project found, technical equipment"
+  }
+ ],
+ "montants": [],
+ "bmo_extraits": [],
+ "bmo_recit": null,
+ "invest": [],
+ "marches": [
+  {
+   "numero_marche": "decp-2025S10176",
+   "objet": "Maîtrise d’œuvre pour la rénovation de la Piscine Henry de Montherlant, 30 Boulevard de Lannes 75016 Paris",
+   "objet_clair": null,
+   "fournisseur": "SOCIETE D'EXERCICE LIBERAL A RESPONSABILITE LIMITEE D'ARCHITECTURE DE MESSIEURS GUILLAUME BOURGUEIL ET NICOLAS ROULEAU",
+   "montant_max": 134517.39,
+   "date_notification": "2025-09-22",
+   "preuve": "Objet du marché nomme explicitement le lieu : \"Maîtrise d'œuvre pour la rénovation de la Piscine Henry de Montherlant, 30 Boulevard de Lannes 75016 Paris\"."
+  }
+ ],
+ "mandate": null,
+ "sources": {
+  "delibs": {
+   "name": "Débat-Délibs — Conseil de Paris",
+   "url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=search-solr&query=Piscine+Henry-de-Montherlant"
+  },
+  "bmo": {
+   "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
+   "url": "https://gallica.bnf.fr/ark:/12148/cb343512457/date"
+  },
+  "invest": {
+   "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
+   "url": "https://opendata.paris.fr/"
+  },
+  "wiki": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ },
+ "synthese_en": "The resolutions found under this name mostly concern, in reality, other Paris swimming pools or tributes to public figures named Henry, unrelated to the facility in the 16th arrondissement. Only five documents, all dated before 2004, actually concern the Henry-de-Montherlant indoor pool (also referred to as the \"Montherlant sports centre\"), 32 boulevard Lannes. Between 1998 and 2003, the Conseil de Paris repeatedly addressed maintenance and compliance work there: renovation of the changing rooms (1998), renovation of the sand filters and replacement of the tennis court fencing (1999), development of a shared reception hall (2002), adaptation of the premises for people with disabilities (2002), and modernization of the heating plant (2003). Depending on the case, the Council approved the principle of the work or the terms for awarding a contract, and authorized the Mayor of Paris to sign or subscribe to the corresponding contract, without the resolutions found specifying a monetary amount."
+}

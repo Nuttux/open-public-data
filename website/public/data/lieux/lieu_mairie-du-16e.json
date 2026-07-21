@@ -1,0 +1,136 @@
+{
+ "generated_at": "2026-07-21T17:04:41.999226+00:00",
+ "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
+ "slug": "mairie-du-16e",
+ "name": "Mairie du 16e",
+ "kind_fr": "Mairie",
+ "kind_en": "Town hall",
+ "famille": "services",
+ "arrondissement": 16,
+ "lat": 48.8637,
+ "lon": 2.2769,
+ "photo": "/img/lieux/mairie-du-16e.jpg",
+ "photo_credit": {
+  "licence": "CC BY-SA 4.0",
+  "auteur": "Polymagou",
+  "url": "https://commons.wikimedia.org/wiki/File:Mairie_du_16e_arrondissement_de_Paris_6.jpg",
+  "source": "Wikimedia Commons"
+ },
+ "wiki": {
+  "extract": null,
+  "url": null,
+  "source": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ },
+ "stats": {
+  "n_delibs": 930,
+  "delibs_span": [
+   1995,
+   2026
+  ],
+  "n_bmo_brut": 0,
+  "n_bmo_verifies": null,
+  "invest_total_eur": 157266.88,
+  "invest_annees": [
+   "2024"
+  ],
+  "lecture_mode": "titre nommant le lieu (24 trouvés)",
+  "lecture_mode_en": "title naming the place (24 found)",
+  "n_lus": 0,
+  "n_lieu": null
+ },
+ "subventions_exploitant": null,
+ "residents": [],
+ "kpi_montant": null,
+ "synthese_fr": null,
+ "moments": [],
+ "montants": [],
+ "bmo_extraits": [],
+ "bmo_recit": null,
+ "invest": [
+  {
+   "annee": 2024,
+   "montant_eur": 157266.88,
+   "nom_projet": "Mairie Du 16e Arrondissement - Transformation d'un logement en bureaux",
+   "preuve": "Nom du projet : « Mairie Du 16e Arrondissement - Transformation d'un logement en bureaux » (74 m du lieu)",
+   "id": "2024_16_45_003"
+  }
+ ],
+ "marches": [
+  {
+   "numero_marche": "decp-2026T02925",
+   "objet": "MS - TVX - Lot 5 - SET 1 - Modernisation, avec changement d'énergie et passage du gaz à la vapeur, du centre thermique de la Mairie du 16ème arrondissement - 71 avenue Henri Martin 75016 Paris",
+   "objet_clair": null,
+   "fournisseur": "CRAM",
+   "montant_max": 368340.76,
+   "date_notification": "2026-03-17",
+   "preuve": "Objet cite explicitement « Mairie du 16ème arrondissement - 71 avenue Henri Martin 75016 Paris » (adresse du lieu) pour des travaux de modernisation du centre thermique"
+  },
+  {
+   "numero_marche": "20222022T08687",
+   "objet": "MODERNISATION DES MENUISERIES EXTÉRIEURES MAIRIE DU 16EME",
+   "objet_clair": null,
+   "fournisseur": "ART DU BOIS SABIR",
+   "montant_max": 289998.0,
+   "date_notification": "2022-11-18",
+   "preuve": "Objet : « MODERNISATION DES MENUISERIES EXTÉRIEURES MAIRIE DU 16EME » — travaux sur le bâtiment de la mairie"
+  },
+  {
+   "numero_marche": "20151660000002",
+   "objet": "CONCEPTION GRAPHIQUE POUR LA MAIRIE DU 16E",
+   "objet_clair": null,
+   "fournisseur": "ATTRIBUT COMMUNICATION ET DEVELOPP",
+   "montant_max": 100000.0,
+   "date_notification": "2015-01-23",
+   "preuve": "Objet : « CONCEPTION GRAPHIQUE POUR LA MAIRIE DU 16E » — prestation nommément destinée à la mairie"
+  },
+  {
+   "numero_marche": "20141660000028",
+   "objet": "FOURNITURE DE VINS DE CHAMPAGNE POUR LA MAIRIE DU 16E",
+   "objet_clair": null,
+   "fournisseur": "CHAMPAGNE PANNIER",
+   "montant_max": 80000.0,
+   "date_notification": "2014-11-06",
+   "preuve": "Objet : « FOURNITURE DE VINS DE CHAMPAGNE POUR LA MAIRIE DU 16E » — fourniture nommément destinée à la mairie"
+  },
+  {
+   "numero_marche": "20242024S08091",
+   "objet": "MOE HORS LOI MOP MODERNISATION CT MAIRIE DU 16ÈME",
+   "objet_clair": "Études pour moderniser le chauffage de la mairie du 16e arrondissement",
+   "fournisseur": "CPS BUREAU D'ETUDES",
+   "montant_max": 26250.0,
+   "date_notification": "2024-07-31",
+   "preuve": "Objet : « MOE HORS LOI MOP MODERNISATION CT MAIRIE DU 16ÈME » — maîtrise d'œuvre pour la modernisation du centre thermique de la mairie (cohérent avec decp-2026T02925)"
+  },
+  {
+   "numero_marche": "20161660000012",
+   "objet": "MARCHÉ DE CONCEPTION GRAPHIQUE MAIRIE DU 16EME",
+   "objet_clair": null,
+   "fournisseur": "CITRON'AILE",
+   "montant_max": 25000.0,
+   "date_notification": "2016-05-23",
+   "preuve": "Objet : « MARCHÉ DE CONCEPTION GRAPHIQUE MAIRIE DU 16EME » — prestation nommément destinée à la mairie"
+  }
+ ],
+ "mandate": null,
+ "sources": {
+  "delibs": {
+   "name": "Débat-Délibs — Conseil de Paris",
+   "url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=search-solr&query=Mairie+du+16e"
+  },
+  "bmo": {
+   "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
+   "url": "https://gallica.bnf.fr/ark:/12148/cb343512457/date"
+  },
+  "invest": {
+   "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
+   "url": "https://opendata.paris.fr/"
+  },
+  "wiki": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ }
+}

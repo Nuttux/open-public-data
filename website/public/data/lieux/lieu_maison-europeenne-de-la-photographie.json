@@ -1,0 +1,392 @@
+{
+ "generated_at": "2026-07-21T17:04:41.999226+00:00",
+ "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
+ "slug": "maison-europeenne-de-la-photographie",
+ "name": "Maison Européenne de la Photographie",
+ "kind_fr": "Équipement culturel",
+ "kind_en": "Cultural venue",
+ "famille": "culture",
+ "arrondissement": 4,
+ "lat": 48.825945,
+ "lon": 2.358291,
+ "photo": "/img/lieux/maison-europeenne-de-la-photographie.jpg",
+ "photo_credit": {
+  "licence": "CC BY 3.0",
+  "auteur": "Mbzt",
+  "url": "https://commons.wikimedia.org/wiki/File:P1080197_Paris_IV_maison_europ%C3%A9enne_de_la_photographie_rwk.JPG",
+  "source": "Wikimedia Commons"
+ },
+ "wiki": {
+  "extract": null,
+  "url": null,
+  "source": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ },
+ "stats": {
+  "n_delibs": 622,
+  "delibs_span": [
+   1999,
+   2024
+  ],
+  "n_bmo_brut": 0,
+  "n_bmo_verifies": null,
+  "invest_total_eur": 0,
+  "invest_annees": [],
+  "lecture_mode": "titre nommant le lieu (23 trouvés)",
+  "lecture_mode_en": "title naming the place (23 found)",
+  "n_lus": 22,
+  "n_lieu": 22
+ },
+ "subventions_exploitant": null,
+ "residents": [],
+ "kpi_montant": null,
+ "synthese_fr": "Les délibérations du Conseil de Paris sur la Maison Européenne de la Photographie couvrent d'abord son installation dans l'Hôtel Hénault de Cantobre, 82 rue François-Miron (4e) : approbation du principe des travaux d'aménagement de l'atelier de restauration en 1999, marché de maîtrise d'œuvre confié à M. Yves Lion, puis en 2001 autorisation d'un contrat de transaction indemnisant ce dernier pour des études réalisées dans le cadre de l'opération. Dès 1999, le Conseil autorise une convention d'occupation du domaine public et une convention d'objectifs avec l'association Paris Audiovisuel qui gère le lieu ; en séance, M. Jacques Bravo se déclare favorable à cette autorisation tout en exprimant de vives réserves sur la lisibilité financière du montage associatif, ce à quoi Mme Macé de Lépinay répond en détaillant l'organisation des deux lignes budgétaires. De 2002 à 2010, le Conseil renouvelle presque chaque année des conventions d'objectifs fixant une subvention de fonctionnement (autour de 3,6 à 4 millions d'euros) et une subvention d'équipement de 70.000 euros, complétées par des avenants ponctuels comme les 60.000 euros attribués en 2004 pour la première édition du Mois européen de la photographie. Les conventions d'occupation du domaine public sont régulièrement prorogées ou renouvelées, avec une redevance annuelle fixée à 295.575 euros en 2005. Plus récemment, le Conseil approuve en 2021 des subventions de fonctionnement et d'équipement avec l'association gestionnaire, puis en 2024 une nouvelle subvention et un avenant à la convention.",
+ "moments": [
+  {
+   "id": "34106",
+   "seance": "MARS 1999",
+   "fait": "Le Conseil approuve le principe des travaux d'aménagement de l'atelier de restauration de la photographie et le marché de maîtrise d'œuvre confié à M. Yves Lion.",
+   "pourquoi": "premiers travaux structurants dans le lieu",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=34106",
+   "fait_en": "The Conseil approves the principle of renovation work for the photography restoration workshop and the project management contract awarded to Mr. Yves Lion.",
+   "pourquoi_en": "first major structural work at the venue"
+  },
+  {
+   "id": "23252",
+   "seance": "FEVRIER 1999",
+   "fait": "En séance, M. Jacques Bravo se déclare favorable à l'autorisation d'occupation du domaine public mais dénonce le manque de lisibilité financière de l'association gestionnaire.",
+   "pourquoi": "seul débat contradictoire relevé dans ces délibérations",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=23252",
+   "fait_en": "During the session, Mr. Jacques Bravo states he is in favor of the authorization for occupation of the public domain but criticizes the lack of financial transparency of the managing association.",
+   "pourquoi_en": "the only contentious debate noted in these deliberations"
+  },
+  {
+   "id": "85322",
+   "seance": "JANVIER 2001",
+   "fait": "Le Maire est autorisé à signer une transaction indemnisant M. Yves Lion à hauteur de 358 225,92 F pour des études liées à l'installation du lieu.",
+   "pourquoi": "litige financier autour du chantier initial",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=85322",
+   "fait_en": "The Mayor is authorized to sign a settlement compensating Mr. Yves Lion up to 358,225.92 francs for studies related to the venue's installation.",
+   "pourquoi_en": "financial dispute over the initial construction work"
+  },
+  {
+   "id": "64179",
+   "seance": "OCTOBRE 2004",
+   "fait": "Une subvention complémentaire de 60 000 € est votée pour la première édition du Mois européen de la photographie.",
+   "pourquoi": "argent lié à un temps fort de programmation",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=64179",
+   "fait_en": "A supplementary subsidy of €60,000 is voted for the first edition of the Mois européen de la photographie.",
+   "pourquoi_en": "money tied to a programming highlight"
+  },
+  {
+   "id": "43871",
+   "seance": "AVRIL 2005",
+   "fait": "La convention d'occupation du domaine public de l'Hôtel Hénault de Cantobre fixe la redevance annuelle à 295 575 €.",
+   "pourquoi": "chiffre concret du loyer domanial",
+   "vedette": false,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=43871",
+   "fait_en": "The public domain occupation agreement for the Hôtel Hénault de Cantobre sets the annual fee at €295,575.",
+   "pourquoi_en": "concrete figure for the public-domain rent"
+  },
+  {
+   "id": "67437",
+   "seance": "SEPTEMBRE 2008",
+   "fait": "La subvention de fonctionnement 2008 est portée de 1 847 725 € à 3 695 490 € par avenant.",
+   "pourquoi": "mécanique du doublement de la subvention",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=67437",
+   "fait_en": "The 2008 operating subsidy is increased from €1,847,725 to €3,695,490 by amendment.",
+   "pourquoi_en": "mechanics of the subsidy doubling"
+  },
+  {
+   "id": "163805",
+   "seance": "JUILLET 2021",
+   "fait": "Le Conseil approuve des subventions de fonctionnement (2 960 490 €) et d'équipement (400 000 €), et autorise un avenant avec l'association gestionnaire.",
+   "pourquoi": "montants récents, saut du volet équipement",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=163805",
+   "fait_en": "The Conseil approves operating (€2,960,490) and equipment (€400,000) subsidies, and authorizes an amendment with the managing association.",
+   "pourquoi_en": "recent amounts, jump in the equipment component"
+  },
+  {
+   "id": "176005",
+   "seance": "MAI 2024",
+   "fait": "Le Conseil approuve une subvention de 10 000 € et autorise un avenant à la convention avec l'association gestionnaire.",
+   "pourquoi": "dernier acte connu de ces délibérations",
+   "vedette": false,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=176005",
+   "fait_en": "The Conseil approves a €10,000 subsidy and authorizes an amendment to the agreement with the managing association.",
+   "pourquoi_en": "latest known act in these deliberations"
+  }
+ ],
+ "montants": [
+  {
+   "seance": "MAI 2024",
+   "montant": "10.000 euros",
+   "objet": "subvention (avenant à la convention)",
+   "citation": "Subvention (10.000 euros) et avenant à la convention avec Paris Audiovisuel - Maison Européenne de la Photographie (Paris Centre).",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=176005"
+  },
+  {
+   "seance": "JUILLET 2021",
+   "montant": "2.960.490 euros",
+   "objet": "subvention de fonctionnement",
+   "citation": "Subventions de fonctionnement (2.960.490 euros) et d’équipement (400.000 euros), avenant et convention avec l’association Paris-Audiovisuel - Maison Européenne de la Photographie (Paris Centre).",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=163805"
+  },
+  {
+   "seance": "JUILLET 2021",
+   "montant": "400.000 euros",
+   "objet": "subvention d'équipement",
+   "citation": "Subventions de fonctionnement (2.960.490 euros) et d’équipement (400.000 euros), avenant et convention avec l’association Paris-Audiovisuel - Maison Européenne de la Photographie (Paris Centre).",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=163805"
+  },
+  {
+   "seance": "SEPTEMBRE 2010",
+   "montant": "3.640.058 euros",
+   "objet": "subvention totale portée de 1.847.745 à 3.640.058 euros (2010)",
+   "citation": "La subvention attribuée à l?association Paris audiovisuel - Maison européenne de la Photographie, 82 rue François Miron (4e) est portée de 1.847.745 euros à 3.640.058 euros.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=39603"
+  },
+  {
+   "seance": "SEPTEMBRE 2010",
+   "montant": "70.000 euros",
+   "objet": "subvention d'équipement",
+   "citation": "la convention relative à l?attribution d?une subvention d?équipement de 70.000 euros",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=39603"
+  },
+  {
+   "seance": "SEPTEMBRE 2010",
+   "montant": "1.792.313 euros",
+   "objet": "dépense de fonctionnement imputée au budget 2010",
+   "citation": "La dépense correspondant à la subvention de fonctionnement, soit 1.792.313 euros, sera imputée sur le budget de fonctionnement 2010",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=39603"
+  },
+  {
+   "seance": "SEPTEMBRE 2009",
+   "montant": "3.695.490 euros",
+   "objet": "subvention totale portée de 1.847.745 à 3.695.490 euros (2009)",
+   "citation": "la subvention attribuée à l?association Paris audiovisuel - Maison européenne de la Photographie, 82 rue François Miron (4e) est portée de 1.847.745 euros à 3.695.490 euros.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=37286"
+  },
+  {
+   "seance": "SEPTEMBRE 2009",
+   "montant": "70.000 euros",
+   "objet": "subvention d'équipement",
+   "citation": "convention annuelle d?objectifs relative à l?attribution d?une subvention d?équipement de 70.000 euros",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=37286"
+  },
+  {
+   "seance": "AVRIL 2004",
+   "montant": "3.946.450 euros",
+   "objet": "subvention de fonctionnement 2004",
+   "citation": "subvention de fonctionnement de 3.946.450 euros pour l'année 2004",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=52010"
+  },
+  {
+   "seance": "FEVRIER 1999",
+   "montant": "1,65 million de francs",
+   "objet": "ligne de subvention pour occupation du domaine public, selon M. Jacques Bravo (propos en séance, budget primitif 1998)",
+   "citation": "une ligne Maison européenne de la photographie subventionnée pour occupation du domaine public (1,65 million de francs)",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=23252"
+  },
+  {
+   "seance": "FEVRIER 1999",
+   "montant": "24 millions (francs)",
+   "objet": "subvention à l'association, selon M. Jacques Bravo (propos en séance, budget primitif 1998)",
+   "citation": "et une subvention de 24 millions pour l'association \" Paris audiovisuel - Maison européenne de la photographie \".",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=23252"
+  },
+  {
+   "seance": "FEVRIER 2002",
+   "montant": "3.985.960 euros",
+   "objet": "dépense de fonctionnement imputée (2002)",
+   "citation": "La dépense correspondante, soit 3.985.960 euros, sera imputée à la nature 6574",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=57924"
+  },
+  {
+   "seance": "FEVRIER 2002",
+   "montant": "250.960 euros",
+   "objet": "recette constatée (redevance domaine public)",
+   "citation": "La recette correspondante, soit 250.960 euros, sera constatée au chapitre 70",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=57924"
+  },
+  {
+   "seance": "OCTOBRE 2003",
+   "montant": "250.960 euros",
+   "objet": "recette correspondante (redevance domaine public)",
+   "citation": "La recette correspondante, soit 250.960 euros, sera constatée au chapitre 70, rubrique 322, nature 70323 du budget de fonctionnement de la Ville de Paris.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=47230"
+  },
+  {
+   "seance": "MARS 2007",
+   "montant": "3.695.490 euros",
+   "objet": "subvention de fonctionnement 2007",
+   "citation": "la convention annuelle d?objectifs relative à l?attribution d?une subvention de fonctionnement de 3.695.490 euros et la convention annuelle d?objectifs relative à l?attribution d?une subvention d?équipement de 70.000 euros.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=31777"
+  },
+  {
+   "seance": "MARS 2007",
+   "montant": "70.000 euros",
+   "objet": "subvention d'équipement 2007",
+   "citation": "la convention annuelle d?objectifs relative à l?attribution d?une subvention de fonctionnement de 3.695.490 euros et la convention annuelle d?objectifs relative à l?attribution d?une subvention d?équipement de 70.000 euros.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=31777"
+  },
+  {
+   "seance": "FEVRIER 2006",
+   "montant": "3.695.490 euros",
+   "objet": "subvention de fonctionnement 2006",
+   "citation": "la convention annuelle d?objectifs relative à l?attribution d?une subvention de fonctionnement de 3.695.490 euros et la convention annuelle d?objectifs relative à l?attribution d?une subvention d?équipement de 70.000 euros.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=27714"
+  },
+  {
+   "seance": "FEVRIER 2006",
+   "montant": "70.000 euros",
+   "objet": "subvention d'équipement 2006",
+   "citation": "la convention annuelle d?objectifs relative à l?attribution d?une subvention de fonctionnement de 3.695.490 euros et la convention annuelle d?objectifs relative à l?attribution d?une subvention d?équipement de 70.000 euros.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=27714"
+  },
+  {
+   "seance": "SEPTEMBRE 2008",
+   "montant": "3.695.490 euros",
+   "objet": "subvention de fonctionnement portée de 1.847.725 à 3.695.490 euros (2008)",
+   "citation": "La subvention de fonctionnement attribuée, au titre de 2008, à l?association ?Paris audiovisuel Maison européenne de la Photographie?, 82 rue François Miron (4e), est portée de 1.847.725 euros à 3.695.490 euros.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=67437"
+  },
+  {
+   "seance": "SEPTEMBRE 2008",
+   "montant": "70.000 euros",
+   "objet": "subvention d'équipement 2008",
+   "citation": "Une subvention d?équipement de 70.000 euros est attribuée à l?association ?Paris-Audiovisuel - Maison Européenne de la Photographie?.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=67437"
+  },
+  {
+   "seance": "OCTOBRE 2004",
+   "montant": "60.000 euros",
+   "objet": "subvention complémentaire de fonctionnement, contribution au Mois européen de la photographie 2004",
+   "citation": "Une subvention complémentaire de fonctionnement de 60.000 euros est attribuée à l'association \"Paris-Audiovisuel - Maison européenne de la photographie\", qui a son siège social 82 rue François Miron (4e)",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=64179"
+  },
+  {
+   "seance": "OCTOBRE 2004",
+   "montant": "70.000 euros",
+   "objet": "subvention d'équipement 2004",
+   "citation": "une subvention d' équipement de 70.000 euros pour l'année 2004",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=64179"
+  },
+  {
+   "seance": "JANVIER 2001",
+   "montant": "358.225,92 F T.T.C.",
+   "objet": "indemnisation de M. Yves Lion pour études réalisées (transaction)",
+   "citation": "M. le Maire de Paris est autorisé à signer un contrat de transaction, dont le texte est joint à la présente délibération, avec M. Yves LION, visant à indemniser celui-ci à hauteur de 358.225,92 F T.T.C.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=85322"
+  },
+  {
+   "seance": "AVRIL 2005",
+   "montant": "3.991.065 euros",
+   "objet": "subvention de fonctionnement 2005",
+   "citation": "la convention annuelle d?objectifs relative à l?attribution d?une subvention de fonctionnement de 3.991.065 euros et la convention annuelle d?objectifs relative à l?attribution d?une subvention d?équipement de 70.000 euros",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=43871"
+  },
+  {
+   "seance": "AVRIL 2005",
+   "montant": "70.000 euros",
+   "objet": "subvention d'équipement 2005",
+   "citation": "la convention annuelle d?objectifs relative à l?attribution d?une subvention de fonctionnement de 3.991.065 euros et la convention annuelle d?objectifs relative à l?attribution d?une subvention d?équipement de 70.000 euros",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=43871"
+  },
+  {
+   "seance": "AVRIL 2005",
+   "montant": "295.575 euros",
+   "objet": "redevance annuelle d'occupation du domaine public (Hôtel Hénault de Cantobre)",
+   "citation": "la convention d?occupation du domaine public relative à l?Hôtel Hénault de Cantobre, situé 82, rue François Miron et 5/7 rue de Fourcy 75004 Paris, fixant la redevance annuelle à 295.575 euros.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=43871"
+  },
+  {
+   "seance": "MARS 2003",
+   "montant": "3.946.450 euros",
+   "objet": "subvention de fonctionnement 2003",
+   "citation": "la convention d'objectifs jointe au présent projet relative au versement d'une subvention de fonctionnement de 3.946.450 euros pour l'année 2003.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=68968"
+  },
+  {
+   "seance": "MARS 2003",
+   "montant": "70.000 euros",
+   "objet": "subvention d'équipement 2003",
+   "citation": "la convention jointe au présent projet relative pour le versement d'une subvention d'équipement de 70.000 euros pour l'année 2003.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=68968"
+  },
+  {
+   "seance": "DECEMBRE 2002",
+   "montant": "30.490 euros",
+   "objet": "subvention de fonctionnement complémentaire (avenant n°2, 2002)",
+   "citation": "pour l'attribution d'une subvention de fonctionnement complémentaire d'un montant de 30.490 euros.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=71160"
+  },
+  {
+   "seance": "DECEMBRE 2002",
+   "montant": "4.016.450 euros",
+   "objet": "montant total de subvention versée en 2002 après avenant",
+   "citation": "portant le montant total de subvention versée en 2002 à l'association \"Paris-Audiovisuel - Maison Européenne de la Photographie\" de 3.985.960 euros à 4.016.450 euros.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=71160"
+  }
+ ],
+ "bmo_extraits": [],
+ "bmo_recit": null,
+ "invest": [],
+ "marches": [
+  {
+   "numero_marche": "20171210001992",
+   "objet": "MOE MODERNISATION SSI MAISON EUROPÉENNE DE LA PHOTOGRAPHIE",
+   "objet_clair": null,
+   "fournisseur": "PANTEC",
+   "montant_max": 45000.0,
+   "date_notification": "2018-01-22",
+   "preuve": "objet du marché : « MOE MODERNISATION SSI MAISON EUROPÉENNE DE LA PHOTOGRAPHIE » — nomme explicitement le lieu (mission de maîtrise d'œuvre pour la modernisation du système de sécurité incendie)"
+  },
+  {
+   "numero_marche": "20141210010791",
+   "objet": "MOE CSSI MAISON EUROPÉENNE DE LA PHOTOGRAPHIE",
+   "objet_clair": null,
+   "fournisseur": "AISSE CONSEILS",
+   "montant_max": 27974.0,
+   "date_notification": "2014-02-13",
+   "preuve": "objet du marché : « MOE CSSI MAISON EUROPÉENNE DE LA PHOTOGRAPHIE » — nomme explicitement le lieu (maîtrise d'œuvre pour le système de sécurité incendie)"
+  },
+  {
+   "numero_marche": "20171210001502",
+   "objet": "MOE REMPLACT ASCENSEUR MAISON EUROPÉENNE DE LA PHOTOGRAPHIE",
+   "objet_clair": null,
+   "fournisseur": "GILLOT+GIVRY",
+   "montant_max": 25000.0,
+   "date_notification": "2017-09-15",
+   "preuve": "objet du marché : « MOE REMPLACT ASCENSEUR MAISON EUROPÉENNE DE LA PHOTOGRAPHIE » — nomme explicitement le lieu (maîtrise d'œuvre pour le remplacement d'un ascenseur)"
+  }
+ ],
+ "mandate": null,
+ "sources": {
+  "delibs": {
+   "name": "Débat-Délibs — Conseil de Paris",
+   "url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=search-solr&query=Maison+Europ%C3%A9enne+de+la+Photographie"
+  },
+  "bmo": {
+   "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
+   "url": "https://gallica.bnf.fr/ark:/12148/cb343512457/date"
+  },
+  "invest": {
+   "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
+   "url": "https://opendata.paris.fr/"
+  },
+  "wiki": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ },
+ "synthese_en": "The Conseil de Paris deliberations on the Maison Européenne de la Photographie first cover its installation in the Hôtel Hénault de Cantobre, 82 rue François-Miron (4th arrondissement): approval of the principle of renovation work for the photography restoration workshop in 1999, a project management contract awarded to Mr. Yves Lion, then in 2001 authorization of a settlement agreement compensating him for studies carried out as part of the project. As early as 1999, the Conseil authorized an agreement for occupation of the public domain and an objectives agreement with the association Paris Audiovisuel, which manages the venue; during the session, Mr. Jacques Bravo stated he was in favor of this authorization while expressing strong reservations about the financial transparency of the association's setup, to which Ms. Macé de Lépinay replied by detailing the organization of the two budget lines. From 2002 to 2010, the Conseil renewed objectives agreements almost every year, setting an operating subsidy (around 3.6 to 4 million euros) and an equipment subsidy of 70,000 euros, supplemented by occasional amendments such as the 60,000 euros awarded in 2004 for the first edition of the Mois européen de la photographie. Agreements for occupation of the public domain were regularly extended or renewed, with an annual fee set at 295,575 euros in 2005. More recently, the Conseil approved operating and equipment subsidies with the managing association in 2021, then a new subsidy and an amendment to the agreement in 2024."
+}

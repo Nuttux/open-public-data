@@ -1,0 +1,98 @@
+{
+ "generated_at": "2026-07-21T17:04:41.999226+00:00",
+ "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
+ "slug": "piscine-emile-anthoine",
+ "name": "Piscine Émile-Anthoine",
+ "kind_fr": "Piscine",
+ "kind_en": "Swimming pool",
+ "famille": "sport",
+ "arrondissement": 15,
+ "lat": 48.892962,
+ "lon": 2.35154,
+ "photo": null,
+ "photo_credit": null,
+ "wiki": {
+  "extract": null,
+  "url": null,
+  "source": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ },
+ "stats": {
+  "n_delibs": 1133,
+  "delibs_span": [
+   1998,
+   2002
+  ],
+  "n_bmo_brut": 0,
+  "n_bmo_verifies": null,
+  "invest_total_eur": 0,
+  "invest_annees": [],
+  "lecture_mode": "titre nommant le lieu (2 trouvés)",
+  "lecture_mode_en": "title naming the place (2 found)",
+  "n_lus": 2,
+  "n_lieu": 2
+ },
+ "subventions_exploitant": null,
+ "residents": [],
+ "kpi_montant": null,
+ "synthese_fr": "En septembre 1998, le Conseil de Paris approuve le principe d'une réfection du traitement d'eau et d'une restructuration des vestiaires de la piscine Emile-Anthoine, ainsi que de la rénovation du hall d'accueil du centre sportif du même nom, et autorise le Maire à signer les marchés de travaux correspondants. Le document ne précise pas de montant ni de calendrier de réalisation. Quatre ans plus tard, en septembre 2002, Mme Hélène Rimbert, du groupe Démocratie libérale et Indépendants, interpelle le Maire de Paris par question orale sur un changement des horaires d'ouverture de l'équipement. Le document consulté ne contient ni le contenu détaillé de cette question ni de réponse. Le titre de cette question situe la piscine dans le 7e arrondissement, tandis que le document de 1998 situe le centre sportif Emile-Anthoine dans le 15e.",
+ "moments": [
+  {
+   "id": "92702",
+   "seance": "SEPTEMBRE 1998",
+   "fait": "Approbation du principe de travaux (traitement d'eau, vestiaires, hall d'accueil) et autorisation de signer les marchés",
+   "pourquoi": "premier chantier connu sur l'équipement",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=92702",
+   "fait_en": "Approval of the principle of works (water treatment, changing rooms, entrance hall) and authorization to sign the contracts",
+   "pourquoi_en": "first known construction project at the facility"
+  },
+  {
+   "id": "6034",
+   "seance": "SEPTEMBRE 2002",
+   "fait": "Question orale d'une élue sur un changement des horaires d'ouverture",
+   "pourquoi": "seule trace d'un débat sur l'usage du lieu",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=6034",
+   "fait_en": "Oral question from a council member about a change to opening hours",
+   "pourquoi_en": "only trace of a debate about the use of the site"
+  }
+ ],
+ "montants": [],
+ "bmo_extraits": [],
+ "bmo_recit": null,
+ "invest": [],
+ "marches": [
+  {
+   "numero_marche": "20171410000161",
+   "objet": "CSP5 LOT 2 - TVX MODERNISATION PISCINE EMILE ANTHOINE",
+   "objet_clair": null,
+   "fournisseur": "HERVE THERMIQUE",
+   "montant_max": 1134366.32,
+   "date_notification": "2017-02-09",
+   "preuve": "Objet du marché nomme explicitement le lieu : \"CSP5 LOT 2 - TVX MODERNISATION PISCINE EMILE ANTHOINE\" (SIRET fournisseur 62722004900654). Cohérent avec les délibérations historiques du lieu portant sur des travaux de réfection (ex. 1998 JS 50 : réfection du traitement d'eau, restructuration des vestiaires, rénovation du hall d'accueil du centre sportif Émile-Anthoine)."
+  }
+ ],
+ "mandate": null,
+ "sources": {
+  "delibs": {
+   "name": "Débat-Délibs — Conseil de Paris",
+   "url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=search-solr&query=Piscine+%C3%89mile-Anthoine"
+  },
+  "bmo": {
+   "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
+   "url": "https://gallica.bnf.fr/ark:/12148/cb343512457/date"
+  },
+  "invest": {
+   "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
+   "url": "https://opendata.paris.fr/"
+  },
+  "wiki": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ },
+ "synthese_en": "In September 1998, the Council of Paris approved the principle of redoing the water treatment system and restructuring the changing rooms at the Emile-Anthoine swimming pool, as well as renovating the entrance hall of the sports center of the same name, and authorized the Mayor to sign the corresponding works contracts. The document does not specify an amount or a timeline for completion. Four years later, in September 2002, Ms. Hélène Rimbert, of the Démocratie libérale et Indépendants group, questioned the Mayor of Paris in an oral question about a change to the opening hours of the facility. The document consulted contains neither the detailed content of this question nor a response. The title of this question places the swimming pool in the 7th arrondissement, while the 1998 document places the Emile-Anthoine sports center in the 15th."
+}

@@ -1,0 +1,164 @@
+{
+ "generated_at": "2026-07-21T17:04:41.999226+00:00",
+ "source_pipeline": "run_lieux_seed.py → sync_debat_delibs.py + sync_gallica_bmo.py → prep_lieu_contexts.py → lecture in-session → curate_bmo_snippets.py + fix_bmo_dates.py → export_lieux.py",
+ "slug": "cimetiere-de-montmartre",
+ "name": "Cimetière de Montmartre",
+ "kind_fr": "Cimetière",
+ "kind_en": "Cemetery",
+ "famille": "vert",
+ "arrondissement": 18,
+ "lat": 48.887778,
+ "lon": 2.330278,
+ "photo": null,
+ "photo_credit": null,
+ "wiki": {
+  "extract": "Le cimetière du Nord, communément appelé cimetière de Montmartre, est situé dans le 18e arrondissement de Paris. Il occupe une surface de 11 hectares. C'est le troisième plus grand de Paris, après le cimetière de l'Est, dit cimetière du Père-Lachaise, et le cimetière du sud ou cimetière du Montparnasse. Ces cimetières étaient tous hors de Paris au moment de leur création. Le cimetière de Montmartre présente la singularité d'être enjambé par un grand pont routier, le pont Caulaincourt.",
+  "url": "https://fr.wikipedia.org/wiki/Cimeti%C3%A8re_de_Montmartre",
+  "source": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  },
+  "extract_en": "The North Cemetery, commonly known as the Montmartre Cemetery, is located in the 18th arrondissement of Paris. It covers an area of 11 hectares. It is the third-largest cemetery in Paris, after the East Cemetery, known as Père-Lachaise, and the South Cemetery, or Montparnasse Cemetery. All of these cemeteries were outside Paris at the time of their creation. The Montmartre Cemetery has the distinctive feature of being spanned by a large road bridge, the pont Caulaincourt."
+ },
+ "stats": {
+  "n_delibs": 564,
+  "delibs_span": [
+   1997,
+   2018
+  ],
+  "n_bmo_brut": 0,
+  "n_bmo_verifies": null,
+  "invest_total_eur": 0,
+  "invest_annees": [],
+  "lecture_mode": "titre nommant le lieu (9 trouvés)",
+  "lecture_mode_en": "title naming the place (9 found)",
+  "n_lus": 9,
+  "n_lieu": 8
+ },
+ "subventions_exploitant": null,
+ "residents": [],
+ "kpi_montant": null,
+ "synthese_fr": "Le cimetière de Montmartre, créé en 1825 et présenté par un vœu de 2003 comme le plus grand espace vert du 18e arrondissement, revient au Conseil de Paris à la fois pour sa gestion patrimoniale et pour des sujets de sécurité et d'accès. En 1997 et 1998, le Conseil autorise le Maire à déposer des demandes de permis de démolir et construire visant le bâtiment de la Conservation et des locaux sociaux, puis approuve le principe de la reconstruction du bâtiment de la conservation et l'attribution du marché de travaux correspondant. En 1999, un marché commun à quatre cimetières parisiens, dont Montmartre, porte sur le remplacement de grilles de défense et de rambardes de sécurité. Deux dossiers d'indemnisation amiable, en 2008 puis 2010, approuvent le principe du dédommagement de familles pour la destruction par erreur de leur concession funéraire, à hauteur de 19 603,25 euros puis 34 536,00 euros TTC, et autorisent le Maire à signer les protocoles d'accord correspondants. La question d'un accès supplémentaire rue Ganneron, portée par un vœu adopté en 2003 puis relancée par le Conseil de quartier Grandes-Carrières-Clichy en 2014, resurgit en 2018 lors de l'examen du classement du site au titre du code de l'environnement, où un élu du 18e regrette publiquement que cette ouverture n'ait finalement pas été réalisée.",
+ "moments": [
+  {
+   "id": "94202",
+   "seance": "NOVEMBRE 2003",
+   "fait": "Vœu des élus du 18e décrivant le cimetière et demandant des ouvertures supplémentaires",
+   "pourquoi": "portrait patrimonial du lieu et première demande d'accès",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=94202",
+   "fait_en": "Motion (vœu) by 18th-arrondissement councillors describing the cemetery and requesting additional entrances",
+   "pourquoi_en": "heritage portrait of the site and first request for access"
+  },
+  {
+   "id": "21231",
+   "seance": "NOVEMBRE 2003",
+   "fait": "Adoption du vœu sur les ouvertures supplémentaires, avis favorable de l'Exécutif",
+   "pourquoi": "le Conseil valide formellement la demande d'accès",
+   "vedette": false,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=21231",
+   "fait_en": "Adoption of the motion on additional entrances, with a favorable opinion from the Executive",
+   "pourquoi_en": "the Council formally endorses the access request"
+  },
+  {
+   "id": "52816",
+   "seance": "OCTOBRE 1997",
+   "fait": "Autorisation à déposer des permis de démolir/construire pour la Conservation",
+   "pourquoi": "premier geste vers la rénovation du bâtiment administratif",
+   "vedette": false,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=52816",
+   "fait_en": "Authorization to file demolition/construction permit applications for the Conservation building",
+   "pourquoi_en": "first step toward renovating the administrative building"
+  },
+  {
+   "id": "44062",
+   "seance": "AVRIL 1998",
+   "fait": "Principe de reconstruction du bâtiment de la conservation et marché de travaux",
+   "pourquoi": "approbation du principe et du marché, étape administrative avant les travaux eux-mêmes",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=44062",
+   "fait_en": "Approval in principle of rebuilding the conservation building and the works contract",
+   "pourquoi_en": "approval of the principle and the contract, an administrative step before the works themselves"
+  },
+  {
+   "id": "55389",
+   "seance": "JUIN 1999",
+   "fait": "Marché commun de grilles et rambardes de sécurité pour quatre cimetières",
+   "pourquoi": "volet sécurité mutualisé avec d'autres cimetières parisiens",
+   "vedette": false,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=55389",
+   "fait_en": "Joint contract for security fences and railings across four cemeteries",
+   "pourquoi_en": "security component shared with other Paris cemeteries"
+  },
+  {
+   "id": "91447",
+   "seance": "JUILLET 2008",
+   "fait": "Indemnisation de 19 603,25 euros pour une concession détruite par erreur",
+   "pourquoi": "premier cas chiffré d'erreur sur une concession familiale",
+   "vedette": false,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=91447",
+   "fait_en": "Compensation of €19,603.25 for a burial concession destroyed by error",
+   "pourquoi_en": "first documented case of an error affecting a family concession"
+  },
+  {
+   "id": "85770",
+   "seance": "NOVEMBRE 2010",
+   "fait": "Indemnisation de 34 536,00 euros pour une autre concession détruite par erreur",
+   "pourquoi": "second dédommagement, montant plus élevé",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=85770",
+   "fait_en": "Compensation of €34,536.00 for another burial concession destroyed by error",
+   "pourquoi_en": "second compensation payment, at a higher amount"
+  },
+  {
+   "id": "144964",
+   "seance": "SEPTEMBRE 2018",
+   "fait": "Examen du classement du site au titre du code de l'environnement, débat sur l'accès rue Ganneron",
+   "pourquoi": "protection officielle du site et regret public d'un accès non ouvert",
+   "vedette": true,
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=144964",
+   "fait_en": "Review of the site's classification under the environmental code, debate over access on rue Ganneron",
+   "pourquoi_en": "official protection of the site and public regret over an access point that was never opened"
+  }
+ ],
+ "montants": [
+  {
+   "seance": "NOVEMBRE 2010",
+   "montant": "34 536,00 euros TTC",
+   "objet": "dédommagement amiable pour la destruction par erreur de la concession funéraire familiale Meslay (n°225 PP 1843), afin de procéder à sa reconstruction",
+   "citation": "Meslayest de 34 536,00 euros TTC (trente-quatre mille cinq cent trente-six euros et zéro centime toutes taxes comprises) afin de procéder à la reconstruction de leur concession de famille détruite, conformément au protocole d?accord signé.",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=85770"
+  },
+  {
+   "seance": "JUILLET 2008",
+   "montant": "19 603,25 euros TTC",
+   "objet": "dédommagement amiable pour la destruction par erreur de la concession funéraire familiale de M. GERMAIN (n° 389 PP 181), afin de procéder à sa reconstruction",
+   "citation": "Le montant global du dédommagement à verser à M. Jean-Pierre GERMAIN est de 19.603,25 euros TTC (dix neuf mille six cent trois euros et vingt cinq centimes toutes taxes comprises)",
+   "source_url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=ods-solr.display_document&id_document=91447"
+  }
+ ],
+ "bmo_extraits": [],
+ "bmo_recit": null,
+ "invest": [],
+ "marches": [],
+ "mandate": null,
+ "sources": {
+  "delibs": {
+   "name": "Débat-Délibs — Conseil de Paris",
+   "url": "https://a06-v7.apps.paris.fr/a06/jsp/site/Portal.jsp?page=search-solr&query=Cimeti%C3%A8re+de+Montmartre"
+  },
+  "bmo": {
+   "name": "Bulletin municipal officiel de la Ville de Paris — Gallica/BnF",
+   "url": "https://gallica.bnf.fr/ark:/12148/cb343512457/date"
+  },
+  "invest": {
+   "name": "Annexes du compte administratif, Ville de Paris (extraction pipeline)",
+   "url": "https://opendata.paris.fr/"
+  },
+  "wiki": {
+   "name": "Wikipédia",
+   "url": "https://fr.wikipedia.org/"
+  }
+ },
+ "synthese_en": "The Montmartre cemetery, created in 1825 and described by a 2003 motion (vœu) as the largest green space in the 18th arrondissement, has come before the Paris Council both for its heritage management and for security and access issues. In 1997 and 1998, the Council authorized the Mayor to file demolition and construction permit applications for the Conservation building and social premises, then approved the principle of rebuilding the conservation building and awarding the corresponding works contract. In 1999, a joint contract covering four Paris cemeteries, including Montmartre, addressed the replacement of security fences and railings. Two amicable compensation cases, in 2008 and 2010, approved in principle the compensation of families for the erroneous destruction of their burial concession, amounting to €19,603.25 and then €34,536.00 including tax (TTC), and authorized the Mayor to sign the corresponding settlement agreements. The question of an additional access point on rue Ganneron, raised by a motion adopted in 2003 and revived by the Grandes-Carrières-Clichy neighborhood council in 2014, resurfaced in 2018 during the review of the site's classification under the environmental code, when a councillor from the 18th arrondissement publicly regretted that this opening had ultimately not been carried out."
+}
