@@ -27,9 +27,13 @@ Output:
 import csv
 import json
 import os
+import sys
 from pathlib import Path
 from google.cloud import bigquery
 from collections import defaultdict
+
+sys.path.insert(0, str(Path(__file__).parent))
+from _sankey_common import get_bigquery_client, sankey_nodes_and_links  # noqa: E402
 
 # ─── Fonction imputation (cf. pipeline/scripts/audit/build_fonction_imputation.py) ───
 # Pour les budgets votés (BP 2025+), fonction_libelle est vide → on impute
@@ -321,29 +325,6 @@ def get_data_availability(year: int) -> dict:
     })
 
 
-def get_bigquery_client():
-    """Initialize BigQuery client with credentials.
-    
-    Credentials are loaded from (in order of priority):
-    1. GOOGLE_APPLICATION_CREDENTIALS env var
-    2. gcloud default credentials (~/.config/gcloud/application_default_credentials.json)
-    3. Local credentials.json in pipeline folder
-    """
-    creds_path = os.environ.get("GOOGLE_APPLICATION_CREDENTIALS")
-    if not creds_path:
-        possible_paths = [
-            Path.home() / ".config" / "gcloud" / "application_default_credentials.json",
-            Path(__file__).parent.parent.parent / "credentials.json",
-        ]
-        for p in possible_paths:
-            if p.exists():
-                os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = str(p)
-                print(f"  Using credentials: {p}")
-                break
-    
-    return bigquery.Client(project=PROJECT_ID)
-
-
 def query_budget_data(client, year: int) -> list[dict]:
     """
     Query budget lines for a specific year from mart_budget_sankey_lines.
@@ -482,39 +463,12 @@ def build_sankey_data(records: list[dict], year: int) -> dict:
     total_depenses = sum(expense_grouped.values())
     solde = total_recettes - total_depenses
     
-    # ECharts Sankey requires unique node names. If the same group name
-    # appears on both revenue and expense sides (e.g. "Autres"), we suffix
-    # with " (R)" / " (D)" to disambiguate.
-    rev_names = {n for n, v in revenue_grouped.items() if v > 0}
-    exp_names = {n for n, v in expense_grouped.items() if v > 0}
-    collisions = rev_names & exp_names
+    # ECharts Sankey nodes + links, with " (R)" / " (D)" disambiguation when a
+    # group name appears on both sides. Shared with the Marseille export.
+    nodes, links, rev_display, exp_display = sankey_nodes_and_links(
+        revenue_grouped, expense_grouped, "Budget Paris"
+    )
 
-    def rev_display(name: str) -> str:
-        """Revenue node display name (suffixed if collision)."""
-        return f"{name} (R)" if name in collisions else name
-
-    def exp_display(name: str) -> str:
-        """Expense node display name (suffixed if collision)."""
-        return f"{name} (D)" if name in collisions else name
-
-    nodes = []
-    for name in sorted(rev_names):
-        nodes.append({"name": rev_display(name), "category": "revenue"})
-
-    nodes.append({"name": "Budget Paris", "category": "central"})
-
-    for name in sorted(exp_names):
-        nodes.append({"name": exp_display(name), "category": "expense"})
-
-    links = []
-    for name, value in revenue_grouped.items():
-        if value > 0:
-            links.append({"source": rev_display(name), "target": "Budget Paris", "value": value})
-
-    for name, value in expense_grouped.items():
-        if value > 0:
-            links.append({"source": "Budget Paris", "target": exp_display(name), "value": value})
-    
     drilldown = {"revenue": {}, "expenses": {}}
 
     for group, items in revenue_group_drilldown.items():
@@ -732,7 +686,7 @@ def main():
     # Initialize BigQuery client
     log.section("Connexion BigQuery")
     log.info("Initialisation client", extra=PROJECT_ID)
-    client = get_bigquery_client()
+    client = get_bigquery_client(PROJECT_ID, [Path(__file__).parent.parent.parent / "credentials.json"])
     log.success("Connecté à BigQuery")
     
     log.section(f"Export des {len(YEARS)} années")

@@ -27,7 +27,9 @@ from google.cloud import bigquery
 
 PIPELINE_ROOT = Path(__file__).parent.parent.parent
 sys.path.insert(0, str(PIPELINE_ROOT / "scripts"))
+sys.path.insert(0, str(Path(__file__).parent))
 from utils.logger import Logger  # noqa: E402
+from _sankey_common import get_bigquery_client, sankey_nodes_and_links  # noqa: E402
 
 PROJECT_ID = "open-data-france-484717"
 # Marts dataset can be overridden (e.g. for dev runs against
@@ -46,20 +48,6 @@ CENTRAL_NODE_NAME = f"Budget {CITY_LABEL}"
 EXECUTE_YEARS = [2018, 2019, 2020, 2021, 2022]
 VOTE_ONLY_YEARS = [2023, 2024]
 ALL_YEARS = sorted(set(EXECUTE_YEARS) | set(VOTE_ONLY_YEARS), reverse=True)
-
-
-def get_bigquery_client() -> bigquery.Client:
-    creds_path = os.environ.get("GOOGLE_APPLICATION_CREDENTIALS")
-    if not creds_path:
-        for p in [
-            Path.home() / ".config" / "gcloud" / "application_default_credentials.json",
-            PIPELINE_ROOT.parent / "credentials.json",
-            PIPELINE_ROOT / "credentials.json",
-        ]:
-            if p.exists():
-                os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = str(p)
-                break
-    return bigquery.Client(project=PROJECT_ID)
 
 
 def query_year(client: bigquery.Client, year: int, type_budget: str) -> list[dict]:
@@ -114,31 +102,10 @@ def build_sankey(records: list[dict], year: int, type_budget: str) -> dict:
                 expense_section[cat][section]["total"] += montant
                 expense_section[cat][section]["items"][(cat, detail)] += montant
 
-    # Disambiguate node names if same category appears on both sides
-    rev_names = {n for n, v in revenue_by_cat.items() if v > 0}
-    exp_names = {n for n, v in expense_by_cat.items() if v > 0}
-    collisions = rev_names & exp_names
-
-    def rev_disp(n: str) -> str:
-        return f"{n} (R)" if n in collisions else n
-
-    def exp_disp(n: str) -> str:
-        return f"{n} (D)" if n in collisions else n
-
-    nodes = []
-    for n in sorted(rev_names):
-        nodes.append({"name": rev_disp(n), "category": "revenue"})
-    nodes.append({"name": CENTRAL_NODE_NAME, "category": "central"})
-    for n in sorted(exp_names):
-        nodes.append({"name": exp_disp(n), "category": "expense"})
-
-    links = []
-    for n, v in revenue_by_cat.items():
-        if v > 0:
-            links.append({"source": rev_disp(n), "target": CENTRAL_NODE_NAME, "value": v})
-    for n, v in expense_by_cat.items():
-        if v > 0:
-            links.append({"source": CENTRAL_NODE_NAME, "target": exp_disp(n), "value": v})
+    # Nodes + links with (R)/(D) disambiguation — shared with the Paris export.
+    nodes, links, rev_disp, exp_disp = sankey_nodes_and_links(
+        revenue_by_cat, expense_by_cat, CENTRAL_NODE_NAME
+    )
 
     drilldown = {"revenue": {}, "expenses": {}}
     for cat, items in revenue_drill.items():
@@ -276,7 +243,7 @@ def main() -> int:
     log.info("source mart", extra=MART_TABLE)
 
     log.section("BigQuery client")
-    client = get_bigquery_client()
+    client = get_bigquery_client(PROJECT_ID, [PIPELINE_ROOT.parent / "credentials.json", PIPELINE_ROOT / "credentials.json"])
     log.success("connected", extra=PROJECT_ID)
 
     log.section(f"Exporting {len(ALL_YEARS)} years")
