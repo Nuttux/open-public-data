@@ -2,7 +2,16 @@
 
 import { useEffect, useMemo, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
-import type { Map as LMap, Marker as LMarker } from "leaflet";
+import type { Map as LMap, Marker as LMarker, LatLng } from "leaflet";
+
+// APIs internes de Leaflet utilisées pour le zoom fluide (déplacer le pane à un
+// zoom fractionnaire, image par image, sans passer par l'animation à paliers).
+// Stables sur toute la série 1.x (on est épinglé en ^1.9.4).
+type LMapPrivate = {
+  _move: (center: LatLng, zoom: number) => void;
+  _moveStart: (zoomChanged: boolean, noMoveStart: boolean) => void;
+  _moveEnd: (zoomChanged: boolean) => void;
+};
 import type { LieuIndexEntry } from "@/lib/lieux-data";
 import { useT } from "@/lib/localeContext";
 import "leaflet/dist/leaflet.css";
@@ -135,36 +144,91 @@ export default function LieuxMap({
       });
       mapRef.current = map;
 
-      // Zoom molette/trackpad, pattern Mapbox/Google : molette simple → scroll
-      // de page ; ⌘/Ctrl+molette OU pinch trackpad (que le navigateur envoie
-      // avec ctrlKey) → zoom centré sur le curseur. Jamais de hijack du scroll.
+      // Zoom FLUIDE molette/trackpad (technique Leaflet.SmoothWheelZoom).
+      // RÉSERVÉ à ⌘/Ctrl+molette et au pinch trackpad (que le navigateur envoie
+      // avec ctrlKey) : la molette simple reste le scroll de page, jamais de
+      // hijack.
       //
-      // MESURÉ (instrumentation Playwright, positions marqueur vs tuiles) :
-      //  - le bouton +/- de Leaflet est PARFAIT : marqueurs et tuiles avancent
-      //    ensemble sur ~200 ms (échelle 0,79 → 1,0) et se posent en même temps ;
-      //  - `setZoomAround(..., {animate:false})` était le VRAI bug : le marqueur
-      //    se téléporte pendant que la couche de tuiles retombe sur une échelle
-      //    périmée (0,707) et n'y revient jamais → l'effet « ça saute ».
-      // On emprunte donc exactement le chemin du bouton + (zoom animé standard),
-      // et on COALESCE la rafale : un trackpad émet des dizaines d'événements,
-      // on accumule le delta et on ne déclenche qu'un zoom par frame.
-      // On appelle EXACTEMENT ce qu'appelle le contrôle +/- (zoomIn/zoomOut),
-      // seul chemin dont la mesure montre que marqueurs et tuiles avancent
-      // ensemble. `setZoomAround` (ancrage curseur) et `setZoom` posaient tous
-      // deux le marqueur à la frame 1 en laissant le fond arriver 225 ms plus
-      // tard. Un trackpad émettant des dizaines d'événements, on garde un pas
-      // par geste : tant qu'un zoom est en cours, on ignore la suite.
-      let zoomEnCours = false;
-      map.on("zoomend", () => { zoomEnCours = false; });
+      // Les versions précédentes avançaient par PALIERS animés (un zoom de 0,5
+      // toutes les ~250 ms) : ça plafonnait le débit quelle que soit la vitesse
+      // du geste (escalier haché) et se figeait au butoir. Ici on suit le geste
+      // IMAGE PAR IMAGE : on accumule un `goalZoom` cible, et à chaque frame on
+      // interpole la vue vers cette cible via `map._move()` à zoom FRACTIONNAIRE.
+      // Marqueurs et tuiles vivent dans le même pane transformé → ils bougent
+      // ensemble, aucune désynchro possible. On ne « commit » (rechargement des
+      // tuiles au zoom final) qu'à la FIN du geste, via `_moveEnd`. Ancrage sur
+      // le CURSEUR : le point sous le pointeur reste fixe pendant le zoom.
+      const mp = map as unknown as LMap & LMapPrivate;
+      const SENS = 0.0022; // niveaux de zoom par pixel de molette
+      const EASE = 0.3; // fraction de l'écart rattrapée par frame (inertie douce)
+      let wheeling = false;
+      let goalZoom = 0;
+      let rafId = 0;
+      let endTimer: ReturnType<typeof setTimeout> | null = null;
+      let centerPt = map.getSize().divideBy(2);
+      let wheelPt = centerPt;
+      let startLatLng: LatLng = null as unknown as LatLng;
+      let wheelStartLatLng: LatLng = null as unknown as LatLng;
+      let moved = false;
+      let prevZoom = 0;
+      let prevCenter: LatLng = null as unknown as LatLng;
+
+      const stepWheelZoom = () => {
+        if (!mapRef.current) return; // carte démontée en plein geste → on s'arrête
+        // La vue a bougé par un autre chemin (drag, setView clavier, « autour de
+        // moi »…) → on lâche la main pour ne pas lutter contre l'autre animation.
+        if (map.getZoom() !== prevZoom || !map.getCenter().equals(prevCenter)) {
+          wheeling = false;
+          return;
+        }
+        const z = Math.round((map.getZoom() + (goalZoom - map.getZoom()) * EASE) * 100) / 100;
+        const delta = wheelPt.subtract(centerPt);
+        const center =
+          delta.x === 0 && delta.y === 0
+            ? startLatLng
+            : map.unproject(map.project(wheelStartLatLng, z).subtract(delta), z);
+        if (!moved) {
+          mp._moveStart(true, false);
+          moved = true;
+        }
+        mp._move(center, z);
+        prevZoom = map.getZoom();
+        prevCenter = map.getCenter();
+        rafId = requestAnimationFrame(stepWheelZoom);
+      };
+
+      const endWheelZoom = () => {
+        wheeling = false;
+        cancelAnimationFrame(rafId);
+        if (moved && mapRef.current) mp._moveEnd(true); // recharge les tuiles au zoom final
+      };
+
       divRef.current.addEventListener(
         "wheel",
         (e: WheelEvent) => {
           if (!(e.ctrlKey || e.metaKey)) return;
           e.preventDefault();
-          if (zoomEnCours) return;
-          zoomEnCours = true;
-          if (e.deltaY < 0) map.zoomIn(0.5);
-          else map.zoomOut(0.5);
+          if (!wheeling) {
+            wheeling = true;
+            moved = false;
+            centerPt = map.getSize().divideBy(2);
+            startLatLng = map.containerPointToLatLng(centerPt);
+            wheelPt = map.mouseEventToContainerPoint(e);
+            wheelStartLatLng = map.containerPointToLatLng(wheelPt);
+            goalZoom = map.getZoom();
+            map.stop();
+            prevZoom = map.getZoom();
+            prevCenter = map.getCenter();
+            rafId = requestAnimationFrame(stepWheelZoom);
+          }
+          // getWheelDelta : positif = molette vers le haut = zoom in → +goalZoom.
+          goalZoom = Math.max(
+            map.getMinZoom(),
+            Math.min(map.getMaxZoom(), goalZoom + L.DomEvent.getWheelDelta(e) * SENS),
+          );
+          wheelPt = map.mouseEventToContainerPoint(e);
+          if (endTimer) clearTimeout(endTimer);
+          endTimer = setTimeout(endWheelZoom, 180);
         },
         { passive: false },
       );
