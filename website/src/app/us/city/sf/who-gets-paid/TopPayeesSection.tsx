@@ -4,6 +4,7 @@ import { useMemo, useState } from "react";
 import Link from "next/link";
 import SectionHead from "@/components/fusion/SectionHead";
 import KPIGrid from "@/components/fusion/KPIGrid";
+import Tip from "@/components/fusion/Tip";
 import { useT } from "@/lib/localeContext";
 import { fmtUsdCompact, fmtShare } from "@/lib/us/format";
 import { bucketColor, bucketLabelKey, deptDisplay } from "./bucket";
@@ -563,7 +564,10 @@ export default function TopPayeesSection({
                   setExpandedVendor(null);
                 }}
               />
-              {t("us.sf.wgp.s02.toggle")}
+              Include{" "}
+              <Tip label={t("us.sf.wgp.s02.toggle.off_note")}>
+                fiscal agents &amp; pass-throughs
+              </Tip>
             </label>
           )}
         </div>
@@ -579,10 +583,9 @@ export default function TopPayeesSection({
             lineHeight: 1.6,
           }}
         >
-          {tab === "all" &&
-            (includePassThrough
-              ? t("us.sf.wgp.s02.toggle.on_note")
-              : t("us.sf.wgp.s02.toggle.off_note"))}{" "}
+          {tab === "all" && includePassThrough && (
+            <>{t("us.sf.wgp.s02.toggle.on_note")}{" "}</>
+          )}
           {coverage != null && (
             <span
               style={

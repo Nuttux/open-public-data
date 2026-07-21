@@ -5,6 +5,7 @@ import type { SfCharacterFicheData } from "@/lib/us/sf-budget-data";
 import { deptSlug } from "@/lib/us/sf-budget-slugs";
 import { fmtUsdCompact, fmtShare } from "@/lib/us/format";
 import { useT } from "@/lib/localeContext";
+import Tip from "@/components/fusion/Tip";
 
 const fill = (s: string, vars: Record<string, string | number>) => {
   let r = s;
@@ -115,10 +116,9 @@ export default function SfCharacterFiche({ c }: { c: SfCharacterFicheData }) {
 
       {c.negatives.length > 0 && (
         <section className="fx-fiche-section">
-          <div className="fx-fiche-h">{t("us.sf.fiche.char.negatives_h")}</div>
-          <p style={{ fontSize: 13, color: "var(--ink-2)", lineHeight: 1.55, margin: "0 0 10px" }}>
-            {t("us.sf.fiche.char.negatives_expl")}
-          </p>
+          <div className="fx-fiche-h">
+            <Tip label={t("us.sf.fiche.char.negatives_expl")}>{t("us.sf.fiche.char.negatives_h")}</Tip>
+          </div>
           <div style={{ display: "grid", gap: 8 }}>
             {c.negatives.map((d) => (
               <div

@@ -179,7 +179,6 @@ export default function SfBudgetClient({ d }: { d: SfBudgetPageData }) {
   const revInternal = revChars.filter(
     (c) => c.display_category === "internal" || c.display_category === "adjustment" || c.total_usd < 0,
   );
-  const chargesForServices = revBars[0]?.code === "CHGS_FOR_SERVICES" ? revBars[0] : null;
 
   // s05 — spine + selected point
   const spinePoint = d.spine.find((p) => p.fiscal_year === fy);
@@ -561,15 +560,6 @@ export default function SfBudgetClient({ d }: { d: SfBudgetPageData }) {
           />
           {bd.drill.available ? (
             <>
-              {chargesForServices && (
-                <div className="fx-callout" style={{ marginBottom: 22 }}>
-                  <b>{t("us.sf.budget.s04.charges.title")}</b>{" "}
-                  {fill(t("us.sf.budget.s04.charges.body"), {
-                    amount: fmtUsdCompact(chargesForServices.total_usd),
-                    fy,
-                  })}
-                </div>
-              )}
               <BarRow
                 reveal
                 header={{
@@ -577,11 +567,21 @@ export default function SfBudgetClient({ d }: { d: SfBudgetPageData }) {
                   right: t("us.sf.budget.s04.header.right"),
                 }}
                 items={revBars.map((c) => ({
-                  label: c.gloss ? (
-                    <Tip label={c.gloss}>{c.label}</Tip>
-                  ) : (
-                    c.label
-                  ),
+                  label:
+                    c.code === "CHGS_FOR_SERVICES" ? (
+                      <Tip
+                        label={fill(t("us.sf.budget.s04.charges.body"), {
+                          amount: fmtUsdCompact(c.total_usd),
+                          fy,
+                        })}
+                      >
+                        {c.label}
+                      </Tip>
+                    ) : c.gloss ? (
+                      <Tip label={c.gloss}>{c.label}</Tip>
+                    ) : (
+                      c.label
+                    ),
                   value: c.total_usd,
                   display: fmtUsdCompact(c.total_usd),
                   href: `/us/city/sf/budget/character/${characterSlug(c.code)}?year=${fy}&side=revenue`,
@@ -638,7 +638,21 @@ export default function SfBudgetClient({ d }: { d: SfBudgetPageData }) {
                 {t("us.sf.budget.s05.title.after")}
               </>
             }
-            subtitle={t("us.sf.budget.s05.sub")}
+            subtitle={(() => {
+              const sub = t("us.sf.budget.s05.sub");
+              const term = "Operating funds";
+              const i = sub.indexOf(term);
+              if (i < 0) return sub;
+              return (
+                <>
+                  {sub.slice(0, i)}
+                  <Tip label="Operating funds only: capital and multi-year project funds legitimately spend across years and can't be compared to a single year's budget.">
+                    {term}
+                  </Tip>
+                  {sub.slice(i + term.length)}
+                </>
+              );
+            })()}
           />
 
           {!showComparison ? (

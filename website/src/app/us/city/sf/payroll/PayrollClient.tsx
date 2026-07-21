@@ -6,6 +6,7 @@ import PageIntro, { IntroStat } from "@/components/fusion/PageIntro";
 import KPIGrid from "@/components/fusion/KPIGrid";
 import AnimatedNumber from "@/components/fusion/AnimatedNumber";
 import BarRow from "@/components/fusion/BarRow";
+import Tip from "@/components/fusion/Tip";
 import DistributionStrip from "@/components/us/DistributionStrip";
 import Fy2018Note from "@/components/us/Fy2018Note";
 import { useT } from "@/lib/localeContext";
@@ -208,7 +209,11 @@ export default function PayrollClient({
                     format={(n) => fmtUsd(n)}
                   />
                 }
-                label={fill(t("us.sf.payroll.s01.hero.label"), { fy })}
+                label={
+                  <Tip label={t("us.sf.payroll.s01.hero.cap")}>
+                    {fill(t("us.sf.payroll.s01.hero.label"), { fy })}
+                  </Tip>
+                }
               />
               <IntroStat
                 value={

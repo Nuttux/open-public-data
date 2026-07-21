@@ -172,12 +172,14 @@ export default function SfContractsClient({
               kind={t("us.sf.contracts.s03.kind")}
               title={
                 <>
-                  {t("us.sf.contracts.s03.title.before")}
+                  <Tip label={t("us.sf.contracts.s03.sub")}>
+                    {t("us.sf.contracts.s03.title.before")}
+                  </Tip>
                   <em>{t("us.sf.contracts.s03.title.em")}</em>
                   {t("us.sf.contracts.s03.title.after")}
                 </>
               }
-              subtitle={t("us.sf.contracts.s03.sub")}
+              subtitle="The register flags them and records the legal basis. Here they all are."
             />
 
             {/* Twin-stat panel (Paris S05 layout) */}
@@ -445,11 +447,12 @@ export default function SfContractsClient({
               kind={t("us.sf.contracts.s04.kind")}
               title={
                 <>
-                  {t("us.sf.contracts.s04.title.before")}
+                  <Tip label={t("us.sf.contracts.s04.sub")}>LBE</Tip>
+                  {" (Local Business Enterprise) "}
                   <em>{t("us.sf.contracts.s04.title.em")}</em>
                 </>
               }
-              subtitle={t("us.sf.contracts.s04.sub")}
+              subtitle="Two different measures exist — as primes, and inside other primes’ teams."
             />
             <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: 0, border: "1px solid var(--ink)" }}>
               {[

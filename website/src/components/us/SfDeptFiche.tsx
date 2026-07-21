@@ -3,6 +3,7 @@
 import type { SfDeptFicheData, SfDeptSideBlock } from "@/lib/us/sf-budget-data";
 import { fmtUsd, fmtUsdCompact, fmtShare, fmtYoy } from "@/lib/us/format";
 import { useT } from "@/lib/localeContext";
+import Tip from "@/components/fusion/Tip";
 
 const fill = (s: string, vars: Record<string, string | number>) => {
   let r = s;
@@ -54,24 +55,6 @@ export default function SfDeptFiche({ d }: { d: SfDeptFicheData }) {
         </div>
       </div>
 
-      <div
-        style={{
-          marginTop: 8,
-          marginBottom: 18,
-          fontFamily: "var(--f-mono)",
-          fontSize: 11,
-          letterSpacing: 0.3,
-          color: "var(--muted)",
-          lineHeight: 1.5,
-        }}
-      >
-        {fill(t("us.sf.fiche.dept.meta"), {
-          code: d.code,
-          label: d.label,
-          fy: d.fiscal_year,
-        })}
-      </div>
-
       {/* Spending by character */}
       {sp && sp.characters.length > 0 && (
         <section className="fx-fiche-section">
@@ -88,10 +71,9 @@ export default function SfDeptFiche({ d }: { d: SfDeptFicheData }) {
       {/* Offsets — transfer adjustments + negative cells, never in the bars */}
       {hasOffsets && (
         <section className="fx-fiche-section">
-          <div className="fx-fiche-h">{t("us.sf.fiche.dept.offsets_h")}</div>
-          <p style={{ fontSize: 13, color: "var(--ink-2)", lineHeight: 1.55, margin: "0 0 10px" }}>
-            {t("us.sf.fiche.dept.offsets_expl")}
-          </p>
+          <div className="fx-fiche-h">
+            <Tip label={t("us.sf.fiche.dept.offsets_expl")}>{t("us.sf.fiche.dept.offsets_h")}</Tip>
+          </div>
           <div style={{ display: "grid", gap: 8 }}>
             {[
               ...(sp?.offsets.map((o) => ({ ...o, side: t("us.sf.side.spending") })) ?? []),

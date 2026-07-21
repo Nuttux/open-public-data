@@ -221,9 +221,13 @@ export default function SfContractFiche({ fiche }: { fiche: SfContractFicheType 
           </div>
           {paidRatio != null && (
             <div style={{ fontFamily: "var(--f-mono)", fontSize: 10.5, color: c.paid_exceeds_agreed ? "var(--ocre)" : "var(--muted)", marginTop: 3 }}>
-              {c.paid_exceeds_agreed
-                ? t("us.sf.contracts.fiche.kpi.exceeds")
-                : `${Math.round(paidRatio * 100)}% ${t("us.sf.contracts.fiche.kpi.of_agreed")}`}
+              {c.paid_exceeds_agreed ? (
+                <Tip label="Payments accumulate across contract modifications while the agreed amount reflects the base document, so paid can exceed agreed.">
+                  {t("us.sf.contracts.fiche.kpi.exceeds")}
+                </Tip>
+              ) : (
+                `${Math.round(paidRatio * 100)}% ${t("us.sf.contracts.fiche.kpi.of_agreed")}`
+              )}
             </div>
           )}
         </div>
