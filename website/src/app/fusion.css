@@ -15552,6 +15552,41 @@ body:has(.theme-db-scrolly) { background: #fafaf7 !important; color: var(--p-ink
 .theme-fusion .fx-payee-merges { list-style: none; margin: 10px 0 0; padding: 0; }
 .theme-fusion .fx-payee-merges > li { margin-bottom: 3px; }
 
+/* ── Neutral fiche kit (components/fiche/*) ─────────────────────────────────
+ * Canonical, city-agnostic fiche vocabulary. Any city's fiche composes these
+ * (FicheShell/StatHero/Section/YearBars/DocList/SourceFooter) instead of
+ * inventing city-named twins. Values mirror the legacy fx-place and fx-payee
+ * rules above; those migrate onto this vocabulary over time. See
+ * docs/adding-a-city.md (the fx-doc classes are already shared, kept as-is). */
+.theme-fusion .fx-fiche-shell { max-width: 760px; }
+.theme-fusion .fx-fiche-stat { margin: 0 0 26px; }
+.theme-fusion .fx-fiche-stat-num {
+  font-family: var(--f-num); font-size: clamp(30px, 5vw, 46px); font-weight: 600;
+  line-height: 1; letter-spacing: -.01em;
+}
+.theme-fusion .fx-fiche-stat-cap {
+  font-family: var(--f-mono); font-size: 12px; letter-spacing: .03em;
+  color: var(--ink-2); margin-top: 8px;
+}
+.theme-fusion .fx-fiche-block { margin: 0 0 30px; }
+.theme-fusion .fx-fiche-h2 {
+  font-size: 13px; font-family: var(--f-mono); letter-spacing: .08em;
+  text-transform: uppercase; color: var(--ink-2); margin: 0 0 12px;
+  padding-bottom: 6px; border-bottom: 1px solid var(--rule);
+}
+.theme-fusion .fx-fiche-sub { font-size: 13.5px; color: var(--ink-2); margin: 0 0 14px; }
+.theme-fusion .fx-fiche-line { font-size: 15.5px; line-height: 1.5; margin: 0 0 14px; }
+.theme-fusion .fx-fiche-sources { margin-top: 26px; padding-top: 14px; border-top: 1px solid var(--rule); }
+.theme-fusion .fx-fiche-years {
+  display: flex; align-items: flex-end; gap: 3px; height: 90px; margin-top: 6px;
+}
+.theme-fusion .fx-fiche-year { flex: 1 1 0; display: flex; flex-direction: column; align-items: center; }
+.theme-fusion .fx-fiche-year-bar-wrap { width: 100%; height: 74px; display: flex; align-items: flex-end; }
+.theme-fusion .fx-fiche-year-bar { width: 100%; background: var(--bleu); min-height: 2px; border-radius: 1px 1px 0 0; }
+.theme-fusion .fx-fiche-year-label {
+  font-family: var(--f-mono); font-size: 8.5px; color: var(--muted); margin-top: 3px;
+}
+
 /* ── US hub cards (Block E) ─────────────────────────────────────────────── */
 .theme-fusion .fx-hub-grid {
   display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 14px;

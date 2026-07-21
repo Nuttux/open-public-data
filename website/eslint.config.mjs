@@ -92,6 +92,38 @@ export default [
     },
   },
   {
+    // ── City-neutrality boundary (guardrail G4, see docs/adding-a-city.md) ──
+    // Shared "surface" components render a typed model handed to them by a
+    // per-city adapter — they must NEVER reach into a city's data, components,
+    // or i18n. Adapters live in lib/<city>/*-model and ARE allowed those
+    // imports; this rule scopes only the neutral component homes, so one
+    // template keeps serving every city. Add new neutral surface dirs here as
+    // they are extracted (e.g. src/components/fiche/**).
+    files: [
+      "src/components/landing/**/*.{ts,tsx}",
+      "src/components/places/**/*.{ts,tsx}",
+      "src/components/fiche/**/*.{ts,tsx}",
+    ],
+    rules: {
+      "no-restricted-imports": ["error", {
+        patterns: [
+          {
+            group: [
+              "@/lib/us", "@/lib/us/*",
+              "@/lib/fusion-data",
+              "@/components/us", "@/components/us/*",
+              "@/components/fusion", "@/components/fusion/*",
+              "@/i18n/*",
+              "**/lib/us/*", "**/components/us/*", "**/components/fusion/*",
+            ],
+            message:
+              "Neutral surface component may not import city data/components/i18n. Take a typed model from a per-city adapter (lib/<city>/*-model) instead. See docs/adding-a-city.md.",
+          },
+        ],
+      }],
+    },
+  },
+  {
     ignores: [".next/**", "node_modules/**"],
   },
 ];

@@ -37,6 +37,7 @@ function navLinksForPath(pathname: string): { href: string; labelKey: string }[]
 export default function UsChrome() {
   const pathname = usePathname() ?? "/us";
   const navLinks = navLinksForPath(pathname);
+  const brandHref = placeForPath(pathname)?.path ?? "/us/national";
   const [menuOpen, setMenuOpen] = useState(false);
   const t = useT();
   const track = useTrack();
@@ -62,9 +63,9 @@ export default function UsChrome() {
     <>
       <header className="fx-nav">
         <Link
-          href="/us/national"
+          href={brandHref}
           className="fx-brand"
-          onClick={() => trackNav("/us/national", "us.chrome.wordmark", "brand")}
+          onClick={() => trackNav(brandHref, "us.chrome.wordmark", "brand")}
         >
           <span>{t("us.chrome.wordmark")}</span>
         </Link>

@@ -21,7 +21,6 @@ export { default as BnEurCountUp } from "./BnEurCountUp";
 export { default as BlogTimeBars } from "./BlogTimeBars";
 export type { BlogTimeBarsItem } from "./BlogTimeBars";
 export { default as TileCard } from "./TileCard";
-export { default as HeroBg } from "./HeroBg";
 export { default as YearPicker } from "./YearPicker";
 export { default as ExportRow } from "./ExportRow";
 export { default as EmptyState } from "./EmptyState";

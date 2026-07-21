@@ -1,13 +1,22 @@
 import Link from "next/link";
-import type { SfPayeeFicheData, SfPayeePaperTrail } from "@/lib/us/sf-payees-data";
-import { fmtUsd, fmtUsdCompact } from "@/lib/us/format";
+import type { SfPayeeFicheData } from "@/lib/us/sf-payees-data";
+import { fmtUsdCompact } from "@/lib/us/format";
+import {
+  FicheShell,
+  FicheStatHero,
+  FicheSection,
+  FicheYearBars,
+  FicheDocList,
+  FicheSourceFooter,
+  type FicheDoc,
+  type FicheYearPoint,
+} from "@/components/fiche";
 
 /**
- * SF payee fiche — a normalized top-payee's money footprint. No Paris
- * equivalent (subventions are annual aggregates; SF vouchers are per-payee).
- * Shows lifetime + per-year paid, the departments that pay it, the active
- * contracts it holds with award-vs-paid, the name variants merged into it
- * (the normalization made transparent), and any archive paper trail.
+ * SF payee fiche — a normalized top-payee's money footprint, composed from the
+ * neutral fiche kit (components/fiche/*). This file is now just the SF adapter:
+ * it maps SfPayeeFicheData onto the shared primitives + a couple of
+ * payee-specific blocks (contracts held, name variants). See docs/adding-a-city.md.
  */
 
 const KIND_LABEL: Record<string, string> = {
@@ -19,103 +28,53 @@ const KIND_LABEL: Record<string, string> = {
   other: "Payee",
 };
 
-function highlight(snippet: string) {
-  return snippet.split(/(«[^»]*»)/g).map((p, i) =>
-    p.startsWith("«") && p.endsWith("»") ? (
-      <mark key={i} className="fx-doc-hit">{p.slice(1, -1)}</mark>
-    ) : (
-      <span key={i}>{p}</span>
-    ),
-  );
-}
-
-function PaperTrailRow({ doc }: { doc: SfPayeePaperTrail }) {
-  return (
-    <li className="fx-doc-row">
-      <a href={doc.deep_link} target="_blank" rel="noopener noreferrer" className="fx-doc-title">
-        {doc.title}
-        {doc.year ? <span className="fx-doc-year"> · {doc.year}</span> : null} ↗
-      </a>
-      {doc.snippet ? <p className="fx-doc-snippet">“{highlight(doc.snippet)}”</p> : null}
-      <div className="fx-doc-source">{doc.source_label}</div>
-    </li>
-  );
-}
-
 export default function SfPayeeFiche({ payee }: { payee: SfPayeeFicheData }) {
-  const years = Object.entries(payee.by_year)
-    .map(([y, v]) => ({ year: Number(y), v }))
+  const years: FicheYearPoint[] = Object.entries(payee.by_year)
+    .map(([y, v]) => ({ year: Number(y), value: v }))
     .sort((a, b) => a.year - b.year);
-  const maxY = Math.max(...years.map((y) => y.v), 1);
-  const peak = years.reduce<{ year: number; v: number } | null>(
-    (best, y) => (best == null || y.v > best.v ? y : best),
-    null,
-  );
+
+  const docs: FicheDoc[] = (payee.paper_trail ?? []).map((d) => ({
+    id: d.identifier,
+    title: d.title,
+    year: d.year,
+    href: d.deep_link,
+    snippet: d.snippet,
+    sourceLabel: d.source_label,
+  }));
 
   return (
-    <div className="fx-fiche fx-place-fiche">
-      {/* Hero stats */}
-      <div className="fx-payee-hero">
-        <div>
-          <div className="fx-payee-hero-num">{fmtUsdCompact(payee.total_paid_usd)}</div>
-          <div className="fx-payee-hero-cap">
+    <FicheShell>
+      <FicheStatHero
+        value={fmtUsdCompact(payee.total_paid_usd)}
+        caption={
+          <>
             paid {payee.first_year}–{payee.last_year} · {KIND_LABEL[payee.kind] ?? "Payee"}
             {payee.is_non_profit ? " · nonprofit" : ""}
-          </div>
-        </div>
-      </div>
+          </>
+        }
+      />
 
-      {/* Per-year paid */}
-      <section className="fx-place-block">
-        <h2 className="fx-place-h2">Paid by year</h2>
-        <div className="fx-payee-years" style={{ position: "relative" }}>
-          {/* Dollar scale: a faint gridline at the peak anchors the bar heights. */}
-          <span
-            aria-hidden="true"
-            style={{
-              position: "absolute", top: 0, left: 0, right: 0, height: 1,
-              background: "var(--rule)",
-            }}
-          />
-          <span
-            aria-hidden="true"
-            style={{
-              position: "absolute", top: 2, right: 0,
-              fontFamily: "var(--f-mono)", fontSize: 10, color: "var(--muted)",
-            }}
-          >
-            {fmtUsdCompact(maxY)}
-          </span>
-          {years.map((y) => (
-            <div key={y.year} className="fx-payee-year">
-              <div className="fx-payee-year-bar-wrap" title={`${y.year}: ${fmtUsd(y.v)}`}>
-                <div className="fx-payee-year-bar" style={{ height: `${Math.max(2, (y.v / maxY) * 100)}%` }} />
-              </div>
-              <div className="fx-payee-year-label">{`'${String(y.year).slice(2)}`}</div>
-            </div>
-          ))}
-        </div>
-        {peak && (
-          <p className="fx-place-sub" style={{ marginTop: 8 }}>
-            Tallest bar — FY{peak.year}: {fmtUsdCompact(peak.v)}. Bars are scaled to this payee’s own peak year.
-          </p>
-        )}
-      </section>
+      <FicheSection title="Paid by year">
+        <FicheYearBars
+          points={years}
+          format={fmtUsdCompact}
+          peakNote={(peak) => (
+            <>
+              Tallest bar — FY{peak.year}: {fmtUsdCompact(peak.value)}. Bars are scaled to this
+              payee’s own peak year.
+            </>
+          )}
+        />
+      </FicheSection>
 
-      {/* Departments */}
       {payee.top_departments.length > 0 && (
-        <section className="fx-place-block">
-          <h2 className="fx-place-h2">Who pays them</h2>
-          <p className="fx-place-money-line">{payee.top_departments.join(" · ")}</p>
-        </section>
+        <FicheSection title="Who pays them">
+          <p className="fx-fiche-line">{payee.top_departments.join(" · ")}</p>
+        </FicheSection>
       )}
 
-      {/* Contracts held */}
       {payee.contracts_held.length > 0 && (
-        <section className="fx-place-block">
-          <h2 className="fx-place-h2">
-            Active contracts ({payee.n_contracts_held})
-          </h2>
+        <FicheSection title={`Active contracts (${payee.n_contracts_held})`}>
           <ul className="fx-place-contracts">
             {payee.contracts_held.slice(0, 10).map((c) => (
               <li key={c.contract_no}>
@@ -131,29 +90,20 @@ export default function SfPayeeFiche({ payee }: { payee: SfPayeeFicheData }) {
               </li>
             ))}
           </ul>
-        </section>
+        </FicheSection>
       )}
 
-      {/* Archive paper trail */}
-      {payee.paper_trail && payee.paper_trail.length > 0 && (
-        <section className="fx-place-block">
-          <h2 className="fx-place-h2">Paper trail in the archive</h2>
-          <p className="fx-place-sub">
-            Where this vendor appears in San Francisco’s digitized public record — bid bulletins,
-            commission agendas, bond documents.
-          </p>
-          <ul className="fx-doc-list">
-            {payee.paper_trail.map((d) => (
-              <PaperTrailRow key={d.identifier} doc={d} />
-            ))}
-          </ul>
-        </section>
+      {docs.length > 0 && (
+        <FicheSection
+          title="Paper trail in the archive"
+          sub="Where this vendor appears in San Francisco’s digitized public record — bid bulletins, commission agendas, bond documents."
+        >
+          <FicheDocList docs={docs} />
+        </FicheSection>
       )}
 
-      {/* Normalization transparency */}
       {payee.n_variants > 1 && (
-        <section className="fx-place-block">
-          <h2 className="fx-place-h2">Name variants merged ({payee.n_variants})</h2>
+        <FicheSection title={`Name variants merged (${payee.n_variants})`}>
           <ul className="fx-payee-variants">
             {payee.variants.map((v) => (
               <li key={v.name}>
@@ -171,15 +121,14 @@ export default function SfPayeeFiche({ payee }: { payee: SfPayeeFicheData }) {
               ))}
             </ul>
           )}
-        </section>
+        </FicheSection>
       )}
 
-      <footer className="fx-place-sources">
-        <p className="fx-footer-sources-meta">
-          <b>Source</b>: SF Controller — Vendor Payments (Vouchers) & Supplier Contracts, name-normalized.
-          Payees outside the top ~200 by lifetime dollars are not keyed and appear as plain text.
-        </p>
-      </footer>
-    </div>
+      <FicheSourceFooter>
+        <b>Source</b>: SF Controller — Vendor Payments (Vouchers) & Supplier Contracts,
+        name-normalized. Payees outside the top ~200 by lifetime dollars are not keyed and appear as
+        plain text.
+      </FicheSourceFooter>
+    </FicheShell>
   );
 }

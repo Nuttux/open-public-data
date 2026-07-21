@@ -190,9 +190,19 @@ export default function SfBudgetClient({ d }: { d: SfBudgetPageData }) {
   const trendY1 = actualYears.length ? Math.max(...actualYears) : 0;
   const budgetY0 = budgetYears.length ? Math.min(...budgetYears) : 0;
 
-  // s02 — services
+  // s02 — services. Departments sort by org group (in the treemap's own
+  // group order, biggest tile first), then by size within the group — so
+  // reading down the list retraces the treemap left-to-right instead of
+  // interleaving groups by raw department size.
   const orgGroups = bd.org_groups.spending;
-  const depts = bd.departments.spending;
+  const orgGroupRank = new Map(orgGroups.map((g, i) => [g.code, i]));
+  const orgGroupLabel = new Map(orgGroups.map((g) => [g.code, g.label]));
+  const depts = [...bd.departments.spending].sort((a, b) => {
+    const rankDiff =
+      (orgGroupRank.get(a.org_group_code) ?? Infinity) -
+      (orgGroupRank.get(b.org_group_code) ?? Infinity);
+    return rankDiff !== 0 ? rankDiff : b.total_usd - a.total_usd;
+  });
   const deptTop = depts.slice(0, DEPT_LIST_FOLD);
   const deptRest = depts.slice(DEPT_LIST_FOLD);
 
@@ -465,7 +475,7 @@ export default function SfBudgetClient({ d }: { d: SfBudgetPageData }) {
                   href: `/us/city/sf/budget/dept/${deptSlug(dep.code)}?year=${fy}`,
                   sub: fill(t("us.sf.budget.s02.dept_sub"), {
                     share: fmtShare(dep.share_of_side),
-                    code: dep.code,
+                    group: orgGroupLabel.get(dep.org_group_code) ?? dep.org_group_code,
                   }),
                 }))}
               />
@@ -491,7 +501,7 @@ export default function SfBudgetClient({ d }: { d: SfBudgetPageData }) {
                       href: `/us/city/sf/budget/dept/${deptSlug(dep.code)}?year=${fy}`,
                       sub: fill(t("us.sf.budget.s02.dept_sub"), {
                         share: fmtShare(dep.share_of_side),
-                        code: dep.code,
+                        group: orgGroupLabel.get(dep.org_group_code) ?? dep.org_group_code,
                       }),
                     }))}
                   />
@@ -547,6 +557,21 @@ export default function SfBudgetClient({ d }: { d: SfBudgetPageData }) {
             </>
           ) : bd.drill.available ? (
             <>
+              <UsTreemap
+                data={spBars.map((c) => ({
+                  id: c.code,
+                  shortLabel: c.label,
+                  fullLabel: c.label,
+                  value: c.total_usd,
+                  shareOfTotal: c.share_of_side,
+                  subLabel: fill(t("us.sf.budget.s03.tile_sub"), { n: c.n_departments }),
+                }))}
+                height={420}
+                totalLabel={t("us.sf.budget.s02.of_spending")}
+                ariaLabel={fill(t("us.sf.budget.s03.treemap_aria"), { fy })}
+              />
+
+              <div style={{ marginTop: 34 }}>
               <BarRow
                 reveal
                 header={{
@@ -568,6 +593,7 @@ export default function SfBudgetClient({ d }: { d: SfBudgetPageData }) {
                   }),
                 }))}
               />
+              </div>
 
               {spOffsets.length > 0 && (
                 <div className="fx-callout" style={{ marginTop: 28 }}>
