@@ -502,8 +502,12 @@ models:
         cost_bucket: "low-medium"
 
     # -------------------------------------------------------------------------
-    # National models (OFGL, DECP nat., etc.) — disabled; require seeds &
-    # raw sources we don't sync in the Paris-only pipeline.
+    # National / multi-scale models (OFGL communes, DGFiP balances, DECP nat.,
+    # subventions nat.) — the scaffolding for pulling national / regional /
+    # provincial data. Currently +enabled: false: its raw_national.* sources
+    # aren't synced in the Paris-only pipeline and seed_communes_cibles needs
+    # its siren/dep/reg/geo columns restored before sync_national.py runs.
+    # Kept as the roadmap seam for multi-scale expansion (cf. ADR-0011).
     # -------------------------------------------------------------------------
     national:
       +enabled: false

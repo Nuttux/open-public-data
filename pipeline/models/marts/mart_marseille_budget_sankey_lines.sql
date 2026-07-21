@@ -42,45 +42,8 @@ with_categorie AS (
         montant,
 
         -- Catégorie de flux (basée sur nature comptable, M57 universel).
-        -- Logique alignée sur core_budget.ode_categorie_flux (Paris).
-        CASE
-            -- Personnel
-            WHEN nature_code LIKE '64%' THEN 'Personnel'
-
-            -- Subventions
-            WHEN nature_code LIKE '657%' THEN 'Subventions (fonctionnement)'
-            WHEN nature_code LIKE '204%' THEN 'Subventions (investissement)'
-
-            -- Transferts
-            WHEN nature_code LIKE '651%' OR nature_code LIKE '652%' THEN 'Transferts sociaux'
-            WHEN nature_code LIKE '655%' OR nature_code LIKE '656%' THEN 'Contributions obligatoires'
-
-            -- Achats et services
-            WHEN nature_code LIKE '60%' THEN 'Achats'
-            WHEN nature_code LIKE '61%' THEN 'Services extérieurs'
-            WHEN nature_code LIKE '62%' THEN 'Autres services'
-
-            -- Charges financières et dette
-            WHEN nature_code LIKE '66%' THEN 'Charges financières'
-            WHEN nature_code LIKE '16%' THEN 'Remboursement dette'
-
-            -- Dotations
-            WHEN nature_code LIKE '739%' THEN 'Reversements péréquation'
-            WHEN nature_code LIKE '748%' THEN 'Dotations arrondissements'
-
-            -- Investissements
-            WHEN nature_code LIKE '21%' THEN 'Immobilisations corporelles'
-            WHEN nature_code LIKE '23%' THEN 'Immobilisations en cours'
-            WHEN nature_code LIKE '20%' AND nature_code NOT LIKE '204%' THEN 'Études'
-
-            -- Recettes
-            WHEN nature_code LIKE '73%' THEN 'Impôts et taxes'
-            WHEN nature_code LIKE '74%' THEN 'Dotations et participations'
-            WHEN nature_code LIKE '75%' THEN 'Autres produits gestion'
-            WHEN nature_code LIKE '70%' THEN 'Produits services'
-
-            ELSE 'Autre'
-        END AS ode_categorie_flux
+        -- Même macro partagée que core_budget Paris — macros/ode_categorie_flux.sql
+        {{ ode_categorie_flux('nature_code') }} AS ode_categorie_flux
 
     FROM budget
 )
