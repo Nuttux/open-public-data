@@ -20,7 +20,7 @@ export default async function SfHubPage() {
 
   const sections: Section[] = [
     { href: "/us/city/sf/budget", label: "Budget", blurb: "Where the money goes, service by service — adopted vs executed, FY2010–2027." },
-    { href: "/us/city/sf/who-gets-paid", label: "Who gets paid", blurb: "Every payment through the City's ledger, ranked and classified, to the voucher." },
+    { href: "/us/city/sf/who-gets-paid", label: "Payees", blurb: "Every payment through the City's ledger, ranked and classified, to the voucher." },
     { href: "/us/city/sf/contracts", label: "Contracts", blurb: "The active register with the sole-source lens and award-vs-paid on every contract." },
     { href: "/us/city/sf/payroll", label: "Payroll", blurb: "What city work pays, and the overtime pattern in 24/7 services." },
     { href: "/us/city/sf/places", label: "Places", blurb: "The city building by building — money and archival record, place by place." },

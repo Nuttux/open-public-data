@@ -179,7 +179,7 @@ export default function SfContractsClient({
                   {t("us.sf.contracts.s03.title.after")}
                 </>
               }
-              subtitle="The register flags them and records the legal basis. Here they all are."
+              subtitle={t("us.sf.contracts.s03.subtitle")}
             />
 
             {/* Twin-stat panel (Paris S05 layout) */}
@@ -452,7 +452,7 @@ export default function SfContractsClient({
                   <em>{t("us.sf.contracts.s04.title.em")}</em>
                 </>
               }
-              subtitle="Two different measures exist — as primes, and inside other primes’ teams."
+              subtitle={t("us.sf.contracts.s04.subtitle")}
             />
             <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: 0, border: "1px solid var(--ink)" }}>
               {[

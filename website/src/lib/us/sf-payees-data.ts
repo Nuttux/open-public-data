@@ -86,3 +86,27 @@ const keyedSlugs = (): Set<string> => new Set(loadSfPayeesIndex().map((p) => p.s
 export function payeeSlugIfKeyed(slug: string): string | null {
   return keyedSlugs().has(slug) ? slug : null;
 }
+
+/**
+ * Inverse of every keyed payee's `contracts_held`: contract_no → payee slug.
+ * `contracts_held` is joined on the contract's prime-contractor core (see
+ * normalize_sf_payees.py), so this resolves a contract to its keyed PRIME
+ * payee — a confident reverse link with no name-matching guesswork. Built
+ * once per build/dev process and memoized (≈200 small reads, one time).
+ */
+let _contractPrime: Map<string, string> | null = null;
+export function contractPrimePayeeSlug(contractNo: string): string | null {
+  if (!_contractPrime) {
+    _contractPrime = new Map();
+    for (const p of loadSfPayeesIndex()) {
+      const fiche = readDataJsonOrNull<SfPayeeFicheData>(`us/sf/payees/${p.slug}.json`);
+      if (!fiche) continue;
+      for (const c of fiche.contracts_held) {
+        // First keyed payee wins; contracts_held is prime-joined, so this is
+        // the contract's prime. Ties (shared JV cores) are both valid primes.
+        if (!_contractPrime.has(c.contract_no)) _contractPrime.set(c.contract_no, p.slug);
+      }
+    }
+  }
+  return _contractPrime.get(contractNo) ?? null;
+}

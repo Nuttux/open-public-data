@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import DetailDrawer from "@/components/fusion/DetailDrawer";
 import SfContractFiche from "@/components/us/SfContractFiche";
 import { loadSfContractFiche } from "@/app/us/city/sf/contracts/data";
+import { contractPrimePayeeSlug } from "@/lib/us/sf-payees-data";
 import { fmtUsdCompact } from "@/lib/us/format";
 
 type Params = { no: string };
@@ -18,6 +19,7 @@ export default async function DrawerSfContractPage({ params }: { params: Promise
   const fiche = loadSfContractFiche(no);
   if (!fiche) return notFound();
   const c = fiche.contract;
+  const primePayeeSlug = contractPrimePayeeSlug(c.contract_no);
 
   const label = c.title_plain || c.title || `Contract ${c.contract_no}`;
   const shareText = `San Francisco contract ${c.contract_no} — ${label}: ${fmtUsdCompact(c.agreed_usd)} agreed with ${c.prime_contractor ?? "?"}, ${fmtUsdCompact(c.paid_usd)} paid so far.`;
@@ -32,7 +34,7 @@ export default async function DrawerSfContractPage({ params }: { params: Promise
         backHref="/us/city/sf/contracts"
         breadcrumbLabel={`Contract ${c.contract_no}`}
       >
-        <SfContractFiche fiche={fiche} />
+        <SfContractFiche fiche={fiche} primePayeeSlug={primePayeeSlug} />
       </DetailDrawer>
     </div>
   );

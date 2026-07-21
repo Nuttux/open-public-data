@@ -5,6 +5,7 @@ import "@/app/fusion.css";
 
 import SfContractFiche from "@/components/us/SfContractFiche";
 import { loadSfContractFiche } from "../../data";
+import { contractPrimePayeeSlug } from "@/lib/us/sf-payees-data";
 
 type Params = { no: string };
 
@@ -37,6 +38,7 @@ export default async function SfContractPage({ params }: { params: Promise<Param
   const fiche = loadSfContractFiche(no);
   if (!fiche) return notFound();
   const c = fiche.contract;
+  const primePayeeSlug = contractPrimePayeeSlug(c.contract_no);
 
   return (
     <main id="main-content" tabIndex={-1}>
@@ -51,13 +53,22 @@ export default async function SfContractPage({ params }: { params: Promise<Param
             {c.title_plain || c.title || `Contract ${c.contract_no}`}
           </h1>
           <p className="fx-page-lede">
-            {c.prime_contractor ?? "—"}
+            {primePayeeSlug && c.prime_contractor ? (
+              <Link
+                href={`/us/city/sf/who-gets-paid/payee/${primePayeeSlug}`}
+                style={{ color: "inherit", borderBottom: "1px solid currentColor" }}
+              >
+                {c.prime_contractor}
+              </Link>
+            ) : (
+              c.prime_contractor ?? "—"
+            )}
             {c.department ? ` · ${c.department}` : ""}
           </p>
         </div>
       </section>
       <div className="fx-fiche-wrap">
-        <SfContractFiche fiche={fiche} />
+        <SfContractFiche fiche={fiche} primePayeeSlug={primePayeeSlug} />
       </div>
     </main>
   );

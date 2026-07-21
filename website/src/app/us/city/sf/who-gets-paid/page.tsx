@@ -16,7 +16,7 @@ import type { WgpFile, WgpMeta, WgpYearStatus } from "./wgp-types";
  * preliminary while the Controller's close runs).
  */
 export const metadata: Metadata = {
-  title: { absolute: "US · San Francisco — who gets paid" },
+  title: { absolute: "US · San Francisco — Payees" },
   description:
     "Every payment through San Francisco's financial system, ranked and classified: service providers, nonprofits, fiscal agents, grant-funded dollars — from the Controller's weekly vendor-payments ledger.",
 };

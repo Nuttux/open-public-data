@@ -256,11 +256,13 @@ function NonprofitTab({
   yearData,
   grantOnly,
   setGrantOnly,
+  vendorSlugMap,
 }: {
   fy: number;
   yearData: WgpYear;
   grantOnly: boolean;
   setGrantOnly: (v: boolean) => void;
+  vendorSlugMap: Record<string, string>;
 }) {
   const t = useT();
   const np = yearData.nonprofit;
@@ -359,8 +361,9 @@ function NonprofitTab({
         </div>
         {rows.map((r, i) => {
           const value = grantOnly ? r.grant_funded_usd ?? 0 : r.vouchers_paid_usd;
-          return (
-            <div key={r.vendor} className="fx-top-row" style={{ cursor: "default" }}>
+          const slug = vendorSlugMap[r.vendor] ?? null;
+          const inner = (
+            <>
               <span className="r">{String(i + 1).padStart(2, "0")}</span>
               <span className="name">
                 {r.vendor}
@@ -412,7 +415,24 @@ function NonprofitTab({
                   <BucketChip bucket={r.bucket ?? "nonprofit"} />
                 )}
               </span>
-              <span className="arrow" aria-hidden="true" />
+              <span className="arrow" aria-hidden="true">
+                {slug ? "→" : null}
+              </span>
+            </>
+          );
+          // Keyed nonprofit: the row IS the link to its fiche (parity with the
+          // "all" tab). Unkeyed (outside the top ~200): plain row, never a dead link.
+          return slug ? (
+            <Link
+              key={r.vendor}
+              href={`/us/city/sf/who-gets-paid/payee/${slug}`}
+              className="fx-top-row"
+            >
+              {inner}
+            </Link>
+          ) : (
+            <div key={r.vendor} className="fx-top-row" style={{ cursor: "default" }}>
+              {inner}
             </div>
           );
         })}
@@ -650,6 +670,7 @@ export default function TopPayeesSection({
             yearData={yearData}
             grantOnly={grantOnly}
             setGrantOnly={setGrantOnly}
+            vendorSlugMap={vendorSlugMap}
           />
         )}
 

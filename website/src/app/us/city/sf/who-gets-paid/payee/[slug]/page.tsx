@@ -38,7 +38,7 @@ export default async function SfPayeePage({ params }: { params: Promise<Params> 
         <div className="fx-wrap">
           <div className="fx-page-kicker">
             <Link href="/us/city/sf/who-gets-paid" style={{ textDecoration: "none", color: "inherit" }}>
-              ← San Francisco · Who gets paid
+              ← San Francisco · Payees
             </Link>
           </div>
           <h1 className="fx-page-title">{payee.name}</h1>

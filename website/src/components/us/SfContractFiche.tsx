@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useT } from "@/lib/localeContext";
 import { fmtUsdCompact, fmtDateLong } from "@/lib/us/format";
 import Tip from "@/components/fusion/Tip";
@@ -127,9 +128,20 @@ function SpendCurve({ fiche }: { fiche: SfContractFicheType }) {
   );
 }
 
-export default function SfContractFiche({ fiche }: { fiche: SfContractFicheType }) {
+export default function SfContractFiche({
+  fiche,
+  primePayeeSlug,
+}: {
+  fiche: SfContractFicheType;
+  /** Slug of the prime contractor's recipient fiche when it is keyed (top ~200);
+   *  null otherwise. Resolved from contracts_held inversion — a confident match. */
+  primePayeeSlug?: string | null;
+}) {
   const t = useT();
   const c = fiche.contract;
+  const primeHref = primePayeeSlug
+    ? `/us/city/sf/who-gets-paid/payee/${primePayeeSlug}`
+    : null;
 
   const paidRatio = c.agreed_usd > 0 ? c.paid_usd / c.agreed_usd : null;
 
@@ -177,6 +189,20 @@ export default function SfContractFiche({ fiche }: { fiche: SfContractFicheType 
             title={t("us.sf.contracts.fiche.raw_title_tip")}
           >
             {t("us.sf.contracts.fiche.raw_title_label")} “{c.title}”
+          </p>
+        )}
+        {c.prime_contractor && (
+          <p style={{ margin: "10px 0 0", fontFamily: "var(--f-ui)", fontSize: 13.5, color: "var(--ink-2)" }}>
+            <span style={{ fontFamily: "var(--f-mono)", fontSize: 10, letterSpacing: ".1em", textTransform: "uppercase", color: "var(--muted)", marginRight: 8 }}>
+              {t("us.sf.contracts.fiche.prime_label")}
+            </span>
+            {primeHref ? (
+              <Link href={primeHref} style={{ color: "var(--bleu)", borderBottom: "1px solid var(--bleu)", fontWeight: 600 }}>
+                {c.prime_contractor}
+              </Link>
+            ) : (
+              <span style={{ fontWeight: 600, color: "var(--ink)" }}>{c.prime_contractor}</span>
+            )}
           </p>
         )}
         {badges.length > 0 && (
@@ -351,7 +377,13 @@ export default function SfContractFiche({ fiche }: { fiche: SfContractFicheType 
               {teamMembers.slice(0, 40).map((m, i) => (
                 <tr key={`${m.supplier}-${m.role}-${i}`}>
                   <td style={{ fontWeight: m.role === "Prime Contractor" ? 600 : 400 }}>
-                    {m.supplier}
+                    {m.role === "Prime Contractor" && primeHref ? (
+                      <Link href={primeHref} style={{ color: "var(--bleu)", borderBottom: "1px solid var(--bleu)" }}>
+                        {m.supplier}
+                      </Link>
+                    ) : (
+                      m.supplier
+                    )}
                     {m.lbe && (
                       <span style={{ fontFamily: "var(--f-mono)", fontSize: 10, color: "var(--bleu)", marginLeft: 8 }}>
                         LBE
