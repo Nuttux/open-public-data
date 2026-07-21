@@ -53,6 +53,28 @@ const fill = (s: string, vars: Record<string, string | number>) => {
 
 const nfInt = new Intl.NumberFormat("en-US");
 
+/** One-line pointer to the single shared FY2018 systems-break block above. */
+function Fy2018Ref() {
+  const t = useT();
+  return (
+    <p className="fx-footer-sources-meta" style={{ marginTop: 16 }}>
+      <a
+        href="#fy2018-note"
+        style={{
+          fontFamily: "var(--f-mono)",
+          fontSize: 11.5,
+          color: "var(--bleu)",
+          borderBottom: "1px solid var(--bleu)",
+          paddingBottom: 1,
+          textDecoration: "none",
+        }}
+      >
+        {t("us.sf.sources.fy2018.ref")} ↑
+      </a>
+    </p>
+  );
+}
+
 function OpenLink({ href, page }: { href: string; page: string }) {
   const t = useT();
   return (
@@ -94,6 +116,7 @@ export default function SfSourcesClient({ d }: { d: SfSourcesPageData }) {
     <main id="main-content" tabIndex={-1} style={{ overflowX: "clip" }}>
       <PageTOC
         items={[
+          { id: "fy2018-note", label: t("us.sf.sources.fy2018.heading") },
           { id: "sec-budget", label: t("us.sf.sources.budget.heading") },
           { id: "sec-payees", label: t("us.sf.sources.payees.heading") },
           { id: "sec-contracts", label: t("us.sf.sources.contracts.heading") },
@@ -111,6 +134,16 @@ export default function SfSourcesClient({ d }: { d: SfSourcesPageData }) {
         }
         lede={t("us.sf.sources.lede")}
       />
+
+      {/* ── FY2018 systems break (shared once; each dataset section links up here) ── */}
+      <section className="fx-footer-sources">
+        <div className="fx-wrap">
+          <div className="fx-footer-sources-head">
+            <span className="fx-footer-sources-label">{t("us.sf.sources.fy2018.heading")}</span>
+          </div>
+          <Fy2018Note />
+        </div>
+      </section>
 
       {/* ── Budget ── */}
       <section className="fx-footer-sources" id="sec-budget">
@@ -132,7 +165,7 @@ export default function SfSourcesClient({ d }: { d: SfSourcesPageData }) {
           <p className="fx-footer-sources-meta">
             <b>{t("us.sf.budget.s06.two_year_label")}</b>: {t("us.sf.budget.s06.two_year")}
           </p>
-          <Fy2018Note />
+          <Fy2018Ref />
           <p className="fx-footer-sources-meta" style={{ marginTop: 16 }}>
             <b>{t("us.sf.budget.s06.enrichment_label")}</b>: {t("us.sf.budget.s06.enrichment")}
           </p>
@@ -213,9 +246,7 @@ export default function SfSourcesClient({ d }: { d: SfSourcesPageData }) {
           <p className="fx-footer-sources-meta">
             <b>{t("us.sf.wgp.s05.individuals_label")}</b>: {t("us.sf.wgp.s05.individuals")}
           </p>
-          <div style={{ marginTop: 18 }}>
-            <Fy2018Note />
-          </div>
+          <Fy2018Ref />
           <div style={{ marginTop: 18 }}>
             <ExportRow
               items={[
@@ -260,7 +291,7 @@ export default function SfSourcesClient({ d }: { d: SfSourcesPageData }) {
               </>
             )}
           </p>
-          <Fy2018Note />
+          <Fy2018Ref />
           <div
             style={{
               margin: "14px 0 0",
@@ -324,16 +355,8 @@ export default function SfSourcesClient({ d }: { d: SfSourcesPageData }) {
           <p className="fx-footer-sources-meta">
             <b>{t("us.sf.payroll.s06.ot_label")}</b>: {pr.ot_counter_note}
           </p>
-          <div style={{ margin: "14px 0" }}>
-            <Fy2018Note
-              extra={
-                <>
-                  {" "}
-                  {t("us.sf.payroll.s06.breaks")}
-                </>
-              }
-            />
-          </div>
+          <p className="fx-footer-sources-meta">{t("us.sf.payroll.s06.breaks")}</p>
+          <Fy2018Ref />
           <p className="fx-footer-sources-meta">
             <b>{t("us.sf.payroll.s06.population_label")}</b>:{" "}
             {pr.population.note}{" "}

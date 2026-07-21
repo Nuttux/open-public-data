@@ -57,6 +57,19 @@ export default async function SfBudgetPage({
     }))
     .sort((a, b) => a.fiscal_year - b.fiscal_year);
 
+  // Long budget-vs-actual trend (all funds): actuals reach back to FY1999,
+  // adopted budget begins FY2010 — both straight from budget_vs_actual.json,
+  // the one file where the two are constructed to be comparable.
+  const trend = bva.sides.spending.points
+    .map((p) => ({
+      fiscal_year: p.fiscal_year,
+      budget_net_usd: p.budget_net_usd,
+      // Incomplete fiscal years carry only a partial YTD actual — drop it so
+      // the line ends at the last closed year rather than plunging.
+      actual_all_usd: p.is_fiscal_year_complete === false ? null : p.actual_all_usd,
+    }))
+    .sort((a, b) => a.fiscal_year - b.fiscal_year);
+
   // Department table: the selected year when covered, else the latest
   // covered (closed) year.
   let bvaTable: SfBudgetPageData["bvaTable"] = null;
@@ -102,6 +115,7 @@ export default async function SfBudgetPage({
     },
     breakdown: slimBreakdown,
     spine,
+    trend,
     bvaTable,
     source: breakdown.source,
     generated_at: breakdown.generated_at,

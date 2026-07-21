@@ -25,6 +25,12 @@ Outputs (website/public/data/us/sf/):
       pair — see the reconciliation block in the file and the model header
       of mart_us_sf_budget_vs_actual for why (measured, not assumed).
       Source: mart_us_sf_budget_vs_actual.
+    - budget_dept_detail_{fy}.json: per-FY dept × character DETAIL — the
+      third drill level below a department fiche (dept → character →
+      this). Raw object-level budget line items + vendor payments
+      (vouchers) matched to the same cell, two source-distinct blocks,
+      read lazily server-side. Sources:
+      mart_us_sf_budget_dept_character_object, mart_us_sf_vouchers_dept_character.
     - index.json           : file manifest + shared provenance.
 
 Data contract (ADR-0010 D2, same as the France/US-national exports):
@@ -829,8 +835,111 @@ def build_bva_departments(rows: list[dict]) -> dict:
     }
 
 
+DETAIL_TOP_VENDORS = 15  # matches mart_us_sf_vouchers_dept_character's rank_in_cell cut
+
+
+def build_budget_dept_detail(
+    fy: int,
+    object_rows: list[dict],
+    voucher_rows: list[dict],
+) -> dict:
+    """One fiscal year's dept×character DETAIL payload — the third drill
+    level below the department fiche (dept → character → this). Two
+    source-distinct blocks per cell, never blended into one number:
+      - objects:  raw budget line items (same adopted-budget dataset as
+        the rest of the page) — cryptic by design (no gloss enrichment),
+        rendered as an expandable "line items" list, never ranked.
+      - payments: vendor payments (vouchers dataset) that funded this
+        dept×character slice — the honest floor of the drill. Only
+        populated where the mart found matching vouchers (Spending-side
+        characters only; revenue cells never have a payments block).
+    """
+    cells: dict[str, dict] = {}
+
+    for r in object_rows:
+        if int(r["fiscal_year"]) != fy:
+            continue
+        key = f"{r['department_code']}|{r['character_code']}"
+        cell = cells.setdefault(key, {"side": r["side"], "objects": [], "payments": None})
+        cell["objects"].append({
+            "code": r["object_code"],
+            "label": r["object"],
+            "amount_usd": _f(r["amount_usd"], 2),
+            "is_transfer_adjustment": bool(r["is_transfer_adjustment"]),
+        })
+
+    for rows in cells.values():
+        rows["objects"].sort(key=lambda o: -abs(o["amount_usd"]))
+
+    by_cell_vendors: dict[str, list[dict]] = {}
+    for r in voucher_rows:
+        if int(r["fiscal_year"]) != fy:
+            continue
+        key = f"{r['department_code']}|{r['character_code']}"
+        by_cell_vendors.setdefault(key, []).append(r)
+
+    for key, vendor_rows in by_cell_vendors.items():
+        vendor_rows.sort(key=lambda v: int(v["rank_in_cell"]))
+        ref = vendor_rows[0]
+        kept_usd = sum(float(v["vouchers_paid_usd"]) for v in vendor_rows)
+        cell_total = float(ref["cell_total_usd"])
+        cell_n = int(ref["cell_n_vendors"])
+        payments = {
+            "total_usd": _f(cell_total, 2),
+            "n_vendors": cell_n,
+            "vendors": [
+                {
+                    "vendor": v["vendor"],
+                    "amount_usd": _f(v["vouchers_paid_usd"], 2),
+                    "n_vouchers": int(v["n_vouchers"]),
+                    "is_non_profit": bool(v["is_non_profit"]),
+                    "is_related_govt_unit": bool(v["is_related_govt_unit"]),
+                    "bucket": v["bucket"],
+                    "is_aggregation_line": bool(v["is_aggregation_line"]),
+                }
+                for v in vendor_rows
+            ],
+            "other_vendors_usd": _f(max(0.0, cell_total - kept_usd), 2),
+            "other_vendors_n": max(0, cell_n - len(vendor_rows)),
+            "execution_status": ref["execution_status"],
+        }
+        cell = cells.setdefault(key, {"side": "Spending", "objects": [], "payments": None})
+        cell["payments"] = payments
+
+    budget_source = None
+    if object_rows:
+        ref = object_rows[0]
+        budget_source = {"source_url": ref["source_url"], "rows_updated_at": _ts(ref["source_rows_updated_at"])}
+    vouchers_source = source_block(voucher_rows[0], prefix="source_") if voucher_rows else None
+
+    return {
+        "generated_at": datetime.now(timezone.utc).isoformat(),
+        "source_pipeline": SOURCE_PIPELINE,
+        "country": "us",
+        "scale": "city",
+        "place": "sf",
+        "unit": "USD",
+        "fiscal_year": fy,
+        "budget_source": budget_source,
+        "vouchers_source": vouchers_source,
+        "notes": (
+            "Two source-distinct blocks per dept×character cell, never "
+            "blended: `objects` is raw adopted-budget line detail (no "
+            "gloss enrichment — object labels are ~25-50% plain-English, "
+            "shown as-is, never ranked as a headline section). `payments` "
+            "is vendor payments from the vouchers dataset that funded this "
+            "same dept×character slice (measured 90.3% dollar match "
+            "against nonzero budget, 2026-07-16) — null where no voucher "
+            "activity exists for the cell (Salaries/Fringe/inter-"
+            "departmental-services characters structurally have none)."
+        ),
+        "cells": cells,
+    }
+
+
 def build_index(budget: dict, payees: dict, search: dict, bva: dict,
-                breakdowns: dict[int, dict], bva_dept: dict) -> dict:
+                breakdowns: dict[int, dict], bva_dept: dict,
+                dept_details: dict[int, dict]) -> dict:
     return {
         "generated_at": datetime.now(timezone.utc).isoformat(),
         "source_pipeline": SOURCE_PIPELINE,
@@ -888,6 +997,21 @@ def build_index(budget: dict, payees: dict, search: dict, bva: dict,
                 },
                 "as_of": budget["as_of"],
                 "source_url": budget["source"]["source_url"],
+            },
+            "budget_dept_detail_{fy}.json": {
+                "description": (
+                    "Per-fiscal-year dept × character DETAIL — the third "
+                    "drill level (dept → character → this): raw object-"
+                    "level budget line items + vendor payments (vouchers) "
+                    "matched to the same cell, lazily read server-side "
+                    "when a department fiche is requested"
+                ),
+                "fiscal_years": sorted(dept_details.keys()),
+                "as_of": budget["as_of"],
+                "source_urls": sorted({budget["source"]["source_url"]} | {
+                    d["vouchers_source"]["source_url"]
+                    for d in dept_details.values() if d["vouchers_source"]
+                }),
             },
             "budget_vs_actual_departments.json": {
                 "description": (
@@ -981,6 +1105,21 @@ def main() -> int:
     log.info("rows", extra=str(len(bva_dept_rows)))
     bva_dept = build_bva_departments(bva_dept_rows)
 
+    log.section("Block 2 — dept×character DETAIL (objects + vendor payments)")
+    object_rows = fetch_rows(
+        client, "mart_us_sf_budget_dept_character_object",
+        "fiscal_year, side, department_code, character_code",
+    )
+    voucher_cell_rows = fetch_rows(
+        client, "mart_us_sf_vouchers_dept_character",
+        "fiscal_year, department_code, character_code, rank_in_cell",
+    )
+    log.info("rows", extra=f"objects={len(object_rows)} vendor_cells={len(voucher_cell_rows)}")
+    detail_fys = sorted({int(r["fiscal_year"]) for r in object_rows} | {int(r["fiscal_year"]) for r in voucher_cell_rows})
+    dept_details: dict[int, dict] = {
+        fy: build_budget_dept_detail(fy, object_rows, voucher_cell_rows) for fy in detail_fys
+    }
+
     log.section("Écriture")
     write_json(budget, "budget_by_year.json", log)
     write_json(payees, "top_payees.json", log)
@@ -988,8 +1127,13 @@ def main() -> int:
     write_json(bva, "budget_vs_actual.json", log)
     for fy, payload in sorted(breakdowns.items()):
         write_json(payload, f"budget_breakdown_{fy}.json", log)
+    for fy, payload in sorted(dept_details.items()):
+        write_json(payload, f"budget_dept_detail_{fy}.json", log)
     write_json(bva_dept, "budget_vs_actual_departments.json", log)
-    write_json(build_index(budget, payees, search, bva, breakdowns, bva_dept), "index.json", log)
+    write_json(
+        build_index(budget, payees, search, bva, breakdowns, bva_dept, dept_details),
+        "index.json", log,
+    )
 
     log.section("Sanity check (acceptance anchors)")
     sp = {p["fiscal_year"]: p["total_usd"] for p in budget["sides"]["spending"]["points"]}

@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-17T08:56:20.740681+00:00",
+  "generated_at": "2026-07-21T09:34:55.317135+00:00",
   "source_pipeline": "configs/countries/us.yaml → sync_socrata.py + sync_census_popest.py → raw.us_sf_* → dbt_us_staging → dbt_us_analytics → dbt_us_marts → export_us_sf.py",
   "country": "us",
   "scale": "city",
@@ -708,9 +708,9 @@
         "n_characters": 0
       },
       {
-        "code": "CFC",
-        "label": "CFC Children & Families Commsn",
-        "display_name": "Children & Families Commission",
+        "code": "CII",
+        "label": "CII Commty Invest & Infrstrctr",
+        "display_name": "Community Investment & Infrastructure",
         "org_group_code": "03",
         "total_usd": 0.0,
         "transfer_adjustment_usd": 0.0,
@@ -718,9 +718,9 @@
         "n_characters": 0
       },
       {
-        "code": "CII",
-        "label": "CII Commty Invest & Infrstrctr",
-        "display_name": "Community Investment & Infrastructure",
+        "code": "CFC",
+        "label": "CFC Children & Families Commsn",
+        "display_name": "Children & Families Commission",
         "org_group_code": "03",
         "total_usd": 0.0,
         "transfer_adjustment_usd": 0.0,
@@ -1190,40 +1190,10 @@
         "n_characters": 3
       },
       {
-        "code": "DPA",
-        "label": "DPA Police Accountabilty",
-        "display_name": "Police Accountability",
-        "org_group_code": "01",
-        "total_usd": 0.0,
-        "transfer_adjustment_usd": -332795.0,
-        "share_of_side": 0.0,
-        "n_characters": 2
-      },
-      {
-        "code": "CCD",
-        "label": "CCD SF Communtiy College Dist",
-        "display_name": "SF Community College District",
-        "org_group_code": "03",
-        "total_usd": 0.0,
-        "transfer_adjustment_usd": 0.0,
-        "share_of_side": 0.0,
-        "n_characters": 0
-      },
-      {
-        "code": "USD",
-        "label": "USD County Education Office",
-        "display_name": "County Office of Education",
-        "org_group_code": "03",
-        "total_usd": 0.0,
-        "transfer_adjustment_usd": 0.0,
-        "share_of_side": 0.0,
-        "n_characters": 0
-      },
-      {
-        "code": "CRT",
-        "label": "CRT Superior Court",
-        "display_name": "Superior Court",
-        "org_group_code": "01",
+        "code": "CTA",
+        "label": "CTA SF County Transprtn Auth",
+        "display_name": "County Transportation Authority",
+        "org_group_code": "02",
         "total_usd": 0.0,
         "transfer_adjustment_usd": 0.0,
         "share_of_side": 0.0,
@@ -1240,20 +1210,30 @@
         "n_characters": 2
       },
       {
-        "code": "CFC",
-        "label": "CFC Children & Families Commsn",
-        "display_name": "Children & Families Commission",
-        "org_group_code": "03",
+        "code": "DPA",
+        "label": "DPA Police Accountabilty",
+        "display_name": "Police Accountability",
+        "org_group_code": "01",
+        "total_usd": 0.0,
+        "transfer_adjustment_usd": -332795.0,
+        "share_of_side": 0.0,
+        "n_characters": 2
+      },
+      {
+        "code": "CRT",
+        "label": "CRT Superior Court",
+        "display_name": "Superior Court",
+        "org_group_code": "01",
         "total_usd": 0.0,
         "transfer_adjustment_usd": 0.0,
         "share_of_side": 0.0,
         "n_characters": 0
       },
       {
-        "code": "CTA",
-        "label": "CTA SF County Transprtn Auth",
-        "display_name": "County Transportation Authority",
-        "org_group_code": "02",
+        "code": "USD",
+        "label": "USD County Education Office",
+        "display_name": "County Office of Education",
+        "org_group_code": "03",
         "total_usd": 0.0,
         "transfer_adjustment_usd": 0.0,
         "share_of_side": 0.0,
@@ -1273,6 +1253,26 @@
         "code": "CII",
         "label": "CII Commty Invest & Infrstrctr",
         "display_name": "Community Investment & Infrastructure",
+        "org_group_code": "03",
+        "total_usd": 0.0,
+        "transfer_adjustment_usd": 0.0,
+        "share_of_side": 0.0,
+        "n_characters": 0
+      },
+      {
+        "code": "CCD",
+        "label": "CCD SF Communtiy College Dist",
+        "display_name": "SF Community College District",
+        "org_group_code": "03",
+        "total_usd": 0.0,
+        "transfer_adjustment_usd": 0.0,
+        "share_of_side": 0.0,
+        "n_characters": 0
+      },
+      {
+        "code": "CFC",
+        "label": "CFC Children & Families Commsn",
+        "display_name": "Children & Families Commission",
         "org_group_code": "03",
         "total_usd": 0.0,
         "transfer_adjustment_usd": 0.0,
@@ -3942,15 +3942,15 @@
         1
       ],
       [
-        "REG",
-        "CITY_GR_PROG",
-        100000.0,
-        0
-      ],
-      [
         "REC",
         "CARRYFWD_BUD_ONLY",
         -100000.0,
+        0
+      ],
+      [
+        "REG",
+        "CITY_GR_PROG",
+        100000.0,
         0
       ],
       [
@@ -4341,15 +4341,15 @@
       ],
       [
         "HRD",
-        "EXP_RECOVERY",
-        130603863.0,
-        0
-      ],
-      [
-        "HRD",
         "ELS",
         -130603863.0,
         1
+      ],
+      [
+        "HRD",
+        "EXP_RECOVERY",
+        130603863.0,
+        0
       ],
       [
         "CHF",
@@ -4412,13 +4412,13 @@
         0
       ],
       [
-        "REC",
+        "LIB",
         "PROP_TAX",
         79520000.0,
         0
       ],
       [
-        "LIB",
+        "REC",
         "PROP_TAX",
         79520000.0,
         0
@@ -4443,15 +4443,15 @@
       ],
       [
         "CAT",
-        "ELS",
-        -71253153.0,
-        1
-      ],
-      [
-        "CAT",
         "EXP_RECOVERY",
         71253153.0,
         0
+      ],
+      [
+        "CAT",
+        "ELS",
+        -71253153.0,
+        1
       ],
       [
         "CON",
@@ -4521,15 +4521,15 @@
       ],
       [
         "DEC",
-        "EXP_RECOVERY",
-        52284023.0,
-        0
-      ],
-      [
-        "DEC",
         "ELS",
         -52284023.0,
         1
+      ],
+      [
+        "DEC",
+        "EXP_RECOVERY",
+        52284023.0,
+        0
       ],
       [
         "POL",
@@ -4563,15 +4563,15 @@
       ],
       [
         "PRT",
-        "INTRAFD_TFR_IN",
-        47106318.0,
-        0
-      ],
-      [
-        "PRT",
         "ELS",
         -47106318.0,
         1
+      ],
+      [
+        "PRT",
+        "INTRAFD_TFR_IN",
+        47106318.0,
+        0
       ],
       [
         "DBI",
@@ -5019,15 +5019,15 @@
       ],
       [
         "TTX",
-        "EXP_RECOVERY",
-        10678462.0,
-        0
-      ],
-      [
-        "TTX",
         "ELS",
         -10678462.0,
         1
+      ],
+      [
+        "TTX",
+        "EXP_RECOVERY",
+        10678462.0,
+        0
       ],
       [
         "ADM",
@@ -5163,15 +5163,15 @@
       ],
       [
         "HRC",
-        "EXP_RECOVERY",
-        5099600.0,
-        0
-      ],
-      [
-        "HRC",
         "ELS",
         -5099600.0,
         1
+      ],
+      [
+        "HRC",
+        "EXP_RECOVERY",
+        5099600.0,
+        0
       ],
       [
         "ECN",
@@ -5319,15 +5319,15 @@
       ],
       [
         "CPC",
-        "ELS",
-        -3043444.0,
-        1
-      ],
-      [
-        "CPC",
         "EXP_RECOVERY",
         3043444.0,
         0
+      ],
+      [
+        "CPC",
+        "ELS",
+        -3043444.0,
+        1
       ],
       [
         "DAT",
@@ -5541,13 +5541,13 @@
       ],
       [
         "FIR",
-        "OPER_TFR_IN",
+        "INTER_REV_FED",
         1354313.0,
         0
       ],
       [
         "FIR",
-        "INTER_REV_FED",
+        "OPER_TFR_IN",
         1354313.0,
         0
       ],
@@ -5577,15 +5577,15 @@
       ],
       [
         "DEM",
-        "EXP_RECOVERY",
-        1150271.0,
-        0
-      ],
-      [
-        "DEM",
         "ELS",
         -1150271.0,
         1
+      ],
+      [
+        "DEM",
+        "EXP_RECOVERY",
+        1150271.0,
+        0
       ],
       [
         "BOA",
@@ -5612,6 +5612,12 @@
         0
       ],
       [
+        "ENV",
+        "INTER_REV_FED",
+        1000000.0,
+        0
+      ],
+      [
         "CON",
         "OTH_REV",
         1000000.0,
@@ -5620,12 +5626,6 @@
       [
         "PRT",
         "INT_INV_INC",
-        1000000.0,
-        0
-      ],
-      [
-        "ENV",
-        "INTER_REV_FED",
         1000000.0,
         0
       ],
@@ -5684,14 +5684,14 @@
         0
       ],
       [
-        "DPH",
-        "INTERGOV_REV_OTH",
+        "ECN",
+        "OPER_TFR_IN",
         600000.0,
         0
       ],
       [
-        "ECN",
-        "OPER_TFR_IN",
+        "DPH",
+        "INTERGOV_REV_OTH",
         600000.0,
         0
       ],
@@ -5847,15 +5847,15 @@
       ],
       [
         "DPA",
-        "EXP_RECOVERY",
-        332795.0,
-        0
-      ],
-      [
-        "DPA",
         "ELS",
         -332795.0,
         1
+      ],
+      [
+        "DPA",
+        "EXP_RECOVERY",
+        332795.0,
+        0
       ],
       [
         "FIR",
@@ -5913,15 +5913,15 @@
       ],
       [
         "REG",
-        "ELS",
-        -210000.0,
-        1
-      ],
-      [
-        "REG",
         "EXP_RECOVERY",
         210000.0,
         0
+      ],
+      [
+        "REG",
+        "ELS",
+        -210000.0,
+        1
       ],
       [
         "ART",
@@ -5931,15 +5931,15 @@
       ],
       [
         "JUV",
-        "ELS",
-        -205638.0,
-        1
-      ],
-      [
-        "JUV",
         "EXP_RECOVERY",
         205638.0,
         0
+      ],
+      [
+        "JUV",
+        "ELS",
+        -205638.0,
+        1
       ],
       [
         "DBI",
@@ -5961,15 +5961,15 @@
       ],
       [
         "FAM",
-        "EXP_RECOVERY",
-        179000.0,
-        0
-      ],
-      [
-        "FAM",
         "ELS",
         -179000.0,
         1
+      ],
+      [
+        "FAM",
+        "EXP_RECOVERY",
+        179000.0,
+        0
       ],
       [
         "LIB",
@@ -5979,15 +5979,15 @@
       ],
       [
         "BOS",
-        "ELS",
-        -161996.0,
-        1
-      ],
-      [
-        "BOS",
         "EXP_RECOVERY",
         161996.0,
         0
+      ],
+      [
+        "BOS",
+        "ELS",
+        -161996.0,
+        1
       ],
       [
         "CSS",
@@ -6033,25 +6033,25 @@
       ],
       [
         "RET",
-        "ELS",
-        -110000.0,
-        1
-      ],
-      [
-        "RET",
         "EXP_RECOVERY",
         110000.0,
         0
       ],
       [
-        "CON",
-        "PROP_TAX",
-        100000.0,
-        0
+        "RET",
+        "ELS",
+        -110000.0,
+        1
       ],
       [
         "HSA",
         "RENTS_CONCESSIONS",
+        100000.0,
+        0
+      ],
+      [
+        "CON",
+        "PROP_TAX",
         100000.0,
         0
       ],

@@ -128,6 +128,67 @@ function SpendCurve({ fiche }: { fiche: SfContractFicheType }) {
   );
 }
 
+/**
+ * Paid measured against the agreed ceiling. The larger of the two sets the
+ * full track, so the overrun (ocre, beyond the "Agreed" marker) is visible
+ * whenever payments accumulated past the base document — the single clearest
+ * read of the fiche's agreed/paid KPIs.
+ */
+function PaidVsAgreedBar({ fiche }: { fiche: SfContractFicheType }) {
+  const t = useT();
+  const agreed = fiche.contract.agreed_usd;
+  const paid = fiche.contract.paid_usd;
+  const over = fiche.contract.paid_exceeds_agreed;
+  if (agreed <= 0 && paid <= 0) return null;
+
+  const ref = Math.max(agreed, paid, 1);
+  const agreedPct = (agreed / ref) * 100;
+  const paidPct = (paid / ref) * 100;
+  const withinPct = Math.min(paidPct, agreedPct);
+  const overrun = Math.max(0, paid - agreed);
+  const remaining = Math.max(0, agreed - paid);
+  const pctOfAgreed = agreed > 0 ? Math.round((paid / agreed) * 100) : null;
+
+  return (
+    <section className="fx-fiche-section">
+      <div className="fx-fiche-h">{t("us.sf.contracts.fiche.bar.h")}</div>
+      <div
+        role="img"
+        aria-label={fill(t("us.sf.contracts.fiche.bar.aria"), {
+          paid: fmtUsdCompact(paid),
+          agreed: fmtUsdCompact(agreed),
+        })}
+        style={{ position: "relative", height: 22, background: "var(--rule)", marginTop: 4 }}
+      >
+        {/* paid, within the agreed ceiling */}
+        <div style={{ position: "absolute", left: 0, top: 0, bottom: 0, width: `${withinPct}%`, background: "var(--bleu)" }} />
+        {/* overrun, beyond the agreed amount */}
+        {over && overrun > 0 && (
+          <div style={{ position: "absolute", left: `${agreedPct}%`, top: 0, bottom: 0, width: `${paidPct - agreedPct}%`, background: "var(--ocre)" }} />
+        )}
+        {/* agreed marker — only meaningful when paid overshoots it */}
+        {over && (
+          <div style={{ position: "absolute", left: `${agreedPct}%`, top: -3, bottom: -3, width: 2, background: "var(--ink)" }} aria-hidden="true" />
+        )}
+      </div>
+      {over ? (
+        <p style={{ margin: "8px 0 0", fontFamily: "var(--f-mono)", fontSize: 11, color: "var(--ocre)" }}>
+          {fmtUsdCompact(paid)} {t("us.sf.contracts.fiche.kpi.paid").toLowerCase()} ·{" "}
+          {fill(t("us.sf.contracts.fiche.bar.over"), { v: fmtUsdCompact(overrun) })}
+          <span style={{ color: "var(--muted)" }}> · {t("us.sf.contracts.fiche.bar.agreed_marker")} {fmtUsdCompact(agreed)}</span>
+        </p>
+      ) : (
+        <p style={{ margin: "8px 0 0", fontFamily: "var(--f-mono)", fontSize: 11, color: "var(--muted)" }}>
+          {pctOfAgreed != null && fill(t("us.sf.contracts.fiche.bar.of_agreed"), { pct: pctOfAgreed })}
+          {remaining > 0 && (
+            <> · {fill(t("us.sf.contracts.fiche.bar.remaining"), { v: fmtUsdCompact(remaining) })}</>
+          )}
+        </p>
+      )}
+    </section>
+  );
+}
+
 export default function SfContractFiche({
   fiche,
   primePayeeSlug,
@@ -280,6 +341,9 @@ export default function SfContractFiche({
           </div>
         </div>
       </div>
+
+      {/* Paid against the agreed ceiling */}
+      <PaidVsAgreedBar fiche={fiche} />
 
       {/* Term timeline */}
       {timeline && c.term_start && c.term_end ? (

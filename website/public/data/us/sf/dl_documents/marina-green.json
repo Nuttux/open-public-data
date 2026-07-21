@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T22:30:00.108152+00:00",
+ "generated_at": "2026-07-21T14:25:53.938324+00:00",
  "slug": "marina-green",
  "name": "Marina Green",
  "note": "Archive documents linked to this place; source labels honour the SFPL-vs-Democracy's-Library distinction.",
@@ -14,43 +14,9 @@
    "snippet": "Variants «Marina Green» The preliminary site plan for the AC Village at «Marina Green» in 2012",
    "url": "https://archive.org/details/draftenvironment5120sanf",
    "deep_link": "https://archive.org/details/draftenvironment5120sanf?q=Marina+Green",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
-  },
-  {
-   "identifier": "preliminarymitig2003sanf",
-   "title": "Preliminary mitigated negative declaration : 2002.1129E -- San Francisco marina renovation",
-   "creator": "San Francisco (Calif.). Planning Dept,Environmental Science Associates,Carey & Co,Horton Lees Brogden Lighting Design,Moffatt & Nichol Engineers,Orion Environmental Associates",
-   "year": 2002,
-   "pool": "sfpl",
-   "matched_alias": "Marina Green",
-   "snippet": "less-than-significant impact on the stand. «Marina Green»: The «Marina Green» is a public with paved sidewalks",
-   "url": "https://archive.org/details/preliminarymitig2003sanf",
-   "deep_link": "https://archive.org/details/preliminarymitig2003sanf?q=Marina+Green",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
-  },
-  {
-   "identifier": "scenicparkwayfor293sanf",
-   "title": "A scenic parkway for the park : report of the Doyle Drive Task Force to the San Francisco Board of Supervisors",
-   "creator": "San Francisco (Calif.). Board of Supervisors. Doyle Drive Task Force",
-   "year": 1993,
-   "pool": "sfpl",
-   "matched_alias": "Marina Green",
-   "snippet": "the length of the bay front, from the «Marina Green» to Fort Point, past clusters of fishermen",
-   "url": "https://archive.org/details/scenicparkwayfor293sanf",
-   "deep_link": "https://archive.org/details/scenicparkwayfor293sanf?q=Marina+Green",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
-  },
-  {
-   "identifier": "whatsdoinginpark1985sanf",
-   "title": "What's doing in the parks?",
-   "creator": "San Francisco (Calif.). Recreation and Park Department",
-   "year": null,
-   "pool": "sfpl",
-   "matched_alias": "Marina Green",
-   "snippet": "Guild of San Francisco Outdoor Art Show, «Marina Green», Marina Boulevard and Webster Street, (thru",
-   "url": "https://archive.org/details/whatsdoinginpark1985sanf",
-   "deep_link": "https://archive.org/details/whatsdoinginpark1985sanf?q=Marina+Green",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Plans & environmental review",
+   "salient": true
   },
   {
    "identifier": "minutesrecreatio1980sanf",
@@ -62,43 +28,9 @@
    "snippet": "Reforestation Report, «Marina Green» Report, Portable Book Stalls, No Parking «Marina Green», Monastery",
    "url": "https://archive.org/details/minutesrecreatio1980sanf",
    "deep_link": "https://archive.org/details/minutesrecreatio1980sanf?q=Marina+Green",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
-  },
-  {
-   "identifier": "technicalreportg1965cali",
-   "title": "Technical report: Golden Gate Freeway, Interstate Highway Route 480",
-   "creator": "California. Division of Highways",
-   "year": null,
-   "pool": "sfpl",
-   "matched_alias": "Marina Green",
-   "snippet": "several-times expanded Marina Yacht Harbor, the «Marina Green», the newGas House Cove Yacht Basin to",
-   "url": "https://archive.org/details/technicalreportg1965cali",
-   "deep_link": "https://archive.org/details/technicalreportg1965cali?q=Marina+Green",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
-  },
-  {
-   "identifier": "agendaoperations2004sanf",
-   "title": "Agenda / Operations Committee",
-   "creator": "San Francisco (Calif.). Recreation and Park Commission. Operations Committee",
-   "year": null,
-   "pool": "sfpl",
-   "matched_alias": "Marina Green",
-   "snippet": "8. 2006. (ACTION ITEM) 12. ALTA PLAZA, «MARINA GREEN», RUSSIAN HILL PARK AND JUSTIN HERMAN",
-   "url": "https://archive.org/details/agendaoperations2004sanf",
-   "deep_link": "https://archive.org/details/agendaoperations2004sanf?q=Marina+Green",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
-  },
-  {
-   "identifier": "minutesrecreatio1990sanf",
-   "title": "Minutes / Recreation and Park Commission",
-   "creator": "San Francisco (Calif.). Recreation and Park Commission",
-   "year": null,
-   "pool": "sfpl",
-   "matched_alias": "Marina Green",
-   "snippet": "boardsailing event at the «Marina Green». Part of the «Marina Green» parking lot and the northern",
-   "url": "https://archive.org/details/minutesrecreatio1990sanf",
-   "deep_link": "https://archive.org/details/minutesrecreatio1990sanf?q=Marina+Green",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Meetings & resolutions",
+   "salient": true
   },
   {
    "identifier": "minutes199899sanf",
@@ -110,19 +42,79 @@
    "snippet": "enforcement on the «Marina Green» and the loss of shrubbery on little «Marina Green». John Laskin",
    "url": "https://archive.org/details/minutes199899sanf",
    "deep_link": "https://archive.org/details/minutes199899sanf?q=Marina+Green",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Meetings & resolutions",
+   "salient": true
   },
   {
-   "identifier": "whatsdoinginpark1992sanf",
+   "identifier": "agendaoperations2004sanf",
+   "title": "Agenda / Operations Committee",
+   "creator": "San Francisco (Calif.). Recreation and Park Commission. Operations Committee",
+   "year": null,
+   "pool": "sfpl",
+   "matched_alias": "Marina Green",
+   "snippet": "8. 2006. (ACTION ITEM) 12. ALTA PLAZA, «MARINA GREEN», RUSSIAN HILL PARK AND JUSTIN HERMAN",
+   "url": "https://archive.org/details/agendaoperations2004sanf",
+   "deep_link": "https://archive.org/details/agendaoperations2004sanf?q=Marina+Green",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Meetings & resolutions",
+   "salient": true
+  },
+  {
+   "identifier": "scenicparkwayfor293sanf",
+   "title": "A scenic parkway for the park : report of the Doyle Drive Task Force to the San Francisco Board of Supervisors",
+   "creator": "San Francisco (Calif.). Board of Supervisors. Doyle Drive Task Force",
+   "year": 1993,
+   "pool": "sfpl",
+   "matched_alias": "Marina Green",
+   "snippet": "the length of the bay front, from the «Marina Green» to Fort Point, past clusters of fishermen",
+   "url": "https://archive.org/details/scenicparkwayfor293sanf",
+   "deep_link": "https://archive.org/details/scenicparkwayfor293sanf?q=Marina+Green",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Reports & records",
+   "salient": true
+  },
+  {
+   "identifier": "preliminarymitig2003sanf",
+   "title": "Preliminary mitigated negative declaration : 2002.1129E -- San Francisco marina renovation",
+   "creator": "San Francisco (Calif.). Planning Dept,Environmental Science Associates,Carey & Co,Horton Lees Brogden Lighting Design,Moffatt & Nichol Engineers,Orion Environmental Associates",
+   "year": 2002,
+   "pool": "sfpl",
+   "matched_alias": "Marina Green",
+   "snippet": "less-than-significant impact on the stand. «Marina Green»: The «Marina Green» is a public with paved sidewalks",
+   "url": "https://archive.org/details/preliminarymitig2003sanf",
+   "deep_link": "https://archive.org/details/preliminarymitig2003sanf?q=Marina+Green",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Other records",
+   "salient": true
+  },
+  {
+   "identifier": "technicalreportg1965cali",
+   "title": "Technical report: Golden Gate Freeway, Interstate Highway Route 480",
+   "creator": "California. Division of Highways",
+   "year": null,
+   "pool": "sfpl",
+   "matched_alias": "Marina Green",
+   "snippet": "several-times expanded Marina Yacht Harbor, the «Marina Green», the newGas House Cove Yacht Basin to",
+   "url": "https://archive.org/details/technicalreportg1965cali",
+   "deep_link": "https://archive.org/details/technicalreportg1965cali?q=Marina+Green",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Other records",
+   "salient": false
+  },
+  {
+   "identifier": "whatsdoinginpark1985sanf",
    "title": "What's doing in the parks?",
    "creator": "San Francisco (Calif.). Recreation and Park Department",
    "year": null,
    "pool": "sfpl",
    "matched_alias": "Marina Green",
-   "snippet": "Artists Guild of San Francisco Art Show, «Marina Green», Marina Blvd. & Scott St. Monday, February",
-   "url": "https://archive.org/details/whatsdoinginpark1992sanf",
-   "deep_link": "https://archive.org/details/whatsdoinginpark1992sanf?q=Marina+Green",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+   "snippet": "Guild of San Francisco Outdoor Art Show, «Marina Green», Marina Boulevard and Webster Street, (thru",
+   "url": "https://archive.org/details/whatsdoinginpark1985sanf",
+   "deep_link": "https://archive.org/details/whatsdoinginpark1985sanf?q=Marina+Green",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Other records",
+   "salient": false
   }
  ]
 }

@@ -1,69 +1,9 @@
 {
- "generated_at": "2026-07-20T22:30:00.121519+00:00",
+ "generated_at": "2026-07-21T14:25:53.972443+00:00",
  "slug": "pier-70",
  "name": "Pier 70",
  "note": "Archive documents linked to this place; source labels honour the SFPL-vs-Democracy's-Library distinction.",
  "documents": [
-  {
-   "identifier": "containertermina1986moff",
-   "title": "Container terminal options",
-   "creator": "Moffatt & Nichol, Engineers,San Francisco (Calif.). Dept. of City Planning",
-   "year": 1986,
-   "pool": "sfpl",
-   "matched_alias": "Pier 70",
-   "snippet": "development. «Pier 70» - Alternative 2 «Pier 70» - Alternative 2 is similar to «Pier 70» - Alternative",
-   "url": "https://archive.org/details/containertermina1986moff",
-   "deep_link": "https://archive.org/details/containertermina1986moff?q=Pier+70",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
-  },
-  {
-   "identifier": "agendasanfranci2013sanf_2",
-   "title": "Agenda / San Francisco Port Commission",
-   "creator": "San Francisco Port Commission",
-   "year": null,
-   "pool": "sfpl",
-   "matched_alias": "Pier 70",
-   "snippet": "all other applicable requirements. «Pier 70» Site History «Pier 70» is a 69-acre historic shipyard",
-   "url": "https://archive.org/details/agendasanfranci2013sanf_2",
-   "deep_link": "https://archive.org/details/agendasanfranci2013sanf_2?q=Pier+70",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
-  },
-  {
-   "identifier": "minutes2008sanf_1",
-   "title": "Minutes",
-   "creator": "San Francisco Port Commission",
-   "year": null,
-   "pool": "sfpl",
-   "matched_alias": "Pier 70",
-   "snippet": "tax increment from «Pier 70» under any scenario. Development of «Pier 70» and SWL 337 will",
-   "url": "https://archive.org/details/minutes2008sanf_1",
-   "deep_link": "https://archive.org/details/minutes2008sanf_1?q=Pier+70",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
-  },
-  {
-   "identifier": "minutes2004sanf_1",
-   "title": "Minutes",
-   "creator": "San Francisco Port Commission",
-   "year": null,
-   "pool": "sfpl",
-   "matched_alias": "Pier 70",
-   "snippet": "and rehabilitation of other «Pier 70» historic resources. «Pier 70» Area Planning andRFP: For",
-   "url": "https://archive.org/details/minutes2004sanf_1",
-   "deep_link": "https://archive.org/details/minutes2004sanf_1?q=Pier+70",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
-  },
-  {
-   "identifier": "agendasminutess2015sanf_1",
-   "title": "Agendas and Minutes / San Francisco Port Commission",
-   "creator": "San Francisco Port Commission",
-   "year": null,
-   "pool": "sfpl",
-   "matched_alias": "Pier 70",
-   "snippet": "3) defined a proposed «Pier 70» Special Use District (“«Pier 70» SUD”) that will encompass",
-   "url": "https://archive.org/details/agendasminutess2015sanf_1",
-   "deep_link": "https://archive.org/details/agendasminutess2015sanf_1?q=Pier+70",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
-  },
   {
    "identifier": "agenda2011sanf_0",
    "title": "Agenda",
@@ -74,43 +14,9 @@
    "snippet": "southern Waterfront: «Pier 70» Historic Buildings Clean-Up 50,000 50,000 0 50,000 «Pier 70» Infrastructure",
    "url": "https://archive.org/details/agenda2011sanf_0",
    "deep_link": "https://archive.org/details/agenda2011sanf_0?q=Pier+70",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
-  },
-  {
-   "identifier": "agenda2013sanf_4",
-   "title": "Agenda",
-   "creator": "San Francisco Port Commission",
-   "year": null,
-   "pool": "sfpl",
-   "matched_alias": "Pier 70",
-   "snippet": "Procedures 2 «Pier 70» Action Endorsement of Forest City's term sheet for the «Pier 70» Waterfront",
-   "url": "https://archive.org/details/agenda2013sanf_4",
-   "deep_link": "https://archive.org/details/agenda2013sanf_4?q=Pier+70",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
-  },
-  {
-   "identifier": "agendasanfranci2014sanf_9",
-   "title": "Agenda / San Francisco Port Commission",
-   "creator": "San Francisco Port Commission",
-   "year": null,
-   "pool": "sfpl",
-   "matched_alias": "Pier 70",
-   "snippet": "Historic District at «Pier 70» to support rehabilitation of «Pier 70»'s unique and important",
-   "url": "https://archive.org/details/agendasanfranci2014sanf_9",
-   "deep_link": "https://archive.org/details/agendasanfranci2014sanf_9?q=Pier+70",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
-  },
-  {
-   "identifier": "agenda2008sanf_0",
-   "title": "Agenda",
-   "creator": "San Francisco Port Commission",
-   "year": null,
-   "pool": "sfpl",
-   "matched_alias": "Pier 70",
-   "snippet": "Preferred Master Plan for the «Pier 70» area. The «Pier 70» area is a 65-acre site located",
-   "url": "https://archive.org/details/agenda2008sanf_0",
-   "deep_link": "https://archive.org/details/agenda2008sanf_0?q=Pier+70",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Meetings & resolutions",
+   "salient": true
   },
   {
    "identifier": "agendasanfranci2014sanf_8",
@@ -122,7 +28,51 @@
    "snippet": "organizations as a competition 2 «Pier 70» Informational Presentation on «Pier 70» - Union Iron Works Historic",
    "url": "https://archive.org/details/agendasanfranci2014sanf_8",
    "deep_link": "https://archive.org/details/agendasanfranci2014sanf_8?q=Pier+70",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Meetings & resolutions",
+   "salient": true
+  },
+  {
+   "identifier": "minutes2004sanf_1",
+   "title": "Minutes",
+   "creator": "San Francisco Port Commission",
+   "year": null,
+   "pool": "sfpl",
+   "matched_alias": "Pier 70",
+   "snippet": "and rehabilitation of other «Pier 70» historic resources. «Pier 70» Area Planning andRFP: For",
+   "url": "https://archive.org/details/minutes2004sanf_1",
+   "deep_link": "https://archive.org/details/minutes2004sanf_1?q=Pier+70",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Meetings & resolutions",
+   "salient": true
+  },
+  {
+   "identifier": "agendasminutess2015sanf_1",
+   "title": "Agendas and Minutes / San Francisco Port Commission",
+   "creator": "San Francisco Port Commission",
+   "year": null,
+   "pool": "sfpl",
+   "matched_alias": "Pier 70",
+   "snippet": "3) defined a proposed «Pier 70» Special Use District (“«Pier 70» SUD”) that will encompass",
+   "url": "https://archive.org/details/agendasminutess2015sanf_1",
+   "deep_link": "https://archive.org/details/agendasminutess2015sanf_1?q=Pier+70",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Meetings & resolutions",
+   "salient": true
+  },
+  {
+   "identifier": "containertermina1986moff",
+   "title": "Container terminal options",
+   "creator": "Moffatt & Nichol, Engineers,San Francisco (Calif.). Dept. of City Planning",
+   "year": 1986,
+   "pool": "sfpl",
+   "matched_alias": "Pier 70",
+   "snippet": "development. «Pier 70» - Alternative 2 «Pier 70» - Alternative 2 is similar to «Pier 70» - Alternative",
+   "url": "https://archive.org/details/containertermina1986moff",
+   "deep_link": "https://archive.org/details/containertermina1986moff?q=Pier+70",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Other records",
+   "salient": true
   }
  ]
 }

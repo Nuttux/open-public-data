@@ -1,0 +1,2152 @@
+{
+  "generated_at": "2026-07-21T13:43:47.070877+00:00",
+  "source_pipeline": "configs/countries/us.yaml → sync_socrata.py + sync_census_popest.py → raw.us_sf_employee_comp → dbt_us_staging (+ seeds seed_us_sf_job_family_display / seed_us_sf_job_reclass) → dbt_us_intermediate → dbt_us_analytics → dbt_us_marts → export_us_sf_payroll.py",
+  "country": "us",
+  "scale": "city",
+  "place": "sf",
+  "unit": "USD",
+  "as_of": "2026-07-13T10:19:58+00:00",
+  "source": {
+    "name": "Employee Compensation",
+    "dataset_id": "88g8-5mnd",
+    "source_url": "https://data.sfgov.org/d/88g8-5mnd",
+    "attribution": "SF Controller's Office",
+    "rows_updated_at": "2026-07-13T10:19:58+00:00"
+  },
+  "fiscal_year_note": "SF fiscal year N runs July 1 (N-1) to June 30 N. All figures are FISCAL-year accounting only — the source publishes every row under BOTH Calendar and Fiscal accountings and mixing them double-counts (the dataset's #1 trap).",
+  "grain": "display_family × fiscal year, summed citywide across all departments. display_family groups the source's native 59-code taxonomy into citizen-readable families (by hand, see seeds).",
+  "privacy": {
+    "rule": "No dollar aggregate in this file covers fewer than 5 employees. Groups under 5 people are pooled into visible 'Other roles' rows per department; pools that would themselves stay under the threshold are folded into the department total with no row. Departments under the threshold (the Law Library in practice, 2-3 people) are included in citywide totals but not listed.",
+    "measured_cost": "Pooling moves ~1.2% of total dollars into visible 'Other roles' rows; the department-level fold is under $600k/year (<0.01% of compensation). Nothing is removed from totals.",
+    "count_only_disclosures": "Counts of employees above fixed thresholds (>$200k…>$500k) are published exactly, including values under 5: they attach no dollar amount to any group. The source itself is public at row level (pseudonymized); this site publishes aggregates only."
+  },
+  "years": {
+    "2013": [
+      {
+        "display_family": "Health & Hospitals",
+        "n_employees": 6334,
+        "salaries_usd": 410154678.37,
+        "overtime_usd": 9165833.73,
+        "other_salaries_usd": 33346263.91,
+        "total_benefits_usd": 152181853.8,
+        "total_compensation_usd": 604848629.81,
+        "ot_share_of_comp": 0.0152
+      },
+      {
+        "display_family": "Police",
+        "n_employees": 2389,
+        "salaries_usd": 264392826.93,
+        "overtime_usd": 26822827.13,
+        "other_salaries_usd": 34593577.6,
+        "total_benefits_usd": 79455258.07,
+        "total_compensation_usd": 405264489.73,
+        "ot_share_of_comp": 0.0662
+      },
+      {
+        "display_family": "Trades & Maintenance",
+        "n_employees": 3573,
+        "salaries_usd": 240174660.87,
+        "overtime_usd": 25625733.39,
+        "other_salaries_usd": 18020203.71,
+        "total_benefits_usd": 105036823.01,
+        "total_compensation_usd": 388857420.98,
+        "ot_share_of_comp": 0.0659
+      },
+      {
+        "display_family": "Administration & Finance",
+        "n_employees": 4542,
+        "salaries_usd": 244373876.56,
+        "overtime_usd": 2644607.25,
+        "other_salaries_usd": 3027514.8,
+        "total_benefits_usd": 107934963.4,
+        "total_compensation_usd": 357980962.01,
+        "ot_share_of_comp": 0.0074
+      },
+      {
+        "display_family": "Justice & Corrections",
+        "n_employees": 2812,
+        "salaries_usd": 229531338.13,
+        "overtime_usd": 11641800.64,
+        "other_salaries_usd": 12664667.72,
+        "total_benefits_usd": 85569729.42,
+        "total_compensation_usd": 339407535.91,
+        "ot_share_of_comp": 0.0343
+      },
+      {
+        "display_family": "Transit Operations",
+        "n_employees": 3085,
+        "salaries_usd": 175509200.71,
+        "overtime_usd": 31361604.32,
+        "other_salaries_usd": 8874704.03,
+        "total_benefits_usd": 92420433.25,
+        "total_compensation_usd": 308165942.31,
+        "ot_share_of_comp": 0.1018
+      },
+      {
+        "display_family": "Fire",
+        "n_employees": 1422,
+        "salaries_usd": 163157225.74,
+        "overtime_usd": 43433718.96,
+        "other_salaries_usd": 22250845.32,
+        "total_benefits_usd": 56054035.41,
+        "total_compensation_usd": 284895825.43,
+        "ot_share_of_comp": 0.1525
+      },
+      {
+        "display_family": "Engineering & Inspection",
+        "n_employees": 2118,
+        "salaries_usd": 165107633.73,
+        "overtime_usd": 1758323.05,
+        "other_salaries_usd": 2090849.67,
+        "total_benefits_usd": 62711028.36,
+        "total_compensation_usd": 231667834.81,
+        "ot_share_of_comp": 0.0076
+      },
+      {
+        "display_family": "Social & Community Services",
+        "n_employees": 1981,
+        "salaries_usd": 132394905.86,
+        "overtime_usd": 1251921.27,
+        "other_salaries_usd": 2484203.19,
+        "total_benefits_usd": 56898503.94,
+        "total_compensation_usd": 193029534.26,
+        "ot_share_of_comp": 0.0065
+      },
+      {
+        "display_family": "Management & Officials",
+        "n_employees": 1254,
+        "salaries_usd": 126396303.18,
+        "overtime_usd": 310.88,
+        "other_salaries_usd": 1591077.85,
+        "total_benefits_usd": 45522010.15,
+        "total_compensation_usd": 173509702.06,
+        "ot_share_of_comp": 0.0
+      },
+      {
+        "display_family": "Custodial, Food & Service Aides",
+        "n_employees": 3623,
+        "salaries_usd": 83106530.85,
+        "overtime_usd": 2165415.64,
+        "other_salaries_usd": 4933733.58,
+        "total_benefits_usd": 43676861.87,
+        "total_compensation_usd": 133882541.94,
+        "ot_share_of_comp": 0.0162
+      },
+      {
+        "display_family": "Culture, Parks & Libraries",
+        "n_employees": 2448,
+        "salaries_usd": 72716092.2,
+        "overtime_usd": 843076.93,
+        "other_salaries_usd": 1475963.4,
+        "total_benefits_usd": 33489800.11,
+        "total_compensation_usd": 108524932.64,
+        "ot_share_of_comp": 0.0078
+      },
+      {
+        "display_family": "Information Technology",
+        "n_employees": 886,
+        "salaries_usd": 73411053.26,
+        "overtime_usd": 629516.56,
+        "other_salaries_usd": 1731795.7,
+        "total_benefits_usd": 28463951.93,
+        "total_compensation_usd": 104236317.45,
+        "ot_share_of_comp": 0.006
+      },
+      {
+        "display_family": "Security, Dispatch & Protection",
+        "n_employees": 1105,
+        "salaries_usd": 47942574.4,
+        "overtime_usd": 4409434.17,
+        "other_salaries_usd": 3587839.69,
+        "total_benefits_usd": 22041507.48,
+        "total_compensation_usd": 77981355.74,
+        "ot_share_of_comp": 0.0565
+      },
+      {
+        "display_family": "Other roles",
+        "n_employees": 463,
+        "salaries_usd": 27907078.83,
+        "overtime_usd": 427953.74,
+        "other_salaries_usd": 613644.82,
+        "total_benefits_usd": 11373382.42,
+        "total_compensation_usd": 40322059.81,
+        "ot_share_of_comp": 0.0106
+      },
+      {
+        "display_family": "Airport & Port Operations",
+        "n_employees": 330,
+        "salaries_usd": 22721710.1,
+        "overtime_usd": 1511627.14,
+        "other_salaries_usd": 1753201.9,
+        "total_benefits_usd": 10212768.38,
+        "total_compensation_usd": 36199307.52,
+        "ot_share_of_comp": 0.0418
+      }
+    ],
+    "2014": [
+      {
+        "display_family": "Health & Hospitals",
+        "n_employees": 6338,
+        "salaries_usd": 409380522.75,
+        "overtime_usd": 8834680.2,
+        "other_salaries_usd": 33563064.53,
+        "total_benefits_usd": 162103982.81,
+        "total_compensation_usd": 613882250.29,
+        "ot_share_of_comp": 0.0144
+      },
+      {
+        "display_family": "Trades & Maintenance",
+        "n_employees": 3672,
+        "salaries_usd": 245332130.53,
+        "overtime_usd": 28675307.53,
+        "other_salaries_usd": 18766483.05,
+        "total_benefits_usd": 113751862.36,
+        "total_compensation_usd": 406525783.47,
+        "ot_share_of_comp": 0.0705
+      },
+      {
+        "display_family": "Police",
+        "n_employees": 2569,
+        "salaries_usd": 258008074.83,
+        "overtime_usd": 27718789.94,
+        "other_salaries_usd": 34437115.47,
+        "total_benefits_usd": 84284309.69,
+        "total_compensation_usd": 404448289.93,
+        "ot_share_of_comp": 0.0685
+      },
+      {
+        "display_family": "Administration & Finance",
+        "n_employees": 4775,
+        "salaries_usd": 255233096.88,
+        "overtime_usd": 2988669.14,
+        "other_salaries_usd": 3484325.98,
+        "total_benefits_usd": 119071660.32,
+        "total_compensation_usd": 380777752.32,
+        "ot_share_of_comp": 0.0078
+      },
+      {
+        "display_family": "Justice & Corrections",
+        "n_employees": 2701,
+        "salaries_usd": 232559230.79,
+        "overtime_usd": 11869153.56,
+        "other_salaries_usd": 14092726.69,
+        "total_benefits_usd": 89216109.49,
+        "total_compensation_usd": 347737220.53,
+        "ot_share_of_comp": 0.0341
+      },
+      {
+        "display_family": "Transit Operations",
+        "n_employees": 3060,
+        "salaries_usd": 177158232.69,
+        "overtime_usd": 35600809.76,
+        "other_salaries_usd": 9091683.22,
+        "total_benefits_usd": 97924795.45,
+        "total_compensation_usd": 319775521.12,
+        "ot_share_of_comp": 0.1113
+      },
+      {
+        "display_family": "Fire",
+        "n_employees": 1487,
+        "salaries_usd": 164049686.35,
+        "overtime_usd": 42861432.13,
+        "other_salaries_usd": 22675906.88,
+        "total_benefits_usd": 60830781.89,
+        "total_compensation_usd": 290417807.25,
+        "ot_share_of_comp": 0.1476
+      },
+      {
+        "display_family": "Engineering & Inspection",
+        "n_employees": 2245,
+        "salaries_usd": 175438774.64,
+        "overtime_usd": 1952732.83,
+        "other_salaries_usd": 2386382.85,
+        "total_benefits_usd": 71000724.47,
+        "total_compensation_usd": 250778614.79,
+        "ot_share_of_comp": 0.0078
+      },
+      {
+        "display_family": "Social & Community Services",
+        "n_employees": 2198,
+        "salaries_usd": 139927389.29,
+        "overtime_usd": 3174660.6,
+        "other_salaries_usd": 2837417.27,
+        "total_benefits_usd": 63747048.5,
+        "total_compensation_usd": 209686515.66,
+        "ot_share_of_comp": 0.0151
+      },
+      {
+        "display_family": "Management & Officials",
+        "n_employees": 1293,
+        "salaries_usd": 130171206.04,
+        "overtime_usd": 8391.51,
+        "other_salaries_usd": 2099362.19,
+        "total_benefits_usd": 52361133.75,
+        "total_compensation_usd": 184640093.49,
+        "ot_share_of_comp": 0.0
+      },
+      {
+        "display_family": "Custodial, Food & Service Aides",
+        "n_employees": 3756,
+        "salaries_usd": 86296075.43,
+        "overtime_usd": 2079152.77,
+        "other_salaries_usd": 4724793.95,
+        "total_benefits_usd": 47352736.95,
+        "total_compensation_usd": 140452759.1,
+        "ot_share_of_comp": 0.0148
+      },
+      {
+        "display_family": "Information Technology",
+        "n_employees": 912,
+        "salaries_usd": 78283822.72,
+        "overtime_usd": 390377.96,
+        "other_salaries_usd": 2001854.69,
+        "total_benefits_usd": 32193881.75,
+        "total_compensation_usd": 112869937.12,
+        "ot_share_of_comp": 0.0035
+      },
+      {
+        "display_family": "Culture, Parks & Libraries",
+        "n_employees": 2493,
+        "salaries_usd": 73807235.59,
+        "overtime_usd": 1150159.27,
+        "other_salaries_usd": 1650231.81,
+        "total_benefits_usd": 35824853.07,
+        "total_compensation_usd": 112432479.74,
+        "ot_share_of_comp": 0.0102
+      },
+      {
+        "display_family": "Security, Dispatch & Protection",
+        "n_employees": 1143,
+        "salaries_usd": 49658426.75,
+        "overtime_usd": 5557339.29,
+        "other_salaries_usd": 3693543.82,
+        "total_benefits_usd": 24136116.05,
+        "total_compensation_usd": 83045425.91,
+        "ot_share_of_comp": 0.0669
+      },
+      {
+        "display_family": "Other roles",
+        "n_employees": 454,
+        "salaries_usd": 29078883.4,
+        "overtime_usd": 436791.04,
+        "other_salaries_usd": 698062.25,
+        "total_benefits_usd": 12671555.78,
+        "total_compensation_usd": 42885292.47,
+        "ot_share_of_comp": 0.0102
+      },
+      {
+        "display_family": "Airport & Port Operations",
+        "n_employees": 380,
+        "salaries_usd": 23095764.56,
+        "overtime_usd": 1272257.21,
+        "other_salaries_usd": 1821198.15,
+        "total_benefits_usd": 11003972.9,
+        "total_compensation_usd": 37193192.82,
+        "ot_share_of_comp": 0.0342
+      }
+    ],
+    "2015": [
+      {
+        "display_family": "Health & Hospitals",
+        "n_employees": 6488,
+        "salaries_usd": 438244902.35,
+        "overtime_usd": 10905851.51,
+        "other_salaries_usd": 36216148.32,
+        "total_benefits_usd": 173085427.4,
+        "total_compensation_usd": 658452329.58,
+        "ot_share_of_comp": 0.0166
+      },
+      {
+        "display_family": "Trades & Maintenance",
+        "n_employees": 3726,
+        "salaries_usd": 260837777.85,
+        "overtime_usd": 30719443.19,
+        "other_salaries_usd": 17936623.96,
+        "total_benefits_usd": 121643736.53,
+        "total_compensation_usd": 431137581.53,
+        "ot_share_of_comp": 0.0713
+      },
+      {
+        "display_family": "Administration & Finance",
+        "n_employees": 4971,
+        "salaries_usd": 271184609.76,
+        "overtime_usd": 3054364.38,
+        "other_salaries_usd": 3615057.13,
+        "total_benefits_usd": 128630376.19,
+        "total_compensation_usd": 406484407.46,
+        "ot_share_of_comp": 0.0075
+      },
+      {
+        "display_family": "Police",
+        "n_employees": 2389,
+        "salaries_usd": 255785827.84,
+        "overtime_usd": 33431419.52,
+        "other_salaries_usd": 27233133.44,
+        "total_benefits_usd": 87206286.32,
+        "total_compensation_usd": 403656667.12,
+        "ot_share_of_comp": 0.0828
+      },
+      {
+        "display_family": "Justice & Corrections",
+        "n_employees": 2709,
+        "salaries_usd": 238541745.53,
+        "overtime_usd": 16179255.75,
+        "other_salaries_usd": 14438291.64,
+        "total_benefits_usd": 98236128.91,
+        "total_compensation_usd": 367395421.83,
+        "ot_share_of_comp": 0.044
+      },
+      {
+        "display_family": "Transit Operations",
+        "n_employees": 3576,
+        "salaries_usd": 190524799.75,
+        "overtime_usd": 34789103.53,
+        "other_salaries_usd": 10403652.25,
+        "total_benefits_usd": 107551214.22,
+        "total_compensation_usd": 343268769.75,
+        "ot_share_of_comp": 0.1013
+      },
+      {
+        "display_family": "Fire",
+        "n_employees": 1552,
+        "salaries_usd": 168232879.88,
+        "overtime_usd": 38065601.41,
+        "other_salaries_usd": 23344357.52,
+        "total_benefits_usd": 65142723.25,
+        "total_compensation_usd": 294785562.06,
+        "ot_share_of_comp": 0.1291
+      },
+      {
+        "display_family": "Engineering & Inspection",
+        "n_employees": 2491,
+        "salaries_usd": 185665631.49,
+        "overtime_usd": 1973802.57,
+        "other_salaries_usd": 2309261.39,
+        "total_benefits_usd": 76612237.76,
+        "total_compensation_usd": 266560933.21,
+        "ot_share_of_comp": 0.0074
+      },
+      {
+        "display_family": "Social & Community Services",
+        "n_employees": 2273,
+        "salaries_usd": 151424349.26,
+        "overtime_usd": 3895461.57,
+        "other_salaries_usd": 2867416.02,
+        "total_benefits_usd": 70214630.61,
+        "total_compensation_usd": 228401857.46,
+        "ot_share_of_comp": 0.0171
+      },
+      {
+        "display_family": "Management & Officials",
+        "n_employees": 1334,
+        "salaries_usd": 137538745.52,
+        "overtime_usd": 12899.21,
+        "other_salaries_usd": 1671062.64,
+        "total_benefits_usd": 59113053.76,
+        "total_compensation_usd": 198335761.13,
+        "ot_share_of_comp": 0.0001
+      },
+      {
+        "display_family": "Custodial, Food & Service Aides",
+        "n_employees": 3949,
+        "salaries_usd": 93218961.17,
+        "overtime_usd": 2486462.52,
+        "other_salaries_usd": 5512173.72,
+        "total_benefits_usd": 51491733.67,
+        "total_compensation_usd": 152709331.08,
+        "ot_share_of_comp": 0.0163
+      },
+      {
+        "display_family": "Information Technology",
+        "n_employees": 983,
+        "salaries_usd": 84547546.55,
+        "overtime_usd": 341041.43,
+        "other_salaries_usd": 2199174.09,
+        "total_benefits_usd": 35420549.89,
+        "total_compensation_usd": 122508311.96,
+        "ot_share_of_comp": 0.0028
+      },
+      {
+        "display_family": "Culture, Parks & Libraries",
+        "n_employees": 2588,
+        "salaries_usd": 77649401.03,
+        "overtime_usd": 1299123.62,
+        "other_salaries_usd": 1621922.38,
+        "total_benefits_usd": 38295696.02,
+        "total_compensation_usd": 118866143.05,
+        "ot_share_of_comp": 0.0109
+      },
+      {
+        "display_family": "Security, Dispatch & Protection",
+        "n_employees": 1193,
+        "salaries_usd": 53989884.21,
+        "overtime_usd": 7020610.22,
+        "other_salaries_usd": 3373435.24,
+        "total_benefits_usd": 26454197.35,
+        "total_compensation_usd": 90838127.02,
+        "ot_share_of_comp": 0.0773
+      },
+      {
+        "display_family": "Other roles",
+        "n_employees": 482,
+        "salaries_usd": 33585394.98,
+        "overtime_usd": 741760.01,
+        "other_salaries_usd": 577232.14,
+        "total_benefits_usd": 14880370.02,
+        "total_compensation_usd": 49784757.15,
+        "ot_share_of_comp": 0.0149
+      },
+      {
+        "display_family": "Airport & Port Operations",
+        "n_employees": 367,
+        "salaries_usd": 25332456.15,
+        "overtime_usd": 1511625.34,
+        "other_salaries_usd": 2044088.46,
+        "total_benefits_usd": 12365558.71,
+        "total_compensation_usd": 41253728.66,
+        "ot_share_of_comp": 0.0366
+      },
+      {
+        "display_family": "Other & Unassigned",
+        "n_employees": 19,
+        "salaries_usd": 530986.34,
+        "overtime_usd": 0.0,
+        "other_salaries_usd": 3539.8,
+        "total_benefits_usd": 239432.19,
+        "total_compensation_usd": 773958.33,
+        "ot_share_of_comp": 0.0
+      }
+    ],
+    "2016": [
+      {
+        "display_family": "Health & Hospitals",
+        "n_employees": 6585,
+        "salaries_usd": 468075194.66,
+        "overtime_usd": 11940092.08,
+        "other_salaries_usd": 38164843.67,
+        "total_benefits_usd": 169111337.91,
+        "total_compensation_usd": 687291468.32,
+        "ot_share_of_comp": 0.0174
+      },
+      {
+        "display_family": "Trades & Maintenance",
+        "n_employees": 3872,
+        "salaries_usd": 279525924.91,
+        "overtime_usd": 32526362.12,
+        "other_salaries_usd": 18333409.14,
+        "total_benefits_usd": 119897591.96,
+        "total_compensation_usd": 450283288.13,
+        "ot_share_of_comp": 0.0722
+      },
+      {
+        "display_family": "Administration & Finance",
+        "n_employees": 5212,
+        "salaries_usd": 295680516.67,
+        "overtime_usd": 3276550.72,
+        "other_salaries_usd": 3770456.26,
+        "total_benefits_usd": 128976756.75,
+        "total_compensation_usd": 431704280.4,
+        "ot_share_of_comp": 0.0076
+      },
+      {
+        "display_family": "Police",
+        "n_employees": 2553,
+        "salaries_usd": 269277357.76,
+        "overtime_usd": 42374106.91,
+        "other_salaries_usd": 24997679.24,
+        "total_benefits_usd": 83596051.3,
+        "total_compensation_usd": 420245195.21,
+        "ot_share_of_comp": 0.1008
+      },
+      {
+        "display_family": "Justice & Corrections",
+        "n_employees": 2748,
+        "salaries_usd": 247117179.07,
+        "overtime_usd": 20871753.68,
+        "other_salaries_usd": 16675464.02,
+        "total_benefits_usd": 98607391.3,
+        "total_compensation_usd": 383271788.07,
+        "ot_share_of_comp": 0.0545
+      },
+      {
+        "display_family": "Transit Operations",
+        "n_employees": 3649,
+        "salaries_usd": 211563123.29,
+        "overtime_usd": 35859317.55,
+        "other_salaries_usd": 11521748.08,
+        "total_benefits_usd": 109922860.36,
+        "total_compensation_usd": 368867049.28,
+        "ot_share_of_comp": 0.0972
+      },
+      {
+        "display_family": "Fire",
+        "n_employees": 1750,
+        "salaries_usd": 176516869.25,
+        "overtime_usd": 46731732.41,
+        "other_salaries_usd": 24274139.81,
+        "total_benefits_usd": 61754450.02,
+        "total_compensation_usd": 309277191.49,
+        "ot_share_of_comp": 0.1511
+      },
+      {
+        "display_family": "Engineering & Inspection",
+        "n_employees": 2621,
+        "salaries_usd": 204715615.1,
+        "overtime_usd": 1838786.91,
+        "other_salaries_usd": 2624236.03,
+        "total_benefits_usd": 77452468.72,
+        "total_compensation_usd": 286631106.76,
+        "ot_share_of_comp": 0.0064
+      },
+      {
+        "display_family": "Social & Community Services",
+        "n_employees": 2333,
+        "salaries_usd": 162742016.89,
+        "overtime_usd": 3866110.16,
+        "other_salaries_usd": 2951920.17,
+        "total_benefits_usd": 69319889.4,
+        "total_compensation_usd": 238879936.62,
+        "ot_share_of_comp": 0.0162
+      },
+      {
+        "display_family": "Management & Officials",
+        "n_employees": 1367,
+        "salaries_usd": 151082907.5,
+        "overtime_usd": 11914.21,
+        "other_salaries_usd": 1889549.67,
+        "total_benefits_usd": 60327318.98,
+        "total_compensation_usd": 213311690.36,
+        "ot_share_of_comp": 0.0001
+      },
+      {
+        "display_family": "Custodial, Food & Service Aides",
+        "n_employees": 3872,
+        "salaries_usd": 95127778.25,
+        "overtime_usd": 2614143.95,
+        "other_salaries_usd": 5584763.01,
+        "total_benefits_usd": 50345276.39,
+        "total_compensation_usd": 153671961.6,
+        "ot_share_of_comp": 0.017
+      },
+      {
+        "display_family": "Information Technology",
+        "n_employees": 1080,
+        "salaries_usd": 95971877.95,
+        "overtime_usd": 311603.3,
+        "other_salaries_usd": 2535244.29,
+        "total_benefits_usd": 36617889.09,
+        "total_compensation_usd": 135436614.63,
+        "ot_share_of_comp": 0.0023
+      },
+      {
+        "display_family": "Culture, Parks & Libraries",
+        "n_employees": 2652,
+        "salaries_usd": 82490012.03,
+        "overtime_usd": 1120575.67,
+        "other_salaries_usd": 1970164.92,
+        "total_benefits_usd": 38173529.7,
+        "total_compensation_usd": 123754282.32,
+        "ot_share_of_comp": 0.0091
+      },
+      {
+        "display_family": "Security, Dispatch & Protection",
+        "n_employees": 1238,
+        "salaries_usd": 55907881.68,
+        "overtime_usd": 8947063.11,
+        "other_salaries_usd": 3378136.85,
+        "total_benefits_usd": 25873587.5,
+        "total_compensation_usd": 94106669.14,
+        "ot_share_of_comp": 0.0951
+      },
+      {
+        "display_family": "Other roles",
+        "n_employees": 460,
+        "salaries_usd": 32922680.36,
+        "overtime_usd": 772614.34,
+        "other_salaries_usd": 505178.16,
+        "total_benefits_usd": 13246369.13,
+        "total_compensation_usd": 47446841.99,
+        "ot_share_of_comp": 0.0163
+      },
+      {
+        "display_family": "Airport & Port Operations",
+        "n_employees": 419,
+        "salaries_usd": 27262491.28,
+        "overtime_usd": 1737781.56,
+        "other_salaries_usd": 2197376.82,
+        "total_benefits_usd": 12326450.66,
+        "total_compensation_usd": 43524100.32,
+        "ot_share_of_comp": 0.0399
+      },
+      {
+        "display_family": "Other & Unassigned",
+        "n_employees": 23,
+        "salaries_usd": 1408167.19,
+        "overtime_usd": 1954.23,
+        "other_salaries_usd": 16412.44,
+        "total_benefits_usd": 631303.86,
+        "total_compensation_usd": 2057837.72,
+        "ot_share_of_comp": 0.0009
+      }
+    ],
+    "2017": [
+      {
+        "display_family": "Health & Hospitals",
+        "n_employees": 5605,
+        "salaries_usd": 504312840.67,
+        "overtime_usd": 25665856.36,
+        "other_salaries_usd": 30701951.39,
+        "total_benefits_usd": 180784459.47,
+        "total_compensation_usd": 741465107.89,
+        "ot_share_of_comp": 0.0346
+      },
+      {
+        "display_family": "Trades & Maintenance",
+        "n_employees": 3731,
+        "salaries_usd": 294001763.23,
+        "overtime_usd": 38168845.61,
+        "other_salaries_usd": 15770443.78,
+        "total_benefits_usd": 129885175.16,
+        "total_compensation_usd": 477826227.78,
+        "ot_share_of_comp": 0.0799
+      },
+      {
+        "display_family": "Administration & Finance",
+        "n_employees": 4959,
+        "salaries_usd": 314771210.75,
+        "overtime_usd": 3648981.53,
+        "other_salaries_usd": 3196292.5,
+        "total_benefits_usd": 135154065.12,
+        "total_compensation_usd": 456770549.9,
+        "ot_share_of_comp": 0.008
+      },
+      {
+        "display_family": "Police",
+        "n_employees": 2519,
+        "salaries_usd": 276848478.18,
+        "overtime_usd": 49333782.18,
+        "other_salaries_usd": 17258822.66,
+        "total_benefits_usd": 88136361.35,
+        "total_compensation_usd": 431577444.37,
+        "ot_share_of_comp": 0.1143
+      },
+      {
+        "display_family": "Justice & Corrections",
+        "n_employees": 2795,
+        "salaries_usd": 258901007.64,
+        "overtime_usd": 29588534.71,
+        "other_salaries_usd": 12902548.15,
+        "total_benefits_usd": 106565216.51,
+        "total_compensation_usd": 407957307.01,
+        "ot_share_of_comp": 0.0725
+      },
+      {
+        "display_family": "Transit Operations",
+        "n_employees": 3578,
+        "salaries_usd": 224166447.42,
+        "overtime_usd": 40585253.88,
+        "other_salaries_usd": 10022564.13,
+        "total_benefits_usd": 111841301.32,
+        "total_compensation_usd": 386615566.75,
+        "ot_share_of_comp": 0.105
+      },
+      {
+        "display_family": "Fire",
+        "n_employees": 1837,
+        "salaries_usd": 188541033.86,
+        "overtime_usd": 39149070.55,
+        "other_salaries_usd": 25579280.03,
+        "total_benefits_usd": 65750591.64,
+        "total_compensation_usd": 319019976.08,
+        "ot_share_of_comp": 0.1227
+      },
+      {
+        "display_family": "Engineering & Inspection",
+        "n_employees": 2532,
+        "salaries_usd": 221568422.13,
+        "overtime_usd": 2034583.0,
+        "other_salaries_usd": 2472196.35,
+        "total_benefits_usd": 81793802.61,
+        "total_compensation_usd": 307869004.09,
+        "ot_share_of_comp": 0.0066
+      },
+      {
+        "display_family": "Social & Community Services",
+        "n_employees": 2380,
+        "salaries_usd": 174738607.08,
+        "overtime_usd": 3608676.48,
+        "other_salaries_usd": 2949775.34,
+        "total_benefits_usd": 74916649.23,
+        "total_compensation_usd": 256213708.13,
+        "ot_share_of_comp": 0.0141
+      },
+      {
+        "display_family": "Management & Officials",
+        "n_employees": 1390,
+        "salaries_usd": 169186663.98,
+        "overtime_usd": 78090.58,
+        "other_salaries_usd": 2455321.29,
+        "total_benefits_usd": 59745760.02,
+        "total_compensation_usd": 231465835.87,
+        "ot_share_of_comp": 0.0003
+      },
+      {
+        "display_family": "Information Technology",
+        "n_employees": 1163,
+        "salaries_usd": 109857355.84,
+        "overtime_usd": 542821.34,
+        "other_salaries_usd": 2997085.96,
+        "total_benefits_usd": 41248686.13,
+        "total_compensation_usd": 154645949.27,
+        "ot_share_of_comp": 0.0035
+      },
+      {
+        "display_family": "Custodial, Food & Service Aides",
+        "n_employees": 3581,
+        "salaries_usd": 95936448.44,
+        "overtime_usd": 5594636.1,
+        "other_salaries_usd": 3869689.18,
+        "total_benefits_usd": 46689162.81,
+        "total_compensation_usd": 152089936.53,
+        "ot_share_of_comp": 0.0368
+      },
+      {
+        "display_family": "Culture, Parks & Libraries",
+        "n_employees": 2538,
+        "salaries_usd": 86094378.08,
+        "overtime_usd": 1448156.56,
+        "other_salaries_usd": 1788093.59,
+        "total_benefits_usd": 37063675.38,
+        "total_compensation_usd": 126394303.61,
+        "ot_share_of_comp": 0.0115
+      },
+      {
+        "display_family": "Security, Dispatch & Protection",
+        "n_employees": 1296,
+        "salaries_usd": 59362877.01,
+        "overtime_usd": 10081215.65,
+        "other_salaries_usd": 2301521.88,
+        "total_benefits_usd": 26704663.38,
+        "total_compensation_usd": 98450277.92,
+        "ot_share_of_comp": 0.1024
+      },
+      {
+        "display_family": "Other roles",
+        "n_employees": 456,
+        "salaries_usd": 38370088.73,
+        "overtime_usd": 785168.9,
+        "other_salaries_usd": 399013.5,
+        "total_benefits_usd": 15350313.65,
+        "total_compensation_usd": 54904584.78,
+        "ot_share_of_comp": 0.0143
+      },
+      {
+        "display_family": "Airport & Port Operations",
+        "n_employees": 428,
+        "salaries_usd": 31395382.79,
+        "overtime_usd": 2414974.27,
+        "other_salaries_usd": 1741565.99,
+        "total_benefits_usd": 14121452.04,
+        "total_compensation_usd": 49673375.09,
+        "ot_share_of_comp": 0.0486
+      }
+    ],
+    "2018": [
+      {
+        "display_family": "Health & Hospitals",
+        "n_employees": 5711,
+        "salaries_usd": 539480995.72,
+        "overtime_usd": 26568444.09,
+        "other_salaries_usd": 31898626.11,
+        "total_benefits_usd": 198543201.49,
+        "total_compensation_usd": 796491267.41,
+        "ot_share_of_comp": 0.0334
+      },
+      {
+        "display_family": "Trades & Maintenance",
+        "n_employees": 3766,
+        "salaries_usd": 302976490.0,
+        "overtime_usd": 41903347.18,
+        "other_salaries_usd": 16323673.08,
+        "total_benefits_usd": 136865801.55,
+        "total_compensation_usd": 498069311.81,
+        "ot_share_of_comp": 0.0841
+      },
+      {
+        "display_family": "Administration & Finance",
+        "n_employees": 5022,
+        "salaries_usd": 338391072.43,
+        "overtime_usd": 3723915.99,
+        "other_salaries_usd": 3207468.79,
+        "total_benefits_usd": 148381305.23,
+        "total_compensation_usd": 493703762.44,
+        "ot_share_of_comp": 0.0075
+      },
+      {
+        "display_family": "Police",
+        "n_employees": 2462,
+        "salaries_usd": 282984533.36,
+        "overtime_usd": 54265708.52,
+        "other_salaries_usd": 16410004.19,
+        "total_benefits_usd": 92975470.58,
+        "total_compensation_usd": 446635716.65,
+        "ot_share_of_comp": 0.1215
+      },
+      {
+        "display_family": "Justice & Corrections",
+        "n_employees": 2810,
+        "salaries_usd": 268402783.33,
+        "overtime_usd": 32324708.29,
+        "other_salaries_usd": 13053242.12,
+        "total_benefits_usd": 112430403.23,
+        "total_compensation_usd": 426211136.97,
+        "ot_share_of_comp": 0.0758
+      },
+      {
+        "display_family": "Transit Operations",
+        "n_employees": 3573,
+        "salaries_usd": 235175566.29,
+        "overtime_usd": 47154659.16,
+        "other_salaries_usd": 10657456.63,
+        "total_benefits_usd": 116746308.27,
+        "total_compensation_usd": 409733990.35,
+        "ot_share_of_comp": 0.1151
+      },
+      {
+        "display_family": "Engineering & Inspection",
+        "n_employees": 2594,
+        "salaries_usd": 234856849.82,
+        "overtime_usd": 2491567.27,
+        "other_salaries_usd": 2985755.55,
+        "total_benefits_usd": 89493960.29,
+        "total_compensation_usd": 329828132.93,
+        "ot_share_of_comp": 0.0076
+      },
+      {
+        "display_family": "Fire",
+        "n_employees": 1870,
+        "salaries_usd": 196523492.74,
+        "overtime_usd": 34803016.63,
+        "other_salaries_usd": 27087252.72,
+        "total_benefits_usd": 71048256.22,
+        "total_compensation_usd": 329462018.31,
+        "ot_share_of_comp": 0.1056
+      },
+      {
+        "display_family": "Social & Community Services",
+        "n_employees": 2462,
+        "salaries_usd": 187138970.32,
+        "overtime_usd": 3152261.85,
+        "other_salaries_usd": 3259588.24,
+        "total_benefits_usd": 81982486.88,
+        "total_compensation_usd": 275533307.29,
+        "ot_share_of_comp": 0.0114
+      },
+      {
+        "display_family": "Management & Officials",
+        "n_employees": 1433,
+        "salaries_usd": 178136646.12,
+        "overtime_usd": 156917.14,
+        "other_salaries_usd": 2757176.9,
+        "total_benefits_usd": 64979978.53,
+        "total_compensation_usd": 246030718.69,
+        "ot_share_of_comp": 0.0006
+      },
+      {
+        "display_family": "Information Technology",
+        "n_employees": 1227,
+        "salaries_usd": 124182905.66,
+        "overtime_usd": 706065.62,
+        "other_salaries_usd": 3529499.73,
+        "total_benefits_usd": 47749849.35,
+        "total_compensation_usd": 176168320.36,
+        "ot_share_of_comp": 0.004
+      },
+      {
+        "display_family": "Custodial, Food & Service Aides",
+        "n_employees": 3660,
+        "salaries_usd": 102230363.23,
+        "overtime_usd": 6448166.97,
+        "other_salaries_usd": 3849431.02,
+        "total_benefits_usd": 50679310.87,
+        "total_compensation_usd": 163207272.09,
+        "ot_share_of_comp": 0.0395
+      },
+      {
+        "display_family": "Culture, Parks & Libraries",
+        "n_employees": 2657,
+        "salaries_usd": 92948008.95,
+        "overtime_usd": 1641322.6,
+        "other_salaries_usd": 1849371.85,
+        "total_benefits_usd": 40589092.62,
+        "total_compensation_usd": 137027796.02,
+        "ot_share_of_comp": 0.012
+      },
+      {
+        "display_family": "Security, Dispatch & Protection",
+        "n_employees": 1302,
+        "salaries_usd": 64393834.88,
+        "overtime_usd": 10709406.45,
+        "other_salaries_usd": 2619560.1,
+        "total_benefits_usd": 29667755.94,
+        "total_compensation_usd": 107390557.37,
+        "ot_share_of_comp": 0.0997
+      },
+      {
+        "display_family": "Other roles",
+        "n_employees": 471,
+        "salaries_usd": 39580580.71,
+        "overtime_usd": 884328.95,
+        "other_salaries_usd": 764803.66,
+        "total_benefits_usd": 16263972.06,
+        "total_compensation_usd": 57493685.38,
+        "ot_share_of_comp": 0.0154
+      },
+      {
+        "display_family": "Airport & Port Operations",
+        "n_employees": 433,
+        "salaries_usd": 33003916.78,
+        "overtime_usd": 3437547.9,
+        "other_salaries_usd": 1788598.98,
+        "total_benefits_usd": 15222429.56,
+        "total_compensation_usd": 53452493.22,
+        "ot_share_of_comp": 0.0643
+      }
+    ],
+    "2019": [
+      {
+        "display_family": "Health & Hospitals",
+        "n_employees": 5829,
+        "salaries_usd": 553929738.29,
+        "overtime_usd": 31128017.32,
+        "other_salaries_usd": 32956278.74,
+        "total_benefits_usd": 203190038.65,
+        "total_compensation_usd": 821204073.0,
+        "ot_share_of_comp": 0.0379
+      },
+      {
+        "display_family": "Trades & Maintenance",
+        "n_employees": 4002,
+        "salaries_usd": 313504872.55,
+        "overtime_usd": 50240984.34,
+        "other_salaries_usd": 17242038.84,
+        "total_benefits_usd": 140625612.3,
+        "total_compensation_usd": 521613508.03,
+        "ot_share_of_comp": 0.0963
+      },
+      {
+        "display_family": "Administration & Finance",
+        "n_employees": 5181,
+        "salaries_usd": 352866478.34,
+        "overtime_usd": 4890160.66,
+        "other_salaries_usd": 3755462.34,
+        "total_benefits_usd": 153653821.24,
+        "total_compensation_usd": 515165922.58,
+        "ot_share_of_comp": 0.0095
+      },
+      {
+        "display_family": "Police",
+        "n_employees": 2659,
+        "salaries_usd": 294816350.99,
+        "overtime_usd": 60911347.11,
+        "other_salaries_usd": 19595373.01,
+        "total_benefits_usd": 96669429.91,
+        "total_compensation_usd": 471992501.02,
+        "ot_share_of_comp": 0.1291
+      },
+      {
+        "display_family": "Justice & Corrections",
+        "n_employees": 2838,
+        "salaries_usd": 277994232.04,
+        "overtime_usd": 32510854.26,
+        "other_salaries_usd": 12982796.99,
+        "total_benefits_usd": 120084654.55,
+        "total_compensation_usd": 443572537.84,
+        "ot_share_of_comp": 0.0733
+      },
+      {
+        "display_family": "Transit Operations",
+        "n_employees": 3908,
+        "salaries_usd": 236631623.69,
+        "overtime_usd": 57158876.57,
+        "other_salaries_usd": 13619421.79,
+        "total_benefits_usd": 117353994.54,
+        "total_compensation_usd": 424763916.59,
+        "ot_share_of_comp": 0.1346
+      },
+      {
+        "display_family": "Engineering & Inspection",
+        "n_employees": 2675,
+        "salaries_usd": 246430466.75,
+        "overtime_usd": 3621825.87,
+        "other_salaries_usd": 3287023.85,
+        "total_benefits_usd": 93229791.22,
+        "total_compensation_usd": 346569107.69,
+        "ot_share_of_comp": 0.0105
+      },
+      {
+        "display_family": "Fire",
+        "n_employees": 1930,
+        "salaries_usd": 203447845.35,
+        "overtime_usd": 39596044.33,
+        "other_salaries_usd": 27874246.97,
+        "total_benefits_usd": 73372666.36,
+        "total_compensation_usd": 344290803.01,
+        "ot_share_of_comp": 0.115
+      },
+      {
+        "display_family": "Social & Community Services",
+        "n_employees": 2683,
+        "salaries_usd": 205834354.86,
+        "overtime_usd": 3523887.34,
+        "other_salaries_usd": 3286373.9,
+        "total_benefits_usd": 89988948.93,
+        "total_compensation_usd": 302633565.03,
+        "ot_share_of_comp": 0.0116
+      },
+      {
+        "display_family": "Management & Officials",
+        "n_employees": 1480,
+        "salaries_usd": 192002320.02,
+        "overtime_usd": 234512.42,
+        "other_salaries_usd": 3243803.2,
+        "total_benefits_usd": 69701923.35,
+        "total_compensation_usd": 265182558.99,
+        "ot_share_of_comp": 0.0009
+      },
+      {
+        "display_family": "Information Technology",
+        "n_employees": 1323,
+        "salaries_usd": 135859368.46,
+        "overtime_usd": 748833.29,
+        "other_salaries_usd": 3742388.1,
+        "total_benefits_usd": 51753939.51,
+        "total_compensation_usd": 192104529.36,
+        "ot_share_of_comp": 0.0039
+      },
+      {
+        "display_family": "Custodial, Food & Service Aides",
+        "n_employees": 3546,
+        "salaries_usd": 102729402.21,
+        "overtime_usd": 7868799.65,
+        "other_salaries_usd": 4122467.46,
+        "total_benefits_usd": 52057676.03,
+        "total_compensation_usd": 166778345.35,
+        "ot_share_of_comp": 0.0472
+      },
+      {
+        "display_family": "Culture, Parks & Libraries",
+        "n_employees": 2749,
+        "salaries_usd": 97584743.81,
+        "overtime_usd": 1779142.43,
+        "other_salaries_usd": 1906235.37,
+        "total_benefits_usd": 42071122.24,
+        "total_compensation_usd": 143341243.85,
+        "ot_share_of_comp": 0.0124
+      },
+      {
+        "display_family": "Security, Dispatch & Protection",
+        "n_employees": 1402,
+        "salaries_usd": 66289255.0,
+        "overtime_usd": 11232875.27,
+        "other_salaries_usd": 2797188.35,
+        "total_benefits_usd": 30298228.0,
+        "total_compensation_usd": 110617546.62,
+        "ot_share_of_comp": 0.1015
+      },
+      {
+        "display_family": "Other roles",
+        "n_employees": 458,
+        "salaries_usd": 39912896.97,
+        "overtime_usd": 764540.62,
+        "other_salaries_usd": 473598.23,
+        "total_benefits_usd": 16017959.76,
+        "total_compensation_usd": 57168995.58,
+        "ot_share_of_comp": 0.0134
+      },
+      {
+        "display_family": "Airport & Port Operations",
+        "n_employees": 486,
+        "salaries_usd": 34606096.2,
+        "overtime_usd": 3681111.61,
+        "other_salaries_usd": 1874298.8,
+        "total_benefits_usd": 15764980.73,
+        "total_compensation_usd": 55926487.34,
+        "ot_share_of_comp": 0.0658
+      }
+    ],
+    "2020": [
+      {
+        "display_family": "Health & Hospitals",
+        "n_employees": 5646,
+        "salaries_usd": 576305214.41,
+        "overtime_usd": 35891554.22,
+        "other_salaries_usd": 36182601.99,
+        "total_benefits_usd": 220983143.81,
+        "total_compensation_usd": 869362514.43,
+        "ot_share_of_comp": 0.0413
+      },
+      {
+        "display_family": "Administration & Finance",
+        "n_employees": 5315,
+        "salaries_usd": 376382336.52,
+        "overtime_usd": 5595670.86,
+        "other_salaries_usd": 3658212.62,
+        "total_benefits_usd": 168915526.27,
+        "total_compensation_usd": 554551746.27,
+        "ot_share_of_comp": 0.0101
+      },
+      {
+        "display_family": "Trades & Maintenance",
+        "n_employees": 3729,
+        "salaries_usd": 325884541.67,
+        "overtime_usd": 46125224.0,
+        "other_salaries_usd": 19762641.42,
+        "total_benefits_usd": 151746709.47,
+        "total_compensation_usd": 543519116.56,
+        "ot_share_of_comp": 0.0849
+      },
+      {
+        "display_family": "Police",
+        "n_employees": 2428,
+        "salaries_usd": 305837487.55,
+        "overtime_usd": 64169056.2,
+        "other_salaries_usd": 16933562.59,
+        "total_benefits_usd": 105276331.58,
+        "total_compensation_usd": 492216437.92,
+        "ot_share_of_comp": 0.1304
+      },
+      {
+        "display_family": "Justice & Corrections",
+        "n_employees": 2776,
+        "salaries_usd": 287369789.53,
+        "overtime_usd": 36554042.56,
+        "other_salaries_usd": 16338132.0,
+        "total_benefits_usd": 130251398.25,
+        "total_compensation_usd": 470513362.34,
+        "ot_share_of_comp": 0.0777
+      },
+      {
+        "display_family": "Transit Operations",
+        "n_employees": 3589,
+        "salaries_usd": 247969097.98,
+        "overtime_usd": 51302774.26,
+        "other_salaries_usd": 14818618.08,
+        "total_benefits_usd": 126697952.78,
+        "total_compensation_usd": 440788443.1,
+        "ot_share_of_comp": 0.1164
+      },
+      {
+        "display_family": "Engineering & Inspection",
+        "n_employees": 2519,
+        "salaries_usd": 259504097.11,
+        "overtime_usd": 2751231.29,
+        "other_salaries_usd": 3274961.01,
+        "total_benefits_usd": 102014804.66,
+        "total_compensation_usd": 367545094.07,
+        "ot_share_of_comp": 0.0075
+      },
+      {
+        "display_family": "Fire",
+        "n_employees": 1816,
+        "salaries_usd": 211381087.57,
+        "overtime_usd": 37488465.08,
+        "other_salaries_usd": 30645282.23,
+        "total_benefits_usd": 80710504.45,
+        "total_compensation_usd": 360225339.33,
+        "ot_share_of_comp": 0.1041
+      },
+      {
+        "display_family": "Social & Community Services",
+        "n_employees": 2598,
+        "salaries_usd": 214573372.43,
+        "overtime_usd": 3683333.63,
+        "other_salaries_usd": 3964874.29,
+        "total_benefits_usd": 96936188.8,
+        "total_compensation_usd": 319157769.15,
+        "ot_share_of_comp": 0.0115
+      },
+      {
+        "display_family": "Management & Officials",
+        "n_employees": 1486,
+        "salaries_usd": 200853560.89,
+        "overtime_usd": 55066.87,
+        "other_salaries_usd": 2670188.45,
+        "total_benefits_usd": 76119045.5,
+        "total_compensation_usd": 279697861.71,
+        "ot_share_of_comp": 0.0002
+      },
+      {
+        "display_family": "Information Technology",
+        "n_employees": 1290,
+        "salaries_usd": 144896622.32,
+        "overtime_usd": 865859.59,
+        "other_salaries_usd": 3771567.09,
+        "total_benefits_usd": 57558603.04,
+        "total_compensation_usd": 207092652.04,
+        "ot_share_of_comp": 0.0042
+      },
+      {
+        "display_family": "Custodial, Food & Service Aides",
+        "n_employees": 3155,
+        "salaries_usd": 109262073.87,
+        "overtime_usd": 8409847.42,
+        "other_salaries_usd": 4193207.03,
+        "total_benefits_usd": 56697272.15,
+        "total_compensation_usd": 178562400.47,
+        "ot_share_of_comp": 0.0471
+      },
+      {
+        "display_family": "Culture, Parks & Libraries",
+        "n_employees": 2512,
+        "salaries_usd": 100696145.21,
+        "overtime_usd": 1615505.82,
+        "other_salaries_usd": 1813601.87,
+        "total_benefits_usd": 45677522.67,
+        "total_compensation_usd": 149802775.57,
+        "ot_share_of_comp": 0.0108
+      },
+      {
+        "display_family": "Security, Dispatch & Protection",
+        "n_employees": 1305,
+        "salaries_usd": 70268150.58,
+        "overtime_usd": 11073233.94,
+        "other_salaries_usd": 2808427.38,
+        "total_benefits_usd": 33277408.97,
+        "total_compensation_usd": 117427220.87,
+        "ot_share_of_comp": 0.0943
+      },
+      {
+        "display_family": "Airport & Port Operations",
+        "n_employees": 464,
+        "salaries_usd": 38374293.21,
+        "overtime_usd": 3156789.63,
+        "other_salaries_usd": 2025514.64,
+        "total_benefits_usd": 18165974.49,
+        "total_compensation_usd": 61722571.97,
+        "ot_share_of_comp": 0.0511
+      },
+      {
+        "display_family": "Other roles",
+        "n_employees": 406,
+        "salaries_usd": 37374277.96,
+        "overtime_usd": 887858.01,
+        "other_salaries_usd": 649610.75,
+        "total_benefits_usd": 15789074.63,
+        "total_compensation_usd": 54700821.35,
+        "ot_share_of_comp": 0.0162
+      }
+    ],
+    "2021": [
+      {
+        "display_family": "Health & Hospitals",
+        "n_employees": 5659,
+        "salaries_usd": 609500728.75,
+        "overtime_usd": 43443959.43,
+        "other_salaries_usd": 36740103.89,
+        "total_benefits_usd": 241924244.47,
+        "total_compensation_usd": 931609036.54,
+        "ot_share_of_comp": 0.0466
+      },
+      {
+        "display_family": "Administration & Finance",
+        "n_employees": 5078,
+        "salaries_usd": 387270475.98,
+        "overtime_usd": 4692192.35,
+        "other_salaries_usd": 4669422.42,
+        "total_benefits_usd": 180800857.55,
+        "total_compensation_usd": 577432948.3,
+        "ot_share_of_comp": 0.0081
+      },
+      {
+        "display_family": "Trades & Maintenance",
+        "n_employees": 3553,
+        "salaries_usd": 324473481.04,
+        "overtime_usd": 23484454.72,
+        "other_salaries_usd": 20554018.05,
+        "total_benefits_usd": 156654926.86,
+        "total_compensation_usd": 525166880.67,
+        "ot_share_of_comp": 0.0447
+      },
+      {
+        "display_family": "Police",
+        "n_employees": 2365,
+        "salaries_usd": 300961812.21,
+        "overtime_usd": 51527142.85,
+        "other_salaries_usd": 21875903.3,
+        "total_benefits_usd": 110178991.65,
+        "total_compensation_usd": 484543850.01,
+        "ot_share_of_comp": 0.1063
+      },
+      {
+        "display_family": "Justice & Corrections",
+        "n_employees": 2645,
+        "salaries_usd": 288681299.62,
+        "overtime_usd": 29500052.56,
+        "other_salaries_usd": 14805638.01,
+        "total_benefits_usd": 146450426.42,
+        "total_compensation_usd": 479437416.61,
+        "ot_share_of_comp": 0.0615
+      },
+      {
+        "display_family": "Transit Operations",
+        "n_employees": 3416,
+        "salaries_usd": 245639273.9,
+        "overtime_usd": 30376246.92,
+        "other_salaries_usd": 15506435.36,
+        "total_benefits_usd": 129631501.19,
+        "total_compensation_usd": 421153457.37,
+        "ot_share_of_comp": 0.0721
+      },
+      {
+        "display_family": "Fire",
+        "n_employees": 1774,
+        "salaries_usd": 208958752.21,
+        "overtime_usd": 54930908.67,
+        "other_salaries_usd": 32814009.1,
+        "total_benefits_usd": 84978192.44,
+        "total_compensation_usd": 381681862.42,
+        "ot_share_of_comp": 0.1439
+      },
+      {
+        "display_family": "Engineering & Inspection",
+        "n_employees": 2267,
+        "salaries_usd": 260550384.01,
+        "overtime_usd": 2278298.05,
+        "other_salaries_usd": 3608909.79,
+        "total_benefits_usd": 107992265.12,
+        "total_compensation_usd": 374429856.97,
+        "ot_share_of_comp": 0.0061
+      },
+      {
+        "display_family": "Social & Community Services",
+        "n_employees": 2598,
+        "salaries_usd": 220417362.27,
+        "overtime_usd": 3730511.01,
+        "other_salaries_usd": 4043197.52,
+        "total_benefits_usd": 103302750.89,
+        "total_compensation_usd": 331493821.69,
+        "ot_share_of_comp": 0.0113
+      },
+      {
+        "display_family": "Management & Officials",
+        "n_employees": 1489,
+        "salaries_usd": 207055813.72,
+        "overtime_usd": 153957.17,
+        "other_salaries_usd": 4525933.45,
+        "total_benefits_usd": 83681779.97,
+        "total_compensation_usd": 295417484.31,
+        "ot_share_of_comp": 0.0005
+      },
+      {
+        "display_family": "Information Technology",
+        "n_employees": 1253,
+        "salaries_usd": 149570794.24,
+        "overtime_usd": 515518.88,
+        "other_salaries_usd": 3710737.51,
+        "total_benefits_usd": 61855676.52,
+        "total_compensation_usd": 215652727.15,
+        "ot_share_of_comp": 0.0024
+      },
+      {
+        "display_family": "Custodial, Food & Service Aides",
+        "n_employees": 2697,
+        "salaries_usd": 107976591.76,
+        "overtime_usd": 6756978.61,
+        "other_salaries_usd": 4145653.03,
+        "total_benefits_usd": 59099640.33,
+        "total_compensation_usd": 177978863.73,
+        "ot_share_of_comp": 0.038
+      },
+      {
+        "display_family": "Culture, Parks & Libraries",
+        "n_employees": 1819,
+        "salaries_usd": 90391235.19,
+        "overtime_usd": 1722787.16,
+        "other_salaries_usd": 1762865.67,
+        "total_benefits_usd": 45127818.87,
+        "total_compensation_usd": 139004706.89,
+        "ot_share_of_comp": 0.0124
+      },
+      {
+        "display_family": "Security, Dispatch & Protection",
+        "n_employees": 1202,
+        "salaries_usd": 68617768.47,
+        "overtime_usd": 9647590.92,
+        "other_salaries_usd": 2941364.78,
+        "total_benefits_usd": 34076334.61,
+        "total_compensation_usd": 115283058.78,
+        "ot_share_of_comp": 0.0837
+      },
+      {
+        "display_family": "Other roles",
+        "n_employees": 450,
+        "salaries_usd": 43065296.16,
+        "overtime_usd": 664116.64,
+        "other_salaries_usd": 681159.63,
+        "total_benefits_usd": 18929030.34,
+        "total_compensation_usd": 63339602.77,
+        "ot_share_of_comp": 0.0105
+      },
+      {
+        "display_family": "Airport & Port Operations",
+        "n_employees": 448,
+        "salaries_usd": 39029872.0,
+        "overtime_usd": 2571777.14,
+        "other_salaries_usd": 2094596.22,
+        "total_benefits_usd": 19329650.75,
+        "total_compensation_usd": 63025896.11,
+        "ot_share_of_comp": 0.0408
+      }
+    ],
+    "2022": [
+      {
+        "display_family": "Health & Hospitals",
+        "n_employees": 5684,
+        "salaries_usd": 632345935.3,
+        "overtime_usd": 50382532.11,
+        "other_salaries_usd": 38350471.55,
+        "total_benefits_usd": 236795348.97,
+        "total_compensation_usd": 957874287.93,
+        "ot_share_of_comp": 0.0526
+      },
+      {
+        "display_family": "Administration & Finance",
+        "n_employees": 5199,
+        "salaries_usd": 409835984.19,
+        "overtime_usd": 5309865.15,
+        "other_salaries_usd": 4988929.02,
+        "total_benefits_usd": 178564690.81,
+        "total_compensation_usd": 598699469.17,
+        "ot_share_of_comp": 0.0089
+      },
+      {
+        "display_family": "Trades & Maintenance",
+        "n_employees": 3536,
+        "salaries_usd": 327653153.92,
+        "overtime_usd": 31502164.14,
+        "other_salaries_usd": 22101410.67,
+        "total_benefits_usd": 149779580.29,
+        "total_compensation_usd": 531036309.02,
+        "ot_share_of_comp": 0.0593
+      },
+      {
+        "display_family": "Police",
+        "n_employees": 2299,
+        "salaries_usd": 290957169.32,
+        "overtime_usd": 79647397.22,
+        "other_salaries_usd": 21777170.0,
+        "total_benefits_usd": 100060117.12,
+        "total_compensation_usd": 492441853.66,
+        "ot_share_of_comp": 0.1617
+      },
+      {
+        "display_family": "Justice & Corrections",
+        "n_employees": 2701,
+        "salaries_usd": 294233610.48,
+        "overtime_usd": 37263437.92,
+        "other_salaries_usd": 15468965.9,
+        "total_benefits_usd": 145257831.36,
+        "total_compensation_usd": 492223845.66,
+        "ot_share_of_comp": 0.0757
+      },
+      {
+        "display_family": "Transit Operations",
+        "n_employees": 3521,
+        "salaries_usd": 252514856.01,
+        "overtime_usd": 40773634.67,
+        "other_salaries_usd": 17010248.41,
+        "total_benefits_usd": 126187699.85,
+        "total_compensation_usd": 436486438.94,
+        "ot_share_of_comp": 0.0934
+      },
+      {
+        "display_family": "Fire",
+        "n_employees": 1881,
+        "salaries_usd": 212927413.92,
+        "overtime_usd": 85673388.57,
+        "other_salaries_usd": 35826047.86,
+        "total_benefits_usd": 81783217.9,
+        "total_compensation_usd": 416210068.25,
+        "ot_share_of_comp": 0.2058
+      },
+      {
+        "display_family": "Engineering & Inspection",
+        "n_employees": 2325,
+        "salaries_usd": 267491201.4,
+        "overtime_usd": 1503316.44,
+        "other_salaries_usd": 4091298.53,
+        "total_benefits_usd": 103075771.61,
+        "total_compensation_usd": 376161587.98,
+        "ot_share_of_comp": 0.004
+      },
+      {
+        "display_family": "Social & Community Services",
+        "n_employees": 2659,
+        "salaries_usd": 230051417.67,
+        "overtime_usd": 4146636.72,
+        "other_salaries_usd": 4638301.86,
+        "total_benefits_usd": 101300747.2,
+        "total_compensation_usd": 340137103.45,
+        "ot_share_of_comp": 0.0122
+      },
+      {
+        "display_family": "Management & Officials",
+        "n_employees": 1584,
+        "salaries_usd": 229095498.45,
+        "overtime_usd": 306668.2,
+        "other_salaries_usd": 11046089.09,
+        "total_benefits_usd": 87958015.8,
+        "total_compensation_usd": 328406271.54,
+        "ot_share_of_comp": 0.0009
+      },
+      {
+        "display_family": "Information Technology",
+        "n_employees": 1297,
+        "salaries_usd": 157971856.63,
+        "overtime_usd": 847171.79,
+        "other_salaries_usd": 4606548.8,
+        "total_benefits_usd": 60945381.82,
+        "total_compensation_usd": 224370959.04,
+        "ot_share_of_comp": 0.0038
+      },
+      {
+        "display_family": "Custodial, Food & Service Aides",
+        "n_employees": 2752,
+        "salaries_usd": 110114517.17,
+        "overtime_usd": 10217870.43,
+        "other_salaries_usd": 4358107.46,
+        "total_benefits_usd": 57307132.7,
+        "total_compensation_usd": 181997627.76,
+        "ot_share_of_comp": 0.0561
+      },
+      {
+        "display_family": "Culture, Parks & Libraries",
+        "n_employees": 2106,
+        "salaries_usd": 99171397.28,
+        "overtime_usd": 2056879.53,
+        "other_salaries_usd": 2383381.71,
+        "total_benefits_usd": 45626533.21,
+        "total_compensation_usd": 149238191.73,
+        "ot_share_of_comp": 0.0138
+      },
+      {
+        "display_family": "Security, Dispatch & Protection",
+        "n_employees": 1241,
+        "salaries_usd": 72713110.67,
+        "overtime_usd": 13089370.32,
+        "other_salaries_usd": 3007706.02,
+        "total_benefits_usd": 34194670.44,
+        "total_compensation_usd": 123004857.45,
+        "ot_share_of_comp": 0.1064
+      },
+      {
+        "display_family": "Other roles",
+        "n_employees": 461,
+        "salaries_usd": 45701681.06,
+        "overtime_usd": 986208.35,
+        "other_salaries_usd": 1016282.74,
+        "total_benefits_usd": 18862495.83,
+        "total_compensation_usd": 66566667.98,
+        "ot_share_of_comp": 0.0148
+      },
+      {
+        "display_family": "Airport & Port Operations",
+        "n_employees": 422,
+        "salaries_usd": 38211486.2,
+        "overtime_usd": 3365723.55,
+        "other_salaries_usd": 2234354.93,
+        "total_benefits_usd": 17915591.18,
+        "total_compensation_usd": 61727155.86,
+        "ot_share_of_comp": 0.0545
+      }
+    ],
+    "2023": [
+      {
+        "display_family": "Health & Hospitals",
+        "n_employees": 5774,
+        "salaries_usd": 667702389.2,
+        "overtime_usd": 59994558.11,
+        "other_salaries_usd": 44958912.91,
+        "total_benefits_usd": 236182204.51,
+        "total_compensation_usd": 1008838064.73,
+        "ot_share_of_comp": 0.0595
+      },
+      {
+        "display_family": "Administration & Finance",
+        "n_employees": 5155,
+        "salaries_usd": 441605727.3,
+        "overtime_usd": 5765049.19,
+        "other_salaries_usd": 5628597.65,
+        "total_benefits_usd": 180705697.93,
+        "total_compensation_usd": 633705072.07,
+        "ot_share_of_comp": 0.0091
+      },
+      {
+        "display_family": "Trades & Maintenance",
+        "n_employees": 3525,
+        "salaries_usd": 348269641.51,
+        "overtime_usd": 41595869.74,
+        "other_salaries_usd": 23265637.56,
+        "total_benefits_usd": 149567733.46,
+        "total_compensation_usd": 562698882.27,
+        "ot_share_of_comp": 0.0739
+      },
+      {
+        "display_family": "Police",
+        "n_employees": 2205,
+        "salaries_usd": 292886124.07,
+        "overtime_usd": 114693864.23,
+        "other_salaries_usd": 35505895.5,
+        "total_benefits_usd": 95741970.45,
+        "total_compensation_usd": 538827854.25,
+        "ot_share_of_comp": 0.2129
+      },
+      {
+        "display_family": "Justice & Corrections",
+        "n_employees": 2694,
+        "salaries_usd": 310692198.04,
+        "overtime_usd": 41483034.73,
+        "other_salaries_usd": 17749557.31,
+        "total_benefits_usd": 143641916.76,
+        "total_compensation_usd": 513566706.84,
+        "ot_share_of_comp": 0.0808
+      },
+      {
+        "display_family": "Transit Operations",
+        "n_employees": 3652,
+        "salaries_usd": 269632318.63,
+        "overtime_usd": 49568766.97,
+        "other_salaries_usd": 19475346.99,
+        "total_benefits_usd": 131122268.53,
+        "total_compensation_usd": 469798701.12,
+        "ot_share_of_comp": 0.1055
+      },
+      {
+        "display_family": "Fire",
+        "n_employees": 1898,
+        "salaries_usd": 233113277.45,
+        "overtime_usd": 75936506.38,
+        "other_salaries_usd": 35955373.3,
+        "total_benefits_usd": 82109189.09,
+        "total_compensation_usd": 427114346.22,
+        "ot_share_of_comp": 0.1778
+      },
+      {
+        "display_family": "Engineering & Inspection",
+        "n_employees": 2341,
+        "salaries_usd": 282249119.66,
+        "overtime_usd": 1613010.66,
+        "other_salaries_usd": 3873340.51,
+        "total_benefits_usd": 100813541.57,
+        "total_compensation_usd": 388549012.4,
+        "ot_share_of_comp": 0.0042
+      },
+      {
+        "display_family": "Management & Officials",
+        "n_employees": 1678,
+        "salaries_usd": 256956169.07,
+        "overtime_usd": 625431.27,
+        "other_salaries_usd": 8079913.58,
+        "total_benefits_usd": 91932144.26,
+        "total_compensation_usd": 357593658.18,
+        "ot_share_of_comp": 0.0017
+      },
+      {
+        "display_family": "Social & Community Services",
+        "n_employees": 2627,
+        "salaries_usd": 241333174.46,
+        "overtime_usd": 5691031.63,
+        "other_salaries_usd": 5111294.69,
+        "total_benefits_usd": 100559442.63,
+        "total_compensation_usd": 352694943.41,
+        "ot_share_of_comp": 0.0161
+      },
+      {
+        "display_family": "Information Technology",
+        "n_employees": 1297,
+        "salaries_usd": 167681316.61,
+        "overtime_usd": 1105623.04,
+        "other_salaries_usd": 4734359.23,
+        "total_benefits_usd": 60103238.75,
+        "total_compensation_usd": 233624537.63,
+        "ot_share_of_comp": 0.0047
+      },
+      {
+        "display_family": "Custodial, Food & Service Aides",
+        "n_employees": 2878,
+        "salaries_usd": 115532730.25,
+        "overtime_usd": 13190102.83,
+        "other_salaries_usd": 5273995.74,
+        "total_benefits_usd": 56842400.81,
+        "total_compensation_usd": 190839229.63,
+        "ot_share_of_comp": 0.0691
+      },
+      {
+        "display_family": "Culture, Parks & Libraries",
+        "n_employees": 2268,
+        "salaries_usd": 108565760.32,
+        "overtime_usd": 2732825.38,
+        "other_salaries_usd": 2504712.02,
+        "total_benefits_usd": 46359285.86,
+        "total_compensation_usd": 160162583.58,
+        "ot_share_of_comp": 0.0171
+      },
+      {
+        "display_family": "Security, Dispatch & Protection",
+        "n_employees": 1212,
+        "salaries_usd": 73563056.86,
+        "overtime_usd": 14541833.51,
+        "other_salaries_usd": 3310636.88,
+        "total_benefits_usd": 32815767.78,
+        "total_compensation_usd": 124231295.03,
+        "ot_share_of_comp": 0.1171
+      },
+      {
+        "display_family": "Other roles",
+        "n_employees": 505,
+        "salaries_usd": 55360400.39,
+        "overtime_usd": 1304808.34,
+        "other_salaries_usd": 1589116.04,
+        "total_benefits_usd": 21513452.38,
+        "total_compensation_usd": 79767777.15,
+        "ot_share_of_comp": 0.0164
+      },
+      {
+        "display_family": "Airport & Port Operations",
+        "n_employees": 402,
+        "salaries_usd": 38291517.7,
+        "overtime_usd": 4635987.47,
+        "other_salaries_usd": 2247267.98,
+        "total_benefits_usd": 17012699.75,
+        "total_compensation_usd": 62187472.9,
+        "ot_share_of_comp": 0.0745
+      }
+    ],
+    "2024": [
+      {
+        "display_family": "Health & Hospitals",
+        "n_employees": 5995,
+        "salaries_usd": 714446899.48,
+        "overtime_usd": 56711297.26,
+        "other_salaries_usd": 45472504.86,
+        "total_benefits_usd": 235139833.75,
+        "total_compensation_usd": 1051770535.35,
+        "ot_share_of_comp": 0.0539
+      },
+      {
+        "display_family": "Administration & Finance",
+        "n_employees": 5538,
+        "salaries_usd": 500826746.94,
+        "overtime_usd": 6301562.67,
+        "other_salaries_usd": 4999445.38,
+        "total_benefits_usd": 190895162.04,
+        "total_compensation_usd": 703022917.03,
+        "ot_share_of_comp": 0.009
+      },
+      {
+        "display_family": "Trades & Maintenance",
+        "n_employees": 3718,
+        "salaries_usd": 379396481.17,
+        "overtime_usd": 43468815.03,
+        "other_salaries_usd": 25452078.73,
+        "total_benefits_usd": 152485683.45,
+        "total_compensation_usd": 600803058.38,
+        "ot_share_of_comp": 0.0724
+      },
+      {
+        "display_family": "Police",
+        "n_employees": 2173,
+        "salaries_usd": 299030839.07,
+        "overtime_usd": 138529874.69,
+        "other_salaries_usd": 41212627.01,
+        "total_benefits_usd": 91029127.7,
+        "total_compensation_usd": 569802468.47,
+        "ot_share_of_comp": 0.2431
+      },
+      {
+        "display_family": "Justice & Corrections",
+        "n_employees": 2770,
+        "salaries_usd": 328369247.03,
+        "overtime_usd": 49455062.82,
+        "other_salaries_usd": 16963180.88,
+        "total_benefits_usd": 142757373.97,
+        "total_compensation_usd": 537544864.7,
+        "ot_share_of_comp": 0.092
+      },
+      {
+        "display_family": "Transit Operations",
+        "n_employees": 3671,
+        "salaries_usd": 289278224.7,
+        "overtime_usd": 49950267.57,
+        "other_salaries_usd": 22406130.35,
+        "total_benefits_usd": 130974788.75,
+        "total_compensation_usd": 492609411.37,
+        "ot_share_of_comp": 0.1014
+      },
+      {
+        "display_family": "Fire",
+        "n_employees": 1920,
+        "salaries_usd": 246672079.07,
+        "overtime_usd": 71865042.4,
+        "other_salaries_usd": 37782339.21,
+        "total_benefits_usd": 80371356.07,
+        "total_compensation_usd": 436690816.75,
+        "ot_share_of_comp": 0.1646
+      },
+      {
+        "display_family": "Engineering & Inspection",
+        "n_employees": 2425,
+        "salaries_usd": 303830878.02,
+        "overtime_usd": 2577994.35,
+        "other_salaries_usd": 3632105.32,
+        "total_benefits_usd": 101385834.82,
+        "total_compensation_usd": 411426812.51,
+        "ot_share_of_comp": 0.0063
+      },
+      {
+        "display_family": "Management & Officials",
+        "n_employees": 1789,
+        "salaries_usd": 286211498.44,
+        "overtime_usd": 464439.13,
+        "other_salaries_usd": 8656119.62,
+        "total_benefits_usd": 97113905.63,
+        "total_compensation_usd": 392445962.82,
+        "ot_share_of_comp": 0.0012
+      },
+      {
+        "display_family": "Social & Community Services",
+        "n_employees": 2739,
+        "salaries_usd": 259337480.82,
+        "overtime_usd": 8541219.9,
+        "other_salaries_usd": 4358367.94,
+        "total_benefits_usd": 102325549.18,
+        "total_compensation_usd": 374562617.84,
+        "ot_share_of_comp": 0.0228
+      },
+      {
+        "display_family": "Information Technology",
+        "n_employees": 1389,
+        "salaries_usd": 188181540.28,
+        "overtime_usd": 970943.18,
+        "other_salaries_usd": 4577356.22,
+        "total_benefits_usd": 62735079.08,
+        "total_compensation_usd": 256464918.76,
+        "ot_share_of_comp": 0.0038
+      },
+      {
+        "display_family": "Custodial, Food & Service Aides",
+        "n_employees": 3200,
+        "salaries_usd": 127090920.43,
+        "overtime_usd": 13056019.07,
+        "other_salaries_usd": 5080381.02,
+        "total_benefits_usd": 58367319.49,
+        "total_compensation_usd": 203594640.01,
+        "ot_share_of_comp": 0.0641
+      },
+      {
+        "display_family": "Culture, Parks & Libraries",
+        "n_employees": 2422,
+        "salaries_usd": 118182143.51,
+        "overtime_usd": 2387093.07,
+        "other_salaries_usd": 2720675.28,
+        "total_benefits_usd": 47549019.29,
+        "total_compensation_usd": 170838931.15,
+        "ot_share_of_comp": 0.014
+      },
+      {
+        "display_family": "Security, Dispatch & Protection",
+        "n_employees": 1253,
+        "salaries_usd": 78559547.9,
+        "overtime_usd": 16713780.47,
+        "other_salaries_usd": 3648076.82,
+        "total_benefits_usd": 33056021.68,
+        "total_compensation_usd": 131977426.87,
+        "ot_share_of_comp": 0.1266
+      },
+      {
+        "display_family": "Other roles",
+        "n_employees": 470,
+        "salaries_usd": 54324667.25,
+        "overtime_usd": 1300154.33,
+        "other_salaries_usd": 1354058.86,
+        "total_benefits_usd": 19705423.7,
+        "total_compensation_usd": 76684304.14,
+        "ot_share_of_comp": 0.017
+      },
+      {
+        "display_family": "Airport & Port Operations",
+        "n_employees": 424,
+        "salaries_usd": 41345470.7,
+        "overtime_usd": 6538377.36,
+        "other_salaries_usd": 2425162.4,
+        "total_benefits_usd": 17422128.68,
+        "total_compensation_usd": 67731139.14,
+        "ot_share_of_comp": 0.0965
+      }
+    ],
+    "2025": [
+      {
+        "display_family": "Health & Hospitals",
+        "n_employees": 5984,
+        "salaries_usd": 791512922.01,
+        "overtime_usd": 51432859.52,
+        "other_salaries_usd": 48097476.13,
+        "total_benefits_usd": 254575911.09,
+        "total_compensation_usd": 1145619168.75,
+        "ot_share_of_comp": 0.0449
+      },
+      {
+        "display_family": "Administration & Finance",
+        "n_employees": 5716,
+        "salaries_usd": 552051449.14,
+        "overtime_usd": 5643937.12,
+        "other_salaries_usd": 5216424.96,
+        "total_benefits_usd": 207930966.91,
+        "total_compensation_usd": 770842778.13,
+        "ot_share_of_comp": 0.0073
+      },
+      {
+        "display_family": "Trades & Maintenance",
+        "n_employees": 3660,
+        "salaries_usd": 401722767.81,
+        "overtime_usd": 43590403.43,
+        "other_salaries_usd": 27408491.81,
+        "total_benefits_usd": 160143899.24,
+        "total_compensation_usd": 632865562.29,
+        "ot_share_of_comp": 0.0689
+      },
+      {
+        "display_family": "Police",
+        "n_employees": 2272,
+        "salaries_usd": 309025856.13,
+        "overtime_usd": 141963652.45,
+        "other_salaries_usd": 52354081.57,
+        "total_benefits_usd": 95958820.39,
+        "total_compensation_usd": 599302410.54,
+        "ot_share_of_comp": 0.2369
+      },
+      {
+        "display_family": "Justice & Corrections",
+        "n_employees": 2765,
+        "salaries_usd": 343235112.23,
+        "overtime_usd": 56181908.68,
+        "other_salaries_usd": 20066211.54,
+        "total_benefits_usd": 148260178.75,
+        "total_compensation_usd": 567743411.2,
+        "ot_share_of_comp": 0.099
+      },
+      {
+        "display_family": "Transit Operations",
+        "n_employees": 3584,
+        "salaries_usd": 298513694.52,
+        "overtime_usd": 50623208.48,
+        "other_salaries_usd": 23752546.53,
+        "total_benefits_usd": 134210567.46,
+        "total_compensation_usd": 507100016.99,
+        "ot_share_of_comp": 0.0998
+      },
+      {
+        "display_family": "Fire",
+        "n_employees": 1918,
+        "salaries_usd": 256862229.31,
+        "overtime_usd": 68794330.97,
+        "other_salaries_usd": 44216710.65,
+        "total_benefits_usd": 84410507.56,
+        "total_compensation_usd": 454283778.49,
+        "ot_share_of_comp": 0.1514
+      },
+      {
+        "display_family": "Engineering & Inspection",
+        "n_employees": 2449,
+        "salaries_usd": 330048767.31,
+        "overtime_usd": 3920967.9,
+        "other_salaries_usd": 4136222.78,
+        "total_benefits_usd": 107912279.54,
+        "total_compensation_usd": 446018237.53,
+        "ot_share_of_comp": 0.0088
+      },
+      {
+        "display_family": "Management & Officials",
+        "n_employees": 1857,
+        "salaries_usd": 307271990.18,
+        "overtime_usd": 310391.68,
+        "other_salaries_usd": 7596411.51,
+        "total_benefits_usd": 101593345.39,
+        "total_compensation_usd": 416772138.76,
+        "ot_share_of_comp": 0.0007
+      },
+      {
+        "display_family": "Social & Community Services",
+        "n_employees": 2848,
+        "salaries_usd": 283143618.04,
+        "overtime_usd": 6890023.22,
+        "other_salaries_usd": 4651476.64,
+        "total_benefits_usd": 110688213.14,
+        "total_compensation_usd": 405373331.04,
+        "ot_share_of_comp": 0.017
+      },
+      {
+        "display_family": "Information Technology",
+        "n_employees": 1394,
+        "salaries_usd": 202603510.73,
+        "overtime_usd": 938745.72,
+        "other_salaries_usd": 4803676.99,
+        "total_benefits_usd": 66512067.83,
+        "total_compensation_usd": 274858001.27,
+        "ot_share_of_comp": 0.0034
+      },
+      {
+        "display_family": "Custodial, Food & Service Aides",
+        "n_employees": 3017,
+        "salaries_usd": 138764452.33,
+        "overtime_usd": 11897133.89,
+        "other_salaries_usd": 5748459.95,
+        "total_benefits_usd": 63550043.59,
+        "total_compensation_usd": 219960089.76,
+        "ot_share_of_comp": 0.0541
+      },
+      {
+        "display_family": "Culture, Parks & Libraries",
+        "n_employees": 2330,
+        "salaries_usd": 124191750.89,
+        "overtime_usd": 2645092.19,
+        "other_salaries_usd": 3357818.34,
+        "total_benefits_usd": 49795429.77,
+        "total_compensation_usd": 179990091.19,
+        "ot_share_of_comp": 0.0147
+      },
+      {
+        "display_family": "Security, Dispatch & Protection",
+        "n_employees": 1290,
+        "salaries_usd": 87252370.34,
+        "overtime_usd": 17543479.87,
+        "other_salaries_usd": 4033939.66,
+        "total_benefits_usd": 36130418.54,
+        "total_compensation_usd": 144960208.41,
+        "ot_share_of_comp": 0.121
+      },
+      {
+        "display_family": "Other roles",
+        "n_employees": 463,
+        "salaries_usd": 54437950.51,
+        "overtime_usd": 1090668.26,
+        "other_salaries_usd": 1269949.29,
+        "total_benefits_usd": 19508606.57,
+        "total_compensation_usd": 76307174.63,
+        "ot_share_of_comp": 0.0143
+      },
+      {
+        "display_family": "Airport & Port Operations",
+        "n_employees": 434,
+        "salaries_usd": 44460784.99,
+        "overtime_usd": 7529138.51,
+        "other_salaries_usd": 2602971.49,
+        "total_benefits_usd": 18372004.31,
+        "total_compensation_usd": 72964899.3,
+        "ot_share_of_comp": 0.1032
+      }
+    ]
+  },
+  "n_rows": 6058
+}

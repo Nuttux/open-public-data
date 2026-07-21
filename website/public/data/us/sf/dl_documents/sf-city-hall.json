@@ -1,21 +1,9 @@
 {
- "generated_at": "2026-07-20T22:30:00.115594+00:00",
+ "generated_at": "2026-07-21T14:25:53.957527+00:00",
  "slug": "sf-city-hall",
  "name": "San Francisco City Hall",
  "note": "Archive documents linked to this place; source labels honour the SFPL-vs-Democracy's-Library distinction.",
  "documents": [
-  {
-   "identifier": "2minutes1999sanf",
-   "title": "Minutes",
-   "creator": "San Francisco (Calif.). Board of Supervisors. Finance and Labor Committee",
-   "year": 1999,
-   "pool": "sfpl",
-   "matched_alias": "City Hall",
-   "snippet": "main floor of «City Hall») and the «City Hall» Cafe (on ground floor of «City Hall») Currently,",
-   "url": "https://archive.org/details/2minutes1999sanf",
-   "deep_link": "https://archive.org/details/2minutes1999sanf?q=City+Hall",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
-  },
   {
    "identifier": "historicstructur1219care",
    "title": "Historic structure report : San Francisco City Hall",
@@ -26,7 +14,23 @@
    "snippet": "DEPA'^'^'^^^'^T HISTORIC STRUCTURES REPORT «SAN FRANCISCO CITY HALL» Prepared for CITY & COUNTY OF SAN",
    "url": "https://archive.org/details/historicstructur1219care",
    "deep_link": "https://archive.org/details/historicstructur1219care?q=San+Francisco+City+Hall",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Plans & environmental review",
+   "salient": true
+  },
+  {
+   "identifier": "2minutes1999sanf",
+   "title": "Minutes",
+   "creator": "San Francisco (Calif.). Board of Supervisors. Finance and Labor Committee",
+   "year": 1999,
+   "pool": "sfpl",
+   "matched_alias": "City Hall",
+   "snippet": "main floor of «City Hall») and the «City Hall» Cafe (on ground floor of «City Hall») Currently,",
+   "url": "https://archive.org/details/2minutes1999sanf",
+   "deep_link": "https://archive.org/details/2minutes1999sanf?q=City+Hall",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Meetings & resolutions",
+   "salient": true
   }
  ]
 }

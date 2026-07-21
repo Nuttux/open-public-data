@@ -147,6 +147,7 @@ export type SfBvaPoint = {
   fiscal_year: number;
   budget_net_usd: number | null;
   actual_all_usd: number | null;
+  is_fiscal_year_complete?: boolean;
   operating_comparison: {
     budget_usd: number | null;
     actual_usd: number | null;
@@ -357,6 +358,122 @@ export type SfCharacterFicheData = {
   source: SfSourceBlock;
   as_of: string | null;
 };
+
+// ─── budget_dept_detail_{fy}.json (third drill level: dept × character) ───
+
+export type SfDeptCharacterObjectRow = {
+  code: string;
+  label: string;
+  amount_usd: number;
+  is_transfer_adjustment: boolean;
+};
+
+export type SfDeptCharacterVendorRow = {
+  vendor: string;
+  amount_usd: number;
+  n_vouchers: number;
+  is_non_profit: boolean;
+  is_related_govt_unit: boolean;
+  bucket: string | null;
+  is_aggregation_line: boolean;
+};
+
+type SfDeptCharacterPaymentsRaw = {
+  total_usd: number;
+  n_vendors: number;
+  vendors: SfDeptCharacterVendorRow[];
+  other_vendors_usd: number;
+  other_vendors_n: number;
+  execution_status: SfExecutionStatus;
+};
+
+type SfBudgetDeptDetailFile = {
+  generated_at: string;
+  source_pipeline: string;
+  fiscal_year: number;
+  budget_source: { source_url: string; rows_updated_at: string | null } | null;
+  vouchers_source: SfSourceBlock | null;
+  notes: string;
+  cells: Record<
+    string,
+    { side: "Spending" | "Revenue"; objects: SfDeptCharacterObjectRow[]; payments: SfDeptCharacterPaymentsRaw | null }
+  >;
+};
+
+export type SfDeptCharacterDetailData = {
+  fiscal_year: number;
+  execution_status: SfExecutionStatus;
+  dept: { code: string; label: string; display_name: string | null };
+  character: { code: string; label: string; gloss: string | null };
+  side: SfSide;
+  /** This dept × character cell's adopted-budget amount (from the breakdown mart). */
+  amount_usd: number;
+  /** Raw budget line items — same dataset as the rest of the page. */
+  objects: SfDeptCharacterObjectRow[];
+  /** Vendor payments (vouchers) matched to this cell — null where no voucher activity exists. */
+  payments: (SfDeptCharacterPaymentsRaw & { matched_pct: number | null }) | null;
+  budget_source: SfSourceBlock;
+  vouchers_source: SfSourceBlock | null;
+  as_of: string | null;
+};
+
+function loadSfBudgetDeptDetail(fy: number): SfBudgetDeptDetailFile | null {
+  try {
+    return readJson<SfBudgetDeptDetailFile>(`budget_dept_detail_${fy}.json`);
+  } catch {
+    return null;
+  }
+}
+
+/**
+ * Third drill level: department → character → this. Cross-references the
+ * already-loaded breakdown (for the cell's budget amount and labels) with
+ * the lazily-read detail file (raw object line items + vendor payments).
+ * `matched_pct` is a ratio of two exported values, computed here — same
+ * doctrine as the page's execution-rate arithmetic, not a new rollup.
+ */
+export function loadSfDeptCharacterDetail(
+  deptSlug: string,
+  charSlug: string,
+  fy: number,
+  sideHint?: SfSide,
+): SfDeptCharacterDetailData | null {
+  const bd = loadSfBudgetBreakdown(fy);
+  if (!bd || !bd.drill.available) return null;
+  const deptCode = deptCodeFromSlug(deptSlug);
+  const charCode = characterCodeFromSlug(charSlug);
+  const sides: SfSide[] = sideHint ? [sideHint] : ["spending", "revenue"];
+
+  for (const side of sides) {
+    const cellRow = bd.dept_characters[side].find((c) => c[0] === deptCode && c[1] === charCode);
+    if (!cellRow) continue;
+    const deptRow = bd.departments[side].find((d) => d.code === deptCode);
+    const charRow = bd.characters[side].find((c) => c.code === charCode);
+    if (!deptRow || !charRow) continue;
+
+    const amount = cellRow[2];
+    const detail = loadSfBudgetDeptDetail(fy);
+    const cell = detail?.cells[`${deptCode}|${charCode}`];
+    const payments = cell?.payments
+      ? { ...cell.payments, matched_pct: amount > 0 ? cell.payments.total_usd / amount : null }
+      : null;
+
+    return {
+      fiscal_year: fy,
+      execution_status: bd.execution_status,
+      dept: { code: deptCode, label: deptRow.label, display_name: deptRow.display_name },
+      character: { code: charCode, label: charRow.label, gloss: charRow.gloss },
+      side,
+      amount_usd: amount,
+      objects: cell?.objects ?? [],
+      payments,
+      budget_source: bd.source,
+      vouchers_source: detail?.vouchers_source ?? null,
+      as_of: bd.as_of,
+    };
+  }
+  return null;
+}
 
 export function loadSfCharacterFiche(
   slug: string,

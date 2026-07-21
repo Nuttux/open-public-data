@@ -5,7 +5,7 @@ import PageIntro, { IntroStat } from "@/components/fusion/PageIntro";
 import AnimatedNumber from "@/components/fusion/AnimatedNumber";
 import YearPicker from "@/components/fusion/YearPicker";
 import { useT } from "@/lib/localeContext";
-import { fmtUsdCompact } from "@/lib/us/format";
+import { fmtUsdCompact, fmtShare } from "@/lib/us/format";
 import TopPayeesSection from "./TopPayeesSection";
 import MaterialityStrip from "./MaterialityStrip";
 import PayeesSearch from "./PayeesSearch";
@@ -123,6 +123,22 @@ export default function WhoGetsPaidClient({
                 : fill(t("us.sf.wgp.status.preliminary"), { fy })}
             </span>
           </div>
+        )}
+        {(yearData.related_top_departments ?? []).length > 0 && (
+          <p style={{ margin: "14px 0 0", fontSize: 13.5, lineHeight: 1.6, color: "var(--ink-2)" }}>
+            <b style={{ color: "var(--ink)" }}>
+              {fill(t("us.sf.wgp.s01.related_breakdown"), {
+                usd: fmtUsdCompact(tot.related_govt_units_usd),
+                share: tot.related_share_of_total != null ? fmtShare(tot.related_share_of_total) : "—",
+              })}
+            </b>{" "}
+            {(yearData.related_top_departments ?? []).map((d, i) => (
+              <span key={d.department}>
+                {i > 0 && " · "}
+                {d.department} <span style={{ fontFamily: "var(--f-mono)", fontSize: 12 }}>{fmtUsdCompact(d.usd)}</span>
+              </span>
+            ))}
+          </p>
         )}
       </PageIntro>
 

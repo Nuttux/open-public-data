@@ -14,6 +14,7 @@ import EmptyState from "@/components/fusion/EmptyState";
 import Button from "@/components/fusion/Button";
 import Tip from "@/components/fusion/Tip";
 import UsTreemap from "@/components/us/UsTreemap";
+import UsBudgetTrend from "./UsBudgetTrend";
 import { useT } from "@/lib/localeContext";
 import { deptSlug, characterSlug } from "@/lib/us/sf-budget-slugs";
 import {
@@ -53,6 +54,7 @@ export type SfBudgetPageData = {
   population: { value: number; year: number; source: string; source_url: string };
   breakdown: SfBudgetBreakdown;
   spine: SfBvaSpinePoint[];
+  trend: { fiscal_year: number; budget_net_usd: number | null; actual_all_usd: number | null }[];
   bvaTable: {
     fiscal_year: number;
     rows: SfBvaDeptRow[];
@@ -73,7 +75,6 @@ const fill = (s: string, vars: Record<string, string | number>) => {
 
 /** UI display constants (presentation choices, not data). */
 const DEPT_LIST_FOLD = 12;
-const BVA_TABLE_FLOOR_USD = 50_000_000;
 
 function SourceLine({
   label,
@@ -158,6 +159,14 @@ export default function SfBudgetClient({ d }: { d: SfBudgetPageData }) {
   const srcLabel = t("us.sf.budget.source_label");
   const budgetLinks = [{ name: d.source.name, href: d.source.source_url }];
 
+  // strend — the long view: actuals span (first/last year with an actual),
+  // and the FY the adopted budget begins (first year with a budget point).
+  const actualYears = d.trend.filter((p) => p.actual_all_usd != null).map((p) => p.fiscal_year);
+  const budgetYears = d.trend.filter((p) => p.budget_net_usd != null).map((p) => p.fiscal_year);
+  const trendY0 = actualYears.length ? Math.min(...actualYears) : 0;
+  const trendY1 = actualYears.length ? Math.max(...actualYears) : 0;
+  const budgetY0 = budgetYears.length ? Math.min(...budgetYears) : 0;
+
   // s02 — services
   const orgGroups = bd.org_groups.spending;
   const depts = bd.departments.spending;
@@ -189,14 +198,11 @@ export default function SfBudgetClient({ d }: { d: SfBudgetPageData }) {
     showComparison && spinePoint?.actual_usd != null && spinePoint?.budget_usd != null
       ? (spinePoint.actual_usd / spinePoint.budget_usd) * 100
       : null;
+  // Closed years — used only for the empty-state fallback CTA on future years.
   const spineClosed = d.spine.filter(
     (p) => p.budget_usd != null && p.actual_usd != null && p.residual_pct != null &&
       d.statuses[String(p.fiscal_year)] === "closed",
   );
-
-  const bvaRows = (d.bvaTable?.rows ?? [])
-    .filter((r) => r.is_comparable && (r.budget_usd ?? 0) >= BVA_TABLE_FLOOR_USD)
-    .sort((a, b) => Math.abs(b.residual_usd ?? 0) - Math.abs(a.residual_usd ?? 0));
 
   const statusNoticeKey =
     status === "adopted_only"
@@ -209,6 +215,44 @@ export default function SfBudgetClient({ d }: { d: SfBudgetPageData }) {
   // margins (France pages carry the same 16px document overflow at ≤860px)
   // WITHOUT creating a scroll container — position:sticky keeps working
   // because main spans the full scroll range.
+
+  // The long view — 28 years of actuals + adopted budget. Closing context,
+  // after the composition and execution sections.
+  const trendSection = d.trend.length > 0 && trendY0 > 0 ? (
+    <section className="fx-section" id="sec-trend">
+      <div className="fx-wrap">
+        <SectionHead
+          kind={t("us.sf.budget.strend.kind")}
+          title={
+            <>
+              {t("us.sf.budget.strend.title.before")}
+              <em>{t("us.sf.budget.strend.title.em")}</em>
+            </>
+          }
+          subtitle={fill(t("us.sf.budget.strend.sub"), { y0: trendY0, y1: budgetY0 })}
+        />
+        <figure style={{ margin: 0 }}>
+          <UsBudgetTrend
+            points={d.trend}
+            labels={{
+              actual: t("us.sf.budget.strend.legend.actual"),
+              budget: t("us.sf.budget.strend.legend.budget"),
+            }}
+            ariaLabel={fill(t("us.sf.budget.strend.aria"), {
+              y0: trendY0,
+              y1: budgetY0,
+              y1e: trendY1,
+            })}
+          />
+          <SourceLine label={srcLabel} links={budgetLinks} dataWord={dataWord} />
+        </figure>
+        <p className="fx-note" style={{ marginTop: 12 }}>
+          {t("us.sf.budget.strend.note")}
+        </p>
+      </div>
+    </section>
+  ) : null;
+
   return (
     <main id="main-content" tabIndex={-1} style={{ overflowX: "clip" }}>
       <PageTOC
@@ -217,6 +261,7 @@ export default function SfBudgetClient({ d }: { d: SfBudgetPageData }) {
           { id: "sec-types", label: t("us.sf.budget.toc.types") },
           { id: "sec-revenue", label: t("us.sf.budget.toc.revenue") },
           { id: "sec-execution", label: t("us.sf.budget.toc.execution") },
+          { id: "sec-trend", label: t("us.sf.budget.strend.kind") },
         ]}
       />
 
@@ -756,134 +801,6 @@ export default function SfBudgetClient({ d }: { d: SfBudgetPageData }) {
             </>
           )}
 
-          {/* The long spine — execution rate per closed year */}
-          {spineClosed.length > 0 && (
-            <div style={{ marginTop: 34 }}>
-              <div style={{ fontFamily: "var(--f-mono)", fontSize: 11, color: "var(--muted)", letterSpacing: ".08em", textTransform: "uppercase", marginBottom: 12 }}>
-                {fill(t("us.sf.budget.s05.spine_kicker"), {
-                  y0: spineClosed[0].fiscal_year,
-                  y1: spineClosed[spineClosed.length - 1].fiscal_year,
-                })}
-              </div>
-              <div style={{ display: "grid", gap: 6 }}>
-                {spineClosed.map((p) => {
-                  const rate =
-                    p.actual_usd != null && p.budget_usd != null && p.budget_usd > 0
-                      ? (p.actual_usd / p.budget_usd) * 100
-                      : 0;
-                  return (
-                    <div
-                      key={p.fiscal_year}
-                      style={{
-                        display: "grid",
-                        gridTemplateColumns: "64px 1fr 170px",
-                        gap: 12,
-                        alignItems: "center",
-                        fontSize: 12.5,
-                      }}
-                    >
-                      <span style={{ fontFamily: "var(--f-mono)", color: "var(--ink-2)" }}>
-                        FY{p.fiscal_year}
-                      </span>
-                      <span style={{ position: "relative", height: 10, background: "var(--rule)" }}>
-                        <span
-                          style={{
-                            position: "absolute",
-                            inset: "0 auto 0 0",
-                            width: `${Math.max(0, Math.min(100, rate))}%`,
-                            background: p.fiscal_year === fy ? "var(--ink)" : "var(--ink-2)",
-                          }}
-                        />
-                      </span>
-                      <span className="tnum" style={{ fontFamily: "var(--f-mono)", fontSize: 11.5 }}>
-                        {fmtYoy(p.residual_pct ?? 0)}
-                        {p.fiscal_year === 2021 && (
-                          <span style={{ color: "var(--ocre)", marginLeft: 6 }}>
-                            {t("us.sf.budget.s05.covid_note")}
-                          </span>
-                        )}
-                      </span>
-                    </div>
-                  );
-                })}
-              </div>
-              <p className="fx-note" style={{ marginTop: 14 }}>
-                {t("us.sf.budget.s05.spine_note")}
-              </p>
-            </div>
-          )}
-
-          {/* Department table */}
-          {d.bvaTable && bvaRows.length > 0 && (
-            <div style={{ marginTop: 36 }}>
-              <div style={{ fontFamily: "var(--f-mono)", fontSize: 11, color: "var(--muted)", letterSpacing: ".08em", textTransform: "uppercase", marginBottom: 12 }}>
-                {fill(t("us.sf.budget.s05.table_kicker"), { fy: d.bvaTable.fiscal_year })}
-              </div>
-              <div style={{ overflowX: "auto" }}>
-                <table style={{ width: "100%", borderCollapse: "collapse", fontSize: 13 }}>
-                  <thead>
-                    <tr style={{ fontFamily: "var(--f-mono)", fontSize: 10.5, letterSpacing: ".07em", textTransform: "uppercase", color: "var(--muted)" }}>
-                      <th style={{ textAlign: "left", padding: "6px 8px 6px 0", borderBottom: "1px solid var(--ink)" }}>{t("us.sf.budget.s05.table.dept")}</th>
-                      <th style={{ textAlign: "right", padding: "6px 8px", borderBottom: "1px solid var(--ink)" }}>{t("us.sf.budget.s05.table.budget")}</th>
-                      <th style={{ textAlign: "right", padding: "6px 8px", borderBottom: "1px solid var(--ink)" }}>{t("us.sf.budget.s05.table.actual")}</th>
-                      <th style={{ textAlign: "right", padding: "6px 0 6px 8px", borderBottom: "1px solid var(--ink)" }}>{t("us.sf.budget.s05.table.deviation")}</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {bvaRows.map((r) => (
-                      <tr key={r.code}>
-                        <td style={{ padding: "8px 8px 8px 0", borderBottom: "1px solid var(--rule)" }}>
-                          <Link
-                            href={`/us/city/sf/budget/dept/${deptSlug(r.code)}?year=${d.bvaTable!.fiscal_year}`}
-                            scroll={false}
-                            className="fx-row-link"
-                            style={{ textDecoration: "none", color: "inherit" }}
-                          >
-                            {r.display_name ?? r.label}
-                          </Link>
-                          {r.is_structural_outlier && r.outlier_note && (
-                            <>
-                              {" "}
-                              <Tip label={r.outlier_note}>
-                                <span
-                                  style={{
-                                    fontFamily: "var(--f-mono)",
-                                    fontSize: 10,
-                                    color: "var(--ocre)",
-                                    border: "1px solid var(--ocre)",
-                                    padding: "1px 5px",
-                                    letterSpacing: ".05em",
-                                  }}
-                                >
-                                  {t("us.sf.budget.s05.table.outlier_chip")}
-                                </span>
-                              </Tip>
-                            </>
-                          )}
-                        </td>
-                        <td className="tnum" style={{ textAlign: "right", padding: "8px", borderBottom: "1px solid var(--rule)", fontFamily: "var(--f-mono)", fontSize: 12 }}>
-                          {fmtUsdCompact(r.budget_usd ?? 0)}
-                        </td>
-                        <td className="tnum" style={{ textAlign: "right", padding: "8px", borderBottom: "1px solid var(--rule)", fontFamily: "var(--f-mono)", fontSize: 12 }}>
-                          {fmtUsdCompact(r.actual_usd ?? 0)}
-                        </td>
-                        <td className="tnum" style={{ textAlign: "right", padding: "8px 0 8px 8px", borderBottom: "1px solid var(--rule)", fontFamily: "var(--f-mono)", fontSize: 12 }}>
-                          {fmtUsdCompact(r.residual_usd ?? 0)}{" "}
-                          <span style={{ color: "var(--muted)" }}>({fmtYoy(r.residual_pct ?? 0)})</span>
-                        </td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
-              <p className="fx-note" style={{ marginTop: 12 }}>
-                {fill(t("us.sf.budget.s05.table_note"), {
-                  floor: fmtUsdCompact(BVA_TABLE_FLOOR_USD),
-                  fy: d.bvaTable.fiscal_year,
-                })}
-              </p>
-            </div>
-          )}
           <SourceLine
             label={srcLabel}
             links={
@@ -898,6 +815,9 @@ export default function SfBudgetClient({ d }: { d: SfBudgetPageData }) {
           />
         </div>
       </section>
+
+      {/* ── The long view (closing context) ── */}
+      {trendSection}
 
     </main>
   );

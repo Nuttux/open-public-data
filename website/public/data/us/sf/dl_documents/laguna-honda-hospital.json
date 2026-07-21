@@ -1,20 +1,22 @@
 {
- "generated_at": "2026-07-20T22:30:00.113596+00:00",
+ "generated_at": "2026-07-21T14:25:53.953460+00:00",
  "slug": "laguna-honda-hospital",
  "name": "Laguna Honda Hospital",
  "note": "Archive documents linked to this place; source labels honour the SFPL-vs-Democracy's-Library distinction.",
  "documents": [
   {
-   "identifier": "assistedlivingf1200sanf_0",
-   "title": "Assisted living facility feasibility study : Laguna Honda Hospital and Rehabilitation Center : draft",
-   "creator": "San Francisco (Calif.). Planning Dept,Anshen & Allen,Gordon H. Chong + Associates",
-   "year": 2007,
+   "identifier": "lagunahondahospi1994kapl",
+   "title": "Laguna Honda Hospital institutional master plan",
+   "creator": "Kaplan McLaughlin Diaz,San Francisco (Calif.). Dept. of Public Health",
+   "year": 1994,
    "pool": "sfpl",
    "matched_alias": "Laguna Honda",
-   "snippet": "BOOK Not to be taken from the Library «Laguna Honda» Hospital and Rehabilitation Center City",
-   "url": "https://archive.org/details/assistedlivingf1200sanf_0",
-   "deep_link": "https://archive.org/details/assistedlivingf1200sanf_0?q=Laguna+Honda",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+   "snippet": "Francisco. «Laguna Honda» Hospital currently owns no other land. 2.1 «Laguna Honda» Hospital Master",
+   "url": "https://archive.org/details/lagunahondahospi1994kapl",
+   "deep_link": "https://archive.org/details/lagunahondahospi1994kapl?q=Laguna+Honda",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Plans & environmental review",
+   "salient": true
   },
   {
    "identifier": "lagunahondahospi2720sanf",
@@ -26,19 +28,23 @@
    "snippet": "areas in the «Laguna Honda Hospital» and Rehabilitation Center («Laguna Honda hospital») does not",
    "url": "https://archive.org/details/lagunahondahospi2720sanf",
    "deep_link": "https://archive.org/details/lagunahondahospi2720sanf?q=Laguna+Honda+Hospital",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Plans & environmental review",
+   "salient": true
   },
   {
-   "identifier": "lagunahondahospi1720sanf",
-   "title": "Laguna Honda Hospital replacement : comments and responses",
-   "creator": "San Francisco (Calif.). Planning Dept",
-   "year": 2002,
+   "identifier": "assistedlivingf1200sanf_0",
+   "title": "Assisted living facility feasibility study : Laguna Honda Hospital and Rehabilitation Center : draft",
+   "creator": "San Francisco (Calif.). Planning Dept,Anshen & Allen,Gordon H. Chong + Associates",
+   "year": 2007,
    "pool": "sfpl",
-   "matched_alias": "Laguna Honda Hospital",
-   "snippet": "Final EIR for the «Laguna Honda» Hospital Replacement project. C&R.1 «Laguna Honda» Hospital Replacement",
-   "url": "https://archive.org/details/lagunahondahospi1720sanf",
-   "deep_link": "https://archive.org/details/lagunahondahospi1720sanf?q=Laguna+Honda+Hospital",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+   "matched_alias": "Laguna Honda",
+   "snippet": "BOOK Not to be taken from the Library «Laguna Honda» Hospital and Rehabilitation Center City",
+   "url": "https://archive.org/details/assistedlivingf1200sanf_0",
+   "deep_link": "https://archive.org/details/assistedlivingf1200sanf_0?q=Laguna+Honda",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Plans & environmental review",
+   "salient": true
   },
   {
    "identifier": "lagunahondahospi2001impa",
@@ -50,7 +56,9 @@
    "snippet": "and «Laguna Honda» hospital were consulted. Statement of Significance - «Laguna Honda» Hospital",
    "url": "https://archive.org/details/lagunahondahospi2001impa",
    "deep_link": "https://archive.org/details/lagunahondahospi2001impa?q=Laguna+Honda",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Histories & surveys",
+   "salient": true
   },
   {
    "identifier": "agenda1119lagu",
@@ -62,43 +70,9 @@
    "snippet": "Administrator, «Laguna Honda Hospital» June Grainger, Family member of «Laguna Honda Hospital» resident",
    "url": "https://archive.org/details/agenda1119lagu",
    "deep_link": "https://archive.org/details/agenda1119lagu?q=Laguna+Honda+Hospital",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
-  },
-  {
-   "identifier": "lagunahondahospi1994kapl",
-   "title": "Laguna Honda Hospital institutional master plan",
-   "creator": "Kaplan McLaughlin Diaz,San Francisco (Calif.). Dept. of Public Health",
-   "year": 1994,
-   "pool": "sfpl",
-   "matched_alias": "Laguna Honda",
-   "snippet": "Francisco. «Laguna Honda» Hospital currently owns no other land. 2.1 «Laguna Honda» Hospital Master",
-   "url": "https://archive.org/details/lagunahondahospi1994kapl",
-   "deep_link": "https://archive.org/details/lagunahondahospi1994kapl?q=Laguna+Honda",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
-  },
-  {
-   "identifier": "into21stcenturyb1819sanf",
-   "title": "Into the 21st century : building a new facility to continue Laguna Honda Hospital's mission",
-   "creator": "San Francisco (Calif.). Dept. of Public Health,San Francisco (Calif.). Dept. of Public Works,Kaplan McLaughlin Diaz,Gordon H. Chong + Associates",
-   "year": 1992,
-   "pool": "sfpl",
-   "matched_alias": "Laguna Honda Hospital",
-   "snippet": "health problems.\" SERVICES OF «LAGUNA HONDA» HOSPITAL Of «Laguna Honda» Hospital's 1147 operational",
-   "url": "https://archive.org/details/into21stcenturyb1819sanf",
-   "deep_link": "https://archive.org/details/into21stcenturyb1819sanf?q=Laguna+Honda+Hospital",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
-  },
-  {
-   "identifier": "sanfranciscodepa19781983sanf",
-   "title": "The San Francisco Department of Public Health annual report",
-   "creator": "San Francisco (Calif.). Dept. of Public Health",
-   "year": 1979,
-   "pool": "sfpl",
-   "matched_alias": "Laguna Honda Hospital",
-   "snippet": "Project and «Laguna Honda» Hospital is expected to play a major role. «Laguna Honda» Hospital",
-   "url": "https://archive.org/details/sanfranciscodepa19781983sanf",
-   "deep_link": "https://archive.org/details/sanfranciscodepa19781983sanf?q=Laguna+Honda+Hospital",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Meetings & resolutions",
+   "salient": true
   },
   {
    "identifier": "civilgrandjuryre199899cali",
@@ -110,7 +84,9 @@
    "snippet": "Sheriffs Department Treasure Island «LAGUNA HONDA» HOSPITAL «LAGUNA HONDA» HOSPITAL SUMMARY The 1998 - 1999",
    "url": "https://archive.org/details/civilgrandjuryre199899cali",
    "deep_link": "https://archive.org/details/civilgrandjuryre199899cali?q=Laguna+Honda",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Reports & records",
+   "salient": true
   },
   {
    "identifier": "supplementaryrep166sanf",
@@ -122,7 +98,51 @@
    "snippet": "ACCOUNTING SYSTEM AT «LAGUNA HONDA HOSPITAL» INTRODUCTION «Laguna Honda Hospital» is accredited as",
    "url": "https://archive.org/details/supplementaryrep166sanf",
    "deep_link": "https://archive.org/details/supplementaryrep166sanf?q=Laguna+Honda+Hospital",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Reports & records",
+   "salient": false
+  },
+  {
+   "identifier": "sanfranciscodepa19781983sanf",
+   "title": "The San Francisco Department of Public Health annual report",
+   "creator": "San Francisco (Calif.). Dept. of Public Health",
+   "year": 1979,
+   "pool": "sfpl",
+   "matched_alias": "Laguna Honda Hospital",
+   "snippet": "Project and «Laguna Honda» Hospital is expected to play a major role. «Laguna Honda» Hospital",
+   "url": "https://archive.org/details/sanfranciscodepa19781983sanf",
+   "deep_link": "https://archive.org/details/sanfranciscodepa19781983sanf?q=Laguna+Honda+Hospital",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Reports & records",
+   "salient": false
+  },
+  {
+   "identifier": "lagunahondahospi1720sanf",
+   "title": "Laguna Honda Hospital replacement : comments and responses",
+   "creator": "San Francisco (Calif.). Planning Dept",
+   "year": 2002,
+   "pool": "sfpl",
+   "matched_alias": "Laguna Honda Hospital",
+   "snippet": "Final EIR for the «Laguna Honda» Hospital Replacement project. C&R.1 «Laguna Honda» Hospital Replacement",
+   "url": "https://archive.org/details/lagunahondahospi1720sanf",
+   "deep_link": "https://archive.org/details/lagunahondahospi1720sanf?q=Laguna+Honda+Hospital",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Other records",
+   "salient": false
+  },
+  {
+   "identifier": "into21stcenturyb1819sanf",
+   "title": "Into the 21st century : building a new facility to continue Laguna Honda Hospital's mission",
+   "creator": "San Francisco (Calif.). Dept. of Public Health,San Francisco (Calif.). Dept. of Public Works,Kaplan McLaughlin Diaz,Gordon H. Chong + Associates",
+   "year": 1992,
+   "pool": "sfpl",
+   "matched_alias": "Laguna Honda Hospital",
+   "snippet": "health problems.\" SERVICES OF «LAGUNA HONDA» HOSPITAL Of «Laguna Honda» Hospital's 1147 operational",
+   "url": "https://archive.org/details/into21stcenturyb1819sanf",
+   "deep_link": "https://archive.org/details/into21stcenturyb1819sanf?q=Laguna+Honda+Hospital",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Other records",
+   "salient": false
   }
  ]
 }

@@ -490,12 +490,6 @@ def main() -> int:
         snippets = jsonl(CACHE / f"{slug}_bmo_snippets.jsonl")
         enrich_p = CACHE / f"{slug}_enrich.json"
         enrich = json.load(open(enrich_p)) if enrich_p.exists() else {}
-        # Un lieu entre sur le site quand sa lecture existe : sans moments, la
-        # fiche n'offre qu'une photo et un résumé Wikipédia — un cul-de-sac.
-        # Mieux vaut 22 lieux qui tiennent que 24 dont 2 vides.
-        if not enrich.get("moments"):
-            print(f"{slug:<30} — lecture manquante, non publié")
-            continue
         ctx_p = CACHE / f"{slug}_ctx.json"
         ctx = json.load(open(ctx_p)) if ctx_p.exists() else {}
         w = wiki.get(slug, {})
@@ -616,6 +610,19 @@ def main() -> int:
         argent = resolve_argent(slug)
         invest = argent["investissements"]
         subv = argent["exploitant"]
+        # Seuil de publication (élargi 2026-07-21) : les délibs ne sont plus la
+        # seule porte d'entrée — beaucoup de lieux ont un vrai signal d'argent
+        # public (chantiers AP, subventions, marchés) sans qu'une lecture de
+        # délib ait produit de moments narratifs. Un lieu publie s'il a QUELQUE
+        # CHOSE à montrer : moments, argent identifié, récit BMO, ou au moins
+        # une présentation Wikipédia sourcée. Seul un lieu vraiment vide (aucun
+        # de ces quatre) reste un cul-de-sac et n'est pas publié.
+        argent_total_gate = ((subv["total_eur"] if subv else 0) + argent["invest_total_eur"]
+                             + argent["mandate_total_eur"] + argent["marches_total_eur"])
+        has_content = bool(enrich.get("moments")) or argent_total_gate > 0 or bool(bmo_recit) or bool(w.get("extract"))
+        if not has_content:
+            print(f"{slug:<30} — aucun contenu (ni moments, ni argent, ni BMO, ni Wikipédia), non publié")
+            continue
         kpi = cfg.get("kpi_montant")
         # Sources par fiche : les liens délibs et BMO mènent à la recherche
         # pré-remplie du lieu (la requête vit dans chaque ligne du cache sync),

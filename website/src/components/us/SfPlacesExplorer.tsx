@@ -4,6 +4,7 @@ import { useMemo } from "react";
 import type { SfPlaceIndexEntry } from "@/lib/us/sf-places-data";
 import PlacesExplorer from "@/components/places/PlacesExplorer";
 import type { PlaceEntry, PlacesConfig } from "@/components/places/types";
+import { fmtUsdCompact } from "@/lib/us/format";
 
 // Fine seed families → 5 display groups, on the repo's palette validated for
 // #fafaf7 (see components/places/PlacesMap + scripts/validate_palette.js).
@@ -31,9 +32,11 @@ const SF_VIEW: [[number, number], [number, number]] = [
 
 /**
  * San Francisco adapter → shared places explorer. Maps `SfPlaceIndexEntry` to
- * the neutral `PlaceEntry` model. SF carries no dollar figure in the index yet,
- * so the row stat is document / contract counts and markers are uniform (metric
- * feeds only the "most documented" sort, not the radius).
+ * the neutral `PlaceEntry` model. The ranking metric is `funds_usd` — public
+ * dollars paid to vendors for work at the place (contract payments; the one
+ * quantified, non-double-counted money figure). Places with no recorded
+ * payments fall to $0 and sort last, which is honest: capital funded by older,
+ * unquantified bonds shows little recent contract spend.
  */
 export default function SfPlacesExplorer({ places }: { places: SfPlaceIndexEntry[] }) {
   const entries = useMemo<PlaceEntry[]>(
@@ -48,10 +51,16 @@ export default function SfPlacesExplorer({ places }: { places: SfPlaceIndexEntry
         familyKey: GROUP_OF[p.family] ?? "civic",
         areaKey: p.owning_dept_code || "",
         areaLabel: p.owning_dept_code || "",
-        metric: p.n_documents,
-        stat: `${p.n_documents} docs${p.n_contracts > 0 ? ` · ${p.n_contracts} contracts` : ""}`,
-        statTone: "muted",
-        tooltipStat: ` · ${p.n_documents} archive docs`,
+        metric: p.funds_usd,
+        stat:
+          p.funds_usd > 0
+            ? `${fmtUsdCompact(p.funds_usd)} paid for work here · ${p.n_documents} docs`
+            : `${p.n_documents} docs${p.n_contracts > 0 ? ` · ${p.n_contracts} contracts` : ""}`,
+        statTone: p.funds_usd > 0 ? "money" : "muted",
+        tooltipStat:
+          p.funds_usd > 0
+            ? ` · ${fmtUsdCompact(p.funds_usd)} paid for work here`
+            : ` · ${p.n_documents} archive docs`,
       })),
     [places],
   );
@@ -67,8 +76,8 @@ export default function SfPlacesExplorer({ places }: { places: SfPlaceIndexEntry
       radiusByMetric: false,
       nearMe: false,
       sorts: [
+        { key: "metric-desc", label: "Most public $" },
         { key: "name-asc", label: "Name" },
-        { key: "metric-desc", label: "Most documented" },
       ],
       areaSort: "alpha",
       locale: "en-US",

@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T22:30:00.124827+00:00",
+ "generated_at": "2026-07-21T14:25:53.980913+00:00",
  "slug": "sffd-headquarters",
  "name": "SFFD Headquarters",
  "note": "Archive documents linked to this place; source labels honour the SFPL-vs-Democracy's-Library distinction.",
@@ -14,55 +14,9 @@
    "snippet": "695-5338 January 16,2003 Chief Mario Trevino «SFFD Headquarters» 69S 2nd Street San Francisco, C A 94",
    "url": "https://archive.org/details/minutesoffirecom2003sanf",
    "deep_link": "https://archive.org/details/minutesoffirecom2003sanf?q=SFFD+Headquarters",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
-  },
-  {
-   "identifier": "minutesoffirecom2002sanf",
-   "title": "Minutes of the Fire Commission",
-   "creator": "San Francisco (Calif.). Fire Commission",
-   "year": 1999,
-   "pool": "sfpl",
-   "matched_alias": "SFFD Headquarters",
-   "snippet": "October 21, 2002 Chief of Department «SFFD Headquarters» 698 Second St. San Francisco 94107 Dear",
-   "url": "https://archive.org/details/minutesoffirecom2002sanf",
-   "deep_link": "https://archive.org/details/minutesoffirecom2002sanf?q=SFFD+Headquarters",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
-  },
-  {
-   "identifier": "1calendarmeetingo1996sanf",
-   "title": "Calendar : meeting of Budget Committee, Board of Supervisors, City and County of San Francisco",
-   "creator": "San Francisco (Calif.). Board of Supervisors. Budget Committee",
-   "year": 1993,
-   "pool": "sfpl",
-   "matched_alias": "SFFD Headquarters",
-   "snippet": "Station No. 1, and «Fire Department Headquarters». The «Fire Department Headquarters» Building now at",
-   "url": "https://archive.org/details/1calendarmeetingo1996sanf",
-   "deep_link": "https://archive.org/details/1calendarmeetingo1996sanf?q=SFFD+Headquarters",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
-  },
-  {
-   "identifier": "postquakerestor1519sanf_1",
-   "title": "Post-quake restoration of general fund city buildings : City and County of San Francisco, April 15, 1990",
-   "creator": "San Francisco, CA : Department of Public Works, Bureau of Engineering",
-   "year": 1990,
-   "pool": "sfpl",
-   "matched_alias": "SFFD Headquarters",
-   "snippet": "Station #1, 698 2nd Street El-35 «SFFD Headquarters», 260 Golden Gate Avenue El-62 Station",
-   "url": "https://archive.org/details/postquakerestor1519sanf_1",
-   "deep_link": "https://archive.org/details/postquakerestor1519sanf_1?q=SFFD+Headquarters",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
-  },
-  {
-   "identifier": "sanfranciscof18491967sanf",
-   "title": "San Francisco Fire Department historical review, 1849-1967",
-   "creator": null,
-   "year": 1849,
-   "pool": "sfpl",
-   "matched_alias": "San Francisco Fire Department Headquarters",
-   "snippet": "Gate Avenue for the new «San Francisco Fire Department Headquarters». The completion and dedication",
-   "url": "https://archive.org/details/sanfranciscof18491967sanf",
-   "deep_link": "https://archive.org/details/sanfranciscof18491967sanf?q=San+Francisco+Fire+Department+Headquarters",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Meetings & resolutions",
+   "salient": true
   },
   {
    "identifier": "artcommissionmin19sanf_1",
@@ -74,31 +28,9 @@
    "snippet": "Public Welfare Department. 3. «San Francisco Fire Department Headquarters» Building Selection of Sculptors",
    "url": "https://archive.org/details/artcommissionmin19sanf_1",
    "deep_link": "https://archive.org/details/artcommissionmin19sanf_1?q=San+Francisco+Fire+Department+Headquarters",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
-  },
-  {
-   "identifier": "artcommissionmin1965sanf",
-   "title": "Art Commission minutes",
-   "creator": "San Francisco (Calif.). Art Commission",
-   "year": null,
-   "pool": "sfpl",
-   "matched_alias": "San Francisco Fire Department Headquarters",
-   "snippet": "RESOLUTION HO. 8543-1965-S «SAN FRANCISCO FIRE DEPARTMENT HEADQUARTERS» BUILDING RESOLVED That",
-   "url": "https://archive.org/details/artcommissionmin1965sanf",
-   "deep_link": "https://archive.org/details/artcommissionmin1965sanf?q=San+Francisco+Fire+Department+Headquarters",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
-  },
-  {
-   "identifier": "annualreport198185sanf",
-   "title": "Annual report",
-   "creator": "San Francisco (Calif.). Fire Dept",
-   "year": null,
-   "pool": "sfpl",
-   "matched_alias": "San Francisco Fire Department Headquarters",
-   "snippet": "-------- 61 IN MEM0RIAM 63 «SAN FRANCISCO FIRE DEPARTMENT HEADQUARTERS» 260 Golden Gate Avenue San",
-   "url": "https://archive.org/details/annualreport198185sanf",
-   "deep_link": "https://archive.org/details/annualreport198185sanf?q=San+Francisco+Fire+Department+Headquarters",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Meetings & resolutions",
+   "salient": true
   },
   {
    "identifier": "1annualreport196568sanf",
@@ -110,67 +42,51 @@
    "snippet": "Specialized Auxiliary Service «SAN FRANCISCO FIRE DEPARTMENT Headquarters» 260 Golden Gate Avenue Division",
    "url": "https://archive.org/details/1annualreport196568sanf",
    "deep_link": "https://archive.org/details/1annualreport196568sanf?q=San+Francisco+Fire+Department+Headquarters",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Reports & records",
+   "salient": true
   },
   {
-   "identifier": "artcommissionmin1973sanf",
-   "title": "Art Commission minutes",
-   "creator": "San Francisco (Calif.). Art Commission",
-   "year": null,
+   "identifier": "1calendarmeetingo1996sanf",
+   "title": "Calendar : meeting of Budget Committee, Board of Supervisors, City and County of San Francisco",
+   "creator": "San Francisco (Calif.). Board of Supervisors. Budget Committee",
+   "year": 1993,
    "pool": "sfpl",
-   "matched_alias": "San Francisco Fire Department Headquarters",
-   "snippet": "Commission. Resolution #1973-106 «San Francisco Fire Department Headquarters» Building , 218 Golden Gate",
-   "url": "https://archive.org/details/artcommissionmin1973sanf",
-   "deep_link": "https://archive.org/details/artcommissionmin1973sanf?q=San+Francisco+Fire+Department+Headquarters",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+   "matched_alias": "SFFD Headquarters",
+   "snippet": "Station No. 1, and «Fire Department Headquarters». The «Fire Department Headquarters» Building now at",
+   "url": "https://archive.org/details/1calendarmeetingo1996sanf",
+   "deep_link": "https://archive.org/details/1calendarmeetingo1996sanf?q=SFFD+Headquarters",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Other records",
+   "salient": true
   },
   {
-   "identifier": "annualreport198589sanf",
-   "title": "Annual report",
-   "creator": "San Francisco (Calif.). Fire Dept",
-   "year": null,
+   "identifier": "sanfranciscof18491967sanf",
+   "title": "San Francisco Fire Department historical review, 1849-1967",
+   "creator": null,
+   "year": 1849,
    "pool": "sfpl",
    "matched_alias": "San Francisco Fire Department Headquarters",
-   "snippet": "Administration FIRE COMMISSION «SAN FRANCISCO FIRE DEPARTMENT HEADQUARTERS» 260 Golden Gate Avenue San",
-   "url": "https://archive.org/details/annualreport198589sanf",
-   "deep_link": "https://archive.org/details/annualreport198589sanf?q=San+Francisco+Fire+Department+Headquarters",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+   "snippet": "Gate Avenue for the new «San Francisco Fire Department Headquarters». The completion and dedication",
+   "url": "https://archive.org/details/sanfranciscof18491967sanf",
+   "deep_link": "https://archive.org/details/sanfranciscof18491967sanf?q=San+Francisco+Fire+Department+Headquarters",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Other records",
+   "salient": true
   },
   {
-   "identifier": "1annualreport196871sanf",
-   "title": "Annual report",
-   "creator": "San Francisco (Calif.). Fire Dept",
-   "year": null,
+   "identifier": "postquakerestor1519sanf_1",
+   "title": "Post-quake restoration of general fund city buildings : City and County of San Francisco, April 15, 1990",
+   "creator": "San Francisco, CA : Department of Public Works, Bureau of Engineering",
+   "year": 1990,
    "pool": "sfpl",
-   "matched_alias": "San Francisco Fire Department Headquarters",
-   "snippet": "Specialized Auxiliary Service «SAN FRANCISCO FIRE DEPARTMENT Headquarters» 260 Golden Gate Avenue Division",
-   "url": "https://archive.org/details/1annualreport196871sanf",
-   "deep_link": "https://archive.org/details/1annualreport196871sanf?q=San+Francisco+Fire+Department+Headquarters",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
-  },
-  {
-   "identifier": "annualreport197881sanf",
-   "title": "Annual report",
-   "creator": "San Francisco (Calif.). Fire Dept",
-   "year": null,
-   "pool": "sfpl",
-   "matched_alias": "San Francisco Fire Department Headquarters",
-   "snippet": "Fire Commission Room 204 «SAN FRANCISCO FIRE DEPARTMENT Headquarters» 260 Golden Gate Avenue San",
-   "url": "https://archive.org/details/annualreport197881sanf",
-   "deep_link": "https://archive.org/details/annualreport197881sanf?q=San+Francisco+Fire+Department+Headquarters",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
-  },
-  {
-   "identifier": "artcommissionmin1964sanf",
-   "title": "Art Commission minutes",
-   "creator": "San Francisco (Calif.). Art Commission",
-   "year": null,
-   "pool": "sfpl",
-   "matched_alias": "San Francisco Fire Department Headquarters",
-   "snippet": "RESOLUTION NO. 8495-1964-S «SAN FRANCISCO FIRE DEPARTMENT HEADQUARTERS» BUILDING RESOLVED That",
-   "url": "https://archive.org/details/artcommissionmin1964sanf",
-   "deep_link": "https://archive.org/details/artcommissionmin1964sanf?q=San+Francisco+Fire+Department+Headquarters",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+   "matched_alias": "SFFD Headquarters",
+   "snippet": "Station #1, 698 2nd Street El-35 «SFFD Headquarters», 260 Golden Gate Avenue El-62 Station",
+   "url": "https://archive.org/details/postquakerestor1519sanf_1",
+   "deep_link": "https://archive.org/details/postquakerestor1519sanf_1?q=SFFD+Headquarters",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Other records",
+   "salient": true
   }
  ]
 }

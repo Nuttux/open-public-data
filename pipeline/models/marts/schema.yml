@@ -636,3 +636,54 @@ models:
         description: "100 × logements_sociaux / residences_principales, arrondi à 0,1 pt"
         tests:
           - not_null
+
+  - name: mart_logement_financement
+    description: |
+      Table de pont (bridge) reliant chaque EMPRUNT GARANTI distinct
+      (core_dette_garantie, buckets logement) au PROGRAMME de logements sociaux
+      qu'il a financé (core_logements_sociaux) — la chaîne de financement réelle
+      derrière un programme, au-delà du seul bailleur exploitant.
+
+      Grain : une ligne = un lien (emprunt distinct × programme). Un emprunt non
+      rattachable à un programme précis figure quand même (colonnes programme_*
+      NULL, match_basis = 'non_rattache') pour que le total de dette par bailleur
+      reste complet.
+
+      ⚠️ Sommes : « dette d'un programme » = SUM(montant_initial) sur ses liens
+      (direct) ; « dette d'un bailleur » = agréger par loan_id (un emprunt lié à
+      N programmes apparaît N fois — voir n_programmes_lies).
+
+      Bloc 1 (déterministe) : rattachement sur arrondissement + numéro + cœur de
+      voie (macros logement_financement.sql). Les 'non_rattache' (adresses
+      multiples, ZAC/lot, opérations non-logement) seront jugés par LLM (Bloc 2)
+      qui écrira un seed venant réviser leur match_basis.
+    columns:
+      - name: loan_id
+        description: "Hash de l'emprunt distinct (beneficiaire|objet|annee_mobilisation|montant_initial). Clé de déduplication pour totaux par bailleur."
+        tests:
+          - not_null
+      - name: id_livraison
+        description: "Programme lié (core_logements_sociaux). NULL si non_rattache."
+      - name: match_basis
+        description: |
+          Base du lien / raison de non-rattachement :
+          'adresse_exacte' (adresse+bailleur), 'adresse_arr' (adresse seule),
+          'portefeuille' (emprunt multi-adresses par nature), 'zac_operation'
+          (maille aménagement), 'non_rattache' (adresse unique sans programme trouvé).
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['adresse_exacte', 'adresse_arr', 'portefeuille', 'zac_operation', 'non_rattache']
+      - name: confiance
+        description: "'haute' | 'moyenne' pour les liens ; NULL si non rattaché."
+        tests:
+          - accepted_values:
+              values: ['haute', 'moyenne']
+              config:
+                where: "id_livraison IS NOT NULL"
+      - name: montant_initial
+        description: "Montant initial de l'emprunt garanti (EUR), constant sur les années de publication."
+      - name: source_url
+        description: "Source ODS de l'emprunt, conservée pour citation."
+        tests:
+          - not_null

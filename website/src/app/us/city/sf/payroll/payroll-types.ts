@@ -183,3 +183,23 @@ export type PayrollOvertime = {
     avg_ot_per_ot_earner_usd: number;
   }>;
 };
+
+export type PayrollFamilyRow = {
+  display_family: string;
+  n_employees: number;
+  salaries_usd: number;
+  overtime_usd: number;
+  other_salaries_usd: number;
+  total_benefits_usd: number;
+  total_compensation_usd: number;
+  ot_share_of_comp: number;
+};
+
+export type PayrollByFamilyCitywide = {
+  as_of: string | null;
+  source: PayrollSource;
+  grain: string;
+  privacy: PayrollPrivacy;
+  years: Record<string, PayrollFamilyRow[]>;
+  n_rows: number;
+};

@@ -1,0 +1,32 @@
+{
+ "city-hall": {
+  "photo": "/img/us/sf/landing/city-hall.jpg",
+  "source": "Wikimedia Commons",
+  "file": "File:San_Francisco_City_Hall_2.JPG",
+  "file_url": "https://commons.wikimedia.org/wiki/File:San_Francisco_City_Hall_2.JPG",
+  "license": "CC BY-SA 3.0",
+  "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
+  "author": "Sanfranman59",
+  "fetched_at": "2026-07-21T14:43:10.295684+00:00"
+ },
+ "sfo": {
+  "photo": "/img/us/sf/landing/sfo.jpg",
+  "source": "Wikimedia Commons",
+  "file": "File:San_Francisco_International_Airport_-_aerial_photo.jpg",
+  "file_url": "https://commons.wikimedia.org/wiki/File:San_Francisco_International_Airport_-_aerial_photo.jpg",
+  "license": "CC BY-SA 4.0",
+  "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+  "author": "Russss",
+  "fetched_at": "2026-07-21T14:43:13.063945+00:00"
+ },
+ "zsfg": {
+  "photo": "/img/us/sf/landing/zsfg.jpg",
+  "source": "Wikimedia Commons",
+  "file": "File:Zuckerberg_San_Francisco_General_Hospital.jpg",
+  "file_url": "https://commons.wikimedia.org/wiki/File:Zuckerberg_San_Francisco_General_Hospital.jpg",
+  "license": "CC BY-SA 4.0",
+  "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+  "author": "9yz",
+  "fetched_at": "2026-07-21T14:43:06.195360+00:00"
+ }
+}

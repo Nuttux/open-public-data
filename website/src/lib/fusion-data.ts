@@ -1416,6 +1416,7 @@ export type BailleurGaranties = {
   nature_dominante: string;
   preteurs: HorsBilanPreteur[];
   emprunts_top: HorsBilanEmprunt[];
+  financement?: BailleurFinancement | null;
 };
 
 export type BailleurFiche = {
@@ -1487,6 +1488,7 @@ export function loadBailleur(slug: string): BailleurFiche | null {
         nature_dominante: hbMatch.nature_dominante,
         preteurs: hbMatch.preteurs,
         emprunts_top: hbMatch.emprunts_top,
+        financement: hbMatch.financement,
       };
     }
   } catch {
@@ -3577,6 +3579,28 @@ export function loadInstrumentDette(
 
 // ─── Hors bilan · garanties d'emprunt ──────────────────────────────────────
 
+/** Programme de logements financé par un emprunt garanti (chaîne de
+ *  financement, mart_logement_financement). Présent quand l'emprunt se rattache
+ *  à une adresse précise ; null sinon (portefeuille / non rattaché). */
+export type HorsBilanProgramme = {
+  adresse: string;
+  nb_logements: number | null;
+  /** Nombre de programmes distincts que cet emprunt finance (≥1). */
+  n_programmes: number;
+  match_basis: "adresse_exacte" | "adresse_arr";
+};
+
+/** Synthèse de rattachement de la dette LOGEMENT d'un bailleur : quelle part
+ *  finance des adresses précises vs des portefeuilles multi-adresses. */
+export type BailleurFinancement = {
+  base_logement: number;
+  capital_rattache: number;
+  capital_portefeuille: number;
+  capital_non_rattache: number;
+  part_rattachee: number;
+  n_programmes: number;
+};
+
 export type HorsBilanEmprunt = {
   objet: string;
   preteur: string;
@@ -3587,6 +3611,7 @@ export type HorsBilanEmprunt = {
   taux_type: string;
   taux_index: string;
   taux_actuariel: number | null;
+  programme?: HorsBilanProgramme | null;
 };
 
 export type HorsBilanPreteur = {
@@ -3609,6 +3634,7 @@ export type HorsBilanBeneficiaire = {
   part_fixe: number;
   preteurs: HorsBilanPreteur[];
   emprunts_top: HorsBilanEmprunt[];
+  financement?: BailleurFinancement | null;
 };
 
 export type HorsBilanData = {

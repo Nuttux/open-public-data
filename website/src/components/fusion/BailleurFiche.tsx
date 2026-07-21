@@ -90,6 +90,28 @@ export default function BailleurFiche({ bailleur }: { bailleur: BailleurFicheTyp
             ]}
           />
 
+          {/* Chaîne de financement : quelle part de la dette logement est
+           * rattachée à une adresse précise. Le différentiateur — la Ville ne
+           * publie pas ce lien emprunt → programme. */}
+          {g.financement && g.financement.base_logement > 0 && (
+            <p
+              style={{
+                fontSize: 13,
+                color: "var(--ink-2)",
+                lineHeight: 1.55,
+                margin: "14px 0 0",
+                padding: "10px 12px",
+                background: "var(--bleu-wash, rgba(37,99,235,.06))",
+                borderRadius: 8,
+              }}
+            >
+              {fill(t("fx.fiche.bg.finance_summary"), {
+                part: fmtInt(g.financement.part_rattachee * 100),
+                n: fmtInt(g.financement.n_programmes),
+              })}
+            </p>
+          )}
+
           {g.preteurs.length > 0 && (
             <>
               <h4 className="fx-h4" style={{ marginTop: 20, fontSize: 14 }}>

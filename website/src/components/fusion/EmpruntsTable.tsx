@@ -26,6 +26,13 @@ export type EmpruntRow = {
   montant_initial?: number;
   taux_index?: string;
   duree_residuelle?: number | null;
+  /** Programme de logements financé (chaîne de financement), variante bailleur. */
+  programme?: {
+    adresse: string;
+    nb_logements: number | null;
+    n_programmes: number;
+    match_basis: string;
+  } | null;
   /** Variante arrondissement uniquement. */
   beneficiaire?: string;
 };
@@ -119,6 +126,14 @@ export default function EmpruntsTable({ emprunts, variant, beneficiaireHref }: P
               <td>
                 <div>{e.objet || "—"}</div>
                 {firstMeta}
+                {isBailleur && e.programme && (
+                  <div className="meta" style={{ color: "var(--bleu)" }}>
+                    {t("fx.fiche.bg.finance")} {e.programme.adresse}
+                    {e.programme.nb_logements != null &&
+                      ` · ${e.programme.nb_logements} ${t("fx.fiche.bg.logts")}`}
+                    {e.programme.n_programmes > 1 && ` +${e.programme.n_programmes - 1}`}
+                  </div>
+                )}
               </td>
               <td>{secondCell}</td>
               <td className="num tnum mono">{e.annee_mobilisation ?? "—"}</td>

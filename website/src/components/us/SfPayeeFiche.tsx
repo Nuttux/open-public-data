@@ -47,6 +47,10 @@ export default function SfPayeeFiche({ payee }: { payee: SfPayeeFicheData }) {
     .map(([y, v]) => ({ year: Number(y), v }))
     .sort((a, b) => a.year - b.year);
   const maxY = Math.max(...years.map((y) => y.v), 1);
+  const peak = years.reduce<{ year: number; v: number } | null>(
+    (best, y) => (best == null || y.v > best.v ? y : best),
+    null,
+  );
 
   return (
     <div className="fx-fiche fx-place-fiche">
@@ -64,7 +68,24 @@ export default function SfPayeeFiche({ payee }: { payee: SfPayeeFicheData }) {
       {/* Per-year paid */}
       <section className="fx-place-block">
         <h2 className="fx-place-h2">Paid by year</h2>
-        <div className="fx-payee-years">
+        <div className="fx-payee-years" style={{ position: "relative" }}>
+          {/* Dollar scale: a faint gridline at the peak anchors the bar heights. */}
+          <span
+            aria-hidden="true"
+            style={{
+              position: "absolute", top: 0, left: 0, right: 0, height: 1,
+              background: "var(--rule)",
+            }}
+          />
+          <span
+            aria-hidden="true"
+            style={{
+              position: "absolute", top: 2, right: 0,
+              fontFamily: "var(--f-mono)", fontSize: 10, color: "var(--muted)",
+            }}
+          >
+            {fmtUsdCompact(maxY)}
+          </span>
           {years.map((y) => (
             <div key={y.year} className="fx-payee-year">
               <div className="fx-payee-year-bar-wrap" title={`${y.year}: ${fmtUsd(y.v)}`}>
@@ -74,6 +95,11 @@ export default function SfPayeeFiche({ payee }: { payee: SfPayeeFicheData }) {
             </div>
           ))}
         </div>
+        {peak && (
+          <p className="fx-place-sub" style={{ marginTop: 8 }}>
+            Tallest bar — FY{peak.year}: {fmtUsdCompact(peak.v)}. Bars are scaled to this payee’s own peak year.
+          </p>
+        )}
       </section>
 
       {/* Departments */}

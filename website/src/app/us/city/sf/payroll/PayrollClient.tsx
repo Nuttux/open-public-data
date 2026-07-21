@@ -16,12 +16,14 @@ import {
   fmtDateLong,
 } from "@/lib/us/format";
 import UsOtChart from "./UsOtChart";
+import UsFamilyChart from "./UsFamilyChart";
 import CompSplit from "./CompSplit";
 import type {
   PayrollByYear,
   PayrollByDept,
   PayrollDistribution,
   PayrollOvertime,
+  PayrollByFamilyCitywide,
 } from "./payroll-types";
 
 /**
@@ -77,11 +79,13 @@ export default function PayrollClient({
   byDept,
   distribution,
   overtime,
+  byFamily,
 }: {
   byYear: PayrollByYear;
   byDept: PayrollByDept;
   distribution: PayrollDistribution;
   overtime: PayrollOvertime;
+  byFamily: PayrollByFamilyCitywide;
 }) {
   const t = useT();
   const [metric, setMetric] = useState<"usd" | "headcount">("usd");
@@ -90,6 +94,31 @@ export default function PayrollClient({
   const latest = points[points.length - 1];
   const first = points[0];
   const fy = latest.fiscal_year;
+
+  // ── job families (citywide, over time) ──
+  const FAMILY_TOP_N = 8;
+  const familyYears = useMemo(
+    () => Object.keys(byFamily.years).map(Number).sort((a, b) => a - b),
+    [byFamily],
+  );
+  const familyLatest = byFamily.years[String(fy)] ?? [];
+  const topFamilies = useMemo(
+    () => familyLatest.slice(0, FAMILY_TOP_N).map((f) => f.display_family),
+    [familyLatest],
+  );
+  const familySeries = useMemo(
+    () =>
+      topFamilies.map((fam) => ({
+        family: fam,
+        series: familyYears
+          .map((y) => {
+            const row = (byFamily.years[String(y)] ?? []).find((r) => r.display_family === fam);
+            return row ? { fiscal_year: y, value: row.total_compensation_usd } : null;
+          })
+          .filter((p): p is { fiscal_year: number; value: number } => p !== null),
+      })),
+    [topFamilies, familyYears, byFamily],
+  );
 
   // ── departments & org groups (latest FY) ──
   const deptLatest = useMemo(
@@ -443,44 +472,107 @@ export default function PayrollClient({
                 ),
               }))}
             />
-            <div style={{ marginTop: 30 }}>
-              <BarRow
-                reveal
-                header={{
-                  left: t("us.sf.payroll.s02.depthead.left"),
-                  right:
-                    metric === "usd"
-                      ? t("us.sf.payroll.s02.orghead.right_usd")
-                      : t("us.sf.payroll.s02.orghead.right_n"),
+            <details style={{ marginTop: 24 }}>
+              <summary
+                style={{
+                  cursor: "pointer",
+                  fontFamily: "var(--f-mono)",
+                  fontSize: 12,
+                  color: "var(--ink-2)",
+                  padding: "8px 0",
                 }}
-                items={rankedDepts.slice(0, 15).map((d) => ({
-                  label: d.department,
-                  value:
-                    metric === "usd"
-                      ? d.p.total_compensation_usd
-                      : d.p.n_employees,
-                  display:
-                    metric === "usd"
-                      ? fmtUsdCompact(d.p.total_compensation_usd)
-                      : nfInt.format(d.p.n_employees),
-                  sub: fill(t("us.sf.payroll.s02.dept.sub"), {
-                    group: d.organization_group,
-                    n: nfInt.format(d.p.n_employees),
-                    median: fmtUsd(d.p.median_total_comp_usd),
-                  }),
-                }))}
-              />
-            </div>
-            <p className="fx-note">
-              {fill(t("us.sf.payroll.s02.more"), {
-                shown: Math.min(15, rankedDepts.length),
-                total: deptLatest.length,
-              })}{" "}
-              {byDept.fold_note}
-            </p>
+              >
+                {fill(t("us.sf.payroll.s02.dept_toggle"), { n: deptLatest.length })}
+              </summary>
+              <div style={{ marginTop: 14 }}>
+                <BarRow
+                  header={{
+                    left: t("us.sf.payroll.s02.depthead.left"),
+                    right:
+                      metric === "usd"
+                        ? t("us.sf.payroll.s02.orghead.right_usd")
+                        : t("us.sf.payroll.s02.orghead.right_n"),
+                  }}
+                  items={rankedDepts.slice(0, 15).map((d) => ({
+                    label: d.department,
+                    value:
+                      metric === "usd"
+                        ? d.p.total_compensation_usd
+                        : d.p.n_employees,
+                    display:
+                      metric === "usd"
+                        ? fmtUsdCompact(d.p.total_compensation_usd)
+                        : nfInt.format(d.p.n_employees),
+                    sub: fill(t("us.sf.payroll.s02.dept.sub"), {
+                      group: d.organization_group,
+                      n: nfInt.format(d.p.n_employees),
+                      median: fmtUsd(d.p.median_total_comp_usd),
+                    }),
+                  }))}
+                />
+                <p className="fx-note">
+                  {fill(t("us.sf.payroll.s02.more"), {
+                    shown: Math.min(15, rankedDepts.length),
+                    total: deptLatest.length,
+                  })}{" "}
+                  {byDept.fold_note}
+                </p>
+              </div>
+            </details>
             <SourceLine label={srcLabel} links={mtLinks} dataWord={dataWord} />
           </div>
         </section>
+
+        {/* ── By job family (citywide, over time) ── */}
+        {familySeries.length > 0 && (
+          <section className="fx-section" id="sec-families">
+            <div className="fx-wrap">
+              <SectionHead
+                kind={t("us.sf.payroll.sfam.kind")}
+                title={
+                  <>
+                    {t("us.sf.payroll.sfam.title.before")}
+                    <em>{t("us.sf.payroll.sfam.title.em")}</em>
+                  </>
+                }
+                subtitle={fill(t("us.sf.payroll.sfam.sub"), {
+                  y0: familyYears[0],
+                  fy,
+                  n: familyLatest.length,
+                })}
+              />
+              <figure style={{ margin: 0 }}>
+                <UsFamilyChart
+                  families={familySeries}
+                  ariaLabel={fill(t("us.sf.payroll.sfam.aria"), {
+                    n: familySeries.length,
+                    y0: familyYears[0],
+                    fy,
+                  })}
+                />
+                <SourceLine label={srcLabel} links={mtLinks} dataWord={dataWord} />
+              </figure>
+              <div style={{ marginTop: 24 }}>
+                <BarRow
+                  reveal
+                  header={{
+                    left: fill(t("us.sf.payroll.sfam.rankhead.left"), { fy }),
+                    right: t("us.sf.payroll.sfam.rankhead.right"),
+                  }}
+                  items={familyLatest.map((f) => ({
+                    label: f.display_family,
+                    value: f.total_compensation_usd,
+                    display: fmtUsdCompact(f.total_compensation_usd),
+                    sub: fill(t("us.sf.payroll.sfam.rank.sub"), {
+                      n: nfInt.format(f.n_employees),
+                      share: fmtShare(f.ot_share_of_comp),
+                    }),
+                  }))}
+                />
+              </div>
+            </div>
+          </section>
+        )}
 
         {/* ── What city work pays ── */}
         <section className="fx-section" id="sec-distribution">

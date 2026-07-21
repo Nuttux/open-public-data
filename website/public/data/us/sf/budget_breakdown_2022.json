@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-17T08:56:20.738138+00:00",
+  "generated_at": "2026-07-21T09:34:55.314650+00:00",
   "source_pipeline": "configs/countries/us.yaml → sync_socrata.py + sync_census_popest.py → raw.us_sf_* → dbt_us_staging → dbt_us_analytics → dbt_us_marts → export_us_sf.py",
   "country": "us",
   "scale": "city",
@@ -1180,12 +1180,32 @@
         "n_characters": 3
       },
       {
+        "code": "CTA",
+        "label": "CTA SF County Transprtn Auth",
+        "display_name": "County Transportation Authority",
+        "org_group_code": "02",
+        "total_usd": 0.0,
+        "transfer_adjustment_usd": 0.0,
+        "share_of_side": 0.0,
+        "n_characters": 0
+      },
+      {
         "code": "CSC",
         "label": "CSC Civil Service Commission",
         "display_name": "Civil Service Commission",
         "org_group_code": "06",
         "total_usd": 0.0,
         "transfer_adjustment_usd": -360839.0,
+        "share_of_side": 0.0,
+        "n_characters": 2
+      },
+      {
+        "code": "DPA",
+        "label": "DPA Police Accountabilty",
+        "display_name": "Police Accountability",
+        "org_group_code": "01",
+        "total_usd": 0.0,
+        "transfer_adjustment_usd": -128000.0,
         "share_of_side": 0.0,
         "n_characters": 2
       },
@@ -1200,26 +1220,6 @@
         "n_characters": 0
       },
       {
-        "code": "CCD",
-        "label": "CCD SF Communtiy College Dist",
-        "display_name": "SF Community College District",
-        "org_group_code": "03",
-        "total_usd": 0.0,
-        "transfer_adjustment_usd": 0.0,
-        "share_of_side": 0.0,
-        "n_characters": 0
-      },
-      {
-        "code": "DPA",
-        "label": "DPA Police Accountabilty",
-        "display_name": "Police Accountability",
-        "org_group_code": "01",
-        "total_usd": 0.0,
-        "transfer_adjustment_usd": -128000.0,
-        "share_of_side": 0.0,
-        "n_characters": 2
-      },
-      {
         "code": "HRC",
         "label": "HRC Human Rights Commission",
         "display_name": "Human Rights Commission",
@@ -1228,16 +1228,6 @@
         "transfer_adjustment_usd": -99600.0,
         "share_of_side": 0.0,
         "n_characters": 2
-      },
-      {
-        "code": "USD",
-        "label": "USD County Education Office",
-        "display_name": "County Office of Education",
-        "org_group_code": "03",
-        "total_usd": 0.0,
-        "transfer_adjustment_usd": 0.0,
-        "share_of_side": 0.0,
-        "n_characters": 0
       },
       {
         "code": "CII",
@@ -1250,10 +1240,20 @@
         "n_characters": 0
       },
       {
-        "code": "CTA",
-        "label": "CTA SF County Transprtn Auth",
-        "display_name": "County Transportation Authority",
-        "org_group_code": "02",
+        "code": "USD",
+        "label": "USD County Education Office",
+        "display_name": "County Office of Education",
+        "org_group_code": "03",
+        "total_usd": 0.0,
+        "transfer_adjustment_usd": 0.0,
+        "share_of_side": 0.0,
+        "n_characters": 0
+      },
+      {
+        "code": "CCD",
+        "label": "CCD SF Communtiy College Dist",
+        "display_name": "SF Community College District",
+        "org_group_code": "03",
         "total_usd": 0.0,
         "transfer_adjustment_usd": 0.0,
         "share_of_side": 0.0,
@@ -4297,15 +4297,15 @@
       ],
       [
         "HRD",
-        "EXP_RECOVERY",
-        90584491.0,
-        0
-      ],
-      [
-        "HRD",
         "ELS",
         -90584491.0,
         1
+      ],
+      [
+        "HRD",
+        "EXP_RECOVERY",
+        90584491.0,
+        0
       ],
       [
         "CHF",
@@ -4332,13 +4332,13 @@
         0
       ],
       [
-        "REC",
+        "LIB",
         "PROP_TAX",
         68927000.0,
         0
       ],
       [
-        "LIB",
+        "REC",
         "PROP_TAX",
         68927000.0,
         0
@@ -5107,15 +5107,15 @@
       ],
       [
         "ASR",
-        "ELS",
-        -3531406.0,
-        1
-      ],
-      [
-        "ASR",
         "EXP_RECOVERY",
         3531406.0,
         0
+      ],
+      [
+        "ASR",
+        "ELS",
+        -3531406.0,
+        1
       ],
       [
         "MTA",
@@ -5364,14 +5364,14 @@
         0
       ],
       [
-        "CPC",
-        "INTERGOV_REV_ST",
+        "TIS",
+        "INTRAFD_TFR_IN",
         1200000.0,
         0
       ],
       [
-        "TIS",
-        "INTRAFD_TFR_IN",
+        "CPC",
+        "INTERGOV_REV_ST",
         1200000.0,
         0
       ],
@@ -5418,14 +5418,14 @@
         0
       ],
       [
-        "ADM",
-        "INTRAFD_TFR_IN",
+        "CON",
+        "OTH_REV",
         1000000.0,
         0
       ],
       [
-        "CON",
-        "OTH_REV",
+        "ADM",
+        "INTRAFD_TFR_IN",
         1000000.0,
         0
       ],
@@ -5497,15 +5497,15 @@
       ],
       [
         "DAT",
-        "ELS",
-        -679853.0,
-        1
-      ],
-      [
-        "DAT",
         "EXP_RECOVERY",
         679853.0,
         0
+      ],
+      [
+        "DAT",
+        "ELS",
+        -679853.0,
+        1
       ],
       [
         "REC",
@@ -5634,14 +5634,14 @@
         0
       ],
       [
-        "CHF",
-        "OTH_REV",
+        "CAT",
+        "INTERGOV_REV_OTH",
         400000.0,
         0
       ],
       [
-        "CAT",
-        "INTERGOV_REV_OTH",
+        "CHF",
+        "OTH_REV",
         400000.0,
         0
       ],
@@ -5659,15 +5659,15 @@
       ],
       [
         "CSC",
-        "ELS",
-        -360839.0,
-        1
-      ],
-      [
-        "CSC",
         "EXP_RECOVERY",
         360839.0,
         0
+      ],
+      [
+        "CSC",
+        "ELS",
+        -360839.0,
+        1
       ],
       [
         "ECN",
@@ -5779,15 +5779,15 @@
       ],
       [
         "JUV",
-        "ELS",
-        -180000.0,
-        1
-      ],
-      [
-        "JUV",
         "EXP_RECOVERY",
         180000.0,
         0
+      ],
+      [
+        "JUV",
+        "ELS",
+        -180000.0,
+        1
       ],
       [
         "FAM",
@@ -5875,15 +5875,15 @@
       ],
       [
         "HRC",
-        "EXP_RECOVERY",
-        99600.0,
-        0
-      ],
-      [
-        "HRC",
         "ELS",
         -99600.0,
         1
+      ],
+      [
+        "HRC",
+        "EXP_RECOVERY",
+        99600.0,
+        0
       ],
       [
         "DBI",
@@ -6025,13 +6025,13 @@
       ],
       [
         "LIB",
-        "OPER_TFR_IN",
+        "OTH_REV",
         20000.0,
         0
       ],
       [
         "LIB",
-        "OTH_REV",
+        "OPER_TFR_IN",
         20000.0,
         0
       ],

@@ -1,33 +1,9 @@
 {
- "generated_at": "2026-07-20T22:30:00.108864+00:00",
+ "generated_at": "2026-07-21T14:25:53.940087+00:00",
  "slug": "randall-museum",
  "name": "Randall Museum",
  "note": "Archive documents linked to this place; source labels honour the SFPL-vs-Democracy's-Library distinction.",
  "documents": [
-  {
-   "identifier": "minutes1990sanf_2",
-   "title": "Minutes",
-   "creator": "San Francisco Open Space/Park Renovation Citizens Advisory Committee",
-   "year": 2000,
-   "pool": "sfpl",
-   "matched_alias": "Randall Museum",
-   "snippet": "to the «Randall Museum» and by bringing programs and staff from the «Randall Museum» to those",
-   "url": "https://archive.org/details/minutes1990sanf_2",
-   "deep_link": "https://archive.org/details/minutes1990sanf_2?q=Randall+Museum",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
-  },
-  {
-   "identifier": "minutes1998sanf_5",
-   "title": "Minutes",
-   "creator": "San Francisco Open Space/Park Renovation Citizens Advisory Committee",
-   "year": 2000,
-   "pool": "sfpl",
-   "matched_alias": "Randall Museum",
-   "snippet": "(Science Curator, «Randall Museum»), Carolyn Galbriotti (Friends of the «Randall Museum»), and Ben Harwood",
-   "url": "https://archive.org/details/minutes1998sanf_5",
-   "deep_link": "https://archive.org/details/minutes1998sanf_5?q=Randall+Museum",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
-  },
   {
    "identifier": "minutes1992sanf_1",
    "title": "Minutes",
@@ -38,19 +14,9 @@
    "snippet": "taken. ° «Randall Museum» Amy Dawson, «Randall Museum» Director, reviewed the «Randall Museum» Transportation",
    "url": "https://archive.org/details/minutes1992sanf_1",
    "deep_link": "https://archive.org/details/minutes1992sanf_1?q=Randall+Museum",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
-  },
-  {
-   "identifier": "minutes1980sanf_3",
-   "title": "Minutes",
-   "creator": "San Francisco Open Space/Park Renovation Citizens Advisory Committee",
-   "year": 2000,
-   "pool": "sfpl",
-   "matched_alias": "Randall Museum",
-   "snippet": "Amy Dawson, Director-«Randall Museum», and Molly Hooper, «Randall Museum» Society, requested funds",
-   "url": "https://archive.org/details/minutes1980sanf_3",
-   "deep_link": "https://archive.org/details/minutes1980sanf_3?q=Randall+Museum",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Meetings & resolutions",
+   "salient": true
   },
   {
    "identifier": "minutesrecreatio1986sanf",
@@ -62,43 +28,9 @@
    "snippet": "lots along Museum Way near the «Josephine Randall Junior Museum». A compromise proposal has been",
    "url": "https://archive.org/details/minutesrecreatio1986sanf",
    "deep_link": "https://archive.org/details/minutesrecreatio1986sanf?q=Josephine+Randall+Junior+Museum",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
-  },
-  {
-   "identifier": "reportoninvestig2980sanf",
-   "title": "Report on the investigation of the San Francisco Zoo",
-   "creator": "San Francisco (Calif.). Animal Control and Welfare Commission,San Francisco (Calif.). Board of Supervisors",
-   "year": 1980,
-   "pool": "sfpl",
-   "matched_alias": "Josephine Randall Junior Museum",
-   "snippet": "VETERINARIAN'S RESPONSIBILITY TO THE «JOSEPHINE RANDALL JUNIOR MUSEUM». - - 6. ~ THAT THE BOARD",
-   "url": "https://archive.org/details/reportoninvestig2980sanf",
-   "deep_link": "https://archive.org/details/reportoninvestig2980sanf?q=Josephine+Randall+Junior+Museum",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
-  },
-  {
-   "identifier": "eastwest11east_27",
-   "title": "East/West",
-   "creator": "East/West Pub. Co.",
-   "year": 1977,
-   "pool": "sfpl",
-   "matched_alias": "Josephine Randall Junior Museum",
-   "snippet": "miss a major event being held in the «Josephine Randall Junior Museum» at ,了 Roosevelt and Museum Way today",
-   "url": "https://archive.org/details/eastwest11east_27",
-   "deep_link": "https://archive.org/details/eastwest11east_27?q=Josephine+Randall+Junior+Museum",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
-  },
-  {
-   "identifier": "generalmanagersr1992sanf",
-   "title": "General manager's report : Open Space Acquisition and Park Renovation Fund",
-   "creator": "San Francisco (Calif.). Recreation and Park Department,San Francisco (Calif.). Dept. of City Planning,San Francisco (Calif.). Open Space Acquisition and Park Renovation Fund",
-   "year": 1975,
-   "pool": "sfpl",
-   "matched_alias": "Randall Museum",
-   "snippet": "80,000 Potrero Hill Rec Center 100,000 «Randall Museum» 20,000 Twin Peaks Regional Trail 100,000",
-   "url": "https://archive.org/details/generalmanagersr1992sanf",
-   "deep_link": "https://archive.org/details/generalmanagersr1992sanf?q=Randall+Museum",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Meetings & resolutions",
+   "salient": true
   },
   {
    "identifier": "annrep778085899091sanf",
@@ -110,7 +42,23 @@
    "snippet": "before. Randall Junior Museum The «Josephine Randall Junior Museum», from its prime location in",
    "url": "https://archive.org/details/annrep778085899091sanf",
    "deep_link": "https://archive.org/details/annrep778085899091sanf?q=Josephine+Randall+Junior+Museum",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Reports & records",
+   "salient": true
+  },
+  {
+   "identifier": "eastwest11east_27",
+   "title": "East/West",
+   "creator": "East/West Pub. Co.",
+   "year": 1977,
+   "pool": "sfpl",
+   "matched_alias": "Josephine Randall Junior Museum",
+   "snippet": "miss a major event being held in the «Josephine Randall Junior Museum» at ,了 Roosevelt and Museum Way today",
+   "url": "https://archive.org/details/eastwest11east_27",
+   "deep_link": "https://archive.org/details/eastwest11east_27?q=Josephine+Randall+Junior+Museum",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Other records",
+   "salient": true
   },
   {
    "identifier": "sanfranciscobaya1961sanf",
@@ -122,7 +70,37 @@
    "snippet": "Francisco Museum of Art Pioneer FHall «Josephine Randall Junior Museum» San f^rancisco Maritime Museum",
    "url": "https://archive.org/details/sanfranciscobaya1961sanf",
    "deep_link": "https://archive.org/details/sanfranciscobaya1961sanf?q=Josephine+Randall+Junior+Museum",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Other records",
+   "salient": true
+  },
+  {
+   "identifier": "generalmanagersr1992sanf",
+   "title": "General manager's report : Open Space Acquisition and Park Renovation Fund",
+   "creator": "San Francisco (Calif.). Recreation and Park Department,San Francisco (Calif.). Dept. of City Planning,San Francisco (Calif.). Open Space Acquisition and Park Renovation Fund",
+   "year": 1975,
+   "pool": "sfpl",
+   "matched_alias": "Randall Museum",
+   "snippet": "80,000 Potrero Hill Rec Center 100,000 «Randall Museum» 20,000 Twin Peaks Regional Trail 100,000",
+   "url": "https://archive.org/details/generalmanagersr1992sanf",
+   "deep_link": "https://archive.org/details/generalmanagersr1992sanf?q=Randall+Museum",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Other records",
+   "salient": true
+  },
+  {
+   "identifier": "reportoninvestig2980sanf",
+   "title": "Report on the investigation of the San Francisco Zoo",
+   "creator": "San Francisco (Calif.). Animal Control and Welfare Commission,San Francisco (Calif.). Board of Supervisors",
+   "year": 1980,
+   "pool": "sfpl",
+   "matched_alias": "Josephine Randall Junior Museum",
+   "snippet": "VETERINARIAN'S RESPONSIBILITY TO THE «JOSEPHINE RANDALL JUNIOR MUSEUM». - - 6. ~ THAT THE BOARD",
+   "url": "https://archive.org/details/reportoninvestig2980sanf",
+   "deep_link": "https://archive.org/details/reportoninvestig2980sanf?q=Josephine+Randall+Junior+Museum",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Other records",
+   "salient": false
   },
   {
    "identifier": "whatsdoinginpark1992sanf",
@@ -134,31 +112,9 @@
    "snippet": "adapt to the rigors of winter, free, «Randall Museum», 199 Museum Way. 1:30 p.m. — Theme Walk:",
    "url": "https://archive.org/details/whatsdoinginpark1992sanf",
    "deep_link": "https://archive.org/details/whatsdoinginpark1992sanf?q=Randall+Museum",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
-  },
-  {
-   "identifier": "whatsdoinginpark1991sanf",
-   "title": "What's doing in the parks?",
-   "creator": "San Francisco (Calif.). Recreation and Park Department",
-   "year": null,
-   "pool": "sfpl",
-   "matched_alias": "Randall Museum",
-   "snippet": "John Dillon of the «Randall Museum», all age's invited free, «Randall Museum», 199 Museum Way",
-   "url": "https://archive.org/details/whatsdoinginpark1991sanf",
-   "deep_link": "https://archive.org/details/whatsdoinginpark1991sanf?q=Randall+Museum",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
-  },
-  {
-   "identifier": "whatsdoinginpark1993sanf",
-   "title": "What's doing in the parks?",
-   "creator": "San Francisco (Calif.). Recreation and Park Department",
-   "year": null,
-   "pool": "sfpl",
-   "matched_alias": "Randall Museum",
-   "snippet": "accompanied by an adult, $3/person, «Randall Museum», 199 Museum Way off Roosevelt Way on",
-   "url": "https://archive.org/details/whatsdoinginpark1993sanf",
-   "deep_link": "https://archive.org/details/whatsdoinginpark1993sanf?q=Randall+Museum",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Other records",
+   "salient": false
   },
   {
    "identifier": "scheduleofclasse1987sanf",
@@ -170,7 +126,9 @@
    "snippet": "558-3132. 27 THE «RANDALL MUSEUM» 199 Museum Way, 863-1399 The «Randall Museum» is a hands-on",
    "url": "https://archive.org/details/scheduleofclasse1987sanf",
    "deep_link": "https://archive.org/details/scheduleofclasse1987sanf?q=Randall+Museum",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Other records",
+   "salient": false
   }
  ]
 }

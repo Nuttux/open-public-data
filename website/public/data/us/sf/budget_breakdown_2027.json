@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-17T08:56:20.744226+00:00",
+  "generated_at": "2026-07-21T09:34:55.320628+00:00",
   "source_pipeline": "configs/countries/us.yaml → sync_socrata.py + sync_census_popest.py → raw.us_sf_* → dbt_us_staging → dbt_us_analytics → dbt_us_marts → export_us_sf.py",
   "country": "us",
   "scale": "city",
@@ -1130,16 +1130,6 @@
         "n_characters": 3
       },
       {
-        "code": "CSC",
-        "label": "CSC Civil Service Commission",
-        "display_name": "Civil Service Commission",
-        "org_group_code": "06",
-        "total_usd": 0.0,
-        "transfer_adjustment_usd": -430839.0,
-        "share_of_side": 0.0,
-        "n_characters": 2
-      },
-      {
         "code": "HRC",
         "label": "HRC Human Rights Commission",
         "display_name": "Human Rights Commission",
@@ -1156,6 +1146,16 @@
         "org_group_code": "01",
         "total_usd": 0.0,
         "transfer_adjustment_usd": -654795.0,
+        "share_of_side": 0.0,
+        "n_characters": 2
+      },
+      {
+        "code": "CSC",
+        "label": "CSC Civil Service Commission",
+        "display_name": "Civil Service Commission",
+        "org_group_code": "06",
+        "total_usd": 0.0,
+        "transfer_adjustment_usd": -430839.0,
         "share_of_side": 0.0,
         "n_characters": 2
       }
@@ -3726,16 +3726,16 @@
         1
       ],
       [
-        "REG",
-        "ELU",
-        -100000.0,
-        1
-      ],
-      [
         "DPA",
         "PROG_PROJ",
         100000.0,
         0
+      ],
+      [
+        "REG",
+        "ELU",
+        -100000.0,
+        1
       ],
       [
         "TIS",
@@ -4089,15 +4089,15 @@
       ],
       [
         "HRD",
-        "EXP_RECOVERY",
-        141369858.0,
-        0
-      ],
-      [
-        "HRD",
         "ELS",
         -141369858.0,
         1
+      ],
+      [
+        "HRD",
+        "EXP_RECOVERY",
+        141369858.0,
+        0
       ],
       [
         "GEN",
@@ -4713,15 +4713,15 @@
       ],
       [
         "ADP",
-        "ELS",
-        -7802736.0,
-        1
-      ],
-      [
-        "ADP",
         "EXP_RECOVERY",
         7802736.0,
         0
+      ],
+      [
+        "ADP",
+        "ELS",
+        -7802736.0,
+        1
       ],
       [
         "DEC",
@@ -5133,13 +5133,13 @@
       ],
       [
         "FIR",
-        "OPER_TFR_IN",
+        "INTER_REV_FED",
         1458282.0,
         0
       ],
       [
         "FIR",
-        "INTER_REV_FED",
+        "OPER_TFR_IN",
         1458282.0,
         0
       ],
@@ -5282,13 +5282,13 @@
         0
       ],
       [
-        "PDR",
+        "CPC",
         "INTERGOV_REV_ST",
         700000.0,
         0
       ],
       [
-        "CPC",
+        "PDR",
         "INTERGOV_REV_ST",
         700000.0,
         0
@@ -5307,15 +5307,15 @@
       ],
       [
         "DPA",
-        "EXP_RECOVERY",
-        654795.0,
-        0
-      ],
-      [
-        "DPA",
         "ELS",
         -654795.0,
         1
+      ],
+      [
+        "DPA",
+        "EXP_RECOVERY",
+        654795.0,
+        0
       ],
       [
         "DBI",
@@ -5342,14 +5342,14 @@
         0
       ],
       [
-        "DPH",
-        "INTERGOV_REV_OTH",
+        "ECN",
+        "OPER_TFR_IN",
         600000.0,
         0
       ],
       [
-        "ECN",
-        "OPER_TFR_IN",
+        "DPH",
+        "INTERGOV_REV_OTH",
         600000.0,
         0
       ],
@@ -5385,15 +5385,15 @@
       ],
       [
         "DAT",
-        "ELS",
-        -491743.0,
-        1
-      ],
-      [
-        "DAT",
         "EXP_RECOVERY",
         491743.0,
         0
+      ],
+      [
+        "DAT",
+        "ELS",
+        -491743.0,
+        1
       ],
       [
         "ADM",
@@ -5541,27 +5541,27 @@
       ],
       [
         "JUV",
-        "ELS",
-        -180000.0,
-        1
-      ],
-      [
-        "JUV",
         "EXP_RECOVERY",
         180000.0,
         0
       ],
       [
-        "FAM",
-        "EXP_RECOVERY",
-        179000.0,
-        0
+        "JUV",
+        "ELS",
+        -180000.0,
+        1
       ],
       [
         "FAM",
         "ELS",
         -179000.0,
         1
+      ],
+      [
+        "FAM",
+        "EXP_RECOVERY",
+        179000.0,
+        0
       ],
       [
         "ART",
@@ -5583,15 +5583,15 @@
       ],
       [
         "CSS",
-        "ELS",
-        -169817.0,
-        1
-      ],
-      [
-        "CSS",
         "EXP_RECOVERY",
         169817.0,
         0
+      ],
+      [
+        "CSS",
+        "ELS",
+        -169817.0,
+        1
       ],
       [
         "DBI",
@@ -5648,12 +5648,6 @@
         0
       ],
       [
-        "CON",
-        "PROP_TAX",
-        100000.0,
-        0
-      ],
-      [
         "REG",
         "EXP_RECOVERY",
         100000.0,
@@ -5664,6 +5658,12 @@
         "ELS",
         -100000.0,
         1
+      ],
+      [
+        "CON",
+        "PROP_TAX",
+        100000.0,
+        0
       ],
       [
         "LIB",
@@ -5697,15 +5697,15 @@
       ],
       [
         "BOS",
-        "ELS",
-        -71996.0,
-        1
-      ],
-      [
-        "BOS",
         "EXP_RECOVERY",
         71996.0,
         0
+      ],
+      [
+        "BOS",
+        "ELS",
+        -71996.0,
+        1
       ],
       [
         "LIB",

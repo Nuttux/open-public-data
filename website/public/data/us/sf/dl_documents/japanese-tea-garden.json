@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T22:30:00.107322+00:00",
+ "generated_at": "2026-07-21T14:25:53.936519+00:00",
  "slug": "japanese-tea-garden",
  "name": "Japanese Tea Garden",
  "note": "Archive documents linked to this place; source labels honour the SFPL-vs-Democracy's-Library distinction.",
@@ -14,7 +14,9 @@
    "snippet": "Music; Francis Scott Key Monument; «Japanese Tea Garden»; Shakespeare Garden; Rhododendron Dell;",
    "url": "https://archive.org/details/goldengateparkco1420sanf",
    "deep_link": "https://archive.org/details/goldengateparkco1420sanf?q=Japanese+Tea+Garden",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Plans & environmental review",
+   "salient": true
   },
   {
    "identifier": "newdeyoungmuseum2020sanf",
@@ -26,7 +28,9 @@
    "snippet": "the Academy of Sciences, and the «Japanese Tea Garden». The Report confirms that the Temple",
    "url": "https://archive.org/details/newdeyoungmuseum2020sanf",
    "deep_link": "https://archive.org/details/newdeyoungmuseum2020sanf?q=Japanese+Tea+Garden",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Plans & environmental review",
+   "salient": true
   },
   {
    "identifier": "newdeyoungmuseum2220sanf",
@@ -38,79 +42,9 @@
    "snippet": "Drive, Tea Garden Drive, and the «Japanese Tea Garden», is under the control of the FAMSF",
    "url": "https://archive.org/details/newdeyoungmuseum2220sanf",
    "deep_link": "https://archive.org/details/newdeyoungmuseum2220sanf?q=Japanese+Tea+Garden",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
-  },
-  {
-   "identifier": "whatsdoinginpark1987sanf",
-   "title": "What's doing in the parks?",
-   "creator": "San Francisco (Calif.). Recreation and Park Department",
-   "year": null,
-   "pool": "sfpl",
-   "matched_alias": "Japanese Tea Garden",
-   "snippet": "in the park, tour leaves from the «Japanese Tea Garden», call 761-8272 for information, Golden",
-   "url": "https://archive.org/details/whatsdoinginpark1987sanf",
-   "deep_link": "https://archive.org/details/whatsdoinginpark1987sanf?q=Japanese+Tea+Garden",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
-  },
-  {
-   "identifier": "whatsdoinginpark1989sanf",
-   "title": "What's doing in the parks?",
-   "creator": "San Francisco (Calif.). Recreation and Park Department",
-   "year": null,
-   "pool": "sfpl",
-   "matched_alias": "Japanese Tea Garden",
-   "snippet": "Visit the «Japanese Tea Garden», an exquisite rural style «Japanese tea garden» in the Band",
-   "url": "https://archive.org/details/whatsdoinginpark1989sanf",
-   "deep_link": "https://archive.org/details/whatsdoinginpark1989sanf?q=Japanese+Tea+Garden",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
-  },
-  {
-   "identifier": "whatsdoinginpark1986sanf",
-   "title": "What's doing in the parks?",
-   "creator": "San Francisco (Calif.). Recreation and Park Department",
-   "year": null,
-   "pool": "sfpl",
-   "matched_alias": "Japanese Tea Garden",
-   "snippet": "3 p.m. — «Japanese Tea Garden» Tour, meets inside the Main «Japanese Tea Garden» Gate, admission",
-   "url": "https://archive.org/details/whatsdoinginpark1986sanf",
-   "deep_link": "https://archive.org/details/whatsdoinginpark1986sanf?q=Japanese+Tea+Garden",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
-  },
-  {
-   "identifier": "whatsdoinginpark1978sanf",
-   "title": "What's doing in the parks?",
-   "creator": "San Francisco (Calif.). Recreation and Park Department",
-   "year": null,
-   "pool": "sfpl",
-   "matched_alias": "Japanese Tea Garden",
-   "snippet": "Golden Gate Park. 2 and 3 p.m. -- «Japanese Tea Garden» Tour, 50c, Friends of Recreation and",
-   "url": "https://archive.org/details/whatsdoinginpark1978sanf",
-   "deep_link": "https://archive.org/details/whatsdoinginpark1978sanf?q=Japanese+Tea+Garden",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
-  },
-  {
-   "identifier": "whatsdoinginpark1991sanf",
-   "title": "What's doing in the parks?",
-   "creator": "San Francisco (Calif.). Recreation and Park Department",
-   "year": null,
-   "pool": "sfpl",
-   "matched_alias": "Japanese Tea Garden",
-   "snippet": "Visit the exc[uisite rural style «Japanese Tea Garden», off Kennedy Drive in Golden Gate",
-   "url": "https://archive.org/details/whatsdoinginpark1991sanf",
-   "deep_link": "https://archive.org/details/whatsdoinginpark1991sanf?q=Japanese+Tea+Garden",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
-  },
-  {
-   "identifier": "summerprogram1946sanf",
-   "title": "Summer program",
-   "creator": "San Francisco (Calif.). Recreation and Park Dept,San Francisco (Calif.) Recreation Dept",
-   "year": null,
-   "pool": "sfpl",
-   "matched_alias": "Japanese Tea Garden",
-   "snippet": "spring and late summer. * «Japanese Tea Garden» The «Japanese Tea Garden» is the oldest public Japanese",
-   "url": "https://archive.org/details/summerprogram1946sanf",
-   "deep_link": "https://archive.org/details/summerprogram1946sanf?q=Japanese+Tea+Garden",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Plans & environmental review",
+   "salient": true
   },
   {
    "identifier": "minutesrecreatio1980sanf",
@@ -122,7 +56,37 @@
    "snippet": "Lot, «Japanese Tea Garden» Admission Fees, 7/1/80, Revenue Report, «Japanese Tea Garden» problems",
    "url": "https://archive.org/details/minutesrecreatio1980sanf",
    "deep_link": "https://archive.org/details/minutesrecreatio1980sanf?q=Japanese+Tea+Garden",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Meetings & resolutions",
+   "salient": true
+  },
+  {
+   "identifier": "summerprogram1946sanf",
+   "title": "Summer program",
+   "creator": "San Francisco (Calif.). Recreation and Park Dept,San Francisco (Calif.) Recreation Dept",
+   "year": null,
+   "pool": "sfpl",
+   "matched_alias": "Japanese Tea Garden",
+   "snippet": "spring and late summer. * «Japanese Tea Garden» The «Japanese Tea Garden» is the oldest public Japanese",
+   "url": "https://archive.org/details/summerprogram1946sanf",
+   "deep_link": "https://archive.org/details/summerprogram1946sanf?q=Japanese+Tea+Garden",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Other records",
+   "salient": true
+  },
+  {
+   "identifier": "whatsdoinginpark1986sanf",
+   "title": "What's doing in the parks?",
+   "creator": "San Francisco (Calif.). Recreation and Park Department",
+   "year": null,
+   "pool": "sfpl",
+   "matched_alias": "Japanese Tea Garden",
+   "snippet": "3 p.m. — «Japanese Tea Garden» Tour, meets inside the Main «Japanese Tea Garden» Gate, admission",
+   "url": "https://archive.org/details/whatsdoinginpark1986sanf",
+   "deep_link": "https://archive.org/details/whatsdoinginpark1986sanf?q=Japanese+Tea+Garden",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Other records",
+   "salient": true
   }
  ]
 }

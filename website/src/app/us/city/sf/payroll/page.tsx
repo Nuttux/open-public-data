@@ -7,6 +7,7 @@ import type {
   PayrollByDept,
   PayrollDistribution,
   PayrollOvertime,
+  PayrollByFamilyCitywide,
 } from "./payroll-types";
 
 /**
@@ -40,6 +41,9 @@ export default function SfPayrollPage() {
   const byDept = readJson<PayrollByDept>("payroll_by_dept_year.json");
   const distribution = readJson<PayrollDistribution>("payroll_distribution.json");
   const overtime = readJson<PayrollOvertime>("payroll_overtime.json");
+  // Citywide display_family × year roll-up (~72KB) — powers the families
+  // section. The 2.9MB dept×family grain stays unloaded (fiches only).
+  const byFamily = readJson<PayrollByFamilyCitywide>("payroll_by_family_citywide.json");
 
   return (
     <PayrollClient
@@ -47,6 +51,7 @@ export default function SfPayrollPage() {
       byDept={byDept}
       distribution={distribution}
       overtime={overtime}
+      byFamily={byFamily}
     />
   );
 }

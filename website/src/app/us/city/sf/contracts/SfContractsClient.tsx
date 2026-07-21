@@ -3,10 +3,10 @@
 import Link from "next/link";
 import SectionHead from "@/components/fusion/SectionHead";
 import PageTOC from "@/components/fusion/PageTOC";
-import PageHook from "@/components/fusion/PageHook";
 import PageIntro, { IntroStat } from "@/components/fusion/PageIntro";
 import AnimatedNumber from "@/components/fusion/AnimatedNumber";
 import BarRow from "@/components/fusion/BarRow";
+import SoleSourceTrend from "./SoleSourceTrend";
 import ExpandableList from "@/components/fusion/ExpandableList";
 import Tip from "@/components/fusion/Tip";
 import { useT } from "@/lib/localeContext";
@@ -79,6 +79,14 @@ export default function SfContractsClient({
   const polRow = sole.by_department.find((d) => d.department_code === "POL");
   const dphRow = sole.by_department.find((d) => d.department_code === "DPH");
 
+  // Sole-source share over time — only the stability window (start years with
+  // enough recorded starts); older years are a thin, biased residue.
+  const soleTrendPoints = sole.stability
+    ? sole.by_start_year.filter(
+        (p) => p.year >= sole.stability!.year_from && p.year <= sole.stability!.year_to,
+      )
+    : [];
+
   const heroVars = {
     nActive: nfInt.format(hero.active.n_contracts),
     agreed: fmtUsdCompact(hero.active.agreed_usd),
@@ -119,6 +127,22 @@ export default function SfContractsClient({
                 label={fill(t("us.sf.contracts.s01.hero_label"), { n: heroVars.nActive })}
               />
               <IntroStat
+                value={<AnimatedNumber value={hero.active.paid_usd} format={(n) => fmtUsdCompact(n)} />}
+                label={t("us.sf.contracts.s01.kpi.paid")}
+              />
+              {overview.landscape.grants && (
+                <IntroStat
+                  value={
+                    <AnimatedNumber
+                      value={overview.landscape.grants.share_of_register_agreed * 100}
+                      format={(n) => n.toFixed(1)}
+                    />
+                  }
+                  unit="%"
+                  label={t("us.sf.contracts.s01.kpi.grants")}
+                />
+              )}
+              <IntroStat
                 value={<AnimatedNumber value={hero.register.n_contracts} format={(n) => nfInt.format(Math.round(n))} />}
                 label={
                   <Tip label={t("us.sf.contracts.s01.kpi.register.tip")}>
@@ -153,16 +177,20 @@ export default function SfContractsClient({
               />
             </>
           }
-        />
-
-        <PageHook
-          cite={t("us.sf.contracts.hook.cite")}
-          shareText={fill(t("us.sf.contracts.hook.share"), heroVars)}
         >
-          <span dangerouslySetInnerHTML={{ __html: fill(t("us.sf.contracts.hook.body"), heroVars) }} />
-        </PageHook>
+          {overview.landscape.grants && (
+            <p className="fx-note" style={{ marginTop: 14 }}>
+              {fill(t("us.sf.contracts.intro_note"), { grants: heroVars.grants })}
+            </p>
+          )}
+          <SourceLine
+            label={t("us.sf.contracts.source_label")}
+            dataWord={t("us.sf.contracts.source_data_word")}
+            links={[{ name: overview.source.name, href: overview.source.source_url }]}
+          />
+        </PageIntro>
 
-        {/* Signature — sole-source lens (hoisted to first) */}
+        {/* Sole-source (hoisted to first section) */}
         <section className="fx-section" id="sec-sole-source">
           <div className="fx-wrap">
             <SectionHead
@@ -173,7 +201,6 @@ export default function SfContractsClient({
                     {t("us.sf.contracts.s03.title.before")}
                   </Tip>
                   <em>{t("us.sf.contracts.s03.title.em")}</em>
-                  {t("us.sf.contracts.s03.title.after")}
                 </>
               }
               subtitle={t("us.sf.contracts.s03.subtitle")}
@@ -253,6 +280,24 @@ export default function SfContractsClient({
                     agreed: fmtUsdCompact(dphRow.sole_agreed_usd),
                   })}
               </p>
+            )}
+
+            {soleTrendPoints.length > 1 && sole.stability && (
+              <figure style={{ margin: "8px 0 6px" }}>
+                <SoleSourceTrend
+                  points={soleTrendPoints}
+                  legend={t("us.sf.contracts.s03.trend.legend")}
+                  ariaLabel={fill(t("us.sf.contracts.s03.trend.aria"), {
+                    y0: sole.stability.year_from,
+                    y1: sole.stability.year_to,
+                  })}
+                />
+                <figcaption className="fx-chart-source">
+                  {fill(t("us.sf.contracts.s03.trend.note"), {
+                    floor: nfInt.format(sole.stability.min_starts_floor),
+                  })}
+                </figcaption>
+              </figure>
             )}
 
             <BarRow
@@ -504,14 +549,13 @@ export default function SfContractsClient({
                 <>
                   {t("us.sf.contracts.s05.title.before")}
                   <em>{t("us.sf.contracts.s05.title.em")}</em>
-                  {t("us.sf.contracts.s05.title.after")}
                 </>
               }
               subtitle={fill(t("us.sf.contracts.s05.sub"), { n: nfInt.format(active.n_rows) })}
             />
             <SfContractsSearch rows={active.rows} />
             <p className="fx-note" style={{ marginTop: 16 }}>
-              <b>{t("us.sf.contracts.s05.note_label")}</b> {fill(t("us.sf.contracts.s05.note"), {
+              {fill(t("us.sf.contracts.s05.note"), {
                 n: nfInt.format(dq.n_paid_exceeds_agreed),
               })}
             </p>

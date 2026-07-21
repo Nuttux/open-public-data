@@ -1,6 +1,8 @@
 "use client";
 
-import type { SfDeptFicheData, SfDeptSideBlock } from "@/lib/us/sf-budget-data";
+import Link from "next/link";
+import type { SfDeptFicheData, SfDeptSideBlock, SfSide } from "@/lib/us/sf-budget-data";
+import { deptSlug, characterSlug } from "@/lib/us/sf-budget-slugs";
 import { fmtUsd, fmtUsdCompact, fmtShare, fmtYoy } from "@/lib/us/format";
 import { useT } from "@/lib/localeContext";
 import Tip from "@/components/fusion/Tip";
@@ -63,6 +65,9 @@ export default function SfDeptFiche({ d }: { d: SfDeptFicheData }) {
           </div>
           <CharacterBars
             block={sp}
+            side="spending"
+            deptCode={d.code}
+            fiscalYear={d.fiscal_year}
             glossFallback={t("us.sf.fiche.dept.no_gloss")}
           />
         </section>
@@ -104,16 +109,22 @@ export default function SfDeptFiche({ d }: { d: SfDeptFicheData }) {
         </section>
       )}
 
-      {/* Revenue side */}
+      {/* Revenue side — collapsed by default: spending is what users come
+          for, funding is context (closed <details>, opens on click). */}
       {d.revenue && d.revenue.characters.length > 0 && (
         <section className="fx-fiche-section">
-          <div className="fx-fiche-h">
-            {fill(t("us.sf.fiche.dept.revenue_h"), { fy: d.fiscal_year })}
-          </div>
-          <CharacterBars
-            block={d.revenue}
-            glossFallback={t("us.sf.fiche.dept.no_gloss")}
-          />
+          <details>
+            <summary className="fx-fiche-h" style={{ cursor: "pointer" }}>
+              {fill(t("us.sf.fiche.dept.revenue_h"), { fy: d.fiscal_year })}
+            </summary>
+            <CharacterBars
+              block={d.revenue}
+              side="revenue"
+              deptCode={d.code}
+              fiscalYear={d.fiscal_year}
+              glossFallback={t("us.sf.fiche.dept.no_gloss")}
+            />
+          </details>
         </section>
       )}
 
@@ -180,22 +191,31 @@ function Row({ label, value }: { label: string; value: string }) {
 
 function CharacterBars({
   block,
+  side,
+  deptCode,
+  fiscalYear,
   glossFallback,
 }: {
   block: SfDeptSideBlock;
+  side: SfSide;
+  deptCode: string;
+  fiscalYear: number;
   glossFallback: string;
 }) {
   const max = Math.max(...block.characters.map((c) => c.amount_usd), 1);
-  // Plain bars, not links. The character breakdown is the readable leaf of a
-  // department's view — "Public Health spends X on salaries, Y on materials".
-  // It used to link to the citywide character fiche, which read as a drill-down
-  // but teleported to a different axis (all departments' salaries) — confusing.
-  // The citywide by-type view still lives on the budget page's own section.
+  // Links one level deeper (dept × THIS character → line items + vendor
+  // payments), same axis as this fiche — not the citywide character fiche
+  // (that used to be the link target and read as a confusing axis
+  // teleport, see git history). Side is threaded through so the drawer
+  // resolves the right dept×character cell without a second lookup.
   return (
     <div>
       {block.characters.map((c) => (
-        <div
+        <Link
           key={c.code}
+          href={`/us/city/sf/budget/dept/${deptSlug(deptCode)}/character/${characterSlug(c.code)}?year=${fiscalYear}&side=${side}`}
+          scroll={false}
+          className="fx-row-link"
           title={c.gloss ?? glossFallback}
           style={{
             display: "grid",
@@ -206,6 +226,8 @@ function CharacterBars({
             borderBottom: "1px solid var(--rule)",
             fontFamily: "var(--f-ui)",
             fontSize: 13,
+            textDecoration: "none",
+            color: "inherit",
           }}
         >
           <span>{c.label}</span>
@@ -222,7 +244,7 @@ function CharacterBars({
           <span className="tnum" style={{ fontFamily: "var(--f-mono)", fontSize: 12, fontWeight: 600 }}>
             {fmtUsdCompact(c.amount_usd)}
           </span>
-        </div>
+        </Link>
       ))}
     </div>
   );

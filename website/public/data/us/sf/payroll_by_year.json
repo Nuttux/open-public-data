@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-16T21:42:26.548476+00:00",
+  "generated_at": "2026-07-21T13:43:43.999338+00:00",
   "source_pipeline": "configs/countries/us.yaml → sync_socrata.py + sync_census_popest.py → raw.us_sf_employee_comp → dbt_us_staging (+ seeds seed_us_sf_job_family_display / seed_us_sf_job_reclass) → dbt_us_intermediate → dbt_us_analytics → dbt_us_marts → export_us_sf_payroll.py",
   "country": "us",
   "scale": "city",

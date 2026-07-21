@@ -1,6 +1,6 @@
 {
   "year": 2021,
-  "generated_at": "2026-04-22T08:23:40.792506+00:00",
+  "generated_at": "2026-07-21T11:53:34.312628+00:00",
   "totals": {
     "capital_restant": 11238727054,
     "montant_initial": 13643005368,
@@ -14,8 +14,8 @@
   "taux": {
     "capital_taux_fixe": 3443867137,
     "capital_taux_variable": 7794859917,
-    "part_fixe": 0.3064285768755387,
-    "part_variable": 0.6935714231244612,
+    "part_fixe": 0.30642857687553865,
+    "part_variable": 0.6935714231244613,
     "taux_moyen_pondere_pct": 1.506,
     "duree_residuelle_moyenne_ans": 28.3,
     "indices_variables": [
@@ -46,7 +46,7 @@
       "key": "logement_social_aide",
       "label": "Logement social aidé par l'État",
       "capital_restant": 9818981407,
-      "share": 0.8736738030762017,
+      "share": 0.8736738030762019,
       "count_emprunts": 8504
     },
     {
@@ -75,19 +75,19 @@
           "name": "ELOGIE-SIEMP (SEML)",
           "capital_restant": 23300517,
           "count_emprunts": 85,
-          "share_of_arr": 0.4031066726890204
+          "share_of_arr": 0.40310667268902045
         },
         {
           "name": "RIVP (SEM)",
           "capital_restant": 20683346,
           "count_emprunts": 21,
-          "share_of_arr": 0.3578287350962115
+          "share_of_arr": 0.35782873509621155
         },
         {
           "name": "PARIS Habitat OPH (EP)",
           "capital_restant": 9019181,
           "count_emprunts": 14,
-          "share_of_arr": 0.1560348238031857
+          "share_of_arr": 0.15603482380318573
         }
       ],
       "emprunts_top": [
@@ -232,7 +232,7 @@
       "arr": 2,
       "capital_restant": 50630926,
       "count_emprunts": 126,
-      "share_of_localized": 0.006450516148124839,
+      "share_of_localized": 0.0064505161481248395,
       "top_beneficiaires": [
         {
           "name": "PARIS Habitat OPH (EP)",
@@ -395,7 +395,7 @@
       "arr": 3,
       "capital_restant": 96685429,
       "count_emprunts": 192,
-      "share_of_localized": 0.012317983694626413,
+      "share_of_localized": 0.012317983694626415,
       "top_beneficiaires": [
         {
           "name": "RIVP (SEM)",
@@ -558,13 +558,13 @@
       "arr": 4,
       "capital_restant": 93848431,
       "count_emprunts": 164,
-      "share_of_localized": 0.01195654255159776,
+      "share_of_localized": 0.011956542551597761,
       "top_beneficiaires": [
         {
           "name": "PARIS Habitat OPH (EP)",
           "capital_restant": 22665679,
           "count_emprunts": 42,
-          "share_of_arr": 0.24151366455337478
+          "share_of_arr": 0.24151366455337472
         },
         {
           "name": "Immobilière 3F - I3F (SA HLM)",
@@ -576,7 +576,7 @@
           "name": "RIVP (SEM)",
           "capital_restant": 20488740,
           "count_emprunts": 24,
-          "share_of_arr": 0.21831733769393613
+          "share_of_arr": 0.2183173376939362
         }
       ],
       "emprunts_top": [
@@ -727,19 +727,19 @@
           "name": "RIVP (SEM)",
           "capital_restant": 84251745,
           "count_emprunts": 26,
-          "share_of_arr": 0.5237031770945784
+          "share_of_arr": 0.5237031770945786
         },
         {
           "name": "PARIS Habitat OPH (EP)",
           "capital_restant": 57750366,
           "count_emprunts": 57,
-          "share_of_arr": 0.35897238920743296
+          "share_of_arr": 0.3589723892074331
         },
         {
           "name": "ELOGIE-SIEMP (SEML)",
           "capital_restant": 6631793,
           "count_emprunts": 27,
-          "share_of_arr": 0.041222778673598526
+          "share_of_arr": 0.04122277867359853
         }
       ],
       "emprunts_top": [
@@ -890,19 +890,19 @@
           "name": "RIVP (SEM)",
           "capital_restant": 17654712,
           "count_emprunts": 24,
-          "share_of_arr": 0.4186197998421959
+          "share_of_arr": 0.418619799842196
         },
         {
           "name": "ELOGIE-SIEMP (SEML)",
           "capital_restant": 8040472,
           "count_emprunts": 34,
-          "share_of_arr": 0.19065168438222116
+          "share_of_arr": 0.1906516843822212
         },
         {
           "name": "Association Monsieur Vincent",
           "capital_restant": 7921901,
           "count_emprunts": 1,
-          "share_of_arr": 0.18784019180581532
+          "share_of_arr": 0.18784019180581535
         }
       ],
       "emprunts_top": [
@@ -1047,25 +1047,25 @@
       "arr": 7,
       "capital_restant": 163475059,
       "count_emprunts": 44,
-      "share_of_localized": 0.02082716217219241,
+      "share_of_localized": 0.020827162172192406,
       "top_beneficiaires": [
         {
           "name": "Fondation Nationale Sciences Po",
           "capital_restant": 109882472,
           "count_emprunts": 2,
-          "share_of_arr": 0.6721665837481768
+          "share_of_arr": 0.672166583748177
         },
         {
           "name": "RIVP (SEM)",
           "capital_restant": 33741058,
           "count_emprunts": 7,
-          "share_of_arr": 0.2063988120493422
+          "share_of_arr": 0.20639881204934224
         },
         {
           "name": "PARIS Habitat OPH (EP)",
           "capital_restant": 8606457,
           "count_emprunts": 8,
-          "share_of_arr": 0.052646913644538516
+          "share_of_arr": 0.05264691364453852
         }
       ],
       "emprunts_top": [
@@ -1216,19 +1216,19 @@
           "name": "ELOGIE-SIEMP (SEML)",
           "capital_restant": 41543685,
           "count_emprunts": 55,
-          "share_of_arr": 0.5787548789997623
+          "share_of_arr": 0.5787548789997624
         },
         {
           "name": "RIVP (SEM)",
           "capital_restant": 9869208,
           "count_emprunts": 16,
-          "share_of_arr": 0.1374902644360348
+          "share_of_arr": 0.13749026443603482
         },
         {
           "name": "PARIS Habitat OPH (EP)",
           "capital_restant": 9107698,
           "count_emprunts": 15,
-          "share_of_arr": 0.12688149247434022
+          "share_of_arr": 0.12688149247434025
         }
       ],
       "emprunts_top": [
@@ -1373,25 +1373,25 @@
       "arr": 9,
       "capital_restant": 171005383,
       "count_emprunts": 327,
-      "share_of_localized": 0.02178654564668279,
+      "share_of_localized": 0.0217865456466828,
       "top_beneficiaires": [
         {
           "name": "RIVP (SEM)",
           "capital_restant": 54550373,
           "count_emprunts": 98,
-          "share_of_arr": 0.3189979899760194
+          "share_of_arr": 0.31899798997601936
         },
         {
           "name": "ELOGIE-SIEMP (SEML)",
           "capital_restant": 43029828,
           "count_emprunts": 104,
-          "share_of_arr": 0.25162849949887905
+          "share_of_arr": 0.251628499498879
         },
         {
           "name": "PARIS Habitat OPH (EP)",
           "capital_restant": 33870171,
           "count_emprunts": 44,
-          "share_of_arr": 0.1980649404667032
+          "share_of_arr": 0.19806494046670314
         }
       ],
       "emprunts_top": [
@@ -1536,7 +1536,7 @@
       "arr": 10,
       "capital_restant": 346548280,
       "count_emprunts": 518,
-      "share_of_localized": 0.04415118284108016,
+      "share_of_localized": 0.04415118284108017,
       "top_beneficiaires": [
         {
           "name": "RIVP (SEM)",
@@ -1699,7 +1699,7 @@
       "arr": 11,
       "capital_restant": 363846387,
       "count_emprunts": 634,
-      "share_of_localized": 0.046355008255963934,
+      "share_of_localized": 0.04635500825596394,
       "top_beneficiaires": [
         {
           "name": "PARIS Habitat OPH (EP)",
@@ -2025,7 +2025,7 @@
       "arr": 13,
       "capital_restant": 815537214,
       "count_emprunts": 602,
-      "share_of_localized": 0.1039016343269742,
+      "share_of_localized": 0.10390163432697422,
       "top_beneficiaires": [
         {
           "name": "RIVP (SEM)",
@@ -2194,19 +2194,19 @@
           "name": "RIVP (SEM)",
           "capital_restant": 102714295,
           "count_emprunts": 140,
-          "share_of_arr": 0.19802821186124425
+          "share_of_arr": 0.19802821186124428
         },
         {
           "name": "Paris et Métropole Aménagement (SPL)",
           "capital_restant": 70000000,
           "count_emprunts": 3,
-          "share_of_arr": 0.13495662767023214
+          "share_of_arr": 0.13495662767023217
         },
         {
           "name": "PARIS Habitat OPH (EP)",
           "capital_restant": 67943295,
           "count_emprunts": 71,
-          "share_of_arr": 0.13099139887811512
+          "share_of_arr": 0.13099139887811515
         }
       ],
       "emprunts_top": [
@@ -2351,7 +2351,7 @@
       "arr": 15,
       "capital_restant": 665818004,
       "count_emprunts": 698,
-      "share_of_localized": 0.08482700427981758,
+      "share_of_localized": 0.0848270042798176,
       "top_beneficiaires": [
         {
           "name": "PARIS Habitat OPH (EP)",
@@ -2514,7 +2514,7 @@
       "arr": 16,
       "capital_restant": 270370208,
       "count_emprunts": 232,
-      "share_of_localized": 0.03444589156951307,
+      "share_of_localized": 0.034445891569513075,
       "top_beneficiaires": [
         {
           "name": "PARIS Habitat OPH (EP)",
@@ -2677,7 +2677,7 @@
       "arr": 17,
       "capital_restant": 591136674,
       "count_emprunts": 538,
-      "share_of_localized": 0.07531240207387925,
+      "share_of_localized": 0.07531240207387926,
       "top_beneficiaires": [
         {
           "name": "PARIS Habitat OPH (EP)",
@@ -2840,7 +2840,7 @@
       "arr": 18,
       "capital_restant": 884931818,
       "count_emprunts": 1095,
-      "share_of_localized": 0.11274269348890768,
+      "share_of_localized": 0.1127426934889077,
       "top_beneficiaires": [
         {
           "name": "RIVP (SEM)",
@@ -2852,7 +2852,7 @@
           "name": "PARIS Habitat OPH (EP)",
           "capital_restant": 143421031,
           "count_emprunts": 200,
-          "share_of_arr": 0.16207014822180166
+          "share_of_arr": 0.16207014822180169
         },
         {
           "name": "ICF Habitat La Sablière (SA HLM)",
@@ -3003,19 +3003,19 @@
       "arr": 19,
       "capital_restant": 877577322,
       "count_emprunts": 614,
-      "share_of_localized": 0.111805710915875,
+      "share_of_localized": 0.11180571091587503,
       "top_beneficiaires": [
         {
           "name": "RIVP (SEM)",
           "capital_restant": 249152761,
           "count_emprunts": 123,
-          "share_of_arr": 0.2839097533933158
+          "share_of_arr": 0.28390975339331576
         },
         {
           "name": "PARIS Habitat OPH (EP)",
           "capital_restant": 182889817,
           "count_emprunts": 145,
-          "share_of_arr": 0.20840308070456326
+          "share_of_arr": 0.20840308070456323
         },
         {
           "name": "ELOGIE-SIEMP (SEML)",
@@ -3166,7 +3166,7 @@
       "arr": 20,
       "capital_restant": 843333300,
       "count_emprunts": 986,
-      "share_of_localized": 0.10744293041510741,
+      "share_of_localized": 0.10744293041510743,
       "top_beneficiaires": [
         {
           "name": "RIVP (SEM)",
@@ -3329,7 +3329,7 @@
   "non_localised": {
     "capital_restant": 3389599181,
     "count_emprunts": 416,
-    "share": 0.30159992009440323
+    "share": 0.3015999200944032
   },
   "top_beneficiaires": [
     {
@@ -3342,7 +3342,7 @@
       "nature_dominante": "logement_social_aide",
       "taux_moyen_pondere_pct": 1.68,
       "duree_residuelle_moyenne_ans": 31.07,
-      "part_fixe": 0.4113920021271723,
+      "part_fixe": 0.41139200212717225,
       "preteurs": [
         {
           "name": "CDC",
@@ -3385,7 +3385,8 @@
           "duree_residuelle": 28.75,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 1.1089
+          "taux_actuariel": 1.1089,
+          "programme": null
         },
         {
           "objet": "Diverses adresses - 75000 - CPCT",
@@ -3396,7 +3397,8 @@
           "duree_residuelle": 21.07,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 2.5446
+          "taux_actuariel": 2.5446,
+          "programme": null
         },
         {
           "objet": "Diverses adresses - 75000 - CPCT - RGT",
@@ -3407,7 +3409,8 @@
           "duree_residuelle": 20.75,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 1.4809
+          "taux_actuariel": 1.4809,
+          "programme": null
         },
         {
           "objet": "Diverses adresses - 75000 - CPCT",
@@ -3418,7 +3421,8 @@
           "duree_residuelle": 13.16,
           "taux_type": "FIXE",
           "taux_index": "FIXE",
-          "taux_actuariel": 4.1736
+          "taux_actuariel": 4.1736,
+          "programme": null
         },
         {
           "objet": "Adresses diverses lgts loc. non sociaux - 75000",
@@ -3429,7 +3433,8 @@
           "duree_residuelle": 23.04,
           "taux_type": "FIXE",
           "taux_index": "FIXE",
-          "taux_actuariel": 4.4438
+          "taux_actuariel": 4.4438,
+          "programme": null
         },
         {
           "objet": "Adresses diverses lgts loc. non sociaux - 75000",
@@ -3440,7 +3445,8 @@
           "duree_residuelle": 17.95,
           "taux_type": "FIXE",
           "taux_index": "FIXE",
-          "taux_actuariel": 4.3719
+          "taux_actuariel": 4.3719,
+          "programme": null
         },
         {
           "objet": "Réaménagement emprunts compactés - CPCT - 75000",
@@ -3451,7 +3457,8 @@
           "duree_residuelle": 19.87,
           "taux_type": "FIXE",
           "taux_index": "FIXE",
-          "taux_actuariel": 3.9387
+          "taux_actuariel": 3.9387,
+          "programme": null
         },
         {
           "objet": "Diverses adresses - 75000 - CPCT - RGT",
@@ -3462,7 +3469,8 @@
           "duree_residuelle": 26.0,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 1.4726
+          "taux_actuariel": 1.4726,
+          "programme": null
         },
         {
           "objet": "Diverses adresses - 75000",
@@ -3473,7 +3481,8 @@
           "duree_residuelle": 19.01,
           "taux_type": "FIXE",
           "taux_index": "FIXE",
-          "taux_actuariel": 4.1306
+          "taux_actuariel": 4.1306,
+          "programme": null
         },
         {
           "objet": "Divers programmes logements sociaux - 75000",
@@ -3484,7 +3493,8 @@
           "duree_residuelle": 26.64,
           "taux_type": "FIXE",
           "taux_index": "FIXE",
-          "taux_actuariel": 1.8988
+          "taux_actuariel": 1.8988,
+          "programme": null
         },
         {
           "objet": "Réhabilitation patrimoine - 75000",
@@ -3495,7 +3505,8 @@
           "duree_residuelle": 30.03,
           "taux_type": "FIXE",
           "taux_index": "FIXE",
-          "taux_actuariel": 1.6911
+          "taux_actuariel": 1.6911,
+          "programme": null
         },
         {
           "objet": "Diverses opérations - 75000",
@@ -3506,7 +3517,8 @@
           "duree_residuelle": 36.01,
           "taux_type": "FIXE",
           "taux_index": "FIXE",
-          "taux_actuariel": 2.2797
+          "taux_actuariel": 2.2797,
+          "programme": null
         },
         {
           "objet": "LLI - Diverses opérations - 75000 - NSG - GA",
@@ -3517,7 +3529,8 @@
           "duree_residuelle": 40.94,
           "taux_type": "FIXE",
           "taux_index": "FIXE",
-          "taux_actuariel": 1.0003
+          "taux_actuariel": 1.0003,
+          "programme": null
         },
         {
           "objet": "Programme d'investissements - 75000",
@@ -3528,7 +3541,8 @@
           "duree_residuelle": 35.33,
           "taux_type": "FIXE",
           "taux_index": "FIXE",
-          "taux_actuariel": 0.4579
+          "taux_actuariel": 0.4579,
+          "programme": null
         },
         {
           "objet": "18-30, rue Boucry - 75018 - NSG",
@@ -3539,7 +3553,13 @@
           "duree_residuelle": 41.92,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 1.6102
+          "taux_actuariel": 1.6102,
+          "programme": {
+            "adresse": "18-30, RUE BOUCRY",
+            "nb_logements": 222,
+            "n_programmes": 1,
+            "match_basis": "adresse_exacte"
+          }
         },
         {
           "objet": "LLI - Emprunt Opérations Investissements - 75000",
@@ -3550,7 +3570,8 @@
           "duree_residuelle": 38.33,
           "taux_type": "FIXE",
           "taux_index": "FIXE",
-          "taux_actuariel": 0.9712
+          "taux_actuariel": 0.9712,
+          "programme": null
         },
         {
           "objet": "Financement Opérations Réhabilitation - 75000",
@@ -3561,7 +3582,8 @@
           "duree_residuelle": 28.42,
           "taux_type": "FIXE",
           "taux_index": "FIXE",
-          "taux_actuariel": 1.0006
+          "taux_actuariel": 1.0006,
+          "programme": null
         },
         {
           "objet": "Réaménagement de prêts - CPCT - 75000",
@@ -3572,7 +3594,8 @@
           "duree_residuelle": 21.45,
           "taux_type": "FIXE",
           "taux_index": "FIXE",
-          "taux_actuariel": 3.6818
+          "taux_actuariel": 3.6818,
+          "programme": null
         },
         {
           "objet": "Immeuble Bouvier - Impasse Bouvier - 75011",
@@ -3583,7 +3606,8 @@
           "duree_residuelle": 23.84,
           "taux_type": "FIXE",
           "taux_index": "FIXE",
-          "taux_actuariel": 2.2976
+          "taux_actuariel": 2.2976,
+          "programme": null
         },
         {
           "objet": "64-66 rue de Meaux - 75019 - RGT",
@@ -3594,7 +3618,13 @@
           "duree_residuelle": 34.5,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 1.2884
+          "taux_actuariel": 1.2884,
+          "programme": {
+            "adresse": "64-66, RUE DE MEAUX",
+            "nb_logements": 221,
+            "n_programmes": 1,
+            "match_basis": "adresse_exacte"
+          }
         },
         {
           "objet": "64-66 rue de Meaux - 75019 - RGT",
@@ -3605,7 +3635,13 @@
           "duree_residuelle": 44.5,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 1.2809
+          "taux_actuariel": 1.2809,
+          "programme": {
+            "adresse": "64-66, RUE DE MEAUX",
+            "nb_logements": 221,
+            "n_programmes": 1,
+            "match_basis": "adresse_exacte"
+          }
         },
         {
           "objet": "Diverses adresses - 75000 - CPCT",
@@ -3616,7 +3652,8 @@
           "duree_residuelle": 8.92,
           "taux_type": "FIXE",
           "taux_index": "FIXE",
-          "taux_actuariel": 3.8428
+          "taux_actuariel": 3.8428,
+          "programme": null
         },
         {
           "objet": "Divers travaux - 75000",
@@ -3627,7 +3664,8 @@
           "duree_residuelle": 25.45,
           "taux_type": "FIXE",
           "taux_index": "FIXE",
-          "taux_actuariel": 1.8224
+          "taux_actuariel": 1.8224,
+          "programme": null
         },
         {
           "objet": "18-30, rue Boucry - 75018 - NSG",
@@ -3638,7 +3676,13 @@
           "duree_residuelle": 61.92,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 1.4501
+          "taux_actuariel": 1.4501,
+          "programme": {
+            "adresse": "18-30, RUE BOUCRY",
+            "nb_logements": 222,
+            "n_programmes": 1,
+            "match_basis": "adresse_exacte"
+          }
         },
         {
           "objet": "Diverses adresses - 75000 - RGT",
@@ -3649,9 +3693,18 @@
           "duree_residuelle": 16.16,
           "taux_type": "FIXE",
           "taux_index": "FIXE",
-          "taux_actuariel": 3.8536
+          "taux_actuariel": 3.8536,
+          "programme": null
         }
-      ]
+      ],
+      "financement": {
+        "base_logement": 3732358444,
+        "capital_rattache": 800560532,
+        "capital_portefeuille": 1483558579,
+        "capital_non_rattache": 1448239334,
+        "part_rattachee": 0.21449186719225719,
+        "n_programmes": 461
+      }
     },
     {
       "key": "paris-habitat-oph-ep",
@@ -3663,7 +3716,7 @@
       "nature_dominante": "logement_social_aide",
       "taux_moyen_pondere_pct": 1.386,
       "duree_residuelle_moyenne_ans": 27.38,
-      "part_fixe": 0.23246287113836758,
+      "part_fixe": 0.2324628711383676,
       "preteurs": [
         {
           "name": "CDC",
@@ -3706,7 +3759,8 @@
           "duree_residuelle": 10.86,
           "taux_type": "FIXE",
           "taux_index": "FIXE",
-          "taux_actuariel": 4.9186
+          "taux_actuariel": 4.9186,
+          "programme": null
         },
         {
           "objet": "Divers adresses - 75000 - RGT",
@@ -3717,7 +3771,8 @@
           "duree_residuelle": 9.33,
           "taux_type": "FIXE",
           "taux_index": "FIXE",
-          "taux_actuariel": 2.4079
+          "taux_actuariel": 2.4079,
+          "programme": null
         },
         {
           "objet": "Financement rbrst avances/prêts Ville Paris - TRST",
@@ -3728,7 +3783,8 @@
           "duree_residuelle": 10.86,
           "taux_type": "FIXE",
           "taux_index": "FIXE",
-          "taux_actuariel": 4.8834
+          "taux_actuariel": 4.8834,
+          "programme": null
         },
         {
           "objet": "CPG 2014 - Multi opérations - 75000",
@@ -3739,7 +3795,8 @@
           "duree_residuelle": 35.0,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 1.1528
+          "taux_actuariel": 1.1528,
+          "programme": null
         },
         {
           "objet": "CPG 2015 - Multi opérations - 75000",
@@ -3750,7 +3807,8 @@
           "duree_residuelle": 35.0,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 1.3503
+          "taux_actuariel": 1.3503,
+          "programme": null
         },
         {
           "objet": "Groupe Porte Dorée - Diverses adresses - 75012",
@@ -3761,7 +3819,8 @@
           "duree_residuelle": 37.58,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 1.114
+          "taux_actuariel": 1.114,
+          "programme": null
         },
         {
           "objet": "CPG 2014 - Multi opérations - 75000 - RGT",
@@ -3772,7 +3831,8 @@
           "duree_residuelle": 17.5,
           "taux_type": "FIXE",
           "taux_index": "FIXE",
-          "taux_actuariel": 1.4106
+          "taux_actuariel": 1.4106,
+          "programme": null
         },
         {
           "objet": "Refi. - Diverses adresses - 75000 - RGT - CPCT",
@@ -3783,7 +3843,8 @@
           "duree_residuelle": 27.5,
           "taux_type": "FIXE",
           "taux_index": "FIXE",
-          "taux_actuariel": 1.5456
+          "taux_actuariel": 1.5456,
+          "programme": null
         },
         {
           "objet": "Refi. prêts CFF/Diverses opérations - 75000 - RGT",
@@ -3794,7 +3855,8 @@
           "duree_residuelle": 23.46,
           "taux_type": "FIXE",
           "taux_index": "FIXE",
-          "taux_actuariel": 0.9379
+          "taux_actuariel": 0.9379,
+          "programme": null
         },
         {
           "objet": "Programme d'investissements - 75000",
@@ -3805,7 +3867,8 @@
           "duree_residuelle": 25.25,
           "taux_type": "FIXE",
           "taux_index": "FIXE",
-          "taux_actuariel": 0.288
+          "taux_actuariel": 0.288,
+          "programme": null
         },
         {
           "objet": "Groupe Berthier - 75017",
@@ -3816,7 +3879,8 @@
           "duree_residuelle": 36.0,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 1.1397
+          "taux_actuariel": 1.1397,
+          "programme": null
         },
         {
           "objet": "Diverses opérations - 75000",
@@ -3827,7 +3891,8 @@
           "duree_residuelle": 12.42,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 1.1074
+          "taux_actuariel": 1.1074,
+          "programme": null
         },
         {
           "objet": "CPG 2014 - Multi opérations - 75000",
@@ -3838,7 +3903,8 @@
           "duree_residuelle": 36.92,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 1.1275
+          "taux_actuariel": 1.1275,
+          "programme": null
         },
         {
           "objet": "Groupe Courcelles - 75017",
@@ -3849,7 +3915,8 @@
           "duree_residuelle": 36.0,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 1.1397
+          "taux_actuariel": 1.1397,
+          "programme": null
         },
         {
           "objet": "CPG 2016 - Multi opérations - 75000 - RGT",
@@ -3860,7 +3927,8 @@
           "duree_residuelle": 4.96,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 1.1872
+          "taux_actuariel": 1.1872,
+          "programme": null
         },
         {
           "objet": "Diverses adresses - 75000 -  CPG 2013 - RGT",
@@ -3871,7 +3939,8 @@
           "duree_residuelle": 27.0,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 1.1485
+          "taux_actuariel": 1.1485,
+          "programme": null
         },
         {
           "objet": "CPG 2014 - Multi opérations - 75000",
@@ -3882,7 +3951,8 @@
           "duree_residuelle": 35.0,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 0.3506
+          "taux_actuariel": 0.3506,
+          "programme": null
         },
         {
           "objet": "LLI - Opérations d'investissements - 75000 - NSG",
@@ -3893,7 +3963,8 @@
           "duree_residuelle": 39.01,
           "taux_type": "FIXE",
           "taux_index": "FIXE",
-          "taux_actuariel": 1.0004
+          "taux_actuariel": 1.0004,
+          "programme": null
         },
         {
           "objet": "Groupe Alphonse Karr - 75019 - NSG",
@@ -3904,7 +3975,8 @@
           "duree_residuelle": 24.67,
           "taux_type": "FIXE",
           "taux_index": "FIXE",
-          "taux_actuariel": 0.7909
+          "taux_actuariel": 0.7909,
+          "programme": null
         },
         {
           "objet": "25-33 rue Pradier Fessart - 75019",
@@ -3915,7 +3987,8 @@
           "duree_residuelle": 31.75,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 1.214
+          "taux_actuariel": 1.214,
+          "programme": null
         },
         {
           "objet": "CPG 2014 - Multi opérations - 75000 - RGT",
@@ -3926,7 +3999,8 @@
           "duree_residuelle": 17.5,
           "taux_type": "FIXE",
           "taux_index": "FIXE",
-          "taux_actuariel": 1.4106
+          "taux_actuariel": 1.4106,
+          "programme": null
         },
         {
           "objet": "Rues Bartolomé / Theuriet - 75015",
@@ -3937,7 +4011,8 @@
           "duree_residuelle": 33.92,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 1.1658
+          "taux_actuariel": 1.1658,
+          "programme": null
         },
         {
           "objet": "CPG 2015 - Multi opérations - 75000 - RGT",
@@ -3948,7 +4023,8 @@
           "duree_residuelle": 3.96,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 1.1546
+          "taux_actuariel": 1.1546,
+          "programme": null
         },
         {
           "objet": "Rue de Reuilly - 75012 - RGT",
@@ -3959,7 +4035,8 @@
           "duree_residuelle": 13.45,
           "taux_type": "FIXE",
           "taux_index": "FIXE",
-          "taux_actuariel": 1.191
+          "taux_actuariel": 1.191,
+          "programme": null
         },
         {
           "objet": "21bis rue Claude Bernard - 75005",
@@ -3970,9 +4047,18 @@
           "duree_residuelle": 8.33,
           "taux_type": "FIXE",
           "taux_index": "FIXE",
-          "taux_actuariel": 4.1512
+          "taux_actuariel": 4.1512,
+          "programme": null
         }
-      ]
+      ],
+      "financement": {
+        "base_logement": 2686706647,
+        "capital_rattache": 374481265,
+        "capital_portefeuille": 701339011,
+        "capital_non_rattache": 1610886371,
+        "part_rattachee": 0.1393830121174785,
+        "n_programmes": 329
+      }
     },
     {
       "key": "elogie-siemp-seml",
@@ -3984,7 +4070,7 @@
       "nature_dominante": "logement_social_aide",
       "taux_moyen_pondere_pct": 1.286,
       "duree_residuelle_moyenne_ans": 32.43,
-      "part_fixe": 0.15958388965956802,
+      "part_fixe": 0.15958388965956805,
       "preteurs": [
         {
           "name": "CDC",
@@ -4008,7 +4094,7 @@
           "name": "LBP",
           "capital_restant": 26741621,
           "count_emprunts": 10,
-          "share": 0.0175302373416459
+          "share": 0.017530237341645896
         },
         {
           "name": "CCOOP",
@@ -4027,7 +4113,8 @@
           "duree_residuelle": 32.58,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 1.1299
+          "taux_actuariel": 1.1299,
+          "programme": null
         },
         {
           "objet": "Remboursement avances Ville - 75000 - RGT",
@@ -4038,7 +4125,8 @@
           "duree_residuelle": 18.75,
           "taux_type": "FIXE",
           "taux_index": "FIXE",
-          "taux_actuariel": 2.1004
+          "taux_actuariel": 2.1004,
+          "programme": null
         },
         {
           "objet": "Divers programmes PLS - Refi. DEXIA - 75000 - RGT",
@@ -4049,7 +4137,8 @@
           "duree_residuelle": 31.09,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 1.7052
+          "taux_actuariel": 1.7052,
+          "programme": null
         },
         {
           "objet": "Divers programmes PLS - Refi. DEXIA - 75000 - RGT",
@@ -4060,7 +4149,8 @@
           "duree_residuelle": 28.09,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 1.7773
+          "taux_actuariel": 1.7773,
+          "programme": null
         },
         {
           "objet": "Divers programmes de logements sociaux - 75000",
@@ -4071,7 +4161,8 @@
           "duree_residuelle": 14.08,
           "taux_type": "V",
           "taux_index": "EURIBOR03M",
-          "taux_actuariel": 0.6497
+          "taux_actuariel": 0.6497,
+          "programme": null
         },
         {
           "objet": "1-7, rue Corbineau - 75012 - RGT",
@@ -4082,7 +4173,13 @@
           "duree_residuelle": 33.5,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 2.4079
+          "taux_actuariel": 2.4079,
+          "programme": {
+            "adresse": "1-7, RUE CORBINEAU",
+            "nb_logements": 164,
+            "n_programmes": 1,
+            "match_basis": "adresse_exacte"
+          }
         },
         {
           "objet": "Financement rembt avances Ville de Paris",
@@ -4093,7 +4190,8 @@
           "duree_residuelle": 8.96,
           "taux_type": "FIXE",
           "taux_index": "FIXE",
-          "taux_actuariel": 3.4165
+          "taux_actuariel": 3.4165,
+          "programme": null
         },
         {
           "objet": "Programme Porte Dorée - 75012",
@@ -4104,7 +4202,8 @@
           "duree_residuelle": 24.92,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 0.3025
+          "taux_actuariel": 0.3025,
+          "programme": null
         },
         {
           "objet": "8, Boulevard d'Indochine - 75019",
@@ -4115,7 +4214,13 @@
           "duree_residuelle": 38.0,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 1.1131
+          "taux_actuariel": 1.1131,
+          "programme": {
+            "adresse": "8, BD D'INDOCHINE",
+            "nb_logements": 130,
+            "n_programmes": 1,
+            "match_basis": "adresse_arr"
+          }
         },
         {
           "objet": "Divers programmes PLS - Refi. DEXIA - 75000",
@@ -4126,7 +4231,8 @@
           "duree_residuelle": 41.09,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 1.6817
+          "taux_actuariel": 1.6817,
+          "programme": null
         },
         {
           "objet": "Programme Porte Dorée - 75012",
@@ -4137,7 +4243,8 @@
           "duree_residuelle": 49.92,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 0.3012
+          "taux_actuariel": 0.3012,
+          "programme": null
         },
         {
           "objet": "Renouvellement composants -Divers adresses - 75000",
@@ -4148,7 +4255,8 @@
           "duree_residuelle": 10.04,
           "taux_type": "FIXE",
           "taux_index": "FIXE",
-          "taux_actuariel": 0.7239
+          "taux_actuariel": 0.7239,
+          "programme": null
         },
         {
           "objet": "Divers programmes - 75000",
@@ -4159,7 +4267,8 @@
           "duree_residuelle": 37.58,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 1.6241
+          "taux_actuariel": 1.6241,
+          "programme": null
         },
         {
           "objet": "Remboursements avances Ville - 75000 - RGT",
@@ -4170,7 +4279,8 @@
           "duree_residuelle": 34.0,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 1.1359
+          "taux_actuariel": 1.1359,
+          "programme": null
         },
         {
           "objet": "35-43, rue Duris - 75020 - NSG",
@@ -4181,7 +4291,8 @@
           "duree_residuelle": 25.16,
           "taux_type": "FIXE",
           "taux_index": "FIXE",
-          "taux_actuariel": 0.8308
+          "taux_actuariel": 0.8308,
+          "programme": null
         },
         {
           "objet": "Boulevard Sérurier - 75019 - NSG",
@@ -4192,7 +4303,8 @@
           "duree_residuelle": 25.16,
           "taux_type": "FIXE",
           "taux_index": "FIXE",
-          "taux_actuariel": 0.7909
+          "taux_actuariel": 0.7909,
+          "programme": null
         },
         {
           "objet": "Divers programmes - 75000",
@@ -4203,7 +4315,8 @@
           "duree_residuelle": 47.58,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 1.6216
+          "taux_actuariel": 1.6216,
+          "programme": null
         },
         {
           "objet": "Groupe Clichy II - 75017 - NSG",
@@ -4214,7 +4327,8 @@
           "duree_residuelle": 41.0,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 1.1003
+          "taux_actuariel": 1.1003,
+          "programme": null
         },
         {
           "objet": "Programme Modernisation Ascenseurs - 75000",
@@ -4225,7 +4339,8 @@
           "duree_residuelle": 9.08,
           "taux_type": "FIXE",
           "taux_index": "FIXE",
-          "taux_actuariel": 0.7655
+          "taux_actuariel": 0.7655,
+          "programme": null
         },
         {
           "objet": "Rue du Chevaleret / Square Dunois - 75013",
@@ -4236,7 +4351,8 @@
           "duree_residuelle": 18.5,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 0.0644
+          "taux_actuariel": 0.0644,
+          "programme": null
         },
         {
           "objet": "Divers programmes - 75012 - 75020",
@@ -4247,7 +4363,8 @@
           "duree_residuelle": 38.5,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 1.6102
+          "taux_actuariel": 1.6102,
+          "programme": null
         },
         {
           "objet": "Place du Docteur Michaux - Groupe Princes - 75016",
@@ -4258,7 +4375,8 @@
           "duree_residuelle": 37.5,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 1.6241
+          "taux_actuariel": 1.6241,
+          "programme": null
         },
         {
           "objet": "183-185, rue du Chevaleret - 75013",
@@ -4269,7 +4387,13 @@
           "duree_residuelle": 24.16,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 1.6291
+          "taux_actuariel": 1.6291,
+          "programme": {
+            "adresse": "183-185, RUE DU CHEVALERET",
+            "nb_logements": 433,
+            "n_programmes": 1,
+            "match_basis": "adresse_exacte"
+          }
         },
         {
           "objet": "26 bis, rue Petersbourg - 75008",
@@ -4280,7 +4404,8 @@
           "duree_residuelle": 37.16,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 1.1077
+          "taux_actuariel": 1.1077,
+          "programme": null
         },
         {
           "objet": "Groupe Clichy II - 75017 - NSG",
@@ -4291,9 +4416,18 @@
           "duree_residuelle": 61.0,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 1.0102
+          "taux_actuariel": 1.0102,
+          "programme": null
         }
-      ]
+      ],
+      "financement": {
+        "base_logement": 1525456852,
+        "capital_rattache": 563367333,
+        "capital_portefeuille": 145425343,
+        "capital_non_rattache": 816664176,
+        "part_rattachee": 0.3693105658618786,
+        "n_programmes": 681
+      }
     },
     {
       "key": "icf-habitat-la-sabliere-sa-hlm",
@@ -4305,37 +4439,37 @@
       "nature_dominante": "logement_social_aide",
       "taux_moyen_pondere_pct": 1.385,
       "duree_residuelle_moyenne_ans": 26.01,
-      "part_fixe": 0.12464886138512914,
+      "part_fixe": 0.12464886138512919,
       "preteurs": [
         {
           "name": "CDC",
           "capital_restant": 519462326,
           "count_emprunts": 162,
-          "share": 0.9076881993108812
+          "share": 0.9076881993108814
         },
         {
           "name": "CE",
           "capital_restant": 19596680,
           "count_emprunts": 2,
-          "share": 0.03424247400642833
+          "share": 0.03424247400642834
         },
         {
           "name": "CF",
           "capital_restant": 11118845,
           "count_emprunts": 3,
-          "share": 0.01942863645592134
+          "share": 0.019428636455921345
         },
         {
           "name": "CFCM",
           "capital_restant": 10114985,
           "count_emprunts": 3,
-          "share": 0.017674529247077037
+          "share": 0.01767452924707704
         },
         {
           "name": "CA IdF",
           "capital_restant": 7045450,
           "count_emprunts": 4,
-          "share": 0.012310943788186621
+          "share": 0.012310943788186625
         }
       ],
       "emprunts_top": [
@@ -4348,7 +4482,8 @@
           "duree_residuelle": 19.92,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 2.2524
+          "taux_actuariel": 2.2524,
+          "programme": null
         },
         {
           "objet": "Diverses adresses - 75000 - RGT",
@@ -4359,7 +4494,8 @@
           "duree_residuelle": 14.92,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 1.5008
+          "taux_actuariel": 1.5008,
+          "programme": null
         },
         {
           "objet": "1, rue Gergovie - 75014 - RGT",
@@ -4370,7 +4506,8 @@
           "duree_residuelle": 29.0,
           "taux_type": "FIXE",
           "taux_index": "FIXE",
-          "taux_actuariel": 0.571
+          "taux_actuariel": 0.571,
+          "programme": null
         },
         {
           "objet": "Diverses adresses - 75000",
@@ -4381,7 +4518,8 @@
           "duree_residuelle": 14.87,
           "taux_type": "FIXE",
           "taux_index": "FIXE",
-          "taux_actuariel": 4.1501
+          "taux_actuariel": 4.1501,
+          "programme": null
         },
         {
           "objet": "3-5, rue Fulton - 75013 - NSG",
@@ -4392,7 +4530,8 @@
           "duree_residuelle": 36.58,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 1.1004
+          "taux_actuariel": 1.1004,
+          "programme": null
         },
         {
           "objet": "3-17 rue Andrézieux - 75018",
@@ -4403,7 +4542,8 @@
           "duree_residuelle": 27.58,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 1.2087
+          "taux_actuariel": 1.2087,
+          "programme": null
         },
         {
           "objet": "3-17, rue Andrézieux - 75018 - RGT",
@@ -4414,7 +4554,8 @@
           "duree_residuelle": 22.58,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 1.4005
+          "taux_actuariel": 1.4005,
+          "programme": null
         },
         {
           "objet": "Secteur Ordener/Poissonniers (Lot 3) - 75018 - NSG",
@@ -4425,7 +4566,8 @@
           "duree_residuelle": 36.92,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 0.3017
+          "taux_actuariel": 0.3017,
+          "programme": null
         },
         {
           "objet": "Résidence Sociale / Triangle Eole Evangile - 75019",
@@ -4436,7 +4578,8 @@
           "duree_residuelle": 34.92,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 1.1004
+          "taux_actuariel": 1.1004,
+          "programme": null
         },
         {
           "objet": "3-17 rue Andrézieux - 75018",
@@ -4447,7 +4590,8 @@
           "duree_residuelle": 27.58,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 0.4062
+          "taux_actuariel": 0.4062,
+          "programme": null
         },
         {
           "objet": "Gare de Lyon/Les Messageries L2-L7 - 75012 - NSG",
@@ -4458,7 +4602,8 @@
           "duree_residuelle": 36.0,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 0.3017
+          "taux_actuariel": 0.3017,
+          "programme": null
         },
         {
           "objet": "ZAC Rive Gauche - 75013 / Vaugirard - 75015 - RGT",
@@ -4469,7 +4614,8 @@
           "duree_residuelle": 14.9,
           "taux_type": "FIXE",
           "taux_index": "FIXE",
-          "taux_actuariel": 4.3401
+          "taux_actuariel": 4.3401,
+          "programme": null
         },
         {
           "objet": "Secteur Ordener/Poissonniers - 75018 - NSG",
@@ -4480,7 +4626,8 @@
           "duree_residuelle": 36.92,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 1.1004
+          "taux_actuariel": 1.1004,
+          "programme": null
         },
         {
           "objet": "3-5, rue Fulton - 75013 - NSG",
@@ -4491,7 +4638,8 @@
           "duree_residuelle": 31.58,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 1.5603
+          "taux_actuariel": 1.5603,
+          "programme": null
         },
         {
           "objet": "Gare de Lyon/Les Messageries L2-L7 - 75012 - NSG",
@@ -4502,7 +4650,8 @@
           "duree_residuelle": 36.0,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 1.1004
+          "taux_actuariel": 1.1004,
+          "programme": null
         },
         {
           "objet": "Secteur Hébert (Lot M) - 75018 - NSG",
@@ -4513,7 +4662,8 @@
           "duree_residuelle": 36.75,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 1.1004
+          "taux_actuariel": 1.1004,
+          "programme": null
         },
         {
           "objet": "Secteur Hébert (Lot M) - 75018 - NSG",
@@ -4524,7 +4674,8 @@
           "duree_residuelle": 36.75,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 0.3017
+          "taux_actuariel": 0.3017,
+          "programme": null
         },
         {
           "objet": "Résidence Sociale / Triangle Eole Evangile - 75019",
@@ -4535,7 +4686,8 @@
           "duree_residuelle": 34.92,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 0.3017
+          "taux_actuariel": 0.3017,
+          "programme": null
         },
         {
           "objet": "3-5 rue Fulton - 75013",
@@ -4546,7 +4698,8 @@
           "duree_residuelle": 27.0,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 1.1609
+          "taux_actuariel": 1.1609,
+          "programme": null
         },
         {
           "objet": "Lotissement Saussure - Ilot 4-7- 75017 - RGT",
@@ -4557,7 +4710,8 @@
           "duree_residuelle": 29.5,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 1.1387
+          "taux_actuariel": 1.1387,
+          "programme": null
         },
         {
           "objet": "11 rue du Charolais - 75012",
@@ -4568,7 +4722,13 @@
           "duree_residuelle": 26.17,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 0.4904
+          "taux_actuariel": 0.4904,
+          "programme": {
+            "adresse": "11, RUE DU CHAROLAIS",
+            "nb_logements": 210,
+            "n_programmes": 1,
+            "match_basis": "adresse_exacte"
+          }
         },
         {
           "objet": "Secteur Hébert (Lot G) - 75018 - NSG",
@@ -4579,7 +4739,8 @@
           "duree_residuelle": 36.75,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 0.3017
+          "taux_actuariel": 0.3017,
+          "programme": null
         },
         {
           "objet": "4-14 Passage Delessert - 75010",
@@ -4590,7 +4751,8 @@
           "duree_residuelle": 27.84,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 1.1982
+          "taux_actuariel": 1.1982,
+          "programme": null
         },
         {
           "objet": "Secteur Hébert (Lot G) - 75018 - NSG",
@@ -4601,7 +4763,8 @@
           "duree_residuelle": 36.75,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 1.1004
+          "taux_actuariel": 1.1004,
+          "programme": null
         },
         {
           "objet": "Lotissement Saussure lot 4.5 - 75017",
@@ -4612,9 +4775,18 @@
           "duree_residuelle": 21.0,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 1.888
+          "taux_actuariel": 1.888,
+          "programme": null
         }
-      ]
+      ],
+      "financement": {
+        "base_logement": 572291594,
+        "capital_rattache": 72008333,
+        "capital_portefeuille": 141049304,
+        "capital_non_rattache": 359233957,
+        "part_rattachee": 0.1258245513436291,
+        "n_programmes": 27
+      }
     },
     {
       "key": "semapa-spla",
@@ -4669,7 +4841,8 @@
           "duree_residuelle": 6.44,
           "taux_type": "FIXE",
           "taux_index": "FIXE",
-          "taux_actuariel": 1.6102
+          "taux_actuariel": 1.6102,
+          "programme": null
         },
         {
           "objet": "Financement ZAC - 75000",
@@ -4680,7 +4853,8 @@
           "duree_residuelle": 6.49,
           "taux_type": "V",
           "taux_index": "EURIBOR03M",
-          "taux_actuariel": 0.8798
+          "taux_actuariel": 0.8798,
+          "programme": null
         },
         {
           "objet": "Financement ZAC - 75000",
@@ -4691,51 +4865,8 @@
           "duree_residuelle": 2.69,
           "taux_type": "FIXE",
           "taux_index": "FIXE",
-          "taux_actuariel": 0.2059
-        },
-        {
-          "objet": "Financement ZAC - 75000 - GA",
-          "preteur": "AUREL BGC SAS",
-          "annee_mobilisation": 2021,
-          "montant_initial": 24000000,
-          "capital_restant": 24000000,
-          "duree_residuelle": 6.26,
-          "taux_type": "FIXE",
-          "taux_index": "FIXE",
-          "taux_actuariel": 0.1466
-        },
-        {
-          "objet": "Financement ZAC - 75000 - GA",
-          "preteur": "HSBC",
-          "annee_mobilisation": 2020,
-          "montant_initial": 24000000,
-          "capital_restant": 24000000,
-          "duree_residuelle": 0.12,
-          "taux_type": "V",
-          "taux_index": "EURIBOR03M",
-          "taux_actuariel": 0.1765
-        },
-        {
-          "objet": "Financement ZAC - 75000",
-          "preteur": "LBP",
-          "annee_mobilisation": 2019,
-          "montant_initial": 24000000,
-          "capital_restant": 24000000,
-          "duree_residuelle": 3.37,
-          "taux_type": "FIXE",
-          "taux_index": "FIXE",
-          "taux_actuariel": 0.329
-        },
-        {
-          "objet": "Financement ZAC - 75000 - AC",
-          "preteur": "CA IdF",
-          "annee_mobilisation": 2020,
-          "montant_initial": 24000000,
-          "capital_restant": 24000000,
-          "duree_residuelle": 4.75,
-          "taux_type": "FIXE",
-          "taux_index": "FIXE",
-          "taux_actuariel": 0.4911
+          "taux_actuariel": 0.2059,
+          "programme": null
         },
         {
           "objet": "Financement ZAC - 75000",
@@ -4746,7 +4877,44 @@
           "duree_residuelle": 5.21,
           "taux_type": "FIXE",
           "taux_index": "FIXE",
-          "taux_actuariel": 1.3347
+          "taux_actuariel": 1.3347,
+          "programme": null
+        },
+        {
+          "objet": "Financement ZAC - 75000",
+          "preteur": "LBP",
+          "annee_mobilisation": 2019,
+          "montant_initial": 24000000,
+          "capital_restant": 24000000,
+          "duree_residuelle": 3.37,
+          "taux_type": "FIXE",
+          "taux_index": "FIXE",
+          "taux_actuariel": 0.329,
+          "programme": null
+        },
+        {
+          "objet": "Financement ZAC - 75000 - AC",
+          "preteur": "CA IdF",
+          "annee_mobilisation": 2020,
+          "montant_initial": 24000000,
+          "capital_restant": 24000000,
+          "duree_residuelle": 4.75,
+          "taux_type": "FIXE",
+          "taux_index": "FIXE",
+          "taux_actuariel": 0.4911,
+          "programme": null
+        },
+        {
+          "objet": "Financement ZAC - 75000 - GA",
+          "preteur": "AUREL BGC SAS",
+          "annee_mobilisation": 2021,
+          "montant_initial": 24000000,
+          "capital_restant": 24000000,
+          "duree_residuelle": 6.26,
+          "taux_type": "FIXE",
+          "taux_index": "FIXE",
+          "taux_actuariel": 0.1466,
+          "programme": null
         },
         {
           "objet": "Financement ZAC - 75000 - GA",
@@ -4757,7 +4925,20 @@
           "duree_residuelle": 2.14,
           "taux_type": "FIXE",
           "taux_index": "FIXE",
-          "taux_actuariel": 0.3752
+          "taux_actuariel": 0.3752,
+          "programme": null
+        },
+        {
+          "objet": "Financement ZAC - 75000 - GA",
+          "preteur": "HSBC",
+          "annee_mobilisation": 2020,
+          "montant_initial": 24000000,
+          "capital_restant": 24000000,
+          "duree_residuelle": 0.12,
+          "taux_type": "V",
+          "taux_index": "EURIBOR03M",
+          "taux_actuariel": 0.1765,
+          "programme": null
         },
         {
           "objet": "Financement ZAC - EMTN - 75000 - GA",
@@ -4768,29 +4949,8 @@
           "duree_residuelle": 6.15,
           "taux_type": "FIXE",
           "taux_index": "FIXE",
-          "taux_actuariel": 1.6004
-        },
-        {
-          "objet": "Financement ZAC - 75000 - GA",
-          "preteur": "GFI",
-          "annee_mobilisation": 2017,
-          "montant_initial": 16000000,
-          "capital_restant": 16000000,
-          "duree_residuelle": 2.1,
-          "taux_type": "V",
-          "taux_index": "E06M-MOY",
-          "taux_actuariel": 0.1128
-        },
-        {
-          "objet": "Financement ZAC - 75000 - GA",
-          "preteur": "HSBC",
-          "annee_mobilisation": 2021,
-          "montant_initial": 16000000,
-          "capital_restant": 16000000,
-          "duree_residuelle": 6.28,
-          "taux_type": "FIXE",
-          "taux_index": "FIXE",
-          "taux_actuariel": 0.1466
+          "taux_actuariel": 1.6004,
+          "programme": null
         },
         {
           "objet": "Financement ZAC - 75000 - GA",
@@ -4801,7 +4961,32 @@
           "duree_residuelle": 1.28,
           "taux_type": "V",
           "taux_index": "EURIBOR03M",
-          "taux_actuariel": 0.393
+          "taux_actuariel": 0.393,
+          "programme": null
+        },
+        {
+          "objet": "Financement ZAC - 75000 - GA",
+          "preteur": "HSBC",
+          "annee_mobilisation": 2021,
+          "montant_initial": 16000000,
+          "capital_restant": 16000000,
+          "duree_residuelle": 6.28,
+          "taux_type": "FIXE",
+          "taux_index": "FIXE",
+          "taux_actuariel": 0.1466,
+          "programme": null
+        },
+        {
+          "objet": "Financement ZAC - 75000 - GA",
+          "preteur": "GFI",
+          "annee_mobilisation": 2017,
+          "montant_initial": 16000000,
+          "capital_restant": 16000000,
+          "duree_residuelle": 2.1,
+          "taux_type": "V",
+          "taux_index": "E06M-MOY",
+          "taux_actuariel": 0.1128,
+          "programme": null
         },
         {
           "objet": "Financement ZAC - 75000",
@@ -4812,7 +4997,8 @@
           "duree_residuelle": 3.34,
           "taux_type": "FIXE",
           "taux_index": "FIXE",
-          "taux_actuariel": 0.225
+          "taux_actuariel": 0.225,
+          "programme": null
         },
         {
           "objet": "Financement ZAC - 75000",
@@ -4823,7 +5009,8 @@
           "duree_residuelle": 3.54,
           "taux_type": "FIXE",
           "taux_index": "FIXE",
-          "taux_actuariel": 0.0009
+          "taux_actuariel": 0.0009,
+          "programme": null
         },
         {
           "objet": "Financement ZAC - 75000 - GA",
@@ -4834,7 +5021,8 @@
           "duree_residuelle": 2.28,
           "taux_type": "FIXE",
           "taux_index": "FIXE",
-          "taux_actuariel": 0.0
+          "taux_actuariel": 0.0,
+          "programme": null
         },
         {
           "objet": "Financement ZAC - 75000 - GA",
@@ -4845,9 +5033,18 @@
           "duree_residuelle": 1.97,
           "taux_type": "FIXE",
           "taux_index": "FIXE",
-          "taux_actuariel": 0.0
+          "taux_actuariel": 0.0,
+          "programme": null
         }
-      ]
+      ],
+      "financement": {
+        "base_logement": 357215497,
+        "capital_rattache": 0,
+        "capital_portefeuille": 0,
+        "capital_non_rattache": 357215497,
+        "part_rattachee": 0.0,
+        "n_programmes": 0
+      }
     },
     {
       "key": "immobiliere-3f-i3f-sa-hlm",
@@ -4859,7 +5056,7 @@
       "nature_dominante": "logement_social_aide",
       "taux_moyen_pondere_pct": 1.507,
       "duree_residuelle_moyenne_ans": 28.15,
-      "part_fixe": 0.13429536944378853,
+      "part_fixe": 0.13429536944378856,
       "preteurs": [
         {
           "name": "CDC",
@@ -4902,7 +5099,8 @@
           "duree_residuelle": 17.0,
           "taux_type": "FIXE",
           "taux_index": "FIXE",
-          "taux_actuariel": 1.6405
+          "taux_actuariel": 1.6405,
+          "programme": null
         },
         {
           "objet": "Rue Chanez et rue Erlanger - 75016 - RGT",
@@ -4913,7 +5111,8 @@
           "duree_residuelle": 30.92,
           "taux_type": "V",
           "taux_index": "INF FR XT",
-          "taux_actuariel": 3.1817
+          "taux_actuariel": 3.1817,
+          "programme": null
         },
         {
           "objet": "129-131 rue du Faubourg du Temple - 75010",
@@ -4924,7 +5123,8 @@
           "duree_residuelle": 33.42,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 0.9783
+          "taux_actuariel": 0.9783,
+          "programme": null
         },
         {
           "objet": "Rues Riquet / D'Aubervilliers - 75019 - RGT",
@@ -4935,7 +5135,8 @@
           "duree_residuelle": 11.96,
           "taux_type": "FIXE",
           "taux_index": "FIXE",
-          "taux_actuariel": 1.3708
+          "taux_actuariel": 1.3708,
+          "programme": null
         },
         {
           "objet": "17, bd Morland - 75004 - NSG",
@@ -4946,7 +5147,13 @@
           "duree_residuelle": 41.16,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 1.1003
+          "taux_actuariel": 1.1003,
+          "programme": {
+            "adresse": "17, BD MORLAND",
+            "nb_logements": 80,
+            "n_programmes": 1,
+            "match_basis": "adresse_exacte"
+          }
         },
         {
           "objet": "85-97 rue Damrémont - 75018 - TRST - RGT",
@@ -4957,7 +5164,8 @@
           "duree_residuelle": 32.84,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 1.5271
+          "taux_actuariel": 1.5271,
+          "programme": null
         },
         {
           "objet": "47, rue des Francs Bourgeois  - 75004 - RGT",
@@ -4968,7 +5176,8 @@
           "duree_residuelle": 30.92,
           "taux_type": "V",
           "taux_index": "INF FR XT",
-          "taux_actuariel": 3.1817
+          "taux_actuariel": 3.1817,
+          "programme": null
         },
         {
           "objet": "4-17 rue Didot - 75014",
@@ -4979,7 +5188,8 @@
           "duree_residuelle": 8.0,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 1.4083
+          "taux_actuariel": 1.4083,
+          "programme": null
         },
         {
           "objet": "ZAC Paris Rive Gauche - 75013 (Secteur Tolbiac)",
@@ -4990,7 +5200,8 @@
           "duree_residuelle": 25.25,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 1.6547
+          "taux_actuariel": 1.6547,
+          "programme": null
         },
         {
           "objet": "Diverses adresses - 75000",
@@ -5001,7 +5212,8 @@
           "duree_residuelle": 8.82,
           "taux_type": "FIXE",
           "taux_index": "FIXE",
-          "taux_actuariel": 3.4713
+          "taux_actuariel": 3.4713,
+          "programme": null
         },
         {
           "objet": "141, Bd Macdonald - 75019",
@@ -5012,7 +5224,8 @@
           "duree_residuelle": 35.0,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 1.1506
+          "taux_actuariel": 1.1506,
+          "programme": null
         },
         {
           "objet": "15-21-23, allée du Fontainebleau - 75019 - NSG",
@@ -5023,7 +5236,8 @@
           "duree_residuelle": 13.92,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 0.0
+          "taux_actuariel": 0.0,
+          "programme": null
         },
         {
           "objet": "67 à 79 avenue de Flandre - 75019 - RGT",
@@ -5034,7 +5248,13 @@
           "duree_residuelle": 11.96,
           "taux_type": "FIXE",
           "taux_index": "FIXE",
-          "taux_actuariel": 1.3708
+          "taux_actuariel": 1.3708,
+          "programme": {
+            "adresse": "67 AVENUE DE FLANDRE",
+            "nb_logements": 18,
+            "n_programmes": 1,
+            "match_basis": "adresse_exacte"
+          }
         },
         {
           "objet": "141, Bd Macdonald - 75019",
@@ -5045,7 +5265,8 @@
           "duree_residuelle": 45.0,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 1.1418
+          "taux_actuariel": 1.1418,
+          "programme": null
         },
         {
           "objet": "17, bd Morland - 75004 - NSG",
@@ -5056,7 +5277,13 @@
           "duree_residuelle": 61.16,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 0.7403
+          "taux_actuariel": 0.7403,
+          "programme": {
+            "adresse": "17, BD MORLAND",
+            "nb_logements": 80,
+            "n_programmes": 1,
+            "match_basis": "adresse_exacte"
+          }
         },
         {
           "objet": "6/8 rue Dulac - 75015 - RGT",
@@ -5067,7 +5294,13 @@
           "duree_residuelle": 31.5,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 1.5231
+          "taux_actuariel": 1.5231,
+          "programme": {
+            "adresse": "6-8, RUE DULAC",
+            "nb_logements": 48,
+            "n_programmes": 1,
+            "match_basis": "adresse_exacte"
+          }
         },
         {
           "objet": "Orgues et avenue de flandre - 75019",
@@ -5078,7 +5311,8 @@
           "duree_residuelle": 12.42,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 1.3542
+          "taux_actuariel": 1.3542,
+          "programme": null
         },
         {
           "objet": "11 rue Lepic - 75018",
@@ -5089,7 +5323,8 @@
           "duree_residuelle": 38.42,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 1.4063
+          "taux_actuariel": 1.4063,
+          "programme": null
         },
         {
           "objet": "49, rue du Général Brunet - 75019 - RGT",
@@ -5100,7 +5335,8 @@
           "duree_residuelle": 12.92,
           "taux_type": "V",
           "taux_index": "INF FR XT",
-          "taux_actuariel": 3.1964
+          "taux_actuariel": 3.1964,
+          "programme": null
         },
         {
           "objet": "17, bd Morland - 75004 - NSG",
@@ -5111,7 +5347,13 @@
           "duree_residuelle": 41.16,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 1.1003
+          "taux_actuariel": 1.1003,
+          "programme": {
+            "adresse": "17, BD MORLAND",
+            "nb_logements": 80,
+            "n_programmes": 1,
+            "match_basis": "adresse_exacte"
+          }
         },
         {
           "objet": "ZAC Clichy Batignolles - 75017",
@@ -5122,7 +5364,8 @@
           "duree_residuelle": 27.58,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 1.629
+          "taux_actuariel": 1.629,
+          "programme": null
         },
         {
           "objet": "Plan Climat / 14-20, rue Archereau - 75019",
@@ -5133,7 +5376,8 @@
           "duree_residuelle": 14.75,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 0.1323
+          "taux_actuariel": 0.1323,
+          "programme": null
         },
         {
           "objet": "17-21 rue Thionville - 75019 - RGT",
@@ -5144,7 +5388,8 @@
           "duree_residuelle": 24.09,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 1.521
+          "taux_actuariel": 1.521,
+          "programme": null
         },
         {
           "objet": "17, bd Morland - 75004 - NSG",
@@ -5155,7 +5400,13 @@
           "duree_residuelle": 61.16,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 0.7403
+          "taux_actuariel": 0.7403,
+          "programme": {
+            "adresse": "17, BD MORLAND",
+            "nb_logements": 80,
+            "n_programmes": 1,
+            "match_basis": "adresse_exacte"
+          }
         },
         {
           "objet": "9-11, rue Riquet - 75019 - NSG",
@@ -5166,9 +5417,18 @@
           "duree_residuelle": 18.92,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 0.0661
+          "taux_actuariel": 0.0661,
+          "programme": null
         }
-      ]
+      ],
+      "financement": {
+        "base_logement": 227169316,
+        "capital_rattache": 64220217,
+        "capital_portefeuille": 3460918,
+        "capital_non_rattache": 159488181,
+        "part_rattachee": 0.28269758528818384,
+        "n_programmes": 57
+      }
     },
     {
       "key": "batigere-ile-de-france-esh",
@@ -5223,7 +5483,8 @@
           "duree_residuelle": 13.92,
           "taux_type": "FIXE",
           "taux_index": "FIXE",
-          "taux_actuariel": 3.239
+          "taux_actuariel": 3.239,
+          "programme": null
         },
         {
           "objet": "Diverses adresses - 75000 - CPCT 3 prêts",
@@ -5234,7 +5495,8 @@
           "duree_residuelle": 36.84,
           "taux_type": "FIXE",
           "taux_index": "FIXE",
-          "taux_actuariel": 2.9937
+          "taux_actuariel": 2.9937,
+          "programme": null
         },
         {
           "objet": "113 à 117 rue des Orteaux - 75020",
@@ -5245,7 +5507,8 @@
           "duree_residuelle": 36.0,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 1.5264
+          "taux_actuariel": 1.5264,
+          "programme": null
         },
         {
           "objet": "ZAC Paris Rive Gauche lot M9D1D2 - 75013",
@@ -5256,7 +5519,13 @@
           "duree_residuelle": 33.67,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 1.1594
+          "taux_actuariel": 1.1594,
+          "programme": {
+            "adresse": "ZAC PARIS RIVE GAUCHE LOT M9D1D2",
+            "nb_logements": 71,
+            "n_programmes": 1,
+            "match_basis": "adresse_exacte"
+          }
         },
         {
           "objet": "20 rue de Tourtille - 75020",
@@ -5267,7 +5536,13 @@
           "duree_residuelle": 34.09,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 1.6765
+          "taux_actuariel": 1.6765,
+          "programme": {
+            "adresse": "20, RUE DE TOURTILLE",
+            "nb_logements": 30,
+            "n_programmes": 1,
+            "match_basis": "adresse_exacte"
+          }
         },
         {
           "objet": "Lot O8 ZAC Clichy Batignolles - 75017",
@@ -5278,7 +5553,8 @@
           "duree_residuelle": 36.84,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 1.1262
+          "taux_actuariel": 1.1262,
+          "programme": null
         },
         {
           "objet": "87-89, rue Damrémont - 75018 - RGT",
@@ -5289,7 +5565,8 @@
           "duree_residuelle": 33.25,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 2.3552
+          "taux_actuariel": 2.3552,
+          "programme": null
         },
         {
           "objet": "Lot O8 ZAC Clichy Batignolles - 75017",
@@ -5300,7 +5577,8 @@
           "duree_residuelle": 56.84,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 1.1985
+          "taux_actuariel": 1.1985,
+          "programme": null
         },
         {
           "objet": "26 rue Linois - 75015 - RGT",
@@ -5311,7 +5589,8 @@
           "duree_residuelle": 31.67,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 1.557
+          "taux_actuariel": 1.557,
+          "programme": null
         },
         {
           "objet": "143 av. Jean Jaurès - 75019",
@@ -5322,7 +5601,8 @@
           "duree_residuelle": 29.95,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 1.9156
+          "taux_actuariel": 1.9156,
+          "programme": null
         },
         {
           "objet": "ZAC Paris Rive Gauche lot M9D1D2 - 75013",
@@ -5333,7 +5613,13 @@
           "duree_residuelle": 30.5,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 1.8845
+          "taux_actuariel": 1.8845,
+          "programme": {
+            "adresse": "ZAC PARIS RIVE GAUCHE LOT M9D1D2",
+            "nb_logements": 71,
+            "n_programmes": 1,
+            "match_basis": "adresse_exacte"
+          }
         },
         {
           "objet": "26 rue Linois - 75015 - RGT",
@@ -5344,7 +5630,8 @@
           "duree_residuelle": 41.67,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 1.5417
+          "taux_actuariel": 1.5417,
+          "programme": null
         },
         {
           "objet": "Rue de l'Argonne - 75019",
@@ -5355,7 +5642,8 @@
           "duree_residuelle": 35.58,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 1.136
+          "taux_actuariel": 1.136,
+          "programme": null
         },
         {
           "objet": "Lot O8 ZAC Clichy Batignolles - 75017",
@@ -5366,7 +5654,8 @@
           "duree_residuelle": 56.84,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 1.1985
+          "taux_actuariel": 1.1985,
+          "programme": null
         },
         {
           "objet": "Rue Linois - 75015",
@@ -5377,7 +5666,8 @@
           "duree_residuelle": 32.0,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 1.1658
+          "taux_actuariel": 1.1658,
+          "programme": null
         },
         {
           "objet": "Refinancement - 1, Passage Vallet - 75013",
@@ -5388,7 +5678,8 @@
           "duree_residuelle": 39.75,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 1.1185
+          "taux_actuariel": 1.1185,
+          "programme": null
         },
         {
           "objet": "91, rue Damrémont - 75018 - RGT",
@@ -5399,7 +5690,8 @@
           "duree_residuelle": 33.25,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 2.3552
+          "taux_actuariel": 2.3552,
+          "programme": null
         },
         {
           "objet": "Rue de l'Argonne - 75019",
@@ -5410,7 +5702,8 @@
           "duree_residuelle": 45.58,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 1.1295
+          "taux_actuariel": 1.1295,
+          "programme": null
         },
         {
           "objet": "Rue de la Chapelle - 75018 - RGT",
@@ -5421,7 +5714,8 @@
           "duree_residuelle": 44.0,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 1.5675
+          "taux_actuariel": 1.5675,
+          "programme": null
         },
         {
           "objet": "ZAC Paris Rive Gauche lot M9D1D2 - 75013",
@@ -5432,7 +5726,13 @@
           "duree_residuelle": 40.5,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 1.8366
+          "taux_actuariel": 1.8366,
+          "programme": {
+            "adresse": "ZAC PARIS RIVE GAUCHE LOT M9D1D2",
+            "nb_logements": 71,
+            "n_programmes": 1,
+            "match_basis": "adresse_exacte"
+          }
         },
         {
           "objet": "ZAC Paris Rive Gauche lot M9D1D2 - 75013",
@@ -5443,7 +5743,13 @@
           "duree_residuelle": 43.67,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 1.1491
+          "taux_actuariel": 1.1491,
+          "programme": {
+            "adresse": "ZAC PARIS RIVE GAUCHE LOT M9D1D2",
+            "nb_logements": 71,
+            "n_programmes": 1,
+            "match_basis": "adresse_exacte"
+          }
         },
         {
           "objet": "143 av. Jean Jaurès - 75019",
@@ -5454,7 +5760,8 @@
           "duree_residuelle": 39.96,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 1.8781
+          "taux_actuariel": 1.8781,
+          "programme": null
         },
         {
           "objet": "diverses adresses",
@@ -5465,7 +5772,8 @@
           "duree_residuelle": 28.58,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 1.4244
+          "taux_actuariel": 1.4244,
+          "programme": null
         },
         {
           "objet": "71, rue St Dominique - 75007 - RGT",
@@ -5476,7 +5784,8 @@
           "duree_residuelle": 39.09,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 1.1003
+          "taux_actuariel": 1.1003,
+          "programme": null
         },
         {
           "objet": "153 rue Championnet - 75018",
@@ -5487,9 +5796,23 @@
           "duree_residuelle": 36.0,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 1.1379
+          "taux_actuariel": 1.1379,
+          "programme": {
+            "adresse": "153 RUE CHAMPIONNET",
+            "nb_logements": 16,
+            "n_programmes": 1,
+            "match_basis": "adresse_exacte"
+          }
         }
-      ]
+      ],
+      "financement": {
+        "base_logement": 178987881,
+        "capital_rattache": 51410725,
+        "capital_portefeuille": 53480675,
+        "capital_non_rattache": 74096481,
+        "part_rattachee": 0.2872302014914031,
+        "n_programmes": 43
+      }
     },
     {
       "key": "cdc-habitat-social-sem",
@@ -5507,7 +5830,7 @@
           "name": "CDC",
           "capital_restant": 120678810,
           "count_emprunts": 155,
-          "share": 0.7231474832472096
+          "share": 0.7231474832472095
         },
         {
           "name": "CA IdF",
@@ -5538,7 +5861,8 @@
           "duree_residuelle": 30.55,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 2.0577
+          "taux_actuariel": 2.0577,
+          "programme": null
         },
         {
           "objet": "2-14 avenue de la Porte de Vincennes - 75020",
@@ -5549,7 +5873,8 @@
           "duree_residuelle": 40.4,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 1.8744
+          "taux_actuariel": 1.8744,
+          "programme": null
         },
         {
           "objet": "2-14 avenue de la Porte de Vincennes - 75020",
@@ -5560,7 +5885,8 @@
           "duree_residuelle": 19.15,
           "taux_type": "V",
           "taux_index": "EURIBOR03M",
-          "taux_actuariel": 0.4941
+          "taux_actuariel": 0.4941,
+          "programme": null
         },
         {
           "objet": "Ilôt 13 Blanqui Glacière - 75013 - TRST",
@@ -5571,7 +5897,8 @@
           "duree_residuelle": 38.67,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 1.4111
+          "taux_actuariel": 1.4111,
+          "programme": null
         },
         {
           "objet": "Diverses adresses - 75000",
@@ -5582,7 +5909,8 @@
           "duree_residuelle": 27.58,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 1.1855
+          "taux_actuariel": 1.1855,
+          "programme": null
         },
         {
           "objet": "88-90, boulevard Ney - 75018",
@@ -5593,7 +5921,13 @@
           "duree_residuelle": 38.0,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 1.5126
+          "taux_actuariel": 1.5126,
+          "programme": {
+            "adresse": "88-90, BOULEVARD NEY",
+            "nb_logements": 300,
+            "n_programmes": 2,
+            "match_basis": "adresse_arr"
+          }
         },
         {
           "objet": "88-90, boulevard Ney - 75018",
@@ -5604,7 +5938,13 @@
           "duree_residuelle": 28.0,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 1.5135
+          "taux_actuariel": 1.5135,
+          "programme": {
+            "adresse": "88-90, BOULEVARD NEY",
+            "nb_logements": 300,
+            "n_programmes": 2,
+            "match_basis": "adresse_arr"
+          }
         },
         {
           "objet": "Icade Paris 12 Meuniers - 75012",
@@ -5615,7 +5955,8 @@
           "duree_residuelle": 39.0,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 1.8703
+          "taux_actuariel": 1.8703,
+          "programme": null
         },
         {
           "objet": "141-219 bd Mac Donald - 75019",
@@ -5626,7 +5967,8 @@
           "duree_residuelle": 44.0,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 1.6695
+          "taux_actuariel": 1.6695,
+          "programme": null
         },
         {
           "objet": "Icade Bisson Cité de Gênes -75020",
@@ -5637,7 +5979,8 @@
           "duree_residuelle": 29.09,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 1.9447
+          "taux_actuariel": 1.9447,
+          "programme": null
         },
         {
           "objet": "Diverses adresses - 75000 - CPCT",
@@ -5648,7 +5991,8 @@
           "duree_residuelle": 34.85,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 1.8847
+          "taux_actuariel": 1.8847,
+          "programme": null
         },
         {
           "objet": "Icade Paris 12 Meuniers - 75012",
@@ -5659,7 +6003,8 @@
           "duree_residuelle": 19.0,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 2.0115
+          "taux_actuariel": 2.0115,
+          "programme": null
         },
         {
           "objet": "141-219 Bld Macdonald - 75019",
@@ -5670,7 +6015,8 @@
           "duree_residuelle": 29.58,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 1.1203
+          "taux_actuariel": 1.1203,
+          "programme": null
         },
         {
           "objet": "Diverses adresses - 75000 - CPCT",
@@ -5681,7 +6027,8 @@
           "duree_residuelle": 7.0,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 2.3264
+          "taux_actuariel": 2.3264,
+          "programme": null
         },
         {
           "objet": "Icade Paris 12 Meuniers - 75012",
@@ -5692,7 +6039,8 @@
           "duree_residuelle": 29.0,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 1.917
+          "taux_actuariel": 1.917,
+          "programme": null
         },
         {
           "objet": "Icade Bisson Cité de Gênes -75020",
@@ -5703,7 +6051,8 @@
           "duree_residuelle": 39.09,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 1.8839
+          "taux_actuariel": 1.8839,
+          "programme": null
         },
         {
           "objet": "5-7 place de Vénétie - 75013 - TRST",
@@ -5714,7 +6063,8 @@
           "duree_residuelle": 13.5,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 1.5988
+          "taux_actuariel": 1.5988,
+          "programme": null
         },
         {
           "objet": "6-8 place de la Porte de Champerret - 75017 - TRST",
@@ -5725,7 +6075,8 @@
           "duree_residuelle": 37.75,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 0.6285
+          "taux_actuariel": 0.6285,
+          "programme": null
         },
         {
           "objet": "6-8 place de la Porte de Champerret - 75017 - TRST",
@@ -5736,7 +6087,8 @@
           "duree_residuelle": 37.75,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 1.4477
+          "taux_actuariel": 1.4477,
+          "programme": null
         },
         {
           "objet": "21, rue de la Chapelle - 75018",
@@ -5747,7 +6099,8 @@
           "duree_residuelle": 38.0,
           "taux_type": "V",
           "taux_index": "INF FR XT",
-          "taux_actuariel": 0.3013
+          "taux_actuariel": 0.3013,
+          "programme": null
         },
         {
           "objet": "141-219 Bld Macdonald - 75019",
@@ -5758,7 +6111,8 @@
           "duree_residuelle": 39.58,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 1.2697
+          "taux_actuariel": 1.2697,
+          "programme": null
         },
         {
           "objet": "141-219 bd Mac Donald - 75019",
@@ -5769,7 +6123,8 @@
           "duree_residuelle": 34.0,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 1.6778
+          "taux_actuariel": 1.6778,
+          "programme": null
         },
         {
           "objet": "88-90, boulevard Ney - 75018",
@@ -5780,7 +6135,13 @@
           "duree_residuelle": 58.0,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 1.5118
+          "taux_actuariel": 1.5118,
+          "programme": {
+            "adresse": "88-90, BOULEVARD NEY",
+            "nb_logements": 300,
+            "n_programmes": 2,
+            "match_basis": "adresse_arr"
+          }
         },
         {
           "objet": "Hôpital Mondor - Rue Général Sarrail - 94000 - RGT",
@@ -5791,7 +6152,8 @@
           "duree_residuelle": 17.58,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 1.8523
+          "taux_actuariel": 1.8523,
+          "programme": null
         },
         {
           "objet": "Avenue Parmentier - 75011",
@@ -5802,9 +6164,18 @@
           "duree_residuelle": 42.0,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 1.637
+          "taux_actuariel": 1.637,
+          "programme": null
         }
-      ]
+      ],
+      "financement": {
+        "base_logement": 166879941,
+        "capital_rattache": 27619584,
+        "capital_portefeuille": 15027417,
+        "capital_non_rattache": 124232940,
+        "part_rattachee": 0.16550571465649172,
+        "n_programmes": 27
+      }
     },
     {
       "key": "paris-et-metropole-amenagement-spl",
@@ -5847,7 +6218,8 @@
           "duree_residuelle": 1.81,
           "taux_type": "V",
           "taux_index": "EURIBOR12M",
-          "taux_actuariel": 0.4345
+          "taux_actuariel": 0.4345,
+          "programme": null
         },
         {
           "objet": "ZAC Saint Vincent de Paul - 75014",
@@ -5858,7 +6230,8 @@
           "duree_residuelle": 1.81,
           "taux_type": "FIXE",
           "taux_index": "FIXE",
-          "taux_actuariel": 0.7628
+          "taux_actuariel": 0.7628,
+          "programme": null
         },
         {
           "objet": "ZAC Gare Mines-Fillettes - 75018",
@@ -5869,7 +6242,8 @@
           "duree_residuelle": 5.29,
           "taux_type": "FIXE",
           "taux_index": "FIXE",
-          "taux_actuariel": 0.6494
+          "taux_actuariel": 0.6494,
+          "programme": null
         },
         {
           "objet": "ZAC Gare Mines-Fillettes - 75018",
@@ -5880,7 +6254,8 @@
           "duree_residuelle": 5.23,
           "taux_type": "FIXE",
           "taux_index": "FIXE",
-          "taux_actuariel": 0.4907
+          "taux_actuariel": 0.4907,
+          "programme": null
         },
         {
           "objet": "ZAC Chapelle Chardon - 75018",
@@ -5891,7 +6266,8 @@
           "duree_residuelle": 1.71,
           "taux_type": "FIXE",
           "taux_index": "FIXE",
-          "taux_actuariel": 0.4065
+          "taux_actuariel": 0.4065,
+          "programme": null
         },
         {
           "objet": "ZAC Chapelle Chardon - 75018",
@@ -5902,7 +6278,8 @@
           "duree_residuelle": 1.71,
           "taux_type": "FIXE",
           "taux_index": "FIXE",
-          "taux_actuariel": 0.3561
+          "taux_actuariel": 0.3561,
+          "programme": null
         },
         {
           "objet": "ZAC Saint Vincent de Paul - 75014",
@@ -5913,9 +6290,18 @@
           "duree_residuelle": 1.79,
           "taux_type": "FIXE",
           "taux_index": "FIXE",
-          "taux_actuariel": 0.5858
+          "taux_actuariel": 0.5858,
+          "programme": null
         }
-      ]
+      ],
+      "financement": {
+        "base_logement": 126880000,
+        "capital_rattache": 0,
+        "capital_portefeuille": 0,
+        "capital_non_rattache": 126880000,
+        "part_rattachee": 0.0,
+        "n_programmes": 0
+      }
     },
     {
       "key": "1001-vies-habitat-esh",
@@ -5927,7 +6313,7 @@
       "nature_dominante": "logement_social_aide",
       "taux_moyen_pondere_pct": 1.529,
       "duree_residuelle_moyenne_ans": 32.22,
-      "part_fixe": 0.002655381841885,
+      "part_fixe": 0.0026553818418850006,
       "preteurs": [
         {
           "name": "CDC",
@@ -5946,7 +6332,13 @@
           "duree_residuelle": 60.25,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 1.5101
+          "taux_actuariel": 1.5101,
+          "programme": {
+            "adresse": "22-32 RUE DES LILAS",
+            "nb_logements": 93,
+            "n_programmes": 1,
+            "match_basis": "adresse_exacte"
+          }
         },
         {
           "objet": "Résidence Baudricourt - 75013 - RGT",
@@ -5957,7 +6349,8 @@
           "duree_residuelle": 21.33,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 1.131
+          "taux_actuariel": 1.131,
+          "programme": null
         },
         {
           "objet": "22-32, rue des Lilas - 75019",
@@ -5968,7 +6361,13 @@
           "duree_residuelle": 40.25,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 1.5102
+          "taux_actuariel": 1.5102,
+          "programme": {
+            "adresse": "22-32 RUE DES LILAS",
+            "nb_logements": 93,
+            "n_programmes": 1,
+            "match_basis": "adresse_exacte"
+          }
         },
         {
           "objet": "Rue Charles Bertheau - 75013 - NSG",
@@ -5979,7 +6378,8 @@
           "duree_residuelle": 40.09,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 1.5501
+          "taux_actuariel": 1.5501,
+          "programme": null
         },
         {
           "objet": "100, bld Masséna / 23, Villa d'Este - 75013 - RGT",
@@ -5990,7 +6390,8 @@
           "duree_residuelle": 15.42,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 3.1819
+          "taux_actuariel": 3.1819,
+          "programme": null
         },
         {
           "objet": "9 villa d'Este - 75013",
@@ -6001,7 +6402,8 @@
           "duree_residuelle": 42.67,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 1.1719
+          "taux_actuariel": 1.1719,
+          "programme": null
         },
         {
           "objet": "Rue Jean Dunand - 75013 - NSG",
@@ -6012,7 +6414,8 @@
           "duree_residuelle": 40.09,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 1.5501
+          "taux_actuariel": 1.5501,
+          "programme": null
         },
         {
           "objet": "22-32, rue des Lilas - 75019",
@@ -6023,7 +6426,13 @@
           "duree_residuelle": 40.25,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 1.5102
+          "taux_actuariel": 1.5102,
+          "programme": {
+            "adresse": "22-32 RUE DES LILAS",
+            "nb_logements": 93,
+            "n_programmes": 1,
+            "match_basis": "adresse_exacte"
+          }
         },
         {
           "objet": "Tour Rimini - 8 avenue de Choisy - 75013",
@@ -6034,7 +6443,8 @@
           "duree_residuelle": 43.5,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 1.1624
+          "taux_actuariel": 1.1624,
+          "programme": null
         },
         {
           "objet": "9 villa d'Este - 75013",
@@ -6045,7 +6455,8 @@
           "duree_residuelle": 32.67,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 1.1867
+          "taux_actuariel": 1.1867,
+          "programme": null
         },
         {
           "objet": "Parc des Musiciens - Rue Thionville - 75019 - RGT",
@@ -6056,7 +6467,8 @@
           "duree_residuelle": 23.16,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 1.7348
+          "taux_actuariel": 1.7348,
+          "programme": null
         },
         {
           "objet": "Rue de l'Orillon - 75011 - RGT - TRST",
@@ -6067,7 +6479,8 @@
           "duree_residuelle": 18.92,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 1.9458
+          "taux_actuariel": 1.9458,
+          "programme": null
         },
         {
           "objet": "Rue Robert Houdin - 75011 - RGT - TRST",
@@ -6078,7 +6491,8 @@
           "duree_residuelle": 18.42,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 1.9501
+          "taux_actuariel": 1.9501,
+          "programme": null
         },
         {
           "objet": "Avenue du Maine - 75014 - RGT- TRST",
@@ -6089,7 +6503,8 @@
           "duree_residuelle": 33.42,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 1.7031
+          "taux_actuariel": 1.7031,
+          "programme": null
         },
         {
           "objet": "134 rue de Charenton - 75012",
@@ -6100,7 +6515,13 @@
           "duree_residuelle": 38.33,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 1.3507
+          "taux_actuariel": 1.3507,
+          "programme": {
+            "adresse": "134, RUE DE CHARENTON",
+            "nb_logements": 41,
+            "n_programmes": 1,
+            "match_basis": "adresse_exacte"
+          }
         },
         {
           "objet": "225-231 rue d'Alézia - 75014",
@@ -6111,7 +6532,8 @@
           "duree_residuelle": 7.25,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 0.5023
+          "taux_actuariel": 0.5023,
+          "programme": null
         },
         {
           "objet": "5 Villa Virginie - 75014 - RGT - TRST",
@@ -6122,7 +6544,13 @@
           "duree_residuelle": 33.42,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 1.7023
+          "taux_actuariel": 1.7023,
+          "programme": {
+            "adresse": "5 VILLA VIRGINIE",
+            "nb_logements": 16,
+            "n_programmes": 1,
+            "match_basis": "adresse_exacte"
+          }
         },
         {
           "objet": "7/7bis rue Trétaigne - 75018 - RGT",
@@ -6133,7 +6561,8 @@
           "duree_residuelle": 31.67,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 2.4885
+          "taux_actuariel": 2.4885,
+          "programme": null
         },
         {
           "objet": "Rue des Eaux - 75016 - RGT",
@@ -6144,7 +6573,8 @@
           "duree_residuelle": 37.92,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 1.2323
+          "taux_actuariel": 1.2323,
+          "programme": null
         },
         {
           "objet": "Rue Severo - 75014 - RGT- TRST",
@@ -6155,7 +6585,8 @@
           "duree_residuelle": 31.67,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 1.7258
+          "taux_actuariel": 1.7258,
+          "programme": null
         },
         {
           "objet": "Résidence Sociale, rue Davy - 75017",
@@ -6166,7 +6597,8 @@
           "duree_residuelle": 49.92,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 0.3012
+          "taux_actuariel": 0.3012,
+          "programme": null
         },
         {
           "objet": "24 rue de Picpus - 75012",
@@ -6177,7 +6609,13 @@
           "duree_residuelle": 30.0,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 1.0451
+          "taux_actuariel": 1.0451,
+          "programme": {
+            "adresse": "24, RUE DE PICPUS",
+            "nb_logements": 28,
+            "n_programmes": 2,
+            "match_basis": "adresse_exacte"
+          }
         },
         {
           "objet": "13 rue Orillon -75011",
@@ -6188,7 +6626,13 @@
           "duree_residuelle": 34.33,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 1.1505
+          "taux_actuariel": 1.1505,
+          "programme": {
+            "adresse": "13 RUE DE L'ORILLON",
+            "nb_logements": 14,
+            "n_programmes": 1,
+            "match_basis": "adresse_exacte"
+          }
         },
         {
           "objet": "12-16 rue du Chalet - 75010 - RGT",
@@ -6199,7 +6643,13 @@
           "duree_residuelle": 36.42,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 1.6493
+          "taux_actuariel": 1.6493,
+          "programme": {
+            "adresse": "12 A 16, RUE DU CHALET",
+            "nb_logements": 26,
+            "n_programmes": 1,
+            "match_basis": "adresse_exacte"
+          }
         },
         {
           "objet": "Rue Fagon - 75013 - RGT- TRST",
@@ -6210,9 +6660,18 @@
           "duree_residuelle": 31.67,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 1.7258
+          "taux_actuariel": 1.7258,
+          "programme": null
         }
-      ]
+      ],
+      "financement": {
+        "base_logement": 124253482,
+        "capital_rattache": 43879316,
+        "capital_portefeuille": 0,
+        "capital_non_rattache": 80374166,
+        "part_rattachee": 0.35314355122759666,
+        "n_programmes": 26
+      }
     },
     {
       "key": "l-habitation-confortable-sa-hlm",
@@ -6224,7 +6683,7 @@
       "nature_dominante": "logement_social_aide",
       "taux_moyen_pondere_pct": 1.493,
       "duree_residuelle_moyenne_ans": 30.51,
-      "part_fixe": 0.19297942744041313,
+      "part_fixe": 0.19297942744041321,
       "preteurs": [
         {
           "name": "CDC",
@@ -6242,7 +6701,7 @@
           "name": "LBP",
           "capital_restant": 6471265,
           "count_emprunts": 13,
-          "share": 0.054549869609659726
+          "share": 0.05454986960965974
         },
         {
           "name": "CF",
@@ -6267,7 +6726,8 @@
           "duree_residuelle": 40.33,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 1.1003
+          "taux_actuariel": 1.1003,
+          "programme": null
         },
         {
           "objet": "ZAC Paris Rive Gauche - Lot T10 A Sud - 75013",
@@ -6278,7 +6738,8 @@
           "duree_residuelle": 39.09,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 1.1004
+          "taux_actuariel": 1.1004,
+          "programme": null
         },
         {
           "objet": "28, rue du Colonel Avia - 75015",
@@ -6289,7 +6750,13 @@
           "duree_residuelle": 38.09,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 1.1004
+          "taux_actuariel": 1.1004,
+          "programme": {
+            "adresse": "28, RUE DU COLONEL AVIA",
+            "nb_logements": 141,
+            "n_programmes": 1,
+            "match_basis": "adresse_exacte"
+          }
         },
         {
           "objet": "Îlot Colmar Thionville - 75019 - TRST",
@@ -6300,7 +6767,8 @@
           "duree_residuelle": 32.84,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 1.2112
+          "taux_actuariel": 1.2112,
+          "programme": null
         },
         {
           "objet": "Rue Amiral Mouchez - 75013 - RGT - TRST",
@@ -6311,7 +6779,8 @@
           "duree_residuelle": 13.43,
           "taux_type": "FIXE",
           "taux_index": "FIXE",
-          "taux_actuariel": 1.4714
+          "taux_actuariel": 1.4714,
+          "programme": null
         },
         {
           "objet": "29-31 rue Daviel - 75013 - TRST",
@@ -6322,7 +6791,8 @@
           "duree_residuelle": 29.67,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 1.4671
+          "taux_actuariel": 1.4671,
+          "programme": null
         },
         {
           "objet": "57-69 rue de Patay - 75013 - TRST",
@@ -6333,7 +6803,8 @@
           "duree_residuelle": 10.58,
           "taux_type": "FIXE",
           "taux_index": "FIXE",
-          "taux_actuariel": 4.9656
+          "taux_actuariel": 4.9656,
+          "programme": null
         },
         {
           "objet": "383-385 rue de Vaugirard - 75015 - TRST",
@@ -6344,7 +6815,13 @@
           "duree_residuelle": 30.5,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 1.3934
+          "taux_actuariel": 1.3934,
+          "programme": {
+            "adresse": "383-385, RUE DE VAUGIRARD",
+            "nb_logements": 175,
+            "n_programmes": 2,
+            "match_basis": "adresse_arr"
+          }
         },
         {
           "objet": "28, rue du Colonel Avia - 75015",
@@ -6355,7 +6832,13 @@
           "duree_residuelle": 48.09,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 1.1003
+          "taux_actuariel": 1.1003,
+          "programme": {
+            "adresse": "28, RUE DU COLONEL AVIA",
+            "nb_logements": 141,
+            "n_programmes": 1,
+            "match_basis": "adresse_exacte"
+          }
         },
         {
           "objet": "61, bd Saint Jacques - 75014 - NSG",
@@ -6366,7 +6849,13 @@
           "duree_residuelle": 39.84,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 0.3015
+          "taux_actuariel": 0.3015,
+          "programme": {
+            "adresse": "61, BD SAINT JACQUES",
+            "nb_logements": 1,
+            "n_programmes": 2,
+            "match_basis": "adresse_exacte"
+          }
         },
         {
           "objet": "93-97 rue des Haies - 75020 - TRST",
@@ -6377,7 +6866,8 @@
           "duree_residuelle": 28.25,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 1.7312
+          "taux_actuariel": 1.7312,
+          "programme": null
         },
         {
           "objet": "23, rue de Meaux - 75019",
@@ -6388,7 +6878,13 @@
           "duree_residuelle": 38.09,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 0.3015
+          "taux_actuariel": 0.3015,
+          "programme": {
+            "adresse": "23, RUE DE MEAUX",
+            "nb_logements": 54,
+            "n_programmes": 1,
+            "match_basis": "adresse_exacte"
+          }
         },
         {
           "objet": "61, boulevard Saint-Jacques - 75014",
@@ -6399,7 +6895,13 @@
           "duree_residuelle": 39.92,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 0.3015
+          "taux_actuariel": 0.3015,
+          "programme": {
+            "adresse": "61, BD SAINT JACQUES",
+            "nb_logements": 1,
+            "n_programmes": 2,
+            "match_basis": "adresse_exacte"
+          }
         },
         {
           "objet": "88, rue Ménilmontant - 75020",
@@ -6410,7 +6912,13 @@
           "duree_residuelle": 38.09,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 1.1004
+          "taux_actuariel": 1.1004,
+          "programme": {
+            "adresse": "88, RUE DE MENILMONTANT",
+            "nb_logements": 45,
+            "n_programmes": 1,
+            "match_basis": "adresse_exacte"
+          }
         },
         {
           "objet": "88, rue Ménilmontant - 75020 - NSG",
@@ -6421,7 +6929,13 @@
           "duree_residuelle": 41.83,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 1.1003
+          "taux_actuariel": 1.1003,
+          "programme": {
+            "adresse": "88, RUE DE MENILMONTANT",
+            "nb_logements": 45,
+            "n_programmes": 1,
+            "match_basis": "adresse_exacte"
+          }
         },
         {
           "objet": "59-61 rue St-Lazare - 75009 - TRST",
@@ -6432,7 +6946,8 @@
           "duree_residuelle": 37.92,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 0.6744
+          "taux_actuariel": 0.6744,
+          "programme": null
         },
         {
           "objet": "88, rue Ménilmontant - 75020 - NSG",
@@ -6443,7 +6958,13 @@
           "duree_residuelle": 41.83,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 1.6002
+          "taux_actuariel": 1.6002,
+          "programme": {
+            "adresse": "88, RUE DE MENILMONTANT",
+            "nb_logements": 45,
+            "n_programmes": 1,
+            "match_basis": "adresse_exacte"
+          }
         },
         {
           "objet": "Réaménagement emprunts - RGT - TRST",
@@ -6454,7 +6975,8 @@
           "duree_residuelle": 9.33,
           "taux_type": "FIXE",
           "taux_index": "FIXE",
-          "taux_actuariel": 3.1735
+          "taux_actuariel": 3.1735,
+          "programme": null
         },
         {
           "objet": "23, rue de Meaux - 75019",
@@ -6465,7 +6987,13 @@
           "duree_residuelle": 58.09,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 0.301
+          "taux_actuariel": 0.301,
+          "programme": {
+            "adresse": "23, RUE DE MEAUX",
+            "nb_logements": 54,
+            "n_programmes": 1,
+            "match_basis": "adresse_exacte"
+          }
         },
         {
           "objet": "114 rue du Temple - 75003 - TRST",
@@ -6476,7 +7004,8 @@
           "duree_residuelle": 37.16,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 1.6436
+          "taux_actuariel": 1.6436,
+          "programme": null
         },
         {
           "objet": "383-385 rue de Vaugirard - 75015 - RGT",
@@ -6487,7 +7016,13 @@
           "duree_residuelle": 40.5,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 1.3295
+          "taux_actuariel": 1.3295,
+          "programme": {
+            "adresse": "383-385, RUE DE VAUGIRARD",
+            "nb_logements": 175,
+            "n_programmes": 2,
+            "match_basis": "adresse_arr"
+          }
         },
         {
           "objet": "37, boulevard de Belleville - 75011 - NSG",
@@ -6498,7 +7033,13 @@
           "duree_residuelle": 41.0,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 0.3015
+          "taux_actuariel": 0.3015,
+          "programme": {
+            "adresse": "37, BD DE BELLEVILLE",
+            "nb_logements": 2,
+            "n_programmes": 1,
+            "match_basis": "adresse_exacte"
+          }
         },
         {
           "objet": "80, rue de la Tombe d'Issoire - 75014",
@@ -6509,7 +7050,13 @@
           "duree_residuelle": 38.09,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 1.1004
+          "taux_actuariel": 1.1004,
+          "programme": {
+            "adresse": "80, RUE DE LA TOMBE ISSOIRE",
+            "nb_logements": 29,
+            "n_programmes": 1,
+            "match_basis": "adresse_exacte"
+          }
         },
         {
           "objet": "Programme diffus - 75000 - RGT - TRST",
@@ -6520,7 +7067,8 @@
           "duree_residuelle": 4.92,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 2.622
+          "taux_actuariel": 2.622,
+          "programme": null
         },
         {
           "objet": "Cour des Noues - 75020 - TRST",
@@ -6531,9 +7079,18 @@
           "duree_residuelle": 9.33,
           "taux_type": "FIXE",
           "taux_index": "FIXE",
-          "taux_actuariel": 3.0536
+          "taux_actuariel": 3.0536,
+          "programme": null
         }
-      ]
+      ],
+      "financement": {
+        "base_logement": 118630253,
+        "capital_rattache": 43459930,
+        "capital_portefeuille": 657303,
+        "capital_non_rattache": 74513020,
+        "part_rattachee": 0.36634777980171773,
+        "n_programmes": 27
+      }
     },
     {
       "key": "fondation-nationale-sciences-po",
@@ -6564,7 +7121,8 @@
           "duree_residuelle": 26.0,
           "taux_type": "FIXE",
           "taux_index": "FIXE",
-          "taux_actuariel": 1.6682
+          "taux_actuariel": 1.6682,
+          "programme": null
         },
         {
           "objet": "Hôtel Artillerie - Place St Thomas d'Aquin - 75007",
@@ -6575,9 +7133,18 @@
           "duree_residuelle": 25.0,
           "taux_type": "FIXE",
           "taux_index": "FIXE",
-          "taux_actuariel": 2.3141
+          "taux_actuariel": 2.3141,
+          "programme": null
         }
-      ]
+      ],
+      "financement": {
+        "base_logement": 109882472,
+        "capital_rattache": 0,
+        "capital_portefeuille": 0,
+        "capital_non_rattache": 109882472,
+        "part_rattachee": 0.0,
+        "n_programmes": 0
+      }
     },
     {
       "key": "popb-accorhotels-arena-sem",
@@ -6608,9 +7175,18 @@
           "duree_residuelle": 21.0,
           "taux_type": "FIXE",
           "taux_index": "FIXE",
-          "taux_actuariel": 3.5
+          "taux_actuariel": 3.5,
+          "programme": null
         }
-      ]
+      ],
+      "financement": {
+        "base_logement": 103667844,
+        "capital_rattache": 0,
+        "capital_portefeuille": 0,
+        "capital_non_rattache": 103667844,
+        "part_rattachee": 0.0,
+        "n_programmes": 0
+      }
     },
     {
       "key": "toit-et-joie-sa-hlm",
@@ -6653,7 +7229,8 @@
           "duree_residuelle": 32.42,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 1.192
+          "taux_actuariel": 1.192,
+          "programme": null
         },
         {
           "objet": "10 bis rue de Moussy - 75004",
@@ -6664,7 +7241,13 @@
           "duree_residuelle": 40.0,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 1.3514
+          "taux_actuariel": 1.3514,
+          "programme": {
+            "adresse": "10 BIS RUE MOUSSY",
+            "nb_logements": 56,
+            "n_programmes": 1,
+            "match_basis": "adresse_arr"
+          }
         },
         {
           "objet": "101 à 105 bd Brune - 75014",
@@ -6675,7 +7258,13 @@
           "duree_residuelle": 54.92,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 0.8985
+          "taux_actuariel": 0.8985,
+          "programme": {
+            "adresse": "101-105 BD BRUNE",
+            "nb_logements": 42,
+            "n_programmes": 1,
+            "match_basis": "adresse_arr"
+          }
         },
         {
           "objet": "140 bd du Montaparnasse - 75014",
@@ -6686,7 +7275,8 @@
           "duree_residuelle": 36.58,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 0.3163
+          "taux_actuariel": 0.3163,
+          "programme": null
         },
         {
           "objet": "101 à 105 bd Brune - 75014",
@@ -6697,7 +7287,13 @@
           "duree_residuelle": 34.92,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 1.1414
+          "taux_actuariel": 1.1414,
+          "programme": {
+            "adresse": "101-105 BD BRUNE",
+            "nb_logements": 42,
+            "n_programmes": 1,
+            "match_basis": "adresse_arr"
+          }
         },
         {
           "objet": "56 - 58 rue René Boulanger - 75010",
@@ -6708,7 +7304,13 @@
           "duree_residuelle": 40.0,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 1.3514
+          "taux_actuariel": 1.3514,
+          "programme": {
+            "adresse": "56, RUE RENE BOULANGER",
+            "nb_logements": 12,
+            "n_programmes": 1,
+            "match_basis": "adresse_arr"
+          }
         },
         {
           "objet": "21 rue Bréguet - 75011",
@@ -6719,7 +7321,13 @@
           "duree_residuelle": 37.25,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 1.5763
+          "taux_actuariel": 1.5763,
+          "programme": {
+            "adresse": "21 RUE BREGUET",
+            "nb_logements": 47,
+            "n_programmes": 1,
+            "match_basis": "adresse_arr"
+          }
         },
         {
           "objet": "54 rue d'Aboukir - 75002",
@@ -6730,7 +7338,13 @@
           "duree_residuelle": 40.0,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 1.3514
+          "taux_actuariel": 1.3514,
+          "programme": {
+            "adresse": "54, RUE D'ABOUKIR",
+            "nb_logements": 43,
+            "n_programmes": 1,
+            "match_basis": "adresse_arr"
+          }
         },
         {
           "objet": "17, rue d'Alleray - 75015 - NSG",
@@ -6741,7 +7355,8 @@
           "duree_residuelle": 24.75,
           "taux_type": "FIXE",
           "taux_index": "FIXE",
-          "taux_actuariel": 0.701
+          "taux_actuariel": 0.701,
+          "programme": null
         },
         {
           "objet": "10 bis rue de Moussy - 75004",
@@ -6752,7 +7367,13 @@
           "duree_residuelle": 38.92,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 1.9337
+          "taux_actuariel": 1.9337,
+          "programme": {
+            "adresse": "10 BIS RUE MOUSSY",
+            "nb_logements": 56,
+            "n_programmes": 1,
+            "match_basis": "adresse_arr"
+          }
         },
         {
           "objet": "21 rue Bréguet - 75011",
@@ -6763,7 +7384,13 @@
           "duree_residuelle": 27.25,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 1.6332
+          "taux_actuariel": 1.6332,
+          "programme": {
+            "adresse": "21 RUE BREGUET",
+            "nb_logements": 47,
+            "n_programmes": 1,
+            "match_basis": "adresse_arr"
+          }
         },
         {
           "objet": "140 bd du Montaparnasse - 75014",
@@ -6774,7 +7401,8 @@
           "duree_residuelle": 56.58,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 0.5507
+          "taux_actuariel": 0.5507,
+          "programme": null
         },
         {
           "objet": "107, ter du Faubourg Saint Denis - 75010 - NSG",
@@ -6785,7 +7413,8 @@
           "duree_residuelle": 59.0,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 0.8103
+          "taux_actuariel": 0.8103,
+          "programme": null
         },
         {
           "objet": "62-64 rue Planchat - 75020",
@@ -6796,7 +7425,13 @@
           "duree_residuelle": 38.92,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 1.9337
+          "taux_actuariel": 1.9337,
+          "programme": {
+            "adresse": "62-64, RUE PLANCHAT",
+            "nb_logements": 36,
+            "n_programmes": 1,
+            "match_basis": "adresse_arr"
+          }
         },
         {
           "objet": "46, rue de l'Ourcq Paris - 75019 - NSG",
@@ -6807,7 +7442,8 @@
           "duree_residuelle": 24.75,
           "taux_type": "FIXE",
           "taux_index": "FIXE",
-          "taux_actuariel": 0.701
+          "taux_actuariel": 0.701,
+          "programme": null
         },
         {
           "objet": "116, rue de Javel - 75015",
@@ -6818,7 +7454,13 @@
           "duree_residuelle": 57.58,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 0.9791
+          "taux_actuariel": 0.9791,
+          "programme": {
+            "adresse": "116 RUE DE JAVEL",
+            "nb_logements": 55,
+            "n_programmes": 1,
+            "match_basis": "adresse_arr"
+          }
         },
         {
           "objet": "23, rue d'Alleray - 75015 - NSG",
@@ -6829,7 +7471,13 @@
           "duree_residuelle": 24.75,
           "taux_type": "FIXE",
           "taux_index": "FIXE",
-          "taux_actuariel": 0.701
+          "taux_actuariel": 0.701,
+          "programme": {
+            "adresse": "23, RUE D'ALLERAY",
+            "nb_logements": 1,
+            "n_programmes": 1,
+            "match_basis": "adresse_arr"
+          }
         },
         {
           "objet": "Rues Guy Moquet/Du Capitaine Lagache - 75017 - NSG",
@@ -6840,7 +7488,8 @@
           "duree_residuelle": 58.92,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 0.8203
+          "taux_actuariel": 0.8203,
+          "programme": null
         },
         {
           "objet": "10 bis rue de Moussy - 75004",
@@ -6851,7 +7500,13 @@
           "duree_residuelle": 40.0,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 0.5367
+          "taux_actuariel": 0.5367,
+          "programme": {
+            "adresse": "10 BIS RUE MOUSSY",
+            "nb_logements": 56,
+            "n_programmes": 1,
+            "match_basis": "adresse_arr"
+          }
         },
         {
           "objet": "12-14, Passage Raguinot - 75012",
@@ -6862,7 +7517,13 @@
           "duree_residuelle": 31.09,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 0.4963
+          "taux_actuariel": 0.4963,
+          "programme": {
+            "adresse": "12-14 PASSAGE RAGUINOT",
+            "nb_logements": 32,
+            "n_programmes": 1,
+            "match_basis": "adresse_arr"
+          }
         },
         {
           "objet": "10 allée Gaston Bachelard - 75014",
@@ -6873,7 +7534,8 @@
           "duree_residuelle": 55.42,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 0.3219
+          "taux_actuariel": 0.3219,
+          "programme": null
         },
         {
           "objet": "260, rue des Pyrénnées - 75020",
@@ -6884,7 +7546,8 @@
           "duree_residuelle": 41.09,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 0.4602
+          "taux_actuariel": 0.4602,
+          "programme": null
         },
         {
           "objet": "33 avenue Jean Jaurès - 75019",
@@ -6895,7 +7558,13 @@
           "duree_residuelle": 40.0,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 1.3512
+          "taux_actuariel": 1.3512,
+          "programme": {
+            "adresse": "33-35, AVENUE JEAN JAURES",
+            "nb_logements": 17,
+            "n_programmes": 1,
+            "match_basis": "adresse_arr"
+          }
         },
         {
           "objet": "107, ter du Faubourg Saint Denis - 75010 - NSG",
@@ -6906,7 +7575,8 @@
           "duree_residuelle": 59.0,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 0.8103
+          "taux_actuariel": 0.8103,
+          "programme": null
         },
         {
           "objet": "17, rue d'Alleray - 75015 - NSG",
@@ -6917,9 +7587,18 @@
           "duree_residuelle": 19.75,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 0.0646
+          "taux_actuariel": 0.0646,
+          "programme": null
         }
-      ]
+      ],
+      "financement": {
+        "base_logement": 91329772,
+        "capital_rattache": 54100419,
+        "capital_portefeuille": 0,
+        "capital_non_rattache": 37229353,
+        "part_rattachee": 0.5923634559494221,
+        "n_programmes": 37
+      }
     },
     {
       "key": "ep-cite-musique-philharmonie",
@@ -6950,9 +7629,18 @@
           "duree_residuelle": 6.09,
           "taux_type": "FIXE",
           "taux_index": "FIXE",
-          "taux_actuariel": 5.006
+          "taux_actuariel": 5.006,
+          "programme": null
         }
-      ]
+      ],
+      "financement": {
+        "base_logement": 89015654,
+        "capital_rattache": 0,
+        "capital_portefeuille": 0,
+        "capital_non_rattache": 89015654,
+        "part_rattachee": 0.0,
+        "n_programmes": 0
+      }
     },
     {
       "key": "habitat-social-francais-hsf-sa-hlm",
@@ -6970,13 +7658,13 @@
           "name": "CDC",
           "capital_restant": 82007047,
           "count_emprunts": 107,
-          "share": 0.9429337304630733
+          "share": 0.9429337304630735
         },
         {
           "name": "CE",
           "capital_restant": 3592291,
           "count_emprunts": 6,
-          "share": 0.041304893511833946
+          "share": 0.04130489351183395
         },
         {
           "name": "LBP",
@@ -6988,7 +7676,7 @@
           "name": "Crédit du Nord",
           "capital_restant": 577273,
           "count_emprunts": 1,
-          "share": 0.006637606755324513
+          "share": 0.006637606755324514
         }
       ],
       "emprunts_top": [
@@ -7001,7 +7689,8 @@
           "duree_residuelle": 18.92,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 1.6055
+          "taux_actuariel": 1.6055,
+          "programme": null
         },
         {
           "objet": "Diverses adresses - 75000 - CPCT",
@@ -7012,7 +7701,8 @@
           "duree_residuelle": 9.59,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 2.2835
+          "taux_actuariel": 2.2835,
+          "programme": null
         },
         {
           "objet": "Programme d'investissements - 75000",
@@ -7023,7 +7713,8 @@
           "duree_residuelle": 35.25,
           "taux_type": "FIXE",
           "taux_index": "FIXE",
-          "taux_actuariel": 0.4475
+          "taux_actuariel": 0.4475,
+          "programme": null
         },
         {
           "objet": "164 rue Jeanne d'Arc - 75013",
@@ -7034,7 +7725,13 @@
           "duree_residuelle": 40.84,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 1.5406
+          "taux_actuariel": 1.5406,
+          "programme": {
+            "adresse": "164, RUE JEANNE D'ARC",
+            "nb_logements": 36,
+            "n_programmes": 1,
+            "match_basis": "adresse_exacte"
+          }
         },
         {
           "objet": "164 rue Jeanne d'Arc - 75013",
@@ -7045,7 +7742,13 @@
           "duree_residuelle": 30.84,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 1.5445
+          "taux_actuariel": 1.5445,
+          "programme": {
+            "adresse": "164, RUE JEANNE D'ARC",
+            "nb_logements": 36,
+            "n_programmes": 1,
+            "match_basis": "adresse_exacte"
+          }
         },
         {
           "objet": "11-13 rue de Domremy - 75013",
@@ -7056,7 +7759,13 @@
           "duree_residuelle": 27.0,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 1.6441
+          "taux_actuariel": 1.6441,
+          "programme": {
+            "adresse": "11-13, RUE DOMREMY",
+            "nb_logements": 74,
+            "n_programmes": 1,
+            "match_basis": "adresse_exacte"
+          }
         },
         {
           "objet": "Diverses adresses - 75000 - RGT",
@@ -7067,7 +7776,8 @@
           "duree_residuelle": 10.17,
           "taux_type": "FIXE",
           "taux_index": "FIXE",
-          "taux_actuariel": 1.8311
+          "taux_actuariel": 1.8311,
+          "programme": null
         },
         {
           "objet": "162-164, rue du Ménilmontant - 75020",
@@ -7078,7 +7788,13 @@
           "duree_residuelle": 27.09,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 1.5103
+          "taux_actuariel": 1.5103,
+          "programme": {
+            "adresse": "162, RUE DE MENILMONTANT",
+            "nb_logements": 12,
+            "n_programmes": 1,
+            "match_basis": "adresse_exacte"
+          }
         },
         {
           "objet": "1-5, rue de la Croix Saint Simon - 75020",
@@ -7089,7 +7805,8 @@
           "duree_residuelle": 26.0,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 1.5137
+          "taux_actuariel": 1.5137,
+          "programme": null
         },
         {
           "objet": "Diverses adresses - 75000 - CPCT",
@@ -7100,7 +7817,8 @@
           "duree_residuelle": 15.37,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 1.7488
+          "taux_actuariel": 1.7488,
+          "programme": null
         },
         {
           "objet": "Diverses adresses - 75000",
@@ -7111,7 +7829,8 @@
           "duree_residuelle": 20.87,
           "taux_type": "V",
           "taux_index": "EURIBOR03M",
-          "taux_actuariel": 0.3657
+          "taux_actuariel": 0.3657,
+          "programme": null
         },
         {
           "objet": "Diverses adresses - 75000 - CPCT - RGT",
@@ -7122,7 +7841,8 @@
           "duree_residuelle": 7.0,
           "taux_type": "V",
           "taux_index": "INF FR XT",
-          "taux_actuariel": 1.3422
+          "taux_actuariel": 1.3422,
+          "programme": null
         },
         {
           "objet": "14 rue Hainaut - 75019",
@@ -7133,7 +7853,13 @@
           "duree_residuelle": 26.67,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 1.6441
+          "taux_actuariel": 1.6441,
+          "programme": {
+            "adresse": "14, RUE DU HAINAUT",
+            "nb_logements": 13,
+            "n_programmes": 1,
+            "match_basis": "adresse_exacte"
+          }
         },
         {
           "objet": "9-11, rue Haxo - 75020",
@@ -7144,7 +7870,13 @@
           "duree_residuelle": 38.0,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 0.3016
+          "taux_actuariel": 0.3016,
+          "programme": {
+            "adresse": "9-11, RUE HAXO",
+            "nb_logements": 32,
+            "n_programmes": 1,
+            "match_basis": "adresse_exacte"
+          }
         },
         {
           "objet": "177 rue Bagnolet et 78 rue Belgrand - 75020",
@@ -7155,7 +7887,13 @@
           "duree_residuelle": 26.67,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 1.6441
+          "taux_actuariel": 1.6441,
+          "programme": {
+            "adresse": "177, RUE DE BAGNOLET\n78 RUE BELGRAND",
+            "nb_logements": 8,
+            "n_programmes": 1,
+            "match_basis": "adresse_exacte"
+          }
         },
         {
           "objet": "3-9 rue des Rigoles - 75020",
@@ -7166,7 +7904,13 @@
           "duree_residuelle": 27.75,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 1.6276
+          "taux_actuariel": 1.6276,
+          "programme": {
+            "adresse": "3-9, RUE DES RIGOLES",
+            "nb_logements": 9,
+            "n_programmes": 1,
+            "match_basis": "adresse_exacte"
+          }
         },
         {
           "objet": "17, rue de la Duée - 75020 - NSG",
@@ -7177,7 +7921,13 @@
           "duree_residuelle": 41.0,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 1.6102
+          "taux_actuariel": 1.6102,
+          "programme": {
+            "adresse": "17, RUE DE LA DUEE",
+            "nb_logements": 7,
+            "n_programmes": 1,
+            "match_basis": "adresse_exacte"
+          }
         },
         {
           "objet": "17, rue de la Duée - 75020 - NSG",
@@ -7188,7 +7938,13 @@
           "duree_residuelle": 41.0,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 1.6102
+          "taux_actuariel": 1.6102,
+          "programme": {
+            "adresse": "17, RUE DE LA DUEE",
+            "nb_logements": 7,
+            "n_programmes": 1,
+            "match_basis": "adresse_exacte"
+          }
         },
         {
           "objet": "Programme d'investissement - PHBB - 75000 - NSG",
@@ -7199,7 +7955,8 @@
           "duree_residuelle": 38.92,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 0.3722
+          "taux_actuariel": 0.3722,
+          "programme": null
         },
         {
           "objet": "14-16 rue des Pavillons - 75020",
@@ -7210,7 +7967,13 @@
           "duree_residuelle": 35.5,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 1.1385
+          "taux_actuariel": 1.1385,
+          "programme": {
+            "adresse": "14-16, RUE DES PAVILLONS",
+            "nb_logements": 9,
+            "n_programmes": 1,
+            "match_basis": "adresse_exacte"
+          }
         },
         {
           "objet": "14, bld Vaugirard - 75015",
@@ -7221,7 +7984,8 @@
           "duree_residuelle": 29.42,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 0.657
+          "taux_actuariel": 0.657,
+          "programme": null
         },
         {
           "objet": "222 rue de Charenton - 75012",
@@ -7232,7 +7996,13 @@
           "duree_residuelle": 37.75,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 0.3136
+          "taux_actuariel": 0.3136,
+          "programme": {
+            "adresse": "222, RUE DE CHARENTON",
+            "nb_logements": 22,
+            "n_programmes": 1,
+            "match_basis": "adresse_exacte"
+          }
         },
         {
           "objet": "Diverses adresses - 75000 - CPCT",
@@ -7243,7 +8013,8 @@
           "duree_residuelle": 1.79,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 2.5432
+          "taux_actuariel": 2.5432,
+          "programme": null
         },
         {
           "objet": "27, rue des Gatines - 75020",
@@ -7254,7 +8025,13 @@
           "duree_residuelle": 41.09,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 1.1004
+          "taux_actuariel": 1.1004,
+          "programme": {
+            "adresse": "27, RUE DES GATINES",
+            "nb_logements": 17,
+            "n_programmes": 1,
+            "match_basis": "adresse_exacte"
+          }
         },
         {
           "objet": "27, rue des Gatines - 75020",
@@ -7265,9 +8042,23 @@
           "duree_residuelle": 61.09,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 1.0302
+          "taux_actuariel": 1.0302,
+          "programme": {
+            "adresse": "27, RUE DES GATINES",
+            "nb_logements": 17,
+            "n_programmes": 1,
+            "match_basis": "adresse_exacte"
+          }
         }
-      ]
+      ],
+      "financement": {
+        "base_logement": 86970107,
+        "capital_rattache": 39359291,
+        "capital_portefeuille": 34278148,
+        "capital_non_rattache": 13332668,
+        "part_rattachee": 0.4525611463476475,
+        "n_programmes": 27
+      }
     },
     {
       "key": "ratp-habitat-esh",
@@ -7310,7 +8101,8 @@
           "duree_residuelle": 35.0,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 1.1411
+          "taux_actuariel": 1.1411,
+          "programme": null
         },
         {
           "objet": "Divers Programmes - 75000 - CPCT - RGT",
@@ -7321,7 +8113,8 @@
           "duree_residuelle": 25.42,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 1.4513
+          "taux_actuariel": 1.4513,
+          "programme": null
         },
         {
           "objet": "80, bd Jourdan - 75014",
@@ -7332,7 +8125,13 @@
           "duree_residuelle": 35.09,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 1.1286
+          "taux_actuariel": 1.1286,
+          "programme": {
+            "adresse": "80 BD JOURDAN",
+            "nb_logements": 51,
+            "n_programmes": 1,
+            "match_basis": "adresse_arr"
+          }
         },
         {
           "objet": "144-146 rue de la Tombe Issoire - 75014",
@@ -7343,7 +8142,8 @@
           "duree_residuelle": 45.0,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 1.1338
+          "taux_actuariel": 1.1338,
+          "programme": null
         },
         {
           "objet": "80, bd Jourdan - 75014",
@@ -7354,7 +8154,13 @@
           "duree_residuelle": 45.09,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 1.1235
+          "taux_actuariel": 1.1235,
+          "programme": {
+            "adresse": "80 BD JOURDAN",
+            "nb_logements": 51,
+            "n_programmes": 1,
+            "match_basis": "adresse_arr"
+          }
         },
         {
           "objet": "Divers Programmes - 75000 - CPCT - RGT",
@@ -7365,7 +8171,8 @@
           "duree_residuelle": 18.58,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 1.739
+          "taux_actuariel": 1.739,
+          "programme": null
         },
         {
           "objet": "80, bd Jourdan - 75014",
@@ -7376,7 +8183,13 @@
           "duree_residuelle": 35.09,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 1.6428
+          "taux_actuariel": 1.6428,
+          "programme": {
+            "adresse": "80 BD JOURDAN",
+            "nb_logements": 51,
+            "n_programmes": 1,
+            "match_basis": "adresse_arr"
+          }
         },
         {
           "objet": "80, bd Jourdan - 75014",
@@ -7387,7 +8200,13 @@
           "duree_residuelle": 45.09,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 1.6372
+          "taux_actuariel": 1.6372,
+          "programme": {
+            "adresse": "80 BD JOURDAN",
+            "nb_logements": 51,
+            "n_programmes": 1,
+            "match_basis": "adresse_arr"
+          }
         },
         {
           "objet": "46, rue des Maraîchers - 75020 - TRST",
@@ -7398,7 +8217,8 @@
           "duree_residuelle": 14.62,
           "taux_type": "FIXE",
           "taux_index": "FIXE",
-          "taux_actuariel": 1.4361
+          "taux_actuariel": 1.4361,
+          "programme": null
         },
         {
           "objet": "Rues Desnouettes / Lecourbe - 75015 - NSG",
@@ -7409,7 +8229,8 @@
           "duree_residuelle": 79.0,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 0.9001
+          "taux_actuariel": 0.9001,
+          "programme": null
         },
         {
           "objet": "Divers programmes - 75000 - CPCT",
@@ -7420,7 +8241,8 @@
           "duree_residuelle": 27.25,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 2.4115
+          "taux_actuariel": 2.4115,
+          "programme": null
         },
         {
           "objet": "Rues Desnouettes / Lecourbe - 75015 - NSG",
@@ -7431,7 +8253,8 @@
           "duree_residuelle": 79.0,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 0.9001
+          "taux_actuariel": 0.9001,
+          "programme": null
         },
         {
           "objet": "34, rue Championnet - 75018 - NSG",
@@ -7442,7 +8265,8 @@
           "duree_residuelle": 38.92,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 0.3015
+          "taux_actuariel": 0.3015,
+          "programme": null
         },
         {
           "objet": "Divers programmes - 75000 - CPCT - RGT",
@@ -7453,7 +8277,8 @@
           "duree_residuelle": 4.92,
           "taux_type": "FIXE",
           "taux_index": "FIXE",
-          "taux_actuariel": 4.9841
+          "taux_actuariel": 4.9841,
+          "programme": null
         },
         {
           "objet": "80, bd Jourdan - 75014",
@@ -7464,7 +8289,13 @@
           "duree_residuelle": 35.09,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 0.3282
+          "taux_actuariel": 0.3282,
+          "programme": {
+            "adresse": "80 BD JOURDAN",
+            "nb_logements": 51,
+            "n_programmes": 1,
+            "match_basis": "adresse_arr"
+          }
         },
         {
           "objet": "Rues Desnouettes / Lecourbe - 75015 - NSG",
@@ -7475,7 +8306,8 @@
           "duree_residuelle": 39.0,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 1.1003
+          "taux_actuariel": 1.1003,
+          "programme": null
         },
         {
           "objet": "Divers Programmes - 75000 - CPCT - RGT",
@@ -7486,7 +8318,8 @@
           "duree_residuelle": 25.42,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 1.197
+          "taux_actuariel": 1.197,
+          "programme": null
         },
         {
           "objet": "34, rue Championnet - 75018 - NSG",
@@ -7497,7 +8330,8 @@
           "duree_residuelle": 78.92,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 0.3007
+          "taux_actuariel": 0.3007,
+          "programme": null
         },
         {
           "objet": "43 bis rue Desnouettes - 75015",
@@ -7508,7 +8342,13 @@
           "duree_residuelle": 30.75,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 1.3047
+          "taux_actuariel": 1.3047,
+          "programme": {
+            "adresse": "43 BIS, RUE DESNOUETTES",
+            "nb_logements": 24,
+            "n_programmes": 2,
+            "match_basis": "adresse_exacte"
+          }
         },
         {
           "objet": "26, rue St Maur - 75011",
@@ -7519,7 +8359,8 @@
           "duree_residuelle": 16.33,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 2.8768
+          "taux_actuariel": 2.8768,
+          "programme": null
         },
         {
           "objet": "80, bd Jourdan - 75014",
@@ -7530,7 +8371,13 @@
           "duree_residuelle": 45.09,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 0.3228
+          "taux_actuariel": 0.3228,
+          "programme": {
+            "adresse": "80 BD JOURDAN",
+            "nb_logements": 51,
+            "n_programmes": 1,
+            "match_basis": "adresse_arr"
+          }
         },
         {
           "objet": "34, rue Championnet - 75018 - NSG",
@@ -7541,7 +8388,8 @@
           "duree_residuelle": 79.0,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 0.9702
+          "taux_actuariel": 0.9702,
+          "programme": null
         },
         {
           "objet": "Rues Desnouettes / Lecourbe - 75015 - NSG",
@@ -7552,7 +8400,8 @@
           "duree_residuelle": 39.0,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 1.6102
+          "taux_actuariel": 1.6102,
+          "programme": null
         },
         {
           "objet": "21, rue Salneuve - 75017 - RGT",
@@ -7563,7 +8412,8 @@
           "duree_residuelle": 26.33,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 1.2356
+          "taux_actuariel": 1.2356,
+          "programme": null
         },
         {
           "objet": "34, rue Championnet - 75018 - NSG",
@@ -7574,9 +8424,18 @@
           "duree_residuelle": 79.0,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 0.9702
+          "taux_actuariel": 0.9702,
+          "programme": null
         }
-      ]
+      ],
+      "financement": {
+        "base_logement": 85224133,
+        "capital_rattache": 28678033,
+        "capital_portefeuille": 19250442,
+        "capital_non_rattache": 37295658,
+        "part_rattachee": 0.33650131293169666,
+        "n_programmes": 10
+      }
     },
     {
       "key": "3f-residences-sa-hlm",
@@ -7613,7 +8472,13 @@
           "duree_residuelle": 31.25,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 1.0741
+          "taux_actuariel": 1.0741,
+          "programme": {
+            "adresse": "66, RUE DES PLANTES",
+            "nb_logements": 98,
+            "n_programmes": 3,
+            "match_basis": "adresse_exacte"
+          }
         },
         {
           "objet": "62/68  rue des Plantes - 75014",
@@ -7624,7 +8489,8 @@
           "duree_residuelle": 35.16,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 1.1386
+          "taux_actuariel": 1.1386,
+          "programme": null
         },
         {
           "objet": "12 rue Cantagrel - 75013",
@@ -7635,7 +8501,8 @@
           "duree_residuelle": 31.33,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 0.5031
+          "taux_actuariel": 0.5031,
+          "programme": null
         },
         {
           "objet": "13 rue des Ecluses Saint-Martin - 75010",
@@ -7646,7 +8513,13 @@
           "duree_residuelle": 56.25,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 1.1184
+          "taux_actuariel": 1.1184,
+          "programme": {
+            "adresse": "13, RUE DES ECLUSES SAINT MARTIN",
+            "nb_logements": 30,
+            "n_programmes": 1,
+            "match_basis": "adresse_exacte"
+          }
         },
         {
           "objet": "74 rue Maraîchers - 75020",
@@ -7657,7 +8530,8 @@
           "duree_residuelle": 32.92,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 1.1881
+          "taux_actuariel": 1.1881,
+          "programme": null
         },
         {
           "objet": "ZAC Clichy-Batignolles - 75017",
@@ -7668,7 +8542,8 @@
           "duree_residuelle": 34.0,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 1.1629
+          "taux_actuariel": 1.1629,
+          "programme": null
         },
         {
           "objet": "20-22, rue Beccaria - FTM - 75012 - NSG",
@@ -7679,7 +8554,8 @@
           "duree_residuelle": 35.84,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 1.1004
+          "taux_actuariel": 1.1004,
+          "programme": null
         },
         {
           "objet": "13 rue des Ecluses Saint-Martin - 75010",
@@ -7690,7 +8566,13 @@
           "duree_residuelle": 36.25,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 1.1262
+          "taux_actuariel": 1.1262,
+          "programme": {
+            "adresse": "13, RUE DES ECLUSES SAINT MARTIN",
+            "nb_logements": 30,
+            "n_programmes": 1,
+            "match_basis": "adresse_exacte"
+          }
         },
         {
           "objet": "ZAC Clichy-Batignolles - 75017",
@@ -7701,7 +8583,8 @@
           "duree_residuelle": 34.0,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 1.6747
+          "taux_actuariel": 1.6747,
+          "programme": null
         },
         {
           "objet": "20-22, rue Beccaria - 75012",
@@ -7712,7 +8595,13 @@
           "duree_residuelle": 35.92,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 0.7273
+          "taux_actuariel": 0.7273,
+          "programme": {
+            "adresse": "20-22 RUE BECCARIA",
+            "nb_logements": 249,
+            "n_programmes": 1,
+            "match_basis": "adresse_exacte"
+          }
         },
         {
           "objet": "ZAC Clichy-Batignolles - 75017",
@@ -7723,7 +8612,8 @@
           "duree_residuelle": 44.0,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 1.6644
+          "taux_actuariel": 1.6644,
+          "programme": null
         },
         {
           "objet": "15, rue Saint Just - 75017 - NSG",
@@ -7734,7 +8624,13 @@
           "duree_residuelle": 41.67,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 0.3015
+          "taux_actuariel": 0.3015,
+          "programme": {
+            "adresse": "15, RUE SAINT JUST",
+            "nb_logements": 250,
+            "n_programmes": 2,
+            "match_basis": "adresse_exacte"
+          }
         },
         {
           "objet": "ZAC Clichy-Batignolles - 75017",
@@ -7745,7 +8641,8 @@
           "duree_residuelle": 34.0,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 1.1629
+          "taux_actuariel": 1.1629,
+          "programme": null
         },
         {
           "objet": "62/68  rue des Plantes - 75014",
@@ -7756,7 +8653,8 @@
           "duree_residuelle": 45.16,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 1.1318
+          "taux_actuariel": 1.1318,
+          "programme": null
         },
         {
           "objet": "66-68 rue des Plantes - 75014",
@@ -7767,7 +8665,13 @@
           "duree_residuelle": 41.25,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 0.8875
+          "taux_actuariel": 0.8875,
+          "programme": {
+            "adresse": "66, RUE DES PLANTES",
+            "nb_logements": 98,
+            "n_programmes": 3,
+            "match_basis": "adresse_exacte"
+          }
         },
         {
           "objet": "54 rue Ruisseau - 75018",
@@ -7778,7 +8682,13 @@
           "duree_residuelle": 32.84,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 0.3972
+          "taux_actuariel": 0.3972,
+          "programme": {
+            "adresse": "54, RUE DU RUISSEAU",
+            "nb_logements": 36,
+            "n_programmes": 1,
+            "match_basis": "adresse_exacte"
+          }
         },
         {
           "objet": "13 rue des Ecluses Saint-Martin - 75010",
@@ -7789,7 +8699,13 @@
           "duree_residuelle": 46.25,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 1.1232
+          "taux_actuariel": 1.1232,
+          "programme": {
+            "adresse": "13, RUE DES ECLUSES SAINT MARTIN",
+            "nb_logements": 30,
+            "n_programmes": 1,
+            "match_basis": "adresse_exacte"
+          }
         },
         {
           "objet": "185, rue Raymond Losserand - FJT - 75014 - NSG",
@@ -7800,7 +8716,8 @@
           "duree_residuelle": 60.92,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 0.301
+          "taux_actuariel": 0.301,
+          "programme": null
         },
         {
           "objet": "185, rue Raymond Losserand - FJT - 75014 - NSG",
@@ -7811,7 +8728,8 @@
           "duree_residuelle": 40.92,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 0.3015
+          "taux_actuariel": 0.3015,
+          "programme": null
         },
         {
           "objet": "Résidence sociale - Rue Beccaria - 75012 - TRST",
@@ -7822,7 +8740,8 @@
           "duree_residuelle": 15.0,
           "taux_type": "FIXE",
           "taux_index": "FIXE",
-          "taux_actuariel": 3.4809
+          "taux_actuariel": 3.4809,
+          "programme": null
         },
         {
           "objet": "94 rue de Charonne - 75011 - TRST",
@@ -7833,7 +8752,13 @@
           "duree_residuelle": 11.83,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 2.4303
+          "taux_actuariel": 2.4303,
+          "programme": {
+            "adresse": "94 RUE DE CHARONNE",
+            "nb_logements": 300,
+            "n_programmes": 1,
+            "match_basis": "adresse_exacte"
+          }
         },
         {
           "objet": "15, rue Saint Just - 75017 - NSG",
@@ -7844,7 +8769,13 @@
           "duree_residuelle": 41.67,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 0.3015
+          "taux_actuariel": 0.3015,
+          "programme": {
+            "adresse": "15, RUE SAINT JUST",
+            "nb_logements": 250,
+            "n_programmes": 2,
+            "match_basis": "adresse_exacte"
+          }
         },
         {
           "objet": "54 rue Ruisseau - 75018",
@@ -7855,7 +8786,13 @@
           "duree_residuelle": 42.84,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 0.3801
+          "taux_actuariel": 0.3801,
+          "programme": {
+            "adresse": "54, RUE DU RUISSEAU",
+            "nb_logements": 36,
+            "n_programmes": 1,
+            "match_basis": "adresse_exacte"
+          }
         },
         {
           "objet": "13 rue des Ecluses Saint-Martin - 75010",
@@ -7866,7 +8803,13 @@
           "duree_residuelle": 36.25,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 1.1279
+          "taux_actuariel": 1.1279,
+          "programme": {
+            "adresse": "13, RUE DES ECLUSES SAINT MARTIN",
+            "nb_logements": 30,
+            "n_programmes": 1,
+            "match_basis": "adresse_exacte"
+          }
         },
         {
           "objet": "Pension de Famille/9, rue d'Aligre - 75012",
@@ -7877,9 +8820,18 @@
           "duree_residuelle": 44.0,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 0.3014
+          "taux_actuariel": 0.3014,
+          "programme": null
         }
-      ]
+      ],
+      "financement": {
+        "base_logement": 80764850,
+        "capital_rattache": 34309133,
+        "capital_portefeuille": 0,
+        "capital_non_rattache": 46455717,
+        "part_rattachee": 0.42480278139264627,
+        "n_programmes": 16
+      }
     },
     {
       "key": "seqens-sa-hlm",
@@ -7891,7 +8843,7 @@
       "nature_dominante": "logement_social_aide",
       "taux_moyen_pondere_pct": 1.518,
       "duree_residuelle_moyenne_ans": 29.17,
-      "part_fixe": 0.15012121196332437,
+      "part_fixe": 0.15012121196332434,
       "preteurs": [
         {
           "name": "CDC",
@@ -7934,7 +8886,8 @@
           "duree_residuelle": 29.76,
           "taux_type": "FIXE",
           "taux_index": "FIXE",
-          "taux_actuariel": 1.2141
+          "taux_actuariel": 1.2141,
+          "programme": null
         },
         {
           "objet": "33 rue Olivier de Serres - 75015",
@@ -7945,7 +8898,8 @@
           "duree_residuelle": 34.58,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 1.1528
+          "taux_actuariel": 1.1528,
+          "programme": null
         },
         {
           "objet": "33 rue Olivier de Serres - 75015",
@@ -7956,7 +8910,8 @@
           "duree_residuelle": 34.5,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 1.6604
+          "taux_actuariel": 1.6604,
+          "programme": null
         },
         {
           "objet": "33 rue Olivier de Serres - 75015",
@@ -7967,7 +8922,8 @@
           "duree_residuelle": 34.58,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 1.6243
+          "taux_actuariel": 1.6243,
+          "programme": null
         },
         {
           "objet": "27-31, avenue de Flandre - 75019",
@@ -7978,7 +8934,13 @@
           "duree_residuelle": 14.76,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 1.6279
+          "taux_actuariel": 1.6279,
+          "programme": {
+            "adresse": "27-31, AVENUE DE FLANDRE",
+            "nb_logements": 14,
+            "n_programmes": 1,
+            "match_basis": "adresse_exacte"
+          }
         },
         {
           "objet": "Rue de Duperré - 75009",
@@ -7989,7 +8951,8 @@
           "duree_residuelle": 27.0,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 1.2363
+          "taux_actuariel": 1.2363,
+          "programme": null
         },
         {
           "objet": "18-20 avenue de St Ouen-75018 - TRST",
@@ -8000,7 +8963,8 @@
           "duree_residuelle": 33.33,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 2.4895
+          "taux_actuariel": 2.4895,
+          "programme": null
         },
         {
           "objet": "33 rue Olivier de Serres-75015",
@@ -8011,7 +8975,8 @@
           "duree_residuelle": 34.58,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 0.3516
+          "taux_actuariel": 0.3516,
+          "programme": null
         },
         {
           "objet": "PCE - 47-51, rue Dutot - 75015",
@@ -8022,7 +8987,8 @@
           "duree_residuelle": 14.33,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 0.0351
+          "taux_actuariel": 0.0351,
+          "programme": null
         },
         {
           "objet": "36-38 rue des Orteaux - 75020",
@@ -8033,7 +8999,13 @@
           "duree_residuelle": 34.33,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 1.1445
+          "taux_actuariel": 1.1445,
+          "programme": {
+            "adresse": "36-38, RUE DES ORTEAUX",
+            "nb_logements": 61,
+            "n_programmes": 1,
+            "match_basis": "adresse_exacte"
+          }
         },
         {
           "objet": "33 rue Olivier de Serres - 75015",
@@ -8044,7 +9016,8 @@
           "duree_residuelle": 44.5,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 1.6509
+          "taux_actuariel": 1.6509,
+          "programme": null
         },
         {
           "objet": "27-31, avenue de Flandre - 75019",
@@ -8055,7 +9028,13 @@
           "duree_residuelle": 14.76,
           "taux_type": "FIXE",
           "taux_index": "FIXE",
-          "taux_actuariel": 0.8778
+          "taux_actuariel": 0.8778,
+          "programme": {
+            "adresse": "27-31, AVENUE DE FLANDRE",
+            "nb_logements": 14,
+            "n_programmes": 1,
+            "match_basis": "adresse_exacte"
+          }
         },
         {
           "objet": "151, rue de Bagnolet - 75020",
@@ -8066,7 +9045,13 @@
           "duree_residuelle": 14.58,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 1.6361
+          "taux_actuariel": 1.6361,
+          "programme": {
+            "adresse": "151, RUE DE BAGNOLET",
+            "nb_logements": 15,
+            "n_programmes": 2,
+            "match_basis": "adresse_exacte"
+          }
         },
         {
           "objet": "ZAC Clichy Batignolles lot E6 - 75017",
@@ -8077,7 +9062,13 @@
           "duree_residuelle": 42.0,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 1.6305
+          "taux_actuariel": 1.6305,
+          "programme": {
+            "adresse": "ZAC CLICHY BATIGNOLLES LOT E6",
+            "nb_logements": 46,
+            "n_programmes": 2,
+            "match_basis": "adresse_exacte"
+          }
         },
         {
           "objet": "36-38 rue des Orteaux - 75020",
@@ -8088,7 +9079,13 @@
           "duree_residuelle": 44.33,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 1.1365
+          "taux_actuariel": 1.1365,
+          "programme": {
+            "adresse": "36-38, RUE DES ORTEAUX",
+            "nb_logements": 61,
+            "n_programmes": 1,
+            "match_basis": "adresse_exacte"
+          }
         },
         {
           "objet": "ZAC Clichy Batignolles - 75017",
@@ -8099,7 +9096,8 @@
           "duree_residuelle": 32.25,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 1.1998
+          "taux_actuariel": 1.1998,
+          "programme": null
         },
         {
           "objet": "ZAC Clichy Batignolles lot E6 - 75017",
@@ -8110,7 +9108,13 @@
           "duree_residuelle": 32.0,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 1.646
+          "taux_actuariel": 1.646,
+          "programme": {
+            "adresse": "ZAC CLICHY BATIGNOLLES LOT E6",
+            "nb_logements": 46,
+            "n_programmes": 2,
+            "match_basis": "adresse_exacte"
+          }
         },
         {
           "objet": "151, rue de Bagnolet - 75020",
@@ -8121,7 +9125,13 @@
           "duree_residuelle": 17.54,
           "taux_type": "FIXE",
           "taux_index": "FIXE",
-          "taux_actuariel": 1.2264
+          "taux_actuariel": 1.2264,
+          "programme": {
+            "adresse": "151, RUE DE BAGNOLET",
+            "nb_logements": 15,
+            "n_programmes": 2,
+            "match_basis": "adresse_exacte"
+          }
         },
         {
           "objet": "33 rue Olivier de Serres-75015",
@@ -8132,7 +9142,8 @@
           "duree_residuelle": 44.58,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 1.1442
+          "taux_actuariel": 1.1442,
+          "programme": null
         },
         {
           "objet": "Rues Orteaux/De la Réunion - 75020 - CPCT - TRST",
@@ -8143,7 +9154,8 @@
           "duree_residuelle": 3.67,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 3.6473
+          "taux_actuariel": 3.6473,
+          "programme": null
         },
         {
           "objet": "12/14 rue du Buisson Saint Louis - 75010 - TRST",
@@ -8154,7 +9166,8 @@
           "duree_residuelle": 11.67,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 3.2333
+          "taux_actuariel": 3.2333,
+          "programme": null
         },
         {
           "objet": "77-79, rue Championnet - 75018 - NSG",
@@ -8165,7 +9178,8 @@
           "duree_residuelle": 26.58,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 1.1006
+          "taux_actuariel": 1.1006,
+          "programme": null
         },
         {
           "objet": "Rues Terre Neuve - Planchat - Dumas - 75020 - TRST",
@@ -8176,7 +9190,8 @@
           "duree_residuelle": 12.75,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 3.0028
+          "taux_actuariel": 3.0028,
+          "programme": null
         },
         {
           "objet": "ZAC Citroën Cévennes - 75015 - TRST",
@@ -8187,7 +9202,8 @@
           "duree_residuelle": 5.16,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 3.9714
+          "taux_actuariel": 3.9714,
+          "programme": null
         },
         {
           "objet": "18-20 avenue de St Ouen-75018 - TRST",
@@ -8198,9 +9214,18 @@
           "duree_residuelle": 18.33,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 2.6706
+          "taux_actuariel": 2.6706,
+          "programme": null
         }
-      ]
+      ],
+      "financement": {
+        "base_logement": 77565640,
+        "capital_rattache": 21785444,
+        "capital_portefeuille": 382944,
+        "capital_non_rattache": 55397252,
+        "part_rattachee": 0.28086462259935996,
+        "n_programmes": 24
+      }
     },
     {
       "key": "aximo-esh",
@@ -8218,7 +9243,7 @@
           "name": "CDC",
           "capital_restant": 50769665,
           "count_emprunts": 161,
-          "share": 0.7986864774163783
+          "share": 0.7986864774163782
         },
         {
           "name": "CE",
@@ -8230,7 +9255,7 @@
           "name": "ARKEA",
           "capital_restant": 3087652,
           "count_emprunts": 2,
-          "share": 0.048573608602769304
+          "share": 0.0485736086027693
         }
       ],
       "emprunts_top": [
@@ -8243,7 +9268,13 @@
           "duree_residuelle": 33.58,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 1.5341
+          "taux_actuariel": 1.5341,
+          "programme": {
+            "adresse": "166, QUAI DE JEMMAPES",
+            "nb_logements": 47,
+            "n_programmes": 1,
+            "match_basis": "adresse_exacte"
+          }
         },
         {
           "objet": "49, rue Blanche - 75009 - CPCT - RGT",
@@ -8254,7 +9285,13 @@
           "duree_residuelle": 24.66,
           "taux_type": "FIXE",
           "taux_index": "FIXE",
-          "taux_actuariel": 1.0649
+          "taux_actuariel": 1.0649,
+          "programme": {
+            "adresse": "49, RUE BLANCHE",
+            "nb_logements": 71,
+            "n_programmes": 2,
+            "match_basis": "adresse_exacte"
+          }
         },
         {
           "objet": "88, rue de la Villette - 75019 - RGT",
@@ -8265,7 +9302,13 @@
           "duree_residuelle": 8.92,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 1.5773
+          "taux_actuariel": 1.5773,
+          "programme": {
+            "adresse": "88, RUE DE LA VILLETTE",
+            "nb_logements": 47,
+            "n_programmes": 1,
+            "match_basis": "adresse_exacte"
+          }
         },
         {
           "objet": "49 rue Blanche - 75009",
@@ -8276,7 +9319,13 @@
           "duree_residuelle": 16.04,
           "taux_type": "FIXE",
           "taux_index": "FIXE",
-          "taux_actuariel": 4.5313
+          "taux_actuariel": 4.5313,
+          "programme": {
+            "adresse": "49, RUE BLANCHE",
+            "nb_logements": 71,
+            "n_programmes": 2,
+            "match_basis": "adresse_exacte"
+          }
         },
         {
           "objet": "59 bd de Strasbourg - 75010 - RGT",
@@ -8287,7 +9336,13 @@
           "duree_residuelle": 21.25,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 2.2427
+          "taux_actuariel": 2.2427,
+          "programme": {
+            "adresse": "59 BD DE STRASBOURG",
+            "nb_logements": 45,
+            "n_programmes": 1,
+            "match_basis": "adresse_exacte"
+          }
         },
         {
           "objet": "59 bd de Strasbourg - 75010 - RGT",
@@ -8298,7 +9353,13 @@
           "duree_residuelle": 32.33,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 2.4081
+          "taux_actuariel": 2.4081,
+          "programme": {
+            "adresse": "59 BD DE STRASBOURG",
+            "nb_logements": 45,
+            "n_programmes": 1,
+            "match_basis": "adresse_exacte"
+          }
         },
         {
           "objet": "Divers programmes - 75000",
@@ -8309,7 +9370,8 @@
           "duree_residuelle": 45.83,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 1.1323
+          "taux_actuariel": 1.1323,
+          "programme": null
         },
         {
           "objet": "59 bd de Strasbourg - 75010 - RGT",
@@ -8320,7 +9382,13 @@
           "duree_residuelle": 17.33,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 2.6291
+          "taux_actuariel": 2.6291,
+          "programme": {
+            "adresse": "59 BD DE STRASBOURG",
+            "nb_logements": 45,
+            "n_programmes": 1,
+            "match_basis": "adresse_exacte"
+          }
         },
         {
           "objet": "17 rue Broussais - 75014 - RGT",
@@ -8331,7 +9399,13 @@
           "duree_residuelle": 17.33,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 2.6262
+          "taux_actuariel": 2.6262,
+          "programme": {
+            "adresse": "17 RUE BROUSSAIS",
+            "nb_logements": 100,
+            "n_programmes": 1,
+            "match_basis": "adresse_exacte"
+          }
         },
         {
           "objet": "8, rue d'Ardennes - 75009",
@@ -8342,7 +9416,8 @@
           "duree_residuelle": 12.75,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 1.6571
+          "taux_actuariel": 1.6571,
+          "programme": null
         },
         {
           "objet": "8, rue d'Ardennes - 75009",
@@ -8353,7 +9428,8 @@
           "duree_residuelle": 13.0,
           "taux_type": "FIXE",
           "taux_index": "FIXE",
-          "taux_actuariel": 1.5966
+          "taux_actuariel": 1.5966,
+          "programme": null
         },
         {
           "objet": "8, rue d'Auteuil - 75016 - NSG",
@@ -8364,7 +9440,13 @@
           "duree_residuelle": 39.58,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 0.3015
+          "taux_actuariel": 0.3015,
+          "programme": {
+            "adresse": "8 RUE D'AUTEUIL",
+            "nb_logements": 22,
+            "n_programmes": 1,
+            "match_basis": "adresse_exacte"
+          }
         },
         {
           "objet": "8, rue d'Auteuil - 75016 - NSG",
@@ -8375,7 +9457,13 @@
           "duree_residuelle": 49.58,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 0.3012
+          "taux_actuariel": 0.3012,
+          "programme": {
+            "adresse": "8 RUE D'AUTEUIL",
+            "nb_logements": 22,
+            "n_programmes": 1,
+            "match_basis": "adresse_exacte"
+          }
         },
         {
           "objet": "72, bd Saint Marcel - 75005",
@@ -8386,7 +9474,13 @@
           "duree_residuelle": 47.0,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 1.1216
+          "taux_actuariel": 1.1216,
+          "programme": {
+            "adresse": "72 BD SAINT MARCEL",
+            "nb_logements": 24,
+            "n_programmes": 2,
+            "match_basis": "adresse_exacte"
+          }
         },
         {
           "objet": "8, rue d'Auteuil - 75016 - NSG",
@@ -8397,7 +9491,13 @@
           "duree_residuelle": 39.58,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 1.1003
+          "taux_actuariel": 1.1003,
+          "programme": {
+            "adresse": "8 RUE D'AUTEUIL",
+            "nb_logements": 22,
+            "n_programmes": 1,
+            "match_basis": "adresse_exacte"
+          }
         },
         {
           "objet": "Divers programmes - 75000",
@@ -8408,7 +9508,8 @@
           "duree_residuelle": 45.83,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 0.3311
+          "taux_actuariel": 0.3311,
+          "programme": null
         },
         {
           "objet": "13, passage des Mauxins - 75019 - NSG",
@@ -8419,7 +9520,13 @@
           "duree_residuelle": 13.58,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 1.5508
+          "taux_actuariel": 1.5508,
+          "programme": {
+            "adresse": "13 PASSAGE DES MAUXINS",
+            "nb_logements": 14,
+            "n_programmes": 1,
+            "match_basis": "adresse_exacte"
+          }
         },
         {
           "objet": "8, rue d'Auteuil - 75016 - NSG",
@@ -8430,7 +9537,13 @@
           "duree_residuelle": 49.58,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 1.1002
+          "taux_actuariel": 1.1002,
+          "programme": {
+            "adresse": "8 RUE D'AUTEUIL",
+            "nb_logements": 22,
+            "n_programmes": 1,
+            "match_basis": "adresse_exacte"
+          }
         },
         {
           "objet": "72, bd Saint Marcel - 75005",
@@ -8441,7 +9554,13 @@
           "duree_residuelle": 37.0,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 1.1261
+          "taux_actuariel": 1.1261,
+          "programme": {
+            "adresse": "72 BD SAINT MARCEL",
+            "nb_logements": 24,
+            "n_programmes": 2,
+            "match_basis": "adresse_exacte"
+          }
         },
         {
           "objet": "72-74, rue Saint Marcel - 75005 - NSG",
@@ -8452,7 +9571,13 @@
           "duree_residuelle": 39.58,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 1.1003
+          "taux_actuariel": 1.1003,
+          "programme": {
+            "adresse": "72 BD SAINT MARCEL",
+            "nb_logements": 24,
+            "n_programmes": 2,
+            "match_basis": "adresse_exacte"
+          }
         },
         {
           "objet": "72-74, rue Saint Marcel - 75005 - NSG",
@@ -8463,7 +9588,13 @@
           "duree_residuelle": 49.58,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 0.3012
+          "taux_actuariel": 0.3012,
+          "programme": {
+            "adresse": "72 BD SAINT MARCEL",
+            "nb_logements": 24,
+            "n_programmes": 2,
+            "match_basis": "adresse_exacte"
+          }
         },
         {
           "objet": "72-74, rue Saint Marcel - 75005 - NSG",
@@ -8474,7 +9605,13 @@
           "duree_residuelle": 39.58,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 0.3015
+          "taux_actuariel": 0.3015,
+          "programme": {
+            "adresse": "72 BD SAINT MARCEL",
+            "nb_logements": 24,
+            "n_programmes": 2,
+            "match_basis": "adresse_exacte"
+          }
         },
         {
           "objet": "13, passage des Mauxins - 75019 - NSG",
@@ -8485,7 +9622,13 @@
           "duree_residuelle": 13.58,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 1.5508
+          "taux_actuariel": 1.5508,
+          "programme": {
+            "adresse": "13 PASSAGE DES MAUXINS",
+            "nb_logements": 14,
+            "n_programmes": 1,
+            "match_basis": "adresse_exacte"
+          }
         },
         {
           "objet": "Diverses adresses - 75007 - 75015 - 75017",
@@ -8496,7 +9639,8 @@
           "duree_residuelle": 35.16,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 1.1384
+          "taux_actuariel": 1.1384,
+          "programme": null
         },
         {
           "objet": "72-74, rue Saint Marcel - 75005 - NSG",
@@ -8507,9 +9651,23 @@
           "duree_residuelle": 49.58,
           "taux_type": "V",
           "taux_index": "LIVRET A",
-          "taux_actuariel": 1.1002
+          "taux_actuariel": 1.1002,
+          "programme": {
+            "adresse": "72 BD SAINT MARCEL",
+            "nb_logements": 24,
+            "n_programmes": 2,
+            "match_basis": "adresse_exacte"
+          }
         }
-      ]
+      ],
+      "financement": {
+        "base_logement": 63566452,
+        "capital_rattache": 51907030,
+        "capital_portefeuille": 5269839,
+        "capital_non_rattache": 6389583,
+        "part_rattachee": 0.816579005279637,
+        "n_programmes": 54
+      }
     }
   ],
   "autres_beneficiaires": {

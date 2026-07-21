@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T22:30:00.121157+00:00",
+ "generated_at": "2026-07-21T14:25:53.971643+00:00",
  "slug": "ferry-building",
  "name": "Ferry Building",
  "note": "Archive documents linked to this place; source labels honour the SFPL-vs-Democracy's-Library distinction.",
@@ -14,31 +14,9 @@
    "snippet": "3 1223 03559 3046 «FERRY BUILDING» COMPLEX The Embarcadero «Ferry Building»/World Trade Center Agriculture",
    "url": "https://archive.org/details/ferrybuildingcom2919sanf",
    "deep_link": "https://archive.org/details/ferrybuildingcom2919sanf?q=Ferry+Building",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
-  },
-  {
-   "identifier": "comprehensivepla2219sanf",
-   "title": "The comprehensive plan : northern waterfront",
-   "creator": "San Francisco (Calif.). Dept. of City Planning",
-   "year": 1971,
-   "pool": "sfpl",
-   "matched_alias": "Ferry Building",
-   "snippet": "front of the «Ferry Building». Second, uses in the area north of the «Ferry Building» should be",
-   "url": "https://archive.org/details/comprehensivepla2219sanf",
-   "deep_link": "https://archive.org/details/comprehensivepla2219sanf?q=Ferry+Building",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
-  },
-  {
-   "identifier": "minutes1993sanf_0",
-   "title": "Minutes",
-   "creator": "San Francisco Port Commission",
-   "year": null,
-   "pool": "sfpl",
-   "matched_alias": "Ferry Building",
-   "snippet": "of the «Ferry Building». These repairs are to correct damage to the «Ferry Building» sustained",
-   "url": "https://archive.org/details/minutes1993sanf_0",
-   "deep_link": "https://archive.org/details/minutes1993sanf_0?q=Ferry+Building",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Plans & environmental review",
+   "salient": true
   },
   {
    "identifier": "minutes2219sanf",
@@ -50,19 +28,23 @@
    "snippet": "planted in the center «Ferry Building» plaza and adjacent to the «Ferry Building» drop-off areas.",
    "url": "https://archive.org/details/minutes2219sanf",
    "deep_link": "https://archive.org/details/minutes2219sanf?q=Ferry+Building",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Meetings & resolutions",
+   "salient": true
   },
   {
-   "identifier": "minutes1995sanf_0",
-   "title": "Minutes",
-   "creator": "San Francisco Port Commission",
-   "year": null,
+   "identifier": "comprehensivepla2219sanf",
+   "title": "The comprehensive plan : northern waterfront",
+   "creator": "San Francisco (Calif.). Dept. of City Planning",
+   "year": 1971,
    "pool": "sfpl",
    "matched_alias": "Ferry Building",
-   "snippet": "GRANT FUNDS FOR THE «FERRY BUILDING» RENOVATION PROJECT. The «Ferry Building» Restoration Project",
-   "url": "https://archive.org/details/minutes1995sanf_0",
-   "deep_link": "https://archive.org/details/minutes1995sanf_0?q=Ferry+Building",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+   "snippet": "front of the «Ferry Building». Second, uses in the area north of the «Ferry Building» should be",
+   "url": "https://archive.org/details/comprehensivepla2219sanf",
+   "deep_link": "https://archive.org/details/comprehensivepla2219sanf?q=Ferry+Building",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Other records",
+   "salient": true
   }
  ]
 }

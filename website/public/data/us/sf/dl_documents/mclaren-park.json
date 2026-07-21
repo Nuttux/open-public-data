@@ -1,44 +1,22 @@
 {
- "generated_at": "2026-07-20T22:30:00.104350+00:00",
+ "generated_at": "2026-07-21T14:25:53.930010+00:00",
  "slug": "mclaren-park",
  "name": "John McLaren Park",
  "note": "Archive documents linked to this place; source labels honour the SFPL-vs-Democracy's-Library distinction.",
  "documents": [
   {
-   "identifier": "parkstandards6mo162010san",
-   "title": "Park standards, 6-month report FY 2009-10 : park scores citywide increased through the first half of FY 2009-10",
-   "creator": "San Francisco (Calif.). Office of the Controller. City Services Auditor Division",
-   "year": 2009,
+   "identifier": "masterplanofsanf1945sanf",
+   "title": "The master plan of San Francisco: the land use plan. Location and extent of public and private uses - standards of population density and land coverage",
+   "creator": "San Francisco (Calif.). City Planning Commission",
+   "year": 1945,
    "pool": "sfpl",
    "matched_alias": "John McLaren Park",
-   "snippet": "Christopher Playground (District 8) «John McLaren Park» (District 10) lowest at 83.1 percent",
-   "url": "https://archive.org/details/parkstandards6mo162010san",
-   "deep_link": "https://archive.org/details/parkstandards6mo162010san?q=John+McLaren+Park",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
-  },
-  {
-   "identifier": "fy200708parksann32009sanf",
-   "title": "FY 2007-08 parks annual report : parks scores increased for third year and differences between district averages narrowed",
-   "creator": "San Francisco (Calif.). Office of the Controller. City Services Auditor Division,San Francisco (Calif.). Recreation and Park Dept",
-   "year": 2007,
-   "pool": "sfpl",
-   "matched_alias": "John McLaren Park",
-   "snippet": "and Adam Rogers Park (70.8 percent), «John McLaren Park» (70.2 percent), and Palou/Phelps Mini",
-   "url": "https://archive.org/details/fy200708parksann32009sanf",
-   "deep_link": "https://archive.org/details/fy200708parksann32009sanf?q=John+McLaren+Park",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
-  },
-  {
-   "identifier": "minutes1998sanf_5",
-   "title": "Minutes",
-   "creator": "San Francisco Open Space/Park Renovation Citizens Advisory Committee",
-   "year": 2000,
-   "pool": "sfpl",
-   "matched_alias": "McLaren Park",
-   "snippet": "Graves (Friends of «McLaren Park») and Dody Damish (Friends of «McLaren Park») spoke in opposition",
-   "url": "https://archive.org/details/minutes1998sanf_5",
-   "deep_link": "https://archive.org/details/minutes1998sanf_5?q=McLaren+Park",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+   "snippet": "iect No. Project Location Area L-l «John McLaren Park» Adjacent to 91 acres of Complete Acquisition",
+   "url": "https://archive.org/details/masterplanofsanf1945sanf",
+   "deep_link": "https://archive.org/details/masterplanofsanf1945sanf?q=John+McLaren+Park",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Plans & environmental review",
+   "salient": true
   },
   {
    "identifier": "sanfranciscorecy1199sanf",
@@ -50,7 +28,9 @@
    "snippet": "Reservoir - «McLaren Park» Site 1 Layout 54 18 Southeast Zone Reservoir - «McLaren Park» Site 2",
    "url": "https://archive.org/details/sanfranciscorecy1199sanf",
    "deep_link": "https://archive.org/details/sanfranciscorecy1199sanf?q=McLaren+Park",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Plans & environmental review",
+   "salient": true
   },
   {
    "identifier": "masterplanfordev1983sanf",
@@ -62,7 +42,23 @@
    "snippet": "Planning report on John «McLaren Park» issued. 1951 - John «McLaren Park» area recommended as a",
    "url": "https://archive.org/details/masterplanfordev1983sanf",
    "deep_link": "https://archive.org/details/masterplanfordev1983sanf?q=McLaren+Park",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Plans & environmental review",
+   "salient": true
+  },
+  {
+   "identifier": "minutes1998sanf_5",
+   "title": "Minutes",
+   "creator": "San Francisco Open Space/Park Renovation Citizens Advisory Committee",
+   "year": 2000,
+   "pool": "sfpl",
+   "matched_alias": "McLaren Park",
+   "snippet": "Graves (Friends of «McLaren Park») and Dody Damish (Friends of «McLaren Park») spoke in opposition",
+   "url": "https://archive.org/details/minutes1998sanf_5",
+   "deep_link": "https://archive.org/details/minutes1998sanf_5?q=McLaren+Park",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Meetings & resolutions",
+   "salient": true
   },
   {
    "identifier": "journalofproceed49sanfrich",
@@ -74,7 +70,23 @@
    "snippet": "Homer Bickel, for $2,400, Required for «McLaren Park». File No. 11262, Resolution No. 13986",
    "url": "https://archive.org/details/journalofproceed49sanfrich",
    "deep_link": "https://archive.org/details/journalofproceed49sanfrich?q=McLaren+Park",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Meetings & resolutions",
+   "salient": true
+  },
+  {
+   "identifier": "fy200708parksann32009sanf",
+   "title": "FY 2007-08 parks annual report : parks scores increased for third year and differences between district averages narrowed",
+   "creator": "San Francisco (Calif.). Office of the Controller. City Services Auditor Division,San Francisco (Calif.). Recreation and Park Dept",
+   "year": 2007,
+   "pool": "sfpl",
+   "matched_alias": "John McLaren Park",
+   "snippet": "and Adam Rogers Park (70.8 percent), «John McLaren Park» (70.2 percent), and Palou/Phelps Mini",
+   "url": "https://archive.org/details/fy200708parksann32009sanf",
+   "deep_link": "https://archive.org/details/fy200708parksann32009sanf?q=John+McLaren+Park",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Reports & records",
+   "salient": true
   },
   {
    "identifier": "reportonplanforl1954sanf",
@@ -86,19 +98,9 @@
    "snippet": "Merced Park 38 3) Shoreline Parks 39 h) «John McLaren Park» h2 5) Interior Park Belt If 3 Parkways",
    "url": "https://archive.org/details/reportonplanforl1954sanf",
    "deep_link": "https://archive.org/details/reportonplanforl1954sanf?q=John+McLaren+Park",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
-  },
-  {
-   "identifier": "2redevelopmentinj1951sanf",
-   "title": "Redevelopment in the John McLaren Park area : a report to the Redevelopment Agency of the City and County of San Francisco",
-   "creator": "San Francisco (Calif.). Dept. of City Planning,San Francisco Redevelopment Agency (San Francisco, Calif.)",
-   "year": 1951,
-   "pool": "sfpl",
-   "matched_alias": "John McLaren Park",
-   "snippet": "eastern end of «John McLaren Park» referred to below as \"The «John McLaren Park» Area\" may be",
-   "url": "https://archive.org/details/2redevelopmentinj1951sanf",
-   "deep_link": "https://archive.org/details/2redevelopmentinj1951sanf?q=John+McLaren+Park",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Other records",
+   "salient": false
   },
   {
    "identifier": "johnmclarenparka1950sanf",
@@ -110,19 +112,37 @@
    "snippet": "creating «John McLaren Park», Recreational Value of Site The site of «John McLaren Park» is one",
    "url": "https://archive.org/details/johnmclarenparka1950sanf",
    "deep_link": "https://archive.org/details/johnmclarenparka1950sanf?q=John+McLaren+Park",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Other records",
+   "salient": false
   },
   {
-   "identifier": "masterplanofsanf1945sanf",
-   "title": "The master plan of San Francisco: the land use plan. Location and extent of public and private uses - standards of population density and land coverage",
-   "creator": "San Francisco (Calif.). City Planning Commission",
-   "year": 1945,
+   "identifier": "2redevelopmentinj1951sanf",
+   "title": "Redevelopment in the John McLaren Park area : a report to the Redevelopment Agency of the City and County of San Francisco",
+   "creator": "San Francisco (Calif.). Dept. of City Planning,San Francisco Redevelopment Agency (San Francisco, Calif.)",
+   "year": 1951,
    "pool": "sfpl",
    "matched_alias": "John McLaren Park",
-   "snippet": "iect No. Project Location Area L-l «John McLaren Park» Adjacent to 91 acres of Complete Acquisition",
-   "url": "https://archive.org/details/masterplanofsanf1945sanf",
-   "deep_link": "https://archive.org/details/masterplanofsanf1945sanf?q=John+McLaren+Park",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+   "snippet": "eastern end of «John McLaren Park» referred to below as \"The «John McLaren Park» Area\" may be",
+   "url": "https://archive.org/details/2redevelopmentinj1951sanf",
+   "deep_link": "https://archive.org/details/2redevelopmentinj1951sanf?q=John+McLaren+Park",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Other records",
+   "salient": false
+  },
+  {
+   "identifier": "parkstandards6mo162010san",
+   "title": "Park standards, 6-month report FY 2009-10 : park scores citywide increased through the first half of FY 2009-10",
+   "creator": "San Francisco (Calif.). Office of the Controller. City Services Auditor Division",
+   "year": 2009,
+   "pool": "sfpl",
+   "matched_alias": "John McLaren Park",
+   "snippet": "Christopher Playground (District 8) «John McLaren Park» (District 10) lowest at 83.1 percent",
+   "url": "https://archive.org/details/parkstandards6mo162010san",
+   "deep_link": "https://archive.org/details/parkstandards6mo162010san?q=John+McLaren+Park",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Other records",
+   "salient": false
   }
  ]
 }

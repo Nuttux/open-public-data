@@ -193,6 +193,15 @@ export default function DetailDrawer({
     return () => document.removeEventListener("mousedown", onDown);
   }, [menuOpen]);
 
+  // Section hub derived from the drawer URL — the close target for a
+  // drill-down chain that has no explicit backHref (the Paris fiches).
+  // Covers /fr|us/city/{city}/{section}/… and /fr|us/national/{section}/….
+  const hubFromShareUrl = () => {
+    if (!shareUrl) return null;
+    const m = shareUrl.match(/^(\/(?:fr|us)\/(?:city\/[^/]+|national)\/[^/]+)\//);
+    return m ? m[1] : null;
+  };
+
   const close = (method: "x" | "backdrop" | "esc" = "x") => {
     track("drawer_close", {
       entity_type: entityType,
@@ -200,13 +209,33 @@ export default function DetailDrawer({
       method,
       dwell_ms: Date.now() - openedAtRef.current,
     });
-    if (previous) {
-      const stack = readStack().slice(0, -1);
-      writeStack(stack);
-      router.back();
-      return;
-    }
+
+    // A fiche reached by drilling down from another fiche must CLOSE fully,
+    // not merely reveal its parent. router.back() steps back a single history
+    // entry, so on a 2+ deep chain it lands on the parent drawer — which reads
+    // as "the X went back but didn't close". The "← Retour" crumb is what steps
+    // back one level; the × always dismisses the whole chain.
+    const inChain = Boolean(previous || parentLink);
     writeStack([]);
+
+    if (inChain) {
+      // Close every open drawer at once. We can't do this with the soft router:
+      // router.back() only pops ONE history entry (revealing the parent drawer,
+      // not closing), and router.push/replace to another URL leaves Next's
+      // @drawer parallel-route slot rendering the stale drawer (soft nav never
+      // re-resolves a sibling slot to its default). A hard navigation to a real
+      // (non-intercepted) page is the one thing that reliably tears the whole
+      // drawer stack down — the same reason parentLink.hard exists. Prefer the
+      // explicit backHref (SF / Marseille / national); else the section hub.
+      const target = backHref || hubFromShareUrl();
+      if (target && typeof window !== "undefined") {
+        window.location.assign(target);
+        return;
+      }
+    }
+
+    // Top-level drawer: a single step back returns to the exact page the
+    // drawer was launched from.
     if (typeof window !== "undefined" && window.history.length > 1) {
       router.back();
     } else if (backHref) {

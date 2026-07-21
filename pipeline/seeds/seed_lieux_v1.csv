@@ -71,7 +71,6 @@ piscine-belliard,Piscine Belliard,Piscine,18,48.89623,2.33473,Belliard,Belliard,
 mediatheque-james-baldwin,Médiathèque James Baldwin,Bibliothèque,19,48.876813,2.396678,James Baldwin,James Baldwin,Médiathèque James Baldwin,,2,culture,Médiathèque[\s'’-]+James[\s'’-]+Baldwin
 stade-charlety,Stade Charléty,Stade,13,48.81922,2.34555,Charléty,Charléty,Stade Charléty,,2,sport,Stade[\s'’-]+Charléty
 cirque-d-hiver,Cirque d'Hiver,Équipement culturel,11,48.86312,2.36727,Cirque d’Hiver,Cirque d’Hiver,Cirque d'Hiver,,2,culture,Cirque[\s'’-]+d[\s'’-]+Hiver
-colonne-de-juillet,Colonne de Juillet,Monument,11,48.85371,2.37021,Colonne de Juillet,Colonne de Juillet,Colonne de Juillet,,2,urbain,Colonne[\s'’-]+de[\s'’-]+Juillet
 bibliotheque-forney,Bibliothèque Forney,Bibliothèque,4,48.853389,2.359078,Bibliothèque Forney,Bibliothèque Forney,Bibliothèque Forney,,3,culture,Bibliothèque[\s'’-]+Forney
 bibliotheque-de-l-heure-joyeuse,Bibliothèque de l'Heure joyeuse,Bibliothèque,5,48.852064,2.345104,Bibliothèque de l'Heure joyeuse,Bibliothèque de l'Heure joyeuse,Bibliothèque de l'Heure joyeuse,,3,culture,Bibliothèque[\s'’-]+Heure[\s'’-]+joyeuse
 maison-de-la-poesie,Maison de la Poésie,Scène littéraire,3,48.86218,2.351844,Maison de la Poésie,Maison de la Poésie,Maison de la Poésie,,3,culture,Maison[\s'’-]+Poésie
@@ -94,3 +93,101 @@ fontaine-des-innocents,Fontaine des Innocents,Monument,1,48.860458,2.347394,Font
 place-du-chatelet,Place du Châtelet,Place,1,48.857346,2.34779,Place du Châtelet,Place du Châtelet,Place du Châtelet,,3,urbain,Place[\s'’-]+Châtelet
 place-de-la-madeleine,Place de la Madeleine,Place,8,48.870779,2.325,Place de la Madeleine,Place de la Madeleine,Place de la Madeleine,,3,urbain,Place[\s'’-]+Madeleine
 bourse-de-commerce,Bourse de Commerce,Monument,1,48.862819,2.342834,Bourse de Commerce,Bourse de Commerce,Bourse de Commerce,,3,services,Bourse[\s'’-]+Commerce
+bassin-de-la-villette,Bassin de la Villette,Infrastructure,19,48.8861,2.375,Bassin de la Villette,Bassin de la Villette,Bassin de la Villette,,3,services,Bassin[\s'’-]+Villette
+port-de-l-arsenal,Port de l'Arsenal,Infrastructure,12,48.8494,2.3673,Port de l'Arsenal,Port de l'Arsenal,Port de l'Arsenal,,3,services,Port[\s'’-]+Arsenal
+lac-daumesnil,Lac Daumesnil,Infrastructure,12,48.830556,2.415556,Lac Daumesnil,Lac Daumesnil,Lac Daumesnil,,3,vert,Lac[\s'’-]+Daumesnil
+cimetiere-du-montparnasse,Cimetière du Montparnasse,Cimetière,14,48.837778,2.328333,Cimetière du Montparnasse,Cimetière du Montparnasse,Cimetière du Montparnasse,,3,vert,Cimetière[\s'’-]+Montparnasse
+cimetiere-de-montmartre,Cimetière de Montmartre,Cimetière,18,48.887778,2.330278,Cimetière de Montmartre,Cimetière de Montmartre,Cimetière de Montmartre,,3,vert,Cimetière[\s'’-]+Montmartre
+cimetiere-de-passy,Cimetière de Passy,Cimetière,16,48.8625,2.285278,Cimetière de Passy,Cimetière de Passy,Cimetière de Passy,,3,vert,Cimetière[\s'’-]+Passy
+cimetiere-des-batignolles,Cimetière des Batignolles,Cimetière,17,48.897719,2.316717,Cimetière des Batignolles,Cimetière des Batignolles,Cimetière des Batignolles,,3,vert,Cimetière[\s'’-]+Batignolles
+fontaine-stravinsky,Fontaine Stravinsky,Monument,4,48.8595,2.3515,Fontaine Stravinsky,Fontaine Stravinsky,Fontaine Stravinsky,,3,urbain,Fontaine[\s'’-]+Stravinsky
+fontaine-de-mars,Fontaine de Mars,Monument,7,48.8584,2.3024,Fontaine de Mars,Fontaine de Mars,Fontaine de Mars,,3,urbain,Fontaine[\s'’-]+Mars
+le-mur-pour-la-paix,Le Mur pour la Paix,Monument,7,48.853444,2.301986,Le Mur pour la Paix,Le Mur pour la Paix,Le Mur pour la Paix,,3,urbain,Mur[\s'’-]+pour[\s'’-]+Paix
+ile-aux-cygnes,Île aux Cygnes,Promenade,15,48.855335,2.287308,Île aux Cygnes,Île aux Cygnes,Île aux Cygnes,,3,vert,Île[\s'’-]+aux[\s'’-]+Cygnes
+place-de-la-concorde,Place de la Concorde,Place,8,48.867063,2.321554,Place de la Concorde,Place de la Concorde,Place de la Concorde,,3,urbain,Place[\s'’-]+Concorde
+place-charles-de-gaulle-etoile,Place Charles-de-Gaulle (Étoile),Place,8,48.872916,2.29402,Place Charles-de-Gaulle (Étoile),Place Charles-de-Gaulle (Étoile),Place Charles-de-Gaulle (Étoile),,3,urbain,Place[\s'’-]+Charles[\s'’-]+Gaulle[\s'’-]+\(Étoile\)
+place-du-trocadero,Place du Trocadéro,Place,16,48.862539,2.282334,Place du Trocadéro,Place du Trocadéro,Place du Trocadéro,,3,urbain,Place[\s'’-]+Trocadéro
+place-du-pantheon,Place du Panthéon,Place,5,48.845939,2.34571,Place du Panthéon,Place du Panthéon,Place du Panthéon,,3,urbain,Place[\s'’-]+Panthéon
+place-pigalle,Place Pigalle,Place,18,48.881997,2.337318,Place Pigalle,Place Pigalle,Place Pigalle,,3,urbain,Place[\s'’-]+Pigalle
+place-de-clichy,Place de Clichy,Place,17,48.88352,2.32739,Place de Clichy,Place de Clichy,Place de Clichy,,3,urbain,Place[\s'’-]+Clichy
+place-saint-sulpice,Place Saint-Sulpice,Place,6,48.85083,2.33333,Place Saint-Sulpice,Place Saint-Sulpice,Place Saint-Sulpice,,3,urbain,Place[\s'’-]+Saint[\s'’-]+Sulpice
+place-gambetta,Place Gambetta,Place,20,48.864886,2.398475,Place Gambetta,Place Gambetta,Place Gambetta,,3,urbain,Place[\s'’-]+Gambetta
+place-leon-blum,Place Léon-Blum,Place,11,48.858045,2.380503,Place Léon-Blum,Place Léon-Blum,Place Léon-Blum,,3,urbain,Place[\s'’-]+Léon[\s'’-]+Blum
+place-des-fetes,Place des Fêtes,Place,19,48.877435,2.393049,Place des Fêtes,Place des Fêtes,Place des Fêtes,,3,urbain,Place[\s'’-]+Fêtes
+square-rene-viviani,Square René-Viviani,Square,5,48.852209,2.347579,Square René-Viviani,Square René-Viviani,Square René-Viviani,,3,urbain,Square[\s'’-]+René[\s'’-]+Viviani
+square-du-temple,Square du Temple,Square,3,48.863651,2.358599,Square du Temple,Square du Temple,Square du Temple,,3,urbain,Square[\s'’-]+Temple
+square-des-batignolles,Square des Batignolles,Square,17,48.8875,2.316389,Square des Batignolles,Square des Batignolles,Square des Batignolles,,3,urbain,Square[\s'’-]+Batignolles
+marche-saint-germain,Marché Saint-Germain,Marché couvert,6,48.848177,2.375373,Marché Saint-Germain,Marché Saint-Germain,Marché Saint-Germain,,3,services,Marché[\s'’-]+Saint[\s'’-]+Germain
+marche-saint-martin,Marché Saint-Martin,Marché couvert,10,48.848177,2.375373,Marché Saint-Martin,Marché Saint-Martin,Marché Saint-Martin,,3,services,Marché[\s'’-]+Saint[\s'’-]+Martin
+marche-secretan,Marché Secrétan,Marché couvert,19,48.880745,2.374397,Marché Secrétan,Marché Secrétan,Marché Secrétan,,3,services,Marché[\s'’-]+Secrétan
+mairie-du-5e,Mairie du 5e,Mairie,5,48.8459,2.3462,Mairie du 5e,Mairie du 5e,Mairie du 5e,,3,services,Mairie[\s'’-]+5e
+mairie-du-11e,Mairie du 11e,Mairie,11,48.858,2.3805,Mairie du 11e,Mairie du 11e,Mairie du 11e,,3,services,Mairie[\s'’-]+11e
+mairie-du-20e,Mairie du 20e,Mairie,20,48.8636,2.4009,Mairie du 20e,Mairie du 20e,Mairie du 20e,,3,services,Mairie[\s'’-]+20e
+musee-de-la-liberation-de-paris,Musée de la Libération de Paris,Musée,14,48.856772,2.351429,Musée de la Libération de Paris,Musée de la Libération de Paris,Musée de la Libération de Paris,,3,culture,Musée[\s'’-]+Libération[\s'’-]+Paris
+maison-europeenne-de-la-photographie,Maison Européenne de la Photographie,Équipement culturel,4,48.825945,2.358291,Maison Européenne de la Photographie,Maison Européenne de la Photographie,Maison Européenne de la Photographie,,3,culture,Maison[\s'’-]+Européenne[\s'’-]+Photographie
+mediatheque-marguerite-yourcenar,Médiathèque Marguerite Yourcenar,Médiathèque,15,48.852563,2.294426,Médiathèque Marguerite Yourcenar,Médiathèque Marguerite Yourcenar,Médiathèque Marguerite Yourcenar,,3,culture,Médiathèque[\s'’-]+Marguerite[\s'’-]+Yourcenar
+theatre-dunois,Théâtre Dunois,Théâtre,13,48.831667,2.368401,Théâtre Dunois,Théâtre Dunois,Théâtre Dunois,,3,culture,Théâtre[\s'’-]+Dunois
+theatre-du-soleil,Théâtre du Soleil,Théâtre,12,48.874297,2.394923,Théâtre du Soleil,Théâtre du Soleil,Théâtre du Soleil,,3,culture,Théâtre[\s'’-]+Soleil
+piscine-suzanne-berlioux,Piscine Suzanne-Berlioux,Piscine,1,48.88826,2.371955,Piscine Suzanne-Berlioux,Piscine Suzanne-Berlioux,Piscine Suzanne-Berlioux,,3,sport,Piscine[\s'’-]+Suzanne[\s'’-]+Berlioux
+stade-pierre-de-coubertin,Stade Pierre-de-Coubertin,Stade,16,48.81796,2.344472,Stade Pierre-de-Coubertin,Stade Pierre-de-Coubertin,Stade Pierre-de-Coubertin,,3,sport,Stade[\s'’-]+Pierre[\s'’-]+Coubertin
+halle-georges-carpentier,Halle Georges-Carpentier,Salle sportive,13,48.85976,2.346704,Halle Georges-Carpentier,Halle Georges-Carpentier,Halle Georges-Carpentier,,3,sport,Halle[\s'’-]+Georges[\s'’-]+Carpentier
+square-louise-michel,Square Louise-Michel,Square,18,48.885,2.343333,Square Louise-Michel,Square Louise-Michel,Square Louise-Michel,,3,urbain,Square[\s'’-]+Louise[\s'’-]+Michel
+grande-halle-de-la-villette,Grande Halle de la Villette,Équipement culturel,19,48.886111,2.376389,Grande Halle de la Villette,Grande Halle de la Villette,Grande Halle de la Villette,,3,culture,Grande[\s'’-]+Halle[\s'’-]+Villette
+jardin-nelson-mandela,Jardin Nelson Mandela,Jardin,1,48.8625,2.344722,Jardin Nelson Mandela,Jardin Nelson Mandela,Jardin Nelson Mandela,,3,vert,Jardin[\s'’-]+Nelson[\s'’-]+Mandela
+velodrome-jacques-anquetil,Vélodrome Jacques-Anquetil,Vélodrome,12,48.82596,2.41173,Vélodrome Jacques-Anquetil,Vélodrome Jacques-Anquetil,Vélodrome Jacques-Anquetil,,3,sport,Vélodrome[\s'’-]+Jacques[\s'’-]+Anquetil
+jardin-atlantique,Jardin Atlantique,Jardin,15,48.842,2.3195,Jardin Atlantique,Jardin Atlantique,Jardin Atlantique,,3,vert,Jardin[\s\'-]+Atlantique
+jardin-anne-frank,Jardin Anne-Frank,Jardin,3,48.8636,2.3616,Jardin Anne-Frank,Jardin Anne-Frank,Jardin Anne-Frank,,3,vert,Jardin[\s\'-]+Anne[\s\'-]+Frank
+piscine-chateau-landon,Piscine Château-Landon,Piscine,10,48.883254,2.363742,Piscine Château-Landon,Piscine Château-Landon,Piscine Château-Landon,,3,sport,Piscine[\s'’-]+Château[\s'’-]+Landon
+piscine-de-la-cour-des-lions,Piscine de la Cour des Lions,Piscine,11,48.890099,2.392991,Piscine de la Cour des Lions,Piscine de la Cour des Lions,Piscine de la Cour des Lions,,3,sport,Piscine[\s'’-]+Cour[\s'’-]+Lions
+piscine-roger-le-gall,Piscine Roger-Le-Gall,Piscine,12,48.841792,2.412495,Piscine Roger-Le-Gall,Piscine Roger-Le-Gall,Piscine Roger-Le-Gall,,3,sport,Piscine[\s'’-]+Roger[\s'’-]+Gall
+piscine-du-chateau-des-rentiers,Piscine du Château des Rentiers,Piscine,13,48.827556,2.366605,Piscine du Château des Rentiers,Piscine du Château des Rentiers,Piscine du Château des Rentiers,,3,sport,Piscine[\s'’-]+Château[\s'’-]+Rentiers
+piscine-dunois,Piscine Dunois,Piscine,13,48.831667,2.368401,Piscine Dunois,Piscine Dunois,Piscine Dunois,,3,sport,Piscine[\s'’-]+Dunois
+piscine-aspirant-dunand,Piscine Aspirant-Dunand,Piscine,14,48.822832,2.364085,Piscine Aspirant-Dunand,Piscine Aspirant-Dunand,Piscine Aspirant-Dunand,,3,sport,Piscine[\s'’-]+Aspirant[\s'’-]+Dunand
+piscine-didot,Piscine Didot,Piscine,14,48.830064,2.317899,Piscine Didot,Piscine Didot,Piscine Didot,,3,sport,Piscine[\s'’-]+Didot
+piscine-therese-et-jeanne-brule,Piscine Thérèse-et-Jeanne-Brulé,Piscine,14,48.866122,2.33559,Piscine Thérèse-et-Jeanne-Brulé,Piscine Thérèse-et-Jeanne-Brulé,Piscine Thérèse-et-Jeanne-Brulé,,3,sport,Piscine[\s'’-]+Thérèse[\s'’-]+et[\s'’-]+Jeanne
+piscine-armand-massard,Piscine Armand-Massard,Piscine,15,48.888209,2.296713,Piscine Armand-Massard,Piscine Armand-Massard,Piscine Armand-Massard,,3,sport,Piscine[\s'’-]+Armand[\s'’-]+Massard
+piscine-blomet,Piscine Blomet,Piscine,15,48.841024,2.301268,Piscine Blomet,Piscine Blomet,Piscine Blomet,,3,sport,Piscine[\s'’-]+Blomet
+piscine-emile-anthoine,Piscine Émile-Anthoine,Piscine,15,48.892962,2.35154,Piscine Émile-Anthoine,Piscine Émile-Anthoine,Piscine Émile-Anthoine,,3,sport,Piscine[\s'’-]+Émile[\s'’-]+Anthoine
+piscine-keller,Piscine Keller,Piscine,15,48.854624,2.375991,Piscine Keller,Piscine Keller,Piscine Keller,,3,sport,Piscine[\s'’-]+Keller
+piscine-la-plaine,Piscine La Plaine,Piscine,15,48.850114,2.403267,Piscine La Plaine,Piscine La Plaine,Piscine La Plaine,,3,sport,Piscine[\s'’-]+Plaine
+piscine-rene-et-andre-mourlon,Piscine René-et-André-Mourlon,Piscine,15,48.899342,2.340003,Piscine René-et-André-Mourlon,Piscine René-et-André-Mourlon,Piscine René-et-André-Mourlon,,3,sport,Piscine[\s'’-]+René[\s'’-]+et[\s'’-]+André
+piscine-d-auteuil,Piscine d'Auteuil,Piscine,16,48.847744,2.264724,Piscine d'Auteuil,Piscine d'Auteuil,Piscine d'Auteuil,,3,sport,Piscine[\s'’-]+Auteuil
+piscine-henry-de-montherlant,Piscine Henry-de-Montherlant,Piscine,16,48.860262,2.326601,Piscine Henry-de-Montherlant,Piscine Henry-de-Montherlant,Piscine Henry-de-Montherlant,,3,sport,Piscine[\s'’-]+Henry[\s'’-]+Montherlant
+piscine-bernard-lafay,Piscine Bernard-Lafay,Piscine,17,48.85317,2.331623,Piscine Bernard-Lafay,Piscine Bernard-Lafay,Piscine Bernard-Lafay,,3,sport,Piscine[\s'’-]+Bernard[\s'’-]+Lafay
+piscine-bertrand-dauvin,Piscine Bertrand-Dauvin,Piscine,18,48.864229,2.382149,Piscine Bertrand-Dauvin,Piscine Bertrand-Dauvin,Piscine Bertrand-Dauvin,,3,sport,Piscine[\s'’-]+Bertrand[\s'’-]+Dauvin
+piscine-mathis,Piscine Mathis,Piscine,19,48.890926,2.374429,Piscine Mathis,Piscine Mathis,Piscine Mathis,,3,sport,Piscine[\s'’-]+Mathis
+piscine-rouvet,Piscine Rouvet,Piscine,19,48.893986,2.383671,Piscine Rouvet,Piscine Rouvet,Piscine Rouvet,,3,sport,Piscine[\s'’-]+Rouvet
+cimetiere-d-auteuil,Cimetière d'Auteuil,Cimetière,16,48.847744,2.264724,Cimetière d'Auteuil,Cimetière d'Auteuil,Cimetière d'Auteuil,,3,vert,Cimetière[\s'’-]+Auteuil
+cimetiere-de-belleville,Cimetière de Belleville,Cimetière,20,48.875062,2.392401,Cimetière de Belleville,Cimetière de Belleville,Cimetière de Belleville,,3,vert,Cimetière[\s'’-]+Belleville
+cimetiere-du-calvaire,Cimetière du Calvaire,Cimetière,18,48.886234,2.340523,Cimetière du Calvaire,Cimetière du Calvaire,Cimetière du Calvaire,,3,vert,Cimetière[\s'’-]+Calvaire
+cimetiere-de-charonne,Cimetière de Charonne,Cimetière,20,48.854371,2.38358,Cimetière de Charonne,Cimetière de Charonne,Cimetière de Charonne,,3,vert,Cimetière[\s'’-]+Charonne
+cimetiere-de-grenelle,Cimetière de Grenelle,Cimetière,15,48.856278,2.317069,Cimetière de Grenelle,Cimetière de Grenelle,Cimetière de Grenelle,,3,vert,Cimetière[\s'’-]+Grenelle
+cimetiere-sud-de-saint-mande,Cimetière Sud de Saint-Mandé,Cimetière,12,48.844877,2.402696,Cimetière Sud de Saint-Mandé,Cimetière Sud de Saint-Mandé,Cimetière Sud de Saint-Mandé,,3,vert,Cimetière[\s'’-]+Sud[\s'’-]+Saint[\s'’-]+Mandé
+cimetiere-saint-vincent,Cimetière Saint-Vincent,Cimetière,18,48.888964,2.339222,Cimetière Saint-Vincent,Cimetière Saint-Vincent,Cimetière Saint-Vincent,,3,vert,Cimetière[\s'’-]+Saint[\s'’-]+Vincent
+parc-aretha-franklin,Parc Aretha-Franklin,Parc,20,48.861715,2.411799,Parc Aretha-Franklin,Parc Aretha-Franklin,Parc Aretha-Franklin,,3,vert,Parc[\s'’-]+Aretha[\s'’-]+Franklin
+parc-chapelle-charbon,Parc Chapelle-Charbon,Parc,18,48.861094,2.40379,Parc Chapelle-Charbon,Parc Chapelle-Charbon,Parc Chapelle-Charbon,,3,vert,Parc[\s'’-]+Chapelle[\s'’-]+Charbon
+parc-de-choisy,Parc de Choisy,Parc,13,48.825771,2.359572,Parc de Choisy,Parc de Choisy,Parc de Choisy,,3,vert,Parc[\s'’-]+Choisy
+parc-kellermann,Parc Kellermann,Parc,13,48.820195,2.351967,Parc Kellermann,Parc Kellermann,Parc Kellermann,,3,vert,Parc[\s'’-]+Kellermann
+square-du-montholon,Square du Montholon,Square,9,48.876584,2.346537,Square du Montholon,Square du Montholon,Square du Montholon,,3,urbain,Square[\s'’-]+Montholon
+marche-monge,Marché Monge,Marché,5,48.844085,2.351529,Marché Monge,Marché Monge,Marché Monge,,3,services,Marché[\s'’-]+Monge
+marche-grenelle,Marché Grenelle,Marché,15,48.856278,2.317069,Marché Grenelle,Marché Grenelle,Marché Grenelle,,3,services,Marché[\s'’-]+Grenelle
+marche-des-batignolles,Marché des Batignolles,Marché,17,48.885026,2.320797,Marché des Batignolles,Marché des Batignolles,Marché des Batignolles,,3,services,Marché[\s'’-]+Batignolles
+marche-ornano,Marché Ornano,Marché,18,48.892496,2.349518,Marché Ornano,Marché Ornano,Marché Ornano,,3,services,Marché[\s'’-]+Ornano
+marche-dejean,Marché Dejean,Marché,18,48.887322,2.350517,Marché Dejean,Marché Dejean,Marché Dejean,,3,services,Marché[\s'’-]+Dejean
+marche-europe,Marché Europe,Marché couvert,8,48.864149,2.373539,Marché Europe,Marché Europe,Marché Europe,,3,services,Marché[\s'’-]+Europe
+mairie-du-1er,Mairie du 1er,Mairie,1,48.8605,2.3396,Mairie du 1er,Mairie du 1er,Mairie du 1er,,3,services,Mairie[\s'’-]+1er
+mairie-du-2e,Mairie du 2e,Mairie,2,48.8676,2.3423,Mairie du 2e,Mairie du 2e,Mairie du 2e,,3,services,Mairie[\s'’-]+2e
+mairie-du-3e,Mairie du 3e,Mairie,3,48.8626,2.3616,Mairie du 3e,Mairie du 3e,Mairie du 3e,,3,services,Mairie[\s'’-]+3e
+mairie-du-4e,Mairie du 4e,Mairie,4,48.8558,2.3576,Mairie du 4e,Mairie du 4e,Mairie du 4e,,3,services,Mairie[\s'’-]+4e
+mairie-du-6e,Mairie du 6e,Mairie,6,48.8514,2.3336,Mairie du 6e,Mairie du 6e,Mairie du 6e,,3,services,Mairie[\s'’-]+6e
+mairie-du-7e,Mairie du 7e,Mairie,7,48.8558,2.3129,Mairie du 7e,Mairie du 7e,Mairie du 7e,,3,services,Mairie[\s'’-]+7e
+mairie-du-8e,Mairie du 8e,Mairie,8,48.8722,2.3161,Mairie du 8e,Mairie du 8e,Mairie du 8e,,3,services,Mairie[\s'’-]+8e
+mairie-du-9e,Mairie du 9e,Mairie,9,48.8763,2.3376,Mairie du 9e,Mairie du 9e,Mairie du 9e,,3,services,Mairie[\s'’-]+9e
+mairie-du-10e,Mairie du 10e,Mairie,10,48.876,2.36,Mairie du 10e,Mairie du 10e,Mairie du 10e,,3,services,Mairie[\s'’-]+10e
+mairie-du-12e,Mairie du 12e,Mairie,12,48.8412,2.3877,Mairie du 12e,Mairie du 12e,Mairie du 12e,,3,services,Mairie[\s'’-]+12e
+mairie-du-13e,Mairie du 13e,Mairie,13,48.8283,2.3556,Mairie du 13e,Mairie du 13e,Mairie du 13e,,3,services,Mairie[\s'’-]+13e
+mairie-du-14e,Mairie du 14e,Mairie,14,48.8332,2.3255,Mairie du 14e,Mairie du 14e,Mairie du 14e,,3,services,Mairie[\s'’-]+14e
+mairie-du-15e,Mairie du 15e,Mairie,15,48.8412,2.2999,Mairie du 15e,Mairie du 15e,Mairie du 15e,,3,services,Mairie[\s'’-]+15e
+mairie-du-16e,Mairie du 16e,Mairie,16,48.8637,2.2769,Mairie du 16e,Mairie du 16e,Mairie du 16e,,3,services,Mairie[\s'’-]+16e
+mairie-du-17e,Mairie du 17e,Mairie,17,48.8874,2.3079,Mairie du 17e,Mairie du 17e,Mairie du 17e,,3,services,Mairie[\s'’-]+17e
+mairie-du-19e,Mairie du 19e,Mairie,19,48.8836,2.3831,Mairie du 19e,Mairie du 19e,Mairie du 19e,,3,services,Mairie[\s'’-]+19e

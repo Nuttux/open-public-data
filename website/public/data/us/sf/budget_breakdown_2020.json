@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-17T08:56:20.735396+00:00",
+  "generated_at": "2026-07-21T09:34:55.311935+00:00",
   "source_pipeline": "configs/countries/us.yaml → sync_socrata.py + sync_census_popest.py → raw.us_sf_* → dbt_us_staging → dbt_us_analytics → dbt_us_marts → export_us_sf.py",
   "country": "us",
   "scale": "city",
@@ -678,16 +678,6 @@
         "n_characters": 6
       },
       {
-        "code": "CCD",
-        "label": "CCD SF Communtiy College Dist",
-        "display_name": "SF Community College District",
-        "org_group_code": "03",
-        "total_usd": 0.0,
-        "transfer_adjustment_usd": 0.0,
-        "share_of_side": 0.0,
-        "n_characters": 0
-      },
-      {
         "code": "USD",
         "label": "USD County Education Office",
         "display_name": "County Office of Education",
@@ -701,6 +691,16 @@
         "code": "CII",
         "label": "CII Commty Invest & Infrstrctr",
         "display_name": "Community Investment & Infrastructure",
+        "org_group_code": "03",
+        "total_usd": 0.0,
+        "transfer_adjustment_usd": 0.0,
+        "share_of_side": 0.0,
+        "n_characters": 0
+      },
+      {
+        "code": "CCD",
+        "label": "CCD SF Communtiy College Dist",
+        "display_name": "SF Community College District",
         "org_group_code": "03",
         "total_usd": 0.0,
         "transfer_adjustment_usd": 0.0,
@@ -1180,34 +1180,14 @@
         "n_characters": 3
       },
       {
-        "code": "DPA",
-        "label": "DPA Police Accountabilty",
-        "display_name": "Police Accountability",
-        "org_group_code": "01",
-        "total_usd": 0.0,
-        "transfer_adjustment_usd": -208000.0,
-        "share_of_side": 0.0,
-        "n_characters": 2
-      },
-      {
-        "code": "SCI",
-        "label": "SCI Academy of Sciences",
-        "display_name": "Academy of Sciences",
-        "org_group_code": "05",
-        "total_usd": 0.0,
-        "transfer_adjustment_usd": 0.0,
-        "share_of_side": 0.0,
-        "n_characters": 0
-      },
-      {
-        "code": "CCD",
-        "label": "CCD SF Communtiy College Dist",
-        "display_name": "SF Community College District",
+        "code": "HRC",
+        "label": "HRC Human Rights Commission",
+        "display_name": "Human Rights Commission",
         "org_group_code": "03",
         "total_usd": 0.0,
-        "transfer_adjustment_usd": 0.0,
+        "transfer_adjustment_usd": -90000.0,
         "share_of_side": 0.0,
-        "n_characters": 0
+        "n_characters": 2
       },
       {
         "code": "TJP",
@@ -1220,24 +1200,24 @@
         "n_characters": 0
       },
       {
-        "code": "HRC",
-        "label": "HRC Human Rights Commission",
-        "display_name": "Human Rights Commission",
-        "org_group_code": "03",
-        "total_usd": 0.0,
-        "transfer_adjustment_usd": -90000.0,
-        "share_of_side": 0.0,
-        "n_characters": 2
-      },
-      {
-        "code": "CII",
-        "label": "CII Commty Invest & Infrstrctr",
-        "display_name": "Community Investment & Infrastructure",
-        "org_group_code": "03",
+        "code": "SCI",
+        "label": "SCI Academy of Sciences",
+        "display_name": "Academy of Sciences",
+        "org_group_code": "05",
         "total_usd": 0.0,
         "transfer_adjustment_usd": 0.0,
         "share_of_side": 0.0,
         "n_characters": 0
+      },
+      {
+        "code": "DPA",
+        "label": "DPA Police Accountabilty",
+        "display_name": "Police Accountability",
+        "org_group_code": "01",
+        "total_usd": 0.0,
+        "transfer_adjustment_usd": -208000.0,
+        "share_of_side": 0.0,
+        "n_characters": 2
       },
       {
         "code": "USD",
@@ -1268,6 +1248,26 @@
         "transfer_adjustment_usd": -360839.0,
         "share_of_side": 0.0,
         "n_characters": 2
+      },
+      {
+        "code": "CII",
+        "label": "CII Commty Invest & Infrstrctr",
+        "display_name": "Community Investment & Infrastructure",
+        "org_group_code": "03",
+        "total_usd": 0.0,
+        "transfer_adjustment_usd": 0.0,
+        "share_of_side": 0.0,
+        "n_characters": 0
+      },
+      {
+        "code": "CCD",
+        "label": "CCD SF Communtiy College Dist",
+        "display_name": "SF Community College District",
+        "org_group_code": "03",
+        "total_usd": 0.0,
+        "transfer_adjustment_usd": 0.0,
+        "share_of_side": 0.0,
+        "n_characters": 0
       }
     ]
   },
@@ -4409,15 +4409,15 @@
       ],
       [
         "CAT",
-        "EXP_RECOVERY",
-        62237667.0,
-        0
-      ],
-      [
-        "CAT",
         "ELS",
         -62237667.0,
         1
+      ],
+      [
+        "CAT",
+        "EXP_RECOVERY",
+        62237667.0,
+        0
       ],
       [
         "DBI",
@@ -4433,15 +4433,15 @@
       ],
       [
         "CON",
-        "EXP_RECOVERY",
-        60662117.0,
-        0
-      ],
-      [
-        "CON",
         "ELS",
         -60662117.0,
         1
+      ],
+      [
+        "CON",
+        "EXP_RECOVERY",
+        60662117.0,
+        0
       ],
       [
         "GEN",
@@ -5147,15 +5147,15 @@
       ],
       [
         "ASR",
-        "ELS",
-        -3406174.0,
-        1
-      ],
-      [
-        "ASR",
         "EXP_RECOVERY",
         3406174.0,
         0
+      ],
+      [
+        "ASR",
+        "ELS",
+        -3406174.0,
+        1
       ],
       [
         "PRT",
@@ -5266,14 +5266,14 @@
         0
       ],
       [
-        "REG",
-        "INTERGOV_REV_ST",
+        "ADM",
+        "BUS_TAX",
         2100000.0,
         0
       ],
       [
-        "ADM",
-        "BUS_TAX",
+        "REG",
+        "INTERGOV_REV_ST",
         2100000.0,
         0
       ],
@@ -5644,14 +5644,14 @@
         0
       ],
       [
-        "CAT",
-        "INTERGOV_REV_OTH",
+        "CHF",
+        "OTH_REV",
         400000.0,
         0
       ],
       [
-        "CHF",
-        "OTH_REV",
+        "CAT",
+        "INTERGOV_REV_OTH",
         400000.0,
         0
       ],
@@ -5675,15 +5675,15 @@
       ],
       [
         "CSC",
-        "EXP_RECOVERY",
-        360839.0,
-        0
-      ],
-      [
-        "CSC",
         "ELS",
         -360839.0,
         1
+      ],
+      [
+        "CSC",
+        "EXP_RECOVERY",
+        360839.0,
+        0
       ],
       [
         "ADP",
@@ -5765,15 +5765,15 @@
       ],
       [
         "DPA",
-        "EXP_RECOVERY",
-        208000.0,
-        0
-      ],
-      [
-        "DPA",
         "ELS",
         -208000.0,
         1
+      ],
+      [
+        "DPA",
+        "EXP_RECOVERY",
+        208000.0,
+        0
       ],
       [
         "HSA",
@@ -5938,8 +5938,8 @@
         0
       ],
       [
-        "PDR",
-        "EXP_RECOVERY",
+        "REG",
+        "INTER_REV_FED",
         100000.0,
         0
       ],
@@ -5950,8 +5950,8 @@
         1
       ],
       [
-        "REG",
-        "INTER_REV_FED",
+        "PDR",
+        "EXP_RECOVERY",
         100000.0,
         0
       ],
@@ -6040,13 +6040,13 @@
         0
       ],
       [
-        "GEN",
+        "ART",
         "OTH_REV",
         50000.0,
         0
       ],
       [
-        "ART",
+        "GEN",
         "OTH_REV",
         50000.0,
         0
@@ -6112,14 +6112,14 @@
         0
       ],
       [
-        "PRT",
-        "EXP_RECOVERY",
+        "JUV",
+        "OTH_REV",
         10000.0,
         0
       ],
       [
-        "JUV",
-        "OTH_REV",
+        "PRT",
+        "EXP_RECOVERY",
         10000.0,
         0
       ],
@@ -6148,14 +6148,14 @@
         0
       ],
       [
-        "SHF",
-        "INT_INV_INC",
+        "JUV",
+        "CHGS_FOR_SERVICES",
         3000.0,
         0
       ],
       [
-        "JUV",
-        "CHGS_FOR_SERVICES",
+        "SHF",
+        "INT_INV_INC",
         3000.0,
         0
       ],

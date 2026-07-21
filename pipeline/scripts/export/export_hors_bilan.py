@@ -17,6 +17,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import os
 import re
 import sys
 import unicodedata
@@ -31,6 +32,9 @@ from utils.logger import Logger
 
 PROJECT_ID = "open-data-france-484717"
 MARTS_DATASET = "dbt_paris_marts"
+# mart_logement_financement (chaîne de financement emprunt → programme). Surchargé
+# par MLF_DATASET pour tester en local avant que le mart n'existe en prod.
+MLF_DATASET = os.environ.get("MLF_DATASET", MARTS_DATASET)
 DATA_DIR = Path(__file__).parent.parent.parent.parent / "website" / "public" / "data"
 
 DEFAULT_YEARS = [2019, 2020, 2021, 2022, 2023, 2024]
@@ -84,7 +88,75 @@ def fetch_year(client: bigquery.Client, year: int) -> pd.DataFrame:
     return client.query(query).to_dataframe()
 
 
-def build_year_payload(year: int, df: pd.DataFrame, logger: Logger) -> dict:
+def _loan_key(beneficiaire, objet, annee_mob, montant_initial) -> str:
+    """Clé naturelle d'un emprunt, partagée entre mart_hors_bilan et
+    mart_logement_financement. On évite le hash loan_id (reproduction fragile du
+    CAST float→string de BQ en Python) en joignant sur les colonnes brutes."""
+    b = str(beneficiaire) if pd.notna(beneficiaire) else ""
+    o = str(objet) if pd.notna(objet) else ""
+    a = int(annee_mob) if pd.notna(annee_mob) else 0
+    m = round(float(montant_initial), 2) if pd.notna(montant_initial) else 0.0
+    return f"{b}|{o}|{a}|{m}"
+
+
+def fetch_financing(client: bigquery.Client) -> tuple[dict, dict]:
+    """Charge la chaîne de financement (mart_logement_financement).
+
+    Retourne deux dicts :
+      - par emprunt (loan_key) : catégorie de rattachement + programme principal.
+      - par bénéficiaire (nom verbatim) : nombre de programmes distincts financés.
+
+    Le mart est dédupliqué tous exercices confondus ; la clé d'emprunt identifie
+    le prêt indépendamment de l'année de publication, donc on charge une fois."""
+    per_loan_sql = f"""
+    SELECT
+      beneficiaire, objet, annee_mobilisation,
+      ROUND(montant_initial, 2) AS mi_key,
+      COUNT(DISTINCT id_livraison) AS n_programmes,
+      -- catégorie au grain emprunt : 'programme' si rattaché à ≥1 adresse,
+      -- sinon la raison de non-rattachement (portefeuille / zac / non_rattache).
+      CASE
+        WHEN LOGICAL_OR(match_basis IN ('adresse_exacte','adresse_arr')) THEN 'programme'
+        ELSE ANY_VALUE(match_basis)
+      END AS categorie,
+      -- programme principal : adresse exacte prioritaire, puis le plus grand.
+      ARRAY_AGG(
+        IF(id_livraison IS NOT NULL,
+           STRUCT(programme_adresse AS adresse,
+                  programme_nb_logements AS nb_logements,
+                  match_basis AS match_basis),
+           NULL)
+        IGNORE NULLS
+        ORDER BY (match_basis = 'adresse_exacte') DESC, programme_nb_logements DESC
+        LIMIT 1
+      )[SAFE_OFFSET(0)] AS top_prog
+    FROM `{PROJECT_ID}.{MLF_DATASET}.mart_logement_financement`
+    GROUP BY beneficiaire, objet, annee_mobilisation, mi_key
+    """
+    per_benef_sql = f"""
+    SELECT beneficiaire, COUNT(DISTINCT id_livraison) AS n_programmes
+    FROM `{PROJECT_ID}.{MLF_DATASET}.mart_logement_financement`
+    WHERE id_livraison IS NOT NULL
+    GROUP BY beneficiaire
+    """
+    per_loan: dict[str, dict] = {}
+    for r in client.query(per_loan_sql).result():
+        key = _loan_key(r.beneficiaire, r.objet, r.annee_mobilisation, r.mi_key)
+        tp = r.top_prog
+        programme = None
+        if tp and tp.get("adresse"):
+            programme = {
+                "adresse": tp["adresse"],
+                "nb_logements": int(tp["nb_logements"]) if tp.get("nb_logements") is not None else None,
+                "n_programmes": int(r.n_programmes) if r.n_programmes else 1,
+                "match_basis": tp.get("match_basis"),
+            }
+        per_loan[key] = {"categorie": r.categorie, "programme": programme}
+    per_benef = {r.beneficiaire: int(r.n_programmes) for r in client.query(per_benef_sql).result()}
+    return per_loan, per_benef
+
+
+def build_year_payload(year: int, df: pd.DataFrame, fin_per_loan: dict, fin_per_benef: dict, logger: Logger) -> dict:
     """Reproduit l'ancien `build_year` à partir du mart au lieu du CSV API."""
     if df.empty:
         return None
@@ -92,6 +164,16 @@ def build_year_payload(year: int, df: pd.DataFrame, logger: Logger) -> dict:
     df = df.copy()
     df["capital_restant"] = pd.to_numeric(df["capital_restant"], errors="coerce").fillna(0.0)
     df["montant_initial"] = pd.to_numeric(df["montant_initial"], errors="coerce").fillna(0.0)
+
+    # Rattachement financement au grain emprunt (mart_logement_financement) :
+    # catégorie ('programme' / 'portefeuille' / 'zac_operation' / 'non_rattache')
+    # et programme principal. NaN si l'emprunt n'est pas dans le mart logement
+    # (bucket autres_operations non concerné par la chaîne de financement).
+    df["_loan_key"] = df.apply(
+        lambda r: _loan_key(r["beneficiaire"], r["objet"], r.get("annee_mobilisation"), r["montant_initial"]),
+        axis=1,
+    )
+    df["_fin_categorie"] = df["_loan_key"].map(lambda k: (fin_per_loan.get(k) or {}).get("categorie"))
 
     total_crd = float(df["capital_restant"].sum())
     total_initial = float(df["montant_initial"].sum())
@@ -136,6 +218,7 @@ def build_year_payload(year: int, df: pd.DataFrame, logger: Logger) -> dict:
         sub_sorted = sub.sort_values("capital_restant", ascending=False).head(EMPRUNTS_PAR_BENEFICIAIRE)
         emprunts = []
         for _, e in sub_sorted.iterrows():
+            fin = fin_per_loan.get(e["_loan_key"]) or {}
             emprunts.append({
                 "objet": (str(e["objet"]) if pd.notna(e.get("objet")) else ""),
                 "preteur": (str(e["preteur"]) if pd.notna(e.get("preteur")) else ""),
@@ -146,7 +229,27 @@ def build_year_payload(year: int, df: pd.DataFrame, logger: Logger) -> dict:
                 "taux_type": (str(e["taux_type"]).upper() if pd.notna(e.get("taux_type")) else ""),
                 "taux_index": (str(e["taux_index"]) if pd.notna(e.get("taux_index")) else ""),
                 "taux_actuariel": float(e["taux_actuariel"]) if pd.notna(e.get("taux_actuariel")) else None,
+                # Programme de logements financé par cet emprunt (chaîne de
+                # financement). None si portefeuille / non rattaché / hors logement.
+                "programme": fin.get("programme"),
             })
+
+        # ─── Synthèse financement (rattachement à des adresses précises) ─────
+        # Sur la dette LOGEMENT de ce bailleur (emprunts présents dans le mart),
+        # quelle part est rattachée à un programme précis vs financée en
+        # portefeuille multi-adresses vs sans programme trouvé.
+        base_log = float(sub.loc[sub["_fin_categorie"].notna(), "capital_restant"].sum())
+        cap_prog = float(sub.loc[sub["_fin_categorie"] == "programme", "capital_restant"].sum())
+        cap_portef = float(sub.loc[sub["_fin_categorie"] == "portefeuille", "capital_restant"].sum())
+        cap_autre = float(sub.loc[sub["_fin_categorie"].isin(["non_rattache", "zac_operation"]), "capital_restant"].sum())
+        financement = {
+            "base_logement": round(base_log),
+            "capital_rattache": round(cap_prog),
+            "capital_portefeuille": round(cap_portef),
+            "capital_non_rattache": round(cap_autre),
+            "part_rattachee": (cap_prog / base_log) if base_log else 0.0,
+            "n_programmes": int(fin_per_benef.get(row["beneficiaire"], 0)),
+        } if base_log > 0 else None
 
         crd_series = sub["capital_restant"]
         taux_s = pd.to_numeric(sub["taux_actuariel"], errors="coerce")
@@ -187,6 +290,7 @@ def build_year_payload(year: int, df: pd.DataFrame, logger: Logger) -> dict:
             "part_fixe": (crd_fixe_sub / sub_total) if sub_total else 0.0,
             "preteurs": fiche_preteurs,
             "emprunts_top": emprunts,
+            "financement": financement,
         })
 
     autres_crd = float(benef_agg.iloc[TOP_BENEFICIAIRES:]["capital_restant"].sum()) if len(benef_agg) > TOP_BENEFICIAIRES else 0.0
@@ -365,6 +469,17 @@ def main():
     else:
         years = [max(DEFAULT_YEARS)]
 
+    # Chaîne de financement chargée une fois (indépendante de l'exercice).
+    # Dégradation propre : si mart_logement_financement n'existe pas encore
+    # (ordre de build CI), on exporte sans le volet financement plutôt que d'échouer.
+    logger.section(f"Financement logement · {MLF_DATASET}.mart_logement_financement")
+    try:
+        fin_per_loan, fin_per_benef = fetch_financing(client)
+        logger.info(f"{len(fin_per_loan)} emprunts logement · {len(fin_per_benef)} bailleurs avec programmes")
+    except Exception as e:
+        fin_per_loan, fin_per_benef = {}, {}
+        logger.warning(f"mart_logement_financement indisponible ({e}) — export sans volet financement")
+
     processed = []
     for y in years:
         logger.section(f"Hors bilan · exercice {y}")
@@ -372,7 +487,7 @@ def main():
         if df.empty:
             logger.warning(f"Aucune donnée pour {y}, fichier ignoré")
             continue
-        payload = build_year_payload(y, df, logger)
+        payload = build_year_payload(y, df, fin_per_loan, fin_per_benef, logger)
         out = DATA_DIR / f"hors_bilan_{y}.json"
         with out.open("w", encoding="utf-8") as f:
             json.dump(payload, f, ensure_ascii=False, indent=2)

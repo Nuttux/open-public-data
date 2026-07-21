@@ -1,21 +1,9 @@
 {
- "generated_at": "2026-07-20T22:30:00.123053+00:00",
+ "generated_at": "2026-07-21T14:25:53.976374+00:00",
  "slug": "cable-car-barn",
  "name": "Cable Car Barn & Powerhouse",
  "note": "Archive documents linked to this place; source labels honour the SFPL-vs-Democracy's-Library distinction.",
  "documents": [
-  {
-   "identifier": "9minutes2000sanf",
-   "title": "Minutes",
-   "creator": "San Francisco (Calif.). Municipal Transportation Agency. Board of Directors,San Francisco (Calif.). Parking Authority",
-   "year": 2000,
-   "pool": "sfpl",
-   "matched_alias": "Cable Car Museum",
-   "snippet": "act as curator/concessionaire of the «Cable Car Museum» and Gift Shop for a period of five",
-   "url": "https://archive.org/details/9minutes2000sanf",
-   "deep_link": "https://archive.org/details/9minutes2000sanf?q=Cable+Car+Museum",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
-  },
   {
    "identifier": "strategicplan2001199sanf",
    "title": "Strategic plan 2000 : short range transit plan : draft for public review and comment / San Francisco Municipal Railway",
@@ -26,7 +14,9 @@
    "snippet": "$24,540 %^f Total 67.8% 32,2% 100.0% «Cable Car Museum» Renovation This project would provide",
    "url": "https://archive.org/details/strategicplan2001199sanf",
    "deep_link": "https://archive.org/details/strategicplan2001199sanf?q=Cable+Car+Museum",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Plans & environmental review",
+   "salient": true
   },
   {
    "identifier": "2minutes2009sanf",
@@ -38,43 +28,9 @@
    "snippet": "and Operation of «Cable Car Museum» with the Friends of the «Cable Car Museum» ending on June",
    "url": "https://archive.org/details/2minutes2009sanf",
    "deep_link": "https://archive.org/details/2minutes2009sanf?q=Cable+Car+Museum",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
-  },
-  {
-   "identifier": "dataguide19901991990sanf",
-   "title": "The data guide, 1990-1991",
-   "creator": "San Francisco Municipal Railway. Community Affairs Dept",
-   "year": 1990,
-   "pool": "sfpl",
-   "matched_alias": "Cable Car Museum",
-   "snippet": "The Pacific Coast Chapter operates the «cable car museum» under contract with the city. 1895.",
-   "url": "https://archive.org/details/dataguide19901991990sanf",
-   "deep_link": "https://archive.org/details/dataguide19901991990sanf?q=Cable+Car+Museum",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
-  },
-  {
-   "identifier": "munimemo91sanf",
-   "title": "The Muni memo",
-   "creator": "San Francisco Municipal Railway. Community Affairs Dept",
-   "year": 1984,
-   "pool": "sfpl",
-   "matched_alias": "Cable Car Museum",
-   "snippet": "Civic Center at 8th & Market; and the «Cable Car Museum» at Washington & Mason. (All-day passes",
-   "url": "https://archive.org/details/munimemo91sanf",
-   "deep_link": "https://archive.org/details/munimemo91sanf?q=Cable+Car+Museum",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
-  },
-  {
-   "identifier": "eastwest14east_3",
-   "title": "East/West",
-   "creator": "East/West Pub. Co.",
-   "year": 1980,
-   "pool": "sfpl",
-   "matched_alias": "Cable Car Barn",
-   "snippet": "DESCRIPTION OREPROGRAM 号 1. Rehabilitation of «Cable Car Barn» at northwest corner of Washington and Mason",
-   "url": "https://archive.org/details/eastwest14east_3",
-   "deep_link": "https://archive.org/details/eastwest14east_3?q=Cable+Car+Barn",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Meetings & resolutions",
+   "salient": true
   },
   {
    "identifier": "civilgrandjuryre198587cali",
@@ -86,7 +42,9 @@
    "snippet": "entire cable car system began. The «cable car barn» and the cable drive system were completely",
    "url": "https://archive.org/details/civilgrandjuryre198587cali",
    "deep_link": "https://archive.org/details/civilgrandjuryre198587cali?q=Cable+Car+Barn",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Reports & records",
+   "salient": true
   },
   {
    "identifier": "4annualreportsanf",
@@ -98,7 +56,51 @@
    "snippet": "cable-winding machinery located in the «Cable Car Powerhouse» at Washington and Mason Streets.",
    "url": "https://archive.org/details/4annualreportsanf",
    "deep_link": "https://archive.org/details/4annualreportsanf?q=Cable+Car+Powerhouse",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Reports & records",
+   "salient": true
+  },
+  {
+   "identifier": "eastwest14east_3",
+   "title": "East/West",
+   "creator": "East/West Pub. Co.",
+   "year": 1980,
+   "pool": "sfpl",
+   "matched_alias": "Cable Car Barn",
+   "snippet": "DESCRIPTION OREPROGRAM 号 1. Rehabilitation of «Cable Car Barn» at northwest corner of Washington and Mason",
+   "url": "https://archive.org/details/eastwest14east_3",
+   "deep_link": "https://archive.org/details/eastwest14east_3?q=Cable+Car+Barn",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Other records",
+   "salient": true
+  },
+  {
+   "identifier": "munimemo91sanf",
+   "title": "The Muni memo",
+   "creator": "San Francisco Municipal Railway. Community Affairs Dept",
+   "year": 1984,
+   "pool": "sfpl",
+   "matched_alias": "Cable Car Museum",
+   "snippet": "Civic Center at 8th & Market; and the «Cable Car Museum» at Washington & Mason. (All-day passes",
+   "url": "https://archive.org/details/munimemo91sanf",
+   "deep_link": "https://archive.org/details/munimemo91sanf?q=Cable+Car+Museum",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Other records",
+   "salient": true
+  },
+  {
+   "identifier": "dataguide19901991990sanf",
+   "title": "The data guide, 1990-1991",
+   "creator": "San Francisco Municipal Railway. Community Affairs Dept",
+   "year": 1990,
+   "pool": "sfpl",
+   "matched_alias": "Cable Car Museum",
+   "snippet": "The Pacific Coast Chapter operates the «cable car museum» under contract with the city. 1895.",
+   "url": "https://archive.org/details/dataguide19901991990sanf",
+   "deep_link": "https://archive.org/details/dataguide19901991990sanf?q=Cable+Car+Museum",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Other records",
+   "salient": false
   }
  ]
 }

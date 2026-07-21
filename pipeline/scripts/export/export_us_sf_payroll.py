@@ -367,6 +367,64 @@ def build_by_family_year(rows: list[dict]) -> dict:
     }
 
 
+def build_by_family_citywide(rows: list[dict]) -> dict:
+    """Citywide roll-up of the dept × family grain: display_family × fiscal
+    year, summed across every department. Powers the payroll page's
+    families-over-time view. Amounts and headcount are sums of cells the
+    dept × family export already publishes (each ≥ 5 employees or pooled),
+    so no citywide family total falls under the privacy floor."""
+    ref = rows[0]
+    years: dict[str, dict[str, dict]] = {}
+    for r in rows:
+        fy = str(int(r["fiscal_year"]))
+        fam = r["display_family"]
+        bucket = years.setdefault(fy, {}).setdefault(fam, {
+            "display_family": fam,
+            "n_employees": 0,
+            "salaries_usd": 0.0,
+            "overtime_usd": 0.0,
+            "other_salaries_usd": 0.0,
+            "total_benefits_usd": 0.0,
+            "total_compensation_usd": 0.0,
+        })
+        bucket["n_employees"] += int(r["n_employees"])
+        bucket["salaries_usd"] += float(r["salaries_usd"] or 0)
+        bucket["overtime_usd"] += float(r["overtime_usd"] or 0)
+        bucket["other_salaries_usd"] += float(r["other_salaries_usd"] or 0)
+        bucket["total_benefits_usd"] += float(r["total_benefits_usd"] or 0)
+        bucket["total_compensation_usd"] += float(r["total_compensation_usd"] or 0)
+
+    out_years: dict[str, list] = {}
+    for fy, fams in sorted(years.items()):
+        rows_out = []
+        for b in fams.values():
+            tc = b["total_compensation_usd"]
+            rows_out.append({
+                "display_family": b["display_family"],
+                "n_employees": b["n_employees"],
+                "salaries_usd": round(b["salaries_usd"], 2),
+                "overtime_usd": round(b["overtime_usd"], 2),
+                "other_salaries_usd": round(b["other_salaries_usd"], 2),
+                "total_benefits_usd": round(b["total_benefits_usd"], 2),
+                "total_compensation_usd": round(tc, 2),
+                "ot_share_of_comp": round(b["overtime_usd"] / tc, 4) if tc > 0 else 0,
+            })
+        rows_out.sort(key=lambda x: x["total_compensation_usd"], reverse=True)
+        out_years[fy] = rows_out
+
+    return {
+        **base_payload(ref),
+        "grain": (
+            "display_family × fiscal year, summed citywide across all "
+            "departments. display_family groups the source's native 59-code "
+            "taxonomy into citizen-readable families (by hand, see seeds)."
+        ),
+        "privacy": privacy_block(),
+        "years": out_years,
+        "n_rows": len(rows),
+    }
+
+
 # ───────────────────────────────────────────────────────── distribution ──
 
 
@@ -591,7 +649,7 @@ def write_json(payload: dict, filename: str, log: Logger) -> None:
 
 def main() -> int:
     log = Logger("export_us_sf_payroll")
-    log.header("Export US San Francisco payroll → JSON (5 files)")
+    log.header("Export US San Francisco payroll → JSON (6 files)")
 
     log.info("output dir", extra=str(OUTPUT_DIR))
     OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
@@ -616,6 +674,7 @@ def main() -> int:
                              "fiscal_year, department_code, family_code")
     log.info("rows", extra=str(len(family_rows)))
     by_family = build_by_family_year(family_rows)
+    by_family_citywide = build_by_family_citywide(family_rows)
 
     log.section("mart_us_sf_payroll_distribution")
     dist_rows = fetch_rows(client, "mart_us_sf_payroll_distribution", "fiscal_year")
@@ -635,6 +694,7 @@ def main() -> int:
     write_json(by_year, "payroll_by_year.json", log)
     write_json(by_dept, "payroll_by_dept_year.json", log)
     write_json(by_family, "payroll_by_family_year.json", log)
+    write_json(by_family_citywide, "payroll_by_family_citywide.json", log)
     write_json(distribution, "payroll_distribution.json", log)
     write_json(overtime, "payroll_overtime.json", log)
 
