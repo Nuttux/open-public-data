@@ -24,6 +24,7 @@ export default async function SfHubPage() {
     { href: "/us/city/sf/contracts", label: "Contracts", blurb: "The active register with the sole-source lens and award-vs-paid on every contract." },
     { href: "/us/city/sf/payroll", label: "Payroll", blurb: "What city work pays, and the overtime pattern in 24/7 services." },
     { href: "/us/city/sf/places", label: "Places", blurb: "The city building by building — money and archival record, place by place." },
+    { href: "/us/city/sf/sources", label: "Sources & method", blurb: "Every dataset behind these pages — perimeters, privacy rules and methodology, in one place." },
   ];
 
   return (

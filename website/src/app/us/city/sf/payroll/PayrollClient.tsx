@@ -8,7 +8,6 @@ import AnimatedNumber from "@/components/fusion/AnimatedNumber";
 import BarRow from "@/components/fusion/BarRow";
 import Tip from "@/components/fusion/Tip";
 import DistributionStrip from "@/components/us/DistributionStrip";
-import Fy2018Note from "@/components/us/Fy2018Note";
 import { useT } from "@/lib/localeContext";
 import {
   fmtUsd,
@@ -606,72 +605,6 @@ export default function PayrollClient({
           </div>
         </section>
 
-        {/* ── Sources & method ── */}
-        <section className="fx-footer-sources" id="sec-sources">
-          <div className="fx-wrap">
-            <div className="fx-footer-sources-head">
-              <span className="fx-footer-sources-label">
-                {t("us.sf.payroll.s06.label")}
-              </span>
-            </div>
-            <p className="fx-footer-sources-meta">
-              <b>{t("us.sf.payroll.s06.privacy_label")}</b>: {byYear.privacy.rule}{" "}
-              {byYear.privacy.measured_cost} {byYear.privacy.count_only_disclosures}
-            </p>
-            <p className="fx-footer-sources-meta">
-              <b>{t("us.sf.payroll.s06.basis_label")}</b>: {byYear.fiscal_year_note}
-            </p>
-            <p className="fx-footer-sources-meta">
-              <b>{t("us.sf.payroll.s06.median_label")}</b>: {byYear.median_note}
-            </p>
-            <p className="fx-footer-sources-meta">
-              <b>{t("us.sf.payroll.s06.ot_label")}</b>: {byYear.ot_counter_note}
-            </p>
-            <div style={{ margin: "14px 0" }}>
-              <Fy2018Note
-                extra={
-                  <>
-                    {" "}
-                    {t("us.sf.payroll.s06.breaks")}
-                  </>
-                }
-              />
-            </div>
-            <p className="fx-footer-sources-meta">
-              <b>{t("us.sf.payroll.s06.population_label")}</b>:{" "}
-              {byYear.population.note}{" "}
-              {byYear.population.source_url && (
-                <a
-                  href={byYear.population.source_url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  {byYear.population.source} ↗
-                </a>
-              )}
-            </p>
-            <p className="fx-footer-sources-meta">
-              <b>{srcLabel}</b>:{" "}
-              <a
-                href={byYear.source.source_url}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                {byYear.source.name} ({byYear.source.dataset_id}) ↗
-              </a>{" "}
-              — {byYear.source.attribution}
-            </p>
-            <p
-              className="fx-footer-sources-meta"
-              style={{ fontFamily: "var(--f-mono)", fontSize: 11 }}
-            >
-              {fill(t("us.sf.payroll.s06.generated"), {
-                ts: fmtDateLong(byYear.generated_at.slice(0, 10)),
-              })}{" "}
-              <span className="sep">·</span> {byYear.source_pipeline}
-            </p>
-          </div>
-        </section>
       </main>
     </div>
   );

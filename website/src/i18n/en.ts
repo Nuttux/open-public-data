@@ -4414,6 +4414,18 @@ const en: Record<string, string> = {
   // ── US · SF Payroll (/us/city/sf/payroll) — EN-only per ADR-0010 D3 ───────
   'us.sf.nav.payroll': 'Payroll',
   'us.sf.nav.places': 'Places',
+  'us.sf.nav.sources': 'Sources',
+
+  // ── US · SF Sources & method (/us/city/sf/sources) — EN-only per ADR-0010 D3 ─
+  'us.sf.sources.kicker': 'United States · San Francisco — sources & method',
+  'us.sf.sources.title.before': 'Where every figure ',
+  'us.sf.sources.title.em': 'comes from',
+  'us.sf.sources.lede': 'One page for the sources and methodology behind San Francisco’s budget, payees, contracts and payroll — the datasets, their perimeters, the privacy rules and the choices we made reading them. Each content page keeps its per-section source line; the full method lives here.',
+  'us.sf.sources.open': 'Open the {page} page →',
+  'us.sf.sources.budget.heading': 'Budget',
+  'us.sf.sources.payees.heading': 'Payees',
+  'us.sf.sources.contracts.heading': 'Contracts',
+  'us.sf.sources.payroll.heading': 'Payroll',
 
   'us.sf.payroll.kicker': 'United States · San Francisco — payroll, fiscal year {fy}',
   'us.sf.payroll.title.before': 'What city work ',

@@ -4,10 +4,8 @@ import { Suspense } from "react";
 import PageIntro, { IntroStat } from "@/components/fusion/PageIntro";
 import AnimatedNumber from "@/components/fusion/AnimatedNumber";
 import YearPicker from "@/components/fusion/YearPicker";
-import ExportRow from "@/components/fusion/ExportRow";
-import Fy2018Note from "@/components/us/Fy2018Note";
 import { useT } from "@/lib/localeContext";
-import { fmtUsdCompact, fmtDateLong } from "@/lib/us/format";
+import { fmtUsdCompact } from "@/lib/us/format";
 import TopPayeesSection from "./TopPayeesSection";
 import MaterialityStrip from "./MaterialityStrip";
 import PayeesSearch from "./PayeesSearch";
@@ -52,15 +50,6 @@ export default function WhoGetsPaidClient({
   const previewYears = years.filter((y) => y.status !== "closed").map((y) => y.fy);
   const status = yearData.execution_status;
   const tot = yearData.totals;
-
-  const sourceLinks = (
-    <>
-      {meta.source.name}{" "}
-      <a href={meta.source.source_url} target="_blank" rel="noopener noreferrer">
-        {t("us.sf.wgp.s05.data_link")} ↗
-      </a>
-    </>
-  );
 
   return (
     <main id="main-content" tabIndex={-1}>
@@ -148,64 +137,6 @@ export default function WhoGetsPaidClient({
         <PayeesSearch fy={fy} />
       </Suspense>
 
-      {/* ── 05 · Sources & method ── */}
-      <section className="fx-footer-sources" id="sec-method">
-        <div className="fx-wrap">
-          <div className="fx-footer-sources-head">
-            <span className="fx-footer-sources-label">{t("us.sf.wgp.s05.label")}</span>
-          </div>
-          <p className="fx-footer-sources-meta">
-            <b>{t("us.sf.wgp.s05.source_label")}</b>: {sourceLinks}
-            {meta.as_of && (
-              <>
-                {" "}
-                <span className="sep">·</span>{" "}
-                {fill(t("us.sf.wgp.s05.updated"), {
-                  date: fmtDateLong(meta.as_of.slice(0, 10)),
-                })}
-              </>
-            )}
-          </p>
-          <p className="fx-footer-sources-meta">
-            <b>{t("us.sf.wgp.s05.perimeter_label")}</b>: {meta.perimeter}
-          </p>
-          <p className="fx-footer-sources-meta">
-            <b>{t("us.sf.wgp.s05.classification_label")}</b>: {meta.classification.coverage}
-          </p>
-          <p className="fx-footer-sources-meta">
-            <b>{t("us.sf.wgp.s05.default_view_label")}</b>: {meta.default_view.note}{" "}
-            {meta.ranking_caveat}
-          </p>
-          <p className="fx-footer-sources-meta">
-            <b>{t("us.sf.wgp.s05.grants_label")}</b>: {meta.grant_lens_definition}{" "}
-            {meta.nonprofit_floor_note}
-          </p>
-          <p className="fx-footer-sources-meta">
-            <b>{t("us.sf.wgp.s05.individuals_label")}</b>: {t("us.sf.wgp.s05.individuals")}
-          </p>
-          <div style={{ marginTop: 18 }}>
-            <Fy2018Note />
-          </div>
-          <div style={{ marginTop: 18 }}>
-            <ExportRow
-              items={[
-                { label: "top_payees.json", primary: true, href: "/data/us/sf/top_payees.json" },
-                { label: "payees_search.json", href: "/data/us/sf/payees_search.json" },
-                { label: meta.source.dataset_id, href: meta.source.source_url },
-              ]}
-            />
-          </div>
-          <p
-            className="fx-footer-sources-meta"
-            style={{ fontFamily: "var(--f-mono)", fontSize: 11, marginTop: 16 }}
-          >
-            {fill(t("us.sf.wgp.s05.generated"), {
-              ts: fmtDateLong(meta.generated_at.slice(0, 10)),
-            })}{" "}
-            <span className="sep">·</span> {meta.source_pipeline}
-          </p>
-        </div>
-      </section>
     </main>
   );
 }

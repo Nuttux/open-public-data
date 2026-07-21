@@ -8,11 +8,9 @@ import PageIntro, { IntroStat } from "@/components/fusion/PageIntro";
 import AnimatedNumber from "@/components/fusion/AnimatedNumber";
 import BarRow from "@/components/fusion/BarRow";
 import ExpandableList from "@/components/fusion/ExpandableList";
-import ExportRow from "@/components/fusion/ExportRow";
 import Tip from "@/components/fusion/Tip";
-import Fy2018Note from "@/components/us/Fy2018Note";
 import { useT } from "@/lib/localeContext";
-import { fmtUsdCompact, fmtShare, fmtDateLong } from "@/lib/us/format";
+import { fmtUsdCompact, fmtShare } from "@/lib/us/format";
 import SfContractsSearch from "./SfContractsSearch";
 import { FAMILY_LABELS, typeLabel } from "./us-sf-contracts-types";
 import type { SfContractsActive, SfContractsOverview } from "./us-sf-contracts-types";
@@ -98,7 +96,6 @@ export default function SfContractsClient({
             { id: "sec-lbe", label: t("us.sf.contracts.toc.lbe") },
             { id: "sec-search", label: t("us.sf.contracts.toc.search") },
             { id: "sec-authorities", label: t("us.sf.contracts.toc.authorities") },
-            { id: "sec-sources", label: t("us.sf.contracts.toc.sources") },
           ]}
         />
 
@@ -565,65 +562,6 @@ export default function SfContractsClient({
           </div>
         </section>
 
-        {/* 07 — sources & méthode */}
-        <section className="fx-footer-sources" id="sec-sources">
-          <div className="fx-wrap">
-            <div className="fx-footer-sources-head">
-              <span className="fx-footer-sources-label">{t("us.sf.contracts.s07.label")}</span>
-            </div>
-            <p className="fx-footer-sources-meta">
-              <b>{t("us.sf.contracts.s07.source_label")}</b>: {overview.source.name} ·{" "}
-              <a href={overview.source.source_url} target="_blank" rel="noopener noreferrer">
-                {overview.source.dataset_id}
-              </a>{" "}
-              · {overview.source.attribution}
-              {overview.as_of && (
-                <>
-                  {" "}<span className="sep">·</span> <b>{t("us.sf.contracts.s07.asof_label")}</b>:{" "}
-                  {fmtDateLong(overview.as_of)}
-                </>
-              )}
-            </p>
-            <Fy2018Note />
-            <div
-              style={{
-                margin: "14px 0 0",
-                fontFamily: "var(--f-ui)",
-                fontSize: 13,
-                lineHeight: 1.65,
-                color: "var(--ink-2)",
-              }}
-            >
-              <b style={{ color: "var(--ink)" }}>{t("us.sf.contracts.s07.methode_label")}</b>
-              <ul style={{ margin: "8px 0 0", paddingLeft: 18 }}>
-                <li>{fill(t("us.sf.contracts.s07.m1"), {
-                  nSubOnly: nfInt.format(dq.n_sub_only_contracts_excluded),
-                  nMulti: nfInt.format(dq.n_multi_prime_row_contracts),
-                })}</li>
-                <li>{t("us.sf.contracts.s07.m2")}</li>
-                <li>{fill(t("us.sf.contracts.s07.m3"), {
-                  n: nfInt.format(dq.n_paid_exceeds_agreed),
-                })}</li>
-                <li>{fill(t("us.sf.contracts.s07.m4"), {
-                  share: fmtShare(dq.voucher_join.matched_dollar_share),
-                })}</li>
-                <li>{fill(t("us.sf.contracts.s07.m5"), {
-                  n: nfInt.format(hero.register.n_unknown_end),
-                  nPlaceholder: nfInt.format(dq.n_placeholder_end_dates),
-                })}</li>
-              </ul>
-            </div>
-            <div style={{ marginTop: 18 }}>
-              <ExportRow
-                items={[
-                  { label: t("us.sf.contracts.s07.export.overview"), primary: true, href: "/data/us/sf/contracts_overview.json" },
-                  { label: t("us.sf.contracts.s07.export.active"), href: "/data/us/sf/contracts_active.json" },
-                  { label: t("us.sf.contracts.s07.export.source"), href: overview.source.source_url },
-                ]}
-              />
-            </div>
-          </div>
-        </section>
       </main>
     </div>
   );

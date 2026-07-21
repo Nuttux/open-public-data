@@ -14,7 +14,6 @@ import EmptyState from "@/components/fusion/EmptyState";
 import Button from "@/components/fusion/Button";
 import Tip from "@/components/fusion/Tip";
 import UsTreemap from "@/components/us/UsTreemap";
-import Fy2018Note from "@/components/us/Fy2018Note";
 import { useT } from "@/lib/localeContext";
 import { deptSlug, characterSlug } from "@/lib/us/sf-budget-slugs";
 import {
@@ -22,7 +21,6 @@ import {
   fmtUsdCompact,
   fmtShare,
   fmtYoy,
-  fmtDateLong,
 } from "@/lib/us/format";
 import type {
   SfBudgetYearPoint,
@@ -219,7 +217,6 @@ export default function SfBudgetClient({ d }: { d: SfBudgetPageData }) {
           { id: "sec-types", label: t("us.sf.budget.toc.types") },
           { id: "sec-revenue", label: t("us.sf.budget.toc.revenue") },
           { id: "sec-execution", label: t("us.sf.budget.toc.execution") },
-          { id: "sec-sources", label: t("us.sf.budget.toc.sources") },
         ]}
       />
 
@@ -902,63 +899,6 @@ export default function SfBudgetClient({ d }: { d: SfBudgetPageData }) {
         </div>
       </section>
 
-      {/* ── Sources & method ── */}
-      <section className="fx-footer-sources" id="sec-sources">
-        <div className="fx-wrap">
-          <div className="fx-footer-sources-head">
-            <span className="fx-footer-sources-label">{t("us.sf.budget.s06.label")}</span>
-          </div>
-          <p className="fx-footer-sources-meta">
-            <b>{t("us.sf.budget.s06.perimeter_label")}</b>: {bd.perimeter}
-          </p>
-          <p className="fx-footer-sources-meta">
-            <b>{t("us.sf.budget.s06.status_label")}</b>:{" "}
-            {fill(t(`us.sf.budget.s06.status.${status}`), { fy })}
-          </p>
-          <p className="fx-footer-sources-meta">
-            <b>{t("us.sf.budget.s06.two_year_label")}</b>: {t("us.sf.budget.s06.two_year")}
-          </p>
-          <Fy2018Note />
-          <p className="fx-footer-sources-meta" style={{ marginTop: 16 }}>
-            <b>{t("us.sf.budget.s06.enrichment_label")}</b>: {t("us.sf.budget.s06.enrichment")}
-          </p>
-          <p className="fx-footer-sources-meta">
-            <b>{t("us.sf.budget.s06.population_label")}</b>:{" "}
-            {fill(t("us.sf.budget.s06.population"), {
-              pop: d.population.value.toLocaleString("en-US"),
-              year: d.population.year,
-            })}{" "}
-            <a href={d.population.source_url} target="_blank" rel="noopener noreferrer">
-              {d.population.source} ↗
-            </a>
-          </p>
-          <p className="fx-footer-sources-meta">
-            <b>{srcLabel}s</b>:{" "}
-            <a href={d.source.source_url} target="_blank" rel="noopener noreferrer">
-              {d.source.name} ({d.source.dataset_id}) — {d.source.attribution} ↗
-            </a>
-            {d.bvaTable && (
-              <>
-                {" "}
-                <span className="sep">·</span>{" "}
-                <a href={d.bvaTable.sources.actuals_url} target="_blank" rel="noopener noreferrer">
-                  {t("us.sf.budget.s05.src_actuals")} ↗
-                </a>
-              </>
-            )}
-          </p>
-          <p
-            className="fx-footer-sources-meta"
-            style={{ fontFamily: "var(--f-mono)", fontSize: 11 }}
-          >
-            {fill(t("us.sf.budget.s06.generated"), {
-              ts: fmtDateLong(d.generated_at.slice(0, 10)),
-              asof: bd.as_of ? fmtDateLong(bd.as_of.slice(0, 10)) : "—",
-            })}{" "}
-            <span className="sep">·</span> {d.source_pipeline}
-          </p>
-        </div>
-      </section>
     </main>
   );
 }

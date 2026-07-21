@@ -388,8 +388,8 @@ export default function PayeesSearch({ fy }: { fy: number }) {
           }}
         >
           {t("us.sf.wgp.s04.person_note")}{" "}
-          <a href="#sec-method" style={{ color: "var(--bleu)" }}>
-            {t("us.sf.wgp.s05.label")} ↓
+          <a href="/us/city/sf/sources#sec-payees" style={{ color: "var(--bleu)" }}>
+            {t("us.sf.wgp.s05.label")} →
           </a>
         </p>
       </div>
