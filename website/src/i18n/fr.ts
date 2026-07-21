@@ -4931,6 +4931,12 @@ const fr: Record<string, string> = {
   'us.sf.budget.strend.funds.rest': '…and {n} more fund groups',
 
   'us.sf.budget.s02.kind': 'By service',
+  'us.sf.budget.scomp.kind': 'Where it goes',
+  'us.sf.budget.scomp.title.before': 'Where the money ',
+  'us.sf.budget.scomp.title.em': 'goes',
+  'us.sf.budget.scomp.by_service': 'By service',
+  'us.sf.budget.scomp.by_type': 'By type',
+  'us.sf.budget.scomp.toggle_aria': 'Choose how to break down spending: by service area or by type of spending',
   'us.sf.budget.s02.title.before': 'Where the money goes — ',
   'us.sf.budget.s02.title.em': 'seven service areas',
   'us.sf.budget.s02.sub': 'The City groups its {n_depts} departments into {n_groups} service areas.',

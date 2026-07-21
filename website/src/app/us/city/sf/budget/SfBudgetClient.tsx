@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import Link from "next/link";
 // Direct imports only — no fusion barrel (node:fs leak precedent, ADR-0010 D3).
 import SectionHead from "@/components/fusion/SectionHead";
@@ -159,6 +160,28 @@ export default function SfBudgetClient({ d }: { d: SfBudgetPageData }) {
   const srcLabel = t("us.sf.budget.source_label");
   const budgetLinks = [{ name: d.source.name, href: d.source.source_url }];
 
+  // "Where the money goes" — one section, two lenses: by service (org, the
+  // treemap-led default) and by type (economic characters).
+  const [compView, setCompView] = useState<"service" | "type">("service");
+  const compBtn = (key: "service" | "type", label: string) => (
+    <button
+      type="button"
+      aria-pressed={compView === key}
+      onClick={() => setCompView(key)}
+      style={{
+        fontFamily: "var(--f-mono)",
+        fontSize: 11.5,
+        padding: "6px 14px",
+        border: "1px solid #0a0a0a",
+        background: compView === key ? "#0a0a0a" : "transparent",
+        color: compView === key ? "#fff" : "#0a0a0a",
+        cursor: "pointer",
+      }}
+    >
+      {label}
+    </button>
+  );
+
   // strend — the long view: actuals span (first/last year with an actual),
   // and the FY the adopted budget begins (first year with a budget point).
   const actualYears = d.trend.filter((p) => p.actual_all_usd != null).map((p) => p.fiscal_year);
@@ -257,8 +280,7 @@ export default function SfBudgetClient({ d }: { d: SfBudgetPageData }) {
     <main id="main-content" tabIndex={-1} style={{ overflowX: "clip" }}>
       <PageTOC
         items={[
-          { id: "sec-services", label: t("us.sf.budget.toc.services") },
-          { id: "sec-types", label: t("us.sf.budget.toc.types") },
+          { id: "sec-composition", label: t("us.sf.budget.scomp.kind") },
           { id: "sec-revenue", label: t("us.sf.budget.toc.revenue") },
           { id: "sec-execution", label: t("us.sf.budget.toc.execution") },
           { id: "sec-trend", label: t("us.sf.budget.strend.kind") },
@@ -380,22 +402,38 @@ export default function SfBudgetClient({ d }: { d: SfBudgetPageData }) {
       </PageIntro>
 
       {/* ── Signature: where the money goes, by service ── */}
-      <section className="fx-section" id="sec-services">
+      {/* ── Where the money goes — one section, two lenses (service / type) ── */}
+      <section className="fx-section" id="sec-composition">
         <div className="fx-wrap">
           <SectionHead
-            kind={t("us.sf.budget.s02.kind")}
+            kind={t("us.sf.budget.scomp.kind")}
             title={
               <>
-                {t("us.sf.budget.s02.title.before")}
-                <em>{t("us.sf.budget.s02.title.em")}</em>
+                {t("us.sf.budget.scomp.title.before")}
+                <em>{t("us.sf.budget.scomp.title.em")}</em>
               </>
             }
-            subtitle={fill(t("us.sf.budget.s02.sub"), {
-              n_groups: orgGroups.length,
-              n_depts: depts.length,
-              fy,
-            })}
+            subtitle={
+              compView === "service"
+                ? fill(t("us.sf.budget.s02.sub"), {
+                    n_groups: orgGroups.length,
+                    n_depts: depts.length,
+                    fy,
+                  })
+                : fill(t("us.sf.budget.s03.sub"), { n: spBars.length, fy })
+            }
           />
+          <div
+            role="group"
+            aria-label={t("us.sf.budget.scomp.toggle_aria")}
+            style={{ display: "inline-flex", marginBottom: 24 }}
+          >
+            {compBtn("service", t("us.sf.budget.scomp.by_service"))}
+            {compBtn("type", t("us.sf.budget.scomp.by_type"))}
+          </div>
+
+          {compView === "service" ? (
+            <>
           <UsTreemap
             data={orgGroups
               .filter((g) => g.total_usd > 0)
@@ -506,24 +544,8 @@ export default function SfBudgetClient({ d }: { d: SfBudgetPageData }) {
               ))}
             </div>
           )}
-          <SourceLine label={srcLabel} links={budgetLinks} dataWord={dataWord} />
-        </div>
-      </section>
-
-      {/* ── By type of spending (characters) ── */}
-      <section className="fx-section" id="sec-types">
-        <div className="fx-wrap">
-          <SectionHead
-            kind={t("us.sf.budget.s03.kind")}
-            title={
-              <>
-                {t("us.sf.budget.s03.title.before")}
-                <em>{t("us.sf.budget.s03.title.em")}</em>
-              </>
-            }
-            subtitle={fill(t("us.sf.budget.s03.sub"), { n: spBars.length, fy })}
-          />
-          {bd.drill.available ? (
+            </>
+          ) : bd.drill.available ? (
             <>
               <BarRow
                 reveal
