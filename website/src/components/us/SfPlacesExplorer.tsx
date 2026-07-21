@@ -1,14 +1,12 @@
 "use client";
 
-import { useMemo, useState } from "react";
-import dynamic from "next/dynamic";
-import Link from "next/link";
+import { useMemo } from "react";
 import type { SfPlaceIndexEntry } from "@/lib/us/sf-places-data";
-import { GROUPS, colorForFamily } from "./SfPlacesMap";
+import PlacesExplorer from "@/components/places/PlacesExplorer";
+import type { PlaceEntry, PlacesConfig } from "@/components/places/types";
 
-// Map is Leaflet — client-only, no SSR (matches the Paris LieuxExplorer).
-const SfPlacesMap = dynamic(() => import("./SfPlacesMap"), { ssr: false });
-
+// Fine seed families → 5 display groups, on the repo's palette validated for
+// #fafaf7 (see components/places/PlacesMap + scripts/validate_palette.js).
 const GROUP_OF: Record<string, string> = {
   park: "green", water: "green",
   library: "learning", culture: "learning",
@@ -16,74 +14,81 @@ const GROUP_OF: Record<string, string> = {
   civic: "civic",
   port: "infra", transit: "infra", fire: "infra",
 };
+const GROUPS: { key: string; color: string; label: string }[] = [
+  { key: "green", color: "#1baf7a", label: "Parks & water" },
+  { key: "civic", color: "#1e45e4", label: "Civic buildings" },
+  { key: "learning", color: "#c12323", label: "Libraries & culture" },
+  { key: "health", color: "#4a3aa7", label: "Health" },
+  { key: "infra", color: "#eda100", label: "Port, transit & fire" },
+];
 
+// San Francisco proper — the default framing. Panning beyond stays allowed so a
+// place seed's out-of-city assets (Hetch Hetchy, Camp Mather) remain reachable.
+const SF_VIEW: [[number, number], [number, number]] = [
+  [37.708, -122.515],
+  [37.833, -122.355],
+];
+
+/**
+ * San Francisco adapter → shared places explorer. Maps `SfPlaceIndexEntry` to
+ * the neutral `PlaceEntry` model. SF carries no dollar figure in the index yet,
+ * so the row stat is document / contract counts and markers are uniform (metric
+ * feeds only the "most documented" sort, not the radius).
+ */
 export default function SfPlacesExplorer({ places }: { places: SfPlaceIndexEntry[] }) {
-  const allGroups = useMemo(() => new Set(GROUPS.map((g) => g.key)), []);
-  const [active, setActive] = useState<Set<string>>(allGroups);
-  const [hover, setHover] = useState<string | null>(null);
-
-  const toggle = (key: string) => {
-    setActive((prev) => {
-      const next = new Set(prev);
-      if (next.has(key)) next.delete(key);
-      else next.add(key);
-      // never leave the map empty — re-enable all if the last one is removed
-      return next.size === 0 ? new Set(allGroups) : next;
-    });
-  };
-
-  const visible = places.filter((p) => active.has(GROUP_OF[p.family] ?? "civic"));
-
-  return (
-    <div className="fx-lieux-explorer">
-      {/* Family filter */}
-      <div className="fx-lieux-filters" role="group" aria-label="Filter places by kind">
-        {GROUPS.map((g) => {
-          const on = active.has(g.key);
-          return (
-            <button
-              key={g.key}
-              type="button"
-              className="fx-lieux-fam-chip"
-              aria-pressed={on}
-              onClick={() => toggle(g.key)}
-              style={{ opacity: on ? 1 : 0.4 }}
-            >
-              <span className="fx-fam-dot" style={{ background: g.color }} />
-              {g.label}
-            </button>
-          );
-        })}
-      </div>
-
-      <div className="fx-lieux-split">
-        <div className="fx-lieux-map-col">
-          <SfPlacesMap places={visible} active={active} onHover={setHover} />
-        </div>
-        <ul className="fx-lieux-list">
-          {visible
-            .slice()
-            .sort((a, b) => a.name.localeCompare(b.name))
-            .map((p) => (
-              <li
-                key={p.slug}
-                className="fx-lieux-list-row"
-                onMouseEnter={() => setHover(p.slug)}
-                onMouseLeave={() => setHover(null)}
-                style={{ outline: hover === p.slug ? "2px solid var(--ink)" : "none" }}
-              >
-                <Link href={`/us/city/sf/places/place/${p.slug}`} className="fx-row-link">
-                  <span className="fx-fam-dot" style={{ background: colorForFamily(p.family) }} />
-                  <span className="fx-lieux-list-name">{p.name}</span>
-                  <span className="fx-lieux-list-meta">
-                    {p.kind} · {p.n_documents} docs
-                    {p.n_contracts > 0 ? ` · ${p.n_contracts} contracts` : ""}
-                  </span>
-                </Link>
-              </li>
-            ))}
-        </ul>
-      </div>
-    </div>
+  const entries = useMemo<PlaceEntry[]>(
+    () =>
+      places.map((p) => ({
+        slug: p.slug,
+        name: p.name,
+        kind: p.kind,
+        lat: p.lat,
+        lon: p.lon,
+        photo: p.photo,
+        familyKey: GROUP_OF[p.family] ?? "civic",
+        areaKey: p.owning_dept_code || "",
+        areaLabel: p.owning_dept_code || "",
+        metric: p.n_documents,
+        stat: `${p.n_documents} docs${p.n_contracts > 0 ? ` · ${p.n_contracts} contracts` : ""}`,
+        statTone: "muted",
+        tooltipStat: ` · ${p.n_documents} archive docs`,
+      })),
+    [places],
   );
+
+  const config = useMemo<PlacesConfig>(
+    () => ({
+      families: GROUPS,
+      hrefFor: (slug) => `/us/city/sf/places/place/${slug}`,
+      bounds: SF_VIEW,
+      clampToBounds: false,
+      minZoom: 10,
+      maxZoom: 17,
+      radiusByMetric: false,
+      nearMe: false,
+      sorts: [
+        { key: "name-asc", label: "Name" },
+        { key: "metric-desc", label: "Most documented" },
+      ],
+      areaSort: "alpha",
+      locale: "en-US",
+      strings: {
+        searchPlaceholder: "Search a place…",
+        sortLabel: "Sort",
+        areaLabel: "Department",
+        areaAll: "All",
+        count: (n) => `${n} places`,
+        empty: "No place matches these filters.",
+        filtersAria: "Filter places by kind",
+        mapAria: "Map of San Francisco places",
+        listAria: "List of San Francisco places",
+        mapNote: "Click a point for the place · double-click or ⌘+wheel to zoom",
+        mapNoteTouch: "Tap a point for the place · pinch to zoom",
+        tooltipCta: "Click to open →",
+      },
+    }),
+    [],
+  );
+
+  return <PlacesExplorer entries={entries} config={config} />;
 }

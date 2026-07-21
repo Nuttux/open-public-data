@@ -15252,10 +15252,10 @@ body:has(.theme-db-scrolly) { background: #fafaf7 !important; color: var(--p-ink
 
 /* Après une intro compacte, la première section ne reprend pas le plein
  * padding vertical — la donnée doit entrer dans le premier écran. */
-.theme-fusion .fx-page-intro + .fx-section { padding-top: 44px; }
+.theme-fusion .fx-page-intro + .fx-section { padding-top: 30px; }
 .theme-fusion .fx-page-intro + .fx-section .fx-sec-head { margin-bottom: 28px; }
 @media (max-width: 768px) {
-  .theme-fusion .fx-page-intro + .fx-section { padding-top: 28px; }
+  .theme-fusion .fx-page-intro + .fx-section { padding-top: 18px; }
 }
 
 /* ───── Bande de chiffres clés de l'intro (style header Lieux) ─────────
@@ -15291,13 +15291,18 @@ body:has(.theme-db-scrolly) { background: #fafaf7 !important; color: var(--p-ink
   margin-left: 3px;
   letter-spacing: 0;
 }
-/* Header encore resserré maintenant que les stats y vivent. */
-.theme-fusion .fx-page-intro { padding: 26px 0 24px; }
-.theme-fusion .fx-intro-title { font-size: clamp(26px, 3vw, 40px); }
+/* Header resserré : sur une page-outil (carte/explorateur) le hero ne doit pas
+ * coûter la moitié du premier écran, surtout sur mobile. */
+.theme-fusion .fx-page-intro { padding: 22px 0 16px; }
+.theme-fusion .fx-intro-title { font-size: clamp(26px, 3vw, 40px); margin-bottom: 7px; }
+.theme-fusion .fx-intro-lede { margin-bottom: 6px; }
+.theme-fusion .fx-intro-stats { margin-top: 12px; }
 @media (max-width: 768px) {
-  .theme-fusion .fx-intro-stats { gap: 10px 22px; margin-top: 14px; }
-  .theme-fusion .fx-intro-stat b { font-size: 21px; }
-  .theme-fusion .fx-page-intro { padding: 18px 0 16px; }
+  .theme-fusion .fx-intro-title { font-size: 23px; }
+  .theme-fusion .fx-intro-lede { font-size: 13.5px; line-height: 1.45; }
+  .theme-fusion .fx-intro-stats { gap: 8px 20px; margin-top: 10px; }
+  .theme-fusion .fx-intro-stat b { font-size: 19px; }
+  .theme-fusion .fx-page-intro { padding: 14px 0 12px; }
 }
 
 
@@ -15320,9 +15325,24 @@ body:has(.theme-db-scrolly) { background: #fafaf7 !important; color: var(--p-ink
 }
 .theme-fusion .fx-lieux-fam-chip[aria-pressed="true"] { border-color: var(--ink); }
 .theme-fusion .fx-lieux-split {
-  display: grid; grid-template-columns: 1.35fr 1fr; gap: 22px; align-items: start;
+  display: grid; grid-template-columns: 1.7fr 1fr; gap: 26px; align-items: start;
 }
-@media (max-width: 860px) { .theme-fusion .fx-lieux-split { grid-template-columns: 1fr; } }
+@media (max-width: 860px) { .theme-fusion .fx-lieux-split { grid-template-columns: 1fr; gap: 0; } }
+
+/* The explorer keeps its LEFT edge aligned with the intro title but extends
+   rightward into the space the hero leaves empty — so the map reads landscape
+   (not a small square) without a left-edge mismatch. Capped and safety-inset
+   so it never scrolls sideways, but wide enough to fill big monitors. */
+.theme-fusion .fx-places-explorer {
+  width: min(1720px, calc(100% + (100vw - 100%) / 2 - 40px));
+}
+/* Pull the tool up under the (now tighter) intro so the map lands higher. */
+@media (min-width: 861px) {
+  .theme-fusion .fx-places-explorer { margin-top: -20px; }
+}
+@media (max-width: 1240px) {
+  .theme-fusion .fx-places-explorer { width: auto; }
+}
 .theme-fusion .fx-lieux-map-col { position: sticky; top: 12px; }
 @media (max-width: 860px) { .theme-fusion .fx-lieux-map-col { position: static; } }
 .theme-fusion .fx-lieux-list {
@@ -15337,6 +15357,83 @@ body:has(.theme-db-scrolly) { background: #fafaf7 !important; color: var(--p-ink
 .theme-fusion .fx-lieux-list-name { font-weight: 600; font-size: 15px; color: var(--ink); }
 .theme-fusion .fx-lieux-list-meta {
   font-family: var(--f-mono); font-size: 11px; letter-spacing: .03em; color: var(--muted);
+}
+
+/* ── Places explorer v2 (shared Paris + SF) ──────────────────────────────
+   Filter bar (search · family chips · area · sort · count) over a sticky map
+   and a scrolling column of compact media-rows. Replaces both the Paris
+   full-width thumbnail dump and the SF text-only side list. */
+.theme-fusion .fx-places-bar {
+  display: flex; flex-wrap: wrap; align-items: center; gap: 8px 14px; margin-bottom: 12px;
+}
+.theme-fusion .fx-places-search {
+  flex: 1 1 220px; min-width: 170px; max-width: 360px;
+  font-family: var(--f-mono); font-size: 12px; letter-spacing: .02em;
+  padding: 8px 12px; border: 1px solid var(--rule); background: var(--bg); color: var(--ink);
+}
+.theme-fusion .fx-places-search:focus-visible {
+  outline: 2px solid var(--bleu-vif); outline-offset: 1px; border-color: var(--ink);
+}
+.theme-fusion .fx-places-chips { display: flex; flex-wrap: wrap; gap: 6px 8px; }
+.theme-fusion .fx-places-selects {
+  display: flex; flex-wrap: wrap; align-items: center; gap: 8px 12px; margin-left: auto;
+}
+.theme-fusion .fx-places-select { display: inline-flex; align-items: center; gap: 6px; }
+.theme-fusion .fx-places-select-label {
+  font-family: var(--f-mono); font-size: 9.5px; letter-spacing: .08em;
+  text-transform: uppercase; color: var(--muted);
+}
+.theme-fusion .fx-places-select select {
+  font-family: var(--f-mono); font-size: 11px; padding: 5px 8px; border-radius: 0;
+  border: 1px solid var(--rule); background: var(--bg); color: var(--ink); cursor: pointer;
+}
+.theme-fusion .fx-places-count {
+  font-family: var(--f-mono); font-size: 11px; color: var(--muted); white-space: nowrap;
+}
+
+/* Taller than v1's 460px; the list scrolls inside its column on desktop. */
+.theme-fusion .fx-places-map { height: 600px; }
+@media (max-width: 860px) { .theme-fusion .fx-places-map { height: 380px; } }
+
+.theme-fusion .fx-places-list {
+  list-style: none; margin: 0; padding: 0;
+  max-height: 600px; overflow-y: auto; border-top: 1px solid var(--rule);
+}
+@media (max-width: 860px) {
+  .theme-fusion .fx-places-list { max-height: none; overflow: visible; }
+}
+.theme-fusion .fx-place-row { border-bottom: 1px solid var(--rule); }
+.theme-fusion .fx-place-row-link {
+  display: flex; align-items: center; gap: 12px; padding: 9px 8px;
+  text-decoration: none; transition: background .12s;
+}
+.theme-fusion .fx-place-row-link:hover,
+.theme-fusion .fx-place-row[data-hovered="true"] .fx-place-row-link {
+  background: var(--bg-hover, rgba(10, 10, 10, .035));
+}
+.theme-fusion .fx-place-row-link:focus-visible { outline: 2px solid var(--bleu-vif); outline-offset: -2px; }
+.theme-fusion .fx-place-thumb {
+  flex: 0 0 auto; width: 64px; height: 48px; overflow: hidden;
+  border: 1px solid var(--rule); border-left-width: 3px; background: var(--cream);
+}
+.theme-fusion .fx-place-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.theme-fusion .fx-place-thumb-noimg { display: block; width: 100%; height: 100%; opacity: .16; }
+.theme-fusion .fx-place-body { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+.theme-fusion .fx-place-name {
+  font-family: var(--f-disp); font-weight: 700; font-size: 15px; letter-spacing: -.01em;
+  line-height: 1.15; color: var(--ink);
+  overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+}
+.theme-fusion .fx-place-meta {
+  font-family: var(--f-mono); font-size: 10px; letter-spacing: .04em; color: var(--muted);
+  overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+}
+.theme-fusion .fx-place-stat {
+  font-family: var(--f-mono); font-size: 12px; font-weight: 600; color: var(--ink); margin-top: 1px;
+}
+.theme-fusion .fx-place-stat--accent { color: var(--ocre); }
+.theme-fusion .fx-places-empty {
+  font-family: var(--f-mono); font-size: 12px; color: var(--muted); padding: 20px 4px;
 }
 
 /* fiche */

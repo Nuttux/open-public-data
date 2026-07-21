@@ -1,118 +1,112 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
-import Link from "next/link";
+import { useEffect, useMemo } from "react";
 import type { LieuIndexEntry } from "@/lib/lieux-data";
 import { useT } from "@/lib/localeContext";
 import { clearDrawerStack } from "./DetailDrawer";
-import LieuxMap, { FAMILLES, COLOR } from "./LieuxMap";
+import PlacesExplorer from "@/components/places/PlacesExplorer";
+import type { PlaceEntry, PlacesConfig } from "@/components/places/types";
+
+/** Familles de lieu — la taxonomie vient du seed (colonne `famille`). Palette
+ *  validée par scripts/validate_palette.js du skill dataviz sur #fafaf7 : rouge
+ *  et bleu de la marque, pire écart adjacent ΔE 14,4 en deutéranopie. */
+const FAMILLES: { key: string; color: string; i18n: string }[] = [
+  { key: "sport", color: "#1e45e4", i18n: "fx.lieux.fam.sport" },
+  { key: "vert", color: "#1baf7a", i18n: "fx.lieux.fam.vert" },
+  { key: "culture", color: "#c12323", i18n: "fx.lieux.fam.culture" },
+  { key: "urbain", color: "#eda100", i18n: "fx.lieux.fam.urbain" },
+  { key: "services", color: "#4a3aa7", i18n: "fx.lieux.fam.services" },
+];
+
+/** Cadrage constant sur Paris intra-muros (pas le rectangle des lieux couverts). */
+const PARIS_BOUNDS: [[number, number], [number, number]] = [
+  [48.8156, 2.2241],
+  [48.9022, 2.4699],
+];
+
+const fmtArgent = (v: number) =>
+  v >= 1e6
+    ? `${(v / 1e6).toLocaleString("fr-FR", { maximumFractionDigits: 1 })} M€`
+    : `${Math.round(v / 1e3)} k€`;
+
+const arrLabel = (n: number) => `${n}${n === 1 ? "er" : "e"}`;
 
 /**
- * Explorateur des lieux — carte et liste sont deux vues du MÊME état :
- * les filtres de famille pilotent les deux, et survoler une carte-lieu
- * met en avant son marqueur. Sans cet état partagé, la liste n'est qu'un
- * doublon mort sous la carte.
+ * Adaptateur Paris → explorateur de lieux partagé. On mappe `LieuIndexEntry`
+ * vers le modèle neutre `PlaceEntry` et on branche la config (carte de Paris,
+ * rayon ∝ argent, « autour de moi »). Toute la mécanique carte+liste vit dans
+ * `components/places`.
  */
 export default function LieuxExplorer({ lieux }: { lieux: LieuIndexEntry[] }) {
   const t = useT();
-  const [actives, setActives] = useState<Set<string>>(() => new Set(FAMILLES.map((f) => f.key)));
-  const [hovered, setHovered] = useState<string | null>(null);
 
   // On est sur la LISTE : aucune chaîne de drill-down en cours. On vide la pile
-  // pour qu'une fiche ouverte d'ici n'affiche pas de pastille « ← Retour » (la
-  // liste est déjà derrière le drawer : fermer suffit).
+  // pour qu'une fiche ouverte d'ici n'affiche pas de pastille « ← Retour ».
   useEffect(() => { clearDrawerStack(); }, []);
 
-  const counts = useMemo(() => {
-    const c: Record<string, number> = {};
-    for (const l of lieux) c[l.famille] = (c[l.famille] ?? 0) + 1;
-    return c;
-  }, [lieux]);
-
-  const visibles = useMemo(
-    () => lieux.filter((l) => actives.has(l.famille)).sort((a, b) => (b.argent_total_eur ?? 0) - (a.argent_total_eur ?? 0) || (a.depuis ?? 9999) - (b.depuis ?? 9999)),
-    [lieux, actives],
+  const entries = useMemo<PlaceEntry[]>(
+    () =>
+      lieux.map((l) => {
+        const argent = l.argent_total_eur ?? 0;
+        return {
+          slug: l.slug,
+          name: l.name,
+          kind: l.kind_fr,
+          lat: l.lat,
+          lon: l.lon,
+          photo: l.photo,
+          familyKey: l.famille,
+          areaKey: l.arrondissement > 0 ? String(l.arrondissement) : "",
+          areaLabel: l.arrondissement > 0 ? arrLabel(l.arrondissement) : "",
+          metric: argent,
+          stat: argent > 0 ? fmtArgent(argent) : l.depuis ? `${t("fx.lieux.card_depuis")} ${l.depuis}` : "",
+          statTone: argent > 0 ? "money" : "accent",
+          tooltipStat: argent >= 1e6 ? ` · ${fmtArgent(argent)}` : "",
+        };
+      }),
+    [lieux, t],
   );
 
-  const toggle = (key: string) =>
-    setActives((prev) => {
-      const next = new Set(prev);
-      if (next.has(key)) next.delete(key);
-      else next.add(key);
-      return next.size ? next : new Set(FAMILLES.map((f) => f.key));
-    });
-
-  return (
-    <div>
-      <div style={{ display: "flex", gap: 6, flexWrap: "wrap", marginBottom: 10 }} role="group" aria-label={t("fx.lieux.filtres_aria")}>
-        {FAMILLES.filter((f) => counts[f.key]).map((f) => {
-          const on = actives.has(f.key);
-          return (
-            <button
-              key={f.key}
-              onClick={() => toggle(f.key)}
-              aria-pressed={on}
-              style={{
-                display: "inline-flex", alignItems: "center", gap: 6,
-                fontFamily: "var(--f-mono)", fontSize: 10, letterSpacing: ".05em", textTransform: "uppercase",
-                padding: "6px 9px", cursor: "pointer",
-                border: `1px solid ${on ? "var(--ink)" : "var(--rule)"}`,
-                background: "var(--bg)", color: on ? "var(--ink)" : "var(--muted)",
-                opacity: on ? 1 : 0.55,
-              }}
-            >
-              <span style={{ width: 9, height: 9, borderRadius: "50%", background: f.color, border: "1px solid var(--ink)" }} />
-              {t(f.i18n)}
-              <span className="tnum" style={{ color: "var(--muted)" }}>{counts[f.key]}</span>
-            </button>
-          );
-        })}
-      </div>
-
-      <LieuxMap lieux={lieux} actives={actives} hovered={hovered} onHover={setHovered} />
-
-      <div className="fx-lieux-grid">
-        {visibles.map((l) => (
-          <Link
-            key={l.slug}
-            href={`/fr/city/paris/lieu/${l.slug}`}
-            scroll={false}
-            className="fx-lieu-card"
-            onMouseEnter={() => setHovered(l.slug)}
-            onMouseLeave={() => setHovered(null)}
-            onFocus={() => setHovered(l.slug)}
-            onBlur={() => setHovered(null)}
-          >
-            <div className="fx-lieu-card-img">
-              {l.photo ? (
-                <img src={l.photo} alt="" loading="lazy" />
-              ) : (
-                <span className="fx-lieu-card-noimg" style={{ background: COLOR[l.famille] }} />
-              )}
-            </div>
-            <div className="fx-lieu-card-body">
-              <span className="fx-lieu-card-kicker">
-                <span style={{ width: 7, height: 7, borderRadius: "50%", background: COLOR[l.famille], display: "inline-block", marginRight: 6 }} />
-                {l.kind_fr}
-                {l.arrondissement > 0 ? ` · ${l.arrondissement}${l.arrondissement === 1 ? "er" : "e"}` : ""}
-              </span>
-              <span className="fx-lieu-card-name">{l.name}</span>
-              {(l.argent_total_eur ?? 0) > 0 ? (
-                <span className="fx-lieu-card-n tnum">
-                  {l.argent_total_eur! >= 1e6
-                    ? `${(l.argent_total_eur! / 1e6).toLocaleString("fr-FR", { maximumFractionDigits: 1 })} M€`
-                    : `${Math.round(l.argent_total_eur! / 1e3)} k€`}{" "}
-                  <span>{t("fx.lieux.card_argent")}</span>
-                </span>
-              ) : l.depuis ? (
-                <span className="fx-lieu-card-n tnum" style={{ color: "var(--ocre)" }}>
-                  {t("fx.lieux.card_depuis")} {l.depuis}
-                </span>
-              ) : null}
-            </div>
-          </Link>
-        ))}
-      </div>
-    </div>
+  const config = useMemo<PlacesConfig>(
+    () => ({
+      families: FAMILLES.map((f) => ({ key: f.key, label: t(f.i18n), color: f.color })),
+      hrefFor: (slug) => `/fr/city/paris/lieu/${slug}`,
+      bounds: PARIS_BOUNDS,
+      clampToBounds: true,
+      minZoom: 11,
+      maxZoom: 17,
+      radiusByMetric: true,
+      nearMe: false,
+      sorts: [
+        { key: "metric-desc", label: t("fx.lieux.sort.montant") },
+        { key: "name-asc", label: t("fx.lieux.sort.nom") },
+      ],
+      areaSort: "numeric",
+      locale: "fr-FR",
+      strings: {
+        searchPlaceholder: t("fx.lieux.search"),
+        sortLabel: t("fx.lieux.sort_label"),
+        areaLabel: t("fx.lieux.area_label"),
+        areaAll: t("fx.lieux.area_all"),
+        count: (n) => t("fx.lieux.count").replace("{n}", String(n)),
+        empty: t("fx.lieux.empty"),
+        filtersAria: t("fx.lieux.filtres_aria"),
+        mapAria: t("fx.lieux.map_aria"),
+        listAria: t("fx.lieux.list_aria"),
+        mapNote: t("fx.lieux.map_note"),
+        mapNoteTouch: t("fx.lieux.map_note_touch"),
+        tooltipCta: t("fx.lieux.tooltip_cta"),
+        nearMe: t("fx.lieux.autour_de_moi"),
+        nearMeLoading: t("fx.lieux.geo_chargement"),
+        geoRefused: t("fx.lieux.geo_refus"),
+        geoUnavailable: t("fx.lieux.geo_indispo"),
+        geoNear: (n, nom) => t("fx.lieux.geo_proches").replace("{n}", String(n)).replace("{nom}", nom),
+        geoNone: (nom, km) => t("fx.lieux.geo_aucun").replace("{nom}", nom).replace("{km}", km),
+        geoOutOfZone: (km) => t("fx.lieux.geo_hors_zone").replace("{km}", km),
+      },
+    }),
+    [t],
   );
+
+  return <PlacesExplorer entries={entries} config={config} />;
 }
