@@ -8,40 +8,6 @@ version: 2
 
 models:
   # ===========================================================================
-  # SANKEY BUDGET
-  # ===========================================================================
-  - name: mart_sankey
-    meta:
-      domain: "budget"
-      criticality: "high"
-    description: |
-      Données agrégées pour le diagramme Sankey du budget.
-      Liens: catégorie_flux → thématique avec montants.
-
-      Utilisé par: export_sankey_data.py → budget_sankey_{year}.json
-    config:
-      materialized: view
-    columns:
-      - name: annee
-        description: "Année fiscale"
-        tests:
-          - not_null
-      - name: source
-        description: "Noeud source (catégorie de flux)"
-        tests:
-          - not_null
-      - name: target
-        description: "Noeud cible (thématique)"
-        tests:
-          - not_null
-      - name: montant_total
-        description: "Montant total du lien (€)"
-        tests:
-          - not_null
-      - name: pct_total
-        description: "Pourcentage du total annuel"
-
-  # ===========================================================================
   # SUBVENTIONS TREEMAP
   # ===========================================================================
   - name: mart_subventions_treemap
