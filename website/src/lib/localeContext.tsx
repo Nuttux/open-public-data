@@ -13,13 +13,29 @@ import {
 } from 'react';
 import { usePathname } from 'next/navigation';
 
+import { getCity } from '@/lib/cities';
+
 // City label rewriter — replaces hardcoded "Paris" forms with the current
 // city's label when navigating under /fr/city/[city]/*. Lets us reuse the Paris
-// i18n strings for other cities without forking 50+ keys (POC v1 Marseille).
-const CITY_LABELS: Record<string, { nom: string; adj_m: string; adj_f: string }> = {
-  paris: { nom: 'Paris', adj_m: 'parisien', adj_f: 'parisienne' },
-  marseille: { nom: 'Marseille', adj_m: 'marseillais', adj_f: 'marseillaise' },
+// i18n strings for other cities without forking 50+ keys.
+//
+// The city NAME comes from the shared registry (lib/cities), so noun
+// substitution ("Ville de Paris" → "Ville de <city>") works for ANY registered
+// city with zero edits here. Only the French adjective morphology
+// ("parisien" → "marseillais"), which can't be derived from a name, is declared
+// locally — and only for cities whose pages actually surface those adjectives.
+const CITY_ADJECTIVES: Record<string, { adj_m: string; adj_f: string }> = {
+  marseille: { adj_m: 'marseillais', adj_f: 'marseillaise' },
 };
+
+function cityRewriteTarget(
+  citySlug: string,
+): { nom: string; adj_m?: string; adj_f?: string } | null {
+  if (citySlug === 'paris') return null;
+  const nom = getCity(citySlug)?.nom;
+  if (!nom) return null;
+  return { nom, ...CITY_ADJECTIVES[citySlug] };
+}
 
 function detectCityFromPath(pathname: string | null): string | null {
   // usePathname() can momentarily hand back something other than a plain
@@ -33,18 +49,24 @@ function detectCityFromPath(pathname: string | null): string | null {
 }
 
 function rewriteForCity(value: string, citySlug: string): string {
-  const target = CITY_LABELS[citySlug];
-  if (!target || citySlug === 'paris') return value;
-  const adjMCap = target.adj_m.charAt(0).toUpperCase() + target.adj_m.slice(1);
-  return value
-    .replace(/Parisien·nes/g, adjMCap + '·es')
-    .replace(/Parisien·ne/g, adjMCap + '·e')
-    .replace(/parisien·nes/g, target.adj_m + '·es')
-    .replace(/parisien·ne/g, target.adj_m + '·e')
-    .replace(/\bparisiennes\b/g, target.adj_f + 's')
-    .replace(/\bparisienne\b/g, target.adj_f)
-    .replace(/\bparisiens\b/g, target.adj_m + 's')
-    .replace(/\bparisien\b/g, target.adj_m)
+  const target = cityRewriteTarget(citySlug);
+  if (!target) return value;
+  let out = value;
+  // Adjective morphology only when the city declares it (else leave the
+  // "parisien" forms untouched rather than guess an inflection).
+  if (target.adj_m && target.adj_f) {
+    const adjMCap = target.adj_m.charAt(0).toUpperCase() + target.adj_m.slice(1);
+    out = out
+      .replace(/Parisien·nes/g, adjMCap + '·es')
+      .replace(/Parisien·ne/g, adjMCap + '·e')
+      .replace(/parisien·nes/g, target.adj_m + '·es')
+      .replace(/parisien·ne/g, target.adj_m + '·e')
+      .replace(/\bparisiennes\b/g, target.adj_f + 's')
+      .replace(/\bparisienne\b/g, target.adj_f)
+      .replace(/\bparisiens\b/g, target.adj_m + 's')
+      .replace(/\bparisien\b/g, target.adj_m);
+  }
+  return out
     .replace(/Ville de Paris/g, `Ville de ${target.nom}`)
     .replace(/Conseil de Paris/g, `Conseil municipal de ${target.nom}`)
     .replace(/Mairie de Paris/g, `Mairie de ${target.nom}`)
