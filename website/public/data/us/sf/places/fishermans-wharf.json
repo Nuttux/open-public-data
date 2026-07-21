@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T22:30:00.122079+00:00",
+ "generated_at": "2026-07-21T14:25:53.973929+00:00",
  "source_pipeline": "sf_place_candidates.json → sync_ia_sf.py + link_sf_places.py + fetch_sf_place_photos.py → export_sf_places.py",
  "unit": "USD",
  "slug": "fishermans-wharf",
@@ -13,6 +13,28 @@
   "name": "Port of San Francisco",
   "code": "PRT"
  },
+ "facility": null,
+ "capital": {
+  "n_items": 0,
+  "measure_totals": {},
+  "bond_programs": [],
+  "items": [],
+  "payees": [
+   {
+    "vendor": "FISHERMAN'S WHARF ASSOCIATION OF SF",
+    "paid_usd": 17040.0,
+    "n_contracts": 1,
+    "first_fiscal_year": 2026,
+    "last_fiscal_year": 2026
+   }
+  ],
+  "n_payees": 1,
+  "payees_total_paid": 17040.0,
+  "permits": [],
+  "n_permits": 0,
+  "permits_total_declared": 0.0,
+  "permits_by_year": []
+ },
  "photo": null,
  "photo_credit": null,
  "summary_en": null,
@@ -22,6 +44,13 @@
    "code": "PRT",
    "name": "Port",
    "total_usd": 156434885.0,
+   "fiscal_year": 2025
+  },
+  "payroll_line": {
+   "code": "PRT",
+   "name": "Port",
+   "total_compensation_usd": 52732085.2,
+   "n_employees": 304,
    "fiscal_year": 2025
   },
   "contracts": [],
@@ -38,7 +67,9 @@
    "snippet": "funded a «Fisherman's Wharf» Environmental Quality Advisory Committee for «Fisherman's Wharf». The",
    "url": "https://archive.org/details/hydestreetfishin1996sanf_1",
    "deep_link": "https://archive.org/details/hydestreetfishin1996sanf_1?q=Fisherman's+Wharf",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Plans & environmental review",
+   "salient": true
   },
   {
    "identifier": "hydestreetfishin1996sanf_0",
@@ -50,19 +81,9 @@
    "snippet": "not assumed to attract new boats to «Fishermans Wharf», nor will new fish processing space",
    "url": "https://archive.org/details/hydestreetfishin1996sanf_0",
    "deep_link": "https://archive.org/details/hydestreetfishin1996sanf_0?q=Fishermans+Wharf",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
-  },
-  {
-   "identifier": "readerforwaterfr1993port",
-   "title": "Reader for the waterfront workshops",
-   "creator": "Port of San Francisco (Calif.)",
-   "year": 1993,
-   "pool": "sfpl",
-   "matched_alias": "Fishermans Wharf",
-   "snippet": "PROJECT PROFILE: NORTHEASTERN WATERFRONT - «FISHERMANS WHARF» AREA PLAN Location: (See graphic on",
-   "url": "https://archive.org/details/readerforwaterfr1993port",
-   "deep_link": "https://archive.org/details/readerforwaterfr1993port?q=Fishermans+Wharf",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Plans & environmental review",
+   "salient": true
   },
   {
    "identifier": "minutes1991sanf_0",
@@ -74,19 +95,9 @@
    "snippet": "Bmbarcadero, Hunters Point Shipyard, and «Fishermans Wharf» and Rincon Point-South Beach. Rodriguez",
    "url": "https://archive.org/details/minutes1991sanf_0",
    "deep_link": "https://archive.org/details/minutes1991sanf_0?q=Fishermans+Wharf",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
-  },
-  {
-   "identifier": "missionstatement1989sanf",
-   "title": "Mission statement : housing and economic development policies",
-   "creator": "San Francisco Redevelopment Agency (San Francisco, Calif.)",
-   "year": 1989,
-   "pool": "sfpl",
-   "matched_alias": "Fishermans Wharf",
-   "snippet": "multi- agency planning efforts including «Fishermans Wharf» area, South Bayshore and other areas",
-   "url": "https://archive.org/details/missionstatement1989sanf",
-   "deep_link": "https://archive.org/details/missionstatement1989sanf?q=Fishermans+Wharf",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Meetings & resolutions",
+   "salient": true
   },
   {
    "identifier": "agenda19arts_15",
@@ -98,67 +109,9 @@
    "snippet": "MUNICIPAL HISTORIC STREET CAR LINE F-LINE «FISHERMANS WHARF» LOOP WHEEL CHAIR RAMP PLATFORM PROJECT",
    "url": "https://archive.org/details/agenda19arts_15",
    "deep_link": "https://archive.org/details/agenda19arts_15?q=Fishermans+Wharf",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
-  },
-  {
-   "identifier": "underwaterworlda2919sanf",
-   "title": "Underwater World aquarium, initial study",
-   "creator": "San Francisco (Calif.). Dept. of City Planning",
-   "year": 1988,
-   "pool": "sfpl",
-   "matched_alias": "Fishermans Wharf",
-   "snippet": "Dwellers Christopher Martin/Patrick Flanagan «Fishermans Wharf» Merchants Association Nan McGuire North",
-   "url": "https://archive.org/details/underwaterworlda2919sanf",
-   "deep_link": "https://archive.org/details/underwaterworlda2919sanf?q=Fishermans+Wharf",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
-  },
-  {
-   "identifier": "northernwaterfro1987sanf",
-   "title": "The Northern Waterfront findings report",
-   "creator": "San Francisco (Calif.). Dept. of City Planning",
-   "year": 1987,
-   "pool": "sfpl",
-   "matched_alias": "Fisherman's Wharf",
-   "snippet": "2 Finding «Fisherman's Wharf» 91 5.3 The Distinctive Areas of «Fisherman's Wharf» 102 5.4 Street",
-   "url": "https://archive.org/details/northernwaterfro1987sanf",
-   "deep_link": "https://archive.org/details/northernwaterfro1987sanf?q=Fisherman's+Wharf",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
-  },
-  {
-   "identifier": "reporttoboardofs1986sanf",
-   "title": "Report to the Board of Supervisors : management audit of the Port of San Francisco",
-   "creator": "San Francisco (Calif.). Board of Supervisors. Budget Analyst",
-   "year": 1986,
-   "pool": "sfpl",
-   "matched_alias": "Fishermans Wharf",
-   "snippet": "know the maintenance costs of either «Fishermans Wharf» or of Pier 94/96. The Port's Accounting",
-   "url": "https://archive.org/details/reporttoboardofs1986sanf",
-   "deep_link": "https://archive.org/details/reporttoboardofs1986sanf?q=Fishermans+Wharf",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
-  },
-  {
-   "identifier": "northpointparkma1976unit",
-   "title": "North Point Park/Marina, City and County of San Francisco : regulatory permit applications by Waterfront Recreation Facilities, Inc. ; draft environmental statement",
-   "creator": "United States. Army. Corps of Engineers,Waterfront Recreation Facilities, Inc,San Francisco (Calif.). Dept. of City Planning. Proposed North Point Park/Marina, San Francisco, California. 1976",
-   "year": 1976,
-   "pool": "sfpl",
-   "matched_alias": "Fisherman's Wharf",
-   "snippet": "actual maritime- oriented uses. The «Fisherman's Wharf» area is still used for fishing operations",
-   "url": "https://archive.org/details/northpointparkma1976unit",
-   "deep_link": "https://archive.org/details/northpointparkma1976unit?q=Fisherman's+Wharf",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
-  },
-  {
-   "identifier": "publicmeetingoff2197unit",
-   "title": "Public meeting of Fisherman's Wharf area, navigation improvements, San Francisco Harbor, California",
-   "creator": "United States. Army. Corps of Engineers. San Francisco District",
-   "year": 1975,
-   "pool": "sfpl",
-   "matched_alias": "Fisherman's Wharf",
-   "snippet": "and «Fisherman's Wharf»\" Signed by Gardner W . Hein, Chairman of the «Fisherman's Wharf» Committee",
-   "url": "https://archive.org/details/publicmeetingoff2197unit",
-   "deep_link": "https://archive.org/details/publicmeetingoff2197unit?q=Fisherman's+Wharf",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Meetings & resolutions",
+   "salient": true
   },
   {
    "identifier": "reportofmayorsci1974sanf",
@@ -170,7 +123,23 @@
    "snippet": "Francisco without «Fisherman's Wharf» and «Fisherman's Wharf» would not be «Fisherman's Wharf» without the",
    "url": "https://archive.org/details/reportofmayorsci1974sanf",
    "deep_link": "https://archive.org/details/reportofmayorsci1974sanf?q=Fisherman's+Wharf",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Reports & records",
+   "salient": true
+  },
+  {
+   "identifier": "underwaterworlda2919sanf",
+   "title": "Underwater World aquarium, initial study",
+   "creator": "San Francisco (Calif.). Dept. of City Planning",
+   "year": 1988,
+   "pool": "sfpl",
+   "matched_alias": "Fishermans Wharf",
+   "snippet": "Dwellers Christopher Martin/Patrick Flanagan «Fishermans Wharf» Merchants Association Nan McGuire North",
+   "url": "https://archive.org/details/underwaterworlda2919sanf",
+   "deep_link": "https://archive.org/details/underwaterworlda2919sanf?q=Fishermans+Wharf",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Other records",
+   "salient": true
   },
   {
    "identifier": "comprehensivepla2219sanf",
@@ -182,7 +151,9 @@
    "snippet": "USE SUB-AREAS «Fisherman's Wharf» Area Land use proposals for the «Fisherman's Wharf» area are directly",
    "url": "https://archive.org/details/comprehensivepla2219sanf",
    "deep_link": "https://archive.org/details/comprehensivepla2219sanf?q=Fisherman's+Wharf",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Other records",
+   "salient": false
   },
   {
    "identifier": "sanfrancisconort1966sanf",
@@ -194,7 +165,93 @@
    "snippet": "Point from «Fishermans Wharf» Aquatic Park and Victorian Park from «Fishermans Wharf» Ship terminal",
    "url": "https://archive.org/details/sanfrancisconort1966sanf",
    "deep_link": "https://archive.org/details/sanfrancisconort1966sanf?q=Fishermans+Wharf",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Other records",
+   "salient": false
+  },
+  {
+   "identifier": "publicmeetingoff2197unit",
+   "title": "Public meeting of Fisherman's Wharf area, navigation improvements, San Francisco Harbor, California",
+   "creator": "United States. Army. Corps of Engineers. San Francisco District",
+   "year": 1975,
+   "pool": "sfpl",
+   "matched_alias": "Fisherman's Wharf",
+   "snippet": "and «Fisherman's Wharf»\" Signed by Gardner W . Hein, Chairman of the «Fisherman's Wharf» Committee",
+   "url": "https://archive.org/details/publicmeetingoff2197unit",
+   "deep_link": "https://archive.org/details/publicmeetingoff2197unit?q=Fisherman's+Wharf",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Other records",
+   "salient": false
+  },
+  {
+   "identifier": "readerforwaterfr1993port",
+   "title": "Reader for the waterfront workshops",
+   "creator": "Port of San Francisco (Calif.)",
+   "year": 1993,
+   "pool": "sfpl",
+   "matched_alias": "Fishermans Wharf",
+   "snippet": "PROJECT PROFILE: NORTHEASTERN WATERFRONT - «FISHERMANS WHARF» AREA PLAN Location: (See graphic on",
+   "url": "https://archive.org/details/readerforwaterfr1993port",
+   "deep_link": "https://archive.org/details/readerforwaterfr1993port?q=Fishermans+Wharf",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Other records",
+   "salient": false
+  },
+  {
+   "identifier": "northpointparkma1976unit",
+   "title": "North Point Park/Marina, City and County of San Francisco : regulatory permit applications by Waterfront Recreation Facilities, Inc. ; draft environmental statement",
+   "creator": "United States. Army. Corps of Engineers,Waterfront Recreation Facilities, Inc,San Francisco (Calif.). Dept. of City Planning. Proposed North Point Park/Marina, San Francisco, California. 1976",
+   "year": 1976,
+   "pool": "sfpl",
+   "matched_alias": "Fisherman's Wharf",
+   "snippet": "actual maritime- oriented uses. The «Fisherman's Wharf» area is still used for fishing operations",
+   "url": "https://archive.org/details/northpointparkma1976unit",
+   "deep_link": "https://archive.org/details/northpointparkma1976unit?q=Fisherman's+Wharf",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Other records",
+   "salient": false
+  },
+  {
+   "identifier": "missionstatement1989sanf",
+   "title": "Mission statement : housing and economic development policies",
+   "creator": "San Francisco Redevelopment Agency (San Francisco, Calif.)",
+   "year": 1989,
+   "pool": "sfpl",
+   "matched_alias": "Fishermans Wharf",
+   "snippet": "multi- agency planning efforts including «Fishermans Wharf» area, South Bayshore and other areas",
+   "url": "https://archive.org/details/missionstatement1989sanf",
+   "deep_link": "https://archive.org/details/missionstatement1989sanf?q=Fishermans+Wharf",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Other records",
+   "salient": false
+  },
+  {
+   "identifier": "northernwaterfro1987sanf",
+   "title": "The Northern Waterfront findings report",
+   "creator": "San Francisco (Calif.). Dept. of City Planning",
+   "year": 1987,
+   "pool": "sfpl",
+   "matched_alias": "Fisherman's Wharf",
+   "snippet": "2 Finding «Fisherman's Wharf» 91 5.3 The Distinctive Areas of «Fisherman's Wharf» 102 5.4 Street",
+   "url": "https://archive.org/details/northernwaterfro1987sanf",
+   "deep_link": "https://archive.org/details/northernwaterfro1987sanf?q=Fisherman's+Wharf",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Other records",
+   "salient": false
+  },
+  {
+   "identifier": "reporttoboardofs1986sanf",
+   "title": "Report to the Board of Supervisors : management audit of the Port of San Francisco",
+   "creator": "San Francisco (Calif.). Board of Supervisors. Budget Analyst",
+   "year": 1986,
+   "pool": "sfpl",
+   "matched_alias": "Fishermans Wharf",
+   "snippet": "know the maintenance costs of either «Fishermans Wharf» or of Pier 94/96. The Port's Accounting",
+   "url": "https://archive.org/details/reporttoboardofs1986sanf",
+   "deep_link": "https://archive.org/details/reporttoboardofs1986sanf?q=Fishermans+Wharf",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Other records",
+   "salient": false
   }
  ],
  "dept_shelf": [
@@ -218,29 +275,10 @@
    "year": null,
    "pool": "sfpl",
    "url": "https://archive.org/details/financialstateme1971sanf"
-  },
-  {
-   "identifier": "wharfside1986sanf",
-   "title": "Wharfside",
-   "year": null,
-   "pool": "sfpl",
-   "url": "https://archive.org/details/wharfside1986sanf"
-  },
-  {
-   "identifier": "minutes2000sanf_1",
-   "title": "Minutes",
-   "year": null,
-   "pool": "sfpl",
-   "url": "https://archive.org/details/minutes2000sanf_1"
-  },
-  {
-   "identifier": "financialstateme1999sanf",
-   "title": "Financial statements and independent auditors' report",
-   "year": null,
-   "pool": "sfpl",
-   "url": "https://archive.org/details/financialstateme1999sanf"
   }
  ],
+ "dept_shelf_label": "Port of San Francisco",
+ "dept_shelf_more": 3,
  "sources": [
   {
    "label": "City budget & payments",

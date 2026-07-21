@@ -1,0 +1,5573 @@
+{
+ "generated_at": "2026-07-21T14:25:46.011712+00:00",
+ "source_pipeline": "configs/countries/us.yaml → sync_socrata.py → raw.us_sf_go_bond_* → dbt_us_staging → seed_us_sf_place_bonds (reviewed crosswalk) → dbt_us_marts.mart_us_sf_place_capital → export_sf_place_capital.py",
+ "unit": "USD",
+ "measure_labels": {
+  "bond_expended": "voter-bond funds spent",
+  "contract_paid": "paid to contractors",
+  "permit_declared": "declared construction value"
+ },
+ "no_sum_note": "Capital figures come from different city ledgers (voter bonds, contracts, building permits) and are NOT additive — a bond fund pays the contracts, and a permit is the same job's declared cost. Totals are shown within one ledger only, never summed across them.",
+ "sources": [
+  {
+   "name": "GO Bond Program Spending & Status",
+   "dataset_id": "m793-kis4",
+   "source_url": "https://data.sfgov.org/d/m793-kis4"
+  },
+  {
+   "name": "GO Bond Projects",
+   "dataset_id": "d3dc-v5yr",
+   "source_url": "https://data.sfgov.org/d/d3dc-v5yr"
+  }
+ ],
+ "count": 49,
+ "places": {
+  "laguna-honda-hospital": {
+   "n_items": 1,
+   "measure_totals": {},
+   "bond_programs": [
+    "Affordable Housing"
+   ],
+   "items": [
+    {
+     "source": "bond",
+     "source_kind": "bond_project",
+     "item_name": "Laguna Honda Hospital Senior Housing Predev",
+     "bond_program": "Affordable Housing",
+     "component": "Senior Housing",
+     "voter_approved_date": null,
+     "amount_usd": null,
+     "amount_measure": null,
+     "budget_usd": null,
+     "contract_no": null,
+     "status": null,
+     "match_evidence": "Laguna Honda Hospital"
+    }
+   ],
+   "payees": [
+    {
+     "vendor": "Health Services Advisory Group Inc",
+     "paid_usd": 2684976.55,
+     "n_contracts": 1,
+     "first_fiscal_year": 2023,
+     "last_fiscal_year": 2024
+    },
+    {
+     "vendor": "SAN FRANCISCO PARKS ALLIANCE",
+     "paid_usd": 62600.98,
+     "n_contracts": 1,
+     "first_fiscal_year": 2021,
+     "last_fiscal_year": 2022
+    },
+    {
+     "vendor": "MEDICAL CLOWN PROJECT INC",
+     "paid_usd": 42000.0,
+     "n_contracts": 1,
+     "first_fiscal_year": 2018,
+     "last_fiscal_year": 2019
+    },
+    {
+     "vendor": "FoodService Partners LLC",
+     "paid_usd": 285.6,
+     "n_contracts": 1,
+     "first_fiscal_year": 2021,
+     "last_fiscal_year": 2021
+    }
+   ],
+   "n_payees": 4,
+   "payees_total_paid": 2789863.13,
+   "permits": [
+    {
+     "description": "priority. m&o wings: selective demo of int. non-struc elements on lvl3 & spine btwn. full demo of int non-struc elements on lvl4-8 & spine btwn. replace & repair windows. n access-compliant parking spaces, loading zone, canopy, entrance at east surface parking lot. n framed walls, doors, door frames",
+     "permit_type": "additions alterations or repairs",
+     "declared_cost_usd": 33250000.0,
+     "status": "issued",
+     "permit_date": "2022-11-16",
+     "permit_year": 2022
+    },
+    {
+     "description": "erect a 2-story detention facility building",
+     "permit_type": "new construction",
+     "declared_cost_usd": 26800000.0,
+     "status": "complete",
+     "permit_date": "2003-07-09",
+     "permit_year": 2003
+    },
+    {
+     "description": "new hospital site improvements (farm & greenhouse)",
+     "permit_type": "new construction wood frame",
+     "declared_cost_usd": 14569000.0,
+     "status": "issued",
+     "permit_date": "2005-07-25",
+     "permit_year": 2005
+    },
+    {
+     "description": "existing hospital site improvement",
+     "permit_type": "new construction",
+     "declared_cost_usd": 6581000.0,
+     "status": "cancelled",
+     "permit_date": "2002-12-20",
+     "permit_year": 2002
+    },
+    {
+     "description": "temp. farm and garden equipment yard",
+     "permit_type": "new construction wood frame",
+     "declared_cost_usd": 4161000.0,
+     "status": "expired",
+     "permit_date": "2003-07-08",
+     "permit_year": 2003
+    },
+    {
+     "description": "renew pa# 2002/12/20/4004 to complete work & obtain final inspection.",
+     "permit_type": "otc alterations permit",
+     "declared_cost_usd": 3000000.0,
+     "status": "issued",
+     "permit_date": "2009-06-02",
+     "permit_year": 2009
+    }
+   ],
+   "n_permits": 89,
+   "permits_total_declared": 111312108.0,
+   "permits_by_year": [
+    {
+     "year": 1984,
+     "declared_usd": 18000.0
+    },
+    {
+     "year": 1988,
+     "declared_usd": 8000.0
+    },
+    {
+     "year": 1989,
+     "declared_usd": 1165400.0
+    },
+    {
+     "year": 1990,
+     "declared_usd": 29020.0
+    },
+    {
+     "year": 1991,
+     "declared_usd": 280000.0
+    },
+    {
+     "year": 1992,
+     "declared_usd": 40000.0
+    },
+    {
+     "year": 1993,
+     "declared_usd": 650000.0
+    },
+    {
+     "year": 1994,
+     "declared_usd": 1202003.0
+    },
+    {
+     "year": 1995,
+     "declared_usd": 484000.0
+    },
+    {
+     "year": 1996,
+     "declared_usd": 9500.0
+    },
+    {
+     "year": 1997,
+     "declared_usd": 115000.0
+    },
+    {
+     "year": 1998,
+     "declared_usd": 217500.0
+    },
+    {
+     "year": 1999,
+     "declared_usd": 5000.0
+    },
+    {
+     "year": 2000,
+     "declared_usd": 1515500.0
+    },
+    {
+     "year": 2001,
+     "declared_usd": 35000.0
+    },
+    {
+     "year": 2002,
+     "declared_usd": 6713000.0
+    },
+    {
+     "year": 2003,
+     "declared_usd": 31821000.0
+    },
+    {
+     "year": 2004,
+     "declared_usd": 1110000.0
+    },
+    {
+     "year": 2005,
+     "declared_usd": 14569000.0
+    },
+    {
+     "year": 2006,
+     "declared_usd": 88000.0
+    },
+    {
+     "year": 2007,
+     "declared_usd": 300000.0
+    },
+    {
+     "year": 2009,
+     "declared_usd": 3020000.0
+    },
+    {
+     "year": 2010,
+     "declared_usd": 19590.0
+    },
+    {
+     "year": 2013,
+     "declared_usd": 80000.0
+    },
+    {
+     "year": 2016,
+     "declared_usd": 16200.0
+    },
+    {
+     "year": 2017,
+     "declared_usd": 800000.0
+    },
+    {
+     "year": 2018,
+     "declared_usd": 587835.0
+    },
+    {
+     "year": 2019,
+     "declared_usd": 2802500.0
+    },
+    {
+     "year": 2020,
+     "declared_usd": 3712372.0
+    },
+    {
+     "year": 2021,
+     "declared_usd": 32000.0
+    },
+    {
+     "year": 2022,
+     "declared_usd": 33250000.0
+    },
+    {
+     "year": 2023,
+     "declared_usd": 1081300.0
+    },
+    {
+     "year": 2024,
+     "declared_usd": 2807965.0
+    },
+    {
+     "year": 2025,
+     "declared_usd": 2293723.0
+    },
+    {
+     "year": 2026,
+     "declared_usd": 433700.0
+    }
+   ]
+  },
+  "kezar-stadium": {
+   "n_items": 1,
+   "measure_totals": {},
+   "bond_programs": [
+    "Earthquake Safety and Emergency Response"
+   ],
+   "items": [
+    {
+     "source": "bond",
+     "source_kind": "bond_project",
+     "item_name": "Kezar Pavilion - Disaster Response Facility",
+     "bond_program": "Earthquake Safety and Emergency Response",
+     "component": "Disaster Response Facility",
+     "voter_approved_date": null,
+     "amount_usd": null,
+     "amount_measure": null,
+     "budget_usd": null,
+     "contract_no": null,
+     "status": null,
+     "match_evidence": "Kezar Pavilion"
+    }
+   ],
+   "payees": [],
+   "n_payees": 0,
+   "payees_total_paid": 0,
+   "permits": [],
+   "n_permits": 0,
+   "permits_total_declared": 0.0,
+   "permits_by_year": []
+  },
+  "union-square": {
+   "n_items": 0,
+   "measure_totals": {},
+   "bond_programs": [],
+   "items": [],
+   "payees": [
+    {
+     "vendor": "Union Square Foundation",
+     "paid_usd": 2434775.0,
+     "n_contracts": 1,
+     "first_fiscal_year": 2023,
+     "last_fiscal_year": 2026
+    },
+    {
+     "vendor": "BIEDERMAN REDEVELOPMENT VENTURES CORP",
+     "paid_usd": 1630648.74,
+     "n_contracts": 1,
+     "first_fiscal_year": 2025,
+     "last_fiscal_year": 2026
+    },
+    {
+     "vendor": "PACIFIC GAS & ELECTRIC CO",
+     "paid_usd": 242660.67,
+     "n_contracts": 1,
+     "first_fiscal_year": 2020,
+     "last_fiscal_year": 2023
+    },
+    {
+     "vendor": "UNION SQUARE BUSINESS IMPROVMNT DISTRICT",
+     "paid_usd": 98817.3,
+     "n_contracts": 3,
+     "first_fiscal_year": 2019,
+     "last_fiscal_year": 2025
+    },
+    {
+     "vendor": "Union Square Building LLC",
+     "paid_usd": 67279.35,
+     "n_contracts": 1,
+     "first_fiscal_year": 2026,
+     "last_fiscal_year": 2026
+    },
+    {
+     "vendor": "THEATRE BAY AREA",
+     "paid_usd": 24252.0,
+     "n_contracts": 1,
+     "first_fiscal_year": 2018,
+     "last_fiscal_year": 2018
+    }
+   ],
+   "n_payees": 6,
+   "payees_total_paid": 4498433.06,
+   "permits": [
+    {
+     "description": "partial demolition of union square plaza and garage, construction of new central subway union square/market street station entrance.",
+     "permit_type": "additions alterations or repairs",
+     "declared_cost_usd": 16126562.0,
+     "status": "complete",
+     "permit_date": "2013-07-19",
+     "permit_year": 2013
+    },
+    {
+     "description": "this project will renovate the entire union square plaza & add 2 structures to the park. add a new e",
+     "permit_type": "additions alterations or repairs",
+     "declared_cost_usd": 14000000.0,
+     "status": "expired",
+     "permit_date": "2001-05-04",
+     "permit_year": 2001
+    },
+    {
+     "description": "install new standpipe system for new underground railway tunnels. connect to stations on future permits. compliance with maher ord 155-13.",
+     "permit_type": "additions alterations or repairs",
+     "declared_cost_usd": 13940850.0,
+     "status": "complete",
+     "permit_date": "2019-12-12",
+     "permit_year": 2019
+    },
+    {
+     "description": "new water-based fire protection system for ums muni subway station. includes: standpipes within station, aboveground wet sprinklers, undercar track deluge, and 4 preaction systems. greatest demand 807.2 gpm @ 37 psi. ref pa 2012-0510-0184",
+     "permit_type": "additions alterations or repairs",
+     "declared_cost_usd": 2864300.0,
+     "status": "complete",
+     "permit_date": "2019-08-07",
+     "permit_year": 2019
+    },
+    {
+     "description": "(n) interior build-out. will consist of (n) custom millwork island , (n) food service equipment, new mechanical exhaust system and fire suppression system, new interior finishes, flour, paint and tile, new non load bearing, furring partition, revised fin/life safety/information, revise fire alarm",
+     "permit_type": "otc alterations permit",
+     "declared_cost_usd": 1030000.0,
+     "status": "filed",
+     "permit_date": "2026-06-04",
+     "permit_year": 2026
+    },
+    {
+     "description": "union square/market st station concourse level - construct 2 vendor kiosks; convert 2 (e) storage to all gender accessible restroom; kiosks & all gender will include elec and plumb for new lightings, power and (n) water use fixtures; (e) undeveloped space to be renovated to a down-time room reserv",
+     "permit_type": "otc alterations permit",
+     "declared_cost_usd": 1000000.0,
+     "status": "issued",
+     "permit_date": "2022-09-30",
+     "permit_year": 2022
+    }
+   ],
+   "n_permits": 62,
+   "permits_total_declared": 54032290.0,
+   "permits_by_year": [
+    {
+     "year": 1982,
+     "declared_usd": 80000.0
+    },
+    {
+     "year": 1994,
+     "declared_usd": 15000.0
+    },
+    {
+     "year": 2000,
+     "declared_usd": 700000.0
+    },
+    {
+     "year": 2001,
+     "declared_usd": 14080000.0
+    },
+    {
+     "year": 2002,
+     "declared_usd": 190000.0
+    },
+    {
+     "year": 2003,
+     "declared_usd": 160000.0
+    },
+    {
+     "year": 2008,
+     "declared_usd": 27200.0
+    },
+    {
+     "year": 2009,
+     "declared_usd": 26000.0
+    },
+    {
+     "year": 2010,
+     "declared_usd": 58700.0
+    },
+    {
+     "year": 2011,
+     "declared_usd": 266000.0
+    },
+    {
+     "year": 2012,
+     "declared_usd": 268700.0
+    },
+    {
+     "year": 2013,
+     "declared_usd": 16366562.0
+    },
+    {
+     "year": 2014,
+     "declared_usd": 152200.0
+    },
+    {
+     "year": 2015,
+     "declared_usd": 131000.0
+    },
+    {
+     "year": 2016,
+     "declared_usd": 86000.0
+    },
+    {
+     "year": 2017,
+     "declared_usd": 98000.0
+    },
+    {
+     "year": 2018,
+     "declared_usd": 541699.0
+    },
+    {
+     "year": 2019,
+     "declared_usd": 17505150.0
+    },
+    {
+     "year": 2020,
+     "declared_usd": 161844.0
+    },
+    {
+     "year": 2021,
+     "declared_usd": 80000.0
+    },
+    {
+     "year": 2022,
+     "declared_usd": 1105195.0
+    },
+    {
+     "year": 2023,
+     "declared_usd": 203040.0
+    },
+    {
+     "year": 2024,
+     "declared_usd": 150000.0
+    },
+    {
+     "year": 2025,
+     "declared_usd": 150000.0
+    },
+    {
+     "year": 2026,
+     "declared_usd": 1430000.0
+    }
+   ]
+  },
+  "portsmouth-square": {
+   "n_items": 1,
+   "measure_totals": {},
+   "bond_programs": [
+    "Health and Recovery"
+   ],
+   "items": [
+    {
+     "source": "bond",
+     "source_kind": "bond_project",
+     "item_name": "Portsmouth Square",
+     "bond_program": "Health and Recovery",
+     "component": "Recovery Parks",
+     "voter_approved_date": null,
+     "amount_usd": null,
+     "amount_measure": null,
+     "budget_usd": null,
+     "contract_no": null,
+     "status": null,
+     "match_evidence": "Portsmouth Square"
+    }
+   ],
+   "payees": [
+    {
+     "vendor": "CATHY LU STUDIO",
+     "paid_usd": 30248.0,
+     "n_contracts": 1,
+     "first_fiscal_year": 2026,
+     "last_fiscal_year": 2026
+    },
+    {
+     "vendor": "JENIFER KARLA WOFFORD",
+     "paid_usd": 10625.0,
+     "n_contracts": 1,
+     "first_fiscal_year": 2026,
+     "last_fiscal_year": 2026
+    }
+   ],
+   "n_payees": 2,
+   "payees_total_paid": 40873.0,
+   "permits": [
+    {
+     "description": "priority processing ab-004. demolition of existing facilities exposing existing garage roof structure. installation of new waterproofing over existing garage roof structure. construction of new clubhouse and landscape/playground elements. miscellaneous offsite sidewalk and crosswalk improvements.",
+     "permit_type": "additions alterations or repairs",
+     "declared_cost_usd": 43000000.0,
+     "status": "issued",
+     "permit_date": "2026-06-23",
+     "permit_year": 2026
+    },
+    {
+     "description": "renov of an(e)parking garage. upgrades to(e)mech,elec,plumb & lighting systems; ada upgrades; waterproofing improvements & repair of(e)structure; reolocation of interior prog areas; replace interior stairs; enclosure of exterior stairs & mech openings; infill of interior structural bay (floor slab)",
+     "permit_type": "additions alterations or repairs",
+     "declared_cost_usd": 1987718.0,
+     "status": "complete",
+     "permit_date": "2017-04-13",
+     "permit_year": 2017
+    },
+    {
+     "description": "repair and replacement of (3) passenger elevators that serve the (e) portsmouth square parking garage under declaration of emergency per board of supervisors resolution 455-23",
+     "permit_type": "otc alterations permit",
+     "declared_cost_usd": 1500000.0,
+     "status": "complete",
+     "permit_date": "2024-01-17",
+     "permit_year": 2024
+    },
+    {
+     "description": "to erect 1 story, no basement, public restrooms.",
+     "permit_type": "new construction wood frame",
+     "declared_cost_usd": 650000.0,
+     "status": "complete",
+     "permit_date": "2014-08-07",
+     "permit_year": 2014
+    },
+    {
+     "description": "erect a one story recreation bldg",
+     "permit_type": "new construction wood frame",
+     "declared_cost_usd": 483000.0,
+     "status": "expired",
+     "permit_date": "1998-10-22",
+     "permit_year": 1998
+    },
+    {
+     "description": "remove & replace exterior cladding, remove & reinstall aluminum doors & windows w/new flashing & water proofing. remove pavers & concrete slab & install new waterproofing & concrete, remove soil at planters, install drain & waterproofing.",
+     "permit_type": "otc alterations permit",
+     "declared_cost_usd": 353249.0,
+     "status": "complete",
+     "permit_date": "2009-05-22",
+     "permit_year": 2009
+    }
+   ],
+   "n_permits": 23,
+   "permits_total_declared": 48938812.0,
+   "permits_by_year": [
+    {
+     "year": 1998,
+     "declared_usd": 483000.0
+    },
+    {
+     "year": 2004,
+     "declared_usd": 125000.0
+    },
+    {
+     "year": 2005,
+     "declared_usd": 30000.0
+    },
+    {
+     "year": 2006,
+     "declared_usd": 10000.0
+    },
+    {
+     "year": 2008,
+     "declared_usd": 82000.0
+    },
+    {
+     "year": 2009,
+     "declared_usd": 353249.0
+    },
+    {
+     "year": 2011,
+     "declared_usd": 20000.0
+    },
+    {
+     "year": 2013,
+     "declared_usd": 169000.0
+    },
+    {
+     "year": 2014,
+     "declared_usd": 680000.0
+    },
+    {
+     "year": 2017,
+     "declared_usd": 2344718.0
+    },
+    {
+     "year": 2018,
+     "declared_usd": 40000.0
+    },
+    {
+     "year": 2019,
+     "declared_usd": 70000.0
+    },
+    {
+     "year": 2024,
+     "declared_usd": 1530545.0
+    },
+    {
+     "year": 2025,
+     "declared_usd": 1300.0
+    },
+    {
+     "year": 2026,
+     "declared_usd": 43000000.0
+    }
+   ]
+  },
+  "mission-dolores-park": {
+   "n_items": 0,
+   "measure_totals": {},
+   "bond_programs": [],
+   "items": [],
+   "payees": [
+    {
+     "vendor": "Race to Zero Waste",
+     "paid_usd": 325315.24,
+     "n_contracts": 1,
+     "first_fiscal_year": 2023,
+     "last_fiscal_year": 2027
+    },
+    {
+     "vendor": "MICROBIZ SECURITY CO INC",
+     "paid_usd": 78184.49,
+     "n_contracts": 1,
+     "first_fiscal_year": 2019,
+     "last_fiscal_year": 2019
+    }
+   ],
+   "n_payees": 2,
+   "payees_total_paid": 403499.73,
+   "permits": [
+    {
+     "description": "erect type 1, one story office .",
+     "permit_type": "new construction",
+     "declared_cost_usd": 920800.0,
+     "status": "complete",
+     "permit_date": "2014-02-25",
+     "permit_year": 2014
+    },
+    {
+     "description": "bldg 2: erect type 1, 1 story restroom.",
+     "permit_type": "new construction",
+     "declared_cost_usd": 600000.0,
+     "status": "complete",
+     "permit_date": "2014-02-25",
+     "permit_year": 2014
+    },
+    {
+     "description": "new fire sprinkler system installed throughout. (n) 4\" fire service off of 8\" main on 18th st by other. ref app#201307081348 bldg 1",
+     "permit_type": "additions alterations or repairs",
+     "declared_cost_usd": 28270.0,
+     "status": "complete",
+     "permit_date": "2015-05-13",
+     "permit_year": 2015
+    },
+    {
+     "description": "4 inches sprinkler ground (plumbing fire water line) at the o&m building #1 at 598 dolores st., connecting to the 8\" on 18th street. sprinklers under pa#201405014680- under ground approved conditional that sprinklers will match up.",
+     "permit_type": "otc alterations permit",
+     "declared_cost_usd": 20000.0,
+     "status": "complete",
+     "permit_date": "2014-06-17",
+     "permit_year": 2014
+    },
+    {
+     "description": "like for like system replacement with new control panel, smoke det and pull station ats same location install radio comm new monitor modules to tie in e flow and tamper switch and relay modules to shutdown hvac system",
+     "permit_type": "otc alterations permit",
+     "declared_cost_usd": 6000.0,
+     "status": "complete",
+     "permit_date": "2018-10-18",
+     "permit_year": 2018
+    }
+   ],
+   "n_permits": 5,
+   "permits_total_declared": 1575070.0,
+   "permits_by_year": [
+    {
+     "year": 2014,
+     "declared_usd": 1540800.0
+    },
+    {
+     "year": 2015,
+     "declared_usd": 28270.0
+    },
+    {
+     "year": 2018,
+     "declared_usd": 6000.0
+    }
+   ]
+  },
+  "asian-art-museum": {
+   "n_items": 0,
+   "measure_totals": {},
+   "bond_programs": [],
+   "items": [],
+   "payees": [],
+   "n_payees": 0,
+   "payees_total_paid": 0,
+   "permits": [
+    {
+     "description": "rehabilitation of old main library to new asian art museum",
+     "permit_type": "additions alterations or repairs",
+     "declared_cost_usd": 55000000.0,
+     "status": "issued",
+     "permit_date": "1999-05-19",
+     "permit_year": 1999
+    },
+    {
+     "description": "renovation and addition to (e) bldg adding approx. 12,000 sq feet of gallery space. fire protection under separate permit",
+     "permit_type": "additions alterations or repairs",
+     "declared_cost_usd": 6300000.0,
+     "status": "complete",
+     "permit_date": "2018-10-23",
+     "permit_year": 2018
+    },
+    {
+     "description": "construction of a temporary art installation w/in an (e) gallery space. work include temporary partitions, floor & ceiling finishes and modifications to (e) air conditioning and lighting systems",
+     "permit_type": "otc alterations permit",
+     "declared_cost_usd": 1000000.0,
+     "status": "complete",
+     "permit_date": "2020-02-20",
+     "permit_year": 2020
+    },
+    {
+     "description": "work includes and repl of (e) pedestal paver system including ramps and stairs . repair (e) waterproofind system as required. install (n) concrete stairs, ramps and curbs to replace matching (e) rise and run. tread depths and heights. install (n) handrails sim to (e) attachmts. demo ref 202205194618",
+     "permit_type": "otc alterations permit",
+     "declared_cost_usd": 900000.0,
+     "status": "complete",
+     "permit_date": "2022-11-09",
+     "permit_year": 2022
+    },
+    {
+     "description": "plaster repair & repainting-ext walls,builtup roof, interior",
+     "permit_type": "additions alterations or repairs",
+     "declared_cost_usd": 500000.0,
+     "status": "expired",
+     "permit_date": "1994-08-24",
+     "permit_year": 1994
+    },
+    {
+     "description": "fire only for the phase 2 fire alarm device replacement project; the devices being replaced are 171 smoke detectors, 33 duct detectors, and 150 modules. no ref. permit application number for this work.",
+     "permit_type": "otc alterations permit",
+     "declared_cost_usd": 200000.0,
+     "status": "issued",
+     "permit_date": "2020-12-30",
+     "permit_year": 2020
+    }
+   ],
+   "n_permits": 50,
+   "permits_total_declared": 65582680.0,
+   "permits_by_year": [
+    {
+     "year": 1990,
+     "declared_usd": 22400.0
+    },
+    {
+     "year": 1994,
+     "declared_usd": 500000.0
+    },
+    {
+     "year": 1997,
+     "declared_usd": 54000.0
+    },
+    {
+     "year": 1999,
+     "declared_usd": 55000000.0
+    },
+    {
+     "year": 2000,
+     "declared_usd": 12000.0
+    },
+    {
+     "year": 2002,
+     "declared_usd": 64000.0
+    },
+    {
+     "year": 2003,
+     "declared_usd": 3000.0
+    },
+    {
+     "year": 2004,
+     "declared_usd": 100000.0
+    },
+    {
+     "year": 2012,
+     "declared_usd": 12500.0
+    },
+    {
+     "year": 2013,
+     "declared_usd": 1000.0
+    },
+    {
+     "year": 2015,
+     "declared_usd": 55000.0
+    },
+    {
+     "year": 2016,
+     "declared_usd": 20000.0
+    },
+    {
+     "year": 2017,
+     "declared_usd": 151000.0
+    },
+    {
+     "year": 2018,
+     "declared_usd": 6713000.0
+    },
+    {
+     "year": 2019,
+     "declared_usd": 344600.0
+    },
+    {
+     "year": 2020,
+     "declared_usd": 1359480.0
+    },
+    {
+     "year": 2021,
+     "declared_usd": 1000.0
+    },
+    {
+     "year": 2022,
+     "declared_usd": 1134700.0
+    },
+    {
+     "year": 2023,
+     "declared_usd": 35000.0
+    }
+   ]
+  },
+  "war-memorial-opera-house": {
+   "n_items": 0,
+   "measure_totals": {},
+   "bond_programs": [],
+   "items": [],
+   "payees": [
+    {
+     "vendor": "PIONEER CONTRACTORS INC",
+     "paid_usd": 1684540.0,
+     "n_contracts": 1,
+     "first_fiscal_year": 2026,
+     "last_fiscal_year": 2026
+    },
+    {
+     "vendor": "W.E. LYONS CONSTRUCTION CO.",
+     "paid_usd": 163221.54,
+     "n_contracts": 1,
+     "first_fiscal_year": 2026,
+     "last_fiscal_year": 2026
+    }
+   ],
+   "n_payees": 2,
+   "payees_total_paid": 1847761.54,
+   "permits": [
+    {
+     "description": "seismic strenthening of building, improvements to buildings mepf systems, ada upgrades & tenant improvements.",
+     "permit_type": "additions alterations or repairs",
+     "declared_cost_usd": 75000000.0,
+     "status": "complete",
+     "permit_date": "2013-02-22",
+     "permit_year": 2013
+    },
+    {
+     "description": "seismic upgrade and repairs",
+     "permit_type": "additions alterations or repairs",
+     "declared_cost_usd": 42000000.0,
+     "status": "issued",
+     "permit_date": "1995-10-12",
+     "permit_year": 1995
+    },
+    {
+     "description": "tenant improvement for the educaiton, studio, performance hall, administrative offices, costumeshop & support spaces on the 4th fl as well as storage & costume support in the basement. n/a for maher ordinance.",
+     "permit_type": "additions alterations or repairs",
+     "declared_cost_usd": 10500000.0,
+     "status": "complete",
+     "permit_date": "2014-09-08",
+     "permit_year": 2014
+    },
+    {
+     "description": "metal roofing reroofing of the historic war memorial opera house building and alternate scope of installing fall protection system with roof access ladders. no hotworks without sffd operating permit.",
+     "permit_type": "otc alterations permit",
+     "declared_cost_usd": 9682244.0,
+     "status": "issued",
+     "permit_date": "2025-10-20",
+     "permit_year": 2025
+    },
+    {
+     "description": "1/f work related to path of traval/3/f & 4/f convert museum",
+     "permit_type": "additions alterations or repairs",
+     "declared_cost_usd": 2200000.0,
+     "status": "expired",
+     "permit_date": "1994-09-29",
+     "permit_year": 1994
+    },
+    {
+     "description": "modernization of passenger traction elevators #6 and #7 and related mechanical and electrical upgrades. fire sprinker and fire alarm to be modfiifed as required by sffd project to provide accessible path of travel from storage entry door to evleator #2",
+     "permit_type": "otc alterations permit",
+     "declared_cost_usd": 2200000.0,
+     "status": "issued",
+     "permit_date": "2025-05-08",
+     "permit_year": 2025
+    }
+   ],
+   "n_permits": 71,
+   "permits_total_declared": 155536431.0,
+   "permits_by_year": [
+    {
+     "year": 1992,
+     "declared_usd": 130958.0
+    },
+    {
+     "year": 1993,
+     "declared_usd": 10000.0
+    },
+    {
+     "year": 1994,
+     "declared_usd": 2274000.0
+    },
+    {
+     "year": 1995,
+     "declared_usd": 43940439.0
+    },
+    {
+     "year": 1996,
+     "declared_usd": 175000.0
+    },
+    {
+     "year": 1997,
+     "declared_usd": 2000.0
+    },
+    {
+     "year": 1998,
+     "declared_usd": 90000.0
+    },
+    {
+     "year": 1999,
+     "declared_usd": 455000.0
+    },
+    {
+     "year": 2001,
+     "declared_usd": 502400.0
+    },
+    {
+     "year": 2002,
+     "declared_usd": 874800.0
+    },
+    {
+     "year": 2004,
+     "declared_usd": 944000.0
+    },
+    {
+     "year": 2005,
+     "declared_usd": 500000.0
+    },
+    {
+     "year": 2007,
+     "declared_usd": 242370.0
+    },
+    {
+     "year": 2010,
+     "declared_usd": 296000.0
+    },
+    {
+     "year": 2011,
+     "declared_usd": 5000.0
+    },
+    {
+     "year": 2013,
+     "declared_usd": 75163000.0
+    },
+    {
+     "year": 2014,
+     "declared_usd": 14713500.0
+    },
+    {
+     "year": 2015,
+     "declared_usd": 1808120.0
+    },
+    {
+     "year": 2016,
+     "declared_usd": 4500.0
+    },
+    {
+     "year": 2017,
+     "declared_usd": 4000.0
+    },
+    {
+     "year": 2018,
+     "declared_usd": 853000.0
+    },
+    {
+     "year": 2019,
+     "declared_usd": 102100.0
+    },
+    {
+     "year": 2020,
+     "declared_usd": 70200.0
+    },
+    {
+     "year": 2021,
+     "declared_usd": 17500.0
+    },
+    {
+     "year": 2022,
+     "declared_usd": 37300.0
+    },
+    {
+     "year": 2025,
+     "declared_usd": 12297244.0
+    },
+    {
+     "year": 2026,
+     "declared_usd": 24000.0
+    }
+   ]
+  },
+  "fishermans-wharf": {
+   "n_items": 0,
+   "measure_totals": {},
+   "bond_programs": [],
+   "items": [],
+   "payees": [
+    {
+     "vendor": "FISHERMAN'S WHARF ASSOCIATION OF SF",
+     "paid_usd": 17040.0,
+     "n_contracts": 1,
+     "first_fiscal_year": 2026,
+     "last_fiscal_year": 2026
+    }
+   ],
+   "n_payees": 1,
+   "payees_total_paid": 17040.0,
+   "permits": [],
+   "n_permits": 0,
+   "permits_total_declared": 0.0,
+   "permits_by_year": []
+  },
+  "coit-tower": {
+   "n_items": 1,
+   "measure_totals": {},
+   "bond_programs": [
+    "Clean and Safe Neighborhood Parks"
+   ],
+   "items": [
+    {
+     "source": "bond",
+     "source_kind": "bond_project",
+     "item_name": "RP Cof-Pioneer Park",
+     "bond_program": "Clean and Safe Neighborhood Parks",
+     "component": "Citywide Programs",
+     "voter_approved_date": null,
+     "amount_usd": null,
+     "amount_measure": null,
+     "budget_usd": null,
+     "contract_no": null,
+     "status": null,
+     "match_evidence": "Pioneer Park"
+    }
+   ],
+   "payees": [
+    {
+     "vendor": "T & T ELECTRIC CORP",
+     "paid_usd": 55000.0,
+     "n_contracts": 1,
+     "first_fiscal_year": 2024,
+     "last_fiscal_year": 2024
+    }
+   ],
+   "n_payees": 1,
+   "payees_total_paid": 55000.0,
+   "permits": [
+    {
+     "description": "bldg rehabilitation, exterior repair, door & window rehabilitation, interior finishes paint & tile repair. upgrade for mech & elect, accessibility, hand & guardrail, restroom. new accessible & site signage. ($50k non barrier removal items, others are maintenance & accessibility upgrade work)",
+     "permit_type": "additions alterations or repairs",
+     "declared_cost_usd": 856000.0,
+     "status": "complete",
+     "permit_date": "2013-06-20",
+     "permit_year": 2013
+    },
+    {
+     "description": "reroofing - coit memorial tower.",
+     "permit_type": "additions alterations or repairs",
+     "declared_cost_usd": 150000.0,
+     "status": "complete",
+     "permit_date": "2012-09-21",
+     "permit_year": 2012
+    },
+    {
+     "description": "(rear building) to erect 1 story, no basement, limited restaurant.",
+     "permit_type": "new construction wood frame",
+     "declared_cost_usd": 35000.0,
+     "status": "issued",
+     "permit_date": "2016-11-23",
+     "permit_year": 2016
+    },
+    {
+     "description": "paint interior of existing shop, remove/replace (e) slatwall, add 3 new outlets to (e) circuit, add new cabinets, add 2 new audio/visual alarms exit signage, ada accessible counter top & ada signage.",
+     "permit_type": "otc alterations permit",
+     "declared_cost_usd": 16450.0,
+     "status": "complete",
+     "permit_date": "2014-04-02",
+     "permit_year": 2014
+    }
+   ],
+   "n_permits": 4,
+   "permits_total_declared": 1057450.0,
+   "permits_by_year": [
+    {
+     "year": 2012,
+     "declared_usd": 150000.0
+    },
+    {
+     "year": 2013,
+     "declared_usd": 856000.0
+    },
+    {
+     "year": 2014,
+     "declared_usd": 16450.0
+    },
+    {
+     "year": 2016,
+     "declared_usd": 35000.0
+    }
+   ]
+  },
+  "moscone-center": {
+   "n_items": 0,
+   "measure_totals": {},
+   "bond_programs": [],
+   "items": [],
+   "payees": [],
+   "n_payees": 0,
+   "payees_total_paid": 0,
+   "permits": [
+    {
+     "description": "renov(e)moscone north & south bldg,increase gross sq footage of moscone n & s combined facility fr approx 1.2 million gsf to 1.5 million gsf.wk incl lower level(exhibit hall renov,addition of 3 stories at moscone south&renov moscone north lobby,plus 2 connecting bridges over howard st. maher req.",
+     "permit_type": "additions alterations or repairs",
+     "declared_cost_usd": 266061486.0,
+     "status": "complete",
+     "permit_date": "2015-04-22",
+     "permit_year": 2015
+    },
+    {
+     "description": "moscone center extension",
+     "permit_type": "new construction",
+     "declared_cost_usd": 100000000.0,
+     "status": "complete",
+     "permit_date": "1989-03-27",
+     "permit_year": 1989
+    },
+    {
+     "description": "created during job card conversion on: 03/04/83",
+     "permit_type": "new construction",
+     "declared_cost_usd": 81108985.0,
+     "status": "complete",
+     "permit_date": "1978-06-13",
+     "permit_year": 1978
+    },
+    {
+     "description": "erect a three story exhibit and recreational structure",
+     "permit_type": "new construction",
+     "declared_cost_usd": 26274000.0,
+     "status": "complete",
+     "permit_date": "1996-05-20",
+     "permit_year": 1996
+    },
+    {
+     "description": "work primarily includes replacing (e) floor finishes, wall finishes, and ceiling finishes. deffered maintenance items & ada accessibility upgrades in public spaces.",
+     "permit_type": "additions alterations or repairs",
+     "declared_cost_usd": 25248523.0,
+     "status": "complete",
+     "permit_date": "2011-04-15",
+     "permit_year": 2011
+    },
+    {
+     "description": "moscone center extension",
+     "permit_type": "new construction",
+     "declared_cost_usd": 24000000.0,
+     "status": "complete",
+     "permit_date": "1989-03-27",
+     "permit_year": 1989
+    }
+   ],
+   "n_permits": 145,
+   "permits_total_declared": 559154087.0,
+   "permits_by_year": [
+    {
+     "year": 1978,
+     "declared_usd": 81108985.0
+    },
+    {
+     "year": 1980,
+     "declared_usd": 350000.0
+    },
+    {
+     "year": 1981,
+     "declared_usd": 570000.0
+    },
+    {
+     "year": 1982,
+     "declared_usd": 173000.0
+    },
+    {
+     "year": 1986,
+     "declared_usd": 150000.0
+    },
+    {
+     "year": 1989,
+     "declared_usd": 124000000.0
+    },
+    {
+     "year": 1991,
+     "declared_usd": 15000.0
+    },
+    {
+     "year": 1992,
+     "declared_usd": 2664900.0
+    },
+    {
+     "year": 1993,
+     "declared_usd": 143000.0
+    },
+    {
+     "year": 1995,
+     "declared_usd": 79000.0
+    },
+    {
+     "year": 1996,
+     "declared_usd": 26898023.0
+    },
+    {
+     "year": 1997,
+     "declared_usd": 25000.0
+    },
+    {
+     "year": 1998,
+     "declared_usd": 106800.0
+    },
+    {
+     "year": 1999,
+     "declared_usd": 138900.0
+    },
+    {
+     "year": 2000,
+     "declared_usd": 115000.0
+    },
+    {
+     "year": 2002,
+     "declared_usd": 409000.0
+    },
+    {
+     "year": 2003,
+     "declared_usd": 3028000.0
+    },
+    {
+     "year": 2004,
+     "declared_usd": 229300.0
+    },
+    {
+     "year": 2005,
+     "declared_usd": 48000.0
+    },
+    {
+     "year": 2006,
+     "declared_usd": 825000.0
+    },
+    {
+     "year": 2007,
+     "declared_usd": 2140.0
+    },
+    {
+     "year": 2009,
+     "declared_usd": 1713800.0
+    },
+    {
+     "year": 2010,
+     "declared_usd": 1396500.0
+    },
+    {
+     "year": 2011,
+     "declared_usd": 26868923.0
+    },
+    {
+     "year": 2012,
+     "declared_usd": 2789000.0
+    },
+    {
+     "year": 2013,
+     "declared_usd": 88000.0
+    },
+    {
+     "year": 2014,
+     "declared_usd": 80000.0
+    },
+    {
+     "year": 2015,
+     "declared_usd": 272683085.0
+    },
+    {
+     "year": 2016,
+     "declared_usd": 1400000.0
+    },
+    {
+     "year": 2017,
+     "declared_usd": 2298715.0
+    },
+    {
+     "year": 2018,
+     "declared_usd": 1822042.0
+    },
+    {
+     "year": 2019,
+     "declared_usd": 2660458.0
+    },
+    {
+     "year": 2021,
+     "declared_usd": 507470.0
+    },
+    {
+     "year": 2022,
+     "declared_usd": 113604.0
+    },
+    {
+     "year": 2023,
+     "declared_usd": 1505000.0
+    },
+    {
+     "year": 2024,
+     "declared_usd": 688442.0
+    },
+    {
+     "year": 2025,
+     "declared_usd": 1065000.0
+    },
+    {
+     "year": 2026,
+     "declared_usd": 395000.0
+    }
+   ]
+  },
+  "bernal-heights-branch-library": {
+   "n_items": 0,
+   "measure_totals": {},
+   "bond_programs": [],
+   "items": [],
+   "payees": [],
+   "n_payees": 0,
+   "payees_total_paid": 0,
+   "permits": [
+    {
+     "description": "bernal height-branch library. (n)entry ramp,rear ramp at west side plaza.interior wk incl new stair, elev, mech. hvac system,(n)elec. service & lighting. demo of all int.lowerlevel& const.of(n) upper floor incl.(n)ada doors,casework& finishes,seismic upgrade incl. conc.openings,roof strengthenings",
+     "permit_type": "additions alterations or repairs",
+     "declared_cost_usd": 3200000.0,
+     "status": "complete",
+     "permit_date": "2008-04-15",
+     "permit_year": 2008
+    },
+    {
+     "description": "installation of a (n) chidlren's play area and play area surface. required path of travel work consisting of upgrading the restroom to full compliance alteration to 2 entries and pedestrian routes at play area and lower court.",
+     "permit_type": "otc alterations permit",
+     "declared_cost_usd": 815000.0,
+     "status": "complete",
+     "permit_date": "2025-08-13",
+     "permit_year": 2025
+    },
+    {
+     "description": "horizontal",
+     "permit_type": "additions alterations or repairs",
+     "declared_cost_usd": 190000.0,
+     "status": "issued",
+     "permit_date": "1995-06-30",
+     "permit_year": 1995
+    },
+    {
+     "description": "barrier removal: alteration to 2 (e) restrooms to create single user restrooms. removal of toilet compartment partitions, rearangement of toilet compartment partitions, install unisex restroom geometric symbol signs, install threshold, new door hardware, & relocate 1 (e) baby diaper changing station",
+     "permit_type": "otc alterations permit",
+     "declared_cost_usd": 5000.0,
+     "status": "complete",
+     "permit_date": "2025-05-09",
+     "permit_year": 2025
+    },
+    {
+     "description": "provide an elevator recall system only.",
+     "permit_type": "otc alterations permit",
+     "declared_cost_usd": 4370.0,
+     "status": "complete",
+     "permit_date": "2009-09-17",
+     "permit_year": 2009
+    }
+   ],
+   "n_permits": 5,
+   "permits_total_declared": 4214370.0,
+   "permits_by_year": [
+    {
+     "year": 1995,
+     "declared_usd": 190000.0
+    },
+    {
+     "year": 2008,
+     "declared_usd": 3200000.0
+    },
+    {
+     "year": 2009,
+     "declared_usd": 4370.0
+    },
+    {
+     "year": 2025,
+     "declared_usd": 820000.0
+    }
+   ]
+  },
+  "mission-branch-library": {
+   "n_items": 0,
+   "measure_totals": {},
+   "bond_programs": [],
+   "items": [],
+   "payees": [],
+   "n_payees": 0,
+   "payees_total_paid": 0,
+   "permits": [
+    {
+     "description": "priority process: renovation & addition & selective demo of library. update reading spaces, bookstacks, (n) community rm & children's library, add'l restrms, staff spaces & landscaped patio. (n) mech, electr & fire protection systems. basement, penthouse & attic updates.",
+     "permit_type": "additions alterations or repairs",
+     "declared_cost_usd": 13011337.0,
+     "status": "issued",
+     "permit_date": "2023-02-15",
+     "permit_year": 2023
+    },
+    {
+     "description": "priority process: renovation & addition & selective demo of library. update reading spaces, bookstacks, (n) community rm & children's library, add'l restrms, staff spaces & landscaped patio. (n) mech, electr & fire protection systems. basement, penthouse & attic updates.",
+     "permit_type": "additions alterations or repairs",
+     "declared_cost_usd": 13011337.0,
+     "status": "issued",
+     "permit_date": "2023-02-15",
+     "permit_year": 2023
+    },
+    {
+     "description": "horizontal addition",
+     "permit_type": "additions alterations or repairs",
+     "declared_cost_usd": 2500000.0,
+     "status": "complete",
+     "permit_date": "1997-10-27",
+     "permit_year": 1997
+    },
+    {
+     "description": "add fire sprinkler system to existing bldg. new system no old one underground by others",
+     "permit_type": "otc alterations permit",
+     "declared_cost_usd": 188700.0,
+     "status": "issued",
+     "permit_date": "2024-09-03",
+     "permit_year": 2024
+    },
+    {
+     "description": "installation of fire alarm system including a celluar dialer, initiating and notification devices. ref pa# 202104198808.",
+     "permit_type": "additions alterations or repairs",
+     "declared_cost_usd": 118230.0,
+     "status": "issued",
+     "permit_date": "2025-12-08",
+     "permit_year": 2025
+    },
+    {
+     "description": "installation of fire alarm system including a celluar dialer, initiating and notification devices. ref pa# 202104198808.",
+     "permit_type": "additions alterations or repairs",
+     "declared_cost_usd": 118230.0,
+     "status": "issued",
+     "permit_date": "2025-12-08",
+     "permit_year": 2025
+    }
+   ],
+   "n_permits": 13,
+   "permits_total_declared": 29209119.0,
+   "permits_by_year": [
+    {
+     "year": 1991,
+     "declared_usd": 60485.0
+    },
+    {
+     "year": 1997,
+     "declared_usd": 2500000.0
+    },
+    {
+     "year": 1998,
+     "declared_usd": 17000.0
+    },
+    {
+     "year": 1999,
+     "declared_usd": 68442.0
+    },
+    {
+     "year": 2001,
+     "declared_usd": 76000.0
+    },
+    {
+     "year": 2023,
+     "declared_usd": 26022674.0
+    },
+    {
+     "year": 2024,
+     "declared_usd": 188700.0
+    },
+    {
+     "year": 2025,
+     "declared_usd": 275818.0
+    }
+   ]
+  },
+  "sunset-branch-library": {
+   "n_items": 0,
+   "measure_totals": {},
+   "bond_programs": [],
+   "items": [],
+   "payees": [],
+   "n_payees": 0,
+   "payees_total_paid": 0,
+   "permits": [
+    {
+     "description": "interior remodel on two levels including new restrooms plumbing electrical and some new partitions.",
+     "permit_type": "additions alterations or repairs",
+     "declared_cost_usd": 861610.0,
+     "status": "expired",
+     "permit_date": "2005-11-08",
+     "permit_year": 2005
+    },
+    {
+     "description": "install a new fire alarm system for the building",
+     "permit_type": "additions alterations or repairs",
+     "declared_cost_usd": 8500.0,
+     "status": "expired",
+     "permit_date": "2006-04-10",
+     "permit_year": 2006
+    },
+    {
+     "description": "1st fl - fire only work to add a cellular dialer to the (e) fire alarm system; no ref pa (fire addition only)",
+     "permit_type": "otc alterations permit",
+     "declared_cost_usd": 7318.0,
+     "status": "complete",
+     "permit_date": "2023-01-19",
+     "permit_year": 2023
+    }
+   ],
+   "n_permits": 3,
+   "permits_total_declared": 877428.0,
+   "permits_by_year": [
+    {
+     "year": 2005,
+     "declared_usd": 861610.0
+    },
+    {
+     "year": 2006,
+     "declared_usd": 8500.0
+    },
+    {
+     "year": 2023,
+     "declared_usd": 7318.0
+    }
+   ]
+  },
+  "lake-merced": {
+   "n_items": 4,
+   "measure_totals": {},
+   "bond_programs": [
+    "Clean and Safe Neighborhood Parks",
+    "Earthquake Safety and Emergency Response",
+    "Health and Recovery"
+   ],
+   "items": [
+    {
+     "source": "bond",
+     "source_kind": "bond_project",
+     "item_name": "Lake Merced",
+     "bond_program": "Health and Recovery",
+     "component": "Citywide Parks",
+     "voter_approved_date": null,
+     "amount_usd": null,
+     "amount_measure": null,
+     "budget_usd": null,
+     "contract_no": null,
+     "status": null,
+     "match_evidence": "Lake Merced"
+    },
+    {
+     "source": "bond",
+     "source_kind": "bond_project",
+     "item_name": "RP 2012 Lake Merced Trail & RR",
+     "bond_program": "Clean and Safe Neighborhood Parks",
+     "component": "Citywide Parks",
+     "voter_approved_date": null,
+     "amount_usd": null,
+     "amount_measure": null,
+     "budget_usd": null,
+     "contract_no": null,
+     "status": null,
+     "match_evidence": "Lake Merced"
+    },
+    {
+     "source": "bond",
+     "source_kind": "bond_project",
+     "item_name": "RP COF Lake Merced N Lake Dock",
+     "bond_program": "Clean and Safe Neighborhood Parks",
+     "component": "Citywide Programs",
+     "voter_approved_date": null,
+     "amount_usd": null,
+     "amount_measure": null,
+     "budget_usd": null,
+     "contract_no": null,
+     "status": null,
+     "match_evidence": "Lake Merced"
+    },
+    {
+     "source": "bond",
+     "source_kind": "bond_project",
+     "item_name": "Lake Merced Pistol Range Replacement",
+     "bond_program": "Earthquake Safety and Emergency Response",
+     "component": "District Police Stations & Support Facilities",
+     "voter_approved_date": null,
+     "amount_usd": null,
+     "amount_measure": null,
+     "budget_usd": null,
+     "contract_no": null,
+     "status": null,
+     "match_evidence": "Lake Merced"
+    }
+   ],
+   "payees": [
+    {
+     "vendor": "TREATY CONSTRUCTION",
+     "paid_usd": 2065089.91,
+     "n_contracts": 1,
+     "first_fiscal_year": 2025,
+     "last_fiscal_year": 2025
+    },
+    {
+     "vendor": "CAZADORO CONSTRUCTION INC",
+     "paid_usd": 583806.51,
+     "n_contracts": 1,
+     "first_fiscal_year": 2024,
+     "last_fiscal_year": 2024
+    },
+    {
+     "vendor": "WESTERN WATER CONSTRUCTORS INC",
+     "paid_usd": 203522.65,
+     "n_contracts": 1,
+     "first_fiscal_year": 2020,
+     "last_fiscal_year": 2020
+    },
+    {
+     "vendor": "Lake Merced Golf Club",
+     "paid_usd": 198955.0,
+     "n_contracts": 1,
+     "first_fiscal_year": 2018,
+     "last_fiscal_year": 2018
+    }
+   ],
+   "n_payees": 4,
+   "payees_total_paid": 3051374.07,
+   "permits": [
+    {
+     "description": "priority process - new building construction recreation center",
+     "permit_type": "new construction wood frame",
+     "declared_cost_usd": 700000.0,
+     "status": "complete",
+     "permit_date": "2023-05-19",
+     "permit_year": 2023
+    },
+    {
+     "description": "remove 2-10k&2-500 gallon underground fuel storage tanks.install & test 2-15k gallon underground fuel storage tanks with piping. install &test 2-150 gallon above grd double contained fuel storage tank & 1-100 gallon ast .install &test a leak detection & fuel monitoring system.",
+     "permit_type": "additions alterations or repairs",
+     "declared_cost_usd": 600000.0,
+     "status": "issued",
+     "permit_date": "2012-02-23",
+     "permit_year": 2012
+    },
+    {
+     "description": "parking lot and pathway renovations to enhance ada compliance at at harding park golf clubhouse and parking lot. ada barrier removal project consists of demo, minor grading, concrete asphalt paving, landscape planting and irrigation, electrical, paitning, installation of site furnishings and signage",
+     "permit_type": "otc alterations permit",
+     "declared_cost_usd": 591000.0,
+     "status": "complete",
+     "permit_date": "2024-02-08",
+     "permit_year": 2024
+    },
+    {
+     "description": "work is in rear yard. fill in a horizontal void in yard with new elevated concrete slab, replace target equipment with new equipment, provide 20 amp circuit for new equipment.",
+     "permit_type": "otc alterations permit",
+     "declared_cost_usd": 507752.0,
+     "status": "issued",
+     "permit_date": "2016-01-13",
+     "permit_year": 2016
+    },
+    {
+     "description": "replace (e), deteriorating dock with (n) accessible dock. install (n) accessible parking stall & path leading to (n) dock. install concrete pads and retaining walls for accessory storage. reconfigure (e) electrical & install (n) light pole. planting,rrigation & associated landscape improvements.",
+     "permit_type": "additions alterations or repairs",
+     "declared_cost_usd": 500000.0,
+     "status": "complete",
+     "permit_date": "2020-10-22",
+     "permit_year": 2020
+    },
+    {
+     "description": "site & utility for future (n) modular building. construct (n) concrete foundation, provide water & electrical service to (n) building. (n) sump pump & connect to (e) sump pump on site. vacant lot within lake merced pistol range, adjacent to lake merced. ** maher: yes! route to dph **",
+     "permit_type": "otc alterations permit",
+     "declared_cost_usd": 400000.0,
+     "status": "issued",
+     "permit_date": "2017-11-08",
+     "permit_year": 2017
+    }
+   ],
+   "n_permits": 19,
+   "permits_total_declared": 4183176.0,
+   "permits_by_year": [
+    {
+     "year": 2010,
+     "declared_usd": 92800.0
+    },
+    {
+     "year": 2011,
+     "declared_usd": 40000.0
+    },
+    {
+     "year": 2012,
+     "declared_usd": 673400.0
+    },
+    {
+     "year": 2016,
+     "declared_usd": 507752.0
+    },
+    {
+     "year": 2017,
+     "declared_usd": 420000.0
+    },
+    {
+     "year": 2020,
+     "declared_usd": 500000.0
+    },
+    {
+     "year": 2021,
+     "declared_usd": 4224.0
+    },
+    {
+     "year": 2023,
+     "declared_usd": 959000.0
+    },
+    {
+     "year": 2024,
+     "declared_usd": 986000.0
+    }
+   ]
+  },
+  "cable-car-barn": {
+   "n_items": 0,
+   "measure_totals": {},
+   "bond_programs": [],
+   "items": [],
+   "payees": [],
+   "n_payees": 0,
+   "payees_total_paid": 0,
+   "permits": [
+    {
+     "description": "in-kind replacement of 3 exterior rollup doors for cable car barn. project is categorically exempt from the california environmental quality act. ceqa# 2021-006989env. cpa# 2021-006989coa.",
+     "permit_type": "otc alterations permit",
+     "declared_cost_usd": 199999.0,
+     "status": "issued",
+     "permit_date": "2022-04-14",
+     "permit_year": 2022
+    },
+    {
+     "description": "recommencement and completion of work approved under pa# 202203180316 & 202402286705.",
+     "permit_type": "otc alterations permit",
+     "declared_cost_usd": 190000.0,
+     "status": "issued",
+     "permit_date": "2026-05-20",
+     "permit_year": 2026
+    },
+    {
+     "description": "city job/addition of mezznine offices",
+     "permit_type": "additions alterations or repairs",
+     "declared_cost_usd": 150000.0,
+     "status": "expired",
+     "permit_date": "1993-07-15",
+     "permit_year": 1993
+    },
+    {
+     "description": "sfmta radio upgrade project install dis server, install cables, coax, h yberflex, fiber optic dc in conduits and trays. install antennas on balast mounts on roof and building",
+     "permit_type": "otc alterations permit",
+     "declared_cost_usd": 20000.0,
+     "status": "complete",
+     "permit_date": "2015-08-05",
+     "permit_year": 2015
+    },
+    {
+     "description": "t.i. sprinkler change fire sprinkler heads",
+     "permit_type": "otc alterations permit",
+     "declared_cost_usd": 6000.0,
+     "status": "expired",
+     "permit_date": "1999-12-16",
+     "permit_year": 1999
+    },
+    {
+     "description": "to install 2 fire sprinkler heads in new office",
+     "permit_type": "otc alterations permit",
+     "declared_cost_usd": 1028.0,
+     "status": "issued",
+     "permit_date": "2015-03-25",
+     "permit_year": 2015
+    }
+   ],
+   "n_permits": 6,
+   "permits_total_declared": 567027.0,
+   "permits_by_year": [
+    {
+     "year": 1993,
+     "declared_usd": 150000.0
+    },
+    {
+     "year": 1999,
+     "declared_usd": 6000.0
+    },
+    {
+     "year": 2015,
+     "declared_usd": 21028.0
+    },
+    {
+     "year": 2022,
+     "declared_usd": 199999.0
+    },
+    {
+     "year": 2026,
+     "declared_usd": 190000.0
+    }
+   ]
+  },
+  "glen-canyon-park": {
+   "n_items": 0,
+   "measure_totals": {},
+   "bond_programs": [],
+   "items": [],
+   "payees": [
+    {
+     "vendor": "SAN FRANCISCO PARKS ALLIANCE",
+     "paid_usd": 234543.19,
+     "n_contracts": 2,
+     "first_fiscal_year": 2019,
+     "last_fiscal_year": 2022
+    },
+    {
+     "vendor": "TREATY CONSTRUCTION",
+     "paid_usd": 166182.0,
+     "n_contracts": 1,
+     "first_fiscal_year": 2023,
+     "last_fiscal_year": 2023
+    },
+    {
+     "vendor": "WEST COAST TURF",
+     "paid_usd": 10450.0,
+     "n_contracts": 1,
+     "first_fiscal_year": 2020,
+     "last_fiscal_year": 2020
+    }
+   ],
+   "n_payees": 3,
+   "payees_total_paid": 411175.19,
+   "permits": [
+    {
+     "description": "site plan for phace ii. renovation, seismic retrofit of (e) building. addition of a multi-purpose room & bleacher. new lobby- construction, mep, fire alarm and sprinklesr separate permits.",
+     "permit_type": "additions alterations or repairs",
+     "declared_cost_usd": 8200000.0,
+     "status": "complete",
+     "permit_date": "2015-08-28",
+     "permit_year": 2015
+    },
+    {
+     "description": "to make (ada) acessible: path of travel. restrooms, doors, drinking foundation, mechanical, electrical work to the site & restrooms, drinking fountain. incl conc. slab in restrooms. new landscape work to the site.",
+     "permit_type": "additions alterations or repairs",
+     "declared_cost_usd": 1261382.0,
+     "status": "complete",
+     "permit_date": "2012-09-28",
+     "permit_year": 2012
+    },
+    {
+     "description": "fire only permit. install new 8\" fire service & new low pressure fire hydrant off of 8\" city main on berkeley way per nfpa 13 & 24. new low pressure fire hydrant in glenn canyon park. fire hydrant location approx on north west corner of gynmasium",
+     "permit_type": "otc alterations permit",
+     "declared_cost_usd": 200000.0,
+     "status": "issued",
+     "permit_date": "2013-11-05",
+     "permit_year": 2013
+    },
+    {
+     "description": "install fire sprinkler system overhead to nfpa13. - 195 heads. ref #2014-0624-9343. underground on deferred submittal.",
+     "permit_type": "additions alterations or repairs",
+     "declared_cost_usd": 102000.0,
+     "status": "complete",
+     "permit_date": "2016-06-08",
+     "permit_year": 2016
+    },
+    {
+     "description": "silver tree building: re-roofing",
+     "permit_type": "otc alterations permit",
+     "declared_cost_usd": 45000.0,
+     "status": "complete",
+     "permit_date": "2015-08-19",
+     "permit_year": 2015
+    },
+    {
+     "description": "underground fire line, ref. sprinkler permit # 2016 0309 1589 ref #2014-0624-9343.",
+     "permit_type": "otc alterations permit",
+     "declared_cost_usd": 15000.0,
+     "status": "issued",
+     "permit_date": "2017-05-03",
+     "permit_year": 2017
+    }
+   ],
+   "n_permits": 8,
+   "permits_total_declared": 9845882.0,
+   "permits_by_year": [
+    {
+     "year": 2012,
+     "declared_usd": 1261382.0
+    },
+    {
+     "year": 2013,
+     "declared_usd": 200000.0
+    },
+    {
+     "year": 2015,
+     "declared_usd": 8260000.0
+    },
+    {
+     "year": 2016,
+     "declared_usd": 109500.0
+    },
+    {
+     "year": 2017,
+     "declared_usd": 15000.0
+    }
+   ]
+  },
+  "sunset-reservoir": {
+   "n_items": 0,
+   "measure_totals": {},
+   "bond_programs": [],
+   "items": [],
+   "payees": [],
+   "n_payees": 0,
+   "payees_total_paid": 0,
+   "permits": [
+    {
+     "description": "retaining wall, 11' max height wall and excavation of existing grade. off haul spoils. new electrical equipment yard & equipment anchorage.",
+     "permit_type": "additions alterations or repairs",
+     "declared_cost_usd": 285000.0,
+     "status": "complete",
+     "permit_date": "2009-10-29",
+     "permit_year": 2009
+    }
+   ],
+   "n_permits": 1,
+   "permits_total_declared": 285000.0,
+   "permits_by_year": [
+    {
+     "year": 2009,
+     "declared_usd": 285000.0
+    }
+   ]
+  },
+  "mclaren-park": {
+   "n_items": 4,
+   "measure_totals": {},
+   "bond_programs": [
+    "Clean and Safe Neighborhood Parks",
+    "Health and Recovery"
+   ],
+   "items": [
+    {
+     "source": "bond",
+     "source_kind": "bond_project",
+     "item_name": "John McLaren Park",
+     "bond_program": "Health and Recovery",
+     "component": "Citywide Parks",
+     "voter_approved_date": null,
+     "amount_usd": null,
+     "amount_measure": null,
+     "budget_usd": null,
+     "contract_no": null,
+     "status": null,
+     "match_evidence": "John McLaren Park"
+    },
+    {
+     "source": "bond",
+     "source_kind": "bond_project",
+     "item_name": "RP McLaren Park Trails",
+     "bond_program": "Clean and Safe Neighborhood Parks",
+     "component": "Citywide Parks",
+     "voter_approved_date": null,
+     "amount_usd": null,
+     "amount_measure": null,
+     "budget_usd": null,
+     "contract_no": null,
+     "status": null,
+     "match_evidence": "McLaren Park"
+    },
+    {
+     "source": "bond",
+     "source_kind": "bond_project",
+     "item_name": "RP Mclaren Park Paving Improve",
+     "bond_program": "Clean and Safe Neighborhood Parks",
+     "component": "Citywide Parks",
+     "voter_approved_date": null,
+     "amount_usd": null,
+     "amount_measure": null,
+     "budget_usd": null,
+     "contract_no": null,
+     "status": null,
+     "match_evidence": "McLaren Park"
+    },
+    {
+     "source": "bond",
+     "source_kind": "bond_project",
+     "item_name": "RP McLaren Park Trails",
+     "bond_program": "Clean and Safe Neighborhood Parks",
+     "component": "Citywide Programs",
+     "voter_approved_date": null,
+     "amount_usd": null,
+     "amount_measure": null,
+     "budget_usd": null,
+     "contract_no": null,
+     "status": null,
+     "match_evidence": "McLaren Park"
+    }
+   ],
+   "payees": [
+    {
+     "vendor": "SAN FRANCISCO PARKS ALLIANCE",
+     "paid_usd": 172500.0,
+     "n_contracts": 1,
+     "first_fiscal_year": 2022,
+     "last_fiscal_year": 2023
+    },
+    {
+     "vendor": "BELLFREE CONTRACTORS INC",
+     "paid_usd": 158997.0,
+     "n_contracts": 1,
+     "first_fiscal_year": 2018,
+     "last_fiscal_year": 2018
+    }
+   ],
+   "n_payees": 2,
+   "payees_total_paid": 331497.0,
+   "permits": [],
+   "n_permits": 0,
+   "permits_total_declared": 0.0,
+   "permits_by_year": []
+  },
+  "stern-grove": {
+   "n_items": 1,
+   "measure_totals": {},
+   "bond_programs": [
+    "Clean and Safe Neighborhood Parks"
+   ],
+   "items": [
+    {
+     "source": "bond",
+     "source_kind": "bond_project",
+     "item_name": "RP Stern Grove Playground",
+     "bond_program": "Clean and Safe Neighborhood Parks",
+     "component": "Citywide Programs",
+     "voter_approved_date": null,
+     "amount_usd": null,
+     "amount_measure": null,
+     "budget_usd": null,
+     "contract_no": null,
+     "status": null,
+     "match_evidence": "Stern Grove"
+    }
+   ],
+   "payees": [
+    {
+     "vendor": "MINERVA CONSTRUCTION INC",
+     "paid_usd": 2442053.35,
+     "n_contracts": 1,
+     "first_fiscal_year": 2025,
+     "last_fiscal_year": 2026
+    },
+    {
+     "vendor": "A R G CONSERVATION SERVICES",
+     "paid_usd": 1852212.02,
+     "n_contracts": 1,
+     "first_fiscal_year": 2024,
+     "last_fiscal_year": 2026
+    },
+    {
+     "vendor": "SavATree LLC",
+     "paid_usd": 253631.0,
+     "n_contracts": 1,
+     "first_fiscal_year": 2024,
+     "last_fiscal_year": 2024
+    },
+    {
+     "vendor": "STERN GROVE FESTIVAL ASSOCIATION",
+     "paid_usd": 100000.0,
+     "n_contracts": 1,
+     "first_fiscal_year": 2020,
+     "last_fiscal_year": 2020
+    },
+    {
+     "vendor": "M LEE CORPORATION",
+     "paid_usd": 8298.07,
+     "n_contracts": 1,
+     "first_fiscal_year": 2024,
+     "last_fiscal_year": 2024
+    }
+   ],
+   "n_payees": 5,
+   "payees_total_paid": 4656194.44,
+   "permits": [
+    {
+     "description": "complete renovation of (e) playground, replament of play equipment & safety surfacing, new seating & other related new-building amenities, new landscaping",
+     "permit_type": "otc alterations permit",
+     "declared_cost_usd": 1300000.0,
+     "status": "complete",
+     "permit_date": "2024-04-02",
+     "permit_year": 2024
+    },
+    {
+     "description": "erect 1 story performing arts building.",
+     "permit_type": "new construction wood frame",
+     "declared_cost_usd": 500000.0,
+     "status": "complete",
+     "permit_date": "2004-08-18",
+     "permit_year": 2004
+    },
+    {
+     "description": "erect 1 story performing art building.",
+     "permit_type": "new construction wood frame",
+     "declared_cost_usd": 500000.0,
+     "status": "complete",
+     "permit_date": "2004-08-18",
+     "permit_year": 2004
+    },
+    {
+     "description": "erect new 1 story performing arts building.",
+     "permit_type": "new construction wood frame",
+     "declared_cost_usd": 500000.0,
+     "status": "complete",
+     "permit_date": "2004-08-18",
+     "permit_year": 2004
+    },
+    {
+     "description": "erect 1 story performing arts building.",
+     "permit_type": "new construction wood frame",
+     "declared_cost_usd": 500000.0,
+     "status": "complete",
+     "permit_date": "2004-08-18",
+     "permit_year": 2004
+    },
+    {
+     "description": "to comply with nov# 202304945. repairs to bldg due to storm damage. reconstruct north side roof & ext wall at 2nd fl, other roof framing and shingle repair. replace ext trim & shingle cladding, gutters & downspouts. interior wall/ceiling finishes. floor refinish. limited fire sprinkler & elec repair",
+     "permit_type": "otc alterations permit",
+     "declared_cost_usd": 500000.0,
+     "status": "complete",
+     "permit_date": "2024-01-16",
+     "permit_year": 2024
+    }
+   ],
+   "n_permits": 13,
+   "permits_total_declared": 4658822.0,
+   "permits_by_year": [
+    {
+     "year": 1986,
+     "declared_usd": 245000.0
+    },
+    {
+     "year": 2004,
+     "declared_usd": 2300000.0
+    },
+    {
+     "year": 2005,
+     "declared_usd": 10000.0
+    },
+    {
+     "year": 2006,
+     "declared_usd": 162000.0
+    },
+    {
+     "year": 2015,
+     "declared_usd": 140000.0
+    },
+    {
+     "year": 2024,
+     "declared_usd": 1801822.0
+    }
+   ]
+  },
+  "southeast-health-center": {
+   "n_items": 3,
+   "measure_totals": {
+    "bond_expended": 36760185.97
+   },
+   "bond_programs": [
+    "Public Health and Safety"
+   ],
+   "items": [
+    {
+     "source": "bond",
+     "source_kind": "bond_item",
+     "item_name": "Southeast Health Center",
+     "bond_program": "Public Health and Safety",
+     "component": null,
+     "voter_approved_date": "2016-06-07",
+     "amount_usd": 36760185.9696,
+     "amount_measure": "bond_expended",
+     "budget_usd": 37050648.3993,
+     "contract_no": null,
+     "status": null,
+     "match_evidence": "Southeast Health Center"
+    },
+    {
+     "source": "bond",
+     "source_kind": "bond_project",
+     "item_name": "Southeast Health Center (Phase 1)",
+     "bond_program": "Public Health and Safety",
+     "component": "Southeast Health Center",
+     "voter_approved_date": null,
+     "amount_usd": null,
+     "amount_measure": null,
+     "budget_usd": null,
+     "contract_no": null,
+     "status": null,
+     "match_evidence": "Southeast Health Center"
+    },
+    {
+     "source": "bond",
+     "source_kind": "bond_project",
+     "item_name": "Southeast Health Center (Phase 2)",
+     "bond_program": "Public Health and Safety",
+     "component": "Southeast Health Center",
+     "voter_approved_date": null,
+     "amount_usd": null,
+     "amount_measure": null,
+     "budget_usd": null,
+     "contract_no": null,
+     "status": null,
+     "match_evidence": "Southeast Health Center"
+    }
+   ],
+   "payees": [],
+   "n_payees": 0,
+   "payees_total_paid": 0,
+   "permits": [
+    {
+     "description": "erect (n) 2-story primary care clinic",
+     "permit_type": "new construction wood frame",
+     "declared_cost_usd": 19000000.0,
+     "status": "complete",
+     "permit_date": "2020-05-26",
+     "permit_year": 2020
+    },
+    {
+     "description": "tenant improvment of southeast health center 2401 keith st clinic building. interior scope includes modified partitions, finishes, improvements to mechanical, electrical, plumbing, fire protection/alarm systems, glazing replacement and modifications to sidewalk landscape area along armstrong av.",
+     "permit_type": "otc alterations permit",
+     "declared_cost_usd": 8950000.0,
+     "status": "issued",
+     "permit_date": "2025-06-10",
+     "permit_year": 2025
+    },
+    {
+     "description": "interior renovation of an existing primary care health clinic including new exam rooms,dental suite,lobby,reception & registration,staff workgroup spaces,phlebotomy and podiatry exam rooms, and a server room; maher n/a",
+     "permit_type": "otc alterations permit",
+     "declared_cost_usd": 2000000.0,
+     "status": "expired",
+     "permit_date": "2017-02-03",
+     "permit_year": 2017
+    },
+    {
+     "description": "disconnect old & install new boiler/flue, disconnect & reconnect gas for boiler, disconnect & install new rooftop ac unit & transition curb, disconnect & reconnect conderisate for new rooftop unit, remove (e) constant volume box & replace with new vav box, replace pneumatic controls w/ddc controls",
+     "permit_type": "otc alterations permit",
+     "declared_cost_usd": 608000.0,
+     "status": "expired",
+     "permit_date": "2010-11-19",
+     "permit_year": 2010
+    },
+    {
+     "description": "general building renovation for ada. construct ada parking at (e) parking lot.",
+     "permit_type": "additions alterations or repairs",
+     "declared_cost_usd": 200000.0,
+     "status": "complete",
+     "permit_date": "2008-03-21",
+     "permit_year": 2008
+    },
+    {
+     "description": "install (218) sprinklers throughout per nfpa#13. underground per nfpa# 24 & relocate (1) existing fire department connection to front lawn b.a.# 2019-0506-9853",
+     "permit_type": "otc alterations permit",
+     "declared_cost_usd": 142100.0,
+     "status": "complete",
+     "permit_date": "2021-03-25",
+     "permit_year": 2021
+    }
+   ],
+   "n_permits": 15,
+   "permits_total_declared": 31387285.0,
+   "permits_by_year": [
+    {
+     "year": 1990,
+     "declared_usd": 51000.0
+    },
+    {
+     "year": 2008,
+     "declared_usd": 200000.0
+    },
+    {
+     "year": 2010,
+     "declared_usd": 608000.0
+    },
+    {
+     "year": 2014,
+     "declared_usd": 124000.0
+    },
+    {
+     "year": 2017,
+     "declared_usd": 2009986.0
+    },
+    {
+     "year": 2020,
+     "declared_usd": 19000000.0
+    },
+    {
+     "year": 2021,
+     "declared_usd": 220485.0
+    },
+    {
+     "year": 2022,
+     "declared_usd": 2544.0
+    },
+    {
+     "year": 2024,
+     "declared_usd": 71000.0
+    },
+    {
+     "year": 2025,
+     "declared_usd": 9100270.0
+    }
+   ]
+  },
+  "washington-square": {
+   "n_items": 0,
+   "measure_totals": {},
+   "bond_programs": [],
+   "items": [],
+   "payees": [],
+   "n_payees": 0,
+   "payees_total_paid": 0,
+   "permits": [
+    {
+     "description": "to erect 1 story, no basement, restroom in the park.",
+     "permit_type": "new construction wood frame",
+     "declared_cost_usd": 504000.0,
+     "status": "complete",
+     "permit_date": "2014-05-05",
+     "permit_year": 2014
+    },
+    {
+     "description": "replace existing asphalt paving with concrete paving and landscape improvements",
+     "permit_type": "otc alterations permit",
+     "declared_cost_usd": 500000.0,
+     "status": "complete",
+     "permit_date": "2019-04-05",
+     "permit_year": 2019
+    },
+    {
+     "description": "playground renovation - removal of (e) playground and replacement with new playground in (e) location",
+     "permit_type": "otc alterations permit",
+     "declared_cost_usd": 300000.0,
+     "status": "complete",
+     "permit_date": "2018-02-27",
+     "permit_year": 2018
+    },
+    {
+     "description": "to demolish 1 story restroom.",
+     "permit_type": "demolitions",
+     "declared_cost_usd": 65000.0,
+     "status": "complete",
+     "permit_date": "2014-05-05",
+     "permit_year": 2014
+    }
+   ],
+   "n_permits": 4,
+   "permits_total_declared": 1369000.0,
+   "permits_by_year": [
+    {
+     "year": 2014,
+     "declared_usd": 569000.0
+    },
+    {
+     "year": 2018,
+     "declared_usd": 300000.0
+    },
+    {
+     "year": 2019,
+     "declared_usd": 500000.0
+    }
+   ]
+  },
+  "de-young-museum": {
+   "n_items": 0,
+   "measure_totals": {},
+   "bond_programs": [],
+   "items": [],
+   "payees": [],
+   "n_payees": 0,
+   "payees_total_paid": 0,
+   "permits": [
+    {
+     "description": "erect museum & research building 3 stories, 2 basements",
+     "permit_type": "additions alterations or repairs",
+     "declared_cost_usd": 130000000.0,
+     "status": "complete",
+     "permit_date": "2005-11-23",
+     "permit_year": 2005
+    },
+    {
+     "description": "to erect 2 story museum & 9 story tower",
+     "permit_type": "new construction",
+     "declared_cost_usd": 105000000.0,
+     "status": "complete",
+     "permit_date": "2002-02-07",
+     "permit_year": 2002
+    },
+    {
+     "description": "2 stories of underground parking space",
+     "permit_type": "new construction",
+     "declared_cost_usd": 35000000.0,
+     "status": "complete",
+     "permit_date": "2003-12-15",
+     "permit_year": 2003
+    },
+    {
+     "description": "erect an one story type 5 construction recreation and office",
+     "permit_type": "new construction wood frame",
+     "declared_cost_usd": 17013752.0,
+     "status": "complete",
+     "permit_date": "2019-08-26",
+     "permit_year": 2019
+    },
+    {
+     "description": "to erect 1 story nursery w/ green house and a3 assembly area in golden gate park.",
+     "permit_type": "new construction wood frame",
+     "declared_cost_usd": 5500000.0,
+     "status": "cancelled",
+     "permit_date": "2013-12-20",
+     "permit_year": 2013
+    },
+    {
+     "description": "install shoring for excavation, excavate and stock spoils, compact for new building, cut foundation",
+     "permit_type": "additions alterations or repairs",
+     "declared_cost_usd": 4000000.0,
+     "status": "complete",
+     "permit_date": "2005-08-04",
+     "permit_year": 2005
+    }
+   ],
+   "n_permits": 341,
+   "permits_total_declared": 372592120.0,
+   "permits_by_year": [
+    {
+     "year": 1983,
+     "declared_usd": 40000.0
+    },
+    {
+     "year": 1986,
+     "declared_usd": 73976.0
+    },
+    {
+     "year": 1987,
+     "declared_usd": 711550.0
+    },
+    {
+     "year": 1988,
+     "declared_usd": 4298912.0
+    },
+    {
+     "year": 1989,
+     "declared_usd": 188220.0
+    },
+    {
+     "year": 1990,
+     "declared_usd": 1834000.0
+    },
+    {
+     "year": 1991,
+     "declared_usd": 435000.0
+    },
+    {
+     "year": 1992,
+     "declared_usd": 203900.0
+    },
+    {
+     "year": 1993,
+     "declared_usd": 5283000.0
+    },
+    {
+     "year": 1994,
+     "declared_usd": 1818450.0
+    },
+    {
+     "year": 1995,
+     "declared_usd": 727465.0
+    },
+    {
+     "year": 1996,
+     "declared_usd": 2050550.0
+    },
+    {
+     "year": 1997,
+     "declared_usd": 784737.0
+    },
+    {
+     "year": 1998,
+     "declared_usd": 924850.0
+    },
+    {
+     "year": 1999,
+     "declared_usd": 4359000.0
+    },
+    {
+     "year": 2001,
+     "declared_usd": 3091415.0
+    },
+    {
+     "year": 2002,
+     "declared_usd": 107040000.0
+    },
+    {
+     "year": 2003,
+     "declared_usd": 37822350.0
+    },
+    {
+     "year": 2004,
+     "declared_usd": 2582650.0
+    },
+    {
+     "year": 2005,
+     "declared_usd": 134882628.0
+    },
+    {
+     "year": 2006,
+     "declared_usd": 425000.0
+    },
+    {
+     "year": 2007,
+     "declared_usd": 2643700.0
+    },
+    {
+     "year": 2008,
+     "declared_usd": 4739764.0
+    },
+    {
+     "year": 2009,
+     "declared_usd": 534000.0
+    },
+    {
+     "year": 2010,
+     "declared_usd": 599423.0
+    },
+    {
+     "year": 2011,
+     "declared_usd": 2593442.0
+    },
+    {
+     "year": 2012,
+     "declared_usd": 653982.0
+    },
+    {
+     "year": 2013,
+     "declared_usd": 7622475.0
+    },
+    {
+     "year": 2014,
+     "declared_usd": 3967696.0
+    },
+    {
+     "year": 2015,
+     "declared_usd": 1179903.0
+    },
+    {
+     "year": 2016,
+     "declared_usd": 75000.0
+    },
+    {
+     "year": 2017,
+     "declared_usd": 2405856.0
+    },
+    {
+     "year": 2018,
+     "declared_usd": 1078355.0
+    },
+    {
+     "year": 2019,
+     "declared_usd": 18737847.0
+    },
+    {
+     "year": 2020,
+     "declared_usd": 97000.0
+    },
+    {
+     "year": 2021,
+     "declared_usd": 1331628.0
+    },
+    {
+     "year": 2022,
+     "declared_usd": 8189652.0
+    },
+    {
+     "year": 2023,
+     "declared_usd": 2330798.0
+    },
+    {
+     "year": 2024,
+     "declared_usd": 1108566.0
+    },
+    {
+     "year": 2025,
+     "declared_usd": 2952580.0
+    },
+    {
+     "year": 2026,
+     "declared_usd": 172800.0
+    }
+   ]
+  },
+  "muni-presidio-division": {
+   "n_items": 0,
+   "measure_totals": {},
+   "bond_programs": [],
+   "items": [],
+   "payees": [],
+   "n_payees": 0,
+   "payees_total_paid": 0,
+   "permits": [
+    {
+     "description": "conversion of an assembly rm into an electronics shop for testing new eti trolley bus",
+     "permit_type": "additions alterations or repairs",
+     "declared_cost_usd": 614000.0,
+     "status": "complete",
+     "permit_date": "2001-10-02",
+     "permit_year": 2001
+    },
+    {
+     "description": "conversion of an assembly rm into an electronics shop for testing new eti trolley bus",
+     "permit_type": "additions alterations or repairs",
+     "declared_cost_usd": 614000.0,
+     "status": "complete",
+     "permit_date": "2001-10-02",
+     "permit_year": 2001
+    },
+    {
+     "description": "conversion of an assembly rm into an electronics shop for testing new eti trolley bus",
+     "permit_type": "additions alterations or repairs",
+     "declared_cost_usd": 614000.0,
+     "status": "complete",
+     "permit_date": "2001-10-02",
+     "permit_year": 2001
+    },
+    {
+     "description": "furnish and install new exhaust fan, new electrical conduits and wiring to power exhaust fan,new controls for exhaust fan, interloock with trailer a/c and provide a timed override switch, new condensor pump with piping to janitor's service sink, electrical conduit wire and cable data.wall/floor",
+     "permit_type": "otc alterations permit",
+     "declared_cost_usd": 400000.0,
+     "status": "complete",
+     "permit_date": "2021-01-21",
+     "permit_year": 2021
+    },
+    {
+     "description": "replacement of overhead rollup doors, replacement of bus lifts, replacement of swing gates",
+     "permit_type": "otc alterations permit",
+     "declared_cost_usd": 365000.0,
+     "status": "complete",
+     "permit_date": "2020-01-09",
+     "permit_year": 2020
+    },
+    {
+     "description": "barrier removal at 1 existing mens restroom and repair of exhaust fan. new plumbing fixtures. toilet partitions, and toilet accessories and finishes",
+     "permit_type": "otc alterations permit",
+     "declared_cost_usd": 244000.0,
+     "status": "complete",
+     "permit_date": "2018-05-02",
+     "permit_year": 2018
+    }
+   ],
+   "n_permits": 7,
+   "permits_total_declared": 2871000.0,
+   "permits_by_year": [
+    {
+     "year": 2001,
+     "declared_usd": 1842000.0
+    },
+    {
+     "year": 2015,
+     "declared_usd": 20000.0
+    },
+    {
+     "year": 2018,
+     "declared_usd": 244000.0
+    },
+    {
+     "year": 2020,
+     "declared_usd": 365000.0
+    },
+    {
+     "year": 2021,
+     "declared_usd": 400000.0
+    }
+   ]
+  },
+  "maxine-hall-health-center": {
+   "n_items": 2,
+   "measure_totals": {},
+   "bond_programs": [
+    "Public Health and Safety"
+   ],
+   "items": [
+    {
+     "source": "bond",
+     "source_kind": "bond_project",
+     "item_name": "Maxine Hall Health Center",
+     "bond_program": "Public Health and Safety",
+     "component": "Other Community Health Centers",
+     "voter_approved_date": null,
+     "amount_usd": null,
+     "amount_measure": null,
+     "budget_usd": null,
+     "contract_no": null,
+     "status": null,
+     "match_evidence": "Maxine Hall Health Center"
+    },
+    {
+     "source": "bond",
+     "source_kind": "bond_project",
+     "item_name": "Maxine Hall Health Center EEI (Energy Efficiency Improvement)",
+     "bond_program": "Public Health and Safety",
+     "component": "Other Community Health Centers",
+     "voter_approved_date": null,
+     "amount_usd": null,
+     "amount_measure": null,
+     "budget_usd": null,
+     "contract_no": null,
+     "status": null,
+     "match_evidence": "Maxine Hall Health Center"
+    }
+   ],
+   "payees": [],
+   "n_payees": 0,
+   "payees_total_paid": 0,
+   "permits": [
+    {
+     "description": "temporary power, sewer and water lines connected to the existing maxine hall health clinic. placement of temporary 2 trailers necessitates redirection of pedestrian traffic at sidewalk, new entry deck and landing. temprary trailers are permitted separately by the state of ca",
+     "permit_type": "otc alterations permit",
+     "declared_cost_usd": 25000.0,
+     "status": "issued",
+     "permit_date": "2019-05-08",
+     "permit_year": 2019
+    }
+   ],
+   "n_permits": 1,
+   "permits_total_declared": 25000.0,
+   "permits_by_year": [
+    {
+     "year": 2019,
+     "declared_usd": 25000.0
+    }
+   ]
+  },
+  "north-beach-branch-library": {
+   "n_items": 0,
+   "measure_totals": {},
+   "bond_programs": [],
+   "items": [],
+   "payees": [],
+   "n_payees": 0,
+   "payees_total_paid": 0,
+   "permits": [
+    {
+     "description": "renovation includes partial demo & addition. natatorium structure upgrade seismically. pool equipme",
+     "permit_type": "additions alterations or repairs",
+     "declared_cost_usd": 4500000.0,
+     "status": "complete",
+     "permit_date": "2003-10-06",
+     "permit_year": 2003
+    },
+    {
+     "description": "replace exting swimming pool/rplc pool deck/bld nw eqpmnt",
+     "permit_type": "additions alterations or repairs",
+     "declared_cost_usd": 1600000.0,
+     "status": "cancelled",
+     "permit_date": "1999-10-25",
+     "permit_year": 1999
+    },
+    {
+     "description": "demolish two story library building.",
+     "permit_type": "demolitions",
+     "declared_cost_usd": 325000.0,
+     "status": "issued",
+     "permit_date": "2012-03-30",
+     "permit_year": 2012
+    },
+    {
+     "description": "at site of demolished library, retaining berm & new fence to be constructed. existing irrigation system to be extended. new site light fixture added. new drinking fountain added.",
+     "permit_type": "additions alterations or repairs",
+     "declared_cost_usd": 105000.0,
+     "status": "issued",
+     "permit_date": "2012-03-27",
+     "permit_year": 2012
+    },
+    {
+     "description": "new fire alarm system",
+     "permit_type": "otc alterations permit",
+     "declared_cost_usd": 18000.0,
+     "status": "expired",
+     "permit_date": "2004-09-22",
+     "permit_year": 2004
+    },
+    {
+     "description": "install fire alarm system 1st fl",
+     "permit_type": "additions alterations or repairs",
+     "declared_cost_usd": 6000.0,
+     "status": "filed",
+     "permit_date": "2004-01-28",
+     "permit_year": 2004
+    }
+   ],
+   "n_permits": 6,
+   "permits_total_declared": 6554000.0,
+   "permits_by_year": [
+    {
+     "year": 1999,
+     "declared_usd": 1600000.0
+    },
+    {
+     "year": 2003,
+     "declared_usd": 4500000.0
+    },
+    {
+     "year": 2004,
+     "declared_usd": 24000.0
+    },
+    {
+     "year": 2012,
+     "declared_usd": 430000.0
+    }
+   ]
+  },
+  "hetch-hetchy": {
+   "n_items": 0,
+   "measure_totals": {},
+   "bond_programs": [],
+   "items": [],
+   "payees": [
+    {
+     "vendor": "Pine Mountain Auto Inc",
+     "paid_usd": 28748.78,
+     "n_contracts": 1,
+     "first_fiscal_year": 2025,
+     "last_fiscal_year": 2025
+    }
+   ],
+   "n_payees": 1,
+   "payees_total_paid": 28748.78,
+   "permits": [],
+   "n_permits": 0,
+   "permits_total_declared": 0.0,
+   "permits_by_year": []
+  },
+  "davies-symphony-hall": {
+   "n_items": 0,
+   "measure_totals": {},
+   "bond_programs": [],
+   "items": [],
+   "payees": [
+    {
+     "vendor": "KONE INC",
+     "paid_usd": 633380.02,
+     "n_contracts": 1,
+     "first_fiscal_year": 2024,
+     "last_fiscal_year": 2024
+    }
+   ],
+   "n_payees": 1,
+   "payees_total_paid": 633380.02,
+   "permits": [
+    {
+     "description": "phase ii of ongoing acoustic improvements & mis. renovations",
+     "permit_type": "additions alterations or repairs",
+     "declared_cost_usd": 5000000.0,
+     "status": "expired",
+     "permit_date": "1992-03-25",
+     "permit_year": 1992
+    },
+    {
+     "description": "demo extg office and convert to two ada accessible toilet rooms. build new ada compliant ramp. install new damper in extg hvac. electrical upgrade",
+     "permit_type": "additions alterations or repairs",
+     "declared_cost_usd": 850000.0,
+     "status": "complete",
+     "permit_date": "2013-06-13",
+     "permit_year": 2013
+    },
+    {
+     "description": "davies symphony hall, boiler upgrade, chiller upgrade, vfd, piping retrofit. intake and exhaust louvers. new openings in concrete wall with reinforcing for louvers.",
+     "permit_type": "additions alterations or repairs",
+     "declared_cost_usd": 760000.0,
+     "status": "complete",
+     "permit_date": "2010-08-12",
+     "permit_year": 2010
+    },
+    {
+     "description": "acoustic modifications",
+     "permit_type": "additions alterations or repairs",
+     "declared_cost_usd": 675000.0,
+     "status": "expired",
+     "permit_date": "1991-06-11",
+     "permit_year": 1991
+    },
+    {
+     "description": "5th floor - hvac controll upgrade througout entire buiding.",
+     "permit_type": "additions alterations or repairs",
+     "declared_cost_usd": 350000.0,
+     "status": "issued",
+     "permit_date": "2003-12-31",
+     "permit_year": 2003
+    },
+    {
+     "description": "replacement of existing fire alarm system",
+     "permit_type": "additions alterations or repairs",
+     "declared_cost_usd": 300000.0,
+     "status": "expired",
+     "permit_date": "1999-08-19",
+     "permit_year": 1999
+    }
+   ],
+   "n_permits": 60,
+   "permits_total_declared": 10556600.0,
+   "permits_by_year": [
+    {
+     "year": 1989,
+     "declared_usd": 315600.0
+    },
+    {
+     "year": 1990,
+     "declared_usd": 24600.0
+    },
+    {
+     "year": 1991,
+     "declared_usd": 708875.0
+    },
+    {
+     "year": 1992,
+     "declared_usd": 5092500.0
+    },
+    {
+     "year": 1993,
+     "declared_usd": 185000.0
+    },
+    {
+     "year": 1994,
+     "declared_usd": 56669.0
+    },
+    {
+     "year": 1998,
+     "declared_usd": 309683.0
+    },
+    {
+     "year": 1999,
+     "declared_usd": 542000.0
+    },
+    {
+     "year": 2001,
+     "declared_usd": 100000.0
+    },
+    {
+     "year": 2003,
+     "declared_usd": 550000.0
+    },
+    {
+     "year": 2004,
+     "declared_usd": 200000.0
+    },
+    {
+     "year": 2005,
+     "declared_usd": 155000.0
+    },
+    {
+     "year": 2007,
+     "declared_usd": 9500.0
+    },
+    {
+     "year": 2008,
+     "declared_usd": 25500.0
+    },
+    {
+     "year": 2009,
+     "declared_usd": 17149.0
+    },
+    {
+     "year": 2010,
+     "declared_usd": 855170.0
+    },
+    {
+     "year": 2011,
+     "declared_usd": 95000.0
+    },
+    {
+     "year": 2012,
+     "declared_usd": 85000.0
+    },
+    {
+     "year": 2013,
+     "declared_usd": 874100.0
+    },
+    {
+     "year": 2014,
+     "declared_usd": 6705.0
+    },
+    {
+     "year": 2015,
+     "declared_usd": 206000.0
+    },
+    {
+     "year": 2018,
+     "declared_usd": 38349.0
+    },
+    {
+     "year": 2022,
+     "declared_usd": 33000.0
+    },
+    {
+     "year": 2024,
+     "declared_usd": 71200.0
+    }
+   ]
+  },
+  "pier-27-cruise-terminal": {
+   "n_items": 2,
+   "measure_totals": {},
+   "bond_programs": [
+    "Clean and Safe Neighborhood Parks"
+   ],
+   "items": [
+    {
+     "source": "bond",
+     "source_kind": "bond_project",
+     "item_name": "Pier 27 Public Art",
+     "bond_program": "Clean and Safe Neighborhood Parks",
+     "component": "Waterfront Parks",
+     "voter_approved_date": null,
+     "amount_usd": null,
+     "amount_measure": null,
+     "budget_usd": null,
+     "contract_no": null,
+     "status": null,
+     "match_evidence": "Pier 27"
+    },
+    {
+     "source": "bond",
+     "source_kind": "bond_project",
+     "item_name": "Northeast Wharf Plaza and Pier 27-29 Tip",
+     "bond_program": "Clean and Safe Neighborhood Parks",
+     "component": "Waterfront Parks",
+     "voter_approved_date": null,
+     "amount_usd": null,
+     "amount_measure": null,
+     "budget_usd": null,
+     "contract_no": null,
+     "status": null,
+     "match_evidence": "Pier 27"
+    }
+   ],
+   "payees": [
+    {
+     "vendor": "G.Y. ENGINEERING CO",
+     "paid_usd": 843259.62,
+     "n_contracts": 1,
+     "first_fiscal_year": 2020,
+     "last_fiscal_year": 2020
+    }
+   ],
+   "n_payees": 1,
+   "payees_total_paid": 843259.62,
+   "permits": [],
+   "n_permits": 0,
+   "permits_total_declared": 0.0,
+   "permits_by_year": []
+  },
+  "excelsior-branch-library": {
+   "n_items": 0,
+   "measure_totals": {},
+   "bond_programs": [],
+   "items": [],
+   "payees": [],
+   "n_payees": 0,
+   "payees_total_paid": 0,
+   "permits": [
+    {
+     "description": "renovation (e)bldg.,seismic & disabled access upgrades, improvement to the structural,mech,elec syst",
+     "permit_type": "additions alterations or repairs",
+     "declared_cost_usd": 2223217.0,
+     "status": "complete",
+     "permit_date": "2004-04-05",
+     "permit_year": 2004
+    },
+    {
+     "description": "to provide manual fire alarm system in the bldng",
+     "permit_type": "additions alterations or repairs",
+     "declared_cost_usd": 18480.0,
+     "status": "complete",
+     "permit_date": "2004-12-08",
+     "permit_year": 2004
+    }
+   ],
+   "n_permits": 2,
+   "permits_total_declared": 2241697.0,
+   "permits_by_year": [
+    {
+     "year": 2004,
+     "declared_usd": 2241697.0
+    }
+   ]
+  },
+  "ferry-building": {
+   "n_items": 1,
+   "measure_totals": {},
+   "bond_programs": [
+    "Embarcadero Seawall Earthquake Safety Bond"
+   ],
+   "items": [
+    {
+     "source": "bond",
+     "source_kind": "bond_project",
+     "item_name": "Ferry Building Seawall and Substructure Earthquake Reliability Project",
+     "bond_program": "Embarcadero Seawall Earthquake Safety Bond",
+     "component": "Waterfront Resilience Program",
+     "voter_approved_date": null,
+     "amount_usd": null,
+     "amount_measure": null,
+     "budget_usd": null,
+     "contract_no": null,
+     "status": null,
+     "match_evidence": "Ferry Building"
+    }
+   ],
+   "payees": [],
+   "n_payees": 0,
+   "payees_total_paid": 0,
+   "permits": [],
+   "n_permits": 0,
+   "permits_total_declared": 0.0,
+   "permits_by_year": []
+  },
+  "buena-vista-park": {
+   "n_items": 2,
+   "measure_totals": {},
+   "bond_programs": [
+    "Clean and Safe Neighborhood Parks",
+    "Health and Recovery"
+   ],
+   "items": [
+    {
+     "source": "bond",
+     "source_kind": "bond_project",
+     "item_name": "RP Buena Vista Park Master Pln",
+     "bond_program": "Clean and Safe Neighborhood Parks",
+     "component": "Citywide Programs",
+     "voter_approved_date": null,
+     "amount_usd": null,
+     "amount_measure": null,
+     "budget_usd": null,
+     "contract_no": null,
+     "status": null,
+     "match_evidence": "Buena Vista Park"
+    },
+    {
+     "source": "bond",
+     "source_kind": "bond_project",
+     "item_name": "Buena Vista Park",
+     "bond_program": "Health and Recovery",
+     "component": "Recovery Parks",
+     "voter_approved_date": null,
+     "amount_usd": null,
+     "amount_measure": null,
+     "budget_usd": null,
+     "contract_no": null,
+     "status": null,
+     "match_evidence": "Buena Vista Park"
+    }
+   ],
+   "payees": [],
+   "n_payees": 0,
+   "payees_total_paid": 0,
+   "permits": [],
+   "n_permits": 0,
+   "permits_total_declared": 0.0,
+   "permits_by_year": []
+  },
+  "randall-museum": {
+   "n_items": 0,
+   "measure_totals": {},
+   "bond_programs": [],
+   "items": [],
+   "payees": [
+    {
+     "vendor": "ROEBUCK CONSTRUCTION INC",
+     "paid_usd": 1170509.5,
+     "n_contracts": 1,
+     "first_fiscal_year": 2018,
+     "last_fiscal_year": 2018
+    }
+   ],
+   "n_payees": 1,
+   "payees_total_paid": 1170509.5,
+   "permits": [
+    {
+     "description": "primarily interior renovation. construct geology exhibit. new zoology exhibit. renovate live animal exhibit,science lab,multipurpose room,3 bathrooms,lobby,concession & office area. install elevator. accessibility upgrades. new sprinkler at bsmt level.",
+     "permit_type": "additions alterations or repairs",
+     "declared_cost_usd": 3500000.0,
+     "status": "complete",
+     "permit_date": "2015-07-08",
+     "permit_year": 2015
+    },
+    {
+     "description": "underground portionof the fire sprinkler permit (ref pa 2016 0427 5868) and in conjunction with ref pa 2015 1218 5449",
+     "permit_type": "otc alterations permit",
+     "declared_cost_usd": 730000.0,
+     "status": "suspend",
+     "permit_date": "2017-04-14",
+     "permit_year": 2017
+    },
+    {
+     "description": "erect one story public restroom.",
+     "permit_type": "new construction wood frame",
+     "declared_cost_usd": 400000.0,
+     "status": "complete",
+     "permit_date": "2012-12-24",
+     "permit_year": 2012
+    },
+    {
+     "description": "installation of new electrical service. amend scope of work on 201406259468",
+     "permit_type": "otc alterations permit",
+     "declared_cost_usd": 200000.0,
+     "status": "issued",
+     "permit_date": "2017-08-25",
+     "permit_year": 2017
+    },
+    {
+     "description": "partial demolition o f walls; interior renovation of two rooms in the randall musuem (stem lab & toddler room), including electrical outlets & lighting and finishes: to be built in connection with improvements permitted under 2014-0625-9768s",
+     "permit_type": "otc alterations permit",
+     "declared_cost_usd": 150000.0,
+     "status": "issued",
+     "permit_date": "2016-02-12",
+     "permit_year": 2016
+    },
+    {
+     "description": "install 117 new sprinklers for bldg renovation - lower level. ref pa 2014 0625 9468. installation of new 6-inch fire service off of 6-inch main on roosevelt way by other under separated appl.",
+     "permit_type": "otc alterations permit",
+     "declared_cost_usd": 60500.0,
+     "status": "complete",
+     "permit_date": "2016-05-17",
+     "permit_year": 2016
+    }
+   ],
+   "n_permits": 11,
+   "permits_total_declared": 5190500.0,
+   "permits_by_year": [
+    {
+     "year": 2012,
+     "declared_usd": 420000.0
+    },
+    {
+     "year": 2015,
+     "declared_usd": 3500000.0
+    },
+    {
+     "year": 2016,
+     "declared_usd": 262500.0
+    },
+    {
+     "year": 2017,
+     "declared_usd": 1008000.0
+    }
+   ]
+  },
+  "sffd-station-1": {
+   "n_items": 0,
+   "measure_totals": {},
+   "bond_programs": [],
+   "items": [],
+   "payees": [],
+   "n_payees": 0,
+   "payees_total_paid": 0,
+   "permits": [
+    {
+     "description": "excavation shoring - temporary lateral support of excavation for (n) construction at 923 folsom. ref pa #201311202410-s.",
+     "permit_type": "additions alterations or repairs",
+     "declared_cost_usd": 340000.0,
+     "status": "complete",
+     "permit_date": "2015-05-11",
+     "permit_year": 2015
+    },
+    {
+     "description": "excavation shoring - temporary lateral support of excavation for (n) construction at 923 folsom. ref pa #201311202410-s.",
+     "permit_type": "additions alterations or repairs",
+     "declared_cost_usd": 340000.0,
+     "status": "complete",
+     "permit_date": "2015-05-11",
+     "permit_year": 2015
+    },
+    {
+     "description": "excavation shoring - temporary lateral support of excavation for (n) construction at 923 folsom. ref pa #201311202410-s.",
+     "permit_type": "additions alterations or repairs",
+     "declared_cost_usd": 340000.0,
+     "status": "complete",
+     "permit_date": "2015-05-11",
+     "permit_year": 2015
+    },
+    {
+     "description": "provide new closet for relocating elevator control panel in fire station no. 1. n/a ordinance #155-13",
+     "permit_type": "otc alterations permit",
+     "declared_cost_usd": 5000.0,
+     "status": "issued",
+     "permit_date": "2016-04-29",
+     "permit_year": 2016
+    },
+    {
+     "description": "2nd flr: fire alarm - add 1 smoke detector, and relocate 3 modules for the elevator ref pa 201604285950 maher na",
+     "permit_type": "otc alterations permit",
+     "declared_cost_usd": 1200.0,
+     "status": "complete",
+     "permit_date": "2016-07-13",
+     "permit_year": 2016
+    }
+   ],
+   "n_permits": 5,
+   "permits_total_declared": 1026200.0,
+   "permits_by_year": [
+    {
+     "year": 2015,
+     "declared_usd": 1020000.0
+    },
+    {
+     "year": 2016,
+     "declared_usd": 6200.0
+    }
+   ]
+  },
+  "glen-park-branch-library": {
+   "n_items": 0,
+   "measure_totals": {},
+   "bond_programs": [],
+   "items": [],
+   "payees": [],
+   "n_payees": 0,
+   "payees_total_paid": 0,
+   "permits": [
+    {
+     "description": "interior remodel of both 1st & 2nd floors: new finishes, furniture fixture & equipment, electrical & mechanical systems, new public toilet facilities. correct access issues at sidewalk, curb ramp & exterior book drop. refurbish perimeter bookshelves & windows.",
+     "permit_type": "additions alterations or repairs",
+     "declared_cost_usd": 1087000.0,
+     "status": "complete",
+     "permit_date": "2009-12-29",
+     "permit_year": 2009
+    },
+    {
+     "description": "roof repair. exterior wall waterproof coating. exterior window repairs and painting. remove and replace existing roof access ladder in kind (ladder under a separate permit).",
+     "permit_type": "otc alterations permit",
+     "declared_cost_usd": 500000.0,
+     "status": "issued",
+     "permit_date": "2025-01-17",
+     "permit_year": 2025
+    },
+    {
+     "description": "fire life safety alarm system on both floors. install manual pull stations, smoke detectors, relays, heat detectors and strobes.",
+     "permit_type": "otc alterations permit",
+     "declared_cost_usd": 30000.0,
+     "status": "issued",
+     "permit_date": "2010-06-29",
+     "permit_year": 2010
+    },
+    {
+     "description": "install fire sprinkler t.i.work, 78 heads.",
+     "permit_type": "otc alterations permit",
+     "declared_cost_usd": 20000.0,
+     "status": "complete",
+     "permit_date": "2007-02-01",
+     "permit_year": 2007
+    },
+    {
+     "description": "temporary shoring and underpinning for new building at 1748 haight st on prop line app 200011014647s",
+     "permit_type": "additions alterations or repairs",
+     "declared_cost_usd": 10000.0,
+     "status": "issued",
+     "permit_date": "2002-06-21",
+     "permit_year": 2002
+    },
+    {
+     "description": "remodel existing fire sprinkler system in basement to accomodate new wall lay out. relocate 10 heads, add 5 heads, total 15 heads on ground floor.",
+     "permit_type": "otc alterations permit",
+     "declared_cost_usd": 4500.0,
+     "status": "issued",
+     "permit_date": "2010-07-20",
+     "permit_year": 2010
+    }
+   ],
+   "n_permits": 6,
+   "permits_total_declared": 1651500.0,
+   "permits_by_year": [
+    {
+     "year": 2002,
+     "declared_usd": 10000.0
+    },
+    {
+     "year": 2007,
+     "declared_usd": 20000.0
+    },
+    {
+     "year": 2009,
+     "declared_usd": 1087000.0
+    },
+    {
+     "year": 2010,
+     "declared_usd": 34500.0
+    },
+    {
+     "year": 2025,
+     "declared_usd": 500000.0
+    }
+   ]
+  },
+  "sf-city-hall": {
+   "n_items": 0,
+   "measure_totals": {},
+   "bond_programs": [],
+   "items": [],
+   "payees": [
+    {
+     "vendor": "ACCO ENGINEERED SYSTEMS INC",
+     "paid_usd": 7605871.41,
+     "n_contracts": 1,
+     "first_fiscal_year": 2023,
+     "last_fiscal_year": 2026
+    },
+    {
+     "vendor": "C L W BUILDERS INC",
+     "paid_usd": 5046884.6,
+     "n_contracts": 1,
+     "first_fiscal_year": 2024,
+     "last_fiscal_year": 2026
+    },
+    {
+     "vendor": "WESTERN ROOFING SERVICE",
+     "paid_usd": 1983095.2,
+     "n_contracts": 1,
+     "first_fiscal_year": 2023,
+     "last_fiscal_year": 2023
+    },
+    {
+     "vendor": "SCHEMBRI CONSTRUCTION CO INC",
+     "paid_usd": 76548.0,
+     "n_contracts": 1,
+     "first_fiscal_year": 2018,
+     "last_fiscal_year": 2018
+    },
+    {
+     "vendor": "PAGANINI ELECTRIC CORP",
+     "paid_usd": 6462.0,
+     "n_contracts": 1,
+     "first_fiscal_year": 2018,
+     "last_fiscal_year": 2018
+    },
+    {
+     "vendor": "CANON SOLUTIONS AMERICA INC",
+     "paid_usd": 3174.73,
+     "n_contracts": 1,
+     "first_fiscal_year": 2025,
+     "last_fiscal_year": 2026
+    }
+   ],
+   "n_payees": 6,
+   "payees_total_paid": 14722035.94,
+   "permits": [
+    {
+     "description": "city job- upgrade fndtn & structure. some demo & repair work",
+     "permit_type": "additions alterations or repairs",
+     "declared_cost_usd": 95000000.0,
+     "status": "complete",
+     "permit_date": "1995-01-10",
+     "permit_year": 1995
+    },
+    {
+     "description": "replace (179)existing water source heat pumps,flexible hose,necessary ductwork & thermostats with new.",
+     "permit_type": "additions alterations or repairs",
+     "declared_cost_usd": 5800000.0,
+     "status": "issued",
+     "permit_date": "2023-05-08",
+     "permit_year": 2023
+    },
+    {
+     "description": "city hall: to modernize (8) (e) elevators, including replacement / refurbishment of (e) equipment, car control panels & lobby fixtures. additional scope include removal of fire sprinklers & installation of (n) rooftop.",
+     "permit_type": "additions alterations or repairs",
+     "declared_cost_usd": 4000000.0,
+     "status": "issued",
+     "permit_date": "2022-12-29",
+     "permit_year": 2022
+    },
+    {
+     "description": "replace of drain pining, instal new roofing system,concrete.",
+     "permit_type": "additions alterations or repairs",
+     "declared_cost_usd": 1198000.0,
+     "status": "expired",
+     "permit_date": "1992-01-08",
+     "permit_year": 1992
+    },
+    {
+     "description": "prop h:tenant improvement of(e)childcare area within city hall @ ground fl",
+     "permit_type": "otc alterations permit",
+     "declared_cost_usd": 1100000.0,
+     "status": "filed",
+     "permit_date": "2025-10-03",
+     "permit_year": 2025
+    },
+    {
+     "description": "installation of generator & fuel tank in areaway at southeast quadrant of bldg & electrical distribution system to provide backup power for bldg during power outage; installation of access door and exterior stair to the areaway for maintenance access & other incidental work; maher n/a",
+     "permit_type": "additions alterations or repairs",
+     "declared_cost_usd": 1060000.0,
+     "status": "complete",
+     "permit_date": "2016-04-06",
+     "permit_year": 2016
+    }
+   ],
+   "n_permits": 52,
+   "permits_total_declared": 115238058.0,
+   "permits_by_year": [
+    {
+     "year": 1990,
+     "declared_usd": 494560.0
+    },
+    {
+     "year": 1991,
+     "declared_usd": 284000.0
+    },
+    {
+     "year": 1992,
+     "declared_usd": 1282000.0
+    },
+    {
+     "year": 1993,
+     "declared_usd": 244000.0
+    },
+    {
+     "year": 1994,
+     "declared_usd": 528000.0
+    },
+    {
+     "year": 1995,
+     "declared_usd": 95000000.0
+    },
+    {
+     "year": 1997,
+     "declared_usd": 150000.0
+    },
+    {
+     "year": 1998,
+     "declared_usd": 405000.0
+    },
+    {
+     "year": 2000,
+     "declared_usd": 149999.0
+    },
+    {
+     "year": 2001,
+     "declared_usd": 3640.0
+    },
+    {
+     "year": 2007,
+     "declared_usd": 10000.0
+    },
+    {
+     "year": 2008,
+     "declared_usd": 45000.0
+    },
+    {
+     "year": 2009,
+     "declared_usd": 4000.0
+    },
+    {
+     "year": 2011,
+     "declared_usd": 685000.0
+    },
+    {
+     "year": 2013,
+     "declared_usd": 10000.0
+    },
+    {
+     "year": 2015,
+     "declared_usd": 820000.0
+    },
+    {
+     "year": 2016,
+     "declared_usd": 1454000.0
+    },
+    {
+     "year": 2018,
+     "declared_usd": 418000.0
+    },
+    {
+     "year": 2021,
+     "declared_usd": 606500.0
+    },
+    {
+     "year": 2022,
+     "declared_usd": 4650000.0
+    },
+    {
+     "year": 2023,
+     "declared_usd": 6252500.0
+    },
+    {
+     "year": 2024,
+     "declared_usd": 17597.0
+    },
+    {
+     "year": 2025,
+     "declared_usd": 1212500.0
+    },
+    {
+     "year": 2026,
+     "declared_usd": 511762.0
+    }
+   ]
+  },
+  "hall-of-justice": {
+   "n_items": 0,
+   "measure_totals": {},
+   "bond_programs": [],
+   "items": [],
+   "payees": [],
+   "n_payees": 0,
+   "payees_total_paid": 0,
+   "permits": [
+    {
+     "description": "erect a med/psych work furlough intake system facility",
+     "permit_type": "new construction",
+     "declared_cost_usd": 30000000.0,
+     "status": "expired",
+     "permit_date": "1991-08-28",
+     "permit_year": 1991
+    },
+    {
+     "description": "modernization/upgrade of elevator #2, # new machine and microprocessor baded controllers as well as new suspensions and door operating euipment. decommissioning of elevator #4 and #% removal of hoise, compensation ropes mechanical fastening hoistway.",
+     "permit_type": "otc alterations permit",
+     "declared_cost_usd": 3000000.0,
+     "status": "issued",
+     "permit_date": "2025-11-24",
+     "permit_year": 2025
+    },
+    {
+     "description": "mechanical smoke evacuation system, security doors",
+     "permit_type": "additions alterations or repairs",
+     "declared_cost_usd": 2300000.0,
+     "status": "expired",
+     "permit_date": "1991-06-21",
+     "permit_year": 1991
+    },
+    {
+     "description": "ventilation improvement work for 6th & 7th floors of hall of justice bldg. the work includes replacement of supply & exhause fans, filters, and recondition of exhaust fan for 4 fan rooms.",
+     "permit_type": "otc alterations permit",
+     "declared_cost_usd": 1900000.0,
+     "status": "issued",
+     "permit_date": "2008-05-06",
+     "permit_year": 2008
+    },
+    {
+     "description": "renovation of extg commercial kitchen of county jail #2. work inlcudes architectural, structural mep work in support of food service improvement. n/a for maher",
+     "permit_type": "otc alterations permit",
+     "declared_cost_usd": 1900000.0,
+     "status": "complete",
+     "permit_date": "2020-08-04",
+     "permit_year": 2020
+    },
+    {
+     "description": "horizontal",
+     "permit_type": "additions alterations or repairs",
+     "declared_cost_usd": 1100000.0,
+     "status": "issued",
+     "permit_date": "1995-07-18",
+     "permit_year": 1995
+    }
+   ],
+   "n_permits": 60,
+   "permits_total_declared": 48502411.0,
+   "permits_by_year": [
+    {
+     "year": 1989,
+     "declared_usd": 70000.0
+    },
+    {
+     "year": 1991,
+     "declared_usd": 32350000.0
+    },
+    {
+     "year": 1992,
+     "declared_usd": 257500.0
+    },
+    {
+     "year": 1994,
+     "declared_usd": 2550.0
+    },
+    {
+     "year": 1995,
+     "declared_usd": 1353360.0
+    },
+    {
+     "year": 1996,
+     "declared_usd": 262682.0
+    },
+    {
+     "year": 1997,
+     "declared_usd": 250000.0
+    },
+    {
+     "year": 1998,
+     "declared_usd": 157809.0
+    },
+    {
+     "year": 1999,
+     "declared_usd": 112000.0
+    },
+    {
+     "year": 2001,
+     "declared_usd": 608000.0
+    },
+    {
+     "year": 2002,
+     "declared_usd": 20232.0
+    },
+    {
+     "year": 2003,
+     "declared_usd": 48500.0
+    },
+    {
+     "year": 2004,
+     "declared_usd": 8000.0
+    },
+    {
+     "year": 2006,
+     "declared_usd": 75000.0
+    },
+    {
+     "year": 2007,
+     "declared_usd": 950000.0
+    },
+    {
+     "year": 2008,
+     "declared_usd": 2350000.0
+    },
+    {
+     "year": 2009,
+     "declared_usd": 434456.0
+    },
+    {
+     "year": 2010,
+     "declared_usd": 39000.0
+    },
+    {
+     "year": 2011,
+     "declared_usd": 1084749.0
+    },
+    {
+     "year": 2012,
+     "declared_usd": 1255808.0
+    },
+    {
+     "year": 2013,
+     "declared_usd": 907615.0
+    },
+    {
+     "year": 2014,
+     "declared_usd": 300000.0
+    },
+    {
+     "year": 2015,
+     "declared_usd": 185000.0
+    },
+    {
+     "year": 2016,
+     "declared_usd": 15000.0
+    },
+    {
+     "year": 2018,
+     "declared_usd": 42105.0
+    },
+    {
+     "year": 2020,
+     "declared_usd": 1900000.0
+    },
+    {
+     "year": 2021,
+     "declared_usd": 429125.0
+    },
+    {
+     "year": 2022,
+     "declared_usd": 32000.0
+    },
+    {
+     "year": 2025,
+     "declared_usd": 3000000.0
+    },
+    {
+     "year": 2026,
+     "declared_usd": 1920.0
+    }
+   ]
+  },
+  "conservatory-of-flowers": {
+   "n_items": 0,
+   "measure_totals": {},
+   "bond_programs": [],
+   "items": [],
+   "payees": [
+    {
+     "vendor": "SAN FRANCISCO PARKS ALLIANCE",
+     "paid_usd": 49960.61,
+     "n_contracts": 1,
+     "first_fiscal_year": 2020,
+     "last_fiscal_year": 2020
+    }
+   ],
+   "n_payees": 1,
+   "payees_total_paid": 49960.61,
+   "permits": [],
+   "n_permits": 0,
+   "permits_total_declared": 0.0,
+   "permits_by_year": []
+  },
+  "bill-graham-civic-auditorium": {
+   "n_items": 0,
+   "measure_totals": {},
+   "bond_programs": [],
+   "items": [],
+   "payees": [],
+   "n_payees": 0,
+   "payees_total_paid": 0,
+   "permits": [
+    {
+     "description": "strengthen structural sys to upgrade seismic resistance",
+     "permit_type": "additions alterations or repairs",
+     "declared_cost_usd": 13400000.0,
+     "status": "expired",
+     "permit_date": "1993-12-29",
+     "permit_year": 1993
+    },
+    {
+     "description": "install new single ply membrane roof over existing rof membrane throughout the low slope roof of the bill graham ci vic auditorium. approx 65000 sf of roof area to be reroofed.",
+     "permit_type": "otc alterations permit",
+     "declared_cost_usd": 1500000.0,
+     "status": "complete",
+     "permit_date": "2025-05-06",
+     "permit_year": 2025
+    },
+    {
+     "description": "3rd flr only - commencement of work not started under previously approved permit applications pa 201612285994 & 201707262960. t.i. to modify men's restroom into all gender restroom. modiy dressing rm into new all gender restroom. modify electrical and mech related renovation.",
+     "permit_type": "otc alterations permit",
+     "declared_cost_usd": 900000.0,
+     "status": "issued",
+     "permit_date": "2023-04-12",
+     "permit_year": 2023
+    },
+    {
+     "description": "renovate (e) polk st banquet hall on 1st flr, new wall system supporting decorative perforated metal panels/acoustic materials, new acoustic t-bar ceiling/lighting, accessibility upgrades to (e)men's/women's restrooms. no work to (e) mechanical/plumbing systems.",
+     "permit_type": "otc alterations permit",
+     "declared_cost_usd": 653510.0,
+     "status": "issued",
+     "permit_date": "2023-06-09",
+     "permit_year": 2023
+    },
+    {
+     "description": "replacement of (e) outside air, mixing and return dampers and filters of main arena fans. replacement of motors and bearings, installation of associated variable frequency drives and controls. emer lighting under sep permit.",
+     "permit_type": "otc alterations permit",
+     "declared_cost_usd": 630000.0,
+     "status": "issued",
+     "permit_date": "2021-01-06",
+     "permit_year": 2021
+    },
+    {
+     "description": "upgrade of emergency lighting in the building. new light fixtures, controls",
+     "permit_type": "otc alterations permit",
+     "declared_cost_usd": 582000.0,
+     "status": "issued",
+     "permit_date": "2021-01-06",
+     "permit_year": 2021
+    }
+   ],
+   "n_permits": 43,
+   "permits_total_declared": 21211815.0,
+   "permits_by_year": [
+    {
+     "year": 1984,
+     "declared_usd": 14000.0
+    },
+    {
+     "year": 1987,
+     "declared_usd": 230000.0
+    },
+    {
+     "year": 1989,
+     "declared_usd": 363500.0
+    },
+    {
+     "year": 1993,
+     "declared_usd": 13400000.0
+    },
+    {
+     "year": 1994,
+     "declared_usd": 681972.0
+    },
+    {
+     "year": 1995,
+     "declared_usd": 32500.0
+    },
+    {
+     "year": 1997,
+     "declared_usd": 140000.0
+    },
+    {
+     "year": 2003,
+     "declared_usd": 325000.0
+    },
+    {
+     "year": 2004,
+     "declared_usd": 20000.0
+    },
+    {
+     "year": 2012,
+     "declared_usd": 7098.0
+    },
+    {
+     "year": 2016,
+     "declared_usd": 306750.0
+    },
+    {
+     "year": 2017,
+     "declared_usd": 733000.0
+    },
+    {
+     "year": 2018,
+     "declared_usd": 300000.0
+    },
+    {
+     "year": 2019,
+     "declared_usd": 93590.0
+    },
+    {
+     "year": 2021,
+     "declared_usd": 1215500.0
+    },
+    {
+     "year": 2023,
+     "declared_usd": 1568905.0
+    },
+    {
+     "year": 2024,
+     "declared_usd": 224000.0
+    },
+    {
+     "year": 2025,
+     "declared_usd": 1550000.0
+    },
+    {
+     "year": 2026,
+     "declared_usd": 6000.0
+    }
+   ]
+  },
+  "veterans-building": {
+   "n_items": 0,
+   "measure_totals": {},
+   "bond_programs": [],
+   "items": [],
+   "payees": [],
+   "n_payees": 0,
+   "payees_total_paid": 0,
+   "permits": [
+    {
+     "description": "seismic strenthening of building, improvements to buildings mepf systems, ada upgrades & tenant improvements.",
+     "permit_type": "additions alterations or repairs",
+     "declared_cost_usd": 75000000.0,
+     "status": "complete",
+     "permit_date": "2013-02-22",
+     "permit_year": 2013
+    },
+    {
+     "description": "seismic upgrade and repairs",
+     "permit_type": "additions alterations or repairs",
+     "declared_cost_usd": 42000000.0,
+     "status": "issued",
+     "permit_date": "1995-10-12",
+     "permit_year": 1995
+    },
+    {
+     "description": "tenant improvement for the educaiton, studio, performance hall, administrative offices, costumeshop & support spaces on the 4th fl as well as storage & costume support in the basement. n/a for maher ordinance.",
+     "permit_type": "additions alterations or repairs",
+     "declared_cost_usd": 10500000.0,
+     "status": "complete",
+     "permit_date": "2014-09-08",
+     "permit_year": 2014
+    },
+    {
+     "description": "metal roofing reroofing of the historic war memorial opera house building and alternate scope of installing fall protection system with roof access ladders. no hotworks without sffd operating permit.",
+     "permit_type": "otc alterations permit",
+     "declared_cost_usd": 9682244.0,
+     "status": "issued",
+     "permit_date": "2025-10-20",
+     "permit_year": 2025
+    },
+    {
+     "description": "1/f work related to path of traval/3/f & 4/f convert museum",
+     "permit_type": "additions alterations or repairs",
+     "declared_cost_usd": 2200000.0,
+     "status": "expired",
+     "permit_date": "1994-09-29",
+     "permit_year": 1994
+    },
+    {
+     "description": "modernization of passenger traction elevators #6 and #7 and related mechanical and electrical upgrades. fire sprinker and fire alarm to be modfiifed as required by sffd project to provide accessible path of travel from storage entry door to evleator #2",
+     "permit_type": "otc alterations permit",
+     "declared_cost_usd": 2200000.0,
+     "status": "issued",
+     "permit_date": "2025-05-08",
+     "permit_year": 2025
+    }
+   ],
+   "n_permits": 71,
+   "permits_total_declared": 155536431.0,
+   "permits_by_year": [
+    {
+     "year": 1992,
+     "declared_usd": 130958.0
+    },
+    {
+     "year": 1993,
+     "declared_usd": 10000.0
+    },
+    {
+     "year": 1994,
+     "declared_usd": 2274000.0
+    },
+    {
+     "year": 1995,
+     "declared_usd": 43940439.0
+    },
+    {
+     "year": 1996,
+     "declared_usd": 175000.0
+    },
+    {
+     "year": 1997,
+     "declared_usd": 2000.0
+    },
+    {
+     "year": 1998,
+     "declared_usd": 90000.0
+    },
+    {
+     "year": 1999,
+     "declared_usd": 455000.0
+    },
+    {
+     "year": 2001,
+     "declared_usd": 502400.0
+    },
+    {
+     "year": 2002,
+     "declared_usd": 874800.0
+    },
+    {
+     "year": 2004,
+     "declared_usd": 944000.0
+    },
+    {
+     "year": 2005,
+     "declared_usd": 500000.0
+    },
+    {
+     "year": 2007,
+     "declared_usd": 242370.0
+    },
+    {
+     "year": 2010,
+     "declared_usd": 296000.0
+    },
+    {
+     "year": 2011,
+     "declared_usd": 5000.0
+    },
+    {
+     "year": 2013,
+     "declared_usd": 75163000.0
+    },
+    {
+     "year": 2014,
+     "declared_usd": 14713500.0
+    },
+    {
+     "year": 2015,
+     "declared_usd": 1808120.0
+    },
+    {
+     "year": 2016,
+     "declared_usd": 4500.0
+    },
+    {
+     "year": 2017,
+     "declared_usd": 4000.0
+    },
+    {
+     "year": 2018,
+     "declared_usd": 853000.0
+    },
+    {
+     "year": 2019,
+     "declared_usd": 102100.0
+    },
+    {
+     "year": 2020,
+     "declared_usd": 70200.0
+    },
+    {
+     "year": 2021,
+     "declared_usd": 17500.0
+    },
+    {
+     "year": 2022,
+     "declared_usd": 37300.0
+    },
+    {
+     "year": 2025,
+     "declared_usd": 12297244.0
+    },
+    {
+     "year": 2026,
+     "declared_usd": 24000.0
+    }
+   ]
+  },
+  "chinatown-branch-library": {
+   "n_items": 0,
+   "measure_totals": {},
+   "bond_programs": [],
+   "items": [],
+   "payees": [],
+   "n_payees": 0,
+   "payees_total_paid": 0,
+   "permits": [
+    {
+     "description": "priority process: renovation to listed historic library(1921). partial demo of int spaces of historic bldg & 1996 renovation work. new mech, elec, and fire protection sys will be provided throughout (e) bldg. project is designed to leadership in energy efficient design (leed) rating of gold",
+     "permit_type": "additions alterations or repairs",
+     "declared_cost_usd": 19000000.0,
+     "status": "issued",
+     "permit_date": "2024-05-28",
+     "permit_year": 2024
+    },
+    {
+     "description": "horizontal",
+     "permit_type": "additions alterations or repairs",
+     "declared_cost_usd": 2500000.0,
+     "status": "complete",
+     "permit_date": "1993-09-07",
+     "permit_year": 1993
+    },
+    {
+     "description": "horizontal",
+     "permit_type": "additions alterations or repairs",
+     "declared_cost_usd": 1045000.0,
+     "status": "complete",
+     "permit_date": "1995-03-01",
+     "permit_year": 1995
+    },
+    {
+     "description": "upgrade mechanical cooling system,el distribution to cooling system",
+     "permit_type": "additions alterations or repairs",
+     "declared_cost_usd": 200000.0,
+     "status": "expired",
+     "permit_date": "2001-10-29",
+     "permit_year": 2001
+    },
+    {
+     "description": "install 8 kw solar 66 solar panels on a non-penatrating array ballasted with cinderblock. install an inverter on the roof and install 2 disconnects (dc & ac). the electricity would be then tied into the meter.",
+     "permit_type": "additions alterations or repairs",
+     "declared_cost_usd": 100000.0,
+     "status": "complete",
+     "permit_date": "2007-05-31",
+     "permit_year": 2007
+    },
+    {
+     "description": "fire protection system",
+     "permit_type": "otc alterations permit",
+     "declared_cost_usd": 25000.0,
+     "status": "complete",
+     "permit_date": "1995-10-02",
+     "permit_year": 1995
+    }
+   ],
+   "n_permits": 8,
+   "permits_total_declared": 22893874.0,
+   "permits_by_year": [
+    {
+     "year": 1990,
+     "declared_usd": 20874.0
+    },
+    {
+     "year": 1993,
+     "declared_usd": 2500000.0
+    },
+    {
+     "year": 1995,
+     "declared_usd": 1070000.0
+    },
+    {
+     "year": 2001,
+     "declared_usd": 200000.0
+    },
+    {
+     "year": 2005,
+     "declared_usd": 3000.0
+    },
+    {
+     "year": 2007,
+     "declared_usd": 100000.0
+    },
+    {
+     "year": 2024,
+     "declared_usd": 19000000.0
+    }
+   ]
+  },
+  "sf-main-library": {
+   "n_items": 0,
+   "measure_totals": {},
+   "bond_programs": [],
+   "items": [],
+   "payees": [
+    {
+     "vendor": "BUHLER COMMERCIAL",
+     "paid_usd": 3773726.43,
+     "n_contracts": 1,
+     "first_fiscal_year": 2023,
+     "last_fiscal_year": 2024
+    },
+    {
+     "vendor": "URBAN ALCHEMY",
+     "paid_usd": 2901765.19,
+     "n_contracts": 1,
+     "first_fiscal_year": 2022,
+     "last_fiscal_year": 2026
+    }
+   ],
+   "n_payees": 2,
+   "payees_total_paid": 6675491.62,
+   "permits": [
+    {
+     "description": "erect a seven story public library-new main branch library",
+     "permit_type": "new construction",
+     "declared_cost_usd": 85000000.0,
+     "status": "expired",
+     "permit_date": "1992-06-04",
+     "permit_year": 1992
+    },
+    {
+     "description": "erect a seven story public library-new main branch library",
+     "permit_type": "new construction",
+     "declared_cost_usd": 85000000.0,
+     "status": "expired",
+     "permit_date": "1992-06-04",
+     "permit_year": 1992
+    },
+    {
+     "description": "removal of existing 42 atrium smoke exhaust fans and replacement with 42 new atrium smoke exhaust fans due to equipment obsolescence.",
+     "permit_type": "otc alterations permit",
+     "declared_cost_usd": 5000000.0,
+     "status": "filed",
+     "permit_date": "2026-04-16",
+     "permit_year": 2026
+    },
+    {
+     "description": "replacement of roofing membrane, replace sealant around skylights and curtainwall, replace plumbing drains as need on roof drains",
+     "permit_type": "otc alterations permit",
+     "declared_cost_usd": 4000000.0,
+     "status": "issued",
+     "permit_date": "2026-07-08",
+     "permit_year": 2026
+    },
+    {
+     "description": "scope consists of 1st floor renovation of main library. tenant improvments and installation of sorting machine, automated storage and retrievel machine by logistex (under different permit). no exterior work.",
+     "permit_type": "additions alterations or repairs",
+     "declared_cost_usd": 2800000.0,
+     "status": "complete",
+     "permit_date": "2006-11-16",
+     "permit_year": 2006
+    },
+    {
+     "description": "tenant improvement for teen ctr at 2/fl. selective interior demo of(e)bldg, construction of new offices,sound booth,video recording booth,maker space(arts&crafts) single user restroom w/updated mech,plumbing,elec sys. fire sprinkler and fire alarm revisions under separate application.",
+     "permit_type": "otc alterations permit",
+     "declared_cost_usd": 1800000.0,
+     "status": "complete",
+     "permit_date": "2014-07-24",
+     "permit_year": 2014
+    }
+   ],
+   "n_permits": 52,
+   "permits_total_declared": 189619196.0,
+   "permits_by_year": [
+    {
+     "year": 1992,
+     "declared_usd": 171332000.0
+    },
+    {
+     "year": 1995,
+     "declared_usd": 20640.0
+    },
+    {
+     "year": 1997,
+     "declared_usd": 17580.0
+    },
+    {
+     "year": 2000,
+     "declared_usd": 136000.0
+    },
+    {
+     "year": 2003,
+     "declared_usd": 10000.0
+    },
+    {
+     "year": 2005,
+     "declared_usd": 120000.0
+    },
+    {
+     "year": 2006,
+     "declared_usd": 2800000.0
+    },
+    {
+     "year": 2007,
+     "declared_usd": 82000.0
+    },
+    {
+     "year": 2008,
+     "declared_usd": 14000.0
+    },
+    {
+     "year": 2013,
+     "declared_usd": 40000.0
+    },
+    {
+     "year": 2014,
+     "declared_usd": 2887350.0
+    },
+    {
+     "year": 2015,
+     "declared_usd": 116000.0
+    },
+    {
+     "year": 2017,
+     "declared_usd": 120000.0
+    },
+    {
+     "year": 2019,
+     "declared_usd": 670000.0
+    },
+    {
+     "year": 2020,
+     "declared_usd": 3770.0
+    },
+    {
+     "year": 2021,
+     "declared_usd": 307200.0
+    },
+    {
+     "year": 2022,
+     "declared_usd": 907556.0
+    },
+    {
+     "year": 2025,
+     "declared_usd": 190100.0
+    },
+    {
+     "year": 2026,
+     "declared_usd": 9845000.0
+    }
+   ]
+  },
+  "pier-70": {
+   "n_items": 0,
+   "measure_totals": {},
+   "bond_programs": [],
+   "items": [],
+   "payees": [
+    {
+     "vendor": "HISTORIC PIER 70 LLC",
+     "paid_usd": 7827325.29,
+     "n_contracts": 1,
+     "first_fiscal_year": 2018,
+     "last_fiscal_year": 2020
+    }
+   ],
+   "n_payees": 1,
+   "payees_total_paid": 7827325.29,
+   "permits": [],
+   "n_permits": 0,
+   "permits_total_declared": 0.0,
+   "permits_by_year": []
+  },
+  "sffd-division-of-training": {
+   "n_items": 0,
+   "measure_totals": {},
+   "bond_programs": [],
+   "items": [],
+   "payees": [
+    {
+     "vendor": "SWINERTON BUILDERS",
+     "paid_usd": 275000.0,
+     "n_contracts": 1,
+     "first_fiscal_year": 2026,
+     "last_fiscal_year": 2026
+    }
+   ],
+   "n_payees": 1,
+   "payees_total_paid": 275000.0,
+   "permits": [
+    {
+     "description": "kitchen remodel, officer bathroom plumbing and light fixtures, path of travel upgrades maher not req",
+     "permit_type": "otc alterations permit",
+     "declared_cost_usd": 750000.0,
+     "status": "issued",
+     "permit_date": "2017-10-18",
+     "permit_year": 2017
+    },
+    {
+     "description": "emergency removal of brick veneer due to failing anchorages. install of weatherproofing & replacemen",
+     "permit_type": "otc alterations permit",
+     "declared_cost_usd": 250000.0,
+     "status": "complete",
+     "permit_date": "2005-06-09",
+     "permit_year": 2005
+    },
+    {
+     "description": "modify (e) training tower platforms at all floors as necessary to raise guardrail to ada/safety compliant heights and repairs",
+     "permit_type": "otc alterations permit",
+     "declared_cost_usd": 105964.0,
+     "status": "complete",
+     "permit_date": "2024-08-12",
+     "permit_year": 2024
+    },
+    {
+     "description": "supplemental to original permit #200506094738 submitting structural calculation to jadd fire escape for training purpose only.",
+     "permit_type": "otc alterations permit",
+     "declared_cost_usd": 50000.0,
+     "status": "complete",
+     "permit_date": "2006-03-29",
+     "permit_year": 2006
+    }
+   ],
+   "n_permits": 4,
+   "permits_total_declared": 1155964.0,
+   "permits_by_year": [
+    {
+     "year": 2005,
+     "declared_usd": 250000.0
+    },
+    {
+     "year": 2006,
+     "declared_usd": 50000.0
+    },
+    {
+     "year": 2017,
+     "declared_usd": 750000.0
+    },
+    {
+     "year": 2024,
+     "declared_usd": 105964.0
+    }
+   ]
+  },
+  "alamo-square": {
+   "n_items": 0,
+   "measure_totals": {},
+   "bond_programs": [],
+   "items": [],
+   "payees": [],
+   "n_payees": 0,
+   "payees_total_paid": 0,
+   "permits": [
+    {
+     "description": "general interior work - barrier removal and ada compliance work. building certified under \"historic preservation commission motion #0230-6/4/14. maher n/a.",
+     "permit_type": "otc alterations permit",
+     "declared_cost_usd": 180000.0,
+     "status": "withdrawn",
+     "permit_date": "2014-11-12",
+     "permit_year": 2014
+    },
+    {
+     "description": "erect 1-story, type 1, public toilet building.",
+     "permit_type": "new construction",
+     "declared_cost_usd": 178000.0,
+     "status": "complete",
+     "permit_date": "2016-01-15",
+     "permit_year": 2016
+    },
+    {
+     "description": "reroofing",
+     "permit_type": "otc alterations permit",
+     "declared_cost_usd": 6000.0,
+     "status": "expired",
+     "permit_date": "1997-08-11",
+     "permit_year": 1997
+    }
+   ],
+   "n_permits": 3,
+   "permits_total_declared": 364000.0,
+   "permits_by_year": [
+    {
+     "year": 1997,
+     "declared_usd": 6000.0
+    },
+    {
+     "year": 2014,
+     "declared_usd": 180000.0
+    },
+    {
+     "year": 2016,
+     "declared_usd": 178000.0
+    }
+   ]
+  },
+  "camp-mather": {
+   "n_items": 2,
+   "measure_totals": {},
+   "bond_programs": [
+    "Clean and Safe Neighborhood Parks"
+   ],
+   "items": [
+    {
+     "source": "bond",
+     "source_kind": "bond_project",
+     "item_name": "RP Camp Mather - Rim Fire",
+     "bond_program": "Clean and Safe Neighborhood Parks",
+     "component": "Citywide Programs",
+     "voter_approved_date": null,
+     "amount_usd": null,
+     "amount_measure": null,
+     "budget_usd": null,
+     "contract_no": null,
+     "status": null,
+     "match_evidence": "Camp Mather"
+    },
+    {
+     "source": "bond",
+     "source_kind": "bond_project",
+     "item_name": "RP Camp Mather Multiuse Court",
+     "bond_program": "Clean and Safe Neighborhood Parks",
+     "component": "Citywide Programs",
+     "voter_approved_date": null,
+     "amount_usd": null,
+     "amount_measure": null,
+     "budget_usd": null,
+     "contract_no": null,
+     "status": null,
+     "match_evidence": "Camp Mather"
+    }
+   ],
+   "payees": [
+    {
+     "vendor": "CROOK LOGGING INC",
+     "paid_usd": 2572000.0,
+     "n_contracts": 2,
+     "first_fiscal_year": 2018,
+     "last_fiscal_year": 2025
+    },
+    {
+     "vendor": "AQUATIC ENVIRONMENTS INC",
+     "paid_usd": 17995.0,
+     "n_contracts": 1,
+     "first_fiscal_year": 2019,
+     "last_fiscal_year": 2019
+    }
+   ],
+   "n_payees": 2,
+   "payees_total_paid": 2589995.0,
+   "permits": [],
+   "n_permits": 0,
+   "permits_total_declared": 0.0,
+   "permits_by_year": []
+  },
+  "marina-green": {
+   "n_items": 0,
+   "measure_totals": {},
+   "bond_programs": [],
+   "items": [],
+   "payees": [],
+   "n_payees": 0,
+   "payees_total_paid": 0,
+   "permits": [
+    {
+     "description": "remodel (e) member bar. new electrical, plumbing, and lighting. new built-in furnishings and fixtures at bar area. new service equipment in drinks prep area.",
+     "permit_type": "otc alterations permit",
+     "declared_cost_usd": 750000.0,
+     "status": "issued",
+     "permit_date": "2024-07-02",
+     "permit_year": 2024
+    },
+    {
+     "description": "erect 1 story, type 5-b, public restroom bldg.",
+     "permit_type": "new construction wood frame",
+     "declared_cost_usd": 500000.0,
+     "status": "issued",
+     "permit_date": "2012-05-30",
+     "permit_year": 2012
+    },
+    {
+     "description": "perform earthquake repairs to structure remodel",
+     "permit_type": "additions alterations or repairs",
+     "declared_cost_usd": 500000.0,
+     "status": "expired",
+     "permit_date": "1992-04-29",
+     "permit_year": 1992
+    },
+    {
+     "description": "barrier removal including; renovation of office space & shower rms & restrooms. work includes; mod. to door openings w/assoc. modifications to slab & diaphragm, reconfiguration of toilets & shower, incl. plumbing & elec.; repair to int. & ext. finishes; & (n) int. lighting and signage.",
+     "permit_type": "otc alterations permit",
+     "declared_cost_usd": 469000.0,
+     "status": "complete",
+     "permit_date": "2011-11-29",
+     "permit_year": 2011
+    },
+    {
+     "description": "structural reinforcement of building. (e) structure is falling apart",
+     "permit_type": "otc alterations permit",
+     "declared_cost_usd": 250000.0,
+     "status": "issued",
+     "permit_date": "2018-11-20",
+     "permit_year": 2018
+    },
+    {
+     "description": "accessible barrier removal: (n) plumbing fixtures, painting, electrical & associated work, (n) floor finish, accessible path of travel & paving work in parking lot & new accessible drinking fountain.",
+     "permit_type": "otc alterations permit",
+     "declared_cost_usd": 200000.0,
+     "status": "issued",
+     "permit_date": "2010-09-10",
+     "permit_year": 2010
+    }
+   ],
+   "n_permits": 22,
+   "permits_total_declared": 3211000.0,
+   "permits_by_year": [
+    {
+     "year": 1992,
+     "declared_usd": 500000.0
+    },
+    {
+     "year": 1993,
+     "declared_usd": 46200.0
+    },
+    {
+     "year": 1996,
+     "declared_usd": 15000.0
+    },
+    {
+     "year": 2009,
+     "declared_usd": 4000.0
+    },
+    {
+     "year": 2010,
+     "declared_usd": 200000.0
+    },
+    {
+     "year": 2011,
+     "declared_usd": 493200.0
+    },
+    {
+     "year": 2012,
+     "declared_usd": 852600.0
+    },
+    {
+     "year": 2013,
+     "declared_usd": 100000.0
+    },
+    {
+     "year": 2018,
+     "declared_usd": 250000.0
+    },
+    {
+     "year": 2024,
+     "declared_usd": 750000.0
+    }
+   ]
+  },
+  "richmond-branch-library": {
+   "n_items": 0,
+   "measure_totals": {},
+   "bond_programs": [],
+   "items": [],
+   "payees": [],
+   "n_payees": 0,
+   "payees_total_paid": 0,
+   "permits": [
+    {
+     "description": "renovation of public library including the construction of an addition. work will include a seismic upgrade, new electrical and mechanical systems, site landscaping and accessibility work as required for disabled at richmond branch librabry.",
+     "permit_type": "additions alterations or repairs",
+     "declared_cost_usd": 8043933.0,
+     "status": "complete",
+     "permit_date": "2007-03-20",
+     "permit_year": 2007
+    },
+    {
+     "description": "installation of a new sprinkler system in library renovation. 140-new heads.",
+     "permit_type": "additions alterations or repairs",
+     "declared_cost_usd": 35000.0,
+     "status": "complete",
+     "permit_date": "2008-01-28",
+     "permit_year": 2008
+    },
+    {
+     "description": "new fire alarm system consisting of 1 fire alarm control panel w/ diacer, 1 annunciator panel, 39 smoke detectors, 3 heat detectors, 2 beam smoke detectors, 1 dual monitor module for sprinkler monitoring, 2 relay modules for elevator, 16 horn/strobe, 9 strobes.",
+     "permit_type": "otc alterations permit",
+     "declared_cost_usd": 12000.0,
+     "status": "complete",
+     "permit_date": "2008-08-04",
+     "permit_year": 2008
+    }
+   ],
+   "n_permits": 3,
+   "permits_total_declared": 8090933.0,
+   "permits_by_year": [
+    {
+     "year": 2007,
+     "declared_usd": 8043933.0
+    },
+    {
+     "year": 2008,
+     "declared_usd": 47000.0
+    }
+   ]
+  },
+  "chinatown-public-health-center": {
+   "n_items": 2,
+   "measure_totals": {},
+   "bond_programs": [
+    "Healthy, Safe, Vibrant SF",
+    "Public Health and Safety"
+   ],
+   "items": [
+    {
+     "source": "bond",
+     "source_kind": "bond_project",
+     "item_name": "Chinatown Public Health Center",
+     "bond_program": "Healthy, Safe, Vibrant SF",
+     "component": "Community Health Centers",
+     "voter_approved_date": null,
+     "amount_usd": null,
+     "amount_measure": null,
+     "budget_usd": null,
+     "contract_no": null,
+     "status": null,
+     "match_evidence": "Chinatown Public Health Center"
+    },
+    {
+     "source": "bond",
+     "source_kind": "bond_project",
+     "item_name": "Chinatown Public Health Center",
+     "bond_program": "Public Health and Safety",
+     "component": "Other Community Health Centers",
+     "voter_approved_date": null,
+     "amount_usd": null,
+     "amount_measure": null,
+     "budget_usd": null,
+     "contract_no": null,
+     "status": null,
+     "match_evidence": "Chinatown Public Health Center"
+    }
+   ],
+   "payees": [],
+   "n_payees": 0,
+   "payees_total_paid": 0,
+   "permits": [
+    {
+     "description": "priority process per ab004: chinatown public health ctr, renovation of exterior/interior/broadway tunnel below clinic improvement. some site reno proposed to improve accessibility along mason st entry & pedestrian access for broadway tunnel. incl storage ocupancy (s-2)",
+     "permit_type": "additions alterations or repairs",
+     "declared_cost_usd": 42487700.0,
+     "status": "issued",
+     "permit_date": "2024-03-28",
+     "permit_year": 2024
+    },
+    {
+     "description": "barrier removal - accessibility improvement, widen doors, remodel 3 toilet rooms, remodel counters, door hardware replacement, new ada drinking fountains, lower elevator control and new signage.",
+     "permit_type": "otc alterations permit",
+     "declared_cost_usd": 300000.0,
+     "status": "complete",
+     "permit_date": "2009-05-29",
+     "permit_year": 2009
+    },
+    {
+     "description": "replace boiler",
+     "permit_type": "otc alterations permit",
+     "declared_cost_usd": 122000.0,
+     "status": "issued",
+     "permit_date": "2010-12-08",
+     "permit_year": 2010
+    },
+    {
+     "description": "front counter remodeling for accessibility @ 2nd floor (barrier removal)",
+     "permit_type": "otc alterations permit",
+     "declared_cost_usd": 20000.0,
+     "status": "complete",
+     "permit_date": "2006-10-17",
+     "permit_year": 2006
+    },
+    {
+     "description": "reroofing.",
+     "permit_type": "otc alterations permit",
+     "declared_cost_usd": 20000.0,
+     "status": "expired",
+     "permit_date": "1994-02-24",
+     "permit_year": 1994
+    },
+    {
+     "description": "revision to 200610165138 permit #1101683 convert an exist. toilet room to unisex toilet for ada (barrier removal work)",
+     "permit_type": "otc alterations permit",
+     "declared_cost_usd": 9000.0,
+     "status": "complete",
+     "permit_date": "2007-12-31",
+     "permit_year": 2007
+    }
+   ],
+   "n_permits": 6,
+   "permits_total_declared": 42958700.0,
+   "permits_by_year": [
+    {
+     "year": 1994,
+     "declared_usd": 20000.0
+    },
+    {
+     "year": 2006,
+     "declared_usd": 20000.0
+    },
+    {
+     "year": 2007,
+     "declared_usd": 9000.0
+    },
+    {
+     "year": 2009,
+     "declared_usd": 300000.0
+    },
+    {
+     "year": 2010,
+     "declared_usd": 122000.0
+    },
+    {
+     "year": 2024,
+     "declared_usd": 42487700.0
+    }
+   ]
+  },
+  "zuckerberg-sf-general-hospital": {
+   "n_items": 28,
+   "measure_totals": {
+    "bond_expended": 206269807.15
+   },
+   "bond_programs": [
+    "Health and Recovery",
+    "Healthy, Safe and Vibrant San Francisco",
+    "Healthy, Safe, Vibrant SF",
+    "Public Health and Safety"
+   ],
+   "items": [
+    {
+     "source": "bond",
+     "source_kind": "bond_item",
+     "item_name": "ZSFG, Building 5",
+     "bond_program": "Public Health and Safety",
+     "component": null,
+     "voter_approved_date": "2016-06-07",
+     "amount_usd": 198956274.105201,
+     "amount_measure": "bond_expended",
+     "budget_usd": 213227528.576997,
+     "contract_no": null,
+     "status": null,
+     "match_evidence": "ZSFG"
+    },
+    {
+     "source": "bond",
+     "source_kind": "bond_item",
+     "item_name": "Psychiatric Emergency Services (PES) Renovation and Expansion at ZSFG",
+     "bond_program": "Health and Recovery",
+     "component": null,
+     "voter_approved_date": "2020-11-03",
+     "amount_usd": 7313533.04,
+     "amount_measure": "bond_expended",
+     "budget_usd": 11377246.0,
+     "contract_no": null,
+     "status": null,
+     "match_evidence": "ZSFG"
+    },
+    {
+     "source": "bond",
+     "source_kind": "bond_item",
+     "item_name": "ZSFG and LHH Critical Repairs",
+     "bond_program": "Healthy, Safe and Vibrant San Francisco",
+     "component": null,
+     "voter_approved_date": "2024-11-05",
+     "amount_usd": 0.0,
+     "amount_measure": "bond_expended",
+     "budget_usd": 0.0,
+     "contract_no": null,
+     "status": null,
+     "match_evidence": "ZSFG"
+    },
+    {
+     "source": "bond",
+     "source_kind": "bond_project",
+     "item_name": "ZSFG Building 3 Seismic Retrofit",
+     "bond_program": "Healthy, Safe, Vibrant SF",
+     "component": "ZSFG Building 3 Seismic Retrofit",
+     "voter_approved_date": null,
+     "amount_usd": null,
+     "amount_measure": null,
+     "budget_usd": null,
+     "contract_no": null,
+     "status": null,
+     "match_evidence": "ZSFG"
+    },
+    {
+     "source": "bond",
+     "source_kind": "bond_project",
+     "item_name": "ZSFG NPC 5 Compliance",
+     "bond_program": "Healthy, Safe, Vibrant SF",
+     "component": "ZSFG and LHH Critical Repairs",
+     "voter_approved_date": null,
+     "amount_usd": null,
+     "amount_measure": null,
+     "budget_usd": null,
+     "contract_no": null,
+     "status": null,
+     "match_evidence": "ZSFG"
+    },
+    {
+     "source": "bond",
+     "source_kind": "bond_project",
+     "item_name": "ZSFG NPC 4 Compliance",
+     "bond_program": "Healthy, Safe, Vibrant SF",
+     "component": "ZSFG and LHH Critical Repairs",
+     "voter_approved_date": null,
+     "amount_usd": null,
+     "amount_measure": null,
+     "budget_usd": null,
+     "contract_no": null,
+     "status": null,
+     "match_evidence": "ZSFG"
+    },
+    {
+     "source": "bond",
+     "source_kind": "bond_project",
+     "item_name": "ZSFG Building 5 Fire Alarm Upgrade",
+     "bond_program": "Healthy, Safe, Vibrant SF",
+     "component": "ZSFG and LHH Critical Repairs",
+     "voter_approved_date": null,
+     "amount_usd": null,
+     "amount_measure": null,
+     "budget_usd": null,
+     "contract_no": null,
+     "status": null,
+     "match_evidence": "ZSFG"
+    },
+    {
+     "source": "bond",
+     "source_kind": "bond_project",
+     "item_name": "ZSFG Psychiatric Emergency Services (PES)",
+     "bond_program": "Healthy, Safe, Vibrant SF",
+     "component": "ZSFG and LHH Critical Repairs",
+     "voter_approved_date": null,
+     "amount_usd": null,
+     "amount_measure": null,
+     "budget_usd": null,
+     "contract_no": null,
+     "status": null,
+     "match_evidence": "ZSFG"
+    },
+    {
+     "source": "bond",
+     "source_kind": "bond_project",
+     "item_name": "ZSFG Chiller & Cooling Tower",
+     "bond_program": "Healthy, Safe, Vibrant SF",
+     "component": "ZSFG and LHH Critical Repairs",
+     "voter_approved_date": null,
+     "amount_usd": null,
+     "amount_measure": null,
+     "budget_usd": null,
+     "contract_no": null,
+     "status": null,
+     "match_evidence": "ZSFG"
+    },
+    {
+     "source": "bond",
+     "source_kind": "bond_project",
+     "item_name": "ZSFG Bldg 5 Hematology - Oncology / Infusion",
+     "bond_program": "Public Health and Safety",
+     "component": "ZSFG, Building 5",
+     "voter_approved_date": null,
+     "amount_usd": null,
+     "amount_measure": null,
+     "budget_usd": null,
+     "contract_no": null,
+     "status": null,
+     "match_evidence": "ZSFG"
+    },
+    {
+     "source": "bond",
+     "source_kind": "bond_project",
+     "item_name": "ZSFG Bldg 5 4E Surge Space",
+     "bond_program": "Public Health and Safety",
+     "component": "ZSFG, Building 5",
+     "voter_approved_date": null,
+     "amount_usd": null,
+     "amount_measure": null,
+     "budget_usd": null,
+     "contract_no": null,
+     "status": null,
+     "match_evidence": "ZSFG"
+    },
+    {
+     "source": "bond",
+     "source_kind": "bond_project",
+     "item_name": "ZSFG Bldg 5 Electrical Core Phase 1",
+     "bond_program": "Public Health and Safety",
+     "component": "ZSFG, Building 5",
+     "voter_approved_date": null,
+     "amount_usd": null,
+     "amount_measure": null,
+     "budget_usd": null,
+     "contract_no": null,
+     "status": null,
+     "match_evidence": "ZSFG"
+    },
+    {
+     "source": "bond",
+     "source_kind": "bond_project",
+     "item_name": "ZSFG Bldg 5 Fire Alarm and Sprinkler Upgrade",
+     "bond_program": "Public Health and Safety",
+     "component": "ZSFG, Building 5",
+     "voter_approved_date": null,
+     "amount_usd": null,
+     "amount_measure": null,
+     "budget_usd": null,
+     "contract_no": null,
+     "status": null,
+     "match_evidence": "ZSFG"
+    },
+    {
+     "source": "bond",
+     "source_kind": "bond_project",
+     "item_name": "ZSFG Bldg 5 IT Infrastructure",
+     "bond_program": "Public Health and Safety",
+     "component": "ZSFG, Building 5",
+     "voter_approved_date": null,
+     "amount_usd": null,
+     "amount_measure": null,
+     "budget_usd": null,
+     "contract_no": null,
+     "status": null,
+     "match_evidence": "ZSFG"
+    },
+    {
+     "source": "bond",
+     "source_kind": "bond_project",
+     "item_name": "ZSFG Bldg 5 Rehabilitation Department Relocation",
+     "bond_program": "Public Health and Safety",
+     "component": "ZSFG, Building 5",
+     "voter_approved_date": null,
+     "amount_usd": null,
+     "amount_measure": null,
+     "budget_usd": null,
+     "contract_no": null,
+     "status": null,
+     "match_evidence": "ZSFG"
+    },
+    {
+     "source": "bond",
+     "source_kind": "bond_project",
+     "item_name": "ZSFG Bldg 5 Public Health Lab Relocation",
+     "bond_program": "Public Health and Safety",
+     "component": "ZSFG, Building 5",
+     "voter_approved_date": null,
+     "amount_usd": null,
+     "amount_measure": null,
+     "budget_usd": null,
+     "contract_no": null,
+     "status": null,
+     "match_evidence": "ZSFG"
+    },
+    {
+     "source": "bond",
+     "source_kind": "bond_project",
+     "item_name": "ZSFG Bldg 5 6H Surge Space",
+     "bond_program": "Public Health and Safety",
+     "component": "ZSFG, Building 5",
+     "voter_approved_date": null,
+     "amount_usd": null,
+     "amount_measure": null,
+     "budget_usd": null,
+     "contract_no": null,
+     "status": null,
+     "match_evidence": "ZSFG"
+    },
+    {
+     "source": "bond",
+     "source_kind": "bond_project",
+     "item_name": "ZSFG Behavior Health Center (BHC) Hummingbird Expansion",
+     "bond_program": "Public Health and Safety",
+     "component": "ZSFG, Building 5",
+     "voter_approved_date": null,
+     "amount_usd": null,
+     "amount_measure": null,
+     "budget_usd": null,
+     "contract_no": null,
+     "status": null,
+     "match_evidence": "ZSFG"
+    },
+    {
+     "source": "bond",
+     "source_kind": "bond_project",
+     "item_name": "PW ZSFG Bldg 5 Urgent Care Clinic Relocation",
+     "bond_program": "Public Health and Safety",
+     "component": "ZSFG, Building 5",
+     "voter_approved_date": null,
+     "amount_usd": null,
+     "amount_measure": null,
+     "budget_usd": null,
+     "contract_no": null,
+     "status": null,
+     "match_evidence": "ZSFG"
+    },
+    {
+     "source": "bond",
+     "source_kind": "bond_project",
+     "item_name": "ZSFG Bldg 5 Mechanical Core Phase 1",
+     "bond_program": "Public Health and Safety",
+     "component": "ZSFG, Building 5",
+     "voter_approved_date": null,
+     "amount_usd": null,
+     "amount_measure": null,
+     "budget_usd": null,
+     "contract_no": null,
+     "status": null,
+     "match_evidence": "ZSFG"
+    },
+    {
+     "source": "bond",
+     "source_kind": "bond_project",
+     "item_name": "ZSFG Bldg 5 Psychiatric Emergency Services (PES) Expansion",
+     "bond_program": "Public Health and Safety",
+     "component": "ZSFG, Building 5",
+     "voter_approved_date": null,
+     "amount_usd": null,
+     "amount_measure": null,
+     "budget_usd": null,
+     "contract_no": null,
+     "status": null,
+     "match_evidence": "ZSFG"
+    },
+    {
+     "source": "bond",
+     "source_kind": "bond_project",
+     "item_name": "ZSFG Bldg 5 Seismic Upgrade",
+     "bond_program": "Public Health and Safety",
+     "component": "ZSFG, Building 5",
+     "voter_approved_date": null,
+     "amount_usd": null,
+     "amount_measure": null,
+     "budget_usd": null,
+     "contract_no": null,
+     "status": null,
+     "match_evidence": "ZSFG"
+    },
+    {
+     "source": "bond",
+     "source_kind": "bond_project",
+     "item_name": "ZSFG Bldg 5 Bldg 80/90 Specialty Services Relocation",
+     "bond_program": "Public Health and Safety",
+     "component": "ZSFG, Building 5",
+     "voter_approved_date": null,
+     "amount_usd": null,
+     "amount_measure": null,
+     "budget_usd": null,
+     "contract_no": null,
+     "status": null,
+     "match_evidence": "ZSFG"
+    },
+    {
+     "source": "bond",
+     "source_kind": "bond_project",
+     "item_name": "ZSFG Bldg 5 Respiratory Care Relocation",
+     "bond_program": "Public Health and Safety",
+     "component": "ZSFG, Building 5",
+     "voter_approved_date": null,
+     "amount_usd": null,
+     "amount_measure": null,
+     "budget_usd": null,
+     "contract_no": null,
+     "status": null,
+     "match_evidence": "ZSFG"
+    },
+    {
+     "source": "bond",
+     "source_kind": "bond_project",
+     "item_name": "ZSFG Bldg 5 Mental Health Rehabilitation Center (MHRC) Relocation (Ward 7B & 7E)",
+     "bond_program": "Public Health and Safety",
+     "component": "ZSFG, Building 5",
+     "voter_approved_date": null,
+     "amount_usd": null,
+     "amount_measure": null,
+     "budget_usd": null,
+     "contract_no": null,
+     "status": null,
+     "match_evidence": "ZSFG"
+    },
+    {
+     "source": "bond",
+     "source_kind": "bond_project",
+     "item_name": "ZSFG Bldg 5 Family Health Center (FHC) Relocation",
+     "bond_program": "Public Health and Safety",
+     "component": "ZSFG, Building 5",
+     "voter_approved_date": null,
+     "amount_usd": null,
+     "amount_measure": null,
+     "budget_usd": null,
+     "contract_no": null,
+     "status": null,
+     "match_evidence": "ZSFG"
+    },
+    {
+     "source": "bond",
+     "source_kind": "bond_project",
+     "item_name": "ZSFG Bldg 5 Dialysis Relocation",
+     "bond_program": "Public Health and Safety",
+     "component": "ZSFG, Building 5",
+     "voter_approved_date": null,
+     "amount_usd": null,
+     "amount_measure": null,
+     "budget_usd": null,
+     "contract_no": null,
+     "status": null,
+     "match_evidence": "ZSFG"
+    },
+    {
+     "source": "bond",
+     "source_kind": "bond_project",
+     "item_name": "ZSFG Bldg 5 Roof Replacement",
+     "bond_program": "Public Health and Safety",
+     "component": "ZSFG, Building 5",
+     "voter_approved_date": null,
+     "amount_usd": null,
+     "amount_measure": null,
+     "budget_usd": null,
+     "contract_no": null,
+     "status": null,
+     "match_evidence": "ZSFG"
+    }
+   ],
+   "payees": [
+    {
+     "vendor": "CHARLES PANKOW BUILDERS LTD",
+     "paid_usd": 93090767.0499,
+     "n_contracts": 2,
+     "first_fiscal_year": 2021,
+     "last_fiscal_year": 2027
+    },
+    {
+     "vendor": "CLARK CONSTRUCTION GROUP - CALIF LP",
+     "paid_usd": 23905170.24,
+     "n_contracts": 1,
+     "first_fiscal_year": 2025,
+     "last_fiscal_year": 2026
+    },
+    {
+     "vendor": "BUILD GROUP INC.",
+     "paid_usd": 13630897.2,
+     "n_contracts": 1,
+     "first_fiscal_year": 2021,
+     "last_fiscal_year": 2024
+    },
+    {
+     "vendor": "KLW CONSTRUCTION INC",
+     "paid_usd": 13216646.2,
+     "n_contracts": 3,
+     "first_fiscal_year": 2021,
+     "last_fiscal_year": 2026
+    },
+    {
+     "vendor": "SIEMENS FINANCIAL SERVICES INC",
+     "paid_usd": 12705657.72,
+     "n_contracts": 9,
+     "first_fiscal_year": 2018,
+     "last_fiscal_year": 2023
+    },
+    {
+     "vendor": "ALLIED UNIVERSAL  SECURITY SERVICES",
+     "paid_usd": 11501199.68,
+     "n_contracts": 1,
+     "first_fiscal_year": 2023,
+     "last_fiscal_year": 2026
+    },
+    {
+     "vendor": "ARUP LABORATORIES INC",
+     "paid_usd": 10934044.86,
+     "n_contracts": 2,
+     "first_fiscal_year": 2021,
+     "last_fiscal_year": 2027
+    },
+    {
+     "vendor": "EMERALD TEXTILE SERVICES NORCAL LLC",
+     "paid_usd": 7717925.08,
+     "n_contracts": 1,
+     "first_fiscal_year": 2024,
+     "last_fiscal_year": 2026
+    }
+   ],
+   "n_payees": 56,
+   "payees_total_paid": 237861696.33,
+   "permits": [
+    {
+     "description": "horizontal addition",
+     "permit_type": "additions alterations or repairs",
+     "declared_cost_usd": 9285562.0,
+     "status": "expired",
+     "permit_date": "1989-04-06",
+     "permit_year": 1989
+    },
+    {
+     "description": "underground site utilities, fire, plumb, strom drain, electrical, relocation for new sf general hospital build, demo existing underground tunnel.",
+     "permit_type": "additions alterations or repairs",
+     "declared_cost_usd": 8789000.0,
+     "status": "complete",
+     "permit_date": "2009-04-24",
+     "permit_year": 2009
+    },
+    {
+     "description": "special project for partial replacement of existing surface parking lot, relocate & remove existing utilities, utitlities wil be installed to support future bldg, north side of project wil have parking reconfigured and new private roadway and ramp existing onto vermont street.",
+     "permit_type": "additions alterations or repairs",
+     "declared_cost_usd": 3950000.0,
+     "status": "complete",
+     "permit_date": "2020-04-20",
+     "permit_year": 2020
+    },
+    {
+     "description": "barrier removal project consisting of 2 existing elevators, upgrade access to provide elevator, including new rear access to provide redundant elevator access to bldg portion of facility.",
+     "permit_type": "otc alterations permit",
+     "declared_cost_usd": 3200000.0,
+     "status": "complete",
+     "permit_date": "2013-06-28",
+     "permit_year": 2013
+    },
+    {
+     "description": "horizontal addition",
+     "permit_type": "additions alterations or repairs",
+     "declared_cost_usd": 1300000.0,
+     "status": "expired",
+     "permit_date": "1991-11-22",
+     "permit_year": 1991
+    },
+    {
+     "description": "barrier removal, construct 3 offices, interior finishes hvac. fire alarm revisions under separate application.",
+     "permit_type": "otc alterations permit",
+     "declared_cost_usd": 947230.0,
+     "status": "complete",
+     "permit_date": "2011-12-08",
+     "permit_year": 2011
+    }
+   ],
+   "n_permits": 100,
+   "permits_total_declared": 37417397.0,
+   "permits_by_year": [
+    {
+     "year": 1982,
+     "declared_usd": 188000.0
+    },
+    {
+     "year": 1984,
+     "declared_usd": 20000.0
+    },
+    {
+     "year": 1987,
+     "declared_usd": 15000.0
+    },
+    {
+     "year": 1988,
+     "declared_usd": 30000.0
+    },
+    {
+     "year": 1989,
+     "declared_usd": 9564362.0
+    },
+    {
+     "year": 1990,
+     "declared_usd": 18000.0
+    },
+    {
+     "year": 1991,
+     "declared_usd": 1491000.0
+    },
+    {
+     "year": 1992,
+     "declared_usd": 1049889.0
+    },
+    {
+     "year": 1993,
+     "declared_usd": 969789.0
+    },
+    {
+     "year": 1994,
+     "declared_usd": 121689.0
+    },
+    {
+     "year": 1995,
+     "declared_usd": 97900.0
+    },
+    {
+     "year": 1996,
+     "declared_usd": 408250.0
+    },
+    {
+     "year": 1997,
+     "declared_usd": 49725.0
+    },
+    {
+     "year": 1999,
+     "declared_usd": 180000.0
+    },
+    {
+     "year": 2001,
+     "declared_usd": 7000.0
+    },
+    {
+     "year": 2002,
+     "declared_usd": 160000.0
+    },
+    {
+     "year": 2003,
+     "declared_usd": 800000.0
+    },
+    {
+     "year": 2004,
+     "declared_usd": 33125.0
+    },
+    {
+     "year": 2005,
+     "declared_usd": 160000.0
+    },
+    {
+     "year": 2006,
+     "declared_usd": 708057.0
+    },
+    {
+     "year": 2007,
+     "declared_usd": 18195.0
+    },
+    {
+     "year": 2009,
+     "declared_usd": 9181308.0
+    },
+    {
+     "year": 2010,
+     "declared_usd": 333500.0
+    },
+    {
+     "year": 2011,
+     "declared_usd": 1213376.0
+    },
+    {
+     "year": 2012,
+     "declared_usd": 378885.0
+    },
+    {
+     "year": 2013,
+     "declared_usd": 3475000.0
+    },
+    {
+     "year": 2014,
+     "declared_usd": 360000.0
+    },
+    {
+     "year": 2015,
+     "declared_usd": 835525.0
+    },
+    {
+     "year": 2016,
+     "declared_usd": 509850.0
+    },
+    {
+     "year": 2017,
+     "declared_usd": 6972.0
+    },
+    {
+     "year": 2019,
+     "declared_usd": 613000.0
+    },
+    {
+     "year": 2020,
+     "declared_usd": 3950000.0
+    },
+    {
+     "year": 2024,
+     "declared_usd": 20000.0
+    },
+    {
+     "year": 2025,
+     "declared_usd": 450000.0
+    }
+   ]
+  }
+ }
+}

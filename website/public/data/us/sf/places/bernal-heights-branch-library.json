@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T22:30:00.110513+00:00",
+ "generated_at": "2026-07-21T14:25:53.944678+00:00",
  "source_pipeline": "sf_place_candidates.json → sync_ia_sf.py + link_sf_places.py + fetch_sf_place_photos.py → export_sf_places.py",
  "unit": "USD",
  "slug": "bernal-heights-branch-library",
@@ -13,6 +13,106 @@
   "name": "Public Library",
   "code": "LIB"
  },
+ "facility": {
+  "primary_name": "Bernal Heights Branch Library",
+  "primary_address": "500 CORTLAND AVE",
+  "primary_city": "San Francisco",
+  "primary_zip": "94110",
+  "primary_block_lot": "5707027",
+  "primary_department_name": "Public Library",
+  "primary_is_city_owned": true,
+  "primary_gross_sq_ft": 8777,
+  "primary_latitude": 37.73885128400008,
+  "primary_longitude": -122.41610523099996,
+  "supervisor_district": 9,
+  "n_facilities": 1,
+  "total_gross_sq_ft": 8777,
+  "n_owned": 1,
+  "n_leased": 0,
+  "apn_list": [
+   "5707027"
+  ],
+  "facilities": [
+   {
+    "facility_id": 179,
+    "common_name": "Bernal Heights Branch Library",
+    "block_lot": "5707027",
+    "gross_sq_ft": 8777,
+    "is_city_owned": true
+   }
+  ]
+ },
+ "capital": {
+  "n_items": 0,
+  "measure_totals": {},
+  "bond_programs": [],
+  "items": [],
+  "payees": [],
+  "n_payees": 0,
+  "payees_total_paid": 0,
+  "permits": [
+   {
+    "description": "bernal height-branch library. (n)entry ramp,rear ramp at west side plaza.interior wk incl new stair, elev, mech. hvac system,(n)elec. service & lighting. demo of all int.lowerlevel& const.of(n) upper floor incl.(n)ada doors,casework& finishes,seismic upgrade incl. conc.openings,roof strengthenings",
+    "permit_type": "additions alterations or repairs",
+    "declared_cost_usd": 3200000.0,
+    "status": "complete",
+    "permit_date": "2008-04-15",
+    "permit_year": 2008
+   },
+   {
+    "description": "installation of a (n) chidlren's play area and play area surface. required path of travel work consisting of upgrading the restroom to full compliance alteration to 2 entries and pedestrian routes at play area and lower court.",
+    "permit_type": "otc alterations permit",
+    "declared_cost_usd": 815000.0,
+    "status": "complete",
+    "permit_date": "2025-08-13",
+    "permit_year": 2025
+   },
+   {
+    "description": "horizontal",
+    "permit_type": "additions alterations or repairs",
+    "declared_cost_usd": 190000.0,
+    "status": "issued",
+    "permit_date": "1995-06-30",
+    "permit_year": 1995
+   },
+   {
+    "description": "barrier removal: alteration to 2 (e) restrooms to create single user restrooms. removal of toilet compartment partitions, rearangement of toilet compartment partitions, install unisex restroom geometric symbol signs, install threshold, new door hardware, & relocate 1 (e) baby diaper changing station",
+    "permit_type": "otc alterations permit",
+    "declared_cost_usd": 5000.0,
+    "status": "complete",
+    "permit_date": "2025-05-09",
+    "permit_year": 2025
+   },
+   {
+    "description": "provide an elevator recall system only.",
+    "permit_type": "otc alterations permit",
+    "declared_cost_usd": 4370.0,
+    "status": "complete",
+    "permit_date": "2009-09-17",
+    "permit_year": 2009
+   }
+  ],
+  "n_permits": 5,
+  "permits_total_declared": 4214370.0,
+  "permits_by_year": [
+   {
+    "year": 1995,
+    "declared_usd": 190000.0
+   },
+   {
+    "year": 2008,
+    "declared_usd": 3200000.0
+   },
+   {
+    "year": 2009,
+    "declared_usd": 4370.0
+   },
+   {
+    "year": 2025,
+    "declared_usd": 820000.0
+   }
+  ]
+ },
  "photo": null,
  "photo_credit": null,
  "summary_en": null,
@@ -24,70 +124,17 @@
    "total_usd": 187421705.0,
    "fiscal_year": 2025
   },
+  "payroll_line": {
+   "code": "LIB",
+   "name": "Public Library",
+   "total_compensation_usd": 110470134.22,
+   "n_employees": 985,
+   "fiscal_year": 2025
+  },
   "contracts": [],
   "grants": []
  },
  "documents": [
-  {
-   "identifier": "branchlibraryimp3200sanf",
-   "title": "Branch library improvement program : November 2000--general obligation bond program proposal",
-   "creator": "San Francisco (Calif.). Bureau of Architecture",
-   "year": 2000,
-   "pool": "sfpl",
-   "matched_alias": "Bernal Heights Branch Library",
-   "snippet": "Program «BERNAL HEIGHTS BRANCH LIBRARY» BACKGROUND The «Bernal Heights Branch Library», located",
-   "url": "https://archive.org/details/branchlibraryimp3200sanf",
-   "deep_link": "https://archive.org/details/branchlibraryimp3200sanf?q=Bernal+Heights+Branch+Library",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
-  },
-  {
-   "identifier": "agenda2013arts",
-   "title": "Agenda",
-   "creator": "Arts Commission of San Francisco. Visual Arts Committee",
-   "year": 1983,
-   "pool": "sfpl",
-   "matched_alias": "Bernal Heights Branch Library",
-   "snippet": "opportunity he had to talk about the «Bernal Heights Branch Library» Mural Project since attending",
-   "url": "https://archive.org/details/agenda2013arts",
-   "deep_link": "https://archive.org/details/agenda2013arts?q=Bernal+Heights+Branch+Library",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
-  },
-  {
-   "identifier": "minutesofregular2006sanf",
-   "title": "Minutes of the regular meeting ...",
-   "creator": "San Francisco Public Library. Commission",
-   "year": null,
-   "pool": "sfpl",
-   "matched_alias": "Bernal Heights Branch Library",
-   "snippet": "the revised designs for the «Bernal Heights Branch Library»- renovation. Mr. Peter Warfield",
-   "url": "https://archive.org/details/minutesofregular2006sanf",
-   "deep_link": "https://archive.org/details/minutesofregular2006sanf?q=Bernal+Heights+Branch+Library",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
-  },
-  {
-   "identifier": "minutesofregular2005sanf",
-   "title": "Minutes of the regular meeting ...",
-   "creator": "San Francisco Public Library. Commission",
-   "year": null,
-   "pool": "sfpl",
-   "matched_alias": "Bernal Heights Branch Library",
-   "snippet": "had raised in support of the «Bernal Heights Branch Library» and submitted a letter in support",
-   "url": "https://archive.org/details/minutesofregular2005sanf",
-   "deep_link": "https://archive.org/details/minutesofregular2005sanf?q=Bernal+Heights+Branch+Library",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
-  },
-  {
-   "identifier": "adultcalendarofp1996sanf",
-   "title": "Adult calendar of programs and events",
-   "creator": "San Francisco Public Library",
-   "year": null,
-   "pool": "sfpl",
-   "matched_alias": "Bernal Heights Branch Library",
-   "snippet": "information, please call 695-5160. «Bernal Heights Branch Library», 500 Cortland Ave. (near Moultrie)",
-   "url": "https://archive.org/details/adultcalendarofp1996sanf",
-   "deep_link": "https://archive.org/details/adultcalendarofp1996sanf?q=Bernal+Heights+Branch+Library",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
-  },
   {
    "identifier": "agendasminutes2012sanf_5",
    "title": "Agendas and Minutes",
@@ -98,19 +145,9 @@
    "snippet": "general public comment about the «Bernal Heights Branch Library» Mural. (a) Determination of jurisdiction",
    "url": "https://archive.org/details/agendasminutes2012sanf_5",
    "deep_link": "https://archive.org/details/agendasminutes2012sanf_5?q=Bernal+Heights+Branch+Library",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
-  },
-  {
-   "identifier": "adultcalendarofp1997sanf",
-   "title": "Adult calendar of programs and events",
-   "creator": "San Francisco Public Library",
-   "year": null,
-   "pool": "sfpl",
-   "matched_alias": "Bernal Heights Branch Library",
-   "snippet": "discuss Erewhon by Samuel Butler. «Bernal Heights Branch Library», 500 Cortland Ave. (near Moultrie)",
-   "url": "https://archive.org/details/adultcalendarofp1997sanf",
-   "deep_link": "https://archive.org/details/adultcalendarofp1997sanf?q=Bernal+Heights+Branch+Library",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Meetings & resolutions",
+   "salient": true
   },
   {
    "identifier": "minutesofregula2005sanf_1",
@@ -122,19 +159,9 @@
    "snippet": "Preschool Program using space at the «Bernal Heights Branch Library», City Librarian Herrera reported",
    "url": "https://archive.org/details/minutesofregula2005sanf_1",
    "deep_link": "https://archive.org/details/minutesofregula2005sanf_1?q=Bernal+Heights+Branch+Library",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
-  },
-  {
-   "identifier": "minutesofregula2006sanf_1",
-   "title": "Minutes of the regular meeting ...",
-   "creator": "San Francisco Public Library. Commission",
-   "year": null,
-   "pool": "sfpl",
-   "matched_alias": "Bernal Heights Branch Library",
-   "snippet": "City One Book program at the «Bernal Heights Branch Library». Mr. Peter Warfield was glad",
-   "url": "https://archive.org/details/minutesofregula2006sanf_1",
-   "deep_link": "https://archive.org/details/minutesofregula2006sanf_1?q=Bernal+Heights+Branch+Library",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Meetings & resolutions",
+   "salient": true
   },
   {
    "identifier": "agendasanfranci2011sanf_6",
@@ -146,19 +173,9 @@
    "snippet": "Resolution «Bernal Heights Branch Library» Public Art Project and «Bernal Heights Branch Library» Public",
    "url": "https://archive.org/details/agendasanfranci2011sanf_6",
    "deep_link": "https://archive.org/details/agendasanfranci2011sanf_6?q=Bernal+Heights+Branch+Library",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
-  },
-  {
-   "identifier": "minutesofregular2009sanf",
-   "title": "Minutes of the regular meeting ...",
-   "creator": "San Francisco Public Library. Commission",
-   "year": null,
-   "pool": "sfpl",
-   "matched_alias": "Bernal Heights Branch Library",
-   "snippet": "the «Bernal Heights Branch Library»). Explanatory Documents: «Bernal Heights Branch Library» Mural",
-   "url": "https://archive.org/details/minutesofregular2009sanf",
-   "deep_link": "https://archive.org/details/minutesofregular2009sanf?q=Bernal+Heights+Branch+Library",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Meetings & resolutions",
+   "salient": true
   },
   {
    "identifier": "agendasminutesvi2014arts",
@@ -170,7 +187,23 @@
    "snippet": "approve consent calendar items. 2 3. «Bernal Heights Branch Library» Carol Marie Daniels, Johanna Poethig",
    "url": "https://archive.org/details/agendasminutesvi2014arts",
    "deep_link": "https://archive.org/details/agendasminutesvi2014arts?q=Bernal+Heights+Branch+Library",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Meetings & resolutions",
+   "salient": true
+  },
+  {
+   "identifier": "agenda2013arts",
+   "title": "Agenda",
+   "creator": "Arts Commission of San Francisco. Visual Arts Committee",
+   "year": 1983,
+   "pool": "sfpl",
+   "matched_alias": "Bernal Heights Branch Library",
+   "snippet": "opportunity he had to talk about the «Bernal Heights Branch Library» Mural Project since attending",
+   "url": "https://archive.org/details/agenda2013arts",
+   "deep_link": "https://archive.org/details/agenda2013arts?q=Bernal+Heights+Branch+Library",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Meetings & resolutions",
+   "salient": true
   },
   {
    "identifier": "agendasminutessu2005sanf",
@@ -182,19 +215,37 @@
    "snippet": "general public comment about the «Bernal Heights Branch Library» Mural. (Discussion and Action)",
    "url": "https://archive.org/details/agendasminutessu2005sanf",
    "deep_link": "https://archive.org/details/agendasminutessu2005sanf?q=Bernal+Heights+Branch+Library",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Meetings & resolutions",
+   "salient": true
   },
   {
-   "identifier": "minutesofregula2004sanf_4",
-   "title": "Minutes of the regular meeting ...",
-   "creator": "San Francisco Public Library. Commission",
+   "identifier": "adultcalendarofp1996sanf",
+   "title": "Adult calendar of programs and events",
+   "creator": "San Francisco Public Library",
    "year": null,
    "pool": "sfpl",
    "matched_alias": "Bernal Heights Branch Library",
-   "snippet": "pre-school program located in the «Bernal Heights Branch Library». Commissioner Coulter noted that",
-   "url": "https://archive.org/details/minutesofregula2004sanf_4",
-   "deep_link": "https://archive.org/details/minutesofregula2004sanf_4?q=Bernal+Heights+Branch+Library",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+   "snippet": "information, please call 695-5160. «Bernal Heights Branch Library», 500 Cortland Ave. (near Moultrie)",
+   "url": "https://archive.org/details/adultcalendarofp1996sanf",
+   "deep_link": "https://archive.org/details/adultcalendarofp1996sanf?q=Bernal+Heights+Branch+Library",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Other records",
+   "salient": false
+  },
+  {
+   "identifier": "branchlibraryimp3200sanf",
+   "title": "Branch library improvement program : November 2000--general obligation bond program proposal",
+   "creator": "San Francisco (Calif.). Bureau of Architecture",
+   "year": 2000,
+   "pool": "sfpl",
+   "matched_alias": "Bernal Heights Branch Library",
+   "snippet": "Program «BERNAL HEIGHTS BRANCH LIBRARY» BACKGROUND The «Bernal Heights Branch Library», located",
+   "url": "https://archive.org/details/branchlibraryimp3200sanf",
+   "deep_link": "https://archive.org/details/branchlibraryimp3200sanf?q=Bernal+Heights+Branch+Library",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Other records",
+   "salient": false
   }
  ],
  "dept_shelf": [
@@ -218,29 +269,10 @@
    "year": null,
    "pool": "sfpl",
    "url": "https://archive.org/details/minutesofregula1619sanf_0"
-  },
-  {
-   "identifier": "agenda1969sanf",
-   "title": "Agenda",
-   "year": null,
-   "pool": "sfpl",
-   "url": "https://archive.org/details/agenda1969sanf"
-  },
-  {
-   "identifier": "agendasminutessa1979sanf",
-   "title": "Agendas and Minutes / San Francisco Public Library Commission, Finance Committee",
-   "year": null,
-   "pool": "sfpl",
-   "url": "https://archive.org/details/agendasminutessa1979sanf"
-  },
-  {
-   "identifier": "requestforuseofp1998sanf",
-   "title": "Request for use of public meeting rooms / Branch meeting rooms summary",
-   "year": null,
-   "pool": "sfpl",
-   "url": "https://archive.org/details/requestforuseofp1998sanf"
   }
  ],
+ "dept_shelf_label": "Public Library",
+ "dept_shelf_more": 3,
  "sources": [
   {
    "label": "City budget & payments",
@@ -253,7 +285,7 @@
  ],
  "_gate": {
   "has_photo": false,
-  "n_documents": 14,
+  "n_documents": 8,
   "n_money_links": 1,
   "meets_pre_summary": false
  }

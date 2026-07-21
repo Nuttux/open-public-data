@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T22:30:00.118640+00:00",
+ "generated_at": "2026-07-21T14:25:53.965476+00:00",
  "source_pipeline": "sf_place_candidates.json → sync_ia_sf.py + link_sf_places.py + fetch_sf_place_photos.py → export_sf_places.py",
  "unit": "USD",
  "slug": "hall-of-justice",
@@ -13,6 +13,226 @@
   "name": "City Administrator",
   "code": "ADM"
  },
+ "facility": {
+  "primary_name": "Hall of Justice (HOJ)",
+  "primary_address": "850 BRYANT ST",
+  "primary_city": "San Francisco",
+  "primary_zip": "94103",
+  "primary_block_lot": "3759042",
+  "primary_department_name": "Gsa - Real Estate Division",
+  "primary_is_city_owned": true,
+  "primary_gross_sq_ft": 615241,
+  "primary_latitude": 37.77498889900005,
+  "primary_longitude": -122.40432830099996,
+  "supervisor_district": 6,
+  "n_facilities": 2,
+  "total_gross_sq_ft": 615241,
+  "n_owned": 2,
+  "n_leased": 0,
+  "apn_list": [
+   "3759042",
+   "3758127"
+  ],
+  "facilities": [
+   {
+    "facility_id": 874,
+    "common_name": "Hall of Justice (HOJ)",
+    "block_lot": "3759042",
+    "gross_sq_ft": 615241,
+    "is_city_owned": true
+   },
+   {
+    "facility_id": 3060,
+    "common_name": "HALL OF JUSTICE GAS STATION",
+    "block_lot": "3758127",
+    "gross_sq_ft": null,
+    "is_city_owned": true
+   }
+  ]
+ },
+ "capital": {
+  "n_items": 0,
+  "measure_totals": {},
+  "bond_programs": [],
+  "items": [],
+  "payees": [],
+  "n_payees": 0,
+  "payees_total_paid": 0,
+  "permits": [
+   {
+    "description": "erect a med/psych work furlough intake system facility",
+    "permit_type": "new construction",
+    "declared_cost_usd": 30000000.0,
+    "status": "expired",
+    "permit_date": "1991-08-28",
+    "permit_year": 1991
+   },
+   {
+    "description": "modernization/upgrade of elevator #2, # new machine and microprocessor baded controllers as well as new suspensions and door operating euipment. decommissioning of elevator #4 and #% removal of hoise, compensation ropes mechanical fastening hoistway.",
+    "permit_type": "otc alterations permit",
+    "declared_cost_usd": 3000000.0,
+    "status": "issued",
+    "permit_date": "2025-11-24",
+    "permit_year": 2025
+   },
+   {
+    "description": "mechanical smoke evacuation system, security doors",
+    "permit_type": "additions alterations or repairs",
+    "declared_cost_usd": 2300000.0,
+    "status": "expired",
+    "permit_date": "1991-06-21",
+    "permit_year": 1991
+   },
+   {
+    "description": "ventilation improvement work for 6th & 7th floors of hall of justice bldg. the work includes replacement of supply & exhause fans, filters, and recondition of exhaust fan for 4 fan rooms.",
+    "permit_type": "otc alterations permit",
+    "declared_cost_usd": 1900000.0,
+    "status": "issued",
+    "permit_date": "2008-05-06",
+    "permit_year": 2008
+   },
+   {
+    "description": "renovation of extg commercial kitchen of county jail #2. work inlcudes architectural, structural mep work in support of food service improvement. n/a for maher",
+    "permit_type": "otc alterations permit",
+    "declared_cost_usd": 1900000.0,
+    "status": "complete",
+    "permit_date": "2020-08-04",
+    "permit_year": 2020
+   },
+   {
+    "description": "horizontal",
+    "permit_type": "additions alterations or repairs",
+    "declared_cost_usd": 1100000.0,
+    "status": "issued",
+    "permit_date": "1995-07-18",
+    "permit_year": 1995
+   }
+  ],
+  "n_permits": 60,
+  "permits_total_declared": 48502411.0,
+  "permits_by_year": [
+   {
+    "year": 1989,
+    "declared_usd": 70000.0
+   },
+   {
+    "year": 1991,
+    "declared_usd": 32350000.0
+   },
+   {
+    "year": 1992,
+    "declared_usd": 257500.0
+   },
+   {
+    "year": 1994,
+    "declared_usd": 2550.0
+   },
+   {
+    "year": 1995,
+    "declared_usd": 1353360.0
+   },
+   {
+    "year": 1996,
+    "declared_usd": 262682.0
+   },
+   {
+    "year": 1997,
+    "declared_usd": 250000.0
+   },
+   {
+    "year": 1998,
+    "declared_usd": 157809.0
+   },
+   {
+    "year": 1999,
+    "declared_usd": 112000.0
+   },
+   {
+    "year": 2001,
+    "declared_usd": 608000.0
+   },
+   {
+    "year": 2002,
+    "declared_usd": 20232.0
+   },
+   {
+    "year": 2003,
+    "declared_usd": 48500.0
+   },
+   {
+    "year": 2004,
+    "declared_usd": 8000.0
+   },
+   {
+    "year": 2006,
+    "declared_usd": 75000.0
+   },
+   {
+    "year": 2007,
+    "declared_usd": 950000.0
+   },
+   {
+    "year": 2008,
+    "declared_usd": 2350000.0
+   },
+   {
+    "year": 2009,
+    "declared_usd": 434456.0
+   },
+   {
+    "year": 2010,
+    "declared_usd": 39000.0
+   },
+   {
+    "year": 2011,
+    "declared_usd": 1084749.0
+   },
+   {
+    "year": 2012,
+    "declared_usd": 1255808.0
+   },
+   {
+    "year": 2013,
+    "declared_usd": 907615.0
+   },
+   {
+    "year": 2014,
+    "declared_usd": 300000.0
+   },
+   {
+    "year": 2015,
+    "declared_usd": 185000.0
+   },
+   {
+    "year": 2016,
+    "declared_usd": 15000.0
+   },
+   {
+    "year": 2018,
+    "declared_usd": 42105.0
+   },
+   {
+    "year": 2020,
+    "declared_usd": 1900000.0
+   },
+   {
+    "year": 2021,
+    "declared_usd": 429125.0
+   },
+   {
+    "year": 2022,
+    "declared_usd": 32000.0
+   },
+   {
+    "year": 2025,
+    "declared_usd": 3000000.0
+   },
+   {
+    "year": 2026,
+    "declared_usd": 1920.0
+   }
+  ]
+ },
  "photo": null,
  "photo_credit": null,
  "summary_en": null,
@@ -24,70 +244,17 @@
    "total_usd": 287717708.0,
    "fiscal_year": 2025
   },
+  "payroll_line": {
+   "code": "ADM",
+   "name": "City Administrator",
+   "total_compensation_usd": 168334637.06,
+   "n_employees": 1154,
+   "fiscal_year": 2025
+  },
   "contracts": [],
   "grants": []
  },
  "documents": [
-  {
-   "identifier": "calendarofprocee1985sanf",
-   "title": "Calendar of proceedings : Police Commission meeting",
-   "creator": "San Francisco (Calif.). Police Commission",
-   "year": null,
-   "pool": "sfpl",
-   "matched_alias": "Hall of Justice",
-   "snippet": "COMMISSION CITY AND COUNTY OF SAN FRANCISCO «HALL OF JUSTICE» 850 BRYANT STREET SAN FRANCISCO, CALIFORNIA",
-   "url": "https://archive.org/details/calendarofprocee1985sanf",
-   "deep_link": "https://archive.org/details/calendarofprocee1985sanf?q=Hall+of+Justice",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
-  },
-  {
-   "identifier": "minutes2000sanf_7",
-   "title": "[Minutes",
-   "creator": "San Francisco (Calif.). Police Commission",
-   "year": null,
-   "pool": "sfpl",
-   "matched_alias": "Hall of Justice",
-   "snippet": "FRIDAY Commissioner Thomas J. Cahill «Hall of Justice» 850 Bryant Street, Room 551 San Francisco",
-   "url": "https://archive.org/details/minutes2000sanf_7",
-   "deep_link": "https://archive.org/details/minutes2000sanf_7?q=Hall+of+Justice",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
-  },
-  {
-   "identifier": "calendarofprocee1990sanf",
-   "title": "Calendar of proceedings : Police Commission meeting",
-   "creator": "San Francisco (Calif.). Police Commission",
-   "year": null,
-   "pool": "sfpl",
-   "matched_alias": "Hall of Justice",
-   "snippet": "COMMISSION CITY AND COUNTY O^SAN FRANCISCO «HALL OF JUSTICE» 850 BRYANT STREET SAN FRANCISCO, CALIFORNIA",
-   "url": "https://archive.org/details/calendarofprocee1990sanf",
-   "deep_link": "https://archive.org/details/calendarofprocee1990sanf?q=Hall+of+Justice",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
-  },
-  {
-   "identifier": "sanfranciscopoli2010sanf",
-   "title": "San Francisco Police Commission agenda",
-   "creator": "San Francisco (Calif.). Police Commission",
-   "year": null,
-   "pool": "sfpl",
-   "matched_alias": "Hall of Justice",
-   "snippet": "C07-023 (ACTION ITEM) THOMAS J. C AH ILL «HALL OF JUSTICE», 850 BRYANT ST., RM. 505, SAN FRANCISCO",
-   "url": "https://archive.org/details/sanfranciscopoli2010sanf",
-   "deep_link": "https://archive.org/details/sanfranciscopoli2010sanf?q=Hall+of+Justice",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
-  },
-  {
-   "identifier": "calendarofprocee1989sanf",
-   "title": "Calendar of proceedings : Police Commission meeting",
-   "creator": "San Francisco (Calif.). Police Commission",
-   "year": null,
-   "pool": "sfpl",
-   "matched_alias": "Hall of Justice",
-   "snippet": "COMMISSION CITY AND COUNTY OF SAN FRANCISCO «HALL OF JUSTICE» 850 BRYANT STREET SAN FRANCISCO. CALIFORNIA",
-   "url": "https://archive.org/details/calendarofprocee1989sanf",
-   "deep_link": "https://archive.org/details/calendarofprocee1989sanf?q=Hall+of+Justice",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
-  },
   {
    "identifier": "minutespo1998sanf",
    "title": "Minutes / Police Commission of the City and County of San Francisco",
@@ -98,7 +265,9 @@
    "snippet": "^ANUARY 7, 1998 5:30 p.m. Thomas J. Cahill «Hall of Justice» 850 Bryant Street, Room 551 San Francisco",
    "url": "https://archive.org/details/minutespo1998sanf",
    "deep_link": "https://archive.org/details/minutespo1998sanf?q=Hall+of+Justice",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Meetings & resolutions",
+   "salient": true
   },
   {
    "identifier": "minutes2001sanf_9",
@@ -110,31 +279,37 @@
    "snippet": "5:3(rp.m. Thomas J. Caftill Hall of Justice «850 Bryant» Street, Room 551 San Francisco, California",
    "url": "https://archive.org/details/minutes2001sanf_9",
    "deep_link": "https://archive.org/details/minutes2001sanf_9?q=Hall+of+Justice",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Meetings & resolutions",
+   "salient": true
   },
   {
-   "identifier": "minutes2003sanf_7",
-   "title": "[Minutes",
+   "identifier": "sanfranciscopoli2010sanf",
+   "title": "San Francisco Police Commission agenda",
    "creator": "San Francisco (Calif.). Police Commission",
    "year": null,
    "pool": "sfpl",
    "matched_alias": "Hall of Justice",
-   "snippet": "551, Thomas J. Cahi!! Hall of Justice, «850 Bryant» Street, San Francisco. DOCUMENTS DEPT. DEC",
-   "url": "https://archive.org/details/minutes2003sanf_7",
-   "deep_link": "https://archive.org/details/minutes2003sanf_7?q=Hall+of+Justice",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+   "snippet": "C07-023 (ACTION ITEM) THOMAS J. C AH ILL «HALL OF JUSTICE», 850 BRYANT ST., RM. 505, SAN FRANCISCO",
+   "url": "https://archive.org/details/sanfranciscopoli2010sanf",
+   "deep_link": "https://archive.org/details/sanfranciscopoli2010sanf?q=Hall+of+Justice",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Meetings & resolutions",
+   "salient": true
   },
   {
-   "identifier": "calendarofprocee1988sanf",
+   "identifier": "calendarofprocee1985sanf",
    "title": "Calendar of proceedings : Police Commission meeting",
    "creator": "San Francisco (Calif.). Police Commission",
    "year": null,
    "pool": "sfpl",
    "matched_alias": "Hall of Justice",
    "snippet": "COMMISSION CITY AND COUNTY OF SAN FRANCISCO «HALL OF JUSTICE» 850 BRYANT STREET SAN FRANCISCO, CALIFORNIA",
-   "url": "https://archive.org/details/calendarofprocee1988sanf",
-   "deep_link": "https://archive.org/details/calendarofprocee1988sanf?q=Hall+of+Justice",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+   "url": "https://archive.org/details/calendarofprocee1985sanf",
+   "deep_link": "https://archive.org/details/calendarofprocee1985sanf?q=Hall+of+Justice",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Other records",
+   "salient": true
   },
   {
    "identifier": "citycountyofsanf1975sanf",
@@ -146,55 +321,9 @@
    "snippet": "interrogation room «Hall of justice», Crime Lab., study to enlarge facility «Hall of Justice», Crime Lab",
    "url": "https://archive.org/details/citycountyofsanf1975sanf",
    "deep_link": "https://archive.org/details/citycountyofsanf1975sanf?q=Hall+of+Justice",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
-  },
-  {
-   "identifier": "calendarofprocee1986sanf",
-   "title": "Calendar of proceedings : Police Commission meeting",
-   "creator": "San Francisco (Calif.). Police Commission",
-   "year": null,
-   "pool": "sfpl",
-   "matched_alias": "Hall of Justice",
-   "snippet": "COMMISSION CITY AND COUNTY OF SAN FRANCISCO «HALL OF JUSTICE» 850 BRYANT STREET SAN FRANCISCO. CALIFORNIA",
-   "url": "https://archive.org/details/calendarofprocee1986sanf",
-   "deep_link": "https://archive.org/details/calendarofprocee1986sanf?q=Hall+of+Justice",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
-  },
-  {
-   "identifier": "sanfranciscopoli2012sanf",
-   "title": "San Francisco Police Commission agenda",
-   "creator": "San Francisco (Calif.). Police Commission",
-   "year": null,
-   "pool": "sfpl",
-   "matched_alias": "Hall of Justice",
-   "snippet": "necessary (ACTION) THOMAS J. CAHILL «HALL OF JUSTICE», 850 BRYANT ST., RM. 505, SAN FRANCISCO",
-   "url": "https://archive.org/details/sanfranciscopoli2012sanf",
-   "deep_link": "https://archive.org/details/sanfranciscopoli2012sanf?q=Hall+of+Justice",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
-  },
-  {
-   "identifier": "minutespo1993sanf",
-   "title": "Minutes / Police Commission of the City and County of San Francisco",
-   "creator": "San Francisco (Calif.). Police Commission",
-   "year": null,
-   "pool": "sfpl",
-   "matched_alias": "Hall of Justice",
-   "snippet": "THE NAME OF THE «HALL OF JUSTICE» TO THOMAS J. CAHILL «HALL OF JUSTICE» Chief Ribera",
-   "url": "https://archive.org/details/minutespo1993sanf",
-   "deep_link": "https://archive.org/details/minutespo1993sanf?q=Hall+of+Justice",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
-  },
-  {
-   "identifier": "calendarofprocee1987sanf",
-   "title": "Calendar of proceedings : Police Commission meeting",
-   "creator": "San Francisco (Calif.). Police Commission",
-   "year": null,
-   "pool": "sfpl",
-   "matched_alias": "Hall of Justice",
-   "snippet": "COMMISSION CITY AND COUNTY OF SAN FRANCISCO «HALL OF JUSTICE» 850 BRYANT STREET SAN FRANCISCO, CALIFORNIA",
-   "url": "https://archive.org/details/calendarofprocee1987sanf",
-   "deep_link": "https://archive.org/details/calendarofprocee1987sanf?q=Hall+of+Justice",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Other records",
+   "salient": true
   }
  ],
  "dept_shelf": [
@@ -218,29 +347,10 @@
    "year": null,
    "pool": "sfpl",
    "url": "https://archive.org/details/southofmarketzon1988sanf"
-  },
-  {
-   "identifier": "38minutesofsanfran1979san",
-   "title": "Minutes of the San Francisco City Planning Commission regular meeting",
-   "year": null,
-   "pool": "sfpl",
-   "url": "https://archive.org/details/38minutesofsanfran1979san"
-  },
-  {
-   "identifier": "capitalimproveme1961sanf",
-   "title": "Capital Improvement Program recommended for fiscal year ... proposed for fiscal years ... through ..",
-   "year": null,
-   "pool": "sfpl",
-   "url": "https://archive.org/details/capitalimproveme1961sanf"
-  },
-  {
-   "identifier": "agendasanfrancis1992nfra",
-   "title": "Agenda / San Francisco City Planning Commission",
-   "year": null,
-   "pool": "sfpl",
-   "url": "https://archive.org/details/agendasanfrancis1992nfra"
   }
  ],
+ "dept_shelf_label": "City Planning Department",
+ "dept_shelf_more": 3,
  "sources": [
   {
    "label": "City budget & payments",
@@ -253,7 +363,7 @@
  ],
  "_gate": {
   "has_photo": false,
-  "n_documents": 14,
+  "n_documents": 5,
   "n_money_links": 1,
   "meets_pre_summary": false
  }

@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T22:30:00.110867+00:00",
+ "generated_at": "2026-07-21T14:25:53.945777+00:00",
  "source_pipeline": "sf_place_candidates.json → sync_ia_sf.py + link_sf_places.py + fetch_sf_place_photos.py → export_sf_places.py",
  "unit": "USD",
  "slug": "richmond-branch-library",
@@ -13,6 +13,82 @@
   "name": "Public Library",
   "code": "LIB"
  },
+ "facility": {
+  "primary_name": "Richmond Branch Library",
+  "primary_address": "351 9TH AVE",
+  "primary_city": "San Francisco",
+  "primary_zip": "94118",
+  "primary_block_lot": "1441007",
+  "primary_department_name": "Public Library",
+  "primary_is_city_owned": true,
+  "primary_gross_sq_ft": 13900,
+  "primary_latitude": 37.78184424500006,
+  "primary_longitude": -122.46809920399994,
+  "supervisor_district": 1,
+  "n_facilities": 1,
+  "total_gross_sq_ft": 13900,
+  "n_owned": 1,
+  "n_leased": 0,
+  "apn_list": [
+   "1441007"
+  ],
+  "facilities": [
+   {
+    "facility_id": 1404,
+    "common_name": "Richmond Branch Library",
+    "block_lot": "1441007",
+    "gross_sq_ft": 13900,
+    "is_city_owned": true
+   }
+  ]
+ },
+ "capital": {
+  "n_items": 0,
+  "measure_totals": {},
+  "bond_programs": [],
+  "items": [],
+  "payees": [],
+  "n_payees": 0,
+  "payees_total_paid": 0,
+  "permits": [
+   {
+    "description": "renovation of public library including the construction of an addition. work will include a seismic upgrade, new electrical and mechanical systems, site landscaping and accessibility work as required for disabled at richmond branch librabry.",
+    "permit_type": "additions alterations or repairs",
+    "declared_cost_usd": 8043933.0,
+    "status": "complete",
+    "permit_date": "2007-03-20",
+    "permit_year": 2007
+   },
+   {
+    "description": "installation of a new sprinkler system in library renovation. 140-new heads.",
+    "permit_type": "additions alterations or repairs",
+    "declared_cost_usd": 35000.0,
+    "status": "complete",
+    "permit_date": "2008-01-28",
+    "permit_year": 2008
+   },
+   {
+    "description": "new fire alarm system consisting of 1 fire alarm control panel w/ diacer, 1 annunciator panel, 39 smoke detectors, 3 heat detectors, 2 beam smoke detectors, 1 dual monitor module for sprinkler monitoring, 2 relay modules for elevator, 16 horn/strobe, 9 strobes.",
+    "permit_type": "otc alterations permit",
+    "declared_cost_usd": 12000.0,
+    "status": "complete",
+    "permit_date": "2008-08-04",
+    "permit_year": 2008
+   }
+  ],
+  "n_permits": 3,
+  "permits_total_declared": 8090933.0,
+  "permits_by_year": [
+   {
+    "year": 2007,
+    "declared_usd": 8043933.0
+   },
+   {
+    "year": 2008,
+    "declared_usd": 47000.0
+   }
+  ]
+ },
  "photo": null,
  "photo_credit": null,
  "summary_en": null,
@@ -24,45 +100,30 @@
    "total_usd": 187421705.0,
    "fiscal_year": 2025
   },
+  "payroll_line": {
+   "code": "LIB",
+   "name": "Public Library",
+   "total_compensation_usd": 110470134.22,
+   "n_employees": 985,
+   "fiscal_year": 2025
+  },
   "contracts": [],
   "grants": []
  },
  "documents": [
   {
-   "identifier": "branchlibraryimp3200sanf",
-   "title": "Branch library improvement program : November 2000--general obligation bond program proposal",
-   "creator": "San Francisco (Calif.). Bureau of Architecture",
-   "year": 2000,
+   "identifier": "1meetingminutes2003sanf",
+   "title": "Meeting minutes",
+   "creator": "San Francisco (Calif.). Board of Supervisors. Finance and Audits Committee",
+   "year": null,
    "pool": "sfpl",
    "matched_alias": "Richmond Branch Library",
-   "snippet": "Improvement Program «RICHMOND BRANCH LIBRARY» BACKGROUND The «Richmond Branch Library», the first SFPL",
-   "url": "https://archive.org/details/branchlibraryimp3200sanf",
-   "deep_link": "https://archive.org/details/branchlibraryimp3200sanf?q=Richmond+Branch+Library",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
-  },
-  {
-   "identifier": "2calendarmeetingo1995sanf",
-   "title": "Calendar : meeting of Budget Committee, Board of Supervisors, City and County of San Francisco",
-   "creator": "San Francisco (Calif.). Board of Supervisors. Budget Committee",
-   "year": 1993,
-   "pool": "sfpl",
-   "matched_alias": "Richmond Branch Library",
-   "snippet": "of the «Richmond Branch Library». The study revealed that the «Richmond Branch Library» had a",
-   "url": "https://archive.org/details/2calendarmeetingo1995sanf",
-   "deep_link": "https://archive.org/details/2calendarmeetingo1995sanf?q=Richmond+Branch+Library",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
-  },
-  {
-   "identifier": "agenda20arts_0",
-   "title": "Agenda",
-   "creator": "Arts Commission of San Francisco",
-   "year": 1983,
-   "pool": "sfpl",
-   "matched_alias": "Richmond Branch Library",
-   "snippet": "Vince Koloski for the renovated «Richmond Branch Library», as recommended by the Richmond Branch",
-   "url": "https://archive.org/details/agenda20arts_0",
-   "deep_link": "https://archive.org/details/agenda20arts_0?q=Richmond+Branch+Library",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+   "snippet": "expansion and renovation of the «Richmond Branch Library». California Reading and Literacy Improvement",
+   "url": "https://archive.org/details/1meetingminutes2003sanf",
+   "deep_link": "https://archive.org/details/1meetingminutes2003sanf?q=Richmond+Branch+Library",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Meetings & resolutions",
+   "salient": true
   },
   {
    "identifier": "minutesofregular2004sanf",
@@ -74,91 +135,37 @@
    "snippet": "meeting will be caUed to order. 1. «RICHMOND BRANCH LIBRARY» NAMING ACTION Continued from December",
    "url": "https://archive.org/details/minutesofregular2004sanf",
    "deep_link": "https://archive.org/details/minutesofregular2004sanf?q=Richmond+Branch+Library",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Meetings & resolutions",
+   "salient": true
   },
   {
-   "identifier": "adultcalendarofp1996sanf",
-   "title": "Adult calendar of programs and events",
-   "creator": "San Francisco Public Library",
-   "year": null,
-   "pool": "sfpl",
-   "matched_alias": "Richmond Branch Library",
-   "snippet": "STORYTIHE FOR CHILDREN AGES 6-8 «Richmond Branch Library», 351 9th Ave. (near Clement), (415)",
-   "url": "https://archive.org/details/adultcalendarofp1996sanf",
-   "deep_link": "https://archive.org/details/adultcalendarofp1996sanf?q=Richmond+Branch+Library",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
-  },
-  {
-   "identifier": "adultcalendarofp1997sanf",
-   "title": "Adult calendar of programs and events",
-   "creator": "San Francisco Public Library",
-   "year": null,
-   "pool": "sfpl",
-   "matched_alias": "Richmond Branch Library",
-   "snippet": "ADULT - Stories, songs, and rhymes. «Richmond Branch Library», 351 - 9th Ave. (near Clement),",
-   "url": "https://archive.org/details/adultcalendarofp1997sanf",
-   "deep_link": "https://archive.org/details/adultcalendarofp1997sanf?q=Richmond+Branch+Library",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
-  },
-  {
-   "identifier": "minutesofregula2003sanf_4",
-   "title": "Minutes of the regular meeting ...",
-   "creator": "San Francisco Public Library. Commission",
-   "year": null,
-   "pool": "sfpl",
-   "matched_alias": "Richmond Branch Library",
-   "snippet": "concerning the proposed renaming of the «Richmond Branch Library» to honor the late Senator Milton",
-   "url": "https://archive.org/details/minutesofregula2003sanf_4",
-   "deep_link": "https://archive.org/details/minutesofregula2003sanf_4?q=Richmond+Branch+Library",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
-  },
-  {
-   "identifier": "minutesofregula2002sanf_1",
-   "title": "Minutes of the regular meeting ...",
-   "creator": "San Francisco Public Library. Commission",
-   "year": null,
-   "pool": "sfpl",
-   "matched_alias": "Richmond Branch Library",
-   "snippet": "provided a detailed overview of the «Richmond Branch Library» Design Workshop and announced that",
-   "url": "https://archive.org/details/minutesofregula2002sanf_1",
-   "deep_link": "https://archive.org/details/minutesofregula2002sanf_1?q=Richmond+Branch+Library",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
-  },
-  {
-   "identifier": "minutesofregular2002sanf",
-   "title": "Minutes of the regular meeting ...",
-   "creator": "San Francisco Public Library. Commission",
-   "year": null,
-   "pool": "sfpl",
-   "matched_alias": "Richmond Branch Library",
-   "snippet": "Reserve Active Projects Reports • «Richmond Branch Library» • Glen Park Branch Library • Mission",
-   "url": "https://archive.org/details/minutesofregular2002sanf",
-   "deep_link": "https://archive.org/details/minutesofregular2002sanf?q=Richmond+Branch+Library",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
-  },
-  {
-   "identifier": "noticeofartistse19arts",
-   "title": "Notice of artist selection panel meeting",
+   "identifier": "agenda20arts_0",
+   "title": "Agenda",
    "creator": "Arts Commission of San Francisco",
-   "year": null,
+   "year": 1983,
    "pool": "sfpl",
    "matched_alias": "Richmond Branch Library",
-   "snippet": "for the expanded and renovated «Richmond Branch Library». The Civic Art Collection r",
-   "url": "https://archive.org/details/noticeofartistse19arts",
-   "deep_link": "https://archive.org/details/noticeofartistse19arts?q=Richmond+Branch+Library",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+   "snippet": "Vince Koloski for the renovated «Richmond Branch Library», as recommended by the Richmond Branch",
+   "url": "https://archive.org/details/agenda20arts_0",
+   "deep_link": "https://archive.org/details/agenda20arts_0?q=Richmond+Branch+Library",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Meetings & resolutions",
+   "salient": true
   },
   {
-   "identifier": "1meetingminutes2003sanf",
-   "title": "Meeting minutes",
-   "creator": "San Francisco (Calif.). Board of Supervisors. Finance and Audits Committee",
-   "year": null,
+   "identifier": "branchlibraryimp3200sanf",
+   "title": "Branch library improvement program : November 2000--general obligation bond program proposal",
+   "creator": "San Francisco (Calif.). Bureau of Architecture",
+   "year": 2000,
    "pool": "sfpl",
    "matched_alias": "Richmond Branch Library",
-   "snippet": "expansion and renovation of the «Richmond Branch Library». California Reading and Literacy Improvement",
-   "url": "https://archive.org/details/1meetingminutes2003sanf",
-   "deep_link": "https://archive.org/details/1meetingminutes2003sanf?q=Richmond+Branch+Library",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+   "snippet": "Improvement Program «RICHMOND BRANCH LIBRARY» BACKGROUND The «Richmond Branch Library», the first SFPL",
+   "url": "https://archive.org/details/branchlibraryimp3200sanf",
+   "deep_link": "https://archive.org/details/branchlibraryimp3200sanf?q=Richmond+Branch+Library",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Other records",
+   "salient": true
   },
   {
    "identifier": "bidscontractsby2006sanf_0",
@@ -170,31 +177,51 @@
    "snippet": "DeSouza, Fax 4 1 5.554.837 1 751 3A «Richmond Branch Library» Renovation. The work is extensive",
    "url": "https://archive.org/details/bidscontractsby2006sanf_0",
    "deep_link": "https://archive.org/details/bidscontractsby2006sanf_0?q=Richmond+Branch+Library",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Other records",
+   "salient": true
   },
   {
-   "identifier": "minutesofregula2003sanf_1",
-   "title": "Minutes of the regular meeting ...",
-   "creator": "San Francisco Public Library. Commission",
+   "identifier": "2calendarmeetingo1995sanf",
+   "title": "Calendar : meeting of Budget Committee, Board of Supervisors, City and County of San Francisco",
+   "creator": "San Francisco (Calif.). Board of Supervisors. Budget Committee",
+   "year": 1993,
+   "pool": "sfpl",
+   "matched_alias": "Richmond Branch Library",
+   "snippet": "of the «Richmond Branch Library». The study revealed that the «Richmond Branch Library» had a",
+   "url": "https://archive.org/details/2calendarmeetingo1995sanf",
+   "deep_link": "https://archive.org/details/2calendarmeetingo1995sanf?q=Richmond+Branch+Library",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Other records",
+   "salient": true
+  },
+  {
+   "identifier": "adultcalendarofp1996sanf",
+   "title": "Adult calendar of programs and events",
+   "creator": "San Francisco Public Library",
    "year": null,
    "pool": "sfpl",
    "matched_alias": "Richmond Branch Library",
-   "snippet": "providing him with copies of the «Richmond Branch Library» Prop. 14 Application in a timely",
-   "url": "https://archive.org/details/minutesofregula2003sanf_1",
-   "deep_link": "https://archive.org/details/minutesofregula2003sanf_1?q=Richmond+Branch+Library",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+   "snippet": "STORYTIHE FOR CHILDREN AGES 6-8 «Richmond Branch Library», 351 9th Ave. (near Clement), (415)",
+   "url": "https://archive.org/details/adultcalendarofp1996sanf",
+   "deep_link": "https://archive.org/details/adultcalendarofp1996sanf?q=Richmond+Branch+Library",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Other records",
+   "salient": false
   },
   {
-   "identifier": "minutesofregula2005sanf_1",
-   "title": "Minutes of the regular meeting ...",
-   "creator": "San Francisco Public Library. Commission",
+   "identifier": "noticeofartistse19arts",
+   "title": "Notice of artist selection panel meeting",
+   "creator": "Arts Commission of San Francisco",
    "year": null,
    "pool": "sfpl",
    "matched_alias": "Richmond Branch Library",
-   "snippet": "the Prop. 14 grant hinds at the «Richmond Branch Library» and that State Assemblyman Leno",
-   "url": "https://archive.org/details/minutesofregula2005sanf_1",
-   "deep_link": "https://archive.org/details/minutesofregula2005sanf_1?q=Richmond+Branch+Library",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+   "snippet": "for the expanded and renovated «Richmond Branch Library». The Civic Art Collection r",
+   "url": "https://archive.org/details/noticeofartistse19arts",
+   "deep_link": "https://archive.org/details/noticeofartistse19arts?q=Richmond+Branch+Library",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Other records",
+   "salient": false
   }
  ],
  "dept_shelf": [
@@ -218,29 +245,10 @@
    "year": null,
    "pool": "sfpl",
    "url": "https://archive.org/details/minutesofregula1619sanf_0"
-  },
-  {
-   "identifier": "agenda1969sanf",
-   "title": "Agenda",
-   "year": null,
-   "pool": "sfpl",
-   "url": "https://archive.org/details/agenda1969sanf"
-  },
-  {
-   "identifier": "agendasminutessa1979sanf",
-   "title": "Agendas and Minutes / San Francisco Public Library Commission, Finance Committee",
-   "year": null,
-   "pool": "sfpl",
-   "url": "https://archive.org/details/agendasminutessa1979sanf"
-  },
-  {
-   "identifier": "requestforuseofp1998sanf",
-   "title": "Request for use of public meeting rooms / Branch meeting rooms summary",
-   "year": null,
-   "pool": "sfpl",
-   "url": "https://archive.org/details/requestforuseofp1998sanf"
   }
  ],
+ "dept_shelf_label": "Public Library",
+ "dept_shelf_more": 3,
  "sources": [
   {
    "label": "City budget & payments",
@@ -253,7 +261,7 @@
  ],
  "_gate": {
   "has_photo": false,
-  "n_documents": 14,
+  "n_documents": 8,
   "n_money_links": 1,
   "meets_pre_summary": false
  }

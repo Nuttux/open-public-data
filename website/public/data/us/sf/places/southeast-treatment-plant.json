@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T22:30:00.119851+00:00",
+ "generated_at": "2026-07-21T14:25:53.968295+00:00",
  "source_pipeline": "sf_place_candidates.json → sync_ia_sf.py + link_sf_places.py + fetch_sf_place_photos.py → export_sf_places.py",
  "unit": "USD",
  "slug": "southeast-treatment-plant",
@@ -13,6 +13,36 @@
   "name": "Public Utilities Commission",
   "code": "PUC"
  },
+ "facility": {
+  "primary_name": "Water Pollution Control",
+  "primary_address": "PIER 34 1/2",
+  "primary_city": "San Francisco",
+  "primary_zip": "94107",
+  "primary_block_lot": "9900070",
+  "primary_department_name": "Public Utilities Commission",
+  "primary_is_city_owned": true,
+  "primary_gross_sq_ft": null,
+  "primary_latitude": 37.784125277000044,
+  "primary_longitude": -122.387727816,
+  "supervisor_district": 6,
+  "n_facilities": 1,
+  "total_gross_sq_ft": null,
+  "n_owned": 1,
+  "n_leased": 0,
+  "apn_list": [
+   "9900070"
+  ],
+  "facilities": [
+   {
+    "facility_id": 3023,
+    "common_name": "Water Pollution Control",
+    "block_lot": "9900070",
+    "gross_sq_ft": null,
+    "is_city_owned": true
+   }
+  ]
+ },
+ "capital": null,
  "photo": null,
  "photo_credit": null,
  "summary_en": null,
@@ -24,69 +54,30 @@
    "total_usd": 1802973252.0,
    "fiscal_year": 2025
   },
+  "payroll_line": {
+   "code": "PUC",
+   "name": "Public Utilities Commission",
+   "total_compensation_usd": 475550972.11,
+   "n_employees": 2679,
+   "fiscal_year": 2025
+  },
   "contracts": [],
   "grants": []
  },
  "documents": [
   {
-   "identifier": "missionbaysubse1719sanf_1",
-   "title": "Mission Bay subsequent environmental impact report : final",
-   "creator": "San Francisco (Calif.). Planning Dept,San Francisco Redevelopment Agency (San Francisco, Calif.)",
-   "year": 1998,
-   "pool": "sfpl",
-   "matched_alias": "Southeast Water Pollution Control Plant",
-   "snippet": "physical changes to the «Southeast Water Pollution Control Plant». For these reasons, only",
-   "url": "https://archive.org/details/missionbaysubse1719sanf_1",
-   "deep_link": "https://archive.org/details/missionbaysubse1719sanf_1?q=Southeast+Water+Pollution+Control+Plant",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
-  },
-  {
-   "identifier": "sanfranciscokais1319sanf",
-   "title": "San Francisco Kaiser Medical Center Geary Campus development project : draft environmental impact report",
-   "creator": "San Francisco (Calif.). Planning Dept,San Francisco Redevelopment Agency (San Francisco, Calif.)",
-   "year": 1996,
-   "pool": "sfpl",
-   "matched_alias": "Southeast Water Pollution Control Plant",
-   "snippet": "the Geary Campus to the «Southeast Water Pollution Control Plant» for treatment: ■ sewer main",
-   "url": "https://archive.org/details/sanfranciscokais1319sanf",
-   "deep_link": "https://archive.org/details/sanfranciscokais1319sanf?q=Southeast+Water+Pollution+Control+Plant",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
-  },
-  {
-   "identifier": "southbayshorenew1996sanf",
-   "title": "South Bayshore : a new beginning : citizen's guide to the South Bayshore plan",
-   "creator": "San Francisco (Calif.). Planning Dept",
-   "year": 1996,
+   "identifier": "sanfranciscomast1519sanf",
+   "title": "San Francisco master plan for waste water management",
+   "creator": "San Francisco (Calif.). Dept. of Public Works",
+   "year": 1971,
    "pool": "sfpl",
    "matched_alias": "Southeast Treatment Plant",
-   "snippet": "the entire treated waste from the «Southeast Treatment Plant» to the beach using gravity, then",
-   "url": "https://archive.org/details/southbayshorenew1996sanf",
-   "deep_link": "https://archive.org/details/southbayshorenew1996sanf?q=Southeast+Treatment+Plant",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
-  },
-  {
-   "identifier": "stepifacilitiesp1979losa",
-   "title": "Step I facilities plan : community facility at the Southeast Treatment Plant",
-   "creator": "Los Alamos Community Service District,Jefferson Associates,Curtis Associates,Ishimaru, O'Neill & Simmons,San Francisco Wastewater Program",
-   "year": 1979,
-   "pool": "sfpl",
-   "matched_alias": "Southeast Treatment Plant",
-   "snippet": "Facilities Plan COMMUNITY FACILITY at the «SOUTHEAST TREATMENT PLANT» JEFFERSON ASSOCIATES, INC. CURTIS",
-   "url": "https://archive.org/details/stepifacilitiesp1979losa",
-   "deep_link": "https://archive.org/details/stepifacilitiesp1979losa?q=Southeast+Treatment+Plant",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
-  },
-  {
-   "identifier": "draftenvironment1976yerb",
-   "title": "Draft environmental impact report, San Francisco Executive Park for the Yerby Corporation",
-   "creator": "Yerby Corporation,San Francisco (Calif.). Dept. of City Planning",
-   "year": 1976,
-   "pool": "sfpl",
-   "matched_alias": "Southeast Water Pollution Control Plant",
-   "snippet": "Harney Way due north to the «Southeast Water Pollution Control Plant». A chemically assisted",
-   "url": "https://archive.org/details/draftenvironment1976yerb",
-   "deep_link": "https://archive.org/details/draftenvironment1976yerb?q=Southeast+Water+Pollution+Control+Plant",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+   "snippet": "treatment would be transported to the «Southeast treatment plant» and treated for final disposal in",
+   "url": "https://archive.org/details/sanfranciscomast1519sanf",
+   "deep_link": "https://archive.org/details/sanfranciscomast1519sanf?q=Southeast+Treatment+Plant",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Plans & environmental review",
+   "salient": true
   },
   {
    "identifier": "phasesiiiiiofres1819unit",
@@ -98,19 +89,9 @@
    "snippet": "Final Environmental Impact Report, «Southeast Treatment Plant» Dry Weather Expansion and Interim",
    "url": "https://archive.org/details/phasesiiiiiofres1819unit",
    "deep_link": "https://archive.org/details/phasesiiiiiofres1819unit?q=Southeast+Treatment+Plant",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
-  },
-  {
-   "identifier": "sanfranciscowas1974ch2m_0",
-   "title": "San Francisco wastewater treatment pilot plant study",
-   "creator": "CH2M Hill, inc,San Francisco (Calif.). Dept. of Public Works",
-   "year": 1974,
-   "pool": "sfpl",
-   "matched_alias": "Southeast Treatment Plant",
-   "snippet": "this study a single sample of «Southeast Treatment Plant» effluent was split eight ways and",
-   "url": "https://archive.org/details/sanfranciscowas1974ch2m_0",
-   "deep_link": "https://archive.org/details/sanfranciscowas1974ch2m_0?q=Southeast+Treatment+Plant",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Plans & environmental review",
+   "salient": true
   },
   {
    "identifier": "evaluationsanfra73jbgi",
@@ -122,55 +103,51 @@
    "snippet": "service area will be pumped to the «Southeast Treatment Plant». The Southeast Plant will provide",
    "url": "https://archive.org/details/evaluationsanfra73jbgi",
    "deep_link": "https://archive.org/details/evaluationsanfra73jbgi?q=Southeast+Treatment+Plant",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Plans & environmental review",
+   "salient": true
   },
   {
-   "identifier": "reportonwaterpol1971brow",
-   "title": "Report on water pollution control plants : report 1",
-   "creator": "Brown and Caldwell",
-   "year": 1971,
+   "identifier": "sanfranciscokais1319sanf",
+   "title": "San Francisco Kaiser Medical Center Geary Campus development project : draft environmental impact report",
+   "creator": "San Francisco (Calif.). Planning Dept,San Francisco Redevelopment Agency (San Francisco, Calif.)",
+   "year": 1996,
    "pool": "sfpl",
    "matched_alias": "Southeast Water Pollution Control Plant",
-   "snippet": "year. «SOUTHEAST WATER POLLUTION CONTROL PLANT» The «Southeast Water Pollution Control Plant», completed",
-   "url": "https://archive.org/details/reportonwaterpol1971brow",
-   "deep_link": "https://archive.org/details/reportonwaterpol1971brow?q=Southeast+Water+Pollution+Control+Plant",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+   "snippet": "the Geary Campus to the «Southeast Water Pollution Control Plant» for treatment: ■ sewer main",
+   "url": "https://archive.org/details/sanfranciscokais1319sanf",
+   "deep_link": "https://archive.org/details/sanfranciscokais1319sanf?q=Southeast+Water+Pollution+Control+Plant",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Plans & environmental review",
+   "salient": true
   },
   {
-   "identifier": "sanfranciscomast1519sanf",
-   "title": "San Francisco master plan for waste water management",
-   "creator": "San Francisco (Calif.). Dept. of Public Works",
-   "year": 1971,
-   "pool": "sfpl",
-   "matched_alias": "Southeast Treatment Plant",
-   "snippet": "treatment would be transported to the «Southeast treatment plant» and treated for final disposal in",
-   "url": "https://archive.org/details/sanfranciscomast1519sanf",
-   "deep_link": "https://archive.org/details/sanfranciscomast1519sanf?q=Southeast+Treatment+Plant",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
-  },
-  {
-   "identifier": "capitalimprovemsanf",
-   "title": "Capital Improvement Program recommended for fiscal year ... proposed for fiscal years ... through ..",
-   "creator": "San Francisco (Calif.). Dept. of City Planning",
-   "year": 1949,
-   "pool": "sfpl",
-   "matched_alias": "Southeast Treatment Plant",
-   "snippet": "at low cost to takers at the «Southeast Treatment Plant». Approval by the voters in J\\ine",
-   "url": "https://archive.org/details/capitalimprovemsanf",
-   "deep_link": "https://archive.org/details/capitalimprovemsanf?q=Southeast+Treatment+Plant",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
-  },
-  {
-   "identifier": "7minutes2000sanf",
-   "title": "Minutes",
-   "creator": "San Francisco Public Utilities Commission",
-   "year": null,
+   "identifier": "draftenvironment1976yerb",
+   "title": "Draft environmental impact report, San Francisco Executive Park for the Yerby Corporation",
+   "creator": "Yerby Corporation,San Francisco (Calif.). Dept. of City Planning",
+   "year": 1976,
    "pool": "sfpl",
    "matched_alias": "Southeast Water Pollution Control Plant",
-   "snippet": "Program Contract No. CW-262, «Southeast Water Pollution Control Plant» Roofing Project - Buildings",
-   "url": "https://archive.org/details/7minutes2000sanf",
-   "deep_link": "https://archive.org/details/7minutes2000sanf?q=Southeast+Water+Pollution+Control+Plant",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+   "snippet": "Harney Way due north to the «Southeast Water Pollution Control Plant». A chemically assisted",
+   "url": "https://archive.org/details/draftenvironment1976yerb",
+   "deep_link": "https://archive.org/details/draftenvironment1976yerb?q=Southeast+Water+Pollution+Control+Plant",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Plans & environmental review",
+   "salient": true
+  },
+  {
+   "identifier": "missionbaysubse1719sanf_1",
+   "title": "Mission Bay subsequent environmental impact report : final",
+   "creator": "San Francisco (Calif.). Planning Dept,San Francisco Redevelopment Agency (San Francisco, Calif.)",
+   "year": 1998,
+   "pool": "sfpl",
+   "matched_alias": "Southeast Water Pollution Control Plant",
+   "snippet": "physical changes to the «Southeast Water Pollution Control Plant». For these reasons, only",
+   "url": "https://archive.org/details/missionbaysubse1719sanf_1",
+   "deep_link": "https://archive.org/details/missionbaysubse1719sanf_1?q=Southeast+Water+Pollution+Control+Plant",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Plans & environmental review",
+   "salient": true
   },
   {
    "identifier": "mminutes1998sanf",
@@ -182,19 +159,79 @@
    "snippet": "Department Contract No. CW-158, «Southeast Water Pollution Control Plant» Buildings Roofing Project;",
    "url": "https://archive.org/details/mminutes1998sanf",
    "deep_link": "https://archive.org/details/mminutes1998sanf?q=Southeast+Water+Pollution+Control+Plant",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Meetings & resolutions",
+   "salient": false
   },
   {
-   "identifier": "8minutes2000sanf",
-   "title": "Minutes",
-   "creator": "San Francisco Public Utilities Commission",
-   "year": null,
+   "identifier": "stepifacilitiesp1979losa",
+   "title": "Step I facilities plan : community facility at the Southeast Treatment Plant",
+   "creator": "Los Alamos Community Service District,Jefferson Associates,Curtis Associates,Ishimaru, O'Neill & Simmons,San Francisco Wastewater Program",
+   "year": 1979,
+   "pool": "sfpl",
+   "matched_alias": "Southeast Treatment Plant",
+   "snippet": "Facilities Plan COMMUNITY FACILITY at the «SOUTHEAST TREATMENT PLANT» JEFFERSON ASSOCIATES, INC. CURTIS",
+   "url": "https://archive.org/details/stepifacilitiesp1979losa",
+   "deep_link": "https://archive.org/details/stepifacilitiesp1979losa?q=Southeast+Treatment+Plant",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Other records",
+   "salient": false
+  },
+  {
+   "identifier": "reportonwaterpol1971brow",
+   "title": "Report on water pollution control plants : report 1",
+   "creator": "Brown and Caldwell",
+   "year": 1971,
    "pool": "sfpl",
    "matched_alias": "Southeast Water Pollution Control Plant",
-   "snippet": "Program Contract No. CW-227, «Southeast Water Pollution Control Plant» Booster Pump Station Upgrade",
-   "url": "https://archive.org/details/8minutes2000sanf",
-   "deep_link": "https://archive.org/details/8minutes2000sanf?q=Southeast+Water+Pollution+Control+Plant",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+   "snippet": "year. «SOUTHEAST WATER POLLUTION CONTROL PLANT» The «Southeast Water Pollution Control Plant», completed",
+   "url": "https://archive.org/details/reportonwaterpol1971brow",
+   "deep_link": "https://archive.org/details/reportonwaterpol1971brow?q=Southeast+Water+Pollution+Control+Plant",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Other records",
+   "salient": false
+  },
+  {
+   "identifier": "southbayshorenew1996sanf",
+   "title": "South Bayshore : a new beginning : citizen's guide to the South Bayshore plan",
+   "creator": "San Francisco (Calif.). Planning Dept",
+   "year": 1996,
+   "pool": "sfpl",
+   "matched_alias": "Southeast Treatment Plant",
+   "snippet": "the entire treated waste from the «Southeast Treatment Plant» to the beach using gravity, then",
+   "url": "https://archive.org/details/southbayshorenew1996sanf",
+   "deep_link": "https://archive.org/details/southbayshorenew1996sanf?q=Southeast+Treatment+Plant",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Other records",
+   "salient": false
+  },
+  {
+   "identifier": "sanfranciscowas1974ch2m_0",
+   "title": "San Francisco wastewater treatment pilot plant study",
+   "creator": "CH2M Hill, inc,San Francisco (Calif.). Dept. of Public Works",
+   "year": 1974,
+   "pool": "sfpl",
+   "matched_alias": "Southeast Treatment Plant",
+   "snippet": "this study a single sample of «Southeast Treatment Plant» effluent was split eight ways and",
+   "url": "https://archive.org/details/sanfranciscowas1974ch2m_0",
+   "deep_link": "https://archive.org/details/sanfranciscowas1974ch2m_0?q=Southeast+Treatment+Plant",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Other records",
+   "salient": false
+  },
+  {
+   "identifier": "capitalimprovemsanf",
+   "title": "Capital Improvement Program recommended for fiscal year ... proposed for fiscal years ... through ..",
+   "creator": "San Francisco (Calif.). Dept. of City Planning",
+   "year": 1949,
+   "pool": "sfpl",
+   "matched_alias": "Southeast Treatment Plant",
+   "snippet": "at low cost to takers at the «Southeast Treatment Plant». Approval by the voters in J\\ine",
+   "url": "https://archive.org/details/capitalimprovemsanf",
+   "deep_link": "https://archive.org/details/capitalimprovemsanf?q=Southeast+Treatment+Plant",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Other records",
+   "salient": false
   }
  ],
  "dept_shelf": [
@@ -218,29 +255,10 @@
    "year": null,
    "pool": "sfpl",
    "url": "https://archive.org/details/agendapublicutil1989sanf"
-  },
-  {
-   "identifier": "agendapublicutil2008sanf",
-   "title": "Agenda / Public Utilities Commission, City and County of San Francisco",
-   "year": null,
-   "pool": "sfpl",
-   "url": "https://archive.org/details/agendapublicutil2008sanf"
-  },
-  {
-   "identifier": "agendapublicutil1992sanf",
-   "title": "Agenda / Public Utilities Commission, City and County of San Francisco",
-   "year": null,
-   "pool": "sfpl",
-   "url": "https://archive.org/details/agendapublicutil1992sanf"
-  },
-  {
-   "identifier": "aminutes1994sanf",
-   "title": "Minutes",
-   "year": null,
-   "pool": "sfpl",
-   "url": "https://archive.org/details/aminutes1994sanf"
   }
  ],
+ "dept_shelf_label": "Public Utilities Commission",
+ "dept_shelf_more": 3,
  "sources": [
   {
    "label": "City budget & payments",
@@ -253,7 +271,7 @@
  ],
  "_gate": {
   "has_photo": false,
-  "n_documents": 14,
+  "n_documents": 12,
   "n_money_links": 1,
   "meets_pre_summary": false
  }

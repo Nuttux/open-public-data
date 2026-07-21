@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T22:30:00.121340+00:00",
+ "generated_at": "2026-07-21T14:25:53.972098+00:00",
  "source_pipeline": "sf_place_candidates.json → sync_ia_sf.py + link_sf_places.py + fetch_sf_place_photos.py → export_sf_places.py",
  "unit": "USD",
  "slug": "pier-70",
@@ -12,6 +12,400 @@
  "owning_dept": {
   "name": "Port of San Francisco",
   "code": "PRT"
+ },
+ "facility": {
+  "primary_name": "Pier 70 - Pier 68 - Building #149",
+  "primary_address": "590 20TH ST",
+  "primary_city": "San Francisco",
+  "primary_zip": "94107",
+  "primary_block_lot": "9900070",
+  "primary_department_name": "Port",
+  "primary_is_city_owned": true,
+  "primary_gross_sq_ft": 600,
+  "primary_latitude": 37.76203009900007,
+  "primary_longitude": -122.38595231199997,
+  "supervisor_district": 10,
+  "n_facilities": 50,
+  "total_gross_sq_ft": 825611,
+  "n_owned": 50,
+  "n_leased": 0,
+  "apn_list": [
+   "9900070",
+   "4111003"
+  ],
+  "facilities": [
+   {
+    "facility_id": 2010,
+    "common_name": "Pier 70 - SWL 349 Warehouse - Bldg.2",
+    "block_lot": "4111003",
+    "gross_sq_ft": 96804,
+    "is_city_owned": true
+   },
+   {
+    "facility_id": 1982,
+    "common_name": "Pier 70 - Pier 68 - Sheet Metal/Tools Bldg #109",
+    "block_lot": "9900070",
+    "gross_sq_ft": 82099,
+    "is_city_owned": true
+   },
+   {
+    "facility_id": 2008,
+    "common_name": "Pier 70 - SWL 349 Traffic Department Bldg. #12 & #15",
+    "block_lot": "4111003",
+    "gross_sq_ft": 78116,
+    "is_city_owned": true
+   },
+   {
+    "facility_id": 2005,
+    "common_name": "Pier 70 - SWL 349 Heavy Machine Shop - Bldg #113",
+    "block_lot": "4111003",
+    "gross_sq_ft": 74566,
+    "is_city_owned": true
+   },
+   {
+    "facility_id": 1976,
+    "common_name": "Pier 70 - Pier 68 - Office Building #101",
+    "block_lot": "9900070",
+    "gross_sq_ft": 56268,
+    "is_city_owned": true
+   },
+   {
+    "facility_id": 1983,
+    "common_name": "Pier 70 - Pier 68 - Shipwright Building -#108",
+    "block_lot": "9900070",
+    "gross_sq_ft": 46638,
+    "is_city_owned": true
+   },
+   {
+    "facility_id": 1978,
+    "common_name": "Pier 70 - Pier 68 - Office/Warehouse Bldg.- Bldg #111",
+    "block_lot": "9900070",
+    "gross_sq_ft": 41500,
+    "is_city_owned": true
+   },
+   {
+    "facility_id": 1977,
+    "common_name": "Pier 70 - Pier 68 - Office Building #104",
+    "block_lot": "9900070",
+    "gross_sq_ft": 37641,
+    "is_city_owned": true
+   },
+   {
+    "facility_id": 2003,
+    "common_name": "Pier 70 - SWL 349 Building #6 (condemned)",
+    "block_lot": "4111003",
+    "gross_sq_ft": 34707,
+    "is_city_owned": true
+   },
+   {
+    "facility_id": 2006,
+    "common_name": "Pier 70 - SWL 349 SF Shipyard Training Bldg 117",
+    "block_lot": "4111003",
+    "gross_sq_ft": 30940,
+    "is_city_owned": true
+   },
+   {
+    "facility_id": 1968,
+    "common_name": "Pier 70 - Pier 68 - Cable/Electric Shop - Bldg.#38",
+    "block_lot": "9900070",
+    "gross_sq_ft": 30546,
+    "is_city_owned": true
+   },
+   {
+    "facility_id": 2009,
+    "common_name": "Pier 70 - SWL 349 Traffic Dept. Shed - Bldg #66",
+    "block_lot": "4111003",
+    "gross_sq_ft": 22116,
+    "is_city_owned": true
+   },
+   {
+    "facility_id": 1972,
+    "common_name": "Pier 70 - Pier 68 - Machine Shop - Bldg. #105",
+    "block_lot": "9900070",
+    "gross_sq_ft": 20111,
+    "is_city_owned": true
+   },
+   {
+    "facility_id": 1999,
+    "common_name": "Pier 70 - SWL 349 - Brass Foundry, Bldg. #115",
+    "block_lot": "4111003",
+    "gross_sq_ft": 17400,
+    "is_city_owned": true
+   },
+   {
+    "facility_id": 2000,
+    "common_name": "Pier 70 - SWL 349 - Foundry, Bldg. #116",
+    "block_lot": "4111003",
+    "gross_sq_ft": 17400,
+    "is_city_owned": true
+   },
+   {
+    "facility_id": 2004,
+    "common_name": "Pier 70 - SWL 349 Equipment Bldg - Bldg #14",
+    "block_lot": "4111003",
+    "gross_sq_ft": 15969,
+    "is_city_owned": true
+   },
+   {
+    "facility_id": 1971,
+    "common_name": "Pier 70 - Pier 68 - Equipment Building #36",
+    "block_lot": "9900070",
+    "gross_sq_ft": 12050,
+    "is_city_owned": true
+   },
+   {
+    "facility_id": 1975,
+    "common_name": "Pier 70 - Pier 68 - Office Bldg Annex to #101, Bldg. #40",
+    "block_lot": "9900070",
+    "gross_sq_ft": 11800,
+    "is_city_owned": true
+   },
+   {
+    "facility_id": 2007,
+    "common_name": "Pier 70 - SWL 349 Shop Building - Bldg #21",
+    "block_lot": "4111003",
+    "gross_sq_ft": 10172,
+    "is_city_owned": true
+   },
+   {
+    "facility_id": 1988,
+    "common_name": "Pier 70 - Pier 68 - Warehouse & 6-ton crane, Bldg. #49",
+    "block_lot": "9900070",
+    "gross_sq_ft": 10000,
+    "is_city_owned": true
+   },
+   {
+    "facility_id": 1995,
+    "common_name": "Pier 70 - SWL 349 - Beth Street Warehouse, Bldg. #32",
+    "block_lot": "4111003",
+    "gross_sq_ft": 9306,
+    "is_city_owned": true
+   },
+   {
+    "facility_id": 1979,
+    "common_name": "Pier 70 - Pier 68 - Ops. Bldg #102",
+    "block_lot": "9900070",
+    "gross_sq_ft": 8428,
+    "is_city_owned": true
+   },
+   {
+    "facility_id": 2002,
+    "common_name": "Pier 70 - SWL 349 - UIW Machine Shop, Bldg. #114",
+    "block_lot": "4111003",
+    "gross_sq_ft": 8000,
+    "is_city_owned": true
+   },
+   {
+    "facility_id": 1994,
+    "common_name": "Pier 70 - SWL 349 - Beth Street Stress Relieving, Bldg. #16",
+    "block_lot": "4111003",
+    "gross_sq_ft": 7734,
+    "is_city_owned": true
+   },
+   {
+    "facility_id": 1993,
+    "common_name": "Pier 70 - SWL 349 - Auto Yard Shop Bldg #19",
+    "block_lot": "4111003",
+    "gross_sq_ft": 6152,
+    "is_city_owned": true
+   },
+   {
+    "facility_id": 1964,
+    "common_name": "Pier 70 - Pier 68 - Beth Street Warehouse Bldg. #30",
+    "block_lot": "9900070",
+    "gross_sq_ft": 4686,
+    "is_city_owned": true
+   },
+   {
+    "facility_id": 2001,
+    "common_name": "Pier 70 - SWL 349 - Test Room, Bldg. #23",
+    "block_lot": "4111003",
+    "gross_sq_ft": 4356,
+    "is_city_owned": true
+   },
+   {
+    "facility_id": 1989,
+    "common_name": "Pier 70 - Pier 68 - Yard Washroom, Bldg. #110",
+    "block_lot": "9900070",
+    "gross_sq_ft": 3925,
+    "is_city_owned": true
+   },
+   {
+    "facility_id": 1998,
+    "common_name": "Pier 70 - SWL 349 - Beth Street Washroom & Locker, Bldg. #29",
+    "block_lot": "4111003",
+    "gross_sq_ft": 3696,
+    "is_city_owned": true
+   },
+   {
+    "facility_id": 1996,
+    "common_name": "Pier 70 - SWL 349 - Beth Street Washroom & Locker, Bldg. #24",
+    "block_lot": "4111003",
+    "gross_sq_ft": 3432,
+    "is_city_owned": true
+   },
+   {
+    "facility_id": 1981,
+    "common_name": "Pier 70 - Pier 68 - Pipe Storage Bldg #107",
+    "block_lot": "9900070",
+    "gross_sq_ft": 2880,
+    "is_city_owned": true
+   },
+   {
+    "facility_id": 1974,
+    "common_name": "Pier 70 - Pier 68 - Office Bldg (#127)",
+    "block_lot": "9900070",
+    "gross_sq_ft": 2304,
+    "is_city_owned": true
+   },
+   {
+    "facility_id": 1986,
+    "common_name": "Pier 70 - Pier 68 - Substation #6, Bldg. #64",
+    "block_lot": "9900070",
+    "gross_sq_ft": 2000,
+    "is_city_owned": true
+   },
+   {
+    "facility_id": 1992,
+    "common_name": "Pier 70 - SWL 345 - Kneass, Pier 66 Boatyard Office",
+    "block_lot": "4111003",
+    "gross_sq_ft": 2000,
+    "is_city_owned": true
+   },
+   {
+    "facility_id": 1966,
+    "common_name": "Pier 70 - Pier 68 - Boiler/Steam Power House - #103",
+    "block_lot": "9900070",
+    "gross_sq_ft": 1860,
+    "is_city_owned": true
+   },
+   {
+    "facility_id": 1997,
+    "common_name": "Pier 70 - SWL 349 - Beth Street Washroom & Locker, Bldg. #25",
+    "block_lot": "4111003",
+    "gross_sq_ft": 1490,
+    "is_city_owned": true
+   },
+   {
+    "facility_id": 1987,
+    "common_name": "Pier 70 - Pier 68 - Substation #7 (bldg #68)",
+    "block_lot": "9900070",
+    "gross_sq_ft": 1440,
+    "is_city_owned": true
+   },
+   {
+    "facility_id": 1990,
+    "common_name": "Pier 70 - Pier 68 - Yard Washroom, Bldg. #119",
+    "block_lot": "9900070",
+    "gross_sq_ft": 1440,
+    "is_city_owned": true
+   },
+   {
+    "facility_id": 1985,
+    "common_name": "Pier 70 - Pier 68 - Substation #4 (bldg #58)",
+    "block_lot": "9900070",
+    "gross_sq_ft": 820,
+    "is_city_owned": true
+   },
+   {
+    "facility_id": 1984,
+    "common_name": "Pier 70 - Pier 68 - Steel Shop Office (bldg #121)",
+    "block_lot": "9900070",
+    "gross_sq_ft": 615,
+    "is_city_owned": true
+   },
+   {
+    "facility_id": 1967,
+    "common_name": "Pier 70 - Pier 68 - Building #149",
+    "block_lot": "9900070",
+    "gross_sq_ft": 600,
+    "is_city_owned": true
+   },
+   {
+    "facility_id": 1963,
+    "common_name": "Pier 70 - Pier 68 - Beth Street Substation #2, Bldg. #50",
+    "block_lot": "9900070",
+    "gross_sq_ft": 600,
+    "is_city_owned": true
+   },
+   {
+    "facility_id": 1965,
+    "common_name": "Pier 70 - Pier 68 - Blast Shed Bldg. #150",
+    "block_lot": "9900070",
+    "gross_sq_ft": 600,
+    "is_city_owned": true
+   },
+   {
+    "facility_id": 1973,
+    "common_name": "Pier 70 - Pier 68 - near checkhouse #2, Building #51",
+    "block_lot": "9900070",
+    "gross_sq_ft": 400,
+    "is_city_owned": true
+   },
+   {
+    "facility_id": 1969,
+    "common_name": "Pier 70 - Pier 68 - Checkhouse #1, Bldg. #122",
+    "block_lot": "9900070",
+    "gross_sq_ft": 1,
+    "is_city_owned": true
+   },
+   {
+    "facility_id": 1970,
+    "common_name": "Pier 70 - Pier 68 - Checkhouse #2, Bldg. #123",
+    "block_lot": "9900070",
+    "gross_sq_ft": 1,
+    "is_city_owned": true
+   },
+   {
+    "facility_id": 1980,
+    "common_name": "Pier 70 - Pier 68 - Pipe Rack, Bldg. #120",
+    "block_lot": "9900070",
+    "gross_sq_ft": 1,
+    "is_city_owned": true
+   },
+   {
+    "facility_id": 1991,
+    "common_name": "Pier 70 - SWL 345 - Kneass Boatworks, Main Office/boat storage",
+    "block_lot": "4111003",
+    "gross_sq_ft": 1,
+    "is_city_owned": true
+   },
+   {
+    "facility_id": 3090,
+    "common_name": "Pier 70 - Pier 68 - Bathrooms Bldg. #141",
+    "block_lot": "4111003",
+    "gross_sq_ft": null,
+    "is_city_owned": true
+   },
+   {
+    "facility_id": 3091,
+    "common_name": "Pier 70 - SWL 349 Office Building - Bldg. #11 Noonan",
+    "block_lot": "4111003",
+    "gross_sq_ft": null,
+    "is_city_owned": true
+   }
+  ]
+ },
+ "capital": {
+  "n_items": 0,
+  "measure_totals": {},
+  "bond_programs": [],
+  "items": [],
+  "payees": [
+   {
+    "vendor": "HISTORIC PIER 70 LLC",
+    "paid_usd": 7827325.29,
+    "n_contracts": 1,
+    "first_fiscal_year": 2018,
+    "last_fiscal_year": 2020
+   }
+  ],
+  "n_payees": 1,
+  "payees_total_paid": 7827325.29,
+  "permits": [],
+  "n_permits": 0,
+  "permits_total_declared": 0.0,
+  "permits_by_year": []
  },
  "photo": "/img/us/sf/places/pier-70.jpg",
  "photo_credit": {
@@ -33,70 +427,17 @@
    "total_usd": 156434885.0,
    "fiscal_year": 2025
   },
+  "payroll_line": {
+   "code": "PRT",
+   "name": "Port",
+   "total_compensation_usd": 52732085.2,
+   "n_employees": 304,
+   "fiscal_year": 2025
+  },
   "contracts": [],
   "grants": []
  },
  "documents": [
-  {
-   "identifier": "containertermina1986moff",
-   "title": "Container terminal options",
-   "creator": "Moffatt & Nichol, Engineers,San Francisco (Calif.). Dept. of City Planning",
-   "year": 1986,
-   "pool": "sfpl",
-   "matched_alias": "Pier 70",
-   "snippet": "development. «Pier 70» - Alternative 2 «Pier 70» - Alternative 2 is similar to «Pier 70» - Alternative",
-   "url": "https://archive.org/details/containertermina1986moff",
-   "deep_link": "https://archive.org/details/containertermina1986moff?q=Pier+70",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
-  },
-  {
-   "identifier": "agendasanfranci2013sanf_2",
-   "title": "Agenda / San Francisco Port Commission",
-   "creator": "San Francisco Port Commission",
-   "year": null,
-   "pool": "sfpl",
-   "matched_alias": "Pier 70",
-   "snippet": "all other applicable requirements. «Pier 70» Site History «Pier 70» is a 69-acre historic shipyard",
-   "url": "https://archive.org/details/agendasanfranci2013sanf_2",
-   "deep_link": "https://archive.org/details/agendasanfranci2013sanf_2?q=Pier+70",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
-  },
-  {
-   "identifier": "minutes2008sanf_1",
-   "title": "Minutes",
-   "creator": "San Francisco Port Commission",
-   "year": null,
-   "pool": "sfpl",
-   "matched_alias": "Pier 70",
-   "snippet": "tax increment from «Pier 70» under any scenario. Development of «Pier 70» and SWL 337 will",
-   "url": "https://archive.org/details/minutes2008sanf_1",
-   "deep_link": "https://archive.org/details/minutes2008sanf_1?q=Pier+70",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
-  },
-  {
-   "identifier": "minutes2004sanf_1",
-   "title": "Minutes",
-   "creator": "San Francisco Port Commission",
-   "year": null,
-   "pool": "sfpl",
-   "matched_alias": "Pier 70",
-   "snippet": "and rehabilitation of other «Pier 70» historic resources. «Pier 70» Area Planning andRFP: For",
-   "url": "https://archive.org/details/minutes2004sanf_1",
-   "deep_link": "https://archive.org/details/minutes2004sanf_1?q=Pier+70",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
-  },
-  {
-   "identifier": "agendasminutess2015sanf_1",
-   "title": "Agendas and Minutes / San Francisco Port Commission",
-   "creator": "San Francisco Port Commission",
-   "year": null,
-   "pool": "sfpl",
-   "matched_alias": "Pier 70",
-   "snippet": "3) defined a proposed «Pier 70» Special Use District (“«Pier 70» SUD”) that will encompass",
-   "url": "https://archive.org/details/agendasminutess2015sanf_1",
-   "deep_link": "https://archive.org/details/agendasminutess2015sanf_1?q=Pier+70",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
-  },
   {
    "identifier": "agenda2011sanf_0",
    "title": "Agenda",
@@ -107,43 +448,9 @@
    "snippet": "southern Waterfront: «Pier 70» Historic Buildings Clean-Up 50,000 50,000 0 50,000 «Pier 70» Infrastructure",
    "url": "https://archive.org/details/agenda2011sanf_0",
    "deep_link": "https://archive.org/details/agenda2011sanf_0?q=Pier+70",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
-  },
-  {
-   "identifier": "agenda2013sanf_4",
-   "title": "Agenda",
-   "creator": "San Francisco Port Commission",
-   "year": null,
-   "pool": "sfpl",
-   "matched_alias": "Pier 70",
-   "snippet": "Procedures 2 «Pier 70» Action Endorsement of Forest City's term sheet for the «Pier 70» Waterfront",
-   "url": "https://archive.org/details/agenda2013sanf_4",
-   "deep_link": "https://archive.org/details/agenda2013sanf_4?q=Pier+70",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
-  },
-  {
-   "identifier": "agendasanfranci2014sanf_9",
-   "title": "Agenda / San Francisco Port Commission",
-   "creator": "San Francisco Port Commission",
-   "year": null,
-   "pool": "sfpl",
-   "matched_alias": "Pier 70",
-   "snippet": "Historic District at «Pier 70» to support rehabilitation of «Pier 70»'s unique and important",
-   "url": "https://archive.org/details/agendasanfranci2014sanf_9",
-   "deep_link": "https://archive.org/details/agendasanfranci2014sanf_9?q=Pier+70",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
-  },
-  {
-   "identifier": "agenda2008sanf_0",
-   "title": "Agenda",
-   "creator": "San Francisco Port Commission",
-   "year": null,
-   "pool": "sfpl",
-   "matched_alias": "Pier 70",
-   "snippet": "Preferred Master Plan for the «Pier 70» area. The «Pier 70» area is a 65-acre site located",
-   "url": "https://archive.org/details/agenda2008sanf_0",
-   "deep_link": "https://archive.org/details/agenda2008sanf_0?q=Pier+70",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Meetings & resolutions",
+   "salient": true
   },
   {
    "identifier": "agendasanfranci2014sanf_8",
@@ -155,7 +462,51 @@
    "snippet": "organizations as a competition 2 «Pier 70» Informational Presentation on «Pier 70» - Union Iron Works Historic",
    "url": "https://archive.org/details/agendasanfranci2014sanf_8",
    "deep_link": "https://archive.org/details/agendasanfranci2014sanf_8?q=Pier+70",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Meetings & resolutions",
+   "salient": true
+  },
+  {
+   "identifier": "minutes2004sanf_1",
+   "title": "Minutes",
+   "creator": "San Francisco Port Commission",
+   "year": null,
+   "pool": "sfpl",
+   "matched_alias": "Pier 70",
+   "snippet": "and rehabilitation of other «Pier 70» historic resources. «Pier 70» Area Planning andRFP: For",
+   "url": "https://archive.org/details/minutes2004sanf_1",
+   "deep_link": "https://archive.org/details/minutes2004sanf_1?q=Pier+70",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Meetings & resolutions",
+   "salient": true
+  },
+  {
+   "identifier": "agendasminutess2015sanf_1",
+   "title": "Agendas and Minutes / San Francisco Port Commission",
+   "creator": "San Francisco Port Commission",
+   "year": null,
+   "pool": "sfpl",
+   "matched_alias": "Pier 70",
+   "snippet": "3) defined a proposed «Pier 70» Special Use District (“«Pier 70» SUD”) that will encompass",
+   "url": "https://archive.org/details/agendasminutess2015sanf_1",
+   "deep_link": "https://archive.org/details/agendasminutess2015sanf_1?q=Pier+70",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Meetings & resolutions",
+   "salient": true
+  },
+  {
+   "identifier": "containertermina1986moff",
+   "title": "Container terminal options",
+   "creator": "Moffatt & Nichol, Engineers,San Francisco (Calif.). Dept. of City Planning",
+   "year": 1986,
+   "pool": "sfpl",
+   "matched_alias": "Pier 70",
+   "snippet": "development. «Pier 70» - Alternative 2 «Pier 70» - Alternative 2 is similar to «Pier 70» - Alternative",
+   "url": "https://archive.org/details/containertermina1986moff",
+   "deep_link": "https://archive.org/details/containertermina1986moff?q=Pier+70",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Other records",
+   "salient": true
   }
  ],
  "dept_shelf": [
@@ -179,29 +530,10 @@
    "year": null,
    "pool": "sfpl",
    "url": "https://archive.org/details/financialstateme1971sanf"
-  },
-  {
-   "identifier": "wharfside1986sanf",
-   "title": "Wharfside",
-   "year": null,
-   "pool": "sfpl",
-   "url": "https://archive.org/details/wharfside1986sanf"
-  },
-  {
-   "identifier": "minutes2000sanf_1",
-   "title": "Minutes",
-   "year": null,
-   "pool": "sfpl",
-   "url": "https://archive.org/details/minutes2000sanf_1"
-  },
-  {
-   "identifier": "financialstateme1999sanf",
-   "title": "Financial statements and independent auditors' report",
-   "year": null,
-   "pool": "sfpl",
-   "url": "https://archive.org/details/financialstateme1999sanf"
   }
  ],
+ "dept_shelf_label": "Port of San Francisco",
+ "dept_shelf_more": 3,
  "sources": [
   {
    "label": "City budget & payments",
@@ -214,7 +546,7 @@
  ],
  "_gate": {
   "has_photo": true,
-  "n_documents": 10,
+  "n_documents": 5,
   "n_money_links": 1,
   "meets_pre_summary": true
  }

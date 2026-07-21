@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T22:30:00.101896+00:00",
+ "generated_at": "2026-07-21T14:25:53.924872+00:00",
  "source_pipeline": "sf_place_candidates.json → sync_ia_sf.py + link_sf_places.py + fetch_sf_place_photos.py → export_sf_places.py",
  "unit": "USD",
  "slug": "mission-dolores-park",
@@ -12,6 +12,117 @@
  "owning_dept": {
   "name": "Recreation and Park Department",
   "code": "REC"
+ },
+ "facility": {
+  "primary_name": "Mission Dolores Park Clubhouse",
+  "primary_address": "646 DOLORES ST",
+  "primary_city": "San Francisco",
+  "primary_zip": "94110",
+  "primary_block_lot": "3586001",
+  "primary_department_name": "Recreation And Parks",
+  "primary_is_city_owned": true,
+  "primary_gross_sq_ft": 2100,
+  "primary_latitude": 37.759575924000046,
+  "primary_longitude": -122.42686802499998,
+  "supervisor_district": 8,
+  "n_facilities": 1,
+  "total_gross_sq_ft": 2100,
+  "n_owned": 1,
+  "n_leased": 0,
+  "apn_list": [
+   "3586001"
+  ],
+  "facilities": [
+   {
+    "facility_id": 1122,
+    "common_name": "Mission Dolores Park Clubhouse",
+    "block_lot": "3586001",
+    "gross_sq_ft": 2100,
+    "is_city_owned": true
+   }
+  ]
+ },
+ "capital": {
+  "n_items": 0,
+  "measure_totals": {},
+  "bond_programs": [],
+  "items": [],
+  "payees": [
+   {
+    "vendor": "Race to Zero Waste",
+    "paid_usd": 325315.24,
+    "n_contracts": 1,
+    "first_fiscal_year": 2023,
+    "last_fiscal_year": 2027
+   },
+   {
+    "vendor": "MICROBIZ SECURITY CO INC",
+    "paid_usd": 78184.49,
+    "n_contracts": 1,
+    "first_fiscal_year": 2019,
+    "last_fiscal_year": 2019
+   }
+  ],
+  "n_payees": 2,
+  "payees_total_paid": 403499.73,
+  "permits": [
+   {
+    "description": "erect type 1, one story office .",
+    "permit_type": "new construction",
+    "declared_cost_usd": 920800.0,
+    "status": "complete",
+    "permit_date": "2014-02-25",
+    "permit_year": 2014
+   },
+   {
+    "description": "bldg 2: erect type 1, 1 story restroom.",
+    "permit_type": "new construction",
+    "declared_cost_usd": 600000.0,
+    "status": "complete",
+    "permit_date": "2014-02-25",
+    "permit_year": 2014
+   },
+   {
+    "description": "new fire sprinkler system installed throughout. (n) 4\" fire service off of 8\" main on 18th st by other. ref app#201307081348 bldg 1",
+    "permit_type": "additions alterations or repairs",
+    "declared_cost_usd": 28270.0,
+    "status": "complete",
+    "permit_date": "2015-05-13",
+    "permit_year": 2015
+   },
+   {
+    "description": "4 inches sprinkler ground (plumbing fire water line) at the o&m building #1 at 598 dolores st., connecting to the 8\" on 18th street. sprinklers under pa#201405014680- under ground approved conditional that sprinklers will match up.",
+    "permit_type": "otc alterations permit",
+    "declared_cost_usd": 20000.0,
+    "status": "complete",
+    "permit_date": "2014-06-17",
+    "permit_year": 2014
+   },
+   {
+    "description": "like for like system replacement with new control panel, smoke det and pull station ats same location install radio comm new monitor modules to tie in e flow and tamper switch and relay modules to shutdown hvac system",
+    "permit_type": "otc alterations permit",
+    "declared_cost_usd": 6000.0,
+    "status": "complete",
+    "permit_date": "2018-10-18",
+    "permit_year": 2018
+   }
+  ],
+  "n_permits": 5,
+  "permits_total_declared": 1575070.0,
+  "permits_by_year": [
+   {
+    "year": 2014,
+    "declared_usd": 1540800.0
+   },
+   {
+    "year": 2015,
+    "declared_usd": 28270.0
+   },
+   {
+    "year": 2018,
+    "declared_usd": 6000.0
+   }
+  ]
  },
  "photo": "/img/us/sf/places/mission-dolores-park.jpg",
  "photo_credit": {
@@ -33,6 +144,13 @@
    "total_usd": 250373849.0,
    "fiscal_year": 2025
   },
+  "payroll_line": {
+   "code": "REC",
+   "name": "Recreation And Park Commission",
+   "total_compensation_usd": 149952872.68,
+   "n_employees": 2161,
+   "fiscal_year": 2025
+  },
   "contracts": [
    {
     "contract_no": "1000025304",
@@ -41,60 +159,20 @@
     "department_code": "REC",
     "agreed_usd": 450000.0,
     "paid_usd": 293646.5,
-    "evidence": "TC69600 REC Dolores Park Eco P"
+    "evidence": "TC69600 REC Dolores Park Eco P",
+    "team": [
+     {
+      "supplier": "Race to Zero Waste",
+      "role": "Prime Contractor",
+      "lbe": false,
+      "attached_usd": 450000.0
+     }
+    ]
    }
   ],
   "grants": []
  },
  "documents": [
-  {
-   "identifier": "parkstandards6mo162010san",
-   "title": "Park standards, 6-month report FY 2009-10 : park scores citywide increased through the first half of FY 2009-10",
-   "creator": "San Francisco (Calif.). Office of the Controller. City Services Auditor Division",
-   "year": 2009,
-   "pool": "sfpl",
-   "matched_alias": "Mission Dolores Park",
-   "snippet": "Great Highway Lessing/Sears Mini Park «Mission Dolores Park» John McLaren Park Little Hollywood",
-   "url": "https://archive.org/details/parkstandards6mo162010san",
-   "deep_link": "https://archive.org/details/parkstandards6mo162010san?q=Mission+Dolores+Park",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
-  },
-  {
-   "identifier": "2008cleansafenei2007sanf",
-   "title": "2008 Clean & Safe Neighborhood Parks bond",
-   "creator": "San Francisco (Calif.)",
-   "year": 2008,
-   "pool": "sfpl",
-   "matched_alias": "Dolores Park",
-   "snippet": "soft costs. 34 «MISSION DOLORES PARK» RENOVATION Facility Name: «Mission Dolores Park» Location: Dolores",
-   "url": "https://archive.org/details/2008cleansafenei2007sanf",
-   "deep_link": "https://archive.org/details/2008cleansafenei2007sanf?q=Dolores+Park",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
-  },
-  {
-   "identifier": "fy200809parksannsanf",
-   "title": "FY 2008-09 parks annual report : parks scores citywide increased for fourth year, but disparities remain between districts",
-   "creator": "San Francisco (Calif.). Office of the Controller. City Services Auditor Division,San Francisco (Calif.). Recreation and Park Dept",
-   "year": 2008,
-   "pool": "sfpl",
-   "matched_alias": "Dolores Park",
-   "snippet": "Mini Park 5 74.2% 91.7% 90.8% 74.6% 10 «Mission Dolores Park» 8 74.6% 86.4% 79.7% 84.7% * Note: Parks",
-   "url": "https://archive.org/details/fy200809parksannsanf",
-   "deep_link": "https://archive.org/details/fy200809parksannsanf?q=Dolores+Park",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
-  },
-  {
-   "identifier": "minutes1992sanf_1",
-   "title": "Minutes",
-   "creator": "San Francisco Open Space/Park Renovation Citizens Advisory Committee",
-   "year": 2000,
-   "pool": "sfpl",
-   "matched_alias": "Dolores Park",
-   "snippet": "s proposal . «Dolores Park» Soccer Ms. Eileen Gold, representing the «Dolores Park» Coalition,",
-   "url": "https://archive.org/details/minutes1992sanf_1",
-   "deep_link": "https://archive.org/details/minutes1992sanf_1?q=Dolores+Park",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
-  },
   {
    "identifier": "minutes1998sanf_5",
    "title": "Minutes",
@@ -105,31 +183,9 @@
    "snippet": "Miraloma Park - Court Resurfacing^ «Mission Dolores Park» - Beautification Project McLaren Park",
    "url": "https://archive.org/details/minutes1998sanf_5",
    "deep_link": "https://archive.org/details/minutes1998sanf_5?q=Mission+Dolores+Park",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
-  },
-  {
-   "identifier": "generalmanagersr1975sanf",
-   "title": "General manager's report : Open Space Acquisition and Park Renovation Fund",
-   "creator": "San Francisco (Calif.). Recreation and Park Department,San Francisco (Calif.). Dept. of City Planning,San Francisco (Calif.). Open Space Acquisition and Park Renovation Fund",
-   "year": 1975,
-   "pool": "sfpl",
-   "matched_alias": "Dolores Park",
-   "snippet": "Playground and building improvements ^MISSION «DOLORES PARK» - Children's Play Apparatus $70,000 >",
-   "url": "https://archive.org/details/generalmanagersr1975sanf",
-   "deep_link": "https://archive.org/details/generalmanagersr1975sanf?q=Dolores+Park",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
-  },
-  {
-   "identifier": "2minutes1996sanf",
-   "title": "Minutes",
-   "creator": "San Francisco (Calif.). Board of Supervisors. Rules Committee,San Francisco (Calif.). Board of Supervisors. Rules and Legislation Committee",
-   "year": null,
-   "pool": "sfpl",
-   "matched_alias": "Dolores Park",
-   "snippet": "practice field for youth soccer at «Mission Dolores Park». After a series of public meetings",
-   "url": "https://archive.org/details/2minutes1996sanf",
-   "deep_link": "https://archive.org/details/2minutes1996sanf?q=Dolores+Park",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Meetings & resolutions",
+   "salient": true
   },
   {
    "identifier": "minutesrecreatio1993sanf",
@@ -141,19 +197,65 @@
    "snippet": "at Milton Meyer Recreation Center. «MISSION DOLORES PARK» RES. 16621 - Approved establishment",
    "url": "https://archive.org/details/minutesrecreatio1993sanf",
    "deep_link": "https://archive.org/details/minutesrecreatio1993sanf?q=Dolores+Park",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Meetings & resolutions",
+   "salient": true
   },
   {
-   "identifier": "publicnotice2008sanf",
-   "title": "Public notice",
-   "creator": "San Francisco (Calif.). Recreation and Park Dept",
-   "year": null,
+   "identifier": "fy200809parksannsanf",
+   "title": "FY 2008-09 parks annual report : parks scores citywide increased for fourth year, but disparities remain between districts",
+   "creator": "San Francisco (Calif.). Office of the Controller. City Services Auditor Division,San Francisco (Calif.). Recreation and Park Dept",
+   "year": 2008,
    "pool": "sfpl",
    "matched_alias": "Dolores Park",
-   "snippet": "Parks Department and the Friends of «Dolores Park» Playground and Supervisor Bevan Dufty and",
-   "url": "https://archive.org/details/publicnotice2008sanf",
-   "deep_link": "https://archive.org/details/publicnotice2008sanf?q=Dolores+Park",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+   "snippet": "Mini Park 5 74.2% 91.7% 90.8% 74.6% 10 «Mission Dolores Park» 8 74.6% 86.4% 79.7% 84.7% * Note: Parks",
+   "url": "https://archive.org/details/fy200809parksannsanf",
+   "deep_link": "https://archive.org/details/fy200809parksannsanf?q=Dolores+Park",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Reports & records",
+   "salient": true
+  },
+  {
+   "identifier": "2008cleansafenei2007sanf",
+   "title": "2008 Clean & Safe Neighborhood Parks bond",
+   "creator": "San Francisco (Calif.)",
+   "year": 2008,
+   "pool": "sfpl",
+   "matched_alias": "Dolores Park",
+   "snippet": "soft costs. 34 «MISSION DOLORES PARK» RENOVATION Facility Name: «Mission Dolores Park» Location: Dolores",
+   "url": "https://archive.org/details/2008cleansafenei2007sanf",
+   "deep_link": "https://archive.org/details/2008cleansafenei2007sanf?q=Dolores+Park",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Other records",
+   "salient": true
+  },
+  {
+   "identifier": "generalmanagersr1975sanf",
+   "title": "General manager's report : Open Space Acquisition and Park Renovation Fund",
+   "creator": "San Francisco (Calif.). Recreation and Park Department,San Francisco (Calif.). Dept. of City Planning,San Francisco (Calif.). Open Space Acquisition and Park Renovation Fund",
+   "year": 1975,
+   "pool": "sfpl",
+   "matched_alias": "Dolores Park",
+   "snippet": "Playground and building improvements ^MISSION «DOLORES PARK» - Children's Play Apparatus $70,000 >",
+   "url": "https://archive.org/details/generalmanagersr1975sanf",
+   "deep_link": "https://archive.org/details/generalmanagersr1975sanf?q=Dolores+Park",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Other records",
+   "salient": true
+  },
+  {
+   "identifier": "parkstandards6mo162010san",
+   "title": "Park standards, 6-month report FY 2009-10 : park scores citywide increased through the first half of FY 2009-10",
+   "creator": "San Francisco (Calif.). Office of the Controller. City Services Auditor Division",
+   "year": 2009,
+   "pool": "sfpl",
+   "matched_alias": "Mission Dolores Park",
+   "snippet": "Great Highway Lessing/Sears Mini Park «Mission Dolores Park» John McLaren Park Little Hollywood",
+   "url": "https://archive.org/details/parkstandards6mo162010san",
+   "deep_link": "https://archive.org/details/parkstandards6mo162010san?q=Mission+Dolores+Park",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Other records",
+   "salient": true
   },
   {
    "identifier": "whatsdoinginpark1985sanf",
@@ -165,7 +267,23 @@
    "snippet": "Lilith, A Women's Theatre Presentation, «Mission Dolores Park», 18th and Dolores Streets. 1 - 5",
    "url": "https://archive.org/details/whatsdoinginpark1985sanf",
    "deep_link": "https://archive.org/details/whatsdoinginpark1985sanf?q=Dolores+Park",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Other records",
+   "salient": false
+  },
+  {
+   "identifier": "publicnotice2008sanf",
+   "title": "Public notice",
+   "creator": "San Francisco (Calif.). Recreation and Park Dept",
+   "year": null,
+   "pool": "sfpl",
+   "matched_alias": "Dolores Park",
+   "snippet": "Parks Department and the Friends of «Dolores Park» Playground and Supervisor Bevan Dufty and",
+   "url": "https://archive.org/details/publicnotice2008sanf",
+   "deep_link": "https://archive.org/details/publicnotice2008sanf?q=Dolores+Park",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Other records",
+   "salient": false
   }
  ],
  "dept_shelf": [
@@ -189,29 +307,10 @@
    "year": 1999,
    "pool": "sfpl",
    "url": "https://archive.org/details/0agenda19992002sanf"
-  },
-  {
-   "identifier": "reporttoboardofs1980sanf",
-   "title": "Report to the Board of Supervisors of the City and County of San Francisco : review of the operations of the San Francisco Recreation and Park Department",
-   "year": 1979,
-   "pool": "sfpl",
-   "url": "https://archive.org/details/reporttoboardofs1980sanf"
-  },
-  {
-   "identifier": "annualreport197277sanf",
-   "title": "Annual report of the San Francisco Recreation and Park Department",
-   "year": null,
-   "pool": "sfpl",
-   "url": "https://archive.org/details/annualreport197277sanf"
-  },
-  {
-   "identifier": "minutesrecreatio1960sanf",
-   "title": "Minutes / Recreation and Park Commission",
-   "year": null,
-   "pool": "sfpl",
-   "url": "https://archive.org/details/minutesrecreatio1960sanf"
   }
  ],
+ "dept_shelf_label": "Recreation & Park Department",
+ "dept_shelf_more": 3,
  "sources": [
   {
    "label": "City budget & payments",
@@ -224,7 +323,7 @@
  ],
  "_gate": {
   "has_photo": true,
-  "n_documents": 10,
+  "n_documents": 8,
   "n_money_links": 2,
   "meets_pre_summary": true
  }

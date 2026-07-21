@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T22:30:00.109820+00:00",
+ "generated_at": "2026-07-21T14:25:53.942855+00:00",
  "source_pipeline": "sf_place_candidates.json → sync_ia_sf.py + link_sf_places.py + fetch_sf_place_photos.py → export_sf_places.py",
  "unit": "USD",
  "slug": "chinatown-branch-library",
@@ -13,6 +13,126 @@
   "name": "Public Library",
   "code": "LIB"
  },
+ "facility": {
+  "primary_name": "Chinatown Branch Library",
+  "primary_address": "1135 POWELL ST",
+  "primary_city": "San Francisco",
+  "primary_zip": "94108",
+  "primary_block_lot": "0191004",
+  "primary_department_name": "Public Library",
+  "primary_is_city_owned": true,
+  "primary_gross_sq_ft": 17858,
+  "primary_latitude": 37.79523887500005,
+  "primary_longitude": -122.41008249499998,
+  "supervisor_district": 3,
+  "n_facilities": 1,
+  "total_gross_sq_ft": 17858,
+  "n_owned": 1,
+  "n_leased": 0,
+  "apn_list": [
+   "0191004"
+  ],
+  "facilities": [
+   {
+    "facility_id": 465,
+    "common_name": "Chinatown Branch Library",
+    "block_lot": "0191004",
+    "gross_sq_ft": 17858,
+    "is_city_owned": true
+   }
+  ]
+ },
+ "capital": {
+  "n_items": 0,
+  "measure_totals": {},
+  "bond_programs": [],
+  "items": [],
+  "payees": [],
+  "n_payees": 0,
+  "payees_total_paid": 0,
+  "permits": [
+   {
+    "description": "priority process: renovation to listed historic library(1921). partial demo of int spaces of historic bldg & 1996 renovation work. new mech, elec, and fire protection sys will be provided throughout (e) bldg. project is designed to leadership in energy efficient design (leed) rating of gold",
+    "permit_type": "additions alterations or repairs",
+    "declared_cost_usd": 19000000.0,
+    "status": "issued",
+    "permit_date": "2024-05-28",
+    "permit_year": 2024
+   },
+   {
+    "description": "horizontal",
+    "permit_type": "additions alterations or repairs",
+    "declared_cost_usd": 2500000.0,
+    "status": "complete",
+    "permit_date": "1993-09-07",
+    "permit_year": 1993
+   },
+   {
+    "description": "horizontal",
+    "permit_type": "additions alterations or repairs",
+    "declared_cost_usd": 1045000.0,
+    "status": "complete",
+    "permit_date": "1995-03-01",
+    "permit_year": 1995
+   },
+   {
+    "description": "upgrade mechanical cooling system,el distribution to cooling system",
+    "permit_type": "additions alterations or repairs",
+    "declared_cost_usd": 200000.0,
+    "status": "expired",
+    "permit_date": "2001-10-29",
+    "permit_year": 2001
+   },
+   {
+    "description": "install 8 kw solar 66 solar panels on a non-penatrating array ballasted with cinderblock. install an inverter on the roof and install 2 disconnects (dc & ac). the electricity would be then tied into the meter.",
+    "permit_type": "additions alterations or repairs",
+    "declared_cost_usd": 100000.0,
+    "status": "complete",
+    "permit_date": "2007-05-31",
+    "permit_year": 2007
+   },
+   {
+    "description": "fire protection system",
+    "permit_type": "otc alterations permit",
+    "declared_cost_usd": 25000.0,
+    "status": "complete",
+    "permit_date": "1995-10-02",
+    "permit_year": 1995
+   }
+  ],
+  "n_permits": 8,
+  "permits_total_declared": 22893874.0,
+  "permits_by_year": [
+   {
+    "year": 1990,
+    "declared_usd": 20874.0
+   },
+   {
+    "year": 1993,
+    "declared_usd": 2500000.0
+   },
+   {
+    "year": 1995,
+    "declared_usd": 1070000.0
+   },
+   {
+    "year": 2001,
+    "declared_usd": 200000.0
+   },
+   {
+    "year": 2005,
+    "declared_usd": 3000.0
+   },
+   {
+    "year": 2007,
+    "declared_usd": 100000.0
+   },
+   {
+    "year": 2024,
+    "declared_usd": 19000000.0
+   }
+  ]
+ },
  "photo": null,
  "photo_credit": null,
  "summary_en": null,
@@ -22,6 +142,13 @@
    "code": "LIB",
    "name": "Public Library",
    "total_usd": 187421705.0,
+   "fiscal_year": 2025
+  },
+  "payroll_line": {
+   "code": "LIB",
+   "name": "Public Library",
+   "total_compensation_usd": 110470134.22,
+   "n_employees": 985,
    "fiscal_year": 2025
   },
   "contracts": [],
@@ -38,43 +165,9 @@
    "snippet": "Streets Devel opment Chinatown Park «Chinatown Branch Library» Community Gardens Dolores Park Soccer",
    "url": "https://archive.org/details/minutes1992sanf_1",
    "deep_link": "https://archive.org/details/minutes1992sanf_1?q=Chinatown+Branch+Library",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
-  },
-  {
-   "identifier": "sanfranciscopub1997reve_0",
-   "title": "San Francisco Public Library strategic audit",
-   "creator": "Reveal, Elizabeth C,Coda Partners (Firm)",
-   "year": 1997,
-   "pool": "sfpl",
-   "matched_alias": "Chinatown Branch Library",
-   "snippet": "623 for design services for the «Chinatown branch library» and $63,000 for design services",
-   "url": "https://archive.org/details/sanfranciscopub1997reve_0",
-   "deep_link": "https://archive.org/details/sanfranciscopub1997reve_0?q=Chinatown+Branch+Library",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
-  },
-  {
-   "identifier": "calendarmeetingo1994sanf",
-   "title": "Calendar : meeting of Budget Committee, Board of Supervisors, City and County of San Francisco",
-   "creator": "San Francisco (Calif.). Board of Supervisors. Budget Committee",
-   "year": 1993,
-   "pool": "sfpl",
-   "matched_alias": "Chinatown Branch Library",
-   "snippet": "101-89-34.12. [Release Reserve Funds/«Chinatown Branch Library»] Hearing requesting release of reserved",
-   "url": "https://archive.org/details/calendarmeetingo1994sanf",
-   "deep_link": "https://archive.org/details/calendarmeetingo1994sanf?q=Chinatown+Branch+Library",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
-  },
-  {
-   "identifier": "2calendarmeetingo1995sanf",
-   "title": "Calendar : meeting of Budget Committee, Board of Supervisors, City and County of San Francisco",
-   "creator": "San Francisco (Calif.). Board of Supervisors. Budget Committee",
-   "year": 1993,
-   "pool": "sfpl",
-   "matched_alias": "Chinatown Branch Library",
-   "snippet": "needed for the «Chinatown Branch Library» Renovation project. «Chinatown Branch Library» Renovation",
-   "url": "https://archive.org/details/2calendarmeetingo1995sanf",
-   "deep_link": "https://archive.org/details/2calendarmeetingo1995sanf?q=Chinatown+Branch+Library",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Meetings & resolutions",
+   "salient": true
   },
   {
    "identifier": "agenda19arts_13",
@@ -86,79 +179,9 @@
    "snippet": "Architecture Peter Wong, Edmund Shum V. «CHINATOWN BRANCH LIBRARY» Phase I Bureau of Architecture Glenn",
    "url": "https://archive.org/details/agenda19arts_13",
    "deep_link": "https://archive.org/details/agenda19arts_13?q=Chinatown+Branch+Library",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
-  },
-  {
-   "identifier": "agenda19921993arts",
-   "title": "Agenda",
-   "creator": "Arts Commission of San Francisco. Visual Arts Committee",
-   "year": 1983,
-   "pool": "sfpl",
-   "matched_alias": "Chinatown Branch Library",
-   "snippet": "schematic designs for the Mission and «Chinatown Branch Library» additions and reviewed the potential",
-   "url": "https://archive.org/details/agenda19921993arts",
-   "deep_link": "https://archive.org/details/agenda19921993arts?q=Chinatown+Branch+Library",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
-  },
-  {
-   "identifier": "agenda19arts_23",
-   "title": "Agenda",
-   "creator": "Arts Commission of San Francisco. Visual Arts Committee",
-   "year": 1983,
-   "pool": "sfpl",
-   "matched_alias": "Chinatown Branch Library",
-   "snippet": "schematic designs for the Mission and «Chinatown Branch Library» additions and reviewed the potential",
-   "url": "https://archive.org/details/agenda19arts_23",
-   "deep_link": "https://archive.org/details/agenda19arts_23?q=Chinatown+Branch+Library",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
-  },
-  {
-   "identifier": "chinatownneighbo1977sanf",
-   "title": "Chinatown neighborhood improvement plan : a draft for citizen review",
-   "creator": "San Francisco (Calif.). Dept. of City Planning",
-   "year": 1977,
-   "pool": "sfpl",
-   "matched_alias": "Chinatown Branch Library",
-   "snippet": "renovation of community space in «Chinatown Branch Library». (b) Continue improvement of indoor",
-   "url": "https://archive.org/details/chinatownneighbo1977sanf",
-   "deep_link": "https://archive.org/details/chinatownneighbo1977sanf?q=Chinatown+Branch+Library",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
-  },
-  {
-   "identifier": "annualstatistica1976sanf",
-   "title": "Annual statistical report",
-   "creator": "San Francisco Public Library",
-   "year": 1977,
-   "pool": "sfpl",
-   "matched_alias": "Chinatown Branch",
-   "snippet": "Branch «Chinatown Branch» «Chinatown Branch» «Chinatown Branch» «Chinatown Branch» «Chinatown Branch» Chinatown",
-   "url": "https://archive.org/details/annualstatistica1976sanf",
-   "deep_link": "https://archive.org/details/annualstatistica1976sanf?q=Chinatown+Branch",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
-  },
-  {
-   "identifier": "adultcalendarofp1997sanf",
-   "title": "Adult calendar of programs and events",
-   "creator": "San Francisco Public Library",
-   "year": null,
-   "pool": "sfpl",
-   "matched_alias": "Chinatown Branch Library",
-   "snippet": "cooperation with the «Chinatown Branch» of San Francisco Public Libraray. «Chinatown Branch» Library, Community",
-   "url": "https://archive.org/details/adultcalendarofp1997sanf",
-   "deep_link": "https://archive.org/details/adultcalendarofp1997sanf?q=Chinatown+Branch+Library",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
-  },
-  {
-   "identifier": "adultcalendarofp1996sanf",
-   "title": "Adult calendar of programs and events",
-   "creator": "San Francisco Public Library",
-   "year": null,
-   "pool": "sfpl",
-   "matched_alias": "Chinatown Branch Library",
-   "snippet": "lizards to «Chinatown Branch». Please call for group reservations. «Chinatown Branch» library, 1135",
-   "url": "https://archive.org/details/adultcalendarofp1996sanf",
-   "deep_link": "https://archive.org/details/adultcalendarofp1996sanf?q=Chinatown+Branch+Library",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Meetings & resolutions",
+   "salient": true
   },
   {
    "identifier": "agendasminutessa1993sanf",
@@ -170,19 +193,9 @@
    "snippet": "Friends of «Chinatown Branch» Library, expressed dismay at the «Chinatown Branch» renovation problems",
    "url": "https://archive.org/details/agendasminutessa1993sanf",
    "deep_link": "https://archive.org/details/agendasminutessa1993sanf?q=Chinatown+Branch+Library",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
-  },
-  {
-   "identifier": "release1991sanf",
-   "title": "[Release]",
-   "creator": "San Francisco Public Library",
-   "year": null,
-   "pool": "sfpl",
-   "matched_alias": "Chinatown Branch Library",
-   "snippet": "557-4277 «CHINATOWN BRANCH» LIBRARY TO CLOSE, MOVE TO TEMPORARY SITE The «Chinatown Branch» Library",
-   "url": "https://archive.org/details/release1991sanf",
-   "deep_link": "https://archive.org/details/release1991sanf?q=Chinatown+Branch+Library",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Meetings & resolutions",
+   "salient": true
   },
   {
    "identifier": "minutesofregular2010sanf",
@@ -194,7 +207,93 @@
    "snippet": "renaming of the «Chinatown Branch Library» to the Him Mark Lai «Chinatown Branch Library». Library Commission",
    "url": "https://archive.org/details/minutesofregular2010sanf",
    "deep_link": "https://archive.org/details/minutesofregular2010sanf?q=Chinatown+Branch+Library",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Meetings & resolutions",
+   "salient": true
+  },
+  {
+   "identifier": "calendarmeetingo1994sanf",
+   "title": "Calendar : meeting of Budget Committee, Board of Supervisors, City and County of San Francisco",
+   "creator": "San Francisco (Calif.). Board of Supervisors. Budget Committee",
+   "year": 1993,
+   "pool": "sfpl",
+   "matched_alias": "Chinatown Branch Library",
+   "snippet": "101-89-34.12. [Release Reserve Funds/«Chinatown Branch Library»] Hearing requesting release of reserved",
+   "url": "https://archive.org/details/calendarmeetingo1994sanf",
+   "deep_link": "https://archive.org/details/calendarmeetingo1994sanf?q=Chinatown+Branch+Library",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Other records",
+   "salient": true
+  },
+  {
+   "identifier": "annualstatistica1976sanf",
+   "title": "Annual statistical report",
+   "creator": "San Francisco Public Library",
+   "year": 1977,
+   "pool": "sfpl",
+   "matched_alias": "Chinatown Branch",
+   "snippet": "Branch «Chinatown Branch» «Chinatown Branch» «Chinatown Branch» «Chinatown Branch» «Chinatown Branch» Chinatown",
+   "url": "https://archive.org/details/annualstatistica1976sanf",
+   "deep_link": "https://archive.org/details/annualstatistica1976sanf?q=Chinatown+Branch",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Other records",
+   "salient": true
+  },
+  {
+   "identifier": "adultcalendarofp1997sanf",
+   "title": "Adult calendar of programs and events",
+   "creator": "San Francisco Public Library",
+   "year": null,
+   "pool": "sfpl",
+   "matched_alias": "Chinatown Branch Library",
+   "snippet": "cooperation with the «Chinatown Branch» of San Francisco Public Libraray. «Chinatown Branch» Library, Community",
+   "url": "https://archive.org/details/adultcalendarofp1997sanf",
+   "deep_link": "https://archive.org/details/adultcalendarofp1997sanf?q=Chinatown+Branch+Library",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Other records",
+   "salient": false
+  },
+  {
+   "identifier": "release1991sanf",
+   "title": "[Release]",
+   "creator": "San Francisco Public Library",
+   "year": null,
+   "pool": "sfpl",
+   "matched_alias": "Chinatown Branch Library",
+   "snippet": "557-4277 «CHINATOWN BRANCH» LIBRARY TO CLOSE, MOVE TO TEMPORARY SITE The «Chinatown Branch» Library",
+   "url": "https://archive.org/details/release1991sanf",
+   "deep_link": "https://archive.org/details/release1991sanf?q=Chinatown+Branch+Library",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Other records",
+   "salient": false
+  },
+  {
+   "identifier": "chinatownneighbo1977sanf",
+   "title": "Chinatown neighborhood improvement plan : a draft for citizen review",
+   "creator": "San Francisco (Calif.). Dept. of City Planning",
+   "year": 1977,
+   "pool": "sfpl",
+   "matched_alias": "Chinatown Branch Library",
+   "snippet": "renovation of community space in «Chinatown Branch Library». (b) Continue improvement of indoor",
+   "url": "https://archive.org/details/chinatownneighbo1977sanf",
+   "deep_link": "https://archive.org/details/chinatownneighbo1977sanf?q=Chinatown+Branch+Library",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Other records",
+   "salient": false
+  },
+  {
+   "identifier": "sanfranciscopub1997reve_0",
+   "title": "San Francisco Public Library strategic audit",
+   "creator": "Reveal, Elizabeth C,Coda Partners (Firm)",
+   "year": 1997,
+   "pool": "sfpl",
+   "matched_alias": "Chinatown Branch Library",
+   "snippet": "623 for design services for the «Chinatown branch library» and $63,000 for design services",
+   "url": "https://archive.org/details/sanfranciscopub1997reve_0",
+   "deep_link": "https://archive.org/details/sanfranciscopub1997reve_0?q=Chinatown+Branch+Library",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Other records",
+   "salient": false
   }
  ],
  "dept_shelf": [
@@ -218,29 +317,10 @@
    "year": null,
    "pool": "sfpl",
    "url": "https://archive.org/details/minutesofregula1619sanf_0"
-  },
-  {
-   "identifier": "agenda1969sanf",
-   "title": "Agenda",
-   "year": null,
-   "pool": "sfpl",
-   "url": "https://archive.org/details/agenda1969sanf"
-  },
-  {
-   "identifier": "agendasminutessa1979sanf",
-   "title": "Agendas and Minutes / San Francisco Public Library Commission, Finance Committee",
-   "year": null,
-   "pool": "sfpl",
-   "url": "https://archive.org/details/agendasminutessa1979sanf"
-  },
-  {
-   "identifier": "requestforuseofp1998sanf",
-   "title": "Request for use of public meeting rooms / Branch meeting rooms summary",
-   "year": null,
-   "pool": "sfpl",
-   "url": "https://archive.org/details/requestforuseofp1998sanf"
   }
  ],
+ "dept_shelf_label": "Public Library",
+ "dept_shelf_more": 3,
  "sources": [
   {
    "label": "City budget & payments",
@@ -253,7 +333,7 @@
  ],
  "_gate": {
   "has_photo": false,
-  "n_documents": 14,
+  "n_documents": 10,
   "n_money_links": 1,
   "meets_pre_summary": false
  }

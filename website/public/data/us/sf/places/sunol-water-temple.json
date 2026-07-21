@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T22:30:00.119500+00:00",
+ "generated_at": "2026-07-21T14:25:53.967199+00:00",
  "source_pipeline": "sf_place_candidates.json → sync_ia_sf.py + link_sf_places.py + fetch_sf_place_photos.py → export_sf_places.py",
  "unit": "USD",
  "slug": "sunol-water-temple",
@@ -13,6 +13,34 @@
   "name": "Public Utilities Commission",
   "code": "PUC"
  },
+ "facility": {
+  "primary_name": "Sunol Water Temple",
+  "primary_address": "505 PALOMA WAY",
+  "primary_city": "Sunol",
+  "primary_zip": "94586",
+  "primary_block_lot": null,
+  "primary_department_name": "Public Utilities Commission",
+  "primary_is_city_owned": true,
+  "primary_gross_sq_ft": null,
+  "primary_latitude": 37.58547290400003,
+  "primary_longitude": -121.88550640999995,
+  "supervisor_district": null,
+  "n_facilities": 1,
+  "total_gross_sq_ft": null,
+  "n_owned": 1,
+  "n_leased": 0,
+  "apn_list": [],
+  "facilities": [
+   {
+    "facility_id": 1681,
+    "common_name": "Sunol Water Temple",
+    "block_lot": null,
+    "gross_sq_ft": null,
+    "is_city_owned": true
+   }
+  ]
+ },
+ "capital": null,
  "photo": "/img/us/sf/places/sunol-water-temple.jpg",
  "photo_credit": {
   "photo": "/img/us/sf/places/sunol-water-temple.jpg",
@@ -33,34 +61,17 @@
    "total_usd": 1802973252.0,
    "fiscal_year": 2025
   },
+  "payroll_line": {
+   "code": "PUC",
+   "name": "Public Utilities Commission",
+   "total_compensation_usd": 475550972.11,
+   "n_employees": 2679,
+   "fiscal_year": 2025
+  },
   "contracts": [],
   "grants": []
  },
  "documents": [
-  {
-   "identifier": "sanfranciscopubl2006esaf",
-   "title": "San Francisco Public Utilities Commission Sunol / environmental impact report : comments and responses",
-   "creator": "ESA (Firm),San Francisco Public Utilities Commission",
-   "year": 2006,
-   "pool": "sfpl",
-   "matched_alias": "Sunol Water Temple",
-   "snippet": "the Sunol Valley Filter Beds, the «Sunol Water Temple», the Sunol Aqueduct, the Niles Regulating",
-   "url": "https://archive.org/details/sanfranciscopubl2006esaf",
-   "deep_link": "https://archive.org/details/sanfranciscopubl2006esaf?q=Sunol+Water+Temple",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
-  },
-  {
-   "identifier": "sanfranciscowate2005hans",
-   "title": "San Francisco water and power : a history of the Municipal Water Department & Hetch Hetchy system",
-   "creator": "Hanson, Warren D,Kukula, Frank,Nelson, Christopher,Williams, Mary",
-   "year": 2005,
-   "pool": "sfpl",
-   "matched_alias": "Sunol Water Temple",
-   "snippet": "Zone 7. «SUNOL WATER TEMPLE» The Spring Valley Water Company built the «Sunol Water Temple» in 1910",
-   "url": "https://archive.org/details/sanfranciscowate2005hans",
-   "deep_link": "https://archive.org/details/sanfranciscowate2005hans?q=Sunol+Water+Temple",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
-  },
   {
    "identifier": "sanfranciscopubl2005sanf",
    "title": "San Francisco Public Utilities Commission Sunol/Niles dam removal project : environmental impact report",
@@ -71,7 +82,9 @@
    "snippet": "infiltration galleries discharges through the «Sunol Water Temple» (Bookman-Edmonston, 1995). After being",
    "url": "https://archive.org/details/sanfranciscopubl2005sanf",
    "deep_link": "https://archive.org/details/sanfranciscopubl2005sanf?q=Sunol+Water+Temple",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Plans & environmental review",
+   "salient": true
   },
   {
    "identifier": "americanswithdis00sanf",
@@ -83,19 +96,37 @@
    "snippet": "Fall/2000 S137,000 YR/2001 «Sunol Water Temple» The «Sunol Water Temple» is closed to the public;",
    "url": "https://archive.org/details/americanswithdis00sanf",
    "deep_link": "https://archive.org/details/americanswithdis00sanf?q=Sunol+Water+Temple",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Plans & environmental review",
+   "salient": true
   },
   {
-   "identifier": "agenda19arts_13",
-   "title": "Agenda",
-   "creator": "Arts Commission of San Francisco. Civic Design Review Committee",
-   "year": 1988,
+   "identifier": "sanfranciscopubl2006esaf",
+   "title": "San Francisco Public Utilities Commission Sunol / environmental impact report : comments and responses",
+   "creator": "ESA (Firm),San Francisco Public Utilities Commission",
+   "year": 2006,
    "pool": "sfpl",
    "matched_alias": "Sunol Water Temple",
-   "snippet": "introduced the «Sunol Water Temple» Rehabilitation Project. The «Sunol Water Temple» is located",
-   "url": "https://archive.org/details/agenda19arts_13",
-   "deep_link": "https://archive.org/details/agenda19arts_13?q=Sunol+Water+Temple",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+   "snippet": "the Sunol Valley Filter Beds, the «Sunol Water Temple», the Sunol Aqueduct, the Niles Regulating",
+   "url": "https://archive.org/details/sanfranciscopubl2006esaf",
+   "deep_link": "https://archive.org/details/sanfranciscopubl2006esaf?q=Sunol+Water+Temple",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Plans & environmental review",
+   "salient": true
+  },
+  {
+   "identifier": "sanfranciscowate2005hans",
+   "title": "San Francisco water and power : a history of the Municipal Water Department & Hetch Hetchy system",
+   "creator": "Hanson, Warren D,Kukula, Frank,Nelson, Christopher,Williams, Mary",
+   "year": 2005,
+   "pool": "sfpl",
+   "matched_alias": "Sunol Water Temple",
+   "snippet": "Zone 7. «SUNOL WATER TEMPLE» The Spring Valley Water Company built the «Sunol Water Temple» in 1910",
+   "url": "https://archive.org/details/sanfranciscowate2005hans",
+   "deep_link": "https://archive.org/details/sanfranciscowate2005hans?q=Sunol+Water+Temple",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Histories & surveys",
+   "salient": true
   },
   {
    "identifier": "agenda20arts_9",
@@ -107,19 +138,9 @@
    "snippet": "//thecity.sfsu.edu/sfac/ the «Sunol Water Temple». The «Sunol Water Temple» is an icon for the Water",
    "url": "https://archive.org/details/agenda20arts_9",
    "deep_link": "https://archive.org/details/agenda20arts_9?q=Sunol+Water+Temple",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
-  },
-  {
-   "identifier": "alamedawatershe1998sanf_3",
-   "title": "Alameda Watershed management plan, Peninsula Watershed management plan : appendix C",
-   "creator": "San Francisco Public Utilities Commission",
-   "year": null,
-   "pool": "sfpl",
-   "matched_alias": "Sunol Water Temple",
-   "snippet": "leased from the SFWD. 1.3.7 «Sunol Water Temple» The «Sunol Water Temple» is located at the SFWD",
-   "url": "https://archive.org/details/alamedawatershe1998sanf_3",
-   "deep_link": "https://archive.org/details/alamedawatershe1998sanf_3?q=Sunol+Water+Temple",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Meetings & resolutions",
+   "salient": true
   },
   {
    "identifier": "aminutes1996sanf",
@@ -131,31 +152,23 @@
    "snippet": "Commission, asked if the rebuilding of the «Sunol Water Temple» was included in the budget. Speaking",
    "url": "https://archive.org/details/aminutes1996sanf",
    "deep_link": "https://archive.org/details/aminutes1996sanf?q=Sunol+Water+Temple",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Meetings & resolutions",
+   "salient": true
   },
   {
-   "identifier": "1minutes1996sanf",
-   "title": "Minutes",
-   "creator": "San Francisco (Calif.). Board of Supervisors. Government Efficiency and Labor Committee",
-   "year": null,
-   "pool": "sfpl",
-   "matched_alias": "Sunol Water Temple",
-   "snippet": "(three years) «Sunol Water Temple» Historic Restoration The «Sunol Water Temple», located in Alameda",
-   "url": "https://archive.org/details/1minutes1996sanf",
-   "deep_link": "https://archive.org/details/1minutes1996sanf?q=Sunol+Water+Temple",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
-  },
-  {
-   "identifier": "mminutes1999sanf",
-   "title": "Minutes",
+   "identifier": "alamedawatershe1998sanf_3",
+   "title": "Alameda Watershed management plan, Peninsula Watershed management plan : appendix C",
    "creator": "San Francisco Public Utilities Commission",
    "year": null,
    "pool": "sfpl",
    "matched_alias": "Sunol Water Temple",
-   "snippet": "Water Department Contract No. WD- 2290, «Sunol Water Temple» Phase 1 Building Restoration; and",
-   "url": "https://archive.org/details/mminutes1999sanf",
-   "deep_link": "https://archive.org/details/mminutes1999sanf?q=Sunol+Water+Temple",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+   "snippet": "leased from the SFWD. 1.3.7 «Sunol Water Temple» The «Sunol Water Temple» is located at the SFWD",
+   "url": "https://archive.org/details/alamedawatershe1998sanf_3",
+   "deep_link": "https://archive.org/details/alamedawatershe1998sanf_3?q=Sunol+Water+Temple",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Other records",
+   "salient": false
   }
  ],
  "dept_shelf": [
@@ -179,29 +192,10 @@
    "year": null,
    "pool": "sfpl",
    "url": "https://archive.org/details/agendapublicutil1989sanf"
-  },
-  {
-   "identifier": "agendapublicutil2008sanf",
-   "title": "Agenda / Public Utilities Commission, City and County of San Francisco",
-   "year": null,
-   "pool": "sfpl",
-   "url": "https://archive.org/details/agendapublicutil2008sanf"
-  },
-  {
-   "identifier": "agendapublicutil1992sanf",
-   "title": "Agenda / Public Utilities Commission, City and County of San Francisco",
-   "year": null,
-   "pool": "sfpl",
-   "url": "https://archive.org/details/agendapublicutil1992sanf"
-  },
-  {
-   "identifier": "aminutes1994sanf",
-   "title": "Minutes",
-   "year": null,
-   "pool": "sfpl",
-   "url": "https://archive.org/details/aminutes1994sanf"
   }
  ],
+ "dept_shelf_label": "Public Utilities Commission",
+ "dept_shelf_more": 3,
  "sources": [
   {
    "label": "City budget & payments",
@@ -214,7 +208,7 @@
  ],
  "_gate": {
   "has_photo": true,
-  "n_documents": 10,
+  "n_documents": 7,
   "n_money_links": 1,
   "meets_pre_summary": true
  }

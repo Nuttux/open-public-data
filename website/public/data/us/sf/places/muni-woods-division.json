@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T22:30:00.123235+00:00",
+ "generated_at": "2026-07-21T14:25:53.976999+00:00",
  "source_pipeline": "sf_place_candidates.json → sync_ia_sf.py + link_sf_places.py + fetch_sf_place_photos.py → export_sf_places.py",
  "unit": "USD",
  "slug": "muni-woods-division",
@@ -13,6 +13,8 @@
   "name": "Municipal Transportation Agency",
   "code": "MTA"
  },
+ "facility": null,
+ "capital": null,
  "photo": null,
  "photo_credit": null,
  "summary_en": null,
@@ -24,34 +26,17 @@
    "total_usd": 1517548716.0,
    "fiscal_year": 2025
   },
+  "payroll_line": {
+   "code": "MTA",
+   "name": "Municipal Transportation Agcy",
+   "total_compensation_usd": 960677279.95,
+   "n_employees": 6381,
+   "fiscal_year": 2025
+  },
   "contracts": [],
   "grants": []
  },
  "documents": [
-  {
-   "identifier": "9minutes2000sanf",
-   "title": "Minutes",
-   "creator": "San Francisco (Calif.). Municipal Transportation Agency. Board of Directors,San Francisco (Calif.). Parking Authority",
-   "year": 2000,
-   "pool": "sfpl",
-   "matched_alias": "Woods Division",
-   "snippet": "Purchase; Trolley Overhead Reconstruction; «Woods Division» Renovation. 12. Authorizing the Director",
-   "url": "https://archive.org/details/9minutes2000sanf",
-   "deep_link": "https://archive.org/details/9minutes2000sanf?q=Woods+Division",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
-  },
-  {
-   "identifier": "0minutes2003sanf",
-   "title": "Minutes",
-   "creator": "San Francisco (Calif.). Municipal Transportation Agency. Citizens' Advisory Council",
-   "year": 2000,
-   "pool": "sfpl",
-   "matched_alias": "Woods Division",
-   "snippet": "Operations), Larry Games (Superintendent, «Woods Division»), Shannon Gaffney (Principal Administrative",
-   "url": "https://archive.org/details/0minutes2003sanf",
-   "deep_link": "https://archive.org/details/0minutes2003sanf?q=Woods+Division",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
-  },
   {
    "identifier": "strategicplan2001199sanf",
    "title": "Strategic plan 2000 : short range transit plan : draft for public review and comment / San Francisco Municipal Railway",
@@ -62,7 +47,9 @@
    "snippet": "Figure 30 - Facilities Funding «Woods Motor Coach Division» Renovation Consists of two phases",
    "url": "https://archive.org/details/strategicplan2001199sanf",
    "deep_link": "https://archive.org/details/strategicplan2001199sanf?q=Woods+Motor+Coach+Division",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Plans & environmental review",
+   "salient": true
   },
   {
    "identifier": "5minutes1998sanf",
@@ -74,31 +61,9 @@
    "snippet": "implementation activities for the MUNI «Woods Motor Coach Division» Fuel and Wash Rehabilitation Project",
    "url": "https://archive.org/details/5minutes1998sanf",
    "deep_link": "https://archive.org/details/5minutes1998sanf?q=Woods+Motor+Coach+Division",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
-  },
-  {
-   "identifier": "noticeofmeetingc1999sanf",
-   "title": "Notice of meeting and calendar",
-   "creator": "San Francisco (Calif.). Public Transportation Commission",
-   "year": 1994,
-   "pool": "sfpl",
-   "matched_alias": "Woods Motor Coach Division",
-   "snippet": "Program; Trolley Coach Replacement; «Woods Motor Coach Division» Renovation; Third Street Corridor",
-   "url": "https://archive.org/details/noticeofmeetingc1999sanf",
-   "deep_link": "https://archive.org/details/noticeofmeetingc1999sanf?q=Woods+Motor+Coach+Division",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
-  },
-  {
-   "identifier": "munimemo1984sanf",
-   "title": "The Muni memo",
-   "creator": "San Francisco Municipal Railway. Community Affairs Dept",
-   "year": null,
-   "pool": "sfpl",
-   "matched_alias": "Woods Division",
-   "snippet": "Carpenter, «Woods Division»; 1984 March— Paris Vigil, Automotive Technician, «Woods Division»; 1984",
-   "url": "https://archive.org/details/munimemo1984sanf",
-   "deep_link": "https://archive.org/details/munimemo1984sanf?q=Woods+Division",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Meetings & resolutions",
+   "salient": true
   },
   {
    "identifier": "minutesofmunicip2001muni",
@@ -110,55 +75,9 @@
    "snippet": "house begin Saturday, August 18th at the «Woods Division», 11:30 a.m. to 2:30 p.m. Ms. Orr-Smith",
    "url": "https://archive.org/details/minutesofmunicip2001muni",
    "deep_link": "https://archive.org/details/minutesofmunicip2001muni?q=Woods+Division",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
-  },
-  {
-   "identifier": "munimemo1987sanf",
-   "title": "The Muni memo",
-   "creator": "San Francisco Municipal Railway. Community Affairs Dept",
-   "year": null,
-   "pool": "sfpl",
-   "matched_alias": "Woods Division",
-   "snippet": "LaCapp, Life Operator of the Month from «Woods Division» Adan Look, Equipment Worker of the Month",
-   "url": "https://archive.org/details/munimemo1987sanf",
-   "deep_link": "https://archive.org/details/munimemo1987sanf?q=Woods+Division",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
-  },
-  {
-   "identifier": "trolleytopics19731980sanf",
-   "title": "Trolley topics",
-   "creator": "San Francisco Municipal Railway,San Francisco Public Utilities Commission",
-   "year": null,
-   "pool": "sfpl",
-   "matched_alias": "Woods Division",
-   "snippet": "Muni bus driver Clarence A. Chiles of «Woods Division». Chiles, who captured the title recently",
-   "url": "https://archive.org/details/trolleytopics19731980sanf",
-   "deep_link": "https://archive.org/details/trolleytopics19731980sanf?q=Woods+Division",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
-  },
-  {
-   "identifier": "managementaudito1996budg",
-   "title": "Management audit of the San Francisco Municipal Railway",
-   "creator": "Budget Analyst of the City and County of San Francisco",
-   "year": null,
-   "pool": "sfpl",
-   "matched_alias": "Woods Division",
-   "snippet": "Kirkland Division 6 Presidio Division 3 «Woods Division» 9 Total 53 I Office of the Budget Analyst",
-   "url": "https://archive.org/details/managementaudito1996budg",
-   "deep_link": "https://archive.org/details/managementaudito1996budg?q=Woods+Division",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
-  },
-  {
-   "identifier": "bidcontractoppor1987sanf",
-   "title": "Bid and contract opportunities / by the Purchasing Department of the City and County of San Francisco Purchasing Department",
-   "creator": "San Francisco (Calif.). Purchasing Department",
-   "year": null,
-   "pool": "sfpl",
-   "matched_alias": "Woods Division",
-   "snippet": "554-0725 Perform FUNCTIONAL ANALYSIS FOR THE «WOODS DIVISION» FACILITY EXPANSION PROJECT. WooL develop",
-   "url": "https://archive.org/details/bidcontractoppor1987sanf",
-   "deep_link": "https://archive.org/details/bidcontractoppor1987sanf?q=Woods+Division",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Meetings & resolutions",
+   "salient": true
   },
   {
    "identifier": "agendapublicutil1987sanf",
@@ -170,7 +89,23 @@
    "snippet": "provide a functional analysis for the «Woods Division» Expansion Project. (23) Authorizing the",
    "url": "https://archive.org/details/agendapublicutil1987sanf",
    "deep_link": "https://archive.org/details/agendapublicutil1987sanf?q=Woods+Division",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Meetings & resolutions",
+   "salient": true
+  },
+  {
+   "identifier": "bidcontractoppor1987sanf",
+   "title": "Bid and contract opportunities / by the Purchasing Department of the City and County of San Francisco Purchasing Department",
+   "creator": "San Francisco (Calif.). Purchasing Department",
+   "year": null,
+   "pool": "sfpl",
+   "matched_alias": "Woods Division",
+   "snippet": "554-0725 Perform FUNCTIONAL ANALYSIS FOR THE «WOODS DIVISION» FACILITY EXPANSION PROJECT. WooL develop",
+   "url": "https://archive.org/details/bidcontractoppor1987sanf",
+   "deep_link": "https://archive.org/details/bidcontractoppor1987sanf?q=Woods+Division",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Other records",
+   "salient": true
   },
   {
    "identifier": "urbanmasstranspo1986cali",
@@ -182,19 +117,65 @@
    "snippet": "C 6) E&H Boarding Platforms 467,611 C 7) «Woods Division» Redevelopment 1 ,855,000 C 8) Trolley Overhead",
    "url": "https://archive.org/details/urbanmasstranspo1986cali",
    "deep_link": "https://archive.org/details/urbanmasstranspo1986cali?q=Woods+Division",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Other records",
+   "salient": true
   },
   {
-   "identifier": "2minutes1987sanf",
-   "title": "Minutes",
-   "creator": "San Francisco Public Utilities Commission",
+   "identifier": "munimemo1984sanf",
+   "title": "The Muni memo",
+   "creator": "San Francisco Municipal Railway. Community Affairs Dept",
    "year": null,
    "pool": "sfpl",
    "matched_alias": "Woods Division",
-   "snippet": "and Illinois site is convenient to the «Woods Division» and the Harrison Street Facility. The",
-   "url": "https://archive.org/details/2minutes1987sanf",
-   "deep_link": "https://archive.org/details/2minutes1987sanf?q=Woods+Division",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+   "snippet": "Carpenter, «Woods Division»; 1984 March— Paris Vigil, Automotive Technician, «Woods Division»; 1984",
+   "url": "https://archive.org/details/munimemo1984sanf",
+   "deep_link": "https://archive.org/details/munimemo1984sanf?q=Woods+Division",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Other records",
+   "salient": false
+  },
+  {
+   "identifier": "noticeofmeetingc1999sanf",
+   "title": "Notice of meeting and calendar",
+   "creator": "San Francisco (Calif.). Public Transportation Commission",
+   "year": 1994,
+   "pool": "sfpl",
+   "matched_alias": "Woods Motor Coach Division",
+   "snippet": "Program; Trolley Coach Replacement; «Woods Motor Coach Division» Renovation; Third Street Corridor",
+   "url": "https://archive.org/details/noticeofmeetingc1999sanf",
+   "deep_link": "https://archive.org/details/noticeofmeetingc1999sanf?q=Woods+Motor+Coach+Division",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Other records",
+   "salient": false
+  },
+  {
+   "identifier": "managementaudito1996budg",
+   "title": "Management audit of the San Francisco Municipal Railway",
+   "creator": "Budget Analyst of the City and County of San Francisco",
+   "year": null,
+   "pool": "sfpl",
+   "matched_alias": "Woods Division",
+   "snippet": "Kirkland Division 6 Presidio Division 3 «Woods Division» 9 Total 53 I Office of the Budget Analyst",
+   "url": "https://archive.org/details/managementaudito1996budg",
+   "deep_link": "https://archive.org/details/managementaudito1996budg?q=Woods+Division",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Other records",
+   "salient": false
+  },
+  {
+   "identifier": "trolleytopics19731980sanf",
+   "title": "Trolley topics",
+   "creator": "San Francisco Municipal Railway,San Francisco Public Utilities Commission",
+   "year": null,
+   "pool": "sfpl",
+   "matched_alias": "Woods Division",
+   "snippet": "Muni bus driver Clarence A. Chiles of «Woods Division». Chiles, who captured the title recently",
+   "url": "https://archive.org/details/trolleytopics19731980sanf",
+   "deep_link": "https://archive.org/details/trolleytopics19731980sanf?q=Woods+Division",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Other records",
+   "salient": false
   }
  ],
  "dept_shelf": [
@@ -218,29 +199,10 @@
    "year": null,
    "pool": "sfpl",
    "url": "https://archive.org/details/2minutes1987sanf"
-  },
-  {
-   "identifier": "4minutes1991sanf",
-   "title": "Minutes",
-   "year": null,
-   "pool": "sfpl",
-   "url": "https://archive.org/details/4minutes1991sanf"
-  },
-  {
-   "identifier": "2minutes1986sanf",
-   "title": "Minutes",
-   "year": null,
-   "pool": "sfpl",
-   "url": "https://archive.org/details/2minutes1986sanf"
-  },
-  {
-   "identifier": "1minutes1983sanf",
-   "title": "Minutes",
-   "year": null,
-   "pool": "sfpl",
-   "url": "https://archive.org/details/1minutes1983sanf"
   }
  ],
+ "dept_shelf_label": "Municipal Railway (Muni)",
+ "dept_shelf_more": 3,
  "sources": [
   {
    "label": "City budget & payments",
@@ -253,7 +215,7 @@
  ],
  "_gate": {
   "has_photo": false,
-  "n_documents": 14,
+  "n_documents": 10,
   "n_money_links": 1,
   "meets_pre_summary": false
  }

@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T22:30:00.107962+00:00",
+ "generated_at": "2026-07-21T14:25:53.938106+00:00",
  "source_pipeline": "sf_place_candidates.json → sync_ia_sf.py + link_sf_places.py + fetch_sf_place_photos.py → export_sf_places.py",
  "unit": "USD",
  "slug": "marina-green",
@@ -12,6 +12,152 @@
  "owning_dept": {
   "name": "Recreation and Park Department",
   "code": "REC"
+ },
+ "facility": {
+  "primary_name": "Marina Green Shops/Restaurants",
+  "primary_address": "1 YACHT RD",
+  "primary_city": "San Francisco",
+  "primary_zip": "94123",
+  "primary_block_lot": "0900003",
+  "primary_department_name": "Recreation And Parks",
+  "primary_is_city_owned": true,
+  "primary_gross_sq_ft": 1000,
+  "primary_latitude": 37.80700236100006,
+  "primary_longitude": -122.44565731699998,
+  "supervisor_district": 2,
+  "n_facilities": 3,
+  "total_gross_sq_ft": 2000,
+  "n_owned": 3,
+  "n_leased": 0,
+  "apn_list": [
+   "0900003"
+  ],
+  "facilities": [
+   {
+    "facility_id": 1056,
+    "common_name": "Marina Green Shops/Restaurants",
+    "block_lot": "0900003",
+    "gross_sq_ft": 1000,
+    "is_city_owned": true
+   },
+   {
+    "facility_id": 1054,
+    "common_name": "Marina Green Bathrooms East",
+    "block_lot": "0900003",
+    "gross_sq_ft": 500,
+    "is_city_owned": true
+   },
+   {
+    "facility_id": 1055,
+    "common_name": "Marina Green Bathrooms West",
+    "block_lot": "0900003",
+    "gross_sq_ft": 500,
+    "is_city_owned": true
+   }
+  ]
+ },
+ "capital": {
+  "n_items": 0,
+  "measure_totals": {},
+  "bond_programs": [],
+  "items": [],
+  "payees": [],
+  "n_payees": 0,
+  "payees_total_paid": 0,
+  "permits": [
+   {
+    "description": "remodel (e) member bar. new electrical, plumbing, and lighting. new built-in furnishings and fixtures at bar area. new service equipment in drinks prep area.",
+    "permit_type": "otc alterations permit",
+    "declared_cost_usd": 750000.0,
+    "status": "issued",
+    "permit_date": "2024-07-02",
+    "permit_year": 2024
+   },
+   {
+    "description": "erect 1 story, type 5-b, public restroom bldg.",
+    "permit_type": "new construction wood frame",
+    "declared_cost_usd": 500000.0,
+    "status": "issued",
+    "permit_date": "2012-05-30",
+    "permit_year": 2012
+   },
+   {
+    "description": "perform earthquake repairs to structure remodel",
+    "permit_type": "additions alterations or repairs",
+    "declared_cost_usd": 500000.0,
+    "status": "expired",
+    "permit_date": "1992-04-29",
+    "permit_year": 1992
+   },
+   {
+    "description": "barrier removal including; renovation of office space & shower rms & restrooms. work includes; mod. to door openings w/assoc. modifications to slab & diaphragm, reconfiguration of toilets & shower, incl. plumbing & elec.; repair to int. & ext. finishes; & (n) int. lighting and signage.",
+    "permit_type": "otc alterations permit",
+    "declared_cost_usd": 469000.0,
+    "status": "complete",
+    "permit_date": "2011-11-29",
+    "permit_year": 2011
+   },
+   {
+    "description": "structural reinforcement of building. (e) structure is falling apart",
+    "permit_type": "otc alterations permit",
+    "declared_cost_usd": 250000.0,
+    "status": "issued",
+    "permit_date": "2018-11-20",
+    "permit_year": 2018
+   },
+   {
+    "description": "accessible barrier removal: (n) plumbing fixtures, painting, electrical & associated work, (n) floor finish, accessible path of travel & paving work in parking lot & new accessible drinking fountain.",
+    "permit_type": "otc alterations permit",
+    "declared_cost_usd": 200000.0,
+    "status": "issued",
+    "permit_date": "2010-09-10",
+    "permit_year": 2010
+   }
+  ],
+  "n_permits": 22,
+  "permits_total_declared": 3211000.0,
+  "permits_by_year": [
+   {
+    "year": 1992,
+    "declared_usd": 500000.0
+   },
+   {
+    "year": 1993,
+    "declared_usd": 46200.0
+   },
+   {
+    "year": 1996,
+    "declared_usd": 15000.0
+   },
+   {
+    "year": 2009,
+    "declared_usd": 4000.0
+   },
+   {
+    "year": 2010,
+    "declared_usd": 200000.0
+   },
+   {
+    "year": 2011,
+    "declared_usd": 493200.0
+   },
+   {
+    "year": 2012,
+    "declared_usd": 852600.0
+   },
+   {
+    "year": 2013,
+    "declared_usd": 100000.0
+   },
+   {
+    "year": 2018,
+    "declared_usd": 250000.0
+   },
+   {
+    "year": 2024,
+    "declared_usd": 750000.0
+   }
+  ]
  },
  "photo": "/img/us/sf/places/marina-green.jpg",
  "photo_credit": {
@@ -33,6 +179,13 @@
    "total_usd": 250373849.0,
    "fiscal_year": 2025
   },
+  "payroll_line": {
+   "code": "REC",
+   "name": "Recreation And Park Commission",
+   "total_compensation_usd": 149952872.68,
+   "n_employees": 2161,
+   "fiscal_year": 2025
+  },
   "contracts": [],
   "grants": []
  },
@@ -47,43 +200,9 @@
    "snippet": "Variants «Marina Green» The preliminary site plan for the AC Village at «Marina Green» in 2012",
    "url": "https://archive.org/details/draftenvironment5120sanf",
    "deep_link": "https://archive.org/details/draftenvironment5120sanf?q=Marina+Green",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
-  },
-  {
-   "identifier": "preliminarymitig2003sanf",
-   "title": "Preliminary mitigated negative declaration : 2002.1129E -- San Francisco marina renovation",
-   "creator": "San Francisco (Calif.). Planning Dept,Environmental Science Associates,Carey & Co,Horton Lees Brogden Lighting Design,Moffatt & Nichol Engineers,Orion Environmental Associates",
-   "year": 2002,
-   "pool": "sfpl",
-   "matched_alias": "Marina Green",
-   "snippet": "less-than-significant impact on the stand. «Marina Green»: The «Marina Green» is a public with paved sidewalks",
-   "url": "https://archive.org/details/preliminarymitig2003sanf",
-   "deep_link": "https://archive.org/details/preliminarymitig2003sanf?q=Marina+Green",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
-  },
-  {
-   "identifier": "scenicparkwayfor293sanf",
-   "title": "A scenic parkway for the park : report of the Doyle Drive Task Force to the San Francisco Board of Supervisors",
-   "creator": "San Francisco (Calif.). Board of Supervisors. Doyle Drive Task Force",
-   "year": 1993,
-   "pool": "sfpl",
-   "matched_alias": "Marina Green",
-   "snippet": "the length of the bay front, from the «Marina Green» to Fort Point, past clusters of fishermen",
-   "url": "https://archive.org/details/scenicparkwayfor293sanf",
-   "deep_link": "https://archive.org/details/scenicparkwayfor293sanf?q=Marina+Green",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
-  },
-  {
-   "identifier": "whatsdoinginpark1985sanf",
-   "title": "What's doing in the parks?",
-   "creator": "San Francisco (Calif.). Recreation and Park Department",
-   "year": null,
-   "pool": "sfpl",
-   "matched_alias": "Marina Green",
-   "snippet": "Guild of San Francisco Outdoor Art Show, «Marina Green», Marina Boulevard and Webster Street, (thru",
-   "url": "https://archive.org/details/whatsdoinginpark1985sanf",
-   "deep_link": "https://archive.org/details/whatsdoinginpark1985sanf?q=Marina+Green",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Plans & environmental review",
+   "salient": true
   },
   {
    "identifier": "minutesrecreatio1980sanf",
@@ -95,43 +214,9 @@
    "snippet": "Reforestation Report, «Marina Green» Report, Portable Book Stalls, No Parking «Marina Green», Monastery",
    "url": "https://archive.org/details/minutesrecreatio1980sanf",
    "deep_link": "https://archive.org/details/minutesrecreatio1980sanf?q=Marina+Green",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
-  },
-  {
-   "identifier": "technicalreportg1965cali",
-   "title": "Technical report: Golden Gate Freeway, Interstate Highway Route 480",
-   "creator": "California. Division of Highways",
-   "year": null,
-   "pool": "sfpl",
-   "matched_alias": "Marina Green",
-   "snippet": "several-times expanded Marina Yacht Harbor, the «Marina Green», the newGas House Cove Yacht Basin to",
-   "url": "https://archive.org/details/technicalreportg1965cali",
-   "deep_link": "https://archive.org/details/technicalreportg1965cali?q=Marina+Green",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
-  },
-  {
-   "identifier": "agendaoperations2004sanf",
-   "title": "Agenda / Operations Committee",
-   "creator": "San Francisco (Calif.). Recreation and Park Commission. Operations Committee",
-   "year": null,
-   "pool": "sfpl",
-   "matched_alias": "Marina Green",
-   "snippet": "8. 2006. (ACTION ITEM) 12. ALTA PLAZA, «MARINA GREEN», RUSSIAN HILL PARK AND JUSTIN HERMAN",
-   "url": "https://archive.org/details/agendaoperations2004sanf",
-   "deep_link": "https://archive.org/details/agendaoperations2004sanf?q=Marina+Green",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
-  },
-  {
-   "identifier": "minutesrecreatio1990sanf",
-   "title": "Minutes / Recreation and Park Commission",
-   "creator": "San Francisco (Calif.). Recreation and Park Commission",
-   "year": null,
-   "pool": "sfpl",
-   "matched_alias": "Marina Green",
-   "snippet": "boardsailing event at the «Marina Green». Part of the «Marina Green» parking lot and the northern",
-   "url": "https://archive.org/details/minutesrecreatio1990sanf",
-   "deep_link": "https://archive.org/details/minutesrecreatio1990sanf?q=Marina+Green",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Meetings & resolutions",
+   "salient": true
   },
   {
    "identifier": "minutes199899sanf",
@@ -143,19 +228,79 @@
    "snippet": "enforcement on the «Marina Green» and the loss of shrubbery on little «Marina Green». John Laskin",
    "url": "https://archive.org/details/minutes199899sanf",
    "deep_link": "https://archive.org/details/minutes199899sanf?q=Marina+Green",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Meetings & resolutions",
+   "salient": true
   },
   {
-   "identifier": "whatsdoinginpark1992sanf",
+   "identifier": "agendaoperations2004sanf",
+   "title": "Agenda / Operations Committee",
+   "creator": "San Francisco (Calif.). Recreation and Park Commission. Operations Committee",
+   "year": null,
+   "pool": "sfpl",
+   "matched_alias": "Marina Green",
+   "snippet": "8. 2006. (ACTION ITEM) 12. ALTA PLAZA, «MARINA GREEN», RUSSIAN HILL PARK AND JUSTIN HERMAN",
+   "url": "https://archive.org/details/agendaoperations2004sanf",
+   "deep_link": "https://archive.org/details/agendaoperations2004sanf?q=Marina+Green",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Meetings & resolutions",
+   "salient": true
+  },
+  {
+   "identifier": "scenicparkwayfor293sanf",
+   "title": "A scenic parkway for the park : report of the Doyle Drive Task Force to the San Francisco Board of Supervisors",
+   "creator": "San Francisco (Calif.). Board of Supervisors. Doyle Drive Task Force",
+   "year": 1993,
+   "pool": "sfpl",
+   "matched_alias": "Marina Green",
+   "snippet": "the length of the bay front, from the «Marina Green» to Fort Point, past clusters of fishermen",
+   "url": "https://archive.org/details/scenicparkwayfor293sanf",
+   "deep_link": "https://archive.org/details/scenicparkwayfor293sanf?q=Marina+Green",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Reports & records",
+   "salient": true
+  },
+  {
+   "identifier": "preliminarymitig2003sanf",
+   "title": "Preliminary mitigated negative declaration : 2002.1129E -- San Francisco marina renovation",
+   "creator": "San Francisco (Calif.). Planning Dept,Environmental Science Associates,Carey & Co,Horton Lees Brogden Lighting Design,Moffatt & Nichol Engineers,Orion Environmental Associates",
+   "year": 2002,
+   "pool": "sfpl",
+   "matched_alias": "Marina Green",
+   "snippet": "less-than-significant impact on the stand. «Marina Green»: The «Marina Green» is a public with paved sidewalks",
+   "url": "https://archive.org/details/preliminarymitig2003sanf",
+   "deep_link": "https://archive.org/details/preliminarymitig2003sanf?q=Marina+Green",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Other records",
+   "salient": true
+  },
+  {
+   "identifier": "technicalreportg1965cali",
+   "title": "Technical report: Golden Gate Freeway, Interstate Highway Route 480",
+   "creator": "California. Division of Highways",
+   "year": null,
+   "pool": "sfpl",
+   "matched_alias": "Marina Green",
+   "snippet": "several-times expanded Marina Yacht Harbor, the «Marina Green», the newGas House Cove Yacht Basin to",
+   "url": "https://archive.org/details/technicalreportg1965cali",
+   "deep_link": "https://archive.org/details/technicalreportg1965cali?q=Marina+Green",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Other records",
+   "salient": false
+  },
+  {
+   "identifier": "whatsdoinginpark1985sanf",
    "title": "What's doing in the parks?",
    "creator": "San Francisco (Calif.). Recreation and Park Department",
    "year": null,
    "pool": "sfpl",
    "matched_alias": "Marina Green",
-   "snippet": "Artists Guild of San Francisco Art Show, «Marina Green», Marina Blvd. & Scott St. Monday, February",
-   "url": "https://archive.org/details/whatsdoinginpark1992sanf",
-   "deep_link": "https://archive.org/details/whatsdoinginpark1992sanf?q=Marina+Green",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+   "snippet": "Guild of San Francisco Outdoor Art Show, «Marina Green», Marina Boulevard and Webster Street, (thru",
+   "url": "https://archive.org/details/whatsdoinginpark1985sanf",
+   "deep_link": "https://archive.org/details/whatsdoinginpark1985sanf?q=Marina+Green",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Other records",
+   "salient": false
   }
  ],
  "dept_shelf": [
@@ -179,29 +324,10 @@
    "year": 1999,
    "pool": "sfpl",
    "url": "https://archive.org/details/0agenda19992002sanf"
-  },
-  {
-   "identifier": "reporttoboardofs1980sanf",
-   "title": "Report to the Board of Supervisors of the City and County of San Francisco : review of the operations of the San Francisco Recreation and Park Department",
-   "year": 1979,
-   "pool": "sfpl",
-   "url": "https://archive.org/details/reporttoboardofs1980sanf"
-  },
-  {
-   "identifier": "annualreport197277sanf",
-   "title": "Annual report of the San Francisco Recreation and Park Department",
-   "year": null,
-   "pool": "sfpl",
-   "url": "https://archive.org/details/annualreport197277sanf"
-  },
-  {
-   "identifier": "minutesrecreatio1960sanf",
-   "title": "Minutes / Recreation and Park Commission",
-   "year": null,
-   "pool": "sfpl",
-   "url": "https://archive.org/details/minutesrecreatio1960sanf"
   }
  ],
+ "dept_shelf_label": "Recreation & Park Department",
+ "dept_shelf_more": 3,
  "sources": [
   {
    "label": "City budget & payments",
@@ -214,7 +340,7 @@
  ],
  "_gate": {
   "has_photo": true,
-  "n_documents": 10,
+  "n_documents": 8,
   "n_money_links": 1,
   "meets_pre_summary": true
  }

@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T22:30:00.101446+00:00",
+ "generated_at": "2026-07-21T14:25:53.924021+00:00",
  "source_pipeline": "sf_place_candidates.json → sync_ia_sf.py + link_sf_places.py + fetch_sf_place_photos.py → export_sf_places.py",
  "unit": "USD",
  "slug": "coit-tower",
@@ -12,6 +12,123 @@
  "owning_dept": {
   "name": "Recreation and Park Department",
   "code": "REC"
+ },
+ "facility": {
+  "primary_name": "Coit Tower",
+  "primary_address": "1 TELEGRAPH HILL BLVD",
+  "primary_city": "San Francisco",
+  "primary_zip": "94133",
+  "primary_block_lot": "0086012",
+  "primary_department_name": "Recreation And Parks",
+  "primary_is_city_owned": true,
+  "primary_gross_sq_ft": 5687,
+  "primary_latitude": 37.80236885100004,
+  "primary_longitude": -122.40576431799997,
+  "supervisor_district": 3,
+  "n_facilities": 1,
+  "total_gross_sq_ft": 5687,
+  "n_owned": 1,
+  "n_leased": 0,
+  "apn_list": [
+   "0086012"
+  ],
+  "facilities": [
+   {
+    "facility_id": 501,
+    "common_name": "Coit Tower",
+    "block_lot": "0086012",
+    "gross_sq_ft": 5687,
+    "is_city_owned": true
+   }
+  ]
+ },
+ "capital": {
+  "n_items": 1,
+  "measure_totals": {},
+  "bond_programs": [
+   "Clean and Safe Neighborhood Parks"
+  ],
+  "items": [
+   {
+    "source": "bond",
+    "source_kind": "bond_project",
+    "item_name": "RP Cof-Pioneer Park",
+    "bond_program": "Clean and Safe Neighborhood Parks",
+    "component": "Citywide Programs",
+    "voter_approved_date": null,
+    "amount_usd": null,
+    "amount_measure": null,
+    "budget_usd": null,
+    "contract_no": null,
+    "status": null,
+    "match_evidence": "Pioneer Park"
+   }
+  ],
+  "payees": [
+   {
+    "vendor": "T & T ELECTRIC CORP",
+    "paid_usd": 55000.0,
+    "n_contracts": 1,
+    "first_fiscal_year": 2024,
+    "last_fiscal_year": 2024
+   }
+  ],
+  "n_payees": 1,
+  "payees_total_paid": 55000.0,
+  "permits": [
+   {
+    "description": "bldg rehabilitation, exterior repair, door & window rehabilitation, interior finishes paint & tile repair. upgrade for mech & elect, accessibility, hand & guardrail, restroom. new accessible & site signage. ($50k non barrier removal items, others are maintenance & accessibility upgrade work)",
+    "permit_type": "additions alterations or repairs",
+    "declared_cost_usd": 856000.0,
+    "status": "complete",
+    "permit_date": "2013-06-20",
+    "permit_year": 2013
+   },
+   {
+    "description": "reroofing - coit memorial tower.",
+    "permit_type": "additions alterations or repairs",
+    "declared_cost_usd": 150000.0,
+    "status": "complete",
+    "permit_date": "2012-09-21",
+    "permit_year": 2012
+   },
+   {
+    "description": "(rear building) to erect 1 story, no basement, limited restaurant.",
+    "permit_type": "new construction wood frame",
+    "declared_cost_usd": 35000.0,
+    "status": "issued",
+    "permit_date": "2016-11-23",
+    "permit_year": 2016
+   },
+   {
+    "description": "paint interior of existing shop, remove/replace (e) slatwall, add 3 new outlets to (e) circuit, add new cabinets, add 2 new audio/visual alarms exit signage, ada accessible counter top & ada signage.",
+    "permit_type": "otc alterations permit",
+    "declared_cost_usd": 16450.0,
+    "status": "complete",
+    "permit_date": "2014-04-02",
+    "permit_year": 2014
+   }
+  ],
+  "n_permits": 4,
+  "permits_total_declared": 1057450.0,
+  "permits_by_year": [
+   {
+    "year": 2012,
+    "declared_usd": 150000.0
+   },
+   {
+    "year": 2013,
+    "declared_usd": 856000.0
+   },
+   {
+    "year": 2014,
+    "declared_usd": 16450.0
+   },
+   {
+    "year": 2016,
+    "declared_usd": 35000.0
+   }
+  ]
  },
  "photo": "/img/us/sf/places/coit-tower.jpg",
  "photo_credit": {
@@ -33,6 +150,13 @@
    "total_usd": 250373849.0,
    "fiscal_year": 2025
   },
+  "payroll_line": {
+   "code": "REC",
+   "name": "Recreation And Park Commission",
+   "total_compensation_usd": 149952872.68,
+   "n_employees": 2161,
+   "fiscal_year": 2025
+  },
   "contracts": [],
   "grants": []
  },
@@ -47,7 +171,9 @@
    "snippet": "became «Pioneer Park». In 1883 a company, headed by Gustav Sutro, erected the «Pioneer Park» Observatory",
    "url": "https://archive.org/details/historicstructur01arts",
    "deep_link": "https://archive.org/details/historicstructur01arts?q=Coit+Tower",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Plans & environmental review",
+   "salient": true
   },
   {
    "identifier": "sanfranciscocivi00arts",
@@ -59,31 +185,9 @@
    "snippet": "bordered by a marble ring. 36 «Coit Tower»: The murals of «Coit Tower» play a very important role",
    "url": "https://archive.org/details/sanfranciscocivi00arts",
    "deep_link": "https://archive.org/details/sanfranciscocivi00arts?q=Coit+Tower",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
-  },
-  {
-   "identifier": "minutesrecreatio1986sanf",
-   "title": "Minutes / Recreation and Park Commission",
-   "creator": "San Francisco (Calif.). Recreation and Park Commission",
-   "year": 1986,
-   "pool": "sfpl",
-   "matched_alias": "Coit Tower",
-   "snippet": "State Bond Act funds for restoration of «Coit Tower» Murals BROOKS PARK RES. 14210 - Final Payment",
-   "url": "https://archive.org/details/minutesrecreatio1986sanf",
-   "deep_link": "https://archive.org/details/minutesrecreatio1986sanf?q=Coit+Tower",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
-  },
-  {
-   "identifier": "journalofproceed78julydecsanfrich",
-   "title": "Journal of proceedings, Board of Supervisors, City and County of San Francisco",
-   "creator": "San Francisco (Calif.). Board of Supervisors",
-   "year": 1983,
-   "pool": "sfpl",
-   "matched_alias": "Lillie Hitchcock Coit",
-   "snippet": "[Landmark) Ordinance designating the «Lillie Hitchcock Coit» Tower, located on Telegraph Hill Boulevard",
-   "url": "https://archive.org/details/journalofproceed78julydecsanfrich",
-   "deep_link": "https://archive.org/details/journalofproceed78julydecsanfrich?q=Lillie+Hitchcock+Coit",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Histories & surveys",
+   "salient": true
   },
   {
    "identifier": "surveyofartworki1975snip",
@@ -95,31 +199,37 @@
    "snippet": "Street - outside wall of the building. «COIT TOWER» 254. CHRISTOPHER COLUMBUS Medium, Size and",
    "url": "https://archive.org/details/surveyofartworki1975snip",
    "deep_link": "https://archive.org/details/surveyofartworki1975snip?q=Coit+Tower",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Histories & surveys",
+   "salient": true
   },
   {
-   "identifier": "surveyofartworki1953sanf",
-   "title": "A survey of art work in the City and County of San Francisco",
-   "creator": "San Francisco (Calif.). Art Commission,Snipper, Martin, 1914-",
-   "year": 1953,
+   "identifier": "journalofproceed78julydecsanfrich",
+   "title": "Journal of proceedings, Board of Supervisors, City and County of San Francisco",
+   "creator": "San Francisco (Calif.). Board of Supervisors",
+   "year": 1983,
    "pool": "sfpl",
-   "matched_alias": "Coit Tower",
-   "snippet": "Camo to tho U.S. in 1920. Frescoes in «Coit Tower», TJhivorsi-ty of California Medical School",
-   "url": "https://archive.org/details/surveyofartworki1953sanf",
-   "deep_link": "https://archive.org/details/surveyofartworki1953sanf?q=Coit+Tower",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+   "matched_alias": "Lillie Hitchcock Coit",
+   "snippet": "[Landmark) Ordinance designating the «Lillie Hitchcock Coit» Tower, located on Telegraph Hill Boulevard",
+   "url": "https://archive.org/details/journalofproceed78julydecsanfrich",
+   "deep_link": "https://archive.org/details/journalofproceed78julydecsanfrich?q=Lillie+Hitchcock+Coit",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Meetings & resolutions",
+   "salient": true
   },
   {
-   "identifier": "annualreportarts2012arts",
-   "title": "Annual report / Arts Commission of San Francisco",
-   "creator": "Arts Commission of San Francisco",
-   "year": null,
+   "identifier": "minutesrecreatio1986sanf",
+   "title": "Minutes / Recreation and Park Commission",
+   "creator": "San Francisco (Calif.). Recreation and Park Commission",
+   "year": 1986,
    "pool": "sfpl",
    "matched_alias": "Coit Tower",
-   "snippet": "(detail), «Coit Tower», 1934; fresco. Visit us at sfartscommission.org sfoc Saving the «Coit Tower» Murals",
-   "url": "https://archive.org/details/annualreportarts2012arts",
-   "deep_link": "https://archive.org/details/annualreportarts2012arts?q=Coit+Tower",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+   "snippet": "State Bond Act funds for restoration of «Coit Tower» Murals BROOKS PARK RES. 14210 - Final Payment",
+   "url": "https://archive.org/details/minutesrecreatio1986sanf",
+   "deep_link": "https://archive.org/details/minutesrecreatio1986sanf?q=Coit+Tower",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Meetings & resolutions",
+   "salient": true
   },
   {
    "identifier": "resolution2014sanf",
@@ -131,7 +241,9 @@
    "snippet": "$662,400, with «Coit Tower», LLC, for the operation and management of «Coit Tower» and reaffirming",
    "url": "https://archive.org/details/resolution2014sanf",
    "deep_link": "https://archive.org/details/resolution2014sanf?q=Coit+Tower",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Meetings & resolutions",
+   "salient": true
   },
   {
    "identifier": "minutesofartcomm1934sanf",
@@ -143,19 +255,23 @@
    "snippet": "Balboa High School. Tentatively approved. FOR «COIT TOWER» VESTIBULE. 4 Panels and 2 small lunetts",
    "url": "https://archive.org/details/minutesofartcomm1934sanf",
    "deep_link": "https://archive.org/details/minutesofartcomm1934sanf?q=Coit+Tower",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Meetings & resolutions",
+   "salient": false
   },
   {
-   "identifier": "minutesrecreatio1982sanf",
-   "title": "Minutes / Recreation and Park Commission",
-   "creator": "San Francisco (Calif.). Recreation and Park Commission",
+   "identifier": "annualreportarts2012arts",
+   "title": "Annual report / Arts Commission of San Francisco",
+   "creator": "Arts Commission of San Francisco",
    "year": null,
    "pool": "sfpl",
    "matched_alias": "Coit Tower",
-   "snippet": "the July Commission Meeting. «Coit Tower» Report - «Coit Tower» Gift Shop Mr. Malloy will present",
-   "url": "https://archive.org/details/minutesrecreatio1982sanf",
-   "deep_link": "https://archive.org/details/minutesrecreatio1982sanf?q=Coit+Tower",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+   "snippet": "(detail), «Coit Tower», 1934; fresco. Visit us at sfartscommission.org sfoc Saving the «Coit Tower» Murals",
+   "url": "https://archive.org/details/annualreportarts2012arts",
+   "deep_link": "https://archive.org/details/annualreportarts2012arts?q=Coit+Tower",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Reports & records",
+   "salient": false
   }
  ],
  "dept_shelf": [
@@ -179,29 +295,10 @@
    "year": 1999,
    "pool": "sfpl",
    "url": "https://archive.org/details/0agenda19992002sanf"
-  },
-  {
-   "identifier": "reporttoboardofs1980sanf",
-   "title": "Report to the Board of Supervisors of the City and County of San Francisco : review of the operations of the San Francisco Recreation and Park Department",
-   "year": 1979,
-   "pool": "sfpl",
-   "url": "https://archive.org/details/reporttoboardofs1980sanf"
-  },
-  {
-   "identifier": "annualreport197277sanf",
-   "title": "Annual report of the San Francisco Recreation and Park Department",
-   "year": null,
-   "pool": "sfpl",
-   "url": "https://archive.org/details/annualreport197277sanf"
-  },
-  {
-   "identifier": "minutesrecreatio1960sanf",
-   "title": "Minutes / Recreation and Park Commission",
-   "year": null,
-   "pool": "sfpl",
-   "url": "https://archive.org/details/minutesrecreatio1960sanf"
   }
  ],
+ "dept_shelf_label": "Recreation & Park Department",
+ "dept_shelf_more": 3,
  "sources": [
   {
    "label": "City budget & payments",
@@ -214,7 +311,7 @@
  ],
  "_gate": {
   "has_photo": true,
-  "n_documents": 10,
+  "n_documents": 8,
   "n_money_links": 1,
   "meets_pre_summary": true
  }

@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T22:30:00.117250+00:00",
+ "generated_at": "2026-07-21T14:25:53.962187+00:00",
  "source_pipeline": "sf_place_candidates.json → sync_ia_sf.py + link_sf_places.py + fetch_sf_place_photos.py → export_sf_places.py",
  "unit": "USD",
  "slug": "moscone-center",
@@ -12,6 +12,258 @@
  "owning_dept": {
   "name": "City Administrator",
   "code": "ADM"
+ },
+ "facility": {
+  "primary_name": "MOSCONE CENTER (South)",
+  "primary_address": "747 HOWARD ST",
+  "primary_city": "San Francisco",
+  "primary_zip": "94103",
+  "primary_block_lot": "3734091",
+  "primary_department_name": "Gsa - Convention Facilities Management",
+  "primary_is_city_owned": true,
+  "primary_gross_sq_ft": 650000,
+  "primary_latitude": 37.783864032000054,
+  "primary_longitude": -122.40126286799995,
+  "supervisor_district": 6,
+  "n_facilities": 2,
+  "total_gross_sq_ft": 905444,
+  "n_owned": 2,
+  "n_leased": 0,
+  "apn_list": [
+   "3734091",
+   "3735060"
+  ],
+  "facilities": [
+   {
+    "facility_id": 1140,
+    "common_name": "MOSCONE CENTER (South)",
+    "block_lot": "3734091",
+    "gross_sq_ft": 650000,
+    "is_city_owned": true
+   },
+   {
+    "facility_id": 1139,
+    "common_name": "MOSCONE CENTER Parking Garage",
+    "block_lot": "3735060",
+    "gross_sq_ft": 255444,
+    "is_city_owned": true
+   }
+  ]
+ },
+ "capital": {
+  "n_items": 0,
+  "measure_totals": {},
+  "bond_programs": [],
+  "items": [],
+  "payees": [],
+  "n_payees": 0,
+  "payees_total_paid": 0,
+  "permits": [
+   {
+    "description": "renov(e)moscone north & south bldg,increase gross sq footage of moscone n & s combined facility fr approx 1.2 million gsf to 1.5 million gsf.wk incl lower level(exhibit hall renov,addition of 3 stories at moscone south&renov moscone north lobby,plus 2 connecting bridges over howard st. maher req.",
+    "permit_type": "additions alterations or repairs",
+    "declared_cost_usd": 266061486.0,
+    "status": "complete",
+    "permit_date": "2015-04-22",
+    "permit_year": 2015
+   },
+   {
+    "description": "moscone center extension",
+    "permit_type": "new construction",
+    "declared_cost_usd": 100000000.0,
+    "status": "complete",
+    "permit_date": "1989-03-27",
+    "permit_year": 1989
+   },
+   {
+    "description": "created during job card conversion on: 03/04/83",
+    "permit_type": "new construction",
+    "declared_cost_usd": 81108985.0,
+    "status": "complete",
+    "permit_date": "1978-06-13",
+    "permit_year": 1978
+   },
+   {
+    "description": "erect a three story exhibit and recreational structure",
+    "permit_type": "new construction",
+    "declared_cost_usd": 26274000.0,
+    "status": "complete",
+    "permit_date": "1996-05-20",
+    "permit_year": 1996
+   },
+   {
+    "description": "work primarily includes replacing (e) floor finishes, wall finishes, and ceiling finishes. deffered maintenance items & ada accessibility upgrades in public spaces.",
+    "permit_type": "additions alterations or repairs",
+    "declared_cost_usd": 25248523.0,
+    "status": "complete",
+    "permit_date": "2011-04-15",
+    "permit_year": 2011
+   },
+   {
+    "description": "moscone center extension",
+    "permit_type": "new construction",
+    "declared_cost_usd": 24000000.0,
+    "status": "complete",
+    "permit_date": "1989-03-27",
+    "permit_year": 1989
+   }
+  ],
+  "n_permits": 145,
+  "permits_total_declared": 559154087.0,
+  "permits_by_year": [
+   {
+    "year": 1978,
+    "declared_usd": 81108985.0
+   },
+   {
+    "year": 1980,
+    "declared_usd": 350000.0
+   },
+   {
+    "year": 1981,
+    "declared_usd": 570000.0
+   },
+   {
+    "year": 1982,
+    "declared_usd": 173000.0
+   },
+   {
+    "year": 1986,
+    "declared_usd": 150000.0
+   },
+   {
+    "year": 1989,
+    "declared_usd": 124000000.0
+   },
+   {
+    "year": 1991,
+    "declared_usd": 15000.0
+   },
+   {
+    "year": 1992,
+    "declared_usd": 2664900.0
+   },
+   {
+    "year": 1993,
+    "declared_usd": 143000.0
+   },
+   {
+    "year": 1995,
+    "declared_usd": 79000.0
+   },
+   {
+    "year": 1996,
+    "declared_usd": 26898023.0
+   },
+   {
+    "year": 1997,
+    "declared_usd": 25000.0
+   },
+   {
+    "year": 1998,
+    "declared_usd": 106800.0
+   },
+   {
+    "year": 1999,
+    "declared_usd": 138900.0
+   },
+   {
+    "year": 2000,
+    "declared_usd": 115000.0
+   },
+   {
+    "year": 2002,
+    "declared_usd": 409000.0
+   },
+   {
+    "year": 2003,
+    "declared_usd": 3028000.0
+   },
+   {
+    "year": 2004,
+    "declared_usd": 229300.0
+   },
+   {
+    "year": 2005,
+    "declared_usd": 48000.0
+   },
+   {
+    "year": 2006,
+    "declared_usd": 825000.0
+   },
+   {
+    "year": 2007,
+    "declared_usd": 2140.0
+   },
+   {
+    "year": 2009,
+    "declared_usd": 1713800.0
+   },
+   {
+    "year": 2010,
+    "declared_usd": 1396500.0
+   },
+   {
+    "year": 2011,
+    "declared_usd": 26868923.0
+   },
+   {
+    "year": 2012,
+    "declared_usd": 2789000.0
+   },
+   {
+    "year": 2013,
+    "declared_usd": 88000.0
+   },
+   {
+    "year": 2014,
+    "declared_usd": 80000.0
+   },
+   {
+    "year": 2015,
+    "declared_usd": 272683085.0
+   },
+   {
+    "year": 2016,
+    "declared_usd": 1400000.0
+   },
+   {
+    "year": 2017,
+    "declared_usd": 2298715.0
+   },
+   {
+    "year": 2018,
+    "declared_usd": 1822042.0
+   },
+   {
+    "year": 2019,
+    "declared_usd": 2660458.0
+   },
+   {
+    "year": 2021,
+    "declared_usd": 507470.0
+   },
+   {
+    "year": 2022,
+    "declared_usd": 113604.0
+   },
+   {
+    "year": 2023,
+    "declared_usd": 1505000.0
+   },
+   {
+    "year": 2024,
+    "declared_usd": 688442.0
+   },
+   {
+    "year": 2025,
+    "declared_usd": 1065000.0
+   },
+   {
+    "year": 2026,
+    "declared_usd": 395000.0
+   }
+  ]
  },
  "photo": "/img/us/sf/places/moscone-center.jpg",
  "photo_credit": {
@@ -33,21 +285,30 @@
    "total_usd": 287717708.0,
    "fiscal_year": 2025
   },
+  "payroll_line": {
+   "code": "ADM",
+   "name": "City Administrator",
+   "total_compensation_usd": 168334637.06,
+   "n_employees": 1154,
+   "fiscal_year": 2025
+  },
   "contracts": [],
   "grants": []
  },
  "documents": [
   {
-   "identifier": "4minutes2001sanf",
-   "title": "Minutes",
-   "creator": "San Francisco (Calif.). Board of Supervisors. Finance Committee",
-   "year": 1997,
+   "identifier": "yerbabuenacenter4198sanf",
+   "title": "Yerba Buena Center environmental impact report : second supplement, final",
+   "creator": "San Francisco (Calif.). City Planning Commission,San Francisco Redevelopment Agency (San Francisco, Calif.)",
+   "year": 1983,
    "pool": "sfpl",
-   "matched_alias": "Moscone Center",
-   "snippet": "of the «Moscone Center» Expansion Project. The total costs of the «Moscone Center» Expansion",
-   "url": "https://archive.org/details/4minutes2001sanf",
-   "deep_link": "https://archive.org/details/4minutes2001sanf?q=Moscone+Center",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+   "matched_alias": "Moscone Convention Center",
+   "snippet": "environmental effects of the then-proposed «Moscone Convention Center» and alternative development scenarios",
+   "url": "https://archive.org/details/yerbabuenacenter4198sanf",
+   "deep_link": "https://archive.org/details/yerbabuenacenter4198sanf?q=Moscone+Convention+Center",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Plans & environmental review",
+   "salient": true
   },
   {
    "identifier": "yerbabuenacenter2419sanf",
@@ -59,7 +320,9 @@
    "snippet": "and special events at «Moscone Center». Since the «Moscone Center» is already built and operating",
    "url": "https://archive.org/details/yerbabuenacenter2419sanf",
    "deep_link": "https://archive.org/details/yerbabuenacenter2419sanf?q=Moscone+Center",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Plans & environmental review",
+   "salient": true
   },
   {
    "identifier": "yerbabuenacenter1219sanf",
@@ -71,7 +334,9 @@
    "snippet": "Rooms and the «Moscone Center» Underground Expansion on CB-2; «Moscone Center» Expansion on CB-3;",
    "url": "https://archive.org/details/yerbabuenacenter1219sanf",
    "deep_link": "https://archive.org/details/yerbabuenacenter1219sanf?q=Moscone+Center",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Plans & environmental review",
+   "salient": true
   },
   {
    "identifier": "journalofjanaprproceed83sanfrich",
@@ -83,43 +348,9 @@
    "snippet": "financing of the expansion to the «George R. Moscone Convention Center». (Supervisor Molinari presented",
    "url": "https://archive.org/details/journalofjanaprproceed83sanfrich",
    "deep_link": "https://archive.org/details/journalofjanaprproceed83sanfrich?q=George+R.+Moscone+Convention+Center",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
-  },
-  {
-   "identifier": "agenda19arts_23",
-   "title": "Agenda",
-   "creator": "Arts Commission of San Francisco. Visual Arts Committee",
-   "year": 1983,
-   "pool": "sfpl",
-   "matched_alias": "Moscone Center",
-   "snippet": "ART ENRICHMENT; «MOSCONE CENTER» II Selection of finalists for «Moscone Center» exterior site. Tonia",
-   "url": "https://archive.org/details/agenda19arts_23",
-   "deep_link": "https://archive.org/details/agenda19arts_23?q=Moscone+Center",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
-  },
-  {
-   "identifier": "agenda20arts_9",
-   "title": "Agenda",
-   "creator": "Arts Commission of San Francisco. Visual Arts Committee",
-   "year": 1983,
-   "pool": "sfpl",
-   "matched_alias": "Moscone Center",
-   "snippet": "installation for April and May of 2002. 6. «Moscone Center» Expansion Project //// Manton Progress",
-   "url": "https://archive.org/details/agenda20arts_9",
-   "deep_link": "https://archive.org/details/agenda20arts_9?q=Moscone+Center",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
-  },
-  {
-   "identifier": "agenda1994arts",
-   "title": "Agenda",
-   "creator": "Arts Commission of San Francisco. Visual Arts Committee",
-   "year": 1983,
-   "pool": "sfpl",
-   "matched_alias": "Moscone Convention Center",
-   "snippet": "the art enrichment funding for «Moscone Convention Center» for a second casting of a bust",
-   "url": "https://archive.org/details/agenda1994arts",
-   "deep_link": "https://archive.org/details/agenda1994arts?q=Moscone+Convention+Center",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Meetings & resolutions",
+   "salient": true
   },
   {
    "identifier": "agenda19arts_26",
@@ -131,31 +362,23 @@
    "snippet": "VII. «Moscone Convention Center» Tonia Macneil , Jill Manton A. «Moscone Convention Center» Expansion",
    "url": "https://archive.org/details/agenda19arts_26",
    "deep_link": "https://archive.org/details/agenda19arts_26?q=Moscone+Convention+Center",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Meetings & resolutions",
+   "salient": true
   },
   {
-   "identifier": "yerbabuenacenter4198sanf",
-   "title": "Yerba Buena Center environmental impact report : second supplement, final",
-   "creator": "San Francisco (Calif.). City Planning Commission,San Francisco Redevelopment Agency (San Francisco, Calif.)",
-   "year": 1983,
+   "identifier": "4minutes2001sanf",
+   "title": "Minutes",
+   "creator": "San Francisco (Calif.). Board of Supervisors. Finance Committee",
+   "year": 1997,
    "pool": "sfpl",
-   "matched_alias": "Moscone Convention Center",
-   "snippet": "environmental effects of the then-proposed «Moscone Convention Center» and alternative development scenarios",
-   "url": "https://archive.org/details/yerbabuenacenter4198sanf",
-   "deep_link": "https://archive.org/details/yerbabuenacenter4198sanf?q=Moscone+Convention+Center",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
-  },
-  {
-   "identifier": "yerbabuenacenter2819sanf",
-   "title": "Yerba Buena Center environmental impact report : second supplement, draft",
-   "creator": "San Francisco (Calif.). City Planning Commission,San Francisco Redevelopment Agency (San Francisco, Calif.)",
-   "year": 1982,
-   "pool": "sfpl",
-   "matched_alias": "George R. Moscone Convention Center",
-   "snippet": "have been approved. The «George R. Moscone Convention Center» has been opened on Central",
-   "url": "https://archive.org/details/yerbabuenacenter2819sanf",
-   "deep_link": "https://archive.org/details/yerbabuenacenter2819sanf?q=George+R.+Moscone+Convention+Center",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+   "matched_alias": "Moscone Center",
+   "snippet": "of the «Moscone Center» Expansion Project. The total costs of the «Moscone Center» Expansion",
+   "url": "https://archive.org/details/4minutes2001sanf",
+   "deep_link": "https://archive.org/details/4minutes2001sanf?q=Moscone+Center",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Meetings & resolutions",
+   "salient": true
   }
  ],
  "dept_shelf": [
@@ -179,29 +402,10 @@
    "year": null,
    "pool": "sfpl",
    "url": "https://archive.org/details/southofmarketzon1988sanf"
-  },
-  {
-   "identifier": "38minutesofsanfran1979san",
-   "title": "Minutes of the San Francisco City Planning Commission regular meeting",
-   "year": null,
-   "pool": "sfpl",
-   "url": "https://archive.org/details/38minutesofsanfran1979san"
-  },
-  {
-   "identifier": "capitalimproveme1961sanf",
-   "title": "Capital Improvement Program recommended for fiscal year ... proposed for fiscal years ... through ..",
-   "year": null,
-   "pool": "sfpl",
-   "url": "https://archive.org/details/capitalimproveme1961sanf"
-  },
-  {
-   "identifier": "agendasanfrancis1992nfra",
-   "title": "Agenda / San Francisco City Planning Commission",
-   "year": null,
-   "pool": "sfpl",
-   "url": "https://archive.org/details/agendasanfrancis1992nfra"
   }
  ],
+ "dept_shelf_label": "City Planning Department",
+ "dept_shelf_more": 3,
  "sources": [
   {
    "label": "City budget & payments",
@@ -214,7 +418,7 @@
  ],
  "_gate": {
   "has_photo": true,
-  "n_documents": 10,
+  "n_documents": 6,
   "n_money_links": 1,
   "meets_pre_summary": true
  }

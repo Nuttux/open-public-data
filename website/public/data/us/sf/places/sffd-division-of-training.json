@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T22:30:00.125010+00:00",
+ "generated_at": "2026-07-21T14:25:53.981436+00:00",
  "source_pipeline": "sf_place_candidates.json → sync_ia_sf.py + link_sf_places.py + fetch_sf_place_photos.py → export_sf_places.py",
  "unit": "USD",
  "slug": "sffd-division-of-training",
@@ -13,6 +13,113 @@
   "name": "Fire Department",
   "code": "FIR"
  },
+ "facility": {
+  "primary_name": "Fire Division of Training  - Treasure Island",
+  "primary_address": "600 AVENUE M",
+  "primary_city": "San Francisco",
+  "primary_zip": "94130",
+  "primary_block_lot": null,
+  "primary_department_name": "Fire Department",
+  "primary_is_city_owned": true,
+  "primary_gross_sq_ft": 5040,
+  "primary_latitude": 37.82705932600004,
+  "primary_longitude": -122.36705181999997,
+  "supervisor_district": 6,
+  "n_facilities": 2,
+  "total_gross_sq_ft": 5040,
+  "n_owned": 2,
+  "n_leased": 0,
+  "apn_list": [
+   "3594059"
+  ],
+  "facilities": [
+   {
+    "facility_id": 688,
+    "common_name": "Fire Division of Training  - Treasure Island",
+    "block_lot": null,
+    "gross_sq_ft": 5040,
+    "is_city_owned": true
+   },
+   {
+    "facility_id": 689,
+    "common_name": "Fire Division of Training - Folsom St",
+    "block_lot": "3594059",
+    "gross_sq_ft": null,
+    "is_city_owned": true
+   }
+  ]
+ },
+ "capital": {
+  "n_items": 0,
+  "measure_totals": {},
+  "bond_programs": [],
+  "items": [],
+  "payees": [
+   {
+    "vendor": "SWINERTON BUILDERS",
+    "paid_usd": 275000.0,
+    "n_contracts": 1,
+    "first_fiscal_year": 2026,
+    "last_fiscal_year": 2026
+   }
+  ],
+  "n_payees": 1,
+  "payees_total_paid": 275000.0,
+  "permits": [
+   {
+    "description": "kitchen remodel, officer bathroom plumbing and light fixtures, path of travel upgrades maher not req",
+    "permit_type": "otc alterations permit",
+    "declared_cost_usd": 750000.0,
+    "status": "issued",
+    "permit_date": "2017-10-18",
+    "permit_year": 2017
+   },
+   {
+    "description": "emergency removal of brick veneer due to failing anchorages. install of weatherproofing & replacemen",
+    "permit_type": "otc alterations permit",
+    "declared_cost_usd": 250000.0,
+    "status": "complete",
+    "permit_date": "2005-06-09",
+    "permit_year": 2005
+   },
+   {
+    "description": "modify (e) training tower platforms at all floors as necessary to raise guardrail to ada/safety compliant heights and repairs",
+    "permit_type": "otc alterations permit",
+    "declared_cost_usd": 105964.0,
+    "status": "complete",
+    "permit_date": "2024-08-12",
+    "permit_year": 2024
+   },
+   {
+    "description": "supplemental to original permit #200506094738 submitting structural calculation to jadd fire escape for training purpose only.",
+    "permit_type": "otc alterations permit",
+    "declared_cost_usd": 50000.0,
+    "status": "complete",
+    "permit_date": "2006-03-29",
+    "permit_year": 2006
+   }
+  ],
+  "n_permits": 4,
+  "permits_total_declared": 1155964.0,
+  "permits_by_year": [
+   {
+    "year": 2005,
+    "declared_usd": 250000.0
+   },
+   {
+    "year": 2006,
+    "declared_usd": 50000.0
+   },
+   {
+    "year": 2017,
+    "declared_usd": 750000.0
+   },
+   {
+    "year": 2024,
+    "declared_usd": 105964.0
+   }
+  ]
+ },
  "photo": null,
  "photo_credit": null,
  "summary_en": null,
@@ -22,6 +129,13 @@
    "code": "FIR",
    "name": "Fire Department",
    "total_usd": 513912614.0,
+   "fiscal_year": 2025
+  },
+  "payroll_line": {
+   "code": "FIR",
+   "name": "Fire Department",
+   "total_compensation_usd": 477279432.76,
+   "n_employees": 2054,
    "fiscal_year": 2025
   },
   "contracts": [],
@@ -38,91 +152,9 @@
    "snippet": "Monthly Reports «Division of Training» Submitting monthly report from «Division of Training» concerning",
    "url": "https://archive.org/details/minutesoffirecom2004sanf",
    "deep_link": "https://archive.org/details/minutesoffirecom2004sanf?q=Division+of+Training",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
-  },
-  {
-   "identifier": "minutesoffirecom2002sanf",
-   "title": "Minutes of the Fire Commission",
-   "creator": "San Francisco (Calif.). Fire Commission",
-   "year": 1999,
-   "pool": "sfpl",
-   "matched_alias": "Division of Training",
-   "snippet": "Monthly Reports «Division of Training» Submitting monthly report from «Division of Training» concerning",
-   "url": "https://archive.org/details/minutesoffirecom2002sanf",
-   "deep_link": "https://archive.org/details/minutesoffirecom2002sanf?q=Division+of+Training",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
-  },
-  {
-   "identifier": "1minutes200203sanf",
-   "title": "Minutes",
-   "creator": "San Francisco (Calif.). Board of Supervisors. Finance Committee",
-   "year": 1997,
-   "pool": "sfpl",
-   "matched_alias": "Fire Department Training",
-   "snippet": "Management Audit Report that: • «Fire Department training» and education functions are currently",
-   "url": "https://archive.org/details/1minutes200203sanf",
-   "deep_link": "https://archive.org/details/1minutes200203sanf?q=Fire+Department+Training",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
-  },
-  {
-   "identifier": "annualreport199397sanf",
-   "title": "Annual report",
-   "creator": "San Francisco (Calif.). Fire Dept",
-   "year": null,
-   "pool": "sfpl",
-   "matched_alias": "Division of Training",
-   "snippet": "Page 78 «DIVISION OF TRAINING» TRAINING SFFD Annual Report 1993-94 «DIVISION OF TRAINING» The Fire",
-   "url": "https://archive.org/details/annualreport199397sanf",
-   "deep_link": "https://archive.org/details/annualreport199397sanf?q=Division+of+Training",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
-  },
-  {
-   "identifier": "annualreport197478sanf",
-   "title": "Annual report",
-   "creator": "San Francisco (Calif.). Fire Dept",
-   "year": null,
-   "pool": "sfpl",
-   "matched_alias": "Division of Training",
-   "snippet": "TRAINING «DIVISION OF TRAINING» During fiscal year 1974-1975, the «Division of Training» continued",
-   "url": "https://archive.org/details/annualreport197478sanf",
-   "deep_link": "https://archive.org/details/annualreport197478sanf?q=Division+of+Training",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
-  },
-  {
-   "identifier": "1annualreport197174sanf",
-   "title": "Annual report",
-   "creator": "San Francisco (Calif.). Fire Dept",
-   "year": null,
-   "pool": "sfpl",
-   "matched_alias": "Division of Training",
-   "snippet": "sponsored luncheon. «DIVISION OF TRAINING»: 1000 hours - «Division of Training» LARGEST MERITORIOUS",
-   "url": "https://archive.org/details/1annualreport197174sanf",
-   "deep_link": "https://archive.org/details/1annualreport197174sanf?q=Division+of+Training",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
-  },
-  {
-   "identifier": "1annualreport196568sanf",
-   "title": "Annual report",
-   "creator": "San Francisco (Calif.). Fire Dept",
-   "year": null,
-   "pool": "sfpl",
-   "matched_alias": "Division of Training",
-   "snippet": ". ■48- TRAINING TRAINING «DIVISION OF TRAINING» The «Division of Training», through its staff of",
-   "url": "https://archive.org/details/1annualreport196568sanf",
-   "deep_link": "https://archive.org/details/1annualreport196568sanf?q=Division+of+Training",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
-  },
-  {
-   "identifier": "journalofproceed1975sanf",
-   "title": "Journal of proceedings",
-   "creator": "San Francisco (Calif.). Fire Commission",
-   "year": null,
-   "pool": "sfpl",
-   "matched_alias": "Division of Training",
-   "snippet": "Investiqation Richard A. Galli - Chief, «Division of Training» Andrew C. Casper - Chief, Bureau",
-   "url": "https://archive.org/details/journalofproceed1975sanf",
-   "deep_link": "https://archive.org/details/journalofproceed1975sanf?q=Division+of+Training",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Meetings & resolutions",
+   "salient": true
   },
   {
    "identifier": "9agenda2006sanf",
@@ -134,31 +166,9 @@
    "snippet": "[Discussion] «Division of Training» Submitting monthly report from «Division of Training» concerning",
    "url": "https://archive.org/details/9agenda2006sanf",
    "deep_link": "https://archive.org/details/9agenda2006sanf?q=Division+of+Training",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
-  },
-  {
-   "identifier": "1annualreport196871sanf",
-   "title": "Annual report",
-   "creator": "San Francisco (Calif.). Fire Dept",
-   "year": null,
-   "pool": "sfpl",
-   "matched_alias": "Division of Training",
-   "snippet": "Fire Deportment «Division of Training». Also, members of the «Division of Training» held scheduled",
-   "url": "https://archive.org/details/1annualreport196871sanf",
-   "deep_link": "https://archive.org/details/1annualreport196871sanf?q=Division+of+Training",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
-  },
-  {
-   "identifier": "annualreport198993sanf",
-   "title": "Annual report",
-   "creator": "San Francisco (Calif.). Fire Dept",
-   "year": null,
-   "pool": "sfpl",
-   "matched_alias": "Division of Training",
-   "snippet": "Service. - 80 - ipport «DIVISION OF TRAINING» The «Division of Training» is responsible for the",
-   "url": "https://archive.org/details/annualreport198993sanf",
-   "deep_link": "https://archive.org/details/annualreport198993sanf?q=Division+of+Training",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Meetings & resolutions",
+   "salient": true
   },
   {
    "identifier": "agendasminutesfi2014sanf",
@@ -170,19 +180,37 @@
    "snippet": "of Fire Prevention Raemona Williams «Division of Training» Assistant Chiefs Robert Postel Division",
    "url": "https://archive.org/details/agendasminutesfi2014sanf",
    "deep_link": "https://archive.org/details/agendasminutesfi2014sanf?q=Division+of+Training",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Meetings & resolutions",
+   "salient": true
   },
   {
-   "identifier": "annualreport197881sanf",
-   "title": "Annual report",
-   "creator": "San Francisco (Calif.). Fire Dept",
+   "identifier": "1minutes200203sanf",
+   "title": "Minutes",
+   "creator": "San Francisco (Calif.). Board of Supervisors. Finance Committee",
+   "year": 1997,
+   "pool": "sfpl",
+   "matched_alias": "Fire Department Training",
+   "snippet": "Management Audit Report that: • «Fire Department training» and education functions are currently",
+   "url": "https://archive.org/details/1minutes200203sanf",
+   "deep_link": "https://archive.org/details/1minutes200203sanf?q=Fire+Department+Training",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Meetings & resolutions",
+   "salient": true
+  },
+  {
+   "identifier": "journalofproceed1975sanf",
+   "title": "Journal of proceedings",
+   "creator": "San Francisco (Calif.). Fire Commission",
    "year": null,
    "pool": "sfpl",
    "matched_alias": "Division of Training",
-   "snippet": "Costs 1978-1979 $320,106 «DIVISION OF TRAINING» The «Division of Training», during this Fiscal Year",
-   "url": "https://archive.org/details/annualreport197881sanf",
-   "deep_link": "https://archive.org/details/annualreport197881sanf?q=Division+of+Training",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+   "snippet": "Investiqation Richard A. Galli - Chief, «Division of Training» Andrew C. Casper - Chief, Bureau",
+   "url": "https://archive.org/details/journalofproceed1975sanf",
+   "deep_link": "https://archive.org/details/journalofproceed1975sanf?q=Division+of+Training",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Meetings & resolutions",
+   "salient": true
   },
   {
    "identifier": "annualreport200105sanf",
@@ -194,7 +222,9 @@
    "snippet": "fire inspection activity. «DIVISION OF TRAINING» The «Division of Training» is responsible for providing",
    "url": "https://archive.org/details/annualreport200105sanf",
    "deep_link": "https://archive.org/details/annualreport200105sanf?q=Division+of+Training",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Reports & records",
+   "salient": true
   }
  ],
  "dept_shelf": [
@@ -218,29 +248,10 @@
    "year": 1999,
    "pool": "sfpl",
    "url": "https://archive.org/details/minutesoffirecom2001sanf"
-  },
-  {
-   "identifier": "minutesoffirecom2000sanf",
-   "title": "Minutes of the Fire Commission",
-   "year": 1999,
-   "pool": "sfpl",
-   "url": "https://archive.org/details/minutesoffirecom2000sanf"
-  },
-  {
-   "identifier": "earthquakereport1990post",
-   "title": "Earthquake report : report to the Fire Commission on the operations of the San Francisco Fire Department during the earthquake and subsequent fire of October 17, 1989",
-   "year": 1989,
-   "pool": "sfpl",
-   "url": "https://archive.org/details/earthquakereport1990post"
-  },
-  {
-   "identifier": "annualreport197478sanf",
-   "title": "Annual report",
-   "year": null,
-   "pool": "sfpl",
-   "url": "https://archive.org/details/annualreport197478sanf"
   }
  ],
+ "dept_shelf_label": "Fire Department",
+ "dept_shelf_more": 3,
  "sources": [
   {
    "label": "City budget & payments",
@@ -253,7 +264,7 @@
  ],
  "_gate": {
   "has_photo": false,
-  "n_documents": 14,
+  "n_documents": 6,
   "n_money_links": 1,
   "meets_pre_summary": false
  }

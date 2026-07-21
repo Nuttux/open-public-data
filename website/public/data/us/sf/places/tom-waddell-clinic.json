@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T22:30:00.115065+00:00",
+ "generated_at": "2026-07-21T14:25:53.956463+00:00",
  "source_pipeline": "sf_place_candidates.json → sync_ia_sf.py + link_sf_places.py + fetch_sf_place_photos.py → export_sf_places.py",
  "unit": "USD",
  "slug": "tom-waddell-clinic",
@@ -13,6 +13,8 @@
   "name": "Public Health",
   "code": "DPH"
  },
+ "facility": null,
+ "capital": null,
  "photo": null,
  "photo_credit": null,
  "summary_en": null,
@@ -24,45 +26,30 @@
    "total_usd": 3185025572.0,
    "fiscal_year": 2025
   },
+  "payroll_line": {
+   "code": "DPH",
+   "name": "Public Health",
+   "total_compensation_usd": 1583866801.6,
+   "n_employees": 8904,
+   "fiscal_year": 2025
+  },
   "contracts": [],
   "grants": []
  },
  "documents": [
   {
-   "identifier": "agenda200304sanf",
-   "title": "Agenda",
-   "creator": "San Francisco (Calif.). Health Commission. Joint Conference Committee for Community Health Network",
-   "year": 2004,
+   "identifier": "minutes2004sanf",
+   "title": "Minutes",
+   "creator": "San Francisco (Calif.). Health Commission",
+   "year": null,
    "pool": "sfpl",
    "matched_alias": "Tom Waddell Health Center",
-   "snippet": "Grant Awarded to «Tom Waddell Health Center» The «Tom Waddell Health Center»/Homeless Programs",
-   "url": "https://archive.org/details/agenda200304sanf",
-   "deep_link": "https://archive.org/details/agenda200304sanf?q=Tom+Waddell+Health+Center",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
-  },
-  {
-   "identifier": "agendahealthcomm2013sanf",
-   "title": "Agenda / Health Commission, City and County of San Francisco",
-   "creator": "San Francisco (Calif.). Health Commission",
-   "year": null,
-   "pool": "sfpl",
-   "matched_alias": "Tom Waddell Urban Health Clinic",
-   "snippet": "/insideDept/dirRpts/default.asp «Tom Waddell Urban Health Clinic» to Open at 230 Golden Gate",
-   "url": "https://archive.org/details/agendahealthcomm2013sanf",
-   "deep_link": "https://archive.org/details/agendahealthcomm2013sanf?q=Tom+Waddell+Urban+Health+Clinic",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
-  },
-  {
-   "identifier": "agendahealthcom2013sanf_0",
-   "title": "Agenda / Health Commission, City and County of San Francisco",
-   "creator": "San Francisco (Calif.). Health Commission",
-   "year": null,
-   "pool": "sfpl",
-   "matched_alias": "Tom Waddell Urban Health Clinic",
-   "snippet": "/insideDept/dirRpts/default.asp «Tom Waddell Urban Health Clinic» Open House The Commissioners,",
-   "url": "https://archive.org/details/agendahealthcom2013sanf_0",
-   "deep_link": "https://archive.org/details/agendahealthcom2013sanf_0?q=Tom+Waddell+Urban+Health+Clinic",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+   "snippet": "94102-4505 (3.2) CHN-Primary Care-«Tom Waddell Health Center» - Request for approval to retroactively",
+   "url": "https://archive.org/details/minutes2004sanf",
+   "deep_link": "https://archive.org/details/minutes2004sanf?q=Tom+Waddell+Health+Center",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Meetings & resolutions",
+   "salient": true
   },
   {
    "identifier": "agendasminuteshe2015sanf",
@@ -74,7 +61,37 @@
    "snippet": "Consultant Award, Joseph Pace, MD of «Tom Waddell Urban Health Clinic» received the Jane Bailowitz,",
    "url": "https://archive.org/details/agendasminuteshe2015sanf",
    "deep_link": "https://archive.org/details/agendasminuteshe2015sanf?q=Tom+Waddell+Urban+Health+Clinic",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Meetings & resolutions",
+   "salient": true
+  },
+  {
+   "identifier": "agendahealthcom2013sanf_0",
+   "title": "Agenda / Health Commission, City and County of San Francisco",
+   "creator": "San Francisco (Calif.). Health Commission",
+   "year": null,
+   "pool": "sfpl",
+   "matched_alias": "Tom Waddell Urban Health Clinic",
+   "snippet": "/insideDept/dirRpts/default.asp «Tom Waddell Urban Health Clinic» Open House The Commissioners,",
+   "url": "https://archive.org/details/agendahealthcom2013sanf_0",
+   "deep_link": "https://archive.org/details/agendahealthcom2013sanf_0?q=Tom+Waddell+Urban+Health+Clinic",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Meetings & resolutions",
+   "salient": true
+  },
+  {
+   "identifier": "agenda200304sanf",
+   "title": "Agenda",
+   "creator": "San Francisco (Calif.). Health Commission. Joint Conference Committee for Community Health Network",
+   "year": 2004,
+   "pool": "sfpl",
+   "matched_alias": "Tom Waddell Health Center",
+   "snippet": "Grant Awarded to «Tom Waddell Health Center» The «Tom Waddell Health Center»/Homeless Programs",
+   "url": "https://archive.org/details/agenda200304sanf",
+   "deep_link": "https://archive.org/details/agenda200304sanf?q=Tom+Waddell+Health+Center",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Meetings & resolutions",
+   "salient": true
   },
   {
    "identifier": "sanfranciscodepa1997sanf",
@@ -86,91 +103,9 @@
    "snippet": "vulnerable residents. «Tom Waddell Health Center». The «Tom Waddell Health Center» (TWHC), located in",
    "url": "https://archive.org/details/sanfranciscodepa1997sanf",
    "deep_link": "https://archive.org/details/sanfranciscodepa1997sanf?q=Tom+Waddell+Health+Center",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
-  },
-  {
-   "identifier": "sanfranciscodepa200003sanf",
-   "title": "The San Francisco Department of Public Health annual report",
-   "creator": "San Francisco (Calif.). Dept. of Public Health",
-   "year": null,
-   "pool": "sfpl",
-   "matched_alias": "Tom Waddell Health Center",
-   "snippet": "Housing and Urban Health Section and «Tom Waddell Health Center». Design and Layout by Ashley Frey",
-   "url": "https://archive.org/details/sanfranciscodepa200003sanf",
-   "deep_link": "https://archive.org/details/sanfranciscodepa200003sanf?q=Tom+Waddell+Health+Center",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
-  },
-  {
-   "identifier": "sanfranciscodepa19962000sanf",
-   "title": "The San Francisco Department of Public Health annual report",
-   "creator": "San Francisco (Calif.). Dept. of Public Health",
-   "year": null,
-   "pool": "sfpl",
-   "matched_alias": "Tom Waddell Health Center",
-   "snippet": "Keep up the good work!\" Client at «Tom Waddell Health Center» \"Working for the Department allows",
-   "url": "https://archive.org/details/sanfranciscodepa19962000sanf",
-   "deep_link": "https://archive.org/details/sanfranciscodepa19962000sanf?q=Tom+Waddell+Health+Center",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
-  },
-  {
-   "identifier": "sanfranciscodepa2005sanf",
-   "title": "The San Francisco Department of Public Health annual report",
-   "creator": "San Francisco (Calif.). Department of Public Health",
-   "year": null,
-   "pool": "sfpl",
-   "matched_alias": "Tom Waddell Health Center",
-   "snippet": "Officer / Public Health Lab / «Tom Waddell Health Center» / Immunization / Vital Records",
-   "url": "https://archive.org/details/sanfranciscodepa2005sanf",
-   "deep_link": "https://archive.org/details/sanfranciscodepa2005sanf?q=Tom+Waddell+Health+Center",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
-  },
-  {
-   "identifier": "minutes1996sanf",
-   "title": "Minutes",
-   "creator": "San Francisco (Calif.). Health Commission",
-   "year": null,
-   "pool": "sfpl",
-   "matched_alias": "Tom Waddell Health Center",
-   "snippet": "SERVICES Update on Renovations at «Tom Waddell Health Center» I am pleased to note that, three",
-   "url": "https://archive.org/details/minutes1996sanf",
-   "deep_link": "https://archive.org/details/minutes1996sanf?q=Tom+Waddell+Health+Center",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
-  },
-  {
-   "identifier": "minutes1997sanf",
-   "title": "Minutes",
-   "creator": "San Francisco (Calif.). Health Commission",
-   "year": null,
-   "pool": "sfpl",
-   "matched_alias": "Tom Waddell Health Center",
-   "snippet": "an active member of both the «Tom Waddell Health Center» Advisory Board and the Health Center",
-   "url": "https://archive.org/details/minutes1997sanf",
-   "deep_link": "https://archive.org/details/minutes1997sanf?q=Tom+Waddell+Health+Center",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
-  },
-  {
-   "identifier": "ordinance2005sanf_2",
-   "title": "Ordinance",
-   "creator": "San Francisco (Calif.). Board of Supervisors",
-   "year": null,
-   "pool": "sfpl",
-   "matched_alias": "Tom Waddell Health Center",
-   "snippet": "& Co., for completion of the «Tom Waddell Health Center» Elevator Replacement (Specification",
-   "url": "https://archive.org/details/ordinance2005sanf_2",
-   "deep_link": "https://archive.org/details/ordinance2005sanf_2?q=Tom+Waddell+Health+Center",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
-  },
-  {
-   "identifier": "minutes2004sanf",
-   "title": "Minutes",
-   "creator": "San Francisco (Calif.). Health Commission",
-   "year": null,
-   "pool": "sfpl",
-   "matched_alias": "Tom Waddell Health Center",
-   "snippet": "94102-4505 (3.2) CHN-Primary Care-«Tom Waddell Health Center» - Request for approval to retroactively",
-   "url": "https://archive.org/details/minutes2004sanf",
-   "deep_link": "https://archive.org/details/minutes2004sanf?q=Tom+Waddell+Health+Center",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Reports & records",
+   "salient": true
   },
   {
    "identifier": "noticecommunityg2012sanf",
@@ -182,19 +117,23 @@
    "snippet": "Street 11 JANUARY, WEDNESDAY 2012 «Tom Waddell Health Center» - Staff meeting (jeff.simbe@sfdph",
    "url": "https://archive.org/details/noticecommunityg2012sanf",
    "deep_link": "https://archive.org/details/noticecommunityg2012sanf?q=Tom+Waddell+Health+Center",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Other records",
+   "salient": true
   },
   {
-   "identifier": "minutes2003sanf",
-   "title": "Minutes",
-   "creator": "San Francisco (Calif.). Health Commission",
+   "identifier": "ordinance2005sanf_2",
+   "title": "Ordinance",
+   "creator": "San Francisco (Calif.). Board of Supervisors",
    "year": null,
    "pool": "sfpl",
    "matched_alias": "Tom Waddell Health Center",
-   "snippet": "referral program. Based out of «Tom Waddell Health Center», composed of two social workers",
-   "url": "https://archive.org/details/minutes2003sanf",
-   "deep_link": "https://archive.org/details/minutes2003sanf?q=Tom+Waddell+Health+Center",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+   "snippet": "& Co., for completion of the «Tom Waddell Health Center» Elevator Replacement (Specification",
+   "url": "https://archive.org/details/ordinance2005sanf_2",
+   "deep_link": "https://archive.org/details/ordinance2005sanf_2?q=Tom+Waddell+Health+Center",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Other records",
+   "salient": false
   }
  ],
  "dept_shelf": [
@@ -218,29 +157,10 @@
    "year": null,
    "pool": "sfpl",
    "url": "https://archive.org/details/annualsalaryord197879sanf"
-  },
-  {
-   "identifier": "annualsalaryord197576sanf",
-   "title": "Annual salary ordinance",
-   "year": null,
-   "pool": "sfpl",
-   "url": "https://archive.org/details/annualsalaryord197576sanf"
-  },
-  {
-   "identifier": "weeklybulletin1968sanf",
-   "title": "Weekly bulletin",
-   "year": null,
-   "pool": "sfpl",
-   "url": "https://archive.org/details/weeklybulletin1968sanf"
-  },
-  {
-   "identifier": "15minutes1988sanf",
-   "title": "Minutes",
-   "year": null,
-   "pool": "sfpl",
-   "url": "https://archive.org/details/15minutes1988sanf"
   }
  ],
+ "dept_shelf_label": "Public Health",
+ "dept_shelf_more": 3,
  "sources": [
   {
    "label": "City budget & payments",
@@ -253,7 +173,7 @@
  ],
  "_gate": {
   "has_photo": false,
-  "n_documents": 14,
+  "n_documents": 7,
   "n_money_links": 1,
   "meets_pre_summary": false
  }

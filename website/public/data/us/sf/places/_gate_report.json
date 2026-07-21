@@ -1,12 +1,12 @@
 {
- "generated_at": "2026-07-20T22:30:00.125296+00:00",
+ "generated_at": "2026-07-21T14:25:53.981836+00:00",
  "places": [
   {
    "slug": "golden-gate-park",
    "name": "Golden Gate Park",
    "family": "park",
    "has_photo": true,
-   "n_docs": 14,
+   "n_docs": 7,
    "n_money": 1,
    "meets_pre_summary": true
   },
@@ -15,7 +15,7 @@
    "name": "Coit Tower",
    "family": "park",
    "has_photo": true,
-   "n_docs": 14,
+   "n_docs": 8,
    "n_money": 1,
    "meets_pre_summary": true
   },
@@ -24,7 +24,7 @@
    "name": "Mission Dolores Park",
    "family": "park",
    "has_photo": true,
-   "n_docs": 14,
+   "n_docs": 8,
    "n_money": 2,
    "meets_pre_summary": true
   },
@@ -33,7 +33,7 @@
    "name": "Union Square",
    "family": "park",
    "has_photo": true,
-   "n_docs": 14,
+   "n_docs": 8,
    "n_money": 3,
    "meets_pre_summary": true
   },
@@ -42,7 +42,7 @@
    "name": "Washington Square",
    "family": "park",
    "has_photo": false,
-   "n_docs": 14,
+   "n_docs": 10,
    "n_money": 1,
    "meets_pre_summary": false
   },
@@ -51,7 +51,7 @@
    "name": "Alamo Square",
    "family": "park",
    "has_photo": false,
-   "n_docs": 14,
+   "n_docs": 10,
    "n_money": 1,
    "meets_pre_summary": false
   },
@@ -60,7 +60,7 @@
    "name": "Buena Vista Park",
    "family": "park",
    "has_photo": true,
-   "n_docs": 14,
+   "n_docs": 9,
    "n_money": 1,
    "meets_pre_summary": true
   },
@@ -69,7 +69,7 @@
    "name": "John McLaren Park",
    "family": "park",
    "has_photo": true,
-   "n_docs": 14,
+   "n_docs": 10,
    "n_money": 1,
    "meets_pre_summary": true
   },
@@ -78,7 +78,7 @@
    "name": "Sigmund Stern Grove",
    "family": "park",
    "has_photo": false,
-   "n_docs": 14,
+   "n_docs": 10,
    "n_money": 2,
    "meets_pre_summary": false
   },
@@ -87,7 +87,7 @@
    "name": "Portsmouth Square",
    "family": "park",
    "has_photo": true,
-   "n_docs": 14,
+   "n_docs": 6,
    "n_money": 3,
    "meets_pre_summary": true
   },
@@ -96,7 +96,7 @@
    "name": "Glen Canyon Park",
    "family": "park",
    "has_photo": true,
-   "n_docs": 14,
+   "n_docs": 9,
    "n_money": 1,
    "meets_pre_summary": true
   },
@@ -105,7 +105,7 @@
    "name": "Kezar Stadium",
    "family": "park",
    "has_photo": false,
-   "n_docs": 14,
+   "n_docs": 8,
    "n_money": 1,
    "meets_pre_summary": false
   },
@@ -114,7 +114,7 @@
    "name": "Camp Mather",
    "family": "park",
    "has_photo": false,
-   "n_docs": 14,
+   "n_docs": 6,
    "n_money": 1,
    "meets_pre_summary": false
   },
@@ -123,7 +123,7 @@
    "name": "Conservatory of Flowers",
    "family": "park",
    "has_photo": true,
-   "n_docs": 14,
+   "n_docs": 4,
    "n_money": 1,
    "meets_pre_summary": true
   },
@@ -132,7 +132,7 @@
    "name": "Japanese Tea Garden",
    "family": "park",
    "has_photo": true,
-   "n_docs": 14,
+   "n_docs": 6,
    "n_money": 1,
    "meets_pre_summary": true
   },
@@ -141,7 +141,7 @@
    "name": "San Francisco Zoo",
    "family": "park",
    "has_photo": true,
-   "n_docs": 14,
+   "n_docs": 8,
    "n_money": 1,
    "meets_pre_summary": true
   },
@@ -150,7 +150,7 @@
    "name": "Marina Green",
    "family": "park",
    "has_photo": true,
-   "n_docs": 14,
+   "n_docs": 8,
    "n_money": 1,
    "meets_pre_summary": true
   },
@@ -159,7 +159,7 @@
    "name": "Lake Merced",
    "family": "water",
    "has_photo": true,
-   "n_docs": 14,
+   "n_docs": 10,
    "n_money": 1,
    "meets_pre_summary": true
   },
@@ -168,7 +168,7 @@
    "name": "Randall Museum",
    "family": "culture",
    "has_photo": false,
-   "n_docs": 14,
+   "n_docs": 9,
    "n_money": 1,
    "meets_pre_summary": false
   },
@@ -177,7 +177,7 @@
    "name": "San Francisco Main Library",
    "family": "library",
    "has_photo": true,
-   "n_docs": 14,
+   "n_docs": 10,
    "n_money": 2,
    "meets_pre_summary": true
   },
@@ -186,7 +186,7 @@
    "name": "Mission Branch Library",
    "family": "library",
    "has_photo": false,
-   "n_docs": 14,
+   "n_docs": 8,
    "n_money": 1,
    "meets_pre_summary": false
   },
@@ -195,7 +195,7 @@
    "name": "Chinatown Branch Library",
    "family": "library",
    "has_photo": false,
-   "n_docs": 14,
+   "n_docs": 10,
    "n_money": 1,
    "meets_pre_summary": false
   },
@@ -204,7 +204,7 @@
    "name": "North Beach Branch Library",
    "family": "library",
    "has_photo": false,
-   "n_docs": 14,
+   "n_docs": 7,
    "n_money": 1,
    "meets_pre_summary": false
   },
@@ -213,7 +213,7 @@
    "name": "Bernal Heights Branch Library",
    "family": "library",
    "has_photo": false,
-   "n_docs": 14,
+   "n_docs": 8,
    "n_money": 1,
    "meets_pre_summary": false
   },
@@ -222,7 +222,7 @@
    "name": "Richmond Branch Library",
    "family": "library",
    "has_photo": false,
-   "n_docs": 14,
+   "n_docs": 8,
    "n_money": 1,
    "meets_pre_summary": false
   },
@@ -231,7 +231,7 @@
    "name": "Sunset Branch Library",
    "family": "library",
    "has_photo": false,
-   "n_docs": 14,
+   "n_docs": 9,
    "n_money": 1,
    "meets_pre_summary": false
   },
@@ -240,7 +240,7 @@
    "name": "Eureka Valley / Harvey Milk Memorial Branch Library",
    "family": "library",
    "has_photo": false,
-   "n_docs": 14,
+   "n_docs": 12,
    "n_money": 1,
    "meets_pre_summary": false
   },
@@ -249,7 +249,7 @@
    "name": "Bayview / Linda Brooks-Burton Branch Library",
    "family": "library",
    "has_photo": false,
-   "n_docs": 14,
+   "n_docs": 9,
    "n_money": 1,
    "meets_pre_summary": false
   },
@@ -258,7 +258,7 @@
    "name": "Excelsior Branch Library",
    "family": "library",
    "has_photo": false,
-   "n_docs": 14,
+   "n_docs": 6,
    "n_money": 1,
    "meets_pre_summary": false
   },
@@ -267,7 +267,7 @@
    "name": "Glen Park Branch Library",
    "family": "library",
    "has_photo": false,
-   "n_docs": 14,
+   "n_docs": 5,
    "n_money": 1,
    "meets_pre_summary": false
   },
@@ -276,8 +276,8 @@
    "name": "Zuckerberg San Francisco General Hospital",
    "family": "health",
    "has_photo": false,
-   "n_docs": 14,
-   "n_money": 1,
+   "n_docs": 13,
+   "n_money": 24,
    "meets_pre_summary": false
   },
   {
@@ -285,7 +285,7 @@
    "name": "Laguna Honda Hospital",
    "family": "health",
    "has_photo": true,
-   "n_docs": 14,
+   "n_docs": 10,
    "n_money": 3,
    "meets_pre_summary": true
   },
@@ -294,7 +294,7 @@
    "name": "Southeast Health Center",
    "family": "health",
    "has_photo": false,
-   "n_docs": 14,
+   "n_docs": 8,
    "n_money": 1,
    "meets_pre_summary": false
   },
@@ -303,7 +303,7 @@
    "name": "Chinatown Public Health Center",
    "family": "health",
    "has_photo": false,
-   "n_docs": 14,
+   "n_docs": 6,
    "n_money": 1,
    "meets_pre_summary": false
   },
@@ -312,7 +312,7 @@
    "name": "Maxine Hall Health Center",
    "family": "health",
    "has_photo": false,
-   "n_docs": 14,
+   "n_docs": 6,
    "n_money": 1,
    "meets_pre_summary": false
   },
@@ -321,7 +321,7 @@
    "name": "Tom Waddell Urban Health Clinic",
    "family": "health",
    "has_photo": false,
-   "n_docs": 14,
+   "n_docs": 7,
    "n_money": 1,
    "meets_pre_summary": false
   },
@@ -330,16 +330,16 @@
    "name": "San Francisco City Hall",
    "family": "civic",
    "has_photo": true,
-   "n_docs": 14,
+   "n_docs": 2,
    "n_money": 2,
-   "meets_pre_summary": true
+   "meets_pre_summary": false
   },
   {
    "slug": "war-memorial-opera-house",
    "name": "War Memorial Opera House",
    "family": "culture",
    "has_photo": false,
-   "n_docs": 14,
+   "n_docs": 8,
    "n_money": 3,
    "meets_pre_summary": false
   },
@@ -348,7 +348,7 @@
    "name": "Louise M. Davies Symphony Hall",
    "family": "culture",
    "has_photo": true,
-   "n_docs": 14,
+   "n_docs": 5,
    "n_money": 1,
    "meets_pre_summary": true
   },
@@ -357,7 +357,7 @@
    "name": "Bill Graham Civic Auditorium",
    "family": "civic",
    "has_photo": true,
-   "n_docs": 14,
+   "n_docs": 3,
    "n_money": 2,
    "meets_pre_summary": true
   },
@@ -366,7 +366,7 @@
    "name": "Veterans Building (Herbst Theatre)",
    "family": "culture",
    "has_photo": false,
-   "n_docs": 14,
+   "n_docs": 7,
    "n_money": 1,
    "meets_pre_summary": false
   },
@@ -375,7 +375,7 @@
    "name": "Moscone Center",
    "family": "civic",
    "has_photo": true,
-   "n_docs": 14,
+   "n_docs": 6,
    "n_money": 1,
    "meets_pre_summary": true
   },
@@ -384,7 +384,7 @@
    "name": "Asian Art Museum",
    "family": "culture",
    "has_photo": false,
-   "n_docs": 14,
+   "n_docs": 5,
    "n_money": 1,
    "meets_pre_summary": false
   },
@@ -393,7 +393,7 @@
    "name": "de Young Museum",
    "family": "culture",
    "has_photo": true,
-   "n_docs": 14,
+   "n_docs": 10,
    "n_money": 1,
    "meets_pre_summary": true
   },
@@ -402,7 +402,7 @@
    "name": "Legion of Honor",
    "family": "culture",
    "has_photo": true,
-   "n_docs": 14,
+   "n_docs": 7,
    "n_money": 1,
    "meets_pre_summary": true
   },
@@ -411,7 +411,7 @@
    "name": "Hall of Justice",
    "family": "civic",
    "has_photo": false,
-   "n_docs": 14,
+   "n_docs": 5,
    "n_money": 1,
    "meets_pre_summary": false
   },
@@ -420,7 +420,7 @@
    "name": "Hetch Hetchy / O'Shaughnessy Dam",
    "family": "water",
    "has_photo": true,
-   "n_docs": 14,
+   "n_docs": 6,
    "n_money": 2,
    "meets_pre_summary": true
   },
@@ -429,7 +429,7 @@
    "name": "Sunol Water Temple",
    "family": "water",
    "has_photo": true,
-   "n_docs": 14,
+   "n_docs": 7,
    "n_money": 1,
    "meets_pre_summary": true
   },
@@ -438,7 +438,7 @@
    "name": "Southeast Water Pollution Control Plant",
    "family": "water",
    "has_photo": false,
-   "n_docs": 14,
+   "n_docs": 12,
    "n_money": 1,
    "meets_pre_summary": false
   },
@@ -447,7 +447,7 @@
    "name": "Sunset Reservoir",
    "family": "water",
    "has_photo": false,
-   "n_docs": 14,
+   "n_docs": 9,
    "n_money": 1,
    "meets_pre_summary": false
   },
@@ -456,7 +456,7 @@
    "name": "University Mound Reservoir",
    "family": "water",
    "has_photo": false,
-   "n_docs": 14,
+   "n_docs": 8,
    "n_money": 1,
    "meets_pre_summary": false
   },
@@ -465,7 +465,7 @@
    "name": "Ferry Building",
    "family": "port",
    "has_photo": true,
-   "n_docs": 14,
+   "n_docs": 3,
    "n_money": 1,
    "meets_pre_summary": true
   },
@@ -474,7 +474,7 @@
    "name": "Pier 70",
    "family": "port",
    "has_photo": true,
-   "n_docs": 14,
+   "n_docs": 5,
    "n_money": 1,
    "meets_pre_summary": true
   },
@@ -483,7 +483,7 @@
    "name": "Pier 39",
    "family": "port",
    "has_photo": true,
-   "n_docs": 14,
+   "n_docs": 8,
    "n_money": 1,
    "meets_pre_summary": true
   },
@@ -501,7 +501,7 @@
    "name": "James R. Herman Cruise Terminal (Pier 27)",
    "family": "port",
    "has_photo": false,
-   "n_docs": 14,
+   "n_docs": 7,
    "n_money": 3,
    "meets_pre_summary": false
   },
@@ -510,7 +510,7 @@
    "name": "Cable Car Barn & Powerhouse",
    "family": "transit",
    "has_photo": true,
-   "n_docs": 14,
+   "n_docs": 7,
    "n_money": 1,
    "meets_pre_summary": true
   },
@@ -519,7 +519,7 @@
    "name": "Muni Woods Division",
    "family": "transit",
    "has_photo": false,
-   "n_docs": 14,
+   "n_docs": 10,
    "n_money": 1,
    "meets_pre_summary": false
   },
@@ -528,7 +528,7 @@
    "name": "Muni Presidio Division",
    "family": "transit",
    "has_photo": false,
-   "n_docs": 14,
+   "n_docs": 10,
    "n_money": 1,
    "meets_pre_summary": false
   },
@@ -537,7 +537,7 @@
    "name": "Balboa Park Station / Green Yard",
    "family": "transit",
    "has_photo": true,
-   "n_docs": 14,
+   "n_docs": 9,
    "n_money": 1,
    "meets_pre_summary": true
   },
@@ -546,7 +546,7 @@
    "name": "SFFD Station 1",
    "family": "fire",
    "has_photo": false,
-   "n_docs": 14,
+   "n_docs": 12,
    "n_money": 1,
    "meets_pre_summary": false
   },
@@ -555,7 +555,7 @@
    "name": "SFFD Headquarters",
    "family": "fire",
    "has_photo": false,
-   "n_docs": 14,
+   "n_docs": 6,
    "n_money": 1,
    "meets_pre_summary": false
   },
@@ -564,7 +564,7 @@
    "name": "SFFD Division of Training",
    "family": "fire",
    "has_photo": false,
-   "n_docs": 14,
+   "n_docs": 6,
    "n_money": 1,
    "meets_pre_summary": false
   }

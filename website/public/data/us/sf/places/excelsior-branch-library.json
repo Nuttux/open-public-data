@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T22:30:00.112281+00:00",
+ "generated_at": "2026-07-21T14:25:53.949383+00:00",
  "source_pipeline": "sf_place_candidates.json → sync_ia_sf.py + link_sf_places.py + fetch_sf_place_photos.py → export_sf_places.py",
  "unit": "USD",
  "slug": "excelsior-branch-library",
@@ -13,6 +13,70 @@
   "name": "Public Library",
   "code": "LIB"
  },
+ "facility": {
+  "primary_name": "Excelsior Branch Library",
+  "primary_address": "4400 MISSION ST",
+  "primary_city": "San Francisco",
+  "primary_zip": "94112",
+  "primary_block_lot": "6797046",
+  "primary_department_name": "Public Library",
+  "primary_is_city_owned": true,
+  "primary_gross_sq_ft": 8302,
+  "primary_latitude": 37.72713052100005,
+  "primary_longitude": -122.43331540999998,
+  "supervisor_district": 11,
+  "n_facilities": 1,
+  "total_gross_sq_ft": 8302,
+  "n_owned": 1,
+  "n_leased": 0,
+  "apn_list": [
+   "6797046"
+  ],
+  "facilities": [
+   {
+    "facility_id": 651,
+    "common_name": "Excelsior Branch Library",
+    "block_lot": "6797046",
+    "gross_sq_ft": 8302,
+    "is_city_owned": true
+   }
+  ]
+ },
+ "capital": {
+  "n_items": 0,
+  "measure_totals": {},
+  "bond_programs": [],
+  "items": [],
+  "payees": [],
+  "n_payees": 0,
+  "payees_total_paid": 0,
+  "permits": [
+   {
+    "description": "renovation (e)bldg.,seismic & disabled access upgrades, improvement to the structural,mech,elec syst",
+    "permit_type": "additions alterations or repairs",
+    "declared_cost_usd": 2223217.0,
+    "status": "complete",
+    "permit_date": "2004-04-05",
+    "permit_year": 2004
+   },
+   {
+    "description": "to provide manual fire alarm system in the bldng",
+    "permit_type": "additions alterations or repairs",
+    "declared_cost_usd": 18480.0,
+    "status": "complete",
+    "permit_date": "2004-12-08",
+    "permit_year": 2004
+   }
+  ],
+  "n_permits": 2,
+  "permits_total_declared": 2241697.0,
+  "permits_by_year": [
+   {
+    "year": 2004,
+    "declared_usd": 2241697.0
+   }
+  ]
+ },
  "photo": null,
  "photo_credit": null,
  "summary_en": null,
@@ -24,22 +88,17 @@
    "total_usd": 187421705.0,
    "fiscal_year": 2025
   },
+  "payroll_line": {
+   "code": "LIB",
+   "name": "Public Library",
+   "total_compensation_usd": 110470134.22,
+   "n_employees": 985,
+   "fiscal_year": 2025
+  },
   "contracts": [],
   "grants": []
  },
  "documents": [
-  {
-   "identifier": "branchlibraryimp3200sanf",
-   "title": "Branch library improvement program : November 2000--general obligation bond program proposal",
-   "creator": "San Francisco (Calif.). Bureau of Architecture",
-   "year": 2000,
-   "pool": "sfpl",
-   "matched_alias": "Excelsior Branch Library",
-   "snippet": "Improvement Program «EXCELSIOR BRANCH LIBRARY» BACKGROUND The «Excelsior Branch Library», built in 1967",
-   "url": "https://archive.org/details/branchlibraryimp3200sanf",
-   "deep_link": "https://archive.org/details/branchlibraryimp3200sanf?q=Excelsior+Branch+Library",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
-  },
   {
    "identifier": "4minutes2002sanf",
    "title": "Minutes",
@@ -50,67 +109,9 @@
    "snippet": "the «Excelsior Branch Library», including the certification of the «Excelsior Branch Library» renovation",
    "url": "https://archive.org/details/4minutes2002sanf",
    "deep_link": "https://archive.org/details/4minutes2002sanf?q=Excelsior+Branch+Library",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
-  },
-  {
-   "identifier": "adultcalendarofp1997sanf",
-   "title": "Adult calendar of programs and events",
-   "creator": "San Francisco Public Library",
-   "year": null,
-   "pool": "sfpl",
-   "matched_alias": "Excelsior Branch Library",
-   "snippet": "Sponsored by Centra Legal de la Raza. «Excelsior Branch Library», 4400 Mission St. (at Cotter),",
-   "url": "https://archive.org/details/adultcalendarofp1997sanf",
-   "deep_link": "https://archive.org/details/adultcalendarofp1997sanf?q=Excelsior+Branch+Library",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
-  },
-  {
-   "identifier": "adultcalendarofp1996sanf",
-   "title": "Adult calendar of programs and events",
-   "creator": "San Francisco Public Library",
-   "year": null,
-   "pool": "sfpl",
-   "matched_alias": "Excelsior Branch Library",
-   "snippet": "Sponsored by Centro Legal de la Raza. «Excelsior Branch Library», 4400 Mission St. (at Cotter),",
-   "url": "https://archive.org/details/adultcalendarofp1996sanf",
-   "deep_link": "https://archive.org/details/adultcalendarofp1996sanf?q=Excelsior+Branch+Library",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
-  },
-  {
-   "identifier": "minutesofregula2002sanf_0",
-   "title": "Minutes of the regular meeting ...",
-   "creator": "San Francisco Public Library. Commission",
-   "year": null,
-   "pool": "sfpl",
-   "matched_alias": "Excelsior Branch Library",
-   "snippet": "the «Excelsior Branch Library» renovation. Explanatory document: «Excelsior Branch Library» Prop",
-   "url": "https://archive.org/details/minutesofregula2002sanf_0",
-   "deep_link": "https://archive.org/details/minutesofregula2002sanf_0?q=Excelsior+Branch+Library",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
-  },
-  {
-   "identifier": "minutesofregula1119sanf_1",
-   "title": "Minutes of the regular meeting ... / San Francisco Public Library Commission",
-   "creator": "San Francisco Public Library. Commission",
-   "year": null,
-   "pool": "sfpl",
-   "matched_alias": "Excelsior Branch Library",
-   "snippet": "as the site for the permanent «Excelsior Branch Library». Chairman Bransten expressed the",
-   "url": "https://archive.org/details/minutesofregula1119sanf_1",
-   "deep_link": "https://archive.org/details/minutesofregula1119sanf_1?q=Excelsior+Branch+Library",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
-  },
-  {
-   "identifier": "minutesofregular7194sanf",
-   "title": "Minutes of the regular meeting ... / San Francisco Public Library Commission",
-   "creator": "San Francisco Public Library. Commission",
-   "year": null,
-   "pool": "sfpl",
-   "matched_alias": "Excelsior Branch Library",
-   "snippet": "#9 Ocean Avenue, now housing the «Excelsior branch library», not later than January 1, 191+7",
-   "url": "https://archive.org/details/minutesofregular7194sanf",
-   "deep_link": "https://archive.org/details/minutesofregular7194sanf?q=Excelsior+Branch+Library",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Meetings & resolutions",
+   "salient": true
   },
   {
    "identifier": "minutesofregula2005sanf_0",
@@ -122,43 +123,9 @@
    "snippet": "subjects: Opening of the newly renovated «Excelsior Branch Library»; update on Library Technologv^ and",
    "url": "https://archive.org/details/minutesofregula2005sanf_0",
    "deep_link": "https://archive.org/details/minutesofregula2005sanf_0?q=Excelsior+Branch+Library",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
-  },
-  {
-   "identifier": "minutesofregular3119sanf",
-   "title": "Minutes of the regular meeting ... / San Francisco Public Library Commission",
-   "creator": "San Francisco Public Library. Commission",
-   "year": null,
-   "pool": "sfpl",
-   "matched_alias": "Excelsior Branch Library",
-   "snippet": "the following matters: 1 , New «Excelsior Branch Library» — framing for the exterior walls",
-   "url": "https://archive.org/details/minutesofregular3119sanf",
-   "deep_link": "https://archive.org/details/minutesofregular3119sanf?q=Excelsior+Branch+Library",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
-  },
-  {
-   "identifier": "activitiesreport1959sanf",
-   "title": "Activities report of the Library Department ... for the fiscal year ..",
-   "creator": "San Francisco Public Library",
-   "year": null,
-   "pool": "sfpl",
-   "matched_alias": "Excelsior Branch Library",
-   "snippet": "allowed in the 1960-61 budget. 3. «Excelsior Branch Library». Like the proposed Bayview Branch",
-   "url": "https://archive.org/details/activitiesreport1959sanf",
-   "deep_link": "https://archive.org/details/activitiesreport1959sanf?q=Excelsior+Branch+Library",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
-  },
-  {
-   "identifier": "minutesofregula1119sanf_0",
-   "title": "Minutes of the regular meeting ... / San Francisco Public Library Commission",
-   "creator": "San Francisco Public Library. Commission",
-   "year": null,
-   "pool": "sfpl",
-   "matched_alias": "Excelsior Branch Library",
-   "snippet": "purchase of the site for the permanent «Excelsior Branch Library». He added that it might be necessary",
-   "url": "https://archive.org/details/minutesofregula1119sanf_0",
-   "deep_link": "https://archive.org/details/minutesofregula1119sanf_0?q=Excelsior+Branch+Library",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Meetings & resolutions",
+   "salient": true
   },
   {
    "identifier": "minutesofregular1196sanf",
@@ -170,31 +137,51 @@
    "snippet": "design alternatives for the permanent «Excelsior Branch Library», the Secretary reported. (With respect",
    "url": "https://archive.org/details/minutesofregular1196sanf",
    "deep_link": "https://archive.org/details/minutesofregular1196sanf?q=Excelsior+Branch+Library",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Meetings & resolutions",
+   "salient": true
   },
   {
-   "identifier": "minutesofregula2006sanf_0",
-   "title": "Minutes of the regular meeting ...",
-   "creator": "San Francisco Public Library. Commission",
+   "identifier": "activitiesreport1959sanf",
+   "title": "Activities report of the Library Department ... for the fiscal year ..",
+   "creator": "San Francisco Public Library",
    "year": null,
    "pool": "sfpl",
    "matched_alias": "Excelsior Branch Library",
-   "snippet": "of $500,000 from a well regarded «Excelsior Branch Library» user, Mrs. Dolores Knight. Ms. Bero",
-   "url": "https://archive.org/details/minutesofregula2006sanf_0",
-   "deep_link": "https://archive.org/details/minutesofregula2006sanf_0?q=Excelsior+Branch+Library",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+   "snippet": "allowed in the 1960-61 budget. 3. «Excelsior Branch Library». Like the proposed Bayview Branch",
+   "url": "https://archive.org/details/activitiesreport1959sanf",
+   "deep_link": "https://archive.org/details/activitiesreport1959sanf?q=Excelsior+Branch+Library",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Reports & records",
+   "salient": true
   },
   {
-   "identifier": "minutesofregula2002sanf_2",
-   "title": "Minutes of the regular meeting ...",
-   "creator": "San Francisco Public Library. Commission",
+   "identifier": "branchlibraryimp3200sanf",
+   "title": "Branch library improvement program : November 2000--general obligation bond program proposal",
+   "creator": "San Francisco (Calif.). Bureau of Architecture",
+   "year": 2000,
+   "pool": "sfpl",
+   "matched_alias": "Excelsior Branch Library",
+   "snippet": "Improvement Program «EXCELSIOR BRANCH LIBRARY» BACKGROUND The «Excelsior Branch Library», built in 1967",
+   "url": "https://archive.org/details/branchlibraryimp3200sanf",
+   "deep_link": "https://archive.org/details/branchlibraryimp3200sanf?q=Excelsior+Branch+Library",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Other records",
+   "salient": true
+  },
+  {
+   "identifier": "adultcalendarofp1997sanf",
+   "title": "Adult calendar of programs and events",
+   "creator": "San Francisco Public Library",
    "year": null,
    "pool": "sfpl",
    "matched_alias": "Excelsior Branch Library",
-   "snippet": "Options Budget Considerations Example: «Excelsior Branch Library» Strategy Provide access to library",
-   "url": "https://archive.org/details/minutesofregula2002sanf_2",
-   "deep_link": "https://archive.org/details/minutesofregula2002sanf_2?q=Excelsior+Branch+Library",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+   "snippet": "Sponsored by Centra Legal de la Raza. «Excelsior Branch Library», 4400 Mission St. (at Cotter),",
+   "url": "https://archive.org/details/adultcalendarofp1997sanf",
+   "deep_link": "https://archive.org/details/adultcalendarofp1997sanf?q=Excelsior+Branch+Library",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Other records",
+   "salient": true
   }
  ],
  "dept_shelf": [
@@ -218,29 +205,10 @@
    "year": null,
    "pool": "sfpl",
    "url": "https://archive.org/details/minutesofregula1619sanf_0"
-  },
-  {
-   "identifier": "agenda1969sanf",
-   "title": "Agenda",
-   "year": null,
-   "pool": "sfpl",
-   "url": "https://archive.org/details/agenda1969sanf"
-  },
-  {
-   "identifier": "agendasminutessa1979sanf",
-   "title": "Agendas and Minutes / San Francisco Public Library Commission, Finance Committee",
-   "year": null,
-   "pool": "sfpl",
-   "url": "https://archive.org/details/agendasminutessa1979sanf"
-  },
-  {
-   "identifier": "requestforuseofp1998sanf",
-   "title": "Request for use of public meeting rooms / Branch meeting rooms summary",
-   "year": null,
-   "pool": "sfpl",
-   "url": "https://archive.org/details/requestforuseofp1998sanf"
   }
  ],
+ "dept_shelf_label": "Public Library",
+ "dept_shelf_more": 3,
  "sources": [
   {
    "label": "City budget & payments",
@@ -253,7 +221,7 @@
  ],
  "_gate": {
   "has_photo": false,
-  "n_documents": 14,
+  "n_documents": 6,
   "n_money_links": 1,
   "meets_pre_summary": false
  }

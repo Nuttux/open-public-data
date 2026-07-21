@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T22:30:00.115420+00:00",
+ "generated_at": "2026-07-21T14:25:53.957205+00:00",
  "source_pipeline": "sf_place_candidates.json → sync_ia_sf.py + link_sf_places.py + fetch_sf_place_photos.py → export_sf_places.py",
  "unit": "USD",
  "slug": "sf-city-hall",
@@ -12,6 +12,237 @@
  "owning_dept": {
   "name": "City Administrator - Real Estate",
   "code": "ADM"
+ },
+ "facility": {
+  "primary_name": "City Hall",
+  "primary_address": "1 DR CARLTON B GOODLETT PL",
+  "primary_city": "San Francisco",
+  "primary_zip": "94102",
+  "primary_block_lot": "0787001",
+  "primary_department_name": "Gsa - Real Estate Division",
+  "primary_is_city_owned": true,
+  "primary_gross_sq_ft": 516484,
+  "primary_latitude": 37.77927511900003,
+  "primary_longitude": -122.41922597499996,
+  "supervisor_district": 5,
+  "n_facilities": 1,
+  "total_gross_sq_ft": 516484,
+  "n_owned": 1,
+  "n_leased": 0,
+  "apn_list": [
+   "0787001"
+  ],
+  "facilities": [
+   {
+    "facility_id": 485,
+    "common_name": "City Hall",
+    "block_lot": "0787001",
+    "gross_sq_ft": 516484,
+    "is_city_owned": true
+   }
+  ]
+ },
+ "capital": {
+  "n_items": 0,
+  "measure_totals": {},
+  "bond_programs": [],
+  "items": [],
+  "payees": [
+   {
+    "vendor": "ACCO ENGINEERED SYSTEMS INC",
+    "paid_usd": 7605871.41,
+    "n_contracts": 1,
+    "first_fiscal_year": 2023,
+    "last_fiscal_year": 2026
+   },
+   {
+    "vendor": "C L W BUILDERS INC",
+    "paid_usd": 5046884.6,
+    "n_contracts": 1,
+    "first_fiscal_year": 2024,
+    "last_fiscal_year": 2026
+   },
+   {
+    "vendor": "WESTERN ROOFING SERVICE",
+    "paid_usd": 1983095.2,
+    "n_contracts": 1,
+    "first_fiscal_year": 2023,
+    "last_fiscal_year": 2023
+   },
+   {
+    "vendor": "SCHEMBRI CONSTRUCTION CO INC",
+    "paid_usd": 76548.0,
+    "n_contracts": 1,
+    "first_fiscal_year": 2018,
+    "last_fiscal_year": 2018
+   },
+   {
+    "vendor": "PAGANINI ELECTRIC CORP",
+    "paid_usd": 6462.0,
+    "n_contracts": 1,
+    "first_fiscal_year": 2018,
+    "last_fiscal_year": 2018
+   },
+   {
+    "vendor": "CANON SOLUTIONS AMERICA INC",
+    "paid_usd": 3174.73,
+    "n_contracts": 1,
+    "first_fiscal_year": 2025,
+    "last_fiscal_year": 2026
+   }
+  ],
+  "n_payees": 6,
+  "payees_total_paid": 14722035.94,
+  "permits": [
+   {
+    "description": "city job- upgrade fndtn & structure. some demo & repair work",
+    "permit_type": "additions alterations or repairs",
+    "declared_cost_usd": 95000000.0,
+    "status": "complete",
+    "permit_date": "1995-01-10",
+    "permit_year": 1995
+   },
+   {
+    "description": "replace (179)existing water source heat pumps,flexible hose,necessary ductwork & thermostats with new.",
+    "permit_type": "additions alterations or repairs",
+    "declared_cost_usd": 5800000.0,
+    "status": "issued",
+    "permit_date": "2023-05-08",
+    "permit_year": 2023
+   },
+   {
+    "description": "city hall: to modernize (8) (e) elevators, including replacement / refurbishment of (e) equipment, car control panels & lobby fixtures. additional scope include removal of fire sprinklers & installation of (n) rooftop.",
+    "permit_type": "additions alterations or repairs",
+    "declared_cost_usd": 4000000.0,
+    "status": "issued",
+    "permit_date": "2022-12-29",
+    "permit_year": 2022
+   },
+   {
+    "description": "replace of drain pining, instal new roofing system,concrete.",
+    "permit_type": "additions alterations or repairs",
+    "declared_cost_usd": 1198000.0,
+    "status": "expired",
+    "permit_date": "1992-01-08",
+    "permit_year": 1992
+   },
+   {
+    "description": "prop h:tenant improvement of(e)childcare area within city hall @ ground fl",
+    "permit_type": "otc alterations permit",
+    "declared_cost_usd": 1100000.0,
+    "status": "filed",
+    "permit_date": "2025-10-03",
+    "permit_year": 2025
+   },
+   {
+    "description": "installation of generator & fuel tank in areaway at southeast quadrant of bldg & electrical distribution system to provide backup power for bldg during power outage; installation of access door and exterior stair to the areaway for maintenance access & other incidental work; maher n/a",
+    "permit_type": "additions alterations or repairs",
+    "declared_cost_usd": 1060000.0,
+    "status": "complete",
+    "permit_date": "2016-04-06",
+    "permit_year": 2016
+   }
+  ],
+  "n_permits": 52,
+  "permits_total_declared": 115238058.0,
+  "permits_by_year": [
+   {
+    "year": 1990,
+    "declared_usd": 494560.0
+   },
+   {
+    "year": 1991,
+    "declared_usd": 284000.0
+   },
+   {
+    "year": 1992,
+    "declared_usd": 1282000.0
+   },
+   {
+    "year": 1993,
+    "declared_usd": 244000.0
+   },
+   {
+    "year": 1994,
+    "declared_usd": 528000.0
+   },
+   {
+    "year": 1995,
+    "declared_usd": 95000000.0
+   },
+   {
+    "year": 1997,
+    "declared_usd": 150000.0
+   },
+   {
+    "year": 1998,
+    "declared_usd": 405000.0
+   },
+   {
+    "year": 2000,
+    "declared_usd": 149999.0
+   },
+   {
+    "year": 2001,
+    "declared_usd": 3640.0
+   },
+   {
+    "year": 2007,
+    "declared_usd": 10000.0
+   },
+   {
+    "year": 2008,
+    "declared_usd": 45000.0
+   },
+   {
+    "year": 2009,
+    "declared_usd": 4000.0
+   },
+   {
+    "year": 2011,
+    "declared_usd": 685000.0
+   },
+   {
+    "year": 2013,
+    "declared_usd": 10000.0
+   },
+   {
+    "year": 2015,
+    "declared_usd": 820000.0
+   },
+   {
+    "year": 2016,
+    "declared_usd": 1454000.0
+   },
+   {
+    "year": 2018,
+    "declared_usd": 418000.0
+   },
+   {
+    "year": 2021,
+    "declared_usd": 606500.0
+   },
+   {
+    "year": 2022,
+    "declared_usd": 4650000.0
+   },
+   {
+    "year": 2023,
+    "declared_usd": 6252500.0
+   },
+   {
+    "year": 2024,
+    "declared_usd": 17597.0
+   },
+   {
+    "year": 2025,
+    "declared_usd": 1212500.0
+   },
+   {
+    "year": 2026,
+    "declared_usd": 511762.0
+   }
+  ]
  },
  "photo": "/img/us/sf/places/sf-city-hall.jpg",
  "photo_credit": {
@@ -33,6 +264,13 @@
    "total_usd": 287717708.0,
    "fiscal_year": 2025
   },
+  "payroll_line": {
+   "code": "ADM",
+   "name": "City Administrator",
+   "total_compensation_usd": 168334637.06,
+   "n_employees": 1154,
+   "fiscal_year": 2025
+  },
   "contracts": [
    {
     "contract_no": "1000033228",
@@ -41,24 +279,20 @@
     "department_code": "ADM",
     "agreed_usd": 5616.65,
     "paid_usd": 3174.73,
-    "evidence": "96105A_City Hall Events Canon"
+    "evidence": "96105A_City Hall Events Canon",
+    "team": [
+     {
+      "supplier": "CANON SOLUTIONS AMERICA INC",
+      "role": "Prime Contractor",
+      "lbe": false,
+      "attached_usd": 5616.65
+     }
+    ]
    }
   ],
   "grants": []
  },
  "documents": [
-  {
-   "identifier": "2minutes1999sanf",
-   "title": "Minutes",
-   "creator": "San Francisco (Calif.). Board of Supervisors. Finance and Labor Committee",
-   "year": 1999,
-   "pool": "sfpl",
-   "matched_alias": "City Hall",
-   "snippet": "main floor of «City Hall») and the «City Hall» Cafe (on ground floor of «City Hall») Currently,",
-   "url": "https://archive.org/details/2minutes1999sanf",
-   "deep_link": "https://archive.org/details/2minutes1999sanf?q=City+Hall",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
-  },
   {
    "identifier": "historicstructur1219care",
    "title": "Historic structure report : San Francisco City Hall",
@@ -69,7 +303,23 @@
    "snippet": "DEPA'^'^'^^^'^T HISTORIC STRUCTURES REPORT «SAN FRANCISCO CITY HALL» Prepared for CITY & COUNTY OF SAN",
    "url": "https://archive.org/details/historicstructur1219care",
    "deep_link": "https://archive.org/details/historicstructur1219care?q=San+Francisco+City+Hall",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Plans & environmental review",
+   "salient": true
+  },
+  {
+   "identifier": "2minutes1999sanf",
+   "title": "Minutes",
+   "creator": "San Francisco (Calif.). Board of Supervisors. Finance and Labor Committee",
+   "year": 1999,
+   "pool": "sfpl",
+   "matched_alias": "City Hall",
+   "snippet": "main floor of «City Hall») and the «City Hall» Cafe (on ground floor of «City Hall») Currently,",
+   "url": "https://archive.org/details/2minutes1999sanf",
+   "deep_link": "https://archive.org/details/2minutes1999sanf?q=City+Hall",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Meetings & resolutions",
+   "salient": true
   }
  ],
  "dept_shelf": [
@@ -93,29 +343,10 @@
    "year": null,
    "pool": "sfpl",
    "url": "https://archive.org/details/southofmarketzon1988sanf"
-  },
-  {
-   "identifier": "38minutesofsanfran1979san",
-   "title": "Minutes of the San Francisco City Planning Commission regular meeting",
-   "year": null,
-   "pool": "sfpl",
-   "url": "https://archive.org/details/38minutesofsanfran1979san"
-  },
-  {
-   "identifier": "capitalimproveme1961sanf",
-   "title": "Capital Improvement Program recommended for fiscal year ... proposed for fiscal years ... through ..",
-   "year": null,
-   "pool": "sfpl",
-   "url": "https://archive.org/details/capitalimproveme1961sanf"
-  },
-  {
-   "identifier": "agendasanfrancis1992nfra",
-   "title": "Agenda / San Francisco City Planning Commission",
-   "year": null,
-   "pool": "sfpl",
-   "url": "https://archive.org/details/agendasanfrancis1992nfra"
   }
  ],
+ "dept_shelf_label": "City Planning Department",
+ "dept_shelf_more": 3,
  "sources": [
   {
    "label": "City budget & payments",
@@ -130,6 +361,6 @@
   "has_photo": true,
   "n_documents": 2,
   "n_money_links": 2,
-  "meets_pre_summary": true
+  "meets_pre_summary": false
  }
 }

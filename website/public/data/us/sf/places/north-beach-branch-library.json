@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T22:30:00.110172+00:00",
+ "generated_at": "2026-07-21T14:25:53.943835+00:00",
  "source_pipeline": "sf_place_candidates.json → sync_ia_sf.py + link_sf_places.py + fetch_sf_place_photos.py → export_sf_places.py",
  "unit": "USD",
  "slug": "north-beach-branch-library",
@@ -13,6 +13,114 @@
   "name": "Public Library",
   "code": "LIB"
  },
+ "facility": {
+  "primary_name": "North Beach Branch Library",
+  "primary_address": "850 COLUMBUS AVE",
+  "primary_city": "San Francisco",
+  "primary_zip": "94133",
+  "primary_block_lot": "0075001",
+  "primary_department_name": "Public Library",
+  "primary_is_city_owned": true,
+  "primary_gross_sq_ft": 8500,
+  "primary_latitude": 37.80253081500007,
+  "primary_longitude": -122.41313485899997,
+  "supervisor_district": 3,
+  "n_facilities": 1,
+  "total_gross_sq_ft": 8500,
+  "n_owned": 1,
+  "n_leased": 0,
+  "apn_list": [
+   "0075001"
+  ],
+  "facilities": [
+   {
+    "facility_id": 1188,
+    "common_name": "North Beach Branch Library",
+    "block_lot": "0075001",
+    "gross_sq_ft": 8500,
+    "is_city_owned": true
+   }
+  ]
+ },
+ "capital": {
+  "n_items": 0,
+  "measure_totals": {},
+  "bond_programs": [],
+  "items": [],
+  "payees": [],
+  "n_payees": 0,
+  "payees_total_paid": 0,
+  "permits": [
+   {
+    "description": "renovation includes partial demo & addition. natatorium structure upgrade seismically. pool equipme",
+    "permit_type": "additions alterations or repairs",
+    "declared_cost_usd": 4500000.0,
+    "status": "complete",
+    "permit_date": "2003-10-06",
+    "permit_year": 2003
+   },
+   {
+    "description": "replace exting swimming pool/rplc pool deck/bld nw eqpmnt",
+    "permit_type": "additions alterations or repairs",
+    "declared_cost_usd": 1600000.0,
+    "status": "cancelled",
+    "permit_date": "1999-10-25",
+    "permit_year": 1999
+   },
+   {
+    "description": "demolish two story library building.",
+    "permit_type": "demolitions",
+    "declared_cost_usd": 325000.0,
+    "status": "issued",
+    "permit_date": "2012-03-30",
+    "permit_year": 2012
+   },
+   {
+    "description": "at site of demolished library, retaining berm & new fence to be constructed. existing irrigation system to be extended. new site light fixture added. new drinking fountain added.",
+    "permit_type": "additions alterations or repairs",
+    "declared_cost_usd": 105000.0,
+    "status": "issued",
+    "permit_date": "2012-03-27",
+    "permit_year": 2012
+   },
+   {
+    "description": "new fire alarm system",
+    "permit_type": "otc alterations permit",
+    "declared_cost_usd": 18000.0,
+    "status": "expired",
+    "permit_date": "2004-09-22",
+    "permit_year": 2004
+   },
+   {
+    "description": "install fire alarm system 1st fl",
+    "permit_type": "additions alterations or repairs",
+    "declared_cost_usd": 6000.0,
+    "status": "filed",
+    "permit_date": "2004-01-28",
+    "permit_year": 2004
+   }
+  ],
+  "n_permits": 6,
+  "permits_total_declared": 6554000.0,
+  "permits_by_year": [
+   {
+    "year": 1999,
+    "declared_usd": 1600000.0
+   },
+   {
+    "year": 2003,
+    "declared_usd": 4500000.0
+   },
+   {
+    "year": 2004,
+    "declared_usd": 24000.0
+   },
+   {
+    "year": 2012,
+    "declared_usd": 430000.0
+   }
+  ]
+ },
  "photo": null,
  "photo_credit": null,
  "summary_en": null,
@@ -24,34 +132,17 @@
    "total_usd": 187421705.0,
    "fiscal_year": 2025
   },
+  "payroll_line": {
+   "code": "LIB",
+   "name": "Public Library",
+   "total_compensation_usd": 110470134.22,
+   "n_employees": 985,
+   "fiscal_year": 2025
+  },
   "contracts": [],
   "grants": []
  },
  "documents": [
-  {
-   "identifier": "branchlibraryimp3200sanf",
-   "title": "Branch library improvement program : November 2000--general obligation bond program proposal",
-   "creator": "San Francisco (Calif.). Bureau of Architecture",
-   "year": 2000,
-   "pool": "sfpl",
-   "matched_alias": "North Beach Branch Library",
-   "snippet": "Improvement Program «NORTH BEACH BRANCH LIBRARY» BACKGROUND The «North Beach Branch Library», opened to",
-   "url": "https://archive.org/details/branchlibraryimp3200sanf",
-   "deep_link": "https://archive.org/details/branchlibraryimp3200sanf?q=North+Beach+Branch+Library",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
-  },
-  {
-   "identifier": "agenda20arts_12",
-   "title": "Agenda",
-   "creator": "Arts Commission of San Francisco. Visual Arts Committee",
-   "year": 1983,
-   "pool": "sfpl",
-   "matched_alias": "North Beach Branch Library",
-   "snippet": "Jennifer Lovvorn RE: «North Beach Branch Library» «NORTH BEACH BRANCH LIBRARY» ART ENRICHMENT PROJECT",
-   "url": "https://archive.org/details/agenda20arts_12",
-   "deep_link": "https://archive.org/details/agenda20arts_12?q=North+Beach+Branch+Library",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
-  },
   {
    "identifier": "agenda2013arts",
    "title": "Agenda",
@@ -62,55 +153,9 @@
    "snippet": "McCoppin Stub Art Project Outline. 7. «North Beach Branch Library» Mary Chou Action Presentation Time:",
    "url": "https://archive.org/details/agenda2013arts",
    "deep_link": "https://archive.org/details/agenda2013arts?q=North+Beach+Branch+Library",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
-  },
-  {
-   "identifier": "adultcalendarofp1996sanf",
-   "title": "Adult calendar of programs and events",
-   "creator": "San Francisco Public Library",
-   "year": null,
-   "pool": "sfpl",
-   "matched_alias": "North Beach Branch Library",
-   "snippet": "CHILDREN AGE 3 (WITH AN ADULT) «North Beach Branch Library», 2000 Mason St. (at Columbus),",
-   "url": "https://archive.org/details/adultcalendarofp1996sanf",
-   "deep_link": "https://archive.org/details/adultcalendarofp1996sanf?q=North+Beach+Branch+Library",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
-  },
-  {
-   "identifier": "minutesofregular2419sanf",
-   "title": "Minutes of the regular meeting ... / San Francisco Public Library Commission",
-   "creator": "San Francisco Public Library. Commission",
-   "year": null,
-   "pool": "sfpl",
-   "matched_alias": "North Beach Branch Library",
-   "snippet": "as a site for the proposed «North Beach Branch Library»; and be it FURTHER RESOLVED That",
-   "url": "https://archive.org/details/minutesofregular2419sanf",
-   "deep_link": "https://archive.org/details/minutesofregular2419sanf?q=North+Beach+Branch+Library",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
-  },
-  {
-   "identifier": "adultcalendarofp1997sanf",
-   "title": "Adult calendar of programs and events",
-   "creator": "San Francisco Public Library",
-   "year": null,
-   "pool": "sfpl",
-   "matched_alias": "North Beach Branch Library",
-   "snippet": "INFANTS TO 3 YEARS WITH AN ADULT «North Beach Branch Library», 2000 Mason St. (at Columbus),",
-   "url": "https://archive.org/details/adultcalendarofp1997sanf",
-   "deep_link": "https://archive.org/details/adultcalendarofp1997sanf?q=North+Beach+Branch+Library",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
-  },
-  {
-   "identifier": "minutesofregular2010sanf",
-   "title": "Minutes of the regular meeting ...",
-   "creator": "San Francisco Public Library. Commission",
-   "year": null,
-   "pool": "sfpl",
-   "matched_alias": "North Beach Branch Library",
-   "snippet": "them they found out that the «North Beach Branch Library» programming is currently not in",
-   "url": "https://archive.org/details/minutesofregular2010sanf",
-   "deep_link": "https://archive.org/details/minutesofregular2010sanf?q=North+Beach+Branch+Library",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Meetings & resolutions",
+   "salient": true
   },
   {
    "identifier": "minutesofregular1619sanf",
@@ -122,67 +167,9 @@
    "snippet": "alterations and additions to the present «North Beach Branch Library». Commissioner Q,uan concluded his",
    "url": "https://archive.org/details/minutesofregular1619sanf",
    "deep_link": "https://archive.org/details/minutesofregular1619sanf?q=North+Beach+Branch+Library",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
-  },
-  {
-   "identifier": "minutesofregular1219sanf",
-   "title": "Minutes of the regular meeting ... / San Francisco Public Library Commission",
-   "creator": "San Francisco Public Library. Commission",
-   "year": null,
-   "pool": "sfpl",
-   "matched_alias": "North Beach Branch Library",
-   "snippet": "Moore stated that although the «North Beach Branch Library» had been accepted that certain",
-   "url": "https://archive.org/details/minutesofregular1219sanf",
-   "deep_link": "https://archive.org/details/minutesofregular1219sanf?q=North+Beach+Branch+Library",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
-  },
-  {
-   "identifier": "minutesofregula2008sanf_0",
-   "title": "Minutes of the regular meeting ...",
-   "creator": "San Francisco Public Library. Commission",
-   "year": null,
-   "pool": "sfpl",
-   "matched_alias": "North Beach Branch Library",
-   "snippet": "NO. 2. «NORTH BEACH BRANCH LIBRARY» Luis Herrera said the «North Beach Branch Library» is located",
-   "url": "https://archive.org/details/minutesofregula2008sanf_0",
-   "deep_link": "https://archive.org/details/minutesofregula2008sanf_0?q=North+Beach+Branch+Library",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
-  },
-  {
-   "identifier": "minutesofregular7194sanf",
-   "title": "Minutes of the regular meeting ... / San Francisco Public Library Commission",
-   "creator": "San Francisco Public Library. Commission",
-   "year": null,
-   "pool": "sfpl",
-   "matched_alias": "North Beach Branch Library",
-   "snippet": "re: abandonment of oil tank, «North Beach Branch Library». Acknowledge and place on file.",
-   "url": "https://archive.org/details/minutesofregular7194sanf",
-   "deep_link": "https://archive.org/details/minutesofregular7194sanf?q=North+Beach+Branch+Library",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
-  },
-  {
-   "identifier": "agendasminutesvi2014arts",
-   "title": "Agendas and Minutes / Visual Arts Committee",
-   "creator": "Arts Commission of San Francisco. Visual Arts Committee",
-   "year": null,
-   "pool": "sfpl",
-   "matched_alias": "North Beach Branch Library",
-   "snippet": "2014 until May 30, 2015. 4. «North Beach Branch Library» Mary Chou Action Presentation Time:",
-   "url": "https://archive.org/details/agendasminutesvi2014arts",
-   "deep_link": "https://archive.org/details/agendasminutesvi2014arts?q=North+Beach+Branch+Library",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
-  },
-  {
-   "identifier": "annualreportdep2013sanf_0",
-   "title": "Annual report / Department of Public Works, City and County of San Francisco",
-   "creator": "San Francisco (Calif.). Department of Public Works",
-   "year": null,
-   "pool": "sfpl",
-   "matched_alias": "North Beach Branch Library",
-   "snippet": "celebrated the openings of the «North Beach Branch Library» and Palega Playground, updated our",
-   "url": "https://archive.org/details/annualreportdep2013sanf_0",
-   "deep_link": "https://archive.org/details/annualreportdep2013sanf_0?q=North+Beach+Branch+Library",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Meetings & resolutions",
+   "salient": true
   },
   {
    "identifier": "minutesofregular2009sanf",
@@ -194,7 +181,65 @@
    "snippet": "Gate Valley, Merced, Ortega and «North Beach Branch Library» Capital Projects. Explanatory document:",
    "url": "https://archive.org/details/minutesofregular2009sanf",
    "deep_link": "https://archive.org/details/minutesofregular2009sanf?q=North+Beach+Branch+Library",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Meetings & resolutions",
+   "salient": true
+  },
+  {
+   "identifier": "agendasminutesvi2014arts",
+   "title": "Agendas and Minutes / Visual Arts Committee",
+   "creator": "Arts Commission of San Francisco. Visual Arts Committee",
+   "year": null,
+   "pool": "sfpl",
+   "matched_alias": "North Beach Branch Library",
+   "snippet": "2014 until May 30, 2015. 4. «North Beach Branch Library» Mary Chou Action Presentation Time:",
+   "url": "https://archive.org/details/agendasminutesvi2014arts",
+   "deep_link": "https://archive.org/details/agendasminutesvi2014arts?q=North+Beach+Branch+Library",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Meetings & resolutions",
+   "salient": true
+  },
+  {
+   "identifier": "annualreportdep2013sanf_0",
+   "title": "Annual report / Department of Public Works, City and County of San Francisco",
+   "creator": "San Francisco (Calif.). Department of Public Works",
+   "year": null,
+   "pool": "sfpl",
+   "matched_alias": "North Beach Branch Library",
+   "snippet": "celebrated the openings of the «North Beach Branch Library» and Palega Playground, updated our",
+   "url": "https://archive.org/details/annualreportdep2013sanf_0",
+   "deep_link": "https://archive.org/details/annualreportdep2013sanf_0?q=North+Beach+Branch+Library",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Reports & records",
+   "salient": true
+  },
+  {
+   "identifier": "branchlibraryimp3200sanf",
+   "title": "Branch library improvement program : November 2000--general obligation bond program proposal",
+   "creator": "San Francisco (Calif.). Bureau of Architecture",
+   "year": 2000,
+   "pool": "sfpl",
+   "matched_alias": "North Beach Branch Library",
+   "snippet": "Improvement Program «NORTH BEACH BRANCH LIBRARY» BACKGROUND The «North Beach Branch Library», opened to",
+   "url": "https://archive.org/details/branchlibraryimp3200sanf",
+   "deep_link": "https://archive.org/details/branchlibraryimp3200sanf?q=North+Beach+Branch+Library",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Other records",
+   "salient": true
+  },
+  {
+   "identifier": "adultcalendarofp1997sanf",
+   "title": "Adult calendar of programs and events",
+   "creator": "San Francisco Public Library",
+   "year": null,
+   "pool": "sfpl",
+   "matched_alias": "North Beach Branch Library",
+   "snippet": "INFANTS TO 3 YEARS WITH AN ADULT «North Beach Branch Library», 2000 Mason St. (at Columbus),",
+   "url": "https://archive.org/details/adultcalendarofp1997sanf",
+   "deep_link": "https://archive.org/details/adultcalendarofp1997sanf?q=North+Beach+Branch+Library",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Other records",
+   "salient": false
   }
  ],
  "dept_shelf": [
@@ -218,29 +263,10 @@
    "year": null,
    "pool": "sfpl",
    "url": "https://archive.org/details/minutesofregula1619sanf_0"
-  },
-  {
-   "identifier": "agenda1969sanf",
-   "title": "Agenda",
-   "year": null,
-   "pool": "sfpl",
-   "url": "https://archive.org/details/agenda1969sanf"
-  },
-  {
-   "identifier": "agendasminutessa1979sanf",
-   "title": "Agendas and Minutes / San Francisco Public Library Commission, Finance Committee",
-   "year": null,
-   "pool": "sfpl",
-   "url": "https://archive.org/details/agendasminutessa1979sanf"
-  },
-  {
-   "identifier": "requestforuseofp1998sanf",
-   "title": "Request for use of public meeting rooms / Branch meeting rooms summary",
-   "year": null,
-   "pool": "sfpl",
-   "url": "https://archive.org/details/requestforuseofp1998sanf"
   }
  ],
+ "dept_shelf_label": "Public Library",
+ "dept_shelf_more": 3,
  "sources": [
   {
    "label": "City budget & payments",
@@ -253,7 +279,7 @@
  ],
  "_gate": {
   "has_photo": false,
-  "n_documents": 14,
+  "n_documents": 7,
   "n_money_links": 1,
   "meets_pre_summary": false
  }

@@ -1,0 +1,56 @@
+place_slug,source_kind,bond_program,item_name,expended_usd,revised_budget_usd,voter_approved_date,component,match_evidence
+buena-vista-park,bond_project,Health and Recovery,Buena Vista Park,,,,Recovery Parks,Buena Vista Park
+buena-vista-park,bond_project,Clean and Safe Neighborhood Parks,RP Buena Vista Park Master Pln,,,,Citywide Programs,Buena Vista Park
+camp-mather,bond_project,Clean and Safe Neighborhood Parks,RP Camp Mather - Rim Fire,,,,Citywide Programs,Camp Mather
+camp-mather,bond_project,Clean and Safe Neighborhood Parks,RP Camp Mather Multiuse Court,,,,Citywide Programs,Camp Mather
+chinatown-public-health-center,bond_project,"Healthy, Safe, Vibrant SF",Chinatown Public Health Center,,,,Community Health Centers,Chinatown Public Health Center
+chinatown-public-health-center,bond_project,Public Health and Safety,Chinatown Public Health Center,,,,Other Community Health Centers,Chinatown Public Health Center
+coit-tower,bond_project,Clean and Safe Neighborhood Parks,RP Cof-Pioneer Park,,,,Citywide Programs,Pioneer Park
+ferry-building,bond_project,Embarcadero Seawall Earthquake Safety Bond,Ferry Building Seawall and Substructure Earthquake Reliability Project,,,,Waterfront Resilience Program,Ferry Building
+kezar-stadium,bond_project,Earthquake Safety and Emergency Response,Kezar Pavilion - Disaster Response Facility,,,,Disaster Response Facility,Kezar Pavilion
+laguna-honda-hospital,bond_project,Affordable Housing,Laguna Honda Hospital Senior Housing Predev,,,,Senior Housing,Laguna Honda Hospital
+lake-merced,bond_project,Health and Recovery,Lake Merced,,,,Citywide Parks,Lake Merced
+lake-merced,bond_project,Earthquake Safety and Emergency Response,Lake Merced Pistol Range Replacement,,,,District Police Stations & Support Facilities,Lake Merced
+lake-merced,bond_project,Clean and Safe Neighborhood Parks,RP 2012 Lake Merced Trail & RR,,,,Citywide Parks,Lake Merced
+lake-merced,bond_project,Clean and Safe Neighborhood Parks,RP COF Lake Merced N Lake Dock,,,,Citywide Programs,Lake Merced
+maxine-hall-health-center,bond_project,Public Health and Safety,Maxine Hall Health Center,,,,Other Community Health Centers,Maxine Hall Health Center
+maxine-hall-health-center,bond_project,Public Health and Safety,Maxine Hall Health Center EEI (Energy Efficiency Improvement),,,,Other Community Health Centers,Maxine Hall Health Center
+mclaren-park,bond_project,Health and Recovery,John McLaren Park,,,,Citywide Parks,John McLaren Park
+mclaren-park,bond_project,Clean and Safe Neighborhood Parks,RP McLaren Park Trails,,,,Citywide Parks,McLaren Park
+mclaren-park,bond_project,Clean and Safe Neighborhood Parks,RP McLaren Park Trails,,,,Citywide Programs,McLaren Park
+mclaren-park,bond_project,Clean and Safe Neighborhood Parks,RP Mclaren Park Paving Improve,,,,Citywide Parks,McLaren Park
+pier-27-cruise-terminal,bond_project,Clean and Safe Neighborhood Parks,Northeast Wharf Plaza and Pier 27-29 Tip,,,,Waterfront Parks,Pier 27
+pier-27-cruise-terminal,bond_project,Clean and Safe Neighborhood Parks,Pier 27 Public Art,,,,Waterfront Parks,Pier 27
+portsmouth-square,bond_project,Health and Recovery,Portsmouth Square,,,,Recovery Parks,Portsmouth Square
+southeast-health-center,bond_item,Public Health and Safety,Southeast Health Center,36760185.9696,37050648.3993,2016-06-07,,Southeast Health Center
+southeast-health-center,bond_project,Public Health and Safety,Southeast Health Center (Phase 1),,,,Southeast Health Center,Southeast Health Center
+southeast-health-center,bond_project,Public Health and Safety,Southeast Health Center (Phase 2),,,,Southeast Health Center,Southeast Health Center
+stern-grove,bond_project,Clean and Safe Neighborhood Parks,RP Stern Grove Playground,,,,Citywide Programs,Stern Grove
+zuckerberg-sf-general-hospital,bond_item,Health and Recovery,Psychiatric Emergency Services (PES) Renovation and Expansion at ZSFG,7313533.04,11377246,2020-11-03,,ZSFG
+zuckerberg-sf-general-hospital,bond_item,"Healthy, Safe and Vibrant San Francisco",ZSFG and LHH Critical Repairs,0,0,2024-11-05,,ZSFG
+zuckerberg-sf-general-hospital,bond_item,Public Health and Safety,"ZSFG, Building 5",198956274.105201,213227528.576997,2016-06-07,,ZSFG
+zuckerberg-sf-general-hospital,bond_project,Public Health and Safety,PW ZSFG Bldg 5 Urgent Care Clinic Relocation,,,,"ZSFG, Building 5",ZSFG
+zuckerberg-sf-general-hospital,bond_project,Public Health and Safety,ZSFG Behavior Health Center (BHC) Hummingbird Expansion,,,,"ZSFG, Building 5",ZSFG
+zuckerberg-sf-general-hospital,bond_project,Public Health and Safety,ZSFG Bldg 5 4E Surge Space,,,,"ZSFG, Building 5",ZSFG
+zuckerberg-sf-general-hospital,bond_project,Public Health and Safety,ZSFG Bldg 5 6H Surge Space,,,,"ZSFG, Building 5",ZSFG
+zuckerberg-sf-general-hospital,bond_project,Public Health and Safety,ZSFG Bldg 5 Bldg 80/90 Specialty Services Relocation,,,,"ZSFG, Building 5",ZSFG
+zuckerberg-sf-general-hospital,bond_project,Public Health and Safety,ZSFG Bldg 5 Dialysis Relocation,,,,"ZSFG, Building 5",ZSFG
+zuckerberg-sf-general-hospital,bond_project,Public Health and Safety,ZSFG Bldg 5 Electrical Core Phase 1,,,,"ZSFG, Building 5",ZSFG
+zuckerberg-sf-general-hospital,bond_project,Public Health and Safety,ZSFG Bldg 5 Family Health Center (FHC) Relocation,,,,"ZSFG, Building 5",ZSFG
+zuckerberg-sf-general-hospital,bond_project,Public Health and Safety,ZSFG Bldg 5 Fire Alarm and Sprinkler Upgrade,,,,"ZSFG, Building 5",ZSFG
+zuckerberg-sf-general-hospital,bond_project,Public Health and Safety,ZSFG Bldg 5 Hematology - Oncology / Infusion,,,,"ZSFG, Building 5",ZSFG
+zuckerberg-sf-general-hospital,bond_project,Public Health and Safety,ZSFG Bldg 5 IT Infrastructure,,,,"ZSFG, Building 5",ZSFG
+zuckerberg-sf-general-hospital,bond_project,Public Health and Safety,ZSFG Bldg 5 Mechanical Core Phase 1,,,,"ZSFG, Building 5",ZSFG
+zuckerberg-sf-general-hospital,bond_project,Public Health and Safety,ZSFG Bldg 5 Mental Health Rehabilitation Center (MHRC) Relocation (Ward 7B & 7E),,,,"ZSFG, Building 5",ZSFG
+zuckerberg-sf-general-hospital,bond_project,Public Health and Safety,ZSFG Bldg 5 Psychiatric Emergency Services (PES) Expansion,,,,"ZSFG, Building 5",ZSFG
+zuckerberg-sf-general-hospital,bond_project,Public Health and Safety,ZSFG Bldg 5 Public Health Lab Relocation,,,,"ZSFG, Building 5",ZSFG
+zuckerberg-sf-general-hospital,bond_project,Public Health and Safety,ZSFG Bldg 5 Rehabilitation Department Relocation,,,,"ZSFG, Building 5",ZSFG
+zuckerberg-sf-general-hospital,bond_project,Public Health and Safety,ZSFG Bldg 5 Respiratory Care Relocation,,,,"ZSFG, Building 5",ZSFG
+zuckerberg-sf-general-hospital,bond_project,Public Health and Safety,ZSFG Bldg 5 Roof Replacement,,,,"ZSFG, Building 5",ZSFG
+zuckerberg-sf-general-hospital,bond_project,Public Health and Safety,ZSFG Bldg 5 Seismic Upgrade,,,,"ZSFG, Building 5",ZSFG
+zuckerberg-sf-general-hospital,bond_project,"Healthy, Safe, Vibrant SF",ZSFG Building 3 Seismic Retrofit,,,,ZSFG Building 3 Seismic Retrofit,ZSFG
+zuckerberg-sf-general-hospital,bond_project,"Healthy, Safe, Vibrant SF",ZSFG Building 5 Fire Alarm Upgrade,,,,ZSFG and LHH Critical Repairs,ZSFG
+zuckerberg-sf-general-hospital,bond_project,"Healthy, Safe, Vibrant SF",ZSFG Chiller & Cooling Tower,,,,ZSFG and LHH Critical Repairs,ZSFG
+zuckerberg-sf-general-hospital,bond_project,"Healthy, Safe, Vibrant SF",ZSFG NPC 4 Compliance,,,,ZSFG and LHH Critical Repairs,ZSFG
+zuckerberg-sf-general-hospital,bond_project,"Healthy, Safe, Vibrant SF",ZSFG NPC 5 Compliance,,,,ZSFG and LHH Critical Repairs,ZSFG
+zuckerberg-sf-general-hospital,bond_project,"Healthy, Safe, Vibrant SF",ZSFG Psychiatric Emergency Services (PES),,,,ZSFG and LHH Critical Repairs,ZSFG

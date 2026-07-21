@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T22:35:37.356161+00:00",
+ "generated_at": "2026-07-21T14:25:54.016967+00:00",
  "note": "Maps money entities to PUBLISHED places only (publication guard). A chip renders only if its target slug is in `places`.",
  "places": [
   "balboa-park-station",

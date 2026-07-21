@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T22:30:00.121721+00:00",
+ "generated_at": "2026-07-21T14:25:53.972959+00:00",
  "source_pipeline": "sf_place_candidates.json → sync_ia_sf.py + link_sf_places.py + fetch_sf_place_photos.py → export_sf_places.py",
  "unit": "USD",
  "slug": "pier-39",
@@ -13,6 +13,57 @@
   "name": "Port of San Francisco",
   "code": "PRT"
  },
+ "facility": {
+  "primary_name": "Pier 39 - Retail Shops",
+  "primary_address": "2 BEACH ST",
+  "primary_city": "San Francisco",
+  "primary_zip": "94133",
+  "primary_block_lot": "9900070",
+  "primary_department_name": "Port",
+  "primary_is_city_owned": true,
+  "primary_gross_sq_ft": 261972,
+  "primary_latitude": 37.81000729800007,
+  "primary_longitude": -122.41035284899999,
+  "supervisor_district": 3,
+  "n_facilities": 4,
+  "total_gross_sq_ft": 532244,
+  "n_owned": 4,
+  "n_leased": 0,
+  "apn_list": [
+   "9900070"
+  ],
+  "facilities": [
+   {
+    "facility_id": 1916,
+    "common_name": "Pier 39 - Retail Shops",
+    "block_lot": "9900070",
+    "gross_sq_ft": 261972,
+    "is_city_owned": true
+   },
+   {
+    "facility_id": 1722,
+    "common_name": "SWL 311 Pier 39 Garage",
+    "block_lot": null,
+    "gross_sq_ft": 242304,
+    "is_city_owned": true
+   },
+   {
+    "facility_id": 1917,
+    "common_name": "Pier 39 - Underwater World",
+    "block_lot": "9900070",
+    "gross_sq_ft": 18900,
+    "is_city_owned": true
+   },
+   {
+    "facility_id": 1918,
+    "common_name": "Pier 39 1/2 Marginal Wharf",
+    "block_lot": "9900070",
+    "gross_sq_ft": 9068,
+    "is_city_owned": true
+   }
+  ]
+ },
+ "capital": null,
  "photo": "/img/us/sf/places/pier-39.jpg",
  "photo_credit": {
   "photo": "/img/us/sf/places/pier-39.jpg",
@@ -33,58 +84,17 @@
    "total_usd": 156434885.0,
    "fiscal_year": 2025
   },
+  "payroll_line": {
+   "code": "PRT",
+   "name": "Port",
+   "total_compensation_usd": 52732085.2,
+   "n_employees": 304,
+   "fiscal_year": 2025
+  },
   "contracts": [],
   "grants": []
  },
  "documents": [
-  {
-   "identifier": "agenda19811983arts",
-   "title": "Agenda",
-   "creator": "Arts Commission of San Francisco. Civic Design Review Committee",
-   "year": 1988,
-   "pool": "sfpl",
-   "matched_alias": "Pier 39",
-   "snippet": "Area I Alterations, «Pier 39» 6. Building C § D Revisions, «Pier 39» I, II, III II I I, II",
-   "url": "https://archive.org/details/agenda19811983arts",
-   "deep_link": "https://archive.org/details/agenda19811983arts?q=Pier+39",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
-  },
-  {
-   "identifier": "northernwaterfro1987sanf",
-   "title": "The Northern Waterfront findings report",
-   "creator": "San Francisco (Calif.). Dept. of City Planning",
-   "year": 1987,
-   "pool": "sfpl",
-   "matched_alias": "Pier 39",
-   "snippet": "7 «PIER 39» «Pier 39» has become a major vistor destination in and of itself. «Pier 39» is",
-   "url": "https://archive.org/details/northernwaterfro1987sanf",
-   "deep_link": "https://archive.org/details/northernwaterfro1987sanf?q=Pier+39",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
-  },
-  {
-   "identifier": "agenda19arts_26",
-   "title": "Agenda",
-   "creator": "Arts Commission of San Francisco. Visual Arts Committee",
-   "year": 1983,
-   "pool": "sfpl",
-   "matched_alias": "Pier 39",
-   "snippet": "Operations for «Pier 39» concerning the placement of Cheemah near «Pier 39». Since our last",
-   "url": "https://archive.org/details/agenda19arts_26",
-   "deep_link": "https://archive.org/details/agenda19arts_26?q=Pier+39",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
-  },
-  {
-   "identifier": "finalenvironment1977wate",
-   "title": "Final environmental statement, North Point Park/Marina, City and County of San Francisco : regulatory permit applications by Waterfront Recreation Facilities, Inc",
-   "creator": "Waterfront Recreation Facilities, Inc,United States. Army. Corps of Engineers",
-   "year": 1977,
-   "pool": "sfpl",
-   "matched_alias": "Pier 39",
-   "snippet": "the structure on «Pier 39» and pile driving for the addition to «Pier 39» are likely to be",
-   "url": "https://archive.org/details/finalenvironment1977wate",
-   "deep_link": "https://archive.org/details/finalenvironment1977wate?q=Pier+39",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
-  },
   {
    "identifier": "proposednorthpoi2619sanf",
    "title": "Proposed North Point Park/Marina, San Francisco, California : final environmental impact report",
@@ -95,7 +105,9 @@
    "snippet": "salvaged section. 1 b. «Pier 39» The development of «Pier 39» would include a total of 200",
    "url": "https://archive.org/details/proposednorthpoi2619sanf",
    "deep_link": "https://archive.org/details/proposednorthpoi2619sanf?q=Pier+39",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Plans & environmental review",
+   "salient": true
   },
   {
    "identifier": "underwaterworlda1219sanf",
@@ -107,43 +119,9 @@
    "snippet": "the «Pier 39» complex and a portion of the «Pier 39» marina. The remainder of «Pier 39» is",
    "url": "https://archive.org/details/underwaterworlda1219sanf",
    "deep_link": "https://archive.org/details/underwaterworlda1219sanf?q=Pier+39",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
-  },
-  {
-   "identifier": "minutes1996sanf_1",
-   "title": "Minutes",
-   "creator": "San Francisco Port Commission",
-   "year": null,
-   "pool": "sfpl",
-   "matched_alias": "Pier 39",
-   "snippet": "and «Pier 39» L. P. (\"«Pier 39»\") entered into a lease for premises located at «Pier 39», City",
-   "url": "https://archive.org/details/minutes1996sanf_1",
-   "deep_link": "https://archive.org/details/minutes1996sanf_1?q=Pier+39",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
-  },
-  {
-   "identifier": "agendasanfranci013sanf_11",
-   "title": "Agenda / San Francisco Port Commission",
-   "creator": "San Francisco Port Commission",
-   "year": null,
-   "pool": "sfpl",
-   "matched_alias": "Pier 39",
-   "snippet": "35th anniversary of «Pier 39». «Pier 39» opened on October 4, 1978. «Pier 39» replaced what was",
-   "url": "https://archive.org/details/agendasanfranci013sanf_11",
-   "deep_link": "https://archive.org/details/agendasanfranci013sanf_11?q=Pier+39",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
-  },
-  {
-   "identifier": "artcommissionmin19sanf_9",
-   "title": "Art Commission minutes",
-   "creator": "San Francisco (Calif.). Art Commission",
-   "year": null,
-   "pool": "sfpl",
-   "matched_alias": "Pier 39",
-   "snippet": "Vedensky A. «Pier 39», Buildings C & D Revisions B. «Pier 39», Ticket Kiosk C. «Pier 39», Building",
-   "url": "https://archive.org/details/artcommissionmin19sanf_9",
-   "deep_link": "https://archive.org/details/artcommissionmin19sanf_9?q=Pier+39",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Plans & environmental review",
+   "salient": true
   },
   {
    "identifier": "minutes1995sanf_0",
@@ -155,7 +133,79 @@
    "snippet": "funded by «Pier 39»/Underwater World. Should project costs exceed $1.3 million, «Pier 39»/Underwater",
    "url": "https://archive.org/details/minutes1995sanf_0",
    "deep_link": "https://archive.org/details/minutes1995sanf_0?q=Pier+39",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Meetings & resolutions",
+   "salient": true
+  },
+  {
+   "identifier": "artcommissionmin19sanf_9",
+   "title": "Art Commission minutes",
+   "creator": "San Francisco (Calif.). Art Commission",
+   "year": null,
+   "pool": "sfpl",
+   "matched_alias": "Pier 39",
+   "snippet": "Vedensky A. «Pier 39», Buildings C & D Revisions B. «Pier 39», Ticket Kiosk C. «Pier 39», Building",
+   "url": "https://archive.org/details/artcommissionmin19sanf_9",
+   "deep_link": "https://archive.org/details/artcommissionmin19sanf_9?q=Pier+39",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Meetings & resolutions",
+   "salient": true
+  },
+  {
+   "identifier": "agendasanfranci013sanf_11",
+   "title": "Agenda / San Francisco Port Commission",
+   "creator": "San Francisco Port Commission",
+   "year": null,
+   "pool": "sfpl",
+   "matched_alias": "Pier 39",
+   "snippet": "35th anniversary of «Pier 39». «Pier 39» opened on October 4, 1978. «Pier 39» replaced what was",
+   "url": "https://archive.org/details/agendasanfranci013sanf_11",
+   "deep_link": "https://archive.org/details/agendasanfranci013sanf_11?q=Pier+39",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Meetings & resolutions",
+   "salient": true
+  },
+  {
+   "identifier": "agenda19arts_26",
+   "title": "Agenda",
+   "creator": "Arts Commission of San Francisco. Visual Arts Committee",
+   "year": 1983,
+   "pool": "sfpl",
+   "matched_alias": "Pier 39",
+   "snippet": "Operations for «Pier 39» concerning the placement of Cheemah near «Pier 39». Since our last",
+   "url": "https://archive.org/details/agenda19arts_26",
+   "deep_link": "https://archive.org/details/agenda19arts_26?q=Pier+39",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Meetings & resolutions",
+   "salient": true
+  },
+  {
+   "identifier": "northernwaterfro1987sanf",
+   "title": "The Northern Waterfront findings report",
+   "creator": "San Francisco (Calif.). Dept. of City Planning",
+   "year": 1987,
+   "pool": "sfpl",
+   "matched_alias": "Pier 39",
+   "snippet": "7 «PIER 39» «Pier 39» has become a major vistor destination in and of itself. «Pier 39» is",
+   "url": "https://archive.org/details/northernwaterfro1987sanf",
+   "deep_link": "https://archive.org/details/northernwaterfro1987sanf?q=Pier+39",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Other records",
+   "salient": false
+  },
+  {
+   "identifier": "finalenvironment1977wate",
+   "title": "Final environmental statement, North Point Park/Marina, City and County of San Francisco : regulatory permit applications by Waterfront Recreation Facilities, Inc",
+   "creator": "Waterfront Recreation Facilities, Inc,United States. Army. Corps of Engineers",
+   "year": 1977,
+   "pool": "sfpl",
+   "matched_alias": "Pier 39",
+   "snippet": "the structure on «Pier 39» and pile driving for the addition to «Pier 39» are likely to be",
+   "url": "https://archive.org/details/finalenvironment1977wate",
+   "deep_link": "https://archive.org/details/finalenvironment1977wate?q=Pier+39",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Other records",
+   "salient": false
   }
  ],
  "dept_shelf": [
@@ -179,29 +229,10 @@
    "year": null,
    "pool": "sfpl",
    "url": "https://archive.org/details/financialstateme1971sanf"
-  },
-  {
-   "identifier": "wharfside1986sanf",
-   "title": "Wharfside",
-   "year": null,
-   "pool": "sfpl",
-   "url": "https://archive.org/details/wharfside1986sanf"
-  },
-  {
-   "identifier": "minutes2000sanf_1",
-   "title": "Minutes",
-   "year": null,
-   "pool": "sfpl",
-   "url": "https://archive.org/details/minutes2000sanf_1"
-  },
-  {
-   "identifier": "financialstateme1999sanf",
-   "title": "Financial statements and independent auditors' report",
-   "year": null,
-   "pool": "sfpl",
-   "url": "https://archive.org/details/financialstateme1999sanf"
   }
  ],
+ "dept_shelf_label": "Port of San Francisco",
+ "dept_shelf_more": 3,
  "sources": [
   {
    "label": "City budget & payments",
@@ -214,7 +245,7 @@
  ],
  "_gate": {
   "has_photo": true,
-  "n_documents": 10,
+  "n_documents": 8,
   "n_money_links": 1,
   "meets_pre_summary": true
  }

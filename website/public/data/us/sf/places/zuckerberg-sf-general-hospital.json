@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T22:30:00.113000+00:00",
+ "generated_at": "2026-07-21T14:25:53.951610+00:00",
  "source_pipeline": "sf_place_candidates.json → sync_ia_sf.py + link_sf_places.py + fetch_sf_place_photos.py → export_sf_places.py",
  "unit": "USD",
  "slug": "zuckerberg-sf-general-hospital",
@@ -13,6 +13,789 @@
   "name": "Public Health",
   "code": "DPH"
  },
+ "facility": {
+  "primary_name": "ZSFGH - Building 100",
+  "primary_address": "1001 POTRERO AVE",
+  "primary_city": "San Francisco",
+  "primary_zip": "94110",
+  "primary_block_lot": "4154001",
+  "primary_department_name": "Public Health",
+  "primary_is_city_owned": true,
+  "primary_gross_sq_ft": null,
+  "primary_latitude": 37.75650149100005,
+  "primary_longitude": -122.40432827999996,
+  "supervisor_district": 10,
+  "n_facilities": 15,
+  "total_gross_sq_ft": null,
+  "n_owned": 15,
+  "n_leased": 0,
+  "apn_list": [
+   "4154001"
+  ],
+  "facilities": [
+   {
+    "facility_id": 3104,
+    "common_name": "ZSFGH - Building 100",
+    "block_lot": "4154001",
+    "gross_sq_ft": null,
+    "is_city_owned": true
+   },
+   {
+    "facility_id": 3116,
+    "common_name": "ZSFGH - Behavioral Health",
+    "block_lot": "4154001",
+    "gross_sq_ft": null,
+    "is_city_owned": true
+   },
+   {
+    "facility_id": 3102,
+    "common_name": "ZSFGH - Building 1",
+    "block_lot": "4154001",
+    "gross_sq_ft": null,
+    "is_city_owned": true
+   },
+   {
+    "facility_id": 3103,
+    "common_name": "ZSFGH - Building 10",
+    "block_lot": "4154001",
+    "gross_sq_ft": null,
+    "is_city_owned": true
+   },
+   {
+    "facility_id": 3108,
+    "common_name": "ZSFGH - Building 20",
+    "block_lot": "4154001",
+    "gross_sq_ft": null,
+    "is_city_owned": true
+   },
+   {
+    "facility_id": 3332,
+    "common_name": "ZSFGH - Building 25",
+    "block_lot": "4154001",
+    "gross_sq_ft": null,
+    "is_city_owned": true
+   },
+   {
+    "facility_id": 3118,
+    "common_name": "ZSFGH - Building 3 - Carr Auditorium",
+    "block_lot": "4154001",
+    "gross_sq_ft": null,
+    "is_city_owned": true
+   },
+   {
+    "facility_id": 3109,
+    "common_name": "ZSFGH - Building 30",
+    "block_lot": "4154001",
+    "gross_sq_ft": null,
+    "is_city_owned": true
+   },
+   {
+    "facility_id": 3110,
+    "common_name": "ZSFGH - Building 4",
+    "block_lot": "4154001",
+    "gross_sq_ft": null,
+    "is_city_owned": true
+   },
+   {
+    "facility_id": 3111,
+    "common_name": "ZSFGH - Building 40",
+    "block_lot": "4154001",
+    "gross_sq_ft": null,
+    "is_city_owned": true
+   },
+   {
+    "facility_id": 3112,
+    "common_name": "ZSFGH - Building 80",
+    "block_lot": "4154001",
+    "gross_sq_ft": null,
+    "is_city_owned": true
+   },
+   {
+    "facility_id": 3113,
+    "common_name": "ZSFGH - Building 9",
+    "block_lot": "4154001",
+    "gross_sq_ft": null,
+    "is_city_owned": true
+   },
+   {
+    "facility_id": 3114,
+    "common_name": "ZSFGH - Building 90",
+    "block_lot": "4154001",
+    "gross_sq_ft": null,
+    "is_city_owned": true
+   },
+   {
+    "facility_id": 3115,
+    "common_name": "ZSFGH - Main Hospital - Building 5",
+    "block_lot": "4154001",
+    "gross_sq_ft": null,
+    "is_city_owned": true
+   },
+   {
+    "facility_id": 3119,
+    "common_name": "ZSFGH - Service Building",
+    "block_lot": "4154001",
+    "gross_sq_ft": null,
+    "is_city_owned": true
+   }
+  ]
+ },
+ "capital": {
+  "n_items": 28,
+  "measure_totals": {
+   "bond_expended": 206269807.15
+  },
+  "bond_programs": [
+   "Health and Recovery",
+   "Healthy, Safe and Vibrant San Francisco",
+   "Healthy, Safe, Vibrant SF",
+   "Public Health and Safety"
+  ],
+  "items": [
+   {
+    "source": "bond",
+    "source_kind": "bond_item",
+    "item_name": "ZSFG, Building 5",
+    "bond_program": "Public Health and Safety",
+    "component": null,
+    "voter_approved_date": "2016-06-07",
+    "amount_usd": 198956274.105201,
+    "amount_measure": "bond_expended",
+    "budget_usd": 213227528.576997,
+    "contract_no": null,
+    "status": null,
+    "match_evidence": "ZSFG"
+   },
+   {
+    "source": "bond",
+    "source_kind": "bond_item",
+    "item_name": "Psychiatric Emergency Services (PES) Renovation and Expansion at ZSFG",
+    "bond_program": "Health and Recovery",
+    "component": null,
+    "voter_approved_date": "2020-11-03",
+    "amount_usd": 7313533.04,
+    "amount_measure": "bond_expended",
+    "budget_usd": 11377246.0,
+    "contract_no": null,
+    "status": null,
+    "match_evidence": "ZSFG"
+   },
+   {
+    "source": "bond",
+    "source_kind": "bond_item",
+    "item_name": "ZSFG and LHH Critical Repairs",
+    "bond_program": "Healthy, Safe and Vibrant San Francisco",
+    "component": null,
+    "voter_approved_date": "2024-11-05",
+    "amount_usd": 0.0,
+    "amount_measure": "bond_expended",
+    "budget_usd": 0.0,
+    "contract_no": null,
+    "status": null,
+    "match_evidence": "ZSFG"
+   },
+   {
+    "source": "bond",
+    "source_kind": "bond_project",
+    "item_name": "ZSFG Building 3 Seismic Retrofit",
+    "bond_program": "Healthy, Safe, Vibrant SF",
+    "component": "ZSFG Building 3 Seismic Retrofit",
+    "voter_approved_date": null,
+    "amount_usd": null,
+    "amount_measure": null,
+    "budget_usd": null,
+    "contract_no": null,
+    "status": null,
+    "match_evidence": "ZSFG"
+   },
+   {
+    "source": "bond",
+    "source_kind": "bond_project",
+    "item_name": "ZSFG NPC 5 Compliance",
+    "bond_program": "Healthy, Safe, Vibrant SF",
+    "component": "ZSFG and LHH Critical Repairs",
+    "voter_approved_date": null,
+    "amount_usd": null,
+    "amount_measure": null,
+    "budget_usd": null,
+    "contract_no": null,
+    "status": null,
+    "match_evidence": "ZSFG"
+   },
+   {
+    "source": "bond",
+    "source_kind": "bond_project",
+    "item_name": "ZSFG NPC 4 Compliance",
+    "bond_program": "Healthy, Safe, Vibrant SF",
+    "component": "ZSFG and LHH Critical Repairs",
+    "voter_approved_date": null,
+    "amount_usd": null,
+    "amount_measure": null,
+    "budget_usd": null,
+    "contract_no": null,
+    "status": null,
+    "match_evidence": "ZSFG"
+   },
+   {
+    "source": "bond",
+    "source_kind": "bond_project",
+    "item_name": "ZSFG Building 5 Fire Alarm Upgrade",
+    "bond_program": "Healthy, Safe, Vibrant SF",
+    "component": "ZSFG and LHH Critical Repairs",
+    "voter_approved_date": null,
+    "amount_usd": null,
+    "amount_measure": null,
+    "budget_usd": null,
+    "contract_no": null,
+    "status": null,
+    "match_evidence": "ZSFG"
+   },
+   {
+    "source": "bond",
+    "source_kind": "bond_project",
+    "item_name": "ZSFG Psychiatric Emergency Services (PES)",
+    "bond_program": "Healthy, Safe, Vibrant SF",
+    "component": "ZSFG and LHH Critical Repairs",
+    "voter_approved_date": null,
+    "amount_usd": null,
+    "amount_measure": null,
+    "budget_usd": null,
+    "contract_no": null,
+    "status": null,
+    "match_evidence": "ZSFG"
+   },
+   {
+    "source": "bond",
+    "source_kind": "bond_project",
+    "item_name": "ZSFG Chiller & Cooling Tower",
+    "bond_program": "Healthy, Safe, Vibrant SF",
+    "component": "ZSFG and LHH Critical Repairs",
+    "voter_approved_date": null,
+    "amount_usd": null,
+    "amount_measure": null,
+    "budget_usd": null,
+    "contract_no": null,
+    "status": null,
+    "match_evidence": "ZSFG"
+   },
+   {
+    "source": "bond",
+    "source_kind": "bond_project",
+    "item_name": "ZSFG Bldg 5 Hematology - Oncology / Infusion",
+    "bond_program": "Public Health and Safety",
+    "component": "ZSFG, Building 5",
+    "voter_approved_date": null,
+    "amount_usd": null,
+    "amount_measure": null,
+    "budget_usd": null,
+    "contract_no": null,
+    "status": null,
+    "match_evidence": "ZSFG"
+   },
+   {
+    "source": "bond",
+    "source_kind": "bond_project",
+    "item_name": "ZSFG Bldg 5 4E Surge Space",
+    "bond_program": "Public Health and Safety",
+    "component": "ZSFG, Building 5",
+    "voter_approved_date": null,
+    "amount_usd": null,
+    "amount_measure": null,
+    "budget_usd": null,
+    "contract_no": null,
+    "status": null,
+    "match_evidence": "ZSFG"
+   },
+   {
+    "source": "bond",
+    "source_kind": "bond_project",
+    "item_name": "ZSFG Bldg 5 Electrical Core Phase 1",
+    "bond_program": "Public Health and Safety",
+    "component": "ZSFG, Building 5",
+    "voter_approved_date": null,
+    "amount_usd": null,
+    "amount_measure": null,
+    "budget_usd": null,
+    "contract_no": null,
+    "status": null,
+    "match_evidence": "ZSFG"
+   },
+   {
+    "source": "bond",
+    "source_kind": "bond_project",
+    "item_name": "ZSFG Bldg 5 Fire Alarm and Sprinkler Upgrade",
+    "bond_program": "Public Health and Safety",
+    "component": "ZSFG, Building 5",
+    "voter_approved_date": null,
+    "amount_usd": null,
+    "amount_measure": null,
+    "budget_usd": null,
+    "contract_no": null,
+    "status": null,
+    "match_evidence": "ZSFG"
+   },
+   {
+    "source": "bond",
+    "source_kind": "bond_project",
+    "item_name": "ZSFG Bldg 5 IT Infrastructure",
+    "bond_program": "Public Health and Safety",
+    "component": "ZSFG, Building 5",
+    "voter_approved_date": null,
+    "amount_usd": null,
+    "amount_measure": null,
+    "budget_usd": null,
+    "contract_no": null,
+    "status": null,
+    "match_evidence": "ZSFG"
+   },
+   {
+    "source": "bond",
+    "source_kind": "bond_project",
+    "item_name": "ZSFG Bldg 5 Rehabilitation Department Relocation",
+    "bond_program": "Public Health and Safety",
+    "component": "ZSFG, Building 5",
+    "voter_approved_date": null,
+    "amount_usd": null,
+    "amount_measure": null,
+    "budget_usd": null,
+    "contract_no": null,
+    "status": null,
+    "match_evidence": "ZSFG"
+   },
+   {
+    "source": "bond",
+    "source_kind": "bond_project",
+    "item_name": "ZSFG Bldg 5 Public Health Lab Relocation",
+    "bond_program": "Public Health and Safety",
+    "component": "ZSFG, Building 5",
+    "voter_approved_date": null,
+    "amount_usd": null,
+    "amount_measure": null,
+    "budget_usd": null,
+    "contract_no": null,
+    "status": null,
+    "match_evidence": "ZSFG"
+   },
+   {
+    "source": "bond",
+    "source_kind": "bond_project",
+    "item_name": "ZSFG Bldg 5 6H Surge Space",
+    "bond_program": "Public Health and Safety",
+    "component": "ZSFG, Building 5",
+    "voter_approved_date": null,
+    "amount_usd": null,
+    "amount_measure": null,
+    "budget_usd": null,
+    "contract_no": null,
+    "status": null,
+    "match_evidence": "ZSFG"
+   },
+   {
+    "source": "bond",
+    "source_kind": "bond_project",
+    "item_name": "ZSFG Behavior Health Center (BHC) Hummingbird Expansion",
+    "bond_program": "Public Health and Safety",
+    "component": "ZSFG, Building 5",
+    "voter_approved_date": null,
+    "amount_usd": null,
+    "amount_measure": null,
+    "budget_usd": null,
+    "contract_no": null,
+    "status": null,
+    "match_evidence": "ZSFG"
+   },
+   {
+    "source": "bond",
+    "source_kind": "bond_project",
+    "item_name": "PW ZSFG Bldg 5 Urgent Care Clinic Relocation",
+    "bond_program": "Public Health and Safety",
+    "component": "ZSFG, Building 5",
+    "voter_approved_date": null,
+    "amount_usd": null,
+    "amount_measure": null,
+    "budget_usd": null,
+    "contract_no": null,
+    "status": null,
+    "match_evidence": "ZSFG"
+   },
+   {
+    "source": "bond",
+    "source_kind": "bond_project",
+    "item_name": "ZSFG Bldg 5 Mechanical Core Phase 1",
+    "bond_program": "Public Health and Safety",
+    "component": "ZSFG, Building 5",
+    "voter_approved_date": null,
+    "amount_usd": null,
+    "amount_measure": null,
+    "budget_usd": null,
+    "contract_no": null,
+    "status": null,
+    "match_evidence": "ZSFG"
+   },
+   {
+    "source": "bond",
+    "source_kind": "bond_project",
+    "item_name": "ZSFG Bldg 5 Psychiatric Emergency Services (PES) Expansion",
+    "bond_program": "Public Health and Safety",
+    "component": "ZSFG, Building 5",
+    "voter_approved_date": null,
+    "amount_usd": null,
+    "amount_measure": null,
+    "budget_usd": null,
+    "contract_no": null,
+    "status": null,
+    "match_evidence": "ZSFG"
+   },
+   {
+    "source": "bond",
+    "source_kind": "bond_project",
+    "item_name": "ZSFG Bldg 5 Seismic Upgrade",
+    "bond_program": "Public Health and Safety",
+    "component": "ZSFG, Building 5",
+    "voter_approved_date": null,
+    "amount_usd": null,
+    "amount_measure": null,
+    "budget_usd": null,
+    "contract_no": null,
+    "status": null,
+    "match_evidence": "ZSFG"
+   },
+   {
+    "source": "bond",
+    "source_kind": "bond_project",
+    "item_name": "ZSFG Bldg 5 Bldg 80/90 Specialty Services Relocation",
+    "bond_program": "Public Health and Safety",
+    "component": "ZSFG, Building 5",
+    "voter_approved_date": null,
+    "amount_usd": null,
+    "amount_measure": null,
+    "budget_usd": null,
+    "contract_no": null,
+    "status": null,
+    "match_evidence": "ZSFG"
+   },
+   {
+    "source": "bond",
+    "source_kind": "bond_project",
+    "item_name": "ZSFG Bldg 5 Respiratory Care Relocation",
+    "bond_program": "Public Health and Safety",
+    "component": "ZSFG, Building 5",
+    "voter_approved_date": null,
+    "amount_usd": null,
+    "amount_measure": null,
+    "budget_usd": null,
+    "contract_no": null,
+    "status": null,
+    "match_evidence": "ZSFG"
+   },
+   {
+    "source": "bond",
+    "source_kind": "bond_project",
+    "item_name": "ZSFG Bldg 5 Mental Health Rehabilitation Center (MHRC) Relocation (Ward 7B & 7E)",
+    "bond_program": "Public Health and Safety",
+    "component": "ZSFG, Building 5",
+    "voter_approved_date": null,
+    "amount_usd": null,
+    "amount_measure": null,
+    "budget_usd": null,
+    "contract_no": null,
+    "status": null,
+    "match_evidence": "ZSFG"
+   },
+   {
+    "source": "bond",
+    "source_kind": "bond_project",
+    "item_name": "ZSFG Bldg 5 Family Health Center (FHC) Relocation",
+    "bond_program": "Public Health and Safety",
+    "component": "ZSFG, Building 5",
+    "voter_approved_date": null,
+    "amount_usd": null,
+    "amount_measure": null,
+    "budget_usd": null,
+    "contract_no": null,
+    "status": null,
+    "match_evidence": "ZSFG"
+   },
+   {
+    "source": "bond",
+    "source_kind": "bond_project",
+    "item_name": "ZSFG Bldg 5 Dialysis Relocation",
+    "bond_program": "Public Health and Safety",
+    "component": "ZSFG, Building 5",
+    "voter_approved_date": null,
+    "amount_usd": null,
+    "amount_measure": null,
+    "budget_usd": null,
+    "contract_no": null,
+    "status": null,
+    "match_evidence": "ZSFG"
+   },
+   {
+    "source": "bond",
+    "source_kind": "bond_project",
+    "item_name": "ZSFG Bldg 5 Roof Replacement",
+    "bond_program": "Public Health and Safety",
+    "component": "ZSFG, Building 5",
+    "voter_approved_date": null,
+    "amount_usd": null,
+    "amount_measure": null,
+    "budget_usd": null,
+    "contract_no": null,
+    "status": null,
+    "match_evidence": "ZSFG"
+   }
+  ],
+  "payees": [
+   {
+    "vendor": "CHARLES PANKOW BUILDERS LTD",
+    "paid_usd": 93090767.0499,
+    "n_contracts": 2,
+    "first_fiscal_year": 2021,
+    "last_fiscal_year": 2027
+   },
+   {
+    "vendor": "CLARK CONSTRUCTION GROUP - CALIF LP",
+    "paid_usd": 23905170.24,
+    "n_contracts": 1,
+    "first_fiscal_year": 2025,
+    "last_fiscal_year": 2026
+   },
+   {
+    "vendor": "BUILD GROUP INC.",
+    "paid_usd": 13630897.2,
+    "n_contracts": 1,
+    "first_fiscal_year": 2021,
+    "last_fiscal_year": 2024
+   },
+   {
+    "vendor": "KLW CONSTRUCTION INC",
+    "paid_usd": 13216646.2,
+    "n_contracts": 3,
+    "first_fiscal_year": 2021,
+    "last_fiscal_year": 2026
+   },
+   {
+    "vendor": "SIEMENS FINANCIAL SERVICES INC",
+    "paid_usd": 12705657.72,
+    "n_contracts": 9,
+    "first_fiscal_year": 2018,
+    "last_fiscal_year": 2023
+   },
+   {
+    "vendor": "ALLIED UNIVERSAL  SECURITY SERVICES",
+    "paid_usd": 11501199.68,
+    "n_contracts": 1,
+    "first_fiscal_year": 2023,
+    "last_fiscal_year": 2026
+   },
+   {
+    "vendor": "ARUP LABORATORIES INC",
+    "paid_usd": 10934044.86,
+    "n_contracts": 2,
+    "first_fiscal_year": 2021,
+    "last_fiscal_year": 2027
+   },
+   {
+    "vendor": "EMERALD TEXTILE SERVICES NORCAL LLC",
+    "paid_usd": 7717925.08,
+    "n_contracts": 1,
+    "first_fiscal_year": 2024,
+    "last_fiscal_year": 2026
+   }
+  ],
+  "n_payees": 56,
+  "payees_total_paid": 237861696.33,
+  "permits": [
+   {
+    "description": "horizontal addition",
+    "permit_type": "additions alterations or repairs",
+    "declared_cost_usd": 9285562.0,
+    "status": "expired",
+    "permit_date": "1989-04-06",
+    "permit_year": 1989
+   },
+   {
+    "description": "underground site utilities, fire, plumb, strom drain, electrical, relocation for new sf general hospital build, demo existing underground tunnel.",
+    "permit_type": "additions alterations or repairs",
+    "declared_cost_usd": 8789000.0,
+    "status": "complete",
+    "permit_date": "2009-04-24",
+    "permit_year": 2009
+   },
+   {
+    "description": "special project for partial replacement of existing surface parking lot, relocate & remove existing utilities, utitlities wil be installed to support future bldg, north side of project wil have parking reconfigured and new private roadway and ramp existing onto vermont street.",
+    "permit_type": "additions alterations or repairs",
+    "declared_cost_usd": 3950000.0,
+    "status": "complete",
+    "permit_date": "2020-04-20",
+    "permit_year": 2020
+   },
+   {
+    "description": "barrier removal project consisting of 2 existing elevators, upgrade access to provide elevator, including new rear access to provide redundant elevator access to bldg portion of facility.",
+    "permit_type": "otc alterations permit",
+    "declared_cost_usd": 3200000.0,
+    "status": "complete",
+    "permit_date": "2013-06-28",
+    "permit_year": 2013
+   },
+   {
+    "description": "horizontal addition",
+    "permit_type": "additions alterations or repairs",
+    "declared_cost_usd": 1300000.0,
+    "status": "expired",
+    "permit_date": "1991-11-22",
+    "permit_year": 1991
+   },
+   {
+    "description": "barrier removal, construct 3 offices, interior finishes hvac. fire alarm revisions under separate application.",
+    "permit_type": "otc alterations permit",
+    "declared_cost_usd": 947230.0,
+    "status": "complete",
+    "permit_date": "2011-12-08",
+    "permit_year": 2011
+   }
+  ],
+  "n_permits": 100,
+  "permits_total_declared": 37417397.0,
+  "permits_by_year": [
+   {
+    "year": 1982,
+    "declared_usd": 188000.0
+   },
+   {
+    "year": 1984,
+    "declared_usd": 20000.0
+   },
+   {
+    "year": 1987,
+    "declared_usd": 15000.0
+   },
+   {
+    "year": 1988,
+    "declared_usd": 30000.0
+   },
+   {
+    "year": 1989,
+    "declared_usd": 9564362.0
+   },
+   {
+    "year": 1990,
+    "declared_usd": 18000.0
+   },
+   {
+    "year": 1991,
+    "declared_usd": 1491000.0
+   },
+   {
+    "year": 1992,
+    "declared_usd": 1049889.0
+   },
+   {
+    "year": 1993,
+    "declared_usd": 969789.0
+   },
+   {
+    "year": 1994,
+    "declared_usd": 121689.0
+   },
+   {
+    "year": 1995,
+    "declared_usd": 97900.0
+   },
+   {
+    "year": 1996,
+    "declared_usd": 408250.0
+   },
+   {
+    "year": 1997,
+    "declared_usd": 49725.0
+   },
+   {
+    "year": 1999,
+    "declared_usd": 180000.0
+   },
+   {
+    "year": 2001,
+    "declared_usd": 7000.0
+   },
+   {
+    "year": 2002,
+    "declared_usd": 160000.0
+   },
+   {
+    "year": 2003,
+    "declared_usd": 800000.0
+   },
+   {
+    "year": 2004,
+    "declared_usd": 33125.0
+   },
+   {
+    "year": 2005,
+    "declared_usd": 160000.0
+   },
+   {
+    "year": 2006,
+    "declared_usd": 708057.0
+   },
+   {
+    "year": 2007,
+    "declared_usd": 18195.0
+   },
+   {
+    "year": 2009,
+    "declared_usd": 9181308.0
+   },
+   {
+    "year": 2010,
+    "declared_usd": 333500.0
+   },
+   {
+    "year": 2011,
+    "declared_usd": 1213376.0
+   },
+   {
+    "year": 2012,
+    "declared_usd": 378885.0
+   },
+   {
+    "year": 2013,
+    "declared_usd": 3475000.0
+   },
+   {
+    "year": 2014,
+    "declared_usd": 360000.0
+   },
+   {
+    "year": 2015,
+    "declared_usd": 835525.0
+   },
+   {
+    "year": 2016,
+    "declared_usd": 509850.0
+   },
+   {
+    "year": 2017,
+    "declared_usd": 6972.0
+   },
+   {
+    "year": 2019,
+    "declared_usd": 613000.0
+   },
+   {
+    "year": 2020,
+    "declared_usd": 3950000.0
+   },
+   {
+    "year": 2024,
+    "declared_usd": 20000.0
+   },
+   {
+    "year": 2025,
+    "declared_usd": 450000.0
+   }
+  ]
+ },
  "photo": null,
  "photo_credit": null,
  "summary_en": null,
@@ -24,46 +807,637 @@
    "total_usd": 3185025572.0,
    "fiscal_year": 2025
   },
-  "contracts": [],
+  "payroll_line": {
+   "code": "DPH",
+   "name": "Public Health",
+   "total_compensation_usd": 1583866801.6,
+   "n_employees": 8904,
+   "fiscal_year": 2025
+  },
+  "contracts": [
+   {
+    "contract_no": "1000030850",
+    "title": "ZSFG Chlrs & Coolng Towers",
+    "prime": "CLARK CONSTRUCTION GROUP - CALIF LP",
+    "department_code": "DPW",
+    "agreed_usd": 39677214.39,
+    "paid_usd": 32277630.33,
+    "evidence": "PW ZSFG Chlrs & Coolng Towers",
+    "team": [
+     {
+      "supplier": "CLARK CONSTRUCTION GROUP - CALIF LP",
+      "role": "Prime Contractor",
+      "lbe": false,
+      "attached_usd": 39677214.39
+     }
+    ]
+   },
+   {
+    "contract_no": "1000028092",
+    "title": "TC86240 Security Guard SFGH",
+    "prime": "ALLIED UNIVERSAL  SECURITY SERVICES",
+    "department_code": "ADM",
+    "agreed_usd": 15380000.0,
+    "paid_usd": 11190946.32,
+    "evidence": "TC86240 Security Guard SFGH",
+    "team": [
+     {
+      "supplier": "ALLIED UNIVERSAL  SECURITY SERVICES",
+      "role": "Prime Contractor",
+      "lbe": false,
+      "attached_usd": 15380000.0
+     }
+    ]
+   },
+   {
+    "contract_no": "1000019901",
+    "title": "SFGH Hospital Beds",
+    "prime": "MED ONE CAPITAL FUNDING LLC",
+    "department_code": "DPH",
+    "agreed_usd": 5989212.0,
+    "paid_usd": 4118405.43,
+    "evidence": "SFGH Hospital Beds",
+    "team": [
+     {
+      "supplier": "MED ONE CAPITAL FUNDING LLC",
+      "role": "Prime Contractor",
+      "lbe": false,
+      "attached_usd": 5989212.0
+     }
+    ]
+   },
+   {
+    "contract_no": "1000026821",
+    "title": "Consumable Office Supply ZSFGH",
+    "prime": "ODP Business Solutions, LLC",
+    "department_code": "DPH",
+    "agreed_usd": 3300000.0,
+    "paid_usd": 2689386.69,
+    "evidence": "CONSUMABLE OFFICE SUPPLY ZSFGH",
+    "team": [
+     {
+      "supplier": "ODP Business Solutions, LLC",
+      "role": "Prime Contractor",
+      "lbe": false,
+      "attached_usd": 3300000.0
+     }
+    ]
+   },
+   {
+    "contract_no": "1000026146",
+    "title": "Chiller Rental ZSFGH",
+    "prime": "CARRIER CORP",
+    "department_code": "DPH",
+    "agreed_usd": 4431047.0,
+    "paid_usd": 2616423.72,
+    "evidence": "DPH - Chiller Rental ZSFGH",
+    "team": [
+     {
+      "supplier": "CARRIER CORP",
+      "role": "Prime Contractor",
+      "lbe": false,
+      "attached_usd": 4431047.0
+     }
+    ]
+   },
+   {
+    "contract_no": "1000036265",
+    "title": "Lab Testing for ZSFGH Clinica",
+    "prime": "ARUP LABORATORIES INC",
+    "department_code": "DPH",
+    "agreed_usd": 2000000.0,
+    "paid_usd": 1892990.0,
+    "evidence": "LAB TESTING  FOR ZSFGH CLINICA",
+    "team": [
+     {
+      "supplier": "ARUP LABORATORIES INC",
+      "role": "Prime Contractor",
+      "lbe": false,
+      "attached_usd": 2000000.0
+     }
+    ]
+   },
+   {
+    "contract_no": "1000034501",
+    "title": "ZSFG Bldg 5 Relo P1 5C 5E",
+    "prime": "KLW CONSTRUCTION INC",
+    "department_code": "DPW",
+    "agreed_usd": 3064062.45,
+    "paid_usd": 1374496.23,
+    "evidence": "PW ZSFG Bldg 5 Relo P1 5C 5E",
+    "team": [
+     {
+      "supplier": "KLW CONSTRUCTION INC",
+      "role": "Prime Contractor",
+      "lbe": true,
+      "attached_usd": 3064062.45
+     },
+     {
+      "supplier": "KLW CONSTRUCTION INC",
+      "role": "Prime Contractor",
+      "lbe": false,
+      "attached_usd": 0.0
+     },
+     {
+      "supplier": "MCCLURE ELECTRIC INC",
+      "role": "Subcontractor",
+      "lbe": false,
+      "attached_usd": 1236656.0
+     },
+     {
+      "supplier": "ABCO MECHANICAL CONTRACTORS INC",
+      "role": "Subcontractor",
+      "lbe": true,
+      "attached_usd": 1184000.0
+     },
+     {
+      "supplier": "CPM Environmental, Inc.",
+      "role": "Subcontractor",
+      "lbe": true,
+      "attached_usd": 792402.0
+     },
+     {
+      "supplier": "BELLANTI PLUMBING",
+      "role": "Subcontractor",
+      "lbe": false,
+      "attached_usd": 383850.0
+     },
+     {
+      "supplier": "VALUE FIRE PROTECTION INC",
+      "role": "Subcontractor",
+      "lbe": true,
+      "attached_usd": 181000.0
+     },
+     {
+      "supplier": "ANDERSON COMMERCIAL FLOORING",
+      "role": "Subcontractor",
+      "lbe": false,
+      "attached_usd": 99840.0
+     },
+     {
+      "supplier": "CITY DOOR & HARDWARE",
+      "role": "Subcontractor",
+      "lbe": true,
+      "attached_usd": 45000.0
+     },
+     {
+      "supplier": "CW ACOUSTICS, INC DBA CAL WEST ACOUSTICS",
+      "role": "Subcontractor",
+      "lbe": false,
+      "attached_usd": 0.0
+     }
+    ]
+   },
+   {
+    "contract_no": "1000021980",
+    "title": "Incident Software ZSFG",
+    "prime": "RLDatix North America Inc.",
+    "department_code": "DPH",
+    "agreed_usd": 1254378.0,
+    "paid_usd": 1050562.99,
+    "evidence": "DPH Incident Software ZSFG",
+    "team": [
+     {
+      "supplier": "RLDatix North America Inc.",
+      "role": "Prime Contractor",
+      "lbe": false,
+      "attached_usd": 1254378.0
+     }
+    ]
+   },
+   {
+    "contract_no": "1000030156",
+    "title": "ZSFG Reagent Rental",
+    "prime": "CEPHEID",
+    "department_code": "DPH",
+    "agreed_usd": 959172.0,
+    "paid_usd": 955551.74,
+    "evidence": "DPH: ZSFG Reagent Rental",
+    "team": [
+     {
+      "supplier": "CEPHEID",
+      "role": "Prime Contractor",
+      "lbe": false,
+      "attached_usd": 959172.0
+     }
+    ]
+   },
+   {
+    "contract_no": "1000018495",
+    "title": "Lease Agreement @ ZSFGH",
+    "prime": "KONICA MINOLTA BUSINESS SOLUTNS USA INC",
+    "department_code": "DPH",
+    "agreed_usd": 8380400.0,
+    "paid_usd": 917925.54,
+    "evidence": "DPH Lease Agreement @ ZSFGH",
+    "team": [
+     {
+      "supplier": "KONICA MINOLTA BUSINESS SOLUTNS USA INC",
+      "role": "Prime Contractor",
+      "lbe": false,
+      "attached_usd": 8380400.0
+     }
+    ]
+   },
+   {
+    "contract_no": "1000026663",
+    "title": "ZSFG MM: Freight Services",
+    "prime": "TRIOSE INC",
+    "department_code": "DPH",
+    "agreed_usd": 1100000.0,
+    "paid_usd": 913845.86,
+    "evidence": "ZSFG MM: FREIGHT SERVICES",
+    "team": [
+     {
+      "supplier": "TRIOSE INC",
+      "role": "Prime Contractor",
+      "lbe": false,
+      "attached_usd": 1100000.0
+     }
+    ]
+   },
+   {
+    "contract_no": "1000020059",
+    "title": "Zsfgh-Secure Sharps Waste MGMT",
+    "prime": "DANIELS SHARPSMART INC",
+    "department_code": "DPH",
+    "agreed_usd": 1061820.2,
+    "paid_usd": 859760.69,
+    "evidence": "ZSFGH-SECURE SHARPS WASTE MGMT",
+    "team": [
+     {
+      "supplier": "DANIELS SHARPSMART INC",
+      "role": "Prime Contractor",
+      "lbe": false,
+      "attached_usd": 1061820.2
+     }
+    ]
+   },
+   {
+    "contract_no": "1000035223",
+    "title": "ZSFG BLD 5 BHS Early Demo",
+    "prime": "CHARLES PANKOW BUILDERS LTD",
+    "department_code": "DPW",
+    "agreed_usd": 675306.29,
+    "paid_usd": 682886.28,
+    "evidence": "PW ZSFG BLD 5 BHS EARLY DEMO",
+    "team": [
+     {
+      "supplier": "CHARLES PANKOW BUILDERS LTD",
+      "role": "Prime Contractor",
+      "lbe": false,
+      "attached_usd": 675306.29
+     },
+     {
+      "supplier": "CPM Environmental, Inc.",
+      "role": "Subcontractor",
+      "lbe": true,
+      "attached_usd": 498738.0
+     },
+     {
+      "supplier": "MCCLURE ELECTRIC INC",
+      "role": "Subcontractor",
+      "lbe": false,
+      "attached_usd": 284620.0
+     },
+     {
+      "supplier": "Control Air Enterprises LLC",
+      "role": "Subcontractor",
+      "lbe": false,
+      "attached_usd": 193690.0
+     },
+     {
+      "supplier": "DIGITAL CONCRETE SCANNING SERVICES",
+      "role": "Subcontractor",
+      "lbe": false,
+      "attached_usd": 106000.0
+     },
+     {
+      "supplier": "BELLANTI PLUMBING",
+      "role": "Subcontractor",
+      "lbe": false,
+      "attached_usd": 94041.0
+     },
+     {
+      "supplier": "VALUE FIRE PROTECTION INC",
+      "role": "Subcontractor",
+      "lbe": true,
+      "attached_usd": 56702.0
+     },
+     {
+      "supplier": "CONTROL AIR NORTH INC.",
+      "role": "Subcontractor",
+      "lbe": false,
+      "attached_usd": 0.0
+     }
+    ]
+   },
+   {
+    "contract_no": "1000032214",
+    "title": "ZSFG ChlrBoilClr Rplmt Prj",
+    "prime": "LDA KMD ARCHITECTS JV",
+    "department_code": "DPW",
+    "agreed_usd": 824211.64,
+    "paid_usd": 680314.28,
+    "evidence": "PW ZSFG ChlrBoilClr Rplmt Prj",
+    "team": [
+     {
+      "supplier": "LDA KMD ARCHITECTS JV",
+      "role": "Prime Contractor",
+      "lbe": false,
+      "attached_usd": 824211.64
+     }
+    ]
+   },
+   {
+    "contract_no": "1000029106",
+    "title": "Nurse Call ZSFG",
+    "prime": "COMTEL SYSTEMS TECHNOLOGY INC",
+    "department_code": "DPH",
+    "agreed_usd": 1074315.0,
+    "paid_usd": 366068.81,
+    "evidence": "DPH -NURSE CALL ZSFG",
+    "team": [
+     {
+      "supplier": "COMTEL SYSTEMS TECHNOLOGY INC",
+      "role": "Prime Contractor",
+      "lbe": false,
+      "attached_usd": 1074315.0
+     }
+    ]
+   },
+   {
+    "contract_no": "1000018496",
+    "title": "Main Agreement @ ZSFGH",
+    "prime": "KONICA MINOLTA BUSINESS SOLUTNS USA INC",
+    "department_code": "DPH",
+    "agreed_usd": 8097600.0,
+    "paid_usd": 183142.93,
+    "evidence": "DPH Main Agreement @ ZSFGH",
+    "team": [
+     {
+      "supplier": "KONICA MINOLTA BUSINESS SOLUTNS USA INC",
+      "role": "Prime Contractor",
+      "lbe": false,
+      "attached_usd": 8097600.0
+     }
+    ]
+   },
+   {
+    "contract_no": "1000035458",
+    "title": "TC60553 SFGH Optician Services",
+    "prime": "JACK H SINOW",
+    "department_code": "ADM",
+    "agreed_usd": 270000.0,
+    "paid_usd": 93033.27,
+    "evidence": "TC60553 SFGH Optician Services",
+    "team": [
+     {
+      "supplier": "JACK H SINOW",
+      "role": "Prime Contractor",
+      "lbe": false,
+      "attached_usd": 270000.0
+     }
+    ]
+   },
+   {
+    "contract_no": "1000021750",
+    "title": "Maternity services at ZSFG",
+    "prime": "REGENTS OF THE UNIVERSITY OF CALIFORNIA",
+    "department_code": "DPH",
+    "agreed_usd": 330400.0,
+    "paid_usd": 90420.73,
+    "evidence": "Maternity services at ZSFG",
+    "team": [
+     {
+      "supplier": "REGENTS OF THE UNIVERSITY OF CALIFORNIA",
+      "role": "Prime Contractor",
+      "lbe": false,
+      "attached_usd": 330400.0
+     }
+    ]
+   },
+   {
+    "contract_no": "1000014076",
+    "title": "UC-SFGH Perinatal Consultation",
+    "prime": "REGNTS OF UC ON BHLF OF UCSF MED CTR/GRP",
+    "department_code": "DPH",
+    "agreed_usd": 91222.0,
+    "paid_usd": 52314.64,
+    "evidence": "UC-SFGH Perinatal Consultation",
+    "team": [
+     {
+      "supplier": "REGNTS OF UC ON BHLF OF UCSF MED CTR/GRP",
+      "role": "Prime Contractor",
+      "lbe": false,
+      "attached_usd": 91222.0
+     }
+    ]
+   },
+   {
+    "contract_no": "1000037295",
+    "title": "DPH - Laundry LHH and ZSFG",
+    "prime": "EMERALD TEXTILE SERVICES, NORCAL, LLC",
+    "department_code": "ADM",
+    "agreed_usd": 7000000.0,
+    "paid_usd": 0.0,
+    "evidence": "DPH - Laundry LHH and ZSFG",
+    "team": [
+     {
+      "supplier": "EMERALD TEXTILE SERVICES, NORCAL, LLC",
+      "role": "Prime Contractor",
+      "lbe": false,
+      "attached_usd": 7000000.0
+     }
+    ]
+   },
+   {
+    "contract_no": "1000037762",
+    "title": "ZSFG BLD 5 Inptnt Adlscnt",
+    "prime": "RODAN BUILDERS INC",
+    "department_code": "DPW",
+    "agreed_usd": 4857761.98,
+    "paid_usd": 0.0,
+    "evidence": "PW ZSFG BLD 5 INPTNT ADLSCNT",
+    "team": [
+     {
+      "supplier": "RODAN BUILDERS INC",
+      "role": "Prime Contractor",
+      "lbe": false,
+      "attached_usd": 4857761.98
+     },
+     {
+      "supplier": "MCCLURE ELECTRIC INC",
+      "role": "Subcontractor",
+      "lbe": false,
+      "attached_usd": 3598610.02
+     },
+     {
+      "supplier": "ABCO MECHANICAL CONTRACTORS INC",
+      "role": "Subcontractor",
+      "lbe": true,
+      "attached_usd": 1943655.0
+     },
+     {
+      "supplier": "MAGNUM DRYWALL",
+      "role": "Subcontractor",
+      "lbe": false,
+      "attached_usd": 1135228.0
+     },
+     {
+      "supplier": "WPCS INTERNATIONAL - SUISUN CITY OPS",
+      "role": "Subcontractor",
+      "lbe": false,
+      "attached_usd": 949648.0
+     },
+     {
+      "supplier": "BELLANTI PLUMBING",
+      "role": "Subcontractor",
+      "lbe": false,
+      "attached_usd": 597750.0
+     },
+     {
+      "supplier": "Vencon Construction",
+      "role": "Subcontractor",
+      "lbe": true,
+      "attached_usd": 547889.5
+     },
+     {
+      "supplier": "Alliance Glass Company",
+      "role": "Subcontractor",
+      "lbe": false,
+      "attached_usd": 324845.0
+     },
+     {
+      "supplier": "ARROW ACOUSTICS, INC.",
+      "role": "Subcontractor",
+      "lbe": false,
+      "attached_usd": 264717.0
+     },
+     {
+      "supplier": "BAKERS FLOOR AND SURFACE",
+      "role": "Subcontractor",
+      "lbe": false,
+      "attached_usd": 246802.0
+     },
+     {
+      "supplier": "AMERICAN TERRAZZO CO INC",
+      "role": "Subcontractor",
+      "lbe": true,
+      "attached_usd": 176280.0
+     },
+     {
+      "supplier": "K Z TILE CO",
+      "role": "Subcontractor",
+      "lbe": true,
+      "attached_usd": 94500.0
+     },
+     {
+      "supplier": "TEMPER INSULATION CO INC",
+      "role": "Subcontractor",
+      "lbe": true,
+      "attached_usd": 93570.0
+     },
+     {
+      "supplier": "SABAH INTERNATIONAL INC",
+      "role": "Subcontractor",
+      "lbe": false,
+      "attached_usd": 90981.0
+     },
+     {
+      "supplier": "Bay Area Pipe & Equipment, Inc.",
+      "role": "Subcontractor",
+      "lbe": true,
+      "attached_usd": 90000.0
+     },
+     {
+      "supplier": "MODULUS CONSULTING LLC",
+      "role": "Subcontractor",
+      "lbe": true,
+      "attached_usd": 83460.0
+     },
+     {
+      "supplier": "SAN FRANCISCO CONCRETE SCANNING & CORING",
+      "role": "Subcontractor",
+      "lbe": false,
+      "attached_usd": 80770.0
+     },
+     {
+      "supplier": "CORPORATE SIGN SYSTEMS",
+      "role": "Subcontractor",
+      "lbe": false,
+      "attached_usd": 75553.95
+     },
+     {
+      "supplier": "Applied Finishes, Inc.",
+      "role": "Subcontractor",
+      "lbe": false,
+      "attached_usd": 74980.0
+     },
+     {
+      "supplier": "AMERICAN SHEET METAL PARTITION CO., INC",
+      "role": "Subcontractor",
+      "lbe": false,
+      "attached_usd": 68355.0
+     },
+     {
+      "supplier": "KM 106 Construction Inc.",
+      "role": "Subcontractor",
+      "lbe": true,
+      "attached_usd": 60200.0
+     },
+     {
+      "supplier": "Technostruct, LLC",
+      "role": "Subcontractor",
+      "lbe": false,
+      "attached_usd": 20000.0
+     },
+     {
+      "supplier": "CPM Environmental, Inc.",
+      "role": "Subcontractor",
+      "lbe": true,
+      "attached_usd": 0.0
+     }
+    ]
+   },
+   {
+    "contract_no": "1000032845",
+    "title": "ZSFG Chlr Rplmt Prj MGAC",
+    "prime": "MGAC",
+    "department_code": "DPW",
+    "agreed_usd": 2671000.0,
+    "paid_usd": 0.0,
+    "evidence": "PW ZSFG Chlr Rplmt Prj MGAC",
+    "team": [
+     {
+      "supplier": "MGAC",
+      "role": "Prime Contractor",
+      "lbe": false,
+      "attached_usd": 2671000.0
+     }
+    ]
+   },
+   {
+    "contract_no": "1000035417",
+    "title": "TC70381C DPH ZSFGH Switchbrd",
+    "prime": "Rexel Usa Inc",
+    "department_code": "ADM",
+    "agreed_usd": 1354974.0,
+    "paid_usd": 0.0,
+    "evidence": "TC70381C DPH ZSFGH Switchbrd",
+    "team": [
+     {
+      "supplier": "Rexel Usa Inc",
+      "role": "Prime Contractor",
+      "lbe": false,
+      "attached_usd": 1354974.0
+     }
+    ]
+   }
+  ],
   "grants": []
  },
  "documents": [
-  {
-   "identifier": "sanfranciscogene2007sanf",
-   "title": "San Francisco General Hospital Medical Center institutional master plan : update",
-   "creator": "San Francisco General Hospital (Calif.),San Francisco (Calif.). Dept. of Public Health,Fong & Chan Architects",
-   "year": 2007,
-   "pool": "sfpl",
-   "matched_alias": "San Francisco General Hospital",
-   "snippet": "of 1985 «San Francisco General Hospital» Medical Center «San Francisco General Hospital» Medical",
-   "url": "https://archive.org/details/sanfranciscogene2007sanf",
-   "deep_link": "https://archive.org/details/sanfranciscogene2007sanf?q=San+Francisco+General+Hospital",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
-  },
-  {
-   "identifier": "noticeofprepara2200sanf_0",
-   "title": "Notice of preparation of an environmental impact report : [San Francisco General Hospital--Seismic compliance, hospital replacement program]",
-   "creator": "San Francisco (Calif.). Planning Dept,San Francisco (Calif.). Dept. of Public Health",
-   "year": 2007,
-   "pool": "sfpl",
-   "matched_alias": "SFGH",
-   "snippet": "3,510 employees at «SFGH», one-third of which are UCSF employees. «SFGH» employs advance practice",
-   "url": "https://archive.org/details/noticeofprepara2200sanf_0",
-   "deep_link": "https://archive.org/details/noticeofprepara2200sanf_0?q=SFGH",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
-  },
-  {
-   "identifier": "performanceeffic202008san",
-   "title": "Performance and efficiency review : Department of Public Health : Controller's Office analysis 2005-2008",
-   "creator": "San Francisco (Calif.). Office of the Controller. City Services Auditor Division",
-   "year": 2005,
-   "pool": "sfpl",
-   "matched_alias": "San Francisco General Hospital",
-   "snippet": "programs: «San Francisco General Hospital» Medical Center «San Francisco General Hospital» provides",
-   "url": "https://archive.org/details/performanceeffic202008san",
-   "deep_link": "https://archive.org/details/performanceeffic202008san?q=San+Francisco+General+Hospital",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
-  },
   {
    "identifier": "sanfranciscogene4200sanf",
    "title": "San Francisco General Hospital Medical Center air medical access needs and feasibility study : a report to the Health Commission of the City & County of San Francisco and the executive administrator of San Francisco General Hospital",
@@ -74,31 +1448,9 @@
    "snippet": "Study E-1 «San Francisco General Hospital» Addition And Heliport «San Francisco General Hospital» is proceeding",
    "url": "https://archive.org/details/sanfranciscogene4200sanf",
    "deep_link": "https://archive.org/details/sanfranciscogene4200sanf?q=San+Francisco+General+Hospital",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
-  },
-  {
-   "identifier": "citycountyofsa200910sanf",
-   "title": "City and County of San Francisco interim consolidated budget and annual appropriation ordinance",
-   "creator": "San Francisco (Calif.),San Francisco (Calif.). Board of Supervisors,San Francisco (Calif.). Office of the Mayor",
-   "year": 1998,
-   "pool": "sfpl",
-   "matched_alias": "SF General",
-   "snippet": "HEALTH SERVICE (AAO) 865HG EXP REC FR «SF GENERAL» HOSPITAL (AAO) 865HL EXP REC FR LAGUNA",
-   "url": "https://archive.org/details/citycountyofsa200910sanf",
-   "deep_link": "https://archive.org/details/citycountyofsa200910sanf?q=SF+General",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
-  },
-  {
-   "identifier": "agenda2003sanf_3",
-   "title": "Agenda",
-   "creator": "San Francisco (Calif.). Immigrant Rights Commission",
-   "year": 1998,
-   "pool": "sfpl",
-   "matched_alias": "SF General",
-   "snippet": "translators in «SF General» Hospital. Ms. Quan is a patient in «SF General» Hospital, she is",
-   "url": "https://archive.org/details/agenda2003sanf_3",
-   "deep_link": "https://archive.org/details/agenda2003sanf_3?q=SF+General",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Plans & environmental review",
+   "salient": true
   },
   {
    "identifier": "sanfranciscogene1519sanf",
@@ -110,31 +1462,9 @@
    "snippet": "FIGURE 1 0 «San Francisco General Hospital» 35 ZONING «San Francisco General Hospital» Parking Garage",
    "url": "https://archive.org/details/sanfranciscogene1519sanf",
    "deep_link": "https://archive.org/details/sanfranciscogene1519sanf?q=San+Francisco+General+Hospital",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
-  },
-  {
-   "identifier": "overtimepayexpen1519sanf",
-   "title": "Overtime pay expenditures for calendar year 1993 and January through June, 1994",
-   "creator": "San Francisco (Calif.). Board of Supervisors. Budget Analyst",
-   "year": 1993,
-   "pool": "sfpl",
-   "matched_alias": "SF General",
-   "snippet": "758,631 957,694 37,009,714 2.6% 23% 86 DPH -«SF General» 68,879315 856,743 967,084 1,823,827 67,055,488",
-   "url": "https://archive.org/details/overtimepayexpen1519sanf",
-   "deep_link": "https://archive.org/details/overtimepayexpen1519sanf?q=SF+General",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
-  },
-  {
-   "identifier": "citycountyofsanf1996sanf",
-   "title": "City and County of San Francisco telephone directory",
-   "creator": "San Francisco (Calif.). Dept. of Electricity and Telecommunications,San Francisco (Calif.). Dept. of Telecommunications and Information Services",
-   "year": 1993,
-   "pool": "sfpl",
-   "matched_alias": "SFGH",
-   "snippet": "Diane «SFGH»/Administration 206-8100 Miller, Dorian DPH/Maxine Hall 292-1353 Miller, Eric «SFGH»/PlantServ",
-   "url": "https://archive.org/details/citycountyofsanf1996sanf",
-   "deep_link": "https://archive.org/details/citycountyofsanf1996sanf?q=SFGH",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Plans & environmental review",
+   "salient": true
   },
   {
    "identifier": "sanfranciscogene1987sanf",
@@ -146,19 +1476,37 @@
    "snippet": "Administrator «San Francisco General Hospital» PLANNING COMMITTEE «San Francisco General Hospital» Robert",
    "url": "https://archive.org/details/sanfranciscogene1987sanf",
    "deep_link": "https://archive.org/details/sanfranciscogene1987sanf?q=San+Francisco+General+Hospital",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Plans & environmental review",
+   "salient": true
   },
   {
-   "identifier": "healthcareforhom1984sanf",
-   "title": "[Health care for the homeless program]",
-   "creator": "San Francisco (Calif.). Dept. of Public Health",
-   "year": 1984,
+   "identifier": "noticeofprepara2200sanf_0",
+   "title": "Notice of preparation of an environmental impact report : [San Francisco General Hospital--Seismic compliance, hospital replacement program]",
+   "creator": "San Francisco (Calif.). Planning Dept,San Francisco (Calif.). Dept. of Public Health",
+   "year": 2007,
+   "pool": "sfpl",
+   "matched_alias": "SFGH",
+   "snippet": "3,510 employees at «SFGH», one-third of which are UCSF employees. «SFGH» employs advance practice",
+   "url": "https://archive.org/details/noticeofprepara2200sanf_0",
+   "deep_link": "https://archive.org/details/noticeofprepara2200sanf_0?q=SFGH",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Plans & environmental review",
+   "salient": true
+  },
+  {
+   "identifier": "sanfranciscogene2007sanf",
+   "title": "San Francisco General Hospital Medical Center institutional master plan : update",
+   "creator": "San Francisco General Hospital (Calif.),San Francisco (Calif.). Dept. of Public Health,Fong & Chan Architects",
+   "year": 2007,
    "pool": "sfpl",
    "matched_alias": "San Francisco General Hospital",
-   "snippet": "number of the persons admitted to «San Francisco General Hospital» are homeless. They require a",
-   "url": "https://archive.org/details/healthcareforhom1984sanf",
-   "deep_link": "https://archive.org/details/healthcareforhom1984sanf?q=San+Francisco+General+Hospital",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+   "snippet": "of 1985 «San Francisco General Hospital» Medical Center «San Francisco General Hospital» Medical",
+   "url": "https://archive.org/details/sanfranciscogene2007sanf",
+   "deep_link": "https://archive.org/details/sanfranciscogene2007sanf?q=San+Francisco+General+Hospital",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Plans & environmental review",
+   "salient": true
   },
   {
    "identifier": "agenda19821984arts",
@@ -170,19 +1518,23 @@
    "snippet": "FUNDS FROM «SF GENERAL» FOR CONSERVATION CHANGE IN ART PROGRAM AT «SF GENERAL» MURALIST PROPOSAL",
    "url": "https://archive.org/details/agenda19821984arts",
    "deep_link": "https://archive.org/details/agenda19821984arts?q=SF+General",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Meetings & resolutions",
+   "salient": true
   },
   {
-   "identifier": "sanfranciscogene1619mona",
-   "title": "San Francisco General Hospital : report to the Honorable Mayor George Christopher : November 16, 1959",
-   "creator": "Monardo, George D.",
-   "year": 1959,
+   "identifier": "performanceeffic202008san",
+   "title": "Performance and efficiency review : Department of Public Health : Controller's Office analysis 2005-2008",
+   "creator": "San Francisco (Calif.). Office of the Controller. City Services Auditor Division",
+   "year": 2005,
    "pool": "sfpl",
    "matched_alias": "San Francisco General Hospital",
-   "snippet": "ADMINISTRATION «SAN FRANCISCO GENERAL HOSPITAL» With regard to the «San Francisco General Hospital», the",
-   "url": "https://archive.org/details/sanfranciscogene1619mona",
-   "deep_link": "https://archive.org/details/sanfranciscogene1619mona?q=San+Francisco+General+Hospital",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+   "snippet": "programs: «San Francisco General Hospital» Medical Center «San Francisco General Hospital» provides",
+   "url": "https://archive.org/details/performanceeffic202008san",
+   "deep_link": "https://archive.org/details/performanceeffic202008san?q=San+Francisco+General+Hospital",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Reports & records",
+   "salient": false
   },
   {
    "identifier": "annualreport196265sanf",
@@ -194,17 +1546,82 @@
    "snippet": "52- «SAN FRANCISCO GENERAL HOSPITAL» PURPOSE AND SCOPE The «San Francisco General Hospital» is",
    "url": "https://archive.org/details/annualreport196265sanf",
    "deep_link": "https://archive.org/details/annualreport196265sanf?q=San+Francisco+General+Hospital",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Reports & records",
+   "salient": false
+  },
+  {
+   "identifier": "overtimepayexpen1519sanf",
+   "title": "Overtime pay expenditures for calendar year 1993 and January through June, 1994",
+   "creator": "San Francisco (Calif.). Board of Supervisors. Budget Analyst",
+   "year": 1993,
+   "pool": "sfpl",
+   "matched_alias": "SF General",
+   "snippet": "758,631 957,694 37,009,714 2.6% 23% 86 DPH -«SF General» 68,879315 856,743 967,084 1,823,827 67,055,488",
+   "url": "https://archive.org/details/overtimepayexpen1519sanf",
+   "deep_link": "https://archive.org/details/overtimepayexpen1519sanf?q=SF+General",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Other records",
+   "salient": false
+  },
+  {
+   "identifier": "citycountyofsanf1996sanf",
+   "title": "City and County of San Francisco telephone directory",
+   "creator": "San Francisco (Calif.). Dept. of Electricity and Telecommunications,San Francisco (Calif.). Dept. of Telecommunications and Information Services",
+   "year": 1993,
+   "pool": "sfpl",
+   "matched_alias": "SFGH",
+   "snippet": "Diane «SFGH»/Administration 206-8100 Miller, Dorian DPH/Maxine Hall 292-1353 Miller, Eric «SFGH»/PlantServ",
+   "url": "https://archive.org/details/citycountyofsanf1996sanf",
+   "deep_link": "https://archive.org/details/citycountyofsanf1996sanf?q=SFGH",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Other records",
+   "salient": false
+  },
+  {
+   "identifier": "sanfranciscogene1619mona",
+   "title": "San Francisco General Hospital : report to the Honorable Mayor George Christopher : November 16, 1959",
+   "creator": "Monardo, George D.",
+   "year": 1959,
+   "pool": "sfpl",
+   "matched_alias": "San Francisco General Hospital",
+   "snippet": "ADMINISTRATION «SAN FRANCISCO GENERAL HOSPITAL» With regard to the «San Francisco General Hospital», the",
+   "url": "https://archive.org/details/sanfranciscogene1619mona",
+   "deep_link": "https://archive.org/details/sanfranciscogene1619mona?q=San+Francisco+General+Hospital",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Other records",
+   "salient": false
+  },
+  {
+   "identifier": "healthcareforhom1984sanf",
+   "title": "[Health care for the homeless program]",
+   "creator": "San Francisco (Calif.). Dept. of Public Health",
+   "year": 1984,
+   "pool": "sfpl",
+   "matched_alias": "San Francisco General Hospital",
+   "snippet": "number of the persons admitted to «San Francisco General Hospital» are homeless. They require a",
+   "url": "https://archive.org/details/healthcareforhom1984sanf",
+   "deep_link": "https://archive.org/details/healthcareforhom1984sanf?q=San+Francisco+General+Hospital",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Other records",
+   "salient": false
+  },
+  {
+   "identifier": "citycountyofsa200910sanf",
+   "title": "City and County of San Francisco interim consolidated budget and annual appropriation ordinance",
+   "creator": "San Francisco (Calif.),San Francisco (Calif.). Board of Supervisors,San Francisco (Calif.). Office of the Mayor",
+   "year": 1998,
+   "pool": "sfpl",
+   "matched_alias": "SF General",
+   "snippet": "HEALTH SERVICE (AAO) 865HG EXP REC FR «SF GENERAL» HOSPITAL (AAO) 865HL EXP REC FR LAGUNA",
+   "url": "https://archive.org/details/citycountyofsa200910sanf",
+   "deep_link": "https://archive.org/details/citycountyofsa200910sanf?q=SF+General",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Other records",
+   "salient": false
   }
  ],
  "dept_shelf": [
-  {
-   "identifier": "performanceeffic202008san",
-   "title": "Performance and efficiency review : Department of Public Health : Controller's Office analysis 2005-2008",
-   "year": 2005,
-   "pool": "sfpl",
-   "url": "https://archive.org/details/performanceeffic202008san"
-  },
   {
    "identifier": "annualreportofde192425sanf",
    "title": "Annual report of the Department of Public Health, San Francisco, California",
@@ -225,22 +1642,10 @@
    "year": null,
    "pool": "sfpl",
    "url": "https://archive.org/details/annualsalaryord197576sanf"
-  },
-  {
-   "identifier": "weeklybulletin1968sanf",
-   "title": "Weekly bulletin",
-   "year": null,
-   "pool": "sfpl",
-   "url": "https://archive.org/details/weeklybulletin1968sanf"
-  },
-  {
-   "identifier": "15minutes1988sanf",
-   "title": "Minutes",
-   "year": null,
-   "pool": "sfpl",
-   "url": "https://archive.org/details/15minutes1988sanf"
   }
  ],
+ "dept_shelf_label": "Public Health",
+ "dept_shelf_more": 2,
  "sources": [
   {
    "label": "City budget & payments",
@@ -253,8 +1658,8 @@
  ],
  "_gate": {
   "has_photo": false,
-  "n_documents": 14,
-  "n_money_links": 1,
+  "n_documents": 13,
+  "n_money_links": 24,
   "meets_pre_summary": false
  }
 }

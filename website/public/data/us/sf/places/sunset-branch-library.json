@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T22:30:00.111229+00:00",
+ "generated_at": "2026-07-21T14:25:53.946555+00:00",
  "source_pipeline": "sf_place_candidates.json → sync_ia_sf.py + link_sf_places.py + fetch_sf_place_photos.py → export_sf_places.py",
  "unit": "USD",
  "slug": "sunset-branch-library",
@@ -13,6 +13,86 @@
   "name": "Public Library",
   "code": "LIB"
  },
+ "facility": {
+  "primary_name": "Sunset Branch Library",
+  "primary_address": "1305 18TH AVE",
+  "primary_city": "San Francisco",
+  "primary_zip": "94122",
+  "primary_block_lot": "1773001",
+  "primary_department_name": "Public Library",
+  "primary_is_city_owned": true,
+  "primary_gross_sq_ft": 9434,
+  "primary_latitude": 37.76334875500004,
+  "primary_longitude": -122.47631075399994,
+  "supervisor_district": 7,
+  "n_facilities": 1,
+  "total_gross_sq_ft": 9434,
+  "n_owned": 1,
+  "n_leased": 0,
+  "apn_list": [
+   "1773001"
+  ],
+  "facilities": [
+   {
+    "facility_id": 1682,
+    "common_name": "Sunset Branch Library",
+    "block_lot": "1773001",
+    "gross_sq_ft": 9434,
+    "is_city_owned": true
+   }
+  ]
+ },
+ "capital": {
+  "n_items": 0,
+  "measure_totals": {},
+  "bond_programs": [],
+  "items": [],
+  "payees": [],
+  "n_payees": 0,
+  "payees_total_paid": 0,
+  "permits": [
+   {
+    "description": "interior remodel on two levels including new restrooms plumbing electrical and some new partitions.",
+    "permit_type": "additions alterations or repairs",
+    "declared_cost_usd": 861610.0,
+    "status": "expired",
+    "permit_date": "2005-11-08",
+    "permit_year": 2005
+   },
+   {
+    "description": "install a new fire alarm system for the building",
+    "permit_type": "additions alterations or repairs",
+    "declared_cost_usd": 8500.0,
+    "status": "expired",
+    "permit_date": "2006-04-10",
+    "permit_year": 2006
+   },
+   {
+    "description": "1st fl - fire only work to add a cellular dialer to the (e) fire alarm system; no ref pa (fire addition only)",
+    "permit_type": "otc alterations permit",
+    "declared_cost_usd": 7318.0,
+    "status": "complete",
+    "permit_date": "2023-01-19",
+    "permit_year": 2023
+   }
+  ],
+  "n_permits": 3,
+  "permits_total_declared": 877428.0,
+  "permits_by_year": [
+   {
+    "year": 2005,
+    "declared_usd": 861610.0
+   },
+   {
+    "year": 2006,
+    "declared_usd": 8500.0
+   },
+   {
+    "year": 2023,
+    "declared_usd": 7318.0
+   }
+  ]
+ },
  "photo": null,
  "photo_credit": null,
  "summary_en": null,
@@ -24,82 +104,17 @@
    "total_usd": 187421705.0,
    "fiscal_year": 2025
   },
+  "payroll_line": {
+   "code": "LIB",
+   "name": "Public Library",
+   "total_compensation_usd": 110470134.22,
+   "n_employees": 985,
+   "fiscal_year": 2025
+  },
   "contracts": [],
   "grants": []
  },
  "documents": [
-  {
-   "identifier": "branchlibraryimp3200sanf",
-   "title": "Branch library improvement program : November 2000--general obligation bond program proposal",
-   "creator": "San Francisco (Calif.). Bureau of Architecture",
-   "year": 2000,
-   "pool": "sfpl",
-   "matched_alias": "Sunset Branch Library",
-   "snippet": "Improvement Program «SUNSET BRANCH LIBRARY» BACKGROUND The «Sunset Branch Library» - a Carnegie branch",
-   "url": "https://archive.org/details/branchlibraryimp3200sanf",
-   "deep_link": "https://archive.org/details/branchlibraryimp3200sanf?q=Sunset+Branch+Library",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
-  },
-  {
-   "identifier": "agenda19891991arts",
-   "title": "Agenda",
-   "creator": "Arts Commission of San Francisco. Civic Design Review Committee",
-   "year": 1988,
-   "pool": "sfpl",
-   "matched_alias": "Sunset Branch Library",
-   "snippet": "Art Program Street Artists Licenses «Sunset Branch Library» Bureau of Architecture Glen H u n",
-   "url": "https://archive.org/details/agenda19891991arts",
-   "deep_link": "https://archive.org/details/agenda19891991arts?q=Sunset+Branch+Library",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
-  },
-  {
-   "identifier": "agenda19arts_13",
-   "title": "Agenda",
-   "creator": "Arts Commission of San Francisco. Civic Design Review Committee",
-   "year": 1988,
-   "pool": "sfpl",
-   "matched_alias": "Sunset Branch Library",
-   "snippet": "Art Program Street Artists Uceraes 5. «Sunset Branch Library» E^jieaii of nichitecture Glen",
-   "url": "https://archive.org/details/agenda19arts_13",
-   "deep_link": "https://archive.org/details/agenda19arts_13?q=Sunset+Branch+Library",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
-  },
-  {
-   "identifier": "adultcalendarofp1996sanf",
-   "title": "Adult calendar of programs and events",
-   "creator": "San Francisco Public Library",
-   "year": null,
-   "pool": "sfpl",
-   "matched_alias": "Sunset Branch Library",
-   "snippet": "PRESCHOOL STORYTIHE FOR CHILDREN AGES 2-5 «Sunset Branch Library», 1305 18th St. (at Irving), (415)",
-   "url": "https://archive.org/details/adultcalendarofp1996sanf",
-   "deep_link": "https://archive.org/details/adultcalendarofp1996sanf?q=Sunset+Branch+Library",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
-  },
-  {
-   "identifier": "adultcalendarofp1997sanf",
-   "title": "Adult calendar of programs and events",
-   "creator": "San Francisco Public Library",
-   "year": null,
-   "pool": "sfpl",
-   "matched_alias": "Sunset Branch Library",
-   "snippet": "Scenic slide tour by Carl Stein «Sunset Branch Library», 1305 18th Ave. (at Irving), (415)",
-   "url": "https://archive.org/details/adultcalendarofp1997sanf",
-   "deep_link": "https://archive.org/details/adultcalendarofp1997sanf?q=Sunset+Branch+Library",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
-  },
-  {
-   "identifier": "minutesofartcomm1954sanf",
-   "title": "Minutes of Art Commission of the City and County of San Francisco",
-   "creator": "San Francisco (Calif.). Art Commission",
-   "year": null,
-   "pool": "sfpl",
-   "matched_alias": "Sunset Branch Library",
-   "snippet": "Hotel, 545 Post Street. 5. '.'est «Sunset Branch Library», Sunset Community Center. II. Public",
-   "url": "https://archive.org/details/minutesofartcomm1954sanf",
-   "deep_link": "https://archive.org/details/minutesofartcomm1954sanf?q=Sunset+Branch+Library",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
-  },
   {
    "identifier": "resolution2002sanf_0",
    "title": "Resolution",
@@ -110,67 +125,9 @@
    "snippet": "presented at the «Sunset Branch Library»; and, WHEREAS, The «Sunset Branch Library» staff plans to",
    "url": "https://archive.org/details/resolution2002sanf_0",
    "deep_link": "https://archive.org/details/resolution2002sanf_0?q=Sunset+Branch+Library",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
-  },
-  {
-   "identifier": "resolution2007sanf_0",
-   "title": "Resolution",
-   "creator": "San Francisco (Calif.). Board of Supervisors",
-   "year": null,
-   "pool": "sfpl",
-   "matched_alias": "Sunset Branch Library",
-   "snippet": "25 FILE NO. 070351 RESOLUTION NO. [«Sunset Branch Library» reopening] Resolution recognizing the",
-   "url": "https://archive.org/details/resolution2007sanf_0",
-   "deep_link": "https://archive.org/details/resolution2007sanf_0?q=Sunset+Branch+Library",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
-  },
-  {
-   "identifier": "minutesofregular7194sanf",
-   "title": "Minutes of the regular meeting ... / San Francisco Public Library Commission",
-   "creator": "San Francisco Public Library. Commission",
-   "year": null,
-   "pool": "sfpl",
-   "matched_alias": "Sunset Branch Library",
-   "snippet": "estimate No. 866 for painting at the «Sunset Branch Library». Resolution No. 54 Resolved that an",
-   "url": "https://archive.org/details/minutesofregular7194sanf",
-   "deep_link": "https://archive.org/details/minutesofregular7194sanf?q=Sunset+Branch+Library",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
-  },
-  {
-   "identifier": "minutesofregular1619sanf",
-   "title": "Minutes of the regular meeting ... / San Francisco Public Library Commission",
-   "creator": "San Francisco Public Library. Commission",
-   "year": null,
-   "pool": "sfpl",
-   "matched_alias": "Sunset Branch Library",
-   "snippet": "estimates of cost for the proposed West «Sunset Branch Library». Place on file. Miss Anne Farrell",
-   "url": "https://archive.org/details/minutesofregular1619sanf",
-   "deep_link": "https://archive.org/details/minutesofregular1619sanf?q=Sunset+Branch+Library",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
-  },
-  {
-   "identifier": "realpropertyowne2001sanf",
-   "title": "Real property owned by the City and County of San Francisco / Real Estate Department",
-   "creator": "San Francisco (Calif.). Real Estate Department",
-   "year": null,
-   "pool": "sfpl",
-   "matched_alias": "Sunset Branch Library",
-   "snippet": "(ELEMENTARY) (Portion) «SUNSET BRANCH LIBRARY» 1305 18TH AVENUE «SUNSET BRANCH LIBRARY» Public Library 7",
-   "url": "https://archive.org/details/realpropertyowne2001sanf",
-   "deep_link": "https://archive.org/details/realpropertyowne2001sanf?q=Sunset+Branch+Library",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
-  },
-  {
-   "identifier": "bidcontractoppor1992sanf",
-   "title": "Bid and contract opportunities / by the Purchasing Department of the City and County of San Francisco Purchasing Department",
-   "creator": "San Francisco (Calif.). Purchasing Department",
-   "year": null,
-   "pool": "sfpl",
-   "matched_alias": "Sunset Branch Library",
-   "snippet": "CONTACT : January 15, 1992 8 months «Sunset Branch Library», 18th Avenue at Irving Public Works",
-   "url": "https://archive.org/details/bidcontractoppor1992sanf",
-   "deep_link": "https://archive.org/details/bidcontractoppor1992sanf?q=Sunset+Branch+Library",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Meetings & resolutions",
+   "salient": true
   },
   {
    "identifier": "minutesofregula2004sanf_1",
@@ -182,19 +139,107 @@
    "snippet": "for the Noe «Sunset Branch Library». Explanatory document: «Sunset Branch Library» renovation FAQs",
    "url": "https://archive.org/details/minutesofregula2004sanf_1",
    "deep_link": "https://archive.org/details/minutesofregula2004sanf_1?q=Sunset+Branch+Library",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Meetings & resolutions",
+   "salient": true
   },
   {
-   "identifier": "realpropertyowne1971sanf",
+   "identifier": "minutesofregular1619sanf",
+   "title": "Minutes of the regular meeting ... / San Francisco Public Library Commission",
+   "creator": "San Francisco Public Library. Commission",
+   "year": null,
+   "pool": "sfpl",
+   "matched_alias": "Sunset Branch Library",
+   "snippet": "estimates of cost for the proposed West «Sunset Branch Library». Place on file. Miss Anne Farrell",
+   "url": "https://archive.org/details/minutesofregular1619sanf",
+   "deep_link": "https://archive.org/details/minutesofregular1619sanf?q=Sunset+Branch+Library",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Meetings & resolutions",
+   "salient": true
+  },
+  {
+   "identifier": "minutesofartcomm1954sanf",
+   "title": "Minutes of Art Commission of the City and County of San Francisco",
+   "creator": "San Francisco (Calif.). Art Commission",
+   "year": null,
+   "pool": "sfpl",
+   "matched_alias": "Sunset Branch Library",
+   "snippet": "Hotel, 545 Post Street. 5. '.'est «Sunset Branch Library», Sunset Community Center. II. Public",
+   "url": "https://archive.org/details/minutesofartcomm1954sanf",
+   "deep_link": "https://archive.org/details/minutesofartcomm1954sanf?q=Sunset+Branch+Library",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Meetings & resolutions",
+   "salient": true
+  },
+  {
+   "identifier": "agenda19891991arts",
+   "title": "Agenda",
+   "creator": "Arts Commission of San Francisco. Civic Design Review Committee",
+   "year": 1988,
+   "pool": "sfpl",
+   "matched_alias": "Sunset Branch Library",
+   "snippet": "Art Program Street Artists Licenses «Sunset Branch Library» Bureau of Architecture Glen H u n",
+   "url": "https://archive.org/details/agenda19891991arts",
+   "deep_link": "https://archive.org/details/agenda19891991arts?q=Sunset+Branch+Library",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Meetings & resolutions",
+   "salient": true
+  },
+  {
+   "identifier": "branchlibraryimp3200sanf",
+   "title": "Branch library improvement program : November 2000--general obligation bond program proposal",
+   "creator": "San Francisco (Calif.). Bureau of Architecture",
+   "year": 2000,
+   "pool": "sfpl",
+   "matched_alias": "Sunset Branch Library",
+   "snippet": "Improvement Program «SUNSET BRANCH LIBRARY» BACKGROUND The «Sunset Branch Library» - a Carnegie branch",
+   "url": "https://archive.org/details/branchlibraryimp3200sanf",
+   "deep_link": "https://archive.org/details/branchlibraryimp3200sanf?q=Sunset+Branch+Library",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Other records",
+   "salient": true
+  },
+  {
+   "identifier": "realpropertyowne2001sanf",
    "title": "Real property owned by the City and County of San Francisco / Real Estate Department",
    "creator": "San Francisco (Calif.). Real Estate Department",
    "year": null,
    "pool": "sfpl",
    "matched_alias": "Sunset Branch Library",
-   "snippet": "500 3 7 Ann ,00 0 1 7 \"5 X / D J «Sunset Branch Library» 7,500 22,500 TOO c n n , D U U 1773",
-   "url": "https://archive.org/details/realpropertyowne1971sanf",
-   "deep_link": "https://archive.org/details/realpropertyowne1971sanf?q=Sunset+Branch+Library",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+   "snippet": "(ELEMENTARY) (Portion) «SUNSET BRANCH LIBRARY» 1305 18TH AVENUE «SUNSET BRANCH LIBRARY» Public Library 7",
+   "url": "https://archive.org/details/realpropertyowne2001sanf",
+   "deep_link": "https://archive.org/details/realpropertyowne2001sanf?q=Sunset+Branch+Library",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Other records",
+   "salient": false
+  },
+  {
+   "identifier": "adultcalendarofp1996sanf",
+   "title": "Adult calendar of programs and events",
+   "creator": "San Francisco Public Library",
+   "year": null,
+   "pool": "sfpl",
+   "matched_alias": "Sunset Branch Library",
+   "snippet": "PRESCHOOL STORYTIHE FOR CHILDREN AGES 2-5 «Sunset Branch Library», 1305 18th St. (at Irving), (415)",
+   "url": "https://archive.org/details/adultcalendarofp1996sanf",
+   "deep_link": "https://archive.org/details/adultcalendarofp1996sanf?q=Sunset+Branch+Library",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Other records",
+   "salient": false
+  },
+  {
+   "identifier": "bidcontractoppor1992sanf",
+   "title": "Bid and contract opportunities / by the Purchasing Department of the City and County of San Francisco Purchasing Department",
+   "creator": "San Francisco (Calif.). Purchasing Department",
+   "year": null,
+   "pool": "sfpl",
+   "matched_alias": "Sunset Branch Library",
+   "snippet": "CONTACT : January 15, 1992 8 months «Sunset Branch Library», 18th Avenue at Irving Public Works",
+   "url": "https://archive.org/details/bidcontractoppor1992sanf",
+   "deep_link": "https://archive.org/details/bidcontractoppor1992sanf?q=Sunset+Branch+Library",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Other records",
+   "salient": false
   }
  ],
  "dept_shelf": [
@@ -218,29 +263,10 @@
    "year": null,
    "pool": "sfpl",
    "url": "https://archive.org/details/minutesofregula1619sanf_0"
-  },
-  {
-   "identifier": "agenda1969sanf",
-   "title": "Agenda",
-   "year": null,
-   "pool": "sfpl",
-   "url": "https://archive.org/details/agenda1969sanf"
-  },
-  {
-   "identifier": "agendasminutessa1979sanf",
-   "title": "Agendas and Minutes / San Francisco Public Library Commission, Finance Committee",
-   "year": null,
-   "pool": "sfpl",
-   "url": "https://archive.org/details/agendasminutessa1979sanf"
-  },
-  {
-   "identifier": "requestforuseofp1998sanf",
-   "title": "Request for use of public meeting rooms / Branch meeting rooms summary",
-   "year": null,
-   "pool": "sfpl",
-   "url": "https://archive.org/details/requestforuseofp1998sanf"
   }
  ],
+ "dept_shelf_label": "Public Library",
+ "dept_shelf_more": 3,
  "sources": [
   {
    "label": "City budget & payments",
@@ -253,7 +279,7 @@
  ],
  "_gate": {
   "has_photo": false,
-  "n_documents": 14,
+  "n_documents": 9,
   "n_money_links": 1,
   "meets_pre_summary": false
  }

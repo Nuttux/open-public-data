@@ -67,6 +67,50 @@ sources:
           employee_identifier × year × year_type × job × dept. #1 trap:
           year_type contains BOTH Calendar AND Fiscal — filter one
           downstream or everything double-counts.
+      - name: us_sf_city_facilities
+        description: |
+          SF City Facilities registry — dataset nc68-ngbr, ~1,734 rows,
+          the Block 6 (lieux) structured-location backbone. One row per
+          city facility: common_name, address, block_lot (APN), owned_leased,
+          dept_id/department_name, gross_sq_ft, latitude/longitude/geom,
+          supervisor_district, city_tenants (the occupying CITY dept, not a
+          third-party org). 1,732/1,734 have an address, 1,477 an APN. The
+          gazetteer the place↔money crosswalks and APN/spatial joins hang off.
+      - name: us_sf_recpark_facilities
+        description: |
+          SF Recreation & Park facilities — dataset ib5c-xgwu, ~2,687 rows
+          (name, type, geometry). Park-family gazetteer complement to the
+          City Facilities registry (which covers park grounds thinly).
+      - name: us_sf_go_bond_spending
+        description: |
+          SF GO Bond Program Spending & Status — dataset m793-kis4, ~151 rows.
+          Voter-approved capital ledger: bondauthamount / revisedbudget /
+          issuedtodate / expended / remaining_balance per bond program item,
+          with voter_approved_date and planned/projected/actual end dates.
+          `expended` is ACTUAL $ spent ($4.37B all-time). ~29 items are single
+          named facilities (exact place $, e.g. "ZSFG, Building 5"); the rest
+          are program categories ("Neighborhood Parks"). Block 6B.
+      - name: us_sf_go_bond_projects
+        description: |
+          SF GO Bond Projects — dataset d3dc-v5yr, ~305 rows. The granular
+          named projects under each bond (planned_project_name, e.g. "RP Buena
+          Vista Park Master Pln"), component/subcomponent, completion counts +
+          date. NO money of its own — pairs with us_sf_go_bond_spending
+          (program-item level) for dollars. Block 6B.
+      - name: us_sf_dpw_projects
+        description: |
+          SF DPW Internal & External Projects — dataset btxj-k9uh, ~8,356 rows,
+          daily. Geolocated chantiers: name, facility_type, project_status/phase,
+          start/end, co_ordinatepoint (2,896 populated), on/from/to_street, and
+          client_contract_id (bridge to contract $ — many "_NA"). Carries NO
+          money of its own; dollars come via the linked contract. Block 6C.
+      - name: us_sf_building_permits
+        description: |
+          SF Building Permits — dataset i98e-djp9, ~1.29M rows. block + lot
+          (= APN, joins City Facilities block_lot at ~100% precision),
+          estimated_cost / revised_cost (applicant-DECLARED construction value,
+          NOT city spend), description, status, issued_date, location. Block 6D
+          — downstream filtered to gazetteer parcels.
       - name: us_sf_catalog
         description: |
           Snapshot of the Socrata /api/views/<id>.json metadata for the

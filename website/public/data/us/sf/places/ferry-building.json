@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T22:30:00.120976+00:00",
+ "generated_at": "2026-07-21T14:25:53.971470+00:00",
  "source_pipeline": "sf_place_candidates.json → sync_ia_sf.py + link_sf_places.py + fetch_sf_place_photos.py → export_sf_places.py",
  "unit": "USD",
  "slug": "ferry-building",
@@ -12,6 +12,65 @@
  "owning_dept": {
   "name": "Port of San Francisco",
   "code": "PRT"
+ },
+ "facility": {
+  "primary_name": "Fac. 274-175 - Ferry Building Clock Tower",
+  "primary_address": "SAN FRANCISCO FERRY BLDG",
+  "primary_city": "San Francisco",
+  "primary_zip": "94105",
+  "primary_block_lot": "9900070",
+  "primary_department_name": "Port",
+  "primary_is_city_owned": true,
+  "primary_gross_sq_ft": 298488,
+  "primary_latitude": 37.795463590000054,
+  "primary_longitude": -122.393613518,
+  "supervisor_district": 3,
+  "n_facilities": 1,
+  "total_gross_sq_ft": 298488,
+  "n_owned": 1,
+  "n_leased": 0,
+  "apn_list": [
+   "9900070"
+  ],
+  "facilities": [
+   {
+    "facility_id": 657,
+    "common_name": "Fac. 274-175 - Ferry Building Clock Tower",
+    "block_lot": "9900070",
+    "gross_sq_ft": 298488,
+    "is_city_owned": true
+   }
+  ]
+ },
+ "capital": {
+  "n_items": 1,
+  "measure_totals": {},
+  "bond_programs": [
+   "Embarcadero Seawall Earthquake Safety Bond"
+  ],
+  "items": [
+   {
+    "source": "bond",
+    "source_kind": "bond_project",
+    "item_name": "Ferry Building Seawall and Substructure Earthquake Reliability Project",
+    "bond_program": "Embarcadero Seawall Earthquake Safety Bond",
+    "component": "Waterfront Resilience Program",
+    "voter_approved_date": null,
+    "amount_usd": null,
+    "amount_measure": null,
+    "budget_usd": null,
+    "contract_no": null,
+    "status": null,
+    "match_evidence": "Ferry Building"
+   }
+  ],
+  "payees": [],
+  "n_payees": 0,
+  "payees_total_paid": 0,
+  "permits": [],
+  "n_permits": 0,
+  "permits_total_declared": 0.0,
+  "permits_by_year": []
  },
  "photo": "/img/us/sf/places/ferry-building.jpg",
  "photo_credit": {
@@ -33,6 +92,13 @@
    "total_usd": 156434885.0,
    "fiscal_year": 2025
   },
+  "payroll_line": {
+   "code": "PRT",
+   "name": "Port",
+   "total_compensation_usd": 52732085.2,
+   "n_employees": 304,
+   "fiscal_year": 2025
+  },
   "contracts": [],
   "grants": []
  },
@@ -47,31 +113,9 @@
    "snippet": "3 1223 03559 3046 «FERRY BUILDING» COMPLEX The Embarcadero «Ferry Building»/World Trade Center Agriculture",
    "url": "https://archive.org/details/ferrybuildingcom2919sanf",
    "deep_link": "https://archive.org/details/ferrybuildingcom2919sanf?q=Ferry+Building",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
-  },
-  {
-   "identifier": "comprehensivepla2219sanf",
-   "title": "The comprehensive plan : northern waterfront",
-   "creator": "San Francisco (Calif.). Dept. of City Planning",
-   "year": 1971,
-   "pool": "sfpl",
-   "matched_alias": "Ferry Building",
-   "snippet": "front of the «Ferry Building». Second, uses in the area north of the «Ferry Building» should be",
-   "url": "https://archive.org/details/comprehensivepla2219sanf",
-   "deep_link": "https://archive.org/details/comprehensivepla2219sanf?q=Ferry+Building",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
-  },
-  {
-   "identifier": "minutes1993sanf_0",
-   "title": "Minutes",
-   "creator": "San Francisco Port Commission",
-   "year": null,
-   "pool": "sfpl",
-   "matched_alias": "Ferry Building",
-   "snippet": "of the «Ferry Building». These repairs are to correct damage to the «Ferry Building» sustained",
-   "url": "https://archive.org/details/minutes1993sanf_0",
-   "deep_link": "https://archive.org/details/minutes1993sanf_0?q=Ferry+Building",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Plans & environmental review",
+   "salient": true
   },
   {
    "identifier": "minutes2219sanf",
@@ -83,19 +127,23 @@
    "snippet": "planted in the center «Ferry Building» plaza and adjacent to the «Ferry Building» drop-off areas.",
    "url": "https://archive.org/details/minutes2219sanf",
    "deep_link": "https://archive.org/details/minutes2219sanf?q=Ferry+Building",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Meetings & resolutions",
+   "salient": true
   },
   {
-   "identifier": "minutes1995sanf_0",
-   "title": "Minutes",
-   "creator": "San Francisco Port Commission",
-   "year": null,
+   "identifier": "comprehensivepla2219sanf",
+   "title": "The comprehensive plan : northern waterfront",
+   "creator": "San Francisco (Calif.). Dept. of City Planning",
+   "year": 1971,
    "pool": "sfpl",
    "matched_alias": "Ferry Building",
-   "snippet": "GRANT FUNDS FOR THE «FERRY BUILDING» RENOVATION PROJECT. The «Ferry Building» Restoration Project",
-   "url": "https://archive.org/details/minutes1995sanf_0",
-   "deep_link": "https://archive.org/details/minutes1995sanf_0?q=Ferry+Building",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+   "snippet": "front of the «Ferry Building». Second, uses in the area north of the «Ferry Building» should be",
+   "url": "https://archive.org/details/comprehensivepla2219sanf",
+   "deep_link": "https://archive.org/details/comprehensivepla2219sanf?q=Ferry+Building",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Other records",
+   "salient": true
   }
  ],
  "dept_shelf": [
@@ -119,29 +167,10 @@
    "year": null,
    "pool": "sfpl",
    "url": "https://archive.org/details/financialstateme1971sanf"
-  },
-  {
-   "identifier": "wharfside1986sanf",
-   "title": "Wharfside",
-   "year": null,
-   "pool": "sfpl",
-   "url": "https://archive.org/details/wharfside1986sanf"
-  },
-  {
-   "identifier": "minutes2000sanf_1",
-   "title": "Minutes",
-   "year": null,
-   "pool": "sfpl",
-   "url": "https://archive.org/details/minutes2000sanf_1"
-  },
-  {
-   "identifier": "financialstateme1999sanf",
-   "title": "Financial statements and independent auditors' report",
-   "year": null,
-   "pool": "sfpl",
-   "url": "https://archive.org/details/financialstateme1999sanf"
   }
  ],
+ "dept_shelf_label": "Port of San Francisco",
+ "dept_shelf_more": 3,
  "sources": [
   {
    "label": "City budget & payments",
@@ -154,7 +183,7 @@
  ],
  "_gate": {
   "has_photo": true,
-  "n_documents": 5,
+  "n_documents": 3,
   "n_money_links": 1,
   "meets_pre_summary": true
  }

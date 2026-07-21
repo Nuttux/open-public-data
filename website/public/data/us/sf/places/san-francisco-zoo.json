@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T22:30:00.107503+00:00",
+ "generated_at": "2026-07-21T14:25:53.937303+00:00",
  "source_pipeline": "sf_place_candidates.json → sync_ia_sf.py + link_sf_places.py + fetch_sf_place_photos.py → export_sf_places.py",
  "unit": "USD",
  "slug": "san-francisco-zoo",
@@ -13,6 +13,8 @@
   "name": "Recreation and Park Department",
   "code": "REC"
  },
+ "facility": null,
+ "capital": null,
  "photo": "/img/us/sf/places/san-francisco-zoo.jpg",
  "photo_credit": {
   "photo": "/img/us/sf/places/san-francisco-zoo.jpg",
@@ -33,34 +35,17 @@
    "total_usd": 250373849.0,
    "fiscal_year": 2025
   },
+  "payroll_line": {
+   "code": "REC",
+   "name": "Recreation And Park Commission",
+   "total_compensation_usd": 149952872.68,
+   "n_employees": 2161,
+   "fiscal_year": 2025
+  },
   "contracts": [],
   "grants": []
  },
  "documents": [
-  {
-   "identifier": "meetingagenda3200sanf",
-   "title": "Meeting agenda",
-   "creator": "San Francisco (Calif.). Board of Supervisors. Zoo Audit Select Committee",
-   "year": 2003,
-   "pool": "sfpl",
-   "matched_alias": "San Francisco Zoo",
-   "snippet": "Office; Laura Louttit, «San Francisco Zoo»; Joanne Haney, «San Francisco Zoo»; Jacquie Grose, Zoo",
-   "url": "https://archive.org/details/meetingagenda3200sanf",
-   "deep_link": "https://archive.org/details/meetingagenda3200sanf?q=San+Francisco+Zoo",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
-  },
-  {
-   "identifier": "performanceaudit1119sanf",
-   "title": "Performance audit of the San Francisco Zoo",
-   "creator": "San Francisco (Calif.). Board of Supervisors. Budget Analyst,San Francisco (Calif.). Board of Supervisors",
-   "year": 2000,
-   "pool": "sfpl",
-   "matched_alias": "San Francisco Zoo",
-   "snippet": ", 5th Fir. Performance Audit of the «San Francisco Zoo» GOVERNMENT INFORMATION CWTPR SAN FRANCJSCO",
-   "url": "https://archive.org/details/performanceaudit1119sanf",
-   "deep_link": "https://archive.org/details/performanceaudit1119sanf?q=San+Francisco+Zoo",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
-  },
   {
    "identifier": "sanfranciscozool1519sanf",
    "title": "San Francisco Zoological Gardens master plan : final environmental impact report",
@@ -71,19 +56,9 @@
    "snippet": "OTHER PROJECTS «San Francisco Zoo» Infrastructure Master Plan The «San Francisco Zoo» Infrastructure",
    "url": "https://archive.org/details/sanfranciscozool1519sanf",
    "deep_link": "https://archive.org/details/sanfranciscozool1519sanf?q=San+Francisco+Zoo",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
-  },
-  {
-   "identifier": "sanfranciscozool6199sanf",
-   "title": "San Francisco Zoological Gardens master plan : draft environmental impact report",
-   "creator": "San Francisco (Calif.). Planning Dept",
-   "year": 1997,
-   "pool": "sfpl",
-   "matched_alias": "San Francisco Zoo",
-   "snippet": "OTHER PROJECTS «San Francisco Zoo» Infrastructure Master Plan The «San Francisco Zoo» Infrastructure",
-   "url": "https://archive.org/details/sanfranciscozool6199sanf",
-   "deep_link": "https://archive.org/details/sanfranciscozool6199sanf?q=San+Francisco+Zoo",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Plans & environmental review",
+   "salient": true
   },
   {
    "identifier": "sanfranciscozool1995sanf",
@@ -95,43 +70,9 @@
    "snippet": "San Francisco, CA 94132 Subject: «San Francisco Zoo» Infrastructure Master Plan - Final",
    "url": "https://archive.org/details/sanfranciscozool1995sanf",
    "deep_link": "https://archive.org/details/sanfranciscozool1995sanf?q=San+Francisco+Zoo",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
-  },
-  {
-   "identifier": "annualreport195861sanf",
-   "title": "Annual report",
-   "creator": "San Francisco (Calif.). Recreation and Park Dept",
-   "year": 1965,
-   "pool": "sfpl",
-   "matched_alias": "Fleishhacker Zoo",
-   "snippet": "chain link fences at Larsen Square, «Fleishhacker Zoo», Rich- mond and North Beach Playgrounds",
-   "url": "https://archive.org/details/annualreport195861sanf",
-   "deep_link": "https://archive.org/details/annualreport195861sanf?q=Fleishhacker+Zoo",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
-  },
-  {
-   "identifier": "sanfranciscomuni19337sanf",
-   "title": "San Francisco municipal record",
-   "creator": null,
-   "year": 1929,
-   "pool": "sfpl",
-   "matched_alias": "Fleishhacker Zoo",
-   "snippet": "the «Fleishhacker Zoo» collection. December THE MUNICIPAL RECORD Herbert «Fleishhacker Zoo» World",
-   "url": "https://archive.org/details/sanfranciscomuni19337sanf",
-   "deep_link": "https://archive.org/details/sanfranciscomuni19337sanf?q=Fleishhacker+Zoo",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
-  },
-  {
-   "identifier": "minutesrecreatio1974sanf",
-   "title": "Minutes / Recreation and Park Commission",
-   "creator": "San Francisco (Calif.). Recreation and Park Commission",
-   "year": null,
-   "pool": "sfpl",
-   "matched_alias": "San Francisco Zoo",
-   "snippet": "and Policies for the «San Francisco Zoo» prepared by the «San Francisco Zoo» Advisory Committee",
-   "url": "https://archive.org/details/minutesrecreatio1974sanf",
-   "deep_link": "https://archive.org/details/minutesrecreatio1974sanf?q=San+Francisco+Zoo",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Plans & environmental review",
+   "salient": true
   },
   {
    "identifier": "minutesrecreatio1968sanf",
@@ -143,7 +84,23 @@
    "snippet": "the «San Francisco Zoo»: «SAN FRANCISCO ZOO» TO RECEIVE: 1 Ostrich «SAN FRANCISCO ZOO» TO RECEIVE:",
    "url": "https://archive.org/details/minutesrecreatio1968sanf",
    "deep_link": "https://archive.org/details/minutesrecreatio1968sanf?q=San+Francisco+Zoo",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Meetings & resolutions",
+   "salient": true
+  },
+  {
+   "identifier": "meetingagenda3200sanf",
+   "title": "Meeting agenda",
+   "creator": "San Francisco (Calif.). Board of Supervisors. Zoo Audit Select Committee",
+   "year": 2003,
+   "pool": "sfpl",
+   "matched_alias": "San Francisco Zoo",
+   "snippet": "Office; Laura Louttit, «San Francisco Zoo»; Joanne Haney, «San Francisco Zoo»; Jacquie Grose, Zoo",
+   "url": "https://archive.org/details/meetingagenda3200sanf",
+   "deep_link": "https://archive.org/details/meetingagenda3200sanf?q=San+Francisco+Zoo",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Meetings & resolutions",
+   "salient": true
   },
   {
    "identifier": "minutes1977sanf",
@@ -155,7 +112,51 @@
    "snippet": "$2,000,000.00 for improvements to the «San Francisco Zoo». He reported that this project has",
    "url": "https://archive.org/details/minutes1977sanf",
    "deep_link": "https://archive.org/details/minutes1977sanf?q=San+Francisco+Zoo",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Meetings & resolutions",
+   "salient": true
+  },
+  {
+   "identifier": "annualreport195861sanf",
+   "title": "Annual report",
+   "creator": "San Francisco (Calif.). Recreation and Park Dept",
+   "year": 1965,
+   "pool": "sfpl",
+   "matched_alias": "Fleishhacker Zoo",
+   "snippet": "chain link fences at Larsen Square, «Fleishhacker Zoo», Rich- mond and North Beach Playgrounds",
+   "url": "https://archive.org/details/annualreport195861sanf",
+   "deep_link": "https://archive.org/details/annualreport195861sanf?q=Fleishhacker+Zoo",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Reports & records",
+   "salient": true
+  },
+  {
+   "identifier": "performanceaudit1119sanf",
+   "title": "Performance audit of the San Francisco Zoo",
+   "creator": "San Francisco (Calif.). Board of Supervisors. Budget Analyst,San Francisco (Calif.). Board of Supervisors",
+   "year": 2000,
+   "pool": "sfpl",
+   "matched_alias": "San Francisco Zoo",
+   "snippet": ", 5th Fir. Performance Audit of the «San Francisco Zoo» GOVERNMENT INFORMATION CWTPR SAN FRANCJSCO",
+   "url": "https://archive.org/details/performanceaudit1119sanf",
+   "deep_link": "https://archive.org/details/performanceaudit1119sanf?q=San+Francisco+Zoo",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Other records",
+   "salient": false
+  },
+  {
+   "identifier": "sanfranciscomuni19337sanf",
+   "title": "San Francisco municipal record",
+   "creator": null,
+   "year": 1929,
+   "pool": "sfpl",
+   "matched_alias": "Fleishhacker Zoo",
+   "snippet": "the «Fleishhacker Zoo» collection. December THE MUNICIPAL RECORD Herbert «Fleishhacker Zoo» World",
+   "url": "https://archive.org/details/sanfranciscomuni19337sanf",
+   "deep_link": "https://archive.org/details/sanfranciscomuni19337sanf?q=Fleishhacker+Zoo",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Other records",
+   "salient": false
   }
  ],
  "dept_shelf": [
@@ -179,29 +180,10 @@
    "year": 1999,
    "pool": "sfpl",
    "url": "https://archive.org/details/0agenda19992002sanf"
-  },
-  {
-   "identifier": "reporttoboardofs1980sanf",
-   "title": "Report to the Board of Supervisors of the City and County of San Francisco : review of the operations of the San Francisco Recreation and Park Department",
-   "year": 1979,
-   "pool": "sfpl",
-   "url": "https://archive.org/details/reporttoboardofs1980sanf"
-  },
-  {
-   "identifier": "annualreport197277sanf",
-   "title": "Annual report of the San Francisco Recreation and Park Department",
-   "year": null,
-   "pool": "sfpl",
-   "url": "https://archive.org/details/annualreport197277sanf"
-  },
-  {
-   "identifier": "minutesrecreatio1960sanf",
-   "title": "Minutes / Recreation and Park Commission",
-   "year": null,
-   "pool": "sfpl",
-   "url": "https://archive.org/details/minutesrecreatio1960sanf"
   }
  ],
+ "dept_shelf_label": "Recreation & Park Department",
+ "dept_shelf_more": 3,
  "sources": [
   {
    "label": "City budget & payments",
@@ -214,7 +196,7 @@
  ],
  "_gate": {
   "has_photo": true,
-  "n_documents": 10,
+  "n_documents": 8,
   "n_money_links": 1,
   "meets_pre_summary": true
  }

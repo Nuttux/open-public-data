@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T22:30:00.116147+00:00",
+ "generated_at": "2026-07-21T14:25:53.958882+00:00",
  "source_pipeline": "sf_place_candidates.json → sync_ia_sf.py + link_sf_places.py + fetch_sf_place_photos.py → export_sf_places.py",
  "unit": "USD",
  "slug": "davies-symphony-hall",
@@ -12,6 +12,202 @@
  "owning_dept": {
   "name": "War Memorial",
   "code": "WAR"
+ },
+ "facility": {
+  "primary_name": "Davies Symphony Hall",
+  "primary_address": "201 VAN NESS AVE",
+  "primary_city": "San Francisco",
+  "primary_zip": "94102",
+  "primary_block_lot": "0810001",
+  "primary_department_name": "War Memorial",
+  "primary_is_city_owned": true,
+  "primary_gross_sq_ft": 203500,
+  "primary_latitude": 37.77767015100005,
+  "primary_longitude": -122.42047689199995,
+  "supervisor_district": 5,
+  "n_facilities": 1,
+  "total_gross_sq_ft": 203500,
+  "n_owned": 1,
+  "n_leased": 0,
+  "apn_list": [
+   "0810001"
+  ],
+  "facilities": [
+   {
+    "facility_id": 576,
+    "common_name": "Davies Symphony Hall",
+    "block_lot": "0810001",
+    "gross_sq_ft": 203500,
+    "is_city_owned": true
+   }
+  ]
+ },
+ "capital": {
+  "n_items": 0,
+  "measure_totals": {},
+  "bond_programs": [],
+  "items": [],
+  "payees": [
+   {
+    "vendor": "KONE INC",
+    "paid_usd": 633380.02,
+    "n_contracts": 1,
+    "first_fiscal_year": 2024,
+    "last_fiscal_year": 2024
+   }
+  ],
+  "n_payees": 1,
+  "payees_total_paid": 633380.02,
+  "permits": [
+   {
+    "description": "phase ii of ongoing acoustic improvements & mis. renovations",
+    "permit_type": "additions alterations or repairs",
+    "declared_cost_usd": 5000000.0,
+    "status": "expired",
+    "permit_date": "1992-03-25",
+    "permit_year": 1992
+   },
+   {
+    "description": "demo extg office and convert to two ada accessible toilet rooms. build new ada compliant ramp. install new damper in extg hvac. electrical upgrade",
+    "permit_type": "additions alterations or repairs",
+    "declared_cost_usd": 850000.0,
+    "status": "complete",
+    "permit_date": "2013-06-13",
+    "permit_year": 2013
+   },
+   {
+    "description": "davies symphony hall, boiler upgrade, chiller upgrade, vfd, piping retrofit. intake and exhaust louvers. new openings in concrete wall with reinforcing for louvers.",
+    "permit_type": "additions alterations or repairs",
+    "declared_cost_usd": 760000.0,
+    "status": "complete",
+    "permit_date": "2010-08-12",
+    "permit_year": 2010
+   },
+   {
+    "description": "acoustic modifications",
+    "permit_type": "additions alterations or repairs",
+    "declared_cost_usd": 675000.0,
+    "status": "expired",
+    "permit_date": "1991-06-11",
+    "permit_year": 1991
+   },
+   {
+    "description": "5th floor - hvac controll upgrade througout entire buiding.",
+    "permit_type": "additions alterations or repairs",
+    "declared_cost_usd": 350000.0,
+    "status": "issued",
+    "permit_date": "2003-12-31",
+    "permit_year": 2003
+   },
+   {
+    "description": "replacement of existing fire alarm system",
+    "permit_type": "additions alterations or repairs",
+    "declared_cost_usd": 300000.0,
+    "status": "expired",
+    "permit_date": "1999-08-19",
+    "permit_year": 1999
+   }
+  ],
+  "n_permits": 60,
+  "permits_total_declared": 10556600.0,
+  "permits_by_year": [
+   {
+    "year": 1989,
+    "declared_usd": 315600.0
+   },
+   {
+    "year": 1990,
+    "declared_usd": 24600.0
+   },
+   {
+    "year": 1991,
+    "declared_usd": 708875.0
+   },
+   {
+    "year": 1992,
+    "declared_usd": 5092500.0
+   },
+   {
+    "year": 1993,
+    "declared_usd": 185000.0
+   },
+   {
+    "year": 1994,
+    "declared_usd": 56669.0
+   },
+   {
+    "year": 1998,
+    "declared_usd": 309683.0
+   },
+   {
+    "year": 1999,
+    "declared_usd": 542000.0
+   },
+   {
+    "year": 2001,
+    "declared_usd": 100000.0
+   },
+   {
+    "year": 2003,
+    "declared_usd": 550000.0
+   },
+   {
+    "year": 2004,
+    "declared_usd": 200000.0
+   },
+   {
+    "year": 2005,
+    "declared_usd": 155000.0
+   },
+   {
+    "year": 2007,
+    "declared_usd": 9500.0
+   },
+   {
+    "year": 2008,
+    "declared_usd": 25500.0
+   },
+   {
+    "year": 2009,
+    "declared_usd": 17149.0
+   },
+   {
+    "year": 2010,
+    "declared_usd": 855170.0
+   },
+   {
+    "year": 2011,
+    "declared_usd": 95000.0
+   },
+   {
+    "year": 2012,
+    "declared_usd": 85000.0
+   },
+   {
+    "year": 2013,
+    "declared_usd": 874100.0
+   },
+   {
+    "year": 2014,
+    "declared_usd": 6705.0
+   },
+   {
+    "year": 2015,
+    "declared_usd": 206000.0
+   },
+   {
+    "year": 2018,
+    "declared_usd": 38349.0
+   },
+   {
+    "year": 2022,
+    "declared_usd": 33000.0
+   },
+   {
+    "year": 2024,
+    "declared_usd": 71200.0
+   }
+  ]
  },
  "photo": "/img/us/sf/places/davies-symphony-hall.jpg",
  "photo_credit": {
@@ -33,6 +229,13 @@
    "total_usd": 30226356.0,
    "fiscal_year": 2025
   },
+  "payroll_line": {
+   "code": "WAR",
+   "name": "War Memorial",
+   "total_compensation_usd": 10745115.63,
+   "n_employees": 103,
+   "fiscal_year": 2025
+  },
   "contracts": [],
   "grants": []
  },
@@ -47,31 +250,9 @@
    "snippet": "Memorial Opera House Grove Street «Louise M. Davies Symphony Hall» Hayes Street Proposed %-*| Project",
    "url": "https://archive.org/details/schoolofartsmast1199sanf",
    "deep_link": "https://archive.org/details/schoolofartsmast1199sanf?q=Louise+M.+Davies+Symphony+Hall",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
-  },
-  {
-   "identifier": "civiccenterstud1994sanf_0",
-   "title": "Civic Center study : cultural facilities plan, issues and finding report : draft for citizen review",
-   "creator": "San Francisco (Calif.). Dept. of City Planning",
-   "year": 1994,
-   "pool": "sfpl",
-   "matched_alias": "Louise M. Davies Symphony Hall",
-   "snippet": "War Memorial Opera House 3176 «Louise M. Davies Symphony Hall» 2743 Warfield Theater 2600 Orpheum",
-   "url": "https://archive.org/details/civiccenterstud1994sanf_0",
-   "deep_link": "https://archive.org/details/civiccenterstud1994sanf_0?q=Louise+M.+Davies+Symphony+Hall",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
-  },
-  {
-   "identifier": "eastwest20east_7",
-   "title": "East/West",
-   "creator": "East/West Pub. Co.",
-   "year": 1986,
-   "pool": "sfpl",
-   "matched_alias": "Louise M. Davies Symphony Hall",
-   "snippet": "Symphonic Concert JI、to be held at the «Louise M. Davies Symphony Hall» on March 7and 8 at pm. Touted as “a",
-   "url": "https://archive.org/details/eastwest20east_7",
-   "deep_link": "https://archive.org/details/eastwest20east_7?q=Louise+M.+Davies+Symphony+Hall",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Plans & environmental review",
+   "salient": true
   },
   {
    "identifier": "annualrprt1978798384warm",
@@ -83,19 +264,23 @@
    "snippet": "completed in 79\"80. The Louise M. «Davies Symphony Hall» was opened September 16, 1980 and",
    "url": "https://archive.org/details/annualrprt1978798384warm",
    "deep_link": "https://archive.org/details/annualrprt1978798384warm?q=Davies+Symphony+Hall",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Reports & records",
+   "salient": true
   },
   {
-   "identifier": "calendarofevents2012sanf",
-   "title": "Calendar of events",
-   "creator": "San Francisco Performing Arts Center",
-   "year": null,
+   "identifier": "eastwest20east_7",
+   "title": "East/West",
+   "creator": "East/West Pub. Co.",
+   "year": 1986,
    "pool": "sfpl",
-   "matched_alias": "Davies Symphony Hall",
-   "snippet": "EVENTS War Memorial Opera House «Louise M. Davies Symphony Hall» Veterans Building Herbst Theatre",
-   "url": "https://archive.org/details/calendarofevents2012sanf",
-   "deep_link": "https://archive.org/details/calendarofevents2012sanf?q=Davies+Symphony+Hall",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+   "matched_alias": "Louise M. Davies Symphony Hall",
+   "snippet": "Symphonic Concert JI、to be held at the «Louise M. Davies Symphony Hall» on March 7and 8 at pm. Touted as “a",
+   "url": "https://archive.org/details/eastwest20east_7",
+   "deep_link": "https://archive.org/details/eastwest20east_7?q=Louise+M.+Davies+Symphony+Hall",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Other records",
+   "salient": true
   },
   {
    "identifier": "calendarofevents2000sanf",
@@ -107,19 +292,23 @@
    "snippet": "94102 Telephone 415/ 621-6600 JANUARY 2000 «Davies Symphony Hall» Herbst T heal re Vfeterans Build ir\\g",
    "url": "https://archive.org/details/calendarofevents2000sanf",
    "deep_link": "https://archive.org/details/calendarofevents2000sanf?q=Davies+Symphony+Hall",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Other records",
+   "salient": true
   },
   {
-   "identifier": "calendarofevents2006sanf",
-   "title": "Calendar of events",
-   "creator": "San Francisco Performing Arts Center",
-   "year": null,
+   "identifier": "civiccenterstud1994sanf_0",
+   "title": "Civic Center study : cultural facilities plan, issues and finding report : draft for citizen review",
+   "creator": "San Francisco (Calif.). Dept. of City Planning",
+   "year": 1994,
    "pool": "sfpl",
-   "matched_alias": "Davies Symphony Hall",
-   "snippet": "CENTER TOURS War Memorial Opera House, «Davies Symphony Hall» and Herbst Theatre: Every Monday from",
-   "url": "https://archive.org/details/calendarofevents2006sanf",
-   "deep_link": "https://archive.org/details/calendarofevents2006sanf?q=Davies+Symphony+Hall",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+   "matched_alias": "Louise M. Davies Symphony Hall",
+   "snippet": "War Memorial Opera House 3176 «Louise M. Davies Symphony Hall» 2743 Warfield Theater 2600 Orpheum",
+   "url": "https://archive.org/details/civiccenterstud1994sanf_0",
+   "deep_link": "https://archive.org/details/civiccenterstud1994sanf_0?q=Louise+M.+Davies+Symphony+Hall",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Other records",
+   "salient": true
   }
  ],
  "dept_shelf": [
@@ -143,29 +332,10 @@
    "year": 1975,
    "pool": "sfpl",
    "url": "https://archive.org/details/sttmntsofact19631978warm"
-  },
-  {
-   "identifier": "calendarofevents2008sanf",
-   "title": "Calendar of events",
-   "year": null,
-   "pool": "sfpl",
-   "url": "https://archive.org/details/calendarofevents2008sanf"
-  },
-  {
-   "identifier": "annualrepofpr19391946wa",
-   "title": "Annual report of the president of the Board of Trustees of the War Memorial of San Francisco",
-   "year": null,
-   "pool": "sfpl",
-   "url": "https://archive.org/details/annualrepofpr19391946wa"
-  },
-  {
-   "identifier": "agendasminutessa2010sanf",
-   "title": "Agendas and Minutes / San Francisco Veterans' Affairs Commission",
-   "year": null,
-   "pool": "sfpl",
-   "url": "https://archive.org/details/agendasminutessa2010sanf"
   }
  ],
+ "dept_shelf_label": "War Memorial & Performing Arts Center",
+ "dept_shelf_more": 3,
  "sources": [
   {
    "label": "City budget & payments",
@@ -178,7 +348,7 @@
  ],
  "_gate": {
   "has_photo": true,
-  "n_documents": 7,
+  "n_documents": 5,
   "n_money_links": 1,
   "meets_pre_summary": true
  }

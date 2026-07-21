@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T22:30:00.102806+00:00",
+ "generated_at": "2026-07-21T14:25:53.926977+00:00",
  "source_pipeline": "sf_place_candidates.json → sync_ia_sf.py + link_sf_places.py + fetch_sf_place_photos.py → export_sf_places.py",
  "unit": "USD",
  "slug": "washington-square",
@@ -13,6 +13,94 @@
   "name": "Recreation and Park Department",
   "code": "REC"
  },
+ "facility": {
+  "primary_name": "Washington Square Bathrooms",
+  "primary_address": "600 COLUMBUS AVE",
+  "primary_city": "San Francisco",
+  "primary_zip": "94133",
+  "primary_block_lot": "0102001",
+  "primary_department_name": "Recreation And Parks",
+  "primary_is_city_owned": true,
+  "primary_gross_sq_ft": 292,
+  "primary_latitude": 37.80096862000005,
+  "primary_longitude": -122.41054163099994,
+  "supervisor_district": 3,
+  "n_facilities": 1,
+  "total_gross_sq_ft": 292,
+  "n_owned": 1,
+  "n_leased": 0,
+  "apn_list": [
+   "0102001"
+  ],
+  "facilities": [
+   {
+    "facility_id": 1839,
+    "common_name": "Washington Square Bathrooms",
+    "block_lot": "0102001",
+    "gross_sq_ft": 292,
+    "is_city_owned": true
+   }
+  ]
+ },
+ "capital": {
+  "n_items": 0,
+  "measure_totals": {},
+  "bond_programs": [],
+  "items": [],
+  "payees": [],
+  "n_payees": 0,
+  "payees_total_paid": 0,
+  "permits": [
+   {
+    "description": "to erect 1 story, no basement, restroom in the park.",
+    "permit_type": "new construction wood frame",
+    "declared_cost_usd": 504000.0,
+    "status": "complete",
+    "permit_date": "2014-05-05",
+    "permit_year": 2014
+   },
+   {
+    "description": "replace existing asphalt paving with concrete paving and landscape improvements",
+    "permit_type": "otc alterations permit",
+    "declared_cost_usd": 500000.0,
+    "status": "complete",
+    "permit_date": "2019-04-05",
+    "permit_year": 2019
+   },
+   {
+    "description": "playground renovation - removal of (e) playground and replacement with new playground in (e) location",
+    "permit_type": "otc alterations permit",
+    "declared_cost_usd": 300000.0,
+    "status": "complete",
+    "permit_date": "2018-02-27",
+    "permit_year": 2018
+   },
+   {
+    "description": "to demolish 1 story restroom.",
+    "permit_type": "demolitions",
+    "declared_cost_usd": 65000.0,
+    "status": "complete",
+    "permit_date": "2014-05-05",
+    "permit_year": 2014
+   }
+  ],
+  "n_permits": 4,
+  "permits_total_declared": 1369000.0,
+  "permits_by_year": [
+   {
+    "year": 2014,
+    "declared_usd": 569000.0
+   },
+   {
+    "year": 2018,
+    "declared_usd": 300000.0
+   },
+   {
+    "year": 2019,
+    "declared_usd": 500000.0
+   }
+  ]
+ },
  "photo": null,
  "photo_credit": null,
  "summary_en": null,
@@ -24,10 +112,31 @@
    "total_usd": 250373849.0,
    "fiscal_year": 2025
   },
+  "payroll_line": {
+   "code": "REC",
+   "name": "Recreation And Park Commission",
+   "total_compensation_usd": 149952872.68,
+   "n_employees": 2161,
+   "fiscal_year": 2025
+  },
   "contracts": [],
   "grants": []
  },
  "documents": [
+  {
+   "identifier": "supplementaldraf2007unit",
+   "title": "Supplemental draft environmental impact statement/supplemental draft environmental impact report for the Central Subway/Third Street light rail phase 2 in the City and County of San Francisco",
+   "creator": "United States. Federal Transit Administration,San Francisco (Calif.). Planning Dept",
+   "year": null,
+   "pool": "sfpl",
+   "matched_alias": "Washington Square",
+   "snippet": "Portsmouth Square Parking Garage. «Washington Square» «Washington Square» is a 2.26-acre park bordered",
+   "url": "https://archive.org/details/supplementaldraf2007unit",
+   "deep_link": "https://archive.org/details/supplementaldraf2007unit?q=Washington+Square",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Plans & environmental review",
+   "salient": true
+  },
   {
    "identifier": "addendumtosupple2013unit",
    "title": "Addendum to supplemental environmental impact statement/supplemental environmental impact report : [Central Subway]",
@@ -38,7 +147,9 @@
    "snippet": "multifamily residential uses elsewhere. «Washington Square», an approximately 2.15-acre park, is",
    "url": "https://archive.org/details/addendumtosupple2013unit",
    "deep_link": "https://archive.org/details/addendumtosupple2013unit?q=Washington+Square",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Plans & environmental review",
+   "salient": true
   },
   {
    "identifier": "responsestocomme2008unit",
@@ -50,79 +161,9 @@
    "snippet": "bisecting «Washington Square», Deposits related to the early years of «Washington Square» as a",
    "url": "https://archive.org/details/responsestocomme2008unit",
    "deep_link": "https://archive.org/details/responsestocomme2008unit?q=Washington+Square",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
-  },
-  {
-   "identifier": "sanfranciscothea193910sanf",
-   "title": "The Italian theatre in San Francisco",
-   "creator": "Estavan, Lawrence,United States. Work Projects Administration (Calif.)",
-   "year": 1939,
-   "pool": "sfpl",
-   "matched_alias": "Washington Square",
-   "snippet": "Opening of «Washington Square» Theatre. Company. The Cesare Maori Company at «Washington Square». Shakespeare",
-   "url": "https://archive.org/details/sanfranciscothea193910sanf",
-   "deep_link": "https://archive.org/details/sanfranciscothea193910sanf?q=Washington+Square",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
-  },
-  {
-   "identifier": "meetingreport233299196568",
-   "title": "Meeting report",
-   "creator": "San Francisco (Calif.). Parking Authority",
-   "year": null,
-   "pool": "sfpl",
-   "matched_alias": "Washington Square",
-   "snippet": "general opposition to the conversion of «Washington Square» to underground parking. d. In response",
-   "url": "https://archive.org/details/meetingreport233299196568",
-   "deep_link": "https://archive.org/details/meetingreport233299196568?q=Washington+Square",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
-  },
-  {
-   "identifier": "supplementaldraf2007unit",
-   "title": "Supplemental draft environmental impact statement/supplemental draft environmental impact report for the Central Subway/Third Street light rail phase 2 in the City and County of San Francisco",
-   "creator": "United States. Federal Transit Administration,San Francisco (Calif.). Planning Dept",
-   "year": null,
-   "pool": "sfpl",
-   "matched_alias": "Washington Square",
-   "snippet": "Portsmouth Square Parking Garage. «Washington Square» «Washington Square» is a 2.26-acre park bordered",
-   "url": "https://archive.org/details/supplementaldraf2007unit",
-   "deep_link": "https://archive.org/details/supplementaldraf2007unit?q=Washington+Square",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
-  },
-  {
-   "identifier": "whatsdoinginpark1987sanf",
-   "title": "What's doing in the parks?",
-   "creator": "San Francisco (Calif.). Recreation and Park Department",
-   "year": null,
-   "pool": "sfpl",
-   "matched_alias": "Washington Square",
-   "snippet": "Francisco Society of Fine Arts Show, «Washington Square», Filbert and Stockton Streets. 1 p.m",
-   "url": "https://archive.org/details/whatsdoinginpark1987sanf",
-   "deep_link": "https://archive.org/details/whatsdoinginpark1987sanf?q=Washington+Square",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
-  },
-  {
-   "identifier": "whatsdoinginpark1992sanf",
-   "title": "What's doing in the parks?",
-   "creator": "San Francisco (Calif.). Recreation and Park Department",
-   "year": null,
-   "pool": "sfpl",
-   "matched_alias": "Washington Square",
-   "snippet": "and see many a special treasure. «Washington Square» Park, Columbus Ave. and Union St.",
-   "url": "https://archive.org/details/whatsdoinginpark1992sanf",
-   "deep_link": "https://archive.org/details/whatsdoinginpark1992sanf?q=Washington+Square",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
-  },
-  {
-   "identifier": "minutesofartcomm1957sanf",
-   "title": "Minutes of Art Commission of the City and County of San Francisco",
-   "creator": "San Francisco (Calif.). Art Commission",
-   "year": null,
-   "pool": "sfpl",
-   "matched_alias": "Washington Square",
-   "snippet": "County of San Francisco be held in «Washington Square», San Francisco, on September 26th, 27th",
-   "url": "https://archive.org/details/minutesofartcomm1957sanf",
-   "deep_link": "https://archive.org/details/minutesofartcomm1957sanf?q=Washington+Square",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Plans & environmental review",
+   "salient": true
   },
   {
    "identifier": "minutesrecreatio1989sanf",
@@ -134,19 +175,9 @@
    "snippet": "event at «Washington Square». The Parks and Planning Committee felt that «Washington Square» was",
    "url": "https://archive.org/details/minutesrecreatio1989sanf",
    "deep_link": "https://archive.org/details/minutesrecreatio1989sanf?q=Washington+Square",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
-  },
-  {
-   "identifier": "whatsdoinginpark1988sanf",
-   "title": "What's doing in the parks?",
-   "creator": "San Francisco (Calif.). Recreation and Park Department",
-   "year": null,
-   "pool": "sfpl",
-   "matched_alias": "Washington Square",
-   "snippet": "Artists Guild of San Francisco Art Show, «Washington Square», Filbert & Stockton Streets. 10 a.m.",
-   "url": "https://archive.org/details/whatsdoinginpark1988sanf",
-   "deep_link": "https://archive.org/details/whatsdoinginpark1988sanf?q=Washington+Square",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Meetings & resolutions",
+   "salient": true
   },
   {
    "identifier": "minutes89sanf",
@@ -158,19 +189,65 @@
    "snippet": "event at «Washington Square». The Parks and Planning Committee felt that «Washington Square» was",
    "url": "https://archive.org/details/minutes89sanf",
    "deep_link": "https://archive.org/details/minutes89sanf?q=Washington+Square",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Meetings & resolutions",
+   "salient": true
   },
   {
-   "identifier": "whatsdoinginpark1986sanf",
+   "identifier": "minutesofartcomm1957sanf",
+   "title": "Minutes of Art Commission of the City and County of San Francisco",
+   "creator": "San Francisco (Calif.). Art Commission",
+   "year": null,
+   "pool": "sfpl",
+   "matched_alias": "Washington Square",
+   "snippet": "County of San Francisco be held in «Washington Square», San Francisco, on September 26th, 27th",
+   "url": "https://archive.org/details/minutesofartcomm1957sanf",
+   "deep_link": "https://archive.org/details/minutesofartcomm1957sanf?q=Washington+Square",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Meetings & resolutions",
+   "salient": true
+  },
+  {
+   "identifier": "sanfranciscothea193910sanf",
+   "title": "The Italian theatre in San Francisco",
+   "creator": "Estavan, Lawrence,United States. Work Projects Administration (Calif.)",
+   "year": 1939,
+   "pool": "sfpl",
+   "matched_alias": "Washington Square",
+   "snippet": "Opening of «Washington Square» Theatre. Company. The Cesare Maori Company at «Washington Square». Shakespeare",
+   "url": "https://archive.org/details/sanfranciscothea193910sanf",
+   "deep_link": "https://archive.org/details/sanfranciscothea193910sanf?q=Washington+Square",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Other records",
+   "salient": false
+  },
+  {
+   "identifier": "meetingreport233299196568",
+   "title": "Meeting report",
+   "creator": "San Francisco (Calif.). Parking Authority",
+   "year": null,
+   "pool": "sfpl",
+   "matched_alias": "Washington Square",
+   "snippet": "general opposition to the conversion of «Washington Square» to underground parking. d. In response",
+   "url": "https://archive.org/details/meetingreport233299196568",
+   "deep_link": "https://archive.org/details/meetingreport233299196568?q=Washington+Square",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Other records",
+   "salient": false
+  },
+  {
+   "identifier": "whatsdoinginpark1988sanf",
    "title": "What's doing in the parks?",
    "creator": "San Francisco (Calif.). Recreation and Park Department",
    "year": null,
    "pool": "sfpl",
    "matched_alias": "Washington Square",
-   "snippet": "Noon - 3 p.m. — Poet ry-in-the-Park, «Washington Square», Filbert and Stockton Streets. 1-3 p",
-   "url": "https://archive.org/details/whatsdoinginpark1986sanf",
-   "deep_link": "https://archive.org/details/whatsdoinginpark1986sanf?q=Washington+Square",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+   "snippet": "Artists Guild of San Francisco Art Show, «Washington Square», Filbert & Stockton Streets. 10 a.m.",
+   "url": "https://archive.org/details/whatsdoinginpark1988sanf",
+   "deep_link": "https://archive.org/details/whatsdoinginpark1988sanf?q=Washington+Square",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Other records",
+   "salient": false
   },
   {
    "identifier": "josephjachetta00jach",
@@ -182,19 +259,9 @@
    "snippet": "Francisco - right across the street from «Washington Square». Last year he celebrated the 50th",
    "url": "https://archive.org/details/josephjachetta00jach",
    "deep_link": "https://archive.org/details/josephjachetta00jach?q=Washington+Square",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
-  },
-  {
-   "identifier": "minutesrecreati1957sanf_0",
-   "title": "Minutes / Recreation and Park Commission",
-   "creator": "San Francisco (Calif.). Recreation and Park Commission",
-   "year": null,
-   "pool": "sfpl",
-   "matched_alias": "Washington Square",
-   "snippet": "design for «Washington Square» which the Beautifica- tion of «Washington Square» Committee had",
-   "url": "https://archive.org/details/minutesrecreati1957sanf_0",
-   "deep_link": "https://archive.org/details/minutesrecreati1957sanf_0?q=Washington+Square",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Other records",
+   "salient": false
   }
  ],
  "dept_shelf": [
@@ -218,29 +285,10 @@
    "year": 1999,
    "pool": "sfpl",
    "url": "https://archive.org/details/0agenda19992002sanf"
-  },
-  {
-   "identifier": "reporttoboardofs1980sanf",
-   "title": "Report to the Board of Supervisors of the City and County of San Francisco : review of the operations of the San Francisco Recreation and Park Department",
-   "year": 1979,
-   "pool": "sfpl",
-   "url": "https://archive.org/details/reporttoboardofs1980sanf"
-  },
-  {
-   "identifier": "annualreport197277sanf",
-   "title": "Annual report of the San Francisco Recreation and Park Department",
-   "year": null,
-   "pool": "sfpl",
-   "url": "https://archive.org/details/annualreport197277sanf"
-  },
-  {
-   "identifier": "minutesrecreatio1960sanf",
-   "title": "Minutes / Recreation and Park Commission",
-   "year": null,
-   "pool": "sfpl",
-   "url": "https://archive.org/details/minutesrecreatio1960sanf"
   }
  ],
+ "dept_shelf_label": "Recreation & Park Department",
+ "dept_shelf_more": 3,
  "sources": [
   {
    "label": "City budget & payments",
@@ -253,7 +301,7 @@
  ],
  "_gate": {
   "has_photo": false,
-  "n_documents": 14,
+  "n_documents": 10,
   "n_money_links": 1,
   "meets_pre_summary": false
  }

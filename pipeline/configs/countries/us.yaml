@@ -256,3 +256,78 @@ sources:
     dataset_id: "88g8-5mnd"
     mode: bulk-csv
     description: "SF Employee Compensation — 2013-2025, ~1.1M rows (Calendar + Fiscal), bi-annual (bulk CSV)"
+
+  # ---------------------------------------------------------------------------
+  # Block 6 (lieux) — the place join surface (docs/us/block-studies/6-lieux.md).
+  # City Facilities is the STRUCTURED-LOCATION BACKBONE the money tables lack:
+  # every city facility with common_name + address + block_lot (APN) + geom.
+  # It is the gazetteer that the place↔money crosswalks and the APN/spatial
+  # joins all hang off. ~1,734 rows.
+  # ---------------------------------------------------------------------------
+  - id: sf_city_facilities
+    type: socrata
+    target_table: us_sf_city_facilities
+    dataset_id: "nc68-ngbr"
+    mode: paged-json
+    order_by: ":id"
+    description: "SF City Facilities registry — ~1,734 facilities (common_name, address, block_lot/APN, owned/leased, sq ft, dept, geom)"
+
+  # Rec/Park facility features (park names + geometry), 6A gazetteer complement
+  # for the park family that the City Facilities registry covers thinly.
+  - id: sf_recpark_facilities
+    type: socrata
+    target_table: us_sf_recpark_facilities
+    dataset_id: "ib5c-xgwu"
+    mode: paged-json
+    order_by: ":id"
+    description: "SF Recreation & Park facilities — ~2,687 features (name, type, geometry) for the park-family gazetteer"
+
+  # ---------------------------------------------------------------------------
+  # Block 6B/6C/6D — place-level CAPITAL money. These are OVERLAPPING views of
+  # the same physical work in different ledgers (bond expended ⊇ contract paid
+  # ≈ permit declared value) — mart_us_sf_place_capital labels each measure and
+  # NEVER sums across them (docs/us/block-studies/6-lieux.md §capital no-sum).
+  #
+  # GO Bond spending & status — actual $ EXPENDED per bond program item
+  # ($4.37B expended all-time), the voter-approved capital ledger.
+  - id: sf_go_bond_spending
+    type: socrata
+    target_table: us_sf_go_bond_spending
+    dataset_id: "m793-kis4"
+    mode: paged-json
+    order_by: ":id"
+    description: "SF GO Bond Program Spending & Status — 151 program items (bondauthamount/revisedbudget/expended, voter_approved_date)"
+
+  # GO Bond projects — the granular named projects under each bond program
+  # (planned_project_name, e.g. 'RP Buena Vista Park Master Pln'). No $ of its
+  # own — pairs with sf_go_bond_spending (program-item level) for money.
+  - id: sf_go_bond_projects
+    type: socrata
+    target_table: us_sf_go_bond_projects
+    dataset_id: "d3dc-v5yr"
+    mode: paged-json
+    order_by: ":id"
+    description: "SF GO Bond Projects — 305 named projects per bond (planned_project_name, component, completion)"
+
+  # DPW internal & external projects — geolocated chantiers (co_ordinatepoint),
+  # facility_type, project_status, client_contract_id (bridge to contract $).
+  # Carries NO money of its own; dollars come via the contract it links.
+  - id: sf_dpw_projects
+    type: socrata
+    target_table: us_sf_dpw_projects
+    dataset_id: "btxj-k9uh"
+    mode: paged-json
+    order_by: ":id"
+    description: "SF DPW Internal & External Projects — ~8,356 geolocated projects (name, facility_type, status, client_contract_id, point geom)"
+
+  # Building Permits — construction VALUE by parcel (block+lot = APN), joins to
+  # City Facilities block_lot at ~100% precision. estimated_cost/revised_cost is
+  # the applicant's declared construction value (a permit measure, NOT city
+  # spend). Large table — synced in full; downstream filtered to gazetteer APNs.
+  - id: sf_building_permits
+    type: socrata
+    target_table: us_sf_building_permits
+    dataset_id: "i98e-djp9"
+    mode: paged-json
+    order_by: ":id"
+    description: "SF Building Permits — block+lot (APN), estimated_cost/revised_cost, description, status, issued_date, location"

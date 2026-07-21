@@ -15459,6 +15459,31 @@ body:has(.theme-db-scrolly) { background: #fafaf7 !important; color: var(--p-ink
 }
 .theme-fusion .fx-place-sub { font-size: 13.5px; color: var(--ink-2); margin: 0 0 14px; }
 .theme-fusion .fx-place-money-line { font-size: 15.5px; line-height: 1.5; margin: 0 0 14px; }
+/* Headline stat — the one place-specific money figure, hero-sized. */
+.theme-fusion .fx-place-headline { margin: 4px 0 22px; padding: 16px 0; border-top: 2px solid var(--ink); border-bottom: 1px solid var(--rule); }
+.theme-fusion .fx-place-headline-value {
+  font-family: var(--f-disp); font-weight: 800; letter-spacing: -0.02em;
+  font-size: clamp(30px, 7vw, 44px); line-height: 1; color: var(--ink);
+}
+.theme-fusion .fx-place-headline-label {
+  font-size: 13px; color: var(--ink-2); margin-top: 7px; max-width: 42ch;
+}
+/* Facility record (Block 6A) — a compact fact grid, not a money block. */
+.theme-fusion .fx-place-facts {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 1px; background: var(--rule); border: 1px solid var(--rule);
+}
+.theme-fusion .fx-place-fact { background: var(--paper); padding: 10px 12px; }
+.theme-fusion .fx-place-fact-label {
+  font-family: var(--f-mono); font-size: 9.5px; letter-spacing: .07em;
+  text-transform: uppercase; color: var(--muted); margin-bottom: 3px;
+}
+.theme-fusion .fx-place-fact-value { font-size: 14px; color: var(--ink); line-height: 1.35; }
+/* Capital & construction — named bond-funded projects (no $ each). */
+.theme-fusion .fx-place-named-projects { list-style: none; margin: 4px 0 0; padding: 0; }
+.theme-fusion .fx-place-named-projects > li {
+  font-size: 13.5px; color: var(--ink); padding: 5px 0; border-top: 1px solid var(--rule); line-height: 1.4;
+}
 .theme-fusion .fx-place-contracts { list-style: none; margin: 0; padding: 0; }
 .theme-fusion .fx-place-contracts > li { padding: 9px 0; border-top: 1px solid var(--rule); }
 .theme-fusion .fx-place-contract-meta {
@@ -15486,6 +15511,16 @@ body:has(.theme-db-scrolly) { background: #fafaf7 !important; color: var(--p-ink
   display: block; font-family: var(--f-mono); font-size: 10.5px;
   letter-spacing: .03em; color: var(--muted); margin-top: 4px;
 }
+.theme-fusion .fx-doc-variant {
+  display: block; font-family: var(--f-mono); font-size: 10.5px;
+  color: var(--ocre); margin-top: 2px;
+}
+.theme-fusion .fx-doc-group-h {
+  font-family: var(--f-mono); font-size: 10px; letter-spacing: .07em;
+  text-transform: uppercase; color: var(--muted);
+  margin: 20px 0 2px; padding-bottom: 4px; border-bottom: 1px solid var(--rule);
+}
+.theme-fusion .fx-doc-group-h:first-child { margin-top: 0; }
 .theme-fusion .fx-place-sources { margin-top: 26px; padding-top: 14px; border-top: 1px solid var(--rule); }
 
 /* ── SF payee fiche (Block A2) ──────────────────────────────────────────── */

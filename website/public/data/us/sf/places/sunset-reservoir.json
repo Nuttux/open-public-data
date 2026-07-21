@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T22:30:00.120215+00:00",
+ "generated_at": "2026-07-21T14:25:53.969315+00:00",
  "source_pipeline": "sf_place_candidates.json → sync_ia_sf.py + link_sf_places.py + fetch_sf_place_photos.py → export_sf_places.py",
  "unit": "USD",
  "slug": "sunset-reservoir",
@@ -13,6 +13,62 @@
   "name": "Public Utilities Commission",
   "code": "PUC"
  },
+ "facility": {
+  "primary_name": "Sunset Reservoir",
+  "primary_address": "1949 24TH AVE",
+  "primary_city": "San Francisco",
+  "primary_zip": "94116",
+  "primary_block_lot": "2107001",
+  "primary_department_name": "Public Utilities Commission",
+  "primary_is_city_owned": true,
+  "primary_gross_sq_ft": null,
+  "primary_latitude": 37.75017994600006,
+  "primary_longitude": -122.48371361899996,
+  "supervisor_district": 4,
+  "n_facilities": 1,
+  "total_gross_sq_ft": null,
+  "n_owned": 1,
+  "n_leased": 0,
+  "apn_list": [
+   "2107001"
+  ],
+  "facilities": [
+   {
+    "facility_id": 1686,
+    "common_name": "Sunset Reservoir",
+    "block_lot": "2107001",
+    "gross_sq_ft": null,
+    "is_city_owned": true
+   }
+  ]
+ },
+ "capital": {
+  "n_items": 0,
+  "measure_totals": {},
+  "bond_programs": [],
+  "items": [],
+  "payees": [],
+  "n_payees": 0,
+  "payees_total_paid": 0,
+  "permits": [
+   {
+    "description": "retaining wall, 11' max height wall and excavation of existing grade. off haul spoils. new electrical equipment yard & equipment anchorage.",
+    "permit_type": "additions alterations or repairs",
+    "declared_cost_usd": 285000.0,
+    "status": "complete",
+    "permit_date": "2009-10-29",
+    "permit_year": 2009
+   }
+  ],
+  "n_permits": 1,
+  "permits_total_declared": 285000.0,
+  "permits_by_year": [
+   {
+    "year": 2009,
+    "declared_usd": 285000.0
+   }
+  ]
+ },
  "photo": null,
  "photo_credit": null,
  "summary_en": null,
@@ -24,45 +80,30 @@
    "total_usd": 1802973252.0,
    "fiscal_year": 2025
   },
+  "payroll_line": {
+   "code": "PUC",
+   "name": "Public Utilities Commission",
+   "total_compensation_usd": 475550972.11,
+   "n_employees": 2679,
+   "fiscal_year": 2025
+  },
   "contracts": [],
   "grants": []
  },
  "documents": [
   {
-   "identifier": "citydistribution7200sanf",
-   "title": "City Distribution Division capital improvement program driven by facility conditions, May 7, 2001",
-   "creator": "San Francisco Public Utilities Commission",
-   "year": 2001,
+   "identifier": "noticeofpreparat2009sanf",
+   "title": "Notice of preparation of an environmental impact report : San Francisco groundwater supply project",
+   "creator": "San Francisco (Calif.). Planning Department",
+   "year": null,
    "pool": "sfpl",
    "matched_alias": "Sunset Reservoir",
-   "snippet": "Reservoir 4 Sutro Reservoir 5 «Sunset Reservoir» North 6 «Sunset Reservoir» South 7 Stanford Heights",
-   "url": "https://archive.org/details/citydistribution7200sanf",
-   "deep_link": "https://archive.org/details/citydistribution7200sanf?q=Sunset+Reservoir",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
-  },
-  {
-   "identifier": "facilitiesreliab2000wate",
-   "title": "Facilities reliability program : phase II : regional system overview",
-   "creator": "Water Reliability Partnership",
-   "year": 2000,
-   "pool": "sfpl",
-   "matched_alias": "Sunset Reservoir",
-   "snippet": "Station and Valve Lot «Sunset Reservoir» Feeder Mains* «Sunset Reservoir»* * These facilities are",
-   "url": "https://archive.org/details/facilitiesreliab2000wate",
-   "deep_link": "https://archive.org/details/facilitiesreliab2000wate?q=Sunset+Reservoir",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
-  },
-  {
-   "identifier": "finalreportjune12002sanf",
-   "title": "Final report : June 1, 2000-June 17, 2002 / San Francisco Public Utilities Infrastructure Task Force",
-   "creator": "San Francisco (Calif.). Public Utilities Infrastructure Task Force",
-   "year": 2000,
-   "pool": "sfpl",
-   "matched_alias": "Sunset Reservoir",
-   "snippet": "the Dam operates at 30% capacity. The «Sunset Reservoir» - For various reasons explained herein",
-   "url": "https://archive.org/details/finalreportjune12002sanf",
-   "deep_link": "https://archive.org/details/finalreportjune12002sanf?q=Sunset+Reservoir",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+   "snippet": "connect five of the well facilities to «Sunset Reservoir»; the sixth well would connect to the",
+   "url": "https://archive.org/details/noticeofpreparat2009sanf",
+   "deep_link": "https://archive.org/details/noticeofpreparat2009sanf?q=Sunset+Reservoir",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Plans & environmental review",
+   "salient": true
   },
   {
    "identifier": "sanandreaspipeli3079sanf",
@@ -74,7 +115,9 @@
    "snippet": "Rd. valve yard in Daly City to the «Sunset Reservoir» is not proposed for construction within",
    "url": "https://archive.org/details/sanandreaspipeli3079sanf",
    "deep_link": "https://archive.org/details/sanandreaspipeli3079sanf?q=Sunset+Reservoir",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Plans & environmental review",
+   "salient": true
   },
   {
    "identifier": "sanandreaspipel3079sanf_0",
@@ -86,7 +129,9 @@
    "snippet": "Rd. valve yard in Daly City to the «Sunset Reservoir» is not proposed for construction within",
    "url": "https://archive.org/details/sanandreaspipel3079sanf_0",
    "deep_link": "https://archive.org/details/sanandreaspipel3079sanf_0?q=Sunset+Reservoir",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Plans & environmental review",
+   "salient": true
   },
   {
    "identifier": "reportofsanfranc1937sanf",
@@ -98,31 +143,9 @@
    "snippet": "University Mound Reservoir Addition 46 «Sunset Reservoir» and Connecting Pipes 47 Contracts Let",
    "url": "https://archive.org/details/reportofsanfranc1937sanf",
    "deep_link": "https://archive.org/details/reportofsanfranc1937sanf?q=Sunset+Reservoir",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
-  },
-  {
-   "identifier": "noticeofpreparat2009sanf",
-   "title": "Notice of preparation of an environmental impact report : San Francisco groundwater supply project",
-   "creator": "San Francisco (Calif.). Planning Department",
-   "year": null,
-   "pool": "sfpl",
-   "matched_alias": "Sunset Reservoir",
-   "snippet": "connect five of the well facilities to «Sunset Reservoir»; the sixth well would connect to the",
-   "url": "https://archive.org/details/noticeofpreparat2009sanf",
-   "deep_link": "https://archive.org/details/noticeofpreparat2009sanf?q=Sunset+Reservoir",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
-  },
-  {
-   "identifier": "feasibilityevalu1919ch2m",
-   "title": "Feasibility evaluation of alternatives to raise Lake Merced : draft",
-   "creator": "CH2M HILL",
-   "year": null,
-   "pool": "sfpl",
-   "matched_alias": "Sunset Reservoir",
-   "snippet": ":h:. GebResources Report X X X 8 Divert «Sunset Reservoir» Ddwatering \";:r to the Lake Public Meeting",
-   "url": "https://archive.org/details/feasibilityevalu1919ch2m",
-   "deep_link": "https://archive.org/details/feasibilityevalu1919ch2m?q=Sunset+Reservoir",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Reports & records",
+   "salient": true
   },
   {
    "identifier": "reportofsanfranc1957sanf",
@@ -134,67 +157,65 @@
    "snippet": "Pag Topic No Picture - South Basin - «Sunset Reservoir» Introduction 1 Historical Development &",
    "url": "https://archive.org/details/reportofsanfranc1957sanf",
    "deep_link": "https://archive.org/details/reportofsanfranc1957sanf?q=Sunset+Reservoir",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Reports & records",
+   "salient": true
   },
   {
-   "identifier": "reportofsanfranc1954sanf",
-   "title": "Report of the San Francisco Water Department",
-   "creator": "San Francisco (Calif.). Water Dept",
+   "identifier": "citydistribution7200sanf",
+   "title": "City Distribution Division capital improvement program driven by facility conditions, May 7, 2001",
+   "creator": "San Francisco Public Utilities Commission",
+   "year": 2001,
+   "pool": "sfpl",
+   "matched_alias": "Sunset Reservoir",
+   "snippet": "Reservoir 4 Sutro Reservoir 5 «Sunset Reservoir» North 6 «Sunset Reservoir» South 7 Stanford Heights",
+   "url": "https://archive.org/details/citydistribution7200sanf",
+   "deep_link": "https://archive.org/details/citydistribution7200sanf?q=Sunset+Reservoir",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Other records",
+   "salient": true
+  },
+  {
+   "identifier": "feasibilityevalu1919ch2m",
+   "title": "Feasibility evaluation of alternatives to raise Lake Merced : draft",
+   "creator": "CH2M HILL",
    "year": null,
    "pool": "sfpl",
    "matched_alias": "Sunset Reservoir",
-   "snippet": "and earthwork for the south basin of «Sunset Reservoir» were moved up to 1955-56 fiscal year",
-   "url": "https://archive.org/details/reportofsanfranc1954sanf",
-   "deep_link": "https://archive.org/details/reportofsanfranc1954sanf?q=Sunset+Reservoir",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+   "snippet": ":h:. GebResources Report X X X 8 Divert «Sunset Reservoir» Ddwatering \";:r to the Lake Public Meeting",
+   "url": "https://archive.org/details/feasibilityevalu1919ch2m",
+   "deep_link": "https://archive.org/details/feasibilityevalu1919ch2m?q=Sunset+Reservoir",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Other records",
+   "salient": false
   },
   {
-   "identifier": "reportofsanfranc1953sanf",
-   "title": "Report of the San Francisco Water Department",
-   "creator": "San Francisco (Calif.). Water Dept",
-   "year": null,
+   "identifier": "facilitiesreliab2000wate",
+   "title": "Facilities reliability program : phase II : regional system overview",
+   "creator": "Water Reliability Partnership",
+   "year": 2000,
    "pool": "sfpl",
    "matched_alias": "Sunset Reservoir",
-   "snippet": "Sunset Supply Line from Burlingame to «Sunset Reservoir» is now completed. Construction of",
-   "url": "https://archive.org/details/reportofsanfranc1953sanf",
-   "deep_link": "https://archive.org/details/reportofsanfranc1953sanf?q=Sunset+Reservoir",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+   "snippet": "Station and Valve Lot «Sunset Reservoir» Feeder Mains* «Sunset Reservoir»* * These facilities are",
+   "url": "https://archive.org/details/facilitiesreliab2000wate",
+   "deep_link": "https://archive.org/details/facilitiesreliab2000wate?q=Sunset+Reservoir",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Other records",
+   "salient": false
   },
   {
-   "identifier": "reportofsanfranc1955sanf",
-   "title": "Report of the San Francisco Water Department",
-   "creator": "San Francisco (Calif.). Water Dept",
-   "year": null,
+   "identifier": "finalreportjune12002sanf",
+   "title": "Final report : June 1, 2000-June 17, 2002 / San Francisco Public Utilities Infrastructure Task Force",
+   "creator": "San Francisco (Calif.). Public Utilities Infrastructure Task Force",
+   "year": 2000,
    "pool": "sfpl",
    "matched_alias": "Sunset Reservoir",
-   "snippet": "the 86 million gallon south basin of «Sunset Reservoir» began March 19 and was 27/j completed",
-   "url": "https://archive.org/details/reportofsanfranc1955sanf",
-   "deep_link": "https://archive.org/details/reportofsanfranc1955sanf?q=Sunset+Reservoir",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
-  },
-  {
-   "identifier": "reportofsanfranc1950sanf",
-   "title": "Report of the San Francisco Water Department",
-   "creator": "San Francisco (Calif.). Water Department",
-   "year": null,
-   "pool": "sfpl",
-   "matched_alias": "Sunset Reservoir",
-   "snippet": "a limited way, the area served by «Sunset reservoir». It will also be possible to reduce",
-   "url": "https://archive.org/details/reportofsanfranc1950sanf",
-   "deep_link": "https://archive.org/details/reportofsanfranc1950sanf?q=Sunset+Reservoir",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
-  },
-  {
-   "identifier": "reportofsanfranc1959sanf",
-   "title": "Report of the San Francisco Water Department",
-   "creator": "San Francisco (Calif.). Water Dept",
-   "year": null,
-   "pool": "sfpl",
-   "matched_alias": "Sunset Reservoir",
-   "snippet": "the finishing of the south basin of «Sunset Reservoir» and a part of the lining and roofing",
-   "url": "https://archive.org/details/reportofsanfranc1959sanf",
-   "deep_link": "https://archive.org/details/reportofsanfranc1959sanf?q=Sunset+Reservoir",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+   "snippet": "the Dam operates at 30% capacity. The «Sunset Reservoir» - For various reasons explained herein",
+   "url": "https://archive.org/details/finalreportjune12002sanf",
+   "deep_link": "https://archive.org/details/finalreportjune12002sanf?q=Sunset+Reservoir",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Other records",
+   "salient": false
   }
  ],
  "dept_shelf": [
@@ -218,29 +239,10 @@
    "year": null,
    "pool": "sfpl",
    "url": "https://archive.org/details/agendapublicutil1989sanf"
-  },
-  {
-   "identifier": "agendapublicutil2008sanf",
-   "title": "Agenda / Public Utilities Commission, City and County of San Francisco",
-   "year": null,
-   "pool": "sfpl",
-   "url": "https://archive.org/details/agendapublicutil2008sanf"
-  },
-  {
-   "identifier": "agendapublicutil1992sanf",
-   "title": "Agenda / Public Utilities Commission, City and County of San Francisco",
-   "year": null,
-   "pool": "sfpl",
-   "url": "https://archive.org/details/agendapublicutil1992sanf"
-  },
-  {
-   "identifier": "aminutes1994sanf",
-   "title": "Minutes",
-   "year": null,
-   "pool": "sfpl",
-   "url": "https://archive.org/details/aminutes1994sanf"
   }
  ],
+ "dept_shelf_label": "Public Utilities Commission",
+ "dept_shelf_more": 3,
  "sources": [
   {
    "label": "City budget & payments",
@@ -253,7 +255,7 @@
  ],
  "_gate": {
   "has_photo": false,
-  "n_documents": 14,
+  "n_documents": 9,
   "n_money_links": 1,
   "meets_pre_summary": false
  }

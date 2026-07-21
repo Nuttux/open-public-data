@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T22:30:00.113785+00:00",
+ "generated_at": "2026-07-21T14:25:53.954097+00:00",
  "source_pipeline": "sf_place_candidates.json → sync_ia_sf.py + link_sf_places.py + fetch_sf_place_photos.py → export_sf_places.py",
  "unit": "USD",
  "slug": "southeast-health-center",
@@ -13,6 +13,185 @@
   "name": "Public Health",
   "code": "DPH"
  },
+ "facility": {
+  "primary_name": "Southeast Health Center",
+  "primary_address": "2401 KEITH ST",
+  "primary_city": "San Francisco",
+  "primary_zip": "94124",
+  "primary_block_lot": "4849016",
+  "primary_department_name": "Public Health",
+  "primary_is_city_owned": true,
+  "primary_gross_sq_ft": 14604,
+  "primary_latitude": 37.72564580400007,
+  "primary_longitude": -122.39200110399997,
+  "supervisor_district": 10,
+  "n_facilities": 1,
+  "total_gross_sq_ft": 14604,
+  "n_owned": 1,
+  "n_leased": 0,
+  "apn_list": [
+   "4849016"
+  ],
+  "facilities": [
+   {
+    "facility_id": 1621,
+    "common_name": "Southeast Health Center",
+    "block_lot": "4849016",
+    "gross_sq_ft": 14604,
+    "is_city_owned": true
+   }
+  ]
+ },
+ "capital": {
+  "n_items": 3,
+  "measure_totals": {
+   "bond_expended": 36760185.97
+  },
+  "bond_programs": [
+   "Public Health and Safety"
+  ],
+  "items": [
+   {
+    "source": "bond",
+    "source_kind": "bond_item",
+    "item_name": "Southeast Health Center",
+    "bond_program": "Public Health and Safety",
+    "component": null,
+    "voter_approved_date": "2016-06-07",
+    "amount_usd": 36760185.9696,
+    "amount_measure": "bond_expended",
+    "budget_usd": 37050648.3993,
+    "contract_no": null,
+    "status": null,
+    "match_evidence": "Southeast Health Center"
+   },
+   {
+    "source": "bond",
+    "source_kind": "bond_project",
+    "item_name": "Southeast Health Center (Phase 1)",
+    "bond_program": "Public Health and Safety",
+    "component": "Southeast Health Center",
+    "voter_approved_date": null,
+    "amount_usd": null,
+    "amount_measure": null,
+    "budget_usd": null,
+    "contract_no": null,
+    "status": null,
+    "match_evidence": "Southeast Health Center"
+   },
+   {
+    "source": "bond",
+    "source_kind": "bond_project",
+    "item_name": "Southeast Health Center (Phase 2)",
+    "bond_program": "Public Health and Safety",
+    "component": "Southeast Health Center",
+    "voter_approved_date": null,
+    "amount_usd": null,
+    "amount_measure": null,
+    "budget_usd": null,
+    "contract_no": null,
+    "status": null,
+    "match_evidence": "Southeast Health Center"
+   }
+  ],
+  "payees": [],
+  "n_payees": 0,
+  "payees_total_paid": 0,
+  "permits": [
+   {
+    "description": "erect (n) 2-story primary care clinic",
+    "permit_type": "new construction wood frame",
+    "declared_cost_usd": 19000000.0,
+    "status": "complete",
+    "permit_date": "2020-05-26",
+    "permit_year": 2020
+   },
+   {
+    "description": "tenant improvment of southeast health center 2401 keith st clinic building. interior scope includes modified partitions, finishes, improvements to mechanical, electrical, plumbing, fire protection/alarm systems, glazing replacement and modifications to sidewalk landscape area along armstrong av.",
+    "permit_type": "otc alterations permit",
+    "declared_cost_usd": 8950000.0,
+    "status": "issued",
+    "permit_date": "2025-06-10",
+    "permit_year": 2025
+   },
+   {
+    "description": "interior renovation of an existing primary care health clinic including new exam rooms,dental suite,lobby,reception & registration,staff workgroup spaces,phlebotomy and podiatry exam rooms, and a server room; maher n/a",
+    "permit_type": "otc alterations permit",
+    "declared_cost_usd": 2000000.0,
+    "status": "expired",
+    "permit_date": "2017-02-03",
+    "permit_year": 2017
+   },
+   {
+    "description": "disconnect old & install new boiler/flue, disconnect & reconnect gas for boiler, disconnect & install new rooftop ac unit & transition curb, disconnect & reconnect conderisate for new rooftop unit, remove (e) constant volume box & replace with new vav box, replace pneumatic controls w/ddc controls",
+    "permit_type": "otc alterations permit",
+    "declared_cost_usd": 608000.0,
+    "status": "expired",
+    "permit_date": "2010-11-19",
+    "permit_year": 2010
+   },
+   {
+    "description": "general building renovation for ada. construct ada parking at (e) parking lot.",
+    "permit_type": "additions alterations or repairs",
+    "declared_cost_usd": 200000.0,
+    "status": "complete",
+    "permit_date": "2008-03-21",
+    "permit_year": 2008
+   },
+   {
+    "description": "install (218) sprinklers throughout per nfpa#13. underground per nfpa# 24 & relocate (1) existing fire department connection to front lawn b.a.# 2019-0506-9853",
+    "permit_type": "otc alterations permit",
+    "declared_cost_usd": 142100.0,
+    "status": "complete",
+    "permit_date": "2021-03-25",
+    "permit_year": 2021
+   }
+  ],
+  "n_permits": 15,
+  "permits_total_declared": 31387285.0,
+  "permits_by_year": [
+   {
+    "year": 1990,
+    "declared_usd": 51000.0
+   },
+   {
+    "year": 2008,
+    "declared_usd": 200000.0
+   },
+   {
+    "year": 2010,
+    "declared_usd": 608000.0
+   },
+   {
+    "year": 2014,
+    "declared_usd": 124000.0
+   },
+   {
+    "year": 2017,
+    "declared_usd": 2009986.0
+   },
+   {
+    "year": 2020,
+    "declared_usd": 19000000.0
+   },
+   {
+    "year": 2021,
+    "declared_usd": 220485.0
+   },
+   {
+    "year": 2022,
+    "declared_usd": 2544.0
+   },
+   {
+    "year": 2024,
+    "declared_usd": 71000.0
+   },
+   {
+    "year": 2025,
+    "declared_usd": 9100270.0
+   }
+  ]
+ },
  "photo": null,
  "photo_credit": null,
  "summary_en": null,
@@ -22,6 +201,13 @@
    "code": "DPH",
    "name": "Public Health",
    "total_usd": 3185025572.0,
+   "fiscal_year": 2025
+  },
+  "payroll_line": {
+   "code": "DPH",
+   "name": "Public Health",
+   "total_compensation_usd": 1583866801.6,
+   "n_employees": 8904,
    "fiscal_year": 2025
   },
   "contracts": [],
@@ -38,43 +224,9 @@
    "snippet": "entire Bayview Hunters Point. The «Southeast Health Center», which is owned by the Department",
    "url": "https://archive.org/details/bayviewhunterspo2004sanf",
    "deep_link": "https://archive.org/details/bayviewhunterspo2004sanf?q=Southeast+Health+Center",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
-  },
-  {
-   "identifier": "agenda200507sanf",
-   "title": "Agenda",
-   "creator": "San Francisco (Calif.). Health Commission. Joint Conference Committee for Community Programs and Services",
-   "year": 2004,
-   "pool": "sfpl",
-   "matched_alias": "Southeast Health Center",
-   "snippet": "the State Office of AIDS SFDPH/CHN/«Southeast Health Center» (SEHC) has been selected to serve",
-   "url": "https://archive.org/details/agenda200507sanf",
-   "deep_link": "https://archive.org/details/agenda200507sanf?q=Southeast+Health+Center",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
-  },
-  {
-   "identifier": "bayviewhunterspo2002bayv",
-   "title": "Bayview Hunters Point Project Area Committee community revitilization concept plan",
-   "creator": "Bayview Hunters Point Project Area Committee",
-   "year": 2002,
-   "pool": "sfpl",
-   "matched_alias": "Southeast Health Center",
-   "snippet": "the expanded «Southeast Health Center» and Aging Campus. The «Southeast Health Center» can act as",
-   "url": "https://archive.org/details/bayviewhunterspo2002bayv",
-   "deep_link": "https://archive.org/details/bayviewhunterspo2002bayv?q=Southeast+Health+Center",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
-  },
-  {
-   "identifier": "sanfranciscochil1991ahma",
-   "title": "San Francisco childhood lead prevention program : data evaluation, 1991-1997",
-   "creator": "Ahmad, Haroon,Martin, Christine,San Francisco (Calif.). Dept. of Public Health",
-   "year": 1991,
-   "pool": "sfpl",
-   "matched_alias": "Southeast Health Center",
-   "snippet": "Potrero Hill Health Center (PHHC) and «Southeast Health Center» (SEHC). Between 1994 and 1995, the",
-   "url": "https://archive.org/details/sanfranciscochil1991ahma",
-   "deep_link": "https://archive.org/details/sanfranciscochil1991ahma?q=Southeast+Health+Center",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Plans & environmental review",
+   "salient": true
   },
   {
    "identifier": "agenda2003bayv_4",
@@ -86,43 +238,9 @@
    "snippet": "Triangle Redevelopment Plan Amendment B. «Southeast Health Center» Development Program Update C. Aging",
    "url": "https://archive.org/details/agenda2003bayv_4",
    "deep_link": "https://archive.org/details/agenda2003bayv_4?q=Southeast+Health+Center",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
-  },
-  {
-   "identifier": "agenda2002bayv",
-   "title": "Agenda",
-   "creator": "Bayview Hunters Point Project Area Committee. Executive Committee",
-   "year": null,
-   "pool": "sfpl",
-   "matched_alias": "Southeast Health Center",
-   "snippet": "Business A. Presentation on the «Southeast Health Center» B. Department of Environment Air",
-   "url": "https://archive.org/details/agenda2002bayv",
-   "deep_link": "https://archive.org/details/agenda2002bayv?q=Southeast+Health+Center",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
-  },
-  {
-   "identifier": "budgetasapproved2002sanf",
-   "title": "Budget as approved by the Board of Supervisors / San Francisco Redevelopment Agency",
-   "creator": "San Francisco Redevelopment Agency (San Francisco, Calif.)",
-   "year": null,
-   "pool": "sfpl",
-   "matched_alias": "Southeast Health Center",
-   "snippet": "studies for the expansion of the «Southeast Health Center» in the Health Center Activity Node",
-   "url": "https://archive.org/details/budgetasapproved2002sanf",
-   "deep_link": "https://archive.org/details/budgetasapproved2002sanf?q=Southeast+Health+Center",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
-  },
-  {
-   "identifier": "minutes2001sanf_2",
-   "title": "Minutes",
-   "creator": "San Francisco Port Commission",
-   "year": null,
-   "pool": "sfpl",
-   "matched_alias": "Southeast Health Center",
-   "snippet": "pos- sible. Expanded «Southeast Health Center»: The «Southeast Health Center» is located on the",
-   "url": "https://archive.org/details/minutes2001sanf_2",
-   "deep_link": "https://archive.org/details/minutes2001sanf_2?q=Southeast+Health+Center",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Meetings & resolutions",
+   "salient": true
   },
   {
    "identifier": "2minutes200102sanf",
@@ -134,55 +252,9 @@
    "snippet": "Presentation: Freddie Smith, Exec. Dir., «Southeast Health Center» - Public Health Programs and Services",
    "url": "https://archive.org/details/2minutes200102sanf",
    "deep_link": "https://archive.org/details/2minutes200102sanf?q=Southeast+Health+Center",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
-  },
-  {
-   "identifier": "agenda2003bayv",
-   "title": "Agenda",
-   "creator": "Bayview Hunters Point Project Area Committee",
-   "year": null,
-   "pool": "sfpl",
-   "matched_alias": "Southeast Health Center",
-   "snippet": "New Business • Presentation on the «Southeast Health Center» 7. Matters of Unfinished Business",
-   "url": "https://archive.org/details/agenda2003bayv",
-   "deep_link": "https://archive.org/details/agenda2003bayv?q=Southeast+Health+Center",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
-  },
-  {
-   "identifier": "minutes93sanf",
-   "title": "Minutes",
-   "creator": "San Francisco (Calif.). Health Commission",
-   "year": null,
-   "pool": "sfpl",
-   "matched_alias": "Southeast Health Center",
-   "snippet": "832 Potrero Hill Health Center: 407 «Southeast Health Center»: 524 Special Programs for Youth:",
-   "url": "https://archive.org/details/minutes93sanf",
-   "deep_link": "https://archive.org/details/minutes93sanf?q=Southeast+Health+Center",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
-  },
-  {
-   "identifier": "memorandum1994sanf_0",
-   "title": "Memorandum",
-   "creator": "San Francisco (Calif.). Childhood Lead Prevention Program",
-   "year": null,
-   "pool": "sfpl",
-   "matched_alias": "Southeast Health Center",
-   "snippet": "1995 Location: «Southeast Health Center» Location: «Southeast Health Center» Time: 2:00 p.m.",
-   "url": "https://archive.org/details/memorandum1994sanf_0",
-   "deep_link": "https://archive.org/details/memorandum1994sanf_0?q=Southeast+Health+Center",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
-  },
-  {
-   "identifier": "1minutes199596sanf",
-   "title": "Minutes",
-   "creator": "San Francisco (Calif.). Southeast Community Facility Commission",
-   "year": null,
-   "pool": "sfpl",
-   "matched_alias": "Southeast Health Center",
-   "snippet": "Ms. Cynthia Selmar, Director of «Southeast Health Center» regretted not being present during",
-   "url": "https://archive.org/details/1minutes199596sanf",
-   "deep_link": "https://archive.org/details/1minutes199596sanf?q=Southeast+Health+Center",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Meetings & resolutions",
+   "salient": true
   },
   {
    "identifier": "sanfranciscodepa200003sanf",
@@ -194,7 +266,65 @@
    "snippet": "Hospital Potrero Hill Health Center «Southeast Health Center» OMI Family Center Special Programs",
    "url": "https://archive.org/details/sanfranciscodepa200003sanf",
    "deep_link": "https://archive.org/details/sanfranciscodepa200003sanf?q=Southeast+Health+Center",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Reports & records",
+   "salient": true
+  },
+  {
+   "identifier": "sanfranciscochil1991ahma",
+   "title": "San Francisco childhood lead prevention program : data evaluation, 1991-1997",
+   "creator": "Ahmad, Haroon,Martin, Christine,San Francisco (Calif.). Dept. of Public Health",
+   "year": 1991,
+   "pool": "sfpl",
+   "matched_alias": "Southeast Health Center",
+   "snippet": "Potrero Hill Health Center (PHHC) and «Southeast Health Center» (SEHC). Between 1994 and 1995, the",
+   "url": "https://archive.org/details/sanfranciscochil1991ahma",
+   "deep_link": "https://archive.org/details/sanfranciscochil1991ahma?q=Southeast+Health+Center",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Other records",
+   "salient": true
+  },
+  {
+   "identifier": "bayviewhunterspo2002bayv",
+   "title": "Bayview Hunters Point Project Area Committee community revitilization concept plan",
+   "creator": "Bayview Hunters Point Project Area Committee",
+   "year": 2002,
+   "pool": "sfpl",
+   "matched_alias": "Southeast Health Center",
+   "snippet": "the expanded «Southeast Health Center» and Aging Campus. The «Southeast Health Center» can act as",
+   "url": "https://archive.org/details/bayviewhunterspo2002bayv",
+   "deep_link": "https://archive.org/details/bayviewhunterspo2002bayv?q=Southeast+Health+Center",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Other records",
+   "salient": true
+  },
+  {
+   "identifier": "budgetasapproved2002sanf",
+   "title": "Budget as approved by the Board of Supervisors / San Francisco Redevelopment Agency",
+   "creator": "San Francisco Redevelopment Agency (San Francisco, Calif.)",
+   "year": null,
+   "pool": "sfpl",
+   "matched_alias": "Southeast Health Center",
+   "snippet": "studies for the expansion of the «Southeast Health Center» in the Health Center Activity Node",
+   "url": "https://archive.org/details/budgetasapproved2002sanf",
+   "deep_link": "https://archive.org/details/budgetasapproved2002sanf?q=Southeast+Health+Center",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Other records",
+   "salient": false
+  },
+  {
+   "identifier": "memorandum1994sanf_0",
+   "title": "Memorandum",
+   "creator": "San Francisco (Calif.). Childhood Lead Prevention Program",
+   "year": null,
+   "pool": "sfpl",
+   "matched_alias": "Southeast Health Center",
+   "snippet": "1995 Location: «Southeast Health Center» Location: «Southeast Health Center» Time: 2:00 p.m.",
+   "url": "https://archive.org/details/memorandum1994sanf_0",
+   "deep_link": "https://archive.org/details/memorandum1994sanf_0?q=Southeast+Health+Center",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Other records",
+   "salient": false
   }
  ],
  "dept_shelf": [
@@ -218,29 +348,10 @@
    "year": null,
    "pool": "sfpl",
    "url": "https://archive.org/details/annualsalaryord197879sanf"
-  },
-  {
-   "identifier": "annualsalaryord197576sanf",
-   "title": "Annual salary ordinance",
-   "year": null,
-   "pool": "sfpl",
-   "url": "https://archive.org/details/annualsalaryord197576sanf"
-  },
-  {
-   "identifier": "weeklybulletin1968sanf",
-   "title": "Weekly bulletin",
-   "year": null,
-   "pool": "sfpl",
-   "url": "https://archive.org/details/weeklybulletin1968sanf"
-  },
-  {
-   "identifier": "15minutes1988sanf",
-   "title": "Minutes",
-   "year": null,
-   "pool": "sfpl",
-   "url": "https://archive.org/details/15minutes1988sanf"
   }
  ],
+ "dept_shelf_label": "Public Health",
+ "dept_shelf_more": 3,
  "sources": [
   {
    "label": "City budget & payments",
@@ -253,7 +364,7 @@
  ],
  "_gate": {
   "has_photo": false,
-  "n_documents": 14,
+  "n_documents": 8,
   "n_money_links": 1,
   "meets_pre_summary": false
  }

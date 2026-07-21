@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T22:30:00.109048+00:00",
+ "generated_at": "2026-07-21T14:25:53.940653+00:00",
  "source_pipeline": "sf_place_candidates.json → sync_ia_sf.py + link_sf_places.py + fetch_sf_place_photos.py → export_sf_places.py",
  "unit": "USD",
  "slug": "sf-main-library",
@@ -12,6 +12,189 @@
  "owning_dept": {
   "name": "Public Library",
   "code": "LIB"
+ },
+ "facility": {
+  "primary_name": "Main Library",
+  "primary_address": "100 LARKIN ST",
+  "primary_city": "San Francisco",
+  "primary_zip": "94102",
+  "primary_block_lot": "0354001",
+  "primary_department_name": "Public Library",
+  "primary_is_city_owned": true,
+  "primary_gross_sq_ft": 376000,
+  "primary_latitude": 37.779081776000055,
+  "primary_longitude": -122.41615205,
+  "supervisor_district": 5,
+  "n_facilities": 1,
+  "total_gross_sq_ft": 376000,
+  "n_owned": 1,
+  "n_leased": 0,
+  "apn_list": [
+   "0354001"
+  ],
+  "facilities": [
+   {
+    "facility_id": 1044,
+    "common_name": "Main Library",
+    "block_lot": "0354001",
+    "gross_sq_ft": 376000,
+    "is_city_owned": true
+   }
+  ]
+ },
+ "capital": {
+  "n_items": 0,
+  "measure_totals": {},
+  "bond_programs": [],
+  "items": [],
+  "payees": [
+   {
+    "vendor": "BUHLER COMMERCIAL",
+    "paid_usd": 3773726.43,
+    "n_contracts": 1,
+    "first_fiscal_year": 2023,
+    "last_fiscal_year": 2024
+   },
+   {
+    "vendor": "URBAN ALCHEMY",
+    "paid_usd": 2901765.19,
+    "n_contracts": 1,
+    "first_fiscal_year": 2022,
+    "last_fiscal_year": 2026
+   }
+  ],
+  "n_payees": 2,
+  "payees_total_paid": 6675491.62,
+  "permits": [
+   {
+    "description": "erect a seven story public library-new main branch library",
+    "permit_type": "new construction",
+    "declared_cost_usd": 85000000.0,
+    "status": "expired",
+    "permit_date": "1992-06-04",
+    "permit_year": 1992
+   },
+   {
+    "description": "erect a seven story public library-new main branch library",
+    "permit_type": "new construction",
+    "declared_cost_usd": 85000000.0,
+    "status": "expired",
+    "permit_date": "1992-06-04",
+    "permit_year": 1992
+   },
+   {
+    "description": "removal of existing 42 atrium smoke exhaust fans and replacement with 42 new atrium smoke exhaust fans due to equipment obsolescence.",
+    "permit_type": "otc alterations permit",
+    "declared_cost_usd": 5000000.0,
+    "status": "filed",
+    "permit_date": "2026-04-16",
+    "permit_year": 2026
+   },
+   {
+    "description": "replacement of roofing membrane, replace sealant around skylights and curtainwall, replace plumbing drains as need on roof drains",
+    "permit_type": "otc alterations permit",
+    "declared_cost_usd": 4000000.0,
+    "status": "issued",
+    "permit_date": "2026-07-08",
+    "permit_year": 2026
+   },
+   {
+    "description": "scope consists of 1st floor renovation of main library. tenant improvments and installation of sorting machine, automated storage and retrievel machine by logistex (under different permit). no exterior work.",
+    "permit_type": "additions alterations or repairs",
+    "declared_cost_usd": 2800000.0,
+    "status": "complete",
+    "permit_date": "2006-11-16",
+    "permit_year": 2006
+   },
+   {
+    "description": "tenant improvement for teen ctr at 2/fl. selective interior demo of(e)bldg, construction of new offices,sound booth,video recording booth,maker space(arts&crafts) single user restroom w/updated mech,plumbing,elec sys. fire sprinkler and fire alarm revisions under separate application.",
+    "permit_type": "otc alterations permit",
+    "declared_cost_usd": 1800000.0,
+    "status": "complete",
+    "permit_date": "2014-07-24",
+    "permit_year": 2014
+   }
+  ],
+  "n_permits": 52,
+  "permits_total_declared": 189619196.0,
+  "permits_by_year": [
+   {
+    "year": 1992,
+    "declared_usd": 171332000.0
+   },
+   {
+    "year": 1995,
+    "declared_usd": 20640.0
+   },
+   {
+    "year": 1997,
+    "declared_usd": 17580.0
+   },
+   {
+    "year": 2000,
+    "declared_usd": 136000.0
+   },
+   {
+    "year": 2003,
+    "declared_usd": 10000.0
+   },
+   {
+    "year": 2005,
+    "declared_usd": 120000.0
+   },
+   {
+    "year": 2006,
+    "declared_usd": 2800000.0
+   },
+   {
+    "year": 2007,
+    "declared_usd": 82000.0
+   },
+   {
+    "year": 2008,
+    "declared_usd": 14000.0
+   },
+   {
+    "year": 2013,
+    "declared_usd": 40000.0
+   },
+   {
+    "year": 2014,
+    "declared_usd": 2887350.0
+   },
+   {
+    "year": 2015,
+    "declared_usd": 116000.0
+   },
+   {
+    "year": 2017,
+    "declared_usd": 120000.0
+   },
+   {
+    "year": 2019,
+    "declared_usd": 670000.0
+   },
+   {
+    "year": 2020,
+    "declared_usd": 3770.0
+   },
+   {
+    "year": 2021,
+    "declared_usd": 307200.0
+   },
+   {
+    "year": 2022,
+    "declared_usd": 907556.0
+   },
+   {
+    "year": 2025,
+    "declared_usd": 190100.0
+   },
+   {
+    "year": 2026,
+    "declared_usd": 9845000.0
+   }
+  ]
  },
  "photo": "/img/us/sf/places/sf-main-library.jpg",
  "photo_credit": {
@@ -33,6 +216,13 @@
    "total_usd": 187421705.0,
    "fiscal_year": 2025
   },
+  "payroll_line": {
+   "code": "LIB",
+   "name": "Public Library",
+   "total_compensation_usd": 110470134.22,
+   "n_employees": 985,
+   "fiscal_year": 2025
+  },
   "contracts": [
    {
     "contract_no": "1000022761",
@@ -41,7 +231,15 @@
     "department_code": "LIB",
     "agreed_usd": 5011265.61,
     "paid_usd": 2702896.81,
-    "evidence": "Workforce Dev Main Library"
+    "evidence": "Workforce Dev Main Library",
+    "team": [
+     {
+      "supplier": "URBAN ALCHEMY",
+      "role": "Prime Contractor",
+      "lbe": false,
+      "attached_usd": 5011265.61
+     }
+    ]
    }
   ],
   "grants": []
@@ -57,7 +255,9 @@
    "snippet": "2003 «SAN FRANCISCO PUBLIC LIBRARY» «San Francisco Public Library» «SAN FRANCISCO PUBLIC LIBRARY» STRATEGIC",
    "url": "https://archive.org/details/sanfranciscopubl7200sanf",
    "deep_link": "https://archive.org/details/sanfranciscopubl7200sanf?q=San+Francisco+Public+Library",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Plans & environmental review",
+   "salient": true
   },
   {
    "identifier": "sanfranciscopub4200ripl_0",
@@ -69,19 +269,9 @@
    "snippet": "RIPLEY I «SAN FRANCISCO PUBLIC LIBRARY» 3 1223 05308 2278 «San Francisco Public Library» Post Occupancy",
    "url": "https://archive.org/details/sanfranciscopub4200ripl_0",
    "deep_link": "https://archive.org/details/sanfranciscopub4200ripl_0?q=San+Francisco+Public+Library",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
-  },
-  {
-   "identifier": "historicstructur02page",
-   "title": "Historic structure report, Old Main Library",
-   "creator": "Page & Turnbull,Porter, William A., photographer,Piazzoni, Gottardo,Asian Art Museum--Chong-Moon Lee Center for Asian Art and Culture",
-   "year": 1998,
-   "pool": "sfpl",
-   "matched_alias": "Main Library",
-   "snippet": "Libre I [istoric Structure Report < >ld «Main Library» Volume II A^ian Art Museum Jul; : PAGE&Tl",
-   "url": "https://archive.org/details/historicstructur02page",
-   "deep_link": "https://archive.org/details/historicstructur02page?q=Main+Library",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Plans & environmental review",
+   "salient": true
   },
   {
    "identifier": "sanfranciscomain7199sanf",
@@ -93,31 +283,23 @@
    "snippet": "available from the New «Main Library». Renovation of the existing «Main Library» would not result",
    "url": "https://archive.org/details/sanfranciscomain7199sanf",
    "deep_link": "https://archive.org/details/sanfranciscomain7199sanf?q=Main+Library",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Plans & environmental review",
+   "salient": true
   },
   {
-   "identifier": "noticecommunityg2014sanf",
-   "title": "Notice, community groups meeting in the Branch and Main Libraries",
-   "creator": "San Francisco Public Library",
-   "year": null,
+   "identifier": "historicstructur02page",
+   "title": "Historic structure report, Old Main Library",
+   "creator": "Page & Turnbull,Porter, William A., photographer,Piazzoni, Gottardo,Asian Art Museum--Chong-Moon Lee Center for Asian Art and Culture",
+   "year": 1998,
    "pool": "sfpl",
    "matched_alias": "Main Library",
-   "snippet": "2014 College Class - scottd2@miamioh.edu «Main Library», 10:00-12:00 PM Stong Room - Floor 1",
-   "url": "https://archive.org/details/noticecommunityg2014sanf",
-   "deep_link": "https://archive.org/details/noticecommunityg2014sanf?q=Main+Library",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
-  },
-  {
-   "identifier": "release1991sanf",
-   "title": "[Release]",
-   "creator": "San Francisco Public Library",
-   "year": null,
-   "pool": "sfpl",
-   "matched_alias": "Main Library",
-   "snippet": "branch libraries, the «Main Library» circulating collection, the «Main Library» video collection,",
-   "url": "https://archive.org/details/release1991sanf",
-   "deep_link": "https://archive.org/details/release1991sanf?q=Main+Library",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+   "snippet": "Libre I [istoric Structure Report < >ld «Main Library» Volume II A^ian Art Museum Jul; : PAGE&Tl",
+   "url": "https://archive.org/details/historicstructur02page",
+   "deep_link": "https://archive.org/details/historicstructur02page?q=Main+Library",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Plans & environmental review",
+   "salient": true
   },
   {
    "identifier": "minutesofregular1998sanf",
@@ -129,19 +311,9 @@
    "snippet": "111,000 children/youth N.A. 186,000 «Main Library»: The «Main Library» is the City's largest \"branch\"",
    "url": "https://archive.org/details/minutesofregular1998sanf",
    "deep_link": "https://archive.org/details/minutesofregular1998sanf?q=Main+Library",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
-  },
-  {
-   "identifier": "sanfranciscomain1419rand",
-   "title": "The San Francisco main public library : an assessment of the existing facility and its ability to meet future library needs",
-   "creator": "Randall Rice and Joseph Becker,with Hellmuth, Obata, and Kassabaum",
-   "year": null,
-   "pool": "sfpl",
-   "matched_alias": "Main Library",
-   "snippet": "Role of the «Main Library» Throughout its 110-year history, the «Main Library» has always been",
-   "url": "https://archive.org/details/sanfranciscomain1419rand",
-   "deep_link": "https://archive.org/details/sanfranciscomain1419rand?q=Main+Library",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Meetings & resolutions",
+   "salient": true
   },
   {
    "identifier": "agendasanfranci1990sanf_3",
@@ -153,7 +325,9 @@
    "snippet": "3 . Ipdate on new «main library» and branch renovations . «Main Library», Civic Center San Francisco",
    "url": "https://archive.org/details/agendasanfranci1990sanf_3",
    "deep_link": "https://archive.org/details/agendasanfranci1990sanf_3?q=Main+Library",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Meetings & resolutions",
+   "salient": true
   },
   {
    "identifier": "agendasminutess1979sanf_1",
@@ -165,24 +339,54 @@
    "snippet": "for a new «main library». Evaluation of City Librarian and Secretary. «Main Library», Civic Center",
    "url": "https://archive.org/details/agendasminutess1979sanf_1",
    "deep_link": "https://archive.org/details/agendasminutess1979sanf_1?q=Main+Library",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Meetings & resolutions",
+   "salient": false
+  },
+  {
+   "identifier": "release1991sanf",
+   "title": "[Release]",
+   "creator": "San Francisco Public Library",
+   "year": null,
+   "pool": "sfpl",
+   "matched_alias": "Main Library",
+   "snippet": "branch libraries, the «Main Library» circulating collection, the «Main Library» video collection,",
+   "url": "https://archive.org/details/release1991sanf",
+   "deep_link": "https://archive.org/details/release1991sanf?q=Main+Library",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Other records",
+   "salient": false
+  },
+  {
+   "identifier": "sanfranciscomain1419rand",
+   "title": "The San Francisco main public library : an assessment of the existing facility and its ability to meet future library needs",
+   "creator": "Randall Rice and Joseph Becker,with Hellmuth, Obata, and Kassabaum",
+   "year": null,
+   "pool": "sfpl",
+   "matched_alias": "Main Library",
+   "snippet": "Role of the «Main Library» Throughout its 110-year history, the «Main Library» has always been",
+   "url": "https://archive.org/details/sanfranciscomain1419rand",
+   "deep_link": "https://archive.org/details/sanfranciscomain1419rand?q=Main+Library",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Other records",
+   "salient": false
+  },
+  {
+   "identifier": "noticecommunityg2014sanf",
+   "title": "Notice, community groups meeting in the Branch and Main Libraries",
+   "creator": "San Francisco Public Library",
+   "year": null,
+   "pool": "sfpl",
+   "matched_alias": "Main Library",
+   "snippet": "2014 College Class - scottd2@miamioh.edu «Main Library», 10:00-12:00 PM Stong Room - Floor 1",
+   "url": "https://archive.org/details/noticecommunityg2014sanf",
+   "deep_link": "https://archive.org/details/noticecommunityg2014sanf?q=Main+Library",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Other records",
+   "salient": false
   }
  ],
  "dept_shelf": [
-  {
-   "identifier": "sanfranciscopubl7200sanf",
-   "title": "San Francisco Public Library strategic plan, 2003-2006 : July 7, 2003 draft",
-   "year": 2003,
-   "pool": "sfpl",
-   "url": "https://archive.org/details/sanfranciscopubl7200sanf"
-  },
-  {
-   "identifier": "sanfranciscopub4200ripl_0",
-   "title": "San Francisco Public Library Post Occupancy Evaluation",
-   "year": 2000,
-   "pool": "sfpl",
-   "url": "https://archive.org/details/sanfranciscopub4200ripl_0"
-  },
   {
    "identifier": "minutesofregula1619sanf_0",
    "title": "Minutes of the regular meeting ... / San Francisco Public Library Commission",
@@ -203,15 +407,10 @@
    "year": null,
    "pool": "sfpl",
    "url": "https://archive.org/details/agendasminutessa1979sanf"
-  },
-  {
-   "identifier": "requestforuseofp1998sanf",
-   "title": "Request for use of public meeting rooms / Branch meeting rooms summary",
-   "year": null,
-   "pool": "sfpl",
-   "url": "https://archive.org/details/requestforuseofp1998sanf"
   }
  ],
+ "dept_shelf_label": "Public Library",
+ "dept_shelf_more": 1,
  "sources": [
   {
    "label": "City budget & payments",

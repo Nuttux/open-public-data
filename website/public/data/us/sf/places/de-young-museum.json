@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T22:30:00.117965+00:00",
+ "generated_at": "2026-07-21T14:25:53.963917+00:00",
  "source_pipeline": "sf_place_candidates.json → sync_ia_sf.py + link_sf_places.py + fetch_sf_place_photos.py → export_sf_places.py",
  "unit": "USD",
  "slug": "de-young-museum",
@@ -12,6 +12,262 @@
  "owning_dept": {
   "name": "Fine Arts Museums",
   "code": "FAM"
+ },
+ "facility": {
+  "primary_name": "De Young Museum",
+  "primary_address": "50 HAGIWARA TEA GARDEN DR",
+  "primary_city": "San Francisco",
+  "primary_zip": "94117",
+  "primary_block_lot": "1700001",
+  "primary_department_name": "Fine Arts Museums",
+  "primary_is_city_owned": true,
+  "primary_gross_sq_ft": 292500,
+  "primary_latitude": 37.77158354300008,
+  "primary_longitude": -122.46881241199998,
+  "supervisor_district": 7,
+  "n_facilities": 1,
+  "total_gross_sq_ft": 292500,
+  "n_owned": 1,
+  "n_leased": 0,
+  "apn_list": [
+   "1700001"
+  ],
+  "facilities": [
+   {
+    "facility_id": 577,
+    "common_name": "De Young Museum",
+    "block_lot": "1700001",
+    "gross_sq_ft": 292500,
+    "is_city_owned": true
+   }
+  ]
+ },
+ "capital": {
+  "n_items": 0,
+  "measure_totals": {},
+  "bond_programs": [],
+  "items": [],
+  "payees": [],
+  "n_payees": 0,
+  "payees_total_paid": 0,
+  "permits": [
+   {
+    "description": "erect museum & research building 3 stories, 2 basements",
+    "permit_type": "additions alterations or repairs",
+    "declared_cost_usd": 130000000.0,
+    "status": "complete",
+    "permit_date": "2005-11-23",
+    "permit_year": 2005
+   },
+   {
+    "description": "to erect 2 story museum & 9 story tower",
+    "permit_type": "new construction",
+    "declared_cost_usd": 105000000.0,
+    "status": "complete",
+    "permit_date": "2002-02-07",
+    "permit_year": 2002
+   },
+   {
+    "description": "2 stories of underground parking space",
+    "permit_type": "new construction",
+    "declared_cost_usd": 35000000.0,
+    "status": "complete",
+    "permit_date": "2003-12-15",
+    "permit_year": 2003
+   },
+   {
+    "description": "erect an one story type 5 construction recreation and office",
+    "permit_type": "new construction wood frame",
+    "declared_cost_usd": 17013752.0,
+    "status": "complete",
+    "permit_date": "2019-08-26",
+    "permit_year": 2019
+   },
+   {
+    "description": "to erect 1 story nursery w/ green house and a3 assembly area in golden gate park.",
+    "permit_type": "new construction wood frame",
+    "declared_cost_usd": 5500000.0,
+    "status": "cancelled",
+    "permit_date": "2013-12-20",
+    "permit_year": 2013
+   },
+   {
+    "description": "install shoring for excavation, excavate and stock spoils, compact for new building, cut foundation",
+    "permit_type": "additions alterations or repairs",
+    "declared_cost_usd": 4000000.0,
+    "status": "complete",
+    "permit_date": "2005-08-04",
+    "permit_year": 2005
+   }
+  ],
+  "n_permits": 341,
+  "permits_total_declared": 372592120.0,
+  "permits_by_year": [
+   {
+    "year": 1983,
+    "declared_usd": 40000.0
+   },
+   {
+    "year": 1986,
+    "declared_usd": 73976.0
+   },
+   {
+    "year": 1987,
+    "declared_usd": 711550.0
+   },
+   {
+    "year": 1988,
+    "declared_usd": 4298912.0
+   },
+   {
+    "year": 1989,
+    "declared_usd": 188220.0
+   },
+   {
+    "year": 1990,
+    "declared_usd": 1834000.0
+   },
+   {
+    "year": 1991,
+    "declared_usd": 435000.0
+   },
+   {
+    "year": 1992,
+    "declared_usd": 203900.0
+   },
+   {
+    "year": 1993,
+    "declared_usd": 5283000.0
+   },
+   {
+    "year": 1994,
+    "declared_usd": 1818450.0
+   },
+   {
+    "year": 1995,
+    "declared_usd": 727465.0
+   },
+   {
+    "year": 1996,
+    "declared_usd": 2050550.0
+   },
+   {
+    "year": 1997,
+    "declared_usd": 784737.0
+   },
+   {
+    "year": 1998,
+    "declared_usd": 924850.0
+   },
+   {
+    "year": 1999,
+    "declared_usd": 4359000.0
+   },
+   {
+    "year": 2001,
+    "declared_usd": 3091415.0
+   },
+   {
+    "year": 2002,
+    "declared_usd": 107040000.0
+   },
+   {
+    "year": 2003,
+    "declared_usd": 37822350.0
+   },
+   {
+    "year": 2004,
+    "declared_usd": 2582650.0
+   },
+   {
+    "year": 2005,
+    "declared_usd": 134882628.0
+   },
+   {
+    "year": 2006,
+    "declared_usd": 425000.0
+   },
+   {
+    "year": 2007,
+    "declared_usd": 2643700.0
+   },
+   {
+    "year": 2008,
+    "declared_usd": 4739764.0
+   },
+   {
+    "year": 2009,
+    "declared_usd": 534000.0
+   },
+   {
+    "year": 2010,
+    "declared_usd": 599423.0
+   },
+   {
+    "year": 2011,
+    "declared_usd": 2593442.0
+   },
+   {
+    "year": 2012,
+    "declared_usd": 653982.0
+   },
+   {
+    "year": 2013,
+    "declared_usd": 7622475.0
+   },
+   {
+    "year": 2014,
+    "declared_usd": 3967696.0
+   },
+   {
+    "year": 2015,
+    "declared_usd": 1179903.0
+   },
+   {
+    "year": 2016,
+    "declared_usd": 75000.0
+   },
+   {
+    "year": 2017,
+    "declared_usd": 2405856.0
+   },
+   {
+    "year": 2018,
+    "declared_usd": 1078355.0
+   },
+   {
+    "year": 2019,
+    "declared_usd": 18737847.0
+   },
+   {
+    "year": 2020,
+    "declared_usd": 97000.0
+   },
+   {
+    "year": 2021,
+    "declared_usd": 1331628.0
+   },
+   {
+    "year": 2022,
+    "declared_usd": 8189652.0
+   },
+   {
+    "year": 2023,
+    "declared_usd": 2330798.0
+   },
+   {
+    "year": 2024,
+    "declared_usd": 1108566.0
+   },
+   {
+    "year": 2025,
+    "declared_usd": 2952580.0
+   },
+   {
+    "year": 2026,
+    "declared_usd": 172800.0
+   }
+  ]
  },
  "photo": "/img/us/sf/places/de-young-museum.jpg",
  "photo_credit": {
@@ -33,6 +289,13 @@
    "total_usd": 23610575.0,
    "fiscal_year": 2025
   },
+  "payroll_line": {
+   "code": "FAM",
+   "name": "Fine Arts Museum",
+   "total_compensation_usd": 17219036.94,
+   "n_employees": 206,
+   "fiscal_year": 2025
+  },
   "contracts": [],
   "grants": []
  },
@@ -47,7 +310,9 @@
    "snippet": "existing Asian Art and «de Young» Museums with an expanded «de Young» Museum and would not introduce",
    "url": "https://archive.org/details/newdeyoungmuseum2020sanf",
    "deep_link": "https://archive.org/details/newdeyoungmuseum2020sanf?q=de+Young+Museum",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Plans & environmental review",
+   "salient": true
   },
   {
    "identifier": "newdeyoungsicmus2220sanf",
@@ -59,43 +324,9 @@
    "snippet": "major steps: «de Young Museum» closes to public «de Young Museum» pack-up «de Young Museum» site remediation",
    "url": "https://archive.org/details/newdeyoungsicmus2220sanf",
    "deep_link": "https://archive.org/details/newdeyoungsicmus2220sanf?q=de+Young+Museum",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
-  },
-  {
-   "identifier": "mhdeyoungmemoria1119fine",
-   "title": "M.H. de Young Memorial Museum : visitorship, fiscal benefit and economic impact analysis",
-   "creator": "Fine Arts Museums of San Francisco,Sedway Group (Firm)",
-   "year": 1997,
-   "pool": "sfpl",
-   "matched_alias": "de Young Museum",
-   "snippet": "the M.H. de Young Memorial Museum (\"«de Young Museum»\" or \"Museum\"). The purpose of this study",
-   "url": "https://archive.org/details/mhdeyoungmemoria1119fine",
-   "deep_link": "https://archive.org/details/mhdeyoungmemoria1119fine?q=de+Young+Museum",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
-  },
-  {
-   "identifier": "mhdeyoungmemori1997sedw_0",
-   "title": "M.H. de Young Memorial Museum : site selection study",
-   "creator": "Sedway Consulting (Firm),Fine Arts Museums of San Francisco,ROMA Design Group",
-   "year": 1997,
-   "pool": "sfpl",
-   "matched_alias": "de Young",
-   "snippet": "APPENDIX A «De Young» Museum Urban Building and Pavilion Concept Model Programs «de Young» Museum",
-   "url": "https://archive.org/details/mhdeyoungmemori1997sedw_0",
-   "deep_link": "https://archive.org/details/mhdeyoungmemori1997sedw_0?q=de+Young",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
-  },
-  {
-   "identifier": "annualreport1970fine",
-   "title": "Annual report",
-   "creator": "Fine Arts Museums of San Francisco",
-   "year": null,
-   "pool": "sfpl",
-   "matched_alias": "de Young Museum",
-   "snippet": "Miller, «de Young» Board Mrs. Peter McBean, «de Young» Board Mr. Cyril Magnin, «de Young» Board",
-   "url": "https://archive.org/details/annualreport1970fine",
-   "deep_link": "https://archive.org/details/annualreport1970fine?q=de+Young+Museum",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Plans & environmental review",
+   "salient": true
   },
   {
    "identifier": "minutesagendas2004fine",
@@ -107,7 +338,9 @@
    "snippet": "New «de Young Museum» in Golden Gate Park. The building of the New «de Young Museum» is rapidly",
    "url": "https://archive.org/details/minutesagendas2004fine",
    "deep_link": "https://archive.org/details/minutesagendas2004fine?q=de+Young+Museum",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Meetings & resolutions",
+   "salient": true
   },
   {
    "identifier": "minutes2000corp",
@@ -119,19 +352,9 @@
    "snippet": "the old «de Young» to the new «de Young». “ Building excitement about new «de Young» (“buzz”)",
    "url": "https://archive.org/details/minutes2000corp",
    "deep_link": "https://archive.org/details/minutes2000corp?q=de+Young+Museum",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
-  },
-  {
-   "identifier": "whatsdoinginpark1977sanf",
-   "title": "What's doing in the parks?",
-   "creator": "San Francisco (Calif.). Recreation and Park Department",
-   "year": null,
-   "pool": "sfpl",
-   "matched_alias": "de Young Museum",
-   "snippet": "\"As We Were, As V/e Are\" exhibi*;, «de Young Museum», Golden Gate Park, through January 30th",
-   "url": "https://archive.org/details/whatsdoinginpark1977sanf",
-   "deep_link": "https://archive.org/details/whatsdoinginpark1977sanf?q=de+Young+Museum",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Meetings & resolutions",
+   "salient": true
   },
   {
    "identifier": "minutesorderofbu1999corp",
@@ -143,7 +366,23 @@
    "snippet": "New «de Young Museum» C. Report on the Conceptual Planning for a New «de Young Museum» 1 .",
    "url": "https://archive.org/details/minutesorderofbu1999corp",
    "deep_link": "https://archive.org/details/minutesorderofbu1999corp?q=de+Young+Museum",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Meetings & resolutions",
+   "salient": true
+  },
+  {
+   "identifier": "annualreport1970fine",
+   "title": "Annual report",
+   "creator": "Fine Arts Museums of San Francisco",
+   "year": null,
+   "pool": "sfpl",
+   "matched_alias": "de Young Museum",
+   "snippet": "Miller, «de Young» Board Mrs. Peter McBean, «de Young» Board Mr. Cyril Magnin, «de Young» Board",
+   "url": "https://archive.org/details/annualreport1970fine",
+   "deep_link": "https://archive.org/details/annualreport1970fine?q=de+Young+Museum",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Reports & records",
+   "salient": true
   },
   {
    "identifier": "annualappropriat1947sanf",
@@ -155,10 +394,56 @@
    "snippet": "Services of Other Departments («de Young Museum») . . «de YOUNG MUSEUM» Permanent Salaries Allowance",
    "url": "https://archive.org/details/annualappropriat1947sanf",
    "deep_link": "https://archive.org/details/annualappropriat1947sanf?q=de+Young+Museum",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Other records",
+   "salient": false
+  },
+  {
+   "identifier": "mhdeyoungmemori1997sedw_0",
+   "title": "M.H. de Young Memorial Museum : site selection study",
+   "creator": "Sedway Consulting (Firm),Fine Arts Museums of San Francisco,ROMA Design Group",
+   "year": 1997,
+   "pool": "sfpl",
+   "matched_alias": "de Young",
+   "snippet": "APPENDIX A «De Young» Museum Urban Building and Pavilion Concept Model Programs «de Young» Museum",
+   "url": "https://archive.org/details/mhdeyoungmemori1997sedw_0",
+   "deep_link": "https://archive.org/details/mhdeyoungmemori1997sedw_0?q=de+Young",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Other records",
+   "salient": false
+  },
+  {
+   "identifier": "mhdeyoungmemoria1119fine",
+   "title": "M.H. de Young Memorial Museum : visitorship, fiscal benefit and economic impact analysis",
+   "creator": "Fine Arts Museums of San Francisco,Sedway Group (Firm)",
+   "year": 1997,
+   "pool": "sfpl",
+   "matched_alias": "de Young Museum",
+   "snippet": "the M.H. de Young Memorial Museum (\"«de Young Museum»\" or \"Museum\"). The purpose of this study",
+   "url": "https://archive.org/details/mhdeyoungmemoria1119fine",
+   "deep_link": "https://archive.org/details/mhdeyoungmemoria1119fine?q=de+Young+Museum",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Other records",
+   "salient": false
+  },
+  {
+   "identifier": "whatsdoinginpark1977sanf",
+   "title": "What's doing in the parks?",
+   "creator": "San Francisco (Calif.). Recreation and Park Department",
+   "year": null,
+   "pool": "sfpl",
+   "matched_alias": "de Young Museum",
+   "snippet": "\"As We Were, As V/e Are\" exhibi*;, «de Young Museum», Golden Gate Park, through January 30th",
+   "url": "https://archive.org/details/whatsdoinginpark1977sanf",
+   "deep_link": "https://archive.org/details/whatsdoinginpark1977sanf?q=de+Young+Museum",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Other records",
+   "salient": false
   }
  ],
  "dept_shelf": [],
+ "dept_shelf_label": "Fine Arts Museums",
+ "dept_shelf_more": 0,
  "sources": [
   {
    "label": "City budget & payments",

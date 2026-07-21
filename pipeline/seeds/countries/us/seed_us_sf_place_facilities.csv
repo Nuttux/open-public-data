@@ -1,0 +1,165 @@
+place_slug,facility_id,common_name,address,block_lot,apn_block,apn_lot,is_city_owned,gross_sq_ft,department_name,is_primary,match_method,match_evidence,distance_m
+alamo-square,108,Alamo Square Bathrooms,1081 FULTON ST,0799001,0799,001,true,500,Recreation And Parks,true,name,Alamo Square,43
+asian-art-museum,143,Asian Art Museum,200 LARKIN ST,0353001,0353,001,true,185000,Asian Art Museum,true,name,Asian Art Museum,11
+bernal-heights-branch-library,179,Bernal Heights Branch Library,500 CORTLAND AVE,5707027,5707,027,true,8777,Public Library,true,name,Bernal Heights Branch Library,17
+bill-graham-civic-auditorium,188,Bill Graham Civic Auditorium,99 GROVE ST,0812001,0812,001,true,113437,Gsa - Real Estate Division,true,name,Bill Graham Civic Auditorium,47
+buena-vista-park,206,Buena Vista Park Bathrooms,BUENA VISTA AVE EAST & WALLER ST,2601001,2601,001,true,400,Recreation And Parks,true,name,Buena Vista Park,185
+cable-car-barn,366,CABLE CAR BARN,1201 MASON ST,0190005,0190,005,true,83741,Municipal Transportation Agency,true,name,Cable Car Barn & Powerhouse,35
+camp-mather,376,Camp Mather,25250 MATHER RD,681600100,6816,00100,true,,Recreation And Parks,true,name,Camp Mather,208
+camp-mather,377,Camp Mather First Aid Cabin,32560 MATHER RD,681600100,6816,00100,true,,Recreation And Parks,false,name,Camp Mather,312
+camp-mather,378,Camp Mather General Store,32560 MATHER RD,681600100,6816,00100,true,,Recreation And Parks,false,name,Camp Mather,405
+camp-mather,379,Camp Mather Nurse's Cabin,32560 MATHER RD,681600100,6816,00100,true,,Recreation And Parks,false,name,Camp Mather,311
+camp-mather,380,Camp Mather Office,35250 MATHER RD,681600100,6816,00100,true,,Recreation And Parks,false,name,Camp Mather,368
+camp-mather,381,Camp Mather Priest Cabin,32560 MATHER RD,681600100,6816,00100,true,,Recreation And Parks,false,name,Camp Mather,208
+camp-mather,382,Camp Mather Rest Room D,32560 MATHER RD,681600100,6816,00100,true,,Recreation And Parks,false,name,Camp Mather,205
+camp-mather,383,Camp Mather Stage,32560 MATHER RD,681600100,6816,00100,true,,Recreation And Parks,false,name,Camp Mather,400
+chinatown-branch-library,465,Chinatown Branch Library,1135 POWELL ST,0191004,0191,004,true,17858,Public Library,true,name,Chinatown Branch Library,20
+chinatown-public-health-center,468,Chinatown Public Health Center,1490 MASON ST,0159046,0159,046,true,22500,Public Health,true,name,Chinatown Public Health Center,59
+coit-tower,501,Coit Tower,1 TELEGRAPH HILL BLVD,0086012,0086,012,true,5687,Recreation And Parks,true,name,Coit Tower,5
+conservatory-of-flowers,522,Conservatory of Flowers,100 JOHN F KENNEDY DR,1263011,1263,011,true,27900,Recreation And Parks,true,name,Conservatory of Flowers,9
+davies-symphony-hall,576,Davies Symphony Hall,201 VAN NESS AVE,0810001,0810,001,true,203500,War Memorial,true,name,Louise M. Davies Symphony Hall,20
+de-young-museum,577,De Young Museum,50 HAGIWARA TEA GARDEN DR,1700001,1700,001,true,292500,Fine Arts Museums,true,name,de Young Museum,14
+excelsior-branch-library,651,Excelsior Branch Library,4400 MISSION ST,6797046,6797,046,true,8302,Public Library,true,name,Excelsior Branch Library,595
+ferry-building,657,Fac. 274-175 - Ferry Building Clock Tower,SAN FRANCISCO FERRY BLDG,9900070,9900,070,true,298488,Port,true,name,Ferry Building,9
+glen-canyon-park,811,Glen Park Rec Center,70 ELK ST,7560002,7560,002,true,15200,Recreation And Parks,true,name,Glen Park,358
+glen-park-branch-library,1228,Park Branch Library,1833 PAGE ST,1229031,1229,031,true,8825,Public Library,true,name,Glen Park Branch Library,4369
+glen-park-branch-library,808,Glen Park Branch Library,2825 DIAMOND ST,6745073,6745,073,true,7185,Public Library,false,name,Glen Park Branch Library,77
+golden-gate-park,813,Golden Gate Park Senior Center,6101 FULTON ST,1263011,1263,011,true,,Recreation And Parks,true,name,Golden Gate Park,984
+hall-of-justice,874,Hall of Justice (HOJ),850 BRYANT ST,3759042,3759,042,true,615241,Gsa - Real Estate Division,true,name,Hall of Justice,68
+hall-of-justice,3060,HALL OF JUSTICE GAS STATION,950 BRYANT ST,3758127,3758,127,true,,Gsa - Office Of Contract Administration,false,name,Hall of Justice,263
+japanese-tea-garden,929,Japanese Tea Garden Giftshop,75 HAGIWARA TEA GARDEN DR,1263011,1263,011,true,1690,Recreation And Parks,true,name,Japanese Tea Garden,58
+japanese-tea-garden,927,Japanese Tea Garden (gardener shack),75 HAGIWARA TEA GARDEN DR,1263011,1263,011,true,120,Recreation And Parks,false,name,Japanese Tea Garden,43
+japanese-tea-garden,928,Japanese Tea Garden Entry Kiosk,75 HAGIWARA TEA GARDEN DR,1263011,1263,011,true,64,Recreation And Parks,false,name,Japanese Tea Garden,49
+japanese-tea-garden,930,Japanese Tea Garden Men's Bathroom,75 HAGIWARA TEA GARDEN DR,1263011,1263,011,true,258,Recreation And Parks,false,name,Japanese Tea Garden,16
+japanese-tea-garden,931,Japanese Tea Garden Women's Bathrm,75 HAGIWARA TEA GARDEN DR,1263011,1263,011,true,,Recreation And Parks,false,name,Japanese Tea Garden,36
+kezar-stadium,972,Kezar Pavilion,755 STANYAN ST,1263011,1263,011,true,24254,Recreation And Parks,true,name,Kezar Pavilion,118
+kezar-stadium,973,Kezar Stadium,755 STANYAN ST,1263011,1263,011,true,5000,Recreation And Parks,false,name,Kezar Stadium,112
+kezar-stadium,974,Kezar Stadium Maintenance Facility,755 STANYAN ST,1263011,1263,011,true,40464,Recreation And Parks,false,name,Kezar Stadium,53
+laguna-honda-hospital,985,Laguna Honda Hospital,375 LAGUNA HONDA BLVD,2842007,2842,007,true,440163,Public Health,true,name,Laguna Honda Hospital,264
+laguna-honda-hospital,3210,LAGUNA HONDA - Utils/Equipment,375 LAGUNA HONDA BLVD,2842007,2842,007,true,,Public Health,false,name,Laguna Honda,104
+laguna-honda-hospital,3032,LAGUNA HONDA SUBSTATION,375 LAGUNA HONDA BLVD,2842007,2842,007,true,5000,Public Health,false,name,Laguna Honda,343
+laguna-honda-hospital,2042,Laguna Honda - Generator Building,375 LAGUNA HONDA BLVD,2842007,2842,007,true,1554,Public Health,false,name,Laguna Honda,206
+laguna-honda-hospital,986,Laguna Honda - North Residence,375 LAGUNA HONDA BLVD,2842007,2842,007,true,208377,Public Health,false,name,Laguna Honda,86
+laguna-honda-hospital,2043,Laguna Honda - Pavilion Building,375 LAGUNA HONDA BLVD,2842007,2842,007,true,148039,Public Health,false,name,Laguna Honda,159
+laguna-honda-hospital,987,Laguna Honda - South Residence,375 LAGUNA HONDA BLVD,2842007,2842,007,true,156993,Public Health,false,name,Laguna Honda,166
+lake-merced,992,Lake Merced Boathouse,1 HARDING RD,7283004,7283,004,true,8100,Recreation And Parks,true,name,Lake Merced,586
+lake-merced,994,Lake Merced Park Pump Station,991 LAKE MERCED BLVD,7283004,7283,004,true,,Recreation And Parks,false,name,Lake Merced,1031
+lake-merced,2045,Lake Merced maintenance facility 1,991 LAKE MERCED BLVD,7283004,7283,004,true,,Recreation And Parks,false,name,Lake Merced,938
+lake-merced,2046,Lake Merced maintenance facility 2,991 LAKE MERCED BLVD,7283004,7283,004,true,,Recreation And Parks,false,name,Lake Merced,966
+legion-of-honor,1222,Palace of the Legion of Honor,100 34TH AVE,1313028,1313,028,true,117000,Fine Arts Museums,true,name,Legion of Honor,37
+marina-green,1056,Marina Green Shops/Restaurants,1 YACHT RD,0900003,0900,003,true,1000,Recreation And Parks,true,name,Marina Green,274
+marina-green,1054,Marina Green Bathrooms East,150 MARINA BLVD,0900003,0900,003,true,500,Recreation And Parks,false,name,Marina Green,708
+marina-green,1055,Marina Green Bathrooms West,800 MARINA BLVD,0900003,0900,003,true,500,Recreation And Parks,false,name,Marina Green,431
+maxine-hall-health-center,1073,Maxine Hall Health Center,1301 PIERCE ST,0728005A,0728,005A,true,20590,Public Health,true,name,Maxine Hall Health Center,152
+mclaren-park,2048,Mclaren Park Bathrooms,1100 MANSELL ST,6190066,6190,066,true,,Recreation And Parks,true,name,McLaren Park,580
+mclaren-park,1085,McLaren Park - Mansell Clubhouse,1701 VISITACION AVE,6190066,6190,066,true,,Recreation And Parks,false,name,McLaren Park,595
+mclaren-park,1083,McLaren Park Caretaker's Cabin,JOHN F SHELLEY DR & CAMBRIDGE ST,6190066,6190,066,true,,Recreation And Parks,false,name,McLaren Park,336
+mclaren-park,1082,Mclaren Park - Wilde Tower,895 MANSELL ST,6190066,6190,066,true,,Recreation And Parks,false,name,McLaren Park,817
+mclaren-park,1084,Mclaren Park La Grande Tank,61 JOHN F SHELLEY DR,6190066,6190,066,true,,Recreation And Parks,false,name,McLaren Park,677
+mission-branch-library,1117,Mission Branch Library,300 BARTLETT ST,6515001,6515,001,true,10479,Public Library,true,name,Mission Branch Library,83
+mission-dolores-park,1122,Mission Dolores Park Clubhouse,646 DOLORES ST,3586001,3586,001,true,2100,Recreation And Parks,true,name,Mission Dolores Park,4
+moscone-center,1140,MOSCONE CENTER (South),747 HOWARD ST,3734091,3734,091,true,650000,Gsa - Convention Facilities Management,true,name,Moscone Center,27
+moscone-center,1139,MOSCONE CENTER Parking Garage,255 3RD ST,3735060,3735,060,true,255444,Municipal Transportation Agency,false,name,Moscone Center,175
+muni-presidio-division,1341,Presidio Division Bldg,949 PRESIDIO AVE,1072001,1072,001,true,158381,Municipal Transportation Agency,true,name,Presidio Division,292
+north-beach-branch-library,1188,North Beach Branch Library,850 COLUMBUS AVE,0075001,0075,001,true,8500,Public Library,true,name,North Beach Branch Library,142
+pier-27-cruise-terminal,3229,PIER 27 SHED,PIER 27,9900070,9900,070,true,,Port,true,name,Pier 27,316
+pier-27-cruise-terminal,31,2275 | Pier 27 Adm/Pier 29 Annex,PIER 27,9900070,9900,070,true,11800,Port,false,name,Pier 27,339
+pier-27-cruise-terminal,3228,PIER 27 OFFICE BUILDING,PIER 27,9900070,9900,070,true,,Port,false,name,Pier 27,295
+pier-27-cruise-terminal,1289,Pier 27  - Port’s primary cruise terminal.,1098 THE EMBARCADERO,9900070,9900,070,true,420690,Port,false,name,Pier 27,339
+pier-27-cruise-terminal,1290,Pier 27 - Office Annex,THE EMBARCADERO,9900070,9900,070,true,3552,Port,false,name,Pier 27,406
+pier-39,1916,Pier 39 - Retail Shops,2 BEACH ST,9900070,9900,070,true,261972,Port,true,name,Pier 39,153
+pier-39,1917,Pier 39 - Underwater World,2 BEACH ST,9900070,9900,070,true,18900,Port,false,name,Pier 39,153
+pier-39,1918,Pier 39 1/2 Marginal Wharf,2 BEACH ST,9900070,9900,070,true,9068,Port,false,name,Pier 39,92
+pier-39,1722,SWL 311 Pier 39 Garage,2 BEACH ST,,,,true,242304,Port,false,name,Pier 39,177
+pier-70,1967,Pier 70 - Pier 68 - Building #149,590 20TH ST,9900070,9900,070,true,600,Port,true,name,Pier 70,153
+pier-70,3090,Pier 70 - Pier 68 - Bathrooms Bldg. #141,PIER 70,4111003,4111,003,true,,Port,false,name,Pier 70,222
+pier-70,1963,"Pier 70 - Pier 68 - Beth Street Substation #2, Bldg. #50",590 20TH ST,9900070,9900,070,true,600,Port,false,name,Pier 70,153
+pier-70,1964,Pier 70 - Pier 68 - Beth Street Warehouse Bldg. #30,590 20TH ST,9900070,9900,070,true,4686,Port,false,name,Pier 70,153
+pier-70,1965,Pier 70 - Pier 68 - Blast Shed Bldg. #150,590 20TH ST,9900070,9900,070,true,600,Port,false,name,Pier 70,153
+pier-70,1966,Pier 70 - Pier 68 - Boiler/Steam Power House - #103,590 20TH ST,9900070,9900,070,true,1860,Port,false,name,Pier 70,153
+pier-70,1968,Pier 70 - Pier 68 - Cable/Electric Shop - Bldg.#38,590 20TH ST,9900070,9900,070,true,30546,Port,false,name,Pier 70,153
+pier-70,1969,"Pier 70 - Pier 68 - Checkhouse #1, Bldg. #122",590 20TH ST,9900070,9900,070,true,1,Port,false,name,Pier 70,153
+pier-70,1970,"Pier 70 - Pier 68 - Checkhouse #2, Bldg. #123",590 20TH ST,9900070,9900,070,true,1,Port,false,name,Pier 70,153
+pier-70,1971,Pier 70 - Pier 68 - Equipment Building #36,590 20TH ST,9900070,9900,070,true,12050,Port,false,name,Pier 70,153
+pier-70,1972,Pier 70 - Pier 68 - Machine Shop - Bldg. #105,590 20TH ST,9900070,9900,070,true,20111,Port,false,name,Pier 70,153
+pier-70,1974,Pier 70 - Pier 68 - Office Bldg (#127),590 20TH ST,9900070,9900,070,true,2304,Port,false,name,Pier 70,153
+pier-70,1975,"Pier 70 - Pier 68 - Office Bldg Annex to #101, Bldg. #40",590 20TH ST,9900070,9900,070,true,11800,Port,false,name,Pier 70,153
+pier-70,1976,Pier 70 - Pier 68 - Office Building #101,590 20TH ST,9900070,9900,070,true,56268,Port,false,name,Pier 70,153
+pier-70,1977,Pier 70 - Pier 68 - Office Building #104,590 20TH ST,9900070,9900,070,true,37641,Port,false,name,Pier 70,153
+pier-70,1978,Pier 70 - Pier 68 - Office/Warehouse Bldg.- Bldg #111,590 20TH ST,9900070,9900,070,true,41500,Port,false,name,Pier 70,153
+pier-70,1979,Pier 70 - Pier 68 - Ops. Bldg #102,590 20TH ST,9900070,9900,070,true,8428,Port,false,name,Pier 70,153
+pier-70,1980,"Pier 70 - Pier 68 - Pipe Rack, Bldg. #120",590 20TH ST,9900070,9900,070,true,1,Port,false,name,Pier 70,153
+pier-70,1981,Pier 70 - Pier 68 - Pipe Storage Bldg #107,590 20TH ST,9900070,9900,070,true,2880,Port,false,name,Pier 70,153
+pier-70,1982,Pier 70 - Pier 68 - Sheet Metal/Tools Bldg #109,590 20TH ST,9900070,9900,070,true,82099,Port,false,name,Pier 70,153
+pier-70,1983,Pier 70 - Pier 68 - Shipwright Building -#108,590 20TH ST,9900070,9900,070,true,46638,Port,false,name,Pier 70,153
+pier-70,1984,Pier 70 - Pier 68 - Steel Shop Office (bldg #121),590 20TH ST,9900070,9900,070,true,615,Port,false,name,Pier 70,153
+pier-70,1985,Pier 70 - Pier 68 - Substation #4 (bldg #58),590 20TH ST,9900070,9900,070,true,820,Port,false,name,Pier 70,153
+pier-70,1986,"Pier 70 - Pier 68 - Substation #6, Bldg. #64",590 20TH ST,9900070,9900,070,true,2000,Port,false,name,Pier 70,153
+pier-70,1987,Pier 70 - Pier 68 - Substation #7 (bldg #68),590 20TH ST,9900070,9900,070,true,1440,Port,false,name,Pier 70,153
+pier-70,1988,"Pier 70 - Pier 68 - Warehouse & 6-ton crane, Bldg. #49",590 20TH ST,9900070,9900,070,true,10000,Port,false,name,Pier 70,153
+pier-70,1989,"Pier 70 - Pier 68 - Yard Washroom, Bldg. #110",590 20TH ST,9900070,9900,070,true,3925,Port,false,name,Pier 70,153
+pier-70,1990,"Pier 70 - Pier 68 - Yard Washroom, Bldg. #119",590 20TH ST,9900070,9900,070,true,1440,Port,false,name,Pier 70,153
+pier-70,1973,"Pier 70 - Pier 68 - near checkhouse #2, Building #51",590 20TH ST,9900070,9900,070,true,400,Port,false,name,Pier 70,153
+pier-70,1991,"Pier 70 - SWL 345 - Kneass Boatworks, Main Office/boat storage",420 22ND ST,4111003,4111,003,true,1,Port,false,name,Pier 70,222
+pier-70,1992,"Pier 70 - SWL 345 - Kneass, Pier 66 Boatyard Office",420 22ND ST,4111003,4111,003,true,2000,Port,false,name,Pier 70,222
+pier-70,1993,Pier 70 - SWL 349 - Auto Yard Shop Bldg #19,420 22ND ST,4111003,4111,003,true,6152,Port,false,name,Pier 70,295
+pier-70,1994,"Pier 70 - SWL 349 - Beth Street Stress Relieving, Bldg. #16",420 22ND ST,4111003,4111,003,true,7734,Port,false,name,Pier 70,222
+pier-70,1995,"Pier 70 - SWL 349 - Beth Street Warehouse, Bldg. #32",420 22ND ST,4111003,4111,003,true,9306,Port,false,name,Pier 70,222
+pier-70,1996,"Pier 70 - SWL 349 - Beth Street Washroom & Locker, Bldg. #24",420 22ND ST,4111003,4111,003,true,3432,Port,false,name,Pier 70,222
+pier-70,1997,"Pier 70 - SWL 349 - Beth Street Washroom & Locker, Bldg. #25",420 22ND ST,4111003,4111,003,true,1490,Port,false,name,Pier 70,222
+pier-70,1998,"Pier 70 - SWL 349 - Beth Street Washroom & Locker, Bldg. #29",420 22ND ST,4111003,4111,003,true,3696,Port,false,name,Pier 70,222
+pier-70,1999,"Pier 70 - SWL 349 - Brass Foundry, Bldg. #115",420 22ND ST,4111003,4111,003,true,17400,Port,false,name,Pier 70,222
+pier-70,2000,"Pier 70 - SWL 349 - Foundry, Bldg. #116",420 22ND ST,4111003,4111,003,true,17400,Port,false,name,Pier 70,222
+pier-70,2001,"Pier 70 - SWL 349 - Test Room, Bldg. #23",420 22ND ST,4111003,4111,003,true,4356,Port,false,name,Pier 70,222
+pier-70,2002,"Pier 70 - SWL 349 - UIW Machine Shop, Bldg. #114",420 22ND ST,4111003,4111,003,true,8000,Port,false,name,Pier 70,222
+pier-70,2003,Pier 70 - SWL 349 Building #6 (condemned),420 22ND ST,4111003,4111,003,true,34707,Port,false,name,Pier 70,222
+pier-70,2004,Pier 70 - SWL 349 Equipment Bldg - Bldg #14,420 22ND ST,4111003,4111,003,true,15969,Port,false,name,Pier 70,222
+pier-70,2005,Pier 70 - SWL 349 Heavy Machine Shop - Bldg #113,420 22ND ST,4111003,4111,003,true,74566,Port,false,name,Pier 70,222
+pier-70,3091,Pier 70 - SWL 349 Office Building - Bldg. #11 Noonan,PIER 70,4111003,4111,003,true,,Port,false,name,Pier 70,222
+pier-70,2006,Pier 70 - SWL 349 SF Shipyard Training Bldg 117,420 22ND ST,4111003,4111,003,true,30940,Port,false,name,Pier 70,222
+pier-70,2007,Pier 70 - SWL 349 Shop Building - Bldg #21,420 22ND ST,4111003,4111,003,true,10172,Port,false,name,Pier 70,222
+pier-70,2008,Pier 70 - SWL 349 Traffic Department Bldg. #12 & #15,420 22ND ST,4111003,4111,003,true,78116,Port,false,name,Pier 70,264
+pier-70,2009,Pier 70 - SWL 349 Traffic Dept. Shed - Bldg #66,420 22ND ST,4111003,4111,003,true,22116,Port,false,name,Pier 70,222
+pier-70,2010,Pier 70 - SWL 349 Warehouse - Bldg.2,420 22ND ST,4111003,4111,003,true,96804,Port,false,name,Pier 70,222
+portsmouth-square,1324,Portsmouth Square Clubhouse,733 KEARNY ST,0209017,0209,017,true,1860,Recreation And Parks,true,name,Portsmouth Square,34
+portsmouth-square,1323,Portsmouth Square Bathrooms,733 KEARNY ST,0209017,0209,017,true,636,Recreation And Parks,false,name,Portsmouth Square,9
+randall-museum,1369,Randall Museum,199 MUSEUM WAY,2615002,2615,002,true,32030,Recreation And Parks,true,name,Randall Museum,585
+richmond-branch-library,1404,Richmond Branch Library,351 9TH AVE,1441007,1441,007,true,13900,Public Library,true,name,Richmond Branch Library,196
+sf-city-hall,485,City Hall,1 DR CARLTON B GOODLETT PL,0787001,0787,001,true,516484,Gsa - Real Estate Division,true,name,San Francisco City Hall,7
+sf-main-library,1044,Main Library,100 LARKIN ST,0354001,0354,001,true,376000,Public Library,true,name,San Francisco Main Library,41
+sffd-division-of-training,688,Fire Division of Training  - Treasure Island,600 AVENUE M,,,,true,5040,Fire Department,true,name,Division of Training,569
+sffd-division-of-training,689,Fire Division of Training - Folsom St,2310 FOLSOM ST,3594059,3594,059,true,,Fire Department,false,name,Division of Training,8001
+sffd-station-1,691,Fire Station #1,935 FOLSOM ST,3753313,3753,313,true,,Fire Department,true,name,Fire Station 1,37
+southeast-health-center,1621,Southeast Health Center,2401 KEITH ST,4849016,4849,016,true,14604,Public Health,true,name,Southeast Health Center,1013
+southeast-treatment-plant,3023,Water Pollution Control,PIER 34 1/2,9900070,9900,070,true,,Public Utilities Commission,true,name,Southeast Water Pollution Control Plant,5030
+stern-grove,1651,Stern Grove Restrooms,2899 19TH AVE,2488001,2488,001,true,1440,Recreation And Parks,true,name,Stern Grove,227
+stern-grove,1646,Stern Grove - Dressing Rm 4,2899 19TH AVE,2488001,2488,001,true,672,Recreation And Parks,false,name,Stern Grove,317
+stern-grove,1647,"Stern Grove - Dressing Rooms 1, 2 & 3",2899 19TH AVE,2488001,2488,001,true,1200,Recreation And Parks,false,name,Stern Grove,317
+stern-grove,1648,Stern Grove - New Stage,2899 19TH AVE,2488001,2488,001,true,1134,Recreation And Parks,false,name,Stern Grove,317
+stern-grove,1649,Stern Grove - stage deck,2899 19TH AVE,2488001,2488,001,true,3680,Recreation And Parks,false,name,Stern Grove,317
+stern-grove,3487,Stern Grove Maint. Facility 2,19TH AVE & SLOAT BLVD,2488001,2488,001,true,,Recreation And Parks,false,name,Stern Grove,409
+sunol-water-temple,1681,Sunol Water Temple,505 PALOMA WAY,,,,true,,Public Utilities Commission,true,name,Sunol Water Temple,1454
+sunset-branch-library,1682,Sunset Branch Library,1305 18TH AVE,1773001,1773,001,true,9434,Public Library,true,name,Sunset Branch Library,45
+sunset-reservoir,1686,Sunset Reservoir,1949 24TH AVE,2107001,2107,001,true,,Public Utilities Commission,true,name,Sunset Reservoir,300
+union-square,1795,Union Square Concessions,360 POWELL ST,0308001,0308,001,true,,Recreation And Parks,true,name,Union Square,53
+union-square,1796,Union Square Office,360 POWELL ST,0308001,0308,001,true,,Recreation And Parks,false,name,Union Square,53
+union-square,1799,Union Square Performance Spaces,360 POWELL ST,0308001,0308,001,true,,Recreation And Parks,false,name,Union Square,53
+union-square,3021,Union Square Storage,360 POWELL ST,0308001,0308,001,true,,Recreation And Parks,false,name,Union Square,53
+veterans-building,1817,Veterans Building,401 VAN NESS AVE,0786A001,0786,A001,true,247500,War Memorial,true,name,Veterans Building (Herbst Theatre),18
+war-memorial-opera-house,1212,Opera House,301 VAN NESS AVE,0786A001,0786,A001,true,315700,War Memorial,true,name,War Memorial Opera House,24
+washington-square,1839,Washington Square Bathrooms,600 COLUMBUS AVE,0102001,0102,001,true,292,Recreation And Parks,true,name,Washington Square,46
+zuckerberg-sf-general-hospital,3104,ZSFGH - Building 100,1001 POTRERO AVE,4154001,4154,001,true,,Public Health,true,name,ZSFG,79
+zuckerberg-sf-general-hospital,3116,ZSFGH - Behavioral Health,955 POTRERO AVE,4154001,4154,001,true,,Public Health,false,name,ZSFG,277
+zuckerberg-sf-general-hospital,3102,ZSFGH - Building 1,1001 POTRERO AVE,4154001,4154,001,true,,Public Health,false,name,ZSFG,116
+zuckerberg-sf-general-hospital,3103,ZSFGH - Building 10,1001 POTRERO AVE,4154001,4154,001,true,,Public Health,false,name,ZSFG,102
+zuckerberg-sf-general-hospital,3108,ZSFGH - Building 20,1001 POTRERO AVE,4154001,4154,001,true,,Public Health,false,name,ZSFG,92
+zuckerberg-sf-general-hospital,3332,ZSFGH - Building 25,1001 POTRERO AVE,4154001,4154,001,true,,Public Health,false,name,ZSFG,92
+zuckerberg-sf-general-hospital,3118,ZSFGH - Building 3 - Carr Auditorium,1001 POTRERO AVE,4154001,4154,001,true,,Public Health,false,name,ZSFG,100
+zuckerberg-sf-general-hospital,3109,ZSFGH - Building 30,1001 POTRERO AVE,4154001,4154,001,true,,Public Health,false,name,ZSFG,121
+zuckerberg-sf-general-hospital,3110,ZSFGH - Building 4,1001 POTRERO AVE,4154001,4154,001,true,,Public Health,false,name,ZSFG,89
+zuckerberg-sf-general-hospital,3111,ZSFGH - Building 40,1001 POTRERO AVE,4154001,4154,001,true,,Public Health,false,name,ZSFG,148
+zuckerberg-sf-general-hospital,3112,ZSFGH - Building 80,995 POTRERO AVE,4154001,4154,001,true,,Public Health,false,name,ZSFG,198
+zuckerberg-sf-general-hospital,3113,ZSFGH - Building 9,1001 POTRERO AVE,4154001,4154,001,true,,Public Health,false,name,ZSFG,155
+zuckerberg-sf-general-hospital,3114,ZSFGH - Building 90,1001 POTRERO AVE,4154001,4154,001,true,,Public Health,false,name,ZSFG,181
+zuckerberg-sf-general-hospital,3115,ZSFGH - Main Hospital - Building 5,1001 POTRERO AVE,4154001,4154,001,true,,Public Health,false,name,ZSFG,50
+zuckerberg-sf-general-hospital,3119,ZSFGH - Service Building,1001 POTRERO AVE,4154001,4154,001,true,,Public Health,false,name,ZSFG,159

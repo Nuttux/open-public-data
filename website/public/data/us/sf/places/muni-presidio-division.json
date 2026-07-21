@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T22:30:00.123600+00:00",
+ "generated_at": "2026-07-21T14:25:53.977899+00:00",
  "source_pipeline": "sf_place_candidates.json → sync_ia_sf.py + link_sf_places.py + fetch_sf_place_photos.py → export_sf_places.py",
  "unit": "USD",
  "slug": "muni-presidio-division",
@@ -13,6 +13,118 @@
   "name": "Municipal Transportation Agency",
   "code": "MTA"
  },
+ "facility": {
+  "primary_name": "Presidio Division Bldg",
+  "primary_address": "949 PRESIDIO AVE",
+  "primary_city": "San Francisco",
+  "primary_zip": "94115",
+  "primary_block_lot": "1072001",
+  "primary_department_name": "Municipal Transportation Agency",
+  "primary_is_city_owned": true,
+  "primary_gross_sq_ft": 158381,
+  "primary_latitude": 37.78328404200005,
+  "primary_longitude": -122.44650720099997,
+  "supervisor_district": 2,
+  "n_facilities": 1,
+  "total_gross_sq_ft": 158381,
+  "n_owned": 1,
+  "n_leased": 0,
+  "apn_list": [
+   "1072001"
+  ],
+  "facilities": [
+   {
+    "facility_id": 1341,
+    "common_name": "Presidio Division Bldg",
+    "block_lot": "1072001",
+    "gross_sq_ft": 158381,
+    "is_city_owned": true
+   }
+  ]
+ },
+ "capital": {
+  "n_items": 0,
+  "measure_totals": {},
+  "bond_programs": [],
+  "items": [],
+  "payees": [],
+  "n_payees": 0,
+  "payees_total_paid": 0,
+  "permits": [
+   {
+    "description": "conversion of an assembly rm into an electronics shop for testing new eti trolley bus",
+    "permit_type": "additions alterations or repairs",
+    "declared_cost_usd": 614000.0,
+    "status": "complete",
+    "permit_date": "2001-10-02",
+    "permit_year": 2001
+   },
+   {
+    "description": "conversion of an assembly rm into an electronics shop for testing new eti trolley bus",
+    "permit_type": "additions alterations or repairs",
+    "declared_cost_usd": 614000.0,
+    "status": "complete",
+    "permit_date": "2001-10-02",
+    "permit_year": 2001
+   },
+   {
+    "description": "conversion of an assembly rm into an electronics shop for testing new eti trolley bus",
+    "permit_type": "additions alterations or repairs",
+    "declared_cost_usd": 614000.0,
+    "status": "complete",
+    "permit_date": "2001-10-02",
+    "permit_year": 2001
+   },
+   {
+    "description": "furnish and install new exhaust fan, new electrical conduits and wiring to power exhaust fan,new controls for exhaust fan, interloock with trailer a/c and provide a timed override switch, new condensor pump with piping to janitor's service sink, electrical conduit wire and cable data.wall/floor",
+    "permit_type": "otc alterations permit",
+    "declared_cost_usd": 400000.0,
+    "status": "complete",
+    "permit_date": "2021-01-21",
+    "permit_year": 2021
+   },
+   {
+    "description": "replacement of overhead rollup doors, replacement of bus lifts, replacement of swing gates",
+    "permit_type": "otc alterations permit",
+    "declared_cost_usd": 365000.0,
+    "status": "complete",
+    "permit_date": "2020-01-09",
+    "permit_year": 2020
+   },
+   {
+    "description": "barrier removal at 1 existing mens restroom and repair of exhaust fan. new plumbing fixtures. toilet partitions, and toilet accessories and finishes",
+    "permit_type": "otc alterations permit",
+    "declared_cost_usd": 244000.0,
+    "status": "complete",
+    "permit_date": "2018-05-02",
+    "permit_year": 2018
+   }
+  ],
+  "n_permits": 7,
+  "permits_total_declared": 2871000.0,
+  "permits_by_year": [
+   {
+    "year": 2001,
+    "declared_usd": 1842000.0
+   },
+   {
+    "year": 2015,
+    "declared_usd": 20000.0
+   },
+   {
+    "year": 2018,
+    "declared_usd": 244000.0
+   },
+   {
+    "year": 2020,
+    "declared_usd": 365000.0
+   },
+   {
+    "year": 2021,
+    "declared_usd": 400000.0
+   }
+  ]
+ },
  "photo": null,
  "photo_credit": null,
  "summary_en": null,
@@ -22,6 +134,13 @@
    "code": "MTA",
    "name": "Municipal Transportation Agency (Muni)",
    "total_usd": 1517548716.0,
+   "fiscal_year": 2025
+  },
+  "payroll_line": {
+   "code": "MTA",
+   "name": "Municipal Transportation Agcy",
+   "total_compensation_usd": 960677279.95,
+   "n_employees": 6381,
    "fiscal_year": 2025
   },
   "contracts": [],
@@ -38,7 +157,9 @@
    "snippet": "strategy have been developed. «Presidio Trolley Coach Division» Reconstruction Rehabilitate and",
    "url": "https://archive.org/details/strategicplan2001199sanf",
    "deep_link": "https://archive.org/details/strategicplan2001199sanf?q=Presidio+Trolley+Coach+Division",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Plans & environmental review",
+   "salient": true
   },
   {
    "identifier": "7minutes1998sanf",
@@ -50,79 +171,9 @@
    "snippet": "implementation activities for the renovation of «Presidio Division» Operator Training Facilities. (Public",
    "url": "https://archive.org/details/7minutes1998sanf",
    "deep_link": "https://archive.org/details/7minutes1998sanf?q=Presidio+Division",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
-  },
-  {
-   "identifier": "dataguide19901991990sanf",
-   "title": "The data guide, 1990-1991",
-   "creator": "San Francisco Municipal Railway. Community Affairs Dept",
-   "year": 1990,
-   "pool": "sfpl",
-   "matched_alias": "Presidio Trolley Coach Division",
-   "snippet": "183 buses. 256,876 sq. ft. 43 «Presidio Trolley Coach Division» and Muni Headquarters - Presidio",
-   "url": "https://archive.org/details/dataguide19901991990sanf",
-   "deep_link": "https://archive.org/details/dataguide19901991990sanf?q=Presidio+Trolley+Coach+Division",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
-  },
-  {
-   "identifier": "coordinatedtrans1967simp",
-   "title": "Coordinated transit for the San Francisco Bay area--now to 1975 ; final report of Northern California Transit Demonstration Project",
-   "creator": "Simpson & Curtin, Inc.",
-   "year": 1975,
-   "pool": "sfpl",
-   "matched_alias": "Presidio Trolley Coach Division",
-   "snippet": "present trolley coach use. • «Presidio Trolley Coach Division» needs improvements to existing",
-   "url": "https://archive.org/details/coordinatedtrans1967simp",
-   "deep_link": "https://archive.org/details/coordinatedtrans1967simp?q=Presidio+Trolley+Coach+Division",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
-  },
-  {
-   "identifier": "trolleytopics19501952sanf",
-   "title": "Trolley topics",
-   "creator": "San Francisco Municipal Railway,San Francisco Public Utilities Commission",
-   "year": 1946,
-   "pool": "sfpl",
-   "matched_alias": "Presidio Division",
-   "snippet": "Mike Carpine, «Presidio Division». Alm;i Mae Casaday, «Presidio, Division». Harry .1",
-   "url": "https://archive.org/details/trolleytopics19501952sanf",
-   "deep_link": "https://archive.org/details/trolleytopics19501952sanf?q=Presidio+Division",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
-  },
-  {
-   "identifier": "bidcontractoppor1987sanf",
-   "title": "Bid and contract opportunities / by the Purchasing Department of the City and County of San Francisco Purchasing Department",
-   "creator": "San Francisco (Calif.). Purchasing Department",
-   "year": null,
-   "pool": "sfpl",
-   "matched_alias": "Presidio Division",
-   "snippet": "February 10, 1987 N/A Municipal Railway, «Presidio Division», 949 Presidio Ave. San Francisco Municipal",
-   "url": "https://archive.org/details/bidcontractoppor1987sanf",
-   "deep_link": "https://archive.org/details/bidcontractoppor1987sanf?q=Presidio+Division",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
-  },
-  {
-   "identifier": "munimemo1984sanf",
-   "title": "The Muni memo",
-   "creator": "San Francisco Municipal Railway. Community Affairs Dept",
-   "year": null,
-   "pool": "sfpl",
-   "matched_alias": "Presidio Division",
-   "snippet": "good about change. In supervisor at «Presidio Division» Electrical Maintenance Shop. \"By his",
-   "url": "https://archive.org/details/munimemo1984sanf",
-   "deep_link": "https://archive.org/details/munimemo1984sanf?q=Presidio+Division",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
-  },
-  {
-   "identifier": "managementaudito1996budg",
-   "title": "Management audit of the San Francisco Municipal Railway",
-   "creator": "Budget Analyst of the City and County of San Francisco",
-   "year": null,
-   "pool": "sfpl",
-   "matched_alias": "Presidio Division",
-   "snippet": "Trolley Cars Potrero Division, «Presidio Division» • «Presidio Division» has no maintenance bays for",
-   "url": "https://archive.org/details/managementaudito1996budg",
-   "deep_link": "https://archive.org/details/managementaudito1996budg?q=Presidio+Division",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Meetings & resolutions",
+   "salient": true
   },
   {
    "identifier": "agendapublicutil1988sanf",
@@ -134,19 +185,37 @@
    "snippet": "Municipal Railway Contract No. MR-977, «Presidio Division»: Modifications to HVAC System, Transportation",
    "url": "https://archive.org/details/agendapublicutil1988sanf",
    "deep_link": "https://archive.org/details/agendapublicutil1988sanf?q=Presidio+Division",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Meetings & resolutions",
+   "salient": true
   },
   {
-   "identifier": "3minutes1978sanf",
-   "title": "Minutes",
-   "creator": "San Francisco Public Utilities Commission",
+   "identifier": "bidcontractoppor1987sanf",
+   "title": "Bid and contract opportunities / by the Purchasing Department of the City and County of San Francisco Purchasing Department",
+   "creator": "San Francisco (Calif.). Purchasing Department",
    "year": null,
    "pool": "sfpl",
    "matched_alias": "Presidio Division",
-   "snippet": "reason for development of «Presidio Division». 3y using «Presidio Division» $120,000 per year would",
-   "url": "https://archive.org/details/3minutes1978sanf",
-   "deep_link": "https://archive.org/details/3minutes1978sanf?q=Presidio+Division",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+   "snippet": "February 10, 1987 N/A Municipal Railway, «Presidio Division», 949 Presidio Ave. San Francisco Municipal",
+   "url": "https://archive.org/details/bidcontractoppor1987sanf",
+   "deep_link": "https://archive.org/details/bidcontractoppor1987sanf?q=Presidio+Division",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Other records",
+   "salient": true
+  },
+  {
+   "identifier": "managementaudito1996budg",
+   "title": "Management audit of the San Francisco Municipal Railway",
+   "creator": "Budget Analyst of the City and County of San Francisco",
+   "year": null,
+   "pool": "sfpl",
+   "matched_alias": "Presidio Division",
+   "snippet": "Trolley Cars Potrero Division, «Presidio Division» • «Presidio Division» has no maintenance bays for",
+   "url": "https://archive.org/details/managementaudito1996budg",
+   "deep_link": "https://archive.org/details/managementaudito1996budg?q=Presidio+Division",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Other records",
+   "salient": true
   },
   {
    "identifier": "munimemo1987sanf",
@@ -158,7 +227,9 @@
    "snippet": "Maintenance Worker of- the Month Patrick Ho of «Presidio Division». MUNI's most recent Operator Graduating",
    "url": "https://archive.org/details/munimemo1987sanf",
    "deep_link": "https://archive.org/details/munimemo1987sanf?q=Presidio+Division",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Other records",
+   "salient": true
   },
   {
    "identifier": "trolleytopics19731980sanf",
@@ -170,19 +241,37 @@
    "snippet": "Service following renovation of space at «Presidio Division» and actual acquisition of new personnel",
    "url": "https://archive.org/details/trolleytopics19731980sanf",
    "deep_link": "https://archive.org/details/trolleytopics19731980sanf?q=Presidio+Division",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Other records",
+   "salient": false
   },
   {
-   "identifier": "2minutes1985sanf",
-   "title": "Minutes",
-   "creator": "San Francisco Public Utilities Commission",
-   "year": null,
+   "identifier": "dataguide19901991990sanf",
+   "title": "The data guide, 1990-1991",
+   "creator": "San Francisco Municipal Railway. Community Affairs Dept",
+   "year": 1990,
    "pool": "sfpl",
-   "matched_alias": "Presidio Division",
-   "snippet": "Municipal Railway Contract No. MR-907, «Presidio Division», Shop Heating and Ventilation Modification",
-   "url": "https://archive.org/details/2minutes1985sanf",
-   "deep_link": "https://archive.org/details/2minutes1985sanf?q=Presidio+Division",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+   "matched_alias": "Presidio Trolley Coach Division",
+   "snippet": "183 buses. 256,876 sq. ft. 43 «Presidio Trolley Coach Division» and Muni Headquarters - Presidio",
+   "url": "https://archive.org/details/dataguide19901991990sanf",
+   "deep_link": "https://archive.org/details/dataguide19901991990sanf?q=Presidio+Trolley+Coach+Division",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Other records",
+   "salient": false
+  },
+  {
+   "identifier": "coordinatedtrans1967simp",
+   "title": "Coordinated transit for the San Francisco Bay area--now to 1975 ; final report of Northern California Transit Demonstration Project",
+   "creator": "Simpson & Curtin, Inc.",
+   "year": 1975,
+   "pool": "sfpl",
+   "matched_alias": "Presidio Trolley Coach Division",
+   "snippet": "present trolley coach use. • «Presidio Trolley Coach Division» needs improvements to existing",
+   "url": "https://archive.org/details/coordinatedtrans1967simp",
+   "deep_link": "https://archive.org/details/coordinatedtrans1967simp?q=Presidio+Trolley+Coach+Division",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Other records",
+   "salient": false
   },
   {
    "identifier": "citycountyofsan1979sanf_7",
@@ -194,7 +283,9 @@
    "snippet": "Funding Code: a -X- 7,0-'^ ■5'- --- * «Presidio Division», shop area, provide door for steam",
    "url": "https://archive.org/details/citycountyofsan1979sanf_7",
    "deep_link": "https://archive.org/details/citycountyofsan1979sanf_7?q=Presidio+Division",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Other records",
+   "salient": false
   }
  ],
  "dept_shelf": [
@@ -218,29 +309,10 @@
    "year": null,
    "pool": "sfpl",
    "url": "https://archive.org/details/2minutes1987sanf"
-  },
-  {
-   "identifier": "4minutes1991sanf",
-   "title": "Minutes",
-   "year": null,
-   "pool": "sfpl",
-   "url": "https://archive.org/details/4minutes1991sanf"
-  },
-  {
-   "identifier": "2minutes1986sanf",
-   "title": "Minutes",
-   "year": null,
-   "pool": "sfpl",
-   "url": "https://archive.org/details/2minutes1986sanf"
-  },
-  {
-   "identifier": "1minutes1983sanf",
-   "title": "Minutes",
-   "year": null,
-   "pool": "sfpl",
-   "url": "https://archive.org/details/1minutes1983sanf"
   }
  ],
+ "dept_shelf_label": "Municipal Railway (Muni)",
+ "dept_shelf_more": 3,
  "sources": [
   {
    "label": "City budget & payments",
@@ -253,7 +325,7 @@
  ],
  "_gate": {
   "has_photo": false,
-  "n_documents": 14,
+  "n_documents": 10,
   "n_money_links": 1,
   "meets_pre_summary": false
  }

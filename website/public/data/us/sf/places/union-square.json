@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T22:30:00.102358+00:00",
+ "generated_at": "2026-07-21T14:25:53.926096+00:00",
  "source_pipeline": "sf_place_candidates.json → sync_ia_sf.py + link_sf_places.py + fetch_sf_place_photos.py → export_sf_places.py",
  "unit": "USD",
  "slug": "union-square",
@@ -12,6 +12,262 @@
  "owning_dept": {
   "name": "Recreation and Park Department",
   "code": "REC"
+ },
+ "facility": {
+  "primary_name": "Union Square Concessions",
+  "primary_address": "360 POWELL ST",
+  "primary_city": "San Francisco",
+  "primary_zip": "94108",
+  "primary_block_lot": "0308001",
+  "primary_department_name": "Recreation And Parks",
+  "primary_is_city_owned": true,
+  "primary_gross_sq_ft": null,
+  "primary_latitude": 37.78787976700005,
+  "primary_longitude": -122.40797902799994,
+  "supervisor_district": 3,
+  "n_facilities": 4,
+  "total_gross_sq_ft": null,
+  "n_owned": 4,
+  "n_leased": 0,
+  "apn_list": [
+   "0308001"
+  ],
+  "facilities": [
+   {
+    "facility_id": 1795,
+    "common_name": "Union Square Concessions",
+    "block_lot": "0308001",
+    "gross_sq_ft": null,
+    "is_city_owned": true
+   },
+   {
+    "facility_id": 1796,
+    "common_name": "Union Square Office",
+    "block_lot": "0308001",
+    "gross_sq_ft": null,
+    "is_city_owned": true
+   },
+   {
+    "facility_id": 1799,
+    "common_name": "Union Square Performance Spaces",
+    "block_lot": "0308001",
+    "gross_sq_ft": null,
+    "is_city_owned": true
+   },
+   {
+    "facility_id": 3021,
+    "common_name": "Union Square Storage",
+    "block_lot": "0308001",
+    "gross_sq_ft": null,
+    "is_city_owned": true
+   }
+  ]
+ },
+ "capital": {
+  "n_items": 0,
+  "measure_totals": {},
+  "bond_programs": [],
+  "items": [],
+  "payees": [
+   {
+    "vendor": "Union Square Foundation",
+    "paid_usd": 2434775.0,
+    "n_contracts": 1,
+    "first_fiscal_year": 2023,
+    "last_fiscal_year": 2026
+   },
+   {
+    "vendor": "BIEDERMAN REDEVELOPMENT VENTURES CORP",
+    "paid_usd": 1630648.74,
+    "n_contracts": 1,
+    "first_fiscal_year": 2025,
+    "last_fiscal_year": 2026
+   },
+   {
+    "vendor": "PACIFIC GAS & ELECTRIC CO",
+    "paid_usd": 242660.67,
+    "n_contracts": 1,
+    "first_fiscal_year": 2020,
+    "last_fiscal_year": 2023
+   },
+   {
+    "vendor": "UNION SQUARE BUSINESS IMPROVMNT DISTRICT",
+    "paid_usd": 98817.3,
+    "n_contracts": 3,
+    "first_fiscal_year": 2019,
+    "last_fiscal_year": 2025
+   },
+   {
+    "vendor": "Union Square Building LLC",
+    "paid_usd": 67279.35,
+    "n_contracts": 1,
+    "first_fiscal_year": 2026,
+    "last_fiscal_year": 2026
+   },
+   {
+    "vendor": "THEATRE BAY AREA",
+    "paid_usd": 24252.0,
+    "n_contracts": 1,
+    "first_fiscal_year": 2018,
+    "last_fiscal_year": 2018
+   }
+  ],
+  "n_payees": 6,
+  "payees_total_paid": 4498433.06,
+  "permits": [
+   {
+    "description": "partial demolition of union square plaza and garage, construction of new central subway union square/market street station entrance.",
+    "permit_type": "additions alterations or repairs",
+    "declared_cost_usd": 16126562.0,
+    "status": "complete",
+    "permit_date": "2013-07-19",
+    "permit_year": 2013
+   },
+   {
+    "description": "this project will renovate the entire union square plaza & add 2 structures to the park. add a new e",
+    "permit_type": "additions alterations or repairs",
+    "declared_cost_usd": 14000000.0,
+    "status": "expired",
+    "permit_date": "2001-05-04",
+    "permit_year": 2001
+   },
+   {
+    "description": "install new standpipe system for new underground railway tunnels. connect to stations on future permits. compliance with maher ord 155-13.",
+    "permit_type": "additions alterations or repairs",
+    "declared_cost_usd": 13940850.0,
+    "status": "complete",
+    "permit_date": "2019-12-12",
+    "permit_year": 2019
+   },
+   {
+    "description": "new water-based fire protection system for ums muni subway station. includes: standpipes within station, aboveground wet sprinklers, undercar track deluge, and 4 preaction systems. greatest demand 807.2 gpm @ 37 psi. ref pa 2012-0510-0184",
+    "permit_type": "additions alterations or repairs",
+    "declared_cost_usd": 2864300.0,
+    "status": "complete",
+    "permit_date": "2019-08-07",
+    "permit_year": 2019
+   },
+   {
+    "description": "(n) interior build-out. will consist of (n) custom millwork island , (n) food service equipment, new mechanical exhaust system and fire suppression system, new interior finishes, flour, paint and tile, new non load bearing, furring partition, revised fin/life safety/information, revise fire alarm",
+    "permit_type": "otc alterations permit",
+    "declared_cost_usd": 1030000.0,
+    "status": "filed",
+    "permit_date": "2026-06-04",
+    "permit_year": 2026
+   },
+   {
+    "description": "union square/market st station concourse level - construct 2 vendor kiosks; convert 2 (e) storage to all gender accessible restroom; kiosks & all gender will include elec and plumb for new lightings, power and (n) water use fixtures; (e) undeveloped space to be renovated to a down-time room reserv",
+    "permit_type": "otc alterations permit",
+    "declared_cost_usd": 1000000.0,
+    "status": "issued",
+    "permit_date": "2022-09-30",
+    "permit_year": 2022
+   }
+  ],
+  "n_permits": 62,
+  "permits_total_declared": 54032290.0,
+  "permits_by_year": [
+   {
+    "year": 1982,
+    "declared_usd": 80000.0
+   },
+   {
+    "year": 1994,
+    "declared_usd": 15000.0
+   },
+   {
+    "year": 2000,
+    "declared_usd": 700000.0
+   },
+   {
+    "year": 2001,
+    "declared_usd": 14080000.0
+   },
+   {
+    "year": 2002,
+    "declared_usd": 190000.0
+   },
+   {
+    "year": 2003,
+    "declared_usd": 160000.0
+   },
+   {
+    "year": 2008,
+    "declared_usd": 27200.0
+   },
+   {
+    "year": 2009,
+    "declared_usd": 26000.0
+   },
+   {
+    "year": 2010,
+    "declared_usd": 58700.0
+   },
+   {
+    "year": 2011,
+    "declared_usd": 266000.0
+   },
+   {
+    "year": 2012,
+    "declared_usd": 268700.0
+   },
+   {
+    "year": 2013,
+    "declared_usd": 16366562.0
+   },
+   {
+    "year": 2014,
+    "declared_usd": 152200.0
+   },
+   {
+    "year": 2015,
+    "declared_usd": 131000.0
+   },
+   {
+    "year": 2016,
+    "declared_usd": 86000.0
+   },
+   {
+    "year": 2017,
+    "declared_usd": 98000.0
+   },
+   {
+    "year": 2018,
+    "declared_usd": 541699.0
+   },
+   {
+    "year": 2019,
+    "declared_usd": 17505150.0
+   },
+   {
+    "year": 2020,
+    "declared_usd": 161844.0
+   },
+   {
+    "year": 2021,
+    "declared_usd": 80000.0
+   },
+   {
+    "year": 2022,
+    "declared_usd": 1105195.0
+   },
+   {
+    "year": 2023,
+    "declared_usd": 203040.0
+   },
+   {
+    "year": 2024,
+    "declared_usd": 150000.0
+   },
+   {
+    "year": 2025,
+    "declared_usd": 150000.0
+   },
+   {
+    "year": 2026,
+    "declared_usd": 1430000.0
+   }
+  ]
  },
  "photo": "/img/us/sf/places/union-square.jpg",
  "photo_credit": {
@@ -33,6 +289,13 @@
    "total_usd": 250373849.0,
    "fiscal_year": 2025
   },
+  "payroll_line": {
+   "code": "REC",
+   "name": "Recreation And Park Commission",
+   "total_compensation_usd": 149952872.68,
+   "n_employees": 2161,
+   "fiscal_year": 2025
+  },
   "contracts": [
    {
     "contract_no": "1000034564",
@@ -41,7 +304,15 @@
     "department_code": "ECN",
     "agreed_usd": 2500000.0,
     "paid_usd": 1395704.02,
-    "evidence": "ECN Union Square Activations"
+    "evidence": "ECN Union Square Activations",
+    "team": [
+     {
+      "supplier": "BIEDERMAN REDEVELOPMENT VENTURES CORP",
+      "role": "Prime Contractor",
+      "lbe": false,
+      "attached_usd": 2500000.0
+     }
+    ]
    },
    {
     "contract_no": "1000038257",
@@ -50,59 +321,33 @@
     "department_code": "POL",
     "agreed_usd": 74900.0,
     "paid_usd": 0.0,
-    "evidence": "POL-Union Square 291 Geary St"
+    "evidence": "POL-Union Square 291 Geary St",
+    "team": [
+     {
+      "supplier": "Union Square Building LLC",
+      "role": "Prime Contractor",
+      "lbe": false,
+      "attached_usd": 74900.0
+     }
+    ]
    }
   ],
   "grants": []
  },
  "documents": [
   {
-   "identifier": "2minutes1999sanf",
-   "title": "Minutes",
-   "creator": "San Francisco (Calif.). Board of Supervisors. Finance and Labor Committee",
-   "year": 1999,
+   "identifier": "saksfifthavenueu1619sanf",
+   "title": "Saks Fifth Avenue, Union Square project : [final] environmental impact report",
+   "creator": "San Francisco (Calif.). City Planning Commission,San Francisco (Calif.). Dept. of City Planning",
+   "year": 1978,
    "pool": "sfpl",
    "matched_alias": "Union Square",
-   "snippet": "improvements to «Union Square» Park. «Union Square» Garage and «Union Square» Park Currently the",
-   "url": "https://archive.org/details/2minutes1999sanf",
-   "deep_link": "https://archive.org/details/2minutes1999sanf?q=Union+Square",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
-  },
-  {
-   "identifier": "destinationdownt1319rose",
-   "title": "Destination downtown : streetscape investments for a walkable city : the downtown streetscape plan",
-   "creator": "Rose, Evan Stuart,San Francisco (Calif.). Planning Dept,San Francisco County Transportation Authority",
-   "year": 1995,
-   "pool": "sfpl",
-   "matched_alias": "Union Square",
-   "snippet": "edge of «Union Square», while on Kearny Street, the edge between the «Union Square» and Financial",
-   "url": "https://archive.org/details/destinationdownt1319rose",
-   "deep_link": "https://archive.org/details/destinationdownt1319rose?q=Union+Square",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
-  },
-  {
-   "identifier": "destinationdown1319rose_0",
-   "title": "Destination downtown : streetscape investments for a walkable city : the downtown streetscape plan : plan summary",
-   "creator": "Rose, Evan Stuart,San Francisco (Calif.). Planning Dept,San Francisco County Transportation Authority",
-   "year": 1995,
-   "pool": "sfpl",
-   "matched_alias": "Union Square",
-   "snippet": "entrance into «Union Square»; hanging planters and decorative flowers fac- ing «Union Square». Powell:",
-   "url": "https://archive.org/details/destinationdown1319rose_0",
-   "deep_link": "https://archive.org/details/destinationdown1319rose_0?q=Union+Square",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
-  },
-  {
-   "identifier": "destinationdownt1994rose",
-   "title": "Destination downtown : streetscape investments for a walkable city",
-   "creator": "Rose, Evan Stuart,San Francisco (Calif.). Dept. of City Planning,San Francisco County Transportation Authority",
-   "year": 1994,
-   "pool": "sfpl",
-   "matched_alias": "Union Square",
-   "snippet": "edge of «Union Square», while on Kearny Street, the edge between the «Union Square» and Financial",
-   "url": "https://archive.org/details/destinationdownt1994rose",
-   "deep_link": "https://archive.org/details/destinationdownt1994rose?q=Union+Square",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+   "snippet": "19 13 «Union Square» Looking South 24 14 «Union Square» Looking East 25 15 «Union Square» Looking",
+   "url": "https://archive.org/details/saksfifthavenueu1619sanf",
+   "deep_link": "https://archive.org/details/saksfifthavenueu1619sanf?q=Union+Square",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Plans & environmental review",
+   "salient": true
   },
   {
    "identifier": "neimanmarcusdepa1978sanf",
@@ -114,43 +359,9 @@
    "snippet": "1975. 24 B. URBAN DESIGN 1 . «Union Square» «Union Square», a registered landmark of the State",
    "url": "https://archive.org/details/neimanmarcusdepa1978sanf",
    "deep_link": "https://archive.org/details/neimanmarcusdepa1978sanf?q=Union+Square",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
-  },
-  {
-   "identifier": "neimanmarcusdep1978sanf_0",
-   "title": "Neiman-Marcus department store : final environmental impact report",
-   "creator": "San Francisco (Calif.). Dept. of City Planning",
-   "year": 1978,
-   "pool": "sfpl",
-   "matched_alias": "Union Square",
-   "snippet": "buildings facing «Union Square» 26 14a. Views of buildings facing «Union Square» 26a 15. Views",
-   "url": "https://archive.org/details/neimanmarcusdep1978sanf_0",
-   "deep_link": "https://archive.org/details/neimanmarcusdep1978sanf_0?q=Union+Square",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
-  },
-  {
-   "identifier": "saksfifthavenueu1619sanf",
-   "title": "Saks Fifth Avenue, Union Square project : [final] environmental impact report",
-   "creator": "San Francisco (Calif.). City Planning Commission,San Francisco (Calif.). Dept. of City Planning",
-   "year": 1978,
-   "pool": "sfpl",
-   "matched_alias": "Union Square",
-   "snippet": "19 13 «Union Square» Looking South 24 14 «Union Square» Looking East 25 15 «Union Square» Looking",
-   "url": "https://archive.org/details/saksfifthavenueu1619sanf",
-   "deep_link": "https://archive.org/details/saksfifthavenueu1619sanf?q=Union+Square",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
-  },
-  {
-   "identifier": "minutesrecreatio1967sanf",
-   "title": "Minutes / Recreation and Park Commission",
-   "creator": "San Francisco (Calif.). Recreation and Park Commission",
-   "year": null,
-   "pool": "sfpl",
-   "matched_alias": "Union Square",
-   "snippet": "JOINT WORKING AGREEMENT - «UNION SQUARE» GARAGE (SEE «UNION SQUARE» GARAGE) JOSEPHINE D. RANDALL",
-   "url": "https://archive.org/details/minutesrecreatio1967sanf",
-   "deep_link": "https://archive.org/details/minutesrecreatio1967sanf?q=Union+Square",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Plans & environmental review",
+   "salient": true
   },
   {
    "identifier": "minutesboardofpa1941sanf",
@@ -162,7 +373,79 @@
    "snippet": "of «Union Square» Elevations of «Union Square» (2 sheets) Specifications for «Union Square» Surface",
    "url": "https://archive.org/details/minutesboardofpa1941sanf",
    "deep_link": "https://archive.org/details/minutesboardofpa1941sanf?q=Union+Square",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Meetings & resolutions",
+   "salient": true
+  },
+  {
+   "identifier": "2minutes1999sanf",
+   "title": "Minutes",
+   "creator": "San Francisco (Calif.). Board of Supervisors. Finance and Labor Committee",
+   "year": 1999,
+   "pool": "sfpl",
+   "matched_alias": "Union Square",
+   "snippet": "improvements to «Union Square» Park. «Union Square» Garage and «Union Square» Park Currently the",
+   "url": "https://archive.org/details/2minutes1999sanf",
+   "deep_link": "https://archive.org/details/2minutes1999sanf?q=Union+Square",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Meetings & resolutions",
+   "salient": true
+  },
+  {
+   "identifier": "minutesrecreatio1967sanf",
+   "title": "Minutes / Recreation and Park Commission",
+   "creator": "San Francisco (Calif.). Recreation and Park Commission",
+   "year": null,
+   "pool": "sfpl",
+   "matched_alias": "Union Square",
+   "snippet": "JOINT WORKING AGREEMENT - «UNION SQUARE» GARAGE (SEE «UNION SQUARE» GARAGE) JOSEPHINE D. RANDALL",
+   "url": "https://archive.org/details/minutesrecreatio1967sanf",
+   "deep_link": "https://archive.org/details/minutesrecreatio1967sanf?q=Union+Square",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Meetings & resolutions",
+   "salient": true
+  },
+  {
+   "identifier": "destinationdown1319rose_0",
+   "title": "Destination downtown : streetscape investments for a walkable city : the downtown streetscape plan : plan summary",
+   "creator": "Rose, Evan Stuart,San Francisco (Calif.). Planning Dept,San Francisco County Transportation Authority",
+   "year": 1995,
+   "pool": "sfpl",
+   "matched_alias": "Union Square",
+   "snippet": "entrance into «Union Square»; hanging planters and decorative flowers fac- ing «Union Square». Powell:",
+   "url": "https://archive.org/details/destinationdown1319rose_0",
+   "deep_link": "https://archive.org/details/destinationdown1319rose_0?q=Union+Square",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Other records",
+   "salient": true
+  },
+  {
+   "identifier": "destinationdownt1319rose",
+   "title": "Destination downtown : streetscape investments for a walkable city : the downtown streetscape plan",
+   "creator": "Rose, Evan Stuart,San Francisco (Calif.). Planning Dept,San Francisco County Transportation Authority",
+   "year": 1995,
+   "pool": "sfpl",
+   "matched_alias": "Union Square",
+   "snippet": "edge of «Union Square», while on Kearny Street, the edge between the «Union Square» and Financial",
+   "url": "https://archive.org/details/destinationdownt1319rose",
+   "deep_link": "https://archive.org/details/destinationdownt1319rose?q=Union+Square",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Other records",
+   "salient": false
+  },
+  {
+   "identifier": "destinationdownt1994rose",
+   "title": "Destination downtown : streetscape investments for a walkable city",
+   "creator": "Rose, Evan Stuart,San Francisco (Calif.). Dept. of City Planning,San Francisco County Transportation Authority",
+   "year": 1994,
+   "pool": "sfpl",
+   "matched_alias": "Union Square",
+   "snippet": "edge of «Union Square», while on Kearny Street, the edge between the «Union Square» and Financial",
+   "url": "https://archive.org/details/destinationdownt1994rose",
+   "deep_link": "https://archive.org/details/destinationdownt1994rose?q=Union+Square",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Other records",
+   "salient": false
   }
  ],
  "dept_shelf": [
@@ -186,29 +469,10 @@
    "year": 1999,
    "pool": "sfpl",
    "url": "https://archive.org/details/0agenda19992002sanf"
-  },
-  {
-   "identifier": "reporttoboardofs1980sanf",
-   "title": "Report to the Board of Supervisors of the City and County of San Francisco : review of the operations of the San Francisco Recreation and Park Department",
-   "year": 1979,
-   "pool": "sfpl",
-   "url": "https://archive.org/details/reporttoboardofs1980sanf"
-  },
-  {
-   "identifier": "annualreport197277sanf",
-   "title": "Annual report of the San Francisco Recreation and Park Department",
-   "year": null,
-   "pool": "sfpl",
-   "url": "https://archive.org/details/annualreport197277sanf"
-  },
-  {
-   "identifier": "minutesrecreatio1960sanf",
-   "title": "Minutes / Recreation and Park Commission",
-   "year": null,
-   "pool": "sfpl",
-   "url": "https://archive.org/details/minutesrecreatio1960sanf"
   }
  ],
+ "dept_shelf_label": "Recreation & Park Department",
+ "dept_shelf_more": 3,
  "sources": [
   {
    "label": "City budget & payments",
@@ -221,7 +485,7 @@
  ],
  "_gate": {
   "has_photo": true,
-  "n_documents": 9,
+  "n_documents": 8,
   "n_money_links": 3,
   "meets_pre_summary": true
  }

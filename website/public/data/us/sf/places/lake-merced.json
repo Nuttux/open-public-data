@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T22:30:00.108333+00:00",
+ "generated_at": "2026-07-21T14:25:53.938909+00:00",
  "source_pipeline": "sf_place_candidates.json → sync_ia_sf.py + link_sf_places.py + fetch_sf_place_photos.py → export_sf_places.py",
  "unit": "USD",
  "slug": "lake-merced",
@@ -12,6 +12,245 @@
  "owning_dept": {
   "name": "Recreation and Park Department",
   "code": "REC"
+ },
+ "facility": {
+  "primary_name": "Lake Merced Boathouse",
+  "primary_address": "1 HARDING RD",
+  "primary_city": "San Francisco",
+  "primary_zip": "94132",
+  "primary_block_lot": "7283004",
+  "primary_department_name": "Recreation And Parks",
+  "primary_is_city_owned": true,
+  "primary_gross_sq_ft": 8100,
+  "primary_latitude": 37.72558906800003,
+  "primary_longitude": -122.49967527199999,
+  "supervisor_district": 7,
+  "n_facilities": 4,
+  "total_gross_sq_ft": 8100,
+  "n_owned": 4,
+  "n_leased": 0,
+  "apn_list": [
+   "7283004"
+  ],
+  "facilities": [
+   {
+    "facility_id": 992,
+    "common_name": "Lake Merced Boathouse",
+    "block_lot": "7283004",
+    "gross_sq_ft": 8100,
+    "is_city_owned": true
+   },
+   {
+    "facility_id": 994,
+    "common_name": "Lake Merced Park Pump Station",
+    "block_lot": "7283004",
+    "gross_sq_ft": null,
+    "is_city_owned": true
+   },
+   {
+    "facility_id": 2045,
+    "common_name": "Lake Merced maintenance facility 1",
+    "block_lot": "7283004",
+    "gross_sq_ft": null,
+    "is_city_owned": true
+   },
+   {
+    "facility_id": 2046,
+    "common_name": "Lake Merced maintenance facility 2",
+    "block_lot": "7283004",
+    "gross_sq_ft": null,
+    "is_city_owned": true
+   }
+  ]
+ },
+ "capital": {
+  "n_items": 4,
+  "measure_totals": {},
+  "bond_programs": [
+   "Clean and Safe Neighborhood Parks",
+   "Earthquake Safety and Emergency Response",
+   "Health and Recovery"
+  ],
+  "items": [
+   {
+    "source": "bond",
+    "source_kind": "bond_project",
+    "item_name": "Lake Merced",
+    "bond_program": "Health and Recovery",
+    "component": "Citywide Parks",
+    "voter_approved_date": null,
+    "amount_usd": null,
+    "amount_measure": null,
+    "budget_usd": null,
+    "contract_no": null,
+    "status": null,
+    "match_evidence": "Lake Merced"
+   },
+   {
+    "source": "bond",
+    "source_kind": "bond_project",
+    "item_name": "RP 2012 Lake Merced Trail & RR",
+    "bond_program": "Clean and Safe Neighborhood Parks",
+    "component": "Citywide Parks",
+    "voter_approved_date": null,
+    "amount_usd": null,
+    "amount_measure": null,
+    "budget_usd": null,
+    "contract_no": null,
+    "status": null,
+    "match_evidence": "Lake Merced"
+   },
+   {
+    "source": "bond",
+    "source_kind": "bond_project",
+    "item_name": "RP COF Lake Merced N Lake Dock",
+    "bond_program": "Clean and Safe Neighborhood Parks",
+    "component": "Citywide Programs",
+    "voter_approved_date": null,
+    "amount_usd": null,
+    "amount_measure": null,
+    "budget_usd": null,
+    "contract_no": null,
+    "status": null,
+    "match_evidence": "Lake Merced"
+   },
+   {
+    "source": "bond",
+    "source_kind": "bond_project",
+    "item_name": "Lake Merced Pistol Range Replacement",
+    "bond_program": "Earthquake Safety and Emergency Response",
+    "component": "District Police Stations & Support Facilities",
+    "voter_approved_date": null,
+    "amount_usd": null,
+    "amount_measure": null,
+    "budget_usd": null,
+    "contract_no": null,
+    "status": null,
+    "match_evidence": "Lake Merced"
+   }
+  ],
+  "payees": [
+   {
+    "vendor": "TREATY CONSTRUCTION",
+    "paid_usd": 2065089.91,
+    "n_contracts": 1,
+    "first_fiscal_year": 2025,
+    "last_fiscal_year": 2025
+   },
+   {
+    "vendor": "CAZADORO CONSTRUCTION INC",
+    "paid_usd": 583806.51,
+    "n_contracts": 1,
+    "first_fiscal_year": 2024,
+    "last_fiscal_year": 2024
+   },
+   {
+    "vendor": "WESTERN WATER CONSTRUCTORS INC",
+    "paid_usd": 203522.65,
+    "n_contracts": 1,
+    "first_fiscal_year": 2020,
+    "last_fiscal_year": 2020
+   },
+   {
+    "vendor": "Lake Merced Golf Club",
+    "paid_usd": 198955.0,
+    "n_contracts": 1,
+    "first_fiscal_year": 2018,
+    "last_fiscal_year": 2018
+   }
+  ],
+  "n_payees": 4,
+  "payees_total_paid": 3051374.07,
+  "permits": [
+   {
+    "description": "priority process - new building construction recreation center",
+    "permit_type": "new construction wood frame",
+    "declared_cost_usd": 700000.0,
+    "status": "complete",
+    "permit_date": "2023-05-19",
+    "permit_year": 2023
+   },
+   {
+    "description": "remove 2-10k&2-500 gallon underground fuel storage tanks.install & test 2-15k gallon underground fuel storage tanks with piping. install &test 2-150 gallon above grd double contained fuel storage tank & 1-100 gallon ast .install &test a leak detection & fuel monitoring system.",
+    "permit_type": "additions alterations or repairs",
+    "declared_cost_usd": 600000.0,
+    "status": "issued",
+    "permit_date": "2012-02-23",
+    "permit_year": 2012
+   },
+   {
+    "description": "parking lot and pathway renovations to enhance ada compliance at at harding park golf clubhouse and parking lot. ada barrier removal project consists of demo, minor grading, concrete asphalt paving, landscape planting and irrigation, electrical, paitning, installation of site furnishings and signage",
+    "permit_type": "otc alterations permit",
+    "declared_cost_usd": 591000.0,
+    "status": "complete",
+    "permit_date": "2024-02-08",
+    "permit_year": 2024
+   },
+   {
+    "description": "work is in rear yard. fill in a horizontal void in yard with new elevated concrete slab, replace target equipment with new equipment, provide 20 amp circuit for new equipment.",
+    "permit_type": "otc alterations permit",
+    "declared_cost_usd": 507752.0,
+    "status": "issued",
+    "permit_date": "2016-01-13",
+    "permit_year": 2016
+   },
+   {
+    "description": "replace (e), deteriorating dock with (n) accessible dock. install (n) accessible parking stall & path leading to (n) dock. install concrete pads and retaining walls for accessory storage. reconfigure (e) electrical & install (n) light pole. planting,rrigation & associated landscape improvements.",
+    "permit_type": "additions alterations or repairs",
+    "declared_cost_usd": 500000.0,
+    "status": "complete",
+    "permit_date": "2020-10-22",
+    "permit_year": 2020
+   },
+   {
+    "description": "site & utility for future (n) modular building. construct (n) concrete foundation, provide water & electrical service to (n) building. (n) sump pump & connect to (e) sump pump on site. vacant lot within lake merced pistol range, adjacent to lake merced. ** maher: yes! route to dph **",
+    "permit_type": "otc alterations permit",
+    "declared_cost_usd": 400000.0,
+    "status": "issued",
+    "permit_date": "2017-11-08",
+    "permit_year": 2017
+   }
+  ],
+  "n_permits": 19,
+  "permits_total_declared": 4183176.0,
+  "permits_by_year": [
+   {
+    "year": 2010,
+    "declared_usd": 92800.0
+   },
+   {
+    "year": 2011,
+    "declared_usd": 40000.0
+   },
+   {
+    "year": 2012,
+    "declared_usd": 673400.0
+   },
+   {
+    "year": 2016,
+    "declared_usd": 507752.0
+   },
+   {
+    "year": 2017,
+    "declared_usd": 420000.0
+   },
+   {
+    "year": 2020,
+    "declared_usd": 500000.0
+   },
+   {
+    "year": 2021,
+    "declared_usd": 4224.0
+   },
+   {
+    "year": 2023,
+    "declared_usd": 959000.0
+   },
+   {
+    "year": 2024,
+    "declared_usd": 986000.0
+   }
+  ]
  },
  "photo": "/img/us/sf/places/lake-merced.jpg",
  "photo_credit": {
@@ -33,33 +272,30 @@
    "total_usd": 250373849.0,
    "fiscal_year": 2025
   },
+  "payroll_line": {
+   "code": "REC",
+   "name": "Recreation And Park Commission",
+   "total_compensation_usd": 149952872.68,
+   "n_employees": 2161,
+   "fiscal_year": 2025
+  },
   "contracts": [],
   "grants": []
  },
  "documents": [
   {
-   "identifier": "lakemercedwaters99camp",
-   "title": "Lake Merced watershed sanitary survey",
-   "creator": "Camp, Dresser & McKee,San Francisco Public Utilities Commission",
-   "year": 1999,
+   "identifier": "sanfranciscogrou1996sanf",
+   "title": "San Francisco groundwater master plan : draft / prepared by San Francisco Water Department",
+   "creator": "San Francisco Water Department",
+   "year": null,
    "pool": "sfpl",
    "matched_alias": "Lake Merced",
-   "snippet": "Within «Lake Merced» Watershed 2-2 2-6 Wildlife Habitats at «Lake Merced» 2-3 2-7 «Lake Merced» Major",
-   "url": "https://archive.org/details/lakemercedwaters99camp",
-   "deep_link": "https://archive.org/details/lakemercedwaters99camp?q=Lake+Merced",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
-  },
-  {
-   "identifier": "lakemerced1998ba1999prep",
-   "title": "Lake Merced 1998 baseline natural resources inventory",
-   "creator": "prepared by: Trihey & Associates, Inc., through: Camp Dresser & McKee,prepared for: San Francisco Public Utilities Commission",
-   "year": 1998,
-   "pool": "sfpl",
-   "matched_alias": "Lake Merced",
-   "snippet": "Species Potentially Present At «Lake Merced» 3-6 2 «Lake Merced» Plant Communities, Habitat Types",
-   "url": "https://archive.org/details/lakemerced1998ba1999prep",
-   "deep_link": "https://archive.org/details/lakemerced1998ba1999prep?q=Lake+Merced",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+   "snippet": "of «Lake Merced» 5-2 5-4 Areas Evaluated by City Groundwater Models 5-3 5-5a «Lake Merced» is",
+   "url": "https://archive.org/details/sanfranciscogrou1996sanf",
+   "deep_link": "https://archive.org/details/sanfranciscogrou1996sanf?q=Lake+Merced",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Plans & environmental review",
+   "salient": true
   },
   {
    "identifier": "sanfranciscomast1573sanf",
@@ -71,7 +307,9 @@
    "snippet": "large treatment plant best located at the «Lake Merced» (south of the zoo) site, and a deep",
    "url": "https://archive.org/details/sanfranciscomast1573sanf",
    "deep_link": "https://archive.org/details/sanfranciscomast1573sanf?q=Lake+Merced",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Plans & environmental review",
+   "salient": true
   },
   {
    "identifier": "annualreport196164sanf",
@@ -83,7 +321,23 @@
    "snippet": "Miscellaneous Concessions ) 18,638) «Lake Merced» Center Rentals) 1,783) «Lake Merced» Concessions ) 33,600",
    "url": "https://archive.org/details/annualreport196164sanf",
    "deep_link": "https://archive.org/details/annualreport196164sanf?q=Lake+Merced",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Reports & records",
+   "salient": true
+  },
+  {
+   "identifier": "lakemercedwaters99camp",
+   "title": "Lake Merced watershed sanitary survey",
+   "creator": "Camp, Dresser & McKee,San Francisco Public Utilities Commission",
+   "year": 1999,
+   "pool": "sfpl",
+   "matched_alias": "Lake Merced",
+   "snippet": "Within «Lake Merced» Watershed 2-2 2-6 Wildlife Habitats at «Lake Merced» 2-3 2-7 «Lake Merced» Major",
+   "url": "https://archive.org/details/lakemercedwaters99camp",
+   "deep_link": "https://archive.org/details/lakemercedwaters99camp?q=Lake+Merced",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Other records",
+   "salient": true
   },
   {
    "identifier": "lakemercedwaterr1993sanf",
@@ -95,31 +349,9 @@
    "snippet": "Decline In «Lake Merced» «Lake Merced» Historic Water Levels Historic «Lake Merced» «Lake Merced» Existing",
    "url": "https://archive.org/details/lakemercedwaterr1993sanf",
    "deep_link": "https://archive.org/details/lakemercedwaterr1993sanf?q=Lake+Merced",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
-  },
-  {
-   "identifier": "feasibilityevalu1919ch2m",
-   "title": "Feasibility evaluation of alternatives to raise Lake Merced : draft",
-   "creator": "CH2M HILL",
-   "year": null,
-   "pool": "sfpl",
-   "matched_alias": "Lake Merced",
-   "snippet": "OF FIGURES 1 1935 «Lake Merced» Aerial Photograph 2 2 1995 «Lake Merced» Aerial Photograph",
-   "url": "https://archive.org/details/feasibilityevalu1919ch2m",
-   "deep_link": "https://archive.org/details/feasibilityevalu1919ch2m?q=Lake+Merced",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
-  },
-  {
-   "identifier": "sanfranciscogrou1996sanf",
-   "title": "San Francisco groundwater master plan : draft / prepared by San Francisco Water Department",
-   "creator": "San Francisco Water Department",
-   "year": null,
-   "pool": "sfpl",
-   "matched_alias": "Lake Merced",
-   "snippet": "of «Lake Merced» 5-2 5-4 Areas Evaluated by City Groundwater Models 5-3 5-5a «Lake Merced» is",
-   "url": "https://archive.org/details/sanfranciscogrou1996sanf",
-   "deep_link": "https://archive.org/details/sanfranciscogrou1996sanf?q=Lake+Merced",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Other records",
+   "salient": true
   },
   {
    "identifier": "vistagrandediver2001ch2m",
@@ -131,7 +363,9 @@
    "snippet": "fh9 2 «LAKE MERCED» TECHNICAL MEMORANDUM NO, 2 «Lake Merced» Description and Issues «Lake Merced» is",
    "url": "https://archive.org/details/vistagrandediver2001ch2m",
    "deep_link": "https://archive.org/details/vistagrandediver2001ch2m?q=Lake+Merced",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Other records",
+   "salient": true
   },
   {
    "identifier": "capitalplanann200405sanf",
@@ -143,7 +377,23 @@
    "snippet": "Maintenance Facility «Lake Merced» - A Master Plan «Lake Merced» - Fishing Pier «Lake Merced» - Impound",
    "url": "https://archive.org/details/capitalplanann200405sanf",
    "deep_link": "https://archive.org/details/capitalplanann200405sanf?q=Lake+Merced",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Other records",
+   "salient": false
+  },
+  {
+   "identifier": "lakemerced1998ba1999prep",
+   "title": "Lake Merced 1998 baseline natural resources inventory",
+   "creator": "prepared by: Trihey & Associates, Inc., through: Camp Dresser & McKee,prepared for: San Francisco Public Utilities Commission",
+   "year": 1998,
+   "pool": "sfpl",
+   "matched_alias": "Lake Merced",
+   "snippet": "Species Potentially Present At «Lake Merced» 3-6 2 «Lake Merced» Plant Communities, Habitat Types",
+   "url": "https://archive.org/details/lakemerced1998ba1999prep",
+   "deep_link": "https://archive.org/details/lakemerced1998ba1999prep?q=Lake+Merced",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Other records",
+   "salient": false
   },
   {
    "identifier": "lakemercedwater1993sanf_0",
@@ -155,7 +405,23 @@
    "snippet": "Testing at «Lake Merced» and Drinking Water Standards Boring B-l at «Lake Merced» Sewage Pump",
    "url": "https://archive.org/details/lakemercedwater1993sanf_0",
    "deep_link": "https://archive.org/details/lakemercedwater1993sanf_0?q=Lake+Merced",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Other records",
+   "salient": false
+  },
+  {
+   "identifier": "feasibilityevalu1919ch2m",
+   "title": "Feasibility evaluation of alternatives to raise Lake Merced : draft",
+   "creator": "CH2M HILL",
+   "year": null,
+   "pool": "sfpl",
+   "matched_alias": "Lake Merced",
+   "snippet": "OF FIGURES 1 1935 «Lake Merced» Aerial Photograph 2 2 1995 «Lake Merced» Aerial Photograph",
+   "url": "https://archive.org/details/feasibilityevalu1919ch2m",
+   "deep_link": "https://archive.org/details/feasibilityevalu1919ch2m?q=Lake+Merced",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Other records",
+   "salient": false
   }
  ],
  "dept_shelf": [
@@ -179,29 +445,10 @@
    "year": 1999,
    "pool": "sfpl",
    "url": "https://archive.org/details/0agenda19992002sanf"
-  },
-  {
-   "identifier": "reporttoboardofs1980sanf",
-   "title": "Report to the Board of Supervisors of the City and County of San Francisco : review of the operations of the San Francisco Recreation and Park Department",
-   "year": 1979,
-   "pool": "sfpl",
-   "url": "https://archive.org/details/reporttoboardofs1980sanf"
-  },
-  {
-   "identifier": "annualreport197277sanf",
-   "title": "Annual report of the San Francisco Recreation and Park Department",
-   "year": null,
-   "pool": "sfpl",
-   "url": "https://archive.org/details/annualreport197277sanf"
-  },
-  {
-   "identifier": "minutesrecreatio1960sanf",
-   "title": "Minutes / Recreation and Park Commission",
-   "year": null,
-   "pool": "sfpl",
-   "url": "https://archive.org/details/minutesrecreatio1960sanf"
   }
  ],
+ "dept_shelf_label": "Recreation & Park Department",
+ "dept_shelf_more": 3,
  "sources": [
   {
    "label": "City budget & payments",

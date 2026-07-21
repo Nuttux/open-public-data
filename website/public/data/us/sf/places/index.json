@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T22:35:37.355584+00:00",
+ "generated_at": "2026-07-21T14:25:54.016353+00:00",
  "unit": "USD",
  "count": 27,
  "note": "Published SF places — each has a clean-licensed photo, ≥3 archive documents, ≥1 money link and a source-grounded summary.",
@@ -13,7 +13,7 @@
    "lon": -122.4474,
    "photo": "/img/us/sf/places/balboa-park-station.jpg",
    "owning_dept_code": "MTA",
-   "n_documents": 10,
+   "n_documents": 9,
    "n_contracts": 0
   },
   {
@@ -37,7 +37,7 @@
    "lon": -122.4416,
    "photo": "/img/us/sf/places/buena-vista-park.jpg",
    "owning_dept_code": "REC",
-   "n_documents": 10,
+   "n_documents": 9,
    "n_contracts": 0
   },
   {
@@ -49,7 +49,7 @@
    "lon": -122.4116,
    "photo": "/img/us/sf/places/cable-car-barn.jpg",
    "owning_dept_code": "MTA",
-   "n_documents": 8,
+   "n_documents": 7,
    "n_contracts": 0
   },
   {
@@ -61,7 +61,7 @@
    "lon": -122.4058,
    "photo": "/img/us/sf/places/coit-tower.jpg",
    "owning_dept_code": "REC",
-   "n_documents": 10,
+   "n_documents": 8,
    "n_contracts": 0
   },
   {
@@ -73,7 +73,7 @@
    "lon": -122.4603,
    "photo": "/img/us/sf/places/conservatory-of-flowers.jpg",
    "owning_dept_code": "REC",
-   "n_documents": 10,
+   "n_documents": 4,
    "n_contracts": 0
   },
   {
@@ -85,7 +85,7 @@
    "lon": -122.3937,
    "photo": "/img/us/sf/places/ferry-building.jpg",
    "owning_dept_code": "PRT",
-   "n_documents": 5,
+   "n_documents": 3,
    "n_contracts": 0
   },
   {
@@ -97,7 +97,7 @@
    "lon": -122.4436,
    "photo": "/img/us/sf/places/glen-canyon-park.jpg",
    "owning_dept_code": "REC",
-   "n_documents": 10,
+   "n_documents": 9,
    "n_contracts": 0
   },
   {
@@ -109,7 +109,7 @@
    "lon": -122.4862,
    "photo": "/img/us/sf/places/golden-gate-park.jpg",
    "owning_dept_code": "REC",
-   "n_documents": 10,
+   "n_documents": 7,
    "n_contracts": 0
   },
   {
@@ -121,7 +121,7 @@
    "lon": -119.7873,
    "photo": "/img/us/sf/places/hetch-hetchy.jpg",
    "owning_dept_code": "PUC",
-   "n_documents": 10,
+   "n_documents": 6,
    "n_contracts": 1
   },
   {
@@ -133,7 +133,7 @@
    "lon": -122.4703,
    "photo": "/img/us/sf/places/japanese-tea-garden.jpg",
    "owning_dept_code": "REC",
-   "n_documents": 10,
+   "n_documents": 6,
    "n_contracts": 0
   },
   {
@@ -181,7 +181,7 @@
    "lon": -122.5008,
    "photo": "/img/us/sf/places/legion-of-honor.jpg",
    "owning_dept_code": "FAM",
-   "n_documents": 10,
+   "n_documents": 7,
    "n_contracts": 0
   },
   {
@@ -193,7 +193,7 @@
    "lon": -122.4204,
    "photo": "/img/us/sf/places/davies-symphony-hall.jpg",
    "owning_dept_code": "WAR",
-   "n_documents": 7,
+   "n_documents": 5,
    "n_contracts": 0
   },
   {
@@ -205,7 +205,7 @@
    "lon": -122.4426,
    "photo": "/img/us/sf/places/marina-green.jpg",
    "owning_dept_code": "REC",
-   "n_documents": 10,
+   "n_documents": 8,
    "n_contracts": 0
   },
   {
@@ -217,7 +217,7 @@
    "lon": -122.4269,
    "photo": "/img/us/sf/places/mission-dolores-park.jpg",
    "owning_dept_code": "REC",
-   "n_documents": 10,
+   "n_documents": 8,
    "n_contracts": 1
   },
   {
@@ -229,7 +229,7 @@
    "lon": -122.4012,
    "photo": "/img/us/sf/places/moscone-center.jpg",
    "owning_dept_code": "ADM",
-   "n_documents": 10,
+   "n_documents": 6,
    "n_contracts": 0
   },
   {
@@ -241,7 +241,7 @@
    "lon": -122.4098,
    "photo": "/img/us/sf/places/pier-39.jpg",
    "owning_dept_code": "PRT",
-   "n_documents": 10,
+   "n_documents": 8,
    "n_contracts": 0
   },
   {
@@ -253,7 +253,7 @@
    "lon": -122.3855,
    "photo": "/img/us/sf/places/pier-70.jpg",
    "owning_dept_code": "PRT",
-   "n_documents": 10,
+   "n_documents": 5,
    "n_contracts": 0
   },
   {
@@ -265,7 +265,7 @@
    "lon": -122.4053,
    "photo": "/img/us/sf/places/portsmouth-square.jpg",
    "owning_dept_code": "REC",
-   "n_documents": 7,
+   "n_documents": 6,
    "n_contracts": 2
   },
   {
@@ -289,7 +289,7 @@
    "lon": -122.503,
    "photo": "/img/us/sf/places/san-francisco-zoo.jpg",
    "owning_dept_code": "REC",
-   "n_documents": 10,
+   "n_documents": 8,
    "n_contracts": 0
   },
   {
@@ -301,7 +301,7 @@
    "lon": -121.873,
    "photo": "/img/us/sf/places/sunol-water-temple.jpg",
    "owning_dept_code": "PUC",
-   "n_documents": 10,
+   "n_documents": 7,
    "n_contracts": 0
   },
   {
@@ -313,7 +313,7 @@
    "lon": -122.4074,
    "photo": "/img/us/sf/places/union-square.jpg",
    "owning_dept_code": "REC",
-   "n_documents": 9,
+   "n_documents": 8,
    "n_contracts": 2
   },
   {

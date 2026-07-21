@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T22:30:00.105365+00:00",
+ "generated_at": "2026-07-21T14:25:53.932647+00:00",
  "source_pipeline": "sf_place_candidates.json → sync_ia_sf.py + link_sf_places.py + fetch_sf_place_photos.py → export_sf_places.py",
  "unit": "USD",
  "slug": "glen-canyon-park",
@@ -12,6 +12,140 @@
  "owning_dept": {
   "name": "Recreation and Park Department",
   "code": "REC"
+ },
+ "facility": {
+  "primary_name": "Glen Park Rec Center",
+  "primary_address": "70 ELK ST",
+  "primary_city": "San Francisco",
+  "primary_zip": "94131",
+  "primary_block_lot": "7560002",
+  "primary_department_name": "Recreation And Parks",
+  "primary_is_city_owned": true,
+  "primary_gross_sq_ft": 15200,
+  "primary_latitude": 37.73713482800008,
+  "primary_longitude": -122.44084568999995,
+  "supervisor_district": 8,
+  "n_facilities": 1,
+  "total_gross_sq_ft": 15200,
+  "n_owned": 1,
+  "n_leased": 0,
+  "apn_list": [
+   "7560002"
+  ],
+  "facilities": [
+   {
+    "facility_id": 811,
+    "common_name": "Glen Park Rec Center",
+    "block_lot": "7560002",
+    "gross_sq_ft": 15200,
+    "is_city_owned": true
+   }
+  ]
+ },
+ "capital": {
+  "n_items": 0,
+  "measure_totals": {},
+  "bond_programs": [],
+  "items": [],
+  "payees": [
+   {
+    "vendor": "SAN FRANCISCO PARKS ALLIANCE",
+    "paid_usd": 234543.19,
+    "n_contracts": 2,
+    "first_fiscal_year": 2019,
+    "last_fiscal_year": 2022
+   },
+   {
+    "vendor": "TREATY CONSTRUCTION",
+    "paid_usd": 166182.0,
+    "n_contracts": 1,
+    "first_fiscal_year": 2023,
+    "last_fiscal_year": 2023
+   },
+   {
+    "vendor": "WEST COAST TURF",
+    "paid_usd": 10450.0,
+    "n_contracts": 1,
+    "first_fiscal_year": 2020,
+    "last_fiscal_year": 2020
+   }
+  ],
+  "n_payees": 3,
+  "payees_total_paid": 411175.19,
+  "permits": [
+   {
+    "description": "site plan for phace ii. renovation, seismic retrofit of (e) building. addition of a multi-purpose room & bleacher. new lobby- construction, mep, fire alarm and sprinklesr separate permits.",
+    "permit_type": "additions alterations or repairs",
+    "declared_cost_usd": 8200000.0,
+    "status": "complete",
+    "permit_date": "2015-08-28",
+    "permit_year": 2015
+   },
+   {
+    "description": "to make (ada) acessible: path of travel. restrooms, doors, drinking foundation, mechanical, electrical work to the site & restrooms, drinking fountain. incl conc. slab in restrooms. new landscape work to the site.",
+    "permit_type": "additions alterations or repairs",
+    "declared_cost_usd": 1261382.0,
+    "status": "complete",
+    "permit_date": "2012-09-28",
+    "permit_year": 2012
+   },
+   {
+    "description": "fire only permit. install new 8\" fire service & new low pressure fire hydrant off of 8\" city main on berkeley way per nfpa 13 & 24. new low pressure fire hydrant in glenn canyon park. fire hydrant location approx on north west corner of gynmasium",
+    "permit_type": "otc alterations permit",
+    "declared_cost_usd": 200000.0,
+    "status": "issued",
+    "permit_date": "2013-11-05",
+    "permit_year": 2013
+   },
+   {
+    "description": "install fire sprinkler system overhead to nfpa13. - 195 heads. ref #2014-0624-9343. underground on deferred submittal.",
+    "permit_type": "additions alterations or repairs",
+    "declared_cost_usd": 102000.0,
+    "status": "complete",
+    "permit_date": "2016-06-08",
+    "permit_year": 2016
+   },
+   {
+    "description": "silver tree building: re-roofing",
+    "permit_type": "otc alterations permit",
+    "declared_cost_usd": 45000.0,
+    "status": "complete",
+    "permit_date": "2015-08-19",
+    "permit_year": 2015
+   },
+   {
+    "description": "underground fire line, ref. sprinkler permit # 2016 0309 1589 ref #2014-0624-9343.",
+    "permit_type": "otc alterations permit",
+    "declared_cost_usd": 15000.0,
+    "status": "issued",
+    "permit_date": "2017-05-03",
+    "permit_year": 2017
+   }
+  ],
+  "n_permits": 8,
+  "permits_total_declared": 9845882.0,
+  "permits_by_year": [
+   {
+    "year": 2012,
+    "declared_usd": 1261382.0
+   },
+   {
+    "year": 2013,
+    "declared_usd": 200000.0
+   },
+   {
+    "year": 2015,
+    "declared_usd": 8260000.0
+   },
+   {
+    "year": 2016,
+    "declared_usd": 109500.0
+   },
+   {
+    "year": 2017,
+    "declared_usd": 15000.0
+   }
+  ]
  },
  "photo": "/img/us/sf/places/glen-canyon-park.jpg",
  "photo_credit": {
@@ -33,6 +167,13 @@
    "total_usd": 250373849.0,
    "fiscal_year": 2025
   },
+  "payroll_line": {
+   "code": "REC",
+   "name": "Recreation And Park Commission",
+   "total_compensation_usd": 149952872.68,
+   "n_employees": 2161,
+   "fiscal_year": 2025
+  },
   "contracts": [],
   "grants": []
  },
@@ -47,55 +188,9 @@
    "snippet": "neighborhood is «Glen Canyon Park», a 70-acre natural and recreational area. «Glen Canyon Park» is not",
    "url": "https://archive.org/details/draftenvironment2720sanf",
    "deep_link": "https://archive.org/details/draftenvironment2720sanf?q=Glen+Canyon+Park",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
-  },
-  {
-   "identifier": "2008cleansafenei2007sanf",
-   "title": "2008 Clean & Safe Neighborhood Parks bond",
-   "creator": "San Francisco (Calif.)",
-   "year": 2008,
-   "pool": "sfpl",
-   "matched_alias": "Glen Canyon Park",
-   "snippet": "9F ^is Image 20 «Glen Canyon Park» Children's Play Area «GLEN CANYON PARK» RENOVATION Facility",
-   "url": "https://archive.org/details/2008cleansafenei2007sanf",
-   "deep_link": "https://archive.org/details/2008cleansafenei2007sanf?q=Glen+Canyon+Park",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
-  },
-  {
-   "identifier": "twocommercialsit1962sanf",
-   "title": "Two commercial sites, Diamond Heights, San Francisco",
-   "creator": "San Francisco Redevelopment Agency (San Francisco, Calif.)",
-   "year": 1962,
-   "pool": "sfpl",
-   "matched_alias": "Glen Canyon Park",
-   "snippet": "purchase of sites and construction. 4. «Glen Canyon Park», an 80-acre naturally wooded canyon",
-   "url": "https://archive.org/details/twocommercialsit1962sanf",
-   "deep_link": "https://archive.org/details/twocommercialsit1962sanf?q=Glen+Canyon+Park",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
-  },
-  {
-   "identifier": "diamondheightsne1961lack",
-   "title": "Diamond Heights neighborhood center : an urban design and report-- to the San Francisco Redevelopment Agency",
-   "creator": "Lackey, Lawrence,San Francisco Redevelopment Agency (San Francisco, Calif.),Royston, Hanamoto & Mayes",
-   "year": 1961,
-   "pool": "sfpl",
-   "matched_alias": "Glen Canyon Park",
-   "snippet": "which links Diamond Heights Boulevard to «Glen Canyon Park». All activities are accessible from",
-   "url": "https://archive.org/details/diamondheightsne1961lack",
-   "deep_link": "https://archive.org/details/diamondheightsne1961lack?q=Glen+Canyon+Park",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
-  },
-  {
-   "identifier": "diamondheightsre1952sanf",
-   "title": "Diamond Heights : a report on the tentative redevelopment plan",
-   "creator": "San Francisco Redevelopment Agency (San Francisco, Calif.)",
-   "year": 1951,
-   "pool": "sfpl",
-   "matched_alias": "Glen Canyon Park",
-   "snippet": "its adjacent playground will adjoin «Glen Canyon Park» with its day camp for all San Francisco",
-   "url": "https://archive.org/details/diamondheightsre1952sanf",
-   "deep_link": "https://archive.org/details/diamondheightsre1952sanf?q=Glen+Canyon+Park",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Plans & environmental review",
+   "salient": true
   },
   {
    "identifier": "agendasminutesvi2014arts",
@@ -107,31 +202,9 @@
    "snippet": "artworks to be provided at meeting). 4. «Glen Canyon Park» Recreation Center Justine Topfer Action",
    "url": "https://archive.org/details/agendasminutesvi2014arts",
    "deep_link": "https://archive.org/details/agendasminutesvi2014arts?q=Glen+Canyon+Park",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
-  },
-  {
-   "identifier": "certificateofdet2012sanf",
-   "title": "Certificate of determination of exemption/exclusion from environmental review",
-   "creator": "San Francisco (Calif.). Planning Dept",
-   "year": null,
-   "pool": "sfpl",
-   "matched_alias": "Glen Canyon Park",
-   "snippet": "day camp facility within «Glen Canyon Park». 3 «Glen Canyon Park» Renovation Memorandum, by",
-   "url": "https://archive.org/details/certificateofdet2012sanf",
-   "deep_link": "https://archive.org/details/certificateofdet2012sanf?q=Glen+Canyon+Park",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
-  },
-  {
-   "identifier": "2minutes1995sanf",
-   "title": "Minutes",
-   "creator": "San Francisco (Calif.). Board of Supervisors. Rules Committee,San Francisco (Calif.). Board of Supervisors. Rules and Legislation Committee",
-   "year": null,
-   "pool": "sfpl",
-   "matched_alias": "Glen Canyon Park",
-   "snippet": "Council) ACTION: 2. File 193-95-7. [«Glen Canyon Park»] Resolution urging the Mayor to urge",
-   "url": "https://archive.org/details/2minutes1995sanf",
-   "deep_link": "https://archive.org/details/2minutes1995sanf?q=Glen+Canyon+Park",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Meetings & resolutions",
+   "salient": true
   },
   {
    "identifier": "agenda2013sanf_0",
@@ -143,7 +216,9 @@
    "snippet": "Budget with Phases 8 Neighborhood Parks «Glen Canyon Park» 12 Joe DiMaggio Playground 13 Balboa",
    "url": "https://archive.org/details/agenda2013sanf_0",
    "deep_link": "https://archive.org/details/agenda2013sanf_0?q=Glen+Canyon+Park",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Meetings & resolutions",
+   "salient": true
   },
   {
    "identifier": "2minutes1996sanf",
@@ -155,7 +230,79 @@
    "snippet": "Office of Housing) 11. File 193-96-4. [«Glen Canyon Park» Traffic Issues] Hearing to consider",
    "url": "https://archive.org/details/2minutes1996sanf",
    "deep_link": "https://archive.org/details/2minutes1996sanf?q=Glen+Canyon+Park",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Meetings & resolutions",
+   "salient": true
+  },
+  {
+   "identifier": "diamondheightsne1961lack",
+   "title": "Diamond Heights neighborhood center : an urban design and report-- to the San Francisco Redevelopment Agency",
+   "creator": "Lackey, Lawrence,San Francisco Redevelopment Agency (San Francisco, Calif.),Royston, Hanamoto & Mayes",
+   "year": 1961,
+   "pool": "sfpl",
+   "matched_alias": "Glen Canyon Park",
+   "snippet": "which links Diamond Heights Boulevard to «Glen Canyon Park». All activities are accessible from",
+   "url": "https://archive.org/details/diamondheightsne1961lack",
+   "deep_link": "https://archive.org/details/diamondheightsne1961lack?q=Glen+Canyon+Park",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Other records",
+   "salient": true
+  },
+  {
+   "identifier": "2008cleansafenei2007sanf",
+   "title": "2008 Clean & Safe Neighborhood Parks bond",
+   "creator": "San Francisco (Calif.)",
+   "year": 2008,
+   "pool": "sfpl",
+   "matched_alias": "Glen Canyon Park",
+   "snippet": "9F ^is Image 20 «Glen Canyon Park» Children's Play Area «GLEN CANYON PARK» RENOVATION Facility",
+   "url": "https://archive.org/details/2008cleansafenei2007sanf",
+   "deep_link": "https://archive.org/details/2008cleansafenei2007sanf?q=Glen+Canyon+Park",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Other records",
+   "salient": true
+  },
+  {
+   "identifier": "diamondheightsre1952sanf",
+   "title": "Diamond Heights : a report on the tentative redevelopment plan",
+   "creator": "San Francisco Redevelopment Agency (San Francisco, Calif.)",
+   "year": 1951,
+   "pool": "sfpl",
+   "matched_alias": "Glen Canyon Park",
+   "snippet": "its adjacent playground will adjoin «Glen Canyon Park» with its day camp for all San Francisco",
+   "url": "https://archive.org/details/diamondheightsre1952sanf",
+   "deep_link": "https://archive.org/details/diamondheightsre1952sanf?q=Glen+Canyon+Park",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Other records",
+   "salient": false
+  },
+  {
+   "identifier": "twocommercialsit1962sanf",
+   "title": "Two commercial sites, Diamond Heights, San Francisco",
+   "creator": "San Francisco Redevelopment Agency (San Francisco, Calif.)",
+   "year": 1962,
+   "pool": "sfpl",
+   "matched_alias": "Glen Canyon Park",
+   "snippet": "purchase of sites and construction. 4. «Glen Canyon Park», an 80-acre naturally wooded canyon",
+   "url": "https://archive.org/details/twocommercialsit1962sanf",
+   "deep_link": "https://archive.org/details/twocommercialsit1962sanf?q=Glen+Canyon+Park",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Other records",
+   "salient": false
+  },
+  {
+   "identifier": "certificateofdet2012sanf",
+   "title": "Certificate of determination of exemption/exclusion from environmental review",
+   "creator": "San Francisco (Calif.). Planning Dept",
+   "year": null,
+   "pool": "sfpl",
+   "matched_alias": "Glen Canyon Park",
+   "snippet": "day camp facility within «Glen Canyon Park». 3 «Glen Canyon Park» Renovation Memorandum, by",
+   "url": "https://archive.org/details/certificateofdet2012sanf",
+   "deep_link": "https://archive.org/details/certificateofdet2012sanf?q=Glen+Canyon+Park",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Other records",
+   "salient": false
   }
  ],
  "dept_shelf": [
@@ -179,29 +326,10 @@
    "year": 1999,
    "pool": "sfpl",
    "url": "https://archive.org/details/0agenda19992002sanf"
-  },
-  {
-   "identifier": "reporttoboardofs1980sanf",
-   "title": "Report to the Board of Supervisors of the City and County of San Francisco : review of the operations of the San Francisco Recreation and Park Department",
-   "year": 1979,
-   "pool": "sfpl",
-   "url": "https://archive.org/details/reporttoboardofs1980sanf"
-  },
-  {
-   "identifier": "annualreport197277sanf",
-   "title": "Annual report of the San Francisco Recreation and Park Department",
-   "year": null,
-   "pool": "sfpl",
-   "url": "https://archive.org/details/annualreport197277sanf"
-  },
-  {
-   "identifier": "minutesrecreatio1960sanf",
-   "title": "Minutes / Recreation and Park Commission",
-   "year": null,
-   "pool": "sfpl",
-   "url": "https://archive.org/details/minutesrecreatio1960sanf"
   }
  ],
+ "dept_shelf_label": "Recreation & Park Department",
+ "dept_shelf_more": 3,
  "sources": [
   {
    "label": "City budget & payments",
@@ -214,7 +342,7 @@
  ],
  "_gate": {
   "has_photo": true,
-  "n_documents": 10,
+  "n_documents": 9,
   "n_money_links": 1,
   "meets_pre_summary": true
  }

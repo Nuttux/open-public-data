@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T22:30:00.108697+00:00",
+ "generated_at": "2026-07-21T14:25:53.939774+00:00",
  "source_pipeline": "sf_place_candidates.json → sync_ia_sf.py + link_sf_places.py + fetch_sf_place_photos.py → export_sf_places.py",
  "unit": "USD",
  "slug": "randall-museum",
@@ -13,6 +13,122 @@
   "name": "Recreation and Park Department",
   "code": "REC"
  },
+ "facility": {
+  "primary_name": "Randall Museum",
+  "primary_address": "199 MUSEUM WAY",
+  "primary_city": "San Francisco",
+  "primary_zip": "94114",
+  "primary_block_lot": "2615002",
+  "primary_department_name": "Recreation And Parks",
+  "primary_is_city_owned": true,
+  "primary_gross_sq_ft": 32030,
+  "primary_latitude": 37.76442323800006,
+  "primary_longitude": -122.43814775799996,
+  "supervisor_district": 8,
+  "n_facilities": 1,
+  "total_gross_sq_ft": 32030,
+  "n_owned": 1,
+  "n_leased": 0,
+  "apn_list": [
+   "2615002"
+  ],
+  "facilities": [
+   {
+    "facility_id": 1369,
+    "common_name": "Randall Museum",
+    "block_lot": "2615002",
+    "gross_sq_ft": 32030,
+    "is_city_owned": true
+   }
+  ]
+ },
+ "capital": {
+  "n_items": 0,
+  "measure_totals": {},
+  "bond_programs": [],
+  "items": [],
+  "payees": [
+   {
+    "vendor": "ROEBUCK CONSTRUCTION INC",
+    "paid_usd": 1170509.5,
+    "n_contracts": 1,
+    "first_fiscal_year": 2018,
+    "last_fiscal_year": 2018
+   }
+  ],
+  "n_payees": 1,
+  "payees_total_paid": 1170509.5,
+  "permits": [
+   {
+    "description": "primarily interior renovation. construct geology exhibit. new zoology exhibit. renovate live animal exhibit,science lab,multipurpose room,3 bathrooms,lobby,concession & office area. install elevator. accessibility upgrades. new sprinkler at bsmt level.",
+    "permit_type": "additions alterations or repairs",
+    "declared_cost_usd": 3500000.0,
+    "status": "complete",
+    "permit_date": "2015-07-08",
+    "permit_year": 2015
+   },
+   {
+    "description": "underground portionof the fire sprinkler permit (ref pa 2016 0427 5868) and in conjunction with ref pa 2015 1218 5449",
+    "permit_type": "otc alterations permit",
+    "declared_cost_usd": 730000.0,
+    "status": "suspend",
+    "permit_date": "2017-04-14",
+    "permit_year": 2017
+   },
+   {
+    "description": "erect one story public restroom.",
+    "permit_type": "new construction wood frame",
+    "declared_cost_usd": 400000.0,
+    "status": "complete",
+    "permit_date": "2012-12-24",
+    "permit_year": 2012
+   },
+   {
+    "description": "installation of new electrical service. amend scope of work on 201406259468",
+    "permit_type": "otc alterations permit",
+    "declared_cost_usd": 200000.0,
+    "status": "issued",
+    "permit_date": "2017-08-25",
+    "permit_year": 2017
+   },
+   {
+    "description": "partial demolition o f walls; interior renovation of two rooms in the randall musuem (stem lab & toddler room), including electrical outlets & lighting and finishes: to be built in connection with improvements permitted under 2014-0625-9768s",
+    "permit_type": "otc alterations permit",
+    "declared_cost_usd": 150000.0,
+    "status": "issued",
+    "permit_date": "2016-02-12",
+    "permit_year": 2016
+   },
+   {
+    "description": "install 117 new sprinklers for bldg renovation - lower level. ref pa 2014 0625 9468. installation of new 6-inch fire service off of 6-inch main on roosevelt way by other under separated appl.",
+    "permit_type": "otc alterations permit",
+    "declared_cost_usd": 60500.0,
+    "status": "complete",
+    "permit_date": "2016-05-17",
+    "permit_year": 2016
+   }
+  ],
+  "n_permits": 11,
+  "permits_total_declared": 5190500.0,
+  "permits_by_year": [
+   {
+    "year": 2012,
+    "declared_usd": 420000.0
+   },
+   {
+    "year": 2015,
+    "declared_usd": 3500000.0
+   },
+   {
+    "year": 2016,
+    "declared_usd": 262500.0
+   },
+   {
+    "year": 2017,
+    "declared_usd": 1008000.0
+   }
+  ]
+ },
  "photo": null,
  "photo_credit": null,
  "summary_en": null,
@@ -24,34 +140,17 @@
    "total_usd": 250373849.0,
    "fiscal_year": 2025
   },
+  "payroll_line": {
+   "code": "REC",
+   "name": "Recreation And Park Commission",
+   "total_compensation_usd": 149952872.68,
+   "n_employees": 2161,
+   "fiscal_year": 2025
+  },
   "contracts": [],
   "grants": []
  },
  "documents": [
-  {
-   "identifier": "minutes1990sanf_2",
-   "title": "Minutes",
-   "creator": "San Francisco Open Space/Park Renovation Citizens Advisory Committee",
-   "year": 2000,
-   "pool": "sfpl",
-   "matched_alias": "Randall Museum",
-   "snippet": "to the «Randall Museum» and by bringing programs and staff from the «Randall Museum» to those",
-   "url": "https://archive.org/details/minutes1990sanf_2",
-   "deep_link": "https://archive.org/details/minutes1990sanf_2?q=Randall+Museum",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
-  },
-  {
-   "identifier": "minutes1998sanf_5",
-   "title": "Minutes",
-   "creator": "San Francisco Open Space/Park Renovation Citizens Advisory Committee",
-   "year": 2000,
-   "pool": "sfpl",
-   "matched_alias": "Randall Museum",
-   "snippet": "(Science Curator, «Randall Museum»), Carolyn Galbriotti (Friends of the «Randall Museum»), and Ben Harwood",
-   "url": "https://archive.org/details/minutes1998sanf_5",
-   "deep_link": "https://archive.org/details/minutes1998sanf_5?q=Randall+Museum",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
-  },
   {
    "identifier": "minutes1992sanf_1",
    "title": "Minutes",
@@ -62,19 +161,9 @@
    "snippet": "taken. ° «Randall Museum» Amy Dawson, «Randall Museum» Director, reviewed the «Randall Museum» Transportation",
    "url": "https://archive.org/details/minutes1992sanf_1",
    "deep_link": "https://archive.org/details/minutes1992sanf_1?q=Randall+Museum",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
-  },
-  {
-   "identifier": "minutes1980sanf_3",
-   "title": "Minutes",
-   "creator": "San Francisco Open Space/Park Renovation Citizens Advisory Committee",
-   "year": 2000,
-   "pool": "sfpl",
-   "matched_alias": "Randall Museum",
-   "snippet": "Amy Dawson, Director-«Randall Museum», and Molly Hooper, «Randall Museum» Society, requested funds",
-   "url": "https://archive.org/details/minutes1980sanf_3",
-   "deep_link": "https://archive.org/details/minutes1980sanf_3?q=Randall+Museum",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Meetings & resolutions",
+   "salient": true
   },
   {
    "identifier": "minutesrecreatio1986sanf",
@@ -86,43 +175,9 @@
    "snippet": "lots along Museum Way near the «Josephine Randall Junior Museum». A compromise proposal has been",
    "url": "https://archive.org/details/minutesrecreatio1986sanf",
    "deep_link": "https://archive.org/details/minutesrecreatio1986sanf?q=Josephine+Randall+Junior+Museum",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
-  },
-  {
-   "identifier": "reportoninvestig2980sanf",
-   "title": "Report on the investigation of the San Francisco Zoo",
-   "creator": "San Francisco (Calif.). Animal Control and Welfare Commission,San Francisco (Calif.). Board of Supervisors",
-   "year": 1980,
-   "pool": "sfpl",
-   "matched_alias": "Josephine Randall Junior Museum",
-   "snippet": "VETERINARIAN'S RESPONSIBILITY TO THE «JOSEPHINE RANDALL JUNIOR MUSEUM». - - 6. ~ THAT THE BOARD",
-   "url": "https://archive.org/details/reportoninvestig2980sanf",
-   "deep_link": "https://archive.org/details/reportoninvestig2980sanf?q=Josephine+Randall+Junior+Museum",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
-  },
-  {
-   "identifier": "eastwest11east_27",
-   "title": "East/West",
-   "creator": "East/West Pub. Co.",
-   "year": 1977,
-   "pool": "sfpl",
-   "matched_alias": "Josephine Randall Junior Museum",
-   "snippet": "miss a major event being held in the «Josephine Randall Junior Museum» at ,了 Roosevelt and Museum Way today",
-   "url": "https://archive.org/details/eastwest11east_27",
-   "deep_link": "https://archive.org/details/eastwest11east_27?q=Josephine+Randall+Junior+Museum",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
-  },
-  {
-   "identifier": "generalmanagersr1992sanf",
-   "title": "General manager's report : Open Space Acquisition and Park Renovation Fund",
-   "creator": "San Francisco (Calif.). Recreation and Park Department,San Francisco (Calif.). Dept. of City Planning,San Francisco (Calif.). Open Space Acquisition and Park Renovation Fund",
-   "year": 1975,
-   "pool": "sfpl",
-   "matched_alias": "Randall Museum",
-   "snippet": "80,000 Potrero Hill Rec Center 100,000 «Randall Museum» 20,000 Twin Peaks Regional Trail 100,000",
-   "url": "https://archive.org/details/generalmanagersr1992sanf",
-   "deep_link": "https://archive.org/details/generalmanagersr1992sanf?q=Randall+Museum",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Meetings & resolutions",
+   "salient": true
   },
   {
    "identifier": "annrep778085899091sanf",
@@ -134,7 +189,23 @@
    "snippet": "before. Randall Junior Museum The «Josephine Randall Junior Museum», from its prime location in",
    "url": "https://archive.org/details/annrep778085899091sanf",
    "deep_link": "https://archive.org/details/annrep778085899091sanf?q=Josephine+Randall+Junior+Museum",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Reports & records",
+   "salient": true
+  },
+  {
+   "identifier": "eastwest11east_27",
+   "title": "East/West",
+   "creator": "East/West Pub. Co.",
+   "year": 1977,
+   "pool": "sfpl",
+   "matched_alias": "Josephine Randall Junior Museum",
+   "snippet": "miss a major event being held in the «Josephine Randall Junior Museum» at ,了 Roosevelt and Museum Way today",
+   "url": "https://archive.org/details/eastwest11east_27",
+   "deep_link": "https://archive.org/details/eastwest11east_27?q=Josephine+Randall+Junior+Museum",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Other records",
+   "salient": true
   },
   {
    "identifier": "sanfranciscobaya1961sanf",
@@ -146,7 +217,37 @@
    "snippet": "Francisco Museum of Art Pioneer FHall «Josephine Randall Junior Museum» San f^rancisco Maritime Museum",
    "url": "https://archive.org/details/sanfranciscobaya1961sanf",
    "deep_link": "https://archive.org/details/sanfranciscobaya1961sanf?q=Josephine+Randall+Junior+Museum",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Other records",
+   "salient": true
+  },
+  {
+   "identifier": "generalmanagersr1992sanf",
+   "title": "General manager's report : Open Space Acquisition and Park Renovation Fund",
+   "creator": "San Francisco (Calif.). Recreation and Park Department,San Francisco (Calif.). Dept. of City Planning,San Francisco (Calif.). Open Space Acquisition and Park Renovation Fund",
+   "year": 1975,
+   "pool": "sfpl",
+   "matched_alias": "Randall Museum",
+   "snippet": "80,000 Potrero Hill Rec Center 100,000 «Randall Museum» 20,000 Twin Peaks Regional Trail 100,000",
+   "url": "https://archive.org/details/generalmanagersr1992sanf",
+   "deep_link": "https://archive.org/details/generalmanagersr1992sanf?q=Randall+Museum",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Other records",
+   "salient": true
+  },
+  {
+   "identifier": "reportoninvestig2980sanf",
+   "title": "Report on the investigation of the San Francisco Zoo",
+   "creator": "San Francisco (Calif.). Animal Control and Welfare Commission,San Francisco (Calif.). Board of Supervisors",
+   "year": 1980,
+   "pool": "sfpl",
+   "matched_alias": "Josephine Randall Junior Museum",
+   "snippet": "VETERINARIAN'S RESPONSIBILITY TO THE «JOSEPHINE RANDALL JUNIOR MUSEUM». - - 6. ~ THAT THE BOARD",
+   "url": "https://archive.org/details/reportoninvestig2980sanf",
+   "deep_link": "https://archive.org/details/reportoninvestig2980sanf?q=Josephine+Randall+Junior+Museum",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Other records",
+   "salient": false
   },
   {
    "identifier": "whatsdoinginpark1992sanf",
@@ -158,31 +259,9 @@
    "snippet": "adapt to the rigors of winter, free, «Randall Museum», 199 Museum Way. 1:30 p.m. — Theme Walk:",
    "url": "https://archive.org/details/whatsdoinginpark1992sanf",
    "deep_link": "https://archive.org/details/whatsdoinginpark1992sanf?q=Randall+Museum",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
-  },
-  {
-   "identifier": "whatsdoinginpark1991sanf",
-   "title": "What's doing in the parks?",
-   "creator": "San Francisco (Calif.). Recreation and Park Department",
-   "year": null,
-   "pool": "sfpl",
-   "matched_alias": "Randall Museum",
-   "snippet": "John Dillon of the «Randall Museum», all age's invited free, «Randall Museum», 199 Museum Way",
-   "url": "https://archive.org/details/whatsdoinginpark1991sanf",
-   "deep_link": "https://archive.org/details/whatsdoinginpark1991sanf?q=Randall+Museum",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
-  },
-  {
-   "identifier": "whatsdoinginpark1993sanf",
-   "title": "What's doing in the parks?",
-   "creator": "San Francisco (Calif.). Recreation and Park Department",
-   "year": null,
-   "pool": "sfpl",
-   "matched_alias": "Randall Museum",
-   "snippet": "accompanied by an adult, $3/person, «Randall Museum», 199 Museum Way off Roosevelt Way on",
-   "url": "https://archive.org/details/whatsdoinginpark1993sanf",
-   "deep_link": "https://archive.org/details/whatsdoinginpark1993sanf?q=Randall+Museum",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Other records",
+   "salient": false
   },
   {
    "identifier": "scheduleofclasse1987sanf",
@@ -194,7 +273,9 @@
    "snippet": "558-3132. 27 THE «RANDALL MUSEUM» 199 Museum Way, 863-1399 The «Randall Museum» is a hands-on",
    "url": "https://archive.org/details/scheduleofclasse1987sanf",
    "deep_link": "https://archive.org/details/scheduleofclasse1987sanf?q=Randall+Museum",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Other records",
+   "salient": false
   }
  ],
  "dept_shelf": [
@@ -218,29 +299,10 @@
    "year": 1999,
    "pool": "sfpl",
    "url": "https://archive.org/details/0agenda19992002sanf"
-  },
-  {
-   "identifier": "reporttoboardofs1980sanf",
-   "title": "Report to the Board of Supervisors of the City and County of San Francisco : review of the operations of the San Francisco Recreation and Park Department",
-   "year": 1979,
-   "pool": "sfpl",
-   "url": "https://archive.org/details/reporttoboardofs1980sanf"
-  },
-  {
-   "identifier": "annualreport197277sanf",
-   "title": "Annual report of the San Francisco Recreation and Park Department",
-   "year": null,
-   "pool": "sfpl",
-   "url": "https://archive.org/details/annualreport197277sanf"
-  },
-  {
-   "identifier": "minutesrecreatio1960sanf",
-   "title": "Minutes / Recreation and Park Commission",
-   "year": null,
-   "pool": "sfpl",
-   "url": "https://archive.org/details/minutesrecreatio1960sanf"
   }
  ],
+ "dept_shelf_label": "Recreation & Park Department",
+ "dept_shelf_more": 3,
  "sources": [
   {
    "label": "City budget & payments",
@@ -253,7 +315,7 @@
  ],
  "_gate": {
   "has_photo": false,
-  "n_documents": 14,
+  "n_documents": 9,
   "n_money_links": 1,
   "meets_pre_summary": false
  }

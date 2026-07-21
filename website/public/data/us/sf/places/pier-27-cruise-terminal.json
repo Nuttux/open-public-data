@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-20T22:30:00.122478+00:00",
+ "generated_at": "2026-07-21T14:25:53.974984+00:00",
  "source_pipeline": "sf_place_candidates.json → sync_ia_sf.py + link_sf_places.py + fetch_sf_place_photos.py → export_sf_places.py",
  "unit": "USD",
  "slug": "pier-27-cruise-terminal",
@@ -13,6 +13,115 @@
   "name": "Port of San Francisco",
   "code": "PRT"
  },
+ "facility": {
+  "primary_name": "PIER 27 SHED",
+  "primary_address": "PIER 27",
+  "primary_city": "San Francisco",
+  "primary_zip": "94111",
+  "primary_block_lot": "9900070",
+  "primary_department_name": "Port",
+  "primary_is_city_owned": true,
+  "primary_gross_sq_ft": null,
+  "primary_latitude": 37.804835437000065,
+  "primary_longitude": -122.40117517299996,
+  "supervisor_district": 3,
+  "n_facilities": 5,
+  "total_gross_sq_ft": 436042,
+  "n_owned": 5,
+  "n_leased": 0,
+  "apn_list": [
+   "9900070"
+  ],
+  "facilities": [
+   {
+    "facility_id": 1289,
+    "common_name": "Pier 27  - Port’s primary cruise terminal.",
+    "block_lot": "9900070",
+    "gross_sq_ft": 420690,
+    "is_city_owned": true
+   },
+   {
+    "facility_id": 31,
+    "common_name": "2275 | Pier 27 Adm/Pier 29 Annex",
+    "block_lot": "9900070",
+    "gross_sq_ft": 11800,
+    "is_city_owned": true
+   },
+   {
+    "facility_id": 1290,
+    "common_name": "Pier 27 - Office Annex",
+    "block_lot": "9900070",
+    "gross_sq_ft": 3552,
+    "is_city_owned": true
+   },
+   {
+    "facility_id": 3229,
+    "common_name": "PIER 27 SHED",
+    "block_lot": "9900070",
+    "gross_sq_ft": null,
+    "is_city_owned": true
+   },
+   {
+    "facility_id": 3228,
+    "common_name": "PIER 27 OFFICE BUILDING",
+    "block_lot": "9900070",
+    "gross_sq_ft": null,
+    "is_city_owned": true
+   }
+  ]
+ },
+ "capital": {
+  "n_items": 2,
+  "measure_totals": {},
+  "bond_programs": [
+   "Clean and Safe Neighborhood Parks"
+  ],
+  "items": [
+   {
+    "source": "bond",
+    "source_kind": "bond_project",
+    "item_name": "Pier 27 Public Art",
+    "bond_program": "Clean and Safe Neighborhood Parks",
+    "component": "Waterfront Parks",
+    "voter_approved_date": null,
+    "amount_usd": null,
+    "amount_measure": null,
+    "budget_usd": null,
+    "contract_no": null,
+    "status": null,
+    "match_evidence": "Pier 27"
+   },
+   {
+    "source": "bond",
+    "source_kind": "bond_project",
+    "item_name": "Northeast Wharf Plaza and Pier 27-29 Tip",
+    "bond_program": "Clean and Safe Neighborhood Parks",
+    "component": "Waterfront Parks",
+    "voter_approved_date": null,
+    "amount_usd": null,
+    "amount_measure": null,
+    "budget_usd": null,
+    "contract_no": null,
+    "status": null,
+    "match_evidence": "Pier 27"
+   }
+  ],
+  "payees": [
+   {
+    "vendor": "G.Y. ENGINEERING CO",
+    "paid_usd": 843259.62,
+    "n_contracts": 1,
+    "first_fiscal_year": 2020,
+    "last_fiscal_year": 2020
+   }
+  ],
+  "n_payees": 1,
+  "payees_total_paid": 843259.62,
+  "permits": [],
+  "n_permits": 0,
+  "permits_total_declared": 0.0,
+  "permits_by_year": []
+ },
  "photo": null,
  "photo_credit": null,
  "summary_en": null,
@@ -24,6 +133,13 @@
    "total_usd": 156434885.0,
    "fiscal_year": 2025
   },
+  "payroll_line": {
+   "code": "PRT",
+   "name": "Port",
+   "total_compensation_usd": 52732085.2,
+   "n_employees": 304,
+   "fiscal_year": 2025
+  },
   "contracts": [
    {
     "contract_no": "1000032291",
@@ -32,7 +148,15 @@
     "department_code": "ART",
     "agreed_usd": 234890.0,
     "paid_usd": 229585.41,
-    "evidence": "ART-PAPO-Port Pier 27 AC"
+    "evidence": "ART-PAPO-Port Pier 27 AC",
+    "team": [
+     {
+      "supplier": "ANA TERESA FERNANDEZ",
+      "role": "Prime Contractor",
+      "lbe": false,
+      "attached_usd": 234890.0
+     }
+    ]
    },
    {
     "contract_no": "1000037378",
@@ -41,23 +165,33 @@
     "department_code": "ART",
     "agreed_usd": 20473.75,
     "paid_usd": 20473.75,
-    "evidence": "ART-PAPO-Port Pier 27 AC"
+    "evidence": "ART-PAPO-Port Pier 27 AC",
+    "team": [
+     {
+      "supplier": "ONE HAT ONE HAND LLC DBA SCENE 2",
+      "role": "Prime Contractor",
+      "lbe": false,
+      "attached_usd": 20473.75
+     }
+    ]
    }
   ],
   "grants": []
  },
  "documents": [
   {
-   "identifier": "draftenvironment6120sanf",
-   "title": "Draft environmental impact report : the 34th America's Cup & James R. Herman Cruise Terminal and Northeast Wharf Plaza",
-   "creator": "San Francisco (Calif.). Planning Dept,San Francisco (Calif.). City Attorney's Office,Port of San Francisco (Calif.),Environmental Science Associates,Orion Environmental Associates,Applied Marine Sciences,Coast and Harbor Engineering,Geotechnical Consultants, Inc,Hydroconsult Engineers, Inc,Natalie Macris Writing & Editing,Adavant Consulting,Boudreau Associates, LLC,ENVIRON Corporation,LCW Consulting,Yuki Kawaguchi, Cartographer,San Francisco (Calif.). Mayor's Office of Economic and Workforce Development,34th America's Cup Event Authority,America's Cup Organizing Committee,AECOM Consult, Inc,KMD Architects & Pfau Long Architecture,Premier Structures,Gibson, Dunn & Crutcher",
-   "year": 2011,
+   "identifier": "sanfranciscocrui2120sanf",
+   "title": "San Francisco cruise terminal mixed-use project and Brannan Street wharf project : final supplemental environmental impact report",
+   "creator": "San Francisco (Calif.). Planning Dept",
+   "year": 2002,
    "pool": "sfpl",
-   "matched_alias": "Pier 27",
-   "snippet": "DRAFT EIR THE 34th America's Cup «James R. Herman Cruise Terminal» AND northeast WHARF PLAZA SAN",
-   "url": "https://archive.org/details/draftenvironment6120sanf",
-   "deep_link": "https://archive.org/details/draftenvironment6120sanf?q=Pier+27",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+   "matched_alias": "San Francisco Cruise Terminal",
+   "snippet": "San Francisco Planning Department «SAN FRANCISCO CRUISE TERMINAL» MIXED-USE PROJEa AND BRANNAN STREET",
+   "url": "https://archive.org/details/sanfranciscocrui2120sanf",
+   "deep_link": "https://archive.org/details/sanfranciscocrui2120sanf?q=San+Francisco+Cruise+Terminal",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Plans & environmental review",
+   "salient": true
   },
   {
    "identifier": "draftenvironment5120sanf",
@@ -69,19 +203,9 @@
    "snippet": "0493E 34th America's Cup and «James R. Herman Cruise Terminal» and Northeast Wharf Plaza Projects",
    "url": "https://archive.org/details/draftenvironment5120sanf",
    "deep_link": "https://archive.org/details/draftenvironment5120sanf?q=James+R.+Herman+Cruise+Terminal",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
-  },
-  {
-   "identifier": "sanfranciscocrui2120sanf",
-   "title": "San Francisco cruise terminal mixed-use project and Brannan Street wharf project : final supplemental environmental impact report",
-   "creator": "San Francisco (Calif.). Planning Dept",
-   "year": 2002,
-   "pool": "sfpl",
-   "matched_alias": "San Francisco Cruise Terminal",
-   "snippet": "San Francisco Planning Department «SAN FRANCISCO CRUISE TERMINAL» MIXED-USE PROJEa AND BRANNAN STREET",
-   "url": "https://archive.org/details/sanfranciscocrui2120sanf",
-   "deep_link": "https://archive.org/details/sanfranciscocrui2120sanf?q=San+Francisco+Cruise+Terminal",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Plans & environmental review",
+   "salient": true
   },
   {
    "identifier": "sanfranciscocrui1720sanf",
@@ -93,31 +217,9 @@
    "snippet": "San Francisco Planning Department «SAN FRANCISCO CRUISE TERMINAL» MIXED-USE PROJECT AND iE ____",
    "url": "https://archive.org/details/sanfranciscocrui1720sanf",
    "deep_link": "https://archive.org/details/sanfranciscocrui1720sanf?q=San+Francisco+Cruise+Terminal",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
-  },
-  {
-   "identifier": "agenda2013sanf_1",
-   "title": "Agenda",
-   "creator": "San Francisco Port Commission",
-   "year": null,
-   "pool": "sfpl",
-   "matched_alias": "Pier 27",
-   "snippet": "authorization to commence Pier 27 «James R. Herman Cruise Terminal» Management Agreement negotiations",
-   "url": "https://archive.org/details/agenda2013sanf_1",
-   "deep_link": "https://archive.org/details/agenda2013sanf_1?q=Pier+27",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
-  },
-  {
-   "identifier": "agenda2010sanf_5",
-   "title": "Agenda",
-   "creator": "San Francisco Port Commission",
-   "year": null,
-   "pool": "sfpl",
-   "matched_alias": "Pier 27",
-   "snippet": "of the «Pier 27» shed and temporarily move shoreside power installations at «Pier 27». The Authority",
-   "url": "https://archive.org/details/agenda2010sanf_5",
-   "deep_link": "https://archive.org/details/agenda2010sanf_5?q=Pier+27",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Plans & environmental review",
+   "salient": true
   },
   {
    "identifier": "agenda2013sanf_0",
@@ -129,7 +231,9 @@
    "snippet": "Informational Presentation regarding the «James R. Herman Cruise Terminal» business model for cruise terminal",
    "url": "https://archive.org/details/agenda2013sanf_0",
    "deep_link": "https://archive.org/details/agenda2013sanf_0?q=Pier+27",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Meetings & resolutions",
+   "salient": true
   },
   {
    "identifier": "agendasminutess2015sanf_4",
@@ -141,67 +245,9 @@
    "snippet": "opportunities at «Pier 27» to develop a more robust event program. For example, the «Pier 27» Ground",
    "url": "https://archive.org/details/agendasminutess2015sanf_4",
    "deep_link": "https://archive.org/details/agendasminutess2015sanf_4?q=Pier+27",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
-  },
-  {
-   "identifier": "agenda2012sanf_2",
-   "title": "Agenda",
-   "creator": "San Francisco Port Commission",
-   "year": null,
-   "pool": "sfpl",
-   "matched_alias": "Pier 27",
-   "snippet": "this project is $14 million. «Pier 27» Public Spaces: At «Pier 27», the Port would provide improvements",
-   "url": "https://archive.org/details/agenda2012sanf_2",
-   "deep_link": "https://archive.org/details/agenda2012sanf_2?q=Pier+27",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
-  },
-  {
-   "identifier": "agenda2011sanf_1",
-   "title": "Agenda",
-   "creator": "San Francisco Port Commission",
-   "year": null,
-   "pool": "sfpl",
-   "matched_alias": "Pier 27",
-   "snippet": "Bulkhead «Pier 27» «Pier 27» - Office Annex «Pier 27» - Office/Admin Building «Pier 27» Shed Building",
-   "url": "https://archive.org/details/agenda2011sanf_1",
-   "deep_link": "https://archive.org/details/agenda2011sanf_1?q=Pier+27",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
-  },
-  {
-   "identifier": "agenda2010sanf_3",
-   "title": "Agenda",
-   "creator": "San Francisco Port Commission",
-   "year": null,
-   "pool": "sfpl",
-   "matched_alias": "Pier 27",
-   "snippet": "Management «Pier 27» Cruise Terminal Design V V 14 DPW Construction Management «Pier 27» Cruise Terminal",
-   "url": "https://archive.org/details/agenda2010sanf_3",
-   "deep_link": "https://archive.org/details/agenda2010sanf_3?q=Pier+27",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
-  },
-  {
-   "identifier": "port1980port",
-   "title": "The port",
-   "creator": "Port of San Francisco (Calif.)",
-   "year": null,
-   "pool": "sfpl",
-   "matched_alias": "Pier 27",
-   "snippet": "Francisco Belt Railroad Tracks BREAKBULK TERMINAL- «PIER 27»-29 OPERATOR: Pacific-Oriental Terminal Company",
-   "url": "https://archive.org/details/port1980port",
-   "deep_link": "https://archive.org/details/port1980port?q=Pier+27",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
-  },
-  {
-   "identifier": "agendasminutess2015sanf_9",
-   "title": "Agendas and Minutes / San Francisco Port Commission",
-   "creator": "San Francisco Port Commission",
-   "year": null,
-   "pool": "sfpl",
-   "matched_alias": "Pier 27",
-   "snippet": "300 feet 6. «Pier 27» is on the right Hourly parking is available in the «Pier 27» parking lot",
-   "url": "https://archive.org/details/agendasminutess2015sanf_9",
-   "deep_link": "https://archive.org/details/agendasminutess2015sanf_9?q=Pier+27",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Meetings & resolutions",
+   "salient": true
   },
   {
    "identifier": "minutes1999sanf_0",
@@ -213,7 +259,23 @@
    "snippet": "Pier 35 Gangway repair 50,000 «Pier 27»/29 Sewer Main 130,000 «Pier 27»/29 Water Main and Backflow",
    "url": "https://archive.org/details/minutes1999sanf_0",
    "deep_link": "https://archive.org/details/minutes1999sanf_0?q=Pier+27",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans"
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Meetings & resolutions",
+   "salient": true
+  },
+  {
+   "identifier": "port1980port",
+   "title": "The port",
+   "creator": "Port of San Francisco (Calif.)",
+   "year": null,
+   "pool": "sfpl",
+   "matched_alias": "Pier 27",
+   "snippet": "Francisco Belt Railroad Tracks BREAKBULK TERMINAL- «PIER 27»-29 OPERATOR: Pacific-Oriental Terminal Company",
+   "url": "https://archive.org/details/port1980port",
+   "deep_link": "https://archive.org/details/port1980port?q=Pier+27",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Other records",
+   "salient": false
   }
  ],
  "dept_shelf": [
@@ -237,29 +299,10 @@
    "year": null,
    "pool": "sfpl",
    "url": "https://archive.org/details/financialstateme1971sanf"
-  },
-  {
-   "identifier": "wharfside1986sanf",
-   "title": "Wharfside",
-   "year": null,
-   "pool": "sfpl",
-   "url": "https://archive.org/details/wharfside1986sanf"
-  },
-  {
-   "identifier": "minutes2000sanf_1",
-   "title": "Minutes",
-   "year": null,
-   "pool": "sfpl",
-   "url": "https://archive.org/details/minutes2000sanf_1"
-  },
-  {
-   "identifier": "financialstateme1999sanf",
-   "title": "Financial statements and independent auditors' report",
-   "year": null,
-   "pool": "sfpl",
-   "url": "https://archive.org/details/financialstateme1999sanf"
   }
  ],
+ "dept_shelf_label": "Port of San Francisco",
+ "dept_shelf_more": 3,
  "sources": [
   {
    "label": "City budget & payments",
@@ -272,7 +315,7 @@
  ],
  "_gate": {
   "has_photo": false,
-  "n_documents": 14,
+  "n_documents": 7,
   "n_money_links": 3,
   "meets_pre_summary": false
  }

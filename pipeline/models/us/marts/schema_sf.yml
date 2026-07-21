@@ -1,6 +1,75 @@
 version: 2
 
 models:
+  - name: mart_us_sf_place_facilities
+    description: >
+      Per-place structured facility identity (Block 6A lieux). One row per
+      place_slug: the primary building (address, APN, dept, floor area, geo),
+      campus aggregates (n_facilities, total_gross_sq_ft, owned/leased) and the
+      distinct APN list — the key the Building Permits join (6D) uses. From the
+      City Facilities registry (nc68-ngbr) via the reviewed
+      seed_us_sf_place_facilities crosswalk. Identity only; asserts no money.
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns: [place_slug]
+    columns:
+      - name: place_slug
+        tests: [not_null, unique]
+      - name: primary_address
+        tests: [not_null]
+      - name: n_facilities
+        tests: [not_null]
+
+  - name: mart_us_sf_place_capital
+    description: >
+      Unified NO-SUM capital & construction per place (Block 6B/6C). One row per
+      (place, source, item): GO-bond items/projects + place-matched contracts.
+      Every row carries amount_measure ('bond_expended' | 'contract_paid') so
+      dollars are only totaled within a ledger, never across — a bond fund pays
+      the contracts, so they are the same money in different ledgers.
+    columns:
+      - name: place_slug
+        tests: [not_null]
+      - name: source
+        tests:
+          - not_null
+          - accepted_values: {values: ['bond', 'contract', 'permit', 'dpw']}
+      - name: amount_measure
+        tests:
+          - accepted_values: {values: ['bond_expended', 'contract_paid', 'permit_declared']}
+
+  - name: mart_us_sf_place_payees
+    description: >
+      The payee chain (Block 6C): place → matched contracts → vouchers → vendor
+      + actual $ paid, one row per (place, vendor). "Who got paid for work here."
+      vouchers_paid is the same money as the contract paid / bond expended — a
+      different ledger view, never summed across sources.
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns: [place_slug, vendor]
+    columns:
+      - name: place_slug
+        tests: [not_null]
+      - name: vendor
+        tests: [not_null]
+      - name: paid_usd
+        tests: [not_null]
+
+  - name: mart_us_sf_place_permits
+    description: >
+      Construction permits on a place's parcels (Block 6D) — the structured APN
+      join (facility block_lot → building-permit block+lot), ~100% precision.
+      declared_cost_usd is the applicant's DECLARED construction value (permit
+      ledger, not city spend); only permits ≥ $1,000 kept. Never summed with
+      contract paid or bond expended.
+    columns:
+      - name: place_slug
+        tests: [not_null]
+      - name: permit_number
+        tests: [not_null]
+      - name: declared_cost_usd
+        tests: [not_null]
+
   - name: mart_us_sf_budget_by_year
     description: >
       SF net adopted budget per fiscal year × side (Revenue | Spending),
@@ -569,3 +638,69 @@ models:
           - not_null
           - accepted_values:
               values: [closed]
+
+  - name: mart_us_sf_budget_dept_character_object
+    description: >
+      Adopted budget dept × character × object cells — raw line-item
+      detail one level below the fiche altitude (mart_us_sf_budget_dept_
+      character), ~2,633 spending cells FY2026. Not a headline drill
+      level: object labels have no gloss enrichment and are only
+      ~25-50% plain-English (measured). Rendered as an expandable list
+      under a selected character, never ranked as its own section.
+      FY2018 excluded.
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            [fiscal_year, side, department_code, character_code, object_code]
+    columns:
+      - name: fiscal_year
+        tests: [not_null]
+      - name: side
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['Revenue', 'Spending']
+      - name: amount_usd
+        tests: [not_null]
+      - name: is_transfer_adjustment
+        tests: [not_null]
+      - name: source_url
+        tests: [not_null]
+
+  - name: mart_us_sf_vouchers_dept_character
+    description: >
+      Vendor payments (vouchers) rolled up to department × character ×
+      vendor, top 15 vendors per cell by $ (cell_total_usd/cell_n_vendors
+      are windowed over ALL vendors before the cut, so they stay accurate
+      even though rows are truncated). This is the "who got paid" floor
+      of the budget drill — joined to the adopted budget at dept×
+      character grain (90.3% of nonzero-budget $ matched, measured;
+      object-level join does not improve on this — see model header).
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            [fiscal_year, department_code, character_code, vendor]
+    columns:
+      - name: fiscal_year
+        tests: [not_null]
+      - name: department_code
+        tests: [not_null]
+      - name: character_code
+        tests: [not_null]
+      - name: vendor
+        tests: [not_null]
+      - name: vouchers_paid_usd
+        tests: [not_null]
+      - name: rank_in_cell
+        tests: [not_null]
+      - name: cell_total_usd
+        tests: [not_null]
+      - name: is_aggregation_line
+        tests: [not_null]
+      - name: execution_status
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['closed', 'recently_closed_preliminary', 'in_progress']
+      - name: source_url
+        tests: [not_null]
