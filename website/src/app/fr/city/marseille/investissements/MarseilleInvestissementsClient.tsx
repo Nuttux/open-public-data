@@ -32,7 +32,18 @@ import BudgetTimeline from "@/components/fusion/BudgetTimeline";
 import StackedBarTheme from "@/components/fusion/StackedBarTheme";
 import PageTOC from "@/components/fusion/PageTOC";
 import PageHook from "@/components/fusion/PageHook";
-import MarseilleChoropleth from "@/components/fusion/MarseilleChoropleth";
+import DistrictChoropleth from "@/components/fusion/DistrictChoropleth";
+import {
+  MARSEILLE_ARRONDISSEMENT_PATHS,
+  MARSEILLE_VIEWBOX,
+} from "@/components/fusion/marseille-arrondissements";
+
+// Flatten the grouped Marseille geometry into the (paths, regionByIndex) shape
+// DistrictChoropleth expects — one path per index, mapped to its arrondissement.
+const MARSEILLE_PATHS = MARSEILLE_ARRONDISSEMENT_PATHS.flatMap((a) => a.paths);
+const MARSEILLE_REGION_BY_INDEX = MARSEILLE_ARRONDISSEMENT_PATHS.flatMap((a) =>
+  a.paths.map(() => a.arr),
+);
 import { fmtBillions, fmtDec, fmtInt, fmtMillions } from "@/lib/fmt";
 import type { InvestissementsData } from "@/lib/fusion-data";
 import { useT, useLocale } from "@/lib/localeContext";
@@ -284,9 +295,12 @@ export default function MarseilleInvestissementsClient({
             </p>
           ) : (
             <>
-              <MarseilleChoropleth
+              <DistrictChoropleth
                 items={d.byArrondissement}
-                geoPoints={d.geoPoints}
+                paths={MARSEILLE_PATHS}
+                regionByIndex={MARSEILLE_REGION_BY_INDEX}
+                viewBox={MARSEILLE_VIEWBOX}
+                showRanking={false}
               />
               <ol
                 className="fx-arr-ranking"

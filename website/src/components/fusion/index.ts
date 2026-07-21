@@ -32,6 +32,7 @@ export { default as Tip } from "./Tip";
 export { default as ChartSource } from "./ChartSource";
 export { default as BudgetTimeline } from "./BudgetTimeline";
 export { default as ProjectMap } from "./ProjectMap";
+export { default as DistrictChoropleth } from "./DistrictChoropleth";
 export { default as ParisChoropleth } from "./ParisChoropleth";
 export { default as DetailDrawer } from "./DetailDrawer";
 export { default as ContratFiche } from "./ContratFiche";
