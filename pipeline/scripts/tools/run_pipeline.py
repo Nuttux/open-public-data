@@ -3,7 +3,7 @@
 Pipeline complet pour Paris Budget Dashboard.
 
 Stages:
-  1. sync    — Paris Open Data API → BigQuery raw.*  (scripts/sync/sync_opendata.py)
+  1. sync    — Paris Open Data API → BigQuery raw.*  (scripts/sync/sync_city.py paris)
   2. dbt     — raw.* → staging → intermediate → core → marts
                (dbt deps + dbt seed + dbt run, cwd=pipeline/)
   3. enrich  — LLM enrichment via Gemini/Claude → seeds/seed_cache_*.csv
@@ -54,7 +54,10 @@ def run(cmd: list, cwd: Path = None) -> bool:
 
 def step_sync(dry_run: bool) -> bool:
     print("\n📥 STEP 1 — sync Paris Open Data → BigQuery raw.*")
-    cmd = [sys.executable, str(SCRIPTS_DIR / "sync" / "sync_opendata.py")]
+    # Generic ODS ingester driven by configs/cities/paris.yaml. Byte-identical
+    # parity with the legacy sync_opendata.py is proven by
+    # scripts/sync/verify_ods_parity.py.
+    cmd = [sys.executable, str(SCRIPTS_DIR / "sync" / "sync_city.py"), "paris"]
     if dry_run:
         cmd.append("--dry-run")
     return run(cmd)

@@ -70,7 +70,7 @@ dbt run                                                 # Transformer les donné
 dbt test                                                # Lancer les tests
 
 # Sync des sources
-python scripts/sync/sync_opendata.py                    # Sources Ville de Paris (opendata.paris.fr)
+python scripts/sync/sync_city.py paris                  # Sources Ville de Paris (ODS, configs/cities/paris.yaml)
 python scripts/sync/fetch_decp_paris.py --global        # DECP nationale (tout l'historique)
 python scripts/sync/fetch_decp_paris.py --year 2024     # Une année DECP spécifique
 

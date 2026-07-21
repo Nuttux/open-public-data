@@ -2,7 +2,8 @@
 # Sources : Tables raw BigQuery - Paris Open Data
 #
 # Dataset: raw (open-data-france-484717.raw)
-# Tables synchronisées via scripts/sync_opendata.py
+# Tables synchronisées via scripts/sync/sync_city.py paris (ingester ODS
+# générique piloté par configs/cities/paris.yaml ; ex-sync_opendata.py, déprécié)
 #
 # CONVENTION DE NOMMAGE:
 #   Table raw = dataset_id OpenData en snake_case (aucune abréviation)

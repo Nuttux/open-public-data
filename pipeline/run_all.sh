@@ -92,10 +92,13 @@ if should_run sync; then
     echo "════════════════════════════════════════════════════════"
     # 7 datasets OpenData Paris → BQ raw.* (budget, AP, subv, assoc,
     # logements, voté, marchés). Stamps `_synced_at` pour dbt freshness.
-    if [[ -f "$PIPELINE_DIR/scripts/sync/sync_opendata.py" ]]; then
+    # Ingester générique ODS piloté par configs/cities/paris.yaml (parité
+    # byte-identique prouvée vs l'ancien sync_opendata.py — voir
+    # scripts/sync/verify_ods_parity.py).
+    if [[ -f "$PIPELINE_DIR/scripts/sync/sync_city.py" ]]; then
         run_step "OpenData Paris core (7 datasets → BQ raw)" \
-            $PYTHON "$PIPELINE_DIR/scripts/sync/sync_opendata.py" || \
-            echo "  ⚠ sync_opendata a échoué — on continue"
+            $PYTHON "$PIPELINE_DIR/scripts/sync/sync_city.py" paris || \
+            echo "  ⚠ sync_city paris a échoué — on continue"
     fi
     # Chemin direct OpenData → JSON (ne dépend pas de BQ). Rapide, gratuit.
     run_step "Subventions JSON (OpenData Paris)" \

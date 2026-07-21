@@ -1,5 +1,13 @@
 #!/usr/bin/env python3
 """
+⚠️ DEPRECATED — remplacé par l'ingester générique ODS.
+
+Utiliser désormais :  python scripts/sync/sync_city.py paris
+(config déclarative : configs/cities/paris.yaml ; ingester :
+scripts/sync/sync_ods_dataset.py). La parité byte-identique entre ce script et
+le nouveau chemin est prouvée par scripts/sync/verify_ods_parity.py (7/7).
+Ce fichier est conservé comme fallback un cycle puis sera supprimé.
+
 Synchronisation des données Paris Open Data vers BigQuery.
 
 Ce script télécharge les données fraîches depuis l'API Paris Open Data
@@ -602,7 +610,12 @@ Exemples:
     )
     
     args = parser.parse_args()
-    
+
+    print("\n⚠️  DEPRECATED: sync_opendata.py est remplacé par "
+          "`python scripts/sync/sync_city.py paris` (ingester ODS générique).\n"
+          "   Parité prouvée par scripts/sync/verify_ods_parity.py. "
+          "Ce script sera supprimé prochainement.\n")
+
     if args.list:
         list_sources()
         return

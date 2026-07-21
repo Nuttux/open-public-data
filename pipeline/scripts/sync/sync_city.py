@@ -5,7 +5,7 @@ City-level sync orchestrator.
 Reads `pipeline/configs/cities/{city_slug}.yaml` and dispatches each source
 to the right sync script based on its `type`:
   - datagouv_dataset → sync_datagouv_dataset.py
-  - ods_dataset       → (TODO, not in POC)
+  - ods_dataset       → sync_ods_dataset.py
   - pdf_municipal     → (TODO, not in POC)
 
 Usage:
@@ -31,7 +31,7 @@ SCRIPTS_DIR = PIPELINE_ROOT / "scripts" / "sync"
 
 DISPATCH = {
     "datagouv_dataset": SCRIPTS_DIR / "sync_datagouv_dataset.py",
-    # "ods_dataset":     SCRIPTS_DIR / "sync_ods_dataset.py",     # TODO
+    "ods_dataset": SCRIPTS_DIR / "sync_ods_dataset.py",
     # "pdf_municipal":   SCRIPTS_DIR / "sync_pdf_municipal.py",  # TODO
 }
 
