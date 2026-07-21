@@ -1,8 +1,6 @@
 "use client";
 
-import Link from "next/link";
 import type { SfDeptFicheData, SfDeptSideBlock } from "@/lib/us/sf-budget-data";
-import { characterSlug } from "@/lib/us/sf-budget-slugs";
 import { fmtUsd, fmtUsdCompact, fmtShare, fmtYoy } from "@/lib/us/format";
 import { useT } from "@/lib/localeContext";
 
@@ -82,7 +80,6 @@ export default function SfDeptFiche({ d }: { d: SfDeptFicheData }) {
           </div>
           <CharacterBars
             block={sp}
-            fy={d.fiscal_year}
             glossFallback={t("us.sf.fiche.dept.no_gloss")}
           />
         </section>
@@ -133,7 +130,6 @@ export default function SfDeptFiche({ d }: { d: SfDeptFicheData }) {
           </div>
           <CharacterBars
             block={d.revenue}
-            fy={d.fiscal_year}
             glossFallback={t("us.sf.fiche.dept.no_gloss")}
           />
         </section>
@@ -202,22 +198,22 @@ function Row({ label, value }: { label: string; value: string }) {
 
 function CharacterBars({
   block,
-  fy,
   glossFallback,
 }: {
   block: SfDeptSideBlock;
-  fy: number;
   glossFallback: string;
 }) {
   const max = Math.max(...block.characters.map((c) => c.amount_usd), 1);
+  // Plain bars, not links. The character breakdown is the readable leaf of a
+  // department's view — "Public Health spends X on salaries, Y on materials".
+  // It used to link to the citywide character fiche, which read as a drill-down
+  // but teleported to a different axis (all departments' salaries) — confusing.
+  // The citywide by-type view still lives on the budget page's own section.
   return (
     <div>
       {block.characters.map((c) => (
-        <Link
+        <div
           key={c.code}
-          href={`/us/city/sf/budget/character/${characterSlug(c.code)}?year=${fy}`}
-          scroll={false}
-          className="fx-row-link"
           title={c.gloss ?? glossFallback}
           style={{
             display: "grid",
@@ -244,7 +240,7 @@ function CharacterBars({
           <span className="tnum" style={{ fontFamily: "var(--f-mono)", fontSize: 12, fontWeight: 600 }}>
             {fmtUsdCompact(c.amount_usd)}
           </span>
-        </Link>
+        </div>
       ))}
     </div>
   );

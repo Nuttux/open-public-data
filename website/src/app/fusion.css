@@ -4794,6 +4794,7 @@ body:has(.theme-fusion) > div.pb-24 { padding-bottom: 0 !important; }
   transition: background .12s;
   font-family: inherit;
   color: var(--ink);
+  text-decoration: none;
 }
 .theme-fusion .fx-top-row:last-child { border-bottom: 0; }
 .theme-fusion .fx-top-row:hover { background: var(--bg-hover); }

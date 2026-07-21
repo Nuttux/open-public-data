@@ -137,6 +137,58 @@ function PayeeRow({
     );
   }
 
+  const rowInner = (
+    <>
+      <span className="r">{String(p.rank).padStart(2, "0")}</span>
+      <span className="name">
+        {p.vendor}
+        <span
+          style={{
+            display: "block",
+            fontFamily: "var(--f-mono)",
+            fontSize: 10.5,
+            letterSpacing: ".03em",
+            color: "var(--muted)",
+            marginTop: 3,
+          }}
+        >
+          {deptDisplay(p.top_department)}
+          {" · "}
+          {p.n_departments > 1
+            ? fill(t("us.sf.wgp.row.depts"), { n: p.n_departments })
+            : t("us.sf.wgp.row.dept_one")}
+        </span>
+      </span>
+      <span
+        className="bar"
+        style={{ position: "relative", height: 8, background: "var(--rule)" }}
+      >
+        <span
+          className="fill"
+          style={{ width: `${(p.vouchers_paid_usd / refMax) * 100}%`, background: color }}
+        />
+      </span>
+      <span className="v tnum">{fmtUsdCompact(p.vouchers_paid_usd)}</span>
+      <span className="theme">
+        <BucketChip bucket={p.bucket} />
+      </span>
+      <span className="arrow" aria-hidden="true">
+        {payeeSlug ? "→" : expanded ? "▴" : "▾"}
+      </span>
+    </>
+  );
+
+  // Keyed payee: the row IS the link to its fiche (which supersedes the old
+  // inline dropdown). Unkeyed payee (no fiche): keep the inline expand — it is
+  // the only place its detail lives, and we never emit a dead link.
+  if (payeeSlug) {
+    return (
+      <Link href={`/us/city/sf/who-gets-paid/payee/${payeeSlug}`} className="fx-top-row">
+        {rowInner}
+      </Link>
+    );
+  }
+
   return (
     <>
       <button
@@ -146,42 +198,7 @@ function PayeeRow({
         aria-label={fill(t("us.sf.wgp.s02.aria.row"), { name: p.vendor })}
         onClick={onToggle}
       >
-        <span className="r">{String(p.rank).padStart(2, "0")}</span>
-        <span className="name">
-          {p.vendor}
-          <span
-            style={{
-              display: "block",
-              fontFamily: "var(--f-mono)",
-              fontSize: 10.5,
-              letterSpacing: ".03em",
-              color: "var(--muted)",
-              marginTop: 3,
-            }}
-          >
-            {deptDisplay(p.top_department)}
-            {" · "}
-            {p.n_departments > 1
-              ? fill(t("us.sf.wgp.row.depts"), { n: p.n_departments })
-              : t("us.sf.wgp.row.dept_one")}
-          </span>
-        </span>
-        <span
-          className="bar"
-          style={{ position: "relative", height: 8, background: "var(--rule)" }}
-        >
-          <span
-            className="fill"
-            style={{ width: `${(p.vouchers_paid_usd / refMax) * 100}%`, background: color }}
-          />
-        </span>
-        <span className="v tnum">{fmtUsdCompact(p.vouchers_paid_usd)}</span>
-        <span className="theme">
-          <BucketChip bucket={p.bucket} />
-        </span>
-        <span className="arrow" aria-hidden="true">
-          {expanded ? "▴" : "▾"}
-        </span>
+        {rowInner}
       </button>
       {expanded && (
         <div
@@ -201,14 +218,6 @@ function PayeeRow({
               <span style={{ color: "var(--ink-2)" }}>{p.objects_top3.join(" · ")}</span>
             </div>
           )}
-          <div>
-            <b>{t("us.sf.wgp.exp.top_dept")}</b>{" "}
-            <span style={{ color: "var(--ink-2)" }}>
-              {deptDisplay(p.top_department)}
-              {p.n_departments > 1 &&
-                ` (${fill(t("us.sf.wgp.row.depts"), { n: p.n_departments })})`}
-            </span>
-          </div>
           <div
             style={{
               fontFamily: "var(--f-mono)",
@@ -227,30 +236,12 @@ function PayeeRow({
               })}
             </span>
             <span>{fill(t("us.sf.wgp.exp.vouchers"), { n: nfInt.format(p.n_vouchers) })}</span>
-            {p.grant_funded_usd != null && p.grant_funded_usd > 0 && (
-              <span style={{ color: "var(--bleu)" }}>
-                {fill(t("us.sf.wgp.exp.grant"), {
-                  amount: fmtUsdCompact(p.grant_funded_usd),
-                })}
-              </span>
-            )}
             {p.is_non_profit && <span>{t("us.sf.wgp.row.np_chip")}</span>}
           </div>
           {p.bucket_note && (
             <div style={{ fontSize: 12.5, color: "var(--muted-2)" }}>
               <b style={{ color: "var(--ink-2)" }}>{t("us.sf.wgp.exp.bucket_note")}</b>{" "}
               {p.bucket_note}
-            </div>
-          )}
-          {payeeSlug && (
-            <div style={{ marginTop: 4 }}>
-              <Link
-                href={`/us/city/sf/who-gets-paid/payee/${payeeSlug}`}
-                className="fx-row-link"
-                style={{ fontWeight: 600, borderBottom: "1px solid var(--bleu)" }}
-              >
-                Full payee page — every year, department and contract →
-              </Link>
             </div>
           )}
         </div>
