@@ -68,9 +68,6 @@ export default function CommuneBudgetClient({
   const { locale } = useLocale();
   const euro = useEuro();
 
-  // Capacité de désendettement — santé financière (OFGL). Bandes usuelles.
-  const capBand = (y: number | null) =>
-    y == null ? null : y < 8 ? "sain" : y <= 12 ? "vigilance" : "alerte";
 
   const central =
     data.sankeyNodes.find((n) => n.category === "central")?.name ?? `Budget ${commune.nom}`;
@@ -152,11 +149,17 @@ export default function CommuneBudgetClient({
                 </span>
               )}
               {health.capaciteDesend != null && (
-                <span className={`fx-health-item fx-health-${capBand(health.capaciteDesend)}`}>
+                <span className="fx-health-item">
                   <b className="tnum">
                     {health.capaciteDesend.toLocaleString(locale === "en" ? "en-GB" : "fr-FR", { maximumFractionDigits: 1 })} {t("fx.natbud.years")}
                   </b>
-                  {t("fx.natbud.health_capacite")} · {t(`fx.natbud.health_${capBand(health.capaciteDesend)}`)}
+                  <span
+                    className="fx-def"
+                    title={t("fx.natbud.health_capacite_tip")}
+                    tabIndex={0}
+                  >
+                    {t("fx.natbud.health_capacite")}
+                  </span>
                 </span>
               )}
               {health.epargneBrute != null && (
@@ -165,7 +168,13 @@ export default function CommuneBudgetClient({
                   {t("fx.natbud.health_epargne")}
                 </span>
               )}
-              <span className="fx-health-src">{t("fx.natbud.health_source")}</span>
+              <span
+                className="fx-health-src fx-def"
+                title={t("fx.natbud.ofgl_tip")}
+                tabIndex={0}
+              >
+                {t("fx.natbud.health_source")}
+              </span>
             </div>
           )}
 
