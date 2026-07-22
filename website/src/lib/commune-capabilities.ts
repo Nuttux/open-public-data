@@ -3,6 +3,7 @@ import path from "path";
 import overridesRaw from "@/data/commune-overrides.json";
 import { communeHasBudgetNature } from "@/lib/commune-budget";
 import { communeHasMarches } from "@/lib/commune-marches";
+import { communeHasInvestissements } from "@/lib/commune-investissements";
 
 /**
  * Capability matrix — national-source-first, DATA-DERIVED.
@@ -56,6 +57,8 @@ export type CommuneCapabilities = {
   /** National tier — marchés publics (DECP). Present iff the commune published
    *  procurement ≥ 40k€ (≈12.5k of 35k communes). */
   marches: boolean;
+  /** National tier — investissements (DGFiP balances, section investissement). */
+  investissements: boolean;
   /** True if the commune has at least one renderable page/layer. */
   any: boolean;
 };
@@ -82,5 +85,12 @@ export function getCommuneCapabilities(slug: string): CommuneCapabilities {
 
   const budget: BudgetCapability = { nature, fonction };
   const marches = !hidden.has("marches") && communeHasMarches(slug);
-  return { slug, budget, marches, any: nature || fonction || marches };
+  const investissements = !hidden.has("investissements") && communeHasInvestissements(slug);
+  return {
+    slug,
+    budget,
+    marches,
+    investissements,
+    any: nature || fonction || marches || investissements,
+  };
 }

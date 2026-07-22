@@ -98,3 +98,5 @@ pipeline/seeds/seed_match_projet_marches.csv
 
 # National marchés (DECP) exports — private bucket gs://qipu-communes-budget/communes-marches
 website/public/data/communes-marches/
+
+website/public/data/communes-investissements/

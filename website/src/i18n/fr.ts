@@ -1354,6 +1354,15 @@ const fr: Record<string, string> = {
   'fx.natmar.biggest_title': 'Plus gros marchés',
   'fx.natmar.source': 'Marchés publics — DECP (data.gouv.fr)',
   'fx.natmar.link': 'Marchés publics',
+  'fx.natinv.kicker': 'Investissements',
+  'fx.natinv.lede': 'Les dépenses d’équipement de la commune (bâtiments, voirie, matériel…) et leur financement (autofinancement, subventions, emprunts). Reconstituées depuis les balances comptables DGFiP.',
+  'fx.natinv.depenses': 'Dépenses d’équipement',
+  'fx.natinv.financement': 'Financement',
+  'fx.natinv.note': 'Section investissement du budget (comptes de classe 1 et 2).',
+  'fx.natinv.fin_title': 'D’où vient le financement',
+  'fx.natinv.dep_title': 'Où va l’investissement',
+  'fx.natinv.source': 'Balances comptables DGFiP (investissement)',
+  'fx.natinv.link': 'Investissements',
 
   // ── Budget page ─────────────────────────────────────────────────────────────
   'fx.bud.kicker': '01 · Budget',

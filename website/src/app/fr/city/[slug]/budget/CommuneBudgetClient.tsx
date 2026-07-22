@@ -40,6 +40,8 @@ type Props = {
   health?: CommuneHealth | null;
   /** Set (from getCommuneCapabilities) when the commune has a marchés page. */
   marchesHref?: string;
+  /** Set when the commune has an investissements page. */
+  investissementsHref?: string;
 };
 
 function useEuro() {
@@ -66,6 +68,7 @@ export default function CommuneBudgetClient({
   sourceUrl,
   health,
   marchesHref,
+  investissementsHref,
 }: Props) {
   const t = useT();
   const { locale } = useLocale();
@@ -173,11 +176,18 @@ export default function CommuneBudgetClient({
           )}
 
           {/* Cross-links to other national pages this commune has */}
-          {marchesHref && (
+          {(marchesHref || investissementsHref) && (
             <nav className="fx-natlinks">
-              <Link href={marchesHref} className="fx-cta-link">
-                {t("fx.natmar.link")} →
-              </Link>
+              {investissementsHref && (
+                <Link href={investissementsHref} className="fx-cta-link">
+                  {t("fx.natinv.link")} →
+                </Link>
+              )}
+              {marchesHref && (
+                <Link href={marchesHref} className="fx-cta-link">
+                  {t("fx.natmar.link")} →
+                </Link>
+              )}
             </nav>
           )}
 

@@ -1354,6 +1354,15 @@ const en: Record<string, string> = {
   'fx.natmar.biggest_title': 'Largest contracts',
   'fx.natmar.source': 'Public procurement — DECP (data.gouv.fr)',
   'fx.natmar.link': 'Public procurement',
+  'fx.natinv.kicker': 'Investment',
+  'fx.natinv.lede': 'The commune’s capital spending (buildings, roads, equipment…) and how it is financed (self-funding, grants, borrowing). Reconstructed from DGFiP balance-sheet accounts.',
+  'fx.natinv.depenses': 'Capital expenditure',
+  'fx.natinv.financement': 'Financing',
+  'fx.natinv.note': 'Investment section of the budget (accounts class 1 and 2).',
+  'fx.natinv.fin_title': 'Where the funding comes from',
+  'fx.natinv.dep_title': 'Where investment goes',
+  'fx.natinv.source': 'DGFiP balance-sheet accounts (investment)',
+  'fx.natinv.link': 'Investment',
 
   // ── Budget page ─────────────────────────────────────────────────────────────
   'fx.bud.kicker': '01 · Budget',
