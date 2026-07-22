@@ -1,0 +1,4 @@
+{
+  "$comment": "Capability OVERRIDES only — intent, never the source of truth for data presence (that is derived at build time from exported files by getCommuneCapabilities). Per slug you may set: hide: string[] (force a page/layer off even if data exists), wip: string[] (mark a page work-in-progress), label: {page: string} (pin a label). Adding data for a commune must NEVER require an edit here.",
+  "overrides": {}
+}

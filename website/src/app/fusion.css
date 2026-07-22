@@ -15699,3 +15699,30 @@ body:has(.theme-db-scrolly) { background: #fafaf7 !important; color: var(--p-ink
 .fx-cct-details > summary:focus-visible { outline: none; }
 .fx-cct-details .fx-cct-chev { transition: transform 0.18s ease; }
 .fx-cct-details[open] .fx-cct-chev { transform: rotate(90deg); }
+
+/* ── Budget par nature (commune landing — national capability matrix) ─────── */
+.theme-fusion .fx-cta-link {
+  display: inline-flex; align-items: center; gap: 6px; padding: 8px 16px;
+  border-radius: 999px; background: var(--fx-ink, #0a0a0a); color: #fff;
+  font-weight: 600; font-size: 14px; text-decoration: none;
+}
+.theme-fusion .fx-yearpicker { display: flex; gap: 6px; flex-wrap: wrap; margin: 24px 0 8px; }
+.theme-fusion .fx-yearpicker a {
+  padding: 6px 14px; border-radius: 999px; border: 1px solid var(--fx-line, #e2e2e2);
+  color: var(--fx-ink, #0a0a0a); text-decoration: none; font-size: 14px; font-variant-numeric: tabular-nums;
+}
+.theme-fusion .fx-yearpicker a.is-active { background: var(--fx-ink, #0a0a0a); color: #fff; border-color: var(--fx-ink, #0a0a0a); }
+.theme-fusion .fx-sankey-wrap { margin: 40px 0; overflow-x: auto; }
+.theme-fusion .fx-note-muted { color: var(--fx-muted, #6b6b6b); font-style: italic; }
+.theme-fusion .fx-health {
+  display: flex; flex-wrap: wrap; align-items: baseline; gap: 10px 22px; margin: 18px 0 4px; padding: 14px 18px;
+  border: 1px solid var(--fx-line, #e2e2e2); border-radius: 12px;
+  background: color-mix(in srgb, var(--fx-ink, #0a0a0a) 3%, transparent);
+}
+.theme-fusion .fx-health-title { font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--fx-muted, #6b6b6b); font-weight: 600; }
+.theme-fusion .fx-health-item { font-size: 14px; color: var(--fx-muted, #6b6b6b); }
+.theme-fusion .fx-health-item b { color: var(--fx-ink, #0a0a0a); margin-right: 6px; font-weight: 700; }
+.theme-fusion .fx-health-src { margin-left: auto; font-size: 12px; color: var(--fx-muted, #9a9a9a); }
+/* Neutral term-definition affordance (native title tooltip; no value judgement) */
+.theme-fusion .fx-def { text-decoration: underline dotted; text-underline-offset: 3px; cursor: help; }
+.theme-fusion .fx-def:focus-visible { outline: 2px solid var(--fx-ink, #0a0a0a); outline-offset: 2px; border-radius: 2px; }
