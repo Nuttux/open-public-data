@@ -15,8 +15,13 @@ import {
 } from "@/lib/all-communes";
 import { buildLocaleAwareMetadata } from "@/lib/seo";
 import { getCommuneCapabilities } from "@/lib/commune-capabilities";
+import { loadCommuneBudget } from "@/lib/commune-budget";
 import CityClient from "./CityClient";
 import CitySlimClient from "./CitySlimClient";
+import CommuneBudgetClient from "./budget/CommuneBudgetClient";
+
+const COMMUNE_BUDGET_SOURCE_URL =
+  "https://data.economie.gouv.fr/explore/dataset/balances-comptables-des-communes-en-2024/";
 
 // Statically pre-render only the 9 rich top-N cities (Paris excluded — it
 // redirects to /). The thousands of slim "tail" pages are generated on
@@ -96,9 +101,44 @@ export default async function CityPage({
     const src = loadAllCommunesSource();
     if (!src) notFound();
     const labels = loadAllCommunesKpiLabels();
-    // Data-derived capability — surfaces the budget-by-nature page iff its export
-    // exists for this commune. No city list; adding data flips the link on.
+    // Data-derived: if the commune has a budget-by-nature export, the landing
+    // page LEADS with the rich breakdown (+ an OFGL financial-health strip),
+    // instead of the thin summary. Adding data upgrades the page automatically.
     const caps = getCommuneCapabilities(slim.slug);
+    if (caps.budget.nature) {
+      const loaded = await loadCommuneBudget(slim.slug);
+      if (loaded) {
+        const dette = slim.kpis?.encours_dette;
+        const epargne = slim.kpis?.epargne_brute;
+        const capaciteDesend =
+          dette?.montant && epargne?.montant && epargne.montant > 0
+            ? dette.montant / epargne.montant
+            : null;
+        return (
+          <CommuneBudgetClient
+            commune={{
+              slug: slim.slug,
+              insee: slim.insee,
+              nom: slim.nom,
+              dep_name: slim.dep_name,
+              reg_name: slim.reg_name,
+              pop: slim.pop,
+            }}
+            data={loaded.data}
+            availableYears={loaded.availableYears}
+            year={loaded.year}
+            hasFonction={caps.budget.fonction}
+            sourceUrl={COMMUNE_BUDGET_SOURCE_URL}
+            health={{
+              detteEurHab: dette?.eur_hab ?? null,
+              epargneBrute: epargne?.montant ?? null,
+              capaciteDesend,
+              year: src.year,
+            }}
+          />
+        );
+      }
+    }
     return (
       <CitySlimClient
         entry={slim}
@@ -106,7 +146,7 @@ export default async function CityPage({
         source={src.source}
         sourceUrl={src.source_url}
         labels={labels}
-        budgetHref={caps.budget.nature ? `/fr/city/${slim.slug}/budget` : undefined}
+        budgetHref={undefined}
       />
     );
   }

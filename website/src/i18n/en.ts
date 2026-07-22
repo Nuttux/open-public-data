@@ -1335,6 +1335,15 @@ const en: Record<string, string> = {
   'fx.natbud.fonction_title': 'Budget by function',
   'fx.natbud.fonction_present': 'By-policy breakdown available for this commune.',
   'fx.natbud.fonction_absent': 'A by-function breakdown (schools, roads, culture…) is not available for this commune: no national source provides it. It is added automatically as soon as a municipal budget or a document extraction is ingested.',
+  'fx.natbud.health_title': 'Financial health',
+  'fx.natbud.health_dette': 'debt outstanding',
+  'fx.natbud.health_capacite': 'debt-repayment capacity',
+  'fx.natbud.health_epargne': 'gross savings',
+  'fx.natbud.health_source': 'source: OFGL',
+  'fx.natbud.years': 'yrs',
+  'fx.natbud.health_sain': 'healthy',
+  'fx.natbud.health_vigilance': 'watch',
+  'fx.natbud.health_alerte': 'alert',
 
   // ── Budget page ─────────────────────────────────────────────────────────────
   'fx.bud.kicker': '01 · Budget',

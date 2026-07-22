@@ -19,6 +19,15 @@ export type CommuneMeta = {
   pop: number;
 };
 
+export type CommuneHealth = {
+  /** Encours de dette €/hab (OFGL). */
+  detteEurHab: number | null;
+  epargneBrute: number | null;
+  /** Capacité de désendettement, en années (dette / épargne brute). */
+  capaciteDesend: number | null;
+  year: number;
+};
+
 type Props = {
   commune: CommuneMeta;
   data: BudgetPageData;
@@ -27,6 +36,8 @@ type Props = {
   /** Upgrade layer present? (data-derived, from getCommuneCapabilities) */
   hasFonction: boolean;
   sourceUrl: string;
+  /** OFGL financial-health strip (dette, capacité de désendettement, épargne). */
+  health?: CommuneHealth | null;
 };
 
 function useEuro() {
@@ -51,10 +62,15 @@ export default function CommuneBudgetClient({
   year,
   hasFonction,
   sourceUrl,
+  health,
 }: Props) {
   const t = useT();
   const { locale } = useLocale();
   const euro = useEuro();
+
+  // Capacité de désendettement — santé financière (OFGL). Bandes usuelles.
+  const capBand = (y: number | null) =>
+    y == null ? null : y < 8 ? "sain" : y <= 12 ? "vigilance" : "alerte";
 
   const central =
     data.sankeyNodes.find((n) => n.category === "central")?.name ?? `Budget ${commune.nom}`;
@@ -124,6 +140,34 @@ export default function CommuneBudgetClient({
               <p className="fx-kpi-value tnum">{nfHab.format(perHab)} €</p>
             </div>
           </div>
+
+          {/* Santé financière (OFGL) — dette, capacité de désendettement, épargne */}
+          {health && (
+            <div className="fx-health">
+              <span className="fx-health-title">{t("fx.natbud.health_title")}</span>
+              {health.detteEurHab != null && (
+                <span className="fx-health-item">
+                  <b className="tnum">{nfHab.format(Math.round(health.detteEurHab))} €/hab</b>
+                  {t("fx.natbud.health_dette")}
+                </span>
+              )}
+              {health.capaciteDesend != null && (
+                <span className={`fx-health-item fx-health-${capBand(health.capaciteDesend)}`}>
+                  <b className="tnum">
+                    {health.capaciteDesend.toLocaleString(locale === "en" ? "en-GB" : "fr-FR", { maximumFractionDigits: 1 })} {t("fx.natbud.years")}
+                  </b>
+                  {t("fx.natbud.health_capacite")} · {t(`fx.natbud.health_${capBand(health.capaciteDesend)}`)}
+                </span>
+              )}
+              {health.epargneBrute != null && (
+                <span className="fx-health-item">
+                  <b className="tnum">{euro(health.epargneBrute)}</b>
+                  {t("fx.natbud.health_epargne")}
+                </span>
+              )}
+              <span className="fx-health-src">{t("fx.natbud.health_source")}</span>
+            </div>
+          )}
 
           {/* Honest axis note: this is NATURE, not fonction */}
           <p className="fx-note">{t("fx.natbud.nature_note")}</p>

@@ -15472,3 +15472,21 @@ body:has(.theme-db-scrolly) { background: #fafaf7 !important; color: var(--p-ink
 }
 .theme-fusion .fx-sankey-wrap { margin: 40px 0; overflow-x: auto; }
 .theme-fusion .fx-note-muted { color: var(--fx-muted, #6b6b6b); font-style: italic; }
+
+/* ── Santé financière strip (commune budget hero) ────────────────────────── */
+.theme-fusion .fx-health {
+  display: flex; flex-wrap: wrap; align-items: baseline; gap: 10px 22px;
+  margin: 18px 0 4px; padding: 14px 18px;
+  border: 1px solid var(--fx-line, #e2e2e2); border-radius: 12px;
+  background: color-mix(in srgb, var(--fx-ink, #0a0a0a) 3%, transparent);
+}
+.theme-fusion .fx-health-title {
+  font-size: 12px; letter-spacing: .08em; text-transform: uppercase;
+  color: var(--fx-muted, #6b6b6b); font-weight: 600;
+}
+.theme-fusion .fx-health-item { font-size: 14px; color: var(--fx-muted, #6b6b6b); }
+.theme-fusion .fx-health-item b { color: var(--fx-ink, #0a0a0a); margin-right: 6px; font-weight: 700; }
+.theme-fusion .fx-health-sain b { color: #1a7f4b; }
+.theme-fusion .fx-health-vigilance b { color: #a67638; }
+.theme-fusion .fx-health-alerte b { color: #c12323; }
+.theme-fusion .fx-health-src { margin-left: auto; font-size: 12px; color: var(--fx-muted, #9a9a9a); }

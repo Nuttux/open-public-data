@@ -1335,6 +1335,15 @@ const fr: Record<string, string> = {
   'fx.natbud.fonction_title': 'Budget par fonction',
   'fx.natbud.fonction_present': 'Ventilation par politique publique disponible pour cette commune.',
   'fx.natbud.fonction_absent': 'Ventilation par fonction (écoles, voirie, culture…) non disponible pour cette commune : aucune source nationale ne la fournit. Elle s’ajoutera automatiquement dès qu’un budget communal ou une extraction de document est ingéré.',
+  'fx.natbud.health_title': 'Santé financière',
+  'fx.natbud.health_dette': 'encours de dette',
+  'fx.natbud.health_capacite': 'capacité de désendettement',
+  'fx.natbud.health_epargne': 'épargne brute',
+  'fx.natbud.health_source': 'source : OFGL',
+  'fx.natbud.years': 'ans',
+  'fx.natbud.health_sain': 'sain',
+  'fx.natbud.health_vigilance': 'vigilance',
+  'fx.natbud.health_alerte': 'alerte',
 
   // ── Budget page ─────────────────────────────────────────────────────────────
   'fx.bud.kicker': '01 · Budget',
