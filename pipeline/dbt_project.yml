@@ -319,6 +319,16 @@ models:
         owner: "danielshavit92@gmail.com"
         cadence: "on-demand (sync run cadence)"
         cost_bucket: "low"  # views, no storage
+      # ADR-0012: enriched (LLM/curated) → private dataset via generate_schema_name.
+      stg_cache_geo_ap: { +meta: { data_class: enriched } }
+      stg_cache_thematique_beneficiaires: { +meta: { data_class: enriched } }
+      stg_deliberations_articles: { +meta: { data_class: enriched } }
+      stg_deliberations_delibs: { +meta: { data_class: enriched } }
+      stg_deliberations_sessions: { +meta: { data_class: enriched } }
+      stg_enrichment_caches: { +meta: { data_class: enriched } }
+      stg_lieux_connus: { +meta: { data_class: enriched } }
+      stg_pdf_investissements_localises: { +meta: { data_class: enriched } }
+      stg_match_projet_marches: { +meta: { data_class: enriched } }
 
     # -------------------------------------------------------------------------
     # Intermediate : Tables intermédiaires avec logique métier
@@ -343,6 +353,11 @@ models:
         owner: "danielshavit92@gmail.com"
         cadence: "after stg refresh"
         cost_bucket: "medium"
+      # ADR-0012: enriched → private dataset. (deliberations = LLM/websearch
+      # extraction end-to-end, private incl. amount_eur; cf. data-classification.md)
+      core_enrichment_caches: { +meta: { data_class: enriched } }
+      core_pdf_investissements_localises: { +meta: { data_class: enriched } }
+      core_deliberations: { +meta: { data_class: enriched } }
 
     # -------------------------------------------------------------------------
     # Marts : Tables agrégées et optimisées pour l'export frontend
@@ -355,6 +370,13 @@ models:
         owner: "danielshavit92@gmail.com"
         cadence: "before each export run"
         cost_bucket: "low-medium"
+      # ADR-0012: enriched → private dataset. MIXED marts (subventions/geo/match
+      # thematique) are NOT tagged yet — they need column-splitting, not blanket
+      # privatisation (cf. docs/data-classification.md). Budget thematique stays
+      # public (deterministic seed mapping).
+      mart_enrichment_caches: { +meta: { data_class: enriched } }
+      mart_investissements_localises: { +meta: { data_class: enriched } }
+      mart_deliberations: { +meta: { data_class: enriched } }
 
     # -------------------------------------------------------------------------
     # National models (DGFiP balances, OFGL, DECP nat., etc.).
