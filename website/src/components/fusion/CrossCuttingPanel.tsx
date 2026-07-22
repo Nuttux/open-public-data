@@ -1,7 +1,6 @@
 import Link from "next/link";
 import type { CSSProperties } from "react";
 
-import SectionHead from "./SectionHead";
 import type {
   CrossCuttingBucket,
   CrossCuttingTheme,
@@ -54,8 +53,6 @@ type Props = {
   number: string; // ex "07.1"
   theme: CrossCuttingTheme;
   locale: "fr" | "en";
-  /** Optional eyebrow override; defaults to "VUES THÉMATIQUES". */
-  eyebrow?: string;
   /** Label for the share-of-APU footnote ("of consolidated public spending"). */
   shareOfTotalLabel: string;
   /** Label for the caveats section ("Caveats" / "Mises en garde"). */
@@ -68,7 +65,6 @@ export default function CrossCuttingPanel({
   number,
   theme,
   locale,
-  eyebrow,
   shareOfTotalLabel,
   caveatsLabel,
   sourcesLabel,
@@ -85,60 +81,50 @@ export default function CrossCuttingPanel({
       : String(totalRounded);
 
   const heroUnit = locale === "fr" ? "Md€" : "bn";
-  const heroSuffix = locale === "fr" ? "/an" : "/yr";
 
   const themeLabel = locale === "en" ? theme.label_en : theme.label_fr;
   const themeSubtitle = locale === "en" ? theme.subtitle_en : theme.subtitle_fr;
   const caveats = locale === "en" ? theme.caveats_en : theme.caveats_fr;
-  const eyebrowLabel =
-    eyebrow ?? (locale === "en" ? "CROSS-CUTTING VIEWS" : "VUES THÉMATIQUES");
+
+  const stack = (
+    <div style={stackWrapStyle} role="presentation" aria-hidden="true">
+      {components.map((c) => {
+        const pct = totalAnnual > 0 ? (c.annual_eur / totalAnnual) * 100 : 0;
+        const segStyle: CSSProperties = {
+          flex: `${c.annual_eur} 1 0`,
+          background: COLOR_BY_BUCKET[c.bucket],
+          minWidth: pct >= 1.2 ? undefined : 6,
+        };
+        return <div key={c.key} style={segStyle} />;
+      })}
+    </div>
+  );
 
   return (
-    <div className="fx-cct-panel" style={panelStyle}>
-      <SectionHead
-        number={number}
-        kind={eyebrowLabel}
-        title={themeLabel}
-        subtitle={themeSubtitle}
-      />
+    <details className="fx-cct-details" style={panelStyle}>
+      {/* Compact summary — always visible, expands to full detail */}
+      <summary className="fx-cct-summary" style={summaryStyle}>
+        <span style={summaryHeadStyle}>
+          <span style={summaryEyebrowStyle}>{number}</span>
+          <span style={summaryTitleStyle}>{themeLabel}</span>
+          <span style={summaryAmountStyle}>
+            <span className="tnum" style={{ fontWeight: 700, color: "var(--ink)" }}>
+              {totalLabel} {heroUnit}
+            </span>
+            <span className="tnum" style={summaryPctStyle}>
+              {fmtPct(theme.share_of_total_apu, locale)}
+            </span>
+            <span className="fx-cct-chev" aria-hidden="true" style={chevStyle}>
+              ›
+            </span>
+          </span>
+        </span>
+        <span style={{ marginTop: 12, display: "block" }}>{stack}</span>
+      </summary>
 
-      {/* Hero number */}
-      <div style={heroBlockStyle}>
-        <div
-          className="tnum"
-          style={{
-            fontFamily: "'Inter Tight', Inter, sans-serif",
-            fontSize: "clamp(48px, 8vw, 96px)",
-            lineHeight: 0.95,
-            letterSpacing: "-0.035em",
-            fontWeight: 700,
-            color: "var(--ink)",
-          }}
-        >
-          {totalLabel}
-          <span
-            style={{
-              fontSize: "0.28em",
-              marginLeft: "0.28em",
-              fontWeight: 500,
-              color: "var(--muted)",
-              letterSpacing: 0,
-            }}
-          >
-            {heroUnit}
-          </span>
-          <span
-            style={{
-              fontSize: "0.22em",
-              marginLeft: "0.32em",
-              fontWeight: 500,
-              color: "var(--muted)",
-              letterSpacing: 0,
-            }}
-          >
-            {heroSuffix}
-          </span>
-        </div>
+      {/* Expanded body */}
+      <div style={bodyStyle}>
+        <p style={subtitleStyle}>{themeSubtitle}</p>
         <p style={shareLineStyle}>
           ≈{" "}
           <span className="tnum" style={{ fontWeight: 600, color: "var(--ink-2)" }}>
@@ -146,20 +132,6 @@ export default function CrossCuttingPanel({
           </span>{" "}
           {shareOfTotalLabel}
         </p>
-      </div>
-
-      {/* Horizontal stack — proportional, colored by institution */}
-      <div style={stackWrapStyle} role="presentation" aria-hidden="true">
-        {components.map((c) => {
-          const pct = totalAnnual > 0 ? (c.annual_eur / totalAnnual) * 100 : 0;
-          const segStyle: CSSProperties = {
-            flex: `${c.annual_eur} 1 0`,
-            background: COLOR_BY_BUCKET[c.bucket],
-            minWidth: pct >= 1.2 ? undefined : 6,
-          };
-          return <div key={c.key} style={segStyle} />;
-        })}
-      </div>
 
       {/* Vertical component list */}
       <ul style={componentListStyle}>
@@ -223,7 +195,8 @@ export default function CrossCuttingPanel({
         label={sourcesLabel}
         locale={locale}
       />
-    </div>
+      </div>
+    </details>
   );
 }
 
@@ -273,12 +246,69 @@ function SourcesFootnote({
 
 const panelStyle: CSSProperties = {
   borderTop: "1px solid var(--rule)",
-  paddingTop: 28,
-  paddingBottom: 12,
 };
 
-const heroBlockStyle: CSSProperties = {
-  margin: "16px 0 22px",
+const summaryStyle: CSSProperties = {
+  padding: "18px 2px",
+  cursor: "pointer",
+};
+
+const summaryHeadStyle: CSSProperties = {
+  display: "flex",
+  alignItems: "baseline",
+  gap: 14,
+  flexWrap: "wrap",
+};
+
+const summaryEyebrowStyle: CSSProperties = {
+  fontFamily: "'JetBrains Mono', ui-monospace, monospace",
+  fontSize: 11,
+  letterSpacing: "0.08em",
+  color: "var(--ocre, #c89647)",
+  flex: "0 0 auto",
+};
+
+const summaryTitleStyle: CSSProperties = {
+  fontFamily: "'Inter Tight', Inter, sans-serif",
+  fontSize: 20,
+  fontWeight: 700,
+  letterSpacing: "-0.015em",
+  color: "var(--ink)",
+  flex: 1,
+  minWidth: 0,
+};
+
+const summaryAmountStyle: CSSProperties = {
+  display: "flex",
+  alignItems: "baseline",
+  gap: 10,
+  flex: "0 0 auto",
+  fontSize: 18,
+};
+
+const summaryPctStyle: CSSProperties = {
+  fontSize: 12,
+  letterSpacing: "0.04em",
+  color: "var(--muted)",
+};
+
+const chevStyle: CSSProperties = {
+  fontSize: 20,
+  lineHeight: 1,
+  color: "var(--muted)",
+  display: "inline-block",
+};
+
+const bodyStyle: CSSProperties = {
+  paddingBottom: 24,
+};
+
+const subtitleStyle: CSSProperties = {
+  fontSize: 14,
+  lineHeight: 1.55,
+  color: "var(--ink-2)",
+  margin: "0 0 4px",
+  maxWidth: "56ch",
 };
 
 const shareLineStyle: CSSProperties = {

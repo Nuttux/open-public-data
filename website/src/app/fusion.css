@@ -117,6 +117,33 @@ body:has(.theme-fusion) > div.pb-24 { padding-bottom: 0 !important; }
   .theme-fusion .fx-nav-hidden { transform: none; transition: none; }
 }
 
+/* Prototype disclaimer strip — sits directly under the sticky nav on
+   non-flagship places (registry poc:true). Neutral, factual, low-key. */
+.theme-fusion .fx-poc-banner {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 6px 24px;
+  background: var(--bg-warm, #f4efe3);
+  border-bottom: 1px solid var(--rule);
+  font-size: 12.5px;
+  line-height: 1.35;
+  color: var(--muted-2);
+}
+.theme-fusion .fx-poc-badge {
+  flex: none;
+  font-family: var(--f-disp);
+  font-weight: 600;
+  font-size: 10.5px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  padding: 2px 7px;
+  border: 1px solid var(--ink);
+  color: var(--ink);
+  background: var(--bg);
+}
+.theme-fusion .fx-poc-text { min-width: 0; }
+
 .theme-fusion .fx-brand {
   display: flex;
   align-items: center;
@@ -15619,3 +15646,11 @@ body:has(.theme-db-scrolly) { background: #fafaf7 !important; color: var(--p-ink
 .theme-fusion .fx-hub-card-arrow {
   position: absolute; top: 20px; right: 22px; color: var(--muted); font-size: 18px;
 }
+
+/* Cross-cutting theme panels — collapsible disclosure */
+.fx-cct-details > summary { list-style: none; }
+.fx-cct-details > summary::-webkit-details-marker { display: none; }
+.fx-cct-details > summary:hover .fx-cct-summary-title,
+.fx-cct-details > summary:focus-visible { outline: none; }
+.fx-cct-details .fx-cct-chev { transition: transform 0.18s ease; }
+.fx-cct-details[open] .fx-cct-chev { transform: rotate(90deg); }

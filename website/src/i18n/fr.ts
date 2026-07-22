@@ -2654,6 +2654,8 @@ const fr: Record<string, string> = {
   'fx.fiche.asso.detail.opendata': 'Voir les lignes exactes sur opendata.paris.fr ↗',
   'fx.fiche.asso.detail.pdf': 'Voir l’annexe B8.1.1 du compte administratif (PDF) ↗',
   'fx.fiche.asso.note': "Données agrégées par année depuis le jeu open data « Subventions versées (annexe au compte administratif) » ; exercices 2020-2021 complétés par l'annexe B8.1.1 (PDF). Le détail ligne-à-ligne est consultable sur",
+  'fx.fiche.asso.note.generic': "Données agrégées par année depuis les jeux open data de subventions de la Ville (format SCDL). Le détail est consultable sur",
+  'fx.fiche.asso.detail.datagouv': 'Voir les jeux de données sur data.gouv.fr ↗',
   'fx.fiche.asso.sub': 'sub.',
   'fx.fiche.asso.vs_prev': 'vs année précédente',
 
@@ -3303,7 +3305,7 @@ const fr: Record<string, string> = {
   'fx.inv.hook.cite': 'Ville de Paris · Annexes « Investissements localisés » · CA {year}',
   'fx.inv.hook.share': "Investissements Ville de Paris {year} : {total} Md€ sur {nb} projets — {perHab} € par habitant.{topPart}",
   'fx.inv.hook.share.top': ' Premier poste : {label} ({topAmt} M€).',
-  'fx.inv.hook.body.intro': "En {year}, Paris a investi <b>{total} Md€</b> sur <b>{nb} projets</b> — soit <b>{perHab} € par Parisien</b> sur l'année.",
+  'fx.inv.hook.body.intro': "En {year}, Paris a investi <b>{total} Md€</b> sur <b>{nb} projets</b> — soit <b>{perHab} € par habitant</b> sur l'année.",
   'fx.inv.hook.body.top': ' Le premier poste, <b>{label}</b>, pèse à lui seul <b>{topAmt} M€</b>.',
 
   // dette-patrimoine — i18n batch
@@ -3666,7 +3668,7 @@ const fr: Record<string, string> = {
   'db.hero.onboarding.kicker': 'DAILY BREAD · QIPU',
   'db.hero.onboarding.title': 'Combien coûte le service public, et qui paie quoi.',
   'db.hero.onboarding.standfirst': 'La France dépense ~2 200 € par habitant chaque mois en services publics, financés par les particuliers (impôts directs), les employeurs (cotisations), les entreprises (IS) et l\'emprunt public. Cet outil chiffre ta contribution, la dépense par habitant, et l\'écart entre les deux.',
-  'db.hero.onboarding.hint': 'Modifie les valeurs soulignées ci-dessous. Si tu as d\'autres revenus (pension, capital, indépendant) ou que tu es propriétaire, déplie {b}Ajustements avancés{/b}.',
+  'db.hero.onboarding.hint': 'Modifie les valeurs soulignées ci-dessous.',
   // ─ Hero éditable NYT-style (fold redesign) ─
   'db.hero.editable.prefix_salaire': 'Sur ton revenu net de',
   'db.hero.editable.set_salaire': 'définis ton salaire',
@@ -3741,7 +3743,7 @@ const fr: Record<string, string> = {
   'db.etat.num': 'État central — {monthly} €/mois/habitant',
   'db.etat.name': 'État central et opérateurs',
   'db.etat.amt': '{monthly} €/mois de ta contribution',
-  'db.etat.deck1': 'Le budget de l\'État finance {b}33 missions PLF{/b}, regroupées ici en {b}10 catégories{/b} pour faciliter la lecture : éducation, défense, sécurité, justice, solidarité, travail, écologie, culture, dette publique — et un bloc {b}Autres{/b} (agriculture, Outre-mer, action extérieure, économie, anciens combattants).',
+  'db.etat.deck1': 'Le budget de l\'État finance {b}33 missions PLF{/b}, regroupées ici en {b}10 catégories{/b} : éducation, défense, sécurité, justice, solidarité, travail, écologie, culture, dette publique — et un bloc {b}Autres{/b} (agriculture, Outre-mer, action extérieure, économie, anciens combattants).',
   'db.etat.deck2': 'L\'État central et ses opérateurs portent les missions régaliennes (défense, sécurité, justice, affaires étrangères) et l\'éducation nationale, postes les plus visibles du budget national.',
   'db.etat.source': 'Source : LFI 2025',
   'db.etat.scope_note': 'Note méthodo · Les 33 missions PLF totalisent {plf_total} (≈ 66 % du périmètre Eurostat S1311 : {s1311_total}). Les ~{delta} restants correspondent aux opérateurs (ODAC), transferts UE et régimes spéciaux non rattachés à une mission. Ces dépenses sont incluses dans ta part État au niveau global, mais leur attribution thématique n\'est pas publique au PLF — la somme des barres ci-dessus n\'égale donc pas ton {monthly} €/mois État.',
@@ -3823,7 +3825,7 @@ const fr: Record<string, string> = {
   // ─ Méthode (refonte 2026-05 — anciennement §08 Caveats, ancien §06 COFOG retiré) ─
   'db.method.num': 'Méthode',
   'db.method.title': 'Comment ce calcul est fait,\n{em}ses sources, ses limites.{/em}',
-  'db.method.intro': "Ton estimation repose sur les barèmes officiels (URSSAF, CGI, DGFiP) appliqués à un profil simplifié. Voici, dépliant par dépliant, ce qui entre dans le calcul, ce qui n'y est pas, et d'où viennent les chiffres.",
+  'db.method.intro': "Ton estimation repose sur les barèmes officiels (URSSAF, CGI, DGFiP) appliqués à un profil simplifié. Voici ce qui entre dans le calcul, ce qui n'y est pas, et d'où viennent les chiffres.",
   // Questions (résumés visibles)
   'db.method.q.hypotheses': 'Comment on calcule tes prélèvements',
   'db.method.q.exclusions': "Ce qui n'est pas dans le calcul",
@@ -3867,14 +3869,14 @@ const fr: Record<string, string> = {
   'db.method.body.perimetre.caveat_229': "Daily Bread mappe chaque euro d'impôt à son affectataire réel (cotisations → Sécu, IR → État, TVA → 3 caisses selon PLF). Budget Explorer (/fr/national/budget) garde la vue proportionnelle Eurostat S13 (44/37/18) qui montre la part de chaque sous-secteur dans la DÉPENSE publique totale. Les deux sont utiles : causale pour « où va MA contribution », proportionnelle pour « comment se répartit la dépense publique nationale ».",
   // 05 — Pourquoi perso
   'db.method.body.pourquoi_perso.p1': "Le calcul fiscal exact en France passe par OpenFisca, le moteur de simulation officiel maintenu par DINUM/Etalab — code source aligné sur le PLF en vigueur, mis à jour à chaque loi de finances.",
-  'db.method.body.pourquoi_perso.p2': "Daily Bread est un MVP simplifié, pensé pour rester accessible sans login fiscal et sans saisie de RFR détaillé. L'objectif : donner un ordre de grandeur lisible et un drilldown profond, pas remplacer impots.gouv.fr.",
+  'db.method.body.pourquoi_perso.p2': "Daily Bread est volontairement simplifié, pour rester accessible sans login fiscal et sans saisie de RFR détaillé. L'objectif : donner un ordre de grandeur lisible et un drilldown profond, pas remplacer impots.gouv.fr.",
   'db.method.body.pourquoi_perso.p3': "Pour le profil salarié, un bouton « Affiner avec OpenFisca » dans le hero éditable lance le calcul exact via l'API publique — utile pour comparer l'estimation MVP à la valeur officielle.",
   // 06 — Comparaison
-  'db.method.body.comparaison.intro': "Daily Bread n'est pas seul. Selon ce que tu cherches, un autre outil officiel sera plus adapté — voici les principaux.",
+  'db.method.body.comparaison.intro': "Selon ce que tu cherches, un autre outil officiel sera plus adapté — voici les principaux.",
   'db.method.body.comparaison.impots': "le simulateur officiel DGFiP. Fiable, exhaustif, calcule l'IR exact mais ne ventile pas où va l'argent.",
   'db.method.body.comparaison.openfisca': "le moteur officiel exposé en API. Exhaustif (toutes prestations + impôts), peu lisible pour le grand public.",
   'db.method.body.comparaison.bercy': "explication officielle de la dépense publique, par mission. Pédagogique, mais pas personnalisé.",
-  'db.method.body.comparaison.db': "Daily Bread (cette page) — calcul perso narratif + drilldown profond Sécu / État / Collectivités. Approximation MVP, transparente sur ses limites.",
+  'db.method.body.comparaison.db': "Daily Bread (cette page) — calcul perso narratif + drilldown profond Sécu / État / Collectivités. Approximation assumée, transparente sur ses limites.",
 
   // 07 — Limites éditoriales
   'db.method.body.limites.intro': "Daily Bread chiffre deux choses : ta contribution salariale directe (cotisations + CSG + IR + TVA) et la dépense publique par habitant. La page ne tente pas de répondre à 'où va MON euro' — la question n'a pas de réponse simple, et toute tentative de soustraction 'tu paies X / tu reçois Y' est philosophiquement bancale.",
@@ -4233,7 +4235,7 @@ const fr: Record<string, string> = {
   'budget.hero.note_unconsolidated': 'Décomposition non consolidée (avant transferts intra-administrations) : la lecture « qui dépense quoi » privilégie l\'origine du paiement à l\'agrégat S13.',
   'budget.section.treemap.kind': 'Vue d\'ensemble',
   'budget.section.treemap.title': 'Carte proportionnelle des dépenses',
-  'budget.section.treemap.subtitle': 'Chaque cellule = une grosse poche de dépense publique, taille proportionnelle au montant annuel. Cliquez pour explorer.',
+  'budget.section.treemap.subtitle': 'Chaque cellule = une grosse poche de dépense publique, taille proportionnelle au montant annuel.',
   'budget.section.treemap.legend.secu': 'Sécurité sociale',
   'budget.section.treemap.legend.etat': 'État central',
   'budget.section.treemap.legend.local': 'Collectivités',
@@ -4249,7 +4251,7 @@ const fr: Record<string, string> = {
   'budget.card.local.subtitle': 'Communes et intercommunalités, départements, régions — services publics de proximité.',
   'budget.section.secu.kind': 'Drill-down',
   'budget.section.secu.title': 'Sécurité sociale — branches',
-  'budget.section.secu.subtitle': 'Cinq branches couvrent la quasi-totalité des dépenses ASSO. Cliquez une branche pour ouvrir le détail.',
+  'budget.section.secu.subtitle': 'Cinq branches couvrent la quasi-totalité des dépenses ASSO.',
   'budget.section.secu.header_left': 'Branche',
   'budget.section.secu.header_right': '€/an · part ASSO',
   // ─ Recettes (panneau §02bis — D'où vient l'argent ?) ─
@@ -4285,7 +4287,7 @@ const fr: Record<string, string> = {
   'budget.cta.daily_bread.body': 'Daily Bread projette les chiffres ci-dessus sur un profil personnel : salaire, parts fiscales, commune. Sortie : un €/mois ventilé par institution, par branche, par mission.',
   'budget.cta.daily_bread.button': 'Calculer mon mois personnel sur Daily Bread →',
   'budget.section.sources.label': 'Sources',
-  'budget.section.sources.note': 'Tous les chiffres viennent du pipeline `pipeline/scripts/sync/sync_eurostat_apu_subsectors.py`, `sync_etat_lfi.py` et `sync_ofgl_communes_fonctionnelle.py`. Année de référence : {year} (Eurostat / PLF / OFGL selon série). La page est strictement impersonnelle : aucune projection « par foyer » n\'est faite ici.',
+  'budget.section.sources.note': 'Tous les chiffres viennent du pipeline `pipeline/scripts/sync/sync_eurostat_apu_subsectors.py`, `sync_etat_lfi.py` et `sync_ofgl_communes_fonctionnelle.py`. Année de référence : {year} (Eurostat / PLF / OFGL selon série).',
   'budget.section.sources.eurostat': 'Eurostat — gov_10a_main (dépenses publiques par sous-secteur)',
   'budget.section.sources.gdp': 'Eurostat — nama_10_gdp (PIB nominal France)',
   'budget.section.sources.plfss': 'PLFSS — annexe 5 (décomposition ASSO par branche)',
@@ -4337,6 +4339,18 @@ const fr: Record<string, string> = {
   // ── US · National (/us/national) — EN-only per ADR-0010 D3 ────────────────
   // FR values mirror the English verbatim so the page stays English on every
   // locale toggle (fr.ts must typecheck; US routes have no FR parity rule).
+  // ── Chrome de registre partagé (marque Qipu constante · sélecteur · bandeau PoC) ──
+  'chrome.wordmark': 'Qipu',
+  'chrome.country.fr': 'France',
+  'chrome.country.us': 'États-Unis',
+  'chrome.country.br': 'Brésil',
+  'chrome.place.paris': 'Paris',
+  'chrome.place.marseille': 'Marseille',
+  'chrome.switch.label': 'Explorer',
+  'chrome.switch.aria': 'Changer de territoire',
+  'chrome.switch.poc_tag': 'PoC',
+  'chrome.poc.badge': 'Prototype',
+  'chrome.poc.label': 'Travail en cours — les données sont réelles et sourcées, mais cette version est un prototype, pas une source officielle.',
   'us.chrome.wordmark': 'US — Public Data Explorer (working title)',
   'us.chrome.nav_aria': 'United States sections',
   'us.chrome.nav.national': 'National',

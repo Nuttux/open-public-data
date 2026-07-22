@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
+import type { ReactNode } from "react";
 import Link from "next/link";
 import "@/app/fusion.css";
+import Tip from "@/components/fusion/Tip";
 
 import {
   Navbar,
@@ -77,6 +79,54 @@ function tFor(locale: "fr" | "en") {
     }
     return raw;
   };
+}
+
+// Glossaire des acronymes de comptabilité publique — wrappés en tooltip
+// (Tip) sur leur première occurrence, au lieu d'être laissés bruts.
+const GLOSS: Record<"fr" | "en", Record<string, string>> = {
+  fr: {
+    S1311:
+      "Sous-secteur « administration centrale » : budget de l'État, opérateurs (ODAC) et comptes spéciaux.",
+    S13: "Ensemble « administrations publiques » : Sécurité sociale + État central + collectivités locales.",
+    ODAC: "Organismes divers d'administration centrale — opérateurs de l'État (universités, agences…), financés surtout par des fonds publics.",
+    ASSO: "Administrations de sécurité sociale — caisses maladie, retraite, famille, chômage.",
+    APUL: "Administrations publiques locales — communes, intercommunalités, départements, régions.",
+  },
+  en: {
+    S1311:
+      "The 'central government' sub-sector: the State budget, its agencies (ODAC) and special accounts.",
+    S13: "The 'general government' sector: social security + central State + local government.",
+    ODAC: "Central-government agencies — State operators (universities, agencies…), funded mostly from public money.",
+    ASSO: "Social-security administrations — health, pension, family and unemployment funds.",
+    APUL: "Local public administrations — municipalities, inter-municipal bodies, départements, regions.",
+  },
+};
+
+// Wrap known glossary terms (first occurrence, longest-match-first) in a Tip.
+function glossify(text: string, locale: "fr" | "en"): ReactNode {
+  const gloss = GLOSS[locale];
+  const terms = Object.keys(gloss).sort((a, b) => b.length - a.length);
+  const re = new RegExp(`\\b(${terms.join("|")})\\b`, "g");
+  const out: ReactNode[] = [];
+  const seen = new Set<string>();
+  let last = 0;
+  let key = 0;
+  let m: RegExpExecArray | null;
+  while ((m = re.exec(text)) !== null) {
+    const term = m[1];
+    if (seen.has(term)) continue;
+    seen.add(term);
+    if (m.index > last) out.push(text.slice(last, m.index));
+    out.push(
+      <Tip key={key++} label={gloss[term]}>
+        {term}
+      </Tip>,
+    );
+    last = m.index + term.length;
+  }
+  if (out.length === 0) return text;
+  if (last < text.length) out.push(text.slice(last));
+  return out;
 }
 
 function fmtBnEur(amountEur: number, locale: "fr" | "en"): string {
@@ -363,11 +413,11 @@ export default async function FranceBudgetPage({
                 letterSpacing: 0,
               }}
             >
-              {t("budget.hero.amount_caption")}
+              {glossify(t("budget.hero.amount_caption"), locale)}
             </span>
           </p>
           <p className="fx-page-lede" style={{ maxWidth: 820 }}>
-            {t("budget.hero.subtitle", { year: yearRef })}
+            {glossify(t("budget.hero.subtitle", { year: yearRef }), locale)}
           </p>
           <p
             style={{
@@ -587,7 +637,7 @@ export default async function FranceBudgetPage({
             number="05"
             kind={t("budget.section.secu.kind")}
             title={t("budget.section.secu.title")}
-            subtitle={t("budget.section.secu.subtitle")}
+            subtitle={glossify(t("budget.section.secu.subtitle"), locale)}
           />
           <BarRow
             color="secu"
@@ -623,7 +673,7 @@ export default async function FranceBudgetPage({
             number="06"
             kind={t("budget.section.etat.kind")}
             title={t("budget.section.etat.title")}
-            subtitle={t("budget.section.etat.subtitle")}
+            subtitle={glossify(t("budget.section.etat.subtitle"), locale)}
           />
           <MethodNote marginBottom={26} maxWidth={760}>
             {t("budget.section.etat.method_note")}
@@ -963,17 +1013,16 @@ export default async function FranceBudgetPage({
               style={{
                 display: "flex",
                 flexDirection: "column",
-                gap: 36,
-                marginTop: 12,
+                gap: 0,
+                marginTop: 16,
               }}
             >
               {crossCuttingThemes.map((theme, idx) => (
                 <CrossCuttingPanel
                   key={theme.key}
-                  number={`07.${idx + 1}`}
+                  number={`08.${idx + 1}`}
                   theme={theme}
                   locale={locale}
-                  eyebrow={t("budget.cross_cutting.eyebrow_panel")}
                   shareOfTotalLabel={t("budget.cross_cutting.share_of_total")}
                   caveatsLabel={t("budget.cross_cutting.caveats_label")}
                   sourcesLabel={t("budget.cross_cutting.sources_label")}
