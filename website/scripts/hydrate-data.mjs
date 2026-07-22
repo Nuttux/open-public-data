@@ -6,14 +6,19 @@
  * they live in gs://qipu-site-data. This runs at build time (package.json
  * `prebuild`) and can be run manually for local dev (`npm run hydrate:data`).
  *
- * Auth: Application Default Credentials — `gcloud auth application-default
- * login` locally, or GOOGLE_APPLICATION_CREDENTIALS / a service account on the
- * build host (e.g. Vercel env). Without credentials this fails loudly — a fork
- * cannot hydrate, which is the point: self-host is documented, not automatic.
+ * Auth, in priority order:
+ *   1. GCP_SA_KEY_B64 — base64-encoded service-account JSON key. Used on build
+ *      hosts with no filesystem creds (e.g. Vercel env var). Read-only SA on the
+ *      site-data bucket.
+ *   2. Application Default Credentials — `gcloud auth application-default login`
+ *      locally, or GOOGLE_APPLICATION_CREDENTIALS pointing at a key file.
+ * Without any of these it fails loudly — a fork cannot hydrate, which is the
+ * point: self-host is documented, not automatic.
  *
  * Flags/env:
  *   SITE_DATA_BUCKET   (default: qipu-site-data)
  *   SITE_DATA_PREFIX   (default: data)
+ *   GCP_SA_KEY_B64     base64 service-account JSON (build hosts w/o file creds)
  *   --if-missing       skip files already present locally (fast local re-runs)
  */
 import { Storage } from "@google-cloud/storage";
@@ -26,9 +31,19 @@ const PREFIX = process.env.SITE_DATA_PREFIX ?? "data";
 const IF_MISSING = process.argv.includes("--if-missing");
 const PUBLIC_DIR = join(process.cwd(), "public"); // objects `data/…` → public/data/…
 
-const storage = new Storage({
-  projectId: process.env.GCP_PROJECT ?? process.env.BQ_PROJECT ?? "open-data-france-484717",
-});
+// Prefer an explicit SA key from the env (Vercel has no ADC / metadata server);
+// fall back to Application Default Credentials for local dev.
+const projectId = process.env.GCP_PROJECT ?? process.env.BQ_PROJECT ?? "open-data-france-484717";
+let credentials;
+if (process.env.GCP_SA_KEY_B64) {
+  try {
+    credentials = JSON.parse(Buffer.from(process.env.GCP_SA_KEY_B64, "base64").toString("utf8"));
+  } catch (e) {
+    console.error("✗ GCP_SA_KEY_B64 is set but not valid base64-encoded JSON:", e?.message ?? e);
+    process.exit(1);
+  }
+}
+const storage = new Storage(credentials ? { projectId, credentials } : { projectId });
 
 async function exists(p) {
   try {
