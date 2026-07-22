@@ -34,6 +34,7 @@ from collections import defaultdict
 
 sys.path.insert(0, str(Path(__file__).parent))
 from _sankey_common import get_bigquery_client, sankey_nodes_and_links  # noqa: E402
+from _export_common import data_dir, marts_dataset  # noqa: E402
 
 # ─── Fonction imputation (cf. pipeline/scripts/audit/build_fonction_imputation.py) ───
 # Pour les budgets votés (BP 2025+), fonction_libelle est vide → on impute
@@ -120,10 +121,10 @@ def split_fonction(category: str, flow_category: str, current_fonction: str, mon
 PROJECT_ID = "open-data-france-484717"
 DATASET_ID = "dbt_paris"  # Base dataset (staging, intermediate, analytics)
 # Marts dataset can be overridden (e.g. for dev runs against dbt_paris_dev_<user>_marts).
-MARTS_DATASET = os.environ.get("PARIS_MARTS_DATASET", "dbt_paris_marts")
+MARTS_DATASET = marts_dataset()
 RAW_DATASET = "raw"       # Dataset for raw OpenData Paris tables
 TABLE_ID = "ca_budget_principal"  # Main budget table in raw
-OUTPUT_DIR = Path(__file__).parent.parent.parent.parent / "website" / "public" / "data"
+OUTPUT_DIR = data_dir()
 SEEDS_DIR = Path(__file__).parent.parent / "paris-public-open-data" / "seeds"
 
 YEARS = [2026, 2025, 2024, 2023, 2022, 2021, 2020, 2019]
@@ -669,10 +670,18 @@ def export_index(summaries: list[dict]):
 def main():
     """Main entry point."""
     # Import logger
+    import argparse
     import sys
     sys.path.insert(0, str(Path(__file__).parent.parent))
     from utils.logger import Logger
-    
+
+    parser = argparse.ArgumentParser(description="Export Budget Sankey → JSON")
+    parser.add_argument("--city", default="paris")
+    args = parser.parse_args()
+    global OUTPUT_DIR, MARTS_DATASET
+    OUTPUT_DIR = data_dir(args.city)
+    MARTS_DATASET = marts_dataset(args.city)
+
     log = Logger("export_sankey")
     log.header("Export Budget Sankey → JSON")
     

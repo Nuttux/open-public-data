@@ -50,12 +50,13 @@ import sys
 sys.path.insert(0, str(Path(__file__).parent.parent))
 sys.path.insert(0, str(Path(__file__).parent))
 from utils.logger import Logger
-from _export_common import PROJECT_ID, get_bigquery_client, data_dir
+from _export_common import PROJECT_ID, get_bigquery_client, data_dir, marts_dataset
 
 logger = Logger("export_evolution")
 
 # Configuration
 OUTPUT_DIR = data_dir()
+MARTS_DATASET = marts_dataset()
 
 YEARS = [2026, 2025, 2024, 2023, 2022, 2021, 2020, 2019]
 
@@ -166,7 +167,7 @@ def fetch_evolution_data(client: bigquery.Client) -> dict:
         remboursement_principal,
         interets_dette,
         variation_dette_nette
-    FROM `{PROJECT_ID}.dbt_paris_marts.mart_evolution_budget`
+    FROM `{PROJECT_ID}.{MARTS_DATASET}.mart_evolution_budget`
     WHERE annee IN ({','.join(str(y) for y in YEARS)})
     ORDER BY vue, annee, sens_flux, section
     """
@@ -243,7 +244,7 @@ def fetch_revenues_by_source(client: bigquery.Client) -> list:
     years_str = ','.join(str(y) for y in YEARS)
     query = f"""
     SELECT annee, chapitre_code, montant
-    FROM `{PROJECT_ID}.dbt_paris_marts.mart_budget_recettes_par_chapitre`
+    FROM `{PROJECT_ID}.{MARTS_DATASET}.mart_budget_recettes_par_chapitre`
     WHERE annee IN ({years_str})
     ORDER BY annee, chapitre_code
     """
@@ -581,6 +582,14 @@ def save_json(data: dict, filename: str):
 
 def main():
     """Main export function."""
+    import argparse
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--city", default="paris")
+    args = parser.parse_args()
+    global OUTPUT_DIR, MARTS_DATASET
+    OUTPUT_DIR = data_dir(args.city)
+    MARTS_DATASET = marts_dataset(args.city)
+
     logger.info("=" * 60)
     logger.info("Export Evolution Budget Data")
     logger.info("=" * 60)

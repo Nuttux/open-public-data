@@ -26,16 +26,25 @@ from pathlib import Path
 
 from google.cloud import bigquery
 
+import sys
+sys.path.insert(0, str(Path(__file__).parent))
+from _export_common import get_bigquery_client, data_dir, marts_dataset
+
 PROJECT_ID = "open-data-france-484717"
-DATASET = "dbt_paris_marts"
-OUTPUT_PATH = (
-    Path(__file__).parent.parent.parent.parent
-    / "website" / "public" / "data" / "logement_attente_paris.json"
-)
+DATASET = marts_dataset()
+OUTPUT_PATH = data_dir() / "logement_attente_paris.json"
 
 
 def main():
-    c = bigquery.Client(project=PROJECT_ID)
+    import argparse
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--city", default="paris")
+    args = parser.parse_args()
+    global OUTPUT_PATH, DATASET
+    OUTPUT_PATH = data_dir(args.city) / "logement_attente_paris.json"
+    DATASET = marts_dataset(args.city)
+
+    c = get_bigquery_client()
     q = f"""
     SELECT * FROM `{PROJECT_ID}.{DATASET}.mart_logement_attente`
     ORDER BY scope DESC, arrondissement ASC

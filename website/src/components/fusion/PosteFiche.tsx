@@ -181,7 +181,9 @@ function groupSubPostes(poste: BudgetPosteFiche): { groups: Group[]; mode: "fonc
 export default function PosteFiche({ poste }: Props) {
   const t = useT();
   const { locale } = useLocale();
-  const fmtEur = makeFmtEur(locale);
+  // Recife added 'pt' to Locale; these FR helpers are fr/en-only (never see pt).
+  const flocale: "fr" | "en" = locale === "en" ? "en" : "fr";
+  const fmtEur = makeFmtEur(flocale);
   const kindLabel = poste.kind === "depense" ? t("fx.poste.kind.depense") : t("fx.poste.kind.recette");
   const maxSub = poste.subPostes[0]?.value || 1;
 
@@ -203,14 +205,14 @@ export default function PosteFiche({ poste }: Props) {
         </div>
         <div>
           <div className="k">{poste.kind === "depense" ? t("fx.poste.share.depenses") : t("fx.poste.share.recettes")}</div>
-          <div className="v tnum">{fmtDec(poste.shareOfKindPct, 1, locale)} %</div>
+          <div className="v tnum">{fmtDec(poste.shareOfKindPct, 1, flocale)} %</div>
         </div>
         <div>
           <div className="k">{fill(t("fx.poste.vs_year"), { year: poste.previousYear })}</div>
           <div className="v tnum">
             {poste.deltaPct === null
               ? "—"
-              : `${poste.deltaPct >= 0 ? "+" : "−"} ${fmtDec(Math.abs(poste.deltaPct), 1, locale)} %`}
+              : `${poste.deltaPct >= 0 ? "+" : "−"} ${fmtDec(Math.abs(poste.deltaPct), 1, flocale)} %`}
           </div>
         </div>
       </div>
@@ -228,7 +230,7 @@ export default function PosteFiche({ poste }: Props) {
           const body = (
             <ul>
               {g.items.map((it) => {
-                const flowShort = shortFlow(it.flow, locale);
+                const flowShort = shortFlow(it.flow, flocale);
                 const lblTitle = it.original
                   ? (locale === "en"
                       ? `Original label (M57): ${it.original}`

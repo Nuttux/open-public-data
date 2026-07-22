@@ -66,6 +66,19 @@
       "path": "/us/city/sf",
       "modules": [],
       "status": "wip"
+    },
+    {
+      "slug": "recife",
+      "country": "br",
+      "level": "city",
+      "name": "Recife",
+      "schemaFamily": "br-municipal",
+      "locale": "pt",
+      "currency": "BRL",
+      "dataNamespace": "br/recife",
+      "path": "/br/city/recife",
+      "modules": ["budget", "quem-recebe", "contratos"],
+      "status": "wip"
     }
   ]
 }

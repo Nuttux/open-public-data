@@ -1,9 +1,9 @@
 # ADR-0011 — Budget convergence: shared logic, not a shared table
 
 Status: accepted (2026-07-21)
-Supersedes the informal "P2.1" note in `models/core/schema.yml` /
-`core_budget.sql:72-73` ("core fusionnera dans core_budget global via UNION ALL
-discriminé par commune_slug").
+Supersedes the informal "P2.1" note (the `commune_slug` constant in
+`core_budget.sql` and `models/core/schema.yml`: "core fusionnera dans
+core_budget global via UNION ALL discriminé par commune_slug").
 
 ## Context
 
@@ -57,10 +57,13 @@ Converge the budget domain by **sharing logic, not tables**:
 
 - **Extract the duplicated France budget SQL into dbt macros** (country-scoped,
   under `macros/`): the `ode_categorie_flux` CASE (byte-identical across
-  `core_budget`, `core_budget_vote`, and `mart_marseille_budget_sankey_lines`),
-  the `ode_thematique` chapter map, and the `thematique_best_match` CTE
-  (byte-identical across the two Paris core models). These are pure text
-  extractions with output verified byte-identical.
+  `core_budget`, `core_budget_vote`, and `mart_marseille_budget_sankey_lines`)
+  and the `thematique_best_match` CTE (byte-identical across the two Paris core
+  models). These are pure text extractions with output verified byte-identical.
+  The `ode_thematique` chapter map is deliberately left INLINE, not extracted:
+  the CA (`core_budget`) and BP (`core_budget_vote`) chapter maps genuinely
+  differ (BP carries chapters 9305/9343/9344 that CA lacks), so a shared macro
+  would be incorrect.
 - **Keep the exhaustive tier's models city/source-shaped.** Paris and Marseille
   budgets stay separate models because their source granularity differs; they
   now share the extracted macros instead of copy-pasted CASE blocks.

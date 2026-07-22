@@ -11,6 +11,11 @@
     dev   dbt_paris_dev_local + 'us_staging' → dbt_us_dev_local_staging
     ci    dbt_paris_ci_42     + 'us_staging' → dbt_us_ci_42_staging
 
+  Custom schemas prefixed 'br_' land in the mirrored dbt_br_* family
+  (Recife — br-municipal), same dev/ci/prod isolation:
+    prod  dbt_paris           + 'br_staging' → dbt_br_staging
+    dev   dbt_paris_dev_local + 'br_staging' → dbt_br_dev_local_staging
+
   Any target.schema that does not carry the dbt_paris base falls back to
   the stock behaviour (no silent surprises on exotic targets).
 #}
@@ -20,6 +25,8 @@
         {{ default_schema }}
     {%- elif custom_schema_name.strip().startswith('us_') and 'dbt_paris' in default_schema -%}
         {{ default_schema | replace('dbt_paris', 'dbt_us') }}_{{ custom_schema_name.strip()[3:] }}
+    {%- elif custom_schema_name.strip().startswith('br_') and 'dbt_paris' in default_schema -%}
+        {{ default_schema | replace('dbt_paris', 'dbt_br') }}_{{ custom_schema_name.strip()[3:] }}
     {%- else -%}
         {{ default_schema }}_{{ custom_schema_name | trim }}
     {%- endif -%}

@@ -3,6 +3,15 @@
 > Dernière mise à jour : 2026-05-21
 >
 > Voir aussi : [`data-quality.md`](./data-quality.md) pour les limites, observations et règles de qualité.
+>
+> ⚠️ **Ce document précède les ADR multi-pays (2026-07) et décrit encore une
+> architecture France-seule.** Pour l'architecture multi-villes / multi-pays qui
+> fait foi aujourd'hui, voir : [ADR-0010 — multi-country architecture](./decisions/0010-multi-country-architecture.md)
+> (familles de schémas par pays, contrats partagés — export envelope + design
+> primitives —, **pas** de schéma canonique transverse), [ADR-0011 — budget
+> convergence](./decisions/0011-budget-convergence.md) (logique partagée via
+> macros, pas d'UNION), et le playbook [`ADDING-A-PLACE.md`](../ADDING-A-PLACE.md).
+> Les sections 7 (Multi-collectivités) et 8 sont à réécrire dans ce cadre.
 
 ## Table des matières
 
@@ -28,6 +37,7 @@ Couverture actuelle :
 - **Paris** : budget M57, marchés publics (Paris + DECP nationale), subventions, investissements géolocalisés, logements sociaux, bilan comptable, dette garantie (hors-bilan), délibérations
 - **Marseille** : budget M57 (PoC v1)
 - **National** : DECP, INSEE SIRENE, OFGL, DRIHL, DGFiP
+- **San Francisco (US)** : famille de schéma distincte (`us-municipal`), pipeline et modèles parallèles (`models/us/`, `dbt_us_*`) — jamais fusionnée au schéma français (cf. ADR-0010)
 
 ### 1.2 Principes architecturaux
 

@@ -27,14 +27,13 @@ from pathlib import Path
 from google.cloud import bigquery
 
 sys.path.insert(0, str(Path(__file__).parent.parent))
+sys.path.insert(0, str(Path(__file__).parent))
 from utils.logger import Logger
+from _export_common import get_bigquery_client, data_dir, marts_dataset
 
 PROJECT_ID = "open-data-france-484717"
-MARTS_DATASET = "dbt_paris_marts"
-OUTPUT_DIR = (
-    Path(__file__).parent.parent.parent.parent
-    / "website" / "public" / "data" / "subventions_delibs"
-)
+MARTS_DATASET = marts_dataset()
+OUTPUT_DIR = data_dir() / "subventions_delibs"
 
 
 def fetch_rows(client: bigquery.Client) -> list[dict]:
@@ -98,12 +97,17 @@ def build_session_payload(session_id: int, rows: list[dict]) -> dict:
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--session", type=int)
+    parser.add_argument("--city", default="paris")
     args = parser.parse_args()
+
+    global OUTPUT_DIR, MARTS_DATASET
+    OUTPUT_DIR = data_dir(args.city) / "subventions_delibs"
+    MARTS_DATASET = marts_dataset(args.city)
 
     logger = Logger("export_deliberations")
     logger.header("Export Conseil de Paris deliberations")
 
-    client = bigquery.Client(project=PROJECT_ID)
+    client = get_bigquery_client()
     rows = fetch_rows(client)
     by_session: dict[int, list[dict]] = defaultdict(list)
     for r in rows:

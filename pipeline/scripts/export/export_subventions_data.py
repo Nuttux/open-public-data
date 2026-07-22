@@ -25,13 +25,17 @@ from pathlib import Path
 from datetime import datetime
 from google.cloud import bigquery
 
+import sys
+sys.path.insert(0, str(Path(__file__).parent))
+from _export_common import get_bigquery_client, data_dir, marts_dataset
+
 # Configuration
 PROJECT_ID = "open-data-france-484717"
-# Dataset des marts. Par défaut prod ; override possible via env DBT_MARTS_DATASET
+# Dataset des marts. Par défaut prod ; override possible via env PARIS_MARTS_DATASET
 # ou flag --dataset pour exporter depuis un schema dev/ci (ex. validation locale
 # d'un changement de pipeline avant que prod soit reconstruit).
-DATASET = os.environ.get("DBT_MARTS_DATASET", "dbt_paris_marts")
-OUTPUT_DIR = Path(__file__).parent.parent.parent.parent / "website" / "public" / "data" / "subventions"
+DATASET = marts_dataset()
+OUTPUT_DIR = data_dir() / "subventions"
 
 
 def fetch_treemap_data(client: bigquery.Client, year: int = None) -> list:
@@ -487,17 +491,20 @@ def main():
     sys.path.insert(0, str(Path(__file__).parent.parent))
     from utils.logger import Logger
 
-    global DATASET
+    global DATASET, OUTPUT_DIR
 
     parser = argparse.ArgumentParser(description="Export données subventions depuis dbt")
     parser.add_argument('--year', type=int, help="Année spécifique (sinon toutes)")
     parser.add_argument('--limit', type=int, default=None,
                        help="Cap top-N par année (défaut: aucun, tous les bénéficiaires)")
+    parser.add_argument('--city', default='paris')
     parser.add_argument('--dataset', type=str, default=None,
                        help=f"Dataset BQ des marts (défaut: {DATASET}). "
-                            f"Override via env DBT_MARTS_DATASET aussi.")
+                            f"Override via env PARIS_MARTS_DATASET aussi.")
     args = parser.parse_args()
 
+    OUTPUT_DIR = data_dir(args.city) / "subventions"
+    DATASET = marts_dataset(args.city)
     if args.dataset:
         DATASET = args.dataset
     
@@ -510,7 +517,7 @@ def main():
     
     # Client BigQuery
     log.section("Connexion BigQuery")
-    client = bigquery.Client(project=PROJECT_ID)
+    client = get_bigquery_client()
     log.success("Connecté", extra=PROJECT_ID)
     
     # Index

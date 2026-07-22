@@ -26,14 +26,13 @@ from pathlib import Path
 from google.cloud import bigquery
 
 sys.path.insert(0, str(Path(__file__).parent.parent))
+sys.path.insert(0, str(Path(__file__).parent))
 from utils.logger import Logger
+from _export_common import get_bigquery_client, data_dir, marts_dataset
 
 PROJECT_ID = "open-data-france-484717"
-MARTS_DATASET = "dbt_paris_marts"
-OUTPUT_DIR = (
-    Path(__file__).parent.parent.parent.parent
-    / "website" / "public" / "data" / "map"
-)
+MARTS_DATASET = marts_dataset()
+OUTPUT_DIR = data_dir() / "map"
 
 
 def fetch_rows(client: bigquery.Client) -> list[dict]:
@@ -137,12 +136,17 @@ def write_index(years: list[int], year_summaries: dict[int, dict], logger: Logge
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--year", type=int)
+    parser.add_argument("--city", default="paris")
     args = parser.parse_args()
+
+    global OUTPUT_DIR, MARTS_DATASET
+    OUTPUT_DIR = data_dir(args.city) / "map"
+    MARTS_DATASET = marts_dataset(args.city)
 
     logger = Logger("export_investissements_localises")
     logger.header("Export investissements localisés (Annexe IL PDF)")
 
-    client = bigquery.Client(project=PROJECT_ID)
+    client = get_bigquery_client()
     rows = fetch_rows(client)
     by_year = defaultdict(list)
     for r in rows:

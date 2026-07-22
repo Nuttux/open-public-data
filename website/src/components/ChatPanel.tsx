@@ -621,7 +621,7 @@ function ChatPanelInner() {
                             className="text-[11px] text-neutral-500 italic truncate"
                             title={toolRaw(t.name, t.input)}
                           >
-                            <span className="not-italic text-[#e11d1d]">→</span> {toolLabel(t.name, t.input, locale)}
+                            <span className="not-italic text-[#e11d1d]">→</span> {toolLabel(t.name, t.input, locale === "en" ? "en" : "fr")}
                             {loading && i === messages.length - 1 && j === (m.tools?.length ?? 0) - 1 && !m.content ? "…" : ""}
                           </div>
                         ))}
@@ -754,5 +754,7 @@ function ChatPanelInner() {
 export default function ChatPanel() {
   const pathname = usePathname() ?? "/";
   if (pathname === "/us" || pathname.startsWith("/us/")) return null;
+  // Recife (br) is Portuguese and not wired to the Paris chat corpus — hide it.
+  if (pathname === "/br" || pathname.startsWith("/br/")) return null;
   return <ChatPanelInner />;
 }

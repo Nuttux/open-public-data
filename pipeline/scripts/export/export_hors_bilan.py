@@ -28,14 +28,16 @@ import pandas as pd
 from google.cloud import bigquery
 
 sys.path.insert(0, str(Path(__file__).parent.parent))
+sys.path.insert(0, str(Path(__file__).parent))
 from utils.logger import Logger
+from _export_common import get_bigquery_client, data_dir, marts_dataset
 
 PROJECT_ID = "open-data-france-484717"
-MARTS_DATASET = "dbt_paris_marts"
+MARTS_DATASET = marts_dataset()
 # mart_logement_financement (chaîne de financement emprunt → programme). Surchargé
 # par MLF_DATASET pour tester en local avant que le mart n'existe en prod.
 MLF_DATASET = os.environ.get("MLF_DATASET", MARTS_DATASET)
-DATA_DIR = Path(__file__).parent.parent.parent.parent / "website" / "public" / "data"
+DATA_DIR = data_dir()
 
 DEFAULT_YEARS = [2019, 2020, 2021, 2022, 2023, 2024]
 TOP_BENEFICIAIRES = 20
@@ -455,12 +457,18 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--year", type=int)
     parser.add_argument("--all-years", action="store_true")
+    parser.add_argument("--city", default="paris")
     args = parser.parse_args()
+
+    global DATA_DIR, MARTS_DATASET, MLF_DATASET
+    DATA_DIR = data_dir(args.city)
+    MARTS_DATASET = marts_dataset(args.city)
+    MLF_DATASET = os.environ.get("MLF_DATASET", MARTS_DATASET)
 
     logger = Logger("export_hors_bilan")
     logger.header("Export hors bilan · garanties d'emprunt Paris")
 
-    client = bigquery.Client(project=PROJECT_ID)
+    client = get_bigquery_client()
 
     if args.year:
         years = [args.year]

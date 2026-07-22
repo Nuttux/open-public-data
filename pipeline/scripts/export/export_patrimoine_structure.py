@@ -26,11 +26,13 @@ from pathlib import Path
 from google.cloud import bigquery
 
 sys.path.insert(0, str(Path(__file__).parent.parent))
+sys.path.insert(0, str(Path(__file__).parent))
 from utils.logger import Logger
+from _export_common import get_bigquery_client, data_dir, marts_dataset
 
 PROJECT_ID = "open-data-france-484717"
-MARTS_DATASET = "dbt_paris_marts"
-DATA_DIR = Path(__file__).parent.parent.parent.parent / "website" / "public" / "data"
+MARTS_DATASET = marts_dataset()
+DATA_DIR = data_dir()
 
 
 # =============================================================================
@@ -455,12 +457,17 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--year", type=int, help="Exercice à traiter")
     parser.add_argument("--all-years", action="store_true", help="Traiter tous les exercices disponibles")
+    parser.add_argument("--city", default="paris")
     args = parser.parse_args()
+
+    global DATA_DIR, MARTS_DATASET
+    DATA_DIR = data_dir(args.city)
+    MARTS_DATASET = marts_dataset(args.city)
 
     logger = Logger("export_patrimoine_structure")
     logger.header("Export structure dette + patrimoine")
 
-    client = bigquery.Client(project=PROJECT_ID)
+    client = get_bigquery_client()
 
     if args.all_years or (not args.year):
         years_q = f"SELECT DISTINCT annee FROM `{PROJECT_ID}.{MARTS_DATASET}.mart_bilan_comptable` ORDER BY annee"

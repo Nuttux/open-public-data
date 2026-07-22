@@ -19,10 +19,14 @@ from pathlib import Path
 from collections import defaultdict
 from google.cloud import bigquery
 
+import sys
+sys.path.insert(0, str(Path(__file__).parent))
+from _export_common import get_bigquery_client, data_dir, marts_dataset
+
 # Configuration
 PROJECT_ID = "open-data-france-484717"
-MARTS_DATASET = "dbt_paris_marts"
-OUTPUT_DIR = Path(__file__).parent.parent.parent.parent / "website" / "public" / "data" / "map"
+MARTS_DATASET = marts_dataset()
+OUTPUT_DIR = data_dir() / "map"
 
 # Population par arrondissement (INSEE 2021)
 POPULATION = {
@@ -53,7 +57,7 @@ MISSION_THEMATIQUE = {
 
 def get_client():
     """Crée un client BigQuery."""
-    return bigquery.Client(project=PROJECT_ID)
+    return get_bigquery_client()
 
 
 def export_investissements(client):
@@ -381,10 +385,18 @@ def export_stats_arrondissements(client, investissements_by_year, logements_by_y
 
 def main():
     """Point d'entrée principal."""
+    import argparse
     import sys
     sys.path.insert(0, str(Path(__file__).parent.parent))
     from utils.logger import Logger
-    
+
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--city", default="paris")
+    args = parser.parse_args()
+    global OUTPUT_DIR, MARTS_DATASET
+    OUTPUT_DIR = data_dir(args.city) / "map"
+    MARTS_DATASET = marts_dataset(args.city)
+
     log = Logger("export_map")
     log.header("Export Données Carte → JSON")
     

@@ -27,12 +27,14 @@ from google.cloud import bigquery
 
 # Ajouter le chemin pour les utils
 sys.path.insert(0, str(Path(__file__).parent.parent))
+sys.path.insert(0, str(Path(__file__).parent))
 from utils.logger import Logger
+from _export_common import get_bigquery_client, data_dir, marts_dataset
 
 # Configuration
 PROJECT_ID = "open-data-france-484717"
-DATASET = "dbt_paris_marts"
-OUTPUT_DIR = Path(__file__).parent.parent.parent.parent / "website" / "public" / "data"
+DATASET = marts_dataset()
+OUTPUT_DIR = data_dir()
 
 
 def fetch_bilan_data(client: bigquery.Client, year: int = None) -> list:
@@ -277,8 +279,13 @@ def main():
     """Point d'entrée principal."""
     parser = argparse.ArgumentParser(description="Export données bilan comptable depuis dbt")
     parser.add_argument('--year', type=int, help="Année spécifique (sinon toutes)")
+    parser.add_argument('--city', default='paris')
     args = parser.parse_args()
-    
+
+    global OUTPUT_DIR, DATASET
+    OUTPUT_DIR = data_dir(args.city)
+    DATASET = marts_dataset(args.city)
+
     log = Logger("export_bilan")
     log.header("Export Bilan Comptable → JSON")
     
@@ -288,7 +295,7 @@ def main():
     
     # Client BigQuery
     log.section("Connexion BigQuery")
-    client = bigquery.Client(project=PROJECT_ID)
+    client = get_bigquery_client()
     log.success("Connecté", extra=PROJECT_ID)
     
     # Récupérer les années disponibles

@@ -251,6 +251,8 @@ function withProfile(href: string, profileQuery?: string): string {
 export default function BudgetDrilldownFiche(props: Props) {
   const t = useT();
   const { locale } = useLocale();
+  // Recife added 'pt' to Locale; these FR helpers are fr/en-only (never see pt).
+  const flocale: "fr" | "en" = locale === "en" ? "en" : "fr";
   const { bucket, bucketKey, isStub, amounts, breadcrumb, profileQuery } =
     props;
   const basePath = props.basePath ?? "/fr/national/daily-bread";
@@ -343,7 +345,7 @@ export default function BudgetDrilldownFiche(props: Props) {
           const sp = props as ScopeOverviewProps;
           return renderScopeOverview({
             t,
-            locale,
+            locale: flocale,
             scope: mode.scope,
             scopeLabel: sp.scopeLabel,
             level2List: mode.level2List,
@@ -359,7 +361,7 @@ export default function BudgetDrilldownFiche(props: Props) {
         if (mode.kind === "aggregation") {
           return renderAggregation({
             t,
-            locale,
+            locale: flocale,
             bucketKey,
             bucketLabel,
             aggregation: mode.aggregation,
@@ -549,7 +551,7 @@ export default function BudgetDrilldownFiche(props: Props) {
                         : null;
                     const childAnnualLabel =
                       childAnnualEur !== null && childAnnualEur > 0
-                        ? fmtAnnualCompactClient(childAnnualEur, locale)
+                        ? fmtAnnualCompactClient(childAnnualEur, flocale)
                         : null;
                     return (
                       <li key={child.key}>
@@ -576,7 +578,7 @@ export default function BudgetDrilldownFiche(props: Props) {
                             childMonthly !== null &&
                             childMonthly > 0 && (
                               <span className="db-fiche-child-monthly tnum">
-                                {fmtMonthly(childMonthly, locale)}{" "}
+                                {fmtMonthly(childMonthly, flocale)}{" "}
                                 €/{locale === "en" ? "mo" : "mois"}
                               </span>
                             )}

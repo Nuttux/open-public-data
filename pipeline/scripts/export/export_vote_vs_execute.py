@@ -418,6 +418,14 @@ def save_json(data: dict, filename: str):
 
 def main():
     """Main export function."""
+    import argparse
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--city", default="paris")
+    args = parser.parse_args()
+    global OUTPUT_DIR, MART_DATASET
+    OUTPUT_DIR = data_dir(args.city)
+    MART_DATASET = marts_dataset(args.city)
+
     logger.header("Export Vote vs Execute Data")
 
     try:

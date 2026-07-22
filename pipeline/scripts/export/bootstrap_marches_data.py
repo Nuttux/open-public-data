@@ -17,7 +17,11 @@ from typing import Optional, Dict, List
 from urllib.request import urlopen, Request
 from urllib.parse import urlencode
 
-OUTPUT_DIR = Path(__file__).parent.parent.parent.parent / "website" / "public" / "data" / "marches-publics"
+import sys
+sys.path.insert(0, str(Path(__file__).parent))
+from _export_common import data_dir
+
+OUTPUT_DIR = data_dir() / "marches-publics"
 
 API_BASE = "https://opendata.paris.fr/api/explore/v2.1/catalog/datasets/liste-des-marches-de-la-collectivite-parisienne/records"
 
@@ -165,6 +169,13 @@ def build_tendances(all_marches: Dict[int, List]) -> dict:
 
 
 def main():
+    import argparse
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--city", default="paris")
+    args = parser.parse_args()
+    global OUTPUT_DIR
+    OUTPUT_DIR = data_dir(args.city) / "marches-publics"
+
     print("=" * 60)
     print("  Bootstrap Marchés Publics — API OpenData Paris → JSON")
     print("=" * 60)

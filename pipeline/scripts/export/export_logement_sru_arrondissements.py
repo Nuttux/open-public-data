@@ -9,26 +9,35 @@ Le millésime 2019 est la dernière ventilation par arrondissement publiée
 en open data ; le taux communal officiel plus récent (data.gouv,
 inventaire SRU) n'est pas ventilé infra-commune.
 
-Dataset override (dev) : DBT_MARTS_DATASET=dbt_paris_dev_<user>_marts
+Dataset override (dev) : PARIS_MARTS_DATASET=dbt_paris_dev_<user>_marts
 """
 
 import json
 import os
+import sys
 from datetime import datetime, timezone
 from pathlib import Path
 
 from google.cloud import bigquery
 
+sys.path.insert(0, str(Path(__file__).parent))
+from _export_common import get_bigquery_client, data_dir, marts_dataset
+
 PROJECT_ID = os.environ.get("BQ_PROJECT", "open-data-france-484717")
-DATASET = os.environ.get("DBT_MARTS_DATASET", "dbt_paris_marts")
-OUTPUT_PATH = (
-    Path(__file__).parent.parent.parent.parent
-    / "website" / "public" / "data" / "logement_sru_arrondissements.json"
-)
+DATASET = marts_dataset()
+OUTPUT_PATH = data_dir() / "logement_sru_arrondissements.json"
 
 
 def main():
-    c = bigquery.Client(project=PROJECT_ID)
+    import argparse
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--city", default="paris")
+    args = parser.parse_args()
+    global OUTPUT_PATH, DATASET
+    OUTPUT_PATH = data_dir(args.city) / "logement_sru_arrondissements.json"
+    DATASET = marts_dataset(args.city)
+
+    c = get_bigquery_client(PROJECT_ID)
     q = f"""
     SELECT arrondissement, label, annee, logements_sociaux,
            residences_principales, taux_sru_pct, source, source_url, licence

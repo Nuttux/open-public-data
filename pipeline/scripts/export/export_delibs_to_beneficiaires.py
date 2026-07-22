@@ -24,9 +24,13 @@ from collections import Counter, defaultdict
 from datetime import datetime
 from pathlib import Path
 
+import sys
+sys.path.insert(0, str(Path(__file__).parent))
+from _export_common import data_dir
+
 ROOT = Path(__file__).resolve().parents[3]
 DELIBS_DIR = ROOT / "website" / "public" / "data" / "subventions_delibs"
-OUTPUT_DIR = ROOT / "website" / "public" / "data" / "subventions"
+OUTPUT_DIR = data_dir() / "subventions"
 SIRENE_CACHE = ROOT / "website" / "public" / "data" / "enrichment" / "deliberations_sirene.json"
 
 JUNK_BENEF_PATTERNS = [
@@ -362,7 +366,11 @@ def main() -> None:
     ap.add_argument("--year", type=int, required=True)
     ap.add_argument("--update-index", action="store_true",
                     help="Also add the year to subventions/index.json as previewYears.")
+    ap.add_argument("--city", default="paris")
     args = ap.parse_args()
+
+    global OUTPUT_DIR
+    OUTPUT_DIR = data_dir(args.city) / "subventions"
 
     payload = aggregate(args.year)
     path = write_beneficiaires(args.year, payload)

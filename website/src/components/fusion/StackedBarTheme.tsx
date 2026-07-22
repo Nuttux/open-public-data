@@ -30,6 +30,9 @@ type Props = {
   /** Custom URL builder per theme — défaut: `${basePath}?theme=X`. Utile pour ouvrir
    *  un drawer (ex: /investissements/chapitre/:slug) au lieu d'un filtre query. */
   hrefBuilder?: (theme: string) => string;
+  /** Override the money formatter (default: EUR). Additive — pass a currency-
+   *  specific formatter for non-euro places (e.g. BRL for Recife). */
+  formatAmount?: (n: number) => string;
 };
 
 // Editorial palette — 10 clear, distinct hues, colorblind-conscious.
@@ -87,6 +90,7 @@ export default function StackedBarTheme({
   paretoContrast,
   paretoTopN = 10,
   hrefBuilder,
+  formatAmount,
 }: Props) {
   const t = useT();
   const { locale } = useLocale();
@@ -102,6 +106,7 @@ export default function StackedBarTheme({
     if (n >= 1e3) return `${Math.round(n / 1e3).toLocaleString(locStr)} k €`;
     return `${n.toLocaleString(locStr)} €`;
   };
+  const fmtAmt = formatAmount ?? fmtEur;
   const effEntityNoun = entityNoun ?? t("fx.stacked.entity_default");
   const buildHref = (theme: string) =>
     hrefBuilder ? hrefBuilder(theme) : `${basePath}?theme=${encodeURIComponent(theme)}`;
@@ -147,8 +152,8 @@ export default function StackedBarTheme({
                 scroll={false}
                 className="fx-stackbar-seg"
                 style={{ width: `${pct}%`, background: colorFor(s.theme, idx) }}
-                title={fill(t("fx.stacked.seg_detail"), { theme: trLabel(s.theme, locale), amount: fmtEur(s.amount), pct: pct.toFixed(1).replace(".", sep) })}
-                aria-label={fill(t("fx.stacked.seg_aria"), { theme: trLabel(s.theme, locale), amount: fmtEur(s.amount), pct: Math.round(pct) })}
+                title={fill(t("fx.stacked.seg_detail"), { theme: trLabel(s.theme, locale), amount: fmtAmt(s.amount), pct: pct.toFixed(1).replace(".", sep) })}
+                aria-label={fill(t("fx.stacked.seg_aria"), { theme: trLabel(s.theme, locale), amount: fmtAmt(s.amount), pct: Math.round(pct) })}
                 onClick={() =>
                   track("chart_element_click", {
                     chart: "stackedbar_seg",
@@ -213,7 +218,7 @@ export default function StackedBarTheme({
                     <span className="sw" style={{ background: colorFor(s.theme, idx) }} />
                     <span className="nm">{trLabel(s.theme, locale)}</span>
                     <span className="pc">{pct >= 1 ? `${Math.round(pct)} %` : `< 1 %`}</span>
-                    <span className="am">{fmtEur(s.amount)}</span>
+                    <span className="am">{fmtAmt(s.amount)}</span>
                   </Link>
                 </li>
               );

@@ -20,14 +20,14 @@ export type PlaceModule = {
 
 export type Place = {
   slug: string;
-  country: "fr" | "us";
+  country: "fr" | "us" | "br";
   scale: "national" | "city";
   /** Route prefix, e.g. "/us/city/sf". */
   path: string;
   labelKey: string;
-  schemaFamily: "fr-commune" | "fr-national" | "us-federal" | "us-municipal";
-  defaultLocale: "fr" | "en";
-  currency: "EUR" | "USD";
+  schemaFamily: "fr-commune" | "fr-national" | "us-federal" | "us-municipal" | "br-municipal";
+  defaultLocale: "fr" | "en" | "pt";
+  currency: "EUR" | "USD" | "BRL";
   /** Export namespace under public/data/. */
   dataNamespace: string;
   /** Does `path` itself render a page? (SF hub ships in Block 5.) */
@@ -69,6 +69,23 @@ export const PLACES: Place[] = [
       { slug: "sources", labelKey: "us.sf.nav.sources" },
     ],
   },
+  {
+    slug: "recife",
+    country: "br",
+    scale: "city",
+    path: "/br/city/recife",
+    labelKey: "br.chrome.nav.recife",
+    schemaFamily: "br-municipal",
+    defaultLocale: "pt",
+    currency: "BRL",
+    dataNamespace: "br/recife",
+    hub: false,
+    modules: [
+      { slug: "budget", labelKey: "br.recife.nav.budget" },
+      { slug: "quem-recebe", labelKey: "br.recife.nav.quem_recebe" },
+      { slug: "contratos", labelKey: "br.recife.nav.contratos" },
+    ],
+  },
 ];
 
 /**
@@ -83,4 +100,13 @@ export function placeHref(p: Place): string | null {
 
 export function usPlaces(): Place[] {
   return PLACES.filter((p) => p.country === "us");
+}
+
+export function brPlaces(): Place[] {
+  return PLACES.filter((p) => p.country === "br");
+}
+
+/** Registry-driven chrome selector — one chrome serves any country. */
+export function placesForCountry(country: Place["country"]): Place[] {
+  return PLACES.filter((p) => p.country === country);
 }

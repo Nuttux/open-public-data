@@ -24,10 +24,14 @@ from pathlib import Path
 from datetime import datetime
 from google.cloud import bigquery
 
+import sys
+sys.path.insert(0, str(Path(__file__).parent))
+from _export_common import get_bigquery_client, data_dir, marts_dataset
+
 # Configuration
 PROJECT_ID = "open-data-france-484717"
-DATASET = "dbt_paris_marts"
-OUTPUT_DIR = Path(__file__).parent.parent.parent.parent / "website" / "public" / "data" / "marches-publics"
+DATASET = marts_dataset()
+OUTPUT_DIR = data_dir() / "marches-publics"
 
 # Top N catégories à garder (le reste → "Autres")
 TOP_CATEGORIES = 12
@@ -282,7 +286,12 @@ def main():
 
     parser = argparse.ArgumentParser(description="Export données marchés publics depuis dbt")
     parser.add_argument('--year', type=int, help="Année spécifique (sinon toutes)")
+    parser.add_argument('--city', default='paris')
     args = parser.parse_args()
+
+    global OUTPUT_DIR, DATASET
+    OUTPUT_DIR = data_dir(args.city) / "marches-publics"
+    DATASET = marts_dataset(args.city)
 
     log = Logger("export_marches")
     log.header("Export Marchés Publics → JSON")
@@ -291,7 +300,7 @@ def main():
     OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
 
     log.section("Connexion BigQuery")
-    client = bigquery.Client(project=PROJECT_ID)
+    client = get_bigquery_client()
     log.success("Connecté", extra=PROJECT_ID)
 
     log.section("Génération de l'index")

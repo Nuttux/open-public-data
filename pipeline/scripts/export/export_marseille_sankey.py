@@ -30,13 +30,14 @@ sys.path.insert(0, str(PIPELINE_ROOT / "scripts"))
 sys.path.insert(0, str(Path(__file__).parent))
 from utils.logger import Logger  # noqa: E402
 from _sankey_common import get_bigquery_client, sankey_nodes_and_links  # noqa: E402
+from _export_common import data_dir  # noqa: E402
 
 PROJECT_ID = "open-data-france-484717"
 # Marts dataset can be overridden (e.g. for dev runs against
 # `dbt_paris_dev_<user>_marts`). Same env var as Paris export.
 _MARTS_DATASET = os.environ.get("PARIS_MARTS_DATASET", "dbt_paris_marts")
 MART_TABLE = f"{_MARTS_DATASET}.mart_marseille_budget_sankey_lines"
-OUTPUT_DIR = PIPELINE_ROOT.parent / "website" / "public" / "data" / "marseille"
+OUTPUT_DIR = data_dir("marseille")
 
 CITY_LABEL = "Marseille"
 CENTRAL_NODE_NAME = f"Budget {CITY_LABEL}"

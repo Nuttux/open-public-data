@@ -26,13 +26,17 @@ Usage : python pipeline/scripts/export/export_ap_operations.py
 from __future__ import annotations
 
 import json
+import sys
 from collections import defaultdict
 from datetime import datetime, timezone
 from pathlib import Path
 
+sys.path.insert(0, str(Path(__file__).parent))
+from _export_common import data_dir
+
 ROOT = Path(__file__).resolve().parents[3]
 RAW = ROOT / "pipeline" / "cache" / "ap_cp" / "ap_cp_raw.jsonl"
-OUT = ROOT / "website" / "public" / "data" / "ca" / "ap_operations.json"
+OUT = data_dir() / "ca" / "ap_operations.json"
 DATASET = "comptes-administratifs-autorisations-de-programmes-ap-ville-departement"
 
 
@@ -103,6 +107,13 @@ def mart(rows: list[dict]) -> list[dict]:
 
 
 def main() -> int:
+    import argparse
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--city", default="paris")
+    args = parser.parse_args()
+    global OUT
+    OUT = data_dir(args.city) / "ca" / "ap_operations.json"
+
     rows = stg_rows()
     ops = mart(rows)
     annees = sorted({a for o in ops for a in o["mandate_par_annee"]})

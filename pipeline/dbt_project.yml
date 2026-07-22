@@ -447,6 +447,20 @@ seeds:
             agreed_usd: FLOAT64
             paid_usd: FLOAT64
             match_evidence: STRING
+      # -----------------------------------------------------------------------
+      # Brazil / Recife seeds → dbt_br_seeds (br-municipal family).
+      # -----------------------------------------------------------------------
+      br:
+        +schema: br_seeds
+        # CNAE-section / paying-agency → citizen theme (pt). Deterministic,
+        # grounded mapping — the primary theme path (the LLM classifier is the
+        # documented option for the tail). chave_tipo ∈ {cnae_secao, orgao_regex}.
+        seed_mapping_tema_recife:
+          +column_types:
+            chave_tipo: STRING
+            chave: STRING
+            tema: STRING
+            prioridade: INT64
 
 # =============================================================================
 # Configuration des modèles par couche
@@ -546,6 +560,47 @@ models:
         +materialized: table
         +schema: us_marts
         +tags: ['us', 'marts']
+        +meta:
+          owner: "danielshavit92@gmail.com"
+          cadence: "before each export run"
+          cost_bucket: "low"
+
+    # -------------------------------------------------------------------------
+    # Brazil / Recife models — dbt_br_* dataset family (ADR-0010 D3,
+    # br-municipal schema family). The `br_*` schema prefixes map to dbt_br_*
+    # via macros/generate_schema_name.sql, mirroring dbt_us_*. Brazilian
+    # municipal accounting (empenho→liquidação→pagamento; modalidade de
+    # aplicação; função/subfunção) is a genuinely new family, not FR/US.
+    # -------------------------------------------------------------------------
+    br:
+      staging:
+        +materialized: view
+        +schema: br_staging
+        +tags: ['br', 'staging']
+        +meta:
+          owner: "danielshavit92@gmail.com"
+          cadence: "on-demand (sync run cadence)"
+          cost_bucket: "low"  # views, no storage
+      intermediate:
+        +materialized: table
+        +schema: br_intermediate
+        +tags: ['br', 'intermediate']
+        +meta:
+          owner: "danielshavit92@gmail.com"
+          cadence: "after stg refresh"
+          cost_bucket: "low-medium"
+      core:
+        +materialized: table
+        +schema: br_analytics
+        +tags: ['br', 'core']
+        +meta:
+          owner: "danielshavit92@gmail.com"
+          cadence: "after stg refresh"
+          cost_bucket: "low-medium"
+      marts:
+        +materialized: table
+        +schema: br_marts
+        +tags: ['br', 'marts']
         +meta:
           owner: "danielshavit92@gmail.com"
           cadence: "before each export run"

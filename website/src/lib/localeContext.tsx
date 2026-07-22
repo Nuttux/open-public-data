@@ -75,7 +75,7 @@ function rewriteForCity(value: string, citySlug: string): string {
     .replace(/\bParis\b/g, target.nom);
 }
 
-export type Locale = 'fr' | 'en';
+export type Locale = 'fr' | 'en' | 'pt';
 
 type Dict = Record<string, string>;
 
@@ -100,7 +100,9 @@ const dictPromises: Partial<Record<Locale, Promise<Dict>>> = {};
 function loadDictionary(locale: Locale): Promise<Dict> {
   const pending = dictPromises[locale];
   if (pending) return pending;
-  const promise = (locale === 'en' ? import('@/i18n/en') : import('@/i18n/fr')).then((mod) => {
+  const promise = (locale === 'en' ? import('@/i18n/en')
+    : locale === 'pt' ? import('@/i18n/pt')
+    : import('@/i18n/fr')).then((mod) => {
     dictCache[locale] = mod.default;
     return mod.default;
   }) as TrackedPromise<Dict>;

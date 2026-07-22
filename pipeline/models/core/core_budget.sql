@@ -37,8 +37,11 @@ enriched AS (
         -- =====================================================================
         -- COLONNES ORIGINALES (pas de préfixe)
         -- =====================================================================
-        -- City discriminator (préparation unification multi-villes — cf. P2.1)
-        -- Constant 'paris' ici, sera UNION avec stg_marseille_budget en refactor.
+        -- City discriminator. Per ADR-0011 this stays a constant 'paris':
+        -- Paris and Marseille budgets are separate, source-shaped models that
+        -- share the extracted macros (NOT a physical UNION on commune_slug),
+        -- so there is no cross-city union here.
+        -- See docs/decisions/0011-budget-convergence.md.
         'paris' AS commune_slug,
         b.annee,
         b.section,
