@@ -449,7 +449,6 @@ export default async function FranceBudgetPage({
       <RevealOnScroll className="fx-section">
         <div className="fx-wrap">
           <SectionHead
-            number="03"
             kind={t("budget.section.treemap.kind")}
             title={t("budget.section.treemap.title")}
             subtitle={t("budget.section.treemap.subtitle")}
@@ -497,7 +496,6 @@ export default async function FranceBudgetPage({
       <RevealOnScroll className="fx-section">
         <div className="fx-wrap">
           <SectionHead
-            number="04"
             kind={t("budget.section.institutions.kind")}
             title={t("budget.section.institutions.title")}
             subtitle={t("budget.section.institutions.subtitle")}
@@ -547,12 +545,6 @@ export default async function FranceBudgetPage({
                 style={{ ['--inst-color' as string]: p.color }}
               >
                 <div className="fx-tile-top">
-                  <span
-                    className="fx-tile-n"
-                    style={{ color: p.color, fontWeight: 600 }}
-                  >
-                    {p.rank}
-                  </span>
                   <span className="fx-tile-kind">
                     {fmtPct(p.share, locale)}
                   </span>
@@ -634,7 +626,6 @@ export default async function FranceBudgetPage({
       <RevealOnScroll className="fx-section" id="bucket-secu">
         <div className="fx-wrap">
           <SectionHead
-            number="05"
             kind={t("budget.section.secu.kind")}
             title={t("budget.section.secu.title")}
             subtitle={glossify(t("budget.section.secu.subtitle"), locale)}
@@ -670,7 +661,6 @@ export default async function FranceBudgetPage({
       <RevealOnScroll className="fx-section" id="bucket-etat">
         <div className="fx-wrap">
           <SectionHead
-            number="06"
             kind={t("budget.section.etat.kind")}
             title={t("budget.section.etat.title")}
             subtitle={glossify(t("budget.section.etat.subtitle"), locale)}
@@ -735,7 +725,6 @@ export default async function FranceBudgetPage({
       <RevealOnScroll className="fx-section" id="bucket-local">
         <div className="fx-wrap">
           <SectionHead
-            number="07"
             kind={t("budget.section.local.kind")}
             title={t("budget.section.local.title")}
             subtitle={t("budget.section.local.subtitle")}
@@ -790,7 +779,6 @@ export default async function FranceBudgetPage({
             ).map((p) => (
               <Link key={p.key} href={p.href} scroll={false} className="fx-tile">
                 <div className="fx-tile-top">
-                  <span className="fx-tile-n">{p.rank}</span>
                   <span className="fx-tile-kind">{fmtPct(p.share, locale)}</span>
                 </div>
                 <div
@@ -1004,7 +992,6 @@ export default async function FranceBudgetPage({
         <RevealOnScroll className="fx-section">
           <div className="fx-wrap">
             <SectionHead
-              number="08"
               kind={t("budget.cross_cutting.section.eyebrow")}
               title={t("budget.cross_cutting.section.title")}
               subtitle={t("budget.cross_cutting.section.intro")}
@@ -1012,15 +999,43 @@ export default async function FranceBudgetPage({
             <div
               style={{
                 display: "flex",
-                flexDirection: "column",
-                gap: 0,
-                marginTop: 16,
+                flexWrap: "wrap",
+                gap: "8px 20px",
+                marginTop: 18,
+                fontFamily: "'JetBrains Mono', ui-monospace, monospace",
+                fontSize: 12,
+                letterSpacing: "0.02em",
+                color: "var(--muted)",
               }}
             >
-              {crossCuttingThemes.map((theme, idx) => (
+              {[
+                { c: "#2a3680", label: t("budget.section.treemap.legend.secu") },
+                { c: "#1a1d26", label: t("budget.section.treemap.legend.etat") },
+                { c: "#c12323", label: t("budget.section.treemap.legend.local") },
+              ].map((l) => (
+                <span
+                  key={l.label}
+                  style={{ display: "inline-flex", alignItems: "center", gap: 7 }}
+                >
+                  <span
+                    aria-hidden="true"
+                    style={{ width: 11, height: 11, borderRadius: 2, background: l.c }}
+                  />
+                  {l.label}
+                </span>
+              ))}
+            </div>
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                gap: 0,
+                marginTop: 8,
+              }}
+            >
+              {crossCuttingThemes.map((theme) => (
                 <CrossCuttingPanel
                   key={theme.key}
-                  number={`08.${idx + 1}`}
                   theme={theme}
                   locale={locale}
                   shareOfTotalLabel={t("budget.cross_cutting.share_of_total")}
@@ -1037,7 +1052,6 @@ export default async function FranceBudgetPage({
       <RevealOnScroll className="fx-section fx-section-cta-warm">
         <div className="fx-wrap" style={{ maxWidth: 820 }}>
           <SectionHead
-            number="09"
             kind={t("budget.cta.daily_bread.kind")}
             title={t("budget.cta.daily_bread.title")}
             subtitle={t("budget.cta.daily_bread.body")}

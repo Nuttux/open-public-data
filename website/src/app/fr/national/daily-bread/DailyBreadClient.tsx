@@ -1112,7 +1112,7 @@ export default function DailyBreadClient({
           <div className="db-panel-wrap db-p-hero-wrap">
             {/* numéro de section */}
             <p className="db-panel-num db-p-hero-num-top">
-              <em>01</em> · {t("db.hero.num")}
+              {t("db.hero.num")}
             </p>
 
             {/* CTA OpenFisca (top-right desktop, sous le num en mobile) */}
@@ -1718,7 +1718,7 @@ export default function DailyBreadClient({
           <section id="db-disp" className="db-panel db-p-disp">
             <div className="db-panel-wrap">
               <p className="db-panel-num">
-                <em>02</em> · {t("db.disp.num")}
+                {t("db.disp.num")}
               </p>
 
               <h2 className="db-p-disp-q">
@@ -1885,7 +1885,6 @@ export default function DailyBreadClient({
           >
             <div className="db-panel-wrap">
               <p className="db-panel-num">
-                <em>03</em> ·{" "}
                 {t("db.secu.num").replace(
                   "{monthly}",
                   fmtEur(secuMonthly, locale, 0),
@@ -1956,7 +1955,6 @@ export default function DailyBreadClient({
           >
             <div className="db-panel-wrap">
               <p className="db-panel-num">
-                <em>04</em> ·{" "}
                 {t("db.etat.num").replace(
                   "{monthly}",
                   fmtEur(etatMonthly, locale, 0),
@@ -2069,7 +2067,6 @@ export default function DailyBreadClient({
           >
             <div className="db-panel-wrap">
               <p className="db-panel-num">
-                <em>05</em> ·{" "}
                 {t("db.local.num").replace(
                   "{monthly}",
                   fmtEur(localMonthly, locale, 0),
@@ -2299,7 +2296,7 @@ export default function DailyBreadClient({
         >
           <div className="db-panel-wrap">
             <p className="db-panel-num">
-              <em>06</em> · {t("db.method.num")}
+              {t("db.method.num")}
             </p>
             <h2 className="db-p-method-q" style={{ whiteSpace: "pre-line" }}>
               {renderTagged(t("db.method.title"), {

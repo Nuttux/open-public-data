@@ -157,7 +157,6 @@ export default function RecettesPanel({ data, locale, t }: Props) {
     <section className="fx-section" id="recettes-apu">
       <div className="fx-wrap">
         <SectionHead
-          number="02"
           kind={t("budget.recettes.kicker")}
           title={t("budget.recettes.title")}
           subtitle={t("budget.recettes.subtitle", {

@@ -50,7 +50,6 @@ function fmtPct(share: number, locale: "fr" | "en"): string {
 }
 
 type Props = {
-  number: string; // ex "07.1"
   theme: CrossCuttingTheme;
   locale: "fr" | "en";
   /** Label for the share-of-APU footnote ("of consolidated public spending"). */
@@ -62,7 +61,6 @@ type Props = {
 };
 
 export default function CrossCuttingPanel({
-  number,
   theme,
   locale,
   shareOfTotalLabel,
@@ -105,7 +103,6 @@ export default function CrossCuttingPanel({
       {/* Compact summary — always visible, expands to full detail */}
       <summary className="fx-cct-summary" style={summaryStyle}>
         <span style={summaryHeadStyle}>
-          <span style={summaryEyebrowStyle}>{number}</span>
           <span style={summaryTitleStyle}>{themeLabel}</span>
           <span style={summaryAmountStyle}>
             <span className="tnum" style={{ fontWeight: 700, color: "var(--ink)" }}>
@@ -258,14 +255,6 @@ const summaryHeadStyle: CSSProperties = {
   alignItems: "baseline",
   gap: 14,
   flexWrap: "wrap",
-};
-
-const summaryEyebrowStyle: CSSProperties = {
-  fontFamily: "'JetBrains Mono', ui-monospace, monospace",
-  fontSize: 11,
-  letterSpacing: "0.08em",
-  color: "var(--ocre, #c89647)",
-  flex: "0 0 auto",
 };
 
 const summaryTitleStyle: CSSProperties = {
