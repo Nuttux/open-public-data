@@ -1,21 +1,26 @@
 {{
   config(
+    enabled=true,
     materialized='table',
     tags=['national', 'core']
   )
 }}
 
 /*
-  Core: Marchés Publics National par ville
+  Core: Marchés publics national (row-level OBT, une ligne par marché)
 
-  Table dénormalisée des marchés publics DECP par ville.
+  Grain : 1 marché (uid) attribué à sa commune acheteuse (code_insee).
+  La catégorie CPV est une correspondance déterministe (division CPV → thème),
+  donc publique — pas d'enrichissement.
 */
 
 SELECT
-    commune_slug,
+    code_insee,
     commune_nom,
+    dep_name,
+    reg_name,
+    population,
     marche_id,
-    acheteur_siret,
     acheteur_nom,
     objet,
     nature_marche,
@@ -25,12 +30,12 @@ SELECT
     montant,
     forme_prix,
     date_notification,
-    annee_notification AS annee,
+    annee,
     duree_mois,
     titulaire_nom,
     titulaire_siret,
 
-    -- Classification CPV simplifiée
+    -- Classification CPV (division → thème). Déterministe, publique.
     CASE
         WHEN cpv_division IN ('09', '31', '65') THEN 'Énergie'
         WHEN cpv_division IN ('30', '32', '48', '72') THEN 'Informatique & Télécom'
@@ -41,11 +46,9 @@ SELECT
         WHEN cpv_division IN ('71', '79') THEN 'Services professionnels'
         WHEN cpv_division IN ('77', '90') THEN 'Environnement & Propreté'
         WHEN cpv_division IN ('22', '80') THEN 'Éducation & Formation'
-        WHEN cpv_division IN ('92') THEN 'Culture & Loisirs'
-        WHEN cpv_division IN ('75') THEN 'Administration publique'
+        WHEN cpv_division = '92' THEN 'Culture & Loisirs'
+        WHEN cpv_division = '75' THEN 'Administration publique'
         ELSE 'Autres'
     END AS categorie_cpv
 
 FROM {{ ref('stg_decp_marches') }}
-WHERE annee_notification IS NOT NULL
-  AND montant > 0

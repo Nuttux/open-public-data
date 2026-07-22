@@ -2,6 +2,7 @@ import fs from "fs";
 import path from "path";
 import overridesRaw from "@/data/commune-overrides.json";
 import { communeHasBudgetNature } from "@/lib/commune-budget";
+import { communeHasMarches } from "@/lib/commune-marches";
 
 /**
  * Capability matrix — national-source-first, DATA-DERIVED.
@@ -52,6 +53,9 @@ export type BudgetCapability = {
 export type CommuneCapabilities = {
   slug: string;
   budget: BudgetCapability;
+  /** National tier — marchés publics (DECP). Present iff the commune published
+   *  procurement ≥ 40k€ (≈12.5k of 35k communes). */
+  marches: boolean;
   /** True if the commune has at least one renderable page/layer. */
   any: boolean;
 };
@@ -77,5 +81,6 @@ export function getCommuneCapabilities(slug: string): CommuneCapabilities {
     dataFileExists(`${communeBudgetDir(slug)}/budget_fonction.json`);
 
   const budget: BudgetCapability = { nature, fonction };
-  return { slug, budget, any: nature || fonction };
+  const marches = !hidden.has("marches") && communeHasMarches(slug);
+  return { slug, budget, marches, any: nature || fonction || marches };
 }

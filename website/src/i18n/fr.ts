@@ -1344,6 +1344,16 @@ const fr: Record<string, string> = {
   'fx.natbud.health_sain': 'sain',
   'fx.natbud.health_vigilance': 'vigilance',
   'fx.natbud.health_alerte': 'alerte',
+  'fx.natmar.kicker': 'Marchés publics',
+  'fx.natmar.lede': 'Les marchés publics notifiés par la commune : montants, fournisseurs, domaines. Données essentielles de la commande publique (DECP).',
+  'fx.natmar.total_montant': 'Montant total notifié',
+  'fx.natmar.nb_marches': 'Marchés',
+  'fx.natmar.nb_titulaires': 'Fournisseurs',
+  'fx.natmar.by_cat_title': 'Par domaine',
+  'fx.natmar.titulaires_title': 'Principaux fournisseurs',
+  'fx.natmar.biggest_title': 'Plus gros marchés',
+  'fx.natmar.source': 'Marchés publics — DECP (data.gouv.fr)',
+  'fx.natmar.link': 'Marchés publics',
 
   // ── Budget page ─────────────────────────────────────────────────────────────
   'fx.bud.kicker': '01 · Budget',

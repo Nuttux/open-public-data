@@ -135,6 +135,7 @@ export default async function CityPage({
               capaciteDesend,
               year: src.year,
             }}
+            marchesHref={caps.marches ? `/fr/city/${slim.slug}/marches` : undefined}
           />
         );
       }

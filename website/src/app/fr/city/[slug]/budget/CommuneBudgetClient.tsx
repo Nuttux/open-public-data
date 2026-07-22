@@ -38,6 +38,8 @@ type Props = {
   sourceUrl: string;
   /** OFGL financial-health strip (dette, capacité de désendettement, épargne). */
   health?: CommuneHealth | null;
+  /** Set (from getCommuneCapabilities) when the commune has a marchés page. */
+  marchesHref?: string;
 };
 
 function useEuro() {
@@ -63,6 +65,7 @@ export default function CommuneBudgetClient({
   hasFonction,
   sourceUrl,
   health,
+  marchesHref,
 }: Props) {
   const t = useT();
   const { locale } = useLocale();
@@ -167,6 +170,15 @@ export default function CommuneBudgetClient({
               )}
               <span className="fx-health-src">{t("fx.natbud.health_source")}</span>
             </div>
+          )}
+
+          {/* Cross-links to other national pages this commune has */}
+          {marchesHref && (
+            <nav className="fx-natlinks">
+              <Link href={marchesHref} className="fx-cta-link">
+                {t("fx.natmar.link")} →
+              </Link>
+            </nav>
           )}
 
           {/* Honest axis note: this is NATURE, not fonction */}

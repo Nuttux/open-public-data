@@ -1344,6 +1344,16 @@ const en: Record<string, string> = {
   'fx.natbud.health_sain': 'healthy',
   'fx.natbud.health_vigilance': 'watch',
   'fx.natbud.health_alerte': 'alert',
+  'fx.natmar.kicker': 'Public procurement',
+  'fx.natmar.lede': 'The public contracts awarded by the commune: amounts, suppliers, categories. From the DECP essential procurement data.',
+  'fx.natmar.total_montant': 'Total awarded',
+  'fx.natmar.nb_marches': 'Contracts',
+  'fx.natmar.nb_titulaires': 'Suppliers',
+  'fx.natmar.by_cat_title': 'By category',
+  'fx.natmar.titulaires_title': 'Top suppliers',
+  'fx.natmar.biggest_title': 'Largest contracts',
+  'fx.natmar.source': 'Public procurement — DECP (data.gouv.fr)',
+  'fx.natmar.link': 'Public procurement',
 
   // ── Budget page ─────────────────────────────────────────────────────────────
   'fx.bud.kicker': '01 · Budget',
