@@ -1494,10 +1494,7 @@ export default function DailyBreadClient({
                 propriétaire/TF. Discret par défaut. Ouvert si une source non-
                 salaire est non nulle (URL deep-link), ou si l'utilisateur a
                 coché propriétaire. */}
-            <details
-              className="db-p-hero-advanced"
-              open
-            >
+            <details className="db-p-hero-advanced">
               <summary className="db-p-hero-advanced-summary">
                 <span>{t("db.hero.advanced.summary")}</span>
                 <span aria-hidden className="db-p-hero-advanced-chevron">

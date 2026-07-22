@@ -314,7 +314,7 @@ const stackWrapStyle: CSSProperties = {
   height: 22,
   borderRadius: 3,
   overflow: "hidden",
-  margin: "10px 0 24px",
+  margin: "10px 0 12px",
   background: "var(--rule)",
   gap: 1,
 };

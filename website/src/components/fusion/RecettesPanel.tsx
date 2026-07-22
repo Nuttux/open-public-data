@@ -78,7 +78,7 @@ type Props = {
 };
 
 export default function RecettesPanel({ data, locale, t }: Props) {
-  const { macro, institutions, europe } = data;
+  const { macro, institutions } = data;
 
   const renderCard = (
     institution: RecetteInstitution,
@@ -200,67 +200,31 @@ export default function RecettesPanel({ data, locale, t }: Props) {
           </p>
         </div>
 
-        {/* Bilan UE — séparé visuellement, contribution nette. Les deux
-            lignes (versé et reçu) sont cliquables pour ouvrir le drawer
-            détaillé avec décomposition RNB/TVA/plastique/NGEU. */}
-        <div className="fx-recettes-ue">
-          <p className="fx-recettes-ue-eyebrow">
-            {t("budget.recettes.ue.eyebrow")}
+        {/* Note méthodo — repliée par défaut (disclosure) */}
+        <details className="fx-cct-details">
+          <summary
+            style={{
+              cursor: "pointer",
+              display: "inline-flex",
+              alignItems: "center",
+              gap: 8,
+              fontFamily: "'JetBrains Mono', ui-monospace, monospace",
+              fontSize: 11,
+              letterSpacing: "0.08em",
+              textTransform: "uppercase",
+              color: "var(--ocre)",
+              padding: "4px 0",
+            }}
+          >
+            <span className="fx-cct-chev" aria-hidden style={{ fontSize: 14, lineHeight: 1 }}>
+              ›
+            </span>
+            {locale === "en" ? "Method & sources" : "Méthode & sources"}
+          </summary>
+          <p className="fx-recettes-method-note" style={{ marginTop: 10 }}>
+            {t("budget.recettes.method_note")}
           </p>
-          <div className="fx-recettes-ue-flow">
-            <Link
-              href="/fr/national/budget/recettes/psr_ue"
-              scroll={false}
-              prefetch={false}
-              className="fx-recettes-ue-row fx-recettes-ue-row-link"
-            >
-              <span className="fx-recettes-ue-label">
-                {t("budget.recettes.ue.verse")}
-                <span aria-hidden className="fx-recettes-ue-chevron">→</span>
-              </span>
-              <span className="fx-recettes-ue-val tnum">
-                − {fmtBnEur(europe.psr_ue_brut_md_eur * 1e9, locale)}
-                <span className="fx-recettes-ue-yr">
-                  /{locale === "en" ? "yr" : "an"}
-                </span>
-              </span>
-            </Link>
-            <Link
-              href="/fr/national/budget/recettes/ue_fonds_recus"
-              scroll={false}
-              prefetch={false}
-              className="fx-recettes-ue-row fx-recettes-ue-row-link"
-            >
-              <span className="fx-recettes-ue-label">
-                {t("budget.recettes.ue.recus")}
-                <span aria-hidden className="fx-recettes-ue-chevron">→</span>
-              </span>
-              <span className="fx-recettes-ue-val fx-recettes-ue-val-plus tnum">
-                + {fmtBnEur(europe.fonds_recus_md_eur * 1e9, locale)}
-                <span className="fx-recettes-ue-yr">
-                  /{locale === "en" ? "yr" : "an"}
-                </span>
-              </span>
-            </Link>
-            <div className="fx-recettes-ue-row fx-recettes-ue-row-net">
-              <span className="fx-recettes-ue-label">
-                {t("budget.recettes.ue.net")}
-              </span>
-              <span className="fx-recettes-ue-val tnum">
-                − {fmtBnEur(europe.contribution_nette_md_eur * 1e9, locale)}
-                <span className="fx-recettes-ue-yr">
-                  /{locale === "en" ? "yr" : "an"}
-                </span>
-              </span>
-            </div>
-          </div>
-          <p className="fx-recettes-ue-explain">{europe.notes_fr}</p>
-        </div>
-
-        {/* Note méthodo */}
-        <p className="fx-recettes-method-note">
-          {t("budget.recettes.method_note")}
-        </p>
+        </details>
       </div>
     </section>
   );

@@ -7,11 +7,10 @@ import Tip from "@/components/fusion/Tip";
 import {
   Navbar,
   Footer,
-  BarRow,
   SectionHead,
   BnEurCountUp,
   RevealOnScroll,
-  MethodNote,
+  CrossCuttingPanel,
 } from "@/components/fusion";
 import BudgetTreemap, {
   type TreemapDatum,
@@ -19,10 +18,8 @@ import BudgetTreemap, {
 import { loadDailyBread } from "@/lib/national-data";
 import { loadDrilldown } from "@/lib/budget-drilldown";
 import { loadRecettesApu } from "@/lib/recettes-apu";
-import { computeStateBuckets } from "@/lib/daily-bread";
-import { RecettesPanel } from "@/components/fusion";
 import { listCrossCuttingThemes } from "@/lib/cross-cutting";
-import { CrossCuttingPanel } from "@/components/fusion";
+import { RecettesPanel } from "@/components/fusion";
 import { buildLocaleAwareMetadata, readLocale } from "@/lib/seo";
 import {
   buildProfileQueryString,
@@ -34,15 +31,14 @@ import en from "@/i18n/en";
 /**
  * /fr/national/budget — Budget Explorer impersonnel.
  *
- *  - §01 hero "1 808 Md€/an"
- *  - §02 treemap visuel des ~30 plus grosses cellules
- *  - §03 trois piliers (Sécu / État / Local)
- *  - §04 drill Sécu — 5 branches
- *  - §05 drill État — 10 agrégats éditoriaux + note méthodo
- *  - §06 drill Local — 3 échelles + détail bloc communal
- *  - §07 vues thématiques cross-cutting (Santé / Éducation / Solidarité)
- *  - §08 CTA Daily Bread
- *  - §09 sources
+ *  - hero "1 808 Md€/an"
+ *  - recettes (3 piliers) + déficit + note méthode (repliée)
+ *  - treemap visuel des ~30 plus grosses cellules
+ *  - drill Sécu — 5 branches
+ *  - drill État — 12 agrégats éditoriaux + note méthode (repliée)
+ *  - drill Local — 3 échelles + liens dépt/région
+ *  - CTA Daily Bread
+ *  - sources
  *
  * Server component — toute la data est lue côté serveur. Le treemap est
  * un client component léger (interactivity hover/tooltip) qui reçoit ses
@@ -138,11 +134,6 @@ function fmtBnEur(amountEur: number, locale: "fr" | "en"): string {
     : `€${rounded} bn`;
 }
 
-function fmtPct(share: number, locale: "fr" | "en"): string {
-  const v = share * 100;
-  const r = v >= 10 ? v.toFixed(0) : v.toFixed(1);
-  return locale === "fr" ? `${r.replace(".", ",")} %` : `${r}%`;
-}
 
 // URLs drawer locales — pointent vers /fr/national/budget/bucket/... pour
 // déclencher l'intercept Next.js depuis cette page (drawer overlay au
@@ -486,508 +477,10 @@ export default async function FranceBudgetPage({
             locale={locale}
             totalLabel={t("budget.section.treemap.total_label")}
           />
-          <MethodNote marginTop={14} maxWidth={720}>
-            {t("budget.hero.note_unconsolidated")}
-          </MethodNote>
         </div>
       </RevealOnScroll>
 
-      {/* §04 — TROIS PILIERS ───────────────────────────────────────── */}
-      <RevealOnScroll className="fx-section">
-        <div className="fx-wrap">
-          <SectionHead
-            kind={t("budget.section.institutions.kind")}
-            title={t("budget.section.institutions.title")}
-            subtitle={t("budget.section.institutions.subtitle")}
-          />
-          <div className="fx-grid-tiles">
-            {(
-              [
-                {
-                  key: "secu",
-                  // Anchor scroll vers §04 (drill Sécu) — pas de page bucket
-                  // dédiée, les 5 branches sont déjà listées dans cette section.
-                  href: "/fr/national/budget#bucket-secu",
-                  rank: "01",
-                  title: t("budget.card.secu.title"),
-                  subtitle: t("budget.card.secu.subtitle"),
-                  amount: secuAnnual,
-                  share: totalAnnual > 0 ? secuAnnual / totalAnnual : 0,
-                  color: "#2a3680",
-                },
-                {
-                  key: "etat",
-                  href: "/fr/national/budget#bucket-etat",
-                  rank: "02",
-                  title: t("budget.card.etat.title"),
-                  subtitle: t("budget.card.etat.subtitle"),
-                  amount: etatAnnual,
-                  share: totalAnnual > 0 ? etatAnnual / totalAnnual : 0,
-                  color: "#1a1d26",
-                },
-                {
-                  key: "local",
-                  href: "/fr/national/budget#bucket-local",
-                  rank: "03",
-                  title: t("budget.card.local.title"),
-                  subtitle: t("budget.card.local.subtitle"),
-                  amount: localAnnual,
-                  share: totalAnnual > 0 ? localAnnual / totalAnnual : 0,
-                  color: "#c12323",
-                },
-              ] as const
-            ).map((p) => (
-              <Link
-                key={p.key}
-                href={p.href}
-                /* anchor scroll vers la section bucket — laisser scroll: true (défaut) */
-                className="fx-tile fx-tile-institution"
-                style={{ ['--inst-color' as string]: p.color }}
-              >
-                <div className="fx-tile-top">
-                  <span className="fx-tile-kind">
-                    {fmtPct(p.share, locale)}
-                  </span>
-                </div>
-                <div
-                  style={{
-                    width: 32,
-                    height: 4,
-                    background: p.color,
-                    marginBottom: 18,
-                  }}
-                  aria-hidden="true"
-                />
-                <h3
-                  style={{
-                    fontFamily: "'Inter Tight', Inter, sans-serif",
-                    fontSize: 22,
-                    fontWeight: 700,
-                    lineHeight: 1.15,
-                    margin: "0 0 8px",
-                    letterSpacing: "-0.015em",
-                  }}
-                >
-                  {p.title}
-                </h3>
-                <p
-                  style={{
-                    fontSize: 14,
-                    lineHeight: 1.5,
-                    color: "var(--muted)",
-                    margin: "0 0 22px",
-                    flex: 1,
-                  }}
-                >
-                  {p.subtitle}
-                </p>
-                <div
-                  className="tnum"
-                  style={{
-                    fontFamily: "'Inter Tight', Inter, sans-serif",
-                    fontSize: 36,
-                    fontWeight: 700,
-                    letterSpacing: "-0.025em",
-                    lineHeight: 1,
-                    marginTop: "auto",
-                  }}
-                >
-                  {/* Count-up sur le scroll-in : reproduit la cinétique
-                      §02 Daily Bread (`db-stack-tri-amt`) où chaque montant
-                      institutionnel s'incrémente quand le panneau apparaît.
-                      `BnEurCountUp` reçoit la valeur en € (pas Md€) et
-                      formatte côté client → server-friendly. */}
-                  <BnEurCountUp
-                    value={p.amount}
-                    locale={locale}
-                    durationMs={900}
-                    threshold={0.25}
-                  />
-                </div>
-                <p
-                  style={{
-                    fontFamily: "'JetBrains Mono', ui-monospace, monospace",
-                    fontSize: 11,
-                    color: "var(--muted)",
-                    letterSpacing: "0.08em",
-                    textTransform: "uppercase",
-                    marginTop: 8,
-                  }}
-                >
-                  /an · {fmtPct(p.share, locale)} {t("budget.section.treemap.total_label")}
-                </p>
-              </Link>
-            ))}
-          </div>
-        </div>
-      </RevealOnScroll>
-
-      {/* §05 — DRILL SÉCU ──────────────────────────────────────────── */}
-      <RevealOnScroll className="fx-section" id="bucket-secu">
-        <div className="fx-wrap">
-          <SectionHead
-            kind={t("budget.section.secu.kind")}
-            title={t("budget.section.secu.title")}
-            subtitle={glossify(t("budget.section.secu.subtitle"), locale)}
-          />
-          <BarRow
-            color="secu"
-            reveal
-            header={{
-              left: t("budget.section.secu.header_left"),
-              right: t("budget.section.secu.header_right"),
-            }}
-            items={secuBranches.map((b) => {
-              const value = secuAnnual * (b.share_of_parent ?? 0);
-              return {
-                label: locale === "en" ? b.label_en : b.label_fr,
-                value,
-                href: urlSecuLevel2(b.key, profileQs),
-                display: (
-                  <>
-                    {fmtBnEur(value, locale)}
-                    <span style={{ marginLeft: 10, color: "var(--muted)" }}>
-                      · {fmtPct(b.share_of_parent ?? 0, locale)}
-                    </span>
-                  </>
-                ),
-              };
-            })}
-          />
-        </div>
-      </RevealOnScroll>
-
-      {/* §06 — DRILL ÉTAT ──────────────────────────────────────────── */}
-      <RevealOnScroll className="fx-section" id="bucket-etat">
-        <div className="fx-wrap">
-          <SectionHead
-            kind={t("budget.section.etat.kind")}
-            title={t("budget.section.etat.title")}
-            subtitle={glossify(t("budget.section.etat.subtitle"), locale)}
-          />
-          <MethodNote marginBottom={26} maxWidth={760}>
-            {t("budget.section.etat.method_note")}
-          </MethodNote>
-          <BarRow
-            color="etat"
-            reveal
-            header={{
-              left: t("budget.section.etat.header_left"),
-              right: t("budget.section.etat.header_right"),
-            }}
-            items={(() => {
-              if (!db) return [];
-              // Utilise computeStateBuckets qui applique l'overlay S1311
-              // (CAS Pensions par ministère + ODAC + PSR-UE + budgets
-              // annexes + résiduel) → 12 buckets sommant à 100 % de S1311.
-              const buckets = computeStateBuckets(etatAnnual, db);
-              return buckets.map((b) => {
-                // Sub-text : missions PLF + items overlay (CAS, ODAC, etc.)
-                const missionLabels = b.missions.map((m) => m.label).slice(0, 3);
-                const overlayLabels = (b.overlay_items ?? [])
-                  .map((it) => (locale === "en" ? it.label_en : it.label_fr))
-                  .slice(0, 4);
-                const subParts = [...missionLabels, ...overlayLabels];
-                // Lien drawer : (a) buckets PLF → page agrégat
-                // (b) contribution_ue → fiche recette UE (PSR-UE décomposé)
-                // (c) autres_etat_hors_plf : pas de drawer (résiduel).
-                const hasAgg = etatAggregations.some(
-                  (a) => a.key === (b.key === "autres_ministeres" ? "autres" : b.key),
-                );
-                const aggKey = b.key === "autres_ministeres" ? "autres" : b.key;
-                const href =
-                  b.key === "contribution_ue"
-                    ? "/fr/national/budget/recettes/psr_ue"
-                    : hasAgg
-                      ? urlEtatAggregation(aggKey, profileQs)
-                      : undefined;
-                return {
-                  label: locale === "en" ? b.label_en : b.label_fr,
-                  value: b.annual_eur,
-                  href,
-                  display: (
-                    <>
-                      {fmtBnEur(b.annual_eur, locale)}
-                      <span style={{ marginLeft: 10, color: "var(--muted)" }}>
-                        · {fmtPct(b.share_of_state, locale)}
-                      </span>
-                    </>
-                  ),
-                  sub: subParts.length > 1 ? subParts.join(" · ") : undefined,
-                };
-              });
-            })()}
-          />
-        </div>
-      </RevealOnScroll>
-
-      {/* §07 — DRILL LOCAL ─────────────────────────────────────────── */}
-      <RevealOnScroll className="fx-section" id="bucket-local">
-        <div className="fx-wrap">
-          <SectionHead
-            kind={t("budget.section.local.kind")}
-            title={t("budget.section.local.title")}
-            subtitle={t("budget.section.local.subtitle")}
-          />
-          {/* 3 sub-cards (Bloc communal / Départements / Régions). Chaque card
-              ouvre le drawer du 1er level2 du scope (porte d'entrée). Les 9
-              fonctions par scope sont listées juste en dessous. */}
-          <div className="fx-grid-tiles" style={{ marginBottom: 36 }}>
-            {(
-              [
-                {
-                  key: "bloc",
-                  // Bloc communal : ouvre la 1re fonction OFGL (services_generaux
-                  // ou la plus grosse) si dispo, sinon scroll vers la liste.
-                  href:
-                    blocCommunalSorted.length > 0
-                      ? urlLocalLevel2(blocCommunalSorted[0].key, profileQs)
-                      : "/fr/national/budget#bucket-local",
-                  rank: "06.1",
-                  title: locale === "en"
-                    ? "Municipal block"
-                    : "Bloc communal (communes + EPCI)",
-                  subtitle: locale === "en"
-                    ? "Schools, social action (CCAS), urban planning, sport, waste."
-                    : "Écoles, CCAS, urbanisme, sport, déchets.",
-                  amount: blocCommunalAnnual,
-                  share: blocCommunalShare,
-                },
-                {
-                  key: "dept",
-                  href: deptFirstHref,
-                  rank: "06.2",
-                  title: locale === "en" ? "Departments" : "Départements",
-                  subtitle: locale === "en"
-                    ? "Social action (RSA, dependency, child welfare), middle schools, departmental roads."
-                    : "Action sociale (RSA, dépendance, enfance), collèges, voirie départementale.",
-                  amount: deptAnnual,
-                  share: deptShare,
-                },
-                {
-                  key: "region",
-                  href: regFirstHref,
-                  rank: "06.3",
-                  title: locale === "en" ? "Regions" : "Régions",
-                  subtitle: locale === "en"
-                    ? "TER trains, high schools, professional training, economic development."
-                    : "TER, lycées, formation professionnelle, développement économique.",
-                  amount: regionAnnual,
-                  share: regionShare,
-                },
-              ] as const
-            ).map((p) => (
-              <Link key={p.key} href={p.href} scroll={false} className="fx-tile">
-                <div className="fx-tile-top">
-                  <span className="fx-tile-kind">{fmtPct(p.share, locale)}</span>
-                </div>
-                <div
-                  style={{
-                    width: 32,
-                    height: 4,
-                    background: "#c12323",
-                    marginBottom: 18,
-                  }}
-                  aria-hidden="true"
-                />
-                <h3
-                  style={{
-                    fontFamily: "'Inter Tight', Inter, sans-serif",
-                    fontSize: 20,
-                    fontWeight: 700,
-                    lineHeight: 1.15,
-                    margin: "0 0 8px",
-                  }}
-                >
-                  {p.title}
-                </h3>
-                <p
-                  style={{
-                    fontSize: 14,
-                    lineHeight: 1.5,
-                    color: "var(--muted)",
-                    margin: "0 0 22px",
-                    flex: 1,
-                  }}
-                >
-                  {p.subtitle}
-                </p>
-                <div
-                  className="tnum"
-                  style={{
-                    fontFamily: "'Inter Tight', Inter, sans-serif",
-                    fontSize: 32,
-                    fontWeight: 700,
-                    letterSpacing: "-0.025em",
-                    lineHeight: 1,
-                    marginTop: "auto",
-                  }}
-                >
-                  <BnEurCountUp
-                    value={p.amount}
-                    locale={locale}
-                    durationMs={900}
-                    threshold={0.25}
-                  />
-                </div>
-                <p
-                  style={{
-                    fontFamily: "'JetBrains Mono', ui-monospace, monospace",
-                    fontSize: 11,
-                    color: "var(--muted)",
-                    letterSpacing: "0.08em",
-                    textTransform: "uppercase",
-                    marginTop: 8,
-                  }}
-                >
-                  /an · {fmtPct(p.share, locale)} APUL
-                </p>
-              </Link>
-            ))}
-          </div>
-
-          {/* Détail bloc communal — 9 fonctions OFGL */}
-          <div style={{ marginTop: 28 }}>
-            <h3
-              style={{
-                fontFamily: "'Inter Tight', Inter, sans-serif",
-                fontSize: 22,
-                fontWeight: 700,
-                margin: "0 0 6px",
-                letterSpacing: "-0.015em",
-              }}
-            >
-              {t("budget.section.local.bloc.title")}
-            </h3>
-            <p
-              style={{
-                fontSize: 14,
-                color: "var(--muted-2)",
-                margin: "0 0 22px",
-                maxWidth: 720,
-                lineHeight: 1.55,
-              }}
-            >
-              {t("budget.section.local.bloc.subtitle")}
-            </p>
-            <BarRow
-              color="local"
-              reveal
-              header={{
-                left: t("budget.section.local.bloc.header_left"),
-                right: t("budget.section.local.bloc.header_right"),
-              }}
-              items={localBlocLevel2.map((e) => {
-                const value = blocCommunalAnnual * (e.share_of_parent ?? 0);
-                return {
-                  label: locale === "en" ? e.label_en : e.label_fr,
-                  value,
-                  href: urlLocalLevel2(e.key, profileQs),
-                  display: (
-                    <>
-                      {fmtBnEur(value, locale)}
-                      <span style={{ marginLeft: 10, color: "var(--muted)" }}>
-                        · {fmtPct(e.share_of_parent ?? 0, locale)}
-                      </span>
-                    </>
-                  ),
-                };
-              })}
-            />
-          </div>
-
-          {/* Liens dépt / région — accès direct sans drawer */}
-          <div
-            style={{
-              display: "flex",
-              gap: 28,
-              flexWrap: "wrap",
-              marginTop: 36,
-              paddingTop: 28,
-              borderTop: "1px solid var(--rule)",
-            }}
-          >
-            <div style={{ flex: 1, minWidth: 280 }}>
-              <p
-                style={{
-                  fontFamily: "'JetBrains Mono', ui-monospace, monospace",
-                  fontSize: 11,
-                  letterSpacing: "0.08em",
-                  textTransform: "uppercase",
-                  color: "var(--ocre)",
-                  marginBottom: 10,
-                }}
-              >
-                {locale === "en" ? "Departmental detail" : "Détail départements"}
-              </p>
-              <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: 4 }}>
-                {(drilldown?.buckets.local.departement?.level2 ?? []).map((e) => (
-                  <li key={e.key}>
-                    <Link
-                      href={urlLocalDeptLevel2(e.key, profileQs)}
-                      scroll={false}
-                      style={{
-                        fontSize: 14,
-                        color: "var(--ink-2)",
-                        borderBottom: "1px solid var(--rule)",
-                        paddingBottom: 6,
-                        display: "flex",
-                        justifyContent: "space-between",
-                        gap: 12,
-                      }}
-                    >
-                      <span>{locale === "en" ? e.label_en : e.label_fr}</span>
-                      <span className="tnum" style={{ color: "var(--muted)", fontFamily: "'JetBrains Mono', ui-monospace, monospace", fontSize: 12 }}>
-                        {fmtPct(e.share_of_parent ?? 0, locale)}
-                      </span>
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-            <div style={{ flex: 1, minWidth: 280 }}>
-              <p
-                style={{
-                  fontFamily: "'JetBrains Mono', ui-monospace, monospace",
-                  fontSize: 11,
-                  letterSpacing: "0.08em",
-                  textTransform: "uppercase",
-                  color: "var(--ocre)",
-                  marginBottom: 10,
-                }}
-              >
-                {locale === "en" ? "Regional detail" : "Détail régions"}
-              </p>
-              <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: 4 }}>
-                {(drilldown?.buckets.local.region?.level2 ?? []).map((e) => (
-                  <li key={e.key}>
-                    <Link
-                      href={urlLocalRegionLevel2(e.key, profileQs)}
-                      scroll={false}
-                      style={{
-                        fontSize: 14,
-                        color: "var(--ink-2)",
-                        borderBottom: "1px solid var(--rule)",
-                        paddingBottom: 6,
-                        display: "flex",
-                        justifyContent: "space-between",
-                        gap: 12,
-                      }}
-                    >
-                      <span>{locale === "en" ? e.label_en : e.label_fr}</span>
-                      <span className="tnum" style={{ color: "var(--muted)", fontFamily: "'JetBrains Mono', ui-monospace, monospace", fontSize: 12 }}>
-                        {fmtPct(e.share_of_parent ?? 0, locale)}
-                      </span>
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
-        </div>
-      </RevealOnScroll>
-
-      {/* §08 — VUES THÉMATIQUES (cross-cutting) ────────────────────── */}
+      {/* §04 — GRANDES MISSIONS (thème × niveaux de gouvernement) ────── */}
       {crossCuttingThemes.length > 0 && (
         <RevealOnScroll className="fx-section">
           <div className="fx-wrap">
@@ -1011,7 +504,9 @@ export default async function FranceBudgetPage({
               {[
                 { c: "#2a3680", label: t("budget.section.treemap.legend.secu") },
                 { c: "#1a1d26", label: t("budget.section.treemap.legend.etat") },
-                { c: "#c12323", label: t("budget.section.treemap.legend.local") },
+                { c: "#c12323", label: locale === "en" ? "Municipal" : "Communes" },
+                { c: "#a01b1b", label: locale === "en" ? "Departments" : "Départements" },
+                { c: "#7a1414", label: locale === "en" ? "Regions" : "Régions" },
               ].map((l) => (
                 <span
                   key={l.label}
@@ -1025,14 +520,7 @@ export default async function FranceBudgetPage({
                 </span>
               ))}
             </div>
-            <div
-              style={{
-                display: "flex",
-                flexDirection: "column",
-                gap: 0,
-                marginTop: 8,
-              }}
-            >
+            <div style={{ display: "flex", flexDirection: "column", gap: 0, marginTop: 8 }}>
               {crossCuttingThemes.map((theme) => (
                 <CrossCuttingPanel
                   key={theme.key}
@@ -1069,24 +557,43 @@ export default async function FranceBudgetPage({
       {/* §09 — SOURCES ─────────────────────────────────────────────── */}
       <section className="fx-footer-sources">
         <div className="fx-wrap">
-          <div className="fx-footer-sources-head">
-            <span className="fx-footer-sources-label">
-              {t("budget.section.sources.label")}
-            </span>
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "space-between",
+              alignItems: "baseline",
+              gap: 16,
+              flexWrap: "wrap",
+            }}
+          >
+            <p style={{ margin: 0, fontSize: 13, color: "var(--muted)", lineHeight: 1.6 }}>
+              <span className="fx-footer-sources-label">
+                {t("budget.section.sources.label")}
+              </span>{" "}
+              {[
+                { label: "Eurostat gov_10a_main", url: "https://ec.europa.eu/eurostat/databrowser/view/gov_10a_main/default/table" },
+                { label: "Eurostat nama_10_gdp", url: "https://ec.europa.eu/eurostat/databrowser/view/nama_10_gdp/default/table" },
+                { label: "PLFSS", url: "https://www.securite-sociale.fr" },
+                { label: "PLF", url: "https://www.data.gouv.fr" },
+                { label: "OFGL", url: "https://www.ofgl.fr" },
+              ].map((s, i) => (
+                <span key={s.url}>
+                  {i > 0 ? ", " : ""}
+                  <a
+                    href={s.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    style={{ color: "var(--ink-2)", textDecoration: "underline", textUnderlineOffset: 3 }}
+                  >
+                    {s.label}
+                  </a>
+                </span>
+              ))}
+            </p>
             <Link href="/methode" className="fx-footer-sources-methode">
               {locale === "en" ? "Method →" : "Méthode →"}
             </Link>
           </div>
-          <p className="fx-footer-sources-note">
-            {t("budget.section.sources.note", { year: yearRef })}
-          </p>
-          <ul style={{ listStyle: "disc", paddingLeft: 18, margin: "8px 0 0", display: "flex", flexDirection: "column", gap: 6 }}>
-            <li style={{ fontSize: 13, color: "var(--muted)" }}>{t("budget.section.sources.eurostat")}</li>
-            <li style={{ fontSize: 13, color: "var(--muted)" }}>{t("budget.section.sources.gdp")}</li>
-            <li style={{ fontSize: 13, color: "var(--muted)" }}>{t("budget.section.sources.plfss")}</li>
-            <li style={{ fontSize: 13, color: "var(--muted)" }}>{t("budget.section.sources.plf")}</li>
-            <li style={{ fontSize: 13, color: "var(--muted)" }}>{t("budget.section.sources.ofgl")}</li>
-          </ul>
         </div>
       </section>
 

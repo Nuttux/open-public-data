@@ -117,18 +117,23 @@ body:has(.theme-fusion) > div.pb-24 { padding-bottom: 0 !important; }
   .theme-fusion .fx-nav-hidden { transform: none; transition: none; }
 }
 
-/* Prototype disclaimer strip — sits directly under the sticky nav on
-   non-flagship places (registry poc:true). Neutral, factual, low-key. */
+/* Prototype disclaimer strip — sits at the very top on non-flagship places
+   (registry poc:true), above the sticky nav. Fixed height so the hero fold can
+   subtract it (see --poc-h below). Neutral, factual, low-key. */
 .theme-fusion .fx-poc-banner {
   display: flex;
   align-items: center;
   gap: 10px;
-  padding: 6px 24px;
+  height: 34px;
+  box-sizing: border-box;
+  padding: 0 24px;
   background: var(--bg-warm, #f4efe3);
   border-bottom: 1px solid var(--rule);
   font-size: 12.5px;
-  line-height: 1.35;
+  line-height: 1.2;
   color: var(--muted-2);
+  overflow: hidden;
+  white-space: nowrap;
 }
 .theme-fusion .fx-poc-badge {
   flex: none;
@@ -5270,8 +5275,13 @@ body:has(.theme-fusion) > div.pb-24 { padding-bottom: 0 !important; }
 /* ─── ZONE FOLD : Hero + HeroDeck + HeroMarquee tiennent dans le 1er
  *     viewport, marquee collé au bas, peu importe la hauteur du browser.
  *     S'applique aussi à mobile (cards passent en carousel horizontal). */
+/* --poc-h = height of the top prototype banner (0 when absent). On POC places
+   the banner sits above the nav, so the fold must subtract it too, else the
+   bottom marquee is pushed below the viewport and looks cut. */
+.theme-fusion { --poc-h: 0px; }
+.theme-fusion:has(.fx-poc-banner) { --poc-h: 34px; }
 .theme-fusion .fx-hero-fold {
-  min-height: calc(100dvh - 56px); /* 100% viewport - navbar height */
+  min-height: calc(100dvh - 56px - var(--poc-h)); /* viewport − navbar − banner */
   display: flex;
   flex-direction: column;
   justify-content: space-between; /* répartit l'espace : Hero haut, Deck milieu, Marquee bas */
@@ -12042,9 +12052,9 @@ body:has(.theme-db-scrolly) { background: #fafaf7 !important; color: var(--p-ink
   display: grid;
   grid-template-columns: minmax(0, 1.4fr) minmax(280px, 1fr);
   grid-template-areas:
-    "num cta"
+    "num num"
     "text aside"
-    "advanced advanced"
+    "advanced cta"
     "openfisca openfisca"
     "deck deck";
   column-gap: 56px;
@@ -12056,6 +12066,9 @@ body:has(.theme-db-scrolly) { background: #fafaf7 !important; color: var(--p-ink
   display: flex;
   justify-content: flex-end;
   align-items: flex-start;
+  margin: 8px 0 0;
+  border-top: 1px solid var(--p-rule);
+  padding-top: 18px;
 }
 .theme-db-scrolly .db-p-hero-edit .db-p-hero-eyebrow {
   grid-area: eyebrow;
@@ -12418,8 +12431,8 @@ body:has(.theme-db-scrolly) { background: #fafaf7 !important; color: var(--p-ink
       "num"
       "text"
       "aside"
-      "cta"
       "advanced"
+      "cta"
       "openfisca"
       "deck";
     column-gap: 0;
@@ -12427,6 +12440,9 @@ body:has(.theme-db-scrolly) { background: #fafaf7 !important; color: var(--p-ink
   }
   .theme-db-scrolly .db-p-hero-cta-area {
     justify-content: flex-start;
+    border-top: 0;
+    padding-top: 0;
+    margin-top: 0;
   }
   .theme-db-scrolly .db-p-hero-text {
     font-size: clamp(28px, 7vw, 40px);
