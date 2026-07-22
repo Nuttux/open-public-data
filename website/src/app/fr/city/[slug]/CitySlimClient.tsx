@@ -48,12 +48,16 @@ export default function CitySlimClient({
   source,
   sourceUrl,
   labels,
+  budgetHref,
 }: {
   entry: AllCommuneEntry;
   year: number;
   source: string;
   sourceUrl: string;
   labels: Record<string, string>;
+  /** Set (by the server, from getCommuneCapabilities) when a budget-by-nature
+   *  page exists for this commune. Data-derived — no city list. */
+  budgetHref?: string;
 }) {
   const t = useT();
   const { locale } = useLocale();
@@ -83,10 +87,15 @@ export default function CitySlimClient({
             }
           />
 
-          <div style={{ marginTop: 28 }}>
+          <div style={{ marginTop: 28, display: "flex", gap: 12, alignItems: "center", flexWrap: "wrap" }}>
             <span className="fx-perimeter-badge">
               {t("city.slim.badge")}
             </span>
+            {budgetHref && (
+              <Link href={budgetHref} className="fx-cta-link">
+                {t("fx.natbud.kicker")} →
+              </Link>
+            )}
           </div>
 
           {/* KPI grid (4 essentials) */}

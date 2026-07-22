@@ -35,7 +35,17 @@ clean-targets:
 seeds:
   paris_public_open_data:
     +schema: seeds
-    
+
+    # -------------------------------------------------------------------------
+    # Nomenclature comptable par nature (M14/M57) — Block 1 budget national.
+    # Pin types: "60"/"10" must stay STRING (they are compte prefixes, not ints).
+    # -------------------------------------------------------------------------
+    seed_nomenclature_comptes:
+      +column_types:
+        nature_prefix: string
+        classe: string
+        is_ordre: boolean
+
     # -------------------------------------------------------------------------
     # Mapping thématiques (chapitre/fonction → thématique dashboard)
     # -------------------------------------------------------------------------
@@ -347,11 +357,20 @@ models:
         cost_bucket: "low-medium"
 
     # -------------------------------------------------------------------------
-    # National models (OFGL, DECP nat., etc.) — disabled; require seeds &
-    # raw sources we don't sync in the Paris-only pipeline.
+    # National models (DGFiP balances, OFGL, DECP nat., etc.).
+    # Folder default is DISABLED; individual budget models opt IN via
+    # `config(enabled=true)` (Block 1: budget-by-nature for all communes).
+    # Schemas co-located with the Paris families so national marts sit in the
+    # same *_marts dataset the exporters read.
     # -------------------------------------------------------------------------
     national:
       +enabled: false
+      staging:
+        +schema: staging
+      core:
+        +schema: analytics
+      marts:
+        +schema: marts
 
 # =============================================================================
 # Configuration des snapshots — reproductibilité des chiffres publiés

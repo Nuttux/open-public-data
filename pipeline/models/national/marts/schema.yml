@@ -2,7 +2,18 @@ version: 2
 
 models:
   - name: mart_sankey_national
-    description: "Données Sankey budget par (ville, année) - compatible BudgetData TypeScript"
+    description: "Lignes budget national par nature (source d'export). Grain (insee, année, section, sens, groupe, catégorie). Contrat JSON commun Paris/Marseille."
+    columns:
+      - name: code_insee
+        tests: [not_null]
+      - name: montant
+        tests: [not_null]
+
+  - name: mart_budget_reconciliation
+    description: "Self-check Step-1 : Σ(balances fonctionnement) vs OFGL montant_bp par (insee, année). Écarts relatifs dépense/recette. Adossé au test assert_budget_national_reconciliation."
+    columns:
+      - name: code_insee
+        tests: [not_null]
 
   - name: mart_benchmarking
     description: "KPIs financiers comparés - 5 villes avec métriques par habitant et rankings"

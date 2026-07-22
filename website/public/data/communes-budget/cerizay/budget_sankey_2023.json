@@ -1,0 +1,414 @@
+{
+  "year": 2023,
+  "type_budget": "execute",
+  "dataStatus": "COMPLET",
+  "axis": "nature",
+  "source": "Balances comptables DGFiP (axe nature)",
+  "source_url": "https://data.economie.gouv.fr/explore/dataset/balances-comptables-des-communes-en-2024/",
+  "totals": {
+    "recettes": 6910871.56,
+    "depenses": 5426344.880000001,
+    "solde": 1484526.6799999988
+  },
+  "nodes": [
+    {
+      "name": "Autres produits de gestion",
+      "category": "revenue"
+    },
+    {
+      "name": "Dotations et fonds propres",
+      "category": "revenue"
+    },
+    {
+      "name": "Dotations et subventions",
+      "category": "revenue"
+    },
+    {
+      "name": "Impôts et taxes",
+      "category": "revenue"
+    },
+    {
+      "name": "Produits des services",
+      "category": "revenue"
+    },
+    {
+      "name": "Produits exceptionnels",
+      "category": "revenue"
+    },
+    {
+      "name": "Produits financiers",
+      "category": "revenue"
+    },
+    {
+      "name": "Subventions d'investissement",
+      "category": "revenue"
+    },
+    {
+      "name": "Budget Cerizay",
+      "category": "central"
+    },
+    {
+      "name": "Achats et charges externes",
+      "category": "expense"
+    },
+    {
+      "name": "Autres immobilisations financières",
+      "category": "expense"
+    },
+    {
+      "name": "Charges de gestion courante",
+      "category": "expense"
+    },
+    {
+      "name": "Charges de personnel",
+      "category": "expense"
+    },
+    {
+      "name": "Charges exceptionnelles",
+      "category": "expense"
+    },
+    {
+      "name": "Charges financières",
+      "category": "expense"
+    },
+    {
+      "name": "Dépenses d'équipement",
+      "category": "expense"
+    },
+    {
+      "name": "Emprunts et dettes",
+      "category": "expense"
+    },
+    {
+      "name": "Impôts et taxes (charges)",
+      "category": "expense"
+    }
+  ],
+  "links": [
+    {
+      "source": "Dotations et subventions",
+      "target": "Budget Cerizay",
+      "value": 708546.07
+    },
+    {
+      "source": "Produits des services",
+      "target": "Budget Cerizay",
+      "value": 638523.16
+    },
+    {
+      "source": "Autres produits de gestion",
+      "target": "Budget Cerizay",
+      "value": 157110.37
+    },
+    {
+      "source": "Produits financiers",
+      "target": "Budget Cerizay",
+      "value": 89.35
+    },
+    {
+      "source": "Impôts et taxes",
+      "target": "Budget Cerizay",
+      "value": 3901596.12
+    },
+    {
+      "source": "Produits exceptionnels",
+      "target": "Budget Cerizay",
+      "value": 169.0
+    },
+    {
+      "source": "Dotations et fonds propres",
+      "target": "Budget Cerizay",
+      "value": 1373928.14
+    },
+    {
+      "source": "Subventions d'investissement",
+      "target": "Budget Cerizay",
+      "value": 130909.35
+    },
+    {
+      "source": "Budget Cerizay",
+      "target": "Charges de personnel",
+      "value": 2447512.1500000004
+    },
+    {
+      "source": "Budget Cerizay",
+      "target": "Charges de gestion courante",
+      "value": 381276.37999999995
+    },
+    {
+      "source": "Budget Cerizay",
+      "target": "Dépenses d'équipement",
+      "value": 642170.07
+    },
+    {
+      "source": "Budget Cerizay",
+      "target": "Achats et charges externes",
+      "value": 1223251.12
+    },
+    {
+      "source": "Budget Cerizay",
+      "target": "Charges exceptionnelles",
+      "value": 2215.0
+    },
+    {
+      "source": "Budget Cerizay",
+      "target": "Impôts et taxes (charges)",
+      "value": 106152.09
+    },
+    {
+      "source": "Budget Cerizay",
+      "target": "Emprunts et dettes",
+      "value": 532579.85
+    },
+    {
+      "source": "Budget Cerizay",
+      "target": "Autres immobilisations financières",
+      "value": 3070.0
+    },
+    {
+      "source": "Budget Cerizay",
+      "target": "Charges financières",
+      "value": 88118.22
+    }
+  ],
+  "drilldown": {
+    "revenue": {
+      "Dotations et subventions": [
+        {
+          "name": "Dotations, subventions et participations",
+          "value": 708546.07
+        }
+      ],
+      "Produits des services": [
+        {
+          "name": "Produits des services et du domaine",
+          "value": 638523.16
+        }
+      ],
+      "Autres produits de gestion": [
+        {
+          "name": "Autres produits de gestion courante",
+          "value": 157110.37
+        }
+      ],
+      "Produits financiers": [
+        {
+          "name": "Produits financiers",
+          "value": 89.35
+        }
+      ],
+      "Impôts et taxes": [
+        {
+          "name": "Impôts et taxes",
+          "value": 3901596.12
+        }
+      ],
+      "Produits exceptionnels": [
+        {
+          "name": "Produits exceptionnels",
+          "value": 169.0
+        }
+      ],
+      "Dotations et fonds propres": [
+        {
+          "name": "Dotations, fonds divers et réserves (dont FCTVA)",
+          "value": 1373928.14
+        }
+      ],
+      "Subventions d'investissement": [
+        {
+          "name": "Subventions d'investissement reçues",
+          "value": 130909.35
+        }
+      ]
+    },
+    "expenses": {
+      "Charges de personnel": [
+        {
+          "name": "Charges de personnel",
+          "value": 2447512.1500000004
+        }
+      ],
+      "Charges de gestion courante": [
+        {
+          "name": "Autres charges de gestion courante",
+          "value": 381276.37999999995
+        }
+      ],
+      "Dépenses d'équipement": [
+        {
+          "name": "Immobilisations corporelles",
+          "value": 577173.2899999999
+        },
+        {
+          "name": "Immobilisations incorporelles",
+          "value": 64996.78
+        }
+      ],
+      "Achats et charges externes": [
+        {
+          "name": "Achats et variations de stocks",
+          "value": 671369.92
+        },
+        {
+          "name": "Services extérieurs",
+          "value": 444863.60000000003
+        },
+        {
+          "name": "Autres services extérieurs",
+          "value": 107017.59999999999
+        }
+      ],
+      "Charges exceptionnelles": [
+        {
+          "name": "Charges exceptionnelles",
+          "value": 2215.0
+        }
+      ],
+      "Impôts et taxes (charges)": [
+        {
+          "name": "Impôts, taxes et versements assimilés",
+          "value": 106152.09
+        }
+      ],
+      "Emprunts et dettes": [
+        {
+          "name": "Emprunts et dettes assimilées",
+          "value": 532579.85
+        }
+      ],
+      "Autres immobilisations financières": [
+        {
+          "name": "Autres immobilisations financières",
+          "value": 3070.0
+        }
+      ],
+      "Charges financières": [
+        {
+          "name": "Charges financières",
+          "value": 88118.22
+        }
+      ]
+    }
+  },
+  "bySection": {
+    "Charges de personnel": {
+      "Fonctionnement": {
+        "total": 2447512.1500000004,
+        "items": [
+          {
+            "name": "Charges de personnel",
+            "value": 2447512.1500000004
+          }
+        ]
+      }
+    },
+    "Charges de gestion courante": {
+      "Fonctionnement": {
+        "total": 381276.37999999995,
+        "items": [
+          {
+            "name": "Autres charges de gestion courante",
+            "value": 381276.37999999995
+          }
+        ]
+      }
+    },
+    "Dépenses d'équipement": {
+      "Investissement": {
+        "total": 642170.07,
+        "items": [
+          {
+            "name": "Immobilisations corporelles",
+            "value": 577173.2899999999
+          },
+          {
+            "name": "Immobilisations incorporelles",
+            "value": 64996.78
+          }
+        ]
+      }
+    },
+    "Achats et charges externes": {
+      "Fonctionnement": {
+        "total": 1223251.12,
+        "items": [
+          {
+            "name": "Achats et variations de stocks",
+            "value": 671369.92
+          },
+          {
+            "name": "Services extérieurs",
+            "value": 444863.60000000003
+          },
+          {
+            "name": "Autres services extérieurs",
+            "value": 107017.59999999999
+          }
+        ]
+      }
+    },
+    "Charges exceptionnelles": {
+      "Fonctionnement": {
+        "total": 2215.0,
+        "items": [
+          {
+            "name": "Charges exceptionnelles",
+            "value": 2215.0
+          }
+        ]
+      }
+    },
+    "Impôts et taxes (charges)": {
+      "Fonctionnement": {
+        "total": 106152.09,
+        "items": [
+          {
+            "name": "Impôts, taxes et versements assimilés",
+            "value": 106152.09
+          }
+        ]
+      }
+    },
+    "Emprunts et dettes": {
+      "Investissement": {
+        "total": 532579.85,
+        "items": [
+          {
+            "name": "Emprunts et dettes assimilées",
+            "value": 532579.85
+          }
+        ]
+      }
+    },
+    "Autres immobilisations financières": {
+      "Investissement": {
+        "total": 3070.0,
+        "items": [
+          {
+            "name": "Autres immobilisations financières",
+            "value": 3070.0
+          }
+        ]
+      }
+    },
+    "Charges financières": {
+      "Fonctionnement": {
+        "total": 88118.22,
+        "items": [
+          {
+            "name": "Charges financières",
+            "value": 88118.22
+          }
+        ]
+      }
+    }
+  },
+  "generated_at": "2026-07-22T13:25:28.046123+00:00",
+  "source_pipeline": "sync_dgfip_balances_national.py → dbt national (mart_sankey_national) → export_budget_national.py",
+  "commune": {
+    "insee": "79062",
+    "slug": "cerizay",
+    "nom": "Cerizay"
+  }
+}

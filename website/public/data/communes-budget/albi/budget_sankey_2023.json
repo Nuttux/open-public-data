@@ -1,0 +1,411 @@
+{
+  "year": 2023,
+  "type_budget": "execute",
+  "dataStatus": "COMPLET",
+  "axis": "nature",
+  "source": "Balances comptables DGFiP (axe nature)",
+  "source_url": "https://data.economie.gouv.fr/explore/dataset/balances-comptables-des-communes-en-2024/",
+  "totals": {
+    "recettes": 88459732.26,
+    "depenses": 75736000.92999999,
+    "solde": 12723731.330000013
+  },
+  "nodes": [
+    {
+      "name": "Autres produits de gestion",
+      "category": "revenue"
+    },
+    {
+      "name": "Dotations et fonds propres",
+      "category": "revenue"
+    },
+    {
+      "name": "Dotations et subventions",
+      "category": "revenue"
+    },
+    {
+      "name": "Emprunts et dettes (R)",
+      "category": "revenue"
+    },
+    {
+      "name": "Impôts et taxes",
+      "category": "revenue"
+    },
+    {
+      "name": "Produits des services",
+      "category": "revenue"
+    },
+    {
+      "name": "Produits exceptionnels",
+      "category": "revenue"
+    },
+    {
+      "name": "Produits financiers",
+      "category": "revenue"
+    },
+    {
+      "name": "Subventions d'investissement",
+      "category": "revenue"
+    },
+    {
+      "name": "Budget Albi",
+      "category": "central"
+    },
+    {
+      "name": "Achats et charges externes",
+      "category": "expense"
+    },
+    {
+      "name": "Charges de gestion courante",
+      "category": "expense"
+    },
+    {
+      "name": "Charges de personnel",
+      "category": "expense"
+    },
+    {
+      "name": "Charges exceptionnelles",
+      "category": "expense"
+    },
+    {
+      "name": "Charges financières",
+      "category": "expense"
+    },
+    {
+      "name": "Dépenses d'équipement",
+      "category": "expense"
+    },
+    {
+      "name": "Emprunts et dettes (D)",
+      "category": "expense"
+    },
+    {
+      "name": "Impôts et taxes (charges)",
+      "category": "expense"
+    }
+  ],
+  "links": [
+    {
+      "source": "Produits financiers",
+      "target": "Budget Albi",
+      "value": 168971.87
+    },
+    {
+      "source": "Emprunts et dettes (R)",
+      "target": "Budget Albi",
+      "value": 9000480.0
+    },
+    {
+      "source": "Autres produits de gestion",
+      "target": "Budget Albi",
+      "value": 1744519.08
+    },
+    {
+      "source": "Impôts et taxes",
+      "target": "Budget Albi",
+      "value": 43854172.14
+    },
+    {
+      "source": "Subventions d'investissement",
+      "target": "Budget Albi",
+      "value": 3627479.74
+    },
+    {
+      "source": "Dotations et fonds propres",
+      "target": "Budget Albi",
+      "value": 8200735.98
+    },
+    {
+      "source": "Produits exceptionnels",
+      "target": "Budget Albi",
+      "value": 26222.51
+    },
+    {
+      "source": "Dotations et subventions",
+      "target": "Budget Albi",
+      "value": 14464815.569999998
+    },
+    {
+      "source": "Produits des services",
+      "target": "Budget Albi",
+      "value": 7372335.37
+    },
+    {
+      "source": "Budget Albi",
+      "target": "Achats et charges externes",
+      "value": 13873716.99
+    },
+    {
+      "source": "Budget Albi",
+      "target": "Charges de gestion courante",
+      "value": 11190169.35
+    },
+    {
+      "source": "Budget Albi",
+      "target": "Charges exceptionnelles",
+      "value": 48369.58
+    },
+    {
+      "source": "Budget Albi",
+      "target": "Dépenses d'équipement",
+      "value": 11667053.49
+    },
+    {
+      "source": "Budget Albi",
+      "target": "Impôts et taxes (charges)",
+      "value": 689995.11
+    },
+    {
+      "source": "Budget Albi",
+      "target": "Charges financières",
+      "value": 951000.0
+    },
+    {
+      "source": "Budget Albi",
+      "target": "Charges de personnel",
+      "value": 31617077.44999999
+    },
+    {
+      "source": "Budget Albi",
+      "target": "Emprunts et dettes (D)",
+      "value": 5698618.960000001
+    }
+  ],
+  "drilldown": {
+    "revenue": {
+      "Produits financiers": [
+        {
+          "name": "Produits financiers",
+          "value": 168971.87
+        }
+      ],
+      "Emprunts et dettes (R)": [
+        {
+          "name": "Emprunts et dettes assimilées",
+          "value": 9000480.0
+        }
+      ],
+      "Autres produits de gestion": [
+        {
+          "name": "Autres produits de gestion courante",
+          "value": 1744519.08
+        }
+      ],
+      "Impôts et taxes": [
+        {
+          "name": "Impôts et taxes",
+          "value": 43854172.14
+        }
+      ],
+      "Subventions d'investissement": [
+        {
+          "name": "Subventions d'investissement reçues",
+          "value": 3627479.74
+        }
+      ],
+      "Dotations et fonds propres": [
+        {
+          "name": "Dotations, fonds divers et réserves (dont FCTVA)",
+          "value": 8200735.98
+        }
+      ],
+      "Produits exceptionnels": [
+        {
+          "name": "Produits exceptionnels",
+          "value": 26222.51
+        }
+      ],
+      "Dotations et subventions": [
+        {
+          "name": "Dotations, subventions et participations",
+          "value": 14464815.569999998
+        }
+      ],
+      "Produits des services": [
+        {
+          "name": "Produits des services et du domaine",
+          "value": 7372335.37
+        }
+      ]
+    },
+    "expenses": {
+      "Achats et charges externes": [
+        {
+          "name": "Achats et variations de stocks",
+          "value": 6713378.67
+        },
+        {
+          "name": "Autres services extérieurs",
+          "value": 4444268.4
+        },
+        {
+          "name": "Services extérieurs",
+          "value": 2716069.92
+        }
+      ],
+      "Charges de gestion courante": [
+        {
+          "name": "Autres charges de gestion courante",
+          "value": 11190169.35
+        }
+      ],
+      "Charges exceptionnelles": [
+        {
+          "name": "Charges exceptionnelles",
+          "value": 48369.58
+        }
+      ],
+      "Dépenses d'équipement": [
+        {
+          "name": "Immobilisations en cours",
+          "value": 7488393.24
+        },
+        {
+          "name": "Immobilisations incorporelles",
+          "value": 3646531.4000000004
+        },
+        {
+          "name": "Immobilisations corporelles",
+          "value": 532128.8500000003
+        }
+      ],
+      "Impôts et taxes (charges)": [
+        {
+          "name": "Impôts, taxes et versements assimilés",
+          "value": 689995.11
+        }
+      ],
+      "Charges financières": [
+        {
+          "name": "Charges financières",
+          "value": 951000.0
+        }
+      ],
+      "Charges de personnel": [
+        {
+          "name": "Charges de personnel",
+          "value": 31617077.44999999
+        }
+      ],
+      "Emprunts et dettes (D)": [
+        {
+          "name": "Emprunts et dettes assimilées",
+          "value": 5698618.960000001
+        }
+      ]
+    }
+  },
+  "bySection": {
+    "Achats et charges externes": {
+      "Fonctionnement": {
+        "total": 13873716.99,
+        "items": [
+          {
+            "name": "Achats et variations de stocks",
+            "value": 6713378.67
+          },
+          {
+            "name": "Autres services extérieurs",
+            "value": 4444268.4
+          },
+          {
+            "name": "Services extérieurs",
+            "value": 2716069.92
+          }
+        ]
+      }
+    },
+    "Charges de gestion courante": {
+      "Fonctionnement": {
+        "total": 11190169.35,
+        "items": [
+          {
+            "name": "Autres charges de gestion courante",
+            "value": 11190169.35
+          }
+        ]
+      }
+    },
+    "Charges exceptionnelles": {
+      "Fonctionnement": {
+        "total": 48369.58,
+        "items": [
+          {
+            "name": "Charges exceptionnelles",
+            "value": 48369.58
+          }
+        ]
+      }
+    },
+    "Dépenses d'équipement": {
+      "Investissement": {
+        "total": 11667053.49,
+        "items": [
+          {
+            "name": "Immobilisations en cours",
+            "value": 7488393.24
+          },
+          {
+            "name": "Immobilisations incorporelles",
+            "value": 3646531.4000000004
+          },
+          {
+            "name": "Immobilisations corporelles",
+            "value": 532128.8500000003
+          }
+        ]
+      }
+    },
+    "Impôts et taxes (charges)": {
+      "Fonctionnement": {
+        "total": 689995.11,
+        "items": [
+          {
+            "name": "Impôts, taxes et versements assimilés",
+            "value": 689995.11
+          }
+        ]
+      }
+    },
+    "Charges financières": {
+      "Fonctionnement": {
+        "total": 951000.0,
+        "items": [
+          {
+            "name": "Charges financières",
+            "value": 951000.0
+          }
+        ]
+      }
+    },
+    "Charges de personnel": {
+      "Fonctionnement": {
+        "total": 31617077.44999999,
+        "items": [
+          {
+            "name": "Charges de personnel",
+            "value": 31617077.44999999
+          }
+        ]
+      }
+    },
+    "Emprunts et dettes (D)": {
+      "Investissement": {
+        "total": 5698618.960000001,
+        "items": [
+          {
+            "name": "Emprunts et dettes assimilées",
+            "value": 5698618.960000001
+          }
+        ]
+      }
+    }
+  },
+  "generated_at": "2026-07-22T13:25:28.048196+00:00",
+  "source_pipeline": "sync_dgfip_balances_national.py → dbt national (mart_sankey_national) → export_budget_national.py",
+  "commune": {
+    "insee": "81004",
+    "slug": "albi",
+    "nom": "Albi"
+  }
+}

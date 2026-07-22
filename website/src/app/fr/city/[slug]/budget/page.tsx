@@ -1,0 +1,86 @@
+import type { Metadata } from "next";
+import { notFound } from "next/navigation";
+import "@/app/fusion.css";
+
+import { loadBudgetIndex, loadBudgetPageData } from "@/lib/fusion-data";
+import { findCommuneByAny } from "@/lib/all-communes";
+import { getCityOrNull } from "@/lib/cities";
+import { getCommuneCapabilities, communeBudgetDir } from "@/lib/commune-capabilities";
+import { buildLocaleAwareMetadata } from "@/lib/seo";
+import CommuneBudgetClient from "./CommuneBudgetClient";
+
+// National tail communes render on demand (the rich top-N cities keep their own
+// physical /fr/city/{paris,marseille}/budget routes, which take precedence).
+export const dynamicParams = true;
+export function generateStaticParams(): { slug: string }[] {
+  return [];
+}
+
+const SOURCE_URL =
+  "https://data.economie.gouv.fr/explore/dataset/balances-comptables-des-communes-en-2024/";
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}): Promise<Metadata> {
+  const { slug } = await params;
+  const commune = findCommuneByAny(slug);
+  const nom = commune?.nom ?? slug;
+  return buildLocaleAwareMetadata({
+    title: `Budget de ${nom} (par nature) — finances locales`,
+    description: `Recettes et dépenses de la commune de ${nom} par nature comptable. Source : balances comptables DGFiP (axe nature).`,
+    en: {
+      title: `${nom} budget (by nature) — local finances`,
+      description: `Revenue and spending of ${nom} by accounting nature. Source: DGFiP balance-sheet accounts (nature axis).`,
+    },
+    path: `/fr/city/${slug}/budget`,
+  });
+}
+
+type SP = { year?: string };
+
+export default async function CommuneBudgetPage({
+  params,
+  searchParams,
+}: {
+  params: Promise<{ slug: string }>;
+  searchParams: Promise<SP>;
+}) {
+  const { slug } = await params;
+  const sp = await searchParams;
+
+  // Rich cities (Paris/Marseille) own their functional budget pages elsewhere.
+  if (getCityOrNull(slug)) notFound();
+
+  // DATA-DERIVED gate — no city list. Renders iff the national budget-by-nature
+  // export exists for this commune.
+  const caps = getCommuneCapabilities(slug);
+  if (!caps.budget.nature) notFound();
+
+  const commune = findCommuneByAny(slug);
+  if (!commune) notFound();
+
+  const city = communeBudgetDir(slug);
+  const index = loadBudgetIndex(city);
+  const requestedYear = sp.year ? Number(sp.year) : undefined;
+  const data = loadBudgetPageData(requestedYear, city);
+
+  return (
+    <CommuneBudgetClient
+      commune={{
+        slug,
+        insee: commune.insee,
+        nom: commune.nom,
+        dep_name: commune.dep_name,
+        reg_name: commune.reg_name,
+        pop: commune.pop,
+      }}
+      data={data}
+      availableYears={index.availableYears}
+      year={data.year}
+      hasFonction={caps.budget.fonction}
+      sourceUrl={SOURCE_URL}
+    />
+  );
+}

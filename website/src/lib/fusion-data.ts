@@ -3824,7 +3824,11 @@ export function loadBudgetPageData(requestedYear?: number, city: string = "paris
     ? requestedYear
     : index.latestYear;
   const sankey = readJson<BudgetSankeyFull>(cityJsonPath(city, `budget_sankey_${year}.json`));
-  const centralNode = centralNodeFor(city);
+  // Prefer the hub node declared in the JSON (category === "central"); this makes
+  // the loader robust for any commune (multi-word slugs like "les-sables-d-olonne"
+  // would otherwise be mis-reconstructed). Falls back to the slug-based name.
+  const centralNode =
+    sankey.nodes?.find((n) => n.category === "central")?.name ?? centralNodeFor(city);
 
   const byYear = Object.fromEntries(index.summary.map((s) => [s.year, s]));
   // Reference year for YoY deltas: prefer latestCompleteYear (Paris CA);
@@ -3981,7 +3985,11 @@ export function loadBudgetPoste(slug: string, requestedYear?: number, city: stri
     ? requestedYear
     : index.latestYear;
   const sankey = readJson<BudgetSankeyFull>(cityJsonPath(city, `budget_sankey_${year}.json`));
-  const centralNode = centralNodeFor(city);
+  // Prefer the hub node declared in the JSON (category === "central"); this makes
+  // the loader robust for any commune (multi-word slugs like "les-sables-d-olonne"
+  // would otherwise be mis-reconstructed). Falls back to the slug-based name.
+  const centralNode =
+    sankey.nodes?.find((n) => n.category === "central")?.name ?? centralNodeFor(city);
 
   const depLink = sankey.links.find(
     (l) => l.source === centralNode && slugifyLabel(l.target) === slug,

@@ -1,0 +1,42 @@
+{
+  "generated_at": "2026-07-22T13:25:28.046123+00:00",
+  "source_pipeline": "sync_dgfip_balances_national.py → dbt national (mart_sankey_national) → export_budget_national.py",
+  "source": "Balances comptables DGFiP (axe nature)",
+  "source_url": "https://data.economie.gouv.fr/explore/dataset/balances-comptables-des-communes-en-2024/",
+  "axis": "nature",
+  "commune": {
+    "insee": "79062",
+    "slug": "cerizay",
+    "nom": "Cerizay"
+  },
+  "availableYears": [
+    2024,
+    2023
+  ],
+  "latestYear": 2024,
+  "latestCompleteYear": 2024,
+  "completeYears": [
+    2024,
+    2023
+  ],
+  "partialYears": [],
+  "votedYears": [],
+  "summary": [
+    {
+      "year": 2024,
+      "type_budget": "execute",
+      "dataStatus": "COMPLET",
+      "depenses": 7142953.81,
+      "recettes": 7780259.78,
+      "solde": 637305.9700000007
+    },
+    {
+      "year": 2023,
+      "type_budget": "execute",
+      "dataStatus": "COMPLET",
+      "depenses": 5426344.880000001,
+      "recettes": 6910871.56,
+      "solde": 1484526.6799999988
+    }
+  ]
+}

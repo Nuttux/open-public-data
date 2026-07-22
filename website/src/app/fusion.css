@@ -15447,3 +15447,28 @@ body:has(.theme-db-scrolly) { background: #fafaf7 !important; color: var(--p-ink
   .theme-fusion .fx-frise-watermark { font-size: 96px; }
   .theme-fusion .fx-frise-track { padding: 8px 18px 0; }
 }
+
+/* ── Budget par nature (communes nationales — Block 1) ────────────────────── */
+.theme-fusion .fx-cta-link {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 8px 16px; border-radius: 999px;
+  background: var(--fx-ink, #0a0a0a); color: #fff;
+  font-weight: 600; font-size: 14px; text-decoration: none;
+  transition: opacity .15s ease;
+}
+.theme-fusion .fx-cta-link:hover { opacity: .82; }
+.theme-fusion .fx-yearpicker {
+  display: flex; gap: 6px; flex-wrap: wrap; margin: 24px 0 8px;
+}
+.theme-fusion .fx-yearpicker a {
+  padding: 6px 14px; border-radius: 999px;
+  border: 1px solid var(--fx-line, #e2e2e2);
+  color: var(--fx-ink, #0a0a0a); text-decoration: none;
+  font-size: 14px; font-variant-numeric: tabular-nums;
+}
+.theme-fusion .fx-yearpicker a.is-active {
+  background: var(--fx-ink, #0a0a0a); color: #fff;
+  border-color: var(--fx-ink, #0a0a0a);
+}
+.theme-fusion .fx-sankey-wrap { margin: 40px 0; overflow-x: auto; }
+.theme-fusion .fx-note-muted { color: var(--fx-muted, #6b6b6b); font-style: italic; }

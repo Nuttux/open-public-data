@@ -1319,6 +1319,23 @@ const fr: Record<string, string> = {
   'fx.land.byline.github': 'GitHub ↗',
   'fx.land.byline.contact': 'Contact',
 
+  // ── Budget par nature (communes nationales — balances DGFiP) ────────────────
+  'fx.natbud.kicker': 'Budget par nature',
+  'fx.natbud.hab': 'habitants',
+  'fx.natbud.lede': 'Recettes et dépenses de la commune, ventilées par nature comptable (personnel, achats, subventions, dette, équipement…). Reconstruites à partir des balances comptables publiées par la DGFiP.',
+  'fx.natbud.recettes': 'Recettes',
+  'fx.natbud.depenses': 'Dépenses',
+  'fx.natbud.solde': 'Solde',
+  'fx.natbud.depenses_hab': 'Dépenses / habitant',
+  'fx.natbud.recettes_title': 'D’où vient l’argent',
+  'fx.natbud.depenses_title': 'Où il va',
+  'fx.natbud.year_label': 'Choisir l’année',
+  'fx.natbud.nature_note': 'Vue par nature comptable — ce que la commune paie (personnel, fournitures, dette…), pas par politique publique. La ventilation par fonction (écoles, voirie, culture…) n’est pas publiée au niveau national ; elle apparaît ici dès qu’une source communale ou une extraction de document budgétaire l’apporte.',
+  'fx.natbud.source': 'Balances comptables DGFiP (axe nature)',
+  'fx.natbud.fonction_title': 'Budget par fonction',
+  'fx.natbud.fonction_present': 'Ventilation par politique publique disponible pour cette commune.',
+  'fx.natbud.fonction_absent': 'Ventilation par fonction (écoles, voirie, culture…) non disponible pour cette commune : aucune source nationale ne la fournit. Elle s’ajoutera automatiquement dès qu’un budget communal ou une extraction de document est ingéré.',
+
   // ── Budget page ─────────────────────────────────────────────────────────────
   'fx.bud.kicker': '01 · Budget',
   'fx.bud.title.before': 'Le ',

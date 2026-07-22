@@ -14,6 +14,7 @@ import {
   loadAllCommunesSource,
 } from "@/lib/all-communes";
 import { buildLocaleAwareMetadata } from "@/lib/seo";
+import { getCommuneCapabilities } from "@/lib/commune-capabilities";
 import CityClient from "./CityClient";
 import CitySlimClient from "./CitySlimClient";
 
@@ -95,6 +96,9 @@ export default async function CityPage({
     const src = loadAllCommunesSource();
     if (!src) notFound();
     const labels = loadAllCommunesKpiLabels();
+    // Data-derived capability — surfaces the budget-by-nature page iff its export
+    // exists for this commune. No city list; adding data flips the link on.
+    const caps = getCommuneCapabilities(slim.slug);
     return (
       <CitySlimClient
         entry={slim}
@@ -102,6 +106,7 @@ export default async function CityPage({
         source={src.source}
         sourceUrl={src.source_url}
         labels={labels}
+        budgetHref={caps.budget.nature ? `/fr/city/${slim.slug}/budget` : undefined}
       />
     );
   }

@@ -2,9 +2,9 @@ version: 2
 
 models:
   - name: stg_dgfip_balances
-    description: "Balances comptables DGFiP nettoyées - 1 ligne = 1 compte M57 par commune/année"
+    description: "Balances comptables DGFiP nettoyées (budget principal cbudg=1, M14+M57) - 1 ligne = 1 compte par commune/année. Dim commune jointe depuis OFGL par SIREN (ungated)."
     columns:
-      - name: commune_slug
+      - name: code_insee
         tests: [not_null]
       - name: annee
         tests: [not_null]
@@ -12,9 +12,11 @@ models:
         tests: [not_null]
 
   - name: stg_ofgl_communes
-    description: "Agrégats OFGL nettoyés - KPIs financiers par commune/année"
+    description: "OFGL base-communes-consolidée (LONG) - univers commune + agrégats de réconciliation (montant_bp). 1 ligne = commune × année × agrégat."
     columns:
-      - name: commune_slug
+      - name: code_insee
+        tests: [not_null]
+      - name: annee
         tests: [not_null]
 
   - name: stg_decp_marches
