@@ -7,7 +7,9 @@ import { AnalyticsProvider as ContextProvider } from '@/lib/analyticsContext';
 import { getClickCoords } from '@/lib/analytics-helpers';
 
 const POSTHOG_KEY = process.env.NEXT_PUBLIC_POSTHOG_KEY;
-const POSTHOG_HOST = process.env.NEXT_PUBLIC_POSTHOG_HOST || 'https://eu.i.posthog.com';
+// Default to the same-origin reverse proxy (see next.config rewrites) so ad
+// blockers can't drop events. Override with NEXT_PUBLIC_POSTHOG_HOST if needed.
+const POSTHOG_HOST = process.env.NEXT_PUBLIC_POSTHOG_HOST || '/ingest';
 
 const REPLAY_OPTIN_KEY = '_fod_replay_optin';
 const OPTOUT_KEY = '_fod_analytics_optout';
@@ -59,6 +61,7 @@ function initPostHog() {
 
   posthog.init(POSTHOG_KEY, {
     api_host: POSTHOG_HOST,
+    ui_host: 'https://eu.posthog.com',
     persistence: optedInReplay ? 'localStorage+cookie' : 'memory',
     disable_session_recording: !optedInReplay,
     capture_pageview: true,

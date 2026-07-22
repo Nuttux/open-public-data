@@ -10,6 +10,16 @@ import type { NextConfig } from 'next';
  * directly to the final destination (no chains).
  */
 const nextConfig: NextConfig = {
+  // PostHog reverse proxy — analytics ride our own domain (/ingest/*) instead
+  // of eu.i.posthog.com, so ad blockers can't drop events. Keeps visitor
+  // counts accurate (they undercount ~20-40% otherwise for this audience).
+  skipTrailingSlashRedirect: true,
+  async rewrites() {
+    return [
+      { source: '/ingest/static/:path*', destination: 'https://eu-assets.i.posthog.com/static/:path*' },
+      { source: '/ingest/:path*', destination: 'https://eu.i.posthog.com/:path*' },
+    ];
+  },
   async redirects() {
     return [
       // Blog rename (kept from earlier)
