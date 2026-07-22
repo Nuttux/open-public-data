@@ -4,6 +4,7 @@ import overridesRaw from "@/data/commune-overrides.json";
 import { communeHasBudgetNature } from "@/lib/commune-budget";
 import { communeHasMarches } from "@/lib/commune-marches";
 import { communeHasInvestissements } from "@/lib/commune-investissements";
+import { communeHasEvolution } from "@/lib/commune-evolution";
 
 /**
  * Capability matrix — national-source-first, DATA-DERIVED.
@@ -59,6 +60,8 @@ export type CommuneCapabilities = {
   marches: boolean;
   /** National tier — investissements (DGFiP balances, section investissement). */
   investissements: boolean;
+  /** National tier — évolution pluriannuelle (OFGL, ≥2 years). */
+  evolution: boolean;
   /** True if the commune has at least one renderable page/layer. */
   any: boolean;
 };
@@ -86,11 +89,13 @@ export function getCommuneCapabilities(slug: string): CommuneCapabilities {
   const budget: BudgetCapability = { nature, fonction };
   const marches = !hidden.has("marches") && communeHasMarches(slug);
   const investissements = !hidden.has("investissements") && communeHasInvestissements(slug);
+  const evolution = !hidden.has("evolution") && communeHasEvolution(slug);
   return {
     slug,
     budget,
     marches,
     investissements,
-    any: nature || fonction || marches || investissements,
+    evolution,
+    any: nature || fonction || marches || investissements || evolution,
   };
 }

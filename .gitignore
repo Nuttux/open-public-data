@@ -100,3 +100,5 @@ pipeline/seeds/seed_match_projet_marches.csv
 website/public/data/communes-marches/
 
 website/public/data/communes-investissements/
+
+website/public/data/communes-evolution/

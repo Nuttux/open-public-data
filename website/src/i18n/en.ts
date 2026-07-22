@@ -1363,6 +1363,14 @@ const en: Record<string, string> = {
   'fx.natinv.dep_title': 'Where investment goes',
   'fx.natinv.source': 'DGFiP balance-sheet accounts (investment)',
   'fx.natinv.link': 'Investment',
+  'fx.natev.kicker': 'Finances over time',
+  'fx.natev.lede': 'The commune’s financial trajectory over 7 years: operating revenue and spending, outstanding debt, per resident. Source: OFGL.',
+  'fx.natev.recettes': 'Revenue / res.',
+  'fx.natev.depenses': 'Spending / res.',
+  'fx.natev.dette': 'Debt / res.',
+  'fx.natev.dette_delta': 'Change in debt per resident:',
+  'fx.natev.source': 'OFGL (consolidated commune base)',
+  'fx.natev.link': 'Over time',
 
   // ── Budget page ─────────────────────────────────────────────────────────────
   'fx.bud.kicker': '01 · Budget',

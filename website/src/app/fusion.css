@@ -15502,3 +15502,10 @@ body:has(.theme-db-scrolly) { background: #fafaf7 !important; color: var(--p-ink
 .theme-fusion .fx-marche-meta { grid-column: 1; font-size: 13px; color: var(--fx-muted, #6b6b6b); }
 .theme-fusion .fx-marche-val { grid-column: 2; grid-row: 1 / span 2; font-weight: 700; color: #c12323; align-self: center; }
 .theme-fusion .fx-natlinks { display: flex; gap: 10px; flex-wrap: wrap; margin: 20px 0 4px; }
+
+/* ── Évolution (trajectoire SVG) ──────────────────────────────────────────── */
+.theme-fusion .fx-evolchart { width: 100%; height: auto; }
+.theme-fusion .fx-evol-axis { font-size: 11px; fill: var(--fx-muted, #9a9a9a); font-variant-numeric: tabular-nums; }
+.theme-fusion .fx-evol-legend { display: flex; gap: 18px; flex-wrap: wrap; margin: 20px 0 4px; }
+.theme-fusion .fx-evol-leg { display: inline-flex; align-items: center; gap: 7px; font-size: 14px; color: var(--fx-muted, #4a4a4a); }
+.theme-fusion .fx-evol-dot { width: 12px; height: 12px; border-radius: 3px; display: inline-block; }

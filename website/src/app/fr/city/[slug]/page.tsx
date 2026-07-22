@@ -139,6 +139,7 @@ export default async function CityPage({
             investissementsHref={
               caps.investissements ? `/fr/city/${slim.slug}/investissements` : undefined
             }
+            evolutionHref={caps.evolution ? `/fr/city/${slim.slug}/evolution` : undefined}
           />
         );
       }

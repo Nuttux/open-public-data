@@ -1363,6 +1363,14 @@ const fr: Record<string, string> = {
   'fx.natinv.dep_title': 'Où va l’investissement',
   'fx.natinv.source': 'Balances comptables DGFiP (investissement)',
   'fx.natinv.link': 'Investissements',
+  'fx.natev.kicker': 'Évolution des finances',
+  'fx.natev.lede': 'La trajectoire financière de la commune sur 7 ans : recettes et dépenses de fonctionnement, encours de dette, par habitant. Source OFGL.',
+  'fx.natev.recettes': 'Recettes / hab',
+  'fx.natev.depenses': 'Dépenses / hab',
+  'fx.natev.dette': 'Dette / hab',
+  'fx.natev.dette_delta': 'Variation de la dette par habitant :',
+  'fx.natev.source': 'OFGL (base communes consolidée)',
+  'fx.natev.link': 'Évolution',
 
   // ── Budget page ─────────────────────────────────────────────────────────────
   'fx.bud.kicker': '01 · Budget',
