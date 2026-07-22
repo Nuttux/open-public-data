@@ -1,4 +1,5 @@
 import "server-only";
+import { Storage } from "@google-cloud/storage";
 import type { BudgetPageData } from "@/lib/fusion-data";
 import manifest from "@/data/communes-budget-manifest.json";
 
@@ -6,13 +7,15 @@ import manifest from "@/data/communes-budget-manifest.json";
  * National commune budget-by-nature — DELIVERY.
  *
  * The per-commune JSON (~10 KB each, ~828 MB total for 35k communes) lives in a
- * public GCS bucket, NOT the repo. The Next server fetches a commune's file
- * during render (SSR/ISR), so the visitor only ever receives HTML — the bucket
- * is transparent to them. Only a small slug→years manifest is committed, so the
- * capability resolver stays local + instant (no per-request bucket probe).
+ * PRIVATE GCS bucket, NOT the repo. The Next server reads a commune's file with
+ * GCP credentials (ADC locally; a service account on the host) during render
+ * (SSR/ISR), so the visitor only ever receives HTML. Only a small slug→years
+ * manifest is committed, so the capability resolver stays local + instant.
  *
- * Bucket is public-read; override the base with COMMUNE_DATA_BASE for a private
- * CDN/proxy without touching callers.
+ * Private-by-design: a fork gets the code + manifest but NOT the data, and no
+ * credentials — so it can't stand up a working instance without doing the real
+ * work (own GCP project, run the pipeline, upload, configure creds). Self-host
+ * is documented; fork-and-deploy is not a shortcut.
  */
 
 type Manifest = {
@@ -24,10 +27,20 @@ type Manifest = {
 
 const M = manifest as Manifest;
 
-const BUCKET_BASE =
-  process.env.COMMUNE_DATA_BASE ??
-  M.bucket ??
-  "https://storage.googleapis.com/qipu-communes-budget/communes-budget";
+const BUCKET_NAME = process.env.COMMUNE_DATA_BUCKET ?? "qipu-communes-budget";
+const BUCKET_PREFIX = process.env.COMMUNE_DATA_PREFIX ?? "communes-budget";
+
+// Lazy singleton — GCP creds via Application Default Credentials (gcloud ADC in
+// dev; GOOGLE_APPLICATION_CREDENTIALS / a service account on the host).
+let _storage: Storage | null = null;
+function gcs(): Storage {
+  if (!_storage) {
+    _storage = new Storage({
+      projectId: process.env.GCP_PROJECT ?? process.env.BQ_PROJECT ?? "open-data-france-484717",
+    });
+  }
+  return _storage;
+}
 
 // ── Manifest-backed capability (local, sync) ───────────────────────────────
 export function communeHasBudgetNature(slug: string): boolean {
@@ -60,15 +73,16 @@ type IndexFull = {
 };
 
 const memo = new Map<string, unknown>();
-async function fetchJson<T>(url: string): Promise<T | null> {
-  if (memo.has(url)) return memo.get(url) as T | null;
+/** Read a JSON object from the private bucket by object path (authenticated). */
+async function readJson<T>(objectPath: string): Promise<T | null> {
+  if (memo.has(objectPath)) return memo.get(objectPath) as T | null;
   try {
-    const res = await fetch(url, { next: { revalidate: 86400 } });
-    const val = res.ok ? ((await res.json()) as T) : null;
-    memo.set(url, val);
+    const [buf] = await gcs().bucket(BUCKET_NAME).file(objectPath).download();
+    const val = JSON.parse(buf.toString("utf8")) as T;
+    memo.set(objectPath, val);
     return val;
   } catch {
-    memo.set(url, null);
+    memo.set(objectPath, null); // missing object or auth error → treat as absent
     return null;
   }
 }
@@ -82,13 +96,13 @@ export async function loadCommuneBudget(
   slug: string,
   requestedYear?: number,
 ): Promise<{ data: BudgetPageData; availableYears: number[]; year: number } | null> {
-  const index = await fetchJson<IndexFull>(`${BUCKET_BASE}/${slug}/budget_index.json`);
+  const index = await readJson<IndexFull>(`${BUCKET_PREFIX}/${slug}/budget_index.json`);
   if (!index) return null;
   const year =
     requestedYear && index.availableYears.includes(requestedYear) ? requestedYear : index.latestYear;
-  const sankey = await fetchJson<SankeyFull>(`${BUCKET_BASE}/${slug}/budget_sankey_${year}.json`);
+  const sankey = await readJson<SankeyFull>(`${BUCKET_PREFIX}/${slug}/budget_sankey_${year}.json`);
   if (!sankey) return null;
-  const prev = await fetchJson<SankeyFull>(`${BUCKET_BASE}/${slug}/budget_sankey_${year - 1}.json`);
+  const prev = await readJson<SankeyFull>(`${BUCKET_PREFIX}/${slug}/budget_sankey_${year - 1}.json`);
 
   const central =
     sankey.nodes?.find((n) => n.category === "central")?.name ?? `Budget ${slug}`;

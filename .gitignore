@@ -82,4 +82,7 @@ __pycache__/
 # National budget-by-nature exports — 828MB/104k files at full scale.
 # Delivery is being decided (sharding/API); do NOT commit the bulk. The 2 test
 # communes (albi, cerizay) are already tracked from Block 1 and stay committed.
-website/public/data/communes-budget/
+# Site data (JSON exports, ~123MB) lives in the PRIVATE gs://qipu-site-data
+# bucket, hydrated at build (npm run prebuild). Commune budget JSON (bucket
+# gs://qipu-communes-budget) is fetched at runtime. Repo carries none of it.
+website/public/data/

@@ -4,6 +4,8 @@
   "private": true,
   "scripts": {
     "dev": "next dev --webpack",
+    "hydrate:data": "node scripts/hydrate-data.mjs",
+    "prebuild": "node scripts/hydrate-data.mjs",
     "build": "next build",
     "start": "next start",
     "lint": "eslint --max-warnings 0",
@@ -17,6 +19,7 @@
   "dependencies": {
     "@anthropic-ai/sdk": "^0.90.0",
     "@google-cloud/bigquery": "^8.1.1",
+    "@google-cloud/storage": "^7.21.0",
     "@mdx-js/loader": "^3.1.1",
     "@mdx-js/react": "^3.1.1",
     "@next/mdx": "^16.1.6",
