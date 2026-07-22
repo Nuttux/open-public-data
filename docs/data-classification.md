@@ -47,11 +47,12 @@ vient d'un mapping *règle* `chapitre/fonction → thématique` (seed committé,
 reproductible). C'est déterministe → on le garde **public** et on publie le seed.
 C'est le socle financier phare : il doit rester auditable.
 
-**⚠️ Décision à confirmer (subventions / qui-reçoit)** : les *montants* de
-subventions sont publics (SCDL), mais la thématique + le bénéficiaire canonique
-sont du LLM. Interim = privé (protège le moat). Alternative = éclater pour
-exposer publiquement montant+bénéficiaire brut, garder privé thématique/canonique.
-À trancher selon l'importance de qui-reçoit comme vitrine publique.
+**✅ Décision tranchée (subventions / qui-reçoit, 2026-07-22) : PUBLIC & auditable.**
+Les subventions restent **publiques** — montants (SCDL) auditables ; la thématique
+LLM reste affichée comme *surcouche éditoriale étiquetée* (pas un fait déterministe).
+On ne tague donc PAS les marts subventions `enriched`. Le cache LLM brut
+(`seed_cache_thematique_beneficiaires`) part quand même en privé (bulk = moat), mais
+les valeurs appliquées restent visibles par subvention sur qui-reçoit.
 
 ## FINANCIAL — public (tout le reste)
 
@@ -62,14 +63,16 @@ marchés (par nature, fournisseurs via lookup SIRET public), data-availability,
 SIRENE (registre INSEE public), Marseille budget. Les mappings-seed déterministes
 (`stg_mapping_*`) sont publics : leur source est un CSV committé.
 
-## ⚠️ Couche non encore traitée — enrichissement committé en SEED
+## ✅ Caches d'enrichissement — sortis du repo (2026-07-22)
 
-Certains caches d'enrichissement sont **committés comme seeds CSV** dans
-`pipeline/seeds/` (`seed_cache_geo_ap`, `seed_cache_thematique_beneficiaires`,
-`seed_cache_siret_by_name`, `seed_lieux_connus`, `seed_match_projet_marches`).
-Tant qu'ils sont dans le repo public, l'enrichissement est **déjà forkable** —
-l'IAM sur les datasets de sortie ne suffit pas. Prochaine couche : sortir ces
-seeds du repo (source privée / bucket), comme on l'a fait pour `public/data`.
+Les caches générés committés en seed CSV (`seed_cache_geo_ap`,
+`seed_cache_thematique_beneficiaires`, `seed_cache_siret_by_name`,
+`seed_lieux_connus`, `seed_match_projet_marches`, ~3,2 Mo) sont désormais dans
+`gs://qipu-site-data/seeds-private` (privé), git-ignorés, hydratés par
+`pipeline/scripts/sync/hydrate_private_seeds.sh` **avant `dbt seed`**.
+**Trust-safe** : les *scripts* d'enrichissement + prompts (`pipeline/scripts/enrich/`)
+restent dans le repo — la MÉTHODE est ouverte, seuls les OUTPUTS générés sont privés.
+Un self-héberge lance les scripts pour régénérer ses propres caches.
 
 ## Rollout prod (à faire délibérément)
 

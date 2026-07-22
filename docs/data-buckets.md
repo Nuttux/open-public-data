@@ -53,3 +53,13 @@ budget pages resolve to `notFound()`. That is expected — not a bug.
 
 You get a fully working instance — you just have to do the real work (own data,
 own pipeline run, own credentials), which is the point.
+
+## Private enrichment seed-caches
+
+The generated enrichment caches (LLM geocode/thematique, fuzzy SIRET/marché
+matching, curated lieux) are **not committed** — they live in
+`gs://qipu-site-data/seeds-private` and are pulled into `pipeline/seeds/` by
+`pipeline/scripts/sync/hydrate_private_seeds.sh` **before `dbt seed`**. The
+enrich *scripts + prompts* (`pipeline/scripts/enrich/`) stay in the repo, so the
+method is open — only the outputs are private. A self-hoster either hydrates
+(with credentials) or re-runs the enrich scripts to regenerate their own caches.

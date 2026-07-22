@@ -86,3 +86,12 @@ __pycache__/
 # bucket, hydrated at build (npm run prebuild). Commune budget JSON (bucket
 # gs://qipu-communes-budget) is fetched at runtime. Repo carries none of it.
 website/public/data/
+
+# Generated enrichment caches (LLM/geocode/fuzzy-match/lieux) — the moat. Live in
+# gs://qipu-site-data/seeds-private, hydrated by pipeline/scripts/sync/hydrate_private_seeds.sh
+# before `dbt seed`. The enrich SCRIPTS + prompts stay in the repo (method open).
+pipeline/seeds/seed_cache_geo_ap.csv
+pipeline/seeds/seed_cache_siret_by_name.csv
+pipeline/seeds/seed_cache_thematique_beneficiaires.csv
+pipeline/seeds/seed_lieux_connus.csv
+pipeline/seeds/seed_match_projet_marches.csv
