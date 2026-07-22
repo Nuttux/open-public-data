@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-21T14:25:53.955665+00:00",
+ "generated_at": "2026-07-22T15:04:53.715933+00:00",
  "source_pipeline": "sf_place_candidates.json → sync_ia_sf.py + link_sf_places.py + fetch_sf_place_photos.py → export_sf_places.py",
  "unit": "USD",
  "slug": "maxine-hall-health-center",
@@ -123,15 +123,19 @@
  },
  "documents": [
   {
-   "identifier": "agenda200507sanf",
-   "title": "Agenda",
-   "creator": "San Francisco (Calif.). Health Commission. Joint Conference Committee for Community Programs and Services",
-   "year": 2004,
+   "identifier": "0meetingminutes1999sanf",
+   "title": "Meeting minutes",
+   "creator": "San Francisco (Calif.). Board of Supervisors. Public Health and Environment Committee",
+   "year": 1999,
    "pool": "sfpl",
    "matched_alias": "Maxine Hall Health Center",
-   "snippet": "clinics: Castro Mission Health Center, «Maxine Hall Health Center», Balboa Health Center, Curry Health",
-   "url": "https://archive.org/details/agenda200507sanf",
-   "deep_link": "https://archive.org/details/agenda200507sanf?q=Maxine+Hall+Health+Center",
+   "ocr_excerpts": [
+    "ursday, March 25, 1999 *. 1:00 PM City Hall, Room 263 O.W Members Present: Sue Bierman, Amos Brown, Michael Yaki. DOCUMEN 1 8 UbH L MAR 3 1 1999 SAN FRANCISCO PUBLIC LIBRARY 990435 [Grant - Private) Resolution authorizing the Department of Public Health, Community Health Network, Maxine Hall Health Center, to accept retroactively and expend a grant in the amount of $25,000 from the Family Violence Prevention Fund for the Domestic Violence Prevention Project and to enter into an agreement which does not include patent infringement indemnification and false claims clauses. (Department of Public Health) 3",
+    "lyst SUBJECT: JVtarch 25, 1999 Public Health and Environment Committee Meeting Item 1 - File 99-0435 Department: Item: Grant Amount: Grant Period: Source of Funds: Project: Description: Department of Public Health Resolution authorizing the Department of Pubic Health, Community Health Network - Maxine Hall Health Center to accept retroactively and expend grant funds in the amount of $25,000 from the Family Violence Prevention Fund for the Domestic Violence Prevention Project; and to enter into an agreement which does not include patent infringement indemnification and false claims clauses. $25,000 January 1, 1999 th",
+    "is not a foundation and does Memo to the Public Health and Environment Committee March 25, 1999 Public Health and Environment Committee Meeting not provide direct services. Rather, the Fund works to educate, train and support service providers that assist domestic violence victims, such as the DPH Maxine Hall Health Center. Budget: Required Match: Indirect Costs: Approval of the proposed resolution would authorize the Department of Public Health - Maxine Hall Health Center, located at 1301 Pierce Street, to accept retroactively and expend grant funds in the amount of $25,000 from the Fund and implement the DPH Domestic Violence Prevention Project. The Maxine Hall Health Center would design comprehensive domestic violence prevention strategies which involve primary prevention efforts designed to change the community's attitude and behavior about domestic violence, and secondary prevention programs which include screening, diagnosis, intervention, and treatment of individual clients. Under this grant, the Maxine Hall Health Center is expected to develop a task force to oversee implementation of the project, participate in clinical trainings, participate in a Statewide leadership summit, and report on activities every six months. Attachment I, provided by the DPH, contains the budget details for the proposed grant funds in the amount of $25,000. None. None. Comment: 1. Ms. Marcellina Ogbu of the Maxine Hall Health Center explains that although the beginning of the grant period is January 1, 1999, DPH has not expended any of the subject grant fun"
+   ],
+   "url": "https://archive.org/details/0meetingminutes1999sanf",
+   "deep_link": "https://archive.org/details/0meetingminutes1999sanf?q=Maxine+Hall+Health+Center",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
    "group": "Meetings & resolutions",
    "salient": true
@@ -143,7 +147,13 @@
    "year": null,
    "pool": "sfpl",
    "matched_alias": "Maxine Hall Health Center",
-   "snippet": "Castro-Mission Health Center 1,070 455 497 2,022 «Maxine Hall Health Center» 512 1,330 2,863 4,705 Silver Avenue",
+   "ocr_excerpts": [
+    "more detail on the instances cited in the article. Minutes of January 7, 1997 Page 4 CPHS STATISTICS November 1996 Medical Encounters Nursing Encounters Other Encounters (dental, podiatry, mental health, social work, other) Total Encounters Castro-Mission Health Center 1,070 455 497 2,022 Maxine Hall Health Center 512 1,330 2,863 4,705 Silver Avenue Health Center 718 240 171 1,129 Chinatown Public Health Center 916 479 3,350 4,745 Ocean Park Health Center 637 2,710 654 4,001 North of Market Senior Services 506 75 563 1,144 Potrero Hill Health Center 513 121 371 1,005 Southeast Heal",
+    "feature the San Francisco Department of Human Services Gospel Choir. Mayor Brown has been invited to attend. COMMUNITY PUBLIC HEALTH SERVICES Resignations • It is with mixed emotions that I announce the resignation of Dorian Miller, M.D. Dr. Miller, who has served as the Medical Director of the Maxine Hall Health Center for the past three years, has accepted an offer to become a Vice President of the Robert Wood Johnson Foundation. Dr. Miller's association with the Foundation began with their sponsorship of \"Grandparents Who Care,\" a program Dr. Miller helped found when she was a physician at Southeast Health Cente",
+    "ve mandate for domestic violence protocols and guidelines for screening: Kate Monico-Klein, DPH Women's Services Coordinator Sue Martin, Family Violence Prevention Fund and Co-Chair of the Health Committee of the S.F. Family Violence Council Dr. Beth Kaplan, Emergency Department, SFGH Dr. Leigh Kimberg, Maxine Hall Health Center A copy of the S.F. Domestic Violence Protocol is available in the Commission Office. Public Speaker: Nathan Nayman, Hospital Council Commissioner Guy commented that child abuse and elder abuse should be included in the definition of family violence. Action Taken: The Commission unanimously adopted",
+    "cross-section of patients. The goals of this pilot are to: 1) provide managed care experience to General Medical and Specialty Clinics; 2) demonstrate a commitment to a single standard of care; and 3) to assess utilization, costs and models of care. This project will expand in three months to the Maxine Hall Health Center. Diversion Statistics Critical care diversion for the period February 1 through February 28, 1997 diverted for 1.1% or 7 hours and 5 minutes. The Emergency Department diverted for 3.9% or 26 hours and 10 minutes. Minutes of March 4, 1997 Page 4 COMMUNITY PUBLIC HEALTH SERVICES Farewell It i",
+    ".S. Commissioner David J. Sanchez, Jr., Ph.D. Absent: Commissioner Ron Hill On behalf of the Commission, President Chow presented a special Certificate of Appreciation to Dr. Doriane Miller, who has been with the Department for 9 years. Dr. Miller, who has served as the Medical Director of the Maxine Hall Health Center for the past three years,"
+   ],
    "url": "https://archive.org/details/minutes1997sanf",
    "deep_link": "https://archive.org/details/minutes1997sanf?q=Maxine+Hall+Health+Center",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
@@ -151,15 +161,19 @@
    "salient": true
   },
   {
-   "identifier": "0meetingminutes1999sanf",
-   "title": "Meeting minutes",
-   "creator": "San Francisco (Calif.). Board of Supervisors. Public Health and Environment Committee",
-   "year": 1999,
+   "identifier": "agenda200507sanf",
+   "title": "Agenda",
+   "creator": "San Francisco (Calif.). Health Commission. Joint Conference Committee for Community Programs and Services",
+   "year": 2004,
    "pool": "sfpl",
    "matched_alias": "Maxine Hall Health Center",
-   "snippet": "Health, Community Health Network, «Maxine Hall Health Center», to accept retroactively and expend",
-   "url": "https://archive.org/details/0meetingminutes1999sanf",
-   "deep_link": "https://archive.org/details/0meetingminutes1999sanf?q=Maxine+Hall+Health+Center",
+   "ocr_excerpts": [
+    "Auditor Charter mandate. The study analyzed potential improvements in the health clinics' billing procedures with the intent to identify revenue maximization opportunities that do not add extreme cost to the City General Fund. The study focused on the following six clinics: Castro Mission Health Center, Maxine Hall Health Center, Balboa Health Center, Curry Health Center, 1M General Medicine Clinic, and 5M Women's Services Clinic, though some of the findings relate to the entire system. • Increase physician productivity - $1,600,000 • Revise billing codes and improve billing practices - $206,000 • Schedule patient orientatio",
+    "Plaza/across from City Hall). Flu season is approaching and DPH is encouraging all health care workers to get a flu shot. Flu shots will be offered to the public on November 7th & 9 , and 14th & 16th from 8:30am to 1 1 :00am at the Castro Mission Health Center, Chinatown Public Health Center, Maxine Hall Health Center, Ocean Park Health Center, Silver Avenue Family Health Center, Curry Senior Center, Southeast Health Center, and Tom Waddell Health Center. Alternatively, the Adult and Immunization Travel Clinic, at 101 Grove Street, 3rd Floor, Room 300, is offering inner-nasal flu immunizations for $25 from 9:00am- 3:",
+    "may arise in substance abuse prevention. The four focus areas include reducing youth access to alcohol and other drugs, changing norms and increasing public awareness of alcohol and other drugs, empowering community and promoting environmental change, and building system capacity. Youth Clinic Opens at Maxine Hall Health Center Family Planning Program staff collaborated with key staff from Maxine Hall Health Center (MHHC) and youth to establish a new youth-driven teen clinic at the Center. The clinic is open to youth, ages 12 - 24, by appointment and drop-in every Wednesday afternoon between 2:00 - 5:00pm. Upon arriving for their first visit, every youth client is assigned a Youth Peer Advocate who gives th"
+   ],
+   "url": "https://archive.org/details/agenda200507sanf",
+   "deep_link": "https://archive.org/details/agenda200507sanf?q=Maxine+Hall+Health+Center",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
    "group": "Meetings & resolutions",
    "salient": true
@@ -171,25 +185,17 @@
    "year": null,
    "pool": "sfpl",
    "matched_alias": "Maxine Hall Health Center",
-   "snippet": "Francisco General Hospital and the «Maxine Hall Health Center», provides health care to low-income",
+   "ocr_excerpts": [
+    "rovider Relationship Organized to Achieve Comprehensive Health Care,\" to ensure that the benefits of a good relationship with a primary care provider extend to all CHN patients, regardless of insurance status. APPROACH, based at the CHN's General Medical Clinic at San Francisco General Hospital and the Maxine Hall Health Center, provides health care to low-income persons in a managed care delivery system. The 30 project strengthens relationships between patients and their primary care providers with better coordination of outpatient health services. As a result of increased primary care, the project is expected to reduce i",
+    "or Group Healthcare for Women & Children, 4434 Mission Street 406-1353 Family Health Center at SFGH, 995 Potrero Avenue, Building 80, 1st Floor 206-5252 General Medical Center at SFGH, 1001 Potrero Avenue, Hospital Outpatient, 1st Floor 206-8492 Larkin Street Youth Clinic, 1044 Larkin Street 673-2319 Maxine Hall Health Center, 1301 Pierce Street 292-1300 North of Market Senior Services, 333 Turk Street 885-2275 Ocean-Park Health Center, 1351 24th Avenue 753-8100 Potrero Hill Health Center, 1050 Wisconsin Street 648-3022 SFO Medical Service, SF International Airport Terminal, Ground Floor 877-0444 Silver Avenue Family Health C",
+    "ces Committee Target Cities Policy Advisory Review Committee Video Display Terminal Advisory Committee Youth Substance Abuse Provider's Group COMMUNITY HEALTH NETWORK Castro Mission Health Center Community Advisory Board Chinatown Health Center Community Advisory Board City-Wide Community Advisory Board Maxine Hall Health Center Community Advisory Board North of Market Senior Services Community Advisory Board Ocean Avenue Health Center Community Advisory Board Potrero Hill Health Center Community Advisory Board Silver Avenue Health Center Community Advisory Board Special Programs for Youth Community Advisory Board Southeast H",
+    "eople with chronic illness. pregnancy rate in the City's Western Addition area by provid- ing comprehensive primary care and sexual health-related ser- vices through a team approach involving community outreach. MHHC also began mammography re-screening for women over age 50. ♦ Primary care providers at Maxine Hall Health Center teamed-up with the University of California, San Francisco's Psychosocial Medicine Division to develop innovative groups serving over 400 patients who would probably not seek help for their mental health problems. A \"Body and Soul\" group helped with stress reduction, anger management and dealing with g",
+    "rt groups. ♦ The Occupational Health Services Clinic doubled its volume to over 1 ,000 visits per month for medical evaluation and treatment for City and County of San Francisco employees for work-related injuries and illnesses. ♦ The Women's Health Center began a breast"
+   ],
    "url": "https://archive.org/details/sanfranciscodepa19962000sanf",
    "deep_link": "https://archive.org/details/sanfranciscodepa19962000sanf?q=Maxine+Hall+Health+Center",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
    "group": "Reports & records",
-   "salient": true
-  },
-  {
-   "identifier": "bidscontractsby2002sanf_0",
-   "title": "Bids and contracts / by the Purchasing Department of the City and County of San Francisco Purchasing Department",
-   "creator": "San Francisco (Calif.). Purchasing Department",
-   "year": null,
-   "pool": "sfpl",
-   "matched_alias": "Maxine Hall Health Center",
-   "snippet": "days LOCATION: San Francisco 6117A «Maxine Hall Health Center» Renovation. The work is remodeling",
-   "url": "https://archive.org/details/bidscontractsby2002sanf_0",
-   "deep_link": "https://archive.org/details/bidscontractsby2002sanf_0?q=Maxine+Hall+Health+Center",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Other records",
    "salient": true
   },
   {
@@ -199,9 +205,33 @@
    "year": null,
    "pool": "sfpl",
    "matched_alias": "Maxine Hall Health Center",
-   "snippet": "Health Center No. 2 (now known as «Maxine Hall Health Center») C-26 District Health Center No",
+   "ocr_excerpts": [
+    "CSF 234 Dental Clinic - UOP 245 Dental Society Referral Service 167 Department of Rehabilitation - China Basin Office 29 Diabetes Association 7 Diamond Senior Center 70 District Health Center No. 1 (now known as Castro/Mission Health Center) C-14 District Health Center No. 2 (now known as Maxine Hall Health Center) C-26 District Health Center No. 3 (now known as Silver Avenue Family Health Center) C-30 District Health Center No. 4 (now known as Chinatown Pubhc Health Center) C-1 5 District Health Center No. 5 (now known as Ocean-Park Health Center) C-27 District Attorney's - Consumer Fraud and Environmenta",
+    "Little Sisters of the Poor 211 Low Income Home Energy Assistance Program (EOC) 49 Lung Association, American 9 Lutheran Care for the Aging 117 M MAP - Mobile Assistance Patrol 125 MSSP - Multipurpose Senior Services Program 84 Manilatown Senior Center 190 Martin de Porres House 118 Maxine Hall Health Center C-26 Mayor's Office of Housing C-33 Mayor's Office of Neighborhood Services C-34 Meals on Wheels of San Francisco, Inc 119 St. Francis Meal Service 120 Medi-Cal C-10 Medical Society - San Francisco 172 Mental Health Geriatric - West Office 61 MidPeninsula Hospice 121 Mission Council on",
+    "C- 1 8 Chinatown North Beach Mental Health Services C- 1 9 Geriatric System of Care C-22 Mission hitegrated Service Center C-20 Southeast - Mission Geriatric Services C-21 Health at Home - Home Health Agency C-23 Laguna Honda Hospital and Rehabihtation Center C-24 Adult Day Health Center C-25 Maxine Hall Health Center C-26 Ocean Park Health Center C-27 A- 13 S (Continued) Paramcdjc Division (now kno\\sn as San Francisco Fire Department) Division of Emergency Medical Serv ices Public Conscrs alor ^'^ San Francisco General Hospital Medical Center ^ -^ Silver Avenue Family Health Center District Attomev's - C",
+    "ent of Public Health 554-2600 Adni. Oic. 101 Grove Street 554-2500 Info San Francisco, C A 94102 *[San Francisco] Department of Public Health ~ Health Centers and Clinics: #1 Castro/Mission Health Center 487-7550 PH Nurse 3850 - 17th Street 487-7500 Clinic San Francisco, CA 941 14 #2 Maxine Hall Health Center 292-1330 PH Nurse 1301 Pierce Street 292-1300 Clinic San Francisco, CA 941 15 #3 Silver Avenue Family Health Center 715-0300 1525 Silver Avenue San Francisco, CA 94134 #4 Chinatown Public Health Center 705-8590 PH Nurse 1490 Mason Street 705-8500 Clinic San Francisco, CA 94133 #5",
+    "h Beach Mental Health Services CI 9 Mission Integrated Service Cener C20 Southeast - Mission Geriatric Services C2 1 Geriatric System of Care C22 Health at Home - Home Health Agency C23 Laguna Honda Hospital and Rehabilitation Center C24 Laguna Honda Hospital and Rehabilitation Center- ADHC C25 Maxine Hall Health Center C26 Ocean Park Health Center C27 Public Conservator C28 San Francis"
+   ],
    "url": "https://archive.org/details/resourceguideofs1999sanf",
    "deep_link": "https://archive.org/details/resourceguideofs1999sanf?q=Maxine+Hall+Health+Center",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Other records",
+   "salient": true
+  },
+  {
+   "identifier": "bidscontractsby2002sanf_0",
+   "title": "Bids and contracts / by the Purchasing Department of the City and County of San Francisco Purchasing Department",
+   "creator": "San Francisco (Calif.). Purchasing Department",
+   "year": null,
+   "pool": "sfpl",
+   "matched_alias": "Maxine Hall Health Center",
+   "ocr_excerpts": [
+    "piping; earthwork, landscaping, & irrigation; and other related work. Pre-bid conference June 6, 2:30 p.m., 375 Laguna Honda, Simon Auditorium. BID DUE: July 31 , 2:30 p.m. DEPARTMENT: Laguna Honda Hospital CONTACT: 415-554-6229 ESTIMATE: >$4 million DURATION: 300 days LOCATION: San Francisco 6117A Maxine Hall Health Center Renovation. The work is remodeling toilet rooms; constructing new exam rooms, new walls & partitions; replacing floors; wall, ceiling finishes & trim work; mechanical, electrical & plumbing work; telephone/data lines; constructing new exterior concrete ramp/walk & curb ramp; new concrete planter wall; exterior signage & finish entry work; painting; and other related work. Pre-bid conference, July 18, 10 a.m., Maxine Hall Health Center, 1301 Pierce. BID DUE: July 31, 2:30 p.m. ESTIMATE: >$800,000 DEPARTMENT: Public Works DURATION: 180 days CONTACT: 415-554-6229 LOCATION: San Francisco Bids and Contracts July 3, 2002 20016 Pilgrim Community Center. On June 26, the following changes were made: Bid Due date changed from",
+    "upgrade, planting & irrigation. Pre-bid conference, July 2, 2 p.m., 30 Van Ness, 5Th Floor Main Conference Room. BID DUE: July 31, 2:30 p.m. DEPARTMENT: Public Works CONTACT: 4 1 5-554-6229 ESTIMATE: >$1 million DURATION: 180 days LOCATION: Lake Merced Bids and Contracts July 10, 2002 6117A Maxine Hall Health Center Renovation. The work is remodeling toilet rooms; constructing new exam rooms, new walls & partitions; replacing floors; wall, ceiling finishes & trim work; mechanical, electrical & plumbing work; telephone/data lines; constructing new exterior concrete ramp/walk & curb ramp; new concrete planter wall; exterior signage & finish entry work; painting; and other related work. Pre-bid conference, July 18, 10 a.m., Maxine Hall Health Center, 1301 Pierce. BID DUE: July 31 , 2:30 p.m. ESTIMATE: >$800,000 DEPARTMENT: Public Works DURATION: 180 days CONTACT: 415-554-6229 LOCATION: San Francisco 20016 Pilgrim Community Center. On June 26, the following changes were made: Bid Due date changed from July 23 to July 30; mandatory pre-bid confe",
+    "y, concrete retaining wall, parking lot upgrade, planting & irrigation. Pre-bid conference, July 2, 2 p.m., 30 Van Ness, 5Th Floor Main Conference Room. BID DUE: July 31 , 2:30 p.m. DEPARTMENT: Public Works CONTACT: 415-554-6229 ESTIMATE: >$1 million DURATION: 180 days LOCATION: Lake Merced 6117A Maxine Hall Health Center Renovation. The work is remodeling toilet rooms; constructing new exam rooms, new walls & partitions; replacing floors; wall, ceiling finishes & trim work; mechanical, electrical & plumbing work; telephone/data lines; constructing new exterior concrete ramp/walk & curb ramp; new concrete planter wall; exterior signage & finish entry work; painting; and other related "
+   ],
+   "url": "https://archive.org/details/bidscontractsby2002sanf_0",
+   "deep_link": "https://archive.org/details/bidscontractsby2002sanf_0?q=Maxine+Hall+Health+Center",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
    "group": "Other records",
    "salient": true

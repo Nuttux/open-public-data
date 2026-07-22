@@ -1,37 +1,9 @@
 {
- "generated_at": "2026-07-21T14:25:53.964835+00:00",
+ "generated_at": "2026-07-22T15:04:53.721633+00:00",
  "slug": "legion-of-honor",
  "name": "Legion of Honor",
  "note": "Archive documents linked to this place; source labels honour the SFPL-vs-Democracy's-Library distinction.",
  "documents": [
-  {
-   "identifier": "minutesagendas2002fine_0",
-   "title": "Minutes and Agendas",
-   "creator": "Fine Arts Museums of San Francisco. Board of Trustees",
-   "year": null,
-   "pool": "sfpl",
-   "matched_alias": "Legion of Honor",
-   "snippet": "Board Room, «Legion of Honor» Board Room, «Legion of Honor» Board Room, «Legion of Honor» Board Room",
-   "url": "https://archive.org/details/minutesagendas2002fine_0",
-   "deep_link": "https://archive.org/details/minutesagendas2002fine_0?q=Legion+of+Honor",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Meetings & resolutions",
-   "salient": true
-  },
-  {
-   "identifier": "minutesorderofbu2001corp",
-   "title": "Minutes and Order of Business",
-   "creator": "Corporation of the Fine Arts Museums (San Francisco, Calif.). Board of Trustees",
-   "year": null,
-   "pool": "sfpl",
-   "matched_alias": "Legion of Honor",
-   "snippet": "DEYOUNG MEMORIAL MUSEUM * «CALIFORNIA PALACE OF THE LEGION OF HONOR» OFFICIAL MEETING NOTICE Corporation",
-   "url": "https://archive.org/details/minutesorderofbu2001corp",
-   "deep_link": "https://archive.org/details/minutesorderofbu2001corp?q=Legion+of+Honor",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Meetings & resolutions",
-   "salient": true
-  },
   {
    "identifier": "minutesboardofpa1925sanf",
    "title": "Minutes / Board of Park Commissioners",
@@ -39,12 +11,26 @@
    "year": null,
    "pool": "sfpl",
    "matched_alias": "Legion of Honor",
-   "snippet": "in the Palace of the «Legion of Honor»: Time Clocks : «Legion of Honor» was next discussed hy",
    "url": "https://archive.org/details/minutesboardofpa1925sanf",
    "deep_link": "https://archive.org/details/minutesboardofpa1925sanf?q=Legion+of+Honor",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
    "group": "Meetings & resolutions",
-   "salient": true
+   "salient": true,
+   "gloss": "1925 Park Commissioners minutes recording payments for the Palace, an organist for its dedication, and the city entertaining a delegation at the building."
+  },
+  {
+   "identifier": "minutesagendas2002fine_0",
+   "title": "Minutes and Agendas",
+   "creator": "Fine Arts Museums of San Francisco. Board of Trustees",
+   "year": null,
+   "pool": "sfpl",
+   "matched_alias": "Legion of Honor",
+   "url": "https://archive.org/details/minutesagendas2002fine_0",
+   "deep_link": "https://archive.org/details/minutesagendas2002fine_0?q=Legion+of+Honor",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Meetings & resolutions",
+   "salient": true,
+   "gloss": "2002 Fine Arts Museums trustee minutes placing board meetings and exhibition openings in the Legion of Honor's board room."
   },
   {
    "identifier": "annualreport1970fine",
@@ -53,12 +39,12 @@
    "year": null,
    "pool": "sfpl",
    "matched_alias": "Legion of Honor",
-   "snippet": "Rosekrans, «Legion of Honor» Board Mrs. Charles Hammel, Honorary Trustee «Legion of Honor» Mrs* Charles",
    "url": "https://archive.org/details/annualreport1970fine",
    "deep_link": "https://archive.org/details/annualreport1970fine?q=Legion+of+Honor",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
    "group": "Reports & records",
-   "salient": true
+   "salient": true,
+   "gloss": "The museums' 1970-1971 annual report, naming Ian McKibbin White as director and pressing to restore public bus service to the Legion."
   },
   {
    "identifier": "pacificcoastarch25192sanf",
@@ -67,40 +53,12 @@
    "year": 1924,
    "pool": "sfpl",
    "matched_alias": "California Palace of the Legion of Honor",
-   "snippet": "BOLLES, ARCHITECT PAC OAS «CALIFORNIA PALACE OF THE LEGION OF HONOR», SAN FRANCISCO THE entire",
    "url": "https://archive.org/details/pacificcoastarch25192sanf",
    "deep_link": "https://archive.org/details/pacificcoastarch25192sanf?q=California+Palace+of+the+Legion+of+Honor",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
    "group": "Other records",
-   "salient": true
-  },
-  {
-   "identifier": "whatsdoinginpar1977sanf_0",
-   "title": "What's doing in the parks?",
-   "creator": "San Francisco (Calif.). Recreation and Park Department",
-   "year": null,
-   "pool": "sfpl",
-   "matched_alias": "Legion of Honor",
-   "snippet": "Ticket,\" Mime show by Charles Memiar, «Legion of Honor», Lincoln Park, 34th Avenue and Clement",
-   "url": "https://archive.org/details/whatsdoinginpar1977sanf_0",
-   "deep_link": "https://archive.org/details/whatsdoinginpar1977sanf_0?q=Legion+of+Honor",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Other records",
-   "salient": true
-  },
-  {
-   "identifier": "annualappropriat1947sanf",
-   "title": "Annual appropriation ordinance, City and County of San Francisco, California",
-   "creator": "San Francisco (Calif.)",
-   "year": null,
-   "pool": "sfpl",
-   "matched_alias": "Legion of Honor",
-   "snippet": "Fund 76 California Palace of the «Legion of Honor» .... 75 Camp Mather 73 Chief Administrative",
-   "url": "https://archive.org/details/annualappropriat1947sanf",
-   "deep_link": "https://archive.org/details/annualappropriat1947sanf?q=Legion+of+Honor",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Other records",
-   "salient": false
+   "salient": true,
+   "gloss": "A 1924 architecture journal feature on the California Palace of the Legion of Honor's stucco exterior and its Lincoln Park memorial, gifted to the city by the Spreckels."
   }
  ]
 }

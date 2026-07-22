@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-21T14:25:53.958034+00:00",
+ "generated_at": "2026-07-22T15:04:53.717514+00:00",
  "source_pipeline": "sf_place_candidates.json → sync_ia_sf.py + link_sf_places.py + fetch_sf_place_photos.py → export_sf_places.py",
  "unit": "USD",
  "slug": "war-memorial-opera-house",
@@ -328,25 +328,16 @@
    "year": 1975,
    "pool": "sfpl",
    "matched_alias": "Opera House",
-   "snippet": "existing «Opera House», opened in 1932, in the Civic Center. The present «Opera House» does",
+   "ocr_excerpts": [
+    "FORMING ARTS CENTER - LIST OF PLATES Page 1. Regional Map 2. Local Map 3. Civic Center Plan 4. Site Plan 5. Preliminary Elevations 2q 6. Preliminary Plans 2j 7. Preliminary Plan and Section 22 8. Existing Air Quality ^2 9. Aerial Photographs of Site 10. Photographs - -Location Plan and Opera House ^7 11. Photographs- -Site and Surrounding Buildings 3g 12. Photographs --Site and Surrounding Buildings 3g 13. Area Zoning District 14. Shadow Study (mid-morning, winter) 52 15. Shadow Study (mid-afternoon, winter) 53 16. Shadow Study (late-afternoon, summer) 54 17. Energy Consumption (Daily Electric",
+    "milar activities not requiring a proscenium or staging facilities. The garage would occupy the western third of the site, and would provide approximately 400 parking stalls in four above-grade parking levels. The site is presently a parking lot within the Civic Center area, imme- diately south of the Opera House and to the southwest of City Hall. The Unified School District building is immediately to the south. The Civic Center is among the grandest of all American civic complexes. The project would have environmental impacts including the following: increased demand for parking and increased traffic and tr",
+    "TION A. Background 1. Introduction; The proposed project would provide a symphony and re- cital hall with ancillary facilities, along with rehearsal rooms, office space, storage areas and an accessory garage. The facilities would be constructed on the \"Commerce High\" site, adjacent to the existing Opera House, opened in 1932, in the Civic Center. The present Opera House does not meet the technical demands made upon it by performing groups, as a result of its being a single purpose theater designed pri- marily for opera as opposed to symphony. Additionally, it has a heavy, sometimes conflicting, schedule of three major resident performing institutions: San Francisco",
+    "public hearing on August 14, 1975, in response to a comment questioning the name \"Performing Arts Center, \" the following: \". . . . no one building is a performing arts complex. We have here (in the Civic Center) a performing arts complex, of which - 11 - n. PROJECT DESCRIPTION the Opera House, which has been there for forty-three years, is the first element. We are proposing to add some additional elements. We cannot hope to cover, in the space available at this location, all of the elements of the performing arts. \" 2. Purpose: The primary purpose d the project is to provide a facility for the San Francisco Symphony and for other instrumental and choral groups, thus freeing the Opera House for greater use by opera, ballet, and other productions requiring staging facilities. -11a- II. PROJECT DESCRIPTION Secondly, the project would offer office space to the San Francisco Symphony, Ballet and Opera, "
+   ],
    "url": "https://archive.org/details/sanfranciscoperf1119sanf",
    "deep_link": "https://archive.org/details/sanfranciscoperf1119sanf?q=Opera+House",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
    "group": "Plans & environmental review",
-   "salient": true
-  },
-  {
-   "identifier": "annualrprt1978798384warm",
-   "title": "Annual report",
-   "creator": "War Memorial (San Francisco, Calif.). Board of Trustees",
-   "year": null,
-   "pool": "sfpl",
-   "matched_alias": "War Memorial Opera House",
-   "snippet": "accommodated be brought into the «Opera House». The comparative «Opera House» figures for the past thr<",
-   "url": "https://archive.org/details/annualrprt1978798384warm",
-   "deep_link": "https://archive.org/details/annualrprt1978798384warm?q=War+Memorial+Opera+House",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Reports & records",
    "salient": true
   },
   {
@@ -356,9 +347,31 @@
    "year": 1975,
    "pool": "sfpl",
    "matched_alias": "War Memorial Opera House",
-   "snippet": "controls - «Opera House» Stage rigging - «Opera House» Backstage production areas - «Opera House» Elevator",
+   "ocr_excerpts": [
+    "V; ■'. \\- f::c~ C. t ; t Ail of ua cr, :cte rial are deeply appre- ciative of the help and gui yor's offi the Controller, the Chief A Lve Officer i -- partment o,~ Public Works. This sou: - - cu; nee is our work with the various C . . . to the :.:. iate . j 2 32- year-old Opera House and ., -\".^ well cc to the ulrc need for a _-.._ by sufficient funds to keep . - 3 1223 03373 2059 Honorable John L'. Q 4 ,5 \"..\".•.: all realise t or disint y - in face, 1 by cha in Lerest and Hail. ty be assi : SCer ef £ ic ic wi — for you for futi . WAR Busy times i",
+    "ces. . E :'\" - ' • I iget . J&I8 ITEKS 3? CAPITAL _ II _ ) US, _- Toilet facility improvements - - .. House. Installation of banq r.; ;:.-.r^ of Step 1, r« sor. Repairs to main Sold sler Curtain, •. . :.:. Installation of new carpeting, which was Purchase of rugs and refurb Opera House. Increase of lighting in Opera U sole Joe . • ;_ _ -•„ - . . . ... ... Install ..-.'... .. .: : ... Repair and - . • '. : icliir ..\" : of at - curt, ■ Tapes try t $;„ - . '. . _ ... . i ... Io LI - 4tfa floors, 0) sra let by the ..... pre",
+    "ympathetic interest in behalf of the War Memorial. Honorable John F. Shelley September 3, 1965 . WAR MEMORIAL BOOKINGS Comparative figures this year and last are as follows: - 1964-65 1963-64 Grand Opera Symphony Concerts Spring Opera Musical Concerts Ballets School Graduations Rehearsals - Opera House Musical Attractions, Rehearsals Veterans' Building Light Opera Performances 571 569 Both buildings have been extremely busy, and we have had to turn down many bookings from traveling orchestras and shows because the complex could not adequately handle additional business offered us. . BUDGET",
+    "submit comparative figures: - 1964-65 1963-64 Budget $517,785 $514,604 Revenues 116,482 110,002 . MAIN ITEMS OF CAPITAL IMPROVEMENT AND/OR MAJOR REHABILITATION FROM FUNDS AVAILABLE TO US, 1964-65 FISCAL YEAR Overhauling sump pumps, engine room, Veterans' Building Repair and recover furniture - Opera House . Veterans' Building Repair gas burners - boilers, engine room . Veterans' Building Repairs and improvements to Room 123 . Veterans' Building Added toilet facilities . Opera House General survey . War Memorial Buildings (by contract with Skidmore) Improvements, Green Room . Veterans' Building Painting metal sashes, both buildings of War Memorial; painting corridors, Veterans' Building (in process - delay by strike) Replace gold carpet, main foyer . Opera House Repair gold traveler curtain . Opera House Install canvas on stage crossover . Opera House Installation of new valves, water system - both buildings Repairs to ventilating fans . Art Museum Cleaning settees and chairs . Opera House New drapes, Trustees' meeting room . Opera House Extension storeroom, Lower Foyer . Opera House Boiler repairs, engine ro"
+   ],
    "url": "https://archive.org/details/sttmntsofact19631978warm",
    "deep_link": "https://archive.org/details/sttmntsofact19631978warm?q=War+Memorial+Opera+House",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Other records",
+   "salient": true
+  },
+  {
+   "identifier": "reportonrehabili1196publ",
+   "title": "Report on rehabilitation and modernization of San Francisco's War Memorial Center",
+   "creator": "Public Structures, Inc. (San Francisco, Calif.),Wurster, Bernardi, and Emmons,Skidmore, Owings & Merrill,War Memorial (San Francisco, Calif.). Board of Trustees",
+   "year": 1965,
+   "pool": "sfpl",
+   "matched_alias": "Opera House",
+   "ocr_excerpts": [
+    "TION OF SAN FRANCISCO'S WAR MEMORIAL CULTURAL CENTER By Public Structures, Inc. Wurster, Bernardi and Emmons Skidmore, Owing s & Merrill Architects 1 February 1965 DOCUMENTS DEPT- \\/ I IAN 2 3 2002 SAN FRANCISCO PUBLIC LIBRARY PREPARED FOR BOARD OF TRUSTEES, WAR MEMORIAL OF SAN FRANCISCO Opera House - Veterans' Building - Art Museum 5/S San Francisco Public Library REFERENCE BOOK Not to be taken from the Library SAN FRANCISCO PUBLIC LIBRARY 3 1223 05971 7166 Digitized by the Internet Archive in 2014 https://archive.org/details/reportonrehabili1196publ II REPORT ON REHABILITATION AND MODERNIZATION OF SAN FRANCISCO'S WAR MEMORIAL CULTURAL CENTER By Public Structures, Inc. Wurster, Bernard! and Emmons Skidmore, Cwings & Merrill Architects 1 February 1965 PREPARED FOR BOARD OF TRUSTEES, WAR MEMORIAL OF SAN FRANCISCO Opera House - Veterans Building - Art Museum Executive Staff Edward Sharkey Managing Director E. Lawrence George Executive Secretary Trustees Wilson Meyer, President Harold E. Hubbard, Vice Pres. Philip S. Boone Fred Campagnoli Richard P. Cooley George T. Davis Prentis C. Hale Gregory A. Harrison Sam K. Harrison Samuel D. Sayad Ralph J. A. Stern 1 i 3 1223 05971 7166 INDEX I. SUMMARY Assignment Survey Method Findings and Recommendation II. DESIGN AND USE OF OPERA HOUSE AND VETERANS BUILDING III. CONDITION OF OPERA HOUSE AND VETERANS BUILDING IV. NEED FOR OPERA HOUSE EXPANSION V. NEED FOR 2200-SEAT HALL FOR THE PERFORMING ARTS VI. PARKING REQUIREMENTS VII. PROPOSED NEW MUSICAL ARTS BUILDING VIII. SITE OF PROPOSED EXPANSION OF WAR MEMORIAL CULTURAL CENTER IX. ESTIMATE OF COST X. CONCLUSIONS AND RECOMMENDATIONS XI. APPENDICES XII. PLATES LIST OF APPENDICES AND PLATES Frontispiece Proposed War Memorial Cultural Center. XI. APPENDICES Appendix A War Memorial Opera House and Veterans Building Rehabilitation and Modernization. Appendix B San Francisco's War Memorial Cultural Center Preliminary Estimate of Cost - 1 February 1965 XII. PLATES Plate 1. Site Allocation Plan - 1958 Civic Center Development Plan Plate 2. War Memorial of San Francisco Opera House - First Floor Plan Plate 3. War Memorial of San Francisco Veterans Building - First Floor Plan Plate 4. Site Plan - War Memorial Cultural Center. - 1 - I. SUMMARY Assignment On October 1 , 1964, the Board of Trustees of the San Francisco War Memorial Opera and Veterans Building retained",
+    "parable to any in the country and at a reasonable cost. This program provides not only the most modern facilities for the performing arts, such as the opera, symphony, ballet and theatrical groups , but for the San Francisco Museum of Art and the Veterans organizations as well. Survey Method The Opera House and Veterans Building were inspected by the architects' heating ventilating and air conditioning, electrical an"
+   ],
+   "url": "https://archive.org/details/reportonrehabili1196publ",
+   "deep_link": "https://archive.org/details/reportonrehabili1196publ?q=Opera+House",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
    "group": "Other records",
    "salient": true
@@ -370,37 +383,15 @@
    "year": 1942,
    "pool": "sfpl",
    "matched_alias": "War Memorial Opera House",
-   "snippet": "oondnctor «War Memorial Opera House» «War Memorial Opera House» «War Memorial Opera House» Civic Auditorium",
+   "ocr_excerpts": [
+    "ere that they are elsewhere: the educated, the c\\iltivated, the refined. It is their approval or condemnation, that gives tone to public sentiment on these subjects. It is their sentence that makes the artiste popular or unpopular; and it is they who night after night fill the concert room and the opera house, and who fill the treasury, too. The noisy class do not love music. They go to 26 hear any great novelty; but their curiosity being sat- isfied, they go no more. It is to the refined portion of the community that the artiste must look for support ; and she must cater to their tastes; an",
+    "churches. As a consequence the whole congregation joined in singing the old-fashioned hymns.\" August 5 s \"St. Mary's: A small, plain organ, ev- idently not intended for the finished church furnished the music . . • The singing, while good for church music, was not as fine as we have heard at an Opera House, though frequently closely approaching it in the style, execution, and manner of the choristers.\" October 6s \"Methodist Episcopal? The church has a large choir, and a sweet-toned melodeon . . • There never appeared to be any rivalry between the organist and the singers, as to which could secure th",
+    "IN REVIEWS Occasional touches of humor crop up in the early re- views, usually at the expense of one of the performers. The Dally Dramatic Chronicle, August 17, 1867, practiced the fol- lowing high-handed irony on one conductor: \"We would like to be informed what Herr Schmidt, the leader of the Opera House orchestra, means by play- ing the same overture for ten years three times each night. Has he a wicked and sinister motive In doing so? Does he wish to ruin the instruments of the members of the orchestra by compelling them to play the very same notes continually? It looks very strange to us, an",
+    "ave, all the patronage that the city can give them.\" The general season of oratorio during 1877 proved on the whole successful. In the July 2, 1877, issue of the San Francisco Daily Examiner the following review of the season appeared: 109 \"The .oratorio performances recently given at the Grand Opera House were so successful as to justify their repetition. With an excellent chorus, who showed in their precision and the discrimination of light and shade, signs of intelligence and good training, the performance wad fine; yet measured by the standard of the oratorio itself, it was by no means of a natu",
+    "did tones flowed over the rich deeps of the music.\" MADAME SEMDRICH Well publicized, Madame Sembrich gave her first San Fran- cisco appearance in the opera season of 1901. The Argonaut critic wrote of her on March 25: \"There have been dark intimations in the air of frosty weather at the Grand Opera House during the Sem- brich season, but there was no evidence whatever of the kind on t"
+   ],
    "url": "https://archive.org/details/anthologyofmusic00unit",
    "deep_link": "https://archive.org/details/anthologyofmusic00unit?q=War+Memorial+Opera+House",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Other records",
-   "salient": true
-  },
-  {
-   "identifier": "annalsofsanfranc02fost",
-   "title": "Annals of the San Francisco stage, 1850-1880, Volume 1 p.2",
-   "creator": "Foster, Lois M,Federal Theatre Project (San Francisco, Calif.)",
-   "year": 1850,
-   "pool": "sfpl",
-   "matched_alias": "Opera House",
-   "snippet": "turn as: Shields «Opera House», Thguire's «Opera House», and Emerson* s «Opera House». Freshly painted",
-   "url": "https://archive.org/details/annalsofsanfranc02fost",
-   "deep_link": "https://archive.org/details/annalsofsanfranc02fost?q=Opera+House",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Other records",
-   "salient": true
-  },
-  {
-   "identifier": "calendarofevents2000sanf",
-   "title": "Calendar of events",
-   "creator": "San Francisco Performing Arts Center",
-   "year": null,
-   "pool": "sfpl",
-   "matched_alias": "War Memorial Opera House",
-   "snippet": "HERBST THEATRE 8:00pm «OPERA HOUSE» «OPERA HOUSE» «OPERA HOUSE» «OPERA HOUSE» «OPERA HOUSE» 11:00am 4:00pm 2:00pm",
-   "url": "https://archive.org/details/calendarofevents2000sanf",
-   "deep_link": "https://archive.org/details/calendarofevents2000sanf?q=War+Memorial+Opera+House",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
    "group": "Other records",
    "salient": true
@@ -412,26 +403,37 @@
    "year": 1930,
    "pool": "sfpl",
    "matched_alias": "War Memorial Opera House",
-   "snippet": "ap- pearance at annual Institute in «War Memorial Opera House» of Dr. Frank N. Freeman, recently",
+   "ocr_excerpts": [
+    "icisco IH1LLETI IX\\ITI> m THE XIWEItllTElDElT W SCHOOLS Vol. XI. San Francisco, August 28, 1939 No. 1 New Dean Addresses Institute Dr. Frank N. Freeman MEMBERS of the teaching profession in San Francisco were accorded a singulai honor today by the ap- pearance at annual Institute in War Memorial Opera House of Dr. Frank N. Freeman, recently appointed dean of the School of Education, University of California. It was Dr. Freeman's first appearance before a professional group since he accepted his new assignment two weeks ago. Dr. Freeman resigned from the professorship of educational psychology at the Univ",
+    "mited to those who surrendered the January, 1939, issue of the directory. Further questions regarding directories should be made in writing and not by tele- phone to the Central Office. San Francisco Public Schools Bulletin August 28, 1939 Calendar of Events Today 9:30 A.M. — Teachers' Institute — War Memorial Opera House. Van Ness Avenue and Grove Street. Tuesday All day and evening, schools reopen for Fall term. Principals are reminded of the rule of the Board of Education to hold a fire drill on the opening day of each school term. 4:00 P.M. — Public meeting of Board of Education, fourth floor, Civic Audit",
+    "r all new pupils who have no transfer. 4 — \"J.eft Without Transfer\" blanks for all who leave without transfer, or for deaths. 5 — Change of Address slips as soon as children move. 6 — Change of Name slips as soon as child's name is changed. The Institute INSTITUTE session at War Memorial Opera House on ' last Monday, provoked discussion among the 3,000 members of the certificated staff which had not died away when the week-end recess came. For Dr. Frank N. Freeman, new dean of education at the University of California, is master of the conjectural, stimulating educational address which leaves",
+    "eakers will illustrate their remarks at the piano. Phonograph recordings will provide further musical back- ground. San Francisco Opera Association Under the leadership of Gaetano Merola, general direc- tor, the Concert Division of the San Francisco Opera Association will offer two outstanding all-star opera house concert series during the 1939-40 season. The \"Sunday Series\" will open on the afternoon of Sunday, October 1, featuring Yehudi Menuhin, noted violinist. The \"Regular Series\" will open on Wednesday evening, November 15, and will feature Kirsten Flagstad, soprano, in an all- Wagner program with an orche",
+    "ll be held all day Wednesday, November 22. The morning session, starting at 9:00 o'clock, will be held in the main hall of the Civic Auditorium and San Fran- cisco's teachers will meet with teachers from the bay counties. The afternoon session for San Francisco teach- ers only, will be held in the War Memorial Opera House. The tentative program follows:"
+   ],
    "url": "https://archive.org/details/sanfrancisc1119391940sanf",
    "deep_link": "https://archive.org/details/sanfrancisc1119391940sanf?q=War+Memorial+Opera+House",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
    "group": "Other records",
-   "salient": false
+   "salient": true
   },
   {
-   "identifier": "reportonrehabili1196publ",
-   "title": "Report on rehabilitation and modernization of San Francisco's War Memorial Center",
-   "creator": "Public Structures, Inc. (San Francisco, Calif.),Wurster, Bernardi, and Emmons,Skidmore, Owings & Merrill,War Memorial (San Francisco, Calif.). Board of Trustees",
-   "year": 1965,
+   "identifier": "annalsofsanfranc02fost",
+   "title": "Annals of the San Francisco stage, 1850-1880, Volume 1 p.2",
+   "creator": "Foster, Lois M,Federal Theatre Project (San Francisco, Calif.)",
+   "year": 1850,
    "pool": "sfpl",
    "matched_alias": "Opera House",
-   "snippet": "AND USE OF «OPERA HOUSE» AND VETERANS BUILDING III. CONDITION OF «OPERA HOUSE» AND VETERANS",
-   "url": "https://archive.org/details/reportonrehabili1196publ",
-   "deep_link": "https://archive.org/details/reportonrehabili1196publ?q=Opera+House",
+   "ocr_excerpts": [
+    "that years American Theatre, E side Sansome between California and Sacramento Gilbert's Eelodeon, corner Clay and Kearny . Bella Union Kelodeon, N side Washington near Kearny Hayes Park Pavilion, corner Lag-ana and Hayes Jenny Lind I'ielodeon, 8 side Commercial between Eontgomery and Kearny Eaguire's Opera House, N side Washington near IVPntgomei'y Eetropolitan Theatre, W side Eontgomery between Washington and Jackson Music Hall, 3 side Eontgomery near Bush Tucker's Academy of Music, 87-} Montgomery Union Theatre, 3 side Commercial between Kearny and Dupont S'illows, Valencia near Eissicn Dolores In January",
+    "lent color to the city. Always Eaguire led the March, constantly varying his stride and sometimes limping while his opponents gathered fresh laurels j but Eaguire^ was, first and last, the man to be conjured with in San Francisco during this period. Eaguire commenced the year with minstrels in his Opera House. During the first two months of the year his black-face IS 6 3 311 comedians and variety players offered changing programs, usually high- lighted by farce or burlesque. On January 17, for instance, the burlesque was a new pirce caller \"King Blear,\" apparently a satire on ''King Lear.\" Appropriat",
+    "terrible thing to sit them out — even with Iuiss Ince as the heroine.\" There is no explanation— unless this particular comment is self-explanatory- for the sudden withdrawal of all advertisements f$rxi Maguire's theatres in the Bulletin* There was no mention of the productions at the Eureka or the Opera House in this pap/er for some months. Sonsultation of the Alta California reveals the fact that, except for brief assumption of the dual roles of Lady Isabel and Fine. vine in \"East Lynne\" (parts played earlier by both Sophie Edwin and lira. Hayne), Mi s Ince confined herself to the classics. We find",
+    "ballet troupe* Among the players were: Mile* Acosta, LI. and lime. Masoartie, LI. Wiethoff, LI. Enrico \"arodi. ihe stage manager was James Dowling. For the rest | there were a number of operatic benefits at this theatre in July but no i egular dramatic performance. On July 2 Maguire opened a new Opera House in the boom town, '\"'irginia uity. ;,'ith Jan Francisco audiences turned capricious, he looked for new outlets for entertainment. He was in a fow years to relinquish this interest and his Opera House was some years later destroyed by fire* August brought to San Francisco one of those great events in its theatrical history which was to become legend. It was in this month that Maguire brought the famous Adah Isaacs Menken to his Opera House. Long before Lola Montez had put in an appearance in / San Francisco, the newspapers had carried notes ahd comments on this famous enchantress' life; similarly, \"the Menken,\" as she was called, had become locally famous b"
+   ],
+   "url": "https://archive.org/details/annalsofsanfranc02fost",
+   "deep_link": "https://archive.org/details/annalsofsanfranc02fost?q=Opera+House",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
    "group": "Other records",
-   "salient": false
+   "salient": true
   }
  ],
  "dept_shelf": [
@@ -471,7 +473,7 @@
  ],
  "_gate": {
   "has_photo": false,
-  "n_documents": 8,
+  "n_documents": 6,
   "n_money_links": 3,
   "meets_pre_summary": false
  }

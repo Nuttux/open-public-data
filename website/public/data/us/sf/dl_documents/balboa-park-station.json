@@ -1,23 +1,9 @@
 {
- "generated_at": "2026-07-21T14:25:53.978954+00:00",
+ "generated_at": "2026-07-22T15:04:53.731177+00:00",
  "slug": "balboa-park-station",
  "name": "Balboa Park Station / Green Yard",
  "note": "Archive documents linked to this place; source labels honour the SFPL-vs-Democracy's-Library distinction.",
  "documents": [
-  {
-   "identifier": "munimetroturnaro1988unit",
-   "title": "Muni Metro turnaround project : draft environmental impact statement",
-   "creator": "United States. Urban Mass Transportation Administration,San Francisco Municipal Railway",
-   "year": 1988,
-   "pool": "sfpl",
-   "matched_alias": "Green Light Rail Center",
-   "snippet": "with moving the vehicles to the «Green Light Rail Center». I 2. It is feasible to locate",
-   "url": "https://archive.org/details/munimetroturnaro1988unit",
-   "deep_link": "https://archive.org/details/munimetroturnaro1988unit?q=Green+Light+Rail+Center",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Plans & environmental review",
-   "salient": true
-  },
   {
    "identifier": "minutes20022003sanf",
    "title": "Minutes",
@@ -25,68 +11,12 @@
    "year": 2000,
    "pool": "sfpl",
    "matched_alias": "Green Light Rail Center",
-   "snippet": "Contract No. MR-1 127, Curtis E. «Green Light Rail Center» Emergency Switch Replacement Project;",
    "url": "https://archive.org/details/minutes20022003sanf",
    "deep_link": "https://archive.org/details/minutes20022003sanf?q=Green+Light+Rail+Center",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
    "group": "Meetings & resolutions",
-   "salient": true
-  },
-  {
-   "identifier": "mitigatednegativ1820sanf",
-   "title": "Mitigated negative declaration : [1490 Ocean Avenue (aka 1446 Ocean Avenue)]",
-   "creator": "San Francisco (Calif.). Planning Dept",
-   "year": 2012,
-   "pool": "sfpl",
-   "matched_alias": "Balboa Park Station",
-   "snippet": "Avenue is within the «Balboa Park Station» Area Plan. The «Balboa Park Station» Area Plan area comprises",
-   "url": "https://archive.org/details/mitigatednegativ1820sanf",
-   "deep_link": "https://archive.org/details/mitigatednegativ1820sanf?q=Balboa+Park+Station",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Other records",
-   "salient": true
-  },
-  {
-   "identifier": "balboaparkstatio2002sanf",
-   "title": "Balboa Park station area plan : public review draft",
-   "creator": "San Francisco (Calif.). Planning Dept",
-   "year": 2002,
-   "pool": "sfpl",
-   "matched_alias": "Balboa Park Station",
-   "snippet": "223 06333 5922 Public Review Draft «Balboa Park Station» Area Plan San Francisco Planning Department",
-   "url": "https://archive.org/details/balboaparkstatio2002sanf",
-   "deep_link": "https://archive.org/details/balboaparkstatio2002sanf?q=Balboa+Park+Station",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Other records",
-   "salient": true
-  },
-  {
-   "identifier": "noticeofmeetingc2012sanf",
-   "title": "Notice of meeting and calendar",
-   "creator": "San Francisco (Calif.). Municipal Transportation Agency. Board of Directors,San Francisco (Calif.). Parking Authority",
-   "year": 2000,
-   "pool": "sfpl",
-   "matched_alias": "Green Light Rail Center",
-   "snippet": "Director to execute Contract No. 1249, «Green Light Rail Center» Track Replacement Project, with Proven",
-   "url": "https://archive.org/details/noticeofmeetingc2012sanf",
-   "deep_link": "https://archive.org/details/noticeofmeetingc2012sanf?q=Green+Light+Rail+Center",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Other records",
-   "salient": true
-  },
-  {
-   "identifier": "balboaparkstatio2008sanf",
-   "title": "Balboa Park station area plan : comments and response on DEIR",
-   "creator": "San Francisco (Calif.). Planning Dept",
-   "year": null,
-   "pool": "sfpl",
-   "matched_alias": "Balboa Park Station",
-   "snippet": "C&R-120 «Balboa Park Station» Area Plan COMMENTS AND RESPONSES Table 1: «Balboa Park Station» Area",
-   "url": "https://archive.org/details/balboaparkstatio2008sanf",
-   "deep_link": "https://archive.org/details/balboaparkstatio2008sanf?q=Balboa+Park+Station",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Other records",
-   "salient": true
+   "salient": true,
+   "gloss": "MTA board minutes accepting the $702,921.38 Curtis E. Green Light Rail Center emergency switch-replacement contract and funding Balboa Park Station public-access improvements."
   },
   {
    "identifier": "balboaparkstatio2009sanf",
@@ -95,26 +25,40 @@
    "year": 2009,
    "pool": "sfpl",
    "matched_alias": "Balboa Park Station",
-   "snippet": "«Balboa Park Station» Pedestrian and Bicycle Connection Project This study was made possible",
    "url": "https://archive.org/details/balboaparkstatio2009sanf",
    "deep_link": "https://archive.org/details/balboaparkstatio2009sanf?q=Balboa+Park+Station",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
    "group": "Other records",
-   "salient": false
+   "salient": true,
+   "gloss": "The SFMTA's 2009 Balboa Park Station pedestrian and bicycle connection project, aimed at improving walking and cycling access around the Geneva Division streetcar depot."
   },
   {
-   "identifier": "dataguide19901991990sanf",
-   "title": "The data guide, 1990-1991",
-   "creator": "San Francisco Municipal Railway. Community Affairs Dept",
-   "year": 1990,
+   "identifier": "balboaparkstatio2002sanf",
+   "title": "Balboa Park station area plan : public review draft",
+   "creator": "San Francisco (Calif.). Planning Dept",
+   "year": 2002,
    "pool": "sfpl",
-   "matched_alias": "Green Light Rail Center",
-   "snippet": "vehicles. 72,255 sq. ft. Curtis E. «Green Light Rail Center» - Geneva & San Jose Aves. (425",
-   "url": "https://archive.org/details/dataguide19901991990sanf",
-   "deep_link": "https://archive.org/details/dataguide19901991990sanf?q=Green+Light+Rail+Center",
+   "matched_alias": "Balboa Park Station",
+   "url": "https://archive.org/details/balboaparkstatio2002sanf",
+   "deep_link": "https://archive.org/details/balboaparkstatio2002sanf?q=Balboa+Park+Station",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
    "group": "Other records",
-   "salient": false
+   "salient": true,
+   "gloss": "The 2002 public-review draft of the Balboa Park Station Area Plan, a Better Neighborhoods effort to remake the station into a transit hub."
+  },
+  {
+   "identifier": "noticeofmeetingc2012sanf",
+   "title": "Notice of meeting and calendar",
+   "creator": "San Francisco (Calif.). Municipal Transportation Agency. Board of Directors,San Francisco (Calif.). Parking Authority",
+   "year": 2000,
+   "pool": "sfpl",
+   "matched_alias": "Green Light Rail Center",
+   "url": "https://archive.org/details/noticeofmeetingc2012sanf",
+   "deep_link": "https://archive.org/details/noticeofmeetingc2012sanf?q=Green+Light+Rail+Center",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Other records",
+   "salient": true,
+   "gloss": "An MTA board calendar authorizing Contract No. 1249 for Green Light Rail Center track replacement (up to $31,197,197) and discussing sale of the Green Division's Upper Yard."
   },
   {
    "identifier": "3calendarmeetingo1994sanf",
@@ -123,12 +67,12 @@
    "year": 1993,
    "pool": "sfpl",
    "matched_alias": "Green Light Rail Center",
-   "snippet": "when the new LRVs arrive. The «Green Light Rail Center», located at 425 Geneva Street, is",
    "url": "https://archive.org/details/3calendarmeetingo1994sanf",
    "deep_link": "https://archive.org/details/3calendarmeetingo1994sanf?q=Green+Light+Rail+Center",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
    "group": "Other records",
-   "salient": false
+   "salient": true,
+   "gloss": "A 1994 Budget Committee memo identifying the Green Light Rail Center at 425 Geneva Street as the primary LRV storage site, with room for a maximum of 142 vehicles."
   }
  ]
 }

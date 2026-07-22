@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-21T14:25:53.972959+00:00",
+ "generated_at": "2026-07-22T15:04:53.727309+00:00",
  "source_pipeline": "sf_place_candidates.json → sync_ia_sf.py + link_sf_places.py + fetch_sf_place_photos.py → export_sf_places.py",
  "unit": "USD",
  "slug": "pier-39",
@@ -75,7 +75,7 @@
   "author": "Chris6d",
   "fetched_at": "2026-07-20T22:20:03.993593+00:00"
  },
- "summary_en": "Archive documents cover Pier 39 as a Port of San Francisco property and visitor destination, including a 1987 northern waterfront findings report calling it a major destination, a Port Commission agenda noting it opened on October 4, 1978, a draft environmental impact report for the Underwater World aquarium at Pier 39, and Arts Commission records on building revisions and ticket-kiosk designs. Port minutes record the Pier 39 Limited Partnership lease and a project partly funded by Pier 39/Underwater World. The pier is operated by the Port of San Francisco, whose FY2025 budget line is $156M; no place-specific city contract appears in this data.",
+ "summary_en": "Pier 39's file is mostly environmental review of its development. A 1976 city planning EIR and a 1977 federal environmental statement describe the plan for Pier 39: about 200,000 square feet of new retail — 133,000 square feet of food service and 67,000 square feet of shops — plus a \"people mover\" circling the pier and marina berthing for sport-fishing and small boats. A 1988 draft EIR covers the Underwater World aquarium proposed at Pier 39. An Arts Commission agenda records Pier 39 management exploring hosting the Cheemah sculpture at East Park, pending Port and BCDC approval. The pier is operated by the Port of San Francisco, whose FY2025 budget line is $156M; no contract in this data names it.",
  "published": true,
  "money": {
   "budget_line": {
@@ -102,12 +102,12 @@
    "year": 1976,
    "pool": "sfpl",
    "matched_alias": "Pier 39",
-   "snippet": "salvaged section. 1 b. «Pier 39» The development of «Pier 39» would include a total of 200",
    "url": "https://archive.org/details/proposednorthpoi2619sanf",
    "deep_link": "https://archive.org/details/proposednorthpoi2619sanf?q=Pier+39",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
    "group": "Plans & environmental review",
-   "salient": true
+   "salient": true,
+   "gloss": "A 1976 city EIR detailing Pier 39's proposed 200,000 sq ft of restaurants and shops and its 'people mover' loop around the pier."
   },
   {
    "identifier": "underwaterworlda1219sanf",
@@ -116,54 +116,12 @@
    "year": null,
    "pool": "sfpl",
    "matched_alias": "Pier 39",
-   "snippet": "the «Pier 39» complex and a portion of the «Pier 39» marina. The remainder of «Pier 39» is",
    "url": "https://archive.org/details/underwaterworlda1219sanf",
    "deep_link": "https://archive.org/details/underwaterworlda1219sanf?q=Pier+39",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
    "group": "Plans & environmental review",
-   "salient": true
-  },
-  {
-   "identifier": "minutes1995sanf_0",
-   "title": "Minutes",
-   "creator": "San Francisco Port Commission",
-   "year": null,
-   "pool": "sfpl",
-   "matched_alias": "Pier 39",
-   "snippet": "funded by «Pier 39»/Underwater World. Should project costs exceed $1.3 million, «Pier 39»/Underwater",
-   "url": "https://archive.org/details/minutes1995sanf_0",
-   "deep_link": "https://archive.org/details/minutes1995sanf_0?q=Pier+39",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Meetings & resolutions",
-   "salient": true
-  },
-  {
-   "identifier": "artcommissionmin19sanf_9",
-   "title": "Art Commission minutes",
-   "creator": "San Francisco (Calif.). Art Commission",
-   "year": null,
-   "pool": "sfpl",
-   "matched_alias": "Pier 39",
-   "snippet": "Vedensky A. «Pier 39», Buildings C & D Revisions B. «Pier 39», Ticket Kiosk C. «Pier 39», Building",
-   "url": "https://archive.org/details/artcommissionmin19sanf_9",
-   "deep_link": "https://archive.org/details/artcommissionmin19sanf_9?q=Pier+39",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Meetings & resolutions",
-   "salient": true
-  },
-  {
-   "identifier": "agendasanfranci013sanf_11",
-   "title": "Agenda / San Francisco Port Commission",
-   "creator": "San Francisco Port Commission",
-   "year": null,
-   "pool": "sfpl",
-   "matched_alias": "Pier 39",
-   "snippet": "35th anniversary of «Pier 39». «Pier 39» opened on October 4, 1978. «Pier 39» replaced what was",
-   "url": "https://archive.org/details/agendasanfranci013sanf_11",
-   "deep_link": "https://archive.org/details/agendasanfranci013sanf_11?q=Pier+39",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Meetings & resolutions",
-   "salient": true
+   "salient": true,
+   "gloss": "A 1988 draft EIR for the Underwater World aquarium proposed at Pier 39."
   },
   {
    "identifier": "agenda19arts_26",
@@ -172,26 +130,12 @@
    "year": 1983,
    "pool": "sfpl",
    "matched_alias": "Pier 39",
-   "snippet": "Operations for «Pier 39» concerning the placement of Cheemah near «Pier 39». Since our last",
    "url": "https://archive.org/details/agenda19arts_26",
    "deep_link": "https://archive.org/details/agenda19arts_26?q=Pier+39",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
    "group": "Meetings & resolutions",
-   "salient": true
-  },
-  {
-   "identifier": "northernwaterfro1987sanf",
-   "title": "The Northern Waterfront findings report",
-   "creator": "San Francisco (Calif.). Dept. of City Planning",
-   "year": 1987,
-   "pool": "sfpl",
-   "matched_alias": "Pier 39",
-   "snippet": "7 «PIER 39» «Pier 39» has become a major vistor destination in and of itself. «Pier 39» is",
-   "url": "https://archive.org/details/northernwaterfro1987sanf",
-   "deep_link": "https://archive.org/details/northernwaterfro1987sanf?q=Pier+39",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Other records",
-   "salient": false
+   "salient": true,
+   "gloss": "An Arts Commission agenda in which Pier 39 management weighs hosting the Cheemah sculpture at East Park, pending Port and BCDC approval."
   },
   {
    "identifier": "finalenvironment1977wate",
@@ -200,12 +144,12 @@
    "year": 1977,
    "pool": "sfpl",
    "matched_alias": "Pier 39",
-   "snippet": "the structure on «Pier 39» and pile driving for the addition to «Pier 39» are likely to be",
    "url": "https://archive.org/details/finalenvironment1977wate",
    "deep_link": "https://archive.org/details/finalenvironment1977wate?q=Pier+39",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
    "group": "Other records",
-   "salient": false
+   "salient": true,
+   "gloss": "A 1977 federal environmental statement on the Pier 39 project, including marina berthing east and west of the pier and fire-safety upgrades to its structures."
   }
  ],
  "dept_shelf": [
@@ -245,7 +189,7 @@
  ],
  "_gate": {
   "has_photo": true,
-  "n_documents": 8,
+  "n_documents": 4,
   "n_money_links": 1,
   "meets_pre_summary": true
  }

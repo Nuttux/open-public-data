@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-21T14:25:53.939774+00:00",
+ "generated_at": "2026-07-22T15:04:53.704915+00:00",
  "source_pipeline": "sf_place_candidates.json → sync_ia_sf.py + link_sf_places.py + fetch_sf_place_photos.py → export_sf_places.py",
  "unit": "USD",
  "slug": "randall-museum",
@@ -158,7 +158,13 @@
    "year": 2000,
    "pool": "sfpl",
    "matched_alias": "Randall Museum",
-   "snippet": "taken. ° «Randall Museum» Amy Dawson, «Randall Museum» Director, reviewed the «Randall Museum» Transportation",
+   "ocr_excerpts": [
+    "ats. Design funds ($30,000). (Given Priority 2 on 12/12/91). 35. Poly High School Gym - (Given Priority 3 on 12/12/91). 36. Potrero Hill Recreation Center - to match federal grant of $250,000 for renovation including new floor, accessible restrooms ($107,000). (Given Priority 1 on 12/12/91). 37. Randall Museum - Environmental Center, Garden and Pond - (Given Priority 1 on 12/12/91). 38. Regional Trail, Twin Peaks - Community request to improve trail system, to revegetate, and to take measures to stop erosion. $200,000 cost estimate provided by community. (Given Priority 1 on 1/9/92). 39. Swimming Pool",
+    "1 /I 5/92) . 20. South of Market Park - Acquisition/Development (Given Priority 1 on 1/15/92). 21. Tank Hill - Renovation (Moved to natural areas category on 1/9/92). 22. Tenderloin Recreation Center and Playground (Given Priority 1 on 1/15/92) . 23. Transportation Program: Tenderloin, Chinatown, Randall Museum, Mission, Bayview and OMI Districts. 24. 2460 Harrison - Development (Defer til 1/30/92). 25. 23rd, Treat and Folsom Streets - Acquisition/Development (Defer til 1/30/92). 26. Valencia Gardens, New Park - Acquisition/Development (Defer til 1/30/92). 27. Washington Hyde Mini Park ^SAN FRANCISCO",
+    "on 1/15/92). 20. South of Market Park - Acquisition/Development (Given Priority 1 on 1/15/92) . 21. Tank Hill - Renovation (Moved to natural areas category on 1/9/92). 22. Tenderloin Recreation Center and Playground (Given Priority 1 on 1/15/92) . 23. Transportation Program: Tenderloin, Chinatown, Randall Museum, Mission, Bayview and OMI Districts. 24. 21st Street and South Van Ness 25. 2460 Harrison - Development (Defer til 1/30/92). 26. 23rd, Treat and Folsom Streets - Acquisition/Development (Defer til 1/30/92) . 27. Valencia Gardens, New Park - Acquisition/Development (Defer til 1 /30/92) . 28. Was",
+    "Henne; Barbara Judy; Nancy Larson; Nan McGuire; Terry Ow-l'ling; Juanita Raven; Jacob Sigg; and Willa Sims Ina Dearman; Geraldine Earp; Carole Isaacs; Hilary Lamar; Lonnie Lawson; Louis Loewenstein; Midge Wilson; and Lynne Williams Phil Arnold, Asst. General Manager-Administration; Amy Dawson, Director, Randall Museum; Tim Lillyquist, Assistant to the General Manager; and Joanne Wilson, Park Planner, of the Recreation and Park Department; and Steve Shotland of the Department of City Planning APPROVAL OF MINUTES The minutes of January 30, 1992 were approved as submitted. PUBLIC COMMENT At this time members o",
+    "Committee on items that are within the subject matter jurisdiction of the Park and Open Space Advisory Committee. Members of the public may address the Committee for up to 3 minutes for individuals or up to 5 minutes for groups, or a lesser period time subject to the call of the Co-Chai rs . Randall Museum -- Representatives of the Randall Museum requested fun"
+   ],
    "url": "https://archive.org/details/minutes1992sanf_1",
    "deep_link": "https://archive.org/details/minutes1992sanf_1?q=Randall+Museum",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
@@ -172,7 +178,13 @@
    "year": 1986,
    "pool": "sfpl",
    "matched_alias": "Josephine Randall Junior Museum",
-   "snippet": "lots along Museum Way near the «Josephine Randall Junior Museum». A compromise proposal has been",
+   "ocr_excerpts": [
+    "at 78 golf courses to open Christmas and New Year's Day LITTLE HOLLYWOOD PARK RES. 14246 - Apprvd. phase II development plans 34 - 30 - 1986 INDEX Page No. LLEWELLA LEWIS BEQUEST RES. 14330 - Apprvd. transferring money to Bur. of Architecture 78 for masterplan and improvements for Josephine Randall Museum MANAGEMENT BY OBJECTIVES RES. 14265 - Apprvd. M.B.O. Objectives for Fiscal Year 1986/87 41 General Manager's Report - M.B.O. Objectives Review 85/86 190 RES. 14502 - Apprvd. M.B.O. for 86/87; review of M.B.O. of 225 85/86 MARINA GREEN RES. 14315 - Apprvd. placement of Goodwill Donation Station for 7",
+    "ich shadow impacts will be mapped. MUSEUM WAY DEVELOPMENT Negotiations have taken place between neighborhood residents, Recreation and Park staff. City Planners and developers in an attempt to reduce impacts (view blockage and traffic congestion) of development of three lots along Museum Way near the Josephine Randall Junior Museum. A compromise proposal has been calendared for review by the City Planning Commission on October 23. A description of the current proposal is attached to this report. Any comments on this material should be conveyed to Deborah Learner, Park Planner, so that your concerns can be adequately reflected at",
+    "ch shadow impacts will be mapped. MUSEUM WAY DEVELOPMENT Negotiations have taken place between neighborhood residents, Recreation and Park staff, City Planners and developers in an attempt to reduce impacts (view blockage and traffic congestion) of development of three lots along Museum Way near the Josephine Randall Junior Museum. A compromise proposal has been calendared for review by the City Planning Commission on October 23. A description of the current proposal is attached to this report. Any comments on this material should be conveyed to Deborah Learner, Park Planner, so that your concerns can be adequately reflected at",
+    "acant, the third lot has a structure on it which fronts on State Street and is slated to be demolished in the proposed development. She noted that a number of people voiced their concern before the Parks and Planning Committee representing the developer, nearby residents and those associated with the Josephine Randall Junior Museum. The issues presented were concerns of preservation of views along Museum Way, access to the Junior Museum, the bulk of the buildings and the appearance created by siting all three buildings along State Street. She said a compromise solution had been worked out with some of the neighborhood represent",
+    "compromise. Based on the discussion that was heard at the Committee level the following recommendation was adopted: that all units should be constructed with access from State Street and the height of the units should not extend above the elevation of Museum Way. Margaret Garvin, Chairm"
+   ],
    "url": "https://archive.org/details/minutesrecreatio1986sanf",
    "deep_link": "https://archive.org/details/minutesrecreatio1986sanf?q=Josephine+Randall+Junior+Museum",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
@@ -186,11 +198,37 @@
    "year": 1973,
    "pool": "sfpl",
    "matched_alias": "Josephine Randall Junior Museum",
-   "snippet": "before. Randall Junior Museum The «Josephine Randall Junior Museum», from its prime location in",
+   "ocr_excerpts": [
+    "nd private workspaces, a portrait studio, washers for prints, print dryers, dry mounting presses, and cutters, along with the aid of experienced directors and numerous classes. In 1985-86, a diverse offering of classes allowed greater numbers of participants than ever before. Randall Junior Museum The Josephine Randall Junior Museum, from its prime location in Corona Heights, served up programs for youth that related to the natural sciences, arts, crafts, rockets, computers, birdwatching, a boat club, an airplane club, live animal displays and basic mechanics. Daily movies were offered in the Museum's theater. For 10 to 12 year",
+    "ers and private workspaces, a portrait studio, washers for prints, print dryers, dry mounting presses, and cutters, along with the aid of experienced directors and numerous classes. In 1986-87, diverse class offerings allowed greater num- bers of participants than ever before. Randall Junior Museum The Josephine Randall Junior Museum, from its prime location in Corona Heights, offered programs for youth that related to the natural sciences, art, crafts, rockets, computers, birdwatching, a boat club, an airplane club, live animal displays, and basic mechanics. Daily movies were offered in the Museum's theater. For 10 to 12 year ol",
+    "advanced levels. The Photography Center The Photography Center has been in operation for 30 years, supplying 40 enlargers and private workspaces, a portrait studio, washers for prints, print dryers, dry mounting presses, and cutters, along with the aid of experienced directors and numerous classes. Randall Museum The Randall Museum, from its prime location in Corona Heights, provided programs for youth that related to the natural sciences, art, crafts, rockets, computers, birdwatching, a boat club, an airplane club, live animal dis- plays, and basic mechanics. Daily movies were offered in the Museum's theater. For 10 to 12 yea",
+    "ommunity organizations sup port the activities and programs of the Recreation and Park Department. Prin- cipal among these is the Friends of Rec- reation and Parks, which is a support or- ganization for the entire Department. Volunteer groups also support the Arbo- retum, the Conservatory of Flowers, the Randall Museum, the Marina, the Zoo and Camp Mather. A number of com- munity groups participate in tree plant- ings. During 1987-88, volunteers from PG & E organized their seventh annual planting in Golden Gate Park. In addi- tion there are over forty other organiza- tions and advisory boards that assist in spe-",
+    "on after school. Five day summer day camps are also offered for children by the Recreation Division. t^ojw tVfKANC\\^ 30%* In addition to the 74 community recreation centers, the Recreation Division staffs four specialized centers. These centers are the Harvey Milk Recreation"
+   ],
    "url": "https://archive.org/details/annrep778085899091sanf",
    "deep_link": "https://archive.org/details/annrep778085899091sanf?q=Josephine+Randall+Junior+Museum",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
    "group": "Reports & records",
+   "salient": true
+  },
+  {
+   "identifier": "generalmanagersr1992sanf",
+   "title": "General manager's report : Open Space Acquisition and Park Renovation Fund",
+   "creator": "San Francisco (Calif.). Recreation and Park Department,San Francisco (Calif.). Dept. of City Planning,San Francisco (Calif.). Open Space Acquisition and Park Renovation Fund",
+   "year": 1975,
+   "pool": "sfpl",
+   "matched_alias": "Randall Museum",
+   "ocr_excerpts": [
+    "Mini Park (design) $ 30,000 Bernal Heights Gym 150,000 Chinese Playground 100.000 Fencing 80,000 Fol som Playground 450,000 Disabled Access 50,000 Hayes Valley Clubhouse 50,000 Hazardous Materials Abatement 60,000 Japanese Peace Plaza 50,000 Security Lighting 80,000 Potrero Hill Rec Center 100,000 Randall Museum 20,000 Twin Peaks Regional Trail 100,000 West Portal Playground 100,000 GGP Panhandle Playground 50,000 GGP Bandshel 1 20,000 Visitacion Valley Clubhouse 100,000 D. PLANNING AND ADMINISTRATION $600,000 (3%) Salaries $ 299,916 Fringe Benefits 72,384 Contractual Services 189,000 Auto Mi leag",
+    "ats. Design funds ($30,000). (Given Priority 2 on 12/12/91). 35. Poly High School Gym - (Given Priority 3 on 12/12/91). 36. Potrero Hill Recreation Center - to match federal grant of $250,000 for renovation including new floor, accessible restrooms ($107,000). (Given Priority 1 on 12/12/91). 37. Randall Museum - Environmental Center, Garden and Pond - (Given Priori ty 1 on 12/12/91 ) . 38. Regional Trail, Twin Peaks - Community request to improve trail system, to revegetate, and to take measures to stop erosion. $200,000 cost estimate provided by community. (Given Priori ty 1 on 1 /9/92) . 39. Swimming",
+    "th of Market Park - Acquisition/Development (Given Priority 1 on 1/15/92). 21. Tank Hill - Renovation (Moved to natural areas category on 1 /9/92) . 22. Tenderloin Recreation Center and Playground - Development (Gi ven Priori ty 1 on 1 /I 5/92) . 23. Transportation Program: Tenderloin, Chinatown, Randall Museum, Mission, Bayview and OMI Districts. (Given Priority 1 on 2/4/92) . 24. 21st Street and South Van Ness (3/10/92 - Given Priority 1 for consideration for possible acquisition). 25. 2460 Harr i son - Development (Given Priority 1, design only, 2/4/92) . 26. 23rd, Treat and Folsom Streets - Ac",
+    "he understanding that the funds would revert should the required matching funds not be raised. -19- B Renovation: 1991 - 1992 Project King Pool Entry way Upper Noe Bleachers Rolph Nicol Park Cow Hoi low Glen Canyon Masterplan Mission Pool Entrance Balboa Park Restrooms Balboa Park Lighting Randall Museum Lobby Exhibits Portable Restrooms Lang Field Lighting Chinese Playground and Folsom Playground - design only Federal Office Bldg. Playground Status/(7o) Estimated Compi ete Comp1 etion Under design (107o) TBD Design oending TBD Under aesign ( 10%) TBD Under const. 7/92 Underway (30%) 1/93",
+    "ucjiyii (10%) TBD ndWOnd LIUUiKJUbc UllUcI Uciiyii (10%) TBD ■uicii uoniyuii Ldiiu rid-iiaycMiciiL riau 1 1 n H o r w ;3 \\/ UIIUCI Way (20%) 5/93 Garfield Fieldhouse - rehabilitation Under design (20%) 5/93 Junipero Serra Playground - clubhouse expansion To bid 5/92 (25%) 12/92 Randall Museum Master Plan and Improvements Planning underway TBD Ongoing Projects: Program monies are alloca"
+   ],
+   "url": "https://archive.org/details/generalmanagersr1992sanf",
+   "deep_link": "https://archive.org/details/generalmanagersr1992sanf?q=Randall+Museum",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Other records",
    "salient": true
   },
   {
@@ -200,7 +238,9 @@
    "year": 1977,
    "pool": "sfpl",
    "matched_alias": "Josephine Randall Junior Museum",
-   "snippet": "miss a major event being held in the «Josephine Randall Junior Museum» at ,了 Roosevelt and Museum Way today",
+   "ocr_excerpts": [
+    "5 198 其 ,人 中 取 归 “ 仆 睹 苛 ' 改 jang， 吉 (Photo by Kem Lee) British stuntman Alan ;Stuat took off from a ramp at a speed of 80 miles-an-hour and piled through the double decker bus during filming of the movie“Fox- bat”which will star Henry Silva and Vonetta McGee. Many of you will not miss a major event being held in the Josephine Randall Junior Museum at ,了 Roosevelt and Museum Way today. This is the fifth annual super bowl of the rodent world 一 the Rodent Rodeo 一 which will run yan8g ， 位 :Radical ho 7 above the horizon 日 了 有 of 1ight This 1s Dhonetic- (R.101， 也 ). c 有 还， To TaT 了 - 五 在 ， Radical No. 证 ， Phonetic， el 1 as IOTE binding 1 和 Triage ceretnOny in _ mamny"
+   ],
    "url": "https://archive.org/details/eastwest11east_27",
    "deep_link": "https://archive.org/details/eastwest11east_27?q=Josephine+Randall+Junior+Museum",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
@@ -214,23 +254,11 @@
    "year": 1945,
    "pool": "sfpl",
    "matched_alias": "Josephine Randall Junior Museum",
-   "snippet": "Francisco Museum of Art Pioneer FHall «Josephine Randall Junior Museum» San f^rancisco Maritime Museum",
+   "ocr_excerpts": [
+    "Band Concerts — Golden Gate Park Civic Light Opera Association Series San Francisco Opera — Spring Opera Theaters — Legitimate stage and many \"little theater\" groups Museums and Art Galleries: California Palace of the Legion of h^onor De Young Memorial Museum San Francisco Museum of Art Pioneer FHall Josephine Randall Junior Museum San f^rancisco Maritime Museum FHistory Room of the Wells Fargo Bank California State Division of Mines — Geology Museum Morrison Planetarium ANNUAL EVENTS: Pacific Festival Grand National Livestock Exposition, Horse Show and Rodeo San Francisco International Film Festival Chinese New Year's Celebration"
+   ],
    "url": "https://archive.org/details/sanfranciscobaya1961sanf",
    "deep_link": "https://archive.org/details/sanfranciscobaya1961sanf?q=Josephine+Randall+Junior+Museum",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Other records",
-   "salient": true
-  },
-  {
-   "identifier": "generalmanagersr1992sanf",
-   "title": "General manager's report : Open Space Acquisition and Park Renovation Fund",
-   "creator": "San Francisco (Calif.). Recreation and Park Department,San Francisco (Calif.). Dept. of City Planning,San Francisco (Calif.). Open Space Acquisition and Park Renovation Fund",
-   "year": 1975,
-   "pool": "sfpl",
-   "matched_alias": "Randall Museum",
-   "snippet": "80,000 Potrero Hill Rec Center 100,000 «Randall Museum» 20,000 Twin Peaks Regional Trail 100,000",
-   "url": "https://archive.org/details/generalmanagersr1992sanf",
-   "deep_link": "https://archive.org/details/generalmanagersr1992sanf?q=Randall+Museum",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
    "group": "Other records",
    "salient": true
@@ -242,37 +270,11 @@
    "year": 1980,
    "pool": "sfpl",
    "matched_alias": "Josephine Randall Junior Museum",
-   "snippet": "VETERINARIAN'S RESPONSIBILITY TO THE «JOSEPHINE RANDALL JUNIOR MUSEUM». - - 6. ~ THAT THE BOARD",
+   "ocr_excerpts": [
+    "HAT THE BOARD OF SUPERVISORS REQUEST A FULL AND COM- PLETE REPORT ON THE CAUSE OF DEATH OF THE MANY HOOFED STOCK AND IN PARTICULAR THOSE THAT WERE ALLEGED TO HAVE DIED OF STARVATION. 5. THAT THE BOARD OF SUPERVISORS REQUEST IN WRITING AN EXPLANATION OF THE ZOO VETERINARIAN'S RESPONSIBILITY TO THE JOSEPHINE RANDALL JUNIOR MUSEUM. - - 6. ~ THAT THE BOARD OF SUPERVISORS REQUEST IN WRITING AN EXPLANATION OF THE CARE AND CAUSE OF ILL HEALTH AND • \"DEATH OF \"JACKIE, 11 THE FEMALE GORILLA THAT DIED IN •• - MID-1978, SUCH CARE REFERRED TO IN KEEPERS' REPORTS DATED MARCH 2 THROUGH MARCH 18, 1978. (See Binder No. 1,"
+   ],
    "url": "https://archive.org/details/reportoninvestig2980sanf",
    "deep_link": "https://archive.org/details/reportoninvestig2980sanf?q=Josephine+Randall+Junior+Museum",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Other records",
-   "salient": false
-  },
-  {
-   "identifier": "whatsdoinginpark1992sanf",
-   "title": "What's doing in the parks?",
-   "creator": "San Francisco (Calif.). Recreation and Park Department",
-   "year": null,
-   "pool": "sfpl",
-   "matched_alias": "Randall Museum",
-   "snippet": "adapt to the rigors of winter, free, «Randall Museum», 199 Museum Way. 1:30 p.m. — Theme Walk:",
-   "url": "https://archive.org/details/whatsdoinginpark1992sanf",
-   "deep_link": "https://archive.org/details/whatsdoinginpark1992sanf?q=Randall+Museum",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Other records",
-   "salient": false
-  },
-  {
-   "identifier": "scheduleofclasse1987sanf",
-   "title": "Schedule of classes",
-   "creator": "San Francisco (Calif.). Recreation and Park Dept",
-   "year": null,
-   "pool": "sfpl",
-   "matched_alias": "Randall Museum",
-   "snippet": "558-3132. 27 THE «RANDALL MUSEUM» 199 Museum Way, 863-1399 The «Randall Museum» is a hands-on",
-   "url": "https://archive.org/details/scheduleofclasse1987sanf",
-   "deep_link": "https://archive.org/details/scheduleofclasse1987sanf?q=Randall+Museum",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
    "group": "Other records",
    "salient": false
@@ -315,7 +317,7 @@
  ],
  "_gate": {
   "has_photo": false,
-  "n_documents": 9,
+  "n_documents": 7,
   "n_money_links": 1,
   "meets_pre_summary": false
  }

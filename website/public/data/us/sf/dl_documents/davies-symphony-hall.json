@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-21T14:25:53.959177+00:00",
+ "generated_at": "2026-07-22T15:04:53.718368+00:00",
  "slug": "davies-symphony-hall",
  "name": "Louise M. Davies Symphony Hall",
  "note": "Archive documents linked to this place; source labels honour the SFPL-vs-Democracy's-Library distinction.",
@@ -11,54 +11,12 @@
    "year": 1997,
    "pool": "sfpl",
    "matched_alias": "Louise M. Davies Symphony Hall",
-   "snippet": "Memorial Opera House Grove Street «Louise M. Davies Symphony Hall» Hayes Street Proposed %-*| Project",
    "url": "https://archive.org/details/schoolofartsmast1199sanf",
    "deep_link": "https://archive.org/details/schoolofartsmast1199sanf?q=Louise+M.+Davies+Symphony+Hall",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
    "group": "Plans & environmental review",
-   "salient": true
-  },
-  {
-   "identifier": "annualrprt1978798384warm",
-   "title": "Annual report",
-   "creator": "War Memorial (San Francisco, Calif.). Board of Trustees",
-   "year": null,
-   "pool": "sfpl",
-   "matched_alias": "Davies Symphony Hall",
-   "snippet": "completed in 79\"80. The Louise M. «Davies Symphony Hall» was opened September 16, 1980 and",
-   "url": "https://archive.org/details/annualrprt1978798384warm",
-   "deep_link": "https://archive.org/details/annualrprt1978798384warm?q=Davies+Symphony+Hall",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Reports & records",
-   "salient": true
-  },
-  {
-   "identifier": "eastwest20east_7",
-   "title": "East/West",
-   "creator": "East/West Pub. Co.",
-   "year": 1986,
-   "pool": "sfpl",
-   "matched_alias": "Louise M. Davies Symphony Hall",
-   "snippet": "Symphonic Concert JI、to be held at the «Louise M. Davies Symphony Hall» on March 7and 8 at pm. Touted as “a",
-   "url": "https://archive.org/details/eastwest20east_7",
-   "deep_link": "https://archive.org/details/eastwest20east_7?q=Louise+M.+Davies+Symphony+Hall",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Other records",
-   "salient": true
-  },
-  {
-   "identifier": "calendarofevents2000sanf",
-   "title": "Calendar of events",
-   "creator": "San Francisco Performing Arts Center",
-   "year": null,
-   "pool": "sfpl",
-   "matched_alias": "Davies Symphony Hall",
-   "snippet": "94102 Telephone 415/ 621-6600 JANUARY 2000 «Davies Symphony Hall» Herbst T heal re Vfeterans Build ir\\g",
-   "url": "https://archive.org/details/calendarofevents2000sanf",
-   "deep_link": "https://archive.org/details/calendarofevents2000sanf?q=Davies+Symphony+Hall",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Other records",
-   "salient": true
+   "salient": true,
+   "gloss": "A 1997 School of the Arts draft EIR whose parking analysis records Davies Hall's 2,743-seat capacity and an evening performance drawing 2,420 people (an 88 percent attendance rate)."
   },
   {
    "identifier": "civiccenterstud1994sanf_0",
@@ -67,12 +25,26 @@
    "year": 1994,
    "pool": "sfpl",
    "matched_alias": "Louise M. Davies Symphony Hall",
-   "snippet": "War Memorial Opera House 3176 «Louise M. Davies Symphony Hall» 2743 Warfield Theater 2600 Orpheum",
    "url": "https://archive.org/details/civiccenterstud1994sanf_0",
    "deep_link": "https://archive.org/details/civiccenterstud1994sanf_0?q=Louise+M.+Davies+Symphony+Hall",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
    "group": "Other records",
-   "salient": true
+   "salient": true,
+   "gloss": "A 1994 Civic Center cultural-facilities study listing Davies Hall's 2,743 seats, its role as the San Francisco Symphony's home, War Memorial trustee control, and roughly 30 rental days a year."
+  },
+  {
+   "identifier": "eastwest20east_7",
+   "title": "East/West",
+   "creator": "East/West Pub. Co.",
+   "year": 1986,
+   "pool": "sfpl",
+   "matched_alias": "Louise M. Davies Symphony Hall",
+   "url": "https://archive.org/details/eastwest20east_7",
+   "deep_link": "https://archive.org/details/eastwest20east_7?q=Louise+M.+Davies+Symphony+Hall",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Other records",
+   "salient": true,
+   "gloss": "A 1986 East/West newspaper announcement of an 'East Meets West' symphonic concert held at the Louise M. Davies Symphony Hall on March 7-8."
   }
  ]
 }

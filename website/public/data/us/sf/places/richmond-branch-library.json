@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-21T14:25:53.945777+00:00",
+ "generated_at": "2026-07-22T15:04:53.708443+00:00",
  "source_pipeline": "sf_place_candidates.json → sync_ia_sf.py + link_sf_places.py + fetch_sf_place_photos.py → export_sf_places.py",
  "unit": "USD",
  "slug": "richmond-branch-library",
@@ -112,15 +112,20 @@
  },
  "documents": [
   {
-   "identifier": "1meetingminutes2003sanf",
-   "title": "Meeting minutes",
-   "creator": "San Francisco (Calif.). Board of Supervisors. Finance and Audits Committee",
-   "year": null,
+   "identifier": "agenda20arts_0",
+   "title": "Agenda",
+   "creator": "Arts Commission of San Francisco",
+   "year": 1983,
    "pool": "sfpl",
    "matched_alias": "Richmond Branch Library",
-   "snippet": "expansion and renovation of the «Richmond Branch Library». California Reading and Literacy Improvement",
-   "url": "https://archive.org/details/1meetingminutes2003sanf",
-   "deep_link": "https://archive.org/details/1meetingminutes2003sanf?q=Richmond+Branch+Library",
+   "ocr_excerpts": [
+    "ultural Affairs to enter into an agreement with Ned Kahn for the safety retrofit of his artwork at the San Francisco International Airport for an amount not to exceed $30,000. 10. Motion to approve the artwork proposal of an illuminated book wall sculpture by artist Vince Koloski for the renovated Richmond Branch Library, as recommended by the Richmond Branch Community Artist Selection Committee. 11. Motion to authorize the Director of Cultural Affairs to enter into contract with artist Vince Koloski for Final Design, Fabrication, Transportation and Installation of an artwork for the renovated Richmond Branch Library in the amount of $36,000. 11/25/02 I2:« PN' C I Full Commission | December 2002 Agenda file7//S|/Web Staging/sfac.sfsu.edu/meelings/agenda/2002/artscom/aca_l20202.htni 12. Motion to resume the Art on Market Street Temporary Projects program for 2003, to include 2 to 3 temporary projects for a total a",
+    "ceed $30,000. http://sfgov.org/sfac/meetings/minutes/2002/artscom/acm_l 20202.htm 1 1/6/2003 SFAC I Full Commission I December 2002 Minutes Page 5 of 7 X. RESOLUTION NO. 1202-02-327: Motion to approve the artwork proposal of an illuminated book wall sculpture by artist Vince Koloski for the renovated Richmond Branch Library, as recommended by the Richmond Branch Community Artist Selection Committee. XI. RESOLUTION NO. 1202-02-328: Motion to authorize the Director of Cultural Affairs to enter into contract with artist Vince Koloski for Final Design, Fabrication, Transportation and Installation of an artwork for the renovated Richmond Branch Library in the amount of $36,000. XII. RESOLUTION NO. 1202-02-329: Motion to resume the Art on Market Street Temporary Projects program for 2003, to include 2 to 3 temporary projects for a total amount not to exceed $35,000. VI. Committee Reports 1. Civic Design Committee—Stanlee Gatti, Chair a.",
+    "impaired and deaf youth. 17. Motion to approve the design of the Peace Wall project for Koshland Park, 18. Motion to approve the preliminary proposal for two sculptures with possible change to the jeweled ceramic insets by artist Scott Donahue to be installed in the landscaping for the renovated Richmond Branch Library. 19. Motion to authorize the Director of Cultural Affairs to enter into contract in an amount not to exceed $36,000 with Scott Donahue for design development, fabrication and installation of two sculptures for the Richmond Branch Library. 20. Motion to approve the final mosaic tile artworks by Isis Rodriguez to be installed on retaining walls at the 23rd and Treat Park and Clubhouse. 21. Motion to approve final design for artwork by Johanna Poethig for Rochambeau Playground. 22. Motion to approve the Selection Panel's recommendati",
+    "impaired and deaf youth. 17. Motion to approve the design of the Peace Wa"
+   ],
+   "url": "https://archive.org/details/agenda20arts_0",
+   "deep_link": "https://archive.org/details/agenda20arts_0?q=Richmond+Branch+Library",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
    "group": "Meetings & resolutions",
    "salient": true
@@ -132,23 +137,12 @@
    "year": null,
    "pool": "sfpl",
    "matched_alias": "Richmond Branch Library",
-   "snippet": "meeting will be caUed to order. 1. «RICHMOND BRANCH LIBRARY» NAMING ACTION Continued from December",
+   "ocr_excerpts": [
+    "CA 94102-4733 Phone 415.557.4233, Fax 415.557.4240 ^ NOTICE OF MEETING A regular meeting of the San Francisco Public Library Commission will be held as foUows: DATE: Tuesday, January 6, 2004 TEME: 4:00 PM PLACE: Koret Auditorium, Main Library, lower level The meeting will be caUed to order. 1. RICHMOND BRANCH LIBRARY NAMING ACTION Continued from December 4, 2003 (This item is a continuation of the RICHMOND BRANCH LIBRARY NAMING hearing for possible additional public comment, Commission discussion and possible action. Public comment on this item was closed on December 4, 2003 except for testimony from persons who did not speak at the December 4, 2003 hearing. Consistent with the time limitations previously imposed on December 4, 2003, persons who did not offer public comment on this item on December 4, 2003 may testify for up to two minutes.) Presentation and discussion of and possible action to approve the addition of the name of the late State Senator Milton Marks to the name of the Richmond Branch Library. Explanatory documents: Richmond Branch renaming memo - Report on October 25\"' Richmond District Community meeting - Board of Supervisors Resolution in support of renaming 2. PUBLIC COMMENT (This item is to allow members of the public to comment generally on matters within the Commission's purview a",
+    "ic Library Commission held its regular meeting on Tuesday, January 6, 2004 in the Koret Auditorium, Main Library. President Higueras called the meeting to order at 4:1 1pm. The following members were present: Commissioners Bautista, Chin, Coulter, Higueras, Steiman, Streets and Strobin. AGENDA ITEM #1 RICHMOND BRANCH LIBRARY NAMING (cont'd, from Dec. 4. 2003) President Higueras noted that Agenda item #1 was continued from the regular meeting of December 4, 2003 and announced that pubUc comment would be taken from those who did not testify on this item at the December meeting for 2 minutes as was the time limit set at the previous meeting. Public comment on AGENDA ITEM #1 RICHMOND BRANCH LIBRARY NAMING (cont'd, from Dec. 4. 2003) Ms. Deborah Doyle, Chair of the Friends of the San Francisco PubUc Librar}' spoke in favor of renaming the Richmond Branch Library to honor the contributions of Senator Marks in recognition and honor of his record of support for hbraries and his contributions to the betterment of the community. Ms. Vicky Arno, lifelong Richmond resident and Native American, expressed her strong support for renaming the Richmond Branch Library citing Senator Marks outstanding career of public service and his particular concern for and support of American Indians. Mr. Norman Colliver, Esq., offered comments in support of renaming the Richmond Branch Library in honor of Senator Marks citing his 45 years of working closely with the Senator on projec"
+   ],
    "url": "https://archive.org/details/minutesofregular2004sanf",
    "deep_link": "https://archive.org/details/minutesofregular2004sanf?q=Richmond+Branch+Library",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Meetings & resolutions",
-   "salient": true
-  },
-  {
-   "identifier": "agenda20arts_0",
-   "title": "Agenda",
-   "creator": "Arts Commission of San Francisco",
-   "year": 1983,
-   "pool": "sfpl",
-   "matched_alias": "Richmond Branch Library",
-   "snippet": "Vince Koloski for the renovated «Richmond Branch Library», as recommended by the Richmond Branch",
-   "url": "https://archive.org/details/agenda20arts_0",
-   "deep_link": "https://archive.org/details/agenda20arts_0?q=Richmond+Branch+Library",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
    "group": "Meetings & resolutions",
    "salient": true
@@ -160,23 +154,13 @@
    "year": 2000,
    "pool": "sfpl",
    "matched_alias": "Richmond Branch Library",
-   "snippet": "Improvement Program «RICHMOND BRANCH LIBRARY» BACKGROUND The «Richmond Branch Library», the first SFPL",
+   "ocr_excerpts": [
+    "PORTOLA BRANCH LIBRARY 62 BACKGROUND 62 SCOPE OF WORK i 62 PROJECT COST 63 PROJECT SCHEDULE 63 POTRERO BRANCH LIBRARY 64 BACKGROUND ! 64 SCOPE OF WORK 64 PROJECT COST 66 PROJECT SCHEDULE 66 PRESIDIO BRANCH LIBRARY 67 BACKGROUND 67 SCOPE OF WORK 67 PROJECT COST 68 PROJECT SCHEDULE 68 RICHMOND BRANCH LIBRARY .69 BACKGROUND 69 SCOPE OF WORK 69 PROJECT COST 71 PROJECT SCHEDULE 71 SUNSET BRANCH LIBRARY 72 BACKGROUND 72 SCOPE OF WORK 72 PROJECT COST 73 PROJECT SCHEDULE .73 VISITACION VALLEY BRANCH LIBRARY 74 BACKGROUND 74 SCOPE OF WORK : 74 PROJECT COST 75 PROJECT SCHEDULE 75 iii Branch L",
+    "hs The schedule for each individual project conforms to the program phasing criteria listed on page 3. The criteria balance the relative priority of each project with the need to maintain library services in each neighborhood during the life of the program. 68 Branch Library Improvement Program RICHMOND BRANCH LIBRARY BACKGROUND The Richmond Branch Library, the first SFPL branch built with Carnegie funds, is a two- story 9.300 square foot concrete building constructed in 1914 located at 351 Ninth Avenue. It serves residents of the inner Richmond District. Children, families, individuals, and senior citizens use the library. This branch also draws many",
+    "heels, and temporary closure This relocation program excludes library staff costs. The solution to be chosen for a particular branch will depend on many factors involving overall program phasing, the extent of disruptions, and the cost effectiveness of the various relocation alternatives. PROJECT COST Richmond Branch Library Project Cost Summary Rehabilitation and Improvements $6,090,000 Expansion $2,620,000 Total Project Cost Estimate $8,710,000 Project costs include construction cost estimates for each project component: principal construction; construction contingency; art enrichment; hazardous materials mitigation; temporary relocation measures; project control and site control; cost figures are escalated to the mid-point of construction. PROJECT SCHEDULE Richmond Branch Library Project Duration ACTIVITY DURATION Planning Design and Bid 22 months Relocation and Construction 20 months The schedule for each individual project conforms to the program phasing criteria listed on page 3. The criteria balance the relative priority of each project with the need to maintain libr"
+   ],
    "url": "https://archive.org/details/branchlibraryimp3200sanf",
    "deep_link": "https://archive.org/details/branchlibraryimp3200sanf?q=Richmond+Branch+Library",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Other records",
-   "salient": true
-  },
-  {
-   "identifier": "bidscontractsby2006sanf_0",
-   "title": "Bids and contracts / by the Purchasing Department of the City and County of San Francisco Purchasing Department",
-   "creator": "San Francisco (Calif.). Purchasing Department",
-   "year": null,
-   "pool": "sfpl",
-   "matched_alias": "Richmond Branch Library",
-   "snippet": "DeSouza, Fax 4 1 5.554.837 1 751 3A «Richmond Branch Library» Renovation. The work is extensive",
-   "url": "https://archive.org/details/bidscontractsby2006sanf_0",
-   "deep_link": "https://archive.org/details/bidscontractsby2006sanf_0?q=Richmond+Branch+Library",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
    "group": "Other records",
    "salient": true
@@ -188,7 +172,12 @@
    "year": 1993,
    "pool": "sfpl",
    "matched_alias": "Richmond Branch Library",
-   "snippet": "of the «Richmond Branch Library». The study revealed that the «Richmond Branch Library» had a",
+   "ocr_excerpts": [
+    "L REPRESENTATIVES: Harvey Rose, Budget Analyst; Todd Colburn, City Engineer; Ken Dowlin, City Librarian. IN SUPPORT: None. OPPOSED: None. ACTION: HEARING HELD. AMENDED. RECOMMENDED AS AMENDED. Add a section 2 placing $980,400 on reserve pending selection of a contractor for renovation of the Richmond Branch Library, contract cost details and the MBE/WBE status of the contractor and to be release by the Budget Committee.\" AMENDED TITLE: \"Appropriating $4,494,000 of 1990 Earthquake Safety Bonds to various Library capital improvement projects of the Department of Public Works for fiscal year 1994-95; placing $980,40",
+    "s Branch Library, and (9) West Portal Branch Library. The proposed ordinance would completely revise the Library's original allocation of its share of the 1990 Earthquake Safety Bond Funds. The proposed funds would instead be used for (1) completion of the Chinatown Branch Library Renovation; (2) the Richmond Branch Library Renovation; and (3) the testing, inspection, and building evaluation of the 9 Branch Libraries that were originally slated for seismic retrofit, as well as the Noe Valley Branch, as follows: Chinatown Branch Library Renovation $2,500,000 Richmond Branch Library Renovation 1,544,000 Testing, Inspection & Building Evaluation of 10 Branch Libraries 450.000 TOTAL $4,494,000 Mr. Jorge Alfaro of the DPW advises that, based on DPW staff recommendations, the Public Library has decided to change its priorities for the use of the Earthquake Safety Program funds, fo",
+    "ranch Library renovation, which was to be completely funded by the 1988 Public Library Improvement Bond, has incurred unforeseen cost overruns, and cannot be completed without an additional $2.5 million. (See details below and Attachments 1, 2 and 3 provided by the Department of Public Works.) • The Richmond Branch Library, which was not one of the original nine Branch Libraries slated to receive seismic upgrade, has been determined to have the highest risk of seismic instability of all branch libraries that have been evaluated, and requires immediate seismic upgrading (see details below). • DPW and the Library wish",
+    "formed by the joint venture contractor of CICO/Joo Construction, consisting of two firms, CICO Construction and T.E. Joo Construction, Inc., an MBE firm. CICO/Joo Construction was selected by DPW through a competitive bid process in December of 1993 for the Chinatown Branch Library renovation project. Richmond Branch Library Renovation ($1.544.000) In 1992, DPW conducted a Seismic Assessment Study of the Richmond Branch Library. The study revealed that the Richmond Branch Library had a seismic hazard rating of 4.0, which represents the highest risk for a building collapse in the event of a major earthquake. DPW recommends that this building be given the highest "
+   ],
    "url": "https://archive.org/details/2calendarmeetingo1995sanf",
    "deep_link": "https://archive.org/details/2calendarmeetingo1995sanf?q=Richmond+Branch+Library",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
@@ -202,12 +191,17 @@
    "year": null,
    "pool": "sfpl",
    "matched_alias": "Richmond Branch Library",
-   "snippet": "STORYTIHE FOR CHILDREN AGES 6-8 «Richmond Branch Library», 351 9th Ave. (near Clement), (415)",
+   "ocr_excerpts": [
+    "brary, 155 Winston Dr. (at 19th), (415) 337-4746 Fridays, February 2, 9, 16, 23 - 4:00 - 6:00 p.m. HOMEWORK HELP - Free one-on-one tutoring Mission Branch Library, 3359 24th St. (at Bartlett), (415) 695-5090 Fridays, February 2, 9, 16, 23 - 4:00 p.m. AFTERSCHOOL STORYTIHE FOR CHILDREN AGES 6-8 Richmond Branch Library, 351 9th Ave. (near Clement), (415) 666-7021 Saturday, February 3 - 10:30 a.m. ^CHINESE NEW YEAR CELEBRATION FOR CHILDREN AGES 4 AND OLDER - With lively, colorful Chinese lion dancers. Mission Branch Library, 3359 24th St. (at Bartlett), (415) 695-5090 Saturdays, February 3, 17, 24 - 10:30 a.m. INFANT/TODDLER LAPSIT FOR CHILDREN AGES 6 MONTHS TO 3 YEARS - songs, stories and rhymes. Richmond Branch Library, 351 9th Ave. (near Clement), (415) 666-7021 Saturdays, February 3, 10, 17, 24 - 10:30 a.m. INFANT/TODDLER LAPSIT FOR CHILDREN AGES 1-7 (UNDER 3 WITH AN ADULT) West Portal Branch Library, 190 Lenox Way, (at Ulloa), (415) 753-7135 Saturdays, February 3, 10, 17, 24 - 11:00 a.m. INFANT/TODDLER LAPSI",
+    "3-7135 Tuesdays, February 6, 20, 27 - 10:30 a.m. SPECIAL STORYTIHE FOR CHILDREN AGES 3 - 5 - Stories with an African-American theme. Western Addition Branch Library, 1550 Scott St. (at Geary), (415) 292-2160 Tuesdays, February 6, 13, 20, 27 - 11:00 a.m. PRESCHOOL STORYTIHE FOR CHILDREN AGES 3-5 Richmond Branch Library, 351 9th Ave. (near Clement), (415) 666-7021 Tuesdays, February 6, 13, 20, 27, - 3:30 p.m. CHESS AND CHECKERS CLUB FOR CHILDREN OF ALL AGES Ingleside Branch Library, 387 Ashton Ave. (near Ocean), (415) 337-4745 Tuesdays, February 6, 13 - 7:00 p.m. FAMILY STORYTIHE FOR CHILDREN AGES 3-8 Sunset B",
+    "0 Wednesday, February 7 - 4:00 p.m. *BLACK HISTORY MONTH CELEBRATION FOR CHILDREN OF ALL AGES - With Jeff Narell, steel drum musician. Presidio Branch Library, 3150 Sacramento St. (near Baker), (415) 292-2155 Wednesdays, February 7, 14, 21, 28 - 7:00 p.m. PRESCHOOL STORYTIME FOR CHILDREN AGES 3-5 Richmond Branch Library, 351 9th Ave. (near Clement), (415) 666-7021 Wednesdays, February 7, 14, 21, 28 - 7:00 p.m. PRESCHOOL STORYTIHE FOR CHILDREN AGES 3-5 West Portal Branch Library, 190 Lenox Way, (at Ulloa), (415) 753-7135 Wednesdays, February 7, 14, 21, 28 - 7:15 p.m. FAMILY LAPSIT FOR CHILDREN AGES 3 AND UNDER",
+    "415) 337-4745 Friday, February 9 - 4:00 p.m. VALENTINE CRAFT PROGRAM FOR CHILDREN OF ALL AGES Mission Branch Library, 3359 24th St. (at Bartlett), (415) 695-5090 Saturday, February 10 - 10:30 a.m. ♦CHINESE NEW YEAR CELEBRATION FOR CHILDREN OF ALL AGES - With lively, colorful Chinese lion dancers. Richmond Branch Library, 351 9th Ave. (near Clement), (415) 666-7021 Saturday, February 10 - 11:00 a.m. PRESCHOOL FILM PROGRAM FOR CHILDREN AGES 3 - 5 - \"\"The Happy Lion,'\" '\"The Juggling Movie,\" and \"Clown Makeup.\"' West Portal Branch Library, 1"
+   ],
    "url": "https://archive.org/details/adultcalendarofp1996sanf",
    "deep_link": "https://archive.org/details/adultcalendarofp1996sanf?q=Richmond+Branch+Library",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
    "group": "Other records",
-   "salient": false
+   "salient": true
   },
   {
    "identifier": "noticeofartistse19arts",
@@ -216,12 +210,16 @@
    "year": null,
    "pool": "sfpl",
    "matched_alias": "Richmond Branch Library",
-   "snippet": "for the expanded and renovated «Richmond Branch Library». The Civic Art Collection r",
+   "ocr_excerpts": [
+    "ming Arts Public Art Suite 240 Community Arts & Education ultural eqijity Grants The Richmond Branch Community Artist Selection Panel will meet on Wednesday, RTisTs ^^c^Nsj^ September 18th, from 9 AM to Noon to select three artists to prepare artwork . ^ proposals for the expanded and renovated Richmond Branch Library. The Civic Art Collection r r r j Suite 70 Richmond Branch Community Artist Selection Panel includes three Richmond ITS Commission Gallery uelghborhood rcsldcnts who wcrc clcctcd at 3. Richmoud Library community 401 ^\"\"^ ^\"^^^\"^^^^ meeting held on the evening of June 27\"\". The community panelists",
+    "Panel specifically for this project. That panel, which met in mid- April, included three arts professionals. Marilyn Thompson, the Branch Library Improvement Program Manager, and Joan Jasper, Chief Curator of the Main Library. The artwork proposals by the three artist finalists will be exhibited at the Richmond Branch Library, probably in early November, for written public comment, which will be forwarded to the Richmond Branch Community Artist Selection Panel. The panel will meet again in mid-November to select the final artist with his or her artwork proposal for the new Richmond Branch Library. The final proposal must be approved by the Arts Commission and reviewed by the Library Commission. AUG 2 8 2002 SAN FRANCISCO PUBLIC LIBRARY You are welcome to attend the first Richmond Branch Community Artist Selection Panel meeting on September 18th at the Arts Commission offices. San Franc",
+    "09- VD .lioS s P A C Richard Newirth REcrok OF Cultural AffMRS PROGRAMS Civic Design Review Performing Arts SAN FRANCISCO ARTS COMMISSION BRANCH LIBRARY IMPROVEMENT ART ENRICHMENT PROGRAM ORIENTATION MEETING FOR THE THREE ARTIST SEMIFINALISTS PREPARING ARTWORK DESIGN PROPOSALS FOR THE RICHMOND BRANCH LIBRARY THE PUBLIC IS WELCOME TO ATTEND THIS MEETING TO PROVIDE INPUT TO THE ARTISTS PRIOR TO THE DEVELOPMENT OF THEIR PROPOSALS ] 0-1 0-02 Al 0:^7 MEETING DATE: WEDNESDAY, NOVEMBER 6, 2002 at 3 PM LOCATION: RICHMOND BRANCH LIBRARY, 351 NINTH AVENUE, RCVD 's:';' 2^'o BETWEEN GEARY AND CLEMENT IN THE RICHMOND DISTRICT Community Arts &. Education As part of the Branch Library Improvement Art Enrichment Program, three Bay ^STREETAR^sirLicTN^'sIsArea artists have been selected by the Richmond Branch Community^rtist Suite ^oggjg^^^Qj^ Panel to each prepare a proposal for the expanded and renovat^Qp. ir yirr^ .-p^^^ LLECTioNRichmond Branch Librarv. The three artists and their media are: vltlM I b DEPT. OCT 1 0 i^^i Civic Art coLiECTioNRichmond Branch Library. The three artists and their media are: Scott Donahue, concrete sculpture and reliefs '\"^orv^N^srENu^IJohanna Poethig, tile mosaics 415 554 608o(3qj.j^ MaFchcschi, lighting and metal sculpture SAN FRANCISCO PUBLIC LIBRAR"
+   ],
    "url": "https://archive.org/details/noticeofartistse19arts",
    "deep_link": "https://archive.org/details/noticeofartistse19arts?q=Richmond+Branch+Library",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
    "group": "Other records",
-   "salient": false
+   "salient": true
   }
  ],
  "dept_shelf": [
@@ -261,7 +259,7 @@
  ],
  "_gate": {
   "has_photo": false,
-  "n_documents": 8,
+  "n_documents": 6,
   "n_money_links": 1,
   "meets_pre_summary": false
  }

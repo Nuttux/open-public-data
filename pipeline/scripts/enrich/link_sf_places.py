@@ -5,9 +5,12 @@ Stage (i) of the place linkage — cheap candidate generation. For every seed
 place it assembles, each item carrying the exact evidence that justifies it:
 
   - archive_docs : Internet Archive items whose full text matched a place
-    alias (from the sync_ia_sf.py cache), with the highlighted OCR snippet as
-    the evidence quote. Pool-labelled (sfpl / dl) so the source line can honour
-    the doctrine (SFPL scans are NOT "Democracy's Library").
+    alias (from the sync_ia_sf.py cache), carrying the OCR passages around the
+    alias (fetch_ia_ocr.py) as the grounding for the fiche's summary — not a
+    280-char match fragment. Kept only when the OCR yielded real context, so
+    incidental keyword hits (a document that merely names the 39-Coit bus line)
+    drop out. Pool-labelled (sfpl / dl) so the source line can honour the
+    doctrine (SFPL scans are NOT "Democracy's Library").
   - dept_shelf   : the owning department's own archive items (annual reports,
     minutes) from the department cache.
   - contracts    : active contracts whose title names a place alias — evidence
@@ -159,11 +162,17 @@ def main() -> int:
         alias_low = [a.lower() for a in alias_ok]
 
         # ── archive docs from the place's IA cache ──
+        # Grounding is the document's own OCR text around the alias
+        # (fetch_ia_ocr.py), not the 280-char FTS fragment. A candidate is kept
+        # only if that OCR yielded real context (ocr_status == "ok"): items
+        # whose OCR is missing/empty, or whose alias appears only incidentally
+        # so no window was extracted, are not evidence and are dropped here —
+        # the snippet era kept them all on a bare keyword match.
         archive = []
         ia = load_json(CACHE / "places" / f"{slug}.json")
         if ia:
             for it in ia.get("items", []):
-                if not it.get("snippet"):
+                if it.get("ocr_status") != "ok" or not it.get("ocr_excerpts"):
                     continue
                 archive.append({
                     "identifier": it["identifier"],
@@ -172,7 +181,7 @@ def main() -> int:
                     "year": it.get("year"),
                     "pool": it["pool"],
                     "matched_alias": it.get("matched_alias"),
-                    "snippet": it["snippet"],
+                    "ocr_excerpts": it["ocr_excerpts"],
                     "url": it["url"],
                     "deep_link": f"https://archive.org/details/{it['identifier']}?q="
                                  + it.get("matched_alias", aliases[0]).replace(" ", "+"),

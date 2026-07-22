@@ -1,37 +1,9 @@
 {
- "generated_at": "2026-07-21T14:25:53.972443+00:00",
+ "generated_at": "2026-07-22T15:04:53.726891+00:00",
  "slug": "pier-70",
  "name": "Pier 70",
  "note": "Archive documents linked to this place; source labels honour the SFPL-vs-Democracy's-Library distinction.",
  "documents": [
-  {
-   "identifier": "agenda2011sanf_0",
-   "title": "Agenda",
-   "creator": "San Francisco Port Commission",
-   "year": null,
-   "pool": "sfpl",
-   "matched_alias": "Pier 70",
-   "snippet": "southern Waterfront: «Pier 70» Historic Buildings Clean-Up 50,000 50,000 0 50,000 «Pier 70» Infrastructure",
-   "url": "https://archive.org/details/agenda2011sanf_0",
-   "deep_link": "https://archive.org/details/agenda2011sanf_0?q=Pier+70",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Meetings & resolutions",
-   "salient": true
-  },
-  {
-   "identifier": "agendasanfranci2014sanf_8",
-   "title": "Agenda / San Francisco Port Commission",
-   "creator": "San Francisco Port Commission",
-   "year": null,
-   "pool": "sfpl",
-   "matched_alias": "Pier 70",
-   "snippet": "organizations as a competition 2 «Pier 70» Informational Presentation on «Pier 70» - Union Iron Works Historic",
-   "url": "https://archive.org/details/agendasanfranci2014sanf_8",
-   "deep_link": "https://archive.org/details/agendasanfranci2014sanf_8?q=Pier+70",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Meetings & resolutions",
-   "salient": true
-  },
   {
    "identifier": "minutes2004sanf_1",
    "title": "Minutes",
@@ -39,12 +11,12 @@
    "year": null,
    "pool": "sfpl",
    "matched_alias": "Pier 70",
-   "snippet": "and rehabilitation of other «Pier 70» historic resources. «Pier 70» Area Planning andRFP: For",
    "url": "https://archive.org/details/minutes2004sanf_1",
    "deep_link": "https://archive.org/details/minutes2004sanf_1?q=Pier+70",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
    "group": "Meetings & resolutions",
-   "salient": true
+   "salient": true,
+   "gloss": "2004 Port Commission minutes on Southern Waterfront planning that describe Pier 70 as home of the ship repair industry and flag brownfield clean-up needs."
   },
   {
    "identifier": "agendasminutess2015sanf_1",
@@ -53,12 +25,26 @@
    "year": null,
    "pool": "sfpl",
    "matched_alias": "Pier 70",
-   "snippet": "3) defined a proposed «Pier 70» Special Use District (“«Pier 70» SUD”) that will encompass",
    "url": "https://archive.org/details/agendasminutess2015sanf_1",
    "deep_link": "https://archive.org/details/agendasminutess2015sanf_1?q=Pier+70",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
    "group": "Meetings & resolutions",
-   "salient": true
+   "salient": true,
+   "gloss": "A 2015 Port Commission agenda presenting the Forest City mixed-use plan for the Pier 70 Waterfront Site, a proposed Pier 70 Special Use District, and a BAE Systems ship-repair lease of about 14.4 acres and 19 buildings."
+  },
+  {
+   "identifier": "agenda2011sanf_0",
+   "title": "Agenda",
+   "creator": "San Francisco Port Commission",
+   "year": null,
+   "pool": "sfpl",
+   "matched_alias": "Pier 70",
+   "url": "https://archive.org/details/agenda2011sanf_0",
+   "deep_link": "https://archive.org/details/agenda2011sanf_0?q=Pier+70",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Meetings & resolutions",
+   "salient": true,
+   "gloss": "A 2011 Port Commission agenda on the Pier 70 Waterfront Site RFQ and environmental consulting for the Pier 70 Brownfield Site Investigation, noting a $2.28 million Department of Defense award for clean-up."
   },
   {
    "identifier": "containertermina1986moff",
@@ -67,12 +53,12 @@
    "year": 1986,
    "pool": "sfpl",
    "matched_alias": "Pier 70",
-   "snippet": "development. «Pier 70» - Alternative 2 «Pier 70» - Alternative 2 is similar to «Pier 70» - Alternative",
    "url": "https://archive.org/details/containertermina1986moff",
    "deep_link": "https://archive.org/details/containertermina1986moff?q=Pier+70",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
    "group": "Other records",
-   "salient": true
+   "salient": true,
+   "gloss": "A 1986 Mission Bay study evaluating a consolidated Pier 70 and 80 container terminal against separate terminals at Piers 50, 70 and 80."
   }
  ]
 }

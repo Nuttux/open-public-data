@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-21T14:25:53.966320+00:00",
+ "generated_at": "2026-07-22T15:04:53.722503+00:00",
  "source_pipeline": "sf_place_candidates.json → sync_ia_sf.py + link_sf_places.py + fetch_sf_place_photos.py → export_sf_places.py",
  "unit": "USD",
  "slug": "hetch-hetchy",
@@ -46,7 +46,7 @@
   "author": "Isaiah West Taber",
   "fetched_at": "2026-07-20T22:28:02.825991+00:00"
  },
- "summary_en": "The archive documents trace O'Shaughnessy Dam and the Hetch Hetchy reservoir from construction through operation, including a 1999 history noting the contract to build the dam was awarded in 1920, a 1935 report on \"San Francisco water and power,\" and 1930s Public Utilities Commission reports recording work such as the enlargement of O'Shaughnessy Dam. Later annual reports of the Hetch Hetchy Water and Power System document its budget and appropriations. The system is operated by the Public Utilities Commission, whose FY2025 budget line is $1.8B; a city contract for \"Auto Parts for Hetch Hetchy\" with Pine Mountain Auto Inc has been paid $29K to date.",
+ "summary_en": "The archive documents trace the O'Shaughnessy Dam and Hetch Hetchy system. A 2005 history records that San Francisco approved a \"$45 million bond to build Hetch Hetchy System\" in 1910, that the dam was built 1919-1923, and that it was later \"raised to store 360,360 acre feet.\" A 1975-76 annual report of the Hetch Hetchy Water and Power System notes the dam was raised \"an additional 85.5 feet,\" the system cost \"some $100 million,\" and water reached Crystal Springs Reservoir in 1934. The system is operated by the Public Utilities Commission, whose FY2025 budget line is about $1.8B; a city contract for \"Auto Parts for Hetch Hetchy\" with Pine Mountain Auto Inc has been paid $28,748.78.",
  "published": true,
  "money": {
   "budget_line": {
@@ -85,32 +85,32 @@
  },
  "documents": [
   {
-   "identifier": "sanfranciscowate1999hans",
-   "title": "San Francisco water and power : a history of the Municipal Water Department and Hetch Hetchy system",
-   "creator": "Hanson, Warren D,Milner, Anne,Hansell, Franz T",
-   "year": 1999,
-   "pool": "sfpl",
-   "matched_alias": "O'Shaughnessy Dam",
-   "snippet": "awarded contract to build «O'Shaughnessy Dam» 1920 JAN 16 «O'Shaughnessy Dam» diversion tunnel completed",
-   "url": "https://archive.org/details/sanfranciscowate1999hans",
-   "deep_link": "https://archive.org/details/sanfranciscowate1999hans?q=O'Shaughnessy+Dam",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Histories & surveys",
-   "salient": true
-  },
-  {
    "identifier": "sanfranciscowate2005hans",
    "title": "San Francisco water and power : a history of the Municipal Water Department & Hetch Hetchy system",
    "creator": "Hanson, Warren D,Kukula, Frank,Nelson, Christopher,Williams, Mary",
    "year": 2005,
    "pool": "sfpl",
    "matched_alias": "O'Shaughnessy Dam",
-   "snippet": "IN HIGH SIERRA «O'Shaughnessy Dam» being raised 1937 «O'SHAUGHNESSY DAM» AND HETCH HETCHY RESERVOIR",
    "url": "https://archive.org/details/sanfranciscowate2005hans",
    "deep_link": "https://archive.org/details/sanfranciscowate2005hans?q=O'Shaughnessy+Dam",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
    "group": "Histories & surveys",
-   "salient": true
+   "salient": true,
+   "gloss": "A 2005 SFPL history of the Municipal Water Department and Hetch Hetchy System, whose timeline dates the O'Shaughnessy Dam to 1919-1923 and its raising to store 360,360 acre feet."
+  },
+  {
+   "identifier": "sanfranciscowate1999hans",
+   "title": "San Francisco water and power : a history of the Municipal Water Department and Hetch Hetchy system",
+   "creator": "Hanson, Warren D,Milner, Anne,Hansell, Franz T",
+   "year": 1999,
+   "pool": "sfpl",
+   "matched_alias": "O'Shaughnessy Dam",
+   "url": "https://archive.org/details/sanfranciscowate1999hans",
+   "deep_link": "https://archive.org/details/sanfranciscowate1999hans?q=O'Shaughnessy+Dam",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Histories & surveys",
+   "salient": true,
+   "gloss": "A 1999 edition of the same municipal water history, tracing the Hetch Hetchy System from the 1913 Raker Act to the delivery of Sierra Nevada water by 1934."
   },
   {
    "identifier": "4annualreportsanf",
@@ -119,40 +119,12 @@
    "year": 1976,
    "pool": "sfpl",
    "matched_alias": "Hetch Hetchy Water and Power",
-   "snippet": "follows: Budget «Hetch Hetchy Water and Power» «Hetch Hetchy Water and Power» (Transit Power Division)",
    "url": "https://archive.org/details/4annualreportsanf",
    "deep_link": "https://archive.org/details/4annualreportsanf?q=Hetch+Hetchy+Water+and+Power",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
    "group": "Reports & records",
-   "salient": true
-  },
-  {
-   "identifier": "reportofsanfranc1938sanf",
-   "title": "Report of the San Francisco Public Utilities Commission",
-   "creator": "San Francisco Public Utilities Commission,San Francisco (Calif.). Water Dept,Hetch Hetchy Water Supply,San Francisco (Calif.). Bureau of Light, Heat and Power,San Francisco Public Utilities Commission. Airport Dept,San Francisco (Calif.). Electric Power Bureau,San Francisco Municipal Railway,San Francisco (Calif.). Street and Public Building Lighting Dept",
-   "year": 1933,
-   "pool": "sfpl",
-   "matched_alias": "O'Shaughnessy Dam",
-   "snippet": "from Foot of «O'Shaughnessy Dam». . 1,736.93 Enlargement of «O'Shaughnessy Dam» 4,224,977.33 Ventilation",
-   "url": "https://archive.org/details/reportofsanfranc1938sanf",
-   "deep_link": "https://archive.org/details/reportofsanfranc1938sanf?q=O'Shaughnessy+Dam",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Reports & records",
-   "salient": true
-  },
-  {
-   "identifier": "annualreportofco1933sanf",
-   "title": "Annual report of the Controller of the City and County of San Francisco for the fiscal year ended June 30, ...",
-   "creator": "San Francisco (Calif.). Office of the Controller",
-   "year": 1933,
-   "pool": "sfpl",
-   "matched_alias": "Hetch Hetchy",
-   "snippet": "000 1932 «Hetch Hetchy» 260,000 1932 «Hetch Hetchy» 143,000 1932 «Hetch Hetchy» 26,000",
-   "url": "https://archive.org/details/annualreportofco1933sanf",
-   "deep_link": "https://archive.org/details/annualreportofco1933sanf?q=Hetch+Hetchy",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Reports & records",
-   "salient": true
+   "salient": true,
+   "gloss": "The 1975-76 annual report of the Hetch Hetchy Water and Power System, noting the dam was raised an additional 85.5 feet and the system's roughly $100 million cost."
   },
   {
    "identifier": "sanfranciscowate1979leon",
@@ -161,12 +133,12 @@
    "year": 1979,
    "pool": "sfpl",
    "matched_alias": "Hetch Hetchy",
-   "snippet": "February, formally abandoning «Hetch Hetchy». Enthusiastic «Hetch Hetchy» sponsors were becoming accustomed",
    "url": "https://archive.org/details/sanfranciscowate1979leon",
    "deep_link": "https://archive.org/details/sanfranciscowate1979leon?q=Hetch+Hetchy",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
    "group": "Other records",
-   "salient": true
+   "salient": true,
+   "gloss": "A 1979 San Francisco Water and Power booklet published by the Hetch Hetchy Water and Power System, with a section on O'Shaughnessy Dam and the origin of the Hetch Hetchy name."
   }
  ],
  "dept_shelf": [
@@ -206,7 +178,7 @@
  ],
  "_gate": {
   "has_photo": true,
-  "n_documents": 6,
+  "n_documents": 4,
   "n_money_links": 2,
   "meets_pre_summary": true
  }

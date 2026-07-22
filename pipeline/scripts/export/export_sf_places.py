@@ -127,6 +127,13 @@ def classify_doc(title: str) -> tuple[str, str]:
     return "other", "Other records"
 
 
+def _ocr_richness(d: dict) -> int:
+    """Total characters of OCR context pulled around the aliases — the salience
+    signal that replaced snippet length. More real context = the document
+    talks about this place more substantively, not just longer."""
+    return sum(len(e) for e in (d.get("ocr_excerpts") or []))
+
+
 def curate_documents(docs: list[dict]) -> list[dict]:
     """Dedupe repeat editions, classify into narrative groups, rank by
     salience within each group, and mark the top rows `salient` (shown
@@ -139,7 +146,7 @@ def curate_documents(docs: list[dict]) -> list[dict]:
 
     kept: list[dict] = []
     for stem, group in by_stem.items():
-        group.sort(key=lambda d: (len(d.get("snippet") or ""), d.get("year") or 0), reverse=True)
+        group.sort(key=lambda d: (_ocr_richness(d), d.get("year") or 0), reverse=True)
         best = dict(group[0])
         if len(group) > 1:
             years = sorted({d["year"] for d in group if d.get("year")})
@@ -152,7 +159,7 @@ def curate_documents(docs: list[dict]) -> list[dict]:
     for d in kept:
         key, label = classify_doc(d["title"])
         d["group"] = label
-        d["_weight"] = GROUP_WEIGHT[key] * 10 + min(len(d.get("snippet") or "") / 20, 5)
+        d["_weight"] = GROUP_WEIGHT[key] * 10 + min(_ocr_richness(d) / 400, 5)
         d["_group_key"] = key
 
     group_order = [k for k, _, _ in DOC_GROUPS] + ["other"]

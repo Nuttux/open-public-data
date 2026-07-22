@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-21T14:25:53.976999+00:00",
+ "generated_at": "2026-07-22T15:04:53.729885+00:00",
  "source_pipeline": "sf_place_candidates.json → sync_ia_sf.py + link_sf_places.py + fetch_sf_place_photos.py → export_sf_places.py",
  "unit": "USD",
  "slug": "muni-woods-division",
@@ -44,25 +44,13 @@
    "year": 2000,
    "pool": "sfpl",
    "matched_alias": "Woods Motor Coach Division",
-   "snippet": "Figure 30 - Facilities Funding «Woods Motor Coach Division» Renovation Consists of two phases",
+   "ocr_excerpts": [
+    "(Rented facility) SRTP - DRAFT Page 56 06/30/99 Figure 29 Preacfio Division/ Muni Offices 1345 Turk Security itrol Center Lenox Way -i': ^ STRA TEGIC PLAN 2000 um-l £f&lt '3raft Sa/v Francisco Municipal Railwa y 2. Projects (all $ amounts in 000s) Figure 30 - Facilities Funding Woods Motor Coach Division Renovation Consists of two phases. Fuel Island and Yard Improvements: replace underground fuel tanks and repave the bus parking yard. Paint & Body Shop Improvements: meet all environmental and health & safety requirements and to serve as the paint and body shop for all motor coaches. Functions normall"
+   ],
    "url": "https://archive.org/details/strategicplan2001199sanf",
    "deep_link": "https://archive.org/details/strategicplan2001199sanf?q=Woods+Motor+Coach+Division",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
    "group": "Plans & environmental review",
-   "salient": true
-  },
-  {
-   "identifier": "5minutes1998sanf",
-   "title": "Minutes",
-   "creator": "San Francisco (Calif.). Board of Supervisors. Finance Committee",
-   "year": 1997,
-   "pool": "sfpl",
-   "matched_alias": "Woods Motor Coach Division",
-   "snippet": "implementation activities for the MUNI «Woods Motor Coach Division» Fuel and Wash Rehabilitation Project",
-   "url": "https://archive.org/details/5minutes1998sanf",
-   "deep_link": "https://archive.org/details/5minutes1998sanf?q=Woods+Motor+Coach+Division",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Meetings & resolutions",
    "salient": true
   },
   {
@@ -72,7 +60,13 @@
    "year": null,
    "pool": "sfpl",
    "matched_alias": "Woods Division",
-   "snippet": "house begin Saturday, August 18th at the «Woods Division», 11:30 a.m. to 2:30 p.m. Ms. Orr-Smith",
+   "ocr_excerpts": [
+    "dine, and Geoffrey Piller Action: None Motion: None Public Comment: None 3 d) Friends of Muni/Destinations i) Division \"Rap Session\" Ms. Orr-Smith presented the report entitled \"MIF/Muni Division Open House\" which proposes that the first Division open house begin Saturday, August 18th at the Woods Division, 11:30 a.m. to 2:30 p.m. Ms. Orr-Smith stated that MIF community organizer Mr. Maxwell Burton was at Muni Woods Division planning the event. Speaker: Gayle Orr-Smith Action: None Motion: None Public Comment: None iii) Destinations Distribution Plan Ms. Orr-Smith stated that there has been improvement in the Destinations distribution plan and she met with Mr. Fred Stevens two weeks ago to discuss distribution of",
+    "lic transit service To carry out this purpose, the task force identified the following projects/initiative for implementation, listed in priority: > Pilot a division \"open house\" that brings riders and operators together to build a positive and mutually supportive relationship. Hold event in August at Woods division. Expected attendees are operators, division employees and their families, area residents, businesses, and riders. > Pilot \"In School Youth Rider Education Program\" to create a bond between operators and school age youth, and educate young riders about safety and courtesy. > Adult Rider Education Progr",
+    "lationships between riders and operators => There was some concern about effectiveness given current contradiction in how operators are assigned to lines which does not support familiarity with riders > Consensus reached about holding event as joint MIF/MUNI program, in conjunction w itfa opening of Woods division, with emphasis on importance of relationships betw een riders and operators. Reflect combined effort, combined goals, with operators providing stakeholder input Student and Adult ridership programs: Strong support to implement as soon as possible > Involve youth in designing program > Talk to Mayor's",
+    "s Group Ms. Orr-Smith reported that the Friends of MUNI task force has met and discussed future plans for the Youth and Adult Rider Education Programs. Ms. Orr-Smith stated that two events would take place on September 8, 2001 ; Friends of Muni at 11:00 a.m. and that the MIF/MUNI open house at Woods Division would begin at 1 1 :30 a.m. Speaker: Gayle Orr-Smith Action: None Motion: None Public Comment: None ii) Destinations Ms. Orr-Smith stated that she will continue working with Mr. Maxwell Burton and Mr. Fred Stevens in distributing the Destinations newsletter. Speaker: Gayle Orr-Smith Action: None M",
+    "quired. c) Employee Assistance and Peer Assistance Program i) EAP Report - Action as required. ii) PAP Report - Action as required. iii) EAP/PAP Joint Request for Proposal with Muni Action as required. iv) Muni Employee/Family Health"
+   ],
    "url": "https://archive.org/details/minutesofmunicip2001muni",
    "deep_link": "https://archive.org/details/minutesofmunicip2001muni?q=Woods+Division",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
@@ -80,45 +74,21 @@
    "salient": true
   },
   {
-   "identifier": "agendapublicutil1987sanf",
-   "title": "Agenda / Public Utilities Commission, City and County of San Francisco",
-   "creator": "San Francisco Public Utilities Commission",
-   "year": null,
+   "identifier": "5minutes1998sanf",
+   "title": "Minutes",
+   "creator": "San Francisco (Calif.). Board of Supervisors. Finance Committee",
+   "year": 1997,
    "pool": "sfpl",
-   "matched_alias": "Woods Division",
-   "snippet": "provide a functional analysis for the «Woods Division» Expansion Project. (23) Authorizing the",
-   "url": "https://archive.org/details/agendapublicutil1987sanf",
-   "deep_link": "https://archive.org/details/agendapublicutil1987sanf?q=Woods+Division",
+   "matched_alias": "Woods Motor Coach Division",
+   "ocr_excerpts": [
+    "be removed from the Consent Calendar and considered as a separate item. a. File 98-0697. [Reserved Funds, Municipal Railway] Hearing to consider release of reserved funds, Municipal Railway (Federal Grant, Res. No. 3-92) , in the amount of $2,000,000, to complete implementation activities for the MUNI Woods Motor Coach Division Fuel and Wash Rehabilitation Project. (Municipal Railway) SPEAKERS: None. ACTION: Release of $2,000,000 approved. Filed. b. File 98-0981. [Reserved Funds, Recreation and Park Department] Hearing to consider release of reserved funds, Recreation and Park Department, in the amount totaling $1,787,950",
+    "ee Meeting .yt .. . ^qqq oAN FRANCISCO PUBLIC LIBRARY Item la - File 98-697 Department: Municipal Railway (MUNI) Public Utilities Commission (PUC) Item: Hearing to consider the release of reserved funds in the amount of $2,000,000 for MUNI to complete implementation activities for the MUNI Woods Motor Coach Division Fuel and Wash Rehabilitation Project. Amount: $2,000,000 Description: In January of 1992, the Board of Supervisors approved a resolution (File 94-91-8) authorizing the Public Utilities Commission (PUC) to apply for, accept, and expend Federal Section 9 Operating Assistance funds in the amount of",
+    "abilitation Projects. Of the $5,381,000, $2,416,801 remains on reserve. Memo to Finance Committee July 15, 1998 Finance Committee Meeting Budget: MUNI is now requesting that the Board of Supervisors release $2,000,000 of the $2,416,801 remaining on reserve for Facilities Rehabilitation for the MUNI Woods Motor Coach Division Fuel and Wash Rehabilitation Project (Project). The Project would remove 12 existing underground storage tanks located at 1095 Indiana Street, 3 of which have leaked, and remove the contaminated soil around these tanks. Attachment I, provided by MUNI, contains a description of the project. MUNI - De"
+   ],
+   "url": "https://archive.org/details/5minutes1998sanf",
+   "deep_link": "https://archive.org/details/5minutes1998sanf?q=Woods+Motor+Coach+Division",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
    "group": "Meetings & resolutions",
-   "salient": true
-  },
-  {
-   "identifier": "bidcontractoppor1987sanf",
-   "title": "Bid and contract opportunities / by the Purchasing Department of the City and County of San Francisco Purchasing Department",
-   "creator": "San Francisco (Calif.). Purchasing Department",
-   "year": null,
-   "pool": "sfpl",
-   "matched_alias": "Woods Division",
-   "snippet": "554-0725 Perform FUNCTIONAL ANALYSIS FOR THE «WOODS DIVISION» FACILITY EXPANSION PROJECT. WooL develop",
-   "url": "https://archive.org/details/bidcontractoppor1987sanf",
-   "deep_link": "https://archive.org/details/bidcontractoppor1987sanf?q=Woods+Division",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Other records",
-   "salient": true
-  },
-  {
-   "identifier": "urbanmasstranspo1986cali",
-   "title": "Urban Mass Transportation Act FY ... program of projects for Section 9 funds for all urbanized areas within the San Francisco Bay Area Region",
-   "creator": "California. Metropolitan Transportation Commission",
-   "year": null,
-   "pool": "sfpl",
-   "matched_alias": "Woods Division",
-   "snippet": "C 6) E&H Boarding Platforms 467,611 C 7) «Woods Division» Redevelopment 1 ,855,000 C 8) Trolley Overhead",
-   "url": "https://archive.org/details/urbanmasstranspo1986cali",
-   "deep_link": "https://archive.org/details/urbanmasstranspo1986cali?q=Woods+Division",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Other records",
    "salient": true
   },
   {
@@ -128,40 +98,17 @@
    "year": null,
    "pool": "sfpl",
    "matched_alias": "Woods Division",
-   "snippet": "Carpenter, «Woods Division»; 1984 March— Paris Vigil, Automotive Technician, «Woods Division»; 1984",
+   "ocr_excerpts": [
+    "Unit Repair, and Charlene Ve|- dovsky of Woods Control Room. It's back lo work as usual for Larry Yurchenko. pictured above on the ;ob. after winning Muni's coveted Maintenance Worker of the Month Award. Photo: Carmen Magana/S.F.P.U C PUC MANAGER Yurchenko Larry Yurchenko, 63. Supervisor of the Woods Division Body and Paint Shop, has been named Muni Maintenance Worker of the Month for August, 1984. Mum General Manager Harold Geis- stnheimer announces. larry is dedicated to his job and to doing the job right the first time.\" says Woods Automotive Maintenance Man- ager |eff Johnson, Yurchenko's super- viso",
+    "he worker's permanent person- nel record. • A $100 cash award from T.D.I. Winston Network, Muni's advertising contractor. • A gratis $25 account from the Muni Shopmen's Credit Union. Maintenance Workers of the Month since the start of the program are: 1983 August— Eugene Waddell, Automotive Mechanic. Woods Division; 1983 Octo- ber—Hector Baiza, Automotive Me- chanic, Kirkland Division; 1983 Novem- ber-Joseph Saitz. Electrical Mechanic, Potrero Division; 1983 December- Jeffery Sada, Electrical Mechanic, Metro Division; 1984 January-Eric McCartney, Cable Car Carpenter, Woods Division; 1984 March— Paris Vigil, Automotive Technician, Woods Division; 1984 April — Ceasar Benederti, Automotive Me- chanic, Woods Division; 1984 May- Jack Ng, Electrical Mechanic, Presidio Division. Wm\\MEMO Published monthly by direction of the Public Utilities Commission (or employees of San Francisco Municipal Railway President Nancy Lenvin Vice President John Sanger H. Welton Flynn Joseph Barletta P.U.C. General Manager Rudy Nothe",
+    "at making it easy for them to board and exit his #17 Park Merced Local on its stops through often congested Stonestown and Park Merced neighborhoods. Having fully recovered at his home in Pacifica, Inouye was honored by his col- leagues and supervisors with a reception and recognition ceremony at Woods Division Cilley Room, where he also received an 18- year safe-driving award. He was guest of honor at a civic lun- cheon with civic and business leaders at Modesto Lanzone's in Chirardelli Square on May 10. Known to his family and friends by his given, middle name Jim, Inouye was born in San Jose. At",
+    "ancisco, Inouye passed his Civil Service examinantions for Motorman in June 1965. He drove the #1 California electric trolley coach out of Presidio Division for over four years, diesel coaches out of Kirkland Division for four more years and then moved to the Ocean Diesel Division which later became Woods Division. Inouye's latest assignment is the #43 Masonic where he is becoming popular with his regular passengers and the student body at San Francisco City College. He married Nobuko Watanabe in 1962. She is now an operations super- visor with Sumitomo Ban"
+   ],
    "url": "https://archive.org/details/munimemo1984sanf",
    "deep_link": "https://archive.org/details/munimemo1984sanf?q=Woods+Division",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
    "group": "Other records",
-   "salient": false
-  },
-  {
-   "identifier": "noticeofmeetingc1999sanf",
-   "title": "Notice of meeting and calendar",
-   "creator": "San Francisco (Calif.). Public Transportation Commission",
-   "year": 1994,
-   "pool": "sfpl",
-   "matched_alias": "Woods Motor Coach Division",
-   "snippet": "Program; Trolley Coach Replacement; «Woods Motor Coach Division» Renovation; Third Street Corridor",
-   "url": "https://archive.org/details/noticeofmeetingc1999sanf",
-   "deep_link": "https://archive.org/details/noticeofmeetingc1999sanf?q=Woods+Motor+Coach+Division",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Other records",
-   "salient": false
-  },
-  {
-   "identifier": "managementaudito1996budg",
-   "title": "Management audit of the San Francisco Municipal Railway",
-   "creator": "Budget Analyst of the City and County of San Francisco",
-   "year": null,
-   "pool": "sfpl",
-   "matched_alias": "Woods Division",
-   "snippet": "Kirkland Division 6 Presidio Division 3 «Woods Division» 9 Total 53 I Office of the Budget Analyst",
-   "url": "https://archive.org/details/managementaudito1996budg",
-   "deep_link": "https://archive.org/details/managementaudito1996budg?q=Woods+Division",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Other records",
-   "salient": false
+   "salient": true
   },
   {
    "identifier": "trolleytopics19731980sanf",
@@ -170,9 +117,53 @@
    "year": null,
    "pool": "sfpl",
    "matched_alias": "Woods Division",
-   "snippet": "Muni bus driver Clarence A. Chiles of «Woods Division». Chiles, who captured the title recently",
+   "ocr_excerpts": [
+    "E. Green, Muni General Manager; Christine Patton, Miss Cable Car; and Renee Barton, 2nd runner-up. Nation 's best riders in \"Roadeo\" contest San Francisco's challenger for the 2nd Annual American Public Transit Associ- ation ( APTA) National Bus Roadeo crown is Muni bus driver Clarence A. Chiles of Woods Division. Chiles, who captured the title recently at Candlestick Park, will compete against a field of select drivers from more than 75 of the nation's and Canada's transit systems. Chiles, who started Muni in 1960. is the holder of eight consecutive yearly safety awards. He won a similar bus roadeo con-",
+    "uilt in San Francisco, and now the first municipal railway of the country is built in San Fran- cisco.... \" — Mayor James R Rolph, Jr Muni opening speech, 1912 SAN FRANCISCO'S challenger for the North American bus roadeo title in Atlanta, Ga. October II, will be Clarence A. Chiles (left). Muni Woods Division bus driver. Plac- ing second in the S.F. championships recently at Candlestick Park was Douglas C. Norberg of Kirkland Division. Third was Ronald D. Haren, Woods Division. Safety supervisor named Gene Henderson, former Assistant Safety Program Director of Public Utilities, has been appointed Safety & Training Supervisor. Henderson joined Muni 31 years ago as a motorman operating out of the old Sutro division. He then became an inspector, day dispatcher, claims invest",
+    "and private agencies throughout the country. Current Division Superintendent assignment: CAB1 l < ai< DIVISION - Oscai Norman, ( Acting General Superintendent). (.1 M V A DIVISION l)..n ( .micron POTRERO division — Joseph < rossley PRI siDio division — ( harles Ron (Acting Superintendent) WOODS division — John Virgil lames Sicvs.in. Assistant Superintendent TROLLEY TOPICS Published monthly by the S.m i i mcisco Publii I tililies < ommis- ion Bureau ol Public Service, Munk ipal Railway 949 Presidio Avenue, I' i 231 San l rancisco < \\ 94115 ni | n , lohn H W<",
+    "and 47-Van Ness (Clay Street and Van Ness Avenue). The fare is 50 cents or a transfer with the addition of 25 cents. Fast passes will be honored. Nervis a little nervous capturing suspected murderer \"! was born 'Nervis' — and also born 'nervous' \". That's how John W. Nervis, operator from Woods' division ex- plains his reaction in helping capture a murder suspect aboard his night- run No 14 Mission bus. Putting together a radioed police description and the tense ap- pearance of a bus passenger, Nervis got off his vehicle and made contact with the proper persons — leading to the capture. \"He took",
+    "t well be in Dorothy L. Jaymes, Muni\": LaMark is named November's Muni Man-of-the-Month' .Mark, night driver of the Haight- ;unset No. \"2 line, has been named Muni te Month for October. Curtis E. unicipal Railway General Manager las announced."
+   ],
    "url": "https://archive.org/details/trolleytopics19731980sanf",
    "deep_link": "https://archive.org/details/trolleytopics19731980sanf?q=Woods+Division",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Other records",
+   "salient": true
+  },
+  {
+   "identifier": "managementaudito1996budg",
+   "title": "Management audit of the San Francisco Municipal Railway",
+   "creator": "Budget Analyst of the City and County of San Francisco",
+   "year": null,
+   "pool": "sfpl",
+   "matched_alias": "Woods Division",
+   "ocr_excerpts": [
+    "ion Office Assistant 1 Starter 1 2 Potrero Division Yard Assistant 4 Manager's Office 1 Clerk 2 Clerk /Yard Assistant 1 Paymaster/Yard Assistant 1 Transfer Collection 2 Receiver 1 Shop Assistant 1 13 Flynn Division 5 Green Division 4 Kirkland Division 6 Presidio Division 3 Woods Division 9 Total 53 I Office of the Budget Analyst 79 Section 2.1 Special Duty Operators The SDO duties at the Potrero Division are representative of the types of duties performed at the other transit divisions, excluding the Cable Car Division. In addition to the two SDO positions shown, the C",
+    "6 880 2,590 11.2 Cable Car Division 530 600 554 1,684 7.3 Flynn Division 547 535 774 1,856 8.1 Green Division 1,078 1377 1,286 3,741 16.3 Kirkland Division 609 524 574 1,707 7.4 Presidio Division 533 412 575 1,520 6.6 Potrero Division 1396 1,330 1,277 4,003 17.4 Woods Division 740 1.137 1.313 3.190 13.9 Total 6,187 6,871 7,233 20,291 88.2 Office of the Budget Analyst 80 Section 2.1 Special Duty Operators Approximately seven SDO assignments are for Union representation, and approximately 15 SDO positions are assigned to Light-duty Operators (LDOs). The remain",
+    "rning Afternoon Location Full time Part time Full time Part time Total Cable Car Division 0 0 2 0 2 Flynn Division 1 0 20 2 23 Green (Metro) Division 7 2 8 4 21 Kirkland Division 2 1 6 0 9 Potrero Division 10 0 25 0 35 Presidio Division 5 1 8 2 16 Woods Division 1 10 Q 14 Total 28 5 79 8 120 Office of the Budget Analyst 81 Section 2.1 Special Duty Operators As shown in the table above, on the morning of April 5, 1996, the Potrero Division reported a total of 10 transit line runs which were not dispatched because an operator was not avai",
+    "ansion projects, such as the 71- Haight/Noriega electrification and development of the Bayshore Corridor project, are actually included in the \"service equity/City policy\" category that is ranked above facilities projects. MUNI does plan to request funding for federally mandated underground cleanup at the Woods Division, and paint and body functions at all facilities. In addition, renovation of the Green Division must be completed to Office of the Budget Analyst 128 Section 3.1 Facility Planning accommodate the new LRVs. Only one other major facility project, replacement of the Ways & Structures facility wit",
+    "e because of lack of space for repair operations. • Flynn was designed for light repair but must handle all articulated diesel heavy repair. Also has inadequate ventilation. • Woods fueling stations across street from parking area. Deferred Projects: • Islais Creek replacement of Kirkland Division. • Woods Division renovation. Multi-Modal Deferred Project: • Central maintenance or component repair facility and central warehouse facility Office of the Budget Analyst 130 Section 3.1 Facility Planning "
+   ],
+   "url": "https://archive.org/details/managementaudito1996budg",
+   "deep_link": "https://archive.org/details/managementaudito1996budg?q=Woods+Division",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Other records",
+   "salient": true
+  },
+  {
+   "identifier": "noticeofmeetingc1999sanf",
+   "title": "Notice of meeting and calendar",
+   "creator": "San Francisco (Calif.). Public Transportation Commission",
+   "year": 1994,
+   "pool": "sfpl",
+   "matched_alias": "Woods Motor Coach Division",
+   "ocr_excerpts": [
+    ". Introduction of New or Old Business by Commissioners None. 6. General Manager's Report -Y2K Update -Capital Projects Quarterly Update -Muni Open Door Day -Special Recognition Award Lou Johnson, Chief Operating Officer presented a plaque to Vernon Crowder who is this month's Systemwide Operator from Woods Division. He has been operating a bus for thirty years. 1 Michael Bums introduced Bob Kuo as the Director of Finance and Administration. Commissioner Sandoval asked staff to talk to the city attorney about Y2K liability issues. 7. Public Comment Sarita Britt asked about the 9140 list which she presente",
+    "Group for two months, until December 31, 1999, at an additional cost of $2 1 1 ,83 1 . 10. Public hearing on amending the FY 1999 Program of Projects to include the following projects: Historic Vehicle Program; Cable Car Infrastructure, Rehabilitation and Replacement Program; Trolley Coach Replacement; Woods Motor Coach Division Renovation; Third Street Corridor Track and Vehicles; the Rail Replacement program; Purchase of Electric Trolley Coaches and Ferry Building Intermodal Improvements including the breakwater. 11. Authorizing the General Manager to apply for, accept, and expend $1 13,439,665 in federal CMAQ, STP, and Section",
+    "-095 On motion to approve: ADOPTED: AYES - Flynn, Knox, Sandoval ABSENT - Starzel, Sun 10. Public hearing on amending the FY 1999 Program of Projects to include the following projects: Historic Vehicle Program; Cable Car Infrastructure, Rehabilitation and Replacement Program; Trolley Coach Replacement; Woods Motor Coach Division Renovation; Third Street Corridor Track and Vehicles; the Rail Replacement program; Purchase of Electric Trolley Coaches and Ferry Building Intermodal Improvements including the breakwater. 3 PUBLIC COMMENT: Norm Rolfe discussed items 10 and 1 1 together. He asked the commission to consider inter- re"
+   ],
+   "url": "https://archive.org/details/noticeofmeetingc1999sanf",
+   "deep_link": "https://archive.org/details/noticeofmeetingc1999sanf?q=Woods+Motor+Coach+Division",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
    "group": "Other records",
    "salient": false
@@ -215,7 +206,7 @@
  ],
  "_gate": {
   "has_photo": false,
-  "n_documents": 10,
+  "n_documents": 7,
   "n_money_links": 1,
   "meets_pre_summary": false
  }

@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-21T14:25:53.968295+00:00",
+ "generated_at": "2026-07-22T15:04:53.723950+00:00",
  "source_pipeline": "sf_place_candidates.json → sync_ia_sf.py + link_sf_places.py + fetch_sf_place_photos.py → export_sf_places.py",
  "unit": "USD",
  "slug": "southeast-treatment-plant",
@@ -66,43 +66,21 @@
  },
  "documents": [
   {
-   "identifier": "sanfranciscomast1519sanf",
-   "title": "San Francisco master plan for waste water management",
-   "creator": "San Francisco (Calif.). Dept. of Public Works",
-   "year": 1971,
+   "identifier": "missionbaysubse1719sanf_1",
+   "title": "Mission Bay subsequent environmental impact report : final",
+   "creator": "San Francisco (Calif.). Planning Dept,San Francisco Redevelopment Agency (San Francisco, Calif.)",
+   "year": 1998,
    "pool": "sfpl",
-   "matched_alias": "Southeast Treatment Plant",
-   "snippet": "treatment would be transported to the «Southeast treatment plant» and treated for final disposal in",
-   "url": "https://archive.org/details/sanfranciscomast1519sanf",
-   "deep_link": "https://archive.org/details/sanfranciscomast1519sanf?q=Southeast+Treatment+Plant",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Plans & environmental review",
-   "salient": true
-  },
-  {
-   "identifier": "phasesiiiiiofres1819unit",
-   "title": "Phases II and III of the residential development of the Hunters Point redevelopment area in San Francisco, California : final environmental impact statement",
-   "creator": "United States. Dept. of Housing and Urban Development. San Francisco Area Office",
-   "year": 1976,
-   "pool": "sfpl",
-   "matched_alias": "Southeast Treatment Plant",
-   "snippet": "Final Environmental Impact Report, «Southeast Treatment Plant» Dry Weather Expansion and Interim",
-   "url": "https://archive.org/details/phasesiiiiiofres1819unit",
-   "deep_link": "https://archive.org/details/phasesiiiiiofres1819unit?q=Southeast+Treatment+Plant",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Plans & environmental review",
-   "salient": true
-  },
-  {
-   "identifier": "evaluationsanfra73jbgi",
-   "title": "Evaluation, San Francisco wastewater master plan",
-   "creator": "J.B. Gilbert & Associates,Metcalf & Eddy",
-   "year": 1973,
-   "pool": "sfpl",
-   "matched_alias": "Southeast Treatment Plant",
-   "snippet": "service area will be pumped to the «Southeast Treatment Plant». The Southeast Plant will provide",
-   "url": "https://archive.org/details/evaluationsanfra73jbgi",
-   "deep_link": "https://archive.org/details/evaluationsanfra73jbgi?q=Southeast+Treatment+Plant",
+   "matched_alias": "Southeast Water Pollution Control Plant",
+   "ocr_excerpts": [
+    "mments Comment #1: Require Further Investigation on Environmental Impact Prior to Making a Decision on the Sewer System and Its Impact on Water Pollution in the Bay. BAOC has concerns that the proposed wastewater plan for Mission Bay will overload the City's sewer -tern and pollute Bay waters. The Southeast Treatment Plant is already strained. To add more astewater and sewage to this plant would result in overflow into the Bay. This could cause great environmental damage. (Joe Beresford, Chair, Homeownership Committee, Bay Area Organizing Committee; St. Theresa Church) We are also concerned about the cumulative effects",
+    "and stormwater through the existing combined sewer system by a relatively small amount, but would not physically change the system other than replacing and upgrading existing sewer lines or constructing new lines, as described in the SEIR. The project also does not propose any physical changes to the Southeast Water Pollution Control Plant. For these reasons, only the incremental changes caused by the project with respect to receiving water quality are considered in the SEIR. While not required for analysis of the project's impacts, it is useful as background for responses to these and other comments on the SEIR to have an understand",
+    "ce by greatly reducing the number of CSOs and increasing the water quality of CSOs compared to pre- 1974 conditions. The resulting Wastewater Master Plan included about 45 retention basins located throughout the City to store wastewater and regulate flows to two treatment plants, upgrading the existing Southeast Treatment Plant to provide secondary treatment for dry-weather flows and portions of the wet-weather combined flows, and a new 1 ,000-million-gallon-per-day (mgd) capacity plant on the Ocean side of the City, to treat all remaining city wide flows. All treated effluent from the Southeast Plant and all untreated combin",
+    "Plant) and the potential to reduce or eliminate CSO's.\" If were getting CSO's because the Southeast Plant is overloaded, then why weren't options even allowed to be looked at, presented, much less recommended. And why not allow a discussion of the use of satellite treatment to reduce solids at the Southeast Treatment Plant? Why only allow reuse options to be recommended \"solely for their ability to produce recycled water\"? What's so holy about reuse that it gets elective consideration, but clear cut and repeated demands to look at strategies that can reduce the burden on the Southeast Plant are not even allowed discu",
+    "herence to the DPW/PUC long term sewer plan, with its feet in the early 70 's and its covert commitment to the Crosstown Tunnel, a coordinated integration of the built and natural environment should be embraced. (Bill Wilson, Environmental Planning & Design) Response Several "
+   ],
+   "url": "https://archive.org/details/missionbaysubse1719sanf_1",
+   "deep_link": "https://archive.org/details/missionbaysubse1719sanf_1?q=Southeast+Water+Pollution+Control+Plant",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
    "group": "Plans & environmental review",
    "salient": true
@@ -114,7 +92,12 @@
    "year": 1996,
    "pool": "sfpl",
    "matched_alias": "Southeast Water Pollution Control Plant",
-   "snippet": "the Geary Campus to the «Southeast Water Pollution Control Plant» for treatment: ■ sewer main",
+   "ocr_excerpts": [
+    "n Broderick Street, north of Geary Boulevard continues as a utility easement crossing Kaiser property between 2200 O'Farrell, an existing outpatient services building, and 2190 O'Farrell, an existing parking garage. The following sewer mains carry sewage and stormwater flows from the Geary Campus to the Southeast Water Pollution Control Plant for treatment: ■ sewer main in the Broderick Street utility corridor of varying diameters (10-inch, 16-inch, and 18-inch); ■ 18-inch sewer main along Geary Boulevard, connecting with the sewer main in the Broderick Street utility corridor; and ■ 6-inch sewer main along the north side of the 2200 O'Farrell outpatient services building. The City owns and operates three wastewater treatment plants, including the Southeast Water Pollution Control Plant. The Southeast plant has a design capacity to accommodate 250 mgd of flow. Currendy, inflow to this plant ranges from an average of approximately 65 mgd during the night, when water use is lower, to about 85 mgd during the day, when water use is higher.16 Please see III.O. Hydrology and Water Qu",
+    "4. 1 4. Norman Lougee, Water Supply Engineer, San Francisco Water Department, telephone conversation, July 31, 1995. 15. Joseph Pelayo, Senior Engineer, City Distribution Division, San Francisco Water Department, telephone conversation, November 14, 1995. 16. Tony Flores, Bayside Operations Superintendent, Southeast Water Pollution Control Plant, telephone conversation, June 14, 1996. 95.102E Kaiser Geary Campus 218 EIP 95025 December 13, 1996 III. Environmental Setting L. Energy L. ENERGY Existing infrastructure and supply are available to meet the electrical and natural gas needs of the new buildings proposed in the Kaiser Geary C",
+    "t The City and County of San Francisco uses a combined sewer system, which collects and transports municipal sewage and stormwater to the City's wastewater treatment plants. The 95.102E EIP 95025 Kaiser Geary Campus 238 December 13, 1996 III. Environmental Setting O. Hydrology and Water Quality- Southeast Water Pollution Control Plant, located on the east side of the City, treats wastewater and stormwater runoff from the Kaiser Geary Campus. To meet the NPDES requirements set for this treatment plant, the City and County of San Francisco requires industrial waste dischargers, such as Kaiser, to obtain a discharge permit from the",
+    "stewater treatment plants prior to discharge. Because the collection lines largely operate by gravity, the topography of San Francisco naturally divides the City into two collection basins: Oceanside and Bayside. Wastewater and stormwater from the Geary Campus in the Bayside Drainage are directed to the Southeast Water Pollution Control Plant on the east side of the City. The area of the Geary Campus is about five acres. Excep"
+   ],
    "url": "https://archive.org/details/sanfranciscokais1319sanf",
    "deep_link": "https://archive.org/details/sanfranciscokais1319sanf?q=Southeast+Water+Pollution+Control+Plant",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
@@ -128,7 +111,12 @@
    "year": 1976,
    "pool": "sfpl",
    "matched_alias": "Southeast Water Pollution Control Plant",
-   "snippet": "Harney Way due north to the «Southeast Water Pollution Control Plant». A chemically assisted",
+   "ocr_excerpts": [
+    "om this point to the Blanken Avenue entrance of the site. b. Dry and Wet Weather Sanitary flows. No sewage is now generated on the site. When housing occupied it, sewage was transmitted through a 4 foot x 6 foot 6-inch sewage tunnel bisecting the property from Harney Way due north to the Southeast Water Pollution Control Plant. A chemically assisted primary treatment facility located at Jerrold and Phelps Streets . * The drainage basin in which the proposed project lies has an area of about 82 acres (ten more than the actual project) . Some of the original drainage structures still exist from the period when housing o",
+    "percent of the plant's existing peak capacity of 55 million gallons per day. All surface water not on the developed portion of the property would be channeled through the existing system into the Bay. - A total system to collect all surface runoff on the proposed project site and route to the Southeast Water Pollution Control Plant. This system would have to handle approximately 50 million gallons per day in peak wet weather, about 91 percent of the plant's current capacity. The plant is often unable to handle peak wet-weather flow, and excess untreated sewage is discharged into the Bay.\"*\" The plant is to be expanded to",
+    "stances) million gallons per day by 1980, but the cumulative demands of the proposed project and other sections 2 of the area may tax this expansion. The proposed project when fully developed would generate 210,000 3 gallons of sanitary waste per day. This would increase the load on the Southeast Water Pollution Control Plant by approx- 4 imately 0.38 percent . The proposed project would utilize the existing sewage tunnel under Bayview Hill for channeling proposed project sewage to the Southeast Water Pollution Control Plant; however, the City has not yet approved use of this system. In 1975 the plant overflowed 82 times. Donald Birrer, San Francisco Department of Public Works, telephone conversation, April 4, 1976. 2Ibid. 3 Based on the quantity of water consumed by the proposed project excluding irrigation; see",
+    "ch land use development. These trends in development of cur- rently vacant land could cumulatively affect the environment in terms of land use, job opportunities, tax revenues, and demands on transportation, circulation, and public service facilities, including the currently over-used San Francisco 2 Southeast Water Pollution Control Plant. In 197 5 the SPUR Report Impact of the Intensity of High-Rise Development in San Francisco, June 1975, indicates that the distribution of downtown office space populations was 6 0 percent commuter and 40 percent resident. For downtown business, in general the distribution was more evenly split. The proposed project will attract similar users and employees, and is not expected t"
+   ],
    "url": "https://archive.org/details/draftenvironment1976yerb",
    "deep_link": "https://archive.org/details/draftenvironment1976yerb?q=Southeast+Water+Pollution+Control+Plant",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
@@ -136,32 +124,64 @@
    "salient": true
   },
   {
-   "identifier": "missionbaysubse1719sanf_1",
-   "title": "Mission Bay subsequent environmental impact report : final",
-   "creator": "San Francisco (Calif.). Planning Dept,San Francisco Redevelopment Agency (San Francisco, Calif.)",
-   "year": 1998,
+   "identifier": "phasesiiiiiofres1819unit",
+   "title": "Phases II and III of the residential development of the Hunters Point redevelopment area in San Francisco, California : final environmental impact statement",
+   "creator": "United States. Dept. of Housing and Urban Development. San Francisco Area Office",
+   "year": 1976,
    "pool": "sfpl",
-   "matched_alias": "Southeast Water Pollution Control Plant",
-   "snippet": "physical changes to the «Southeast Water Pollution Control Plant». For these reasons, only",
-   "url": "https://archive.org/details/missionbaysubse1719sanf_1",
-   "deep_link": "https://archive.org/details/missionbaysubse1719sanf_1?q=Southeast+Water+Pollution+Control+Plant",
+   "matched_alias": "Southeast Treatment Plant",
+   "ocr_excerpts": [
+    "completed sometime in late 1977. Upon completion of all relocation activities, these remaining buildings will be demolished. Sewage from the Redevelopment Area flows into the combined City sewer system around the perimeter of the area on Oakdale, Mendell and Evans Streets on the way to the City's Southeast Water Pollution Control Plant (SEWPCP) Sewage Treatment Plant (SSTP) , Overflow weirs divert dry weather flow from the two existing outfall sewers - one on Evans Avenue and the other on Mendell Street (since closed) - to the SEWPCP Southeast Sewage Treatment Plant where it receives primary treatment. In 1968 the Evans outfall",
+    "ior to any redevelopment activity and estimated sanitary sewage flows of 100 gallons per capita per day, the total flow for the area prior to redevelopment was estimated to be 0.5 MGD for the total project area or approximately 2.5 percent of the 20 MGD average daily volxjme treated at the City's Southeast Water Pollution Control Plant. *One cfs represents 646,272 gallons per day (GPD) ; the 31 cfs, therefore equals 20,034,000 gpd which is rounded to 20 million gallons per day (mgd) . Il-hl ^ Proposed Sewage Collection System The new sewage collection system to serve the Hunters Point Redevelopment Area will be a combined san",
+    "the proposed land uses are expected to remain essentially unchanged in the Redevelopment area, no increase in sanitary sewage flows are expected from the project. The 0.31 mgd sanitary sewage flows from Phases II and III amount to 1.6 percent of the average dry weather treatment flows through the Southeast Water Pollution Control Plant and will reduce to 0.4 percent of the planned expanded plant capacity. I II -ii? Summary of San Francisco Sewage Treatment Facilities * The City and County of San Francisco has formulated a program to correct deficiencies in its sewage collection and treatment system. These deficiencies, which",
+    "n issued. In response to these orders, the City has prepared the San Francisco Wastewater Management Master Plan (SFWWMMP) . The Master Plan includes a series of timed construction projects which will incrementally provide improved treatment and expanded capacity for the City's waste water flows The Southeast Water Pollution Control Plant This plant, which went into operation in 1951, is perhaps best considered as two separate plants constructed side by side. The first section of the plant provides chemical primary treatment for the sewage flows from the Southeast drainage area. The second section of the plant consists of the s",
+    "ds in the raw sewage. * For a more detailed overview of the City of San Francisco Sewage Treatment Facilities, existing and as planned under the Master Plan, the reader is referred to Appendix D at the end of this report. This information was obtained from the Fina"
+   ],
+   "url": "https://archive.org/details/phasesiiiiiofres1819unit",
+   "deep_link": "https://archive.org/details/phasesiiiiiofres1819unit?q=Southeast+Treatment+Plant",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
    "group": "Plans & environmental review",
    "salient": true
   },
   {
-   "identifier": "mminutes1998sanf",
-   "title": "Minutes",
-   "creator": "San Francisco Public Utilities Commission",
-   "year": null,
+   "identifier": "evaluationsanfra73jbgi",
+   "title": "Evaluation, San Francisco wastewater master plan",
+   "creator": "J.B. Gilbert & Associates,Metcalf & Eddy",
+   "year": 1973,
    "pool": "sfpl",
-   "matched_alias": "Southeast Water Pollution Control Plant",
-   "snippet": "Department Contract No. CW-158, «Southeast Water Pollution Control Plant» Buildings Roofing Project;",
-   "url": "https://archive.org/details/mminutes1998sanf",
-   "deep_link": "https://archive.org/details/mminutes1998sanf?q=Southeast+Water+Pollution+Control+Plant",
+   "matched_alias": "Southeast Treatment Plant",
+   "ocr_excerpts": [
+    "igure 2 FIRST PHASE OF MASTER PLAN The improvement program designed to achieve early compliance with State and Federal treatment standards and to reduce overflows in the critical north shore and ocean beach areas is shown in red. Raw waste from the North Point service area will be pumped to the Southeast Treatment Plant. The Southeast Plant will provide secondary treatment for the dry weather flows from the North Point and Southeast areas. The effluent will be discharged to the Bay through an improved outfall. Wet weather waste control facilities will be constructed to control overflows in the north shore area. The",
+    "atment and modification of the discharge since the outfall is very near an area which likely will be designated by the State Water Resources Control Board as being of special biological significance. Discharges which would alter natural water quality conditions in areas so designated are prohibited. Southeast Water Pollution Control Plant — The Southeast plant treats an average dry weather flow of approximately 19 mgd and has a peak hydraulic capacity of 70 mgd utilized during storms. The effluent is discharged into the Bay 500 feet from shore at a depth of 40 feet. Minimum initial dilution of dry weather flows is approximately",
+    "mond-Sunset STP 13 5. North shore wet weather treatment, storage, and transport facilities 38 6. Transport system from Richmond- Sunset to Southeast area 25 7. Wet weather capacity ocean outfall 30 Total phase I facilities 229 Raw waste from the North Point service area will be pumped to the Southeast treatment plant. The Southeast plant will provide secondary treat- ment for dry weather flows from the North Point and Southeast areas. The effluent will be discharged to the Bay through an improved outfall. Wet weather waste control facilities will be constructed to control overflows in the North shore area. The No",
+    "veness analyses must be used to precisely define the staging following Phase 1 and to determine the sizing and therefore the cost and degree of control. Upon completion of the plan shown on Figure 3 raw waste from North Point and Southeast areas will continue to receive secondary treatment at the Southeast treatment plant. The secondary treatment plant at Richmond-Sunset will be retained. These treated effluents will be transmitted through the tunnel and pipeline systems to the Lake Merced area where they will be discharged approximately four miles offshore. The North Point plant will be abandoned. During storm condition",
+    "entional primary treatment processes plus chemical coagulation with ferric chloride. Individual processes include prechlorination, screening, grit removal, preaeration, primary sedimentation with chemical coagulation, and postchlorination. Solids removed during treatment are conveyed through a "
+   ],
+   "url": "https://archive.org/details/evaluationsanfra73jbgi",
+   "deep_link": "https://archive.org/details/evaluationsanfra73jbgi?q=Southeast+Treatment+Plant",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Meetings & resolutions",
-   "salient": false
+   "group": "Plans & environmental review",
+   "salient": true
+  },
+  {
+   "identifier": "sanfranciscomast1519sanf",
+   "title": "San Francisco master plan for waste water management",
+   "creator": "San Francisco (Calif.). Dept. of Public Works",
+   "year": 1971,
+   "pool": "sfpl",
+   "matched_alias": "Southeast Treatment Plant",
+   "ocr_excerpts": [
+    "to providing single stage chemical treatment for all wet weather flow. As noted before it does not appear to be feasible or practical to provide more than a low level chemical treatment for wet weather flows. All primary solids from the first level chemical treatment would be transported to the Southeast treatment plant and treated for final disposal in landfill or by any other accept- able method. Following split level treatment, the option XI-18 exists for developing a reclaimed waste water which may be used to provide irrigation and recreational water in parks and golf courses or ground water recharge in",
+    "in is proposed in the vicinity of the existing Lake Merced Pumping Station on John Muir Drive. With the completion of Stage 7* the northerly and westerly sections of San Francisco will be brought up to the wet weather control levels projected in the four Alternates. At this XII-15 point the Southeast Water Pollution Control Plant may also be phased out if dry weather facilities are made available at the Lake Merced Plant. STAGE 8. Candlestick Retention Basin .- In the future plans for this area an intensification of recreational and resi- dential development is projected. Therefore, this area is of first priority for wet",
+    "n Control Plant to the tunnel facilities. STAGE 15 (& STAGE l6) . Expansion of Lake Merced Treatment Plant. The Plant would be expanded to 820 MGD to accommodate the Stage 14 drainage area and provides the capability of treating all flows presently being handled by the Richmond- Sunset and the Southeast Water Pollution Control Plants. The completion of this phase in combination with the hydraulic capacity at the North Point Water Pollution Control Plant will result in the control levels projected under the various Alternates. If the North Point Water Pollution Control Plant is to be phased out, then an additional Stage 16 is",
+    "on with its associated delay of immediate effluent quality improvements, would require the approval of the Regional Board and EPA. Scheme II assumes that to meet the Regional Board require- ments and to maintain eligibility for Federal grants, the City would immediately transport the effluent from the Southeast treatment plant to the Lake Merced site, where, with the effluent from the Richmond- Sunset plant, it would be disposed of through the deep water outfall discussed earlier in this report. XII-30 Scheme II further assumes that the City will receive an EPA waiver to discharge the North Point effluent through a",
+    "he degree of treatment during dry weather and the solids produced during wet weather will produce sludge that is many times than being handled at present. The Master Plan recognizes the solids handling problem and that the only conceivable location for processing this large volume is at the present Sout"
+   ],
+   "url": "https://archive.org/details/sanfranciscomast1519sanf",
+   "deep_link": "https://archive.org/details/sanfranciscomast1519sanf?q=Southeast+Treatment+Plant",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Plans & environmental review",
+   "salient": true
   },
   {
    "identifier": "stepifacilitiesp1979losa",
@@ -170,9 +190,34 @@
    "year": 1979,
    "pool": "sfpl",
    "matched_alias": "Southeast Treatment Plant",
-   "snippet": "Facilities Plan COMMUNITY FACILITY at the «SOUTHEAST TREATMENT PLANT» JEFFERSON ASSOCIATES, INC. CURTIS",
+   "ocr_excerpts": [
+    "step I Facilities Plan COMMUNITY FACILITY at the SOUTHEAST TREATMENT PLANT JEFFERSON ASSOCIATES, INC. CURTIS ASSOCIATES ISHIMARU, O'NEILL & SIMMONS MAY 1979 DOCUMENTS DEPT. MAR - 5 2001 SAN FRANCISCO PUBLtC LIBRARY SAN FRANCISOO FUBLC LIBRARY SAN FRANCISCO PUBLIC LIBRARY REFERENCE BOOK jui 1 1 2roT Nol lo he Idkc/i from (he Lihnuy SAN FRANCISCO PUBLIC LIBRARY 3 1223 05722 6723 < tr o o QC Q. QC LU H < LJJ Step I Facilities Plan COMMUNITY FACILITY at the SOUTHEAST TREATMENT PLANT JEFFERSON ASSOCIATES, INC. CURTIS ASSOCIATES ISHIMARU, O'NEILL & SIMMONS MAY 1979 3 1223 05722 6723 TABLE OF CONTENTS PAGE NO. SUMMARY 1 INTRODUCTION 1 EXISTING CONDITIONS IN THE STUDY AREA 2 SITE CONDITIONS 3 ALTERNATIVES 4 PREFERRED PLAN 5 PRELIMINARY DESIGN AND COST ESTIMATES 7 I",
+    "COMMUNITY SURVEY RESPONSES B-1 EXHIBITS PAGE NO. 1. STUDY AREA 14 2. SITE ORIENTATION (AERIAL VIEW) 15 3. CENSUS TRACT MAP 21 4. SOCIOECONOMIC CHARACTERISTICS: STUDY 24 AREA AND SAN FRANCISCO 5. FREEWAY ACCESS 36 6. ORGANIZATIONAL APPROVAL PROCESS FOR THE 40 COMMUNITY FACILITY AT THE SOUTHEAST TREATMENT PLANT 7. PROJECT SITE 43 8. SITE ORIENTATION DRAWING 44 9. GREENHOUSE AND SKILLS TRAINING FACILITY 90 SITE PLAN 10. CONCEPTUAL ORGANIZATIONAL STRUCTURE OF THE 93 COMMUNITY FACILITY AT THE SOUTHEAST TREATMENT PLANT TABLES 1. EFFECTS OF SEWAGE PLANT ON COMMUNITY 19 2. SUMMARY OF 19 76 AND 19 7 7 AIR QUALITY 29 MONITORING RESULTS AT THE 2 3RD STREET AIR MONITORING STATION 3. ACTUAL 24-HOUR TRAFFIC FLOW OF PROJECT 37 AREA ARTERIALS 4. LAND USE NOISE COMPATIBILITY GUIDELINES 38 5. SUr4I4ARY: COMPARISON",
+    "PREFERRED COMMUNITY FACILITY B-4 \\ \\ Summary / I I / SUMMARY INTRODUCTION Background In March 1976 the State Water Resources Control Board (SWRCB) adopted Board Order WQB 76-6 which included a commitment to the development of a recreational facility over the clari- fiers at the Southeast Water Pollution Control Plant as a mitigation measure for the adverse impacts of treatment plant expansion. Following community criticism of the establishment of a recreational facility as the appropriate mitigation measure, a planning study was initiated to deter- mine the most appropriate community facility for meeting community",
+    "ill & Simmons began work on a six-month planning study for the facility under the guidance of the San Francisco Wastewater Program. Objectives and Scope The primary objective of the project is the development of a conceptual design plan for a facility located on a seven acre site adjacent to the Southeast Treatment Plant that will mitigate any environmental or social impacts of the project . The Study Area The Study Area is the Bayview Hunters Point community of San Francisco . Treatment Plant Expansion Impacts An Environmental Impact Report (EIR) was prepared by the City and County of San Francisc"
+   ],
    "url": "https://archive.org/details/stepifacilitiesp1979losa",
    "deep_link": "https://archive.org/details/stepifacilitiesp1979losa?q=Southeast+Treatment+Plant",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Other records",
+   "salient": false
+  },
+  {
+   "identifier": "sanfranciscowas1974ch2m_0",
+   "title": "San Francisco wastewater treatment pilot plant study",
+   "creator": "CH2M Hill, inc,San Francisco (Calif.). Dept. of Public Works",
+   "year": 1974,
+   "pool": "sfpl",
+   "matched_alias": "Southeast Treatment Plant",
+   "ocr_excerpts": [
+    "73 9 176 37 12 107 30 16 107 80 23 139 122 30 87.4 42 10-26-73 9 23. 8 57 50.7 12 48 69 36.2 16 96.9 146 58 23 135 132 51. 5 30 46. 4 76 47.0 The results of an oil and grease duplication study is shown in Table D-3. In this study a single sample of Southeast Treatment Plant effluent was split eight ways and randomly distributed to the testing laboratories. D-l-5 TABLE D-3 Oil and Grease (HEM) mg/1 Aliquot No. Laboratory Result 1 Cook Research 12 2 State Public Health 3.7 3 L.F.E. Environmental 28 4 State Public Health 3.7 5 State Public Health Sample Lost",
+    "NUAL O, M & R COST: OPERATIONS LABOR MAINTENANCE LABOR POWER FUEL CHEMICALS PARTS MISCELLANEOUS TOTAL ANNUAL u & M CAPITAL COST PRESENT VALUE OF COSTS: O, M & R CAPITAL TOTAL S 278 10 223 37 548 6,530 5,210 5,530 $10740 FIGURE 2 PROCESS UNIT DATA COMBINED NORTH POINT AND SOUTHEAST TREATMENT PLANT CITY AND COUNTY OF SAN FRANCISCO A-l-4 TREATMENT TRAIN: A-1, A-2, B-1, B-2 UNIT PROCESS: PRIMARY TREATMENT PROCESS SCHEMATIC: HE ADWORKS RECYCLE HROM SOLIDS PROCESSING PRIMARY CLARIFICATION ■0 TO SOLIDS I PROCESSING -0\" PRIMARY SLUDGE PUMP STATION PRINCIPAL PROCESS DESIGN PARAMETERS",
+    "NUAL O, M & R COST: OPERATIONS LABOR MAINTENANCE LABOR POWER FUEL CHEMICALS PARTS MISCELLANEOUS TOTAL ANNUAL O & M CAPITAL COST PRESENT VALUE OF COSTS: O, M & R CAPITAL TOTAL $ 230 13 30 37 310 9,220 2,946 7.811 $10,757 FIGURE 3 PROCESS UNIT DATA COMBINED NORTH POINT AND SOUTHEAST TREATMENT PLANT CITY AND COUNTY OF SAN FRANCISCO A-l-5 TREATMENT TRAIN: A-1, B-1 UNIT PROCESS: AIR ACTIVATED SLUDGE PROCESS SCHEMATIC: F ROM PRIMARY TREATMENT AERATION BASIN IMECHANICAL AERATION) RETURN SLUDGE SECONDARY CLARIFICATION ~i SECONDARY EFFLUENT PUMP STATION WASTE SLUDGE <E7 TO SOLIDS",
+    "M & R COST: OPERATIONS LABOR MAINTENANCE LABOR POWER FUEL CHEMICALS PARTS MISCELLANEOUS TOTAL ANNUAL O & M CAPITAL COST PRESENT VALUE OF COSTS: O. M & R CAPITAL TOTAL $ 332 103 843 175 1,453 31,260 13,806 26,483 $40,289 FIGURE 4 PROCESS UNIT DATA COMBINED NORTH POINT AND SOUTHEAST TREATMENT PLANT CITY AND COUNTY OF SAN FRANCISCO A-l-6 TREATMENT TRAIN: A-1, A-2. A-3. B-1, B-2, B-3, B-4. C-1, C-2. C-3. C-4 UNIT PROCESS: POST CHLORINATION AND DE-CHLORINATION PROCESS SCHEMATIC: CHLORINE CONTACT CHAMBERS IN-LINE MIXERS CHLORINE & SULFUR DIOXIDE FEED FACILITIES PLANT DISCHARGE PRI",
+    ": ANNUAL O, M & R COST: OPERATIONS LABOR MAINTENANCE LABOR POWER FUEL CHEMICALS PARTS MISCELLANEOUS TOTAL ANNUAL O & M CAPITAL COST PRESENT VALUE OF COSTS. O, M & R CAPITAL TOTAL $ 20 19 234 287 1,990 2.730 1,690 $4,420 FIGURE 5 PROCESS UNIT DATA COMBINED NORTH POINT AND SOUTHEAST TREATMENT PLANT CITY AND COUNTY OF SAN FRANCISCO A- 1-7 TREATMENT TRAIN: A-1, B-1, UNIT PROCESS: ORGANICS SOLIDS THICKENING, DIGESTION & DEWATERING PROCESS SCHEMATIC: PRIMARY GRAVITY SLUDGE THICKENING TWO STAGE ANAEROB"
+   ],
+   "url": "https://archive.org/details/sanfranciscowas1974ch2m_0",
+   "deep_link": "https://archive.org/details/sanfranciscowas1974ch2m_0?q=Southeast+Treatment+Plant",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
    "group": "Other records",
    "salient": false
@@ -184,7 +229,13 @@
    "year": 1971,
    "pool": "sfpl",
    "matched_alias": "Southeast Water Pollution Control Plant",
-   "snippet": "year. «SOUTHEAST WATER POLLUTION CONTROL PLANT» The «Southeast Water Pollution Control Plant», completed",
+   "ocr_excerpts": [
+    "Scum Removal 19 Solids Pumping to Digesters 20 Solids Digestion 20 Solids Conditioning and Disposal 20 Elutriation 20 Filtration 21 Supplemental Facilities 21 Administration 21 Maintenance 21 Ventilation 21 Power and Control 21 Water 22 i Other 22 Treatment Plant Personnel 22 Southeast Water Pollution Control Plant 22 Sewage Treatment 22 Emergency Bypass 27 Screenings 27 Influent Pumping 27 Grit Removal 28 Grit Disposal 28 Primary Sedimentation 28 Chlorination 30 Effluent Pumping 30 Effluent Disposal 30 Solids Treatment 30 Sludge and Scum Removal 31 Sludge Thickening 31 Sludge Digestion",
+    "lant Performance 45 Richmond-Sunset Water Pollution Control Plant 45 Loadings - Sewage Treatment 45 Receiving Waters 48 Loadings - Solids Treatment 48 Mass Distribution - Sewage Treatment 51 Mass Distribution - Solids Treatment 51 Comparisons with Routine Analysis 53 Plant Performance 53 Southeast Water Pollution Control Plant 54 Loadings - Sewage Treatment 54 Receiving Waters 56 Loadings - Solids STreatment 56 Mass Distribution - Sewage Treatment 61 Mass Distribution - Solids Treatment 63 Comparisons with Routine Analysis 66 ii Plant Performance 66 Bioassay Results 69 Appendix A. Abbreviations Appendix B",
+    "t four levels of effluent and receiving water quality for which one or more levels shall comply with the ranges of objectives, requirements and goals as specified by the Regional Board. 4. Determination of the assimilative and dis- persive capacity and background quality of the waters into which the Southeast water pollution control plant discharges and evalu- ation of the existing Southeast water pollu- tion control plant outfall. 5. Preparation of a final report for Phase I pre- senting and discussing all information de- veloped in this phase of the investigation and including recommendations and scope for investigations to be undertake",
+    "iners. Field determinations were made for some para- meters immediately after the samples were collected. Analysis of sample constituents were made in several specialized laborato- ries, including the treatment plant laborato- ries. 5. A study of the waters of San Francisco Bay in the vicinity of the Southeast treatment plant discharge to determine the effects of existing sewage disposal practices. Office Work Office work was concerned with the following principal activities: 1. A review of the water pollution control plant and basic operation data, design draw- ings and general information furnished by the staff of the",
+    "Division of the Bureau of Water Pollution Control. CHAPTER 2 REVIEW OF EXISTING TREATMENT PLANT OPERATION MODES The City of San Francisco is divided into three sewerage service areas, each of which is served by a primary treatment plant. The three plants are the North Point, Richmond-Sunset and Southeast Water Pollution "
+   ],
    "url": "https://archive.org/details/reportonwaterpol1971brow",
    "deep_link": "https://archive.org/details/reportonwaterpol1971brow?q=Southeast+Water+Pollution+Control+Plant",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
@@ -198,37 +249,12 @@
    "year": 1996,
    "pool": "sfpl",
    "matched_alias": "Southeast Treatment Plant",
-   "snippet": "the entire treated waste from the «Southeast Treatment Plant» to the beach using gravity, then",
+   "ocr_excerpts": [
+    "Bay. Implementation of the City's Wastewater Master Plan has helped modernize pipes and facilities, but during heavy rains the combined sewer/storm drains still occasionally overflows untreated sewage into the Bay. Originally, the Crosstown Tunnel was proposed to carry the entire treated waste from the Southeast Treatment Plant to the beach using gravity, then pumped out into the ocean instead of into the Bay. However, several options not possible 20 years ago when the Wastewater Plan was adopted are available today at less cost and with less difficulty. The City is currently comparing the onginal Crosstown Tunnel with these other alternatives: 1 ) building a smaller crosstown force main to pump most Southeast Treatment Plant waste water to the ocean but allow some discharge into the Bay; and 2) using the combined Crosstown Tunnel and North Point force n\\di\\uio pump all dry and wet bayside weather flow out to the ocean (see Map 1 0). 3) moving the outflow point farther north, away from the neighborhood and further",
+    "ster Plan. Move fonA/ard quickly in studying the various bayside discharge alternatives, including the Crosstown Tunnel project, and in choosing the best long-term alternative; speed the use of sewer system improvement revenue bond funds to repair leaks and get rid of odors from leaking pipes and the Southeast Treatment Plant ' affordable and market rate housing at locations AND density levels THAT ENHANCE OVERALL RESIDEN- TIAL QUALITY OF SOUTH BAySHORE. Policies 6. 1 Encourage development of new moderate density affordable ownership units, appropriately designed and located and especially targeted for existing Bayview Hunt"
+   ],
    "url": "https://archive.org/details/southbayshorenew1996sanf",
    "deep_link": "https://archive.org/details/southbayshorenew1996sanf?q=Southeast+Treatment+Plant",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Other records",
-   "salient": false
-  },
-  {
-   "identifier": "sanfranciscowas1974ch2m_0",
-   "title": "San Francisco wastewater treatment pilot plant study",
-   "creator": "CH2M Hill, inc,San Francisco (Calif.). Dept. of Public Works",
-   "year": 1974,
-   "pool": "sfpl",
-   "matched_alias": "Southeast Treatment Plant",
-   "snippet": "this study a single sample of «Southeast Treatment Plant» effluent was split eight ways and",
-   "url": "https://archive.org/details/sanfranciscowas1974ch2m_0",
-   "deep_link": "https://archive.org/details/sanfranciscowas1974ch2m_0?q=Southeast+Treatment+Plant",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Other records",
-   "salient": false
-  },
-  {
-   "identifier": "capitalimprovemsanf",
-   "title": "Capital Improvement Program recommended for fiscal year ... proposed for fiscal years ... through ..",
-   "creator": "San Francisco (Calif.). Dept. of City Planning",
-   "year": 1949,
-   "pool": "sfpl",
-   "matched_alias": "Southeast Treatment Plant",
-   "snippet": "at low cost to takers at the «Southeast Treatment Plant». Approval by the voters in J\\ine",
-   "url": "https://archive.org/details/capitalimprovemsanf",
-   "deep_link": "https://archive.org/details/capitalimprovemsanf?q=Southeast+Treatment+Plant",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
    "group": "Other records",
    "salient": false
@@ -271,7 +297,7 @@
  ],
  "_gate": {
   "has_photo": false,
-  "n_documents": 12,
+  "n_documents": 10,
   "n_money_links": 1,
   "meets_pre_summary": false
  }

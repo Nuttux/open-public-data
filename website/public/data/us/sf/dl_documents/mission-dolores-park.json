@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-21T14:25:53.925271+00:00",
+ "generated_at": "2026-07-22T15:04:53.693794+00:00",
  "slug": "mission-dolores-park",
  "name": "Mission Dolores Park",
  "note": "Archive documents linked to this place; source labels honour the SFPL-vs-Democracy's-Library distinction.",
@@ -11,26 +11,12 @@
    "year": 2000,
    "pool": "sfpl",
    "matched_alias": "Mission Dolores Park",
-   "snippet": "Miraloma Park - Court Resurfacing^ «Mission Dolores Park» - Beautification Project McLaren Park",
    "url": "https://archive.org/details/minutes1998sanf_5",
    "deep_link": "https://archive.org/details/minutes1998sanf_5?q=Mission+Dolores+Park",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
    "group": "Meetings & resolutions",
-   "salient": true
-  },
-  {
-   "identifier": "minutesrecreatio1993sanf",
-   "title": "Minutes / Recreation and Park Commission",
-   "creator": "San Francisco (Calif.). Recreation and Park Commission",
-   "year": null,
-   "pool": "sfpl",
-   "matched_alias": "Dolores Park",
-   "snippet": "at Milton Meyer Recreation Center. «MISSION DOLORES PARK» RES. 16621 - Approved establishment",
-   "url": "https://archive.org/details/minutesrecreatio1993sanf",
-   "deep_link": "https://archive.org/details/minutesrecreatio1993sanf?q=Dolores+Park",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Meetings & resolutions",
-   "salient": true
+   "salient": true,
+   "gloss": "Open Space/Park Renovation advisory-committee minutes weighing a $25,000 beautification, erosion-control and irrigation request for the park's west end, backed by Friends of Dolores Park."
   },
   {
    "identifier": "fy200809parksannsanf",
@@ -39,40 +25,12 @@
    "year": 2008,
    "pool": "sfpl",
    "matched_alias": "Dolores Park",
-   "snippet": "Mini Park 5 74.2% 91.7% 90.8% 74.6% 10 «Mission Dolores Park» 8 74.6% 86.4% 79.7% 84.7% * Note: Parks",
    "url": "https://archive.org/details/fy200809parksannsanf",
    "deep_link": "https://archive.org/details/fy200809parksannsanf?q=Dolores+Park",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
    "group": "Reports & records",
-   "salient": true
-  },
-  {
-   "identifier": "2008cleansafenei2007sanf",
-   "title": "2008 Clean & Safe Neighborhood Parks bond",
-   "creator": "San Francisco (Calif.)",
-   "year": 2008,
-   "pool": "sfpl",
-   "matched_alias": "Dolores Park",
-   "snippet": "soft costs. 34 «MISSION DOLORES PARK» RENOVATION Facility Name: «Mission Dolores Park» Location: Dolores",
-   "url": "https://archive.org/details/2008cleansafenei2007sanf",
-   "deep_link": "https://archive.org/details/2008cleansafenei2007sanf?q=Dolores+Park",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Other records",
-   "salient": true
-  },
-  {
-   "identifier": "generalmanagersr1975sanf",
-   "title": "General manager's report : Open Space Acquisition and Park Renovation Fund",
-   "creator": "San Francisco (Calif.). Recreation and Park Department,San Francisco (Calif.). Dept. of City Planning,San Francisco (Calif.). Open Space Acquisition and Park Renovation Fund",
-   "year": 1975,
-   "pool": "sfpl",
-   "matched_alias": "Dolores Park",
-   "snippet": "Playground and building improvements ^MISSION «DOLORES PARK» - Children's Play Apparatus $70,000 >",
-   "url": "https://archive.org/details/generalmanagersr1975sanf",
-   "deep_link": "https://archive.org/details/generalmanagersr1975sanf?q=Dolores+Park",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Other records",
-   "salient": true
+   "salient": true,
+   "gloss": "The Controller's FY2008-09 parks report ranking Mission Dolores Park tenth-lowest citywide at 74.6%, down 11.8 points, and noting it was flagged for capital work in the 2008 bond."
   },
   {
    "identifier": "parkstandards6mo162010san",
@@ -81,40 +39,40 @@
    "year": 2009,
    "pool": "sfpl",
    "matched_alias": "Mission Dolores Park",
-   "snippet": "Great Highway Lessing/Sears Mini Park «Mission Dolores Park» John McLaren Park Little Hollywood",
    "url": "https://archive.org/details/parkstandards6mo162010san",
    "deep_link": "https://archive.org/details/parkstandards6mo162010san?q=Mission+Dolores+Park",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
    "group": "Other records",
-   "salient": true
+   "salient": true,
+   "gloss": "The Controller's FY2009-10 mid-year report showing the park dropping to 67.5%, second-lowest citywide."
   },
   {
-   "identifier": "whatsdoinginpark1985sanf",
-   "title": "What's doing in the parks?",
-   "creator": "San Francisco (Calif.). Recreation and Park Department",
-   "year": null,
+   "identifier": "2008cleansafenei2007sanf",
+   "title": "2008 Clean & Safe Neighborhood Parks bond",
+   "creator": "San Francisco (Calif.)",
+   "year": 2008,
    "pool": "sfpl",
    "matched_alias": "Dolores Park",
-   "snippet": "Lilith, A Women's Theatre Presentation, «Mission Dolores Park», 18th and Dolores Streets. 1 - 5",
-   "url": "https://archive.org/details/whatsdoinginpark1985sanf",
-   "deep_link": "https://archive.org/details/whatsdoinginpark1985sanf?q=Dolores+Park",
+   "url": "https://archive.org/details/2008cleansafenei2007sanf",
+   "deep_link": "https://archive.org/details/2008cleansafenei2007sanf?q=Dolores+Park",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
    "group": "Other records",
-   "salient": false
+   "salient": true,
+   "gloss": "The 2008 parks bond's project page for Mission Dolores Park — 14.2 acres, tennis and basketball courts, a sports field, playground and clubhouse — scoping its renovation."
   },
   {
-   "identifier": "publicnotice2008sanf",
-   "title": "Public notice",
-   "creator": "San Francisco (Calif.). Recreation and Park Dept",
-   "year": null,
+   "identifier": "generalmanagersr1975sanf",
+   "title": "General manager's report : Open Space Acquisition and Park Renovation Fund",
+   "creator": "San Francisco (Calif.). Recreation and Park Department,San Francisco (Calif.). Dept. of City Planning,San Francisco (Calif.). Open Space Acquisition and Park Renovation Fund",
+   "year": 1975,
    "pool": "sfpl",
    "matched_alias": "Dolores Park",
-   "snippet": "Parks Department and the Friends of «Dolores Park» Playground and Supervisor Bevan Dufty and",
-   "url": "https://archive.org/details/publicnotice2008sanf",
-   "deep_link": "https://archive.org/details/publicnotice2008sanf?q=Dolores+Park",
+   "url": "https://archive.org/details/generalmanagersr1975sanf",
+   "deep_link": "https://archive.org/details/generalmanagersr1975sanf?q=Dolores+Park",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
    "group": "Other records",
-   "salient": false
+   "salient": true,
+   "gloss": "A 1975 Open Space fund report allocating $70,000 for children's play apparatus at Mission Dolores Park, with later safety-lighting funds."
   }
  ]
 }

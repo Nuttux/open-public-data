@@ -1,9 +1,45 @@
 {
- "generated_at": "2026-07-21T14:25:53.952402+00:00",
+ "generated_at": "2026-07-22T15:04:53.713499+00:00",
  "slug": "zuckerberg-sf-general-hospital",
  "name": "Zuckerberg San Francisco General Hospital",
  "note": "Archive documents linked to this place; source labels honour the SFPL-vs-Democracy's-Library distinction.",
  "documents": [
+  {
+   "identifier": "sanfranciscogene2007sanf",
+   "title": "San Francisco General Hospital Medical Center institutional master plan : update",
+   "creator": "San Francisco General Hospital (Calif.),San Francisco (Calif.). Dept. of Public Health,Fong & Chan Architects",
+   "year": 2007,
+   "pool": "sfpl",
+   "matched_alias": "San Francisco General Hospital",
+   "ocr_excerpts": [
+    "SAN FRANCISCO GENERAL HOSPITAL MEDICAL CENTER Institutional Master Plan update Original Submission date: September 22, 2006 Revised: February 22, 2007 xjfi^cg City and County of San Francisco Department of Public Health Fong & Chan Architects Digitized by the Internet Archive in 2010 with funding from San Francisco Public",
+    "Campus Buildings Surrounding Land Use Transportation Conditions Traffic Parking Transit Pedestrian Conditions Bicycle Conditions Section 4 Development Objectives Medical Helipad Background Project Description New Emergency Generator Capacity Background Project Description New Acute Care Hospital San Francisco General Hospital Medical Center Institutional Master Plan Update - September 2006 Section 5 General Plan Conformity Plan Development Conformity with General Plan Elements Description of General Plan Elements Project Description Medical Helipad New Emergency Generator Capacity New Acute Care Hospital Plan Develop",
+    "verse Impacts Upon the Surrounding Neighborhood Medical Helipad New Emergency Generator Capacity New Acute Care Hospital Identification of Mitigating Actions to Lessen Adverse Impacts on the Surrounding Neighborhood Medical Helipad New Emergency Generator Capacity New Acute Care Hospital References San Francisco General Hospital Medical Center Institutional Master Plan Update - Septemt Section 1 Introduction SFGHMC as seen from McKinley Square Park The San Francisco General Hospital Medical Center (SFGHMC) submits this Institutional Master Plan (IMP) to update the 1987 IMP currently on file with the Planning Department. Since 1987, there have been several modest developments on the SFGHMC campus, these are described in sections 2 and 3 of this IMP Update. The remaining sections will present summary information regarding the following three future plan developments: Medical Helipad • New Emergency Generator Capacity • New Acute Care Hospital SFGHMC, under the mandate of Senate Bill 1953, is obligated to insure its acute care building meets established seismic standards by 2013. As a result of detailed planning analysis performed in 2004, it has been determined that retrofitting the existing acute care building would be intrusive, challenging f",
+    "the new hospital will be completed, this update has been prepared for the interim. The hospital would also like to continue the dialog and participation with the neighboring communities and the City and County of San Francisco regarding future measures and programs for the development and growth of SFGHMC. San Francisco General Hospital Medical Center Institutional Master Plan Update - September 2< 1-1 Section 1 Introduction PURPOSE OF THE INSTITUTIONAL MASTER PLAN The IMP serves to advise the Commission and the public of long-range development projects proposed by SFGHMC; according t"
+   ],
+   "url": "https://archive.org/details/sanfranciscogene2007sanf",
+   "deep_link": "https://archive.org/details/sanfranciscogene2007sanf?q=San+Francisco+General+Hospital",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Plans & environmental review",
+   "salient": true
+  },
+  {
+   "identifier": "noticeofprepara2200sanf_0",
+   "title": "Notice of preparation of an environmental impact report : [San Francisco General Hospital--Seismic compliance, hospital replacement program]",
+   "creator": "San Francisco (Calif.). Planning Dept,San Francisco (Calif.). Dept. of Public Health",
+   "year": 2007,
+   "pool": "sfpl",
+   "matched_alias": "SFGH",
+   "ocr_excerpts": [
+    "SAN FRANCISCO PUBLIC LIBRARY 223 07661 18 1 CISCO PLANNING DEPARTMENT August 2, 2007 To: Responsible Agencies, Trustee Agencies, and Interested Parties: Re: CASE NO. 2007.0603E--SAN FRANCISCO GENERAL HOSPITAL - SEISMIC COMPLIANCE, HOSPITAL REPLACEMENT PROGRAM NOTICE OF PREPARATION OF AN ENVIRONMENTAL IMPACT REPORT AND NOTICE OF PUBLIC SCOPING MEETING The San Francisco Planning Department has issued a Notice of Preparation and will prepare an environmental impact report (EIR) to evaluate the physical environmental Francisco General Hospital (SFGH) Seismic Compliance, ram. This notice provides a summary of the proposed ntal topics and issues anticipated to be analyzed in the EIR, te, and location of the public scoping meeting. This :oping Meeting is also available on-line at www. 'at Siefers, San Francisco Planning Department at the above San Francisco Public Library' Government Information Center San Francisco Public Library 100 larkm Street, 5th Floor San Francisco, CA 94102 REFERENCE BOOK Not to be taken from the Library ?rancisco General Hospital proposes to construct a new !4-bed acute care hospital on the SFGH campus to comply legislation, Senate Bill (SB) 1953 (1996), concerning the facilities. The new hospital would be located on the west veen Buildings 10/20 and Buildings 30/40. Preliminary [ for an eight-story building including two basement levels :. The EIR will analyze the physical impacts of constru",
+    "Francisco. CA 94103-2479 Reception 415.558.6378 Fax 415.558 6409 Planning Information. 415 558.6377 www.sfplanning.org San francisco 1 PUBLIC LIBRARY SAN FRANCISCO PLANNING DEPARTMENT August 2, 2007 To: Responsible Agencies, Trustee Agencies, and Interested Parties: Re: CASE NO. 2007.0603E--SAN FRANCISCO GENERAL HOSPITAL - SEISMIC COMPLIANCE, HOSPITAL REPLACEMENT PROGRAM NOTICE OF PREPARATION OF AN ENVIRONMENTAL IMPACT REPORT AND NOTICE OF PUBLIC SCOPING MEETING The San Francisco Planning Department has issued a Notice of Preparation and will prepare an environmental impact report (EIR) to evaluate the physical environmental effects of the proposed San Francisco General Hospital (SFGH) Seismic Compliance, Hospital Replacement Program. This notice provides a summary of the proposed project, identifies environmental topics and issues anticipated to be analyzed in the EIR, and provides the time, date, and location of the public scoping meeting. This NOP/Notice of Public Scoping Meeting is also available on-line at www. sfgov/site/plarining or from Pat Siefers, San Francisco Planning Department at the above address or at (415) 575-9045. Project Description; San Francisco General Hospital proposes to construct a new 419,070 square foot, up to 284-bed acute care hospital on the SFGH campus to comply with requirements of State legislation, Senate Bill"
+   ],
+   "url": "https://archive.org/details/noticeofprepara2200sanf_0",
+   "deep_link": "https://archive.org/details/noticeofprepara2200sanf_0?q=SFGH",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Plans & environmental review",
+   "salient": true
+  },
   {
    "identifier": "sanfranciscogene4200sanf",
    "title": "San Francisco General Hospital Medical Center air medical access needs and feasibility study : a report to the Health Commission of the City & County of San Francisco and the executive administrator of San Francisco General Hospital",
@@ -11,7 +47,11 @@
    "year": 2003,
    "pool": "sfpl",
    "matched_alias": "San Francisco General Hospital",
-   "snippet": "Study E-1 «San Francisco General Hospital» Addition And Heliport «San Francisco General Hospital» is proceeding",
+   "ocr_excerpts": [
+    "SAN FRANCISCO PUBLIC LIBRARY 3 1223 06372 9975 San Francisco General Hospital Medical Center Air Medical Access Needs and Feasibility Study September 2002 - March 2003 Prepared For n The San Francisco Health Commission March 4, 2003 By DOCUMENTS DEPT. REF 711.555 Gerson/Overstreet Architects MAR 2 7 2003 Sa522 San Francisco, CA QAWeft SAN FRANCISCO PUBLIC LIBRARY SAN FRANCISCO PUBLIC LIBRARY REFERENCE BOOK Not to be taken from the Library San Francisco General Hospital Medical Center Air Medical Access Needs and Feasibility Study A Report to the Health Commission of the City & County of San Francisco and the Executive Administrator of San Francisco General Hospital Prepared By Gerson/Overstreet Architects 116 Natoma Street 3rd Floor San Francisco, CA 94105 (415) 989-3830 In Association With Heliport Consultants David Prowler, Inc. Charles M. Salter Associates, Inc. Lux Consulting (First Printing: March 4, 2003) Second Printing: March 10, 2003 San Francisco General Hospital Air Medical Access Needs and Feasibility $tudy Team Members San Francisco General Hospital • Chris Wachsmuth • Ana Ghosh • Carlos Villalva • Bobbi Earsey • Seth Ingram San Francisco EMS Agency • Kate Garay HEMS Advisors • Jennifer Hardcastle (REACH) • Andy Swartzell (CALSTAR) Lux Consulting • Debby Lu Gerson/Overstreet Architects • Harry L. Overstreet • Michael R. McClintock",
+    "ennett David Prowler, Inc. • David Prowler • Karen Pearce Charles M. Salter Associates, Inc. • JackFreytag • Randy Waldeck Executive Summary Introduction The San Francisco Health Commission approved the City and County of San Francisco Trauma Care System Plan in August 2001 and requested that SFGH conduct a needs assessment and feasibility analysis for a medical helipad at San Francisco General Hospital (Resolution No. 14-01). The Trauma Care System Plan revealed vulnerabili- ties in San Francisco's ability to prevent death and disability due to injury. The trauma system vulnerabilities - geographic isolation, traffic congestion, population density - are especially aggrevated by the lack of air medical",
+    "tained by young children, requiring immediate transfer to Oakland Children's Pediatric Trauma Center In September 2002, the San Francisco Health Commission approved an agreement with the San Francisco architectural firm of Gerson/Overstreet to provide analytical, planning and architectural services for the San Francisco General Hospital Air Medical Access Needs and Feasibility Study. The final work products of the contract are: (1) a written report to the San Francisco Health Commission and Executive Administrator of San Francisco General Hospital documenting the study findings, and (2) a presentation to a regularly scheduled meeting of the San Francisco Health Commission. There were two parts to the study effort. "
+   ],
    "url": "https://archive.org/details/sanfranciscogene4200sanf",
    "deep_link": "https://archive.org/details/sanfranciscogene4200sanf?q=San+Francisco+General+Hospital",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
@@ -25,7 +65,11 @@
    "year": 1993,
    "pool": "sfpl",
    "matched_alias": "San Francisco General Hospital",
-   "snippet": "FIGURE 1 0 «San Francisco General Hospital» 35 ZONING «San Francisco General Hospital» Parking Garage",
+   "ocr_excerpts": [
+    "Don IMCMTq dfpt JAN 1 9 1993 SAN FRANCISCO PUBLIC LIBRARY Draft Environmental Impact Report San Francisco General Hospital Parking Garage 88.271 E Draft EIR Publication Date: January 15, 1993 Draft EIR Public Hearing Date: February 18, 1993 Draft EIR Public Comment Period: January 15 to February 18, 1993 City and County of San Francisco Department of City Planning SAN FRANCISCO PUBLIC LIBRARY REFERENCE BOOK Not to be taken from the Library SAN FRANCISCO PUBLIC LIBRARY 3 1223 03551 4620 Draft Environmental Impact Report San Francisco General Hospital Parking Garage 88.271 E Draft EIR Publication Date: January 15, 1993 Draft EIR Public Hearing Date: February 18, 1993 Draft EIR Public Comment Period: January 15 to February 18, 1993 City and County of San Francisco Department of City Planning D REF 711 .555 Sa52 San Francisco General Hospital parking 1 9^:1 . S.F. PUBLIC LIBRARY 3 1223 03551 4620 City and County of San Francisco Department of City Planning 450 McAllister Street San Francisco, CA 94102 ADMINISTRATION (415) 558-6414 CITY PLANNING COMMISSION (415) 558-6414 PLANS AND PROGRAMS (415) 558-6264 IMPLEMENTATION / ZONING (415) 558-6377 DATE: TO: FROM: SUBJECT: January 15, 1993 Distribution List for the San Francisco General Hospital Parking Garage Draft EIR Barabar W. Sahm, Environmental Review Officer Request for the Final Environmental Impact Report on the San Francisco General Hospital Parking Garage This is the Draft of the Environmental Impact Report (EIR) for the San Francisco General Hospital Parking Garage. A public hearing will be held on the adequacy and accuracy of this document. After the public hearing, our office will prepare and publish a document titled \"Summary of Comments and Responses\" which will contain a summary of all relevant comments on this Draft EIR. Those who testify",
+    "you for your interest in this project. Digitized by the Internet Archive in 2014 https://archive.org/details/sanfranciscogene1519sanf Department of City Planning Office of Environmental Review 450 McAllister Street, 6th Floor San Francisco, CA 94102 Attn: Jim McCormick, EIR Coordinator 88.271 E - SFGH Parking Garage Please cut along dotted line RETURN REQUEST REQUIRED FOR FINAL ENVIRONMENTAL IMPACT REPORT REQUEST FOR FINAL ENVIRONMENTAL IMPACT REPORT TO: Department of City Planning Office of Environmental Review Please send me a copy of the Final EIR on the San Francisco General Hospital Parking Garage. Signed: Name: Address: (please print) TABLE OF CONTENTS Introduction v Chapter 1. Summary 1 Project Description 1 Potential Impacts 2 Major Mitigation Measures 6 Alternatives 7 Chapter 2. Project Description 11 Background 1 1 Objectives of the Project Sponsor 1 1 Projec",
+    "49 Air Quality 52 Visual Quality 55 Hazards - Public Health and Safety 61 Chapter 4. Environm"
+   ],
    "url": "https://archive.org/details/sanfranciscogene1519sanf",
    "deep_link": "https://archive.org/details/sanfranciscogene1519sanf?q=San+Francisco+General+Hospital",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
@@ -39,53 +83,16 @@
    "year": 1987,
    "pool": "sfpl",
    "matched_alias": "San Francisco General Hospital",
-   "snippet": "Administrator «San Francisco General Hospital» PLANNING COMMITTEE «San Francisco General Hospital» Robert",
+   "ocr_excerpts": [
+    "tects • planners Gordon H. Chong & Associates associate architects I I I I I I [ SAN FRANCISCO GENERAL HOSP/1 1/ l\\STITl TIO> \\L MASTER PL AS ACKNOWLEDGEMENTS David Werdcgar, MD, MPH Director, Department of Health Norman Karasick, ALA City Architect Phillip Sowa Executive Administrator San Francisco General Hospital PLANNING COMMITTEE San Francisco General Hospital Robert Christmas Phyllis Harding Kathy Jung Diane Miller-Brazas Maria O'Rourke James Putney Jerry Rankin Judy Spinella Ed Walera CONSULTANTS DKS Associates Traffic/Transportation Gamayo & Sanchc/ Structural Engineer JYA Consulting Engineer. Int. Mechanical Engineer Silverman & Light Electrical E",
+    "n Phasing 4.21 Neighborhood Impact Long Range Development Plan 4.22 Zoning 4.23 Needs 4.24 Recommendations 4.27 Conformity with City's Comprehensive Plan TRANSPORTATION STUDY APPENDLX I Transportation Study Appendices APPENDLX II Proposed Agreement between University of California. San Francisco and San Francisco General Hospital APPENDLX III Mental Health Skilled Nursing Center Bond Program Report K McL DIGCA Architects Digitized by the Internet Archive in 2014 https://archive.org/details/sanfranciscogene1987sanf SAX FRANCISCO GENERAL HOSP/1 il l\\STITLTIO*AL MASTER PL AS EXECUTIVE SUMMARY 25 November 19K7 This Institutional Master Plan for the San Francisco General Hospital Medical Center, submitted to the City and County of San Francisco, is a record of the Hospital's growth needs and development plans for the future as they are currently defined. This Master Plan should be reviewed not as a fixed document but as a vehicle for communicating identified needs and pref",
+    "s grouped into three general parts: 1) background information regarding the nature of the facility, services provided, history of growth, and description of the physical plant; 2) development plans for future growth; and 3) a study of the transportation, circulation, and parking needs of the facility. San Francisco General Hospital is the County Hospital and, not surprisingly, is the busies! hospital in the county. With 582 licensed beds, it serves approximately 16% of all patients treated in the City. It provides extensive ambulatory care services, treating approximately 1,000 patients daily, and, as the designated Trauma Center",
+    "g a transportation management program for the Medical Center. The designation of a program coordinator is in progress, once this is accomplished, the Hospital will formulate a specific transportation management system for review by the City and implementation 1.2 A' McL DIGCA Architects I [ I SAN FRANCISCO GENERAL HOSPITAL INSTITUTIONAL MASTER PLAN HOSPITAL DESCRIPTION INSTITUTIONAL OVER VIEW \"PROVIDER OF LAST RESORT\" San Francisco General Hospital Medical Center (SFGH) is a general acute care facility licensed "
+   ],
    "url": "https://archive.org/details/sanfranciscogene1987sanf",
    "deep_link": "https://archive.org/details/sanfranciscogene1987sanf?q=San+Francisco+General+Hospital",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
    "group": "Plans & environmental review",
-   "salient": true
-  },
-  {
-   "identifier": "noticeofprepara2200sanf_0",
-   "title": "Notice of preparation of an environmental impact report : [San Francisco General Hospital--Seismic compliance, hospital replacement program]",
-   "creator": "San Francisco (Calif.). Planning Dept,San Francisco (Calif.). Dept. of Public Health",
-   "year": 2007,
-   "pool": "sfpl",
-   "matched_alias": "SFGH",
-   "snippet": "3,510 employees at «SFGH», one-third of which are UCSF employees. «SFGH» employs advance practice",
-   "url": "https://archive.org/details/noticeofprepara2200sanf_0",
-   "deep_link": "https://archive.org/details/noticeofprepara2200sanf_0?q=SFGH",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Plans & environmental review",
-   "salient": true
-  },
-  {
-   "identifier": "sanfranciscogene2007sanf",
-   "title": "San Francisco General Hospital Medical Center institutional master plan : update",
-   "creator": "San Francisco General Hospital (Calif.),San Francisco (Calif.). Dept. of Public Health,Fong & Chan Architects",
-   "year": 2007,
-   "pool": "sfpl",
-   "matched_alias": "San Francisco General Hospital",
-   "snippet": "of 1985 «San Francisco General Hospital» Medical Center «San Francisco General Hospital» Medical",
-   "url": "https://archive.org/details/sanfranciscogene2007sanf",
-   "deep_link": "https://archive.org/details/sanfranciscogene2007sanf?q=San+Francisco+General+Hospital",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Plans & environmental review",
-   "salient": true
-  },
-  {
-   "identifier": "agenda19821984arts",
-   "title": "Agenda",
-   "creator": "Arts Commission of San Francisco. Visual Arts Committee",
-   "year": 1983,
-   "pool": "sfpl",
-   "matched_alias": "SF General",
-   "snippet": "FUNDS FROM «SF GENERAL» FOR CONSERVATION CHANGE IN ART PROGRAM AT «SF GENERAL» MURALIST PROPOSAL",
-   "url": "https://archive.org/details/agenda19821984arts",
-   "deep_link": "https://archive.org/details/agenda19821984arts?q=SF+General",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Meetings & resolutions",
    "salient": true
   },
   {
@@ -95,25 +102,36 @@
    "year": 2005,
    "pool": "sfpl",
    "matched_alias": "San Francisco General Hospital",
-   "snippet": "programs: «San Francisco General Hospital» Medical Center «San Francisco General Hospital» provides",
+   "ocr_excerpts": [
+    "of Supervisors requested the Controller's Office to evaluate the Department of Public Health under the Controller's mandate to measure, audit, and report on government performance. Critical analysis is increasingly needed as the City implements Healthy San Francisco and rebuilds Laguna Honda Hospital and San Francisco General Hospital and Trauma Center. MHHBHHHHHB^HM Highlights The Department of Public Health is the City's primary provider of health services to the Door and uninsured. e needed to promote prevention, free up and resulting from Healthy San Francisco. >, the rebuilt Laguna Honda Hospital will be kind, which is",
+    "falls, car crashes, and \\an Francisco Public Library Government Information Center San Francisco Public Library WOtarkin Street, 5th Floor San Ftan&isco, Cm 941G2 IEFERENCE BOOK ot to be taken from the Library Dccupancy rate is 97 percent, well above id rate of 80 percent, and well above any San Francisco General Hospital is at or near the top of a benchmark range in overall clinical quality for treatment for heart attacks, heart failure, pneumonia, and the prevention of surgical infections. • San Francisco General Hospital is productive and is financially well run when compared to similar hospitals across the country. For example, General Hospital uses 26 percent less overtime and 61 fewer full time equivalents, saving $5.7 million annually, and its revenue cycle processes are complete and effective. • There are no providers able and willing to fill critical gaps in services should San Francisco General Hospital not be rebuilt to meet state seismic standards. Recommendations • Continue to focus on primary care clinic redesign to reduce wait times for appointments and increase patient throughput • Develop more out- patient, community- based health services, including smaller facilities and in-home services for",
+    "long-term and skilled nursing care • Expand care delivery alternatives for lower acuity and medical and psychiatric services to allow expansion of hospital trauma volume and acute inpatient capacity • Increase investments in information technology • Maintain area hospital capacity, including rebuilding San Francisco General Hospital Copies of the full report may be obtained at: Controller's Office • City Hall, Room 31 6 • 1 Dr. Carlton B. Goodlett Place • San Francisco, CA 94102 • 415.554.7500 or on the Internet at http://www. sfpov. org/controller City and County of San Francisco Office of the Controller - City Servic",
+    "of Supervisors requested the Controller's Office to evaluate the Department of Public Health under the Controller's mandate to measure, audit, and report on government performance. Critical analysis is increasingly needed as the City implements Healthy San Francisco and rebuilds Laguna Honda Hospital and San Fran"
+   ],
    "url": "https://archive.org/details/performanceeffic202008san",
    "deep_link": "https://archive.org/details/performanceeffic202008san?q=San+Francisco+General+Hospital",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
    "group": "Reports & records",
-   "salient": false
+   "salient": true
   },
   {
-   "identifier": "annualreport196265sanf",
-   "title": "Annual report",
-   "creator": "San Francisco (Calif.). Dept. of Public Health",
-   "year": 1957,
+   "identifier": "citycountyofsa200910sanf",
+   "title": "City and County of San Francisco interim consolidated budget and annual appropriation ordinance",
+   "creator": "San Francisco (Calif.),San Francisco (Calif.). Board of Supervisors,San Francisco (Calif.). Office of the Mayor",
+   "year": 1998,
    "pool": "sfpl",
-   "matched_alias": "San Francisco General Hospital",
-   "snippet": "52- «SAN FRANCISCO GENERAL HOSPITAL» PURPOSE AND SCOPE The «San Francisco General Hospital» is",
-   "url": "https://archive.org/details/annualreport196265sanf",
-   "deep_link": "https://archive.org/details/annualreport196265sanf?q=San+Francisco+General+Hospital",
+   "matched_alias": "SF General",
+   "ocr_excerpts": [
+    "REC FR CHILD;YOUTH & FAM (AAO) 865CI EXP REC FR CHILDREN AND FAMIUES (AAO) 865CP EXP REC FR CITY PLANNING (AAO) 865CT EXP REC FR CITY ATTORNEY (AAO) 865ER EXP REC FR EMERGENCY COMMUNICATIONS(AAO) 865EV EXP REC FR ENVIRONMENT (AAO) 865HC EXP REC FR COMM HEALTH SERVICE (AAO) 865HG EXP REC FR SF GENERAL HOSPITAL (AAO) 865HL EXP REC FR LAGUNA HONDA HOSPITAL (AAO) 865HM EXP REC FR COMM MENTAL HEALTH (AAO) 865HS EXP REC FR HSS (AAO) 86SMY EXP REC FR MAYOR (AAO) 865PA EXP REC FR PERMIT APPEALS (AAO) 865PK EXP REC FR PARKING & TRAFRC (AAO) 865PO EXP REC FR PORT COMMISSION (AAO) 865PT EXP R",
+    "P REC FR CHILD; YOUTH & FAM (AAO) 6,943 865CI EXP REC FR CHILDREN AND FAMIQES (AAO) 1,769 855DA EXP REC FR DISTRICT ATTORNEY (AAO) 80,000 865ER EXP REC FR EMERGENCY COMMUNICATIONS(AAO) 4,517 865EV EXP REC FR ENVIRONMENT (AAO) 730 865HC EXP REC FR COMM HEALTH SERVICE (AAO) 181,528 865HG EXP REC FR SF GENERAL HOSPITAL (AAO) 223,577 865HL EXP REC FR U\\GUNA HONDA HOSPITAL (AAO) 223,577 865HM EXP REC FR COMM MENTAL HEALTH (AAO) 143,203 855LB EXP REC FR PUBQC UBRARY (AAO) 5,686 8650C EXP REC FR OFFICE OF CONTRACT ADMIN(AAO) 40,000 865PO EXP REC FR PORT COMMISSION (AAO) 25,000 865PT EXP REC FR PUBUC TRANSP",
+    "EXP REC FR DISTRICT ATTORNEY (AAO) 865EC EXP REC FR ETHICS COMMISSION (AAO) 865ED EXP REC FR EMERGENCY COMM. DEPT. 865ER EXP REC FR EMERGENCY COMMUNICATIONS(AAO) 865EV EXP REC FR ENVIRONMENT (AAO) 865FC EXP REC FR FIRE DEPT (AAO) 865HC EXP REC FR COMM HEALTH SERVICE (AAO) 865HG EXP REC FR SF GENERAL HOSPITAL (AAO) 865HM EXP REC FR COMM MENTAL HEALTH (AAO) 865LB EXP REC FR PUBLIC LIBRARY (AAO) 865MO EXP REC FR MAYOR - CDBG (AAO) 865MT EXP REC FR MUNICIPAL TRANSPORTATION(AAO) 900,000 11,541,000 520,000 210,000 562,000 100,000 100,000 20,000 1,159,000 1,191,400 5,000 138,000 22,000 12,1",
+    "EALTH SERVICE SYSTEM Budget Year 2009-2010 Fund Description IGAGF General Total Funding Sources of Funds Sources Subobjects: 79999 OTHER NON-OPERATING REVENUE 865AC EXP REC FR AIRPORT (AAO) 865BI EXP REC FR BLDG INSPECTION (AAO) 865GE EXP REC FR GENERAL CITY RESP (AAO) 865HG EXP REC FR SF GENERAL HOSPITAL (AAO) 865HL EXP REC FR LAGUNA HONDA HOSPITAL (AAO) 865PO EXP REC FR PORT COMMISSION (AAO) 865PT EXP REC FR PUBLIC TRANSPORTATION(AAO) 865PW EXP REC FR PUBQC WORKS (AAO) 865RB EXP REC FR RENT ARBITRATION BD (AAO) 865RS EXP REC FR RETIREMENT SYSTEM (AAO) 865UC EXP REC FR PUC (AAO)",
+    "EXP REC FR DISTRia ATTORNEY (AAO) 865ER EXP REC FR EMERGENCY COMMUNICATIONS(AAO) 865EV EXP REC FR ENVIRONMENT (AAO) 865FA EXP REC FR FINE ARTS MUSEUM (AAO) 865FC EXP REC FR FIRE DEPT (AAO) 865GE EXP REC FR GENERAL CITY RESP (AAO) 865HC EXP REC FR COMM HEALTH SERVICE (AAO) 865HG EXP REC FR SF GENERAL HOSPITAL (AAO) 865HL EXP REC FR LAGUNA HONDA HOSPITAL (AAO) 865HM EXP REC FR COMM MENTAL HEALTH (AAO) 865HS EXP REC FR HSS (AAO) "
+   ],
+   "url": "https://archive.org/details/citycountyofsa200910sanf",
+   "deep_link": "https://archive.org/details/citycountyofsa200910sanf?q=SF+General",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Reports & records",
+   "group": "Other records",
    "salient": false
   },
   {
@@ -123,7 +141,14 @@
    "year": 1993,
    "pool": "sfpl",
    "matched_alias": "SF General",
-   "snippet": "758,631 957,694 37,009,714 2.6% 23% 86 DPH -«SF General» 68,879315 856,743 967,084 1,823,827 67,055,488",
+   "ocr_excerpts": [
+    "Recorder 658,269 7305 0 7,205 651,064 1.1% 1.1% 80 Registrar of Voters 526,427 18,448 0 18,448 507,978 3.6% 3.5% 83 DPH - Central Office 29,394324 134,879 16,581 151,460 29342,764 03% 0.5% 85 DPH - Laguna Honda 37,967,408 199,063 758,631 957,694 37,009,714 2.6% 23% 86 DPH -SF General 68,879315 856,743 967,084 1,823,827 67,055,488 2.7% 2.6% 87 DPH - Comm. Mental Health 16,175330 173,183 54,504 227,687 15,947343 1.4% 1.4% 90 DepL of Public Works 45,367,402 1,029,765 520 1,030385 44337,116 2.3% 2.3% 91 Purchaser 4378,482 76,951 1351 78,302 4,200,180 1.9% 1.8%",
+    "onor / DeYoung 86 18 20.9% 15 17.4% 74 Medical Examiner/Coroner 46 6 13.0% 2 4.3% 75 Electricity 94 11 11.7% 6 6.4% 80 Registrar of Voters 170 19 11.2% 4 2.4% 83 DPH - Central Office 1,808 14 0.8% 5 0.3% 85 DPH - Laguna Honda 1,850 41 2.2% 32 1.7% 86 DPH - SF General 5,137 126 2.5% 87 1.7% 87 DPH - Comm. Mental Health 992 22 2.2% 5 0.5% 90 Dept, of Public Works 2,248 89 4.0% 47 2.1% 91 Purchaser 199 11 5.5% 9 4.5% TOTAL ... 3,993 ... 2,998 — 18 Appendix A3: City- Wide Overtime Expenditures - January Through June 30, 1994 Employ",
+    "74 Medical Examiner/Coroner 6 $23,020 49.1% 4 2 0 0 75 Electricity 11 $67,323 70.6% 7 3 1 0 80 Registrar of Voters 19 $6,271 34.0% 8 6 5 0 83 DPH - Central Office 14 $75,985 50.2% 5 9 0 0 85 DPH - Laguna Honda 41 $151,498 15.8% 18 10 11 2 86 DPH - SF General 126 $609,778 33.4% 73 40 13 0 87 DPH - Comm. Mental Health 22 $141,988 62.4% 8 8 6 0 90 Dept, of Public Works 89 $381,823 37.1% 64 24 1 0 91 Purchaser 11 $45,395 58.0% 10 1 0 0 TOTAL 3,993 $23,714,467 72.2% 1,691 1,406 884 12 19 Appendix A4: City- Wide",
+    "nor / DeYoung 15 2,984 6 5 4 0 9 74 Medical Examiner/Coroner 2 296 2 0 0 0 0 75 Electricity 6 964 5 1 0 0 1 80 Registrar of Voters 4 60 4 0 0 0 0 83 DPH - Central Office 5 755 5 0 0 0 0 85 DPH - Laguna Honda 32 8,551 12 5 3 12 20 86 DPH - SF General 87 16,151 50 25 11 1 37 87 DPH - Comm. Mental Health 5 1,546 1 0 4 0 4 90 Dept, of Public Works 47 6,938 36 10 1 0 11 91 Purchaser 9 1,127 8 1 0 0 1 TOTAL 2,998 644,353 1,359 963 617 59 1,639 20 Appendix Bl: City-Wide Overtime Expenditures ; Calendar",
+    "53,015 $24,619 $12,124 $36,744 3.2% 78 Recorder $1,080,081 $4,986 $0 $4,986 03% 80 Registrar of Voters $987,986 $20,174 $0 $20,174 2.0% 83 DPH - Central Office $53,349 383 $166,786 $48,150 $214,935 0.4% 85 DPH - Laguna Honda $69,298,089 $223330 $1,680,084 $1,903,615 2.7% 86 DPH -SF General $129,270,881 $2,077,802 $2,225,115 $4,302317 33% 87 DPH - Comm. Mental Health $29,815,837 $143,910 $126,352 $270363 0.9% 90 Dept, of Public Works $82,608360 $1,692,673 $2,323 $1,694396 2.1% 91 Purchaser $7,810,813 $103,559 $0 $103359 1.3% TOTAL $1,197,687,622 $49,581342 $12,989310 $6",
+    "dical Examiner/Coroner 90 1 1.1% 0 0.0% 75 Electricity 122 11 9.0% 10 8.2% 76 Animal Care & Control 70 3 4.3% 0 0.0% 80"
+   ],
    "url": "https://archive.org/details/overtimepayexpen1519sanf",
    "deep_link": "https://archive.org/details/overtimepayexpen1519sanf?q=SF+General",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
@@ -137,51 +162,14 @@
    "year": 1993,
    "pool": "sfpl",
    "matched_alias": "SFGH",
-   "snippet": "Diane «SFGH»/Administration 206-8100 Miller, Dorian DPH/Maxine Hall 292-1353 Miller, Eric «SFGH»/PlantServ",
+   "ocr_excerpts": [
+    "hearings on various environmental issues. For information on meeting location and dates call 554-6390. For more information or contact: 1540 Market Street, Suite 160 San Francisco, California 94102 (415) 554-6390 www.ci.sf.ca.us/Environment email: Environment@ci.srca. us GENERAL HOSPITAL, SAN FRANCISCO (SFGH) - 1001 Potrero Avenue, 94110 Phone Fax Administration 206-8100 Community & Media Relations 206-5310 Information Systems Administrator 206-3140 Systems & Programming Mgr 206-5267 Help Desk/Information 206-5035 UCSF Dean's Office 206-8505 Volunteer Coordinator 206-8193 Operations, Programs and Support Services (For a more comprehensive listing of SFGH medical programs, please refer to the Pacific Bell City Government pages.) General Information 206-8000 Accounting 206-8444 Admitting 206-5420 AIDS Program 206-8830 Anatomic Pathology 206-8212 Anesthesia 206-8145 Auditorium (reservations) 206-8214 Bilingual Services 206-5133 Billing 206-8448 Cardiology",
+    "rove 554-2503 554-2988 Management Information Services.. 554-261 6 554-2899 Microbiology Laboratory 554-2800 431-0651 Nursing 554-2752 554-2746 Occupational Safety and Health 554-2797 554-2768 Payroll 554-2518 554-2816 Pharmacy 554-2638 554-2746 Policy and Planning 554-2630 554-2666 Public Safety Services, SFGH 206-6520 206-6537 Purchasing 554-2544 Records and Statistics 554-2714 554-2822 District Health Centers CPHS Billing 206-8448 Supplies and Materials 554-2686 Health Center 1, 3850 17th Street, 94114 487-7500 558-8221 Environmental Health 487-7598 Health Educator 487-7585 Nursing 487-7550 Health Cente",
+    "2 - HEALTH, DEPARTMENT OF PUBLIC (cont'd) Phone Fax Programs (cont'd) Health Education and Promotion Lead Prevention Education 554-2740 Tobacco Free Project, 1540 Market 554-9152 241-8369 Wedge Program, 1540 Market 554-9098 Paramedic Division, 2789 25th St. Information 206-7800 Ambulance Billing, SFGH 206-7811 Ambulance Billing (510) 769-9124 Paramedic Reports 206-7803 STD Administration, 1360 Mission City Clinic, 376 7th Street Clinic Annex, 1360 Mission.. Reporting and Information.... TB. SFGH Ward 94 554-8450 554-9636 487-5500 495-6463 554-8450... 554-9636 487-5500 206-8524 648-8369 HETCH HETCHY WATER & POWER -1155 Market Street, 4th Floor, 94103 Phone Fax General Information 554-0725 General Manager 554-0725 554-0796 Billing (Wholesale) 554-0794 Computer Specialist 554-1695 Health",
+    "54-1 72 1 Management & Employee Development Programs Division ...557-4945 557-4870 Operations Division 557-4800 557-4870 Workers' Compensation 1155 Market St., 3rd Fir, 94103 General Information 554-1777 554-1797 Claims 554-1 777 554-1 797 Mt. Zion - 1515 Scott Street (between Geary & Post) 885-7770 SFGH - BIdg. 9. 2nd Floor (between 23rd & Potrero) 206-8998 HUMAN RIGHTS COMMISSION ~ 25 Van Ness Avenue, Suite 800, 94102 Ph"
+   ],
    "url": "https://archive.org/details/citycountyofsanf1996sanf",
    "deep_link": "https://archive.org/details/citycountyofsanf1996sanf?q=SFGH",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Other records",
-   "salient": false
-  },
-  {
-   "identifier": "sanfranciscogene1619mona",
-   "title": "San Francisco General Hospital : report to the Honorable Mayor George Christopher : November 16, 1959",
-   "creator": "Monardo, George D.",
-   "year": 1959,
-   "pool": "sfpl",
-   "matched_alias": "San Francisco General Hospital",
-   "snippet": "ADMINISTRATION «SAN FRANCISCO GENERAL HOSPITAL» With regard to the «San Francisco General Hospital», the",
-   "url": "https://archive.org/details/sanfranciscogene1619mona",
-   "deep_link": "https://archive.org/details/sanfranciscogene1619mona?q=San+Francisco+General+Hospital",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Other records",
-   "salient": false
-  },
-  {
-   "identifier": "healthcareforhom1984sanf",
-   "title": "[Health care for the homeless program]",
-   "creator": "San Francisco (Calif.). Dept. of Public Health",
-   "year": 1984,
-   "pool": "sfpl",
-   "matched_alias": "San Francisco General Hospital",
-   "snippet": "number of the persons admitted to «San Francisco General Hospital» are homeless. They require a",
-   "url": "https://archive.org/details/healthcareforhom1984sanf",
-   "deep_link": "https://archive.org/details/healthcareforhom1984sanf?q=San+Francisco+General+Hospital",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Other records",
-   "salient": false
-  },
-  {
-   "identifier": "citycountyofsa200910sanf",
-   "title": "City and County of San Francisco interim consolidated budget and annual appropriation ordinance",
-   "creator": "San Francisco (Calif.),San Francisco (Calif.). Board of Supervisors,San Francisco (Calif.). Office of the Mayor",
-   "year": 1998,
-   "pool": "sfpl",
-   "matched_alias": "SF General",
-   "snippet": "HEALTH SERVICE (AAO) 865HG EXP REC FR «SF GENERAL» HOSPITAL (AAO) 865HL EXP REC FR LAGUNA",
-   "url": "https://archive.org/details/citycountyofsa200910sanf",
-   "deep_link": "https://archive.org/details/citycountyofsa200910sanf?q=SF+General",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
    "group": "Other records",
    "salient": false

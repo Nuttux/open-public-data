@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-21T14:25:53.970812+00:00",
+ "generated_at": "2026-07-22T15:04:53.725629+00:00",
  "slug": "university-mound-reservoir",
  "name": "University Mound Reservoir",
  "note": "Archive documents linked to this place; source labels honour the SFPL-vs-Democracy's-Library distinction.",
@@ -11,7 +11,13 @@
    "year": 1933,
    "pool": "sfpl",
    "matched_alias": "University Mound Reservoir",
-   "snippet": "Springs-University Mound Pipe Line No. 2 34 «University Mound Reservoir» Addition 36 Sunset Reservoir and",
+   "ocr_excerpts": [
+    "School 29 Soil Tests 29 Electrolysis 30 General Purification 30 Report of Laboratory Examination 30 WATER SALES DIVISION 31 ENGINEERING 33 Contracts Let Under 1933 Bond Issue— PWA Docket 1510 34 Bay Crossing Pipe Line No. 2 34 Crystal Springs-University Mound Pipe Line No. 2 34 University Mound Reservoir Addition 36 Sunset Reservoir and Connecting Pipes 36 Extension of City Pipe System 37 Contracts Let Under 1935 PWA Grant— Docket 1132 37 Extensions to City Distribution System 38 Additions to Supply and Transmission Facilities 40 Miscellaneous Contracts 41 AGRICULTURAL DIVISION 41 Summary",
+    "Filled for First Time 8 Calaveras Reservoir — Showing Water Within 3 Inches of Spilling 9 Crystal Springs Pipe Line No. 2 — Brisbane Trestle 10 New Siphon 11 Raising Pilarcitos Dam— 1866 12 Crystal Springs Dam 14 New Crystal Springs 60\" Pipe 15 Davis Tunnel Ranger's Cottage Buildings 16 University Mound Reservoir — Construction Views 18 Sunset Reservoir 20 Rainfall Chart 23 Tesla Chlorination Plant 24 Charts Showing Changes in Hardness — San Francisco Water Supply 27 Chart of Daily Average Consumption by Years 32 Chart — Water Sales Net Charges 35 Chart — Water Deliveries at Consumers' Meters 39 Char",
+    "softer water from Hetch Hetchy. The construction program under the $12,095,000 1933 Public Works Admin- istration Bond Issue has been advanced to such point that there now remains but four contracts to be completed — two, the Crystal Springs Pipe Line to Bur- lingame, and the Roof and Lining for the University Mound reservoir, being under construction and nearly 50 per cent complete. Revenues from the walnut orchard grossed $27,385, the second largest yield since the City's acquisition of the properties. Appreciation is expressed for the continued effort of the personnel of the organization to improve service and promote",
+    "consumption averaged 3.4 m.g.d. Of the San Francisco consumption, 36.6 million gallons per day were delivered to College Hill, Lake Honda and Stanford Heights reservoirs through the three transmis- sion pipe lines having their sources at San Andres reservoir. 18.5 million gallons daily were delivered to University Mound reservoir from Crystal Springs reser- voir through the two Crystal Springs pipe lines, the Millbrae-University Mound section of the new Crystal Springs Pipe Line No. 2 having been in operation since April 17, 1937, 3.4 million gallons per day were delivered to suburban consumers direct from the various transmis",
+    "ial district. Operating Expenses: The detailed costs of operating the Distribution Division are set forth else- where in this report. A general description of the work done in the Division and the conditions of the properties are given in the following paragraphs : 18 PUBLIC UTILITIES COMMISSION UNIVERSITY MOUND RESERVOIR Lower view —"
+   ],
    "url": "https://archive.org/details/reportofsanfranc1936sanf",
    "deep_link": "https://archive.org/details/reportofsanfranc1936sanf?q=University+Mound+Reservoir",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
@@ -19,43 +25,20 @@
    "salient": true
   },
   {
-   "identifier": "annualreportofde190809sanf",
-   "title": "Annual report of the Department of Public Health, San Francisco, Cal",
-   "creator": "San Francisco (Calif.). Dept. of Public Health",
-   "year": 1906,
+   "identifier": "facilitiesreliab2000wate",
+   "title": "Facilities reliability program : phase II : regional system overview",
+   "creator": "Water Reliability Partnership",
+   "year": 2000,
    "pool": "sfpl",
    "matched_alias": "University Mound Reservoir",
-   "snippet": "Tank «University Mound Reservoir». «University Mound Reservoir». «University Mound Reservoir». LTniversity",
-   "url": "https://archive.org/details/annualreportofde190809sanf",
-   "deep_link": "https://archive.org/details/annualreportofde190809sanf?q=University+Mound+Reservoir",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Reports & records",
-   "salient": true
-  },
-  {
-   "identifier": "reportofsanfranc1953sanf",
-   "title": "Report of the San Francisco Water Department",
-   "creator": "San Francisco (Calif.). Water Dept",
-   "year": null,
-   "pool": "sfpl",
-   "matched_alias": "University Mound Reservoir",
-   "snippet": "3,104 million gallons from the «University Mound Reservoir» into the College Hill and Sunset",
-   "url": "https://archive.org/details/reportofsanfranc1953sanf",
-   "deep_link": "https://archive.org/details/reportofsanfranc1953sanf?q=University+Mound+Reservoir",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Reports & records",
-   "salient": true
-  },
-  {
-   "identifier": "bulletin1907sanf",
-   "title": "Bulletin",
-   "creator": "San Francisco (Calif.). Health Dept,Board of Health of the City and County of San Francisco",
-   "year": 1908,
-   "pool": "sfpl",
-   "matched_alias": "University Mound Reservoir",
-   "snippet": "Ammonia -a l.S 11 = 1 & E 9 H a ■ 3 «University Mound Reservoir» Aug. 5 Clear with suspended matter",
-   "url": "https://archive.org/details/bulletin1907sanf",
-   "deep_link": "https://archive.org/details/bulletin1907sanf?q=University+Mound+Reservoir",
+   "ocr_excerpts": [
+    "ulgas Pump Station Crystal Springs (eastern Peninsula) - the Crystal Springs subsystem is characterized as the transmission system that serves customers on the east side of the Peninsula and City. This subsystem is defined as that region of the SFPUC system from the outlet of the Pulgas Tunnel to University Mound Reservoir in the City. From the Crystal Springs Bypass, Hetch Hetchy and/or Sunol Valley treated supplies flow by gravity the length of the Peninsula to the lower elevations of the City system. The critical facilities of the Crystal Springs subsystem, from upstream to downstream, include the following. 5 Technical Memorandum No. 2, Baseline Reliability Assumptions The Water Reliability Partnership JUNE 28, 1999 Crystal Springs Subsystem Critical Facilities Crystal Springs Bypass Pipeline/Tunnel Crystal Springs Pipeline No. 3 Crystal Springs Pipeline No. 2 University Mound Feeder Mains* University Mound Reservoir* * These facilities are located in the City subsystem and provide a joint function with the Crystal Springs and San Andreas subsystems, as described further in TM No. 3. San Andreas (western Peninsula) - The San Andreas subsystem is characterized as the water supply, treatment, and transmission syst",
+    "San Francisco. This subsystem is actually divided into two supply systems with a cross town pipeline connection. • West Side: the higher elevation pressure zones are served primarily from Sunset Reservoir on the west side of the City, and • East Side: the lower elevation pressure zones served from University Mound Reservoir on the east side of the City. The City's distribution system includes reservoirs, storage tanks, pump stations, and distribution system pipelines. Although parts of the City system date back to the 1850s and 1860s, in general it has been a very reliable system. This reliability may be deceptive how",
+    "as of the City pass through liquefaction zones and there is only one limited \"cross town\" connection between the east and west systems. Critical facilities of the City Distribution subsystem include the following. City Distribution Subsystem Critical Facilities Eastside University Mound Feeder Main* University Mound Reservoir* Alemany Pump Station Cross Town Pipeline Bay Bridge Pump Station College Hill Reservoir and Feeder Mains McLaren Pump Station and Tanks Westside Sunset Reservoir Feeder Main* Sunset Reservoir * Lake Merced Pump Station Sutro Reservoir / Feeder Mains Summit Reservoir / Feeder Mains Merced Ma",
+    "Springs Bypass Pipeline/Tunnel Hayward (.1-.3) San Andreas (.5-. 9) High Crystal Springs Pipeline No. 3 Hayward (.1-.3) Jail AYlIUlCao ^. J . 1 ) Low Crystal Springs Pipeline No. 2 Hayward {.2-3) San Andreas (.4-.7) Medium University Mound Feeder Mains Hayward (.2-3) San Andreas (.4-.5) High University Mound Reservoir "
+   ],
+   "url": "https://archive.org/details/facilitiesreliab2000wate",
+   "deep_link": "https://archive.org/details/facilitiesreliab2000wate?q=University+Mound+Reservoir",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
    "group": "Other records",
    "salient": true
@@ -67,7 +50,13 @@
    "year": 1935,
    "pool": "sfpl",
    "matched_alias": "University Mound Reservoir",
-   "snippet": "Springs reservoir is transmitted to «University • Mound reservoir» in San Francisco, at elev. 172",
+   "ocr_excerpts": [
+    "9 in. The Crystal Springs reservoir serves as a terminal Ireservoir for the Hetch Hetchy aqueduct, providing close-in storage of ample Icapacity to safeguard the city\"s supply in event of any extended interruption of flow from the mountains. The water from Crystal Springs reservoir is transmitted to University • Mound reservoir in San Francisco, at elev. 172 ft., through a 44-in. dia. riveted 'wrought iron p pe line 17.0 mi. in length. Two brick-lined tunnels, of a total length of 4.6 mi., are used. The pipe line was built in 1885 and has a capacity lof 25 m g.d. Just below the dam is the Crystal Springs pump st",
+    "y lines of the existing districts. This has made the distributing system very complex. CITY DISTRIBUTING SYSTEM 71 There are eight reservoirs and 14 tanks in the distributing system with a combined capacity of about 140 m.g. Further improvements are contemplated under the N.R.A. building program. University Mound reservoir, with present capacity of 60 m.g., at elev. 172 ft., supplies the lowest pressure zone, which comprises in general the waterfront, industrial and major business areas. This district uses about 40 per cent of the total amount of water used in the city. Next above this is the College Hill district,",
+    "structure at Crystal Springs and the laying of 14 mi. of 60-in. pipe from Millbrae to University Mound, is estimated to cost $2,519,000. The capacity of the pipe will be normally 56 m.g.d. The construction is necessary at this time to provide for increasing consumption in the industrial area. 3. University Mound reservoir addition proposes a new reservoir of approxi- mately 90 m.g. capacity at an estimated cost of $1,000,000. This is an essential element in the proper development of the system and will provide a reservoir capacity equal to 7 days' consumption in the district. 4. New Sunset reservoir and connecting",
+    "y be shut down without affecting an unnecessarily large area. Some of the more important units included under this item are: fa j The San Andres-University Mound pipe line which will provide a large capacity interconnection in San Francisco between the transmission main from San Andres reservoir and University Mound reservoir outlet pipe. (b) The extension of the primary supply line from University Mound reser- voir from 25th Street and Potrero Avenue to a point in the vicinity of Battery Street _and Broadway. fcj The construction of a new primary supply line from College Hill reser- voir, located at Appleton Avenue nea",
+    "for the supply for the pump station and at the same time serve as a distributing reservoir for the district between 40th Avenue and the Great Highway extending from Balboa Street to Sloat Boulevard, all of which lies below elev. 100 ft. and which cannot at the present time be supplied from the University Mound"
+   ],
    "url": "https://archive.org/details/sanfranciscowate1935sanf",
    "deep_link": "https://archive.org/details/sanfranciscowate1935sanf?q=University+Mound+Reservoir",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
@@ -75,15 +64,21 @@
    "salient": true
   },
   {
-   "identifier": "facilitiesreliab2000wate",
-   "title": "Facilities reliability program : phase II : regional system overview",
-   "creator": "Water Reliability Partnership",
-   "year": 2000,
+   "identifier": "springvalleywate06spri",
+   "title": "Spring Valley Water Company, plaintiff, vs. City and County of San Francisco, et al., defendants. Nos. 14,735; 14,892; 15,131; 15,344; 15,569, Circuit Court of U.S., Ninth Judicial Circuit, Northern District of California, and 26 and 96 District Court of U.S., Northern District of California, second division. Abstract of testimony [and oral arguments] taken before Honorable H.M. Wright",
+   "creator": "Spring Valley Water Company (San Francisco, Calif.), plaintiff,San Francisco (Calif.), defendant",
+   "year": 1916,
    "pool": "sfpl",
    "matched_alias": "University Mound Reservoir",
-   "snippet": "either «University Mound Reservoir» or Sunset Reservoir. «University Mound Reservoir» provides",
-   "url": "https://archive.org/details/facilitiesreliab2000wate",
-   "deep_link": "https://archive.org/details/facilitiesreliab2000wate?q=University+Mound+Reservoir",
+   "ocr_excerpts": [
+    "lineal foot automatically cares for the overbreak, whatever that may be. I do not allow any fixed percentage for overbreak. Witness : G. A. Elliott for Plaintiff. 7172 DIRECT EXAMINATION BY MR. GREENE. Elliott's appraisal of the city reservoirs introduced and marked ''Plaintiff's Exhibit 144\". University Mound Reservoir : On the excavation I used a unit of 40 cents, and compacted fill 25 cents, making the total per yard in the fill 65 cents. This figure is based upon experience and observation that I have had heretofore. I have in mind particularly the following works : The cost of the shovel work, and so o",
+    "on that work myself. That cost 70 cents a cubic yard, as compared with my estimate here of 65 cents. Questioned by Master. The Deer Creek power house was within about 12 miles of Nevada City. It is one of the projects of the Pacific Gas & Electric Co., and was built in 1907 and 1908. The University Mound Reservoir, in my opinion, is a steam shovel job. Mr. Hazen : I assumed it as a steam shovel job. 7173 DIRECT EXAMINATION BY MR. GREENE. Mr. Elliott: The cost of the Calaveras work up to the end of November was 54.3 cents per yard, of which 12 cents per yard was for powder ; that would leave about",
+    "of placing. Questioned by Master. I did not have Mr. Hazen 's figures before me in making these figures. We made the thing simultaneously, but I have seen his figures. I think Mr. Hazen has somewhat more than I have. When I put 40 cents for excavation, and 25 cents for compacted fill, in the University Mound Reservoir, which was the same as Mr. Hazen 's 7178 figure, I do not know whether I knew that he had the same figure or not. I did not know it when I made the figures, but I knew it was 40 and 25 before I came into court. I was absolutely not in- fluenced by knowledge of his figures when I reached",
+    "rror in my memory as to the cost of the curb, but if the brick cost more than $25 a thousand, the excavation cost less than 50 cents, and vice versa. DIRECT EXAMINATION BY MR. SEARLS. In addition to that, I have had a good deal of experience in embankment work in railroads and ditches. University Mound Reservoir : The principal item is the excava- tion, 208,000 yards. This is a big enough job to move a steam shovel on to, or it could be done with plows and scrapers. The haul is not great, and I have estimated that at 25 cents. The compacted fill I have estimated at 15 cents, considering that some of",
+    "the tower, I computed at $800. The Meyers, which is a wooden tank, I computed at $987, the accessories being small in comparison. 1993 Dockweiler SPRING VALLEY WATER CO. VS. CITY AND COUNTY OP SAN FRANCISCO Witness: J. H. Dockweiler recalled for Defendants. DIRECT EXAMINATION BY MR. SEARLS. University Mound Reservoir: My unit price for excavation on that was 26 cents,"
+   ],
+   "url": "https://archive.org/details/springvalleywate06spri",
+   "deep_link": "https://archive.org/details/springvalleywate06spri?q=University+Mound+Reservoir",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
    "group": "Other records",
    "salient": true
@@ -95,26 +90,39 @@
    "year": 1908,
    "pool": "sfpl",
    "matched_alias": "University Mound Reservoir",
-   "snippet": "intake 6 ft. below surface. 709 «University Mound Reservoir» Aug. 2 Clear 23 0.001 0.242 0.022",
+   "ocr_excerpts": [
+    "tank 4 ft. below surface 707 Potrero Heights Reservoir Aug. 2 Clear 195 82 190 210 210 24 20 0.0 0.014 0.030 0.204 Sample taken at intake 6 ft. below surface. 708 College Hill Reservior , Aug. 2 Clear 0.0 0.022 0.022 0.114 Sample taken at intake 6 ft. below surface. 709 University Mound Reservoir Aug. 2 Clear 23 0.001 0.242 0.022 0.090 Sample taken at intake 6 ft. below surface. 710 South Lake Merced Aug. 2 Clear 60 64 0.0 0.004 0.040 0.216 Sample taken from boat in center of lake 6 ft. below surface. 711 North Lake Merced Aug. 2 Slight turbidity 0.0 0.060 0.",
+    "0.022 0.146 Sample taken at intake 6 ft. below surface. Aug. 18 Clear 33 20 25 61 0.0 0.016 0.028 0.182 Sample taken from middle of reservoir 6 ft. below surface. 728 College Hill Reservoir Aug. 18 Clear 0.0 0.022 0.022 0.150 Sample taken at intake 6 ft. below surface. 720 University Mound Reservoir Aug. 18 Clear 0.0 0.246 0.018 0.092 Sample taken at intake 6 ft. below surface. 730 South Lake Merced Aug. 18 Clear 0.0 0.020 0.024 0.232 Sample taken from middle of lake 6 ft. below surface. 731 North Lake Merced Aug. 18 Slight turbidity 225 227 202 64 26 21 0.0 0.01",
+    "at intake 6 ft. below surface North Lake Merced Sept. 1 Slight turbidity 295 70 225 66 0.00 0.00 0.044 0.322 5 4 2 Sample taken from boat in center of lake South Lake Merced Sept. 1 Clear 262 70 192 61 0.001 0.00 0.060 0.194 Sample taken from boat in center of lake University Mound Reservoir Sept. 1 Clear 294 71 223 25 0.001 0.300 O.OOS 0.064 Sample taken at intake Clay Street Tank Sept. 2 Clear 262 74 188 21 0.00 0.302 0.006 0.060 2 2 — 1 1 2 2 4 2 2 3 3 Lombard Street Reservoir Sept. 2 Clear 205 55 150 30 0.00 0.124 0.008 0.114 Samp",
+    "225 65 160 24 0.0 0.428 0.012 0.072 Sample taken 4)^ ft. below surface . Potrero Heights Reservoir Sept 20 Clear 270 50 220 26 0.002 0.324 0.028 0.126 Sample taken 6 ft. below surface Clear 130 40 90 .21 0.0 0.198 0.022 0.078 3 Sample taken 6 ft. below surface University Mound Reservoir Sept. 20 Clear 265 75 190 24 0.0 0.458 0.026 0.08 2 Sample taken 6 ft. below surface South Lake Merced Sept. 20 Clear 255 55 200 62 b.o 0.182 0.038 0.196 4 6 Sample taken 6 ft. below surface 776 North Lake Merced Sept. 20 Slight turbidity 285 80 205 65 47",
+    "iUvGIl \\J Lb. UClUW OUllal<C <XKi llllaaCi Fotrero Heights Reservoir Oct. 4 Slight turbid. 291 86 205 25 0.001 0.118 0.014 0.194 Sample taken 6 ft. below surface. College Hill Reservoir Oct. 4 Clear 118 35 83 20 0.0 0.076 0.012 0.100 Sample taken 6 ft. below surface. University Mound Reservoir Oct. 4 Clear 296 89 207 26 0.001 0 . 430 0.010 0.064 2 Sample taken 6 ft. below surface. South Lake Merced Oct. 4 Slight turbid. 255 60 195 61 0.0 0.096 0.036 0.188 3 5 Sample taken from boat, 6 ft. below surface. North Lake Merced Oct. 4 Slio-ht. tnrhirl i 983",
+    "MERCED (PARTS PER 1,000,000"
+   ],
    "url": "https://archive.org/details/bulletinofdepart1909sanf",
    "deep_link": "https://archive.org/details/bulletinofdepart1909sanf?q=University+Mound+Reservoir",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
    "group": "Other records",
-   "salient": false
+   "salient": true
   },
   {
-   "identifier": "springvalleywate06spri",
-   "title": "Spring Valley Water Company, plaintiff, vs. City and County of San Francisco, et al., defendants. Nos. 14,735; 14,892; 15,131; 15,344; 15,569, Circuit Court of U.S., Ninth Judicial Circuit, Northern District of California, and 26 and 96 District Court of U.S., Northern District of California, second division. Abstract of testimony [and oral arguments] taken before Honorable H.M. Wright",
-   "creator": "Spring Valley Water Company (San Francisco, Calif.), plaintiff,San Francisco (Calif.), defendant",
-   "year": 1916,
+   "identifier": "bulletin1907sanf",
+   "title": "Bulletin",
+   "creator": "San Francisco (Calif.). Health Dept,Board of Health of the City and County of San Francisco",
+   "year": 1908,
    "pool": "sfpl",
    "matched_alias": "University Mound Reservoir",
-   "snippet": "marked ''Plaintiff's Exhibit 144\". «University Mound Reservoir» : On the excavation I used a",
-   "url": "https://archive.org/details/springvalleywate06spri",
-   "deep_link": "https://archive.org/details/springvalleywate06spri?q=University+Mound+Reservoir",
+   "ocr_excerpts": [
+    "VALLEY WATER COMPANY'S WATERS TAKEN FROM DISTRIBUTING RESERVOIRS AND THE LAKES MERCED. (PARTS PER 1,000,000.) SOURCE BATE 1907 Clear or Turbid Total Solids Loss on Ignition Residue Chlorine Nitrogen as Hardnks.- REMARKS Nitrites Nitrates Free Ammonia -a l.S 11 = 1 & E 9 H a ■ 3 University Mound Reservoir Aug. 5 Clear with suspended matter 323. 113. 210. 31.57 .003 .328 .012 .08 190. 13.5 •.•(13.5 Taken S ft. below surface University Mound Reservoir Aug. 8 Clear with suspended matter 321. 98. 223. 31.57 .003 .33 .018 .07 190. 10.5 20ti 5 Taken S ft. below nurfact. College Hill Reservoir Aug. 5 Clear with suspended matter 145. 68. 77. 21.05 0.0 206 .014 .11 72. 94.5 Taken 8 It below »urf are Clarendon Heights Tank",
+    "water. 195 Clay Street Reservoir Oct. 1G Clear 270. 85. 191 . 22 0.0 .05 .014 .088 16;. 3. 168. Water Company says, us only for fire purposes. 1% Clarendon Heights Tank Oct. 17 Clear 330. 99. 231. 30. 0.0 .43 .01 .084 196. 9. 205. Tank contained 10 feet water. V)l University Mound Reservoir Oct. 17 Clear 334. 90. 244. .31 . 0 0 .38 .012 .09 199. 11. 210. Reservoir contained 17 feet water. 199 University Mound Reservoir Oct. 31 ( iear with small amt. suspended matter. 341. 89. 252. 32. .003 .48 .02 .06 209. 7. 216. Taken from outlet 6 fc below surface. 198 College Hill Reservoir Oct, 17 Clear with small amt. suspended matter. 161. 56. 21 . 0.0 .20 . 022 .11 SO. 3. 83. Reservoir cont",
+    "d Nov. 13 Turbid, with yellow tint. 321. 105. 216. 63. .001 .25 .06 .55 8 132. 4. 136. Taken from boat in center of lake. 206 North Lake Merced Nov. 13 Turbid, with yellow- tint. 295 • 88. 207. 60. .0008 .25 .054 .46 6 119. 7. 126. Taken from end of flume. 207 University Mound Reservoir Nov. 14 Clear 354; 100. 254 . 36. .0015 .61 . 052 .116 ■_> 207. 11. 218. 17 ft. of water in reservoir. Taken from boat in mid- dle of reservoir. 208 College Hill Reservoir Nov. 14 Clear. 14G. 56. 00. 20. 0.0 .14 .032 . 194 4 76. 1 . 77. 16 ft. of water in reserv",
+    "AND NORTH LAKE MERCED. (PARTS PER 1,000,000.) a Nitrogen as ren Consumed. Hardness I AB. No. SOURCE DATE Clear or Turbid 1 Solids on Ignitio .2 to o menoid nonia porary lanent REMARKS 1907-08 G o ►J <£ (A C 5 2 a S < = a a. a >> X O S H a £ rt O H 232 University Mound Reservoir Dec. 30 Clear 398. 133. 265. 37. .001 .53 .046 .07 2 207. 13. 220. Water, 17 ft. deep. Taken from platform. 233 College Hill Reservoir Dec. 30 Clear 177. 85. 92. 22. 0.0 .08 .012 . 14 4 77. 0. 77. Water 20 ft. deep. Taken from platform. 234 Clarendon Heights Tan",
+    "s Nitrates Free _ Ammonia Albumenoid Ammonia Temporary o a a g (5 3 o REMARKS 250 South Lake Merced Feb 26 Yellow tint, with suspended matter. 278. 89. 189. 57. 0.0 0.138 0.038 0.394 5 103. 12. 115. Taken from center of Lake, 10 ft. below surface. Taken from boat. 251 University Mound Reservoir Fe"
+   ],
+   "url": "https://archive.org/details/bulletin1907sanf",
+   "deep_link": "https://archive.org/details/bulletin1907sanf?q=University+Mound+Reservoir",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
    "group": "Other records",
-   "salient": false
+   "salient": true
   }
  ]
 }

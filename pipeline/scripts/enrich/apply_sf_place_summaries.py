@@ -44,8 +44,18 @@ def main() -> int:
         fiche = json.loads(fpath.read_text())
         summary = (res.get("summary_en") or "").strip()
         keep = set(res.get("keep") or [])
+        glosses = res.get("glosses") or {}
         if keep:
             fiche["documents"] = [x for x in fiche["documents"] if x["identifier"] in keep]
+        # Attach the OCR-grounded one-line gloss to each kept document (what the
+        # scan actually shows about this place), replacing the old raw snippet,
+        # then drop the raw OCR passages: they fed the summary + gloss and do
+        # not belong in the shipped fiche (récit visible, raw OCR out of flow).
+        for x in fiche["documents"]:
+            g = (glosses.get(x["identifier"]) or "").strip()
+            if g:
+                x["gloss"] = g
+            x.pop("ocr_excerpts", None)
         n_docs = len(fiche["documents"])
         g = fiche.get("_gate", {})
         n_money = g.get("n_money_links", 0)
@@ -69,6 +79,11 @@ def main() -> int:
         if dl.exists() and keep:
             doc = json.loads(dl.read_text())
             doc["documents"] = [x for x in doc.get("documents", []) if x["identifier"] in keep]
+            for x in doc["documents"]:
+                g = (glosses.get(x["identifier"]) or "").strip()
+                if g:
+                    x["gloss"] = g
+                x.pop("ocr_excerpts", None)
             dl.write_text(json.dumps(doc, indent=1, ensure_ascii=False))
 
     print(f"\nPublished {len(published)} places:")

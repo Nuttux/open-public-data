@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-21T14:25:53.936519+00:00",
+ "generated_at": "2026-07-22T15:04:53.702257+00:00",
  "slug": "japanese-tea-garden",
  "name": "Japanese Tea Garden",
  "note": "Archive documents linked to this place; source labels honour the SFPL-vs-Democracy's-Library distinction.",
@@ -11,12 +11,12 @@
    "year": 2002,
    "pool": "sfpl",
    "matched_alias": "Japanese Tea Garden",
-   "snippet": "Music; Francis Scott Key Monument; «Japanese Tea Garden»; Shakespeare Garden; Rhododendron Dell;",
    "url": "https://archive.org/details/goldengateparkco1420sanf",
    "deep_link": "https://archive.org/details/goldengateparkco1420sanf?q=Japanese+Tea+Garden",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
    "group": "Plans & environmental review",
-   "salient": true
+   "salient": true,
+   "gloss": "A 2002 Concourse EIR listing the garden as a contributing historic-district feature, eligible for the California Register, and unaltered by the project."
   },
   {
    "identifier": "newdeyoungmuseum2020sanf",
@@ -25,12 +25,12 @@
    "year": 2001,
    "pool": "sfpl",
    "matched_alias": "Japanese Tea Garden",
-   "snippet": "the Academy of Sciences, and the «Japanese Tea Garden». The Report confirms that the Temple",
    "url": "https://archive.org/details/newdeyoungmuseum2020sanf",
    "deep_link": "https://archive.org/details/newdeyoungmuseum2020sanf?q=Japanese+Tea+Garden",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
    "group": "Plans & environmental review",
-   "salient": true
+   "salient": true,
+   "gloss": "2001 de Young Museum EIR revisions confirming the garden's individual National Register eligibility and its position bounding the museum site."
   },
   {
    "identifier": "newdeyoungmuseum2220sanf",
@@ -39,54 +39,12 @@
    "year": 2000,
    "pool": "sfpl",
    "matched_alias": "Japanese Tea Garden",
-   "snippet": "Drive, Tea Garden Drive, and the «Japanese Tea Garden», is under the control of the FAMSF",
    "url": "https://archive.org/details/newdeyoungmuseum2220sanf",
    "deep_link": "https://archive.org/details/newdeyoungmuseum2220sanf?q=Japanese+Tea+Garden",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
    "group": "Plans & environmental review",
-   "salient": true
-  },
-  {
-   "identifier": "minutesrecreatio1980sanf",
-   "title": "Minutes / Recreation and Park Commission",
-   "creator": "San Francisco (Calif.). Recreation and Park Commission",
-   "year": null,
-   "pool": "sfpl",
-   "matched_alias": "Japanese Tea Garden",
-   "snippet": "Lot, «Japanese Tea Garden» Admission Fees, 7/1/80, Revenue Report, «Japanese Tea Garden» problems",
-   "url": "https://archive.org/details/minutesrecreatio1980sanf",
-   "deep_link": "https://archive.org/details/minutesrecreatio1980sanf?q=Japanese+Tea+Garden",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Meetings & resolutions",
-   "salient": true
-  },
-  {
-   "identifier": "summerprogram1946sanf",
-   "title": "Summer program",
-   "creator": "San Francisco (Calif.). Recreation and Park Dept,San Francisco (Calif.) Recreation Dept",
-   "year": null,
-   "pool": "sfpl",
-   "matched_alias": "Japanese Tea Garden",
-   "snippet": "spring and late summer. * «Japanese Tea Garden» The «Japanese Tea Garden» is the oldest public Japanese",
-   "url": "https://archive.org/details/summerprogram1946sanf",
-   "deep_link": "https://archive.org/details/summerprogram1946sanf?q=Japanese+Tea+Garden",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Other records",
-   "salient": true
-  },
-  {
-   "identifier": "whatsdoinginpark1986sanf",
-   "title": "What's doing in the parks?",
-   "creator": "San Francisco (Calif.). Recreation and Park Department",
-   "year": null,
-   "pool": "sfpl",
-   "matched_alias": "Japanese Tea Garden",
-   "snippet": "3 p.m. — «Japanese Tea Garden» Tour, meets inside the Main «Japanese Tea Garden» Gate, admission",
-   "url": "https://archive.org/details/whatsdoinginpark1986sanf",
-   "deep_link": "https://archive.org/details/whatsdoinginpark1986sanf?q=Japanese+Tea+Garden",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Other records",
-   "salient": true
+   "salient": true,
+   "gloss": "The 2000 de Young Museum EIR summary analyzing how the proposed museum tower would be visible from the garden."
   }
  ]
 }

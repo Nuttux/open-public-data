@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-21T14:25:53.928620+00:00",
+ "generated_at": "2026-07-22T15:04:53.696759+00:00",
  "source_pipeline": "sf_place_candidates.json → sync_ia_sf.py + link_sf_places.py + fetch_sf_place_photos.py → export_sf_places.py",
  "unit": "USD",
  "slug": "buena-vista-park",
@@ -98,7 +98,7 @@
   "author": "Guliolopez",
   "fetched_at": "2026-07-20T22:16:02.919105+00:00"
  },
- "summary_en": "Buena Vista Park is documented from Board of Park Commissioners annual reports in 1895 and 1912 (noting sidewalk improvements and plantings) through a 1975 Open Space fund report funding children's play apparatus and a Recreation and Park capital plan listing a Buena Vista Park master plan. Neighborhood studies and environmental impact reports from 1978 to 1984 reference the park's slopes and views, while Recreation and Park Commission minutes and a 2006 Controller maintenance audit track trail-naming and upkeep. The park is operated by the Recreation and Park Department, whose FY2025 budget line totals about $250M; no place-specific contract appears in the data.",
+ "summary_en": "Buena Vista Park's civic record is a century of Recreation and Park funding and upkeep. A 1912 Board of Park Commissioners annual report requests $25,000 to construct the park's grounds after grading left them well above the sidewalk, and values the 36-acre park at $88,250. A 1975 Open Space fund report allocates $27,000 for children's play apparatus and $100,000 for Phase II rehabilitation and landscaping. A Recreation and Park capital plan carries a Buena Vista Park master-plan project and recounts the park's 1894 establishment, 1930s WPA rock walls, and a 1989 erosion-control plan. Operated by the Recreation and Park Department, whose FY2025 budget line totals about $250M; voter park-bond programs also list Buena Vista Park projects.",
  "published": true,
  "money": {
   "budget_line": {
@@ -119,116 +119,18 @@
  },
  "documents": [
   {
-   "identifier": "emergencyoperati1978sanf",
-   "title": "Emergency operations center : feasibility study & report",
-   "creator": "San Francisco (Calif.). Bureau of Architecture,San Francisco (Calif.). Mayor's Office of Emergency Services,Reid & Tarics Associates,Parsons, Brinckerhoff, Quade & Douglas,Hayakawa Associates,Jefferson Associates",
-   "year": 1978,
-   "pool": "sfpl",
-   "matched_alias": "Buena Vista Park",
-   "snippet": "consideration : Christmas Tree Point Mission Park «Buena Vista Park» Jefferson Square & Hayward Playground",
-   "url": "https://archive.org/details/emergencyoperati1978sanf",
-   "deep_link": "https://archive.org/details/emergencyoperati1978sanf?q=Buena+Vista+Park",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Plans & environmental review",
-   "salient": true
-  },
-  {
-   "identifier": "parkhillresident2519sanf",
-   "title": "Park Hill residential : [draft] environmental impact report",
-   "creator": "San Francisco (Calif.). Dept. of City Planning",
-   "year": 1983,
-   "pool": "sfpl",
-   "matched_alias": "Buena Vista Park",
-   "snippet": "Friends of «Buena Vista Park» are concerned that increased use of «Buena Vista Park» by Park",
-   "url": "https://archive.org/details/parkhillresident2519sanf",
-   "deep_link": "https://archive.org/details/parkhillresident2519sanf?q=Buena+Vista+Park",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Plans & environmental review",
-   "salient": true
-  },
-  {
-   "identifier": "minutes1990sanf_2",
-   "title": "Minutes",
-   "creator": "San Francisco Open Space/Park Renovation Citizens Advisory Committee",
-   "year": 2000,
-   "pool": "sfpl",
-   "matched_alias": "Buena Vista Park",
-   "snippet": "Michelangelo Park Balboa Park Bernal Hill Park «Buena Vista Park» Golden Gate Park Perimeter Moscone Playground",
-   "url": "https://archive.org/details/minutes1990sanf_2",
-   "deep_link": "https://archive.org/details/minutes1990sanf_2?q=Buena+Vista+Park",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Meetings & resolutions",
-   "salient": true
-  },
-  {
-   "identifier": "minutesrecreatio1981sanf",
-   "title": "Minutes / Recreation and Park Commission",
-   "creator": "San Francisco (Calif.). Recreation and Park Commission",
-   "year": null,
-   "pool": "sfpl",
-   "matched_alias": "Buena Vista Park",
-   "snippet": "Friends of «Buena Vista Park», expressed her support to naming of trail at «Buena Vista Park» in",
-   "url": "https://archive.org/details/minutesrecreatio1981sanf",
-   "deep_link": "https://archive.org/details/minutesrecreatio1981sanf?q=Buena+Vista+Park",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Meetings & resolutions",
-   "salient": true
-  },
-  {
    "identifier": "annualreportofbo1912sanf",
    "title": "Annual report of the Board of Park Commissioners of San Francisco",
    "creator": "San Francisco (Calif.). Board of Park Commissioners",
    "year": 1912,
    "pool": "sfpl",
    "matched_alias": "Buena Vista Park",
-   "snippet": "Spreckels Lake, Golden Gate Park. Cypress, «Buena Vista Park». Metson Lake, Golden Gate Park. Mission",
    "url": "https://archive.org/details/annualreportofbo1912sanf",
    "deep_link": "https://archive.org/details/annualreportofbo1912sanf?q=Buena+Vista+Park",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
    "group": "Reports & records",
-   "salient": true
-  },
-  {
-   "identifier": "controllersoffic2006sanf",
-   "title": "Controller's Office - City Services Auditor report on street, sidewalk, and park maintenance",
-   "creator": "San Francisco (Calif.). Office of the Controller. City Services Auditor Division",
-   "year": null,
-   "pool": "sfpl",
-   "matched_alias": "Buena Vista Park",
-   "snippet": "40% BUCHANAN STREET MALL 05 78% 67% -11% «BUENA VISTA PARK» 08 95% 38% -57% BUSH/BRODERICK MINI PARK",
-   "url": "https://archive.org/details/controllersoffic2006sanf",
-   "deep_link": "https://archive.org/details/controllersoffic2006sanf?q=Buena+Vista+Park",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Other records",
-   "salient": true
-  },
-  {
-   "identifier": "capitalplanann200405sanf",
-   "title": "Capital plan ... annual update",
-   "creator": "San Francisco (Calif.). Recreation and Park Dept. Capital Improvement Division",
-   "year": null,
-   "pool": "sfpl",
-   "matched_alias": "Buena Vista Park",
-   "snippet": "& Parks «BUENA VISTA PARK» 2 «Buena Vista Park» - Master Plan 3 «Buena Vista Park» Landscape",
-   "url": "https://archive.org/details/capitalplanann200405sanf",
-   "deep_link": "https://archive.org/details/capitalplanann200405sanf?q=Buena+Vista+Park",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Other records",
-   "salient": false
-  },
-  {
-   "identifier": "greaterhaightas2819sanf_0",
-   "title": "Greater Haight-Ashbury cumulative assessment report",
-   "creator": "San Francisco (Calif.). Dept. of City Planning",
-   "year": 1984,
-   "pool": "sfpl",
-   "matched_alias": "Buena Vista Park",
-   "snippet": "located on the southeast slope of «Buena Vista Park» at sur- face elevations about 400 feet",
-   "url": "https://archive.org/details/greaterhaightas2819sanf_0",
-   "deep_link": "https://archive.org/details/greaterhaightas2819sanf_0?q=Buena+Vista+Park",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Other records",
-   "salient": false
+   "salient": true,
+   "gloss": "A 1912 Board of Park Commissioners report requests $25,000 to construct Buena Vista Park's grounds after avenue grading left them well above the sidewalk, and values the 36-acre park at $88,250."
   },
   {
    "identifier": "generalmanagersr1975sanf",
@@ -237,12 +139,26 @@
    "year": 1975,
    "pool": "sfpl",
    "matched_alias": "Buena Vista Park",
-   "snippet": "(WA-2 -5 sitesO - 1975 284,000 e. «Buena Vista Park» - Childrens Play Apparatus - 1975",
    "url": "https://archive.org/details/generalmanagersr1975sanf",
    "deep_link": "https://archive.org/details/generalmanagersr1975sanf?q=Buena+Vista+Park",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
    "group": "Other records",
-   "salient": false
+   "salient": true,
+   "gloss": "A 1975 Open Space fund report allocates $27,000 for children's play apparatus and $100,000 for Phase II rehabilitation and landscaping at Buena Vista Park."
+  },
+  {
+   "identifier": "capitalplanann200405sanf",
+   "title": "Capital plan ... annual update",
+   "creator": "San Francisco (Calif.). Recreation and Park Dept. Capital Improvement Division",
+   "year": null,
+   "pool": "sfpl",
+   "matched_alias": "Buena Vista Park",
+   "url": "https://archive.org/details/capitalplanann200405sanf",
+   "deep_link": "https://archive.org/details/capitalplanann200405sanf?q=Buena+Vista+Park",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Other records",
+   "salient": false,
+   "gloss": "A Recreation and Park capital plan carries a Buena Vista Park master-plan project and recounts the 36-acre park's 1894 founding, 1930s WPA rock walls and a 1989 erosion-control plan."
   }
  ],
  "dept_shelf": [
@@ -282,7 +198,7 @@
  ],
  "_gate": {
   "has_photo": true,
-  "n_documents": 9,
+  "n_documents": 3,
   "n_money_links": 1,
   "meets_pre_summary": true
  }

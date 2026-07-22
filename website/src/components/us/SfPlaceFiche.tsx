@@ -31,13 +31,12 @@ function Amt({ usd, full = false, size = 13 }: { usd: number; full?: boolean; si
   );
 }
 
-/** One source link — a curated shelf entry, NOT a quote dump. The raw OCR
- *  snippet is deliberately not rendered: the story is told once, up top, in
- *  the grounded summary; each row here is just the citation (title · year,
- *  issuing body, provenance), and its deep link opens the scanned page with
- *  the match already highlighted, so the evidence is one click away. This
- *  mirrors the Paris fiche's BMO doctrine — récit visible, raw OCR out of the
- *  reading flow. */
+/** One source link — a curated shelf entry, NOT a quote dump. Raw OCR is kept
+ *  out of the reading flow (récit visible, per the Paris BMO doctrine); what a
+ *  row may carry is a single OCR-grounded gloss — one plain line on what this
+ *  scan shows about this place, written from the document's own text, never the
+ *  old verbatim 280-char match fragment. Its deep link opens the scanned page
+ *  with the match already highlighted, so the source is one click away. */
 function DocRow({ doc }: { doc: SfPlaceDoc }) {
   return (
     <li className="fx-doc-row">
@@ -45,6 +44,7 @@ function DocRow({ doc }: { doc: SfPlaceDoc }) {
         {doc.title}
         {doc.year ? <span className="fx-doc-year"> · {doc.year}</span> : null} ↗
       </a>
+      {doc.gloss ? <p className="fx-doc-gloss">{doc.gloss}</p> : null}
       {doc.creator ? <div className="fx-doc-creator">{doc.creator}</div> : null}
       <div className="fx-doc-source">
         {doc.source_label}

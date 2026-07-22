@@ -1,33 +1,24 @@
 {
- "generated_at": "2026-07-21T14:25:53.956616+00:00",
+ "generated_at": "2026-07-22T15:04:53.716606+00:00",
  "slug": "tom-waddell-clinic",
  "name": "Tom Waddell Urban Health Clinic",
  "note": "Archive documents linked to this place; source labels honour the SFPL-vs-Democracy's-Library distinction.",
  "documents": [
   {
-   "identifier": "minutes2004sanf",
-   "title": "Minutes",
-   "creator": "San Francisco (Calif.). Health Commission",
-   "year": null,
+   "identifier": "agenda200304sanf",
+   "title": "Agenda",
+   "creator": "San Francisco (Calif.). Health Commission. Joint Conference Committee for Community Health Network",
+   "year": 2004,
    "pool": "sfpl",
    "matched_alias": "Tom Waddell Health Center",
-   "snippet": "94102-4505 (3.2) CHN-Primary Care-«Tom Waddell Health Center» - Request for approval to retroactively",
-   "url": "https://archive.org/details/minutes2004sanf",
-   "deep_link": "https://archive.org/details/minutes2004sanf?q=Tom+Waddell+Health+Center",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Meetings & resolutions",
-   "salient": true
-  },
-  {
-   "identifier": "agendasminuteshe2015sanf",
-   "title": "Agendas and Minutes / Health Commission, City and County of San Francisco",
-   "creator": "San Francisco (Calif.). Health Commission",
-   "year": null,
-   "pool": "sfpl",
-   "matched_alias": "Tom Waddell Urban Health Clinic",
-   "snippet": "Consultant Award, Joseph Pace, MD of «Tom Waddell Urban Health Clinic» received the Jane Bailowitz,",
-   "url": "https://archive.org/details/agendasminuteshe2015sanf",
-   "deep_link": "https://archive.org/details/agendasminuteshe2015sanf?q=Tom+Waddell+Urban+Health+Clinic",
+   "ocr_excerpts": [
+    "medics and transported to the new sobering center. Those with indications of significant withdrawal or significant acute medical illness will continue to be transported to the hospital. The proposed McMillan Sobering Center will be operated through a partnership between the Department of Public Health's Tom Waddell Health Center, and Chemical Awareness Treatment Services (CATS), a non-profit agency. The Sobering Center will be co-located at CATS' McMillan Drop-In Center. CATS and the McMillan Drop-In Center were selected as the partner agency because: (1) the location is central in the City and is a block from the Tom Wadde",
+    "reatment in San Francisco and counteract the shortage of treatment in the City, the Office-Based Opiate Addiction Treatment (OBOAT) Program was developed. As a pilot program, OBOAT will provide methadone maintenance treatment and Buprenorphine for 90 patients in three clinics, Potrero Hill Health Center, Tom Waddell Health Center, and BAART, one private physician's office, and the County Jail in San Francisco. Methadone will be dispensed at San Francisco General Hospital (SFGH) Outpatient Pharmacy, and after a brief induction period at a specialized clinic. Buprenorphine will be dispensed at the Community Mental Health Services",
+    "ma Override since August 2003. While on Trauma Override the ED held 43 patients in September 2003. While on Trauma Override in September 2002, the ED held 37 patients awaiting inpatient beds. SFGH ED DIVERSION RATE 2002, 2003 ULIUUCI ill, 4TOJ Page 3 HIV Early Intervention Grant Awarded to Tom Waddell Health Center The Tom Waddell Health Center/Homeless Programs (TWHC/HP) has partnered with the Tenderloin AIDS Resource Center (TARC) to receive a Title III grant of $300,000 a year through 2007 for HIV Early Intervention Services Programs. The project's goal is to provide outpatient early intervention services with respect to HIV disease by exp",
+    "Community Health Network Joint Conference Committee. 101 Grove Street San Francisco, CA 94102-4505 3) CHN SECRETARY'S REPORT Gene O'Connell, SFGHMC Hospital Administrator, presented the Secretary's Report. Staff Update Barry Zevin Receives Community Hero Award Dr. Barry Zevin, Medical Director of Tom Waddell Health Center, is being recognized by Saint Francis Memorial Hospital as one of its 2004 Community Heroes. The recognition is accompanied by a $10,000 award to be donated to Tom Waddell Health Center. The Community Hero award is given to individuals who go \"above and beyond\" normal expectations to create a healthier environment for the community served by Saint Francis Memorial Hospital, especially the poor and underserved. As Medical Director of Tom Waddell Health Center, Dr Zevin has served homeless, indigent and underserved populations for many years. He is recogni"
+   ],
+   "url": "https://archive.org/details/agenda200304sanf",
+   "deep_link": "https://archive.org/details/agenda200304sanf?q=Tom+Waddell+Health+Center",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
    "group": "Meetings & resolutions",
    "salient": true
@@ -39,7 +30,9 @@
    "year": null,
    "pool": "sfpl",
    "matched_alias": "Tom Waddell Urban Health Clinic",
-   "snippet": "/insideDept/dirRpts/default.asp «Tom Waddell Urban Health Clinic» Open House The Commissioners,",
+   "ocr_excerpts": [
+    "MISSION MEETING OF AUGUST 20. 2013. Action Taken: The minutes of the August 20, 2013 Health Commission meeting were unanimously approved. 3) Barbara Garcia, Director of Health, gave the report. The full report can be viewed at: http://www.sfdph.org/dph/comupg/aboutdph/insideDept/dirRpts/default.asp Tom Waddell Urban Health Clinic Open House The Commissioners, staff and public are invited to attend the Grand Opening Celebration for Tom Waddell Urban Health Clinic (TWUHC), on Wednesday, September 11, 9:30 - noon, 230 Golden Gate Avenue @ Leavenworth. The new clinic is a 15,000 sf state-of-the-art, multi-disciplinary, primary care clinic, serving homeless and marginally-housed persons as well as those living in supportive housing in the Tenderloin District of San Francisco and adjacent neighborhoods. Co-located with supportive housing at Kelly Cullen Community, TWUHC combines the practices of Housing and Urban Health Center (which has closed) and Tom Waddell Health Center's primary care into a new, larger practice at TWUHC. Services include primary care, psychiatry, psycho-social, and substance abuse, among others. Voter's Information Pamphlet Each election year, the Department of Elections makes free advertising and promotional space available in the filler pages of it"
+   ],
    "url": "https://archive.org/details/agendahealthcom2013sanf_0",
    "deep_link": "https://archive.org/details/agendahealthcom2013sanf_0?q=Tom+Waddell+Urban+Health+Clinic",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
@@ -47,15 +40,17 @@
    "salient": true
   },
   {
-   "identifier": "agenda200304sanf",
-   "title": "Agenda",
-   "creator": "San Francisco (Calif.). Health Commission. Joint Conference Committee for Community Health Network",
-   "year": 2004,
+   "identifier": "agendasminuteshe2015sanf",
+   "title": "Agendas and Minutes / Health Commission, City and County of San Francisco",
+   "creator": "San Francisco (Calif.). Health Commission",
+   "year": null,
    "pool": "sfpl",
-   "matched_alias": "Tom Waddell Health Center",
-   "snippet": "Grant Awarded to «Tom Waddell Health Center» The «Tom Waddell Health Center»/Homeless Programs",
-   "url": "https://archive.org/details/agenda200304sanf",
-   "deep_link": "https://archive.org/details/agenda200304sanf?q=Tom+Waddell+Health+Center",
+   "matched_alias": "Tom Waddell Urban Health Clinic",
+   "ocr_excerpts": [
+    "oden, MD from the Department of Health Commission June 2, 2015 Page 3 Rheumatology received the Henry F. Chambers, MD Medicine Subspecialty Consultant Award, Jeff Schmidt, RN, MS, Director of Clinical Operations received the Robert Lull, MD: Non-Internal Medicine Consultant Award, Joseph Pace, MD of Tom Waddell Urban Health Clinic received the Jane Bailowitz, MD Volunteer Faculty Award, Will Huen, MD received the SFGH Performance/Quality Improvement Award, and Rachel Rutishauser, MD, Infectious Disease, received the Inaugural SFGH Department of Medicine Clinical Fellow Award. The annual SFGH Medical Staff Dinner will be held Thurs,"
+   ],
+   "url": "https://archive.org/details/agendasminuteshe2015sanf",
+   "deep_link": "https://archive.org/details/agendasminuteshe2015sanf?q=Tom+Waddell+Urban+Health+Clinic",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
    "group": "Meetings & resolutions",
    "salient": true
@@ -67,40 +62,18 @@
    "year": null,
    "pool": "sfpl",
    "matched_alias": "Tom Waddell Health Center",
-   "snippet": "vulnerable residents. «Tom Waddell Health Center». The «Tom Waddell Health Center» (TWHC), located in",
+   "ocr_excerpts": [
+    "ke family. No one ever judged me. Everybody did whatever they could do to help me.” Client of the Tuberculosis Prevention and Control Program. “Working in the Department gives me an opportunity to serve a diverse population and specifically, people who are underserved. The people 1 work with at the Tom Waddell Health Center are very committed to the Department’s mission of providing health care to people in need. ” Jean Balibrera, R.N., Acting Head Nurse, Tom Waddell Health Center. selor, HIV Research Section “I am interested in maternal and child health. By working for the Department, I feel like I can have an impact on many people’s lives, and I can change and improve their quality of life.” Carol Schulte, Perinatal Services Coordinator, Children, Youth, and Families Sect",
+    "ehensive support services to help participants make the transition to permanent housing. In 1998-99, the Housing Services Unit will implement this new program which will be a much needed addition to the Department’s array of supportive housing options for the City’s most needy and vulnerable residents. Tom Waddell Health Center. The Tom Waddell Health Center (TWHC), located in the Civic Center area, is the Department's base for health services for the City's homeless people. In response to the wide range of medical, psychological, and social needs presented by homeless clients, multi-disciplinary teams provide services at TWHC and at sites throughout the",
+    "The Volunteers for San Francisco General Hospital provides services to the patients and staff of the Commu- nity Health Network and helps raise funds for special projects. In 1997-98, 805 volunteers donated 105,000 hours of service to 70 different Community Health Network depart- ments, including the Tom Waddell Health Center, a primary care clinic located in the Civic Center area serving a large number of homeless adults. In addition, volunteers provided clothing to more than 6,000 patients, and raised funds for food, transportation, and many other essential patient needs. Volunteers provided grants totaling over $30,000 for",
+    ") launched the Teen Smart Program to tackle the high teen ♦ San Francisco International Airport Medical Service was the designated medical provider for 20 5,000 airport construction work- ers. It also provided travel medicine services and urgent care for travelers and the neigh- boring community. ♦ Tom Waddell Health Center (TWHC) is the City’s largest provider of health care to home- less people, including many who are HIV-positive, have mental health and/or substance abuse problems and are unable to find care elsewhere. TWHC's HIV Team uses a nationally-recog- nized, \"harm reduction\" ap- proach. Its \"Transgender Tues- days",
+    "Park Health Center Community Advisory Board Potrero Hill Health Center Community Advisory"
+   ],
    "url": "https://archive.org/details/sanfranciscodepa1997sanf",
    "deep_link": "https://archive.org/details/sanfranciscodepa1997sanf?q=Tom+Waddell+Health+Center",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
    "group": "Reports & records",
    "salient": true
-  },
-  {
-   "identifier": "noticecommunityg2012sanf",
-   "title": "Notice, community groups meeting in the Branch and Main Libraries",
-   "creator": "San Francisco Public Library",
-   "year": null,
-   "pool": "sfpl",
-   "matched_alias": "Tom Waddell Health Center",
-   "snippet": "Street 11 JANUARY, WEDNESDAY 2012 «Tom Waddell Health Center» - Staff meeting (jeff.simbe@sfdph",
-   "url": "https://archive.org/details/noticecommunityg2012sanf",
-   "deep_link": "https://archive.org/details/noticecommunityg2012sanf?q=Tom+Waddell+Health+Center",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Other records",
-   "salient": true
-  },
-  {
-   "identifier": "ordinance2005sanf_2",
-   "title": "Ordinance",
-   "creator": "San Francisco (Calif.). Board of Supervisors",
-   "year": null,
-   "pool": "sfpl",
-   "matched_alias": "Tom Waddell Health Center",
-   "snippet": "& Co., for completion of the «Tom Waddell Health Center» Elevator Replacement (Specification",
-   "url": "https://archive.org/details/ordinance2005sanf_2",
-   "deep_link": "https://archive.org/details/ordinance2005sanf_2?q=Tom+Waddell+Health+Center",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Other records",
-   "salient": false
   }
  ]
 }

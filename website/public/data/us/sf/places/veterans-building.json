@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-21T14:25:53.961077+00:00",
+ "generated_at": "2026-07-22T15:04:53.719229+00:00",
  "source_pipeline": "sf_place_candidates.json → sync_ia_sf.py + link_sf_places.py + fetch_sf_place_photos.py → export_sf_places.py",
  "unit": "USD",
  "slug": "veterans-building",
@@ -236,27 +236,19 @@
  },
  "documents": [
   {
-   "identifier": "agenda1994sanf",
-   "title": "Agenda",
-   "creator": "San Francisco (Calif.). Advisory Committee on Charter Reform",
-   "year": 1994,
-   "pool": "sfpl",
-   "matched_alias": "Veterans Building",
-   "snippet": "Library M <j E N U A WAR MEMORIAL «VETERANS BUILDING» 401 Van Ness Av., Room 219 San Francisco",
-   "url": "https://archive.org/details/agenda1994sanf",
-   "deep_link": "https://archive.org/details/agenda1994sanf?q=Veterans+Building",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Meetings & resolutions",
-   "salient": true
-  },
-  {
    "identifier": "taxicabcommissio1999sanf",
    "title": "Taxicab Commission minutes",
    "creator": "San Francisco (Calif.). Taxicab Commission",
    "year": 1999,
    "pool": "sfpl",
    "matched_alias": "Herbst Theater",
-   "snippet": "1999>t 6:00 P.M. WAR MEMORIAL BUILDING- «HERBST THEATER» 401 VAN NESS AVENUE SAN FRANCISCO CA",
+   "ocr_excerpts": [
+    "MISSION MAYOR WILLIE L. BROWN JR. MARUNN COSTELLO, PRESIDENT RACHIALLE FRANKLIN, VICE PRESIDENT VINCENT AGDAYANI, COMMISSIONER JANE BOLIG, COMMISSIONER CHRIS DITTENHAFER, COMMISSIONER PAin- GILLESPIE, COMMISSIONER MARYMcGUIRE, COMMISSIONER TAXI CpMMISSION^AGENDA ^Iy27, 1999>t 6:00 P.M. WAR MEMORIAL BUILDING- HERBST THEATER 401 VAN NESS AVENUE SAN FRANCISCO CA 94102 1. Roll Call 2. Approval of Consent Calendar 3. Taxi Commission Announcements a. Motions to Calendar New Items 4. Discussion and Possible Action regarding the Driving Requirements of Proposition \"K\" and Article 16 of the Municipal Police Code, including",
+    "COSTELLO, PRESIDENT RACinALLE FRANKLIN, VICE PRESIDENT VINCENT AGBAYANI, COMMISSIONER JANE BOLIG, COMMISSIONER CHRIS DITTENHAFER, COMMISSIONER PAUL GILLESPIE, COMMISSIONER MARYMcGUIRE, COMMISSIONER TAXICAB COMMISSION MINUTES FOR SPECL^L MEETING OF JULY 27, 1999: Meeting called to order at 1810 hours in the Herbst Theater of the War Memorial Building Agenda Item 1 , Roll Call , Commissioners Agbayani, Bolig, Dittenhafer, Gillespie, McGuire, Vice-President Franklin and President Costello all present. Agenda Item 2, Consent Calendar approved, all in favor. Agenda Item 3, Commission requests for future agenda items made.",
+    "MAYOR WILLIE L. BROWN JR. MAIOANN COSTELLO,' PRESIDENT RACHIALLE FRANKLIN, VICE PRESIDENT VINCENT AGBAYANI, COMMISSIONER JANE BOLIG, COMMISSIONER CHRIS DITTENHAFER, COMMISSIONER PAUL GILLESPIE, COMMISSIONER MARYMcGUIRE, COMMISSIONER TAXI COMMISSION^GENDA <SPECIAL)MEEflNG 5t209^t 6:00 P.M. WAR MEMORIAL BUILDING-HERBST THEATER 401 VAN NESS AVENUE SAN FRANCISCO CA 94102 1. 2. 3. 4. 5. 9. 10. Roll Call Approval of Consent Calendar Approval of Minutes from July 27, 1999 and August 10, 1999 Meetings DOCUMENTS DEPT.^ AUG 2 h 1999 Taxi Commission Announcements a. Motions to Calendar New Items SAN FRANCISC",
+    "LLO, PRESIDENT RACHIALLE FRANKLIN, VICE PRESIDENT VINCENT AGBAYANI, COMMISSIONER JANE BOLIG, COMMISSIONER CHRIS DITTENHAFER, COMMISSIONER PAUL GILLESPIE, COMMISSIONER MARYMcGUIRE, COMMISSIONER ^ TAXI COMMISSION^GENDA (JPECIA^EETING September 21, 199git 6:00 P.M. WAR MEMEORIAL BUILDING, 401 VAN NESS AVENUE HERBST THEATER DOCUMENTS DEP Roll Call SEP 2 1 1999 SAN FRANCISCO .IBF 9a 1 2. Discussion and Posssible Action regarding: Annual Public Convenience and Necessity Hearing for Taxicabs. Public Comment (Members of the public may address the Commission for up to 3 minutes. The President of the Commi",
+    ", PRESIDENT RACHIALLE FRANKLIN, VICE PRESIDENT VINCENT AGBAYANI, COMMISSION'ER JANE BOLIG, COMMISSION'ER CHRIS DITTENHAFER, COMMISSIONER PAUL GILLESPIE, COMMISSION'ER MARYMcGUIRE, COMMISSION'ER TAXICAB COMMISSION MINUTES FOR SPECIAL MEETING OF SEPTEMBER 21, 1999: Meeting called to order at 1813 hours in the Herbst Theater of the War Memorial Buil"
+   ],
    "url": "https://archive.org/details/taxicabcommissio1999sanf",
    "deep_link": "https://archive.org/details/taxicabcommissio1999sanf?q=Herbst+Theater",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
@@ -264,15 +256,37 @@
    "salient": true
   },
   {
-   "identifier": "eastwest15east_20",
-   "title": "East/West",
-   "creator": "East/West Pub. Co.",
-   "year": 1981,
+   "identifier": "agenda1994sanf",
+   "title": "Agenda",
+   "creator": "San Francisco (Calif.). Advisory Committee on Charter Reform",
+   "year": 1994,
+   "pool": "sfpl",
+   "matched_alias": "Veterans Building",
+   "ocr_excerpts": [
+    "IBRARY CITY AND COUNTY OF SAN FRANCISCO ADVISORY COMMITTEE ON CHARTER REFORM INTRODUCTORY MEETING %.,= 5-/5 wcisco Public Library |nment Information Center anclsoo Public Library kfkin Street, 5th Floor fancisco, CA 9-,iu2 (rence book .taken from the Library M <j E N U A WAR MEMORIAL VETERANS BUILDING 401 Van Ness Av., Room 219 San Francisco, CA 94102 embers }rop N Committee \\dministrative Officer, Rudy Nothenberg s Representative o* Sunervisors Renresentative Sue Bierman visory Committee's Goals Organization, Rules and Future Plans Public Comments Ml KB I ■ - ■ ■ . ' I ■ '■: •-. ■ ,'>'••■• I DOC.I IMFMTQ HEPT. FEB j 1994 SAN FRANCISCO PUBLIC LIBRARY CITY AND COUNTY OF SAN FRANCISCO ADVISORY COMMITTEE ON CHARTER REFORM INTRODUCTORY MEETING AUCNUA Thursday WAR MEMORIAL VETERANS BUILDING February 17, 1994 401 Van Ness Av., Room 219 6:00 P.M. San Francisco, CA 94102 1. Introduction of Members 2. Presentation by Prop N Committee a. Chief Administrative Officer, Rudy Nothenberg b. Mayor's Representative c= Board of Supervisors Renresentat!ve, Sue Blerrnan 3. Discussion of Advisory Committee's Goals 4. Organization, Rules and Future Plans 5. Public Comments DISABILITY ACCESS The War Memorial Veterans Building is wheelchair accessible. The closest accessible BART Station is Civic Center, 2 1/2 blocks from the War Memorial Veterans Building which is across the street from City Hall. Accessible MUNI line serving this location is the #42 Downtown Loop as well as the METRO stations at Van Ness and Market and at Civic Center. For more information about MUNI accessible services, call 923-6142. There is accessible parking in the vicinity",
+    "n Charter Reform City and County of San Francisco Room 109, City Hall San Francisco, CA 94102 D 4524 Bill Lynch Documents Section SF Public Library-Main Branch Civic Center San Francisco CA CITY AND COUNTY OF SAN FRANCISCO ADVISORY COMMITTEE ON CHARTER REFORM AGENDA \\ Thursday WAR MEMORIAL VETERANS BUILDING February 24, 1994 401 Van Ness Av., Room 219 6:30 P.M. to 9:00 P.M. San Francisco, CA 94102 1. Call to Order 2. Planning Group Report Recommended Administrative Rules and Procedures Public Comment Action: Future Planning - Discussion 3. Workshop Group Report - Discussion Plan for 2/26/94 Workshop 4; Request for Moratorium on Charter Reform during Committees' Term - Discussion Public Comment Action: 5. Discussion of Advisory Committee Goals 6. Public Comment DISABILITY ACCESS The War Memorial Veterans Building is wheelchair accessible. The closest accessible BART Station is Civic Center, 2 1/2 blocks from the War Memorial Veterans Building which is across the street from City Hall. Accessible MUNI line serving this location is the #42 Downtown Loop as well as the METRO stations at Van Ness and Market and at Civic Center. For more"
+   ],
+   "url": "https://archive.org/details/agenda1994sanf",
+   "deep_link": "https://archive.org/details/agenda1994sanf?q=Veterans+Building",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Meetings & resolutions",
+   "salient": true
+  },
+  {
+   "identifier": "civiccenterstud1994sanf_0",
+   "title": "Civic Center study : cultural facilities plan, issues and finding report : draft for citizen review",
+   "creator": "San Francisco (Calif.). Dept. of City Planning",
+   "year": 1994,
    "pool": "sfpl",
    "matched_alias": "Herbst Theater",
-   "snippet": "Performance Concert on Sunday, June7at 2 pm at «Herbst Theater»，Van Ness and MocAllis- ter Streets， The concert",
-   "url": "https://archive.org/details/eastwest15east_20",
-   "deep_link": "https://archive.org/details/eastwest15east_20?q=Herbst+Theater",
+   "ocr_excerpts": [
+    "perating the War Memo- 2 CULTURAL FACILITIES PLAN rial Complex; all subsequent funds or gifts re- ceived by the Board of Trustees were to be depos- ited into a separate War Memorial account with the City. After much struggle and strife, the Opera House, housing the opera and symphony, and the Veterans Building, housing the American Legion and the art museum, opened in 1932. The opening of the monumental Opera House and Veterans Building housing an art museum along with the Civic Auditorium constructed in 1915, marked the emergence of the Civic Center as the City's sym- bolic cultural center. Civic Center became the city's center of large venue cultural exhibitions and productions, while numerous smaller clubs and musical theaters oper",
+    "under Civic Center Plaza in 1956. Additions to the McAllister Street State office/ courthouse building were constructed on Golden Gate Avenue in 1959 and in 1962 a new Federal office building and courthouse was constructed on Golden Gate Avenue. In 1977, the Veterans Auditorium and library within the Veterans Building were trans- formed into the Herbst Theater and Green Room cultural facilities. In 1980, Da vies Symphony Hall and Zellerbach Rehearsal Hall were added to the Civic Center's inventory of cultural facilities. In 1986 a new State office building, with hearing rooms, parking, cafeteria and day care, was 3 CIVIC CENTER STUDY CULTURAL FACILI",
+    "ions, exhibi- tions, weddings or other ceremonies can increase 12 CULTURAL FACILITIES PLAN the facility's and Civic Center's audience base and can generate private monies for the Center's operating and maintenance costs. By trust agree- ments, Veterans groups pay no rent for their facilities in the Veterans Building. Part of Perform- ing Arts Complex revenues subsidize the opera- tion and maintenance (O&M) of Veterans office and meeting rooms. These spaces are underused by Veterans groups and could be leased for private events to generate income and cover their O&M costs. To induce greater audiences to the Civic",
+    "ocated within the nearby 180,000 square foot 50 U.N. Plaza federal office building which may become redundant with the construction of the new federal office building at 10th and Market Streets. 11 . The 45,000 square foot Museum of Modern Art (MOMA) gallery space on the 3rd and 4th floors of the Veterans Building could be converted to another cultural arts space when the museum moves and when the temporary City Hall activities return to the refurbished City Hall. A consolidated city history mu- seum would quickly outgrow the 45,000 square foot space left vacant by the Museum of Modern Art. The Asian Art Museum at 90,000 square foot in Golden Gate Park is looking to double its exhibition space within a Civic Center facility. Neither of these muse- ums would \"fit\" in the"
+   ],
+   "url": "https://archive.org/details/civiccenterstud1994sanf_0",
+   "deep_link": "https://archive.org/details/civiccenterstud1994sanf_0?q=Herbst+Theater",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
    "group": "Other records",
    "salient": true
@@ -284,37 +298,15 @@
    "year": 1994,
    "pool": "sfpl",
    "matched_alias": "Herbst Theater",
-   "snippet": "preferably on the ground floor. The 928 seat «Herbst Theater» is an attractive and historic space,",
+   "ocr_excerpts": [
+    "three monumental build- ings (State Building, Old Main Library and Civic Auditorium) w^hich are set back from the property line thus making the plaza appear larger. Fulton Mall, between Leavenworth and Larkin Streets, is strongly defined by the deep setbacks of the abutting buildings. The War Memorial Veterans Building and Opera House feature deep setbacks on all street frontages and along the Fulton axis to provide space for the Memorial Court. The 1976 elimination of the rear setback of the Opera House should be considered an exception. Most other nearby buildings, especially those north and south of City HaU,",
+    "The visual unity of the Civic Center is strongly supported by the vmiform appear- ance and color of its materials. The older buildings are generally built in gray Raymond granite. In the buildings of the 1930's, terracotta simulating Ra)anond granite was used in some cases, such as the War Memorial Veterans Building and Opera House. In more recent buildings, light gray, high quality precast concrete is used successfully. For new construction, these materials are appropriate if they maintain the light gray color, high quality surface finish, and appearance of substantial mass. Materials to be considered for orna",
+    "rt. Several historic buildings (Old Main Library, Civic Auditoriiun, Depart- ment of Public Health) have rear and side facades in a simpler, less elaborate and more func- tional design and are built in either granite or grey or yellow industrial brick. Other buildings, such as City Hall, War Memorial Veterans Building, Opera House and the Federal Building (50 Fulton Street), are designed with formal facades all aroimd. Either approach is permissible for new buildings in the Civic Center. However, since the secondary facades are Likely to be the interface between the Civic Center district and surroimding neighborhood",
+    "three rows of pol- larded trees which divide the plaza into north and south. The Plaza now has stairwells, an elevator pavilion, and air vent structures above grade con- structed in 1956 to serve the undergrotmd facilities. The War Memorial Court, located between the Opera House and the War Memorial Veterans' Building on Van Ness Avenue, is perhaps the most successful of Civic Center's open spaces. This small formal court contains a broad lawn, neatly clipped hedges and ground cover, and pollarded trees which surround a pedestrian walkway. Views of City Hall, framed by decorative gates, are a prominent feature fr",
+    "should accommodate much more intensive public uses. With the loss of the MOMA activity, the building is need of an intensive cultiiral arts use. Temporary use by legislative activities of City Hall will attract new people to the building. When legislative activities are retumed to City Hall and the Veterans Building's "
+   ],
    "url": "https://archive.org/details/civiccenterstudy1994sanf",
    "deep_link": "https://archive.org/details/civiccenterstudy1994sanf?q=Herbst+Theater",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Other records",
-   "salient": true
-  },
-  {
-   "identifier": "opinion1985sanf",
-   "title": "Opinion",
-   "creator": "San Francisco (Calif.). City Attorney's Office",
-   "year": 1978,
-   "pool": "sfpl",
-   "matched_alias": "Herbst Theatre",
-   "snippet": "to the «Herbst Theatre» and the Green Room in the Veterans Building [\"«Herbst Theatre» Agreement\"]",
-   "url": "https://archive.org/details/opinion1985sanf",
-   "deep_link": "https://archive.org/details/opinion1985sanf?q=Herbst+Theatre",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Other records",
-   "salient": true
-  },
-  {
-   "identifier": "civiccenterstud1994sanf_0",
-   "title": "Civic Center study : cultural facilities plan, issues and finding report : draft for citizen review",
-   "creator": "San Francisco (Calif.). Dept. of City Planning",
-   "year": 1994,
-   "pool": "sfpl",
-   "matched_alias": "Herbst Theater",
-   "snippet": "Building were trans- formed into the «Herbst Theater» and Green Room cultural facilities. In",
-   "url": "https://archive.org/details/civiccenterstud1994sanf_0",
-   "deep_link": "https://archive.org/details/civiccenterstud1994sanf_0?q=Herbst+Theater",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
    "group": "Other records",
    "salient": true
@@ -326,15 +318,43 @@
    "year": 1987,
    "pool": "sfpl",
    "matched_alias": "Herbst Theater",
-   "snippet": "the Veterans' Building, including the «Herbst Theater» and the Museum of Modern Art, the War",
+   "ocr_excerpts": [
+    "about nine months after the architectural competition had closed, and it was essentially completed in late 1915, after the Exposition had closed. Other buildings in the Civic Center were completed by 1936 (the Library Building (1916), the State (1926) and Federal (1936) Buildings, the Opera House and Veterans' Buildings (1932), and the Public Health Building (1932)). The Civic Center plan prepared by Howard, Meyer and Reid was basically complete, with one major exception. The decision to construct the Opera House on the west side of Van Ness Avenue left a dark empty hole in the plan. The site which today is k",
+    "ents, as the following table illustrates. 21 FELL CIVIC CENTER City, State and Federal Buildings 1. CityHaU 2. Public Health 3. Art Coaunissioa Gallery 4. 240 Van Ness Avenue 5. Unified School District 6. Zellerbach Rehearsal Hall 7. Davies Symphony Hall 8. War Memorial Opera House 9. Veterans' Building 10. State Building 1 1 . 460 McAllister Street 12. 450 McAllister Street 13. State Buildings 14. Federal Building 15. Steam Plant 16. Old Federal BuUding 17. 45 Hyde Street 18. Main Library 19. Civic Center Garage 20. BrocdcsHall 21. 100 Larkin Street 22. Civic Auditorium Plate 6 Tab",
+    "lowest cost per mile is one that, where sufficient use justified, is assigned to the operating employee\". No further steps were taken to achieve an assigned car parking facility or area within the Civic Center. War Memorial/Performing Arts Center Complex The War Memorial Complex is comprised of the Veterans' Building, including the Herbst Theater and the Museum of Modern Art, the War Memorial Opera House, Davies Symphony Hall and the Zellerbach Rehearsal Hall. The administrative offices of the War Memorial are located in the Veterans' Building. Space is at a premium within the complex. Office space for the Opera and the Symphony exceeds acceptable occupancy levels. The administrative space for the War Memorial staff is congested. The Museum of Modern Art does not have sufficient space to adequately display its collections. Storage space for all occupants of the complex is inadequate. There is, however, a significant under-utilization of veterans' meeting rooms on the second floor of the Veterans' Building, especially during the day, according to a report issued by the Budget Analyst for the Board of Supervisors (Management Audit of the San Francisco War Memorial Veterans' Building, April 1985). With the westerly extension of the Opera House, the rear building lines of the Opera House and the Veterans' Building are no longer in architectural balance. To correct this design relationship between these two important buildings, the Veterans' Building should be extended to conform with the Opera House addition and the Memorial Court should also be extended to correspond 33 w"
+   ],
    "url": "https://archive.org/details/civiccenterdevel1987sanf",
    "deep_link": "https://archive.org/details/civiccenterdevel1987sanf?q=Herbst+Theater",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
    "group": "Other records",
-   "salient": false
+   "salient": true
+  },
+  {
+   "identifier": "eastwest15east_20",
+   "title": "East/West",
+   "creator": "East/West Pub. Co.",
+   "year": 1981,
+   "pool": "sfpl",
+   "matched_alias": "Herbst Theater",
+   "ocr_excerpts": [
+    "ement until Dec. 31. To be eligible a person must be 62 or older on Dec. 31， 1981, have lived in his or her own home on Dec. 31, 1980, and have a total household income of not SF Public School Students Plan a Major Concert SAN ERANCISCO 一 SF Public School students will give a Com- mand Performance Concert on Sunday, June7at 2 pm at Herbst Theater，Van Ness and MocAllis- ter Streets， The concert w 记 feature pianists Peter Miyamoto and Suzanna Teper, as well as the George Washington High choir， Aptos Theater,，Balboa dancers,. and the orchestras of Hoover， Lowell and Franklin High schools. The concert is free，For infor- mation，call Carol Choye at 565- 9599. 口 mor than $30,200",
+    "_ class, Health Ctr: 4, 1490 Mason, SF. free SAT, JUNE 6, 7:30 p.m. Kung-fu Westcoast_ Nat， Cham- pionship，San Jose Civic Audito- rium, San Jose， SUN, JUNE 7, 9 a.m， Asian Runners Club 3-mile Gold- en Gate Brideg Fun Run, SF. (Wynn Wong, 885-4261)$2. SUN, JUNE 7, 2 p.m. Command ”Performance Concert by SF public school students， Herbst Theater， Van Ness & McAllister, SF: free TUE, JUNE 9 10 p.m. Cities in China，Suzhou，Xi'an. and Beijing, KQED Channel 9. THUR., JUNE 11, 10:30 a.m.， 2:30p.m. Film program ， for “preschool children，North Bezh Library， 2000 Mason, SF. Free. THUR, JUNE 11, 2 p.m. Cities in China on KQED Channel 9. THUR., JUNE 11. 4 p.m. age Beach_ Li"
+   ],
+   "url": "https://archive.org/details/eastwest15east_20",
+   "deep_link": "https://archive.org/details/eastwest15east_20?q=Herbst+Theater",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Other records",
+   "salient": true
   }
  ],
  "dept_shelf": [
+  {
+   "identifier": "opinion1985sanf",
+   "title": "Opinion",
+   "year": 1978,
+   "pool": "sfpl",
+   "url": "https://archive.org/details/opinion1985sanf"
+  },
   {
    "identifier": "opinion1987sanf",
    "title": "Opinion",
@@ -348,17 +368,10 @@
    "year": 1975,
    "pool": "sfpl",
    "url": "https://archive.org/details/sttmntsofact19631978warm"
-  },
-  {
-   "identifier": "calendarofevents2008sanf",
-   "title": "Calendar of events",
-   "year": null,
-   "pool": "sfpl",
-   "url": "https://archive.org/details/calendarofevents2008sanf"
   }
  ],
  "dept_shelf_label": "War Memorial & Performing Arts Center",
- "dept_shelf_more": 2,
+ "dept_shelf_more": 3,
  "sources": [
   {
    "label": "City budget & payments",
@@ -371,7 +384,7 @@
  ],
  "_gate": {
   "has_photo": false,
-  "n_documents": 7,
+  "n_documents": 6,
   "n_money_links": 1,
   "meets_pre_summary": false
  }

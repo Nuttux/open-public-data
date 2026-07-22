@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-21T14:25:53.972098+00:00",
+ "generated_at": "2026-07-22T15:04:53.726585+00:00",
  "source_pipeline": "sf_place_candidates.json → sync_ia_sf.py + link_sf_places.py + fetch_sf_place_photos.py → export_sf_places.py",
  "unit": "USD",
  "slug": "pier-70",
@@ -418,7 +418,7 @@
   "author": "Unknown",
   "fetched_at": "2026-07-20T22:20:02.170158+00:00"
  },
- "summary_en": "Archive documents trace planning for Pier 70, described as a roughly 65- to 69-acre historic shipyard, including a 1986 container terminal options study and San Francisco Port Commission agendas and minutes on a preferred master plan, a proposed Pier 70 Special Use District, a Forest City waterfront term sheet, a Historic Buildings clean-up, and a Union Iron Works historic district to support rehabilitation. The pier is operated by the Port of San Francisco, whose FY2025 budget line is $156M; no place-specific city contract appears in this data.",
+ "summary_en": "Archive documents trace planning for Pier 70. A 1986 Mission Bay study weighs a \"consolidated Pier 70 and 80\" container terminal against separate terminals at Piers 50, 70 and 80. Port Commission minutes from 2004 describe Pier 70 as \"home of the ship repair industry.\" A 2011 agenda notes the Department of Defense \"awarded the Port a total of $2.28 million\" for environmental clean-up. A 2015 agenda presents a Forest City mixed-use plan, a proposed Pier 70 Special Use District, and a BAE Systems lease of \"approximately 14.4 acres improved with 19 buildings.\" Pier 70 is operated by the Port of San Francisco, whose FY2025 budget line is $156M; capital records show $7,827,325.29 paid to Historic Pier 70 LLC.",
  "published": true,
  "money": {
   "budget_line": {
@@ -439,46 +439,18 @@
  },
  "documents": [
   {
-   "identifier": "agenda2011sanf_0",
-   "title": "Agenda",
-   "creator": "San Francisco Port Commission",
-   "year": null,
-   "pool": "sfpl",
-   "matched_alias": "Pier 70",
-   "snippet": "southern Waterfront: «Pier 70» Historic Buildings Clean-Up 50,000 50,000 0 50,000 «Pier 70» Infrastructure",
-   "url": "https://archive.org/details/agenda2011sanf_0",
-   "deep_link": "https://archive.org/details/agenda2011sanf_0?q=Pier+70",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Meetings & resolutions",
-   "salient": true
-  },
-  {
-   "identifier": "agendasanfranci2014sanf_8",
-   "title": "Agenda / San Francisco Port Commission",
-   "creator": "San Francisco Port Commission",
-   "year": null,
-   "pool": "sfpl",
-   "matched_alias": "Pier 70",
-   "snippet": "organizations as a competition 2 «Pier 70» Informational Presentation on «Pier 70» - Union Iron Works Historic",
-   "url": "https://archive.org/details/agendasanfranci2014sanf_8",
-   "deep_link": "https://archive.org/details/agendasanfranci2014sanf_8?q=Pier+70",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Meetings & resolutions",
-   "salient": true
-  },
-  {
    "identifier": "minutes2004sanf_1",
    "title": "Minutes",
    "creator": "San Francisco Port Commission",
    "year": null,
    "pool": "sfpl",
    "matched_alias": "Pier 70",
-   "snippet": "and rehabilitation of other «Pier 70» historic resources. «Pier 70» Area Planning andRFP: For",
    "url": "https://archive.org/details/minutes2004sanf_1",
    "deep_link": "https://archive.org/details/minutes2004sanf_1?q=Pier+70",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
    "group": "Meetings & resolutions",
-   "salient": true
+   "salient": true,
+   "gloss": "2004 Port Commission minutes on Southern Waterfront planning that describe Pier 70 as home of the ship repair industry and flag brownfield clean-up needs."
   },
   {
    "identifier": "agendasminutess2015sanf_1",
@@ -487,12 +459,26 @@
    "year": null,
    "pool": "sfpl",
    "matched_alias": "Pier 70",
-   "snippet": "3) defined a proposed «Pier 70» Special Use District (“«Pier 70» SUD”) that will encompass",
    "url": "https://archive.org/details/agendasminutess2015sanf_1",
    "deep_link": "https://archive.org/details/agendasminutess2015sanf_1?q=Pier+70",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
    "group": "Meetings & resolutions",
-   "salient": true
+   "salient": true,
+   "gloss": "A 2015 Port Commission agenda presenting the Forest City mixed-use plan for the Pier 70 Waterfront Site, a proposed Pier 70 Special Use District, and a BAE Systems ship-repair lease of about 14.4 acres and 19 buildings."
+  },
+  {
+   "identifier": "agenda2011sanf_0",
+   "title": "Agenda",
+   "creator": "San Francisco Port Commission",
+   "year": null,
+   "pool": "sfpl",
+   "matched_alias": "Pier 70",
+   "url": "https://archive.org/details/agenda2011sanf_0",
+   "deep_link": "https://archive.org/details/agenda2011sanf_0?q=Pier+70",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Meetings & resolutions",
+   "salient": true,
+   "gloss": "A 2011 Port Commission agenda on the Pier 70 Waterfront Site RFQ and environmental consulting for the Pier 70 Brownfield Site Investigation, noting a $2.28 million Department of Defense award for clean-up."
   },
   {
    "identifier": "containertermina1986moff",
@@ -501,12 +487,12 @@
    "year": 1986,
    "pool": "sfpl",
    "matched_alias": "Pier 70",
-   "snippet": "development. «Pier 70» - Alternative 2 «Pier 70» - Alternative 2 is similar to «Pier 70» - Alternative",
    "url": "https://archive.org/details/containertermina1986moff",
    "deep_link": "https://archive.org/details/containertermina1986moff?q=Pier+70",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
    "group": "Other records",
-   "salient": true
+   "salient": true,
+   "gloss": "A 1986 Mission Bay study evaluating a consolidated Pier 70 and 80 container terminal against separate terminals at Piers 50, 70 and 80."
   }
  ],
  "dept_shelf": [
@@ -546,7 +532,7 @@
  ],
  "_gate": {
   "has_photo": true,
-  "n_documents": 5,
+  "n_documents": 4,
   "n_money_links": 1,
   "meets_pre_summary": true
  }

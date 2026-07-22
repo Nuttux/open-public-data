@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-21T14:25:53.935511+00:00",
+ "generated_at": "2026-07-22T15:04:53.701103+00:00",
  "source_pipeline": "sf_place_candidates.json → sync_ia_sf.py + link_sf_places.py + fetch_sf_place_photos.py → export_sf_places.py",
  "unit": "USD",
  "slug": "conservatory-of-flowers",
@@ -95,41 +95,18 @@
  },
  "documents": [
   {
-   "identifier": "minutesrecreatio1983sanf",
-   "title": "Minutes / Recreation and Park Commission",
-   "creator": "San Francisco (Calif.). Recreation and Park Commission",
-   "year": null,
-   "pool": "sfpl",
-   "matched_alias": "Conservatory of Flowers",
-   "snippet": "(CONTINUED) 2. «CONSERVATORY OF FLOWERS» a . Status Report on «Conservatory of Flowers» Mr. Tom Bass",
-   "url": "https://archive.org/details/minutesrecreatio1983sanf",
-   "deep_link": "https://archive.org/details/minutesrecreatio1983sanf?q=Conservatory+of+Flowers",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Meetings & resolutions",
-   "salient": true
-  },
-  {
-   "identifier": "minutes1979sanf",
-   "title": "Minutes",
-   "creator": "San Francisco (Calif.). Recreation and Park Commission",
-   "year": null,
-   "pool": "sfpl",
-   "matched_alias": "Conservatory of Flowers",
-   "snippet": "PARK «CONSERVATORY OF FLOWERS»: The long-awaited construction of the «Conservatory of Flowers» in",
-   "url": "https://archive.org/details/minutes1979sanf",
-   "deep_link": "https://archive.org/details/minutes1979sanf?q=Conservatory+of+Flowers",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Meetings & resolutions",
-   "salient": true
-  },
-  {
    "identifier": "meetingminutes19982001san",
    "title": "Meeting minutes",
    "creator": "San Francisco (Calif.). Board of Supervisors. Parks and Recreation Committee",
    "year": null,
    "pool": "sfpl",
    "matched_alias": "Conservatory of Flowers",
-   "snippet": "the «Conservatory of Flowers» will be used for renovation of the «Conservatory of Flowers». 3.",
+   "ocr_excerpts": [
+    "cash for the Palace of Fine Arts Repair Fund; 3) From High Speed Productions, Inc., $1,500 in cash for the Special Needs Program; 4) From the San Francisco Orchid Society, $1,100 in cash for the Golden Gate Park Orchid Fund; 5) From an anonymous donor, $10,000 in cash for the Golden Gate Park Conservatory of Flowers; 6) From an anonymous donor, $20,000 in cash for the Golden Gate Park Conservatory of Flowers; 7) From Elizabeth Torrez, $2,500 in cash for the Golden Gate Park Conservatory of Flowers; 8) From Susan and George Fesus through the Strybring Arboretum Society, one Toro Workman with Dump Bed Utility Truck valued at $16,000 to be used at the Strybring Arboretum in the Botanical Gardens. 1. According to Mr. Ernie Prindle of RPD, the annual maintenance cost of the donated Toro Workman with Dump Bed utility truck is expected to be minimal and will be funded with annual budgeted RPD funds. 2. According to Ms. Margaret McArthur of the Parks and Recreation Cbtnmission, the cash donations from donors for the Conservatory of Flowers will be used for renovation of the Conservatory of Flowers. 3. The proposed legislation states that the total value of the gifts to RPD is $57,100. The actual total value of the gifts is $58,100. BOARD OF SUPERVISORS BUDGET ANALYST 5 Memo to Parks and Recreation Committee March 3, 1998 Parks and Recreation Committee Meeting Recommendations: 1.",
+    ", including $75,055 in cash and one gift valued at $60,000 from various donors for use by the Recreation and Park Department (RPD). Approval of the subject resolution would allow the RPD to accept the following gifts from various donors: 1) From the World Monuments Watch, $50,000 in cash for the Conservatory of Flowers; 2) From Ikebana International, $1,000 in cash for reforestation; 3) From Dolphin Swimming & boating Club, $4,000 in cash for Aquatic Programs; 4) From the San Francisco Police Credit Union, $1,041 in cash for City Wide Youth Activities; 5) From Northern California Tennis Association, $3,014 in ca",
+    "at the Tenderloin Children's Playground and the Great Net Test Challenge, which is a program designed to give the youth in the Tenderloin area access to and information about current technology. 1. According to Ms. Margaret McArthur of the Recreation and Park Commission, the $50,000 donation to the Conservatory of Flowers will be used for planning expenses for the restoration of the Conservatory of Flowers, including schematic design work, agency BOARD OF SUPERVISORS BUDGET ANALYST 7 Memo to Parks and Recreation Committee March 3, 1998 Parks and Recreation Committee Meeting Recommendation: reviews, materials comparison, and a planning summary report. 2. According to Mr. Ernie Prindle",
+    "all project to be built at Candlestick Point. (Supervisor Brown) (Continued from 7/7/98.) ACTION"
+   ],
    "url": "https://archive.org/details/meetingminutes19982001san",
    "deep_link": "https://archive.org/details/meetingminutes19982001san?q=Conservatory+of+Flowers",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
@@ -143,7 +120,13 @@
    "year": null,
    "pool": "sfpl",
    "matched_alias": "Conservatory of Flowers",
-   "snippet": "Kennedy Drive in front of the «Conservatory of Flowers», Golden Gate Park. 1 p.m. -- \"Sound",
+   "ocr_excerpts": [
+    "St. Ignatius vs. St. Francis, Balboa Soccer Stadium, Circular Drive and Havelock Street. 10 a.m. - 6 p.m. — Carriage Rides in Golden Gate Park, Tours leave from the Tea Garden, call 761-8272. 11 a.m. - 5 p.m. -- San Francisco S.P.C.A. Mobile Adoption Program, Kennedy Drive in front of the Conservatory of Flowers, Golden Gate Park. 1 p.m. -- \"Sound Around\" A Strolling Investigation of Sound and Human Hearing at the Exploratorium, included in the price of admission, Exploratorium, 3601 Lyon Street. 8 a.m. -- Small Family Farmers Market, United Nations Plaza, Market and Leavenworth Streets. 10:30 a.m. and",
+    "61-8272 for more information. 10:30 a.m. and 1:30 p.m. -- Plant Walk, free, Strybing Arboretum Society, meet at the information kiosk, Strybing Arboretum, Golden Gate Park. 11 a.m. - 5 p.m. -- San Francisco S.P.C.A. Mobile Adoption Outreach Program, Eastern end of John F. Kennedy Drive near the Conservatory of Flowers, Golden Gate Park. 5:45 - 10:30 p.m. -- High School Basketball: Sacred Heart vs. Bellarmine, Kezar Pavillion, Stanyan and Waller Streets. 8 a.m. -- Small Family Farmers Market, United Nations Plaza, Market and Leavenworth Streets. 10 a.m. - 4 p.m. -- Artists Guild of San Francisco Outdoor Art",
+    "Tea Garden, call 761-8272 for information. 10:30 a.m. and 1:30 p.m. -- Plant Walk, free, Strybing Arboretum Society, meet at the information kiosk, Strybing Arboretum, Golden Gate Park. 11 a.m. - 5 p.m. -- San Francisco S.P.C.A. Mobile Adoption Program, Eastern End of Kennedy Drive near the Conservatory of Flowers. SUNDAY, FEBRUARY 13 8 a.m. - 2 p.m. -- Small Family Farmers Market, United Nations Plaza, Market and Leavenworth Streets. 9 a.m. - 5 p.m. -- Pet Prevent-A-Care Vaccination Clinic, Dog Training Area, near 36th Avenue and Fulton Street, Golden Gate Park. 10 a.m. - 6 p.m. -- Carriage Rid",
+    "ay on South Drive in Golden Gate Park. 10:30 a.m. and 1:30 p.m. -- Plant Walk, free, Strybing Arboretum Society, meet at the information kiosk, Strybing Arboretum, Golden Gate Park. 11 a.m. - 5 p.m. -- San Francisco S.P.C.A. Mobile Adoption Program, eastern end of John F. Kennedy Drive near the Conservatory of Flowers, Golden Gate Park. 11:15 a.m. - 12 noon -- Kick Off Ceremony of the Chinese New Year Celebration, Union Square, Geary and Powell Streets. Noon - 1:30 p.m. -- Shama Sound Ministries, Inc., Christian Worship Services, Union Square, Geary and Powell Streets. 1-5 p.m. -- 1st of 2 week Quilting",
+    "J.F.K. Drive, Golden Gate Park. 10:30 a.m. and 1:30 p.m. -- Plant Walk, free, Strybing Arboretum Society, meet at the information kiosk, Strybing Arboretum, Golden Gate Park. ' 11 a.m. - 5 p.m. -- San Francisco S.P.C.A. Mobile Adoption Outreach Program, eastern end of Kennedy Drive near the Conservatory of Flowers, Golden Gate Park. (more) 2-2-2 Recreation and Par"
+   ],
    "url": "https://archive.org/details/whatsdoinginpark1983sanf",
    "deep_link": "https://archive.org/details/whatsdoinginpark1983sanf?q=Conservatory+of+Flowers",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
@@ -188,8 +171,8 @@
  ],
  "_gate": {
   "has_photo": true,
-  "n_documents": 4,
+  "n_documents": 2,
   "n_money_links": 1,
-  "meets_pre_summary": true
+  "meets_pre_summary": false
  }
 }

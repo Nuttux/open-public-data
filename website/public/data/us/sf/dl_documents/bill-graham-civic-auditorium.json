@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-21T14:25:53.960240+00:00",
+ "generated_at": "2026-07-22T15:04:53.718853+00:00",
  "slug": "bill-graham-civic-auditorium",
  "name": "Bill Graham Civic Auditorium",
  "note": "Archive documents linked to this place; source labels honour the SFPL-vs-Democracy's-Library distinction.",
@@ -11,12 +11,12 @@
    "year": 1994,
    "pool": "sfpl",
    "matched_alias": "Bill Graham Civic Auditorium",
-   "snippet": "DEPARTMENT OF CONVENTION FACILITIES «BILL GRAHAM CIVIC AUDITORIUM» AND BROOKS EXHIBIT HALL SITES jpartment",
    "url": "https://archive.org/details/drafttransitionp1994sanf",
    "deep_link": "https://archive.org/details/drafttransitionp1994sanf?q=Bill+Graham+Civic+Auditorium",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
    "group": "Plans & environmental review",
-   "salient": true
+   "salient": true,
+   "gloss": "A 1994 Department of Convention Facilities draft transition plan addressing ADA structural changes to the Bill Graham Civic Auditorium and Brooks Exhibit Hall, then under seismic renovation."
   },
   {
    "identifier": "economicperforma1719sanf",
@@ -25,26 +25,12 @@
    "year": 1965,
    "pool": "sfpl",
    "matched_alias": "Civic Auditorium",
-   "snippet": "Palace 111-28 «Civic Auditorium»-Brooks Hall Complex San Francisco «Civic Auditorium» \"has undergone",
    "url": "https://archive.org/details/economicperforma1719sanf",
    "deep_link": "https://archive.org/details/economicperforma1719sanf?q=Civic+Auditorium",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
    "group": "Histories & surveys",
-   "salient": true
-  },
-  {
-   "identifier": "3minutes2000sanf",
-   "title": "Minutes",
-   "creator": "San Francisco (Calif.). Board of Supervisors. Finance and Labor Committee",
-   "year": 1999,
-   "pool": "sfpl",
-   "matched_alias": "Bill Graham Civic Auditorium",
-   "snippet": "operate at Moscone Center or the «Bill Graham Civic Auditorium» and agree to comply with all",
-   "url": "https://archive.org/details/3minutes2000sanf",
-   "deep_link": "https://archive.org/details/3minutes2000sanf?q=Bill+Graham+Civic+Auditorium",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Meetings & resolutions",
-   "salient": true
+   "salient": true,
+   "gloss": "A 1965 Yerba Buena Center facilities study reporting the Warriors' 1964-65 season in the refurbished San Francisco Civic Auditorium, its 1963 closure for remodeling, and the Civic Auditorium-Brooks Hall complex as a major events venue."
   }
  ]
 }

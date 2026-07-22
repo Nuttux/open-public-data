@@ -1,9 +1,23 @@
 {
- "generated_at": "2026-07-21T14:25:53.967470+00:00",
+ "generated_at": "2026-07-22T15:04:53.723436+00:00",
  "slug": "sunol-water-temple",
  "name": "Sunol Water Temple",
  "note": "Archive documents linked to this place; source labels honour the SFPL-vs-Democracy's-Library distinction.",
  "documents": [
+  {
+   "identifier": "sanfranciscopubl2006esaf",
+   "title": "San Francisco Public Utilities Commission Sunol / environmental impact report : comments and responses",
+   "creator": "ESA (Firm),San Francisco Public Utilities Commission",
+   "year": 2006,
+   "pool": "sfpl",
+   "matched_alias": "Sunol Water Temple",
+   "url": "https://archive.org/details/sanfranciscopubl2006esaf",
+   "deep_link": "https://archive.org/details/sanfranciscopubl2006esaf?q=Sunol+Water+Temple",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Plans & environmental review",
+   "salient": true,
+   "gloss": "The 2006 Sunol/Niles dam-removal EIR responses find the Water Temple eligible for the National Register and weigh whether reduced inflows would harm its character-defining water flows."
+  },
   {
    "identifier": "sanfranciscopubl2005sanf",
    "title": "San Francisco Public Utilities Commission Sunol/Niles dam removal project : environmental impact report",
@@ -11,12 +25,12 @@
    "year": 2005,
    "pool": "sfpl",
    "matched_alias": "Sunol Water Temple",
-   "snippet": "infiltration galleries discharges through the «Sunol Water Temple» (Bookman-Edmonston, 1995). After being",
    "url": "https://archive.org/details/sanfranciscopubl2005sanf",
    "deep_link": "https://archive.org/details/sanfranciscopubl2005sanf?q=Sunol+Water+Temple",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
    "group": "Plans & environmental review",
-   "salient": true
+   "salient": true,
+   "gloss": "The 2005 dam-removal EIR describes groundwater discharging through the Sunol Water Temple and cites 1962 and 1965 rehabilitation drawings for it."
   },
   {
    "identifier": "americanswithdis00sanf",
@@ -25,26 +39,12 @@
    "year": 1997,
    "pool": "sfpl",
    "matched_alias": "Sunol Water Temple",
-   "snippet": "Fall/2000 S137,000 YR/2001 «Sunol Water Temple» The «Sunol Water Temple» is closed to the public;",
    "url": "https://archive.org/details/americanswithdis00sanf",
    "deep_link": "https://archive.org/details/americanswithdis00sanf?q=Sunol+Water+Temple",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
    "group": "Plans & environmental review",
-   "salient": true
-  },
-  {
-   "identifier": "sanfranciscopubl2006esaf",
-   "title": "San Francisco Public Utilities Commission Sunol / environmental impact report : comments and responses",
-   "creator": "ESA (Firm),San Francisco Public Utilities Commission",
-   "year": 2006,
-   "pool": "sfpl",
-   "matched_alias": "Sunol Water Temple",
-   "snippet": "the Sunol Valley Filter Beds, the «Sunol Water Temple», the Sunol Aqueduct, the Niles Regulating",
-   "url": "https://archive.org/details/sanfranciscopubl2006esaf",
-   "deep_link": "https://archive.org/details/sanfranciscopubl2006esaf?q=Sunol+Water+Temple",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Plans & environmental review",
-   "salient": true
+   "salient": true,
+   "gloss": "A 1997 ADA transition plan lists the Sunol Water Temple among PUC facilities and notes it is closed to the public, with accessibility folded into its restoration project."
   },
   {
    "identifier": "sanfranciscowate2005hans",
@@ -53,12 +53,12 @@
    "year": 2005,
    "pool": "sfpl",
    "matched_alias": "Sunol Water Temple",
-   "snippet": "Zone 7. «SUNOL WATER TEMPLE» The Spring Valley Water Company built the «Sunol Water Temple» in 1910",
    "url": "https://archive.org/details/sanfranciscowate2005hans",
    "deep_link": "https://archive.org/details/sanfranciscowate2005hans?q=Sunol+Water+Temple",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
    "group": "Histories & surveys",
-   "salient": true
+   "salient": true,
+   "gloss": "A 2005 municipal water history recounts the Spring Valley Water Company building the temple in 1910 to Willis Polk's design, its 1989 earthquake damage, and 2001 restoration."
   },
   {
    "identifier": "agenda20arts_9",
@@ -67,12 +67,12 @@
    "year": 1983,
    "pool": "sfpl",
    "matched_alias": "Sunol Water Temple",
-   "snippet": "//thecity.sfsu.edu/sfac/ the «Sunol Water Temple». The «Sunol Water Temple» is an icon for the Water",
    "url": "https://archive.org/details/agenda20arts_9",
    "deep_link": "https://archive.org/details/agenda20arts_9?q=Sunol+Water+Temple",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
    "group": "Meetings & resolutions",
-   "salient": true
+   "salient": true,
+   "gloss": "A 1983 Arts Commission agenda addresses use of art-enrichment funds to restore the murals at the Sunol Water Temple, an \"icon for the Water Department.\""
   },
   {
    "identifier": "aminutes1996sanf",
@@ -81,12 +81,12 @@
    "year": null,
    "pool": "sfpl",
    "matched_alias": "Sunol Water Temple",
-   "snippet": "Commission, asked if the rebuilding of the «Sunol Water Temple» was included in the budget. Speaking",
    "url": "https://archive.org/details/aminutes1996sanf",
    "deep_link": "https://archive.org/details/aminutes1996sanf?q=Sunol+Water+Temple",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
    "group": "Meetings & resolutions",
-   "salient": true
+   "salient": true,
+   "gloss": "Public Utilities Commission minutes record direction to restore the Sunol Water Temple as part of the Sunol Valley Resource Management Plan, though restoration was \"not in the budget.\""
   },
   {
    "identifier": "alamedawatershe1998sanf_3",
@@ -95,12 +95,12 @@
    "year": null,
    "pool": "sfpl",
    "matched_alias": "Sunol Water Temple",
-   "snippet": "leased from the SFWD. 1.3.7 «Sunol Water Temple» The «Sunol Water Temple» is located at the SFWD",
    "url": "https://archive.org/details/alamedawatershe1998sanf_3",
    "deep_link": "https://archive.org/details/alamedawatershe1998sanf_3?q=Sunol+Water+Temple",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
    "group": "Other records",
-   "salient": false
+   "salient": false,
+   "gloss": "A watershed management plan describes the filter galleries converging at the Sunol Water Temple and the adjacent Sunol Pump Station."
   }
  ]
 }

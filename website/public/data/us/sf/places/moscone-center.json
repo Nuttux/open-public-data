@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-21T14:25:53.962187+00:00",
+ "generated_at": "2026-07-22T15:04:53.719771+00:00",
  "source_pipeline": "sf_place_candidates.json → sync_ia_sf.py + link_sf_places.py + fetch_sf_place_photos.py → export_sf_places.py",
  "unit": "USD",
  "slug": "moscone-center",
@@ -276,7 +276,7 @@
   "author": "9yz",
   "fetched_at": "2026-07-20T22:19:03.724145+00:00"
  },
- "summary_en": "Archived records document the Moscone Center largely through its expansion: Board of Supervisors minutes and a Board journal on financing the George R. Moscone Convention Center expansion, several Yerba Buena Center environmental impact reports covering the convention center's construction and growth, and Arts Commission Visual Arts Committee agendas on art-enrichment commissions for the site. The center is under the City Administrator (ADM), whose FY2025 budget line totaled $288M. The place file records no contracts naming it.",
+ "summary_en": "The Moscone Center's record centers on building and expanding it. A 1991 environmental report notes the 1978 review analyzed the George R. Moscone Convention Center, which \"was opened on December 10, 1981,\" and a 1992 report describes voters approving the underground expansion of exhibit and meeting space. A 1988 Board of Supervisors journal logs ordinances financing the expansion, and 2001 Finance Committee minutes record a design agreement with Gensler amended to a total not exceeding $15,026,326, with floor area growing from 570,000 to 780,000 square feet. City permit data lists 145 permits totaling about $559 million declared, including a 2015 renovation declared at $266,061,486. It falls under the City Administrator, whose FY2025 budget line is $288M.",
  "published": true,
  "money": {
   "budget_line": {
@@ -297,32 +297,18 @@
  },
  "documents": [
   {
-   "identifier": "yerbabuenacenter4198sanf",
-   "title": "Yerba Buena Center environmental impact report : second supplement, final",
-   "creator": "San Francisco (Calif.). City Planning Commission,San Francisco Redevelopment Agency (San Francisco, Calif.)",
-   "year": 1983,
-   "pool": "sfpl",
-   "matched_alias": "Moscone Convention Center",
-   "snippet": "environmental effects of the then-proposed «Moscone Convention Center» and alternative development scenarios",
-   "url": "https://archive.org/details/yerbabuenacenter4198sanf",
-   "deep_link": "https://archive.org/details/yerbabuenacenter4198sanf?q=Moscone+Convention+Center",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Plans & environmental review",
-   "salient": true
-  },
-  {
    "identifier": "yerbabuenacenter2419sanf",
    "title": "Yerba Buena Center : subsequent environmental impact report : summary of comments and responses",
    "creator": "San Francisco Redevelopment Agency (San Francisco, Calif.),San Francisco (Calif.) Planning Dept",
    "year": 1992,
    "pool": "sfpl",
    "matched_alias": "Moscone Center",
-   "snippet": "and special events at «Moscone Center». Since the «Moscone Center» is already built and operating",
    "url": "https://archive.org/details/yerbabuenacenter2419sanf",
    "deep_link": "https://archive.org/details/yerbabuenacenter2419sanf?q=Moscone+Center",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
    "group": "Plans & environmental review",
-   "salient": true
+   "salient": true,
+   "gloss": "A 1992 EIR summary describing voter-approved underground expansion of the convention center on block CB-2."
   },
   {
    "identifier": "yerbabuenacenter1219sanf",
@@ -331,40 +317,12 @@
    "year": 1991,
    "pool": "sfpl",
    "matched_alias": "Moscone Center",
-   "snippet": "Rooms and the «Moscone Center» Underground Expansion on CB-2; «Moscone Center» Expansion on CB-3;",
    "url": "https://archive.org/details/yerbabuenacenter1219sanf",
    "deep_link": "https://archive.org/details/yerbabuenacenter1219sanf?q=Moscone+Center",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
    "group": "Plans & environmental review",
-   "salient": true
-  },
-  {
-   "identifier": "journalofjanaprproceed83sanfrich",
-   "title": "Journal of proceedings, Board of Supervisors, City and County of San Francisco",
-   "creator": "San Francisco (Calif.). Board of Supervisors",
-   "year": 1988,
-   "pool": "sfpl",
-   "matched_alias": "George R. Moscone Convention Center",
-   "snippet": "financing of the expansion to the «George R. Moscone Convention Center». (Supervisor Molinari presented",
-   "url": "https://archive.org/details/journalofjanaprproceed83sanfrich",
-   "deep_link": "https://archive.org/details/journalofjanaprproceed83sanfrich?q=George+R.+Moscone+Convention+Center",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Meetings & resolutions",
-   "salient": true
-  },
-  {
-   "identifier": "agenda19arts_26",
-   "title": "Agenda",
-   "creator": "Arts Commission of San Francisco. Visual Arts Committee",
-   "year": 1983,
-   "pool": "sfpl",
-   "matched_alias": "Moscone Convention Center",
-   "snippet": "VII. «Moscone Convention Center» Tonia Macneil , Jill Manton A. «Moscone Convention Center» Expansion",
-   "url": "https://archive.org/details/agenda19arts_26",
-   "deep_link": "https://archive.org/details/agenda19arts_26?q=Moscone+Convention+Center",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Meetings & resolutions",
-   "salient": true
+   "salient": true,
+   "gloss": "A 1991 subsequent EIR recording that the Moscone Convention Center opened December 10, 1981."
   },
   {
    "identifier": "4minutes2001sanf",
@@ -373,12 +331,26 @@
    "year": 1997,
    "pool": "sfpl",
    "matched_alias": "Moscone Center",
-   "snippet": "of the «Moscone Center» Expansion Project. The total costs of the «Moscone Center» Expansion",
    "url": "https://archive.org/details/4minutes2001sanf",
    "deep_link": "https://archive.org/details/4minutes2001sanf?q=Moscone+Center",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
    "group": "Meetings & resolutions",
-   "salient": true
+   "salient": true,
+   "gloss": "2001 Finance Committee minutes on the Gensler design agreement for the Moscone expansion, amended to a $15,026,326 total."
+  },
+  {
+   "identifier": "journalofjanaprproceed83sanfrich",
+   "title": "Journal of proceedings, Board of Supervisors, City and County of San Francisco",
+   "creator": "San Francisco (Calif.). Board of Supervisors",
+   "year": 1988,
+   "pool": "sfpl",
+   "matched_alias": "George R. Moscone Convention Center",
+   "url": "https://archive.org/details/journalofjanaprproceed83sanfrich",
+   "deep_link": "https://archive.org/details/journalofjanaprproceed83sanfrich?q=George+R.+Moscone+Convention+Center",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Meetings & resolutions",
+   "salient": true,
+   "gloss": "A 1988 Board of Supervisors journal of ordinances financing the George R. Moscone Convention Center expansion via leases and bonds."
   }
  ],
  "dept_shelf": [
@@ -418,7 +390,7 @@
  ],
  "_gate": {
   "has_photo": true,
-  "n_documents": 6,
+  "n_documents": 4,
   "n_money_links": 1,
   "meets_pre_summary": true
  }

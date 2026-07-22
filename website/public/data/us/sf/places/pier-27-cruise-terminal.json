@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-21T14:25:53.974984+00:00",
+ "generated_at": "2026-07-22T15:04:53.728679+00:00",
  "source_pipeline": "sf_place_candidates.json → sync_ia_sf.py + link_sf_places.py + fetch_sf_place_photos.py → export_sf_places.py",
  "unit": "USD",
  "slug": "pier-27-cruise-terminal",
@@ -180,29 +180,41 @@
  },
  "documents": [
   {
-   "identifier": "sanfranciscocrui2120sanf",
-   "title": "San Francisco cruise terminal mixed-use project and Brannan Street wharf project : final supplemental environmental impact report",
-   "creator": "San Francisco (Calif.). Planning Dept",
-   "year": 2002,
-   "pool": "sfpl",
-   "matched_alias": "San Francisco Cruise Terminal",
-   "snippet": "San Francisco Planning Department «SAN FRANCISCO CRUISE TERMINAL» MIXED-USE PROJEa AND BRANNAN STREET",
-   "url": "https://archive.org/details/sanfranciscocrui2120sanf",
-   "deep_link": "https://archive.org/details/sanfranciscocrui2120sanf?q=San+Francisco+Cruise+Terminal",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Plans & environmental review",
-   "salient": true
-  },
-  {
    "identifier": "draftenvironment5120sanf",
    "title": "Draft environmental impact report : the 34th America's Cup & James R. Herman Cruise Terminal and Northeast Wharf Plaza",
    "creator": "San Francisco (Calif.). Planning Dept,San Francisco (Calif.). City Attorney's Office,Port of San Francisco (Calif.),Environmental Science Associates,Orion Environmental Associates,Applied Marine Sciences,Coast and Harbor Engineering,Geotechnical Consultants, Inc,Hydroconsult Engineers, Inc,Natalie Macris Writing & Editing,Adavant Consulting,Boudreau Associates, LLC,ENVIRON Corporation,LCW Consulting,Yuki Kawaguchi, Cartographer,San Francisco (Calif.). Mayor's Office of Economic and Workforce Development,34th America's Cup Event Authority,America's Cup Organizing Committee,AECOM Consult, Inc,KMD Architects & Pfau Long Architecture,Premier Structures,Gibson, Dunn & Crutcher",
    "year": 2011,
    "pool": "sfpl",
    "matched_alias": "James R. Herman Cruise Terminal",
-   "snippet": "0493E 34th America's Cup and «James R. Herman Cruise Terminal» and Northeast Wharf Plaza Projects",
+   "ocr_excerpts": [
+    "from the library SAN FRANCISCO PLANNING DEPARTMENT December 1, 2011 To: Members of the Planning Commission and Interested Parties From: Bill Wycko, Environmental Review Officer Re: Attached Comments and Responses on Draft Environmental Impact Report Case No. 2010.0493E 34th America's Cup and James R. Herman Cruise Terminal and Northeast Wharf Plaza Projects 1650 Mission St. Suite 400 San Francisco, CA 94103-2479 Reception: 415.558.6378 Fax: 415.558.6409 Planning Information: 415.558.6377 Attached for your review please find a copy of the Comments and Responses document for the Draft Environmental Impact Report (EIR",
+    "ST 25, 2011 COMMENTS AND RESPONSES PUBLICATION DATE: DECEMBER 1, 2011 FINAL EIR CERTIFICATION DATE: DECEMBER 15, 2011 SAN FRANCISCO PLANNING DEPARTMENT Digitized by the Internet Archive in 2014 https://archive.org/details/draftenvironment5120sanf TABLE OF CONTENTS The 34th America's Cup Races and James R. Herman Cruise Terminal and Northeast Wharf Plaza Comments and Responses Document Page Volume 5 9. Introduction to Comments and Responses 9-1 9.1 Purpose of the Comments and Responses Document 9-1 9.2 Environmental Review Process 9-2 9.2.1 Notice of Preparation and Public Scoping 9-2 9.2.2 Draft EIR Public Review 9-2",
+    "3.2 Environmental Effects of the AC34 Project Variant 11-72 11.4 Cruise Terminal Project Variant 11-102 11.4.1 Description of Cruise Terminal Project Variant 11-102 11.4.2 Environmental Effects of the Cruise Terminal Project Variant 11-107 Case No. 2010.0493E 210317 i The 34th America's Cup and James R. Herman Cruise Terminal and Northeast Wharf Plaza Table of Contents Page Volume 5 (continued) 11. Project Updates and New Project Variants (continued) 11.5 Reduced Intensity AC34 and Long-Term Development Sub-Alternative 11-115 11.5.1 Description of the Reduced Intensity AC34 and Long-Term Development Sub-Alternative 11-",
+    "Overview 12.6-1 12.6.1 Overview of Comments on Impact Overview 12.6-1 12.6.2 Scope of the Analysis [IO-l] 12.6-1 12.6.3 Significance Criteria and Significance Determinations [IO-2] 12.6-6 12.6.4 Analysis of Secondary Viewing Areas [IO-3] 12.6-7 Case No. 2010.0493E 210317 The 34th America's Cup and James R. Herman Cruise Terminal and Northeast Wharf Plaza Table of Contents Page Volume 5 (continued) 12. Responses to Comments (continued) 12.6 Impact Overview (cont.) 12.6.5 Mitigation Measures [IO-4] 12.6-12 12.6.6 Project-Level Analysis of AC34 Events and Conceptual Analysis of Long-Term Development Rights [IO-5] 12.6-19",
+    "ne Office Building) [CP-3] 12.10-10 12.10.5 Impacts on Embarcadero Historic District, Including Piers 26, 28, 19, and 23, and Bulkhead Wharves [CP-4] 12.10-18 12.10.6 Impacts on Aquatic Park, Fort Mason, and Marina Green [CP-5] 12.10-27 Case No. 2010.0493E 210317 iii The 34th America's Cup and James R."
+   ],
    "url": "https://archive.org/details/draftenvironment5120sanf",
    "deep_link": "https://archive.org/details/draftenvironment5120sanf?q=James+R.+Herman+Cruise+Terminal",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Plans & environmental review",
+   "salient": true
+  },
+  {
+   "identifier": "sanfranciscocrui2120sanf",
+   "title": "San Francisco cruise terminal mixed-use project and Brannan Street wharf project : final supplemental environmental impact report",
+   "creator": "San Francisco (Calif.). Planning Dept",
+   "year": 2002,
+   "pool": "sfpl",
+   "matched_alias": "San Francisco Cruise Terminal",
+   "ocr_excerpts": [
+    ",A:/:R.'r;i 'SirO PUBLIC LIBRARY 3 1223 05953 7697 San Francisco Planning Department SAN FRANCISCO CRUISE TERMINAL MIXED-USE PROJEa AND BRANNAN STREET WHARF PROJEa Fiml Supplemental Environmental Impact Report documents dept. APR 1 6 2003 2000.1229E SAN FRANCISCO PUBL-ie LIBRARY Waterfront Land Use Plan FEIR Certification Date: January 9, 1997 Draft SEIR Publication Date: November 17, 2001 Draft SEIR Public",
+    ", 2001 Draft SEIR Public Comment Period: November 17, 2001 to January 2, 2002 SEIR Certification Date: November 21, 2002 State Clearinghouse No.: 1994123007 GOVERNMENT IHfORMATiOIUE.^ SAN FRANCISCO PUBLIC m^': REFERENCE BOOK Not to be taken from the Library November 21, 2002 File No.: 2000.1229E San Francisco Cruise Terminal Mixed-Use Project and Brannan Street Wharf Project Assessor's Block 9900, Lots 30, 32, 34 and 36, Block 3770, Lots 1 and 2, and Block 3771, Lot 1 SAN FRANCISCO CITY PLANNING COMMISSION MOTION NO. 16480 ADOPTING FINDINGS RELATED TO THE CERTIFICATION OF A FINAL SUPPLEMENTAL ENVIRONMENTAL IMPACT REP",
+    "ND 36, IN THE PORT OF SAN FRANCISCO, IN THE CITY AND COUNTY OF SAN FRANCISCO. MOVED, That the San Francisco Planning Commission (hereinafter \"Commission\") hereby CERTIFIES the Final Supplemental Environmental Impact Report identified as case file No. 2000.1229E (State Clearinghouse No. 1994123007) , the San Francisco Cruise Terminal Mixed-Use Project and Brannan Street Wharf Project (hereinafter \"Project\") based upon the following findings: 1) The City and County of San Francisco, acting through the Planning Department (hereinafter \"Department\") fulfilled all procedural requirements of the California Environmental Quality Act (Ca",
+    "On November 17, 2001, the Department published the Draft Supplemental Environmental Impact Report (hereinafter \"DSEIR\") and provided public notice in a newspaper of general circulation of the availability of the DSEIR for public review and comment and of the PLANNING COMMISSION File No.: 2000. 1229E San Francisco Cruise Terminal Mixed-Use Project and Brannan Street Wharf Project Assessor's Block 9900, Lots 30, 32, 34 and 36, Block 3770, Lots 1 and 2, and Block 3771, Lot 1 Motion No. 16480 Page 2 date and time of the Planning Commission public hearing on the DSEIR; this notice was mailed to the Department's list of per",
+    "5) By letter to the Clerk of the Board of Supervisors dated May 28, 2002, Bluewater Network filed a timely appeal of the Commission's FSEIR certification to the Board of Supervisors pursuant to Administrative Code Section 31.16(a); and 3 1223 05953 7697 PLANNING COMMISSION File No.: 2000.1 229E San Francisco Cruise Terminal Mixed-Use Project and Brannan Street Wharf Project Assessor's Block 9900, Lots 30, 32, 34 and 36, Block 3770, Lots 1 and 2, and Block 377 1 , Lot 1 Motion No. 16480 Page 3 6) The"
+   ],
+   "url": "https://archive.org/details/sanfranciscocrui2120sanf",
+   "deep_link": "https://archive.org/details/sanfranciscocrui2120sanf?q=San+Francisco+Cruise+Terminal",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
    "group": "Plans & environmental review",
    "salient": true
@@ -214,7 +226,11 @@
    "year": 2001,
    "pool": "sfpl",
    "matched_alias": "San Francisco Cruise Terminal",
-   "snippet": "San Francisco Planning Department «SAN FRANCISCO CRUISE TERMINAL» MIXED-USE PROJECT AND iE ____",
+   "ocr_excerpts": [
+    "San Francisco Planning Department SAN FRANCISCO CRUISE TERMINAL MIXED-USE PROJECT AND iE ____ _ . „ B _ M BMW DOCUMENTS DEPT. BRANNAN STREET WHARF PROJECT NOV 1 6 20G1 Draft Supplemental Environmental Impact Report san francisco PUBLIC LIBRARY 2000.1229E _ Waterfront Land Use Plan FEIR Certification Date: January 9, 1997 Draft SEIR Publication Date: November 17, 2001 Draft SEIR Public Hearing Date: December 20, 2001 Draft SEIR Public Comment Period: November 17, 2001 to January 2, 2002 State Clearinghouse No.: 1994123007 - 7 2002 DATE: November 1 7, 200 1 TO: Distribution List for the San Francisco Cruise Terminal Mixed-Use Project and Brannan Street Wharf Project Draft SEIR FROM: Paul Maltzer, Environmental Review Officer SUBJECT: Request for the Final Supplemental Environmental Impact Report for the San Francisco Cruise Terminal Mixed-Use Project and Brannan Street Wharf Project (Case No. 00.1229E) This is the Draft of the Supplemental Environmental Impact Report (SEIR) for two separate but related projects, the San Francisco Cruise Terminal Mixed-Use Project and the Brannan Street Wharf Project. A public hearing will be held on the adequacy and accuracy of this document. After the public hearing, our office will prepare and publish a document titled \"Summary of Comments and Responses\" which will contain a summary of all relevant commen",
+    "tification of the SEIR. Any private party not requesting a Final EIR by that time will not be mailed a copy. Thank you for your interest in this project. Digitized by the Internet Archive in 2014 https://archive.org/details/sanfranciscocrui1720sanf ■ 4 I ii San Francisco Planning Department 4 SAN FRANCISCO CRUISE TERMINAL I MIXED-USE PROJECT AND * BRANNAN STREET WHARF PROJECT ( Draft Supplemental Environmental Impact Report 4 2000.1229E 4 • Waterfront Land Use Plan FEIR Certification Date: January 9, 1997 Draft SEIR Publication Date: November 17, 2001 Draft SEIR Public Hearing Date: December 20, 2001 JJ J Draft SEIR Public Comment Period: November 17, 2001 to January 2, 2002 4 4 4 4 4 4 4 4 State Clearinghouse No.: 1994123007 This report has been primed on post-consumer recycled paperlESA 990459 3 1223 06008 0315 TABLE OF CONTENTS SAN FRANCISCO CRUISE TERMINAL MIXED-USE PROJECT AND BRANNAN STREET WHARF PROJECT DRAFT SUPPLEMENTAL ENVIRONMENTAL IMPACT REPORT Page INTRODUCTION vi I. SUMMARY S-l II. PROJECT DESCRIPTION 1 A. Overview B. Site Location and Existing Conditions 1 C. Project Sponsors' Objectives 3 D. Project Characteristics and Approvals Req",
+    "asible 179 2. No Project Alternative 182 3. Seawall Lot Hotel Alternative 183 4. Pier 30-32 Reduced Intensity Alternative 186 5. Seawall Lot Reduced Intensity Alternative 189 B. Brannan Street Wharf Project 192 1. No Project Alternative 192 2. Reduced Fill Alternative 193 C"
+   ],
    "url": "https://archive.org/details/sanfranciscocrui1720sanf",
    "deep_link": "https://archive.org/details/sanfranciscocrui1720sanf?q=San+Francisco+Cruise+Terminal",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
@@ -228,7 +244,12 @@
    "year": null,
    "pool": "sfpl",
    "matched_alias": "Pier 27",
-   "snippet": "Informational Presentation regarding the «James R. Herman Cruise Terminal» business model for cruise terminal",
+   "ocr_excerpts": [
+    "al presentation on Pilot Donor Recognition Program for the Port of San Francisco at Piers 27/29. 6. MARITIME A. Informational presentation on the commercial maritime activities of San Francisco Bay Railroad located at 100 Cargo Way @ Pier 96 rail yard. 7. ENGINEERING A. Informational update on Pier 27 Cruise Terminal for use during the 34'^ America's Cup Events and other matters relating to the 34'^ America's Cup Events. 8. PLANNING AND DEVELOPMENT A. Informational presentation on Ferry Building Plaza Activation Proposal by Equity Office Partners. 9. FINANCE AND ADMINISTRATION A. Request appro",
+    "ecretary at 274-0406. 12. ADJOURNMENT A04092013 -2- FORWARD CALENDAR (TARGETED COMMISSION MEETING, SUBJECT TO CHANGE) APRIL 23, 2013 FACILITY/POLICY ITEM TITLE 1 Pier 70 Waterfront Site (Forest City) informational Presentation on Forest City's term sheet for the Pier 70 Waterfront Site 2 Pier 27 Informational Presentation regarding the James R. Herman Cruise Terminal business model for cruise terminal operations, special event and parking management 3 Portwide Action Approval of (1) proposed 2013 Port Revenue Bonds for Phase II of the James R Herman Cruise Terminal project, (2) an appropriation ordinance to reallocate Series 1 2A and 1 2B Certificates of Partic",
+    ") soliciting As-Needed Environmental and related Professional Services for three contracts at $1 million each, totaling $3 million MAY 14, 2013 FACILITY/POLICY ITEM TITLE 1 Piers 30-32 Informational Presentation on updated architectural renderings for the Piers 30-32 Multi-Purpose Venue Project 2 Pier 27 Informational Presentation introducing the cruise terminal, special event, and parking management team bidders for the James R. Herman Cruise Terminal 3 Pier 70 Action Approval of Forest City's term sheet for the Pier 70 Waterfront Site 4 Fisherman's Wharf Action Approval of a resolution replacing Port Commission Resolution 95-56 to approve street artists spaces for the Fisherman's Wharf area under the City's Street Artist Program and adopti",
+    "te a Mutual Termination Agreement with Literacy for Environmental Justice for termination of Lease L-13816, which includes the \"EcoCenter at Heron's Head Park\" and surrounding 6,058 square feet of non-exclusive license area, subject to Board of Supervisors approval of the Mutual Termination Agreement 4 Pier 27 Action Authorization to negotiate the James R. Herman Cruise Terminal management agreement with the highest ranked management team bidder JUNE 11, 2013 FACILITY/POLICY ITEM TITLE 1 Pier 27 Informational Presentation of the business terms negotiated with the highest ranked James R. Herman Cruise Terminal management team bidder 2 Pier 38 Informational Presentation introducing the bidders for the rehabilitation of Pier 38 3 Portwide Action Approval of the Fiscal Year"
+   ],
    "url": "https://archive.org/details/agenda2013sanf_0",
    "deep_link": "https://archive.org/details/agenda2013sanf_0?q=Pier+27",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
@@ -242,40 +263,18 @@
    "year": null,
    "pool": "sfpl",
    "matched_alias": "Pier 27",
-   "snippet": "opportunities at «Pier 27» to develop a more robust event program. For example, the «Pier 27» Ground",
+   "ocr_excerpts": [
+    "ule the matter for a future agenda, refer the matter to staff for investigation or respond briefly to statements made or questions posed by members of the public. (Government Code Section 54954.2(a)) 6. EXECUTIVE A. Executive Director’s Report • Free Symphony in the Park at Cruise Terminal Plaza at Pier 27 - July 12, 2015 at 12 noon • Cancellation of Port Commission meeting - August 1 1 , 201 5 • Bayview Rise - Selected by the Public Art Network as one of the best public art projects in the country • Anniversary of the opening of the Embarcadero Roadway • In Memoriam - LeRoy King, a longtime Bay Are",
+    "TIME A. Request authorization to execute a Contract Modification to Construction Contract No. 2746, Maintenance Dredging 2011-2015 Project with Dutra Dredging Company, to increase the contract amount by $1,200,000 to a Total Contract Amount of $17,101 ,050. (Resolution No. 15-24) B. Status report on the James R. Herman Cruise Terminal and Pier 35 Activity for the period of September 2014 to June 2015. 10. NEW BUSINESS 11. ADJOURNMENT Adjourn the meeting in memory of LeRoy King, a longtime Bay Area labor leader, civil rights advocate and former Commissioner of the San Francisco Redevelopment Agency and Port Tenant Michael Comaic",
+    "ting of the 34th America’s Cup was not yet known. Subsequently, as part of the operational requirements of the America’s Cup, dredging was required at Piers 30/32 thus increasing our dredging expenses. Therefore, our remaining contract funds are insufficient for upcoming dredging events at Pier 35 and Pier 27 which are scheduled to be dredged between October and November of 2015. The requested increase of $1,200,000 in contract value is necessary to complete the originally contemplated dredging activities for this calendar year and the contract period. 1 http://www.sfport.com/ModuIes/ShowDocument.aspx?documentid=",
+    "aff desires to increase the Maintenance Dredging contract amount by $1,200,000, which would result in a new authorized contract amount of $17,101 ,050; and WHEREAS, The new contract amount will enable the Port to direct Dutra Dredging Company to conduct scheduled dredging work in 201 5 at Pier 35 and Pier 27, which are critical to the Port’s maritime operations, and other locations to be determined by staff; now, therefore be it RESOLVED, That the Port Commission hereby authorizes staff to execute a Contract Modification for the Contract No. 2746, Maintenance Dredging 2011-2015 Project with Dutra Dredging",
+    "Commission at its meeting of June 23, 2015. Secretary -4- _PORT2i_ SAN FRANCISCO MEMORANDUM June 18, 2015 TO: MEMBERS, PORT COMMISSION Hon. Leslie Katz, President Hon. Willie Adams, Vice President Hon. Kimberly Brandon Hon. Mel Murphy Hon. Doreen Woo Ho SUBJECT: Status report on the James R. Herman Cruise Terminal and Pier 35"
+   ],
    "url": "https://archive.org/details/agendasminutess2015sanf_4",
    "deep_link": "https://archive.org/details/agendasminutess2015sanf_4?q=Pier+27",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
    "group": "Meetings & resolutions",
    "salient": true
-  },
-  {
-   "identifier": "minutes1999sanf_0",
-   "title": "Minutes",
-   "creator": "San Francisco Port Commission",
-   "year": null,
-   "pool": "sfpl",
-   "matched_alias": "Pier 27",
-   "snippet": "Pier 35 Gangway repair 50,000 «Pier 27»/29 Sewer Main 130,000 «Pier 27»/29 Water Main and Backflow",
-   "url": "https://archive.org/details/minutes1999sanf_0",
-   "deep_link": "https://archive.org/details/minutes1999sanf_0?q=Pier+27",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Meetings & resolutions",
-   "salient": true
-  },
-  {
-   "identifier": "port1980port",
-   "title": "The port",
-   "creator": "Port of San Francisco (Calif.)",
-   "year": null,
-   "pool": "sfpl",
-   "matched_alias": "Pier 27",
-   "snippet": "Francisco Belt Railroad Tracks BREAKBULK TERMINAL- «PIER 27»-29 OPERATOR: Pacific-Oriental Terminal Company",
-   "url": "https://archive.org/details/port1980port",
-   "deep_link": "https://archive.org/details/port1980port?q=Pier+27",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Other records",
-   "salient": false
   }
  ],
  "dept_shelf": [
@@ -315,7 +314,7 @@
  ],
  "_gate": {
   "has_photo": false,
-  "n_documents": 7,
+  "n_documents": 5,
   "n_money_links": 3,
   "meets_pre_summary": false
  }

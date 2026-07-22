@@ -1,16 +1,13 @@
 {
- "generated_at": "2026-07-21T14:25:54.016967+00:00",
+ "generated_at": "2026-07-22T15:25:07.877979+00:00",
  "note": "Maps money entities to PUBLISHED places only (publication guard). A chip renders only if its target slug is in `places`.",
  "places": [
   "balboa-park-station",
-  "bill-graham-civic-auditorium",
   "buena-vista-park",
   "cable-car-barn",
   "coit-tower",
-  "conservatory-of-flowers",
   "davies-symphony-hall",
   "de-young-museum",
-  "ferry-building",
   "glen-canyon-park",
   "golden-gate-park",
   "hetch-hetchy",
@@ -27,34 +24,25 @@
   "portsmouth-square",
   "san-francisco-zoo",
   "sf-main-library",
-  "sunol-water-temple",
-  "union-square"
+  "sunol-water-temple"
  ],
  "by_contract": {
-  "1000024234": "bill-graham-civic-auditorium",
   "1000033261": "hetch-hetchy",
   "1000032312": "laguna-honda-hospital",
   "1000021904": "laguna-honda-hospital",
   "1000025304": "mission-dolores-park",
   "1000036809": "portsmouth-square",
   "1000036810": "portsmouth-square",
-  "1000022761": "sf-main-library",
-  "1000034564": "union-square",
-  "1000038257": "union-square"
+  "1000022761": "sf-main-library"
  },
  "by_dept": {
   "MTA": [
    "balboa-park-station",
    "cable-car-barn"
   ],
-  "ADM": [
-   "bill-graham-civic-auditorium",
-   "moscone-center"
-  ],
   "REC": [
    "buena-vista-park",
    "coit-tower",
-   "conservatory-of-flowers",
    "glen-canyon-park",
    "golden-gate-park",
    "japanese-tea-garden",
@@ -63,8 +51,7 @@
    "mclaren-park",
    "mission-dolores-park",
    "portsmouth-square",
-   "san-francisco-zoo",
-   "union-square"
+   "san-francisco-zoo"
   ],
   "WAR": [
    "davies-symphony-hall"
@@ -73,17 +60,19 @@
    "de-young-museum",
    "legion-of-honor"
   ],
-  "PRT": [
-   "ferry-building",
-   "pier-39",
-   "pier-70"
-  ],
   "PUC": [
    "hetch-hetchy",
    "sunol-water-temple"
   ],
   "DPH": [
    "laguna-honda-hospital"
+  ],
+  "ADM": [
+   "moscone-center"
+  ],
+  "PRT": [
+   "pier-39",
+   "pier-70"
   ],
   "LIB": [
    "sf-main-library"

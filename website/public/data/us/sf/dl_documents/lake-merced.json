@@ -1,23 +1,9 @@
 {
- "generated_at": "2026-07-21T14:25:53.939223+00:00",
+ "generated_at": "2026-07-22T15:04:53.704497+00:00",
  "slug": "lake-merced",
  "name": "Lake Merced",
  "note": "Archive documents linked to this place; source labels honour the SFPL-vs-Democracy's-Library distinction.",
  "documents": [
-  {
-   "identifier": "sanfranciscogrou1996sanf",
-   "title": "San Francisco groundwater master plan : draft / prepared by San Francisco Water Department",
-   "creator": "San Francisco Water Department",
-   "year": null,
-   "pool": "sfpl",
-   "matched_alias": "Lake Merced",
-   "snippet": "of «Lake Merced» 5-2 5-4 Areas Evaluated by City Groundwater Models 5-3 5-5a «Lake Merced» is",
-   "url": "https://archive.org/details/sanfranciscogrou1996sanf",
-   "deep_link": "https://archive.org/details/sanfranciscogrou1996sanf?q=Lake+Merced",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Plans & environmental review",
-   "salient": true
-  },
   {
    "identifier": "sanfranciscomast1573sanf",
    "title": "San Francisco master plan for waste water management",
@@ -25,12 +11,26 @@
    "year": 1973,
    "pool": "sfpl",
    "matched_alias": "Lake Merced",
-   "snippet": "large treatment plant best located at the «Lake Merced» (south of the zoo) site, and a deep",
    "url": "https://archive.org/details/sanfranciscomast1573sanf",
    "deep_link": "https://archive.org/details/sanfranciscomast1573sanf?q=Lake+Merced",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
    "group": "Plans & environmental review",
-   "salient": true
+   "salient": true,
+   "gloss": "A 1973 waste-water master plan sites the city's single large treatment plant at the Lake Merced area (south of the zoo), sized to treat one billion gallons per day in wet weather."
+  },
+  {
+   "identifier": "sanfranciscogrou1996sanf",
+   "title": "San Francisco groundwater master plan : draft / prepared by San Francisco Water Department",
+   "creator": "San Francisco Water Department",
+   "year": null,
+   "pool": "sfpl",
+   "matched_alias": "Lake Merced",
+   "url": "https://archive.org/details/sanfranciscogrou1996sanf",
+   "deep_link": "https://archive.org/details/sanfranciscogrou1996sanf?q=Lake+Merced",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Plans & environmental review",
+   "salient": true,
+   "gloss": "A groundwater master plan tracks changes in Lake Merced's surface elevation and calls for field investigation and modeling to help restore the lake's water levels."
   },
   {
    "identifier": "annualreport196164sanf",
@@ -39,12 +39,12 @@
    "year": 1965,
    "pool": "sfpl",
    "matched_alias": "Lake Merced",
-   "snippet": "Miscellaneous Concessions ) 18,638) «Lake Merced» Center Rentals) 1,783) «Lake Merced» Concessions ) 33,600",
    "url": "https://archive.org/details/annualreport196164sanf",
    "deep_link": "https://archive.org/details/annualreport196164sanf?q=Lake+Merced",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
    "group": "Reports & records",
-   "salient": true
+   "salient": true,
+   "gloss": "A 1965 Recreation and Park annual report logs Lake Merced's aquatic attendance (122,658) and fishing-permit revenue ($6,302) and repairs to floats at the lake."
   },
   {
    "identifier": "lakemercedwaters99camp",
@@ -53,54 +53,12 @@
    "year": 1999,
    "pool": "sfpl",
    "matched_alias": "Lake Merced",
-   "snippet": "Within «Lake Merced» Watershed 2-2 2-6 Wildlife Habitats at «Lake Merced» 2-3 2-7 «Lake Merced» Major",
    "url": "https://archive.org/details/lakemercedwaters99camp",
    "deep_link": "https://archive.org/details/lakemercedwaters99camp?q=Lake+Merced",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
    "group": "Other records",
-   "salient": true
-  },
-  {
-   "identifier": "lakemercedwaterr1993sanf",
-   "title": "Lake Merced water resource planning study",
-   "creator": "San Francisco Water Department,prepared by GEO/Resource Consultants, Inc. in association with Montgomery/Watson, Jones and Stokes Associates, Inc., Public Affairs Management",
-   "year": null,
-   "pool": "sfpl",
-   "matched_alias": "Lake Merced",
-   "snippet": "Decline In «Lake Merced» «Lake Merced» Historic Water Levels Historic «Lake Merced» «Lake Merced» Existing",
-   "url": "https://archive.org/details/lakemercedwaterr1993sanf",
-   "deep_link": "https://archive.org/details/lakemercedwaterr1993sanf?q=Lake+Merced",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Other records",
-   "salient": true
-  },
-  {
-   "identifier": "vistagrandediver2001ch2m",
-   "title": "Vista Grande diversion feasibility evaluation / prepared for City and County of San Francisco, City of Daly City, County of San Mateo ; prepared by CH2M Hill and the Duffey Company",
-   "creator": "CH2M HILL (Firm)",
-   "year": null,
-   "pool": "sfpl",
-   "matched_alias": "Lake Merced",
-   "snippet": "fh9 2 «LAKE MERCED» TECHNICAL MEMORANDUM NO, 2 «Lake Merced» Description and Issues «Lake Merced» is",
-   "url": "https://archive.org/details/vistagrandediver2001ch2m",
-   "deep_link": "https://archive.org/details/vistagrandediver2001ch2m?q=Lake+Merced",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Other records",
-   "salient": true
-  },
-  {
-   "identifier": "capitalplanann200405sanf",
-   "title": "Capital plan ... annual update",
-   "creator": "San Francisco (Calif.). Recreation and Park Dept. Capital Improvement Division",
-   "year": null,
-   "pool": "sfpl",
-   "matched_alias": "Lake Merced",
-   "snippet": "Maintenance Facility «Lake Merced» - A Master Plan «Lake Merced» - Fishing Pier «Lake Merced» - Impound",
-   "url": "https://archive.org/details/capitalplanann200405sanf",
-   "deep_link": "https://archive.org/details/capitalplanann200405sanf?q=Lake+Merced",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Other records",
-   "salient": false
+   "salient": true,
+   "gloss": "A 1999 watershed sanitary survey identifies potential pollution sources around Lake Merced to protect its water-supply, recreation and wildlife uses."
   },
   {
    "identifier": "lakemerced1998ba1999prep",
@@ -109,26 +67,26 @@
    "year": 1998,
    "pool": "sfpl",
    "matched_alias": "Lake Merced",
-   "snippet": "Species Potentially Present At «Lake Merced» 3-6 2 «Lake Merced» Plant Communities, Habitat Types",
    "url": "https://archive.org/details/lakemerced1998ba1999prep",
    "deep_link": "https://archive.org/details/lakemerced1998ba1999prep?q=Lake+Merced",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
    "group": "Other records",
-   "salient": false
+   "salient": true,
+   "gloss": "A 1998 baseline natural-resources inventory maps Lake Merced's soils, vegetation, wildlife and fisheries."
   },
   {
-   "identifier": "lakemercedwater1993sanf_0",
-   "title": "Lake Merced water resource planning study : appendices",
+   "identifier": "lakemercedwaterr1993sanf",
+   "title": "Lake Merced water resource planning study",
    "creator": "San Francisco Water Department,prepared by GEO/Resource Consultants, Inc. in association with Montgomery/Watson, Jones and Stokes Associates, Inc., Public Affairs Management",
    "year": null,
    "pool": "sfpl",
    "matched_alias": "Lake Merced",
-   "snippet": "Testing at «Lake Merced» and Drinking Water Standards Boring B-l at «Lake Merced» Sewage Pump",
-   "url": "https://archive.org/details/lakemercedwater1993sanf_0",
-   "deep_link": "https://archive.org/details/lakemercedwater1993sanf_0?q=Lake+Merced",
+   "url": "https://archive.org/details/lakemercedwaterr1993sanf",
+   "deep_link": "https://archive.org/details/lakemercedwaterr1993sanf?q=Lake+Merced",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
    "group": "Other records",
-   "salient": false
+   "salient": true,
+   "gloss": "A 1993 water-resource planning study evaluates lake-use and water-quality issues and the hydrology of Lake Merced for the Water Department."
   },
   {
    "identifier": "feasibilityevalu1919ch2m",
@@ -137,12 +95,40 @@
    "year": null,
    "pool": "sfpl",
    "matched_alias": "Lake Merced",
-   "snippet": "OF FIGURES 1 1935 «Lake Merced» Aerial Photograph 2 2 1995 «Lake Merced» Aerial Photograph",
    "url": "https://archive.org/details/feasibilityevalu1919ch2m",
    "deep_link": "https://archive.org/details/feasibilityevalu1919ch2m?q=Lake+Merced",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
    "group": "Other records",
-   "salient": false
+   "salient": false,
+   "gloss": "A 1998 technical memorandum evaluates alternatives to raise and maintain Lake Merced's level, costing options at $2,200,000, $8,200,000 and $3,900,000."
+  },
+  {
+   "identifier": "vistagrandediver2001ch2m",
+   "title": "Vista Grande diversion feasibility evaluation / prepared for City and County of San Francisco, City of Daly City, County of San Mateo ; prepared by CH2M Hill and the Duffey Company",
+   "creator": "CH2M HILL (Firm)",
+   "year": null,
+   "pool": "sfpl",
+   "matched_alias": "Lake Merced",
+   "url": "https://archive.org/details/vistagrandediver2001ch2m",
+   "deep_link": "https://archive.org/details/vistagrandediver2001ch2m?q=Lake+Merced",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Other records",
+   "salient": false,
+   "gloss": "A 2001 feasibility evaluation studies diverting Vista Grande storm water into Lake Merced and its water-quality effects."
+  },
+  {
+   "identifier": "capitalplanann200405sanf",
+   "title": "Capital plan ... annual update",
+   "creator": "San Francisco (Calif.). Recreation and Park Dept. Capital Improvement Division",
+   "year": null,
+   "pool": "sfpl",
+   "matched_alias": "Lake Merced",
+   "url": "https://archive.org/details/capitalplanann200405sanf",
+   "deep_link": "https://archive.org/details/capitalplanann200405sanf?q=Lake+Merced",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Other records",
+   "salient": false,
+   "gloss": "A Recreation and Park capital plan carries a Lake Merced master plan and overlook-and-trail project and situates the Harding Park clubhouse within Lake Merced Park."
   }
  ]
 }

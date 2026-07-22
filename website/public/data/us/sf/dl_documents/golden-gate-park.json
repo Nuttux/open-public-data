@@ -1,9 +1,23 @@
 {
- "generated_at": "2026-07-21T14:25:53.923488+00:00",
+ "generated_at": "2026-07-22T15:04:53.691717+00:00",
  "slug": "golden-gate-park",
  "name": "Golden Gate Park",
  "note": "Archive documents linked to this place; source labels honour the SFPL-vs-Democracy's-Library distinction.",
  "documents": [
+  {
+   "identifier": "goldengateparkst2007sanf",
+   "title": "Golden Gate Park stables renovation project : draft environmental impact report",
+   "creator": "San Francisco (Calif.). Planning Dept,EDAW Inc,Ward & Associates,Architectural Resources Technology (Firm),San Francisco (Calif.). Recreation and Park Dept. Capital Improvement Division,San Francisco (Calif.). Recreation and Park Dept",
+   "year": 2007,
+   "pool": "sfpl",
+   "matched_alias": "Golden Gate Park",
+   "url": "https://archive.org/details/goldengateparkst2007sanf",
+   "deep_link": "https://archive.org/details/goldengateparkst2007sanf?q=Golden+Gate+Park",
+   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
+   "group": "Plans & environmental review",
+   "salient": true,
+   "gloss": "A 2007 draft EIR for renovating the Golden Gate Park stables."
+  },
   {
    "identifier": "goldengateparkc1420sanf_0",
    "title": "Golden Gate Park Concourse Authority projects : environmental impact report, draft summary of comments and responses",
@@ -11,12 +25,12 @@
    "year": 2002,
    "pool": "sfpl",
    "matched_alias": "Golden Gate Park",
-   "snippet": "for «Golden Gate Park») PAGE 35 CONSISTENCY WITH PLANS AND POLICIES «Golden Gate Park» Revitalization",
    "url": "https://archive.org/details/goldengateparkc1420sanf_0",
    "deep_link": "https://archive.org/details/goldengateparkc1420sanf_0?q=Golden+Gate+Park",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
    "group": "Plans & environmental review",
-   "salient": true
+   "salient": true,
+   "gloss": "A 2002-2003 EIR for the Concourse Authority projects, weighing an underground parking facility against the park's master plan."
   },
   {
    "identifier": "goldengateparkma1519sanf",
@@ -25,26 +39,12 @@
    "year": 1998,
    "pool": "sfpl",
    "matched_alias": "Golden Gate Park",
-   "snippet": "1998 Resolution 9810-141 «Golden Gate Park» Master Plan «Golden Gate Park» Master Plan Recreation",
    "url": "https://archive.org/details/goldengateparkma1519sanf",
    "deep_link": "https://archive.org/details/goldengateparkma1519sanf?q=Golden+Gate+Park",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
    "group": "Plans & environmental review",
-   "salient": true
-  },
-  {
-   "identifier": "goldengateparkst2007sanf",
-   "title": "Golden Gate Park stables renovation project : draft environmental impact report",
-   "creator": "San Francisco (Calif.). Planning Dept,EDAW Inc,Ward & Associates,Architectural Resources Technology (Firm),San Francisco (Calif.). Recreation and Park Dept. Capital Improvement Division,San Francisco (Calif.). Recreation and Park Dept",
-   "year": 2007,
-   "pool": "sfpl",
-   "matched_alias": "Golden Gate Park",
-   "snippet": "Priority Policies. 2.1.4 «GOLDEN GATE PARK» MASTER PLAN The «Golden Gate Park» Master Plan is a",
-   "url": "https://archive.org/details/goldengateparkst2007sanf",
-   "deep_link": "https://archive.org/details/goldengateparkst2007sanf?q=Golden+Gate+Park",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Plans & environmental review",
-   "salient": true
+   "salient": true,
+   "gloss": "The 1998 Golden Gate Park Master Plan, adopted by the Recreation and Park Commission as Resolution 9810-141."
   },
   {
    "identifier": "minutes1977sanf",
@@ -53,54 +53,12 @@
    "year": null,
    "pool": "sfpl",
    "matched_alias": "Golden Gate Park",
-   "snippet": "Meadows, «Golden Gate Park», on May 14 and May 15, 197 7. ***** 13. «GOLDEN GATE PARK» - SPEEDWAY",
    "url": "https://archive.org/details/minutes1977sanf",
    "deep_link": "https://archive.org/details/minutes1977sanf?q=Golden+Gate+Park",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
    "group": "Meetings & resolutions",
-   "salient": true
-  },
-  {
-   "identifier": "minutesrecreatio1949sanf",
-   "title": "Minutes / Recreation and Park Commission",
-   "creator": "San Francisco (Calif.). Recreation and Park Commission",
-   "year": null,
-   "pool": "sfpl",
-   "matched_alias": "Golden Gate Park",
-   "snippet": "Crossover Drive through «Golden Gate Park». That the «Golden Gate Park» exhibit at the California",
-   "url": "https://archive.org/details/minutesrecreatio1949sanf",
-   "deep_link": "https://archive.org/details/minutesrecreatio1949sanf?q=Golden+Gate+Park",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Meetings & resolutions",
-   "salient": true
-  },
-  {
-   "identifier": "goldengateparkco1982sanf",
-   "title": "Golden Gate Park comprehensive transportation study : draft phase 1 report",
-   "creator": "San Francisco (Calif.). Recreation and Park Dept",
-   "year": 1982,
-   "pool": "sfpl",
-   "matched_alias": "Golden Gate Park",
-   "snippet": "52 FIGURES 1. «Golden Gate Park» 2. Existing Roadway System - «Golden Gate Park» 3. Twenty- four",
-   "url": "https://archive.org/details/goldengateparkco1982sanf",
-   "deep_link": "https://archive.org/details/goldengateparkco1982sanf?q=Golden+Gate+Park",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Other records",
-   "salient": true
-  },
-  {
-   "identifier": "whatsdoinginpark1978sanf",
-   "title": "What's doing in the parks?",
-   "creator": "San Francisco (Calif.). Recreation and Park Department",
-   "year": null,
-   "pool": "sfpl",
-   "matched_alias": "Golden Gate Park",
-   "snippet": "Sciences, «Golden Gate Park». 1 p.nu — Band Concert, Band Concourse, «Golden Gate Park». 1 P.m",
-   "url": "https://archive.org/details/whatsdoinginpark1978sanf",
-   "deep_link": "https://archive.org/details/whatsdoinginpark1978sanf?q=Golden+Gate+Park",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Other records",
-   "salient": false
+   "salient": true,
+   "gloss": "1977 Rec & Park minutes awarding a $394,000 playground-rehabilitation contract in the park and permitting a Polo Field rugby tournament."
   }
  ]
 }

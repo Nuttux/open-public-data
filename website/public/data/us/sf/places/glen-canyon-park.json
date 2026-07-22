@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-21T14:25:53.932647+00:00",
+ "generated_at": "2026-07-22T15:04:53.699436+00:00",
  "source_pipeline": "sf_place_candidates.json → sync_ia_sf.py + link_sf_places.py + fetch_sf_place_photos.py → export_sf_places.py",
  "unit": "USD",
  "slug": "glen-canyon-park",
@@ -158,7 +158,7 @@
   "author": "Unknown",
   "fetched_at": "2026-07-20T22:23:09.978096+00:00"
  },
- "summary_en": "Archive documents describe Glen Canyon Park as a large natural canyon — a 2011 draft environmental impact report calls it a 70-acre natural and recreational area, while 1961-1962 Diamond Heights redevelopment reports describe an 80-acre wooded canyon with a day camp adjoining the neighborhood. Later records track its upkeep: the 2008 Clean & Safe Neighborhood Parks bond and a 2012 certificate of exemption cover renovation of the children's play area and day-camp facility, and Board of Supervisors and Arts Commission minutes from 1995 onward address the recreation center and park traffic. The park is operated by the Recreation and Park Department, whose FY2025 budget line is about $250M. No contract in the data names the park.",
+ "summary_en": "Glen Canyon Park's civic record centers on renovation. The 2008 Clean & Safe Neighborhood Parks Bond describes a 66.6-acre park off Elk Street and O'Shaughnessy Blvd, with a 1934 recreation center and the 1960 Silver Tree Day Camp, and funds repair of the rec center, play area, day camp, courts and field. Arts Commission minutes record selecting three finalists for the Glen Canyon Park Recreation Center public-art project. Mid-century redevelopment reports describe an 80-acre naturally wooded canyon with a day camp. Building permits for the park total about $9.8 million, led by an $8.2 million 2015 phase-II renovation and seismic retrofit. The park is operated by the Recreation and Park Department, whose FY2025 budget line totals about $250M.",
  "published": true,
  "money": {
   "budget_line": {
@@ -179,74 +179,18 @@
  },
  "documents": [
   {
-   "identifier": "draftenvironment2720sanf",
-   "title": "Draft environmental impact report : Glen Park community plan",
-   "creator": "San Francisco (Calif.). Planning Dept,San Francisco (Calif.). Citywide Planning,San Francisco (Calif.). Municipal Transportation Agency,Atkins (Consultants),Merrill Morris and Partners,Carey & Co,AECOM Consult, Inc",
-   "year": 2011,
-   "pool": "sfpl",
-   "matched_alias": "Glen Canyon Park",
-   "snippet": "neighborhood is «Glen Canyon Park», a 70-acre natural and recreational area. «Glen Canyon Park» is not",
-   "url": "https://archive.org/details/draftenvironment2720sanf",
-   "deep_link": "https://archive.org/details/draftenvironment2720sanf?q=Glen+Canyon+Park",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Plans & environmental review",
-   "salient": true
-  },
-  {
    "identifier": "agendasminutesvi2014arts",
    "title": "Agendas and Minutes / Visual Arts Committee",
    "creator": "Arts Commission of San Francisco. Visual Arts Committee",
    "year": null,
    "pool": "sfpl",
    "matched_alias": "Glen Canyon Park",
-   "snippet": "artworks to be provided at meeting). 4. «Glen Canyon Park» Recreation Center Justine Topfer Action",
    "url": "https://archive.org/details/agendasminutesvi2014arts",
    "deep_link": "https://archive.org/details/agendasminutesvi2014arts?q=Glen+Canyon+Park",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
    "group": "Meetings & resolutions",
-   "salient": true
-  },
-  {
-   "identifier": "agenda2013sanf_0",
-   "title": "Agenda",
-   "creator": "San Francisco Port Commission",
-   "year": null,
-   "pool": "sfpl",
-   "matched_alias": "Glen Canyon Park",
-   "snippet": "Budget with Phases 8 Neighborhood Parks «Glen Canyon Park» 12 Joe DiMaggio Playground 13 Balboa",
-   "url": "https://archive.org/details/agenda2013sanf_0",
-   "deep_link": "https://archive.org/details/agenda2013sanf_0?q=Glen+Canyon+Park",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Meetings & resolutions",
-   "salient": true
-  },
-  {
-   "identifier": "2minutes1996sanf",
-   "title": "Minutes",
-   "creator": "San Francisco (Calif.). Board of Supervisors. Rules Committee,San Francisco (Calif.). Board of Supervisors. Rules and Legislation Committee",
-   "year": null,
-   "pool": "sfpl",
-   "matched_alias": "Glen Canyon Park",
-   "snippet": "Office of Housing) 11. File 193-96-4. [«Glen Canyon Park» Traffic Issues] Hearing to consider",
-   "url": "https://archive.org/details/2minutes1996sanf",
-   "deep_link": "https://archive.org/details/2minutes1996sanf?q=Glen+Canyon+Park",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Meetings & resolutions",
-   "salient": true
-  },
-  {
-   "identifier": "diamondheightsne1961lack",
-   "title": "Diamond Heights neighborhood center : an urban design and report-- to the San Francisco Redevelopment Agency",
-   "creator": "Lackey, Lawrence,San Francisco Redevelopment Agency (San Francisco, Calif.),Royston, Hanamoto & Mayes",
-   "year": 1961,
-   "pool": "sfpl",
-   "matched_alias": "Glen Canyon Park",
-   "snippet": "which links Diamond Heights Boulevard to «Glen Canyon Park». All activities are accessible from",
-   "url": "https://archive.org/details/diamondheightsne1961lack",
-   "deep_link": "https://archive.org/details/diamondheightsne1961lack?q=Glen+Canyon+Park",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Other records",
-   "salient": true
+   "salient": true,
+   "gloss": "Arts Commission Visual Arts Committee minutes selecting three finalists for the Glen Canyon Park Recreation Center public art project."
   },
   {
    "identifier": "2008cleansafenei2007sanf",
@@ -255,12 +199,12 @@
    "year": 2008,
    "pool": "sfpl",
    "matched_alias": "Glen Canyon Park",
-   "snippet": "9F ^is Image 20 «Glen Canyon Park» Children's Play Area «GLEN CANYON PARK» RENOVATION Facility",
    "url": "https://archive.org/details/2008cleansafenei2007sanf",
    "deep_link": "https://archive.org/details/2008cleansafenei2007sanf?q=Glen+Canyon+Park",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
    "group": "Other records",
-   "salient": true
+   "salient": true,
+   "gloss": "The 2008 parks bond's project page for Glen Canyon Park — a 66.6-acre park with a 1934 recreation center and 1960 Silver Tree Day Camp — scoping renovation of the rec center, play area, day camp, courts and field."
   },
   {
    "identifier": "diamondheightsre1952sanf",
@@ -269,12 +213,12 @@
    "year": 1951,
    "pool": "sfpl",
    "matched_alias": "Glen Canyon Park",
-   "snippet": "its adjacent playground will adjoin «Glen Canyon Park» with its day camp for all San Francisco",
    "url": "https://archive.org/details/diamondheightsre1952sanf",
    "deep_link": "https://archive.org/details/diamondheightsre1952sanf?q=Glen+Canyon+Park",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
    "group": "Other records",
-   "salient": false
+   "salient": true,
+   "gloss": "A 1951 Diamond Heights redevelopment report describing the canyon's day camp, rock outcroppings and creek adjoining the planned neighborhood."
   },
   {
    "identifier": "twocommercialsit1962sanf",
@@ -283,26 +227,12 @@
    "year": 1962,
    "pool": "sfpl",
    "matched_alias": "Glen Canyon Park",
-   "snippet": "purchase of sites and construction. 4. «Glen Canyon Park», an 80-acre naturally wooded canyon",
    "url": "https://archive.org/details/twocommercialsit1962sanf",
    "deep_link": "https://archive.org/details/twocommercialsit1962sanf?q=Glen+Canyon+Park",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
    "group": "Other records",
-   "salient": false
-  },
-  {
-   "identifier": "certificateofdet2012sanf",
-   "title": "Certificate of determination of exemption/exclusion from environmental review",
-   "creator": "San Francisco (Calif.). Planning Dept",
-   "year": null,
-   "pool": "sfpl",
-   "matched_alias": "Glen Canyon Park",
-   "snippet": "day camp facility within «Glen Canyon Park». 3 «Glen Canyon Park» Renovation Memorandum, by",
-   "url": "https://archive.org/details/certificateofdet2012sanf",
-   "deep_link": "https://archive.org/details/certificateofdet2012sanf?q=Glen+Canyon+Park",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Other records",
-   "salient": false
+   "salient": true,
+   "gloss": "A 1962 Redevelopment Agency prospectus describing Glen Canyon Park as an 80-acre naturally wooded canyon open for recreation, with a park building already completed."
   }
  ],
  "dept_shelf": [
@@ -342,7 +272,7 @@
  ],
  "_gate": {
   "has_photo": true,
-  "n_documents": 9,
+  "n_documents": 4,
   "n_money_links": 1,
   "meets_pre_summary": true
  }

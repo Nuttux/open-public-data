@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-21T14:25:53.943835+00:00",
+ "generated_at": "2026-07-22T15:04:53.707360+00:00",
  "source_pipeline": "sf_place_candidates.json → sync_ia_sf.py + link_sf_places.py + fetch_sf_place_photos.py → export_sf_places.py",
  "unit": "USD",
  "slug": "north-beach-branch-library",
@@ -150,7 +150,13 @@
    "year": 1983,
    "pool": "sfpl",
    "matched_alias": "North Beach Branch Library",
-   "snippet": "McCoppin Stub Art Project Outline. 7. «North Beach Branch Library» Mary Chou Action Presentation Time:",
+   "ocr_excerpts": [
+    "Art Project Outline Presentation of the proposed public art approach for the new design of McCoppin Stub (previously referred to as McCoppin Hub). Motion: Motion to approve the public art approach for SOMA West - McCoppin Stub as detailed in the SOMA West - McCoppin Stub Art Project Outline. 7. North Beach Branch Library Mary Chou Action Presentation Time: 5 minutes Explanatory Document: Revised Design by Bill Fontana for the Sound Installation at the North Beach Library Presentation of revised design by Bill Fontana for the sound installation at the North Beach Library. Motion: Motion to approve revised design by",
+    "n Mary Chou Action Presentation of the proposed public art approach for the new design of McCoppin Stub (previously referred to as McCoppin Hub). Motion: Motion to approve the public art approach for SOMA West - McCoppin Stub as detailed in the SOMA West - McCoppin Stub Art Project Outline. 7. North Beach Branch Library Mary Chou Action Ms. Chou presented the revised design by Bill Fontana for the sound installation at the North Beach Branch Library. Ms. Chou reported that the artist was in the Design Development Phase, and through this process discovered the need to pare dow n his design to stay within the project budget. Ms. Chou explained that originally the artist had 16 speakers included in his design which will now be reduced to eight.",
+    "ould like to hear the funding source specifically discussed. Commissioner Garcia-Nakata stated that the funding source varies per project and requested that Public Art staff make that information available to Mr. Warfield. Motion: Motion to approve revised design by Bill Fontana for an artwork at the North Beach Branch Library. Moved: Keehn/Chew The motion was unanimously approved 8. Central Subway, Moscone Station - New Project Opportunity: Entry Plaza Sculpture Jennifer Lovvorn Action Project Manager Jennifer Lovvorn reported on a new public art project opportunity to commission a sculpture for the entry plaza of the M",
+    "n Mary Chou Action Presentation of the proposed public art approach for the new design of McCoppin Stub (previously referred to as McCoppin Hub). Motion: Motion to approve the public art approach for SOMA West - McCoppin Stub as detailed in the SOMA West - McCoppin Stub Art Project Outline. 7. North Beach Branch Library Mary Chou Action Ms. Chou presented the revised design by Bill Fontana for the sound installation at the North Beach Branch Library. Ms. Chou reported that the artist was in the Design Development Phase, and through this process discovered the need to pare dow n his design to stay within the project budget. Ms. Chou explained that originally the artist had 16 speakers included in his design which will now be reduced to eight.",
+    "uld like to hear the funding source specifically "
+   ],
    "url": "https://archive.org/details/agenda2013arts",
    "deep_link": "https://archive.org/details/agenda2013arts?q=North+Beach+Branch+Library",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
@@ -164,53 +170,17 @@
    "year": null,
    "pool": "sfpl",
    "matched_alias": "North Beach Branch Library",
-   "snippet": "alterations and additions to the present «North Beach Branch Library». Commissioner Q,uan concluded his",
+   "ocr_excerpts": [
+    "of the Library group will be ordan- ized on a permanent basis at an organizational meeting to be held during January 1955* Commissioner Q,uan referred to a Committee meeting held prior to the regular meeting of the Commission and described in detail proposed alterations and additions to the present North Beach Branch Library. Commissioner Q,uan concluded his report by stating that additional information will be for thcoming at the next regular meeting of the Commission. From: Norman F. G-runke, Executor, Estate of Rene Sarazen re: Bequest of decedent's musical library to the San Francisco Pub. Library. Acknowledge and r",
+    "75.00 100.00 100.00 $ 105, 723.91 189,545.80 LIBRARY OPERATIONS COMMITTEE Commissioner La Place informed the Commission of a communica- tion from Mr. Stanton Jue, Director of the International Institute of San Francisco, addressed to Commissioner Quan, relative to additional hours of service at the North Beach Branch Library. Commissioner La Place recommended that additional hours of service as requested be granted and referred this matter to the City Librarian for his deliberation and recommendation. It was so recommended. WELFARE OF EMPLOYEES COMMITTEE Commissioner Dettmering moved and Commissioner Fischer seconded that",
+    "Commission, this request be regretfully denied. Commissioner Fischer concluded his report by informing the Commission of a communication received from Mr. Stanton Jue, Director of the International Institute of San Francisco, thanking the Commission and Librarian for extension of hours of service at the North Beach Branch Library. The Chair directed the Secretary to acknowledge this communication. FINANCE, AUDIT AND BUDGET COMMITTEE Commissioner Fischer moved, and Commissioner Dettmering seoonded that the Commission approve the following list of expenditures for March and estimated expenditures for April: APR 1 2 1955 454 E",
+    "ntioned resolution, Commissioner Mohr be designated as the official delegate from the Library Commission to the ALA Conference in Philadelphia. It was so ordered. CHINATOWN LIBRARY COMMITTEE Commissioner Q,uan referred to a communication from the Chinese Six Companies relative to the conversion of the North Beach Branch Library to a Chinatown Branch Library, and their expressed enthusiasm and support for this project. Commissioner Q,uan stated that plans have been formulated lor a. Citizens' Committee of outstanding Chinese and Americans to assist in raising funds to reconstruct the present outmoded premises. Commissioner Quan",
+    "ect. On motion of Commissioner Cuddy seconded by Commissioner &uan, the following resolution was unanimously adopted; 1 2 1955 456 RESOLUTION #43 RESOLVED That His Honor the Mayor be requested to approve a supplemental budget request in the amount of $60,000, for the rehabilitat"
+   ],
    "url": "https://archive.org/details/minutesofregular1619sanf",
    "deep_link": "https://archive.org/details/minutesofregular1619sanf?q=North+Beach+Branch+Library",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
    "group": "Meetings & resolutions",
-   "salient": true
-  },
-  {
-   "identifier": "minutesofregular2009sanf",
-   "title": "Minutes of the regular meeting ...",
-   "creator": "San Francisco Public Library. Commission",
-   "year": null,
-   "pool": "sfpl",
-   "matched_alias": "North Beach Branch Library",
-   "snippet": "Gate Valley, Merced, Ortega and «North Beach Branch Library» Capital Projects. Explanatory document:",
-   "url": "https://archive.org/details/minutesofregular2009sanf",
-   "deep_link": "https://archive.org/details/minutesofregular2009sanf?q=North+Beach+Branch+Library",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Meetings & resolutions",
-   "salient": true
-  },
-  {
-   "identifier": "agendasminutesvi2014arts",
-   "title": "Agendas and Minutes / Visual Arts Committee",
-   "creator": "Arts Commission of San Francisco. Visual Arts Committee",
-   "year": null,
-   "pool": "sfpl",
-   "matched_alias": "North Beach Branch Library",
-   "snippet": "2014 until May 30, 2015. 4. «North Beach Branch Library» Mary Chou Action Presentation Time:",
-   "url": "https://archive.org/details/agendasminutesvi2014arts",
-   "deep_link": "https://archive.org/details/agendasminutesvi2014arts?q=North+Beach+Branch+Library",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Meetings & resolutions",
-   "salient": true
-  },
-  {
-   "identifier": "annualreportdep2013sanf_0",
-   "title": "Annual report / Department of Public Works, City and County of San Francisco",
-   "creator": "San Francisco (Calif.). Department of Public Works",
-   "year": null,
-   "pool": "sfpl",
-   "matched_alias": "North Beach Branch Library",
-   "snippet": "celebrated the openings of the «North Beach Branch Library» and Palega Playground, updated our",
-   "url": "https://archive.org/details/annualreportdep2013sanf_0",
-   "deep_link": "https://archive.org/details/annualreportdep2013sanf_0?q=North+Beach+Branch+Library",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Reports & records",
    "salient": true
   },
   {
@@ -220,7 +190,11 @@
    "year": 2000,
    "pool": "sfpl",
    "matched_alias": "North Beach Branch Library",
-   "snippet": "Improvement Program «NORTH BEACH BRANCH LIBRARY» BACKGROUND The «North Beach Branch Library», opened to",
+   "ocr_excerpts": [
+    "NCH LIBRARY 44 BACKGROUND 44 SCOPE OF WORK '. 44 PROJECT COST 46 PROJECT SCHEDULE 46 MISSION BAY BRANCH LIBRARY 47 BACKGROUND .. 47 SCOPE OF WORK 47 PROJECT COST 48 PROJECT SCHEDULE 48 NOE VALLEY BRANCH LIBRARY 49 BACKGROUND : 49 SCOPE OF WORK 49 PROJECT COST 51 PROJECT SCHEDULE 51 NORTH BEACH BRANCH LIBRARY 52 BACKGROUND 52 SCOPE OF WORK : 52 PROJECT COST 54 PROJECT SCHEDULE 54 ORTEGA BRANCH LIBRARY 55 BACKGROUND 55 SCOPE OF WORK 55 PROJECT COST 57 PROJECT SCHEDULE 57 ii Branch Library Improvement Program PARK BRANCH LIBRARY 58 BACKGROUND 58 SCOPE OF WORK 58 PROJECT COST 59 PROJECT",
+    "hs The schedule for each individual project conforms to the program phasing criteria listed on page 3. The criteria balance the relative priority of each project with the need to maintain library services in each neighborhood during the life of the program. 51 Branch Library Improvement Program NORTH BEACH BRANCH LIBRARY BACKGROUND The North Beach Branch Library, opened to the public in 1959, is a 5,097 square foot building with an irregular plan configuration, is located at 2000 Mason Street, adjacent to a Recreation and Park facility. It serves North Beach, Telegraph Hill, the Financial District, and a portion of the Chinatown- District. Library services a",
+    "n program excludes library staff costs. The solution to be chosen for a particular branch will depend on many factors involving overall program phasing, the extent of disruptions, and the cost effectiveness of the various relocation alternatives. 53 Branch Library Improvement Program PROJECT COST North Beach Branch Library Project Cost Summary Rehabilitation and Improvements $3,190,000 Expansion $500,000 Total Project Cost Estimate $3,690,000 Project costs include construction cost estimates for each project component: principal construction; construction contingency; art enrichment; hazardous materials mitigation; temporary relocation measures; project control and site control; cost figures are escalated to the mid-point of construction. PROJECT SCHEDULE North Beach Branch Library Project Duration ACTIVITY DURATION Planning Design and Bid 26 months Relocation and Construction 19 months The schedule for each individual project conforms to the program phasing criteria listed on page 3. The criteria balance the relative priority of each project with the need to maintain libr"
+   ],
    "url": "https://archive.org/details/branchlibraryimp3200sanf",
    "deep_link": "https://archive.org/details/branchlibraryimp3200sanf?q=North+Beach+Branch+Library",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
@@ -234,12 +208,17 @@
    "year": null,
    "pool": "sfpl",
    "matched_alias": "North Beach Branch Library",
-   "snippet": "INFANTS TO 3 YEARS WITH AN ADULT «North Beach Branch Library», 2000 Mason St. (at Columbus),",
+   "ocr_excerpts": [
+    "h St. (at Bartlett), (415) 695-5090 Wednesdays, January 1, 15, 22, 29 - 7:00 p.m. FAMILY NIGHTS FOR CHILDREN AGES 3 - 7 Sunset Branch Library, 1305 - 18th Ave. (at Irving), (415) 753-7049 Thursdays, January 2, 9, 23, 30 - 10:15 a.m. INFANT/TODDLER LAPSIT FOR INFANTS TO 3 YEARS WITH AN ADULT North Beach Branch Library, 2000 Mason St. (at Columbus), (415) 274-0270 Thursdays, January 2, 16, 23, 30 - 10:30 a.m. PRESCHOOL STORYTTME FOR CHILDREN AGES 3 - 5 Park Branch Library, 1833 Page St. (near Cole), (415) 666-7155 Thursdays, January 2, 9, 16, 23, 30 - 10:30 a.m. INFANT/TODDLER LAPSIT FOR INFANTS TO 3 YEARS WITH AN ADULT Potrero Branch Library, 1616 20th St. (near Connecticut), (415) 695-6640 Thursdays, January 2, 9, 23, 30 - 10:45 a.m. PRESCHOOL STORYTTME FOR CHILDREN AGES 3 - 5 North Beach Branch Library, 2000 Mason St. (at Columbus), (415) 274-0270 Thursdays, January 2, 9, 16, 30- 11:00 a.m. STORIES AND CRAFTS FOR CHILDREN AGES 3 - 6 Excelsior Branch Library, 4400 Mission St. (at Cotter), (415) 337-4735 Thursdays, January 2, 9, 16, 23, 30 - 4:00 p.m. PRESCHOOL STORYTTME FOR CHILDREN AGES 3 -",
+    "SIC PROGRAM FOR CHILDREN AGES 3 - 5 - Join the fun and sing with Bonnie Lockhart. Chinatown Branch Library, 1135 Powell St., (near Washington), (415) 274-0275 Thursday, January 16 - 10:00, 10:30 and 11:00 a.m.; 3:00 p.m. PRESCHOOL FDLM PROGRAM - Little Blue, Little Yellow and Mole as a Painter North Beach Branch Library, 2000 Mason St. (near Columbus), (415) 274-0270 Thursday, January 16 - 3:30 p.m. AFTER SCHOOL MOVffi FOR CfflLDREN AGES 7 AND OLDER - Jack of Hearts Ingleside Branch Library, 387 Ashton Ave. (near Ocean), (415) 337-4745 Thursday, January 16 - 3:45 p.m. AFTER SCHOOL FILM PROGRAM - Giving Tree and Harry Comes Home North Beach Branch Library, 2000 Mason St. (near Columbus), (415) 274-0270 Thursday, January 16 - 4:00 p.m. AFTER SCHOOL FILM PROGRAM FOR CHILDREN AGES 6 AND OLDER - Nate the Great Goes Undercover, Grandpa, Danny & the Dinosaur, and Picnic. Merced Branch Library, 155 Winston Dr. (at 19th), (415) 337^746 Thursday, January 1",
+    "AFTER SCHOOL FILM PROGRAM - Isabella and the Magic Brush, Dragon Wore Tennis Shoes, I'm Going to Be a Lion 's Head. Excelsior Branch Library, 4400 Mission St. (at Cotter), (415) 337-4735 Thursday, January 23 - 3:45 p.m. •MASK MAKING WORKSHOP FOR CHILDREN AGES 6 AND OLDER - With Nikki Ausschnitt North Beach Branch Library, 2000 Mason St. (near Columbus), (415) 274-0270 Thursday, January 23 - 4:30 p.m. CHINESE NEW YEAR CELEBRATION FOR CHILDREN AGES 4 AND OLDER - Come celebrate the Year of the Ox. Presidio Branch Library, 3150 Sacramento St. (near Baker), (415) 292-2155 Friday, January 24-3:15 p.m. •SPECIAL PROGRAM F",
+    "Wednesday, February 5 - 11:00 a.m. ♦BLACK HISTORY MONTH CELEBRATION FOR CHILDREN AGES 3 - 5 - Tureeda tells Afr"
+   ],
    "url": "https://archive.org/details/adultcalendarofp1997sanf",
    "deep_link": "https://archive.org/details/adultcalendarofp1997sanf?q=North+Beach+Branch+Library",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
    "group": "Other records",
-   "salient": false
+   "salient": true
   }
  ],
  "dept_shelf": [
@@ -279,7 +258,7 @@
  ],
  "_gate": {
   "has_photo": false,
-  "n_documents": 7,
+  "n_documents": 4,
   "n_money_links": 1,
   "meets_pre_summary": false
  }

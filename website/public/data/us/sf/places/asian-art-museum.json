@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-21T14:25:53.962998+00:00",
+ "generated_at": "2026-07-22T15:04:53.720366+00:00",
  "source_pipeline": "sf_place_candidates.json → sync_ia_sf.py + link_sf_places.py + fetch_sf_place_photos.py → export_sf_places.py",
  "unit": "USD",
  "slug": "asian-art-museum",
@@ -210,7 +210,12 @@
    "year": 1998,
    "pool": "sfpl",
    "matched_alias": "Asian Art Museum",
-   "snippet": "accommodate the 97.750E 1 «Asian Art Museum» INTRODUCTION «Asian Art Museum» were based on a 1988",
+   "ocr_excerpts": [
+    "5/S GOVERM?/ENT INFORMATj SAN FRANCISCO PlrBl SAN FRAN PUBLIC LI REFERENCE BOOK Nol lo In- Idkcn from /lie Liltniiy Digitized by the Internet Archive in 2014 https://archive.org/details/asianartmuseunnfi1019sanf San Francisco Planning Department ASIAN ART MUSEUM Final Supplemental Environmental Impact Report 97.750E Draft SEIR Publication Date: July 18, 1998 Draft SEIR Public Hearing Date: August 20, 1998 Draft SEIR Public Comment Period: July 18, 1998 - August 20, 1998 Final SEIR Certification Date: December 10, 1998 ^ DOCUMENTS DEPT. FEB' 1 9 1999",
+    "LIBRARY 711.57 As415f ; been primed on post-consumer recycled paper /ES A 970419 GOVERNMENT INT'ORMATrON C?NTF)!^ SAN FRA^jCISCO FUBLiC LIBRARY SAN FRANCISCO PUBLIC LIBRARY REFERENCE BOOK No I lo he tdkcn froin I lie Lihrary SAN FRANCISCO PUBLIC LIBRARY 3 1223 05236 1848 File No. 97.750E: Asian Art Museum, Address: 200 Larkin Street Assessor's Block 353, Lot 1 SAN FRANCISCO PLANNING COMMISSION MOTION NO. 14749 ADOPTING FINDINGS RELATED TO THE CERTIFICATION OF A FINAL SUPPLEMENTAL ENVIRONMENTAL IMPACT REPORT FOR A PROPOSED NEW ASUN ART MUSEUM, LOCATED AT 200 LARKIN STREET, THE ENTIRE BLOCK BOUNDED BY LARKIN, FULTON, HYDE AND MCALLISTER STREETS, IN THE CIVIC CENTER. MOVED, That the San Francisco Planning Commission (hereinafter \"Commission\") hereby CERTIFIES the Final Supplemental Environmental Impact Report (hereinafter SEIR)identified as case file No. 97.750E: Asian Art Museum, (hereinafter \"Project\") based upon the following findings: 1) The City and County of San Francisco, acting through the Planning Department (hereinafter \"Department\") fulfilled all procedural requirements of the California Environmental Quality Act (Cal. Pub. Res. Code Section 21000 etseg., hereinafter \"CE",
+    "tle 14, Section 15000 et. seq., (hereinafter \"CEQA Guidelines\") and Chapter 31 of the San Francisco Administrative Code (hereinafter \"Chapter 31\"). a. On February 27, 1992, the Planning Commission certified a Final EIR, San Francisco Main Library (Case No. 90.808E, also referred to as the Main Library/Asian Art Museum FEIR), for a three-part project including construction of a new Main Library; conversion of the old Main Library building for use by the Asian Art Museum; and construction of a pedestrian mall on Fulton Street between the two buildings. b. The Planning Department prepared an EIR Addendum, dated May 1 , 1 996, that reviewed the Asian Art Museum portion of the project in light of changes in circumstances subsequent to certification of the prior EIR. c. The Department determined that a Supplemental EIR was required. The SEIR supplements information and analysis contained in the prior EIR and Addendum. It contains new descriptive material about",
+    "lternatives, including alternatives that would reduce effects on historic archit"
+   ],
    "url": "https://archive.org/details/asianartmuseumfi1019sanf",
    "deep_link": "https://archive.org/details/asianartmuseumfi1019sanf?q=Asian+Art+Museum",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
@@ -224,39 +229,16 @@
    "year": null,
    "pool": "sfpl",
    "matched_alias": "Asian Art Museum",
-   "snippet": "000 («Asian Art Museum» Registration Number R87-44.2); and WHEREAS, The «Asian Art Museum» Foundation",
+   "ocr_excerpts": [
+    "LSFLM OF SAN FRANCISCO GOI DFN GATE PARK SAN I R ANCISCO. CA 94llh T 1 I riMIONf (415) 66N-,Si32l FAX (4!5) 66S-X'):k SIAN ART MUSI HM )f SAN I KAN(.IS( () AGENDA ASIAN ART COMMISSION JAN 5 1989 SAN EKANQiSQQ \"••Bl;c |l_!IRPAPV Tuesday, January 10, 1989 - 2:00 P.M. Conference Room - Asian Art Museum There will be an opportunity for public comment before action is taken on any agenda item. 1. Call to Order 2. Approval of Minutes of November 22, 1988 Meeting 3. Approval of Resolution No. C89-001, Authorization to Purchase Chinese Embroidered Reliquary Cover 4. Approval of Resolution C89-002, Authorization to City Controller to Transfer Funds and to Reimburse the Asian Art Museum Foundation for the Purchase of a Chinese Embroidered Reliquary Cover 5. Chairman's Report a. Charter Commission - Approval of Resolution No. C89-003, Resolution Confirming and Continuing the Asian Art Commission's Administration of the Asian Art Museum b. Approval of Resolution C89-004, Adoption of Amended Bylaws for the Asian Art Commission c. Progress of Odyssey through the Orient d. Presentation to James M. Gerstley e. Other Informational Items 6. Director's Report a. Reinstallation of Japanese Galleries b. Other Informational Items 7. Depu",
+    "Action Items a. Search Committee - Approval of Resolution C90-005, » Authorizing the Chairman of the Commission to Enter into an Agreement with a Search Firm b. Marketing Committee c. Connoisseurs Council d. Other Committee Reports as needed 10. Reports from Associated Groups a. Asian Art Museum Foundation, Mrs. Brayton Wilbur, Jr. b. Fine Arts Museums, Mrs. W. Robert Phillips c. Society for Asian Art, Mrs. Neil D. Chaitin d. The Museum Society, Mrs. Hart H. Spiegel e. Docent Council, Mrs. James J. Connell 11. Public Comment - At this time members of the public may address the",
+    "s of the public may address the Commission for up to three minutes. The Chairman may limit the total testimony to thirty minutes. 12. Approval of Meeting Schedule Executive Committee Meetings Executive Committee meetings will be held at 10:30 A.M. in the Conference Room on the second floor of the Asian Art Museum on: February 7, 1989 April 4, 1989 June 6, 1989 August 1, 1989 Full Commission Meetings Full Commission meetings will be held at 2:00 P.M. in the Conference Room on the second floor of the Asian Art Museum on: March 7, 1989 May 2, 1989 July 11, 1989 September 12, 1989 - Annual Meeting 2^ 48543 SFPL: ECONO JRS Agenda Asian Art Commission January 10, 1988 Page: 3 13. Executive Session to Discuss Director's Contract 14. Future Events Date Time Event February 8 5:30 P.M. Nien Ch",
+    "THOMAS DR HAN DN WILLIAMS JOHN F. WILLIAMS Honorarv Commiv>ioncr^ MRS ADRIAN GRL HN RICHARD GLMP JAQLELIN H HI ME GEORGE F JEWEn JR EDW ARD M NAGEL MRS WAITER H SHORENSTEIN ASIAN ART COMMI"
+   ],
    "url": "https://archive.org/details/agenda1989sanf",
    "deep_link": "https://archive.org/details/agenda1989sanf?q=Asian+Art+Museum",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
    "group": "Meetings & resolutions",
-   "salient": true
-  },
-  {
-   "identifier": "annualreport1980asia",
-   "title": "Annual report",
-   "creator": "Asian Art Museum of San Francisco. Avery Brundage Collection",
-   "year": null,
-   "pool": "sfpl",
-   "matched_alias": "Asian Art Museum",
-   "snippet": "the «Asian Art Museum»,\" public lecture, The Society for Asian Art, «Asian Art Museum» of San",
-   "url": "https://archive.org/details/annualreport1980asia",
-   "deep_link": "https://archive.org/details/annualreport1980asia?q=Asian+Art+Museum",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Reports & records",
-   "salient": true
-  },
-  {
-   "identifier": "publicprogrammin1998asia",
-   "title": "Public programming",
-   "creator": "Asian Art Museum of San Francisco. Avery Brundage Collection,Asian Art Museum--Chong-Moon Lee Center for Asian Art and Culture",
-   "year": null,
-   "pool": "sfpl",
-   "matched_alias": "Asian Art Museum",
-   "snippet": "(415)379-8895. «Asian Art Museum» General Visitor Information: The «Asian Art Museum» of San Francisco",
-   "url": "https://archive.org/details/publicprogrammin1998asia",
-   "deep_link": "https://archive.org/details/publicprogrammin1998asia?q=Asian+Art+Museum",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Other records",
    "salient": true
   },
   {
@@ -266,7 +248,11 @@
    "year": 1996,
    "pool": "sfpl",
    "matched_alias": "Asian Art Museum",
-   "snippet": "Library/«Asian Art Museum» FEIR. Since certification of the Main Library/«Asian Art Museum» FEIR",
+   "ocr_excerpts": [
+    "SAN FRANCISCO PUBLIC LIBRARY 3 1223 04335 6352 City and County of San Francisco The Planning Department 1660 Mission Street San Francisco, CA 94103-2414 90.808E: Asian Art Museum Project EIR Addendum to the San Francisco Main Library FEIR May 1, 1996 DOCUMENTS DEPr. JUlO 51996 SAN FRANCISCO PUBLIC LIBRARY Draft EIR Published: November 7, 1991 Draft EIR Public Hearing Date: December 12, 1991 Draft EIR Public Comment Period: November 7 - December 23, 1991 Final EIR",
+    "NING COMMISSION PLANS AND PROGRAMS IMPLEMENTATION/ZONING 1-6414 (415)558-6414 (415)558-6264 (415)558-6377 FAX: 558-6409 FAX: 558-6426 I^jjg^ City and County of San Francisco ItfQgO) The Planning Department 1660 Mission Street San Francisco, CA 94103-2414 May 1, 1996 MEMORANDUM TO: File90.808E: Asian Art Museum Project FROM: Carol Roos, Office of Environmental Review RE: Addendum to San Francisco Main Library EIR certified in 1992 BACKGROUND On February 27, 1992, the City Planning Commission certified a Final EIR (Case No. 90.808E) for construction of a new main library (now complete) on the block bounded by Larkin, Fulton, Hyde and Grove Streets; conversion of the existing library building, on the block bounded by Larkin, McAllister, Hyde and Fulton Streets, for use by the Asian Art Museum; and construction of a pedestrian mall on Fulton Street between Larkin and Hyde Streets. The FEIR is referred to herein as the Main Library/Asian Art Museum FEIR. Since certification of the Main Library/Asian Art Museum FEIR, the Board of Supervisors approved designation of the Civic Center as a local Historic District under Article 10 of the City Planning Code. The district was proposed but not adopted at the time of EIR certification. Also since certification of the Main Library/ Asian Art Museum FEIR, the State of California published and certified an EIR for a state office building (referred to herein as the Civic Center Complex EIR) that reached a different conclusion about transportation effects, from generally the same data and analysis, than did the Main Library/Asian Art Museum FEIR. Section 31.35 of the San Francisco Administrative Code requires reevaluation of a project in certain cases when there is a modification to the project, the circumstances under which the project is to be undertaken or the information available for use in evaluation of the project and that, \"if",
+    "and no ADMINISTRATION (415) 558-6414 CITY PLANNING COMMISSION (415) 558-6414 PLANS AND PROGRAMS (415) 558-6264 IMPLEMENTATION/ZONING (415) 558-6377 FAX: 558-6409 3 1223 04335 6352 FAX: 558-6426 further evaluation shall be required by this Chapter.\" This resulting memorandum, which analyzes the Asian Art Museum project in relation to the Civic Center Complex EIR and the adopted local historic district, all in relation to the 1992 Ma"
+   ],
    "url": "https://archive.org/details/asianartmuseumpr1199sanf",
    "deep_link": "https://archive.org/details/asianartmuseumpr1199sanf?q=Asian+Art+Museum",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
@@ -289,7 +275,7 @@
  ],
  "_gate": {
   "has_photo": false,
-  "n_documents": 5,
+  "n_documents": 3,
   "n_money_links": 1,
   "meets_pre_summary": false
  }

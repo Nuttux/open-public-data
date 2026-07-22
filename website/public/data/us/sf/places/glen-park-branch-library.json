@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-21T14:25:53.950192+00:00",
+ "generated_at": "2026-07-22T15:04:53.711766+00:00",
  "source_pipeline": "sf_place_candidates.json → sync_ia_sf.py + link_sf_places.py + fetch_sf_place_photos.py → export_sf_places.py",
  "unit": "USD",
  "slug": "glen-park-branch-library",
@@ -162,37 +162,13 @@
    "year": 1983,
    "pool": "sfpl",
    "matched_alias": "Glen Park Branch Library",
-   "snippet": "Third Street Light Rail Program. 7. «Glen Park Branch Library» Judy Moran Presentation of the conceptual",
+   "ocr_excerpts": [
+    "for 40 fiberglass windscreen panels prepared by artist Sheila Ghidini and designer Ari Salomon to be permanently installed on 20 Third Street Light Rail transit platforms and incorporating artwork created by children participating in the Youth Arts Program for the Third Street Light Rail Program. 7. Glen Park Branch Library Judy Moran Presentation of the conceptual proposal by the finalist artist team of Jeff Northam and Rufus Butler Seder for the new Glen Park Branch Library. Motion: Motion to approve the selection of the artist team of Jeff Northam and Rufus Butler Seder by the Glen Park Branch Community Artist Selection Panel, and to approve their conceptual proposal for the new Glen Park Branch Library. 8. Juvenile Hall Public Art Project Kristen Zaremba Project Update and Staff Recommendation Motion: Motion to approve the revised design by Johanna Poethig and Julio Morales for the entry units of the new Juvenile Hall Probation facility. Motion: Motion to authorize the Director of Cultural Affai",
+    "ndscreen panels prepared by artist Sheila Ghidini and designer Ari Salomon to be permanently installed on 20 Third Street Light Rail transit platforms and incorporating artwork created by children participating in the Youth Arts Program for the Third Street Light Rail Program. Moved: Solomon /Wilsey 7. Glen Park Branch Library Project Manager Judy Moran presented the conceptual proposal by the finalist artist team of Jeff Northam and Rufus Butler Seder for the new Glen Park Branch Library. Ms. Moran explained that the artists have developed special glass tiles that create the illusion of movement as the viewer walks past them. Ms. Moran presented video documentation of the artists' past projects that feature the glass tiles. For the interior of the Glen Park Branch Library the artists propose to create a series of glass tile murals that combine both static and live imagery taken from adult and children's books. Motion: Motion to approve the selection of the artist team of Jeff Northam and Rufus Butler Seder by the Glen Park Branch Community Artist Selection Panel, and to approve their conceptual proposal for the new Glen Park Branch Library. Moved: Wilsey /Solomon 8. Juvenile Hall Public Art Project Project Manager Kristen Zaremba presented the revised design by Johanna Poethig and Julio Morales for four entry units of the new Juvenile Hall Probation facility. As a result of budgetary constraints the artists propose to focus the stencil",
+    "ional basalt \"marker\" columns and insurance against loss for four years. 2. Motion to authorize the Director of Cultural Affairs to enter into contract with the artist team of Jeff Northam and Rufus Butler Seder for final design, fabrication, transportation and installation of an artwork for the new Glen Park Branch Library "
+   ],
    "url": "https://archive.org/details/agenda20arts_10",
    "deep_link": "https://archive.org/details/agenda20arts_10?q=Glen+Park+Branch+Library",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Meetings & resolutions",
-   "salient": true
-  },
-  {
-   "identifier": "minutesofregula2004sanf_3",
-   "title": "Minutes of the regular meeting ...",
-   "creator": "San Francisco Public Library. Commission",
-   "year": null,
-   "pool": "sfpl",
-   "matched_alias": "Glen Park Branch Library",
-   "snippet": "landlord, and staunch supporter of the «Glen Park Branch Library». Public comment on AGENDA ITEM #11",
-   "url": "https://archive.org/details/minutesofregula2004sanf_3",
-   "deep_link": "https://archive.org/details/minutesofregula2004sanf_3?q=Glen+Park+Branch+Library",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Meetings & resolutions",
-   "salient": true
-  },
-  {
-   "identifier": "minutesofregular1219sanf",
-   "title": "Minutes of the regular meeting ... / San Francisco Public Library Commission",
-   "creator": "San Francisco Public Library. Commission",
-   "year": null,
-   "pool": "sfpl",
-   "matched_alias": "Glen Park Branch Library",
-   "snippet": "increased hours of operation of the «Glen Park Branch Library». Mrs. John Rogers, Library Chairman",
-   "url": "https://archive.org/details/minutesofregular1219sanf",
-   "deep_link": "https://archive.org/details/minutesofregular1219sanf?q=Glen+Park+Branch+Library",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
    "group": "Meetings & resolutions",
    "salient": true
@@ -204,7 +180,11 @@
    "year": 2000,
    "pool": "sfpl",
    "matched_alias": "Glen Park Branch Library",
-   "snippet": "Improvement Program «GLEN PARK BRANCH LIBRARY» BACKGROUND The «Glen Park Branch Library», located at",
+   "ocr_excerpts": [
+    "L HEIGHTS BRANCH LIBRARY 25 BACKGROUND 25 SCOPE OF WORK 25 PROJECT COST 27 PROJECT SCHEDULE 27 EUREKA BRANCH LIBRARY 28 BACKGROUND 28 SCOPE OF WORK 28 PROJECT COST 30 PROJECT SCHEDULE 30 EXCELSIOR BRANCH LIBRARY 31 BACKGROUND ■. 31 SCOPE OF WORK 31 PROJECT COST 33 PROJECT SCHEDULE 33 GLEN PARK BRANCH LIBRARY 34 BACKGROUND 34 SCOPE OF WORK 34 PROJECT COST 35 PROJECT SCHEDULE 35 i Branch Library Improvement Program GOLDEN GATE VALLEY BRANCH LIBRARY 36 BACKGROUND 36 SCOPE OF WORK 36 PROJECT COST : 38 PROJECT SCHEDULE 38 INGLESIDE BRANCH LIBRARY 39 BACKGROUND 39 SCOPE OF WORK 39 PROJECT CO",
+    "hs The schedule for each individual project conforms to the program phasing criteria listed on page 3. The criteria balance the relative priority of each project with the need to maintain library services in each neighborhood during the life of the program. 33 Branch Library Improvement Program GLEN PARK BRANCH LIBRARY BACKGROUND The Glen Park Branch Library, located at 653 Chenery Street, is operating under a lease agreement on private property. It has a total square footage of less than 1 ,000 and serves the population of the Glen Park District. The branch is open five days a week and is open from five to eight hours a day. The annual visits dur",
+    "eels, and temporary closure. This relocation program excludes library staff costs. The solution to be chosen for a particular branch will depend on many factors involving overall program phasing, the extent of disruptions, and the cost effectiveness of the various relocation alternatives. PROJECT COST Glen Park Branch Library Project Cost Summary Site Acquisition and Development $1,790,000 New Building - $2,990,000 Total Project Cost Estimate $4,780,000 Project costs include estimates for each project component: site acquisition; site development; building construction; construction contingency; art enrichment; hazardous site mitigation; and move-in costs; Project cost figures are escalated to the anticipated mid- point of construction. PROJECT SCHEDULE Glen Park Branch Library Project Duration ACTIVITY DURATION Site Acquisition and Development 24 months Planning Design and Bid 24 months Relocation and Construction 19 months The actual project schedule is dependent upon identifying, selecting, and purchasing a site. In most cases, design work can overlap site acquisitio"
+   ],
    "url": "https://archive.org/details/branchlibraryimp3200sanf",
    "deep_link": "https://archive.org/details/branchlibraryimp3200sanf?q=Glen+Park+Branch+Library",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
@@ -218,7 +198,13 @@
    "year": null,
    "pool": "sfpl",
    "matched_alias": "Glen Park Branch Library",
-   "snippet": "By Patricia Duff of City Guides. «Glen Park Branch Library», 653 Chenery St. (near Diamond)",
+   "ocr_excerpts": [
+    "in maritime history. Slide show by Bill Pickelhaupt, author of Shanghaied in San Francisco. Book signing after the program. Sunset Branch Library, 1305 18th Ave. (at Irving), (415) 753-7130 Wednesday, January 29 - 7:00 p.m. GLEN PARK HISTORY SLIDE-SHOW AND TALK - By Patricia Duff of City Guides. Glen Park Branch Library, 653 Chenery St. (near Diamond), (415) 337-4740 Thursday, January 30 - 12:00 noon LARGE SCREEN VIDEO: BILL T. JONES, DANCING TO THE PROMISED LAND (60 minutes) - This often controversial choreographer reveals how his personal racial history and politics underlie his revisionary telling of Uncle Tom's",
+    "7 - 10:00, 10:30 and 11:05 a.m.; 1:30 and 2:05 p.m. PRESCHOOL FTLM PROGRAM - The Three Little Pigs, Alphabet and The Tender Tale of Cinderella Penguin. Chinatown Branch Library, 1135 Powell St., (near Washington), (415) 274-0275 Tuesdays, January 7, 28 - 10:00 and 10:45 a.m. PRESCHOOL STORYTIME Glen Park Branch Library, 653 Chenery St. (near Diamond), (415) 337-4740 Tuesdays, January 7, 21 - 10:00 a.m. PRESCHOOL STORYTIME FOR CHILDREN AGES 3 - 5 Ingleside Branch Library, 387 Ashton Ave. (near Ocean), (415) 337-4745 Tuesdays, January 7, 14, 21, 28 - 10:00 a.m. INFANT/TODDLER LAPSIT FOR INFANTS OF 6 MONTHS TO 3",
+    "uary 7 - 4:00 p.m. AFTER SCHOOL FILM PROGRAM FOR CfflLDREN AGES 6-14 - Old Dry Frye Chinatown Branch Library, 1135 Powell St., (near Washington), (415) 274-0275 Wednesday, January 8 - 7:00 p.m. ♦FAMILY NIGHT PROGRAM - Bonnie Lockhart brings songs and music games to warm you on a chilly night. Glen Park Branch Library, 653 Chenery St. (near Diamond), (415) 337-4740 Wednesdays, January 8, 15, 22, 29 - 7:00 p.m. LAPSIT FOR TODDLERS AND PARENTS Noe Valley Branch Library, 451 Jersey St. (near Castro), (415) 695-5095 Wednesday, January 8 - 7:00 p.m. FTLM PROGRAM - Corduroy Potrero Branch Library, 1616 20th St. (ne",
+    "AND OLDER Anza Branch Library, 550 37th Ave. (near Anza), (415) 666-7160 Tuesday, January 14 - 10:00 and 11:00 a.m. PRESCHOOL FILM PROGRAM FOR CHILDREN AGES 3 - 6 Anza Branch Library, 550 37th Ave. (near Anza), (415) 666-7160 Tuesday, January 14 - 10:00 and 10:45 a.m. PRESCHOOL FILM PROGRAM Glen Park Branch Library, 653 Chenery St. (near Diamond), (415) 337-4740 Tuesday, January 14 - 10:00 a.m. PRESCHOOL CRAFT PROGRAM FOR CHILDREN AGES 3 - 5 Ingleside Branch Library, 387 Ashton Ave. (near Ocean), (415) 337-4745 Tuesday, January 14 - 10:00 and 11:00 a.m.; 2:00 p.m. PRESCHOOL FILM PROGRAM FOR CHILDREN AGES 3",
+    "53-7049 Tuesday, February 4 - 10:00, 10:30 and 11:05 a.m.; 1:30 and 2:05 p.m. PRESCHOOL FTLM PROGRAM - Angus Lost, Danny and the Dinosaur and Tangrams. Chinatown Branch Library, 1135 Powell St., (near Washington), (415) 274-0275 Tuesdays, February 4, 25 - 10:00 and 10:45 a.m. PRESCHOOL STORYTTME Glen Park Branch Library, 653 Chenery"
+   ],
    "url": "https://archive.org/details/adultcalendarofp1997sanf",
    "deep_link": "https://archive.org/details/adultcalendarofp1997sanf?q=Glen+Park+Branch+Library",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
@@ -263,7 +249,7 @@
  ],
  "_gate": {
   "has_photo": false,
-  "n_documents": 5,
+  "n_documents": 3,
   "n_money_links": 1,
   "meets_pre_summary": false
  }

@@ -1,7 +1,7 @@
 {
- "generated_at": "2026-07-21T14:25:54.016353+00:00",
+ "generated_at": "2026-07-22T15:25:07.877434+00:00",
  "unit": "USD",
- "count": 27,
+ "count": 23,
  "note": "Published SF places — each has a clean-licensed photo, ≥3 archive documents, ≥1 money link and a source-grounded summary.",
  "places": [
   {
@@ -13,20 +13,8 @@
    "lon": -122.4474,
    "photo": "/img/us/sf/places/balboa-park-station.jpg",
    "owning_dept_code": "MTA",
-   "n_documents": 9,
+   "n_documents": 5,
    "n_contracts": 0
-  },
-  {
-   "slug": "bill-graham-civic-auditorium",
-   "name": "Bill Graham Civic Auditorium",
-   "kind": "Auditorium",
-   "family": "civic",
-   "lat": 37.7785,
-   "lon": -122.4174,
-   "photo": "/img/us/sf/places/bill-graham-civic-auditorium.jpg",
-   "owning_dept_code": "ADM",
-   "n_documents": 3,
-   "n_contracts": 1
   },
   {
    "slug": "buena-vista-park",
@@ -37,7 +25,7 @@
    "lon": -122.4416,
    "photo": "/img/us/sf/places/buena-vista-park.jpg",
    "owning_dept_code": "REC",
-   "n_documents": 9,
+   "n_documents": 3,
    "n_contracts": 0
   },
   {
@@ -49,7 +37,7 @@
    "lon": -122.4116,
    "photo": "/img/us/sf/places/cable-car-barn.jpg",
    "owning_dept_code": "MTA",
-   "n_documents": 7,
+   "n_documents": 6,
    "n_contracts": 0
   },
   {
@@ -61,30 +49,6 @@
    "lon": -122.4058,
    "photo": "/img/us/sf/places/coit-tower.jpg",
    "owning_dept_code": "REC",
-   "n_documents": 8,
-   "n_contracts": 0
-  },
-  {
-   "slug": "conservatory-of-flowers",
-   "name": "Conservatory of Flowers",
-   "kind": "Conservatory",
-   "family": "park",
-   "lat": 37.7726,
-   "lon": -122.4603,
-   "photo": "/img/us/sf/places/conservatory-of-flowers.jpg",
-   "owning_dept_code": "REC",
-   "n_documents": 4,
-   "n_contracts": 0
-  },
-  {
-   "slug": "ferry-building",
-   "name": "Ferry Building",
-   "kind": "Terminal / market",
-   "family": "port",
-   "lat": 37.7955,
-   "lon": -122.3937,
-   "photo": "/img/us/sf/places/ferry-building.jpg",
-   "owning_dept_code": "PRT",
    "n_documents": 3,
    "n_contracts": 0
   },
@@ -97,7 +61,7 @@
    "lon": -122.4436,
    "photo": "/img/us/sf/places/glen-canyon-park.jpg",
    "owning_dept_code": "REC",
-   "n_documents": 9,
+   "n_documents": 4,
    "n_contracts": 0
   },
   {
@@ -109,7 +73,7 @@
    "lon": -122.4862,
    "photo": "/img/us/sf/places/golden-gate-park.jpg",
    "owning_dept_code": "REC",
-   "n_documents": 7,
+   "n_documents": 4,
    "n_contracts": 0
   },
   {
@@ -121,7 +85,7 @@
    "lon": -119.7873,
    "photo": "/img/us/sf/places/hetch-hetchy.jpg",
    "owning_dept_code": "PUC",
-   "n_documents": 6,
+   "n_documents": 4,
    "n_contracts": 1
   },
   {
@@ -133,7 +97,7 @@
    "lon": -122.4703,
    "photo": "/img/us/sf/places/japanese-tea-garden.jpg",
    "owning_dept_code": "REC",
-   "n_documents": 6,
+   "n_documents": 3,
    "n_contracts": 0
   },
   {
@@ -145,7 +109,7 @@
    "lon": -122.4192,
    "photo": "/img/us/sf/places/mclaren-park.jpg",
    "owning_dept_code": "REC",
-   "n_documents": 10,
+   "n_documents": 7,
    "n_contracts": 0
   },
   {
@@ -157,7 +121,7 @@
    "lon": -122.4556,
    "photo": "/img/us/sf/places/laguna-honda-hospital.jpg",
    "owning_dept_code": "DPH",
-   "n_documents": 10,
+   "n_documents": 8,
    "n_contracts": 2
   },
   {
@@ -169,7 +133,7 @@
    "lon": -122.4938,
    "photo": "/img/us/sf/places/lake-merced.jpg",
    "owning_dept_code": "REC",
-   "n_documents": 10,
+   "n_documents": 9,
    "n_contracts": 0
   },
   {
@@ -181,7 +145,7 @@
    "lon": -122.5008,
    "photo": "/img/us/sf/places/legion-of-honor.jpg",
    "owning_dept_code": "FAM",
-   "n_documents": 7,
+   "n_documents": 4,
    "n_contracts": 0
   },
   {
@@ -193,7 +157,7 @@
    "lon": -122.4204,
    "photo": "/img/us/sf/places/davies-symphony-hall.jpg",
    "owning_dept_code": "WAR",
-   "n_documents": 5,
+   "n_documents": 3,
    "n_contracts": 0
   },
   {
@@ -205,7 +169,7 @@
    "lon": -122.4426,
    "photo": "/img/us/sf/places/marina-green.jpg",
    "owning_dept_code": "REC",
-   "n_documents": 8,
+   "n_documents": 5,
    "n_contracts": 0
   },
   {
@@ -217,7 +181,7 @@
    "lon": -122.4269,
    "photo": "/img/us/sf/places/mission-dolores-park.jpg",
    "owning_dept_code": "REC",
-   "n_documents": 8,
+   "n_documents": 5,
    "n_contracts": 1
   },
   {
@@ -229,7 +193,7 @@
    "lon": -122.4012,
    "photo": "/img/us/sf/places/moscone-center.jpg",
    "owning_dept_code": "ADM",
-   "n_documents": 6,
+   "n_documents": 4,
    "n_contracts": 0
   },
   {
@@ -241,7 +205,7 @@
    "lon": -122.4098,
    "photo": "/img/us/sf/places/pier-39.jpg",
    "owning_dept_code": "PRT",
-   "n_documents": 8,
+   "n_documents": 4,
    "n_contracts": 0
   },
   {
@@ -253,7 +217,7 @@
    "lon": -122.3855,
    "photo": "/img/us/sf/places/pier-70.jpg",
    "owning_dept_code": "PRT",
-   "n_documents": 5,
+   "n_documents": 4,
    "n_contracts": 0
   },
   {
@@ -265,7 +229,7 @@
    "lon": -122.4053,
    "photo": "/img/us/sf/places/portsmouth-square.jpg",
    "owning_dept_code": "REC",
-   "n_documents": 6,
+   "n_documents": 4,
    "n_contracts": 2
   },
   {
@@ -277,7 +241,7 @@
    "lon": -122.4157,
    "photo": "/img/us/sf/places/sf-main-library.jpg",
    "owning_dept_code": "LIB",
-   "n_documents": 10,
+   "n_documents": 4,
    "n_contracts": 1
   },
   {
@@ -289,7 +253,7 @@
    "lon": -122.503,
    "photo": "/img/us/sf/places/san-francisco-zoo.jpg",
    "owning_dept_code": "REC",
-   "n_documents": 8,
+   "n_documents": 6,
    "n_contracts": 0
   },
   {
@@ -305,18 +269,6 @@
    "n_contracts": 0
   },
   {
-   "slug": "union-square",
-   "name": "Union Square",
-   "kind": "Plaza",
-   "family": "park",
-   "lat": 37.788,
-   "lon": -122.4074,
-   "photo": "/img/us/sf/places/union-square.jpg",
-   "owning_dept_code": "REC",
-   "n_documents": 8,
-   "n_contracts": 2
-  },
-  {
    "slug": "de-young-museum",
    "name": "de Young Museum",
    "kind": "Museum",
@@ -325,7 +277,7 @@
    "lon": -122.4687,
    "photo": "/img/us/sf/places/de-young-museum.jpg",
    "owning_dept_code": "FAM",
-   "n_documents": 10,
+   "n_documents": 7,
    "n_contracts": 0
   }
  ]

@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-21T14:25:53.949383+00:00",
+ "generated_at": "2026-07-22T15:04:53.711158+00:00",
  "source_pipeline": "sf_place_candidates.json → sync_ia_sf.py + link_sf_places.py + fetch_sf_place_photos.py → export_sf_places.py",
  "unit": "USD",
  "slug": "excelsior-branch-library",
@@ -106,7 +106,11 @@
    "year": 1997,
    "pool": "sfpl",
    "matched_alias": "Excelsior Branch Library",
-   "snippet": "the «Excelsior Branch Library», including the certification of the «Excelsior Branch Library» renovation",
+   "ocr_excerpts": [
+    "Department: Item: Source of Funds: Grant Amount: Grant Period: Required Match: Source of Funds For City Match: Indirect Costs: Description: Public Library Resolution certifying the Public Library's grant application in the amount of $2,683,850 to the State Library, for the renovation of the Excelsior Branch Library, including the certification of the Excelsior Branch Library renovation project budget and the certification of the source of the matching funds required by the subject State grant. California Reading and Literacy Improvement and Public Library Construction and Renovation Bond Act of 2000 (Proposition 14), which is administered by the State Library (see Comment",
+    "ols of the Public Library, although the City's Administrative Code does not currently require Board of Supervisors approval to apply for a grant, the State grant guidelines for this subject grant require that the Board of Supervisors to certify the grant application, including the certification of the Excelsior Branch Library renovation project budget and the certification of the source of the matching funds required by the subject State grant, prior to submission of the grant application to the State Library for consideration. Mr. Nichols advises that if the State BOARD OF SUPERVISORS BUDGET ANALYST 13 Memo to Finance Committee May 22, 2002 Finance Committee Meeting Library awards such grant funds to the Public Library for the renovation of the Excelsior Branch Library, the Public Library will request separate approval from the Board of Supervisors to accept and expend the grant funds. On November 7, 2000, San Francisco voters approved Proposition A, Branch Library Facilities Improvement Bonds, which authorized the City to issue up to $105,865,000 in General Obligat",
+    "neighborhood; and, (4) provide a facility for a system-wide administrative support center. Attachment I, provided by the Public Library is a list of the 19 existing Branch Libraries and four new Branch Libraries that would be rehabilitated under the Branch Libraries Improvement Bond Act, including the Excelsior Branch Library. Mr. Nichols advises that the renovation of the Excelsior Branch Library is one of the 19 Branch Library renovation projects approved by the San Francisco voters in November of 2000. The Excelsior Branch Library is a City-owned facility located at 4400 Mission Street and occupies 8,322 square feet. Mr. Nichols reports that the renovation of the Excelsior Branch Library includes (a) seismic reinforcement of the existing structure; (b) renovation of the electrical, mechanical and life-safety systems; (c) renovation of the existing service counters and bathrooms to meet Americans with Disabilities Act (ADA) standards; (d) redesigning existing floor space; (e) new furniture, fixtures and equipment; (f) n"
+   ],
    "url": "https://archive.org/details/4minutes2002sanf",
    "deep_link": "https://archive.org/details/4minutes2002sanf?q=Excelsior+Branch+Library",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
@@ -120,23 +124,15 @@
    "year": null,
    "pool": "sfpl",
    "matched_alias": "Excelsior Branch Library",
-   "snippet": "subjects: Opening of the newly renovated «Excelsior Branch Library»; update on Library Technologv^ and",
+   "ocr_excerpts": [
+    "e Fihpino- American Affinity Centers. 5. CITY LIBRAIOAN'S REPORT DISCUSSION by City Librarian Luis Herrera (This item is to allow the City Librarian to report on recent Library activities and make announcements; The City Librarian will report on the following subjects: Opening of the newly renovated Excelsior Branch Library; update on Library Technologv^ and Privacy Committee; update on the Library's Summer Reading Program; and summan' of upcoming Exhibits and Programs. 6. FRIENDS OF THE LIBRARY REPORT DISCUSSION (This item is to allow the Friends of the San Francisco Public Library to inform the Commission of their c",
+    "successful Excelsior Neighborhood Campaign, who filled the Commissioners in on the many varied extensive and enjoyable activities that they and their neighbors had undertaken to raise funds for furniture, fixtures, and equipment for their newly renovated and about to be re-opened neighborhood hbrary. The Excelsior Branch Library Campaign Co-Chairs invited the Commissioners and the entire City to join them in celebrating their Branch Library's reopen on July 9*- Next Ms. Bero introduced Ms. Marian Chatfield Taylor for a presentation on the other exciting developments in the ongoing Friends' Capital Campaign for the Branch Lib",
+    "xcelsior Neighborhood Campaign Committee, Avho filled the Commissioners in on the many varied extensive and enjoyable activities that they and their neighbors had undertaken to raise funds for furniture, fixtures, and equipment for their newly renovated and about to be re-opened neighborhood library. The Excelsior Branch Library Campaign Co-Chairs invited the Commissioners and the entire Cit}- to join them in celebrating their Branch Library's reopen on July 9'*^- Next Ms. Bero introduced Ms. Marian Chatfield Taylor for a presentation on the other exciting developments in the ongoing Friends' Capital Campaign for the Branch L",
+    "and Branch Library Summar}' Schedules 6. CITY LIBRARIAN'S REPORT DISCUSSION by City Librarian Luis Herrera (This item is to allow the Cit)' Librarian to report on recent Librat}' activities and make announcements) The City Librarian will report on the foUo^ving subjects: the Grand Reopening of the Excelsior Branch Library; the Volunteer Recognition Event; the Librar}' Technolog)- and Privacy Committee; attendance at American Librar}' Association (ALA) Conference in Chicago; and a summary of upcoming Exhibits and Programs. SAN FRANCISCO PUBLIC LIBRARY COMMISSION - Accessible Meetings Policy To ensure the participation of",
+    "Chin, 2\"*^ Commissioner Gomez for approval of the Minutes of the regular Public Library Commission meeting of June 16, 2005. ACTION: 5-0 AYE (Chin, Coulter, Gomez, Kane, Strobin) AGENDA ITEM #4 FRIENDS OF THE LIBRARY REPORT Friend's Executive Director Donna Bero reported on: The re-"
+   ],
    "url": "https://archive.org/details/minutesofregula2005sanf_0",
    "deep_link": "https://archive.org/details/minutesofregula2005sanf_0?q=Excelsior+Branch+Library",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Meetings & resolutions",
-   "salient": true
-  },
-  {
-   "identifier": "minutesofregular1196sanf",
-   "title": "Minutes of the regular meeting ... / San Francisco Public Library Commission",
-   "creator": "San Francisco Public Library. Commission",
-   "year": null,
-   "pool": "sfpl",
-   "matched_alias": "Excelsior Branch Library",
-   "snippet": "design alternatives for the permanent «Excelsior Branch Library», the Secretary reported. (With respect",
-   "url": "https://archive.org/details/minutesofregular1196sanf",
-   "deep_link": "https://archive.org/details/minutesofregular1196sanf?q=Excelsior+Branch+Library",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
    "group": "Meetings & resolutions",
    "salient": true
@@ -148,7 +144,13 @@
    "year": null,
    "pool": "sfpl",
    "matched_alias": "Excelsior Branch Library",
-   "snippet": "allowed in the 1960-61 budget. 3. «Excelsior Branch Library». Like the proposed Bayview Branch",
+   "ocr_excerpts": [
+    "as selected at Revere and Bayview Streets which is close enough to the shopping district on Third Street to provide proper service to library patrons. Funds for site purchase and construction are available from the estate of the late Anna E. Waden, plus $95,000.00 allowed in the 1960-61 budget. 3. Excelsior Branch Library. Like the proposed Bayview Branch, this ex- tension will replace a rented store facility. A site was selected for this branch during the year just ended and funds for its purchase were allowed in the 1960-61 budget. 4. Western Addition Branch Library. Early in 1959 the Library Commission reque",
+    "at the intersection of Revere and Bayview Streets just west of Third Street. Since his criticisms seemed valid, the Library Commission has embarked on a search for another, more suitable location, yet one which also has the virtue of being adjacent to the local shopping area for the district. 3. Excelsior Branch Library. Like the proposed Bayview Branch, this extension will replace a rented store facility. The 1960-61 budget included $60,000 for the purchase of a site in the Excelsior District. A fine location, the southwest corner of Mission and Cotter Streets, iijas chosen by the Library Commission as the best",
+    "and Cotter parcel. The 1961-62 budget includes $10,500 for the development of plans for this project. Funds for actual construction will be requested in the \"\"1962-63 budget. The firm of Appleton & Wolfard, designers of most of the newer branch libraries, was appointed project architect for the Excelsior Branch Library. 4. Western Addition Branch Library. As reported to Your Honor last year, the Recreation and Park Commission has given approval to the release of a sufficiently large portion of Hamilton Square, facing Scott Street, to permit the construction of this branch. The 1961-62 budget includes $10,800 f",
+    "during tho earthquake of March 19f>7)« B* Tho following branch library projects hare boon approved and fund a for construction havo boon appropriated t I, Tha Western Addition Branch Library, to bo located at the wast end of Harailton Square and Playground, Geary, Post and Scott Streets. 2* Tho Excelsior branch Library, to bo located at Mission and Cotter Streets* (This extension will roplaco tho present branch located In inadequate rented quarters in tho cans area.) 3* The Anna E. %dcn branch Library In the Bayview District, to be located at Third Street and Revere. C* Improvements to Existing Buildings i 1",
+    "k was incomplete at that date and because of the Library Commission's desire that as many people as possible, children as well as adults, be present for the for- mal dedication of this, the largest branch constructed to date since World War II, the ceremony was postponed until late September 1966. Excelsior Branch Library: A city"
+   ],
    "url": "https://archive.org/details/activitiesreport1959sanf",
    "deep_link": "https://archive.org/details/activitiesreport1959sanf?q=Excelsior+Branch+Library",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
@@ -162,7 +164,11 @@
    "year": 2000,
    "pool": "sfpl",
    "matched_alias": "Excelsior Branch Library",
-   "snippet": "Improvement Program «EXCELSIOR BRANCH LIBRARY» BACKGROUND The «Excelsior Branch Library», built in 1967",
+   "ocr_excerpts": [
+    "BAYVIEW BRANCH LIBRARY 23 BACKGROUND 23 SCOPE OF WORK 23 PROJECT COST 24 PROJECT SCHEDULE 24 BERNAL HEIGHTS BRANCH LIBRARY 25 BACKGROUND 25 SCOPE OF WORK 25 PROJECT COST 27 PROJECT SCHEDULE 27 EUREKA BRANCH LIBRARY 28 BACKGROUND 28 SCOPE OF WORK 28 PROJECT COST 30 PROJECT SCHEDULE 30 EXCELSIOR BRANCH LIBRARY 31 BACKGROUND ■. 31 SCOPE OF WORK 31 PROJECT COST 33 PROJECT SCHEDULE 33 GLEN PARK BRANCH LIBRARY 34 BACKGROUND 34 SCOPE OF WORK 34 PROJECT COST 35 PROJECT SCHEDULE 35 i Branch Library Improvement Program GOLDEN GATE VALLEY BRANCH LIBRARY 36 BACKGROUND 36 SCOPE OF WORK 36 PROJECT",
+    "hs The schedule for each individual project conforms to the program phasing criteria listed on page 3. The criteria balance the relative priority of each project with the need to maintain library services in each neighborhood during the life of the program. 30 Branch Library Improvement Program EXCELSIOR BRANCH LIBRARY BACKGROUND The Excelsior Branch Library, built in 1967, is a single story brick-and-stone structure with approximately 8,302 square feet with an axial plan configuration. It is located at 4400 Mission Street. It serves the population of the Excelsior District and portions of the Bayview Hunters Point, Bernal Heights, Portola, Visitacion Vall",
+    "n program excludes library staff costs. The solution to be chosen for a particular branch will depend on many factors involving overall program phasing, the extent of disruptions, and the cost effectiveness of the various relocation alternatives. 32 Branch Library Improvement Program PROJECT COST Excelsior Branch Library Project Cost Summary Rehabilitation and Improvements $4,930,000 Expansion $0 Total Project Cost Estimate $4,930,000 Project costs include construction cost estimates for each project component: principal construction; construction contingency; art enrichment; hazardous materials mitigation; temporary relocation measures; project control and site control; cost figures are escalated to the mid-point of construction. PROJECT SCHEDULE Excelsior Branch Library Project Duration ACTIVITY DURATION Planning Design and Bid 16 months Relocation and Construction 14 months The schedule for each individual project conforms to the program phasing criteria listed on page 3. The criteria balance the relative priority of each project with the need to maintain libr"
+   ],
    "url": "https://archive.org/details/branchlibraryimp3200sanf",
    "deep_link": "https://archive.org/details/branchlibraryimp3200sanf?q=Excelsior+Branch+Library",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
@@ -176,7 +182,13 @@
    "year": null,
    "pool": "sfpl",
    "matched_alias": "Excelsior Branch Library",
-   "snippet": "Sponsored by Centra Legal de la Raza. «Excelsior Branch Library», 4400 Mission St. (at Cotter),",
+   "ocr_excerpts": [
+    "on Desk. A ticket holder may bring a guest, but will then have to share a computer terminal Main Library, training room, 6th floor, 100 Larkin St. (Civic Center), (415) 557-4400 Saturday, January 4 - 11:30 a.m. CITIZENSHIP WORKSHOP IN SPANISH AND ENGLISH - Sponsored by Centra Legal de la Raza. Excelsior Branch Library, 4400 Mission St. (at Cotter), (415) 337-4735 Tuesdays, January 7, 14, 21, 28 - 4:30 p.m. LIBRARY ORIENTATION - One -hour orientation on the Library's online catalog and other databases. Main Library, Koret Auditorium, 100 Larkin St. (Civic Center), (415) 557-4400 Wednesdays, January 8, 15, 22, 29",
+    "0th St. (near Connecticut), (415) 695-6640 Thursdays, January 2, 9, 23, 30 - 10:45 a.m. PRESCHOOL STORYTTME FOR CHILDREN AGES 3 - 5 North Beach Branch Library, 2000 Mason St. (at Columbus), (415) 274-0270 Thursdays, January 2, 9, 16, 30- 11:00 a.m. STORIES AND CRAFTS FOR CHILDREN AGES 3 - 6 Excelsior Branch Library, 4400 Mission St. (at Cotter), (415) 337-4735 Thursdays, January 2, 9, 16, 23, 30 - 4:00 p.m. PRESCHOOL STORYTTME FOR CHILDREN AGES 3 - 5 Potrero Branch Library, 1616 20th St. (near Connecticut), (415) 695-6640 Friday, January 3 - 2:00 p.m. AFTER SCHOOL FILM PROGRAM FOR OLDER CfflLDREN - Jumanj",
+    "ibrary, 45 Leland Ave. (near Bayshore), (415) 337-4790 Saturdays, January 4, 11, 18, 25 - 10:00 a.m. TODDLER/PRESCHOOL STORYTIME Chinatown Branch Library, 1135 Powell St., (near Washington), (415) 274-0275 Saturdays, January 4, 11, 18, 25 - 10:30 a.m. LAPSITS FOR CHILDREN AGES 6 MONTHS TO 3 YEARS Excelsior Branch Library, 4400 Mission St. (at Cotter), (415) 337-4735 Saturdays, January 4, 11, 18, 25 - 10:30 a.m. INFANT/TODDLER LAPSIT FOR INFANTS TO 3 YEARS WITH AN ADULT - Stories, songs, and rhymes. Richmond Branch Library, 351 - 9th Ave. (near Clement), (415) 666-7021 Saturdays, January 4, 11, 18, 25 - 10:30 a.",
+    "m. HOMESCHOOLING INFORMATION WORKSHOP - By Jackie Orsi, Coastside Home Scholars. Merced Branch Library, 155 Winston Dr. (at 19th), (415) 337-4746 Thursday, January 23 - 10:15 and 11:00 a.m. PRESCHOOL FDLM PROGRAM - Not So Fast, Songolo; Red's Dream, Frog & Toad Together and Alfabeto (the Alphabet). Excelsior Branch Library, 4400 Mission St. (at Cotter), (415) 337-4735 Thursday, January 23 - 3:15 p.m. AFTER SCHOOL FILM PROGRAM - Isabella and the Magic Brush, Dragon Wore Tennis Shoes, I'm Going to Be a Lion 's Head. Excelsior Branch Library, 4400 Mission St. (at Cotter), (415) 337-4735 Thursday, January 23 - 3:45 p.m. •MASK MAKING WORKSHOP FOR CHILDREN AGES 6 AND OLDER - With Nikki Ausschnitt North Beach Branch Library, 2000 Mason St. (near Columbus), (415) 274-0270 Thursday, January 23 - 4:30 p.m. CHINESE NEW YEAR CELEBRATION FOR CH",
+    "GITAL AGE - Presented by John Templeton and Lady Sala Shabazz. Sponsored by SFPL African American Center. Mai"
+   ],
    "url": "https://archive.org/details/adultcalendarofp1997sanf",
    "deep_link": "https://archive.org/details/adultcalendarofp1997sanf?q=Excelsior+Branch+Library",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
@@ -221,7 +233,7 @@
  ],
  "_gate": {
   "has_photo": false,
-  "n_documents": 6,
+  "n_documents": 5,
   "n_money_links": 1,
   "meets_pre_summary": false
  }

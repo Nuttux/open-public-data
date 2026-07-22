@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-21T14:25:53.926096+00:00",
+ "generated_at": "2026-07-22T15:04:53.694371+00:00",
  "source_pipeline": "sf_place_candidates.json → sync_ia_sf.py + link_sf_places.py + fetch_sf_place_photos.py → export_sf_places.py",
  "unit": "USD",
  "slug": "union-square",
@@ -336,116 +336,18 @@
  },
  "documents": [
   {
-   "identifier": "saksfifthavenueu1619sanf",
-   "title": "Saks Fifth Avenue, Union Square project : [final] environmental impact report",
-   "creator": "San Francisco (Calif.). City Planning Commission,San Francisco (Calif.). Dept. of City Planning",
-   "year": 1978,
-   "pool": "sfpl",
-   "matched_alias": "Union Square",
-   "snippet": "19 13 «Union Square» Looking South 24 14 «Union Square» Looking East 25 15 «Union Square» Looking",
-   "url": "https://archive.org/details/saksfifthavenueu1619sanf",
-   "deep_link": "https://archive.org/details/saksfifthavenueu1619sanf?q=Union+Square",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Plans & environmental review",
-   "salient": true
-  },
-  {
-   "identifier": "neimanmarcusdepa1978sanf",
-   "title": "Neiman-Marcus department store : draft environmental impact report",
-   "creator": "San Francisco (Calif.). Dept. of City Planning",
-   "year": 1978,
-   "pool": "sfpl",
-   "matched_alias": "Union Square",
-   "snippet": "1975. 24 B. URBAN DESIGN 1 . «Union Square» «Union Square», a registered landmark of the State",
-   "url": "https://archive.org/details/neimanmarcusdepa1978sanf",
-   "deep_link": "https://archive.org/details/neimanmarcusdepa1978sanf?q=Union+Square",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Plans & environmental review",
-   "salient": true
-  },
-  {
-   "identifier": "minutesboardofpa1941sanf",
-   "title": "Minutes / Board of Park Commissioners",
-   "creator": "San Francisco (Calif.). Board of Park Commissioners",
-   "year": null,
-   "pool": "sfpl",
-   "matched_alias": "Union Square",
-   "snippet": "of «Union Square» Elevations of «Union Square» (2 sheets) Specifications for «Union Square» Surface",
-   "url": "https://archive.org/details/minutesboardofpa1941sanf",
-   "deep_link": "https://archive.org/details/minutesboardofpa1941sanf?q=Union+Square",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Meetings & resolutions",
-   "salient": true
-  },
-  {
    "identifier": "2minutes1999sanf",
    "title": "Minutes",
    "creator": "San Francisco (Calif.). Board of Supervisors. Finance and Labor Committee",
    "year": 1999,
    "pool": "sfpl",
    "matched_alias": "Union Square",
-   "snippet": "improvements to «Union Square» Park. «Union Square» Garage and «Union Square» Park Currently the",
    "url": "https://archive.org/details/2minutes1999sanf",
    "deep_link": "https://archive.org/details/2minutes1999sanf?q=Union+Square",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
    "group": "Meetings & resolutions",
-   "salient": true
-  },
-  {
-   "identifier": "minutesrecreatio1967sanf",
-   "title": "Minutes / Recreation and Park Commission",
-   "creator": "San Francisco (Calif.). Recreation and Park Commission",
-   "year": null,
-   "pool": "sfpl",
-   "matched_alias": "Union Square",
-   "snippet": "JOINT WORKING AGREEMENT - «UNION SQUARE» GARAGE (SEE «UNION SQUARE» GARAGE) JOSEPHINE D. RANDALL",
-   "url": "https://archive.org/details/minutesrecreatio1967sanf",
-   "deep_link": "https://archive.org/details/minutesrecreatio1967sanf?q=Union+Square",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Meetings & resolutions",
-   "salient": true
-  },
-  {
-   "identifier": "destinationdown1319rose_0",
-   "title": "Destination downtown : streetscape investments for a walkable city : the downtown streetscape plan : plan summary",
-   "creator": "Rose, Evan Stuart,San Francisco (Calif.). Planning Dept,San Francisco County Transportation Authority",
-   "year": 1995,
-   "pool": "sfpl",
-   "matched_alias": "Union Square",
-   "snippet": "entrance into «Union Square»; hanging planters and decorative flowers fac- ing «Union Square». Powell:",
-   "url": "https://archive.org/details/destinationdown1319rose_0",
-   "deep_link": "https://archive.org/details/destinationdown1319rose_0?q=Union+Square",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Other records",
-   "salient": true
-  },
-  {
-   "identifier": "destinationdownt1319rose",
-   "title": "Destination downtown : streetscape investments for a walkable city : the downtown streetscape plan",
-   "creator": "Rose, Evan Stuart,San Francisco (Calif.). Planning Dept,San Francisco County Transportation Authority",
-   "year": 1995,
-   "pool": "sfpl",
-   "matched_alias": "Union Square",
-   "snippet": "edge of «Union Square», while on Kearny Street, the edge between the «Union Square» and Financial",
-   "url": "https://archive.org/details/destinationdownt1319rose",
-   "deep_link": "https://archive.org/details/destinationdownt1319rose?q=Union+Square",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Other records",
-   "salient": false
-  },
-  {
-   "identifier": "destinationdownt1994rose",
-   "title": "Destination downtown : streetscape investments for a walkable city",
-   "creator": "Rose, Evan Stuart,San Francisco (Calif.). Dept. of City Planning,San Francisco County Transportation Authority",
-   "year": 1994,
-   "pool": "sfpl",
-   "matched_alias": "Union Square",
-   "snippet": "edge of «Union Square», while on Kearny Street, the edge between the «Union Square» and Financial",
-   "url": "https://archive.org/details/destinationdownt1994rose",
-   "deep_link": "https://archive.org/details/destinationdownt1994rose?q=Union+Square",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Other records",
-   "salient": false
+   "salient": true,
+   "gloss": "A 1999 Finance and Labor Committee record on leasing the Union Square Public Parking Garage, a supplemental park-maintenance agreement, and revenue bonds financing the garage's seismic retrofit and expansion alongside improvements to Union Square Park."
   }
  ],
  "dept_shelf": [
@@ -485,7 +387,7 @@
  ],
  "_gate": {
   "has_photo": true,
-  "n_documents": 8,
+  "n_documents": 1,
   "n_money_links": 3,
   "meets_pre_summary": true
  }

@@ -26,10 +26,13 @@ export type SfPlaceDoc = {
   creator: string | null;
   year: number | null;
   pool: "sfpl" | "dl";
-  snippet: string;
   url: string;
   deep_link: string;
   source_label: string;
+  /** One-line, OCR-grounded "what this scan shows about this place", written by
+   *  the summary step (apply_sf_place_summaries.py) from the document's own OCR
+   *  passages — the curated replacement for the old raw 280-char snippet. */
+  gloss?: string | null;
   /** Narrative bucket assigned by export_sf_places.py's curate_documents(). */
   group: string;
   /** Top-salience rows shown without expanding "see all documents". */

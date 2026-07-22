@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-21T14:25:53.964167+00:00",
+ "generated_at": "2026-07-22T15:04:53.721184+00:00",
  "slug": "de-young-museum",
  "name": "de Young Museum",
  "note": "Archive documents linked to this place; source labels honour the SFPL-vs-Democracy's-Library distinction.",
@@ -11,12 +11,12 @@
    "year": 2001,
    "pool": "sfpl",
    "matched_alias": "de Young Museum",
-   "snippet": "existing Asian Art and «de Young» Museums with an expanded «de Young» Museum and would not introduce",
    "url": "https://archive.org/details/newdeyoungmuseum2020sanf",
    "deep_link": "https://archive.org/details/newdeyoungmuseum2020sanf?q=de+Young+Museum",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
    "group": "Plans & environmental review",
-   "salient": true
+   "salient": true,
+   "gloss": "2001 revisions to the final EIR for the New M.H. de Young Museum, addressing the reduced height of the Education Tower and the shadow and visual analyses."
   },
   {
    "identifier": "newdeyoungsicmus2220sanf",
@@ -25,12 +25,12 @@
    "year": 2000,
    "pool": "sfpl",
    "matched_alias": "de Young Museum",
-   "snippet": "major steps: «de Young Museum» closes to public «de Young Museum» pack-up «de Young Museum» site remediation",
    "url": "https://archive.org/details/newdeyoungsicmus2220sanf",
    "deep_link": "https://archive.org/details/newdeyoungsicmus2220sanf?q=de+Young+Museum",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
    "group": "Plans & environmental review",
-   "salient": true
+   "salient": true,
+   "gloss": "The 2000 draft EIR for the project to demolish and reconstruct the de Young in Golden Gate Park, removing about 230,000 sq ft of existing buildings."
   },
   {
    "identifier": "minutesagendas2004fine",
@@ -39,12 +39,12 @@
    "year": null,
    "pool": "sfpl",
    "matched_alias": "de Young Museum",
-   "snippet": "New «de Young Museum» in Golden Gate Park. The building of the New «de Young Museum» is rapidly",
    "url": "https://archive.org/details/minutesagendas2004fine",
    "deep_link": "https://archive.org/details/minutesagendas2004fine?q=de+Young+Museum",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
    "group": "Meetings & resolutions",
-   "salient": true
+   "salient": true,
+   "gloss": "Fine Arts Museums Board of Trustees resolutions honoring donors and naming galleries within the New de Young Museum."
   },
   {
    "identifier": "minutes2000corp",
@@ -53,26 +53,12 @@
    "year": null,
    "pool": "sfpl",
    "matched_alias": "de Young Museum",
-   "snippet": "the old «de Young» to the new «de Young». “ Building excitement about new «de Young» (“buzz”)",
    "url": "https://archive.org/details/minutes2000corp",
    "deep_link": "https://archive.org/details/minutes2000corp?q=de+Young+Museum",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
    "group": "Meetings & resolutions",
-   "salient": true
-  },
-  {
-   "identifier": "minutesorderofbu1999corp",
-   "title": "Minutes and Order of Business",
-   "creator": "Corporation of the Fine Arts Museums (San Francisco, Calif.). Board of Trustees",
-   "year": null,
-   "pool": "sfpl",
-   "matched_alias": "de Young Museum",
-   "snippet": "New «de Young Museum» C. Report on the Conceptual Planning for a New «de Young Museum» 1 .",
-   "url": "https://archive.org/details/minutesorderofbu1999corp",
-   "deep_link": "https://archive.org/details/minutesorderofbu1999corp?q=de+Young+Museum",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Meetings & resolutions",
-   "salient": true
+   "salient": true,
+   "gloss": "COFAM Executive Committee minutes on the \"My de Young\" public campaign to build the new museum and a lease for a temporary education site while the de Young is closed."
   },
   {
    "identifier": "annualreport1970fine",
@@ -81,40 +67,12 @@
    "year": null,
    "pool": "sfpl",
    "matched_alias": "de Young Museum",
-   "snippet": "Miller, «de Young» Board Mrs. Peter McBean, «de Young» Board Mr. Cyril Magnin, «de Young» Board",
    "url": "https://archive.org/details/annualreport1970fine",
    "deep_link": "https://archive.org/details/annualreport1970fine?q=de+Young+Museum",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
    "group": "Reports & records",
-   "salient": true
-  },
-  {
-   "identifier": "annualappropriat1947sanf",
-   "title": "Annual appropriation ordinance, City and County of San Francisco, California",
-   "creator": "San Francisco (Calif.)",
-   "year": null,
-   "pool": "sfpl",
-   "matched_alias": "de Young Museum",
-   "snippet": "Services of Other Departments («de Young Museum») . . «de YOUNG MUSEUM» Permanent Salaries Allowance",
-   "url": "https://archive.org/details/annualappropriat1947sanf",
-   "deep_link": "https://archive.org/details/annualappropriat1947sanf?q=de+Young+Museum",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Other records",
-   "salient": false
-  },
-  {
-   "identifier": "mhdeyoungmemori1997sedw_0",
-   "title": "M.H. de Young Memorial Museum : site selection study",
-   "creator": "Sedway Consulting (Firm),Fine Arts Museums of San Francisco,ROMA Design Group",
-   "year": 1997,
-   "pool": "sfpl",
-   "matched_alias": "de Young",
-   "snippet": "APPENDIX A «De Young» Museum Urban Building and Pavilion Concept Model Programs «de Young» Museum",
-   "url": "https://archive.org/details/mhdeyoungmemori1997sedw_0",
-   "deep_link": "https://archive.org/details/mhdeyoungmemori1997sedw_0?q=de+Young",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Other records",
-   "salient": false
+   "salient": true,
+   "gloss": "The 1970–71 annual report records the de Young's van Gogh exhibition, seen by over 400,000, and gifts received by the M.H. de Young Memorial Museum."
   },
   {
    "identifier": "mhdeyoungmemoria1119fine",
@@ -123,26 +81,26 @@
    "year": 1997,
    "pool": "sfpl",
    "matched_alias": "de Young Museum",
-   "snippet": "the M.H. de Young Memorial Museum (\"«de Young Museum»\" or \"Museum\"). The purpose of this study",
    "url": "https://archive.org/details/mhdeyoungmemoria1119fine",
    "deep_link": "https://archive.org/details/mhdeyoungmemoria1119fine?q=de+Young+Museum",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
    "group": "Other records",
-   "salient": false
+   "salient": true,
+   "gloss": "A 1997 Sedway Group study of the de Young's visitorship, fiscal benefit and economic impact, comparing its park site with a downtown location."
   },
   {
-   "identifier": "whatsdoinginpark1977sanf",
-   "title": "What's doing in the parks?",
-   "creator": "San Francisco (Calif.). Recreation and Park Department",
-   "year": null,
+   "identifier": "mhdeyoungmemori1997sedw_0",
+   "title": "M.H. de Young Memorial Museum : site selection study",
+   "creator": "Sedway Consulting (Firm),Fine Arts Museums of San Francisco,ROMA Design Group",
+   "year": 1997,
    "pool": "sfpl",
-   "matched_alias": "de Young Museum",
-   "snippet": "\"As We Were, As V/e Are\" exhibi*;, «de Young Museum», Golden Gate Park, through January 30th",
-   "url": "https://archive.org/details/whatsdoinginpark1977sanf",
-   "deep_link": "https://archive.org/details/whatsdoinginpark1977sanf?q=de+Young+Museum",
+   "matched_alias": "de Young",
+   "url": "https://archive.org/details/mhdeyoungmemori1997sedw_0",
+   "deep_link": "https://archive.org/details/mhdeyoungmemori1997sedw_0?q=de+Young",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
    "group": "Other records",
-   "salient": false
+   "salient": false,
+   "gloss": "A 1997 site-selection study setting out the de Young's urban-building concept and its gallery program in square feet."
   }
  ]
 }

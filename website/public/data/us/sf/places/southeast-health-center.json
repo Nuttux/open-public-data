@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-21T14:25:53.954097+00:00",
+ "generated_at": "2026-07-22T15:04:53.714814+00:00",
  "source_pipeline": "sf_place_candidates.json → sync_ia_sf.py + link_sf_places.py + fetch_sf_place_photos.py → export_sf_places.py",
  "unit": "USD",
  "slug": "southeast-health-center",
@@ -221,7 +221,11 @@
    "year": 2004,
    "pool": "sfpl",
    "matched_alias": "Southeast Health Center",
-   "snippet": "entire Bayview Hunters Point. The «Southeast Health Center», which is owned by the Department",
+   "ocr_excerpts": [
+    "Node While the Health Center Activity Node would support the development of a center for affordable senior residences in proximity to medical offices, clinics, and related medical services facilities, the medical and medical-related uses would be intended to serve the entire Bayview Hunters Point. The Southeast Health Center, which is owned by the Department of Public Health and is located directly adjacent to the Third Street LRT, may be expanded to provide additional private medical offices that support the services available through the health center. To provide a complete \"Aging Campus\" neighborhood for elderly persons, there would also be a focus on building new housing and encouraging new commercial/retail businesses within this activity node. Zoning The Health Center Activity Node is currently zoned for Public uses in Bayview Park and the Southeast Health Center, surrounded primarily by Light Industrial zoning. Areas along Third Street are zoned mixed-use under interim controls. The proposed rezoning would create a new Neighborhood Commercial district along Third Street that would allow for higher-density residential/commercial development. The surrounding areas would be converted to PDR Districts. A new mixed-use zone in proximity to the existing Southeast Health Center would allow medical offices and multi-family File No. 1996.546E Draft EIR Bayview Hunters Point Redevelopment Projects and 11-15 October 19, 2004 Rezoning EIR II. Project Description residential uses with a buffer zone between industrial uses. Many small commercial services and retail uses w",
+    "he Health Center Activity Node include industrial uses, a public health facility, and senior housing and support services. The Health Center Activity Node is located between William- Van Dyke Avenue and Fitzgerald Avenue, the Caltrain right-of-way, and Keith Avenue. This activity node is anchored by the Southeast Health Center and the nearby Geraldine Johnson Manor senior housing development. Other social services in the activity node include the Bayview Hunters Point Multipurpose Senior Center at Third Street and Yosemite Avenue. The Bayview Playground and Martin Luther King Jr. pool are on Third Street between Armstrong an",
+    "ps Street. These facilities are housed in modern glass and concrete structures. Health Center Activity Node The Health Center Activity Node, centered on Third Street, is composed largely of light industry with limited public amenities (such as bus shelters, benches, or parks) and some residences. The Southeast Health Center, the only medical clinic in Bayview Hunters Point, is located on the corner of Keith Street and Armstrong Avenue, directly adjacent to the Bayview Playground and one block away from Third Street (see Figure III.E-9, p. III.E-25). The one- story, brick"
+   ],
    "url": "https://archive.org/details/bayviewhunterspo2004sanf",
    "deep_link": "https://archive.org/details/bayviewhunterspo2004sanf?q=Southeast+Health+Center",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
@@ -235,7 +239,13 @@
    "year": null,
    "pool": "sfpl",
    "matched_alias": "Southeast Health Center",
-   "snippet": "Triangle Redevelopment Plan Amendment B. «Southeast Health Center» Development Program Update C. Aging",
+   "ocr_excerpts": [
+    "theast Community Facility 1 800 Oakdale Avenue, San Francisco, CA 94 1 24 II. Redevelopment Agency Report ruDLio li A. Redevelopment Plan Amendments 1 . India Basin Redevelopment Plan Amendment 2. Hunters Point Redevelopment Plan Amendment 3. Bayview Industrial Triangle Redevelopment Plan Amendment B. Southeast Health Center Development Program Update C. Aging Campus Update D. Hunters Point Shipyard Update III. Continuing Business A. Light Rail Asbestos Issues B. PUC Digesters C. AIMCO Properties Update D. Port Property Update E. Planning Department Update IV. New Business A. Friends of the Urban Forest tree plan",
+    "1 . India Basin Redevelopment Plan Amendment 2. Hunters Point Redevelopment Plan Amendment 3. Bayview Industrial Triangle Redevelopment Plan Amendment B. Aging Campus Update C. Hunters Point Shipyard Update III. New Business A. Department of Environment Air Monitoring Project B. Presentation on the Southeast Health Center IV. Continuing Business A. Light Rail Asbestos Issues B. PUC Updates C. AEV1CO Properties Update D. Port Property Update E. Planning Department Update V. Public Comment Comments on non-agenda items can be made at this time, but must be limited to two (2) minutes per speaker VI. Future Agend",
+    "B. Approval of Minutes from July 16, 2003 II. Redevelopment Agency Report A. Aging Campus Update B. Redevelopment Plan Amendments 1 . India Basin Redevelopment Plan Amendment 2. Hunters Point Redevelopment Plan Amendment 3. Bayview Industrial Triangle Redevelopment Plan Amendmen£)OCUMENTS DEPT. C. Southeast Health Center Expansion Project D. Hunters Point Shipyard Update AUG - 4 2003 xt t, • SAN FRANCISCO III. New Business PUBLIC LIBRARY IV. Continuing Business A. Light Rail Asbestos Issues B. PUC Updates C. ALMCO Properties Update D. Port Property Update E. Planning Department Update V. Public Comment",
+    "2003 II. Redevelopment Agency Report A. Aging Campus Update B. Redevelopment Plan Amendments 1 . India Basin Redevelopment Plan Amendment 2. Hunters Point Redevelopment Plan Amendment 3. Bayview Industrial Triangle Redevelopment Plan Amendment C. Use of Agency Property for Air Monitoring Station D. Southeast Health Center Expansion Project E. Hunters Point Shipyard Update F. Action Plan i III. New Business A. 5800 Third Street IV. Continuing Business A. Light Rail Asbestos Issues B. PUC Updates C. AIMCO Properties Update D. Port Property Update E. Planning Department Update V. Public Comment Comments on no",
+    "Basin Redevelopment Plan Amendment 2. Hunters Point Redevelopment Plan Amendment 3. Bayview Industrial Triangle Redevelopment Plan Amendment C. Hunters Point Shipyard Update D. Action Plan m. New Business A. 5800 Third Street Project IV. Continuing Business A. Air Monitoring Station Update B. Southeast Health Center Expansion Project C. Ligh"
+   ],
    "url": "https://archive.org/details/agenda2003bayv_4",
    "deep_link": "https://archive.org/details/agenda2003bayv_4?q=Southeast+Health+Center",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
@@ -249,39 +259,15 @@
    "year": null,
    "pool": "sfpl",
    "matched_alias": "Southeast Health Center",
-   "snippet": "Presentation: Freddie Smith, Exec. Dir., «Southeast Health Center» - Public Health Programs and Services",
+   "ocr_excerpts": [
+    "ney Young; d) Invitation to Annual City Clean up: Saturdays in February for District 10. VI. Director's Report (Discussion): a) HVAC project progress update; b) ADA project update c) Update: FY01-02 budget request for SECF/Clean Water and General Fund. VII. Presentation: Freddie Smith, Exec. Dir., Southeast Health Center - Public Health Programs and Services, particularly to the Bayview-Hunter's Point Community. VIII. Old & On-going Business (Discussion and Action): Facilities Committee Report - Recommendations i) Tenants Use Policy for Alex Pitcher Community Room & EPM Auditorium; ii) City College of San F",
+    "system will be available at the meeting upon request. Please call Toye Moses at 821-1534 at least one week prior to the meeting. (Rev. 01/01) ANNOUNCEMENT ! ! ! ANNOUNCEMENT ! ! ! ANNOUNCEMENT ! ! ! THE SOUTHEAST COMMUNITY FACILITY COMMISSION PRESENTS Freddie Smith Executive Director Southeast Health Center (2401 Keith Street @ Carroll Street) Updating the Public Health Programs and Services available particularly to the Bayview-Hunter's Point Community Wednesday, January 24, 2001 6:00 p.m. - 8:00 p.m. D0CUMENTS DEPT SOUTHEAST COMMUNITY FACILITY j^ « « ogn ALEX L. PITCHR, JR. COMMUNITY MEETING",
+    "elf, then on to the Mayor's office and the Board of Supervisors; Commission will be kept updated. Commissioner Hardin moved and Commissioner Maxwell seconded to accept the Communications and the Director's Report. Motion passed. VII: Presentation: Commissioner Brown introduced Executive Director of the Southeast Health Center, Mr. Freddie Smith who thanked the Commission for inviting him to speak on the status of the Southeast Health Center and an update into include the last 18 months of his tenure as Director. Mr. Smith related that in these past 18 months he has learned that by comparison the Southeast Health Center, in providing health care services predominately to the City's Southeast Sector is even more needy than the East Oakland Health Center (part of the West Oakland Health Council) from where Mr. Smith has just migrated. Expecting that a (San Francisco) City Health Center would be more of an urban health center (healthier, fewer problems, etc.), has found that Southeast Health Center is more of an 'acute care facility' than East Oakland ever was. During first 6 months at Southeast he experienced both his first fatality due to a drug overdose and a baby delivery in the facility. The ambulance comes to the (out- patient) facility on a regular basis, once to twice weekly as opposed to maybe once a quarter in East Oakland. The Southeast Health Center serves a population of about 33,000 in the 94124 zip code where many of the health issues are: high incidence of chronic illnesses (diabetes, hypertension, heart problems, asthesma, HIV); staff challenges ("
+   ],
    "url": "https://archive.org/details/2minutes200102sanf",
    "deep_link": "https://archive.org/details/2minutes200102sanf?q=Southeast+Health+Center",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
    "group": "Meetings & resolutions",
-   "salient": true
-  },
-  {
-   "identifier": "sanfranciscodepa200003sanf",
-   "title": "The San Francisco Department of Public Health annual report",
-   "creator": "San Francisco (Calif.). Dept. of Public Health",
-   "year": null,
-   "pool": "sfpl",
-   "matched_alias": "Southeast Health Center",
-   "snippet": "Hospital Potrero Hill Health Center «Southeast Health Center» OMI Family Center Special Programs",
-   "url": "https://archive.org/details/sanfranciscodepa200003sanf",
-   "deep_link": "https://archive.org/details/sanfranciscodepa200003sanf?q=Southeast+Health+Center",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Reports & records",
-   "salient": true
-  },
-  {
-   "identifier": "sanfranciscochil1991ahma",
-   "title": "San Francisco childhood lead prevention program : data evaluation, 1991-1997",
-   "creator": "Ahmad, Haroon,Martin, Christine,San Francisco (Calif.). Dept. of Public Health",
-   "year": 1991,
-   "pool": "sfpl",
-   "matched_alias": "Southeast Health Center",
-   "snippet": "Potrero Hill Health Center (PHHC) and «Southeast Health Center» (SEHC). Between 1994 and 1995, the",
-   "url": "https://archive.org/details/sanfranciscochil1991ahma",
-   "deep_link": "https://archive.org/details/sanfranciscochil1991ahma?q=Southeast+Health+Center",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Other records",
    "salient": true
   },
   {
@@ -291,7 +277,13 @@
    "year": 2002,
    "pool": "sfpl",
    "matched_alias": "Southeast Health Center",
-   "snippet": "the expanded «Southeast Health Center» and Aging Campus. The «Southeast Health Center» can act as",
+   "ocr_excerpts": [
+    "S Daniel Dodt, Economic Development, Employment and Training Committee Chair, DODT, Inc Michael Hamman, Treasurer, Michael Hamman General Contractor COMMUNITY ORGANIZATION REPRESENTATIVES Reverend Cordell Hawkins, Chairperson, Double Rock Baptist Church Ollie Burgess, Health and Environment Committee Chair, Southeast Health Center George W. Davis, Bayview Hunters Point Multi-Purpose Senior Services, Inc. Jonathan Gomwalk, San Francisco League of Urban Gardners Cedric Jackson, Career Center Betty McGee, Education Committee Chair, Bayview Hunters Point Health and Environment Joyce Sua, Hunters Point Boys & Girls Club STAFF Emily",
+    "Robert P. Legallet, Industrial Property Owner Jim Martin, Chairperson, Bayview Hunters Point Multi-Purpose Senior Services, Inc Sophenia Maxwell, Residential Owner Mohammed Nuru, San Francisco League of Urban Gardeners Alvin P. Norman, Jr., Al Norman Plumbing Stephanie Ricci, RWD Associates Cynthia Selmar, Southeast Health Center Sandra Swanson, Residential Tenant/Student Evette Taylor-Monachino Claude Wilson, Southeast Alliance for Environmental Justice San Francisco Redevelopment Agency Long Range Planning/Technical Advisory Staff CONCEPT PLAN PRODUCTION Nashua Kali I, AICP, Lead Writer/Editor Lisa M. King, Secondary Writer/Editor",
+    "a regional mall at Candlestick Point some years Building on Our Strengths 61 \"We need businesses that promote the well-being ofthe community, not more liquor stores that promote bad health.\" WE NEED... \"There is a Lot of support and need for havin a hospital and emergency provided at the Southeast Health Center.\" \"We need activities (for youth), sports, mid night basketball... after-school programs while parents are still at work.\" I \"The Bayview Hunters Point agenda n eedslc address the overwhelming number of liquor stores. we nee learn what is legally permitted and howt change the ordinances.\" swimrm",
+    "group van services to senior meal sites, and shopping, recreation and medical trips funded by the COA, Public Transportation Commission and the San Francisco Transportation Authority fund. Additionally, the John King Center accepts taxi scripts for van services and has six vans to serve local seniors. Southeast Health Center and the Silver Avenue Health Center The Southeast Health Center and the Silver Avenue Health Center are both part of the Department of Public Health's Community Health Network. The Southeast Health Center, located at 2401 Keith Street (at Armstrong), offers a daily by-appointment clinic for primary care and a part- time/afternoon drop-in Nurse Clinic. The Silver Avenue Health Center, located at 1525 Silver Avenue (at San Bruno/Interstate 101), is another primary care facility, by- appointment daily. Thes",
+    "ire need for men- tal health services, since neither of the nearby health clin- i"
+   ],
    "url": "https://archive.org/details/bayviewhunterspo2002bayv",
    "deep_link": "https://archive.org/details/bayviewhunterspo2002bayv?q=Southeast+Health+Center",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
@@ -305,26 +297,36 @@
    "year": null,
    "pool": "sfpl",
    "matched_alias": "Southeast Health Center",
-   "snippet": "studies for the expansion of the «Southeast Health Center» in the Health Center Activity Node",
+   "ocr_excerpts": [
+    "ities for the construction of 50 affordable senior rental units at Third Street and McKinnon Avenue (Agency staff providing assistance to Providence Baptist Church). 7. Acquired 4800 Third Street as a mixed-use/affordable housing development site. 8. Began predevelopment studies for the expansion of the Southeast Health Center in the Health Center Activity Node. 9. Began construction of pedestrian improvements along Third Street between Oakdale and Palou Avenues and along Oakdale and Palou Avenues (Phase I of the Bayview Connections project, being constructed by DPW). 10. Completed predevelopment studies for the Bayview Oper",
+    "n the acquisition of development opportunity sites along Third Street for mixed- use/affordable housing development. 19. Begin predevelopment studies for mixed-use/affordable housing development at development opportunity sites along Third Street. 20. Complete predevelopment studies for the expansion of the Southeast Health Center in the Health Center Activity Node. 21. Begin predevelopment studies for the construction of a major community facility on the Town Center block in the Town Center Activity Node. 22. Initiate California Main Street on Third Street within the Town Center Activity Node. 23. Initiate the Model Block",
+    "able housing program, including providing assistance in the development of affordable housing at 4601 Third Street, 4800 Third Street and 5600 Third Street. Agency staff has also participated in inter- Agency projects, including the completion of pre- development studies for the proposed expansion of the Southeast Health Center, pre- development activities for the proposed development of the Town Center Block that is bounded by Third Street, Oakdale Avenue, Lane Street and Newcomb Avenue, and proposed transportation improvements in the South Basin area, including a possible bridge spanning South Basin or Yosemite Slough. 66",
+    "00 Third Street. 17. Assist in the acquisition of development opportunity sites along Third Street for mixed- use/affordable housing development. 18. Complete predevelopment studies for mixed-use/affordable housing development at 5600 Third Street. 19. Begin architectural studies for the expansion of the Southeast Health Center in the Health Center Activity Node. 20. Begin architectural studies for the construction of a major community facility on the Town Center block in the Town Center Activity Node. 21 . Initiate California Main Street on Third Street within the Town Center Activity Node. 22. Initiate the Model Block s",
+    "activities for the development of mixed-use/affordable housing development at 4800 Third Street. 12. Initiated pre-construction activities for the development of mixed-use/affordable housing development at 5600 Third Street. 13. Assisted in the completion of predevelopment stud"
+   ],
    "url": "https://archive.org/details/budgetasapproved2002sanf",
    "deep_link": "https://archive.org/details/budgetasapproved2002sanf?q=Southeast+Health+Center",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
    "group": "Other records",
-   "salient": false
+   "salient": true
   },
   {
-   "identifier": "memorandum1994sanf_0",
-   "title": "Memorandum",
-   "creator": "San Francisco (Calif.). Childhood Lead Prevention Program",
-   "year": null,
+   "identifier": "sanfranciscochil1991ahma",
+   "title": "San Francisco childhood lead prevention program : data evaluation, 1991-1997",
+   "creator": "Ahmad, Haroon,Martin, Christine,San Francisco (Calif.). Dept. of Public Health",
+   "year": 1991,
    "pool": "sfpl",
    "matched_alias": "Southeast Health Center",
-   "snippet": "1995 Location: «Southeast Health Center» Location: «Southeast Health Center» Time: 2:00 p.m.",
-   "url": "https://archive.org/details/memorandum1994sanf_0",
-   "deep_link": "https://archive.org/details/memorandum1994sanf_0?q=Southeast+Health+Center",
+   "ocr_excerpts": [
+    "case management policies and procedures. Individual provider education has resulted in increased screening among those providers visited. Screening Increase at Community Health Network Clinics Community Health Network includes SFGH, five District Health Centers (DHC), Potrero Hill Health Center (PHHC) and Southeast Health Center (SEHC). Between 1994 and 1995, the percentage of children receiving their initial blood lead test at the above mentioned San Francisco DPH clinics increased 41%. An additional increase of 6.8% occurred from 1995 to 1996. Since CLPP's inception, increased screening in the community health network system",
+    "raws. For two years, from 1994-95, CLPP subsidized two phlebotomy positions to be shared by five of the satellite health centers. 22 While community health network clinics screening from 1994 through 1996 has increased 50% overall, the most impressive increases in screening have taken place in the Southeast Health Center and Health Centers 1 and 2. In these centers screening has increased 467%, 290% and 225% respectively. To support the clinics, CLPP recently developed and distributed a user- friendly version of the CDC questionnaire to each health center. The new version accommodates several checkups and languages on",
+    "logs. Key Community Health Network Clinic SFGH San Francisco General Hospital DHC1 Mission Castro Health Center DHC2 Maxine Hall Health Center DHC3 Silver Avenue Family Health Center DHC4 Chinatown Public Health Center DHC5 Ocean Park Health Center PHHC Potrero Hill Health Center SEHC Southeast Health Center 23 CDC Guidelines (1991) state that all one and two-year-olds should be screened. This is due to their developmental stage, which involves significant hand to mouth behavior and mobility close to the ground, particularly in an environment like San Francisco, with greater lead sources due to the fa"
+   ],
+   "url": "https://archive.org/details/sanfranciscochil1991ahma",
+   "deep_link": "https://archive.org/details/sanfranciscochil1991ahma?q=Southeast+Health+Center",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
    "group": "Other records",
-   "salient": false
+   "salient": true
   }
  ],
  "dept_shelf": [
@@ -364,7 +366,7 @@
  ],
  "_gate": {
   "has_photo": false,
-  "n_documents": 8,
+  "n_documents": 6,
   "n_money_links": 1,
   "meets_pre_summary": false
  }

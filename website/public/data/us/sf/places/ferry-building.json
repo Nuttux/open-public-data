@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-21T14:25:53.971470+00:00",
+ "generated_at": "2026-07-22T15:04:53.725957+00:00",
  "source_pipeline": "sf_place_candidates.json → sync_ia_sf.py + link_sf_places.py + fetch_sf_place_photos.py → export_sf_places.py",
  "unit": "USD",
  "slug": "ferry-building",
@@ -110,26 +110,12 @@
    "year": 1983,
    "pool": "sfpl",
    "matched_alias": "Ferry Building",
-   "snippet": "3 1223 03559 3046 «FERRY BUILDING» COMPLEX The Embarcadero «Ferry Building»/World Trade Center Agriculture",
    "url": "https://archive.org/details/ferrybuildingcom2919sanf",
    "deep_link": "https://archive.org/details/ferrybuildingcom2919sanf?q=Ferry+Building",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
    "group": "Plans & environmental review",
-   "salient": true
-  },
-  {
-   "identifier": "minutes2219sanf",
-   "title": "Minutes",
-   "creator": "San Francisco Port Commission",
-   "year": null,
-   "pool": "sfpl",
-   "matched_alias": "Ferry Building",
-   "snippet": "planted in the center «Ferry Building» plaza and adjacent to the «Ferry Building» drop-off areas.",
-   "url": "https://archive.org/details/minutes2219sanf",
-   "deep_link": "https://archive.org/details/minutes2219sanf?q=Ferry+Building",
-   "source_label": "Internet Archive — San Francisco Public Library partnership scans",
-   "group": "Meetings & resolutions",
-   "salient": true
+   "salient": true,
+   "gloss": "A 1983 final EIR on the Ferry Building complex (Embarcadero, World Trade Center, Agriculture Building, Pier One), with floor plans and restoration and design alternatives for the building."
   },
   {
    "identifier": "comprehensivepla2219sanf",
@@ -138,12 +124,12 @@
    "year": 1971,
    "pool": "sfpl",
    "matched_alias": "Ferry Building",
-   "snippet": "front of the «Ferry Building». Second, uses in the area north of the «Ferry Building» should be",
    "url": "https://archive.org/details/comprehensivepla2219sanf",
    "deep_link": "https://archive.org/details/comprehensivepla2219sanf?q=Ferry+Building",
    "source_label": "Internet Archive — San Francisco Public Library partnership scans",
    "group": "Other records",
-   "salient": true
+   "salient": true,
+   "gloss": "A 1971 northern-waterfront comprehensive plan calling for the Ferry Building to be revived as a gateway and re-established as the focal point of Market Street once the Embarcadero Freeway is removed."
   }
  ],
  "dept_shelf": [
@@ -183,7 +169,7 @@
  ],
  "_gate": {
   "has_photo": true,
-  "n_documents": 3,
+  "n_documents": 2,
   "n_money_links": 1,
   "meets_pre_summary": true
  }
