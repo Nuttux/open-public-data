@@ -288,8 +288,31 @@ def main() -> int:
             exported.append(res)
             print(f"  ✓ {res['slug']} ({insee}) — years {res['years']}")
 
+    # Manifest (small) — the ONLY artifact committed to the repo. Lets
+    # getCommuneCapabilities resolve capability locally/instantly without 34k
+    # file probes or a bucket round-trip. The per-commune JSON lives in the
+    # public bucket, fetched server-side at render time.
+    if args.all:
+        manifest = {
+            "generated_at": exported[0] and now_stamp(),
+            "source": SOURCE_LABEL,
+            "n_communes": len(exported),
+            "communes": {
+                e["slug"]: {"insee": e["insee"], "nom": e["nom"], "years": e["years"]}
+                for e in exported
+            },
+        }
+        man_path = OUT_ROOT / "_manifest.json"
+        with open(man_path, "w", encoding="utf-8") as f:
+            json.dump(manifest, f, ensure_ascii=False, separators=(",", ":"))
+        print(f"  ✓ manifest → {man_path} ({man_path.stat().st_size/1024/1024:.1f} MB, {len(exported)} communes)")
+
     print(f"\n✓ Exported {len(exported)} commune(s) → {OUT_ROOT}")
     return 0
+
+
+def now_stamp() -> str:
+    return datetime.now(timezone.utc).isoformat()
 
 
 if __name__ == "__main__":

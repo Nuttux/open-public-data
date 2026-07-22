@@ -2,10 +2,10 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import "@/app/fusion.css";
 
-import { loadBudgetIndex, loadBudgetPageData } from "@/lib/fusion-data";
 import { findCommuneByAny } from "@/lib/all-communes";
 import { getCityOrNull } from "@/lib/cities";
-import { getCommuneCapabilities, communeBudgetDir } from "@/lib/commune-capabilities";
+import { getCommuneCapabilities } from "@/lib/commune-capabilities";
+import { loadCommuneBudget } from "@/lib/commune-budget";
 import { buildLocaleAwareMetadata } from "@/lib/seo";
 import CommuneBudgetClient from "./CommuneBudgetClient";
 
@@ -61,10 +61,11 @@ export default async function CommuneBudgetPage({
   const commune = findCommuneByAny(slug);
   if (!commune) notFound();
 
-  const city = communeBudgetDir(slug);
-  const index = loadBudgetIndex(city);
+  // Budget JSON is fetched server-side from the public bucket (transparent to
+  // the visitor — they receive HTML). notFound if the file is missing.
   const requestedYear = sp.year ? Number(sp.year) : undefined;
-  const data = loadBudgetPageData(requestedYear, city);
+  const loaded = await loadCommuneBudget(slug, requestedYear);
+  if (!loaded) notFound();
 
   return (
     <CommuneBudgetClient
@@ -76,9 +77,9 @@ export default async function CommuneBudgetPage({
         reg_name: commune.reg_name,
         pop: commune.pop,
       }}
-      data={data}
-      availableYears={index.availableYears}
-      year={data.year}
+      data={loaded.data}
+      availableYears={loaded.availableYears}
+      year={loaded.year}
       hasFonction={caps.budget.fonction}
       sourceUrl={SOURCE_URL}
     />

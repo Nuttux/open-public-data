@@ -78,3 +78,8 @@ website/data/conversations/
 # Python bytecode (pipeline scripts)
 __pycache__/
 *.pyc
+
+# National budget-by-nature exports — 828MB/104k files at full scale.
+# Delivery is being decided (sharding/API); do NOT commit the bulk. The 2 test
+# communes (albi, cerizay) are already tracked from Block 1 and stay committed.
+website/public/data/communes-budget/

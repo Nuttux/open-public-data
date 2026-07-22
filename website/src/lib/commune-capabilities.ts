@@ -1,6 +1,7 @@
 import fs from "fs";
 import path from "path";
 import overridesRaw from "@/data/commune-overrides.json";
+import { communeHasBudgetNature } from "@/lib/commune-budget";
 
 /**
  * Capability matrix — national-source-first, DATA-DERIVED.
@@ -64,9 +65,10 @@ export function getCommuneCapabilities(slug: string): CommuneCapabilities {
   const ov = OVERRIDES[slug] ?? {};
   const hidden = new Set(ov.hide ?? []);
 
-  const nature =
-    !hidden.has("budget") &&
-    dataFileExists(`${communeBudgetDir(slug)}/budget_index.json`);
+  // Nature layer (national) is DATA-DERIVED from the committed manifest (slug →
+  // years). The actual budget JSON lives in the bucket; the manifest is the
+  // local, instant presence check — no per-request bucket probe.
+  const nature = !hidden.has("budget") && communeHasBudgetNature(slug);
 
   // Derived from data presence too — a future mart_budget_fonction / PDF export
   // writes this file and the layer flips on with no code or registry edit.
