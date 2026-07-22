@@ -19,26 +19,9 @@ risk a silent regression). Output is unchanged — proven by byte-diff parity.
 
 from __future__ import annotations
 
-import os
-from pathlib import Path
-
-from google.cloud import bigquery
-
-
-def get_bigquery_client(project_id: str, extra_cred_paths=()) -> bigquery.Client:
-    """BigQuery client, resolving credentials from (in order): the
-    GOOGLE_APPLICATION_CREDENTIALS env var, gcloud ADC, then any caller-supplied
-    fallback paths (e.g. a local credentials.json)."""
-    if not os.environ.get("GOOGLE_APPLICATION_CREDENTIALS"):
-        candidates = [
-            Path.home() / ".config" / "gcloud" / "application_default_credentials.json",
-            *[Path(p) for p in extra_cred_paths],
-        ]
-        for p in candidates:
-            if p.exists():
-                os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = str(p)
-                break
-    return bigquery.Client(project=project_id)
+# Re-exported so the sankey exports keep importing the client from here; the
+# canonical implementation lives in _export_common (shared by all exports).
+from _export_common import get_bigquery_client  # noqa: F401
 
 
 def sankey_nodes_and_links(revenue_by: dict, expense_by: dict, central_name: str):

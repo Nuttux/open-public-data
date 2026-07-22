@@ -45,17 +45,17 @@ from google.cloud import bigquery
 from datetime import datetime
 from collections import defaultdict
 
-# Import logger utility
+# Import shared utilities
 import sys
 sys.path.insert(0, str(Path(__file__).parent.parent))
+sys.path.insert(0, str(Path(__file__).parent))
 from utils.logger import Logger
+from _export_common import PROJECT_ID, get_bigquery_client, data_dir
 
 logger = Logger("export_evolution")
 
 # Configuration
-PROJECT_ID = "open-data-france-484717"
-DATASET_ID = "dbt_paris"
-OUTPUT_DIR = Path(__file__).parent.parent.parent.parent / "website" / "public" / "data"
+OUTPUT_DIR = data_dir()
 
 YEARS = [2026, 2025, 2024, 2023, 2022, 2021, 2020, 2019]
 
@@ -131,11 +131,6 @@ def get_revenue_source_group(category: str) -> str:
         if category in categories:
             return group
     return "Autres"
-
-
-def get_bigquery_client():
-    """Initialize BigQuery client."""
-    return bigquery.Client(project=PROJECT_ID)
 
 
 def fetch_evolution_data(client: bigquery.Client) -> dict:

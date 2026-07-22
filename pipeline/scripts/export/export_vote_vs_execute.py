@@ -30,22 +30,18 @@ from pathlib import Path
 
 from google.cloud import bigquery
 
-# Import logger utility
+# Import shared utilities
 sys.path.insert(0, str(Path(__file__).parent.parent))
+sys.path.insert(0, str(Path(__file__).parent))
 from utils.logger import Logger
+from _export_common import PROJECT_ID, get_bigquery_client, data_dir, marts_dataset
 
 logger = Logger("export_vote_execute")
 
 # Configuration
-PROJECT_ID = "open-data-france-484717"
-MART_DATASET = "dbt_paris_marts"
+MART_DATASET = marts_dataset()
 ANALYTICS_DATASET = "dbt_paris_analytics"
-OUTPUT_DIR = Path(__file__).parent.parent.parent.parent / "website" / "public" / "data"
-
-
-def get_bigquery_client() -> bigquery.Client:
-    """Initialize BigQuery client."""
-    return bigquery.Client(project=PROJECT_ID)
+OUTPUT_DIR = data_dir()
 
 
 def fetch_mart_data(client: bigquery.Client) -> list[dict]:
