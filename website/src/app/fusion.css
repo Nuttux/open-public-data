@@ -474,6 +474,13 @@ body:has(.theme-fusion) > div.pb-24 { padding-bottom: 0 !important; }
   .theme-fusion .fx-scope-nav,
   .theme-fusion .fx-nav > .fx-lang { display: none; }
   .theme-fusion .fx-menu-btn { display: flex; }
+  /* Le burger libère toute la barre : on redonne du corps à la marque
+   * (le texte rétréci à 15px en ≤1180 n'a plus lieu d'être ici). */
+  .theme-fusion .fx-brand { gap: 12px; }
+  .theme-fusion .fx-brand span { font-size: 18px; }
+  .theme-fusion .fx-brand svg,
+  .theme-fusion .fx-overlay-brand svg { width: 30px; height: 30px; }
+  .theme-fusion .fx-overlay-brand span { font-size: 18px; }
 }
 
 @media (max-width: 768px) {
@@ -15512,6 +15519,9 @@ body:has(.theme-db-scrolly) { background: #fafaf7 !important; color: var(--p-ink
 .theme-fusion .fx-doc-snippet {
   font-size: 13.5px; line-height: 1.5; color: var(--ink-2);
   margin: 6px 0 5px; padding-left: 12px; border-left: 2px solid var(--rule);
+}
+.theme-fusion .fx-doc-gloss {
+  font-size: 13.5px; line-height: 1.5; color: var(--ink-2); margin: 5px 0 4px;
 }
 .theme-fusion .fx-doc-hit { background: #fbe7a2; color: inherit; padding: 0 2px; }
 .theme-fusion .fx-doc-source {
