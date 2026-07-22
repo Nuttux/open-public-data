@@ -15486,10 +15486,10 @@ body:has(.theme-db-scrolly) { background: #fafaf7 !important; color: var(--p-ink
 }
 .theme-fusion .fx-health-item { font-size: 14px; color: var(--fx-muted, #6b6b6b); }
 .theme-fusion .fx-health-item b { color: var(--fx-ink, #0a0a0a); margin-right: 6px; font-weight: 700; }
-.theme-fusion .fx-health-sain b { color: #1a7f4b; }
-.theme-fusion .fx-health-vigilance b { color: #a67638; }
-.theme-fusion .fx-health-alerte b { color: #c12323; }
 .theme-fusion .fx-health-src { margin-left: auto; font-size: 12px; color: var(--fx-muted, #9a9a9a); }
+/* Neutral term-definition affordance (native title tooltip; no value judgment) */
+.theme-fusion .fx-def { text-decoration: underline dotted; text-underline-offset: 3px; cursor: help; }
+.theme-fusion .fx-def:focus-visible { outline: 2px solid var(--fx-ink, #0a0a0a); outline-offset: 2px; border-radius: 2px; }
 
 /* ── Marchés publics (national) ───────────────────────────────────────────── */
 .theme-fusion .fx-h3 { font-size: 20px; font-weight: 700; margin: 0 0 16px; }
