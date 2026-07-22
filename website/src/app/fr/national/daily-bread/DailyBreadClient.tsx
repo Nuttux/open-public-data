@@ -1089,9 +1089,6 @@ export default function DailyBreadClient({
             <h1 className="db-p-onboarding-title">
               {t("db.hero.onboarding.title")}
             </h1>
-            <p className="db-p-onboarding-standfirst">
-              {t("db.hero.onboarding.standfirst")}
-            </p>
             <p className="db-p-onboarding-hint">
               {renderTagged(t("db.hero.onboarding.hint"))}
             </p>
@@ -1143,11 +1140,6 @@ export default function DailyBreadClient({
                 </button>
               )}
             </div>
-
-            {/* Deck déplacé en haut — petit, mono, sous l'eyebrow.
-                Référence vers la section Méthode pour le détail des
-                hypothèses, sources, limites. */}
-            <p className="db-p-hero-deck-top">{t("db.hero.deck")}</p>
 
             {/* Phrase éditable principale — les inputs sont DANS le texte */}
             <h1 className="db-p-hero-text">
