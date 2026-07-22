@@ -53,6 +53,7 @@ AGREGATS = [
     "Encours de dette",
     "Annuité de la dette",
     "Epargne brute",
+    "Epargne nette",
 ]
 
 SELECT = (
