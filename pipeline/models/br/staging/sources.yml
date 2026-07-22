@@ -1,0 +1,64 @@
+# =============================================================================
+# Sources: raw BigQuery tables — Brazil / Recife (CKAN portal)
+#
+# Dataset: raw (open-data-france-484717.raw), place-namespaced `br_recife_*`.
+# Synced via scripts/sync/sync_ckan_dataset.py, driven by
+# configs/countries/br.yaml (ADR-0010 D3 protocol adapters).
+#
+# RAW CONVENTION: every column is a STRING exactly as the CSV serialised it —
+# space-padded text, '.'-or-','-decimals, 'YYYY/MM/DD …' timestamps, and the
+# Data de Pagamento Postgres-array literal `{d1,d2}`. Typing/normalisation
+# happens once, in stg (macros/br_recife_helpers.sql).
+#
+# FRESHNESS: the credor/funcional yearly resources are refreshed periodically
+# (historical years occasionally re-published); contratos/licitações weekly.
+# =============================================================================
+
+version: 2
+
+sources:
+  - name: br_recife_raw
+    description: "Recife raw tables (dados.recife.pe.gov.br CKAN portal, ODbL)"
+    database: open-data-france-484717
+    schema: raw
+    loaded_at_field: _synced_at
+    freshness:
+      warn_after: {count: 90, period: day}
+      error_after: {count: 365, period: day}
+    tables:
+      - name: br_recife_despesa_credor_2024
+        description: "Despesa por Credor Empenho 2024 — 47,003 rows. Beneficiary spine (empenho × month)."
+      - name: br_recife_despesa_credor_2025
+        description: "Despesa por Credor Empenho 2025 — beneficiary spine."
+      - name: br_recife_despesa_credor_2026
+        description: "Despesa por Credor Empenho 2026 — beneficiary spine (in-year)."
+      - name: br_recife_funcional_2024
+        description: "Despesa Funcional Programática 2024 — budget by função/subfunção/programa/ação."
+      - name: br_recife_funcional_2025
+        description: "Despesa Funcional Programática 2025."
+      - name: br_recife_funcional_2026
+        description: "Despesa Funcional Programática 2026 (in-year)."
+      - name: br_recife_contratos
+        description: "Contratos administrativos — full history (back to 2004), one row per contract."
+      - name: br_recife_termo_aditivo
+        description: "Termos aditivos (amendments altering contract value/term)."
+      - name: br_recife_licitacoes_concluidas
+        description: "Licitações concluídas — awarded procurements with homologated value."
+      - name: br_recife_licitacoes_andamento
+        description: "Licitações em andamento — in-progress procurements with estimated value."
+      - name: br_recife_catalog
+        description: |
+          Snapshot of the CKAN resource_show/package_show metadata for the
+          synced Recife resources: one row per source_id with dataset title,
+          resource url, dataset/resource page URLs, license, last_modified
+          (→ as_of in exports). Provenance source of truth for marts/exports.
+      - name: br_recife_enrich_cnpj
+        description: |
+          ENRICHMENT (additive): Receita Federal org profiles per CNPJ, loaded
+          by scripts/enrich/enrich_cnpj.py (BrasilAPI). razão social, CNAE,
+          porte, situação. LEFT-joined onto the credor spine — never overwrites
+          raw. CPF individuals never appear here.
+      - name: br_recife_enrich_vulgar
+        description: |
+          ENRICHMENT (additive): plain-pt resumo + o_que_financia per CNPJ,
+          loaded by scripts/enrich/vulgarize_recife_llm.py. Additive join only.

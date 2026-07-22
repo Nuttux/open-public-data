@@ -1,0 +1,145 @@
+# =============================================================================
+# Brazil — municipal sources configuration (Recife, PE)
+#
+# Read by:
+#   - `pipeline/scripts/sync/sync_ckan_dataset.py br`  (type: ckan — CKAN portal)
+#
+# Each source declares how to ingest one CKAN *resource* (a CSV file) into
+# BigQuery `raw.br_recife_*`. Raw tables keep every value AS A STRING exactly
+# as the CSV serialised it (space-padded CPF/CNPJ, '.'-or-','-decimals,
+# array-literal payment dates) — typing/normalisation happens once, in stg
+# (macros/br_recife_helpers.sql, models/br/staging/*).
+#
+# Recife is the `br-municipal` schema family (ADR-0010 D2/D3): Brazilian
+# municipal accounting (empenho → liquidação → pagamento; modalidade de
+# aplicação; função/subfunção) matches neither French M57 nor US fund/
+# character, so `dbt_br_*` is a NEW family, not config-only reuse.
+#
+# DATA AUDIT (verified live against the bytes 2026-07-22):
+#   - CSVs are ';'-delimited, '"'-quoted, UTF-8 (the published data dictionary
+#     claiming ISO-8859-1 + "no CNPJ" is STALE — trust the CSV).
+#   - "Despesa por Credor Empenho" is the beneficiary spine: row per empenho
+#     with CPF/CNPJ + Nome do Credor + Órgão + amounts. Covers 2024-2026.
+#   - The transfer/subvenção cut is Modalidade de Aplicação code 50
+#     ("Transferências à Instituições Privadas Sem Fins Lucrativos"), NOT the
+#     "Grupo de Despesa" column (which is a mislabeled 'EMPENHO' doc-type
+#     field, constant across all rows — do not use it).
+#   - CPF (11-digit individuals) and CNPJ (14-digit organisations) share the
+#     "CPF/CNPJ" column. Split at stg; only CNPJ orgs get fiches/enrichment;
+#     CPF individuals are never classified, searched or publicly exposed.
+# =============================================================================
+
+country_slug: br
+country_name: Brazil
+
+# BigQuery destination dataset for raw tables (same `raw` dataset as
+# France/US; the `br_recife_` table prefix is the place namespace).
+bq_raw_dataset: raw
+
+# ---------------------------------------------------------------------------
+# CKAN protocol settings (shared by all `ckan` sources below).
+# Portal: dados.recife.pe.gov.br (CKAN, open, no auth, no CAPTCHA, ODbL).
+# Downloads 302-redirect to time-signed S3 on
+# ckan-storage-download.app.emprel.gov.br — the adapter follows redirects.
+# ---------------------------------------------------------------------------
+ckan:
+  protocol: ckan
+  domain: "dados.recife.pe.gov.br"
+  api_base: "https://dados.recife.pe.gov.br/api/3/action"
+  dataset_page_base: "https://dados.recife.pe.gov.br/dataset"
+  portal_name: "Dados Abertos da Prefeitura do Recife (CKAN)"
+  catalog_table: br_recife_catalog
+
+sources:
+  # ---------------------------------------------------------------------------
+  # A) Despesa por Credor Empenho — the budget-execution + beneficiary spine.
+  # Grain: one row per empenho × month. Columns (26): Ano; Mês; Código/Unidade;
+  # CPF/CNPJ; Nome do Credor; Código/Tipo de Licitação; Data do Empenho;
+  # Data de Pagamento (Postgres array literal {d1,d2}); Modalidade do Empenho;
+  # Poder; Código/Órgão; Grupo de Despesa (=EMPENHO, ignore); Código/Modalidade
+  # de aplicação (50 = transferências a inst. privadas); Empenhado; Liquidação;
+  # Pagamento; Anulações; Dotação Inicial/Atualizada.
+  # 2024 verified: 47,003 rows, R$ 5.14 bn pago; 32,032 CNPJ + 14,948 CPF docs.
+  # ---------------------------------------------------------------------------
+  - id: credor_2024
+    type: ckan
+    resource_id: "71c89efd-012f-45bb-a3c4-aa091e5abe10"
+    target_table: br_recife_despesa_credor_2024
+    description: "Despesa por Credor Empenho — 2024 (beneficiary spine)"
+  - id: credor_2025
+    type: ckan
+    resource_id: "30f12ed2-89de-4d91-9bb6-f5ac760c198d"
+    target_table: br_recife_despesa_credor_2025
+    description: "Despesa por Credor Empenho — 2025 (beneficiary spine)"
+  - id: credor_2026
+    type: ckan
+    resource_id: "a59516cb-a2db-4859-a173-d04e8ab738b9"
+    target_table: br_recife_despesa_credor_2026
+    description: "Despesa por Credor Empenho — 2026 (beneficiary spine, in-year)"
+
+  # ---------------------------------------------------------------------------
+  # A') Despesa Funcional Programática — budget by FUNÇÃO (Saúde, Educação…),
+  # subfunção, programa, ação, fonte. The citizen-legible "what the money
+  # does" breakdown. Columns: Ano; Mês; Código/Função; Código/Sub-função;
+  # Código/Programa; Código/Ação; Código/Fonte; Dotação Inicial; Dotação
+  # Atualizada; Empenhado; Liquidado; Pago. Decimals use '.'.
+  # ---------------------------------------------------------------------------
+  - id: funcional_2024
+    type: ckan
+    resource_id: "a244ccea-d73a-4d1b-bdee-773069d31750"
+    target_table: br_recife_funcional_2024
+    description: "Despesa Funcional Programática — 2024 (budget by função)"
+  - id: funcional_2025
+    type: ckan
+    resource_id: "bfa43808-ab22-411b-9105-1d6366a4d776"
+    target_table: br_recife_funcional_2025
+    description: "Despesa Funcional Programática — 2025 (budget by função)"
+  - id: funcional_2026
+    type: ckan
+    resource_id: "c79d155c-5e02-4ce0-b9d4-54a1e7d16723"
+    target_table: br_recife_funcional_2026
+    description: "Despesa Funcional Programática — 2026 (budget by função)"
+
+  # ---------------------------------------------------------------------------
+  # B) Contratos — one row per contract. Columns: numerocontrato; anocontrato;
+  # orgaocontratante; objetocontrato; origemcontrato (modalidade);
+  # sequencialcompra; cnpjcontratado; cpfcontratado; razaonomecontratado;
+  # endereço…; datainiciovigencia; datafimvigencia; valorcontrato1/2;
+  # situacaocontrato. Full history (back to 2004). Decimals use '.'.
+  # ---------------------------------------------------------------------------
+  - id: contratos
+    type: ckan
+    resource_id: "a72e7175-8fcd-40bd-82ef-056a621a6165"
+    target_table: br_recife_contratos
+    description: "Contratos administrativos (histórico completo)"
+  - id: termo_aditivo
+    type: ckan
+    resource_id: "145f5c46-10ea-4c02-ba26-21333ded8ae9"
+    target_table: br_recife_termo_aditivo
+    description: "Termos aditivos aos contratos (alteram valor/prazo)"
+  # Optional companion — apostilamentos (reajustes sem termo aditivo):
+  # - id: apostilamento
+  #   type: ckan
+  #   resource_id: "acb67bb7-7cdb-4ffc-96ab-7aeedd13e859"
+  #   target_table: br_recife_apostilamento
+  #   description: "Apostilamentos dos contratos"
+
+  # ---------------------------------------------------------------------------
+  # C) Licitações — concluídas + em andamento. ⚠ Amounts use BRAZILIAN format:
+  # ','-decimal, space-padded, sometimes '.'-thousands (e.g. "333750,00",
+  # "     15210,00"). br_amount() normalizes both conventions.
+  # Columns (concluídas): comissao; ano/num processo; lote; modalidade;
+  # orgao_licitante; objeto; cnpj/cpf_contratado; razao_nomecontratado;
+  # endereço; valor_total_estimado; valor_totalhomologadolicitacao;
+  # valor_licitacao_lote; data_aberturaproposta; data_ultimafaseprocesso.
+  # ---------------------------------------------------------------------------
+  - id: licitacoes_concluidas
+    type: ckan
+    resource_id: "f0d3c9e4-da6d-4f7f-8184-0d91f2021c8b"
+    target_table: br_recife_licitacoes_concluidas
+    description: "Licitações concluídas (com valor homologado)"
+  - id: licitacoes_andamento
+    type: ckan
+    resource_id: "9771bedc-6f2e-43f0-bd4c-25b0de5500b5"
+    target_table: br_recife_licitacoes_andamento
+    description: "Licitações em andamento (valor estimado)"

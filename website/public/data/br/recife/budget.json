@@ -1,0 +1,1565 @@
+{
+ "generated_at": "2026-07-22T17:17:06.075981+00:00",
+ "source_pipeline": "configs/countries/br.yaml → sync_ckan_dataset.py → raw.br_recife_* → dbt_br_staging → dbt_br_analytics → dbt_br_marts → export_br_recife.py",
+ "country": "br",
+ "scale": "city",
+ "place": "recife",
+ "unit": "BRL",
+ "as_of": null,
+ "source": {
+  "name": "Despesas Orçamentárias",
+  "portal": "Dados Abertos da Prefeitura do Recife (CKAN)",
+  "license": "Open Data Commons Open Database License (ODbL)",
+  "source_url": "https://dados.recife.pe.gov.br/dataset/despesas-orcamentarias",
+  "as_of": null
+ },
+ "perimeter": "Despesa municipal executada por função (Despesa Funcional Programática). Valores 'pago' = movimento mensal somado no ano. Empenhado ≈ liquidado no arquivo-fonte; a diferença para o pago são restos a pagar.",
+ "populacao": {
+  "populacao": 1494586,
+  "ano": 2024,
+  "source": "SICONFI — Tesouro Nacional (RREO)",
+  "source_url": "https://apidatalake.tesouro.gov.br/ords/siconfi/tt/rreo"
+ },
+ "anos_disponiveis": [
+  2024,
+  2025,
+  2026
+ ],
+ "ano_mais_recente": 2026,
+ "anos": [
+  {
+   "ano": 2024,
+   "total_pago": 8972930638.63,
+   "total_empenhado": 9173604546.6,
+   "funcoes": [
+    {
+     "funcao": "SAÚDE",
+     "codigo": "10",
+     "pago": 1994918863.72,
+     "empenhado": 2035715846.18,
+     "subfuncoes": [
+      {
+       "subfuncao": "ATENÇÃO BÁSICA",
+       "pago": 854505395.04
+      },
+      {
+       "subfuncao": "ASSISTÊNCIA HOSPITALAR E AMBULATORIAL",
+       "pago": 645752505.91
+      },
+      {
+       "subfuncao": "ADMINISTRAÇÃO GERAL",
+       "pago": 178261187.82
+      },
+      {
+       "subfuncao": "OUTROS ENCARGOS ESPECIAIS",
+       "pago": 96284801.75
+      },
+      {
+       "subfuncao": "VIGILÂNCIA EPIDEMIOLÓGICA",
+       "pago": 94693217.77
+      },
+      {
+       "subfuncao": "PREVIDÊNCIA DO REGIME ESTATUTÁRIO",
+       "pago": 84146018.17
+      },
+      {
+       "subfuncao": "SUPORTE PROFILÁTICO E TERAPÊUTICO",
+       "pago": 30567449.02
+      },
+      {
+       "subfuncao": "PREVIDÊNCIA COMPLEMENTAR",
+       "pago": 6090780.57
+      }
+     ]
+    },
+    {
+     "funcao": "EDUCAÇÃO",
+     "codigo": "12",
+     "pago": 1818431254.61,
+     "empenhado": 1843585399.5300002,
+     "subfuncoes": [
+      {
+       "subfuncao": "ENSINO FUNDAMENTAL",
+       "pago": 1351045948.21
+      },
+      {
+       "subfuncao": "EDUCAÇÃO INFANTIL",
+       "pago": 276526181.65
+      },
+      {
+       "subfuncao": "ALIMENTAÇÃO E NUTRIÇÃO",
+       "pago": 159050052.55
+      },
+      {
+       "subfuncao": "EDUCAÇÃO DE JOVENS E ADULTOS",
+       "pago": 22974754.66
+      },
+      {
+       "subfuncao": "EDUCAÇÃO ESPECIAL",
+       "pago": 8834317.54
+      }
+     ]
+    },
+    {
+     "funcao": "URBANISMO",
+     "codigo": "15",
+     "pago": 1615602908.4899998,
+     "empenhado": 1675088263.66,
+     "subfuncoes": [
+      {
+       "subfuncao": "SERVIÇOS URBANOS",
+       "pago": 618951381.54
+      },
+      {
+       "subfuncao": "INFRA-ESTRUTURA URBANA",
+       "pago": 546314325.92
+      },
+      {
+       "subfuncao": "ADMINISTRAÇÃO GERAL",
+       "pago": 200476095.07
+      },
+      {
+       "subfuncao": "ASSISTÊNCIA À CRIANÇA E AO ADOLESCENTE",
+       "pago": 72485504.53
+      },
+      {
+       "subfuncao": "DEFESA CIVIL",
+       "pago": 70324805.58
+      },
+      {
+       "subfuncao": "TRANSPORTES COLETIVOS URBANOS",
+       "pago": 46308130.75
+      },
+      {
+       "subfuncao": "PREVIDÊNCIA COMPLEMENTAR",
+       "pago": 33906631.15
+      },
+      {
+       "subfuncao": "OUTROS ENCARGOS ESPECIAIS",
+       "pago": 16427682.78
+      }
+     ]
+    },
+    {
+     "funcao": "ENCARGOS ESPECIAIS",
+     "codigo": "28",
+     "pago": 1008354844.11,
+     "empenhado": 1018683189.14,
+     "subfuncoes": [
+      {
+       "subfuncao": "SERVIÇO DA DÍVIDA INTERNA",
+       "pago": 784803831.98
+      },
+      {
+       "subfuncao": "OUTROS ENCARGOS ESPECIAIS",
+       "pago": 122590179.63
+      },
+      {
+       "subfuncao": "SERVIÇO DA DÍVIDA EXTERNA",
+       "pago": 100960832.5
+      }
+     ]
+    },
+    {
+     "funcao": "ADMINISTRAÇÃO",
+     "codigo": "04",
+     "pago": 855798259.2200003,
+     "empenhado": 877497597.2400001,
+     "subfuncoes": [
+      {
+       "subfuncao": "ADMINISTRAÇÃO GERAL",
+       "pago": 268093602.23
+      },
+      {
+       "subfuncao": "PREVIDÊNCIA DO REGIME ESTATUTÁRIO",
+       "pago": 220950164.51
+      },
+      {
+       "subfuncao": "INFRA-ESTRUTURA URBANA",
+       "pago": 85793874.35
+      },
+      {
+       "subfuncao": "ADMINISTRAÇÃO FINANCEIRA",
+       "pago": 76952930.29
+      },
+      {
+       "subfuncao": "COMUNICAÇÃO SOCIAL",
+       "pago": 56008283.92
+      },
+      {
+       "subfuncao": "TECNOLOGIA DA INFORMAÇÃO",
+       "pago": 44887210.61
+      },
+      {
+       "subfuncao": "PREVIDÊNCIA COMPLEMENTAR",
+       "pago": 33571251.46
+      },
+      {
+       "subfuncao": "PROTEÇÃO E BENEFÍCIOS AO TRABALHADOR",
+       "pago": 27444244.58
+      }
+     ]
+    },
+    {
+     "funcao": "PREVIDÊNCIA SOCIAL",
+     "codigo": "09",
+     "pago": 799272948.3800001,
+     "empenhado": 811493143.2099999,
+     "subfuncoes": [
+      {
+       "subfuncao": "PREVIDÊNCIA DO REGIME ESTATUTÁRIO",
+       "pago": 764039522.46
+      },
+      {
+       "subfuncao": "ADMINISTRAÇÃO GERAL",
+       "pago": 34567758.07
+      },
+      {
+       "subfuncao": "PREVIDÊNCIA COMPLEMENTAR",
+       "pago": 658044.22
+      },
+      {
+       "subfuncao": "PROTEÇÃO E BENEFÍCIOS AO TRABALHADOR",
+       "pago": 7623.63
+      }
+     ]
+    },
+    {
+     "funcao": "CULTURA",
+     "codigo": "13",
+     "pago": 201514752.45999998,
+     "empenhado": 209133940.28,
+     "subfuncoes": [
+      {
+       "subfuncao": "DIFUSÃO CULTURAL",
+       "pago": 168552130.04
+      },
+      {
+       "subfuncao": "ADMINISTRAÇÃO GERAL",
+       "pago": 23616124.13
+      },
+      {
+       "subfuncao": "PATRIMÔNIO HISTÓRICO, ARTÍSTICO E ARQUEOLÓGICO",
+       "pago": 6126222.9
+      },
+      {
+       "subfuncao": "PREVIDÊNCIA COMPLEMENTAR",
+       "pago": 2635576.02
+      },
+      {
+       "subfuncao": "PREVIDÊNCIA DO REGIME ESTATUTÁRIO",
+       "pago": 487263.05
+      },
+      {
+       "subfuncao": "PROTEÇÃO E BENEFÍCIOS AO TRABALHADOR",
+       "pago": 97436.32
+      }
+     ]
+    },
+    {
+     "funcao": "SANEAMENTO",
+     "codigo": "17",
+     "pago": 155960876.07999998,
+     "empenhado": 159059199.26,
+     "subfuncoes": [
+      {
+       "subfuncao": "SANEAMENTO BÁSICO URBANO",
+       "pago": 153025290.57
+      },
+      {
+       "subfuncao": "ADMINISTRAÇÃO GERAL",
+       "pago": 2935585.51
+      }
+     ]
+    },
+    {
+     "funcao": "ASSISTÊNCIA SOCIAL",
+     "codigo": "08",
+     "pago": 151063611.94,
+     "empenhado": 154463171.12,
+     "subfuncoes": [
+      {
+       "subfuncao": "ASSISTÊNCIA COMUNITÁRIA",
+       "pago": 128376364.8
+      },
+      {
+       "subfuncao": "DIREITOS INDIVIDUAIS, COLETIVOS E DIFUSOS",
+       "pago": 8531573.36
+      },
+      {
+       "subfuncao": "ASSISTÊNCIA À CRIANÇA E AO ADOLESCENTE",
+       "pago": 8035979.57
+      },
+      {
+       "subfuncao": "ASSISTÊNCIA AO IDOSO",
+       "pago": 4744118.21
+      },
+      {
+       "subfuncao": "ADMINISTRAÇÃO GERAL",
+       "pago": 1375576.0
+      }
+     ]
+    },
+    {
+     "funcao": "DIREITOS DA CIDADANIA",
+     "codigo": "14",
+     "pago": 128291315.94999999,
+     "empenhado": 131303904.63000001,
+     "subfuncoes": [
+      {
+       "subfuncao": "DIREITOS INDIVIDUAIS, COLETIVOS E DIFUSOS",
+       "pago": 119461047.99
+      },
+      {
+       "subfuncao": "ADMINISTRAÇÃO GERAL",
+       "pago": 8830267.96
+      }
+     ]
+    },
+    {
+     "funcao": "COMÉRCIO E SERVIÇOS",
+     "codigo": "23",
+     "pago": 74852345.28,
+     "empenhado": 77423379.08000001,
+     "subfuncoes": [
+      {
+       "subfuncao": "PROMOÇÃO COMERCIAL",
+       "pago": 38120210.55
+      },
+      {
+       "subfuncao": "ADMINISTRAÇÃO GERAL",
+       "pago": 15054585.56
+      },
+      {
+       "subfuncao": "TURISMO",
+       "pago": 13114267.24
+      },
+      {
+       "subfuncao": "SERVIÇOS FINANCEIROS",
+       "pago": 5041800.0
+      },
+      {
+       "subfuncao": "PREVIDÊNCIA COMPLEMENTAR",
+       "pago": 2052985.02
+      },
+      {
+       "subfuncao": "PROTEÇÃO E BENEFÍCIOS AO TRABALHADOR",
+       "pago": 923191.73
+      },
+      {
+       "subfuncao": "OUTROS ENCARGOS ESPECIAIS",
+       "pago": 545305.18
+      }
+     ]
+    },
+    {
+     "funcao": "ESSENCIAL À JUSTIÇA",
+     "codigo": "03",
+     "pago": 54841507.44,
+     "empenhado": 58118780.86,
+     "subfuncoes": [
+      {
+       "subfuncao": "DEFESA DA ORDEM JURÍDICA",
+       "pago": 44241500.5
+      },
+      {
+       "subfuncao": "ADMINISTRAÇÃO DE RECEITAS",
+       "pago": 5503275.69
+      },
+      {
+       "subfuncao": "ADMINISTRAÇÃO GERAL",
+       "pago": 5096731.25
+      }
+     ]
+    },
+    {
+     "funcao": "DESPORTO E LAZER",
+     "codigo": "27",
+     "pago": 53266603.16,
+     "empenhado": 57527532.56,
+     "subfuncoes": [
+      {
+       "subfuncao": "DESPORTO COMUNITÁRIO",
+       "pago": 34591644.15
+      },
+      {
+       "subfuncao": "TURISMO",
+       "pago": 12427544.82
+      },
+      {
+       "subfuncao": "ADMINISTRAÇÃO GERAL",
+       "pago": 6247414.19
+      }
+     ]
+    },
+    {
+     "funcao": "TRABALHO",
+     "codigo": "11",
+     "pago": 20583200.86,
+     "empenhado": 20944685.9,
+     "subfuncoes": [
+      {
+       "subfuncao": "ENSINO PROFISSIONAL",
+       "pago": 11662805.04
+      },
+      {
+       "subfuncao": "ADMINISTRAÇÃO GERAL",
+       "pago": 8920395.82
+      }
+     ]
+    },
+    {
+     "funcao": "GESTÃO AMBIENTAL",
+     "codigo": "18",
+     "pago": 18888255.77,
+     "empenhado": 19148761.02,
+     "subfuncoes": [
+      {
+       "subfuncao": "PRESERVAÇÃO E CONSERVAÇÃO AMBIENTAL",
+       "pago": 14917345.62
+      },
+      {
+       "subfuncao": "ADMINISTRAÇÃO GERAL",
+       "pago": 3970910.15
+      }
+     ]
+    },
+    {
+     "funcao": "HABITAÇÃO",
+     "codigo": "16",
+     "pago": 12627906.64,
+     "empenhado": 15109704.17,
+     "subfuncoes": [
+      {
+       "subfuncao": "HABITAÇÃO URBANA",
+       "pago": 6431304.39
+      },
+      {
+       "subfuncao": "ADMINISTRAÇÃO GERAL",
+       "pago": 6196602.25
+      }
+     ]
+    },
+    {
+     "funcao": "CIÊNCIA E TECNOLOGIA",
+     "codigo": "19",
+     "pago": 6277022.59,
+     "empenhado": 6603476.129999999,
+     "subfuncoes": [
+      {
+       "subfuncao": "ADMINISTRAÇÃO FINANCEIRA",
+       "pago": 2745065.22
+      },
+      {
+       "subfuncao": "DIFUSÃO DO CONHECIMENTO CIENTÍFICO E TECNOLÓGICO",
+       "pago": 2234137.38
+      },
+      {
+       "subfuncao": "ADMINISTRAÇÃO GERAL",
+       "pago": 1297819.99
+      }
+     ]
+    },
+    {
+     "funcao": "SEGURANÇA PÚBLICA",
+     "codigo": "06",
+     "pago": 2384161.93,
+     "empenhado": 2704572.63,
+     "subfuncoes": [
+      {
+       "subfuncao": "DIREITOS INDIVIDUAIS, COLETIVOS E DIFUSOS",
+       "pago": 2384161.93
+      }
+     ]
+    },
+    {
+     "funcao": "RESERVAS",
+     "codigo": "99",
+     "pago": 0.0,
+     "empenhado": 0.0,
+     "subfuncoes": []
+    }
+   ]
+  },
+  {
+   "ano": 2025,
+   "total_pago": 8852525529.39,
+   "total_empenhado": 9092810504.15,
+   "funcoes": [
+    {
+     "funcao": "SAÚDE",
+     "codigo": "10",
+     "pago": 2031931233.4000003,
+     "empenhado": 2074767777.5500004,
+     "subfuncoes": [
+      {
+       "subfuncao": "ATENÇÃO BÁSICA",
+       "pago": 854616941.29
+      },
+      {
+       "subfuncao": "ASSISTÊNCIA HOSPITALAR E AMBULATORIAL",
+       "pago": 645977720.62
+      },
+      {
+       "subfuncao": "ADMINISTRAÇÃO GERAL",
+       "pago": 187350790.97
+      },
+      {
+       "subfuncao": "OUTROS ENCARGOS ESPECIAIS",
+       "pago": 113328405.39
+      },
+      {
+       "subfuncao": "VIGILÂNCIA EPIDEMIOLÓGICA",
+       "pago": 99882386.73
+      },
+      {
+       "subfuncao": "PREVIDÊNCIA DO REGIME ESTATUTÁRIO",
+       "pago": 79743839.17
+      },
+      {
+       "subfuncao": "SUPORTE PROFILÁTICO E TERAPÊUTICO",
+       "pago": 27676886.98
+      },
+      {
+       "subfuncao": "VIGILÂNCIA SANITÁRIA",
+       "pago": 14292144.19
+      }
+     ]
+    },
+    {
+     "funcao": "EDUCAÇÃO",
+     "codigo": "12",
+     "pago": 1771266067.0000002,
+     "empenhado": 1906160726.5299997,
+     "subfuncoes": [
+      {
+       "subfuncao": "ENSINO FUNDAMENTAL",
+       "pago": 1262852664.67
+      },
+      {
+       "subfuncao": "EDUCAÇÃO INFANTIL",
+       "pago": 281742810.71
+      },
+      {
+       "subfuncao": "ALIMENTAÇÃO E NUTRIÇÃO",
+       "pago": 188027059.46
+      },
+      {
+       "subfuncao": "EDUCAÇÃO DE JOVENS E ADULTOS",
+       "pago": 25119460.39
+      },
+      {
+       "subfuncao": "EDUCAÇÃO ESPECIAL",
+       "pago": 13524071.77
+      }
+     ]
+    },
+    {
+     "funcao": "URBANISMO",
+     "codigo": "15",
+     "pago": 1650123501.3700001,
+     "empenhado": 1684367161.5500002,
+     "subfuncoes": [
+      {
+       "subfuncao": "INFRA-ESTRUTURA URBANA",
+       "pago": 620261341.63
+      },
+      {
+       "subfuncao": "SERVIÇOS URBANOS",
+       "pago": 608150162.68
+      },
+      {
+       "subfuncao": "ADMINISTRAÇÃO GERAL",
+       "pago": 191208627.6
+      },
+      {
+       "subfuncao": "DEFESA CIVIL",
+       "pago": 63709730.45
+      },
+      {
+       "subfuncao": "TRANSPORTES COLETIVOS URBANOS",
+       "pago": 59294887.28
+      },
+      {
+       "subfuncao": "ASSISTÊNCIA À CRIANÇA E AO ADOLESCENTE",
+       "pago": 44347854.31
+      },
+      {
+       "subfuncao": "PREVIDÊNCIA COMPLEMENTAR",
+       "pago": 33748833.8
+      },
+      {
+       "subfuncao": "OUTROS ENCARGOS ESPECIAIS",
+       "pago": 18274862.54
+      }
+     ]
+    },
+    {
+     "funcao": "PREVIDÊNCIA SOCIAL",
+     "codigo": "09",
+     "pago": 850032861.7400001,
+     "empenhado": 850521906.6,
+     "subfuncoes": [
+      {
+       "subfuncao": "PREVIDÊNCIA DO REGIME ESTATUTÁRIO",
+       "pago": 819651755.85
+      },
+      {
+       "subfuncao": "ADMINISTRAÇÃO GERAL",
+       "pago": 29783330.19
+      },
+      {
+       "subfuncao": "PREVIDÊNCIA COMPLEMENTAR",
+       "pago": 587319.88
+      },
+      {
+       "subfuncao": "PROTEÇÃO E BENEFÍCIOS AO TRABALHADOR",
+       "pago": 10455.82
+      }
+     ]
+    },
+    {
+     "funcao": "ADMINISTRAÇÃO",
+     "codigo": "04",
+     "pago": 834566897.9599999,
+     "empenhado": 843352931.35,
+     "subfuncoes": [
+      {
+       "subfuncao": "ADMINISTRAÇÃO GERAL",
+       "pago": 332313384.94
+      },
+      {
+       "subfuncao": "PREVIDÊNCIA DO REGIME ESTATUTÁRIO",
+       "pago": 232511859.77
+      },
+      {
+       "subfuncao": "ADMINISTRAÇÃO FINANCEIRA",
+       "pago": 68980673.22
+      },
+      {
+       "subfuncao": "TECNOLOGIA DA INFORMAÇÃO",
+       "pago": 58983754.81
+      },
+      {
+       "subfuncao": "PREVIDÊNCIA COMPLEMENTAR",
+       "pago": 44764831.79
+      },
+      {
+       "subfuncao": "PROTEÇÃO E BENEFÍCIOS AO TRABALHADOR",
+       "pago": 39056941.51
+      },
+      {
+       "subfuncao": "COMUNICAÇÃO SOCIAL",
+       "pago": 27901205.51
+      },
+      {
+       "subfuncao": "OUTROS ENCARGOS ESPECIAIS",
+       "pago": 11747350.54
+      }
+     ]
+    },
+    {
+     "funcao": "ENCARGOS ESPECIAIS",
+     "codigo": "28",
+     "pago": 753163111.51,
+     "empenhado": 758464502.4200001,
+     "subfuncoes": [
+      {
+       "subfuncao": "SERVIÇO DA DÍVIDA INTERNA",
+       "pago": 535288398.82
+      },
+      {
+       "subfuncao": "OUTROS ENCARGOS ESPECIAIS",
+       "pago": 117456846.9
+      },
+      {
+       "subfuncao": "SERVIÇO DA DÍVIDA EXTERNA",
+       "pago": 100417865.79
+      }
+     ]
+    },
+    {
+     "funcao": "CULTURA",
+     "codigo": "13",
+     "pago": 214945071.98,
+     "empenhado": 216815701.5,
+     "subfuncoes": [
+      {
+       "subfuncao": "DIFUSÃO CULTURAL",
+       "pago": 178726540.91
+      },
+      {
+       "subfuncao": "ADMINISTRAÇÃO GERAL",
+       "pago": 26108681.12
+      },
+      {
+       "subfuncao": "PATRIMÔNIO HISTÓRICO, ARTÍSTICO E ARQUEOLÓGICO",
+       "pago": 6454956.81
+      },
+      {
+       "subfuncao": "PREVIDÊNCIA COMPLEMENTAR",
+       "pago": 2865078.71
+      },
+      {
+       "subfuncao": "PREVIDÊNCIA DO REGIME ESTATUTÁRIO",
+       "pago": 661196.65
+      },
+      {
+       "subfuncao": "PROTEÇÃO E BENEFÍCIOS AO TRABALHADOR",
+       "pago": 128617.78
+      }
+     ]
+    },
+    {
+     "funcao": "SANEAMENTO",
+     "codigo": "17",
+     "pago": 190491073.57,
+     "empenhado": 193421224.75,
+     "subfuncoes": [
+      {
+       "subfuncao": "SANEAMENTO BÁSICO URBANO",
+       "pago": 187345968.4
+      },
+      {
+       "subfuncao": "ADMINISTRAÇÃO GERAL",
+       "pago": 3145105.17
+      }
+     ]
+    },
+    {
+     "funcao": "ASSISTÊNCIA SOCIAL",
+     "codigo": "08",
+     "pago": 170830296.14999998,
+     "empenhado": 171945140.54,
+     "subfuncoes": [
+      {
+       "subfuncao": "ASSISTÊNCIA COMUNITÁRIA",
+       "pago": 131060518.8
+      },
+      {
+       "subfuncao": "ASSISTÊNCIA AO IDOSO",
+       "pago": 15871339.18
+      },
+      {
+       "subfuncao": "ADMINISTRAÇÃO GERAL",
+       "pago": 11344155.17
+      },
+      {
+       "subfuncao": "DIREITOS INDIVIDUAIS, COLETIVOS E DIFUSOS",
+       "pago": 8721958.45
+      },
+      {
+       "subfuncao": "ASSISTÊNCIA À CRIANÇA E AO ADOLESCENTE",
+       "pago": 3832324.55
+      }
+     ]
+    },
+    {
+     "funcao": "DIREITOS DA CIDADANIA",
+     "codigo": "14",
+     "pago": 146636774.56,
+     "empenhado": 147363748.67,
+     "subfuncoes": [
+      {
+       "subfuncao": "DIREITOS INDIVIDUAIS, COLETIVOS E DIFUSOS",
+       "pago": 139916758.15
+      },
+      {
+       "subfuncao": "ADMINISTRAÇÃO GERAL",
+       "pago": 6720016.41
+      }
+     ]
+    },
+    {
+     "funcao": "COMÉRCIO E SERVIÇOS",
+     "codigo": "23",
+     "pago": 64645529.88999999,
+     "empenhado": 65646970.190000005,
+     "subfuncoes": [
+      {
+       "subfuncao": "PROMOÇÃO COMERCIAL",
+       "pago": 39012582.55
+      },
+      {
+       "subfuncao": "ADMINISTRAÇÃO GERAL",
+       "pago": 14674172.97
+      },
+      {
+       "subfuncao": "TURISMO",
+       "pago": 6676956.61
+      },
+      {
+       "subfuncao": "PREVIDÊNCIA COMPLEMENTAR",
+       "pago": 2271101.8
+      },
+      {
+       "subfuncao": "PROTEÇÃO E BENEFÍCIOS AO TRABALHADOR",
+       "pago": 954013.53
+      },
+      {
+       "subfuncao": "OUTROS ENCARGOS ESPECIAIS",
+       "pago": 558864.43
+      },
+      {
+       "subfuncao": "SERVIÇOS FINANCEIROS",
+       "pago": 497838.0
+      }
+     ]
+    },
+    {
+     "funcao": "DESPORTO E LAZER",
+     "codigo": "27",
+     "pago": 57164279.379999995,
+     "empenhado": 60584287.32000001,
+     "subfuncoes": [
+      {
+       "subfuncao": "DESPORTO COMUNITÁRIO",
+       "pago": 27294974.78
+      },
+      {
+       "subfuncao": "TURISMO",
+       "pago": 23402847.88
+      },
+      {
+       "subfuncao": "ADMINISTRAÇÃO GERAL",
+       "pago": 6466456.72
+      }
+     ]
+    },
+    {
+     "funcao": "ESSENCIAL À JUSTIÇA",
+     "codigo": "03",
+     "pago": 54588127.620000005,
+     "empenhado": 55431412.95,
+     "subfuncoes": [
+      {
+       "subfuncao": "DEFESA DA ORDEM JURÍDICA",
+       "pago": 43074572.99
+      },
+      {
+       "subfuncao": "ADMINISTRAÇÃO DE RECEITAS",
+       "pago": 5783518.89
+      },
+      {
+       "subfuncao": "ADMINISTRAÇÃO GERAL",
+       "pago": 5730035.74
+      }
+     ]
+    },
+    {
+     "funcao": "HABITAÇÃO",
+     "codigo": "16",
+     "pago": 21900913.740000002,
+     "empenhado": 22271865.689999998,
+     "subfuncoes": [
+      {
+       "subfuncao": "HABITAÇÃO URBANA",
+       "pago": 13123537.35
+      },
+      {
+       "subfuncao": "ADMINISTRAÇÃO GERAL",
+       "pago": 8777376.39
+      }
+     ]
+    },
+    {
+     "funcao": "GESTÃO AMBIENTAL",
+     "codigo": "18",
+     "pago": 12903241.219999999,
+     "empenhado": 13451107.21,
+     "subfuncoes": [
+      {
+       "subfuncao": "PRESERVAÇÃO E CONSERVAÇÃO AMBIENTAL",
+       "pago": 10556897.62
+      },
+      {
+       "subfuncao": "ADMINISTRAÇÃO GERAL",
+       "pago": 2346343.6
+      }
+     ]
+    },
+    {
+     "funcao": "TRABALHO",
+     "codigo": "11",
+     "pago": 12083239.61,
+     "empenhado": 12677317.370000001,
+     "subfuncoes": [
+      {
+       "subfuncao": "ADMINISTRAÇÃO GERAL",
+       "pago": 6677435.7
+      },
+      {
+       "subfuncao": "ENSINO PROFISSIONAL",
+       "pago": 5405803.91
+      }
+     ]
+    },
+    {
+     "funcao": "CIÊNCIA E TECNOLOGIA",
+     "codigo": "19",
+     "pago": 11421047.45,
+     "empenhado": 11732556.41,
+     "subfuncoes": [
+      {
+       "subfuncao": "DIFUSÃO DO CONHECIMENTO CIENTÍFICO E TECNOLÓGICO",
+       "pago": 8106410.99
+      },
+      {
+       "subfuncao": "ADMINISTRAÇÃO GERAL",
+       "pago": 1745587.03
+      },
+      {
+       "subfuncao": "ADMINISTRAÇÃO FINANCEIRA",
+       "pago": 1559049.43
+      },
+      {
+       "subfuncao": "RECUPERAÇÃO DE ÁREAS DEGRADADAS",
+       "pago": 10000.0
+      }
+     ]
+    },
+    {
+     "funcao": "SEGURANÇA PÚBLICA",
+     "codigo": "06",
+     "pago": 3832261.24,
+     "empenhado": 3834165.55,
+     "subfuncoes": [
+      {
+       "subfuncao": "DIREITOS INDIVIDUAIS, COLETIVOS E DIFUSOS",
+       "pago": 3832261.24
+      }
+     ]
+    },
+    {
+     "funcao": "RESERVAS",
+     "codigo": "99",
+     "pago": 0.0,
+     "empenhado": 0.0,
+     "subfuncoes": []
+    }
+   ]
+  },
+  {
+   "ano": 2026,
+   "total_pago": 3415016771.89,
+   "total_empenhado": 5437559594.27,
+   "funcoes": [
+    {
+     "funcao": "SAÚDE",
+     "codigo": "10",
+     "pago": 807004846.04,
+     "empenhado": 1342331117.6399999,
+     "subfuncoes": [
+      {
+       "subfuncao": "ATENÇÃO BÁSICA",
+       "pago": 330776999.44
+      },
+      {
+       "subfuncao": "ASSISTÊNCIA HOSPITALAR E AMBULATORIAL",
+       "pago": 262685627.92
+      },
+      {
+       "subfuncao": "ADMINISTRAÇÃO GERAL",
+       "pago": 81440178.69
+      },
+      {
+       "subfuncao": "OUTROS ENCARGOS ESPECIAIS",
+       "pago": 48332582.12
+      },
+      {
+       "subfuncao": "PREVIDÊNCIA DO REGIME ESTATUTÁRIO",
+       "pago": 45134185.72
+      },
+      {
+       "subfuncao": "VIGILÂNCIA EPIDEMIOLÓGICA",
+       "pago": 20139187.03
+      },
+      {
+       "subfuncao": "SUPORTE PROFILÁTICO E TERAPÊUTICO",
+       "pago": 9616617.0
+      },
+      {
+       "subfuncao": "VIGILÂNCIA SANITÁRIA",
+       "pago": 6352861.44
+      }
+     ]
+    },
+    {
+     "funcao": "EDUCAÇÃO",
+     "codigo": "12",
+     "pago": 712454479.4,
+     "empenhado": 992277489.27,
+     "subfuncoes": [
+      {
+       "subfuncao": "ENSINO FUNDAMENTAL",
+       "pago": 518686956.14
+      },
+      {
+       "subfuncao": "EDUCAÇÃO INFANTIL",
+       "pago": 111742261.28
+      },
+      {
+       "subfuncao": "ALIMENTAÇÃO E NUTRIÇÃO",
+       "pago": 71813358.97
+      },
+      {
+       "subfuncao": "EDUCAÇÃO DE JOVENS E ADULTOS",
+       "pago": 6393652.8
+      },
+      {
+       "subfuncao": "EDUCAÇÃO ESPECIAL",
+       "pago": 3818250.21
+      }
+     ]
+    },
+    {
+     "funcao": "URBANISMO",
+     "codigo": "15",
+     "pago": 609960770.14,
+     "empenhado": 1279670000.75,
+     "subfuncoes": [
+      {
+       "subfuncao": "SERVIÇOS URBANOS",
+       "pago": 227918707.12
+      },
+      {
+       "subfuncao": "INFRA-ESTRUTURA URBANA",
+       "pago": 224820548.92
+      },
+      {
+       "subfuncao": "ADMINISTRAÇÃO GERAL",
+       "pago": 64926515.76
+      },
+      {
+       "subfuncao": "DEFESA CIVIL",
+       "pago": 28370311.01
+      },
+      {
+       "subfuncao": "ASSISTÊNCIA À CRIANÇA E AO ADOLESCENTE",
+       "pago": 23226056.74
+      },
+      {
+       "subfuncao": "TRANSPORTES COLETIVOS URBANOS",
+       "pago": 19335162.2
+      },
+      {
+       "subfuncao": "PREVIDÊNCIA COMPLEMENTAR",
+       "pago": 10853837.11
+      },
+      {
+       "subfuncao": "OUTROS ENCARGOS ESPECIAIS",
+       "pago": 6547645.17
+      }
+     ]
+    },
+    {
+     "funcao": "ADMINISTRAÇÃO",
+     "codigo": "04",
+     "pago": 334760145.33,
+     "empenhado": 578145178.07,
+     "subfuncoes": [
+      {
+       "subfuncao": "ADMINISTRAÇÃO GERAL",
+       "pago": 120062454.51
+      },
+      {
+       "subfuncao": "PREVIDÊNCIA DO REGIME ESTATUTÁRIO",
+       "pago": 110092267.49
+      },
+      {
+       "subfuncao": "ADMINISTRAÇÃO FINANCEIRA",
+       "pago": 26556197.07
+      },
+      {
+       "subfuncao": "TECNOLOGIA DA INFORMAÇÃO",
+       "pago": 21586233.08
+      },
+      {
+       "subfuncao": "PREVIDÊNCIA COMPLEMENTAR",
+       "pago": 19537834.36
+      },
+      {
+       "subfuncao": "PROTEÇÃO E BENEFÍCIOS AO TRABALHADOR",
+       "pago": 14355947.71
+      },
+      {
+       "subfuncao": "COMUNICAÇÃO SOCIAL",
+       "pago": 8870965.52
+      },
+      {
+       "subfuncao": "OUTROS ENCARGOS ESPECIAIS",
+       "pago": 7049937.96
+      }
+     ]
+    },
+    {
+     "funcao": "ENCARGOS ESPECIAIS",
+     "codigo": "28",
+     "pago": 307302344.96999997,
+     "empenhado": 310998713.35,
+     "subfuncoes": [
+      {
+       "subfuncao": "SERVIÇO DA DÍVIDA INTERNA",
+       "pago": 245118630.16
+      },
+      {
+       "subfuncao": "OUTROS ENCARGOS ESPECIAIS",
+       "pago": 39877493.39
+      },
+      {
+       "subfuncao": "SERVIÇO DA DÍVIDA EXTERNA",
+       "pago": 22306221.42
+      }
+     ]
+    },
+    {
+     "funcao": "PREVIDÊNCIA SOCIAL",
+     "codigo": "09",
+     "pago": 269005318.84,
+     "empenhado": 340220990.09000003,
+     "subfuncoes": [
+      {
+       "subfuncao": "PREVIDÊNCIA DO REGIME ESTATUTÁRIO",
+       "pago": 256082010.16
+      },
+      {
+       "subfuncao": "ADMINISTRAÇÃO GERAL",
+       "pago": 12687589.8
+      },
+      {
+       "subfuncao": "PREVIDÊNCIA COMPLEMENTAR",
+       "pago": 230678.34
+      },
+      {
+       "subfuncao": "PROTEÇÃO E BENEFÍCIOS AO TRABALHADOR",
+       "pago": 5040.54
+      }
+     ]
+    },
+    {
+     "funcao": "CULTURA",
+     "codigo": "13",
+     "pago": 98760083.62,
+     "empenhado": 158437749.07999998,
+     "subfuncoes": [
+      {
+       "subfuncao": "DIFUSÃO CULTURAL",
+       "pago": 87930746.3
+      },
+      {
+       "subfuncao": "ADMINISTRAÇÃO GERAL",
+       "pago": 7625916.03
+      },
+      {
+       "subfuncao": "PATRIMÔNIO HISTÓRICO, ARTÍSTICO E ARQUEOLÓGICO",
+       "pago": 2175130.31
+      },
+      {
+       "subfuncao": "PREVIDÊNCIA COMPLEMENTAR",
+       "pago": 721529.71
+      },
+      {
+       "subfuncao": "PREVIDÊNCIA DO REGIME ESTATUTÁRIO",
+       "pago": 306761.27
+      }
+     ]
+    },
+    {
+     "funcao": "ASSISTÊNCIA SOCIAL",
+     "codigo": "08",
+     "pago": 73869023.00999999,
+     "empenhado": 112647422.44,
+     "subfuncoes": [
+      {
+       "subfuncao": "ASSISTÊNCIA COMUNITÁRIA",
+       "pago": 47552576.16
+      },
+      {
+       "subfuncao": "ASSISTÊNCIA AO IDOSO",
+       "pago": 13798739.32
+      },
+      {
+       "subfuncao": "DIREITOS INDIVIDUAIS, COLETIVOS E DIFUSOS",
+       "pago": 4534369.91
+      },
+      {
+       "subfuncao": "ADMINISTRAÇÃO GERAL",
+       "pago": 4361459.75
+      },
+      {
+       "subfuncao": "ASSISTÊNCIA À CRIANÇA E AO ADOLESCENTE",
+       "pago": 3621877.87
+      }
+     ]
+    },
+    {
+     "funcao": "DIREITOS DA CIDADANIA",
+     "codigo": "14",
+     "pago": 59515624.48,
+     "empenhado": 68483468.14,
+     "subfuncoes": [
+      {
+       "subfuncao": "DIREITOS INDIVIDUAIS, COLETIVOS E DIFUSOS",
+       "pago": 56961725.83
+      },
+      {
+       "subfuncao": "ADMINISTRAÇÃO GERAL",
+       "pago": 2553898.65
+      }
+     ]
+    },
+    {
+     "funcao": "SANEAMENTO",
+     "codigo": "17",
+     "pago": 42621244.2,
+     "empenhado": 97549978.28999999,
+     "subfuncoes": [
+      {
+       "subfuncao": "SANEAMENTO BÁSICO URBANO",
+       "pago": 41417671.57
+      },
+      {
+       "subfuncao": "ADMINISTRAÇÃO GERAL",
+       "pago": 1203572.63
+      }
+     ]
+    },
+    {
+     "funcao": "COMÉRCIO E SERVIÇOS",
+     "codigo": "23",
+     "pago": 36457799.089999996,
+     "empenhado": 56413918.09,
+     "subfuncoes": [
+      {
+       "subfuncao": "TURISMO",
+       "pago": 17657490.81
+      },
+      {
+       "subfuncao": "PROMOÇÃO COMERCIAL",
+       "pago": 10962380.01
+      },
+      {
+       "subfuncao": "ADMINISTRAÇÃO GERAL",
+       "pago": 6193816.25
+      },
+      {
+       "subfuncao": "PREVIDÊNCIA COMPLEMENTAR",
+       "pago": 937719.4
+      },
+      {
+       "subfuncao": "PROTEÇÃO E BENEFÍCIOS AO TRABALHADOR",
+       "pago": 337689.76
+      },
+      {
+       "subfuncao": "OUTROS ENCARGOS ESPECIAIS",
+       "pago": 284552.66
+      },
+      {
+       "subfuncao": "SERVIÇOS FINANCEIROS",
+       "pago": 84150.2
+      }
+     ]
+    },
+    {
+     "funcao": "DESPORTO E LAZER",
+     "codigo": "27",
+     "pago": 22672330.54,
+     "empenhado": 47217257.83,
+     "subfuncoes": [
+      {
+       "subfuncao": "DESPORTO COMUNITÁRIO",
+       "pago": 12051441.29
+      },
+      {
+       "subfuncao": "TURISMO",
+       "pago": 8925822.2
+      },
+      {
+       "subfuncao": "ADMINISTRAÇÃO GERAL",
+       "pago": 1695067.05
+      }
+     ]
+    },
+    {
+     "funcao": "ESSENCIAL À JUSTIÇA",
+     "codigo": "03",
+     "pago": 22418621.370000005,
+     "empenhado": 25040926.330000002,
+     "subfuncoes": [
+      {
+       "subfuncao": "DEFESA DA ORDEM JURÍDICA",
+       "pago": 17453580.94
+      },
+      {
+       "subfuncao": "ADMINISTRAÇÃO DE RECEITAS",
+       "pago": 3159856.85
+      },
+      {
+       "subfuncao": "ADMINISTRAÇÃO GERAL",
+       "pago": 1805183.58
+      }
+     ]
+    },
+    {
+     "funcao": "GESTÃO AMBIENTAL",
+     "codigo": "18",
+     "pago": 5270000.91,
+     "empenhado": 6140875.039999999,
+     "subfuncoes": [
+      {
+       "subfuncao": "PRESERVAÇÃO E CONSERVAÇÃO AMBIENTAL",
+       "pago": 4444268.17
+      },
+      {
+       "subfuncao": "ADMINISTRAÇÃO GERAL",
+       "pago": 825732.74
+      }
+     ]
+    },
+    {
+     "funcao": "TRABALHO",
+     "codigo": "11",
+     "pago": 5202291.9399999995,
+     "empenhado": 7091131.6899999995,
+     "subfuncoes": [
+      {
+       "subfuncao": "ENSINO PROFISSIONAL",
+       "pago": 2864097.53
+      },
+      {
+       "subfuncao": "ADMINISTRAÇÃO GERAL",
+       "pago": 2338194.41
+      }
+     ]
+    },
+    {
+     "funcao": "SEGURANÇA PÚBLICA",
+     "codigo": "06",
+     "pago": 3146629.25,
+     "empenhado": 6376373.15,
+     "subfuncoes": [
+      {
+       "subfuncao": "DIREITOS INDIVIDUAIS, COLETIVOS E DIFUSOS",
+       "pago": 3146629.25
+      }
+     ]
+    },
+    {
+     "funcao": "CIÊNCIA E TECNOLOGIA",
+     "codigo": "19",
+     "pago": 2969698.25,
+     "empenhado": 4050820.78,
+     "subfuncoes": [
+      {
+       "subfuncao": "DIFUSÃO DO CONHECIMENTO CIENTÍFICO E TECNOLÓGICO",
+       "pago": 2907994.54
+      },
+      {
+       "subfuncao": "ADMINISTRAÇÃO GERAL",
+       "pago": 61703.71
+      }
+     ]
+    },
+    {
+     "funcao": "HABITAÇÃO",
+     "codigo": "16",
+     "pago": 1625520.5099999998,
+     "empenhado": 4466184.24,
+     "subfuncoes": [
+      {
+       "subfuncao": "ADMINISTRAÇÃO GERAL",
+       "pago": 1613314.63
+      },
+      {
+       "subfuncao": "HABITAÇÃO URBANA",
+       "pago": 12205.88
+      }
+     ]
+    },
+    {
+     "funcao": "RESERVAS",
+     "codigo": "99",
+     "pago": 0.0,
+     "empenhado": 0.0,
+     "subfuncoes": []
+    }
+   ]
+  }
+ ],
+ "curva_mensal": [
+  {
+   "ano": 2024,
+   "mes": 1,
+   "pago": 253084410.03,
+   "empenhado": 1399715273.36
+  },
+  {
+   "ano": 2024,
+   "mes": 2,
+   "pago": 497694919.52,
+   "empenhado": 1192651541.45
+  },
+  {
+   "ano": 2024,
+   "mes": 3,
+   "pago": 774301811.18,
+   "empenhado": 984974528.46
+  },
+  {
+   "ano": 2024,
+   "mes": 4,
+   "pago": 694818580.89,
+   "empenhado": 792279443.76
+  },
+  {
+   "ano": 2024,
+   "mes": 5,
+   "pago": 617558567.79,
+   "empenhado": 649809436.24
+  },
+  {
+   "ano": 2024,
+   "mes": 6,
+   "pago": 866863880.07,
+   "empenhado": 742683304.91
+  },
+  {
+   "ano": 2024,
+   "mes": 7,
+   "pago": 1130800892.3,
+   "empenhado": 1017107505.41
+  },
+  {
+   "ano": 2024,
+   "mes": 8,
+   "pago": 771491690.16,
+   "empenhado": 500493823.58
+  },
+  {
+   "ano": 2024,
+   "mes": 9,
+   "pago": 670064165.72,
+   "empenhado": 434912081.31
+  },
+  {
+   "ano": 2024,
+   "mes": 10,
+   "pago": 752528517.24,
+   "empenhado": 605056352.77
+  },
+  {
+   "ano": 2024,
+   "mes": 11,
+   "pago": 803206422.37,
+   "empenhado": 485274684.3
+  },
+  {
+   "ano": 2024,
+   "mes": 12,
+   "pago": 1140516781.36,
+   "empenhado": 368646571.05
+  },
+  {
+   "ano": 2025,
+   "mes": 1,
+   "pago": 291419980.47,
+   "empenhado": 1224849957.05
+  },
+  {
+   "ano": 2025,
+   "mes": 2,
+   "pago": 723008017.29,
+   "empenhado": 1585787532.35
+  },
+  {
+   "ano": 2025,
+   "mes": 3,
+   "pago": 678966548.83,
+   "empenhado": 784124171.46
+  },
+  {
+   "ano": 2025,
+   "mes": 4,
+   "pago": 854956311.13,
+   "empenhado": 792823424.66
+  },
+  {
+   "ano": 2025,
+   "mes": 5,
+   "pago": 742680710.52,
+   "empenhado": 672881523.64
+  },
+  {
+   "ano": 2025,
+   "mes": 6,
+   "pago": 703460374.56,
+   "empenhado": 636109207.43
+  },
+  {
+   "ano": 2025,
+   "mes": 7,
+   "pago": 768667760.05,
+   "empenhado": 689642510.06
+  },
+  {
+   "ano": 2025,
+   "mes": 8,
+   "pago": 692714313.01,
+   "empenhado": 594571522.14
+  },
+  {
+   "ano": 2025,
+   "mes": 9,
+   "pago": 798604177.51,
+   "empenhado": 609321205.3
+  },
+  {
+   "ano": 2025,
+   "mes": 10,
+   "pago": 753032337.33,
+   "empenhado": 503613135.12
+  },
+  {
+   "ano": 2025,
+   "mes": 11,
+   "pago": 775839006.58,
+   "empenhado": 649593280.3
+  },
+  {
+   "ano": 2025,
+   "mes": 12,
+   "pago": 1069175992.11,
+   "empenhado": 349493034.64
+  },
+  {
+   "ano": 2026,
+   "mes": 1,
+   "pago": 270327586.54,
+   "empenhado": 1464127971.07
+  },
+  {
+   "ano": 2026,
+   "mes": 2,
+   "pago": 781475487.26,
+   "empenhado": 1646410422.78
+  },
+  {
+   "ano": 2026,
+   "mes": 3,
+   "pago": 899374003.91,
+   "empenhado": 1073573075.96
+  },
+  {
+   "ano": 2026,
+   "mes": 4,
+   "pago": 901248867.03,
+   "empenhado": 770411098.34
+  },
+  {
+   "ano": 2026,
+   "mes": 5,
+   "pago": 562590827.15,
+   "empenhado": 483037026.12
+  }
+ ]
+}
