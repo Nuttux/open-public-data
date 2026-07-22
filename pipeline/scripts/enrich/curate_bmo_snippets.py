@@ -15,7 +15,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[3]
-UA = {"User-Agent": "france-open-data/0.1 (recherche civique; franceopendata.org)"}
+UA = {"User-Agent": "qipu/0.1 (recherche civique; qipu.org)"}
 
 def content_search(ark: str, query: str) -> list[dict]:
     u = "https://gallica.bnf.fr/services/ContentSearch?" + urllib.parse.urlencode({"ark": ark, "query": query})

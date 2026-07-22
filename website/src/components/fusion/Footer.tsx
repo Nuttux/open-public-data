@@ -47,7 +47,7 @@ export default function Footer() {
         <div className="fx-foot-grid">
           <div>
             <div className="fx-foot-word">
-              {t("fx.foot.word_line1")}<br />{t("fx.foot.word_line2")}
+              {t("fx.foot.word_line1")}{t("fx.foot.word_line2") ? <><br />{t("fx.foot.word_line2")}</> : null}
             </div>
             <p className="fx-foot-blurb">{t("fx.foot.blurb")}</p>
           </div>

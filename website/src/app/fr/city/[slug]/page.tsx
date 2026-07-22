@@ -37,10 +37,10 @@ export async function generateMetadata({
   const cityRich = getCityOrNull(slug);
   if (cityRich) {
     return buildLocaleAwareMetadata({
-      title: `${cityRich.nom} — Finances locales · France Open Data`,
+      title: `${cityRich.nom} — Finances locales`,
       description: `Budget, dette, fiscalité de la commune de ${cityRich.nom} (${cityRich.code_insee}, ${cityRich.reg_name}). Données OFGL harmonisées 2014-aujourd'hui.`,
       en: {
-        title: `${cityRich.nom} — Local finances · France Open Data`,
+        title: `${cityRich.nom} — Local finances`,
         description: `Budget, debt, taxation of ${cityRich.nom} (${cityRich.code_insee}, ${cityRich.reg_name}). OFGL harmonised data 2014-present.`,
       },
       path: `/fr/city/${slug}`,
@@ -50,16 +50,16 @@ export async function generateMetadata({
   const slim = findCommuneByAny(slug);
   if (slim) {
     return buildLocaleAwareMetadata({
-      title: `${slim.nom} (${slim.dep_name}) — Finances locales · France Open Data`,
+      title: `${slim.nom} (${slim.dep_name}) — Finances locales`,
       description: `Budget, dette, fiscalité de la commune de ${slim.nom} (INSEE ${slim.insee}, ${slim.reg_name}). Données OFGL.`,
       en: {
-        title: `${slim.nom} (${slim.dep_name}) — Local finances · France Open Data`,
+        title: `${slim.nom} (${slim.dep_name}) — Local finances`,
         description: `Budget, debt, taxation of ${slim.nom} (INSEE ${slim.insee}, ${slim.reg_name}). OFGL data.`,
       },
       path: `/fr/city/${slug}`,
     });
   }
-  return { title: "Page non trouvée — France Open Data" };
+  return { title: "Page non trouvée" };
 }
 
 export default async function CityPage({

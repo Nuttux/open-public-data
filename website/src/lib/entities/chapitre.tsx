@@ -21,7 +21,7 @@ export const chapitreConfig: EntityPageConfig<D> = {
     return { chap };
   },
   notFoundMetadata: (locale) => ({
-    title: locale === "en" ? "Chapter not found — France Open Data" : "Chapitre introuvable — France Open Data",
+    title: locale === "en" ? "Chapter not found — Qipu" : "Chapitre introuvable — Qipu",
     robots: { index: false },
   }),
   metadata: ({ chap: c }, locale) => {
@@ -29,8 +29,8 @@ export const chapitreConfig: EntityPageConfig<D> = {
     const labelEn = trLabel(c.label, locale);
     const totalFmt = c.total.toLocaleString(numLocale(locale));
     const title = locale === "en"
-      ? `${labelEn} — Paris investments ${c.year} · France Open Data`
-      : `${c.label} — Investissements ${c.year} · France Open Data`;
+      ? `${labelEn} — Paris investments ${c.year} · Qipu`
+      : `${c.label} — Investissements ${c.year} · Qipu`;
     const description = locale === "en"
       ? `Ville de Paris investments in the ${labelEn} chapter, fiscal year ${c.year}. ${c.nbProjets} projects, €${totalFmt} total.`
       : `Investissements de la Ville de Paris dans le chapitre ${c.label}, exercice ${c.year}. ${c.nbProjets} projets, ${totalFmt} € au total.`;

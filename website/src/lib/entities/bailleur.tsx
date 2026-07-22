@@ -13,7 +13,7 @@ export const bailleurConfig: EntityPageConfig<D> = {
     return { bailleur };
   },
   notFoundMetadata: (locale) => ({
-    title: locale === "en" ? "Operator not found — France Open Data" : "Bailleur introuvable — France Open Data",
+    title: locale === "en" ? "Operator not found — Qipu" : "Bailleur introuvable — Qipu",
     robots: { index: false },
   }),
   metadata: ({ bailleur: b }, locale) => {
@@ -33,8 +33,8 @@ export const bailleurConfig: EntityPageConfig<D> = {
     }
     const canonical = `/fr/city/paris/dette/bailleur/${encodeURIComponent(b.slug)}`;
     const title = locale === "en"
-      ? `${b.name} — Operator · France Open Data`
-      : `${b.name} — Bailleur · France Open Data`;
+      ? `${b.name} — Operator · Qipu`
+      : `${b.name} — Bailleur · Qipu`;
     const description = locale === "en"
       ? `${b.name}: ${capital} by the Ville de Paris.`
       : `${b.name} : ${capital} par la Ville de Paris.`;

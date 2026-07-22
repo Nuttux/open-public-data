@@ -27,8 +27,8 @@ export default async function LicenceClient() {
           </h1>
           <p className="fx-page-lede">
             {isFr
-              ? "France Open Data publie trois types de production ouverte : le code du pipeline de données, les jeux de données dérivés, et les contenus éditoriaux. Chacun est régi par la licence la mieux adaptée à son usage."
-              : "France Open Data publishes three types of open output: the data pipeline code, the derived datasets, and the editorial content. Each is governed by the license best suited to its use."}
+              ? "Qipu publie trois types de production ouverte : le code du pipeline de données, les jeux de données dérivés, et les contenus éditoriaux. Chacun est régi par la licence la mieux adaptée à son usage."
+              : "Qipu publishes three types of open output: the data pipeline code, the derived datasets, and the editorial content. Each is governed by the license best suited to its use."}
           </p>
         </div>
       </section>
@@ -207,8 +207,8 @@ export default async function LicenceClient() {
             )}
           </p>
           <div style={{ marginTop: 16 }}>
-            <Button variant="primary" href="mailto:daniel@franceopendata.org?subject=Licence%20commerciale">
-              daniel@franceopendata.org ↗
+            <Button variant="primary" href="mailto:daniel@qipu.org?subject=Licence%20commerciale">
+              daniel@qipu.org ↗
             </Button>
           </div>
         </div>
@@ -242,8 +242,8 @@ export default async function LicenceClient() {
           <ul style={{ paddingLeft: 20, lineHeight: 1.7, marginBottom: 24 }}>
             <li>
               {isFr
-                ? "Mentionner la source : « France Open Data · données dérivées de Paris Open Data, Etalab et INSEE »."
-                : "Cite the source: \"France Open Data · data derived from Paris Open Data, Etalab and INSEE\"."}
+                ? "Mentionner la source : « Qipu · données dérivées de Paris Open Data, Etalab et INSEE »."
+                : "Cite the source: \"Qipu · data derived from Paris Open Data, Etalab and INSEE\"."}
             </li>
             <li>
               {isFr
@@ -252,8 +252,8 @@ export default async function LicenceClient() {
             </li>
             <li>
               {isFr
-                ? "Ne pas suggérer que France Open Data approuve votre réutilisation."
-                : "Not imply that France Open Data endorses your reuse."}
+                ? "Ne pas suggérer que Qipu approuve votre réutilisation."
+                : "Not imply that Qipu endorses your reuse."}
             </li>
           </ul>
           <div className="fx-note">
@@ -292,8 +292,8 @@ export default async function LicenceClient() {
           <ul style={{ paddingLeft: 20, lineHeight: 1.7 }}>
             <li>
               {isFr
-                ? "Citer France Open Data (ou l'auteur·e nommé·e quand indiqué) avec un lien vers l'article original."
-                : "Cite France Open Data (or the named author when indicated) with a link to the original article."}
+                ? "Citer Qipu (ou l'auteur·e nommé·e quand indiqué) avec un lien vers l'article original."
+                : "Cite Qipu (or the named author when indicated) with a link to the original article."}
             </li>
             <li>
               {isFr
@@ -366,15 +366,15 @@ export default async function LicenceClient() {
           >
             {isFr ? (
               <>
-                D&apos;après <b>franceopendata.org</b>, données dérivées de Paris Open Data,
+                D&apos;après <b>qipu.org</b>, données dérivées de Paris Open Data,
                 Etalab et INSEE (Licence Ouverte 2.0). Méthodologie complète :
-                <code> franceopendata.org/methode</code>. Consulté le [date].
+                <code> qipu.org/methode</code>. Consulté le [date].
               </>
             ) : (
               <>
-                Based on <b>franceopendata.org</b>, data derived from Paris Open Data,
+                Based on <b>qipu.org</b>, data derived from Paris Open Data,
                 Etalab and INSEE (Etalab Open License 2.0). Full methodology:
-                <code> franceopendata.org/methode</code>. Accessed [date].
+                <code> qipu.org/methode</code>. Accessed [date].
               </>
             )}
           </blockquote>
@@ -400,8 +400,8 @@ export default async function LicenceClient() {
             }
           />
           <div style={{ marginTop: 24, display: "flex", gap: 10, flexWrap: "wrap" }}>
-            <Button variant="primary" href="mailto:daniel@franceopendata.org">
-              daniel@franceopendata.org ↗
+            <Button variant="primary" href="mailto:daniel@qipu.org">
+              daniel@qipu.org ↗
             </Button>
             <Button href="/contact">{isFr ? "Formulaire de contact" : "Contact form"}</Button>
             <Button href="/methode">{isFr ? "Méthodologie" : "Methodology"}</Button>

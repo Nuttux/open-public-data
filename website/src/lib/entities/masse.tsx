@@ -20,7 +20,7 @@ export const masseConfig: EntityPageConfig<D> = {
     return { ...d, requestedYear };
   },
   notFoundMetadata: (locale) => ({
-    title: locale === "en" ? "Balance-sheet item not found — France Open Data" : "Masse du bilan introuvable — France Open Data",
+    title: locale === "en" ? "Balance-sheet item not found — Qipu" : "Masse du bilan introuvable — Qipu",
     robots: { index: false },
   }),
   metadata: ({ masse, year, slug }, locale) => {
@@ -33,8 +33,8 @@ export const masseConfig: EntityPageConfig<D> = {
       ? (masse.side === "actif" ? "assets" : "liabilities")
       : masse.side;
     const title = locale === "en"
-      ? `${label} — Paris balance sheet ${year} · France Open Data`
-      : `${label} — Bilan ${year} · France Open Data`;
+      ? `${label} — Paris balance sheet ${year} · Qipu`
+      : `${label} — Bilan ${year} · Qipu`;
     const description = locale === "en"
       ? `${label}: ${amount}, ${fmtDec(masse.share * 100, 1)}% of ${sideLabel} on the Ville de Paris ${year} balance sheet.`
       : `${label} : ${amount}, soit ${fmtDec(masse.share * 100, 1)} % du ${sideLabel} au bilan ${year} de la Ville de Paris.`;

@@ -18,11 +18,11 @@ export const lieuConfig: EntityPageConfig<D> = {
     return { lieu };
   },
   notFoundMetadata: (locale) => ({
-    title: locale === "en" ? "Place not found — France Open Data" : "Lieu introuvable — France Open Data",
+    title: locale === "en" ? "Place not found — Qipu" : "Lieu introuvable — Qipu",
     robots: { index: false },
   }),
   metadata: ({ lieu }, locale, { slug }) => {
-    const title = `${lieu.name} — ${locale === "en" ? lieu.kind_en : lieu.kind_fr} · France Open Data`;
+    const title = `${lieu.name} — ${locale === "en" ? lieu.kind_en : lieu.kind_fr} · Qipu`;
     const description = locale === "en"
       ? `${lieu.name}: ${lieu.stats.n_lieu ?? 0} Conseil de Paris deliberations, municipal bulletin extracts back to 1882, city investments — every fact linked to its source.`
       : `${lieu.name} : ${lieu.stats.n_lieu ?? 0} délibérations du Conseil de Paris, extraits du Bulletin municipal depuis 1882, investissements de la Ville — chaque fait relié à sa source.`;

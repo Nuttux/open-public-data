@@ -4,7 +4,7 @@ import { OG_SIZE, ogCard, ogFmtEur } from "@/lib/og";
 export const runtime = "nodejs";
 export const size = OG_SIZE;
 export const contentType = "image/png";
-export const alt = "Thème subventions — France Open Data";
+export const alt = "Thème subventions — Qipu";
 
 const fmtPct = (n: number) =>
   n.toLocaleString("fr-FR", { maximumFractionDigits: 1, minimumFractionDigits: 1 });
@@ -30,6 +30,6 @@ export default async function ThemeOG({ params }: { params: Promise<{ slug: stri
       { label: "Part du total", value: `${pct} %`, accent: true },
     ],
     source: "Source Paris Open Data · Comptes M57",
-    url: "franceopendata.org/.../subventions/theme",
+    url: "qipu.org/.../subventions/theme",
   });
 }

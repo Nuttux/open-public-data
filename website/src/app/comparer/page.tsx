@@ -9,11 +9,11 @@ export const dynamic = "force-static";
 
 export async function generateMetadata(): Promise<Metadata> {
   return buildLocaleAwareMetadata({
-    title: "Comparateur multi-villes — France Open Data",
+    title: "Comparateur multi-villes",
     description:
       "Compare jusqu'à 5 communes françaises côte à côte sur leurs finances : budget, dette, fiscalité. Cherche n'importe quelle commune parmi les 35 000.",
     en: {
-      title: "Multi-city comparator — France Open Data",
+      title: "Multi-city comparator",
       description:
         "Compare up to 5 French cities side by side on their finances: budget, debt, taxation. Search any commune among 35,000.",
     },

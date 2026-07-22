@@ -4,7 +4,7 @@ import { OG_SIZE, ogCard, ogFmtBnFr, ogFmtFr } from "@/lib/og";
 export const runtime = "nodejs";
 export const size = OG_SIZE;
 export const contentType = "image/png";
-export const alt = "France Open Data — Dette & patrimoine de la Ville de Paris";
+export const alt = "Qipu — Dette & patrimoine de la Ville de Paris";
 
 const PARIS_POPULATION = 2_133_000;
 
@@ -22,6 +22,6 @@ export default async function DetteOG() {
       { label: "Par habitant", value: perHab },
     ],
     source: "Source Paris Open Data · Bilan M57",
-    url: "franceopendata.org/fr/city/paris/dette",
+    url: "qipu.org/fr/city/paris/dette",
   });
 }

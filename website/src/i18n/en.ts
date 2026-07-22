@@ -1,6 +1,6 @@
 const en: Record<string, string> = {
   // ── Navbar ──────────────────────────────────────────────────────────────────
-  'nav.site_title': 'France Open Data',
+  'nav.site_title': 'Qipu',
   'nav.accueil': 'Home',
   'nav.accueil.short': 'Home',
   'nav.accueil.desc': 'Project overview',
@@ -1089,9 +1089,9 @@ const en: Record<string, string> = {
   'villes.paris_disclaimer.body': "On this page, Paris is shown through the DGFiP Individual Accounts, a standardised format used for every French local authority. This is what makes cross-city comparison with Lyon, Marseille or Toulouse possible. The scope is narrower than Paris's official Administrative Account (annex budgets, local accounting nomenclature): totals can therefore differ by several hundred million euros.",
   'villes.paris_disclaimer.cta': "View Paris's full budget \u2192",
 
-  // ── Fusion design (France Open Data site) ───────────────────────────────────
+  // ── Fusion design (Qipu site) ───────────────────────────────────
   // Navbar
-  'fx.nav.brand': 'France Open Data',
+  'fx.nav.brand': 'Qipu',
   'fx.nav.main_aria': 'Main',
   'fx.nav.menu_aria': 'Menu',
   'fx.nav.close': 'Close',
@@ -1169,8 +1169,8 @@ const en: Record<string, string> = {
   'fx.foot.link.api': 'API',
   'fx.foot.link.github': 'GitHub ↗',
   'fx.foot.link.contact': 'Contact',
-  'fx.foot.word_line1': 'France',
-  'fx.foot.word_line2': 'Open Data.',
+  'fx.foot.word_line1': 'Qipu.',
+  'fx.foot.word_line2': '',
   'fx.foot.blurb': 'Independent project. Paris today — more cities coming.',
   'fx.foot.license': '© {year} · Code AGPL-3.0 · Data: City of Paris & data.gouv.fr (Etalab 2.0)',
 
@@ -1310,7 +1310,7 @@ const en: Record<string, string> = {
   'fx.land.meth.03.p': "Extraction, cleaning, transformations, checks: everything is published under the AGPL-3.0 free licence. Anyone can download it, run it and recompute every figure from the official documents.",
   'fx.land.meth.03.cta': 'GitHub ↗',
   // Byline
-  'fx.land.byline.name': 'France Open Data',
+  'fx.land.byline.name': 'Qipu',
   'fx.land.byline.name_suffix': ' · independent project',
   'fx.land.byline.meta': 'All analyses are reproducible from the raw CSVs. Pipeline open under AGPL-3.0.',
   'fx.land.byline.docs': 'Documentation',
@@ -1476,7 +1476,7 @@ const en: Record<string, string> = {
   'fx.bud.s06.c2.h.voted': 'December {prev}',
   'fx.bud.s06.c2.h.exec': 'June {next}',
   'fx.bud.s06.c2.h.suffix': ' · Conseil de Paris',
-  'fx.bud.s06.c2.p': 'Official adoption date. Any re-ingestion by France Open Data is documented in the public repository.',
+  'fx.bud.s06.c2.p': 'Official adoption date. Any re-ingestion by Qipu is documented in the public repository.',
   'fx.bud.s06.c2.link': 'Publication history →',
   'fx.bud.s06.c3.n': 'Reproducibility',
   'fx.bud.s06.c3.h': 'Open-source pipeline',
@@ -2757,7 +2757,7 @@ const en: Record<string, string> = {
   'fx.contact.title.em_prefix': 'a correction, ',
   'fx.contact.title.em': 'a lead',
   'fx.contact.title.after': '?',
-  'fx.contact.lede': "France Open Data is an independent project, open to contributions. We publish figures on public finances — if you spot an error, have a question, or want to contribute, write to us.",
+  'fx.contact.lede': "Qipu is an independent project, open to contributions. We publish figures on public finances — if you spot an error, have a question, or want to contribute, write to us.",
   'fx.contact.s01.kind': 'Write',
   'fx.contact.s01.title.before': 'While the ',
   'fx.contact.s01.title.em': 'form',
@@ -2784,7 +2784,7 @@ const en: Record<string, string> = {
   'fx.contact.s02.step2.h': "2. Reference the official source",
   'fx.contact.s02.step2.p': "If you have a link to the dataset, accounting appendix, or publication that contradicts what we show, attach it. Not mandatory but speeds up verification.",
   'fx.contact.s02.step3.h': "3. Send the report",
-  'fx.contact.s02.step3.p': "Use the public form — a few fields, 1 minute. Don't feel like it? Email daniel@franceopendata.org with the same details.",
+  'fx.contact.s02.step3.p': "Use the public form — a few fields, 1 minute. Don't feel like it? Email daniel@qipu.org with the same details.",
   'fx.contact.s02.btn.issue': "Open the report form",
   'fx.contact.s02.btn.history': "View correction history",
 
@@ -2813,7 +2813,7 @@ const en: Record<string, string> = {
   'fx.signalement.optional': "optional",
   'fx.signalement.btn.send': "Send report",
   'fx.signalement.btn.sending': "Sending…",
-  'fx.signalement.fallback': "or email daniel@franceopendata.org",
+  'fx.signalement.fallback': "or email daniel@qipu.org",
   'fx.signalement.note': "This site is an independent project. Corrections are applied to the pipeline and republished with their date on /corrections.",
   'fx.signalement.success.title': "Report received, thanks.",
   'fx.signalement.success.body': "It will be reviewed as soon as possible. If you left an email, you'll get a reply when the correction is applied (or if we can't confirm it).",
@@ -2821,8 +2821,8 @@ const en: Record<string, string> = {
   'fx.signalement.success.btn.home': "Back to home",
   'fx.signalement.err.desc_short': "Description is too short (10 characters minimum).",
   'fx.signalement.err.email': "Email address is not valid.",
-  'fx.signalement.err.send': "Sending failed. Email daniel@franceopendata.org directly.",
-  'fx.signalement.err.generic': "Something went wrong. Try again or email daniel@franceopendata.org.",
+  'fx.signalement.err.send': "Sending failed. Email daniel@qipu.org directly.",
+  'fx.signalement.err.generic': "Something went wrong. Try again or email daniel@qipu.org.",
 
   // ── ArrondissementFiche ──────────────────────────────────────────────────────
   'fx.fiche.arr.investi': 'Invested in {year}',
@@ -3110,7 +3110,7 @@ const en: Record<string, string> = {
   'fx.mfl.empty.desc': 'Try another term or a different category.',
 
   // ── AnalysesClient ──────────────────────────────────────────────────────────
-  'fx.analyses.page_kicker': 'Analyses & features · editorials from France Open Data',
+  'fx.analyses.page_kicker': 'Analyses & features · editorials from Qipu',
   'fx.analyses.page_title': 'The numbers, <em>told</em>.',
   'fx.analyses.page_lede': 'Analyses, investigations, profiles and explanations — what public data lets us understand, in a format worth reading. No article is sponsored.',
   'fx.analyses.cat.all': 'All',
@@ -3191,8 +3191,8 @@ const en: Record<string, string> = {
   'fx.poste.kicker.budget': 'Budget',
   'fx.poste.back': '← Budget',
   'fx.poste.drawer.kicker': '{kind} · Budget {year}',
-  'fx.poste.notfound.title': 'Item not found — France Open Data',
-  'fx.poste.meta.title': '{label} — Budget {year} · France Open Data',
+  'fx.poste.notfound.title': 'Item not found — Qipu',
+  'fx.poste.meta.title': '{label} — Budget {year} · Qipu',
   'fx.poste.meta.desc': '{label} — {kind_lower} of the Paris budget for fiscal year {year}. {n} sub-items detailed.',
 
   // CategorieMarcheFiche
@@ -3395,16 +3395,16 @@ const en: Record<string, string> = {
   'fx.fiche.contrat.lede.prefix': 'Contract',
   'fx.fiche.contrat.lede.notifie_year': 'notified in {year}',
   'fx.fiche.contrat.title.fallback': 'Contract without subject',
-  'fx.fiche.contrat.notfound.title': 'Contract not found — France Open Data',
+  'fx.fiche.contrat.notfound.title': 'Contract not found — Qipu',
 
   // Fournisseur page header lede
-  'fx.fiche.fourn.notfound.title': 'Supplier not found — France Open Data',
+  'fx.fiche.fourn.notfound.title': 'Supplier not found — Qipu',
 
   // Projet page header lede
-  'fx.fiche.projet.notfound.title': 'Project not found — France Open Data',
+  'fx.fiche.projet.notfound.title': 'Project not found — Qipu',
 
   // Theme (subventions) page header lede
-  'fx.fiche.theme.notfound.title': 'Theme not found — France Open Data',
+  'fx.fiche.theme.notfound.title': 'Theme not found — Qipu',
   'fx.fiche.theme.kpi.montant': 'Amount {year}',
   'fx.fiche.theme.kpi.part': 'Share of total',
   'fx.fiche.theme.kpi.benef': 'Beneficiaries',
@@ -3417,20 +3417,20 @@ const en: Record<string, string> = {
   // Bailleur page header
   'fx.fiche.bail.kicker.bailleur_type': 'Social landlord',
   'fx.fiche.bail.kicker.beneficiaire': 'Beneficiary · loan guarantee',
-  'fx.fiche.bail.notfound.title': 'Landlord not found — France Open Data',
+  'fx.fiche.bail.notfound.title': 'Landlord not found — Qipu',
 
   // Categorie marche page header lede
-  'fx.fiche.categorie.notfound.title': 'Category not found — France Open Data',
+  'fx.fiche.categorie.notfound.title': 'Category not found — Qipu',
 
   // Chapitre invest page header lede
-  'fx.fiche.chap.notfound.title': 'Chapter not found — France Open Data',
+  'fx.fiche.chap.notfound.title': 'Chapter not found — Qipu',
 
   // Arrondissement invest page header
   'fx.fiche.arr_invest.title.suffix': 'arrondissement',
-  'fx.fiche.arr_invest.notfound.title': 'Arrondissement not found — France Open Data',
+  'fx.fiche.arr_invest.notfound.title': 'Arrondissement not found — Qipu',
 
   // Poste budget page header lede
-  'fx.fiche.poste.notfound.title': 'Item not found — France Open Data',
+  'fx.fiche.poste.notfound.title': 'Item not found — Qipu',
 
   // Logement social arrondissement page kicker
   'fx.fiche.log_arr.kicker': 'Social housing · {year}',
@@ -3656,7 +3656,7 @@ const en: Record<string, string> = {
   'db.hero.meta_inline.year': '€{annual}/yr',
   'db.hero.deck': 'Social contributions and CSG on your gross → Social Security. Income tax on your taxable income → State. Estimated VAT on consumption → split 45 % State / 31 % Social Security / 24 % Local (PLF allocations). Property tax if homeowner → Local. Detailed method below.',
   // ─ Onboarding intro (above the fold) — compact, editorial ─
-  'db.hero.onboarding.kicker': 'DAILY BREAD · FRANCE OPEN DATA',
+  'db.hero.onboarding.kicker': 'DAILY BREAD · QIPU',
   'db.hero.onboarding.title': 'How much public services cost, and who pays for what.',
   'db.hero.onboarding.standfirst': 'France spends ~€2,200 per inhabitant each month on public services, funded by individuals (direct taxes), employers (social contributions), businesses (corporate tax) and public borrowing. This tool quantifies your contribution, spending per inhabitant, and the gap.',
   'db.hero.onboarding.hint': 'Edit the underlined values below. If you have other income (pension, capital, self-employment) or are a homeowner, expand {b}Advanced adjustments{/b}.',
@@ -3803,7 +3803,7 @@ const en: Record<string, string> = {
   'db.end.share_card_cta': 'Share',
   'db.end.share_card_aria': 'Share this card',
   'db.end.via': 'via {source}',
-  'db.end.share_card_text': 'On my ~€{monthly}/month, {number} {caption} {via}. franceopendata.org #DailyBread',
+  'db.end.share_card_text': 'On my ~€{monthly}/month, {number} {caption} {via}. qipu.org #DailyBread',
   'db.end.sources_label': 'Sources',
   'db.end.via_cnam': 'via CNAM',
   'db.end.via_cnav': 'via CNAV',

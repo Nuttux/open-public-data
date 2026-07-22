@@ -36,7 +36,7 @@ DATAGOUV_API = "https://www.data.gouv.fr/api/1/datasets/{slug}/"
 
 def fetch_csv(slug: str) -> bytes:
     api_url = DATAGOUV_API.format(slug=slug)
-    req = Request(api_url, headers={"User-Agent": "france-open-data-poc/1.0"})
+    req = Request(api_url, headers={"User-Agent": "qipu-poc/1.0"})
     with urlopen(req, timeout=30) as resp:
         meta = json.load(resp)
     csv_resources = [r for r in meta.get("resources", []) if "csv" in (r.get("format") or "").lower()]
@@ -45,7 +45,7 @@ def fetch_csv(slug: str) -> bytes:
     csv_resources.sort(key=lambda r: r.get("last_modified") or "", reverse=True)
     url = csv_resources[0]["url"]
     print(f"  fetching {url}")
-    req = Request(url, headers={"User-Agent": "france-open-data-poc/1.0"})
+    req = Request(url, headers={"User-Agent": "qipu-poc/1.0"})
     with urlopen(req, timeout=120) as resp:
         return resp.read()
 

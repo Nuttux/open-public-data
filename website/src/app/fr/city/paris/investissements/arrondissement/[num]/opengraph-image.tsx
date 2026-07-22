@@ -33,6 +33,6 @@ export default async function ArrondissementInvestOG({ params }: { params: Promi
     title: arrLabel,
     stats,
     source: "Source Paris Open Data · Annexes IL CA M57",
-    url: "franceopendata.org/.../investissements/arrondissement",
+    url: "qipu.org/.../investissements/arrondissement",
   });
 }

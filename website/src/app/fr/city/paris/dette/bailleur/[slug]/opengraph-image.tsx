@@ -32,6 +32,6 @@ export default async function BailleurOG({ params }: { params: Promise<{ slug: s
     stats,
     heroCount: capitalRestant > 0 ? 1 : 0,
     source: "Source Paris Open Data · Annexe IV-B dette garantie",
-    url: "franceopendata.org/.../dette/bailleur",
+    url: "qipu.org/.../dette/bailleur",
   });
 }

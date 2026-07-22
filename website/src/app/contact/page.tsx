@@ -5,13 +5,13 @@ import ContactClient from "./ContactClient";
 
 export async function generateMetadata(): Promise<Metadata> {
   return buildLocaleAwareMetadata({
-    title: "Contact — France Open Data",
+    title: "Contact",
     description:
-      "Contactez le collectif France Open Data : corrections, suggestions, partenariats, demandes presse.",
+      "Contactez le collectif Qipu : corrections, suggestions, partenariats, demandes presse.",
     en: {
-      title: "Contact — France Open Data",
+      title: "Contact",
       description:
-        "Get in touch with the France Open Data collective: corrections, suggestions, partnerships, press requests.",
+        "Get in touch with the Qipu collective: corrections, suggestions, partnerships, press requests.",
     },
     path: "/contact",
   });

@@ -46,7 +46,7 @@ export function ogCard(opts: {
   stats: OgStat[];
   /** Footer left, e.g. "Source Paris Open Data · DECP". */
   source: string;
-  /** Footer right, e.g. "franceopendata.org/fr/city/paris/marches". */
+  /** Footer right, e.g. "qipu.org/fr/city/paris/marches". */
   url: string;
   /** Override headline size for long titles (default per variant). */
   titleSize?: number;
@@ -110,7 +110,7 @@ export function ogCard(opts: {
           >
             FO
           </div>
-          <div style={{ display: "flex" }}>France Open Data · {route}</div>
+          <div style={{ display: "flex" }}>Qipu · {route}</div>
         </div>
 
         <div

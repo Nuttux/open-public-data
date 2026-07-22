@@ -77,8 +77,8 @@ export default async function MentionsLegalesClient() {
             title={isFr ? <>Édition <em>indépendante</em></> : <>Independent <em>publisher</em></>}
             subtitle={
               isFr
-                ? "Le site franceopendata.org est édité à titre individuel par une personne physique non professionnelle au sens de la LCEN. Aucune structure commerciale ou associative n'en est titulaire à ce stade."
-                : "The franceopendata.org site is published individually by a non-professional natural person within the meaning of the French LCEN. No commercial or non-profit entity holds it at this stage."
+                ? "Le site qipu.org est édité à titre individuel par une personne physique non professionnelle au sens de la LCEN. Aucune structure commerciale ou associative n'en est titulaire à ce stade."
+                : "The qipu.org site is published individually by a non-professional natural person within the meaning of the French LCEN. No commercial or non-profit entity holds it at this stage."
             }
           />
           <DefList>
@@ -88,7 +88,7 @@ export default async function MentionsLegalesClient() {
             <dd style={ddStyle}>{isFr ? "Personne physique, publication à titre indépendant et non professionnel" : "Natural person, independent and non-professional publication"}</dd>
             <dt style={dtStyle}>{isFr ? "Contact" : "Contact"}</dt>
             <dd style={ddStyle}>
-              <a href="mailto:daniel@franceopendata.org">daniel@franceopendata.org</a>
+              <a href="mailto:daniel@qipu.org">daniel@qipu.org</a>
             </dd>
           </DefList>
         </div>
@@ -111,7 +111,7 @@ export default async function MentionsLegalesClient() {
             <dd style={ddStyle}>Daniel Shavit</dd>
             <dt style={dtStyle}>{isFr ? "Contact" : "Contact"}</dt>
             <dd style={ddStyle}>
-              <a href="mailto:daniel@franceopendata.org">daniel@franceopendata.org</a>
+              <a href="mailto:daniel@qipu.org">daniel@qipu.org</a>
             </dd>
           </DefList>
         </div>
@@ -218,8 +218,8 @@ export default async function MentionsLegalesClient() {
             }
           />
           <div style={{ marginTop: 16, display: "flex", gap: 10, flexWrap: "wrap" }}>
-            <Button variant="primary" href="mailto:daniel@franceopendata.org">
-              daniel@franceopendata.org ↗
+            <Button variant="primary" href="mailto:daniel@qipu.org">
+              daniel@qipu.org ↗
             </Button>
             <Button href="/contact">{isFr ? "Formulaire de contact" : "Contact form"}</Button>
             <Button href="/accessibilite">{isFr ? "Accessibilité & recours" : "Accessibility & remedies"}</Button>

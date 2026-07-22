@@ -20,7 +20,7 @@ export const instrumentDetteConfig: EntityPageConfig<D> = {
     return { ...d, requestedYear };
   },
   notFoundMetadata: (locale) => ({
-    title: locale === "en" ? "Debt instrument not found — France Open Data" : "Instrument de dette introuvable — France Open Data",
+    title: locale === "en" ? "Debt instrument not found — Qipu" : "Instrument de dette introuvable — Qipu",
     robots: { index: false },
   }),
   metadata: ({ instrument, year, slug }, locale) => {
@@ -30,8 +30,8 @@ export const instrumentDetteConfig: EntityPageConfig<D> = {
       ? (instrument.encours >= 1e9 ? `€${fmtBillions(instrument.encours)}Bn` : `€${fmtMillions(instrument.encours, 0)}M`)
       : fmtEur(instrument.encours);
     const title = locale === "en"
-      ? `${label} — Ville de Paris debt ${year} · France Open Data`
-      : `${label} — Dette Ville de Paris ${year} · France Open Data`;
+      ? `${label} — Ville de Paris debt ${year} · Qipu`
+      : `${label} — Dette Ville de Paris ${year} · Qipu`;
     const description = locale === "en"
       ? `${label}: ${amount} outstanding at end ${year}, ${fmtInt(instrument.part * 100)}% of the Ville de Paris financial debt.`
       : `${label} : ${amount} d'encours au 31.12.${year}, soit ${fmtInt(instrument.part * 100)} % de la dette financière de la Ville de Paris.`;

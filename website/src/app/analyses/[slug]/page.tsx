@@ -41,11 +41,11 @@ export async function generateMetadata(
   const locale = await readLocale();
   const post = getPostBySlug(slug, locale);
   if (!post) {
-    return { title: locale === "en" ? "Article not found — France Open Data" : "Analyse introuvable — France Open Data" };
+    return { title: locale === "en" ? "Article not found" : "Analyse introuvable" };
   }
   const title = locale === "en" && post.title_en ? post.title_en : post.title;
   const description = locale === "en" && post.description_en ? post.description_en : post.description;
-  const suffix = locale === "en" ? "Analyses · France Open Data" : "Analyses · France Open Data";
+  const suffix = locale === "en" ? "Analyses" : "Analyses";
   return {
     title: `${title} — ${suffix}`,
     description,
@@ -95,7 +95,7 @@ export default async function AnalyseArticlePage({ params }: { params: Promise<P
           </h1>
           <p className="fx-page-lede">{description}</p>
           <div className="fx-hero-article-meta" style={{ marginTop: 16 }}>
-            <span>{post.author ?? "France Open Data"}</span>
+            <span>{post.author ?? "Qipu"}</span>
             <span>·</span>
             <span>{formatDate(post.date, locale)}</span>
             <span>·</span>

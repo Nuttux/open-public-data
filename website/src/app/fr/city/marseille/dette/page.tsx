@@ -26,11 +26,11 @@ import DettePatrimoineClient from "@/app/fr/city/paris/dette/DettePatrimoineClie
 
 export async function generateMetadata(): Promise<Metadata> {
   return buildLocaleAwareMetadata({
-    title: "Dette de Marseille — France Open Data",
+    title: "Dette de Marseille",
     description:
       "Encours de dette et trajectoire financière de la Ville de Marseille. Source : OFGL (base consolidée des communes).",
     en: {
-      title: "Marseille debt — France Open Data",
+      title: "Marseille debt",
       description:
         "Debt outstanding and financial trajectory of the Ville de Marseille. Source: OFGL (consolidated communes dataset).",
     },

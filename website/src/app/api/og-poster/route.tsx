@@ -252,7 +252,7 @@ export async function GET(req: NextRequest) {
   const T = locale === "en"
     ? {
         eyebrow: "DAILY BREAD",
-        site: "franceopendata.org",
+        site: "qipu.org",
         titre: "My month of public service",
         tagline: "“This is what I fund, every month.”",
         anon_consult: (n: number) => `≈ ${n}  GP visits`,
@@ -266,12 +266,12 @@ export async function GET(req: NextRequest) {
         meta_couple: "Couple",
         meta_kid: "+1 child",
         meta_kids: (n: number) => `+${n} children`,
-        baseline: "France Open Data — making what public service produces visible.",
+        baseline: "Qipu — making what public service produces visible.",
         cta_arrow: "→",
       }
     : {
         eyebrow: "DAILY BREAD",
-        site: "franceopendata.org",
+        site: "qipu.org",
         titre: "Mon mois de service public",
         tagline: "« Voilà ce que je finance, chaque mois. »",
         anon_consult: (n: number) => `≈ ${n}  consultations chez le généraliste`,
@@ -286,7 +286,7 @@ export async function GET(req: NextRequest) {
         meta_couple: "Couple",
         meta_kid: "+1 enfant",
         meta_kids: (n: number) => `+${n} enfants`,
-        baseline: "France Open Data — rendre visible ce que produit le service public.",
+        baseline: "Qipu — rendre visible ce que produit le service public.",
         cta_arrow: "→",
       };
 

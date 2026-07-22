@@ -47,7 +47,7 @@ export async function GET(_req: Request, { params }: { params: Promise<{ id: str
               FOD
             </div>
             <div style={{ display: "flex", flexDirection: "column" }}>
-              <div style={{ fontSize: 22, fontWeight: 700, color: "#0a0a0a" }}>France Open Data</div>
+              <div style={{ fontSize: 22, fontWeight: 700, color: "#0a0a0a" }}>Qipu</div>
               <div style={{ fontSize: 14, color: "#5f6672" }}>Données publiques · Paris</div>
             </div>
           </div>

@@ -24,4 +24,4 @@ Glisser-déposer une image ici si ça aide.
 
 ---
 
-> **Comment on traite cette issue ?** Toute issue avec le label `correction` est lue. Si le signalement est confirmé, la correction sera publiée sur [/corrections](https://franceopendata.org/corrections) avec la date, le périmètre, et un lien vers cette issue. Pas de SLA chiffré (le projet est porté par une personne) — on répond dès que possible.
+> **Comment on traite cette issue ?** Toute issue avec le label `correction` est lue. Si le signalement est confirmé, la correction sera publiée sur [/corrections](https://qipu.org/corrections) avec la date, le périmètre, et un lien vers cette issue. Pas de SLA chiffré (le projet est porté par une personne) — on répond dès que possible.

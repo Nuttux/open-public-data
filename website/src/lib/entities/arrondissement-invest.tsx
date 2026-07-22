@@ -42,7 +42,7 @@ export const arrondissementInvestConfig: EntityPageConfig<D> = {
     return { arr, arrNum, lieuxArr };
   },
   notFoundMetadata: (locale) => ({
-    title: locale === "en" ? "Arrondissement not found — France Open Data" : "Arrondissement introuvable — France Open Data",
+    title: locale === "en" ? "Arrondissement not found — Qipu" : "Arrondissement introuvable — Qipu",
     robots: { index: false },
   }),
   metadata: ({ arr: a }, locale) => {
@@ -52,8 +52,8 @@ export const arrondissementInvestConfig: EntityPageConfig<D> = {
       : `${a.arr}${sufFr(a.arr)} arrondissement`;
     const totalFmt = a.total.toLocaleString(numLocale(locale));
     const title = locale === "en"
-      ? `${arrLabel} — Paris investments ${a.year} · France Open Data`
-      : `${arrLabel} — Investissements ${a.year} · France Open Data`;
+      ? `${arrLabel} — Paris investments ${a.year} · Qipu`
+      : `${arrLabel} — Investissements ${a.year} · Qipu`;
     const description = locale === "en"
       ? `Investment projects in Paris's ${arrLabel}, fiscal year ${a.year}. ${a.nbProjets} projects, €${totalFmt} total.`
       : `Projets d'investissement dans le ${arrLabel} de Paris, exercice ${a.year}. ${a.nbProjets} projets, ${totalFmt} € au total.`;

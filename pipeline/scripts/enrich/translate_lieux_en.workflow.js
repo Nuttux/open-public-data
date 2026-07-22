@@ -19,7 +19,7 @@ const SLUGS = Array.isArray(args)
   : (typeof args === 'string' && args.trim().startsWith('[') ? JSON.parse(args) : [])
 
 function promptTraduis(slug) {
-  return `Tu traduis en anglais le contenu d'une fiche de transparence civique (lieu parisien), pour le site France Open Data. RÈGLE ABSOLUE : traduction FIDÈLE, jamais de reformulation, d'ajout ou de perte de nuance — un vœu d'élu contesté reste un vœu contesté, une modalité (« autorisé » vs « fait ») ne change pas de sens en anglais. Registre neutre, factuel, journalistique (pas de ton promotionnel).
+  return `Tu traduis en anglais le contenu d'une fiche de transparence civique (lieu parisien), pour le site Qipu. RÈGLE ABSOLUE : traduction FIDÈLE, jamais de reformulation, d'ajout ou de perte de nuance — un vœu d'élu contesté reste un vœu contesté, une modalité (« autorisé » vs « fait ») ne change pas de sens en anglais. Registre neutre, factuel, journalistique (pas de ton promotionnel).
 
 Lis ces fichiers s'ils existent (ignore ceux absents) :
 - ${CACHE}/${slug}_enrich.json → {synthese, moments:[{id, fait, pourquoi}]}

@@ -131,7 +131,7 @@ export async function GET(req: NextRequest) {
           >
             FO
           </div>
-          France Open Data
+          Qipu
         </div>
 
         <div
@@ -318,7 +318,7 @@ export async function GET(req: NextRequest) {
           }}
         >
           <span>Méthodologie Moody's/Fitch · données Ville de Paris 2024</span>
-          <span>franceopendata.org/dette-patrimoine/stress-test</span>
+          <span>qipu.org/dette-patrimoine/stress-test</span>
         </div>
       </div>
     ),

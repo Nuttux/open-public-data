@@ -1,4 +1,4 @@
-# Architecture & modélisation — France Open Data
+# Architecture & modélisation — Qipu
 
 > Dernière mise à jour : 2026-05-21
 >
@@ -22,7 +22,7 @@
 
 ### 1.1 Objectif
 
-Pipeline qui ingère, normalise et enrichit les données ouvertes publiées par les administrations françaises (collectivités, État, opérateurs publics) puis exporte des JSON statiques consommés par le frontend `franceopendata.org`.
+Pipeline qui ingère, normalise et enrichit les données ouvertes publiées par les administrations françaises (collectivités, État, opérateurs publics) puis exporte des JSON statiques consommés par le frontend `qipu.org`.
 
 Couverture actuelle :
 - **Paris** : budget M57, marchés publics (Paris + DECP nationale), subventions, investissements géolocalisés, logements sociaux, bilan comptable, dette garantie (hors-bilan), délibérations

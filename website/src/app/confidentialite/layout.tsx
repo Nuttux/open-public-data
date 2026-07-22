@@ -5,11 +5,11 @@ export async function generateMetadata(): Promise<Metadata> {
   return buildLocaleAwareMetadata({
     title: 'Politique de confidentialité',
     description:
-      "Politique de confidentialité de France Open Data : analytics, cookies, données personnelles, conformité RGPD.",
+      "Politique de confidentialité de Qipu : analytics, cookies, données personnelles, conformité RGPD.",
     en: {
       title: 'Privacy policy',
       description:
-        "France Open Data privacy policy: analytics, cookies, personal data, GDPR compliance.",
+        "Qipu privacy policy: analytics, cookies, personal data, GDPR compliance.",
     },
     path: '/confidentialite',
   });

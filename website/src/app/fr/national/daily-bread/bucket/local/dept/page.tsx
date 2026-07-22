@@ -9,8 +9,8 @@ export async function generateMetadata(): Promise<Metadata> {
   const locale = await readLocale();
   const title =
     locale === "en"
-      ? "Departmental level — Daily Bread · France Open Data"
-      : "Niveau départemental — Daily Bread · France Open Data";
+      ? "Departmental level — Daily Bread"
+      : "Niveau départemental — Daily Bread";
   const canonical = `${BASE_PATH}/bucket/local/dept`;
   return {
     title,

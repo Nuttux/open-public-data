@@ -20,7 +20,7 @@ export const themeConfig: EntityPageConfig<D> = {
     return { fiche };
   },
   notFoundMetadata: (locale) => ({
-    title: locale === "en" ? "Theme not found — France Open Data" : "Thématique introuvable — France Open Data",
+    title: locale === "en" ? "Theme not found — Qipu" : "Thématique introuvable — Qipu",
     robots: { index: false },
   }),
   metadata: ({ fiche: f }, locale) => {
@@ -28,8 +28,8 @@ export const themeConfig: EntityPageConfig<D> = {
     const themeLabel = trLabel(f.theme, locale);
     const totalM = Math.round(f.total / 1e6);
     const title = locale === "en"
-      ? `${themeLabel} — Paris grants ${f.year} · France Open Data`
-      : `${f.theme} — Subventions Paris ${f.year} · France Open Data`;
+      ? `${themeLabel} — Paris grants ${f.year} · Qipu`
+      : `${f.theme} — Subventions Paris ${f.year} · Qipu`;
     const description = locale === "en"
       ? `${f.nbBeneficiaires} beneficiaries, ${f.nbSubventions} grants for a total of €${totalM}M in the ${themeLabel} theme.`
       : `${f.nbBeneficiaires} bénéficiaires, ${f.nbSubventions} subventions pour un total de ${totalM} M € dans la thématique ${f.theme}.`;

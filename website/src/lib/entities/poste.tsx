@@ -23,7 +23,7 @@ export const posteConfig: EntityPageConfig<D> = {
     return { poste, year };
   },
   notFoundMetadata: (locale) => ({
-    title: locale === "en" ? "Item not found — France Open Data" : "Poste introuvable — France Open Data",
+    title: locale === "en" ? "Item not found — Qipu" : "Poste introuvable — Qipu",
     robots: { index: false },
   }),
   metadata: ({ poste: p }, locale) => {
@@ -33,8 +33,8 @@ export const posteConfig: EntityPageConfig<D> = {
       ? (p.kind === "depense" ? "expense" : "revenue")
       : (p.kind === "depense" ? "dépense" : "recette");
     const title = locale === "en"
-      ? `${labelEn} — Paris budget ${p.year} · France Open Data`
-      : `${p.label} — Budget ${p.year} · France Open Data`;
+      ? `${labelEn} — Paris budget ${p.year} · Qipu`
+      : `${p.label} — Budget ${p.year} · Qipu`;
     const description = locale === "en"
       ? `${labelEn} — Paris budget ${kindLabel} for fiscal year ${p.year}. ${p.subPostes.length} sub-items detailed.`
       : `${p.label} — ${kindLabel} du budget de Paris pour l'exercice ${p.year}. ${p.subPostes.length} sous-postes détaillés.`;

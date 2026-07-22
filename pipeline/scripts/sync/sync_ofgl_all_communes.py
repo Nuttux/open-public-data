@@ -79,7 +79,7 @@ def fetch_kpi_csv(label: str, year: int) -> bytes:
         ("delimiter", ";"),
     ]
     url = f"{OFGL_EXPORT}?{urlencode(params)}"
-    req = Request(url, headers={"User-Agent": "FranceOpenData/1.0"})
+    req = Request(url, headers={"User-Agent": "Qipu/1.0"})
     with urlopen(req, timeout=180) as resp:
         return resp.read()
 

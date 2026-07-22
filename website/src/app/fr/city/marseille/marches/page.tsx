@@ -13,11 +13,11 @@ import MarchesPublicsClient from "@/app/fr/city/paris/marches/MarchesPublicsClie
 
 export async function generateMetadata(): Promise<Metadata> {
   return buildLocaleAwareMetadata({
-    title: "Marchés publics de Marseille — France Open Data",
+    title: "Marchés publics de Marseille",
     description:
       "Contrats attribués par la Ville de Marseille en 2020 : titulaires, montants, objets et catégories CPV. Source : data.gouv.fr (SCDL Ville).",
     en: {
-      title: "Marseille public contracts — France Open Data",
+      title: "Marseille public contracts",
       description:
         "Contracts awarded by the Ville de Marseille in 2020: contractors, amounts, objects, and CPV categories. Source: data.gouv.fr (SCDL Ville).",
     },

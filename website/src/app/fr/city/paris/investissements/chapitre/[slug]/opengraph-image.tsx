@@ -4,7 +4,7 @@ import { OG_SIZE, ogCard, ogFmtEur } from "@/lib/og";
 export const runtime = "nodejs";
 export const size = OG_SIZE;
 export const contentType = "image/png";
-export const alt = "Chapitre investissements — France Open Data";
+export const alt = "Chapitre investissements — Qipu";
 
 export default async function ChapitreOG({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
@@ -26,6 +26,6 @@ export default async function ChapitreOG({ params }: { params: Promise<{ slug: s
       { label: "Part du total", value: `${sharePct} %`, accent: true },
     ],
     source: "Source Paris Open Data · Annexes IL CA M57",
-    url: "franceopendata.org/.../investissements/chapitre",
+    url: "qipu.org/.../investissements/chapitre",
   });
 }

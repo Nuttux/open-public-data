@@ -34,7 +34,7 @@ CACHE_PATH = ROOT / "pipeline" / "cache" / "enrichment" / "deliberations_sirene.
 API = "https://recherche-entreprises.api.gouv.fr/search"
 
 SESSION = requests.Session()
-SESSION.headers.update({"User-Agent": "FranceOpenData-Scraper/0.1 (+contact@franceopendata.org)"})
+SESSION.headers.update({"User-Agent": "Qipu-Scraper/0.1 (+contact@qipu.org)"})
 
 
 def load_cache() -> dict:

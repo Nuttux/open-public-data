@@ -130,6 +130,13 @@ body:has(.theme-fusion) > div.pb-24 { padding-bottom: 0 !important; }
   color: var(--ink);
 }
 
+/* Qipu mark (BrandMark) renders in currentColor; tint it indigo while the
+   wordmark text stays --ink. Applies in nav and mobile overlay. */
+.theme-fusion .fx-brand svg,
+.theme-fusion .fx-overlay-brand svg {
+  color: var(--bleu);
+}
+
 .theme-fusion .fx-links {
   display: flex;
   min-width: 0;

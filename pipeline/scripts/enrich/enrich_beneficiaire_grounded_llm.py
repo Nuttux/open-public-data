@@ -134,7 +134,7 @@ RECHERCHE_DELAY = 0.15
 # Wikipedia FR — filet de sécurité quand Gemini grounded rend null.
 # API gratuite, pas de clé, MediaWiki user-agent requis.
 WIKIPEDIA_API_URL = "https://fr.wikipedia.org/w/api.php"
-WIKIPEDIA_UA = "FranceOpenData/0.3 (https://franceopendata.org; contact@franceopendata.org)"
+WIKIPEDIA_UA = "Qipu/0.3 (https://qipu.org; contact@qipu.org)"
 WIKIPEDIA_DELAY = 0.2
 
 SAVE_EVERY = 50

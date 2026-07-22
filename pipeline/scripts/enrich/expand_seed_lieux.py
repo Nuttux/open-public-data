@@ -15,7 +15,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[3]
 SEED = ROOT / "pipeline" / "seeds" / "seed_lieux_v1.csv"
-UA = {"User-Agent": "france-open-data/0.1 (recherche civique; franceopendata.org)"}
+UA = {"User-Agent": "qipu/0.1 (recherche civique; qipu.org)"}
 
 # (wiki_title, name, kind_fr, arr, famille). wiki_title sert au géocodage ET au
 # fetch Wikipédia. famille : sport / vert / culture / urbain / services.

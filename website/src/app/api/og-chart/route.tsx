@@ -34,7 +34,7 @@ function brandHeader(slug: string) {
   return (
     <div style={{ display: "flex", alignItems: "center", gap: 14, fontSize: 18, letterSpacing: 4, textTransform: "uppercase", color: "#b8551c" }}>
       <div style={{ display: "flex", alignItems: "center", justifyContent: "center", width: 32, height: 32, background: "#111", color: "#faf9f5", fontSize: 18, fontWeight: 800 }}>FO</div>
-      <div style={{ display: "flex" }}>France Open Data · {slug}</div>
+      <div style={{ display: "flex" }}>Qipu · {slug}</div>
     </div>
   );
 }
@@ -155,7 +155,7 @@ async function resolveChart(chart: string): Promise<JSX.Element> {
         title: `${fmtBn(d.depenses)} Md€ — où va l'argent ?`,
         rows: topDep,
         sourceText: "Source Paris Open Data · Comptes M57",
-        urlText: "franceopendata.org/fr/city/paris/budget",
+        urlText: "qipu.org/fr/city/paris/budget",
       });
     }
     case "paris-subv-top-themes": {
@@ -169,7 +169,7 @@ async function resolveChart(chart: string): Promise<JSX.Element> {
         title: `${fmtBn(d.total)} Md€ versés — par thème`,
         rows,
         sourceText: "Source Paris Open Data · Annexe CA",
-        urlText: "franceopendata.org/fr/city/paris/subventions",
+        urlText: "qipu.org/fr/city/paris/subventions",
       });
     }
     case "paris-subv-top-benef": {
@@ -185,7 +185,7 @@ async function resolveChart(chart: string): Promise<JSX.Element> {
         title: `Top bénéficiaires — ${Math.round(d.concentrationTop10Pct)}% du total`,
         rows,
         sourceText: "Source Paris Open Data · Annexe CA",
-        urlText: "franceopendata.org/fr/city/paris/subventions",
+        urlText: "qipu.org/fr/city/paris/subventions",
       });
     }
     case "paris-marches-top-fournisseurs": {
@@ -202,7 +202,7 @@ async function resolveChart(chart: string): Promise<JSX.Element> {
         title: `Top 10 fournisseurs — ${Math.round(top10Share * 100)}% des enveloppes`,
         rows,
         sourceText: "Source DECP · Ville de Paris",
-        urlText: "franceopendata.org/fr/city/paris/marches",
+        urlText: "qipu.org/fr/city/paris/marches",
       });
     }
     case "paris-dette-capacite": {
@@ -225,7 +225,7 @@ async function resolveChart(chart: string): Promise<JSX.Element> {
           { label: "Statut", value: status, accent: status !== "Sain" },
         ],
         sourceText: "Source Paris Open Data · Bilan + CA",
-        urlText: "franceopendata.org/fr/city/paris/dette",
+        urlText: "qipu.org/fr/city/paris/dette",
       });
     }
     case "paris-logement-tension": {
@@ -246,7 +246,7 @@ async function resolveChart(chart: string): Promise<JSX.Element> {
           { label: "Logements financés", value: fmtFr(d.nouveauxParAn), accent: true },
         ],
         sourceText: "Source DRIHL · Paris Open Data",
-        urlText: "franceopendata.org/fr/city/paris/logement",
+        urlText: "qipu.org/fr/city/paris/logement",
       });
     }
     case "fr-daily-bread-composition": {
@@ -269,7 +269,7 @@ async function resolveChart(chart: string): Promise<JSX.Element> {
         title: `${fmtBn(tot)} Md€ — qui dépense quoi ?`,
         rows,
         sourceText: "Source Eurostat · gov_10a_main",
-        urlText: "franceopendata.org/fr/national/daily-bread",
+        urlText: "qipu.org/fr/national/daily-bread",
       });
     }
     case "fr-fiscalite-categories": {
@@ -290,7 +290,7 @@ async function resolveChart(chart: string): Promise<JSX.Element> {
         title: `${totalPo.toLocaleString("fr-FR", { maximumFractionDigits: 1 })}% du PIB — qui paie quoi ?`,
         rows: cats,
         sourceText: "Source Eurostat · gov_10a_taxag",
-        urlText: "franceopendata.org/fr/national/fiscalite",
+        urlText: "qipu.org/fr/national/fiscalite",
       });
     }
     case "landing-per-capita": {
@@ -307,7 +307,7 @@ async function resolveChart(chart: string): Promise<JSX.Element> {
           { label: "Population", value: fmtFr(stats.parisPopulation) },
         ],
         sourceText: "Source Paris Open Data · INSEE",
-        urlText: "franceopendata.org",
+        urlText: "qipu.org",
       });
     }
     default:
@@ -315,13 +315,13 @@ async function resolveChart(chart: string): Promise<JSX.Element> {
   }
   // Fallback — chart-id inconnu, on renvoie une carte générique.
   return renderHeroKpi({
-    slug: "France Open Data",
+    slug: "Qipu",
     kicker: "Finances publiques sourcées",
     title: "On documente les finances publiques françaises.",
     heroValue: "—",
     heroLabel: "Chart non trouvé",
-    sourceText: "franceopendata.org",
-    urlText: "franceopendata.org",
+    sourceText: "qipu.org",
+    urlText: "qipu.org",
   });
 }
 
@@ -333,12 +333,12 @@ export async function GET(req: Request) {
     return new ImageResponse(jsx, { ...SIZE });
   } catch {
     const fallback = renderHeroKpi({
-      slug: "France Open Data",
+      slug: "Qipu",
       kicker: "Erreur de rendu",
       title: "Image non disponible",
       heroValue: "—",
-      sourceText: "franceopendata.org",
-      urlText: "franceopendata.org",
+      sourceText: "qipu.org",
+      urlText: "qipu.org",
     });
     return new ImageResponse(fallback, { ...SIZE });
   }

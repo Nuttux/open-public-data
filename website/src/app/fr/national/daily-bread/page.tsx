@@ -45,11 +45,11 @@ export async function generateMetadata({
   const sp = (await searchParams) ?? {};
   const posterPath = buildPosterPath(sp);
   const base = await buildLocaleAwareMetadata({
-    title: "Daily Bread — où va chaque mois de mon salaire · France Open Data",
+    title: "Daily Bread — où va chaque mois de mon salaire",
     description:
       "Combien tu paies de prélèvements obligatoires par mois, et où ça part — Sécu, État, collectivités. Calcul personnalisé selon ton salaire, tes parts et ta commune.",
     en: {
-      title: "Daily Bread — where each month of my salary goes · France Open Data",
+      title: "Daily Bread — where each month of my salary goes",
       description:
         "How much you pay in compulsory levies per month, and where it goes — social security, central government, local. Personalised by salary, household and city.",
     },

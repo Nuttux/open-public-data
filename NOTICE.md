@@ -73,7 +73,7 @@ Reference: <https://creativecommons.org/licenses/by/4.0/>
 **Plain-language summary**:
 - Free to copy, redistribute, modify, and republish — including for
   commercial purposes.
-- **Attribution required**: cite "France Open Data" (or the named author
+- **Attribution required**: cite "Qipu" (or the named author
   when present) and link back to the original article URL.
 - No warranty.
 
@@ -108,4 +108,4 @@ transparent labelling).
   republishing.
 
 For commercial licensing inquiries (proprietary embedding without AGPL
-obligations), contact <contact@franceopendata.org>.
+obligations), contact <contact@qipu.org>.

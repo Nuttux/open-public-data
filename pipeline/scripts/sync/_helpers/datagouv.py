@@ -22,7 +22,7 @@ class DataGouvError(Exception):
 
 
 def _http_get(url: str, timeout: int = 30) -> bytes:
-    req = urllib.request.Request(url, headers={"User-Agent": "france-open-data-pipeline/1.0"})
+    req = urllib.request.Request(url, headers={"User-Agent": "qipu-pipeline/1.0"})
     with urllib.request.urlopen(req, timeout=timeout) as resp:
         return resp.read()
 

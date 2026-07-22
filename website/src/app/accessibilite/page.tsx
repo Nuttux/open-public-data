@@ -5,11 +5,11 @@ import AccessibiliteClient from "./AccessibiliteClient";
 
 export async function generateMetadata(): Promise<Metadata> {
   return buildLocaleAwareMetadata({
-    title: "Déclaration d'accessibilité — France Open Data",
+    title: "Déclaration d'accessibilité",
     description:
       "Déclaration d'accessibilité RGAA 4.1 : niveau de conformité, méthode d'évaluation, contenus non accessibles, voies de recours.",
     en: {
-      title: "Accessibility statement — France Open Data",
+      title: "Accessibility statement",
       description:
         "RGAA 4.1 accessibility statement: compliance level, evaluation method, non-accessible content, complaint procedure.",
     },

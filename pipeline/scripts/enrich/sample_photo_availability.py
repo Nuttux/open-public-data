@@ -53,7 +53,7 @@ MAX_RESULTS_PER_SOURCE = 3
 
 # Wikimedia API policy requires a descriptive User-Agent (otherwise → HTTP 403).
 # https://www.mediawiki.org/wiki/API:Etiquette
-USER_AGENT = "FranceOpenData-PhotoSampler/0.1 (https://franceopendata.org; contact@franceopendata.org)"
+USER_AGENT = "Qipu-PhotoSampler/0.1 (https://qipu.org; contact@qipu.org)"
 
 
 def load_projets(year: int) -> list[dict[str, Any]]:

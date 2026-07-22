@@ -5,7 +5,7 @@ import { loadRecettesApu } from "@/lib/recettes-apu";
 export const runtime = "nodejs";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
-export const alt = "Recette publique — France Open Data";
+export const alt = "Recette publique — Qipu";
 
 const fmtMdEur = (n: number) =>
   n.toLocaleString("fr-FR", { maximumFractionDigits: 1, minimumFractionDigits: 1 });
@@ -48,7 +48,7 @@ export default async function RecetteOG({ params }: { params: Promise<{ key: str
       <div style={{ width: "100%", height: "100%", display: "flex", flexDirection: "column", background: "#faf9f5", padding: "64px 72px", fontFamily: "sans-serif" }}>
         <div style={{ display: "flex", alignItems: "center", gap: 14, fontSize: 18, letterSpacing: 4, textTransform: "uppercase", color: "#b8551c" }}>
           <div style={{ display: "flex", alignItems: "center", justifyContent: "center", width: 32, height: 32, background: "#111", color: "#faf9f5", fontSize: 18, fontWeight: 800 }}>FO</div>
-          <div style={{ display: "flex" }}>France Open Data · /fr/national/budget/recettes</div>
+          <div style={{ display: "flex" }}>Qipu · /fr/national/budget/recettes</div>
         </div>
 
         <div style={{ display: "flex", marginTop: 56, fontSize: 14, letterSpacing: 3, textTransform: "uppercase", color: "#666" }}>
@@ -66,8 +66,8 @@ export default async function RecetteOG({ params }: { params: Promise<{ key: str
         </div>
 
         <div style={{ display: "flex", justifyContent: "space-between", marginTop: 32, paddingTop: 16, borderTop: "2px solid #111", fontSize: 14, color: "#666", letterSpacing: 2, textTransform: "uppercase" }}>
-          <div style={{ display: "flex", maxWidth: 800 }}>{source ? `Source · ${source.slice(0, 80)}` : "Source : pipeline France Open Data"}</div>
-          <div style={{ display: "flex" }}>franceopendata.org/fr/national/budget/recettes</div>
+          <div style={{ display: "flex", maxWidth: 800 }}>{source ? `Source · ${source.slice(0, 80)}` : "Source : pipeline Qipu"}</div>
+          <div style={{ display: "flex" }}>qipu.org/fr/national/budget/recettes</div>
         </div>
       </div>
     ),

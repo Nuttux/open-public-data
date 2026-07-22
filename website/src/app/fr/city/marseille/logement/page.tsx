@@ -18,11 +18,11 @@ import LogementSocialClient from "@/app/fr/city/paris/logement/LogementSocialCli
 
 export async function generateMetadata(): Promise<Metadata> {
   return buildLocaleAwareMetadata({
-    title: "Logement social à Marseille — France Open Data",
+    title: "Logement social à Marseille",
     description:
       "Le parc social marseillais : taux SRU, parc par arrondissement, principaux bailleurs. Source : Métropole Aix-Marseille-Provence (RPLS atlas + sru-taux).",
     en: {
-      title: "Marseille social housing — France Open Data",
+      title: "Marseille social housing",
       description:
         "Marseille's social-housing stock: SRU rate, stock per arrondissement, main social landlords. Source: Aix-Marseille-Provence Métropole (RPLS atlas + sru-taux).",
     },

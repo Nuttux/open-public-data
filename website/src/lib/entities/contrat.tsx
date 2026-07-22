@@ -45,7 +45,7 @@ export const contratConfig: EntityPageConfig<D> = {
     return { contrat, vulgarization, fournisseurSirene, ranking, projetLink, lieuLien };
   },
   notFoundMetadata: (locale) => ({
-    title: locale === "en" ? "Contract not found — France Open Data" : "Contrat introuvable — France Open Data",
+    title: locale === "en" ? "Contract not found — Qipu" : "Contrat introuvable — Qipu",
     robots: { index: false },
   }),
   metadata: ({ contrat: c, vulgarization: v }, locale) => {
@@ -55,8 +55,8 @@ export const contratConfig: EntityPageConfig<D> = {
       ? (v?.objet_clair_en || v?.objet_clair || c.objet).slice(0, 60)
       : (v?.objet_clair || c.objet).slice(0, 60);
     const title = locale === "en"
-      ? `${objetSnippet} — Contract ${c.numero} · France Open Data`
-      : `${objetSnippet} — Marché ${c.numero} · France Open Data`;
+      ? `${objetSnippet} — Contract ${c.numero} · Qipu`
+      : `${objetSnippet} — Marché ${c.numero} · Qipu`;
     const amountFmt = c.montantMax.toLocaleString(numLocale(locale));
     const description = locale === "en"
       ? `Contract ${c.numero} notified in ${c.year} to ${c.fournisseur}. Max envelope €${amountFmt}.`

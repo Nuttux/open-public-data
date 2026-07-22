@@ -3,7 +3,7 @@ import { ImageResponse } from "next/og";
 export const runtime = "nodejs";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
-export const alt = "France Open Data — Méthode";
+export const alt = "Qipu — Méthode";
 
 export default async function MethodeOG() {
   return new ImageResponse(
@@ -45,7 +45,7 @@ export default async function MethodeOG() {
           >
             FO
           </div>
-          <div style={{ display: "flex" }}>France Open Data · /methode</div>
+          <div style={{ display: "flex" }}>Qipu · /methode</div>
         </div>
 
         <div
@@ -135,7 +135,7 @@ export default async function MethodeOG() {
           }}
         >
           <div style={{ display: "flex" }}>Promesse · zéro chiffre hardcodé · zéro source masquée</div>
-          <div style={{ display: "flex" }}>franceopendata.org/methode</div>
+          <div style={{ display: "flex" }}>qipu.org/methode</div>
         </div>
       </div>
     ),

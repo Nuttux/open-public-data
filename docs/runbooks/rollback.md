@@ -14,7 +14,7 @@ Ce runbook couvre trois scénarios et l'ordre dans lequel les essayer.
 
 ## Avant de rollback : confirmer que c'est bien régression
 
-1. Ouvrir https://franceopendata.org en navigation privée — cache local exclu
+1. Ouvrir https://qipu.org en navigation privée — cache local exclu
 2. Vérifier le statut Vercel : https://vercel.com/nuttuxs-projects/open-public-data
 3. Vérifier qu'aucun déploiement Vercel n'est en cours (sinon attendre 2 min)
 4. Reproduire le bug avec une URL stable (pas une URL de preview)
@@ -30,7 +30,7 @@ C'est la méthode par défaut. Elle restaure le **build** précédent sans touch
 1. Aller sur https://vercel.com/nuttuxs-projects/open-public-data/deployments
 2. Identifier le dernier déploiement **vert (✓ Production)** qui marchait — typiquement l'avant-dernier
 3. Cliquer sur les `…` à droite → **Promote to Production**
-4. Vérifier sur franceopendata.org que le site est revenu à l'état précédent (~30 s de propagation)
+4. Vérifier sur qipu.org que le site est revenu à l'état précédent (~30 s de propagation)
 
 ### Via CLI
 

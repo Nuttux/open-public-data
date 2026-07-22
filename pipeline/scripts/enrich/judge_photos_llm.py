@@ -52,7 +52,7 @@ GEMINI_API_KEY = os.environ.get("GOOGLE_API_KEY", "") or os.environ.get("GEMINI_
 GEMINI_MODEL = os.environ.get("GEMINI_MODEL", "gemini-3-flash-preview")
 GEMINI_URL = f"https://generativelanguage.googleapis.com/v1beta/models/{GEMINI_MODEL}:generateContent"
 
-USER_AGENT = "FranceOpenData-PhotoJudge/0.1 (https://franceopendata.org; contact@franceopendata.org)"
+USER_AGENT = "Qipu-PhotoJudge/0.1 (https://qipu.org; contact@qipu.org)"
 REQ_TIMEOUT = 20
 MAX_RETRIES = 3
 RETRY_WAIT_429 = 30

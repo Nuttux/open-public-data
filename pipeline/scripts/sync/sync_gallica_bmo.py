@@ -30,7 +30,7 @@ from pathlib import Path
 
 SRU = "https://gallica.bnf.fr/SRU"
 BMO_ARK = "cb343512457_date"
-UA = {"User-Agent": "france-open-data/0.1 (recherche civique; franceopendata.org)"}
+UA = {"User-Agent": "qipu/0.1 (recherche civique; qipu.org)"}
 ROOT = Path(__file__).resolve().parents[3]
 OUT_DIR = ROOT / "pipeline" / "cache" / "lieux"
 SEED = ROOT / "pipeline" / "seeds" / "seed_lieux_v1.csv"

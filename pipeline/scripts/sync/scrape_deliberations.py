@@ -59,7 +59,7 @@ OUT = ROOT / "pipeline" / "cache" / "delibs" / "sessions"
 BASE = "https://a06-v7.apps.paris.fr/a06/"
 
 SESSION = requests.Session()
-SESSION.headers.update({"User-Agent": "FranceOpenData-Scraper/0.1 (+contact@franceopendata.org)"})
+SESSION.headers.update({"User-Agent": "Qipu-Scraper/0.1 (+contact@qipu.org)"})
 
 
 # ─────────────────────────────────────────────────────────────────────────

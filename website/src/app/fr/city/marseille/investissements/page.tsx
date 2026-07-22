@@ -19,11 +19,11 @@ import MarseilleInvestissementsClient from "./MarseilleInvestissementsClient";
 
 export async function generateMetadata(): Promise<Metadata> {
   return buildLocaleAwareMetadata({
-    title: "Investissements de Marseille — France Open Data",
+    title: "Investissements de Marseille",
     description:
       "Projets d'investissement de la Ville de Marseille classés par thématique et arrondissement. Source : rapports de présentation des comptes administratifs (PDF marseille.fr).",
     en: {
-      title: "Marseille investments — France Open Data",
+      title: "Marseille investments",
       description:
         "Ville de Marseille investment projects, classified by theme and district. Source: administrative account presentation reports (PDF marseille.fr).",
     },

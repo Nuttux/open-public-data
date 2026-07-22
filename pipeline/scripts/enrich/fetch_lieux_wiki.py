@@ -26,7 +26,7 @@ ROOT = Path(__file__).resolve().parents[3]
 SEED = ROOT / "pipeline" / "seeds" / "seed_lieux_v1.csv"
 CACHE = ROOT / "pipeline" / "cache" / "lieux"
 PHOTOS = CACHE / "photos"
-UA = {"User-Agent": "france-open-data/0.1 (recherche civique; franceopendata.org)"}
+UA = {"User-Agent": "qipu/0.1 (recherche civique; qipu.org)"}
 
 # Titres d'article quand le nom du seed ne suffit pas (vérifiés à la main).
 TITRES = {

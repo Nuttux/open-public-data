@@ -54,7 +54,7 @@ DATASET_VOTEES = "subventions-associations-votees-"
 DATASET_ANNEXE_CA = "subventions-versees-annexe-compte-administratif-a-partir-de-2018"
 
 SESSION = requests.Session()
-SESSION.headers.update({"User-Agent": "FranceOpenData-Fetcher/1.0 (+contact@franceopendata.org)"})
+SESSION.headers.update({"User-Agent": "Qipu-Fetcher/1.0 (+contact@qipu.org)"})
 
 
 # ─────────────────────────────────────────────────────────────────────────

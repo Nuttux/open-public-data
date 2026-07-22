@@ -1,6 +1,6 @@
-# France Open Data
+# Qipu
 
-> Public finance transparency, built on open data — [franceopendata.org](https://franceopendata.org)
+> Public finance transparency, built on open data — [qipu.org](https://qipu.org)
 
 [![CI](https://github.com/Nuttux/open-public-data/actions/workflows/ci.yml/badge.svg)](https://github.com/Nuttux/open-public-data/actions/workflows/ci.yml)
 [![Next.js](https://img.shields.io/badge/Next.js-16-black)](https://nextjs.org/)
@@ -83,7 +83,7 @@ Layered architecture: `Open data APIs → BigQuery (raw) → staging → interme
 
 ### Data quality
 
-dbt tests across 9 categories (referential integrity, accounting balances, freshness, completeness, cross-layer consistency, anomaly detection, seed quality…), plus a **replayable audit** (reconciliation + completeness + freshness checks) consumed by [`/methode#audit`](https://franceopendata.org/methode#audit) — see [`pipeline/scripts/audit/run_data_quality_audit.py`](pipeline/scripts/audit/run_data_quality_audit.py).
+dbt tests across 9 categories (referential integrity, accounting balances, freshness, completeness, cross-layer consistency, anomaly detection, seed quality…), plus a **replayable audit** (reconciliation + completeness + freshness checks) consumed by [`/methode#audit`](https://qipu.org/methode#audit) — see [`pipeline/scripts/audit/run_data_quality_audit.py`](pipeline/scripts/audit/run_data_quality_audit.py).
 
 ## New-machine / new-contributor setup
 
@@ -197,7 +197,7 @@ The pipeline and shared visualization components are open-sourced in [Nuttux/fra
 ## Deployment
 
 - **Hosting**: Vercel
-- **Domain**: [franceopendata.org](https://franceopendata.org)
+- **Domain**: [qipu.org](https://qipu.org)
 - **Auto-deploy**: push to `main` → Vercel build
 - **Rollback**: see [`docs/runbooks/rollback.md`](docs/runbooks/rollback.md) — a one-minute procedure via the Vercel dashboard, no code changes needed
 
@@ -209,4 +209,4 @@ Three licenses, one project — each production is covered by the license that f
 - **Derived datasets**: [Etalab Open License 2.0](https://www.data.gouv.fr/pages/legal/licences/etalab-2.0) — same terms as the source open data
 - **Editorial content** (articles, methodology writeups): CC BY 4.0
 
-See [`/licence`](https://franceopendata.org/licence) for the full terms.
+See [`/licence`](https://qipu.org/licence) for the full terms.

@@ -11,8 +11,8 @@
 import type { Metadata } from 'next';
 import { cookies } from 'next/headers';
 
-export const SITE_URL = 'https://franceopendata.org';
-export const SITE_NAME = 'France Open Data';
+export const SITE_URL = 'https://qipu.org';
+export const SITE_NAME = 'Qipu';
 export const DEFAULT_OG_IMAGE = '/og-default.png';
 export const DEFAULT_LOCALE = 'fr_FR';
 export const TWITTER_HANDLE = '@donneeslumieres';
@@ -76,7 +76,10 @@ function _assemble(
   const twitterImages = input.image ? [input.image] : undefined;
 
   return {
-    title: resolvedTitle,
+    // Brand appended once, as `absolute` so the root `%s · SITE_NAME` template
+    // never double-applies (it still serves raw-string titles like chat/legal).
+    // Page inputs carry no brand suffix — the builder is the single source.
+    title: { absolute: `${resolvedTitle} · ${SITE_NAME}` },
     description: resolvedDescription,
     keywords: input.keywords,
     alternates: { canonical, languages },
@@ -133,7 +136,7 @@ export function organizationJsonLd() {
     url: SITE_URL,
     logo: `${SITE_URL}/og-default.png`,
     description:
-      "France Open Data rend lisibles les finances publiques : budget, subventions, marchés, logements et patrimoine de la Ville de Paris et d'une vingtaine de grandes villes françaises.",
+      "Qipu rend lisibles les finances publiques : budget, subventions, marchés, logements et patrimoine de la Ville de Paris et d'une vingtaine de grandes villes françaises.",
     sameAs: ['https://github.com/AbstractsMachine'],
   };
 }

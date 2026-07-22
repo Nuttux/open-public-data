@@ -5,7 +5,7 @@ import { getAllPosts } from "@/lib/blog";
 export const runtime = "nodejs";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
-export const alt = "France Open Data — Analyses, enquêtes et portraits";
+export const alt = "Qipu — Analyses, enquêtes et portraits";
 
 const fmtFr = (n: number) => n.toLocaleString("fr-FR");
 
@@ -52,7 +52,7 @@ export default async function AnalysesOG() {
           >
             FO
           </div>
-          <div style={{ display: "flex" }}>France Open Data · /analyses</div>
+          <div style={{ display: "flex" }}>Qipu · /analyses</div>
         </div>
 
         <div
@@ -127,7 +127,7 @@ export default async function AnalysesOG() {
           }}
         >
           <div style={{ display: "flex" }}>Sourcé aux comptes officiels · M57</div>
-          <div style={{ display: "flex" }}>franceopendata.org/analyses</div>
+          <div style={{ display: "flex" }}>qipu.org/analyses</div>
         </div>
       </div>
     ),

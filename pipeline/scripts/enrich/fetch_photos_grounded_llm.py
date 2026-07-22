@@ -54,8 +54,8 @@ GEMINI_MODEL = os.environ.get("GEMINI_MODEL", "gemini-3-flash-preview")
 GEMINI_URL = f"https://generativelanguage.googleapis.com/v1beta/models/{GEMINI_MODEL}:generateContent"
 
 USER_AGENT = (
-    "FranceOpenData-PhotoGrounded/0.2 "
-    "(https://franceopendata.org; contact@franceopendata.org)"
+    "Qipu-PhotoGrounded/0.2 "
+    "(https://qipu.org; contact@qipu.org)"
 )
 REQ_TIMEOUT = 90
 MAX_RETRIES = 3

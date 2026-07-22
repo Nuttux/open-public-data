@@ -36,7 +36,7 @@ OUT = ROOT / "website" / "public" / "data" / "us" / "sf" / "places"
 
 WP_API = "https://en.wikipedia.org/w/api.php"
 COMMONS_API = "https://commons.wikimedia.org/w/api.php"
-UA = {"User-Agent": "sf-open-data/0.1 (civic research; contact franceopendata.org)"}
+UA = {"User-Agent": "sf-open-data/0.1 (civic research; contact qipu.org)"}
 
 # Accept only genuinely free licences.
 FREE_RE = re.compile(r"\b(CC[- ]?(BY|BY-SA|BY-SA-\d|0)|public domain|PD|no restrictions)\b", re.I)

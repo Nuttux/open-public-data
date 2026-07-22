@@ -32,7 +32,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[3]
 SEED = ROOT / "pipeline" / "seeds" / "seed_lieux_v1.csv"
 CACHE = ROOT / "pipeline" / "cache" / "lieux"
-UA = {"User-Agent": "france-open-data/0.1 (recherche civique; franceopendata.org)"}
+UA = {"User-Agent": "qipu/0.1 (recherche civique; qipu.org)"}
 
 GENERIQUES = {
     "place", "musee", "theatre", "parc", "piscine", "jardin", "square", "marche",

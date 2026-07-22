@@ -20,8 +20,8 @@ export async function generateMetadata({
     return {
       title:
         locale === "en"
-          ? "Drill-down not found — France Open Data"
-          : "Détail introuvable — France Open Data",
+          ? "Drill-down not found"
+          : "Détail introuvable",
       robots: { index: false },
     };
   }
@@ -30,8 +30,8 @@ export async function generateMetadata({
     return {
       title:
         locale === "en"
-          ? "Drill-down not found — France Open Data"
-          : "Détail introuvable — France Open Data",
+          ? "Drill-down not found"
+          : "Détail introuvable",
       robots: { index: false },
     };
   }
@@ -41,8 +41,8 @@ export async function generateMetadata({
     locale === "en" ? found.bucket.label_en : found.bucket.label_fr;
   const title =
     locale === "en"
-      ? `${label} — ${bucketLabel} · Daily Bread · France Open Data`
-      : `${label} — ${bucketLabel} · Daily Bread · France Open Data`;
+      ? `${label} — ${bucketLabel} · Daily Bread`
+      : `${label} — ${bucketLabel} · Daily Bread`;
   const canonical = `${BASE_PATH}/bucket/${bucket}/${level2}`;
   return {
     title,

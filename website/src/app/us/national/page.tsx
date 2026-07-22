@@ -9,7 +9,7 @@ import type { UsDailyBread, UsDebtSeriesFile, UsDebtSlim } from "./us-types";
  * public/data/us/national/ at render time (same fs pattern as the France
  * pages) and hands a slimmed payload to the client. EN-only (ADR-0010).
  *
- * `title.absolute` — this page must not inherit the "· France Open Data"
+ * `title.absolute` — this page must not inherit the "· Qipu"
  * template from the root layout; the US side has no public brand yet
  * (working title only).
  */

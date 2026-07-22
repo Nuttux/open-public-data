@@ -4,7 +4,7 @@ import { OG_SIZE, ogCard, ogFmtEur } from "@/lib/og";
 export const runtime = "nodejs";
 export const size = OG_SIZE;
 export const contentType = "image/png";
-export const alt = "Catégorie marchés — France Open Data";
+export const alt = "Catégorie marchés — Qipu";
 
 export default async function CategorieOG({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
@@ -26,6 +26,6 @@ export default async function CategorieOG({ params }: { params: Promise<{ slug: 
       { label: "Titulaires", value: nbTit.toLocaleString("fr-FR") },
     ],
     source: "Source DECP · Ville de Paris",
-    url: "franceopendata.org/.../marchés/catégorie",
+    url: "qipu.org/.../marchés/catégorie",
   });
 }

@@ -83,7 +83,7 @@ def fetch_eurostat(cofog_codes: list[str], geos: list[str], year: int) -> dict:
         params.append(("geo", g))
 
     url = f"{EUROSTAT_API}?{urlencode(params)}"
-    req = Request(url, headers={"User-Agent": "FranceOpenData/1.0"})
+    req = Request(url, headers={"User-Agent": "Qipu/1.0"})
     with urlopen(req, timeout=30) as resp:
         return json.loads(resp.read().decode("utf-8"))
 

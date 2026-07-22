@@ -126,7 +126,7 @@ françaises, construite avant la refonte fusion. Arbre de routes :
 - `CityLayoutClient` (dans la route) — breadcrumb + tabs budget/patrimoine/
   marches/subventions pour chaque ville
 
-### Positionnement vis-à-vis de la stratégie France Open Data
+### Positionnement vis-à-vis de la stratégie Qipu
 
 La stratégie validée (voir `project_france_open_data.md` en mémoire) prévoit
 une refonte complète de l'extension nationale avec :

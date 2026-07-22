@@ -20,7 +20,7 @@ export const categorieConfig: EntityPageConfig<D> = {
     return { fiche };
   },
   notFoundMetadata: (locale) => ({
-    title: locale === "en" ? "Category not found — France Open Data" : "Catégorie introuvable — France Open Data",
+    title: locale === "en" ? "Category not found — Qipu" : "Catégorie introuvable — Qipu",
     robots: { index: false },
   }),
   metadata: ({ fiche: f }, locale) => {
@@ -28,8 +28,8 @@ export const categorieConfig: EntityPageConfig<D> = {
     const categoryLabel = trLabel(f.category, locale);
     const totalM = Math.round(f.total / 1e6);
     const title = locale === "en"
-      ? `${categoryLabel} — Paris public contracts ${f.year} · France Open Data`
-      : `${f.category} — Marchés publics Paris ${f.year} · France Open Data`;
+      ? `${categoryLabel} — Paris public contracts ${f.year} · Qipu`
+      : `${f.category} — Marchés publics Paris ${f.year} · Qipu`;
     const description = locale === "en"
       ? `${f.nbContrats} contracts for a total of €${totalM}M in the ${categoryLabel} category.`
       : `${f.nbContrats} contrats pour un total de ${totalM} M € dans la catégorie ${f.category}.`;

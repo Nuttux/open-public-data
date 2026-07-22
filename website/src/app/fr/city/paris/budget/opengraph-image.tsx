@@ -4,7 +4,7 @@ import { OG_SIZE, ogCard, ogFmtBnFr } from "@/lib/og";
 export const runtime = "nodejs";
 export const size = OG_SIZE;
 export const contentType = "image/png";
-export const alt = "France Open Data — Budget de la Ville de Paris";
+export const alt = "Qipu — Budget de la Ville de Paris";
 
 const fmtPct = (n: number) => Math.round(n).toString();
 
@@ -27,6 +27,6 @@ export default async function BudgetOG() {
       { label: "Investissement", value: `${fmtPct(pctInvest)} %` },
     ],
     source: "Source Paris Open Data · Comptes M57",
-    url: "franceopendata.org/fr/city/paris/budget",
+    url: "qipu.org/fr/city/paris/budget",
   });
 }

@@ -50,7 +50,7 @@ SEED = ROOT / "pipeline" / "seeds" / "sf_place_candidates.json"
 OUT_DIR = ROOT / "pipeline" / "cache" / "ia_sf"
 SF_DATA = ROOT / "website" / "public" / "data" / "us" / "sf"
 
-UA = {"User-Agent": "sf-open-data/0.1 (civic research; contact via franceopendata.org)"}
+UA = {"User-Agent": "sf-open-data/0.1 (civic research; contact via qipu.org)"}
 FTS = "https://archive.org/services/search/beta/page_production/"
 
 # The two text pools worth searching, with the label doctrine attached.

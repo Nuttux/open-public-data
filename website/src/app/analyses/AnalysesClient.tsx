@@ -192,7 +192,7 @@ export default function AnalysesClient({
                 </p>
                 <div className="fx-hero-article-meta">
                   <span>
-                    {t("fx.analyses.hero.by")} <b>{hero.author ?? "France Open Data"}</b>
+                    {t("fx.analyses.hero.by")} <b>{hero.author ?? "Qipu"}</b>
                   </span>
                   <span>·</span>
                   <span>{t("fx.analyses.hero.published")} {formatDate(hero.date)}</span>

@@ -12,7 +12,7 @@ import json, re, sys, time, urllib.parse, urllib.request
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[3]
-UA = {"User-Agent": "france-open-data/0.1 (recherche civique)"}
+UA = {"User-Agent": "qipu/0.1 (recherche civique)"}
 
 def oai_date(ark: str) -> str | None:
     u = "https://gallica.bnf.fr/services/OAIRecord?" + urllib.parse.urlencode({"ark": ark})

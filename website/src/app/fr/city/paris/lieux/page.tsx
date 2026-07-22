@@ -10,7 +10,7 @@ import { numLocale } from "@/lib/fmt";
 
 export async function generateMetadata(): Promise<Metadata> {
   const locale = await readLocale();
-  const title = locale === "en" ? "Places · France Open Data" : "Lieux · France Open Data";
+  const title = locale === "en" ? "Places" : "Lieux";
   const description = locale === "en"
     ? "Pools, theatres, parks: for each place, the Conseil de Paris deliberations, municipal bulletin archives back to 1882, subsidies and investments — every fact linked to its source."
     : "Piscines, théâtres, parcs : pour chaque lieu, les délibérations du Conseil de Paris, les archives du Bulletin municipal depuis 1882, subventions et investissements — chaque fait relié à sa source.";

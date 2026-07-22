@@ -15,7 +15,7 @@ export async function generateMetadata({
   const decoded = decodeURIComponent(key);
   const locale = await readLocale();
   const data = loadRecettesApu();
-  let title = locale === "en" ? "Public revenue — France Open Data" : "Recette publique — France Open Data";
+  let title = locale === "en" ? "Public revenue" : "Recette publique";
   if (data) {
     for (const code of ["S1311", "S1313", "S1314"] as const) {
       const found = data.institutions[code].items.find(
@@ -23,15 +23,15 @@ export async function generateMetadata({
       );
       if (found) {
         const label = locale === "en" ? found.label_en : found.label_fr;
-        title = `${label} — Recettes · Budget national · France Open Data`;
+        title = `${label} — Recettes · Budget national`;
         break;
       }
     }
     if (decoded === "ue_fonds_recus") {
       title =
         locale === "en"
-          ? "EU funds received — France Open Data"
-          : "Fonds européens reçus — France Open Data";
+          ? "EU funds received"
+          : "Fonds européens reçus";
     }
   }
   const canonical = `/fr/national/budget/recettes/${encodeURIComponent(decoded)}`;

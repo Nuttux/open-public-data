@@ -15,12 +15,12 @@ const LANDING_FEATURED_SLUGS = [
 ] as const;
 
 const OG_FR = {
-  title: "Où va l'argent public à Paris ? — France Open Data",
+  title: "Où va l'argent public à Paris ?",
   description:
     "Les finances publiques françaises, rendues lisibles. Budget, dépenses, subventions, dette — sourcés, vérifiables, publiés en licence ouverte.",
 };
 const OG_EN = {
-  title: "Where does public money go in Paris? — France Open Data",
+  title: "Where does public money go in Paris?",
   description:
     "French public finance, made readable. Budget, spending, grants, debt — sourced, verifiable, open-licensed.",
 };
@@ -38,7 +38,7 @@ export async function generateMetadata(): Promise<Metadata> {
     },
     openGraph: {
       type: "website",
-      siteName: "France Open Data",
+      siteName: "Qipu",
       title: og.title,
       description: og.description,
       url: SITE_URL,

@@ -1,6 +1,6 @@
 # Changelog méthodologique — convention interne
 
-Cette doc encadre **comment** on enregistre une évolution méthodologique. Le rendu utilisateur se fait sur la page [/corrections](https://franceopendata.org/corrections), alimentée par [website/public/data/corrections.json](../website/public/data/corrections.json).
+Cette doc encadre **comment** on enregistre une évolution méthodologique. Le rendu utilisateur se fait sur la page [/corrections](https://qipu.org/corrections), alimentée par [website/public/data/corrections.json](../website/public/data/corrections.json).
 
 ## Quand créer une entrée
 

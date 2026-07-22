@@ -3,7 +3,7 @@ import { ImageResponse } from "next/og";
 import { loadLogementSocialData } from "@/lib/fusion-data";
 
 export const runtime = "nodejs";
-export const alt = "Logement social à Paris — France Open Data";
+export const alt = "Logement social à Paris — Qipu";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -63,7 +63,7 @@ export default async function OG() {
           >
             FO
           </div>
-          France Open Data
+          Qipu
         </div>
 
         <div
@@ -190,7 +190,7 @@ export default async function OG() {
             display: "flex",
           }}
         >
-          Sources · DRIHL Île-de-France · Comptes administratifs · franceopendata.org
+          Sources · DRIHL Île-de-France · Comptes administratifs · qipu.org
         </div>
       </div>
     ),

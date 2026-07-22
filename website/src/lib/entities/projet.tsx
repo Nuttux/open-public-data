@@ -24,7 +24,7 @@ export const projetConfig: EntityPageConfig<D> = {
     };
   },
   notFoundMetadata: (locale) => ({
-    title: locale === "en" ? "Project not found — France Open Data" : "Projet introuvable — France Open Data",
+    title: locale === "en" ? "Project not found — Qipu" : "Projet introuvable — Qipu",
     robots: { index: false },
   }),
   metadata: ({ projet: p }, locale) => {
@@ -33,8 +33,8 @@ export const projetConfig: EntityPageConfig<D> = {
       ? (p as { name_en?: string }).name_en!
       : p.name;
     const title = locale === "en"
-      ? `${projectName.slice(0, 60)} — Project · France Open Data`
-      : `${projectName.slice(0, 60)} — Projet · France Open Data`;
+      ? `${projectName.slice(0, 60)} — Project · Qipu`
+      : `${projectName.slice(0, 60)} — Projet · Qipu`;
     const amountFmt = p.montant.toLocaleString(numLocale(locale));
     const chapitreLabel = trLabel(p.chapitre, locale);
     const description = locale === "en"

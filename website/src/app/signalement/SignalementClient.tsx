@@ -219,7 +219,7 @@ export default function SignalementClient() {
                   <Button variant="primary" type="submit" disabled={status === "submitting"}>
                     {status === "submitting" ? t("fx.signalement.btn.sending") : t("fx.signalement.btn.send")}
                   </Button>
-                  <a href={`mailto:daniel@franceopendata.org?subject=${encodeURIComponent("[Signalement] ")}`} className="fx-signalement-fallback">
+                  <a href={`mailto:daniel@qipu.org?subject=${encodeURIComponent("[Signalement] ")}`} className="fx-signalement-fallback">
                     {t("fx.signalement.fallback")}
                   </a>
                 </div>

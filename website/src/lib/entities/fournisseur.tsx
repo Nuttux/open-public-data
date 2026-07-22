@@ -23,7 +23,7 @@ export const fournisseurConfig: EntityPageConfig<D> = {
     };
   },
   notFoundMetadata: (locale) => ({
-    title: locale === "en" ? "Supplier not found — France Open Data" : "Fournisseur introuvable — France Open Data",
+    title: locale === "en" ? "Supplier not found — Qipu" : "Fournisseur introuvable — Qipu",
     robots: { index: false },
   }),
   metadata: ({ fournisseur: f }, locale) => {
@@ -33,8 +33,8 @@ export const fournisseurConfig: EntityPageConfig<D> = {
     const canonical = `/fr/city/paris/marches/fournisseur/${f.siren || f.siret}`;
     const amountFmt = f.totalAmount.toLocaleString(numLocale(locale));
     const title = locale === "en"
-      ? `${f.nom} — Supplier · France Open Data`
-      : `${f.nom} — Fournisseur · France Open Data`;
+      ? `${f.nom} — Supplier · Qipu`
+      : `${f.nom} — Fournisseur · Qipu`;
     const description = locale === "en"
       ? `${f.nom}: ${f.contratCount} contracts, total €${amountFmt} with the Ville de Paris.`
       : `${f.nom} : ${f.contratCount} contrats, cumul ${amountFmt} € avec la Ville de Paris.`;

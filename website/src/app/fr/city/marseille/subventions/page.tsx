@@ -18,11 +18,11 @@ import QuiRecoitClient from "@/app/fr/city/paris/subventions/QuiRecoitClient";
 
 export async function generateMetadata(): Promise<Metadata> {
   return buildLocaleAwareMetadata({
-    title: "Qui reçoit l'argent public à Marseille ? — France Open Data",
+    title: "Qui reçoit l'argent public à Marseille ?",
     description:
       "Subventions versées par la Ville de Marseille (2017-2022) : bénéficiaires, montants, évolution. Source : data.gouv.fr (SCDL).",
     en: {
-      title: "Who receives public money in Marseille? — France Open Data",
+      title: "Who receives public money in Marseille?",
       description:
         "Grants paid by the Ville de Marseille (2017-2022): beneficiaries, amounts, trends. Source: data.gouv.fr (SCDL).",
     },

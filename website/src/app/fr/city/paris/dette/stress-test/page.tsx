@@ -27,7 +27,7 @@ export async function generateMetadata({ searchParams }: { searchParams: Search 
     : "/fr/city/paris/dette/stress-test";
 
   return {
-    title: "Paris peut-elle faire faillite ? — Stress-test · France Open Data",
+    title: "Paris peut-elle faire faillite ? — Stress-test",
     description:
       "Simulez vous-même les scénarios qui menaceraient la dette de Paris : taux d'intérêt, baisse des recettes, sur-investissement. Méthodologie Moody's/Fitch, données open data.",
     alternates: { canonical },

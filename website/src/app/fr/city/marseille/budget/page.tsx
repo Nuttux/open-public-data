@@ -19,11 +19,11 @@ import BudgetClient from "@/app/fr/city/paris/budget/BudgetClient";
 
 export async function generateMetadata(): Promise<Metadata> {
   return buildLocaleAwareMetadata({
-    title: "Le budget de Marseille — France Open Data",
+    title: "Le budget de Marseille",
     description:
       "Recettes, dépenses et exécution du budget de la Ville de Marseille. Flux complet, détail par catégorie de flux. Source : comptes administratifs M57 (data.gouv.fr).",
     en: {
-      title: "Marseille budget — France Open Data",
+      title: "Marseille budget",
       description:
         "Revenue, spending and execution of the Ville de Marseille budget. Full flow, breakdown by flow category. Source: M57 administrative accounts (data.gouv.fr).",
     },

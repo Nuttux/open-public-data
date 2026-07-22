@@ -4,7 +4,7 @@ import { loadContrat, loadMarcheVulgarization } from "@/lib/fusion-data";
 import { normalizeObjet } from "@/lib/objet-normalizer";
 
 export const runtime = "nodejs";
-export const alt = "Marché public — France Open Data";
+export const alt = "Marché public — Qipu";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -68,7 +68,7 @@ export default async function OG({ params }: { params: Promise<{ numero: string 
           >
             FO
           </div>
-          France Open Data
+          Qipu
         </div>
 
         <div

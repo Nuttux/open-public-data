@@ -7,11 +7,11 @@ import DettePatrimoineClient from "./DettePatrimoineClient";
 
 export async function generateMetadata(): Promise<Metadata> {
   return buildLocaleAwareMetadata({
-    title: "Dette & patrimoine — France Open Data",
+    title: "Dette & patrimoine",
     description:
       "Le bilan consolidé de la Ville de Paris : actif, passif, dette, fonds propres. Règle d'or et garde-fous d'équilibre.",
     en: {
-      title: "Debt & assets — France Open Data",
+      title: "Debt & assets",
       description:
         "The Ville de Paris consolidated balance sheet: assets, liabilities, debt, equity. Golden rule and balance safeguards.",
     },

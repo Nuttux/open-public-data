@@ -73,7 +73,7 @@ def fetch_paginated(siren: str) -> list[dict]:
             "page": str(page),
         }
         url = f"{API_BASE}?{urlencode(params)}"
-        req = Request(url, headers={"User-Agent": "FranceOpenData/1.0"})
+        req = Request(url, headers={"User-Agent": "Qipu/1.0"})
         with urlopen(req, timeout=60) as resp:
             data = json.loads(resp.read().decode("utf-8"))
         rows = data.get("data", []) or []

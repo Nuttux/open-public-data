@@ -8,11 +8,11 @@ import AnalysesClient from "./AnalysesClient";
 
 export async function generateMetadata(): Promise<Metadata> {
   return buildLocaleAwareMetadata({
-    title: "Analyses — France Open Data",
+    title: "Analyses",
     description:
       "Analyses, enquêtes, portraits et explications : ce que les données publiques permettent de comprendre sur les finances des collectivités françaises.",
     en: {
-      title: "Analyses — France Open Data",
+      title: "Analyses",
       description:
         "Investigations, profiles, and explainers — what public data lets us understand about French local-government finance.",
     },

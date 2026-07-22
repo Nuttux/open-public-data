@@ -4,7 +4,7 @@ import { loadEtatLFI } from "@/lib/national-data";
 export const runtime = "nodejs";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
-export const alt = "France Open Data — Budget de l'État";
+export const alt = "Qipu — Budget de l'État";
 
 const fmtBn = (eur: number) =>
   (eur / 1e9).toLocaleString("fr-FR", { maximumFractionDigits: 1, minimumFractionDigits: 1 });
@@ -32,7 +32,7 @@ export default async function EtatOG() {
         {/* Brand strip */}
         <div style={{ display: "flex", alignItems: "center", gap: 14, fontSize: 18, letterSpacing: 4, textTransform: "uppercase", color: "#b8551c" }}>
           <div style={{ display: "flex", alignItems: "center", justifyContent: "center", width: 32, height: 32, background: "#111", color: "#faf9f5", fontSize: 18, fontWeight: 800 }}>FO</div>
-          <div style={{ display: "flex" }}>France Open Data · /etat</div>
+          <div style={{ display: "flex" }}>Qipu · /etat</div>
         </div>
 
         {/* Kicker */}
@@ -64,7 +64,7 @@ export default async function EtatOG() {
         {/* Footer */}
         <div style={{ display: "flex", justifyContent: "space-between", marginTop: 32, paddingTop: 16, borderTop: "2px solid #111", fontSize: 14, color: "#666", letterSpacing: 2, textTransform: "uppercase" }}>
           <div style={{ display: "flex" }}>Source data.gouv.fr · PLF {exercice}</div>
-          <div style={{ display: "flex" }}>franceopendata.org/etat</div>
+          <div style={{ display: "flex" }}>qipu.org/etat</div>
         </div>
       </div>
     ),

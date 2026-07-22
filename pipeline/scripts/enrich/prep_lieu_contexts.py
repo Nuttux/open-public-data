@@ -35,7 +35,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[3]
 SEED = ROOT / "pipeline" / "seeds" / "seed_lieux_v1.csv"
 CACHE = ROOT / "pipeline" / "cache" / "lieux"
-UA = {"User-Agent": "france-open-data/0.1 (recherche civique; franceopendata.org)"}
+UA = {"User-Agent": "qipu/0.1 (recherche civique; qipu.org)"}
 
 MAX_DOCS = 45      # plafond de lecture par lieu — coût maîtrisé, couverture déclarée
 SMALL = 60         # en dessous, on lit tout le corpus

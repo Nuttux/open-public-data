@@ -3,7 +3,7 @@ import { ImageResponse } from "next/og";
 export const runtime = "nodejs";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
-export const alt = "France Open Data — Contact";
+export const alt = "Qipu — Contact";
 
 export default async function ContactOG() {
   return new ImageResponse(
@@ -45,7 +45,7 @@ export default async function ContactOG() {
           >
             FO
           </div>
-          <div style={{ display: "flex" }}>France Open Data · /contact</div>
+          <div style={{ display: "flex" }}>Qipu · /contact</div>
         </div>
 
         <div
@@ -113,7 +113,7 @@ export default async function ContactOG() {
               marginTop: 8,
             }}
           >
-            daniel@franceopendata.org
+            daniel@qipu.org
           </div>
         </div>
 
@@ -131,7 +131,7 @@ export default async function ContactOG() {
           }}
         >
           <div style={{ display: "flex" }}>Daniel Shavit · Projet indépendant</div>
-          <div style={{ display: "flex" }}>franceopendata.org/contact</div>
+          <div style={{ display: "flex" }}>qipu.org/contact</div>
         </div>
       </div>
     ),

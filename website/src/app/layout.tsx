@@ -34,7 +34,7 @@ const inter = Inter({
  * Root metadata — title template + defaults inherited by every route.
  * Per-route files override title/description/path via their own export.
  */
-const DEFAULT_TITLE = "France Open Data — Open data Paris en clair";
+const DEFAULT_TITLE = "Qipu — Open data Paris en clair";
 const DEFAULT_DESCRIPTION =
   "Budget, subventions, marchés publics, logements sociaux, investissements : explorez les données ouvertes de la Ville de Paris et d'une vingtaine de grandes villes françaises en visualisations interactives.";
 

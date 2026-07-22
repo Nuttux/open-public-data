@@ -68,11 +68,11 @@ Ce runbook liste les outils à câbler, classés par priorité, avec instruction
 
 **Setup** :
 1. Créer compte Better Stack
-2. New monitor → URL : `https://franceopendata.org` (HEAD request, every 1 min)
+2. New monitor → URL : `https://qipu.org` (HEAD request, every 1 min)
 3. Ajouter 3 monitors supplémentaires sur les pages clés :
-   - `https://franceopendata.org/ville/paris/budget`
-   - `https://franceopendata.org/ville/paris/marches`
-   - `https://franceopendata.org/ville/paris/subventions`
+   - `https://qipu.org/ville/paris/budget`
+   - `https://qipu.org/ville/paris/marches`
+   - `https://qipu.org/ville/paris/subventions`
 4. Configurer alerte → email + Slack (créer canal `#opd-alerts` si Slack)
 5. Threshold : alerte après 2 échecs consécutifs, escalade après 5 min
 
@@ -80,14 +80,14 @@ Ce runbook liste les outils à câbler, classés par priorité, avec instruction
 
 ## Étape 3.5 — Plausible (alternative PostHog, ~5 min)
 
-**Pourquoi** : PostHog est déjà en place mais a un overhead de 50 KB JS. Plausible est plus léger (< 1 KB), CNIL-exempt par construction, et fournit un dashboard ultra-simple à partager publiquement (URL `https://plausible.io/franceopendata.org`).
+**Pourquoi** : PostHog est déjà en place mais a un overhead de 50 KB JS. Plausible est plus léger (< 1 KB), CNIL-exempt par construction, et fournit un dashboard ultra-simple à partager publiquement (URL `https://plausible.io/qipu.org`).
 
 **Code déjà câblé** : tag `<Script data-domain={NEXT_PUBLIC_PLAUSIBLE_DOMAIN}>` dans `src/app/layout.tsx` — actif dès que la var est set.
 
 **Activation** :
 1. Créer compte sur https://plausible.io (free trial 30j puis $9/mois pour 10k pageviews) ou self-host (https://plausible.io/docs/self-hosting)
-2. Add site → domain : `franceopendata.org`
-3. Côté Vercel dashboard → Environment Variables → `NEXT_PUBLIC_PLAUSIBLE_DOMAIN=franceopendata.org`
+2. Add site → domain : `qipu.org`
+3. Côté Vercel dashboard → Environment Variables → `NEXT_PUBLIC_PLAUSIBLE_DOMAIN=qipu.org`
 4. Optionnel : passer le dashboard Plausible en **public** pour le partager
 
 **Validation** : visiter une page du site en prod, ouvrir DevTools Network, filtrer "plausible". Une requête `event` doit apparaître. Le dashboard montre le pageview en temps réel.
@@ -100,17 +100,17 @@ Ce runbook liste les outils à câbler, classés par priorité, avec instruction
 
 **Setup** : Better Stack inclut une status page gratuite, alimentée par les monitors de l'étape 3.
 1. Better Stack dashboard → Status pages → New
-2. URL : `status.franceopendata.org` (CNAME à ajouter chez NameCheap)
+2. URL : `status.qipu.org` (CNAME à ajouter chez NameCheap)
 3. Branding : ajouter logo (cohérent footer du site)
 4. Ajouter section "Composants" :
    - Site web (lié au monitor `/`)
    - Pipeline data (manuel — toggle quand un import casse)
    - API chat (lié au monitor `/api/chat`)
 
-**Validation** : visiter `status.franceopendata.org`, voir 4 composants verts.
+**Validation** : visiter `status.qipu.org`, voir 4 composants verts.
 
 **Lien footer auto** : une fois la URL configurée, ajouter dans Vercel Env Variables :
-`NEXT_PUBLIC_STATUS_PAGE_URL=https://status.franceopendata.org`
+`NEXT_PUBLIC_STATUS_PAGE_URL=https://status.qipu.org`
 → un lien "Statut" apparaît dans le footer (déjà câblé en code).
 
 ## Étape 5 — Logs centralisés (priorité basse, ~30 min)
@@ -148,7 +148,7 @@ Cinq endroits à consulter en cas d'incident, par ordre de pertinence :
 1. **Vercel dashboard** (`https://vercel.com/nuttuxs-projects/open-public-data`) — déploiements, build logs, runtime logs (1h), Speed Insights, Analytics
 2. **Sentry** (`https://sentry.io/organizations/<org>/issues/`) — JS errors front + server, regroupées par fingerprint, avec breadcrumb
 3. **Better Stack** (`https://uptime.betterstack.com/team/<id>/incidents`) — incidents uptime, response time graphs, status page management
-4. **Plausible** (`https://plausible.io/franceopendata.org`) — pageviews, sources, top pages (alternative simple à PostHog)
+4. **Plausible** (`https://plausible.io/qipu.org`) — pageviews, sources, top pages (alternative simple à PostHog)
 5. **Axiom** (`https://app.axiom.co/<org>/datasets/vercel-logs`) — logs Vercel archivés, requêtes APL pour rechercher dans plusieurs jours
 
 ## Voir aussi

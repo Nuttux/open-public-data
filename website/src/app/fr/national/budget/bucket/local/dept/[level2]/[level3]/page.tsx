@@ -23,13 +23,13 @@ export async function generateMetadata({
     return {
       title:
         locale === "en"
-          ? "Drill-down not found — France Open Data"
-          : "Détail introuvable — France Open Data",
+          ? "Drill-down not found"
+          : "Détail introuvable",
       robots: { index: false },
     };
   }
   const label = locale === "en" ? l3.label_en : l3.label_fr;
-  const title = `${label} — Départements · Budget · France Open Data`;
+  const title = `${label} — Départements · Budget`;
   const canonical = `${BASE_PATH}/bucket/local/dept/${level2}/${level3}`;
   return {
     title,

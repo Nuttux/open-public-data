@@ -37,7 +37,7 @@ SCRIPT_DIR = Path(__file__).resolve().parent
 OUT_PATH = PROJECT_ROOT / "pipeline" / "cache" / "enrichment" / "generic_photo_bank.json"
 OUT_PATH.parent.mkdir(parents=True, exist_ok=True)
 
-USER_AGENT = "FranceOpenData-GenericBank/0.1 (https://franceopendata.org; contact@franceopendata.org)"
+USER_AGENT = "Qipu-GenericBank/0.1 (https://qipu.org; contact@qipu.org)"
 REQ_TIMEOUT = 15
 MAX_CANDIDATES = 9
 

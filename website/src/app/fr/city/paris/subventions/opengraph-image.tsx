@@ -4,7 +4,7 @@ import { OG_SIZE, ogCard, ogFmtBnFr, ogFmtFr } from "@/lib/og";
 export const runtime = "nodejs";
 export const size = OG_SIZE;
 export const contentType = "image/png";
-export const alt = "France Open Data — Subventions de la Ville de Paris";
+export const alt = "Qipu — Subventions de la Ville de Paris";
 
 export default async function SubventionsOG() {
   const d = loadQuiRecoitData();
@@ -20,6 +20,6 @@ export default async function SubventionsOG() {
       { label: "Subventions versées", value: nbDisplay },
     ],
     source: "Source Paris Open Data · Comptes M57",
-    url: "franceopendata.org/fr/city/paris/subventions",
+    url: "qipu.org/fr/city/paris/subventions",
   });
 }

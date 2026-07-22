@@ -127,7 +127,7 @@ def geocode_one(query: str) -> dict | None:
     """Appelle BAN. Renvoie le 1er feature si score >= seuil, sinon None."""
     url = f"{BAN_API}?q={quote(query)}&limit=1&type=street"
     try:
-        with urlopen(Request(url, headers={"User-Agent": "france-open-data-poc/1.0"}), timeout=10) as resp:
+        with urlopen(Request(url, headers={"User-Agent": "qipu-poc/1.0"}), timeout=10) as resp:
             data = json.load(resp)
     except Exception as e:
         print(f"    BAN error for {query[:60]!r}: {e}")

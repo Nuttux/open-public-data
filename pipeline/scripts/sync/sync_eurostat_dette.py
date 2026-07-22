@@ -59,7 +59,7 @@ OUTPUT_DIR = (
 
 def fetch_eurostat(params: list[tuple[str, str]]) -> dict:
     url = f"{EUROSTAT_API}?{urlencode(params)}"
-    req = Request(url, headers={"User-Agent": "FranceOpenData/1.0"})
+    req = Request(url, headers={"User-Agent": "Qipu/1.0"})
     with urlopen(req, timeout=60) as resp:
         return json.loads(resp.read().decode("utf-8"))
 

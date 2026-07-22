@@ -58,7 +58,7 @@ PDFS: dict[int, str] = {
     2024: "https://www.marseille.fr/sites/default/files/contenu/mairie/Budget/pdf/rapport-de-presentation-compte-administratif-2024.pdf",
 }
 
-USER_AGENT = "france-open-data-poc/1.0 (contact@franceopendata.fr)"
+USER_AGENT = "qipu-poc/1.0 (contact@qipu.org)"
 
 # ─── PDF download + text extraction ────────────────────────────────────────
 

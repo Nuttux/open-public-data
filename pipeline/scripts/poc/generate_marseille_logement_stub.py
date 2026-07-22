@@ -52,7 +52,7 @@ COMMUNE_INSEE = "13055"
 COMMUNE_NAME_PREFIX = "Marseille"
 COMMUNE_NAME_LIKE = "Marseille%"
 SRU_TARGET_PCT = 25  # Loi SRU article 55 — commune >100k hab en zone tendue.
-USER_AGENT = "france-open-data-poc/1.0"
+USER_AGENT = "qipu-poc/1.0"
 
 
 def http_get(url: str, timeout: int = 60) -> bytes:

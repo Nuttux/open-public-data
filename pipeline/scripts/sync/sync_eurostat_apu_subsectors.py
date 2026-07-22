@@ -78,7 +78,7 @@ def fetch_eurostat(sectors: list[str], year: int) -> dict:
         params.append(("sector", s))
 
     url = f"{EUROSTAT_API}?{urlencode(params)}"
-    req = Request(url, headers={"User-Agent": "FranceOpenData/1.0"})
+    req = Request(url, headers={"User-Agent": "Qipu/1.0"})
     with urlopen(req, timeout=30) as resp:
         return json.loads(resp.read().decode("utf-8"))
 
@@ -93,7 +93,7 @@ def fetch_gdp_meur(year: int) -> float | None:
         ("time", str(year)),
     ]
     url = f"{EUROSTAT_GDP_API}?{urlencode(params)}"
-    req = Request(url, headers={"User-Agent": "FranceOpenData/1.0"})
+    req = Request(url, headers={"User-Agent": "Qipu/1.0"})
     try:
         with urlopen(req, timeout=30) as resp:
             data = json.loads(resp.read().decode("utf-8"))

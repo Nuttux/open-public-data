@@ -29,14 +29,14 @@ export const associationConfig: EntityPageConfig<D> = {
     };
   },
   notFoundMetadata: (locale) => ({
-    title: locale === "en" ? "Beneficiary not found — France Open Data" : "Association introuvable — France Open Data",
+    title: locale === "en" ? "Beneficiary not found — Qipu" : "Association introuvable — Qipu",
     robots: { index: false },
   }),
   metadata: ({ asso: a }, locale) => {
     const amountFmt = a.totalAmount.toLocaleString(numLocale(locale));
     const title = locale === "en"
-      ? `${a.name} — Beneficiary · France Open Data`
-      : `${a.name} — Association · France Open Data`;
+      ? `${a.name} — Beneficiary · Qipu`
+      : `${a.name} — Association · Qipu`;
     const description = locale === "en"
       ? `${a.name}: ${a.subventionCount} grants, total €${amountFmt} from the Ville de Paris.`
       : `${a.name} : ${a.subventionCount} subventions, cumul ${amountFmt} € de la Ville de Paris.`;

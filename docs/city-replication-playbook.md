@@ -1,6 +1,6 @@
 # City Replication Playbook
 
-**Comment transposer le pipeline + site France Open Data à une nouvelle grande ville française.**
+**Comment transposer le pipeline + site Qipu à une nouvelle grande ville française.**
 
 Ce playbook industrialise le processus défini lors de la transposition Paris → Marseille (validé 2026-05-07). Il sert à la fois de :
 - **Runbook humain** : checklist d'audit + décisions à valider avec le porteur produit
@@ -12,7 +12,7 @@ Ce playbook industrialise le processus défini lors de la transposition Paris �
 
 ## 0. Quand utiliser ce playbook
 
-**Cible** : grande ville française (>100k habitants idéalement) candidate à devenir une "ville exhaustive" du site France Open Data, c'est-à-dire avec ses propres pages riches `/[city]/{budget,marches-publics,qui-recoit,...}` au même niveau que Paris et Marseille.
+**Cible** : grande ville française (>100k habitants idéalement) candidate à devenir une "ville exhaustive" du site Qipu, c'est-à-dire avec ses propres pages riches `/[city]/{budget,marches-publics,qui-recoit,...}` au même niveau que Paris et Marseille.
 
 **Ne pas utiliser** pour :
 - Communes sous le seuil OFGL pertinent (utiliser la fiche slim `/c/[slug]` à la place)
@@ -75,7 +75,7 @@ Phase 5 — Implémentation complète             [12-18 jours]
 | P0.2 | URL : préfixée `/[city]/budget` (option B) ? | Oui (option B) | ? |
 | P0.3 | Slim `/c/[city]` disparaît dès exhaustive ? | Oui, redirect 301 | ? |
 | P0.4 | Choropleth : quel grain géographique ? | 16 arrondissements (à valider phase 1) | ? |
-| P0.5 | Branding : France Open Data (pas autre nom local) | Oui | ? |
+| P0.5 | Branding : Qipu (pas autre nom local) | Oui | ? |
 | P2.1 | OBT unifié (commune_slug partout) ou dual ? | Unifié (option α) | ? |
 | P2.2 | Naming scripts : `sync_[city]_*` city-specific, sans préfixe si générique | Oui | ? |
 | P2.3 | Seeds dans `pipeline/seeds/cities/[city]/*.csv` | Oui | ? |
@@ -289,7 +289,7 @@ Ne pas planifier en détail avant le POC. Les vraies surprises arrivent en POC.
 Pour démarrer une nouvelle ville sans humain, on peut donner ce playbook à un agent (Claude Code) avec ce prompt :
 
 ```
-Tu vas piloter la transposition du site France Open Data à la ville de [CITY].
+Tu vas piloter la transposition du site Qipu à la ville de [CITY].
 
 Lis d'abord :
 1. docs/city-replication-playbook.md (ce doc) — le processus

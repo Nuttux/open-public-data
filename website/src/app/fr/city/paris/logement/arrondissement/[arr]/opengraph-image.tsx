@@ -30,6 +30,6 @@ export default async function ArrondissementLogementOG({ params }: { params: Pro
     title: label,
     stats,
     source: "Source Paris Open Data · DDT Paris",
-    url: "franceopendata.org/.../logement/arrondissement",
+    url: "qipu.org/.../logement/arrondissement",
   });
 }

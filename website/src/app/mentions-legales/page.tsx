@@ -5,11 +5,11 @@ import MentionsLegalesClient from "./MentionsLegalesClient";
 
 export async function generateMetadata(): Promise<Metadata> {
   return buildLocaleAwareMetadata({
-    title: "Mentions légales — France Open Data",
+    title: "Mentions légales",
     description:
       "Mentions légales conformes à la LCEN : éditeur, directeur de publication, hébergeur, propriété intellectuelle, contact.",
     en: {
-      title: "Legal notice — France Open Data",
+      title: "Legal notice",
       description:
         "Legal notice in accordance with French LCEN: publisher, publication director, host, intellectual property, contact.",
     },

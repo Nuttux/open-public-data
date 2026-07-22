@@ -49,7 +49,7 @@ export default async function ContactClient() {
               <div className="n">{t("fx.contact.c1.n")}</div>
               <h3>{t("fx.contact.c1.h")}</h3>
               <p>{t("fx.contact.c1.p")}</p>
-              <a href="mailto:daniel@franceopendata.org">Daniel Shavit · daniel@franceopendata.org ↗</a>
+              <a href="mailto:daniel@qipu.org">Daniel Shavit · daniel@qipu.org ↗</a>
             </div>
             <div>
               <div className="n">{t("fx.contact.c2.n")}</div>
@@ -63,7 +63,7 @@ export default async function ContactClient() {
               <div className="n">{t("fx.contact.c3.n")}</div>
               <h3>{t("fx.contact.c3.h")}</h3>
               <p>{t("fx.contact.c3.p")}</p>
-              <a href="mailto:daniel@franceopendata.org?subject=Presse">Daniel Shavit · daniel@franceopendata.org ↗</a>
+              <a href="mailto:daniel@qipu.org?subject=Presse">Daniel Shavit · daniel@qipu.org ↗</a>
             </div>
           </div>
 

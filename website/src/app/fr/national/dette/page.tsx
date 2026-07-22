@@ -6,11 +6,11 @@ import DetteClient from "./DetteClient";
 
 export async function generateMetadata(): Promise<Metadata> {
   return buildLocaleAwareMetadata({
-    title: "Dette publique française — France Open Data",
+    title: "Dette publique française",
     description:
       "Dette des administrations publiques françaises (Maastricht) ventilée par sous-secteur — État, collectivités, Sécurité sociale — en % du PIB et en milliards d'euros, série trimestrielle 2000-aujourd'hui.",
     en: {
-      title: "French government debt — France Open Data",
+      title: "French government debt",
       description:
         "Maastricht government debt of France broken down by sub-sector — central, local, social security — as % of GDP and in billion euros, quarterly series from 2000 to today.",
     },

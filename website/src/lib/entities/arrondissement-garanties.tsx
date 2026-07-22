@@ -32,7 +32,7 @@ export const arrondissementGarantiesConfig: EntityPageConfig<D> = {
     return { ...d, requestedYear };
   },
   notFoundMetadata: (locale) => ({
-    title: locale === "en" ? "Arrondissement not found — France Open Data" : "Arrondissement introuvable — France Open Data",
+    title: locale === "en" ? "Arrondissement not found — Qipu" : "Arrondissement introuvable — Qipu",
     robots: { index: false },
   }),
   metadata: ({ arr, year }, locale) => {
@@ -41,8 +41,8 @@ export const arrondissementGarantiesConfig: EntityPageConfig<D> = {
       ? (arr.capital_restant >= 1e9 ? `€${fmtBillions(arr.capital_restant)}Bn` : `€${fmtMillions(arr.capital_restant, 0)}M`)
       : fmtEur(arr.capital_restant);
     const title = locale === "en"
-      ? `${whereEn(arr.arr)} — Loan guarantees ${year} · France Open Data`
-      : `${whereFr(arr.arr)} — Garanties d'emprunt ${year} · France Open Data`;
+      ? `${whereEn(arr.arr)} — Loan guarantees ${year} · Qipu`
+      : `${whereFr(arr.arr)} — Garanties d'emprunt ${year} · Qipu`;
     const description = locale === "en"
       ? `Loans guaranteed by the Ville de Paris in ${whereEn(arr.arr)}: ${amount} outstanding at end ${year} across ${fmtInt(arr.count_emprunts)} loans, mostly social housing.`
       : `Emprunts garantis par la Ville de Paris dans le ${whereFr(arr.arr)} : ${amount} de capital restant dû au 31.12.${year}, ${fmtInt(arr.count_emprunts)} emprunts, essentiellement logement social.`;

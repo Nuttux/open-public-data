@@ -1,7 +1,7 @@
 import puppeteer from 'puppeteer';
 import { mkdir } from 'fs/promises';
 
-const BASE = 'https://franceopendata.org';
+const BASE = 'https://qipu.org';
 const OUT_DIR = './instagram-stories';
 
 // Instagram story dimensions (9:16)

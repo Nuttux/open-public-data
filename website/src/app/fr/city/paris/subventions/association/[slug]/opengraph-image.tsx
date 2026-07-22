@@ -3,7 +3,7 @@ import { ImageResponse } from "next/og";
 import { loadAssociation, loadSubventionVulgarization } from "@/lib/fusion-data";
 
 export const runtime = "nodejs";
-export const alt = "Association — France Open Data";
+export const alt = "Association — Qipu";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -72,7 +72,7 @@ export default async function OG({ params }: { params: Promise<{ slug: string }>
           >
             FO
           </div>
-          France Open Data
+          Qipu
         </div>
 
         <div
@@ -168,7 +168,7 @@ export default async function OG({ params }: { params: Promise<{ slug: string }>
             display: "flex",
           }}
         >
-          Source · opendata.paris.fr / franceopendata.org
+          Source · opendata.paris.fr / qipu.org
         </div>
       </div>
     ),

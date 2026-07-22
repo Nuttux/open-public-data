@@ -5,7 +5,7 @@ import { loadCorrections } from "@/lib/corrections";
 export const runtime = "nodejs";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
-export const alt = "France Open Data — Corrections publiques";
+export const alt = "Qipu — Corrections publiques";
 
 export default async function CorrectionsOG() {
   const doc = await loadCorrections();
@@ -56,7 +56,7 @@ export default async function CorrectionsOG() {
           >
             FO
           </div>
-          <div style={{ display: "flex" }}>France Open Data · /corrections</div>
+          <div style={{ display: "flex" }}>Qipu · /corrections</div>
         </div>
 
         <div
@@ -159,7 +159,7 @@ export default async function CorrectionsOG() {
           }}
         >
           <div style={{ display: "flex" }}>Chaque correction · datée · sourcée · publique</div>
-          <div style={{ display: "flex" }}>franceopendata.org/corrections</div>
+          <div style={{ display: "flex" }}>qipu.org/corrections</div>
         </div>
       </div>
     ),

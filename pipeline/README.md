@@ -1,6 +1,6 @@
-# Pipeline — France Open Data
+# Pipeline — Qipu
 
-> Pipeline open source qui transforme les données publiques des collectivités françaises en JSON exploitables par le site [franceopendata.org](https://franceopendata.org).
+> Pipeline open source qui transforme les données publiques des collectivités françaises en JSON exploitables par le site [qipu.org](https://qipu.org).
 
 **Licence** : [GNU AGPL-3.0](../LICENSE) · **Données dérivées** : [Licence Ouverte Etalab 2.0](https://www.data.gouv.fr/pages/legal/licences/etalab-2.0)
 
@@ -28,7 +28,7 @@ Détail :
 
 ## 🚀 Reproduire les chiffres affichés sur le site
 
-Pour **vérifier** un chiffre publié sur franceopendata.org en le recalculant depuis les sources :
+Pour **vérifier** un chiffre publié sur qipu.org en le recalculant depuis les sources :
 
 ```bash
 # Prérequis : Python 3.11+, gcloud CLI
@@ -127,4 +127,4 @@ Voir [`docs/architecture-modelling.md`](../docs/architecture-modelling.md) pour 
 
 ## Contact
 
-Site : [franceopendata.org](https://franceopendata.org) · Contact : daniel@franceopendata.org
+Site : [qipu.org](https://qipu.org) · Contact : daniel@qipu.org

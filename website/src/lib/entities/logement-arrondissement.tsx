@@ -24,8 +24,8 @@ export const logementArrondissementConfig: EntityPageConfig<D> = {
   metadata: ({ data }, locale) => {
     const canonical = `/fr/city/paris/logement/arrondissement/${data.slug}`;
     const title = locale === "en"
-      ? `${data.label} · social housing — France Open Data`
-      : `${data.label} · logement social — France Open Data`;
+      ? `${data.label} · social housing — Qipu`
+      : `${data.label} · logement social — Qipu`;
     const description = locale === "en"
       ? `Funded social-housing operations · ${data.label} · Paris.`
       : `Opérations de logement social financées · ${data.label} · Paris.`;

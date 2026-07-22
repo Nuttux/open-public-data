@@ -5,7 +5,7 @@ import { loadBudgetPageData, loadBudgetIndex } from "@/lib/fusion-data";
 export const runtime = "nodejs";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
-export const alt = "France Open Data — Budget de Marseille";
+export const alt = "Qipu — Budget de Marseille";
 
 const fmtBnFr = (n: number) =>
   (n / 1e9).toLocaleString("fr-FR", { maximumFractionDigits: 2, minimumFractionDigits: 2 });
@@ -59,7 +59,7 @@ export default async function MarseilleBudgetOG() {
           >
             FO
           </div>
-          <div style={{ display: "flex" }}>France Open Data · Marseille · v1</div>
+          <div style={{ display: "flex" }}>Qipu · Marseille · v1</div>
         </div>
 
         <div
@@ -186,7 +186,7 @@ export default async function MarseilleBudgetOG() {
           }}
         >
           <div style={{ display: "flex" }}>Source data.gouv.fr · Comptes M57</div>
-          <div style={{ display: "flex" }}>franceopendata.org/fr/city/marseille/budget</div>
+          <div style={{ display: "flex" }}>qipu.org/fr/city/marseille/budget</div>
         </div>
       </div>
     ),

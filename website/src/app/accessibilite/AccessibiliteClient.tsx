@@ -36,8 +36,8 @@ export default async function AccessibiliteClient() {
           </h1>
           <p className="fx-page-lede">
             {isFr
-              ? "France Open Data s'engage à rendre son site accessible conformément à l'article 47 de la loi n° 2005-102 du 11 février 2005 et au Référentiel Général d'Amélioration de l'Accessibilité (RGAA 4.1)."
-              : "France Open Data is committed to making its site accessible in accordance with Article 47 of Law No. 2005-102 of 11 February 2005 and the French General Accessibility Improvement Framework (RGAA 4.1)."}
+              ? "Qipu s'engage à rendre son site accessible conformément à l'article 47 de la loi n° 2005-102 du 11 février 2005 et au Référentiel Général d'Amélioration de l'Accessibilité (RGAA 4.1)."
+              : "Qipu is committed to making its site accessible in accordance with Article 47 of Law No. 2005-102 of 11 February 2005 and the French General Accessibility Improvement Framework (RGAA 4.1)."}
           </p>
         </div>
       </section>
@@ -58,14 +58,14 @@ export default async function AccessibiliteClient() {
           <p>
             {isFr ? (
               <>
-                Le site <b>franceopendata.org</b> est en <b>conformité partielle</b> avec le RGAA 4.1.
+                Le site <b>qipu.org</b> est en <b>conformité partielle</b> avec le RGAA 4.1.
                 Aucune non-conformité critique ou sérieuse n'a été identifiée par les outils d'audit
                 automatique sur les pages auditées, mais l'audit externe formel par un cabinet agréé
                 n'a pas encore été réalisé.
               </>
             ) : (
               <>
-                The <b>franceopendata.org</b> site is in <b>partial compliance</b> with RGAA 4.1.
+                The <b>qipu.org</b> site is in <b>partial compliance</b> with RGAA 4.1.
                 No critical or serious non-conformities were detected by automated audit tools on
                 the pages reviewed, but a formal external audit by a certified firm has not yet been
                 conducted.
@@ -258,8 +258,8 @@ export default async function AccessibiliteClient() {
             }
           />
           <div style={{ display: "flex", gap: 10, flexWrap: "wrap", marginTop: 24 }}>
-            <Button variant="primary" href="mailto:daniel@franceopendata.org">
-              daniel@franceopendata.org ↗
+            <Button variant="primary" href="mailto:daniel@qipu.org">
+              daniel@qipu.org ↗
             </Button>
             <Button href="/contact">{isFr ? "Formulaire de contact" : "Contact form"}</Button>
           </div>

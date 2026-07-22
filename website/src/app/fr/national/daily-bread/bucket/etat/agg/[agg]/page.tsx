@@ -20,13 +20,13 @@ export async function generateMetadata({
     return {
       title:
         locale === "en"
-          ? "Aggregate not found — France Open Data"
-          : "Agrégat introuvable — France Open Data",
+          ? "Aggregate not found"
+          : "Agrégat introuvable",
       robots: { index: false },
     };
   }
   const label = locale === "en" ? found.label_en : found.label_fr;
-  const title = `${label} — État · Daily Bread · France Open Data`;
+  const title = `${label} — État · Daily Bread`;
   const canonical = `${BASE_PATH}/bucket/etat/agg/${agg}`;
   return {
     title,

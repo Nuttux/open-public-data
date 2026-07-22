@@ -27,7 +27,7 @@ export async function generateMetadata({
   const p = loadBudgetPoste(slug, year, "marseille");
   if (!p) {
     return {
-      title: locale === "en" ? "Item not found — France Open Data" : "Poste introuvable — France Open Data",
+      title: locale === "en" ? "Item not found" : "Poste introuvable",
       robots: { index: false },
     };
   }
@@ -37,8 +37,8 @@ export async function generateMetadata({
     ? (p.kind === "depense" ? "expense" : "revenue")
     : (p.kind === "depense" ? "dépense" : "recette");
   const title = locale === "en"
-    ? `${labelEn} — Marseille budget ${p.year} · France Open Data`
-    : `${p.label} — Budget Marseille ${p.year} · France Open Data`;
+    ? `${labelEn} — Marseille budget ${p.year}`
+    : `${p.label} — Budget Marseille ${p.year}`;
   const description = locale === "en"
     ? `${labelEn} — Marseille budget ${kindLabel} for fiscal year ${p.year}. ${p.subPostes.length} sub-items detailed.`
     : `${p.label} — ${kindLabel} du budget de Marseille pour l'exercice ${p.year}. ${p.subPostes.length} sous-postes détaillés.`;

@@ -26,7 +26,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[3]
 CACHE = ROOT / "pipeline" / "cache" / "lieux"
 PHOTOS = CACHE / "photos"
-UA = {"User-Agent": "france-open-data/0.1 (recherche civique; franceopendata.org)"}
+UA = {"User-Agent": "qipu/0.1 (recherche civique; qipu.org)"}
 
 # Requête Commons par lieu : le nom qui donne des photos du lieu lui-même.
 REQUETES = {

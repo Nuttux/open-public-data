@@ -6,11 +6,11 @@ import ApuClient from "./ApuClient";
 
 export async function generateMetadata(): Promise<Metadata> {
   return buildLocaleAwareMetadata({
-    title: "Dépenses publiques — APU consolidé · France Open Data",
+    title: "Dépenses publiques — APU consolidé",
     description:
       "Comment se ventilent les ~57 % du PIB des dépenses publiques françaises (APU consolidé) par fonction COFOG, et comment la France se positionne par rapport à ses voisins européens.",
     en: {
-      title: "Government spending — consolidated APU · France Open Data",
+      title: "Government spending — consolidated APU",
       description:
         "How France's ~57% GDP general government expenditure breaks down by COFOG function, and how it compares to European peers.",
     },

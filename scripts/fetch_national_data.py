@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Fetch national-level open data for France Open Data.
+Fetch national-level open data for Qipu.
 
 Sources:
     - budget.gouv.fr / data.gouv.fr → Budget État LFI (mission/programme/action)
@@ -9,7 +9,7 @@ Sources:
     - Eurostat gov_10a_exp → Comparaison UE par COFOG
     - DGFiP impots.gouv → Recettes fiscales
 
-Produces JSON consumed by the France Open Data national section.
+Produces JSON consumed by the Qipu national section.
 Output: website/public/data/national/
 
 Usage:
@@ -186,7 +186,7 @@ SOURCES = ["etat_budget", "dette", "eurostat", "apu_consolide", "daily_bread"]
 
 
 def main():
-    parser = argparse.ArgumentParser(description="Fetch national-level data for France Open Data")
+    parser = argparse.ArgumentParser(description="Fetch national-level data for Qipu")
     parser.add_argument("--source", choices=SOURCES, help="Fetch a single source")
     parser.add_argument("--dry-run", action="store_true", help="Preview without writing")
     args = parser.parse_args()

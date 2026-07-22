@@ -5,7 +5,7 @@ import { loadQuiRecoitData } from "@/lib/fusion-data";
 export const runtime = "nodejs";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
-export const alt = "France Open Data — Subventions de Marseille";
+export const alt = "Qipu — Subventions de Marseille";
 
 const fmtFr = (n: number) => n.toLocaleString("fr-FR");
 const fmtBnFr = (n: number) =>
@@ -55,7 +55,7 @@ export default async function MarseilleSubventionsOG() {
           >
             FO
           </div>
-          <div style={{ display: "flex" }}>France Open Data · Marseille · v1</div>
+          <div style={{ display: "flex" }}>Qipu · Marseille · v1</div>
         </div>
 
         <div
@@ -156,7 +156,7 @@ export default async function MarseilleSubventionsOG() {
           }}
         >
           <div style={{ display: "flex" }}>Source data.gouv.fr · Comptes M57</div>
-          <div style={{ display: "flex" }}>franceopendata.org/fr/city/marseille/subventions</div>
+          <div style={{ display: "flex" }}>qipu.org/fr/city/marseille/subventions</div>
         </div>
       </div>
     ),

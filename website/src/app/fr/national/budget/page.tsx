@@ -50,12 +50,12 @@ import en from "@/i18n/en";
 export async function generateMetadata(): Promise<Metadata> {
   return buildLocaleAwareMetadata({
     title:
-      "Le budget de la France 2025 — 1 808 Md€/an · France Open Data",
+      "Le budget de la France 2025 — 1 808 Md€/an",
     description:
       "Explorer les dépenses publiques françaises (~1 808 Md€/an) : Sécurité sociale, État central, collectivités locales. Données Eurostat, PLF, OFGL — sans calcul personnel.",
     en: {
       title:
-        "The French budget 2025 — €1,808 bn/yr · France Open Data",
+        "The French budget 2025 — €1,808 bn/yr",
       description:
         "Explore French public expenditure (~€1,808 bn/yr): social security, central government, local authorities. Eurostat, PLF, OFGL data — no personal projection.",
     },

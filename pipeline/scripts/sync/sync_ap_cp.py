@@ -28,7 +28,7 @@ ROOT = Path(__file__).resolve().parents[3]
 OUT_DIR = ROOT / "pipeline" / "cache" / "ap_cp"
 DATASET = "comptes-administratifs-autorisations-de-programmes-ap-ville-departement"
 BASE = f"https://opendata.paris.fr/api/explore/v2.1/catalog/datasets/{DATASET}"
-UA = {"User-Agent": "france-open-data/0.1 (recherche civique; franceopendata.org)"}
+UA = {"User-Agent": "qipu/0.1 (recherche civique; qipu.org)"}
 PAGE = 100          # limite ODS par requête en /records
 MAX_OFFSET = 10000  # l'API explore plafonne offset+limit ; au-delà on segmente
 

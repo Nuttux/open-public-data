@@ -3,7 +3,7 @@ import { ImageResponse } from "next/og";
 import { loadLandingStats } from "@/lib/fusion-data";
 
 export const runtime = "nodejs";
-export const alt = "France Open Data — où va l'argent public";
+export const alt = "Qipu — où va l'argent public";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -56,7 +56,7 @@ export default async function OG() {
           >
             FO
           </div>
-          France Open Data
+          Qipu
         </div>
 
         <div
@@ -116,7 +116,7 @@ export default async function OG() {
           }}
         >
           <span>Sourcé aux comptes officiels · M57</span>
-          <span>franceopendata.org</span>
+          <span>qipu.org</span>
         </div>
       </div>
     ),

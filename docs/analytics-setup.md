@@ -21,7 +21,7 @@ Résumé des 3 niveaux de consentement :
 ### 1. Créer un compte
 1. Va sur <https://eu.posthog.com/signup>
 2. Choisis **EU region** (Frankfurt) — important pour le RGPD
-3. Crée un projet "France Open Data" (ou autre nom)
+3. Crée un projet "Qipu" (ou autre nom)
 
 ### 2. Récupérer la project API key
 - Dans PostHog → Settings → Project → Project API Key

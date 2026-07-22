@@ -44,7 +44,7 @@ SLUG_TPL = "marseille-subventions-{year}"
 
 def fetch_csv_for_slug(slug: str) -> bytes:
     api_url = DATAGOUV_API.format(slug=slug)
-    req = Request(api_url, headers={"User-Agent": "france-open-data-poc/1.0"})
+    req = Request(api_url, headers={"User-Agent": "qipu-poc/1.0"})
     with urlopen(req, timeout=30) as resp:
         meta = json.load(resp)
     csv_resources = [
@@ -56,7 +56,7 @@ def fetch_csv_for_slug(slug: str) -> bytes:
     csv_resources.sort(key=lambda r: r.get("last_modified") or "", reverse=True)
     url = csv_resources[0]["url"]
     print(f"  fetching {url}")
-    req = Request(url, headers={"User-Agent": "france-open-data-poc/1.0"})
+    req = Request(url, headers={"User-Agent": "qipu-poc/1.0"})
     with urlopen(req, timeout=120) as resp:
         return resp.read()
 
