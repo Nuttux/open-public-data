@@ -5,6 +5,7 @@ import { communeHasBudgetNature } from "@/lib/commune-budget";
 import { communeHasMarches } from "@/lib/commune-marches";
 import { communeHasInvestissements } from "@/lib/commune-investissements";
 import { communeHasEvolution } from "@/lib/commune-evolution";
+import { communeHasPeers } from "@/lib/commune-peers";
 
 /**
  * Capability matrix — national-source-first, DATA-DERIVED.
@@ -62,6 +63,9 @@ export type CommuneCapabilities = {
   investissements: boolean;
   /** National tier — évolution pluriannuelle (OFGL, ≥2 years). */
   evolution: boolean;
+  /** National tier — comparaison à la strate (OFGL). Universal: fires for every
+   *  commune in the national index. Computed at build time, no export needed. */
+  comparaison: boolean;
   /** True if the commune has at least one renderable page/layer. */
   any: boolean;
 };
@@ -90,12 +94,14 @@ export function getCommuneCapabilities(slug: string): CommuneCapabilities {
   const marches = !hidden.has("marches") && communeHasMarches(slug);
   const investissements = !hidden.has("investissements") && communeHasInvestissements(slug);
   const evolution = !hidden.has("evolution") && communeHasEvolution(slug);
+  const comparaison = !hidden.has("comparaison") && communeHasPeers(slug);
   return {
     slug,
     budget,
     marches,
     investissements,
     evolution,
-    any: nature || fonction || marches || investissements || evolution,
+    comparaison,
+    any: nature || fonction || marches || investissements || evolution || comparaison,
   };
 }
