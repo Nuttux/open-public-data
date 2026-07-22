@@ -38,6 +38,14 @@ type Props = {
   sourceUrl: string;
   /** OFGL financial-health strip (dette, capacité de désendettement, épargne). */
   health?: CommuneHealth | null;
+  /** Set (from getCommuneCapabilities) when the commune has a marchés page. */
+  marchesHref?: string;
+  /** Set when the commune has an investissements page. */
+  investissementsHref?: string;
+  /** Set when the commune has an évolution page. */
+  evolutionHref?: string;
+  /** Set when the commune has a comparaison-à-la-strate page (universal). */
+  comparaisonHref?: string;
 };
 
 function useEuro() {
@@ -63,6 +71,10 @@ export default function CommuneBudgetClient({
   hasFonction,
   sourceUrl,
   health,
+  marchesHref,
+  investissementsHref,
+  evolutionHref,
+  comparaisonHref,
 }: Props) {
   const t = useT();
   const { locale } = useLocale();
@@ -176,6 +188,32 @@ export default function CommuneBudgetClient({
                 {t("fx.natbud.health_source")}
               </span>
             </div>
+          )}
+
+          {/* Cross-links to the other national pages this commune has */}
+          {(marchesHref || investissementsHref || evolutionHref || comparaisonHref) && (
+            <nav className="fx-natlinks">
+              {investissementsHref && (
+                <Link href={investissementsHref} className="fx-cta-link">
+                  {t("fx.natinv.link")} →
+                </Link>
+              )}
+              {marchesHref && (
+                <Link href={marchesHref} className="fx-cta-link">
+                  {t("fx.natmar.link")} →
+                </Link>
+              )}
+              {evolutionHref && (
+                <Link href={evolutionHref} className="fx-cta-link">
+                  {t("fx.natev.link")} →
+                </Link>
+              )}
+              {comparaisonHref && (
+                <Link href={comparaisonHref} className="fx-cta-link">
+                  {t("fx.natcmp.link")} →
+                </Link>
+              )}
+            </nav>
           )}
 
           {/* Honest axis note: this is NATURE, not fonction */}

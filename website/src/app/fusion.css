@@ -15726,3 +15726,41 @@ body:has(.theme-db-scrolly) { background: #fafaf7 !important; color: var(--p-ink
 /* Neutral term-definition affordance (native title tooltip; no value judgement) */
 .theme-fusion .fx-def { text-decoration: underline dotted; text-underline-offset: 3px; cursor: help; }
 .theme-fusion .fx-def:focus-visible { outline: 2px solid var(--fx-ink, #0a0a0a); outline-offset: 2px; border-radius: 2px; }
+
+/* Peer comparison — comparaison à la strate (positional, no value judgement) */
+.theme-fusion .fx-cmp-peerline { font-size: 15px; color: var(--fx-muted, #6b6b6b); margin: 4px 0 22px; }
+.theme-fusion .fx-cmp { display: flex; flex-direction: column; gap: 22px; margin: 8px 0 26px; }
+.theme-fusion .fx-cmp-legend { display: flex; gap: 22px; font-size: 12px; letter-spacing: .04em; text-transform: uppercase; color: var(--fx-muted, #6b6b6b); }
+.theme-fusion .fx-cmp-legend-item { display: inline-flex; align-items: center; gap: 8px; }
+.theme-fusion .fx-cmp-swatch { display: inline-block; }
+.theme-fusion .fx-cmp-swatch.is-commune { width: 14px; height: 11px; border-radius: 2px; background: var(--fx-ink, #0a0a0a); }
+.theme-fusion .fx-cmp-swatch.is-median { width: 2px; height: 15px; background: #8a8a8a; }
+.theme-fusion .fx-cmp-row { display: flex; flex-direction: column; gap: 8px; }
+.theme-fusion .fx-cmp-head { display: flex; justify-content: space-between; align-items: baseline; gap: 10px 16px; flex-wrap: wrap; }
+.theme-fusion .fx-cmp-label { font-size: 15px; font-weight: 600; color: var(--fx-ink, #0a0a0a); }
+.theme-fusion .fx-cmp-nums { font-size: 14px; color: var(--fx-muted, #6b6b6b); display: inline-flex; gap: 14px; align-items: baseline; }
+.theme-fusion .fx-cmp-nums b { color: var(--fx-ink, #0a0a0a); font-weight: 700; }
+.theme-fusion .fx-cmp-med { color: var(--fx-muted, #9a9a9a); }
+.theme-fusion .fx-cmp-delta { color: var(--fx-muted, #6b6b6b); }
+.theme-fusion .fx-cmp-track { position: relative; height: 18px; background: var(--fx-hair, #ececec); border-radius: 4px; }
+.theme-fusion .fx-cmp-fill { position: absolute; left: 0; top: 0; height: 100%; min-width: 2px; background: var(--fx-ink, #0a0a0a); border-radius: 4px 0 0 4px; }
+/* Median marker reads on both the black fill and the light track (white core + dark halo) */
+.theme-fusion .fx-cmp-median-mark { position: absolute; top: -4px; height: 26px; width: 2px; background: #fff; box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.5); }
+
+/* ── Marchés publics (national) ───────────────────────────────────────────── */
+.theme-fusion .fx-marches-list { list-style: none; margin: 0; padding: 0; }
+.theme-fusion .fx-marche-row {
+  display: grid; grid-template-columns: 1fr auto; gap: 2px 16px; align-items: baseline;
+  padding: 12px 0; border-bottom: 1px solid var(--fx-line, #ececec);
+}
+.theme-fusion .fx-marche-obj { grid-column: 1; font-weight: 600; font-size: 15px; }
+.theme-fusion .fx-marche-meta { grid-column: 1; font-size: 13px; color: var(--fx-muted, #6b6b6b); }
+.theme-fusion .fx-marche-val { grid-column: 2; grid-row: 1 / span 2; font-weight: 700; color: #c12323; align-self: center; }
+.theme-fusion .fx-natlinks { display: flex; gap: 10px; flex-wrap: wrap; margin: 20px 0 4px; }
+
+/* ── Évolution (trajectoire SVG) ──────────────────────────────────────────── */
+.theme-fusion .fx-evolchart { width: 100%; height: auto; }
+.theme-fusion .fx-evol-axis { font-size: 11px; fill: var(--fx-muted, #9a9a9a); font-variant-numeric: tabular-nums; }
+.theme-fusion .fx-evol-legend { display: flex; gap: 18px; flex-wrap: wrap; margin: 20px 0 4px; }
+.theme-fusion .fx-evol-leg { display: inline-flex; align-items: center; gap: 7px; font-size: 14px; color: var(--fx-muted, #4a4a4a); }
+.theme-fusion .fx-evol-dot { width: 12px; height: 12px; border-radius: 3px; display: inline-block; }

@@ -105,3 +105,10 @@ export function loadAllCommunesSource(): {
 export function listAllCommunesMeta(): AllCommunesMeta["communes_meta"] {
   return loadMeta()?.communes_meta ?? [];
 }
+
+export type { AllCommunesIndex };
+/** Full national index (year, KPI keys/labels, every commune by INSEE). Backs
+ *  the peer-comparison compute — build-time only, no BigQuery. */
+export function loadAllCommunesIndex(): AllCommunesIndex | null {
+  return loadIndex();
+}

@@ -135,6 +135,14 @@ export default async function CityPage({
               capaciteDesend,
               year: src.year,
             }}
+            marchesHref={caps.marches ? `/fr/city/${slim.slug}/marches` : undefined}
+            investissementsHref={
+              caps.investissements ? `/fr/city/${slim.slug}/investissements` : undefined
+            }
+            evolutionHref={caps.evolution ? `/fr/city/${slim.slug}/evolution` : undefined}
+            comparaisonHref={
+              caps.comparaison ? `/fr/city/${slim.slug}/comparaison` : undefined
+            }
           />
         );
       }
