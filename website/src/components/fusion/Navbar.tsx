@@ -10,8 +10,10 @@ import LangSwitcher from "./LangSwitcher";
 import {
   NATIONAL_NAV_LINKS,
   villeNavLinks,
+  communeNavLinks,
   EXACT_MATCH_HREFS,
 } from "./nav-links";
+import { useCommuneNav, type CommuneNav } from "@/components/CommuneNavContext";
 import { useT } from "@/lib/localeContext";
 import { useTrack } from "@/lib/analyticsContext";
 import { getPlace } from "@/lib/places";
@@ -20,6 +22,7 @@ import { useDrawerOpen } from "@/lib/drawerState";
 // France scope is on any /fr/national/* page, /comparer, or the Daily Bread tool.
 function isFranceScope(pathname: string): boolean {
   return (
+    pathname === "/fr/national" ||
     pathname.startsWith("/fr/national/") ||
     pathname === "/comparer" ||
     pathname.startsWith("/comparer/") ||
@@ -28,9 +31,11 @@ function isFranceScope(pathname: string): boolean {
 }
 
 // Pick the right top-nav link set based on the current pathname.
-// National scope → France links; ville scope → /fr/city/[slug]/* (default Paris).
-function navLinksForPath(pathname: string) {
+// National scope → France links; commune scope → data-derived sections (a
+// national tail commune from context); ville scope → /fr/city/[slug]/*.
+function navLinksForPath(pathname: string, commune: CommuneNav | null) {
   if (isFranceScope(pathname)) return NATIONAL_NAV_LINKS;
+  if (commune) return communeNavLinks(commune.slug, commune.sections);
   const m = pathname.match(/^\/fr\/city\/([^/]+)/);
   return villeNavLinks(m ? m[1] : "paris");
 }
@@ -46,7 +51,8 @@ function currentFrSlug(pathname: string): string {
 
 export default function Navbar() {
   const pathname = usePathname() ?? "/";
-  const navLinks = navLinksForPath(pathname);
+  const commune = useCommuneNav();
+  const navLinks = navLinksForPath(pathname, commune);
   const frSlug = currentFrSlug(pathname);
   const frPlace = getPlace(frSlug);
   // Show the generic POC banner only where the place doesn't render its own WIP

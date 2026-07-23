@@ -21,7 +21,8 @@ import {
   getPlace,
   type Place,
 } from "@/lib/places";
-import { citySectionLinks, cityHasAnalyses } from "@/components/fusion/nav-links";
+import { citySectionLinks, communeSectionLinks, cityHasAnalyses } from "@/components/fusion/nav-links";
+import type { CommuneNav } from "@/components/CommuneNavContext";
 
 export type FooterLink = { href: string; label: string; external?: boolean };
 
@@ -70,15 +71,27 @@ function footerCitySlug(pathname: string): string {
   return m ? m[1] : "paris";
 }
 
-export function franceFooterModel(pathname: string, t: T, year: number): FooterModel {
+export function franceFooterModel(
+  pathname: string,
+  t: T,
+  year: number,
+  commune?: CommuneNav | null,
+): FooterModel {
   const citySlug = footerCitySlug(pathname);
-  const placeHeading = getPlace(citySlug)?.name ?? citySlug.charAt(0).toUpperCase() + citySlug.slice(1);
+  // National tail commune (not in the registry) → its own name + DATA-DERIVED
+  // sections, so the footer never advertises a Paris-shaped link that 404s.
+  const placeHeading =
+    commune?.nom ?? getPlace(citySlug)?.name ?? citySlug.charAt(0).toUpperCase() + citySlug.slice(1);
 
   // Analyses is city editorial (it sits in the place's nav), so it belongs in
   // the place column — NOT "The project". Method stays project-level: a single
   // shared /methode ("how we work") is cheaper to maintain than per-city ones.
-  const sections = citySectionLinks(citySlug).map((l) => ({ href: l.href, label: t(l.labelKey) }));
-  if (cityHasAnalyses(citySlug)) sections.push({ href: "/analyses", label: t("fx.foot.link.analyses") });
+  const sections = (commune
+    ? communeSectionLinks(commune.slug, commune.sections)
+    : citySectionLinks(citySlug)
+  ).map((l) => ({ href: l.href, label: t(l.labelKey) }));
+  if (!commune && cityHasAnalyses(citySlug))
+    sections.push({ href: "/analyses", label: t("fx.foot.link.analyses") });
 
   const project: FooterLink[] = [
     { href: "/methode", label: t("fx.foot.link.methode") },

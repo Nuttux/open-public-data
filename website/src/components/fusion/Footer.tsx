@@ -3,6 +3,7 @@
 import { usePathname } from "next/navigation";
 import { useT } from "@/lib/localeContext";
 import { franceFooterModel } from "@/lib/footer-model";
+import { useCommuneNav } from "@/components/CommuneNavContext";
 import SiteFooter from "@/components/SiteFooter";
 import ReplayOptIn from "./ReplayOptIn";
 
@@ -15,7 +16,9 @@ import ReplayOptIn from "./ReplayOptIn";
 export default function Footer() {
   const t = useT();
   const pathname = usePathname() ?? "/";
+  // National tail commune → its DATA-DERIVED sections (no Paris-shaped fallback).
+  const commune = useCommuneNav();
   const year = new Date().getFullYear();
-  const model = franceFooterModel(pathname, t, year);
+  const model = franceFooterModel(pathname, t, year, commune);
   return <SiteFooter model={model} optIn={<ReplayOptIn />} />;
 }

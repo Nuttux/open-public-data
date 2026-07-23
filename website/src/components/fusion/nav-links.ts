@@ -60,6 +60,37 @@ export function villeNavLinks(citySlug: string): NavLink[] {
   return links;
 }
 
+// Section id → { url suffix, label key } for a national commune. Only the
+// pages that actually exist nationally are listed here; the nav is then built
+// from the commune's DATA-DERIVED sections (getCommuneCapabilities), so a tail
+// commune never gets a Paris-shaped link that 404s.
+const COMMUNE_SECTION_META: Record<string, { suffix: string; labelKey: string }> = {
+  budget:          { suffix: "/budget",         labelKey: "fx.nav.link.budget" },
+  comparaison:     { suffix: "/comparaison",     labelKey: "fx.natcmp.link" },
+  investissements: { suffix: "/investissements", labelKey: "fx.nav.link.invest" },
+  marches:         { suffix: "/marches",         labelKey: "fx.nav.link.marches" },
+  evolution:       { suffix: "/evolution",       labelKey: "fx.natev.link" },
+};
+
+// A national commune's section links, built from its DATA-DERIVED sections —
+// the SINGLE source shared by the top nav and the footer (mirrors how
+// citySectionLinks unifies the registry cities), so the two never drift and a
+// tail commune never shows a Paris-shaped link that 404s.
+export function communeSectionLinks(slug: string, sections: string[]): NavLink[] {
+  return sections
+    .map((s) => COMMUNE_SECTION_META[s])
+    .filter((m): m is { suffix: string; labelKey: string } => Boolean(m))
+    .map((m) => ({ href: `/fr/city/${slug}${m.suffix}`, labelKey: m.labelKey }));
+}
+
+// Top-nav links for a national commune (Home + its real sections).
+export function communeNavLinks(slug: string, sections: string[]): NavLink[] {
+  return [
+    { href: "/", labelKey: "fx.nav.link.home" },
+    ...communeSectionLinks(slug, sections),
+  ];
+}
+
 // Hrefs that should match exactly (not startsWith) for the active state.
 // `/` would otherwise match every page.
 export const EXACT_MATCH_HREFS = new Set<string>(["/"]);

@@ -4,6 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { useT } from "@/lib/localeContext";
+import { useCommuneNav } from "@/components/CommuneNavContext";
 import {
   placesByCountry,
   currentPlace,
@@ -41,6 +42,9 @@ export default function PlaceSwitcher({
   const wrapRef = useRef<HTMLSpanElement>(null);
   const pathname = usePathname() ?? "/";
   const t = useT();
+  // National tail commune (not in the place registry) — name it in the switcher
+  // instead of the generic "Explorer" fallback.
+  const commune = useCommuneNav();
 
   // "Find my city" opens France's search modal on French pages; from US/BR it
   // sends you to the French home where that search lives.
@@ -78,7 +82,11 @@ export default function PlaceSwitcher({
     ? groups.flatMap((g) => g.places).find((p) => p.slug === activeSlug)
     : undefined;
   const label = (p: Place) => p.name ?? t(p.labelKey);
-  const triggerLabel = active ? label(active) : t("chrome.switch.label");
+  const triggerLabel = active
+    ? label(active)
+    : commune
+    ? commune.nom
+    : t("chrome.switch.label");
 
   const triggerClass =
     variant === "h1" ? "fx-scope fx-scope-h1" :
