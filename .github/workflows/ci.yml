@@ -11,14 +11,14 @@ name: CI
 # Les jobs e2e + lighthouse partagent le .next via artifact pour éviter
 # de rebuild 3 fois (économie ~6 min wall-time).
 
-# ⚠️ Auto-triggers désactivés jusqu'au 2026-06-01 (free tier Actions épuisé).
-# Réactiver les `pull_request:` et `push:` blocks ci-dessous après reset
-# du quota. Pour l'instant, workflow_dispatch uniquement (lancement manuel).
+# Auto-triggers actifs : gate sur les PRs et les pushes vers `main` et `test`
+# (réactivés le 2026-07-23 après reset du quota Actions). `workflow_dispatch`
+# reste disponible pour les lancements manuels.
 on:
-  # pull_request:
-  #   branches: [main, test]
-  # push:
-  #   branches: [main, test]
+  pull_request:
+    branches: [main, test]
+  push:
+    branches: [main, test]
   workflow_dispatch:
 
 concurrency:
