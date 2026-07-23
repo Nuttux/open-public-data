@@ -146,6 +146,8 @@ models:
         description: "Année fiscale"
         tests:
           - not_null
+      - name: beneficiaire_id
+        description: "Clé stable de l'entité (dim_beneficiaire). Rattache l'enrichissement à un id, pas au nom."
       - name: beneficiaire_normalise
         description: "Nom bénéficiaire normalisé"
       - name: montant

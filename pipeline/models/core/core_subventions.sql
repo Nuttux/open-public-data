@@ -2,17 +2,21 @@
 -- Core: Subventions (OBT, ex-int_subventions_enrichies aplatie)
 --
 -- Sources:
---   - stg_subventions_all                   (lignes brutes)
---   - stg_associations                      (siret + direction + objet par asso)
---   - stg_mapping_beneficiaires             (regex pattern → thematique)
---   - stg_mapping_directions                (direction → thematique)
---   - stg_cache_thematique_beneficiaires    (cache LLM thematique)
---   - stg_mapping_entites                   (regex pattern → nom canonique)
+--   - stg_subventions_all       (lignes brutes)
+--   - stg_associations          (siret + direction + objet par asso, niveau année)
+--   - dim_beneficiaire          (registre d'identité : beneficiaire_id +
+--                                enrichissement niveau-entité pattern/llm/canon)
+--   - stg_mapping_directions    (direction → thematique)
 --
 -- Grain: une ligne par subvention (cle_technique).
 --
 -- Pas de géolocalisation : les subventions vont à des organisations, pas à des
 -- lieux. L'adresse du siège ne reflète pas où l'action est menée.
+--
+-- NB (registre) : la normalisation + les jointures de cache (pattern/llm/canon)
+-- vivent désormais dans dim_beneficiaire (un seul endroit, testé contre la
+-- dérive). Ce modèle REJOINT le dim au lieu de ré-implémenter ces CTE — le
+-- SIRET/direction/objet niveau-année restent tirés de stg_associations.
 --
 -- Enrichissements (ode_*) :
 --   - ode_thematique         (cascade: pattern → direction → llm → default)
@@ -21,6 +25,7 @@
 --   - ode_type_organisme     (public | association | entreprise | …)
 --   - ode_contribution_nature (bool)
 --   - ode_beneficiaire_canonique (déduplication CASP etc.)
+--   - beneficiaire_id        (clé stable du registre dim_beneficiaire)
 --
 -- Output: ~53k lignes, 2018-2024.
 -- =============================================================================
@@ -33,20 +38,13 @@ associations AS (
     SELECT * FROM {{ ref('stg_associations') }}
 ),
 
-mapping_beneficiaires AS (
-    SELECT * FROM {{ ref('stg_mapping_beneficiaires') }}
-),
-
 mapping_directions AS (
     SELECT * FROM {{ ref('stg_mapping_directions') }}
 ),
 
-cache_thematique AS (
-    SELECT * FROM {{ ref('stg_cache_thematique_beneficiaires') }}
-),
-
-mapping_entites AS (
-    SELECT * FROM {{ ref('stg_mapping_entites') }}
+-- Registre d'identité : beneficiaire_id + enrichissement niveau-entité.
+dim AS (
+    SELECT * FROM {{ ref('dim_beneficiaire') }}
 ),
 
 -- ─── ÉTAPE 1 : Dédupliquer associations pour le JOIN ───────────────────────────
@@ -83,62 +81,9 @@ associations_unique AS (
     WHERE rn = 1
 ),
 
--- ─── ÉTAPE 2 : Pattern matching pour thematique ────────────────────────────────
-distinct_beneficiaires AS (
-    SELECT DISTINCT beneficiaire_normalise
-    FROM subventions
-    WHERE beneficiaire_normalise IS NOT NULL
-),
-
-pattern_matches AS (
-    SELECT
-        b.beneficiaire_normalise,
-        m.thematique,
-        m.sous_categorie,
-        m.priorite,
-        ROW_NUMBER() OVER (
-            PARTITION BY b.beneficiaire_normalise
-            -- Tie-break on the pattern text so equal-priority regex matches
-            -- resolve deterministically (else thematique can flip between builds).
-            ORDER BY m.priorite ASC, m.pattern ASC
-        ) AS rn
-    FROM distinct_beneficiaires b
-    CROSS JOIN mapping_beneficiaires m
-    WHERE REGEXP_CONTAINS(b.beneficiaire_normalise, m.pattern)
-),
-
-best_pattern AS (
-    SELECT
-        beneficiaire_normalise,
-        thematique AS pattern_thematique,
-        sous_categorie AS pattern_sous_categorie
-    FROM pattern_matches
-    WHERE rn = 1
-),
-
--- ─── ÉTAPE 3 : Canonicalisation entité (CASP etc.) ─────────────────────────────
-entity_matches AS (
-    SELECT
-        b.beneficiaire_normalise,
-        e.nom_canonique,
-        ROW_NUMBER() OVER (
-            PARTITION BY b.beneficiaire_normalise
-            -- Tie-break on the pattern text so equal-length patterns resolve
-            -- to a fixed canonical name across builds.
-            ORDER BY LENGTH(e.pattern) DESC, e.pattern ASC
-        ) AS rn
-    FROM distinct_beneficiaires b
-    CROSS JOIN mapping_entites e
-    WHERE REGEXP_CONTAINS(b.beneficiaire_normalise, e.pattern)
-),
-
-best_entity AS (
-    SELECT beneficiaire_normalise, nom_canonique
-    FROM entity_matches
-    WHERE rn = 1
-),
-
--- ─── ÉTAPE 4 : JOIN des enrichissements ────────────────────────────────────────
+-- ─── ÉTAPE 2 : JOIN des enrichissements ────────────────────────────────────────
+-- Année-level : associations (siret/direction/objet). Entité-level : dim
+-- (pattern/llm thematique, nom canonique, beneficiaire_id).
 joined AS (
     SELECT
         s.*,
@@ -146,27 +91,24 @@ joined AS (
         a.direction,
         a.objet,
         a.secteurs_activite,
-        bp.pattern_thematique,
-        bp.pattern_sous_categorie,
+        d.beneficiaire_id,
+        d.pattern_thematique,
+        d.pattern_sous_categorie,
         md.thematique AS direction_thematique,
-        ct.ode_thematique AS llm_thematique,
-        ct.ode_sous_categorie AS llm_sous_categorie,
-        be.nom_canonique AS matched_nom_canonique
+        d.llm_thematique,
+        d.llm_sous_categorie,
+        d.nom_canonique AS matched_nom_canonique
     FROM subventions s
     LEFT JOIN associations_unique a
         ON s.beneficiaire_normalise = a.beneficiaire_normalise
         AND s.annee = a.annee
-    LEFT JOIN best_pattern bp
-        ON s.beneficiaire_normalise = bp.beneficiaire_normalise
+    LEFT JOIN dim d
+        ON s.beneficiaire_normalise = d.beneficiaire_normalise
     LEFT JOIN mapping_directions md
         ON a.direction = md.direction
-    LEFT JOIN cache_thematique ct
-        ON s.beneficiaire_normalise = ct.beneficiaire_normalise
-    LEFT JOIN best_entity be
-        ON s.beneficiaire_normalise = be.beneficiaire_normalise
 )
 
--- ─── ÉTAPE 5 : Construction des colonnes ode_* ─────────────────────────────────
+-- ─── ÉTAPE 3 : Construction des colonnes ode_* ─────────────────────────────────
 SELECT
     annee,
     beneficiaire,
@@ -178,6 +120,9 @@ SELECT
     collectivite,
     donnees_disponibles,
     cle_technique,
+
+    -- Clé stable du registre d'identité (survit à la dérive de normalisation).
+    beneficiaire_id,
 
     siret,
     direction,
