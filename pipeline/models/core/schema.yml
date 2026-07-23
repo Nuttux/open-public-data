@@ -137,6 +137,11 @@ models:
     config:
       materialized: table
     columns:
+      - name: cle_technique
+        description: "Clé technique unique — grain de l'OBT (1 ligne / subvention)."
+        tests:
+          - not_null
+          - unique
       - name: annee
         description: "Année fiscale"
         tests:
