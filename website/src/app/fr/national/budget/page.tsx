@@ -489,18 +489,7 @@ export default async function FranceBudgetPage({
               title={t("budget.cross_cutting.section.title")}
               subtitle={t("budget.cross_cutting.section.intro")}
             />
-            <div
-              style={{
-                display: "flex",
-                flexWrap: "wrap",
-                gap: "8px 20px",
-                marginTop: 18,
-                fontFamily: "'JetBrains Mono', ui-monospace, monospace",
-                fontSize: 12,
-                letterSpacing: "0.02em",
-                color: "var(--muted)",
-              }}
-            >
+            <div className="fx-cct-legend">
               {[
                 { c: "#2a3680", label: t("budget.section.treemap.legend.secu") },
                 { c: "#1a1d26", label: t("budget.section.treemap.legend.etat") },
@@ -508,13 +497,11 @@ export default async function FranceBudgetPage({
                 { c: "#a01b1b", label: locale === "en" ? "Departments" : "Départements" },
                 { c: "#7a1414", label: locale === "en" ? "Regions" : "Régions" },
               ].map((l) => (
-                <span
-                  key={l.label}
-                  style={{ display: "inline-flex", alignItems: "center", gap: 7 }}
-                >
+                <span key={l.label} className="fx-cct-legend-item">
                   <span
                     aria-hidden="true"
-                    style={{ width: 11, height: 11, borderRadius: 2, background: l.c }}
+                    className="fx-cct-legend-sw"
+                    style={{ background: l.c }}
                   />
                   {l.label}
                 </span>

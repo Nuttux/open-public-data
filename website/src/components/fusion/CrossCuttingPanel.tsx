@@ -34,6 +34,15 @@ const COLOR_BY_BUCKET: Record<CrossCuttingBucket, string> = {
   local_region: "#7a1414",
 };
 
+/** Legend order — the summary bar draws one segment per level of government. */
+const BUCKET_ORDER: CrossCuttingBucket[] = [
+  "secu",
+  "etat",
+  "local_communal",
+  "local_dept",
+  "local_region",
+];
+
 function fmtBnEur(amountEur: number, locale: "fr" | "en"): string {
   if (!Number.isFinite(amountEur) || amountEur <= 0) return "—";
   const md = amountEur / 1e9;
@@ -84,16 +93,27 @@ export default function CrossCuttingPanel({
   const themeSubtitle = locale === "en" ? theme.subtitle_en : theme.subtitle_fr;
   const caveats = locale === "en" ? theme.caveats_en : theme.caveats_fr;
 
+  // Summary bar: one segment per level of government (the 5 legend colors),
+  // summing all missions funded by that level. Individual missions stay
+  // visible in the expanded list below.
+  const byBucket = new Map<CrossCuttingBucket, number>();
+  for (const c of components) {
+    byBucket.set(c.bucket, (byBucket.get(c.bucket) ?? 0) + c.annual_eur);
+  }
+  const segments = BUCKET_ORDER.filter((b) => (byBucket.get(b) ?? 0) > 0).map(
+    (b) => ({ bucket: b, annual_eur: byBucket.get(b) as number }),
+  );
+
   const stack = (
     <div style={stackWrapStyle} role="presentation" aria-hidden="true">
-      {components.map((c) => {
-        const pct = totalAnnual > 0 ? (c.annual_eur / totalAnnual) * 100 : 0;
+      {segments.map((s) => {
+        const pct = totalAnnual > 0 ? (s.annual_eur / totalAnnual) * 100 : 0;
         const segStyle: CSSProperties = {
-          flex: `${c.annual_eur} 1 0`,
-          background: COLOR_BY_BUCKET[c.bucket],
+          flex: `${s.annual_eur} 1 0`,
+          background: COLOR_BY_BUCKET[s.bucket],
           minWidth: pct >= 1.2 ? undefined : 6,
         };
-        return <div key={c.key} style={segStyle} />;
+        return <div key={s.bucket} style={segStyle} />;
       })}
     </div>
   );
