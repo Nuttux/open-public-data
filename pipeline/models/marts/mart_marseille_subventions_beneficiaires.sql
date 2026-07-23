@@ -43,4 +43,6 @@ SELECT
     *,
     CURRENT_TIMESTAMP() AS _dbt_updated_at
 FROM aggregees
-ORDER BY annee DESC, montant_total DESC
+-- Deterministic tie-break (see Paris mart): equal montant_total must not
+-- reshuffle between builds.
+ORDER BY annee DESC, montant_total DESC, beneficiaire_normalise ASC, beneficiaire ASC

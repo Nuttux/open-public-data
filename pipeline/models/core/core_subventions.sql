@@ -98,7 +98,9 @@ pattern_matches AS (
         m.priorite,
         ROW_NUMBER() OVER (
             PARTITION BY b.beneficiaire_normalise
-            ORDER BY m.priorite ASC
+            -- Tie-break on the pattern text so equal-priority regex matches
+            -- resolve deterministically (else thematique can flip between builds).
+            ORDER BY m.priorite ASC, m.pattern ASC
         ) AS rn
     FROM distinct_beneficiaires b
     CROSS JOIN mapping_beneficiaires m
@@ -121,7 +123,9 @@ entity_matches AS (
         e.nom_canonique,
         ROW_NUMBER() OVER (
             PARTITION BY b.beneficiaire_normalise
-            ORDER BY LENGTH(e.pattern) DESC
+            -- Tie-break on the pattern text so equal-length patterns resolve
+            -- to a fixed canonical name across builds.
+            ORDER BY LENGTH(e.pattern) DESC, e.pattern ASC
         ) AS rn
     FROM distinct_beneficiaires b
     CROSS JOIN mapping_entites e

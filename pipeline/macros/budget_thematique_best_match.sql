@@ -34,7 +34,10 @@ thematique_matches AS (
             ORDER BY
                 -- Priorité au match spécifique (fonction_prefix non NULL)
                 CASE WHEN m.fonction_prefix IS NOT NULL THEN 0 ELSE 1 END,
-                m.fonction_prefix DESC NULLS LAST
+                m.fonction_prefix DESC NULLS LAST,
+                -- Tie-break: same chapitre + same-length prefix, different
+                -- thematique must resolve deterministically across builds.
+                m.thematique ASC
         ) AS rn
     FROM distinct_combos c
     INNER JOIN {{ mapping_cte }} m

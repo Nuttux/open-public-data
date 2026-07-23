@@ -117,7 +117,10 @@ def fetch_beneficiaires_data(client: bigquery.Client, year: int = None, limit: i
         siret
     FROM `{PROJECT_ID}.{DATASET}.mart_{TABLE_PREFIX}subventions_beneficiaires`
     {year_filter}
-    ORDER BY annee DESC, montant_total DESC
+    -- Tie-break on the grain's stable string key so rows with identical
+    -- montant_total (very common on round amounts) return in a fixed order —
+    -- otherwise the JSON reshuffles every run and floods the parity diff.
+    ORDER BY annee DESC, montant_total DESC, beneficiaire_normalise ASC, beneficiaire ASC
     {limit_clause}
     """
 
@@ -376,7 +379,9 @@ def export_beneficiaires_search(years: list):
             if not cur["siret"] and row.get("siret"):
                 cur["siret"] = row["siret"]
 
-    data = sorted(merged.values(), key=lambda r: -r["totalAmount"])
+    # Tie-break on the normalized key so equal-amount beneficiaries keep a
+    # stable order across runs (feeds beneficiaires_search.json + swarm_*.json).
+    data = sorted(merged.values(), key=lambda r: (-r["totalAmount"], r["norm"]))
 
     output = {
         "generated_at": datetime.now().isoformat(),

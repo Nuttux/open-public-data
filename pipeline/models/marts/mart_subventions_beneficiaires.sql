@@ -45,4 +45,7 @@ SELECT
     *,
     CURRENT_TIMESTAMP() AS _dbt_updated_at
 FROM aggregees
-ORDER BY annee DESC, montant_total DESC
+-- Deterministic tie-break: many beneficiaries share identical montant_total,
+-- so without a unique final key the row order (and any downstream export) is
+-- non-reproducible between builds.
+ORDER BY annee DESC, montant_total DESC, beneficiaire_normalise ASC, beneficiaire ASC
