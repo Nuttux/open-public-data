@@ -20,6 +20,7 @@ from __future__ import annotations
 
 import csv
 import json
+import sys
 from collections import Counter
 from pathlib import Path
 
@@ -90,6 +91,39 @@ def process_file(path: Path, mapping: dict[str, str]) -> int:
     return total
 
 
+# Drift guard. The friendly seed keys on the technical LABEL string, so when the
+# Ville renames a nature (M57 wording drifts), the match silently stops firing
+# and budget lines quietly revert to raw jargon. This floor turns that SILENT
+# decay into a LOUD build failure. Current coverage of shown budget € is ~20%;
+# the floor sits below that with margin, so a real collapse (seed fully missing
+# the data) trips it but normal year-to-year wobble does not. Raise the floor
+# once the labels are re-keyed on nature_code + the editorial pass lands.
+FRIENDLY_COVERAGE_FLOOR = 0.12
+
+
+def budget_label_coverage() -> dict[str, float]:
+    """Share of shown budget-sankey € carrying a friendly (rewritten) label,
+    per file. name_original is set only when a rewrite happened."""
+    cov: dict[str, float] = {}
+    for path in sorted(DATA_DIR.glob("budget_sankey_*.json")):
+        try:
+            data = json.loads(path.read_text(encoding="utf-8"))
+        except (json.JSONDecodeError, OSError):
+            continue
+        total = 0.0
+        friendly = 0.0
+        for parts in (data.get("bySection") or {}).values():
+            for body in parts.values():
+                for it in (body.get("items") or []):
+                    v = it.get("value", 0) or 0
+                    total += v
+                    if it.get("name_original") and it.get("name") != it.get("name_original"):
+                        friendly += v
+        if total > 0:
+            cov[path.name] = friendly / total
+    return cov
+
+
 def main():
     mapping = load_mapping()
     print(f"Loaded mapping: {len(mapping)} entries")
@@ -100,6 +134,18 @@ def main():
             continue
         if n > 0:
             print(f"  {path.name}: {n} labels rewritten")
+
+    # Drift guard — fail loudly if the budget label mapping has decayed.
+    below = {f: c for f, c in budget_label_coverage().items() if c < FRIENDLY_COVERAGE_FLOOR}
+    if below:
+        print(
+            f"\n✗ friendly-label coverage below floor ({FRIENDLY_COVERAGE_FLOOR:.0%}) — "
+            f"the label seed has likely drifted from the source wording:",
+            file=sys.stderr,
+        )
+        for f, c in sorted(below.items()):
+            print(f"    {f}: {c:.1%}", file=sys.stderr)
+        sys.exit(1)
 
 
 if __name__ == "__main__":
