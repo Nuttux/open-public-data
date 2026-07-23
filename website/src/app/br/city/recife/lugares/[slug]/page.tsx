@@ -8,7 +8,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const { slug } = await params;
   const p = loadPlace(slug);
   if (!p) return { title: { absolute: "Recife" } };
-  return { title: { absolute: `${p.nome} · Recife` } };
+  return { title: `${p.nome} — Recife` };
 }
 
 export default async function LugarPage({ params }: { params: Promise<{ slug: string }> }) {

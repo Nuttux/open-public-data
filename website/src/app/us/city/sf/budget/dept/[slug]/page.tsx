@@ -33,7 +33,7 @@ export async function generateMetadata({
   }
   const name = dept.display_name ?? dept.label;
   return {
-    title: { absolute: `${name} — San Francisco budget FY${year}` },
+    title: `${name} — San Francisco budget FY${year}`,
     description: `${name}: adopted budget by spending type, offsets and adopted-vs-executed — San Francisco fiscal year ${year}.`,
     alternates: { canonical: `/us/city/sf/budget/dept/${slug}` },
   };

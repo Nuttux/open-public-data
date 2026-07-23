@@ -28,7 +28,7 @@ export async function generateMetadata({ params }: { params: Promise<Params> }):
   const c = fiche.contract;
   const title = `${(c.title_plain || c.title || `Contract ${c.contract_no}`).slice(0, 70)} — SF contract ${c.contract_no}`;
   return {
-    title: { absolute: title },
+    title,
     description: `San Francisco supplier contract ${c.contract_no} — ${c.prime_contractor ?? "unnamed prime"}, ${c.department ?? "City and County of San Francisco"}. Agreed and paid amounts, payment curve and project team from the SF Controller's open data.`,
   };
 }

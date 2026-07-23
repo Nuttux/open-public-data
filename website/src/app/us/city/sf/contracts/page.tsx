@@ -9,7 +9,7 @@ import { loadSfContractsActive, loadSfContractsOverview } from "./data";
  * the US side has no public brand yet.
  */
 export const metadata: Metadata = {
-  title: { absolute: "US · San Francisco — Contracts" },
+  title: "San Francisco — Contracts",
   description:
     "San Francisco's supplier-contract register: what's active today, grants the City gives out, the sole-source lens, LBE participation and per-contract payment curves — from the SF Controller's open data.",
 };

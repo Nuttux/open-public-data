@@ -12,11 +12,11 @@ import BudgetClient from "./BudgetClient";
 
 export async function generateMetadata(): Promise<Metadata> {
   return buildLocaleAwareMetadata({
-    title: "Le budget de Paris",
+    title: "Paris — Budget",
     description:
       "Recettes, dépenses et exécution du budget de la Ville de Paris. Flux complet, détail par thématique, évolution 2019-2026. Source : comptes administratifs M57.",
     en: {
-      title: "Paris budget",
+      title: "Paris — Budget",
       description:
         "Revenue, spending and execution of the Ville de Paris budget. Full flow, breakdown by theme, 2019–2026 trend. Source: M57 administrative accounts.",
     },

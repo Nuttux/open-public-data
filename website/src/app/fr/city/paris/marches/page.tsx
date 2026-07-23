@@ -7,11 +7,11 @@ import MarchesPublicsClient from "./MarchesPublicsClient";
 
 export async function generateMetadata(): Promise<Metadata> {
   return buildLocaleAwareMetadata({
-    title: "Marchés publics",
+    title: "Paris — Marchés publics",
     description:
       "Contrats attribués par la Ville de Paris : titulaires, catégories CPV, volumes. Enveloppes pluriannuelles, pas des dépenses annuelles.",
     en: {
-      title: "Public contracts",
+      title: "Paris — Public contracts",
       description:
         "Contracts awarded by the Ville de Paris: contractors, CPV categories, volumes. Multi-year envelopes, not annual spend.",
     },

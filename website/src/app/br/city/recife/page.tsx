@@ -5,7 +5,7 @@ import { buildRecifeLandingModel } from "@/lib/br/recife-landing-model";
 import type { Locale } from "@/lib/localeContext";
 
 export const metadata: Metadata = {
-  title: { absolute: "Recife · Dados Abertos" },
+  title: "Para onde vai o dinheiro público em Recife?",
   description:
     "O orçamento, os pagamentos e os contratos da Prefeitura do Recife — cada número ligado à sua fonte nos dados abertos da cidade.",
 };

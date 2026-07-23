@@ -12,7 +12,7 @@ export async function generateMetadata({
   const { cnpj } = await params;
   const rec = loadRecipient(cnpj);
   if (!rec) return { title: { absolute: "Recife" } };
-  return { title: { absolute: `${rec.nome} · Recife` }, description: `Pagamentos da Prefeitura do Recife a ${rec.nome}.` };
+  return { title: `${rec.nome} — Recife`, description: `Pagamentos da Prefeitura do Recife a ${rec.nome}.` };
 }
 
 export default async function RecebedorPage({ params }: { params: Promise<{ cnpj: string }> }) {

@@ -4,7 +4,7 @@ import { loadPlacesFile } from "@/lib/br/recife-places-data";
 import LugaresClient from "./LugaresClient";
 
 export const metadata: Metadata = {
-  title: { absolute: "Recife · Lugares" },
+  title: "Recife — Lugares",
   description:
     "As unidades de saúde, escolas, equipamentos culturais e esportivos e praças da Prefeitura do Recife, no mapa — dos dados abertos da cidade.",
 };

@@ -7,11 +7,11 @@ import InvestissementsClient from "./InvestissementsClient";
 
 export async function generateMetadata(): Promise<Metadata> {
   return buildLocaleAwareMetadata({
-    title: "Investissements",
+    title: "Paris — Investissements",
     description:
       "Les chantiers de Paris en un coup d'œil : projets, budgets, arrondissements. Investissements extraits des comptes administratifs et classifiés.",
     en: {
-      title: "Investments",
+      title: "Paris — Investments",
       description:
         "Paris construction projects at a glance: projects, budgets, districts. Investments extracted from the administrative accounts and classified.",
     },

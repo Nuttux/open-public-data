@@ -40,7 +40,7 @@ export async function generateMetadata({
   }
   const deptName = d.dept.display_name ?? d.dept.label;
   return {
-    title: { absolute: `${deptName} · ${d.character.label} — San Francisco budget FY${year}` },
+    title: `${deptName} · ${d.character.label} — San Francisco budget FY${year}`,
     description: `${deptName}'s ${d.character.label} spending: raw budget line items and the vendor payments that funded them — San Francisco fiscal year ${year}.`,
     alternates: { canonical: `/us/city/sf/budget/dept/${slug}/character/${charSlug}` },
   };

@@ -14,7 +14,7 @@ import type { UsDailyBread, UsDebtSeriesFile, UsDebtSlim } from "./us-types";
  * (working title only).
  */
 export const metadata: Metadata = {
-  title: { absolute: "US · National — where the federal dollar goes" },
+  title: "United States — Federal budget",
   description:
     "Federal receipts by source, outlays by budget function, the deficit and the national debt since 1790 — from the U.S. Treasury's Monthly Treasury Statement, Debt to the Penny and Census Bureau population estimates.",
 };

@@ -7,7 +7,7 @@ import EmptyState from "@/components/fusion/EmptyState";
 import { loadSfPlacesIndex } from "@/lib/us/sf-places-data";
 
 export const metadata: Metadata = {
-  title: { absolute: "US · San Francisco — Places" },
+  title: "San Francisco — Places",
   description:
     "Parks, libraries, hospitals, piers: for each San Francisco place, the city money that reaches it and the historical documents held at the Internet Archive — every fact linked to its source.",
 };

@@ -24,7 +24,7 @@ export async function generateMetadata({
   const place = loadSfPlace(slug);
   if (!place) return { title: { absolute: "Place not found" }, robots: { index: false } };
   return {
-    title: { absolute: `${place.name} — San Francisco` },
+    title: `${place.name} — San Francisco`,
     description:
       place.summary_en ??
       `${place.name}: the city money that reaches it and the documents held at the Internet Archive.`,

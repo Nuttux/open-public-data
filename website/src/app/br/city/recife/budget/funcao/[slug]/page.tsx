@@ -8,7 +8,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const { slug } = await params;
   const f = loadFuncao(slug);
   if (!f) return { title: { absolute: "Recife" } };
-  return { title: { absolute: `${f.funcao} · Recife` } };
+  return { title: `${f.funcao} — Recife` };
 }
 
 export default async function FuncaoPage({

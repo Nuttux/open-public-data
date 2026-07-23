@@ -23,7 +23,7 @@ import SfSourcesClient, { type SfSourcesPageData } from "./SfSourcesClient";
  * no France brand template on US routes.
  */
 export const metadata: Metadata = {
-  title: { absolute: "US · San Francisco — Sources" },
+  title: "San Francisco — Sources",
   description:
     "Where every figure on San Francisco's budget, payees, contracts and payroll pages comes from — the source datasets, perimeters, privacy rules and methodology, in one place.",
 };

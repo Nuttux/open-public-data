@@ -5,11 +5,11 @@ import MethodeClient from "./MethodeClient";
 
 export async function generateMetadata(): Promise<Metadata> {
   return buildLocaleAwareMetadata({
-    title: "Méthode — comment on construit nos chiffres",
+    title: "Méthode",
     description:
       "Architecture technique, sources, modèles dbt, enrichissements LLM, choix éditoriaux, limites et pipeline ouvert sous AGPL : la méthodologie complète derrière chaque outil de Qipu.",
     en: {
-      title: "Method — how we build our figures",
+      title: "Method",
       description:
         "Technical architecture, sources, dbt models, LLM enrichments, editorial choices, limits, and AGPL-licensed pipeline: the full methodology behind every tool on Qipu.",
     },

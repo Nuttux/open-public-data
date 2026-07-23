@@ -7,11 +7,11 @@ import LogementSocialClient from "./LogementSocialClient";
 
 export async function generateMetadata(): Promise<Metadata> {
   return buildLocaleAwareMetadata({
-    title: "Logement social",
+    title: "Paris — Logement social",
     description:
       "Le parc social parisien, la loi SRU et la tension locative. Données publiques reventilées par arrondissement et par bailleur.",
     en: {
-      title: "Social housing",
+      title: "Paris — Social housing",
       description:
         "The Paris social-housing stock, the SRU law, and rental pressure. Public data reaggregated by arrondissement and operator.",
     },

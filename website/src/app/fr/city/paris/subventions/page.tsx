@@ -7,11 +7,11 @@ import QuiRecoitClient from "./QuiRecoitClient";
 
 export async function generateMetadata(): Promise<Metadata> {
   return buildLocaleAwareMetadata({
-    title: "Qui reçoit l'argent public ?",
+    title: "Paris — Subventions",
     description:
       "Subventions versées par la Ville de Paris : bénéficiaires, thématiques, évolution. Données publiées en open data, reventilées et classifiées.",
     en: {
-      title: "Who receives public money?",
+      title: "Paris — Grants",
       description:
         "Grants paid by the Ville de Paris: beneficiaries, themes, trends. Open-data figures reaggregated and classified.",
     },

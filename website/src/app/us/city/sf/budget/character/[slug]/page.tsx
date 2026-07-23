@@ -36,7 +36,7 @@ export async function generateMetadata({
     return { title: { absolute: "Budget category not found" }, robots: { index: false } };
   }
   return {
-    title: { absolute: `${c.label} — San Francisco budget FY${year}` },
+    title: `${c.label} — San Francisco budget FY${year}`,
     description: `${c.label}: ${c.side} category of the San Francisco adopted budget, fiscal year ${year}, with its department breakdown.`,
     alternates: { canonical: `/us/city/sf/budget/character/${slug}` },
   };

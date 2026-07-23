@@ -12,7 +12,7 @@ export async function generateMetadata({
   const { id } = await params;
   const found = loadContrato(id);
   if (!found) return { title: { absolute: "Recife" } };
-  return { title: { absolute: `Contrato ${found.contrato.numero} · Recife` } };
+  return { title: `Contrato ${found.contrato.numero} — Recife` };
 }
 
 export default async function ContratoPage({ params }: { params: Promise<{ id: string }> }) {

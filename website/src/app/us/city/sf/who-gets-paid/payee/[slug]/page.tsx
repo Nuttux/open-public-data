@@ -21,7 +21,7 @@ export async function generateMetadata({ params }: { params: Promise<Params> }):
   const payee = loadSfPayee(slug);
   if (!payee) return { title: { absolute: "Payee not found" }, robots: { index: false } };
   return {
-    title: { absolute: `${payee.name} — paid by San Francisco` },
+    title: `${payee.name} — San Francisco`,
     description: `${payee.name}: ${fmtUsdCompact(payee.total_paid_usd)} paid by San Francisco ${payee.first_year}–${payee.last_year}, by department and contract.`,
     alternates: { canonical: `/us/city/sf/who-gets-paid/payee/${slug}` },
   };
