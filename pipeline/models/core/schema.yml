@@ -402,3 +402,39 @@ models:
         tests: [not_null]
       - name: montant
         tests: [not_null]
+
+  # ===========================================================================
+  # DIM BÉNÉFICIAIRES — registre d'identité persistant
+  # ===========================================================================
+  - name: dim_beneficiaire
+    meta:
+      domain: "subventions"
+      criticality: "high"
+      freshness_slo: "annual (CA published ~Jun N+1)"
+    description: |
+      Registre d'identité des bénéficiaires de subventions.
+
+      Grain: (beneficiaire_normalise) — une ligne par entité.
+
+      L'annexe CA ne porte pas de SIRET : l'identité repose sur un nom
+      normalisé. Ce dim est le SEUL endroit qui attribue un beneficiaire_id
+      stable et résout l'enrichissement niveau-entité (SIRET/SIREN, thématique,
+      nom canonique). Les faits en aval rejoignent ce dim au lieu de
+      ré-implémenter la normalisation + les jointures de cache.
+    config:
+      materialized: table
+    columns:
+      - name: beneficiaire_normalise
+        description: "Clé naturelle : nom normalisé (UPPER, sans articles/ponctuation)."
+        tests:
+          - not_null
+          - unique
+      - name: beneficiaire_id
+        description: "Clé de substitution stable (MD5 du nom normalisé), persistée via snap_dim_beneficiaire."
+        tests:
+          - not_null
+          - unique
+      - name: siret
+        description: "SIRET résolu (plus gros dossier associations), NULL si inconnu."
+      - name: siren
+        description: "9 premiers chiffres du SIRET, NULL si inconnu."
