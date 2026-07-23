@@ -44,6 +44,13 @@ for s in "${scripts[@]}"; do
   "$PY" "$EXPORT_DIR/$s" --city paris
 done
 
+# 2b. Apply the grand-public label pass. The real pipeline (export_all.py) runs
+# this as a mandatory post-step, so the committed JSON carries friendly labels +
+# name_original. The gate must mirror it — otherwise every re-export reverts to
+# raw M57 jargon and looks like a regression against the (friendly) baseline.
+echo "→ applying friendly labels (post)"
+"$PY" "$EXPORT_DIR/../audit/apply_friendly_labels.py"
+
 # 3. Tolerant compare regenerated (live) vs committed baseline.
 rc=0
 "$PY" "$EXPORT_DIR/verify_export_parity.py" "$BASELINE/$DATA_REL" "$REPO/$DATA_REL" || rc=$?
