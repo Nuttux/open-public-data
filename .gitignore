@@ -82,4 +82,5 @@ __pycache__/
 # build artifacts
 tsconfig.tsbuildinfo
 tmp-screenshots/
+screenshots/
 .claude/
