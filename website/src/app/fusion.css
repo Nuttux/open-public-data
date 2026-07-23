@@ -3932,6 +3932,11 @@ body:has(.theme-fusion) > div.pb-24 { padding-bottom: 0 !important; }
 .theme-fusion .fx-drawer-body {
   flex: 1;
   overflow-y: auto;
+  /* Guard against any child (full-bleed thumbs, nowrap rows, wide charts)
+     opening horizontal scroll room — on touch that reads as the content
+     drifting left/right while you scroll vertically. */
+  overflow-x: hidden;
+  overscroll-behavior: contain;
   padding: 22px 28px 28px;
 }
 .theme-fusion .fx-drawer-foot {
@@ -5010,6 +5015,8 @@ body:has(.theme-fusion) > div.pb-24 { padding-bottom: 0 !important; }
 .theme-fusion .fx-drawer-body {
   flex: 1;
   overflow-y: auto;
+  overflow-x: hidden; /* prevent horizontal drift on touch — see first .fx-drawer-body rule */
+  overscroll-behavior: contain;
   padding: 32px 28px;
 }
 .theme-fusion .fx-drawer-name {
@@ -6510,8 +6517,15 @@ body:has(.theme-fusion) > div.pb-24 { padding-bottom: 0 !important; }
 
 /* Vignette intégrée dans la fiche projet (drawer) — coller aux bords */
 .theme-fusion .fx-fiche-thumb-wrap {
-  margin: -16px -24px 16px;
+  /* Horizontal margin must match .fx-drawer-body padding so the image is
+     flush to the drawer edge without spilling past it. Desktop body padding
+     is 28px; mobile is 18px (see the max-width:600px override below). Placed
+     after the base rule so it wins on source order. */
+  margin: -16px -28px 16px;
   border-bottom: 1px solid var(--rule);
+}
+@media (max-width: 600px) {
+  .theme-fusion .fx-fiche-thumb-wrap { margin-left: -18px; margin-right: -18px; }
 }
 
 .theme-fusion .fx-fiche-thumb {
@@ -15708,6 +15722,54 @@ body:has(.theme-db-scrolly) { background: #fafaf7 !important; color: var(--p-ink
 .fx-cct-details > summary:focus-visible { outline: none; }
 .fx-cct-details .fx-cct-chev { transition: transform 0.18s ease; }
 .fx-cct-details[open] .fx-cct-chev { transform: rotate(90deg); }
+
+/* Sticky legend for the cross-cutting "grandes missions" section.
+   Pins just under the navbar (56px) while the section is on screen, then
+   releases with it — its containing block is the RevealOnScroll section, so
+   it never bleeds into neighbouring sections. Solves the mobile "which colour
+   was which?" gap while scrolling a run of compact bars, without repeating a
+   legend per chart. Degrades to a normal (non-pinned) row on the rare in-app
+   browsers where an ancestor transform breaks position:sticky. */
+.theme-fusion .fx-cct-legend {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 56px;
+  z-index: 20;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 20px;
+  margin-top: 18px;
+  padding: 10px 0;
+  background: var(--bg);
+  border-bottom: 1px solid var(--rule);
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-size: 12px;
+  letter-spacing: 0.02em;
+  color: var(--muted);
+}
+.theme-fusion .fx-cct-legend-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  white-space: nowrap;
+}
+.theme-fusion .fx-cct-legend-sw {
+  width: 11px;
+  height: 11px;
+  border-radius: 2px;
+  flex: 0 0 auto;
+}
+/* Narrow screens: wrap to two rows rather than hide items behind a scroll —
+   a clipped legend entry is the same problem as no legend. */
+@media (max-width: 560px) {
+  .theme-fusion .fx-cct-legend {
+    gap: 6px 14px;
+    padding: 8px 0;
+    font-size: 11px;
+    letter-spacing: 0;
+  }
+  .theme-fusion .fx-cct-legend-sw { width: 10px; height: 10px; }
+}
 
 /* ── Budget par nature (commune landing — national capability matrix) ─────── */
 .theme-fusion .fx-cta-link {
