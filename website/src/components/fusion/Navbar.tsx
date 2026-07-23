@@ -156,13 +156,12 @@ export default function Navbar() {
           </button>
         </div>
         <nav className="fx-overlay-nav" aria-label={t("fx.nav.main_aria")}>
-          {navLinks.map((l, i) => (
+          {navLinks.map((l) => (
             <Link
               key={l.href}
               href={l.href}
               onClick={() => trackNav(l.href, l.labelKey, "overlay")}
             >
-              <span className="fx-overlay-n">{String(i + 1).padStart(2, "0")}</span>
               {t(l.labelKey)}
             </Link>
           ))}

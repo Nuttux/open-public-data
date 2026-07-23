@@ -106,9 +106,8 @@ export default function RegistryChrome({
           </button>
         </div>
         <nav className="fx-overlay-nav" aria-label={t(`${country}.chrome.nav_aria`)}>
-          {navLinks.map((l, i) => (
+          {navLinks.map((l) => (
             <Link key={l.href} href={l.href}>
-              <span className="fx-overlay-n">{String(i + 1).padStart(2, "0")}</span>
               {t(l.labelKey)}
             </Link>
           ))}
