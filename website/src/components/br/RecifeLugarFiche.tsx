@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useT, useLocale } from "@/lib/localeContext";
 import { FicheSection } from "@/components/fiche";
 import FicheKpis from "@/components/fusion/FicheKpis";
@@ -24,6 +25,7 @@ export default function RecifeLugarFiche({
 }) {
   const t = useT();
   const { locale } = useLocale();
+  const router = useRouter();
   const mapUrl = `https://www.openstreetmap.org/?mlat=${place.lat}&mlon=${place.lon}#map=17/${place.lat}/${place.lon}`;
   const hasObras = !!obras && obras.contratos.length > 0;
   const descricao = (locale === "en" ? place.descricao_en : place.descricao) || place.descricao || null;
@@ -85,9 +87,18 @@ export default function RecifeLugarFiche({
           <table className="fx-fiche-table">
             <tbody>
               {obras!.contratos.map((c) => (
-                <tr key={c.contrato_id}>
+                <tr
+                  key={c.contrato_id}
+                  className="fx-row-link"
+                  onClick={() => router.push(`/br/city/recife/contratos/${c.contrato_id}`)}
+                >
                   <td>
-                    <Link href={`/br/city/recife/contratos/${c.contrato_id}`}>{c.numero}</Link>
+                    <Link
+                      href={`/br/city/recife/contratos/${c.contrato_id}`}
+                      onClick={(e) => e.stopPropagation()}
+                    >
+                      {c.numero}
+                    </Link>
                     <div className="fx-fiche-sub">{titleCasePt(c.objeto)}</div>
                   </td>
                   <td className="num mono">

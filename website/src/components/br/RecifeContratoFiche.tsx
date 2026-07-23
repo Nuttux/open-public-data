@@ -9,8 +9,39 @@ import { fmtBrlCompact, fmtDate, fmtCnpj, hasValor, titleCasePt } from "@/lib/br
 /**
  * Contract fiche — thin br-municipal ADAPTER composing the shared fiche
  * primitives (FicheKpis + fx-fiche-lead + fx-fiche-table + source footer),
- * mirroring fusion/FournisseurFiche. CPF suppliers masked. No bespoke CSS.
+ * mirroring fusion/ContratFiche. Adds two Paris-parity blocks that Recife's
+ * open data genuinely supports:
+ *   - a "Vida do contrato" timeline (vigência início → hoje → fim), and
+ *   - a "Concorrência" section built on the *modalidade* (Brazil's real
+ *     competition signal: LICITAÇÃO vs INEXIGIBILIDADE/DISPENSA), with an
+ *     honest note that per-contract bid counts are not published.
+ * CPF suppliers masked. No bespoke CSS.
  */
+
+/** Classify the Brazilian contracting modality into a competition posture.
+ *  `tone` drives the accent colour: ocre = no competitive process (the
+ *  transparency-relevant case), ink = competitive, muted = neutral/derived. */
+function classifyModalidade(m: string): {
+  labelKey: string;
+  descKey: string;
+  tone: "ocre" | "ink" | "muted";
+} | null {
+  switch ((m || "").toUpperCase()) {
+    case "LICITAÇÃO":
+      return { labelKey: "br.recife.contrato.conc.com", descKey: "br.recife.contrato.conc.com_d", tone: "ink" };
+    case "SARP":
+      return { labelKey: "br.recife.contrato.conc.registro", descKey: "br.recife.contrato.conc.registro_d", tone: "muted" };
+    case "INEXIGIBILIDADE":
+      return { labelKey: "br.recife.contrato.conc.inexig", descKey: "br.recife.contrato.conc.direta_d", tone: "ocre" };
+    case "DISPENSA":
+      return { labelKey: "br.recife.contrato.conc.dispensa", descKey: "br.recife.contrato.conc.direta_d", tone: "ocre" };
+    case "COMPRA DIRETA":
+      return { labelKey: "br.recife.contrato.conc.compra", descKey: "br.recife.contrato.conc.direta_d", tone: "ocre" };
+    default:
+      return null;
+  }
+}
+
 export default function RecifeContratoFiche({
   c,
   source,
@@ -19,6 +50,26 @@ export default function RecifeContratoFiche({
   source: SourceBlock;
 }) {
   const t = useT();
+
+  // Frise « vida do contrato » : vigência início → hoje → fim. On a les deux
+  // dates directement (≠ Paris qui reconstruit fim depuis notif+durée).
+  // Précision au JOUR pour éviter tout mismatch SSR/hydratation sur la barre.
+  const timeline = (() => {
+    if (!c.vigencia_inicio || !c.vigencia_fim) return null;
+    const startMs = Date.parse(c.vigencia_inicio);
+    const endMs = Date.parse(c.vigencia_fim);
+    if (Number.isNaN(startMs) || Number.isNaN(endMs) || endMs <= startMs) return null;
+    const DAY = 86400000;
+    const nowMs = Math.floor(Date.now() / DAY) * DAY;
+    const total = endMs - startMs;
+    const pct = Math.round(Math.min(Math.max(((nowMs - startMs) / total) * 100, 0), 100) * 100) / 100;
+    return { pct, enCurso: nowMs < endMs };
+  })();
+
+  const conc = classifyModalidade(c.modalidade);
+  const toneColor =
+    conc?.tone === "ocre" ? "var(--ocre)" : conc?.tone === "ink" ? "var(--ink)" : "var(--ink-2)";
+
   return (
     <div>
       <div style={{ display: "flex", gap: 8, flexWrap: "wrap", marginBottom: 14 }}>
@@ -47,13 +98,86 @@ export default function RecifeContratoFiche({
         ]}
       />
 
+      {timeline && (
+        <div style={{ margin: "16px 0 0" }}>
+          <div style={{ display: "flex", justifyContent: "space-between", fontFamily: "var(--f-mono)", fontSize: 10.5, letterSpacing: ".06em", textTransform: "uppercase", color: "var(--muted)", marginBottom: 7 }}>
+            <span>{t("br.recife.contrato.tl.inicio")} {fmtDate(c.vigencia_inicio)}</span>
+            <span>~ {fmtDate(c.vigencia_fim)}</span>
+          </div>
+          <div style={{ position: "relative", height: 4, background: "var(--rule)", borderRadius: 2 }} aria-hidden="true">
+            <div
+              style={{
+                position: "absolute",
+                top: 0,
+                bottom: 0,
+                left: 0,
+                width: `${timeline.pct}%`,
+                background: timeline.enCurso ? "var(--bleu)" : "var(--ink-2)",
+                borderRadius: 2,
+              }}
+            />
+            {timeline.enCurso && (
+              <span
+                style={{
+                  position: "absolute",
+                  left: `${timeline.pct}%`,
+                  top: "50%",
+                  transform: "translate(-50%, -50%)",
+                  width: 9,
+                  height: 9,
+                  borderRadius: "50%",
+                  background: "var(--bleu)",
+                  boxShadow: "0 0 0 2px var(--bg)",
+                }}
+              />
+            )}
+          </div>
+          <div style={{ marginTop: 7, fontFamily: "var(--f-mono)", fontSize: 10.5, letterSpacing: ".06em", textTransform: "uppercase" }}>
+            <span style={{ color: timeline.enCurso ? "var(--bleu)" : "var(--muted)", fontWeight: 600 }}>
+              {timeline.enCurso ? t("br.recife.contrato.tl.vigente") : t("br.recife.contrato.tl.encerrado")}
+            </span>
+          </div>
+        </div>
+      )}
+
+      {/* Concorrência — o que o Recife publica é a MODALIDADE, não o número de
+       * propostas por licitação. A modalidade é o sinal real de concorrência:
+       * LICITAÇÃO (com disputa) vs INEXIGIBILIDADE/DISPENSA (contratação
+       * direta). Espelha a seção « Concurrence » de Paris: diz o que os dados
+       * abertos trazem e o que não trazem, em vez de deixar procurar um dado
+       * que não existe. */}
+      <section className="fx-fiche-section">
+        <div className="fx-fiche-h">{t("br.recife.contrato.conc.h")}</div>
+
+        {conc ? (
+          <div style={{ margin: "0 0 14px" }}>
+            <div style={{ fontFamily: "var(--f-ui)", fontSize: 15, fontWeight: 600, color: toneColor }}>
+              {t(conc.labelKey)}
+            </div>
+            <p style={{ margin: "6px 0 0", fontSize: 13, color: "var(--ink-2)", lineHeight: 1.5 }}>
+              {t(conc.descKey)}
+            </p>
+          </div>
+        ) : (
+          <dl>
+            <div className="fx-fiche-prop">
+              <dt>{t("br.recife.contrato.modalidade")}</dt>
+              <dd>{c.modalidade ?? "—"}</dd>
+            </div>
+          </dl>
+        )}
+
+        <p style={{ margin: "0", fontSize: 12, color: "var(--muted)", fontStyle: "italic", lineHeight: 1.5 }}>
+          {t("br.recife.contrato.conc.note")}
+        </p>
+      </section>
+
       <section className="fx-fiche-section">
         <div className="fx-fiche-h">{t("br.recife.contrato.detalhes")}</div>
         <table className="fx-fiche-table">
           <tbody>
             <tr><td>{t("br.recife.contrato.orgao")}</td><td>{c.orgao ?? "—"}</td></tr>
             <tr><td>{t("br.recife.contrato.modalidade")}</td><td>{c.modalidade ?? "—"}</td></tr>
-            <tr><td>{t("br.recife.contrato.vigencia")}</td><td>{fmtDate(c.vigencia_inicio)} — {fmtDate(c.vigencia_fim)}</td></tr>
             {c.is_org && c.fornecedor_cnpj && (
               <tr><td>CNPJ</td><td className="mono">{fmtCnpj(c.fornecedor_cnpj)}</td></tr>
             )}

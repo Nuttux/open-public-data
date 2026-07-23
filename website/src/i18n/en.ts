@@ -5437,6 +5437,20 @@ const en: Record<string, string> = {
   'br.recife.contrato.modalidade': 'Modality',
   'br.recife.contrato.situacao': 'Status',
   'br.recife.contrato.detalhes': 'Contract details',
+  'br.recife.contrato.tl.inicio': 'Start',
+  'br.recife.contrato.tl.vigente': 'In force',
+  'br.recife.contrato.tl.encerrado': 'Ended',
+  'br.recife.contrato.conc.h': 'Competition',
+  'br.recife.contrato.conc.com': 'Competitive tender',
+  'br.recife.contrato.conc.com_d': 'Contract preceded by a public tender.',
+  'br.recife.contrato.conc.registro': 'Price-registration framework',
+  'br.recife.contrato.conc.registro_d': 'Called off from a price-registration framework set up by a prior tender.',
+  'br.recife.contrato.conc.inexig': 'No tender — sole supplier',
+  'br.recife.contrato.conc.dispensa': 'No tender — bidding waived',
+  'br.recife.contrato.conc.compra': 'Direct purchase',
+  'br.recife.contrato.conc.direta_d': 'Direct award, with no competitive bidding process.',
+  'br.recife.contrato.conc.note':
+    "Recife's open data publishes the contracting modality — not the number of bids received in each tender.",
   'br.recife.contrato.source': 'Source: Contracts — City of Recife.',
 };
 

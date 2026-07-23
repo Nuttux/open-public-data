@@ -244,6 +244,20 @@ const pt: Record<string, string> = {
   "br.recife.contrato.modalidade": "Modalidade",
   "br.recife.contrato.situacao": "Situação",
   "br.recife.contrato.detalhes": "Detalhes do contrato",
+  "br.recife.contrato.tl.inicio": "Início",
+  "br.recife.contrato.tl.vigente": "Em vigência",
+  "br.recife.contrato.tl.encerrado": "Encerrado",
+  "br.recife.contrato.conc.h": "Concorrência",
+  "br.recife.contrato.conc.com": "Com licitação",
+  "br.recife.contrato.conc.com_d": "Contrato precedido de uma licitação pública.",
+  "br.recife.contrato.conc.registro": "Ata de registro de preços",
+  "br.recife.contrato.conc.registro_d": "Contratação a partir de uma ata de registro de preços, formada por licitação prévia.",
+  "br.recife.contrato.conc.inexig": "Sem licitação — fornecedor exclusivo",
+  "br.recife.contrato.conc.dispensa": "Sem licitação — contratação dispensada",
+  "br.recife.contrato.conc.compra": "Compra direta",
+  "br.recife.contrato.conc.direta_d": "Contratação direta, sem processo licitatório de disputa.",
+  "br.recife.contrato.conc.note":
+    "Os dados abertos do Recife publicam a modalidade de contratação — não o número de propostas recebidas em cada licitação.",
   "br.recife.contrato.source": "Fonte: Contratos — Prefeitura do Recife.",
 };
 
