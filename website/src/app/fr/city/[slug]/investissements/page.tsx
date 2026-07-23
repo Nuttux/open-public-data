@@ -9,10 +9,9 @@ import { loadCommuneInvestissements } from "@/lib/commune-investissements";
 import { buildLocaleAwareMetadata } from "@/lib/seo";
 import CommuneInvestissementsClient from "./CommuneInvestissementsClient";
 
-export const dynamicParams = true;
-export function generateStaticParams(): { slug: string }[] {
-  return [];
-}
+// Per-request data (private bucket) + the locale cookie → render dynamically,
+// never statically prerendered (avoids the static→dynamic cookies error).
+export const dynamic = "force-dynamic";
 
 const SOURCE_URL =
   "https://data.economie.gouv.fr/explore/dataset/balances-comptables-des-communes-en-2024/";
@@ -26,10 +25,10 @@ export async function generateMetadata({
   const commune = findCommuneByAny(slug);
   const nom = commune?.nom ?? slug;
   return buildLocaleAwareMetadata({
-    title: `Investissements de ${nom} — dépenses d'équipement`,
-    description: `Dépenses d'équipement et financement de l'investissement de ${nom}. Source : balances comptables DGFiP.`,
+    title: `Investissements de ${nom} â dÃ©penses d'Ã©quipement`,
+    description: `DÃ©penses d'Ã©quipement et financement de l'investissement de ${nom}. Source : balances comptables DGFiP.`,
     en: {
-      title: `${nom} investment — capital expenditure`,
+      title: `${nom} investment â capital expenditure`,
       description: `Capital spending and investment financing of ${nom}. Source: DGFiP balance-sheet accounts.`,
     },
     path: `/fr/city/${slug}/investissements`,

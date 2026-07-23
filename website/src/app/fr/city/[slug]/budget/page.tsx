@@ -11,10 +11,9 @@ import CommuneBudgetClient from "./CommuneBudgetClient";
 
 // National tail communes render on demand (the rich top-N cities keep their own
 // physical /fr/city/{paris,marseille}/budget routes, which take precedence).
-export const dynamicParams = true;
-export function generateStaticParams(): { slug: string }[] {
-  return [];
-}
+// Per-request data (private bucket) + the locale cookie → render dynamically,
+// never statically prerendered (avoids the static→dynamic cookies error).
+export const dynamic = "force-dynamic";
 
 const SOURCE_URL =
   "https://data.economie.gouv.fr/explore/dataset/balances-comptables-des-communes-en-2024/";
@@ -28,10 +27,10 @@ export async function generateMetadata({
   const commune = findCommuneByAny(slug);
   const nom = commune?.nom ?? slug;
   return buildLocaleAwareMetadata({
-    title: `Budget de ${nom} (par nature) — finances locales`,
-    description: `Recettes et dépenses de la commune de ${nom} par nature comptable. Source : balances comptables DGFiP (axe nature).`,
+    title: `Budget de ${nom} (par nature) â finances locales`,
+    description: `Recettes et dÃ©penses de la commune de ${nom} par nature comptable. Source : balances comptables DGFiP (axe nature).`,
     en: {
-      title: `${nom} budget (by nature) — local finances`,
+      title: `${nom} budget (by nature) â local finances`,
       description: `Revenue and spending of ${nom} by accounting nature. Source: DGFiP balance-sheet accounts (nature axis).`,
     },
     path: `/fr/city/${slug}/budget`,
@@ -53,7 +52,7 @@ export default async function CommuneBudgetPage({
   // Rich cities (Paris/Marseille) own their functional budget pages elsewhere.
   if (getCityOrNull(slug)) notFound();
 
-  // DATA-DERIVED gate — no city list. Renders iff the national budget-by-nature
+  // DATA-DERIVED gate â no city list. Renders iff the national budget-by-nature
   // export exists for this commune.
   const caps = getCommuneCapabilities(slug);
   if (!caps.budget.nature) notFound();
@@ -62,7 +61,7 @@ export default async function CommuneBudgetPage({
   if (!commune) notFound();
 
   // Budget JSON is fetched server-side from the public bucket (transparent to
-  // the visitor — they receive HTML). notFound if the file is missing.
+  // the visitor â they receive HTML). notFound if the file is missing.
   const requestedYear = sp.year ? Number(sp.year) : undefined;
   const loaded = await loadCommuneBudget(slug, requestedYear);
   if (!loaded) notFound();

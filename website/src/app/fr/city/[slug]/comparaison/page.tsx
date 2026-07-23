@@ -9,10 +9,9 @@ import { loadCommunePeers } from "@/lib/commune-peers";
 import { buildLocaleAwareMetadata } from "@/lib/seo";
 import ComparaisonClient from "./ComparaisonClient";
 
-export const dynamicParams = true;
-export function generateStaticParams(): { slug: string }[] {
-  return [];
-}
+// Per-request data (private bucket) + the locale cookie → render dynamically,
+// never statically prerendered (avoids the static→dynamic cookies error).
+export const dynamic = "force-dynamic";
 
 const SOURCE_URL = "https://data.ofgl.fr/explore/dataset/ofgl-base-communes-consolidee/";
 
@@ -25,10 +24,10 @@ export async function generateMetadata({
   const commune = findCommuneByAny(slug);
   const nom = commune?.nom ?? slug;
   return buildLocaleAwareMetadata({
-    title: `${nom} — comparée aux communes de même taille`,
-    description: `Finances de ${nom} rapportées à l'habitant, comparées à la médiane des communes françaises de même strate de population. Source : OFGL.`,
+    title: `${nom} â comparÃ©e aux communes de mÃªme taille`,
+    description: `Finances de ${nom} rapportÃ©es Ã  l'habitant, comparÃ©es Ã  la mÃ©diane des communes franÃ§aises de mÃªme strate de population. Source : OFGL.`,
     en: {
-      title: `${nom} — compared with similar-sized communes`,
+      title: `${nom} â compared with similar-sized communes`,
       description: `${nom}'s finances per capita, set against the median of French communes in the same population band. Source: OFGL.`,
     },
     path: `/fr/city/${slug}/comparaison`,
