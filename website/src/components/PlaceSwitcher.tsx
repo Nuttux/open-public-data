@@ -122,8 +122,10 @@ export default function PlaceSwitcher({
                   onClick={openCommuneSearch}
                 >
                   <span>{t("fx.scope.search_all_cta")}</span>
-                  <span className="fx-sm-tag">35 000+</span>
-                  <span className="fx-sm-tag">{t("chrome.switch.poc_tag")}</span>
+                  <span className="fx-sm-tags">
+                    <span className="fx-sm-tag">35 000+</span>
+                    <span className="fx-sm-tag">{t("chrome.switch.poc_tag")}</span>
+                  </span>
                 </button>
               )}
               {g.places.map((p) => {

@@ -1,4 +1,3 @@
-import WipBanner from "@/components/fusion/WipBanner";
 import { CityProvider } from "@/components/fusion/CityContext";
 
 /**
@@ -16,7 +15,6 @@ import { CityProvider } from "@/components/fusion/CityContext";
 export default function MarseilleLayout({ children }: { children: React.ReactNode }) {
   return (
     <CityProvider city={{ slug: "marseille", basePath: "/fr/city/marseille" }}>
-      <WipBanner city="marseille" />
       {children}
     </CityProvider>
   );

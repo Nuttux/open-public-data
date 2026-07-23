@@ -155,7 +155,6 @@ export const PLACES: Place[] = [
     dataNamespace: "fr/marseille",
     hub: true, // its landing renders at /fr/city/marseille → switcher lands there
     poc: true,
-    ownWipBanner: true,
     modules: [
       { slug: "budget", labelKey: "fx.nav.link.budget" },
       { slug: "lieux", labelKey: "fx.nav.link.lieux" },

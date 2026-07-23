@@ -60,12 +60,12 @@ export function villeNavLinks(citySlug: string): NavLink[] {
   return links;
 }
 
-// Section id → { url suffix, label key } for a national commune. Only the
-// pages that actually exist nationally are listed here; the nav is then built
-// from the commune's DATA-DERIVED sections (getCommuneCapabilities), so a tail
-// commune never gets a Paris-shaped link that 404s.
+// Section id → { url suffix, label key } for a national commune. The nav is
+// built from the commune's DATA-DERIVED sections (getCommuneCapabilities), so a
+// tail commune never gets a Paris-shaped link that 404s. NOTE: `budget` is
+// intentionally omitted — the commune HOME (/fr/city/<slug>) IS the budget-lead
+// page, so a separate "Budget" item would just repeat it (redundant).
 const COMMUNE_SECTION_META: Record<string, { suffix: string; labelKey: string }> = {
-  budget:          { suffix: "/budget",         labelKey: "fx.nav.link.budget" },
   comparaison:     { suffix: "/comparaison",     labelKey: "fx.natcmp.link" },
   investissements: { suffix: "/investissements", labelKey: "fx.nav.link.invest" },
   marches:         { suffix: "/marches",         labelKey: "fx.nav.link.marches" },

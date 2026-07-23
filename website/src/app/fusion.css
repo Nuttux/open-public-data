@@ -328,6 +328,12 @@ body:has(.theme-fusion) > div.pb-24 { padding-bottom: 0 !important; }
   letter-spacing: .05em;
   text-transform: uppercase;
 }
+/* The "find my city" action button must fill the row like the <Link> items, so
+   space-between pushes its tags to the right edge. */
+.theme-fusion .fx-sm-action { width: 100%; text-align: left; }
+/* Group the action's two tags so the PoC tag lands at the far right, vertically
+   aligned with the single tag on every other row. */
+.theme-fusion .fx-sm-tags { display: inline-flex; align-items: center; gap: 12px; }
 .theme-fusion .fx-sm-sep { height: 1px; background: var(--rule); margin: 4px 0; }
 
 /* Language switcher */

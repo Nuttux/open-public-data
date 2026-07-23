@@ -55,9 +55,11 @@ export default function Navbar() {
   const navLinks = navLinksForPath(pathname, commune);
   const frSlug = currentFrSlug(pathname);
   const frPlace = getPlace(frSlug);
-  // Show the generic POC banner only where the place doesn't render its own WIP
-  // strip (Marseille has WipBanner) — avoid stacking two disclaimers.
-  const showPoc = (frPlace?.poc ?? false) && !frPlace?.ownWipBanner;
+  // Show the generic POC banner on registry POC places AND on national tail
+  // communes (not in the registry — surfaced via commune context). ownWipBanner
+  // still suppresses it where a place renders its own strip.
+  const showPoc =
+    ((frPlace?.poc ?? false) && !frPlace?.ownWipBanner) || Boolean(commune);
   const [menuOpen, setMenuOpen] = useState(false);
   const t = useT();
   const track = useTrack();
