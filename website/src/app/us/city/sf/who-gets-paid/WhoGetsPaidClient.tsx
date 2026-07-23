@@ -99,15 +99,6 @@ export default function WhoGetsPaidClient({
               }
               label={t("us.sf.wgp.s01.kpi.related")}
             />
-            <IntroStat
-              value={
-                <AnimatedNumber
-                  value={yearData.n_vendors}
-                  format={(n) => nfInt.format(Math.round(n))}
-                />
-              }
-              label={t("us.sf.wgp.s01.kpi.vendors")}
-            />
           </>
         }
       >

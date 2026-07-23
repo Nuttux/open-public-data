@@ -1944,11 +1944,28 @@ body:has(.theme-fusion) > div.pb-24 { padding-bottom: 0 !important; }
 .theme-fusion .fx-foot { padding: 56px 0 36px; border-top: 1px solid var(--ink); }
 .theme-fusion .fx-foot-grid {
   display: grid;
-  grid-template-columns: 2fr 1fr 1fr;
+  grid-template-columns: 1.7fr 1fr 1fr 1fr;
   gap: 40px;
   padding-bottom: 28px;
   border-bottom: 1px solid var(--ink);
 }
+/* Cross-place rail — sibling cities + "find your city", the footer's job the
+   location-aware top nav can't do. Quiet by default, brand-blue on hover. */
+.theme-fusion .fx-foot-cities {
+  margin-top: 18px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 4px 8px;
+  font-family: var(--f-ui);
+  font-size: 13px;
+  line-height: 1.5;
+}
+.theme-fusion .fx-foot-cities a { color: var(--ink-2); }
+.theme-fusion .fx-foot-cities a:hover { color: var(--bleu); }
+.theme-fusion .fx-foot-dot { color: var(--rule); }
+.theme-fusion .fx-foot-find a { color: var(--muted); }
+.theme-fusion .fx-foot-find a:hover { color: var(--bleu); }
 .theme-fusion .fx-foot-word {
   font-family: var(--f-disp);
   font-weight: 700;
@@ -2044,12 +2061,21 @@ body:has(.theme-fusion) > div.pb-24 { padding-bottom: 0 !important; }
   text-decoration: none;
 }
 .theme-fusion .fx-replay-more:hover { color: var(--bleu); }
+@media (max-width: 1024px) {
+  /* Brand band goes full-width; the three link columns share a row below it. */
+  .theme-fusion .fx-foot-grid { grid-template-columns: 1fr 1fr 1fr; gap: 32px; }
+  .theme-fusion .fx-foot-brand { grid-column: 1 / -1; }
+}
 @media (max-width: 768px) {
   .theme-fusion .fx-foot { padding: 40px 0 24px; }
-  .theme-fusion .fx-foot-grid { grid-template-columns: 1fr 1fr; gap: 24px; }
+  .theme-fusion .fx-foot-grid { grid-template-columns: 1fr 1fr; gap: 24px 32px; }
+  .theme-fusion .fx-foot-brand { grid-column: 1 / -1; }
   .theme-fusion .fx-foot-word { font-size: 28px; }
   .theme-fusion .fx-foot-legal { flex-direction: column; gap: 8px; }
   .theme-fusion .fx-foot-legal span[aria-hidden="true"] { display: none; }
+}
+@media (max-width: 460px) {
+  .theme-fusion .fx-foot-grid { grid-template-columns: 1fr; gap: 28px; }
 }
 
 /* Timeline chart wrapper */

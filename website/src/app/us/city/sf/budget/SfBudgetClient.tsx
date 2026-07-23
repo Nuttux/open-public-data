@@ -309,14 +309,6 @@ export default function SfBudgetClient({ d }: { d: SfBudgetPageData }) {
               }
               label={t("us.sf.budget.s01.kpi.revenue")}
             />
-            <IntroStat
-              value={fmtUsdCompact(bd.totals.spending.transfer_adjustment_usd)}
-              label={
-                <Tip label={t("us.sf.budget.s01.kpi.ta_tip")}>
-                  {t("us.sf.budget.s01.kpi.ta")}
-                </Tip>
-              }
-            />
           </>
         }
       >

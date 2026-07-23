@@ -41,6 +41,17 @@ const pt: Record<string, string> = {
   "chrome.switch.poc_tag": "PoC",
   "chrome.poc.badge": "Demonstração",
   "chrome.poc.label": "Em construção.",
+
+  // ---- rodapé (footer compartilhado) --------------------------------------
+  "fx.foot.mission": "O dinheiro público, tornado legível. Projeto independente, open source.",
+  "fx.foot.col.project": "O projeto",
+  "fx.foot.col.legal": "Legal & dados",
+  "fx.foot.link.github": "GitHub ↗",
+  "fx.foot.link.contact": "Contato",
+  "fx.foot.link.sources": "Fontes",
+  "fx.foot.legal.licence": "Licença",
+  "fx.foot.legal.signaler": "Relatar um erro",
+  "fx.foot.credit.recife": "© {year} Qipu · Dados: Prefeitura do Recife",
   "br.chrome.wordmark": "Recife · Dados Abertos",
   "br.chrome.nav.recife": "Recife",
   "br.chrome.nav_aria": "Navegação principal",

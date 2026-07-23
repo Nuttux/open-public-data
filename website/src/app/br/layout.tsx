@@ -2,6 +2,7 @@ import "@/app/fusion.css";
 import { cookies } from "next/headers";
 import { ForcedLocale, type Locale } from "@/lib/localeContext";
 import RegistryChrome from "@/components/RegistryChrome";
+import RegistryFooter from "@/components/RegistryFooter";
 import RecifeLangToggle from "@/components/br/RecifeLangToggle";
 
 /**
@@ -18,6 +19,7 @@ export default async function BrLayout({ children }: { children: React.ReactNode
       <div className="theme-fusion">
         <RegistryChrome country="br" trailing={<RecifeLangToggle locale={locale} />} />
         {children}
+        <RegistryFooter country="br" />
       </div>
     </ForcedLocale>
   );

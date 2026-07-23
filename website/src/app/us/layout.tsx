@@ -1,5 +1,6 @@
 import "@/app/fusion.css";
 import RegistryChrome from "@/components/RegistryChrome";
+import RegistryFooter from "@/components/RegistryFooter";
 import { ForcedLocale } from "@/lib/localeContext";
 
 /**
@@ -13,6 +14,7 @@ export default function UsLayout({ children }: { children: React.ReactNode }) {
       <div className="theme-fusion">
         <RegistryChrome country="us" />
         {children}
+        <RegistryFooter country="us" />
       </div>
     </ForcedLocale>
   );

@@ -17,7 +17,6 @@ import {
 } from "@/lib/us/format";
 import UsOtChart from "./UsOtChart";
 import UsFamilyChart from "./UsFamilyChart";
-import CompSplit from "./CompSplit";
 import type {
   PayrollByYear,
   PayrollByDept,
@@ -655,38 +654,6 @@ export default function PayrollClient({
                 )}
               </div>
             </div>
-            <SourceLine label={srcLabel} links={mtLinks} dataWord={dataWord} />
-          </div>
-        </section>
-
-        {/* ── Salary, overtime, benefits ── */}
-        <section className="fx-section" id="sec-split">
-          <div className="fx-wrap">
-            <SectionHead
-              title={
-                <>
-                  {t("us.sf.payroll.s05.title.before")}
-                  <em>{t("us.sf.payroll.s05.title.em")}</em>
-                </>
-              }
-              subtitle={fill(t("us.sf.payroll.s05.sub"), {
-                benefits: fmtUsdCompact(latest.total_benefits_usd),
-                share: fmtShare(latest.total_benefits_usd / latest.total_compensation_usd),
-                fy,
-              })}
-            />
-            <CompSplit
-              points={points}
-              labels={{
-                salaries: t("us.sf.payroll.s05.leg.salaries"),
-                overtime: t("us.sf.payroll.s05.leg.overtime"),
-                other: t("us.sf.payroll.s05.leg.other"),
-                benefits: t("us.sf.payroll.s05.leg.benefits"),
-              }}
-              fmtUsdCompact={fmtUsdCompact}
-              fmtShare={fmtShare}
-              ariaLabel={t("us.sf.payroll.s05.aria")}
-            />
             <SourceLine label={srcLabel} links={mtLinks} dataWord={dataWord} />
           </div>
         </section>

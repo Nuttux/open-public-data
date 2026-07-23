@@ -1172,7 +1172,13 @@ const en: Record<string, string> = {
   'fx.foot.word_line1': 'Qipu.',
   'fx.foot.word_line2': '',
   'fx.foot.blurb': 'Independent project. Paris today — more cities coming.',
-  'fx.foot.license': '© {year} · Code AGPL-3.0 · Data: City of Paris & data.gouv.fr (Etalab 2.0)',
+  'fx.foot.license': '© {year} Qipu · Data: City of Paris & data.gouv.fr (Etalab 2.0)',
+  'fx.foot.col.project': 'The project',
+  'fx.foot.col.legal': 'Legal & data',
+  'fx.foot.mission': 'Public money, made legible. Independent, open source.',
+  'fx.foot.find_city': 'Find your city →',
+  'fx.foot.link.sources': 'Sources',
+  'fx.foot.credit.sf': '© {year} Qipu · Data: City & County of San Francisco (DataSF)',
 
   // ── Landing page ────────────────────────────────────────────────────────────
   'fx.land.h1.before': 'Where does ',
@@ -4987,7 +4993,7 @@ const en: Record<string, string> = {
   'us.sf.budget.s05.title.before': 'What was ',
   'us.sf.budget.s05.title.em': 'adopted vs what was spent',
   'us.sf.budget.s05.title.after': '',
-  'us.sf.budget.s05.sub': 'The honest comparison is Operating funds only: capital and multi-year project funds legitimately spend across years and cannot be compared to a single year’s budget (measured, see Sources & method).',
+  'us.sf.budget.s05.sub': 'Operating funds only — the one perimeter where adopted and executed mean the same thing.',
   'us.sf.budget.s05.empty.label': 'Execution pending',
   'us.sf.budget.s05.empty.title': 'FY{fy} has no executed figures to compare yet',
   'us.sf.budget.s05.empty.body': 'This budget year is still ahead or under way — adopted-vs-executed becomes meaningful once the Controller closes the year. Meanwhile, look at how recent closed years executed.',

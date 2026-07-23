@@ -216,17 +216,17 @@ export function buildSfLandingModel(): LandingModel {
     chips: {
       heading: (
         <>
-          Explore the city, <em>section by section</em>.
+          Explore <em>every section</em>.
         </>
       ),
       ariaLabel: "Explore San Francisco by section",
       items: [
-        { href: "/us/city/sf/places", title: "Places", desc: "The city place by place — money and archival record for parks, libraries, hospitals and piers.", featured: true },
-        { href: "/us/city/sf/budget", title: "Budget", desc: "Where the money goes, service by service — adopted vs executed, FY2010–2027." },
-        { href: "/us/city/sf/who-gets-paid", title: "Payees", desc: "Every payment through the City's ledger, ranked and classified, to the voucher." },
-        { href: "/us/city/sf/contracts", title: "Contracts", desc: "The active register with the sole-source lens and award-vs-paid on every contract." },
-        { href: "/us/city/sf/payroll", title: "Payroll", desc: "What city work pays, and the overtime pattern in 24/7 services." },
-        { href: "/us/city/sf/sources", title: "Sources & method", desc: "Every dataset behind these pages — perimeters, privacy rules and methodology." },
+        { href: "/us/city/sf/places", title: "Places", desc: "Parks, libraries, hospitals, piers: money and archival record.", featured: true },
+        { href: "/us/city/sf/budget", title: "Budget", desc: "Where the money goes, service by service." },
+        { href: "/us/city/sf/who-gets-paid", title: "Payees", desc: "Every payment in the City's ledger, ranked and classified." },
+        { href: "/us/city/sf/contracts", title: "Contracts", desc: "The active register — sole-source lens, award vs paid." },
+        { href: "/us/city/sf/payroll", title: "Payroll", desc: "What city work pays, and the overtime pattern." },
+        { href: "/us/city/sf/sources", title: "Sources & method", desc: "Every dataset — perimeters, privacy, method." },
       ],
     },
   };

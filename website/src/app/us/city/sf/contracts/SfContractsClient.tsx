@@ -12,7 +12,7 @@ import Tip from "@/components/fusion/Tip";
 import { useT } from "@/lib/localeContext";
 import { fmtUsdCompact, fmtShare } from "@/lib/us/format";
 import SfContractsSearch from "./SfContractsSearch";
-import { FAMILY_LABELS, typeLabel } from "./us-sf-contracts-types";
+import { typeLabel } from "./us-sf-contracts-types";
 import type { SfContractsActive, SfContractsOverview } from "./us-sf-contracts-types";
 
 /**
@@ -101,9 +101,7 @@ export default function SfContractsClient({
           items={[
             { id: "sec-sole-source", label: t("us.sf.contracts.toc.sole") },
             { id: "sec-landscape", label: t("us.sf.contracts.toc.landscape") },
-            { id: "sec-lbe", label: t("us.sf.contracts.toc.lbe") },
             { id: "sec-search", label: t("us.sf.contracts.toc.search") },
-            { id: "sec-authorities", label: t("us.sf.contracts.toc.authorities") },
           ]}
         />
 
@@ -449,23 +447,6 @@ export default function SfContractsClient({
                 </Link>
               </div>
             )}
-            <div style={{ marginTop: 34 }}>
-              <BarRow
-                header={{
-                  left: t("us.sf.contracts.s02.dept.left"),
-                  right: t("us.sf.contracts.s02.dept.right"),
-                }}
-                items={overview.departments.slice(0, 8).map((d) => ({
-                  label: d.department,
-                  value: d.agreed_usd,
-                  display: fmtUsdCompact(d.agreed_usd),
-                  sub: fill(t("us.sf.contracts.s02.dept.row_sub"), {
-                    n: nfInt.format(d.n_contracts),
-                    paid: fmtUsdCompact(d.paid_usd),
-                  }),
-                }))}
-              />
-            </div>
             <SourceLine
               label={t("us.sf.contracts.source_label")}
               dataWord={t("us.sf.contracts.source_data_word")}
@@ -474,64 +455,7 @@ export default function SfContractsClient({
           </div>
         </section>
 
-        {/* LBE */}
-        <section className="fx-section" id="sec-lbe">
-          <div className="fx-wrap">
-            <SectionHead
-              title={
-                <>
-                  <Tip label={t("us.sf.contracts.s04.sub")}>LBE</Tip>
-                  {" (Local Business Enterprise) "}
-                  <em>{t("us.sf.contracts.s04.title.em")}</em>
-                </>
-              }
-              subtitle={t("us.sf.contracts.s04.subtitle")}
-            />
-            <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: 0, border: "1px solid var(--ink)" }}>
-              {[
-                {
-                  key: "prime",
-                  label: t("us.sf.contracts.s04.prime.label"),
-                  amount: lbe.prime.agreed_usd,
-                  sub: fill(t("us.sf.contracts.s04.prime.sub"), { n: nfInt.format(lbe.prime.n_contracts) }),
-                  perimeter: lbe.prime.perimeter,
-                },
-                {
-                  key: "team",
-                  label: t("us.sf.contracts.s04.team.label"),
-                  amount: lbe.team.attached_usd,
-                  sub: fill(t("us.sf.contracts.s04.team.sub"), {
-                    n: nfInt.format(lbe.team.n_contracts),
-                    rows: nfInt.format(lbe.team.n_member_rows),
-                  }),
-                  perimeter: lbe.team.perimeter,
-                },
-              ].map((b, i) => (
-                <div key={b.key} style={{ padding: "22px 22px 18px", borderLeft: i > 0 ? "1px solid var(--ink)" : "none" }}>
-                  <div style={{ fontFamily: "var(--f-mono)", fontSize: 11, letterSpacing: ".08em", textTransform: "uppercase", color: "var(--muted)", marginBottom: 8 }}>
-                    <Tip label={b.perimeter}>{b.label}</Tip>
-                  </div>
-                  <div style={{ fontFamily: "var(--f-disp)", fontSize: 44, fontWeight: 700, letterSpacing: "-0.03em", lineHeight: 1 }}>
-                    {fmtUsdCompact(b.amount)}
-                  </div>
-                  <div style={{ fontFamily: "var(--f-mono)", fontSize: 11.5, color: "var(--muted)", marginTop: 6 }}>
-                    {b.sub}
-                  </div>
-                </div>
-              ))}
-            </div>
-            <p className="fx-note" style={{ marginTop: 14 }}>
-              {t("us.sf.contracts.s04.never_sum")}
-            </p>
-            <SourceLine
-              label={t("us.sf.contracts.source_label")}
-              dataWord={t("us.sf.contracts.source_data_word")}
-              links={[{ name: overview.source.name, href: overview.source.source_url }]}
-            />
-          </div>
-        </section>
-
-        {/* 05 — search + active table */}
+        {/* Search + active table */}
         <section className="fx-section" id="sec-search">
           <div className="fx-wrap">
             <SectionHead
@@ -548,44 +472,6 @@ export default function SfContractsClient({
               {fill(t("us.sf.contracts.s05.note"), {
                 n: nfInt.format(dq.n_paid_exceeds_agreed),
               })}
-            </p>
-            <SourceLine
-              label={t("us.sf.contracts.source_label")}
-              dataWord={t("us.sf.contracts.source_data_word")}
-              links={[{ name: overview.source.name, href: overview.source.source_url }]}
-            />
-          </div>
-        </section>
-
-        {/* 06 — purchasing authorities */}
-        <section className="fx-section" id="sec-authorities">
-          <div className="fx-wrap">
-            <SectionHead
-              title={
-                <>
-                  {t("us.sf.contracts.s06.title.before")}
-                  <em>{t("us.sf.contracts.s06.title.em")}</em>
-                </>
-              }
-              subtitle={t("us.sf.contracts.s06.sub")}
-            />
-            <BarRow
-              header={{
-                left: t("us.sf.contracts.s06.header.left"),
-                right: t("us.sf.contracts.s06.header.right"),
-              }}
-              items={overview.authority_families.families.map((f) => ({
-                label: FAMILY_LABELS[f.family] ?? f.family,
-                value: f.agreed_usd,
-                display: fmtUsdCompact(f.agreed_usd),
-                sub: fill(t("us.sf.contracts.s06.row_sub"), {
-                  n: nfInt.format(f.n_contracts),
-                  sole: nfInt.format(f.n_sole_flagged),
-                }),
-              }))}
-            />
-            <p className="fx-note" style={{ marginTop: 14 }}>
-              {overview.authority_families.classification.note}
             </p>
             <SourceLine
               label={t("us.sf.contracts.source_label")}
