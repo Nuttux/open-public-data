@@ -83,10 +83,13 @@ export function communeSectionLinks(slug: string, sections: string[]): NavLink[]
     .map((m) => ({ href: `/fr/city/${slug}${m.suffix}`, labelKey: m.labelKey }));
 }
 
-// Top-nav links for a national commune (Home + its real sections).
+// Top-nav links for a national commune (Home + its real sections). Home points
+// at the commune's OWN hub (/fr/city/<slug>), NOT "/" — the root is Paris's
+// landing, so sending a tail-commune visitor there on "Accueil" was jarring.
+// These communes have no separate landing; their hub (budget-lead) IS the home.
 export function communeNavLinks(slug: string, sections: string[]): NavLink[] {
   return [
-    { href: "/", labelKey: "fx.nav.link.home" },
+    { href: `/fr/city/${slug}`, labelKey: "fx.nav.link.home" },
     ...communeSectionLinks(slug, sections),
   ];
 }
