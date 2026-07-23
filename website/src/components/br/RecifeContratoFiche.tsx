@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useT } from "@/lib/localeContext";
 import FicheKpis from "@/components/fusion/FicheKpis";
 import type { ContratoItem, SourceBlock } from "@/lib/br/recife-data";
-import { fmtBrlCompact, fmtDate, fmtCnpj } from "@/lib/br/format";
+import { fmtBrlCompact, fmtDate, fmtCnpj, hasValor, titleCasePt } from "@/lib/br/format";
 
 /**
  * Contract fiche — thin br-municipal ADAPTER composing the shared fiche
@@ -28,19 +28,19 @@ export default function RecifeContratoFiche({
 
       {c.objeto && (
         <div className="fx-fiche-lead">
-          <p className="fx-fiche-lead-main">{c.objeto}</p>
+          <p className="fx-fiche-lead-main">{titleCasePt(c.objeto)}</p>
         </div>
       )}
 
       <FicheKpis
         items={[
-          { label: t("br.recife.contrato.valor"), value: fmtBrlCompact(c.valor ?? 0) },
+          { label: t("br.recife.contrato.valor"), value: hasValor(c.valor) ? fmtBrlCompact(c.valor) : t("br.recife.contrato.sem_valor") },
           {
             label: t("br.recife.contrato.fornecedor"),
             value: c.is_org
               ? (c.fornecedor_cnpj
-                  ? <Link href={`/br/city/recife/quem-recebe/${c.fornecedor_cnpj}`}>{c.fornecedor}</Link>
-                  : c.fornecedor)
+                  ? <Link href={`/br/city/recife/quem-recebe/${c.fornecedor_cnpj}`}>{titleCasePt(c.fornecedor)}</Link>
+                  : titleCasePt(c.fornecedor))
               : t("br.recife.ct.pessoa_fisica"),
           },
           { label: t("br.recife.contrato.situacao"), value: c.situacao ?? "—" },

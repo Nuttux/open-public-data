@@ -6,7 +6,7 @@ import { FicheYearBars } from "@/components/fiche";
 import type { FicheYearPoint } from "@/components/fiche";
 import FicheKpis from "@/components/fusion/FicheKpis";
 import type { RecipientDetail, SourceBlock } from "@/lib/br/recife-data";
-import { fmtBrlCompact, fmtCnpj } from "@/lib/br/format";
+import { fmtBrlCompact, fmtCnpj, fmtInt, hasValor, titleCasePt, fill } from "@/lib/br/format";
 
 /**
  * Recipient (organisation / CNPJ) fiche — a thin br-municipal ADAPTER that
@@ -90,14 +90,23 @@ export default function RecifeRecebedorFiche({
                 <tr key={c.contrato_id}>
                   <td>
                     <Link href={`/br/city/recife/contratos/${c.contrato_id}`}>{c.numero}</Link>
-                    <div className="fx-fiche-sub">{c.objeto}</div>
+                    <div className="fx-fiche-sub">{titleCasePt(c.objeto)}</div>
                   </td>
-                  <td className="num mono">{fmtBrlCompact(c.valor ?? 0)}</td>
+                  <td className="num mono">
+                    {hasValor(c.valor) ? fmtBrlCompact(c.valor) : <span style={{ color: "var(--muted)", fontStyle: "italic" }}>{t("br.recife.contrato.sem_valor")}</span>}
+                  </td>
                 </tr>
               ))}
             </tbody>
           </table>
+          {rec.n_contratos > rec.contratos.length && (
+            <p className="fx-fiche-sub">{fill(t("br.recife.rec.contratos_capped"), { n: fmtInt(rec.contratos.length), total: fmtInt(rec.n_contratos) })}</p>
+          )}
         </section>
+      )}
+
+      {rec.n_contratos === 0 && (
+        <p className="fx-fiche-sub" style={{ marginTop: 14 }}>{t("br.recife.rec.sem_contrato")}</p>
       )}
 
       <footer className="fx-fiche-sources">

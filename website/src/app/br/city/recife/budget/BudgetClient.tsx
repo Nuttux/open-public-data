@@ -14,7 +14,7 @@ import ChartSource from "@/components/fusion/ChartSource";
 import ExportRow from "@/components/fusion/ExportRow";
 import { useT } from "@/lib/localeContext";
 import type { BudgetData } from "@/lib/br/recife-data";
-import { fmtBrl, fmtBrlCompact, fmtShare, fill, funcaoSlug } from "@/lib/br/format";
+import { fmtBrl, fmtBrlCompact, fmtBrlCompactNum, brlMagnitude, fmtShare, fill, funcaoSlug } from "@/lib/br/format";
 
 const SMALL = new Set(["e", "de", "da", "do", "dos", "das", "a", "o", "à", "em", "para"]);
 function titleCase(s: string) {
@@ -27,9 +27,13 @@ const BASE = "/br/city/recife/budget";
 
 export default function BudgetClient({ d, ano }: { d: BudgetData; ano?: number }) {
   const t = useT();
+  // Only show full (12-month) years: a partial current year (e.g. 2026 through
+  // month 5) would crater the comparison and there is no voted/orçado figure in
+  // the source to annualise it. Fall back to all years if none is complete.
   const completeYears = d.anos_disponiveis.filter((y) => d.curva_mensal.some((c) => c.ano === y && c.mes === 12));
-  const defaultAno = completeYears.length ? Math.max(...completeYears) : d.ano_mais_recente;
-  const year = ano && d.anos_disponiveis.includes(ano) ? ano : defaultAno;
+  const shownYears = completeYears.length ? completeYears : d.anos_disponiveis;
+  const defaultAno = Math.max(...shownYears);
+  const year = ano && shownYears.includes(ano) ? ano : defaultAno;
 
   const anoData = d.anos.find((a) => a.ano === year) ?? d.anos[d.anos.length - 1];
   const funcoes = anoData.funcoes.filter((f) => f.pago > 0);
@@ -42,10 +46,9 @@ export default function BudgetClient({ d, ano }: { d: BudgetData; ano?: number }
     sub: f.subfuncoes.length ? f.subfuncoes.slice(0, 3).map((s) => titleCase(s.subfuncao)).join(" · ") : undefined,
   }));
 
-  const timelinePoints = d.anos.map((a) => ({
-    year: a.ano, value: a.total_pago / 1e9,
-    type: (completeYears.includes(a.ano) ? "execute" : "estimate") as "execute" | "estimate",
-  }));
+  const timelinePoints = d.anos
+    .filter((a) => shownYears.includes(a.ano))
+    .map((a) => ({ year: a.ano, value: a.total_pago / 1e9, type: "execute" as const }));
 
   const pop = d.populacao?.populacao;
   const perCapita = pop ? anoData.total_pago / pop : null;
@@ -72,18 +75,17 @@ export default function BudgetClient({ d, ano }: { d: BudgetData; ano?: number }
         lede={t("br.recife.budget.subtitle")}
         actions={
           <YearPicker
-            years={d.anos_disponiveis.slice().sort((a, b) => a - b)}
-            previewYears={d.anos_disponiveis.filter((y) => !completeYears.includes(y))}
+            years={shownYears.slice().sort((a, b) => a - b)}
             current={year}
             basePath={BASE}
             label={t("br.recife.budget.exercicio")}
-            previewTitle={t("br.recife.budget.em_execucao")}
           />
         }
         stats={
           <>
             <IntroStat
-              value={<AnimatedNumber value={anoData.total_pago} format={fmtBrlCompact} />}
+              value={<AnimatedNumber value={anoData.total_pago} format={fmtBrlCompactNum} />}
+              unit={brlMagnitude(anoData.total_pago)}
               label={fill(t("br.recife.budget.stat_pago"), { y: year })}
             />
             {perCapita != null && (
@@ -93,11 +95,13 @@ export default function BudgetClient({ d, ano }: { d: BudgetData; ano?: number }
               />
             )}
             <IntroStat
-              value={<AnimatedNumber value={anoData.total_empenhado} format={fmtBrlCompact} />}
+              value={<AnimatedNumber value={anoData.total_empenhado} format={fmtBrlCompactNum} />}
+              unit={brlMagnitude(anoData.total_empenhado)}
               label={fill(t("br.recife.budget.stat_empenhado"), { y: year })}
             />
             <IntroStat
-              value={<AnimatedNumber value={restos} format={fmtBrlCompact} />}
+              value={<AnimatedNumber value={restos} format={fmtBrlCompactNum} />}
+              unit={brlMagnitude(restos)}
               label={t("br.recife.budget.stat_restos")}
             />
           </>

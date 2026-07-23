@@ -8,7 +8,7 @@
   "name": "Dados Abertos da Prefeitura do Recife",
   "source_url": "https://dados.recife.pe.gov.br/dataset?tags=Equipamentos"
  },
- "perimeter": "Equipamentos públicos geolocalizados (saúde, educação, cultura, esporte, praças). Diretório/identidade — os valores gastos por local exigem um cruzamento com contratos (etapa seguinte).",
+ "perimeter": "Equipamentos da Prefeitura com obras e investimentos identificados, cruzando os contratos da cidade com cada endereço e ordenados por valor.",
  "count": 1068,
  "familias": [
   {

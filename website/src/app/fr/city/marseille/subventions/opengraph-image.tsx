@@ -1,4 +1,5 @@
 import { ImageResponse } from "next/og";
+import { ogMark } from "@/components/og/OgMark";
 
 import { loadQuiRecoitData } from "@/lib/fusion-data";
 
@@ -40,21 +41,7 @@ export default async function MarseilleSubventionsOG() {
             color: "#b8551c",
           }}
         >
-          <div
-            style={{
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              width: 32,
-              height: 32,
-              background: "#111",
-              color: "#faf9f5",
-              fontSize: 18,
-              fontWeight: 800,
-            }}
-          >
-            FO
-          </div>
+          {ogMark()}
           <div style={{ display: "flex" }}>Qipu · Marseille · v1</div>
         </div>
 

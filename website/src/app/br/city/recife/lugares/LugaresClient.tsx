@@ -4,10 +4,10 @@ import PageIntro, { IntroStat } from "@/components/fusion/PageIntro";
 import { useT } from "@/lib/localeContext";
 import RecifePlacesExplorer from "@/components/br/RecifePlacesExplorer";
 import type { PlaceIndexEntry, PlacesSource } from "@/lib/br/recife-places-data";
-import { fmtInt } from "@/lib/br/format";
+import { fmtInt, fmtBrlCompactNum, brlMagnitude } from "@/lib/br/format";
 
 export default function LugaresClient({
-  places, locale, count, familias, source, perimeter,
+  places, locale, count, source, perimeter,
 }: {
   places: PlaceIndexEntry[];
   locale: "pt" | "en";
@@ -17,9 +17,9 @@ export default function LugaresClient({
   perimeter: string;
 }) {
   const t = useT();
-  const saude = familias.find((f) => f.familia === "Saúde")?.n ?? 0;
-  const educ = familias.find((f) => f.familia === "Educação")?.n ?? 0;
-  const pracas = familias.find((f) => f.familia === "Praças")?.n ?? 0;
+  // Total identified spending across the featured places — the money stat that
+  // mirrors Paris's "M€ d'argent public identifié" (no family breakdown).
+  const totalObras = places.reduce((s, p) => s + (p.obras_total ?? 0), 0);
 
   return (
     <main id="main-content" tabIndex={-1}>
@@ -30,14 +30,20 @@ export default function LugaresClient({
         stats={
           <>
             <IntroStat value={fmtInt(count)} label={t("br.recife.lugares.stat_total")} />
-            <IntroStat value={fmtInt(saude)} label={t("br.recife.lugares.stat_saude")} />
-            <IntroStat value={fmtInt(educ)} label={t("br.recife.lugares.stat_educacao")} />
-            <IntroStat value={fmtInt(pracas)} label={t("br.recife.lugares.stat_pracas")} />
+            <IntroStat
+              value={fmtBrlCompactNum(totalObras)}
+              unit={brlMagnitude(totalObras)}
+              label={t("br.recife.lugares.stat_identificado")}
+            />
           </>
         }
       />
 
-      <RecifePlacesExplorer places={places} locale={locale} />
+      <section className="fx-section">
+        <div className="fx-wrap">
+          <RecifePlacesExplorer places={places} locale={locale} />
+        </div>
+      </section>
 
       <section className="fx-footer-sources" id="sec-sources">
         <div className="fx-wrap">

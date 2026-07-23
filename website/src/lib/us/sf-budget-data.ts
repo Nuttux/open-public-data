@@ -524,3 +524,93 @@ export function loadSfCharacterFiche(
   }
   return null;
 }
+
+// ─── timeline.json (SF 150-year budget time machine) ─────────────────────────
+// One scrubbable series of total city finances 1880s→today, fusing the modern
+// budget mart (source_type "live") with verbatim figures transcribed from
+// Internet-Archive-scanned serial financial reports (source_type "archive").
+// Written by export_sf_timeline.py; every archive point re-verified against the
+// live OCR at export time. See pipeline/seeds/sf_timeline_{reference,archive}.json.
+
+export type SfTimelinePoint = {
+  year: number;
+  source_type: "archive" | "live";
+  label: string;
+  measure: string;
+  caption: string;
+  value_nominal: number;
+  value_real_today: number;
+  value_real_per_capita: number;
+  population: number;
+  population_note: string;
+  cpi_year: number;
+  // archive-only
+  quote?: string;
+  page?: number;
+  page_label?: string;
+  identifier?: string;
+  url: string;
+  thumb?: string;
+  ocr_note?: string;
+};
+
+export type SfTimeline = {
+  generated_at: string;
+  base_year: number;
+  unit: string;
+  value_definitions: Record<string, string>;
+  deflator_source: {
+    index: string;
+    base: string;
+    base_year: number;
+    source: string;
+    source_url: string;
+    pre_1913_source_url: string;
+  };
+  population_source: { series: string; source: string; source_url: string; method: string };
+  live_source: {
+    name: string;
+    dataset_id?: string;
+    source_url: string;
+    attribution?: string;
+    mart: string;
+    perimeter: string;
+  };
+  archive_note: string;
+  notes: string[];
+  points: SfTimelinePoint[];
+  composition: SfTimelineComposition;
+};
+
+export type SfCompServiceArea = {
+  name: string;
+  y0_usd: number;
+  y1_usd: number;
+  growth_usd: number;
+  mult: number | null;
+};
+
+export type SfCompArchiveItem = {
+  label: string;
+  value_nominal: number;
+  quote: string;
+  page_label: string;
+  url: string;
+};
+
+export type SfTimelineComposition = {
+  modern: {
+    window: string;
+    service_areas: SfCompServiceArea[];
+    personnel: { y0_usd: number; y1_usd: number; characters: string[] };
+    narrative: string;
+    note: string;
+    source_mart: string;
+  };
+  archive: { year: number; identifier: string; framing: string; items: SfCompArchiveItem[] }[];
+  archive_note: string;
+};
+
+export function loadSfTimeline(): SfTimeline {
+  return readJson<SfTimeline>("timeline.json");
+}

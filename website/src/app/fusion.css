@@ -803,9 +803,14 @@ body:has(.theme-fusion) > div.pb-24 { padding-bottom: 0 !important; }
   letter-spacing: -0.02em;
   margin: 0 0 2px;
   color: var(--ink);
-  /* Reserve two lines so the number + meta rows align across cards whose
-   * titles wrap to a different line count (1 line vs 2). */
+  /* Fixed two-line box: reserve two lines AND clamp to two, so every card's
+   * title occupies exactly the same height and the big numbers line up across
+   * the row (a 1-line or 3-line title would otherwise offset the figure). */
   min-height: calc(2 * 1.15em);
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 .theme-fusion .fx-hero-deck-meta {
   font-family: var(--f-ui);
@@ -834,6 +839,11 @@ body:has(.theme-fusion) > div.pb-24 { padding-bottom: 0 !important; }
   vertical-align: .55em;
   margin-left: .3em;
   letter-spacing: 0;
+}
+/* Leading unit (e.g. Brazilian "R$" prefix): sits before the number. */
+.theme-fusion .fx-hero-deck-num .u-lead {
+  margin-left: 0;
+  margin-right: .3em;
 }
 .theme-fusion .fx-hero-deck-num-pair {
   display: flex;
@@ -15474,6 +15484,27 @@ body:has(.theme-db-scrolly) { background: #fafaf7 !important; color: var(--p-ink
    full-width thumbnail dump and the SF text-only side list. */
 .theme-fusion .fx-places-bar {
   display: flex; flex-wrap: wrap; align-items: center; gap: 8px 14px; margin-bottom: 12px;
+  /* Opaque backing so the transparent chips never reveal anything behind the bar. */
+  position: relative; background: var(--bg);
+}
+/* The explorer is pulled up (margin-top:-20px) so the map sits higher, tucking
+   its filter bar over the intro's 1px bottom rule — which then struck through
+   the transparent chips (and peeked past the bar's right edge). Drop that rule
+   when an explorer follows the intro; the explorer is its own visual block. */
+.theme-fusion .fx-page-intro:has(+ .fx-places-explorer) { border-bottom: none; }
+
+/* Place fiche photo hero (Recife lugares — enriched places). */
+.theme-fusion .fx-lugar-photo {
+  margin: 0 0 18px; position: relative;
+  aspect-ratio: 16 / 9; overflow: hidden;
+  border: 1px solid var(--ink); background: var(--ink);
+}
+.theme-fusion .fx-lugar-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.theme-fusion .fx-lugar-photo figcaption {
+  position: absolute; bottom: 0; right: 0; padding: 2px 7px;
+  font-family: var(--f-mono); font-size: 10px; letter-spacing: .04em;
+  background: rgba(0,0,0,.55); color: #faf9f5; max-width: 100%;
+  overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
 }
 .theme-fusion .fx-places-search {
   flex: 1 1 220px; min-width: 170px; max-width: 360px;

@@ -1,4 +1,5 @@
 import { ImageResponse } from "next/og";
+import { ogMark } from "@/components/og/OgMark";
 
 import { loadCorrections } from "@/lib/corrections";
 
@@ -41,21 +42,7 @@ export default async function CorrectionsOG() {
             color: "#b8551c",
           }}
         >
-          <div
-            style={{
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              width: 32,
-              height: 32,
-              background: "#111",
-              color: "#faf9f5",
-              fontSize: 18,
-              fontWeight: 800,
-            }}
-          >
-            FO
-          </div>
+          {ogMark()}
           <div style={{ display: "flex" }}>Qipu · /corrections</div>
         </div>
 

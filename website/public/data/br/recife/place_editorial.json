@@ -1,0 +1,114 @@
+{
+  "source": "Descrições redigidas a partir do objeto dos contratos identificados (Prefeitura do Recife). Fotos: Wikimedia Commons.",
+  "items": {
+    "ginasio-de-esportes-geraldo-magalhaes": {
+      "descricao": "O Geraldão é o maior ginásio poliesportivo do Recife, na Imbiribeira. Os contratos identificados cobrem a reforma e ampliação do ginásio, a requalificação das quadras externas e do estacionamento e a construção de guarita e alambrado.",
+      "descricao_en": "The Geraldão is Recife's largest indoor sports arena, in Imbiribeira. The identified contracts cover the arena's renovation and expansion, the upgrade of the outdoor courts and car park, and a new gatehouse and perimeter fencing.",
+      "wiki_url": "https://pt.wikipedia.org/wiki/Gin%C3%A1sio_de_Esportes_Geraldo_Magalh%C3%A3es",
+      "photo": "/img/br/recife/places/geraldao.jpg",
+      "photo_credit": "Geraldão · Ícaro Messias / Wikimedia · CC BY-SA 2.0"
+    },
+    "dona-lindu": {
+      "descricao": "O Parque Dona Lindu, à beira-mar em Boa Viagem, foi projetado por Oscar Niemeyer. Os contratos identificados cobrem a manutenção das áreas externas, a recuperação do alambrado e a manutenção dos elevadores do parque.",
+      "descricao_en": "Parque Dona Lindu, on the Boa Viagem seafront, was designed by Oscar Niemeyer. The identified contracts cover upkeep of the outdoor areas, repair of the fencing, and maintenance of the park's lifts.",
+      "wiki_url": "https://pt.wikipedia.org/wiki/Parque_Dona_Lindu",
+      "photo": "/img/br/recife/places/dona-lindu.jpg",
+      "photo_credit": "Parque Dona Lindu · @raulds / Wikimedia · CC BY 2.0"
+    },
+    "porto-digital-do-recife": {
+      "descricao": "O Porto Digital é o parque tecnológico do Recife, no bairro histórico do Recife (centro). O contrato identificado pela Prefeitura é a instalação de iluminação pública na área.",
+      "descricao_en": "Porto Digital is Recife's technology park, in the historic Recife (old town) district. The identified City contract is the installation of public lighting in the area.",
+      "wiki_url": "https://pt.wikipedia.org/wiki/Porto_Digital",
+      "photo": "/img/br/recife/places/porto-digital-do-recife.jpg",
+      "photo_credit": "Rua do Bom Jesus, Bairro do Recife · Prefeitura do Recife / Carlos Augusto"
+    },
+    "sergio-loreto-3": {
+      "descricao": "Conjunto no bairro de São José. As obras identificadas incluem a construção de 224 unidades habitacionais e sua infraestrutura, um Centro Municipal de Educação Infantil e o reassentamento de famílias.",
+      "descricao_en": "A complex in the São José district. The identified works include 224 housing units and their infrastructure, a municipal early-childhood education centre, and the resettlement of families.",
+      "photo": "/img/br/recife/places/sergio-loreto-3.jpg",
+      "photo_credit": "Habitacional Sérgio Loreto · Prefeitura do Recife"
+    },
+    "abilio-gomes": {
+      "descricao": "Escola Municipal Abílio Gomes, em Boa Viagem. O contrato identificado é a construção da escola.",
+      "descricao_en": "Abílio Gomes municipal school, in Boa Viagem. The identified contract is the construction of the school.",
+      "photo": "/img/br/recife/places/abilio-gomes.jpg",
+      "photo_credit": "Escola Abílio Gomes · Prefeitura do Recife / Rodolfo Loepert"
+    },
+    "jardim-monte-verde": {
+      "descricao": "Equipamento de educação no Jardim Monte Verde (COHAB). O contrato identificado cobre a construção das unidades.",
+      "descricao_en": "An education facility in Jardim Monte Verde (COHAB). The identified contract covers construction of the units."
+    },
+    "professor-manoel-torres": {
+      "descricao": "Escola Municipal Manoel Torres, na Imbiribeira. Obra de construção da escola.",
+      "descricao_en": "Manoel Torres municipal school, in Imbiribeira. Construction of the school."
+    },
+    "darcy-ribeiro": {
+      "descricao": "Escola Municipal Darcy Ribeiro, no Cordeiro. Obras de reforma da escola e construção da creche (Cemei) Darcy Ribeiro.",
+      "descricao_en": "Darcy Ribeiro municipal school, in Cordeiro. Renovation of the school and construction of the Darcy Ribeiro nursery (Cemei).",
+      "photo": "/img/br/recife/places/darcy-ribeiro.jpg",
+      "photo_credit": "Escola Darcy Ribeiro · Prefeitura do Recife"
+    },
+    "rua-paissandu": {
+      "descricao": "Rua Paissandu. O contrato identificado é o fornecimento e a instalação de iluminação pública em tecnologia LED.",
+      "descricao_en": "Rua Paissandu. The identified contract is the supply and installation of LED public lighting."
+    },
+    "rosa-selvagem": {
+      "descricao": "ZEIS Rosa Selvagem, na Várzea. Obras de infraestrutura urbana, urbanização e paisagismo e contenção de encostas.",
+      "descricao_en": "Rosa Selvagem ZEIS (special social-interest zone), in Várzea. Urban infrastructure, landscaping and slope-containment works."
+    },
+    "creche-escola-recife-governador-miguel-arraes": {
+      "descricao": "Creche-Escola Recife Governador Miguel Arraes, em Areias. Reforma para implantação de um Centro de Referência da Primeira Infância.",
+      "descricao_en": "Governador Miguel Arraes nursery-school, in Areias. Renovation to set up an Early-Childhood Reference Centre.",
+      "photo": "/img/br/recife/places/creche-escola-recife-governador-miguel-arraes.jpg",
+      "photo_credit": "Creche-Escola Miguel Arraes · Jornal do Commercio"
+    },
+    "edite-braga": {
+      "descricao": "Escola Municipal Edite Braga, em Afogados. Obras de reforma.",
+      "descricao_en": "Edite Braga municipal school, in Afogados. Renovation works."
+    },
+    "campo-do-beira-rio": {
+      "descricao": "Campo de várzea Beira Rio. Obras de pavimentação e drenagem da Avenida Beira Rio e reforma e modernização do campo.",
+      "descricao_en": "The Beira Rio amateur football field. Paving and drainage of Avenida Beira Rio and renovation of the field."
+    },
+    "simao-borba": {
+      "descricao": "Praça Simão Borba, em Areias. Requalificação da praça para implantação de uma Academia da Cidade.",
+      "descricao_en": "Praça Simão Borba, in Areias. Upgrade of the square to install an outdoor public gym (Academia da Cidade)."
+    },
+    "gregorio-bezerra": {
+      "descricao": "Praça Gregório Bezerra, na Torre. Serviços de requalificação da praça.",
+      "descricao_en": "Praça Gregório Bezerra, in Torre. Upgrade works on the square.",
+      "photo": "/img/br/recife/places/gregorio-bezerra.jpg",
+      "photo_credit": "Busto de Gregório Bezerra, Torre · OxeRecife"
+    },
+    "karla-patricia": {
+      "descricao": "Equipamento de educação Karla Patrícia, em Boa Viagem. Obra de engenharia de ampliação e adequação.",
+      "descricao_en": "Karla Patrícia education facility, in Boa Viagem. Engineering works for expansion and upgrade.",
+      "photo": "/img/br/recife/places/karla-patricia.jpg",
+      "photo_credit": "Escola Municipal Karla Patrícia · reprodução"
+    },
+    "nossa-senhora-auxiliadora": {
+      "descricao": "Escola Municipal Nossa Senhora Auxiliadora, nos Torrões. Obras de engenharia na escola.",
+      "descricao_en": "Nossa Senhora Auxiliadora municipal school, in Torrões. Engineering works at the school."
+    },
+    "mundo-esperanca": {
+      "descricao": "Equipamento de educação Mundo Esperança, no Sítio dos Pintos. Obra de construção.",
+      "descricao_en": "Mundo Esperança education facility, in Sítio dos Pintos. Construction works."
+    },
+    "chico-science": {
+      "descricao": "Escola Chico Science, em Vasco da Gama. Fornecimento e instalação de sistema de automação predial.",
+      "descricao_en": "Chico Science school, in Vasco da Gama. Supply and installation of a building-automation system."
+    },
+    "mario-melo": {
+      "descricao": "Escola Municipal de Tempo Integral Mário Melo, em Campo Grande. Obras identificadas de iluminação; a escola recebeu ainda requalificação e uma nova quadra coberta.",
+      "descricao_en": "Mário Melo full-time municipal school, in Campo Grande. Identified public-lighting works; the school also received an upgrade and a new covered sports court.",
+      "photo": "/img/br/recife/places/mario-melo.jpg",
+      "photo_credit": "Escola Mário Melo · Prefeitura do Recife / Rodolfo Loepert"
+    },
+    "us-142-cs-bidu-krause": {
+      "descricao": "USF+ Bidu Krause, unidade de saúde da família no bairro do Totó (Distrito Sanitário V).",
+      "descricao_en": "USF+ Bidu Krause, a family health unit in the Totó district (Health District V).",
+      "photo": "/img/br/recife/places/us-142-cs-bidu-krause.jpg",
+      "photo_credit": "USF+ Bidu Krause · Prefeitura do Recife / Rodolfo Loepert"
+    }
+  }
+}

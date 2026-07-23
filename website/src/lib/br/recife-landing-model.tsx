@@ -3,7 +3,7 @@ import type { Locale } from "@/lib/localeContext";
 import PlaceSwitcher from "@/components/PlaceSwitcher";
 import { loadBudget, loadQuemRecebe, loadContratos, funcaoSlug } from "@/lib/br/recife-data";
 import { loadPlace } from "@/lib/br/recife-places-data";
-import { fmtBrl, fmtBrlCompact, fmtInt } from "@/lib/br/format";
+import { fmtBrl, fmtBrlCompact, fmtBrlDeck, fmtInt } from "@/lib/br/format";
 
 const BASE = "/br/city/recife";
 
@@ -32,7 +32,7 @@ type S = {
     subv_k: string; subv_meta: string; subv_cta: string;
   };
   chips_h: React.ReactNode;
-  chip_orc: string; chip_orc_d: string; chip_qr: string; chip_qr_d: string; chip_ct: string; chip_ct_d: string;
+  chip_orc: string; chip_orc_d: string; chip_qr: string; chip_qr_d: string; chip_ct: string; chip_ct_d: string; chip_lug: string; chip_lug_d: string;
   ativos: string; concluidas: string;
 };
 
@@ -51,6 +51,7 @@ const STRINGS: Record<"pt" | "en", S> = {
     chip_orc: "Orçamento", chip_orc_d: "Despesa executada por função, ano a ano.",
     chip_qr: "Quem recebe", chip_qr_d: "Organizações pagas e subvenções.",
     chip_ct: "Contratos", chip_ct_d: "Contratos e licitações da cidade.",
+    chip_lug: "Lugares", chip_lug_d: "Equipamentos e obras no mapa da cidade.",
     ativos: "ativos", concluidas: "licitações",
   },
   en: {
@@ -67,6 +68,7 @@ const STRINGS: Record<"pt" | "en", S> = {
     chip_orc: "Budget", chip_orc_d: "Executed spending by function, year by year.",
     chip_qr: "Who's paid", chip_qr_d: "Paid organisations and subsidies.",
     chip_ct: "Contracts", chip_ct_d: "City contracts and tenders.",
+    chip_lug: "Places", chip_lug_d: "Facilities and public works on the city map.",
     ativos: "active", concluidas: "tenders",
   },
 };
@@ -109,29 +111,30 @@ export function buildRecifeLandingModel(locale: Locale): LandingModel {
   const deck: DeckCard[] = [];
   if (geraldao) {
     deck.push(card(`${BASE}/lugares/${geraldao.slug}`, s.deck.place_k, titleCase(geraldao.nome),
-      fmtBrlCompact(geraldao.obras_total ?? 0),
+      fmtBrlDeck(geraldao.obras_total ?? 0),
       `${titleCase(geraldao.familia)} · ${fmtInt(geraldao.n_obras ?? 0)} ${geraldao.familia ? s.deck.obras_word : ""}`.trim(),
       s.deck.place_cta,
       `${IMG}/geraldao.jpg`, "Geraldão · Ícaro Messias / Wikimedia · CC BY-SA 2.0", titleCase(geraldao.nome)));
   }
   if (topRec) {
     deck.push(card(`${BASE}/quem-recebe/${topRec.cnpj}`, s.deck.rec_k, truncate(titleCase(topRec.nome), 40),
-      fmtBrlCompact(topRec.total_pago), s.deck.rec_meta, s.deck.rec_cta,
+      fmtBrlDeck(topRec.total_pago), s.deck.rec_meta, s.deck.rec_cta,
       `${IMG}/praca-rio-branco.jpg`, "Praça Rio Branco · Wilfredor / Wikimedia · CC0", "Marco Zero, Praça Rio Branco, Recife"));
   }
   if (bigContrato) {
     deck.push(card(`${BASE}/contratos/${bigContrato.contrato_id}`, s.deck.ct_k, truncate(titleCase(bigContrato.fornecedor ?? ""), 40),
-      fmtBrlCompact(bigContrato.valor ?? 0), truncate(titleCase(bigContrato.objeto ?? ""), 46), s.deck.ct_cta,
+      fmtBrlDeck(bigContrato.valor ?? 0), truncate(titleCase(bigContrato.objeto ?? ""), 46), s.deck.ct_cta,
       `${IMG}/ponte-nassau.jpg`, "Ponte Maurício de Nassau · Joelkaula / Wikimedia · CC BY-SA 4.0", "Ponte Maurício de Nassau, Recife"));
   }
   if (topSubv) {
     deck.push(card(`${BASE}/quem-recebe/${topSubv.cnpj}`, s.deck.subv_k, truncate(titleCase(topSubv.nome), 40),
-      fmtBrlCompact(topSubv.subvencao_pago), s.deck.subv_meta, s.deck.subv_cta,
+      fmtBrlDeck(topSubv.subvencao_pago), s.deck.subv_meta, s.deck.subv_cta,
       `${IMG}/hospital-restauracao.jpg`, "Hospital da Restauração · MPPE / Wikimedia · CC BY 2.0", "Hospital da Restauração, Recife"));
   }
 
   const chips: LandingChip[] = [
-    { href: `${BASE}/budget`, title: s.chip_orc, desc: s.chip_orc_d, featured: true },
+    { href: `${BASE}/lugares`, title: s.chip_lug, desc: s.chip_lug_d, featured: true },
+    { href: `${BASE}/budget`, title: s.chip_orc, desc: s.chip_orc_d },
     { href: `${BASE}/quem-recebe`, title: s.chip_qr, desc: s.chip_qr_d },
     { href: `${BASE}/contratos`, title: s.chip_ct, desc: s.chip_ct_d },
   ];
@@ -153,11 +156,15 @@ function card(
   href: string, kicker: string, title: string, amount: string, meta: string, cta: string,
   photo: string | null = null, photoCredit: string | null = null, photoAlt?: string,
 ): DeckCard {
-  // amount like "R$ 8,85 bi" — split trailing unit word onto amountUnit
-  const m = amount.match(/^(.*?)\s(bi|mi|mil)$/);
+  // amount like "R$ 571,2 mi" → small leading "R$", bare display number "571,2",
+  // small trailing magnitude "mi" — mirrors Paris (bare digits + small unit) so
+  // the giant number never wraps between the currency mark and the figure.
+  const m = amount.match(/^(−?)R\$\s(.+?)(?:\s(bi|mi|mil))?$/);
   return {
     href, scroll: false, kicker, title,
-    amount: m ? m[1] : amount, amountUnit: m ? m[2] : "",
+    amountLead: m ? `${m[1]}R$` : "",
+    amount: m ? m[2] : amount,
+    amountUnit: m && m[3] ? m[3] : "",
     meta, cta, photo, photoCredit, photoAlt,
   };
 }

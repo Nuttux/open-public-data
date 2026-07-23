@@ -33,6 +33,9 @@ export type DeckCard = {
   title: string;
   amount: string;
   amountUnit: string;
+  /** Optional small unit BEFORE the number (e.g. Brazilian "R$" prefix). Paris
+   *  and SF leave this empty; the currency there is glued or a trailing suffix. */
+  amountLead?: string;
   meta: string;
   cta: string;
   photo: string | null;

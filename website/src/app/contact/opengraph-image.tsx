@@ -1,4 +1,5 @@
 import { ImageResponse } from "next/og";
+import { ogMark } from "@/components/og/OgMark";
 
 export const runtime = "nodejs";
 export const size = { width: 1200, height: 630 };
@@ -30,21 +31,7 @@ export default async function ContactOG() {
             color: "#b8551c",
           }}
         >
-          <div
-            style={{
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              width: 32,
-              height: 32,
-              background: "#111",
-              color: "#faf9f5",
-              fontSize: 18,
-              fontWeight: 800,
-            }}
-          >
-            FO
-          </div>
+          {ogMark()}
           <div style={{ display: "flex" }}>Qipu · /contact</div>
         </div>
 

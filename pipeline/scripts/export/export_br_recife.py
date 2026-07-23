@@ -518,9 +518,8 @@ def build_places(client, log):
         "country": "br", "scale": "city", "place": "recife",
         "source": {"name": rows_[0].get("source_name"), "source_url": rows_[0].get("source_url")},
         "perimeter": (
-            "Equipamentos públicos geolocalizados (saúde, educação, cultura, "
-            "esporte, praças). Diretório/identidade — os valores gastos por "
-            "local exigem um cruzamento com contratos (etapa seguinte)."
+            "Equipamentos da Prefeitura com obras e investimentos identificados, "
+            "cruzando os contratos da cidade com cada endereço e ordenados por valor."
         ),
         "count": len(places),
         "familias": familias,

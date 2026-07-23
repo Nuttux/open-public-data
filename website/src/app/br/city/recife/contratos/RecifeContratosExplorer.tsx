@@ -5,7 +5,7 @@ import { useEffect, useMemo, useState } from "react";
 import { useT } from "@/lib/localeContext";
 import { normSearch, expandQuery, matchExpanded } from "@/lib/search-synonyms";
 import type { ContratoItem } from "@/lib/br/recife-data";
-import { fmtBrlCompact, fill } from "@/lib/br/format";
+import { fmtBrlCompact, fill, hasValor, titleCasePt } from "@/lib/br/format";
 
 const href = (id: string) => `/br/city/recife/contratos/${id}`;
 const PAGE = 48;
@@ -102,11 +102,13 @@ export default function RecifeContratosExplorer({
                   <span className="fx-result-card-type">{c.modalidade}</span>
                   {c.is_ativo && <span className="fx-sm-tag">{t("br.recife.ct.badge_ativo")}</span>}
                 </div>
-                <div className="fx-result-card-cta">{c.objeto ?? c.numero}</div>
+                <div className="fx-result-card-cta">{c.objeto ? titleCasePt(c.objeto) : c.numero}</div>
                 <div className="fx-result-card-meta">
-                  {c.is_org ? c.fornecedor : t("br.recife.ct.pessoa_fisica")}{c.orgao ? ` · ${c.orgao}` : ""}
+                  {c.is_org ? titleCasePt(c.fornecedor) : t("br.recife.ct.pessoa_fisica")}{c.orgao ? ` · ${c.orgao}` : ""}
                 </div>
-                <div className="fx-result-card-amount tnum">{fmtBrlCompact(c.valor ?? 0)}</div>
+                <div className="fx-result-card-amount tnum">
+                  {hasValor(c.valor) ? fmtBrlCompact(c.valor) : <span style={{ color: "var(--muted)", fontStyle: "italic", fontWeight: 400 }}>{t("br.recife.contrato.sem_valor")}</span>}
+                </div>
               </Link>
             ))}
           </div>

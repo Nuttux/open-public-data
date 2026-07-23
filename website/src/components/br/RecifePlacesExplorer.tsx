@@ -48,11 +48,13 @@ export default function RecifePlacesExplorer({
       const baseStat = [p.tipo ? titleCase(p.tipo) : null, p.bairro ? titleCase(p.bairro) : null].filter(Boolean).join(" · ") || (p.detalhe ?? "");
       return {
         slug: p.slug, name: titleCase(p.nome), kind: p.tipo ?? "",
-        lat: p.lat, lon: p.lon, photo: null,
+        lat: p.lat, lon: p.lon, photo: p.photo ?? null,
         familyKey: p.familia,
         areaKey: p.bairro ?? "", areaLabel: p.bairro ? titleCase(p.bairro) : "",
         metric: obras > 0 ? obras : undefined,
-        stat: obras > 0 ? `${fmtBrlCompact(obras)} ${t("br.recife.lugares.em_obras")} · ${baseStat}` : baseStat,
+        stat: obras > 0
+          ? [`${fmtBrlCompact(obras)} ${t("br.recife.lugares.em_obras")}`, baseStat].filter(Boolean).join(" · ")
+          : baseStat,
         statTone: obras > 0 ? "money" : "muted",
         tooltipStat: obras > 0 ? ` · ${fmtBrlCompact(obras)} ${t("br.recife.lugares.em_obras")}` : undefined,
       };

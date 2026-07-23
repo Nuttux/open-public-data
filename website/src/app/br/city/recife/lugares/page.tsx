@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { cookies } from "next/headers";
-import { loadPlacesFile } from "@/lib/br/recife-places-data";
+import { loadEnrichedPlacesFile } from "@/lib/br/recife-places-data";
 import LugaresClient from "./LugaresClient";
 
 export const metadata: Metadata = {
@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 export default async function LugaresPage() {
   const store = await cookies();
   const locale: "pt" | "en" = store.get("br_locale")?.value === "en" ? "en" : "pt";
-  const f = loadPlacesFile();
+  const f = loadEnrichedPlacesFile();
   return (
     <LugaresClient
       places={f.places}

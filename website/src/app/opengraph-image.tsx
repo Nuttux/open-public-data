@@ -1,22 +1,19 @@
 import { ImageResponse } from "next/og";
-
-import { loadLandingStats } from "@/lib/fusion-data";
+import { ogMark } from "@/components/og/OgMark";
 
 export const runtime = "nodejs";
-export const alt = "Qipu — où va l'argent public";
+export const alt = "Qipu — public money made legible";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
-const fmtFr = (n: number) => n.toLocaleString("fr-FR");
-const fmtBnFr = (n: number) => (n / 1e9).toFixed(1).replace(".", ",");
-
+/**
+ * Root share card for qipu.org. Brand-level, not city-specific: qipu.org is
+ * shared internationally and the product is one platform across many cities, so
+ * the card leads with the tagline rather than any single city's figures. Kept
+ * data-independent on purpose (no loadLandingStats) so it renders even when the
+ * per-city data isn't present at build time.
+ */
 export default async function OG() {
-  const stats = loadLandingStats();
-  const budget = fmtBnFr(stats.totalDepenses);
-  const nbMarches = fmtFr(Math.floor(stats.nbMarchesCumul / 1000) * 1000);
-  const nbSubventions = fmtFr(Math.floor(stats.nbSubventionsCumul / 1000) * 1000);
-  const budgetTypeLabel = stats.budgetType === "vote" ? "voté" : "exécuté";
-
   return new ImageResponse(
     (
       <div
@@ -41,66 +38,45 @@ export default async function OG() {
             color: "#b8551c",
           }}
         >
-          <div
-            style={{
-              width: 32,
-              height: 32,
-              background: "#111",
-              color: "#faf9f5",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              fontSize: 18,
-              fontWeight: 800,
-            }}
-          >
-            FO
-          </div>
+          {ogMark()}
           Qipu
-        </div>
-
-        <div
-          style={{
-            marginTop: 48,
-            fontSize: 82,
-            fontWeight: 800,
-            color: "#111",
-            lineHeight: 1.02,
-            letterSpacing: -2.5,
-            maxWidth: 1040,
-          }}
-        >
-          Où va l'argent public à Paris ?
         </div>
 
         <div style={{ flex: 1 }} />
 
-        <div style={{ display: "flex", alignItems: "flex-end", gap: 64 }}>
-          <div style={{ display: "flex", flexDirection: "column" }}>
-            <div style={{ fontSize: 15, color: "#666", letterSpacing: 2, textTransform: "uppercase" }}>
-              {`Budget ${stats.year} · ${budgetTypeLabel}`}
-            </div>
-            <div style={{ fontSize: 86, fontWeight: 800, color: "#111", letterSpacing: -2, lineHeight: 1 }}>
-              {`${budget} Md€`}
-            </div>
-          </div>
-          <div style={{ display: "flex", flexDirection: "column" }}>
-            <div style={{ fontSize: 15, color: "#666", letterSpacing: 2, textTransform: "uppercase" }}>
-              {`Marchés depuis ${stats.marchesSinceYear}`}
-            </div>
-            <div style={{ fontSize: 64, fontWeight: 800, color: "#111", letterSpacing: -1.5, lineHeight: 1 }}>
-              {nbMarches}
-            </div>
-          </div>
-          <div style={{ display: "flex", flexDirection: "column" }}>
-            <div style={{ fontSize: 15, color: "#666", letterSpacing: 2, textTransform: "uppercase" }}>
-              {`Subv. depuis ${stats.subventionsSinceYear}`}
-            </div>
-            <div style={{ fontSize: 64, fontWeight: 800, color: "#111", letterSpacing: -1.5, lineHeight: 1 }}>
-              {nbSubventions}
-            </div>
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            fontSize: 92,
+            fontWeight: 800,
+            color: "#111",
+            lineHeight: 1.02,
+            letterSpacing: -3,
+          }}
+        >
+          <div style={{ display: "flex" }}>Public money,</div>
+          <div style={{ display: "flex" }}>
+            {/* marginRight (not a trailing space) — Satori collapses the space
+                between adjacent flex spans, which glued "made" to "legible". */}
+            <span style={{ marginRight: 24 }}>made</span>
+            <span style={{ color: "#2a3680" }}>legible.</span>
           </div>
         </div>
+
+        <div
+          style={{
+            marginTop: 30,
+            fontSize: 34,
+            color: "#555",
+            letterSpacing: -0.5,
+            maxWidth: 960,
+          }}
+        >
+          Follow where it comes from and where it goes.
+        </div>
+
+        <div style={{ flex: 1 }} />
 
         <div
           style={{
@@ -115,7 +91,7 @@ export default async function OG() {
             justifyContent: "space-between",
           }}
         >
-          <span>Sourcé aux comptes officiels · M57</span>
+          <span>Sourced · verifiable · open-licensed</span>
           <span>qipu.org</span>
         </div>
       </div>

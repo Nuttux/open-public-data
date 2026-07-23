@@ -1,0 +1,24 @@
+{
+  "_note": "Grounded 'what the city funded' lines for the SF timeline's What-changed section. RULE identical to sf_timeline_archive.json: every figure is transcribed VERBATIM from a scanned SF serial financial report on the Internet Archive, with an exact djvu substring `quote`, the printed `digitrun`, and the scan `leaf` for the deep link. export_sf_timeline.py re-verifies each quote + digit-run against the live OCR and drops any line that no longer grounds. These are NOT exhaustive rankings — the 1888 lines are illustrative ledger entries (schools/police/interest were larger and are not machine-cleanly extractable from the 19th-c. compendium OCR); the 1913 lines are department totals as printed (the 1912-13 column). `framing` records exactly which. Deeper per-era extraction (1895/1968/1986) is a follow-up. The modern composition is computed live from the budget marts by the exporter, not seeded here.",
+  "generated_by": "in-session OCR curation, 2026-07-23",
+  "archive": [
+    {
+      "year": 1888,
+      "identifier": "sanfranciscomuni38sanfrich",
+      "framing": "illustrative lines from the ledger (verbatim), not a ranking",
+      "items": [
+        { "label": "Street Department", "value_nominal": 292713.21, "digitrun": "29271321", "quote": "Street Department expenses $292,713 21", "leaf": 642 },
+        { "label": "Lighting the streets", "value_nominal": 254438.21, "digitrun": "25443821", "quote": "Street Light expenses 254,438 21", "leaf": 642 }
+      ]
+    },
+    {
+      "year": 1913,
+      "identifier": "munisanfrancisco62sanfrich",
+      "framing": "department totals as printed (1912-13 column)",
+      "items": [
+        { "label": "School Department", "value_nominal": 1912047.89, "digitrun": "191204789", "quote": "Total 1,868,950.05 1,912,047.89", "leaf": 18 },
+        { "label": "Streets and Sewers", "value_nominal": 1505910.50, "digitrun": "150591050", "quote": "Total 1,280,167.65 1,505,910.50", "leaf": 19 }
+      ]
+    }
+  ]
+}

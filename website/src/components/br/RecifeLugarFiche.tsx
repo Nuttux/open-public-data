@@ -1,11 +1,11 @@
 "use client";
 
 import Link from "next/link";
-import { useT } from "@/lib/localeContext";
+import { useT, useLocale } from "@/lib/localeContext";
 import { FicheSection } from "@/components/fiche";
 import FicheKpis from "@/components/fusion/FicheKpis";
 import type { PlaceIndexEntry, PlacesSource, PlaceObras } from "@/lib/br/recife-places-data";
-import { fmtBrlCompact, fmtInt } from "@/lib/br/format";
+import { fmtBrlCompact, fmtInt, hasValor, titleCasePt } from "@/lib/br/format";
 
 const SMALL = new Set(["e", "de", "da", "do", "dos", "das", "a", "o", "à", "em", "para"]);
 function titleCase(s: string) {
@@ -23,19 +23,33 @@ export default function RecifeLugarFiche({
   obras?: PlaceObras | null;
 }) {
   const t = useT();
+  const { locale } = useLocale();
   const mapUrl = `https://www.openstreetmap.org/?mlat=${place.lat}&mlon=${place.lon}#map=17/${place.lat}/${place.lon}`;
   const hasObras = !!obras && obras.contratos.length > 0;
+  const descricao = (locale === "en" ? place.descricao_en : place.descricao) || place.descricao || null;
 
   return (
     <div>
+      {place.photo && (
+        <figure className="fx-lugar-photo">
+          <img src={place.photo} alt={titleCase(place.nome)} width={1200} height={800} loading="eager" />
+          {place.photo_credit && <figcaption>© {place.photo_credit}</figcaption>}
+        </figure>
+      )}
+
       <div style={{ display: "flex", gap: 8, flexWrap: "wrap", marginBottom: 14 }}>
         <span className="fx-sm-tag">{place.familia}</span>
         {place.tipo && <span className="fx-sm-tag">{titleCase(place.tipo)}</span>}
       </div>
 
-      {place.detalhe && (
+      {(descricao || place.detalhe) && (
         <div className="fx-fiche-lead">
-          <p className="fx-fiche-lead-main">{titleCase(place.detalhe)}</p>
+          <p className="fx-fiche-lead-main">{descricao ?? titleCase(place.detalhe!)}</p>
+          {place.wiki_url && (
+            <p className="fx-fiche-lead-sub">
+              <a href={place.wiki_url} target="_blank" rel="noopener noreferrer">{t("br.recife.lugares.wiki")} ↗</a>
+            </p>
+          )}
         </div>
       )}
 
@@ -74,9 +88,11 @@ export default function RecifeLugarFiche({
                 <tr key={c.contrato_id}>
                   <td>
                     <Link href={`/br/city/recife/contratos/${c.contrato_id}`}>{c.numero}</Link>
-                    <div className="fx-fiche-sub">{c.objeto}</div>
+                    <div className="fx-fiche-sub">{titleCasePt(c.objeto)}</div>
                   </td>
-                  <td className="num mono">{c.valor != null ? fmtBrlCompact(c.valor) : "—"}</td>
+                  <td className="num mono">
+                    {hasValor(c.valor) ? fmtBrlCompact(c.valor) : <span style={{ color: "var(--muted)", fontStyle: "italic" }}>{t("br.recife.contrato.sem_valor")}</span>}
+                  </td>
                 </tr>
               ))}
             </tbody>

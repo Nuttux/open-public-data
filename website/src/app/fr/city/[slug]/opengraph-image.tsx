@@ -1,4 +1,5 @@
 import { ImageResponse } from "next/og";
+import { ogMark } from "@/components/og/OgMark";
 
 import { getCityOrNull } from "@/lib/cities";
 import { loadCommune } from "@/lib/commune-data";
@@ -45,7 +46,7 @@ export default async function CityOG({ params }: { params: Promise<{ slug: strin
     (
       <div style={{ width: "100%", height: "100%", display: "flex", flexDirection: "column", background: "#faf9f5", padding: "64px 72px", fontFamily: "sans-serif" }}>
         <div style={{ display: "flex", alignItems: "center", gap: 14, fontSize: 18, letterSpacing: 4, textTransform: "uppercase", color: "#b8551c" }}>
-          <div style={{ display: "flex", alignItems: "center", justifyContent: "center", width: 32, height: 32, background: "#111", color: "#faf9f5", fontSize: 18, fontWeight: 800 }}>FO</div>
+          {ogMark()}
           <div style={{ display: "flex" }}>Qipu</div>
         </div>
 

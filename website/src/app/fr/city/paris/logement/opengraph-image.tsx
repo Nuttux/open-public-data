@@ -1,4 +1,5 @@
 import { ImageResponse } from "next/og";
+import { ogMark } from "@/components/og/OgMark";
 
 import { loadLogementSocialData } from "@/lib/fusion-data";
 
@@ -48,21 +49,7 @@ export default async function OG() {
             color: "#b8551c",
           }}
         >
-          <div
-            style={{
-              width: 32,
-              height: 32,
-              background: "#111",
-              color: "#faf9f5",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              fontSize: 18,
-              fontWeight: 800,
-            }}
-          >
-            FO
-          </div>
+          {ogMark()}
           Qipu
         </div>
 

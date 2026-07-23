@@ -12,7 +12,7 @@ import ExportRow from "@/components/fusion/ExportRow";
 import PageHook from "@/components/fusion/PageHook";
 import { useT } from "@/lib/localeContext";
 import type { QuemRecebeData } from "@/lib/br/recife-data";
-import { fmtBrlCompact, fmtBrl, fmtInt, fmtShare, fill } from "@/lib/br/format";
+import { fmtBrlCompact, fmtBrlCompactNum, brlMagnitude, fmtBrl, fmtInt, fmtShare, fill } from "@/lib/br/format";
 import RecifeQuemRecebeExplorer from "./RecifeQuemRecebeExplorer";
 
 const BASE = "/br/city/recife/quem-recebe";
@@ -43,7 +43,7 @@ export default function QuemRecebeClient({ d }: { d: QuemRecebeData }) {
         lede={t("br.recife.qr.subtitle")}
         stats={
           <>
-            <IntroStat value={<AnimatedNumber value={d.headline.total_pago} format={fmtBrlCompact} />} label={t("br.recife.qr.stat_pago")} />
+            <IntroStat value={<AnimatedNumber value={d.headline.total_pago} format={fmtBrlCompactNum} />} unit={brlMagnitude(d.headline.total_pago)} label={t("br.recife.qr.stat_pago")} />
             <IntroStat value={<AnimatedNumber value={d.headline.n_organizacoes} format={fmtInt} />} label={t("br.recife.qr.stat_orgs")} />
             <IntroStat value={<AnimatedNumber value={Math.round(d.headline.mediana)} format={fmtBrl} />} label={t("br.recife.qr.stat_mediana")} />
             <IntroStat value={<AnimatedNumber value={d.headline.concentracao_top10 * 100} format={(n) => fmtShare(n / 100)} />} label={t("br.recife.qr.stat_concentracao")} />

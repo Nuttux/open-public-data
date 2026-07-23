@@ -1,0 +1,306 @@
+{
+  "generated_at": "2026-07-23T13:04:50.730914+00:00",
+  "source_pipeline": "pipeline/seeds/sf_timeline_{reference,archive}.json (BLS CPI-U + Census + in-session Internet Archive OCR curation) + Internet Archive _djvu.txt (re-verified) + mart_us_sf_budget_by_year → export_sf_timeline.py",
+  "country": "us",
+  "scale": "city",
+  "place": "sf",
+  "unit": "USD",
+  "base_year": 2025,
+  "value_definitions": {
+    "value_nominal": "The figure exactly as printed in the scan (archive) or adopted budget (live) — the untouched anchor, never altered or interpolated.",
+    "value_real_today": "value_nominal adjusted for inflation to 2025 dollars with the CPI-U deflator below — a labeled derived transform.",
+    "value_real_per_capita": "value_real_today divided by that year's SF population — a labeled derived transform."
+  },
+  "deflator_source": {
+    "index": "US CPI-U (All Urban Consumers, U.S. city average, All items)",
+    "base": "1982-84=100",
+    "base_year": 2025,
+    "source": "1913-2025: U.S. Bureau of Labor Statistics, CPI-U series CUUR0000SA0, annual average. Pre-1913: Federal Reserve Bank of Minneapolis long-run CPI estimate (Warren-Pearson / historical splice, 1967=100), rescaled to the 1982-84=100 base by chain-splicing at 1913.",
+    "source_url": "https://www.bls.gov/cpi/data.htm",
+    "pre_1913_source_url": "https://www.minneapolisfed.org/about-us/monetary-policy/inflation-calculator/consumer-price-index-1800-"
+  },
+  "population_source": {
+    "series": "City and County of San Francisco, U.S. decennial Census population",
+    "source": "U.S. Census Bureau, decennial census counts for the City and County of San Francisco.",
+    "source_url": "https://www.census.gov/programs-surveys/decennial-census.html",
+    "method": "Decennial census counts. Intercensal years for a timeline point are linearly interpolated between the two bracketing censuses; years after the latest census use that census count."
+  },
+  "live_source": {
+    "name": "Budget",
+    "dataset_id": "xdgd-c79v",
+    "source_url": "https://data.sfgov.org/d/xdgd-c79v",
+    "attribution": "SF Controller's Office",
+    "mart": "mart_us_sf_budget_by_year",
+    "perimeter": "Adopted budget (Annual Appropriation Ordinance), all funds, net of transfers."
+  },
+  "archive_note": "Archive figures are the single citywide headline total as printed in a scanned San Francisco serial financial report on the Internet Archive, transcribed verbatim with its page-level deep link. The historical serials report different top-lines across eras (total receipts, total expenditures, total budget) — recorded per point in `measure` — so the archive tier is shown 'as reported in the scan' and never joined to the live line.",
+  "notes": [
+    "Real dollars are adjusted with the CPI-U to 2025 (pre-1913: Federal Reserve Bank of Minneapolis historical index, spliced to the BLS CPI-U at 1913); comparisons across such spans mix price levels with a growing city and an expanding scope of government."
+  ],
+  "points": [
+    {
+      "year": 1888,
+      "source_type": "archive",
+      "label": "FY 1887-88",
+      "measure": "total_expenditures",
+      "caption": "Total amount of expenditures",
+      "value_nominal": 3666879.62,
+      "value_real_today": 131169580.61,
+      "value_real_per_capita": 458.65,
+      "population": 285989,
+      "population_note": "linearly interpolated between the 1880 and 1890 decennial censuses",
+      "cpi_year": 9.0,
+      "quote": "Total Amount of Expenditures '. '. '\"' $3,666,879 62",
+      "page": 643,
+      "page_label": "scan leaf 643",
+      "identifier": "sanfranciscomuni38sanfrich",
+      "url": "https://archive.org/details/sanfranciscomuni38sanfrich/page/n643?q=Total%20Amount%20of%20Expenditures%20%27.%20%27.%20%27%22%27%20%243%2C666%2C879%2062",
+      "thumb": "https://archive.org/download/sanfranciscomuni38sanfrich/page/n643_w360.jpg"
+    },
+    {
+      "year": 1895,
+      "source_type": "archive",
+      "label": "FY 1894-95",
+      "measure": "total_receipts",
+      "caption": "Total receipts during the year (all funds, Auditor's statement)",
+      "value_nominal": 7829558.69,
+      "value_real_today": 302601634.25,
+      "value_real_per_capita": 943.01,
+      "population": 320890,
+      "population_note": "linearly interpolated between the 1890 and 1900 decennial censuses",
+      "cpi_year": 8.33,
+      "quote": "Total receipts during the year $7,829,558 69",
+      "page": 602,
+      "page_label": "scan leaf 602",
+      "identifier": "sanfranciscomuni45sanfrich",
+      "url": "https://archive.org/details/sanfranciscomuni45sanfrich/page/n602?q=Total%20receipts%20during%20the%20year%20%247%2C829%2C558%2069",
+      "thumb": "https://archive.org/download/sanfranciscomuni45sanfrich/page/n602_w360.jpg"
+    },
+    {
+      "year": 1913,
+      "source_type": "archive",
+      "label": "FY 1912-13",
+      "measure": "total_receipts",
+      "caption": "Total receipts (Auditor's statement of sources of revenue)",
+      "value_nominal": 29086909.18,
+      "value_real_today": 945891596.18,
+      "value_real_per_capita": 2131.15,
+      "population": 443841,
+      "population_note": "linearly interpolated between the 1910 and 1920 decennial censuses",
+      "cpi_year": 9.9,
+      "quote": "Total Receipts $29,086,909.18",
+      "page": 160,
+      "page_label": "scan leaf 160",
+      "identifier": "munisanfrancisco62sanfrich",
+      "url": "https://archive.org/details/munisanfrancisco62sanfrich/page/n160?q=Total%20Receipts%20%2429%2C086%2C909.18",
+      "thumb": "https://archive.org/download/munisanfrancisco62sanfrich/page/n160_w360.jpg"
+    },
+    {
+      "year": 1968,
+      "source_type": "archive",
+      "label": "FY 1967-68",
+      "measure": "total_budget",
+      "caption": "Total budget including bond funds (revenue appropriations)",
+      "value_nominal": 500282171.0,
+      "value_real_today": 4628228246.5,
+      "value_real_per_capita": 6422.72,
+      "population": 720602,
+      "population_note": "linearly interpolated between the 1960 and 1970 decennial censuses",
+      "cpi_year": 34.8,
+      "quote": "TOTAL BUDGET INCLUDING BOND FUNDS",
+      "page": 34,
+      "page_label": "scan leaf 34",
+      "identifier": "citycountyofsan196768sanf",
+      "url": "https://archive.org/details/citycountyofsan196768sanf/page/n34?q=TOTAL%20BUDGET%20INCLUDING%20BOND%20FUNDS",
+      "thumb": "https://archive.org/download/citycountyofsan196768sanf/page/n34_w360.jpg",
+      "ocr_note": "On this recapitulation page the balanced total is $500,282,171 (revenue appropriations = expenditure appropriations + receipts by transfer)."
+    },
+    {
+      "year": 1986,
+      "source_type": "archive",
+      "label": "FY 1985-86",
+      "measure": "total_budget",
+      "caption": "Total budget, all fund groups (annual appropriation ordinance)",
+      "value_nominal": 2228818092.0,
+      "value_real_today": 6547010793.73,
+      "value_real_per_capita": 9273.85,
+      "population": 705965,
+      "population_note": "linearly interpolated between the 1980 and 1990 decennial censuses",
+      "cpi_year": 109.6,
+      "quote": "total: BUDGET 2,228,818,092",
+      "page": 153,
+      "page_label": "scan leaf 153",
+      "identifier": "citycountyofsan198586sanf",
+      "url": "https://archive.org/details/citycountyofsan198586sanf/page/n153?q=total%3A%20BUDGET%202%2C228%2C818%2C092",
+      "thumb": "https://archive.org/download/citycountyofsan198586sanf/page/n153_w360.jpg"
+    },
+    {
+      "year": 2010,
+      "source_type": "live",
+      "label": "FY 2010",
+      "measure": "total_spending",
+      "caption": "Total city spending, adopted budget (all funds, net of transfers)",
+      "value_nominal": 6680927708.0,
+      "value_real_today": 9863878586.68,
+      "value_real_per_capita": 12249.69,
+      "population": 805235,
+      "population_note": "linearly interpolated between the 2000 and 2010 decennial censuses",
+      "cpi_year": 218.056,
+      "url": "/us/city/sf/budget?year=2010"
+    },
+    {
+      "year": 2015,
+      "source_type": "live",
+      "label": "FY 2015",
+      "measure": "total_spending",
+      "caption": "Total city spending, adopted budget (all funds, net of transfers)",
+      "value_nominal": 9065449277.0,
+      "value_real_today": 12313707188.03,
+      "value_real_per_capita": 14666.16,
+      "population": 839600,
+      "population_note": "linearly interpolated between the 2010 and 2020 decennial censuses",
+      "cpi_year": 237.017,
+      "url": "/us/city/sf/budget?year=2015"
+    },
+    {
+      "year": 2020,
+      "source_type": "live",
+      "label": "FY 2020",
+      "measure": "total_spending",
+      "caption": "Total city spending, adopted budget (all funds, net of transfers)",
+      "value_nominal": 12313688231.0,
+      "value_real_today": 15317377275.9,
+      "value_real_per_capita": 17526.31,
+      "population": 873965,
+      "population_note": "2020 decennial census (latest available)",
+      "cpi_year": 258.811,
+      "url": "/us/city/sf/budget?year=2020"
+    },
+    {
+      "year": 2025,
+      "source_type": "live",
+      "label": "FY 2025",
+      "measure": "total_spending",
+      "caption": "Total city spending, adopted budget (all funds, net of transfers)",
+      "value_nominal": 15917870152.0,
+      "value_real_today": 15917870152.0,
+      "value_real_per_capita": 18213.4,
+      "population": 873965,
+      "population_note": "2020 decennial census (latest available)",
+      "cpi_year": 321.943,
+      "url": "/us/city/sf/budget?year=2025"
+    }
+  ],
+  "composition": {
+    "modern": {
+      "window": "FY2010–FY2025",
+      "service_areas": [
+        {
+          "name": "Public Works, Transportation & Commerce",
+          "y0_usd": 2322938793.0,
+          "y1_usd": 5927020881.0,
+          "growth_usd": 3604082088.0,
+          "mult": 2.55
+        },
+        {
+          "name": "Human Welfare & Neighborhood Development",
+          "y0_usd": 840262489.0,
+          "y1_usd": 2740152260.0,
+          "growth_usd": 1899889771.0,
+          "mult": 3.26
+        },
+        {
+          "name": "Community Health",
+          "y0_usd": 1441738455.0,
+          "y1_usd": 3185025572.0,
+          "growth_usd": 1743287117.0,
+          "mult": 2.21
+        },
+        {
+          "name": "Public Protection",
+          "y0_usd": 1120628450.0,
+          "y1_usd": 2052389664.0,
+          "growth_usd": 931761214.0,
+          "mult": 1.83
+        },
+        {
+          "name": "General Administration & Finance",
+          "y0_usd": 289964156.0,
+          "y1_usd": 793048698.0,
+          "growth_usd": 503084542.0,
+          "mult": 2.73
+        },
+        {
+          "name": "General City Responsibilities",
+          "y0_usd": 331617299.0,
+          "y1_usd": 679571302.0,
+          "growth_usd": 347954003.0,
+          "mult": 2.05
+        },
+        {
+          "name": "Culture & Recreation",
+          "y0_usd": 333778066.0,
+          "y1_usd": 540661775.0,
+          "growth_usd": 206883709.0,
+          "mult": 1.62
+        }
+      ],
+      "personnel": {
+        "y0_usd": 3496321042.0,
+        "y1_usd": 6996707387.0,
+        "characters": [
+          "Salaries",
+          "Mandatory Fringe Benefits"
+        ]
+      },
+      "narrative": "Between FY2010 and FY2025, adopted city spending rose from $6.7B to $15.9B. The largest single increase was in Public Works, Transportation & Commerce (+$3.6B, to $5.9B), and the health and human-services areas grew fastest — Human Welfare & Neighborhood Development more than 3× its FY2010 level (+$1.9B). Personnel — salaries and mandatory fringe benefits — went from $3.5B to $7.0B, roughly 2.0× over the span.",
+      "note": "Computed from the SF adopted-budget marts. Compared on service areas and personnel only — the FY2018 PeopleSoft chart-of-accounts change relabels finer spending types, so those are not comparable before and after and are left out here.",
+      "source_mart": "mart_us_sf_budget_org_group / mart_us_sf_budget_character"
+    },
+    "archive": [
+      {
+        "year": 1888,
+        "identifier": "sanfranciscomuni38sanfrich",
+        "framing": "illustrative lines from the ledger (verbatim), not a ranking",
+        "items": [
+          {
+            "label": "Street Department",
+            "value_nominal": 292713.21,
+            "quote": "Street Department expenses $292,713 21",
+            "page_label": "scan leaf 642",
+            "url": "https://archive.org/details/sanfranciscomuni38sanfrich/page/n642?q=Street%20Department%20expenses%20%24292%2C713%2021"
+          },
+          {
+            "label": "Lighting the streets",
+            "value_nominal": 254438.21,
+            "quote": "Street Light expenses 254,438 21",
+            "page_label": "scan leaf 642",
+            "url": "https://archive.org/details/sanfranciscomuni38sanfrich/page/n642?q=Street%20Light%20expenses%20254%2C438%2021"
+          }
+        ]
+      },
+      {
+        "year": 1913,
+        "identifier": "munisanfrancisco62sanfrich",
+        "framing": "department totals as printed (1912-13 column)",
+        "items": [
+          {
+            "label": "School Department",
+            "value_nominal": 1912047.89,
+            "quote": "Total 1,868,950.05 1,912,047.89",
+            "page_label": "scan leaf 18",
+            "url": "https://archive.org/details/munisanfrancisco62sanfrich/page/n18?q=Total%201%2C868%2C950.05%201%2C912%2C047.89"
+          },
+          {
+            "label": "Streets and Sewers",
+            "value_nominal": 1505910.5,
+            "quote": "Total 1,280,167.65 1,505,910.50",
+            "page_label": "scan leaf 19",
+            "url": "https://archive.org/details/munisanfrancisco62sanfrich/page/n19?q=Total%201%2C280%2C167.65%201%2C505%2C910.50"
+          }
+        ]
+      }
+    ],
+    "archive_note": "What the city funded in the archival era, transcribed verbatim from the scanned reports (page-level deep links). 1888 lines are illustrative ledger entries, not a ranking; 1913 are department totals as printed. Fuller per-era breakdowns are a work in progress."
+  }
+}

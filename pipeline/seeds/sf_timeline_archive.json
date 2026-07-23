@@ -1,0 +1,67 @@
+{
+  "_note": "Verified archive anchors for the SF 150-year budget timeline. RULE: every figure is the single citywide headline total AS PRINTED in a scanned City & County of San Francisco serial financial report on the Internet Archive - transcribed verbatim, never inferred or interpolated. `value_nominal` is the untouched scan figure; `quote` is an exact whitespace-normalized substring of the item's _djvu.txt (export re-verifies it against the live OCR and skips any point that no longer grounds). `measure` records what the figure is (receipts / expenditures / total budget) because the historical serials report different top-lines across eras; the tiers are never merged into one authoritative line. `leaf` is the 0-based scan leaf for the page-level deep link, mapped from _hocr_pageindex.",
+  "generated_by": "gen_seeds.py from in-session OCR curation, 2026-07-23",
+  "points": [
+    {
+      "year": 1888,
+      "fy_label": "FY 1887-88",
+      "measure": "total_expenditures",
+      "caption": "Total amount of expenditures",
+      "value_nominal": 3666879.62,
+      "digitrun": "366687962",
+      "quote": "Total Amount of Expenditures '. '. '\"' $3,666,879 62",
+      "identifier": "sanfranciscomuni38sanfrich",
+      "leaf": 643,
+      "page_note": "leaf n643 of the scanned volume"
+    },
+    {
+      "year": 1895,
+      "fy_label": "FY 1894-95",
+      "measure": "total_receipts",
+      "caption": "Total receipts during the year (all funds, Auditor's statement)",
+      "value_nominal": 7829558.69,
+      "digitrun": "782955869",
+      "quote": "Total receipts during the year $7,829,558 69",
+      "identifier": "sanfranciscomuni45sanfrich",
+      "leaf": 602,
+      "page_note": "leaf n602 of the scanned volume"
+    },
+    {
+      "year": 1913,
+      "fy_label": "FY 1912-13",
+      "measure": "total_receipts",
+      "caption": "Total receipts (Auditor's statement of sources of revenue)",
+      "value_nominal": 29086909.18,
+      "digitrun": "2908690918",
+      "quote": "Total Receipts $29,086,909.18",
+      "identifier": "munisanfrancisco62sanfrich",
+      "leaf": 160,
+      "page_note": "leaf n160 of the scanned volume"
+    },
+    {
+      "year": 1968,
+      "fy_label": "FY 1967-68",
+      "measure": "total_budget",
+      "caption": "Total budget including bond funds (revenue appropriations)",
+      "value_nominal": 500282171.0,
+      "digitrun": "500282171",
+      "quote": "TOTAL BUDGET INCLUDING BOND FUNDS",
+      "identifier": "citycountyofsan196768sanf",
+      "leaf": 34,
+      "page_note": "leaf n34 of the scanned volume",
+      "ocr_note": "On this recapitulation page the balanced total is $500,282,171 (revenue appropriations = expenditure appropriations + receipts by transfer)."
+    },
+    {
+      "year": 1986,
+      "fy_label": "FY 1985-86",
+      "measure": "total_budget",
+      "caption": "Total budget, all fund groups (annual appropriation ordinance)",
+      "value_nominal": 2228818092.0,
+      "digitrun": "2228818092",
+      "quote": "total: BUDGET 2,228,818,092",
+      "identifier": "citycountyofsan198586sanf",
+      "leaf": 153,
+      "page_note": "leaf n153 of the scanned volume"
+    }
+  ]
+}

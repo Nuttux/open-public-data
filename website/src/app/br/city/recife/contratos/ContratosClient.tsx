@@ -10,7 +10,7 @@ import ChartSource from "@/components/fusion/ChartSource";
 import ExportRow from "@/components/fusion/ExportRow";
 import { useT } from "@/lib/localeContext";
 import type { ContratosData, LicitacoesData } from "@/lib/br/recife-data";
-import { fmtBrlCompact, fmtInt } from "@/lib/br/format";
+import { fmtBrlCompact, fmtBrlCompactNum, brlMagnitude, fmtInt } from "@/lib/br/format";
 import RecifeContratosExplorer from "./RecifeContratosExplorer";
 
 export default function ContratosClient({ d, lic }: { d: ContratosData; lic: LicitacoesData }) {
@@ -43,7 +43,7 @@ export default function ContratosClient({ d, lic }: { d: ContratosData; lic: Lic
           <>
             <IntroStat value={<AnimatedNumber value={d.headline.n_contratos} format={fmtInt} />} label={t("br.recife.ct.stat_total")} />
             <IntroStat value={<AnimatedNumber value={d.headline.n_ativos} format={fmtInt} />} label={t("br.recife.ct.stat_ativos")} />
-            <IntroStat value={<AnimatedNumber value={d.headline.valor_ativo_total} format={fmtBrlCompact} />} label={t("br.recife.ct.stat_valor")} />
+            <IntroStat value={<AnimatedNumber value={d.headline.valor_ativo_total} format={fmtBrlCompactNum} />} unit={brlMagnitude(d.headline.valor_ativo_total)} label={t("br.recife.ct.stat_valor")} />
             <IntroStat value={<AnimatedNumber value={lic.headline.n_concluidas} format={fmtInt} />} label={t("br.recife.ct.stat_licitacoes")} />
           </>
         }

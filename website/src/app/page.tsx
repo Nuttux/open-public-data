@@ -14,15 +14,18 @@ const LANDING_FEATURED_SLUGS = [
   "jo-2024-anatomie-pic-livraison",
 ] as const;
 
+// Brand-level, not city-specific: qipu.org is the front door to a platform that
+// spans cities and countries, so the root metadata leads with the tagline rather
+// than any one city. (Per-city pages set their own Paris/SF/etc. metadata.)
 const OG_FR = {
-  title: "Où va l'argent public à Paris ?",
+  title: "L'argent public, rendu lisible.",
   description:
-    "Les finances publiques françaises, rendues lisibles. Budget, dépenses, subventions, dette — sourcés, vérifiables, publiés en licence ouverte.",
+    "Suivez l'argent public, de sa source à sa destination — budget, marchés, subventions, dette, sourcés et vérifiables, en licence ouverte.",
 };
 const OG_EN = {
-  title: "Where does public money go in Paris?",
+  title: "Public money, made legible.",
   description:
-    "French public finance, made readable. Budget, spending, grants, debt — sourced, verifiable, open-licensed.",
+    "Follow public money from where it comes from to where it goes — budgets, contracts, grants and debt, all sourced, verifiable and open.",
 };
 
 export async function generateMetadata(): Promise<Metadata> {

@@ -79,6 +79,25 @@ function consolidate(items: Slice[]): Slice[] {
   return [...merged.values()].sort((a, b) => b.amount - a.amount);
 }
 
+/**
+ * Append the "others" overflow bucket — but if a slice already carries that
+ * exact label (e.g. the source data has a real theme literally named "Outros"
+ * that's visible in the bar), fold the overflow INTO it instead of adding a
+ * second same-keyed segment. Prevents the React duplicate-key crash while
+ * keeping the bar summing to 100 %. No-op collision for cities whose data has
+ * no theme matching the label, so it appends exactly as before.
+ */
+function appendOthers(list: Slice[], label: string, amount: number, count: number): Slice[] {
+  if (amount <= 0) return list;
+  const i = list.findIndex((c) => c.theme === label);
+  if (i >= 0) {
+    const out = [...list];
+    out[i] = { ...out[i], amount: out[i].amount + amount, count: out[i].count + count };
+    return out;
+  }
+  return [...list, { theme: label, amount, count }];
+}
+
 export default function StackedBarTheme({
   items,
   total,
@@ -130,9 +149,7 @@ export default function StackedBarTheme({
   const hiddenCount = hidden.reduce((s, c) => s + c.count, 0);
   const othersAmount = hiddenSum + uncoveredSum;
   const othersLabel = t("fx.stacked.others");
-  const barSegments = othersAmount > 0
-    ? [...visible, { theme: othersLabel, amount: othersAmount, count: hiddenCount }]
-    : visible;
+  const barSegments = appendOthers(visible, othersLabel, othersAmount, hiddenCount);
 
   return (
     <div className="fx-stackbar-card">
@@ -193,9 +210,7 @@ export default function StackedBarTheme({
         const remaining = consolidated.slice(LEGEND_LIMIT);
         const remainingSum = remaining.reduce((s, c) => s + c.amount, 0) + uncoveredSum;
         const remainingCount = remaining.reduce((s, c) => s + c.count, 0);
-        const legendItems = remainingSum > 0
-          ? [...visibleLegend, { theme: othersLabel, amount: remainingSum, count: remainingCount }]
-          : visibleLegend;
+        const legendItems = appendOthers(visibleLegend, othersLabel, remainingSum, remainingCount);
         return (
           <ul className="fx-stackbar-legend">
             {legendItems.map((s, idx) => {

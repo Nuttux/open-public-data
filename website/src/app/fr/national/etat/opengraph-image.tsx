@@ -1,4 +1,5 @@
 import { ImageResponse } from "next/og";
+import { ogMark } from "@/components/og/OgMark";
 import { loadEtatLFI } from "@/lib/national-data";
 
 export const runtime = "nodejs";
@@ -31,7 +32,7 @@ export default async function EtatOG() {
       >
         {/* Brand strip */}
         <div style={{ display: "flex", alignItems: "center", gap: 14, fontSize: 18, letterSpacing: 4, textTransform: "uppercase", color: "#b8551c" }}>
-          <div style={{ display: "flex", alignItems: "center", justifyContent: "center", width: 32, height: 32, background: "#111", color: "#faf9f5", fontSize: 18, fontWeight: 800 }}>FO</div>
+          {ogMark()}
           <div style={{ display: "flex" }}>Qipu · /etat</div>
         </div>
 

@@ -33,7 +33,9 @@ function Card({ card }: { card: DeckCard }) {
         <span className="fx-hero-deck-kicker">{card.kicker}</span>
         <h3 className="fx-hero-deck-title">{card.title}</h3>
         <p className="fx-hero-deck-num tnum">
-          {card.amount} <span className="u">{card.amountUnit}</span>
+          {card.amountLead && <span className="u u-lead">{card.amountLead}</span>}
+          {card.amount}
+          {card.amountUnit && <span className="u">{card.amountUnit}</span>}
         </p>
         <p className="fx-hero-deck-meta">{card.meta}</p>
         <p className="fx-hero-deck-cta">
