@@ -175,31 +175,36 @@ decp_only_raw AS (
 
 decp_only_collapsed AS (
     SELECT
-        ANY_VALUE(annee_notification)              AS annee_notification,
-        -- id canonique : le plus petit id alphabétique parmi les doublons
+        -- id canonique : le plus petit id alphabétique parmi les doublons.
         MIN(decp_id)                               AS decp_id,
-        ANY_VALUE(decp_uid)                        AS decp_uid,
-        ANY_VALUE(nature)                          AS nature,
-        ANY_VALUE(objet)                           AS objet,
-        ANY_VALUE(type_procedure)                  AS type_procedure,
-        ANY_VALUE(date_notification)               AS date_notification,
-        ANY_VALUE(duree_mois)                      AS duree_mois,
-        ANY_VALUE(ccag)                            AS ccag,
-        ANY_VALUE(code_cpv)                        AS code_cpv,
-        ANY_VALUE(cpv_division)                    AS cpv_division,
-        ANY_VALUE(montant_notifie)                 AS montant_notifie,
-        ANY_VALUE(lieu_execution_code)             AS lieu_execution_code,
-        ANY_VALUE(lieu_execution_type_code)        AS lieu_execution_type_code,
-        ANY_VALUE(arrondissement_exec)             AS arrondissement_exec,
-        ANY_VALUE(offres_recues)                   AS offres_recues,
-        ANY_VALUE(sous_traitance_declaree)         AS sous_traitance_declaree,
-        ANY_VALUE(nb_modifications)                AS nb_modifications,
-        ANY_VALUE(has_consideration_sociale)       AS has_consideration_sociale,
-        ANY_VALUE(has_consideration_environnementale) AS has_consideration_environnementale,
-        ANY_VALUE(marche_innovant)                 AS marche_innovant,
-        -- Titulaires : concaténés si multi-attributaire
+        -- Tous les attributs descriptifs proviennent de CETTE ligne canonique
+        -- (MIN_BY sur decp_id) plutôt que d'ANY_VALUE arbitraire : les doublons
+        -- DECP décrivent le même marché, donc c'est déterministe et cohérent
+        -- avec l'id retenu.
+        MIN_BY(annee_notification, decp_id)        AS annee_notification,
+        MIN_BY(decp_uid, decp_id)                  AS decp_uid,
+        MIN_BY(nature, decp_id)                     AS nature,
+        MIN_BY(objet, decp_id)                      AS objet,
+        MIN_BY(type_procedure, decp_id)            AS type_procedure,
+        MIN_BY(date_notification, decp_id)         AS date_notification,
+        MIN_BY(duree_mois, decp_id)                AS duree_mois,
+        MIN_BY(ccag, decp_id)                      AS ccag,
+        MIN_BY(code_cpv, decp_id)                  AS code_cpv,
+        MIN_BY(cpv_division, decp_id)              AS cpv_division,
+        MIN_BY(montant_notifie, decp_id)           AS montant_notifie,
+        MIN_BY(lieu_execution_code, decp_id)       AS lieu_execution_code,
+        MIN_BY(lieu_execution_type_code, decp_id)  AS lieu_execution_type_code,
+        MIN_BY(arrondissement_exec, decp_id)       AS arrondissement_exec,
+        MIN_BY(offres_recues, decp_id)             AS offres_recues,
+        MIN_BY(sous_traitance_declaree, decp_id)   AS sous_traitance_declaree,
+        MIN_BY(nb_modifications, decp_id)          AS nb_modifications,
+        MIN_BY(has_consideration_sociale, decp_id) AS has_consideration_sociale,
+        MIN_BY(has_consideration_environnementale, decp_id) AS has_consideration_environnementale,
+        MIN_BY(marche_innovant, decp_id)           AS marche_innovant,
+        -- Titulaires : concaténés si multi-attributaire (siret agrégés ;
+        -- le nom retenu suit l'id canonique).
         STRING_AGG(DISTINCT CAST(titulaire_siret AS STRING), '|') AS titulaire_siret,
-        ANY_VALUE(titulaire_nom)                   AS titulaire_nom,
+        MIN_BY(titulaire_nom, decp_id)             AS titulaire_nom,
         COUNT(DISTINCT titulaire_siret)            AS titulaires_count,
         COUNT(*)                                   AS _nb_decp_rows  -- diagnostic
     FROM decp_only_raw

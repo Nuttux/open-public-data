@@ -21,22 +21,27 @@ aggregees AS (
         beneficiaire,
         beneficiaire_normalise,
         
-        -- Colonnes pour filtres
-        MAX(nature_juridique) AS nature_juridique,
-        MAX(direction) AS direction,
-        MAX(secteurs_activite) AS secteurs_activite,
-        MAX(ode_thematique) AS thematique,
-        MAX(ode_sous_categorie) AS sous_categorie,
-        MAX(ode_source_thematique) AS source_thematique,
-        
+        -- Colonnes pour filtres. "Dominant grant wins" : on prend la valeur de
+        -- la ligne au plus gros montant (tie-break cle_technique), en ignorant
+        -- les NULL. MAX() lexicographique renvoyait une valeur arbitraire — et
+        -- pour siret, un IDENTIFIANT arbitraire/faux quand un même nom normalisé
+        -- porte deux siret. IGNORE NULLS + ORDER BY montant DESC est déterministe
+        -- et sémantiquement correct (la subvention principale décrit l'orga).
+        ARRAY_AGG(nature_juridique IGNORE NULLS ORDER BY montant DESC, cle_technique)[SAFE_OFFSET(0)] AS nature_juridique,
+        ARRAY_AGG(direction IGNORE NULLS ORDER BY montant DESC, cle_technique)[SAFE_OFFSET(0)] AS direction,
+        ARRAY_AGG(secteurs_activite IGNORE NULLS ORDER BY montant DESC, cle_technique)[SAFE_OFFSET(0)] AS secteurs_activite,
+        ARRAY_AGG(ode_thematique IGNORE NULLS ORDER BY montant DESC, cle_technique)[SAFE_OFFSET(0)] AS thematique,
+        ARRAY_AGG(ode_sous_categorie IGNORE NULLS ORDER BY montant DESC, cle_technique)[SAFE_OFFSET(0)] AS sous_categorie,
+        ARRAY_AGG(ode_source_thematique IGNORE NULLS ORDER BY montant DESC, cle_technique)[SAFE_OFFSET(0)] AS source_thematique,
+
         -- Métriques
         SUM(montant) AS montant_total,
         COUNT(*) AS nb_subventions,
-        
-        -- Détails (pour tooltip)
-        MAX(objet) AS objet_principal,
-        MAX(siret) AS siret
-        
+
+        -- Détails (pour tooltip) — objet de la subvention la plus importante.
+        ARRAY_AGG(objet IGNORE NULLS ORDER BY montant DESC, cle_technique)[SAFE_OFFSET(0)] AS objet_principal,
+        ARRAY_AGG(siret IGNORE NULLS ORDER BY montant DESC, cle_technique)[SAFE_OFFSET(0)] AS siret
+
     FROM subventions
     GROUP BY annee, beneficiaire, beneficiaire_normalise
 )

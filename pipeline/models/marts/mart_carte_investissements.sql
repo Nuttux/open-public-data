@@ -33,24 +33,31 @@ localises AS (
       AND montant > 0
 ),
 
--- Agrégation par AP et année (normalement unique mais safety)
+-- Agrégation par AP et année (normalement unique mais safety). On choisit UNE
+-- ligne représentative (plus gros montant, tie-break déterministe) et on en tire
+-- TOUS les attributs — sinon MAX(latitude) et MAX(longitude) indépendants
+-- pouvaient fabriquer une coordonnée appartenant à AUCUNE ligne source. Le
+-- montant_total reste la somme du groupe (fenêtre SUM).
 aggreges AS (
     SELECT
         annee,
         ap_code,
-        MAX(nom_projet) AS nom_projet,
-        MAX(mission) AS mission,
-        MAX(direction) AS direction,
-        SUM(montant) AS montant_total,
-        MAX(arrondissement) AS arrondissement,
-        MAX(latitude) AS latitude,
-        MAX(longitude) AS longitude,
-        MAX(adresse) AS adresse,
-        MAX(type_equipement) AS type_equipement,
-        MAX(source_geo) AS source_geo,
-        MAX(confiance_geo) AS confiance_geo
+        nom_projet,
+        mission,
+        direction,
+        SUM(montant) OVER (PARTITION BY annee, ap_code) AS montant_total,
+        arrondissement,
+        latitude,
+        longitude,
+        adresse,
+        type_equipement,
+        source_geo,
+        confiance_geo
     FROM localises
-    GROUP BY annee, ap_code
+    QUALIFY ROW_NUMBER() OVER (
+        PARTITION BY annee, ap_code
+        ORDER BY montant DESC, adresse, latitude, longitude
+    ) = 1
 )
 
 SELECT

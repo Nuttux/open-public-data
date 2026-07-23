@@ -22,18 +22,21 @@ aggregees AS (
         beneficiaire,
         beneficiaire_normalise,
 
-        MAX(nature_juridique) AS nature_juridique,
-        MAX(direction) AS direction,
-        MAX(secteurs_activite) AS secteurs_activite,
-        MAX(ode_thematique) AS thematique,
-        MAX(ode_sous_categorie) AS sous_categorie,
-        MAX(ode_source_thematique) AS source_thematique,
+        -- "Dominant grant wins" (cf. Paris mart) : valeur de la ligne au plus
+        -- gros montant, IGNORE NULLS, déterministe. Corrige MAX(siret) qui
+        -- renvoyait un identifiant arbitraire.
+        ARRAY_AGG(nature_juridique IGNORE NULLS ORDER BY montant DESC, cle_technique)[SAFE_OFFSET(0)] AS nature_juridique,
+        ARRAY_AGG(direction IGNORE NULLS ORDER BY montant DESC, cle_technique)[SAFE_OFFSET(0)] AS direction,
+        ARRAY_AGG(secteurs_activite IGNORE NULLS ORDER BY montant DESC, cle_technique)[SAFE_OFFSET(0)] AS secteurs_activite,
+        ARRAY_AGG(ode_thematique IGNORE NULLS ORDER BY montant DESC, cle_technique)[SAFE_OFFSET(0)] AS thematique,
+        ARRAY_AGG(ode_sous_categorie IGNORE NULLS ORDER BY montant DESC, cle_technique)[SAFE_OFFSET(0)] AS sous_categorie,
+        ARRAY_AGG(ode_source_thematique IGNORE NULLS ORDER BY montant DESC, cle_technique)[SAFE_OFFSET(0)] AS source_thematique,
 
         SUM(montant) AS montant_total,
         COUNT(*) AS nb_subventions,
 
-        MAX(objet) AS objet_principal,
-        MAX(siret) AS siret
+        ARRAY_AGG(objet IGNORE NULLS ORDER BY montant DESC, cle_technique)[SAFE_OFFSET(0)] AS objet_principal,
+        ARRAY_AGG(siret IGNORE NULLS ORDER BY montant DESC, cle_technique)[SAFE_OFFSET(0)] AS siret
 
     FROM subventions
     GROUP BY annee, beneficiaire, beneficiaire_normalise

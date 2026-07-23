@@ -57,7 +57,10 @@ loans AS (
         montant_initial,
         MAX_BY(capital_restant, annee)             AS capital_restant,
         MAX(annee)                                 AS derniere_annee_publication,
-        ANY_VALUE(source_url)                      AS source_url,
+        -- Citation déterministe : l'URL de la publication la plus récente
+        -- (ANY_VALUE renvoyait un lien arbitraire quand les emprunts groupés
+        -- divergeaient), alignée sur capital_restant ci-dessus.
+        MAX_BY(source_url, annee)                  AS source_url,
         {{ lf_addr_number('objet') }}              AS loan_num,
         {{ lf_addr_street('objet') }}              AS loan_street
     FROM loans_raw
@@ -192,4 +195,6 @@ SELECT
     CURRENT_TIMESTAMP()                                 AS _dbt_updated_at
 FROM links k
 JOIN loans l USING (loan_id)
-ORDER BY l.beneficiaire, k.match_basis, l.montant_initial DESC
+-- Unique tie-break (loan_id + programme) so equal-beneficiary/amount rows keep
+-- a stable order between builds.
+ORDER BY l.beneficiaire, k.match_basis, l.montant_initial DESC, l.loan_id, k.id_livraison
