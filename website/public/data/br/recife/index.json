@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-22T17:17:19.886029+00:00",
+ "generated_at": "2026-07-22T21:17:06.367144+00:00",
  "source_pipeline": "configs/countries/br.yaml → sync_ckan_dataset.py → raw.br_recife_* → dbt_br_staging → dbt_br_analytics → dbt_br_marts → export_br_recife.py",
  "country": "br",
  "scale": "city",
@@ -12,6 +12,7 @@
   "recipients": "recipients.json",
   "quem_recebe_search": "quem_recebe_search.json",
   "contratos": "contratos.json",
-  "licitacoes": "licitacoes.json"
+  "licitacoes": "licitacoes.json",
+  "places": "places.json"
  }
 }

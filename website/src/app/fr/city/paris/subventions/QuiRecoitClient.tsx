@@ -303,7 +303,7 @@ export default function QuiRecoitClient({
             <a href="/methode#subventions" className="fx-footer-sources-methode">{t("fx.s.methode_complete")}</a>
           </div>
           <p className="fx-footer-sources-meta">
-            <b>{t("fx.footer.source_label")}</b> : {t("fx.qr.footer.source")} <span className="sep">·</span> <b>{t("fx.footer.coverage_label")}</b> : {t("fx.qr.footer.coverage")}
+            <b>{t("fx.footer.source_label")}</b> : {t("fx.qr.footer.source")} <span className="sep">·</span> <b>{t("fx.footer.coverage_label")}</b> : {t(citySlug === "paris" ? "fx.qr.footer.coverage" : "fx.qr.footer.coverage.generic")}
           </p>
           <ExportRow
             items={[

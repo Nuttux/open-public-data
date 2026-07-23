@@ -9,9 +9,10 @@ import StackedBarTheme from "@/components/fusion/StackedBarTheme";
 import BudgetTimeline from "@/components/fusion/BudgetTimeline";
 import ChartSource from "@/components/fusion/ChartSource";
 import ExportRow from "@/components/fusion/ExportRow";
+import PageHook from "@/components/fusion/PageHook";
 import { useT } from "@/lib/localeContext";
 import type { QuemRecebeData } from "@/lib/br/recife-data";
-import { fmtBrlCompact, fmtBrl, fmtInt, fmtShare } from "@/lib/br/format";
+import { fmtBrlCompact, fmtBrl, fmtInt, fmtShare, fill } from "@/lib/br/format";
 import RecifeQuemRecebeExplorer from "./RecifeQuemRecebeExplorer";
 
 const BASE = "/br/city/recife/quem-recebe";
@@ -64,6 +65,19 @@ export default function QuemRecebeClient({ d }: { d: QuemRecebeData }) {
             kicker={t("br.recife.qr.temas_kicker")}
             hrefBuilder={(theme) => `${BASE}?theme=${encodeURIComponent(theme)}#sec-recebedores`}
           />
+          {(() => {
+            const hookBody = fill(t("br.recife.qr.hook_body"), {
+              total: fmtBrlCompact(d.headline.total_pago),
+              n: fmtInt(d.headline.n_organizacoes),
+              pct: Math.round(d.headline.concentracao_top10 * 100),
+              subv: fmtBrlCompact(d.headline.subvencao_total),
+            });
+            return (
+              <PageHook variant="card" cite={t("br.recife.qr.hook_cite")} shareText={hookBody.replace(/<[^>]+>/g, "")}>
+                <span dangerouslySetInnerHTML={{ __html: hookBody }} />
+              </PageHook>
+            );
+          })()}
           <ChartSource source={d.source.name ?? t("br.recife.portal")} dataHref={d.source.source_url ?? undefined} />
         </div>
       </section>

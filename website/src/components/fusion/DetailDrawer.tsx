@@ -4,6 +4,7 @@ import { useRouter } from "next/navigation";
 import { useEffect, useRef, useState, type ReactNode } from "react";
 import { useT } from "@/lib/localeContext";
 import { useTrack } from "@/lib/analyticsContext";
+import { pushDrawer, popDrawer } from "@/lib/drawerState";
 
 type DrawerReferrer = { url: string; label: string };
 
@@ -97,6 +98,13 @@ export default function DetailDrawer({
     const seg = shareUrl.split("/").filter(Boolean)[1];
     return seg || "unknown";
   })();
+
+  // Flag "a drawer is open" so the top nav stops highlighting the section the
+  // entity URL happens to fall under (the drawer is a modal, not a page).
+  useEffect(() => {
+    pushDrawer();
+    return () => popDrawer();
+  }, []);
 
   // Scroll lock that actually preserves the user's scroll position. Plain
   // `overflow: hidden` on body loses scrollY when the page behind reflows

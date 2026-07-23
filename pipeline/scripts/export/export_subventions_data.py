@@ -36,6 +36,10 @@ PROJECT_ID = "open-data-france-484717"
 # d'un changement de pipeline avant que prod soit reconstruit).
 DATASET = marts_dataset()
 OUTPUT_DIR = data_dir() / "subventions"
+# Préfixe des tables marts. "" pour Paris (mart_subventions_*), "marseille_" pour
+# Marseille (mart_marseille_subventions_*) : les modèles Marseille vivent dans la
+# même famille dbt_paris_* mais préfixés par ville (cf. ADR-0011, précédent budget).
+TABLE_PREFIX = ""
 
 
 def fetch_treemap_data(client: bigquery.Client, year: int = None) -> list:
@@ -59,7 +63,7 @@ def fetch_treemap_data(client: bigquery.Client, year: int = None) -> list:
         nb_subventions,
         montant_total,
         pct_total
-    FROM `{PROJECT_ID}.{DATASET}.mart_subventions_treemap`
+    FROM `{PROJECT_ID}.{DATASET}.mart_{TABLE_PREFIX}subventions_treemap`
     {year_filter}
     ORDER BY annee DESC, montant_total DESC
     """
@@ -111,7 +115,7 @@ def fetch_beneficiaires_data(client: bigquery.Client, year: int = None, limit: i
         nb_subventions,
         objet_principal,
         siret
-    FROM `{PROJECT_ID}.{DATASET}.mart_subventions_beneficiaires`
+    FROM `{PROJECT_ID}.{DATASET}.mart_{TABLE_PREFIX}subventions_beneficiaires`
     {year_filter}
     ORDER BY annee DESC, montant_total DESC
     {limit_clause}
@@ -147,7 +151,7 @@ def get_available_years(client: bigquery.Client) -> list:
     """Récupère les années disponibles dans les données (bornées à MIN_YEAR_EXPORTED)."""
     query = f"""
     SELECT DISTINCT annee
-    FROM `{PROJECT_ID}.{DATASET}.mart_subventions_treemap`
+    FROM `{PROJECT_ID}.{DATASET}.mart_{TABLE_PREFIX}subventions_treemap`
     WHERE annee >= {MIN_YEAR_EXPORTED}
     ORDER BY annee DESC
     """
@@ -161,7 +165,7 @@ def get_filter_options(client: bigquery.Client) -> dict:
     thematiques = []
     query = f"""
     SELECT DISTINCT thematique, SUM(montant_total) as total
-    FROM `{PROJECT_ID}.{DATASET}.mart_subventions_treemap`
+    FROM `{PROJECT_ID}.{DATASET}.mart_{TABLE_PREFIX}subventions_treemap`
     WHERE thematique IS NOT NULL
     GROUP BY thematique
     ORDER BY total DESC
@@ -173,7 +177,7 @@ def get_filter_options(client: bigquery.Client) -> dict:
     natures_set = set()
     query = f"""
     SELECT DISTINCT nature_juridique
-    FROM `{PROJECT_ID}.{DATASET}.mart_subventions_beneficiaires`
+    FROM `{PROJECT_ID}.{DATASET}.mart_{TABLE_PREFIX}subventions_beneficiaires`
     WHERE nature_juridique IS NOT NULL
     ORDER BY nature_juridique
     """
@@ -185,7 +189,7 @@ def get_filter_options(client: bigquery.Client) -> dict:
     directions = []
     query = f"""
     SELECT DISTINCT direction, COUNT(*) as cnt
-    FROM `{PROJECT_ID}.{DATASET}.mart_subventions_beneficiaires`
+    FROM `{PROJECT_ID}.{DATASET}.mart_{TABLE_PREFIX}subventions_beneficiaires`
     WHERE direction IS NOT NULL
     GROUP BY direction
     ORDER BY cnt DESC
@@ -212,7 +216,7 @@ def export_index(client: bigquery.Client):
     totals_by_year = {}
     query = f"""
     SELECT annee, SUM(montant_total) as total, SUM(nb_subventions) as nb
-    FROM `{PROJECT_ID}.{DATASET}.mart_subventions_treemap`
+    FROM `{PROJECT_ID}.{DATASET}.mart_{TABLE_PREFIX}subventions_treemap`
     GROUP BY annee
     ORDER BY annee DESC
     """
@@ -491,7 +495,7 @@ def main():
     sys.path.insert(0, str(Path(__file__).parent.parent))
     from utils.logger import Logger
 
-    global DATASET, OUTPUT_DIR
+    global DATASET, OUTPUT_DIR, TABLE_PREFIX, MIN_YEAR_EXPORTED
 
     parser = argparse.ArgumentParser(description="Export données subventions depuis dbt")
     parser.add_argument('--year', type=int, help="Année spécifique (sinon toutes)")
@@ -501,12 +505,21 @@ def main():
     parser.add_argument('--dataset', type=str, default=None,
                        help=f"Dataset BQ des marts (défaut: {DATASET}). "
                             f"Override via env PARIS_MARTS_DATASET aussi.")
+    parser.add_argument('--table-prefix', type=str, default='',
+                       help="Préfixe des tables marts (ex. 'marseille_' → "
+                            "mart_marseille_subventions_*). Défaut: '' (Paris).")
+    parser.add_argument('--min-year', type=int, default=None,
+                       help=f"Année plancher exportée (défaut {MIN_YEAR_EXPORTED}). "
+                            f"Marseille publie dès 2017 (Paris dès 2018).")
     args = parser.parse_args()
 
     OUTPUT_DIR = data_dir(args.city) / "subventions"
     DATASET = marts_dataset(args.city)
     if args.dataset:
         DATASET = args.dataset
+    TABLE_PREFIX = args.table_prefix
+    if args.min_year is not None:
+        MIN_YEAR_EXPORTED = args.min_year
     
     log = Logger("export_subventions")
     log.header("Export Subventions → JSON")

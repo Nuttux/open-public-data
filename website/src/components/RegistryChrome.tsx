@@ -4,16 +4,22 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState, type ReactNode } from "react";
 import { useT } from "@/lib/localeContext";
-import { placesForCountry, type Place } from "@/lib/places";
+import { placesForCountry, orderedModules, type Place } from "@/lib/places";
+import { useDrawerOpen } from "@/lib/drawerState";
+import BrandMark from "./fusion/BrandMark";
+import PlaceSwitcher from "./PlaceSwitcher";
+import PocBanner from "./PocBanner";
 
 /**
  * ONE registry-driven chrome for any country (ADR-0010 D2). Renders the shared
- * fx-nav / fx-brand / fx-links / fx-overlay markup, derives the nav from the
- * place registry (`placesForCountry(country)`), and reads `${country}.chrome.*`
- * i18n keys. The right-hand control (scope dropdown, language toggle…) is a
- * `trailing` slot. Collapses the former per-country RecifeChrome/UsChrome:
+ * fx-nav / fx-brand / fx-links / fx-overlay markup:
+ *   • constant Qipu wordmark + BrandMark (the brand is invariant across places);
+ *   • nav row = the CURRENT place's registry modules (so it changes per city);
+ *   • the unified PlaceSwitcher (country → city) on the right;
+ *   • a prototype banner under the nav on POC places.
+ * The `trailing` slot holds any extra control (e.g. Recife's PT/EN toggle).
  *   <RegistryChrome country="br" trailing={<LangToggle/>} />
- *   <RegistryChrome country="us" trailing={<UsScopeDropdown/>} />
+ *   <RegistryChrome country="us" />
  */
 export default function RegistryChrome({
   country,
@@ -29,11 +35,15 @@ export default function RegistryChrome({
 
   const place =
     places.find((p) => pathname === p.path || pathname.startsWith(`${p.path}/`)) ?? places[0];
+  // A hub place gets a "Home" link to its landing first (parity with Paris's
+  // "Accueil"), then its section modules.
   const navLinks = place
-    ? place.modules.map((m) => ({ href: `${place.path}/${m.slug}`, labelKey: m.labelKey }))
+    ? [
+        ...(place.hub ? [{ href: place.path, labelKey: "chrome.home", exact: true }] : []),
+        ...orderedModules(place).map((m) => ({ href: `${place.path}/${m.slug}`, labelKey: m.labelKey, exact: false })),
+      ]
     : [];
   const brandHref = place?.path ?? "/";
-  const wordmark = `${country}.chrome.wordmark`;
 
   useEffect(() => {
     if (menuOpen) {
@@ -43,21 +53,28 @@ export default function RegistryChrome({
   }, [menuOpen]);
   useEffect(() => setMenuOpen(false), [pathname]);
 
-  const isActive = (href: string) => pathname.startsWith(href);
+  const drawerOpen = useDrawerOpen();
+  const isActive = (href: string, exact?: boolean) =>
+    // A drawer is a modal over the current page — don't light up whatever
+    // section the entity URL falls under.
+    !drawerOpen && (exact ? pathname === href : pathname.startsWith(href));
 
   return (
     <>
+      {place?.poc && <PocBanner />}
       <header className="fx-nav">
         <Link href={brandHref} className="fx-brand">
-          <span>{t(wordmark)}</span>
+          <BrandMark />
+          <span>{t("chrome.wordmark")}</span>
         </Link>
         <nav className="fx-links" aria-label={t(`${country}.chrome.nav_aria`)}>
           {navLinks.map((l) => (
-            <Link key={l.href} href={l.href} className={isActive(l.href) ? "fx-link fx-link-on" : "fx-link"}>
+            <Link key={l.href} href={l.href} className={isActive(l.href, l.exact) ? "fx-link fx-link-on" : "fx-link"}>
               {t(l.labelKey)}
             </Link>
           ))}
         </nav>
+        <PlaceSwitcher variant="nav" />
         {trailing}
         <button
           type="button"
@@ -75,7 +92,7 @@ export default function RegistryChrome({
 
       <div className={menuOpen ? "fx-overlay fx-overlay-open" : "fx-overlay"} aria-hidden={!menuOpen} inert={!menuOpen}>
         <div className="fx-overlay-top">
-          <div className="fx-overlay-brand"><span>{t(wordmark)}</span></div>
+          <div className="fx-overlay-brand"><BrandMark /><span>{t("chrome.wordmark")}</span></div>
           <button
             type="button"
             className="fx-overlay-close"
@@ -96,7 +113,12 @@ export default function RegistryChrome({
             </Link>
           ))}
         </nav>
-        {trailing && <div className="fx-overlay-foot"><div className="fx-overlay-foot-left">{trailing}</div></div>}
+        <div className="fx-overlay-foot">
+          <div className="fx-overlay-foot-left">
+            <PlaceSwitcher variant="overlay" />
+            {trailing}
+          </div>
+        </div>
       </div>
     </>
   );

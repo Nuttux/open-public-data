@@ -1,8 +1,10 @@
 "use client";
 
 import { Fragment, useState } from "react";
+import { usePathname } from "next/navigation";
 import type { AssociationFiche as AssociationFicheType, BeneficiaireGrounded, SubventionVulgarization } from "@/lib/fusion-data";
 import { useT, useLocale } from "@/lib/localeContext";
+import { citySlugFromPathname } from "@/lib/methodology";
 import { cap, fill } from "@/lib/fmt";
 import { useFmtEur } from "@/lib/use-fmt";
 import FicheKpis from "./FicheKpis";
@@ -47,6 +49,14 @@ export default function AssociationFiche({
   const YEARS_PREVIEW = 5;
 
   const fmtEur = useFmtEur();
+
+  // Source of the subventions data is city-specific. Paris uses the exact
+  // "versées annexe CA" dataset (per-year refine) + the B8.1.1 PDF fallback;
+  // other cities (SCDL on data.gouv.fr) can't reuse those Paris URLs — that
+  // would mis-cite the source. Fall back to the city's data.gouv.fr datasets.
+  const citySlug = citySlugFromPathname(usePathname());
+  const isParis = citySlug === "paris";
+  const cityDatagouvUrl = `https://www.data.gouv.fr/fr/datasets/?q=${encodeURIComponent(`${citySlug} subventions`)}`;
 
   const { v: vTot, u: uTot } = fmtEur(asso.totalAmount);
   const firstYear = asso.yearsActive[0];
@@ -247,7 +257,12 @@ export default function AssociationFiche({
                             )}
                             <div style={{ marginTop: 4 }}>
                               {(() => {
-                                const src = subvSourceUrl(asso.name, l.year);
+                                const src = isParis
+                                  ? subvSourceUrl(asso.name, l.year)
+                                  : { href: cityDatagouvUrl, isPdf: false };
+                                const label = isParis
+                                  ? t(src.isPdf ? "fx.fiche.asso.detail.pdf" : "fx.fiche.asso.detail.opendata")
+                                  : t("fx.fiche.asso.detail.datagouv");
                                 return (
                                   <a
                                     href={src.href}
@@ -255,7 +270,7 @@ export default function AssociationFiche({
                                     rel="noopener noreferrer"
                                     style={{ fontFamily: "var(--f-mono)", fontSize: 12, color: "var(--bleu)", borderBottom: "1px solid var(--bleu)" }}
                                   >
-                                    {t(src.isPdf ? "fx.fiche.asso.detail.pdf" : "fx.fiche.asso.detail.opendata")}
+                                    {label}
                                   </a>
                                 );
                               })()}
@@ -275,14 +290,22 @@ export default function AssociationFiche({
             </ShowMoreButton>
           )}
           <p className="fx-fiche-note" style={{ marginTop: 10 }}>
-            {t("fx.fiche.asso.note")}{" "}
+            {isParis ? t("fx.fiche.asso.note") : t("fx.fiche.asso.note.generic")}{" "}
             {(() => {
-              /* Asso financée uniquement en 2020-2021 : absente du dataset
-               * opendata (années PDF), le refine par nom renverrait 0 ligne. */
-              const pdfOnly = asso.yearsActive.every((y) => B811_PDF[y]);
-              const href = pdfOnly
-                ? B811_PDF[Math.max(...asso.yearsActive)]
-                : subvSourceUrl(asso.name).href;
+              /* Paris — asso financée uniquement en 2020-2021 : absente du
+               * dataset opendata (années PDF), le refine par nom renverrait 0
+               * ligne. Autres villes : lien vers les jeux data.gouv.fr. */
+              const pdfOnly = isParis && asso.yearsActive.every((y) => B811_PDF[y]);
+              const href = !isParis
+                ? cityDatagouvUrl
+                : pdfOnly
+                  ? B811_PDF[Math.max(...asso.yearsActive)]
+                  : subvSourceUrl(asso.name).href;
+              const label = !isParis
+                ? "data.gouv.fr ↗"
+                : pdfOnly
+                  ? "cdn.paris.fr (PDF) ↗"
+                  : "opendata.paris.fr ↗";
               return (
                 <a
                   href={href}
@@ -290,7 +313,7 @@ export default function AssociationFiche({
                   rel="noopener noreferrer"
                   style={{ color: "var(--bleu)", borderBottom: "1px solid var(--bleu)" }}
                 >
-                  {pdfOnly ? "cdn.paris.fr (PDF) ↗" : "opendata.paris.fr ↗"}
+                  {label}
                 </a>
               );
             })()}.

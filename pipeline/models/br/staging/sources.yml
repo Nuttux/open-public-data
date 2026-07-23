@@ -62,3 +62,21 @@ sources:
         description: |
           ENRICHMENT (additive): plain-pt resumo + o_que_financia per CNPJ,
           loaded by scripts/enrich/vulgarize_recife_llm.py. Additive join only.
+      - name: br_recife_places_ubs
+        description: "Civic facilities — Unidades Básicas de Saúde (geo)."
+      - name: br_recife_places_usf
+        description: "Civic facilities — Unidades de Saúde da Família (geo)."
+      - name: br_recife_places_educacao
+        description: "Civic facilities — municipal schools/creches (geo)."
+      - name: br_recife_places_cultura
+        description: "Civic facilities — cultural/leisure equipment (geo, lat/lon swapped in source)."
+      - name: br_recife_places_esporte
+        description: "Civic facilities — sports equipment (geo)."
+      - name: br_recife_places_pracas
+        description: "Civic facilities — parks & squares (geo)."
+      - name: br_recife_place_obras
+        description: |
+          ENRICHMENT (additive): place↔obra crosswalk — public-works contracts
+          matched to facilities by distinctive-name mention in the objeto
+          (scripts/enrich/build_recife_place_obras.py). LEFT-joined onto places;
+          evidence surfaced on the fiche. Not "total spent", only obra-mentions.

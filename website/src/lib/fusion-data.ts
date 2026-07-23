@@ -1951,13 +1951,13 @@ export function loadContratRanking(numero: string, year: number, nature: string,
   }
 }
 
-export function loadContrat(numero: string): ContratFiche | null {
+export function loadContrat(numero: string, city: string = "paris"): ContratFiche | null {
   // Scan every year — the id is unique enough.
-  const indexRaw = readJson<MarchesIndexRaw>("marches-publics/index.json");
+  const indexRaw = readJson<MarchesIndexRaw>(cityJsonPath(city, "marches-publics/index.json"));
   const years = (indexRaw.availableYears ?? []).slice().sort((a, b) => b - a);
   for (const y of years) {
     try {
-      const f = readJson<MarchesFile>(`marches-publics/marches_${y}.json`);
+      const f = readJson<MarchesFile>(cityJsonPath(city, `marches-publics/marches_${y}.json`));
       const rows = f.data ?? f.marches ?? [];
       const row = rows.find((m) => (m as MarcheRow & { numero_marche?: string }).numero_marche === numero);
       if (!row) continue;
@@ -2057,8 +2057,8 @@ export type FournisseurFiche = {
  * either from SIREN (9-digit prefix of SIRET) or from the full SIRET.
  * Best-effort — SIRET data is partial for older years.
  */
-export function loadFournisseur(key: string): FournisseurFiche | null {
-  const indexRaw = readJson<MarchesIndexRaw>("marches-publics/index.json");
+export function loadFournisseur(key: string, city: string = "paris"): FournisseurFiche | null {
+  const indexRaw = readJson<MarchesIndexRaw>(cityJsonPath(city, "marches-publics/index.json"));
   const years = (indexRaw.availableYears ?? []).slice().sort((a, b) => a - b);
   const target = key.replace(/\s/g, "");
   const siren = target.slice(0, 9);
@@ -2074,7 +2074,7 @@ export function loadFournisseur(key: string): FournisseurFiche | null {
 
   for (const y of years) {
     try {
-      const f = readJson<MarchesFile>(`marches-publics/marches_${y}.json`);
+      const f = readJson<MarchesFile>(cityJsonPath(city, `marches-publics/marches_${y}.json`));
       const rows = f.data ?? f.marches ?? [];
       for (const m of rows) {
         const r = m as MarcheRow & {
@@ -2097,7 +2097,7 @@ export function loadFournisseur(key: string): FournisseurFiche | null {
         // les contrats qui ont une version vulgarisée. `loadMarcheVulgarization`
         // mémoïse la map par ville, donc ce lookup par ligne ne coûte qu'une
         // seule lecture de fichier.
-        const vulg = r.numero_marche ? loadMarcheVulgarization(r.numero_marche) : null;
+        const vulg = r.numero_marche ? loadMarcheVulgarization(r.numero_marche, city) : null;
 
         contrats.push({
           numero: r.numero_marche ?? "",
@@ -2764,10 +2764,16 @@ type MarseilleInvTrends = {
   }>;
 };
 
-function loadInvestissementsDataMarseille(requestedYear?: number): InvestissementsData {
-  const index = readJson<MarseilleInvIndex>(cityJsonPath("marseille", "investissements/index.json"));
+// City investissements loader for the pre-aggregated (PDF/POC) schema shared by
+// non-Paris cities. Paris keeps its own richer path (map/*). Parametrized by
+// city so a 3rd city with the same export shape needs no new code.
+function loadInvestissementsDataCity(
+  city: string,
+  requestedYear?: number,
+): InvestissementsData {
+  const index = readJson<MarseilleInvIndex>(cityJsonPath(city, "investissements/index.json"));
   const trends = readJsonOrNull<MarseilleInvTrends>(
-    cityJsonPath("marseille", "investissements/investissement_tendances.json"),
+    cityJsonPath(city, "investissements/investissement_tendances.json"),
   );
   const availableYears = (index.availableYears ?? []).slice().sort((a, b) => a - b);
   const year =
@@ -2775,7 +2781,7 @@ function loadInvestissementsDataMarseille(requestedYear?: number): Investissemen
       ? requestedYear
       : index.latestYear ?? availableYears[availableYears.length - 1];
   const file = readJson<MarseilleInvFile>(
-    cityJsonPath("marseille", `investissements/investissements_${year}.json`),
+    cityJsonPath(city, `investissements/investissements_${year}.json`),
   );
   // Filter out narrative fragments (non-project text leaked from prosaic PDF
   // parsing) — see is_project flag added by geocode_marseille_invest.py.
@@ -2788,7 +2794,7 @@ function loadInvestissementsDataMarseille(requestedYear?: number): Investissemen
   // Photos cache (4/10 réelles, 6 fallback "ecole" générique).
   type PhotoEntry = { photo_url: string | null; credit: string | null; license: string | null; source: string | null; generic: string | null };
   const photosCache = readJsonOrNull<{ items: Record<string, PhotoEntry> }>(
-    cityJsonPath("marseille", "enrichment/projets_photos.json"),
+    cityJsonPath(city, "enrichment/projets_photos.json"),
   );
   const photosMap = photosCache?.items ?? {};
 
@@ -2895,7 +2901,7 @@ export function loadInvestissementsData(
   requestedYear?: number,
   city: string = "paris",
 ): InvestissementsData {
-  if (city === "marseille") return loadInvestissementsDataMarseille(requestedYear);
+  if (city !== "paris") return loadInvestissementsDataCity(city, requestedYear);
   const trends = readJson<InvTrends>("investissement_tendances.json");
   const allYears = trends.years.map((y) => y.year).sort((a, b) => a - b);
 

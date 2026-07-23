@@ -3,7 +3,7 @@ import { loadContratos, loadLicitacoes } from "@/lib/br/recife-data";
 import ContratosClient from "./ContratosClient";
 
 export const metadata: Metadata = {
-  title: { absolute: "Recife · Contratos — todos os contratos da Prefeitura" },
+  title: { absolute: "Recife · Contratos" },
   description:
     "Cada contrato administrativo da Prefeitura do Recife: objeto, fornecedor, valor e vigência, mais o contexto das licitações — dos dados abertos da cidade.",
 };

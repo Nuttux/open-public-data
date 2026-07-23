@@ -1,0 +1,125 @@
+{
+ "mucem": {
+  "operator": {
+   "beneficiaire": "MUSEE DES CIVILISATIONS DE L EUROPE ETDE LA MEDITERRANEE MUCEM",
+   "montant_total": 80000.0,
+   "nb_subventions": 1,
+   "rows": [
+    {
+     "annee": 2018,
+     "montant": 80000.0
+    }
+   ],
+   "annees": [
+    2018,
+    2018
+   ]
+  },
+  "residents": []
+ },
+ "friche-belle-de-mai": {
+  "operator": {
+   "beneficiaire": "FRICHE LA BELLE DE MAI",
+   "montant_total": 19947272.28,
+   "nb_subventions": 7,
+   "rows": [
+    {
+     "annee": 2017,
+     "montant": 3754116.55
+    },
+    {
+     "annee": 2018,
+     "montant": 3195464.06
+    },
+    {
+     "annee": 2019,
+     "montant": 3428397.23
+    },
+    {
+     "annee": 2020,
+     "montant": 3137012.57
+    },
+    {
+     "annee": 2021,
+     "montant": 3502538.73
+    },
+    {
+     "annee": 2022,
+     "montant": 2929743.14
+    }
+   ],
+   "annees": [
+    2017,
+    2022
+   ]
+  },
+  "residents": []
+ },
+ "la-criee": {
+  "operator": {
+   "beneficiaire": "THEATRE NATIONAL DE MARSEILLE LA CRIEE",
+   "montant_total": 8228504.83,
+   "nb_subventions": 17,
+   "rows": [
+    {
+     "annee": 2017,
+     "montant": 1080000.0
+    },
+    {
+     "annee": 2018,
+     "montant": 1486708.15
+    },
+    {
+     "annee": 2019,
+     "montant": 1140000.0
+    },
+    {
+     "annee": 2020,
+     "montant": 1389018.47
+    },
+    {
+     "annee": 2021,
+     "montant": 1401193.64
+    },
+    {
+     "annee": 2022,
+     "montant": 1731584.57
+    }
+   ],
+   "annees": [
+    2017,
+    2022
+   ]
+  },
+  "residents": []
+ },
+ "bibliotheque-alcazar": {
+  "operator": null,
+  "residents": [
+   {
+    "beneficiaire": "LE ZEF",
+    "montant_total": 5025.0,
+    "nb": 1,
+    "preuve": "MISE A DISPO JOURNEES PATIO ALCAZAR DCM 181211ECSS"
+   },
+   {
+    "beneficiaire": "THEATRE NATIONAL DE MARSEILLE LA CRIEE",
+    "montant_total": 5025.0,
+    "nb": 1,
+    "preuve": "MISE A DISPO JOURNEES PATIO DE L ALCAZAR DCM 181211ECSS"
+   },
+   {
+    "beneficiaire": "UNION CULTUTELLE PROVENCALE MARSEILLE 2013",
+    "montant_total": 950.0,
+    "nb": 1,
+    "preuve": "MISE A DISPOSITION SALLE DE CONFERENCE ET FOYER ALCAZAR"
+   },
+   {
+    "beneficiaire": "LA MARELLE",
+    "montant_total": 325.0,
+    "nb": 1,
+    "preuve": "MISE A DISPOSITION AUDITORIUM ALCAZAR POUR 5 RENCONTRES TARIF CULTUREL CONVENTION 22 80518"
+   }
+  ]
+ }
+}

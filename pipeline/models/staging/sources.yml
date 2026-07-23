@@ -55,6 +55,13 @@ sources:
       - name: marseille_compte_administratif_2020
       - name: marseille_compte_administratif_2021
       - name: marseille_compte_administratif_2022
+      # Subventions Ville (SCDL) — 6 années annuelles (2017-2022)
+      - name: marseille_subventions_ville_2017
+      - name: marseille_subventions_ville_2018
+      - name: marseille_subventions_ville_2019
+      - name: marseille_subventions_ville_2020
+      - name: marseille_subventions_ville_2021
+      - name: marseille_subventions_ville_2022
 
   - name: paris_raw
     description: "Données brutes du budget de Paris (OpenData Paris)"

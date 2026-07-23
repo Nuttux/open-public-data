@@ -12,7 +12,6 @@ const MAIN_ROUTES = [
   { path: '/fr/city/paris/marches', priority: 0.8 },
   { path: '/fr/city/paris/logement', priority: 0.8 },
   { path: '/fr/national/daily-bread', priority: 0.9 },
-  { path: '/fr/national', priority: 0.8 },
   { path: '/fr/national/dette', priority: 0.8 },
   { path: '/fr/national/fiscalite', priority: 0.8 },
   { path: '/fr/national/etat', priority: 0.8 },

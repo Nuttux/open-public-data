@@ -344,7 +344,7 @@ export default function MarchesSearch({ citySlug, categories, natures, year }: P
           {displayed.map(({ it, via }, i) => {
             const { v, u } = fmtAmount(it.montant);
             const href = it.numeroMarche
-              ? `/fr/city/paris/marches/contrat/${encodeURIComponent(it.numeroMarche)}`
+              ? `/fr/city/${citySlug}/marches/contrat/${encodeURIComponent(it.numeroMarche)}`
               : undefined;
             const CardEl: React.ElementType = href ? Link : "div";
             const onCardClick = href

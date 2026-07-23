@@ -4,6 +4,7 @@ import type { MarchesPageData } from "@/lib/fusion-data";
 import { useT, useLocale } from "@/lib/localeContext";
 import { fill, numLocale } from "@/lib/fmt";
 import ExempleCards, { type ExempleCardItem } from "./ExempleCards";
+import { useCity } from "./CityContext";
 
 type SigItem = MarchesPageData["signature"][number];
 
@@ -21,6 +22,7 @@ function statut(dateNotification: string, dureeJours: number): "encours" | "term
 export default function MarchesSignature({ items }: { items: SigItem[] }) {
   const t = useT();
   const { locale } = useLocale();
+  const { basePath } = useCity();
   const locStr = numLocale(locale);
 
   const fmtEur = (n: number) => {
@@ -41,7 +43,7 @@ export default function MarchesSignature({ items }: { items: SigItem[] }) {
       st ? t(st === "encours" ? "fx.fiche.contrat.tl.en_cours" : "fx.fiche.contrat.tl.termine") : null,
     ].filter(Boolean);
     return {
-      href: `/fr/city/paris/marches/contrat/${encodeURIComponent(it.numero)}`,
+      href: `${basePath}/marches/contrat/${encodeURIComponent(it.numero)}`,
       kicker: t(`fx.mp.sig.k.${it.kind}`),
       kickerOcre: it.kind === "mono",
       title: locale === "en" && it.labelEn ? it.labelEn : it.label,

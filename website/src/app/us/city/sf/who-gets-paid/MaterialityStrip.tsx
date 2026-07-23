@@ -32,7 +32,6 @@ export default function MaterialityStrip({
     <section className="fx-section" id="sec-materiality">
       <div className="fx-wrap">
         <SectionHead
-          kind={t("us.sf.wgp.s03.kind")}
           title={
             <>
               {t("us.sf.wgp.s03.title.before")}

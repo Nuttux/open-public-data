@@ -65,6 +65,36 @@ def expand_slugs(source: dict) -> list[tuple[str, str]]:
     raise ValueError(f"source '{source.get('id')}' has no slug_pattern or slugs")
 
 
+def _string_schema_from_header(
+    csv_bytes: bytes, csv_separator: str, csv_encoding: str
+) -> list:
+    """Build an all-STRING BigQuery schema from the CSV header row.
+
+    Used when `all_strings=True`: BigQuery autodetect coerces numeric-looking
+    fields, which silently corrupts locale-formatted data (French decimal comma
+    `854999,98` becomes `85499998` — a ×100 inflation). Loading every column as
+    STRING keeps the raw layer faithful; explicit casting happens in staging.
+    """
+    import csv as _csv
+    import re as _re
+
+    enc = "utf-8" if csv_encoding.lower() == "utf-8" else "iso-8859-1"
+    head_text = csv_bytes.split(b"\n", 1)[0].decode(enc, errors="replace")
+    header = next(_csv.reader(io.StringIO(head_text), delimiter=csv_separator))
+    fields, seen = [], {}
+    for i, raw_name in enumerate(header):
+        name = _re.sub(r"[^0-9A-Za-z_]", "_", raw_name.strip()).strip("_")
+        if not name or not _re.match(r"[A-Za-z_]", name):
+            name = f"col_{i}_{name}".strip("_")
+        if name in seen:
+            seen[name] += 1
+            name = f"{name}_{seen[name]}"
+        else:
+            seen[name] = 0
+        fields.append(bigquery.SchemaField(name, "STRING"))
+    return fields
+
+
 def load_csv_to_bigquery(
     client: bigquery.Client,
     csv_bytes: bytes,
@@ -72,18 +102,22 @@ def load_csv_to_bigquery(
     table_id: str,
     csv_separator: str = ",",
     csv_encoding: str = "utf-8",
+    all_strings: bool = False,
     log: Logger = None,
 ) -> int:
-    """Load CSV bytes into a BigQuery table (WRITE_TRUNCATE, autodetect schema).
+    """Load CSV bytes into a BigQuery table (WRITE_TRUNCATE).
+
+    Autodetects the schema by default. Set `all_strings=True` for sources whose
+    numeric fields use a locale format BigQuery misreads (e.g. French decimal
+    comma) — every column loads as STRING and staging casts explicitly.
 
     Returns the row count inserted.
     """
     table_ref = f"{PROJECT_ID}.{dataset_id}.{table_id}"
 
-    job_config = bigquery.LoadJobConfig(
+    common = dict(
         source_format=bigquery.SourceFormat.CSV,
         skip_leading_rows=1,
-        autodetect=True,
         write_disposition=bigquery.WriteDisposition.WRITE_TRUNCATE,
         field_delimiter=csv_separator,
         encoding="UTF-8" if csv_encoding.lower() == "utf-8" else "ISO-8859-1",
@@ -92,11 +126,22 @@ def load_csv_to_bigquery(
         # BP 2020 et CA 2019 ont des lignes "courtes" trailing → NULLs côté
         # stg). Le stg agrège proprement, les NULL natures n'ont aucun impact.
         allow_jagged_rows=True,
-        # V2 char map autorise les caractères non-ASCII et `/` `.` dans les
-        # noms de colonnes (Marseille publie p.ex. `s/Fonction` qui casse
-        # l'autodetect par défaut). V2 réécrit ces caractères en `_`.
-        column_name_character_map="V2",
     )
+    if all_strings:
+        job_config = bigquery.LoadJobConfig(
+            **common,
+            autodetect=False,
+            schema=_string_schema_from_header(csv_bytes, csv_separator, csv_encoding),
+        )
+    else:
+        job_config = bigquery.LoadJobConfig(
+            **common,
+            autodetect=True,
+            # V2 char map autorise les caractères non-ASCII et `/` `.` dans les
+            # noms de colonnes (Marseille publie p.ex. `s/Fonction` qui casse
+            # l'autodetect par défaut). V2 réécrit ces caractères en `_`.
+            column_name_character_map="V2",
+        )
 
     job = client.load_table_from_file(
         io.BytesIO(csv_bytes),
@@ -124,6 +169,7 @@ def sync_source(client: bigquery.Client, config: dict, source: dict, log: Logger
     raw_dataset = config.get("bq_raw_dataset", RAW_DATASET_DEFAULT)
     csv_separator = source.get("csv_separator", ",")
     csv_encoding = source.get("csv_encoding", "utf-8")
+    all_strings = bool(source.get("all_strings", False))
 
     log.section(f"Source: {source_id}")
     log.info("description", extra=source.get("description", ""))
@@ -145,6 +191,7 @@ def sync_source(client: bigquery.Client, config: dict, source: dict, log: Logger
                 client, csv_bytes, raw_dataset, table_id,
                 csv_separator=csv_separator,
                 csv_encoding=csv_encoding,
+                all_strings=all_strings,
                 log=log,
             )
             summary["tables"].append({"slug": slug, "table": table_id, "rows": rows})

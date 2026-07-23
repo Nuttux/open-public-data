@@ -55,7 +55,6 @@ export default function WhoGetsPaidClient({
     <main id="main-content" tabIndex={-1}>
       {/* ── Opener: signature stat band (folds the former "01 Perimeter") ── */}
       <PageIntro
-        kicker={fill(t("us.sf.wgp.kicker"), { fy })}
         title={
           <>
             {t("us.sf.wgp.title.before")}

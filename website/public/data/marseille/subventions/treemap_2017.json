@@ -1,0 +1,104 @@
+{
+  "year": 2017,
+  "generated_at": "2026-07-23T00:02:26.369999",
+  "total_montant": 157626542.35000002,
+  "nb_thematiques": 12,
+  "data": [
+    {
+      "annee": 2017,
+      "thematique": "Social",
+      "nb_beneficiaires": 223,
+      "nb_subventions": 266,
+      "montant_total": 59354449.06000002,
+      "pct_total": 37.66
+    },
+    {
+      "annee": 2017,
+      "thematique": "Culture",
+      "nb_beneficiaires": 229,
+      "nb_subventions": 275,
+      "montant_total": 33926896.71000001,
+      "pct_total": 21.52
+    },
+    {
+      "annee": 2017,
+      "thematique": "Économie",
+      "nb_beneficiaires": 82,
+      "nb_subventions": 86,
+      "montant_total": 29101557.790000003,
+      "pct_total": 18.46
+    },
+    {
+      "annee": 2017,
+      "thematique": "Éducation",
+      "nb_beneficiaires": 58,
+      "nb_subventions": 65,
+      "montant_total": 16902800.77,
+      "pct_total": 10.72
+    },
+    {
+      "annee": 2017,
+      "thematique": "Sport",
+      "nb_beneficiaires": 277,
+      "nb_subventions": 312,
+      "montant_total": 8214710.819999999,
+      "pct_total": 5.21
+    },
+    {
+      "annee": 2017,
+      "thematique": "Non classifié",
+      "nb_beneficiaires": 564,
+      "nb_subventions": 588,
+      "montant_total": 8165106.92,
+      "pct_total": 5.18
+    },
+    {
+      "annee": 2017,
+      "thematique": "Santé",
+      "nb_beneficiaires": 36,
+      "nb_subventions": 38,
+      "montant_total": 570684.63,
+      "pct_total": 0.36
+    },
+    {
+      "annee": 2017,
+      "thematique": "Administration",
+      "nb_beneficiaires": 12,
+      "nb_subventions": 12,
+      "montant_total": 506996.82000000007,
+      "pct_total": 0.32
+    },
+    {
+      "annee": 2017,
+      "thematique": "Environnement",
+      "nb_beneficiaires": 20,
+      "nb_subventions": 22,
+      "montant_total": 389161.03,
+      "pct_total": 0.25
+    },
+    {
+      "annee": 2017,
+      "thematique": "Logement",
+      "nb_beneficiaires": 4,
+      "nb_subventions": 4,
+      "montant_total": 276341.49,
+      "pct_total": 0.18
+    },
+    {
+      "annee": 2017,
+      "thematique": "Sécurité",
+      "nb_beneficiaires": 8,
+      "nb_subventions": 8,
+      "montant_total": 121753.03,
+      "pct_total": 0.08
+    },
+    {
+      "annee": 2017,
+      "thematique": "International",
+      "nb_beneficiaires": 12,
+      "nb_subventions": 12,
+      "montant_total": 96083.28000000001,
+      "pct_total": 0.06
+    }
+  ]
+}

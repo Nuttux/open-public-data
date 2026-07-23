@@ -13,6 +13,8 @@ import Tip from "@/components/fusion/Tip";
 import ProjectMap from "@/components/fusion/ProjectMap";
 import ProjetThumb from "@/components/fusion/ProjetThumb";
 import ParisChoropleth from "@/components/fusion/ParisChoropleth";
+import CityChoropleth from "@/components/fusion/CityChoropleth";
+import { cityDistrictGeometry } from "@/components/fusion/city-districts";
 import BudgetTimeline from "@/components/fusion/BudgetTimeline";
 import StackedBarTheme from "@/components/fusion/StackedBarTheme";
 import PageTOC from "@/components/fusion/PageTOC";
@@ -46,9 +48,15 @@ const INV_PLACEHOLDERS: ArticlePlaceholder[] = [
 export default function InvestissementsClient({
   d,
   posts,
+  enableDrilldowns = true,
 }: {
   d: InvestissementsData;
   posts: BlogPostMeta[];
+  // Whether chapitre/projet/arrondissement drill routes exist for this city.
+  // Off (e.g. Marseille, whose investissements drill fiches aren't built yet)
+  // keeps the same page but renders those elements non-clickable — the theme
+  // bar falls back to same-page ?theme filtering, never a 404 (P3.2 option a).
+  enableDrilldowns?: boolean;
 }) {
   const t = useT();
   const { locale } = useLocale();
@@ -208,8 +216,24 @@ export default function InvestissementsClient({
                 </>
               )}
             </>
+          ) : cityDistrictGeometry(citySlug) ? (
+            // Non-Paris city that has SVG district geometry: the universal
+            // choropleth (map + ranking sidebar). Tiles link to the district
+            // fiche only where that route exists (enableDrilldowns).
+            <>
+              <CityChoropleth
+                citySlug={citySlug}
+                items={d.byArrondissement.map((a) => ({ arr: a.arr, amount: a.amount, count: a.count }))}
+                height={420}
+                hrefFor={enableDrilldowns ? (arr) => `${cityBasePath}/arrondissement/${arr}` : () => null}
+              />
+              <ChartSource
+                source={fill(t("fx.inv.s04.source.cite"), { year: d.year })}
+                methodAnchor="investissements"
+              />
+            </>
           ) : (
-            // Non-Paris: simple ranking list (no SVG choropleth, no map).
+            // No geometry yet: simple ranking list (P3.2 option a stricte).
             // Source: pre-aggregated byArrondissement coming from the city loader.
             <>
               <ol className="fx-arr-ranking" aria-label={t("fx.toc.arrondissements")}>
@@ -288,7 +312,11 @@ export default function InvestissementsClient({
             kicker={fill(t("fx.inv.s04.kicker"), { year: d.year })}
             entityNoun={t("fx.inv.s04.entity_noun")}
             paretoContrast={t("fx.inv.s04.pareto_contrast")}
-            hrefBuilder={(theme) => `${cityBasePath}/chapitre/${slugifyChapitre(theme)}`}
+            hrefBuilder={
+              enableDrilldowns
+                ? (theme) => `${cityBasePath}/chapitre/${slugifyChapitre(theme)}`
+                : undefined
+            }
           />
           <ChartSource
             source={fill(t("fx.inv.s02.source.cite"), { year: d.year })}
@@ -341,33 +369,46 @@ export default function InvestissementsClient({
             }
           />
           <div className="fx-projet-grid">
-            {d.topProjets.slice(0, 12).map((p, i) => (
-              <Link
-                key={p.id}
-                href={`${cityBasePath}/projet/${encodeURIComponent(p.id)}`}
-                className="fx-projet-card"
-                scroll={false}
-              >
-                <div className="fx-projet-card-thumb">
-                  <ProjetThumb photo={p.photo.photo} generic={p.photo.generic} typologie={p.photo.typologie} aspectRatio="4 / 3" fallbackLabel={p.name} />
-                </div>
-                <div className="fx-projet-card-body">
-                  <div className="fx-projet-card-rank">{String(i + 1).padStart(2, "0")}</div>
-                  <div className="fx-projet-card-name">{((locale === 'en' && p.name_en) ? p.name_en : p.name ?? "—").slice(0, 90)}</div>
-                  <div className="fx-projet-card-meta">
-                    <span>
-                      {p.arr > 0
-                        ? fill(t("fx.inv.s01.arr"), { n: p.arr }) + arrSuf(p.arr)
-                        : t("fx.s.transverse")}
-                    </span>
-                    <span className="fx-projet-card-amount">
-                      {p.amount >= 1e6 ? `${fmtMillions(p.amount, 1)} M€` : `${fmtInt(p.amount / 1000)} k€`}
-                    </span>
+            {d.topProjets.slice(0, 12).map((p, i) => {
+              const inner = (
+                <>
+                  <div className="fx-projet-card-thumb">
+                    <ProjetThumb photo={p.photo.photo} generic={p.photo.generic} typologie={p.photo.typologie} aspectRatio="4 / 3" fallbackLabel={p.name} />
                   </div>
-                  <div className="fx-projet-card-chapitre">{trL(p.chapitre)}</div>
+                  <div className="fx-projet-card-body">
+                    <div className="fx-projet-card-rank">{String(i + 1).padStart(2, "0")}</div>
+                    <div className="fx-projet-card-name">{((locale === 'en' && p.name_en) ? p.name_en : p.name ?? "—").slice(0, 90)}</div>
+                    <div className="fx-projet-card-meta">
+                      <span>
+                        {p.arr > 0
+                          ? fill(t("fx.inv.s01.arr"), { n: p.arr }) + arrSuf(p.arr)
+                          : t("fx.s.transverse")}
+                      </span>
+                      <span className="fx-projet-card-amount">
+                        {p.amount >= 1e6 ? `${fmtMillions(p.amount, 1)} M€` : `${fmtInt(p.amount / 1000)} k€`}
+                      </span>
+                    </div>
+                    <div className="fx-projet-card-chapitre">{trL(p.chapitre)}</div>
+                  </div>
+                </>
+              );
+              // Non-clickable card where the projet fiche route doesn't exist
+              // for this city yet (P3.2 option a) — never a dead 404 link.
+              return enableDrilldowns ? (
+                <Link
+                  key={p.id}
+                  href={`${cityBasePath}/projet/${encodeURIComponent(p.id)}`}
+                  className="fx-projet-card"
+                  scroll={false}
+                >
+                  {inner}
+                </Link>
+              ) : (
+                <div key={p.id} className="fx-projet-card">
+                  {inner}
                 </div>
-              </Link>
-            ))}
+              );
+            })}
           </div>
         </div>
       </section>

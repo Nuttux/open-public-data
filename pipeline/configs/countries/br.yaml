@@ -143,3 +143,40 @@ sources:
     resource_id: "9771bedc-6f2e-43f0-bd4c-25b0de5500b5"
     target_table: br_recife_licitacoes_andamento
     description: "Licitações em andamento (valor estimado)"
+
+  # ---------------------------------------------------------------------------
+  # PLACES — civic facilities with geo (lat/lon). Feeds the shared
+  # PlacesExplorer map (identity/directory; money-on-map is a later crosswalk).
+  # Column names vary by family (latitude/longitude vs lat/long; name column
+  # differs) — normalized per-source in stg_br_recife_places.
+  # ---------------------------------------------------------------------------
+  - id: places_ubs
+    type: ckan
+    resource_id: "7927e663-6753-489c-943c-f20cdd72555e"
+    target_table: br_recife_places_ubs
+    description: "Unidades Básicas de Saúde (UBS)"
+  - id: places_usf
+    type: ckan
+    resource_id: "64cc8ab3-bd69-4629-b145-74552fe31e1c"
+    target_table: br_recife_places_usf
+    description: "Unidades de Saúde da Família (USF)"
+  - id: places_educacao
+    type: ckan
+    resource_id: "5e7d8579-ac3c-432f-a4b0-cf9cb7281915"
+    target_table: br_recife_places_educacao
+    description: "Unidades de Ensino Municipal (escolas/creches) 2023"
+  - id: places_cultura
+    type: ckan
+    resource_id: "e5442e5b-75ef-4cc9-8ccb-526dd5ed9f87"
+    target_table: br_recife_places_cultura
+    description: "Equipamentos de Cultura e Lazer"
+  - id: places_esporte
+    type: ckan
+    resource_id: "797dc365-58e7-4105-8008-b8d48423a8ea"
+    target_table: br_recife_places_esporte
+    description: "Equipamentos Esportivos 2023"
+  - id: places_pracas
+    type: ckan
+    resource_id: "d2199b6f-1d24-4553-980b-e11dafc90e06"
+    target_table: br_recife_places_pracas
+    description: "Parques e Praças"

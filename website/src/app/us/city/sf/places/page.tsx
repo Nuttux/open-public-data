@@ -7,7 +7,7 @@ import EmptyState from "@/components/fusion/EmptyState";
 import { loadSfPlacesIndex } from "@/lib/us/sf-places-data";
 
 export const metadata: Metadata = {
-  title: { absolute: "San Francisco · Places — the city, place by place" },
+  title: { absolute: "US · San Francisco — Places" },
   description:
     "Parks, libraries, hospitals, piers: for each San Francisco place, the city money that reaches it and the historical documents held at the Internet Archive — every fact linked to its source.",
 };
@@ -20,13 +20,12 @@ export default async function SfPlacesPage() {
   return (
     <main id="main-content" tabIndex={-1} style={{ overflowX: "clip" }}>
       <PageIntro
-        kicker="San Francisco"
         title={
           <>
             The city, <em>place by place</em>
           </>
         }
-        lede="Parks, libraries, hospitals, piers — for each place, the city money that reaches it and the archival record held at the Internet Archive, every fact linked to its source."
+        lede="Parks, libraries, hospitals, piers — for each place, the city money that reaches it and the archival record held at the Internet Archive."
         stats={
           <>
             <IntroStat value={places.length} label="places" />

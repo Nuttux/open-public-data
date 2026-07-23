@@ -5,7 +5,7 @@ import "@/app/fusion.css";
 import PageIntro from "@/components/fusion/PageIntro";
 
 export const metadata: Metadata = {
-  title: { absolute: "US · Public Data Explorer (working title)" },
+  title: { absolute: "United States · Public money, followed to the source" },
   description:
     "United States public finance, followed to the source: the federal dollar and, at city scale, San Francisco's budget, payments, contracts, payroll and places.",
 };

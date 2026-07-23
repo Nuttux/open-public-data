@@ -61,9 +61,28 @@ sources:
     # Note: schemas vary across years — staging layer normalises.
 
   # ---------------------------------------------------------------------------
+  # Subventions Ville de Marseille (SCDL) — annuel 2017-2022
+  # Schema SCDL: nomAttribuant, idAttribuant, typeAttribuant, anneeAttribution,
+  #   nomBeneficiaire, typeBeneficiaire, montant, nature, objetAideNature
+  #   (casse/espaces des en-têtes dérivent selon l'année → V2 char-map au stg)
+  # Grain: une ligne par subvention attribuée.
+  # ---------------------------------------------------------------------------
+  - id: marseille_subventions_ville
+    target_table: marseille_subventions_ville
+    type: datagouv_dataset
+    description: "Subventions versées par la Ville de Marseille (SCDL)"
+    slug_pattern: "marseille-subventions-{year}"
+    years: [2017, 2018, 2019, 2020, 2021, 2022]
+    csv_encoding: "utf-8"
+    csv_separator: ","  # ces exports SCDL Marseille sont ,-délimités, champs quotés
+    add_year_column: false  # année dans la colonne anneeAttribution
+    # montant en format FR ("854999,98") : autodetect BQ enlèverait la virgule
+    # décimale (×100). On charge tout en STRING, cast explicite au stg.
+    all_strings: true
+
+  # ---------------------------------------------------------------------------
   # Sources NON incluses dans le POC (à activer plus tard) :
   # ---------------------------------------------------------------------------
-  # - marseille_subventions_ville     (datagouv, marseille-subventions-{year}, 2017-2022)
   # - marseille_subventions_metropole (ods, data.ampmetropole.fr, subventions-attribuees-depuis-2022)
   # - marseille_marches_ville         (datagouv, marseille-marches-publics-1, 2020 only)
   # - marseille_deliberations         (datagouv, marseille-deliberations-{year}, 2019/2021/2024)

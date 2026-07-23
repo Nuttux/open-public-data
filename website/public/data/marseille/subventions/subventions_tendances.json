@@ -1,0 +1,604 @@
+{
+  "generated_at": "2026-07-23T00:02:31.148160",
+  "source": "dbt marts (mart_subventions_beneficiaires)",
+  "note_perimetre": "Tous les bénéficiaires (long tail complet, aucun cap).",
+  "years": [
+    {
+      "year": 2017,
+      "total_montant": 157626542.35,
+      "nb_subventions": 1688,
+      "nb_beneficiaires": 1530,
+      "par_thematique": [
+        {
+          "label": "Social",
+          "montant": 59354449.059999965,
+          "count": 225
+        },
+        {
+          "label": "Culture",
+          "montant": 33926896.71000001,
+          "count": 229
+        },
+        {
+          "label": "Économie",
+          "montant": 29101557.79000001,
+          "count": 82
+        },
+        {
+          "label": "Éducation",
+          "montant": 16902800.770000003,
+          "count": 58
+        },
+        {
+          "label": "Sport",
+          "montant": 8214710.820000003,
+          "count": 278
+        },
+        {
+          "label": "Non classifié",
+          "montant": 8165106.919999999,
+          "count": 565
+        },
+        {
+          "label": "Santé",
+          "montant": 570684.63,
+          "count": 36
+        },
+        {
+          "label": "Administration",
+          "montant": 506996.82,
+          "count": 12
+        },
+        {
+          "label": "Environnement",
+          "montant": 389161.0300000001,
+          "count": 21
+        },
+        {
+          "label": "Logement",
+          "montant": 276341.49,
+          "count": 4
+        },
+        {
+          "label": "Sécurité",
+          "montant": 121753.03,
+          "count": 8
+        },
+        {
+          "label": "International",
+          "montant": 96083.28,
+          "count": 12
+        }
+      ],
+      "par_direction": [
+        {
+          "label": "Non renseignée",
+          "montant": 157626542.34999985,
+          "count": 1530
+        }
+      ],
+      "par_type_organisme": [
+        {
+          "label": "Associations",
+          "montant": 89379462.87999997,
+          "count": 1385
+        },
+        {
+          "label": "Établissements publics",
+          "montant": 45499883.15,
+          "count": 56
+        },
+        {
+          "label": "Entreprises",
+          "montant": 22172557.770000003,
+          "count": 75
+        },
+        {
+          "label": "Autres privés",
+          "montant": 574638.5499999998,
+          "count": 14
+        }
+      ]
+    },
+    {
+      "year": 2018,
+      "total_montant": 128895727.29,
+      "nb_subventions": 1463,
+      "nb_beneficiaires": 1239,
+      "par_thematique": [
+        {
+          "label": "Social",
+          "montant": 46343503.419999994,
+          "count": 171
+        },
+        {
+          "label": "Culture",
+          "montant": 31637929.880000003,
+          "count": 192
+        },
+        {
+          "label": "Économie",
+          "montant": 19558204.009999994,
+          "count": 88
+        },
+        {
+          "label": "Éducation",
+          "montant": 16270598.790000005,
+          "count": 43
+        },
+        {
+          "label": "Sport",
+          "montant": 8962924.819999997,
+          "count": 222
+        },
+        {
+          "label": "Non classifié",
+          "montant": 3972401.7499999986,
+          "count": 441
+        },
+        {
+          "label": "Santé",
+          "montant": 1366423.6199999999,
+          "count": 37
+        },
+        {
+          "label": "Administration",
+          "montant": 365699.45,
+          "count": 8
+        },
+        {
+          "label": "Environnement",
+          "montant": 316998.65,
+          "count": 19
+        },
+        {
+          "label": "Sécurité",
+          "montant": 41647.61,
+          "count": 3
+        },
+        {
+          "label": "International",
+          "montant": 31415.73,
+          "count": 10
+        },
+        {
+          "label": "Logement",
+          "montant": 27979.56,
+          "count": 5
+        }
+      ],
+      "par_direction": [
+        {
+          "label": "Non renseignée",
+          "montant": 128895727.29000019,
+          "count": 1239
+        }
+      ],
+      "par_type_organisme": [
+        {
+          "label": "Associations",
+          "montant": 79800698.78000014,
+          "count": 1114
+        },
+        {
+          "label": "Établissements publics",
+          "montant": 30701032.169999998,
+          "count": 35
+        },
+        {
+          "label": "Entreprises",
+          "montant": 18265793.84999999,
+          "count": 75
+        },
+        {
+          "label": "Autres privés",
+          "montant": 128202.48999999999,
+          "count": 15
+        }
+      ]
+    },
+    {
+      "year": 2019,
+      "total_montant": 137991449.87,
+      "nb_subventions": 1570,
+      "nb_beneficiaires": 1237,
+      "par_thematique": [
+        {
+          "label": "Social",
+          "montant": 50997124.370000005,
+          "count": 217
+        },
+        {
+          "label": "Économie",
+          "montant": 30587484.580000006,
+          "count": 107
+        },
+        {
+          "label": "Culture",
+          "montant": 30031091.640000008,
+          "count": 188
+        },
+        {
+          "label": "Éducation",
+          "montant": 15785624.279999997,
+          "count": 67
+        },
+        {
+          "label": "Sport",
+          "montant": 5637531.869999999,
+          "count": 189
+        },
+        {
+          "label": "Non classifié",
+          "montant": 3109424.960000001,
+          "count": 398
+        },
+        {
+          "label": "Santé",
+          "montant": 857171.12,
+          "count": 35
+        },
+        {
+          "label": "Administration",
+          "montant": 476214.39,
+          "count": 7
+        },
+        {
+          "label": "Environnement",
+          "montant": 384300.0,
+          "count": 10
+        },
+        {
+          "label": "International",
+          "montant": 68462.26999999999,
+          "count": 13
+        },
+        {
+          "label": "Sécurité",
+          "montant": 49020.39,
+          "count": 4
+        },
+        {
+          "label": "Logement",
+          "montant": 8000.0,
+          "count": 2
+        }
+      ],
+      "par_direction": [
+        {
+          "label": "Non renseignée",
+          "montant": 137991449.87000003,
+          "count": 1237
+        }
+      ],
+      "par_type_organisme": [
+        {
+          "label": "Associations",
+          "montant": 76797345.85999987,
+          "count": 1106
+        },
+        {
+          "label": "Établissements publics",
+          "montant": 35569721.73,
+          "count": 32
+        },
+        {
+          "label": "Entreprises",
+          "montant": 25531364.68,
+          "count": 92
+        },
+        {
+          "label": "Autres privés",
+          "montant": 93017.6,
+          "count": 7
+        }
+      ]
+    },
+    {
+      "year": 2020,
+      "total_montant": 139818913.58,
+      "nb_subventions": 2091,
+      "nb_beneficiaires": 1505,
+      "par_thematique": [
+        {
+          "label": "Social",
+          "montant": 45384587.92,
+          "count": 173
+        },
+        {
+          "label": "Culture",
+          "montant": 31328432.669999998,
+          "count": 198
+        },
+        {
+          "label": "Économie",
+          "montant": 29185253.11999998,
+          "count": 122
+        },
+        {
+          "label": "Éducation",
+          "montant": 21661538.72999999,
+          "count": 100
+        },
+        {
+          "label": "Sport",
+          "montant": 5878994.9799999995,
+          "count": 208
+        },
+        {
+          "label": "Non classifié",
+          "montant": 4544560.160000004,
+          "count": 619
+        },
+        {
+          "label": "Santé",
+          "montant": 1155686.82,
+          "count": 36
+        },
+        {
+          "label": "Environnement",
+          "montant": 522057.98,
+          "count": 29
+        },
+        {
+          "label": "Sécurité",
+          "montant": 66415.01,
+          "count": 6
+        },
+        {
+          "label": "Administration",
+          "montant": 49986.19,
+          "count": 6
+        },
+        {
+          "label": "International",
+          "montant": 31400.0,
+          "count": 6
+        },
+        {
+          "label": "Logement",
+          "montant": 10000.0,
+          "count": 2
+        }
+      ],
+      "par_direction": [
+        {
+          "label": "Non renseignée",
+          "montant": 139818913.58000016,
+          "count": 1505
+        }
+      ],
+      "par_type_organisme": [
+        {
+          "label": "Associations",
+          "montant": 75049569.77999993,
+          "count": 1080
+        },
+        {
+          "label": "Établissements publics",
+          "montant": 33130914.939999998,
+          "count": 36
+        },
+        {
+          "label": "Entreprises",
+          "montant": 30351560.26999997,
+          "count": 118
+        },
+        {
+          "label": "Personnes physiques",
+          "montant": 1263697.2000000007,
+          "count": 265
+        },
+        {
+          "label": "Autres privés",
+          "montant": 23171.390000000003,
+          "count": 6
+        }
+      ]
+    },
+    {
+      "year": 2021,
+      "total_montant": 148108657.06,
+      "nb_subventions": 2817,
+      "nb_beneficiaires": 2259,
+      "par_thematique": [
+        {
+          "label": "Social",
+          "montant": 42913511.16000001,
+          "count": 180
+        },
+        {
+          "label": "Culture",
+          "montant": 36138460.059999995,
+          "count": 219
+        },
+        {
+          "label": "Économie",
+          "montant": 27615649.130000003,
+          "count": 246
+        },
+        {
+          "label": "Éducation",
+          "montant": 26807772.40000001,
+          "count": 78
+        },
+        {
+          "label": "Non classifié",
+          "montant": 6704777.84999999,
+          "count": 1245
+        },
+        {
+          "label": "Sport",
+          "montant": 4650207.699999999,
+          "count": 202
+        },
+        {
+          "label": "Administration",
+          "montant": 2002199.8599999999,
+          "count": 12
+        },
+        {
+          "label": "Santé",
+          "montant": 627254.24,
+          "count": 34
+        },
+        {
+          "label": "Environnement",
+          "montant": 352219.19999999995,
+          "count": 21
+        },
+        {
+          "label": "International",
+          "montant": 114683.85,
+          "count": 10
+        },
+        {
+          "label": "Logement",
+          "montant": 93250.0,
+          "count": 5
+        },
+        {
+          "label": "Sécurité",
+          "montant": 88671.61,
+          "count": 7
+        }
+      ],
+      "par_direction": [
+        {
+          "label": "Non renseignée",
+          "montant": 148108657.06000012,
+          "count": 2259
+        }
+      ],
+      "par_type_organisme": [
+        {
+          "label": "Associations",
+          "montant": 77583299.27999999,
+          "count": 1164
+        },
+        {
+          "label": "Établissements publics",
+          "montant": 35976489.29000001,
+          "count": 38
+        },
+        {
+          "label": "Entreprises",
+          "montant": 32154817.83000001,
+          "count": 255
+        },
+        {
+          "label": "Personnes physiques",
+          "montant": 2370818.0300000035,
+          "count": 796
+        },
+        {
+          "label": "Autres privés",
+          "montant": 22332.63,
+          "count": 5
+        },
+        {
+          "label": "Autres",
+          "montant": 900.0,
+          "count": 1
+        }
+      ]
+    },
+    {
+      "year": 2022,
+      "total_montant": 172514554.62,
+      "nb_subventions": 3132,
+      "nb_beneficiaires": 2281,
+      "par_thematique": [
+        {
+          "label": "Social",
+          "montant": 55345554.209999956,
+          "count": 175
+        },
+        {
+          "label": "Culture",
+          "montant": 35361927.12999999,
+          "count": 212
+        },
+        {
+          "label": "Éducation",
+          "montant": 31795111.92999998,
+          "count": 130
+        },
+        {
+          "label": "Économie",
+          "montant": 26128026.520000007,
+          "count": 186
+        },
+        {
+          "label": "Non classifié",
+          "montant": 8404222.539999994,
+          "count": 1224
+        },
+        {
+          "label": "Sport",
+          "montant": 7619271.930000002,
+          "count": 271
+        },
+        {
+          "label": "Administration",
+          "montant": 6599911.88,
+          "count": 6
+        },
+        {
+          "label": "Santé",
+          "montant": 566028.3,
+          "count": 29
+        },
+        {
+          "label": "Environnement",
+          "montant": 331322.75,
+          "count": 24
+        },
+        {
+          "label": "Logement",
+          "montant": 145628.5,
+          "count": 6
+        },
+        {
+          "label": "International",
+          "montant": 130429.23,
+          "count": 12
+        },
+        {
+          "label": "Sécurité",
+          "montant": 87119.7,
+          "count": 6
+        }
+      ],
+      "par_direction": [
+        {
+          "label": "Non renseignée",
+          "montant": 172514554.6200001,
+          "count": 2281
+        }
+      ],
+      "par_type_organisme": [
+        {
+          "label": "Associations",
+          "montant": 94721174.15000002,
+          "count": 1336
+        },
+        {
+          "label": "Établissements publics",
+          "montant": 48445878.17000001,
+          "count": 32
+        },
+        {
+          "label": "Entreprises",
+          "montant": 26441073.400000006,
+          "count": 181
+        },
+        {
+          "label": "Personnes physiques",
+          "montant": 2906428.899999999,
+          "count": 732
+        }
+      ]
+    }
+  ]
+}

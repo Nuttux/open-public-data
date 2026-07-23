@@ -1,0 +1,142 @@
+{
+ "_note": "Marseille civic/landmark places (v1). slug + wiki drive the licence-gated photo fetch (fetch_marseille_place_photos.py); the rest builds public/data/fr/marseille/places.json. wiki = fr.wikipedia article title. Families map onto the shared palette (culture/sport/vert/urbain/services).",
+ "places": [
+  {
+   "slug": "mucem",
+   "name": "MuCEM",
+   "kind_fr": "Musée national",
+   "kind_en": "National museum",
+   "famille": "culture",
+   "arrondissement": 2,
+   "lat": 43.29653,
+   "lon": 5.36097,
+   "wiki": "Musée des Civilisations de l'Europe et de la Méditerranée"
+  },
+  {
+   "slug": "palais-longchamp",
+   "name": "Palais Longchamp",
+   "kind_fr": "Monument & parc public",
+   "kind_en": "Monument & public park",
+   "famille": "vert",
+   "arrondissement": 4,
+   "lat": 43.30451,
+   "lon": 5.39472,
+   "wiki": "Palais Longchamp"
+  },
+  {
+   "slug": "notre-dame-de-la-garde",
+   "name": "Notre-Dame de la Garde",
+   "kind_fr": "Basilique & belvédère",
+   "kind_en": "Basilica & viewpoint",
+   "famille": "urbain",
+   "arrondissement": 6,
+   "lat": 43.2841,
+   "lon": 5.37146,
+   "wiki": "Basilique Notre-Dame-de-la-Garde"
+  },
+  {
+   "slug": "vieux-port",
+   "name": "Vieux-Port",
+   "kind_fr": "Espace public",
+   "kind_en": "Public waterfront",
+   "famille": "urbain",
+   "arrondissement": 1,
+   "lat": 43.29513,
+   "lon": 5.3739,
+   "wiki": "Vieux-Port de Marseille",
+   "commons_file": "1 marseille vieux port pano.jpg"
+  },
+  {
+   "slug": "friche-belle-de-mai",
+   "name": "Friche la Belle de Mai",
+   "kind_fr": "Fabrique culturelle",
+   "kind_en": "Cultural venue",
+   "famille": "culture",
+   "arrondissement": 3,
+   "lat": 43.30949,
+   "lon": 5.39003,
+   "wiki": "Friche la Belle de Mai",
+   "commons_file": "Ancienne Manufacture des Tabacs et nouvelle Friche de la Belle de Mai.jpg"
+  },
+  {
+   "slug": "stade-velodrome",
+   "name": "Stade Vélodrome",
+   "kind_fr": "Stade municipal",
+   "kind_en": "Municipal stadium",
+   "famille": "sport",
+   "arrondissement": 8,
+   "lat": 43.26993,
+   "lon": 5.39577,
+   "wiki": "Stade Vélodrome"
+  },
+  {
+   "slug": "cite-radieuse",
+   "name": "Cité radieuse",
+   "kind_fr": "Patrimoine architectural",
+   "kind_en": "Architectural heritage",
+   "famille": "urbain",
+   "arrondissement": 8,
+   "lat": 43.2617,
+   "lon": 5.39614,
+   "wiki": "Cité radieuse",
+   "commons_file": "Views of Marseille from the Cité radieuse 1.jpg"
+  },
+  {
+   "slug": "chateau-d-if",
+   "name": "Château d'If",
+   "kind_fr": "Monument historique",
+   "kind_en": "Historic monument",
+   "famille": "urbain",
+   "arrondissement": 7,
+   "lat": 43.27972,
+   "lon": 5.3253,
+   "wiki": "Château d'If"
+  },
+  {
+   "slug": "palais-du-pharo",
+   "name": "Palais du Pharo",
+   "kind_fr": "Palais municipal & congrès",
+   "kind_en": "Municipal palace & congress",
+   "famille": "services",
+   "arrondissement": 7,
+   "lat": 43.29248,
+   "lon": 5.35773,
+   "wiki": "Palais du Pharo"
+  },
+  {
+   "slug": "bibliotheque-alcazar",
+   "name": "Bibliothèque de l'Alcazar",
+   "kind_fr": "Bibliothèque municipale",
+   "kind_en": "Municipal library",
+   "famille": "services",
+   "arrondissement": 1,
+   "lat": 43.29672,
+   "lon": 5.38003,
+   "wiki": "Alcazar (Marseille)",
+   "commons_file": "La bibliothèque de l'Alcazar.jpg"
+  },
+  {
+   "slug": "la-criee",
+   "name": "Théâtre La Criée",
+   "kind_fr": "Théâtre national",
+   "kind_en": "National theatre",
+   "famille": "culture",
+   "arrondissement": 7,
+   "lat": 43.29252,
+   "lon": 5.36601,
+   "wiki": "La Criée (théâtre)",
+   "commons_file": "Théâtre National de la Criée.jpg"
+  },
+  {
+   "slug": "parc-borely",
+   "name": "Parc Borély",
+   "kind_fr": "Parc public",
+   "kind_en": "Public park",
+   "famille": "vert",
+   "arrondissement": 8,
+   "lat": 43.2612,
+   "lon": 5.38004,
+   "wiki": "Parc Borély"
+  }
+ ]
+}

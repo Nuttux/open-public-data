@@ -10,7 +10,7 @@
 
 ## The project
 
-An interactive explorer for public money — where it comes from, where it goes, and who receives it — built entirely on open data. Started as a Paris-only budget dashboard; now covers several French cities, national (France) macro finances, and an early English-language preview of a US city (San Francisco).
+An interactive explorer for public money — where it comes from, where it goes, and who receives it — built entirely on open data. Started as a Paris-only budget dashboard; now spans three countries: several French cities plus national (France) macro finances, an English-language preview of a US city (San Francisco), and a Portuguese-language preview of a Brazilian city (Recife). The architecture is multi-country by design — a new place is (mostly) config and seeds, not new code (see [`ADDING-A-PLACE.md`](ADDING-A-PLACE.md)).
 
 ### What's on the site
 
@@ -20,7 +20,8 @@ An interactive explorer for public money — where it comes from, where it goes,
 | **Marseille** (`/fr/city/marseille`) | Same page family, work in progress |
 | **French communes** (`/fr/city/[slug]`) | ~35,000 communes via OFGL data — 10 flagship cities get a rich page, the rest a slim comparison view |
 | **National** (`/fr/national`) | Federal-level budget, state (État) accounts, receipts breakdown, fiscal drilldown, personalized "daily bread" tax calculator |
-| **United States (preview)** (`/us`) | Federal budget/debt; San Francisco budget, contracts, payroll, and payee search — English-only, brand/naming not finalized |
+| **United States (preview)** (`/us/national`, `/us/city/sf`) | Federal budget/debt; San Francisco budget, contracts, payroll, and payee search — English-only, brand/naming not finalized |
+| **Brazil (preview)** (`/br/city/recife`) | Recife budget, contracts (contratos), tenders (licitações), and recipient search (quem recebe) — Portuguese-only, work in progress |
 | **Cross-cutting** | AI chat assistant (data Q&A), editorial articles, city comparator, corrections log, public error-report form |
 
 Every entity (an association, a contract, a supplier, a place…) gets both a full page and a slide-over drawer, so exploring stays fluid without losing your place in a list.
@@ -37,7 +38,8 @@ open-public-data/
 │   │   │                           #   procurement, debt guarantees, deliberations, Sirene…)
 │   │   ├── marts/                  # Business-facing aggregation views
 │   │   ├── national/               # France macro (État, APU sub-sectors, Eurostat)
-│   │   └── us/                     # US federal + San Francisco (dbt_us_* family)
+│   │   ├── us/                     # US federal + San Francisco (dbt_us_* family)
+│   │   └── br/                     # Recife, Brazil (dbt_br_* family)
 │   ├── seeds/                      # Mappings + enrichment caches (CSV)
 │   ├── scripts/                    # Sync, export, enrichment, PDF/archive extraction
 │   └── tests/                      # dbt tests across 9 categories (referential integrity,
@@ -45,14 +47,20 @@ open-public-data/
 │
 ├── website/                        # Next.js 16 (App Router)
 │   ├── src/
-│   │   ├── app/                    # Routes: fr/city/{ville}, fr/national, us/*, root drawer slot
-│   │   ├── components/fusion/      # ~110 shared React components (charts, fiche primitives)
+│   │   ├── app/                    # Routes by country: fr/{national,city/*}, us/*, br/*, root drawer slot
+│   │   ├── data/places.json        # Place registry (ADR-0010 contract #1 — the only file that "knows" a place exists)
+│   │   ├── components/
+│   │   │   ├── fusion/             # ~97 shared React components (charts, fiche primitives)
+│   │   │   ├── fiche/              # Entity-fiche shell + section/stat/doc primitives
+│   │   │   ├── places/             # Shared places explorer (map + list, city-agnostic)
+│   │   │   ├── landing/            # Model-driven landing (hero, scale, marquee) — one per city via adapter
+│   │   │   └── us/ · br/           # Thin country-specific wrappers
 │   │   ├── lib/
 │   │   │   ├── entities/           # One config per entity type (association, contrat, projet…)
 │   │   │   ├── entity-page.tsx     # Shared page + drawer factory built from those configs
 │   │   │   ├── data/read.ts        # Single memoized filesystem entry point for public/data
 │   │   │   └── og.tsx              # Shared social-preview (OpenGraph) image factory
-│   │   └── i18n/                   # fr.ts / en.ts dictionaries, lazy-loaded per locale
+│   │   └── i18n/                   # fr.ts / en.ts / pt.ts dictionaries (+ dataLabels), lazy-loaded per locale
 │   └── public/data/                # Pre-computed JSON (budget, map, subsidies, per-entity fiches)
 │
 ├── scripts/
@@ -79,6 +87,7 @@ Layered architecture: `Open data APIs → BigQuery (raw) → staging → interme
 | `core_deliberations` | City council deliberations (linked to places, contracts, subsidies) |
 | `core_sirene_companies` | Company registry cross-reference |
 | `core_marseille_budget` | Marseille's budget (nature-based, unlike Paris' function-based reporting) |
+| `core_br_recife_despesa` / `core_br_recife_contratos` | Recife's expenditure + contracts (own `dbt_br_*` schema family) |
 | `core_enrichment_caches` | Cached LLM enrichment (thematic tagging, plain-language summaries, translations) |
 
 ### Data quality
@@ -186,6 +195,7 @@ The pipeline and shared visualization components are open-sourced in [Nuttux/fra
 
 | Document | Contents |
 |---|---|
+| [`ADDING-A-PLACE.md`](ADDING-A-PLACE.md) | **Start here to add a city/country** — the multi-country playbook (registry, schema families, convergence guardrails) |
 | [`docs/architecture-modelling.md`](docs/architecture-modelling.md) | dbt pipeline, business rules, data quality |
 | [`docs/architecture-frontend.md`](docs/architecture-frontend.md) | React components, design system |
 | [`docs/data-quality.md`](docs/data-quality.md) | Known limitations, improvement ideas |

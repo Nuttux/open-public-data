@@ -2,6 +2,7 @@ import { FournisseurFiche } from "@/components/fusion";
 import { MarchesBackKicker } from "@/components/fusion/EntityPageHeaders";
 import VoirLeLieu from "@/components/fusion/VoirLeLieu";
 import type { EntityPageConfig } from "@/lib/entity-page";
+import { getCity } from "@/lib/cities";
 import { numLocale } from "@/lib/fmt";
 import { loadFournisseur, loadSirene } from "@/lib/fusion-data";
 import { lieuForBeneficiaire } from "@/lib/lieux-data";
@@ -12,14 +13,24 @@ type D = {
   lieuLien: ReturnType<typeof lieuForBeneficiaire>;
 };
 
-export const fournisseurConfig: EntityPageConfig<D> = {
+/**
+ * Supplier (fournisseur) entity page — city-parametrized, mirroring the contract
+ * factory: `loadFournisseur`, every href and the "Ville de X" copy derive from
+ * `city`. The lieu link is a Paris-only enrichment (gated), so a second city
+ * degrades to the plain supplier history — never a broken link.
+ */
+export function makeFournisseurConfig(city: string): EntityPageConfig<D> {
+  const cityNom = getCity(city)?.nom ?? "la Ville";
+  const base = `/fr/city/${city}/marches`;
+  const isParis = city === "paris";
+  return {
   load: ({ siren }) => {
-    const fournisseur = loadFournisseur(siren);
+    const fournisseur = loadFournisseur(siren, city);
     if (!fournisseur) return null;
     return {
       fournisseur,
       sirene: loadSirene(fournisseur.siren),
-      lieuLien: lieuForBeneficiaire(fournisseur.nom),
+      lieuLien: isParis ? lieuForBeneficiaire(fournisseur.nom) : null,
     };
   },
   notFoundMetadata: (locale) => ({
@@ -30,14 +41,14 @@ export const fournisseurConfig: EntityPageConfig<D> = {
     // Canonical URL = SIREN (9 chars) — la fiche agrège tous les SIRETs du
     // même SIREN, donc l'URL stable est le SIREN, pas le SIRET du premier
     // établissement rencontré.
-    const canonical = `/fr/city/paris/marches/fournisseur/${f.siren || f.siret}`;
+    const canonical = `${base}/fournisseur/${f.siren || f.siret}`;
     const amountFmt = f.totalAmount.toLocaleString(numLocale(locale));
     const title = locale === "en"
       ? `${f.nom} — Supplier · Qipu`
       : `${f.nom} — Fournisseur · Qipu`;
     const description = locale === "en"
-      ? `${f.nom}: ${f.contratCount} contracts, total €${amountFmt} with the Ville de Paris.`
-      : `${f.nom} : ${f.contratCount} contrats, cumul ${amountFmt} € avec la Ville de Paris.`;
+      ? `${f.nom}: ${f.contratCount} contracts, total €${amountFmt} with the Ville de ${cityNom}.`
+      : `${f.nom} : ${f.contratCount} contrats, cumul ${amountFmt} € avec la Ville de ${cityNom}.`;
     return {
       title,
       description,
@@ -74,7 +85,7 @@ export const fournisseurConfig: EntityPageConfig<D> = {
     kicker: ({ fournisseur }) => <>Fournisseur · {fournisseur.contratCount} contrats</>,
     title: ({ fournisseur }) => fournisseur.nom,
     shareUrl: ({ fournisseur }) =>
-      `/fr/city/paris/marches/fournisseur/${fournisseur.siren || fournisseur.siret}`,
+      `${base}/fournisseur/${fournisseur.siren || fournisseur.siret}`,
     shareText: ({ fournisseur }) => {
       const montantStr = fournisseur.totalAmount >= 1e9
         ? `${(fournisseur.totalAmount / 1e9).toFixed(2).replace(".", ",")} Md€`
@@ -82,9 +93,9 @@ export const fournisseurConfig: EntityPageConfig<D> = {
       const years = fournisseur.yearsActive.length
         ? `${Math.min(...fournisseur.yearsActive)}-${Math.max(...fournisseur.yearsActive)}`
         : "";
-      return `${fournisseur.nom} a reçu ${montantStr} de la Ville de Paris via ${fournisseur.contratCount} marchés${years ? ` (${years})` : ""}`;
+      return `${fournisseur.nom} a reçu ${montantStr} de la Ville de ${cityNom} via ${fournisseur.contratCount} marchés${years ? ` (${years})` : ""}`;
     },
-    backHref: () => "/fr/city/paris/marches",
+    backHref: () => base,
     breadcrumbLabel: ({ fournisseur }) => fournisseur.nom,
     children: ({ fournisseur, sirene, lieuLien }) => (
       <>
@@ -93,4 +104,8 @@ export const fournisseurConfig: EntityPageConfig<D> = {
       </>
     ),
   },
-};
+  };
+}
+
+/** Paris supplier page — the original config, now via the factory. */
+export const fournisseurConfig: EntityPageConfig<D> = makeFournisseurConfig("paris");

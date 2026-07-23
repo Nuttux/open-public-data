@@ -72,6 +72,21 @@
   Privacy doctrine: CPF individuals are split out here and NEVER classified,
   searched or publicly exposed downstream (marts filter to 'cnpj' orgs).
 #}
+{#
+  Swap-safe coordinate extraction. Recife facility CSVs vary: some label the
+  columns latitude/longitude, some lat/long, and at least one (cultura) has the
+  two SWAPPED. Pick whichever of the two candidate columns falls in the target
+  range (Recife: lat ≈ -8, lon ≈ -34.9), so a swap self-corrects.
+#}
+{% macro br_coord(a, b, lo, hi) -%}
+    COALESCE(
+        IF(SAFE_CAST(NULLIF(TRIM({{ a }}), '') AS FLOAT64) BETWEEN {{ lo }} AND {{ hi }},
+           SAFE_CAST(TRIM({{ a }}) AS FLOAT64), NULL),
+        IF(SAFE_CAST(NULLIF(TRIM({{ b }}), '') AS FLOAT64) BETWEEN {{ lo }} AND {{ hi }},
+           SAFE_CAST(TRIM({{ b }}) AS FLOAT64), NULL)
+    )
+{%- endmacro %}
+
 {% macro br_doc_tipo(column_name) -%}
     CASE LENGTH({{ br_digits(column_name) }})
         WHEN 14 THEN 'cnpj'

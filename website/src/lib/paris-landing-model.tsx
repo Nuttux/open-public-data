@@ -1,5 +1,5 @@
 import Link from "next/link";
-import ScopeDropdown from "@/components/fusion/ScopeDropdown";
+import PlaceSwitcher from "@/components/PlaceSwitcher";
 import { ARRONDISSEMENT_PATHS } from "@/components/fusion/paris-arrondissements";
 import { fmtInt, fmtBillions, fmtMillions, fill, numLocale } from "@/lib/fmt";
 import type { LandingStats } from "@/lib/fusion-data";
@@ -204,7 +204,7 @@ export function buildParisLandingModel(
           <em>{t("fx.land.h1.em")}</em>
           <br />
           {t("fx.land.h1.mid")}
-          <ScopeDropdown variant="h1" />
+          <PlaceSwitcher variant="h1" currentSlug="paris" />
           {t("fx.land.h1.after")}
         </>
       ),

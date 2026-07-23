@@ -10,7 +10,7 @@
       "locale": "fr",
       "currency": "EUR",
       "dataNamespace": "national",
-      "path": "/fr/national",
+      "path": "/fr/national/budget",
       "modules": ["budget", "daily-bread", "dette", "etat", "fiscalite"],
       "status": "live"
     },

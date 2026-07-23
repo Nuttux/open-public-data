@@ -3,7 +3,7 @@ import { loadBudget } from "@/lib/br/recife-data";
 import BudgetClient from "./BudgetClient";
 
 export const metadata: Metadata = {
-  title: { absolute: "Recife · Orçamento — para onde vai o dinheiro da cidade" },
+  title: { absolute: "Recife · Orçamento" },
   description:
     "A despesa municipal executada do Recife, por função (saúde, educação, urbanismo), ano a ano — direto dos dados abertos da Prefeitura.",
 };

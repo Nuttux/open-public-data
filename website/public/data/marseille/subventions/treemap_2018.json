@@ -1,0 +1,104 @@
+{
+  "year": 2018,
+  "generated_at": "2026-07-23T00:02:24.588145",
+  "total_montant": 128895727.29000002,
+  "nb_thematiques": 12,
+  "data": [
+    {
+      "annee": 2018,
+      "thematique": "Social",
+      "nb_beneficiaires": 170,
+      "nb_subventions": 219,
+      "montant_total": 46343503.42000001,
+      "pct_total": 35.95
+    },
+    {
+      "annee": 2018,
+      "thematique": "Culture",
+      "nb_beneficiaires": 191,
+      "nb_subventions": 236,
+      "montant_total": 31637929.880000003,
+      "pct_total": 24.55
+    },
+    {
+      "annee": 2018,
+      "thematique": "Économie",
+      "nb_beneficiaires": 88,
+      "nb_subventions": 90,
+      "montant_total": 19558204.01,
+      "pct_total": 15.17
+    },
+    {
+      "annee": 2018,
+      "thematique": "Éducation",
+      "nb_beneficiaires": 43,
+      "nb_subventions": 54,
+      "montant_total": 16270598.790000001,
+      "pct_total": 12.62
+    },
+    {
+      "annee": 2018,
+      "thematique": "Sport",
+      "nb_beneficiaires": 221,
+      "nb_subventions": 317,
+      "montant_total": 8962924.82,
+      "pct_total": 6.95
+    },
+    {
+      "annee": 2018,
+      "thematique": "Non classifié",
+      "nb_beneficiaires": 441,
+      "nb_subventions": 459,
+      "montant_total": 3972401.7500000005,
+      "pct_total": 3.08
+    },
+    {
+      "annee": 2018,
+      "thematique": "Santé",
+      "nb_beneficiaires": 37,
+      "nb_subventions": 39,
+      "montant_total": 1366423.6199999999,
+      "pct_total": 1.06
+    },
+    {
+      "annee": 2018,
+      "thematique": "Administration",
+      "nb_beneficiaires": 8,
+      "nb_subventions": 8,
+      "montant_total": 365699.45,
+      "pct_total": 0.28
+    },
+    {
+      "annee": 2018,
+      "thematique": "Environnement",
+      "nb_beneficiaires": 19,
+      "nb_subventions": 23,
+      "montant_total": 316998.65,
+      "pct_total": 0.25
+    },
+    {
+      "annee": 2018,
+      "thematique": "Sécurité",
+      "nb_beneficiaires": 3,
+      "nb_subventions": 3,
+      "montant_total": 41647.61,
+      "pct_total": 0.03
+    },
+    {
+      "annee": 2018,
+      "thematique": "International",
+      "nb_beneficiaires": 10,
+      "nb_subventions": 10,
+      "montant_total": 31415.73,
+      "pct_total": 0.02
+    },
+    {
+      "annee": 2018,
+      "thematique": "Logement",
+      "nb_beneficiaires": 5,
+      "nb_subventions": 5,
+      "montant_total": 27979.559999999998,
+      "pct_total": 0.02
+    }
+  ]
+}

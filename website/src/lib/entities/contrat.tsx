@@ -7,6 +7,7 @@ import {
 } from "@/components/fusion/EntityPageHeaders";
 import VoirLeLieu from "@/components/fusion/VoirLeLieu";
 import type { EntityPageConfig } from "@/lib/entity-page";
+import { getCity } from "@/lib/cities";
 import { numLocale } from "@/lib/fmt";
 import {
   loadContrat,
@@ -27,21 +28,34 @@ type D = {
   lieuLien: ReturnType<typeof lieuForMarche>;
 };
 
-export const contratConfig: EntityPageConfig<D> = {
+/**
+ * Contract (marché public) entity page — city-parametrized. `loadContrat`,
+ * every href and the "Ville de X" share copy derive from `city`, so a second
+ * city reuses this verbatim (app/fr/city/<city>/marches/contrat/[numero]).
+ * The juge-derived enrichments (ranking, projet chain, lieu link) exist only
+ * for Paris today, so they're gated on the Paris slug — a second city degrades
+ * to the plain contract (objet, titulaire, montant, date), never a broken link.
+ */
+export function makeContratConfig(city: string): EntityPageConfig<D> {
+  const cityNom = getCity(city)?.nom ?? "la Ville";
+  const base = `/fr/city/${city}/marches`;
+  const isParis = city === "paris";
+  return {
   load: ({ numero }) => {
-    const contrat = loadContrat(numero);
+    const contrat = loadContrat(numero, city);
     if (!contrat) return null;
-    const vulgarization = loadMarcheVulgarization(contrat.numero);
+    const vulgarization = loadMarcheVulgarization(contrat.numero, city);
     const siren = contrat.fournisseurSiret && contrat.fournisseurSiret.length >= 9
       ? contrat.fournisseurSiret.slice(0, 9)
       : null;
     const fournisseurSirene = siren ? loadSirene(siren) : null;
-    const ranking = loadContratRanking(contrat.numero, contrat.year, contrat.nature, contrat.montantMax);
+    // Ranking / projet-chain / lieu link are Paris-only enrichments for now.
+    const ranking = isParis ? loadContratRanking(contrat.numero, contrat.year, contrat.nature, contrat.montantMax) : null;
     // Lien vers le lieu : d'abord le rattachement direct du juge (marché
     // « au-lieu », symétrique de la liste marchés de la fiche lieu), sinon la
     // chaîne transitive contrat → projet → lieu.
-    const projetLink = loadContratProjet(contrat.numero);
-    const lieuLien = lieuForMarche(contrat.numero) ?? (projetLink ? lieuForProjet(projetLink.nom) : null);
+    const projetLink = isParis ? loadContratProjet(contrat.numero) : null;
+    const lieuLien = isParis ? (lieuForMarche(contrat.numero) ?? (projetLink ? lieuForProjet(projetLink.nom) : null)) : null;
     return { contrat, vulgarization, fournisseurSirene, ranking, projetLink, lieuLien };
   },
   notFoundMetadata: (locale) => ({
@@ -49,7 +63,7 @@ export const contratConfig: EntityPageConfig<D> = {
     robots: { index: false },
   }),
   metadata: ({ contrat: c, vulgarization: v }, locale) => {
-    const canonical = `/fr/city/paris/marches/contrat/${c.numero}`;
+    const canonical = `${base}/contrat/${c.numero}`;
     // Prefer EN object name when available (vulgarization_marches_en.json)
     const objetSnippet = locale === "en"
       ? (v?.objet_clair_en || v?.objet_clair || c.objet).slice(0, 60)
@@ -115,15 +129,15 @@ export const contratConfig: EntityPageConfig<D> = {
       const label = vulgarization?.objet_clair || normalizeObjet(contrat.objet);
       return label || `Marché ${contrat.numero}`;
     },
-    shareUrl: ({ contrat }) => `/fr/city/paris/marches/contrat/${contrat.numero}`,
+    shareUrl: ({ contrat }) => `${base}/contrat/${contrat.numero}`,
     shareText: ({ contrat, vulgarization }) => {
       const montantStr = contrat.montantMax >= 1e6
         ? `${(contrat.montantMax / 1e6).toFixed(1).replace(".", ",")} M€`
         : `${Math.round(contrat.montantMax / 1000).toLocaleString("fr-FR")} k€`;
       const label = vulgarization?.objet_clair || normalizeObjet(contrat.objet);
-      return `Paris a notifié un marché de ${montantStr} à ${contrat.fournisseur} en ${contrat.year} — ${label}`;
+      return `${cityNom} a notifié un marché de ${montantStr} à ${contrat.fournisseur} en ${contrat.year} — ${label}`;
     },
-    backHref: () => "/fr/city/paris/marches",
+    backHref: () => base,
     breadcrumbLabel: ({ contrat }) => `Contrat ${contrat.numero}`,
     children: ({ contrat, vulgarization, fournisseurSirene, ranking, projetLink, lieuLien }) => (
       <>
@@ -138,4 +152,8 @@ export const contratConfig: EntityPageConfig<D> = {
       </>
     ),
   },
-};
+  };
+}
+
+/** Paris contract page — the original config, now via the factory. */
+export const contratConfig: EntityPageConfig<D> = makeContratConfig("paris");

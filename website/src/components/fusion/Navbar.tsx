@@ -4,7 +4,8 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import BrandMark from "./BrandMark";
-import ScopeDropdown from "./ScopeDropdown";
+import PlaceSwitcher from "../PlaceSwitcher";
+import PocBanner from "../PocBanner";
 import LangSwitcher from "./LangSwitcher";
 import {
   NATIONAL_NAV_LINKS,
@@ -13,27 +14,44 @@ import {
 } from "./nav-links";
 import { useT } from "@/lib/localeContext";
 import { useTrack } from "@/lib/analyticsContext";
+import { getPlace } from "@/lib/places";
+import { useDrawerOpen } from "@/lib/drawerState";
 
-// Pick the right top-nav link set based on the current pathname.
-// National scope: /fr/national*, /comparer, /fr/city/*/daily-bread.
-// Ville scope: /fr/city/[slug]/* (default Paris on root).
-function navLinksForPath(pathname: string) {
-  if (
-    pathname === "/fr/national" ||
+// France scope is on any /fr/national/* page, /comparer, or the Daily Bread tool.
+function isFranceScope(pathname: string): boolean {
+  return (
     pathname.startsWith("/fr/national/") ||
     pathname === "/comparer" ||
     pathname.startsWith("/comparer/") ||
     /^\/fr\/city\/[^/]+\/daily-bread(\/|$)/.test(pathname)
-  ) {
-    return NATIONAL_NAV_LINKS;
-  }
+  );
+}
+
+// Pick the right top-nav link set based on the current pathname.
+// National scope → France links; ville scope → /fr/city/[slug]/* (default Paris).
+function navLinksForPath(pathname: string) {
+  if (isFranceScope(pathname)) return NATIONAL_NAV_LINKS;
   const m = pathname.match(/^\/fr\/city\/([^/]+)/);
   return villeNavLinks(m ? m[1] : "paris");
+}
+
+// The registry slug of the current France scope, for the unified switcher and
+// the POC banner. France's routing is irregular (Paris = root URLs + homepage),
+// so we resolve it here rather than by registry path matching.
+function currentFrSlug(pathname: string): string {
+  if (isFranceScope(pathname)) return "fr-national";
+  const m = pathname.match(/^\/fr\/city\/([^/]+)/);
+  return m ? m[1] : "paris";
 }
 
 export default function Navbar() {
   const pathname = usePathname() ?? "/";
   const navLinks = navLinksForPath(pathname);
+  const frSlug = currentFrSlug(pathname);
+  const frPlace = getPlace(frSlug);
+  // Show the generic POC banner only where the place doesn't render its own WIP
+  // strip (Marseille has WipBanner) — avoid stacking two disclaimers.
+  const showPoc = (frPlace?.poc ?? false) && !frPlace?.ownWipBanner;
   const [menuOpen, setMenuOpen] = useState(false);
   const t = useT();
   const track = useTrack();
@@ -49,8 +67,17 @@ export default function Navbar() {
     setMenuOpen(false);
   }, [pathname]);
 
-  const isActive = (href: string) =>
-    EXACT_MATCH_HREFS.has(href) ? pathname === href : pathname.startsWith(href);
+  const drawerOpen = useDrawerOpen();
+  const isActive = (href: string) => {
+    // A drawer is a modal over the current page — don't light up whatever
+    // section the entity URL falls under (e.g. a grant fiche opened from Home).
+    if (drawerOpen) return false;
+    // Bare city-landing hrefs (/fr/city/<slug>) match exactly too, so "Accueil"
+    // isn't highlighted on every sub-page of the city.
+    return EXACT_MATCH_HREFS.has(href) || /^\/fr\/city\/[^/]+$/.test(href)
+      ? pathname === href
+      : pathname.startsWith(href);
+  };
 
   const trackNav = (href: string, labelKey: string, surface: "nav" | "overlay" | "brand") => {
     track("nav_click", { href, label: labelKey, surface, from: pathname });
@@ -58,6 +85,7 @@ export default function Navbar() {
 
   return (
     <>
+      {showPoc && <PocBanner />}
       <header className="fx-nav">
         <Link
           href="/"
@@ -79,7 +107,7 @@ export default function Navbar() {
             </Link>
           ))}
         </nav>
-        <ScopeDropdown variant="nav" />
+        <PlaceSwitcher variant="nav" currentSlug={frSlug} />
         <LangSwitcher />
         <button
           type="button"
@@ -133,7 +161,7 @@ export default function Navbar() {
         </nav>
         <div className="fx-overlay-foot">
           <div className="fx-overlay-foot-left">
-            <ScopeDropdown variant="overlay" />
+            <PlaceSwitcher variant="overlay" currentSlug={frSlug} />
             <LangSwitcher />
           </div>
         </div>

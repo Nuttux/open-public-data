@@ -75,7 +75,6 @@ export default function ScopeDropdown({ variant = "nav" }: Props) {
 
   // National scope: any /fr/national/* page or the Daily Bread tool (national).
   const isOnFrance =
-    pathname === "/fr/national" ||
     pathname.startsWith("/fr/national/") ||
     /^\/fr\/city\/[^/]+\/daily-bread(\/|$)/.test(pathname);
   // Match /fr/city/[city] AND /fr/city/[city]/<sub> so the label stays right on

@@ -794,6 +794,9 @@ body:has(.theme-fusion) > div.pb-24 { padding-bottom: 0 !important; }
   letter-spacing: -0.02em;
   margin: 0 0 2px;
   color: var(--ink);
+  /* Reserve two lines so the number + meta rows align across cards whose
+   * titles wrap to a different line count (1 line vs 2). */
+  min-height: calc(2 * 1.15em);
 }
 .theme-fusion .fx-hero-deck-meta {
   font-family: var(--f-ui);

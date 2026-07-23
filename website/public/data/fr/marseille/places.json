@@ -1,0 +1,476 @@
+{
+ "generated_at": "2026-07-22T23:43:53.711539+00:00",
+ "source": {
+  "name": "Qipu — sélection de lieux publics et patrimoniaux de Marseille (v1)",
+  "source_url": "https://commons.wikimedia.org/"
+ },
+ "perimeter": "Marseille (INSEE 13055)",
+ "count": 12,
+ "familles": [
+  {
+   "famille": "urbain",
+   "n": 4
+  },
+  {
+   "famille": "culture",
+   "n": 3
+  },
+  {
+   "famille": "vert",
+   "n": 2
+  },
+  {
+   "famille": "services",
+   "n": 2
+  },
+  {
+   "famille": "sport",
+   "n": 1
+  }
+ ],
+ "places": [
+  {
+   "slug": "mucem",
+   "name": "MuCEM",
+   "kind_fr": "Musée national",
+   "kind_en": "National museum",
+   "famille": "culture",
+   "arrondissement": 2,
+   "lat": 43.29653,
+   "lon": 5.36097,
+   "desc_fr": "Musée national des civilisations méditerranéennes, ouvert en 2013 au J4, relié au fort Saint-Jean.",
+   "desc_en": "National museum of Mediterranean civilisations, opened in 2013 on the J4 pier, linked to Fort Saint-Jean.",
+   "wiki": {
+    "extract": "Le musée des civilisations de l'Europe et de la Méditerranée (Mucem) est un musée national situé à Marseille, inauguré par le président François Hollande, le 7 juin 2013, alors que Marseille était capitale européenne de la culture. La construction du bâtiment est l'œuvre de l'architecte français Rudy Ricciotti. Musée de société, le Mucem est consacré à l'anthropologie culturelle des sociétés d'Europe et de la Méditerranée. À sa création, les collections constituées par l'ancien musée national des Arts et Traditions populaires (définitivement fermé) lui ont été affectées. En créant ce musée à Marseille, l'État dote la deuxième ville de France d'un équipement culturel majeur, placé sous la tutelle du ministère de la Culture. Les expositions permanentes couvrent différents champs scientifiques : anthropologie, archéologie, histoire, histoire de l'art et art contemporain. Le musée programme aussi des expositions temporaires, souvent en lien avec l'actualité artistique ou sociale. Il vise à rendre compte des permanences historiques et sociales de ce bassin de civilisation, ainsi que des tensions qui l'ont traversé, et qui le traversent encore aujourd'hui. Entre 2013 et 2016, le Mucem a accueilli 8,5 millions de visiteurs, dont 2,2 millions dans ses espaces d'exposition. La fréquentation atteint 1,3 million de visiteurs en 2023 . Le musée est donc présenté comme un outil d'attractivité de la ville de Marseille et du territoire de la métropole d'Aix-Marseille-Provence. En 2015, le Mucem a reçu le prix du musée du Conseil de l'Europe.",
+    "extract_en": "The Museum of European and Mediterranean Civilizations (Mucem; French: Musée des Civilisations de l'Europe et de la Méditerranée; Occitan: Museu de las Civilizacions Europèas e Mediterranèas) is a national museum located in Marseille, France. It was inaugurated on 7 June 2013 as part of Marseille-Provence 2013, a year when Marseille was designated as the European Capital of Culture. In 2015, it won the Council of Europe Museum Prize. Between 2013 and 2016, the Mucem welcomed 8.5 million visitors, including 2.2 million in its exhibition spaces. The museum is therefore presented as a tool for the attractiveness of the territory of the metropolis of Aix-Marseille-Provence.",
+    "url": "https://fr.wikipedia.org/wiki/Mus%C3%A9e_des_civilisations_de_l%27Europe_et_de_la_M%C3%A9diterran%C3%A9e",
+    "url_en": "https://en.wikipedia.org/wiki/Museum_of_European_and_Mediterranean_Civilisations"
+   },
+   "subvention": {
+    "beneficiaire": "MUSEE DES CIVILISATIONS DE L EUROPE ETDE LA MEDITERRANEE MUCEM",
+    "montant_total": 80000.0,
+    "nb_subventions": 1,
+    "rows": [
+     {
+      "annee": 2018,
+      "montant": 80000.0
+     }
+    ],
+    "annees": [
+     2018,
+     2018
+    ]
+   },
+   "residents": [],
+   "photo": "/img/fr/marseille/places/mucem.jpg",
+   "photo_credit": {
+    "source": "Wikimedia Commons",
+    "file_url": "https://fr.wikipedia.org/wiki/Fichier:Mucem,_Marseille.jpeg",
+    "license": "CC-BY-SA-3.0",
+    "license_url": "",
+    "author": "Auteur de la photographie : Florent Pécassou - Architecte du bâtiment : Rudy Ricciotti"
+   }
+  },
+  {
+   "slug": "palais-longchamp",
+   "name": "Palais Longchamp",
+   "kind_fr": "Monument & parc public",
+   "kind_en": "Monument & public park",
+   "famille": "vert",
+   "arrondissement": 4,
+   "lat": 43.30451,
+   "lon": 5.39472,
+   "desc_fr": "Monument du XIXᵉ siècle abritant le musée des Beaux-Arts et le muséum d'histoire naturelle, au cœur d'un parc public.",
+   "desc_en": "19th-century monument housing the fine-arts and natural-history museums, set in a public park.",
+   "wiki": {
+    "extract": "Le Palais Longchamp est un palais et château d'eau de style néo-classique-Second Empire du XIXe siècle, du quartier Cinq-Avenues du 4e arrondissement de Marseille, dans les Bouches-du-Rhône en Provence-Alpes-Côte d'Azur. Le site est inscrit aux monuments historiques depuis le 1er octobre 1974 et classé depuis le 18 novembre 1997 et 8 septembre 1999. Inauguré en 1869, le Palais est composé de plusieurs entités : le pavillon-château d'eau central, est un réservoir des eaux de la Durance venues par le canal de Marseille d'une longueur de 85 km, qui est la principale source historique d'eau potable de la ville de Marseille. le musée des Beaux-Arts de Marseille est situé dans l'aile gauche du palais. le Muséum d'histoire naturelle de Marseille situé dans l'aile droite du palais, sous la tutelle du ministère de l'Enseignement supérieur et de la Recherche, classé musée de France en 2002. un jardin public situé devant avec espace vert, des bassins en cascades, et des statues allégoriques à la gloire de l'eau, amenant de la fertilité, et de l'abondance. le parc Longchamp situé à l'arrière du palais possède l'observatoire de Marseille, un jardin botanique, et parc zoologique - les animaux étant remplacés par des sculptures animalières d'art depuis les évènements de Marseille-Provence 2013). Ce lieu est desservi par la station du métro Cinq Avenues - Longchamp sur la ligne ainsi que par les stations Cinq Avenues et Longchamp de la ligne .",
+    "extract_en": "The Palais Longchamp (French pronunciation: [palɛ lɔ̃ʃɑ̃]) is a monument in the 4th arrondissement of Marseille, France. It houses both the Musée des beaux-arts and the Muséum d'histoire naturelle de Marseille. The surrounding Longchamp Park (French: Parc Longchamp) is listed by the French Ministry of Culture as one of the Notable Gardens of France.",
+    "url": "https://fr.wikipedia.org/wiki/Palais_Longchamp",
+    "url_en": "https://en.wikipedia.org/wiki/Palais_Longchamp"
+   },
+   "subvention": null,
+   "residents": [],
+   "photo": "/img/fr/marseille/places/palais-longchamp.jpg",
+   "photo_credit": {
+    "source": "Wikimedia Commons",
+    "file_url": "https://commons.wikimedia.org/wiki/File:Palais_Longchamp_(Marseille).jpg",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "author": "Arnaud 25"
+   }
+  },
+  {
+   "slug": "notre-dame-de-la-garde",
+   "name": "Notre-Dame de la Garde",
+   "kind_fr": "Basilique & belvédère",
+   "kind_en": "Basilica & viewpoint",
+   "famille": "urbain",
+   "arrondissement": 6,
+   "lat": 43.2841,
+   "lon": 5.37146,
+   "desc_fr": "Basilique perchée sur la plus haute colline de la ville, belvédère emblématique de Marseille.",
+   "desc_en": "Basilica atop the city's highest hill, an emblematic Marseille viewpoint.",
+   "wiki": {
+    "extract": "La basilique Notre-Dame de la Garde ou plus simplement Notre-Dame de la Garde, souvent surnommée « la Bonne Mère » (en provençal Nòstra Dòna de la Gàrdia/Nouesto-Damo de la Gardi), est une basilique mineure de l'Église catholique datée du XIXe siècle. Emblème de Marseille, dédié à Notre-Dame de la Garde (protectrice de Marseille avec saint Victor), ce sanctuaire marial domine la ville et la mer Méditerranée depuis le sommet de la colline Notre-Dame de la Garde (site classé depuis 1917). Elle se situe à cheval sur les quartiers du Roucas-Blanc et de Vauban, sur un piton calcaire de 149 m d'altitude surélevé de 13 m grâce aux murs et soubassements d'un ancien fort. Construite par l'architecte protestant Henri-Jacques Espérandieu dans le style romano-byzantin et consacrée le 5 juin 1864, elle remplace une chapelle du même nom édifiée en 1214 et reconstruite au XVe siècle. Bâtie sur les bases d'un fort du XVIe siècle construit par François Ier en 1536 pour résister au siège de Charles Quint, la basilique comporte deux parties : une église basse, ou crypte, creusée dans le roc et de style roman, et au-dessus une église haute de style romano-byzantin décorée de mosaïques. Au sommet d'un clocher carré de 41 mètres de haut surmonté lui-même d'une tourelle de 12,5 mètres qui lui sert de piédestal, se dresse une statue monumentale de 11,2 mètres de la Vierge à l'Enfant réalisée en cuivre doré à la feuille. La pierre utilisée pour la construction, notamment celle de couleur verte en provenance des environs de Florence, s’étant révélée sensible à la corrosion atmosphérique, il a été nécessaire d’entreprendre de 2001 à 2008 une longue et minutieuse restauration qui a également porté sur la rénovation des mosaïques, endommagées à la Libération par les impacts de balles et noircies au fil du temps par la fumée des cierges. Le musée de Notre-Dame de la Garde, qui présente les 800 ans d'histoire de la basilique à l'aide de nombreux ex-voto et objets d'art, a ensuite été inauguré le 18 juin 2013. Véritable palladium de la ville de Marseille, Notre-Dame de la Garde est depuis le Moyen Âge considérée comme la gardienne des marins et des pêcheurs.",
+    "extract_en": "Notre-Dame de la Garde (French: [nɔtʁ(ə) dam d(ə) la ɡaʁd]; Occitan: Nòstra Dòna de la Gàrdia, lit. 'Our Lady of the Guard'), known to local citizens as la Bonne Mère (Occitan: la Bòna Maire, lit. 'the Good Mother'), is a Catholic basilica in Marseille, France, and the city's best-known symbol. The site of a popular Assumption Day pilgrimage, it is the most visited site in Marseille. It was built on the foundations of an ancient fort at the highest natural point in the city, a 149 m (489 ft) limestone outcropping on the south side of the Old Port of Marseille. Construction of the basilica began in 1853 and lasted for over 40 years. It was originally an enlargement of a medieval chapel but was transformed into a new structure at the request of Father Bernard, the chaplain. The plans were made and developed by the architect Henri-Jacques Espérandieu. It was consecrated while still unfinished on 5 June 1864. The basilica consists of a lower church or crypt in the Romanesque style, carved from the rock, and an upper church of Neo-Byzantine style decorated with mosaics. A square 41 m (135 ft) bell tower topped by a 12.5 m (41 ft) belfry supports a monumental 11.2 m (37 ft) statue of the Madonna and Child, made of copper gilded with gold leaf. An extensive restoration from 2001 to 2008 included work on mosaics damaged by candle smoke, green limestone from Gonfolina which had been corroded by pollution, and stonework that had been hit by bullets during the Liberation of France. The restoration of the mosaics was entrusted to Marseille artist Michel Patrizio, whose workmen were trained in Friuli, north of Venice, Italy. The tiles were supplied by the workshop in Venice that had made the originals.",
+    "url": "https://fr.wikipedia.org/wiki/Basilique_Notre-Dame-de-la-Garde",
+    "url_en": "https://en.wikipedia.org/wiki/Notre-Dame_de_la_Garde"
+   },
+   "subvention": null,
+   "residents": [],
+   "photo": "/img/fr/marseille/places/notre-dame-de-la-garde.jpg",
+   "photo_credit": {
+    "source": "Wikimedia Commons",
+    "file_url": "https://commons.wikimedia.org/wiki/File:Notre_Dame_de_la_Garde.jpg",
+    "license": "CC BY-SA 3.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
+    "author": "Benh LIEU SONG"
+   }
+  },
+  {
+   "slug": "vieux-port",
+   "name": "Vieux-Port",
+   "kind_fr": "Espace public",
+   "kind_en": "Public waterfront",
+   "famille": "urbain",
+   "arrondissement": 1,
+   "lat": 43.29513,
+   "lon": 5.3739,
+   "desc_fr": "Port historique et principal espace public du centre-ville, aménagé en semi-piétonnier.",
+   "desc_en": "Historic harbour and the city centre's main public space, partly pedestrianised.",
+   "wiki": {
+    "extract": "Le Vieux-Port de Marseille (en provençal lo Pòrt Vièlh selon la norme classique, lou Port-Vièi selon la norme mistralienne) est le plus ancien port de Marseille, ainsi que le centre historique et culturel de la ville depuis sa fondation sur ce site durant l'Antiquité. Le port était le centre économique de Marseille jusqu'au milieu du XIXe siècle, ouvert sur le commerce de la mer Méditerranée puis des colonies françaises. Les activités portuaires de commerce furent ensuite déplacées vers d'autres sites plus au nord : les bassins de l'actuel grand port maritime de Marseille. Le « bassin du vieux port » est aujourd'hui un port de plaisance, partagé entre les quartiers Hôtel-de-Ville (2e) au nord, Opéra (1er) au sud-est, Saint-Victor (7e) au sud et Le Pharo (7e) au sud-ouest. C'est aussi un lieu de rassemblement populaire et l'un des symboles de Marseille. Le Vieux-Port est aussi un pôle intermodal de transport (au quai des Belges qui le longe à l'est et auquel aboutit la Canebière), avec une station de métro, de nombreux bus et plusieurs services maritimes dont le ferry. Sur le Vieux-Port, existe aussi un petit marché où l'on peut retrouver, plusieurs fois par semaine, une vente directe de poisson frais. Il est de nos jours ancré dans la culture populaire comme servant de cadre principal à la Trilogie marseillaise de Marcel Pagnol, avec les figures de César et Marius au « bar de la Marine », et celle de Fanny, la belle poissonnière amoureuse de Marius.",
+    "extract_en": "The Old Port of Marseille (French: Vieux-Port de Marseille, [vjøpɔʁ də maʁsɛj]; Occitan: Vieu Port de Marselha) is at the end of the Canebière, the major street of Marseille. It has been the natural harbour of the city since antiquity and is now the main popular place in Marseille. It became mainly pedestrian in 2013.",
+    "url": "https://fr.wikipedia.org/wiki/Vieux-Port_de_Marseille",
+    "url_en": "https://en.wikipedia.org/wiki/Old_Port_of_Marseille"
+   },
+   "subvention": null,
+   "residents": [],
+   "photo": "/img/fr/marseille/places/vieux-port.jpg",
+   "photo_credit": {
+    "source": "Wikimedia Commons",
+    "file_url": "https://commons.wikimedia.org/wiki/File:1_marseille_vieux_port_pano.jpg",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "author": "Chensiyuan"
+   }
+  },
+  {
+   "slug": "friche-belle-de-mai",
+   "name": "Friche la Belle de Mai",
+   "kind_fr": "Fabrique culturelle",
+   "kind_en": "Cultural venue",
+   "famille": "culture",
+   "arrondissement": 3,
+   "lat": 43.30949,
+   "lon": 5.39003,
+   "desc_fr": "Ancienne manufacture de tabac devenue fabrique culturelle (spectacle, arts visuels), soutenue par la Ville.",
+   "desc_en": "Former tobacco factory turned cultural venue (performance, visual arts), supported by the City.",
+   "wiki": {
+    "extract": "La Friche la Belle de Mai est une friche culturelle à Marseille regroupant des lieux de travail artistiques et culturels, des salles de spectacle et d'exposition. Plus de soixante structures artistiques et culturelles de toutes disciplines (théâtre, danse, musique, art contemporain, radio) la font vivre.",
+    "extract_en": "La Friche de la Belle de Mai or La Friche (English: The Fallow; The Wasteland; Occitan: La Fricha) is a former tobacco factory near the Saint-Charles station in Marseille, France, in the neighbourhood of Belle de Mai. In 1992, it was converted into a cultural complex. Presenting itself as a \"pole of authors,\" the Wasteland focuses its efforts primarily on the creation and production of works. It hosts dozens of international artists in residence and it contains over sixty artistic and cultural structures of all disciplines (theater, dance, music, contemporary art, radio). It is also a place of spectacle and broadcasting, it contains 2 concert rooms (Le cabaret aléatoire, 900 places, and La cartonnerie, 1,200 places), it hosted several times the electronic and urban music festival Marsatac. La Friche includes as well a restaurant, a nursery, a playground for children, a library, a local food market, a skate shop, a skate park, family and community gardens and two new theaters. The Mediterranean Institute of Show Crafts will open there in 2014. In 2013 was built the Panorama Tower, for the European Capital of Culture, a 4,000 m2 exhibition space dedicated to contemporary art. In the same time, 7,500 m2 of the building \"Les Magazins\" were renovated and host offices and art studios. A large public terrasse (8,000 m2) has been created on the roof of the building and regularly hosts events and dj sets.",
+    "url": "https://fr.wikipedia.org/wiki/Friche_Belle_de_Mai",
+    "url_en": "https://en.wikipedia.org/wiki/La_Friche"
+   },
+   "subvention": {
+    "beneficiaire": "FRICHE LA BELLE DE MAI",
+    "montant_total": 19947272.28,
+    "nb_subventions": 7,
+    "rows": [
+     {
+      "annee": 2017,
+      "montant": 3754116.55
+     },
+     {
+      "annee": 2018,
+      "montant": 3195464.06
+     },
+     {
+      "annee": 2019,
+      "montant": 3428397.23
+     },
+     {
+      "annee": 2020,
+      "montant": 3137012.57
+     },
+     {
+      "annee": 2021,
+      "montant": 3502538.73
+     },
+     {
+      "annee": 2022,
+      "montant": 2929743.14
+     }
+    ],
+    "annees": [
+     2017,
+     2022
+    ]
+   },
+   "residents": [],
+   "photo": "/img/fr/marseille/places/friche-belle-de-mai.jpg",
+   "photo_credit": {
+    "source": "Wikimedia Commons",
+    "file_url": "https://commons.wikimedia.org/wiki/File:Ancienne_Manufacture_des_Tabacs_et_nouvelle_Friche_de_la_Belle_de_Mai.jpg",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "author": "Charlotte Noblet"
+   }
+  },
+  {
+   "slug": "stade-velodrome",
+   "name": "Stade Vélodrome",
+   "kind_fr": "Stade municipal",
+   "kind_en": "Municipal stadium",
+   "famille": "sport",
+   "arrondissement": 8,
+   "lat": 43.26993,
+   "lon": 5.39577,
+   "desc_fr": "Grand stade municipal (~67 000 places), enceinte de l'Olympique de Marseille.",
+   "desc_en": "Large municipal stadium (~67,000 seats), home of Olympique de Marseille.",
+   "wiki": {
+    "extract": "Le stade Vélodrome, appelé CEPAC Vélodrome par contrat de nommage, est une enceinte sportive située dans le 8e arrondissement de Marseille (Bouches-du-Rhône), au sein du quartier de Saint-Giniez. Principal équipement sportif de la ville et deuxième stade de France en capacité d'accueil (67 394 places), le Vélodrome est utilisé par le club de football de l'Olympique de Marseille depuis son inauguration en 1937. Initialement de 35 000 places, le stade accueille, outre le football, des courses cyclistes (le vélodrome sera supprimé dans les années 1980), de rugby à XIII (rencontres de l'équipe de France et du Marseille XIII, club créé par Paul Ricard en 1946), des matches du XV de France qui n'y a perdu que deux fois, ainsi que certaines rencontres de phase finale du Championnat de France de rugby à XV et du RC Toulon, sans oublier des concerts de grande ampleur. Le stade connaît plusieurs extensions au cours du XXe siècle. Pour la Coupe du monde de football 1998, l'enceinte passe à 60 000 places et son toit est supprimé. Il est rétabli en vue du championnat d'Europe de football 2016, avec une capacité augmentée à 67 394 spectateurs. Depuis 2014, le stade répond aux critères de la catégorie 4 du classement UEFA des stades.",
+    "extract_en": "The Stade Vélodrome (French pronunciation: [stad velɔdʁom]; Occitan: Estadi Vélodrome), known for sponsorship reasons as the CEPAC Vélodrome since July 2026, is a multi-purpose stadium in Marseille, France. It is home to the Olympique de Marseille football club of Ligue 1 since it opened in 1937 and has been a venue in the 1938 and 1998 FIFA World Cups; the 1960, 1984 and 2016 editions of the UEFA European Championship and the 2007 and 2023 Rugby World Cup and football at the 2024 Summer Olympics. It occasionally hosts RC Toulon rugby club of the Top 14. It is the second largest stadium in France, behind Stade de France in Saint-Denis (Paris) with a capacity of 67,394 spectators. The stadium is also used regularly by the France national rugby union team. The record attendance for a club game before the 2014 renovation at the Stade Vélodrome was 58,897 in a UEFA Cup semi-final against Newcastle United in 2004. Since expansion to 67,394, the record attendance at the ground now stands at 66,312 for the match against Montpellier USC that occurred on 19 April 2025. The first-ever match to be played was between Marseille and Torino in 1937. The French rugby union team began an impressive run of victories at the stadium in the early 2000s. They defeated New Zealand 42–33 in November 2000, and in 2001 defeated Australia by one point. They beat South Africa in 2002, followed by a win over England in 2003. However, their run of luck was broken in 2004 when they lost 14–24 to Argentina. The venue was used by France for a game against New Zealand in November 2009. In 2018, the stadium hosted its first Six Nations match with France hosting Italy. France is not the only rugby team to have used the Vélodrome in recent years. On 18 April 2009, Toulon took their home fixture in the Top 14 against Toulouse to the Vélodrome, drawing 57,039 spectators to see a 14–6 Toulon win which played a key role in the Toulonnais' successful fight against relegation in the 2008–09 season. Toulon has taken two home matches to the Vélodrome in each of the succeeding two seasons. The Vélodrome was also the venue for both semi-finals in the 2010–11 Top 14 season, and was used for the Toulon v Munster semi-final of the 2013–14 Heineken Cup. On 28 May 2022, The Velodrome hosted the 2022 European Rugby Champions Cup Final between La Rochelle v Leinster in front of 59,682 spectators. On 29 June, The Velodrome will host the 2024 Top 14 Final due to the Stade de France being unavailable because of the 2024 Summer Olympics. The 20th stage of the 2017 Tour de France, an individual time trial through the streets of Marseille, started and finished in the stadium.",
+    "url": "https://fr.wikipedia.org/wiki/Stade_V%C3%A9lodrome",
+    "url_en": "https://en.wikipedia.org/wiki/Stade_V%C3%A9lodrome"
+   },
+   "subvention": null,
+   "residents": [],
+   "photo": "/img/fr/marseille/places/stade-velodrome.jpg",
+   "photo_credit": {
+    "source": "Wikimedia Commons",
+    "file_url": "https://commons.wikimedia.org/wiki/File:Stade_V%C3%A9lodrome_(20150405).jpg",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "author": "Hombrey"
+   }
+  },
+  {
+   "slug": "cite-radieuse",
+   "name": "Cité radieuse",
+   "kind_fr": "Patrimoine architectural",
+   "kind_en": "Architectural heritage",
+   "famille": "urbain",
+   "arrondissement": 8,
+   "lat": 43.2617,
+   "lon": 5.39614,
+   "desc_fr": "Unité d'habitation de Le Corbusier (1952), patrimoine architectural du XXᵉ siècle classé.",
+   "desc_en": "Le Corbusier's Unité d'habitation (1952), listed 20th-century architectural heritage.",
+   "wiki": {
+    "extract": "L'unité d'habitation est le nom donné à un principe moderne de bâtiments d'habitation conçu par Le Corbusier, architecte franco-suisse (en collaboration avec le peintre et architecte portugais Nadir Afonso) qui a servi de modèle à plusieurs cités désignées par ce nom. La première de ces unités est celle de Marseille construite entre 1945 et 1952, connue aussi sous le nom de « Cité radieuse ». Elle est devenue un grand classique architectural et on la considère souvent comme le bâtiment qui a inspiré par la suite le style et la pensée brutaliste. L'unité d'habitation est conçue sur le principe du Modulor, système de mesures lié à la morphologie humaine basé sur le nombre d'or et la suite de Fibonacci.",
+    "extract_en": "The Unité d'habitation (French pronunciation: [ynite dabitasjɔ̃], Housing Unit; Occitan: Unitat d'abitacion) is a modernist residential housing typology developed by Le Corbusier, with the collaboration of painter-architect Nadir Afonso. It formed the basis of several housing developments throughout Europe designed by Le Corbusier and sharing the same name and reached prominence in the 1950s and 60s. The most famous of these buildings is located in the southern part of Marseille, France. It was added to the UNESCO World Heritage List in 2016 because of its importance to the development of modernist architecture, along with 16 other works by Le Corbusier. It is also designated a historic monument by the French Ministry of Culture. It was damaged by fire on 9 February 2012.",
+    "url": "https://fr.wikipedia.org/wiki/Unit%C3%A9_d%27habitation",
+    "url_en": "https://en.wikipedia.org/wiki/Unit%C3%A9_d%27habitation"
+   },
+   "subvention": null,
+   "residents": [],
+   "photo": "/img/fr/marseille/places/cite-radieuse.jpg",
+   "photo_credit": {
+    "source": "Wikimedia Commons",
+    "file_url": "https://commons.wikimedia.org/wiki/File:Views_of_Marseille_from_the_Cit%C3%A9_radieuse_1.jpg",
+    "license": "CC0",
+    "license_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "author": "Karmakolle"
+   }
+  },
+  {
+   "slug": "chateau-d-if",
+   "name": "Château d'If",
+   "kind_fr": "Monument historique",
+   "kind_en": "Historic monument",
+   "famille": "urbain",
+   "arrondissement": 7,
+   "lat": 43.27972,
+   "lon": 5.3253,
+   "desc_fr": "Forteresse insulaire du XVIᵉ siècle, monument historique et lieu de mémoire littéraire.",
+   "desc_en": "16th-century island fortress, historic monument and literary landmark.",
+   "wiki": {
+    "extract": "Le château d'If est une forteresse française édifiée sur les ordres du roi François Ier, entre 1529 et 1531 sur l'îlot d'If de l'archipel du Frioul, proche des îles Pomègues et Ratonneau au centre de la rade de Marseille. C'est une construction de forme carrée de trois étages mesurant 28 mètres de côté, flanquée de trois tours d'angle casematées, percées de larges embrasures. Le reste de l'île, dont la dimension est de seulement trois hectares, est fortement défendu par une enceinte périphérique bastionnée, avec des plates-formes d'artillerie surmontant les falaises. Fort de l'ère moderne, il est un chef-d'œuvre de l'architecture militaire alors que s'opère la transition entre la fortification médiévale et la fortification bastionnée conçue pour répondre aux impératifs de l'artillerie de marine. Il a essentiellement servi de prison pendant ses 400 ans d'utilisation officielle. Alexandre Dumas rend l'édifice célèbre en y faisant séjourner ses personnages Edmond Dantès et l'abbé Faria, dont l'histoire est relatée dans Le Comte de Monte-Cristo. Il est l'un des sites les plus visités de la ville de Marseille et a été classé monument historique le 7 juillet 1926. Le Centre des monuments nationaux ouvre le site au public tout en l’entretenant. L'île d'If est intégrée depuis 2012 au parc national des Calanques.",
+    "extract_en": "The Château d'If (French pronunciation: [ʃɑto dif]; Occitan: Castèl d'If) is a fortress located on the Île d'If (Ilha d'If), the smallest island in the Frioul archipelago, situated about 1.5 kilometres (7⁄8 mile) off Marseille in southeastern France. Built in the 16th century, it later served as a prison until the end of the 19th century. The fortress was demilitarized and opened to the public in 1890. It is famous for being one of the settings of Alexandre Dumas's adventure novel The Count of Monte Cristo. It is one of the most visited sites in the city of Marseille (nearly 100,000 visitors per year).",
+    "url": "https://fr.wikipedia.org/wiki/Ch%C3%A2teau_d%27If",
+    "url_en": "https://en.wikipedia.org/wiki/Ch%C3%A2teau_d%27If"
+   },
+   "subvention": null,
+   "residents": [],
+   "photo": "/img/fr/marseille/places/chateau-d-if.jpg",
+   "photo_credit": {
+    "source": "Wikimedia Commons",
+    "file_url": "https://commons.wikimedia.org/wiki/File:Chateau_d%27If_view.jpg",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "author": "Marian78ro"
+   }
+  },
+  {
+   "slug": "palais-du-pharo",
+   "name": "Palais du Pharo",
+   "kind_fr": "Palais municipal & congrès",
+   "kind_en": "Municipal palace & congress",
+   "famille": "services",
+   "arrondissement": 7,
+   "lat": 43.29248,
+   "lon": 5.35773,
+   "desc_fr": "Palais du Second Empire propriété de la Ville, aujourd'hui centre de congrès et d'événements.",
+   "desc_en": "Second-Empire palace owned by the City, now a congress and events venue.",
+   "wiki": {
+    "extract": "Le palais du Pharo (de l'occitan faròt, phare) est un monument marseillais dont la construction est ordonnée par Napoléon III pour l'impératrice Eugénie dans la seconde moitié du XIXe siècle. Il appartient aujourd'hui à la ville de Marseille et constitue un lieu d'accueil pour des congrès et diverses manifestations. Il domine la passe du port, côté mer, ainsi que le jardin du Pharo, côté ville.",
+    "extract_en": "The Palais du Pharo (French pronunciation: [palɛ dy faʁo] Occitan: Palais del Pharo) is a palace in Marseille, southern France, overlooking the Mediterranean Sea, west of the Old Port (Vieux-Port). It was built in Second Empire style by Emperor Napoleon III for Empress Eugénie, starting in 1858. However, at the fall of the Second Empire in 1870, the building had just been finished. Nowadays, the palace and its gardens are used for events, with the park open to the public. In 2025 it became a monument historique, celebrating its significance in local heritage.",
+    "url": "https://fr.wikipedia.org/wiki/Palais_du_Pharo",
+    "url_en": "https://en.wikipedia.org/wiki/Palais_du_Pharo"
+   },
+   "subvention": null,
+   "residents": [],
+   "photo": "/img/fr/marseille/places/palais-du-pharo.jpg",
+   "photo_credit": {
+    "source": "Wikimedia Commons",
+    "file_url": "https://commons.wikimedia.org/wiki/File:Le_palais_du_Pharo.jpg",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "author": "Remontees"
+   }
+  },
+  {
+   "slug": "bibliotheque-alcazar",
+   "name": "Bibliothèque de l'Alcazar",
+   "kind_fr": "Bibliothèque municipale",
+   "kind_en": "Municipal library",
+   "famille": "services",
+   "arrondissement": 1,
+   "lat": 43.29672,
+   "lon": 5.38003,
+   "desc_fr": "Bibliothèque municipale à vocation régionale, ouverte en 2004 dans l'ancien music-hall de l'Alcazar.",
+   "desc_en": "Regional-scale municipal library, opened in 2004 in the former Alcazar music hall.",
+   "wiki": {
+    "extract": "Le Théâtre de l'Alcazar était une célèbre salle de spectacle - fondée au milieu du XIXe siècle - située au cœur du quartier de la bourse de Marseille, sur le cours Belsunce, près de la Canebière, à Marseille. Le site progressivement délaissé à partir des années 1960, accueille depuis 2004 une bibliothèque municipale à vocation régionale.",
+    "extract_en": "The Théâtre de l'Alcazar (Occitan: Teatre de l'Alcazar) was a famous theatre, founded in the mid-19th century, that was located in the heart of Marseille's Bourse district, on Cours Belsunce, near the Canebière. From the 1960s the site was gradually abandoned, before being converted into a municipal library in 2004.",
+    "url": "https://fr.wikipedia.org/wiki/Alcazar_(Marseille)",
+    "url_en": "https://en.wikipedia.org/wiki/Alcazar_(Marseille)"
+   },
+   "subvention": null,
+   "residents": [
+    {
+     "beneficiaire": "LE ZEF",
+     "montant_total": 5025.0,
+     "nb": 1,
+     "preuve": "MISE A DISPO JOURNEES PATIO ALCAZAR DCM 181211ECSS"
+    },
+    {
+     "beneficiaire": "THEATRE NATIONAL DE MARSEILLE LA CRIEE",
+     "montant_total": 5025.0,
+     "nb": 1,
+     "preuve": "MISE A DISPO JOURNEES PATIO DE L ALCAZAR DCM 181211ECSS"
+    },
+    {
+     "beneficiaire": "UNION CULTUTELLE PROVENCALE MARSEILLE 2013",
+     "montant_total": 950.0,
+     "nb": 1,
+     "preuve": "MISE A DISPOSITION SALLE DE CONFERENCE ET FOYER ALCAZAR"
+    },
+    {
+     "beneficiaire": "LA MARELLE",
+     "montant_total": 325.0,
+     "nb": 1,
+     "preuve": "MISE A DISPOSITION AUDITORIUM ALCAZAR POUR 5 RENCONTRES TARIF CULTUREL CONVENTION 22 80518"
+    }
+   ],
+   "photo": "/img/fr/marseille/places/bibliotheque-alcazar.jpg",
+   "photo_credit": {
+    "source": "Wikimedia Commons",
+    "file_url": "https://commons.wikimedia.org/wiki/File:La_biblioth%C3%A8que_de_l%27Alcazar.jpg",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "author": "Charlotte Noblet"
+   }
+  },
+  {
+   "slug": "la-criee",
+   "name": "Théâtre La Criée",
+   "kind_fr": "Théâtre national",
+   "kind_en": "National theatre",
+   "famille": "culture",
+   "arrondissement": 7,
+   "lat": 43.29252,
+   "lon": 5.36601,
+   "desc_fr": "Théâtre national installé dans l'ancienne criée aux poissons, sur le Vieux-Port.",
+   "desc_en": "National theatre in a converted former fish market, on the Vieux-Port.",
+   "wiki": {
+    "extract": "La Criée - Théâtre national de Marseille est un théâtre qui a le statut de Centre dramatique national. Fondé en 1981 par Marcel Maréchal au 30, quai de Rive-Neuve à Marseille (France), il s'ouvre sur le Vieux-Port.",
+    "extract_en": "",
+    "url": "https://fr.wikipedia.org/wiki/La_Cri%C3%A9e_(th%C3%A9%C3%A2tre)",
+    "url_en": null
+   },
+   "subvention": {
+    "beneficiaire": "THEATRE NATIONAL DE MARSEILLE LA CRIEE",
+    "montant_total": 8228504.83,
+    "nb_subventions": 17,
+    "rows": [
+     {
+      "annee": 2017,
+      "montant": 1080000.0
+     },
+     {
+      "annee": 2018,
+      "montant": 1486708.15
+     },
+     {
+      "annee": 2019,
+      "montant": 1140000.0
+     },
+     {
+      "annee": 2020,
+      "montant": 1389018.47
+     },
+     {
+      "annee": 2021,
+      "montant": 1401193.64
+     },
+     {
+      "annee": 2022,
+      "montant": 1731584.57
+     }
+    ],
+    "annees": [
+     2017,
+     2022
+    ]
+   },
+   "residents": [],
+   "photo": "/img/fr/marseille/places/la-criee.jpg",
+   "photo_credit": {
+    "source": "Wikimedia Commons",
+    "file_url": "https://commons.wikimedia.org/wiki/File:Th%C3%A9%C3%A2tre_National_de_la_Cri%C3%A9e.jpg",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "author": "Arnaud 25"
+   }
+  },
+  {
+   "slug": "parc-borely",
+   "name": "Parc Borély",
+   "kind_fr": "Parc public",
+   "kind_en": "Public park",
+   "famille": "vert",
+   "arrondissement": 8,
+   "lat": 43.2612,
+   "lon": 5.38004,
+   "desc_fr": "Grand parc public du sud de la ville, avec château, jardins et hippodrome.",
+   "desc_en": "Large public park in the south of the city, with a château, gardens and racecourse.",
+   "wiki": {
+    "extract": "Le parc Borély est un des parcs et jardins publics de Marseille, du quartier de Bonneveine dans le 8e arrondissement de Marseille. Historiquement associé au château Borély et hippodrome-golf Marseille Borély, à proximité des plages du Prado, au bout de la corniche du Président-John-Fitzgerald-Kennedy, il est inscrit au titre des monuments historiques et labellisé « jardin remarquable ».",
+    "extract_en": "Parc Borély is a public municipal park in the city of Marseille, France. It is classified by the Ministry of Culture as one of the Remarkable Gardens of France. The park is 17 hectares in size. It adjoins the Jardin botanique E.M. Heckel.",
+    "url": "https://fr.wikipedia.org/wiki/Parc_Bor%C3%A9ly",
+    "url_en": "https://en.wikipedia.org/wiki/Parc_Bor%C3%A9ly"
+   },
+   "subvention": null,
+   "residents": [],
+   "photo": "/img/fr/marseille/places/parc-borely.jpg",
+   "photo_credit": {
+    "source": "Wikimedia Commons",
+    "file_url": "https://commons.wikimedia.org/wiki/File:Marseille-Ch%C3%A2teau_Bor%C3%A9ly(2).jpg",
+    "license": "CC BY-SA 3.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
+    "author": "Charliemoon"
+   }
+  }
+ ]
+}

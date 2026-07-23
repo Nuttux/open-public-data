@@ -109,7 +109,6 @@ export default function SfContractsClient({
 
         {/* ── Opener: folds the former "01 active portfolio" overview ── */}
         <PageIntro
-          kicker={t("us.sf.contracts.kicker")}
           title={
             <>
               {t("us.sf.contracts.title.before")}
@@ -178,11 +177,6 @@ export default function SfContractsClient({
             </>
           }
         >
-          {overview.landscape.grants && (
-            <p className="fx-note" style={{ marginTop: 14 }}>
-              {fill(t("us.sf.contracts.intro_note"), { grants: heroVars.grants })}
-            </p>
-          )}
           <SourceLine
             label={t("us.sf.contracts.source_label")}
             dataWord={t("us.sf.contracts.source_data_word")}
@@ -194,7 +188,6 @@ export default function SfContractsClient({
         <section className="fx-section" id="sec-sole-source">
           <div className="fx-wrap">
             <SectionHead
-              kind={t("us.sf.contracts.s03.kind")}
               title={
                 <>
                   <Tip label={t("us.sf.contracts.s03.sub")}>
@@ -392,7 +385,6 @@ export default function SfContractsClient({
         <section className="fx-section" id="sec-landscape">
           <div className="fx-wrap">
             <SectionHead
-              kind={t("us.sf.contracts.s02.kind")}
               title={
                 <>
                   {t("us.sf.contracts.s02.title.before")}
@@ -486,7 +478,6 @@ export default function SfContractsClient({
         <section className="fx-section" id="sec-lbe">
           <div className="fx-wrap">
             <SectionHead
-              kind={t("us.sf.contracts.s04.kind")}
               title={
                 <>
                   <Tip label={t("us.sf.contracts.s04.sub")}>LBE</Tip>
@@ -544,7 +535,6 @@ export default function SfContractsClient({
         <section className="fx-section" id="sec-search">
           <div className="fx-wrap">
             <SectionHead
-              kind={t("us.sf.contracts.s05.kind")}
               title={
                 <>
                   {t("us.sf.contracts.s05.title.before")}
@@ -571,7 +561,6 @@ export default function SfContractsClient({
         <section className="fx-section" id="sec-authorities">
           <div className="fx-wrap">
             <SectionHead
-              kind={t("us.sf.contracts.s06.kind")}
               title={
                 <>
                   {t("us.sf.contracts.s06.title.before")}

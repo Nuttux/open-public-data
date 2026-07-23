@@ -1,4 +1,5 @@
 import type { LandingModel, DeckCard, MarqueeItem } from "@/components/landing/types";
+import PlaceSwitcher from "@/components/PlaceSwitcher";
 import { readDataJson } from "@/lib/data/read";
 import { loadSfBudgetByYear } from "@/lib/us/sf-budget-data";
 import { loadSfPlacesIndex } from "@/lib/us/sf-places-data";
@@ -110,7 +111,27 @@ export function buildSfLandingModel(): LandingModel {
   const allDepts = topDepts(100);
   const deptByCode = (code: string) => allDepts.find((d) => d.code === code);
 
+  // Deck — four concrete entities, each opening its fiche, a place first (like
+  // Paris and Recife). Numbers all read from the corpus; cards render only if
+  // the entity loads.
   const deck: DeckCard[] = [];
+
+  const library = places.find((p) => p.slug === "sf-main-library");
+  if (library) {
+    const { amount, unit } = splitCompact(library.funds_usd);
+    deck.push({
+      href: `/us/city/sf/places/place/${library.slug}`,
+      kicker: "A place on the map",
+      title: library.name,
+      amount,
+      amountUnit: unit,
+      meta: `${library.kind} · paid to vendors here`,
+      cta: "Open the place",
+      photo: library.photo,
+      photoCredit: library.photo ? placeCredits[library.slug]?.author ?? null : null,
+      photoAlt: library.name,
+    });
+  }
 
   const dph = deptByCode("DPH");
   if (dph) {
@@ -129,21 +150,17 @@ export function buildSfLandingModel(): LandingModel {
     });
   }
 
-  // Payroll — the citywide wage bill (a section, not a single entity).
-  const payroll = readDataJson<{
-    points: Array<{ fiscal_year: number; total_compensation_usd: number; n_employees: number }>;
-  }>("us/sf/payroll_by_year.json");
-  const pay = payroll.points[payroll.points.length - 1];
-  {
-    const { amount, unit } = splitCompact(pay.total_compensation_usd);
+  const payee = meaningfulPayees()[0];
+  if (payee) {
+    const { amount, unit } = splitCompact(payee.total_paid_usd);
     deck.push({
-      href: "/us/city/sf/payroll",
-      kicker: "What city work pays",
-      title: "The payroll",
+      href: `/us/city/sf/who-gets-paid/payee/${payee.slug}`,
+      kicker: "Largest recipient",
+      title: payee.name,
       amount,
       amountUnit: unit,
-      meta: `${nfInt.format(pay.n_employees)} people · FY${pay.fiscal_year}`,
-      cta: "See the payroll",
+      meta: "Paid by the City",
+      cta: "See the recipient",
       photo: "/img/us/sf/landing/city-hall.jpg",
       photoCredit: landingCredits["city-hall"]?.author ?? null,
       photoAlt: "San Francisco City Hall",
@@ -167,30 +184,14 @@ export function buildSfLandingModel(): LandingModel {
     });
   }
 
-  const library = places.find((p) => p.slug === "sf-main-library");
-  if (library) {
-    deck.push({
-      href: `/us/city/sf/places/place/${library.slug}`,
-      kicker: "A place on the map",
-      title: library.name,
-      amount: nfInt.format(library.n_documents),
-      amountUnit: "records",
-      meta: `${library.kind} · archival record`,
-      cta: "Open the place",
-      photo: library.photo,
-      photoCredit: library.photo ? placeCredits[library.slug]?.author ?? null : null,
-      photoAlt: library.name,
-    });
-  }
-
   return {
     hero: {
       bg: { viewBox: "0 0 200 140", paths: [SF_OUTLINE] },
       headline: (
         <>
-          San Francisco&rsquo;s public money,
+          Where does <em>public money</em>
           <br />
-          <em>followed to the source</em>
+          go in <PlaceSwitcher variant="h1" currentSlug="sf" />?
         </>
       ),
     },

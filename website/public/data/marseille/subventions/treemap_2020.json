@@ -1,0 +1,104 @@
+{
+  "year": 2020,
+  "generated_at": "2026-07-23T00:02:21.561009",
+  "total_montant": 139818913.57999998,
+  "nb_thematiques": 12,
+  "data": [
+    {
+      "annee": 2020,
+      "thematique": "Social",
+      "nb_beneficiaires": 170,
+      "nb_subventions": 467,
+      "montant_total": 45384587.919999965,
+      "pct_total": 32.46
+    },
+    {
+      "annee": 2020,
+      "thematique": "Culture",
+      "nb_beneficiaires": 198,
+      "nb_subventions": 242,
+      "montant_total": 31328432.67,
+      "pct_total": 22.41
+    },
+    {
+      "annee": 2020,
+      "thematique": "Économie",
+      "nb_beneficiaires": 122,
+      "nb_subventions": 125,
+      "montant_total": 29185253.119999997,
+      "pct_total": 20.87
+    },
+    {
+      "annee": 2020,
+      "thematique": "Éducation",
+      "nb_beneficiaires": 100,
+      "nb_subventions": 263,
+      "montant_total": 21661538.730000004,
+      "pct_total": 15.49
+    },
+    {
+      "annee": 2020,
+      "thematique": "Sport",
+      "nb_beneficiaires": 207,
+      "nb_subventions": 270,
+      "montant_total": 5878994.9799999995,
+      "pct_total": 4.2
+    },
+    {
+      "annee": 2020,
+      "thematique": "Non classifié",
+      "nb_beneficiaires": 619,
+      "nb_subventions": 629,
+      "montant_total": 4544560.160000004,
+      "pct_total": 3.25
+    },
+    {
+      "annee": 2020,
+      "thematique": "Santé",
+      "nb_beneficiaires": 36,
+      "nb_subventions": 40,
+      "montant_total": 1155686.8199999998,
+      "pct_total": 0.83
+    },
+    {
+      "annee": 2020,
+      "thematique": "Environnement",
+      "nb_beneficiaires": 29,
+      "nb_subventions": 35,
+      "montant_total": 522057.98000000004,
+      "pct_total": 0.37
+    },
+    {
+      "annee": 2020,
+      "thematique": "Sécurité",
+      "nb_beneficiaires": 6,
+      "nb_subventions": 6,
+      "montant_total": 66415.01,
+      "pct_total": 0.05
+    },
+    {
+      "annee": 2020,
+      "thematique": "Administration",
+      "nb_beneficiaires": 6,
+      "nb_subventions": 6,
+      "montant_total": 49986.19,
+      "pct_total": 0.04
+    },
+    {
+      "annee": 2020,
+      "thematique": "International",
+      "nb_beneficiaires": 6,
+      "nb_subventions": 6,
+      "montant_total": 31400.0,
+      "pct_total": 0.02
+    },
+    {
+      "annee": 2020,
+      "thematique": "Logement",
+      "nb_beneficiaires": 2,
+      "nb_subventions": 2,
+      "montant_total": 10000.0,
+      "pct_total": 0.01
+    }
+  ]
+}

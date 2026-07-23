@@ -5,11 +5,13 @@ import { buildLocaleAwareMetadata } from "@/lib/seo";
 import MarchesPublicsClient from "@/app/fr/city/paris/marches/MarchesPublicsClient";
 
 // POC v1 Marseille marches — réutilise MarchesPublicsClient avec data Marseille.
+// Le client dérive la ville de l'URL (CityProvider) : liste, filtres, année et
+// fiches contrat/fournisseur restent dans /fr/city/marseille (routes créées).
 // Limites POC connues :
 //   - Une seule année (2020) — Marseille SCDL Ville n'expose que 2020
 //   - Pas d'enrichissement DECP (pas de offresRecues, pas de procédure normalisée)
 //   - Pas d'articles Marseille (posts: [])
-//   - Liens drill-down (contrat/fournisseur) → 404 pour l'instant (routes pas créées)
+//   - Backfill DECP national 2021+ = phase 2 (voir index.json note)
 
 export async function generateMetadata(): Promise<Metadata> {
   return buildLocaleAwareMetadata({

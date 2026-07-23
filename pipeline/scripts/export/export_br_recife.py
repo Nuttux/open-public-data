@@ -494,6 +494,41 @@ def build_licitacoes(client, log):
 
 
 # ---------------------------------------------------------------------------
+# places.json — civic facilities directory (geo)
+# ---------------------------------------------------------------------------
+
+def build_places(client, log):
+    rows_ = rows(client, "mart_br_recife_places", "ORDER BY familia, nome")
+    if not rows_:
+        raise RuntimeError("mart_br_recife_places is empty")
+    fam = defaultdict(int)
+    places = []
+    for r in rows_:
+        fam[r["familia"]] += 1
+        places.append({
+            "slug": r["slug"], "nome": r["nome"], "familia": r["familia"],
+            "tipo": r["tipo"], "lat": _f(r["lat"]), "lon": _f(r["lon"]),
+            "bairro": r["bairro"], "endereco": r["endereco"], "detalhe": r["detalhe"],
+            "obras_total": _f(r.get("ode_obras_total")), "n_obras": r.get("ode_n_obras"),
+        })
+    familias = sorted([{"familia": k, "n": v} for k, v in fam.items()], key=lambda x: -x["n"])
+    return {
+        "generated_at": datetime.now(timezone.utc).isoformat(),
+        "source_pipeline": SOURCE_PIPELINE,
+        "country": "br", "scale": "city", "place": "recife",
+        "source": {"name": rows_[0].get("source_name"), "source_url": rows_[0].get("source_url")},
+        "perimeter": (
+            "Equipamentos públicos geolocalizados (saúde, educação, cultura, "
+            "esporte, praças). Diretório/identidade — os valores gastos por "
+            "local exigem um cruzamento com contratos (etapa seguinte)."
+        ),
+        "count": len(places),
+        "familias": familias,
+        "places": places,
+    }
+
+
+# ---------------------------------------------------------------------------
 # main
 # ---------------------------------------------------------------------------
 
@@ -528,6 +563,18 @@ def main():
     lic = build_licitacoes(client, log)
     write_json("licitacoes.json", lic, log)
 
+    log.section("places")
+    write_json("places.json", build_places(client, log), log)
+    # place↔obra evidence detail (from the crosswalk cache) — the fiche lists it
+    _obras_cache = Path(__file__).parent.parent.parent / "cache" / "enrichment" / "recife_place_obras.json"
+    if _obras_cache.exists():
+        oc = json.loads(_obras_cache.read_text(encoding="utf-8"))
+        write_json("place_obras.json", {
+            "generated_at": datetime.now(timezone.utc).isoformat(),
+            "source_pipeline": SOURCE_PIPELINE, "unit": "BRL",
+            "method": oc.get("method"), "items": oc.get("items", {}),
+        }, log)
+
     log.section("index")
     index = {
         "generated_at": datetime.now(timezone.utc).isoformat(),
@@ -541,6 +588,7 @@ def main():
             "quem_recebe_search": "quem_recebe_search.json",
             "contratos": "contratos.json",
             "licitacoes": "licitacoes.json",
+            "places": "places.json",
         },
     }
     write_json("index.json", index, log)

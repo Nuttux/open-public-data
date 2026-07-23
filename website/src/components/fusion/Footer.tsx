@@ -1,8 +1,10 @@
 "use client";
 
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useT } from "@/lib/localeContext";
 import { useTrack } from "@/lib/analyticsContext";
+import { citySectionLinks, cityHasAnalyses } from "./nav-links";
 import ReplayOptIn from "./ReplayOptIn";
 
 type Col = {
@@ -10,37 +12,43 @@ type Col = {
   links: { href: string; labelKey: string; external?: boolean }[];
 };
 
-const COLUMNS: Col[] = [
-  {
-    headingKey: "fx.foot.col.pages",
-    links: [
-      { href: "/fr/city/paris/budget", labelKey: "fx.foot.link.budget" },
-      { href: "/fr/city/paris/subventions", labelKey: "fx.foot.link.subventions" },
-      { href: "/fr/city/paris/marches", labelKey: "fx.foot.link.marches" },
-      { href: "/fr/city/paris/investissements", labelKey: "fx.foot.link.invest" },
-      { href: "/fr/city/paris/logement", labelKey: "fx.foot.link.logement" },
-      { href: "/fr/city/paris/dette", labelKey: "fx.foot.link.dette" },
-    ],
-  },
-  {
-    headingKey: "fx.foot.col.resources",
-    links: [
-      { href: "/analyses", labelKey: "fx.foot.link.analyses" },
-      { href: "/methode", labelKey: "fx.foot.link.methode" },
-      {
-        href: "https://github.com/Nuttux/open-public-data",
-        labelKey: "fx.foot.link.github",
-        external: true,
-      },
-      { href: "/contact", labelKey: "fx.foot.link.contact" },
-    ],
-  },
-];
+// The current France place, for the place-aware "Pages" column. France city
+// pages carry the slug; the root (/) is Paris's landing; anything else defaults
+// to Paris. (US/BR render their own footers.)
+function footerCitySlug(pathname: string): string {
+  const m = pathname.match(/^\/fr\/city\/([^/]+)/);
+  return m ? m[1] : "paris";
+}
 
 export default function Footer() {
   const t = useT();
   const track = useTrack();
+  const pathname = usePathname() ?? "/";
+  const citySlug = footerCitySlug(pathname);
   const year = new Date().getFullYear();
+
+  const columns: Col[] = [
+    // Place footer — the current city's finalised sections (same source as the
+    // nav, so the footer never advertises a section hidden as WIP).
+    {
+      headingKey: "fx.foot.col.pages",
+      links: citySectionLinks(citySlug),
+    },
+    // Site/product footer — site-wide. Analyses only where the place has it.
+    {
+      headingKey: "fx.foot.col.resources",
+      links: [
+        ...(cityHasAnalyses(citySlug) ? [{ href: "/analyses", labelKey: "fx.foot.link.analyses" }] : []),
+        { href: "/methode", labelKey: "fx.foot.link.methode" },
+        {
+          href: "https://github.com/Nuttux/open-public-data",
+          labelKey: "fx.foot.link.github",
+          external: true,
+        },
+        { href: "/contact", labelKey: "fx.foot.link.contact" },
+      ],
+    },
+  ];
   return (
     <footer className="fx-foot">
       <div className="fx-wrap">
@@ -51,7 +59,7 @@ export default function Footer() {
             </div>
             <p className="fx-foot-blurb">{t("fx.foot.blurb")}</p>
           </div>
-          {COLUMNS.map((c) => (
+          {columns.map((c) => (
             <div key={c.headingKey}>
               <h3>{t(c.headingKey)}</h3>
               <ul>

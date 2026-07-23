@@ -125,7 +125,6 @@ export default function SfSourcesClient({ d }: { d: SfSourcesPageData }) {
       />
 
       <PageIntro
-        kicker={t("us.sf.sources.kicker")}
         title={
           <>
             {t("us.sf.sources.title.before")}

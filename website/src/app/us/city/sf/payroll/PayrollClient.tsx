@@ -214,7 +214,6 @@ export default function PayrollClient({
       <main id="main-content" tabIndex={-1}>
         {/* ── Opener: signature stat band (folds the former "01 · The typical employee") ── */}
         <PageIntro
-          kicker={fill(t("us.sf.payroll.kicker"), { fy })}
           title={
             <>
               {t("us.sf.payroll.title.before")}
@@ -284,7 +283,6 @@ export default function PayrollClient({
         <section className="fx-section" id="sec-overtime">
           <div className="fx-wrap">
             <SectionHead
-              kind={t("us.sf.payroll.s03.kind")}
               title={
                 <>
                   {t("us.sf.payroll.s03.title.before")}
@@ -421,7 +419,6 @@ export default function PayrollClient({
         <section className="fx-section" id="sec-departments">
           <div className="fx-wrap">
             <SectionHead
-              kind={t("us.sf.payroll.s02.kind")}
               title={
                 <>
                   {t("us.sf.payroll.s02.title.before")}
@@ -528,7 +525,6 @@ export default function PayrollClient({
           <section className="fx-section" id="sec-families">
             <div className="fx-wrap">
               <SectionHead
-                kind={t("us.sf.payroll.sfam.kind")}
                 title={
                   <>
                     {t("us.sf.payroll.sfam.title.before")}
@@ -578,7 +574,6 @@ export default function PayrollClient({
         <section className="fx-section" id="sec-distribution">
           <div className="fx-wrap">
             <SectionHead
-              kind={t("us.sf.payroll.s04.kind")}
               title={
                 <>
                   {t("us.sf.payroll.s04.title.before")}
@@ -668,7 +663,6 @@ export default function PayrollClient({
         <section className="fx-section" id="sec-split">
           <div className="fx-wrap">
             <SectionHead
-              kind={t("us.sf.payroll.s05.kind")}
               title={
                 <>
                   {t("us.sf.payroll.s05.title.before")}

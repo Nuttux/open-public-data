@@ -1,0 +1,122 @@
+{
+ "vieux-port": {
+  "photo": "/img/fr/marseille/places/vieux-port.jpg",
+  "source": "Wikimedia Commons",
+  "file": "File:1 marseille vieux port pano.jpg",
+  "file_url": "https://commons.wikimedia.org/wiki/File:1_marseille_vieux_port_pano.jpg",
+  "license": "CC BY-SA 4.0",
+  "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+  "author": "Chensiyuan",
+  "fetched_at": "2026-07-22T22:40:31.298050+00:00"
+ },
+ "mucem": {
+  "photo": "/img/fr/marseille/places/mucem.jpg",
+  "source": "Wikimedia Commons",
+  "file": "File:Mucem,_Marseille.jpeg",
+  "file_url": "https://fr.wikipedia.org/wiki/Fichier:Mucem,_Marseille.jpeg",
+  "license": "CC-BY-SA-3.0",
+  "license_url": "",
+  "author": "Auteur de la photographie : Florent Pécassou - Architecte du bâtiment : Rudy Ricciotti",
+  "fetched_at": "2026-07-22T22:40:47.308481+00:00"
+ },
+ "palais-longchamp": {
+  "photo": "/img/fr/marseille/places/palais-longchamp.jpg",
+  "source": "Wikimedia Commons",
+  "file": "File:Palais_Longchamp_(Marseille).jpg",
+  "file_url": "https://commons.wikimedia.org/wiki/File:Palais_Longchamp_(Marseille).jpg",
+  "license": "CC BY-SA 4.0",
+  "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+  "author": "Arnaud 25",
+  "fetched_at": "2026-07-22T22:40:49.969366+00:00"
+ },
+ "notre-dame-de-la-garde": {
+  "photo": "/img/fr/marseille/places/notre-dame-de-la-garde.jpg",
+  "source": "Wikimedia Commons",
+  "file": "File:Notre_Dame_de_la_Garde.jpg",
+  "file_url": "https://commons.wikimedia.org/wiki/File:Notre_Dame_de_la_Garde.jpg",
+  "license": "CC BY-SA 3.0",
+  "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
+  "author": "Benh LIEU SONG",
+  "fetched_at": "2026-07-22T22:40:52.529334+00:00"
+ },
+ "friche-belle-de-mai": {
+  "photo": "/img/fr/marseille/places/friche-belle-de-mai.jpg",
+  "source": "Wikimedia Commons",
+  "file": "File:Ancienne Manufacture des Tabacs et nouvelle Friche de la Belle de Mai.jpg",
+  "file_url": "https://commons.wikimedia.org/wiki/File:Ancienne_Manufacture_des_Tabacs_et_nouvelle_Friche_de_la_Belle_de_Mai.jpg",
+  "license": "CC BY-SA 4.0",
+  "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+  "author": "Charlotte Noblet",
+  "fetched_at": "2026-07-22T22:40:54.100120+00:00"
+ },
+ "stade-velodrome": {
+  "photo": "/img/fr/marseille/places/stade-velodrome.jpg",
+  "source": "Wikimedia Commons",
+  "file": "File:Stade_Vélodrome_(20150405).jpg",
+  "file_url": "https://commons.wikimedia.org/wiki/File:Stade_V%C3%A9lodrome_(20150405).jpg",
+  "license": "CC BY-SA 4.0",
+  "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+  "author": "Hombrey",
+  "fetched_at": "2026-07-22T22:41:03.199389+00:00"
+ },
+ "cite-radieuse": {
+  "photo": "/img/fr/marseille/places/cite-radieuse.jpg",
+  "source": "Wikimedia Commons",
+  "file": "File:Views of Marseille from the Cité radieuse 1.jpg",
+  "file_url": "https://commons.wikimedia.org/wiki/File:Views_of_Marseille_from_the_Cit%C3%A9_radieuse_1.jpg",
+  "license": "CC0",
+  "license_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+  "author": "Karmakolle",
+  "fetched_at": "2026-07-22T22:41:04.598492+00:00"
+ },
+ "chateau-d-if": {
+  "photo": "/img/fr/marseille/places/chateau-d-if.jpg",
+  "source": "Wikimedia Commons",
+  "file": "File:Chateau_d'If_view.jpg",
+  "file_url": "https://commons.wikimedia.org/wiki/File:Chateau_d%27If_view.jpg",
+  "license": "CC BY-SA 4.0",
+  "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+  "author": "Marian78ro",
+  "fetched_at": "2026-07-22T22:41:07.212876+00:00"
+ },
+ "palais-du-pharo": {
+  "photo": "/img/fr/marseille/places/palais-du-pharo.jpg",
+  "source": "Wikimedia Commons",
+  "file": "File:Le_palais_du_Pharo.jpg",
+  "file_url": "https://commons.wikimedia.org/wiki/File:Le_palais_du_Pharo.jpg",
+  "license": "CC BY-SA 4.0",
+  "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+  "author": "Remontees",
+  "fetched_at": "2026-07-22T22:41:09.888815+00:00"
+ },
+ "bibliotheque-alcazar": {
+  "photo": "/img/fr/marseille/places/bibliotheque-alcazar.jpg",
+  "source": "Wikimedia Commons",
+  "file": "File:La bibliothèque de l'Alcazar.jpg",
+  "file_url": "https://commons.wikimedia.org/wiki/File:La_biblioth%C3%A8que_de_l%27Alcazar.jpg",
+  "license": "CC BY-SA 4.0",
+  "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+  "author": "Charlotte Noblet",
+  "fetched_at": "2026-07-22T22:41:11.386203+00:00"
+ },
+ "la-criee": {
+  "photo": "/img/fr/marseille/places/la-criee.jpg",
+  "source": "Wikimedia Commons",
+  "file": "File:Théâtre National de la Criée.jpg",
+  "file_url": "https://commons.wikimedia.org/wiki/File:Th%C3%A9%C3%A2tre_National_de_la_Cri%C3%A9e.jpg",
+  "license": "CC BY-SA 4.0",
+  "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+  "author": "Arnaud 25",
+  "fetched_at": "2026-07-22T22:41:12.746410+00:00"
+ },
+ "parc-borely": {
+  "photo": "/img/fr/marseille/places/parc-borely.jpg",
+  "source": "Wikimedia Commons",
+  "file": "File:Marseille-Château_Borély(2).jpg",
+  "file_url": "https://commons.wikimedia.org/wiki/File:Marseille-Ch%C3%A2teau_Bor%C3%A9ly(2).jpg",
+  "license": "CC BY-SA 3.0",
+  "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
+  "author": "Charliemoon",
+  "fetched_at": "2026-07-22T22:42:04.011386+00:00"
+ }
+}

@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-22T17:17:19.873746+00:00",
+ "generated_at": "2026-07-22T21:17:05.614079+00:00",
  "source_pipeline": "configs/countries/br.yaml → sync_ckan_dataset.py → raw.br_recife_* → dbt_br_staging → dbt_br_analytics → dbt_br_marts → export_br_recife.py",
  "country": "br",
  "scale": "city",

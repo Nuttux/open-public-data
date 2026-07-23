@@ -1,7 +1,6 @@
 {
-  "generated_at": "2026-05-07T18:09:16.727637+00:00",
-  "source": "POC stub Marseille — data.gouv.fr SCDL `marseille-subventions-{year}`",
-  "note": "POC stub Marseille v1 — subventions Ville uniquement. Métropole AMP `subventions-attribuees-depuis-2022` à ajouter en phase 2.",
+  "generated_at": "2026-07-23T00:02:18.438504",
+  "source": "dbt marts (mart_subventions_treemap, mart_subventions_beneficiaires)",
   "availableYears": [
     2022,
     2021,
@@ -10,46 +9,59 @@
     2018,
     2017
   ],
-  "previewYears": [],
   "totalsByYear": {
-    "2017": {
-      "montant_total": 157626542.35,
-      "nb_subventions": 1688
+    "2022": {
+      "montant_total": 172514554.61999997,
+      "nb_subventions": 3132
     },
-    "2018": {
-      "montant_total": 128895727.28999999,
-      "nb_subventions": 1463
+    "2021": {
+      "montant_total": 148108657.06000003,
+      "nb_subventions": 2817
+    },
+    "2020": {
+      "montant_total": 139818913.57999995,
+      "nb_subventions": 2091
     },
     "2019": {
       "montant_total": 137991449.87,
       "nb_subventions": 1570
     },
-    "2020": {
-      "montant_total": 139818913.58,
-      "nb_subventions": 2091
+    "2018": {
+      "montant_total": 128895727.29000004,
+      "nb_subventions": 1463
     },
-    "2021": {
-      "montant_total": 148108657.06,
-      "nb_subventions": 2817
-    },
-    "2022": {
-      "montant_total": 172514554.62,
-      "nb_subventions": 3132
+    "2017": {
+      "montant_total": 157626542.35000002,
+      "nb_subventions": 1688
     }
   },
   "filters": {
-    "thematiques": [],
-    "naturesJuridiques": [
+    "thematiques": [
+      "Social",
+      "Culture",
+      "Économie",
+      "Éducation",
+      "Sport",
+      "Non classifié",
+      "Administration",
+      "Santé",
+      "Environnement",
+      "Logement",
+      "International",
+      "Sécurité"
+    ],
+    "natures_juridiques": [
       "Associations",
       "Autres personnes de droit privé",
       "Autres personnes de droit public",
       "Communes",
       "Départements",
       "Entreprises",
-      "Etablissements de droit public",
+      "Etablissements publics",
       "Etat",
       "Personnes physiques",
       "Régions"
-    ]
+    ],
+    "directions": []
   }
 }

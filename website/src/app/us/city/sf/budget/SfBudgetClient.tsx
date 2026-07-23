@@ -6,8 +6,6 @@ import Link from "next/link";
 import SectionHead from "@/components/fusion/SectionHead";
 import PageTOC from "@/components/fusion/PageTOC";
 import PageIntro, { IntroStat } from "@/components/fusion/PageIntro";
-import HeroNumber from "@/components/fusion/HeroNumber";
-import KPIGrid from "@/components/fusion/KPIGrid";
 import AnimatedNumber from "@/components/fusion/AnimatedNumber";
 import BarRow from "@/components/fusion/BarRow";
 import YearPicker from "@/components/fusion/YearPicker";
@@ -102,37 +100,6 @@ function SourceLine({
   );
 }
 
-function CompareBar({
-  label,
-  value,
-  widthPct,
-  muted,
-}: {
-  label: string;
-  value: string;
-  widthPct: number;
-  muted: boolean;
-}) {
-  return (
-    <div style={{ display: "grid", gridTemplateColumns: "minmax(120px, 180px) 1fr minmax(100px, auto)", gap: 16, alignItems: "center" }}>
-      <div style={{ fontFamily: "var(--f-mono)", fontSize: 12, color: "var(--ink-2)", letterSpacing: ".04em", textTransform: "uppercase" }}>{label}</div>
-      <div style={{ position: "relative", height: 18, background: "var(--rule)" }}>
-        <div
-          style={{
-            position: "absolute",
-            left: 0,
-            top: 0,
-            bottom: 0,
-            width: `${Math.max(0, Math.min(100, widthPct))}%`,
-            background: muted ? "var(--ink-2)" : "var(--ink)",
-            transition: "width 300ms",
-          }}
-        />
-      </div>
-      <div className="tnum" style={{ fontFamily: "var(--f-num)", fontSize: 15, fontWeight: 600, textAlign: "right" }}>{value}</div>
-    </div>
-  );
-}
 
 export default function SfBudgetClient({ d }: { d: SfBudgetPageData }) {
   const t = useT();
@@ -220,22 +187,6 @@ export default function SfBudgetClient({ d }: { d: SfBudgetPageData }) {
     (c) => c.display_category === "internal" || c.display_category === "adjustment" || c.total_usd < 0,
   );
 
-  // s05 — spine + selected point
-  const spinePoint = d.spine.find((p) => p.fiscal_year === fy);
-  const showComparison =
-    (status === "closed" || status === "recently_closed_preliminary") &&
-    spinePoint?.budget_usd != null &&
-    spinePoint?.actual_usd != null &&
-    spinePoint.budget_usd > 0;
-  const execRate =
-    showComparison && spinePoint?.actual_usd != null && spinePoint?.budget_usd != null
-      ? (spinePoint.actual_usd / spinePoint.budget_usd) * 100
-      : null;
-  // Closed years — used only for the empty-state fallback CTA on future years.
-  const spineClosed = d.spine.filter(
-    (p) => p.budget_usd != null && p.actual_usd != null && p.residual_pct != null &&
-      d.statuses[String(p.fiscal_year)] === "closed",
-  );
 
   const statusNoticeKey =
     status === "adopted_only"
@@ -255,7 +206,6 @@ export default function SfBudgetClient({ d }: { d: SfBudgetPageData }) {
     <section className="fx-section" id="sec-trend">
       <div className="fx-wrap">
         <SectionHead
-          kind={t("us.sf.budget.strend.kind")}
           title={
             <>
               {t("us.sf.budget.strend.title.before")}
@@ -292,14 +242,12 @@ export default function SfBudgetClient({ d }: { d: SfBudgetPageData }) {
         items={[
           { id: "sec-composition", label: t("us.sf.budget.scomp.kind") },
           { id: "sec-revenue", label: t("us.sf.budget.toc.revenue") },
-          { id: "sec-execution", label: t("us.sf.budget.toc.execution") },
           { id: "sec-trend", label: t("us.sf.budget.strend.kind") },
         ]}
       />
 
       {/* ── Opener: signature stat band (folds the former "01 Overview") ── */}
       <PageIntro
-        kicker={fill(t("us.sf.budget.kicker"), { fy })}
         title={
           <>
             {t("us.sf.budget.title.before")}
@@ -416,7 +364,6 @@ export default function SfBudgetClient({ d }: { d: SfBudgetPageData }) {
       <section className="fx-section" id="sec-composition">
         <div className="fx-wrap">
           <SectionHead
-            kind={t("us.sf.budget.scomp.kind")}
             title={
               <>
                 {t("us.sf.budget.scomp.title.before")}
@@ -635,7 +582,6 @@ export default function SfBudgetClient({ d }: { d: SfBudgetPageData }) {
       <section className="fx-section" id="sec-revenue">
         <div className="fx-wrap">
           <SectionHead
-            kind={t("us.sf.budget.s04.kind")}
             title={
               <>
                 {t("us.sf.budget.s04.title.before")}
@@ -713,154 +659,6 @@ export default function SfBudgetClient({ d }: { d: SfBudgetPageData }) {
             <p className="fx-note">{fill(t("us.sf.budget.s03.no_drill"), { fy })}</p>
           )}
           <SourceLine label={srcLabel} links={budgetLinks} dataWord={dataWord} />
-        </div>
-      </section>
-
-      {/* ── 05 · Adopted vs executed ── */}
-      <section className="fx-section" id="sec-execution">
-        <div className="fx-wrap">
-          <SectionHead
-            kind={t("us.sf.budget.s05.kind")}
-            title={
-              <>
-                {t("us.sf.budget.s05.title.before")}
-                <em>{t("us.sf.budget.s05.title.em")}</em>
-                {t("us.sf.budget.s05.title.after")}
-              </>
-            }
-            subtitle={(() => {
-              const sub = t("us.sf.budget.s05.sub");
-              const term = "Operating funds";
-              const i = sub.indexOf(term);
-              if (i < 0) return sub;
-              return (
-                <>
-                  {sub.slice(0, i)}
-                  <Tip label="Operating funds only: capital and multi-year project funds legitimately spend across years and can't be compared to a single year's budget.">
-                    {term}
-                  </Tip>
-                  {sub.slice(i + term.length)}
-                </>
-              );
-            })()}
-          />
-
-          {!showComparison ? (
-            <EmptyState
-              label={t("us.sf.budget.s05.empty.label")}
-              title={fill(t("us.sf.budget.s05.empty.title"), { fy })}
-              body={t("us.sf.budget.s05.empty.body")}
-              actions={
-                <>
-                  {spineClosed
-                    .slice(-3)
-                    .reverse()
-                    .map((p) => (
-                      <Button
-                        key={p.fiscal_year}
-                        href={`/us/city/sf/budget?year=${p.fiscal_year}#sec-execution`}
-                      >
-                        {fill(t("us.sf.budget.s05.empty.cta"), { fy: p.fiscal_year })}
-                      </Button>
-                    ))}
-                </>
-              }
-            />
-          ) : (
-            <>
-              {status === "recently_closed_preliminary" && (
-                <div className="fx-callout" style={{ marginBottom: 22 }}>
-                  <b>{t("us.sf.budget.s05.prelim.title")}</b>{" "}
-                  {fill(t("us.sf.budget.s05.prelim.body"), { fy })}
-                </div>
-              )}
-              <div className="fx-overview">
-                <HeroNumber
-                  label={fill(t("us.sf.budget.s05.hero_label"), { fy })}
-                  value={
-                    <AnimatedNumber
-                      value={execRate ?? 0}
-                      format={(n) => n.toFixed(1)}
-                    />
-                  }
-                  unit="%"
-                  caption={
-                    <>
-                      {t("us.sf.budget.s05.hero_cap.a")}
-                      <b>{fmtUsdCompact(spinePoint?.budget_usd ?? 0)}</b>
-                      {t("us.sf.budget.s05.hero_cap.b")}
-                      <b>{fmtUsdCompact(spinePoint?.actual_usd ?? 0)}</b>
-                      {t("us.sf.budget.s05.hero_cap.c")}
-                    </>
-                  }
-                />
-                <KPIGrid
-                  cols={2}
-                  items={[
-                    {
-                      label: (
-                        <Tip label={t("us.sf.budget.s05.kpi.budget_tip")}>
-                          {t("us.sf.budget.s05.kpi.budget")}
-                        </Tip>
-                      ),
-                      value: fmtUsdCompact(spinePoint?.budget_usd ?? 0),
-                    },
-                    {
-                      label: (
-                        <Tip label={t("us.sf.budget.s05.kpi.actual_tip")}>
-                          {t("us.sf.budget.s05.kpi.actual")}
-                        </Tip>
-                      ),
-                      value: fmtUsdCompact(spinePoint?.actual_usd ?? 0),
-                    },
-                    {
-                      label: t("us.sf.budget.s05.kpi.gap"),
-                      value: fmtUsdCompact(
-                        (spinePoint?.actual_usd ?? 0) - (spinePoint?.budget_usd ?? 0),
-                      ),
-                    },
-                    {
-                      label: t("us.sf.budget.s05.kpi.residual"),
-                      value: fmtYoy(spinePoint?.residual_pct ?? 0),
-                      delta: t("us.sf.budget.s05.kpi.residual_note"),
-                    },
-                  ]}
-                />
-              </div>
-              <div style={{ marginTop: 28, paddingTop: 24, borderTop: "1px solid var(--rule)" }}>
-                <div style={{ fontFamily: "var(--f-mono)", fontSize: 11, color: "var(--muted)", letterSpacing: ".08em", textTransform: "uppercase", marginBottom: 14 }}>
-                  {t("us.sf.budget.s05.compare_kicker")}
-                </div>
-                <div style={{ display: "grid", gap: 14 }}>
-                  <CompareBar
-                    label={t("us.sf.budget.s05.kpi.budget")}
-                    value={fmtUsdCompact(spinePoint?.budget_usd ?? 0)}
-                    widthPct={100}
-                    muted={false}
-                  />
-                  <CompareBar
-                    label={t("us.sf.budget.s05.kpi.actual")}
-                    value={fmtUsdCompact(spinePoint?.actual_usd ?? 0)}
-                    widthPct={execRate ?? 0}
-                    muted
-                  />
-                </div>
-              </div>
-            </>
-          )}
-
-          <SourceLine
-            label={srcLabel}
-            links={
-              d.bvaTable
-                ? [
-                    { name: t("us.sf.budget.s05.src_budget"), href: d.bvaTable.sources.budget_url },
-                    { name: t("us.sf.budget.s05.src_actuals"), href: d.bvaTable.sources.actuals_url },
-                  ]
-                : budgetLinks
-            }
-            dataWord={dataWord}
-          />
         </div>
       </section>
 

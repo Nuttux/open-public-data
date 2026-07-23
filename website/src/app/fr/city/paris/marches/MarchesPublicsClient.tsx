@@ -58,6 +58,11 @@ export default function MarchesPublicsClient({
   // derive the city from the URL so the lazy contract fetch hits the right
   // /data/<city>/marches-publics/ files.
   const citySlug = citySlugFromPathname(usePathname());
+  // City-scoped bases so every in-page link (year picker, category filter,
+  // supplier fiches, cross-links) stays inside the active city — the same
+  // client serves Paris and Marseille (ADR-0010: adapter, not fork).
+  const cityBase = `/fr/city/${citySlug}`;
+  const marchesBase = `${cityBase}/marches`;
   const top10Pct = d.total > 0 ? (d.top10.reduce((s, ti) => s + ti.amount, 0) / d.total) * 100 : 0;
 
   return (
@@ -103,7 +108,7 @@ export default function MarchesPublicsClient({
           <YearPicker
             years={(idx.availableYears ?? []).slice().sort((a, b) => a - b)}
             current={d.year}
-            basePath="/fr/city/paris/marches"
+            basePath={marchesBase}
             label={t("fx.s.year_label")}
           />
         }
@@ -417,7 +422,7 @@ export default function MarchesPublicsClient({
             total={d.total}
             concentrationTop10Pct={top10Pct}
             year={d.year}
-            basePath="/fr/city/paris/marches"
+            basePath={marchesBase}
             kicker={fill(t("fx.mp.s02.kicker"), { year: d.year })}
             entityNoun={t("fx.mp.s02.entity_noun")}
             paretoContrast={t("fx.mp.s02.pareto_contrast")}
@@ -459,9 +464,9 @@ export default function MarchesPublicsClient({
           >
             <b style={{ color: "var(--ink)" }}>{t("fx.mp.s01.cross.title")}</b> {t("fx.mp.s01.cross.body")}
             {" "}
-            <Link href="/fr/city/paris/budget" style={{ color: "var(--bleu)", borderBottom: "1px solid var(--bleu)" }}>{t("fx.mp.s01.cross.link_budget")}</Link>
+            <Link href={`${cityBase}/budget`} style={{ color: "var(--bleu)", borderBottom: "1px solid var(--bleu)" }}>{t("fx.mp.s01.cross.link_budget")}</Link>
             {" · "}
-            <Link href="/fr/city/paris/investissements" style={{ color: "var(--bleu)", borderBottom: "1px solid var(--bleu)" }}>{t("fx.mp.s01.cross.link_invest")}</Link>
+            <Link href={`${cityBase}/investissements`} style={{ color: "var(--bleu)", borderBottom: "1px solid var(--bleu)" }}>{t("fx.mp.s01.cross.link_invest")}</Link>
             {" · "}
             <Link href="/methode#marches-publics" style={{ color: "var(--bleu)", borderBottom: "1px solid var(--bleu)" }}>{t("fx.mp.s01.cross.link_methode")}</Link>
           </div>
@@ -486,7 +491,7 @@ export default function MarchesPublicsClient({
                 share: Math.round(ranking.topSharePct),
               })}
             />
-            <FournisseursBumpChart data={ranking} ficheBase="/fr/city/paris/marches" />
+            <FournisseursBumpChart data={ranking} ficheBase={marchesBase} />
             <p className="fx-note">{t("fx.mp.rank.note")}</p>
             <ChartSource
               source={fill(t("fx.mp.rank.source.cite"), { from: ranking.years[0], to: ranking.years[ranking.years.length - 1] })}

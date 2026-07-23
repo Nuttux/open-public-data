@@ -24,7 +24,7 @@ import type {
  * brand yet (working title only).
  */
 export const metadata: Metadata = {
-  title: { absolute: "San Francisco · Payroll — what city work pays" },
+  title: { absolute: "US · San Francisco — Payroll" },
   description:
     "San Francisco's $6.9B city payroll: 13 years of compensation, the " +
     "overtime pattern in 24/7 services, and what city work pays from " +

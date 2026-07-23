@@ -123,7 +123,19 @@ seeds:
         ode_confiance: FLOAT64
         ode_date_recherche: STRING
         ode_source: STRING
-    
+
+    # -------------------------------------------------------------------------
+    # Marseille — cache Bénéficiaire → Thématique
+    # (peuplé par enrich_thematique_marseille.py ; grounded secteur + keywords)
+    # -------------------------------------------------------------------------
+    seed_marseille_cache_thematique:
+      +column_types:
+        beneficiaire_normalise: STRING
+        ode_thematique: STRING
+        ode_sous_categorie: STRING
+        ode_confiance: FLOAT64
+        ode_source: STRING
+
     # -------------------------------------------------------------------------
     # Budget Voté (BP) extrait des PDFs éditique BG (2020-2026)
     # Peuplé par: extract_pdf_budget_vote.py (pdfplumber)

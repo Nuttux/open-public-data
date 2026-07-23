@@ -25,7 +25,7 @@ export default function ContratFiche({
 }) {
   const t = useT();
   const { locale } = useLocale();
-  const { basePath } = useCity();
+  const { basePath, slug } = useCity();
   const locStr = numLocale(locale);
 
   const fmtEur = useFmtEur();
@@ -486,9 +486,11 @@ export default function ContratFiche({
               <dd>{contrat.perimetre}</dd>
             </div>
           )}
-          {contrat.numero.startsWith("decp-") ? (
-            /* Marché issu des DECP consolidées : pas de page par enregistrement
-             * côté data.gouv, on pointe le jeu de données lui-même. */
+          {contrat.numero.startsWith("decp-") || slug !== "paris" ? (
+            /* Marché issu des DECP consolidées OU d'une autre ville (SCDL sur
+             * data.gouv) : pas de page par enregistrement, on pointe le jeu de
+             * données consolidé. Le lien opendata.paris.fr ci-dessous ne vaut
+             * que pour Paris (refine.num_marche vérifié 30/30 sur échantillon). */
             <div className="fx-fiche-prop">
               <dt>{t("fx.fiche.contrat.decp")}</dt>
               <dd>

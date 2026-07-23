@@ -5,7 +5,7 @@ import Landing from "@/components/landing/Landing";
 import { buildSfLandingModel } from "@/lib/us/sf-landing-model";
 
 export const metadata: Metadata = {
-  title: { absolute: "San Francisco — follow the city's money and record" },
+  title: { absolute: "US · San Francisco" },
   description:
     "San Francisco's budget, payments, contracts, payroll and places — the city's money and its historical record, every figure linked to its source.",
 };

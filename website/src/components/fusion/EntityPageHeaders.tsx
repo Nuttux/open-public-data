@@ -15,6 +15,7 @@
 import Link from "next/link";
 import { useT, useLocale } from "@/lib/localeContext";
 import { sufOrdinal } from "@/lib/fmt";
+import { useCity } from "./CityContext";
 
 const fill = (s: string, vars: Record<string, string | number>) => {
   let r = s;
@@ -28,9 +29,10 @@ const fill = (s: string, vars: Record<string, string | number>) => {
 
 export function MarchesBackKicker() {
   const t = useT();
+  const { basePath } = useCity();
   return (
     <div className="fx-page-kicker">
-      <Link href="/fr/city/paris/marches" style={{ color: "var(--ocre)" }}>
+      <Link href={`${basePath}/marches`} style={{ color: "var(--ocre)" }}>
         {t("fx.fiche.back.marches")}
       </Link>
     </div>
@@ -48,11 +50,11 @@ export function InvestBackKicker() {
   );
 }
 
-export function SubventionsBackKicker() {
+export function SubventionsBackKicker({ href = "/fr/city/paris/subventions" }: { href?: string } = {}) {
   const t = useT();
   return (
     <div className="fx-page-kicker">
-      <Link href="/fr/city/paris/subventions" style={{ color: "var(--ocre)" }}>
+      <Link href={href} style={{ color: "var(--ocre)" }}>
         {t("fx.fiche.back.subventions")}
       </Link>
     </div>
