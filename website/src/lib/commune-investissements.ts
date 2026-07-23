@@ -1,5 +1,5 @@
 import "server-only";
-import { Storage } from "@google-cloud/storage";
+import { communeStorage } from "@/lib/commune-gcs";
 import manifest from "@/data/communes-investissements-manifest.json";
 
 /** National commune investissements (DGFiP balances, section investissement) —
@@ -16,15 +16,6 @@ const M = manifest as Manifest;
 
 const BUCKET_NAME = process.env.COMMUNE_DATA_BUCKET ?? "qipu-communes-budget";
 const PREFIX = process.env.COMMUNE_INVEST_PREFIX ?? "communes-investissements";
-
-let _storage: Storage | null = null;
-function gcs(): Storage {
-  if (!_storage)
-    _storage = new Storage({
-      projectId: process.env.GCP_PROJECT ?? process.env.BQ_PROJECT ?? "open-data-france-484717",
-    });
-  return _storage;
-}
 
 export function communeHasInvestissements(slug: string): boolean {
   const e = M.communes[slug];
@@ -48,7 +39,7 @@ export async function loadCommuneInvestissements(slug: string): Promise<Investis
   const key = `${PREFIX}/${slug}/investissements.json`;
   if (memo.has(key)) return memo.get(key) ?? null;
   try {
-    const [buf] = await gcs().bucket(BUCKET_NAME).file(key).download();
+    const [buf] = await communeStorage().bucket(BUCKET_NAME).file(key).download();
     const val = JSON.parse(buf.toString("utf8")) as InvestissementsData;
     memo.set(key, val);
     return val;

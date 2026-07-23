@@ -1,5 +1,5 @@
 import "server-only";
-import { Storage } from "@google-cloud/storage";
+import { communeStorage } from "@/lib/commune-gcs";
 import manifest from "@/data/communes-evolution-manifest.json";
 
 /** National commune évolution (OFGL, 7 ans) — per-commune trajectory JSON in the
@@ -10,15 +10,6 @@ const M = manifest as Manifest;
 
 const BUCKET_NAME = process.env.COMMUNE_DATA_BUCKET ?? "qipu-communes-budget";
 const PREFIX = process.env.COMMUNE_EVOL_PREFIX ?? "communes-evolution";
-
-let _storage: Storage | null = null;
-function gcs(): Storage {
-  if (!_storage)
-    _storage = new Storage({
-      projectId: process.env.GCP_PROJECT ?? process.env.BQ_PROJECT ?? "open-data-france-484717",
-    });
-  return _storage;
-}
 
 export function communeHasEvolution(slug: string): boolean {
   const e = M.communes[slug];
@@ -51,7 +42,7 @@ export async function loadCommuneEvolution(slug: string): Promise<EvolutionData 
   const key = `${PREFIX}/${slug}/evolution.json`;
   if (memo.has(key)) return memo.get(key) ?? null;
   try {
-    const [buf] = await gcs().bucket(BUCKET_NAME).file(key).download();
+    const [buf] = await communeStorage().bucket(BUCKET_NAME).file(key).download();
     const val = JSON.parse(buf.toString("utf8")) as EvolutionData;
     memo.set(key, val);
     return val;

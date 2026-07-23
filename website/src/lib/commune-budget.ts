@@ -1,5 +1,5 @@
 import "server-only";
-import { Storage } from "@google-cloud/storage";
+import { communeStorage } from "@/lib/commune-gcs";
 import type { BudgetPageData } from "@/lib/fusion-data";
 import manifest from "@/data/communes-budget-manifest.json";
 
@@ -29,18 +29,6 @@ const M = manifest as Manifest;
 
 const BUCKET_NAME = process.env.COMMUNE_DATA_BUCKET ?? "qipu-communes-budget";
 const BUCKET_PREFIX = process.env.COMMUNE_DATA_PREFIX ?? "communes-budget";
-
-// Lazy singleton — GCP creds via Application Default Credentials (gcloud ADC in
-// dev; GOOGLE_APPLICATION_CREDENTIALS / a service account on the host).
-let _storage: Storage | null = null;
-function gcs(): Storage {
-  if (!_storage) {
-    _storage = new Storage({
-      projectId: process.env.GCP_PROJECT ?? process.env.BQ_PROJECT ?? "open-data-france-484717",
-    });
-  }
-  return _storage;
-}
 
 // ── Manifest-backed capability (local, sync) ───────────────────────────────
 export function communeHasBudgetNature(slug: string): boolean {
@@ -77,7 +65,7 @@ const memo = new Map<string, unknown>();
 async function readJson<T>(objectPath: string): Promise<T | null> {
   if (memo.has(objectPath)) return memo.get(objectPath) as T | null;
   try {
-    const [buf] = await gcs().bucket(BUCKET_NAME).file(objectPath).download();
+    const [buf] = await communeStorage().bucket(BUCKET_NAME).file(objectPath).download();
     const val = JSON.parse(buf.toString("utf8")) as T;
     memo.set(objectPath, val);
     return val;
