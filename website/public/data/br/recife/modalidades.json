@@ -1,0 +1,1948 @@
+{
+ "generated_at": "2026-07-24T12:03:58.934630+00:00",
+ "source_pipeline": "configs/countries/br.yaml → sync_ckan_dataset.py → raw.br_recife_* → dbt_br_staging → dbt_br_analytics → dbt_br_marts → export_br_recife.py",
+ "country": "br",
+ "scale": "city",
+ "place": "recife",
+ "unit": "BRL",
+ "as_of": null,
+ "source": {
+  "name": "Contratos , Aditivos e Apostilamentos",
+  "portal": "Dados Abertos da Prefeitura do Recife (CKAN)",
+  "license": "Open Data Commons Open Database License (ODbL)",
+  "source_url": "https://dados.recife.pe.gov.br/dataset/contratos",
+  "as_of": null
+ },
+ "count": 5,
+ "items": {
+  "dispensa": {
+   "modalidade": "DISPENSA",
+   "slug": "dispensa",
+   "n_contratos": 843,
+   "valor_total": 694008588.76,
+   "n_ativos": 45,
+   "valor_ativo": 1200000.0,
+   "by_year": [
+    {
+     "ano": 2004,
+     "n": 1,
+     "valor": 5100.0
+    },
+    {
+     "ano": 2007,
+     "n": 2,
+     "valor": 179084.71
+    },
+    {
+     "ano": 2010,
+     "n": 1,
+     "valor": 54267.89
+    },
+    {
+     "ano": 2013,
+     "n": 1,
+     "valor": 2036009.48
+    },
+    {
+     "ano": 2014,
+     "n": 6,
+     "valor": 784273.64
+    },
+    {
+     "ano": 2015,
+     "n": 6,
+     "valor": 596401.69
+    },
+    {
+     "ano": 2016,
+     "n": 3,
+     "valor": 1089448.47
+    },
+    {
+     "ano": 2017,
+     "n": 1,
+     "valor": 1.0
+    },
+    {
+     "ano": 2018,
+     "n": 23,
+     "valor": 17345341.96
+    },
+    {
+     "ano": 2019,
+     "n": 49,
+     "valor": 87964948.65
+    },
+    {
+     "ano": 2020,
+     "n": 46,
+     "valor": 66287570.36
+    },
+    {
+     "ano": 2021,
+     "n": 61,
+     "valor": 39001335.05
+    },
+    {
+     "ano": 2022,
+     "n": 62,
+     "valor": 0.0
+    },
+    {
+     "ano": 2023,
+     "n": 54,
+     "valor": 0.0
+    },
+    {
+     "ano": 2024,
+     "n": 68,
+     "valor": 0.0
+    },
+    {
+     "ano": 2025,
+     "n": 63,
+     "valor": 0.0
+    }
+   ],
+   "top_orgaos": [
+    {
+     "orgao": "FUNDO MUNICIPAL DE SAUDE",
+     "slug": null,
+     "valor": 245866218.18,
+     "n": 113
+    },
+    {
+     "orgao": "SECRETARIA DE EDUCAÇÃO",
+     "slug": "secretaria-de-educacao",
+     "valor": 206402401.23,
+     "n": 204
+    },
+    {
+     "orgao": "EMLURB - AUTARQUIA DE MANUTENÇÃO E LIMPEZA URBANA",
+     "slug": null,
+     "valor": 87796960.33,
+     "n": 37
+    },
+    {
+     "orgao": "SECRETARIA DE SANEAMENTO",
+     "slug": "secretaria-de-saneamento",
+     "valor": 50975278.7,
+     "n": 12
+    },
+    {
+     "orgao": "FUNDO MUNICIPAL DE ASSISTÊNCIA SOCIAL - FMAS",
+     "slug": null,
+     "valor": 34712361.76,
+     "n": 36
+    },
+    {
+     "orgao": "SECRETARIA DE ADMINISTRAÇÃO",
+     "slug": "secretaria-de-administracao",
+     "valor": 30824506.25,
+     "n": 31
+    },
+    {
+     "orgao": "EMPREL - EMPRESA MUNICIPAL DE INFORMÁTICA",
+     "slug": null,
+     "valor": 8555446.7,
+     "n": 76
+    },
+    {
+     "orgao": "SECRETARIA DE ASSSTÊNCIA SOCIAL E COMBATE À FOME",
+     "slug": null,
+     "valor": 4829533.18,
+     "n": 34
+    },
+    {
+     "orgao": null,
+     "slug": null,
+     "valor": 24045882.43,
+     "n": 300
+    }
+   ],
+   "top_suppliers": [
+    {
+     "cnpj": "09039744000194",
+     "nome": "FUNDAÇÃO PROFESSOR MARTINIANO FERNANDES - IMIP HOSPITALAR",
+     "valor": 71269452.48,
+     "n": 1
+    },
+    {
+     "cnpj": "00749205000174",
+     "nome": "CONSTRUTORA INGAZEIRA LTDA",
+     "valor": 50975278.7,
+     "n": 1
+    },
+    {
+     "cnpj": "10894988000486",
+     "nome": "SOCIEDADE PERNAMBUCANA DE COMBATE AO CANCER",
+     "valor": 47050021.43,
+     "n": 1
+    },
+    {
+     "cnpj": "03706826000169",
+     "nome": "P.R.M. SERVIÇOS E MÃO DE OBRA ESPECIALIZADA EIRELI",
+     "valor": 43061594.27,
+     "n": 2
+    },
+    {
+     "cnpj": "42194191000110",
+     "nome": "NUTRICASH SERVICOS LTDA",
+     "valor": 34082926.13,
+     "n": 2
+    },
+    {
+     "cnpj": "28399030000131",
+     "nome": "INSTITUTO HUMANIZE DE ASSISTÊNCIA E RESPONSABILIDADE SOCIAL",
+     "valor": 34028654.07,
+     "n": 1
+    },
+    {
+     "cnpj": "06157352000131",
+     "nome": "JAIR SOUZA DE LIMA SERVICOS E CONSTRUCOES LTDA",
+     "valor": 28975000.0,
+     "n": 3
+    },
+    {
+     "cnpj": "40432544000147",
+     "nome": "CLARO S/A",
+     "valor": 28894694.16,
+     "n": 8
+    },
+    {
+     "cnpj": "13392132000158",
+     "nome": "CRX ENGENHARIA LTDA - EPP",
+     "valor": 28660000.0,
+     "n": 1
+    },
+    {
+     "cnpj": "01054258000133",
+     "nome": "EDACOM TECNOLOGIA EM SISTEMAS DE INFORMATICA LTDA",
+     "valor": 25956024.0,
+     "n": 1
+    },
+    {
+     "cnpj": "11555207000149",
+     "nome": "MOV SUPRIMENTOS LTDA ME",
+     "valor": 24146640.0,
+     "n": 1
+    },
+    {
+     "cnpj": "04528440000177",
+     "nome": "IMEPH INSTITUTO META DE EDUCACAO PESQUISA E FORMACAO DE RECURSOS HUMANOS LTDA",
+     "valor": 19985493.3,
+     "n": 1
+    },
+    {
+     "cnpj": "11006269000100",
+     "nome": "EMPREL - EMPRESA MUNICIPAL DE INFORMÁTICA",
+     "valor": 14655057.6,
+     "n": 6
+    },
+    {
+     "cnpj": "11164874000109",
+     "nome": "RC NUTRY ALIMENTACAO LTDA",
+     "valor": 11844413.02,
+     "n": 2
+    },
+    {
+     "cnpj": "00449936000102",
+     "nome": "ENGEMAIA & CIA LTDA",
+     "valor": 10294283.1,
+     "n": 2
+    }
+   ],
+   "top_contracts": [
+    {
+     "contrato_id": "4801-1014-2020",
+     "numero": "4801.1014/2020",
+     "objeto": "O GERENCIAMENTO, OPERACIONALIZAÇÃO E EXECUÇÃO DAS AÇÕES E SERVIÇOS DE SAÚDE NECESSÁRIOS PARA O ENFRENTAMENTO DA EMERGÊNCIA EM SAÚDE PÚBLICA DE IMPORTÂNCIA INTERNACIONAL, DECORRENTE DO NOVO CORONA VÍRUS, EM REGIME DE 24H POR DIA NO HOSPITAL PROVISÓRIO DO RECIFE - UNIDADE COELHOS, QUE ASSEGURE ASSISTÊNCIA UNIVERSAL GRATUITA À POPULAÇÃO, OBSERVADOS OS PRINCÍPIOS E LEGISLAÇÃO DO SUS, CONTANDO COM UM TOTAL DE 420 LEITOS DE INTERNAÇÃO DISTRIBUÍDOS, SENDO 320 LEITOS CLÍNICOS  DE ENFERMARIA DE ISOLAMENTO E 100 LEITOS DE UTI GERAL.",
+     "fornecedor": "FUNDAÇÃO PROFESSOR MARTINIANO FERNANDES - IMIP HOSPITALAR",
+     "fornecedor_cnpj": "09039744000194",
+     "orgao": "FUNDO MUNICIPAL DE SAUDE",
+     "orgao_slug": null,
+     "valor": 71269452.48,
+     "ano": null
+    },
+    {
+     "contrato_id": "2301-0004-2018",
+     "numero": "2301.0004/2018",
+     "objeto": "CONTRATAÇÃO DE EMPRESA DE ENGENHARIA PARA A EXECUÇÃO DAS OBRAS DE ESGOTAMENTO SANITÁRIO, PAVIMENTAÇÃO, DRENAGEM E CONSTRUÇÃO CIVIL.",
+     "fornecedor": "CONSTRUTORA INGAZEIRA LTDA",
+     "fornecedor_cnpj": "00749205000174",
+     "orgao": "SECRETARIA DE SANEAMENTO",
+     "orgao_slug": "secretaria-de-saneamento",
+     "valor": 50975278.7,
+     "ano": null
+    },
+    {
+     "contrato_id": "4801-1010-2020",
+     "numero": "4801.1010/2020",
+     "objeto": "O GERENCIAMENTO, OPERACIONALIZAÇÃO E EXECUÇÃO DAS AÇÕES E SERVIÇOS DE SAÚDE NECESSÁRIOS PARA O ENFRENTAMENTO DA EMERGÊNCIA EM SAÚDE PÚBLICA DE IMPORTÂNCIA INTERNACIONAL, DECORRENTE DO NOVO CORONA VÍRUS, EM REGIME DE 24H POR DIA NO HOSPITAL PROVISÓRIO DO RECIFE - UNIDADE AURORA, QUE ASSEGURE ASSISTÊNCIA UNIVERSAL GRATUITA À POPULAÇÃO, OBSERVADOS OS PRINCÍPIOS E LEGISLAÇÃO DO SUS.",
+     "fornecedor": "SOCIEDADE PERNAMBUCANA DE COMBATE AO CANCER",
+     "fornecedor_cnpj": "10894988000486",
+     "orgao": "FUNDO MUNICIPAL DE SAUDE",
+     "orgao_slug": null,
+     "valor": 47050021.43,
+     "ano": null
+    },
+    {
+     "contrato_id": "1401-0004-2019",
+     "numero": "1401.0004/2019",
+     "objeto": "FORNECIMENTO DE REFEIÇÕES (PREPARO, COCÇÃO, TRANSPORTE, DISTRIBUIÇÃO E HIGIENIZAÇÃO) - LOTES 1,3 E 4",
+     "fornecedor": "P.R.M. SERVIÇOS E MÃO DE OBRA ESPECIALIZADA EIRELI",
+     "fornecedor_cnpj": "03706826000169",
+     "orgao": "SECRETARIA DE EDUCAÇÃO",
+     "orgao_slug": "secretaria-de-educacao",
+     "valor": 37082039.5,
+     "ano": 2019
+    },
+    {
+     "contrato_id": "4801-1015-2020",
+     "numero": "4801.1015/2020",
+     "objeto": "O GERENCIAMENTO, OPERACIONALIZAÇÃO E EXECUÇÃO DAS AÇÕES E SERVIÇOS DE SAÚDE NECESSÁRIOS PARA O ENFRENTAMENTO DA EMERGÊNCIA EM SAÚDE PÚBLICA DE IMPORTÂNCIA INTERNACIONAL, DECORRENTE DO NOVO CORONA VÍRUS, EM REGIME DE 24H POR DIA NO HOSPITAL PROVISÓRIO DO RECIFE - UNIDADE IMBIRIBEIRA, QUE ASSEGURE ASSISTÊNCIA UNIVERSAL GRATUITA À POPULAÇÃO, OBSERVADOS OS PRINCÍPIOS E LEGISLAÇÃO DO SUS, CONTANDO COM UM TOTAL DE 107 LEITOS DE INTERNAÇÃO DISTRIBUÍDOS, SENDO 27 LEITOS CLÍNICOS  DE ENFERMARIA DE ISOLAMENTO E 80 LEITOS DE UTI GERAL.",
+     "fornecedor": "INSTITUTO HUMANIZE DE ASSISTÊNCIA E RESPONSABILIDADE SOCIAL",
+     "fornecedor_cnpj": "28399030000131",
+     "orgao": "FUNDO MUNICIPAL DE SAUDE",
+     "orgao_slug": null,
+     "valor": 34028654.07,
+     "ano": null
+    },
+    {
+     "contrato_id": "5010-2012-2016",
+     "numero": "5010.2012/2016",
+     "objeto": "FORNECIMENTO E INSTALAÇÃO DE FONTE LUMINOSA - CEMITÉRIO PARQUE DAS FLORES - CURADO",
+     "fornecedor": "JAIR SOUZA DE LIMA SERVICOS E CONSTRUCOES LTDA",
+     "fornecedor_cnpj": "06157352000131",
+     "orgao": "EMLURB - AUTARQUIA DE MANUTENÇÃO E LIMPEZA URBANA",
+     "orgao_slug": null,
+     "valor": 28960000.0,
+     "ano": null
+    },
+    {
+     "contrato_id": "5010-2002-2016",
+     "numero": "5010.2002/2016",
+     "objeto": "ELABORAÇÃO DE PROJETO EXECUTIVO DE SISTEMA DE ENERGIA ELETRICA PARA BARRACAS DE FEIRAS DE ARTESANATO LOCALIZADAS EM BOA VIAGEM, CASA FORTE, CAPIBARIBE, DONA LINDU, LAGOA DO ARAÇA E RECIFE ANTIGO",
+     "fornecedor": "CRX ENGENHARIA LTDA - EPP",
+     "fornecedor_cnpj": "13392132000158",
+     "orgao": "EMLURB - AUTARQUIA DE MANUTENÇÃO E LIMPEZA URBANA",
+     "orgao_slug": null,
+     "valor": 28660000.0,
+     "ano": null
+    },
+    {
+     "contrato_id": "1401-1037-2020",
+     "numero": "1401.1037/2020",
+     "objeto": "CONSTITUI OBJETO DESTE CONTRATO A PRESTAÇÃO DE SERVIÇOS DE ADMINISTRAÇÃO DE BENEFÍCIO DE AUXÍLIO ALIMENTAÇÃO, POR MEIO DE CARTÃO ELETRÔNICO COM CHIP E/OU TARJA MAGNÉTICA PARA PAGAMENTO DE GÊNERO ALIMENTÍCIOS, PARA ATENDER AS NECESSIDADES DA SECRETARIA DE EDUCAÇÃO.",
+     "fornecedor": "NUTRICASH SERVICOS LTDA",
+     "fornecedor_cnpj": "42194191000110",
+     "orgao": "SECRETARIA DE EDUCAÇÃO",
+     "orgao_slug": "secretaria-de-educacao",
+     "valor": 27910872.0,
+     "ano": 2021
+    },
+    {
+     "contrato_id": "1401-0359-2013",
+     "numero": "1401.0359/2013",
+     "objeto": "CONSTITUI OBJETO DO PRESENTE CONTRATO A AQUISIÇÃO DE MATERIAL TECNOLÓGICO DO TIPO ROBÓTICA LEGO ZOOM, PARA OS ESTUDANTES DA REDE MUNICIPAL DE ENSINO DO RECIFE, CONFORME TERMO DE REFERÊNCIA ANEXO AO PROCESSO.",
+     "fornecedor": "EDACOM TECNOLOGIA EM SISTEMAS DE INFORMATICA LTDA",
+     "fornecedor_cnpj": "01054258000133",
+     "orgao": "SECRETARIA DE EDUCAÇÃO",
+     "orgao_slug": "secretaria-de-educacao",
+     "valor": 25956024.0,
+     "ano": null
+    },
+    {
+     "contrato_id": "2901-0104-2020",
+     "numero": "2901.0104/2020",
+     "objeto": "AQUISICAO DE CESTA BASICA",
+     "fornecedor": "MOV SUPRIMENTOS LTDA ME",
+     "fornecedor_cnpj": "11555207000149",
+     "orgao": "FUNDO MUNICIPAL DE ASSISTÊNCIA SOCIAL - FMAS",
+     "orgao_slug": null,
+     "valor": 24146640.0,
+     "ano": 2020
+    },
+    {
+     "contrato_id": "1401-0447-2013",
+     "numero": "1401.0447/2013",
+     "objeto": "CONSTITUI OBJETO DO PRESENTE CONTRATO DE AQUISIÇÃO DE KIT'S DE LIVROS PARADIDÁTICOS DESTINADO A ATENDER AO PROJETO NAS ONDAS DA LEITURA PARA AS UNIDADES EDUCACIONAIS DA REDE MUNICIPAL DE ENSINO DO RECIFE, DE ACORDO COM O TERMO DE REFERÊNCIA E A PROPOSTA DA CONTRATADA.",
+     "fornecedor": "IMEPH INSTITUTO META DE EDUCACAO PESQUISA E FORMACAO DE RECURSOS HUMANOS LTDA",
+     "fornecedor_cnpj": "04528440000177",
+     "orgao": "SECRETARIA DE EDUCAÇÃO",
+     "orgao_slug": "secretaria-de-educacao",
+     "valor": 19985493.3,
+     "ano": null
+    },
+    {
+     "contrato_id": "1401-0002-2019",
+     "numero": "1401.0002/2019",
+     "objeto": "FORNECIMENTO DE REFEIÇÕES (PREPARO, COCÇÃO, TRANSPORTE, DISTRIBUIÇÃO E HIGIENIZAÇÃO) - LOTE 2 - REFEIÇÃO TIPO XI - BERÇÁRIO",
+     "fornecedor": "RC NUTRY ALIMENTACAO LTDA",
+     "fornecedor_cnpj": "11164874000109",
+     "orgao": "SECRETARIA DE EDUCAÇÃO",
+     "orgao_slug": "secretaria-de-educacao",
+     "valor": 11844413.02,
+     "ano": 2019
+    },
+    {
+     "contrato_id": "4801-0058-2020",
+     "numero": "4801.0058/2020",
+     "objeto": "DISPENSA DE LICITAÇÃO Nº 54/2019 PARA A CONTRATAÇÃO DA EMPRESA PERNAMBUCO CONSERVADORA EIRELI, CNPJ Nº 02.633.574/0001-22, PARA A PRESTAÇÃO DE SERVIÇOS TERCEIRIZADOS CONTÍNUOS COM DEDICAÇÃO DE MÃO DE OBRA EXCLUSIVA, LOTE ÚNICO, PARA ATENDER AS NECESSIDADES DA REDE MUNICIPAL DE SAÚDE DO RECIFE, PELO PERÍODO DE ATÉ 180 (CENTO E OITENTA) DIAS.",
+     "fornecedor": "PERNAMBUCO CONSERVADORA LTDA",
+     "fornecedor_cnpj": "02633574000122",
+     "orgao": "FUNDO MUNICIPAL DE SAUDE",
+     "orgao_slug": null,
+     "valor": 8984947.86,
+     "ano": 2020
+    },
+    {
+     "contrato_id": "aguardando-numera-o",
+     "numero": "Aguardando Numeração",
+     "objeto": "DISPENSA DE LICITAÇÃO COM BASE DO ART 24, VII DA LEI Nº 866/93, DO PROCESSO DISPENSA DE LICITAÇÃO Nº 33/2019, PARA CONTRATAÇÃO DA EMPRESA EMPREL, CMPJ 11.006.269/0001-00 QUE TEM POR OBJETO O FORNECIMENTO DE SISTEMA DE GESTÃO DE TERRITÓRIO COM APARELHOS EM COMODATO INCLUINDO FUNCIONALIDADES PARA COLETA, ORGANIZAÇÃO, MANUTENÇÃO DO SISTEMA, TREINAMENTO E SUPORTE AOS USUÁRIOS",
+     "fornecedor": "EMPREL - EMPRESA MUNICIPAL DE INFORMÁTICA",
+     "fornecedor_cnpj": "11006269000100",
+     "orgao": "FUNDO MUNICIPAL DE SAUDE",
+     "orgao_slug": null,
+     "valor": 8563795.2,
+     "ano": 2019
+    },
+    {
+     "contrato_id": "4801-0006-2017",
+     "numero": "4801.0006/2017",
+     "objeto": "CONTRATAÇÃO DE EMPRESA ESPECIALIZADA NA PRESTAÇÃO DE SERVIÇOS TERCEIRIZADOS, COM DEDICAÇÃO EXCLUSIVA DE MÃO DE OBRA DE MOTORISTA DA CATEGORIAS - CNH \"B\", \"C\", \"D\" PARA A CONDUÇÃO DE VEÍCULOS AUTOMOTORES, TIPO PASSEIO E DE GRANDE PORTE, PARA ATENDER AS NECESSIDADES DA SECRETARIA DE SAÚDE.",
+     "fornecedor": "R P L ENGENHARIA E SERVICOS LTDA",
+     "fornecedor_cnpj": "01781573000162",
+     "orgao": "FUNDO MUNICIPAL DE SAUDE",
+     "orgao_slug": null,
+     "valor": 7801771.68,
+     "ano": null
+    }
+   ]
+  },
+  "inexigibilidade": {
+   "modalidade": "INEXIGIBILIDADE",
+   "slug": "inexigibilidade",
+   "n_contratos": 1573,
+   "valor_total": 15615685095.54,
+   "n_ativos": 96,
+   "valor_ativo": 15295275720.0,
+   "by_year": [
+    {
+     "ano": 2014,
+     "n": 4,
+     "valor": 410000.0
+    },
+    {
+     "ano": 2015,
+     "n": 15,
+     "valor": 12498334.24
+    },
+    {
+     "ano": 2016,
+     "n": 11,
+     "valor": 16360680.26
+    },
+    {
+     "ano": 2017,
+     "n": 3,
+     "valor": 153192.21
+    },
+    {
+     "ano": 2018,
+     "n": 31,
+     "valor": 10325255.62
+    },
+    {
+     "ano": 2019,
+     "n": 26,
+     "valor": 14774547.9
+    },
+    {
+     "ano": 2020,
+     "n": 26,
+     "valor": 17961756.27
+    },
+    {
+     "ano": 2021,
+     "n": 68,
+     "valor": 8845048.18
+    },
+    {
+     "ano": 2022,
+     "n": 172,
+     "valor": 0.0
+    },
+    {
+     "ano": 2023,
+     "n": 347,
+     "valor": 15295275720.0
+    },
+    {
+     "ano": 2024,
+     "n": 393,
+     "valor": 0.0
+    },
+    {
+     "ano": 2025,
+     "n": 244,
+     "valor": 0.0
+    }
+   ],
+   "top_orgaos": [
+    {
+     "orgao": "SECRETARIA DE DESENVOLVIMENTO URBANO E LICENCIAMENTO",
+     "slug": "secretaria-de-desenvolvimento-urbano-e-licenciamento",
+     "valor": 15296115720.0,
+     "n": 8
+    },
+    {
+     "orgao": "SECRETARIA DE EDUCAÇÃO",
+     "slug": "secretaria-de-educacao",
+     "valor": 148886764.71,
+     "n": 146
+    },
+    {
+     "orgao": "EMLURB - AUTARQUIA DE MANUTENÇÃO E LIMPEZA URBANA",
+     "slug": null,
+     "valor": 71386319.32,
+     "n": 50
+    },
+    {
+     "orgao": "SECRETARIA DE TURISMO E LAZER",
+     "slug": "secretaria-de-turismo-e-lazer",
+     "valor": 13230174.92,
+     "n": 35
+    },
+    {
+     "orgao": "PROCURADORIA GERAL DO MUNICÍPIO",
+     "slug": "procuradoria-geral-do-municipio",
+     "valor": 10880869.04,
+     "n": 12
+    },
+    {
+     "orgao": "SECRETARIA DE PROJETOS ESPECIAIS",
+     "slug": "secretaria-de-projetos-especiais",
+     "valor": 9760763.98,
+     "n": 3
+    },
+    {
+     "orgao": "SECRETARIA DE CULTURA",
+     "slug": "secretaria-de-cultura",
+     "valor": 9675509.1,
+     "n": 37
+    },
+    {
+     "orgao": "SECRETARIA DE ADMINISTRAÇÃO",
+     "slug": "secretaria-de-administracao",
+     "valor": 9071708.18,
+     "n": 24
+    },
+    {
+     "orgao": null,
+     "slug": null,
+     "valor": 46677266.29,
+     "n": 1258
+    }
+   ],
+   "top_suppliers": [
+    {
+     "cnpj": "29036430000145",
+     "nome": "AGENCIA RECIFE PARA INOVACAO E ESTRATEGIA - ARIES",
+     "valor": 15295275720.0,
+     "n": 1
+    },
+    {
+     "cnpj": "08165091000208",
+     "nome": "ECOPESA AMBIENTAL S.A.",
+     "valor": 62612881.83,
+     "n": 1
+    },
+    {
+     "cnpj": "11006269000100",
+     "nome": "EMPREL - EMPRESA MUNICIPAL DE INFORMÁTICA",
+     "valor": 31666904.7,
+     "n": 4
+    },
+    {
+     "cnpj": "79719613000133",
+     "nome": "EDITORA POSITIVO LTDA",
+     "valor": 14532726.2,
+     "n": 2
+    },
+    {
+     "cnpj": "02004642000194",
+     "nome": "ABRAMUNDO EDUCAÇÃO EM CIÊNCIAS LTDA",
+     "valor": 12668911.51,
+     "n": 1
+    },
+    {
+     "cnpj": "04528440000177",
+     "nome": "IMEPH INSTITUTO META DE EDUCACAO PESQUISA E FORMACAO DE RECURSOS HUMANOS LTDA",
+     "valor": 12538348.0,
+     "n": 1
+    },
+    {
+     "cnpj": "03366083000125",
+     "nome": "HIDROMAX CONSTRUÇOES LTDA",
+     "valor": 11711010.9,
+     "n": 3
+    },
+    {
+     "cnpj": "02633573000188",
+     "nome": "AJ SERVICOS DE MAO DE OBRA EIRELI",
+     "valor": 11701561.5,
+     "n": 1
+    },
+    {
+     "cnpj": "06265064000109",
+     "nome": "G M QUALITY COMERCIO LTDA",
+     "valor": 11220000.0,
+     "n": 1
+    },
+    {
+     "cnpj": "04502762000147",
+     "nome": "EXPANSAO EMPREENDIMENTOS EDITORIAIS LTDA",
+     "valor": 10881000.0,
+     "n": 1
+    },
+    {
+     "cnpj": "09759606000180",
+     "nome": "SINDICATO DAS EMPRESAS DE TRANSPORTES DE PASSAGEIROS DO ESTADO DE PERNAMBUCO - URBANA/PE",
+     "valor": 10788587.1,
+     "n": 16
+    },
+    {
+     "cnpj": "04393475000146",
+     "nome": "INSTITUTO DE DESENVOLVIMENTO E GESTAO - IDG",
+     "valor": 10281436.0,
+     "n": 2
+    },
+    {
+     "cnpj": "04108150000174",
+     "nome": "PORTFOLIO EDITORA, COMERCIO E SERVICOS S.A",
+     "valor": 9197850.5,
+     "n": 1
+    },
+    {
+     "cnpj": "07688177000171",
+     "nome": "ADLIM TERCEIRIZACAO EM SERVICOS ESPECIALIZADOS LTDA",
+     "valor": 8911693.8,
+     "n": 1
+    },
+    {
+     "cnpj": "34028316002157",
+     "nome": "EMPRESA BRASILEIRA DE CORREIOS E TELEGRAFOS",
+     "valor": 8064627.68,
+     "n": 25
+    }
+   ],
+   "top_contracts": [
+    {
+     "contrato_id": "3101-1007-2023",
+     "numero": "3101.1007/2023",
+     "objeto": "PESQUISA CIENTÍFICA, SOCIAL E URBANÍSTICA, DESENVOLVIMENTO TECNOLÓGICO E DESENVOLVIMENTO DE MODELOS INOVADORES DE GESTÃO DE CIDADES.",
+     "fornecedor": "AGENCIA RECIFE PARA INOVACAO E ESTRATEGIA - ARIES",
+     "fornecedor_cnpj": "29036430000145",
+     "orgao": "SECRETARIA DE DESENVOLVIMENTO URBANO E LICENCIAMENTO",
+     "orgao_slug": "secretaria-de-desenvolvimento-urbano-e-licenciamento",
+     "valor": 15295275720.0,
+     "ano": 2023
+    },
+    {
+     "contrato_id": "5010-6013-2011",
+     "numero": "5010.6013/2011",
+     "objeto": "CONTRATAÇÃO DE EMPRESA ESPECIALIZADA NA PRESTAÇÃO DOS SERVIÇOS DE TRATAMENTO E DESTINAÇÃO FINAL DOS RESÍDUOS SÓLIDOS URBANOS (COLETADOS) NO MUNICIPIO DO RECIFE",
+     "fornecedor": "ECOPESA AMBIENTAL S.A.",
+     "fornecedor_cnpj": "08165091000208",
+     "orgao": "EMLURB - AUTARQUIA DE MANUTENÇÃO E LIMPEZA URBANA",
+     "orgao_slug": null,
+     "valor": 62612881.83,
+     "ano": null
+    },
+    {
+     "contrato_id": "1401-0159-2010",
+     "numero": "1401.0159/2010",
+     "objeto": "PRESTAÇÃO DE SERVIÇOS DE PROCESSAMENTO E CESSÃO DE DIREITO DE USO; LICENÇA DE USO COM MANUTENÇÃO E SUPORTE DE SISTEMAS APLICATIVOS, DISPONIBILIZAÇÃO DE INFRA-ESTRUTURA E CONSULTORIA; HOSPEDAGEM DOS SISTEMAS EM CPD 24X7 COM GERADOR, CÂMARAS DE SEGURANÇA E ATENDIMENTO TELEFÔNICO 24 HORAS POR DIA, 7 DIAS POR SEMANA; DISPONIBILIZAÇÃO DE INFRA-ESTRUTURA DE INTERNET E SERVIÇOS AGREGADOS; CONSULTORIA EM TECNOLOGIA DE SISTEMAS E SUPORTE PARA AQUISIÇÃO DE PRODUTOS E SERVIÇOS DE INFORMÁTICA E CONSULTORIA E TECNOLOGIA DE REDES ESTRUTURADAS, PARA ELABORAÇÃO, EXECUÇÃO E FISCALIZAÇÃO DE PROJETOS DE REDES ELÉTRICAS E DE DADOS PARA COMPUTADORES.",
+     "fornecedor": "EMPREL - EMPRESA MUNICIPAL DE INFORMÁTICA",
+     "fornecedor_cnpj": "11006269000100",
+     "orgao": "SECRETARIA DE EDUCAÇÃO",
+     "orgao_slug": "secretaria-de-educacao",
+     "valor": 26996400.0,
+     "ano": null
+    },
+    {
+     "contrato_id": "1401-0333-2014",
+     "numero": "1401.0333/2014",
+     "objeto": "O PRESENTE CONTRATO TEM POR OBJETO A IMPLANTAÇÃO, PELA CONTRATADA, DE UM PROGRAMA DE ENSINO DE CIÊNCIAS DA NATUREZA BASEADO NA METODOLOGIA DA INVESTIGAÇÃO E EXPERIMENTAÇÃO, PARA ALUNOS DO ENSINO FUNDAMENTAL (ANOS INICIAIS OU FINAIS) DAS ESCOLAS DESCRITAS NO TERMO DE REFERÊNCIA, ASSIM COMO, A PRESTAÇÃO DOS SERVIÇOS NECESSÁRIOS A FORMAÇÃO DOS PROFISSIONAIS DA EDUCAÇÃO E DO QUADRO DO MAGISTÉRIO DA REDE MUNICIPAL DE EDUCAÇÃO DA CIDADE DO RECIFE, BEM COMO O FORNECIMENTO DE MATERIAL DE APOIO DIDÁTICO-PEDAGÓGICO, MATERIAL DE INVESTIGAÇÃO NECESSÁRIO À REALIZAÇÃO DAS ATIVIDADES PRÁTICAS E EXPERIMENTAIS EM TODAS AS SALAS DE AULA, EM NÚMERO SUFICIENTE PARA REALIZAÇÃO DE ATIVIDADES INDIVIDUAIS E EM GRUPO, ORGANIZADO EM EQUIPAMENTOS DE ARMAZENAGEM, TUDO DE ACORDO COM AS QUANTIDADES E ESPECIFICAÇÕES TÉCNICAS CONSTANTES NO TERMO DE REFERÊNCIA E NA PROPOSTA.",
+     "fornecedor": "ABRAMUNDO EDUCAÇÃO EM CIÊNCIAS LTDA",
+     "fornecedor_cnpj": "02004642000194",
+     "orgao": "SECRETARIA DE EDUCAÇÃO",
+     "orgao_slug": "secretaria-de-educacao",
+     "valor": 12668911.51,
+     "ano": null
+    },
+    {
+     "contrato_id": "1401-0159-2016",
+     "numero": "1401.0159/2016",
+     "objeto": "AQUISIÇÃO DE LIVROS PARADIDÁTICO, VISANDO ATENDER AS DEMANDAS DA SEDUC. EDITORA IMEPH",
+     "fornecedor": "IMEPH INSTITUTO META DE EDUCACAO PESQUISA E FORMACAO DE RECURSOS HUMANOS LTDA",
+     "fornecedor_cnpj": "04528440000177",
+     "orgao": "SECRETARIA DE EDUCAÇÃO",
+     "orgao_slug": "secretaria-de-educacao",
+     "valor": 12538348.0,
+     "ano": 2016
+    },
+    {
+     "contrato_id": "1401-0047-2013",
+     "numero": "1401.0047/2013",
+     "objeto": "CONSTITUI OBJETO DO PRESENTE CONTRATO A PRESTAÇÃO DE SERVIÇOS TERCEIRIZADOS, DESTINADO AO ATENDIMENTO DAS UNIDADES EDUCACIONAIS E ADMINISTRATIVAS DA SECRETARIA DE EDUCAÇÃO DA PREFEITURA DO RECIFE, CONFORME ABAIXO:  480 (QUATROCENTOS E OITENTA) AUXILIAR DE SERVIÇOS GERAIS, 40 (QUARENTA) POSTOS DE AUXILIARES DE PORTARIA 12H DIURNO, 20 (VINTE) POSTOS DE AUXILIARES DE PORTARIA 12H NOTURNO, 85 (OITENTA E CINCO) POSTOS DE AUXILIARES DE PORTARIA 24H.",
+     "fornecedor": "AJ SERVICOS DE MAO DE OBRA EIRELI",
+     "fornecedor_cnpj": "02633573000188",
+     "orgao": "SECRETARIA DE EDUCAÇÃO",
+     "orgao_slug": "secretaria-de-educacao",
+     "valor": 11701561.5,
+     "ano": null
+    },
+    {
+     "contrato_id": "1401-0307-2014",
+     "numero": "1401.0307/2014",
+     "objeto": "CONSTITUI OBJETO DO PRESENTE CONTRATO A AQUISIÇÃO DE SOFTWARE, COM SERVIÇOS DE SUPORTE E ASSINATURA BIANUAL DA PLATAFORMA DE APOIO AO APRENDIZADO APRIMORA ENSINO FUNDAMENTAL, REFERENTES A APRESENTAÇÃO DE CONTEÚDO E AVALIAÇÃO DE LÍNGUA PORTUGUESA E MATEMÁTICA. CI Nº 185/14 - SEGEP. INEX. 43/14.",
+     "fornecedor": "G M QUALITY COMERCIO LTDA",
+     "fornecedor_cnpj": "06265064000109",
+     "orgao": "SECRETARIA DE EDUCAÇÃO",
+     "orgao_slug": "secretaria-de-educacao",
+     "valor": 11220000.0,
+     "ano": 2015
+    },
+    {
+     "contrato_id": "1401-0275-2014",
+     "numero": "1401.0275/2014",
+     "objeto": "CONSTITUI OBJETO DO PRESENTE CONTRATO A AQUISIÇÃO DE MATERIAL DIDÁTICO, COMPOSTO POR KIT DO ALUNO E DO PROFESSOR, DO \"PROJETO BRINCADEIRAS MÚSICAIS DA PALAVRA CANTADA\", QUE SERÁ UTILIZADO NO ENSINO DE MÚSICA NAS UNIDADES EDUCACIONAIS DA REDE MUNICIPAL DE ENSINO DO RECIFE.",
+     "fornecedor": "EXPANSAO EMPREENDIMENTOS EDITORIAIS LTDA",
+     "fornecedor_cnpj": "04502762000147",
+     "orgao": "SECRETARIA DE EDUCAÇÃO",
+     "orgao_slug": "secretaria-de-educacao",
+     "valor": 10881000.0,
+     "ano": null
+    },
+    {
+     "contrato_id": "2601-0108-2020",
+     "numero": "2601.0108/2020",
+     "objeto": "PARA ATENDER AS DEMANDAS DO GABINETE DE PROJETOS ESPECIAIS REFERENTE A CONTRATACAO DE SERVICOS ESPECIALIZADOS DE ENGENHARIA. ATRAVES DE ESCOAMENTO FORCADO NOS CANAIS DO MUNICIPIO DO RECIFE",
+     "fornecedor": "HIDROMAX CONSTRUÇOES LTDA",
+     "fornecedor_cnpj": "03366083000125",
+     "orgao": "SECRETARIA DE PROJETOS ESPECIAIS",
+     "orgao_slug": "secretaria-de-projetos-especiais",
+     "valor": 9760763.98,
+     "ano": 2020
+    },
+    {
+     "contrato_id": "1401-0086-2015",
+     "numero": "1401.0086/2015",
+     "objeto": "CONSTITUI OBJETO DO PRESENTE CONTRATO O FORNECIMENTO DOS MATERIAIS DIDÁTICOS DO SISTEMA DE ENSINO APRENDE BRASIL, COMPOSTO POR LIVROS DIDÁTICOS INTEGRADOS, PORTAL DE EDUCAÇÃO, ACOMPANHAMENTO E ASSESSORAMENTO PEDAGÓGICO, SISTEMA DE GESTÃO DAS INFORMAÇÕES EDUCACIONAIS E AVALIAÇÃO EXTERNA DO PROCESSO DE APRENDIZAGEM NAS ÁREAS DE LÍNGUA PORTUGUESA, MATEMÁTICA E CIÊNCIAS, PARA ATENDER AS NECESSIDADES DA SECRETARIA DE EDUCAÇÃO DO RECIFE.",
+     "fornecedor": "EDITORA POSITIVO LTDA",
+     "fornecedor_cnpj": "79719613000133",
+     "orgao": "SECRETARIA DE EDUCAÇÃO",
+     "orgao_slug": "secretaria-de-educacao",
+     "valor": 9440085.2,
+     "ano": null
+    },
+    {
+     "contrato_id": "1401-0009-2016",
+     "numero": "1401.0009/2016",
+     "objeto": "AQUISIÇÃO DE MATERIAL DIDÁTICO PARA AULA DE MUSICALIZAÇÃO, DESTINADO PARA A EDUCAÇÃO INFANTIL E ENSINO FUNDAMENTAL, NO ENSINO DE MÚSICA NAS UNIDADES EDUCACIONAIS DA REDE MUNICIPAL DE ENSINO DO RECIFE. PROJETO BRINCADEIRA MUSICAIS DA PALAVRA CANTADA.",
+     "fornecedor": "PORTFOLIO EDITORA, COMERCIO E SERVICOS S.A",
+     "fornecedor_cnpj": "04108150000174",
+     "orgao": "SECRETARIA DE EDUCAÇÃO",
+     "orgao_slug": "secretaria-de-educacao",
+     "valor": 9197850.5,
+     "ano": null
+    },
+    {
+     "contrato_id": "1401-0048-2013",
+     "numero": "1401.0048/2013",
+     "objeto": "CONSTITUI OBJETO DO PRESENTE CONTRATO A PRESTAÇÃO DE SERVIÇOS TERCEIRIZADOS, DESTINADO AO ATENDIMENTO DAS UNIDADES EDUCACIONAIS E ADMINISTRATIVAS DA SECRETÁRIA DE EDUCAÇÃO DA PREFEITURA DO RECIFE, CONFORME ABAIXO: (RPA 1 E 2) SENDO: 370 (TREZENTOS E SETENTA) AUXILIARES DE SERVIÇOS GERAIS - 44H SEMANAIS, 20 (VINTE) POSTOS-AUXILIARES PORTARIA (12H-DIURNO), 20 (VINTE) POSTOS-AUXILIARES PORTARIA (12H-NOTURNO), 60 (SESSENTA) POSTOS-AUXILIARES PORTARIA (24H) E 30 (TRINTA) AUXILIAR DE ALMOXARIFE - 44H SEMANAIS.",
+     "fornecedor": "ADLIM TERCEIRIZACAO EM SERVICOS ESPECIALIZADOS LTDA",
+     "fornecedor_cnpj": "07688177000171",
+     "orgao": "SECRETARIA DE EDUCAÇÃO",
+     "orgao_slug": "secretaria-de-educacao",
+     "valor": 8911693.8,
+     "ano": null
+    },
+    {
+     "contrato_id": "8001-0215-2011",
+     "numero": "8001.0215/2011",
+     "objeto": "SERVIÇOS BANCÁRIOS.",
+     "fornecedor": "BANCO DO BRASIL S/A",
+     "fornecedor_cnpj": "00000000419559",
+     "orgao": "SECRETARIA DE FINANÇAS",
+     "orgao_slug": "secretaria-de-financas",
+     "valor": 7800000.0,
+     "ano": null
+    },
+    {
+     "contrato_id": "8003-0006-2018",
+     "numero": "8003.0006/2018",
+     "objeto": "FORNECIMENTO DE VALE TRANSPORTE E VALE ELETRÔNICO METROPOLITANO.",
+     "fornecedor": "SINDICATO DAS EMPRESAS DE TRANSPORTES DE PASSAGEIROS DO ESTADO DE PERNAMBUCO - URBANA/PE",
+     "fornecedor_cnpj": "09759606000180",
+     "orgao": "SECRETARIA DE ADMINISTRAÇÃO",
+     "orgao_slug": "secretaria-de-administracao",
+     "valor": 7200000.0,
+     "ano": 2019
+    },
+    {
+     "contrato_id": "2101-0176-2011",
+     "numero": "2101.0176/2011",
+     "objeto": "RESTAURAÇÃO DE 01 (UMA) TORRE DE ATRACAÇÃO DE ZEPPELINS E DE 10 (DEZ) PAIÓIS DA 2ª GUERRA MUNIDAL, LOCALIZADOS NO PARQUE DO JIQUIÁ, RECIFE-PE.",
+     "fornecedor": "ARTESANAL ARTE & RESTAURACOES ARTESANAIS LTDA - ME",
+     "fornecedor_cnpj": "09619475000135",
+     "orgao": "SECRETARIA DE DESENVOLVIMENTO ECONÔMICO",
+     "orgao_slug": "secretaria-de-desenvolvimento-economico",
+     "valor": 5702310.7,
+     "ano": null
+    }
+   ]
+  },
+  "licitacao": {
+   "modalidade": "LICITAÇÃO",
+   "slug": "licitacao",
+   "n_contratos": 2424,
+   "valor_total": 7006345884.81,
+   "n_ativos": 75,
+   "valor_ativo": 212649536.36,
+   "by_year": [
+    {
+     "ano": 2013,
+     "n": 6,
+     "valor": 11151091.45
+    },
+    {
+     "ano": 2014,
+     "n": 38,
+     "valor": 32198446.86
+    },
+    {
+     "ano": 2015,
+     "n": 47,
+     "valor": 43964722.46
+    },
+    {
+     "ano": 2016,
+     "n": 43,
+     "valor": 1035733584.94
+    },
+    {
+     "ano": 2017,
+     "n": 59,
+     "valor": 77047134.83
+    },
+    {
+     "ano": 2018,
+     "n": 64,
+     "valor": 66756492.13
+    },
+    {
+     "ano": 2019,
+     "n": 131,
+     "valor": 396788798.9
+    },
+    {
+     "ano": 2020,
+     "n": 104,
+     "valor": 834826896.02
+    },
+    {
+     "ano": 2021,
+     "n": 136,
+     "valor": 133444259.19
+    },
+    {
+     "ano": 2022,
+     "n": 192,
+     "valor": 224130829.59
+    },
+    {
+     "ano": 2023,
+     "n": 242,
+     "valor": 33043691.45
+    },
+    {
+     "ano": 2024,
+     "n": 179,
+     "valor": 0.0
+    },
+    {
+     "ano": 2025,
+     "n": 160,
+     "valor": 0.0
+    }
+   ],
+   "top_orgaos": [
+    {
+     "orgao": "EMLURB - AUTARQUIA DE MANUTENÇÃO E LIMPEZA URBANA",
+     "slug": null,
+     "valor": 3139191799.86,
+     "n": 729
+    },
+    {
+     "orgao": "SECRETARIA DE TURISMO E LAZER",
+     "slug": "secretaria-de-turismo-e-lazer",
+     "valor": 657758358.7,
+     "n": 67
+    },
+    {
+     "orgao": "SECRETARIA DE SANEAMENTO",
+     "slug": "secretaria-de-saneamento",
+     "valor": 538076648.22,
+     "n": 55
+    },
+    {
+     "orgao": "SECRETARIA DE CULTURA",
+     "slug": "secretaria-de-cultura",
+     "valor": 364942376.54,
+     "n": 13
+    },
+    {
+     "orgao": "SECRETARIA DE EDUCAÇÃO",
+     "slug": "secretaria-de-educacao",
+     "valor": 316887331.36,
+     "n": 154
+    },
+    {
+     "orgao": "SECRETARIA DE SAÚDE",
+     "slug": "secretaria-de-saude-administracao-supervisionada",
+     "valor": 279414149.93,
+     "n": 90
+    },
+    {
+     "orgao": "SECRETARIA DE DESENVOLVIMENTO URBANO E LICENCIAMENTO",
+     "slug": "secretaria-de-desenvolvimento-urbano-e-licenciamento",
+     "valor": 245897479.33,
+     "n": 56
+    },
+    {
+     "orgao": "SECRETARIA DE ADMINISTRAÇÃO",
+     "slug": "secretaria-de-administracao",
+     "valor": 238365677.02,
+     "n": 46
+    },
+    {
+     "orgao": null,
+     "slug": null,
+     "valor": 1225812063.85,
+     "n": 1214
+    }
+   ],
+   "top_suppliers": [
+    {
+     "cnpj": "02536066001521",
+     "nome": "VITAL ENGENHARIA AMBIENTAL S/A",
+     "valor": 1243525432.49,
+     "n": 2
+    },
+    {
+     "cnpj": "20762269000112",
+     "nome": "INSTITUTO DE GESTAO DE ESPORTE E DA CULTURA - IGEC",
+     "valor": 544682582.3,
+     "n": 5
+    },
+    {
+     "cnpj": "12854865000102",
+     "nome": "COELHO DE  ANDRADE ENGENHARIA LTDA",
+     "valor": 438212416.64,
+     "n": 4
+    },
+    {
+     "cnpj": "02633573000188",
+     "nome": "AJ SERVICOS DE MAO DE OBRA EIRELI",
+     "valor": 247511583.32,
+     "n": 19
+    },
+    {
+     "cnpj": "47734361000125",
+     "nome": "ELETROMIDIA REC CONCESSIONARIA DE MOBILIARIO URBANO SPE S.A.",
+     "valor": 212649536.36,
+     "n": 1
+    },
+    {
+     "cnpj": "02416742000128",
+     "nome": "ENGEMAR CONSTRUCOES SERVICOS LTDA",
+     "valor": 180094384.0,
+     "n": 4
+    },
+    {
+     "cnpj": "40884405000154",
+     "nome": "LOQUIPE LOCACAO DE EQUIPAMENTOS E MAO DE OBRA LTDA",
+     "valor": 175393164.89,
+     "n": 52
+    },
+    {
+     "cnpj": "10811370000162",
+     "nome": "GUERRA CONSTRUCOES LTDA",
+     "valor": 138286565.43,
+     "n": 80
+    },
+    {
+     "cnpj": "60746948000112",
+     "nome": "BANCO BRADESCO S/A",
+     "valor": 129000000.0,
+     "n": 1
+    },
+    {
+     "cnpj": "12895133000152",
+     "nome": "FORMATO QUATRO GRAFICA E EDITORA LTDA ME",
+     "valor": 128402640.0,
+     "n": 1
+    },
+    {
+     "cnpj": "09547728000102",
+     "nome": "CONSORCIO CORDEIRO",
+     "valor": 122726428.07,
+     "n": 1
+    },
+    {
+     "cnpj": "08059768000142",
+     "nome": "CINZEL ENGENHARIA LTDA- EM RECUPERACAO JUDICIAL",
+     "valor": 122081501.54,
+     "n": 6
+    },
+    {
+     "cnpj": "10894988000486",
+     "nome": "SOCIEDADE PERNAMBUCANA DE COMBATE AO CANCER",
+     "valor": 116602009.19,
+     "n": 1
+    },
+    {
+     "cnpj": "23742620000100",
+     "nome": "INSTTALE ENGENHARIA LTDA",
+     "valor": 115799400.48,
+     "n": 6
+    },
+    {
+     "cnpj": "00749205000174",
+     "nome": "CONSTRUTORA INGAZEIRA LTDA",
+     "valor": 105194050.55,
+     "n": 13
+    }
+   ],
+   "top_contracts": [
+    {
+     "contrato_id": "5010-6023-2015",
+     "numero": "5010.6023/2015",
+     "objeto": "CONTRATAÇÃO DE EMPRESA ESPECIALIZADA EM ENGENHARIA SANITÁRIA PARA A EXECUÇÃO DOS SERVIÇOS DE COLETA E LIMPEZA URBANA NO RECIFE, CONFORME ESPECIFICAÇÕES DO PROJETO BÁSICO ANEXO AO EDITAL.",
+     "fornecedor": "VITAL ENGENHARIA AMBIENTAL S/A",
+     "fornecedor_cnpj": "02536066001521",
+     "orgao": "EMLURB - AUTARQUIA DE MANUTENÇÃO E LIMPEZA URBANA",
+     "orgao_slug": null,
+     "valor": 729976268.81,
+     "ano": 2016
+    },
+    {
+     "contrato_id": "5002-6016-2010",
+     "numero": "5002.6016/2010",
+     "objeto": "CONTRATAÇÃO DE EMPRESA ESPECIALIZADA EM ENGENHARIA SANITÁRIA PARA EXECUÇÃO DE SERVIÇO DE LIMPEZA URBANA NO MUNICÍPIO DE RECIFE.",
+     "fornecedor": "VITAL ENGENHARIA AMBIENTAL S/A",
+     "fornecedor_cnpj": "02536066001521",
+     "orgao": "EMLURB - AUTARQUIA DE MANUTENÇÃO E LIMPEZA URBANA",
+     "orgao_slug": null,
+     "valor": 513549163.68,
+     "ano": null
+    },
+    {
+     "contrato_id": "3501-0021-2020",
+     "numero": "3501.0021/2020",
+     "objeto": "CONTRATO DE GESTÃO DOS PARQUES DA MACAXEIRA E SANTANA.",
+     "fornecedor": "INSTITUTO DE GESTAO DE ESPORTE E DA CULTURA - IGEC",
+     "fornecedor_cnpj": "20762269000112",
+     "orgao": "SECRETARIA DE TURISMO E LAZER",
+     "orgao_slug": "secretaria-de-turismo-e-lazer",
+     "valor": 506937289.84,
+     "ano": 2020
+    },
+    {
+     "contrato_id": "5010-6024-2015",
+     "numero": "5010.6024/2015",
+     "objeto": "CONTRATAÇÃO DE EMPRESA ESPECIALIZADA EM ENGENHARIA SANITÁRIA PARA A EXECUÇÃO DOS SERVIÇOS DE COLETA E LIMPEZA URBANA NO RECIFE, CONFORME ESPECIFICAÇÕES DO PROJETO BÁSICO ANEXO AO EDITAL.",
+     "fornecedor": "COELHO DE  ANDRADE ENGENHARIA LTDA",
+     "fornecedor_cnpj": "12854865000102",
+     "orgao": "EMLURB - AUTARQUIA DE MANUTENÇÃO E LIMPEZA URBANA",
+     "orgao_slug": null,
+     "valor": 249839914.0,
+     "ano": 2016
+    },
+    {
+     "contrato_id": "2101-1007-2022",
+     "numero": "2101.1007/2022",
+     "objeto": "CONCESSAO ONEROSA DE SERVICO PUBLICO PARA A PRODUCAO. INSTALACAO E MANUTENCAO DE 108  CENTO E OITO  RELOGIOS ELETRONICOS DIGITAIS NO MUNICIPIO DO RECIFE E INSTALACAO E MANUTENCAO DE 108  CENTO E OITO  CAMERAS DE MONITORAMENTO DE FORMA INTEGRADA A ESTRUTURA DOS RELOGIOS. COM EXCLUSIVIDADE DA CONCESSIONARIA NA EXPLORACAO PUBLICITARIA DOS RELOGIOS ELETRONICOS DIGITAIS. DENTRO DO MUNICIPIO DO RECIFE.",
+     "fornecedor": "ELETROMIDIA REC CONCESSIONARIA DE MOBILIARIO URBANO SPE S.A.",
+     "fornecedor_cnpj": "47734361000125",
+     "orgao": "SECRETARIA DE DESENVOLVIMENTO URBANO E LICENCIAMENTO",
+     "orgao_slug": "secretaria-de-desenvolvimento-urbano-e-licenciamento",
+     "valor": 212649536.36,
+     "ano": 2022
+    },
+    {
+     "contrato_id": "3201-0260-2014",
+     "numero": "3201.0260/2014",
+     "objeto": "PRESTAÇÃO DE SERVIÇOS TERCEIRIZADOS",
+     "fornecedor": "AJ SERVICOS DE MAO DE OBRA EIRELI",
+     "fornecedor_cnpj": "02633573000188",
+     "orgao": "SECRETARIA DE CULTURA",
+     "orgao_slug": "secretaria-de-cultura",
+     "valor": 185762244.0,
+     "ano": null
+    },
+    {
+     "contrato_id": "3201-0041-2012",
+     "numero": "3201.0041/2012",
+     "objeto": "MANUNTENÇÃO PREVENTIVA,PREDITIVA, DETECTIVA E CORRETIVA PREDIAL.",
+     "fornecedor": "ENGEMAR CONSTRUCOES SERVICOS LTDA",
+     "fornecedor_cnpj": "02416742000128",
+     "orgao": "SECRETARIA DE CULTURA",
+     "orgao_slug": "secretaria-de-cultura",
+     "valor": 165998440.0,
+     "ano": null
+    },
+    {
+     "contrato_id": "5010-6015-2010",
+     "numero": "5010.6015/2010",
+     "objeto": "CONTRATAÇÃO DE EMPRESA ESPECIALIZADA EM ENGENHARIA SANITÁRIA PARA EXECUÇÃO DE SERVIÇOS DE LIMPEZA URBANA NO MUNICÍPIO DO RECIFE.",
+     "fornecedor": "COELHO DE  ANDRADE ENGENHARIA LTDA",
+     "fornecedor_cnpj": "12854865000102",
+     "orgao": "EMLURB - AUTARQUIA DE MANUTENÇÃO E LIMPEZA URBANA",
+     "orgao_slug": null,
+     "valor": 149992063.2,
+     "ano": null
+    },
+    {
+     "contrato_id": "3101-0028-2017",
+     "numero": "3101.0028/2017",
+     "objeto": "CONTRATAÇÃO DE INSTITUIÇÃO FINANCEIRA PARA SERVIÇOS DE CENTRALIZAÇÃO E PROCESSAMENTO DA FOLHA DE PAGAMENTO.",
+     "fornecedor": "BANCO BRADESCO S/A",
+     "fornecedor_cnpj": "60746948000112",
+     "orgao": "SECRETARIA DE ADMINISTRAÇÃO",
+     "orgao_slug": "secretaria-de-administracao",
+     "valor": 129000000.0,
+     "ano": null
+    },
+    {
+     "contrato_id": "5006-0060-2012",
+     "numero": "5006.0060/2012",
+     "objeto": "SERVIÇOS DE REPROGRAFIA DE DOCUMENTOS, PARA ATENTER A DEMANDA INTERNA.",
+     "fornecedor": "FORMATO QUATRO GRAFICA E EDITORA LTDA ME",
+     "fornecedor_cnpj": "12895133000152",
+     "orgao": "URB - AUTARQUIA DE URBANIZACAO DO RECIFE",
+     "orgao_slug": null,
+     "valor": 128402640.0,
+     "ano": null
+    },
+    {
+     "contrato_id": "2301-0086-2008",
+     "numero": "2301.0086/2008",
+     "objeto": "EXECUÇÃO DE OBRAS DE SANEAMENTO INTEGRADO DO SISTEMA DE ESGOTAMENTO SANITÁRIO CORDERO, ENVOLVENDO AS UNIDADES DE ESGOTAMENTO UE 41,, SUB-BACIA A, UE 41, SUB-BACIA B UE42 E UE 43, NOS BAIRROS DE CORDEIRO IPUTINGA, PRADO, TORRE, MADALENA, ENGENHO DO MEIO E ZUMBI, CONFORME ESPECIFICAÇÕES CONSTANTES DO TERMO DE REFERÊNCIA ANEXO VIII DO EDITAL E DA PROPOSTA DO CONTRATADO.",
+     "fornecedor": "CONSORCIO CORDEIRO",
+     "fornecedor_cnpj": "09547728000102",
+     "orgao": "SECRETARIA DE SANEAMENTO",
+     "orgao_slug": "secretaria-de-saneamento",
+     "valor": 122726428.07,
+     "ano": null
+    },
+    {
+     "contrato_id": "4801-0028-2016",
+     "numero": "4801.0028/2016",
+     "objeto": "CONTRATO DE GESTÃO COM EMPRESA PARA GERENCIAMENTO, OPERACIONALIZAÇÃO E A EXEÇÃO DAS AÇÕES E SERVIÇOS DE SAÚDE A SEREM EXECUTADOS NO HOSPITAL DA MULHER DA CIDADE DO RECIFE.",
+     "fornecedor": "SOCIEDADE PERNAMBUCANA DE COMBATE AO CANCER",
+     "fornecedor_cnpj": "10894988000486",
+     "orgao": "SECRETARIA DE SAÚDE",
+     "orgao_slug": "secretaria-de-saude-administracao-supervisionada",
+     "valor": 116602009.19,
+     "ano": null
+    },
+    {
+     "contrato_id": "4801-0059-2013",
+     "numero": "4801.0059/2013",
+     "objeto": "CONTRATAÇÃO DE EMPRESA DE ENGENHARIA PARA EXECUÇÃO DAS OBRAS E SERVIÇOS DE CONSTRUÇÃO DO HOSPITAL DA MULHER NO MUNICÍPIO DE RECIFE",
+     "fornecedor": "CINZEL ENGENHARIA LTDA- EM RECUPERACAO JUDICIAL",
+     "fornecedor_cnpj": "08059768000142",
+     "orgao": "FUNDO MUNICIPAL DE SAUDE",
+     "orgao_slug": null,
+     "valor": 87837770.9,
+     "ano": null
+    },
+    {
+     "contrato_id": "5010-6020-2018",
+     "numero": "5010.6020/2018",
+     "objeto": "CONTRATAÇÃO DE SERVIÇOS DE MANUTENÇÃO CORRETIVA DO SISTEMA VIÁRIO DA CIDADE DO RECIFE - LOTE III",
+     "fornecedor": "INSTTALE ENGENHARIA LTDA",
+     "fornecedor_cnpj": "23742620000100",
+     "orgao": "EMLURB - AUTARQUIA DE MANUTENÇÃO E LIMPEZA URBANA",
+     "orgao_slug": null,
+     "valor": 85232476.62,
+     "ano": null
+    },
+    {
+     "contrato_id": "3301-0156-2010",
+     "numero": "3301.0156/2010",
+     "objeto": "PRESTAÇÃO DE SERVIÇOS DE REPROGRAFIA, COM MÁQUINAS NOVAS DE PRIMEIRO USO.",
+     "fornecedor": "DATA VOICE COMERCIO E SERVICOS LTDA",
+     "fornecedor_cnpj": "41057324000143",
+     "orgao": "SECRETARIA DE PLANEJAMENTO URBANO",
+     "orgao_slug": null,
+     "valor": 76800000.0,
+     "ano": null
+    }
+   ]
+  },
+  "compra-direta": {
+   "modalidade": "COMPRA DIRETA",
+   "slug": "compra-direta",
+   "n_contratos": 37,
+   "valor_total": 9632593.85,
+   "n_ativos": 0,
+   "valor_ativo": 0.0,
+   "by_year": [
+    {
+     "ano": 2014,
+     "n": 6,
+     "valor": 87652.13
+    },
+    {
+     "ano": 2015,
+     "n": 2,
+     "valor": 26862.0
+    },
+    {
+     "ano": 2016,
+     "n": 2,
+     "valor": 26539.5
+    },
+    {
+     "ano": 2017,
+     "n": 2,
+     "valor": 10750.8
+    },
+    {
+     "ano": 2018,
+     "n": 4,
+     "valor": 49160.0
+    },
+    {
+     "ano": 2019,
+     "n": 2,
+     "valor": 64500.0
+    },
+    {
+     "ano": 2020,
+     "n": 3,
+     "valor": 44618.3
+    },
+    {
+     "ano": 2021,
+     "n": 3,
+     "valor": 54806.0
+    },
+    {
+     "ano": 2022,
+     "n": 1,
+     "valor": 0.0
+    }
+   ],
+   "top_orgaos": [
+    {
+     "orgao": "SECRETARIA DE PLANEJAMENTO URBANO",
+     "slug": null,
+     "valor": 6980322.7,
+     "n": 6
+    },
+    {
+     "orgao": "SECRETARIA DE INFRAESTRUTURA",
+     "slug": "secretaria-de-infraestrutura",
+     "valor": 2204500.0,
+     "n": 1
+    },
+    {
+     "orgao": "EMPREL - EMPRESA MUNICIPAL DE INFORMÁTICA",
+     "slug": null,
+     "valor": 197115.62,
+     "n": 16
+    },
+    {
+     "orgao": "SECRETARIA DE ADMINISTRAÇÃO",
+     "slug": "secretaria-de-administracao",
+     "valor": 97400.0,
+     "n": 3
+    },
+    {
+     "orgao": "EMLURB - AUTARQUIA DE MANUTENÇÃO E LIMPEZA URBANA",
+     "slug": null,
+     "valor": 72117.1,
+     "n": 5
+    },
+    {
+     "orgao": "CONVIVA MERCADOS E FEIRAS - AUTARQUIA MUNICIPAL",
+     "slug": null,
+     "valor": 46156.01,
+     "n": 3
+    },
+    {
+     "orgao": "GINÁSIO DE ESPORTES GERALDO MAGALHAES - GERALDAO",
+     "slug": null,
+     "valor": 34982.42,
+     "n": 1
+    },
+    {
+     "orgao": "AUTARQUIA MUNICIPAL DE PREVIDENCIA E ASSISTENCIA A SAUDE DOS SERVIDORES",
+     "slug": null,
+     "valor": 0.0,
+     "n": 2
+    }
+   ],
+   "top_suppliers": [
+    {
+     "cnpj": "09619475000135",
+     "nome": "ARTESANAL ARTE & RESTAURACOES ARTESANAIS LTDA - ME",
+     "valor": 5702310.7,
+     "n": 1
+    },
+    {
+     "cnpj": "11021607000174",
+     "nome": "PROVINCIA NOSSA SENHORA DA PENHA DO NORDESTE E DO BRASIL",
+     "valor": 2204500.0,
+     "n": 1
+    },
+    {
+     "cnpj": "08139806000177",
+     "nome": "INSTITUTO SOLIDARE",
+     "valor": 842112.0,
+     "n": 1
+    },
+    {
+     "cnpj": "09340786000160",
+     "nome": "INSTITUTO PONTE DO DESENVOLVIMENTO - IPD",
+     "valor": 273250.0,
+     "n": 1
+    },
+    {
+     "cnpj": "10912323000105",
+     "nome": "INSTITUO CAMPUS PARTY",
+     "valor": 100000.0,
+     "n": 1
+    },
+    {
+     "cnpj": "11515970000146",
+     "nome": "CENTRO DE ESTUDOS E PESQUISAS JOSUE DE CASTRO",
+     "valor": 52650.0,
+     "n": 1
+    },
+    {
+     "cnpj": "41012964000137",
+     "nome": "TECOMAT ENGENHARIA LTDA",
+     "valor": 48500.0,
+     "n": 1
+    },
+    {
+     "cnpj": "06032488000115",
+     "nome": "MEGA CONSULTORES ASSOCIADOS LTDA",
+     "valor": 48000.0,
+     "n": 1
+    },
+    {
+     "cnpj": "02931195000119",
+     "nome": "GUIMARAES E ALBUQUERQUE ENGENHARIA LTDA",
+     "valor": 34982.42,
+     "n": 1
+    },
+    {
+     "cnpj": "03360735000114",
+     "nome": "B. V. DESIGN\\\\''S LTDA",
+     "valor": 32700.0,
+     "n": 1
+    },
+    {
+     "cnpj": "17087845000169",
+     "nome": "VERTEX - MANUTENCAO E INSTALACAO EM TRANPORTE VERTICAL LTDA",
+     "valor": 32400.0,
+     "n": 1
+    },
+    {
+     "cnpj": "18321731000102",
+     "nome": "REGILENE DE SOUSA LIMA - 690335953-20",
+     "valor": 31280.0,
+     "n": 2
+    },
+    {
+     "cnpj": "12513837000113",
+     "nome": "RECONSTRUCOES LTDA",
+     "valor": 23244.99,
+     "n": 1
+    },
+    {
+     "cnpj": "07811641000175",
+     "nome": "MARINHO CONSTRUCOES LTDA",
+     "valor": 22911.02,
+     "n": 1
+    },
+    {
+     "cnpj": "47827415000105",
+     "nome": "SAD CONSULTORIA LTDA",
+     "valor": 19932.12,
+     "n": 2
+    }
+   ],
+   "top_contracts": [
+    {
+     "contrato_id": "3301-0176-2011",
+     "numero": "3301.0176/2011",
+     "objeto": "RESTAURAÇÃO DE 01 (UMA) TORRE DE ATRACAÇÃO DE ZEPPELINS E DE 10 (DEZ) PAIÓIS DA 2ª GUERRA MUNDIAL, TODOS LOCALIZADOS NO PARQUE DO JIQUIÁ, EM RECIFE.",
+     "fornecedor": "ARTESANAL ARTE & RESTAURACOES ARTESANAIS LTDA - ME",
+     "fornecedor_cnpj": "09619475000135",
+     "orgao": "SECRETARIA DE PLANEJAMENTO URBANO",
+     "orgao_slug": null,
+     "valor": 5702310.7,
+     "ano": null
+    },
+    {
+     "contrato_id": "2001-0006-2016",
+     "numero": "2001.0006/2016",
+     "objeto": "CONSOLIDAÇÃO E RESTAURO ESTRUTURAL DAS TORRES SINEIRAS DA BASÍLICA DE NOSSA SENHORA DA PENHA, PROMOVENDO A PRESERVAÇÃO DA BELEZA PATRIMÔNIO HISTÓRICO E CULTURAL DO ESTADO DE PE",
+     "fornecedor": "PROVINCIA NOSSA SENHORA DA PENHA DO NORDESTE E DO BRASIL",
+     "fornecedor_cnpj": "11021607000174",
+     "orgao": "SECRETARIA DE INFRAESTRUTURA",
+     "orgao_slug": "secretaria-de-infraestrutura",
+     "valor": 2204500.0,
+     "ano": null
+    },
+    {
+     "contrato_id": "3301-0038-2012",
+     "numero": "3301.0038/2012",
+     "objeto": "PRESTAÇÃO DE SERVIÇOS DE ACOMPANHAMENTO, ASSESSORAMENTO E MONITORAMENTO E EMPREENDIMENTOS INDIVIDUAIS E/OU COLETIVOS DE ECONOMIA POPULAR SOLIDÁRIA.",
+     "fornecedor": "INSTITUTO SOLIDARE",
+     "fornecedor_cnpj": "08139806000177",
+     "orgao": "SECRETARIA DE PLANEJAMENTO URBANO",
+     "orgao_slug": null,
+     "valor": 842112.0,
+     "ano": null
+    },
+    {
+     "contrato_id": "3301-0039-2012",
+     "numero": "3301.0039/2012",
+     "objeto": "EXECUÇÃO DE PESQUISA DE IDENTIFICAÇÃO DE INICIATIVAS E POTENCIALIDADES DE ECONOMIA POPULAR E SOLIDÁRIA.",
+     "fornecedor": "INSTITUTO PONTE DO DESENVOLVIMENTO - IPD",
+     "fornecedor_cnpj": "09340786000160",
+     "orgao": "SECRETARIA DE PLANEJAMENTO URBANO",
+     "orgao_slug": null,
+     "valor": 273250.0,
+     "ano": null
+    },
+    {
+     "contrato_id": "3301-0049-2013",
+     "numero": "3301.0049/2013",
+     "objeto": "PROMOVER O INTERCAMBIO E INCREMENTO DO QUE HÁ DE MAIS AVANÇADO EM TERMOS DE TECNOLOGIA INOVAÇÃO E EMPREENDORISMO EM DIVERSAS ÁREAS.",
+     "fornecedor": "INSTITUO CAMPUS PARTY",
+     "fornecedor_cnpj": "10912323000105",
+     "orgao": "SECRETARIA DE PLANEJAMENTO URBANO",
+     "orgao_slug": null,
+     "valor": 100000.0,
+     "ano": null
+    },
+    {
+     "contrato_id": "3301-0071-2013",
+     "numero": "3301.0071/2013",
+     "objeto": "COORDENAR E ORGANIZAR A EXPOSIÇÃO CERDA I LA BARCELONA DEL FUTUR A SER REALIZADA NO RECIFE.",
+     "fornecedor": "CENTRO DE ESTUDOS E PESQUISAS JOSUE DE CASTRO",
+     "fornecedor_cnpj": "11515970000146",
+     "orgao": "SECRETARIA DE PLANEJAMENTO URBANO",
+     "orgao_slug": null,
+     "valor": 52650.0,
+     "ano": null
+    },
+    {
+     "contrato_id": "3101-0007-2020",
+     "numero": "3101.0007/2020",
+     "objeto": "CONTRATACAO DE UMA EMPRESA PARA REALIZAR A AUDITORIA PRELIMINAR E FISCALIZACAO DA OBRA DE RECUPERACAO DAS FACHADAS NORTE E SUL DO PREDIO SEDE DA PREFEITURA DA CIDADE DO RECIFE   PCR",
+     "fornecedor": "TECOMAT ENGENHARIA LTDA",
+     "fornecedor_cnpj": "41012964000137",
+     "orgao": "SECRETARIA DE ADMINISTRAÇÃO",
+     "orgao_slug": "secretaria-de-administracao",
+     "valor": 48500.0,
+     "ano": 2021
+    },
+    {
+     "contrato_id": "4501-0024-2019",
+     "numero": "4501.0024/2019",
+     "objeto": "SERVICO DE SUPORTE AS EQUIPES PARA IAGNOSTICO DE MOTIVACAO E SAFISTACAO DE ENGENHEIROS DE SOFTWARE EONSULTORIA NA IMPLEMENTAÇÃO DE DECISOES PARA MELHORÁ-LAS.DI",
+     "fornecedor": "MEGA CONSULTORES ASSOCIADOS LTDA",
+     "fornecedor_cnpj": "06032488000115",
+     "orgao": "EMPREL - EMPRESA MUNICIPAL DE INFORMÁTICA",
+     "orgao_slug": null,
+     "valor": 48000.0,
+     "ano": 2019
+    },
+    {
+     "contrato_id": "4101-0004-2013",
+     "numero": "4101.0004/2013",
+     "objeto": "O OBJETO DESTE CONTRATO, DE OBRIGAÇÃO E RESPONSABILIDADE EXCLUSIVA E INTEGRAL DA CONTRATADA, É A FORMA DE INFRAESTRUTURA DOS BANHEIROS MASCULINOS E FEMININOS LOCALIZADOS NA ÁREA EXTERNA DA SEDE ADMINISTRATIVA DA CONTRATANTE.",
+     "fornecedor": "GUIMARAES E ALBUQUERQUE ENGENHARIA LTDA",
+     "fornecedor_cnpj": "02931195000119",
+     "orgao": "GINÁSIO DE ESPORTES GERALDO MAGALHAES - GERALDAO",
+     "orgao_slug": null,
+     "valor": 34982.42,
+     "ano": null
+    },
+    {
+     "contrato_id": "5010-2002-2020",
+     "numero": "5010.2002/2020",
+     "objeto": "RECUPERAÇÃO DE REPLICA DA OBRA DE ARTE DO LEÃO DE NUCA, FABRICADO EM ESTRUTURA ARMADA DE FERRO FIXADA NO SOLO EM BASES DE CONCRETO E CORPO EM RESINAS FIBRADAS, INSTALADO NA FRENTE DA ESTAÇÃO DE PASSAGEIROS DO PORTO DO RECIFE, NA AV. ALFREDO LISBOA - BAIRRO DO RECIFE.",
+     "fornecedor": "B. V. DESIGN\\\\''S LTDA",
+     "fornecedor_cnpj": "03360735000114",
+     "orgao": "EMLURB - AUTARQUIA DE MANUTENÇÃO E LIMPEZA URBANA",
+     "orgao_slug": null,
+     "valor": 32700.0,
+     "ano": 2020
+    },
+    {
+     "contrato_id": "3101-0029-2018",
+     "numero": "3101.0029/2018",
+     "objeto": "CONTRATAÇÃO DE EMPRESA ESPECIALIZADA PARA SUPERVISÃO E ASSESSORAMENTO TÉCNICO PROFISSIONAL ESPECIALIZADO PARA INSPEÇÃO E RECEBIMENTO DOS ELEVADORES E PARA ACOMPANHAR OS SERVIÇOS DE DESMONTAGEM E MONTAGEM DA MODERNIZAÇÃO DOS ELEVADORES DO EDIFÍCIO SEDE DA PREFEITURA DO RECIFE.",
+     "fornecedor": "VERTEX - MANUTENCAO E INSTALACAO EM TRANPORTE VERTICAL LTDA",
+     "fornecedor_cnpj": "17087845000169",
+     "orgao": "SECRETARIA DE ADMINISTRAÇÃO",
+     "orgao_slug": "secretaria-de-administracao",
+     "valor": 32400.0,
+     "ano": 2018
+    },
+    {
+     "contrato_id": "6407-0016-2014",
+     "numero": "6407.0016/2014",
+     "objeto": "SERVIÇO DE ENGENHARIA, VISANDO A CONSTRUÇÃO DE BOXES DO PÁTIO DE FEIRA NA ÁREA EXTERNA DO MERCADO DO JORDÃO",
+     "fornecedor": "RECONSTRUCOES LTDA",
+     "fornecedor_cnpj": "12513837000113",
+     "orgao": "CONVIVA MERCADOS E FEIRAS - AUTARQUIA MUNICIPAL",
+     "orgao_slug": null,
+     "valor": 23244.99,
+     "ano": 2014
+    },
+    {
+     "contrato_id": "6407-0017-2014",
+     "numero": "6407.0017/2014",
+     "objeto": "EXECUÇÃO DE SERVIÇOS DE ENGENHARIA, VISANDO A CONSTRUÇÃO DE APOIO HIDRÁULICO NO MERCADO PÚBLICO DA BOA VISTA.",
+     "fornecedor": "MARINHO CONSTRUCOES LTDA",
+     "fornecedor_cnpj": "07811641000175",
+     "orgao": "CONVIVA MERCADOS E FEIRAS - AUTARQUIA MUNICIPAL",
+     "orgao_slug": null,
+     "valor": 22911.02,
+     "ano": 2014
+    },
+    {
+     "contrato_id": "3101-0009-2019",
+     "numero": "3101.0009/2019",
+     "objeto": "LOCAÇÃO DE 25 (VINTE E CINCO) RÁDIOS DIGITAL PD 406",
+     "fornecedor": "RADIUM TELECOMUNICACOES LTDA",
+     "fornecedor_cnpj": "05291944000189",
+     "orgao": "SECRETARIA DE ADMINISTRAÇÃO",
+     "orgao_slug": "secretaria-de-administracao",
+     "valor": 16500.0,
+     "ano": 2019
+    },
+    {
+     "contrato_id": "4501-0038-2013",
+     "numero": "4501.0038/2013",
+     "objeto": "AUDITORIA CONTÁBIL",
+     "fornecedor": "JFG AUDITORES E CONSULTORES S/S",
+     "fornecedor_cnpj": "10449384000188",
+     "orgao": "EMPREL - EMPRESA MUNICIPAL DE INFORMÁTICA",
+     "orgao_slug": null,
+     "valor": 15800.0,
+     "ano": null
+    }
+   ]
+  },
+  "sarp": {
+   "modalidade": "SARP",
+   "slug": "sarp",
+   "n_contratos": 3035,
+   "valor_total": 2121347404.38,
+   "n_ativos": 185,
+   "valor_ativo": 957945.48,
+   "by_year": [
+    {
+     "ano": 2014,
+     "n": 77,
+     "valor": 7545229.1
+    },
+    {
+     "ano": 2015,
+     "n": 67,
+     "valor": 24575360.55
+    },
+    {
+     "ano": 2016,
+     "n": 108,
+     "valor": 28199338.23
+    },
+    {
+     "ano": 2017,
+     "n": 84,
+     "valor": 34870025.38
+    },
+    {
+     "ano": 2018,
+     "n": 206,
+     "valor": 137068310.64
+    },
+    {
+     "ano": 2019,
+     "n": 326,
+     "valor": 387706842.56
+    },
+    {
+     "ano": 2020,
+     "n": 182,
+     "valor": 170504025.03
+    },
+    {
+     "ano": 2021,
+     "n": 181,
+     "valor": 85479344.69
+    },
+    {
+     "ano": 2022,
+     "n": 283,
+     "valor": 7556079.38
+    },
+    {
+     "ano": 2023,
+     "n": 453,
+     "valor": 0.0
+    },
+    {
+     "ano": 2024,
+     "n": 301,
+     "valor": 37500000.0
+    },
+    {
+     "ano": 2025,
+     "n": 302,
+     "valor": 0.0
+    }
+   ],
+   "top_orgaos": [
+    {
+     "orgao": "SECRETARIA DE EDUCAÇÃO",
+     "slug": "secretaria-de-educacao",
+     "valor": 474470450.25,
+     "n": 346
+    },
+    {
+     "orgao": "GINÁSIO DE ESPORTES GERALDO MAGALHAES - GERALDAO",
+     "slug": null,
+     "valor": 375822720.0,
+     "n": 1
+    },
+    {
+     "orgao": "URB - AUTARQUIA DE URBANIZACAO DO RECIFE",
+     "slug": null,
+     "valor": 374835298.92,
+     "n": 44
+    },
+    {
+     "orgao": "FUNDO MUNICIPAL DE SAUDE",
+     "slug": null,
+     "valor": 273984867.98,
+     "n": 270
+    },
+    {
+     "orgao": "PROCURADORIA GERAL DO MUNICÍPIO",
+     "slug": "procuradoria-geral-do-municipio",
+     "valor": 67041749.32,
+     "n": 59
+    },
+    {
+     "orgao": "SECRETARIA DE CULTURA",
+     "slug": "secretaria-de-cultura",
+     "valor": 65915397.0,
+     "n": 45
+    },
+    {
+     "orgao": "FUNDO MUNICIPAL DE ASSISTÊNCIA SOCIAL - FMAS",
+     "slug": null,
+     "valor": 51933543.09,
+     "n": 80
+    },
+    {
+     "orgao": "SECRETARIA DE ADMINISTRAÇÃO",
+     "slug": "secretaria-de-administracao",
+     "valor": 51086458.66,
+     "n": 135
+    },
+    {
+     "orgao": null,
+     "slug": null,
+     "valor": 386256919.17,
+     "n": 2055
+    }
+   ],
+   "top_suppliers": [
+    {
+     "cnpj": "00323090000151",
+     "nome": "SOLL SERVICOS OBRAS E LOCACOES LTDA",
+     "valor": 501105773.76,
+     "n": 37
+    },
+    {
+     "cnpj": "40884405000154",
+     "nome": "LOQUIPE LOCACAO DE EQUIPAMENTOS E MAO DE OBRA LTDA",
+     "valor": 281073530.65,
+     "n": 10
+    },
+    {
+     "cnpj": "01781573000162",
+     "nome": "R P L ENGENHARIA E SERVICOS LTDA",
+     "valor": 174478988.79,
+     "n": 135
+    },
+    {
+     "cnpj": "14311143000129",
+     "nome": "TCAR LOCACAO DE VEICULOS LTDA",
+     "valor": 63099026.16,
+     "n": 7
+    },
+    {
+     "cnpj": "00824311000175",
+     "nome": "SERVICAR LOCADORA EIRELI - EPP",
+     "valor": 60056715.48,
+     "n": 18
+    },
+    {
+     "cnpj": "08362490000188",
+     "nome": "ADSERV EMPREENDIMENTOS E SERVIÇOS DE MAO DE OBRA LTDA",
+     "valor": 58283991.16,
+     "n": 74
+    },
+    {
+     "cnpj": "06265064000109",
+     "nome": "G M QUALITY COMERCIO LTDA",
+     "valor": 55685605.77,
+     "n": 3
+    },
+    {
+     "cnpj": "09281162000110",
+     "nome": "TOPPUS SERVICOS TERCEIRIZADOS - EM RECUPERACAO JUDICIAL",
+     "valor": 51690559.08,
+     "n": 30
+    },
+    {
+     "cnpj": "05969071000110",
+     "nome": "APPA SERVIÇOS TEMPORARIOS E EFETIVOS LTDA",
+     "valor": 42598870.2,
+     "n": 27
+    },
+    {
+     "cnpj": "63798490000133",
+     "nome": "LOCAVEL SERVICOS LTDA",
+     "valor": 38229627.9,
+     "n": 26
+    },
+    {
+     "cnpj": "11653365000212",
+     "nome": "LABOX COMUNICACAO ESTRATEGICA LTDA",
+     "valor": 37500000.0,
+     "n": 1
+    },
+    {
+     "cnpj": "44164606000138",
+     "nome": "ERJ ADMINISTRACAO E RESTAURANTES DE EMPRESAS LTDA",
+     "valor": 36330558.12,
+     "n": 1
+    },
+    {
+     "cnpj": "11000361000154",
+     "nome": "INSTITUTO EUVALDO LODI NUCLEO REGIONAL DE PERNAMBUCO",
+     "valor": 33630901.72,
+     "n": 30
+    },
+    {
+     "cnpj": "02633574000122",
+     "nome": "PERNAMBUCO CONSERVADORA LTDA",
+     "valor": 25015709.0,
+     "n": 14
+    },
+    {
+     "cnpj": "06997469000123",
+     "nome": "LOCARALPI ALUGUEL DE VEICULOS LTDA",
+     "valor": 24330724.0,
+     "n": 20
+    }
+   ],
+   "top_contracts": [
+    {
+     "contrato_id": "4101-0009-2014",
+     "numero": "4101.0009/2014",
+     "objeto": "PRESTAÇÃO DE SERVIÇOS TERCEIRIZADOS, COM ALOCAÇÃO DE MÃO DE OBRA DE SERVIÇOS DE LIMPEZA E CONSERVAÇÃO PREDIAL, PARA ATENDER AS NECESSIDADES DO GINÁSIO.",
+     "fornecedor": "SOLL SERVICOS OBRAS E LOCACOES LTDA",
+     "fornecedor_cnpj": "00323090000151",
+     "orgao": "GINÁSIO DE ESPORTES GERALDO MAGALHAES - GERALDAO",
+     "orgao_slug": null,
+     "valor": 375822720.0,
+     "ano": null
+    },
+    {
+     "contrato_id": "5006-0047-2011",
+     "numero": "5006.0047/2011",
+     "objeto": "LOCAÇÃO DE 01 (UM) VEÍCULO, TIPO UTILITARIO, COM MOTORISTA.",
+     "fornecedor": "LOQUIPE LOCACAO DE EQUIPAMENTOS E MAO DE OBRA LTDA",
+     "fornecedor_cnpj": "40884405000154",
+     "orgao": "URB - AUTARQUIA DE URBANIZACAO DO RECIFE",
+     "orgao_slug": null,
+     "valor": 162840000.0,
+     "ano": null
+    },
+    {
+     "contrato_id": "5006-0032-2011",
+     "numero": "5006.0032/2011",
+     "objeto": "LOCAÇÃO DE VEÍCULOS TIPO UTILITARIO E PASSEIO, SEM MOTORISTA E COM COMBUSTÍVEL.",
+     "fornecedor": "LOQUIPE LOCACAO DE EQUIPAMENTOS E MAO DE OBRA LTDA",
+     "fornecedor_cnpj": "40884405000154",
+     "orgao": "URB - AUTARQUIA DE URBANIZACAO DO RECIFE",
+     "orgao_slug": null,
+     "valor": 112000000.0,
+     "ano": null
+    },
+    {
+     "contrato_id": "3201-0011-2017",
+     "numero": "3201.0011/2017",
+     "objeto": "VEÍCULO TIPO HATCH, ZERO KM, BICOMBUSTÍVEL 4 PORTAS",
+     "fornecedor": "TCAR LOCACAO DE VEICULOS LTDA",
+     "fornecedor_cnpj": "14311143000129",
+     "orgao": "SECRETARIA DE CULTURA",
+     "orgao_slug": "secretaria-de-cultura",
+     "valor": 61522200.0,
+     "ano": null
+    },
+    {
+     "contrato_id": "1401-1032-2019",
+     "numero": "1401.1032/2019",
+     "objeto": "CONTRATAÇÃO DE EMPRESA ESPECIALIZADA NA PRESTAÇÃO DE SERVIÇOS CONTÍNUOS DE AUXILIAR DE SERVIÇOS GERAIS E DE PORTARIA PARA ATENDER ÀS NECESSIDADES DA SECRETARIA DE EDUCAÇÃO.",
+     "fornecedor": "ADSERV EMPREENDIMENTOS E SERVIÇOS DE MAO DE OBRA LTDA",
+     "fornecedor_cnpj": "08362490000188",
+     "orgao": "SECRETARIA DE EDUCAÇÃO",
+     "orgao_slug": "secretaria-de-educacao",
+     "valor": 45754538.16,
+     "ano": 2019
+    },
+    {
+     "contrato_id": "4801-0068-2019",
+     "numero": "4801.0068/2019",
+     "objeto": "REGISTRO DE PREÇOS PARA CONTRATAÇÃO DE EMPRESA ESPECIALIZADA EM MÃO DE OBRA TERCEIRIZADA NAS FUNÇÕES DE APOIO ADMINISTRATIVO NÍVEL I, II, III E IV , VISANDO ATENDER AS NECESSIDADES DA SECRETÁRIA DE SAÚDE DO RECIFE",
+     "fornecedor": "R P L ENGENHARIA E SERVICOS LTDA",
+     "fornecedor_cnpj": "01781573000162",
+     "orgao": "FUNDO MUNICIPAL DE SAUDE",
+     "orgao_slug": null,
+     "valor": 45685990.8,
+     "ano": 2020
+    },
+    {
+     "contrato_id": "4801-0041-2019",
+     "numero": "4801.0041/2019",
+     "objeto": "REGISTRO DE PREÇOS COM VALIDADE DE 12 (DOZE) MESES, PARA A CONTRATAÇÃO DE EMPRESA ESPECIALIZADA NA PRESTAÇÃO DE SERVIÇOS TERCEIRIZADOS, VISANDO À OBTENÇÃO DE DISPONIBILIZAÇÃO DE MÃO-DE-OBRA QUALIFICADA, PARA ATENDER AS NECESSIDADES DA SECRETARIA DE SAÚDE DA PREFEITURA DO RECIFE.",
+     "fornecedor": "SOLL SERVICOS OBRAS E LOCACOES LTDA",
+     "fornecedor_cnpj": "00323090000151",
+     "orgao": "FUNDO MUNICIPAL DE SAUDE",
+     "orgao_slug": null,
+     "valor": 45550758.6,
+     "ano": 2019
+    },
+    {
+     "contrato_id": "1401-1031-2019",
+     "numero": "1401.1031/2019",
+     "objeto": "CONTRATAÇÃO DE EMPRESA ESPECIALIZADA NA PRESTAÇÃO DE SERVIÇOS CONTÍNUOS DE AUXILIAR DE SERVIÇOS GERAIS E DE PORTARIA PARA ATENDER ÀS NECESSIDADES DA SECRETARIA DE EDUCAÇÃO.",
+     "fornecedor": "TOPPUS SERVICOS TERCEIRIZADOS - EM RECUPERACAO JUDICIAL",
+     "fornecedor_cnpj": "09281162000110",
+     "orgao": "SECRETARIA DE EDUCAÇÃO",
+     "orgao_slug": "secretaria-de-educacao",
+     "valor": 44618805.12,
+     "ano": 2019
+    },
+    {
+     "contrato_id": "5006-0019-2013",
+     "numero": "5006.0019/2013",
+     "objeto": "LOCAÇÃO DE 01(UM) VEICULO, SEM CONDUTOR E SEM COMBUSTÍVEL TIPO SEDAN, TIPO PASSEIO 04(QUATRO) PORTAS",
+     "fornecedor": "SERVICAR LOCADORA EIRELI - EPP",
+     "fornecedor_cnpj": "00824311000175",
+     "orgao": "URB - AUTARQUIA DE URBANIZACAO DO RECIFE",
+     "orgao_slug": null,
+     "valor": 39095400.0,
+     "ano": null
+    },
+    {
+     "contrato_id": "2501-4007-2024",
+     "numero": "2501.4007/2024",
+     "objeto": "PRESTAÇÃO DE SERVIÇOS DE PUBLICIDADE,COMPREENDENDO O CONJUNTO DE ATIVIDADESREALIZADAS INTEGRADAMENTE QUE TENHAM POROBJETIVO O ESTUDO, O PLANEJAMENTO, A CONCEITUAÇÃO,A CONCEPÇÃO, A CRIAÇÃO, A EXECUÇÃO INTERNA, AINTERMEDIAÇÃO E A SUPERVISÃO DA EXECUÇÃO EXTERNAE A DISTRIBUIÇÃO DE PUBLICIDADE DE CARÁTERINSTITUCIONAL DE COMPETÊNCIA DESTA SECRETARIA.",
+     "fornecedor": "LABOX COMUNICACAO ESTRATEGICA LTDA",
+     "fornecedor_cnpj": "11653365000212",
+     "orgao": "SECRETARIA DE ADMINISTRAÇÃO",
+     "orgao_slug": "secretaria-de-administracao",
+     "valor": 37500000.0,
+     "ano": 2024
+    },
+    {
+     "contrato_id": "1401-0023-2014",
+     "numero": "1401.0023/2014",
+     "objeto": "CONSTITUI OBJETO DO PRESENTE CONTRATO O FORNECIMENTO DE MATÉRIA PRIMA (TIPO GÊNEROS ALIMENTÍCIOS) E REFEIÇÕES PRONTAS (PREPARO, COCÇÃO, TRANSPORTE, DISTRIBUIÇÃO E HIGIENIZAÇÃO) E DEMAIS INSUMOS INERENTES AOS SERVIÇOS, PARA ATENDER AOS ESTUDANTES DAS ESCOLAS MUNICIPAIS E COMUNITÁRIAS, CRECHES MUNICIPAIS E COMUNITÁRIAS, ESCOLAS PROFISSIONALIZANTES, UNIDADES DE TECNOLOGIA E PARTICIPANTES DE PROGRAMAS ESPECIAIS DA SECRETARIA DE EDUCAÇÃO DO RECIFE NOS LOTES 01 E 04 DO PREGÃO ELETRÔNICO Nº 009/2013-CPLE, DE ACORDO COM TERMO DE REFERÊNCIA.",
+     "fornecedor": "ERJ ADMINISTRACAO E RESTAURANTES DE EMPRESAS LTDA",
+     "fornecedor_cnpj": "44164606000138",
+     "orgao": "SECRETARIA DE EDUCAÇÃO",
+     "orgao_slug": "secretaria-de-educacao",
+     "valor": 36330558.12,
+     "ano": null
+    },
+    {
+     "contrato_id": "5006-0014-2013",
+     "numero": "5006.0014/2013",
+     "objeto": "LOCAÇÃO DE 02(DOIS) VEÍCULOS DE USO ADMINISTRATIVO, SEM CONDUTOR E SEM COMBUSTÍVEL.",
+     "fornecedor": "LOCAVEL SERVICOS LTDA",
+     "fornecedor_cnpj": "63798490000133",
+     "orgao": "URB - AUTARQUIA DE URBANIZACAO DO RECIFE",
+     "orgao_slug": null,
+     "valor": 35517600.0,
+     "ano": null
+    },
+    {
+     "contrato_id": "1301-0239-2011",
+     "numero": "1301.0239/2011",
+     "objeto": "PRESTAÇÃO DE SERVIÇO TERCEIRIZADOS DE DIGITADORES",
+     "fornecedor": "R P L ENGENHARIA E SERVICOS LTDA",
+     "fornecedor_cnpj": "01781573000162",
+     "orgao": "PROCURADORIA GERAL DO MUNICÍPIO",
+     "orgao_slug": "procuradoria-geral-do-municipio",
+     "valor": 31245058.42,
+     "ano": null
+    },
+    {
+     "contrato_id": "1401-1035-2019",
+     "numero": "1401.1035/2019",
+     "objeto": "CONTRATAÇÃO DE EMPRESA ESPECIALIZADA NA PRESTAÇÃO DE SERVIÇOS CONTÍNUOS DE AUXILIAR DE SERVIÇOS GERAIS E DE PORTARIA COM DEDICAÇÃO DE MÃO DE OBRA EXCLUSIVA, CONFORME ESPECIFICAÇÕES CONTIDAS NO TERMO  DE REFERÊNCIA, ANEXO AO EDITAL.",
+     "fornecedor": "SOLL SERVICOS OBRAS E LOCACOES LTDA",
+     "fornecedor_cnpj": "00323090000151",
+     "orgao": "SECRETARIA DE EDUCAÇÃO",
+     "orgao_slug": "secretaria-de-educacao",
+     "valor": 29850102.24,
+     "ano": 2019
+    },
+    {
+     "contrato_id": "6901-0038-2014",
+     "numero": "6901.0038/2014",
+     "objeto": "CONTRATAÇÃO DE EMPRESA ESPECIALIZADA EM SERVIÇOS TERCEIRIZADOS PARA ATENDER AS NECESSIDADES DA SECRETARIA DE MEIO AMBIENTE E SUSTENTABILIDADE.",
+     "fornecedor": "SOLL SERVICOS OBRAS E LOCACOES LTDA",
+     "fornecedor_cnpj": "00323090000151",
+     "orgao": "SECRETARIA DE MEIO AMBIENTE",
+     "orgao_slug": "secretaria-de-meio-ambiente",
+     "valor": 27066360.0,
+     "ano": null
+    }
+   ]
+  }
+ }
+}

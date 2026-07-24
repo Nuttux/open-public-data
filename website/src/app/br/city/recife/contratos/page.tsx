@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { loadContratos, loadLicitacoes } from "@/lib/br/recife-data";
+import { loadContratos } from "@/lib/br/recife-data";
 import ContratosClient from "./ContratosClient";
 
 export const metadata: Metadata = {
@@ -10,9 +10,8 @@ export const metadata: Metadata = {
 
 export default function RecifeContratosPage() {
   const data = loadContratos();
-  const licitacoes = loadLicitacoes();
   // Ship a top slice for the initial list; the client lazy-fetches the full
   // file for search (contratos.json, ~5 MB) — Paris/SF lazy-search pattern.
   const slim = { ...data, contratos: data.contratos.slice(0, 250) };
-  return <ContratosClient d={slim} lic={licitacoes} />;
+  return <ContratosClient d={slim} />;
 }

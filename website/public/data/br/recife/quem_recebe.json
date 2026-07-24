@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-22T21:16:58.957345+00:00",
+ "generated_at": "2026-07-24T12:03:55.422551+00:00",
  "source_pipeline": "configs/countries/br.yaml → sync_ckan_dataset.py → raw.br_recife_* → dbt_br_staging → dbt_br_analytics → dbt_br_marts → export_br_recife.py",
  "country": "br",
  "scale": "city",
@@ -2914,76 +2914,91 @@
  "temas": [
   {
    "tema": "Saúde e assistência",
+   "slug": "saude-e-assistencia",
    "n_organizacoes": 830,
    "pago": 2470441195.24
   },
   {
    "tema": "Serviços financeiros",
+   "slug": "servicos-financeiros",
    "n_organizacoes": 5,
    "pago": 1701484300.69
   },
   {
    "tema": "Infraestrutura e obras",
+   "slug": "infraestrutura-e-obras",
    "n_organizacoes": 371,
    "pago": 1662469910.08
   },
   {
    "tema": "Serviços administrativos",
+   "slug": "servicos-administrativos",
    "n_organizacoes": 5,
    "pago": 1179312034.77
   },
   {
    "tema": "Gestão pública",
+   "slug": "gestao-publica",
    "n_organizacoes": 688,
    "pago": 1166402261.62
   },
   {
    "tema": "Educação",
+   "slug": "educacao",
    "n_organizacoes": 434,
    "pago": 927902961.9
   },
   {
    "tema": "Infraestrutura urbana",
+   "slug": "infraestrutura-urbana",
    "n_organizacoes": 2,
    "pago": 758159519.44
   },
   {
    "tema": "Outros",
+   "slug": "outros",
    "n_organizacoes": 417,
    "pago": 651043529.07
   },
   {
    "tema": "Cultura, esporte e lazer",
+   "slug": "cultura-esporte-e-lazer",
    "n_organizacoes": 1733,
    "pago": 563967597.3
   },
   {
    "tema": "Alimentação e eventos",
+   "slug": "alimentacao-e-eventos",
    "n_organizacoes": 1,
    "pago": 355734460.37
   },
   {
    "tema": "Segurança urbana",
+   "slug": "seguranca-urbana",
    "n_organizacoes": 176,
    "pago": 308388203.16
   },
   {
    "tema": "Sociedade civil",
+   "slug": "sociedade-civil",
    "n_organizacoes": 78,
    "pago": 85672475.49
   },
   {
    "tema": "Desenvolvimento econômico",
+   "slug": "desenvolvimento-economico",
    "n_organizacoes": 103,
    "pago": 28056047.1
   },
   {
    "tema": "Meio ambiente",
+   "slug": "meio-ambiente",
    "n_organizacoes": 21,
    "pago": 1813621.14
   },
   {
    "tema": "Serviços técnicos",
+   "slug": "servicos-tecnicos",
    "n_organizacoes": 2,
    "pago": 1625278.49
   }

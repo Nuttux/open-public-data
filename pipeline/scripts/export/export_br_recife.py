@@ -34,8 +34,10 @@ Prereq: dbt build --select tag:br --target prod
 """
 
 import json
+import re
 import sys
-from collections import defaultdict
+import unicodedata
+from collections import defaultdict, Counter
 from datetime import datetime, timezone
 from decimal import Decimal
 from pathlib import Path
@@ -47,6 +49,11 @@ from utils.logger import Logger  # noqa: E402
 
 PROJECT_ID = "open-data-france-484717"
 DATASET = "dbt_br_marts"
+# Core (row-level OBT) — read for the per-recipient by-órgão rollup. A dedicated
+# mart would be the cleaner long-term home; this bounded GROUP BY is kept in the
+# exporter for now (ships without a new mart dependency, survives CI).
+CORE_DATASET = "dbt_br_analytics"
+TOP_ORGAOS = 8
 OUTPUT_DIR = Path(__file__).parent.parent.parent.parent / "website" / "public" / "data" / "br" / "recife"
 
 SOURCE_PIPELINE = (
@@ -72,6 +79,73 @@ def _ts(v):
 def rows(client, table, extra=""):
     q = f"SELECT * FROM `{PROJECT_ID}.{DATASET}.{table}` {extra}"
     return [dict(r) for r in client.query(q).result()]
+
+
+def slug_token(s, fallback="item"):
+    """Deterministic ASCII slug (NFKD accent-strip → non-alnum to hyphen →
+    lower). MUST match the TS slug helpers in lib/br/format.ts. Shared by
+    órgão/modalidade/tema; only the empty-string fallback differs."""
+    s = unicodedata.normalize("NFKD", s or "").encode("ascii", "ignore").decode()
+    s = re.sub(r"[^a-zA-Z0-9]+", "-", s).strip("-").lower()
+    return s or fallback
+
+
+def slug_orgao(s):
+    """Órgão-name slug. MUST match the TS `slugOrgao` in lib/br/format.ts."""
+    return slug_token(s, "orgao")
+
+
+def orgao_norm_key(name):
+    """Normalised join key bridging the two órgão taxonomies (despesa vs
+    contratos): slug of the name before a ' - ' suffix."""
+    return slug_orgao(re.split(r"\s*[-–]\s*", name or "")[0])
+
+
+def load_orgao_slugs(client):
+    """Map any órgão name → its órgão-PAGE slug (keyed on despesa órgãos, which
+    are the pages). Returns (exact{slug:slug}, bykey{normkey:slug}) for exact-
+    then best-effort resolution. Used to link contracts/suppliers → órgão page."""
+    q = (f"SELECT DISTINCT orgao FROM `{PROJECT_ID}.{CORE_DATASET}."
+         f"core_br_recife_despesa` WHERE is_org AND orgao IS NOT NULL")
+    exact, bykey = {}, {}
+    for r in client.query(q).result():
+        ps = slug_orgao(r["orgao"])
+        exact[ps] = ps
+        bykey.setdefault(orgao_norm_key(r["orgao"]), ps)
+    return exact, bykey
+
+
+def resolve_orgao_slug(name, exact, bykey):
+    """Órgão name → existing órgão-page slug, or None if it doesn't resolve
+    (so callers link only live pages — no 404s)."""
+    if not name:
+        return None
+    s = slug_orgao(name)
+    return exact.get(s) or bykey.get(orgao_norm_key(name))
+
+
+def _group_by(items, key):
+    g = defaultdict(list)
+    for it in items:
+        k = key(it)
+        if k:
+            g[k].append(it)
+    return g
+
+
+def top_orgaos(pairs, cap=TOP_ORGAOS, resolve=None):
+    """Collapse (orgao, valor, n) pairs into a top-`cap` breakdown + an
+    aggregated 'Outros' (orgao=None) remainder. `resolve(name)` (optional)
+    attaches the órgão-page slug (or None) so the fiche can link live pages."""
+    ranked = sorted((p for p in pairs if p[0]), key=lambda x: -x[1])
+    out = [{"orgao": o, "slug": resolve(o) if resolve else None,
+            "valor": round(v, 2), "n": n} for o, v, n in ranked[:cap]]
+    rest = ranked[cap:]
+    if rest:
+        out.append({"orgao": None, "slug": None,
+                    "valor": round(sum(v for _, v, _ in rest), 2),
+                    "n": sum(n for _, _, n in rest)})
+    return out
 
 
 def source_block(sample):
@@ -219,6 +293,23 @@ def build_quem_recebe(client, log):
         if c.get("is_org") and c.get("doc"):
             contr_by_doc[c["doc"]].append(c)
 
+    # by-órgão payment breakdown per recipient (the fiche "breakdown by
+    # department" section) — bounded GROUP BY on core despesa (read-only).
+    orgao_q = f"""
+        SELECT recipient_key, orgao,
+               SUM(pago_liquido) AS pago, COUNT(*) AS n
+        FROM `{PROJECT_ID}.{CORE_DATASET}.core_br_recife_despesa`
+        WHERE is_org AND recipient_key IS NOT NULL AND orgao IS NOT NULL
+        GROUP BY 1, 2
+    """
+    orgao_by_doc = defaultdict(list)
+    for r in (dict(x) for x in client.query(orgao_q).result()):
+        orgao_by_doc[r["recipient_key"]].append(
+            (r["orgao"], _f(r["pago"]) or 0, r["n"]))
+    # órgão-page slug resolver (links the breakdown bars → órgão pages)
+    _exact, _bykey = load_orgao_slugs(client)
+    _resolve = lambda name: resolve_orgao_slug(name, _exact, _bykey)
+
     recipients = {}  # cnpj -> aggregate
     for r in qr:
         cnpj = r["cnpj"]
@@ -247,6 +338,7 @@ def build_quem_recebe(client, log):
         rec["total_pago"] = round(rec["total_pago"], 2)
         rec["total_empenhado"] = round(rec["total_empenhado"], 2)
         rec["subvencao_pago"] = round(rec["subvencao_pago"], 2)
+        rec["by_orgao"] = top_orgaos(orgao_by_doc.get(rec["cnpj"], []), resolve=_resolve)
         cs = contr_by_doc.get(rec["cnpj"], [])
         rec["contratos"] = sorted(
             [{
@@ -299,7 +391,8 @@ def build_quem_recebe(client, log):
         tema_agg[tm]["n"] += 1
         tema_agg[tm]["pago"] += r["total_pago"]
     temas = sorted(
-        [{"tema": k, "n_organizacoes": v["n"], "pago": round(v["pago"], 2)}
+        [{"tema": k, "slug": slug_token(k, "outros"),
+          "n_organizacoes": v["n"], "pago": round(v["pago"], 2)}
          for k, v in tema_agg.items()],
         key=lambda x: -x["pago"])
 
@@ -348,10 +441,63 @@ def build_quem_recebe(client, log):
         },
     }
 
+    # ── Contract-only suppliers ──────────────────────────────────────────────
+    # A CNPJ can hold a contract yet have NO despesa/empenho payment row (branch
+    # CNPJ vs the paid root, unpaid contract, or a supplier the credor feed
+    # never lists). Those were dropped here — so the contract fiche's
+    # "fornecedor → /quem-recebe/{cnpj}" link 404'd for ~745 suppliers.
+    # We now give every contract supplier a fiche (contracts-only), but keep
+    # them OUT of all_recs so the payment-based headline/temas/ranking stay
+    # exactly "organisations that were PAID" (total_pago semantics preserved).
+    paid_docs = set(recipients.keys())
+    contract_only = {}
+    for doc, cs in contr_by_doc.items():
+        if doc in paid_docs:
+            continue
+        names = Counter(c["razao_social"] for c in cs if c.get("razao_social"))
+        orgaos = Counter(c["orgao_contratante"] for c in cs if c.get("orgao_contratante"))
+        e = enrich.get(doc, {})
+        contract_only[doc] = {
+            "cnpj": doc,
+            "nome": names.most_common(1)[0][0] if names else doc,
+            "total_pago": 0.0, "total_empenhado": 0.0, "subvencao_pago": 0.0,
+            "is_subvencao": False,
+            "principal_orgao": orgaos.most_common(1)[0][0] if orgaos else None,
+            "by_year": [],
+            "contratos": sorted(
+                [{
+                    "contrato_id": c["contrato_id"], "numero": c["numero_contrato"],
+                    "objeto": c["objeto"], "orgao": c["orgao_contratante"],
+                    "valor": _f(c["valor_contrato"]), "situacao": c["situacao"],
+                    "ano": c["ano_contrato"],
+                } for c in cs],
+                key=lambda x: -(x["valor"] or 0))[:20],
+            "n_contratos": len(cs),
+            "total_contratado": round(sum(_f(c["valor_contrato"]) or 0 for c in cs), 2),
+            # contract-only suppliers have no payments → breakdown by órgão is
+            # by CONTRACTED value (orgao_contratante), the analogous "by dept".
+            "by_orgao": top_orgaos([
+                (o, sum(_f(c["valor_contrato"]) or 0 for c in g), len(g))
+                for o, g in _group_by(cs, lambda c: c["orgao_contratante"]).items()
+            ], resolve=_resolve),
+            "contratos_only": True,
+            "tema": e.get("tema"),
+            "perfil": {k: e.get(k) for k in ("cnae", "setor", "porte", "natureza",
+                                             "situacao", "razao_social")} if e.get("cnae") else None,
+            "resumo": e.get("resumo"),
+            "o_que_financia": e.get("o_que_financia"),
+        }
+
     recipients_map = {r["cnpj"]: r for r in all_recs}
+    recipients_map.update(contract_only)  # paid recipients win on CNPJ collision
     search = [{"cnpj": r["cnpj"], "nome": r["nome"], "total_pago": r["total_pago"],
                "is_subvencao": r["is_subvencao"], "tema": r.get("tema"),
                "orgao": r.get("principal_orgao")} for r in all_recs]
+    # contract-only suppliers are searchable too (flagged via total_pago=0)
+    search += [{"cnpj": r["cnpj"], "nome": r["nome"], "total_pago": 0.0,
+                "is_subvencao": False, "tema": r.get("tema"),
+                "orgao": r.get("principal_orgao"), "contratos_only": True}
+               for r in contract_only.values()]
     search_payload = {
         "generated_at": datetime.now(timezone.utc).isoformat(),
         "source_pipeline": SOURCE_PIPELINE, "unit": "BRL",
@@ -362,7 +508,57 @@ def build_quem_recebe(client, log):
         "source_pipeline": SOURCE_PIPELINE, "unit": "BRL",
         "source": src, "count": len(recipients_map), "items": recipients_map,
     }
-    return page, recipients_payload, search_payload
+
+    # ── tema fiches (theme entity pages) ─────────────────────────────────────
+    # Per public-policy theme: paid organisations, total paid, by year, the
+    # departments (órgãos) paying them, and the top recipients. Aggregated from
+    # the PAID recipients (all_recs) so it matches the theme bar on the page.
+    # Órgão totals use the raw, uncapped orgao_by_doc pairs (not the per-recipient
+    # capped by_orgao) so the theme-level breakdown is exact.
+    tema_groups = defaultdict(list)
+    for r in all_recs:
+        tema_groups[r.get("tema") or "Outros"].append(r)
+    tema_items = {}
+    for tm, recs in tema_groups.items():
+        by_year_pago = defaultdict(float)
+        year_orgs = defaultdict(set)
+        orgao_cell = defaultdict(lambda: [0.0, 0])
+        for r in recs:
+            for y in r["by_year"]:
+                by_year_pago[y["ano"]] += y["pago"]
+                if y["pago"] > 0:
+                    year_orgs[y["ano"]].add(r["cnpj"])
+            for o, v, n in orgao_by_doc.get(r["cnpj"], []):
+                orgao_cell[o][0] += v
+                orgao_cell[o][1] += n
+        by_year = sorted(
+            ({"ano": k, "pago": round(v, 2), "n_orgs": len(year_orgs[k])}
+             for k, v in by_year_pago.items()), key=lambda x: x["ano"])
+        top_recebedores = [
+            {"cnpj": r["cnpj"], "nome": r["nome"], "total_pago": r["total_pago"],
+             "n_contratos": r["n_contratos"], "is_subvencao": r["is_subvencao"]}
+            for r in sorted(recs, key=lambda x: -x["total_pago"])[:15]]
+        slug = slug_token(tm, "outros")
+        tema_items[slug] = {
+            "tema": tm, "slug": slug,
+            "n_organizacoes": len(recs),
+            "total_pago": round(sum(r["total_pago"] for r in recs), 2),
+            "subvencao_total": round(sum(r["subvencao_pago"] for r in recs), 2),
+            "n_subvencionadas": sum(1 for r in recs if r["is_subvencao"]),
+            "by_year": by_year,
+            "top_orgaos": top_orgaos([(o, c[0], c[1]) for o, c in orgao_cell.items()],
+                                     resolve=_resolve),
+            "top_recebedores": top_recebedores,
+        }
+    temas_payload = {
+        "generated_at": datetime.now(timezone.utc).isoformat(),
+        "source_pipeline": SOURCE_PIPELINE,
+        "country": "br", "scale": "city", "place": "recife",
+        "unit": "BRL", "as_of": src["as_of"], "source": src,
+        "tema_method": "CNAE-seção + órgão pagador (mapeamento determinístico, classificação nossa)",
+        "count": len(tema_items), "items": tema_items,
+    }
+    return page, recipients_payload, search_payload, temas_payload
 
 
 # ---------------------------------------------------------------------------
@@ -374,6 +570,7 @@ def build_contratos(client, log):
     if not contratos:
         raise RuntimeError("mart_br_recife_contratos is empty")
     src = source_block(contratos[0])
+    exact, bykey = load_orgao_slugs(client)  # for orgao_slug (→ órgão page)
 
     modalidade_mix = defaultdict(lambda: {"n": 0, "valor": 0.0})
     items = []
@@ -394,6 +591,7 @@ def build_contratos(client, log):
             "numero": c["numero_contrato"],
             "ano": c["ano_contrato"],
             "orgao": c["orgao_contratante"],
+            "orgao_slug": resolve_orgao_slug(c["orgao_contratante"], exact, bykey),
             "objeto": c["objeto"],
             "modalidade": mod,
             "fornecedor": nome,
@@ -409,6 +607,10 @@ def build_contratos(client, log):
     items.sort(key=lambda x: -(x["valor"] or 0))
     mix = sorted([{"modalidade": k, "n": v["n"], "valor": round(v["valor"], 2)}
                   for k, v in modalidade_mix.items()], key=lambda x: -x["valor"])
+    # facets for the search filters (complete lists — the seed is only a slice)
+    orgao_counts = Counter(c["orgao"] for c in items if c["orgao"])
+    orgaos = [o for o, _ in orgao_counts.most_common()]
+    anos = sorted({c["ano"] for c in items if c["ano"]}, reverse=True)
     return {
         "generated_at": datetime.now(timezone.utc).isoformat(),
         "source_pipeline": SOURCE_PIPELINE,
@@ -425,7 +627,169 @@ def build_contratos(client, log):
             "valor_ativo_total": round(valor_ativo, 2),
         },
         "modalidade_mix": mix,
+        "orgaos": orgaos,
+        "anos": anos,
         "contratos": items,
+    }
+
+
+# ---------------------------------------------------------------------------
+# modalidades.json — procurement-modality entity pages
+# ---------------------------------------------------------------------------
+
+def build_modalidades(client, log):
+    """Per-modalidade fiche data: contract count + value, active split, spend by
+    year, and the top órgãos / suppliers / contracts using that modality. The
+    modality is Brazil's real competition signal (LICITAÇÃO vs INEXIGIBILIDADE/
+    DISPENSA…). Source: contratos mart; órgão-slug resolver for the links."""
+    contratos = rows(client, "mart_br_recife_contratos")
+    if not contratos:
+        raise RuntimeError("mart_br_recife_contratos is empty")
+    src = source_block(contratos[0])
+    exact, bykey = load_orgao_slugs(client)
+    _resolve = lambda name: resolve_orgao_slug(name, exact, bykey)
+
+    agg = {}
+    for c in contratos:
+        mod = c["modalidade"] or "—"
+        a = agg.setdefault(mod, {
+            "n": 0, "valor": 0.0, "n_ativos": 0, "valor_ativo": 0.0,
+            "by_year": defaultdict(lambda: [0, 0.0]),
+            "orgaos": defaultdict(lambda: [0.0, 0]),
+            "suppliers": defaultdict(lambda: {"nome": None, "valor": 0.0, "n": 0}),
+            "contracts": [],
+        })
+        val = _f(c["valor_contrato"]) or 0
+        a["n"] += 1
+        a["valor"] += val
+        if c["is_ativo"]:
+            a["n_ativos"] += 1
+            a["valor_ativo"] += val
+        if c["ano_contrato"]:
+            yr = a["by_year"][c["ano_contrato"]]
+            yr[0] += 1
+            yr[1] += val
+        if c.get("orgao_contratante"):
+            o = a["orgaos"][c["orgao_contratante"]]
+            o[0] += val
+            o[1] += 1
+        if c.get("is_org") and c.get("doc"):
+            s = a["suppliers"][c["doc"]]
+            s["valor"] += val
+            s["n"] += 1
+            if c.get("razao_social"):
+                s["nome"] = c["razao_social"]
+        a["contracts"].append(c)
+
+    items = {}
+    for mod, a in agg.items():
+        slug = slug_token(mod, "sem-modalidade")
+        by_year = sorted(({"ano": k, "n": v[0], "valor": round(v[1], 2)}
+                          for k, v in a["by_year"].items()), key=lambda x: x["ano"])
+        top_suppliers = sorted(
+            ({"cnpj": k, "nome": v["nome"] or k, "valor": round(v["valor"], 2), "n": v["n"]}
+             for k, v in a["suppliers"].items()), key=lambda x: -x["valor"])[:15]
+        top_contracts = sorted(
+            ({"contrato_id": c["contrato_id"], "numero": c["numero_contrato"],
+              "objeto": c["objeto"],
+              "fornecedor": c["razao_social"] if c.get("is_org") else MASK_PESSOA_FISICA,
+              "fornecedor_cnpj": c["doc"] if c.get("is_org") else None,
+              "orgao": c["orgao_contratante"], "orgao_slug": _resolve(c["orgao_contratante"]),
+              "valor": _f(c["valor_contrato"]), "ano": c["ano_contrato"]}
+             for c in a["contracts"]),
+            key=lambda x: -(x["valor"] or 0))[:15]
+        items[slug] = {
+            "modalidade": mod, "slug": slug,
+            "n_contratos": a["n"], "valor_total": round(a["valor"], 2),
+            "n_ativos": a["n_ativos"], "valor_ativo": round(a["valor_ativo"], 2),
+            "by_year": by_year,
+            "top_orgaos": top_orgaos([(o, v[0], v[1]) for o, v in a["orgaos"].items()],
+                                     resolve=_resolve),
+            "top_suppliers": top_suppliers,
+            "top_contracts": top_contracts,
+        }
+    return {
+        "generated_at": datetime.now(timezone.utc).isoformat(),
+        "source_pipeline": SOURCE_PIPELINE,
+        "country": "br", "scale": "city", "place": "recife",
+        "unit": "BRL", "as_of": src["as_of"], "source": src,
+        "count": len(items), "items": items,
+    }
+
+
+# ---------------------------------------------------------------------------
+# orgaos.json — contracting-department (órgão) entity pages
+# ---------------------------------------------------------------------------
+
+def build_orgaos(client, log):
+    """Per-órgão fiche data: total paid, spend by year, top suppliers (paid),
+    top contracts. Payments from core despesa; contracts from the mart. Slug
+    keys match TS slugOrgao()."""
+    q = f"""
+        SELECT orgao, ano, recipient_key,
+               APPROX_TOP_COUNT(nome_credor, 1)[OFFSET(0)].value AS nome,
+               SUM(pago_liquido) AS pago
+        FROM `{PROJECT_ID}.{CORE_DATASET}.core_br_recife_despesa`
+        WHERE is_org AND orgao IS NOT NULL AND recipient_key IS NOT NULL
+        GROUP BY orgao, ano, recipient_key
+    """
+    agg = {}  # orgao -> {total, by_year{ano:pago}, suppliers{cnpj:{nome,pago}}}
+    for r in (dict(x) for x in client.query(q).result()):
+        o = agg.setdefault(r["orgao"], {"by_year": defaultdict(float),
+                                        "suppliers": {}})
+        p = _f(r["pago"]) or 0
+        o["by_year"][r["ano"]] += p
+        s = o["suppliers"].setdefault(r["recipient_key"], {"nome": None, "pago": 0.0})
+        s["pago"] += p
+        if r["nome"]:
+            s["nome"] = r["nome"]
+
+    # Contracts and payments use DIFFERENT órgão taxonomies (secretaria vs
+    # fundo, "- ADMINISTRAÇÃO SUPERVISIONADA" suffixes). Best-effort join on a
+    # normalised key (slug of the name before " - "); unmatched órgãos simply
+    # show no contracts section rather than a fabricated link.
+    def _key(name):
+        return slug_orgao(re.split(r"\s*[-–]\s*", name or "")[0])
+
+    contratos = rows(client, "mart_br_recife_contratos")
+    contr_by_key = defaultdict(list)
+    for c in contratos:
+        if c.get("orgao_contratante"):
+            contr_by_key[_key(c["orgao_contratante"])].append(c)
+
+    src = source_block(contratos[0]) if contratos else {}
+    items = {}
+    for orgao, a in agg.items():
+        slug = slug_orgao(orgao)
+        by_year = sorted(({"ano": k, "pago": round(v, 2)} for k, v in a["by_year"].items()),
+                         key=lambda x: x["ano"])
+        top_suppliers = sorted(
+            ({"cnpj": k, "nome": v["nome"] or k, "pago": round(v["pago"], 2)}
+             for k, v in a["suppliers"].items()),
+            key=lambda x: -x["pago"])[:15]
+        cs = contr_by_key.get(_key(orgao), [])
+        top_contracts = sorted(
+            ({"contrato_id": c["contrato_id"], "numero": c["numero_contrato"],
+              "objeto": c["objeto"],
+              "fornecedor": c["razao_social"] if c.get("is_org") else MASK_PESSOA_FISICA,
+              "fornecedor_cnpj": c["doc"] if c.get("is_org") else None,
+              "valor": _f(c["valor_contrato"]), "ano": c["ano_contrato"]}
+             for c in cs),
+            key=lambda x: -(x["valor"] or 0))[:15]
+        items[slug] = {
+            "orgao": orgao, "slug": slug,
+            "total_pago": round(sum(a["by_year"].values()), 2),
+            "n_suppliers": len(a["suppliers"]),
+            "n_contratos": len(cs),
+            "by_year": by_year,
+            "top_suppliers": top_suppliers,
+            "top_contracts": top_contracts,
+        }
+    return {
+        "generated_at": datetime.now(timezone.utc).isoformat(),
+        "source_pipeline": SOURCE_PIPELINE,
+        "country": "br", "scale": "city", "place": "recife",
+        "unit": "BRL", "source": src, "count": len(items), "items": items,
     }
 
 
@@ -549,14 +913,21 @@ def main():
     write_json("budget.json", budget, log)
 
     log.section("quem_recebe")
-    qr, recipients, search = build_quem_recebe(client, log)
+    qr, recipients, search, temas = build_quem_recebe(client, log)
     write_json("quem_recebe.json", qr, log)
     write_json("recipients.json", recipients, log)
     write_json("quem_recebe_search.json", search, log)
+    write_json("temas.json", temas, log)
 
     log.section("contratos")
     contratos = build_contratos(client, log)
     write_json("contratos.json", contratos, log)
+
+    log.section("modalidades")
+    write_json("modalidades.json", build_modalidades(client, log), log)
+
+    log.section("orgaos")
+    write_json("orgaos.json", build_orgaos(client, log), log)
 
     log.section("licitacoes")
     lic = build_licitacoes(client, log)
@@ -585,7 +956,10 @@ def main():
             "quem_recebe": "quem_recebe.json",
             "recipients": "recipients.json",
             "quem_recebe_search": "quem_recebe_search.json",
+            "temas": "temas.json",
             "contratos": "contratos.json",
+            "modalidades": "modalidades.json",
+            "orgaos": "orgaos.json",
             "licitacoes": "licitacoes.json",
             "places": "places.json",
         },

@@ -1,0 +1,2331 @@
+{
+ "generated_at": "2026-07-24T12:03:55.439203+00:00",
+ "source_pipeline": "configs/countries/br.yaml → sync_ckan_dataset.py → raw.br_recife_* → dbt_br_staging → dbt_br_analytics → dbt_br_marts → export_br_recife.py",
+ "country": "br",
+ "scale": "city",
+ "place": "recife",
+ "unit": "BRL",
+ "as_of": null,
+ "source": {
+  "name": "Despesas Orçamentárias",
+  "portal": "Dados Abertos da Prefeitura do Recife (CKAN)",
+  "license": "Open Data Commons Open Database License (ODbL)",
+  "source_url": "https://dados.recife.pe.gov.br/dataset/despesas-orcamentarias",
+  "as_of": null
+ },
+ "tema_method": "CNAE-seção + órgão pagador (mapeamento determinístico, classificação nossa)",
+ "count": 15,
+ "items": {
+  "servicos-financeiros": {
+   "tema": "Serviços financeiros",
+   "slug": "servicos-financeiros",
+   "n_organizacoes": 5,
+   "total_pago": 1701484300.69,
+   "subvencao_total": 0.0,
+   "n_subvencionadas": 0,
+   "by_year": [
+    {
+     "ano": 2024,
+     "pago": 858643239.18,
+     "n_orgs": 5
+    },
+    {
+     "ano": 2025,
+     "pago": 578107240.96,
+     "n_orgs": 5
+    },
+    {
+     "ano": 2026,
+     "pago": 264733820.55,
+     "n_orgs": 5
+    }
+   ],
+   "top_orgaos": [
+    {
+     "orgao": "ENCARGOS GERAIS DO MUNICÍPIO",
+     "slug": "encargos-gerais-do-municipio",
+     "valor": 1698913029.95,
+     "n": 3468
+    },
+    {
+     "orgao": "SECRETARIA DE INFRAESTRUTURA - ADMINISTRAÇÃO SUPERVISIONADA",
+     "slug": "secretaria-de-infraestrutura-administracao-supervisionada",
+     "valor": 1380995.57,
+     "n": 79
+    },
+    {
+     "orgao": "SECRETARIA DE DESENV. SOCIAL, DIREITOS HUMANOS, JUVENTUDE E POLÍTICAS SOBRE DROGAS - ADM. SUPERVISIO",
+     "slug": "secretaria-de-desenv-social-direitos-humanos-juventude-e-politicas-sobre-drogas-adm-supervisio",
+     "valor": 551664.5,
+     "n": 95
+    },
+    {
+     "orgao": "SECRETARIA DE ASSISTÊNCIA SOCIAL E COMBATE À FOME - ADM. SUPERVISIONADA",
+     "slug": "secretaria-de-assistencia-social-e-combate-a-fome-adm-supervisionada",
+     "valor": 326016.46,
+     "n": 20
+    },
+    {
+     "orgao": "SECRETARIA DE ORDEM PÚBLICA E SEGURANÇA - ADMINISTRAÇÃO SUPERVISIONADA",
+     "slug": "secretaria-de-ordem-publica-e-seguranca-administracao-supervisionada",
+     "valor": 89940.38,
+     "n": 5
+    },
+    {
+     "orgao": "SECRETARIA DE POLÍTICA URBANA E LICENCIAMENTO - ADMINISTRAÇÃO SUPERVISIONADA",
+     "slug": "secretaria-de-politica-urbana-e-licenciamento-administracao-supervisionada",
+     "valor": 87137.57,
+     "n": 14
+    },
+    {
+     "orgao": "SECRETARIA DE PLANEJAMENTO, GESTÃO E TRANSFORMAÇÃO DIGITAL",
+     "slug": "secretaria-de-planejamento-gestao-e-transformacao-digital",
+     "valor": 50000.0,
+     "n": 1
+    },
+    {
+     "orgao": "SECRETARIA DE ESPORTES",
+     "slug": "secretaria-de-esportes",
+     "valor": 22100.0,
+     "n": 27
+    },
+    {
+     "orgao": null,
+     "slug": null,
+     "valor": 63416.26,
+     "n": 16
+    }
+   ],
+   "top_recebedores": [
+    {
+     "cnpj": "00360305004525",
+     "nome": "CAIXA ECONOMICA FEDERAL",
+     "total_pago": 735855507.13,
+     "n_contratos": 0,
+     "is_subvencao": false
+    },
+    {
+     "cnpj": "00000000000787",
+     "nome": "BANCO DO BRASIL S/A",
+     "total_pago": 373146127.98,
+     "n_contratos": 0,
+     "is_subvencao": false
+    },
+    {
+     "cnpj": "00360305000104",
+     "nome": "CAIXA ECONOMICA FEDERAL",
+     "total_pago": 256994367.35,
+     "n_contratos": 5,
+     "is_subvencao": false
+    },
+    {
+     "cnpj": "00000000000191",
+     "nome": "BANCO DO BRASIL S/A",
+     "total_pago": 177612042.46,
+     "n_contratos": 5,
+     "is_subvencao": false
+    },
+    {
+     "cnpj": "00000208000100",
+     "nome": "BRB BANCO DE BRASÍLIA S/A",
+     "total_pago": 157876255.77,
+     "n_contratos": 0,
+     "is_subvencao": false
+    }
+   ]
+  },
+  "infraestrutura-urbana": {
+   "tema": "Infraestrutura urbana",
+   "slug": "infraestrutura-urbana",
+   "n_organizacoes": 2,
+   "total_pago": 758159519.44,
+   "subvencao_total": 0.0,
+   "n_subvencionadas": 0,
+   "by_year": [
+    {
+     "ano": 2024,
+     "pago": 296801619.07,
+     "n_orgs": 2
+    },
+    {
+     "ano": 2025,
+     "pago": 340818489.1,
+     "n_orgs": 2
+    },
+    {
+     "ano": 2026,
+     "pago": 120539411.27,
+     "n_orgs": 2
+    }
+   ],
+   "top_orgaos": [
+    {
+     "orgao": "SECRETARIA DE INFRAESTRUTURA - ADMINISTRAÇÃO SUPERVISIONADA",
+     "slug": "secretaria-de-infraestrutura-administracao-supervisionada",
+     "valor": 576093221.86,
+     "n": 109
+    },
+    {
+     "orgao": "ENCARGOS GERAIS DO MUNICÍPIO",
+     "slug": "encargos-gerais-do-municipio",
+     "valor": 75654102.21,
+     "n": 360
+    },
+    {
+     "orgao": "SECRETARIA DE EDUCAÇÃO",
+     "slug": "secretaria-de-educacao",
+     "valor": 46001660.88,
+     "n": 57
+    },
+    {
+     "orgao": "SECRETARIA DE SAÚDE - ADMINISTRAÇÃO SUPERVISIONADA",
+     "slug": "secretaria-de-saude-administracao-supervisionada",
+     "valor": 38976351.53,
+     "n": 284
+    },
+    {
+     "orgao": "SECRETARIA DE CULTURA - ADMINISTRAÇÃO SUPERVISIONADA",
+     "slug": "secretaria-de-cultura-administracao-supervisionada",
+     "valor": 8503995.92,
+     "n": 82
+    },
+    {
+     "orgao": "SECRETARIA DE ORDEM PÚBLICA E SEGURANÇA - ADMINISTRAÇÃO SUPERVISIONADA",
+     "slug": "secretaria-de-ordem-publica-e-seguranca-administracao-supervisionada",
+     "valor": 7134068.63,
+     "n": 29
+    },
+    {
+     "orgao": "SECRETARIA DE POLÍTICA URBANA E LICENCIAMENTO - ADMINISTRAÇÃO SUPERVISIONADA",
+     "slug": "secretaria-de-politica-urbana-e-licenciamento-administracao-supervisionada",
+     "valor": 4071208.19,
+     "n": 29
+    },
+    {
+     "orgao": "SECRETARIA DE TRANSFORMAÇÃO DIGITAL, CIÊNCIA E TECNOLOGIA - ADMINISTRAÇÃO SUPERVISIONADA",
+     "slug": "secretaria-de-transformacao-digital-ciencia-e-tecnologia-administracao-supervisionada",
+     "valor": 710650.65,
+     "n": 17
+    },
+    {
+     "orgao": null,
+     "slug": null,
+     "valor": 1014259.57,
+     "n": 93
+    }
+   ],
+   "top_recebedores": [
+    {
+     "cnpj": "45791369000106",
+     "nome": "CONSORCIO RECIFE AMBIENTAL",
+     "total_pago": 571230290.75,
+     "n_contratos": 2,
+     "is_subvencao": false
+    },
+    {
+     "cnpj": "10835932000108",
+     "nome": "COMPANHIA ENERGETICA DE PERNAMBUCO",
+     "total_pago": 186929228.69,
+     "n_contratos": 1,
+     "is_subvencao": false
+    }
+   ]
+  },
+  "alimentacao-e-eventos": {
+   "tema": "Alimentação e eventos",
+   "slug": "alimentacao-e-eventos",
+   "n_organizacoes": 1,
+   "total_pago": 355734460.37,
+   "subvencao_total": 0.0,
+   "n_subvencionadas": 0,
+   "by_year": [
+    {
+     "ano": 2024,
+     "pago": 138645449.96,
+     "n_orgs": 1
+    },
+    {
+     "ano": 2025,
+     "pago": 162355513.5,
+     "n_orgs": 1
+    },
+    {
+     "ano": 2026,
+     "pago": 54733496.91,
+     "n_orgs": 1
+    }
+   ],
+   "top_orgaos": [
+    {
+     "orgao": "SECRETARIA DE EDUCAÇÃO",
+     "slug": "secretaria-de-educacao",
+     "valor": 317416653.48,
+     "n": 86
+    },
+    {
+     "orgao": "SECRETARIA DE SAÚDE - ADMINISTRAÇÃO SUPERVISIONADA",
+     "slug": "secretaria-de-saude-administracao-supervisionada",
+     "valor": 38317806.89,
+     "n": 21
+    }
+   ],
+   "top_recebedores": [
+    {
+     "cnpj": "11164874000109",
+     "nome": "RC NUTRY ALIMENTACAO LTDA",
+     "total_pago": 355734460.37,
+     "n_contratos": 6,
+     "is_subvencao": false
+    }
+   ]
+  },
+  "servicos-administrativos": {
+   "tema": "Serviços administrativos",
+   "slug": "servicos-administrativos",
+   "n_organizacoes": 5,
+   "total_pago": 1179312034.77,
+   "subvencao_total": 0.0,
+   "n_subvencionadas": 0,
+   "by_year": [
+    {
+     "ano": 2024,
+     "pago": 478465758.68,
+     "n_orgs": 5
+    },
+    {
+     "ano": 2025,
+     "pago": 516436906.69,
+     "n_orgs": 5
+    },
+    {
+     "ano": 2026,
+     "pago": 184409369.4,
+     "n_orgs": 5
+    }
+   ],
+   "top_orgaos": [
+    {
+     "orgao": "SECRETARIA DE EDUCAÇÃO",
+     "slug": "secretaria-de-educacao",
+     "valor": 365254665.36,
+     "n": 362
+    },
+    {
+     "orgao": "SECRETARIA DE SAÚDE - ADMINISTRAÇÃO SUPERVISIONADA",
+     "slug": "secretaria-de-saude-administracao-supervisionada",
+     "valor": 351720994.13,
+     "n": 632
+    },
+    {
+     "orgao": "SECRETARIA DE INFRAESTRUTURA - ADMINISTRAÇÃO SUPERVISIONADA",
+     "slug": "secretaria-de-infraestrutura-administracao-supervisionada",
+     "valor": 131730766.04,
+     "n": 102
+    },
+    {
+     "orgao": "GABINETE DE PROJETOS ESPECIAIS",
+     "slug": "gabinete-de-projetos-especiais",
+     "valor": 34294456.26,
+     "n": 13
+    },
+    {
+     "orgao": "SECRETARIA DE ARTICULAÇÃO POLÍTICA E SOCIAL",
+     "slug": "secretaria-de-articulacao-politica-e-social",
+     "valor": 31974986.12,
+     "n": 20
+    },
+    {
+     "orgao": "SECRETARIA DE ASSISTÊNCIA SOCIAL E COMBATE À FOME - ADM. SUPERVISIONADA",
+     "slug": "secretaria-de-assistencia-social-e-combate-a-fome-adm-supervisionada",
+     "valor": 30023656.07,
+     "n": 293
+    },
+    {
+     "orgao": "SECRETARIA DE CULTURA - ADMINISTRAÇÃO SUPERVISIONADA",
+     "slug": "secretaria-de-cultura-administracao-supervisionada",
+     "valor": 25928233.89,
+     "n": 63
+    },
+    {
+     "orgao": "SECRETARIA DE ORDEM PÚBLICA E SEGURANÇA - ADMINISTRAÇÃO SUPERVISIONADA",
+     "slug": "secretaria-de-ordem-publica-e-seguranca-administracao-supervisionada",
+     "valor": 24617906.52,
+     "n": 78
+    },
+    {
+     "orgao": null,
+     "slug": null,
+     "valor": 183766370.38,
+     "n": 1238
+    }
+   ],
+   "top_recebedores": [
+    {
+     "cnpj": "01781573000162",
+     "nome": "R P L ENGENHARIA E SERVICOS LTDA",
+     "total_pago": 294683406.77,
+     "n_contratos": 174,
+     "is_subvencao": false
+    },
+    {
+     "cnpj": "08362490000188",
+     "nome": "ADSERV EMPREENDIMENTOS E SERVICOS DE MAO DE OBRA LTDA",
+     "total_pago": 294053051.76,
+     "n_contratos": 82,
+     "is_subvencao": false
+    },
+    {
+     "cnpj": "00323090000151",
+     "nome": "SOLL SERVICOS OBRAS E LOCACOES LTDA",
+     "total_pago": 267949245.77,
+     "n_contratos": 47,
+     "is_subvencao": false
+    },
+    {
+     "cnpj": "40884405000154",
+     "nome": "LOQUIPE LOCACAO DE EQUIPAMENTOS E MAO DE OBRA LTDA",
+     "total_pago": 176946195.3,
+     "n_contratos": 64,
+     "is_subvencao": false
+    },
+    {
+     "cnpj": "09281162000110",
+     "nome": "TOPPUS SERVIÇOS TERCEIRIZADOS LTDA EM RECUPERAÇÃO JUDICIAL",
+     "total_pago": 145680135.17,
+     "n_contratos": 37,
+     "is_subvencao": false
+    }
+   ]
+  },
+  "saude-e-assistencia": {
+   "tema": "Saúde e assistência",
+   "slug": "saude-e-assistencia",
+   "n_organizacoes": 830,
+   "total_pago": 2470441195.24,
+   "subvencao_total": 984258917.56,
+   "n_subvencionadas": 43,
+   "by_year": [
+    {
+     "ano": 2024,
+     "pago": 1041502682.14,
+     "n_orgs": 499
+    },
+    {
+     "ano": 2025,
+     "pago": 1029078578.79,
+     "n_orgs": 533
+    },
+    {
+     "ano": 2026,
+     "pago": 399859934.31,
+     "n_orgs": 324
+    }
+   ],
+   "top_orgaos": [
+    {
+     "orgao": "SECRETARIA DE SAÚDE - ADMINISTRAÇÃO SUPERVISIONADA",
+     "slug": "secretaria-de-saude-administracao-supervisionada",
+     "valor": 1731769980.53,
+     "n": 12651
+    },
+    {
+     "orgao": "SECRETARIA DE EDUCAÇÃO",
+     "slug": "secretaria-de-educacao",
+     "valor": 224633145.6,
+     "n": 814
+    },
+    {
+     "orgao": "SECRETARIA DE ASSISTÊNCIA SOCIAL E COMBATE À FOME - ADM. SUPERVISIONADA",
+     "slug": "secretaria-de-assistencia-social-e-combate-a-fome-adm-supervisionada",
+     "valor": 101579726.78,
+     "n": 1945
+    },
+    {
+     "orgao": "SECRETARIA DE DESENV. SOCIAL, DIREITOS HUMANOS, JUVENTUDE E POLÍTICAS SOBRE DROGAS - ADM. SUPERVISIO",
+     "slug": "secretaria-de-desenv-social-direitos-humanos-juventude-e-politicas-sobre-drogas-adm-supervisio",
+     "valor": 60626793.25,
+     "n": 1314
+    },
+    {
+     "orgao": "SECRETARIA DE INFRAESTRUTURA - ADMINISTRAÇÃO SUPERVISIONADA",
+     "slug": "secretaria-de-infraestrutura-administracao-supervisionada",
+     "valor": 42478599.06,
+     "n": 493
+    },
+    {
+     "orgao": "SECRETARIA DE ORDEM PÚBLICA E SEGURANÇA",
+     "slug": "secretaria-de-ordem-publica-e-seguranca",
+     "valor": 30562464.93,
+     "n": 124
+    },
+    {
+     "orgao": "SECRETARIA DE CULTURA - ADMINISTRAÇÃO SUPERVISIONADA",
+     "slug": "secretaria-de-cultura-administracao-supervisionada",
+     "valor": 24037687.19,
+     "n": 391
+    },
+    {
+     "orgao": "SECRETARIA DE DIREITOS HUMANOS E JUVENTUDE - ADMINISTRAÇÃO SUPERVISIONADA",
+     "slug": "secretaria-de-direitos-humanos-e-juventude-administracao-supervisionada",
+     "valor": 23743716.69,
+     "n": 61
+    },
+    {
+     "orgao": null,
+     "slug": null,
+     "valor": 231009081.21,
+     "n": 4049
+    }
+   ],
+   "top_recebedores": [
+    {
+     "cnpj": "10894988000486",
+     "nome": "SOCIEDADE PERNAMBUCANA DE COMBATE AO CANCER - HOSPITAL DA MULHER DO RECIFE",
+     "total_pago": 240321975.18,
+     "n_contratos": 2,
+     "is_subvencao": true
+    },
+    {
+     "cnpj": "10869782000404",
+     "nome": "IRMANDADE DA SANTA CASA DE MISERICORDIA DO RECIFE - HOSPITAL DE SANTO AMARO",
+     "total_pago": 198900297.0,
+     "n_contratos": 1,
+     "is_subvencao": true
+    },
+    {
+     "cnpj": "09039744000194",
+     "nome": "FUNDACAO GESTAO HOSPITALAR MARTINIANO FERNANDES - FGH",
+     "total_pago": 126980967.81,
+     "n_contratos": 1,
+     "is_subvencao": true
+    },
+    {
+     "cnpj": "09039744001832",
+     "nome": "FUNDAÇÃO GESTÃO HOSPITALAR MARTINIANO FERNANDES - FGH",
+     "total_pago": 125315915.17,
+     "n_contratos": 0,
+     "is_subvencao": true
+    },
+    {
+     "cnpj": "09767633000102",
+     "nome": "FUNDAÇÃO MANOEL DA SILVA ALMEIDA",
+     "total_pago": 96877062.17,
+     "n_contratos": 1,
+     "is_subvencao": true
+    },
+    {
+     "cnpj": "09759606000180",
+     "nome": "SIND DAS EMP DE TRANSP DE PASSAG DO EST DE PERNAMBUCO - VEM - VALE ELETRONICO METROPOLITANO",
+     "total_pago": 68401533.69,
+     "n_contratos": 18,
+     "is_subvencao": false
+    },
+    {
+     "cnpj": "10859817000173",
+     "nome": "ASSOCIACAO EVANGELICA BENEFICIENTE DE PERNAMBUCO HOSPITAL EVANGELICO",
+     "total_pago": 66396617.89,
+     "n_contratos": 0,
+     "is_subvencao": true
+    },
+    {
+     "cnpj": "02633574000122",
+     "nome": "PERNAMBUCO CONSERVADORA LTDA",
+     "total_pago": 60788750.84,
+     "n_contratos": 22,
+     "is_subvencao": false
+    },
+    {
+     "cnpj": "03367118000140",
+     "nome": "CONSTRUTORA SINARCO LTDA",
+     "total_pago": 57747405.72,
+     "n_contratos": 2,
+     "is_subvencao": false
+    },
+    {
+     "cnpj": "14056350000184",
+     "nome": "SOLSERV SERVIÇOS LTDA",
+     "total_pago": 54962554.95,
+     "n_contratos": 15,
+     "is_subvencao": false
+    },
+    {
+     "cnpj": "11436813000145",
+     "nome": "ADLIM TERCEIRIZACAO EM SERVICOS LTDA",
+     "total_pago": 53571458.29,
+     "n_contratos": 7,
+     "is_subvencao": false
+    },
+    {
+     "cnpj": "00780851000102",
+     "nome": "GUSMAO PLANEJAMENTO E OBRAS LTDA",
+     "total_pago": 45880927.86,
+     "n_contratos": 9,
+     "is_subvencao": false
+    },
+    {
+     "cnpj": "00558943000134",
+     "nome": "SERVITIUM LTDA",
+     "total_pago": 43403179.55,
+     "n_contratos": 9,
+     "is_subvencao": false
+    },
+    {
+     "cnpj": "11542750000101",
+     "nome": "TROPICOS ENGENHARIA E COMERCIO LTDA",
+     "total_pago": 37387213.84,
+     "n_contratos": 14,
+     "is_subvencao": false
+    },
+    {
+     "cnpj": "15195617000187",
+     "nome": "B1 VIGILÂNCIA LTDA",
+     "total_pago": 33063484.09,
+     "n_contratos": 1,
+     "is_subvencao": false
+    }
+   ]
+  },
+  "gestao-publica": {
+   "tema": "Gestão pública",
+   "slug": "gestao-publica",
+   "n_organizacoes": 688,
+   "total_pago": 1166402261.62,
+   "subvencao_total": 0.0,
+   "n_subvencionadas": 1,
+   "by_year": [
+    {
+     "ano": 2024,
+     "pago": 499443300.01,
+     "n_orgs": 449
+    },
+    {
+     "ano": 2025,
+     "pago": 495360357.44,
+     "n_orgs": 424
+    },
+    {
+     "ano": 2026,
+     "pago": 171598604.17,
+     "n_orgs": 293
+    }
+   ],
+   "top_orgaos": [
+    {
+     "orgao": "ENCARGOS GERAIS DO MUNICÍPIO",
+     "slug": "encargos-gerais-do-municipio",
+     "valor": 270934035.84,
+     "n": 708
+    },
+    {
+     "orgao": "SECRETARIA DE ADMINISTRAÇÃO - ADMINISTRAÇÃO SUPERVISIONADA",
+     "slug": "secretaria-de-administracao-administracao-supervisionada",
+     "valor": 175540362.04,
+     "n": 2116
+    },
+    {
+     "orgao": "SECRETARIA DE PLANEJAMENTO, GESTÃO E TRANSFORMAÇÃO DIGITAL - ADMINISTRAÇÃO SUPERVISIONADA",
+     "slug": "secretaria-de-planejamento-gestao-e-transformacao-digital-administracao-supervisionada",
+     "valor": 133516352.14,
+     "n": 1759
+    },
+    {
+     "orgao": "SECRETARIA DE ADMINISTRAÇÃO",
+     "slug": "secretaria-de-administracao",
+     "valor": 131381432.69,
+     "n": 226
+    },
+    {
+     "orgao": "SECRETARIA DE PLANEJAMENTO, GESTÃO E TRANSFORMAÇÃO DIGITAL",
+     "slug": "secretaria-de-planejamento-gestao-e-transformacao-digital",
+     "valor": 120842191.21,
+     "n": 204
+    },
+    {
+     "orgao": "SECRETARIA DE SAÚDE - ADMINISTRAÇÃO SUPERVISIONADA",
+     "slug": "secretaria-de-saude-administracao-supervisionada",
+     "valor": 52191220.09,
+     "n": 318
+    },
+    {
+     "orgao": "SECRETARIA DE TRANSFORMAÇÃO DIGITAL, CIÊNCIA E TECNOLOGIA - ADMINISTRAÇÃO SUPERVISIONADA",
+     "slug": "secretaria-de-transformacao-digital-ciencia-e-tecnologia-administracao-supervisionada",
+     "valor": 50882802.69,
+     "n": 803
+    },
+    {
+     "orgao": "SECRETARIA DE ORDEM PÚBLICA E SEGURANÇA",
+     "slug": "secretaria-de-ordem-publica-e-seguranca",
+     "valor": 40034621.09,
+     "n": 48
+    },
+    {
+     "orgao": null,
+     "slug": null,
+     "valor": 191079243.83,
+     "n": 2662
+    }
+   ],
+   "top_recebedores": [
+    {
+     "cnpj": "10565000000192",
+     "nome": "PREFEITURA DA CIDADE DO RECIFE",
+     "total_pago": 211987560.98,
+     "n_contratos": 1,
+     "is_subvencao": true
+    },
+    {
+     "cnpj": "00394460022625",
+     "nome": "MINISTERIO DA FAZENDA - PROCURADORIA DA FAZENDA NACIONAL ESTADO DE PERNAMBUCO",
+     "total_pago": 142885833.96,
+     "n_contratos": 0,
+     "is_subvencao": false
+    },
+    {
+     "cnpj": "11431327000134",
+     "nome": "PERNAMBUCO TRIBUNAL DE JUSTIÇA",
+     "total_pago": 108772295.58,
+     "n_contratos": 0,
+     "is_subvencao": false
+    },
+    {
+     "cnpj": "00394460005887",
+     "nome": "MINISTERIO DA FAZENDA - RECEITA FEDERAL",
+     "total_pago": 73464251.22,
+     "n_contratos": 0,
+     "is_subvencao": false
+    },
+    {
+     "cnpj": "26994558000123",
+     "nome": "ADVOCACIA GERAL DA UNIÃO",
+     "total_pago": 60698022.92,
+     "n_contratos": 0,
+     "is_subvencao": false
+    },
+    {
+     "cnpj": "03598189000154",
+     "nome": "BCA PROPAGANDA LTDA",
+     "total_pago": 54514824.93,
+     "n_contratos": 2,
+     "is_subvencao": false
+    },
+    {
+     "cnpj": "05244336000113",
+     "nome": "AUTARQUIA MUNICIPAL DE PREVIDENCIA E ASSISTENCIA A SAUDE DOS SERVIDORES",
+     "total_pago": 41577799.06,
+     "n_contratos": 0,
+     "is_subvencao": false
+    },
+    {
+     "cnpj": "11145893000180",
+     "nome": "AMPLA COMUNICAÇÃO LTDA",
+     "total_pago": 33637329.28,
+     "n_contratos": 2,
+     "is_subvencao": false
+    },
+    {
+     "cnpj": "09866294000103",
+     "nome": "CENTRO HOSPITALAR ALBERT SABIN SA",
+     "total_pago": 29002906.45,
+     "n_contratos": 0,
+     "is_subvencao": false
+    },
+    {
+     "cnpj": "41090440000164",
+     "nome": "UNIDADE DE CIRURGIA E ONCOLOGIA LTDA",
+     "total_pago": 21736433.21,
+     "n_contratos": 0,
+     "is_subvencao": false
+    },
+    {
+     "cnpj": "09032632000101",
+     "nome": "SOCIEDADE BENEFICENTE SANTA TEREZINHA",
+     "total_pago": 19045139.47,
+     "n_contratos": 0,
+     "is_subvencao": false
+    },
+    {
+     "cnpj": "07760975000154",
+     "nome": "RXZ COMUNICAÇÃO E PUBLICIDADE LTDA",
+     "total_pago": 16218290.56,
+     "n_contratos": 0,
+     "is_subvencao": false
+    },
+    {
+     "cnpj": "31510376000170",
+     "nome": "ASHOPE-ASSOCIAÇÃO DE SERVIÇOS HOSPITALARES",
+     "total_pago": 16051768.44,
+     "n_contratos": 0,
+     "is_subvencao": false
+    },
+    {
+     "cnpj": "11214624000128",
+     "nome": "UNIMED RECIFE COOPERATIVA DE TRABALHO MEDICO",
+     "total_pago": 15996390.97,
+     "n_contratos": 3,
+     "is_subvencao": false
+    },
+    {
+     "cnpj": "10988301000986",
+     "nome": "INSTITUTO DE MEDICINA INTEGRAL PROFESSOR FERNANDO FIGUEIRA - IMIP/IONE",
+     "total_pago": 15801494.01,
+     "n_contratos": 0,
+     "is_subvencao": false
+    }
+   ]
+  },
+  "infraestrutura-e-obras": {
+   "tema": "Infraestrutura e obras",
+   "slug": "infraestrutura-e-obras",
+   "n_organizacoes": 371,
+   "total_pago": 1662469910.08,
+   "subvencao_total": 0.0,
+   "n_subvencionadas": 0,
+   "by_year": [
+    {
+     "ano": 2024,
+     "pago": 743321009.29,
+     "n_orgs": 237
+    },
+    {
+     "ano": 2025,
+     "pago": 675426251.59,
+     "n_orgs": 254
+    },
+    {
+     "ano": 2026,
+     "pago": 243722649.2,
+     "n_orgs": 154
+    }
+   ],
+   "top_orgaos": [
+    {
+     "orgao": "SECRETARIA DE INFRAESTRUTURA - ADMINISTRAÇÃO SUPERVISIONADA",
+     "slug": "secretaria-de-infraestrutura-administracao-supervisionada",
+     "valor": 1274320053.57,
+     "n": 4836
+    },
+    {
+     "orgao": "SECRETARIA DE PROJETOS ESPECIAIS",
+     "slug": "secretaria-de-projetos-especiais",
+     "valor": 138256558.05,
+     "n": 115
+    },
+    {
+     "orgao": "GABINETE DE PROJETOS ESPECIAIS",
+     "slug": "gabinete-de-projetos-especiais",
+     "valor": 78428626.2,
+     "n": 54
+    },
+    {
+     "orgao": "ENCARGOS GERAIS DO MUNICÍPIO",
+     "slug": "encargos-gerais-do-municipio",
+     "valor": 47726812.73,
+     "n": 8
+    },
+    {
+     "orgao": "GAB. DE GERENC. DO PROG. DE REQUALIF. E RESILÊNCIA URB. EM ÁREAS DE VULNERABILIDADE SOCIOAMB.-PROMOR",
+     "slug": "gab-de-gerenc-do-prog-de-requalif-e-resilencia-urb-em-areas-de-vulnerabilidade-socioamb-promor",
+     "valor": 32699731.99,
+     "n": 62
+    },
+    {
+     "orgao": "SECRETARIA DE SAÚDE - ADMINISTRAÇÃO SUPERVISIONADA",
+     "slug": "secretaria-de-saude-administracao-supervisionada",
+     "valor": 32224420.56,
+     "n": 170
+    },
+    {
+     "orgao": "SECRETARIA DE EDUCAÇÃO",
+     "slug": "secretaria-de-educacao",
+     "valor": 16703644.67,
+     "n": 174
+    },
+    {
+     "orgao": "SECRETARIA DE SANEAMENTO",
+     "slug": "secretaria-de-saneamento",
+     "valor": 9689217.44,
+     "n": 60
+    },
+    {
+     "orgao": null,
+     "slug": null,
+     "valor": 32420844.87,
+     "n": 1008
+    }
+   ],
+   "top_recebedores": [
+    {
+     "cnpj": "13031257000152",
+     "nome": "CONSTRUTORA CELI LTDA",
+     "total_pago": 165948148.36,
+     "n_contratos": 3,
+     "is_subvencao": false
+    },
+    {
+     "cnpj": "10811370000162",
+     "nome": "GUERRA CONSTRUCOES LTDA",
+     "total_pago": 115498015.7,
+     "n_contratos": 84,
+     "is_subvencao": false
+    },
+    {
+     "cnpj": "03279285002779",
+     "nome": "ORIZON MEIO AMBIENTE S.A",
+     "total_pago": 111890045.62,
+     "n_contratos": 7,
+     "is_subvencao": false
+    },
+    {
+     "cnpj": "52009953000114",
+     "nome": "CONSÓRCIO NOVA PONTE",
+     "total_pago": 107614118.73,
+     "n_contratos": 0,
+     "is_subvencao": false
+    },
+    {
+     "cnpj": "08064693000198",
+     "nome": "CONCREPOXI ENGENHARIA LTDA",
+     "total_pago": 73715151.91,
+     "n_contratos": 14,
+     "is_subvencao": false
+    },
+    {
+     "cnpj": "69034668000156",
+     "nome": "PLUXEE BENEFÍCIOS BRASIL S/A",
+     "total_pago": 66255413.33,
+     "n_contratos": 8,
+     "is_subvencao": false
+    },
+    {
+     "cnpj": "08135535000181",
+     "nome": "CONSTRUTORA FJ LTDA",
+     "total_pago": 62681525.51,
+     "n_contratos": 24,
+     "is_subvencao": false
+    },
+    {
+     "cnpj": "00449936000102",
+     "nome": "ENGEMAIA & CIA LTDA",
+     "total_pago": 54907987.22,
+     "n_contratos": 8,
+     "is_subvencao": false
+    },
+    {
+     "cnpj": "07693988000160",
+     "nome": "F R F ENGENHARIA LTDA",
+     "total_pago": 48090282.23,
+     "n_contratos": 15,
+     "is_subvencao": false
+    },
+    {
+     "cnpj": "37995880000193",
+     "nome": "JWA SA",
+     "total_pago": 35964003.47,
+     "n_contratos": 3,
+     "is_subvencao": false
+    },
+    {
+     "cnpj": "50275110000134",
+     "nome": "CONSORCIO VEMAC",
+     "total_pago": 34907580.63,
+     "n_contratos": 0,
+     "is_subvencao": false
+    },
+    {
+     "cnpj": "07157925000190",
+     "nome": "WB CONSTRUTORA LTDA",
+     "total_pago": 30570694.9,
+     "n_contratos": 19,
+     "is_subvencao": false
+    },
+    {
+     "cnpj": "08963533000180",
+     "nome": "FAR COMERCIO E SERVICOS PAISAGISTICOS LTDA",
+     "total_pago": 29126211.15,
+     "n_contratos": 9,
+     "is_subvencao": false
+    },
+    {
+     "cnpj": "40882060000108",
+     "nome": "LIDERMAC CONSTRUCOES E EQUIPAMENTOS LTDA",
+     "total_pago": 28133832.68,
+     "n_contratos": 12,
+     "is_subvencao": false
+    },
+    {
+     "cnpj": "00338885000133",
+     "nome": "NOVATEC CONSTRUCOES E EMPREENDIMENTOS LTDA",
+     "total_pago": 27322829.33,
+     "n_contratos": 3,
+     "is_subvencao": false
+    }
+   ]
+  },
+  "educacao": {
+   "tema": "Educação",
+   "slug": "educacao",
+   "n_organizacoes": 434,
+   "total_pago": 927902961.9,
+   "subvencao_total": 136361772.72,
+   "n_subvencionadas": 55,
+   "by_year": [
+    {
+     "ano": 2024,
+     "pago": 393741061.78,
+     "n_orgs": 275
+    },
+    {
+     "ano": 2025,
+     "pago": 386217865.33,
+     "n_orgs": 260
+    },
+    {
+     "ano": 2026,
+     "pago": 147944034.79,
+     "n_orgs": 180
+    }
+   ],
+   "top_orgaos": [
+    {
+     "orgao": "SECRETARIA DE EDUCAÇÃO",
+     "slug": "secretaria-de-educacao",
+     "valor": 793990364.78,
+     "n": 2430
+    },
+    {
+     "orgao": "SECRETARIA DE SAÚDE - ADMINISTRAÇÃO SUPERVISIONADA",
+     "slug": "secretaria-de-saude-administracao-supervisionada",
+     "valor": 35200128.47,
+     "n": 271
+    },
+    {
+     "orgao": "ENCARGOS GERAIS DO MUNICÍPIO",
+     "slug": "encargos-gerais-do-municipio",
+     "valor": 10824142.25,
+     "n": 402
+    },
+    {
+     "orgao": "SECRETARIA DE INFRAESTRUTURA - ADMINISTRAÇÃO SUPERVISIONADA",
+     "slug": "secretaria-de-infraestrutura-administracao-supervisionada",
+     "valor": 9575455.79,
+     "n": 100
+    },
+    {
+     "orgao": "SECRETARIA DE PLANEJAMENTO, GESTÃO E TRANSFORMAÇÃO DIGITAL",
+     "slug": "secretaria-de-planejamento-gestao-e-transformacao-digital",
+     "valor": 7393488.04,
+     "n": 70
+    },
+    {
+     "orgao": "GABINETE DE PROJETOS ESPECIAIS",
+     "slug": "gabinete-de-projetos-especiais",
+     "valor": 7368378.96,
+     "n": 37
+    },
+    {
+     "orgao": "SECRETARIA DO TRABALHO E QUALIFICAÇÃO PROFISSIONAL",
+     "slug": "secretaria-do-trabalho-e-qualificacao-profissional",
+     "valor": 6288666.85,
+     "n": 38
+    },
+    {
+     "orgao": "SECRETARIA DE POLÍTICA URBANA E LICENCIAMENTO - ADMINISTRAÇÃO SUPERVISIONADA",
+     "slug": "secretaria-de-politica-urbana-e-licenciamento-administracao-supervisionada",
+     "valor": 6112961.63,
+     "n": 53
+    },
+    {
+     "orgao": null,
+     "slug": null,
+     "valor": 51149375.13,
+     "n": 1006
+    }
+   ],
+   "top_recebedores": [
+    {
+     "cnpj": "41106188000134",
+     "nome": "GENERAL GOODS LTDA",
+     "total_pago": 109573139.92,
+     "n_contratos": 3,
+     "is_subvencao": false
+    },
+    {
+     "cnpj": "18627195000160",
+     "nome": "MASTER INDUSTRIA E COMERCIO LTDA",
+     "total_pago": 76437692.04,
+     "n_contratos": 3,
+     "is_subvencao": false
+    },
+    {
+     "cnpj": "09769035000164",
+     "nome": "COMPANHIA PERNAMBUCANA DE SANEAMENTO COMPESA",
+     "total_pago": 35499133.39,
+     "n_contratos": 0,
+     "is_subvencao": false
+    },
+    {
+     "cnpj": "00392213000106",
+     "nome": "PROCESSO ENGENHARIA LTDA",
+     "total_pago": 31296292.29,
+     "n_contratos": 23,
+     "is_subvencao": false
+    },
+    {
+     "cnpj": "08165946000110",
+     "nome": "LISERVE VIGILANCIA E TRANSPORTE DE VALORES LTDA",
+     "total_pago": 30778806.63,
+     "n_contratos": 7,
+     "is_subvencao": false
+    },
+    {
+     "cnpj": "10391836000118",
+     "nome": "MINDLAB DO BRASIL COMÉRCIO DE LIVROS LTDA",
+     "total_pago": 24981940.84,
+     "n_contratos": 4,
+     "is_subvencao": false
+    },
+    {
+     "cnpj": "02633573000188",
+     "nome": "A J SERVICOS DE MAO DE OBRA EIRELI",
+     "total_pago": 23897504.9,
+     "n_contratos": 36,
+     "is_subvencao": false
+    },
+    {
+     "cnpj": "04203075000120",
+     "nome": "NUCLEO DE GESTAO DO PORTO DIGITAL",
+     "total_pago": 22003943.08,
+     "n_contratos": 5,
+     "is_subvencao": false
+    },
+    {
+     "cnpj": "81243735001977",
+     "nome": "POSITIVO TECNOLOGIA SA",
+     "total_pago": 19091478.41,
+     "n_contratos": 10,
+     "is_subvencao": false
+    },
+    {
+     "cnpj": "05276991000153",
+     "nome": "MINSAIT BRASIL LTDA",
+     "total_pago": 17796854.48,
+     "n_contratos": 2,
+     "is_subvencao": false
+    },
+    {
+     "cnpj": "11295284000107",
+     "nome": "INDUSTRIA E COMERCIO MOVEIS KUTZ LTDA",
+     "total_pago": 17696797.5,
+     "n_contratos": 5,
+     "is_subvencao": false
+    },
+    {
+     "cnpj": "24014569000174",
+     "nome": "FUNDAÇÃO CENTRO DE POLÍTICAS PÚBLICAS E AVALIAÇÃO DA EDUCAÇÃO FUNDAÇÃO CAED",
+     "total_pago": 17513387.81,
+     "n_contratos": 2,
+     "is_subvencao": false
+    },
+    {
+     "cnpj": "05205071000144",
+     "nome": "ALCA ENGENHARIA LTDA",
+     "total_pago": 16590641.08,
+     "n_contratos": 16,
+     "is_subvencao": false
+    },
+    {
+     "cnpj": "11788943000147",
+     "nome": "UNIKA TERCEIRIZACAO E SERVICOS LTDA - ME",
+     "total_pago": 16256227.77,
+     "n_contratos": 4,
+     "is_subvencao": false
+    },
+    {
+     "cnpj": "13953116000197",
+     "nome": "MAX CONSTRUCOES LTDA",
+     "total_pago": 13548469.81,
+     "n_contratos": 6,
+     "is_subvencao": false
+    }
+   ]
+  },
+  "outros": {
+   "tema": "Outros",
+   "slug": "outros",
+   "n_organizacoes": 417,
+   "total_pago": 651043529.07,
+   "subvencao_total": 0.0,
+   "n_subvencionadas": 0,
+   "by_year": [
+    {
+     "ano": 2024,
+     "pago": 207380622.2,
+     "n_orgs": 115
+    },
+    {
+     "ano": 2025,
+     "pago": 344716195.63,
+     "n_orgs": 187
+    },
+    {
+     "ano": 2026,
+     "pago": 98946711.24,
+     "n_orgs": 228
+    }
+   ],
+   "top_orgaos": [
+    {
+     "orgao": "SECRETARIA DE SANEAMENTO",
+     "slug": "secretaria-de-saneamento",
+     "valor": 183554228.79,
+     "n": 466
+    },
+    {
+     "orgao": "GAB. DE GERENC. DO PROG. DE REQUALIF. E RESILÊNCIA URB. EM ÁREAS DE VULNERABILIDADE SOCIOAMB.-PROMOR",
+     "slug": "gab-de-gerenc-do-prog-de-requalif-e-resilencia-urb-em-areas-de-vulnerabilidade-socioamb-promor",
+     "valor": 130861997.57,
+     "n": 169
+    },
+    {
+     "orgao": "ENCARGOS GERAIS DO MUNICÍPIO",
+     "slug": "encargos-gerais-do-municipio",
+     "valor": 98902507.49,
+     "n": 651
+    },
+    {
+     "orgao": "SECRETARIA DE INFRAESTRUTURA - ADMINISTRAÇÃO SUPERVISIONADA",
+     "slug": "secretaria-de-infraestrutura-administracao-supervisionada",
+     "valor": 92335952.98,
+     "n": 559
+    },
+    {
+     "orgao": "SECRETARIA DE PROJETOS ESPECIAIS",
+     "slug": "secretaria-de-projetos-especiais",
+     "valor": 43762357.91,
+     "n": 175
+    },
+    {
+     "orgao": "SECRETARIA DE FINANÇAS",
+     "slug": "secretaria-de-financas",
+     "valor": 19866509.18,
+     "n": 97
+    },
+    {
+     "orgao": "SECRETARIA DE EDUCAÇÃO",
+     "slug": "secretaria-de-educacao",
+     "valor": 13830749.07,
+     "n": 84
+    },
+    {
+     "orgao": "SECRETARIA DE ORDEM PÚBLICA E SEGURANÇA",
+     "slug": "secretaria-de-ordem-publica-e-seguranca",
+     "valor": 13403942.03,
+     "n": 29
+    },
+    {
+     "orgao": null,
+     "slug": null,
+     "valor": 54525284.05,
+     "n": 667
+    }
+   ],
+   "top_recebedores": [
+    {
+     "cnpj": "53259823000100",
+     "nome": "CONSORCIO ETE CORDEIRO",
+     "total_pago": 67488898.25,
+     "n_contratos": 0,
+     "is_subvencao": false
+    },
+    {
+     "cnpj": "12285441000166",
+     "nome": "TPF ENGENHARIA LTDA",
+     "total_pago": 50090595.78,
+     "n_contratos": 19,
+     "is_subvencao": false
+    },
+    {
+     "cnpj": "03834750000157",
+     "nome": "EIP SERVIÇOS DE ILUMINAÇÃO LTDA",
+     "total_pago": 42927930.03,
+     "n_contratos": 21,
+     "is_subvencao": false
+    },
+    {
+     "cnpj": "07749668000185",
+     "nome": "FUNDO PREVIDENCIÁRIO - RECIPREV",
+     "total_pago": 41787901.47,
+     "n_contratos": 0,
+     "is_subvencao": false
+    },
+    {
+     "cnpj": "41051046000117",
+     "nome": "COLMEIA ARQUITETURA E ENGENHARIA LTDA",
+     "total_pago": 38801695.35,
+     "n_contratos": 23,
+     "is_subvencao": false
+    },
+    {
+     "cnpj": "54483494000131",
+     "nome": "CONSÓRCIO SES UE4143",
+     "total_pago": 32588705.36,
+     "n_contratos": 0,
+     "is_subvencao": false
+    },
+    {
+     "cnpj": "11380698000134",
+     "nome": "ENGECONSULT - CONSULTORES TECNICOS LTDA",
+     "total_pago": 28731897.77,
+     "n_contratos": 11,
+     "is_subvencao": false
+    },
+    {
+     "cnpj": "03641550000188",
+     "nome": "BANCO INTERNACIONAL PARA RECONSTRUÇÃO E DESENVOLVIMENTO - BANCO MUNDIAL",
+     "total_pago": 27274084.58,
+     "n_contratos": 0,
+     "is_subvencao": false
+    },
+    {
+     "cnpj": "02297922000138",
+     "nome": "KAENA CONSTRUCOES LTDA",
+     "total_pago": 26017825.58,
+     "n_contratos": 13,
+     "is_subvencao": false
+    },
+    {
+     "cnpj": "12574539000133",
+     "nome": "CONSTRUTORA VENANCIO LTDA",
+     "total_pago": 21689763.39,
+     "n_contratos": 4,
+     "is_subvencao": false
+    },
+    {
+     "cnpj": "54483647000140",
+     "nome": "CONSÓRCIO SES UE42",
+     "total_pago": 18849685.05,
+     "n_contratos": 0,
+     "is_subvencao": false
+    },
+    {
+     "cnpj": "08488802000102",
+     "nome": "RIO UNA SERVICOS GERAIS EIRELI",
+     "total_pago": 18219938.09,
+     "n_contratos": 1,
+     "is_subvencao": false
+    },
+    {
+     "cnpj": "53916620000131",
+     "nome": "CONSÓRCIO PONTE BEBERIBE",
+     "total_pago": 16153416.54,
+     "n_contratos": 0,
+     "is_subvencao": false
+    },
+    {
+     "cnpj": "00000000419559",
+     "nome": "BANCO DO BRASIL",
+     "total_pago": 14509434.32,
+     "n_contratos": 2,
+     "is_subvencao": false
+    },
+    {
+     "cnpj": "70073275000130",
+     "nome": "GEOSISTEMAS ENGENHARIA E PLANEJAMENTO LTDA",
+     "total_pago": 14498314.72,
+     "n_contratos": 27,
+     "is_subvencao": false
+    }
+   ]
+  },
+  "seguranca-urbana": {
+   "tema": "Segurança urbana",
+   "slug": "seguranca-urbana",
+   "n_organizacoes": 176,
+   "total_pago": 308388203.16,
+   "subvencao_total": 0.0,
+   "n_subvencionadas": 0,
+   "by_year": [
+    {
+     "ano": 2024,
+     "pago": 114231376.51,
+     "n_orgs": 110
+    },
+    {
+     "ano": 2025,
+     "pago": 144857421.14,
+     "n_orgs": 114
+    },
+    {
+     "ano": 2026,
+     "pago": 49299405.51,
+     "n_orgs": 81
+    }
+   ],
+   "top_orgaos": [
+    {
+     "orgao": "SECRETARIA DE ORDEM PÚBLICA E SEGURANÇA - ADMINISTRAÇÃO SUPERVISIONADA",
+     "slug": "secretaria-de-ordem-publica-e-seguranca-administracao-supervisionada",
+     "valor": 78763090.94,
+     "n": 852
+    },
+    {
+     "orgao": "SECRETARIA DE ORDEM PÚBLICA E SEGURANÇA",
+     "slug": "secretaria-de-ordem-publica-e-seguranca",
+     "valor": 49189285.08,
+     "n": 232
+    },
+    {
+     "orgao": "SECRETARIA DE POLÍTICA URBANA E LICENCIAMENTO - ADMINISTRAÇÃO SUPERVISIONADA",
+     "slug": "secretaria-de-politica-urbana-e-licenciamento-administracao-supervisionada",
+     "valor": 45560018.95,
+     "n": 266
+    },
+    {
+     "orgao": "SECRETARIA DE EDUCAÇÃO",
+     "slug": "secretaria-de-educacao",
+     "valor": 38427638.53,
+     "n": 68
+    },
+    {
+     "orgao": "SECRETARIA DE INFRAESTRUTURA - ADMINISTRAÇÃO SUPERVISIONADA",
+     "slug": "secretaria-de-infraestrutura-administracao-supervisionada",
+     "valor": 20556614.77,
+     "n": 174
+    },
+    {
+     "orgao": "SECRETARIA DE INFRAESTRUTURA",
+     "slug": "secretaria-de-infraestrutura",
+     "valor": 15864759.88,
+     "n": 71
+    },
+    {
+     "orgao": "SECRETARIA DE SAÚDE - ADMINISTRAÇÃO SUPERVISIONADA",
+     "slug": "secretaria-de-saude-administracao-supervisionada",
+     "valor": 14405669.17,
+     "n": 200
+    },
+    {
+     "orgao": "SECRETARIA DE POLÍTICA URBANA E LICENCIAMENTO",
+     "slug": "secretaria-de-politica-urbana-e-licenciamento",
+     "valor": 12226689.79,
+     "n": 83
+    },
+    {
+     "orgao": null,
+     "slug": null,
+     "valor": 33394436.05,
+     "n": 689
+    }
+   ],
+   "top_recebedores": [
+    {
+     "cnpj": "07005206000153",
+     "nome": "COMPANHIA ASA RENT A CAR LOCAÇÃO DE VEÍCULOS S/A",
+     "total_pago": 50840428.84,
+     "n_contratos": 47,
+     "is_subvencao": false
+    },
+    {
+     "cnpj": "04791213000130",
+     "nome": "ARGUS SERVICOS GERAIS EIRELI",
+     "total_pago": 24158568.09,
+     "n_contratos": 2,
+     "is_subvencao": false
+    },
+    {
+     "cnpj": "07811641000175",
+     "nome": "MARINHO CONSTRUCOES EIRELI",
+     "total_pago": 23560875.07,
+     "n_contratos": 42,
+     "is_subvencao": false
+    },
+    {
+     "cnpj": "05969071000110",
+     "nome": "APPA SERVICOS TEMPORARIOS E EFETIVOS LTDA",
+     "total_pago": 18809547.92,
+     "n_contratos": 28,
+     "is_subvencao": false
+    },
+    {
+     "cnpj": "24144040000175",
+     "nome": "SERTTEL SOLUÇÕES EM MOBILIDADE E SEGURANÇA URBANA LTDA.",
+     "total_pago": 17913563.1,
+     "n_contratos": 12,
+     "is_subvencao": false
+    },
+    {
+     "cnpj": "27595780000116",
+     "nome": "CS BRASIL FROTAS S.A.",
+     "total_pago": 16871560.48,
+     "n_contratos": 50,
+     "is_subvencao": false
+    },
+    {
+     "cnpj": "40869463000109",
+     "nome": "ESSE ENGENHARIA SINALIZACAO E SERVICOS ESPECIAIS LTDA",
+     "total_pago": 15067896.36,
+     "n_contratos": 12,
+     "is_subvencao": false
+    },
+    {
+     "cnpj": "13596559000178",
+     "nome": "VIAENCOSTA ENGENHARIA AMBIENTAL LTDA",
+     "total_pago": 11125296.42,
+     "n_contratos": 1,
+     "is_subvencao": false
+    },
+    {
+     "cnpj": "67393181000134",
+     "nome": "IMAGEM GEOSISTEMAS E COMERCIO LTDA",
+     "total_pago": 10841005.83,
+     "n_contratos": 3,
+     "is_subvencao": false
+    },
+    {
+     "cnpj": "04523923000189",
+     "nome": "SINALVIDA DISPOSITIVOS DE SEGURANCA VIARA LTDA",
+     "total_pago": 10549377.42,
+     "n_contratos": 1,
+     "is_subvencao": false
+    },
+    {
+     "cnpj": "24144040000760",
+     "nome": "SERTTEL SOLUCOES EM MOBILIDADE E SEGURANCA URBANA LTDA",
+     "total_pago": 9528257.21,
+     "n_contratos": 0,
+     "is_subvencao": false
+    },
+    {
+     "cnpj": "14377211000152",
+     "nome": "INSTITUTO AQUILA DE GESTAO",
+     "total_pago": 9465892.25,
+     "n_contratos": 3,
+     "is_subvencao": false
+    },
+    {
+     "cnpj": "06290858000114",
+     "nome": "SECRETARIA EXECUTIVA DE RESSOCIALIZAÇÃO",
+     "total_pago": 9138296.7,
+     "n_contratos": 0,
+     "is_subvencao": false
+    },
+    {
+     "cnpj": "26878347000125",
+     "nome": "HORA CERTA MATERIAIS DE CONSTRUCOES LTDA",
+     "total_pago": 8311814.38,
+     "n_contratos": 11,
+     "is_subvencao": false
+    },
+    {
+     "cnpj": "05465222000101",
+     "nome": "RM TERCEIRIZACAO E GESTAO DE RECURSOS HUMANOS LTDA",
+     "total_pago": 7447656.32,
+     "n_contratos": 3,
+     "is_subvencao": false
+    }
+   ]
+  },
+  "cultura-esporte-e-lazer": {
+   "tema": "Cultura, esporte e lazer",
+   "slug": "cultura-esporte-e-lazer",
+   "n_organizacoes": 1733,
+   "total_pago": 563967597.3,
+   "subvencao_total": 877293.0,
+   "n_subvencionadas": 6,
+   "by_year": [
+    {
+     "ano": 2024,
+     "pago": 223955901.29,
+     "n_orgs": 1003
+    },
+    {
+     "ano": 2025,
+     "pago": 225453091.71,
+     "n_orgs": 1144
+    },
+    {
+     "ano": 2026,
+     "pago": 114558604.3,
+     "n_orgs": 731
+    }
+   ],
+   "top_orgaos": [
+    {
+     "orgao": "SECRETARIA DE CULTURA - ADMINISTRAÇÃO SUPERVISIONADA",
+     "slug": "secretaria-de-cultura-administracao-supervisionada",
+     "valor": 350780715.24,
+     "n": 18793
+    },
+    {
+     "orgao": "SECRETARIA DE ESPORTES",
+     "slug": "secretaria-de-esportes",
+     "valor": 56719397.71,
+     "n": 275
+    },
+    {
+     "orgao": "SECRETARIA DE TURISMO E LAZER",
+     "slug": "secretaria-de-turismo-e-lazer",
+     "valor": 51844047.71,
+     "n": 1035
+    },
+    {
+     "orgao": "SECRETARIA DE EDUCAÇÃO",
+     "slug": "secretaria-de-educacao",
+     "valor": 24105384.29,
+     "n": 115
+    },
+    {
+     "orgao": "SECRETARIA DE INFRAESTRUTURA",
+     "slug": "secretaria-de-infraestrutura",
+     "valor": 13878303.32,
+     "n": 7
+    },
+    {
+     "orgao": "SECRETARIA DE INFRAESTRUTURA - ADMINISTRAÇÃO SUPERVISIONADA",
+     "slug": "secretaria-de-infraestrutura-administracao-supervisionada",
+     "valor": 12616376.73,
+     "n": 156
+    },
+    {
+     "orgao": "SECRETARIA DE DESENV. SOCIAL, DIREITOS HUMANOS, JUVENTUDE E POLÍTICAS SOBRE DROGAS - ADM. SUPERVISIO",
+     "slug": "secretaria-de-desenv-social-direitos-humanos-juventude-e-politicas-sobre-drogas-adm-supervisio",
+     "valor": 12112328.29,
+     "n": 864
+    },
+    {
+     "orgao": "SECRETARIA DE SAÚDE - ADMINISTRAÇÃO SUPERVISIONADA",
+     "slug": "secretaria-de-saude-administracao-supervisionada",
+     "valor": 8596365.97,
+     "n": 304
+    },
+    {
+     "orgao": null,
+     "slug": null,
+     "valor": 33314678.04,
+     "n": 2053
+    }
+   ],
+   "top_recebedores": [
+    {
+     "cnpj": "20762269000112",
+     "nome": "INSTITUTO DE GESTAO DO ESPORTE E DA CULTURA IGEC",
+     "total_pago": 24017169.06,
+     "n_contratos": 6,
+     "is_subvencao": false
+    },
+    {
+     "cnpj": "00360305005092",
+     "nome": "CAIXA ECONOMICA FEDERAL - AGENCIA CAIS DO APOLO PE",
+     "total_pago": 18174603.97,
+     "n_contratos": 3,
+     "is_subvencao": false
+    },
+    {
+     "cnpj": "29128731000107",
+     "nome": "DUPORTO AGENCIA DE PUBLICIDADE LTDA  -  DU PORTO",
+     "total_pago": 17628246.95,
+     "n_contratos": 4,
+     "is_subvencao": false
+    },
+    {
+     "cnpj": "32185141000112",
+     "nome": "CASTRO & ROCHA LTDA - LUX ENERGIA E SERVICOS LTDA",
+     "total_pago": 12341425.14,
+     "n_contratos": 13,
+     "is_subvencao": false
+    },
+    {
+     "cnpj": "05249239000113",
+     "nome": "BCO PROPAGANDA LTDA EPP",
+     "total_pago": 10992924.92,
+     "n_contratos": 1,
+     "is_subvencao": false
+    },
+    {
+     "cnpj": "22475546000131",
+     "nome": "TCE EMPREENDIMENTOS ESPORTIVOS LTDA",
+     "total_pago": 10213741.96,
+     "n_contratos": 4,
+     "is_subvencao": false
+    },
+    {
+     "cnpj": "37212755000160",
+     "nome": "GERAMAIS SERVICOS LOCACOES DE GERADORES DE ENERGIA EIRELI",
+     "total_pago": 9916400.68,
+     "n_contratos": 3,
+     "is_subvencao": false
+    },
+    {
+     "cnpj": "19206070000129",
+     "nome": "CRISTAL EVENTOS LTDA",
+     "total_pago": 9889844.03,
+     "n_contratos": 8,
+     "is_subvencao": false
+    },
+    {
+     "cnpj": "39647530000161",
+     "nome": "POTIGUAR LOCACOES E EVENTOS EIRELI",
+     "total_pago": 9536365.22,
+     "n_contratos": 33,
+     "is_subvencao": false
+    },
+    {
+     "cnpj": "04393475000308",
+     "nome": "INSTITUTO DE DESENVOLVIMENTO E GESTAO - IDG",
+     "total_pago": 8808315.4,
+     "n_contratos": 1,
+     "is_subvencao": false
+    },
+    {
+     "cnpj": "70082227000109",
+     "nome": "SEDENGE-SERVIÇOS DE ENGENHARIA LTDA EPP",
+     "total_pago": 8771877.78,
+     "n_contratos": 6,
+     "is_subvencao": false
+    },
+    {
+     "cnpj": "39721242000100",
+     "nome": "FARIAS EVENTOS E PRODUCOES LTDA",
+     "total_pago": 8600931.0,
+     "n_contratos": 31,
+     "is_subvencao": false
+    },
+    {
+     "cnpj": "04960429000181",
+     "nome": "RESULTADOS SOLUCOES E EVENTOS LTDA",
+     "total_pago": 8156965.42,
+     "n_contratos": 12,
+     "is_subvencao": false
+    },
+    {
+     "cnpj": "51034132000175",
+     "nome": "JB PRODUTORA LTDA",
+     "total_pago": 7954329.33,
+     "n_contratos": 3,
+     "is_subvencao": false
+    },
+    {
+     "cnpj": "39508434000132",
+     "nome": "VIPSTAR ENTRETENIMENTO EIRELI",
+     "total_pago": 7710364.0,
+     "n_contratos": 29,
+     "is_subvencao": false
+    }
+   ]
+  },
+  "sociedade-civil": {
+   "tema": "Sociedade civil",
+   "slug": "sociedade-civil",
+   "n_organizacoes": 78,
+   "total_pago": 85672475.49,
+   "subvencao_total": 83128145.52,
+   "n_subvencionadas": 78,
+   "by_year": [
+    {
+     "ano": 2024,
+     "pago": 28543360.72,
+     "n_orgs": 57
+    },
+    {
+     "ano": 2025,
+     "pago": 37981553.17,
+     "n_orgs": 55
+    },
+    {
+     "ano": 2026,
+     "pago": 19147561.6,
+     "n_orgs": 59
+    }
+   ],
+   "top_orgaos": [
+    {
+     "orgao": "SECRETARIA DE EDUCAÇÃO",
+     "slug": "secretaria-de-educacao",
+     "valor": 72579995.41,
+     "n": 279
+    },
+    {
+     "orgao": "SECRETARIA DE DESENV. SOCIAL, DIREITOS HUMANOS, JUVENTUDE E POLÍTICAS SOBRE DROGAS - ADM. SUPERVISIO",
+     "slug": "secretaria-de-desenv-social-direitos-humanos-juventude-e-politicas-sobre-drogas-adm-supervisio",
+     "valor": 3973385.48,
+     "n": 40
+    },
+    {
+     "orgao": "SECRETARIA DE CULTURA - ADMINISTRAÇÃO SUPERVISIONADA",
+     "slug": "secretaria-de-cultura-administracao-supervisionada",
+     "valor": 2483392.37,
+     "n": 174
+    },
+    {
+     "orgao": "SECRETARIA DE DIREITOS HUMANOS E JUVENTUDE - ADMINISTRAÇÃO SUPERVISIONADA",
+     "slug": "secretaria-de-direitos-humanos-e-juventude-administracao-supervisionada",
+     "valor": 2092398.58,
+     "n": 38
+    },
+    {
+     "orgao": "SECRETARIA DE ASSISTÊNCIA SOCIAL E COMBATE À FOME - ADM. SUPERVISIONADA",
+     "slug": "secretaria-de-assistencia-social-e-combate-a-fome-adm-supervisionada",
+     "valor": 1263433.25,
+     "n": 13
+    },
+    {
+     "orgao": "SECRETARIA DE PLANEJAMENTO E GESTÃO",
+     "slug": "secretaria-de-planejamento-e-gestao",
+     "valor": 1131007.51,
+     "n": 3
+    },
+    {
+     "orgao": "SECRETARIA DE ASSISTÊNCIA SOCIAL E COMBATE À FOME",
+     "slug": "secretaria-de-assistencia-social-e-combate-a-fome",
+     "valor": 930000.0,
+     "n": 19
+    },
+    {
+     "orgao": "SECRETARIA DE PLANEJAMENTO, GESTÃO E TRANSFORMAÇÃO DIGITAL",
+     "slug": "secretaria-de-planejamento-gestao-e-transformacao-digital",
+     "valor": 750191.41,
+     "n": 2
+    },
+    {
+     "orgao": null,
+     "slug": null,
+     "valor": 468671.48,
+     "n": 25
+    }
+   ],
+   "top_recebedores": [
+    {
+     "cnpj": "10836102000103",
+     "nome": "INSTITUTO DE CONSULTORIA, CIDADANIA E ASSESSORIA SOCIAL DE PERNAMBUCO",
+     "total_pago": 15690491.32,
+     "n_contratos": 0,
+     "is_subvencao": true
+    },
+    {
+     "cnpj": "50756555000136",
+     "nome": "SEMEART",
+     "total_pago": 4953342.91,
+     "n_contratos": 0,
+     "is_subvencao": true
+    },
+    {
+     "cnpj": "02323303000170",
+     "nome": "ASSOCIACAO GRUPO DE MAES DA AMIZADE DOS TORROES",
+     "total_pago": 4445057.45,
+     "n_contratos": 0,
+     "is_subvencao": true
+    },
+    {
+     "cnpj": "52738376000100",
+     "nome": "ASSOCIAÇÃO CASA DA INFÂNCIA",
+     "total_pago": 4132202.6,
+     "n_contratos": 0,
+     "is_subvencao": true
+    },
+    {
+     "cnpj": "00899075000237",
+     "nome": "CENTRO EDUCACIONAL COMUNITÁRIO REDENÇÃO CECRE",
+     "total_pago": 4017372.23,
+     "n_contratos": 0,
+     "is_subvencao": true
+    },
+    {
+     "cnpj": "09032393000190",
+     "nome": "INSTITUTO CRIANCA FELIZ",
+     "total_pago": 3506576.07,
+     "n_contratos": 0,
+     "is_subvencao": true
+    },
+    {
+     "cnpj": "50761257000134",
+     "nome": "INSTITUTO MARLENE ALMEIDA",
+     "total_pago": 3330990.28,
+     "n_contratos": 0,
+     "is_subvencao": true
+    },
+    {
+     "cnpj": "47299152000281",
+     "nome": "ASSOCIACAO PRO TERNURA",
+     "total_pago": 3273427.29,
+     "n_contratos": 0,
+     "is_subvencao": true
+    },
+    {
+     "cnpj": "51847562000106",
+     "nome": "CENTRO EDUCACIONAL CRECHE VO PEREIRA",
+     "total_pago": 2457218.01,
+     "n_contratos": 0,
+     "is_subvencao": true
+    },
+    {
+     "cnpj": "47299152000362",
+     "nome": "ASSOCIACAO PRO TERNURA",
+     "total_pago": 2379665.56,
+     "n_contratos": 0,
+     "is_subvencao": true
+    },
+    {
+     "cnpj": "32331626000339",
+     "nome": "CASA DA COMUNIDADE DO BERARDO",
+     "total_pago": 2136596.95,
+     "n_contratos": 0,
+     "is_subvencao": true
+    },
+    {
+     "cnpj": "47299152000109",
+     "nome": "ASSOCIACAO PRO TERNURA",
+     "total_pago": 2031261.08,
+     "n_contratos": 0,
+     "is_subvencao": true
+    },
+    {
+     "cnpj": "30785529000129",
+     "nome": "ASSOCIACAO DE APOIO A EDUCACAO E ASSISTENCIA SOCIAL MARIA AMELIA",
+     "total_pago": 2012247.25,
+     "n_contratos": 0,
+     "is_subvencao": true
+    },
+    {
+     "cnpj": "12585170000164",
+     "nome": "CLUBE DE MAES DOS MORADORES DO ALTO DO REFUGIO",
+     "total_pago": 1946329.35,
+     "n_contratos": 0,
+     "is_subvencao": true
+    },
+    {
+     "cnpj": "32331626000258",
+     "nome": "CASA DA COMUNIDADE DO BERARDO",
+     "total_pago": 1921984.75,
+     "n_contratos": 0,
+     "is_subvencao": true
+    }
+   ]
+  },
+  "desenvolvimento-economico": {
+   "tema": "Desenvolvimento econômico",
+   "slug": "desenvolvimento-economico",
+   "n_organizacoes": 103,
+   "total_pago": 28056047.1,
+   "subvencao_total": 0.0,
+   "n_subvencionadas": 0,
+   "by_year": [
+    {
+     "ano": 2024,
+     "pago": 7273548.11,
+     "n_orgs": 56
+    },
+    {
+     "ano": 2025,
+     "pago": 15074677.35,
+     "n_orgs": 70
+    },
+    {
+     "ano": 2026,
+     "pago": 5707821.64,
+     "n_orgs": 35
+    }
+   ],
+   "top_orgaos": [
+    {
+     "orgao": "SECRETARIA DE DESENVOLVIMENTO URBANO E LICENCIAMENTO",
+     "slug": "secretaria-de-desenvolvimento-urbano-e-licenciamento",
+     "valor": 14586388.25,
+     "n": 41
+    },
+    {
+     "orgao": "SECRETARIA DO TRABALHO E QUALIFICAÇÃO PROFISSIONAL",
+     "slug": "secretaria-do-trabalho-e-qualificacao-profissional",
+     "valor": 3162649.88,
+     "n": 108
+    },
+    {
+     "orgao": "SECRETARIA DE PLANEJAMENTO, GESTÃO E TRANSFORMAÇÃO DIGITAL",
+     "slug": "secretaria-de-planejamento-gestao-e-transformacao-digital",
+     "valor": 2890032.68,
+     "n": 10
+    },
+    {
+     "orgao": "GABINETE DE INOVAÇÃO URBANA",
+     "slug": "gabinete-de-inovacao-urbana",
+     "valor": 1281700.81,
+     "n": 83
+    },
+    {
+     "orgao": "SECRETARIA DE ORDEM PÚBLICA E SEGURANÇA",
+     "slug": "secretaria-de-ordem-publica-e-seguranca",
+     "valor": 1028954.0,
+     "n": 4
+    },
+    {
+     "orgao": "SECRETARIA DE DESENV. SOCIAL, DIREITOS HUMANOS, JUVENTUDE E POLÍTICAS SOBRE DROGAS - ADM. SUPERVISIO",
+     "slug": "secretaria-de-desenv-social-direitos-humanos-juventude-e-politicas-sobre-drogas-adm-supervisio",
+     "valor": 846441.54,
+     "n": 67
+    },
+    {
+     "orgao": "SECRETARIA DE DESENVOLVIMENTO URBANO E LICENCIAMENTO - ADMINISTRAÇÃO SUPERVISIONADA",
+     "slug": "secretaria-de-desenvolvimento-urbano-e-licenciamento-administracao-supervisionada",
+     "valor": 758241.76,
+     "n": 27
+    },
+    {
+     "orgao": "SECRETARIA DE SAÚDE - ADMINISTRAÇÃO SUPERVISIONADA",
+     "slug": "secretaria-de-saude-administracao-supervisionada",
+     "valor": 661497.73,
+     "n": 13
+    },
+    {
+     "orgao": null,
+     "slug": null,
+     "valor": 2840140.45,
+     "n": 260
+    }
+   ],
+   "top_recebedores": [
+    {
+     "cnpj": "29036430000145",
+     "nome": "AGENCIA RECIFE PARA INOVACAO E ESTRATEGIA - ARIES",
+     "total_pago": 8078400.76,
+     "n_contratos": 1,
+     "is_subvencao": false
+    },
+    {
+     "cnpj": "49262337000166",
+     "nome": "CONSORCIO DIAGGEO",
+     "total_pago": 7271491.09,
+     "n_contratos": 1,
+     "is_subvencao": false
+    },
+    {
+     "cnpj": "50282669000191",
+     "nome": "SMS COMERCIO DE MATERIAIS DE CONSTRUCAO LTDA",
+     "total_pago": 1622077.22,
+     "n_contratos": 1,
+     "is_subvencao": false
+    },
+    {
+     "cnpj": "10648787000156",
+     "nome": "CAVALCANTE DISTRIBUIDORA LTDA ME MIX DISTRIBUIDORA",
+     "total_pago": 1051869.23,
+     "n_contratos": 4,
+     "is_subvencao": false
+    },
+    {
+     "cnpj": "01263896003775",
+     "nome": "MINISTERIO DA CIENCIA, TECNOLOGIA E INOVACAO",
+     "total_pago": 962786.74,
+     "n_contratos": 0,
+     "is_subvencao": false
+    },
+    {
+     "cnpj": "25202951000174",
+     "nome": "INSTITUTO EDUCACIONAL MENINO JESUS",
+     "total_pago": 935149.3,
+     "n_contratos": 1,
+     "is_subvencao": false
+    },
+    {
+     "cnpj": "05834842000162",
+     "nome": "ASSOCIACAO EDUCACIONAL E CIENCIAS DA SAUDE AECISA",
+     "total_pago": 756460.99,
+     "n_contratos": 2,
+     "is_subvencao": false
+    },
+    {
+     "cnpj": "03485324000155",
+     "nome": "SERVICO NACIONAL DE APRENDIZAGEM COMERCIAL - SENAC",
+     "total_pago": 718189.17,
+     "n_contratos": 2,
+     "is_subvencao": false
+    },
+    {
+     "cnpj": "66865965000155",
+     "nome": "MANESCO, RAMIRES, PEREZ, AZEVEDO MARQUES - SOCIEDADE DE ADVOGADOS.",
+     "total_pago": 650000.0,
+     "n_contratos": 0,
+     "is_subvencao": false
+    },
+    {
+     "cnpj": "03997641000150",
+     "nome": "COOPERATIVA DE TRABALHO AGRICOLA, ASSISTENCIA TECNICA, PRODUCAO, BENS E SERVICOS - COOATES",
+     "total_pago": 573940.0,
+     "n_contratos": 1,
+     "is_subvencao": false
+    },
+    {
+     "cnpj": "48975836000138",
+     "nome": "WR COMÉRCIO DE PAPEIS LTDA",
+     "total_pago": 562000.73,
+     "n_contratos": 0,
+     "is_subvencao": false
+    },
+    {
+     "cnpj": "22777689000106",
+     "nome": "ENTERPRISE COMERCIO E SOLUCOES EM TI LTDA",
+     "total_pago": 496200.0,
+     "n_contratos": 0,
+     "is_subvencao": false
+    },
+    {
+     "cnpj": "09829524000164",
+     "nome": "SERVIÇO DE APOIO AS MICRO E PEQUENAS EMPRESAS DE PE SEBRAE PE",
+     "total_pago": 467819.46,
+     "n_contratos": 1,
+     "is_subvencao": false
+    },
+    {
+     "cnpj": "41467016000196",
+     "nome": "MILLENIUM LICITACOES LTDA",
+     "total_pago": 409606.09,
+     "n_contratos": 1,
+     "is_subvencao": false
+    },
+    {
+     "cnpj": "24832182000125",
+     "nome": "RBO CONSULTORES & AUDITORES LTDA",
+     "total_pago": 329706.88,
+     "n_contratos": 6,
+     "is_subvencao": false
+    }
+   ]
+  },
+  "servicos-tecnicos": {
+   "tema": "Serviços técnicos",
+   "slug": "servicos-tecnicos",
+   "n_organizacoes": 2,
+   "total_pago": 1625278.49,
+   "subvencao_total": 1625278.49,
+   "n_subvencionadas": 2,
+   "by_year": [
+    {
+     "ano": 2025,
+     "pago": 1412633.17,
+     "n_orgs": 2
+    },
+    {
+     "ano": 2026,
+     "pago": 212645.32,
+     "n_orgs": 1
+    }
+   ],
+   "top_orgaos": [
+    {
+     "orgao": "SECRETARIA DE DIREITOS HUMANOS E JUVENTUDE - ADMINISTRAÇÃO SUPERVISIONADA",
+     "slug": "secretaria-de-direitos-humanos-e-juventude-administracao-supervisionada",
+     "valor": 1337205.61,
+     "n": 2
+    },
+    {
+     "orgao": "SECRETARIA DE EDUCAÇÃO",
+     "slug": "secretaria-de-educacao",
+     "valor": 288072.88,
+     "n": 2
+    }
+   ],
+   "top_recebedores": [
+    {
+     "cnpj": "12048807000183",
+     "nome": "SERVICO DE TECNOLOGIA ALTERNATIVA SERTA",
+     "total_pago": 1337205.61,
+     "n_contratos": 0,
+     "is_subvencao": true
+    },
+    {
+     "cnpj": "73871808000118",
+     "nome": "INSTITUTO UNIFUTURO",
+     "total_pago": 288072.88,
+     "n_contratos": 0,
+     "is_subvencao": true
+    }
+   ]
+  },
+  "meio-ambiente": {
+   "tema": "Meio ambiente",
+   "slug": "meio-ambiente",
+   "n_organizacoes": 21,
+   "total_pago": 1813621.14,
+   "subvencao_total": 0.0,
+   "n_subvencionadas": 0,
+   "by_year": [
+    {
+     "ano": 2024,
+     "pago": 944743.9,
+     "n_orgs": 11
+    },
+    {
+     "ano": 2025,
+     "pago": 624554.21,
+     "n_orgs": 10
+    },
+    {
+     "ano": 2026,
+     "pago": 244323.03,
+     "n_orgs": 8
+    }
+   ],
+   "top_orgaos": [
+    {
+     "orgao": "SECRETARIA DE MEIO AMBIENTE",
+     "slug": "secretaria-de-meio-ambiente",
+     "valor": 522124.56,
+     "n": 42
+    },
+    {
+     "orgao": "SECRETARIA DE EDUCAÇÃO",
+     "slug": "secretaria-de-educacao",
+     "valor": 489394.5,
+     "n": 6
+    },
+    {
+     "orgao": "SECRETARIA DE INFRAESTRUTURA - ADMINISTRAÇÃO SUPERVISIONADA",
+     "slug": "secretaria-de-infraestrutura-administracao-supervisionada",
+     "valor": 430651.0,
+     "n": 7
+    },
+    {
+     "orgao": "SECRETARIA DE MEIO AMBIENTE E SUSTENTABILIDADE",
+     "slug": "secretaria-de-meio-ambiente-e-sustentabilidade",
+     "valor": 283176.38,
+     "n": 19
+    },
+    {
+     "orgao": "SECRETARIA DE ORDEM PÚBLICA E SEGURANÇA",
+     "slug": "secretaria-de-ordem-publica-e-seguranca",
+     "valor": 28860.0,
+     "n": 4
+    },
+    {
+     "orgao": "SECRETARIA DE DESENVOLVIMENTO SUSTENTÁVEL E MEIO AMBIENTE - ADMINISTRAÇÃO SUPERVISIONADA",
+     "slug": "secretaria-de-desenvolvimento-sustentavel-e-meio-ambiente-administracao-supervisionada",
+     "valor": 12995.66,
+     "n": 6
+    },
+    {
+     "orgao": "SECRETARIA DE FINANÇAS",
+     "slug": "secretaria-de-financas",
+     "valor": 12398.0,
+     "n": 2
+    },
+    {
+     "orgao": "SECRETARIA DE TURISMO E LAZER",
+     "slug": "secretaria-de-turismo-e-lazer",
+     "valor": 9706.0,
+     "n": 2
+    },
+    {
+     "orgao": null,
+     "slug": null,
+     "valor": 24315.04,
+     "n": 15
+    }
+   ],
+   "top_recebedores": [
+    {
+     "cnpj": "11424736000103",
+     "nome": "AURORA EMPREENDIMENTOS E PARTICIPAÇÕES LTDA",
+     "total_pago": 1258141.6,
+     "n_contratos": 2,
+     "is_subvencao": false
+    },
+    {
+     "cnpj": "41742532000181",
+     "nome": "ALUTECH TECNOLOGIA E LOCAÇÕES S/A",
+     "total_pago": 298942.18,
+     "n_contratos": 3,
+     "is_subvencao": false
+    },
+    {
+     "cnpj": "24073694000155",
+     "nome": "CIL COMÉRCIO DE INFORMÁTICA LTDA",
+     "total_pago": 58320.44,
+     "n_contratos": 1,
+     "is_subvencao": false
+    },
+    {
+     "cnpj": "45810856000160",
+     "nome": "RESERVI LTDA",
+     "total_pago": 37524.58,
+     "n_contratos": 1,
+     "is_subvencao": false
+    },
+    {
+     "cnpj": "01131815000172",
+     "nome": "ARTE EXPRESS SERVICOS LTDA-ME",
+     "total_pago": 37379.0,
+     "n_contratos": 0,
+     "is_subvencao": false
+    },
+    {
+     "cnpj": "50736160000171",
+     "nome": "J F N F COMÉRCIO E SERVIÇOS LTDA",
+     "total_pago": 30186.7,
+     "n_contratos": 0,
+     "is_subvencao": false
+    },
+    {
+     "cnpj": "50846860000119",
+     "nome": "ECOPRIME OBRAS E SERVICOS PAISAGISTICOS LTDA",
+     "total_pago": 25090.0,
+     "n_contratos": 0,
+     "is_subvencao": false
+    },
+    {
+     "cnpj": "59727779000194",
+     "nome": "59.727.779 VINNICIUS RUBENS VILLAR DE ARAUJO AMARAL",
+     "total_pago": 18600.0,
+     "n_contratos": 0,
+     "is_subvencao": false
+    },
+    {
+     "cnpj": "29198692000106",
+     "nome": "R G BEZERRA - DEDETIZAÇÃO E SERVIÇOS LTDA",
+     "total_pago": 12499.98,
+     "n_contratos": 0,
+     "is_subvencao": false
+    },
+    {
+     "cnpj": "22780051000116",
+     "nome": "INSTITUTO NACIONAL DE APERFEIÇOAMENTO E GESTÃO INAG LTDA",
+     "total_pago": 12325.0,
+     "n_contratos": 0,
+     "is_subvencao": false
+    },
+    {
+     "cnpj": "41605902000139",
+     "nome": "CASA DO GUINCHEIRO COMERCIO E SERVICOS LTDA",
+     "total_pago": 8000.0,
+     "n_contratos": 0,
+     "is_subvencao": false
+    },
+    {
+     "cnpj": "48540148000145",
+     "nome": "PB & A GRAFICA DIGITAL E EDITORA LTDA",
+     "total_pago": 7251.0,
+     "n_contratos": 0,
+     "is_subvencao": false
+    },
+    {
+     "cnpj": "00975548000157",
+     "nome": "ASSOCIACAO BRASILEIRA DE EDUCACAO A DISTANCIA ABED",
+     "total_pago": 3090.0,
+     "n_contratos": 0,
+     "is_subvencao": false
+    },
+    {
+     "cnpj": "36125963000169",
+     "nome": "MX COPOS E POTES LTDA",
+     "total_pago": 2725.0,
+     "n_contratos": 0,
+     "is_subvencao": false
+    },
+    {
+     "cnpj": "07931631000173",
+     "nome": "GRUPO DE ACOES E ESTUDOS AMBIENTAIS",
+     "total_pago": 1723.55,
+     "n_contratos": 0,
+     "is_subvencao": false
+    }
+   ]
+  }
+ }
+}

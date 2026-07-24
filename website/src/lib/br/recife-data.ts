@@ -98,7 +98,7 @@ export type RecebedorSlim = {
   tema?: string | null;
   resumo?: string | null;
 };
-export type TemaSlice = { tema: string; n_organizacoes: number; pago: number };
+export type TemaSlice = { tema: string; slug?: string; n_organizacoes: number; pago: number };
 export type QuemRecebeData = {
   generated_at: string;
   source: SourceBlock;
@@ -150,6 +150,15 @@ export type RecipientDetail = {
   perfil?: RecipientPerfil | null;
   resumo?: string | null;
   o_que_financia?: string | null;
+  /** Contract-only supplier: holds a contract but has NO payment (empenho)
+   *  record. total_pago/by_year are empty; total_contratado carries the
+   *  summed contract value instead. */
+  contratos_only?: boolean;
+  total_contratado?: number;
+  /** Money by contracting department (órgão) — top-N + an aggregated "Outros"
+   *  (orgao=null). Payments for paid recipients; contracted value for
+   *  contract-only suppliers. */
+  by_orgao?: { orgao: string | null; slug?: string | null; valor: number; n: number }[];
 };
 type RecipientsFile = {
   source: SourceBlock;
@@ -165,7 +174,8 @@ export function loadRecipient(cnpj: string): (RecipientDetail & { source: Source
 // ---- contratos --------------------------------------------------------------
 export type ContratoItem = {
   contrato_id: string; numero: string; ano: number | null;
-  orgao: string | null; objeto: string | null; modalidade: string;
+  orgao: string | null; orgao_slug?: string | null;
+  objeto: string | null; modalidade: string;
   fornecedor: string | null; fornecedor_cnpj: string | null; is_org: boolean;
   valor: number | null; situacao: string | null;
   vigencia_inicio: string | null; vigencia_fim: string | null; is_ativo: boolean;
@@ -177,6 +187,8 @@ export type ContratosData = {
   perimeter: string;
   headline: { n_contratos: number; n_ativos: number; valor_ativo_total: number };
   modalidade_mix: { modalidade: string; n: number; valor: number }[];
+  orgaos: string[];
+  anos: number[];
   contratos: ContratoItem[];
 };
 
@@ -206,4 +218,71 @@ export type LicitacoesData = {
 
 export function loadLicitacoes(): LicitacoesData {
   return readDataJson<LicitacoesData>(`${NS}/licitacoes.json`);
+}
+
+// ---- órgãos (contracting departments) --------------------------------------
+export type OrgaoDetail = {
+  orgao: string; slug: string;
+  total_pago: number; n_suppliers: number; n_contratos: number;
+  by_year: { ano: number; pago: number }[];
+  top_suppliers: { cnpj: string; nome: string; pago: number }[];
+  top_contracts: {
+    contrato_id: string; numero: string; objeto: string | null;
+    fornecedor: string | null; fornecedor_cnpj: string | null;
+    valor: number | null; ano: number | null;
+  }[];
+};
+type OrgaosFile = { source: SourceBlock; items: Record<string, OrgaoDetail> };
+
+export function loadOrgao(slug: string): (OrgaoDetail & { source: SourceBlock }) | null {
+  const file = readDataJsonOrNull<OrgaosFile>(`${NS}/orgaos.json`);
+  const o = file?.items?.[slug];
+  return o ? { ...o, source: file!.source } : null;
+}
+
+// ---- modalidades (procurement-modality entity pages) -----------------------
+export type ModalidadeDetail = {
+  modalidade: string; slug: string;
+  n_contratos: number; valor_total: number; n_ativos: number; valor_ativo: number;
+  by_year: { ano: number; n: number; valor: number }[];
+  top_orgaos: { orgao: string | null; slug?: string | null; valor: number; n: number }[];
+  top_suppliers: { cnpj: string; nome: string; valor: number; n: number }[];
+  top_contracts: {
+    contrato_id: string; numero: string; objeto: string | null;
+    fornecedor: string | null; fornecedor_cnpj: string | null;
+    orgao: string | null; orgao_slug?: string | null;
+    valor: number | null; ano: number | null;
+  }[];
+};
+type ModalidadesFile = { source: SourceBlock; items: Record<string, ModalidadeDetail> };
+
+export function loadModalidade(slug: string): (ModalidadeDetail & { source: SourceBlock }) | null {
+  const file = readDataJsonOrNull<ModalidadesFile>(`${NS}/modalidades.json`);
+  const m = file?.items?.[slug];
+  return m ? { ...m, source: file!.source } : null;
+}
+
+// ---- temas (public-policy theme entity pages) ------------------------------
+export type TemaDetail = {
+  tema: string; slug: string;
+  n_organizacoes: number; total_pago: number;
+  subvencao_total: number; n_subvencionadas: number;
+  by_year: { ano: number; pago: number; n_orgs: number }[];
+  top_orgaos: { orgao: string | null; slug?: string | null; valor: number; n: number }[];
+  top_recebedores: {
+    cnpj: string; nome: string; total_pago: number;
+    n_contratos: number; is_subvencao: boolean;
+  }[];
+};
+type TemasFile = { source: SourceBlock; tema_method?: string; items: Record<string, TemaDetail> };
+
+// The theme bar's synthesized "others" overflow segment carries the translated
+// label ("Others" in EN) → its slug won't match the pt data key. Alias it.
+const TEMA_SLUG_ALIAS: Record<string, string> = { others: "outros" };
+
+export function loadTema(slug: string): (TemaDetail & { source: SourceBlock; tema_method?: string }) | null {
+  const file = readDataJsonOrNull<TemasFile>(`${NS}/temas.json`);
+  const key = file?.items?.[slug] ? slug : (TEMA_SLUG_ALIAS[slug] ?? slug);
+  const t = file?.items?.[key];
+  return t ? { ...t, source: file!.source, tema_method: file!.tema_method } : null;
 }

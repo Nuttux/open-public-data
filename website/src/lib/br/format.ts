@@ -23,13 +23,15 @@ export function fmtBrl(n: number | null | undefined): string {
   return `${sign}R$${NB}${nfInt.format(Math.abs(n))}`;
 }
 
-/** Magnitude-suffixed reais: R$ 5,52 bi · R$ 616,1 mi · R$ 71,1 mil. */
+/** Magnitude-suffixed reais: R$ 5,5 bi · R$ 616 mi · R$ 8,1 mi · R$ 71 mil.
+ *  One significant decimal max, and none once we're in the tens (≥ R$ 100 mi /
+ *  ≥ R$ 10 mil) — at that scale a trailing decimal is false precision. */
 export function fmtBrlCompact(n: number | null | undefined): string {
   if (n == null) return "—";
   const sign = n < 0 ? MINUS : "";
   const abs = Math.abs(n);
-  if (abs >= 1e9) return `${sign}R$${NB}${nfDec(2).format(abs / 1e9)}${NB}bi`;
-  if (abs >= 1e6) return `${sign}R$${NB}${nfDec(1).format(abs / 1e6)}${NB}mi`;
+  if (abs >= 1e9) return `${sign}R$${NB}${nfDec(1).format(abs / 1e9)}${NB}bi`;
+  if (abs >= 1e6) return `${sign}R$${NB}${nfDec(abs >= 1e8 ? 0 : 1).format(abs / 1e6)}${NB}mi`;
   if (abs >= 1e3) return `${sign}R$${NB}${nfDec(0).format(abs / 1e3)}${NB}mil`;
   return fmtBrl(n);
 }
@@ -110,6 +112,60 @@ export function titleCasePt(s: string | null | undefined): string {
     .map((w, i) => (i > 0 && TITLE_SMALL.has(w)) ? w
       : w ? w[0].toLocaleUpperCase("pt-BR") + w.slice(1) : w)
     .join(" ");
+}
+
+/** English glosses for Brazilian procurement modalities (Lei 14.133 / 8.666
+ *  legal terms). Keys are the canonical UPPERCASE source values. Unknown terms
+ *  fall back to title-case. The legal term stays available via tooltip; this is
+ *  a *display* aid for EN readers, not a rename. */
+const MODALIDADE_EN: Record<string, string> = {
+  "LICITAÇÃO": "Competitive tender",
+  "INEXIGIBILIDADE": "No-bid (sole supplier)",
+  "DISPENSA": "Waived tender",
+  "SARP": "Price-registration framework",
+  "COMPRA DIRETA": "Direct purchase",
+  "PREGÃO ELETRÔNICO": "Electronic auction",
+  "PREGÃO PRESENCIAL": "In-person auction",
+  "CONCORRÊNCIA": "Open tender",
+  "CONCORRÊNCIA - PRESENCIAL": "Open tender (in-person)",
+  "CONCORRÊNCIA - ELETRÔNICA": "Open tender (electronic)",
+  "TOMADA DE PREÇOS": "Price-taking tender",
+  "CONVITE": "Invitation tender",
+  "CHAMAMENTO PÚBLICO": "Public call",
+  "CREDENCIAMENTO": "Accreditation",
+  "CONCURSO": "Design contest",
+  "LEILÃO": "Auction",
+};
+
+/** Localised display label for a procurement modality. PT keeps the legal term
+ *  (de-shouted); EN shows a plain-language gloss (falls back to title-case). */
+export function modalidadeLabel(raw: string | null | undefined, locale: string): string {
+  if (!raw || raw === "—") return "—";
+  if (locale === "en") return MODALIDADE_EN[raw.trim().toUpperCase()] ?? titleCasePt(raw);
+  return titleCasePt(raw);
+}
+
+/** Deterministic ASCII slug — MUST match the Python `slug_token` in
+ *  export_br_recife.py (NFKD accent-strip → non-alnum to hyphen → lower).
+ *  Only the empty-string fallback differs per entity family. */
+function slugToken(s: string | null | undefined, fallback: string): string {
+  const ascii = (s ?? "").normalize("NFKD").replace(/[^\x00-\x7F]/g, "");
+  return ascii.replace(/[^a-zA-Z0-9]+/g, "-").replace(/^-+|-+$/g, "").toLowerCase() || fallback;
+}
+
+/** Slug for an órgão name (fallback "orgao"). */
+export function slugOrgao(s: string | null | undefined): string {
+  return slugToken(s, "orgao");
+}
+
+/** Slug for a procurement modality (fallback "sem-modalidade"). */
+export function slugModalidade(s: string | null | undefined): string {
+  return slugToken(s, "sem-modalidade");
+}
+
+/** Slug for a public-policy theme (fallback "outros"). */
+export function slugTema(s: string | null | undefined): string {
+  return slugToken(s, "outros");
 }
 
 /** Format a 14-digit CNPJ as 00.000.000/0000-00. */

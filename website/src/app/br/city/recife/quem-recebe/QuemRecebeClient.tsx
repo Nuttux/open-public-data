@@ -12,18 +12,25 @@ import ExportRow from "@/components/fusion/ExportRow";
 import PageHook from "@/components/fusion/PageHook";
 import { useT } from "@/lib/localeContext";
 import type { QuemRecebeData } from "@/lib/br/recife-data";
-import { fmtBrlCompact, fmtBrlCompactNum, brlMagnitude, fmtBrl, fmtInt, fmtShare, fill } from "@/lib/br/format";
+import { fmtBrlCompact, fmtBrlCompactNum, brlMagnitude, fmtBrl, fmtInt, fmtShare, fill, slugTema } from "@/lib/br/format";
 import RecifeQuemRecebeExplorer from "./RecifeQuemRecebeExplorer";
 
 const BASE = "/br/city/recife/quem-recebe";
 
 export default function QuemRecebeClient({ d }: { d: QuemRecebeData }) {
   const t = useT();
-  const latestYear = Math.max(...d.anos_disponiveis, 0);
+  // theme name → its data slug (from the pipeline); fall back to a client slug
+  // for the synthesized "others" overflow segment (translated label).
+  const temaSlugByName = new Map(d.temas.map((tm) => [tm.tema, tm.slug ?? slugTema(tm.tema)]));
   const maxSeriesYear = Math.max(...d.anos_series.map((x) => x.ano), 0);
-  const timelinePoints = d.anos_series.map((a) => ({
-    year: a.ano, value: a.total_pago / 1e9,
-    type: (a.ano === maxSeriesYear ? "estimate" : "execute") as "execute" | "estimate",
+  // Drop the current, still-running year: an in-progress year plotted next to
+  // full years reads as a cliff-drop, not a real trend. Only complete years.
+  const completeSeries = d.anos_series.filter((a) => a.ano < maxSeriesYear);
+  const latestYear = completeSeries.length
+    ? Math.max(...completeSeries.map((a) => a.ano))
+    : maxSeriesYear;
+  const timelinePoints = completeSeries.map((a) => ({
+    year: a.ano, value: a.total_pago / 1e9, type: "execute" as const,
   }));
 
   return (
@@ -63,7 +70,7 @@ export default function QuemRecebeClient({ d }: { d: QuemRecebeData }) {
             formatAmount={fmtBrlCompact}
             entityNoun={t("br.recife.qr.entity_noun")}
             kicker={t("br.recife.qr.temas_kicker")}
-            hrefBuilder={(theme) => `${BASE}?theme=${encodeURIComponent(theme)}#sec-recebedores`}
+            hrefBuilder={(theme) => `/br/city/recife/tema/${temaSlugByName.get(theme) ?? slugTema(theme)}`}
           />
           {(() => {
             const hookBody = fill(t("br.recife.qr.hook_body"), {
@@ -78,6 +85,9 @@ export default function QuemRecebeClient({ d }: { d: QuemRecebeData }) {
               </PageHook>
             );
           })()}
+          <p style={{ margin: "10px 0 0", fontSize: 12, color: "var(--muted)", fontStyle: "italic", lineHeight: 1.5 }}>
+            {t("br.recife.qr.tema_provenance")}
+          </p>
           <ChartSource source={d.source.name ?? t("br.recife.portal")} dataHref={d.source.source_url ?? undefined} />
         </div>
       </section>
@@ -86,19 +96,21 @@ export default function QuemRecebeClient({ d }: { d: QuemRecebeData }) {
         <RecifeQuemRecebeExplorer top={d.top_recebedores} temas={d.temas} concentracao={d.headline.concentracao_top10} />
       </Suspense>
 
-      <section className="fx-section" id="sec-evolucao">
-        <div className="fx-wrap">
-          <SectionHead title={t("br.recife.budget.evolution_h")} subtitle={t("br.recife.qr.evolution_sub")} />
-          <BudgetTimeline
-            points={timelinePoints}
-            activeYear={latestYear}
-            showStatus={false}
-            formatYTick={(v) => `${v} bi`}
-            ariaLabel={t("br.recife.budget.evolution_h")}
-          />
-          <ChartSource source={d.source.name ?? t("br.recife.portal")} dataHref={d.source.source_url ?? undefined} />
-        </div>
-      </section>
+      {timelinePoints.length >= 2 && (
+        <section className="fx-section" id="sec-evolucao">
+          <div className="fx-wrap">
+            <SectionHead title={t("br.recife.budget.evolution_h")} subtitle={t("br.recife.qr.evolution_sub")} />
+            <BudgetTimeline
+              points={timelinePoints}
+              activeYear={latestYear}
+              showStatus={false}
+              formatYTick={(v) => `${v} bi`}
+              ariaLabel={t("br.recife.budget.evolution_h")}
+            />
+            <ChartSource source={d.source.name ?? t("br.recife.portal")} dataHref={d.source.source_url ?? undefined} />
+          </div>
+        </section>
+      )}
 
       <section className="fx-footer-sources" id="sec-sources">
         <div className="fx-wrap">

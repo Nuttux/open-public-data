@@ -8,19 +8,21 @@ import AnimatedNumber from "@/components/fusion/AnimatedNumber";
 import BarRow, { type BarRowItem } from "@/components/fusion/BarRow";
 import ChartSource from "@/components/fusion/ChartSource";
 import ExportRow from "@/components/fusion/ExportRow";
-import { useT } from "@/lib/localeContext";
-import type { ContratosData, LicitacoesData } from "@/lib/br/recife-data";
-import { fmtBrlCompact, fmtBrlCompactNum, brlMagnitude, fmtInt } from "@/lib/br/format";
+import { useT, useLocale } from "@/lib/localeContext";
+import type { ContratosData } from "@/lib/br/recife-data";
+import { fmtBrlCompact, fmtBrlCompactNum, brlMagnitude, fmtInt, modalidadeLabel, slugModalidade } from "@/lib/br/format";
 import RecifeContratosExplorer from "./RecifeContratosExplorer";
 
-export default function ContratosClient({ d, lic }: { d: ContratosData; lic: LicitacoesData }) {
+const BASE = "/br/city/recife/contratos";
+
+export default function ContratosClient({ d }: { d: ContratosData }) {
   const t = useT();
+  const { locale } = useLocale();
 
   const modalidadeItems: BarRowItem[] = d.modalidade_mix.slice(0, 8).map((m) => ({
-    label: m.modalidade, value: m.valor, display: `${fmtInt(m.n)} · ${fmtBrlCompact(m.valor)}`,
-  }));
-  const licItems: BarRowItem[] = lic.modalidade_mix.slice(0, 8).map((m) => ({
-    label: m.modalidade, value: m.homologado, display: fmtBrlCompact(m.homologado),
+    label: modalidadeLabel(m.modalidade, locale), value: m.valor,
+    display: `${fmtInt(m.n)} · ${fmtBrlCompact(m.valor)}`,
+    href: m.modalidade && m.modalidade !== "—" ? `/br/city/recife/modalidade/${slugModalidade(m.modalidade)}` : undefined,
   }));
   const modalidades = d.modalidade_mix.map((m) => m.modalidade);
 
@@ -30,7 +32,6 @@ export default function ContratosClient({ d, lic }: { d: ContratosData; lic: Lic
         items={[
           { id: "sec-modalidade", label: t("br.recife.ct.mix_h") },
           { id: "sec-contratos", label: t("br.recife.ct.list_h") },
-          { id: "sec-licitacoes", label: t("br.recife.ct.licitacoes_h") },
           { id: "sec-sources", label: t("br.recife.budget.downloads") },
         ]}
       />
@@ -44,7 +45,6 @@ export default function ContratosClient({ d, lic }: { d: ContratosData; lic: Lic
             <IntroStat value={<AnimatedNumber value={d.headline.n_contratos} format={fmtInt} />} label={t("br.recife.ct.stat_total")} />
             <IntroStat value={<AnimatedNumber value={d.headline.n_ativos} format={fmtInt} />} label={t("br.recife.ct.stat_ativos")} />
             <IntroStat value={<AnimatedNumber value={d.headline.valor_ativo_total} format={fmtBrlCompactNum} />} unit={brlMagnitude(d.headline.valor_ativo_total)} label={t("br.recife.ct.stat_valor")} />
-            <IntroStat value={<AnimatedNumber value={lic.headline.n_concluidas} format={fmtInt} />} label={t("br.recife.ct.stat_licitacoes")} />
           </>
         }
       />
@@ -58,19 +58,14 @@ export default function ContratosClient({ d, lic }: { d: ContratosData; lic: Lic
       </section>
 
       <Suspense fallback={null}>
-        <RecifeContratosExplorer seed={d.contratos} modalidades={modalidades} nTotal={d.headline.n_contratos} />
+        <RecifeContratosExplorer
+          seed={d.contratos}
+          modalidades={modalidades}
+          orgaos={d.orgaos}
+          anos={d.anos}
+          nTotal={d.headline.n_contratos}
+        />
       </Suspense>
-
-      <section className="fx-section" id="sec-licitacoes">
-        <div className="fx-wrap">
-          <SectionHead
-            title={t("br.recife.ct.licitacoes_h")}
-            subtitle={`${fmtInt(lic.headline.n_concluidas)} ${t("br.recife.ct.concluidas")} · ${fmtBrlCompact(lic.headline.homologado_total)} ${t("br.recife.ct.homologado")}`}
-          />
-          <BarRow items={licItems} reveal />
-          <ChartSource source={lic.source.name ?? t("br.recife.portal")} dataHref={lic.source.source_url ?? undefined} />
-        </div>
-      </section>
 
       <section className="fx-footer-sources" id="sec-sources">
         <div className="fx-wrap">

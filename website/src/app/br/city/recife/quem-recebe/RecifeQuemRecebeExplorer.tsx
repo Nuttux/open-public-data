@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { useT } from "@/lib/localeContext";
 import { normSearch, expandQuery, matchExpanded } from "@/lib/search-synonyms";
 import type { RecebedorSlim, TemaSlice } from "@/lib/br/recife-data";
@@ -34,8 +34,16 @@ export default function RecifeQuemRecebeExplorer({
   const [sort, setSort] = useState<Sort>("pago-desc");
   const [visible, setVisible] = useState(PAGE);
   const [index, setIndex] = useState<SearchItem[] | null>(null);
+  const searchRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => { if (themeParam) setTema(themeParam); }, [themeParam]);
+  // Arriving via a ?theme= deep-link (clicking a segment of the theme bar):
+  // apply the filter AND scroll to the results, otherwise the filtered list
+  // renders far below the fold and the click reads as "nothing happened".
+  useEffect(() => {
+    if (!themeParam) return;
+    setTema(themeParam);
+    searchRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+  }, [themeParam]);
 
   const minR = minMi ? parseFloat(minMi.replace(",", ".")) * 1e6 : null;
   const maxR = maxMi ? parseFloat(maxMi.replace(",", ".")) * 1e6 : null;
@@ -102,7 +110,7 @@ export default function RecifeQuemRecebeExplorer({
         </p>
 
         {/* filtered search */}
-        <div className="fx-search-wrap" style={{ marginTop: 40 }}>
+        <div ref={searchRef} className="fx-search-wrap" style={{ marginTop: 40, scrollMarginTop: 80 }}>
           <div className="fx-search-label">{t("br.recife.qr.search_h")}</div>
           <div className="fx-search-inner">
             <div className="fx-search-input-wrap">

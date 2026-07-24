@@ -9,7 +9,6 @@ import YearPicker from "@/components/fusion/YearPicker";
 import AnimatedNumber from "@/components/fusion/AnimatedNumber";
 import BarRow, { type BarRowItem } from "@/components/fusion/BarRow";
 import BudgetTimeline from "@/components/fusion/BudgetTimeline";
-import PageHook from "@/components/fusion/PageHook";
 import ChartSource from "@/components/fusion/ChartSource";
 import ExportRow from "@/components/fusion/ExportRow";
 import { useT } from "@/lib/localeContext";
@@ -53,11 +52,6 @@ export default function BudgetClient({ d, ano }: { d: BudgetData; ano?: number }
   const pop = d.populacao?.populacao;
   const perCapita = pop ? anoData.total_pago / pop : null;
   const restos = anoData.total_empenhado - anoData.total_pago;
-
-  const top3 = funcoes.slice(0, 3).map((f) => ({ nome: titleCase(f.funcao), reais: Math.round((f.pago / anoData.total_pago) * 100) }));
-  const hookBody = top3.length >= 3
-    ? fill(t("br.recife.budget.hook_body"), { y: year, a: top3[0].reais, f1: top3[0].nome, b: top3[1].reais, f2: top3[1].nome, c: top3[2].reais, f3: top3[2].nome })
-    : null;
 
   return (
     <main id="main-content" tabIndex={-1}>
@@ -112,11 +106,6 @@ export default function BudgetClient({ d, ano }: { d: BudgetData; ano?: number }
         <div className="fx-wrap">
           <SectionHead title={t("br.recife.budget.funcao_h")} subtitle={fill(t("br.recife.budget.funcao_sub"), { y: year })} />
           <BarRow items={funcaoItems} max={funcaoItems[0]?.value} reveal />
-          {hookBody && (
-            <PageHook variant="card" cite={fill(t("br.recife.budget.hook_cite"), { y: year })} shareText={hookBody.replace(/<[^>]+>/g, "")}>
-              <span dangerouslySetInnerHTML={{ __html: hookBody }} />
-            </PageHook>
-          )}
           <ChartSource source={d.source.name ?? t("br.recife.portal")} dataHref={d.source.source_url ?? undefined} />
         </div>
       </section>

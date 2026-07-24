@@ -1,8 +1,8 @@
 {
- "generated_at": "2026-07-22T21:16:58.959850+00:00",
+ "generated_at": "2026-07-24T12:03:55.433251+00:00",
  "source_pipeline": "configs/countries/br.yaml → sync_ckan_dataset.py → raw.br_recife_* → dbt_br_staging → dbt_br_analytics → dbt_br_marts → export_br_recife.py",
  "unit": "BRL",
- "count": 4866,
+ "count": 5611,
  "items": [
   {
    "cnpj": "00360305004525",
@@ -38931,6 +38931,6711 @@
    "is_subvencao": false,
    "tema": "Desenvolvimento econômico",
    "orgao": "SECRETARIA DO TRABALHO E QUALIFICAÇÃO PROFISSIONAL"
+  },
+  {
+   "cnpj": "06926223000160",
+   "nome": "AMERICA TECNOLOGIA DE INFORMÁTICA E ELETRO-ELETRONICOS LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "EMPREL - EMPRESA MUNICIPAL DE INFORMÁTICA",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "10986454000137",
+   "nome": "AMF SOLUÇÕES EM IMPRESSÃO LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "AUTARQUIA MUNICIPAL DE PREVIDENCIA E ASSISTENCIA A SAUDE DOS SERVIDORES",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "16707039000183",
+   "nome": "ASSOCIAÇÃO BENEFICENTE DO BRASIL - ABBRA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "GINÁSIO DE ESPORTES GERALDO MAGALHAES - GERALDAO",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "13843100000121",
+   "nome": "ASSOCIAÇÃO CULTURAL DOS CABOCLINHOS DE GOIANA E INDIOS - ACCGI",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE CULTURA",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "11690468000252",
+   "nome": "ASSOCIAÇÃO DOS MORADORES DA ILHA DE SANTA TEREZINHA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE EDUCAÇÃO",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "11690468000171",
+   "nome": "ASSOCIAÇÃO DOS MORADORES DA ILHA SANTA TEREZINHA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE EDUCAÇÃO",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "09055682000104",
+   "nome": "ASSOCIAÇÃO DOS MORADORES DO ALTO DA BELA VISTA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE EDUCAÇÃO",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "00028986000108",
+   "nome": "ATLAS SCHINDLER S/A",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE ADMINISTRAÇÃO",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "02163575001041",
+   "nome": "AUDILINK & CIA. AUDITORES",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "CTTU - AUTARQUIA DE TRÂNSITO E TRANSPORTE URBANO DO RECIFE",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "10791861000199",
+   "nome": "AUTO VIAÇÃO CRUZEIRO LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE EDUCAÇÃO",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "10664513000150",
+   "nome": "BANCO GERADOR S/A",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE FINANÇAS",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "00998573000156",
+   "nome": "BRASIL CAR TRANSPORTE DE VEÍCULOS E LOGÍSTICA LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE SAÚDE",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "04462804000163",
+   "nome": "CHA CINEMATOGRAFICO LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "FUNDO DE INCENTIVO À CULTURA - FIC",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "04539279000137",
+   "nome": "CIENTIFICALAB PRODUTOS LABORATORIAIS E SISTEMAS LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "FUNDO MUNICIPAL DE SAUDE",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "09547728000102",
+   "nome": "CONSORCIO CORDEIRO",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE SANEAMENTO",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "11386434000198",
+   "nome": "CONSORCIO SANEAMENTO DO BEBERIBE - LOTE 1",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE SANEAMENTO",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "13751311000134",
+   "nome": "CONSÓRCIO ABF/ROCHA/SANEA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SANEAR - AUTARQUIA DE SANEAMENTO DO RECIFE",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "17251642000166",
+   "nome": "CONSÓRCIO ENGECONSULT / CONCREMAT",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SANEAR - AUTARQUIA DE SANEAMENTO DO RECIFE",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "24130940000163",
+   "nome": "CRECHE LAR DO GAROTO",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE EDUCAÇÃO",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "06053247000152",
+   "nome": "CSI SERVICE LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE EDUCAÇÃO",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "02189924000456",
+   "nome": "DELLOITE TOUCHE TOHMATSU CONSULTORES LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE ADMINISTRAÇÃO",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "08784188000118",
+   "nome": "ECC- EMPREENDIMENTOS  IMOBILIÁRIOS LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DA MULHER",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "10914745000110",
+   "nome": "ELETRICIDADE DO NORDESTE LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE ADMINISTRAÇÃO",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "12586830000121",
+   "nome": "ESCOLA SUPERIOR DE MAGISTRATURA DE PERNAMBUCO",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "GABINETE DO PREFEITO",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "11307279000177",
+   "nome": "ESCOLAS GRATUITAS DE CRIANÇAS POBRES DE PERNAMBUCO",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE EDUCAÇÃO",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "10847747001539",
+   "nome": "FACULDADE FRANSSINETTI DO RECIFE- FAFIRE",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE EDUCAÇÃO",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "08960601000158",
+   "nome": "FEDERAÇÃO DAS ESCOLAS DE SAMBA DE PERNAMBUCO",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE CULTURA",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "33700956000236",
+   "nome": "FEDERAÇÃO DE ÓRGÃOS PARA ASSISTÊNCIA SOCIAL E EDUCACIONAL.",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DA MULHER",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "09436742000139",
+   "nome": "FEDERAÇÃO PERNAMBUCANA DE CULTURA E MUSCULAÇÃO, EDUCAÇÃO FÍSICA COM PESO.",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "GINÁSIO DE ESPORTES GERALDO MAGALHAES - GERALDAO",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "08723882000125",
+   "nome": "FERNANDO ALENCAR ARQUITETOS ASSOCIADOS LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "GABINETE DO PREFEITO",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "01208705000161",
+   "nome": "FRANCO E FORTES LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE FINANÇAS",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "11869674000143",
+   "nome": "FUNDACAO GILBERTO FREYRE",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE INFRAESTRUTURA",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "00000000000000",
+   "nome": "FUNDACIÓ OMT THEMIS",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE TURISMO E LAZER",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "60555513000190",
+   "nome": "FUNDAÇÃO CARLOS CHAGAS",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE ADMINISTRAÇÃO",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "29527413000100",
+   "nome": "FUNDAÇÃO ROBERTO MARINHO",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE EDUCAÇÃO",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "54956206000119",
+   "nome": "FUNDAÇÃO VICTOR CIVITA - EDITORA ABRIL",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE EDUCAÇÃO",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "43725829000164",
+   "nome": "GESTO ARQUITETURA LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE PLANEJAMENTO URBANO",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "12851516000129",
+   "nome": "GESTTO ASSESSORIA E CONSULTORIA LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE ADMINISTRAÇÃO",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "92559830001658",
+   "nome": "GREEN CARD S/A REFEIÇOES COMERCIO E SERVIÇOS",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "EMPREL - EMPRESA MUNICIPAL DE INFORMÁTICA",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "42035097000118",
+   "nome": "GUARDSECURE SEGURANÇA EMPRESARIAL LTDA.",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "PROCURADORIA GERAL DO MUNICÍPIO",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "01701201000189",
+   "nome": "HSBC BANK BRASIL S/A BANCO MULTIPLO",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE FINANÇAS",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "01674391000192",
+   "nome": "IGREJA BATISTA DA UR-2 - IBURA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE EDUCAÇÃO",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "11320280000131",
+   "nome": "INSTITUTO DE ARQUITETOS DO BRASIL - IAB/PE",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "URB - AUTARQUIA DE URBANIZACAO DO RECIFE",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "10976058000129",
+   "nome": "IRMANDADE DAS ALMAS DO RECIFE",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE EDUCAÇÃO",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "12475980000168",
+   "nome": "JDL ADMINISTRAÇÃO E VENDA DE IMÓVEL LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "FUNDO MUNICIPAL DO MEIO AMBIENTE - FMMA",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "09565690000109",
+   "nome": "JHMW SAÚDE AMBIENTAL LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "AUTARQUIA MUNICIPAL DE PREVIDENCIA E ASSISTENCIA A SAUDE DOS SERVIDORES",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "35177684000186",
+   "nome": "JUVANETE BARRETO FREIRE ME",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "FUNDO MUNICIPAL DE SAUDE",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "57909723000125",
+   "nome": "KOCH TAVARES PROMOÇÕES E EVENTOS LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE TURISMO E LAZER",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "07955535000165",
+   "nome": "LEME CONSULTORIA EM GESTÃO DE RH LTDA - EPP",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE ADMINISTRAÇÃO",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "07316620000183",
+   "nome": "LF EMPREENDIMENTOS E PROJETOS ARQUITETÔNICOS LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "URB - AUTARQUIA DE URBANIZACAO DO RECIFE",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "11180093000108",
+   "nome": "LOPES VALADARES ARQUITETOS ASSOCIADOS",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "EMLURB - AUTARQUIA DE MANUTENÇÃO E LIMPEZA URBANA",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "03651527000174",
+   "nome": "MEGA SERVICE TERCEIRIZAÇÃO DE SERVIÇOS LTDA-EPP",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SANEAR - AUTARQUIA DE SANEAMENTO DO RECIFE",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "07357458000141",
+   "nome": "MORENANA PRODUCOES ARTISTICAS LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE CULTURA",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "11168945000133",
+   "nome": "NASSAU CONSTRUTORA E INCORPORADORA LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "FUNDO MUNICIPAL DE SAUDE",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "11779969000129",
+   "nome": "NE 400 PARTICIPAÇÕES S.A",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "PROCURADORIA GERAL DO MUNICÍPIO",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "02512303000119",
+   "nome": "NOROES, AZEVEDO E ADVOGADOS ASSOCIADOS",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "EMPREL - EMPRESA MUNICIPAL DE INFORMÁTICA",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "20528368000134",
+   "nome": "OC ADMINISTRAÇÃO DE BENS PRÓPRIOS LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE ASSSTÊNCIA SOCIAL E COMBATE À FOME",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "16564682001177",
+   "nome": "OKI BRASIL INDUSTRIA E COMERCIO DE PRODUTOS E TECNOLOGIA EM AUTOMAÇÃO S.",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE FINANÇAS",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "31228836000171",
+   "nome": "ORTOBRAS INDUSTRIA E COMERCIO DE ORTOPEDIA LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE PROJETOS ESPECIAIS",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "01735624000110",
+   "nome": "PARÓQUIA DE SÃO SEBASTIÃO ALTO DO PASCOAL",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE EDUCAÇÃO",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "01709546000189",
+   "nome": "PARÓQUIA DO BOM JESUS DO ARRAIAL",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE EDUCAÇÃO",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "01709560000182",
+   "nome": "PARÓQUIA NOSSA SENHORA DOS REMÉDIOS",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE EDUCAÇÃO",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "05616811000135",
+   "nome": "PLANO QUATRO LTDA-ME",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "EMLURB - AUTARQUIA DE MANUTENÇÃO E LIMPEZA URBANA",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "10994844000159",
+   "nome": "PLENA CONSULTORIA DE INVESTIMENTOS LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "AUTARQUIA MUNICIPAL DE PREVIDENCIA E ASSISTENCIA A SAUDE DOS SERVIDORES",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "09602938000156",
+   "nome": "PLENO IMOBILIÁRIA LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "FUNDO MUNICIPAL DE SAUDE",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "18576685000184",
+   "nome": "PLURI SERVIÇOS LTDA - ME",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE EDUCAÇÃO",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "07989992000170",
+   "nome": "RADICE PRODUÇÕES ARTÍSTICAS E CULTURAIS LIMITADA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE CULTURA",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "09092760000140",
+   "nome": "ROCHA, RAPOSO E ADVOGADOS",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "CTTU - AUTARQUIA DE TRÂNSITO E TRANSPORTE URBANO DO RECIFE",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "12790622000140",
+   "nome": "RODOTUR TURISMO LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE EDUCAÇÃO",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "08068307000136",
+   "nome": "SEMPRE FORT SEGURANÇA PRIVADA LTDA-EPP",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SANEAR - AUTARQUIA DE SANEAMENTO DO RECIFE",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "07098683000100",
+   "nome": "SENSU CONSULTORIA INTERNACIONAL E ESTUDOS AVANÇADOS LTDS",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE FINANÇAS",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "11011178000154",
+   "nome": "SOCIEDADE BENEFICENTE LUTADORES DO BEM",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE EDUCAÇÃO",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "52845203000182",
+   "nome": "SPREAD TELEINFORMÁTICA LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "EMPREL - EMPRESA MUNICIPAL DE INFORMÁTICA",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "08665184000110",
+   "nome": "SUPERFAX COMERCIO E SERVIÇOS LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "GINÁSIO DE ESPORTES GERALDO MAGALHAES - GERALDAO",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "21195755000169",
+   "nome": "UNIVERSIDADE FEDERAL DE JUIZ DE FORA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE EDUCAÇÃO",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "11476564000111",
+   "nome": "VIS-GRAF ENTRETENIMENTOS LTDA -ME",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE TURISMO E LAZER",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "02449992040891",
+   "nome": "VIVO S.A",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "AUTARQUIA MUNICIPAL DE PREVIDENCIA E ASSISTENCIA A SAUDE DOS SERVIDORES",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "59105999000186",
+   "nome": "WHYRLPOOL S/A",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "CONVIVA MERCADOS E FEIRAS - AUTARQUIA MUNICIPAL",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "15019322000150",
+   "nome": "WMD INSTALAÇÕES, MANUTENCAO E PROJETOS ELETRICOS LTDA ME",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "EMLURB - AUTARQUIA DE MANUTENÇÃO E LIMPEZA URBANA",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "04280584000319",
+   "nome": "X - SOLUTION DOC BUREAU LTDA- EPP",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE FINANÇAS",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "05445842000170",
+   "nome": "COMPASSO SOLUCOES EDUCACIONAIS E EDITORA LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE EDUCAÇÃO",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "04922002000199",
+   "nome": "CONSTRUTORA E INCORPORADORA ALMEIDA LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "EMLURB - AUTARQUIA DE MANUTENÇÃO E LIMPEZA URBANA",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "04789337000180",
+   "nome": "TERRATEC AMBIENTAL EMPRENDIMENTOS CONSTRUÇÕES E SERVIÇOS LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "CTTU - AUTARQUIA DE TRÂNSITO E TRANSPORTE URBANO DO RECIFE",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "01699525000120",
+   "nome": "COMMANDERS INDUSTRIA E COMERCIO DE CONFECCOES LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE DESENVOLVIMENTO ECONÔMICO",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "13884414000172",
+   "nome": "EPLOC CONFECÇOES LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE EDUCAÇÃO",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "44216778000108",
+   "nome": "RIVERA MOVEIS INDUSTRIA E COMERCIO LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "EMPREL - EMPRESA MUNICIPAL DE INFORMÁTICA",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "12232767000125",
+   "nome": "CONSULTRAN ENGENHARIA LTDA - EPP",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE PLANEJAMENTO URBANO",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "31240622000110",
+   "nome": "GEOVISTA LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "EMPREL - EMPRESA MUNICIPAL DE INFORMÁTICA",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "54219084000188",
+   "nome": "ALL SPACE PROPAGANDA E MARKETING LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE DESENVOLVIMENTO URBANO E LICENCIAMENTO",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "18552169000110",
+   "nome": "D&I COMÉRCIO DE EQUIPAMENTOS MÉDICOS LTDA.",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "FUNDO MUNICIPAL DE SAUDE",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "01771935000215",
+   "nome": "INGRAM MICRO BRASIL LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "EMPREL - EMPRESA MUNICIPAL DE INFORMÁTICA",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "04860636000164",
+   "nome": "MEDALLIANCE NET LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "AUTARQUIA MUNICIPAL DE PREVIDENCIA E ASSISTENCIA A SAUDE DOS SERVIDORES",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "58295213000178",
+   "nome": "PHILIPS MEDICAL SYSTEMS LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "FUNDO MUNICIPAL DE SAUDE",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "63798490000133",
+   "nome": "LOCAVEL SERVICOS LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "GABINETE DO PREFEITO",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "18899352000196",
+   "nome": "PIL PIL INFORMATICA EIRELI",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE EDUCAÇÃO",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "10966236000130",
+   "nome": "STARFLEX COMERCIO E SERVICOS EIRELI",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE TURISMO E LAZER",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "23154021000167",
+   "nome": "FRATAR ENGENHARIA CONSULTIVA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "CTTU - AUTARQUIA DE TRÂNSITO E TRANSPORTE URBANO DO RECIFE",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "00388601000113",
+   "nome": "IHM-ENGENHARIA E SISTEMAS DE AUTOMAÇÃO LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "EMLURB - AUTARQUIA DE MANUTENÇÃO E LIMPEZA URBANA",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "08103958000110",
+   "nome": "IMTRAFF CONSULTORIA E PROJETOS DE ENGENHARIA LTDA ME",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "CTTU - AUTARQUIA DE TRÂNSITO E TRANSPORTE URBANO DO RECIFE",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "05333907000196",
+   "nome": "IT-ONE TECNOLOGIA DA INFORMACAO S/A",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "EMPREL - EMPRESA MUNICIPAL DE INFORMÁTICA",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "44694277000137",
+   "nome": "MARINA DE OLIVEIRA SENA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "FCCR - FUNDACAO DE CULTURA CIDADE DO RECIFE",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "29283144000184",
+   "nome": "METRICS SERVIÇOS DE CONSULTORIA E ENGENHARIA LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE PROJETOS ESPECIAIS",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "10448802000112",
+   "nome": "PAULO HENRIQUE RAMOS DO COUTO - ME",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE SANEAMENTO",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "11841434000130",
+   "nome": "LIBER  CONSERVACAO & SERVICOS GERAIS LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "CTTU - AUTARQUIA DE TRÂNSITO E TRANSPORTE URBANO DO RECIFE",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "17473920000120",
+   "nome": "JP EQUIPAMENTOS EIRELI",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE TURISMO E LAZER",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "04363019000153",
+   "nome": "ASSOCIACAO NACIONAL DOS PROCURADORES MUNICIPAIS",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "PROCURADORIA GERAL DO MUNICÍPIO",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "03573081000107",
+   "nome": "CAPITAL TECNOLOGIA E EQUIPAMENTOS EIRELI",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE DESENVOLVIMENTO URBANO E LICENCIAMENTO",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "07171299000196",
+   "nome": "CENTRAL IT TECNOLOGIA DA INFORMACAO LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE EDUCAÇÃO",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "01644731000132",
+   "nome": "CTIS TECNOLOGIA LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE EDUCAÇÃO",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "03535902000110",
+   "nome": "DECISION SERVICOS DE TECNOLOGIA DA INFORMACAO LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "EMPREL - EMPRESA MUNICIPAL DE INFORMÁTICA",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "05509289000192",
+   "nome": "FEDERAL VIDA E PREVIDENCIA S/A",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "EMPREL - EMPRESA MUNICIPAL DE INFORMÁTICA",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "09813581000155",
+   "nome": "FORMA OFFICE COMERCIO DE MOVEIS E INTERIORES LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "EMLURB - AUTARQUIA DE MANUTENÇÃO E LIMPEZA URBANA",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "33629473000101",
+   "nome": "INSTITUTO DE ACESSO A EDUCACAO, CAPACITACAO PROFISSIONAL  E DESENVOLVIMENTO HUMANO",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DO TRABALHO E QUALIFICAÇÃO PROFISSIONAL",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "22513518000161",
+   "nome": "INSTITUTO DE DESENVOLVIMENTO INSTITUCIONAL BRASILEIRO",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE EDUCAÇÃO",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "05423963000111",
+   "nome": "OI MOVEL S.A - EM RECUPERAÇÃO JUDICIAL",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE DESENVOLVIMENTO URBANO E LICENCIAMENTO",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "08402531000112",
+   "nome": "SMART PAGAMENTOS E SERVICOS LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE FINANÇAS",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "05207424000145",
+   "nome": "VINICIUS CHAVES DOS SANTOS",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE TURISMO E LAZER",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "37131927000170",
+   "nome": "NORTHWARE COMERCIO E SERVICOS LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE EDUCAÇÃO",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "10552260000123",
+   "nome": "SUAPE MOTOS LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "EMPREL - EMPRESA MUNICIPAL DE INFORMÁTICA",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "18658386000199",
+   "nome": "MARIA L. CAMINHA DA SILVA - ME",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE DESENVOLVIMENTO URBANO E LICENCIAMENTO",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "06039307000182",
+   "nome": "CLAUDIO GOMES DA SILVA  BUFFET ME",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE ADMINISTRAÇÃO",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "05994565000155",
+   "nome": "DU CHEF REFEICOES EIRELI",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "FUNDO MUNICIPAL DO MEIO AMBIENTE - FMMA",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "69958015000163",
+   "nome": "V.C. R. RAMOS EIRELI EPP",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE ORDEM PÚBLICA E SEGURANÇA",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "41079914000177",
+   "nome": "VENTURE NEGOCIOS LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "EMLURB - AUTARQUIA DE MANUTENÇÃO E LIMPEZA URBANA",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "17137941000174",
+   "nome": "COOPERATIVA DE DESENVOLVIMENTO DA AGRICULTURA FAMILIAR DO ESTADO DE PERNAMBUCO",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE EDUCAÇÃO",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "17633219000120",
+   "nome": "FELIPE RANIER CAVALCANTE SILVA - ME",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "CONVIVA MERCADOS E FEIRAS - AUTARQUIA MUNICIPAL",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "09425538000112",
+   "nome": "REALIZE EVENTOS CIENTIFICOS E EDITORA LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE EDUCAÇÃO",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "54551643000152",
+   "nome": "DETERLIMP COMERCIO DE PRODUTOS DE LIMPEZA LTDA - ME",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE ORDEM PÚBLICA E SEGURANÇA",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "03842600000195",
+   "nome": "MR. CORDEIRO COMERCIO DE MOVEIS LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE TURISMO E LAZER",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "08738035000134",
+   "nome": "MAXIMUS ESPORTES COMERCIO LTDA EPP",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE TURISMO E LAZER",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "02059827000104",
+   "nome": "ROSANO TECHNOLOGY INDUSTRIA COMÉRCIO SERVIÇOS EIRELI",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE ORDEM PÚBLICA E SEGURANÇA",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "87252045000131",
+   "nome": "SISPRO S.A SERVICOS E TECNOLOGIA DA INFORMACAO",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE ADMINISTRAÇÃO",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "01508422000135",
+   "nome": "VR DEMOLIDORA LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "URB - AUTARQUIA DE URBANIZACAO DO RECIFE",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "21287707000109",
+   "nome": "PLANALTO TECNOLOGIA LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE DESENVOLVIMENTO URBANO E LICENCIAMENTO",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "54305743001170",
+   "nome": "HPE AUTOMOTORES DO BRASIL LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE EDUCAÇÃO",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "02604236000162",
+   "nome": "LAYOUT MOVEIS PARA ESCRITORIO LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "FUNDO MUNICIPAL DE SAUDE",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "88611835000803",
+   "nome": "MARCOPOLO S/A",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE EDUCAÇÃO",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "06955770000174",
+   "nome": "P&P TURISMO LTDA - EPP",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE EDUCAÇÃO",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "79788766000132",
+   "nome": "BRINK MOBIL EQUIPAMENTOS EDUCACIONAIS LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE EDUCAÇÃO",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "76617927000137",
+   "nome": "RIOLE ELETRÔNICA LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE PROJETOS ESPECIAIS",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "71052559000103",
+   "nome": "BEL MICRO TECNOLOGIA S/A",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "PROMORAR RECIFE",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "17232997000108",
+   "nome": "EASYTECH SERVIÇOS TECNICOS LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "FUNDO MUNICIPAL DE SAUDE",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "10618016000116",
+   "nome": "GERAFORTE GRUPOS GERADORES LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "EMPREL - EMPRESA MUNICIPAL DE INFORMÁTICA",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "06081565000127",
+   "nome": "SANTA JULIA INCORPORADORA E CONSTRUTORA LTDA EPP",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE SAÚDE",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "02635031000144",
+   "nome": "BAUHAUS DO BRASIL LTDA - ME",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "FUNDO MUNICIPAL DE SAUDE",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "00059307000168",
+   "nome": "AGENDA ASSESSORIA,PLANEJAMENTO E INFORMATICA LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE ADMINISTRAÇÃO",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "08469404000130",
+   "nome": "CARLETTO GESTAO DE FROTAS LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE ORDEM PÚBLICA E SEGURANÇA",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "79719613000133",
+   "nome": "EDITORA POSITIVO LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE EDUCAÇÃO",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "04603900000184",
+   "nome": "EKIPSUL COMERCIO DE PRODUTOS E EQUIPAMENTOS LTDA EPP",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE EDUCAÇÃO",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "18434112000116",
+   "nome": "EXATI TECNOLOGIA E DESENVOLVIMENTO DE SISTEMAS LTDA-EPP",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "EMLURB - AUTARQUIA DE MANUTENÇÃO E LIMPEZA URBANA",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "10255350000152",
+   "nome": "FIRST EVOLUTION VIAGENS E TURISMO EIRELI",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE SANEAMENTO",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "23358643000107",
+   "nome": "G F COMERCIO E IMPORTAÇÃO DE EQUIPAMENTOS INDUSTRIAIS LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE TURISMO E LAZER",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "00630985000139",
+   "nome": "INFORMOBILE INDUSTRIA E COMERCIO DE MOVEIS LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE PROJETOS ESPECIAIS",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "13545473000116",
+   "nome": "LUKAUTO COMÉRCIO DE PNEUMÁTICOS E PEÇAS LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE TURISMO E LAZER",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "10762976000155",
+   "nome": "MINUTA COMUNICAÇÃO LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE TURISMO E LAZER",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "84817733000103",
+   "nome": "SAFESYSTEM INFORMATICA S/A",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "EMLURB - AUTARQUIA DE MANUTENÇÃO E LIMPEZA URBANA",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "03336030000161",
+   "nome": "SULAMERICANA ENGENHARIA LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "FCCR - FUNDACAO DE CULTURA CIDADE DO RECIFE",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "79345583000142",
+   "nome": "TELETEX COMPUTADORES E SISTEMAS LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "EMPREL - EMPRESA MUNICIPAL DE INFORMÁTICA",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "07628070000138",
+   "nome": "INDUSTRIA E COMÉRCIO DE COLCHÕES ORTHOVIDA LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE TURISMO E LAZER",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "89237911000140",
+   "nome": "GLOBAL DISTRIBUIÇÃO DE BENS DE CONSUMO LTDA.",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "EMPREL - EMPRESA MUNICIPAL DE INFORMÁTICA",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "03115002000114",
+   "nome": "HEXA SOFT DO BRASIL, COMERCIO, EXPORTAÇÃO E IMPORTAÇÃO LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE EDUCAÇÃO",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "40193257000121",
+   "nome": "AXON ENTERPRISE, INC.",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE ORDEM PÚBLICA E SEGURANÇA",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "23650282000178",
+   "nome": "UNICOBA ENERGIA S/A",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "EMLURB - AUTARQUIA DE MANUTENÇÃO E LIMPEZA URBANA",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "02118629000166",
+   "nome": "A. S. DE J. SOARES & CIA LTDA - ME",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE EDUCAÇÃO",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "00366257000161",
+   "nome": "CADERODE MOVEIS PARA ESCRITORIO LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE TURISMO E LAZER",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "00593959000188",
+   "nome": "AVALISC ENGENHARIA DE AVALIACOES SOCIEDADE SIMPLES LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "URB - AUTARQUIA DE URBANIZACAO DO RECIFE",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "08255393000196",
+   "nome": "FOCO OPINIÃO E MERCADO LTDA EPP",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "AUTARQUIA MUNICIPAL DE PREVIDENCIA E ASSISTENCIA A SAUDE DOS SERVIDORES",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "23375424000136",
+   "nome": "MALLUPY ENTRETENDIMENTO LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "FCCR - FUNDACAO DE CULTURA CIDADE DO RECIFE",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "08689089000157",
+   "nome": "TOCCATO TECNOLOGIA EM SISTEMAS LTDA.",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE PLANEJAMENTO E GESTÃO",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "11828753000106",
+   "nome": "CASABLANCA TURISMO E VIAGENS LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE EDUCAÇÃO",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "14694736000111",
+   "nome": "ROBERTA LAIANA GOMES DE MELO",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE EDUCAÇÃO",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "12410487000160",
+   "nome": "IARA DOS SANTOS CASSANTA - EPP",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE ORDEM PÚBLICA E SEGURANÇA",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "15457406000175",
+   "nome": "EMPORIO COMERCIO E SERVICOS LTDA EPP",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE SAÚDE",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "14246589000117",
+   "nome": "VENEZA DIESEL CAMINHOES E ONIBUS LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE EDUCAÇÃO",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "90051160000152",
+   "nome": "BORTOLONI INDUSTRIA DE MOVEIS LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE EDUCAÇÃO",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "89637490014448",
+   "nome": "KLABIN S.A",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "EMLURB - AUTARQUIA DE MANUTENÇÃO E LIMPEZA URBANA",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "10475898000108",
+   "nome": "HORIZONTE INDUSTRIA E COMERCIO DE TENDAS E TOLDOS LTDA EPP",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE DESENVOLVIMENTO URBANO E LICENCIAMENTO",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "12095200000154",
+   "nome": "J.B.C.M. EQUIPAMENTOS E SISTEMAS LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE EDUCAÇÃO",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "11921270000151",
+   "nome": "JP ENGENHARIA E CONSULTORIA LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "FCCR - FUNDACAO DE CULTURA CIDADE DO RECIFE",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "06068901000100",
+   "nome": "PH PROJETOS E MANUTENCAO ELETRICA LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE TURISMO E LAZER",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "08979527000111",
+   "nome": "RORIZ INSTRUMENTOS MUSICAIS LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE EDUCAÇÃO",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "29887078000151",
+   "nome": "FIBRA DISTRIBUIÇÃO & LOGÍSTICA EIRELI",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE EDUCAÇÃO",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "40876269000150",
+   "nome": "DISTRIBUIDORA DE PRODUTOS AGRESTE MERIDIONAL LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "FCCR - FUNDACAO DE CULTURA CIDADE DO RECIFE",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "49058654000165",
+   "nome": "FLEXFORM INDUSTRIA  E COMERCIO DE MOVEIS LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "EMPREL - EMPRESA MUNICIPAL DE INFORMÁTICA",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "05142588000131",
+   "nome": "TRUCKVAN INDÚSTRIA E COMÉRCIO LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE EDUCAÇÃO",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "72381189001001",
+   "nome": "DELL COMPUTADORES DO BRASIL LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE EDUCAÇÃO",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "72381189000625",
+   "nome": "DELL COMPUTADORES DO BRASIL LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "EMPREL - EMPRESA MUNICIPAL DE INFORMÁTICA",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "22772738000100",
+   "nome": "NICO & BE COMERCIO E SERVICOS LTDA ME",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE TURISMO E LAZER",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "09619475000135",
+   "nome": "ARTESANAL ARTE & RESTAURACOES ARTESANAIS LTDA - ME",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE DESENVOLVIMENTO ECONÔMICO",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "02297736000107",
+   "nome": "CENTAURO SOLUCOES EM IMPRESSOS LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "EMPREL - EMPRESA MUNICIPAL DE INFORMÁTICA",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "41245606000174",
+   "nome": "ENGRENAGEM DE PRODUCAO LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE TURISMO E LAZER",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "10551492000167",
+   "nome": "INSTITUTO BRASILEIRO DE SAUDE E EDUCACAO",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE PLANEJAMENTO URBANO",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "70237961000108",
+   "nome": "K&R II  ESTRUTURAS E SERVICOS EIRELI",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "FCCR - FUNDACAO DE CULTURA CIDADE DO RECIFE",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "12383558000182",
+   "nome": "INNOV SERVIÇOS E COMPUTADORES S/A",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE EDUCAÇÃO",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "04477018000130",
+   "nome": "POLAR INDUSTRIA E COMERCIO DE COLCHOES LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE INFRAESTRUTURA",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "03237583004588",
+   "nome": "COPAGAZ DISTRIBUIDORA DE GÁS LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "FUNDO MUNICIPAL DE ASSISTÊNCIA SOCIAL - FMAS",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "41080722000180",
+   "nome": "DISLUB COMBUSTIVEIS LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "CONVIVA MERCADOS E FEIRAS - AUTARQUIA MUNICIPAL",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "41570418000111",
+   "nome": "HOPCHAT LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "EMPREL - EMPRESA MUNICIPAL DE INFORMÁTICA",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "07879102000178",
+   "nome": "ATLAS EMPREENDIMENTOS LTDA - EPP",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE EDUCAÇÃO",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "07989558000190",
+   "nome": "NATCON CONSTRUÇÕES E SERVIÇO DE MANUTENÇÃO PREDIAL LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "GINÁSIO DE ESPORTES GERALDO MAGALHAES - GERALDAO",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "22172252000130",
+   "nome": "BOHRER EQUIPAMENTOS DE AUDIO E VIDEO EIRELI",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE TURISMO E LAZER",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "21575301000113",
+   "nome": "FIXAR DISTRIBUIDORA DE INSTRUMENTAL, MATERIAIS CIRÚRGICOS E HOSPITALARES LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE TURISMO E LAZER",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "07928776000115",
+   "nome": "HUGO RICARDO NASCIMENTO SILVA EIRELI",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "FUNDO MUNICIPAL DE ASSISTÊNCIA SOCIAL - FMAS",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "11205119000117",
+   "nome": "ARCLIMA ENGENHARIA LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE SAÚDE",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "04891901000171",
+   "nome": "CC ESTRADA CONSTRUTORA LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "EMLURB - AUTARQUIA DE MANUTENÇÃO E LIMPEZA URBANA",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "06964580000113",
+   "nome": "CIAGRO DIESEL COMERCIO DE TRATORES LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "EMLURB - AUTARQUIA DE MANUTENÇÃO E LIMPEZA URBANA",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "04821172000187",
+   "nome": "COSTA & CESAR COMERCIO E SERVICOS DE TECNOLOGIA LTDA EPP",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE DESENVOLVIMENTO URBANO E LICENCIAMENTO",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "08165091000208",
+   "nome": "ECOPESA AMBIENTAL S.A.",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "EMLURB - AUTARQUIA DE MANUTENÇÃO E LIMPEZA URBANA",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "15033536000180",
+   "nome": "J.F DA SILVA SERVIÇOS E LOCAÇÕES ME",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE TURISMO E LAZER",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "07211171000109",
+   "nome": "JOYCE KAREN FRANCISCA DE MELO - ME",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE EDUCAÇÃO",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "01206756000154",
+   "nome": "KC ENGENHARIA EIRELI",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "EMPREL - EMPRESA MUNICIPAL DE INFORMÁTICA",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "02699847000131",
+   "nome": "LACERDA SISTEMAS DE ENERGIA LTDA.",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SANEAR - AUTARQUIA DE SANEAMENTO DO RECIFE",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "02429075000118",
+   "nome": "LIMPADORA DE FOSSAS GUARARAPES LTDA EPP",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE EDUCAÇÃO",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "60619202001209",
+   "nome": "LINDE GASES LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE SAÚDE",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "04023278000135",
+   "nome": "MOMENTO CONSTRUÇÕES E SERVIÇOS LTDA EPP",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "GABINETE DO PREFEITO",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "11555207000149",
+   "nome": "MOV SUPRIMENTOS LTDA ME",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "FUNDO MUNICIPAL DE ASSISTÊNCIA SOCIAL - FMAS",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "22773662000137",
+   "nome": "NFL EMPREENDIMENTOS LTDA - ME",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "EMPREL - EMPRESA MUNICIPAL DE INFORMÁTICA",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "03480539000183",
+   "nome": "SL ENGENHARIA HOSPITALAR LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "FUNDO MUNICIPAL DE SAUDE",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "02293852001030",
+   "nome": "SP ALIMENTAÇÃO E SERVIÇOS LTDA.",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE SAÚDE",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "24062804000183",
+   "nome": "TRANS AGUA LTDA - ME",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "FUNDO MUNICIPAL DE SAUDE",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "11062450000125",
+   "nome": "E M C XAVIER MANUTENCAO DE EXTINTORES - ME",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE EDUCAÇÃO",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "28399030000131",
+   "nome": "INSTITUTO HUMANIZE DE ASSISTÊNCIA E RESPONSABILIDADE SOCIAL",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "FUNDO MUNICIPAL DE SAUDE",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "58069360000120",
+   "nome": "STEFANINI CONSULTORIA E ASSESSORIA EM INFORMATICA S. A.",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "EMPREL - EMPRESA MUNICIPAL DE INFORMÁTICA",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "30430226000517",
+   "nome": "FUTURA CLIMATIZAÇÃO DISTRIBUIDORA COMÉRCIO E SERVICOS LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE ESPORTES",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "70120662000180",
+   "nome": "ATACADAO DOS ELETRODOMESTICOS DO NORDESTE LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "EMLURB - AUTARQUIA DE MANUTENÇÃO E LIMPEZA URBANA",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "41203514000121",
+   "nome": "CONSTRUTORA TORREAO VILLARIM LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE PROJETOS ESPECIAIS",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "66110404001118",
+   "nome": "GLOBAL AR COMERCIO DE REFRIGERACAO LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE MEIO AMBIENTE",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "27564170000155",
+   "nome": "L E A SERVIÇOS E COMÉRCIO DE INSTALAÇÕES E CLIMATIZAÇÃO LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "EMLURB - AUTARQUIA DE MANUTENÇÃO E LIMPEZA URBANA",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "09143181000180",
+   "nome": "NASA NORDESTE ARTEFATOS INDUSTRIA E COMERCIO LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE EDUCAÇÃO",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "07841319000199",
+   "nome": "Y G SERVICOS E COMERCIO DE INFORMATICA LTDA EPP",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "EMLURB - AUTARQUIA DE MANUTENÇÃO E LIMPEZA URBANA",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "44060236000199",
+   "nome": "CONSORCIO SIENERGY",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DO TRABALHO E QUALIFICAÇÃO PROFISSIONAL",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "50954253000172",
+   "nome": "CONSORCIO SINERGY CP 01",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE ADMINISTRAÇÃO",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "05621288000135",
+   "nome": "NOVETECH SOLUÇÕES TECNOLOGICAS LTDA EPP",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "EMPREL - EMPRESA MUNICIPAL DE INFORMÁTICA",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "05378378000147",
+   "nome": "BIOFABRICA MOSCAMED BRASIL",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "FUNDO MUNICIPAL DE SAUDE",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "07605251000149",
+   "nome": "PORTTO ENGENHARIA E PROJETOS LTDA.",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "FCCR - FUNDACAO DE CULTURA CIDADE DO RECIFE",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "44164606000138",
+   "nome": "ERJ ADMINISTRACAO E RESTAURANTES DE EMPRESAS LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE EDUCAÇÃO",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "17882870000134",
+   "nome": "VLC COMERCIO E SERVIÇOS LTDA - ME",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE TURISMO E LAZER",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "10461277000175",
+   "nome": "COMODORO COMERCIAL E NUTRIÇÃO LTDA ME",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "AUTARQUIA MUNICIPAL DE PREVIDENCIA E ASSISTENCIA A SAUDE DOS SERVIDORES",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "10467477000135",
+   "nome": "M G COMERCIO DISTRIBUIDORA E SERVICOS LTDA - ME",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "AUTARQUIA MUNICIPAL DE PREVIDENCIA E ASSISTENCIA A SAUDE DOS SERVIDORES",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "06269827000181",
+   "nome": "CATTA DESENVOLVIMENTO DE PROGRAMAS DE COMPUTADOR LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "EMPREL - EMPRESA MUNICIPAL DE INFORMÁTICA",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "10823219000144",
+   "nome": "ENENGI - EMPRESA NACIONAL DE ENGENHARIA E CONSTRUÇÕES LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE HABITAÇÃO",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "07647251000101",
+   "nome": "ALSCIENCE ENGENHARIA E REPRESENTACOES LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "FUNDO MUNICIPAL DE SAUDE",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "05808812000181",
+   "nome": "SWQUALITY CONSULTORIA E SISTEMAS LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "EMPREL - EMPRESA MUNICIPAL DE INFORMÁTICA",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "10965693000100",
+   "nome": "CS BRASIL TRANSPORTES DE PASSAGEIROS E SERVICOS AMBIENTAIS LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE SANEAMENTO",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "03446400000113",
+   "nome": "CITYLOC CT - LOCACAO DE VEICULOS E SERVICOS LTDA ME",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE ADMINISTRAÇÃO",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "04768377000146",
+   "nome": "COUTICAR LOCACOES DE VEICULOS LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE FINANÇAS",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "15778896000101",
+   "nome": "EDSON LIRA ILUMINAÇÃO LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "EMLURB - AUTARQUIA DE MANUTENÇÃO E LIMPEZA URBANA",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "01611984000100",
+   "nome": "GLOBO LOCADORA DE VEICULOS LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "GABINETE DO PREFEITO",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "01269793000101",
+   "nome": "SOFTMAKER LTDA - ME",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "EMPREL - EMPRESA MUNICIPAL DE INFORMÁTICA",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "19206602000128",
+   "nome": "EXPLORATA PRODUTORA LTDA. - ME",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DA MULHER",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "05120923000109",
+   "nome": "AEROTUR SERVICOS DE VIAGENS LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE FINANÇAS",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "08323347000187",
+   "nome": "CONSTRUTORA A GASPAR S/A",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "URB - AUTARQUIA DE URBANIZACAO DO RECIFE",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "24857520000183",
+   "nome": "GBC EMPREENDIMENTOS E CONSTRUÇÕES",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE INFRAESTRUTURA",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "12801601000182",
+   "nome": "PROTASIO LOCACAO E TURISMO LTDA.",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE ORDEM PÚBLICA E SEGURANÇA",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "10224281000110",
+   "nome": "QUALITEK TECNOLOGIA LTDA ME",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "EMPREL - EMPRESA MUNICIPAL DE INFORMÁTICA",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "04280584000157",
+   "nome": "X - SOLUTION DOC BUREAU LTDA- EPP",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE FINANÇAS",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "04855314000127",
+   "nome": "FULL TEC ENGENHARIA LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE PROJETOS ESPECIAIS",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "18271934000123",
+   "nome": "NOVA BIOMEDICAL DIAGNÓSTICOS MÉDICOS E BIOTECNOLOGIA LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "FUNDO MUNICIPAL DE SAUDE",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "04656779000159",
+   "nome": "ARTEFLEX EQUIPAMENTOS DE PROTECAO INDIVIDUAL LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "EMLURB - AUTARQUIA DE MANUTENÇÃO E LIMPEZA URBANA",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "21416819000104",
+   "nome": "MAZIMUS ENGENHARIA EIRELI ME",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "FUNDO MUNICIPAL DE SAUDE",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "09547727000168",
+   "nome": "ADAS - ENGENHARIA PROJETOS & AVALIACOES LTDA ME",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "CONVIVA MERCADOS E FEIRAS - AUTARQUIA MUNICIPAL",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "03538798000118",
+   "nome": "ALBUQUERQUE BRANDT INCORPORACOES, CONSTRUCOES E SERVICOS LTDA - ME",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE ADMINISTRAÇÃO",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "13497113000196",
+   "nome": "ALVES CORREIA SERVICOS, MANUTENCAO E CONSERVACAO LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "AUTARQUIA MUNICIPAL DE PREVIDENCIA E ASSISTENCIA A SAUDE DOS SERVIDORES",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "07526557002315",
+   "nome": "AMBEV S/A",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE TURISMO E LAZER",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "10789230000135",
+   "nome": "BRENCORP CONSULTORIA, MEIO AMBIENTE E EMPREENDIMENTOS LTDA - EPP",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "EMLURB - AUTARQUIA DE MANUTENÇÃO E LIMPEZA URBANA",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "11932959000181",
+   "nome": "CACOETE PRODUCOES AUDIOVISUAIS E ENTRETENDIMENTO LTDA  - ME",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE TURISMO E LAZER",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "08968268000123",
+   "nome": "CARLOS ROBERTO CAVALCANTE DE SOUZA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE EDUCAÇÃO",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "08359698000148",
+   "nome": "COMTEL ENGENHARIA EIRELI",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE CULTURA",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "05890335000146",
+   "nome": "CRISTIANE DIAS DE ARAUJO  EPP",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "EMLURB - AUTARQUIA DE MANUTENÇÃO E LIMPEZA URBANA",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "35188187000183",
+   "nome": "DEMETRIO ALBUQUERQUE SILVA FILHO",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "EMLURB - AUTARQUIA DE MANUTENÇÃO E LIMPEZA URBANA",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "13328542000130",
+   "nome": "DESTAQUE LOCADORA DE VEÍCULOS LTDA ME",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "EMLURB - AUTARQUIA DE MANUTENÇÃO E LIMPEZA URBANA",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "09636124000132",
+   "nome": "EAL ASSESSORIA E APOIO ADMINISTRATIVO EIRELI",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "URB - AUTARQUIA DE URBANIZACAO DO RECIFE",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "01784754000142",
+   "nome": "ENCRED - EMPRESA  DE TECNOLOGIA DE INFORMAÇÃO LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "FUNDO MUNICIPAL DE ASSISTÊNCIA SOCIAL - FMAS",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "18577811000115",
+   "nome": "F & R EVENTOS LOCACOES E SERVICOS LTDA EPP",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "URB - AUTARQUIA DE URBANIZACAO DO RECIFE",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "24437252000140",
+   "nome": "F. L. MARTINS DE SOUZA DISTRIBUIDORA EPP",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE TURISMO E LAZER",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "11168772000153",
+   "nome": "GEOD-PROJETO CONSULTORIA E TREINAMENTO EM GEOPROCESSAMENTO EIRELI",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE FINANÇAS",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "11146610000114",
+   "nome": "GRAFICA A UNICA LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "FUNDO MUNICIPAL DE ASSISTÊNCIA SOCIAL - FMAS",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "21322290000160",
+   "nome": "INSTITUTO DIVERSIDADE, GÊNERO E EDUCAÇÃO - IDGE",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "FUNDO MUNICIPAL DE ASSISTÊNCIA SOCIAL - FMAS",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "11808559000169",
+   "nome": "INTELIGENCIA SEGURANCA PRIVADA LTDA.",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "EMPREL - EMPRESA MUNICIPAL DE INFORMÁTICA",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "01354321000157",
+   "nome": "INTER LOCAÇOES LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE MEIO AMBIENTE",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "02325995000196",
+   "nome": "J P R CONSTRUCOES LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE DESENVOLVIMENTO URBANO E LICENCIAMENTO",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "08576285000115",
+   "nome": "L O SOARES DE MORAES - ME",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "EMLURB - AUTARQUIA DE MANUTENÇÃO E LIMPEZA URBANA",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "19460359000170",
+   "nome": "LOPES CLIMATIZADORES SERVICOS E REPRESENTAÇÃO LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "CONVIVA MERCADOS E FEIRAS - AUTARQUIA MUNICIPAL",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "08746929000176",
+   "nome": "M ALMEIDA LOCACAO E EVENTOS EIRELI - EPP",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE TURISMO E LAZER",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "11907846000126",
+   "nome": "MEGABAG INDUSTRIA DE BOLSAS LTDA ME",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE INFRAESTRUTURA",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "40870248000128",
+   "nome": "METALURGICA NORDESTINA LTDA - EPP",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "EMLURB - AUTARQUIA DE MANUTENÇÃO E LIMPEZA URBANA",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "01638793000131",
+   "nome": "MULTI SOLUTION TECNOLOGIA LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE ARTICULAÇÃO POLÍTICA E SOCIAL",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "03951168000170",
+   "nome": "NOVO MUNDO COMERCIO DE MATERIAL DE CONSTRUCAO E SERVICOS DE ENGENHARIA LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "EMLURB - AUTARQUIA DE MANUTENÇÃO E LIMPEZA URBANA",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "18869630000162",
+   "nome": "PLANET PRINTER PERNAMBUCO LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "EMPREL - EMPRESA MUNICIPAL DE INFORMÁTICA",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "05678722000113",
+   "nome": "PREMIUS EBENEZER SERVIÇOS EIRELI - EPP",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE SANEAMENTO",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "09024158000176",
+   "nome": "PROMOLOG PROMOÇÕES DE EVENTOS E DISTRIBUIÇÃO DE INFORMATIVOS LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE TURISMO E LAZER",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "15345890000140",
+   "nome": "R & L PRESTACAO DE SERVICOS LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DO TRABALHO E QUALIFICAÇÃO PROFISSIONAL",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "02660441000145",
+   "nome": "RECIVIX INFORMATICA LTDA EPP",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "CONVIVA MERCADOS E FEIRAS - AUTARQUIA MUNICIPAL",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "04866557000160",
+   "nome": "SILTRAN LOGISTICA LTDA EPP",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "FUNDO MUNICIPAL DO MEIO AMBIENTE - FMMA",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "17754123000110",
+   "nome": "TOTAL CLEAN INDUSTRIA E COMERCIO DE PRODUTOS DE LIMPEZA EIRELI",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "FCCR - FUNDACAO DE CULTURA CIDADE DO RECIFE",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "11453909000111",
+   "nome": "TRANSIL TRANSPORTE SILANO LTDA EPP",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE SAÚDE",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "03446513000119",
+   "nome": "UNIVERSO EMPREENDIMENTOS  LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "URB - AUTARQUIA DE URBANIZACAO DO RECIFE",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "04691262000109",
+   "nome": "VELOX CONSTRUCOES E INCORPORACOES LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "URB - AUTARQUIA DE URBANIZACAO DO RECIFE",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "14066558000184",
+   "nome": "W E MONITORAMENTO ELETRÔNICO LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE PLANEJAMENTO URBANO",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "04826609000175",
+   "nome": "COMPUTER MACHINE CONSULTING DEVELOPMENT LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "EMPREL - EMPRESA MUNICIPAL DE INFORMÁTICA",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "18968880000150",
+   "nome": "A1MC PROJETOS LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "EMLURB - AUTARQUIA DE MANUTENÇÃO E LIMPEZA URBANA",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "29955518000160",
+   "nome": "S L DA SILVA INDUSTRIA E COMERCIO DE MOVEIS EIRELI - ME",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE TURISMO E LAZER",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "30180944000159",
+   "nome": "ES COMERCIO DE ELETRODOMESTICOS LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE TURISMO E LAZER",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "00343654000118",
+   "nome": "KONA INDUSTRIA E COMERCIO LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE EDUCAÇÃO",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "58619404000814",
+   "nome": "SEAL TELECOM COMERCIO E SERVICOS DE TELECOMUNICACOES LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE PROJETOS ESPECIAIS",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "22257930000168",
+   "nome": "G O DOS SANTOS CONSTRUCOES LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "EMLURB - AUTARQUIA DE MANUTENÇÃO E LIMPEZA URBANA",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "05050382000181",
+   "nome": "TDC CONSTRUCOES CULTURA E SERVICOS EIRELI - EPP",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE INFRAESTRUTURA",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "00376507000144",
+   "nome": "ABF ENGENHARIA SERVICOS E COMERCIO LTDA EM RECUPERAÇÃO JUDICIAL",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "EMLURB - AUTARQUIA DE MANUTENÇÃO E LIMPEZA URBANA",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "01784481000136",
+   "nome": "AVALIAR ENGENHARIA & EMPREENDIMENTOS LTDA - ME",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "CONVIVA MERCADOS E FEIRAS - AUTARQUIA MUNICIPAL",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "32454335000176",
+   "nome": "DANIELLE C DE M  ROCHA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "EMLURB - AUTARQUIA DE MANUTENÇÃO E LIMPEZA URBANA",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "11338726000155",
+   "nome": "ESPACO 254 EVENTOS LOCACAO E ARRENDAMENTO LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE ESPORTES",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "24271454000165",
+   "nome": "FACO RECUPERACAO E LOCACAO LTDA EPP",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE EDUCAÇÃO",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "11071174000161",
+   "nome": "FJW EMPRESARIAL LTDA - ME",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE INFRAESTRUTURA",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "07185730000153",
+   "nome": "GDM EMPREENDIMENTOS E SERVICOS LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE ADMINISTRAÇÃO",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "13185781000188",
+   "nome": "HJ COMERCIO LTDA - ME",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "FUNDO MUNICIPAL DE SAUDE",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "06272575004803",
+   "nome": "LAVEBRAS GESTAO DE TEXTEIS S.A",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "FUNDO MUNICIPAL DE SAUDE",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "10805893000104",
+   "nome": "LEON HEIMER S/A",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE ADMINISTRAÇÃO",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "17679352000118",
+   "nome": "PROEX CONSTRUCAO E SERVICOS EIRELI",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE ADMINISTRAÇÃO",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "09011551000125",
+   "nome": "RDX GESTAO E HIGIENIZACAO TEXTIL LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE SAÚDE",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "00446627000170",
+   "nome": "REAL MIX COMERCIO VAREJISTA LTDA - EPP",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE ASSSTÊNCIA SOCIAL E COMBATE À FOME",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "06257346000156",
+   "nome": "SAAG SERVICOS DE ASSESSORIA E ADMINISTRACAO LTDA EPP",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "GINÁSIO DE ESPORTES GERALDO MAGALHAES - GERALDAO",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "00824311000175",
+   "nome": "SERVICAR LOCADORA EIRELI - EPP",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE TURISMO E LAZER",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "01372302000153",
+   "nome": "SIRIUS CONSTRUCOES COMERCIO E REPRESENTACOS LTDA EPP",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "EMLURB - AUTARQUIA DE MANUTENÇÃO E LIMPEZA URBANA",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "05562351000100",
+   "nome": "STAFF ASSESSORIA EMPRESARIAL, EMPREENDIMENTOS E SERVICOS LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE HABITAÇÃO",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "03311116000130",
+   "nome": "TCI BPO - TECNOLOGIA DO CONHECIMENTO E INFORMAÇÃO LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "AUTARQUIA MUNICIPAL DE PREVIDENCIA E ASSISTENCIA A SAUDE DOS SERVIDORES",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "05473496000134",
+   "nome": "VIZIR ENGENHARIA LTDA - EPP",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "EMLURB - AUTARQUIA DE MANUTENÇÃO E LIMPEZA URBANA",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "02357251000153",
+   "nome": "LIFEMED INDUSTRIAL DE EQUIPAMENTOS E ARTIGOS MEDICOS E HOPITALARES S/A",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "FUNDO MUNICIPAL DE SAUDE",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "42035097000207",
+   "nome": "GUARDSECURE SEGURANCA EMPRESARIAL LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "AUTARQUIA MUNICIPAL DE PREVIDENCIA E ASSISTENCIA A SAUDE DOS SERVIDORES",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "00710799000100",
+   "nome": "ALLEN RIO SERVIÇO  E COMERCIO DE PRODUTOS DE INFORMATICA LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "EMPREL - EMPRESA MUNICIPAL DE INFORMÁTICA",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "01933257000169",
+   "nome": "FUTURE TECHNOLOGIES INFORMATICA LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "EMPREL - EMPRESA MUNICIPAL DE INFORMÁTICA",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "07953689000118",
+   "nome": "FAGUNDEZ DISTRIBUIÇÃO LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "EMPREL - EMPRESA MUNICIPAL DE INFORMÁTICA",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "57142978000105",
+   "nome": "BRASOFTWARE INFORMÁTICA LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "EMPREL - EMPRESA MUNICIPAL DE INFORMÁTICA",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "01181521000155",
+   "nome": "BANCO COOPERATIVO SINCREDI S.A",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE FINANÇAS",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "10651441000107",
+   "nome": "GRÁFICA CS EIRELI EPP",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE DESENVOLVIMENTO ECONÔMICO",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "80170897000130",
+   "nome": "TECNOFLEX INDUSTRIA E COMERCIO DO MOBILIARIO LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "EMPREL - EMPRESA MUNICIPAL DE INFORMÁTICA",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "20198694000120",
+   "nome": "FRANCK GONCALVES PEREIRA EIRELI",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE HABITAÇÃO",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "11126361000103",
+   "nome": "2G TURISMO E EVENTOS LTDA EPP",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE TURISMO E LAZER",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "45064898000108",
+   "nome": "45.064.898 ANDRESA BEZERRA DE SANTANA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "FUNDO DE INCENTIVO À CULTURA - FIC",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "45639378000178",
+   "nome": "45.639.378 TAINA MOEMA ESPINDOLA DE SOUZA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "FUNDO DE INCENTIVO À CULTURA - FIC",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "49691273000119",
+   "nome": "49.691.273 JANAINA GUEDES MONTEIRO EVANGELISTA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "FUNDO DE INCENTIVO À CULTURA - FIC",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "19532136000170",
+   "nome": "5 A. M. COMUNICACAO LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "GABINETE DE IMPRENSA",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "08184364000180",
+   "nome": "A M JUNIOR COMERCIO DE ARTIGOS DE COURO LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE INFRAESTRUTURA",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "10811313000183",
+   "nome": "A. MANOEL SILVA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "CTTU - AUTARQUIA DE TRÂNSITO E TRANSPORTE URBANO DO RECIFE",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "08966334000126",
+   "nome": "ACESSE SERVIÇOS DE MAO DE OBRA E INFORMATICA EIRELI",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "CTTU - AUTARQUIA DE TRÂNSITO E TRANSPORTE URBANO DO RECIFE",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "10793836000144",
+   "nome": "ACM DISTRIBUIDORA E COMERCIO DE BEBIDAS LTDA - EPP",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE EDUCAÇÃO",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "06983851000188",
+   "nome": "ACR COMERCIAL LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "CTTU - AUTARQUIA DE TRÂNSITO E TRANSPORTE URBANO DO RECIFE",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "08745465000183",
+   "nome": "AGEMAR TRANSPORTES E EMPREENDIMENTOS LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE PLANEJAMENTO URBANO",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "30275520000178",
+   "nome": "AGENCIA DE COMUNICACAO DO CAPIBARIBE S/A",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "EMLURB - AUTARQUIA DE MANUTENÇÃO E LIMPEZA URBANA",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "15323475000196",
+   "nome": "AKAROA ENGENHARIA LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE PROJETOS ESPECIAIS",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "21936556000164",
+   "nome": "ALCIO SOARES LINS 89150678434",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "FUNDO DE INCENTIVO À CULTURA - FIC",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "31869166000172",
+   "nome": "AMF OUTSOURCING EM IMPRESSAO LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "AUTARQUIA MUNICIPAL DE PREVIDENCIA E ASSISTENCIA A SAUDE DOS SERVIDORES",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "09253129000186",
+   "nome": "ANA CATARINA FERREIRA TAVARES",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "AUTARQUIA MUNICIPAL DE PREVIDENCIA E ASSISTENCIA A SAUDE DOS SERVIDORES",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "08537109000174",
+   "nome": "ANDERSON SOARES DA SILVA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "EMLURB - AUTARQUIA DE MANUTENÇÃO E LIMPEZA URBANA",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "09295878000176",
+   "nome": "ANTARES COMUNICACAO E REPRESENTACOES LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE ARTICULAÇÃO POLÍTICA E SOCIAL",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "09003609000199",
+   "nome": "ANTARTIDA REFRIGERACAO LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "FUNDO MUNICIPAL DE SAUDE",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "18594480000121",
+   "nome": "ARAUJO E CASTRO ADVOGADOS",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "EMLURB - AUTARQUIA DE MANUTENÇÃO E LIMPEZA URBANA",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "11497369000178",
+   "nome": "ARRECIFES NEGOCIOS IMOBILIARIOS LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "FUNDO MUNICIPAL DE SAUDE",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "00950165000124",
+   "nome": "ARTE PLENNA LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE INFRAESTRUTURA",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "10875292000240",
+   "nome": "ASSOCIACAO CRISTA FEMININA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE EDUCAÇÃO",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "50483907000127",
+   "nome": "ASSOCIACAO CULTURAL QUADRILHA JUNINA ARROCHA O NO",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "FCCR - FUNDACAO DE CULTURA CIDADE DO RECIFE",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "35067794000195",
+   "nome": "ASSOCIACAO DOS AMIGOS DE MERCADO DA BOA VISTA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "FUNDO DE INCENTIVO À CULTURA - FIC",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "09543610000106",
+   "nome": "ASSOCIACAO PARA O DESENVOLVIMENTO ECONOMICO, PROJETOS E PESQUISAS",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "FUNDO DE INCENTIVO À CULTURA - FIC",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "10847762000181",
+   "nome": "ASSOCIAÇÃO DAS RELIGIOSAS DA INSTRUÇÃO CRISTÃ",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE EDUCAÇÃO",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "05774391000115",
+   "nome": "ASSOCIAÇÃO INSTITUTO DE TECNOLOGIA DE PERNAMBUCO - ITEP/OS",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE INFRAESTRUTURA",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "13753226000105",
+   "nome": "ATLANTA COMÉRCIO E SERVIÇOS, IMPORTAÇÃO E EXPORTAÇÃO LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "CTTU - AUTARQUIA DE TRÂNSITO E TRANSPORTE URBANO DO RECIFE",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "29393377000130",
+   "nome": "ATMOSFERA COMERCIO DE GASES EIRELI - EPP",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "FUNDO MUNICIPAL DE SAUDE",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "12406462000192",
+   "nome": "AUTO STOP CENTRO AUTOMOTIVO LTDA - ME",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE ASSSTÊNCIA SOCIAL E COMBATE À FOME",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "07644650000119",
+   "nome": "AVALON COMERCIO DE DESCARTAVEL E REPRESENTACOES EIRELI EPP",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE TURISMO E LAZER",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "24128415000103",
+   "nome": "AVELLAR FERNANDES MONTEZUMA ARQUITETOS ASSOCIADOS LTDA - EPP",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "GABINETE DO PREFEITO",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "20975997000102",
+   "nome": "AWG ENGENHARIA LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE EDUCAÇÃO",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "36941294000101",
+   "nome": "AXON ENTERPRISE INC",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE ORDEM PÚBLICA E SEGURANÇA",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "03360735000114",
+   "nome": "B. V. DESIGN\\\\''S LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "EMLURB - AUTARQUIA DE MANUTENÇÃO E LIMPEZA URBANA",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "10770655000100",
+   "nome": "BEMIND TECNOLOGIA DA INFORMACAO LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "EMPREL - EMPRESA MUNICIPAL DE INFORMÁTICA",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "06179795000123",
+   "nome": "BETANIA MARIA MELO DA SILVA - ME",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE ADMINISTRAÇÃO",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "30053158000190",
+   "nome": "BIANCA CARNEIRO LEAO PIMENTEL 03782658493",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "FUNDO DE INCENTIVO À CULTURA - FIC",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "05105357000158",
+   "nome": "BIZASOM LOCACAO E SERVICOS DE SOM E LUZ LTDA EPP",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "FCCR - FUNDACAO DE CULTURA CIDADE DO RECIFE",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "02668797000125",
+   "nome": "BRASIL GESTAO DE DADOS, INFORMACOES E DOCUMENTOS LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "AUTARQUIA MUNICIPAL DE PREVIDENCIA E ASSISTENCIA A SAUDE DOS SERVIDORES",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "10775233000110",
+   "nome": "BRENO J. DE A. RODRIGUES COPIADORA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE EDUCAÇÃO",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "14054309000179",
+   "nome": "BRITO & MELO INCORPORACOES LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE ESPORTES",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "27267032000104",
+   "nome": "BSI - BRASIL SOLUCOES INTELIGENTES LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE TURISMO E LAZER",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "11322415000106",
+   "nome": "C MEDEIROS LOCADORA LTDA  ME",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "CTTU - AUTARQUIA DE TRÂNSITO E TRANSPORTE URBANO DO RECIFE",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "09095209000150",
+   "nome": "C T S CONSTRUTORA T SERGIO LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "URB - AUTARQUIA DE URBANIZACAO DO RECIFE",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "30947418000171",
+   "nome": "C3A CONTABILIDADE & CONSULTORIA EIRELI",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE SANEAMENTO",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "03330089000142",
+   "nome": "CABANA CONSTRUCOES LTDA EPP",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "EMLURB - AUTARQUIA DE MANUTENÇÃO E LIMPEZA URBANA",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "12862545000196",
+   "nome": "CARLNASC ENGENHARIA CLINICA LTDA ME",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "FUNDO MUNICIPAL DE SAUDE",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "25425945000186",
+   "nome": "CASA DE CINEMA DE OLINDA LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "FUNDO DE INCENTIVO À CULTURA - FIC",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "07694626000194",
+   "nome": "CASA DE FARINHA S/A",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE EDUCAÇÃO",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "12398958000161",
+   "nome": "CATENNAIMAGE",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE DESENVOLVIMENTO URBANO E LICENCIAMENTO",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "11515970000146",
+   "nome": "CENTRO DE ESTUDOS E PESQUISAS JOSUE DE CASTRO",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE PLANEJAMENTO URBANO",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "08174328000136",
+   "nome": "CENTRO EVANG DE REABILITAÇÃO E TREINAMENTO OCUPACIONAL - CERTO",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "GINÁSIO DE ESPORTES GERALDO MAGALHAES - GERALDAO",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "01774651000100",
+   "nome": "CLARICE E LARISSA VIAGENS E TURISMO LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE SAÚDE",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "04101136000149",
+   "nome": "CMTECH COMERCIO & SERVICOS DE INFORMATICA LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE TURISMO E LAZER",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "12854865000102",
+   "nome": "COELHO DE  ANDRADE ENGENHARIA LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "EMLURB - AUTARQUIA DE MANUTENÇÃO E LIMPEZA URBANA",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "08411349000128",
+   "nome": "COMMODITY TRANSPORTES E SERVICOS LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE HABITAÇÃO",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "33054826000192",
+   "nome": "COMPANHIA EXCELSIOR DE SEGUROS",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE CULTURA",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "07738830000160",
+   "nome": "CONFIG ENGENHARIA LTDA-ME",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE TURISMO E LAZER",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "69936730000103",
+   "nome": "CONLURB - CONSTRUCOES E LIMPEZA URBANA LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE DESENVOLVIMENTO URBANO E LICENCIAMENTO",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "06262582000160",
+   "nome": "CONSECOM - CONSTRUCOES SERVICOS E COMERCIO LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "EMLURB - AUTARQUIA DE MANUTENÇÃO E LIMPEZA URBANA",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "25902538000112",
+   "nome": "CONSORCIO DIAGONAL - FACTTA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE PLANEJAMENTO URBANO",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "47256269000105",
+   "nome": "CONSORCIO MAIA MELO-ENGECONSULT-NOVA ENGEVIX",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE PROJETOS ESPECIAIS",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "14697042000138",
+   "nome": "CONSORCIO MULTICONECTADO",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "EMPREL - EMPRESA MUNICIPAL DE INFORMÁTICA",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "47490579000181",
+   "nome": "CONSORCIO TPF-COLMEIA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE PROJETOS ESPECIAIS",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "11868307000125",
+   "nome": "CONSTRUCON CONSTRUCOES E CONSULTORIA EIRELI",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "CTTU - AUTARQUIA DE TRÂNSITO E TRANSPORTE URBANO DO RECIFE",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "00758756000102",
+   "nome": "CONSTRUTORA ANCAR LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "EMLURB - AUTARQUIA DE MANUTENÇÃO E LIMPEZA URBANA",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "07468034000154",
+   "nome": "CONSTRUTORA ASSIS LOPES LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "CONVIVA MERCADOS E FEIRAS - AUTARQUIA MUNICIPAL",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "11099474000159",
+   "nome": "CONSULTEC - PROJETOS E CONSULTORIA LTDA EPP",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "URB - AUTARQUIA DE URBANIZACAO DO RECIFE",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "10989432000120",
+   "nome": "CONTÉCNICA CONSULTORIA E PLANEJAMENTO LTDA - EPP",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "GABINETE DO PREFEITO",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "11019783000171",
+   "nome": "COPALA - ARTIGOS INDUSTRIAIS LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DA MULHER",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "03599375000108",
+   "nome": "CORDEIRO, FALCÃO & LOMACHINSKY PROJETOS E CONSTRUÇÕES LTDA - EPP",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE TURISMO E LAZER",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "04506139000162",
+   "nome": "CORINTHO ENGENHARIA LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "CONVIVA MERCADOS E FEIRAS - AUTARQUIA MUNICIPAL",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "10362933000182",
+   "nome": "CPTEC SOLUCOES EM TECNOLOGIA DA INFORMACAO LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "EMPREL - EMPRESA MUNICIPAL DE INFORMÁTICA",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "12006372000104",
+   "nome": "CÓPIA RÁPIDA SERVIÇOS GRÁFICOS E PAPELARIA EIRELI",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "CONVIVA MERCADOS E FEIRAS - AUTARQUIA MUNICIPAL",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "06102376000193",
+   "nome": "DATASAFEIT SOLUCOES EM TECNOLOGIA LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "EMPREL - EMPRESA MUNICIPAL DE INFORMÁTICA",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "03535902000706",
+   "nome": "DECISION SERVIÇOS DE TECNOLOGIA DA INFORMAÇÃO LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "EMPREL - EMPRESA MUNICIPAL DE INFORMÁTICA",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "08007785000136",
+   "nome": "DECK EMPREENDIMENTOS E LOCACOES LTDA ME",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE ARTICULAÇÃO POLÍTICA E SOCIAL",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "11202551000154",
+   "nome": "DENKER CONSULTORES ASSOCIADOS LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "EMLURB - AUTARQUIA DE MANUTENÇÃO E LIMPEZA URBANA",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "01663476000175",
+   "nome": "DHF ENGENHARIA LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE EDUCAÇÃO",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "06002195000195",
+   "nome": "DIAS ENGENHARIA E CONSTRUCÕES LTDA EPP",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE EDUCAÇÃO",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "22619927000147",
+   "nome": "DIGITALSEG SEGURANCA ELETRONICA EIRELI",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "AUTARQUIA MUNICIPAL DE PREVIDENCIA E ASSISTENCIA A SAUDE DOS SERVIDORES",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "07608803000172",
+   "nome": "DINAMICA PRODUTOS PARA A SAUDE E REPRESENTACOES LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "FUNDO MUNICIPAL DE SAUDE",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "02535040000163",
+   "nome": "DP-PAR PARTICIPACAO INVESTIMENTOS E SERVICOS S.A.",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE EDUCAÇÃO",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "11749513000116",
+   "nome": "DTI SOLUÇÕES EMPRESARIAIS LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE INFRAESTRUTURA",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "07416434000116",
+   "nome": "ECOSERV GESTAO DE MAO DE OBRA EIRELI",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE DESENVOLVIMENTO URBANO E LICENCIAMENTO",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "01438080000124",
+   "nome": "EDNILSON PINHO DE MIRANDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "EMLURB - AUTARQUIA DE MANUTENÇÃO E LIMPEZA URBANA",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "47734361000125",
+   "nome": "ELETROMIDIA REC CONCESSIONARIA DE MOBILIARIO URBANO SPE S.A.",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE DESENVOLVIMENTO URBANO E LICENCIAMENTO",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "29739737000706",
+   "nome": "ELEVADORES OTIS LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE CULTURA",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "27807483000197",
+   "nome": "ELLAN PRICILIO ALVES BARRETO 01802809457",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "FUNDO DE INCENTIVO À CULTURA - FIC",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "10809473000198",
+   "nome": "EMPRESA CONSTRUTORA CAMILLO COLLIER LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "EMLURB - AUTARQUIA DE MANUTENÇÃO E LIMPEZA URBANA",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "02416742000128",
+   "nome": "ENGEMAR CONSTRUCOES SERVICOS LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE SAÚDE",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "19795706000115",
+   "nome": "ENOVE ENGENHARIA, COMERCIO DE MATERIAS ELETRICOS E ENERGIAS RENOVAVEIS LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE EDUCAÇÃO",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "09092617000159",
+   "nome": "ERGO HUMANO ERGONOMIA E DESENVOLVIMENTO EDUCACIONAL LTDA - ME",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "FUNDO MUNICIPAL DE SAUDE",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "43679907000131",
+   "nome": "ES ASSESSORIA E CONSULTORIA CONTABIL LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE SANEAMENTO",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "28037153000122",
+   "nome": "ESTELITA PRODUCOES ARTISTICAS E CULTURAIS EIRELI",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "FUNDO DE INCENTIVO À CULTURA - FIC",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "31859914000136",
+   "nome": "ESTUDIO ORRA PRODUTORA DE AUDIOVISUAL LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "FUNDO DE INCENTIVO À CULTURA - FIC",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "07027330000110",
+   "nome": "ETAP EMPRESA TECNICA EM ALIMENTOS POPULAR LTDA ME",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "EMLURB - AUTARQUIA DE MANUTENÇÃO E LIMPEZA URBANA",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "11965860000186",
+   "nome": "ETI-EMPRESA DE TECNOLOGIA EM INFORMATICA LTDA - EPP",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE ADMINISTRAÇÃO",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "00448042000190",
+   "nome": "ETON  EMPRESA TECNICA OPERACIONAL DO NORDESTE EIRELI",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SANEAR - AUTARQUIA DE SANEAMENTO DO RECIFE",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "13174059000148",
+   "nome": "EVERTON LOPES DE LIMA 72034351487",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "FUNDO DE INCENTIVO À CULTURA - FIC",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "14139773000168",
+   "nome": "EXTREME DIGITAL CONSULTORIA E REPRESENTACOES LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "EMPREL - EMPRESA MUNICIPAL DE INFORMÁTICA",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "15245413000103",
+   "nome": "FAB LAB RECIFE LTDA - ME",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE EDUCAÇÃO",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "02940168000102",
+   "nome": "FCA TECNOLOGIA DE INFORMACAO LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE FINANÇAS",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "08030694000111",
+   "nome": "FEDERAÇÃO DOS CÍRCULOS OPERÁRIOS DE PERNAMBUCO",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DA MULHER",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "10673010000141",
+   "nome": "FENIX MERCANTIL INCORPORADORA E TERCEIRIZACAO EIRELI ME",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "GABINETE DE COMUNICAÇÃO",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "15094662000145",
+   "nome": "FILE SOLUCOES EM GESTAO DE INFORMACAO EIRELI",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE TURISMO E LAZER",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "10565117000176",
+   "nome": "FINK ENGENHARIA LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "EMLURB - AUTARQUIA DE MANUTENÇÃO E LIMPEZA URBANA",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "70081773000125",
+   "nome": "FK ENGENHARIA E SERVICOS LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "EMLURB - AUTARQUIA DE MANUTENÇÃO E LIMPEZA URBANA",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "30531122000175",
+   "nome": "FOCO PROJETOS EDUCACIONAIS E COMERCIO VAREJISTA DE MOVEIS EIRELI",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE TURISMO E LAZER",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "19429587000187",
+   "nome": "FRAGOSO CAVALCANTI E MELO LTDA ME",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE TURISMO E LAZER",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "06369865000106",
+   "nome": "FRANCINEUDO MOREIRA DE FARIAS - ME",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE TURISMO E LAZER",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "22809027000162",
+   "nome": "FREDERICO DE ARRUDA SANTOS 76969959449",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "FUNDO DE INCENTIVO À CULTURA - FIC",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "01066905000127",
+   "nome": "FUNDACAO COMISSAO DE TURISMO INTEGRADO DO NORDESTE",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE TURISMO E LAZER",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "28226753000139",
+   "nome": "FUNDAMENTAL SUPRIMENTOS INDUSTRIAIS LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE INFRAESTRUTURA",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "20327872000176",
+   "nome": "FUSION SOFTWARE E SERVICOS S/A",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "EMPREL - EMPRESA MUNICIPAL DE INFORMÁTICA",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "20672906000160",
+   "nome": "G H B ALBUQUERQUE & CIA LTDA ME",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "EMLURB - AUTARQUIA DE MANUTENÇÃO E LIMPEZA URBANA",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "06265064000109",
+   "nome": "G M QUALITY COMERCIO LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE EDUCAÇÃO",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "02606231000179",
+   "nome": "G3 COMERCIO E SISTEMAS LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "EMPREL - EMPRESA MUNICIPAL DE INFORMÁTICA",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "17542197000193",
+   "nome": "GARGULA PRODUÇÕES E EMPREENDIMENTOS CULTURAIS LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "FUNDO DE INCENTIVO À CULTURA - FIC",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "01148359000173",
+   "nome": "GECINEIDE BATISTA ALBUQUERQUE ESPINDOLA ME",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "CTTU - AUTARQUIA DE TRÂNSITO E TRANSPORTE URBANO DO RECIFE",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "15289250000160",
+   "nome": "GEOMETRIE PROJETOS E SERVIÇOS DE URBANISMO E ARQUITETURA LTDA.",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "CONVIVA MERCADOS E FEIRAS - AUTARQUIA MUNICIPAL",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "14167017000142",
+   "nome": "GERAMAIS LOCACAO DE GERADORES LTDA - EPP",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "FUNDO MUNICIPAL DE SAUDE",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "11350571000172",
+   "nome": "GLE EMPREENDIMENTOS LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "FUNDO MUNICIPAL DE SAUDE",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "03228052000108",
+   "nome": "GR PROJETOS E EMPREENDIMENTOS IMOBILIARIOS LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE DESENVOLVIMENTO URBANO E LICENCIAMENTO",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "02931195000119",
+   "nome": "GUIMARAES E ALBUQUERQUE ENGENHARIA LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "EMLURB - AUTARQUIA DE MANUTENÇÃO E LIMPEZA URBANA",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "40892606000101",
+   "nome": "GUSMÃO ENGNEHRIROS ASSOCIADOS LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "EMLURB - AUTARQUIA DE MANUTENÇÃO E LIMPEZA URBANA",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "42382510000110",
+   "nome": "H & R CONSULTORIA PROJETOS E INSTALAÇÕES LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE ADMINISTRAÇÃO",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "12272426000183",
+   "nome": "HARPIA CONSTRUCAO, COMERCIO E SERVICOS EIRELI EPP",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE EDUCAÇÃO",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "03980383000108",
+   "nome": "HERTUR VIAGENS E TURISMO LTDA - EPP",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE ARTICULAÇÃO POLÍTICA E SOCIAL",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "01144483000160",
+   "nome": "HUMBERTO ZIRPOLI ARQUITETURA E COMERCIO LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "GABINETE DO PREFEITO",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "67423152000763",
+   "nome": "IBG INDUSTRIA BRASILEIRA DE GASES LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE SAÚDE",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "33372251008564",
+   "nome": "IBM  BRASIL INDUSTRIA  MAQUINAS E SERVICOS LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "EMPREL - EMPRESA MUNICIPAL DE INFORMÁTICA",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "10491289000142",
+   "nome": "ICONE CONSTRUÇÕES E PROJETOS LTDA - ME",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SANEAR - AUTARQUIA DE SANEAMENTO DO RECIFE",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "10461401000100",
+   "nome": "ID S/A TECNOLOGIA DE IDENTIFICACAO",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE ADMINISTRAÇÃO",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "20871242000168",
+   "nome": "IDAS-INSTITUTO DE DESENVOLVIMENTO SOCIAL E INOVACAO LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "EMPREL - EMPRESA MUNICIPAL DE INFORMÁTICA",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "19541959000162",
+   "nome": "INDK.ME - DESENVOLVIMENTO WEB E MOBILE LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "EMPREL - EMPRESA MUNICIPAL DE INFORMÁTICA",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "07675055000140",
+   "nome": "INHALT SOLUCOES EM INFORMATICA LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE MEIO AMBIENTE",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "06260394000101",
+   "nome": "INNOVA DIAGNOSTICA COMERCIO E REPRESENTAÇÕES EIRELI",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "FUNDO MUNICIPAL DE SAUDE",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "04419936000102",
+   "nome": "INSTITUTO 12 DE MARÇO - RECIFE CONVENTION & VISITORS BUREAU",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE TURISMO E LAZER",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "06058324000167",
+   "nome": "INSTITUTO DE APOIO A GESTAO ESTUDOS PESQUISAS E PRESERVACAO AMBIENTAL - MONA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "GINÁSIO DE ESPORTES GERALDO MAGALHAES - GERALDAO",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "04393475000146",
+   "nome": "INSTITUTO DE DESENVOLVIMENTO E GESTAO - IDG",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE TURISMO E LAZER",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "03108435000142",
+   "nome": "INSTITUTO DE EDUCACAO SAUDE TRABALHO E MEIO AMBIENTE - INEST",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "EMPREL - EMPRESA MUNICIPAL DE INFORMÁTICA",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "08618483000102",
+   "nome": "INSTITUTO DE FOMENTO AO DESENVOLVIMENTO SOCIAL E PRODUTIVO DO NORDESTE",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE EDUCAÇÃO",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "11000361000154",
+   "nome": "INSTITUTO EUVALDO LODI NUCLEO REGIONAL DE PERNAMBUCO",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE TURISMO E LAZER",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "09340786000160",
+   "nome": "INSTITUTO PONTE DO DESENVOLVIMENTO - IPD",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE PLANEJAMENTO URBANO",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "05989692000166",
+   "nome": "INSTITUTO SER EDUCACIONAL",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE ESPORTES",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "07432348000105",
+   "nome": "IPSID - INSTITUTO DE PESQUISA EM SISTEMAS DE INFORMACAO E DECISAO",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE ADMINISTRAÇÃO",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "13702850000183",
+   "nome": "IRIS LIMA DE MACEDO PROJETOS",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "FUNDO DE INCENTIVO À CULTURA - FIC",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "13574746000150",
+   "nome": "IRIS TECNOLOGIA DA INFORMAÇÃO LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "GABINETE DE IMPRENSA",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "33119853000104",
+   "nome": "ITEC PRODUCAO AUDIOVISUAL E PROPAGANDA LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE INFRAESTRUTURA",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "08878019000147",
+   "nome": "J A G EMPREENDIMENTOS LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE EDUCAÇÃO",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "08092231000184",
+   "nome": "J P COMÉRCIO REPRESENTAÇÕES E SERVIÇOS LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "EMPREL - EMPRESA MUNICIPAL DE INFORMÁTICA",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "07791217000106",
+   "nome": "J P LOGISTICA LTDA EPP",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE INFRAESTRUTURA",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "02731208000106",
+   "nome": "JACIL SERVIÇOS DE ENGENHARIA LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE SAÚDE",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "22951384000160",
+   "nome": "JAIRO BARBOSA SERVIÇOS DE ENGENHARIA EIRELI-EPP",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE SANEAMENTO",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "11982004000139",
+   "nome": "JEFFERSON LOVIS GOMES DE ALBUQUERQUE",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SANEAR - AUTARQUIA DE SANEAMENTO DO RECIFE",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "10265998000100",
+   "nome": "JERRU COMERCIO E SERVICOS DE CONSULTORIA EMPRESARIAL LTDA ME",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE TURISMO E LAZER",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "10449384000188",
+   "nome": "JFG AUDITORES E CONSULTORES S/S",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "EMLURB - AUTARQUIA DE MANUTENÇÃO E LIMPEZA URBANA",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "69968600000144",
+   "nome": "JONEZIO DO NASCIMENTO EPP",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "EMLURB - AUTARQUIA DE MANUTENÇÃO E LIMPEZA URBANA",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "44803268000137",
+   "nome": "JOSIEL CARNEIRO DE MELO JUNIOR 10658887408",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "FUNDO DE INCENTIVO À CULTURA - FIC",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "14236850000106",
+   "nome": "JOSÉ ROBERTO DA SILVA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "EMLURB - AUTARQUIA DE MANUTENÇÃO E LIMPEZA URBANA",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "12054898000160",
+   "nome": "JOY STREET S.A.",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE EDUCAÇÃO",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "12580932000130",
+   "nome": "JPW ENGENHARIA ELETRICA LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "EMLURB - AUTARQUIA DE MANUTENÇÃO E LIMPEZA URBANA",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "10324160000140",
+   "nome": "JR-PARTNER INFORMATICA LOCACAO E EVENTOS LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE DESENVOLVIMENTO URBANO E LICENCIAMENTO",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "22716131000102",
+   "nome": "JULIO DE OLIVEIRA LIMA 07355677438",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "FUNDO DE INCENTIVO À CULTURA - FIC",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "11508867000179",
+   "nome": "KADORE COMÉRCIO E SERVIÇOS TERCEIRIZADOS LTDA. ME",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE INFRAESTRUTURA",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "06351396000106",
+   "nome": "KANZEN COMERCIO E SERVICOS LTDA EPP",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE FINANÇAS",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "07408234000111",
+   "nome": "L & R SANTOS CONSTRUCOES LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "URB - AUTARQUIA DE URBANIZACAO DO RECIFE",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "12558114000130",
+   "nome": "L CORDEIRO COMERCIO E SERVICOS DE MATERIAL DE CONSTRUCAO LTDA - ME",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "EMLURB - AUTARQUIA DE MANUTENÇÃO E LIMPEZA URBANA",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "11686362000102",
+   "nome": "LABORATORIO VETERINARIO URBANO LTDA - ME",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE ARTICULAÇÃO POLÍTICA E SOCIAL",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "11653365000212",
+   "nome": "LABOX COMUNICACAO ESTRATEGICA LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE ADMINISTRAÇÃO",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "46701604000166",
+   "nome": "LAINO EDEMBERGUER DOS SANTOS",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "EMPREL - EMPRESA MUNICIPAL DE INFORMÁTICA",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "11626333000147",
+   "nome": "LASERIX ENERGIA E TECNOLOGIA LTDA - EPP",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "EMPREL - EMPRESA MUNICIPAL DE INFORMÁTICA",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "13309807000152",
+   "nome": "LBR VIAGENS E EVENTOS LTDA - KE",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE TURISMO E LAZER",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "12787027000155",
+   "nome": "LEANDRO BARBOSA DA SILVA ME",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE TURISMO E LAZER",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "33718584000194",
+   "nome": "LETICIA CASTRO SIMOES",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "FUNDO DE INCENTIVO À CULTURA - FIC",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "09175317000133",
+   "nome": "LITIO ENGENHARIA LTDA  EPP",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "CONVIVA MERCADOS E FEIRAS - AUTARQUIA MUNICIPAL",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "19288546000118",
+   "nome": "LIVRARIA PRACA DE CASA FORTE LTDA - EPP",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE ORDEM PÚBLICA E SEGURANÇA",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "16692627000190",
+   "nome": "LND COMERCIO DE MATERIAL E EQUIPAMENTOS DE LIMPEZA E HOSPITALAR EIRELI - ME",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "EMLURB - AUTARQUIA DE MANUTENÇÃO E LIMPEZA URBANA",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "14645756000100",
+   "nome": "LOCADORA DE VEICULOS CONFIANCA LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE EDUCAÇÃO",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "21848490000150",
+   "nome": "LTL MONTAGENS INDUSTRIAIS LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE ADMINISTRAÇÃO",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "02662464000199",
+   "nome": "LUCENA TOPOGRAFIA & CONSTRUCAO LTDA EPP",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE SANEAMENTO",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "13473272000150",
+   "nome": "LUCIA DE FATIMA PADILHA CARDOSO 68682441420",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "FUNDO DE INCENTIVO À CULTURA - FIC",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "24773881000141",
+   "nome": "LUCIANO V DE SOUZA ME",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE INFRAESTRUTURA",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "02857394000124",
+   "nome": "LUNI AUDIO E VÍDEO LTDA - EPP",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "FUNDO DE INCENTIVO À CULTURA - FIC",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "01294543000121",
+   "nome": "LUZI PASSAGENS TURISMO LOCACAO E REPRESENTACAOES LTDA ME",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DA MULHER",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "10518667000134",
+   "nome": "LVP COMÉRCIO E SERVIÇOS",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "EMLURB - AUTARQUIA DE MANUTENÇÃO E LIMPEZA URBANA",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "03698191000103",
+   "nome": "M & P INDUSTRIA E COMERCIO DE MATERIAIS DE CONSTRUÇÃO LTDA - ME",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE INFRAESTRUTURA",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "05646333000106",
+   "nome": "M F ENGENHARIA E EQUIPAMENTOS LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE HABITAÇÃO",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "41041013000196",
+   "nome": "M ILKA SANTOS",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE EDUCAÇÃO",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "34665221000109",
+   "nome": "M. JAIRA FERNANDES DE OLIVEIRA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "AUTARQUIA MUNICIPAL DE PREVIDENCIA E ASSISTENCIA A SAUDE DOS SERVIDORES",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "20445537000172",
+   "nome": "M. M. FONTES DE MENEZES MATERIAIS PARA CONSTRUCAO EIRELI - EPP",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "EMLURB - AUTARQUIA DE MANUTENÇÃO E LIMPEZA URBANA",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "23591052000185",
+   "nome": "MARIA CONCEICAO GOMES DOS PRAZERES 38730820472",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "FUNDO DE INCENTIVO À CULTURA - FIC",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "09008720000178",
+   "nome": "MARIA GEORGINA DE ALBUQUERQUE E MELO",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "FUNDO MUNICIPAL DE SAUDE",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "33306306000120",
+   "nome": "MARIA JULIA DOS SANTOS IZIDORO 08692543403",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "FUNDO DE INCENTIVO À CULTURA - FIC",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "18176600000170",
+   "nome": "MARILIA NEPOMUCENO PINHEIRO 08356992427",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "FUNDO DE INCENTIVO À CULTURA - FIC",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "26487366000120",
+   "nome": "MATHEUS BORBA MARANHAO DE ARAUJO 10593445481",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "FUNDO DE INCENTIVO À CULTURA - FIC",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "20286649000128",
+   "nome": "MAURICIO JOSE JACINTO RAMOS",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "EMPREL - EMPRESA MUNICIPAL DE INFORMÁTICA",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "06069729000109",
+   "nome": "MEDICA COMERCIO REPRESENTACAO E IMPORTACAO LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "FUNDO MUNICIPAL DE SAUDE",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "06032488000115",
+   "nome": "MEGA CONSULTORES ASSOCIADOS LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "EMPREL - EMPRESA MUNICIPAL DE INFORMÁTICA",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "09566470000191",
+   "nome": "MEGA STAR PRODUCOES LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE CULTURA",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "16815681000186",
+   "nome": "MEIAS PALAVRAS PRODUCOES CULTURAIS LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "FUNDO DE INCENTIVO À CULTURA - FIC",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "29283144000265",
+   "nome": "METRICS SERVIçOS DE CONSULTORIA E ENGENHARIA LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "URB - AUTARQUIA DE URBANIZACAO DO RECIFE",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "11634427000168",
+   "nome": "MF SERVICOS E LOCACAO DE VEICULOS EIRELI",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "EMLURB - AUTARQUIA DE MANUTENÇÃO E LIMPEZA URBANA",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "24396327000192",
+   "nome": "MGR ENGENHARIA E INCORPORAÇÃO LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE PLANEJAMENTO URBANO",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "10777411000141",
+   "nome": "MGR TECNOLOGIA DA INFORMACAO LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE DESENVOLVIMENTO ECONÔMICO",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "19340964000107",
+   "nome": "MICHELINE ESPINDOLA MONTEIRO 98099329449",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "FUNDO DE INCENTIVO À CULTURA - FIC",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "33025101000176",
+   "nome": "MINDSET ENGENHARIA E EMPREENDIMENTOS EIRELI",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE ESPORTES",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "23615740000138",
+   "nome": "MMS ENGENHARIA LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE ESPORTES",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "07534785000121",
+   "nome": "MONZON COMÉRCIO DE PRODUTOS LABORATORIAS E HOSPITALARES LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE ARTICULAÇÃO POLÍTICA E SOCIAL",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "12121230000198",
+   "nome": "MOVEE CORPORATIVO LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "EMPREL - EMPRESA MUNICIPAL DE INFORMÁTICA",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "13370698000189",
+   "nome": "MR AMBIENTAL LTDA EPP",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "EMLURB - AUTARQUIA DE MANUTENÇÃO E LIMPEZA URBANA",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "12805036000121",
+   "nome": "MULTCOM CONSTRUTORA LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE FINANÇAS",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "35397488000117",
+   "nome": "N B CAVALCANTI INTERMEDIACAO DE SERVICOS DE TAXI LTDA - EPP",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "EMPREL - EMPRESA MUNICIPAL DE INFORMÁTICA",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "66970229000914",
+   "nome": "NEXTEL TELECOMUNICACOES LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE ORDEM PÚBLICA E SEGURANÇA",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "04222050000174",
+   "nome": "NOGUEIRA E BERGAMASCHI LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "EMPREL - EMPRESA MUNICIPAL DE INFORMÁTICA",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "24260125000119",
+   "nome": "NUNES CONSTRUTORA E SERVICOS EIRELI - ME",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "FCCR - FUNDACAO DE CULTURA CIDADE DO RECIFE",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "29929156000133",
+   "nome": "OLIVIA MORIM DE MELO 05327163458",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "FUNDO DE INCENTIVO À CULTURA - FIC",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "00351766000110",
+   "nome": "OXIL GASES EQUIPAMENTOS LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "EMLURB - AUTARQUIA DE MANUTENÇÃO E LIMPEZA URBANA",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "21246018000148",
+   "nome": "OXY PESQUISA E DESENVOLVIMENTO SOCIAL LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE ARTICULAÇÃO POLÍTICA E SOCIAL",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "01496690000184",
+   "nome": "PADRAO GRAFICA EDITORA LTDA ME",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "EMLURB - AUTARQUIA DE MANUTENÇÃO E LIMPEZA URBANA",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "01838829000120",
+   "nome": "PALLIO COMERCIO E SERVICOS LTDA - EPP",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "EMPREL - EMPRESA MUNICIPAL DE INFORMÁTICA",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "05475214000138",
+   "nome": "PERNAMBUCO DIGITAL LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE MEIO AMBIENTE",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "08201104000176",
+   "nome": "PETROCARD ADMINISTRADORA DE CREDITO LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE ARTICULAÇÃO POLÍTICA E SOCIAL",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "05452742000171",
+   "nome": "PETRUS CONSULTORIA & ASSESSORIA LTDA ME",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE ADMINISTRAÇÃO",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "10565011000172",
+   "nome": "PLANALTO PAJEU EMPREENDIMENTOS LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE PROJETOS ESPECIAIS",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "21084632000150",
+   "nome": "PLANES ENGENHARIA E CONSTRUÇÃO LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "URB - AUTARQUIA DE URBANIZACAO DO RECIFE",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "34714152000178",
+   "nome": "PLENUS ENGENHARIA EIRELI",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "FUNDO MUNICIPAL DE SAUDE",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "23148392000136",
+   "nome": "PLONUS SOLUCOES EM ENGENHARIA E MEIO AMBIENTE LTDA - EPP",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE DESENVOLVIMENTO URBANO E LICENCIAMENTO",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "41227190000161",
+   "nome": "POLICONSULT ASSOCIACÃO POLITECNICA DE CONSULTORIA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE PLANEJAMENTO URBANO",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "07798997000116",
+   "nome": "PONTUAL CONSTRUCOES LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE EDUCAÇÃO",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "13569390000167",
+   "nome": "PONTUAL DISTRIBUIDORA LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE EDUCAÇÃO",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "04108150000174",
+   "nome": "PORTFOLIO EDITORA, COMERCIO E SERVICOS S.A",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE EDUCAÇÃO",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "09662060000144",
+   "nome": "PRECISE MULTIFORME TECNOLOGIA LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "FUNDO MUNICIPAL DE SAUDE",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "08750243000159",
+   "nome": "PREMIER CONSULTORIA PLANEJAMENTO E GERENCIAMENTO EM ENGENHARIA LTDA - EPP",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE TURISMO E LAZER",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "11179264000170",
+   "nome": "PRESERVE SEGURANCA E TRANSPORTE DE VALORES LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "EMLURB - AUTARQUIA DE MANUTENÇÃO E LIMPEZA URBANA",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "09468539000144",
+   "nome": "PRESSA CONSTRUCOES LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "EMLURB - AUTARQUIA DE MANUTENÇÃO E LIMPEZA URBANA",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "41057233000108",
+   "nome": "PREVENCAO INDUSTRIAL EIRELI - EPP",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "EMLURB - AUTARQUIA DE MANUTENÇÃO E LIMPEZA URBANA",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "28190368000189",
+   "nome": "PRISCILA GAMA SANTANA 08327271482",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "FUNDO DE INCENTIVO À CULTURA - FIC",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "13359091000106",
+   "nome": "PRO 4 - PROMOCAO E EVENTOS LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "FUNDO DE INCENTIVO À CULTURA - FIC",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "07741213000113",
+   "nome": "PROATIVE ENGENHARIA E SERVICOS LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "AUTARQUIA MUNICIPAL DE PREVIDENCIA E ASSISTENCIA A SAUDE DOS SERVIDORES",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "08438572000169",
+   "nome": "PROATIVE SEGURANCA ELETRONICA E TECNOLOGICA  LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "AUTARQUIA MUNICIPAL DE PREVIDENCIA E ASSISTENCIA A SAUDE DOS SERVIDORES",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "08584379000136",
+   "nome": "PROSERVIL SERVIÇOS TECNICOS EIRELI",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "FUNDO MUNICIPAL DE SAUDE",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "11021607000174",
+   "nome": "PROVINCIA NOSSA SENHORA DA PENHA DO NORDESTE E DO BRASIL",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE INFRAESTRUTURA",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "27601462000110",
+   "nome": "PUPE BRAGA ZIRPOLI ADVOGADOS",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "EMLURB - AUTARQUIA DE MANUTENÇÃO E LIMPEZA URBANA",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "00401969000174",
+   "nome": "QUALITY EMPREENDIMENTOS LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "EMLURB - AUTARQUIA DE MANUTENÇÃO E LIMPEZA URBANA",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "17557623000162",
+   "nome": "R J A DO NASCIMENTO MERCADO DA LIMPEZA ME",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "AUTARQUIA MUNICIPAL DE PREVIDENCIA E ASSISTENCIA A SAUDE DOS SERVIDORES",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "09130842000132",
+   "nome": "R.J COMERCIO DE ELETRODOMESTICOS LTDA ME",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE INFRAESTRUTURA",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "01252610000145",
+   "nome": "RADNOR ENGENHARIA E TELECOMUNICACAO LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "EMLURB - AUTARQUIA DE MANUTENÇÃO E LIMPEZA URBANA",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "30311894000100",
+   "nome": "RAFAEL JOSE DE FRANCA - 46414754404",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "FCCR - FUNDACAO DE CULTURA CIDADE DO RECIFE",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "12401177000189",
+   "nome": "RD COMERCIO E REPRESENTACAO DE MATERIAL DE CONSTRUCAO E LIMPEZA LTDA ME",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "EMLURB - AUTARQUIA DE MANUTENÇÃO E LIMPEZA URBANA",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "07237838000142",
+   "nome": "REAL SERVICE LTDA ME",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "FUNDO MUNICIPAL DE SAUDE",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "01754239000462",
+   "nome": "REFRIGERAÇÃO DUFRIO COMERCIO E IMPORTACAO LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE DESENVOLVIMENTO URBANO E LICENCIAMENTO",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "18321731000102",
+   "nome": "REGILENE DE SOUSA LIMA - 690335953-20",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "EMPREL - EMPRESA MUNICIPAL DE INFORMÁTICA",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "14051512000191",
+   "nome": "RFG SERVICOS DE ORGANIZACAO DE EVENTOS LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "FUNDO DE INCENTIVO À CULTURA - FIC",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "02363274000170",
+   "nome": "RL SERVIÇOS E LOCACAO MAO DE OBRA LTDA ME",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE SANEAMENTO",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "29977708000189",
+   "nome": "RODRIGO BEZERRA DE MENEZES GUILHERME 05864250716",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "FUNDO DE INCENTIVO À CULTURA - FIC",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "04954262000146",
+   "nome": "ROTEC CONSTRUÇÃO E INCORPORAÇÃO LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "GABINETE DO PREFEITO",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "24441966000122",
+   "nome": "S & B INFORMATICA  ENGENHARIA E SERVICOS LTDA - EPP",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE ADMINISTRAÇÃO",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "14677758000173",
+   "nome": "S B COMERCIO DE MATERIAIS ELETRICOS LTDA ME",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "CONVIVA MERCADOS E FEIRAS - AUTARQUIA MUNICIPAL",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "17863285000197",
+   "nome": "SAFETY CLOUD INFORMATICA LTDA - EPP",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "EMLURB - AUTARQUIA DE MANUTENÇÃO E LIMPEZA URBANA",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "09016361000109",
+   "nome": "SANTA MARIA EMPREENDIMENTOS S/A",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE EDUCAÇÃO",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "08054930000130",
+   "nome": "SATISFAZ COMERCIO DE MATERIAIS P ESCRITORIO E PRODUTOS DE INFORMATICA LTDA ME",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE INFRAESTRUTURA",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "27893706000186",
+   "nome": "SORTEL COMERCIO EIRELI ME",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "CTTU - AUTARQUIA DE TRÂNSITO E TRANSPORTE URBANO DO RECIFE",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "32560876000189",
+   "nome": "SPORTS ENTRETENIMENTO E PROMOCAO DE EVENTOS ESPORTIVOS EIRELI",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE TURISMO E LAZER",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "11949783000170",
+   "nome": "STA. FE ENGENHARIA E SERVICOS LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "AUTARQUIA MUNICIPAL DE PREVIDENCIA E ASSISTENCIA A SAUDE DOS SERVIDORES",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "01568077000125",
+   "nome": "STERICYCLE GESTAO AMBIENTAL LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "FUNDO MUNICIPAL DE SAUDE",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "03047102000150",
+   "nome": "STYLUS VIAGENS E TURISMO",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "AUTARQUIA MUNICIPAL DE PREVIDENCIA E ASSISTENCIA A SAUDE DOS SERVIDORES",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "07880897000134",
+   "nome": "SUPORTE INFORMATICA SOLUCOES LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "EMPREL - EMPRESA MUNICIPAL DE INFORMÁTICA",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "04130406000140",
+   "nome": "SX BRASIL COMUNICACAO DIGITAL LTDA EPP",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "GABINETE DE IMPRENSA",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "27570772000115",
+   "nome": "SYLARA SILVA SILVERIO 01410043479",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "FUNDO DE INCENTIVO À CULTURA - FIC",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "02105940000170",
+   "nome": "T BARRETO CONSTRUCOES LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE SAÚDE",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "13782045000107",
+   "nome": "T&R COMERCIO DE ARTIGOS DE CONFECCAO LTDA - ME",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE ASSSTÊNCIA SOCIAL E COMBATE À FOME",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "41687014000102",
+   "nome": "TAC COMERCIO DE MATERIAIS EIRELI",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE INFRAESTRUTURA",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "35814347000152",
+   "nome": "TACIANA ENES PEIXOTO GUIMARAES 03762280401",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "FUNDO DE INCENTIVO À CULTURA - FIC",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "17156048000196",
+   "nome": "TANDEN EMPREENDIMENTOS LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "CONVIVA MERCADOS E FEIRAS - AUTARQUIA MUNICIPAL",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "28807917000111",
+   "nome": "TAVARES E SALES ENGANHARIA LTDA - ME",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "FCCR - FUNDACAO DE CULTURA CIDADE DO RECIFE",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "10523926000115",
+   "nome": "TECJUR LTDA - EPP",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "CONVIVA MERCADOS E FEIRAS - AUTARQUIA MUNICIPAL",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "10790599000168",
+   "nome": "TECNOFROTA SOLUCOES EM RASTREAMENTO LTDA ME",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "CONVIVA MERCADOS E FEIRAS - AUTARQUIA MUNICIPAL",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "03743073000161",
+   "nome": "TECSUPRI MAQUINAS SUPRIMENTOS E SERVICOS LTDA EPP",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "AUTARQUIA MUNICIPAL DE PREVIDENCIA E ASSISTENCIA A SAUDE DOS SERVIDORES",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "07779080000174",
+   "nome": "THIAGO SALES DOS REIS BRITO - EPP",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE TURISMO E LAZER",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "90347840000894",
+   "nome": "THYSSENKRUPP ELEVADORES SA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE CULTURA",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "07774050000175",
+   "nome": "TKS SEGURANCA PRIVADA LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE EDUCAÇÃO",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "69892107000198",
+   "nome": "TOLENTINO ENGENHARIA LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE SAÚDE",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "12251180000163",
+   "nome": "TOMUS SOLUÇÕES EM ELETRÔNICA E TELECOMUNICAÇÕES LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "EMLURB - AUTARQUIA DE MANUTENÇÃO E LIMPEZA URBANA",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "18275089000164",
+   "nome": "ULTR AMIX LTDA - ME",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "FCCR - FUNDACAO DE CULTURA CIDADE DO RECIFE",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "04041447000160",
+   "nome": "UNI SEIS COMERCIO REPRESENTACAO SERVICOS DE ENGENHARIA LTDA EPP",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE TURISMO E LAZER",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "39829706000104",
+   "nome": "VAICON EMPREENDIMENTOS TECNOLOGICOS LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "EMPREL - EMPRESA MUNICIPAL DE INFORMÁTICA",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "41052275000156",
+   "nome": "VALOR ENGENHARIA DE AVALIACAO E PERICIA LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE EDUCAÇÃO",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "00956601000172",
+   "nome": "VENCER ENGENHARIA E SERVICOS LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "EMLURB - AUTARQUIA DE MANUTENÇÃO E LIMPEZA URBANA",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "02723976000118",
+   "nome": "VERSAILLES LOCACAO DE AUTOMOVEIS EIRELI",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE ORDEM PÚBLICA E SEGURANÇA",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "17087845000169",
+   "nome": "VERTEX - MANUTENCAO E INSTALACAO EM TRANPORTE VERTICAL LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE ADMINISTRAÇÃO",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "05463276000120",
+   "nome": "VIACON CONSTRUCOES E MONTAGENS LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "EMLURB - AUTARQUIA DE MANUTENÇÃO E LIMPEZA URBANA",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "13540507000180",
+   "nome": "VIDEOPORTO  COMUNICACAO LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "EMPREL - EMPRESA MUNICIPAL DE INFORMÁTICA",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "02536066001521",
+   "nome": "VITAL ENGENHARIA AMBIENTAL S/A",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "EMLURB - AUTARQUIA DE MANUTENÇÃO E LIMPEZA URBANA",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "29681052000152",
+   "nome": "VITOR ALVES DE CARVALHO EIRELI",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DA MULHER",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "13107512000101",
+   "nome": "VITOR PROJETOS DE SEGURANÇA CONTRA INCÊNDIO LTDA - ME",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE ADMINISTRAÇÃO",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "57084370000171",
+   "nome": "VIVA PARQUES RECIFE ZN S.A.",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE DESENVOLVIMENTO URBANO E LICENCIAMENTO",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "57084369000147",
+   "nome": "VIVA PARQUES RECIFE ZS S.A.",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE DESENVOLVIMENTO URBANO E LICENCIAMENTO",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "07082532000164",
+   "nome": "VR SERVICOS GERAIS LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE PLANEJAMENTO URBANO",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "11318244000133",
+   "nome": "VS COMERCIO REPRESENTACOES E SERVICOS EIRELI ME",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE INFRAESTRUTURA",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "03537097000164",
+   "nome": "W & W TELEMETRIA, TRATAMENTO, ABASTECIMENTO E COMERCIO DE AGUA POTAVEL LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "EMLURB - AUTARQUIA DE MANUTENÇÃO E LIMPEZA URBANA",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "05275604000164",
+   "nome": "WALTER LOPES ENGENHARIA LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE SAÚDE",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "41111651000136",
+   "nome": "WCTM SERVIÇOS DE TECNOLOGIA EIRELI",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "EMPREL - EMPRESA MUNICIPAL DE INFORMÁTICA",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "04068188000160",
+   "nome": "WOLLK ELEVADORES DO  LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "EMLURB - AUTARQUIA DE MANUTENÇÃO E LIMPEZA URBANA",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "43045216000186",
+   "nome": "X ZERO TECNOLOGIA EIRELI",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE EDUCAÇÃO",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "19256860000119",
+   "nome": "GT LOCACOES E TERRAPLANAGENS LTDA - ME",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "URB - AUTARQUIA DE URBANIZACAO DO RECIFE",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "12007807000135",
+   "nome": "CESAR AUGUSTO MACHADO PELICIONI EPP",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE TURISMO E LAZER",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "71985014000150",
+   "nome": "JEYTECH COMERCIALE E TECNOLOGIA LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE EDUCAÇÃO",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "02817205000190",
+   "nome": "ECO BOAT MARKETING E OPERACOES LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "EMLURB - AUTARQUIA DE MANUTENÇÃO E LIMPEZA URBANA",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "01183614000119",
+   "nome": "EDIOURO PUBLICACOES DE LAZER E CULTURA LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DA MULHER",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "21061770000114",
+   "nome": "EXO COMPANY PARTICIPAÇÕES LTDA - EPP",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "FUNDO MUNICIPAL DE SAUDE",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "08973252000109",
+   "nome": "LIMP SAFE COMERCIO DE EQUIPAMENTOS EIRELI",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "CONVIVA MERCADOS E FEIRAS - AUTARQUIA MUNICIPAL",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "30658048000152",
+   "nome": "LUAL PRODUCOES ARTISITICAS LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "FCCR - FUNDACAO DE CULTURA CIDADE DO RECIFE",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "02956455000100",
+   "nome": "MARTELL COMERCIO DE PRODUTOS HOSPITALARES LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "FUNDO MUNICIPAL DE SAUDE",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "00429972000104",
+   "nome": "MATMALAP REPRESENTACAO COMERCIO E IMPORTACAO EXPORTACAO LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "EMPREL - EMPRESA MUNICIPAL DE INFORMÁTICA",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "28650264000100",
+   "nome": "MEU ABRIGO EMPREENDIMENTOS ARTISTICOS LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "FCCR - FUNDACAO DE CULTURA CIDADE DO RECIFE",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "28110495000120",
+   "nome": "NBV PRODUCOES ARTISTICAS LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "FCCR - FUNDACAO DE CULTURA CIDADE DO RECIFE",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "10789486000142",
+   "nome": "PROMOVE SOLUÇÕES EM SISTEMAS E SOFTWARE LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "EMPREL - EMPRESA MUNICIPAL DE INFORMÁTICA",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "33000118000179",
+   "nome": "TELEMAR NORTE LESTE S/A - EM RECUPERACAO JUDICIAL",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE ADMINISTRAÇÃO",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "04642554000143",
+   "nome": "TIPLAN CONSULTORIA E SERVIÇOS EM INFORMATICA LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "EMPREL - EMPRESA MUNICIPAL DE INFORMÁTICA",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "24244435000140",
+   "nome": "XIRE PRODUCOES E EVENTOS LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "FCCR - FUNDACAO DE CULTURA CIDADE DO RECIFE",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "49254634000160",
+   "nome": "NUTRIPLUS ALIMENTACAO E TECNOLOGIA LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE EDUCAÇÃO",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "04099264000103",
+   "nome": "CALIFORNIA APRESENTACOES E EDICOES ARTISTICAS LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "FCCR - FUNDACAO DE CULTURA CIDADE DO RECIFE",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "33833880000136",
+   "nome": "CS CONSTRUÇÕES E EMPREEDIMENTOS LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "EMLURB - AUTARQUIA DE MANUTENÇÃO E LIMPEZA URBANA",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "18318752000160",
+   "nome": "DAUD EMPREENDIMENTOS E CONSTRUCOES LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "URB - AUTARQUIA DE URBANIZACAO DO RECIFE",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "04502762000147",
+   "nome": "EXPANSAO EMPREENDIMENTOS EDITORIAIS LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE EDUCAÇÃO",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "20155999000155",
+   "nome": "G3 POLARIS SERVIÇOS EIRELI",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "FUNDO MUNICIPAL DE SAUDE",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "09572002000120",
+   "nome": "IPX TECNOLOGIA LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE DESENVOLVIMENTO URBANO E LICENCIAMENTO",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "63270797000167",
+   "nome": "PRODUS PRODUTOS E SOLUÇÕES PARA INFORMATICA LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "EMPREL - EMPRESA MUNICIPAL DE INFORMÁTICA",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "20894265000198",
+   "nome": "ECOPLUS AR CONDICIONADOS LTDA ME",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE EDUCAÇÃO",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "08593703000344",
+   "nome": "PAS - PROJETOS, ASSESSORIA E SISTEMAS LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "FUNDO MUNICIPAL DE ASSISTÊNCIA SOCIAL - FMAS",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "23009587000103",
+   "nome": "PMGT - PROJETOS DE MODERNIZACAO, GESTAO E TECNOLOGIAS S/A",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "EMPREL - EMPRESA MUNICIPAL DE INFORMÁTICA",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "44645723000113",
+   "nome": "DAITEC COMERCIO E SERVIÇOS LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE EDUCAÇÃO",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "09359417000110",
+   "nome": "SOMAI EQUIPAMENTOS DE INFORMATICA E REPRESENTACAO COMERCIAL LTDA ME",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE EDUCAÇÃO",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "08693440000183",
+   "nome": "STREAMTEL - SERVICOS DE TELEMARKETING LTDA -ME",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE INFRAESTRUTURA",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "21169439000112",
+   "nome": "EXTINORPI INDUSTRIA E COMERCIO - ME",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE EDUCAÇÃO",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "01054258000133",
+   "nome": "EDACOM TECNOLOGIA EM SISTEMAS DE INFORMATICA LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE EDUCAÇÃO",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "07735373000150",
+   "nome": "CPE SC EQUIPAMENTOS TOPOGRÁFICOS LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "EMLURB - AUTARQUIA DE MANUTENÇÃO E LIMPEZA URBANA",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "17602864000186",
+   "nome": "DELTA INDUSTRIA E COMERCIO LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE ORDEM PÚBLICA E SEGURANÇA",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "11079615000171",
+   "nome": "CASA PRONTA COMERCIO E SERVICOS DE REFORMAS LTDA ME",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE INFRAESTRUTURA",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "20689739000160",
+   "nome": "G S INDUSTRIA E CONSTRUÇÕRES LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE SANEAMENTO",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "02004642000194",
+   "nome": "ABRAMUNDO EDUCAÇÃO EM CIÊNCIAS LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE EDUCAÇÃO",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "03502099000118",
+   "nome": "ACE SEGURADORA S.A.",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "EMPREL - EMPRESA MUNICIPAL DE INFORMÁTICA",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "62652961000138",
+   "nome": "AGÊNCIA ESTADO LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "AUTARQUIA MUNICIPAL DE PREVIDENCIA E ASSISTENCIA A SAUDE DOS SERVIDORES",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "01427687000109",
+   "nome": "ALTBIT INFORMATICA COMERCIO E SERVIÇOS LTDA - EPP",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "FUNDO MUNICIPAL DE SAUDE",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "27287283000150",
+   "nome": "ASSOCIACAO BRASILEIRA DE AGENCIAS DE VIAGENS",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE TURISMO E LAZER",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "69287639000104",
+   "nome": "ASSOCIAÇÃO DOS REGISTRADORES IMOBILIARIOS DE SÃO PAULO",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "PROCURADORIA GERAL DO MUNICÍPIO",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "79788766000566",
+   "nome": "BRINK MOBIL EQUIPAMENTOS EDUCACIONAIS LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE EDUCAÇÃO",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "55708382000102",
+   "nome": "CAMARGUE PRODUCOES ARTISTICAS LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "FCCR - FUNDACAO DE CULTURA CIDADE DO RECIFE",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "19381604000153",
+   "nome": "COLAB TECNOLOGIA E SERVICOS DE INTERNET S.A.",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE ADMINISTRAÇÃO",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "17507274000174",
+   "nome": "COMIDA INVISIVEL PROVEDOR DE CONTEUDO LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "EMPREL - EMPRESA MUNICIPAL DE INFORMÁTICA",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "28196889000143",
+   "nome": "COMPANHIA DE SEGUROS ALIANCA DO BRASIL",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "EMPREL - EMPRESA MUNICIPAL DE INFORMÁTICA",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "63615352000171",
+   "nome": "CONSORCIO IBBA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE FINANÇAS",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "56706543000183",
+   "nome": "CONSORCIO TPF-ENGECONSULT-SYNERGIA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "PROMORAR RECIFE",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "12843800000153",
+   "nome": "DIBUTE SOFTWARE LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE ADMINISTRAÇÃO",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "64919541000109",
+   "nome": "ECONOMATICA SOFTWARE DE APOIO A INVESTIDORES LTDA.",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "AUTARQUIA MUNICIPAL DE PREVIDENCIA E ASSISTENCIA A SAUDE DOS SERVIDORES",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "59527788000131",
+   "nome": "ERNST & YOUNG ASSESSORIA EMPRESARIAL LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE PLANEJAMENTO URBANO",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "07486520000103",
+   "nome": "EVOLUTION CARD PERSONALIZACAO EM CARTOES DE PVC LTDA-EPP",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE ADMINISTRAÇÃO",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "02593165000140",
+   "nome": "GARTNER DO BRASIL SERVICOS DE PESQUISAS LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "EMPREL - EMPRESA MUNICIPAL DE INFORMÁTICA",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "43825736000101",
+   "nome": "GLOBAL EDITORA E DISTRIBUIDORA LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE EDUCAÇÃO",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "01645738000179",
+   "nome": "INDRA BRASIL SOLUCOES E SERVICOS TECNOLOGICOS LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "EMPREL - EMPRESA MUNICIPAL DE INFORMÁTICA",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "01985366000120",
+   "nome": "INDUMED COMÉRCIO IMPORTAÇÃO E EXPORTAÇÃO DE PRODUTOS MÉDICOS LTDA-ME",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "FUNDO MUNICIPAL DE SAUDE",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "01771935000134",
+   "nome": "INGRAM MICRO BRASIL LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "EMPREL - EMPRESA MUNICIPAL DE INFORMÁTICA",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "81627838000101",
+   "nome": "INGRAM MICRO INFORMATICA LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "EMPREL - EMPRESA MUNICIPAL DE INFORMÁTICA",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "10912323000105",
+   "nome": "INSTITUO CAMPUS PARTY",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE PLANEJAMENTO URBANO",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "04162324000187",
+   "nome": "INSTITUTO SUPERIOR DE EDUCACAO DE SAO PAULO",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE EDUCAÇÃO",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "07692770000191",
+   "nome": "ITELIOS DO BRASIL INFORMATICA LTDA EPP",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "EMPREL - EMPRESA MUNICIPAL DE INFORMÁTICA",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "08250097000100",
+   "nome": "K M G CONSTRUTORA LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE SANEAMENTO",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "12823922000188",
+   "nome": "LABORATORIO FANTASMA PRODUCOES LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "FCCR - FUNDACAO DE CULTURA CIDADE DO RECIFE",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "13051498000163",
+   "nome": "M2 SOLUÇÕES EM ENGENHARIA LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE TURISMO E LAZER",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "13098174000180",
+   "nome": "MACIEL AUDITORES S/S",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE PROJETOS ESPECIAIS",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "06020318000110",
+   "nome": "MAN LATIN AMERICA INDUSTRIA E COMURCIO DE VEICULOS LTDA.",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE EDUCAÇÃO",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "54484753000149",
+   "nome": "MAPFRE VIDA S/A",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "EMPREL - EMPRESA MUNICIPAL DE INFORMÁTICA",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "01582892000149",
+   "nome": "MÉRITO COMÉRCIO DE EQUIPAMENTOS LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE EDUCAÇÃO",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "62498803000175",
+   "nome": "NOTRE DAME SEGURADORA S/A",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "EMPREL - EMPRESA MUNICIPAL DE INFORMÁTICA",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "04937243000101",
+   "nome": "OLYMPUS OPTICAL DO BRASIL LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "FUNDO MUNICIPAL DE SAUDE",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "03706826000169",
+   "nome": "P.R.M. SERVIÇOS E MÃO DE OBRA ESPECIALIZADA EIRELI",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE EDUCAÇÃO",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "09117368000109",
+   "nome": "PERUIBE COMERCIO DE PRODUTOS ELETRO ELETRONICOS LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "EMLURB - AUTARQUIA DE MANUTENÇÃO E LIMPEZA URBANA",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "00568696000157",
+   "nome": "PORTO SEGURO - BIOQUALYNET SAUDE OCUPACIONAL E SEGURANCA DO TRABALHO LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "EMPREL - EMPRESA MUNICIPAL DE INFORMÁTICA",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "22752238000106",
+   "nome": "PTV DO BRASIL - IMPORTACAO LICENCAS E SUPORTE DE SOFTWARE LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "CTTU - AUTARQUIA DE TRÂNSITO E TRANSPORTE URBANO DO RECIFE",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "06916380000195",
+   "nome": "RELICARIO PRODUCOES ARTISTICAS LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "FCCR - FUNDACAO DE CULTURA CIDADE DO RECIFE",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "47827415000105",
+   "nome": "SAD CONSULTORIA LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "EMPREL - EMPRESA MUNICIPAL DE INFORMÁTICA",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "33065699000127",
+   "nome": "SEGUROS SURA S.A.",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "FUNDO MUNICIPAL DE SAUDE",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "55386445000143",
+   "nome": "SINALTA PROPISTA SINALIZAC?O SEGURANCA E COM. VISUAL LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "CTTU - AUTARQUIA DE TRÂNSITO E TRANSPORTE URBANO DO RECIFE",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "09002672000100",
+   "nome": "SMARTWAVE NETWORKS DO BRASIL LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "EMLURB - AUTARQUIA DE MANUTENÇÃO E LIMPEZA URBANA",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "09445502000109",
+   "nome": "SOLUCOES SERVIÇOS TERCEIRIZADOS LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE EDUCAÇÃO",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "02293852000140",
+   "nome": "SP ALIMENTACAO E SERVICOS LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE EDUCAÇÃO",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "47866934000174",
+   "nome": "TICKET SERVICOS S/A",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE ASSSTÊNCIA SOCIAL E COMBATE À FOME",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "35957760000176",
+   "nome": "FORMASET INDUSTRIAL LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "CTTU - AUTARQUIA DE TRÂNSITO E TRANSPORTE URBANO DO RECIFE",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "01844555000506",
+   "nome": "IVECO LATIN AMERICA LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE EDUCAÇÃO",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "03753419000102",
+   "nome": "LUGGER BRASIL INDUSTRIA E COMERCIO LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "FUNDO MUNICIPAL DE SAUDE",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "60656774000105",
+   "nome": "ALBERFLEX INDUSTRIA DE MOVEIS LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE TURISMO E LAZER",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "12462988000190",
+   "nome": "I H  LOCACAO E ARRENDAMENTO DE VEICULOS VIAGENS E TURISMO LTDA EPP",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE ESPORTES",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "13535906000152",
+   "nome": "MONTE & SA CONSTRUTORA, AR CONDICIONADO E MOTO-GERADORES LTDA-ME",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "FUNDO MUNICIPAL DE SAUDE",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "22072135000103",
+   "nome": "3D CRIAR FABRICAÇAO DIGITAL LTDA..",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE EDUCAÇÃO",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "01115194000133",
+   "nome": "DIAGONAL EMPREENDIMENTOS E GESTAO DE NEGOCIOS LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE PLANEJAMENTO URBANO",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "54102785000132",
+   "nome": "EDITORA NDJ LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE FINANÇAS",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "26341935000125",
+   "nome": "LDB CONSULTORIA FINANCEIRA LTDA - EPP",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "AUTARQUIA MUNICIPAL DE PREVIDENCIA E ASSISTENCIA A SAUDE DOS SERVIDORES",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "09276124000179",
+   "nome": "LOCKE COMERCIO E IMPORTAÇÃO DE PRESENTES LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE EDUCAÇÃO",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "50048161000123",
+   "nome": "REVEE REAL ESTATE VENUES & ENTERTAINMENT PARTICIPACOES S. A",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE ESPORTES",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "08623848000189",
+   "nome": "SOLUÇÕES MODERNA EDITORA E SERVIÇOS EDUCACIONAIS LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE EDUCAÇÃO",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "20368585000104",
+   "nome": "LAGOTELA LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "EMLURB - AUTARQUIA DE MANUTENÇÃO E LIMPEZA URBANA",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "11005987000153",
+   "nome": "POLY DEFENSOR INDUSTRIA QUIMICA LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE ORDEM PÚBLICA E SEGURANÇA",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "11740231000158",
+   "nome": "MARCELO LEAL CORREA DE ARAUJO - ME",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "EMLURB - AUTARQUIA DE MANUTENÇÃO E LIMPEZA URBANA",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "15549061000180",
+   "nome": "PRINT SOLUCAO EM TECNOLOGIA LTDA",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "EMPREL - EMPRESA MUNICIPAL DE INFORMÁTICA",
+   "contratos_only": true
+  },
+  {
+   "cnpj": "10875828000147",
+   "nome": "MARCIO DO NASCIMENTO SILVA - ME",
+   "total_pago": 0.0,
+   "is_subvencao": false,
+   "tema": null,
+   "orgao": "SECRETARIA DE INFRAESTRUTURA",
+   "contratos_only": true
   }
  ]
 }

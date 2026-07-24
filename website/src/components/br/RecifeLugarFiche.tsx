@@ -56,7 +56,7 @@ export default function RecifeLugarFiche({
       )}
 
       <FicheSection title={t("br.recife.lugares.onde")}>
-        <table className="fx-fiche-table">
+        <table className="fx-fiche-table fx-fiche-table--data">
           <tbody>
             {place.bairro && (<tr><td>{t("br.recife.lugares.bairro")}</td><td>{titleCase(place.bairro)}</td></tr>)}
             {place.endereco && (<tr><td>{t("br.recife.lugares.endereco")}</td><td>{titleCase(place.endereco)}</td></tr>)}

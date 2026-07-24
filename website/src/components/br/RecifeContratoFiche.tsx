@@ -1,10 +1,11 @@
 "use client";
 
 import Link from "next/link";
-import { useT } from "@/lib/localeContext";
+import { useT, useLocale } from "@/lib/localeContext";
 import FicheKpis from "@/components/fusion/FicheKpis";
+import Tip from "@/components/fusion/Tip";
 import type { ContratoItem, SourceBlock } from "@/lib/br/recife-data";
-import { fmtBrlCompact, fmtDate, fmtCnpj, hasValor, titleCasePt } from "@/lib/br/format";
+import { fmtBrlCompact, fmtDate, fmtCnpj, hasValor, titleCasePt, modalidadeLabel, slugModalidade } from "@/lib/br/format";
 
 /**
  * Contract fiche — thin br-municipal ADAPTER composing the shared fiche
@@ -24,19 +25,20 @@ import { fmtBrlCompact, fmtDate, fmtCnpj, hasValor, titleCasePt } from "@/lib/br
 function classifyModalidade(m: string): {
   labelKey: string;
   descKey: string;
+  glossKey: string;
   tone: "ocre" | "ink" | "muted";
 } | null {
   switch ((m || "").toUpperCase()) {
     case "LICITAÇÃO":
-      return { labelKey: "br.recife.contrato.conc.com", descKey: "br.recife.contrato.conc.com_d", tone: "ink" };
+      return { labelKey: "br.recife.contrato.conc.com", descKey: "br.recife.contrato.conc.com_d", glossKey: "br.recife.contrato.mod_gloss.licitacao", tone: "ink" };
     case "SARP":
-      return { labelKey: "br.recife.contrato.conc.registro", descKey: "br.recife.contrato.conc.registro_d", tone: "muted" };
+      return { labelKey: "br.recife.contrato.conc.registro", descKey: "br.recife.contrato.conc.registro_d", glossKey: "br.recife.contrato.mod_gloss.sarp", tone: "muted" };
     case "INEXIGIBILIDADE":
-      return { labelKey: "br.recife.contrato.conc.inexig", descKey: "br.recife.contrato.conc.direta_d", tone: "ocre" };
+      return { labelKey: "br.recife.contrato.conc.inexig", descKey: "br.recife.contrato.conc.direta_d", glossKey: "br.recife.contrato.mod_gloss.inexig", tone: "ocre" };
     case "DISPENSA":
-      return { labelKey: "br.recife.contrato.conc.dispensa", descKey: "br.recife.contrato.conc.direta_d", tone: "ocre" };
+      return { labelKey: "br.recife.contrato.conc.dispensa", descKey: "br.recife.contrato.conc.direta_d", glossKey: "br.recife.contrato.mod_gloss.dispensa", tone: "ocre" };
     case "COMPRA DIRETA":
-      return { labelKey: "br.recife.contrato.conc.compra", descKey: "br.recife.contrato.conc.direta_d", tone: "ocre" };
+      return { labelKey: "br.recife.contrato.conc.compra", descKey: "br.recife.contrato.conc.direta_d", glossKey: "br.recife.contrato.mod_gloss.compra", tone: "ocre" };
     default:
       return null;
   }
@@ -50,6 +52,7 @@ export default function RecifeContratoFiche({
   source: SourceBlock;
 }) {
   const t = useT();
+  const { locale } = useLocale();
 
   // Frise « vida do contrato » : vigência início → hoje → fim. On a les deux
   // dates directement (≠ Paris qui reconstruit fim depuis notif+durée).
@@ -70,16 +73,46 @@ export default function RecifeContratoFiche({
   const toneColor =
     conc?.tone === "ocre" ? "var(--ocre)" : conc?.tone === "ink" ? "var(--ink)" : "var(--ink-2)";
 
+  // Soft data-quality flag: a single municipal contract above R$1 bi is
+  // extraordinary (Recife's whole active-contract portfolio ≈ R$15 bi, and the
+  // 2nd-largest single contract is R$0.73 bi). Values this size are almost
+  // always a source artifact — a decimal shift or a registro-de-preços ceiling.
+  // We keep the value visible (per user) but flag it as "to verify".
+  const VALOR_CEIL = 1_000_000_000;
+  const valorSuspeito = hasValor(c.valor) && (c.valor as number) > VALOR_CEIL;
+
   return (
     <div>
       <div style={{ display: "flex", gap: 8, flexWrap: "wrap", marginBottom: 14 }}>
-        {c.modalidade && c.modalidade !== "—" && <span className="fx-sm-tag">{c.modalidade}</span>}
+        {c.modalidade && c.modalidade !== "—" && (
+          <Link href={`/br/city/recife/modalidade/${slugModalidade(c.modalidade)}`} className="fx-sm-tag" style={{ textDecoration: "none" }}>{modalidadeLabel(c.modalidade, locale)}</Link>
+        )}
         {c.is_ativo && <span className="fx-sm-tag">{t("br.recife.ct.badge_ativo")}</span>}
       </div>
 
       {c.objeto && (
         <div className="fx-fiche-lead">
           <p className="fx-fiche-lead-main">{titleCasePt(c.objeto)}</p>
+        </div>
+      )}
+
+      {valorSuspeito && (
+        <div
+          style={{
+            display: "flex",
+            gap: 10,
+            alignItems: "flex-start",
+            margin: "0 0 4px",
+            padding: "10px 14px",
+            border: "1px solid var(--ocre)",
+            background: "rgba(166, 118, 56, 0.06)",
+            fontSize: 13,
+            lineHeight: 1.5,
+            color: "var(--ink-2)",
+          }}
+        >
+          <span aria-hidden="true" style={{ color: "var(--ocre)", fontWeight: 700 }}>⚠</span>
+          <span>{t("br.recife.contrato.valor_alerta")}</span>
         </div>
       )}
 
@@ -152,7 +185,13 @@ export default function RecifeContratoFiche({
         {conc ? (
           <div style={{ margin: "0 0 14px" }}>
             <div style={{ fontFamily: "var(--f-ui)", fontSize: 15, fontWeight: 600, color: toneColor }}>
-              {t(conc.labelKey)}
+              {c.modalidade && c.modalidade !== "—" ? (
+                <Link href={`/br/city/recife/modalidade/${slugModalidade(c.modalidade)}`} style={{ color: "inherit", textDecorationColor: "var(--rule)" }}>
+                  <Tip label={`${c.modalidade} — ${t(conc.glossKey)}`}>{t(conc.labelKey)}</Tip>
+                </Link>
+              ) : (
+                <Tip label={`${c.modalidade} — ${t(conc.glossKey)}`}>{t(conc.labelKey)}</Tip>
+              )}
             </div>
             <p style={{ margin: "6px 0 0", fontSize: 13, color: "var(--ink-2)", lineHeight: 1.5 }}>
               {t(conc.descKey)}
@@ -176,8 +215,29 @@ export default function RecifeContratoFiche({
         <div className="fx-fiche-h">{t("br.recife.contrato.detalhes")}</div>
         <table className="fx-fiche-table">
           <tbody>
-            <tr><td>{t("br.recife.contrato.orgao")}</td><td>{c.orgao ?? "—"}</td></tr>
-            <tr><td>{t("br.recife.contrato.modalidade")}</td><td>{c.modalidade ?? "—"}</td></tr>
+            <tr>
+              <td>{t("br.recife.contrato.orgao")}</td>
+              <td>
+                {c.orgao_slug ? (
+                  // Taxonomy bridged → the payments-anchored órgão fiche.
+                  <Link href={`/br/city/recife/orgao/${c.orgao_slug}`}>{titleCasePt(c.orgao)}</Link>
+                ) : c.orgao ? (
+                  // No payments fiche for this contratante → all of the agency's
+                  // contracts. Keeps every department name clickable.
+                  <Link href={`/br/city/recife/contratos?orgao=${encodeURIComponent(c.orgao)}#sec-contratos`}>{titleCasePt(c.orgao)}</Link>
+                ) : "—"}
+              </td>
+            </tr>
+            <tr>
+              <td>{t("br.recife.contrato.modalidade")}</td>
+              <td>
+                {c.modalidade && c.modalidade !== "—" ? (
+                  <Link href={`/br/city/recife/modalidade/${slugModalidade(c.modalidade)}`}>
+                    {modalidadeLabel(c.modalidade, locale)}
+                  </Link>
+                ) : "—"}
+              </td>
+            </tr>
             {c.is_org && c.fornecedor_cnpj && (
               <tr><td>CNPJ</td><td className="mono">{fmtCnpj(c.fornecedor_cnpj)}</td></tr>
             )}

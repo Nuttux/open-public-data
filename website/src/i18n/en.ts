@@ -1179,6 +1179,7 @@ const en: Record<string, string> = {
   'fx.foot.find_city': 'Find your city →',
   'fx.foot.link.sources': 'Sources',
   'fx.foot.credit.sf': '© {year} Qipu · Data: City & County of San Francisco (DataSF)',
+  'fx.foot.credit.recife': '© {year} Qipu · Data: City of Recife',
 
   // ── Landing page ────────────────────────────────────────────────────────────
   'fx.land.h1.before': 'Where does ',
@@ -5360,6 +5361,43 @@ const en: Record<string, string> = {
 
   'br.recife.rec.kicker': 'Recipient · Recife',
   'br.recife.rec.paid_total': 'Total received',
+  'br.recife.rec.contratado_total': 'Total contracted',
+  'br.recife.rec.tema_tip': 'Theme: our classification (CNAE + paying department), not official.',
+  'br.recife.orgao.total_pago': 'Total paid',
+  'br.recife.orgao.fornecedores': 'Suppliers',
+  'br.recife.orgao.contratos': 'Contracts',
+  'br.recife.orgao.by_year': 'Paid by year',
+  'br.recife.orgao.top_suppliers': 'Top suppliers',
+  'br.recife.orgao.top_contracts': 'Top contracts',
+  'br.recife.orgao.source': 'Source: Payments by supplier + Contracts — City of Recife.',
+  'br.recife.mod.valor_total': 'Contracted value',
+  'br.recife.mod.n_contratos': 'Contracts',
+  'br.recife.mod.n_ativos': 'Active today',
+  'br.recife.mod.by_year': 'Contracted value by year',
+  'br.recife.mod.by_orgao': 'Agencies that use it most',
+  'br.recife.mod.top_suppliers': 'Top suppliers',
+  'br.recife.mod.top_contracts': 'Top contracts',
+  'br.recife.mod.n_contratos_sup': '{n} contract(s)',
+  'br.recife.mod.ver_todos': 'See all {n} contracts by {mod}',
+  'br.recife.tema.provenance': 'Theme is our own classification (the organisation\'s CNAE + paying agency), not an official City budget line.',
+  'br.recife.tema.total_pago': 'Total paid',
+  'br.recife.tema.n_orgs': 'Organisations',
+  'br.recife.tema.by_year': 'Paid by year',
+  'br.recife.tema.by_orgao': 'Agencies that pay most',
+  'br.recife.tema.top_recebedores': 'Who receives most',
+  'br.recife.tema.ver_todas': 'See all {n} organisations in this theme',
+  'br.recife.tema.method_label': 'Method',
+  'br.recife.rec.by_orgao': 'Breakdown by department',
+  'br.recife.rec.by_orgao_contr': 'Contracts by department',
+  'br.recife.rec.outros': 'Other',
+  'br.recife.rec.contratos_only_tag': 'Contracts only',
+  'br.recife.rec.contratos_only_note':
+    'This company holds contract(s) with the City, but there are no payment (empenho) records tied to this CNPJ — payments may sit under another CNPJ (head office/branch) or may not have occurred yet.',
+  'br.recife.rec.pago': 'Paid',
+  'br.recife.rec.empenhado': 'Committed',
+  'br.recife.rec.execucao': '{pct}% executed',
+  'br.recife.rec.exec_note':
+    'Committed (empenhado) = amount reserved in the budget; paid = amount actually disbursed. The gap is what is still unpaid (restos a pagar).',
   'br.recife.rec.by_year': 'Received by year',
   'br.recife.rec.contratos': 'Contracts',
   'br.recife.rec.subv_note': 'Receives subsidy as a non-profit institution.',
@@ -5378,7 +5416,8 @@ const en: Record<string, string> = {
   'br.recife.rec.contratos_capped': 'Showing the {n} most recent contracts of {total}.',
   'br.recife.rec.perfil_fonte': 'Profile: Receita Federal (BrasilAPI). Plain-language summary AI-generated from the public data.',
   'br.recife.qr.temas_h': 'By theme',
-  'br.recife.qr.temas_sub': 'Organisations classified by public-policy theme (CNAE + paying agency).',
+  'br.recife.qr.temas_sub': 'Organisations grouped by public-policy theme. Our own classification, not official.',
+  'br.recife.qr.tema_provenance': "The theme is our own classification, derived from the company's CNAE and the paying department — it is not in the source. The by-department amounts and the payments come straight from the City's dataset.",
   'br.recife.qr.tema_all': 'All themes',
   'br.recife.qr.stat_mediana': 'Median payment',
   'br.recife.qr.stat_concentracao': 'Top-10 concentration',
@@ -5397,7 +5436,7 @@ const en: Record<string, string> = {
   'br.recife.qr.sort_nome': 'Name (A–Z)',
   'br.recife.qr.reset': 'Clear',
   'br.recife.qr.ver_mais': 'Show {n} more',
-  'br.recife.qr.evolution_sub': 'Total paid to organisations per year (2026 in progress).',
+  'br.recife.qr.evolution_sub': 'Total paid to organisations per year (complete years only).',
 
   'br.recife.ct.kicker': 'Contracts',
   'br.recife.ct.title': "Every one of City Hall's contracts",
@@ -5412,6 +5451,9 @@ const en: Record<string, string> = {
   'br.recife.ct.concluidas': 'completed',
   'br.recife.ct.homologado': 'awarded (all-time)',
   'br.recife.ct.mod_all': 'All modalities',
+  'br.recife.ct.orgao_all': 'All departments',
+  'br.recife.ct.ano': 'Year',
+  'br.recife.ct.ano_all': 'All years',
   'br.recife.ct.only_ativos': 'Active only',
   'br.recife.ct.sort_recente': 'Most recent',
   'br.recife.ct.list_h': 'Contracts',
@@ -5421,6 +5463,7 @@ const en: Record<string, string> = {
   'br.recife.ct.col_valor': 'Value',
   'br.recife.ct.col_orgao': 'Agency',
   'br.recife.ct.col_situacao': 'Status',
+  'br.recife.ct.col_modalidade': 'Modality',
   'br.recife.ct.badge_ativo': 'active',
   'br.recife.ct.pessoa_fisica': 'Individual',
   'br.recife.ct.results': '{n} contracts',
@@ -5432,6 +5475,8 @@ const en: Record<string, string> = {
   'br.recife.contrato.fornecedor': 'Supplier',
   'br.recife.contrato.valor': 'Contract value',
   'br.recife.contrato.sem_valor': 'Value not disclosed',
+  'br.recife.contrato.valor_alerta':
+    'Atypical value — verify at source. A contract this size is rare and may reflect a data-entry error or a price-registration (registro de preços) ceiling.',
   'br.recife.contrato.vigencia': 'Term',
   'br.recife.contrato.orgao': 'Contracting agency',
   'br.recife.contrato.modalidade': 'Modality',
@@ -5451,6 +5496,16 @@ const en: Record<string, string> = {
   'br.recife.contrato.conc.direta_d': 'Direct award, with no competitive bidding process.',
   'br.recife.contrato.conc.note':
     "Recife's open data publishes the contracting modality — not the number of bids received in each tender.",
+  'br.recife.contrato.mod_gloss.licitacao':
+    'Licitação: a public, competitive process in which the City selects the supplier among bidders.',
+  'br.recife.contrato.mod_gloss.sarp':
+    'Price-registration framework (SARP): a call-off from a framework set up by a prior tender (pregão or concorrência).',
+  'br.recife.contrato.mod_gloss.inexig':
+    'Inexigibilidade: direct contracting allowed by law when competition is unfeasible — typically a sole supplier.',
+  'br.recife.contrato.mod_gloss.dispensa':
+    'Dispensa: contracting where the law waives the tender (low value, emergency, or a specific legal case).',
+  'br.recife.contrato.mod_gloss.compra':
+    'Direct purchase: a low-value direct acquisition, with no tender process.',
   'br.recife.contrato.source': 'Source: Contracts — City of Recife.',
 };
 

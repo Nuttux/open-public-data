@@ -3733,6 +3733,16 @@ body:has(.theme-fusion) > div.pb-24 { padding-bottom: 0 !important; }
   .theme-fusion table tr:has(a[href]):active td { background: var(--bg-hover); }
 }
 
+/* Opt-out : table de données dont une row contient un lien PONCTUEL (ex. lien
+ * carte OSM sur la ligne « Coordonnées ») sans que la row entière soit
+ * navigable. Neutralise le pointer/hover hérité de `tr:has(a[href])` — seul le
+ * lien reste cliquable, pas la fausse-affordance sur toute la row. */
+.theme-fusion table.fx-fiche-table--data tr:has(a[href]) { cursor: default; }
+.theme-fusion table.fx-fiche-table--data tr:has(a[href]):hover { background: transparent; }
+.theme-fusion table.fx-fiche-table--data tr:has(a[href]):hover td,
+.theme-fusion table.fx-fiche-table--data tr:has(a[href]):hover .mono { color: inherit; opacity: 1; }
+.theme-fusion table.fx-fiche-table--data tr:has(a[href]):hover a { color: var(--bleu); }
+
 /* Variante non-Link : pour les rows clickables via onClick (expand toggle,
  * modal trigger, etc). À appliquer manuellement via className="fx-row-link". */
 .theme-fusion tr.fx-row-link { cursor: pointer; }
