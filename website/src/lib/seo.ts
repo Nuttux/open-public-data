@@ -134,7 +134,7 @@ export function organizationJsonLd() {
     '@type': 'Organization',
     name: SITE_NAME,
     url: SITE_URL,
-    logo: `${SITE_URL}/og-default.png`,
+    logo: `${SITE_URL}/icon.svg`,
     description:
       "Qipu rend lisibles les finances publiques : budget, subventions, marchés, logements et patrimoine de la Ville de Paris et d'une vingtaine de grandes villes françaises.",
     sameAs: ['https://github.com/AbstractsMachine'],

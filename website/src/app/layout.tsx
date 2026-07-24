@@ -30,9 +30,8 @@ const inter = Inter({
  * Root metadata — title template + defaults inherited by every route.
  * Per-route files override title/description/path via their own export.
  */
-const DEFAULT_TITLE = "Qipu — Open data Paris en clair";
-const DEFAULT_DESCRIPTION =
-  "Budget, subventions, marchés publics, logements sociaux, investissements : explorez les données ouvertes de la Ville de Paris et d'une vingtaine de grandes villes françaises en visualisations interactives.";
+const DEFAULT_TITLE = "Qipu — Public money, made legible.";
+const DEFAULT_DESCRIPTION = "Follow where public money comes from and where it goes.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -74,13 +73,11 @@ export const metadata: Metadata = {
     type: "website",
     locale: "fr_FR",
     alternateLocale: ["en_US"],
-    images: [{ url: "/og-default.png", width: 1200, height: 630, alt: SITE_NAME }],
   },
   twitter: {
     card: "summary_large_image",
     title: DEFAULT_TITLE,
     description: DEFAULT_DESCRIPTION,
-    images: ["/og-default.png"],
   },
   robots: {
     index: true,
