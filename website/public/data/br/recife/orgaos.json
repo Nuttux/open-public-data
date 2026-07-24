@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-23T18:48:03.412017+00:00",
+ "generated_at": "2026-07-24T12:33:03.851212+00:00",
  "source_pipeline": "configs/countries/br.yaml → sync_ckan_dataset.py → raw.br_recife_* → dbt_br_staging → dbt_br_analytics → dbt_br_marts → export_br_recife.py",
  "country": "br",
  "scale": "city",
@@ -11361,5 +11361,9 @@
     }
    ]
   }
+ },
+ "partial_year": {
+  "ano": 2026,
+  "ate_mes": 5
  }
 }

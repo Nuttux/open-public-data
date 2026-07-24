@@ -148,6 +148,20 @@ def top_orgaos(pairs, cap=TOP_ORGAOS, resolve=None):
     return out
 
 
+def compute_partial_year(client):
+    """The latest calendar year that is NOT yet complete (< 12 months of
+    executed data), with the last month that has data. Derived from the monthly
+    execution mart — the single source of truth every by-year chart uses to mark
+    that year 'provisional' instead of dropping it or drawing it as a cliff.
+    Returns {"ano": Y, "ate_mes": M} or None when the latest year is complete."""
+    q = (f"SELECT ano, MAX(mes) AS max_mes FROM `{PROJECT_ID}.{DATASET}."
+         f"mart_br_recife_budget_mensal` GROUP BY ano ORDER BY ano DESC")
+    for r in client.query(q).result():
+        if r["max_mes"] and int(r["max_mes"]) < 12:
+            return {"ano": int(r["ano"]), "ate_mes": int(r["max_mes"])}
+    return None
+
+
 def source_block(sample):
     """Provenance straight from a mart row (source_* columns)."""
     return {
@@ -908,12 +922,21 @@ def main():
     log.header("Export Recife (dbt_br_marts) → website/public/data/br/recife/")
     client = bigquery.Client(project=PROJECT_ID)
 
+    # Single source of truth for the incomplete current year — attached to every
+    # payload whose fiches/pages draw a by-year chart, so 2026 is marked
+    # provisional consistently instead of dropped or drawn as a fake cliff.
+    partial_year = compute_partial_year(client)
+    log.info(f"partial_year = {partial_year}")
+
     log.section("budget")
     budget = build_budget(client, log)
+    budget["partial_year"] = partial_year
     write_json("budget.json", budget, log)
 
     log.section("quem_recebe")
     qr, recipients, search, temas = build_quem_recebe(client, log)
+    for p in (qr, recipients, temas):
+        p["partial_year"] = partial_year
     write_json("quem_recebe.json", qr, log)
     write_json("recipients.json", recipients, log)
     write_json("quem_recebe_search.json", search, log)
@@ -924,10 +947,14 @@ def main():
     write_json("contratos.json", contratos, log)
 
     log.section("modalidades")
-    write_json("modalidades.json", build_modalidades(client, log), log)
+    modalidades = build_modalidades(client, log)
+    modalidades["partial_year"] = partial_year
+    write_json("modalidades.json", modalidades, log)
 
     log.section("orgaos")
-    write_json("orgaos.json", build_orgaos(client, log), log)
+    orgaos = build_orgaos(client, log)
+    orgaos["partial_year"] = partial_year
+    write_json("orgaos.json", orgaos, log)
 
     log.section("licitacoes")
     lic = build_licitacoes(client, log)

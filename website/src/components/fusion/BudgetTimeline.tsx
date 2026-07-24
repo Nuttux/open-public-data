@@ -5,7 +5,9 @@ import { useT } from "@/lib/localeContext";
 type Point = {
   year: number;
   value: number;
-  type: "execute" | "vote" | "estimate";
+  // "partial" = an incomplete current year: drawn dashed like estimate/vote
+  // (non-execute) but labelled distinctly. Additive; existing callers unaffected.
+  type: "execute" | "vote" | "estimate" | "partial";
 };
 
 type Annotation = {
@@ -173,7 +175,7 @@ export default function BudgetTimeline({
           const activeY = yFor(active.value);
           const badgeText =
             activeBadge ??
-            `${active.year} ${active.type === "vote" ? t("fx.timeline.badge.vote") : active.type === "estimate" ? t("fx.timeline.badge.est") : t("fx.timeline.badge.exec")}`;
+            `${active.year} ${active.type === "vote" ? t("fx.timeline.badge.vote") : active.type === "estimate" ? t("fx.timeline.badge.est") : active.type === "partial" ? t("fx.timeline.badge.partial") : t("fx.timeline.badge.exec")}`;
           const badgeW = Math.max(88, badgeText.length * 7.2 + 20);
           const halfW = badgeW / 2;
           const MARGIN = 4;
@@ -228,7 +230,7 @@ export default function BudgetTimeline({
                 fill={p.year === activeYear ? "#0a0a0a" : "#9099a6"}
                 fontWeight={p.year === activeYear ? 700 : 400}
               >
-                {p.type === "execute" ? t("fx.timeline.status.exec") : p.type === "vote" ? t("fx.timeline.status.vote") : t("fx.timeline.status.est")}
+                {p.type === "execute" ? t("fx.timeline.status.exec") : p.type === "vote" ? t("fx.timeline.status.vote") : p.type === "partial" ? t("fx.timeline.status.partial") : t("fx.timeline.status.est")}
               </text>
             ))}
           </g>

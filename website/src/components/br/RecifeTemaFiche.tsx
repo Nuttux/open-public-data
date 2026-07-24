@@ -2,12 +2,12 @@
 
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { useT } from "@/lib/localeContext";
+import { useT, useLocale } from "@/lib/localeContext";
 import { FicheYearBars } from "@/components/fiche";
 import type { FicheYearPoint } from "@/components/fiche";
 import FicheKpis from "@/components/fusion/FicheKpis";
 import type { TemaDetail, SourceBlock } from "@/lib/br/recife-data";
-import { fmtBrlCompact, fmtInt, titleCasePt, fill } from "@/lib/br/format";
+import { fmtBrlCompact, fmtInt, titleCasePt, fill, mesRange } from "@/lib/br/format";
 
 /** Labelled money bars for the department (órgão) breakdown, with per-row link. */
 function OrgaoBars({ items }: { items: TemaDetail["top_orgaos"] }) {
@@ -36,10 +36,12 @@ function OrgaoBars({ items }: { items: TemaDetail["top_orgaos"] }) {
 
 export default function RecifeTemaFiche({ tm, temaMethod, source }: { tm: TemaDetail; temaMethod?: string; source: SourceBlock }) {
   const t = useT();
+  const { locale } = useLocale();
   const router = useRouter();
 
-  const maxYear = Math.max(...tm.by_year.map((y) => y.ano), 0);
-  const years: FicheYearPoint[] = tm.by_year.filter((y) => y.ano < maxYear).map((y) => ({ year: y.ano, value: y.pago }));
+  const pj = tm.partial_year;
+  const years: FicheYearPoint[] = tm.by_year.map((y) => ({ year: y.ano, value: y.pago, provisional: !!pj && pj.ano === y.ano }));
+  const provisionalNote = pj ? fill(t("br.recife.partial_note"), { ano: pj.ano, mes: mesRange(pj.ate_mes, locale) }) : undefined;
   const anos = tm.by_year.map((y) => y.ano);
   const first = anos.length ? Math.min(...anos) : undefined;
   const last = anos.length ? Math.max(...anos) : undefined;
@@ -62,7 +64,7 @@ export default function RecifeTemaFiche({ tm, temaMethod, source }: { tm: TemaDe
       {years.length > 0 && (
         <section className="fx-fiche-section">
           <div className="fx-fiche-h">{t("br.recife.tema.by_year")}</div>
-          <FicheYearBars points={years} format={fmtBrlCompact} />
+          <FicheYearBars points={years} format={fmtBrlCompact} provisionalNote={provisionalNote} />
         </section>
       )}
 

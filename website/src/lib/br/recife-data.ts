@@ -19,6 +19,11 @@ export type SourceBlock = {
   as_of: string | null;
 };
 
+/** The latest, still-incomplete calendar year (e.g. 2026 through month 5) —
+ *  the single source of truth every by-year chart uses to render that year as
+ *  provisional. Null when the latest year is complete. Set by the pipeline. */
+export type PartialYear = { ano: number; ate_mes: number } | null;
+
 // ---- budget -----------------------------------------------------------------
 export type BudgetSubfuncao = { subfuncao: string; pago: number };
 export type BudgetFuncao = {
@@ -45,6 +50,7 @@ export type BudgetData = {
   ano_mais_recente: number;
   anos: BudgetAno[];
   curva_mensal: { ano: number; mes: number; pago: number; empenhado: number }[];
+  partial_year?: PartialYear;
 };
 
 export function loadBudget(): BudgetData {
@@ -62,6 +68,7 @@ export type FuncaoDetail = {
   subfuncoes: BudgetSubfuncao[];
   by_year: { ano: number; pago: number }[];
   source: SourceBlock;
+  partial_year?: PartialYear;
 };
 
 /** Función detail for the budget drilldown drawer — computed from budget.json. */
@@ -83,6 +90,7 @@ export function loadFuncao(slug: string, ano?: number): FuncaoDetail | null {
     total_pago: f.pago, total_empenhado: f.empenhado,
     share_of_year: anoData.total_pago ? f.pago / anoData.total_pago : 0,
     delta_pct, subfuncoes: f.subfuncoes, by_year, source: d.source,
+    partial_year: d.partial_year ?? null,
   };
 }
 
@@ -117,6 +125,7 @@ export type QuemRecebeData = {
   top_recebedores: RecebedorSlim[];
   top_subvencoes: RecebedorSlim[];
   temas: TemaSlice[];
+  partial_year?: PartialYear;
   enrichment: {
     n_com_perfil: number;
     n_com_resumo: number;
@@ -159,16 +168,18 @@ export type RecipientDetail = {
    *  (orgao=null). Payments for paid recipients; contracted value for
    *  contract-only suppliers. */
   by_orgao?: { orgao: string | null; slug?: string | null; valor: number; n: number }[];
+  partial_year?: PartialYear;
 };
 type RecipientsFile = {
   source: SourceBlock;
+  partial_year?: PartialYear;
   items: Record<string, RecipientDetail>;
 };
 
 export function loadRecipient(cnpj: string): (RecipientDetail & { source: SourceBlock }) | null {
   const file = readDataJsonOrNull<RecipientsFile>(`${NS}/recipients.json`);
   const rec = file?.items?.[cnpj];
-  return rec ? { ...rec, source: file!.source } : null;
+  return rec ? { ...rec, source: file!.source, partial_year: file!.partial_year ?? null } : null;
 }
 
 // ---- contratos --------------------------------------------------------------
@@ -231,13 +242,14 @@ export type OrgaoDetail = {
     fornecedor: string | null; fornecedor_cnpj: string | null;
     valor: number | null; ano: number | null;
   }[];
+  partial_year?: PartialYear;
 };
-type OrgaosFile = { source: SourceBlock; items: Record<string, OrgaoDetail> };
+type OrgaosFile = { source: SourceBlock; partial_year?: PartialYear; items: Record<string, OrgaoDetail> };
 
 export function loadOrgao(slug: string): (OrgaoDetail & { source: SourceBlock }) | null {
   const file = readDataJsonOrNull<OrgaosFile>(`${NS}/orgaos.json`);
   const o = file?.items?.[slug];
-  return o ? { ...o, source: file!.source } : null;
+  return o ? { ...o, source: file!.source, partial_year: file!.partial_year ?? null } : null;
 }
 
 // ---- modalidades (procurement-modality entity pages) -----------------------
@@ -253,13 +265,14 @@ export type ModalidadeDetail = {
     orgao: string | null; orgao_slug?: string | null;
     valor: number | null; ano: number | null;
   }[];
+  partial_year?: PartialYear;
 };
-type ModalidadesFile = { source: SourceBlock; items: Record<string, ModalidadeDetail> };
+type ModalidadesFile = { source: SourceBlock; partial_year?: PartialYear; items: Record<string, ModalidadeDetail> };
 
 export function loadModalidade(slug: string): (ModalidadeDetail & { source: SourceBlock }) | null {
   const file = readDataJsonOrNull<ModalidadesFile>(`${NS}/modalidades.json`);
   const m = file?.items?.[slug];
-  return m ? { ...m, source: file!.source } : null;
+  return m ? { ...m, source: file!.source, partial_year: file!.partial_year ?? null } : null;
 }
 
 // ---- temas (public-policy theme entity pages) ------------------------------
@@ -273,8 +286,9 @@ export type TemaDetail = {
     cnpj: string; nome: string; total_pago: number;
     n_contratos: number; is_subvencao: boolean;
   }[];
+  partial_year?: PartialYear;
 };
-type TemasFile = { source: SourceBlock; tema_method?: string; items: Record<string, TemaDetail> };
+type TemasFile = { source: SourceBlock; tema_method?: string; partial_year?: PartialYear; items: Record<string, TemaDetail> };
 
 // The theme bar's synthesized "others" overflow segment carries the translated
 // label ("Others" in EN) → its slug won't match the pt data key. Alias it.
@@ -284,5 +298,5 @@ export function loadTema(slug: string): (TemaDetail & { source: SourceBlock; tem
   const file = readDataJsonOrNull<TemasFile>(`${NS}/temas.json`);
   const key = file?.items?.[slug] ? slug : (TEMA_SLUG_ALIAS[slug] ?? slug);
   const t = file?.items?.[key];
-  return t ? { ...t, source: file!.source, tema_method: file!.tema_method } : null;
+  return t ? { ...t, source: file!.source, tema_method: file!.tema_method, partial_year: file!.partial_year ?? null } : null;
 }

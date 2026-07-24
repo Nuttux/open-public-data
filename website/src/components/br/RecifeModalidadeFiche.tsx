@@ -7,7 +7,7 @@ import { FicheYearBars } from "@/components/fiche";
 import type { FicheYearPoint } from "@/components/fiche";
 import FicheKpis from "@/components/fusion/FicheKpis";
 import type { ModalidadeDetail, SourceBlock } from "@/lib/br/recife-data";
-import { fmtBrlCompact, fmtInt, hasValor, titleCasePt, modalidadeLabel, fill } from "@/lib/br/format";
+import { fmtBrlCompact, fmtInt, hasValor, titleCasePt, modalidadeLabel, fill, mesRange } from "@/lib/br/format";
 
 /** Competition posture per modality → the gloss key + accent tone, mirroring
  *  the contract fiche's classifyModalidade. ocre = no competitive process. */
@@ -54,9 +54,10 @@ export default function RecifeModalidadeFiche({ m, source }: { m: ModalidadeDeta
   const { glossKey, tone } = classify(m.modalidade);
   const toneColor = tone === "ocre" ? "var(--ocre)" : tone === "ink" ? "var(--ink)" : "var(--ink-2)";
 
-  // Drop the partial current year from the bars (consistency with other charts).
-  const maxYear = Math.max(...m.by_year.map((y) => y.ano), 0);
-  const years: FicheYearPoint[] = m.by_year.filter((y) => y.ano < maxYear).map((y) => ({ year: y.ano, value: y.valor }));
+  // Show every year; the incomplete current year renders as provisional.
+  const pj = m.partial_year;
+  const years: FicheYearPoint[] = m.by_year.map((y) => ({ year: y.ano, value: y.valor, provisional: !!pj && pj.ano === y.ano }));
+  const provisionalNote = pj ? fill(t("br.recife.partial_note"), { ano: pj.ano, mes: mesRange(pj.ate_mes, locale) }) : undefined;
   const anos = m.by_year.map((y) => y.ano);
   const first = anos.length ? Math.min(...anos) : undefined;
   const last = anos.length ? Math.max(...anos) : undefined;
@@ -81,7 +82,7 @@ export default function RecifeModalidadeFiche({ m, source }: { m: ModalidadeDeta
       {years.length > 0 && (
         <section className="fx-fiche-section">
           <div className="fx-fiche-h">{t("br.recife.mod.by_year")}</div>
-          <FicheYearBars points={years} format={fmtBrlCompact} />
+          <FicheYearBars points={years} format={fmtBrlCompact} provisionalNote={provisionalNote} />
         </section>
       )}
 

@@ -17,5 +17,6 @@ export type FicheDoc = {
   sourceLabel: string;
 };
 
-/** One bar in a per-year chart. */
-export type FicheYearPoint = { year: number; value: number };
+/** One bar in a per-year chart. `provisional` marks an incomplete current year
+ *  (rendered with a distinct hatched style so it never reads as a real drop). */
+export type FicheYearPoint = { year: number; value: number; provisional?: boolean };

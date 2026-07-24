@@ -1,12 +1,12 @@
 "use client";
 
-import { useT } from "@/lib/localeContext";
+import { useT, useLocale } from "@/lib/localeContext";
 import { FicheYearBars } from "@/components/fiche";
 import type { FicheYearPoint } from "@/components/fiche";
 import FicheKpis from "@/components/fusion/FicheKpis";
 import BarRow, { type BarRowItem } from "@/components/fusion/BarRow";
 import type { FuncaoDetail } from "@/lib/br/recife-data";
-import { fmtBrlCompact, fmtShare, fill } from "@/lib/br/format";
+import { fmtBrlCompact, fmtShare, fill, mesRange } from "@/lib/br/format";
 
 const SMALL = new Set(["e", "de", "da", "do", "dos", "das", "a", "o", "à", "em", "para"]);
 function titleCase(s: string) {
@@ -22,10 +22,13 @@ function titleCase(s: string) {
  */
 export default function RecifeFuncaoFiche({ f }: { f: FuncaoDetail }) {
   const t = useT();
+  const { locale } = useLocale();
   const subItems: BarRowItem[] = f.subfuncoes
     .filter((s) => s.pago > 0)
     .map((s) => ({ label: titleCase(s.subfuncao), value: s.pago, display: fmtBrlCompact(s.pago) }));
-  const years: FicheYearPoint[] = f.by_year.map((y) => ({ year: y.ano, value: y.pago }));
+  const pj = f.partial_year;
+  const years: FicheYearPoint[] = f.by_year.map((y) => ({ year: y.ano, value: y.pago, provisional: !!pj && pj.ano === y.ano }));
+  const provisionalNote = pj ? fill(t("br.recife.partial_note"), { ano: pj.ano, mes: mesRange(pj.ate_mes, locale) }) : undefined;
 
   const deltaLabel = f.delta_pct == null ? "—"
     : `${f.delta_pct >= 0 ? "+" : "−"}${fmtShare(Math.abs(f.delta_pct))}`;
@@ -50,7 +53,7 @@ export default function RecifeFuncaoFiche({ f }: { f: FuncaoDetail }) {
       {years.length > 1 && (
         <section className="fx-fiche-section">
           <div className="fx-fiche-h">{t("br.recife.rec.by_year")}</div>
-          <FicheYearBars points={years} format={fmtBrlCompact} />
+          <FicheYearBars points={years} format={fmtBrlCompact} provisionalNote={provisionalNote} />
         </section>
       )}
 

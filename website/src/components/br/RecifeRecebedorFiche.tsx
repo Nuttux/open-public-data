@@ -2,12 +2,12 @@
 
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { useT } from "@/lib/localeContext";
+import { useT, useLocale } from "@/lib/localeContext";
 import { FicheYearBars } from "@/components/fiche";
 import type { FicheYearPoint } from "@/components/fiche";
 import FicheKpis from "@/components/fusion/FicheKpis";
 import type { RecipientDetail, SourceBlock } from "@/lib/br/recife-data";
-import { fmtBrlCompact, fmtCnpj, fmtInt, hasValor, titleCasePt, fill, slugTema } from "@/lib/br/format";
+import { fmtBrlCompact, fmtCnpj, fmtInt, hasValor, titleCasePt, fill, slugTema, mesRange } from "@/lib/br/format";
 
 /**
  * Recipient (organisation / CNPJ) fiche — a thin br-municipal ADAPTER that
@@ -24,9 +24,12 @@ export default function RecifeRecebedorFiche({
   source: SourceBlock;
 }) {
   const t = useT();
+  const { locale } = useLocale();
   const router = useRouter();
   const contratosOnly = !!rec.contratos_only;
-  const years: FicheYearPoint[] = rec.by_year.map((y) => ({ year: y.ano, value: y.pago }));
+  const pj = rec.partial_year;
+  const years: FicheYearPoint[] = rec.by_year.map((y) => ({ year: y.ano, value: y.pago, provisional: !!pj && pj.ano === y.ano }));
+  const provisionalNote = pj ? fill(t("br.recife.partial_note"), { ano: pj.ano, mes: mesRange(pj.ate_mes, locale) }) : undefined;
   // Period: from payment years normally; from contract years for contract-only
   // suppliers (they have no payment years).
   const contratoAnos = rec.contratos.map((c) => c.ano).filter((a): a is number => a != null);
@@ -97,10 +100,7 @@ export default function RecifeRecebedorFiche({
       {years.length > 0 && (
         <section className="fx-fiche-section">
           <div className="fx-fiche-h">{t("br.recife.rec.by_year")}</div>
-          <FicheYearBars points={years} format={fmtBrlCompact} />
-          {rec.principal_orgao && (
-            <p className="fx-fiche-sub">{t("br.recife.rec.principal_orgao")}: {rec.principal_orgao}</p>
-          )}
+          <FicheYearBars points={years} format={fmtBrlCompact} provisionalNote={provisionalNote} />
         </section>
       )}
 

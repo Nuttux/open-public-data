@@ -10,28 +10,32 @@ import BudgetTimeline from "@/components/fusion/BudgetTimeline";
 import ChartSource from "@/components/fusion/ChartSource";
 import ExportRow from "@/components/fusion/ExportRow";
 import PageHook from "@/components/fusion/PageHook";
-import { useT } from "@/lib/localeContext";
+import { useT, useLocale } from "@/lib/localeContext";
 import type { QuemRecebeData } from "@/lib/br/recife-data";
-import { fmtBrlCompact, fmtBrlCompactNum, brlMagnitude, fmtBrl, fmtInt, fmtShare, fill, slugTema } from "@/lib/br/format";
+import { fmtBrlCompact, fmtBrlCompactNum, brlMagnitude, fmtBrl, fmtInt, fmtShare, fill, slugTema, mesRange } from "@/lib/br/format";
 import RecifeQuemRecebeExplorer from "./RecifeQuemRecebeExplorer";
 
 const BASE = "/br/city/recife/quem-recebe";
 
 export default function QuemRecebeClient({ d }: { d: QuemRecebeData }) {
   const t = useT();
+  const { locale } = useLocale();
   // theme name → its data slug (from the pipeline); fall back to a client slug
   // for the synthesized "others" overflow segment (translated label).
   const temaSlugByName = new Map(d.temas.map((tm) => [tm.tema, tm.slug ?? slugTema(tm.tema)]));
-  const maxSeriesYear = Math.max(...d.anos_series.map((x) => x.ano), 0);
-  // Drop the current, still-running year: an in-progress year plotted next to
-  // full years reads as a cliff-drop, not a real trend. Only complete years.
-  const completeSeries = d.anos_series.filter((a) => a.ano < maxSeriesYear);
-  const latestYear = completeSeries.length
-    ? Math.max(...completeSeries.map((a) => a.ano))
-    : maxSeriesYear;
-  const timelinePoints = completeSeries.map((a) => ({
-    year: a.ano, value: a.total_pago / 1e9, type: "execute" as const,
+  // Show every year, but mark the incomplete current one as "partial" so it
+  // renders dashed (not a fake cliff-drop) — consistent with the fiches.
+  const pj = d.partial_year;
+  const timelinePoints = d.anos_series.map((a) => ({
+    year: a.ano,
+    value: a.total_pago / 1e9,
+    type: (pj && pj.ano === a.ano ? "partial" : "execute") as "partial" | "execute",
   }));
+  const completeTimelineYears = timelinePoints.filter((p) => p.type === "execute").map((p) => p.year);
+  const latestYear = completeTimelineYears.length
+    ? Math.max(...completeTimelineYears)
+    : Math.max(...timelinePoints.map((p) => p.year), 0);
+  const partialNote = pj ? fill(t("br.recife.partial_note"), { ano: pj.ano, mes: mesRange(pj.ate_mes, locale) }) : null;
 
   return (
     <main id="main-content" tabIndex={-1}>
@@ -107,6 +111,9 @@ export default function QuemRecebeClient({ d }: { d: QuemRecebeData }) {
               formatYTick={(v) => `${v} bi`}
               ariaLabel={t("br.recife.budget.evolution_h")}
             />
+            {partialNote && (
+              <p style={{ margin: "6px 0 0", fontSize: 12, color: "var(--muted)", fontStyle: "italic" }}>{partialNote}</p>
+            )}
             <ChartSource source={d.source.name ?? t("br.recife.portal")} dataHref={d.source.source_url ?? undefined} />
           </div>
         </section>

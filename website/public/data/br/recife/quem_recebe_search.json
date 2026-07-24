@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-24T12:03:55.433251+00:00",
+ "generated_at": "2026-07-24T12:32:55.600309+00:00",
  "source_pipeline": "configs/countries/br.yaml → sync_ckan_dataset.py → raw.br_recife_* → dbt_br_staging → dbt_br_analytics → dbt_br_marts → export_br_recife.py",
  "unit": "BRL",
  "count": 5611,

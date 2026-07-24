@@ -11,9 +11,9 @@ import BarRow, { type BarRowItem } from "@/components/fusion/BarRow";
 import BudgetTimeline from "@/components/fusion/BudgetTimeline";
 import ChartSource from "@/components/fusion/ChartSource";
 import ExportRow from "@/components/fusion/ExportRow";
-import { useT } from "@/lib/localeContext";
+import { useT, useLocale } from "@/lib/localeContext";
 import type { BudgetData } from "@/lib/br/recife-data";
-import { fmtBrl, fmtBrlCompact, fmtBrlCompactNum, brlMagnitude, fmtShare, fill, funcaoSlug } from "@/lib/br/format";
+import { fmtBrl, fmtBrlCompact, fmtBrlCompactNum, brlMagnitude, fmtShare, fill, funcaoSlug, mesRange } from "@/lib/br/format";
 
 const SMALL = new Set(["e", "de", "da", "do", "dos", "das", "a", "o", "à", "em", "para"]);
 function titleCase(s: string) {
@@ -26,6 +26,7 @@ const BASE = "/br/city/recife/budget";
 
 export default function BudgetClient({ d, ano }: { d: BudgetData; ano?: number }) {
   const t = useT();
+  const { locale } = useLocale();
   // Only show full (12-month) years: a partial current year (e.g. 2026 through
   // month 5) would crater the comparison and there is no voted/orçado figure in
   // the source to annualise it. Fall back to all years if none is complete.
@@ -45,9 +46,15 @@ export default function BudgetClient({ d, ano }: { d: BudgetData; ano?: number }
     sub: f.subfuncoes.length ? f.subfuncoes.slice(0, 3).map((s) => titleCase(s.subfuncao)).join(" · ") : undefined,
   }));
 
-  const timelinePoints = d.anos
-    .filter((a) => shownYears.includes(a.ano))
-    .map((a) => ({ year: a.ano, value: a.total_pago / 1e9, type: "execute" as const }));
+  // Timeline shows every year (incl. the incomplete current one, drawn dashed
+  // as "partial"); the year PICKER still excludes it (no partial-year drill).
+  const pj = d.partial_year;
+  const timelinePoints = d.anos.map((a) => ({
+    year: a.ano,
+    value: a.total_pago / 1e9,
+    type: (pj && pj.ano === a.ano ? "partial" : "execute") as "partial" | "execute",
+  }));
+  const partialNote = pj ? fill(t("br.recife.partial_note"), { ano: pj.ano, mes: mesRange(pj.ate_mes, locale) }) : null;
 
   const pop = d.populacao?.populacao;
   const perCapita = pop ? anoData.total_pago / pop : null;
@@ -121,6 +128,9 @@ export default function BudgetClient({ d, ano }: { d: BudgetData; ano?: number }
             activeBadge={String(year)}
             ariaLabel={t("br.recife.budget.evolution_h")}
           />
+          {partialNote && (
+            <p style={{ margin: "6px 0 0", fontSize: 12, color: "var(--muted)", fontStyle: "italic" }}>{partialNote}</p>
+          )}
           <ChartSource source={d.source.name ?? t("br.recife.portal")} dataHref={d.source.source_url ?? undefined} />
         </div>
       </section>

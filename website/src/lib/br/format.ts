@@ -186,8 +186,16 @@ export function fmtDate(iso: string | null | undefined): string {
 
 const MESES = ["", "jan", "fev", "mar", "abr", "mai", "jun",
   "jul", "ago", "set", "out", "nov", "dez"];
+const MESES_EN = ["", "Jan", "Feb", "Mar", "Apr", "May", "Jun",
+  "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 export function mesLabel(m: number): string {
   return MESES[m] ?? String(m);
+}
+
+/** "jan–mai" (pt) / "Jan–May" (en) — the covered month span of a partial year. */
+export function mesRange(ateMes: number, locale: string): string {
+  const arr = locale === "en" ? MESES_EN : MESES;
+  return `${arr[1]}–${arr[ateMes] ?? String(ateMes)}`;
 }
 
 /** Simple {token} interpolation for i18n strings. */

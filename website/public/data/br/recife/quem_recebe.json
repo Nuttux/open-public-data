@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-24T12:03:55.422551+00:00",
+ "generated_at": "2026-07-24T12:32:55.590618+00:00",
  "source_pipeline": "configs/countries/br.yaml → sync_ckan_dataset.py → raw.br_recife_* → dbt_br_staging → dbt_br_analytics → dbt_br_marts → export_br_recife.py",
  "country": "br",
  "scale": "city",
@@ -3009,5 +3009,9 @@
   "perfil_source": "Receita Federal via BrasilAPI",
   "tema_method": "CNAE-seção + órgão pagador (mapeamento determinístico)",
   "resumo_model": "LLM (gemini-3-flash-preview padrão; claude-sonnet-5 nesta execução)"
+ },
+ "partial_year": {
+  "ano": 2026,
+  "ate_mes": 5
  }
 }
