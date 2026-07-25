@@ -56,7 +56,7 @@ const COVERAGE_FR: CoverageRow[] = [
   { label: "Concurrence (offresRecues DECP)", volume: "champ non historisé avant 2024", href: "https://www.data.gouv.fr/fr/datasets/donnees-essentielles-de-la-commande-publique-fichiers-consolides/", status: "info", statusLabel: "Partiel", segments: [{ start: 2024, end: 2025, text: "2024-2025", kind: "partial" }] },
   { label: "Investissements (dataset AP)", volume: "dataset gelé", href: "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-a-partir-de-2018-m57-ville-de/", status: "warn", statusLabel: "Gelé", segments: [{ start: 2018, end: 2022, text: "2018-2022 · gelé", kind: "frozen" }] },
   { label: "Investissements (PDF IL)", volume: "~450 projets/an", href: "https://cdn.paris.fr/paris/2025/06/25/ca-2024-annexe-il-UtMj.PDF", status: "info", statusLabel: "Partiel", segments: [{ start: 2018, end: 2024, text: "2018-2024 (CA)", kind: "partial" }, { start: 2025, end: 2026, text: "2025-2026 (BP)", kind: "partial" }] },
-  { label: "Match projets ↔ marchés", volume: "4 322 appariements (seed)", href: "https://github.com/AbstractsMachine/france-open-data-pipeline/blob/main/pipeline/seeds/seed_match_projet_marches.csv", status: "ok", statusLabel: "À jour", segments: [{ start: 2018, end: 2024, text: "2018-2024 · hash stable objet+titulaire" }] },
+  { label: "Match projets ↔ marchés", volume: "4 322 appariements (seed)", status: "ok", statusLabel: "À jour", segments: [{ start: 2018, end: 2024, text: "2018-2024 · hash stable objet+titulaire" }] },
   { label: "Logements sociaux financés", volume: "4 174 opérations", href: "https://opendata.paris.fr/explore/dataset/logements-sociaux-finances-a-paris/", status: "ok", statusLabel: "À jour", segments: [{ start: 2013, end: 2024, text: "2001-2024 (affiché 2013+)" }] },
   { label: "Tension logement (Socle DRIHL)", volume: "20 arrondissements · 195 828 demandes / 9 098 attributions", href: "https://www.drihl.ile-de-france.developpement-durable.gouv.fr/socle-de-donnees-demandes-et-attributions-de-a1414.html", status: "info", statusLabel: "Partiel", segments: [{ start: 2024, end: 2024, text: "2024 (série démarrée)", kind: "partial" }] },
   { label: "Bilan comptable", volume: "1 bilan/an", href: "https://opendata.paris.fr/explore/dataset/bilan-comptable/", status: "ok", statusLabel: "À jour", segments: [{ start: 2019, end: 2024, text: "2019-2024" }] },
@@ -91,7 +91,7 @@ const COVERAGE_EN: CoverageRow[] = [
   { label: "Competition (DECP offresRecues)", volume: "field not historised before 2024", href: "https://www.data.gouv.fr/fr/datasets/donnees-essentielles-de-la-commande-publique-fichiers-consolides/", status: "info", statusLabel: "Partial", segments: [{ start: 2024, end: 2025, text: "2024-2025", kind: "partial" }] },
   { label: "Investments (AP dataset)", volume: "dataset frozen", href: "https://opendata.paris.fr/explore/dataset/comptes-administratifs-autorisations-de-programmes-a-partir-de-2018-m57-ville-de/", status: "warn", statusLabel: "Frozen", segments: [{ start: 2018, end: 2022, text: "2018-2022 · frozen", kind: "frozen" }] },
   { label: "Investments (IL PDFs)", volume: "~450 projects/yr", href: "https://cdn.paris.fr/paris/2025/06/25/ca-2024-annexe-il-UtMj.PDF", status: "info", statusLabel: "Partial", segments: [{ start: 2018, end: 2024, text: "2018-2024 (CA)", kind: "partial" }, { start: 2025, end: 2026, text: "2025-2026 (BP)", kind: "partial" }] },
-  { label: "Project ↔ contract match", volume: "4,322 matches (seed)", href: "https://github.com/AbstractsMachine/france-open-data-pipeline/blob/main/pipeline/seeds/seed_match_projet_marches.csv", status: "ok", statusLabel: "Up to date", segments: [{ start: 2018, end: 2024, text: "2018-2024 · stable hash object+awardee" }] },
+  { label: "Project ↔ contract match", volume: "4,322 matches (seed)", status: "ok", statusLabel: "Up to date", segments: [{ start: 2018, end: 2024, text: "2018-2024 · stable hash object+awardee" }] },
   { label: "Funded social housing", volume: "4,174 operations", href: "https://opendata.paris.fr/explore/dataset/logements-sociaux-finances-a-paris/", status: "ok", statusLabel: "Up to date", segments: [{ start: 2013, end: 2024, text: "2001-2024 (shown 2013+)" }] },
   { label: "Housing pressure (DRIHL Socle)", volume: "20 districts · 195,828 applications / 9,098 allocations", href: "https://www.drihl.ile-de-france.developpement-durable.gouv.fr/socle-de-donnees-demandes-et-attributions-de-a1414.html", status: "info", statusLabel: "Partial", segments: [{ start: 2024, end: 2024, text: "2024 (series starting)", kind: "partial" }] },
   { label: "Balance sheet", volume: "1 bs/yr", href: "https://opendata.paris.fr/explore/dataset/bilan-comptable/", status: "ok", statusLabel: "Up to date", segments: [{ start: 2019, end: 2024, text: "2019-2024" }] },
@@ -339,8 +339,8 @@ export default async function MethodeClient() {
           </h3>
           <p style={{ lineHeight: 1.6, maxWidth: 820, marginBottom: 18 }}>
             {isFr
-              ? <><b>Le modèle se note lui-même.</b> Quand le modèle de langage propose une catégorie pour une subvention ou une localisation pour un projet, il attache à sa réponse un score de confiance. Ce score, c&apos;est le modèle qui se l&apos;auto-déclare. Pour le rendre fiable au-delà de cette auto-évaluation, il faudra le comparer à un échantillon vérifié à la main. Ce travail est en cours et sera publié ici (<a href="https://github.com/AbstractsMachine/france-open-data-pipeline/tree/main/pipeline/scripts/audit/calibration_samples" target="_blank" rel="noopener noreferrer">script et échantillons ↗</a>).</>
-              : <><b>The model rates itself.</b> When the language model proposes a category for a grant or a location for a project, it attaches a confidence score to its answer. That score is self-declared. To make it reliable beyond this self-evaluation, it will need to be compared against a hand-labelled sample. That work is underway and will be published here (<a href="https://github.com/AbstractsMachine/france-open-data-pipeline/tree/main/pipeline/scripts/audit/calibration_samples" target="_blank" rel="noopener noreferrer">script and samples ↗</a>).</>}
+              ? <><b>Le modèle se note lui-même.</b> Quand le modèle de langage propose une catégorie pour une subvention ou une localisation pour un projet, il attache à sa réponse un score de confiance. Ce score, c&apos;est le modèle qui se l&apos;auto-déclare. Pour le rendre fiable au-delà de cette auto-évaluation, il faudra le comparer à un échantillon vérifié à la main. Ce travail est en cours.</>
+              : <><b>The model rates itself.</b> When the language model proposes a category for a grant or a location for a project, it attaches a confidence score to its answer. That score is self-declared. To make it reliable beyond this self-evaluation, it will need to be compared against a hand-labelled sample. That work is underway.</>}
           </p>
           <p style={{ lineHeight: 1.6, maxWidth: 820 }}>
             {isFr
@@ -351,7 +351,6 @@ export default async function MethodeClient() {
           {/* Compact cross-check footer ────────────────────────────────── */}
           <div style={{ marginTop: 32, padding: "16px 20px", background: "var(--cream)", display: "flex", gap: 18, flexWrap: "wrap", fontFamily: "var(--f-mono)", fontSize: 13 }}>
             <a href="/data/data_quality_audit.json" target="_blank" rel="noopener noreferrer">{isFr ? "JSON brut ↗" : "Raw JSON ↗"}</a>
-            <a href="https://github.com/AbstractsMachine/france-open-data-pipeline/blob/main/pipeline/scripts/audit/run_data_quality_audit.py" target="_blank" rel="noopener noreferrer">{isFr ? "Script audit ↗" : "Audit script ↗"}</a>
           </div>
         </div>
       </section>
@@ -371,7 +370,6 @@ export default async function MethodeClient() {
           </p>
           <div style={{ marginTop: 24, display: "flex", gap: 10, flexWrap: "wrap" }}>
             <Button variant="primary" href="/contact">{isFr ? "Signaler une erreur" : "Report an error"}</Button>
-            <Button href="https://github.com/AbstractsMachine/france-open-data-pipeline">{isFr ? "Code sur GitHub ↗" : "Code on GitHub ↗"}</Button>
           </div>
         </div>
       </section>

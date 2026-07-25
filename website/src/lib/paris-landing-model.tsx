@@ -324,9 +324,9 @@ function ParisLandingTail({ t, locale, posts }: { t: T; locale: string; posts: B
             <div className="fx-meth-c">
               <h3>{t("fx.land.meth.03.h")}</h3>
               <p>{t("fx.land.meth.03.p")}</p>
-              <a href="https://github.com/AbstractsMachine/france-open-data-pipeline" target="_blank" rel="noopener noreferrer">
+              <Link href="/methode#construction">
                 {t("fx.land.meth.03.cta")}
-              </a>
+              </Link>
             </div>
           </div>
         </div>
